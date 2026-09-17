@@ -55,12 +55,12 @@ Then stop. Report that the three mockups are ready. Do not rank them, recommend 
 - `notes.md` as above, plus `editable` — each owner-editable item and where it is edited.
 - Do not change the design direction of the picked mockup. Fix what the critic flagged; carry over what the human liked (pick reason).
 
-**CMS wiring — TBD pending the Grav vs Bludit spike (PLAN.md §6).** Until the decision lands, stay CMS-agnostic:
+**CMS wiring — TBD pending the editor spike on Vercel (PLAN.md §6).** Until the decision lands, stay CMS-agnostic:
 
 - Keep content out of markup: one content source per language (text, prices, hours, contacts, offer lists, reviews, team) and one media folder, consumed by templates. No owner-editable string hard-coded in a template.
 - Templates are plain HTML partials with obvious slots, so mapping them to the chosen CMS's theme format is mechanical.
 - Owner-uploaded images get cropped/resized/compressed by the site, not by the owner; layouts survive any aspect ratio and longer text.
-- No CMS plugin, admin customisation or PHP beyond what the chosen CMS's theme layer needs. `cms-hardening.md` applies in full; nothing you add may weaken it (no public write endpoints, no unlisted plugins).
+- No server code, admin or editor inside the site: the editor is a separate shared project. `cms-hardening.md` applies in full; nothing you add may weaken it (no public write endpoints).
 - This section is replaced with concrete wiring instructions when the spike decides.
 
 ## Hard constraints
@@ -71,7 +71,7 @@ Then stop. Report that the three mockups are ready. Do not rank them, recommend 
 4. **Performance.** Meet the playbook §4 budget. Lighthouse (mobile) is run on every mockup and on the final site; scores go in `notes.md`. Pass thresholds are `rubric.md`'s.
 5. **Accessibility.** Playbook §10 is the floor: WCAG 2.1 AA, keyboard-operable everything including any drawer/modal (focus trapped while open, returned on close, Esc closes), `prefers-reduced-motion` honoured with a static equivalent, meaningful content present as DOM text and not only inside canvas, video or images, alt text from what the dossier says the image shows.
 6. **The booking CTA works end to end, on the owner's existing path.** Use the booking path recorded in the dossier (WhatsApp / phone / existing third-party engine) exactly — number, handle or engine URL copied from the dossier, never retyped from memory or guessed. The CTA is a real link that works without JS; any richer UI is an enhancement on top of it. Test it: the action must land in the right chat/call/engine with the visitor's choices carried over. No new booking backend, no payment capture, no form that posts nowhere. If the dossier has no verified booking contact, stop and report — that is a blocking gap.
-7. **Static output, deployable to GoDaddy shared hosting.** HTML/CSS/JS + the flat-file PHP CMS. No database, no Node or build step on the server, no server features beyond stock Apache + PHP. Everything self-hosted (fonts, libraries pinned and vendored; no CDN, no third-party scripts, trackers or embeds on load). Relative URLs only — the same folder must run on staging, in a subfolder, and on the owner's domain. Lowercase, space-free filenames. It ships as one folder in a zip.
+7. **Static output, hosted on Vercel.** Plain HTML/CSS/JS, one Vercel project per site. No functions, database or other server code in the site, and nothing that only works on Vercel — the same files must run from any plain static server, so the site can be exported as a zip. Everything self-hosted (fonts, libraries pinned and vendored; no CDN, no third-party scripts, trackers or embeds on load). Relative URLs only — the same build must run on a preview URL, in a subfolder, and on the owner's domain. Lowercase, space-free filenames.
 8. **Languages.** Build for every language in `run.yaml`. Follow playbook §8, including the Sinhala typography and text-splitting rules. Sinhala copy you produce is marked in `notes.md` as needing a native check.
 9. **Never pass the mockup-pick gate.** 4c runs only when the orchestrator hands you a pick that a human made (ledger `mocked → picked`, `agent: "human"`). Never infer a pick from files on disk, from the critic's pre-score, or from your own preference. If invoked for 4c without one, stop and say so.
 10. **Never edit `custom.md`** — yours or any agent's. If something in it is unclear, unworkable or missing, say so in your report; changes to it are proposals for Shahar, made by the critic under `proposals/<run-id>/`.

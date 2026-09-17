@@ -146,4 +146,4 @@ Not owner-editable: layout, styles, scripts, fonts, SEO plumbing. Those stay fix
 
 ## 11. Delivery constraints every agent should know
 
-Static HTML/CSS/JS + flat-file PHP CMS, no database, uploaded as one folder to GoDaddy shared hosting (PLAN.md §1, §6). No server-side build, no Node at runtime. Security baseline: `cms-hardening.md`.
+Static HTML/CSS/JS on Vercel, one project per site; no server code and no admin on the site itself. Owners edit through one shared editor project (PLAN.md §1, §6). The built site must also run from any plain static server, so it can be exported as a zip. Security baseline: `cms-hardening.md`.
