@@ -9,6 +9,17 @@ Read `PLAN.md` fully before doing anything. It is the source of truth for decisi
 3. **Two-layer prompts.** Each agent's prompt is `base.md` (Claude writes) + `custom.md` (Shahar writes). Never edit any `custom.md`; propose changes to it as a separate proposal under `proposals/<run-id>/`, flagged as a custom.md proposal. Runtime prompt = `playbook.md` + `base.md` + `custom.md` + `references.md`.
 4. **Small commits.** One commit per step, with a clear message.
 
+## Architecture (fixed constraint — final, do not re-litigate)
+
+- **One CMS for all client sites, run by us:** Payload CMS 3 with the official multi-tenant plugin, Postgres, Docker Compose, on one VPS (Hetzner CX23 or our OCI free-tier box — env-configurable). One tenant per business. Each owner gets an email/password login scoped to their tenant only.
+- **Every client site is a static Astro build** that pulls its tenant's content from Payload's API at build time. Design lives in the Astro template (the designer's canvas/WebGL, editorial grids and booking drawers); editable content (hours, prices, photos, copy blocks, contact, booking links) lives in Payload. `schemas/site-content.md` is the contract between the two.
+- **Hosting:** Cloudflare Workers with static assets, one Worker per site, deployed with Wrangler, custom domain per site via Cloudflare. Do NOT use Cloudflare Pages. Do NOT use Vercel or GoDaddy for hosting.
+- **Domains:** Cloudflare Registrar, one per client, billed through to the client.
+- **Publish flow:** owner saves in Payload → `afterChange` hook → rebuild only that tenant's site → `wrangler deploy` → live in ~1 minute.
+- **Export/handoff:** any client can receive their static build as a zip that runs on any host (GoDaddy included). Optional, not the deliverable.
+- **Commercial default:** "we host it, you edit it, monthly fee". The writer's pitch reflects this.
+- No per-site CMS, no PHP CMS of any kind.
+
 ## Resuming a session from `ledger.jsonl`
 
 Disk is the memory — no daemon, no DB.

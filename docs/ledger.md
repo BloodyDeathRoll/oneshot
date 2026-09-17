@@ -11,7 +11,7 @@
 | `slug` | string | Business slug; matches `dossier/<slug>/` and `sites/<slug>/` |
 | `from_state` | string \| null | Previous state; `null` only for the first line of a business (`discovered`) |
 | `to_state` | string | New state |
-| `agent` | string | Who made the transition: `orchestrator`, `scout`, `harvester`, `designer`, `critic`, `packager`, `writer`, or `human` for gates |
+| `agent` | string | Who made the transition: `orchestrator`, `scout`, `harvester`, `designer`, `critic`, `deployer`, `writer`, or `human` for gates |
 | `agent_version` | string \| null | Semver pinned in `run.yaml`; `null` when `agent` is `human` |
 | `note` | string | Short free text: reason, score, pick reason, error, outcome detail |
 
