@@ -12,7 +12,8 @@ import { isMultiTenant } from '../lib/profile'
  */
 export const Users: CollectionConfig = {
   slug: 'users',
-  admin: { useAsTitle: 'email', group: 'Admin' },
+  // owners change their password under /admin/account; the list is for super-admins
+  admin: { useAsTitle: 'email', group: 'Admin', hidden: ({ user }) => !isSuperAdmin(user as never) },
   auth: {
     tokenExpiration: 60 * 60 * 8,
     // Payload's built-in brute-force protection: per-account lockout (not per-IP throttling).

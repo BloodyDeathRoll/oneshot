@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
-# Creates spikes/payload/.env with freshly generated secrets. Refuses to overwrite.
+# Creates an env file with freshly generated secrets. Refuses to overwrite.
+#   ./scripts/init-env.sh               → .env              (multi-tenant stack, docker-compose.yml)
+#   ./scripts/init-env.sh self-hosted   → .env.self-hosted  (single-tenant stack, docker-compose.self-hosted.yml)
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-if [[ -f .env ]]; then
-  echo ".env already exists — leaving it alone (delete it first to regenerate)." >&2
+target=".env"; example=".env.example"
+if [[ "${1:-}" == "self-hosted" ]]; then target=".env.self-hosted"; example=".env.self-hosted.example"; fi
+
+if [[ -f "$target" ]]; then
+  echo "$target already exists — leaving it alone (delete it first to regenerate)." >&2
   exit 0
 fi
 
@@ -15,8 +20,9 @@ sed \
   -e "s|^POSTGRES_PASSWORD=.*|POSTGRES_PASSWORD=$(rand 24)|" \
   -e "s|^PAYLOAD_SECRET=.*|PAYLOAD_SECRET=$(rand 48)|" \
   -e "s|^SUPERADMIN_PASSWORD=.*|SUPERADMIN_PASSWORD=$(rand 18)|" \
+  -e "s|^OWNER_PASSWORD=.*|OWNER_PASSWORD=$(rand 18)|" \
   -e "s|^BUILDER_API_KEY=.*|BUILDER_API_KEY=$(rand 32)|" \
   -e "s|^PUBLISH_SECRET=.*|PUBLISH_SECRET=$(rand 32)|" \
   -e 's|[[:space:]]*#.*$||' \
-  .env.example | grep -v '^$' > .env
-echo "wrote $(pwd)/.env (mode 600)"
+  "$example" | grep -v '^$' > "$target"
+echo "wrote $(pwd)/$target (mode 600)"

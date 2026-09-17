@@ -37,7 +37,6 @@ const envWithout = (...keys) => {
 export const workerName = (tenant) => `${config.workerPrefix}-${tenant}`
 
 export const wranglerConfigFor = (tenant) => ({
-  $schema: 'node_modules/wrangler/config-schema.json',
   name: workerName(tenant),
   compatibility_date: config.compatibilityDate,
   // assets-only Worker: no `main`, Cloudflare serves ./dist directly
@@ -61,7 +60,11 @@ const adapters = {
         CI: '1', // never prompt
       },
     })
-    return { worker: workerName(tenant), url: out.match(/https:\/\/[^\s]+\.workers\.dev/)?.[0] ?? null }
+    return {
+      worker: workerName(tenant),
+      url: out.match(/https:\/\/[^\s]+\.workers\.dev/)?.[0] ?? null,
+      deployLog: out.replace(/\x1b\[[0-9;]*m/g, '').trim().split('\n').slice(-6).join(' | '),
+    }
   },
 
   /**
@@ -88,7 +91,10 @@ export const publish = async (tenant, triggers = ['manual']) => {
 
   const started = Date.now()
   const tenantDir = path.join(config.outRoot, tenant)
-  const building = path.join(tenantDir, 'dist.building')
+  // Astro moves files with rename(), which fails across filesystems (EXDEV) when the out dir is
+  // a Docker volume — so build next to the site sources, then copy into the out dir.
+  const building = path.join(config.siteDir, '.build', tenant)
+  const staging = path.join(tenantDir, 'dist.staging')
   const dist = path.join(tenantDir, 'dist')
   const record = {
     at: new Date(started).toISOString(),
@@ -120,8 +126,11 @@ export const publish = async (tenant, triggers = ['manual']) => {
       env: buildEnv,
     })
     // swap in only after a successful build: a failed build never damages the last good output
+    await rm(staging, { recursive: true, force: true })
+    await cp(building, staging, { recursive: true })
     await rm(dist, { recursive: true, force: true })
-    await rename(building, dist)
+    await rename(staging, dist)
+    await rm(building, { recursive: true, force: true })
     record.buildMs = Date.now() - started
 
     // 2. deploy through the configured adapter

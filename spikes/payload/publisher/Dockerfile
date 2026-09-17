@@ -22,8 +22,8 @@ COPY --from=publisher-deps /app/publisher/node_modules ./publisher/node_modules
 COPY site ./site
 COPY publisher ./publisher
 # the build writes tenant data + caches inside the site dir, and output under /data
-RUN mkdir -p /data/out /data/www /app/site/src/tenant /app/site/node_modules/.astro-cache \
- && chown -R node:node /data /app/site/src /app/site/node_modules/.astro-cache \
+RUN mkdir -p /data/out /data/www /app/site/src/tenant /app/site/.build /app/site/node_modules/.astro-cache \
+ && chown -R node:node /data /app/site/src /app/site/.build /app/site/node_modules/.astro-cache \
  && chown node:node /app/site /app/site/node_modules
 USER node
 ENV PUBLISHER_HOST=0.0.0.0 PUBLISHER_PORT=4100 SITE_DIR=/app/site OUT_ROOT=/data/out WEB_ROOT=/data/www

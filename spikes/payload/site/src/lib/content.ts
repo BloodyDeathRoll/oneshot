@@ -2,7 +2,6 @@
  * Typed view of what scripts/fetch-tenant.mjs wrote. The shape is the REST shape documented in
  * /schemas/site-content.md (one locale, depth=1).
  */
-import { readFileSync } from 'node:fs'
 import type { ImageMetadata } from 'astro'
 
 export type Locale = 'en' | 'si'
@@ -37,17 +36,12 @@ interface TenantFile {
   locales: Record<Locale, SiteContent>
 }
 
-const file = new URL('../tenant/content.json', import.meta.url)
-let cached: TenantFile | undefined
+// glob (not a plain import) so a missing file gives a clear error instead of a resolve failure
+const files = import.meta.glob<{ default: TenantFile }>('/src/tenant/content.json', { eager: true })
 export const tenantFile = (): TenantFile => {
-  if (!cached) {
-    try {
-      cached = JSON.parse(readFileSync(file, 'utf8')) as TenantFile
-    } catch {
-      throw new Error('src/tenant/content.json is missing — run `npm run fetch` (scripts/fetch-tenant.mjs) first')
-    }
-  }
-  return cached
+  const mod = files['/src/tenant/content.json']
+  if (!mod) throw new Error('src/tenant/content.json is missing — run `npm run fetch` (scripts/fetch-tenant.mjs) first')
+  return mod.default
 }
 
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/tenant/media/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}')
