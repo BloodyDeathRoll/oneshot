@@ -1,0 +1,31 @@
+# dependencies / build output
+node_modules/
+.next/
+.astro/
+dist/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# secrets and generated credentials — never commit
+.env
+.env.*
+!.env.example
+seed/credentials.json
+*.credentials.json
+
+# wrangler
+.wrangler/
+.dev.vars
+
+# CMS uploads
+cms/media/
+media/
+
+# per-build tenant data pulled from the CMS (content + photos)
+site/src/tenant/
+
+# test output
+test/output/
+test-results/
+*.log
