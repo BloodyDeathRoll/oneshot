@@ -1,0 +1,18 @@
+run_id: 2026-09-mirissa-01
+area:
+  anchors:                       # 1 anchor = town/point; 2 anchors = a stretch of coast between them
+    - "Niira Hotel, Mirissa, Sri Lanka"
+    - "Ritz-Carlton, Mirissa, Sri Lanka"
+  shore_buffer_m: 100
+types: [surf_school, board_rental, surf_shop, surf_camp, beach_lodging, shaper]
+presence_threshold: 2            # shortlist businesses scoring <= this (0–5)
+max_sites: 3
+languages: [en, si]
+budget:
+  tokens_per_business: 2_000_000
+  wallclock_min_per_business: 90
+agents:                          # pinned versions for reproducibility
+  scout: 0.1.0
+  harvester: 0.1.0
+  designer: 0.1.0
+  critic: 0.1.0
