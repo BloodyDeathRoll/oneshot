@@ -1,0 +1,101 @@
+# Oneshot — self-hosted stack for ONE client (profile: single-tenant, deploy adapter: local-dir).
+# Same CMS image, same Astro template, same publisher as docker-compose.yml — only env differs.
+#   postgres   internal only
+#   cms        internal only (reached through caddy)
+#   publisher  internal only; rebuilds the site into the `www` volume on every save
+#   caddy      the only published service: static site + reverse proxy for /admin, /api, /_next
+# Target: any Docker VPS, 2 vCPU / 4 GB.
+name: oneshot-selfhosted-spike
+
+services:
+  postgres:
+    image: postgres:17.11-alpine3.24
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: payload
+      POSTGRES_USER: payload
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?run ./scripts/init-env.sh self-hosted first}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U payload -d payload"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  cms:
+    build: ./cms
+    image: oneshot-spike-cms:0.1.0
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ONESHOT_PROFILE: single-tenant
+      SITE_SLUG: ${SITE_SLUG:-site}
+      DATABASE_URL: postgres://payload:${POSTGRES_PASSWORD}@postgres:5432/payload
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET:?}
+      SERVER_URL: ${SERVER_URL:-http://localhost:8180}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      OWNER_EMAIL: ${OWNER_EMAIL:?}
+      OWNER_PASSWORD: ${OWNER_PASSWORD:?}
+      BUILDER_API_KEY: ${BUILDER_API_KEY:?}
+      PUBLISHER_URL: http://publisher:4100/publish
+      PUBLISH_SECRET: ${PUBLISH_SECRET:?}
+    volumes:
+      - cms_media:/app/media
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/users/me').then(r=>process.exit(r.ok?0:1),()=>process.exit(1))"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 10s
+
+  publisher:
+    build:
+      context: .
+      dockerfile: publisher/Dockerfile
+      args:
+        WITH_WRANGLER: "false" # no Cloudflare in this mode
+    image: oneshot-spike-publisher:0.1.0-selfhosted
+    restart: unless-stopped
+    depends_on:
+      cms:
+        condition: service_healthy
+    environment:
+      ONESHOT_PROFILE: single-tenant
+      SITE_SLUG: ${SITE_SLUG:-site}
+      DEPLOY_ADAPTER: local-dir
+      CMS_URL: http://cms:3000
+      BUILDER_API_KEY: ${BUILDER_API_KEY:?}
+      PUBLISH_SECRET: ${PUBLISH_SECRET:?}
+      DEBOUNCE_MS: ${DEBOUNCE_MS:-1500}
+      SITE_URL: ${SERVER_URL:-http://localhost:8180}
+    volumes:
+      - publisher_out:/data/out
+      - www:/data/www
+
+  caddy:
+    image: caddy:2.11.4-alpine
+    restart: unless-stopped
+    depends_on:
+      cms:
+        condition: service_healthy
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:-:80}
+    ports:
+      - "${HTTP_BIND:-127.0.0.1:8180}:80"
+      - "${HTTPS_BIND:-127.0.0.1:8543}:443"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - www:/srv/www:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  pg_data:
+  cms_media:
+  publisher_out:
+  www:
+  caddy_data:
+  caddy_config:

@@ -80,8 +80,11 @@ for (const row of locales.en.photos ?? []) {
 }
 for (const [filename, url] of files) {
   const safe = path.basename(filename)
-  const res = await fetch(new URL(url, CMS_URL), { headers })
-  if (!res.ok) throw new Error(`${res.status} downloading ${url}`)
+  // Payload returns absolute URLs built from its public SERVER_URL; inside the compose network
+  // the CMS is reached under another origin, so keep only the path.
+  const { pathname } = new URL(url, CMS_URL)
+  const res = await fetch(new URL(pathname, CMS_URL), { headers })
+  if (!res.ok) throw new Error(`${res.status} downloading ${pathname}`)
   await writeFile(path.join(outDir, 'media', safe), Buffer.from(await res.arrayBuffer()))
 }
 

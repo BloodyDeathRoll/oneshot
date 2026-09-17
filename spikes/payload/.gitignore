@@ -11,6 +11,7 @@ next-env.d.ts
 .env
 .env.*
 !.env.example
+!.env.self-hosted.example
 seed/credentials.json
 *.credentials.json
 
@@ -20,7 +21,7 @@ seed/credentials.json
 
 # CMS uploads
 cms/media/
-media/
+# (seed/fixtures/*/media/ IS tracked: small synthetic JPEGs)
 
 # per-build tenant data pulled from the CMS (content + photos)
 site/src/tenant/
@@ -29,3 +30,11 @@ site/src/tenant/
 test/output/
 test-results/
 *.log
+
+# publisher scratch build dir
+site/.build/
+
+# tenant exports and self-hosted backups (contain client content)
+export/
+exports/
+backups/

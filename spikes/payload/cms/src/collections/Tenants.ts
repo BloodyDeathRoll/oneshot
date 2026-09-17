@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload'
 
-import { superAdminOnly } from '../access/roles'
+import { isSuperAdmin, superAdminOnly } from '../access/roles'
 
 /**
  * One tenant per business. Only super-admins create/rename/delete tenants; the plugin limits
@@ -10,7 +10,8 @@ import { superAdminOnly } from '../access/roles'
 export const Tenants: CollectionConfig = {
   slug: 'tenants',
   labels: { singular: 'Business', plural: 'Businesses' },
-  admin: { useAsTitle: 'name', group: 'Admin' },
+  // owners never need this screen; REST access is restricted separately below
+  admin: { useAsTitle: 'name', group: 'Admin', hidden: ({ user }) => !isSuperAdmin(user as never) },
   access: {
     create: superAdminOnly,
     read: ({ req }) => Boolean(req.user),

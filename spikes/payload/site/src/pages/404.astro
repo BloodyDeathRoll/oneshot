@@ -1,0 +1,25 @@
+---
+import { tenantFile } from '../lib/content'
+import '../styles/site.css'
+
+// Served by Cloudflare (`not_found_handling: "404-page"`) and by Caddy (`handle_errors`).
+const site = tenantFile().locales.en
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Page not found — {site.businessName}</title>
+  </head>
+  <body>
+    <main id="main">
+      <section class="intro">
+        <h2>404</h2>
+        <p>That page drifted out to sea. <a href="/" style="color:inherit">Back to {site.businessName}</a></p>
+      </section>
+    </main>
+  </body>
+</html>

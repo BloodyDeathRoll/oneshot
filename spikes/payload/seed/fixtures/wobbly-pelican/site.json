@@ -1,0 +1,36 @@
+{
+  "businessName": "Wobbly Pelican Surf School",
+  "tagline": { "en": "Your first wave, guaranteed wobbly.", "si": "ඔබේ පළමු රැල්ල — ටිකක් වැනෙමින්, ගොඩක් විනෝදෙන්." },
+  "languages": ["en", "si"],
+  "copyBlocks": [
+    { "slot": "intro", "heading": { "en": "Learn to surf", "si": "සර්ෆ් කරන්න ඉගෙන ගන්න" }, "body": { "en": "Small groups, soft boards and a sandy-bottom bay where nobody minds if you fall off. Most people stand up in their first lesson.", "si": "කුඩා කණ්ඩායම්, මෘදු පුවරු සහ වැලි පතුලක් ඇති බොක්කක්. බොහෝ දෙනෙක් පළමු පාඩමේදීම පුවරුව මත නැගී සිටිති." } },
+    { "slot": "about", "heading": { "en": "Who we are", "si": "අපි කවුද" }, "body": { "en": "Three local instructors who grew up on this beach. We teach in English and Sinhala, keep groups to four people, and never rush a lesson.\n\nThis is a fictional business used to test the Oneshot pipeline.", "si": "මේ වෙරළේම හැදී වැඩුණු දේශීය උපදේශකයින් තිදෙනෙක්. අපි ඉංග්‍රීසි සහ සිංහල භාෂාවෙන් උගන්වමු.\n\nමෙය Oneshot පද්ධතිය පරීක්ෂා කිරීම සඳහා යොදාගත් මනඃකල්පිත ව්‍යාපාරයකි." } },
+    { "slot": "offer", "heading": { "en": "What you get", "si": "ඔබට ලැබෙන දේ" }, "body": { "en": "Board, rash vest and reef-safe sunscreen are included in every lesson. Photos of your first wave are free.", "si": "සෑම පාඩමකටම පුවරුව, රෑෂ් වෙස්ට් එක සහ සන්ස්ක්‍රීන් ඇතුළත්. ඔබේ පළමු රැල්ලේ ඡායාරූප නොමිලේ." } },
+    { "slot": "info", "heading": { "en": "Good to know", "si": "දැනගත යුතු දේ" }, "body": { "en": "Lessons depend on the swell — message us the day before.", "si": "පාඩම් රළ තත්ත්වය මත රඳා පවතී — පෙර දින අපට පණිවිඩයක් එවන්න." } }
+  ],
+  "openingHours": [
+    { "days": ["mon", "tue", "wed", "thu", "fri"], "opens": "06:30", "closes": "18:00" },
+    { "days": ["sat", "sun"], "opens": "06:00", "closes": "18:30" }
+  ],
+  "hoursNote": { "en": "Closed on Poya days.", "si": "පෝය දිනවල වසා ඇත." },
+  "priceList": [
+    { "label": { "en": "Beginner lesson (90 min)", "si": "ආරම්භක පාඩම (මිනිත්තු 90)" }, "price": 9500, "currency": "LKR", "unit": "per_person", "note": { "en": "Board and rash vest included", "si": "පුවරුව සහ රෑෂ් වෙස්ට් එක ඇතුළත්" } },
+    { "label": { "en": "Private lesson", "si": "පෞද්ගලික පාඩම" }, "price": 15000, "currency": "LKR", "unit": "per_lesson", "note": null },
+    { "label": { "en": "5-lesson course", "si": "පාඩම් 5ක පාඨමාලාව" }, "price": 120, "currency": "USD", "unit": "per_person", "note": { "en": "Use within two weeks", "si": "සති දෙකක් ඇතුළත භාවිතා කරන්න" } }
+  ],
+  "photos": [
+    { "image": "pelican-lineup.jpg", "caption": { "en": "Sunset at the school", "si": "පාසලේ හිරු බැසීම" } },
+    { "image": "pelican-first-wave.jpg", "caption": { "en": "First waves happen here", "si": "පළමු රළ මෙතැනයි" } },
+    { "image": "pelican-board-rack.jpg", "caption": null }
+  ],
+  "contact": {
+    "phone": "+94410000101",
+    "whatsapp": "+94770000101",
+    "email": "hello@wobbly-pelican.example",
+    "address": { "en": "Beach Road (next to the big blue gate)\nMirissa, Sri Lanka", "si": "වෙරළ පාර (ලොකු නිල් ගේට්ටුව ළඟ)\nමිරිස්ස, ශ්‍රී ලංකාව" },
+    "mapUrl": "https://www.openstreetmap.org/?mlat=5.9466&mlon=80.4580#map=17/5.9466/80.4580"
+  },
+  "bookingLinks": [
+    { "label": { "en": "Book on SurfBookings (fictional)", "si": "SurfBookings හරහා වෙන් කරන්න" }, "url": "https://bookings.example/wobbly-pelican" }
+  ]
+}

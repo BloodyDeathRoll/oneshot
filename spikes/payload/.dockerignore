@@ -2,12 +2,15 @@
 **/.next
 **/.astro
 **/dist
+**/.build
 out
 site/src/tenant
 cms/media
 .env
 .env.*
 !.env.example
+!.env.self-hosted.example
+exports
 seed/credentials*.json
 test/output
 export

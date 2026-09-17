@@ -1,0 +1,31 @@
+{
+  "businessName": "Lazy Turtle Board Rental",
+  "tagline": { "en": "Slow mornings, long boards.", "si": "නිස්කලංක උදෑසන, දිගු පුවරු." },
+  "languages": ["en", "si"],
+  "copyBlocks": [
+    { "slot": "intro", "heading": null, "body": { "en": "Forty boards, zero hurry. Pick one, paddle out, bring it back when the light goes.", "si": "පුවරු හතළිහක්, කිසිම හදිස්සියක් නැහැ. එකක් තෝරාගෙන මුහුදට යන්න, අඳුර වැටෙන විට ආපසු ගෙනෙන්න." } },
+    { "slot": "about", "heading": { "en": "The hut", "si": "කුටිය" }, "body": { "en": "A green hut at the quiet end of the bay. We rent longboards, fish and soft-tops by the hour, day or week, and fix dings while you drink a king coconut.\n\nThis is a fictional business used to test the Oneshot pipeline.", "si": "බොක්කේ නිස්කලංක කෙළවරේ ඇති කොළ පැහැති කුටියක්. අපි පැයකට, දිනකට හෝ සතියකට පුවරු කුලියට දෙමු.\n\nමෙය Oneshot පද්ධතිය පරීක්ෂා කිරීම සඳහා යොදාගත් මනඃකල්පිත ව්‍යාපාරයකි." } }
+  ],
+  "openingHours": [
+    { "days": ["tue", "wed", "thu", "fri", "sat", "sun"], "opens": "07:00", "closes": "17:30" }
+  ],
+  "hoursNote": { "en": "Closed on Mondays — the turtle rests.", "si": "සඳුදා දිනවල වසා ඇත." },
+  "priceList": [
+    { "label": { "en": "Soft-top board", "si": "මෘදු පුවරුව" }, "price": 1500, "currency": "LKR", "unit": "per_hour", "note": null },
+    { "label": { "en": "Longboard", "si": "දිගු පුවරුව" }, "price": 6000, "currency": "LKR", "unit": "per_day", "note": { "en": "Leash and wax included", "si": "ලීෂ් එක සහ වැක්ස් ඇතුළත්" } },
+    { "label": { "en": "Any board, full week", "si": "ඕනෑම පුවරුවක්, සම්පූර්ණ සතියක්" }, "price": 30000, "currency": "LKR", "unit": "per_week", "note": null },
+    { "label": { "en": "Ding repair", "si": "පුවරු අලුත්වැඩියාව" }, "price": 25, "currency": "USD", "unit": "flat", "note": { "en": "From — we quote before we start", "si": "ආරම්භක මිල — වැඩ පටන් ගැනීමට පෙර මිල කියමු" } }
+  ],
+  "photos": [
+    { "image": "turtle-shopfront.jpg", "caption": { "en": "The hut", "si": "කුටිය" } },
+    { "image": "turtle-longboards.jpg", "caption": { "en": "Longboards for small days", "si": "කුඩා රළ දිනවලට දිගු පුවරු" } }
+  ],
+  "contact": {
+    "phone": null,
+    "whatsapp": "+94770000202",
+    "email": "aloha@lazy-turtle.example",
+    "address": { "en": "Far end of Turtle Bay\nMirissa, Sri Lanka", "si": "කැස්බෑ බොක්කේ කෙළවර\nමිරිස්ස, ශ්‍රී ලංකාව" },
+    "mapUrl": "https://www.openstreetmap.org/?mlat=5.9442&mlon=80.4633#map=17/5.9442/80.4633"
+  },
+  "bookingLinks": []
+}
