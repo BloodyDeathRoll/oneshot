@@ -1,0 +1,211 @@
+---
+import { Picture } from 'astro:assets'
+import { dayNames, formatPrice, ui, unitNames } from '../i18n/ui'
+import { localImage, safeHttps, tenantFile } from '../lib/content'
+import type { Day, Locale, MediaDoc } from '../lib/content'
+import '../styles/site.css'
+
+export function getStaticPaths() {
+  const { locales } = tenantFile()
+  const enabled = locales.en.languages ?? ['en']
+  return [
+    { params: { locale: undefined }, props: { locale: 'en' as Locale } },
+    ...(enabled.includes('si') ? [{ params: { locale: 'si' }, props: { locale: 'si' as Locale } }] : []),
+  ]
+}
+
+const { locale } = Astro.props as { locale: Locale }
+const { locales } = tenantFile()
+const site = locales[locale]
+const t = ui[locale]
+const enabled = locales.en.languages ?? ['en']
+
+const blocks = (slot: string) => (site.copyBlocks ?? []).filter((b) => b.slot === slot)
+const photos = await Promise.all(
+  (site.photos ?? [])
+    .filter((p): p is { image: MediaDoc; caption?: string | null } => typeof p.image === 'object' && p.image !== null)
+    .map(async (p) => ({ src: await localImage(p.image), alt: p.image.alt, caption: p.caption })),
+)
+const [hero, ...gallery] = photos
+
+const DAYS: Day[] = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+const hours = DAYS.map((day) => ({
+  day,
+  rows: (site.openingHours ?? []).filter((r) => r.days.includes(day)),
+}))
+
+const waNumber = site.contact.whatsapp.replace(/\D/g, '')
+const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(t.waGreeting(site.businessName))}`
+const mapUrl = safeHttps(site.contact.mapUrl)
+const bookingLinks = (site.bookingLinks ?? []).filter((l) => safeHttps(l.url))
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: site.businessName,
+  description: site.tagline ?? undefined,
+  telephone: site.contact.phone ?? site.contact.whatsapp,
+  email: site.contact.email ?? undefined,
+  address: site.contact.address ?? undefined,
+  hasMap: mapUrl ?? undefined,
+  openingHoursSpecification: (site.openingHours ?? []).map((r) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: r.days.map((d) => dayNames.en[d]),
+    opens: r.opens,
+    closes: r.closes,
+  })),
+}).replace(/</g, '\\u003c')
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{site.tagline ? `${site.businessName} — ${site.tagline}` : site.businessName}</title>
+    {site.tagline && <meta name="description" content={site.tagline} />}
+    <meta name="generator" content="oneshot-spike" />
+    {enabled.includes('si') && (
+      <>
+        <link rel="alternate" hreflang="en" href="/" />
+        <link rel="alternate" hreflang="si" href="/si/" />
+      </>
+    )}
+    <script type="application/ld+json" set:html={jsonLd} />
+  </head>
+  <body>
+    <a class="skip" href="#main">{t.skip}</a>
+
+    <header class="top">
+      <span class="brand">{site.businessName}</span>
+      {enabled.includes('si') && (
+        <nav class="lang" aria-label="Language">
+          <a href="/" lang="en" aria-current={locale === 'en' ? 'page' : undefined}>{ui.en.langName}</a>
+          <a href="/si/" lang="si" aria-current={locale === 'si' ? 'page' : undefined}>{ui.si.langName}</a>
+        </nav>
+      )}
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        {hero && (
+          <Picture
+            class="hero-img"
+            src={hero.src}
+            alt={hero.alt}
+            formats={['avif', 'webp']}
+            widths={[640, 1024, 1600]}
+            sizes="100vw"
+            loading="eager"
+            fetchpriority="high"
+          />
+        )}
+        <div class="hero-text">
+          <h1>{site.businessName}</h1>
+          {site.tagline && <p class="tagline">{site.tagline}</p>}
+          <a class="cta" href={waLink} rel="noopener">{t.book}</a>
+        </div>
+      </section>
+
+      {blocks('intro').map((b) => (
+        <section class="intro">
+          {b.heading && <h2>{b.heading}</h2>}
+          <p>{b.body}</p>
+        </section>
+      ))}
+
+      <div class="columns">
+        {[...blocks('about'), ...blocks('offer')].map((b) => (
+          <section class="block">
+            {b.heading && <h2>{b.heading}</h2>}
+            {b.body.split(/\n{2,}/).map((para) => <p>{para}</p>)}
+          </section>
+        ))}
+      </div>
+
+      {(site.priceList?.length ?? 0) > 0 && (
+        <section class="prices" id="prices">
+          <h2>{t.prices}</h2>
+          <ul>
+            {site.priceList!.map((row) => (
+              <li>
+                <span class="p-label">
+                  {row.label}
+                  {row.note && <small>{row.note}</small>}
+                </span>
+                <span class="p-dots" aria-hidden="true" />
+                <span class="p-price">
+                  <data value={`${row.price} ${row.currency}`}>{formatPrice(locale, row.price, row.currency)}</data>
+                  <small>{unitNames[locale][row.unit]}</small>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {gallery.length > 0 && (
+        <section class="gallery" id="photos">
+          <h2>{t.photos}</h2>
+          <div class="grid">
+            {gallery.map((p) => (
+              <figure>
+                <Picture
+                  src={p.src}
+                  alt={p.alt}
+                  formats={['avif', 'webp']}
+                  widths={[480, 960]}
+                  sizes="(min-width: 800px) 33vw, 100vw"
+                  loading="lazy"
+                />
+                {p.caption && <figcaption>{p.caption}</figcaption>}
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <div class="columns practical">
+        <section class="hours" id="hours">
+          <h2>{t.hours}</h2>
+          <table>
+            <tbody>
+              {hours.map(({ day, rows }) => (
+                <tr>
+                  <th scope="row">{dayNames[locale][day]}</th>
+                  <td>{rows.length ? rows.map((r) => `${r.opens} – ${r.closes}`).join(', ') : t.closed}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {site.hoursNote && <p class="note">{site.hoursNote}</p>}
+          {blocks('info').map((b) => <p class="note">{b.heading && <strong>{b.heading}: </strong>}{b.body}</p>)}
+        </section>
+
+        <section class="contact" id="contact">
+          <h2>{t.contact}</h2>
+          {site.contact.address && <address>{site.contact.address}</address>}
+          <ul>
+            {mapUrl && <li><a href={mapUrl} rel="noopener">{t.map}</a></li>}
+            {site.contact.phone && <li>{t.call}: <a href={`tel:${site.contact.phone}`}>{site.contact.phone}</a></li>}
+            {site.contact.email && <li>{t.email}: <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></li>}
+          </ul>
+          {bookingLinks.length > 0 && (
+            <>
+              <h3>{t.alsoBook}</h3>
+              <ul>
+                {bookingLinks.map((l) => <li><a href={l.url} rel="noopener">{l.label}</a></li>)}
+              </ul>
+            </>
+          )}
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>© {new Date(site.updatedAt).getFullYear()} {site.businessName}</p>
+    </footer>
+
+    <a class="cta sticky" href={waLink} rel="noopener">{t.book}</a>
+  </body>
+</html>

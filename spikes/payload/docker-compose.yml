@@ -1,0 +1,83 @@
+# Oneshot — Payload multi-tenant spike (profile: multi-tenant, deploy adapter: cloudflare).
+#   postgres   internal network only, never published
+#   cms        Payload 3, published on 127.0.0.1:${CMS_PORT} only
+#   publisher  internal network only; rebuilds one tenant's Astro site + wrangler (dry-run by default)
+name: oneshot-payload-spike
+
+services:
+  postgres:
+    image: postgres:17.11-alpine3.24
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: payload
+      POSTGRES_USER: payload
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?run ./scripts/init-env.sh first}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U payload -d payload"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    # no `ports:` on purpose — Postgres is reachable only from the compose network
+
+  cms:
+    build: ./cms
+    image: oneshot-spike-cms:0.1.0
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ONESHOT_PROFILE: multi-tenant
+      DATABASE_URL: postgres://payload:${POSTGRES_PASSWORD}@postgres:5432/payload
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET:?}
+      SERVER_URL: ${SERVER_URL:-http://localhost:3100}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      SUPERADMIN_EMAIL: ${SUPERADMIN_EMAIL:?}
+      SUPERADMIN_PASSWORD: ${SUPERADMIN_PASSWORD:?}
+      BUILDER_API_KEY: ${BUILDER_API_KEY:?}
+      PUBLISHER_URL: ${PUBLISHER_URL:-http://publisher:4100/publish}
+      PUBLISH_SECRET: ${PUBLISH_SECRET:?}
+    extra_hosts:
+      - "host.docker.internal:host-gateway" # only used when the publisher runs on the host
+    ports:
+      - "127.0.0.1:${CMS_PORT:-3100}:3000"
+    volumes:
+      - cms_media:/app/media
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/users/me').then(r=>process.exit(r.ok?0:1),()=>process.exit(1))"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 10s
+
+  publisher:
+    build:
+      context: .
+      dockerfile: publisher/Dockerfile
+    image: oneshot-spike-publisher:0.1.0
+    restart: unless-stopped
+    depends_on:
+      cms:
+        condition: service_healthy
+    environment:
+      ONESHOT_PROFILE: multi-tenant
+      DEPLOY_ADAPTER: cloudflare
+      DEPLOY_MODE: ${DEPLOY_MODE:-dry-run}
+      CMS_URL: http://cms:3000
+      BUILDER_API_KEY: ${BUILDER_API_KEY:?}
+      PUBLISH_SECRET: ${PUBLISH_SECRET:?}
+      WORKER_PREFIX: ${WORKER_PREFIX:-oneshot-spike}
+      COMPATIBILITY_DATE: ${COMPATIBILITY_DATE:-2026-09-17}
+      DEBOUNCE_MS: ${DEBOUNCE_MS:-1500}
+      CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN:-}
+      CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
+    volumes:
+      - publisher_out:/data/out
+    # no `ports:` — only the CMS talks to it
+
+volumes:
+  pg_data:
+  cms_media:
+  publisher_out:
