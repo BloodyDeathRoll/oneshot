@@ -14,14 +14,16 @@
 | `agent` | string | Who made the transition: `orchestrator`, `scout`, `harvester`, `designer`, `critic`, `deployer`, `writer`, or `human` for gates |
 | `agent_version` | string \| null | Semver pinned in `run.yaml`; `null` when `agent` is `human` |
 | `note` | string | Short free text: reason, score, pick reason, error, outcome detail |
+| `hosting_mode` | string, optional | `managed` \| `self_hosted_docker` \| `static_only`. Present on every line written by the `deployer`, and on the `human` line that records a client's choice of mode. The last line that carries it is the business's hosting mode; absent = `run.yaml` `hosting.default_mode`. |
 
-All eight fields are present on every line.
+The first eight fields are present on every line.
 
 ## States (PLAN.md §4)
 
 `discovered → scored → shortlisted → approved → harvested → mocked → picked → built → critiqued(n) → passed | failed → packaged → pitched → outcome:{reply,meeting,sale,ignored}`
 
 - `critiqued(n)` is written literally with the round number: `critiqued(1)`, `critiqued(2)`, `critiqued(3)`.
+- `self_hosted_docker` only, once the client has chosen it: `… → handoff_verified → access_revoked`. `handoff_verified` = the adapter's `verify` passed on the client's box and the handoff kit is complete. `access_revoked` = our keys, users and tokens are removed from the client's box and checked to no longer work.
 - Outcomes are written as `outcome:reply`, `outcome:meeting`, `outcome:sale`, `outcome:ignored`.
 - Human-gate transitions (`shortlisted → approved`, `mocked → picked`, `packaged → pitched`) always have `agent: "human"`.
 

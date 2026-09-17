@@ -1,0 +1,1 @@
+# deploy/self-hosted-docker/ — deployer adapter for hosting_mode self_hosted_docker: one docker-compose.yml (single-tenant Payload + Postgres + Astro builder + Caddy) on the client's VPS, 2 vCPU / 4 GB minimum. Steps: provision, seed, deploy, attach_domain, verify, handoff, export. Must ship the ./oneshot command the handoff kit documents (backup, restore, update, status).

@@ -18,7 +18,9 @@ Read `PLAN.md` fully before doing anything. It is the source of truth for decisi
 - **Publish flow:** owner saves in Payload → `afterChange` hook → rebuild only that tenant's site → `wrangler deploy` → live in ~1 minute.
 - **Export/handoff:** any client can receive their static build as a zip that runs on any host (GoDaddy included). Optional, not the deliverable.
 - **Commercial default:** "we host it, you edit it, monthly fee". The writer's pitch reflects this.
-- No per-site CMS, no PHP CMS of any kind.
+- **Hosting modes**, per business, recorded in the ledger and `run.yaml`: `managed` (the default, everything above), `self_hosted_docker` (single-tenant Payload + Postgres + Astro builder + Caddy in one compose stack on the client's VPS; we install, verify, hand over, revoke our access), `static_only` (static build + source zip, no CMS). No split mode.
+- **One of everything:** one content schema (`schemas/site-content.md`), one Astro template per site, one Payload config (two profiles, multi-tenant / single-tenant, selected by env var). Hosting mode is a deployer adapter, never a fork of the site or the CMS. Anything that would need a second renderer or a second CMS is out of scope.
+- No PHP flat-file CMS port, no PHP CMS of any kind.
 
 ## Resuming a session from `ledger.jsonl`
 

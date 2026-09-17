@@ -1,0 +1,1 @@
+# deploy/managed/ — deployer adapter for hosting_mode managed: tenant in our multi-tenant Payload + Cloudflare Workers. Steps: provision, seed, deploy, attach_domain, verify, export (handoff skipped).
