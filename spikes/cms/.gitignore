@@ -1,0 +1,9 @@
+# Vendored CMS cores, downloads and build output are rebuilt by ./build.sh (see README.md).
+/.cache/
+/dist/
+/grav/site/
+/grav/.unpack/
+/bludit/site/
+/bludit/.unpack/
+/test/node_modules/
+/test/out/

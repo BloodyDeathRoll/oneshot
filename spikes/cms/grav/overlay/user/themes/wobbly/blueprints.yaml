@@ -1,0 +1,11 @@
+name: Wobbly
+slug: wobbly
+type: theme
+version: 0.1.0
+description: Hand-written custom theme for the oneshot CMS spike (fictional Wobbly Pelican Surf School).
+icon: water
+author:
+  name: oneshot spike
+license: MIT
+dependencies:
+  - { name: grav, version: '>=2.0.0' }

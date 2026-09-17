@@ -1,0 +1,36 @@
+title: Contact page
+extends@: default
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            header.kicker:
+              type: text
+              label: Small line above the title
+              ordering@: header.title
+            header.whatsapp:
+              type: text
+              label: WhatsApp number (with country code)
+              help: Used for every WhatsApp button on the site.
+              ordering@: content
+              validate:
+                required: true
+            header.phone:
+              type: text
+              label: Phone number (with country code)
+              ordering@: header.whatsapp
+            header.address:
+              type: text
+              label: Address line
+              ordering@: header.phone
+            header.hours:
+              type: text
+              label: Opening hours
+              ordering@: header.address
+            header.map_url:
+              type: url
+              label: Map link (paste from Google Maps or OpenStreetMap)
+              ordering@: header.hours

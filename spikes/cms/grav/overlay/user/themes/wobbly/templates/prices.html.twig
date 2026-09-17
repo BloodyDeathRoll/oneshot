@@ -1,0 +1,15 @@
+{% extends 'partials/base.html.twig' %}
+{% block content %}
+  <section class="page-head">
+    <p class="kicker">{{ page.header.kicker|e }}</p>
+    <h1 class="page-title">{{ page.title|e }}</h1>
+    <div class="prose">{{ page.content|raw }}</div>
+  </section>
+  <ul class="prices">
+    {% for item in page.header.prices %}
+    <li class="price"><span class="price-name">{{ item.name|e }}</span><span class="price-duration">{{ item.duration|e }}</span><span class="price-amount">{{ item.price|e }}</span>{% if item.note %}<p class="price-note">{{ item.note|e }}</p>{% endif %}</li>
+    {% endfor %}
+  </ul>
+  <p class="footnote">{{ page.header.footnote|e }}</p>
+  <p><a class="btn btn-wa" href="{{ wa_url }}">Book on WhatsApp</a></p>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'partials/base.html.twig' %}
+{% block content %}
+  <section class="page-head">
+    <p class="kicker">{{ page.header.kicker|e }}</p>
+    <h1 class="page-title">{{ page.title|e }}</h1>
+    <div class="prose">{{ page.content|raw }}</div>
+  </section>
+  <ul class="cards">
+    <li class="card"><h2>WhatsApp</h2><p>{{ contact.whatsapp|e }}</p><a class="btn btn-wa" href="{{ wa_url }}">Message us</a></li>
+    <li class="card"><h2>Phone</h2><p>{{ contact.phone|e }}</p><a class="btn" href="{{ tel_url }}">Call</a></li>
+    <li class="card"><h2>Find us</h2><p>{{ contact.address|e }}<br>{{ contact.hours|e }}</p><a class="btn" href="{{ contact.map_url|e }}">Open map</a></li>
+  </ul>
+{% endblock %}

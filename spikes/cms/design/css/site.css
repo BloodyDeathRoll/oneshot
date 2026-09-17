@@ -1,0 +1,86 @@
+/* Wobbly Pelican Surf School — shared hand-written design for the CMS spike.
+   This exact file is copied into both the Grav theme and the Bludit theme by build.sh. */
+:root {
+  --ink: #0b2e3a;
+  --sea: #14787f;
+  --foam: #fff6e6;
+  --sand: #f4dcb4;
+  --coral: #ff7846;
+  --line: rgba(11, 46, 58, 0.18);
+  --display: "Georgia", "Times New Roman", serif;
+  --body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--foam); color: var(--ink); font: 17px/1.6 var(--body); }
+img { max-width: 100%; display: block; }
+a { color: var(--sea); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+.wrap { width: min(1120px, 100% - 40px); margin-inline: auto; }
+
+/* header */
+.site-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 22px 0; flex-wrap: wrap; }
+.brand { font: italic 700 1.35rem/1 var(--display); color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+.brand span { color: var(--coral); }
+.nav { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
+.nav a { color: var(--ink); text-decoration: none; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.12em; padding-bottom: 4px; border-bottom: 2px solid transparent; }
+.nav a:hover, .nav a[aria-current="page"] { border-color: var(--coral); }
+
+/* hero: asymmetrical grid, headline overlaps the image */
+.hero { display: grid; grid-template-columns: repeat(12, 1fr); align-items: end; margin-top: 10px; }
+.hero-media { grid-column: 4 / -1; grid-row: 1; position: relative; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 4px 80px 4px 4px; background: var(--sea); }
+.hero-media img { width: 100%; height: 100%; object-fit: cover; }
+.hero-media canvas { position: absolute; inset: 0; width: 100%; height: 100%; mix-blend-mode: soft-light; pointer-events: none; }
+.hero-text { grid-column: 1 / 9; grid-row: 1; position: relative; z-index: 1; padding-bottom: 34px; }
+.kicker { font-size: 0.8rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sea); margin: 0 0 12px; }
+.hero h1 { font: 700 clamp(2.6rem, 8vw, 6.2rem)/0.95 var(--display); letter-spacing: -0.03em; margin: 0; color: var(--ink); text-shadow: 0 0 22px var(--foam), 0 0 4px var(--foam); }
+.hero h1 em { color: var(--coral); font-style: italic; }
+.tagline { max-width: 26em; margin: 18px 0 0; background: var(--foam); display: inline-block; padding: 8px 14px 8px 0; font-size: 1.1rem; }
+
+/* editorial two-column body */
+.split { display: grid; grid-template-columns: 5fr 7fr; gap: 48px; padding: 64px 0; border-top: 1px solid var(--line); margin-top: 64px; }
+.split h2, .page-title { font: 700 clamp(1.8rem, 4vw, 3rem)/1.05 var(--display); letter-spacing: -0.02em; margin: 0 0 12px; }
+.page-head { padding: 48px 0 8px; border-top: 1px solid var(--line); margin-top: 8px; }
+.prose { max-width: 40em; }
+.prose p { margin: 0 0 1em; }
+.teaser { background: var(--sand); padding: 26px 28px; border-radius: 4px 40px 4px 4px; align-self: start; }
+.teaser .from { font: 700 3rem/1 var(--display); color: var(--coral); display: block; margin: 6px 0 10px; }
+
+/* buttons */
+.btn { display: inline-block; background: var(--ink); color: var(--foam); text-decoration: none; padding: 13px 22px; border-radius: 999px; font-weight: 600; }
+.btn:hover { background: var(--sea); }
+.btn-wa { background: #128c4a; }
+
+/* price list */
+.prices { list-style: none; margin: 28px 0; padding: 0; border-top: 2px solid var(--ink); }
+.price { display: grid; grid-template-columns: 1fr auto auto; gap: 6px 26px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.price-name { font: 700 1.3rem/1.2 var(--display); }
+.price-duration { color: var(--sea); font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.price-amount { font: 700 1.6rem/1 var(--display); color: var(--coral); min-width: 3.2em; text-align: right; }
+.price-note { grid-column: 1 / -1; margin: 0; font-size: 0.95rem; opacity: 0.8; }
+.footnote { font-size: 0.9rem; opacity: 0.75; }
+
+/* contact cards */
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 28px 0 64px; padding: 0; list-style: none; }
+.card { border: 1px solid var(--line); padding: 22px; border-radius: 4px 30px 4px 4px; background: #fff; }
+.card:nth-child(2) { transform: translateY(18px); }
+.card h2 { font: 700 1.2rem/1.2 var(--display); margin: 0 0 6px; }
+.card p { margin: 0 0 12px; }
+
+/* footer */
+.site-foot { margin-top: 64px; background: var(--ink); color: var(--foam); padding: 36px 0 90px; font-size: 0.95rem; }
+.site-foot a { color: var(--sand); }
+.site-foot .cols { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.fiction { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(255, 246, 230, 0.25); font-size: 0.85rem; opacity: 0.85; }
+.wa-float { position: fixed; right: 18px; bottom: 18px; z-index: 10; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); }
+
+@media (max-width: 760px) {
+  .hero-media { grid-column: 1 / -1; }
+  .hero-text { grid-column: 1 / -1; grid-row: 2; padding: 0; margin-top: -1.6em; }
+  .split { grid-template-columns: 1fr; gap: 28px; padding: 40px 0; margin-top: 40px; }
+  .cards { grid-template-columns: 1fr; }
+  .card:nth-child(2) { transform: none; }
+  .price { grid-template-columns: 1fr auto; }
+  .price-duration { grid-column: 1; grid-row: 2; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
