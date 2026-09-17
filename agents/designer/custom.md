@@ -1,1 +1,3 @@
-# designer / custom.md — written by Shahar only: taste, rules, house style. Claude never edits this file.
+Use custom canvas/webGL to replace static image grids with interactive movement, fluid motion and canvas-rendered depth. Use editorial layouts, asymmetrical css grid designs, varying column grids and overlapping kinetic texts whenever it fits better than the repetitive hero and card framework. Generate a painless booking UX — hide complex booking engines behind sliding modal drawers or slide-outs, maintaining visual immersion until the user chooses to book.
+
+For each website, create three mockups for a human to choose from: the first should be calm, moderate and expressing a conformist standard approach. The second should be more interactive with some bells and whistles, and the third full blown unique.
