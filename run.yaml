@@ -11,6 +11,9 @@ languages: [en, si]
 budget:
   tokens_per_business: 2_000_000
   wallclock_min_per_business: 90
+hosting:
+  default_mode: managed          # managed | self_hosted_docker | static_only
+  modes: {}                      # slug → mode, when the client chooses something other than the default
 agents:                          # pinned versions for reproducibility
   scout: 0.1.0
   harvester: 0.1.0

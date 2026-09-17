@@ -20,6 +20,8 @@ Workflow graph: Figma → Workflows file → `workflows` page → frame `oneshot
 | Publish flow | Owner saves in Payload → `afterChange` hook → rebuild only that tenant's site → `wrangler deploy` → live in ~1 minute. |
 | Export | Any client can receive their static build as a zip that runs on any host (GoDaddy included). Optional handoff, not the deliverable; replaces the old per-site-CMS-in-a-zip idea. |
 | Commercial default | "We host it, you edit it, monthly fee." The pitch reflects this. |
+| Hosting modes | Per business, recorded in the ledger and `run.yaml`. **`managed`** (default) — our multi-tenant Payload + Cloudflare Workers; monthly fee. **`self_hosted_docker`** — the client's own VPS (Hetzner, Contabo, Hostinger KVM, DigitalOcean — anything with Docker; 2 vCPU / 4 GB minimum): single-tenant Payload + Postgres + Astro builder + Caddy (HTTPS) in one `docker-compose.yml`, rebuild-on-save inside the stack; we install, verify, hand over, revoke our access. **`static_only`** — static build + source zip, no CMS; runs on any host including shared PHP hosting; edits require a developer. Self-hosted is the client's choice at pitch time. No split mode, no PHP flat-file CMS port. |
+| One of everything | One content schema (`schemas/site-content.md`), one Astro template per site, one Payload config. Hosting mode is a deployer adapter, never a fork of the site or the CMS. Anything that would need a second renderer or a second CMS is out of scope. |
 | Mockups | Designer produces **three** mockups per business: (1) calm, standard (2) interactive, some bells and whistles (3) full-blown unique |
 | Critique of mockups | Critic scores all three cheaply (screenshot + rubric) *before* the human sees them; only the human's pick goes through the full build/CMS/critique rounds |
 | Self-improvement | Critic writes diffs to prompts/tools/playbook/rubric with evidence; human approves each; merged → version bump → CHANGELOG |
@@ -51,6 +53,11 @@ oneshot/
   cms/                        # Payload app: collections, multi-tenant config, hooks, docker-compose
   templates/<variant>/        # Astro templates (calm / interactive / unique) — the designer's output shape
   infra/                      # wrangler config generator, Cloudflare domain scripts, deploy scripts
+  deploy/
+    managed/                  # adapter: our multi-tenant Payload + Cloudflare Workers
+    self-hosted-docker/       # adapter: single-tenant compose stack (Payload + Postgres + Astro builder + Caddy) on the client's VPS
+    static/                   # adapter: static build + source zip, no CMS
+  handoff/                    # handoff kit templates: README, credentials sheet, backup/restore, update procedure, "how to edit" guide with screenshots
   schemas/                    # site-content.md — the content contract between Payload and the templates
   scripts/                    # deterministic helpers (geocode, coastline buffer, scrape, lighthouse, zip)
   dossier/<slug>/             # dossier.json + assets/ per business
@@ -79,6 +86,9 @@ languages: [en, si]
 budget:
   tokens_per_business: 2_000_000
   wallclock_min_per_business: 90
+hosting:
+  default_mode: managed          # managed | self_hosted_docker | static_only
+  modes: {}                      # slug → mode, when the client chooses something other than the default
 agents:                          # pinned versions for reproducibility
   scout: 0.1.0
   harvester: 0.1.0
@@ -103,12 +113,14 @@ Each business moves through these stations. The orchestrator owns the order, ret
 | 4b | Pre-score | critic | 3 mockups | screenshot + rubric quick score per mockup | **Human picks one (pick + reason logged)** |
 | 4c | Build | designer | chosen mockup | Astro site from chosen template + tenant content model seeded in Payload | — |
 | 5 | Critique | critic | final site, dossier | scorecard; fail → back to 4c, max 3 rounds | — |
-| 6 | Deliver | deployer | passing site | create tenant, seed content + assets from dossier, `wrangler deploy`, attach domain, generate owner login; the preview URL is just the `*.workers.dev` address. Optional step: `dist/<slug>.zip` static export | — |
+| 6 | Deliver | deployer | passing site | deployer runs the adapter for the business's `hosting_mode` (§5). `managed`: tenant + seed + `wrangler deploy` + domain + owner login; the preview URL is just the `*.workers.dev` address. `self_hosted_docker` ends with a verified handoff kit and our access revoked. `static_only` ends with the zip | — |
 | 7 | Pitch | writer | dossier, old vs new, preview URL | proposal page + outreach message in local language | **Human sends; outcome logged** |
 | ∞ | Learn | critic | reports, mockup picks, pitch outcomes | `proposals/<run>/` diffs to prompts/tools/playbook/rubric | **Human approves diffs** → merge, bump, CHANGELOG |
 
 ### Ledger states
 `discovered → scored → shortlisted → approved → harvested → mocked → picked → built → critiqued(n) → passed | failed → packaged → pitched → outcome:{reply,meeting,sale,ignored}`
+
+`self_hosted_docker` only, once the client has chosen it: `… → handoff_verified → access_revoked`. `handoff_verified` = the adapter's `verify` passed on the client's box and the handoff kit is complete; `access_revoked` = our keys, users and tokens are removed from the client's box and we have checked that they no longer work.
 
 ---
 
@@ -157,16 +169,25 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 - Evals: agreement between critic pre-score and human pick; false-pass rate found by humans later.
 
 ### deployer (was packager)
-- Creates the business's tenant in Payload and seeds its content + assets from the dossier.
-- Builds that tenant's Astro site and runs `wrangler deploy` to the site's own Worker; the `*.workers.dev` address is the preview URL.
-- Attaches the client's custom domain via Cloudflare (Cloudflare Registrar, billed through to the client).
-- Generates the owner's login (email/password, scoped to their tenant) and hands the credentials over sealed.
-- Optional: static zip export to `dist/<slug>.zip` that runs on any host.
-- Verifies: pages render on `*.workers.dev`, the owner login sees only its own tenant, one edit goes live through the publish flow.
+- One `base.md`; three adapter tool specs in `tools.md` — `managed`, `self_hosted_docker`, `static_only` — with their code in `deploy/<adapter>/`. The adapter is picked by the business's `hosting_mode`. Adapters never fork the site or the CMS (§1).
+- Every adapter implements the same steps:
+
+  | Step | What it does | managed | self_hosted_docker | static_only |
+  |---|---|---|---|---|
+  | `provision` | make the place the CMS runs | tenant in our Payload | compose stack on the client's VPS | skip |
+  | `seed` | tenant + content + assets from the dossier | ✓ | ✓ | skip |
+  | `deploy` | build the Astro site and put it live | `wrangler deploy` to the site's Worker (`*.workers.dev` = preview) | build inside the stack, served by Caddy | build, no CMS |
+  | `attach_domain` | client's domain on the site | Cloudflare (Registrar, billed through) | DNS to the client's box, Caddy HTTPS | client's host |
+  | `verify` | owner login works, one edit round-trips to the live site | ✓ | ✓ | skip |
+  | `handoff` | credentials sheet, revoke our keys | skip | ✓ — kit from `handoff/`, then `access_revoked` | zip + README only |
+  | `export` | static zip that runs on any host | ✓ optional | ✓ | ✓ — the deliverable (build + source) |
+
+- Owner credentials are always handed over sealed, never in a README or zip.
 
 ### writer
 - Proposal page: before vs after, what was fixed, what the owner can now edit alone.
-- The offer is the commercial default: we host it, you edit it, monthly fee (domain billed through). The zip export is the way out, not the pitch.
+- The pitch offers two options and states the trade honestly in one paragraph: **managed** (monthly fee, we keep it alive — hosting, updates, backups are ours) vs **self-hosted on their own VPS** (one-time fee, fully theirs, ~$6–12/mo to their host, they carry updates and backups). Managed is the default.
+- `static_only` is mentioned only if the owner says they never intend to edit.
 - Outreach message in the local language, short, with the preview (`*.workers.dev`) link.
 
 ---
@@ -175,7 +196,9 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 
 One Payload instance serves every client (§1). Client sites are static files on Cloudflare, so there is nothing to patch on them; the single ops surface is our CMS server.
 
-Phase 1 spike — Payload multi-tenant: `docker-compose up` locally, two tenants, one Astro template rendering each tenant, `afterChange` hook triggering a rebuild + `wrangler deploy` to two `*.workers.dev` sites. Deliverable: `spikes/payload/README.md` with what worked and the content schema v0.1.
+Phase 1 spike — Payload multi-tenant: `docker-compose up` locally, two tenants, one Astro template rendering each tenant, `afterChange` hook triggering a rebuild + `wrangler deploy` to two `*.workers.dev` sites. Deliverable: `spikes/payload/README.md` with what worked and the content schema v0.1. The same spike builds the single-tenant profile: same codebase, selected by env var, tenants plugin off, one admin user, running in a self-hosted compose stack (Payload + Postgres + Astro builder + Caddy) with rebuild-on-save inside the stack.
+
+`cms/` runs in two profiles from one codebase — **multi-tenant** (our server) and **single-tenant** (a client's box) — selected by one env var. Same collections, same content schema, same API shape for the templates.
 
 `server-hardening.md` (one server, one admin):
 - Admin behind HTTPS.
@@ -213,6 +236,11 @@ Phase 1 spike — Payload multi-tenant: `docker-compose up` locally, two tenants
 **Phase 2 — Vertical slice, one business**
 - Hand-pick one business in the Mirissa stretch. Run Harvest → Mockups → pick → Build → Critique → Deploy manually, station by station.
 - Goal: one site live on its `*.workers.dev` address, editable by its owner in Payload, and one pitch page.
+- The vertical slice stays `managed`.
+
+**Phase 2b — Self-hosted handoff**
+- Run the same business through `self_hosted_docker` on a throwaway Hetzner box: install, verify, handoff kit, revoke our access, confirm the revocation — then destroy the box.
+- `static_only` after that.
 
 **Phase 3 — Scout + orchestrator**
 - Geo filter, presence scoring, ledger, resumability, human gates as CLI prompts.
