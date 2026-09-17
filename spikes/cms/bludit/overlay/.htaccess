@@ -1,0 +1,21 @@
+AddDefaultCharset UTF-8
+
+<IfModule mod_rewrite.c>
+
+# Enable rewrite rules
+RewriteEngine on
+
+# Base directory
+# oneshot overlay: stock Bludit has "RewriteBase /" here, which 404s every page when the site
+# is extracted into a subfolder. Without it the same file works at the root and in a subfolder
+# (tested on Apache 2.4 + mod_php). If a host needs it, add: RewriteBase /your-folder/
+
+# Deny direct access to the next directories
+RewriteRule ^bl-content/(databases|workspaces|pages|tmp)/.*$ - [R=404,L]
+
+# All URL process by index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*) index.php [PT,L]
+
+</IfModule>

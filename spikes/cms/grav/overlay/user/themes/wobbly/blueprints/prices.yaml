@@ -1,0 +1,41 @@
+title: Lessons & Prices page
+extends@: default
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            header.kicker:
+              type: text
+              label: Small line above the title
+              ordering@: header.title
+            header.prices:
+              type: list
+              style: vertical
+              label: Price list
+              btnLabel: Add a price
+              collapsed: false
+              ordering@: content
+              fields:
+                .name:
+                  type: text
+                  label: Lesson or rental
+                  validate:
+                    required: true
+                .duration:
+                  type: text
+                  label: Duration
+                .price:
+                  type: text
+                  label: Price (with currency sign)
+                  validate:
+                    required: true
+                .note:
+                  type: text
+                  label: Small note (optional)
+            header.footnote:
+              type: text
+              label: Footnote under the price list
+              ordering@: header.prices

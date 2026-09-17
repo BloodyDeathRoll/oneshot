@@ -1,0 +1,41 @@
+{# Shared layout. Contact details live on the Contact page so the owner edits them in one place. #}
+{% set contact = pages.find('/contact').header %}
+{% set wa_digits = contact.whatsapp|default('')|regex_replace('/\\D+/', '') %}
+{% set wa_url = 'https://wa.me/' ~ wa_digits %}
+{% set tel_url = 'tel:+' ~ (contact.phone|default('')|regex_replace('/\\D+/', '')) %}
+<!doctype html>
+<html lang="{{ grav.language.getActive ?: 'en' }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ page.title|e }} | {{ site.title|e }}</title>
+<meta name="description" content="{{ (page.header.metadata.description ?? site.metadata.description)|e }}">
+<link rel="canonical" href="{{ page.url(true, true) }}">
+<link rel="stylesheet" href="{{ url('theme://css/site.css') }}">
+</head>
+<body>
+<header class="site-head wrap">
+  <a class="brand" href="{{ home_url }}">Wobbly <span>Pelican</span></a>
+  <nav aria-label="Main"><ul class="nav">
+    {% for p in pages.children.visible %}
+    <li><a href="{{ p.url }}"{% if p.active %} aria-current="page"{% endif %}>{{ p.menu|e }}</a></li>
+    {% endfor %}
+  </ul></nav>
+</header>
+<main class="wrap">
+{% block content %}{% endblock %}
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="cols">
+      <div><strong>{{ site.title|e }}</strong><br>{{ contact.address|e }}</div>
+      <div>WhatsApp <a href="{{ wa_url }}">{{ contact.whatsapp|e }}</a><br>Phone <a href="{{ tel_url }}">{{ contact.phone|e }}</a></div>
+      <div>{{ contact.hours|e }}<br><a href="{{ contact.map_url|e }}">Find us on the map</a></div>
+    </div>
+    <p class="fiction">Fictional placeholder site built for a CMS test. Wobbly Pelican Surf School is not a real business.</p>
+  </div>
+</footer>
+<a class="btn btn-wa wa-float" href="{{ wa_url }}">WhatsApp us</a>
+{% block scripts %}{% endblock %}
+</body>
+</html>
