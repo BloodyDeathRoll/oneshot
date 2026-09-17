@@ -146,4 +146,4 @@ Not owner-editable: layout, styles, scripts, fonts, SEO plumbing. Those stay fix
 
 ## 11. Delivery constraints every agent should know
 
-Static HTML/CSS/JS on Vercel, one project per site; no server code and no admin on the site itself. Owners edit through one shared editor project (PLAN.md §1, §6). The built site must also run from any plain static server, so it can be exported as a zip. Security baseline: `cms-hardening.md`.
+Static Astro build per site, served from Cloudflare Workers static assets; no server code and no admin on the site itself. Content comes from the shared Payload CMS at build time; owners edit there and the site rebuilds (PLAN.md §1, §6). The built output is plain static files, so it can also be exported as a zip that runs on any host. Server baseline: `server-hardening.md`.

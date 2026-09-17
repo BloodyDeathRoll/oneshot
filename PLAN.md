@@ -13,12 +13,18 @@ Workflow graph: Figma → Workflows file → `workflows` page → frame `oneshot
 | Repo | Own VS Code project, own git repo (`oneshot`) |
 | Runtime | Claude Code headless, one business at a time; disk is the memory (ledger + files), no daemon, no DB |
 | Area definition | Anchor points + shore buffer (see §3) |
-| Site output | Static HTML/CSS/JS hosted on a dedicated Oneshot Vercel account (Pro — Hobby is non-commercial). One Vercel project per customer site, with no server code and no admin on it; one separate project holds the editor (CMS) for all sites — the owner logs in there, saving rebuilds their site. The owner's domain points at Vercel by DNS. **Not WordPress. No GoDaddy, no PHP.** Editor: free, open source, no per-site server — decide by spike in Phase 1 (§6). *Decided 2026-09-17; replaces "flat-file PHP CMS on GoDaddy". The Grav vs Bludit spike stays in `spikes/cms/` for the record: both need updates on the customer's host forever.* |
+| Site output | Every client site is a static **Astro** build that pulls its tenant's content from Payload's API at build time. Design lives in the Astro template (this is where the designer's canvas/WebGL, editorial grids and booking drawers go); editable content (hours, prices, photos, copy blocks, contact, booking links) lives in Payload. **Not WordPress.** |
+| CMS | One CMS for all client sites, run by us: Payload CMS 3 with the official multi-tenant plugin, Postgres, Docker Compose, on one VPS (Hetzner CX23 or our OCI free-tier box — env-configurable). One tenant per business. Each owner gets an email/password login scoped to their tenant only. |
+| Hosting | Cloudflare Workers with static assets, one Worker per site, deployed with Wrangler, custom domain per site via Cloudflare. **Not** Cloudflare Pages (being folded into Workers). **Not** Vercel or GoDaddy. |
+| Domains | Cloudflare Registrar, one per client, billed through to the client. |
+| Publish flow | Owner saves in Payload → `afterChange` hook → rebuild only that tenant's site → `wrangler deploy` → live in ~1 minute. |
+| Export | Any client can receive their static build as a zip that runs on any host (GoDaddy included). Optional handoff, not the deliverable; replaces the old per-site-CMS-in-a-zip idea. |
+| Commercial default | "We host it, you edit it, monthly fee." The pitch reflects this. |
 | Mockups | Designer produces **three** mockups per business: (1) calm, standard (2) interactive, some bells and whistles (3) full-blown unique |
 | Critique of mockups | Critic scores all three cheaply (screenshot + rubric) *before* the human sees them; only the human's pick goes through the full build/CMS/critique rounds |
 | Self-improvement | Critic writes diffs to prompts/tools/playbook/rubric with evidence; human approves each; merged → version bump → CHANGELOG |
 | Agent prompts | Two layers per agent: `base.md` (Claude: role, I/O, constraints) + `custom.md` (Shahar: taste, rules, references). Runtime prompt = playbook + base + custom + references |
-| Preview | A preview deployment of the site's own Vercel project for the before/after link; production is the same project on the owner's domain |
+| Preview | The site's `*.workers.dev` address is the before/after link; production is the same Worker on the client's domain |
 | Human gates | (a) shortlist approval (b) mockup pick (c) send pitch (d) approve prompt diffs |
 
 ---
@@ -33,21 +39,25 @@ oneshot/
   playbook.md                 # what a great surf-business site is — shared by all agents
   rubric.md                   # critic scoring, weights, pass thresholds
   taxonomy.md                 # business types, what counts as "surf-related"
-  cms-hardening.md            # security baseline for every delivered CMS
+  server-hardening.md         # security baseline for the one CMS server (one server, one admin)
   agents/
-    orchestrator/  scout/  harvester/  designer/  critic/  packager/  writer/
+    orchestrator/  scout/  harvester/  designer/  critic/  deployer/  writer/
       base.md        # Claude writes: role, inputs, outputs, hard constraints
       custom.md      # Shahar writes: taste, rules, house style
       references.md  # curated examples (URLs + what we like about each), cached notes
       tools.md       # what the agent may call, and how
       evals.md       # how we judge it; metrics collected per run
       CHANGELOG.md   # version history, one entry per approved diff
+  cms/                        # Payload app: collections, multi-tenant config, hooks, docker-compose
+  templates/<variant>/        # Astro templates (calm / interactive / unique) — the designer's output shape
+  infra/                      # wrangler config generator, Cloudflare domain scripts, deploy scripts
+  schemas/                    # site-content.md — the content contract between Payload and the templates
   scripts/                    # deterministic helpers (geocode, coastline buffer, scrape, lighthouse, zip)
   dossier/<slug>/             # dossier.json + assets/ per business
-  sites/<slug>/               # mockups/ (3 variants) + final/ (site + cms)
+  sites/<slug>/               # mockups/ (3 variants) + final/ (Astro site)
   reports/<run-id>/           # per-site scorecards, run summary
   proposals/<run-id>/         # critic's proposed diffs awaiting human review
-  dist/<slug>.zip             # deliverables
+  dist/<slug>.zip             # optional static export per client (runs on any host)
   ledger.jsonl                # append-only: every state change of every business
 ```
 
@@ -91,9 +101,9 @@ Each business moves through these stations. The orchestrator owns the order, ret
 | 3 | Harvest | harvester | approved candidates | `dossier/<slug>/dossier.json` + `assets/`; every fact/image carries its source; gaps flagged | — |
 | 4a | Mockups | designer | playbook + base + custom + references + dossier | 3 mockups in `sites/<slug>/mockups/{calm,interactive,unique}/` | — |
 | 4b | Pre-score | critic | 3 mockups | screenshot + rubric quick score per mockup | **Human picks one (pick + reason logged)** |
-| 4c | Build | designer | chosen mockup | full site + CMS in `sites/<slug>/final/` | — |
+| 4c | Build | designer | chosen mockup | Astro site from chosen template + tenant content model seeded in Payload | — |
 | 5 | Critique | critic | final site, dossier | scorecard; fail → back to 4c, max 3 rounds | — |
-| 6 | Deliver | packager | passing site | Vercel project for the site, wired to the shared editor + sealed owner login + DNS steps for the owner's domain + preview URL + `dist/<slug>.zip` (static export, the owner's exit copy) | — |
+| 6 | Deliver | deployer | passing site | create tenant, seed content + assets from dossier, `wrangler deploy`, attach domain, generate owner login; the preview URL is just the `*.workers.dev` address. Optional step: `dist/<slug>.zip` static export | — |
 | 7 | Pitch | writer | dossier, old vs new, preview URL | proposal page + outreach message in local language | **Human sends; outcome logged** |
 | ∞ | Learn | critic | reports, mockup picks, pitch outcomes | `proposals/<run>/` diffs to prompts/tools/playbook/rubric | **Human approves diffs** → merge, bump, CHANGELOG |
 
@@ -129,7 +139,7 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 
 ### designer
 - Produces three mockups, then the full build of the chosen one.
-- Output: standalone HTML/CSS/JS per mockup; final build wired to the CMS.
+- Output: Astro templates (`templates/{calm,interactive,unique}/` is the shape) written against a fixed content schema — `schemas/site-content.md`, the contract between Payload and the templates. Design lives in the template; everything the schema covers comes from Payload at build time and is never hard-coded.
 - **`custom.md` (verbatim, from Shahar):**
 
   > Use custom canvas/webGL to replace static image grids with interactive movement, fluid motion and canvas-rendered depth. Use editorial layouts, asymmetrical css grid designs, varying column grids and overlapping kinetic texts whenever it fits better than the repetitive hero and card framework. Generate a painless booking UX — hide complex booking engines behind sliding modal drawers or slide-outs, maintaining visual immersion until the user chooses to book.
@@ -146,35 +156,34 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 - After the run: reads all reports + mockup picks + pitch outcomes and writes `proposals/<run>/` — one diff per proposal, each with the evidence that motivated it.
 - Evals: agreement between critic pre-score and human pick; false-pass rate found by humans later.
 
-### packager
-- Creates the site's Vercel project on the Oneshot account, wires it to the shared editor, deploys a preview.
-- Hands over: sealed owner login for the editor, DNS steps for the owner's domain, README, and `dist/<slug>.zip` — a static export of the site as the owner's exit copy.
-- Verifies by smoke-testing the preview: pages render, owner login works, one edit shows up on the site; and the zip runs from a plain static server.
+### deployer (was packager)
+- Creates the business's tenant in Payload and seeds its content + assets from the dossier.
+- Builds that tenant's Astro site and runs `wrangler deploy` to the site's own Worker; the `*.workers.dev` address is the preview URL.
+- Attaches the client's custom domain via Cloudflare (Cloudflare Registrar, billed through to the client).
+- Generates the owner's login (email/password, scoped to their tenant) and hands the credentials over sealed.
+- Optional: static zip export to `dist/<slug>.zip` that runs on any host.
+- Verifies: pages render on `*.workers.dev`, the owner login sees only its own tenant, one edit goes live through the publish flow.
 
 ### writer
 - Proposal page: before vs after, what was fixed, what the owner can now edit alone.
-- Outreach message in the local language, short, with the preview link.
+- The offer is the commercial default: we host it, you edit it, monthly fee (domain billed through). The zip export is the way out, not the pitch.
+- Outreach message in the local language, short, with the preview (`*.workers.dev`) link.
 
 ---
 
-## 6. CMS + security baseline
+## 6. CMS + server hardening
 
-Goal: the customer is never left open to vulnerabilities and never has to update anything. So nothing runs on the customer's site: it is static files on Vercel. The only software to keep patched is the one shared editor project, and that is ours.
+One Payload instance serves every client (§1). Client sites are static files on Cloudflare, so there is nothing to patch on them; the single ops surface is our CMS server.
 
-Requirements for the editor: free, open source, runs on Vercel (no PHP, no writable disk — content lives in git or Vercel Blob), one instance for all sites, login per owner who sees only their own site, simple enough for a surf-school owner to edit text/images/prices, dependency updates automatable.
+Phase 1 spike — Payload multi-tenant: `docker-compose up` locally, two tenants, one Astro template rendering each tenant, `afterChange` hook triggering a rebuild + `wrangler deploy` to two `*.workers.dev` sites. Deliverable: `spikes/payload/README.md` with what worked and the content schema v0.1.
 
-Phase 1 spike (`spikes/editor/`): one editor project + one static site project; owner edits a price and a photo end to end; static zip export. Candidates to verify in the spike, not yet checked: Keystatic, Decap CMS (both git-based); fallback: a small editor of our own on Blob. Criteria: owner simplicity, freedom for the designer's custom HTML, per-owner isolation, upkeep, security record.
-
-First spike (`spikes/cms/`, Grav vs Bludit on GoDaddy-style hosting, 2026-09-17) is superseded by the Vercel-only decision; see its COMPARE.md for why a CMS on the customer's host was dropped.
-
-`cms-hardening.md` (applies to every delivery):
-- Unique, generated owner credentials per site; delivered sealed (never in the zip or README). 2FA where the editor supports it.
-- Each owner can reach only their own site's content.
-- Customer sites carry no server code, no admin and no public write endpoints. HTTPS is Vercel's default.
-- Editor dependencies pinned, updated automatically in the one editor project; versions recorded per run.
-- Upload types whitelisted; uploads sanitized and re-encoded.
-- Backups: content history (git or Blob) plus the static zip are the restore points; document how to restore.
-- Spend cap set on the Vercel account.
+`server-hardening.md` (one server, one admin):
+- Admin behind HTTPS.
+- Rate-limited login.
+- Postgres not exposed.
+- Nightly `pg_dump` + media backup to object storage.
+- Pinned versions.
+- Single ops surface.
 
 ---
 
@@ -197,13 +206,13 @@ First spike (`spikes/cms/`, Grav vs Bludit on GoDaddy-style hosting, 2026-09-17)
 **Phase 1 — Foundations**
 - `playbook.md` v0.1 + `references.md` analysis of the six sites.
 - `dossier.json` and `candidates.json` schemas.
-- CMS spike (Grav vs Bludit) → done, superseded by the Vercel-only decision. Editor spike on Vercel → decision.
+- CMS spike — Payload multi-tenant (§6) → content schema v0.1 (`schemas/site-content.md`).
 - `rubric.md` v0.1.
 - Designer `base.md` v0.1 (Claude), `custom.md` (Shahar, as above).
 
 **Phase 2 — Vertical slice, one business**
-- Hand-pick one business in the Mirissa stretch. Run Harvest → Mockups → pick → Build → Critique → Package manually, station by station.
-- Goal: one site live on a Vercel preview, editable by its owner through the shared editor, with its static exit zip, and one pitch page.
+- Hand-pick one business in the Mirissa stretch. Run Harvest → Mockups → pick → Build → Critique → Deploy manually, station by station.
+- Goal: one site live on its `*.workers.dev` address, editable by its owner in Payload, and one pitch page.
 
 **Phase 3 — Scout + orchestrator**
 - Geo filter, presence scoring, ledger, resumability, human gates as CLI prompts.
@@ -219,9 +228,6 @@ First spike (`spikes/cms/`, Grav vs Bludit on GoDaddy-style hosting, 2026-09-17)
 
 ## 9. Open questions
 
-- ~~Staging host: Vercel or the OCI box?~~ Vercel (decided 2026-09-17).
-- Vercel account: who pays (Pro is $20/seat/month flat + usage), is it part of the offer, and what happens when a customer leaves — exit zip only, or transfer their project to their own Vercel account?
-- Domains: owners without a domain — do we buy one for them or use a subdomain of ours?
 - Image rights: do we use business-owned images only, or also review photos with attribution? Stock/generated fallback?
 - Booking: do we integrate the owner's existing path (WhatsApp/phone) only, or also offer a simple form → email?
 - Pitch channel: WhatsApp, email, or in-person? Affects what the writer produces.
