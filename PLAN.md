@@ -13,12 +13,12 @@ Workflow graph: Figma → Workflows file → `workflows` page → frame `oneshot
 | Repo | Own VS Code project, own git repo (`oneshot`) |
 | Runtime | Claude Code headless, one business at a time; disk is the memory (ledger + files), no daemon, no DB |
 | Area definition | Anchor points + shore buffer (see §3) |
-| Site output | Static HTML/CSS/JS + a free, open-source, flat-file PHP CMS with a login-protected admin, deployable to GoDaddy shared hosting by zip/FTP. **Not WordPress.** Candidates: Grav, Bludit — decide by spike in Phase 1 |
+| Site output | Static HTML/CSS/JS hosted on a dedicated Oneshot Vercel account (Pro — Hobby is non-commercial). One Vercel project per customer site, with no server code and no admin on it; one separate project holds the editor (CMS) for all sites — the owner logs in there, saving rebuilds their site. The owner's domain points at Vercel by DNS. **Not WordPress. No GoDaddy, no PHP.** Editor: free, open source, no per-site server — decide by spike in Phase 1 (§6). *Decided 2026-09-17; replaces "flat-file PHP CMS on GoDaddy". The Grav vs Bludit spike stays in `spikes/cms/` for the record: both need updates on the customer's host forever.* |
 | Mockups | Designer produces **three** mockups per business: (1) calm, standard (2) interactive, some bells and whistles (3) full-blown unique |
 | Critique of mockups | Critic scores all three cheaply (screenshot + rubric) *before* the human sees them; only the human's pick goes through the full build/CMS/critique rounds |
 | Self-improvement | Critic writes diffs to prompts/tools/playbook/rubric with evidence; human approves each; merged → version bump → CHANGELOG |
 | Agent prompts | Two layers per agent: `base.md` (Claude: role, I/O, constraints) + `custom.md` (Shahar: taste, rules, references). Runtime prompt = playbook + base + custom + references |
-| Preview | Our own staging (Vercel or OCI) for the before/after link; GoDaddy only receives the final zip |
+| Preview | A preview deployment of the site's own Vercel project for the before/after link; production is the same project on the owner's domain |
 | Human gates | (a) shortlist approval (b) mockup pick (c) send pitch (d) approve prompt diffs |
 
 ---
@@ -93,7 +93,7 @@ Each business moves through these stations. The orchestrator owns the order, ret
 | 4b | Pre-score | critic | 3 mockups | screenshot + rubric quick score per mockup | **Human picks one (pick + reason logged)** |
 | 4c | Build | designer | chosen mockup | full site + CMS in `sites/<slug>/final/` | — |
 | 5 | Critique | critic | final site, dossier | scorecard; fail → back to 4c, max 3 rounds | — |
-| 6 | Deliver | packager | passing site | `dist/<slug>.zip` (site + CMS + README + sealed admin creds + GoDaddy upload steps) + staging preview URL | — |
+| 6 | Deliver | packager | passing site | Vercel project for the site, wired to the shared editor + sealed owner login + DNS steps for the owner's domain + preview URL + `dist/<slug>.zip` (static export, the owner's exit copy) | — |
 | 7 | Pitch | writer | dossier, old vs new, preview URL | proposal page + outreach message in local language | **Human sends; outcome logged** |
 | ∞ | Learn | critic | reports, mockup picks, pitch outcomes | `proposals/<run>/` diffs to prompts/tools/playbook/rubric | **Human approves diffs** → merge, bump, CHANGELOG |
 
@@ -147,9 +147,9 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 - Evals: agreement between critic pre-score and human pick; false-pass rate found by humans later.
 
 ### packager
-- Zips site + CMS + README + sealed admin credentials + GoDaddy (cPanel/FTP) upload steps.
-- Deploys preview to staging.
-- Verifies the zip by unpacking into a clean PHP container and smoke-testing admin login + one edit.
+- Creates the site's Vercel project on the Oneshot account, wires it to the shared editor, deploys a preview.
+- Hands over: sealed owner login for the editor, DNS steps for the owner's domain, README, and `dist/<slug>.zip` — a static export of the site as the owner's exit copy.
+- Verifies by smoke-testing the preview: pages render, owner login works, one edit shows up on the site; and the zip runs from a plain static server.
 
 ### writer
 - Proposal page: before vs after, what was fixed, what the owner can now edit alone.
@@ -159,16 +159,22 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 
 ## 6. CMS + security baseline
 
-Requirements: free, open source, flat-file, PHP, no database, admin behind login, one-folder upload to GoDaddy shared hosting, simple enough for a surf-school owner to edit text/images/prices.
+Goal: the customer is never left open to vulnerabilities and never has to update anything. So nothing runs on the customer's site: it is static files on Vercel. The only software to keep patched is the one shared editor project, and that is ours.
 
-Phase 1 spike: build one identical mini-site on **Grav** and on **Bludit**, package both, test the GoDaddy-style upload, and pick one. Criteria: admin simplicity for a non-technical owner, theming freedom for the designer's custom HTML, update path, security record.
+Requirements for the editor: free, open source, runs on Vercel (no PHP, no writable disk — content lives in git or Vercel Blob), one instance for all sites, login per owner who sees only their own site, simple enough for a surf-school owner to edit text/images/prices, dependency updates automatable.
+
+Phase 1 spike (`spikes/editor/`): one editor project + one static site project; owner edits a price and a photo end to end; static zip export. Candidates to verify in the spike, not yet checked: Keystatic, Decap CMS (both git-based); fallback: a small editor of our own on Blob. Criteria: owner simplicity, freedom for the designer's custom HTML, per-owner isolation, upkeep, security record.
+
+First spike (`spikes/cms/`, Grav vs Bludit on GoDaddy-style hosting, 2026-09-17) is superseded by the Vercel-only decision; see its COMPARE.md for why a CMS on the customer's host was dropped.
 
 `cms-hardening.md` (applies to every delivery):
-- Unique, generated admin credentials per site; delivered sealed (not in the zip README).
-- HTTPS enforced; admin path renamed where the CMS allows; 2FA where supported.
-- CMS and plugin versions pinned and recorded in the dossier; no unused plugins.
-- No public write endpoints; upload types whitelisted; uploads sanitized.
-- Backups: the delivered zip is the restore point; document how to re-upload.
+- Unique, generated owner credentials per site; delivered sealed (never in the zip or README). 2FA where the editor supports it.
+- Each owner can reach only their own site's content.
+- Customer sites carry no server code, no admin and no public write endpoints. HTTPS is Vercel's default.
+- Editor dependencies pinned, updated automatically in the one editor project; versions recorded per run.
+- Upload types whitelisted; uploads sanitized and re-encoded.
+- Backups: content history (git or Blob) plus the static zip are the restore points; document how to restore.
+- Spend cap set on the Vercel account.
 
 ---
 
@@ -191,13 +197,13 @@ Phase 1 spike: build one identical mini-site on **Grav** and on **Bludit**, pack
 **Phase 1 — Foundations**
 - `playbook.md` v0.1 + `references.md` analysis of the six sites.
 - `dossier.json` and `candidates.json` schemas.
-- CMS spike (Grav vs Bludit) → decision.
+- CMS spike (Grav vs Bludit) → done, superseded by the Vercel-only decision. Editor spike on Vercel → decision.
 - `rubric.md` v0.1.
 - Designer `base.md` v0.1 (Claude), `custom.md` (Shahar, as above).
 
 **Phase 2 — Vertical slice, one business**
 - Hand-pick one business in the Mirissa stretch. Run Harvest → Mockups → pick → Build → Critique → Package manually, station by station.
-- Goal: one deliverable zip that installs on GoDaddy-style hosting and one pitch page.
+- Goal: one site live on a Vercel preview, editable by its owner through the shared editor, with its static exit zip, and one pitch page.
 
 **Phase 3 — Scout + orchestrator**
 - Geo filter, presence scoring, ledger, resumability, human gates as CLI prompts.
@@ -213,7 +219,9 @@ Phase 1 spike: build one identical mini-site on **Grav** and on **Bludit**, pack
 
 ## 9. Open questions
 
-- Staging host: Vercel or the OCI box?
+- ~~Staging host: Vercel or the OCI box?~~ Vercel (decided 2026-09-17).
+- Vercel account: who pays (Pro is $20/seat/month flat + usage), is it part of the offer, and what happens when a customer leaves — exit zip only, or transfer their project to their own Vercel account?
+- Domains: owners without a domain — do we buy one for them or use a subdomain of ours?
 - Image rights: do we use business-owned images only, or also review photos with attribution? Stock/generated fallback?
 - Booking: do we integrate the owner's existing path (WhatsApp/phone) only, or also offer a simple form → email?
 - Pitch channel: WhatsApp, email, or in-person? Affects what the writer produces.

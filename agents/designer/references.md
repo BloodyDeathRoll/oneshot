@@ -157,4 +157,4 @@ Context check first: all six are resorts or operators with professional photo/vi
 22. Booking links that leave the site for a generic engine with stale parameters (Malibu: dates from 2019; 403 for our client). Book action hidden inside the mobile menu (Malibu).
 23. Font sprawl (Malibu: eight families). The best-looking sites use two or three, each with one job.
 24. Brush-script and ultra-thin uppercase Latin display faces have no Sinhala counterpart — choose type systems that still work when the heading is in Sinhala.
-25. Heavy runtimes (WordPress + slider plugins, Webflow + jQuery, Next.js) — none of it transfers to static files on shared hosting; take the patterns, write them by hand.
+25. Heavy runtimes (WordPress + slider plugins, Webflow + jQuery, Next.js) — none of it transfers to plain static files; take the patterns, write them by hand.
