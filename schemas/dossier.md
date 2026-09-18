@@ -53,7 +53,7 @@ Everything downstream (designer, deployer seed, critic, writer) takes facts from
     { "id": "img-001", "file": "assets/img-001.jpg", "source_url": "…", "fetched_at": "…", "license": "business-owned", "license_note": "posted by the business's own Instagram account", "width": 1600, "height": 1200, "description": "instructor and student at the shoreline", "sha256": "…" }
   ],
   "existing_site": { "url": "…", "status": 200, "notes": "no mobile viewport, prices from 2021", "screenshot": "assets/old-site-mobile.png" },
-  "languages": { "seen": ["en"], "owner_language_hint": "si" },
+  "languages": { "seen": ["en"], "owner_language_hint": "si" },  // owner_language_hint drives the writer's outreach message only
   "gaps": [
     { "field": "business.tagline", "why": "none published", "pitch_point": true },
     { "field": "contact.email", "why": "not published", "pitch_point": false }

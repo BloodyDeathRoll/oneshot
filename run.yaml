@@ -7,7 +7,7 @@ area:
 types: [surf_school, board_rental, surf_shop, surf_camp, beach_lodging, shaper]
 presence_threshold: 2            # shortlist businesses scoring <= this (0–5)
 max_sites: 3
-languages: [en, si]
+languages: [en]                  # English only for now; audience languages (de, es, pt, ru…) may come later
 budget:
   tokens_per_business: 2_000_000
   wallclock_min_per_business: 90

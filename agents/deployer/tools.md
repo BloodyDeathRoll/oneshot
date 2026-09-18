@@ -30,13 +30,13 @@ Target: our multi-tenant Payload (`ONESHOT_PROFILE=multi-tenant`, `docker-compos
 |---|---|---|
 | `provision` | REST as super-admin: create `tenants` doc (name, slug), create the owner user (email/password generated, role `owner`, `tenants: [tenant]`), one-time writer login for seeding | tenant id, owner user id; password only to the sealed channel |
 | `seed` | dossier → export-format dir → `import-tenant.mjs` as the owner; photos only with an allowed license note | field keys seeded, gaps, media ids |
-| `deploy` | publisher `POST /publish {tenant}` with `PUBLISH_SECRET`, or `publisher/src/cli.mjs <slug>` with `DEPLOY_MODE=live`; Worker name `<prefix>-<slug>` (prefix: open question, spike used `oneshot-spike-`); config = `name`, `compatibility_date`, `assets.directory`, no `main` | publish log line (buildMs, deployMs, url), `*.workers.dev` URL opened → 200 |
+| `deploy` | publisher `POST /publish {tenant}` with `PUBLISH_SECRET`, or `publisher/src/cli.mjs <slug>` with `DEPLOY_MODE=live`; Worker name = the customer's brand slug, no prefix (`<brand>.workers.dev`; the spike used `oneshot-spike-<slug>`); config = `name`, `compatibility_date`, `assets.directory`, no `main` | publish log line (buildMs, deployMs, url), `*.workers.dev` URL opened → 200 |
 | `attach_domain` | Only after a sale (ledger `outcome:sale`). Client already owns a domain: we set up its DNS to the Worker. Otherwise Cloudflare Registrar purchase (**human "go"**, billed through to the client), then DNS + custom domain on the Worker via `infra/` scripts | domain, DNS records, HTTPS 200 on the domain |
 | `verify` | owner login → change one price → site rebuilt through the hook → new value in live HTML → restore; owner `GET /api/sites` returns exactly one doc; owner `GET` another tenant's site → 404; anonymous → 403 | status codes, strings found, save→live ms |
 | `handoff` | skip (managed clients get `handoff/03-how-to-edit.md` only, filled and translated) | — |
 | `export` | optional: static zip of the last build to `dist/<slug>.zip`, static check | zip sha256, pages opened |
 
-Auth on the server: a scoped Cloudflare API token (`Workers Scripts: Edit`, one account) in the publisher's env — **open question 6 in the spike README; personal `wrangler login` OAuth is for laptops only.**
+Auth on the server: a scoped Cloudflare API token (`Workers Scripts: Edit`, one account) in the publisher's env (decided 2026-09-18). Personal `wrangler login` OAuth is for laptops only.
 
 ## Adapter `self_hosted_docker` — `deploy/self-hosted-docker/`
 

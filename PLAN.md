@@ -82,7 +82,7 @@ area:
 types: [surf_school, board_rental, surf_shop, surf_camp, beach_lodging, shaper]
 presence_threshold: 2            # shortlist businesses scoring <= this (0–5)
 max_sites: 3
-languages: [en, si]
+languages: [en]                  # English only for now; audience languages (de, es, pt, ru…) may come later
 budget:
   tokens_per_business: 2_000_000
   wallclock_min_per_business: 90
@@ -259,6 +259,10 @@ Phase 1 spike — Payload multi-tenant: `docker-compose up` locally, two tenants
 - ~~Image rights~~ Decided 2026-09-18: business-owned images and review photos with credit. Stock/generated: not decided, default no.
 - ~~Booking~~ Decided 2026-09-18: WhatsApp/phone, plus links to the booking platforms the business is already on (Booking.com, Agoda, Airbnb…) via `bookingLinks[]`. No form → email.
 - Decided 2026-09-18: one owner login per business; self-hosted editor lives at `<domain>/admin`.
+- Decided 2026-09-18: sites are English only for now; multilingual later targets the audience (German, Spanish, Portuguese, Russian…), not Sinhala.
+- Decided 2026-09-18: the server deploys with a scoped Cloudflare API token, never a personal login.
+- Decided 2026-09-18: Worker name = the customer's brand slug, no Oneshot prefix → `<brand>.workers.dev` is the preview link.
+- Decided 2026-09-18: mockup 1 (calm) skips the canvas/WebGL animation; if it is picked, the animation is added in the build. → needs a line in `agents/designer/custom.md` (proposal below).
 - Pitch channel: WhatsApp, email, or in-person? Affects what the writer produces.
 - Pricing/offer in the pitch — out of scope for the pipeline or a template?
 

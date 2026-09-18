@@ -12,7 +12,7 @@ Targets marked **(v0.1 target)** are starting numbers, to be tuned by the learni
 
 A travelling surfer (or a would-be one), on a phone, on hostel Wi-Fi or a local SIM, often already in the country or arriving within days. They found the business on Google Maps, Instagram or a friend's message. They compare 3–5 businesses in a few minutes and message the one that answers their questions fastest.
 
-Secondary readers: a local customer reading Sinhala; the owner, who must recognise their own business in it.
+Secondary reader: the owner, who must recognise their own business in it.
 
 This persona is a v0.1 assumption, not research; correct it from pitch outcomes and owner feedback.
 
@@ -81,7 +81,7 @@ Assume a mid-range Android, slow 4G dropping to 3G, metered data.
 | First-load transfer (no scroll) | ≤ 1.5 MB |
 | JS, compressed | ≤ 300 KB |
 | Largest above-the-fold image | ≤ 200 KB |
-| Fonts | ≤ 2 families (+ Sinhala face on `si` pages), ≤ 150 KB on `en` pages |
+| Fonts | ≤ 2 families, ≤ 150 KB |
 | LCP (Lighthouse mobile, throttled) | ≤ 2.5 s |
 | CLS | < 0.1 |
 | Third-party requests on load | 0 |
@@ -114,14 +114,13 @@ Context: of the six resort sites measured for `agents/designer/references.md`, f
 - Marketing copy may be warm; it may not assert anything checkable that the dossier doesn't hold.
 - Placeholder content is never shipped silently: any placeholder is visibly marked and listed for the owner.
 
-## 8. Languages (`run.yaml`: `en`, `si`)
+## 8. Languages (`run.yaml`: `en`)
 
-- `en` is the default for the travelling customer; `si` is a full second language, not a token page. Language switch is visible on every page; each language has its own URL and correct `lang` attribute, with `hreflang` links between them.
-- Sinhala copy is written or checked by someone who reads Sinhala before go-live. Machine-translated text is marked for owner review, never shipped as final.
-- Sinhala script needs a font that covers it (self-hosted, loaded only on `si` pages), more line-height than Latin, and no uppercase, letter-spacing or faux-italic styling. Text effects must not split Sinhala by code point — conjuncts and vowel signs break; split by word or grapheme cluster, or not at all.
-- Layout tolerates both languages: Sinhala strings run longer/taller; nothing depends on an English word's width.
-- Business name, place names, prices and phone numbers stay identical across languages.
-- The outreach message (writer) is in the owner's language; the site's default is the customer's.
+- Sites are **English only** for now (decided 2026-09-18). One language, one URL per page, `lang="en"`.
+- Multilingual may come later, targeting the travelling audience (German, Spanish, Portuguese, Russian…), not the local language. Until then: no language switch, no half-translated pages.
+- Keep the door open: all visible text comes through the content schema, so adding a language later is a content change, not a template rewrite. Nothing in the layout may depend on an English word's width.
+- Business name, place names, prices and phone numbers are never translated.
+- The outreach message (writer) is in the owner's language; the site's language is the customer's.
 
 ## 9. What the owner must be able to edit alone
 

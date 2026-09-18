@@ -20,7 +20,7 @@ Who edits: **owner** = the business owner in the Payload admin ("My site" form, 
 | `tenant` | relationship → `tenants` | multi-tenant only | – | deployer (owners cannot change it) | absent in single-tenant | `2` |
 | `businessName` | text | **yes** | no | owner | ≤ 80 chars | `"Wobbly Pelican Surf School"` |
 | `tagline` | text | no | **yes** | owner | ≤ 140 | `"Your first wave, guaranteed wobbly."` |
-| `languages` | select, many: `en` \| `si` | **yes** | no | owner | must contain `en`; template builds `/si/` only when `si` is listed | `["en","si"]` |
+| `languages` | select, many: `en` (list grows later: de, es, pt, ru…) | **yes** | no | owner | must contain `en`; English only for now (decided 2026-09-18); the spike still carries `si` fixtures | `["en"]` |
 | `copyBlocks[]` | array (≤ 8 rows) | no | – | owner | | |
 | `copyBlocks[].slot` | select: `intro` \| `about` \| `offer` \| `info` | **yes** | no | owner | where the design places the block; several rows may share a slot | `"intro"` |
 | `copyBlocks[].heading` | text | no | **yes** | owner | ≤ 120 | `"Learn to surf"` |
@@ -83,7 +83,7 @@ GET /api/sites?locale=<en|si>&fallback-locale=en&depth=1&limit=1                
   "tenant": { "id": 2, "name": "Wobbly Pelican Surf School", "slug": "wobbly-pelican", "updatedAt": "…", "createdAt": "…" },
   "businessName": "Wobbly Pelican Surf School",
   "tagline": "ඔබේ පළමු රැල්ල — ටිකක් වැනෙමින්, ගොඩක් විනෝදෙන්.",
-  "languages": ["en", "si"],
+  "languages": ["en"],
   "copyBlocks": [
     { "id": "6aac71bd547a530001b106d1", "slot": "intro", "heading": "සර්ෆ් කරන්න ඉගෙන ගන්න", "body": "කුඩා කණ්ඩායම්, මෘදු පුවරු සහ …" }
   ],
