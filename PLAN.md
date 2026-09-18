@@ -262,7 +262,7 @@ Phase 1 spike — Payload multi-tenant: `docker-compose up` locally, two tenants
 - Decided 2026-09-18: sites are English only for now; multilingual later targets the audience (German, Spanish, Portuguese, Russian…), not Sinhala.
 - Decided 2026-09-18: the server deploys with a scoped Cloudflare API token, never a personal login.
 - Decided 2026-09-18: Worker name = the customer's brand slug, no Oneshot prefix. Dedicated Oneshot Cloudflare account (login shaharnaor@outlook.com), workers.dev subdomain `os1` → preview links look like `<brand>.os1.workers.dev`. No other Cloudflare account is ever used.
-- Decided 2026-09-18: our CMS server = second OCI Always Free account, A1 shape, pay-as-you-go upgrade. First step: run the Payload spike test suite there (ARM64 untested).
+- Decided 2026-09-18: our CMS server = second OCI account ("shibumi", Frankfurt), A1 2 OCPU / 12 GB, Pay As You Go with a free-tier quota cap. Instance `oneshot-cms` is up; both spike suites pass on it (ARM64 proven). Details: `infra/oci/README.md`.
 - Decided 2026-09-18: mockup 1 (calm) skips the canvas/WebGL animation; if it is picked, the animation is added in the build. → needs a line in `agents/designer/custom.md` (proposal below).
 - Pitch channel: WhatsApp, email, or in-person? Affects what the writer produces.
 - Pricing/offer in the pitch — out of scope for the pipeline or a template?
