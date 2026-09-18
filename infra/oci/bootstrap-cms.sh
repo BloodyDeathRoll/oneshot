@@ -23,6 +23,7 @@ sudo apt-get install -y -q nodejs
 
 # Host firewall: Oracle's Ubuntu images ship iptables rules that block everything but 22; replace with ufw.
 sudo iptables -F; sudo iptables -X; sudo netfilter-persistent save 2>/dev/null || true
+sudo systemctl restart docker   # the flush above removed Docker's own NAT/FORWARD rules; restarting recreates them
 sudo ufw --force reset >/dev/null
 sudo ufw default deny incoming; sudo ufw default allow outgoing
 sudo ufw allow 22/tcp; sudo ufw allow 80/tcp; sudo ufw allow 443/tcp
