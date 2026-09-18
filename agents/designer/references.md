@@ -71,7 +71,7 @@ Stack [obs]: TravelClick/Amadeus hotel web platform (`tc.galaxy.tf`, `reservatio
 - **Booking UX** [obs]: Booking is never more than one tap away (docked bar, sticky bar, per-room buttons, closing CTA) and always hands off to `reservations.travelclick.com/9883378?...` with room/adults prefilled, room-specific links carry `roomtypeid` [from HTML; engine n/o]. **WhatsApp bubble on every screen** and the WhatsApp number printed in the footer. A "Book direct and enjoy more" modal lists what direct booking includes.
 - **Imagery** [obs]: Professional but documentary: thatch and timber interiors open to jungle, a farmer and a boy milking a cow, hikers on a trail, horses on the beach, aerials. Activity and people over architecture.
 - **Reuse:** the information architecture nearly as-is — it matches the playbook: what/where → offers each with its own book button → experiences → reviews → FAQ → closing CTA → full contact. Persistent mobile booking bar + WhatsApp bubble. A single brand pattern (contour lines; ours could be swell lines, a bathymetry chart, a local textile) as the cheapest possible identity device: one SVG, no photos needed. FAQ as the place where dossier facts live. "Book direct, get X" framing where the dossier supports it.
-- **Wouldn't reuse:** brush-script headings (dated; and no Sinhala equivalent); four equal cards in a row as the default answer; 8.9 MB first mobile load, 6.7 MB images, no `srcset` [obs]; timed/interrupting modals.
+- **Wouldn't reuse:** brush-script headings (dated); four equal cards in a row as the default answer; 8.9 MB first mobile load, 6.7 MB images, no `srcset` [obs]; timed/interrupting modals.
 
 ## 4. tandjungsarihotel.com — Tandjung Sari, Sanur, Bali (heritage hotel)
 
@@ -156,5 +156,5 @@ Context check first: all six are resorts or operators with professional photo/vi
 21. First mobile load of 3.5–14.4 MB on five of six sites, mostly unoptimised images or video. Only Rancho (0.5 MB, deferred JS, lazy images) was near our budget.
 22. Booking links that leave the site for a generic engine with stale parameters (Malibu: dates from 2019; 403 for our client). Book action hidden inside the mobile menu (Malibu).
 23. Font sprawl (Malibu: eight families). The best-looking sites use two or three, each with one job.
-24. Brush-script and ultra-thin uppercase Latin display faces have no Sinhala counterpart — choose type systems that still work when the heading is in Sinhala.
+24. Brush-script and ultra-thin uppercase Latin display faces rarely survive a second language — choose type systems that still work if a non-Latin script is added later (sites are English only for now).
 25. Heavy runtimes (WordPress + slider plugins, Webflow + jQuery, Next.js) — none of it transfers to plain static files; take the patterns, write them by hand.

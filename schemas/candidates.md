@@ -26,7 +26,7 @@ One file per run: `reports/<run-id>/candidates.json`. The human approves a subse
       "presence": { "score": 1, "reason": "Facebook page only; no site; booking by phone in reviews", "criteria": ["facebook_only", "no_booking"] },
       "evidence": [{ "source_url": "https://…", "fetched_at": "…", "note": "Google Places listing" }],
       "surf_related_confidence": 0.9,
-      "languages_seen": ["en", "si"]
+      "languages_seen": ["en"]
     }
   ]
 }
