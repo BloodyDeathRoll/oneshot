@@ -16,8 +16,8 @@ Workflow graph: Figma → Workflows file → `workflows` page → frame `oneshot
 | Site output | Every client site is a static **Astro** build that pulls its tenant's content from Payload's API at build time. Design lives in the Astro template (this is where the designer's canvas/WebGL, editorial grids and booking drawers go); editable content (hours, prices, photos, copy blocks, contact, booking links) lives in Payload. **Not WordPress.** |
 | CMS | One CMS for all client sites, run by us: Payload CMS 3 with the official multi-tenant plugin, Postgres, Docker Compose, on one VPS (Hetzner CX23 or our OCI free-tier box — env-configurable). One tenant per business. Each owner gets an email/password login scoped to their tenant only. |
 | Hosting | Cloudflare Workers with static assets, one Worker per site, deployed with Wrangler, custom domain per site via Cloudflare. **Not** Cloudflare Pages (being folded into Workers). **Not** Vercel or GoDaddy. |
-| Domains | Cloudflare Registrar, one per client, billed through to the client. |
-| Publish flow | Owner saves in Payload → `afterChange` hook → rebuild only that tenant's site → `wrangler deploy` → live in ~1 minute. |
+| Domains | Cloudflare Registrar, one per client, billed through to the client. Bought only after a sale, never at Deliver. Clients who already own a domain keep it; we set up the DNS. |
+| Publish flow | Owner edits are drafts; pressing **Publish** in Payload → hook → rebuild only that tenant's site → `wrangler deploy` → live in ~1 minute. Not on every save (decided 2026-09-18). |
 | Export | Any client can receive their static build as a zip that runs on any host (GoDaddy included). Optional handoff, not the deliverable; replaces the old per-site-CMS-in-a-zip idea. |
 | Commercial default | "We host it, you edit it, monthly fee." The pitch reflects this. |
 | Hosting modes | Per business, recorded in the ledger and `run.yaml`. **`managed`** (default) — our multi-tenant Payload + Cloudflare Workers; monthly fee. **`self_hosted_docker`** — the client's own VPS (Hetzner, Contabo, Hostinger KVM, DigitalOcean — anything with Docker; 2 vCPU / 4 GB minimum): single-tenant Payload + Postgres + Astro builder + Caddy (HTTPS) in one `docker-compose.yml`, rebuild-on-save inside the stack; we install, verify, hand over, revoke our access. **`static_only`** — static build + source zip, no CMS; runs on any host including shared PHP hosting; edits require a developer. Self-hosted is the client's choice at pitch time. No split mode, no PHP flat-file CMS port. |
@@ -256,8 +256,9 @@ Phase 1 spike — Payload multi-tenant: `docker-compose up` locally, two tenants
 
 ## 9. Open questions
 
-- Image rights: do we use business-owned images only, or also review photos with attribution? Stock/generated fallback?
-- Booking: do we integrate the owner's existing path (WhatsApp/phone) only, or also offer a simple form → email?
+- ~~Image rights~~ Decided 2026-09-18: business-owned images and review photos with credit. Stock/generated: not decided, default no.
+- ~~Booking~~ Decided 2026-09-18: WhatsApp/phone, plus links to the booking platforms the business is already on (Booking.com, Agoda, Airbnb…) via `bookingLinks[]`. No form → email.
+- Decided 2026-09-18: one owner login per business; self-hosted editor lives at `<domain>/admin`.
 - Pitch channel: WhatsApp, email, or in-person? Affects what the writer produces.
 - Pricing/offer in the pitch — out of scope for the pipeline or a template?
 
