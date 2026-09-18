@@ -14,7 +14,7 @@ Workflow graph: Figma → Workflows file → `workflows` page → frame `oneshot
 | Runtime | Claude Code headless, one business at a time; disk is the memory (ledger + files), no daemon, no DB |
 | Area definition | Anchor points + shore buffer (see §3) |
 | Site output | Every client site is a static **Astro** build that pulls its tenant's content from Payload's API at build time. Design lives in the Astro template (this is where the designer's canvas/WebGL, editorial grids and booking drawers go); editable content (hours, prices, photos, copy blocks, contact, booking links) lives in Payload. **Not WordPress.** |
-| CMS | One CMS for all client sites, run by us: Payload CMS 3 with the official multi-tenant plugin, Postgres, Docker Compose, on one VPS (Hetzner CX23 or our OCI free-tier box — env-configurable). One tenant per business. Each owner gets an email/password login scoped to their tenant only. |
+| CMS | One CMS for all client sites, run by us: Payload CMS 3 with the official multi-tenant plugin, Postgres, Docker Compose, on one VPS — decided 2026-09-18: the second Oracle Cloud Always Free account, Ampere A1 shape (ARM64, up to 2 OCPU / 12 GB), account upgraded to pay-as-you-go so the instance cannot be idle-reclaimed; env-configurable so it can move (e.g. Hetzner CX23) later. One tenant per business. Each owner gets an email/password login scoped to their tenant only. |
 | Hosting | Cloudflare Workers with static assets, one Worker per site, deployed with Wrangler, custom domain per site via Cloudflare. **Not** Cloudflare Pages (being folded into Workers). **Not** Vercel or GoDaddy. |
 | Domains | Cloudflare Registrar, one per client, billed through to the client. Bought only after a sale, never at Deliver. Clients who already own a domain keep it; we set up the DNS. |
 | Publish flow | Owner edits are drafts; pressing **Publish** in Payload → hook → rebuild only that tenant's site → `wrangler deploy` → live in ~1 minute. Not on every save (decided 2026-09-18). |
@@ -262,6 +262,7 @@ Phase 1 spike — Payload multi-tenant: `docker-compose up` locally, two tenants
 - Decided 2026-09-18: sites are English only for now; multilingual later targets the audience (German, Spanish, Portuguese, Russian…), not Sinhala.
 - Decided 2026-09-18: the server deploys with a scoped Cloudflare API token, never a personal login.
 - Decided 2026-09-18: Worker name = the customer's brand slug, no Oneshot prefix → `<brand>.workers.dev` is the preview link.
+- Decided 2026-09-18: our CMS server = second OCI Always Free account, A1 shape, pay-as-you-go upgrade. First step: run the Payload spike test suite there (ARM64 untested).
 - Decided 2026-09-18: mockup 1 (calm) skips the canvas/WebGL animation; if it is picked, the animation is added in the build. → needs a line in `agents/designer/custom.md` (proposal below).
 - Pitch channel: WhatsApp, email, or in-person? Affects what the writer produces.
 - Pricing/offer in the pitch — out of scope for the pipeline or a template?

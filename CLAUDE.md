@@ -11,7 +11,7 @@ Read `PLAN.md` fully before doing anything. It is the source of truth for decisi
 
 ## Architecture (fixed constraint — final, do not re-litigate)
 
-- **One CMS for all client sites, run by us:** Payload CMS 3 with the official multi-tenant plugin, Postgres, Docker Compose, on one VPS (Hetzner CX23 or our OCI free-tier box — env-configurable). One tenant per business. Each owner gets an email/password login scoped to their tenant only.
+- **One CMS for all client sites, run by us:** Payload CMS 3 with the official multi-tenant plugin, Postgres, Docker Compose, on one VPS — the second Oracle Cloud Always Free account, Ampere A1 (ARM64), pay-as-you-go upgraded; env-configurable so it can move later. One tenant per business. Each owner gets an email/password login scoped to their tenant only.
 - **Every client site is a static Astro build** that pulls its tenant's content from Payload's API at build time. Design lives in the Astro template (the designer's canvas/WebGL, editorial grids and booking drawers); editable content (hours, prices, photos, copy blocks, contact, booking links) lives in Payload. `schemas/site-content.md` is the contract between the two.
 - **Hosting:** Cloudflare Workers with static assets, one Worker per site, deployed with Wrangler, custom domain per site via Cloudflare. Do NOT use Cloudflare Pages. Do NOT use Vercel or GoDaddy for hosting.
 - **Domains:** Cloudflare Registrar, one per client, billed through to the client.
