@@ -73,7 +73,7 @@ oneshot/
 ## 3. `run.yaml`
 
 ```yaml
-run_id: 2026-09-ahangama-01
+run_id: 2026-09-ahangama-02
 area:
   mode: business                 # town | stretch | business
   # town:     one anchor (a town or beach) + shore_buffer_m along its coast
@@ -81,7 +81,7 @@ area:
   # business: one anchor (a named business) + radius_m circle around it
   anchors:
     - "The Lavish Haven, Ahangama, Sri Lanka"
-  radius_m: 100                  # business mode
+  radius_m: 300                  # business mode
   shore_buffer_m: 100            # town / stretch modes
 types: [surf_school, board_rental, surf_shop, surf_camp, beach_lodging, shaper]
 presence_threshold: 2            # shortlist businesses scoring <= this (0–5)
