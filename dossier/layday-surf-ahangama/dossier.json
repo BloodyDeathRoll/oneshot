@@ -1,0 +1,751 @@
+{
+ "slug": "layday-surf-ahangama",
+ "run_id": "2026-09-ahangama-02",
+ "harvester_version": "0.2.0",
+ "harvested_at": "2026-09-19T18:20:00Z",
+ "businessType": "beach_lodging",
+ "business": {
+  "businessType_note": "sells beds — a single small dorm; no lessons of its own",
+  "name": {
+   "value": "Layday Surf Ahangama",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z",
+   "note": "Hostelworld writes 'Lay Day Surf Ahangama' in its own copy"
+  },
+  "type": {
+   "value": "beach_lodging",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z",
+   "note": "Booking category 'Hostel'"
+  },
+  "tagline": {
+   "value": "Surf, Chill & Feel at Home in Ahangama",
+   "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "fetched_at": "2026-09-19T18:20:00Z",
+   "note": "the owner's own headline on Hostelworld"
+  },
+  "description": {
+   "value": "Discover paradise at Lay Day Surf Ahangama, your ultimate surfside haven in Ahangama, Sri Lanka! Nestled in 'Warnagiri' Welhengoda, this vibrant hostel is more than just a place to stay—it's a community where unforgettable memories are made.",
+   "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "fetched_at": "2026-09-19T18:20:00Z",
+   "language": "en",
+   "note": "verbatim, the owner's own copy on Hostelworld"
+  },
+  "description_long": {
+   "value": "Imagine waking up to the sound of crashing waves and spending your days riding the best surf breaks Kabalana has to offer. Whether you're a seasoned pro or a beginner eager to catch your first wave, our prime location puts you right in the heart of the action. But Lay Day Surf Ahangama is about more than just surfing. It's about connecting with fellow travelers, sharing stories, and creating lasting friendships. Our cozy common areas are perfect for lounging after a day in the sun, and our friendly staff are always on hand to help you plan your next adventure. Experience the true spirit of Sri Lanka with us!",
+   "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "fetched_at": "2026-09-19T18:20:00Z",
+   "language": "en",
+   "note": "verbatim from Hostelworld"
+  },
+  "since": {
+   "value": null,
+   "gap": "not published; guests call it 'newly built' in 2026 reviews"
+  },
+  "run_by": {
+   "value": "Rukshan and his family",
+   "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "fetched_at": "2026-09-19T18:20:00Z",
+   "note": "named by a guest review on Hostelworld, not by the business; unconfirmed"
+  }
+ },
+ "location": {
+  "address": {
+   "value": "'Warnagiri' Welhengoda, Ahangama, Sri Lanka",
+   "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "fetched_at": "2026-09-19T18:20:00Z",
+   "note": "Booking writes 'Warnagiri welhengoda Ahangama Warnagiri, 80650 Ahangama'"
+  },
+  "lat_lng": {
+   "value": null,
+   "gap": "not captured; the scout recorded the pin only in candidates.json"
+  },
+  "map_url": {
+   "value": "https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "source_url": "https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  "distance_to_beach": {
+   "value": "Kabalana Beach is a few steps away; guests say a 2-minute walk",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z",
+   "note": "Hostelworld says 1.4 km from the town centre"
+  },
+  "finding_it": {
+   "value": "Follow Google Maps — there is a large black gate that you need to open; once through the gate there is a wooden platform with a door through to the Layday Surf area to the right of the house.",
+   "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "fetched_at": "2026-09-19T18:20:00Z",
+   "note": "from a guest review; the owner promised a sign. A real problem the new site can solve."
+  },
+  "spot": {
+   "value": "Kabalana beach break — sandy beach break for beginners and intermediates, with The Rock reef A-frame for advanced surfers",
+   "source_url": "https://thesurfatlas.com/sri-lanka-surf/kabalana-beach/",
+   "fetched_at": "2026-09-19T18:20:00Z",
+   "note": "third-party surf guide"
+  }
+ },
+ "contact": {
+  "phone": {
+   "value": "+94778553343",
+   "source_url": "https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  "whatsapp": {
+   "value": null,
+   "gap": "not published"
+  },
+  "email": {
+   "value": null,
+   "gap": "not published; bookings run through the OTAs"
+  },
+  "socials": {
+   "instagram": null,
+   "facebook": null,
+   "tripadvisor": null,
+   "google_maps": "https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "booking": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "hostelworld": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "agoda": "https://www.agoda.com/layday-surf-ahangama/hotel/piyadigama-lk.html"
+  }
+ },
+ "booking": {
+  "path": {
+   "value": "engine",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z",
+   "note": "live inventory on Booking.com, Hostelworld and Agoda"
+  },
+  "engine_url": {
+   "value": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  "other_engines": {
+   "value": [
+    "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+    "https://www.agoda.com/layday-surf-ahangama/hotel/piyadigama-lk.html"
+   ],
+   "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  "reply_time_hint": {
+   "value": null,
+   "gap": "not published"
+  }
+ },
+ "hours": [],
+ "hours_note": {
+  "value": "Check-in 14:00–19:00, check-out until 14:00. Reception has limited hours.",
+  "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+  "fetched_at": "2026-09-19T18:20:00Z",
+  "note": "Booking.com does not publish check-in times for this property"
+ },
+ "stayInfo": {
+  "checkInFrom": {
+   "value": "14:00",
+   "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  "checkInTo": {
+   "value": "19:00",
+   "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  "checkOutTo": {
+   "value": "14:00",
+   "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  "note": {
+   "value": "Credit cards not accepted · non-smoking · taxes included",
+   "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  }
+ },
+ "offers": [],
+ "room_types": [
+  {
+   "value": "Single Bed in 6-Bed Dormitory Room",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z",
+   "note": "Booking lists one room type only; a guest review says it is a single dorm of 4 bunk beds — CONTRADICTION, see contradictions[]"
+  }
+ ],
+ "facilities": [
+  {
+   "value": "free WiFi (all areas)",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "free private parking (no reservation needed)",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "airport shuttle",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "room service",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "non-smoking rooms",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "shared kitchen with kitchenette, dishwasher, kettle and kitchenware",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "dining area and seating area",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "garden and terrace with outdoor dining",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "air conditioning",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "garden view",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "bathrobes, towels and hairdryer",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "shared bathroom",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "lockers",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "concierge",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "baggage storage",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "daily housekeeping",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "laundry, dry cleaning and ironing (additional charge)",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "bicycle rental (additional charge)",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "24-hour security, CCTV, key access, safety deposit box",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "pets allowed, no extra charge",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "free security lockers",
+   "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "free city maps",
+   "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "self-catering facilities",
+   "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "washing machine",
+   "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  },
+  {
+   "value": "hot showers",
+   "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "fetched_at": "2026-09-19T18:20:00Z"
+  }
+ ],
+ "levels": [],
+ "languages_spoken": [],
+ "season": {
+  "value": null,
+  "gap": "not published by the business"
+ },
+ "reviews": {
+  "google": {
+   "rating": 5.0,
+   "count": 15,
+   "source_url": "https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T18:20:00Z",
+   "breakdown": {
+    "5": 15,
+    "4": 0,
+    "3": 0,
+    "2": 0,
+    "1": 0
+   }
+  },
+  "booking": {
+   "rating": 10.0,
+   "scale": 10,
+   "count": 6,
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T18:20:00Z",
+   "note": "location scored 9.6 separately"
+  },
+  "hostelworld": {
+   "rating": 9.8,
+   "scale": 10,
+   "count": 10,
+   "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "fetched_at": "2026-09-19T18:20:00Z",
+   "categories": {
+    "Value for Money": 10.0,
+    "Security": 10.0,
+    "Atmosphere": 10.0,
+    "Cleanliness": 10.0,
+    "Staff": 10.0,
+    "Location": 10.0,
+    "Facilities": 10.0
+   }
+  },
+  "tripadvisor": {
+   "rating": null,
+   "count": null,
+   "gap": "no listing found"
+  },
+  "quotes": [
+   {
+    "text": "I was only supposed to stay a night and just kept expecting and ended up here a week. It's a tiny place but super clean and well maintained, owner...",
+    "author": "Taiya, Australia",
+    "date": null,
+    "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+    "fetched_at": "2026-09-19T18:20:00Z",
+    "note": "TRUNCATED by Booking.com's 'Read more'"
+   },
+   {
+    "text": "Place is really it's quite small but absolutely great, very clean lots of room, beds are nice",
+    "author": "Taiya, Australia",
+    "date": null,
+    "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+    "fetched_at": "2026-09-19T18:20:00Z"
+   },
+   {
+    "text": "The family is very helpful with anything you need and go out of their way to make your stay as comfortable as possible. The place is super clean,...",
+    "author": "Nas, Jordan",
+    "date": null,
+    "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+    "fetched_at": "2026-09-19T18:20:00Z",
+    "note": "TRUNCATED"
+   },
+   {
+    "text": "I really liked the hostel, its close to the beach new and comfy.",
+    "author": "Alina, Germany",
+    "date": null,
+    "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+    "fetched_at": "2026-09-19T18:20:00Z"
+   },
+   {
+    "text": "New and clean, walking distance straight to the beach",
+    "author": "Akshay, Sri Lanka",
+    "date": null,
+    "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+    "fetched_at": "2026-09-19T18:20:00Z"
+   },
+   {
+    "text": "Well located, very clean, good air conditioning and a great host! Layday Surf is just one dorm room with 4 bunk beds so it is very quiet which was amazing. A little bit difficult to find but the host was very responsive and promises a sign will be put up ASAP.",
+    "author": "Catherine, Female, 25-30, Australia",
+    "date": "2026-04",
+    "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+    "fetched_at": "2026-09-19T18:20:00Z"
+   },
+   {
+    "text": "Seriously the best hostel I've stayed in throughout my 7 months travelling. I'm so sad I wasn't there for long because it was just so so nice. Super clean, nice style, the showers are great, it's cosy, there's a nice inside place to sit & hang out. The lovely family who own this make such an effort to be present and helpful. HIGHLY recommend!",
+    "author": "Jennine, Female, 25-30, England",
+    "date": "2026-04",
+    "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+    "fetched_at": "2026-09-19T18:20:00Z"
+   },
+   {
+    "text": "LayDay is so wonderful! Newly built and so well designed, Rukshan has thought of everything. As a solo female traveller I felt totally safe - it's a peaceful little sanctuary in Ahangama, just a 2-min walk to Kabalana Beach and great food spots. Super comfy beds, loads of luggage space, amazing showers, and absolutely spotless. Rukshan and his family are so kind and he keeps it immaculate daily. I extended my stay way longer than expected and didn't want to leave - will 100% be back!",
+    "author": "Beth, Female, 25-30, England",
+    "date": "2026-04",
+    "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+    "fetched_at": "2026-09-19T18:20:00Z"
+   }
+  ]
+ },
+ "images": [
+  {
+   "id": "img-001",
+   "file": "assets/img-001.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "5c4ee55ad7281785ed390425cec1f62784dc51f633bd6c29ec2c163c019ba984"
+  },
+  {
+   "id": "img-002",
+   "file": "assets/img-002.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "78b4026cb25eabb4143e3e17fef190be6e287fb50e0a2904a0011a75b4d45df8"
+  },
+  {
+   "id": "img-003",
+   "file": "assets/img-003.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "5fdf65395089f38e3d47782c1b0be111d9a9574aeef0220fabff09b9f995223c"
+  },
+  {
+   "id": "img-004",
+   "file": "assets/img-004.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "3ec8ca3eaee7bd37543aad420bb9a9c3111746569448dfa61a59b169890f5e6c"
+  },
+  {
+   "id": "img-005",
+   "file": "assets/img-005.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "2c5d6eca4f61a9ea09019b5cf4ba3d62e2fb05d2904fb29d02152094bbaad8e0"
+  },
+  {
+   "id": "img-006",
+   "file": "assets/img-006.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "4c0399da59fc894e2e899dd49c31febfc47414edff331c670e16053406115603"
+  },
+  {
+   "id": "img-007",
+   "file": "assets/img-007.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "98e269774ee6d3a3e095861248a1672fcbc4b230015673e3f2cbfda28818d54b"
+  },
+  {
+   "id": "img-008",
+   "file": "assets/img-008.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "c78332b827b8bc9a3ae00b6e514e492c98612ed36adf6428c3976fd249bd07c3"
+  },
+  {
+   "id": "img-009",
+   "file": "assets/img-009.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "2ecade47fddbbc9cd7f632d6f748914b05561f224d9d131264ab1dba2341dac9"
+  },
+  {
+   "id": "img-010",
+   "file": "assets/img-010.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "bf0eeb2faef285d5f4f2b04af4da6cb644685d632a87e92385d5dc7777f6cbf9"
+  },
+  {
+   "id": "img-011",
+   "file": "assets/img-011.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "434dd7bd1fdb7dae3333596c4cbec4339e683cf7a1bc5891fb52d2f695be6393"
+  },
+  {
+   "id": "img-012",
+   "file": "assets/img-012.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "072760743ab9200d706aac1a95b4a739c122196026874c48ab7cbd7c240e3f2c"
+  },
+  {
+   "id": "img-013",
+   "file": "assets/img-013.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "97ff9db5423bf6a0e58c9888aaa64e22f7102768f4964a0100bc6999465405bc"
+  },
+  {
+   "id": "img-014",
+   "file": "assets/img-014.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "03f26b7169e612a65f08b9edbac7a5f82ed993c6784ee7e3286724fe7d057c17"
+  },
+  {
+   "id": "img-015",
+   "file": "assets/img-015.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "461bdf8392db694bb4ea2689d0079db03ef2d200e81625e7508030a1e046ea7c"
+  },
+  {
+   "id": "img-016",
+   "file": "assets/img-016.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "f25021071ad0fd96c960a90dab3c88e22c50c97ff83758446acd211328cc3378"
+  },
+  {
+   "id": "img-017",
+   "file": "assets/img-017.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "48989573ea484adee5b701666ce8c87384aa76b6cc13d2fc542f83d0a181c715"
+  },
+  {
+   "id": "img-018",
+   "file": "assets/img-018.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "e5527e5297f6f4cfe9a8ec1048f006608c746dd98fde26e5e9e7cff849b2ee66"
+  },
+  {
+   "id": "img-019",
+   "file": "assets/img-019.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "695240cd2f90b8029d7e81c6dfa62da47d92b72c99217b8a66c01f3e67ebe923"
+  },
+  {
+   "id": "img-020",
+   "file": "assets/img-020.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "77a03ba24ef57b64457bf8582d4adc4803ebd096cb22a798a2976f90f003c32d"
+  },
+  {
+   "id": "img-021",
+   "file": "assets/img-021.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "f275ee6ab7f0ce708e1b52f00641e05ee4dfcee8784f6fa6c53d1f593e86d985"
+  },
+  {
+   "id": "img-022",
+   "file": "assets/img-022.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "fetched_at": "2026-09-19T19:25:47Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "16fce3dd78e7942f22a4ffdbb070aa5ca969d7fc9f9cb0e1057ad5826d3940a8"
+  }
+ ],
+ "existing_site": {
+  "url": null,
+  "status": null,
+  "notes": "no website, no Instagram, no Facebook. The entire web presence is three OTA listings plus a Google pin — and the OTA listings carry the owner's own writing, which the business itself has nowhere to publish.",
+  "screenshot": null
+ },
+ "languages": {
+  "seen": [
+   "en"
+  ],
+  "owner_language_hint": "si"
+ },
+ "gaps": [
+  {
+   "field": "offers",
+   "why": "nightly rates are live dated OTA inventory (Hostelworld shows 'from US$17' in a dated search), not a published price list",
+   "pitch_point": true
+  },
+  {
+   "field": "existing_site.url",
+   "why": "no site and no social account; every booking pays an OTA commission",
+   "pitch_point": true
+  },
+  {
+   "field": "contact.email",
+   "why": "not published",
+   "pitch_point": true
+  },
+  {
+   "field": "contact.whatsapp",
+   "why": "not published",
+   "pitch_point": true
+  },
+  {
+   "field": "location.lat_lng",
+   "why": "not captured this run",
+   "pitch_point": false
+  },
+  {
+   "field": "business.since",
+   "why": "not published",
+   "pitch_point": false
+  },
+  {
+   "field": "season",
+   "why": "not published",
+   "pitch_point": false
+  },
+  {
+   "field": "reviews.quotes",
+   "why": "three of the Booking quotes are truncated by 'Read more'",
+   "pitch_point": false
+  },
+  {
+   "field": "location.finding_it",
+   "why": "guests cannot find the place — an unmarked black gate. The owner promised a sign; a map and directions on a site would fix it today",
+   "pitch_point": true
+  },
+  {
+   "field": "images",
+   "why": "22 property photos at 576–1024 px; good coverage, not print quality",
+   "pitch_point": false
+  }
+ ],
+ "contradictions": [
+  {
+   "what": "Room count: Booking lists 'Single Bed in 6-Bed Dormitory Room'; a Hostelworld guest says it is one dorm with 4 bunk beds (8 beds).",
+   "resolution": "Unresolved — ask the owner. Do not publish a bed count."
+  },
+  {
+   "what": "Ratings differ by platform: Google 5.0/15, Booking 10/6, Hostelworld 9.8/10.",
+   "resolution": "Not a conflict — report each with its platform and count, never averaged."
+  }
+ ]
+}
