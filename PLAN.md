@@ -43,7 +43,7 @@ oneshot/
   taxonomy.md                 # business types, what counts as "surf-related"
   server-hardening.md         # security baseline for the one CMS server (one server, one admin)
   agents/
-    orchestrator/  scout/  harvester/  designer/  seo/  aiseo/  critic/  deployer/  writer/
+    orchestrator/  scout/  harvester/  designer/  copywriter/  humanizer/  copyeditor/  seo/  aiseo/  critic/  deployer/  writer/
       base.md        # Claude writes: role, inputs, outputs, hard constraints
       custom.md      # Shahar writes: taste, rules, house style
       references.md  # curated examples (URLs + what we like about each), cached notes
@@ -115,16 +115,19 @@ Each business moves through these stations. The orchestrator owns the order, ret
 | 3 | Harvest | harvester | approved candidates | `dossier/<slug>/dossier.json` + `assets/`; every fact/image carries its source; gaps flagged | — |
 | 4a | Mockups | designer | playbook + base + custom + references + dossier | 3 mockups in `sites/<slug>/mockups/{calm,interactive,unique}/` | — |
 | 4b | Pre-score | critic | 3 mockups | screenshot + rubric quick score per mockup | **Human picks one (pick + reason logged)** |
-| 4c | Build | designer | chosen mockup | Astro site from chosen template + tenant content model seeded in Payload | — |
-| 4d | SEO | seo | built site, dossier | classical SEO pass on `templates/<variant>/`: JSON-LD from CMS content, head + headings, local signals, Core Web Vitals, sitemap/robots; `sites/<slug>/seo-report.md` | — |
-| 4e | AI SEO | aiseo | built site, dossier, `seo-report.md` | answer-engine pass: self-contained answers to the questions people actually ask, `FAQPage` data, `/llms.txt`, AI-crawler policy, no-JS check; `sites/<slug>/aiseo-report.md` | — |
-| 5 | Critique | critic | final site, dossier, both SEO reports | scorecard; fail → back to 4c, max 3 rounds | — |
+| 4c | Copy | copywriter | dossier, schema, chosen mockup | site copy per locale in `sites/<slug>/copy/<locale>.json` + `copy/sources.md` (every paragraph mapped to its dossier fields) | — |
+| 4d | Humanize | humanizer | draft copy | same files rewritten so they read as a person wrote them; facts unchanged; `copy/humanizer-notes.md` | — |
+| 4e | Copy review | copyeditor | copy, draft, dossier | per-claim audit (`sourced` / `shared-context` / `framing` / `unsourced` / `contradicted`) + voice audit; `copy/review.md`; fail → back to 4c or 4d, max 2 rounds | — |
+| 4f | Build | designer | chosen mockup + passed copy | Astro site from chosen template + tenant content model seeded in Payload | — |
+| 4g | SEO | seo | built site, dossier | classical SEO pass on `templates/<variant>/`: JSON-LD from CMS content, head + headings, local signals, Core Web Vitals, sitemap/robots; `sites/<slug>/seo-report.md` | — |
+| 4h | AI SEO | aiseo | built site, dossier, `seo-report.md` | answer-engine pass: self-contained answers to the questions people actually ask, `FAQPage` data, `/llms.txt`, AI-crawler policy, no-JS check; `sites/<slug>/aiseo-report.md` | — |
+| 5 | Critique | critic | final site, dossier, both SEO reports | scorecard; fail → back to 4f, max 3 rounds | — |
 | 6 | Deliver | deployer | passing site | deployer runs the adapter for the business's `hosting_mode` (§5). `managed`: tenant + seed + `wrangler deploy` + domain + owner login; the preview URL is just the `*.workers.dev` address. `self_hosted_docker` ends with a verified handoff kit and our access revoked. `static_only` ends with the zip | — |
 | 7 | Pitch | writer | dossier, old vs new, preview URL | proposal page + outreach message in local language | **Human sends; outcome logged** |
 | ∞ | Learn | critic | reports, mockup picks, pitch outcomes | `proposals/<run>/` diffs to prompts/tools/playbook/rubric | **Human approves diffs** → merge, bump, CHANGELOG |
 
 ### Ledger states
-`discovered → scored → shortlisted → approved → harvested → mocked → picked → built → optimised → ai_optimised → critiqued(n) → passed | failed → packaged → pitched → outcome:{reply,meeting,sale,ignored}`
+`discovered → scored → shortlisted → approved → harvested → mocked → picked → copy_drafted → copy_humanised → copy_passed | copy_failed → built → optimised → ai_optimised → critiqued(n) → passed | failed → packaged → pitched → outcome:{reply,meeting,sale,ignored}`
 
 `self_hosted_docker` only, once the client has chosen it: `… → handoff_verified → access_revoked`. `handoff_verified` = the adapter's `verify` passed on the client's box and the handoff kit is complete; `access_revoked` = our keys, users and tokens are removed from the client's box and we have checked that they no longer work.
 
@@ -167,7 +170,32 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 - **`references.md` seed:** ranchosantana.com · malibupopoyo.com · morgansrock.com · tandjungsarihotel.com · white-desert.com · kubehotel-saint-tropez.com/en — Phase 1 task: analyse each (layout, motion, typography, booking UX, imagery) into reusable notes so the prompt doesn't depend on live fetches.
 - Evals: which variant humans pick and why (over time), critic score, rounds to pass, Lighthouse.
 
-### seo (station 4d)
+### copywriter (station 4c)
+- Writes the **site's** words (not the pitch — that is `writer`, station 7): `copyBlocks[]`, `tagline`, `spot`, `season` and the per-type modules, per locale.
+- Built for thin dossiers. The rule that makes it safe: **expand voice, structure and atmosphere; never expand facts.** Framing around a sourced fact is writing; a new fact is a lie the owner has to answer for.
+- Shared context (what Kabalana's wave does, when the season runs) may give a paragraph somewhere to stand, but is never attributed to the business.
+- Guest testimonials in the dossier are mined for *what to talk about* and quoted verbatim where they belong — never paraphrased into the business's own voice.
+- Silence is a legitimate output: a section the dossier cannot support does not get written.
+- Every paragraph is mapped to its dossier fields in `copy/sources.md`; a paragraph with no line is not shippable.
+- Evals: sourced-claim ratio (must be 100%), sections left honestly empty, copyeditor rounds to pass.
+
+### humanizer (station 4d)
+- Rewrites the draft so it does not read as generated. Rewrites only: facts arrive fixed and leave fixed.
+- Targets the actual tells — triads, uniform sentence length, "nestled in the heart of", marketing verbs with no object, category nouns instead of concrete ones, relentless positivity, punctuation that is too clean.
+- Leaves an honest limit in (reception closes at seven, it is a walk from town): the most credible sentence on a page is the one that admits something.
+- Never chases a detector: no odd spellings, no injected typos, no invisible characters. The goal is prose a person would write, not prose that fools a classifier.
+- Evals: tell-list hits before/after, facts preserved exactly, copyeditor voice score.
+
+### copyeditor (station 4e)
+- Independent review of the words before they reach a page; separate from `critic`, who judges the built site.
+- Audits **every** claim against the dossier: `sourced` / `shared-context` / `framing` / `unsourced` / `contradicted`. One `unsourced` or `contradicted` fails the whole copy.
+- Diffs the pre-humanizer draft against the final to catch facts that appeared or vanished in the rewrite — the likeliest place for an invented claim to enter.
+- Then a voice audit, then a completeness audit against the `businessType`'s required fields.
+- Never rewrites: writing a sentence for the page would end its ability to review it. Fails with specifics and names which agent the sentence goes back to.
+- Max 2 rounds; still failing means the dossier cannot support a site, which in `mode: test` takes the business out of the run.
+- Evals: claims audited per run, unsourced caught, false-pass rate measured against the critic's later findings.
+
+### seo (station 4g)
 - Classical search: Google, Bing and the map surfaces that actually send customers to a beach business.
 - Emits JSON-LD from CMS content (`LodgingBusiness` / `Hostel` / `SportsActivityLocation` / `Store` per `businessType`), unique title + description + canonical + `hreflang` per page per locale, Open Graph, sitemap and robots.
 - Local signals: name/address/phone identical to the business's Google listing, character for character; `geo` from the dossier; map embed lazy.
@@ -176,7 +204,7 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 - Fixes land in `templates/<variant>/`, never as per-site hacks. `aggregateRating` only from a real platform score in `ratings[]`, attributed to that platform.
 - Evals: measured LCP/CLS before and after, structured-data validity, brand-query position over time.
 
-### aiseo (station 4e)
+### aiseo (station 4h)
 - Answer engines, not results pages: the unit of work is a self-contained, attributable, machine-readable fact that survives being lifted out of the page.
 - Writes the questions travellers actually ask for this `businessType`, ensures each has a direct answer in the rendered HTML near a matching heading, and emits `FAQPage` data alongside (not instead of) the business JSON-LD.
 - Generates `/llms.txt` at build time from the same CMS content; never hand-maintained.

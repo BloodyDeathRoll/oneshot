@@ -29,6 +29,9 @@ agents:                          # pinned versions for reproducibility
   scout: 0.1.0
   harvester: 0.2.0
   designer: 0.1.0
+  copywriter: 0.1.0
+  humanizer: 0.1.0
+  copyeditor: 0.1.0
   seo: 0.1.0
   aiseo: 0.1.0
   critic: 0.1.0
