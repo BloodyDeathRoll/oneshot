@@ -1,0 +1,865 @@
+{
+ "slug": "ka-surf-hostel-and-restaurant",
+ "run_id": "2026-09-ahangama-02",
+ "harvester_version": "0.1.0",
+ "harvested_at": "2026-09-19T17:05:00Z",
+ "business": {
+  "name": {
+   "value": "KA Surf Hostel",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z",
+   "note": "Google lists it as 'KA surf hostel and restaurant'; Hostelworld as 'K A Surf Hostel'"
+  },
+  "type": {
+   "value": "beach_lodging",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z",
+   "note": "hostel with dorms and private rooms; Booking category 'Hostel'"
+  },
+  "tagline": {
+   "value": "Surf, Chill & Feel at Home in Ahangama",
+   "source_url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+   "fetched_at": "2026-09-19T17:05:00Z",
+   "note": "the owner's own headline on Hostelworld"
+  },
+  "description": {
+   "value": "Welcome to your perfect base in Ahangama! Whether you're here to ride the waves or simply unwind, our hostel strikes the ideal balance between social vibes and personal space. Located just a short walk from the famous Kabalana Beach, you'll find a variety of restaurants, surf spots, and cozy hangout areas right at your doorstep.",
+   "source_url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+   "fetched_at": "2026-09-19T17:05:00Z",
+   "language": "en",
+   "note": "verbatim, the owner's own copy on Hostelworld — the best writing this business has anywhere"
+  },
+  "description_long": {
+   "value": "Why Stay With Us? — Prime Location: 5-minute walk to Kabalana Beach, close to cafes, restaurants & surf schools. Chill & Social Vibes: Mingle when you want, relax when you need. Dorms & Private Rooms: Options for every kind of traveler. Comfort & Convenience: A/C & fan in every room; private lockers & personal fridge in every room; modern bathrooms with hot showers. Extras You'll Love: beautiful green garden & chill zone; free filtered water — refill anytime; daily free healthy breakfast (rotis, fruits, pancakes, eggs — vegan options available); cheap scooter rental (also with surf rack possible); reliable Wi-Fi (fiber internet); laundry service available; 24/7 reception. Family-Run & Heartfelt Hospitality: Our hostel is managed by a local family who are passionate about making you feel at home from the moment you arrive.",
+   "source_url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+   "fetched_at": "2026-09-19T17:05:00Z",
+   "language": "en",
+   "note": "verbatim from Hostelworld, lightly joined into one block; bullets preserved as written"
+  },
+  "since": {
+   "value": null,
+   "gap": "not published"
+  },
+  "run_by": {
+   "value": "a local family",
+   "source_url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+   "fetched_at": "2026-09-19T17:05:00Z",
+   "note": "the owner's own words; corroborated by many guest reviews calling it family-run"
+  }
+ },
+ "location": {
+  "address": {
+   "value": "No 207/A, Welhengoda, 80650 Ahangama, Sri Lanka",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z",
+   "note": "Hostelworld writes '207/A welahangoda'; Google '207/A welahangoda, Ahangama'"
+  },
+  "lat_lng": {
+   "value": [
+    5.9805,
+    80.3486
+   ],
+   "source_url": "https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T17:05:00Z",
+   "note": "approximate: taken from the scout's pin; the plus code below is the precise reference"
+  },
+  "map_url": {
+   "value": "https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en",
+   "source_url": "https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  "plus_code": {
+   "value": "X9J2+PR Ahangama, Sri Lanka",
+   "source_url": "reports/2026-09-ahangama-02/candidates.json",
+   "fetched_at": "2026-09-19T17:05:00Z",
+   "note": "captured by the scout"
+  },
+  "distance_to_beach": {
+   "value": "Kabalana Beach 450 yd / a 5-minute walk",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  "nearby": {
+   "value": {
+    "Koggala Lake": "650 yd",
+    "Ahangama Railway Station": "1.3 mi",
+    "Koggala Airport": "3.3 mi"
+   },
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  "spot": {
+   "value": "Kabalana beach break — sandy beach break for beginners and intermediates, with The Rock reef A-frame for advanced surfers",
+   "source_url": "https://thesurfatlas.com/sri-lanka-surf/kabalana-beach/",
+   "fetched_at": "2026-09-19T17:05:00Z",
+   "note": "third-party surf guide"
+  }
+ },
+ "contact": {
+  "phone": {
+   "value": "+94773746053",
+   "source_url": "https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  "whatsapp": {
+   "value": null,
+   "gap": "no WhatsApp link published; likely the same number, unconfirmed"
+  },
+  "email": {
+   "value": null,
+   "gap": "not published; bookings run through the OTAs"
+  },
+  "socials": {
+   "instagram": "https://www.instagram.com/kasurfhostel/",
+   "facebook": null,
+   "tripadvisor": "https://www.tripadvisor.com/Hotel_Review-g674590-d34170013-Reviews-KA_Surf_Hostel-Ahangama_Galle_District_Southern_Province.html",
+   "google_maps": "https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en",
+   "booking": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "hostelworld": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+   "agoda": "https://www.agoda.com/en-in/ka-surf-hostel-h61738910/hotel/ahangama-lk.html"
+  }
+ },
+ "booking": {
+  "path": {
+   "value": "engine",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z",
+   "note": "live inventory on Booking.com, Hostelworld and Agoda; these become bookingLinks[] on the new site"
+  },
+  "engine_url": {
+   "value": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  "other_engines": {
+   "value": [
+    "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+    "https://www.agoda.com/en-in/ka-surf-hostel-h61738910/hotel/ahangama-lk.html"
+   ],
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  "reply_time_hint": {
+   "value": null,
+   "gap": "not published"
+  }
+ },
+ "hours": [],
+ "hours_note": {
+  "value": "Reception 24 hours; check-in 13:00–23:00, check-out until 13:00",
+  "source_url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+  "fetched_at": "2026-09-19T17:05:00Z",
+  "note": "Booking.com states check-in and check-out 'available 24 hours'; Hostelworld gives the specific windows — CONTRADICTION, see contradictions[]"
+ },
+ "offers": [],
+ "room_types": [
+  {
+   "value": "Bunk Bed in Mixed Dormitory Room",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "Bunk Bed in Female Dormitory Room",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "Bunk Bed in Male Dormitory Room",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "Double Room (1 extra-large double bed)",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "Deluxe Double Room (1 single bed)",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "Deluxe Double Room (1 extra-large double bed)",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  }
+ ],
+ "facilities": [
+  {
+   "value": "free WiFi (fiber, all areas)",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "room service",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "free breakfast (continental, full English/Irish)",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "sun terrace",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "garden",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "picnic area",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "outdoor furniture",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "shared lounge / TV area",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "luggage storage",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "tour desk",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "24-hour front desk",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "24-hour security",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "minimarket on site",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "shuttle service",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "walking tours (additional charge)",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "pets allowed on request, no extra charge",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "free security lockers",
+   "source_url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "bicycle parking",
+   "source_url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "airport transfers",
+   "source_url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "laundry service",
+   "source_url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "scooter rental (surf rack available)",
+   "source_url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "free filtered water",
+   "source_url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "A/C and fan in every room",
+   "source_url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "personal fridge in every room",
+   "source_url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "hot showers",
+   "source_url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  }
+ ],
+ "house_rules": [
+  {
+   "value": "No parking available (Booking.com) — Hostelworld lists 'Free Parking'",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z",
+   "note": "CONTRADICTION, see contradictions[]"
+  },
+  {
+   "value": "Children are not allowed; no cots or extra beds",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "Parties/events are not allowed",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  {
+   "value": "Managed by a private host (Booking.com legal notice)",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  }
+ ],
+ "levels": [],
+ "languages_spoken": [
+  {
+   "value": "English",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  }
+ ],
+ "season": {
+  "value": null,
+  "gap": "not published by the business"
+ },
+ "reviews": {
+  "google": {
+   "rating": 4.8,
+   "count": 42,
+   "source_url": "https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T17:05:00Z",
+   "breakdown": {
+    "5": 40,
+    "4": 0,
+    "3": 0,
+    "2": 1,
+    "1": 1
+   }
+  },
+  "booking": {
+   "rating": 9.5,
+   "scale": 10,
+   "count": 38,
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T17:05:00Z",
+   "categories": {
+    "Staff": 9.9,
+    "Facilities": 9.2,
+    "Cleanliness": 9.3,
+    "Comfort": 9.2,
+    "Value for money": 9.4,
+    "Location": 9.0,
+    "Free WiFi": 2.5
+   },
+   "note": "Free WiFi scores 2.5/10 — the one weak number anywhere, and it contradicts the owner's 'reliable fiber internet' claim"
+  },
+  "hostelworld": {
+   "rating": 9.8,
+   "scale": 10,
+   "count": 66,
+   "source_url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+   "fetched_at": "2026-09-19T17:05:00Z",
+   "categories": {
+    "Value for Money": 10.0,
+    "Security": 10.0,
+    "Atmosphere": 9.8,
+    "Cleanliness": 9.7,
+    "Staff": 9.9,
+    "Location": 9.4,
+    "Facilities": 9.8
+   }
+  },
+  "tripadvisor": {
+   "rating": null,
+   "count": null,
+   "source_url": "https://www.tripadvisor.com/Hotel_Review-g674590-d34170013-Reviews-KA_Surf_Hostel-Ahangama_Galle_District_Southern_Province.html",
+   "gap": "listing exists; not fetched (TripAdvisor 403s this harvester)"
+  },
+  "instagram_followers": {
+   "value": 1494,
+   "source_url": "https://www.instagram.com/kasurfhostel/",
+   "fetched_at": "2026-09-19T17:05:00Z"
+  },
+  "quotes": [
+   {
+    "text": "It's the best Hostel I've ever stayed at! I ended up staying 9 days instead of 2 because I didn't want to leave! The rooms are quite spacious and the outdoor bathroom got a roof so its protected but never humid. Overall felt super welcomed by the...",
+    "author": "Maximilian, Germany",
+    "date": null,
+    "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+    "fetched_at": "2026-09-19T17:05:00Z",
+    "note": "TRUNCATED by Booking.com's 'Read more'"
+   },
+   {
+    "text": "Lovely location away from the main road. So close to the beach! The most amazing family who look after you like you're one of their own. Thank you KA!",
+    "author": "Clara, United Kingdom",
+    "date": null,
+    "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+    "fetched_at": "2026-09-19T17:05:00Z"
+   },
+   {
+    "text": "The most amazing family running the business and the quiet of the place. :)",
+    "author": "Luzzi, France",
+    "date": null,
+    "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+    "fetched_at": "2026-09-19T17:05:00Z"
+   },
+   {
+    "text": "It's a calm and quiet place, a wonderful staff, caring owners and clean. I had a really good time even i havnt spent much time there. beds are compfy and it has aircon and warm water.",
+    "author": "Wolfgang, Austria",
+    "date": null,
+    "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+    "fetched_at": "2026-09-19T17:05:00Z"
+   },
+   {
+    "text": "Rooms modern, clean and comfortable. Owner friendly and kind. In a really nice location and nice communal area. Highly recommend, would stay again! 😍",
+    "author": "Ellen, Ireland",
+    "date": null,
+    "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+    "fetched_at": "2026-09-19T17:05:00Z"
+   },
+   {
+    "text": "The rooms were super spacious and very nice interior.",
+    "author": "Sara, Switzerland",
+    "date": null,
+    "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+    "fetched_at": "2026-09-19T17:05:00Z"
+   },
+   {
+    "text": "The family is so so so friendly , they are personal and care for everybody like you are one of their children. They are kind hearted honest people",
+    "author": "Nanet, Netherlands",
+    "date": null,
+    "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+    "fetched_at": "2026-09-19T17:05:00Z"
+   },
+   {
+    "text": "Great family owned hostel :-) they are really friendly and helpful! The breakfast always consists of a typical Sri Lankan dish (roti, hoppers,…) which changes every day and additionally a great fruit platter!! Dorms are big, bathrooms are nice with the whole outdoor thing :-)",
+    "author": "Elena, Female, 25-30, Germany",
+    "date": "2026-03",
+    "source_url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+    "fetched_at": "2026-09-19T17:05:00Z"
+   },
+   {
+    "text": "Owners very hospitable, breakfast in the morning was great, close to kabalana beach so great for surfing",
+    "author": "Saketh, Male, 18-24, England",
+    "date": "2026-02",
+    "source_url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+    "fetched_at": "2026-09-19T17:05:00Z"
+   },
+   {
+    "text": "I got dengue in Kandy and the staff at KA helped nurse me back to health with Ayurvedic medicines (on top of what the hospital was already giving me) They are the kindest people and they attract good vibes. I met some of the best people here :)",
+    "author": "Mia, Female, 18-24, USA",
+    "date": "2026-02",
+    "source_url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+    "fetched_at": "2026-09-19T17:05:00Z"
+   }
+  ]
+ },
+ "images": [
+  {
+   "id": "img-001",
+   "file": "assets/img-001.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "a bedroom with a bed with blue pillows on it at KA Surf Hostel in Ahangama",
+   "sha256": "ef82776638fb6646fc429336737e42b7273925b1a6409fb098747298d4ea71f6"
+  },
+  {
+   "id": "img-002",
+   "file": "assets/img-002.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "a group of people sitting at a table at KA Surf Hostel in Ahangama",
+   "sha256": "826e58e83fabe9725ebca6711b164236a169b56ec133cd364af1ce4a5921de40"
+  },
+  {
+   "id": "img-003",
+   "file": "assets/img-003.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "a person holding a plate of fruit with an egg at KA Surf Hostel in Ahangama",
+   "sha256": "cda914a5956825cd90f1caa376a680afd195d4675d4546408f4d9a05593ba98f"
+  },
+  {
+   "id": "img-004",
+   "file": "assets/img-004.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "a room with three bunk beds and a ceiling at KA Surf Hostel in Ahangama",
+   "sha256": "26a34d221cad7ebbc8a5d4daf6744086dff4df6c161aca8707d03a69064bb1de"
+  },
+  {
+   "id": "img-005",
+   "file": "assets/img-005.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "a bathroom with a shower and a sink and some plants at KA Surf Hostel in Ahangama",
+   "sha256": "529cabe09f6838b24ac18d6e940e31186f165ddd8e03274a2f56e168083d2a96"
+  },
+  {
+   "id": "img-006",
+   "file": "assets/img-006.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "a house with palm trees in front of it at KA Surf Hostel in Ahangama",
+   "sha256": "43a8d942f61cdc7b510b7dd20b12bc87bdcf110621871d24c7bb599aed2968fc"
+  },
+  {
+   "id": "img-007",
+   "file": "assets/img-007.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "a bed and chairs on a patio with a bedroom at KA Surf Hostel in Ahangama",
+   "sha256": "eb047e8c07cc837a201a4db5023f59110268768993c87731ff7b9f4acde6a14a"
+  },
+  {
+   "id": "img-008",
+   "file": "assets/img-008.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "a bathroom with a toilet and a sink and a window at KA Surf Hostel in Ahangama",
+   "sha256": "183bc4e836ee9f9e39c7dd85adc9eda233e630f6b287e9214f41d6c2331bdfb9"
+  },
+  {
+   "id": "img-009",
+   "file": "assets/img-009.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 576,
+   "description": "a light on the side of a house at night at KA Surf Hostel in Ahangama",
+   "sha256": "14bfd58bf3a09caa5a58bc9511f78543a3cf022b2c0b52940413381ef79e830e"
+  },
+  {
+   "id": "img-010",
+   "file": "assets/img-010.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 777,
+   "height": 768,
+   "description": "a sticker of a logo for a seafood restaurant at KA Surf Hostel in Ahangama",
+   "sha256": "b534f4cff9855587b1d1d8fcd7bbdc6c90e180768f3b276f4173f8dcdbb01e62"
+  },
+  {
+   "id": "img-011",
+   "file": "assets/img-011.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "a horse standing in a field with palm trees at KA Surf Hostel in Ahangama",
+   "sha256": "6fffbaac98f5dc5742bf60035209287ee45fdaf27f4ac2a5714d953493194b99"
+  },
+  {
+   "id": "img-012",
+   "file": "assets/img-012.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 576,
+   "description": "a white wall with a christmas wreath on it at KA Surf Hostel in Ahangama",
+   "sha256": "cb39e59d23dd0f0420edb5ab3623c91654d1f5bfc1c5d382c52f727f313857fe"
+  },
+  {
+   "id": "img-013",
+   "file": "assets/img-013.jpg",
+   "source_url": "https://www.instagram.com/kasurfhostel/reel/DUDRxbRD153/",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @kasurfhostel",
+   "width": 361,
+   "height": 640,
+   "description": "Video by KA SURF HOSTEL on January 28, 2026.",
+   "sha256": "064e1480559f17d4068f8f4a0ec0a91d8483f6511064bc587be09adfa2dc1ee1",
+   "note": "video cover frame"
+  },
+  {
+   "id": "img-014",
+   "file": "assets/img-014.webp",
+   "source_url": "https://www.instagram.com/kasurfhostel/p/DDt2pN_NPE2/",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @kasurfhostel",
+   "width": 640,
+   "height": 640,
+   "description": "Photo by KA SURF HOSTEL on December 18, 2024.",
+   "sha256": "108748f1b46e31986a31be4f6a8163a269fec5b7a2a51bd8d036c7f1b601629c",
+   "note": null
+  },
+  {
+   "id": "img-015",
+   "file": "assets/img-015.webp",
+   "source_url": "https://www.instagram.com/kasurfhostel/p/DDrxLAltgye/",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @kasurfhostel",
+   "width": 640,
+   "height": 640,
+   "description": "Photo by KA SURF HOSTEL on December 17, 2024.",
+   "sha256": "b4f66d7e7e52fa11eee7ee8fefd0fe7419d8425c9b88ed169d8414d74fef9d02",
+   "note": null
+  },
+  {
+   "id": "img-016",
+   "file": "assets/img-016.webp",
+   "source_url": "https://www.instagram.com/kasurfhostel/p/DDIzgFRItN5/",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @kasurfhostel",
+   "width": 640,
+   "height": 640,
+   "description": "Photo by KA SURF HOSTEL on December 03, 2024.",
+   "sha256": "424de6fedd6c5869a8589d342f99d0c0d21b264ec15507a34476ee7df760f5d6",
+   "note": null
+  },
+  {
+   "id": "img-017",
+   "file": "assets/img-017.jpg",
+   "source_url": "https://www.instagram.com/kasurfhostel/p/DCxnw5bITiR/",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @kasurfhostel",
+   "width": 640,
+   "height": 480,
+   "description": "Photo by KA SURF HOSTEL on November 24, 2024.",
+   "sha256": "15274de259b9813bda5641a992d46148f2f6bbbae1d85d2e840526a053cf0c86",
+   "note": null
+  },
+  {
+   "id": "img-018",
+   "file": "assets/img-018.webp",
+   "source_url": "https://www.instagram.com/kasurfhostel/p/DCGDO2rC8p9/",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @kasurfhostel",
+   "width": 640,
+   "height": 640,
+   "description": "Photo by KA SURF HOSTEL on November 07, 2024.",
+   "sha256": "e1844bf0d161a22ceb67d9a3fbdca6fe802e4ca176a00127871573e49c27ae6f",
+   "note": null
+  },
+  {
+   "id": "img-019",
+   "file": "assets/img-019.webp",
+   "source_url": "https://www.instagram.com/kasurfhostel/p/DCGDNcDiNsr/",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @kasurfhostel",
+   "width": 640,
+   "height": 640,
+   "description": "Photo by KA SURF HOSTEL on November 07, 2024.",
+   "sha256": "bd82dc6a9ebb4cbafeedc5ecb00e5bb00aad89e6c9e0f66a53dba94b3f76f6e7",
+   "note": null
+  },
+  {
+   "id": "img-020",
+   "file": "assets/img-020.webp",
+   "source_url": "https://www.instagram.com/kasurfhostel/p/DCGDL-aiN-t/",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @kasurfhostel",
+   "width": 640,
+   "height": 640,
+   "description": "Photo by KA SURF HOSTEL on November 07, 2024.",
+   "sha256": "ac990d57ec23b1e742ec31673d4597aee2da77807475588f762d12f97851c644",
+   "note": null
+  },
+  {
+   "id": "img-021",
+   "file": "assets/img-021.webp",
+   "source_url": "https://www.instagram.com/kasurfhostel/p/DCGDKyRCw9Q/",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @kasurfhostel",
+   "width": 640,
+   "height": 640,
+   "description": "Photo by KA SURF HOSTEL on November 07, 2024.",
+   "sha256": "0275bd465e084fb6e15f88a408bc218f2ff102292e11b586440391900b10ef77",
+   "note": null
+  },
+  {
+   "id": "img-022",
+   "file": "assets/img-022.webp",
+   "source_url": "https://www.instagram.com/kasurfhostel/p/DCGDJdoCPy7/",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @kasurfhostel",
+   "width": 640,
+   "height": 640,
+   "description": "Photo by KA SURF HOSTEL on November 07, 2024.",
+   "sha256": "ec85771e40c565dc085f366a45809bc8d8edcfb2babc12206194c2fad0608851",
+   "note": null
+  },
+  {
+   "id": "img-023",
+   "file": "assets/img-023.webp",
+   "source_url": "https://www.instagram.com/kasurfhostel/p/DCGDGztCo4-/",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @kasurfhostel",
+   "width": 640,
+   "height": 640,
+   "description": "Photo by KA SURF HOSTEL on November 07, 2024.",
+   "sha256": "4188b61499fdab033ab15bb9e8e7bb9b4fa403191f6c8b37ce9fe895cf359af9",
+   "note": null
+  },
+  {
+   "id": "img-024",
+   "file": "assets/img-024.webp",
+   "source_url": "https://www.instagram.com/kasurfhostel/p/DCGDGYViwU4/",
+   "fetched_at": "2026-09-19T18:03:40Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @kasurfhostel",
+   "width": 640,
+   "height": 640,
+   "description": "Photo by KA SURF HOSTEL on November 07, 2024.",
+   "sha256": "e706572d5447b87ac9f49b1a004b4985963318e5988b2a414944167e507dc4f3",
+   "note": null
+  }
+ ],
+ "existing_site": {
+  "url": null,
+  "status": null,
+  "notes": "no website of its own. The business's entire web identity is rented: Booking.com, Hostelworld, Agoda, TripAdvisor and an Instagram account with 1,494 followers and a one-line bio ('Best for who interested surfing'). The good copy and the good photos all live on platforms that take a commission.",
+  "screenshot": null
+ },
+ "languages": {
+  "seen": [
+   "en"
+  ],
+  "owner_language_hint": "si"
+ },
+ "gaps": [
+  {
+   "field": "offers",
+   "why": "nightly rates are live, dated inventory on the OTAs, not a published price list; they cannot be captured as a static fact",
+   "pitch_point": true
+  },
+  {
+   "field": "existing_site.url",
+   "why": "no site of its own; every booking pays an OTA commission",
+   "pitch_point": true
+  },
+  {
+   "field": "contact.email",
+   "why": "not published",
+   "pitch_point": true
+  },
+  {
+   "field": "contact.whatsapp",
+   "why": "not published",
+   "pitch_point": true
+  },
+  {
+   "field": "business.since",
+   "why": "not published",
+   "pitch_point": false
+  },
+  {
+   "field": "hours",
+   "why": "a hostel with 24-hour reception publishes no hours for the restaurant side, although Google's name includes 'and restaurant'",
+   "pitch_point": true
+  },
+  {
+   "field": "restaurant",
+   "why": "Google's listing name says 'and restaurant' but no OTA mentions a restaurant, and no menu or food offer is published anywhere",
+   "pitch_point": true
+  },
+  {
+   "field": "season",
+   "why": "not published",
+   "pitch_point": false
+  },
+  {
+   "field": "reviews.tripadvisor",
+   "why": "listing exists but TripAdvisor 403s this harvester",
+   "pitch_point": false
+  },
+  {
+   "field": "images",
+   "why": "usable but modest: 576–1024 px on Booking, 640 px on Instagram. Photography on location would beat all of it",
+   "pitch_point": true
+  }
+ ],
+ "contradictions": [
+  {
+   "what": "Parking: Booking.com says 'No parking available'; Hostelworld lists 'Free Parking'.",
+   "resolution": "Unresolved — ask the owner. Do not publish either claim."
+  },
+  {
+   "what": "Check-in: Booking.com says check-in and check-out are 'available 24 hours'; Hostelworld says check-in 13:00–23:00, check-out until 13:00.",
+   "resolution": "Unresolved — ask the owner. Hostelworld's specific window is the more likely truth."
+  },
+  {
+   "what": "WiFi: the owner advertises 'Reliable Wi-Fi (Fiber Internet)'; Booking.com guests score Free WiFi 2.5/10.",
+   "resolution": "Unresolved, and material — do not repeat the fiber claim on the new site without checking."
+  },
+  {
+   "what": "Name: Google's listing is 'KA surf hostel and restaurant'; every OTA and the Instagram account say only 'KA Surf Hostel'.",
+   "resolution": "Unresolved — ask whether the restaurant still operates."
+  }
+ ]
+}
