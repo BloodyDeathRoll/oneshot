@@ -6,12 +6,14 @@ One file per run: `reports/<run-id>/candidates.json`. The human approves a subse
 
 ```json
 {
-  "run_id": "2026-09-mirissa-01",
+  "run_id": "2026-09-ahangama-01",
   "generated_at": "2026-09-18T06:00:00Z",
   "scout_version": "0.1.0",
   "area": {
-    "anchors": [{ "query": "Niira Hotel, Mirissa, Sri Lanka", "lat": 5.9440, "lng": 80.4590, "geocoder": "nominatim", "fetched_at": "…" }],
-    "shore_buffer_m": 100,
+    "mode": "business",
+    "anchors": [{ "query": "The Lavish Haven, Ahangama, Sri Lanka", "lat": 5.9730, "lng": 80.3650, "geocoder": "nominatim", "fetched_at": "…" }],
+    "radius_m": 100,
+    "shore_buffer_m": null,
     "polygon": "<GeoJSON Polygon or path to reports/<run-id>/area.geojson>"
   },
   "candidates": [

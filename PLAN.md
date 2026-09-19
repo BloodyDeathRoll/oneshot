@@ -12,7 +12,7 @@ Workflow graph: Figma → Workflows file → `workflows` page → frame `oneshot
 |---|---|
 | Repo | Own VS Code project, own git repo (`oneshot`) |
 | Runtime | Claude Code headless, one business at a time; disk is the memory (ledger + files), no daemon, no DB |
-| Area definition | Anchor points + shore buffer (see §3) |
+| Area definition | Three modes (§3): a town + shore buffer · a stretch between two anchors + shore buffer · a single business + radius around it |
 | Site output | Every client site is a static **Astro** build that pulls its tenant's content from Payload's API at build time. Design lives in the Astro template (this is where the designer's canvas/WebGL, editorial grids and booking drawers go); editable content (hours, prices, photos, copy blocks, contact, booking links) lives in Payload. **Not WordPress.** |
 | CMS | One CMS for all client sites, run by us: Payload CMS 3 with the official multi-tenant plugin, Postgres, Docker Compose, on one VPS — decided 2026-09-18: the second Oracle Cloud Always Free account, Ampere A1 shape (ARM64, up to 2 OCPU / 12 GB), account upgraded to pay-as-you-go so the instance cannot be idle-reclaimed; env-configurable so it can move (e.g. Hetzner CX23) later. One tenant per business. Each owner gets an email/password login scoped to their tenant only. |
 | Hosting | Cloudflare Workers with static assets, one Worker per site, deployed with Wrangler, custom domain per site via Cloudflare. **Not** Cloudflare Pages (being folded into Workers). **Not** Vercel or GoDaddy. |
@@ -73,12 +73,16 @@ oneshot/
 ## 3. `run.yaml`
 
 ```yaml
-run_id: 2026-09-mirissa-01
+run_id: 2026-09-ahangama-01
 area:
-  anchors:                       # 1 anchor = town/point; 2 anchors = a stretch of coast between them
-    - "Niira Hotel, Mirissa, Sri Lanka"
-    - "Ritz-Carlton, Mirissa, Sri Lanka"
-  shore_buffer_m: 100
+  mode: business                 # town | stretch | business
+  # town:     one anchor (a town or beach) + shore_buffer_m along its coast
+  # stretch:  two anchors + shore_buffer_m along the coastline between them
+  # business: one anchor (a named business) + radius_m circle around it
+  anchors:
+    - "The Lavish Haven, Ahangama, Sri Lanka"
+  radius_m: 100                  # business mode
+  shore_buffer_m: 100            # town / stretch modes
 types: [surf_school, board_rental, surf_shop, surf_camp, beach_lodging, shaper]
 presence_threshold: 2            # shortlist businesses scoring <= this (0–5)
 max_sites: 3
@@ -96,7 +100,7 @@ agents:                          # pinned versions for reproducibility
   critic: 0.1.0
 ```
 
-Scout geocodes anchors, pulls the coastline between them from OSM, buffers it by `shore_buffer_m`, and keeps only businesses whose location falls inside the polygon.
+Scout geocodes the anchors and builds the area polygon: `town` = the anchor's coast buffered by `shore_buffer_m`; `stretch` = the OSM coastline between the two anchors buffered by `shore_buffer_m`; `business` = a circle of `radius_m` around the one anchor. Only businesses whose location falls inside the polygon are kept.
 
 ---
 
