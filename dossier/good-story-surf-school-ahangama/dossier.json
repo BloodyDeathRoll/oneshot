@@ -1,0 +1,431 @@
+{
+ "slug": "good-story-surf-school-ahangama",
+ "run_id": "2026-09-ahangama-02",
+ "harvester_version": "0.1.0",
+ "harvested_at": "2026-09-19T16:05:00Z",
+ "business": {
+  "name": {
+   "value": "Good Story Surf School - Ahangama",
+   "source_url": "https://www.google.com/maps/search/Good%20Story%20Surf%20School%20-%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:05:00Z",
+   "note": "Instagram profile name is 'Good Story | Surf School | Sri Lanka'"
+  },
+  "type": {
+   "value": "surf_camp",
+   "source_url": "https://www.google.com/maps/search/Good%20Story%20Surf%20School%20-%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:05:00Z",
+   "note": "Google lists it as a '2-star hotel' with beach access; the Instagram bio says 'School | Hotel | Villas', so it is a surf school with lodging"
+  },
+  "tagline": {
+   "value": "Good vibes only. Great riders always.",
+   "source_url": "https://www.instagram.com/goodstorysurf/",
+   "fetched_at": "2026-09-19T16:05:00Z",
+   "note": "Instagram bio line, verbatim"
+  },
+  "description": {
+   "value": "School | Hotel | Villas / We teach you how to surf since 2013 / ISA-certified coaches / Good vibes only. Great riders always. / Join our surf community🖤",
+   "source_url": "https://www.instagram.com/goodstorysurf/",
+   "fetched_at": "2026-09-19T16:05:00Z",
+   "language": "en",
+   "note": "Instagram bio, verbatim"
+  },
+  "since": {
+   "value": "2013",
+   "source_url": "https://www.instagram.com/goodstorysurf/",
+   "fetched_at": "2026-09-19T16:05:00Z",
+   "note": "Instagram bio: 'We teach you how to surf since 2013'"
+  },
+  "ownership": {
+   "value": "Identifies as women-owned",
+   "source_url": "https://www.google.com/maps/search/Good%20Story%20Surf%20School%20-%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:05:00Z",
+   "note": "Google business attribute"
+  },
+  "affiliations": {
+   "value": [
+    "@goodstoryvillage (villas)",
+    "@goodstoryclub (padel / gym)",
+    "@good_spa (spa)",
+    "@goodstorybalivillas (Bali)"
+   ],
+   "source_url": "https://www.instagram.com/goodstorysurf/",
+   "fetched_at": "2026-09-19T16:05:00Z",
+   "note": "sibling brands reposted on the profile grid; the surf school is one part of a group"
+  }
+ },
+ "location": {
+  "address": {
+   "value": "Ahangama, Sri Lanka",
+   "source_url": "https://www.google.com/maps/search/Good%20Story%20Surf%20School%20-%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:05:00Z",
+   "note": "Google publishes no street address, only the town and plus code"
+  },
+  "lat_lng": {
+   "value": [
+    5.9777001,
+    80.3501026
+   ],
+   "source_url": "https://www.google.com/maps/search/Good%20Story%20Surf%20School%20-%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:05:00Z"
+  },
+  "map_url": {
+   "value": "https://www.google.com/maps/search/Good%20Story%20Surf%20School%20-%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "source_url": "https://www.google.com/maps/search/Good%20Story%20Surf%20School%20-%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:05:00Z"
+  },
+  "plus_code": {
+   "value": "X9H2+32 Ahangama, Sri Lanka",
+   "source_url": "https://www.google.com/maps/search/Good%20Story%20Surf%20School%20-%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:05:00Z"
+  },
+  "spot": {
+   "value": "Kabalana beach break — sandy beach break suiting beginners and intermediates, with The Rock reef A-frame alongside it for advanced surfers",
+   "source_url": "https://thesurfatlas.com/sri-lanka-surf/kabalana-beach/",
+   "fetched_at": "2026-09-19T16:05:00Z",
+   "note": "third-party surf guide, not the business"
+  }
+ },
+ "contact": {
+  "phone": {
+   "value": "+94760052597",
+   "source_url": "https://www.google.com/maps/search/Good%20Story%20Surf%20School%20-%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:05:00Z"
+  },
+  "whatsapp": {
+   "value": null,
+   "gap": "no WhatsApp link published; the Instagram highlight is titled 'How to book' but its contents are behind the logged-out wall"
+  },
+  "email": {
+   "value": "info@goodstoryvillage.com",
+   "source_url": "https://www.goodstoryvillage.com/",
+   "fetched_at": "2026-09-19T16:05:00Z",
+   "note": "mailto: link on goodstoryvillage.com, the group's villa site — group address, not confirmed as the surf school's"
+  },
+  "socials": {
+   "instagram": "https://www.instagram.com/goodstorysurf/",
+   "facebook": null,
+   "tripadvisor": "https://www.tripadvisor.com/Attraction_Review-g612380-d10004873-Reviews-Good_Story_Surf_School-Weligama_Matara_Southern_Province.html",
+   "google_maps": "https://www.google.com/maps/search/Good%20Story%20Surf%20School%20-%20Ahangama/@5.9794134,80.350836,17z?hl=en"
+  }
+ },
+ "booking": {
+  "path": {
+   "value": "phone",
+   "source_url": "https://www.google.com/maps/search/Good%20Story%20Surf%20School%20-%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:05:00Z",
+   "note": "Google shows only a phone number and 'Contact this property for rates and availability'; no booking engine, no OTA listing, and the website that would carry one is dead"
+  },
+  "engine_url": {
+   "value": null
+  },
+  "reply_time_hint": {
+   "value": null,
+   "gap": "not published"
+  }
+ },
+ "hours": [],
+ "hours_note": {
+  "value": null,
+  "gap": "Google publishes no opening hours for this listing"
+ },
+ "offers": [],
+ "facilities": [
+  {
+   "value": "Wi-Fi",
+   "source_url": "https://www.google.com/maps/search/Good%20Story%20Surf%20School%20-%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:05:00Z",
+   "note": "Google 'Hotel details'"
+  },
+  {
+   "value": "free breakfast",
+   "source_url": "https://www.google.com/maps/search/Good%20Story%20Surf%20School%20-%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:05:00Z",
+   "note": "Google 'Hotel details'"
+  },
+  {
+   "value": "free parking",
+   "source_url": "https://www.google.com/maps/search/Good%20Story%20Surf%20School%20-%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:05:00Z",
+   "note": "Google 'Hotel details'"
+  },
+  {
+   "value": "pool",
+   "source_url": "https://www.google.com/maps/search/Good%20Story%20Surf%20School%20-%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:05:00Z",
+   "note": "Google 'Hotel details'"
+  },
+  {
+   "value": "beach access",
+   "source_url": "https://www.google.com/maps/search/Good%20Story%20Surf%20School%20-%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:05:00Z",
+   "note": "Google 'Hotel details'"
+  },
+  {
+   "value": "kid-friendly",
+   "source_url": "https://www.google.com/maps/search/Good%20Story%20Surf%20School%20-%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:05:00Z",
+   "note": "Google 'Hotel details'"
+  }
+ ],
+ "levels": [
+  {
+   "value": "all levels",
+   "source_url": "https://www.tripadvisor.com/Attraction_Review-g612380-d10004873-Reviews-Good_Story_Surf_School-Weligama_Matara_Southern_Province.html",
+   "fetched_at": "2026-09-19T16:05:00Z",
+   "note": "from search-result text describing the TripAdvisor listing; NOT verified on a page the harvester loaded — treat as unconfirmed"
+  }
+ ],
+ "credentials": [
+  {
+   "value": "ISA-certified coaches",
+   "source_url": "https://www.instagram.com/goodstorysurf/",
+   "fetched_at": "2026-09-19T16:05:00Z",
+   "note": "Instagram bio"
+  }
+ ],
+ "season": {
+  "value": null,
+  "gap": "the business publishes no season; the spot's season is recorded under location.spot"
+ },
+ "reviews": {
+  "google": {
+   "rating": 4.6,
+   "count": 81,
+   "source_url": "https://www.google.com/maps/search/surf%20camp/@5.97941339533991,80.3508360317383,18z?hl=en",
+   "fetched_at": "2026-09-19T11:10:58Z",
+   "note": "from the Maps search feed captured by the scout; the place page itself shows 4.6 but no count logged out"
+  },
+  "tripadvisor": {
+   "rating": null,
+   "count": 71,
+   "source_url": "https://www.tripadvisor.com/Attraction_Review-g612380-d10004873-Reviews-Good_Story_Surf_School-Weligama_Matara_Southern_Province.html",
+   "fetched_at": "2026-09-19T16:05:00Z",
+   "gap": "count came from search-result text, not from the page (TripAdvisor 403s the harvester); no star rating captured; and this listing is the WELIGAMA location, which may be a different site of the same brand"
+  },
+  "instagram_followers": {
+   "value": 6811,
+   "source_url": "https://www.instagram.com/goodstorysurf/",
+   "fetched_at": "2026-09-19T16:05:00Z"
+  },
+  "quotes": []
+ },
+ "images": [
+  {
+   "id": "img-001",
+   "file": "assets/img-001.jpg",
+   "source_url": "https://www.instagram.com/goodstorysurf/p/DVQ8Sc-knRw/",
+   "fetched_at": "2026-09-19T16:00:18Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @goodstorysurf",
+   "width": 512,
+   "height": 640,
+   "description": "Photo by Good Story | Surf School | Sri Lanka on February 27, 2026.",
+   "sha256": "a705be9a0b4e523f46a997655dd8c8bb6ba87807114ea5c15dce336cb59f6177",
+   "note": null
+  },
+  {
+   "id": "img-002",
+   "file": "assets/img-002.jpg",
+   "source_url": "https://www.instagram.com/goodstorysurf/p/DdWJZcvDvrf/",
+   "fetched_at": "2026-09-19T16:00:18Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @goodstorysurf",
+   "width": 512,
+   "height": 640,
+   "description": "Photo by Good Story | Surf School | Sri Lanka on September 16, 2026.",
+   "sha256": "01f73d4560d3f0606b8c73fe6f8a684aef7c137860881f6c748e75e2281a77c5",
+   "note": null
+  },
+  {
+   "id": "img-003",
+   "file": "assets/img-003.jpg",
+   "source_url": "https://www.instagram.com/goodstorysurf/reel/DXMSIYEkb9k/",
+   "fetched_at": "2026-09-19T16:00:18Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @goodstorysurf",
+   "width": 361,
+   "height": 640,
+   "description": "Video by Good Story | Surf School | Sri Lanka on April 16, 2026.",
+   "sha256": "a7be0f8d36a29151152a61787e5b586eb0b435974d55172c45440aded0ff1aaf",
+   "note": "video cover frame"
+  },
+  {
+   "id": "img-004",
+   "file": "assets/img-004.jpg",
+   "source_url": "https://www.instagram.com/goodstorysurf/reel/DWJT1FVER4D/",
+   "fetched_at": "2026-09-19T16:00:18Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @goodstorysurf",
+   "width": 361,
+   "height": 640,
+   "description": "Video by Good Story | Surf School | Sri Lanka on March 21, 2026.",
+   "sha256": "046b03305f21aa944ab92d7a8e5f202270d65132c4b99f6aa61e7b0479708475",
+   "note": "video cover frame"
+  },
+  {
+   "id": "img-005",
+   "file": "assets/img-005.jpg",
+   "source_url": "https://www.instagram.com/goodstorysurf/reel/DUImSfXEjoj/",
+   "fetched_at": "2026-09-19T16:00:18Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @goodstorysurf",
+   "width": 361,
+   "height": 640,
+   "description": "Video by Good Story | Surf School | Sri Lanka on January 30, 2026.",
+   "sha256": "7c7691f4ceaa95b6f1ec9c42253e35557e5599c2f1ccd352e37c7d31e992d25d",
+   "note": "video cover frame"
+  },
+  {
+   "id": "img-006",
+   "file": "assets/img-006.jpg",
+   "source_url": "https://www.instagram.com/goodstorysurf/reel/DTVMamfEjHe/",
+   "fetched_at": "2026-09-19T16:00:18Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @goodstorysurf",
+   "width": 361,
+   "height": 640,
+   "description": "Video by Good Story | Surf School | Sri Lanka on January 10, 2026.",
+   "sha256": "ccf2f0e78a46cb5af654de5b984f8bf1353dc3ffe20fb600df43119cd4affb90",
+   "note": "video cover frame"
+  },
+  {
+   "id": "img-007",
+   "file": "assets/img-007.jpg",
+   "source_url": "https://www.instagram.com/goodstorysurf/reel/DS4xr8pkkLA/",
+   "fetched_at": "2026-09-19T16:00:18Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @goodstorysurf",
+   "width": 359,
+   "height": 640,
+   "description": "Video by Good Story | Surf School | Sri Lanka on December 30, 2025.",
+   "sha256": "b736bededc11770ec5e555b69c4290ee1e17f597f18affeea1895ac28df0f570",
+   "note": "video cover frame"
+  },
+  {
+   "id": "old-site-mobile",
+   "file": "assets/old-site-mobile.png",
+   "source_url": "https://goodstorysurf.com/surf-school",
+   "fetched_at": "2026-09-19T16:00:18Z",
+   "license": "unknown",
+   "license_note": "screenshot captured by the harvester for pitch evidence, not for publication",
+   "width": null,
+   "height": null,
+   "description": "goodstorysurf.com/surf-school at 390 px: 404 page",
+   "sha256": "d72d05dfdc189c1834be492bef26c6f52a772bf4f086d6c24feb3836eec7447f"
+  },
+  {
+   "id": "old-site-desktop",
+   "file": "assets/old-site-desktop.png",
+   "source_url": "https://goodstorysurf.com/surf-school",
+   "fetched_at": "2026-09-19T16:00:18Z",
+   "license": "unknown",
+   "license_note": "screenshot captured by the harvester for pitch evidence, not for publication",
+   "width": null,
+   "height": null,
+   "description": "goodstorysurf.com/surf-school at 1440 px: 404 page",
+   "sha256": "0b4c4c216df74c58e4ad8f197aa951868df3f0bb315bfafe74bd7fb616afe554"
+  },
+  {
+   "id": "landing-mobile",
+   "file": "assets/landing-mobile.png",
+   "source_url": "https://www.goodstoryvillage.com/",
+   "fetched_at": "2026-09-19T16:00:18Z",
+   "license": "unknown",
+   "license_note": "screenshot captured by the harvester for pitch evidence, not for publication",
+   "width": null,
+   "height": null,
+   "description": "goodstoryvillage.com home at 390 px, where goodstorysurf.com now lands",
+   "sha256": "3385ed4c6fd4843ba585ff30b750a9ee2604fbed5650f27111911e743cff6138"
+  }
+ ],
+ "existing_site": {
+  "url": "https://goodstorysurf.com/surf-school",
+  "status": 404,
+  "final_url": "https://www.goodstoryvillage.com/surf-school",
+  "notes": "The website on the Google listing is dead. Both goodstorysurf.com and www.goodstorysurf.com 301 to www.goodstoryvillage.com, where /surf-school returns a bare Next.js 404 ('404: This page could not be found.', 33 characters of body text). The landing site goodstoryvillage.com is a villa-rental listing with no surf-school content and only a mailto: as a booking path. A search engine still indexes goodstorysurf.com under the title 'Surf school, surf lessons, surf camp, hotel in Sri Lanka', so the loss looks recent and unnoticed.",
+  "screenshot": "assets/old-site-mobile.png",
+  "screenshot_desktop": "assets/old-site-desktop.png",
+  "landing_screenshot": "assets/landing-mobile.png",
+  "source_url": "https://goodstorysurf.com/surf-school",
+  "fetched_at": "2026-09-19T16:05:00Z"
+ },
+ "languages": {
+  "seen": [
+   "en"
+  ],
+  "owner_language_hint": "ru",
+  "owner_language_note": "search-result text describes the staff as mostly Russian-speaking and lessons in English/Russian/Swedish; unconfirmed on a primary source"
+ },
+ "gaps": [
+  {
+   "field": "existing_site.url",
+   "why": "the site Google points customers to is a 404; every link from Google and Instagram dead-ends",
+   "pitch_point": true
+  },
+  {
+   "field": "offers",
+   "why": "no lesson, camp or room prices published anywhere reachable; the Instagram 'Price' highlight is behind the logged-out wall",
+   "pitch_point": true
+  },
+  {
+   "field": "hours",
+   "why": "no opening hours on the Google listing",
+   "pitch_point": true
+  },
+  {
+   "field": "booking.path",
+   "why": "phone only; no booking engine, no OTA listing, no WhatsApp link",
+   "pitch_point": true
+  },
+  {
+   "field": "reviews.quotes",
+   "why": "Google hotel listings do not expose review text logged out, and TripAdvisor 403s; no verbatim quote captured",
+   "pitch_point": false
+  },
+  {
+   "field": "reviews.tripadvisor.rating",
+   "why": "not captured; and the only TripAdvisor listing found is for Weligama, possibly a different location of the brand",
+   "pitch_point": false
+  },
+  {
+   "field": "contact.whatsapp",
+   "why": "not published",
+   "pitch_point": false
+  },
+  {
+   "field": "contact.email",
+   "why": "only a group address on the villa site; no surf-school address",
+   "pitch_point": false
+  },
+  {
+   "field": "location.address",
+   "why": "town and plus code only, no street address",
+   "pitch_point": true
+  },
+  {
+   "field": "levels",
+   "why": "'all levels' is unconfirmed; no lesson structure, duration or group size from a primary source",
+   "pitch_point": true
+  },
+  {
+   "field": "images",
+   "why": "640 px Instagram feed images only; no high-resolution originals",
+   "pitch_point": true
+  },
+  {
+   "field": "languages",
+   "why": "the Russian/Swedish claim is unconfirmed",
+   "pitch_point": false
+  }
+ ],
+ "contradictions": [
+  {
+   "what": "Search engines still title goodstorysurf.com 'Surf school, surf lessons, surf camp, hotel in Sri Lanka', but the live domain 301s to goodstoryvillage.com and /surf-school 404s.",
+   "resolution": "Verified by the harvester with curl -IL and headless Chromium on 2026-09-19: the redirect and 404 are current. The search title is a stale index."
+  },
+  {
+   "what": "The TripAdvisor listing is filed under Weligama (g612380); the Google listing and this run's candidate are Ahangama.",
+   "resolution": "Unresolved — do not attribute TripAdvisor numbers to the Ahangama location on the site."
+  }
+ ]
+}
