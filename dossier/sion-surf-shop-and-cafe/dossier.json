@@ -1,0 +1,298 @@
+{
+ "slug": "sion-surf-shop-and-cafe",
+ "run_id": "2026-09-ahangama-02",
+ "harvester_version": "0.1.0",
+ "harvested_at": "2026-09-19T16:12:00Z",
+ "status_flag": {
+  "value": "likely dormant or closed",
+  "source_url": "https://www.google.com/maps/search/Sion%20Surf%20Shop%20and%20Cafe/@5.9794134,80.350836,17z?hl=en",
+  "fetched_at": "2026-09-19T16:12:00Z",
+  "why": "Google marks the place 'Temporarily closed'; the newest Google review is 7 years old; the last visible Facebook post is 14 April 2022; the website domain has been hijacked and now redirects to an online-gambling site. Nothing found anywhere shows activity after April 2022.",
+  "action": "Confirm the business still exists and wants a site BEFORE any design or pitch work."
+ },
+ "business": {
+  "name": {
+   "value": "Sion Surf Shop and Cafe",
+   "source_url": "https://www.google.com/maps/search/Sion%20Surf%20Shop%20and%20Cafe/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:12:00Z",
+   "note": "the Facebook page is titled 'Sion Surf | Ahangama'; the camp it belongs to trades as 'Sion Surf Camp'"
+  },
+  "type": {
+   "value": "surf_shop",
+   "source_url": "https://www.google.com/maps/search/Sion%20Surf%20Shop%20and%20Cafe/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:12:00Z",
+   "note": "Google's category on 2026-09-19 reads 'Cafe'; the scout captured 'Surf shop' on the same listing earlier the same day — both recorded, neither resolved"
+  },
+  "tagline": {
+   "value": null,
+   "gap": "none published"
+  },
+  "description": {
+   "value": null,
+   "gap": "no description on Google or reachable on Facebook"
+  },
+  "since": {
+   "value": null,
+   "gap": "not published; reviews go back 10 years, so it operated by 2016 at the latest"
+  },
+  "owners": {
+   "value": "Lee and Anji",
+   "source_url": "https://www.google.com/maps/search/Sion%20Surf%20Shop%20and%20Cafe/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:12:00Z",
+   "note": "named by a Google reviewer 9 years ago, not by the business; treat as unconfirmed"
+  },
+  "price_range": {
+   "value": "$$",
+   "source_url": "https://www.facebook.com/sionsurflanka/",
+   "fetched_at": "2026-09-19T16:12:00Z",
+   "note": "Facebook page price range"
+  }
+ },
+ "location": {
+  "address": {
+   "value": "Kabalanas, Ahangama 80650, Sri Lanka",
+   "source_url": "https://www.google.com/maps/search/Sion%20Surf%20Shop%20and%20Cafe/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:12:00Z"
+  },
+  "lat_lng": {
+   "value": [
+    5.9793846,
+    80.3501572
+   ],
+   "source_url": "https://www.google.com/maps/search/Sion%20Surf%20Shop%20and%20Cafe/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:12:00Z"
+  },
+  "map_url": {
+   "value": "https://www.google.com/maps/place/Sion+Surf+Shop+and+Cafe/data=!4m7!3m6!1s0x3ae1135813d72f7f:0xbb37d7b3f58db8d!8m2!3d5.9793846!4d80.3501572!16s%2Fg%2F11b6df_v4_",
+   "source_url": "https://www.google.com/maps/search/Sion%20Surf%20Shop%20and%20Cafe/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:12:00Z"
+  },
+  "plus_code": {
+   "value": "X9H2+Q3 Ahangama, Sri Lanka",
+   "source_url": "https://www.google.com/maps/search/Sion%20Surf%20Shop%20and%20Cafe/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:12:00Z"
+  },
+  "facebook_address": {
+   "value": "Kabalana, Ahangama, Sri Lanka",
+   "source_url": "https://www.facebook.com/sionsurflanka/",
+   "fetched_at": "2026-09-19T16:12:00Z"
+  },
+  "spot": {
+   "value": "Kabalana beach break — sandy beach break for beginners and intermediates, with The Rock reef A-frame for advanced surfers",
+   "source_url": "https://thesurfatlas.com/sri-lanka-surf/kabalana-beach/",
+   "fetched_at": "2026-09-19T16:12:00Z",
+   "note": "third-party surf guide, not the business"
+  }
+ },
+ "contact": {
+  "phone": {
+   "value": "+94761981170",
+   "source_url": "https://www.google.com/maps/search/Sion%20Surf%20Shop%20and%20Cafe/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:12:00Z"
+  },
+  "whatsapp": {
+   "value": null,
+   "gap": "no WhatsApp link published"
+  },
+  "email": {
+   "value": "sionsurflanka@gmail.com",
+   "source_url": "https://www.facebook.com/sionsurflanka/",
+   "fetched_at": "2026-09-19T16:12:00Z",
+   "note": "listed in the Facebook page's About block"
+  },
+  "socials": {
+   "instagram": null,
+   "facebook": "https://www.facebook.com/sionsurflanka/",
+   "tripadvisor": null,
+   "google_maps": "https://www.google.com/maps/search/Sion%20Surf%20Shop%20and%20Cafe/@5.9794134,80.350836,17z?hl=en"
+  }
+ },
+ "booking": {
+  "path": {
+   "value": "phone",
+   "source_url": "https://www.google.com/maps/search/Sion%20Surf%20Shop%20and%20Cafe/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:12:00Z",
+   "note": "phone on Google and an email on Facebook; no booking engine, no OTA listing found. The business is marked temporarily closed, so no booking path is live."
+  },
+  "engine_url": {
+   "value": null
+  },
+  "reply_time_hint": {
+   "value": null,
+   "gap": "not published"
+  }
+ },
+ "hours": [],
+ "hours_note": {
+  "value": "Temporarily closed",
+  "source_url": "https://www.google.com/maps/search/Sion%20Surf%20Shop%20and%20Cafe/@5.9794134,80.350836,17z?hl=en",
+  "fetched_at": "2026-09-19T16:12:00Z",
+  "note": "Google's status on 2026-09-19; no weekly hours published"
+ },
+ "offers": [],
+ "facilities": [],
+ "levels": [],
+ "season": {
+  "value": null,
+  "gap": "not published by the business"
+ },
+ "reviews": {
+  "google": {
+   "rating": 4.4,
+   "count": 79,
+   "source_url": "https://www.google.com/maps/search/Sion%20Surf%20Shop%20and%20Cafe/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:12:00Z",
+   "note": "the five newest visible reviews are 7, 8, 9, 10 and 7 years old"
+  },
+  "tripadvisor": {
+   "rating": null,
+   "count": null,
+   "gap": "no listing found"
+  },
+  "facebook": {
+   "recommend_pct": 98,
+   "count": 47,
+   "source_url": "https://www.facebook.com/sionsurflanka/",
+   "fetched_at": "2026-09-19T16:12:00Z"
+  },
+  "quotes": [
+   {
+    "text": "Very fun and laid back. Enjoyed very much. Loved the dogs",
+    "author": "Extra Email",
+    "date": "2019 (Google: '7 years ago')",
+    "source_url": "https://www.google.com/maps/search/Sion%20Surf%20Shop%20and%20Cafe/@5.9794134,80.350836,17z?hl=en",
+    "fetched_at": "2026-09-19T16:12:00Z"
+   },
+   {
+    "text": "I had the most incredible week at Sion Surf! I was on a 5 month travel trip around the world at the time and this was without a doubt one of my favourite weeks. I was a beginner surfer and the surf instructors were brilliant, patient and kind. The food, hosts and staff are all amazing. So much fun,  I can't wait to go back!!!",
+    "author": "Amy",
+    "date": "2016 (Google: '10 years ago')",
+    "source_url": "https://www.google.com/maps/search/Sion%20Surf%20Shop%20and%20Cafe/@5.9794134,80.350836,17z?hl=en",
+    "fetched_at": "2026-09-19T16:12:00Z"
+   },
+   {
+    "text": "Great place to surf. Nice accommodation. Friendly staff. Great surf Instructors. Yoga classes. Entertaining live music on Fridays. Really enjoyed my week spent there.",
+    "author": "Yasheen Sewnarain",
+    "date": "2018 (Google: '8 years ago')",
+    "source_url": "https://www.google.com/maps/search/Sion%20Surf%20Shop%20and%20Cafe/@5.9794134,80.350836,17z?hl=en",
+    "fetched_at": "2026-09-19T16:12:00Z"
+   },
+   {
+    "text": "Food is good and the spot is nice on seaside.  Service is ok, some guys are super cool and some guys are very ordinary but overall it's nice.  Place is usually occupied by surfers.  Chill place!  We went many times, especially for breakfast.",
+    "author": "Olivier Grau",
+    "date": "2019 (Google: 'Edited 7 years ago')",
+    "source_url": "https://www.google.com/maps/search/Sion%20Surf%20Shop%20and%20Cafe/@5.9794134,80.350836,17z?hl=en",
+    "fetched_at": "2026-09-19T16:12:00Z"
+   }
+  ]
+ },
+ "images": [
+  {
+   "id": "img-001",
+   "file": "assets/img-001.jpg",
+   "source_url": "https://www.facebook.com/sionsurflanka/photos",
+   "fetched_at": "2026-09-19T16:03:44Z",
+   "license": "business-owned",
+   "license_note": "cover photo on the business's own Facebook page",
+   "width": 960,
+   "height": 499,
+   "description": "Facebook page cover photo",
+   "sha256": "5d268031ee88478ae33c013518129f96e954a6bab32f6e22b4f3e765283129de"
+  },
+  {
+   "id": "old-site-mobile",
+   "file": "assets/old-site-mobile.png",
+   "source_url": "http://www.sionsurfcamp.com/",
+   "fetched_at": "2026-09-19T16:03:44Z",
+   "license": "unknown",
+   "license_note": "harvester screenshot of the hijacked domain, pitch evidence only, never for publication",
+   "width": null,
+   "height": null,
+   "description": "sionsurfcamp.com at 390 px: lands on an unrelated online-gambling site (IDCWIN88)",
+   "sha256": "c50cbeb4fb9f8b418a767e2c874a9e2f377b947e67fe2083ffbf3e5f11142f0d"
+  }
+ ],
+ "existing_site": {
+  "url": "http://www.sionsurfcamp.com/",
+  "status": 200,
+  "final_url": "https://idcwin88lagi.com/",
+  "notes": "The domain on the Google listing is hijacked. curl -IL: www.sionsurfcamp.com 301 → www.juliediamondfitness.com 301 → idcwin88lagi.com (200), an Indonesian online-gambling site titled 'IDCWIN88 Platform Resmi Game Online Slot88 Dan Sport Terlengkap'. Google still sends customers there. No surf content survives at that domain.",
+  "screenshot": "assets/old-site-mobile.png",
+  "source_url": "http://www.sionsurfcamp.com/",
+  "fetched_at": "2026-09-19T16:12:00Z"
+ },
+ "languages": {
+  "seen": [
+   "en"
+  ],
+  "owner_language_hint": "si"
+ },
+ "gaps": [
+  {
+   "field": "status_flag",
+   "why": "the business may no longer operate — Google says temporarily closed, no activity found after April 2022",
+   "pitch_point": false,
+   "blocking": true
+  },
+  {
+   "field": "existing_site.url",
+   "why": "the domain Google links to now serves an online-gambling site",
+   "pitch_point": true
+  },
+  {
+   "field": "hours",
+   "why": "no opening hours published",
+   "pitch_point": true
+  },
+  {
+   "field": "offers",
+   "why": "no prices for anything — shop, cafe, lessons or stay",
+   "pitch_point": true
+  },
+  {
+   "field": "business.description",
+   "why": "no description anywhere reachable",
+   "pitch_point": true
+  },
+  {
+   "field": "images",
+   "why": "only the Facebook cover photo is reachable; the photo grid is behind the logged-out wall",
+   "pitch_point": true
+  },
+  {
+   "field": "reviews.quotes",
+   "why": "every quote is 7–10 years old and describes the camp, not the shop/cafe",
+   "pitch_point": false
+  },
+  {
+   "field": "business.type",
+   "why": "Google's own category changed between the scout run and this harvest (Surf shop → Cafe)",
+   "pitch_point": false
+  },
+  {
+   "field": "contact.whatsapp",
+   "why": "not published",
+   "pitch_point": false
+  },
+  {
+   "field": "business.since",
+   "why": "not published",
+   "pitch_point": false
+  },
+  {
+   "field": "location.spot",
+   "why": "nothing written by the business about the wave it sits on",
+   "pitch_point": true
+  }
+ ],
+ "contradictions": [
+  {
+   "what": "Google category was 'Surf shop' in the scout run (2026-09-19T10:54Z) and 'Cafe' at harvest (2026-09-19T16:12Z).",
+   "resolution": "Unresolved; both recorded."
+  },
+  {
+   "what": "The Google place is the Ahangama shop/cafe, while the reviews and the dead domain belong to Sion Surf Camp, whose camp address is at Goviyapana Junction, outside this run's area.",
+   "resolution": "Unresolved — the shop and the camp are presumed the same owner but this is not confirmed. Confirm with the owner before pitching."
+  }
+ ]
+}
