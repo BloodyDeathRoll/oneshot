@@ -1,0 +1,164 @@
+{
+  "run_id": "2026-09-ahangama-01",
+  "generated_at": "2026-09-19T11:05:00Z",
+  "scout_version": "0.1.0",
+  "area": {
+    "mode": "business",
+    "anchors": [
+      {
+        "query": "The Lavish Haven, Ahangama, Sri Lanka",
+        "lat": 5.97941339533991,
+        "lng": 80.3508360317383,
+        "geocoder": "booking.com property page map pin (data-atlas-latlng); Nominatim returned no match for the business. Cross-checked against the Google Maps place pin 5.9794565,80.3508299 (5 m away).",
+        "geocoder_source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+        "fetched_at": "2026-09-19T10:49:10Z"
+      }
+    ],
+    "radius_m": 100,
+    "shore_buffer_m": null,
+    "polygon": "reports/2026-09-ahangama-01/area.geojson"
+  },
+  "candidates": [
+    {
+      "slug": "the-lavish-haven",
+      "name": "The Lavish Haven Hotel And Resort",
+      "type": "beach_lodging",
+      "location": {
+        "lat": 5.9794565,
+        "lng": 80.3508299,
+        "address": "No166/1 walhengoda road, Ahangama 80650, Sri Lanka (Google Maps); 166/2 Welhengoda Road, 80650 Ahangama (Booking.com)",
+        "inside_buffer": true,
+        "distance_to_anchor_m": 5,
+        "distance_to_shore_m": 243
+      },
+      "contact": { "phone": "+94764832988", "whatsapp": null, "email": null },
+      "socials": {
+        "instagram": null,
+        "facebook": null,
+        "tripadvisor": "https://www.tripadvisor.com/Hotel_Review-g674590-d34333972-Reviews-The_Lavish_Haven-Ahangama_Galle_District_Southern_Province.html",
+        "google_maps": "https://www.google.com/maps/place/The+Lavish+Haven+Hotel+And+Resort/@5.9794565,80.3508299,17z/data=!4m9!3m8!1s0x3ae113bbadfe5595:0x8d858b9ae5001097!5m2!4m1!1i2!8m2!3d5.9794565!4d80.3508299!16s%2Fg%2F11ypgcrxg6",
+        "booking": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+        "agoda": "https://www.agoda.com/the-lavish-haven-h82617698/hotel/piyadigama-lk.html"
+      },
+      "existing_site": { "url": null, "status": null, "mobile_friendly": null, "last_updated_hint": null, "has_booking": false },
+      "presence": {
+        "score": 1,
+        "reason": "No own website or social page found; the only presence is the Google Maps listing (5.0, 21 reviews, phone, no website field) and OTA pages (Booking.com 9.3/34 reviews, Agoda, TripAdvisor), so booking happens only through third parties.",
+        "criteria": ["no_own_site", "ota_listings_only", "google_listing", "no_social_found"]
+      },
+      "evidence": [
+        { "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html", "fetched_at": "2026-09-19T10:49:10Z", "note": "Booking.com page (headless Chromium): pin 5.97941339533991,80.3508360317383; streetAddress '166/2 Welhengoda Road , 80650 Ahangama'; rating 9.3, 34 reviews; description '2-minute walk from Kabalana Beach'; guest review 'right over the surf spot of Kabalana'" },
+        { "source_url": "https://www.google.com/maps/search/The+Lavish+Haven+Hotel+And+Resort+Ahangama?hl=en", "fetched_at": "2026-09-19T10:51:44Z", "note": "Google Maps place: pin 5.9794565,80.3508299; 'Hotel'; 5.0 (21); tel:+94764832988; address 'No166/1 walhengoda road, Ahangama 80650'; plus code X9H2+Q8; no website listed" },
+        { "source_url": "https://www.agoda.com/the-lavish-haven-h82617698/hotel/piyadigama-lk.html", "fetched_at": "2026-09-19T10:48:02Z", "note": "Agoda listing exists (HTTP 200, JS shell; no address/coords extractable)" },
+        { "source_url": "https://www.tripadvisor.com/Hotel_Review-g674590-d34333972-Reviews-The_Lavish_Haven-Ahangama_Galle_District_Southern_Province.html", "fetched_at": "2026-09-19T10:50:35Z", "note": "TripAdvisor listing exists per search results; page returned HTTP 403 to both WebFetch and headless Chromium, so nothing was read from it" }
+      ],
+      "surf_related_confidence": 0.4,
+      "surf_related_note": "Anchor business, included by run design. Its own marketing says 'a 2-minute walk from Kabalana Beach' and 'private beach area'; the only surf mention is a guest review ('right over the surf spot of Kabalana'). No board storage / surf packages seen.",
+      "languages_seen": ["en"]
+    },
+    {
+      "slug": "briza-surf-kabalana",
+      "name": "Briza Surf Kabalana",
+      "type": "surf_school",
+      "location": {
+        "lat": 5.9787537,
+        "lng": 80.3502322,
+        "address": "Kabalana Rd, Ahangama 80650, Sri Lanka (Google Maps); plus code X9H2+G3",
+        "inside_buffer": true,
+        "distance_to_anchor_m": 99,
+        "distance_to_shore_m": 148
+      },
+      "contact": { "phone": "+94741648662", "whatsapp": null, "email": null },
+      "socials": {
+        "instagram": "https://www.instagram.com/brizasurf_kabalana/",
+        "facebook": null,
+        "tripadvisor": null,
+        "google_maps": "https://www.google.com/maps/place/Briza+Surf+Kabalana/data=!4m7!3m6!1s0x3ae113b188981a99:0xb1a7729445741718!8m2!3d5.9787537!4d80.3502322!16s%2Fg%2F11zkgd2_y0"
+      },
+      "existing_site": { "url": null, "status": null, "mobile_friendly": null, "last_updated_hint": null, "has_booking": false },
+      "presence": {
+        "score": 1,
+        "reason": "Instagram only (@brizasurf_kabalana: 259 followers, 129 posts) plus a Google Maps listing with a phone number and 1 review; no website anywhere.",
+        "criteria": ["instagram_only", "no_site", "google_listing"]
+      },
+      "evidence": [
+        { "source_url": "https://www.google.com/maps/search/surf/@5.9794134,80.350836,18z?hl=en", "fetched_at": "2026-09-19T10:52:28Z", "note": "Google Maps 'surf' search near anchor: 'Briza Surf Kabalana 5.0 Surf school · Kabalana Rd Open · Closes 6:30 pm', pin 5.9787537,80.3502322" },
+        { "source_url": "https://www.google.com/maps/search/Briza%20Surf%20Kabalana/@5.9794134,80.350836,18z?hl=en", "fetched_at": "2026-09-19T10:57:34Z", "note": "Google Maps place: 'Surf school', 'Kabalana Rd, Ahangama 80650', tel:+94741648662, (1) review, plus code X9H2+G3, no website" },
+        { "source_url": "https://www.instagram.com/brizasurf_kabalana/", "fetched_at": "2026-09-19T10:59:43Z", "note": "og:description: '259 Followers, 436 Following, 129 Posts - BRIZA SURF SCHOOL | KABALANA'" }
+      ],
+      "surf_related_confidence": 0.95,
+      "surf_related_note": "Google category 'Surf school'; Instagram name 'BRIZA SURF SCHOOL | KABALANA'. Caveat: the Google pin sits 99 m from the anchor, 1 m inside the polygon edge; the physical school may operate from the beach ~150 m further south, so the human should confirm the location.",
+      "languages_seen": ["en"]
+    },
+    {
+      "slug": "sion-surf-shop-and-cafe",
+      "name": "Sion Surf Shop and Cafe",
+      "type": "surf_shop",
+      "location": {
+        "lat": 5.9793846,
+        "lng": 80.3501572,
+        "address": "Kabalanas, Ahangama 80650, Sri Lanka (Google Maps); plus code X9H2+Q3",
+        "inside_buffer": true,
+        "distance_to_anchor_m": 75,
+        "distance_to_shore_m": 210
+      },
+      "contact": { "phone": "+94761981170", "whatsapp": null, "email": null },
+      "socials": {
+        "instagram": null,
+        "facebook": "https://www.facebook.com/sionsurflanka/",
+        "tripadvisor": null,
+        "google_maps": "https://www.google.com/maps/place/Sion+Surf+Shop+and+Cafe/data=!4m7!3m6!1s0x3ae1135813d72f7f:0xbb37d7b3f58db8d!8m2!3d5.9793846!4d80.3501572!16s%2Fg%2F11b6df_v4_"
+      },
+      "existing_site": { "url": "http://www.sionsurfcamp.com/", "status": 301, "mobile_friendly": null, "last_updated_hint": "domain now redirects to an unrelated gambling site (idcwin88lagi.com)", "has_booking": false },
+      "presence": {
+        "score": 2,
+        "reason": "The website Google lists (sionsurfcamp.com) 301-redirects via juliediamondfitness.com to an unrelated gambling page (idcwin88lagi.com), so the site is effectively dead; a Facebook page (4,242 followers) and a Google listing (4.4, 79 reviews, phone) remain, and Google marks the shop 'Temporarily closed'.",
+        "criteria": ["dead_site", "hijacked_domain", "facebook", "google_listing", "temporarily_closed"]
+      },
+      "evidence": [
+        { "source_url": "https://www.google.com/maps/search/surf+shop/@5.9794134,80.350836,18z?hl=en", "fetched_at": "2026-09-19T10:54:43Z", "note": "Google Maps 'surf shop' search near anchor: 'Sion Surf Shop and Cafe 4.4(79) Surf shop · Kabalanas Temporarily closed · +94 76 198 1170', pin 5.9793846,80.3501572" },
+        { "source_url": "https://www.google.com/maps/search/Sion%20Surf%20Shop%20and%20Cafe/@5.9794134,80.350836,18z?hl=en", "fetched_at": "2026-09-19T10:57:14Z", "note": "Google Maps place: 'Temporarily closed', 'Kabalanas, Ahangama 80650', website sionsurfcamp.com, tel:+94761981170, plus code X9H2+Q3" },
+        { "source_url": "http://www.sionsurfcamp.com/", "fetched_at": "2026-09-19T10:58:34Z", "note": "curl -IL: 301 -> https://www.juliediamondfitness.com -> 301 -> https://idcwin88lagi.com (200). Headless Chromium at 10:58:03Z landed on 'IDCWIN88 Platform Resmi Game Online Slot88'" },
+        { "source_url": "https://www.facebook.com/sionsurflanka/", "fetched_at": "2026-09-19T10:59:51Z", "note": "og:description: 'Sion Surf, Ahangama. 4,242 followers · 1 talking about this · 1,798 were here.'" }
+      ],
+      "surf_related_confidence": 0.9,
+      "surf_related_note": "Google category 'Surf shop'. It is the shop/cafe outlet of Sion Surf Camp, whose camp is at Goviyapana Junction (south of Ahangama, outside this area, per hotel.com.au / Carve listings found by web search). Owner of the shop and the camp is presumably the same; the camp's dead domain is what is scored here.",
+      "languages_seen": ["en"]
+    },
+    {
+      "slug": "villa-vera-ahangama",
+      "name": "Villa Vera",
+      "type": "beach_lodging",
+      "location": {
+        "lat": 5.97874,
+        "lng": 80.35042,
+        "address": "Welhengoda Bus Stop, 80650 Ahangama, Sri Lanka (Booking.com)",
+        "inside_buffer": true,
+        "distance_to_anchor_m": 87,
+        "distance_to_shore_m": 154
+      },
+      "contact": { "phone": "+94741040000", "whatsapp": null, "email": null },
+      "socials": {
+        "instagram": null,
+        "facebook": null,
+        "tripadvisor": null,
+        "google_maps": "https://www.google.com/maps/place/Vera+Villa/data=!4m10!3m9!1s0x3ae113cbeb939297:0x222b53168bb21c1e!5m2!4m1!1i2!8m2!3d5.97874!4d80.35042!16s%2Fg%2F11ytg9k55w",
+        "booking": "https://www.booking.com/hotel/lk/villa-vera-ahangama.html"
+      },
+      "existing_site": { "url": null, "status": null, "mobile_friendly": null, "last_updated_hint": null, "has_booking": false },
+      "presence": {
+        "score": 1,
+        "reason": "No own website or social page found; presence is a Booking.com listing (9.2) and a Google Maps listing ('Vera Villa', 5.0, 16 reviews, phone) plus a second Google entry 'Villa Vera - Superior Villa' that is the same property's room listing.",
+        "criteria": ["no_own_site", "ota_listings_only", "google_listing", "no_social_found"]
+      },
+      "evidence": [
+        { "source_url": "https://www.google.com/maps/search/villa/@5.9794134,80.350836,18z?hl=en", "fetched_at": "2026-09-19T10:53:40Z", "note": "Google Maps 'villa' search near anchor: 'Vera Villa 5.0 Villa Open 24 hours · +94 74 104 0000' pin 5.97874,80.35042; and 'Villa Vera - Superior Villa Lodging Website' pin 5.9787302,80.3504105 (deduped: same name, 12 m apart)" },
+        { "source_url": "https://www.google.com/maps/search/Vera%20Villa/@5.9794134,80.350836,18z?hl=en", "fetched_at": "2026-09-19T10:57:29Z", "note": "Google Maps place: '5.0(16)', 'Open 24 hours · +94 74 104 0000'" },
+        { "source_url": "https://www.booking.com/hotel/lk/villa-vera-ahangama.html", "fetched_at": "2026-09-19T10:59:05Z", "note": "Booking.com (headless): pin 5.97873108382385,80.350413135718; streetAddress 'Welhengoda Bus Stop, 80650 Ahangama'; rating 9.2; host neighbourhood text: 'Sri Lanka's Hidden Surf Gem ... vibrant surf culture, offering consistent, high-quality waves perfect for surfers of all levels'; 'Language spoken: English'" }
+      ],
+      "surf_related_confidence": 0.6,
+      "surf_related_note": "Villa whose Booking.com host text explicitly pitches Ahangama's surf and 'surfers of all levels'; no surf services of its own seen. Phone +94 74 104 0000 is also shown on Google for 'Nina Villa' (113 m from anchor, outside the polygon), so the two may be one operator.",
+      "languages_seen": ["en"]
+    }
+  ]
+}
