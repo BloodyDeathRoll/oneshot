@@ -1,9 +1,13 @@
-run_id: 2026-09-mirissa-01
+run_id: 2026-09-ahangama-01
 area:
-  anchors:                       # 1 anchor = town/point; 2 anchors = a stretch of coast between them
-    - "Niira Hotel, Mirissa, Sri Lanka"
-    - "Ritz-Carlton, Mirissa, Sri Lanka"
-  shore_buffer_m: 100
+  mode: business                 # town | stretch | business
+  # town:     one anchor (a town or beach) + shore_buffer_m along its coast
+  # stretch:  two anchors + shore_buffer_m along the coastline between them
+  # business: one anchor (a named business) + radius_m circle around it
+  anchors:
+    - "The Lavish Haven, Ahangama, Sri Lanka"
+  radius_m: 100                  # business mode
+  shore_buffer_m: 100            # town / stretch modes
 types: [surf_school, board_rental, surf_shop, surf_camp, beach_lodging, shaper]
 presence_threshold: 2            # shortlist businesses scoring <= this (0–5)
 max_sites: 3

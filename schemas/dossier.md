@@ -7,7 +7,7 @@ Everything downstream (designer, deployer seed, critic, writer) takes facts from
 ```json
 {
   "slug": "example-surf-school",
-  "run_id": "2026-09-mirissa-01",
+  "run_id": "2026-09-ahangama-01",
   "harvester_version": "0.1.0",
   "harvested_at": "2026-09-18T07:00:00Z",
   "business": {

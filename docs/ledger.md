@@ -32,7 +32,7 @@ The current state of a business is the `to_state` of its last line for the curre
 ## Examples
 
 ```jsonl
-{"ts":"2026-09-18T08:12:41Z","run_id":"2026-09-mirissa-01","slug":"example-surf-school","from_state":null,"to_state":"discovered","agent":"scout","agent_version":"0.1.0","note":"found via OSM + Google Places; inside shore buffer"}
-{"ts":"2026-09-18T08:15:03Z","run_id":"2026-09-mirissa-01","slug":"example-surf-school","from_state":"discovered","to_state":"scored","agent":"scout","agent_version":"0.1.0","note":"presence 1/5: Facebook page only, no booking path"}
-{"ts":"2026-09-18T09:40:27Z","run_id":"2026-09-mirissa-01","slug":"example-surf-school","from_state":"shortlisted","to_state":"approved","agent":"human","agent_version":null,"note":"Shahar approved shortlist"}
+{"ts":"2026-09-18T08:12:41Z","run_id":"2026-09-ahangama-01","slug":"example-surf-school","from_state":null,"to_state":"discovered","agent":"scout","agent_version":"0.1.0","note":"found via OSM + Google Places; inside shore buffer"}
+{"ts":"2026-09-18T08:15:03Z","run_id":"2026-09-ahangama-01","slug":"example-surf-school","from_state":"discovered","to_state":"scored","agent":"scout","agent_version":"0.1.0","note":"presence 1/5: Facebook page only, no booking path"}
+{"ts":"2026-09-18T09:40:27Z","run_id":"2026-09-ahangama-01","slug":"example-surf-school","from_state":"shortlisted","to_state":"approved","agent":"human","agent_version":null,"note":"Shahar approved shortlist"}
 ```
