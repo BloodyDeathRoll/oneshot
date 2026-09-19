@@ -35,7 +35,8 @@
    "source_url": "https://www.booking.com/hotel/lk/surf-front.html",
    "fetched_at": "2026-09-19T17:25:00Z",
    "note": "from guest reviews — 'The family was sooo kind', 'Lovely family who could not be more accommodating'; not stated by the business itself"
-  }
+  },
+  "businessType_note": "sells beds; lessons are not its own product"
  },
  "location": {
   "address": {
@@ -692,7 +693,7 @@
  "gaps": [
   {
    "field": "business.description",
-   "why": "there is no owner-written description anywhere — the only prose is Booking.com's generated summary. The new site needs copy written from scratch with the owner",
+   "why": "no owner-written prose exists anywhere — the only prose is Booking.com's generated summary. FAILS the beach_lodging 'must have' in schemas/business-types.md: at least one copyBlocks row in the owner's voice. Not buildable until written with the owner.",
    "pitch_point": true,
    "blocking": true
   },
@@ -756,5 +757,6 @@
    "what": "Distance to the beach: the property is tagged 'Beachfront', while guests say 30 seconds, 1 minute and 2 minutes' walk.",
    "resolution": "Unresolved — measure on location rather than repeating any of them."
   }
- ]
+ ],
+ "businessType": "beach_lodging"
 }

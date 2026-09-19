@@ -31,7 +31,8 @@
   "since": {
    "value": null,
    "gap": "not published"
-  }
+  },
+  "businessType_note": "sells lessons only; no beds"
  },
  "location": {
   "address": {
@@ -389,8 +390,9 @@
   },
   {
    "field": "offers",
-   "why": "no lesson prices, durations or group sizes published",
-   "pitch_point": true
+   "why": "no lesson prices, durations or group sizes published. FAILS the surf_school 'must have' in schemas/business-types.md: at least one lessons[] or priceList[] row. Not buildable until the owner supplies them.",
+   "pitch_point": true,
+   "blocking": true
   },
   {
    "field": "duplicate_listing",
@@ -438,5 +440,6 @@
    "what": "The scout recorded 'no website anywhere' (presence 1). A second Google listing links https://www.surfrevolutionkabalana.com/, a lapsed Wix domain.",
    "resolution": "Verified 2026-09-19 by curl and browser: HTTPS refused, HTTP 302 → expiredwixdomain.com 404. The business therefore scores 2 (dead site), still inside this run's threshold — the shortlist decision stands, but the scout's score was wrong."
   }
- ]
+ ],
+ "businessType": "surf_school"
 }
