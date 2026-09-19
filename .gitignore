@@ -22,3 +22,9 @@ dist/
 
 # os / editor
 .DS_Store
+
+# mockup build artefacts (regenerate with tools/make-mockup.mjs)
+sites/*/mockups/*/dist/
+sites/*/mockups/*/node_modules
+sites/*/mockups/*/public/photos/
+sites/*/mockups/*/.astro/
