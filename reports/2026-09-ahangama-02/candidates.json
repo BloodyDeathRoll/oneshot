@@ -1,0 +1,2504 @@
+{
+ "run_id": "2026-09-ahangama-02",
+ "generated_at": "2026-09-19T11:50:00Z",
+ "scout_version": "0.1.0",
+ "area": {
+  "mode": "business",
+  "anchors": [
+   {
+    "query": "The Lavish Haven, Ahangama, Sri Lanka",
+    "lat": 5.97941339533991,
+    "lng": 80.3508360317383,
+    "geocoder": "booking.com property page map pin (data-atlas-latlng), verified in run 2026-09-ahangama-01; Nominatim returned no match for the business. Cross-checked against the Google Maps place pin 5.9794565,80.3508299 (5 m away).",
+    "geocoder_source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+    "fetched_at": "2026-09-19T10:49:10Z"
+   }
+  ],
+  "radius_m": 300,
+  "shore_buffer_m": null,
+  "polygon": "reports/2026-09-ahangama-02/area.geojson"
+ },
+ "presence_threshold": 2,
+ "candidates": [
+  {
+   "slug": "surf-inn-kabalana-beach-villa",
+   "name": "Surf Inn Kabalana Beach Villa",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.977694,
+    "lng": 80.350976,
+    "address": "179 Matara Road Welhengoda Junction, 80650, Sri Lanka (plus code X9H2+39 Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 191,
+    "distance_to_shore_m": 65
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/Surf%20Inn%20Kabalana%20Beach%20Villa/@5.9794134,80.350836,17z?hl=en"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 0,
+    "reason": "Only an unclaimed Google listing (4.5, 2 reviews, no phone, no website, 'Claim this business'); web search finds no site, social or OTA page under this name.",
+    "criteria": [
+     "google_listing_only",
+     "unclaimed_listing",
+     "no_phone",
+     "no_site",
+     "no_social_found"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/hostel/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:54:11Z",
+     "note": "Google Maps 'hostel' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Surf Inn Kabalana Beach Villa Surf Inn Kabalana Beach Villa 4.5(2) Surf school · 179 Matara Road Welhengoda Junction', pin 5.977694,80.350976"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9785,80.3524,18z?hl=en",
+     "fetched_at": "2026-09-19T11:16:56Z",
+     "note": "Google Maps 'surf' search centred at 5.9785,80.3524 (z18), feed scrolled: 'Surf Inn Kabalana Beach Villa Surf Inn Kabalana Beach Villa 4.5(2) Surf school · 179 Matara Road Welhengoda Junction', pin 5.977694,80.350976"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Surf%20Inn%20Kabalana%20Beach%20Villa/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:22:38Z",
+     "note": "Google Maps place page: category 'Hostel'; address 179 Matara Road Welhengoda Junction, 80650, Sri Lanka; no phone listed; no website listed; 'Claim this business' (unclaimed listing)"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "surf_related_note": "Surf-branded hostel/villa; Google shows it as 'Hostel' on the place page and 'Surf school' in the search feed. Address '179 Matara Road Welhengoda Junction' is the same street number as 'The wave villa kabalana' (excluded, not surf-marketed), 65 m away; possibly one operator.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "vishals-turning-point-surf",
+   "name": "Vishal's turning point & Juice bar",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9773703,
+    "lng": 80.3506135,
+    "address": "Welhengoda,junction, Galle Road, Ahangama 80650, Sri Lanka (plus code X9G2+W6 Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 227,
+    "distance_to_shore_m": 16
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/Vishal%27s%20turning%20point%20%26%20Juice%20bar/@5.9794134,80.350836,17z?hl=en"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google listing (4.9, 14 reviews, no phone, no website, 'Add place's phone number'); no site, social or directory page found.",
+    "criteria": [
+     "google_listing_only",
+     "no_phone",
+     "no_site",
+     "no_social_found"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/shop/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:55:45Z",
+     "note": "Google Maps 'shop' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Vishal's turning point & Juice bar Vishal's turning point & Juice bar 4.9(14) Surf school · Welhengoda,junction, Galle Road Open · Closes 6', pin 5.9773703,80.3506135"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9785,80.3524,18z?hl=en",
+     "fetched_at": "2026-09-19T11:16:56Z",
+     "note": "Google Maps 'surf' search centred at 5.9785,80.3524 (z18), feed scrolled: 'Vishal's turning point & Juice bar Vishal's turning point & Juice bar 4.9(14) Surf school · Welhengoda,junction, Galle Road Open · Closes 6', pin 5.9773703,80.3506135"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Vishal's%20turning%20point%20%26%20Juice%20bar/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:24:13Z",
+     "note": "Google Maps place page: category 'Beach entertainment shop'; rating 4.9 stars (14 reviews); address Welhengoda,junction, Galle Road, Ahangama 80650, Sri Lanka; no phone listed; no website listed"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "surf_related_note": "Google category 'Beach entertainment shop', but the review keywords are 'surf lesson' (2) and a review says 'Vishal surf school is the best in kabalana beach'; it surfaced in the 'surf school' and 'surfboard rental' searches. Surf school + juice bar at Welhengoda junction.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "bappa-surf-school",
+   "name": "Bappa Surf School",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9774492,
+    "lng": 80.3502068,
+    "address": "Kabalana Rd, Ahangama 80650, Sri Lanka (plus code X9G2+X3 Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 228,
+    "distance_to_shore_m": 11
+   },
+   "contact": {
+    "phone": "+94773234772",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/Bappa%20surf%20school/@5.9794134,80.350836,17z?hl=en"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google listing (4.7, 24 reviews, phone, no website); web search finds no site or social page.",
+    "criteria": [
+     "google_listing_only",
+     "no_site",
+     "no_social_found"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:52:28Z",
+     "note": "Google Maps 'surf' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Bappa surf school Bappa surf school 4.7(24) Surf school · Kabalana Rd Open · Closes 6 pm', pin 5.9774492,80.3502068"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9785,80.3524,18z?hl=en",
+     "fetched_at": "2026-09-19T11:16:56Z",
+     "note": "Google Maps 'surf' search centred at 5.9785,80.3524 (z18), feed scrolled: 'Bappa surf school Bappa surf school 4.7(24) Surf school · Kabalana Rd Open · Closes 6 pm', pin 5.9774492,80.3502068"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Bappa%20surf%20school/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:24:21Z",
+     "note": "Google Maps place page: category 'Surf school'; rating 4.7 stars (24 reviews); address Kabalana Rd, Ahangama 80650, Sri Lanka; tel +94773234772; no website listed"
+    }
+   ],
+   "surf_related_confidence": 0.95,
+   "surf_related_note": "Google category 'Surf school', Kabalana Rd.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "sam-surf-and-tours",
+   "name": "Sam Surf and Tours",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9773197,
+    "lng": 80.3504341,
+    "address": "beach, Kabalana Rd, Ahangama, Sri Lanka (plus code X9G2+W5 Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 236,
+    "distance_to_shore_m": 5
+   },
+   "contact": {
+    "phone": "+94771031754",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/Sam%20Surf%20and%20Tours/@5.9794134,80.350836,17z?hl=en"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google listing (no reviews, phone, no website); web search finds nothing else.",
+    "criteria": [
+     "google_listing_only",
+     "no_reviews",
+     "no_site",
+     "no_social_found"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:52:28Z",
+     "note": "Google Maps 'surf' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Sam Surf and Tours Sam Surf and Tours No reviews Surf school · beach, Kabalana Rd Open · Closes 6 pm', pin 5.9773197,80.3504341"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9785,80.3524,18z?hl=en",
+     "fetched_at": "2026-09-19T11:16:56Z",
+     "note": "Google Maps 'surf' search centred at 5.9785,80.3524 (z18), feed scrolled: 'Sam Surf and Tours Sam Surf and Tours No reviews Surf school · beach, Kabalana Rd Open · Closes 6 pm', pin 5.9773197,80.3504341"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Sam%20Surf%20and%20Tours/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:24:58Z",
+     "note": "Google Maps place page: category 'Surf school'; address beach, Kabalana Rd, Ahangama, Sri Lanka; tel +94771031754; no website listed"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "surf_related_note": "Google category 'Surf school', 'beach, Kabalana Rd'.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "shanu-surf-lanka",
+   "name": "Shanu Surf Lanka",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9777033,
+    "lng": 80.3495508,
+    "address": "X8HX+3RM, Welhengoda, Ahangama, Sri Lanka (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 236,
+    "distance_to_shore_m": 14
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/Shanu%20Surf%20Lanka/@5.9794134,80.350836,17z?hl=en"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 0,
+    "reason": "Only an unclaimed Google listing (5.0, no review count shown, no phone, no website, 'Claim this business'); web search finds nothing else.",
+    "criteria": [
+     "google_listing_only",
+     "unclaimed_listing",
+     "no_phone",
+     "no_site",
+     "no_social_found"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/surf%20school/@5.97941339533991,80.3508360317383,18z?hl=en",
+     "fetched_at": "2026-09-19T11:10:36Z",
+     "note": "Google Maps 'surf school' search centred at 5.97941339533991,80.3508360317383 (z18), feed scrolled: 'Shanu Surf Lanka Shanu Surf Lanka 5.0 Surf school · X8HX+3RM, Welhengoda Open · Closes 10 pm', pin 5.9777033,80.3495508"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surf%20school/@5.9776,80.35,18z?hl=en",
+     "fetched_at": "2026-09-19T11:15:27Z",
+     "note": "Google Maps 'surf school' search centred at 5.9776,80.35 (z18), feed scrolled: 'Shanu Surf Lanka Shanu Surf Lanka 5.0 Surf school · X8HX+3RM, Welhengoda Open · Closes 10 pm', pin 5.9777033,80.3495508"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Shanu%20Surf%20Lanka/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:25:05Z",
+     "note": "Google Maps place page: category 'Surf school'; address X8HX+3RM, Welhengoda, Ahangama, Sri Lanka; no phone listed; no website listed; 'Claim this business' (unclaimed listing)"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "surf_related_note": "Google category 'Surf school', Welhengoda. Not in the run-01 survey; found by the 'surf school' query from the beach-side centre.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "hool-kabalana",
+   "name": "hool kabalana",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.977741,
+    "lng": 80.3492505,
+    "address": "Kabalana beach, On the beach, Kabalana Rd, Ahangama 80650, Sri Lanka (plus code X8HX+3P Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 254,
+    "distance_to_shore_m": 15
+   },
+   "contact": {
+    "phone": "+94775364009",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/hool%20kabalana/@5.9794134,80.350836,17z?hl=en"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google listing (5.0, 2 reviews, phone, no website); web search finds nothing else.",
+    "criteria": [
+     "google_listing_only",
+     "no_site",
+     "no_social_found"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:52:28Z",
+     "note": "Google Maps 'surf' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'hool kabalana hool kabalana 5.0(2) Surf school · Kabalana beach, On the beach, Kabalana Rd Closed · Opens 9 am Mon', pin 5.977741,80.3492505"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surf%20lessons/@5.97941339533991,80.3508360317383,18z?hl=en",
+     "fetched_at": "2026-09-19T11:12:28Z",
+     "note": "Google Maps 'surf lessons' search centred at 5.97941339533991,80.3508360317383 (z18), feed scrolled: 'hool kabalana hool kabalana 5.0(2) Surf school · Kabalana beach, On the beach, Kabalana Rd Closed · Opens 9 am Mon', pin 5.977741,80.3492505"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/hool%20kabalana/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:25:28Z",
+     "note": "Google Maps place page: category 'Surf school'; address Kabalana beach, On the beach, Kabalana Rd, Ahangama 80650, Sri Lanka; tel +94775364009; no website listed"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "surf_related_note": "Google category 'Surf school', 'Kabalana beach, On the beach'.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "laza-surf-point",
+   "name": "Laza Surf Point",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9776541,
+    "lng": 80.3493057,
+    "address": "X8HX+3P7, Ahangama, Sri Lanka (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 257,
+    "distance_to_shore_m": 6
+   },
+   "contact": {
+    "phone": "+94771545407",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/Laza%20Surf%20Point/@5.9794134,80.350836,17z?hl=en"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 0,
+    "reason": "Only an unclaimed Google listing (4.7, 7 reviews, phone, no website, 'Claim this business'); web search finds only a scraped directory page (srilanka-places.com).",
+    "criteria": [
+     "google_listing_only",
+     "unclaimed_listing",
+     "no_site",
+     "no_social_found"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:52:28Z",
+     "note": "Google Maps 'surf' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Laza Surf Point Laza Surf Point 4.7(7) Surf school · X8HX+3P7 Open · Closes 7 pm', pin 5.9776541,80.3493057"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9785,80.3524,18z?hl=en",
+     "fetched_at": "2026-09-19T11:16:56Z",
+     "note": "Google Maps 'surf' search centred at 5.9785,80.3524 (z18), feed scrolled: 'Laza Surf Point Laza Surf Point 4.7(7) Surf school · X8HX+3P7 Open · Closes 7 pm', pin 5.9776541,80.3493057"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Laza%20Surf%20Point/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:25:43Z",
+     "note": "Google Maps place page: category 'Surf school'; address X8HX+3P7, Ahangama, Sri Lanka; tel +94771545407; no website listed; 'Claim this business' (unclaimed listing)"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "surf_related_note": "Google category 'Surf school'.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "lollipop-surf-school",
+   "name": "Lollipop Surf School",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9770123,
+    "lng": 80.351507,
+    "address": "beach, Kabalana Rd, Ahangama 80650, Sri Lanka (plus code X9G2+RJ Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 276,
+    "distance_to_shore_m": 19
+   },
+   "contact": {
+    "phone": "+94775607436",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/Lollipop%20Surf%20School/@5.9794134,80.350836,17z?hl=en"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google listing (5.0, 1 review, phone, no website); web search finds nothing else.",
+    "criteria": [
+     "google_listing_only",
+     "no_site",
+     "no_social_found"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:52:28Z",
+     "note": "Google Maps 'surf' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Lollipop Surf School Lollipop Surf School 5.0(1) Surf school · beach, Kabalana Rd Open · Closes 6 pm', pin 5.9770123,80.351507"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9785,80.3524,18z?hl=en",
+     "fetched_at": "2026-09-19T11:16:56Z",
+     "note": "Google Maps 'surf' search centred at 5.9785,80.3524 (z18), feed scrolled: 'Lollipop Surf School Lollipop Surf School 5.0(1) Surf school · beach, Kabalana Rd Open · Closes 6 pm', pin 5.9770123,80.351507"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Lollipop%20Surf%20School/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:25:58Z",
+     "note": "Google Maps place page: category 'Surf school'; address beach, Kabalana Rd, Ahangama 80650, Sri Lanka; tel +94775607436; no website listed"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "surf_related_note": "Google category 'Surf school', 'beach, Kabalana Rd'.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "dad-and-sun-surf-school",
+   "name": "DAD & SUN Surf School",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9770866,
+    "lng": 80.3521407,
+    "address": "X9G2+RVC, Ahangama, Sri Lanka (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 295,
+    "distance_to_shore_m": 53
+   },
+   "contact": {
+    "phone": "+94776022019",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/DAD%20%26%20SUN%20SURF%20SCHOOL/@5.9794134,80.350836,17z?hl=en"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 0,
+    "reason": "Only an unclaimed Google listing (3.9, 7 reviews, phone, no website, 'Claim this business'); web search finds nothing else.",
+    "criteria": [
+     "google_listing_only",
+     "unclaimed_listing",
+     "no_site",
+     "no_social_found"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:52:28Z",
+     "note": "Google Maps 'surf' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'DAD & SUN SURF SCHOOL DAD & SUN SURF SCHOOL 3.9(7) Surf school · X9G2+RVC \"We took surf lessons for two days.\"', pin 5.9770866,80.3521407"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9785,80.3524,18z?hl=en",
+     "fetched_at": "2026-09-19T11:16:56Z",
+     "note": "Google Maps 'surf' search centred at 5.9785,80.3524 (z18), feed scrolled: 'DAD & SUN SURF SCHOOL DAD & SUN SURF SCHOOL 3.9(7) Surf school · X9G2+RVC \"We took surf lessons for two days.\"', pin 5.9770866,80.3521407"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/DAD%20%26%20SUN%20SURF%20SCHOOL/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:26:27Z",
+     "note": "Google Maps place page: category 'Surf school'; rating 3.9 stars (7 reviews); address X9G2+RVC, Ahangama, Sri Lanka; tel +94776022019; no website listed; 'Claim this business' (unclaimed listing)"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "surf_related_note": "Google category 'Surf school'; a review says 'We took surf lessons for two days'.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "hr-surfing-place",
+   "name": "HR Surfing Place",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9770581,
+    "lng": 80.3521337,
+    "address": "X9G2+RVC Welhengoda Beach, Ahangama, Sri Lanka (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 297,
+    "distance_to_shore_m": 50
+   },
+   "contact": {
+    "phone": "+94778464449",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/HR%20Surfing%20Place/@5.9794134,80.350836,17z?hl=en"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 0,
+    "reason": "Only an unclaimed Google listing (5.0, 4 reviews, phone, no website, 'Claim this business'); web search finds nothing else.",
+    "criteria": [
+     "google_listing_only",
+     "unclaimed_listing",
+     "no_site",
+     "no_social_found"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:52:28Z",
+     "note": "Google Maps 'surf' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'HR Surfing Place HR Surfing Place 5.0(4) Surf school · X9G2+RVC Welhengoda Beach Open · Closes 10:30 pm', pin 5.9770581,80.3521337"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surf%20camp/@5.97941339533991,80.3508360317383,18z?hl=en",
+     "fetched_at": "2026-09-19T11:10:58Z",
+     "note": "Google Maps 'surf camp' search centred at 5.97941339533991,80.3508360317383 (z18), feed scrolled: 'HR Surfing Place HR Surfing Place 5.0(4) Surf school · X9G2+RVC Welhengoda Beach Open · Closes 10:30 pm', pin 5.9770581,80.3521337"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/HR%20Surfing%20Place/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:26:35Z",
+     "note": "Google Maps place page: category 'Surf school'; address X9G2+RVC Welhengoda Beach, Ahangama, Sri Lanka; tel +94778464449; no website listed; 'Claim this business' (unclaimed listing)"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "surf_related_note": "Google category 'Surf school', 'Welhengoda Beach'; same plus code X9G2+RVC as DAD & SUN (3 m apart, different phones and names, kept separate).",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "the-lavish-haven",
+   "name": "The Lavish Haven Hotel And Resort",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9794565,
+    "lng": 80.3508299,
+    "address": "No166/1 walhengoda road, Ahangama 80650, Sri Lanka (Google Maps); 166/2 Welhengoda Road, 80650 Ahangama (Booking.com)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 5,
+    "distance_to_shore_m": 243
+   },
+   "contact": {
+    "phone": "+94764832988",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": "https://www.tripadvisor.com/Hotel_Review-g674590-d34333972-Reviews-The_Lavish_Haven-Ahangama_Galle_District_Southern_Province.html",
+    "google_maps": "https://www.google.com/maps/place/The+Lavish+Haven+Hotel+And+Resort/@5.9794565,80.3508299,17z/data=!4m9!3m8!1s0x3ae113bbadfe5595:0x8d858b9ae5001097!5m2!4m1!1i2!8m2!3d5.9794565!4d80.3508299!16s%2Fg%2F11ypgcrxg6",
+    "booking": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+    "agoda": "https://www.agoda.com/the-lavish-haven-h82617698/hotel/piyadigama-lk.html"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 1,
+    "reason": "No own website or social page found; the only presence is the Google Maps listing (5.0, 21 reviews, phone, no website field) and OTA pages (Booking.com 9.3/34 reviews, Agoda, TripAdvisor), so booking happens only through third parties.",
+    "criteria": [
+     "no_own_site",
+     "ota_listings_only",
+     "google_listing",
+     "no_social_found"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+     "fetched_at": "2026-09-19T10:49:10Z",
+     "note": "Booking.com page (headless Chromium): pin 5.97941339533991,80.3508360317383; streetAddress '166/2 Welhengoda Road , 80650 Ahangama'; rating 9.3, 34 reviews; description '2-minute walk from Kabalana Beach'; guest review 'right over the surf spot of Kabalana'"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/The+Lavish+Haven+Hotel+And+Resort+Ahangama?hl=en",
+     "fetched_at": "2026-09-19T10:51:44Z",
+     "note": "Google Maps place: pin 5.9794565,80.3508299; 'Hotel'; 5.0 (21); tel:+94764832988; address 'No166/1 walhengoda road, Ahangama 80650'; plus code X9H2+Q8; no website listed"
+    },
+    {
+     "source_url": "https://www.agoda.com/the-lavish-haven-h82617698/hotel/piyadigama-lk.html",
+     "fetched_at": "2026-09-19T10:48:02Z",
+     "note": "Agoda listing exists (HTTP 200, JS shell; no address/coords extractable)"
+    },
+    {
+     "source_url": "https://www.tripadvisor.com/Hotel_Review-g674590-d34333972-Reviews-The_Lavish_Haven-Ahangama_Galle_District_Southern_Province.html",
+     "fetched_at": "2026-09-19T10:50:35Z",
+     "note": "TripAdvisor listing exists per search results; page returned HTTP 403 to both WebFetch and headless Chromium, so nothing was read from it"
+    }
+   ],
+   "surf_related_confidence": 0.4,
+   "surf_related_note": "Anchor business, included by run design. Its own marketing says 'a 2-minute walk from Kabalana Beach' and 'private beach area'; the only surf mention is a guest review ('right over the surf spot of Kabalana'). No board storage / surf packages seen.",
+   "languages_seen": [
+    "en"
+   ],
+   "reused_from_run": "2026-09-ahangama-01"
+  },
+  {
+   "slug": "villa-vera-ahangama",
+   "name": "Villa Vera",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.97874,
+    "lng": 80.35042,
+    "address": "Welhengoda Bus Stop, 80650 Ahangama, Sri Lanka (Booking.com)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 87,
+    "distance_to_shore_m": 154
+   },
+   "contact": {
+    "phone": "+94741040000",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Vera+Villa/data=!4m10!3m9!1s0x3ae113cbeb939297:0x222b53168bb21c1e!5m2!4m1!1i2!8m2!3d5.97874!4d80.35042!16s%2Fg%2F11ytg9k55w",
+    "booking": "https://www.booking.com/hotel/lk/villa-vera-ahangama.html"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 1,
+    "reason": "No own website or social page found; presence is a Booking.com listing (9.2) and a Google Maps listing ('Vera Villa', 5.0, 16 reviews, phone) plus a second Google entry 'Villa Vera - Superior Villa' that is the same property's room listing.",
+    "criteria": [
+     "no_own_site",
+     "ota_listings_only",
+     "google_listing",
+     "no_social_found"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/villa/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:53:40Z",
+     "note": "Google Maps 'villa' search near anchor: 'Vera Villa 5.0 Villa Open 24 hours · +94 74 104 0000' pin 5.97874,80.35042; and 'Villa Vera - Superior Villa Lodging Website' pin 5.9787302,80.3504105 (deduped: same name, 12 m apart)"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Vera%20Villa/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:57:29Z",
+     "note": "Google Maps place: '5.0(16)', 'Open 24 hours · +94 74 104 0000'"
+    },
+    {
+     "source_url": "https://www.booking.com/hotel/lk/villa-vera-ahangama.html",
+     "fetched_at": "2026-09-19T10:59:05Z",
+     "note": "Booking.com (headless): pin 5.97873108382385,80.350413135718; streetAddress 'Welhengoda Bus Stop, 80650 Ahangama'; rating 9.2; host neighbourhood text: 'Sri Lanka's Hidden Surf Gem ... vibrant surf culture, offering consistent, high-quality waves perfect for surfers of all levels'; 'Language spoken: English'"
+    }
+   ],
+   "surf_related_confidence": 0.6,
+   "surf_related_note": "Villa whose Booking.com host text explicitly pitches Ahangama's surf and 'surfers of all levels'; no surf services of its own seen. Phone +94 74 104 0000 is also shown on Google for 'Nina Villa' (113 m from anchor, outside the polygon), so the two may be one operator.",
+   "languages_seen": [
+    "en"
+   ],
+   "reused_from_run": "2026-09-ahangama-01"
+  },
+  {
+   "slug": "briza-surf-kabalana",
+   "name": "Briza Surf Kabalana",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9787537,
+    "lng": 80.3502322,
+    "address": "Kabalana Rd, Ahangama 80650, Sri Lanka (Google Maps); plus code X9H2+G3",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 99,
+    "distance_to_shore_m": 148
+   },
+   "contact": {
+    "phone": "+94741648662",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": "https://www.instagram.com/brizasurf_kabalana/",
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Briza+Surf+Kabalana/data=!4m7!3m6!1s0x3ae113b188981a99:0xb1a7729445741718!8m2!3d5.9787537!4d80.3502322!16s%2Fg%2F11zkgd2_y0"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 1,
+    "reason": "Instagram only (@brizasurf_kabalana: 259 followers, 129 posts) plus a Google Maps listing with a phone number and 1 review; no website anywhere.",
+    "criteria": [
+     "instagram_only",
+     "no_site",
+     "google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:52:28Z",
+     "note": "Google Maps 'surf' search near anchor: 'Briza Surf Kabalana 5.0 Surf school · Kabalana Rd Open · Closes 6:30 pm', pin 5.9787537,80.3502322"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Briza%20Surf%20Kabalana/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:57:34Z",
+     "note": "Google Maps place: 'Surf school', 'Kabalana Rd, Ahangama 80650', tel:+94741648662, (1) review, plus code X9H2+G3, no website"
+    },
+    {
+     "source_url": "https://www.instagram.com/brizasurf_kabalana/",
+     "fetched_at": "2026-09-19T10:59:43Z",
+     "note": "og:description: '259 Followers, 436 Following, 129 Posts - BRIZA SURF SCHOOL | KABALANA'"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Briza%20Surf%20Kabalana/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:12:24Z",
+     "note": "Google Maps place page: category 'Surf school'; address Kabalana Rd, Ahangama 80650, Sri Lanka; tel +94741648662; no website listed"
+    }
+   ],
+   "surf_related_confidence": 0.95,
+   "surf_related_note": "Google category 'Surf school'; Instagram name 'BRIZA SURF SCHOOL | KABALANA'. Caveat: the Google pin sits 99 m from the anchor, 1 m inside the polygon edge; the physical school may operate from the beach ~150 m further south, so the human should confirm the location.",
+   "languages_seen": [
+    "en"
+   ],
+   "reused_from_run": "2026-09-ahangama-01"
+  },
+  {
+   "slug": "nirvana-surf-retreat",
+   "name": "Nirvana Surf Retreat",
+   "type": "surf_camp",
+   "location": {
+    "lat": 5.9786362,
+    "lng": 80.3500963,
+    "address": "Kabalana Rd, Ahangama 80650, Sri Lanka (plus code X9H2+F2 Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 118,
+    "distance_to_shore_m": 130
+   },
+   "contact": {
+    "phone": "+94787668662",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": "https://www.instagram.com/nirvanasurfretreat/",
+    "facebook": null,
+    "tripadvisor": "https://www.tripadvisor.com/Hotel_Review-g674590-d34111571-Reviews-Nirvana_Surf_Retreat-Ahangama_Galle_District_Southern_Province.html",
+    "google_maps": "https://www.google.com/maps/search/Nirvana%20Surf%20Retreat/@5.9794134,80.350836,17z?hl=en",
+    "booking": "https://www.booking.com/hotel/lk/nirvana-surf-retreat-surf-package.html"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 1,
+    "reason": "No website; presence is an Instagram account (95 followers, 27 posts), a Booking.com 'surf package' listing and a Google listing (5.0, 3 reviews, phone, 'Surf school' / lodging).",
+    "criteria": [
+     "instagram_only",
+     "ota_listings_only",
+     "google_listing",
+     "no_site"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/hostel/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:54:11Z",
+     "note": "Google Maps 'hostel' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Nirvana Surf Retreat Nirvana Surf Retreat 5.0(3) Surf school', pin 5.9786362,80.3500963"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/hostel/@5.9776,80.35,18z?hl=en",
+     "fetched_at": "2026-09-19T11:16:34Z",
+     "note": "Google Maps 'hostel' search centred at 5.9776,80.35 (z18), feed scrolled: 'Nirvana Surf Retreat Nirvana Surf Retreat 5.0(3) Surf school', pin 5.9786362,80.3500963"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Nirvana%20Surf%20Retreat/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:22:01Z",
+     "note": "Google Maps place page; address Kabalana Rd, Ahangama 80650, Sri Lanka; tel +94787668662; no website listed"
+    },
+    {
+     "source_url": "https://www.instagram.com/nirvanasurfretreat/",
+     "fetched_at": "2026-09-19T11:33:41Z",
+     "note": "og:title 'Nirvana Surf Retreat (@nirvanasurfretreat) • Instagram photos and videos'; og:description '95 Followers, 37 Following, 27 Posts - See Instagram photos and videos from Nirvana Surf Retreat (@nirvanasurfretreat)'"
+    },
+    {
+     "source_url": "https://www.booking.com/hotel/lk/nirvana-surf-retreat-surf-package.html",
+     "fetched_at": "2026-09-19T11:37:24Z",
+     "note": "Booking.com listing exists per web search (slug says surf-package); headless fetch returned no content on this attempt (status null), so nothing was read from it"
+    }
+   ],
+   "surf_related_confidence": 0.85,
+   "surf_related_note": "Google category 'Surf school' on a lodging listing; Instagram name 'Nirvana Surf Retreat'; Booking.com URL slug 'surf-package'. Not to be confused with 'Nirbana' retreat elsewhere in Ahangama.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "yathis-surf-rest",
+   "name": "Yathi's Surf Rest",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9788637,
+    "lng": 80.3520265,
+    "address": "WARNASOORIYANIWASA WELHENGODA, Ahangama, Sri Lanka (plus code X9H2+GR Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 144,
+    "distance_to_shore_m": 230
+   },
+   "contact": {
+    "phone": "+94781844081",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/YATHI%27S%20SURF%20REST/@5.9794134,80.350836,17z?hl=en",
+    "booking": "https://www.booking.com/hotel/lk/yathis-surf-villa.html"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 1,
+    "reason": "No website or social page found; presence is a Booking.com listing (9.5, 10 reviews) and a Google listing (5.0, 6 reviews, phone) with OTA price links.",
+    "criteria": [
+     "ota_listings_only",
+     "google_listing",
+     "no_site",
+     "no_social_found"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/bed%20and%20breakfast/@5.97941339533991,80.3508360317383,18z?hl=en",
+     "fetched_at": "2026-09-19T11:13:57Z",
+     "note": "Google Maps 'bed and breakfast' search centred at 5.97941339533991,80.3508360317383 (z18), feed scrolled: 'YATHI'S SURF REST YATHI'S SURF REST 5.0(6) Villa Open 24 hours · +94 78 184 4081  Directions', pin 5.9788637,80.3520265"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/lodging/@5.97941339533991,80.3508360317383,18z?hl=en",
+     "fetched_at": "2026-09-19T11:13:13Z",
+     "note": "Google Maps 'lodging' search centred at 5.97941339533991,80.3508360317383 (z18), feed scrolled: 'YATHI'S SURF REST YATHI'S SURF REST 5.0(6) Villa Open 24 hours · +94 78 184 4081  Directions', pin 5.9788637,80.3520265"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/YATHI'S%20SURF%20REST/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:22:08Z",
+     "note": "Google Maps place page; rating 5.0 stars (6 reviews); address WARNASOORIYANIWASA WELHENGODA, Ahangama, Sri Lanka; tel +94781844081; no website listed"
+    },
+    {
+     "source_url": "https://www.booking.com/hotel/lk/yathis-surf-villa.html",
+     "fetched_at": "2026-09-19T11:39:52Z",
+     "note": "Booking.com (headless): pin 5.9788637,80.3520265 (same as Google), name \"Yathi'S Surf rest\", rating 9.5 (10); guest quote 'I came for a surf trip and the room was exactly what I needed'"
+    }
+   ],
+   "surf_related_confidence": 0.6,
+   "surf_related_note": "Surf-branded villa ('Surf Rest'); a guest review on Booking mentions a surf trip; no surf services of its own seen.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "boardwalk-surf-villa",
+   "name": "Boardwalk Surf Villa",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.978988,
+    "lng": 80.3523181,
+    "address": "X9H2+JQQ Naluarabewatta, welhengoda, Ahangama, Sri Lanka (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 170,
+    "distance_to_shore_m": 255
+   },
+   "contact": {
+    "phone": "+94702386893",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/Boardwalk%20surf%20villa/@5.9794134,80.350836,17z?hl=en",
+    "booking": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+    "agoda": "https://www.agoda.com/boardwalk-surf-villa/hotel/unawatuna-lk.html"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 1,
+    "reason": "No website or social page found; presence is Booking.com/Agoda listings and a Google listing (4.6, 9 reviews, phone) that says 'Contact this property for rates'.",
+    "criteria": [
+     "ota_listings_only",
+     "google_listing",
+     "no_site",
+     "no_social_found"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:52:28Z",
+     "note": "Google Maps 'surf' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Boardwalk surf villa Boardwalk surf villa 4.6(9) Villa Open 24 hours \"12 days in a quiet area, close to the beach to surf, with an amazing ', pin 5.978988,80.3523181"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9785,80.3524,18z?hl=en",
+     "fetched_at": "2026-09-19T11:16:56Z",
+     "note": "Google Maps 'surf' search centred at 5.9785,80.3524 (z18), feed scrolled: 'Boardwalk surf villa Boardwalk surf villa 4.6(9) Villa Open 24 hours \"12 days in a quiet area, close to the beach to surf, with an amazing ', pin 5.978988,80.3523181"
+    },
+    {
+     "source_url": "https://www.google.com/maps/place/Boardwalk+surf+villa/data=!4m10!3m9!1s0x3ae113005bfd0b55:0xcb7df86a9fdd1276!5m2!4m1!1i2!8m2!3d5.978988!4d80.3523181!16s%2Fg%2F11x391h3gx!19sChIJVQv9WwAT4ToRdhLdn2r4fcs?authuser=0&hl=en&g_ep=EgoyMDI2MDkxNi4wIJJjKgBIAVAD&rclk=1",
+     "fetched_at": "2026-09-19T11:27:07Z",
+     "note": "Google Maps place page; rating 4.6 (9); address X9H2+JQQ Naluarabewatta, welhengoda, Ahangama, Sri Lanka; tel +94702386893; no website listed; 'Claim this business' (unclaimed listing)"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surfboard+rental/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:54:27Z",
+     "note": "Duplicate listing 'Boardwalk Surf Villa' (Boardwalk Surf Villa Boardwalk Surf Villa Lodging  Website  Directions  Free parking  Free Wi-Fi), pin 5.9789528,80.3523102, 4 m from the main pin; merged into this entry"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surfboard+rental/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:54:27Z",
+     "note": "Duplicate listing 'Boardwalk Surf Villa 2 - One-Bedroom Villa' (Boardwalk Surf Villa 2 - One-Bedroom Villa Boardwalk Surf Villa 2 - One-Bedroom Villa Villa Sleeps 2), pin 5.9789701,80.3523102, 2 m from the main pin; merged into this entry"
+    }
+   ],
+   "surf_related_confidence": 0.6,
+   "surf_related_note": "Surf-branded villa near Kabalana; a Google review says 'close to the beach to surf'; no surf services seen. Three Google listings (main + two room-level) merged.",
+   "languages_seen": [
+    "en"
+   ],
+   "also_listed_as": [
+    "Boardwalk Surf Villa",
+    "Boardwalk Surf Villa 2 - One-Bedroom Villa"
+   ]
+  },
+  {
+   "slug": "surf-front",
+   "name": "Surf Front",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9779042,
+    "lng": 80.351138,
+    "address": "Kasige, Welhengoda, Ahangama, Sri Lanka (plus code X9H2+5F Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 170,
+    "distance_to_shore_m": 93
+   },
+   "contact": {
+    "phone": "+94775681085",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/Surf%20Front/@5.9794134,80.350836,17z?hl=en",
+    "booking": "https://www.booking.com/hotel/lk/surf-front.html"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 1,
+    "reason": "No website or social page found; presence is a Booking.com listing (on Booking since Dec 2022 per web search) and a Google listing (5.0, 17 reviews, phone, EUR 22 OTA price links).",
+    "criteria": [
+     "ota_listings_only",
+     "google_listing",
+     "no_site",
+     "no_social_found"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:52:28Z",
+     "note": "Google Maps 'surf' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Surf Front Surf Front 5.0(17) Villa Open now \"You can rent for below market price — speaking from experience.\"', pin 5.9779042,80.351138"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9785,80.3524,18z?hl=en",
+     "fetched_at": "2026-09-19T11:16:56Z",
+     "note": "Google Maps 'surf' search centred at 5.9785,80.3524 (z18), feed scrolled: 'Surf Front Surf Front 5.0(17) Villa Open now \"You can rent for below market price — speaking from experience.\"', pin 5.9779042,80.351138"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Surf%20Front/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:27:17Z",
+     "note": "Google Maps place page; rating 5.0; address Kasige, Welhengoda, Ahangama, Sri Lanka; tel +94775681085; no website listed; 'Claim this business' (unclaimed listing)"
+    }
+   ],
+   "surf_related_confidence": 0.6,
+   "surf_related_note": "Surf-branded villa 'a few steps from Kabalana Beach' (Booking text via web search); no surf services seen.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "surf-revolution-kabalana",
+   "name": "Surf Revolution Kabalana",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.977442,
+    "lng": 80.3503504,
+    "address": "Kabalana beach, Ahangama 80650, Sri Lanka (plus code X9G2+X4 Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 224,
+    "distance_to_shore_m": 15
+   },
+   "contact": {
+    "phone": "+94763792260",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": "https://www.instagram.com/surf_revolution_kabalana/",
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/Surf%20Revolution%20Kabalana/@5.9794134,80.350836,17z?hl=en"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 1,
+    "reason": "Instagram only (@surf_revolution_kabalana: 121 followers, 50 posts) plus a Google listing (5.0, 19 reviews, phone); no website anywhere.",
+    "criteria": [
+     "instagram_only",
+     "google_listing",
+     "no_site"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:52:28Z",
+     "note": "Google Maps 'surf' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Surf Revolution Kabalana Surf Revolution Kabalana 5.0(19) Surf school · Kabalana beach Open · Closes 6 pm', pin 5.977442,80.3503504"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9785,80.3524,18z?hl=en",
+     "fetched_at": "2026-09-19T11:16:56Z",
+     "note": "Google Maps 'surf' search centred at 5.9785,80.3524 (z18), feed scrolled: 'Surf Revolution Kabalana Surf Revolution Kabalana 5.0(19) Surf school · Kabalana beach Open · Closes 6 pm', pin 5.977442,80.3503504"
+    },
+    {
+     "source_url": "https://www.google.com/maps/place/Surf+Revolution+Kabalana/data=!4m7!3m6!1s0x3ae11354db79331f:0xc0b8649f4883f0a!8m2!3d5.977442!4d80.3503504!16s%2Fg%2F11ypk7_j62!19sChIJHzN521QT4ToRCj-I9EmGCww?authuser=0&hl=en&g_ep=EgoyMDI2MDkxNi4wIJJjKgBIAVAD&rclk=1",
+     "fetched_at": "2026-09-19T11:28:14Z",
+     "note": "Google Maps place page: category 'Surf school'; rating 5.0 (19); address Kabalana beach, Ahangama 80650, Sri Lanka; tel +94763792260; no website listed"
+    },
+    {
+     "source_url": "https://www.instagram.com/surf_revolution_kabalana/",
+     "fetched_at": "2026-09-19T11:33:51Z",
+     "note": "og:title 'surf revolution kabalana (@surf_revolution_kabalana) • Instagram photos and videos'; og:description '121 Followers, 150 Following, 50 Posts - See Instagram photos and videos from surf revolution kabalana (@surf_revolution_kabalana)'"
+    }
+   ],
+   "surf_related_confidence": 0.95,
+   "surf_related_note": "Google category 'Surf school', address 'Kabalana beach'.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "layday-surf-ahangama",
+   "name": "Layday Surf Ahangama",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9784609,
+    "lng": 80.3526536,
+    "address": "Warnagiri welhengoda, Ahangama 80650, Sri Lanka (plus code X9H3+93 Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 226,
+    "distance_to_shore_m": 215
+   },
+   "contact": {
+    "phone": "+94778553343",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+    "booking": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+    "hostelworld": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+    "agoda": "https://www.agoda.com/layday-surf-ahangama/hotel/piyadigama-lk.html"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 1,
+    "reason": "No website or social page found (web search returns only OTA pages); presence is Booking.com (10.0, 6 reviews), Hostelworld and Agoda listings and a Google listing (5.0, 15 reviews, phone).",
+    "criteria": [
+     "ota_listings_only",
+     "google_listing",
+     "no_site",
+     "no_social_found"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/hostel/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:54:11Z",
+     "note": "Google Maps 'hostel' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Layday Surf Ahangama Layday Surf Ahangama 5.0(15) Hostel  Free parking  Free Wi-Fi  Air-conditioned  Wi-Fi', pin 5.9784609,80.3526536"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/hostel/@5.9776,80.35,18z?hl=en",
+     "fetched_at": "2026-09-19T11:16:34Z",
+     "note": "Google Maps 'hostel' search centred at 5.9776,80.35 (z18), feed scrolled: 'Layday Surf Ahangama Layday Surf Ahangama 5.0(15) Hostel  Free parking  Free Wi-Fi  Air-conditioned  Wi-Fi', pin 5.9784609,80.3526536"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:24:06Z",
+     "note": "Google Maps place page; address Warnagiri welhengoda, Ahangama 80650, Sri Lanka; tel +94778553343; no website listed"
+    },
+    {
+     "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+     "fetched_at": "2026-09-19T11:39:44Z",
+     "note": "Booking.com (headless): pin 5.9784743,80.352641 (2 m from Google), address 'Warnagiri welhengoda … 80650 Ahangama', rating 10.0 (6); 'Beach' and 'Bicycle rental' listed, no surf service text"
+    }
+   ],
+   "surf_related_confidence": 0.6,
+   "surf_related_note": "Surf-branded hostel '2-min walk to Kabalana Beach' (Hostelworld via web search); no surf services of its own seen.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "kabalana-surf-point-kasuns-place",
+   "name": "Kabalana Surf Point - Kasun's Place",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9775729,
+    "lng": 80.3499021,
+    "address": "Kabalana Rd, Ahangama, Sri Lanka (plus code X8HX+2X Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 228,
+    "distance_to_shore_m": 13
+   },
+   "contact": {
+    "phone": "+94779065637",
+    "whatsapp": "+94710101753",
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": "https://www.facebook.com/people/Kabalana-Surf-Point-Kasuns-Place/100063792770809/",
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/Kabalana%20Surf%20Point%20-%20Kasun%27s%20Place/@5.9794134,80.350836,17z?hl=en"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 1,
+    "reason": "Facebook only (634 followers; description carries a WhatsApp number) plus a Google listing (4.3, 85 reviews, phone); no website.",
+    "criteria": [
+     "facebook_only",
+     "google_listing",
+     "no_site"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:52:28Z",
+     "note": "Google Maps 'surf' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Kabalana Surf Point - Kasun's Place Kabalana Surf Point - Kasun's Place 4.3(85) Surf school · Kabalana Rd Closes soon · 5 pm · Opens 6 am S', pin 5.9775729,80.3499021"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9785,80.3524,18z?hl=en",
+     "fetched_at": "2026-09-19T11:16:56Z",
+     "note": "Google Maps 'surf' search centred at 5.9785,80.3524 (z18), feed scrolled: 'Kabalana Surf Point - Kasun's Place Kabalana Surf Point - Kasun's Place 4.3(85) Surf school · Kabalana Rd Closes soon · 5 pm · Opens 6 am S', pin 5.9775729,80.3499021"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Kabalana%20Surf%20Point%20-%20Kasun's%20Place/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:24:28Z",
+     "note": "Google Maps place page: category 'Surf school'; rating 4.3 stars (85 reviews); address Kabalana Rd, Ahangama, Sri Lanka; tel +94779065637; no website listed"
+    },
+    {
+     "source_url": "https://www.facebook.com/people/Kabalana-Surf-Point-Kasuns-Place/100063792770809/",
+     "fetched_at": "2026-09-19T11:35:04Z",
+     "note": "og:title 'Kabalana Surf Point - Kasun's Place | Ahangama '; og:description 'Kabalana Surf Point - Kasun's Place, Ahangama. 634 followers · 142 were here. +94710101753- whatsapp'"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Plam%20Beach%20Restaurant%20And%20Surf%20School/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:23:22Z",
+     "note": "Google Maps place page: category 'Restaurant'; address X9H2+32M Kabalana Beach, Ahangama, Sri Lanka; tel +94779065637; no website listed; 'Claim this business' (unclaimed listing) — same phone +94779065637 as Kasun's Place, 21 m away: merged as one business"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/restaurant/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:53:09Z",
+     "note": "Duplicate listing 'Plam Beach Restaurant And Surf School' (Plam Beach Restaurant And Surf School Plam Beach Restaurant And Surf School 1.6(15) Restaurant · X9), pin 5.9777018,80.3500471, 21 m from the main pin; merged into this entry"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "surf_related_note": "Google category 'Surf school'; Facebook describes it as beach food + surfing. 'Plam Beach Restaurant And Surf School' (Google: Restaurant, 1.6, 15 reviews) shares its phone number and sits 21 m away, so it is treated as the same operator's restaurant listing. WhatsApp number copied from the Facebook og:description.",
+   "languages_seen": [
+    "en"
+   ],
+   "also_listed_as": [
+    "Plam Beach Restaurant And Surf School"
+   ]
+  },
+  {
+   "slug": "summer-of-surf-accommodation",
+   "name": "Summer of Surf Accommodation",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9787065,
+    "lng": 80.3483069,
+    "address": "X8HX+F8M, Colombo - Galle - Hambantota - Wellawaya Hwy, Ahangama, Sri Lanka (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 289,
+    "distance_to_shore_m": 119
+   },
+   "contact": {
+    "phone": "+94774028662",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/summer%20of%20surf%20accommodation/@5.9794134,80.350836,17z?hl=en"
+   },
+   "existing_site": {
+    "url": null,
+    "google_website_field": "http://www.summerofsurf.com/",
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": "the Google website field points to an unrelated US business (HTTP 200 there)",
+    "has_booking": false
+   },
+   "presence": {
+    "score": 1,
+    "reason": "The website on the Google listing (summerofsurf.com) is an unrelated Californian kids' surf camp (US phone 818-653-7241, Costa Rica trips), so this hotel has no site of its own; presence is the Google listing (4.8, 5 reviews, phone) and OTA price links.",
+    "criteria": [
+     "website_field_unrelated_business",
+     "ota_listings_only",
+     "google_listing",
+     "no_site",
+     "no_social_found"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/hotel/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:52:43Z",
+     "note": "Google Maps 'hotel' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'summer of surf accommodation summer of surf accommodation 4.8(5) Hotel', pin 5.9787065,80.3483069"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/hotel/@5.9776,80.35,18z?hl=en",
+     "fetched_at": "2026-09-19T11:15:49Z",
+     "note": "Google Maps 'hotel' search centred at 5.9776,80.35 (z18), feed scrolled: 'summer of surf accommodation summer of surf accommodation 4.8(5) Hotel', pin 5.9787065,80.3483069"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/summer%20of%20surf%20accommodation/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:26:05Z",
+     "note": "Google Maps place page; rating 4.8 stars (5 reviews); address X8HX+F8M, Colombo - Galle - Hambantota - Wellawaya Hwy, Ahangama, Sri Lanka; tel +94774028662; website http://www.summerofsurf.com/; 'Claim this business' (unclaimed listing)"
+    },
+    {
+     "source_url": "http://www.summerofsurf.com/",
+     "fetched_at": "2026-09-19T11:30:45Z",
+     "note": "Headless Chromium, 390 px mobile viewport: HTTP 200, final URL https://www.summerofsurf.com/, title 'SUMMER OF SURF: Surf Camp with Transportation', viewport meta 'width=device-width,initial-scale=1', document width 390/390, body text 2210 chars. Title 'SUMMER OF SURF: Surf Camp with Transportation'; text: 'COSTA RICA!', 'Pick Up Locations', 'CIT Counselor-in-Training'; phone '(818) 653-7241'; facebook.com/SummerofSurf."
+    }
+   ],
+   "surf_related_confidence": 0.6,
+   "surf_related_note": "Surf-branded hotel on the Galle road at Kabalana; no surf service text seen. Human should confirm the Google website field is simply a wrong link.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "ka-surf-hostel-and-restaurant",
+   "name": "KA Surf Hostel and Restaurant",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9818405,
+    "lng": 80.3520113,
+    "address": "207/A welahangoda, Ahangama, Sri Lanka (plus code X9J2+PR Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 298,
+    "distance_to_shore_m": 534
+   },
+   "contact": {
+    "phone": "+94773746053",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": "https://www.instagram.com/kasurfhostel/",
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en",
+    "hostelworld": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/"
+   },
+   "existing_site": {
+    "url": null,
+    "status": null,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": false
+   },
+   "presence": {
+    "score": 1,
+    "reason": "Instagram (@kasurfhostel: 1,495 followers, 22 posts) plus Booking.com/Hostelworld listings and a Google listing (4.8, 42 reviews, phone); no website.",
+    "criteria": [
+     "instagram_only",
+     "ota_listings_only",
+     "google_listing",
+     "no_site"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/hostel/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:54:11Z",
+     "note": "Google Maps 'hostel' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'KA surf hostel and restaurant KA surf hostel and restaurant 4.8(42) Hotel €32 \"I stayed 4 nights at KA Surf Hostel and it was amazing.\"', pin 5.9818405,80.3520113"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/bed%20and%20breakfast/@5.97941339533991,80.3508360317383,18z?hl=en",
+     "fetched_at": "2026-09-19T11:13:57Z",
+     "note": "Google Maps 'bed and breakfast' search centred at 5.97941339533991,80.3508360317383 (z18), feed scrolled: 'KA surf hostel and restaurant KA surf hostel and restaurant 4.8(42) Hotel €32 \"I stayed 4 nights at KA Surf Hostel and it was amazing.\"', pin 5.9818405,80.3520113"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:26:12Z",
+     "note": "Google Maps place page; address 207/A welahangoda, Ahangama, Sri Lanka; tel +94773746053; no website listed; 'Claim this business' (unclaimed listing)"
+    },
+    {
+     "source_url": "https://www.instagram.com/kasurfhostel/",
+     "fetched_at": "2026-09-19T11:34:13Z",
+     "note": "og:title 'KA SURF HOSTEL (@kasurfhostel) • Instagram photos and videos'; og:description '1,495 Followers, 14K Following, 22 Posts - See Instagram photos and videos from KA SURF HOSTEL (@kasurfhostel)'"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/restaurant/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:53:09Z",
+     "note": "Duplicate listing 'KA Surf Restaurant - Ahangama' (KA Surf Restaurant - Ahangama KA Surf Restaurant - Ahangama 5.0(5) Asian restaurant · 207/A Open 24), pin 5.9817972,80.3519969, 5 m from the main pin; merged into this entry"
+    }
+   ],
+   "surf_related_confidence": 0.8,
+   "surf_related_note": "Surf-branded backpacker hostel (web search: 'Backpacker surf hostel operating 5 years in Ahangama run by a local family'). The separate 'KA Surf Restaurant - Ahangama' listing (same address 207/A, 5 m away, phone +94764812045) is merged as the restaurant side.",
+   "languages_seen": [
+    "en"
+   ],
+   "also_listed_as": [
+    "KA Surf Restaurant - Ahangama"
+   ]
+  },
+  {
+   "slug": "sion-surf-shop-and-cafe",
+   "name": "Sion Surf Shop and Cafe",
+   "type": "surf_shop",
+   "location": {
+    "lat": 5.9793846,
+    "lng": 80.3501572,
+    "address": "Kabalanas, Ahangama 80650, Sri Lanka (Google Maps); plus code X9H2+Q3",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 75,
+    "distance_to_shore_m": 210
+   },
+   "contact": {
+    "phone": "+94761981170",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": "https://www.facebook.com/sionsurflanka/",
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Sion+Surf+Shop+and+Cafe/data=!4m7!3m6!1s0x3ae1135813d72f7f:0xbb37d7b3f58db8d!8m2!3d5.9793846!4d80.3501572!16s%2Fg%2F11b6df_v4_"
+   },
+   "existing_site": {
+    "url": "http://www.sionsurfcamp.com/",
+    "status": 301,
+    "mobile_friendly": null,
+    "last_updated_hint": "domain now redirects to an unrelated gambling site (idcwin88lagi.com)",
+    "has_booking": false
+   },
+   "presence": {
+    "score": 2,
+    "reason": "The website Google lists (sionsurfcamp.com) 301-redirects via juliediamondfitness.com to an unrelated gambling page (idcwin88lagi.com), so the site is effectively dead; a Facebook page (4,242 followers) and a Google listing (4.4, 79 reviews, phone) remain, and Google marks the shop 'Temporarily closed'.",
+    "criteria": [
+     "dead_site",
+     "hijacked_domain",
+     "facebook",
+     "google_listing",
+     "temporarily_closed"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/surf+shop/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:54:43Z",
+     "note": "Google Maps 'surf shop' search near anchor: 'Sion Surf Shop and Cafe 4.4(79) Surf shop · Kabalanas Temporarily closed · +94 76 198 1170', pin 5.9793846,80.3501572"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Sion%20Surf%20Shop%20and%20Cafe/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:57:14Z",
+     "note": "Google Maps place: 'Temporarily closed', 'Kabalanas, Ahangama 80650', website sionsurfcamp.com, tel:+94761981170, plus code X9H2+Q3"
+    },
+    {
+     "source_url": "http://www.sionsurfcamp.com/",
+     "fetched_at": "2026-09-19T10:58:34Z",
+     "note": "curl -IL: 301 -> https://www.juliediamondfitness.com -> 301 -> https://idcwin88lagi.com (200). Headless Chromium at 10:58:03Z landed on 'IDCWIN88 Platform Resmi Game Online Slot88'"
+    },
+    {
+     "source_url": "https://www.facebook.com/sionsurflanka/",
+     "fetched_at": "2026-09-19T10:59:51Z",
+     "note": "og:description: 'Sion Surf, Ahangama. 4,242 followers · 1 talking about this · 1,798 were here.'"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "surf_related_note": "Google category 'Surf shop'. It is the shop/cafe outlet of Sion Surf Camp, whose camp is at Goviyapana Junction (south of Ahangama, outside this area, per hotel.com.au / Carve listings found by web search). Owner of the shop and the camp is presumably the same; the camp's dead domain is what is scored here.",
+   "languages_seen": [
+    "en"
+   ],
+   "reused_from_run": "2026-09-ahangama-01"
+  },
+  {
+   "slug": "good-story-surf-school-ahangama",
+   "name": "Good Story Surf School - Ahangama",
+   "type": "surf_camp",
+   "location": {
+    "lat": 5.9777001,
+    "lng": 80.3501026,
+    "address": "Ahangama, Sri Lanka (plus code X9H2+32 Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 206,
+    "distance_to_shore_m": 33
+   },
+   "contact": {
+    "phone": "+94760052597",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": "https://www.instagram.com/goodstorysurf/",
+    "facebook": null,
+    "tripadvisor": "https://www.tripadvisor.com/Attraction_Review-g612380-d10004873-Reviews-Good_Story_Surf_School-Weligama_Matara_Southern_Province.html",
+    "google_maps": "https://www.google.com/maps/search/Good%20Story%20Surf%20School%20-%20Ahangama/@5.9794134,80.350836,17z?hl=en"
+   },
+   "existing_site": {
+    "url": "https://goodstorysurf.com/surf-school",
+    "status": 404,
+    "mobile_friendly": true,
+    "last_updated_hint": "goodstorysurf.com now redirects to goodstoryvillage.com, a villa-rental listing site with no surf-school content",
+    "has_booking": false
+   },
+   "presence": {
+    "score": 2,
+    "reason": "The website on the Google listing (goodstorysurf.com/surf-school) returns 404 after redirecting to goodstoryvillage.com, whose home page lists pool villas only (no surf school, no Ahangama page, email link only), so the surf school effectively has no working site; Instagram @goodstorysurf (6,811 followers) and a Google listing (4.6, 81 reviews, phone) remain.",
+    "criteria": [
+     "dead_site_link",
+     "redirected_domain",
+     "instagram",
+     "google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/hotel/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:52:43Z",
+     "note": "Google Maps 'hotel' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Good Story Surf School - Ahangama Good Story Surf School - Ahangama 4.6(81) 2-star hotel  Pool  Free parking  Free breakfast  Beach acc', pin 5.9777001,80.3501026"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surf%20camp/@5.97941339533991,80.3508360317383,18z?hl=en",
+     "fetched_at": "2026-09-19T11:10:58Z",
+     "note": "Google Maps 'surf camp' search centred at 5.97941339533991,80.3508360317383 (z18), feed scrolled: 'Good Story Surf School - Ahangama Good Story Surf School - Ahangama 4.6(81) 2-star hotel  Pool  Free parking  Free breakfast  Beach acc', pin 5.9777001,80.3501026"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Good%20Story%20Surf%20School%20-%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:23:07Z",
+     "note": "Google Maps place page; address Ahangama, Sri Lanka; tel +94760052597; website https://goodstorysurf.com/surf-school"
+    },
+    {
+     "source_url": "https://goodstorysurf.com/surf-school",
+     "fetched_at": "2026-09-19T11:29:47Z",
+     "note": "Headless Chromium, 390 px mobile viewport: HTTP 404, final URL https://www.goodstoryvillage.com/surf-school, title '404: This page could not be found.', viewport meta 'width=device-width, initial-scale=1', document width 390/390, body text 33 chars. Body text 33 chars: \"404: This page could not be found.\""
+    },
+    {
+     "source_url": "https://goodstorysurf.com/",
+     "fetched_at": "2026-09-19T11:32:16Z",
+     "note": "Headless Chromium, 390 px mobile viewport: HTTP 200, final URL https://www.goodstoryvillage.com/, title 'Home', viewport meta 'width=device-width, initial-scale=1, viewport-fit=cover', document width 390/390, body text 1909 chars. Root redirects to goodstoryvillage.com: listing grid of 'GOOD STORY Village | 2BR/3BR Pool Villa' units; only booking link is mailto:info@goodstoryvillage.com; /ahangama returns 404."
+    },
+    {
+     "source_url": "https://www.instagram.com/goodstorysurf/",
+     "fetched_at": "2026-09-19T11:34:05Z",
+     "note": "og:title 'Good Story | Surf School | Sri Lanka (@goodstorysurf) • Instagram photos and videos'; og:description '6,811 Followers, 1,123 Following, 117 Posts - See Instagram photos and videos from Good Story | Surf School | Sri Lanka (@goodstorysurf)'"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "surf_related_note": "Google lists it as a 2-star hotel with beach access; Instagram name 'Good Story | Surf School'; web search: ISA-certified instructors, lessons in English/Russian/Swedish, surf + stay packages. Surf school with lodging.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "artur-barbaras-surfing-villa",
+   "name": "Artur & Barbara's Surfing Villa",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.97811,
+    "lng": 80.348918,
+    "address": "Madina Arambewata, Kathaluwa, Welhengoda, Ahangama 80650, Sri Lanka (plus code X8HX+6H Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 256,
+    "distance_to_shore_m": 54
+   },
+   "contact": {
+    "phone": "+94779857461",
+    "whatsapp": null,
+    "email": "Srilanka@gmx.net"
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": "https://www.facebook.com/srilanka.surfing/",
+    "tripadvisor": "https://www.tripadvisor.com/Hotel_Review-g674590-d2042609-Reviews-Surfing_Villa-Ahangama_Galle_District_Southern_Province.html",
+    "google_maps": "https://www.google.com/maps/search/Artur%20%26%20Barbara%27s%20Surfing%20Villa/@5.9794134,80.350836,17z?hl=en"
+   },
+   "existing_site": {
+    "url": "http://www.surfing-villa.com/",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": "page mentions 2026",
+    "has_booking": false
+   },
+   "presence": {
+    "score": 3,
+    "reason": "surfing-villa.com loads with a mobile viewport but is a German-only one-pager (about 840 characters, page title 'ps') whose only contact paths are a mailto link and an inquiry page; no WhatsApp, tel: link or booking engine.",
+    "criteria": [
+     "site_mobile",
+     "no_booking_path",
+     "inquiry_form_only",
+     "german_only",
+     "thin_content"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/hotel/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:52:43Z",
+     "note": "Google Maps 'hotel' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Artur & Barbara's Surfing Villa Artur & Barbara's Surfing Villa 4.9(81) 2-star hotel Laid-back lodging close to the beach  Air-conditioned', pin 5.97811,80.348918"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/hotel/@5.9776,80.35,18z?hl=en",
+     "fetched_at": "2026-09-19T11:15:49Z",
+     "note": "Google Maps 'hotel' search centred at 5.9776,80.35 (z18), feed scrolled: 'Artur & Barbara's Surfing Villa Artur & Barbara's Surfing Villa 4.9(81) 2-star hotel Laid-back lodging close to the beach  Air-conditioned', pin 5.97811,80.348918"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Artur%20%26%20Barbara's%20Surfing%20Villa/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:25:35Z",
+     "note": "Google Maps place page; address Madina Arambewata, Kathaluwa, Welhengoda, Ahangama 80650, Sri Lanka; tel +94779857461; website http://www.surfing-villa.com/"
+    },
+    {
+     "source_url": "http://www.surfing-villa.com/",
+     "fetched_at": "2026-09-19T11:30:28Z",
+     "note": "Headless Chromium, 390 px mobile viewport: HTTP 200, final URL https://www.surfing-villa.com/, title 'ps', viewport meta 'width=device-width,initial-scale=1', document width 390/390, body text 838 chars. Links: mailto:Srilanka@gmx.net, facebook.com/srilanka.surfing; phone +94 77 985 7461 as text only; nav 'Start Über Uns Preise Zimmer Gallerie Jetzt Anfragen!'."
+    },
+    {
+     "source_url": "https://www.facebook.com/srilanka.surfing/",
+     "fetched_at": "2026-09-19T11:35:21Z",
+     "note": "og:title 'Artur & Barbara’s Surfing Villa | Welhengoda '; og:description 'Artur & Barbara’s Surfing Villa, Welhengoda. 2,226 followers · 5 talking about this · 501 were here. Best surfing villa in Ahangama 🌊 Families with children welcome 🩷 Kabalana beach surfing spot 🏝️'"
+    }
+   ],
+   "surf_related_confidence": 0.85,
+   "surf_related_note": "Surf-branded 2-star hotel (Google 4.9, 81 reviews); Facebook: 'Best surfing villa in Ahangama … Kabalana beach surfing spot' (2,226 followers). Email copied from the site's mailto link.",
+   "languages_seen": [
+    "de",
+    "en"
+   ]
+  },
+  {
+   "slug": "mellow-hostel",
+   "name": "Mellow Hostel",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9782692,
+    "lng": 80.3500778,
+    "address": "jayamedura, matara road, welhengoda, Ahangama, Sri Lanka (plus code X9H2+82 Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 152,
+    "distance_to_shore_m": 92
+   },
+   "contact": {
+    "phone": "+94717420627",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": "https://www.instagram.com/mellow.hostel/",
+    "facebook": "https://www.facebook.com/mellowhostel/",
+    "tripadvisor": "https://www.tripadvisor.com/Hotel_Review-g674590-d13833484-Reviews-Mellow_Hostel-Ahangama_Galle_District_Southern_Province.html",
+    "google_maps": "https://www.google.com/maps/search/Mellow%20Hostel/@5.9794134,80.350836,17z?hl=en",
+    "booking": "https://www.booking.com/hotel/lk/mellow-hostel-sri-lanka.html"
+   },
+   "existing_site": {
+    "url": "http://www.mellowhostel.com/",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": "only year in page text is 2024",
+    "has_booking": true
+   },
+   "presence": {
+    "score": 4,
+    "reason": "mellowhostel.com is mobile-friendly and links to a Cloudbeds booking engine and Booking.com, but the home page is thin (about 1,100 characters of generic copy, no prices, no phone/WhatsApp link) and the only year in it is 2024.",
+    "criteria": [
+     "site_mobile",
+     "booking_engine",
+     "thin_content",
+     "no_whatsapp_link",
+     "stale_hint"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/hostel/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:54:11Z",
+     "note": "Google Maps 'hostel' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Mellow Hostel Mellow Hostel 4.6(291) Hostel €17  Free Wi-Fi  Air-conditioned  Breakfast  Wi-Fi \"Very clean, good location for surfing T', pin 5.9782692,80.3500778"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/hostel/@5.9776,80.35,18z?hl=en",
+     "fetched_at": "2026-09-19T11:16:34Z",
+     "note": "Google Maps 'hostel' search centred at 5.9776,80.35 (z18), feed scrolled: 'Mellow Hostel Mellow Hostel 4.6(291) Hostel €17  Free Wi-Fi  Air-conditioned  Breakfast  Wi-Fi \"Very clean, good location for surfing T', pin 5.9782692,80.3500778"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Mellow%20Hostel%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:22:16Z",
+     "note": "Google Maps place page; rating 4.6 stars (291 reviews); address jayamedura, matara road, welhengoda, Ahangama, Sri Lanka; tel +94717420627; website http://www.mellowhostel.com/"
+    },
+    {
+     "source_url": "http://www.mellowhostel.com/",
+     "fetched_at": "2026-09-19T11:29:32Z",
+     "note": "Headless Chromium, 390 px mobile viewport: HTTP 200, final URL https://www.mellowhostel.com/, title 'Mellow Hostel', viewport meta 'width=device-width, initial-scale=1, shrink-to-fit=no', document width 390/390, body text 1137 chars. Booking links: booking.com search, hotels.cloudbeds.com/reservation/0CGfsM; socials instagram.com/mellow.hostel, facebook.com/mellowhostel; no tel: link."
+    },
+    {
+     "source_url": "https://www.instagram.com/mellow.hostel/",
+     "fetched_at": "2026-09-19T11:34:20Z",
+     "note": "og:title 'Mellow Hostel & Cafe l Sri Lanka I Ahangama & Arugam Bay (@mellow.hostel) • Instagram photos and videos'; og:description '6,767 Followers, 754 Following, 601 Posts - See Instagram photos and videos from Mellow Hostel & Cafe l Sri Lanka I Ahangama & Arugam Bay (@mellow.hostel)'"
+    },
+    {
+     "source_url": "https://www.facebook.com/mellowhostel/",
+     "fetched_at": "2026-09-19T11:35:38Z",
+     "note": "og:title 'Mellow Hostel Sri Lanka | Ahangama '; og:description 'Mellow Hostel Sri Lanka, Ahangama. 1,078 followers · 1 talking about this · 336 were here. A place to feel at home...\nMellow is a Hostel & Co-Living space located at the heart of Kabalana, Aha'"
+    }
+   ],
+   "surf_related_confidence": 0.55,
+   "surf_related_note": "Hostel 'at the heart of Kabalana' (Facebook); site copy says 'come in post-surf to re-fuel'; listed on surfcamp-online.com per web search. Surf-adjacent marketing rather than surf-branded.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "tharanga-surfing-villa",
+   "name": "Tharanga Surfing Villa",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9775848,
+    "lng": 80.3515036,
+    "address": "X9H2+2JJ, Ahangama, Sri Lanka (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 215,
+    "distance_to_shore_m": 78
+   },
+   "contact": {
+    "phone": "+94775521444",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": "https://www.facebook.com/TharangaSurfingVilla/",
+    "tripadvisor": "https://www.tripadvisor.com/Hotel_Review-g674590-d12371204-Reviews-Tharanga_Surfing_Villa-Ahangama_Galle_District_Southern_Province.html",
+    "google_maps": "https://www.google.com/maps/search/Tharanga%20Surfing%20Villa/@5.9794134,80.350836,17z?hl=en",
+    "booking": "https://www.booking.com/hotel/lk/tharanga-surfing-villa.en-gb.html"
+   },
+   "existing_site": {
+    "url": "https://tharangasurfingvilla.hotelonia.com/",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": null,
+    "has_booking": true
+   },
+   "presence": {
+    "score": 4,
+    "reason": "The listed site is a Hotelonia white-label page: mobile-friendly with a 'Book now' engine, but only about 350 characters of text, no phone, no WhatsApp and no socials; a Facebook page (613 followers) and a Google listing (3.4, 38 reviews, phone) exist.",
+    "criteria": [
+     "whitelabel_booking_site",
+     "site_mobile",
+     "booking_engine",
+     "thin_content",
+     "no_whatsapp_link",
+     "facebook"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/hotel/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:52:43Z",
+     "note": "Google Maps 'hotel' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Tharanga Surfing Villa Tharanga Surfing Villa 3.4(38) Villa +94 77 552 1444  Website  Directions  Air-conditioned  Airport shuttle', pin 5.9775848,80.3515036"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9785,80.3524,18z?hl=en",
+     "fetched_at": "2026-09-19T11:16:56Z",
+     "note": "Google Maps 'surf' search centred at 5.9785,80.3524 (z18), feed scrolled: 'Tharanga Surfing Villa Tharanga Surfing Villa 3.4(38) Villa +94 77 552 1444  Website  Directions  Air-conditioned  Airport shuttle', pin 5.9775848,80.3515036"
+    },
+    {
+     "source_url": "https://www.google.com/maps/place/Tharanga+Surfing+Villa/data=!4m10!3m9!1s0x3ae1134c29f479f7:0x1ece85c005eb670f!5m2!4m1!1i2!8m2!3d5.9775848!4d80.3515036!16s%2Fg%2F11g8vv8gxb!19sChIJ93n0KUwT4ToRD2frBcCFzh4?authuser=0&hl=en&g_ep=EgoyMDI2MDkxNi4wIJJjKgBIAVAD&rclk=1",
+     "fetched_at": "2026-09-19T11:27:55Z",
+     "note": "Google Maps place page; rating 3.4 (38); address X9H2+2JJ, Ahangama, Sri Lanka; tel +94775521444; website https://tharangasurfingvilla.hotelonia.com/; 'Claim this business' (unclaimed listing)"
+    },
+    {
+     "source_url": "https://tharangasurfingvilla.hotelonia.com/",
+     "fetched_at": "2026-09-19T11:31:08Z",
+     "note": "Headless Chromium, 390 px mobile viewport: HTTP 200, final URL https://tharangasurfingvilla.hotelonia.com/, title 'Tharanga Surfing Villa in Ahangama - Welcome', viewport meta 'width=device-width, initial-scale=1', document width 390/390, body text 346 chars. Six identical 'Book now' links to /book; no tel:, mailto or social links."
+    },
+    {
+     "source_url": "https://www.facebook.com/TharangaSurfingVilla/",
+     "fetched_at": "2026-09-19T11:35:12Z",
+     "note": "og:title 'Tharanga Surfing Villa | Ahangama '; og:description 'Tharanga Surfing Villa, Ahangama. 613 followers · 95 were here. Beachfront villa located in Ahangama near Galle. One of best surf points in Sri Lanka.Spectacular beach.Onsite restaurant &bar.Double...'"
+    }
+   ],
+   "surf_related_confidence": 0.8,
+   "surf_related_note": "Surf-branded villa; Facebook: 'One of best surf points in Sri Lanka'; web search (Booking text): 'facilities for surfing groups and also trains individual surf beginners'.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "sun-and-surf-rest",
+   "name": "Sun and Surf Rest",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9778862,
+    "lng": 80.3521062,
+    "address": "X9H2+5R5, Ahangama, Sri Lanka (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 219,
+    "distance_to_shore_m": 133
+   },
+   "contact": {
+    "phone": "+94779482490",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/Sun%20and%20Surf/@5.9794134,80.350836,17z?hl=en",
+    "agoda": "https://www.agoda.com/"
+   },
+   "existing_site": {
+    "url": "https://sunandsurfrest.hotelonia.com/",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": null,
+    "has_booking": true
+   },
+   "presence": {
+    "score": 4,
+    "reason": "The listed site is a Hotelonia white-label page (sunandsurfrest.hotelonia.com): mobile-friendly with a 'Book now' engine, but only about 380 characters of text, no phone, no WhatsApp and no socials.",
+    "criteria": [
+     "whitelabel_booking_site",
+     "site_mobile",
+     "booking_engine",
+     "thin_content",
+     "no_whatsapp_link"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/hostel/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:54:11Z",
+     "note": "Google Maps 'hostel' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Sun and Surf Sun and Surf 3.3(6) Hostel €20', pin 5.9778862,80.3521062"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/hostel/@5.9776,80.35,18z?hl=en",
+     "fetched_at": "2026-09-19T11:16:34Z",
+     "note": "Google Maps 'hostel' search centred at 5.9776,80.35 (z18), feed scrolled: 'Sun and Surf Sun and Surf 3.3(6) Hostel €20', pin 5.9778862,80.3521062"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Sun%20and%20Surf%20Hostel%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:23:51Z",
+     "note": "Google Maps place page; rating 3.3 stars (6 reviews); address X9H2+5R5, Ahangama, Sri Lanka; tel +94779482490; website https://sunandsurfrest.hotelonia.com/; 'Claim this business' (unclaimed listing)"
+    },
+    {
+     "source_url": "https://sunandsurfrest.hotelonia.com/",
+     "fetched_at": "2026-09-19T11:31:15Z",
+     "note": "Headless Chromium, 390 px mobile viewport: HTTP 200, final URL https://sunandsurfrest.hotelonia.com/, title 'Sun and Surf Rest in Ahangama - Welcome', viewport meta 'width=device-width, initial-scale=1', document width 390/390, body text 383 chars. Six identical 'Book now' links to /book; no tel:, mailto or social links."
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/homestay/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:55:30Z",
+     "note": "Duplicate listing 'Sun and Surf Rest' (Sun and Surf Rest Sun and Surf Rest 4.2(8) House Sleeps 15 • 10 bedrooms • Min 1 night €20  Free p), pin 5.9781098,80.35215, 25 m from the main pin; merged into this entry"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/homestay/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:55:30Z",
+     "note": "Duplicate listing 'Sun and Surf Rest - Double Room with Private Bathroom' (Sun and Surf Rest - Double Room with Private Bathroom Sun and Surf Rest - Double Room with Private B), pin 5.9781198,80.3521576, 26 m from the main pin; merged into this entry"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/apartment/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:55:14Z",
+     "note": "Duplicate listing 'Sun Surf Villa - Three-Bedroom Apartment' (Sun Surf Villa - Three-Bedroom Apartment Sun Surf Villa - Three-Bedroom Apartment Lodging  Website ), pin 5.9779,80.3519592, 16 m from the main pin; merged into this entry"
+    }
+   ],
+   "surf_related_confidence": 0.6,
+   "surf_related_note": "Surf-branded guest house/hostel. Google carries it under four names within 31 m ('Sun and Surf' hostel with phone + site, 'Sun and Surf Rest' house, a room-level entry, and 'Sun Surf Villa - Three-Bedroom Apartment' via bluepillow); merged on name + proximity. The white-label site is the only evidence of the third-bedroom-apartment name mapping, so the human should confirm 'Sun Surf Villa' is the same property.",
+   "languages_seen": [
+    "en"
+   ],
+   "also_listed_as": [
+    "Sun and Surf Rest",
+    "Sun and Surf Rest - Double Room with Private Bathroom",
+    "Sun Surf Villa - Three-Bedroom Apartment"
+   ]
+  },
+  {
+   "slug": "ashen-surf-school",
+   "name": "Ashen Surf School",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9777495,
+    "lng": 80.3492536,
+    "address": "A2 Galle Road Kabalana, Ahangama 80650, Sri Lanka (plus code X8HX+3P Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 253,
+    "distance_to_shore_m": 16
+   },
+   "contact": {
+    "phone": "+94784700778",
+    "whatsapp": "+94784700778",
+    "email": null
+   },
+   "socials": {
+    "instagram": "https://www.instagram.com/ashen_surfschoolkabalana/",
+    "facebook": null,
+    "tripadvisor": "https://www.tripadvisor.com/Attraction_Review-g674590-d32831727-Reviews-Ashen_Surf_School_Kabalana-Ahangama_Galle_District_Southern_Province.html",
+    "google_maps": "https://www.google.com/maps/search/Ashen%20Surf%20School/@5.9794134,80.350836,17z?hl=en"
+   },
+   "existing_site": {
+    "url": "https://ashensurfschool.com/",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": "copyright 2026; template leftovers",
+    "has_booking": true
+   },
+   "presence": {
+    "score": 4,
+    "reason": "ashensurfschool.com is mobile-friendly with wa.me booking links and prices, but it ships template leftovers (a paragraph about 'the real estate spectrum', Facebook/Instagram links to a Bahrain real-estate agency) and its own Instagram link goes to an unavailable profile.",
+    "criteria": [
+     "site_mobile",
+     "whatsapp",
+     "prices_shown",
+     "template_leftovers",
+     "broken_social_links",
+     "dead_instagram_link"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:52:28Z",
+     "note": "Google Maps 'surf' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Ashen Surf School Ashen Surf School 4.9(344) Surf school · A2 Galle Road Kabalana Open · Closes 6 pm', pin 5.9777495,80.3492536"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surf%20camp/@5.97941339533991,80.3508360317383,18z?hl=en",
+     "fetched_at": "2026-09-19T11:10:58Z",
+     "note": "Google Maps 'surf camp' search centred at 5.97941339533991,80.3508360317383 (z18), feed scrolled: 'Ashen Surf School Ashen Surf School 4.9(344) Surf school · A2 Galle Road Kabalana Open · Closes 6 pm', pin 5.9777495,80.3492536"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Ashen%20Surf%20School/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:25:20Z",
+     "note": "Google Maps place page: category 'Surf school'; address A2 Galle Road Kabalana, Ahangama 80650, Sri Lanka; tel +94784700778; website https://ashensurfschool.com/"
+    },
+    {
+     "source_url": "https://ashensurfschool.com/",
+     "fetched_at": "2026-09-19T11:30:18Z",
+     "note": "Headless Chromium, 390 px mobile viewport: HTTP 200, final URL https://ashensurfschool.com/, title 'Ashan Surf School – Ride the Waves in Ahangama', viewport meta 'width=device-width, initial-scale=1', document width 390/390, body text 6991 chars. Booking: wa.me/+94784700778 (x4); 'Group lesson (5 people) … 5,000 LKR per person'; generator WordPress 7.1.1, 'Website Design by Maroon Frog Digital Marketing'; links facebook.com/BahrainPrimeRealEstate, instagram.com/prime_re, instagram.com/ashen_surfschoolkabalana; body contains 'Our commitment to excellence extends across various facets of the real estate spectrum'."
+    },
+    {
+     "source_url": "https://www.instagram.com/ashen_surfschoolkabalana/",
+     "fetched_at": "2026-09-19T11:34:42Z",
+     "note": "og:title 'Profile isn't available • Instagram'; og:description 'None'"
+    }
+   ],
+   "surf_related_confidence": 0.95,
+   "surf_related_note": "Google category 'Surf school' (4.9, 344 reviews); largest review count of the schools inside the circle. WhatsApp number is the wa.me link on its own site.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "kabalana-home-waves-surf-school",
+   "name": "Kabalana Home Waves Surf School",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9777832,
+    "lng": 80.3490682,
+    "address": "Ahangama, Sri Lanka (plus code X8HX+4J Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 265,
+    "distance_to_shore_m": 18
+   },
+   "contact": {
+    "phone": "+94779340133",
+    "whatsapp": "+94779340133",
+    "email": null
+   },
+   "socials": {
+    "instagram": "https://www.instagram.com/homewaveskabalana/",
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/Kabalana%20Home%20Waves%20Surf%20School/@5.9794134,80.350836,17z?hl=en"
+   },
+   "existing_site": {
+    "url": "https://homewaveskabalana.com/",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": "copyright 2026; unfinished",
+    "has_booking": true
+   },
+   "presence": {
+    "score": 4,
+    "reason": "homewaveskabalana.com is mobile-friendly with wa.me booking links, but it is an unfinished shell: about 570 characters of text, 'See All 0 Photos', no prices, and an Instagram link that points at Ashen Surf School's account (same web designer).",
+    "criteria": [
+     "site_mobile",
+     "whatsapp",
+     "thin_content",
+     "unfinished_site",
+     "broken_social_links"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:52:28Z",
+     "note": "Google Maps 'surf' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Kabalana Home Waves Surf School Kabalana Home Waves Surf School 4.9(148) Surf school Open · Closes 6 pm', pin 5.9777832,80.3490682"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9785,80.3524,18z?hl=en",
+     "fetched_at": "2026-09-19T11:16:56Z",
+     "note": "Google Maps 'surf' search centred at 5.9785,80.3524 (z18), feed scrolled: 'Kabalana Home Waves Surf School Kabalana Home Waves Surf School 4.9(148) Surf school Open · Closes 6 pm', pin 5.9777832,80.3490682"
+    },
+    {
+     "source_url": "https://www.google.com/maps/place/Kabalana+Home+Waves+Surf+School/data=!4m7!3m6!1s0x3ae113871e83817b:0xcd52d7b2e9ceb341!8m2!3d5.9777832!4d80.3490682!16s%2Fg%2F11pzhdhwj7!19sChIJe4GDHocT4ToRQbPO6bLXUs0?authuser=0&hl=en&g_ep=EgoyMDI2MDkxNi4wIJJjKgBIAVAD&rclk=1",
+     "fetched_at": "2026-09-19T11:28:33Z",
+     "note": "Google Maps place page: category 'Surf school'; rating 4.9 (148); address Ahangama, Sri Lanka; tel +94779340133; website https://homewaveskabalana.com/"
+    },
+    {
+     "source_url": "https://homewaveskabalana.com/",
+     "fetched_at": "2026-09-19T11:30:35Z",
+     "note": "Headless Chromium, 390 px mobile viewport: HTTP 200, final URL https://homewaveskabalana.com/, title 'Home Waves Kabalana Surf School – Surf Lessons and Surf Stays at Kabal', viewport meta 'width=device-width, initial-scale=1', document width 390/390, body text 568 chars. Booking: wa.me/+94779340133 (x2), booking.com/Share-ZsWk28; generator WordPress 7.1.1, 'Website Design by Maroon Frog Digital Marketing'; links instagram.com/ashen_surfschoolkabalana and instagram.com/homewaveskabalana."
+    },
+    {
+     "source_url": "https://www.instagram.com/homewaveskabalana/",
+     "fetched_at": "2026-09-19T11:34:49Z",
+     "note": "og:title 'Home Waves Kabalana Surf School (@homewaveskabalana) • Instagram photos and videos'; og:description '754 Followers, 967 Following, 172 Posts - See Instagram photos and videos from Home Waves Kabalana Surf School (@homewaveskabalana)'"
+    }
+   ],
+   "surf_related_confidence": 0.95,
+   "surf_related_note": "Google category 'Surf school' (4.9, 148 reviews); Google listing also carries a wa.me link. Offers surf stays too.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "wake-n-flow-ahangama",
+   "name": "Wake N Flow, Ahangama - Kabalana Beach",
+   "type": "surf_camp",
+   "location": {
+    "lat": 5.9803076,
+    "lng": 80.352345,
+    "address": "Beach, Kabalana Rd, Ahangama 80650, Sri Lanka (plus code X9J2+4W Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 193,
+    "distance_to_shore_m": 390
+   },
+   "contact": {
+    "phone": "+94761939791",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": "https://www.instagram.com/wakenflowsrilanka",
+    "facebook": null,
+    "tripadvisor": "https://www.tripadvisor.com/Hotel_Review-g674590-d34014128-Reviews-Wake_N_Flow_Ahangama_Kabalana_Beach-Ahangama_Galle_District_Southern_Province.html",
+    "google_maps": "https://www.google.com/maps/search/Wake%20N%20Flow%2C%20Ahangama%20-%20Kabalana%20Beach/@5.9794134,80.350836,17z?hl=en",
+    "booking": "https://www.booking.com/hotel/lk/wake-n-flow-ahangama-kabalana-beach.html",
+    "hostelworld": "https://www.hostelworld.com/hostels/p/334729/wake-n-flow-ahangama-kabalana-beach/"
+   },
+   "existing_site": {
+    "url": "https://www.wakenflow.com/",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": "page mentions 2026 and 2027",
+    "has_booking": true
+   },
+   "presence": {
+    "score": 5,
+    "reason": "wakenflow.com is a current, mobile-friendly multi-location brand site with live availability per location (letsbook.me engine for the Ahangama-Kabalana house), a WhatsApp line and surf/yoga content.",
+    "criteria": [
+     "site_mobile",
+     "booking_engine",
+     "whatsapp",
+     "current_content",
+     "multi_location_brand"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/hostel/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:54:11Z",
+     "note": "Google Maps 'hostel' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Wake N Flow, Ahangama - Kabalana Beach Wake N Flow, Ahangama - Kabalana Beach 4.8(61) Hostel €11  Spa  Free parking  Free Wi-Fi  Air-co', pin 5.9803076,80.352345"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/hostel/@5.9776,80.35,18z?hl=en",
+     "fetched_at": "2026-09-19T11:16:34Z",
+     "note": "Google Maps 'hostel' search centred at 5.9776,80.35 (z18), feed scrolled: 'Wake N Flow, Ahangama - Kabalana Beach Wake N Flow, Ahangama - Kabalana Beach 4.8(61) Hostel €11  Spa  Free parking  Free Wi-Fi  Air-co', pin 5.9803076,80.352345"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Wake%20N%20Flow%2C%20Ahangama%20-%20Kabalana%20Beach/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:22:45Z",
+     "note": "Google Maps place page; address Beach, Kabalana Rd, Ahangama 80650, Sri Lanka; tel +94761939791; website https://www.wakenflow.com/"
+    },
+    {
+     "source_url": "https://www.wakenflow.com/",
+     "fetched_at": "2026-09-19T11:29:39Z",
+     "note": "Headless Chromium, 390 px mobile viewport: HTTP 200, final URL https://wakenflow.com/, title 'Wake N Flow Sri Lanka — Surf, Yoga, Stays & Experiences', viewport meta 'width=device-width, initial-scale=1.0', document width 390/390, body text 8229 chars. Booking links: letsbook.me/booking/wakenflowahangamakabal…, plus Weligama/Hiriketiya/Arugam Bay; tel +94761939791 in text; Instagram wakenflowsrilanka. Copy: 'ISA-certified coaches', 'Four homes across Sri Lanka's best surf coasts'."
+    },
+    {
+     "source_url": "https://www.instagram.com/wakenflowsrilanka/",
+     "fetched_at": "2026-09-19T11:34:27Z",
+     "note": "og:title 'Wake N Flow | Surf & Stay, Sri Lanka (@wakenflowsrilanka) • Instagram photos and videos'; og:description '2,770 Followers, 428 Following, 160 Posts - See Instagram photos and videos from Wake N Flow | Surf & Stay, Sri Lanka (@wakenflowsrilanka)'"
+    }
+   ],
+   "surf_related_confidence": 0.8,
+   "surf_related_note": "Hostel chain marketed as 'Surf & Stay' with its own surf coaching; this entry is the Kabalana Beach house. Not a small owner-run business.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "licuala-lanka-surf-loft",
+   "name": "Licuala Lanka Surf Loft",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9776501,
+    "lng": 80.3515142,
+    "address": "Welhengoda, Galle Road, Ahangama 80650, Sri Lanka (plus code X9H2+3J Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 209,
+    "distance_to_shore_m": 85
+   },
+   "contact": {
+    "phone": "+94770373670",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": "https://www.instagram.com/licualastays/",
+    "facebook": "https://www.facebook.com/LicualaLanka",
+    "tripadvisor": "https://www.tripadvisor.com/Hotel_Review-g674590-d33108378-Reviews-Licuala-Ahangama_Galle_District_Southern_Province.html",
+    "google_maps": "https://www.google.com/maps/search/Licuala%20Lanka%20Surf%20Loft/@5.9794134,80.350836,17z?hl=en"
+   },
+   "existing_site": {
+    "url": "https://licuala-lanka.com/stays/surf-loft",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": "page mentions 2026",
+    "has_booking": true
+   },
+   "presence": {
+    "score": 5,
+    "reason": "licuala-lanka.com/stays/surf-loft is a current Webflow page, mobile-friendly, with a 'Book now' path into the property's own booking engine (booking.licuala-lanka.com), a tel: link and an email.",
+    "criteria": [
+     "site_mobile",
+     "booking_engine",
+     "tel_link",
+     "current_content"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/apartment/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:55:14Z",
+     "note": "Google Maps 'apartment' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Licuala Lanka Surf Loft Licuala Lanka Surf Loft 5.0(1) Holiday apartment rental · Welhengoda, Galle Road +94 77 037 3670  Website  Direct', pin 5.9776501,80.3515142"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/apartment/@5.9776,80.35,18z?hl=en",
+     "fetched_at": "2026-09-19T11:20:40Z",
+     "note": "Google Maps 'apartment' search centred at 5.9776,80.35 (z18), feed scrolled: 'Licuala Lanka Surf Loft Licuala Lanka Surf Loft 5.0(1) Holiday apartment rental · Welhengoda, Galle Road +94 77 037 3670  Website  Direct', pin 5.9776501,80.3515142"
+    },
+    {
+     "source_url": "https://www.google.com/maps/place/Licuala+Lanka+Surf+Loft/data=!4m7!3m6!1s0x3ae113c47b875d41:0x8ecbfb2622820c74!8m2!3d5.9776501!4d80.3515142!16s%2Fg%2F11yt69d608!19sChIJQV2He8QT4ToRdAyCIib7y44?authuser=0&hl=en&g_ep=EgoyMDI2MDkxNi4wIJJjKgBIAVAD&rclk=1",
+     "fetched_at": "2026-09-19T11:27:45Z",
+     "note": "Google Maps place page: category 'Holiday apartment rental'; rating 5.0 (1); address Welhengoda, Galle Road, Ahangama 80650, Sri Lanka; tel +94770373670; website https://licuala-lanka.com/stays/surf-loft"
+    },
+    {
+     "source_url": "https://licuala-lanka.com/stays/surf-loft",
+     "fetched_at": "2026-09-19T11:31:01Z",
+     "note": "Headless Chromium, 390 px mobile viewport: HTTP 200, final URL https://licuala-lanka.com/stays/surf-loft, title 'Surf Loft | Licuala', viewport meta 'width=device-width, initial-scale=1', document width 390/390, body text 1582 chars. Booking links: #Book-Now, tel:+94770373670, mailto:info@licuala-lanka.com; Instagram licualastays, Facebook LicualaLanka; generator Webflow."
+    },
+    {
+     "source_url": "https://www.instagram.com/licualastays/",
+     "fetched_at": "2026-09-19T11:34:57Z",
+     "note": "og:title 'Licuala — Jungle Hideaways • Sri Lanka (@licualastays) • Instagram photos and videos'; og:description '892 Followers, 295 Following, 75 Posts - See Instagram photos and videos from Licuala — Jungle Hideaways • Sri Lanka (@licualastays)'"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/homestay/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:55:30Z",
+     "note": "Duplicate listing 'Surf Loft' (Surf Loft Surf Loft Apartment Sleeps 2 • 1 bedroom • 1 bed  Free Wi-Fi  Air-conditioned  Wi-Fi  ), pin 5.9778333,80.3516006, 22 m from the main pin; merged into this entry"
+    }
+   ],
+   "surf_related_confidence": 0.6,
+   "surf_related_note": "One surf-branded unit ('surfboard closet', 'minutes walk to the Kabalana surf breaks' per its page) of Licuala, a boutique jungle-bungalow property. Google's separate 'Surf Loft' apartment listing (22 m away, website booking.licuala-lanka.com) is the same unit and was merged.",
+   "languages_seen": [
+    "en"
+   ],
+   "also_listed_as": [
+    "Surf Loft"
+   ]
+  },
+  {
+   "slug": "sayon-surf-school",
+   "name": "Sayon Surf School Ahangama",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9776447,
+    "lng": 80.3497674,
+    "address": "Kabalana Rd, Ahangama 80650, Sri Lanka (plus code X8HX+3W Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 228,
+    "distance_to_shore_m": 15
+   },
+   "contact": {
+    "phone": "+94784819051",
+    "whatsapp": "+94784819051",
+    "email": null
+   },
+   "socials": {
+    "instagram": "https://www.instagram.com/sayon_surf_school_srilanka/",
+    "facebook": "https://web.facebook.com/p/Sayon-Surf-Sri-Lanka-100090365516759/",
+    "tripadvisor": "https://www.tripadvisor.com/Attraction_Review-g674590-d34378237-Reviews-Sayon_Surf_School-Ahangama_Galle_District_Southern_Province.html",
+    "google_maps": "https://www.google.com/maps/search/Sayon%20Surf%20School%20Ahangama%20Sri%20Lanka/@5.9794134,80.350836,17z?hl=en"
+   },
+   "existing_site": {
+    "url": "https://sayonsurfahangama.com/",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": null,
+    "has_booking": true
+   },
+   "presence": {
+    "score": 5,
+    "reason": "sayonsurfahangama.com is mobile-friendly (about 6,900 characters of lesson content) with a wa.me WhatsApp link, a #book section, phone, Instagram and Facebook links.",
+    "criteria": [
+     "site_mobile",
+     "whatsapp",
+     "booking_section",
+     "socials_linked"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/surf/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:52:28Z",
+     "note": "Google Maps 'surf' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Sayon Surf School Ahangama Sri Lanka Sayon Surf School Ahangama Sri Lanka 4.8(74) Surf school · Kabalana Rd Open · Closes 6:30 pm', pin 5.9776447,80.3497674"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surf%20camp/@5.97941339533991,80.3508360317383,18z?hl=en",
+     "fetched_at": "2026-09-19T11:10:58Z",
+     "note": "Google Maps 'surf camp' search centred at 5.97941339533991,80.3508360317383 (z18), feed scrolled: 'Sayon Surf School Ahangama Sri Lanka Sayon Surf School Ahangama Sri Lanka 4.8(74) Surf school · Kabalana Rd Open · Closes 6:30 pm', pin 5.9776447,80.3497674"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Sayon%20Surf%20School%20Ahangama%20Sri%20Lanka/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:24:35Z",
+     "note": "Google Maps place page: category 'Surf school'; rating 4.8 stars (74 reviews); address Kabalana Rd, Ahangama 80650, Sri Lanka; tel +94784819051; website https://sayonsurfahangama.com/"
+    },
+    {
+     "source_url": "https://sayonsurfahangama.com/",
+     "fetched_at": "2026-09-19T11:29:55Z",
+     "note": "Headless Chromium, 390 px mobile viewport: HTTP 200, final URL https://sayonsurfahangama.com/, title 'Sayon Surf School Ahangama | Best Surf Lessons in Sri Lanka', viewport meta 'width=device-width, initial-scale=1', document width 390/390, body text 6852 chars. Booking links: #book, wa.me/94784819051; tel +94 78 481 9051 in text; Instagram sayon_surf_school_srilanka, Facebook Sayon-Surf-Sri-Lanka."
+    },
+    {
+     "source_url": "https://www.instagram.com/sayon_surf_school_srilanka/",
+     "fetched_at": "2026-09-19T11:33:58Z",
+     "note": "og:title 'Sayon Surf School Sri Lanka (@sayon_surf_school_srilanka) • Instagram photos and videos'; og:description '934 Followers, 1,054 Following, 164 Posts - See Instagram photos and videos from Sayon Surf School Sri Lanka (@sayon_surf_school_srilanka)'"
+    }
+   ],
+   "surf_related_confidence": 0.95,
+   "surf_related_note": "Google category 'Surf school'; ISA-certified instructors per web search. WhatsApp number is the wa.me link on its own site.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "soul-and-surf-kit",
+   "name": "Soul & Surf - Kit.",
+   "type": "surf_shop",
+   "location": {
+    "lat": 5.9785676,
+    "lng": 80.3489069,
+    "address": "X8HX+CHF, Ahangama, Sri Lanka (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 232,
+    "distance_to_shore_m": 105
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": "https://instagram.com/soulandsurf/",
+    "facebook": "https://facebook.com/SoulandSurf",
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/search/Soul%20%26%20Surf%20-%20Kit./@5.9794134,80.350836,17z?hl=en"
+   },
+   "existing_site": {
+    "url": "http://www.soulandsurf.com/kit",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": "page mentions 2026",
+    "has_booking": true
+   },
+   "presence": {
+    "score": 5,
+    "reason": "The listed URL redirects to shop.soulandsurf.com, the Soul & Surf brand's mobile-friendly Shopify store ('Our Little Online Shop – Soul & Surf / Kit'), part of a full brand site with retreat booking.",
+    "criteria": [
+     "site_mobile",
+     "ecommerce",
+     "brand_site",
+     "multi_location_brand"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/shop/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:55:45Z",
+     "note": "Google Maps 'shop' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Soul & Surf - Kit. Soul & Surf - Kit. No reviews Surf shop · X8HX+CHF Open · Closes 8 pm', pin 5.9785676,80.3489069"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/surf%20camp/@5.97941339533991,80.3508360317383,18z?hl=en",
+     "fetched_at": "2026-09-19T11:10:58Z",
+     "note": "Google Maps 'surf camp' search centred at 5.97941339533991,80.3508360317383 (z18), feed scrolled: 'Soul & Surf - Kit. Soul & Surf - Kit. No reviews Surf shop · X8HX+CHF Open · Closes 8 pm', pin 5.9785676,80.3489069"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Soul%20%26%20Surf%20-%20Kit./@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:24:50Z",
+     "note": "Google Maps place page: category 'Surf shop'; address X8HX+CHF, Ahangama, Sri Lanka; no phone listed; website http://www.soulandsurf.com/kit; 'Claim this business' (unclaimed listing)"
+    },
+    {
+     "source_url": "http://www.soulandsurf.com/kit",
+     "fetched_at": "2026-09-19T11:30:02Z",
+     "note": "Headless Chromium, 390 px mobile viewport: HTTP 200, final URL https://shop.soulandsurf.com/, title 'Surf, yoga & massage retreats in India, Sri Lanka, and Portugal – Soul', viewport meta 'width=device-width,initial-scale=1,shrink-to-fit=no', document width 390/390, body text 1237 chars. Final URL https://shop.soulandsurf.com/; Shopify cart/catalogue; socials facebook.com/SoulandSurf, instagram.com/soulandsurf."
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "surf_related_note": "Google category 'Surf shop', unclaimed listing, no phone. Retail 'Kit' outlet of Soul & Surf (surf/yoga retreat brand with camps in Ahangama, India and Portugal); the physical shop itself is not described on the site.",
+   "languages_seen": [
+    "en"
+   ]
+  },
+  {
+   "slug": "solas-surf",
+   "name": "Solas Surf",
+   "type": "surf_camp",
+   "location": {
+    "lat": 5.9772903,
+    "lng": 80.3516733,
+    "address": "Matara Road, Kabalana Beach, 80650, Sri Lanka (plus code X9G2+WM Ahangama, Sri Lanka) (Google Maps)",
+    "inside_buffer": true,
+    "distance_to_anchor_m": 252,
+    "distance_to_shore_m": 55
+   },
+   "contact": {
+    "phone": "+94767734849",
+    "whatsapp": null,
+    "email": "info@solassurf.com"
+   },
+   "socials": {
+    "instagram": "https://www.instagram.com/solas_surf",
+    "facebook": "https://www.facebook.com/SolasSurf/",
+    "tripadvisor": "https://www.tripadvisor.com/Hotel_Review-g674590-d16369431-Reviews-Solas_Surf-Ahangama_Galle_District_Southern_Province.html",
+    "google_maps": "https://www.google.com/maps/search/Solas%20Surf/@5.9794134,80.350836,17z?hl=en",
+    "booking": "https://www.booking.com/hotel/lk/solas-surf.html"
+   },
+   "existing_site": {
+    "url": "https://www.solassurf.com/",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": "copy invites guests for 'the winter of 2026/27'",
+    "has_booking": true
+   },
+   "presence": {
+    "score": 5,
+    "reason": "solassurf.com is a current (winter 2026/27), mobile-friendly WordPress site with a package/date booking form, tel: and mailto links and pricing pages; its Instagram link (@solas_surf) goes to an unavailable profile.",
+    "criteria": [
+     "site_mobile",
+     "booking_form",
+     "tel_link",
+     "current_content",
+     "dead_instagram_link"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/search/hotel/@5.9794134,80.350836,18z?hl=en",
+     "fetched_at": "2026-09-19T10:52:43Z",
+     "note": "Google Maps 'hotel' search centred at 5.9794134,80.350836 (z18), feed scrolled: 'Solas Surf Solas Surf 4.9(86) Surf school  Pool  Free parking  Free breakfast  Free Wi-Fi', pin 5.9772903,80.3516733"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/boutique%20hotel/@5.97941339533991,80.3508360317383,18z?hl=en",
+     "fetched_at": "2026-09-19T11:14:20Z",
+     "note": "Google Maps 'boutique hotel' search centred at 5.97941339533991,80.3508360317383 (z18), feed scrolled: 'Solas Surf Solas Surf 4.9(86) Surf school  Pool  Free parking  Free breakfast  Free Wi-Fi', pin 5.9772903,80.3516733"
+    },
+    {
+     "source_url": "https://www.google.com/maps/search/Solas%20Surf/@5.9794134,80.350836,17z?hl=en",
+     "fetched_at": "2026-09-19T11:25:13Z",
+     "note": "Google Maps place page; address Matara Road, Kabalana Beach, 80650, Sri Lanka; tel +94767734849; website https://www.solassurf.com/"
+    },
+    {
+     "source_url": "https://www.solassurf.com/",
+     "fetched_at": "2026-09-19T11:30:11Z",
+     "note": "Headless Chromium, 390 px mobile viewport: HTTP 200, final URL https://www.solassurf.com/, title 'Solas Surf | Surf and Yoga Retreat in Ahangama Sri Lanka', viewport meta 'width=device-width', document width 390/390, body text 3859 chars. Booking: 'Ready to surf? Select a package … Arrival Date' form, tel:+94767734849, mailto:info@solassurf.com; generator AIOSEO 5.0.1.1; links Instagram solas_surf, Facebook Solas-Surf."
+    },
+    {
+     "source_url": "https://www.instagram.com/solas_surf/",
+     "fetched_at": "2026-09-19T11:34:35Z",
+     "note": "og:title 'Profile isn't available • Instagram'; og:description 'None'"
+    },
+    {
+     "source_url": "https://www.facebook.com/SolasSurf/",
+     "fetched_at": "2026-09-19T11:35:29Z",
+     "note": "og:title 'Solas Surf | Ahangama '; og:description 'Solas Surf, Ahangama. 202 followers · 6 talking about this · 3 were here. We are a surf retreat based in Ahangama, Sri Lanka, passionately crafted with the singular vision of offering the ultimate...'"
+    }
+   ],
+   "surf_related_confidence": 0.95,
+   "surf_related_note": "Surf and yoga retreat on Kabalana Beach with its own surf lessons (Google: 'Surf school' in the feed, 'Hotel' on the place page, 4.9, 86 reviews). Email copied from the site's mailto link.",
+   "languages_seen": [
+    "en"
+   ]
+  }
+ ]
+}
