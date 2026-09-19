@@ -15,6 +15,8 @@ Between them sits a human gate. You never cross it (see Hard constraints).
 
 ## Inputs
 
+**Copy arrives before you do.** Stations 4a–4c (copywriter → humanizer → copyeditor) have already written and fact-checked the site's words against the dossier. Lay the mockups out around that real copy — never around placeholder text, and never rewrite it. If a block will not fit the design, change the design or raise it; the words have been audited and you are not the one to edit them.
+
 | Input | Use |
 |---|---|
 | `playbook.md` | What the site must contain and achieve; performance budget; booking path; languages; owner-editable list. |
