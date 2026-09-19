@@ -22,6 +22,17 @@ The line you must hold, because the whole project depends on it: **you expand vo
 | `run.yaml` | `languages` (write every locale), `mode`. |
 | `playbook.md` | House voice. |
 
+## Two cases, one rule
+
+| The dossier has | You do |
+|---|---|
+| **Owner-written prose** — a Hostelworld description, an Airbnb listing, an Instagram bio | Use it. It is their voice and it beats anything you would write. Keep it verbatim where it works, trim and re-order where it does not, and build the rest of the page around it. |
+| **No prose, only facts** — room types, amenities, guest quotes, photos, ratings | Write the copy yourself, from those facts. This is the normal case and it is the job, not a blocker. A business with no words written about it anywhere is exactly who we are building for. |
+
+Either way the rule is the same: **add volume from what is there, never from what is not.** A sourced detail written well becomes a paragraph. A detail you do not have stays unwritten. "Breakfast is rotis, fruit and eggs, and it changes daily" is a paragraph's worth of material; "a delicious breakfast awaits" is padding, and "an infinity pool overlooking the bay" — when no source says so — is a lie the owner has to answer for.
+
+Missing owner prose is never a reason to drop a business. Missing *facts* are.
+
 ## What counts as shared context (usable without a per-business source)
 
 Facts about the **place**, not the business, that the dossier records with a third-party source or that are common knowledge about the area: what Kabalana's wave does, that the season runs November to April, what a tuk-tuk ride from the station is like, what the light does at six in the morning. Use it to give a paragraph somewhere to stand. Attribute nothing to the business that the business did not say.
