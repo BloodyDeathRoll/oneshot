@@ -1,0 +1,374 @@
+{
+ "slug": "briza-surf-kabalana",
+ "run_id": "2026-09-ahangama-02",
+ "harvester_version": "0.1.0",
+ "harvested_at": "2026-09-19T15:56:00Z",
+ "business": {
+  "name": {
+   "value": "Briza Surf Kabalana",
+   "source_url": "https://www.google.com/maps/search/Briza%20Surf%20Kabalana/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T15:56:00Z",
+   "note": "Instagram profile name is 'BRIZA SURF SCHOOL | KABALANA'"
+  },
+  "type": {
+   "value": "surf_school",
+   "source_url": "https://www.google.com/maps/search/Briza%20Surf%20Kabalana/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T15:56:00Z",
+   "note": "Google category 'Surf school'"
+  },
+  "tagline": {
+   "value": "Surf • Eat • Chill 🌴",
+   "source_url": "https://www.instagram.com/brizasurf_kabalana/",
+   "fetched_at": "2026-09-19T15:56:00Z",
+   "note": "first line of the Instagram bio"
+  },
+  "description": {
+   "value": "Surf • Eat • Chill 🌴 / All levels welcome / Beach food & fresh juice / Surf camp @nirvanasurfretreat / Bike Rental @nirvanabikessrilanka",
+   "source_url": "https://www.instagram.com/brizasurf_kabalana/",
+   "fetched_at": "2026-09-19T15:56:00Z",
+   "language": "en",
+   "note": "Instagram bio, verbatim"
+  },
+  "since": {
+   "value": null,
+   "gap": "no founding year published anywhere found"
+  },
+  "affiliations": {
+   "value": [
+    "@nirvanasurfretreat (surf camp)",
+    "@nirvanabikessrilanka (bike rental)"
+   ],
+   "source_url": "https://www.instagram.com/brizasurf_kabalana/",
+   "fetched_at": "2026-09-19T15:56:00Z",
+   "note": "named in the Instagram bio; both are separate businesses, nirvanasurfretreat is also on this run's shortlist"
+  }
+ },
+ "location": {
+  "address": {
+   "value": "Kabalana Rd, Ahangama 80650, Sri Lanka",
+   "source_url": "https://www.google.com/maps/search/Briza%20Surf%20Kabalana/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T15:56:00Z"
+  },
+  "lat_lng": {
+   "value": [
+    5.9787537,
+    80.3502322
+   ],
+   "source_url": "https://www.google.com/maps/search/Briza%20Surf%20Kabalana/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T15:56:00Z"
+  },
+  "map_url": {
+   "value": "https://www.google.com/maps/place/Briza+Surf+Kabalana/data=!4m7!3m6!1s0x3ae113b188981a99:0xb1a7729445741718!8m2!3d5.9787537!4d80.3502322!16s%2Fg%2F11zkgd2_y0",
+   "source_url": "https://www.google.com/maps/search/Briza%20Surf%20Kabalana/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T15:56:00Z"
+  },
+  "plus_code": {
+   "value": "X9H2+G3 Ahangama, Sri Lanka",
+   "source_url": "https://www.google.com/maps/search/Briza%20Surf%20Kabalana/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T15:56:00Z"
+  },
+  "spot": {
+   "value": "Kabalana beach break — sandy beach break suiting beginners and intermediates, with The Rock reef A-frame alongside it for advanced surfers",
+   "source_url": "https://thesurfatlas.com/sri-lanka-surf/kabalana-beach/",
+   "fetched_at": "2026-09-19T15:56:00Z",
+   "note": "spot description from a third-party surf guide, not from the business"
+  }
+ },
+ "contact": {
+  "phone": {
+   "value": "+94741648662",
+   "source_url": "https://www.google.com/maps/search/Briza%20Surf%20Kabalana/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T15:56:00Z"
+  },
+  "whatsapp": {
+   "value": "+94741648662",
+   "source_url": "https://www.instagram.com/brizasurf_kabalana/",
+   "fetched_at": "2026-09-19T15:56:00Z",
+   "verified": "wa.me/94741648662 is the link in the Instagram bio; same number as the Google listing phone"
+  },
+  "email": {
+   "value": null,
+   "gap": "not published"
+  },
+  "socials": {
+   "instagram": "https://www.instagram.com/brizasurf_kabalana/",
+   "facebook": null,
+   "tripadvisor": null,
+   "google_maps": "https://www.google.com/maps/search/Briza%20Surf%20Kabalana/@5.9794134,80.350836,17z?hl=en"
+  }
+ },
+ "booking": {
+  "path": {
+   "value": "whatsapp",
+   "source_url": "https://www.instagram.com/brizasurf_kabalana/",
+   "fetched_at": "2026-09-19T15:56:00Z",
+   "note": "the only contact-to-book link published is wa.me/94741648662 in the Instagram bio; no booking engine or OTA listing found"
+  },
+  "engine_url": {
+   "value": null
+  },
+  "reply_time_hint": {
+   "value": null,
+   "gap": "not published"
+  }
+ },
+ "hours": [
+  {
+   "days": [
+    "mon",
+    "tue",
+    "wed",
+    "thu",
+    "fri",
+    "sat",
+    "sun"
+   ],
+   "open": "06:00",
+   "close": "18:30",
+   "source_url": "https://www.google.com/maps/search/Briza%20Surf%20Kabalana/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T15:56:00Z"
+  }
+ ],
+ "hours_note": {
+  "value": null,
+  "gap": "no note published (e.g. seasonal or rough-sea closures)"
+ },
+ "offers": [],
+ "facilities": [
+  {
+   "value": "beach food & fresh juice",
+   "source_url": "https://www.instagram.com/brizasurf_kabalana/",
+   "fetched_at": "2026-09-19T15:56:00Z"
+  }
+ ],
+ "levels": [
+  {
+   "value": "all levels",
+   "source_url": "https://www.instagram.com/brizasurf_kabalana/",
+   "fetched_at": "2026-09-19T15:56:00Z",
+   "note": "Instagram bio: 'All levels welcome'"
+  }
+ ],
+ "season": {
+  "value": "November–April is the best window at Kabalana",
+  "source_url": "https://thesurfatlas.com/sri-lanka-surf/kabalana-beach/",
+  "fetched_at": "2026-09-19T15:56:00Z",
+  "note": "spot season from a third-party surf guide; the business publishes no season of its own"
+ },
+ "reviews": {
+  "google": {
+   "rating": 5.0,
+   "count": 1,
+   "source_url": "https://www.google.com/maps/search/Briza%20Surf%20Kabalana/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T15:56:00Z"
+  },
+  "tripadvisor": {
+   "rating": null,
+   "count": null,
+   "gap": "no listing found"
+  },
+  "instagram_followers": {
+   "value": 259,
+   "source_url": "https://www.instagram.com/brizasurf_kabalana/",
+   "fetched_at": "2026-09-19T15:56:00Z"
+  },
+  "quotes": [
+   {
+    "text": "A great place to stay, the family is charming and stunning, people with a big heart and a good will to help and give a feeling of home!! The place is pleasant to sleep in and in a great location, there is hot water and air conditioning and there are surfing lessons with an excellent instructor!!! Highly recommend, I really enjoyed my stay there",
+    "author": "הדר מולכו",
+    "date": "2026-04",
+    "source_url": "https://www.google.com/maps/search/Briza%20Surf%20Kabalana/@5.9794134,80.350836,17z?hl=en",
+    "fetched_at": "2026-09-19T15:56:00Z",
+    "note": "Google's English translation of a Hebrew original; date is Google's '5 months ago' relative to 2026-09-19, so approximate"
+   }
+  ]
+ },
+ "images": [
+  {
+   "id": "img-001",
+   "file": "assets/img-001.jpg",
+   "source_url": "https://www.instagram.com/brizasurf_kabalana/reel/DD2Cw93ypAR/",
+   "fetched_at": "2026-09-19T15:56:07Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @brizasurf_kabalana",
+   "width": 361,
+   "height": 640,
+   "description": "Video by 𝗕𝗥𝗜𝗭𝗔 𝗦𝗨𝗥𝗙 𝗦𝗖𝗛𝗢𝗢𝗟 | 𝗞𝗔𝗕𝗔𝗟𝗔𝗡𝗔 on December 21, 2024.",
+   "sha256": "af0d96e721372e7c53a8ff0e50a5d67d6cac590d86b933b029375094fe97c483",
+   "note": "video cover frame"
+  },
+  {
+   "id": "img-002",
+   "file": "assets/img-002.webp",
+   "source_url": "https://www.instagram.com/brizasurf_kabalana/p/DCoPcf5TLzv/",
+   "fetched_at": "2026-09-19T15:56:07Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @brizasurf_kabalana",
+   "width": 640,
+   "height": 640,
+   "description": "Photo by 𝗕𝗥𝗜𝗭𝗔 𝗦𝗨𝗥𝗙 𝗦𝗖𝗛𝗢𝗢𝗟 | 𝗞𝗔𝗕𝗔𝗟𝗔𝗡𝗔 on November 21, 2024.",
+   "sha256": "a0dedbf3039a9a6a8289379136384d7de87d5c4986bf0c19596be4cd2f41c148",
+   "note": null
+  },
+  {
+   "id": "img-003",
+   "file": "assets/img-003.jpg",
+   "source_url": "https://www.instagram.com/brizasurf_kabalana/reel/DDuHnkpSQ3r/",
+   "fetched_at": "2026-09-19T15:56:07Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @brizasurf_kabalana",
+   "width": 361,
+   "height": 640,
+   "description": "Video by 𝗕𝗥𝗜𝗭𝗔 𝗦𝗨𝗥𝗙 𝗦𝗖𝗛𝗢𝗢𝗟 | 𝗞𝗔𝗕𝗔𝗟𝗔𝗡𝗔 on December 18, 2024.",
+   "sha256": "fa885f577406992df6b2e0ae85dd2acf29c897124cb612d5c6016f1555a9398e",
+   "note": "video cover frame"
+  },
+  {
+   "id": "img-004",
+   "file": "assets/img-004.webp",
+   "source_url": "https://www.instagram.com/brizasurf_kabalana/p/DQi8OONAtxV/",
+   "fetched_at": "2026-09-19T15:56:07Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @brizasurf_kabalana",
+   "width": 480,
+   "height": 640,
+   "description": "Photo by 𝗕𝗥𝗜𝗭𝗔 𝗦𝗨𝗥𝗙 𝗦𝗖𝗛𝗢𝗢𝗟 | 𝗞𝗔𝗕𝗔𝗟𝗔𝗡𝗔 on November 02, 2025.",
+   "sha256": "fd009838c1ab5ec7f3d7ef7041a7cdf3dd937b49d1492cc793073839e4e73e51",
+   "note": null
+  },
+  {
+   "id": "img-005",
+   "file": "assets/img-005.jpg",
+   "source_url": "https://www.instagram.com/brizasurf_kabalana/reel/DQN9vRXAuUu/",
+   "fetched_at": "2026-09-19T15:56:07Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @brizasurf_kabalana",
+   "width": 361,
+   "height": 640,
+   "description": "Video by 𝗕𝗥𝗜𝗭𝗔 𝗦𝗨𝗥𝗙 𝗦𝗖𝗛𝗢𝗢𝗟 | 𝗞𝗔𝗕𝗔𝗟𝗔𝗡𝗔 on October 24, 2025.",
+   "sha256": "85206a2b84b0b82c8593e9d24a9c15dd033849ea2ed24832c5333355c7c4da93",
+   "note": "video cover frame"
+  },
+  {
+   "id": "img-006",
+   "file": "assets/img-006.webp",
+   "source_url": "https://www.instagram.com/brizasurf_kabalana/p/DQHC8uJAtgC/",
+   "fetched_at": "2026-09-19T15:56:07Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @brizasurf_kabalana",
+   "width": 480,
+   "height": 640,
+   "description": "Photo by 𝗕𝗥𝗜𝗭𝗔 𝗦𝗨𝗥𝗙 𝗦𝗖𝗛𝗢𝗢𝗟 | 𝗞𝗔𝗕𝗔𝗟𝗔𝗡𝗔 on October 22, 2025.",
+   "sha256": "044b7d03f4ba8d32163842a26c5bbb218ce3efb9a48af249d6eba6517f83e039",
+   "note": null
+  },
+  {
+   "id": "img-007",
+   "file": "assets/img-007.jpg",
+   "source_url": "https://www.instagram.com/brizasurf_kabalana/p/DGLM2bTilG7/",
+   "fetched_at": "2026-09-19T15:56:07Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @brizasurf_kabalana",
+   "width": 512,
+   "height": 640,
+   "description": "Photo by 𝗕𝗥𝗜𝗭𝗔 𝗦𝗨𝗥𝗙 𝗦𝗖𝗛𝗢𝗢𝗟 | 𝗞𝗔𝗕𝗔𝗟𝗔𝗡𝗔 on February 17, 2025.",
+   "sha256": "06e24a219fdd0b08ba55b51aaf68c90bab0ed087ec32dae5a16432c1fb1288b8",
+   "note": null
+  },
+  {
+   "id": "img-008",
+   "file": "assets/img-008.jpg",
+   "source_url": "https://www.instagram.com/brizasurf_kabalana/p/DGFMBRxiM4C/",
+   "fetched_at": "2026-09-19T15:56:07Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @brizasurf_kabalana",
+   "width": 512,
+   "height": 640,
+   "description": "Photo by 𝗕𝗥𝗜𝗭𝗔 𝗦𝗨𝗥𝗙 𝗦𝗖𝗛𝗢𝗢𝗟 | 𝗞𝗔𝗕𝗔𝗟𝗔𝗡𝗔 on February 14, 2025.",
+   "sha256": "786e0381ea9b826c53da0f667893bf58310b018e4f9e47d4641d29834e73a4ac",
+   "note": null
+  },
+  {
+   "id": "img-009",
+   "file": "assets/img-009.jpg",
+   "source_url": "https://www.instagram.com/brizasurf_kabalana/p/DF48ReeC-_K/",
+   "fetched_at": "2026-09-19T15:56:07Z",
+   "license": "business-owned",
+   "license_note": "posted by the business's own Instagram account @brizasurf_kabalana",
+   "width": 512,
+   "height": 640,
+   "description": "Photo by 𝗕𝗥𝗜𝗭𝗔 𝗦𝗨𝗥𝗙 𝗦𝗖𝗛𝗢𝗢𝗟 | 𝗞𝗔𝗕𝗔𝗟𝗔𝗡𝗔 on February 10, 2025.",
+   "sha256": "519c3532111220f2a457e3a1b0ea3ce3f456b8c13946b5129b57746da6b1d16d",
+   "note": null
+  }
+ ],
+ "existing_site": {
+  "url": null,
+  "status": null,
+  "notes": "no website anywhere; the Google listing shows 'Add website'",
+  "screenshot": null
+ },
+ "languages": {
+  "seen": [
+   "en"
+  ],
+  "owner_language_hint": "si"
+ },
+ "gaps": [
+  {
+   "field": "offers",
+   "why": "no prices for lessons, rental or packages published on Instagram or Google",
+   "pitch_point": true
+  },
+  {
+   "field": "business.tagline",
+   "why": "only an Instagram bio line; no real tagline",
+   "pitch_point": true
+  },
+  {
+   "field": "existing_site.url",
+   "why": "no website at all",
+   "pitch_point": true
+  },
+  {
+   "field": "business.since",
+   "why": "no founding year published",
+   "pitch_point": false
+  },
+  {
+   "field": "contact.email",
+   "why": "not published",
+   "pitch_point": false
+  },
+  {
+   "field": "reviews.quotes",
+   "why": "only one Google review exists, and it is a translation; thin social proof",
+   "pitch_point": true
+  },
+  {
+   "field": "hours_note",
+   "why": "no seasonal/rough-sea note published",
+   "pitch_point": false
+  },
+  {
+   "field": "location.spot",
+   "why": "no description of the spot written by the business itself",
+   "pitch_point": true
+  },
+  {
+   "field": "images",
+   "why": "only Instagram feed images at 640 px long edge; no high-resolution originals available without the owner",
+   "pitch_point": true
+  },
+  {
+   "field": "booking.reply_time_hint",
+   "why": "not published",
+   "pitch_point": false
+  },
+  {
+   "field": "levels",
+   "why": "'all levels' only; no lesson structure, duration or group size published",
+   "pitch_point": true
+  }
+ ]
+}
