@@ -20,6 +20,21 @@ The scout selects for the *weakest* web presence, so the businesses that score b
 | `shaper` | Makes boards | `shaping.boardTypes`, `shaping.leadTime`, ≥ 6 `photos[]` of actual boards | `shaping.customOrder`, `priceList[]`, `credentials[]` (years shaping) | shared + kit |
 | `other` | Anything the registry does not cover yet | the core fields only | — | shared |
 
+## `mode: test` vs `mode: live` (`run.yaml`)
+
+The "must have" columns above are the **live** bar: on site we can photograph the place, sit with the owner and write copy with them, so a missing price is a conversation.
+
+In `mode: test` there is no conversation. Nobody is on the ground and nobody may be contacted. A business qualifies for a test run **only if its public material alone builds a complete site**:
+
+| In test mode | |
+|---|---|
+| Every "must have" must already be **public** | prices published somewhere, photos already posted, and prose already written in the owner's voice (an OTA's generated summary does not count) |
+| A gap is a **disqualification, not a question** | drop the business and pick another; never carry "ask the owner" into a test run |
+| Where the material lives | Hostelworld and Airbnb carry the owner's own long-form copy; Booking.com and Agoda carry property-uploaded photos, room types, amenities and guest quotes. A business listed on both is the strongest test subject there is |
+| What fails fast | a bare Google listing, an Instagram account with a one-line bio, a dead domain — all fine targets to *pitch* on site, all useless for testing the pipeline |
+
+Test picks therefore skew to `beach_lodging` and `surf_camp` on OTAs. That is correct: the point of a test run is to prove the pipeline end to end, not to find the neediest business.
+
 ## Cross-type rules
 
 1. **Every type needs the core:** `businessName`, one working contact channel, ≥ 3 `photos[]`, and at least one `copyBlocks[]` row in the owner's voice. A business that cannot reach that is not buildable — say so in the dossier's `gaps[]` with `blocking: true` rather than filling the hole with invention.

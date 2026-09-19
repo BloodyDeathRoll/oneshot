@@ -1,4 +1,11 @@
 run_id: 2026-09-ahangama-02
+mode: test                       # test | live
+# test: we are not on the ground and cannot contact anyone. A business qualifies only if
+#       its PUBLIC material alone is enough to build a complete site. Anything that would
+#       need the owner (prices they never published, photos they never posted, copy in
+#       their own voice) disqualifies the business — it does not become a question.
+# live: we are on site. Owner contact, our own photography and a briefing call are all
+#       available, so a thin public presence is a pitch opening rather than a blocker.
 area:
   mode: business                 # town | stretch | business
   # town:     one anchor (a town or beach) + shore_buffer_m along its coast
