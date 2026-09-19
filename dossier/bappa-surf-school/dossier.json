@@ -1,0 +1,275 @@
+{
+ "slug": "bappa-surf-school",
+ "run_id": "2026-09-ahangama-02",
+ "harvester_version": "0.1.0",
+ "harvested_at": "2026-09-19T16:30:00Z",
+ "business": {
+  "name": {
+   "value": "Bappa surf school",
+   "source_url": "https://www.google.com/maps/search/Bappa%20surf%20school/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:30:00Z",
+   "note": "Google's spelling; a reviewer writes 'Bappa Surf School, Ahangama'"
+  },
+  "type": {
+   "value": "surf_school",
+   "source_url": "https://www.google.com/maps/search/Bappa%20surf%20school/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:30:00Z",
+   "note": "Google category 'Surf school'"
+  },
+  "tagline": {
+   "value": null,
+   "gap": "none published"
+  },
+  "description": {
+   "value": null,
+   "gap": "the Google listing carries no description and there is no other published presence"
+  },
+  "since": {
+   "value": null,
+   "gap": "not published"
+  },
+  "staff": {
+   "value": "Coach Kumara",
+   "source_url": "https://www.google.com/maps/search/Bappa%20surf%20school/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:30:00Z",
+   "note": "named by a reviewer 8 months ago, not by the business; unconfirmed"
+  }
+ },
+ "location": {
+  "address": {
+   "value": "Kabalana Rd, Ahangama 80650, Sri Lanka",
+   "source_url": "https://www.google.com/maps/search/Bappa%20surf%20school/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:30:00Z"
+  },
+  "lat_lng": {
+   "value": [
+    5.9774492,
+    80.3502068
+   ],
+   "source_url": "https://www.google.com/maps/search/Bappa%20surf%20school/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:30:00Z"
+  },
+  "map_url": {
+   "value": "https://www.google.com/maps/search/Bappa%20surf%20school/@5.9794134,80.350836,17z?hl=en",
+   "source_url": "https://www.google.com/maps/search/Bappa%20surf%20school/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:30:00Z"
+  },
+  "plus_code": {
+   "value": "X9G2+X3 Ahangama, Sri Lanka",
+   "source_url": "https://www.google.com/maps/search/Bappa%20surf%20school/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:30:00Z"
+  },
+  "distance_to_shore_m": {
+   "value": 11,
+   "source_url": "reports/2026-09-ahangama-02/candidates.json",
+   "fetched_at": "2026-09-19T16:30:00Z",
+   "note": "computed by the scout"
+  },
+  "spot": {
+   "value": "Kabalana beach break — sandy beach break for beginners and intermediates, with The Rock reef A-frame for advanced surfers",
+   "source_url": "https://thesurfatlas.com/sri-lanka-surf/kabalana-beach/",
+   "fetched_at": "2026-09-19T16:30:00Z",
+   "note": "third-party surf guide, not the business"
+  }
+ },
+ "contact": {
+  "phone": {
+   "value": "+94773234772",
+   "source_url": "https://www.google.com/maps/search/Bappa%20surf%20school/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:30:00Z"
+  },
+  "whatsapp": {
+   "value": null,
+   "gap": "no WhatsApp link published; the number may also be a WhatsApp line but nothing published says so"
+  },
+  "email": {
+   "value": null,
+   "gap": "not published"
+  },
+  "socials": {
+   "instagram": null,
+   "facebook": null,
+   "tripadvisor": null,
+   "google_maps": "https://www.google.com/maps/search/Bappa%20surf%20school/@5.9794134,80.350836,17z?hl=en"
+  }
+ },
+ "booking": {
+  "path": {
+   "value": "phone",
+   "source_url": "https://www.google.com/maps/search/Bappa%20surf%20school/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:30:00Z",
+   "note": "the Google listing's phone number is the only contact channel published anywhere; no website, no social account, no OTA listing"
+  },
+  "engine_url": {
+   "value": null
+  },
+  "reply_time_hint": {
+   "value": null,
+   "gap": "not published"
+  }
+ },
+ "hours": [
+  {
+   "days": [
+    "mon",
+    "tue",
+    "wed",
+    "thu",
+    "fri",
+    "sat",
+    "sun"
+   ],
+   "open": "07:00",
+   "close": "18:00",
+   "source_url": "https://www.google.com/maps/search/Bappa%20surf%20school/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:30:00Z"
+  }
+ ],
+ "hours_note": {
+  "value": null,
+  "gap": "no note published"
+ },
+ "offers": [],
+ "facilities": [],
+ "levels": [
+  {
+   "value": "beginners taught, including children",
+   "source_url": "https://www.google.com/maps/search/Bappa%20surf%20school/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:30:00Z",
+   "note": "from reviews: a first-ever lesson and a parent's children learning; the business publishes no level list"
+  }
+ ],
+ "season": {
+  "value": null,
+  "gap": "not published by the business"
+ },
+ "reviews": {
+  "google": {
+   "rating": 4.7,
+   "count": 24,
+   "source_url": "https://www.google.com/maps/search/Bappa%20surf%20school/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:30:00Z",
+   "breakdown": {
+    "5": 22,
+    "4": 0,
+    "3": 0,
+    "2": 0,
+    "1": 2
+   },
+   "note": "the two 1-star reviews were not reachable logged out; only the three newest reviews render"
+  },
+  "tripadvisor": {
+   "rating": null,
+   "count": null,
+   "gap": "no listing found"
+  },
+  "quotes": [
+   {
+    "text": "My first ever lesson surfing and was so much fun! Helped me understand everything I needed to do and made it fun ! Thank you !",
+    "author": "Katie Downey",
+    "date": "2026-04 (Google: '5 months ago')",
+    "source_url": "https://www.google.com/maps/search/Bappa%20surf%20school/@5.9794134,80.350836,17z?hl=en",
+    "fetched_at": "2026-09-19T16:30:00Z"
+   },
+   {
+    "text": "Absolutely amazing experience at Bappa Surf School, Ahangama 🌊🏄‍♂️ Coach Kumara is incredible — super friendly, patient, and very professional. I fully trusted him with my kids, and they learned to surf so fast! They loved it",
+    "author": "M K",
+    "date": "2026-01 (Google: '8 months ago')",
+    "source_url": "https://www.google.com/maps/search/Bappa%20surf%20school/@5.9794134,80.350836,17z?hl=en",
+    "fetched_at": "2026-09-19T16:30:00Z",
+    "note": "TRUNCATED by Google's 'More' control, which did not expand logged out — do not publish as a complete quote"
+   },
+   {
+    "text": "Had an absolutely gnarly time 🤟🏼really encouraging, friendly, and wise team. Good vibes all round. Would highly recommend booking a lesson",
+    "author": "Esta Felix",
+    "date": "2026-03 (Google: '6 months ago')",
+    "source_url": "https://www.google.com/maps/search/Bappa%20surf%20school/@5.9794134,80.350836,17z?hl=en",
+    "fetched_at": "2026-09-19T16:30:00Z",
+    "note": "TRUNCATED by Google's 'More' control — do not publish as a complete quote"
+   }
+  ],
+  "review_topics": {
+   "value": {
+    "surf instructor": 10,
+    "friendly coach": 2,
+    "encouraging teacher": 2,
+    "technique improvement": 2
+   },
+   "source_url": "https://www.google.com/maps/search/Bappa%20surf%20school/@5.9794134,80.350836,17z?hl=en",
+   "fetched_at": "2026-09-19T16:30:00Z",
+   "note": "Google's own review topic tags and counts"
+  }
+ },
+ "images": [],
+ "existing_site": {
+  "url": null,
+  "status": null,
+  "notes": "no website; the Google listing shows 'Add website'. No Instagram, Facebook, TripAdvisor or OTA presence found by search either — the phone number on Google is the entire public presence.",
+  "screenshot": null
+ },
+ "languages": {
+  "seen": [
+   "en"
+  ],
+  "owner_language_hint": "si"
+ },
+ "gaps": [
+  {
+   "field": "images",
+   "why": "no business-owned image exists anywhere — the 24 photos on the Google listing are reviewers' uploads, and there is no social account. Photography will have to come from the owner.",
+   "pitch_point": true,
+   "blocking": true
+  },
+  {
+   "field": "existing_site.url",
+   "why": "no website and no social account at all",
+   "pitch_point": true
+  },
+  {
+   "field": "offers",
+   "why": "no prices published for lessons or rental",
+   "pitch_point": true
+  },
+  {
+   "field": "business.description",
+   "why": "nothing written about the business anywhere",
+   "pitch_point": true
+  },
+  {
+   "field": "contact.whatsapp",
+   "why": "not published, although it is the normal booking channel here",
+   "pitch_point": true
+  },
+  {
+   "field": "levels",
+   "why": "inferred from reviews only; no lesson structure, duration or group size published",
+   "pitch_point": true
+  },
+  {
+   "field": "reviews.quotes",
+   "why": "two of the three reachable quotes are truncated by Google and the two 1-star reviews could not be read logged out",
+   "pitch_point": false
+  },
+  {
+   "field": "business.since",
+   "why": "not published",
+   "pitch_point": false
+  },
+  {
+   "field": "contact.email",
+   "why": "not published",
+   "pitch_point": false
+  },
+  {
+   "field": "business.staff",
+   "why": "'Coach Kumara' comes from a review, not the business; the owner's name is unknown",
+   "pitch_point": false
+  },
+  {
+   "field": "location.spot",
+   "why": "nothing written by the business about the wave it sits on",
+   "pitch_point": true
+  }
+ ],
+ "contradictions": []
+}
