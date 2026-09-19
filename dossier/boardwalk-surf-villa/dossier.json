@@ -1,0 +1,657 @@
+{
+ "slug": "boardwalk-surf-villa",
+ "run_id": "2026-09-ahangama-02",
+ "harvester_version": "0.2.0",
+ "harvested_at": "2026-09-19T18:35:00Z",
+ "businessType": "beach_lodging",
+ "business": {
+  "businessType_note": "sells a bed — one self-contained one-bedroom villa; no lessons of its own",
+  "name": {
+   "value": "Boardwalk Surf Villa",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z",
+   "note": "Google's listing is lower-cased 'Boardwalk surf villa'"
+  },
+  "type": {
+   "value": "beach_lodging",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z",
+   "note": "Booking category 'Villa'; Google category 'Villa'"
+  },
+  "tagline": {
+   "value": null,
+   "gap": "none published; Booking.com's summary is platform-generated, not the owner's words"
+  },
+  "description": {
+   "value": "Elegant Accommodations: Boardwalk Surf Villa in Ahangama offers a recently renovated villa with one bedroom and one bathroom. Guests enjoy a garden and free WiFi. Modern Amenities: air-conditioning, a kitchenette, and garden views, plus a dining area, free toiletries and soundproofing. Breakfast and Parking: a full English or Irish breakfast with fresh fruits is served daily; free on-site private parking, and a paid airport shuttle from Koggala Airport, 3.1 mi away. Nearby: Kabalana Beach is a 5-minute walk; Ahangama Beach and the Ahangama Fish Market are close by.",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z",
+   "language": "en",
+   "note": "Booking.com's own generated summary, NOT the owner's copy — do not present it as the business's voice"
+  },
+  "since": {
+   "value": null,
+   "gap": "not published; Booking calls the villa 'recently renovated'"
+  },
+  "run_by": {
+   "value": "hosts described as lovely by guests",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z",
+   "note": "no owner named anywhere"
+  }
+ },
+ "location": {
+  "address": {
+   "value": "Sri Wijaya Mawatha, 80650 Ahangama, Sri Lanka",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z",
+   "note": "Google gives 'Naluarabewatta, Welhengoda, Ahangama'"
+  },
+  "plus_code": {
+   "value": "X9H2+JQQ Ahangama, Sri Lanka",
+   "source_url": "https://www.google.com/maps/search/Boardwalk%20Surf%20Villa%20Ahangama/@5.97897,80.35231,17z?hl=en",
+   "fetched_at": "2026-09-19T18:35:00Z"
+  },
+  "lat_lng": {
+   "value": [
+    5.97897,
+    80.35231
+   ],
+   "source_url": "https://www.google.com/maps/search/Boardwalk%20Surf%20Villa%20Ahangama/@5.97897,80.35231,17z?hl=en",
+   "fetched_at": "2026-09-19T18:35:00Z",
+   "note": "from the Google place URL"
+  },
+  "map_url": {
+   "value": "https://www.google.com/maps/search/Boardwalk%20Surf%20Villa%20Ahangama/@5.97897,80.35231,17z?hl=en",
+   "source_url": "https://www.google.com/maps/search/Boardwalk%20Surf%20Villa%20Ahangama/@5.97897,80.35231,17z?hl=en",
+   "fetched_at": "2026-09-19T18:35:00Z"
+  },
+  "distance_to_beach": {
+   "value": "Kabalana Beach is a 5-minute walk",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z",
+   "note": "guests variously say 'a short walk' and 'a few minutes'"
+  },
+  "setting": {
+   "value": "Set back in the jungle in a garden, tucked away from noise",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z",
+   "note": "from guest reviews — the most distinctive thing about the place"
+  },
+  "spot": {
+   "value": "Kabalana beach break — sandy beach break for beginners and intermediates, with The Rock reef A-frame for advanced surfers",
+   "source_url": "https://thesurfatlas.com/sri-lanka-surf/kabalana-beach/",
+   "fetched_at": "2026-09-19T18:35:00Z",
+   "note": "third-party surf guide"
+  }
+ },
+ "contact": {
+  "phone": {
+   "value": "+94702386893",
+   "source_url": "https://www.google.com/maps/search/Boardwalk%20Surf%20Villa%20Ahangama/@5.97897,80.35231,17z?hl=en",
+   "fetched_at": "2026-09-19T18:35:00Z"
+  },
+  "whatsapp": {
+   "value": null,
+   "gap": "not published"
+  },
+  "email": {
+   "value": null,
+   "gap": "not published; bookings run through Booking.com"
+  },
+  "socials": {
+   "instagram": null,
+   "facebook": null,
+   "tripadvisor": null,
+   "google_maps": "https://www.google.com/maps/search/Boardwalk%20Surf%20Villa%20Ahangama/@5.97897,80.35231,17z?hl=en",
+   "booking": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html"
+  }
+ },
+ "booking": {
+  "path": {
+   "value": "engine",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z",
+   "note": "Booking.com is the only real channel; the two 'website' links on Google are white-label resellers of the same Booking inventory"
+  },
+  "engine_url": {
+   "value": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z"
+  },
+  "reply_time_hint": {
+   "value": null,
+   "gap": "not published"
+  }
+ },
+ "hours": [],
+ "hours_note": {
+  "value": "Open 24 hours",
+  "source_url": "https://www.google.com/maps/search/Boardwalk%20Surf%20Villa%20Ahangama/@5.97897,80.35231,17z?hl=en",
+  "fetched_at": "2026-09-19T18:35:00Z",
+  "note": "Booking publishes no check-in window for this property"
+ },
+ "stayInfo": {
+  "note": {
+   "value": null,
+   "gap": "Booking publishes no check-in/check-out times for this listing"
+  }
+ },
+ "offers": [],
+ "room_types": [
+  {
+   "value": "One-Bedroom Villa, 1 queen bed",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z",
+   "note": "the whole property is this one unit"
+  }
+ ],
+ "facilities": [
+  {
+   "value": "free WiFi (in the rooms)",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z"
+  },
+  {
+   "value": "free private parking (no reservation needed)",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z"
+  },
+  {
+   "value": "airport shuttle (additional charge)",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z"
+  },
+  {
+   "value": "full English/Irish breakfast with fresh fruit, daily",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z"
+  },
+  {
+   "value": "kitchenette with dining table and cleaning products",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z"
+  },
+  {
+   "value": "private bathroom with bath or shower and free toiletries",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z"
+  },
+  {
+   "value": "air conditioning",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z"
+  },
+  {
+   "value": "soundproofing",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z"
+  },
+  {
+   "value": "hypoallergenic, carpeted room",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z"
+  },
+  {
+   "value": "dining area and seating area",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z"
+  },
+  {
+   "value": "garden with outdoor furniture and garden view",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z"
+  },
+  {
+   "value": "drying rack and clothes rack",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z"
+  },
+  {
+   "value": "invoice provided",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z"
+  },
+  {
+   "value": "pets allowed, charges may apply",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z"
+  }
+ ],
+ "levels": [],
+ "season": {
+  "value": null,
+  "gap": "not published by the business"
+ },
+ "reviews": {
+  "google": {
+   "rating": 4.6,
+   "count": 9,
+   "source_url": "https://www.google.com/maps/search/Boardwalk%20Surf%20Villa%20Ahangama/@5.97897,80.35231,17z?hl=en",
+   "fetched_at": "2026-09-19T18:35:00Z",
+   "note": "the listing is unclaimed — Google shows 'Claim this business'"
+  },
+  "booking": {
+   "rating": 9.0,
+   "scale": 10,
+   "count": 50,
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T18:35:00Z",
+   "categories": {
+    "Staff": 9.7,
+    "Facilities": 8.6,
+    "Cleanliness": 9.1,
+    "Comfort": 9.4,
+    "Value for money": 9.8,
+    "Location": 9.4,
+    "Free WiFi": 7.5
+   },
+   "note": "location scored 9.4 from 48 reviews; WiFi is the weakest number at 7.5"
+  },
+  "tripadvisor": {
+   "rating": null,
+   "count": null,
+   "gap": "no listing found"
+  },
+  "quotes": [
+   {
+    "text": "The bed was comfortable, the water pressure was sufficient, and the hosts are lovely. I only stayed a few nights since I was spending more time at a nearby cafe with fast wifi than here, so moved closer for work. The wifi here is sufficient for...",
+    "author": "Tj, Canada",
+    "date": null,
+    "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+    "fetched_at": "2026-09-19T18:35:00Z",
+    "note": "TRUNCATED by 'Read more'; note the WiFi caveat"
+   },
+   {
+    "text": "The location is perfect. Close to the beach and a few cafes & restaurants but tucked away from noise. The garden is beautiful and although it...",
+    "author": "Natalie, Sweden",
+    "date": null,
+    "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+    "fetched_at": "2026-09-19T18:35:00Z",
+    "note": "TRUNCATED"
+   },
+   {
+    "text": "We had a great stay here! The location is perfect – set back in the jungle in a lovely garden and only a short walk to Kabalana Beach. The room is...",
+    "author": "Taye, Australia",
+    "date": null,
+    "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+    "fetched_at": "2026-09-19T18:35:00Z",
+    "note": "TRUNCATED"
+   },
+   {
+    "text": "Perfect location for Kabalana beach a few minutes walk away. Very nice porch to relax on chairs watching the nature in the garden",
+    "author": "Frank, United Kingdom",
+    "date": null,
+    "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+    "fetched_at": "2026-09-19T18:35:00Z"
+   }
+  ]
+ },
+ "images": [
+  {
+   "id": "img-001",
+   "file": "assets/img-001.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "13dbd1cf3d87f1acc6a79d2c56233a108c77f4d330b8bde850c3c622afd89ae4"
+  },
+  {
+   "id": "img-002",
+   "file": "assets/img-002.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "8a4d5fcd14fc0af0db12ff6f43989f7e9f8c79b1eda7115da5007313f4519066"
+  },
+  {
+   "id": "img-003",
+   "file": "assets/img-003.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "2024ef57469e094211c1e861b0d65a67037957759fc20bb3f59bf800526cee79"
+  },
+  {
+   "id": "img-004",
+   "file": "assets/img-004.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "a1093ac34e0edcd9333035741f199fef99f8d60b9b83f3a06689ebf558802bd8"
+  },
+  {
+   "id": "img-005",
+   "file": "assets/img-005.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "21158c4e00928f4e64473841504c3ace8487ab2c884b5e8ba74e881bd60f4ebb"
+  },
+  {
+   "id": "img-006",
+   "file": "assets/img-006.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "4c158ce9f3be182deb1d7bcd4bd0ef7eadfb8d32ddaff27f3da76f791d0cda72"
+  },
+  {
+   "id": "img-007",
+   "file": "assets/img-007.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "8b5fe7756dac15c1462363566d28145c9b50674c26a688bced516786f736d89a"
+  },
+  {
+   "id": "img-008",
+   "file": "assets/img-008.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "ad68ca7df85f2c534c68343208c2cd315a10d8b2290b84940b244b3ac58ba66d"
+  },
+  {
+   "id": "img-009",
+   "file": "assets/img-009.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "e7425b3fa93c3bcf86efe24eea90cd2e0bd96af5048c77a6dcff9b73b8342585"
+  },
+  {
+   "id": "img-010",
+   "file": "assets/img-010.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "225124732cdc2488b7c6aa9bc8111318385a9c22bc25c638b8232577e59e0196"
+  },
+  {
+   "id": "img-011",
+   "file": "assets/img-011.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "bb8de52c818d873ba2941263b618d6f2f79b0eccd68e8646b0719ae596e48a1e"
+  },
+  {
+   "id": "img-012",
+   "file": "assets/img-012.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "c93c24235d165cce53987cd80ecc0290ca04377446c1182a63b701ba12e9d5a9"
+  },
+  {
+   "id": "img-013",
+   "file": "assets/img-013.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 690,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "4fc20afc54e61298df465174d94d486925fa7fd126ce4874b2040b2e56b50c5e"
+  },
+  {
+   "id": "img-014",
+   "file": "assets/img-014.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 576,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "9993c533461213d06d136e42a3d3feeed935c2d783138c157fcb1f0ce7753bb3"
+  },
+  {
+   "id": "img-015",
+   "file": "assets/img-015.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "8e9e1cf7b84fcd134d379a9f9acfb500e1b4867aad426180d963332d9f1bd421"
+  },
+  {
+   "id": "img-016",
+   "file": "assets/img-016.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "33afa15702248bc9ea0aa2ed76fca437974b97fb8aef8fe7ff8b8746d9147ab5"
+  },
+  {
+   "id": "img-017",
+   "file": "assets/img-017.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "29b861b42d9ca1babeb49199764598acdb2f55e53113e0a0e378dfcf35cb474b"
+  },
+  {
+   "id": "img-018",
+   "file": "assets/img-018.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "07e0bef1ff868a987f619ba72ecc67710c5b1bbb8f592dee2991443a69dc2991"
+  },
+  {
+   "id": "img-019",
+   "file": "assets/img-019.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "a162ee860e522ef044d47390a2bd67e0d4b8f20363527d648bfeb02824d7d726"
+  },
+  {
+   "id": "img-020",
+   "file": "assets/img-020.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "4f79587f9789cec7858cfb9f400ec2c565fb0e3f852a57d4201eb582c7cfc31e"
+  },
+  {
+   "id": "img-021",
+   "file": "assets/img-021.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "f06e96186069d921c5d4f6c88d45c373894e637e17b670e78939c0d8bf6d32a7"
+  },
+  {
+   "id": "img-022",
+   "file": "assets/img-022.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "59c9881aa12189a8a760c9055df7063057550b130573d8e326ed0bd6082ce074"
+  },
+  {
+   "id": "img-023",
+   "file": "assets/img-023.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "0d0bc2b54e8d018818d79fd75c671ddc15da70c3d1101e0cc94a7d75d8785fef"
+  },
+  {
+   "id": "img-024",
+   "file": "assets/img-024.jpg",
+   "source_url": "https://www.booking.com/hotel/lk/boardwalk-surf-villa.html",
+   "fetched_at": "2026-09-19T19:28:21Z",
+   "license": "business-owned",
+   "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+   "width": 1024,
+   "height": 768,
+   "description": "Booking.com listing photo",
+   "sha256": "98864d43f7c1bc05fcd72982df4fdc738b5ac675b2c995e07492fa26137b903e"
+  }
+ ],
+ "existing_site": {
+  "url": null,
+  "status": null,
+  "notes": "No site of its own. Google's listing carries TWO 'website' links and neither belongs to the business: stays.dogfriendlyretreats.com/hotel/ahangama/boardwalk-surf-villa and a bluepillow.com search URL — both white-label resellers of the same Booking.com inventory. A second Google listing, 'Boardwalk Surf Villa 2 - One-Bedroom Villa', points at the bluepillow one. The Google listing is also unclaimed.",
+  "screenshot": null,
+  "source_url": "https://www.google.com/maps/search/Boardwalk%20Surf%20Villa%20Ahangama/@5.97897,80.35231,17z?hl=en",
+  "fetched_at": "2026-09-19T18:35:00Z"
+ },
+ "languages": {
+  "seen": [
+   "en"
+  ],
+  "owner_language_hint": "si"
+ },
+ "gaps": [
+  {
+   "field": "business.description",
+   "why": "no owner-written prose exists anywhere — Booking's summary is generated and there is no Hostelworld, Airbnb or social listing carrying the owner's voice",
+   "pitch_point": true,
+   "blocking": true
+  },
+  {
+   "field": "existing_site.url",
+   "why": "no site; Google sends customers to two white-label resellers instead, and the listing is unclaimed",
+   "pitch_point": true
+  },
+  {
+   "field": "offers",
+   "why": "nightly rates are live dated Booking inventory, not a published price list",
+   "pitch_point": true
+  },
+  {
+   "field": "stayInfo",
+   "why": "no check-in or check-out times published anywhere",
+   "pitch_point": true
+  },
+  {
+   "field": "contact.email",
+   "why": "not published",
+   "pitch_point": true
+  },
+  {
+   "field": "contact.whatsapp",
+   "why": "not published",
+   "pitch_point": true
+  },
+  {
+   "field": "business.since",
+   "why": "not published",
+   "pitch_point": false
+  },
+  {
+   "field": "season",
+   "why": "not published",
+   "pitch_point": false
+  },
+  {
+   "field": "reviews.quotes",
+   "why": "three of four quotes are truncated by Booking's 'Read more'",
+   "pitch_point": false
+  },
+  {
+   "field": "reviews.google",
+   "why": "the Google listing is unclaimed, so the business does not control its own most-seen page",
+   "pitch_point": true
+  }
+ ],
+ "contradictions": [
+  {
+   "what": "WiFi: listed under 'Most popular amenities', but guests score it 7.5/10 and one review says they left to work from a cafe with faster WiFi.",
+   "resolution": "Unresolved — do not claim fast WiFi on the new site."
+  },
+  {
+   "what": "Two Google listings exist ('Boardwalk surf villa' and 'Boardwalk Surf Villa 2 - One-Bedroom Villa') for what Booking sells as a single one-bedroom villa.",
+   "resolution": "Unresolved — likely a duplicate created by a reseller. Worth raising with the owner."
+  }
+ ]
+}
