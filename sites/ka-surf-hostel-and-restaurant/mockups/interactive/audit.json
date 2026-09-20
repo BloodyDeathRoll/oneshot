@@ -1,23 +1,23 @@
 {
  "slug": "ka-surf-hostel-and-restaurant",
  "variant": "interactive",
- "measured_at": "2026-09-20T10:47:02.297Z",
+ "measured_at": "2026-09-20T11:25:31.027Z",
  "first_load": {
-  "requests": 18,
+  "requests": 7,
   "hosts": [
    "localhost:8981"
   ],
   "third_party_hosts": [],
-  "bytes_total": 518880,
-  "bytes_html": 27041,
-  "bytes_js": 5685,
+  "bytes_total": 464686,
+  "bytes_html": 30965,
+  "bytes_js": 5125,
   "bytes_css": 0,
-  "bytes_fonts": 84916,
-  "bytes_images": 401238,
-  "largest_image_bytes": 78952,
-  "lcp_ms": 1096,
-  "cls": 0.0005,
-  "dcl_ms": 537
+  "bytes_fonts": 52380,
+  "bytes_images": 376216,
+  "largest_image_bytes": 284378,
+  "lcp_ms": 744,
+  "cls": 0.0151,
+  "dcl_ms": 543
  },
  "booking": {
   "external_booking_hrefs": [
@@ -40,7 +40,7 @@
   "focus_returned": true
  },
  "a11y": {
-  "images": 11,
+  "images": 13,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 0,
   "tapables": 19,
@@ -63,9 +63,9 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 4790,
+  "text_length": 6050,
   "booking_links_reachable": 5,
-  "visible_images": 11
+  "visible_images": 13
  },
  "reduced_motion": {
   "canvases": 1,
@@ -73,10 +73,18 @@
   "photograph_visible": true
  },
  "facts": {
-  "numbers_on_page": 27,
+  "numbers_on_page": 37,
   "numbers_not_in_passed_copy": [
+   "58",
+   "22",
+   "3730",
+   "1909",
+   "3.0,",
    "01",
    "04",
+   "13:00.",
+   "49690298623",
+   "2.0,",
    "19"
   ],
   "note": "copy/en.json passed station 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps each paragraph to its dossier fields. A number here that is not in the copy is either an interface label (01, 02…) or a claim to chase."

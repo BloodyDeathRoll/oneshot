@@ -1,38 +1,38 @@
 {
  "slug": "ka-surf-hostel-and-restaurant",
  "variant": "unique",
- "measured_at": "2026-09-20T10:47:15.151Z",
+ "measured_at": "2026-09-20T11:25:42.515Z",
  "first_load": {
-  "requests": 13,
+  "requests": 9,
   "hosts": [
    "localhost:8982"
   ],
   "third_party_hosts": [],
-  "bytes_total": 410646,
-  "bytes_html": 28857,
-  "bytes_js": 4627,
+  "bytes_total": 230469,
+  "bytes_html": 31513,
+  "bytes_js": 0,
   "bytes_css": 0,
-  "bytes_fonts": 84916,
-  "bytes_images": 292246,
-  "largest_image_bytes": 48090,
-  "lcp_ms": 1028,
+  "bytes_fonts": 52380,
+  "bytes_images": 146576,
+  "largest_image_bytes": 35840,
+  "lcp_ms": 556,
   "cls": 0.0001,
-  "dcl_ms": 542
+  "dcl_ms": 320
  },
  "booking": {
   "external_booking_hrefs": [
+   "https://www.google.com/maps/search/KA%20Surf%20Hostel%20Ahangama/@5.9736,80.3639,17z?hl=en",
    "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
    "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
-   "https://www.agoda.com/en-in/ka-surf-hostel-h61738910/hotel/ahangama-lk.html",
-   "https://www.google.com/maps/search/KA%20Surf%20Hostel%20Ahangama/@5.9736,80.3639,17z?hl=en"
+   "https://www.agoda.com/en-in/ka-surf-hostel-h61738910/hotel/ahangama-lk.html"
   ],
   "tel_hrefs": [
    "tel:+94773746053"
   ],
-  "drawer_triggers": 7,
+  "drawer_triggers": 8,
   "triggers_are_links": true,
   "primary_above_fold": true,
-  "tapped": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/"
+  "tapped": "#book"
  },
  "keyboard": {
   "drawer_opens": true,
@@ -40,14 +40,15 @@
   "focus_returned": true
  },
  "a11y": {
-  "images": 11,
+  "images": 10,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 0,
-  "tapables": 21,
+  "tapables": 20,
   "tapables_under_44px": 0,
   "tapables_under_44px_examples": [],
   "headings": [
    "H1",
+   "H2",
    "H2",
    "H2",
    "H2",
@@ -62,9 +63,9 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 5045,
+  "text_length": 5579,
   "booking_links_reachable": 5,
-  "visible_images": 11
+  "visible_images": 10
  },
  "reduced_motion": {
   "canvases": 1,
@@ -72,9 +73,15 @@
   "photograph_visible": true
  },
  "facts": {
-  "numbers_on_page": 21,
+  "numbers_on_page": 29,
   "numbers_not_in_passed_copy": [
-   "19"
+   "58",
+   "22",
+   "3.0,",
+   "13:00.",
+   "19",
+   "3730",
+   "1909"
   ],
   "note": "copy/en.json passed station 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps each paragraph to its dossier fields. A number here that is not in the copy is either an interface label (01, 02…) or a claim to chase."
  }

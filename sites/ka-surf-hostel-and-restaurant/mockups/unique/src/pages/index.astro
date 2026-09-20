@@ -6,18 +6,22 @@ import AgodaMark from '../components/AgodaMark.astro';
 import HostelworldMark from '../components/HostelworldMark.astro';
 import PhoneMark from '../components/PhoneMark.astro';
 
-const table = photo('img-002');
 const hw = rating('hostelworld'), bk = rating('booking'), gg = rating('google');
 const intro = block('intro');
 const [family, breakfast] = blocks('about');
 const rooms = block('offer');
 const [whatsHere, gettingHere] = blocks('info');
-const setting = ['img-013', 'img-003', 'img-014', 'img-012', 'img-017', 'img-011', 'img-004', 'img-005', 'img-016', 'img-020'];
 const marks = { hostelworld: HostelworldMark, booking: BookingMark, agoda: AgodaMark };
 const platform = (l) => l.toLowerCase().includes('hostelworld') ? 'hostelworld' : l.toLowerCase().includes('agoda') ? 'agoda' : 'booking';
 const site = (p) => p === 'hostelworld' ? 'Hostelworld' : p === 'booking' ? 'Booking.com' : 'Google';
 const mapUrl = 'https://www.google.com/maps/search/KA%20Surf%20Hostel%20Ahangama/@5.9736,80.3639,17z?hl=en';
 const si = c.stayInfo;
+const menu = ['Rotis', 'Hoppers', 'Pancakes', 'Eggs', 'A fruit platter', 'A vegan option if you need one'];
+const legs = [['Kabalana Beach', 'a five-minute walk'], ['Ahangama railway station', 'a little over 2 km'], ['Koggala Airport', 'about 5 km']];
+const sea = photo('stock-006'), chart = photo('stock-008'), dusk = photo('stock-003'), beach = photo('stock-001');
+const inside = ['img-002', 'img-014', 'img-013', 'img-003'];
+const inside2 = ['img-004', 'img-001', 'img-005', 'img-011'];
+const borrowed = [sea, chart, dusk, beach];
 ---
 <!doctype html>
 <html lang="en">
@@ -26,90 +30,115 @@ const si = c.stayInfo;
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{c.businessName} — {c.tagline}</title>
 <meta name="description" content={`${c.tagline}. ${paras(intro.body)[0]}`} />
-<link rel="preload" href="fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="fonts/spacegrotesk.woff2" as="font" type="font/woff2" crossorigin />
 </head>
 <body>
 
 <a class="sr" href="#book">Skip to booking</a>
 
-<header class="head wrap">
-  <h1 class="sr">{c.businessName} — {c.tagline}</h1>
-  <div class="head-grid">
-    <div>
-      <div class="stack" data-kinetic aria-hidden="true"><span>One long</span><span>table</span></div>
-      <p class="claim" style="margin:22px 0 0;text-align:left">{c.tagline}. Breakfast is included, it is Sri Lankan, and it changes every morning.</p>
-      <div class="book-row" style="justify-content:flex-start;margin-top:26px">
-        {c.bookingLinks.map((b, i) => {
-          const Mark = marks[platform(b.label)];
-          return <a class={i === 0 ? 'book-card book-card--first' : 'book-card'} href={b.url} rel="noopener"><Mark light={i === 0} /> {site(platform(b.label))}</a>;
-        })}
-      </div>
-    </div>
-    <figure class="reel">
-      <div class="box">
-        <img src={table.src} srcset={table.srcset} sizes="320px" width={table.width} height={table.height}
-             alt={table.alt} fetchpriority="high" />
-        <canvas data-reel data-src={table.src} aria-hidden="true"></canvas>
-      </div>
-    </figure>
-  </div>
+<header class="site-head">
+  <span class="name">KA Surf Hostel</span>
+  <span class="coord">5°58′N · 80°22′E · Ahangama</span>
 </header>
 
-<main class="wrap">
-
-<section class="tally">
-  {[hw, bk, gg].filter(Boolean).map((r) => (
-    <div>
-      <p class="n">{r.score}<span> /{r.scale}</span></p>
-      <p>{site(r.platform)} · {r.count} reviews</p>
+<!-- One horizon: the sea above the line, chart paper below, the name across it. -->
+<section class="horizon">
+  <div class="sea">
+    <img src={sea.src} srcset={sea.srcset} sizes="100vw" width={sea.width} height={sea.height}
+         alt={sea.alt} fetchpriority="high" />
+    <canvas data-swell data-src={sea.src} aria-hidden="true"></canvas>
+  </div>
+  <p class="credit">{sea.credit}</p>
+  <div class="line"></div>
+  <div class="words">
+    <div class="wrap">
+      <h1><span class="up">Five minutes</span><span class="down">from the water</span></h1>
     </div>
+  </div>
+  <div class="under">
+    <div class="wrap">
+      <p class="coords">KA Surf Hostel · Welhengoda, Ahangama · 5 min on foot to Kabalana</p>
+      <p class="claim" style="max-width:38rem">{c.tagline}. A family runs it, breakfast is included and Sri Lankan, and it changes every morning.</p>
+      <p style="margin-top:20px"><a class="open-drawer" href="#book" data-open-drawer>Check dates</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="scores">
+  {[hw, bk, gg].filter(Boolean).map((r) => (
+    <div><p class="n">{r.score}<span> /{r.scale}</span></p><p>{site(r.platform)} · {r.count} reviews</p></div>
   ))}
 </section>
 
-<section class="sec pin-grid pin-grid--2">
-  <div class="card">
-    <p class="kicker">Where it is</p>
-    <h2>{intro.heading}</h2>
-    {paras(intro.body).map((p) => <p>{p}</p>)}
-  </div>
-  <div class="card card--tint">
-    <p class="kicker">Every morning</p>
-    <h2>{breakfast.heading}</h2>
-    {paras(breakfast.body).map((p) => <p>{p}</p>)}
-  </div>
-</section>
+<main class="wrap spine">
 
-<!-- The table: one rule, the prints set on it at their own heights. -->
-<section class="sec">
-  <p class="kicker" style="color:var(--chalk-dim)">Set the table · scroll sideways</p>
-  <div class="table-rail" role="group" aria-label="Photographs of the hostel">
-    {setting.map((id) => {
+<section class="sec" data-mark="0 m">
+  <div class="cols2">
+    <div><p class="eyebrow">Where it is</p><h2 class="rise">{intro.heading}</h2></div>
+    <div class="rise">{paras(intro.body).map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}</div>
+  </div>
+  <div class="inside">
+    {inside.map((id) => {
       const p = photo(id);
-      return (
-        <figure class="print">
-          <img src={p.src} srcset={p.srcset} sizes="(min-width: 900px) 15rem, 60vw"
-               width={p.width} height={p.height} alt={p.alt} loading="lazy" decoding="async" />
-        </figure>
-      );
+      return <img src={p.src} srcset={p.srcset} sizes="(min-width: 760px) 21vw, 46vw"
+                  width={p.width} height={p.height} alt={p.alt} loading="lazy" decoding="async" />;
     })}
   </div>
-  <p class="table-note">Ten of the hostel's own photographs · none wider than a postcard</p>
 </section>
 
-<section class="sec">
-  <div class="card">
-    <p class="kicker">Who runs it</p>
-    <h2>{family.heading}</h2>
-    {paras(family.body).map((p) => <p>{p}</p>)}
+<section class="sec" data-mark="2 m">
+  <div class="cols2">
+    <div><p class="eyebrow">Who runs it</p><h2 class="rise">{family.heading}</h2></div>
+    <div class="rise">{paras(family.body).map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}</div>
   </div>
 </section>
 
-<!-- Place cards. -->
-<section class="cards">
-  <p class="kicker" style="color:var(--chalk-dim)">What guests wrote · everyone uses the same word</p>
-  <div class="row">
+<section class="sec" data-mark="4 m">
+  <div class="cols2">
+    <div>
+      <p class="eyebrow">Every morning</p>
+      <h2 class="rise">{breakfast.heading}</h2>
+      <ul class="menu">{menu.map((m, i) => <li data-n={String(i + 1).padStart(2, '0')}>{m}</li>)}</ul>
+    </div>
+    <div class="rise">{paras(breakfast.body).map((p) => <p>{p}</p>)}</div>
+  </div>
+</section>
+
+<section class="sec" data-mark="6 m">
+  <div class="cols2">
+    <div><p class="eyebrow">Beds and rooms · {c.rooms.length} kinds</p><h2 class="rise">{rooms.heading}</h2></div>
+    <div class="rise">{paras(rooms.body).map((p) => <p>{p}</p>)}</div>
+  </div>
+  <ul class="beds">
+    {c.rooms.map((r) => (
+      <li>
+        <span class="what">{r.label}</span>
+        <span class="detail">{r.beds}</span>
+        <a class="go" href="#book" data-open-drawer><span>Check</span></a>
+      </li>
+    ))}
+  </ul>
+  <div class="inside">
+    {inside2.map((id) => {
+      const p = photo(id);
+      return <img src={p.src} srcset={p.srcset} sizes="(min-width: 760px) 21vw, 46vw"
+                  width={p.width} height={p.height} alt={p.alt} loading="lazy" decoding="async" />;
+    })}
+  </div>
+</section>
+
+<section class="sec" data-mark="8 m">
+  <p class="eyebrow">What is here</p>
+  <p class="lead rise">{paras(whatsHere.body)[0]}</p>
+  <ul class="amen">{c.amenities.map((a) => <li>{a.label}{a.note ? <span class="note"> — {a.note}</span> : null}</li>)}</ul>
+</section>
+
+<section class="sec" data-mark="10 m">
+  <p class="eyebrow">What guests wrote · everyone uses the same word</p>
+  <h2 class="rise" style="max-width:16ch">Family, in sixty-six reviews</h2>
+  <div class="quotes">
     {c.testimonials.map((t) => (
-      <figure class="qcard">
+      <figure class="quote rise">
         <blockquote>“{t.quote}”</blockquote>
         <figcaption>{t.author} — {t.source === 'booking' ? 'Booking.com' : t.source === 'hostelworld' ? 'Hostelworld' : t.source}</figcaption>
       </figure>
@@ -117,74 +146,58 @@ const si = c.stayInfo;
   </div>
 </section>
 
-<section class="sec">
-  <div class="card">
-    <p class="kicker">Beds and rooms · {c.rooms.length} kinds</p>
-    <h2>{rooms.heading}</h2>
-    {paras(rooms.body).map((p) => <p>{p}</p>)}
-    <ul class="ledger" style="margin-top:26px">
-      {c.rooms.map((r) => (
-        <li>
-          <span class="what">{r.label}</span>
-          <span class="detail">{r.beds}</span>
-          <a class="go" href="#book" data-open-drawer><span>Check</span></a>
-        </li>
-      ))}
-    </ul>
-  </div>
-</section>
-
-<section class="sec">
-  <p class="kicker" style="color:var(--chalk-dim)">What is here</p>
-  <p style="max-width:36rem;margin-bottom:20px">{paras(whatsHere.body)[0]}</p>
-  <ul class="labels">{c.amenities.map((a) => <li>{a.label}{a.note ? <em> — {a.note}</em> : null}</li>)}</ul>
-</section>
-
-<section class="sec wave">
-  <div class="card card--tint">
-    <p class="kicker">The wave</p>
-    <h2 style="max-width:14ch">Kabalana, five minutes on foot</h2>
-    <p>{c.spot}</p>
-    <p class="kicker" style="margin-top:28px">Getting here</p>
-    {paras(gettingHere.body).map((p) => <p>{p}</p>)}
-    <ul class="facts">
-      <li><span class="k">Check in</span><span>{si.checkInFrom}–{si.checkInTo}</span></li>
-      <li><span class="k">Check out</span><span>by {si.checkOutTo}</span></li>
-      <li><span class="k">Address</span><span>{c.contact.address}</span></li>
-      <li><span class="k">Good to know</span><span>{si.note}</span></li>
-    </ul>
-  </div>
-  <div class="widget">
-    <iframe src="https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
-      title="Rosa surf forecast - Kabalana" width="100%" height="500"
-      style="max-width:420px;border:0;border-radius:12px;display:block"
-      loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
-      sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"></iframe>
-    <p>Kabalana today — rosa.surf</p>
-  </div>
-</section>
-
-<footer class="foot" id="book">
-  <div class="cols">
+<section class="sec" data-mark="12 m">
+  <div class="wave">
     <div>
-      <h3>Where</h3>
-      <p>{c.contact.address}</p>
-      <p><a class="link" href={mapUrl} rel="noopener">Open in Google Maps</a></p>
+      <p class="eyebrow">The wave</p>
+      <h2 style="max-width:14ch">Kabalana, five minutes on foot</h2>
+      <p class="lead">{c.spot}</p>
+      <p class="eyebrow" style="margin-top:38px">Getting here</p>
+      <ul class="legs">{legs.map(([place, dist]) => <li><span class="place">{place}</span><span class="dist">{dist}</span></li>)}</ul>
+      <p style="margin-top:18px;color:var(--muted);font-size:15px">Check in {si.checkInFrom}–{si.checkInTo}, out by {si.checkOutTo}. {si.note}</p>
+      <p style="margin-top:14px"><a class="link" href={mapUrl} rel="noopener">Open in Google Maps</a></p>
     </div>
-    <div>
-      <h3>Reception</h3>
-      <p><a class="link" href={`tel:${c.contact.phone}`}>{c.contact.phone}</a></p>
-      <p>Open 24 hours.</p>
-    </div>
-    <div>
-      <h3>Book</h3>
-      <ul>{c.bookingLinks.map((b) => <li><a class="link" href={b.url} rel="noopener">{b.label}</a></li>)}</ul>
+    <div class="widget">
+      <iframe src="https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+        title="Rosa surf forecast - Kabalana" width="100%" height="500"
+        style="max-width:420px;border:0;border-radius:12px;display:block"
+        loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+        sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"></iframe>
+      <p>Kabalana today — rosa.surf</p>
     </div>
   </div>
-  <p class="legal">Mockup 3 of 3 — “unique”, on the noticeboard archetype (see <code>concepts.md</code>). Every fact on this page comes from the dossier harvested on 19 September 2026; see notes.md. Photographs are the hostel's own and never render wider than a postcard; the grain over the long-table print is drawn in WebGL and alters nothing in the photograph.</p>
-</footer>
+</section>
 
 </main>
+
+<figure class="bleed" style="margin:0">
+  <img src={dusk.src} srcset={dusk.srcset} sizes="100vw" width={dusk.width} height={dusk.height}
+       alt={dusk.alt} loading="lazy" decoding="async" />
+  <figcaption class="credit">{dusk.credit}</figcaption>
+</figure>
+
+<footer class="foot" id="book">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>Where</h3>
+        <p>{c.contact.address}</p>
+        <p><a class="link" href={mapUrl} rel="noopener">Open in Google Maps</a></p>
+      </div>
+      <div>
+        <h3>Reception</h3>
+        <p><a class="link" href={`tel:${c.contact.phone}`}>{c.contact.phone}</a></p>
+        <p>Open 24 hours.</p>
+      </div>
+      <div>
+        <h3>Book</h3>
+        <ul>{c.bookingLinks.map((b) => <li><a class="link" href={b.url} rel="noopener">{b.label}</a></li>)}</ul>
+      </div>
+    </div>
+    <p class="legal">Mockup 3 of 3 — “unique”, on the chart archetype (see <code>concepts.md</code>). Every fact on this page comes from the dossier harvested on 19 September 2026; see notes.md. Photographs of the hostel, its rooms, its garden and its people are the hostel's own. The sea, the chart and the wide photographs of the coast are freely licensed and are of the place, not of this business.</p>
+    <ul class="credits">{borrowed.map((p) => <li>{p.credit}</li>)}</ul>
+  </div>
+</footer>
 
 <details class="drawer" data-drawer>
   <summary>Booking</summary>
@@ -193,7 +206,7 @@ const si = c.stayInfo;
     <button class="close" type="button" data-close-drawer>Close</button>
     <h2>Check dates</h2>
     <p>KA sells its beds and rooms through three listings, and they hold the live prices. Its strongest score is on Hostelworld. Reception answers the phone around the clock.</p>
-    <div class="book-row">
+    <div class="row">
       {c.bookingLinks.map((b, i) => {
         const Mark = marks[platform(b.label)];
         return <a class={i === 0 ? 'book-card book-card--first' : 'book-card'} href={b.url} rel="noopener"><Mark light={i === 0} /> {site(platform(b.label))}</a>;
@@ -209,20 +222,15 @@ const si = c.stayInfo;
 </nav>
 
 <script>
-import { startReel } from '../scripts/reel.js';
+import { startSwell } from '../scripts/swell.js';
+const canvas = document.querySelector('[data-swell]');
+const s = canvas && startSwell(canvas, canvas.dataset.src);
+if (s) canvas.classList.add('on');
 
-const canvas = document.querySelector('[data-reel]');
-const reel = canvas && startReel(canvas, canvas.dataset.src);
-if (reel) canvas.classList.add('on');
-
-const stack = document.querySelector('[data-kinetic]');
-if (stack && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const lines = [...stack.children];
-  addEventListener('pointermove', (e) => {
-    const k = (e.clientX / innerWidth - 0.5) * 2;
-    lines.forEach((l, i) => l.style.setProperty('--x', `${(k * (i - 0.5) * 2.4).toFixed(2)}vw`));
-  }, { passive: true });
-}
+const io = new IntersectionObserver((es) => {
+  for (const e of es) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}, { rootMargin: '0px 0px -8%' });
+document.querySelectorAll('.rise').forEach((el) => io.observe(el));
 
 /* Triggers are real links to the footer booking block, so they work with
    JavaScript off; the script upgrades them into the slide-out. */

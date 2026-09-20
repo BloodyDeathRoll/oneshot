@@ -1,254 +1,216 @@
-/* KA Surf Hostel — mockup 3, "unique". Archetype: the kitchen noticeboard
-   (sites/ka-surf-hostel-and-restaurant/concepts.md §3, concept 3
-   "Fifteen at the table").
+/* KA Surf Hostel — mockup 3, "unique". Archetype: the chart
+   (concepts.md §3, concept 3 "Latitude").
 
-   The whole wall at once. One rule runs the width of the page like a table
-   edge and the prints are set *on* it at different heights, the way plates and
-   glasses sit on a table; the guests' words are place cards staggered above and
-   below a second line. Same wall, same two typefaces as mockups 1 and 2 —
-   one business, one brand.
+   One horizon. Open sea above the line, chart paper below it, the name
+   straddling it. After the first screen the horizon becomes the page's spine:
+   a hairline in the left margin with depth figures on it, and every section
+   hung off it. Same paper and same two typefaces as mockups 1 and 2 — one
+   business, one brand.
 
-   The long-table print is 576 px wide and rendered at 400. It is run like a
-   home film: grain heavier in the shadows, halation off the lamp, a slow weave.
-   On a soft phone photograph at postcard size, grain is a kindness — it gives
-   the softness a reason. It is still never shown any larger. */
+   Flat and contemporary: no tilts, no mats, no drop shadows. */
 
 @font-face {
-  font-family: 'Newsreader';
-  src: url('fonts/newsreader.woff2') format('woff2-variations');
-  font-weight: 300 600; font-style: normal; font-display: swap;
+  font-family: 'Space Grotesk';
+  src: url('fonts/spacegrotesk.woff2') format('woff2-variations');
+  font-weight: 300 700; font-style: normal; font-display: swap;
 }
 @font-face {
-  font-family: 'Public Sans';
-  src: url('fonts/publicsans.woff2') format('woff2-variations');
-  font-weight: 300 700; font-style: normal; font-display: swap;
+  font-family: 'Instrument Sans';
+  src: url('fonts/instrumentsans.woff2') format('woff2-variations');
+  font-weight: 400 700; font-style: normal; font-display: swap;
 }
 
 :root {
-  --wall: #f0e7d7;        /* the wall: cream plaster, not a dark room */
-  --wall-2: #e7dcc7;
-  --card: #fffaf1;        /* paper pinned to it */
-  --card-2: #f7efe0;
-  --ink: #241c15;
-  --chalk: #241c15;       /* type on the wall is ink, not chalk */
-  --chalk-dim: #7a6a58;
-  --rule: rgba(36,28,21,.16);
-  /* one accent, reserved for booking actions (references.md #6) — the burnt
-     clay of the hostel's own roundel */
-  --clay: #c4622b;
-  --serif: 'Newsreader', 'Iowan Old Style', Georgia, serif;
-  --sans: 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --paper: #f4efe2;      /* chart paper */
+  --paper-2: #ece5d3;
+  --ink: #1d2326;        /* chart ink */
+  --muted: #6d6b60;
+  --rule: #cfc5ad;
+  --sea: #2a6472;
+  /* one accent, reserved for booking actions (references.md #6) */
+  --red: #d2451e;
+  --disp: 'Space Grotesk', 'Helvetica Neue', system-ui, sans-serif;
+  --sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --gutter: 20px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body {
-  margin: 0; color: var(--chalk);
-  background: var(--wall);
-  /* plaster, not a flat fill: two very low-contrast washes */
-  background-image:
-    radial-gradient(120% 70% at 50% -10%, rgba(255,255,255,.55), transparent 62%),
-    radial-gradient(100% 60% at 10% 110%, rgba(140,110,70,.13), transparent 72%);
-  background-attachment: fixed;
-  font-family: var(--sans); font-weight: 300; font-size: 17px; line-height: 1.62;
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--sans); font-weight: 400; font-size: 17px; line-height: 1.58;
   font-synthesis-weight: none;
 }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
-:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
-.wrap { width: min(100% - var(--gutter) * 2, 1120px); margin-inline: auto; }
+:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+.wrap { width: min(100% - var(--gutter) * 2, 1240px); margin-inline: auto; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-/* ---------- the board head ---------- */
-/* Two overlapping lines of type, a grained postcard beside them, the tally
-   under. No photograph fills a screen anywhere on this site. */
-.head { padding: clamp(36px, 7vh, 80px) 0 clamp(24px, 4vh, 44px); }
-.head .stack { display: grid; }
-.head .stack span {
-  font-family: var(--serif); font-weight: 500; color: var(--ink);
-  font-size: clamp(2.6rem, 10vw, 7rem); line-height: .86; letter-spacing: -.035em;
-  transform: translateX(var(--x, 0)); transition: transform .5s cubic-bezier(.2,.7,.2,1);
+/* ---------- header ---------- */
+.site-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 14px var(--gutter); border-bottom: 1px solid var(--rule);
 }
-.head .stack span:nth-child(2) { justify-self: end; font-style: italic; }
-@media (prefers-reduced-motion: reduce) { .head .stack span { transform: none !important; transition: none; } }
-.head-grid { display: grid; gap: 26px; align-items: end; }
-@media (min-width: 900px) { .head-grid { grid-template-columns: 1fr 320px; gap: 44px; } }
-.reel { position: relative; margin: 0; background: var(--card); padding: 10px 10px 0; box-shadow: 0 8px 22px rgba(60,44,28,.13); transform: rotate(-1.4deg); }
-@media (prefers-reduced-motion: reduce) { .reel { transform: none; } }
-.reel .box { position: relative; aspect-ratio: 3 / 4; overflow: hidden; }
-.reel img, .reel canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-.reel canvas { opacity: 0; transition: opacity 1s ease; }
-.reel canvas.on { opacity: 1; }
-.reel figcaption { font-size: 11px; line-height: 1.35; color: #6f6152; padding: 9px 2px 11px; }
-.head .where { margin: 10px 0 0; font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--chalk-dim); }
-.head .claim { margin: 26px auto 0; max-width: 34rem; font-size: clamp(1.1rem, 2.6vw, 1.35rem); line-height: 1.45; color: var(--chalk); }
+.site-head .name { font-family: var(--disp); font-weight: 700; font-size: 15px; letter-spacing: -.02em; text-transform: uppercase; }
+.site-head .coord { font-family: var(--disp); font-size: 11px; letter-spacing: .1em; color: var(--muted); }
 
-/* ---------- the tally ---------- */
-/* Three platform scores, each with its own count. Never averaged. */
-.tally { display: grid; gap: 18px; padding: clamp(24px, 5vh, 46px) 0; border-top: 1px solid rgba(36,28,21,.15); border-bottom: 1px solid rgba(36,28,21,.15); }
-@media (min-width: 720px) { .tally { grid-template-columns: repeat(3, 1fr); gap: 34px; } }
-.tally .n { font-family: var(--serif); font-weight: 500; font-size: clamp(2.6rem, 7vw, 4.6rem); line-height: .88; letter-spacing: -.045em; margin: 0; color: var(--ink); }
-.tally .n span { font-size: .3em; letter-spacing: 0; }
-.tally p + p { font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--chalk-dim); margin: 9px 0 0; }
-
-/* score tags, pinned */
-.tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 30px 0 0; padding: 0; list-style: none; }
-.tag {
-  background: var(--card-2); color: var(--ink); padding: 7px 14px;
-  font-size: 12.5px; letter-spacing: .02em;
-  box-shadow: 0 2px 5px rgba(60,44,28,.13);
+/* ---------- the horizon ---------- */
+.horizon { position: relative; height: 100svh; min-height: 34rem; overflow: hidden; background: var(--paper); }
+.horizon .sea { position: absolute; inset: 0 0 46% 0; overflow: hidden; background: #2a6472; }
+.horizon .sea img, .horizon .sea canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.horizon .sea canvas { opacity: 0; transition: opacity 1s ease; }
+.horizon .sea canvas.on { opacity: 1; }
+.horizon .line { position: absolute; left: 0; right: 0; top: 54%; height: 1px; background: var(--ink); z-index: 3; }
+.horizon .words { position: absolute; left: 0; right: 0; top: 54%; transform: translateY(-50%); z-index: 4; padding: 0 var(--gutter); }
+.horizon h1 {
+  font-family: var(--disp); font-weight: 700; margin: 0;
+  font-size: clamp(2.4rem, 9vw, 7rem); line-height: .86; letter-spacing: -.05em;
+  mix-blend-mode: normal;
 }
-.tag b { font-family: var(--serif); font-weight: 600; font-size: 1.15rem; }
-.tag:nth-child(1) { transform: rotate(-1.4deg); }
-.tag:nth-child(2) { transform: rotate(.9deg); }
-.tag:nth-child(3) { transform: rotate(-.6deg); }
+.horizon h1 span { display: block; }
+.horizon h1 .up { color: var(--paper); }
+.horizon h1 .down { color: var(--ink); }
+.horizon .under { position: absolute; left: 0; right: 0; bottom: clamp(20px, 5vh, 48px); padding: 0 var(--gutter); z-index: 4; }
+.horizon .coords { font-family: var(--disp); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+.horizon .credit { position: absolute; right: 10px; top: 10px; z-index: 5; font-size: 9.5px; color: rgba(255,255,255,.85); background: rgba(20,26,28,.4); padding: 3px 7px; }
 
-/* ---------- booking, as three pinned cards ---------- */
-.book-row { display: grid; gap: 12px; margin: 34px auto 0; justify-content: center; }
-@media (min-width: 720px) { .book-row { grid-auto-flow: column; } }
+/* ---------- the spine ---------- */
+/* After the horizon, one hairline runs down the left margin with the depth
+   figures of the chart on it, and every section hangs off it. */
+.spine { position: relative; }
+@media (min-width: 1000px) {
+  .spine { padding-left: 5.5rem; }
+  .spine::before { content: ''; position: absolute; left: 2.6rem; top: 0; bottom: 0; width: 1px; background: var(--rule); }
+  .spine > section { position: relative; }
+  .spine > section::before {
+    content: attr(data-mark); position: absolute; left: -3.1rem; top: clamp(44px, 8vh, 88px);
+    font-family: var(--disp); font-size: 10.5px; letter-spacing: .1em; color: var(--muted);
+    background: var(--paper); padding: 4px 0; width: 3rem; text-align: center;
+  }
+}
+
+/* ---------- the scores, as a rule of figures ---------- */
+.scores { display: grid; border-bottom: 1px solid var(--rule); }
+@media (min-width: 720px) { .scores { grid-template-columns: repeat(3, 1fr); } }
+.scores > div { padding: clamp(20px, 3.5vh, 34px) var(--gutter); }
+@media (min-width: 720px) { .scores > div + div { border-left: 1px solid var(--rule); } }
+@media (max-width: 719px) { .scores > div + div { border-top: 1px solid var(--rule); } }
+.scores .n { font-family: var(--disp); font-weight: 700; font-size: clamp(2rem, 5vw, 3rem); line-height: .9; letter-spacing: -.05em; margin: 0; }
+.scores .n span { font-size: .34em; letter-spacing: 0; color: var(--muted); }
+.scores p + p { font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin: 9px 0 0; }
+
+/* ---------- booking ---------- */
+.book { display: grid; gap: 10px; padding: clamp(18px, 3vh, 26px) var(--gutter); border-bottom: 1px solid var(--rule); justify-content: center; text-align: center; }
+.book .row { display: grid; gap: 10px; }
+@media (min-width: 760px) { .book .row { display: flex; justify-content: center; } }
 .book-card {
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-  min-height: 52px; padding: 0 20px; text-decoration: none;
-  background: var(--card); color: var(--ink); box-shadow: 0 3px 8px rgba(60,44,28,.13);
-  font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase;
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  min-height: 50px; padding: 0 20px; text-decoration: none;
+  border: 1px solid var(--red); color: var(--red); background: transparent;
+  font-family: var(--disp); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-weight: 500;
 }
+.book-card--first { background: var(--red); color: var(--paper); }
+.book-card:hover { background: var(--red); color: var(--paper); }
 .book-card svg { flex: none; }
-.book-card--first { background: var(--clay); color: #fffaf1; }
-.book-card:nth-child(1) { transform: rotate(-.8deg); }
-.book-card:nth-child(3) { transform: rotate(.7deg); }
-.book-note { margin: 18px auto 0; max-width: 40rem; font-size: 14px; color: var(--chalk-dim); text-align: center; }
+.book .note { margin: 4px auto 0; max-width: 44rem; font-size: 13.5px; color: var(--muted); }
 
-/* ---------- a pinned card ---------- */
-.card { background: var(--card); color: var(--ink); padding: 26px 24px; box-shadow: 0 6px 18px rgba(60,44,28,.13); }
-.card--tint { background: var(--card-2); }
-.card h2 { font-family: var(--serif); font-weight: 400; margin: 0 0 .7rem; font-size: clamp(1.6rem, 4vw, 2.3rem); line-height: 1.08; letter-spacing: -.01em; }
-.card p { max-width: 34rem; }
-.kicker { font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; color: #8a7a66; margin: 0 0 14px; }
+/* ---------- sections ---------- */
+.sec { padding: clamp(44px, 8vh, 88px) 0; border-bottom: 1px solid var(--rule); }
+.eyebrow { font-family: var(--disp); font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin: 0 0 18px; }
+h2 { font-family: var(--disp); font-weight: 700; margin: 0 0 1rem; font-size: clamp(1.8rem, 4.6vw, 2.9rem); line-height: 1.0; letter-spacing: -.04em; }
+p { max-width: 34rem; }
+.lead { font-size: clamp(1.1rem, 2.6vw, 1.4rem); line-height: 1.45; max-width: 30rem; }
+.cols2 { display: grid; gap: 26px; }
+@media (min-width: 880px) { .cols2 { grid-template-columns: 5fr 6fr; gap: 56px; } }
 
-.sec { padding: clamp(30px, 6vh, 54px) 0; }
-.pin-grid { display: grid; gap: 22px; align-items: start; }
-@media (min-width: 900px) { .pin-grid--2 { grid-template-columns: 7fr 5fr; gap: 28px; } }
+/* ---------- reveal ---------- */
+.rise { opacity: 0; transform: translateY(10px); transition: opacity .6s ease, transform .6s ease; }
+.rise.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .rise { opacity: 1; transform: none; transition: none; } }
 
-/* ---------- today's breakfast ---------- */
-/* The one thing guests mention more than anything else, set as the list it is. */
-.menu { max-width: 30rem; }
-.menu ul { list-style: none; margin: 16px 0 0; padding: 0; }
-.menu li { display: flex; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 1px dashed var(--rule); font-family: var(--serif); font-size: 1.22rem; }
-.menu li span { font-family: var(--sans); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #8a7a66; margin-left: auto; }
-.menu .foot { margin-top: 16px; font-size: 14px; color: #6f6152; }
-
-/* ---------- the table ---------- */
-/* One rule, the width of the page, with the prints set on it at their own
-   heights. Not a grid of equal cards — a table someone has laid. */
-.table-rail {
-  display: grid; grid-auto-flow: column; grid-auto-columns: min(62%, 15rem);
-  gap: 20px; align-items: end; overflow-x: auto; scroll-snap-type: x mandatory;
-  padding: 0; border-bottom: 2px solid var(--ink);
-}
-.table-rail .print { margin: 0 0 16px; scroll-snap-align: center; transform: none !important; }
-/* the prints keep their own heights and sit on the rule; nothing is cropped to
-   match anything and nothing is padded out to fill a box */
-.table-note { font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--chalk-dim); margin: 12px 0 0; }
-
-/* ---------- place cards ---------- */
-/* The guests' own words, staggered above and below a line, the way place cards
-   sit down a table. */
-.cards { position: relative; padding: clamp(30px, 6vh, 60px) 0; }
-.cards::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; border-top: 1px solid rgba(36,28,21,.16); }
-@media (max-width: 899px) { .cards::before { display: none; } }
-.cards .row { display: grid; gap: 22px; }
-@media (min-width: 900px) { .cards .row { grid-template-columns: repeat(2, 1fr); gap: 34px 48px; align-items: center; } }
-@media (min-width: 900px) {
-  .cards .qcard:nth-child(odd) { margin-bottom: 58px; }
-  .cards .qcard:nth-child(even) { margin-top: 58px; }
-}
-
-/* ---------- pinned prints ---------- */
-/* True masonry: CSS columns, one gap everywhere, and every photograph keeps
-   its own height. No fixed-height container and no forced aspect ratio, so
-   nothing is ever padded out with empty space to make the boxes match.
-   No captions under them either — the alt text carries the description for
-   anyone who cannot see the picture, and a label under every photograph is
-   noise for everyone who can. */
-.prints { columns: 2; column-gap: 18px; }
-.prints--narrow { columns: 2 !important; }
-@media (min-width: 720px) { .prints { columns: 3; column-gap: 22px; } }
-@media (min-width: 1000px) { .prints { columns: 4; } }
-.print { break-inside: avoid; margin: 0 0 18px; background: var(--card); padding: 8px; box-shadow: 0 5px 14px rgba(60,44,28,.13); }
-@media (min-width: 720px) { .print { margin-bottom: 22px; } }
-.print img { width: 100%; height: auto; display: block; }
-.print:nth-child(4n+1) { transform: rotate(-1deg); }
-.print:nth-child(4n+2) { transform: rotate(.7deg); }
-.print:nth-child(4n+3) { transform: rotate(-.4deg); }
-.print:nth-child(4n+4) { transform: rotate(.9deg); }
-
-/* ---------- the ledger ---------- */
-.ledger { list-style: none; margin: 0; padding: 0; }
-.ledger li { display: grid; gap: 4px 16px; padding: 13px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
-@media (min-width: 680px) { .ledger li { grid-template-columns: 1fr 13rem auto; } }
-.ledger .what { font-family: var(--serif); font-size: 1.2rem; }
-.ledger .detail { font-size: 14px; color: #6f6152; }
-/* a tap target, not a footnote: 44 px minimum (playbook §4) */
-.ledger .go { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--clay); text-decoration: none; justify-self: start; display: inline-flex; align-items: center; min-height: 44px; padding: 0 2px; border-bottom: 0; }
-.ledger .go::after { content: ''; position: absolute; }
-.ledger .go span { border-bottom: 1px solid currentColor; padding-bottom: 2px; }
-
-/* ---------- tags for what is here ---------- */
-.labels { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
-.labels li { background: var(--card); border: 1px solid rgba(36,28,21,.14); padding: 6px 11px; font-size: 13.5px; color: var(--ink); }
-.labels em { font-style: normal; color: var(--chalk-dim); font-size: 12px; }
-
-/* ---------- quote cards ---------- */
-.qcard { break-inside: avoid; margin: 0 0 22px; background: var(--card); color: var(--ink); padding: 20px 18px; box-shadow: 0 5px 14px rgba(60,44,28,.13); }
-.qcard:nth-child(3n+1) { transform: rotate(-.7deg); }
-.qcard:nth-child(3n+3) { transform: rotate(.6deg); }
-.qcard blockquote { margin: 0; font-family: var(--serif); font-size: 1.12rem; line-height: 1.38; }
-.qcard figcaption { margin-top: 11px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #8a7a66; }
-
-/* ---------- the wave ---------- */
-.wave { display: grid; gap: 24px; align-items: start; }
-@media (min-width: 900px) { .wave { grid-template-columns: minmax(0,1fr) 420px; gap: 40px; } }
-.widget { width: 100%; max-width: 420px; background: var(--card); padding: 10px; box-shadow: 0 6px 18px rgba(60,44,28,.13); }
-.widget p { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #8a7a66; margin: 10px 2px 2px; }
-
-/* ---------- notes ---------- */
-.facts { list-style: none; margin: 18px 0 0; padding: 0; }
-.facts li { display: grid; grid-template-columns: 8.5rem 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--rule); font-size: 15px; }
-.facts .k { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #8a7a66; padding-top: 4px; }
-
-/* ---------- footer ---------- */
-.foot { padding: 40px 0 120px; border-top: 1px solid rgba(36,28,21,.15); margin-top: 40px; }
-@media (min-width: 760px) { .foot { padding-bottom: 46px; } }
-.foot .cols { display: grid; gap: 24px; }
-@media (min-width: 760px) { .foot .cols { grid-template-columns: repeat(3, 1fr); gap: 40px; } }
-.foot h3 { font-size: 10px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--chalk-dim); margin: 0 0 .6rem; }
-.foot p, .foot li { margin: 0 0 .35rem; font-size: 15px; }
-.foot ul { list-style: none; margin: 0; padding: 0; }
-.link { color: var(--clay); text-underline-offset: 3px; }
-.legal { margin-top: 30px; font-size: 12px; color: var(--chalk-dim); max-width: 48rem; }
-
-/* ---------- booking: a slide-out from the right ---------- */
+/* ---------- booking: a right-edge slide-out ---------- */
 .drawer { position: fixed; inset: 0 0 0 auto; z-index: 40; width: 0; }
 .drawer > summary { list-style: none; position: absolute; width: 1px; height: 1px; overflow: hidden; }
 .drawer > summary::-webkit-details-marker { display: none; }
-.drawer .backdrop { position: fixed; inset: 0; background: rgba(60,44,28,.42); }
+.drawer .backdrop { position: fixed; inset: 0; background: rgba(29,35,38,.45); }
 .drawer:not([open]) .backdrop { display: none; }
-.drawer .panel { position: fixed; top: 0; right: 0; bottom: 0; width: min(100%, 26rem); background: var(--card); color: var(--ink); padding: 26px var(--gutter); overflow-y: auto; transform: translateX(100%); transition: transform .34s cubic-bezier(.4,0,.2,1); box-shadow: -20px 0 60px rgba(60,44,28,.22); }
+.drawer .panel { position: fixed; top: 0; right: 0; bottom: 0; width: min(100%, 26rem); background: var(--paper); border-left: 1px solid var(--ink); padding: 26px var(--gutter); overflow-y: auto; transform: translateX(100%); transition: transform .34s cubic-bezier(.4,0,.2,1); }
 .drawer[open] .panel { transform: none; }
 @media (prefers-reduced-motion: reduce) { .drawer .panel { transition: none; } }
-.drawer h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.6rem, 6vw, 2.2rem); margin: 0 0 .5rem; }
-.drawer p { color: #6f6152; font-size: 15px; }
-.drawer .book-row { grid-auto-flow: row; margin-top: 22px; }
-.drawer .book-card { transform: none !important; justify-content: flex-start; }
-.drawer .close { position: absolute; top: 16px; right: var(--gutter); min-height: 44px; min-width: 44px; font: inherit; font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; background: none; border: 0; color: #8a7a66; cursor: pointer; }
+.drawer h2 { margin: 0 0 .5rem; font-size: clamp(1.6rem, 6vw, 2.2rem); }
+.drawer p { color: var(--muted); font-size: 14.5px; }
+.drawer .row { display: grid; gap: 10px; margin-top: 22px; }
+.drawer .book-card { justify-content: flex-start; }
+.drawer .close { position: absolute; top: 16px; right: var(--gutter); min-height: 44px; min-width: 44px; font: inherit; font-family: var(--disp); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; background: none; border: 0; color: var(--muted); cursor: pointer; }
+.open-drawer { display: inline-flex; align-items: center; min-height: 50px; padding: 0 22px; background: var(--red); color: var(--paper); text-decoration: none; border: 0; cursor: pointer; font-family: var(--disp); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-weight: 500; }
+
+/* ---------- the hostel's own photographs: close, and their own size ---------- */
+/* 361–1024 px sources. Four across at 1240 is about 290 px each, which is inside
+   what they can hold. They are never asked to fill a screen. */
+.inside { display: grid; gap: 14px; grid-template-columns: repeat(2, 1fr); margin-top: 36px; }
+@media (min-width: 760px) { .inside { grid-template-columns: repeat(4, 1fr); gap: 18px; } }
+.inside img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+
+/* ---------- full-bleed atmosphere ---------- */
+.bleed { position: relative; }
+.bleed img { width: 100%; height: clamp(260px, 56svh, 560px); object-fit: cover; display: block; }
+.bleed .credit { position: absolute; right: 10px; bottom: 8px; font-size: 9.5px; color: rgba(255,255,255,.88); background: rgba(20,26,28,.42); padding: 3px 7px; }
+
+/* ---------- breakfast ---------- */
+.menu { list-style: none; margin: 26px 0 0; padding: 0; max-width: 30rem; }
+.menu li { display: flex; align-items: baseline; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--rule); font-family: var(--disp); font-size: 1.2rem; font-weight: 500; letter-spacing: -.02em; }
+.menu li::before { content: attr(data-n); font-size: 10.5px; letter-spacing: .1em; color: var(--muted); font-weight: 400; }
+
+/* ---------- beds ---------- */
+.beds { list-style: none; margin: 34px 0 0; padding: 0; border-top: 1px solid var(--rule); }
+.beds li { display: grid; gap: 3px 18px; padding: 14px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+@media (min-width: 680px) { .beds li { grid-template-columns: 1fr 14rem auto; } }
+.beds .what { font-family: var(--disp); font-weight: 500; font-size: 1.15rem; letter-spacing: -.02em; }
+.beds .detail { font-size: 14px; color: var(--muted); }
+.beds .go { font-family: var(--disp); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--red); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; justify-self: start; }
+.beds .go span { border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+
+/* ---------- amenities ---------- */
+.amen { list-style: none; margin: 30px 0 0; padding: 0; columns: 2; column-gap: 30px; font-size: 15.5px; }
+@media (min-width: 900px) { .amen { columns: 3; } }
+.amen li { break-inside: avoid; padding: 7px 0; border-bottom: 1px solid var(--rule); }
+.amen .note { color: var(--muted); font-size: 13px; }
+
+/* ---------- quotes ---------- */
+.quotes { display: grid; gap: 30px; margin-top: 34px; }
+@media (min-width: 860px) { .quotes { grid-template-columns: repeat(2, 1fr); gap: 36px 52px; } }
+.quote { margin: 0; }
+.quote blockquote { margin: 0; font-family: var(--disp); font-weight: 400; font-size: 1.2rem; line-height: 1.34; letter-spacing: -.015em; }
+.quote figcaption { margin-top: 11px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+
+/* ---------- the wave ---------- */
+.wave { display: grid; gap: 30px; align-items: start; }
+@media (min-width: 980px) { .wave { grid-template-columns: minmax(0,1fr) 420px; gap: 56px; } }
+.widget { width: 100%; max-width: 420px; }
+.widget p { font-family: var(--disp); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 12px 0 0; }
+
+/* ---------- getting here, back on the chart ---------- */
+.legs { list-style: none; margin: 28px 0 0; padding: 0; }
+.legs li { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid var(--rule); }
+.legs .place { font-family: var(--disp); font-weight: 500; font-size: 1.08rem; letter-spacing: -.02em; }
+.legs .dist { font-family: var(--disp); font-size: 1.08rem; color: var(--muted); }
+
+/* ---------- footer ---------- */
+.foot { padding: 46px 0 110px; }
+@media (min-width: 760px) { .foot { padding-bottom: 46px; } }
+.foot .cols { display: grid; gap: 26px; }
+@media (min-width: 760px) { .foot .cols { grid-template-columns: repeat(3, 1fr); gap: 42px; } }
+.foot h3 { font-family: var(--disp); font-size: 10px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin: 0 0 .6rem; }
+.foot p, .foot li { margin: 0 0 .35rem; font-size: 15px; }
+.foot ul { list-style: none; margin: 0; padding: 0; }
+.link { color: var(--red); text-underline-offset: 3px; }
+.legal { margin-top: 30px; font-size: 12px; color: var(--muted); max-width: 52rem; }
+.credits { margin-top: 12px; font-size: 11.5px; color: var(--muted); max-width: 52rem; }
+.credits li { font-size: 11.5px; margin-bottom: .2rem; }
 
 /* ---------- persistent booking on a phone ---------- */
 .mobile-dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; display: flex; }
-.mobile-dock > * { flex: 1; min-height: 52px; display: flex; align-items: center; justify-content: center; background: var(--clay); color: #fffaf1; text-decoration: none; border: 0; cursor: pointer; font: inherit; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
-.mobile-dock .alt { flex: 0 0 34%; background: var(--ink); color: var(--card); }
+.mobile-dock > * { flex: 1; min-height: 52px; display: flex; align-items: center; justify-content: center; background: var(--red); color: var(--paper); text-decoration: none; font-family: var(--disp); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+.mobile-dock .alt { flex: 0 0 34%; background: var(--ink); }
 @media (min-width: 760px) { .mobile-dock { display: none; } }
-
-@media (prefers-reduced-motion: reduce) {
-  .tag, .book-card, .print, .qcard { transform: none !important; }
-}
