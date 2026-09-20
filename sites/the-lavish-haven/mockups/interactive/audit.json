@@ -1,0 +1,90 @@
+{
+ "slug": "the-lavish-haven",
+ "variant": "interactive",
+ "measured_at": "2026-09-20T10:48:14.920Z",
+ "first_load": {
+  "requests": 7,
+  "hosts": [
+   "localhost:8987"
+  ],
+  "third_party_hosts": [],
+  "bytes_total": 415465,
+  "bytes_html": 27094,
+  "bytes_js": 6493,
+  "bytes_css": 0,
+  "bytes_fonts": 112176,
+  "bytes_images": 269702,
+  "largest_image_bytes": 162440,
+  "lcp_ms": 356,
+  "cls": 0.0005,
+  "dcl_ms": 574
+ },
+ "booking": {
+  "external_booking_hrefs": [
+   "https://www.google.com/maps/search/The%20Lavish%20Haven%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+   "https://www.agoda.com/the-lavish-haven-h82617698/hotel/piyadigama-lk.html"
+  ],
+  "tel_hrefs": [
+   "tel:+94764832988"
+  ],
+  "drawer_triggers": 11,
+  "triggers_are_links": true,
+  "primary_above_fold": true,
+  "tapped": "#book"
+ },
+ "keyboard": {
+  "drawer_opens": true,
+  "closed": true,
+  "focus_returned": true
+ },
+ "a11y": {
+  "images": 13,
+  "images_without_alt": 0,
+  "images_alt_empty_decorative": 0,
+  "tapables": 20,
+  "tapables_under_44px": 0,
+  "tapables_under_44px_examples": [],
+  "headings": [
+   "H1",
+   "H2",
+   "H2",
+   "H2",
+   "H2",
+   "H2",
+   "H3",
+   "H3",
+   "H3",
+   "H2"
+  ],
+  "has_skip_link": true,
+  "lang": "en"
+ },
+ "no_js": {
+  "text_length": 5082,
+  "booking_links_reachable": 4,
+  "visible_images": 13
+ },
+ "reduced_motion": {
+  "canvases": 1,
+  "canvases_hidden": 1,
+  "photograph_visible": true
+ },
+ "facts": {
+  "numbers_on_page": 27,
+  "numbers_not_in_passed_copy": [
+   "01",
+   "02",
+   "03",
+   "04",
+   "05",
+   "06",
+   "07",
+   "08",
+   "09",
+   "19",
+   "2026"
+  ],
+  "note": "copy/en.json passed station 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps each paragraph to its dossier fields. A number here that is not in the copy is either an interface label (01, 02…) or a claim to chase."
+ }
+}
