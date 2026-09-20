@@ -49,6 +49,15 @@ for (const p of [proj, copyFile, assetDir, manifestFile]) {
 
 const index = JSON.parse(readFileSync(join(assetDir, 'index.json'), 'utf8'));
 const byId = new Map(index.map((i) => [i.id, i]));
+
+/* Freely-licensed atmosphere lives beside the business's own photography and is
+   never mixed into it (PLAN.md §9, amended 2026-09-20). It may carry a page; it
+   may never stand in for the business. Each entry brings the credit string that
+   any page using it must display. */
+const stockFile = join(ROOT, 'dossier', slug, 'stock', 'index.json');
+if (existsSync(stockFile)) {
+  for (const s of JSON.parse(readFileSync(stockFile, 'utf8'))) byId.set(s.id, s);
+}
 const wanted = JSON.parse(readFileSync(manifestFile, 'utf8'));
 
 const outDir = join(proj, 'public', 'photos');
@@ -59,7 +68,14 @@ const photos = {};
 for (const w of wanted) {
   const asset = byId.get(w.id);
   if (!asset) { console.error(`photos.json: ${w.id} is not in the dossier asset index`); process.exit(1); }
-  if (asset.license !== 'business-owned') { console.error(`photos.json: ${w.id} is "${asset.license}" — only business-owned images may be used (base.md §2)`); process.exit(1); }
+  if (asset.license !== 'business-owned' && asset.license !== 'stock-cc') {
+    console.error(`photos.json: ${w.id} is "${asset.license}" — only the business's own photographs and CC0/CC BY atmosphere may be used (base.md §2, PLAN.md §9)`);
+    process.exit(1);
+  }
+  if (asset.license === 'stock-cc' && !asset.credit) {
+    console.error(`photos.json: ${w.id} is atmosphere with no credit string in stock/index.json; it may not be used`);
+    process.exit(1);
+  }
   const src = join(ROOT, 'dossier', slug, asset.file);
   /* Several of these are phone photographs stored sideways with an EXIF
      orientation flag. sharp().rotate() applies it, but metadata() reports the
@@ -89,6 +105,8 @@ for (const w of wanted) {
   }
   photos[w.id] = {
     role: w.role ?? 'inline',
+    credit: asset.credit ?? null,
+    isStock: asset.license === 'stock-cc',
     id: w.id, alt: w.alt, asset: asset.id, license: asset.license,
     width: Math.min(outW, WIDTHS[0]),
     height: Math.round(Math.min(outW, WIDTHS[0]) * outH / outW),

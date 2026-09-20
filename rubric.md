@@ -35,7 +35,8 @@ Any one of these fails the round regardless of total:
 
 - A fact on the site contradicts the dossier, or a claim has no dossier entry.
 - The booking CTA does not land in the right chat/call/engine, or the number/URL differs from the dossier.
-- A non-business-owned image is presented as the business, or an image is used against the run's image policy.
+- A non-business-owned image is presented as the business — captioned, positioned or cropped so a visitor could read it as this business's room, pool, food or people — or an image is used against the run's image policy (PLAN.md §9).
+- A freely-licensed atmosphere image is used without the credit string recorded in `dossier/<slug>/stock/index.json`, or under a licence the policy excludes (share-alike, NC, ND).
 - Any third-party request on first load, or any runtime dependency on the CMS.
 - Keyboard trap, or content that exists only inside canvas/video with no DOM text.
 - Home page over the playbook §4 budget by more than 50 % on any line (first-load transfer, JS, LCP).

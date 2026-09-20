@@ -318,7 +318,7 @@ Phase 1 spike — Payload multi-tenant: `docker-compose up` locally, two tenants
 
 ## 9. Open questions
 
-- ~~Image rights~~ Decided 2026-09-18: business-owned images and review photos with credit. Stock/generated: not decided, default no.
+- ~~Image rights~~ Decided 2026-09-18: business-owned images and review photos with credit. **Amended 2026-09-20 (Shahar): freely-licensed ATMOSPHERE photography is allowed** — the place, the coast, the wave, the light, the town — fetched by `tools/fetch-atmosphere.mjs` from Wikimedia Commons, CC0 and CC BY only (no share-alike, no NC, no ND), stored in `dossier/<slug>/stock/` with author, licence and the required credit string, and displayed with that credit. The business's own photographs remain the only source for anything about the business. The hard line stands and `rubric.md` still fails a build for it: **a non-business photograph is never presented as the business** — no borrowed room, pool, interior, meal or face. Every atmosphere image is looked at before use and carries a written description; on the first run of this, eleven of twenty fetched images were rejected on sight, including a candlelight vigil that a filename called "Kabalana" and a five-star hotel's suite. Generated imagery: still no.
 - ~~Booking~~ Decided 2026-09-18: WhatsApp/phone, plus links to the booking platforms the business is already on (Booking.com, Agoda, Airbnb…) via `bookingLinks[]`. No form → email.
 - Decided 2026-09-18: one owner login per business; self-hosted editor lives at `<domain>/admin`.
 - Decided 2026-09-18: sites are English only for now; multilingual later targets the audience (German, Spanish, Portuguese, Russian…), not Sinhala.
