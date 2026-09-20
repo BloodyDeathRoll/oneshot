@@ -53,7 +53,6 @@ const room = c.rooms[0];
     <figure class="framed cell cell--pale">
       <img src={photo('img-012').src} srcset={photo('img-012').srcset} sizes="(min-width: 820px) 420px, 92vw"
            width={photo('img-012').width} height={photo('img-012').height} alt={photo('img-012').alt} fetchpriority="high" />
-      <figcaption>{photo('img-012').alt}</figcaption>
     </figure>
   </div>
 
@@ -110,7 +109,6 @@ const room = c.rooms[0];
           <figure>
             <img src={p.src} srcset={p.srcset} sizes="(min-width: 820px) 25vw, 50vw"
                  width={p.width} height={p.height} alt={p.alt} loading="lazy" decoding="async" />
-            <figcaption>{p.alt}</figcaption>
           </figure>
         );
       })}
@@ -150,7 +148,6 @@ const room = c.rooms[0];
           <figure>
             <img src={p.src} srcset={p.srcset} sizes="(min-width: 820px) 25vw, 50vw"
                  width={p.width} height={p.height} alt={p.alt} loading="lazy" decoding="async" />
-            <figcaption>{p.alt}</figcaption>
           </figure>
         );
       })}

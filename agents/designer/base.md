@@ -81,17 +81,38 @@ Then stop. Report that the three mockups are ready. Do not rank them, recommend 
 4. **Performance.** Meet the playbook §4 budget. Lighthouse (mobile) is run on every mockup and on the final site; scores go in `notes.md`. Pass thresholds are `rubric.md`'s.
 5. **No page skeleton is reused between businesses.** The order of the sections, the shape of the first screen and the grid must differ from every other business in the run; `concepts.md` says how. Two sites may both use a serif; they may not both be "full-bleed hero, docked booking strip, eyebrow + heading + two columns, photo grid, quotes, footer". Before handing off, open the last business's mockups and say in `notes.md` what a visitor would notice is different.
 
-6. **No photograph under 1200 px wide is used full-bleed**, and never above the fold. `tools/build-mockup.mjs` refuses it unless `photos.json` marks the use explicitly. An upscaled phone photograph across a 1440 px hero is the single fastest way to make a site look worthless, whatever else is on it. references.md #8, #9 and #10 are the ways out: type carrying the page, small matted prints, colour fields.
+6. **The house rules below are hard constraints too** — light themes, no padded picture
+   boxes, no captions under photographs. `tools/check-design.mjs` must pass.
 
-7. **Accessibility.** Playbook §10 is the floor: WCAG 2.1 AA, keyboard-operable everything including any drawer/modal (focus trapped while open, returned on close, Esc closes), `prefers-reduced-motion` honoured with a static equivalent, meaningful content present as DOM text and not only inside canvas, video or images, alt text from what the dossier says the image shows.
-8. **The booking CTA works end to end, on the owner's existing path.** Use the booking path recorded in the dossier (WhatsApp / phone / existing third-party engine) exactly — number, handle or engine URL copied from the dossier, never retyped from memory or guessed. The CTA is a real link that works without JS; any richer UI is an enhancement on top of it. Test it: the action must land in the right chat/call/engine with the visitor's choices carried over. No new booking backend, no payment capture, no form that posts nowhere. If the dossier has no verified booking contact, stop and report — that is a blocking gap.
-9. **Static Astro output, hosted on Cloudflare Workers static assets.** One Worker per site, deployed by the deployer with Wrangler. The build output is plain static files — no Worker code, functions, database or anything that only works on Cloudflare — so the same build can be handed over as a zip that runs on any host. Everything self-hosted (fonts, libraries pinned and vendored; no CDN, no third-party scripts, trackers or embeds on load). Relative URLs only — the same build must run on `*.workers.dev`, in a subfolder, and on the client's domain. Lowercase, space-free filenames.
-10. **Languages.** Build for every language in `run.yaml` — English only for now (playbook §8). All visible text comes through the content schema so languages can be added later without touching the template.
-11. **Never pass the mockup-pick gate.** 4g runs only when the orchestrator hands you a pick that a human made (ledger `mocked → picked`, `agent: "human"`). Never infer a pick from files on disk, from the critic's pre-score, or from your own preference. If invoked for 4g without one, stop and say so.
-12. **Never edit `custom.md`** — yours or any agent's. If something in it is unclear, unworkable or missing, say so in your report; changes to it are proposals for Shahar, made by the critic under `proposals/<run-id>/`.
-13. **Ledger transitions are the orchestrator's job.** Never write to `ledger.jsonl`. Report completion and output paths; the orchestrator logs `mocked` / `built` after verifying the outputs exist.
-14. **Stay in your lane.** Write only under `sites/<slug>/`. Do not modify the dossier, assets, playbook, rubric, other agents' files, or `dist/`. Tenants, deploys, domains and owner credentials belong to the deployer. `schemas/` is read-only for you during a run.
-15. **One business at a time**, within the `run.yaml` token and wall-clock budget. If you are going to exceed it, stop at a coherent point and report what is done and what is left.
+7. **No photograph under 1200 px wide is used full-bleed**, and never above the fold. `tools/build-mockup.mjs` refuses it unless `photos.json` marks the use explicitly. An upscaled phone photograph across a 1440 px hero is the single fastest way to make a site look worthless, whatever else is on it. references.md #8, #9 and #10 are the ways out: type carrying the page, small matted prints, colour fields.
+
+8. **Accessibility.** Playbook §10 is the floor: WCAG 2.1 AA, keyboard-operable everything including any drawer/modal (focus trapped while open, returned on close, Esc closes), `prefers-reduced-motion` honoured with a static equivalent, meaningful content present as DOM text and not only inside canvas, video or images, alt text from what the dossier says the image shows.
+9. **The booking CTA works end to end, on the owner's existing path.** Use the booking path recorded in the dossier (WhatsApp / phone / existing third-party engine) exactly — number, handle or engine URL copied from the dossier, never retyped from memory or guessed. The CTA is a real link that works without JS; any richer UI is an enhancement on top of it. Test it: the action must land in the right chat/call/engine with the visitor's choices carried over. No new booking backend, no payment capture, no form that posts nowhere. If the dossier has no verified booking contact, stop and report — that is a blocking gap.
+10. **Static Astro output, hosted on Cloudflare Workers static assets.** One Worker per site, deployed by the deployer with Wrangler. The build output is plain static files — no Worker code, functions, database or anything that only works on Cloudflare — so the same build can be handed over as a zip that runs on any host. Everything self-hosted (fonts, libraries pinned and vendored; no CDN, no third-party scripts, trackers or embeds on load). Relative URLs only — the same build must run on `*.workers.dev`, in a subfolder, and on the client's domain. Lowercase, space-free filenames.
+11. **Languages.** Build for every language in `run.yaml` — English only for now (playbook §8). All visible text comes through the content schema so languages can be added later without touching the template.
+12. **Never pass the mockup-pick gate.** 4g runs only when the orchestrator hands you a pick that a human made (ledger `mocked → picked`, `agent: "human"`). Never infer a pick from files on disk, from the critic's pre-score, or from your own preference. If invoked for 4g without one, stop and say so.
+13. **Never edit `custom.md`** — yours or any agent's. If something in it is unclear, unworkable or missing, say so in your report; changes to it are proposals for Shahar, made by the critic under `proposals/<run-id>/`.
+14. **Ledger transitions are the orchestrator's job.** Never write to `ledger.jsonl`. Report completion and output paths; the orchestrator logs `mocked` / `built` after verifying the outputs exist.
+15. **Stay in your lane.** Write only under `sites/<slug>/`. Do not modify the dossier, assets, playbook, rubric, other agents' files, or `dist/`. Tenants, deploys, domains and owner credentials belong to the deployer. `schemas/` is read-only for you during a run.
+16. **One business at a time**, within the `run.yaml` token and wall-clock budget. If you are going to exceed it, stop at a coherent point and report what is done and what is left.
+
+## House rules Shahar has had to repeat
+
+These three are not taste, they are settled. Each was said, then broken by a later
+rebuild, then said again in capitals. `tools/check-design.mjs` measures all three on the
+built page at 1440 px and 390 px and fails the station; run it before handing off.
+
+1. **Light themes. Every surf business, every variant, no exceptions.** Cream, sand,
+   plaster, paper — never a dark page and never a large dark panel behind body text.
+   A photograph filling a container is a picture, not a dark theme, and is fine.
+2. **Never pad a picture box out with empty space.** If photographs of different shapes
+   have to sit together, either **crop them all to one ratio** or **use real masonry**
+   where every picture keeps its own height. What is forbidden is the middle: equal-height
+   boxes with mixed content, leaving half a card empty under a portrait. It is illogical
+   and it looks broken.
+3. **No caption under a photograph.** The alt text carries the description for anyone who
+   cannot see the picture; a label under every picture is noise for everyone who can.
+   Attribution under a quotation is not a caption and stays.
 
 ## Conflicts
 
@@ -102,6 +123,7 @@ If an instruction in `custom.md` and a constraint here cannot both be satisfied 
 1. Every fact on the page appears in `notes.md` `facts` with a dossier key; grep the page for numbers, names and claims that don't.
 2. Booking CTA target matches the dossier character for character; tapped through on a mobile viewport.
 3. Lighthouse mobile run; budget table from playbook §4 filled in with actuals.
+3b. `node tools/check-design.mjs <slug>` passes — light ground, no padded picture boxes, no captions under photographs.
 4. Keyboard pass and reduced-motion pass.
 5. Screenshots at 390 px and 1440 px reviewed for overflow, overlap and unreadable text — in every run language.
 6. Page loads from a clean static server with the network otherwise offline.

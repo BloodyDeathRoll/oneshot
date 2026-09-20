@@ -16,6 +16,10 @@ and its first screen shows none at all.** What is left is a wall and the things 
 is also, literally, how a hostel like this runs: a board with cards on it, a list of what is on
 today, a number to call.
 
+The wall is **cream plaster**. The first build of this archetype made it dark clay, which broke a
+rule Shahar had already given — every surf business here gets a light theme — and it is now
+measured rather than remembered.
+
 - **The board head** — no photograph. The name, one sentence about the breakfast, three score tags
   and three booking cards, **all centred**, with the caveat centred beneath them.
 - **Today's breakfast** as a list of six items, because it is the thing guests mention more than
@@ -123,6 +127,22 @@ is not satisfied.
    ours to hide, and playbook §5 forbids introducing a channel the owner does not monitor. Where a
    drawer exists (mockups 2 and 3) it holds the three listings the hostel already sells through and
    says why it does not ask for dates.
+
+## house rules — checked, not promised
+
+`tools/check-design.mjs` measures these on the built page at 1440 px and 390 px and fails the
+station if any of them breaks. All three were said by Shahar, then broken by a later rebuild of
+this very mockup, then said again:
+
+1. **Light theme.** Every surf business, every variant. This page's ground and every panel behind
+   body text are measured for luminance; a photograph filling a container is a picture, not a theme.
+2. **No padded picture boxes.** Where photographs of different shapes sit together they are either
+   cropped to one ratio or laid out as real masonry where each keeps its own height. Equal-height
+   boxes with mixed content — half a card empty under a portrait — are what this check exists for.
+3. **No caption under a photograph.** Alt text carries the description; attribution under a
+   quotation is not a caption and stays.
+
+Result for this mockup: **0 problems**.
 
 ## what a visitor would notice is different
 

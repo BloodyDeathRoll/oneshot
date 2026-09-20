@@ -86,7 +86,6 @@ const prints = ['img-003', 'img-014', 'img-012', 'img-004', 'img-005', 'img-011'
         <figure class={i % 3 === 1 ? 'print print--portrait' : 'print'}>
           <img src={p.src} srcset={p.srcset} sizes="(min-width: 720px) 210px, 45vw"
                width={p.width} height={p.height} alt={p.alt} loading="lazy" decoding="async" />
-          <figcaption>{p.alt}</figcaption>
         </figure>
       );
     })}
