@@ -101,7 +101,6 @@ const bands = { rooms: photo('img-001'), amen: photo('img-073'), quotes: photo('
 <figure class="band">
   <img src={bands.rooms.src} srcset={bands.rooms.srcset} sizes="100vw"
        width={bands.rooms.width} height={bands.rooms.height} alt={bands.rooms.alt} loading="lazy" decoding="async" />
-  <figcaption>The pool at dusk</figcaption>
 </figure>
 
 <section class="sec">
@@ -112,11 +111,10 @@ const bands = { rooms: photo('img-001'), amen: photo('img-073'), quotes: photo('
         const p = photo(id);
         return (
           <figure class={`plate ${shapes[i % shapes.length]}`}>
-            <div class="frame">
+            <div class="frame" style={`--ar:${p.width}/${p.height}`}>
               <img src={p.src} srcset={p.srcset} sizes="(min-width: 1000px) 32vw, (min-width: 620px) 48vw, 92vw"
                    width={p.width} height={p.height} alt={p.alt} loading="lazy" decoding="async" />
             </div>
-            <figcaption>{p.alt}</figcaption>
           </figure>
         );
       })}
@@ -142,7 +140,6 @@ const bands = { rooms: photo('img-001'), amen: photo('img-073'), quotes: photo('
 <figure class="band">
   <img src={bands.amen.src} srcset={bands.amen.srcset} sizes="100vw"
        width={bands.amen.width} height={bands.amen.height} alt={bands.amen.alt} loading="lazy" decoding="async" />
-  <figcaption>Down from a balcony to the water</figcaption>
 </figure>
 
 <section class="sec">
@@ -158,7 +155,6 @@ const bands = { rooms: photo('img-001'), amen: photo('img-073'), quotes: photo('
 <figure class="band">
   <img src={bands.quotes.src} srcset={bands.quotes.srcset} sizes="100vw"
        width={bands.quotes.width} height={bands.quotes.height} alt={bands.quotes.alt} loading="lazy" decoding="async" />
-  <figcaption>A balcony behind a bamboo blind</figcaption>
 </figure>
 
 <section class="sec">

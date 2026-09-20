@@ -25,7 +25,8 @@
 }
 
 :root {
-  --ochre: #e3bc6b;        /* the wall */
+  --sand: #f2e6c6;         /* the field the card sits on — cream, not mustard */
+  --ochre: #e3bc6b;        /* the wall, kept for accent cells */
   --ochre-deep: #d6a949;
   --paper: #f7f1e3;
   --paper-2: #f1e6cf;
@@ -45,7 +46,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body {
-  margin: 0; background: var(--ochre); color: var(--ink);
+  margin: 0; background: var(--sand); color: var(--ink);
   font-family: var(--sans); font-weight: 300; font-size: 17px; line-height: 1.6;
   font-synthesis-weight: none;
   padding: var(--gutter) var(--gutter) 90px;
@@ -66,8 +67,9 @@ a { color: inherit; }
 @media (max-width: 819px) { .cell + .cell { border-top: var(--steel) solid var(--hair); } }
 .cell--ochre { background: var(--ochre); }
 .cell--pale { background: var(--paper-2); }
-.cell--ink { background: var(--ink); color: var(--paper); }
-.cell--ink .kicker { color: #9a8f7e; }
+/* a warm panel, not a dark one — every surf business here is a light theme */
+.cell--ink { background: var(--ochre); color: var(--ink); }
+.cell--ink .kicker { color: #5e5140; }
 .cell--flush { padding: 0; }
 
 .kicker { font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; }
@@ -128,7 +130,7 @@ p { max-width: 34rem; }
 .quote { margin: 0; }
 .quote blockquote { margin: 0; font-size: 1.04rem; line-height: 1.48; }
 .quote figcaption { margin-top: 10px; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-.cell--ink .quote figcaption { color: #9a8f7e; }
+.cell--ink .quote figcaption { color: #5e5140; }
 
 /* ---------- the forecast ---------- */
 .widget { width: 100%; max-width: 420px; }

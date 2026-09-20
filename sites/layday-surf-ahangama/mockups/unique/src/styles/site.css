@@ -19,6 +19,7 @@
 
 :root {
   --paper: #f7f1e3;
+  --sand: #f2e6c6;
   --ochre: #e3bc6b;
   --ochre-pale: #f1e3c4;
   --ink: #171410;
@@ -75,7 +76,8 @@ a { color: inherit; }
 @media (max-width: 899px) { .cell + .cell { border-top: var(--steel) solid var(--ink); } }
 .cell--ochre { background: var(--ochre); }
 .cell--pale { background: var(--ochre-pale); }
-.cell--ink { background: var(--ink); color: var(--paper); }
+/* a warm panel, not a dark one — every surf business here is a light theme */
+.cell--ink { background: var(--ochre); color: var(--ink); }
 .cell--ink .eyebrow { color: #a2988a; }
 
 .eyebrow { font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--muted); margin: 0 0 18px; }

@@ -114,11 +114,10 @@ const bedNote = c.rooms[0].note;
         const p = photo(id);
         return (
           <figure class="plate">
-            <div class="frame">
+            <div class="frame" style={`--ar:${p.width}/${p.height}`}>
               <img src={p.src} srcset={p.srcset} sizes="(min-width: 900px) 25vw, 48vw"
                    width={p.width} height={p.height} alt={p.alt} loading="lazy" decoding="async" />
             </div>
-            <figcaption>{p.alt}</figcaption>
           </figure>
         );
       })}

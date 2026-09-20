@@ -51,7 +51,6 @@ const si = c.stayInfo;
              alt={table.alt} fetchpriority="high" />
         <canvas data-reel data-src={table.src} aria-hidden="true"></canvas>
       </div>
-      <figcaption>{table.alt}</figcaption>
     </figure>
   </div>
 </header>
@@ -90,7 +89,6 @@ const si = c.stayInfo;
         <figure class="print">
           <img src={p.src} srcset={p.srcset} sizes="(min-width: 900px) 15rem, 60vw"
                width={p.width} height={p.height} alt={p.alt} loading="lazy" decoding="async" />
-          <figcaption>{p.alt}</figcaption>
         </figure>
       );
     })}

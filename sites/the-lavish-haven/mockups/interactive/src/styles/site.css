@@ -156,19 +156,18 @@ p { max-width: 33rem; }
 .plates { columns: 1; column-gap: 20px; }
 @media (min-width: 620px) { .plates { columns: 2; } }
 @media (min-width: 1000px) { .plates { columns: 3; } }
+/* Every photograph keeps its own height. Nothing is cropped to match its
+   neighbour and nothing is padded out with empty space to square a box up. */
 .plate { margin: 0 0 20px; break-inside: avoid; display: block; }
-.plate .frame { overflow: hidden; display: block; }
-.plate .frame { aspect-ratio: 4 / 3; }
-.plate--tall .frame { aspect-ratio: 3 / 4; }
-.plate--wide .frame { aspect-ratio: 3 / 2; }
-.plate img { width: 100%; height: 100%; object-fit: cover; }
+.plate .frame { overflow: hidden; display: block; position: relative; }
+.plate img { width: 100%; height: auto; display: block; }
 @media (min-width: 768px) {
-  /* Kube's parallax recipe (references.md #17): the image is 4rem taller than
-     its overflow-hidden wrapper and is scrubbed y: 0 -> -4rem. Off at <= 767px. */
-  .plate img { height: calc(100% + 4rem); will-change: transform; }
+  /* Kube's parallax recipe (references.md #17): the frame crops 4rem off the
+     image's own height and the image is scrubbed through it. Off at <= 767px. */
+  .plate .frame { aspect-ratio: var(--ar, auto); }
+  .plate img { position: absolute; inset: 0; height: calc(100% + 4rem); object-fit: cover; will-change: transform; }
 }
-@media (prefers-reduced-motion: reduce) { .plate img { height: 100%; transform: none !important; } }
-.plate figcaption { font-size: 12px; color: var(--muted); padding-top: 9px; line-height: 1.4; }
+@media (prefers-reduced-motion: reduce) { .plate .frame { aspect-ratio: auto; } .plate img { position: static; height: auto; transform: none !important; } }
 
 /* ---------- full-bleed bands, to break the runs of text ---------- */
 .band { position: relative; overflow: hidden; height: clamp(240px, 52svh, 520px); margin: 0; }

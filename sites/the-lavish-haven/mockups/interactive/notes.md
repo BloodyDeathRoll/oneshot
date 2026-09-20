@@ -136,6 +136,22 @@ measured file sizes. Base.md "Before handing off" item 3 is not satisfied.
 pinned hero shows that hero once and leaves the rest of its scroll height blank — an artefact of
 how the capture works, not a hole in the layout.
 
+## house rules — checked, not promised
+
+`tools/check-design.mjs` measures these on the built page at 1440 px and 390 px and fails the
+station if any of them breaks. All three were said by Shahar, then broken by a later rebuild of
+this very mockup, then said again:
+
+1. **Light theme.** Every surf business, every variant. This page's ground and every panel behind
+   body text are measured for luminance; a photograph filling a container is a picture, not a theme.
+2. **No padded picture boxes.** Where photographs of different shapes sit together they are either
+   cropped to one ratio or laid out as real masonry where each keeps its own height. Equal-height
+   boxes with mixed content — half a card empty under a portrait — are what this check exists for.
+3. **No caption under a photograph.** Alt text carries the description; attribution under a
+   quotation is not a caption and stays.
+
+Result for this mockup: **0 problems**.
+
 ## what a visitor would notice is different
 
 Against **KA Surf Hostel**: this site has photographs big enough to fill a screen and uses them;
