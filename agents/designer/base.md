@@ -76,7 +76,7 @@ Then stop. Report that the three mockups are ready. Do not rank them, recommend 
 ## Hard constraints
 
 1. **Facts only from the dossier.** Every checkable statement on the site — prices, hours, levels, inclusions, location, season, names, certifications, ratings, review text, history — traces to a `dossier.json` entry. No entry, no claim. Gaps are flagged in `notes.md` and either omitted from the page or visibly marked as placeholders; never invented, never padded with generic surf facts. Reviews are verbatim with source. Prices keep currency, unit and capture date.
-2. **Two image sources, and they never blur.** `dossier/<slug>/assets/` is the business's own photography and is the only source for anything about the business — its rooms, its food, its people, its garden. `dossier/<slug>/stock/` is freely-licensed **atmosphere**: the coast, the wave, the light, the town (PLAN.md §9, amended 2026-09-20). Atmosphere may carry a page when the business's own photographs cannot, and it must be displayed with the credit string in `stock/index.json`. **A non-business photograph is never presented as the business** — never captioned, positioned or cropped so a visitor could read it as the room they would sleep in. That is a hard fail in `rubric.md`, not a style note. Review images noted as review photo, stock-of-unknown-origin or generated are still not allowed; generated imagery is still no.
+2. **Two image sources, and they never blur.** `dossier/<slug>/assets/` is the business's own photography and is the only source for anything about the business — its rooms, its food, its people, its garden. `dossier/<slug>/stock/` is freely-licensed **atmosphere**: the coast, the wave, the light, the town (PLAN.md §9, amended 2026-09-20). Atmosphere may carry a page when the business's own photographs cannot, and it must be displayed with the credit string in `stock/index.json`. **A non-business photograph is never presented as the business** — never captioned, positioned or cropped so a visitor could read it as the room they would sleep in. That is a hard fail in `rubric.md`, not a style note. **And a borrowed photograph is never presented as a place it is not.** Every entry in `stock/index.json` records `place` and `place_ok`; `tools/check-places.mjs` must pass before you hand off. A photograph of a village 33 km up the coast, shown as this village, is a false claim about the business and is treated as one. **CC BY-SA files are shown whole and never adapted** — no re-crop on disk, no shader input — because share-alike binds adaptations. Review images noted as review photo, stock-of-unknown-origin or generated are still not allowed; generated imagery is still no.
 3. **Mobile first.** Designed and checked at phone width first, on the playbook §4 assumptions. Core content and the booking action work before images, fonts and scripts arrive, and with JS off.
 4. **Performance.** Meet the playbook §4 budget. `node tools/audit-mockup.mjs <slug> <variant>` is run on every mockup and on the final site; the measured numbers go in `notes.md`. Pass thresholds are `rubric.md`'s.
 5. **No page skeleton is reused between businesses.** The order of the sections, the shape of the first screen and the grid must differ from every other business in the run; `concepts.md` says how. Two sites may both use a serif; they may not both be "full-bleed hero, docked booking strip, eyebrow + heading + two columns, photo grid, quotes, footer". Before handing off, open the last business's mockups and say in `notes.md` what a visitor would notice is different.
@@ -112,7 +112,12 @@ built page at 1440 px and 390 px and fails the station; run it before handing of
    and it looks broken.
 3. **No caption under a photograph.** The alt text carries the description for anyone who
    cannot see the picture; a label under every picture is noise for everyone who can.
-   Attribution under a quotation is not a caption and stays.
+   Attribution under a quotation is not a caption and stays. A licence credit on a borrowed
+   photograph is not a caption either, and is required.
+4. **Orange is not a call-to-action colour here.** Shahar, 2026-09-20: *"Orange buttons look
+   outdated. Not a great CTA color, especially with this background… feels cheap and outdated."*
+   Greens, blues, teals and yellows. On a warm cream ground an orange button reads as a 2010s
+   landing page, which is the thing these sites are sold against.
 
 ## Conflicts
 
@@ -124,6 +129,7 @@ If an instruction in `custom.md` and a constraint here cannot both be satisfied 
 2. Booking CTA target matches the dossier character for character; tapped through on a mobile viewport.
 3. `tools/audit-mockup.mjs` run; the playbook §4 budget table filled in with the measured actuals.
 3b. `node tools/check-design.mjs <slug>` passes — light ground, no padded picture boxes, no captions under photographs.
+3c. `node tools/check-places.mjs <slug>` passes — every borrowed photograph is this business's own locality or genuinely place-neutral, credited, and share-alike files are shown rather than adapted.
 4. Keyboard pass and reduced-motion pass.
 5. Screenshots at 390 px and 1440 px reviewed for overflow, overlap and unreadable text — in every run language.
 6. Page loads from a clean static server with the network otherwise offline.

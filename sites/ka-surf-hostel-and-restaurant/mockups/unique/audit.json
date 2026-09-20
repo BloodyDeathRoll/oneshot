@@ -1,23 +1,23 @@
 {
  "slug": "ka-surf-hostel-and-restaurant",
  "variant": "unique",
- "measured_at": "2026-09-20T11:25:42.515Z",
+ "measured_at": "2026-09-20T13:04:42.445Z",
  "first_load": {
   "requests": 9,
   "hosts": [
    "localhost:8982"
   ],
   "third_party_hosts": [],
-  "bytes_total": 230469,
-  "bytes_html": 31513,
+  "bytes_total": 287785,
+  "bytes_html": 31721,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 52380,
-  "bytes_images": 146576,
-  "largest_image_bytes": 35840,
-  "lcp_ms": 556,
-  "cls": 0.0001,
-  "dcl_ms": 320
+  "bytes_images": 203684,
+  "largest_image_bytes": 66830,
+  "lcp_ms": 1020,
+  "cls": 0,
+  "dcl_ms": 325
  },
  "booking": {
   "external_booking_hrefs": [
@@ -63,7 +63,7 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 5579,
+  "text_length": 5625,
   "booking_links_reachable": 5,
   "visible_images": 10
  },
@@ -73,15 +73,18 @@
   "photograph_visible": true
  },
  "facts": {
-  "numbers_on_page": 29,
+  "numbers_on_page": 32,
   "numbers_not_in_passed_copy": [
    "58",
    "22",
    "3.0,",
    "13:00.",
    "19",
-   "3730",
-   "1909"
+   "4.0,",
+   "20160129",
+   "4177",
+   "25743479076",
+   "2.0,"
   ],
   "note": "copy/en.json passed station 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps each paragraph to its dossier fields. A number here that is not in the copy is either an interface label (01, 02…) or a claim to chase."
  }

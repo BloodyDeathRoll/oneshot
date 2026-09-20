@@ -140,21 +140,21 @@ what a visitor would notice is different.
    sand, plaster, paper. Never a dark page, and never a large dark panel behind body
    text. A photograph filling a container is a picture, not a theme. Shahar has had to
    say this twice; `tools/check-design.mjs` now measures it.
-8. **Never propose a layout that pads picture boxes out with empty space.** Photographs
+11. **Never propose a layout that pads picture boxes out with empty space.** Photographs
    of different shapes either get cropped to one ratio or go into real masonry where each
    keeps its own height. Equal-height boxes with mixed content are forbidden.
-9. **No captions under photographs** in any concept. Alt text carries the description.
-10. **One accent colour, reserved for booking**, in every concept (references.md #6).
-8. **The first screen carries the booking action**, in every concept, on a phone as well
+12. **No captions under photographs** in any concept. Alt text carries the description.
+13. **One accent colour, reserved for booking**, in every concept (references.md #6).
+11. **The first screen carries the booking action**, in every concept, on a phone as well
    (references.md #4).
-9. **Nothing may cover the content on load** — no interstitial, no cookie wall, no promo modal
+12. **Nothing may cover the content on load** — no interstitial, no cookie wall, no promo modal
    (references.md #20).
-10. **Stay inside the performance budget** (playbook §4). A concept that needs 8 MB of imagery is not
+13. **Stay inside the performance budget** (playbook §4). A concept that needs 8 MB of imagery is not
    affordable; say what it costs before proposing it.
 11. **Never edit any `custom.md`** — yours or another agent's. Raise it in your report; changes are
    proposals for Shahar, filed by the critic under `proposals/<run-id>/`.
 12. **Never write to `ledger.jsonl`.** The orchestrator logs `concepted` after your file exists.
-10. **Stay in your lane.** Write only `sites/<slug>/concepts.md`. No markup, no CSS, no build, no
+13. **Stay in your lane.** Write only `sites/<slug>/concepts.md`. No markup, no CSS, no build, no
     edits to the dossier, the copy, the schema or another agent's files.
 11. **Never pass a human gate.** You produce concepts; the human picks a built mockup at 4f.
 

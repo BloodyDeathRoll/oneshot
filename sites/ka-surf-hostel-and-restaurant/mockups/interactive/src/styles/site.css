@@ -26,8 +26,12 @@
   --muted: #6d6b60;
   --rule: #cfc5ad;
   --sea: #2a6472;
-  /* one accent, reserved for booking actions (references.md #6) */
-  --red: #d2451e;
+  /* One accent, reserved for booking actions (references.md #6): the deep teal
+     of the water off this coast. It replaced an orange on 2026-09-20 — Shahar:
+     "Orange buttons look outdated. Not a great CTA color, especially with this
+     background… feels cheap and outdated." He is right; orange on warm cream
+     reads as a 2010s call-to-action. */
+  --teal: #0d6a74;
   --disp: 'Space Grotesk', 'Helvetica Neue', system-ui, sans-serif;
   --sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --gutter: 20px;
@@ -42,7 +46,7 @@ body {
 }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
-:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
 .wrap { width: min(100% - var(--gutter) * 2, 1240px); margin-inline: auto; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
@@ -60,7 +64,7 @@ a { color: inherit; }
 .chart-pin img, .chart-pin canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .chart-pin canvas { opacity: 0; transition: opacity .8s ease; }
 .chart-pin canvas.on { opacity: 1; }
-.chart-pin .veil { position: absolute; inset: 0; background: linear-gradient(to top, rgba(244,239,226,.97) 0%, rgba(244,239,226,.86) 30%, rgba(244,239,226,.28) 56%, rgba(244,239,226,0) 76%); }
+.chart-pin .veil { position: absolute; inset: 0; background: linear-gradient(to top, rgba(244,239,226,.98) 0%, rgba(244,239,226,.93) 34%, rgba(244,239,226,.42) 58%, rgba(244,239,226,0) 80%); }
 .chart-pin .words { position: absolute; inset: auto 0 0; padding: 0 var(--gutter) clamp(26px, 6vh, 60px); }
 .chart-pin .credit { position: absolute; right: 10px; top: 10px; font-size: 9.5px; color: rgba(29,35,38,.6); background: rgba(244,239,226,.75); padding: 3px 7px; }
 .chart-pin .depth {
@@ -88,7 +92,7 @@ a { color: inherit; }
 .bedcard .n { font-family: var(--disp); font-size: 10px; letter-spacing: .2em; color: var(--muted); }
 .bedcard .what { font-family: var(--disp); font-weight: 500; font-size: 1.1rem; line-height: 1.16; letter-spacing: -.02em; }
 .bedcard .detail { font-size: 13.5px; color: var(--muted); margin-top: auto; }
-.bedcard .go { font-family: var(--disp); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--red); text-decoration: none; align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; cursor: pointer; }
+.bedcard .go { font-family: var(--disp); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--teal); text-decoration: none; align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; cursor: pointer; }
 .bedcard .go span { border-bottom: 1px solid currentColor; padding-bottom: 2px; }
 
 /* ---------- the drawer ---------- */
@@ -104,7 +108,7 @@ a { color: inherit; }
 .drawer h2 { margin: 0 0 .5rem; font-size: clamp(1.5rem, 4vw, 2.2rem); }
 .drawer p { color: var(--muted); font-size: 14.5px; margin: 0 auto; max-width: 44rem; }
 .drawer .close { position: absolute; top: 14px; right: var(--gutter); min-height: 44px; min-width: 44px; font: inherit; font-family: var(--disp); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; background: none; border: 0; color: var(--muted); cursor: pointer; }
-.open-drawer { display: inline-flex; align-items: center; gap: 9px; min-height: 50px; padding: 0 22px; background: var(--red); color: var(--paper); text-decoration: none; border: 0; cursor: pointer; font-family: var(--disp); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-weight: 500; }
+.open-drawer { display: inline-flex; align-items: center; gap: 9px; min-height: 50px; padding: 0 22px; background: var(--teal); color: var(--paper); text-decoration: none; border: 0; cursor: pointer; font-family: var(--disp); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-weight: 500; }
 
 h1 {
   font-family: var(--disp); font-weight: 700; margin: 0;
@@ -137,11 +141,11 @@ h1 {
 .book-card {
   display: inline-flex; align-items: center; justify-content: center; gap: 9px;
   min-height: 50px; padding: 0 20px; text-decoration: none;
-  border: 1px solid var(--red); color: var(--red); background: transparent;
+  border: 1px solid var(--teal); color: var(--teal); background: transparent;
   font-family: var(--disp); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-weight: 500;
 }
-.book-card--first { background: var(--red); color: var(--paper); }
-.book-card:hover { background: var(--red); color: var(--paper); }
+.book-card--first { background: var(--teal); color: var(--paper); }
+.book-card:hover { background: var(--teal); color: var(--paper); }
 .book-card svg { flex: none; }
 .book .note { margin: 4px auto 0; max-width: 44rem; font-size: 13.5px; color: var(--muted); }
 
@@ -177,7 +181,7 @@ p { max-width: 34rem; }
 @media (min-width: 680px) { .beds li { grid-template-columns: 1fr 14rem auto; } }
 .beds .what { font-family: var(--disp); font-weight: 500; font-size: 1.15rem; letter-spacing: -.02em; }
 .beds .detail { font-size: 14px; color: var(--muted); }
-.beds .go { font-family: var(--disp); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--red); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; justify-self: start; }
+.beds .go { font-family: var(--disp); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--teal); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; justify-self: start; }
 .beds .go span { border-bottom: 1px solid currentColor; padding-bottom: 2px; }
 
 /* ---------- amenities ---------- */
@@ -213,13 +217,13 @@ p { max-width: 34rem; }
 .foot h3 { font-family: var(--disp); font-size: 10px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin: 0 0 .6rem; }
 .foot p, .foot li { margin: 0 0 .35rem; font-size: 15px; }
 .foot ul { list-style: none; margin: 0; padding: 0; }
-.link { color: var(--red); text-underline-offset: 3px; }
+.link { color: var(--teal); text-underline-offset: 3px; }
 .legal { margin-top: 30px; font-size: 12px; color: var(--muted); max-width: 52rem; }
 .credits { margin-top: 12px; font-size: 11.5px; color: var(--muted); max-width: 52rem; }
 .credits li { font-size: 11.5px; margin-bottom: .2rem; }
 
 /* ---------- persistent booking on a phone ---------- */
 .mobile-dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; display: flex; }
-.mobile-dock > * { flex: 1; min-height: 52px; display: flex; align-items: center; justify-content: center; background: var(--red); color: var(--paper); text-decoration: none; font-family: var(--disp); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+.mobile-dock > * { flex: 1; min-height: 52px; display: flex; align-items: center; justify-content: center; background: var(--teal); color: var(--paper); text-decoration: none; font-family: var(--disp); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
 .mobile-dock .alt { flex: 0 0 34%; background: var(--ink); }
 @media (min-width: 760px) { .mobile-dock { display: none; } }
