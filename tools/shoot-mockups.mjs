@@ -2,7 +2,7 @@
 import fs from 'node:fs'; import path from 'node:path'; import http from 'node:http';
 import { chromium } from '/home/shahar/.npm/_npx/e41f203b7505f1fb/node_modules/playwright-core/index.mjs';
 const root = process.cwd();
-const types = {'.html':'text/html','.css':'text/css','.js':'text/javascript','.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml'};
+const types = {'.html':'text/html','.css':'text/css','.js':'text/javascript','.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml','.woff2':'font/woff2','.json':'application/json'};
 const serve = (dir, port) => new Promise(res => {
   const s = http.createServer((req, rp) => {
     let f = path.join(dir, decodeURIComponent(req.url.split('?')[0]));
