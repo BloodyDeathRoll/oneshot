@@ -52,18 +52,31 @@ for (const w of wanted) {
   if (!asset) { console.error(`photos.json: ${w.id} is not in the dossier asset index`); process.exit(1); }
   if (asset.license !== 'business-owned') { console.error(`photos.json: ${w.id} is "${asset.license}" — only business-owned images may be used (base.md §2)`); process.exit(1); }
   const src = join(ROOT, 'dossier', slug, asset.file);
+  /* Several of these are phone photographs stored sideways with an EXIF
+     orientation flag. sharp().rotate() applies it, but metadata() reports the
+     stored dimensions, so swap them when the flag says the image is turned. */
   const meta = await sharp(src).metadata();
+  const turned = (meta.orientation ?? 1) >= 5;
+  const srcW = turned ? meta.height : meta.width;
+  const srcH = turned ? meta.width : meta.height;
+  /* Some assets are phone or Instagram crops smaller than our smallest step, and
+     a few are stored on their side inside a square frame with no EXIF flag to
+     say so — those carry "rotate" in photos.json. */
+  const turn = w.rotate ?? 0;
+  const outW = turn % 180 === 0 ? srcW : srcH;
+  const outH = turn % 180 === 0 ? srcH : srcW;
+  const widths = WIDTHS.filter((x) => x <= outW);
+  if (!widths.length) widths.push(outW);
   const srcset = [];
-  for (const width of WIDTHS) {
-    if (width > meta.width) continue;
+  for (const width of widths) {
     const name = `${w.id}-${width}.webp`;
-    await sharp(src).resize({ width }).webp({ quality: width >= 1024 ? 70 : 74 }).toFile(join(outDir, name));
+    await sharp(src).rotate(turn).resize({ width }).webp({ quality: width >= 1024 ? 70 : 74 }).toFile(join(outDir, name));
     srcset.push({ w: width, src: `photos/${name}`, bytes: statSync(join(outDir, name)).size });
   }
   photos[w.id] = {
     id: w.id, alt: w.alt, asset: asset.id, license: asset.license,
-    width: Math.min(meta.width, WIDTHS[0]),
-    height: Math.round(Math.min(meta.width, WIDTHS[0]) * meta.height / meta.width),
+    width: Math.min(outW, WIDTHS[0]),
+    height: Math.round(Math.min(outW, WIDTHS[0]) * outH / outW),
     src: srcset[0].src,
     srcset: srcset.map((s) => `${s.src} ${s.w}w`).join(', '),
     bytes: Object.fromEntries(srcset.map((s) => [s.w, s.bytes])),
