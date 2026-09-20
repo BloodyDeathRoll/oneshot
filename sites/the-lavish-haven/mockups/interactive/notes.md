@@ -135,3 +135,10 @@ measured file sizes. Base.md "Before handing off" item 3 is not satisfied.
 `shots/mobile.png` are full-page captures, and a full-page capture of a page with a three-screen
 pinned hero shows that hero once and leaves the rest of its scroll height blank — an artefact of
 how the capture works, not a hole in the layout.
+
+## what a visitor would notice is different
+
+Against **KA Surf Hostel**: this site has photographs big enough to fill a screen and uses them;
+KA never shows one larger than a postcard, because its best is 576 px wide. Against **Layday Surf**:
+this scrolls as a continuous magazine, Layday is a single bordered card read in panels. See the
+divergence table in `sites/the-lavish-haven/concepts.md` §5.

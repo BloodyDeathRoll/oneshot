@@ -4,32 +4,31 @@ Station 4d. Built 2026-09-20 from the copy that passed station 4c and `dossier/k
 Its own Astro project: no shared template, and no markup or CSS carried from another business
 (CLAUDE.md, Architecture).
 
-## direction
+## direction — archetype: **the kitchen noticeboard**, concept 1 "The board"
 
-`custom.md`: *"calm, moderate and expressing a conformist standard approach."* PLAN.md §9: the calm
-mockup skips the canvas.
+`sites/ka-surf-hostel-and-restaurant/concepts.md` §3. The first version of this mockup opened on
+`img-002` — fifteen people at the long table — stretched across the full width of the screen.
+That photograph is **576 × 768 px**. Shahar, 2026-09-20: *"super low resolution… makes the site fit
+for the garbage bin — no visitor will ever return."* He was right, and the fix is not a better crop.
 
-This is not a hotel and it should not look like one. Warm paper, a reading serif rather than a
-display one, and the largest photograph on the page is fifteen people eating together. The accent is
-the burnt clay of the hostel's own roundel, and it appears only on booking actions.
+So the governing rule of this whole site is: **KA never shows a photograph larger than a postcard,
+and its first screen shows none at all.** What is left is a wall and the things pinned to it. That
+is also, literally, how a hostel like this runs: a board with cards on it, a list of what is on
+today, a number to call.
 
-Read against `agents/designer/references.md`:
+- **The board head** — no photograph. The name, one sentence about the breakfast, three score tags
+  and three booking cards, **all centred**, with the caveat centred beneath them.
+- **Today's breakfast** as a list of six items, because it is the thing guests mention more than
+  anything else about the property.
+- **Prints** at postcard size, on mats, one or two degrees off square — references.md **#9**
+  (Tandjung Sari's matted prints) used for exactly the reason it exists, and **#8**, type carrying
+  the page.
+- **The ledger** — six bed and room types, one row each, with its own check link (**#7**).
+- **Tags** for what is here, **pinned cards** for the guests' words.
+- One accent, burnt clay from the hostel's own roundel, on booking only (**#6**). A fixed booking
+  bar on a phone (**#4**). Nothing covers the first screen (**#20**).
 
-- **#6 one accent, booking only** — clay `#8C4A24` on the four actions, the phone and map links and
-  focus rings. Nowhere else.
-- **#4 booking persistent on a phone** — a fixed bar under 760 px, plus the strip under the hero
-  (Morgan's Rock's docked bar).
-- **#7 offer cards carry their own action** — here the three platform buttons carry their platform
-  marks, drawn inline as SVG so nothing is fetched for them.
-- **#8 type does the heavy lifting** — a large serif lead against small sans in every section,
-  because these photographs are 576–1024 px and cannot carry a page at full bleed.
-- **#15 Morgan's Rock's order** — what/where → the family → beds with actions → what is here →
-  reviews → the wave → getting here → full contact.
-- **#20 nothing covers the first screen.**
-
-Four full-bleed photographs sit between the long text sections, parallaxing with
-`background-attachment: fixed`, which keeps this mockup at **zero bytes of JavaScript**; plain cover
-images on phones and under `prefers-reduced-motion`.
+PLAN.md §9: the calm mockup skips the canvas. **Zero bytes of JavaScript**; the tilts are CSS.
 
 ## facts
 
@@ -72,6 +71,9 @@ mockups carry identical content, so the human's pick is about design (base.md, 4
 listings, at 576–1024 px. The dossier's own note: *"usable but modest… photography on location would
 beat all of it."* Two things about them shaped every one of these three mockups:
 
+0. **The best one is 576 px wide**, which is less than half what a full-bleed hero needs, and
+   `tools/build-mockup.mjs` now refuses any photograph marked `role: "bleed"` under 1200 px. Nothing
+   on this site is marked that way. The largest anything renders is a postcard.
 1. **They are photographs of people, not of rooms.** Fifteen guests and the family at a long table at
    night; the family standing on the veranda; a breakfast spread; a bowl of cut fruit held up against
    the garden. That is the business, and every review says so. None of the three mockups leads with a
@@ -98,7 +100,7 @@ roundel; unused in this round.
 | Broken images | 0 (`tools/shoot-mockups.mjs`) |
 | Self-hosted, no third party | **partial** — 0 external requests on first load; fonts and platform marks vendored. The Rosa forecast iframe (`rosa.surf`) is one deliberate third-party embed, lazy and sandboxed. See conflicts. |
 
-**Weight** (`weight.json`, whole `dist/`): html + inlined css 21 KB · JS 0 KB · fonts 83 KB (Newsreader + Public Sans) · images 649 KB across all widths of every photograph used. First mobile load is the HTML, two fonts and the 400 px hero — comfortably inside the playbook §4 budget of 1.5 MB and 300 KB of JS.
+**Weight** (`weight.json`, whole `dist/`): html + inlined css 24 KB · JS 0 KB · fonts 83 KB (Newsreader + Public Sans) · images 649 KB across every width of every photograph used. The whole `dist/` is under 800 KB, against the playbook §4 budget of 1.5 MB for the first load alone — a direct consequence of never rendering a photograph larger than a postcard.
 
 **Lighthouse was not run** — there is no Lighthouse runner in `tools/`. The weights quoted are
 measured file sizes from `weight.json`, not a Lighthouse score. Base.md "Before handing off" item 3
@@ -121,3 +123,12 @@ is not satisfied.
    ours to hide, and playbook §5 forbids introducing a channel the owner does not monitor. Where a
    drawer exists (mockups 2 and 3) it holds the three listings the hostel already sells through and
    says why it does not ask for dates.
+
+## what a visitor would notice is different
+
+Against **The Lavish Haven**: that site opens on a photograph filling the whole screen and keeps
+doing it; this one never renders a photograph wider than a postcard and its first screen has none at
+all. Against **Layday Surf**: Layday is a pale ochre card, square, everything aligned inside
+hairline rules; KA is a dark wall with many small things pinned to it at angles. Grounds, first
+screens, grids and section orders all differ; see the divergence table in
+`sites/the-lavish-haven/concepts.md` §5.

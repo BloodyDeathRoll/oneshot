@@ -5,30 +5,26 @@ Its own Astro project. It shares the two typefaces and the paper with mockups 1 
 business, so it has one brand — and shares no layout, component or stylesheet with them or with any
 other business.
 
-## direction
+## direction — archetype: **the kitchen noticeboard**, concept 2 "Today"
 
-`custom.md`: *"more interactive with some bells and whistles"*, canvas/WebGL instead of static image
-grids, editorial grids, a booking UX behind a sliding drawer.
+`sites/ka-surf-hostel-and-restaurant/concepts.md` §3. Same wall, same two typefaces as mockups 1 and
+3 — one business, one brand — and a different board. The card at the top is **today**: the time of
+day, what is happening at KA then, and one postcard print for it. Scroll and the day turns:
+breakfast → the beach → sundown → the long table.
 
-**A day at KA.** The structure is the day, on one pinned screen: the breakfast table in the morning,
-the beach at midday, the sun going down, the long table at night — four of the hostel's own
-photographs, cross-faded as you scroll. Over them, the air moves. This hostel has no pool; it has a
-garden, a beach five minutes away and afternoons at thirty degrees, so the shader is a slow **heat
-shimmer** rising from the bottom of the frame, not water.
+The print inside the card is capped at 380 px rendered. KA's sources are 361–1024 px and the best of
+them is 576; the whole point of this archetype is that they are never asked to do more than a
+postcard does. No photograph on this page is full-bleed, and none is above the fold at any size that
+would show its grain.
 
-Read against `agents/designer/references.md`:
-
-- **#19** records that none of the six reference sites uses canvas or WebGL, so there was nothing
-  cached to lean on. `src/scripts/day.js` is hand-written WebGL1 — value noise, two textures, one
-  full-screen triangle. 6 KB of JavaScript for the whole page, no three.js, no CDN.
-- **#17 the cheapest convincing motion recipe** (Kube) — ±4 rem image parallax inside an
-  `overflow: hidden` wrapper, ±5 rem on the full-bleed bands, **off at ≤ 767 px**, 0.32 s drawer ease.
-- **#14 / #18** — the six bed types are a native horizontal scroller with snap and a peeking next
-  card; keyboard- and screen-reader-navigable, unlike a transform track.
-- **#6 one accent, booking only**; **#4 persistent on a phone**; **#20 nothing covers the first
-  screen**.
-- The masonry under "The place" is one column count and one 20 px gap everywhere, with three
-  repeating frame shapes so the columns stagger without any photograph being singled out.
+- **The shimmer.** A hand-written WebGL heat haze rising inside the card's print — value noise, two
+  textures, one full-screen triangle, no three.js and no CDN. KA has no pool; it has a garden and
+  afternoons at thirty degrees, so the *air* moves. references.md **#19** records that none of the
+  six reference sites uses canvas at all, so there was nothing cached to copy.
+- Kube's ±4 rem parallax elsewhere, off at ≤ 767 px (**#17**).
+- The six bed types become a snapping rail with a peeking next card (**#14**, **#18**).
+- Booking is a card that opens a drawer holding all three listings (**#1**), with the actions
+  centred inside it.
 
 ## facts
 
@@ -71,6 +67,9 @@ mockups carry identical content, so the human's pick is about design (base.md, 4
 listings, at 576–1024 px. The dossier's own note: *"usable but modest… photography on location would
 beat all of it."* Two things about them shaped every one of these three mockups:
 
+0. **The best one is 576 px wide**, which is less than half what a full-bleed hero needs, and
+   `tools/build-mockup.mjs` now refuses any photograph marked `role: "bleed"` under 1200 px. Nothing
+   on this site is marked that way. The largest anything renders is a postcard.
 1. **They are photographs of people, not of rooms.** Fifteen guests and the family at a long table at
    night; the family standing on the veranda; a breakfast spread; a bowl of cut fruit held up against
    the garden. That is the business, and every review says so. None of the three mockups leads with a
@@ -98,7 +97,7 @@ roundel; unused in this round.
 | Broken images | 0 (`tools/shoot-mockups.mjs`) |
 | Self-hosted, no third party | **partial** — 0 external requests on first load; fonts and platform marks vendored. The Rosa forecast iframe (`rosa.surf`) is one deliberate third-party embed, lazy and sandboxed. See conflicts. |
 
-**Weight** (`weight.json`, whole `dist/`): html + inlined css 26 KB · JS 6 KB · fonts 83 KB (Newsreader + Public Sans) · images 649 KB across all widths of every photograph used. First mobile load is the HTML, two fonts and the 400 px hero — comfortably inside the playbook §4 budget of 1.5 MB and 300 KB of JS.
+**Weight** (`weight.json`, whole `dist/`): html + inlined css 27 KB · JS 6 KB · fonts 83 KB (Newsreader + Public Sans) · images 649 KB across every width of every photograph used. The whole `dist/` is under 800 KB, against the playbook §4 budget of 1.5 MB for the first load alone — a direct consequence of never rendering a photograph larger than a postcard.
 
 **Lighthouse was not run** — there is no Lighthouse runner in `tools/`. The weights quoted are
 measured file sizes from `weight.json`, not a Lighthouse score. Base.md "Before handing off" item 3
@@ -121,3 +120,12 @@ is not satisfied.
    ours to hide, and playbook §5 forbids introducing a channel the owner does not monitor. Where a
    drawer exists (mockups 2 and 3) it holds the three listings the hostel already sells through and
    says why it does not ask for dates.
+
+## what a visitor would notice is different
+
+Against **The Lavish Haven**: that site opens on a photograph filling the whole screen and keeps
+doing it; this one never renders a photograph wider than a postcard and its first screen has none at
+all. Against **Layday Surf**: Layday is a pale ochre card, square, everything aligned inside
+hairline rules; KA is a dark wall with many small things pinned to it at angles. Grounds, first
+screens, grids and section orders all differ; see the divergence table in
+`sites/the-lavish-haven/concepts.md` §5.

@@ -84,10 +84,10 @@ a { color: inherit; }
 
 /* ---------- the booking strip, docked under the hero ---------- */
 .dock { background: var(--paper-deep); border-bottom: 1px solid var(--rule); }
-.dock .inner { display: grid; gap: 14px; padding: 20px 0 22px; }
-.dock .note { font-size: 14px; color: var(--muted); margin: 0; max-width: 46rem; }
-.dock .acts { display: grid; gap: 10px; }
-@media (min-width: 620px) { .dock .acts { grid-auto-flow: column; justify-content: start; } }
+.dock .inner { display: grid; gap: 14px; padding: 20px 0 22px; text-align: center; }
+.dock .note { font-size: 14px; color: var(--muted); margin: 0 auto; max-width: 46rem; }
+.dock .acts { display: grid; gap: 10px; justify-content: center; }
+@media (min-width: 620px) { .dock .acts { grid-auto-flow: column; } }
 /* the actions keep a line of their own, and the caveat reads underneath them */
 .btn--ota { display: inline-flex; align-items: center; gap: 10px; }
 .btn--ota svg { flex: none; }

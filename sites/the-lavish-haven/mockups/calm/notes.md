@@ -114,17 +114,19 @@ bathroom shots. No review photo, stock or generated image is used; none exists i
    (`src/components/`), so the page still makes **zero outside requests** for them — Booking.com's
    blue "B.", Agoda's grey "a" over its row of coloured dots, and a plain handset for the phone.
    The marks are used nominatively: each labels a link to this hotel's own listing on that platform.
-2. **The photographs are one even gallery** — same crop, same size, equal gaps, captions removed.
-3. **The run-in gap before the room table and the amenity list now equals the section's own top
+2. **The docked strip is centred** — actions on one line, the caveat centred under them. The
+   left-aligned version was the shape Shahar flagged on KA on 2026-09-20; it applied here too.
+3. **The photographs are one even gallery** — same crop, same size, equal gaps, captions removed.
+4. **The run-in gap before the room table and the amenity list now equals the section's own top
    padding** (56 px), so the gap between the section rule and its eyebrow and the gap between the
    text and the table are the same measure.
-4. **Five full-bleed photographs sit between the long text sections.** They parallax with
+5. **Five full-bleed photographs sit between the long text sections.** They parallax with
    `background-attachment: fixed`, which keeps this mockup at **zero bytes of JavaScript**; on
    phones and under `prefers-reduced-motion` they are plain cover images, because fixed attachment
    is unsupported or janky there. Cost: the source photographs are 1024 px wide, so a full-bleed
    band upscales them — acceptable at this size, and the reason the bands use the wide pool and
    balcony shots rather than the tight interiors.
-5. **The Rosa forecast for Kabalana is embedded in "The wave"** — see the conflict below.
+6. **The Rosa forecast for Kabalana is embedded in "The wave"** — see the conflict below.
 
 ## conflicts
 
@@ -172,3 +174,10 @@ file is 159 KB (the 1024 px hero), under the 200 KB above-the-fold ceiling.
 **Lighthouse was not run** — no Chrome/Lighthouse runner is wired into `tools/` yet. The numbers above
 are measured file sizes, not a Lighthouse score. Base.md "Before handing off" item 3 is therefore not
 satisfied; it needs a tool that does not exist. Reported, not papered over.
+
+## what a visitor would notice is different
+
+Against **KA Surf Hostel**: this site has photographs big enough to fill a screen and uses them;
+KA never shows one larger than a postcard, because its best is 576 px wide. Against **Layday Surf**:
+this scrolls as a continuous magazine, Layday is a single bordered card read in panels. See the
+divergence table in `sites/the-lavish-haven/concepts.md` §5.

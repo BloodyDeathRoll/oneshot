@@ -4,31 +4,28 @@ Station 4d. Built 2026-09-20 from the copy that passed station 4c and `dossier/l
 Its own Astro project: no shared template, and no markup or CSS carried from another business
 (CLAUDE.md, Architecture).
 
-## direction
+## direction — archetype: **the printed spec card**, concept 1 "The card"
 
-`custom.md`: *"calm, moderate and expressing a conformist standard approach."* PLAN.md §9: the calm
-mockup skips the canvas.
+`sites/layday-surf-ahangama/concepts.md` §3. One room is one product, and a product has a spec. So
+this is not a brochure with a hero photograph and alternating text sections — the first version was,
+and it read as the same page as two other businesses. It is a **printed card**: a bordered object on
+a field of the wall colour, ruled into cells by black hairlines the way the bunk frames rule the
+room, with the name, the one-line spec, the three scores and the booking row all set as data on it.
 
-"It is quiet" is this hostel's whole pitch, and its own photographs already hold a design — ochre
-plaster, black bunk steel, cane, white linen. So the page takes its colours off the walls, sets the
-type out of the way, and gives the single most useful thing on the site a block of the wall colour
-to itself: **the directions**. The dossier's own gap note says guests cannot find this place, that
-it is an unmarked black gate, and that a map and directions on a site would fix it today. So four
-numbered lines, in the copywriter's own words, on ochre, above the fold of that section.
+- **The first screen is the card, whole**: what it is, where it is, what each platform scored it,
+  and the **centred** booking row — no scrolling to reach a booking action.
+- **The directions get their own ochre cells.** The dossier records that guests cannot find this
+  place — an unmarked black gate — and that *"a map and directions on a site would fix it today."*
+  Four numbered lines, in the copywriter's own words.
+- **Photographs sit inside cells at their own size**, edge to edge with the rules, never bleeding.
+  1024 px sources, rendered at a quarter of the card's width.
+- The colours are not invented. This is the one business in the run whose own photographs already
+  carry a design — ochre plaster, black steel, cane fronts, white linen — and the page takes them
+  off the walls. One accent, the rust of the timber door frames, on booking only (references.md
+  **#6**). Persistent booking bar on a phone (**#4**). **#16**: the facts live where the questions
+  are, in "Finding the door" and "Before you arrive".
 
-Read against `agents/designer/references.md`:
-
-- **#6 one accent, booking only** — the rust of the door frames, on the four actions, the phone and
-  map links and focus rings. Nowhere else.
-- **#4 booking persistent on a phone** — a fixed bar under 760 px, plus the strip under the hero.
-- **#7** — each booking action carries its platform mark, drawn inline as SVG so nothing is fetched.
-- **#16 the FAQ is where dossier facts live** — here it is "Finding the door" and "Before you
-  arrive", written as answers rather than questions, because the dossier can answer only those.
-- **#15 Morgan's Rock's order**; **#20 nothing covers the first screen**.
-
-Three full-bleed photographs sit between the long text sections, parallaxing with
-`background-attachment: fixed`, which keeps this mockup at **zero bytes of JavaScript**; plain cover
-images on phones and under `prefers-reduced-motion`.
+PLAN.md §9: the calm mockup skips the canvas. **Zero bytes of JavaScript.**
 
 ## facts
 
@@ -94,7 +91,7 @@ looking at each photograph.
 | Broken images | 0 (`tools/shoot-mockups.mjs`) |
 | Self-hosted, no third party | **partial** — 0 external requests on first load; fonts and platform marks vendored. The Rosa forecast iframe (`rosa.surf`) is one deliberate third-party embed, lazy and sandboxed. See conflicts. |
 
-**Weight** (`weight.json`, whole `dist/`): html + inlined css 21 KB · JS 0 KB · fonts 78 KB (Syne + Inter Tight) · images 1052 KB across all widths of every photograph used. First mobile load is the HTML, two fonts and the 400 px hero — inside the playbook §4 budget of 1.5 MB and 300 KB of JS.
+**Weight** (`weight.json`, whole `dist/`): html + inlined css 22 KB · JS 0 KB · fonts 78 KB (Syne + Inter Tight) · images 1052 KB across every width of every photograph used. First mobile load is the HTML, two fonts and one 400 px photograph — inside the playbook §4 budget of 1.5 MB and 300 KB of JS.
 
 **Lighthouse was not run** — there is no Lighthouse runner in `tools/`. The weights quoted are
 measured file sizes from `weight.json`, not a Lighthouse score. Base.md "Before handing off" item 3
@@ -114,3 +111,11 @@ is not satisfied.
    ours to hide, and playbook §5 forbids introducing a channel the owner does not monitor. Where a
    drawer exists (mockups 2 and 3) it holds the three listings the hostel already sells through and
    says why it does not ask for dates.
+
+## what a visitor would notice is different
+
+Against **The Lavish Haven**: that site is a continuous magazine that opens on a photograph filling
+the screen; this is a bordered object read in panels, and its first screen is a card, not a picture.
+Against **KA Surf Hostel**: KA is a dark wall with small prints pinned to it at angles; Layday is
+pale ochre, square, and everything sits inside hairline rules. See the divergence table in
+`sites/the-lavish-haven/concepts.md` §5.
