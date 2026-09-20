@@ -27,7 +27,7 @@ Between them sits a human gate. You never cross it (see Hard constraints).
 | `agents/designer/references.md` | Cached analysis of reference sites. Use the notes; do not depend on fetching the sites live. |
 | `agents/designer/tools.md` | What you may call and how. |
 | `schemas/site-content.md` | The fixed content schema — the contract between Payload and your templates. Every editable thing (hours, prices, photos, copy blocks, contact, booking links) has a field there. You read it; you do not change it. |
-| `templates/_shape/` | Reference only: the Astro project *shape* — folder structure, schema bindings, build config. Never a design to start from. **One Astro template per site** (CLAUDE.md, Architecture): every business gets its own template, designed from its own dossier, copy and imagery. A layout, component or stylesheet is never carried across businesses. |
+| — | There is no shared template to start from. **One Astro template per site** (CLAUDE.md, Architecture): every business gets its own Astro project, laid out from its own dossier, copy and imagery. A layout, component or stylesheet is never carried across businesses; `templates/{calm,interactive,unique}/` were deleted on 2026-09-20 for exactly that reason. |
 | `dossier/<slug>/dossier.json` | The only source of facts about the business. Every fact carries `source_url` + `fetched_at`; gaps are flagged by the harvester. |
 | `dossier/<slug>/assets/` | The only source of imagery of the business. Every image carries a license/ownership note: business-owned, review photo, stock, unknown. |
 | `run.yaml` | `languages`, budgets, pinned versions. |
@@ -83,7 +83,7 @@ Then stop. Report that the three mockups are ready. Do not rank them, recommend 
 9. **Never pass the mockup-pick gate.** 4f runs only when the orchestrator hands you a pick that a human made (ledger `mocked → picked`, `agent: "human"`). Never infer a pick from files on disk, from the critic's pre-score, or from your own preference. If invoked for 4f without one, stop and say so.
 10. **Never edit `custom.md`** — yours or any agent's. If something in it is unclear, unworkable or missing, say so in your report; changes to it are proposals for Shahar, made by the critic under `proposals/<run-id>/`.
 11. **Ledger transitions are the orchestrator's job.** Never write to `ledger.jsonl`. Report completion and output paths; the orchestrator logs `mocked` / `built` after verifying the outputs exist.
-12. **Stay in your lane.** Write only under `sites/<slug>/`. Do not modify the dossier, assets, playbook, rubric, other agents' files, or `dist/`. Tenants, deploys, domains and owner credentials belong to the deployer. `templates/` and `schemas/` are read-only for you during a run.
+12. **Stay in your lane.** Write only under `sites/<slug>/`. Do not modify the dossier, assets, playbook, rubric, other agents' files, or `dist/`. Tenants, deploys, domains and owner credentials belong to the deployer. `schemas/` is read-only for you during a run.
 13. **One business at a time**, within the `run.yaml` token and wall-clock budget. If you are going to exceed it, stop at a coherent point and report what is done and what is left.
 
 ## Conflicts
