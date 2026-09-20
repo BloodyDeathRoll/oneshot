@@ -1,0 +1,18 @@
+---
+/* The house mark: a set of swell lines, drawn once as SVG and reused as a
+   divider and as a ground for panels. references.md #11 — Morgan's Rock uses a
+   single contour-line pattern as the cheapest possible identity device: one
+   SVG, no photographs needed. Kabalana's swell comes from the south-south-west,
+   so the lines run that way. */
+const { height = 64, opacity = 0.16, class: cls = '' } = Astro.props;
+---
+<svg class={`swell ${cls}`} viewBox="0 0 1200 80" preserveAspectRatio="none"
+     height={height} width="100%" aria-hidden="true" focusable="false"
+     style={`opacity:${opacity}`}>
+  <g fill="none" stroke="currentColor" stroke-width="1.15">
+    <path d="M0 14 C 120 2, 240 26, 360 14 S 600 2, 720 14 S 960 26, 1080 14 S 1200 6, 1200 6" />
+    <path d="M0 30 C 120 18, 240 42, 360 30 S 600 18, 720 30 S 960 42, 1080 30 S 1200 22, 1200 22" />
+    <path d="M0 46 C 120 34, 240 58, 360 46 S 600 34, 720 46 S 960 58, 1080 46 S 1200 38, 1200 38" />
+    <path d="M0 62 C 120 50, 240 74, 360 62 S 600 50, 720 62 S 960 74, 1080 62 S 1200 54, 1200 54" />
+  </g>
+</svg>

@@ -66,20 +66,19 @@ void main(){
   vec3 pool = texture2D(uPool, ripple(puv, t, 0.55 + depth)).rgb;
   pool *= 0.74 + 0.26 * depth;
 
-  /* The reflection. The heading texture is uploaded without a vertical flip, so
-     sampling it straight already gives the mirror image; it is then squeezed
-     into the top 58% of the band — the lip of the water shows the foot of the
-     letters, and the further down you look the further up the word you see. */
-  const float LIP = 0.22;
+  /* The heading, projected on the surface. The texture is uploaded flipped, so
+     it reads the right way up; the swell under it does the work instead. The
+     deeper into the band a letter falls, the more the water pulls it. */
+  const float LIP = 0.18;
   float v = (vUv.y - LIP) / (1.0 - LIP);
   vec2 r = vec2(vUv.x, v);
-  vec2 rr = swell(r, t, 0.55 + (1.0 - v) * 1.5);
+  vec2 rr = swell(r, t, 0.45 + (1.0 - v) * 1.35);
   float inside = step(0.0, rr.x) * step(rr.x, 1.0) * step(0.0, rr.y) * step(rr.y, 1.0);
   float ink = texture2D(uText, rr).a * inside;
   /* fades out as it sinks, and never touches the very lip */
-  ink *= smoothstep(-0.02, 0.28, v) * (1.0 - smoothstep(0.72, 1.04, v));
+  ink *= smoothstep(-0.02, 0.22, v) * (1.0 - smoothstep(0.80, 1.06, v));
 
-  vec3 col = mix(pool, vec3(0.92, 0.96, 0.97), ink * 0.34 * uFade);
+  vec3 col = mix(pool, vec3(0.95, 0.98, 0.99), ink * 0.46 * uFade);
 
   /* Caustics, computed in the photograph's own uv space — in screen space a
      band this wide and this short turns them into a row of identical blobs. */
@@ -169,7 +168,7 @@ export function startCourtyard(canvas, poolSrc) {
     }
     gl.activeTexture(gl.TEXTURE1);
     gl.bindTexture(gl.TEXTURE_2D, textTex);
-    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);   /* the flip IS the reflection */
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);    /* upright: projected on the water, not mirrored in it */
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, tc);
     target = text ? 1 : 0;
   };

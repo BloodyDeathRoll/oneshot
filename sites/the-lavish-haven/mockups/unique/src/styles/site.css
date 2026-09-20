@@ -110,7 +110,7 @@ a { color: inherit; }
 @media (min-width: 860px) { .hero .under { grid-template-columns: 5fr 4fr 3fr; gap: 40px; } }
 .hero .claim { font-family: var(--disp); font-weight: 400; font-size: clamp(1.4rem, 3.4vw, 2.1rem); line-height: 1.16; letter-spacing: -.02em; margin: 0; }
 .scores { margin: 0; font-size: 14px; color: var(--muted); }
-.scores b { font-weight: 600; color: var(--ink); font-size: 1.35rem; font-family: var(--disp); }
+.scores b { font-weight: 700; color: var(--ink); font-size: clamp(1.9rem, 4vw, 2.9rem); font-family: var(--disp); letter-spacing: -.04em; line-height: 1; }
 .scores span { display: block; margin-bottom: 10px; }
 
 /* ---------- sections, on a 12-column grid with varying spans ---------- */
@@ -133,6 +133,35 @@ p { max-width: 32rem; }
 .c3-13 { grid-column: 3 / 13; }
 .c1-5  { grid-column: 1 / 6; }
 @media (max-width: 859px) { .c1-6, .c1-7, .c8-13, .c7-13, .c3-13, .c1-5 { grid-column: auto; } }
+
+/* ---------- the house mark ---------- */
+.swell { display: block; width: 100%; color: var(--ink); }
+.rule-swell { padding: 22px 0 0; }
+.doors-ground { position: relative; }
+.doors-ground .swell { position: absolute; inset: auto 0 0; pointer-events: none; }
+
+/* ---------- full-bleed bands ---------- */
+.band { position: relative; overflow: hidden; height: clamp(220px, 44svh, 420px); margin: 0; }
+.band img { width: 100%; height: calc(100% + 5rem); object-fit: cover; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { .band img { height: 100%; transform: none !important; } }
+.band figcaption {
+  position: absolute; left: var(--gutter); bottom: 12px;
+  font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(231,225,211,.85); text-shadow: 0 1px 12px rgba(0,0,0,.55);
+}
+
+/* ---------- the wave, with the live forecast ---------- */
+.wave-grid { display: grid; gap: 30px; align-items: start; }
+@media (min-width: 980px) { .wave-grid { grid-template-columns: minmax(0,1fr) 420px; gap: 56px; } }
+.wave-grid .widget { width: 100%; max-width: 420px; }
+.wave-grid .widget p { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 12px 0 0; }
+
+/* ---------- a ghost numeral, so a page of prose has a scale to it ---------- */
+.ghost {
+  font-family: var(--disp); font-weight: 800; line-height: .74; letter-spacing: -.06em;
+  font-size: clamp(6rem, 22vw, 17rem); color: var(--plaster-2);
+  margin: 0; user-select: none;
+}
 
 /* ---------- nine doors ---------- */
 /* Nine room types, forty photographs that do not say which is which. So the

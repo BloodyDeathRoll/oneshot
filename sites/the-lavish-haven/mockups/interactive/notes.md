@@ -37,6 +37,23 @@ Read against `agents/designer/references.md`:
   visitor picks a channel.
 - **#20 nothing covers the first screen** on load.
 
+## revision, 2026-09-20 (Shahar's review)
+
+1. **Cream, not dark.** "A dark theme is not a good fit for surf related businesses." Correct, and
+   it also puts this mockup closer to the reference set: four of the six are warm paper. The page is
+   now `#F2ECE0`; the accent moved from lamp amber to the pool's own teal `#0E5F6B`, which has the
+   contrast the amber lost on a light ground. The pinned hero stays photographic and dark — the
+   night pool is where the contrast comes from now.
+2. **"The place" is an even masonry.** The first version placed six photographs on overlapping
+   explicit grid rows. That was chaos, not a magazine layout. It is now one column count, one gap
+   everywhere (20 px), nine photographs, and three repeating frame shapes (4:3, 3:4, 3:2) so the
+   columns stagger without any photograph being singled out. Kube's parallax still runs inside each
+   frame, still off at ≤ 767 px.
+3. **Three full-bleed photographs break the runs of text** — after the room rail, before "Recently
+   opened", and before "What guests wrote". Same parallax recipe, 5 rem instead of 4.
+4. **The drawer's actions carry their platform marks**, drawn inline as SVG (`src/components/`), so
+   nothing is fetched for them.
+
 ## facts
 
 Every word other than interface labels comes from `copy/en.json`, which the copyeditor passed with
@@ -67,10 +84,10 @@ room types are again set as **text**, in the rail; no card claims a photograph i
 | `img-079` | pool texture, "afternoon" |
 | `img-001` | pool texture, "dusk" |
 | `img-002` | pool texture, "after dark"; also the `<img>` that shows when WebGL is unavailable |
-| `img-072` `img-014` `img-042` `img-065` `img-057` `img-067` | the interlocking plate grid |
-| `img-013` `img-078` | declared in `photos.json`, not placed — available for a later round |
+| `img-072` `img-014` `img-042` `img-065` `img-057` `img-067` `img-013` `img-047` `img-078` | the masonry under "The place" |
+| `img-001` `img-073` `img-077` | the three full-bleed bands |
 
-67 further business-owned photographs unused. No review photo, stock or generated image is used.
+65 further business-owned photographs unused. No review photo, stock or generated image is used.
 
 ## conflicts
 
