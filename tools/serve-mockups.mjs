@@ -1,7 +1,7 @@
 // Serve every built mockup, one port each. Ctrl-C to stop.
 import fs from 'node:fs'; import path from 'node:path'; import http from 'node:http';
 const root = process.cwd();
-const types={'.html':'text/html','.css':'text/css','.js':'text/javascript','.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml','.ico':'image/x-icon'};
+const types={'.html':'text/html','.css':'text/css','.js':'text/javascript','.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml','.woff2':'font/woff2','.json':'application/json','.ico':'image/x-icon'};
 let port = 8901; const list = [];
 for (const slug of fs.readdirSync(path.join(root,'sites')).sort()) {
   const mdir = path.join(root,'sites',slug,'mockups');
