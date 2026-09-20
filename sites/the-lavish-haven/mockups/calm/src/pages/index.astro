@@ -1,6 +1,9 @@
 ---
 import { c, block, blocks, paras, photo, rating } from '../lib/content';
 import '../styles/site.css';
+import BookingMark from '../components/BookingMark.astro';
+import AgodaMark from '../components/AgodaMark.astro';
+import PhoneMark from '../components/PhoneMark.astro';
 
 const hero = photo('img-002');
 const booking = rating('booking');
@@ -9,16 +12,15 @@ const intro = block('intro');
 const [newness, staff] = blocks('about');
 const [roomsCopy, facilities] = blocks('offer');
 const practical = block('info');
-const plates = [
-  { id: 'img-078', tall: false },
-  { id: 'img-072', tall: true },
-  { id: 'img-014', tall: false },
-  { id: 'img-042', tall: false },
-  { id: 'img-065', tall: false },
-  { id: 'img-057', tall: true },
-  { id: 'img-047', tall: false },
-  { id: 'img-079', tall: false },
-];
+const gallery = ['img-078', 'img-072', 'img-014', 'img-042', 'img-065', 'img-057', 'img-047', 'img-079'];
+/* full-bleed photographs between the long text sections */
+const bands = {
+  rooms: photo('img-001'),
+  facilities: photo('img-073'),
+  newness: photo('img-067'),
+  quotes: photo('img-077'),
+  wave: photo('img-068'),
+};
 const primary = c.bookingLinks[0];
 const secondary = c.bookingLinks[1];
 const mapUrl = 'https://www.google.com/maps/search/The%20Lavish%20Haven%20Ahangama/@5.9794134,80.350836,17z?hl=en';
@@ -67,12 +69,12 @@ const mapUrl = 'https://www.google.com/maps/search/The%20Lavish%20Haven%20Ahanga
      dossier. No dates are prefilled, because rates are live OTA inventory. -->
 <section class="dock" id="book">
   <div class="wrap inner">
-    <p class="note">Rates change with the dates and the room. These are the hotel's own listings — they show what is free tonight.</p>
     <div class="acts">
-      <a class="btn btn--solid" href={primary.url} rel="noopener">{primary.label}</a>
-      <a class="btn" href={secondary.url} rel="noopener">{secondary.label}</a>
-      <a class="btn" href={`tel:${c.contact.phone}`}>Call the front desk</a>
+      <a class="btn btn--solid btn--ota" href={primary.url} rel="noopener"><BookingMark light /> {primary.label}</a>
+      <a class="btn btn--ota" href={secondary.url} rel="noopener"><AgodaMark /> {secondary.label}</a>
+      <a class="btn btn--ota" href={`tel:${c.contact.phone}`}><PhoneMark /> Call the front desk</a>
     </div>
+    <p class="note">Rates change with the dates and the room. These are the hotel's own listings — they show what is free tonight.</p>
   </div>
 </section>
 
@@ -87,19 +89,16 @@ const mapUrl = 'https://www.google.com/maps/search/The%20Lavish%20Haven%20Ahanga
     </div>
   </div>
 
-  <div class="plates">
-    {plates.map(({ id, tall }) => {
+  <div class="gallery">
+    {gallery.map((id) => {
       const p = photo(id);
-      return (
-        <figure class={tall ? 'plate plate--tall' : 'plate'}>
-          <img src={p.src} srcset={p.srcset} sizes="(min-width: 860px) 24vw, 46vw"
-               width={p.width} height={p.height} alt={p.alt} loading="lazy" decoding="async" />
-          <figcaption>{p.alt}</figcaption>
-        </figure>
-      );
+      return <img src={p.src} srcset={p.srcset} sizes="(min-width: 720px) 24vw, 46vw"
+                  width={p.width} height={p.height} alt={p.alt} loading="lazy" decoding="async" />;
     })}
   </div>
 </section>
+
+<div class="band" role="img" aria-label={bands.rooms.alt} style={`background-image:url(${bands.rooms.src})`}></div>
 
 <section class="sec wrap">
   <p class="eyebrow">The rooms</p>
@@ -118,6 +117,8 @@ const mapUrl = 'https://www.google.com/maps/search/The%20Lavish%20Haven%20Ahanga
   </ul>
 </section>
 
+<div class="band" role="img" aria-label={bands.facilities.alt} style={`background-image:url(${bands.facilities.src})`}></div>
+
 <section class="sec wrap">
   <p class="eyebrow">What is here</p>
   <div class="two-col">
@@ -131,6 +132,8 @@ const mapUrl = 'https://www.google.com/maps/search/The%20Lavish%20Haven%20Ahanga
   </ul>
 </section>
 
+<div class="band" role="img" aria-label={bands.newness.alt} style={`background-image:url(${bands.newness.src})`}></div>
+
 <section class="sec wrap">
   <p class="eyebrow">Recently opened</p>
   <div class="two-col">
@@ -138,6 +141,8 @@ const mapUrl = 'https://www.google.com/maps/search/The%20Lavish%20Haven%20Ahanga
     <div>{paras(newness.body).map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}</div>
   </div>
 </section>
+
+<div class="band" role="img" aria-label={bands.quotes.alt} style={`background-image:url(${bands.quotes.src})`}></div>
 
 <section class="sec wrap">
   <p class="eyebrow">What guests wrote</p>
@@ -153,9 +158,26 @@ const mapUrl = 'https://www.google.com/maps/search/The%20Lavish%20Haven%20Ahanga
   </div>
 </section>
 
+<div class="band" role="img" aria-label={bands.wave.alt} style={`background-image:url(${bands.wave.src})`}></div>
+
 <section class="sec wrap">
   <p class="eyebrow">The wave</p>
-  <p class="lead">{c.spot}</p>
+  <div class="wave">
+    <p class="lead">{c.spot}</p>
+    <div class="widget">
+      <iframe
+        src="https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+        title="Rosa surf forecast - Kabalana"
+        width="100%"
+        height="500"
+        style="max-width:420px;border:0;border-radius:16px;display:block"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+      ></iframe>
+      <p>Live forecast for Kabalana from rosa.surf.</p>
+    </div>
+  </div>
 </section>
 
 <section class="sec wrap">

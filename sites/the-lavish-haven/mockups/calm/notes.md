@@ -19,9 +19,12 @@ Read against `agents/designer/references.md`:
   of every screen under 760 px, plus the docked strip under the hero (Morgan's Rock's docked bar).
 - **#8 type does the heavy lifting** — the lead paragraph of each section is set large in the serif
   against small sans, because this business's photographs cannot carry a page.
-- **#9 imperfect photos as matted prints** (Tandjung Sari) — the eight photographs are shown small,
-  on white mats with a caption, not full-bleed. See "images" below for why that matters here.
-- **#10 grid-breaking with no assets** — two of the eight plates are taller than their row.
+- **#9 imperfect photos as matted prints** (Tandjung Sari) was the first attempt and it was wrong
+  here: staggered heights and a caption under every frame read as chaos on a page whose whole
+  argument is restraint. Replaced on review with one even gallery — eight photographs, all cropped
+  to the same 4:3 frame, equal gaps, no captions. The alt text still carries the description.
+- **#10 grid-breaking with no assets** — dropped for the same reason. The break in this page's
+  rhythm is now the full-bleed bands, not a staggered tile.
 - **#23 two families, each with one job** — Instrument Serif for display, Inter for everything else.
   68 KB of font, self-hosted, `font-display: swap`.
 - **#20 nothing covers the first screen** — no pop-up, no cookie wall, no chat widget.
@@ -87,17 +90,41 @@ Used, in order:
 | Asset | Where | Alt |
 |---|---|---|
 | `img-002` | hero | room blocks lit at dusk around the lit pool |
-| `img-078` | plate | the pool from above in daylight |
-| `img-072` | plate (tall) | balcony looking down through palms to the pool |
-| `img-014` | plate | guest room with a stone feature wall |
-| `img-042` | plate | bathroom, dark tile, lit mirror |
-| `img-065` | plate | balcony with timber chairs under a slatted roof |
-| `img-057` | plate (tall) | bathroom tiled in timber-toned stone with a rain shower |
-| `img-047` | plate | room with two beds under a high pitched ceiling |
-| `img-079` | plate | pool and garden from above |
+| `img-078` | gallery | the pool from above in daylight |
+| `img-072` | gallery | balcony looking down through palms to the pool |
+| `img-014` | gallery | guest room with a stone feature wall |
+| `img-042` | gallery | bathroom, dark tile, lit mirror |
+| `img-065` | gallery | balcony with timber chairs under a slatted roof |
+| `img-057` | gallery | bathroom tiled in timber-toned stone with a rain shower |
+| `img-047` | gallery | room with two beds under a high pitched ceiling |
+| `img-079` | gallery | pool and garden from above |
+| `img-001` | band after the gallery | the pool lit from within at dusk |
+| `img-073` | band before "What is here" | down from a balcony through palms to the pool |
+| `img-067` | band before "Recently opened" | the pool from a stairwell, framed by a palm |
+| `img-077` | band before "What guests wrote" | a balcony behind a bamboo blind |
+| `img-068` | band before "The wave" | a balcony walkway with banana leaves against the rail |
 
-70 further business-owned photographs are available and unused — mostly the near-identical room and
+65 further business-owned photographs are available and unused — mostly the near-identical room and
 bathroom shots. No review photo, stock or generated image is used; none exists in this dossier.
+
+## revision, 2026-09-20 (Shahar's review)
+
+1. **The booking actions keep a line of their own**, with the caveat sentence underneath them
+   rather than beside them. Each action carries its platform's mark, drawn inline as SVG
+   (`src/components/`), so the page still makes **zero outside requests** for them — Booking.com's
+   blue "B.", Agoda's grey "a" over its row of coloured dots, and a plain handset for the phone.
+   The marks are used nominatively: each labels a link to this hotel's own listing on that platform.
+2. **The photographs are one even gallery** — same crop, same size, equal gaps, captions removed.
+3. **The run-in gap before the room table and the amenity list now equals the section's own top
+   padding** (56 px), so the gap between the section rule and its eyebrow and the gap between the
+   text and the table are the same measure.
+4. **Five full-bleed photographs sit between the long text sections.** They parallax with
+   `background-attachment: fixed`, which keeps this mockup at **zero bytes of JavaScript**; on
+   phones and under `prefers-reduced-motion` they are plain cover images, because fixed attachment
+   is unsupported or janky there. Cost: the source photographs are 1024 px wide, so a full-bleed
+   band upscales them — acceptable at this size, and the reason the bands use the wide pool and
+   balcony shots rather than the tight interiors.
+5. **The Rosa forecast for Kabalana is embedded in "The wave"** — see the conflict below.
 
 ## conflicts
 
@@ -105,7 +132,15 @@ bathroom shots. No review photo, stock or generated image is used; none exists i
    exemption was never merged into `custom.md`, which is Shahar's file and not mine to edit. Shahar
    confirmed on 2026-09-20 that calm skips the canvas for this run. The proposal to put the line into
    `custom.md` is still open — `proposals/2026-09-mirissa-01/001-designer-custom-calm-variant.md`.
-2. **`custom.md` asks for a booking drawer hiding a complex booking engine.** There is no engine to
+2. **The Rosa widget is a third-party embed, and playbook §4 says "third-party requests on load: 0"
+   and "all assets self-hosted; the site must work when a CDN doesn't".** Shahar asked for it on
+   2026-09-20 and it is genuinely useful here — the visitor is a surfer and Kabalana is the reason
+   they are booking. Mitigations: the iframe is `loading="lazy"`, so it is not on the critical path
+   and not part of the first-load budget; it is sandboxed; it carries
+   `referrerpolicy="strict-origin-when-cross-origin"`; and the section reads correctly without it,
+   because the spot sentence above it is dossier-sourced text. It remains a live dependency on
+   `rosa.surf`: if that host is down, the visitor sees an empty frame. Flagged, not hidden.
+3. **`custom.md` asks for a booking drawer hiding a complex booking engine.** There is no engine to
    hide: this hotel takes bookings through Booking.com and Agoda, and playbook §5 forbids introducing
    a channel the owner does not monitor. A drawer that collected dates and then threw them away at an
    OTA link would be theatre. The calm mockup therefore states the honest limit — "rates change with
@@ -119,12 +154,12 @@ bathroom shots. No review photo, stock or generated image is used; none exists i
 | Booking targets match the dossier character for character | pass — Booking.com, Agoda and `tel:+94764832988` diffed against `dossier.booking` / `dossier.contact` |
 | Mobile first, 390 px | pass — `shots/mobile.png`, no overflow, no overlap |
 | Desktop 1440 px | pass — `shots/desktop.png` |
-| Works with JS off | pass — the build ships **0 bytes of JavaScript**; every action is an `<a href>` |
+| Works with JS off | pass — the build ships **0 bytes of its own JavaScript**; every action is an `<a href>`, and the parallax is CSS. The embedded Rosa widget runs its own script inside its sandboxed iframe; with JavaScript off the frame is empty and the rest of the page is unaffected. |
 | Tap targets ≥ 44 px | pass — buttons 44 px, the fixed bar 52 px |
 | Reduced motion | not applicable — nothing animates |
 | Keyboard | pass — document order, skip link first, visible focus ring on every link |
 | Broken images | 0 (`tools/shoot-mockups.mjs`) |
-| Self-hosted, no third party | pass — 0 external requests; fonts vendored in `public/fonts/` |
+| Self-hosted, no third party | **partial** — 0 external requests on first load; the fonts and the three platform marks are vendored. The Rosa forecast iframe (`rosa.surf`) is one deliberate third-party embed, lazy-loaded and sandboxed. See conflicts. |
 | Relative URLs | pass — CSS is inlined, assets referenced without a leading slash, so the build runs from a subfolder |
 
 **Weight** (`weight.json`, whole `dist/`): html+inlined css 19 KB · JS 0 KB · fonts 68 KB ·
