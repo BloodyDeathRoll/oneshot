@@ -18,10 +18,13 @@ const mapUrl = 'https://www.google.com/maps/search/KA%20Surf%20Hostel%20Ahangama
 const si = c.stayInfo;
 const menu = ['Rotis', 'Hoppers', 'Pancakes', 'Eggs', 'A fruit platter', 'A vegan option if you need one'];
 const legs = [['Kabalana Beach', 'a five-minute walk'], ['Ahangama railway station', 'a little over 2 km'], ['Koggala Airport', 'about 5 km']];
-const sea = photo('stock-006'), chart = photo('stock-008'), dusk = photo('stock-003'), beach = photo('stock-001');
+/* The swell shader composites its input, so the sea band is CC BY flat water,
+   not one of the share-alike Ahangama frames. Those are shown whole below. */
+const sea = photo('stock-007');
+const beach = photo('stock-011'), stilts = photo('stock-012'), dusk = photo('stock-003');
 const inside = ['img-002', 'img-014', 'img-013', 'img-003'];
 const inside2 = ['img-004', 'img-001', 'img-005', 'img-011'];
-const borrowed = [sea, chart, dusk, beach];
+const borrowed = [sea, beach, stilts, dusk];
 ---
 <!doctype html>
 <html lang="en">
@@ -194,7 +197,7 @@ const borrowed = [sea, chart, dusk, beach];
         <ul>{c.bookingLinks.map((b) => <li><a class="link" href={b.url} rel="noopener">{b.label}</a></li>)}</ul>
       </div>
     </div>
-    <p class="legal">Mockup 3 of 3 — “unique”, on the chart archetype (see <code>concepts.md</code>). Every fact on this page comes from the dossier harvested on 19 September 2026; see notes.md. Photographs of the hostel, its rooms, its garden and its people are the hostel's own. The sea, the chart and the wide photographs of the coast are freely licensed and are of the place, not of this business.</p>
+    <p class="legal">Mockup 3 of 3 — “unique”, on the chart archetype (see <code>concepts.md</code>). Every fact on this page comes from the dossier harvested on 19 September 2026; see notes.md. Photographs of the hostel, its rooms, its garden and its people are the hostel's own. The sea band and the wide photographs are freely licensed; the photographs are of Ahangama and the water off it, and are of the place rather than of this business.</p>
     <ul class="credits">{borrowed.map((p) => <li>{p.credit}</li>)}</ul>
   </div>
 </footer>

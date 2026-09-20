@@ -27,8 +27,12 @@
   --muted: #6d6b60;
   --rule: #cfc5ad;
   --sea: #2a6472;
-  /* one accent, reserved for booking actions (references.md #6) */
-  --red: #d2451e;
+  /* One accent, reserved for booking actions (references.md #6): the deep teal
+     of the water off this coast. It replaced an orange on 2026-09-20 — Shahar:
+     "Orange buttons look outdated. Not a great CTA color, especially with this
+     background… feels cheap and outdated." He is right; orange on warm cream
+     reads as a 2010s call-to-action. */
+  --teal: #0d6a74;
   --disp: 'Space Grotesk', 'Helvetica Neue', system-ui, sans-serif;
   --sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --gutter: 20px;
@@ -43,7 +47,7 @@ body {
 }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
-:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
 .wrap { width: min(100% - var(--gutter) * 2, 1240px); margin-inline: auto; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
@@ -57,10 +61,16 @@ a { color: inherit; }
 
 /* ---------- the horizon ---------- */
 .horizon { position: relative; height: 100svh; min-height: 34rem; overflow: hidden; background: var(--paper); }
-.horizon .sea { position: absolute; inset: 0 0 46% 0; overflow: hidden; background: #2a6472; }
+.horizon .sea { position: absolute; inset: 0 0 46% 0; overflow: hidden; background: #0d6a74; }
 .horizon .sea img, .horizon .sea canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .horizon .sea canvas { opacity: 0; transition: opacity 1s ease; }
 .horizon .sea canvas.on { opacity: 1; }
+/* the upper line of the sentence is set white and the sea is often pale, so the
+   band carries its own ground rather than hoping for contrast */
+.horizon .sea::after {
+  content: ''; position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(to bottom, rgba(10,58,64,.52) 0%, rgba(10,58,64,.20) 55%, rgba(10,58,64,.34) 100%);
+}
 .horizon .line { position: absolute; left: 0; right: 0; top: 54%; height: 1px; background: var(--ink); z-index: 3; }
 .horizon .words { position: absolute; left: 0; right: 0; top: 54%; transform: translateY(-50%); z-index: 4; padding: 0 var(--gutter); }
 .horizon h1 {
@@ -107,11 +117,11 @@ a { color: inherit; }
 .book-card {
   display: inline-flex; align-items: center; justify-content: center; gap: 9px;
   min-height: 50px; padding: 0 20px; text-decoration: none;
-  border: 1px solid var(--red); color: var(--red); background: transparent;
+  border: 1px solid var(--teal); color: var(--teal); background: transparent;
   font-family: var(--disp); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-weight: 500;
 }
-.book-card--first { background: var(--red); color: var(--paper); }
-.book-card:hover { background: var(--red); color: var(--paper); }
+.book-card--first { background: var(--teal); color: var(--paper); }
+.book-card:hover { background: var(--teal); color: var(--paper); }
 .book-card svg { flex: none; }
 .book .note { margin: 4px auto 0; max-width: 44rem; font-size: 13.5px; color: var(--muted); }
 
@@ -143,7 +153,7 @@ p { max-width: 34rem; }
 .drawer .row { display: grid; gap: 10px; margin-top: 22px; }
 .drawer .book-card { justify-content: flex-start; }
 .drawer .close { position: absolute; top: 16px; right: var(--gutter); min-height: 44px; min-width: 44px; font: inherit; font-family: var(--disp); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; background: none; border: 0; color: var(--muted); cursor: pointer; }
-.open-drawer { display: inline-flex; align-items: center; min-height: 50px; padding: 0 22px; background: var(--red); color: var(--paper); text-decoration: none; border: 0; cursor: pointer; font-family: var(--disp); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-weight: 500; }
+.open-drawer { display: inline-flex; align-items: center; min-height: 50px; padding: 0 22px; background: var(--teal); color: var(--paper); text-decoration: none; border: 0; cursor: pointer; font-family: var(--disp); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-weight: 500; }
 
 /* ---------- the hostel's own photographs: close, and their own size ---------- */
 /* 361–1024 px sources. Four across at 1240 is about 290 px each, which is inside
@@ -168,7 +178,7 @@ p { max-width: 34rem; }
 @media (min-width: 680px) { .beds li { grid-template-columns: 1fr 14rem auto; } }
 .beds .what { font-family: var(--disp); font-weight: 500; font-size: 1.15rem; letter-spacing: -.02em; }
 .beds .detail { font-size: 14px; color: var(--muted); }
-.beds .go { font-family: var(--disp); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--red); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; justify-self: start; }
+.beds .go { font-family: var(--disp); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--teal); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; justify-self: start; }
 .beds .go span { border-bottom: 1px solid currentColor; padding-bottom: 2px; }
 
 /* ---------- amenities ---------- */
@@ -204,13 +214,13 @@ p { max-width: 34rem; }
 .foot h3 { font-family: var(--disp); font-size: 10px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin: 0 0 .6rem; }
 .foot p, .foot li { margin: 0 0 .35rem; font-size: 15px; }
 .foot ul { list-style: none; margin: 0; padding: 0; }
-.link { color: var(--red); text-underline-offset: 3px; }
+.link { color: var(--teal); text-underline-offset: 3px; }
 .legal { margin-top: 30px; font-size: 12px; color: var(--muted); max-width: 52rem; }
 .credits { margin-top: 12px; font-size: 11.5px; color: var(--muted); max-width: 52rem; }
 .credits li { font-size: 11.5px; margin-bottom: .2rem; }
 
 /* ---------- persistent booking on a phone ---------- */
 .mobile-dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; display: flex; }
-.mobile-dock > * { flex: 1; min-height: 52px; display: flex; align-items: center; justify-content: center; background: var(--red); color: var(--paper); text-decoration: none; font-family: var(--disp); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+.mobile-dock > * { flex: 1; min-height: 52px; display: flex; align-items: center; justify-content: center; background: var(--teal); color: var(--paper); text-decoration: none; font-family: var(--disp); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
 .mobile-dock .alt { flex: 0 0 34%; background: var(--ink); }
 @media (min-width: 760px) { .mobile-dock { display: none; } }

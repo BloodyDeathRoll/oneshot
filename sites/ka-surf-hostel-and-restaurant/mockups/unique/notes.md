@@ -19,6 +19,35 @@ one texture. references.md **#19**: no precedent in the reference set, built fro
 
 Booking is a right-edge slide-out.
 
+## correction, 2026-09-20 — the photographs were of the wrong places
+
+The first build of this archetype put **Hikkaduwa** (about 33 km up the coast, and named in its own
+file), **Weligama**, **Thiranagama** and **Negombo** (about 180 km away) on a page about Ahangama,
+and cropped the Admiralty sheet to its **Weligama Bay** plan — a chart of a different bay, with the
+name printed on it. Shahar: *"Hikkaduwa beach is NOT IN AHANGAMA. Weligama bay IS NOT IN AHANGAMA.
+You should have caught that by yourself."* He is right. A photograph of somewhere else shown as this
+place is a false claim about the business, in the same class as an invented price, and it should
+never have reached him.
+
+What changed, on disk rather than in a conversation:
+
+- Every atmosphere image now records **`place`** (where it was actually taken) and **`place_ok`** —
+  `local` for Ahangama itself, `neutral` for open sea, sky or a detail with no landmark and no other
+  place named in its credit. `tools/check-places.mjs` fails a build that uses anything else, and
+  warns when a source file's own name mentions a place the displayed credit does not.
+- Fourteen images were deleted: Hikkaduwa, Thiranagama, the Weligama Bay plan, a US Navy tsunami
+  clearance photograph, and nine tea-factory interiors that Commons files under "Ahangama".
+- The page now uses **photographs of Ahangama**: the reef shelf and shorebreak, the beach with the
+  stilt-fishing poles, the stilt fishermen. Plus chart texture and open sea that name nowhere.
+- Those Ahangama photographs are **CC BY-SA**, which binds adaptations, so they are shown whole with
+  their credit and are never cropped on disk or used as shader input. The shader inputs here are
+  public-domain and CC BY only. The policy is in PLAN.md §9.
+
+**The accent colour also changed**, from a chart red to the deep teal of the water off this coast.
+Shahar: *"Orange buttons look outdated. Not a great CTA color, especially with this background…
+feels cheap and outdated."* On a warm cream ground an orange button reads as a 2010s landing page,
+which is the thing these sites are sold against. The rule is now in `agents/designer/base.md`.
+
 ## facts
 
 Every word other than interface labels comes from `sites/ka-surf-hostel-and-restaurant/copy/en.json`,
@@ -53,18 +82,19 @@ Seven assets are stored on their side inside a square frame and carry an explici
 
 *Atmosphere*, from `dossier/.../stock/`, freely licensed, of the place and never of the business:
 
-| id | what it is | licence |
-|---|---|---|
-| `stock-006` | The shorebreak at Hikkaduwa under a heavy sky | CC BY 3.0 |
-| `stock-008` | The Weligama Bay plan from Admiralty Chart 3730 — coastline, soundings and the reef line of this stretch of coast | Public domain |
-| `stock-003` | Sunset over the south coast, cloud lit orange behind palm silhouettes | CC0 |
-| `stock-001` | An empty beach at Thiranagama on the south coast: shorebreak, wet sand, a line of palms behind | CC0 |
+| id | what it is | place | licence |
+|---|---|---|---|
+| `stock-007` | The sun going down over the Laccadive Sea | neutral | CC BY 3.0 |
+| `stock-011` | The reef shelf and shorebreak at Ahangama under a high sky | local | CC BY-SA 4.0 · shown whole, never adapted |
+| `stock-012` | The beach at Ahangama with the stilt-fishing poles standing out of the shallows | local | CC BY-SA 2.0 · shown whole, never adapted |
+| `stock-003` | Cloud lit orange at sunset behind palm silhouettes | neutral | CC0 |
 
-Twenty were fetched and eleven rejected on sight — a candlelight vigil that a filename called
-"Kabalana", and a five-star hotel's suite, rooftop and infinity pool. That last group is exactly what
-the policy forbids: a borrowed room that reads as the room you would be booking. **Nothing borrowed
-on this page shows an interior, a bed, a meal or a face.** Every use carries its credit in place, and
-all of them are listed again in the footer.
+Thirty-four were fetched across two rounds and twenty-four rejected on sight: a candlelight vigil
+that a filename called "Kabalana", a five-star hotel's suite, rooftop and infinity pool, nine
+tea-factory interiors filed under "Ahangama", and every photograph of a village that is not this
+one. **Nothing borrowed on this page shows an interior, a bed or a meal, and nothing is of anywhere
+but Ahangama or open water.** Every use carries its credit in place, and all of them are listed
+again in the footer.
 
 ## conflicts
 
@@ -94,8 +124,9 @@ all of them are listed again in the footer.
 | Tap targets ≥ 44 px | pass — 0 under 44 |
 | Broken images | 0 |
 | `tools/check-design.mjs` | pass — light ground, no padded picture boxes, no captions under photographs |
+| `tools/check-places.mjs` | pass — every borrowed photograph is Ahangama or place-neutral, credited, and the share-alike ones are shown rather than adapted |
 
-**Measured** with `node tools/audit-mockup.mjs ka-surf-hostel-and-restaurant unique` on a throttled phone (1.6 Mbps, 150 ms RTT, 4x CPU), first load with no scroll: 225 KB of the 1.5 MB budget · JS 0 KB of 300 KB · fonts 51 KB of 150 KB · largest image 35 KB of 200 KB · LCP 556 ms of 2500 ms · CLS 0.0001 of 0.1 · 0 third-party hosts. Every line inside budget. Raw numbers in `audit.json`.
+**Measured** with `node tools/audit-mockup.mjs ka-surf-hostel-and-restaurant unique` on a throttled phone (1.6 Mbps, 150 ms RTT, 4x CPU), first load with no scroll: 281 KB of the 1.5 MB budget · JS 0 KB of 300 KB · fonts 51 KB of 150 KB · largest image 65 KB of 200 KB · LCP 1020 ms of 2500 ms · CLS 0 of 0.1 · 0 third-party hosts. Every line inside budget. Raw numbers in `audit.json`.
 
 ## what a visitor would notice is different
 

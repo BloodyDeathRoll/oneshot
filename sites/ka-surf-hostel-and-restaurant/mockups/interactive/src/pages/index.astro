@@ -18,9 +18,13 @@ const mapUrl = 'https://www.google.com/maps/search/KA%20Surf%20Hostel%20Ahangama
 const si = c.stayInfo;
 const menu = ['Rotis', 'Hoppers', 'Pancakes', 'Eggs', 'A fruit platter', 'A vegan option if you need one'];
 const legs = [['Kabalana Beach', 'a five-minute walk'], ['Ahangama railway station', 'a little over 2 km'], ['Koggala Airport', 'about 5 km']];
-const chart = photo('stock-008'), beach = photo('stock-001'), shore = photo('stock-006'), dusk = photo('stock-003'), palm = photo('stock-005');
+/* The dissolve composites its two inputs, which a share-alike licence does not
+   permit, so both of them are public domain / CC BY: the chart and flat water.
+   The Ahangama photographs (CC BY-SA) are shown whole, never fed to a shader. */
+const chart = photo('stock-025'), water = photo('stock-005');
+const beach = photo('stock-011'), stilts = photo('stock-012'), dusk = photo('stock-003'), sunset = photo('stock-007');
 const insideAll = ['img-002', 'img-013', 'img-014', 'img-003', 'img-004', 'img-011', 'img-001', 'img-005', 'img-012'];
-const borrowed = [chart, beach, shore, dusk, palm];
+const borrowed = [chart, water, beach, stilts, dusk, sunset];
 ---
 <!doctype html>
 <html lang="en">
@@ -44,16 +48,16 @@ const borrowed = [chart, beach, shore, dusk, palm];
      enhancement over the photograph; the chart credit stays visible either way. -->
 <section class="chart-pin">
   <div class="stick">
-    <img src={beach.src} srcset={beach.srcset} sizes="100vw" width={beach.width} height={beach.height}
-         alt={beach.alt} fetchpriority="high" />
-    <canvas data-soundings data-chart={chart.src} data-sea={beach.src} aria-hidden="true"></canvas>
+    <img src={water.src} srcset={water.srcset} sizes="100vw" width={water.width} height={water.height}
+         alt={water.alt} fetchpriority="high" />
+    <canvas data-soundings data-chart={chart.src} data-sea={water.src} aria-hidden="true"></canvas>
     <div class="veil"></div>
     <p class="depth" data-depth>Chart 3730 · 1909</p>
     <p class="credit">{chart.credit}</p>
     <div class="words">
       <div class="wrap">
         <h1>{c.tagline}</h1>
-        <p class="claim">A family hostel five minutes on foot from Kabalana. Breakfast is included, it is Sri Lankan, and it changes every morning.</p>
+        <p class="claim">A family hostel in Ahangama, five minutes on foot from Kabalana. Breakfast is included, it is Sri Lankan, and it changes every morning.</p>
         <p class="measure">
           <span class="n">5 min</span><span class="bar"></span><span class="to">on foot to Kabalana Beach</span>
         </p>
@@ -95,9 +99,9 @@ const borrowed = [chart, beach, shore, dusk, palm];
 </section>
 
 <figure class="bleed" style="margin:0">
-  <img src={shore.src} srcset={shore.srcset} sizes="100vw" width={shore.width} height={shore.height}
-       alt={shore.alt} loading="lazy" decoding="async" />
-  <figcaption class="credit">{shore.credit}</figcaption>
+  <img src={beach.src} srcset={beach.srcset} sizes="100vw" width={beach.width} height={beach.height}
+       alt={beach.alt} loading="lazy" decoding="async" />
+  <figcaption class="credit">{beach.credit}</figcaption>
 </figure>
 
 <section class="sec">
@@ -181,9 +185,9 @@ const borrowed = [chart, beach, shore, dusk, palm];
 </section>
 
 <figure class="bleed" style="margin:0">
-  <img src={palm.src} srcset={palm.srcset} sizes="100vw" width={palm.width} height={palm.height}
-       alt={palm.alt} loading="lazy" decoding="async" />
-  <figcaption class="credit">{palm.credit}</figcaption>
+  <img src={stilts.src} srcset={stilts.srcset} sizes="100vw" width={stilts.width} height={stilts.height}
+       alt={stilts.alt} loading="lazy" decoding="async" />
+  <figcaption class="credit">{stilts.credit}</figcaption>
 </figure>
 
 </main>
@@ -206,7 +210,7 @@ const borrowed = [chart, beach, shore, dusk, palm];
         <ul>{c.bookingLinks.map((b) => <li><a class="link" href={b.url} rel="noopener">{b.label}</a></li>)}</ul>
       </div>
     </div>
-    <p class="legal">Mockup 2 of 3 — “interactive”, on the chart archetype (see <code>concepts.md</code>). Every fact on this page comes from the dossier harvested on 19 September 2026; see notes.md. Photographs of the hostel, its rooms, its garden and its people are the hostel's own. The chart and the wide photographs of the coast are freely licensed and are of the place, not of this business.</p>
+    <p class="legal">Mockup 2 of 3 — “interactive”, on the chart archetype (see <code>concepts.md</code>). Every fact on this page comes from the dossier harvested on 19 September 2026; see notes.md. Photographs of the hostel, its rooms, its garden and its people are the hostel's own. The chart is the 1908–09 Admiralty survey of this coast. The wide photographs are freely licensed, are of Ahangama and the water off it, and are of the place rather than of this business.</p>
     <ul class="credits">{borrowed.map((p) => <li>{p.credit}</li>)}</ul>
   </div>
 </footer>
