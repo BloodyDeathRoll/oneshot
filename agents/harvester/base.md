@@ -1,4 +1,4 @@
-version: 0.2.0
+version: 0.3.0
 
 # harvester / base.md — written by Claude: role, inputs, outputs, hard constraints.
 

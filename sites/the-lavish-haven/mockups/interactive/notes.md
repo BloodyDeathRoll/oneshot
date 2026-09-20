@@ -79,6 +79,8 @@ room types are again set as **text**, in the rail; no card claims a photograph i
    therefore holds the two listings the hotel already sells through, plus the front desk number, and
    says so. The alternative — a date picker that collects dates and then drops them at an OTA link
    that ignores them — would look better in a screenshot and waste a real visitor's time.
+   The triggers are `<a href="#book">`, upgraded by script into the drawer, so the booking path
+   survives with JavaScript switched off.
 2. **`custom.md` asks for canvas over "static image grids"; references.md #19 records no precedent
    for it in the reference set, and playbook §10 requires that content not live only inside a
    canvas.** Resolved by keeping the canvas purely decorative: it draws the hotel's own photographs
@@ -91,7 +93,7 @@ room types are again set as **text**, in the rail; no card claims a photograph i
 |---|---|
 | Every fact traces to the dossier | pass — same content as mockup 1 |
 | Booking targets match the dossier character for character | pass — Booking.com, Agoda, `tel:+94764832988` |
-| Works with JavaScript off | pass — hero shows `img-002`; the drawer is a `<details>`, so it still opens, closes and is keyboard-reachable; the rail is a native scroller; the reveals start visible because `.rise` only hides once the observer runs |
+| Works with JavaScript off | pass, and verified: the hero shows `img-002`; every `Book` / `Check dates` / `Check this room` trigger is an `<a href="#book">` that lands on the footer booking block, which holds both listings and the phone number — the drawer is the enhancement, the link is the floor; the rail is a native scroller. Measured in Chromium with JavaScript disabled: 11 triggers, all anchors, 4 booking links in the footer block. |
 | WebGL missing or context lost | pass — `startPool` returns `null`, the canvas stays at `opacity: 0`, the photograph shows |
 | `prefers-reduced-motion` | pass — the shader never starts, parallax is skipped, the drawer has no transition, `scroll-behavior` is `auto` |
 | Keyboard | pass — Esc closes the drawer and focus returns to the button that opened it, verified in Chromium at 390 px and 1440 px |

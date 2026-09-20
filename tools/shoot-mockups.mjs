@@ -22,13 +22,33 @@ const serve = (dir, port) => new Promise(res => {
   }).listen(port, () => res(s));
 });
 
+/* Some mockups scroll the document; some put the page in its own scroll area so
+   that a fixed element can never cover content. Find whichever one actually
+   scrolls, sweep it, and sweep every horizontal rail too — lazy images inside a
+   sideways scroller never load otherwise. */
+const SCROLLER = `(() => {
+  const d = document.scrollingElement;
+  if (d.scrollHeight > d.clientHeight + 4) return d;
+  return [...document.querySelectorAll('*')].find((e) => {
+    const s = getComputedStyle(e);
+    return /auto|scroll/.test(s.overflowY) && e.scrollHeight > e.clientHeight + 4;
+  }) || d;
+})()`;
+
 const sweep = async (page) => {
-  await page.evaluate(async () => {
-    const h = document.documentElement.scrollHeight, step = innerHeight * 0.6;
-    for (let y = 0; y < h; y += step) { scrollTo(0, y); await new Promise((r) => setTimeout(r, 90)); }
-    scrollTo(0, 0); await new Promise((r) => setTimeout(r, 250));
-  });
-  await page.waitForTimeout(400);
+  await page.evaluate(async (S) => {
+    const el = eval(S);
+    for (const r of document.querySelectorAll('*')) {
+      if (r.scrollWidth > r.clientWidth + 4 && /auto|scroll/.test(getComputedStyle(r).overflowX)) {
+        for (let x = 0; x <= r.scrollWidth; x += r.clientWidth * 0.8) { r.scrollLeft = x; await new Promise((k) => setTimeout(k, 70)); }
+        r.scrollLeft = 0;
+      }
+    }
+    const step = el.clientHeight * 0.6;
+    for (let y = 0; y < el.scrollHeight; y += step) { el.scrollTop = y; await new Promise((k) => setTimeout(k, 90)); }
+    el.scrollTop = 0; await new Promise((k) => setTimeout(k, 250));
+  }, SCROLLER);
+  await page.waitForTimeout(500);
 };
 
 const b = await chromium.launch();
@@ -52,11 +72,10 @@ for (const slug of fs.readdirSync(path.join(root, 'sites'))) {
       await page.goto(url, { waitUntil: 'networkidle' });
       await sweep(page);
       await page.screenshot({ path: path.join(shots, `${name}.png`), fullPage: true });
-      const h = await page.evaluate(() => document.documentElement.scrollHeight);
-      const vh = ctx.viewport.height;
+      const { h, vh } = await page.evaluate((S) => { const el = eval(S); return { h: el.scrollHeight, vh: el.clientHeight }; }, SCROLLER);
       for (let i = 0; i < STOPS; i++) {
         const y = Math.round((h - vh) * (i / (STOPS - 1)));
-        await page.evaluate((y) => scrollTo(0, y), y);
+        await page.evaluate(([S, y]) => { eval(S).scrollTop = y; }, [SCROLLER, y]);
         await page.waitForTimeout(500);
         await page.screenshot({ path: path.join(shots, `${name}-${i + 1}.png`) });
       }
