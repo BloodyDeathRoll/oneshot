@@ -1,23 +1,23 @@
 {
  "slug": "ka-surf-hostel-and-restaurant",
  "variant": "calm",
- "measured_at": "2026-09-20T10:46:50.998Z",
+ "measured_at": "2026-09-20T11:25:21.001Z",
  "first_load": {
-  "requests": 13,
+  "requests": 10,
   "hosts": [
    "localhost:8980"
   ],
   "third_party_hosts": [],
-  "bytes_total": 357258,
-  "bytes_html": 23686,
+  "bytes_total": 331289,
+  "bytes_html": 27903,
   "bytes_js": 0,
   "bytes_css": 0,
-  "bytes_fonts": 84916,
-  "bytes_images": 248656,
-  "largest_image_bytes": 35840,
-  "lcp_ms": 348,
-  "cls": 0.0021,
-  "dcl_ms": 267
+  "bytes_fonts": 52380,
+  "bytes_images": 251006,
+  "largest_image_bytes": 96310,
+  "lcp_ms": 1140,
+  "cls": 0,
+  "dcl_ms": 287
  },
  "booking": {
   "external_booking_hrefs": [
@@ -41,14 +41,16 @@
   "note": "no drawer; every action is a plain link"
  },
  "a11y": {
-  "images": 12,
+  "images": 13,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 0,
-  "tapables": 17,
+  "tapables": 18,
   "tapables_under_44px": 0,
   "tapables_under_44px_examples": [],
   "headings": [
    "H1",
+   "H2",
+   "H2",
    "H2",
    "H2",
    "H2",
@@ -62,9 +64,9 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 5022,
+  "text_length": 6593,
   "booking_links_reachable": 4,
-  "visible_images": 12
+  "visible_images": 13
  },
  "reduced_motion": {
   "canvases": 0,
@@ -72,13 +74,17 @@
   "photograph_visible": true
  },
  "facts": {
-  "numbers_on_page": 29,
+  "numbers_on_page": 31,
   "numbers_not_in_passed_copy": [
-   "01",
-   "04",
-   "19",
-   "1024",
-   "576"
+   "58",
+   "22",
+   "3730",
+   "1909",
+   "3.0,",
+   "13:00.",
+   "49690298623",
+   "2.0,",
+   "19"
   ],
   "note": "copy/en.json passed station 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps each paragraph to its dossier fields. A number here that is not in the copy is either an interface label (01, 02…) or a claim to chase."
  }
