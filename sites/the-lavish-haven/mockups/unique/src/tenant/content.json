@@ -1,0 +1,384 @@
+{
+ "slug": "the-lavish-haven",
+ "locale": "en",
+ "copywriter_version": "0.1.0",
+ "humanizer_version": "0.1.0",
+ "businessName": "The Lavish Haven",
+ "tagline": "A new hotel, two minutes from Kabalana",
+ "copyBlocks": [
+  {
+   "slot": "intro",
+   "heading": "Off the main road, over the surf",
+   "body": "Kabalana Beach is a two-minute walk. The main road is not — the hotel sits back from it, which is the difference between sleeping and listening to tuk-tuks all night.\n\nCafés and restaurants are in every direction. The pool is in the middle of the hotel, and most evenings that is where people end up."
+  },
+  {
+   "slot": "about",
+   "heading": "New, and it shows",
+   "body": "The hotel opened recently enough that one guest wrote he was the first customer. Everything is still new: the rooms, the bathrooms, the air conditioning. Guests score it 9.7 out of 10 for cleanliness and 9.7 for comfort on Booking.com, across 34 reviews, and 5.0 on Google across 21.\n\nRooms are large — larger than the rate suggests, which is the most common thing said about the place after the staff."
+  },
+  {
+   "slot": "about",
+   "heading": "The staff are the reason people extend",
+   "body": "More than one guest has moved hotels, landed here, and stayed. One stayed over a month. Another cancelled the next hotel and stayed put. Staff score 9.4 on Booking.com."
+  },
+  {
+   "slot": "offer",
+   "heading": "Nine kinds of room",
+   "body": "King rooms with a balcony, a garden view, or a private patio onto the pool. Superior kings. Family studios and junior suites that sleep four, and a two-bedroom suite that sleeps five.\n\nEvery room has air conditioning, a private bathroom, soundproofing, a work desk and free WiFi. Rates depend on the room and the dates — the booking links show what is free."
+  },
+  {
+   "slot": "offer",
+   "heading": "Pool, restaurant, spa",
+   "body": "An outdoor pool, open all year, in the middle of the hotel. A restaurant serving breakfast with local specialities and fresh pastries, and Chinese, Indian and Italian through the day. A coffee house on site. A spa and wellness centre.\n\nFor families: family rooms, kids' meals, an outdoor play area and babysitting on request."
+  },
+  {
+   "slot": "info",
+   "heading": "Practicalities",
+   "body": "A 24-hour front desk, with private and express check-in. Free private parking on site, by reservation. An airport shuttle — Koggala Airport is about 5 km away.\n\nDaily housekeeping, laundry, dry cleaning and ironing. Bicycle rental. Facilities for guests with disabilities. Non-smoking rooms."
+  }
+ ],
+ "spot": "Kabalana: a sandy beach break that suits beginners and improvers, with The Rock reef alongside it when the swell is up.",
+ "season": null,
+ "rooms": [
+  {
+   "label": "Deluxe King Room with private patio and pool view",
+   "beds": "1 king bed",
+   "note": "ground floor"
+  },
+  {
+   "label": "Superior King Room",
+   "beds": "1 king bed"
+  },
+  {
+   "label": "King Room with garden view",
+   "beds": "1 king bed"
+  },
+  {
+   "label": "King Room with balcony",
+   "beds": "1 king bed"
+  },
+  {
+   "label": "Deluxe Family Suite",
+   "beds": "1 king and 1 queen bed",
+   "sleeps": 4
+  },
+  {
+   "label": "Family Studio",
+   "beds": "1 full and 1 king bed",
+   "sleeps": 4
+  },
+  {
+   "label": "Family Junior Suite",
+   "beds": "1 full and 1 king bed",
+   "sleeps": 4
+  },
+  {
+   "label": "Family Suite",
+   "beds": "1 king and 1 queen bed",
+   "sleeps": 4
+  },
+  {
+   "label": "Two-Bedroom Suite",
+   "beds": "2 king beds and 1 sofa bed",
+   "sleeps": 5
+  }
+ ],
+ "stayInfo": {
+  "note": "The front desk is staffed 24 hours, with private and express check-in and check-out."
+ },
+ "amenities": [
+  {
+   "label": "Outdoor swimming pool",
+   "note": "open all year"
+  },
+  {
+   "label": "Restaurant"
+  },
+  {
+   "label": "Coffee house on site"
+  },
+  {
+   "label": "Spa and wellness centre"
+  },
+  {
+   "label": "Free WiFi in all areas"
+  },
+  {
+   "label": "Family rooms"
+  },
+  {
+   "label": "Airport shuttle"
+  },
+  {
+   "label": "Room service"
+  },
+  {
+   "label": "24-hour front desk"
+  },
+  {
+   "label": "Private and express check-in / check-out"
+  },
+  {
+   "label": "Free private parking",
+   "note": "reservation needed"
+  },
+  {
+   "label": "Facilities for disabled guests"
+  },
+  {
+   "label": "Non-smoking rooms"
+  },
+  {
+   "label": "Sun deck, terrace, balcony and garden"
+  },
+  {
+   "label": "Outdoor dining area"
+  },
+  {
+   "label": "BBQ facilities",
+   "note": "additional charge"
+  },
+  {
+   "label": "Shared kitchen with kettle and refrigerator"
+  },
+  {
+   "label": "Outdoor play equipment for kids"
+  },
+  {
+   "label": "Babysitting and child services",
+   "note": "additional charge"
+  },
+  {
+   "label": "Kids' meals",
+   "note": "additional charge"
+  },
+  {
+   "label": "Bicycle rental",
+   "note": "additional charge"
+  },
+  {
+   "label": "Daily housekeeping"
+  },
+  {
+   "label": "Laundry, dry cleaning and ironing",
+   "note": "additional charge"
+  },
+  {
+   "label": "Baggage storage"
+  },
+  {
+   "label": "Extra-long beds"
+  }
+ ],
+ "ratings": [
+  {
+   "platform": "booking",
+   "score": 9.2,
+   "scale": "10",
+   "count": 34,
+   "url": "https://www.booking.com/hotel/lk/the-lavish-haven.html"
+  },
+  {
+   "platform": "google",
+   "score": 5,
+   "scale": "5",
+   "count": 21
+  }
+ ],
+ "testimonials": [
+  {
+   "quote": "Everything was excellent! Best value for money there is! We moved around many hotels until we found the lavish and stayed over a month! Super...",
+   "author": "Mya, Sri Lanka",
+   "source": "booking"
+  },
+  {
+   "quote": "It's a brand new hotel located in the best part of Ahangama, next to the Kabalana Beach.",
+   "author": "Dariusz, Poland",
+   "source": "booking"
+  },
+  {
+   "quote": "The staff are calm, respectful and nice. The facilities are amazing, the swimming pool at the center creates a good vibe where people can meet up...",
+   "author": "António, Portugal",
+   "source": "booking"
+  },
+  {
+   "quote": "Very kind staff, we loved the hotel so much that we extended our stay in it instead of going to another one, nice rooms and nice pool we will...",
+   "author": "Roie, Israel",
+   "source": "booking"
+  },
+  {
+   "quote": "Hier war alles schön, und die Mitarbeiter so süss, lieb, nett und freundlich. Wir wollten gar nicht wieder weg.",
+   "author": "Benjamin, Switzerland",
+   "source": "booking"
+  }
+ ],
+ "contact": {
+  "phone": "+94764832988",
+  "address": "Ahangama, Sri Lanka"
+ },
+ "bookingLinks": [
+  {
+   "label": "Check dates on Booking.com",
+   "url": "https://www.booking.com/hotel/lk/the-lavish-haven.html"
+  },
+  {
+   "label": "Check dates on Agoda",
+   "url": "https://www.agoda.com/the-lavish-haven-h82617698/hotel/piyadigama-lk.html"
+  }
+ ],
+ "languagesSpoken": [
+  "en"
+ ],
+ "photos": {
+  "img-002": {
+   "id": "img-002",
+   "alt": "The hotel's two-storey room blocks lit at night, wrapped around the lit pool",
+   "asset": "img-002",
+   "license": "business-owned",
+   "width": 1024,
+   "height": 768,
+   "src": "photos/img-002-1024.webp",
+   "srcset": "photos/img-002-1024.webp 1024w, photos/img-002-640.webp 640w, photos/img-002-400.webp 400w",
+   "bytes": {
+    "400": 15620,
+    "640": 31162,
+    "1024": 56188
+   }
+  },
+  "img-078": {
+   "id": "img-078",
+   "alt": "The pool and the garden from above, palms on every side",
+   "asset": "img-078",
+   "license": "business-owned",
+   "width": 1024,
+   "height": 768,
+   "src": "photos/img-078-1024.webp",
+   "srcset": "photos/img-078-1024.webp 1024w, photos/img-078-640.webp 640w, photos/img-078-400.webp 400w",
+   "bytes": {
+    "400": 32682,
+    "640": 75528,
+    "1024": 156220
+   }
+  },
+  "img-072": {
+   "id": "img-072",
+   "alt": "A guest balcony with timber chairs, looking down through palms to the pool",
+   "asset": "img-072",
+   "license": "business-owned",
+   "width": 1024,
+   "height": 768,
+   "src": "photos/img-072-1024.webp",
+   "srcset": "photos/img-072-1024.webp 1024w, photos/img-072-640.webp 640w, photos/img-072-400.webp 400w",
+   "bytes": {
+    "400": 22636,
+    "640": 48358,
+    "1024": 89354
+   }
+  },
+  "img-065": {
+   "id": "img-065",
+   "alt": "A guest balcony in hard afternoon light, timber chairs under a slatted roof",
+   "asset": "img-065",
+   "license": "business-owned",
+   "width": 1024,
+   "height": 768,
+   "src": "photos/img-065-1024.webp",
+   "srcset": "photos/img-065-1024.webp 1024w, photos/img-065-640.webp 640w, photos/img-065-400.webp 400w",
+   "bytes": {
+    "400": 24326,
+    "640": 53858,
+    "1024": 106392
+   }
+  },
+  "img-067": {
+   "id": "img-067",
+   "alt": "The pool seen from a stairwell, framed by a palm",
+   "asset": "img-067",
+   "license": "business-owned",
+   "width": 1024,
+   "height": 768,
+   "src": "photos/img-067-1024.webp",
+   "srcset": "photos/img-067-1024.webp 1024w, photos/img-067-640.webp 640w, photos/img-067-400.webp 400w",
+   "bytes": {
+    "400": 25658,
+    "640": 58314,
+    "1024": 116074
+   }
+  },
+  "img-042": {
+   "id": "img-042",
+   "alt": "A bathroom with a dark tiled wall and a lit mirror over a white basin",
+   "asset": "img-042",
+   "license": "business-owned",
+   "width": 1024,
+   "height": 768,
+   "src": "photos/img-042-1024.webp",
+   "srcset": "photos/img-042-1024.webp 1024w, photos/img-042-640.webp 640w, photos/img-042-400.webp 400w",
+   "bytes": {
+    "400": 9168,
+    "640": 18920,
+    "1024": 35114
+   }
+  },
+  "img-057": {
+   "id": "img-057",
+   "alt": "A bathroom tiled floor to ceiling in timber-toned stone, with a rain shower",
+   "asset": "img-057",
+   "license": "business-owned",
+   "width": 1024,
+   "height": 768,
+   "src": "photos/img-057-1024.webp",
+   "srcset": "photos/img-057-1024.webp 1024w, photos/img-057-640.webp 640w, photos/img-057-400.webp 400w",
+   "bytes": {
+    "400": 18628,
+    "640": 39940,
+    "1024": 74420
+   }
+  },
+  "img-014": {
+   "id": "img-014",
+   "alt": "A guest room with a stone feature wall, a large bed and a desk by the window",
+   "asset": "img-014",
+   "license": "business-owned",
+   "width": 1024,
+   "height": 768,
+   "src": "photos/img-014-1024.webp",
+   "srcset": "photos/img-014-1024.webp 1024w, photos/img-014-640.webp 640w, photos/img-014-400.webp 400w",
+   "bytes": {
+    "400": 10136,
+    "640": 19884,
+    "1024": 34624
+   }
+  },
+  "img-047": {
+   "id": "img-047",
+   "alt": "A guest room with two beds under a high pitched ceiling",
+   "asset": "img-047",
+   "license": "business-owned",
+   "width": 1024,
+   "height": 768,
+   "src": "photos/img-047-1024.webp",
+   "srcset": "photos/img-047-1024.webp 1024w, photos/img-047-640.webp 640w, photos/img-047-400.webp 400w",
+   "bytes": {
+    "400": 13328,
+    "640": 25524,
+    "1024": 45318
+   }
+  },
+  "img-001": {
+   "id": "img-001",
+   "alt": "The pool lit from within at dusk, the room blocks glowing on both sides",
+   "asset": "img-001",
+   "license": "business-owned",
+   "width": 1024,
+   "height": 768,
+   "src": "photos/img-001-1024.webp",
+   "srcset": "photos/img-001-1024.webp 1024w, photos/img-001-640.webp 640w, photos/img-001-400.webp 400w",
+   "bytes": {
+    "400": 14248,
+    "640": 28656,
+    "1024": 51074
+   }
+  }
+ }
+}

@@ -30,7 +30,7 @@ const plates = [
 
 <header class="site-head">
   <span class="name">{c.businessName}</span>
-  <button class="book-open" data-open-drawer type="button">Book</button>
+  <a class="book-open" href="#book" data-open-drawer>Book</a>
 </header>
 
 <!-- The pool, pinned. The canvas is an enhancement over the photograph; with no
@@ -85,7 +85,7 @@ const plates = [
           <span class="label">{r.label}</span>
           <span class="beds">{r.beds}{r.note ? `, ${r.note}` : ''}</span>
           {r.sleeps ? <span class="sleeps">Sleeps {r.sleeps}</span> : null}
-          <button class="book" data-open-drawer type="button">Check this room</button>
+          <a class="book" href="#book" data-open-drawer>Check this room</a>
         </article>
       ))}
     </div>
@@ -210,7 +210,7 @@ const plates = [
 </details>
 
 <nav class="mobile-dock" aria-label="Book">
-  <button data-open-drawer type="button">Check dates</button>
+  <a href="#book" data-open-drawer>Check dates</a>
   <a class="alt" href={`tel:${c.contact.phone}`}>Call</a>
 </nav>
 
@@ -274,7 +274,9 @@ par();
    Esc, the backdrop click, and returning focus to whatever opened it. */
 const drawer = document.querySelector('[data-drawer]');
 let opener = null;
-const open = (e) => { opener = e.currentTarget; drawer.open = true;
+/* The triggers are real links to the booking block in the footer, so they
+   work with JavaScript off. With JavaScript, they open the drawer instead. */
+const open = (e) => { e.preventDefault(); opener = e.currentTarget; drawer.open = true;
   drawer.querySelector('.act')?.focus({ preventScroll: true }); };
 const close = () => { drawer.open = false; opener?.focus({ preventScroll: true }); opener = null; };
 document.querySelectorAll('[data-open-drawer]').forEach((b) => b.addEventListener('click', open));
