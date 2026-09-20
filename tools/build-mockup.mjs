@@ -9,7 +9,15 @@
 // report the weight against playbook §4.
 //
 // The mockup declares which photos it wants, and what each one shows, in
-//   sites/<slug>/mockups/<variant>/photos.json   -> [{ "id": "img-001", "alt": "..." }]
+//   sites/<slug>/mockups/<variant>/photos.json
+//     -> [{ "id": "img-001", "alt": "...", "rotate": 270, "role": "bleed" }]
+//
+// "role": "bleed" means the photograph is used full-bleed. The build refuses it
+// below MIN_BLEED_WIDTH px, because an upscaled phone photograph stretched
+// across a 1440 px hero is the fastest way to make a site look worthless -
+// which is what happened to KA Surf Hostel's 576 px long-table photograph on
+// 2026-09-20. Use it small and matted instead, or let type carry the screen
+// (agents/designer/references.md #8, #9, #10).
 // Alt text is written here because the dossier's asset index only says
 // "Booking.com listing photo" for every image (a gap, recorded in notes.md).
 //
@@ -25,7 +33,8 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SPIKE = join(ROOT, 'spikes/payload/site');
 const sharp = createRequire(join(SPIKE, 'package.json'))('sharp');
 
-const WIDTHS = [1024, 640, 400];
+const WIDTHS = [1600, 1280, 1024, 640, 400];
+const MIN_BLEED_WIDTH = 1200;
 const [slug, variant] = process.argv.slice(2);
 const noBuild = process.argv.includes('--no-build');
 if (!slug || !variant) { console.error('usage: build-mockup.mjs <slug> <variant> [--no-build]'); process.exit(2); }
@@ -73,7 +82,13 @@ for (const w of wanted) {
     await sharp(src).rotate(turn).resize({ width }).webp({ quality: width >= 1024 ? 70 : 74 }).toFile(join(outDir, name));
     srcset.push({ w: width, src: `photos/${name}`, bytes: statSync(join(outDir, name)).size });
   }
+  if (w.role === 'bleed' && outW < MIN_BLEED_WIDTH) {
+    console.error(`photos.json: ${w.id} is ${outW}x${outH} and is marked role:"bleed", but a full-bleed ` +
+      `photograph must be at least ${MIN_BLEED_WIDTH}px wide. Use it small, or change the design.`);
+    process.exit(1);
+  }
   photos[w.id] = {
+    role: w.role ?? 'inline',
     id: w.id, alt: w.alt, asset: asset.id, license: asset.license,
     width: Math.min(outW, WIDTHS[0]),
     height: Math.round(Math.min(outW, WIDTHS[0]) * outH / outW),
