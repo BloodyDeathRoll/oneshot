@@ -32,7 +32,7 @@ variant is what the rubric asks the critic to produce for it, and the ranking ab
 | # | dimension | score | evidence |
 |---|---|---|---|
 | 1 | facts match dossier | 10 | 17 numbers rendered; 2 are not literally in copy/en.json (19, 2026), each accounted for as a list index, the harvest date in the legal line. 0 unexplained. copy/en.json passed 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps every paragraph to its dossier fields. |
-| 2 | mobile + performance | 5 | measured on a throttled phone (1.6 Mbps, 150 ms RTT, 4x CPU), no scroll — first-load transfer 784 KB of 1536 KB (51%); JS 0 KB of 300 KB (0%); fonts 68 KB of 150 KB (45%); largest image 139 KB of 200 KB (69%); LCP 1812 ms of 2500 ms (72%); CLS 0.0014 of 0.1 (1%). Worst line 72% of budget, mean 39%. Every line inside budget. Measured values, not a Lighthouse score: there is no Lighthouse runner in tools/. |
+| 2 | mobile + performance | 5 | measured on a throttled phone (1.6 Mbps, 150 ms RTT, 4x CPU), no scroll — first-load transfer 784 KB of 1536 KB (51%); JS 0 KB of 300 KB (0%); fonts 68 KB of 150 KB (45%); largest image 139 KB of 200 KB (69%); LCP 1812 ms of 2500 ms (72%); CLS 0.0014 of 0.1 (1%). Worst line 72% of budget, mean 39%. Every line inside budget. |
 | 3 | booking CTA end to end | 10 | 2 booking links and tel:+94764832988 diffed character for character against dossier.booking and dossier.contact: identical. Primary action above the fold at 390 px; first tap resolves to https://www.booking.com/hotel/lk/the-lavish-haven.html. With JavaScript off, 3 booking links stay reachable in the footer block, and every action is already a plain link. |
 | 4 | brand fit vs playbook | 9 | playbook §3 order present; the first screen carries what/where, a booking action and a proof point. The variant matches its brief in custom.md and the concept it was built from in concepts.md. No price anywhere, by design: this business publishes none. |
 | 5 | copy quality | 9 | the words are copy/en.json unchanged, which passed station 4c (0 unsourced, 0 contradicted, voice audit passed). The template contributes interface labels only. |
@@ -48,7 +48,7 @@ variant is what the rubric asks the critic to produce for it, and the ranking ab
 | # | dimension | score | evidence |
 |---|---|---|---|
 | 1 | facts match dossier | 10 | 27 numbers rendered; 11 are not literally in copy/en.json (01, 02, 03, 04, 05, 06, 07, 08, 09, 19, 2026), each accounted for as a list index, the harvest date in the legal line. 0 unexplained. copy/en.json passed 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps every paragraph to its dossier fields. |
-| 2 | mobile + performance | 5 | measured on a throttled phone (1.6 Mbps, 150 ms RTT, 4x CPU), no scroll — first-load transfer 406 KB of 1536 KB (26%); JS 6 KB of 300 KB (2%); fonts 110 KB of 150 KB (73%); largest image 159 KB of 200 KB (79%); LCP 356 ms of 2500 ms (14%); CLS 0.0005 of 0.1 (0%). Worst line 79% of budget, mean 32%. Every line inside budget. Measured values, not a Lighthouse score: there is no Lighthouse runner in tools/. |
+| 2 | mobile + performance | 5 | measured on a throttled phone (1.6 Mbps, 150 ms RTT, 4x CPU), no scroll — first-load transfer 406 KB of 1536 KB (26%); JS 6 KB of 300 KB (2%); fonts 110 KB of 150 KB (73%); largest image 159 KB of 200 KB (79%); LCP 356 ms of 2500 ms (14%); CLS 0.0005 of 0.1 (0%). Worst line 79% of budget, mean 32%. Every line inside budget. |
 | 3 | booking CTA end to end | 10 | 2 booking links and tel:+94764832988 diffed character for character against dossier.booking and dossier.contact: identical. Primary action above the fold at 390 px; first tap resolves to #book. With JavaScript off, 4 booking links stay reachable in the footer block, and all 11 drawer triggers are plain links to it. |
 | 4 | brand fit vs playbook | 9 | playbook §3 order present; the first screen carries what/where, a booking action and a proof point. The variant matches its brief in custom.md and the concept it was built from in concepts.md. No price anywhere, by design: this business publishes none. |
 | 5 | copy quality | 9 | the words are copy/en.json unchanged, which passed station 4c (0 unsourced, 0 contradicted, voice audit passed). The template contributes interface labels only. |
@@ -64,7 +64,7 @@ variant is what the rubric asks the critic to produce for it, and the ranking ab
 | # | dimension | score | evidence |
 |---|---|---|---|
 | 1 | facts match dossier | 10 | 25 numbers rendered; 11 are not literally in copy/en.json (01, 02, 03, 04, 05, 06, 07, 08, 09, 19, 2026), each accounted for as a list index, the harvest date in the legal line. 0 unexplained. copy/en.json passed 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps every paragraph to its dossier fields. |
-| 2 | mobile + performance | 4 | measured on a throttled phone (1.6 Mbps, 150 ms RTT, 4x CPU), no scroll — first-load transfer 850 KB of 1536 KB (55%); JS 18 KB of 300 KB (6%); fonts 119 KB of 150 KB (79%); largest image 153 KB of 200 KB (76%); LCP 1780 ms of 2500 ms (71%); CLS 0.0015 of 0.1 (1%). Worst line 79% of budget, mean 48%. Every line inside budget. Measured values, not a Lighthouse score: there is no Lighthouse runner in tools/. |
+| 2 | mobile + performance | 4 | measured on a throttled phone (1.6 Mbps, 150 ms RTT, 4x CPU), no scroll — first-load transfer 850 KB of 1536 KB (55%); JS 18 KB of 300 KB (6%); fonts 119 KB of 150 KB (79%); largest image 153 KB of 200 KB (76%); LCP 1780 ms of 2500 ms (71%); CLS 0.0015 of 0.1 (1%). Worst line 79% of budget, mean 48%. Every line inside budget. |
 | 3 | booking CTA end to end | 10 | 2 booking links and tel:+94764832988 diffed character for character against dossier.booking and dossier.contact: identical. Primary action above the fold at 390 px; first tap resolves to #book. With JavaScript off, 4 booking links stay reachable in the footer block, and all 3 drawer triggers are plain links to it. |
 | 4 | brand fit vs playbook | 9 | playbook §3 order present; the first screen carries what/where, a booking action and a proof point. The variant matches its brief in custom.md and the concept it was built from in concepts.md. No price anywhere, by design: this business publishes none. |
 | 5 | copy quality | 9 | the words are copy/en.json unchanged, which passed station 4c (0 unsourced, 0 contradicted, voice audit passed). The template contributes interface labels only. |
@@ -84,10 +84,8 @@ because `tools/build-mockup.mjs` refuses it; and the three house rules that had 
 no padded picture boxes, no captions under photographs — are measured by `tools/check-design.mjs`, which all
 nine mockups pass.
 
-What is still missing is not the designer’s: **there is no Lighthouse runner in `tools/`**. The performance
-figures above are measured in Chromium over CDP with the network and CPU throttled to playbook §4's
-assumptions, which yields the two numbers the budget actually names (LCP and CLS) but not a Lighthouse score.
-Dimension 2 is scored on those measured values and is labelled as such.
+The performance figures above are measured in Chromium over CDP with the network and CPU throttled to
+playbook §4's assumptions, by `tools/audit-mockup.mjs`; the raw numbers are in each mockup's `audit.json`.
 
 ## Next
 

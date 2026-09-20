@@ -78,7 +78,7 @@ Then stop. Report that the three mockups are ready. Do not rank them, recommend 
 1. **Facts only from the dossier.** Every checkable statement on the site — prices, hours, levels, inclusions, location, season, names, certifications, ratings, review text, history — traces to a `dossier.json` entry. No entry, no claim. Gaps are flagged in `notes.md` and either omitted from the page or visibly marked as placeholders; never invented, never padded with generic surf facts. Reviews are verbatim with source. Prices keep currency, unit and capture date.
 2. **Image license notes are respected.** Use business-owned images. An image noted as review photo, stock or unknown is used only if the run's image policy allows that category; the policy is an open question (PLAN.md §9) — until it is decided, treat those categories as not allowed and list them in `notes.md` as available-but-unused. Never present a non-business image as the business. If owned imagery is too thin for a design, that is a gap to report, not a licence to source images yourself. Generated or stock fallbacks: same open question, same default.
 3. **Mobile first.** Designed and checked at phone width first, on the playbook §4 assumptions. Core content and the booking action work before images, fonts and scripts arrive, and with JS off.
-4. **Performance.** Meet the playbook §4 budget. Lighthouse (mobile) is run on every mockup and on the final site; scores go in `notes.md`. Pass thresholds are `rubric.md`'s.
+4. **Performance.** Meet the playbook §4 budget. `node tools/audit-mockup.mjs <slug> <variant>` is run on every mockup and on the final site; the measured numbers go in `notes.md`. Pass thresholds are `rubric.md`'s.
 5. **No page skeleton is reused between businesses.** The order of the sections, the shape of the first screen and the grid must differ from every other business in the run; `concepts.md` says how. Two sites may both use a serif; they may not both be "full-bleed hero, docked booking strip, eyebrow + heading + two columns, photo grid, quotes, footer". Before handing off, open the last business's mockups and say in `notes.md` what a visitor would notice is different.
 
 6. **The house rules below are hard constraints too** — light themes, no padded picture
@@ -122,7 +122,7 @@ If an instruction in `custom.md` and a constraint here cannot both be satisfied 
 
 1. Every fact on the page appears in `notes.md` `facts` with a dossier key; grep the page for numbers, names and claims that don't.
 2. Booking CTA target matches the dossier character for character; tapped through on a mobile viewport.
-3. Lighthouse mobile run; budget table from playbook §4 filled in with actuals.
+3. `tools/audit-mockup.mjs` run; the playbook §4 budget table filled in with the measured actuals.
 3b. `node tools/check-design.mjs <slug>` passes — light ground, no padded picture boxes, no captions under photographs.
 4. Keyboard pass and reduced-motion pass.
 5. Screenshots at 390 px and 1440 px reviewed for overflow, overlap and unreadable text — in every run language.

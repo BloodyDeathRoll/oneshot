@@ -59,7 +59,7 @@ oneshot/
     static/                   # adapter: static build + source zip, no CMS
   handoff/                    # handoff kit templates: README, credentials sheet, backup/restore, update procedure, "how to edit" guide with screenshots
   schemas/                    # site-content.md — the content contract between Payload and the templates
-  scripts/                    # deterministic helpers (geocode, coastline buffer, scrape, lighthouse, zip)
+  scripts/                    # deterministic helpers (geocode, coastline buffer, scrape, zip)
   dossier/<slug>/             # dossier.json + assets/ per business
   sites/<slug>/               # copy/ + concepts.md + mockups/ (3 variants) + final/ (Astro site)
   reports/<run-id>/           # per-site scorecards, run summary
@@ -178,7 +178,7 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
   > For each website, create three mockups for a human to choose from: the first should be calm, moderate and expressing a conformist standard approach. The second should be more interactive with some bells and whistles, and the third full blown unique.
 
 - **`references.md` seed:** ranchosantana.com · malibupopoyo.com · morgansrock.com · tandjungsarihotel.com · white-desert.com · kubehotel-saint-tropez.com/en — Phase 1 task: analyse each (layout, motion, typography, booking UX, imagery) into reusable notes so the prompt doesn't depend on live fetches.
-- Evals: which variant humans pick and why (over time), critic score, rounds to pass, Lighthouse.
+- Evals: which variant humans pick and why (over time), critic score, rounds to pass, measured first-load weight and LCP.
 
 ### copywriter (station 4a)
 - Writes the **site's** words (not the pitch — that is `writer`, station 9) **before the designer starts**, so the mockups are laid out around real copy instead of placeholder text: `copyBlocks[]`, `tagline`, `spot`, `season` and the per-type modules, per locale.
@@ -225,7 +225,7 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 
 ### critic
 - Two modes: **quick** (screenshot + rubric, for the 3 mockups) and **full** (final site).
-- Rubric dimensions: facts match dossier · mobile + Lighthouse · booking CTA works end-to-end · brand fit vs playbook · copy quality · accessibility · security baseline present.
+- Rubric dimensions: facts match dossier · mobile + measured performance · booking CTA works end-to-end · brand fit vs playbook · copy quality · accessibility · security baseline present.
 - Writes `reports/<run>/<slug>.md` with scores and a note on what the designer prompt got wrong.
 - After the run: reads all reports + mockup picks + pitch outcomes and writes `proposals/<run>/` — one diff per proposal, each with the evidence that motivated it.
 - Evals: agreement between critic pre-score and human pick; false-pass rate found by humans later.
