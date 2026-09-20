@@ -189,7 +189,10 @@ a { color: inherit; }
 @media (min-width: 680px) { .ledger li { grid-template-columns: 1fr 13rem auto; } }
 .ledger .what { font-family: var(--serif); font-size: 1.2rem; }
 .ledger .detail { font-size: 14px; color: #6f6152; }
-.ledger .go { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--clay); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; justify-self: start; }
+/* a tap target, not a footnote: 44 px minimum (playbook §4) */
+.ledger .go { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--clay); text-decoration: none; justify-self: start; display: inline-flex; align-items: center; min-height: 44px; padding: 0 2px; border-bottom: 0; }
+.ledger .go::after { content: ''; position: absolute; }
+.ledger .go span { border-bottom: 1px solid currentColor; padding-bottom: 2px; }
 
 /* ---------- tags for what is here ---------- */
 .labels { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
