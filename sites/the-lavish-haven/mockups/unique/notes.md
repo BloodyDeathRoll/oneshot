@@ -43,6 +43,25 @@ Read against `agents/designer/references.md`:
   cyan bar sitting on the waterline on every phone screen.
 - **#20 nothing covers the content** — which is why the page is its own scroll area (see below).
 
+## revision, 2026-09-20 (Shahar's review)
+
+1. **The heading is projected on the water, not reflected in it.** A true reflection flips the
+   letters, and flipped letters cannot be read — the wrong trade for the one word that tells you
+   which section you are in. The text texture is now uploaded the right way up and the swell moves
+   under it, so it reads as type thrown onto a moving surface. The water itself is unchanged.
+2. **"Nice design but plain."** Four additions, all of them from material this business already has:
+   - **A house mark.** A set of swell lines drawn once as SVG (`src/components/Swell.astro`) and
+     reused as the divider under the hero and as the ground under the nine doors. This is
+     references.md **#11** — Morgan's Rock's contour pattern, the cheapest identity device there is:
+     one SVG, no photographs needed. Kabalana's swell runs from the south-south-west, so the lines do.
+   - **A ghost numeral.** The nine sits behind the room specification at 17 rem, so a page of prose
+     has a scale in it.
+   - **The platform ratings set large.** 9.2 and 5.0 are the strongest proof this hotel has; they
+     were 1.35 rem and are now up to 2.9 rem of display weight.
+   - **Two full-bleed photographs** between the long text runs, with the same parallax the other
+     mockups use, off on phones and under `prefers-reduced-motion`.
+3. **The Rosa forecast for Kabalana** sits beside "The wave" — see the conflict below.
+
 ## facts
 
 Every word other than interface labels comes from `copy/en.json`, which the copyeditor passed with
@@ -75,8 +94,9 @@ by looking at each image.
 |---|---|
 | `img-002` | the courtyard band: the `<img>` that shows without WebGL, and the shader's pool texture |
 | `img-078` `img-072` `img-067` `img-065` `img-014` `img-047` `img-042` `img-057` `img-001` | the sideways run |
+| `img-073` `img-077` | the two full-bleed bands |
 
-The hero uses **no photograph at all** — it is type on plaster. 70 business-owned photographs are
+The hero uses **no photograph at all** — it is type on plaster. 67 business-owned photographs are
 unused. No review photo, stock or generated image is used.
 
 ## conflicts
@@ -96,6 +116,14 @@ unused. No review photo, stock or generated image is used.
    listings the hotel already sells through plus the front desk number, carries across which room
    you were looking at, and says in plain words why it does not ask for dates.
 
+3. **The Rosa widget is a third-party embed, and playbook §4 says "third-party requests on load: 0"
+   and "all assets self-hosted".** Shahar asked for it and it earns its place — the visitor is a
+   surfer and Kabalana is why they are booking. The iframe is `loading="lazy"` so it is off the
+   critical path and outside the first-load budget, it is sandboxed, and it carries
+   `referrerpolicy="strict-origin-when-cross-origin"`. It remains a live dependency on `rosa.surf`:
+   if that host is down the visitor sees an empty frame. The dossier-sourced spot sentence above it
+   stands on its own. Flagged, not hidden.
+
 ## self-check
 
 | Check | Result |
@@ -110,7 +138,7 @@ unused. No review photo, stock or generated image is used.
 | Mobile 390 px / desktop 1440 px | pass — `shots/mobile-*.png`, `shots/desktop-*.png`; no overflow, no overlap |
 | Tap targets ≥ 44 px | pass |
 | Broken images | 0 |
-| Self-hosted, no third party | pass — 0 external requests; fonts vendored; the shader is hand-written |
+| Self-hosted, no third party | **partial** — 0 external requests on first load; fonts vendored, the house mark and the platform marks drawn inline, the shader hand-written. The Rosa forecast iframe (`rosa.surf`) is one deliberate third-party embed, lazy and sandboxed. See conflicts. |
 
 **Weight** (`weight.json`): html + inlined css 25 KB · JS 16 KB · fonts 119 KB (Bricolage Grotesque
 + Inter Tight) · images 1320 KB across all widths of all 10 photographs.
