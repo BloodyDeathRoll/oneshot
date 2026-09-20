@@ -84,13 +84,13 @@ a { color: inherit; }
 
 /* ---------- the booking strip, docked under the hero ---------- */
 .dock { background: var(--paper-deep); border-bottom: 1px solid var(--rule); }
-.dock .inner { display: grid; gap: 14px; padding: 18px 0 20px; }
-.dock .note { font-size: 14px; color: var(--muted); margin: 0; }
-.dock .acts { display: flex; flex-wrap: wrap; gap: 10px; }
-@media (min-width: 860px) {
-  .dock .inner { grid-template-columns: 1fr auto; align-items: center; }
-  .dock .note { max-width: 30rem; }
-}
+.dock .inner { display: grid; gap: 14px; padding: 20px 0 22px; }
+.dock .note { font-size: 14px; color: var(--muted); margin: 0; max-width: 46rem; }
+.dock .acts { display: grid; gap: 10px; }
+@media (min-width: 620px) { .dock .acts { grid-auto-flow: column; justify-content: start; } }
+/* the actions keep a line of their own, and the caveat reads underneath them */
+.btn--ota { display: inline-flex; align-items: center; gap: 10px; }
+.btn--ota svg { flex: none; }
 
 /* ---------- generic section ---------- */
 .sec { padding: 56px 0; }
@@ -116,7 +116,9 @@ p { max-width: var(--measure); }
 /* ---------- rooms, as a typeset list ---------- */
 /* The dossier does not say which photograph belongs to which room type, so the
    room types are set as text. Claiming otherwise would be an invented fact. */
-.rooms { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+/* the gap above the table matches the gap between the section rule and its
+   eyebrow, so the section reads as one block */
+.rooms { list-style: none; margin: 56px 0 0; padding: 0; border-top: 1px solid var(--rule); }
 .rooms li {
   display: grid; gap: 2px 20px; padding: 16px 0;
   border-bottom: 1px solid var(--rule);
@@ -129,23 +131,41 @@ p { max-width: var(--measure); }
   .rooms .sleeps { text-align: right; }
 }
 
-/* ---------- plates: small photographs, matted like prints ---------- */
-/* references.md #9 (Tandjung Sari) — imperfect photos read better small and
-   framed than large and full-bleed. These are phone photographs. */
-.plates { display: grid; gap: 22px; grid-template-columns: repeat(2, 1fr); margin-top: 30px; }
-@media (min-width: 860px) { .plates { grid-template-columns: repeat(4, 1fr); gap: 26px; } }
-.plate { margin: 0; background: #fff; padding: 10px 10px 0; box-shadow: 0 1px 2px rgba(35,32,28,.14); }
-.plate img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
-.plate figcaption { font-size: 12px; line-height: 1.35; color: var(--muted); padding: 9px 1px 11px; }
-/* one plate in the row is taller, so the row does not read as a template
-   (references.md #10 — grid-breaking with no extra assets) */
-@media (min-width: 860px) { .plate--tall img { aspect-ratio: 3 / 4.2; } }
+/* ---------- gallery ---------- */
+/* Eight photographs, all cropped to the same 4:3 frame on an even grid. The
+   earlier version staggered their heights and captioned each one; on a page
+   whose whole argument is restraint that read as chaos, and the captions
+   repeated what the picture already showed. The alt text still carries the
+   description for anyone who cannot see it. */
+.gallery { display: grid; gap: 14px; grid-template-columns: repeat(2, 1fr); margin-top: 44px; }
+@media (min-width: 720px) { .gallery { grid-template-columns: repeat(4, 1fr); gap: 18px; } }
+.gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+
+/* ---------- full-width parallax bands between sections ---------- */
+/* The page is long and almost entirely text. A full-bleed photograph between
+   sections gives the eye somewhere to rest. Done with background-attachment,
+   so the calm mockup still ships zero JavaScript; switched to a plain cover
+   image on phones, where fixed attachment is unsupported or janky. */
+.band {
+  height: clamp(240px, 52svh, 520px);
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+}
+@media (min-width: 760px) and (prefers-reduced-motion: no-preference) {
+  .band { background-attachment: fixed; }
+}
 
 /* ---------- amenities ---------- */
-.amen { columns: 2; column-gap: 34px; list-style: none; margin: 0; padding: 0; font-size: 15.5px; }
+.amen { columns: 2; column-gap: 34px; list-style: none; margin: 56px 0 0; padding: 0; font-size: 15.5px; }
 @media (min-width: 900px) { .amen { columns: 3; } }
 .amen li { break-inside: avoid; padding: 7px 0; border-bottom: 1px solid var(--rule); }
 .amen .note { color: var(--muted); font-size: 13px; }
+
+/* ---------- the wave, with the live forecast ---------- */
+.wave { display: grid; gap: 28px; align-items: start; }
+@media (min-width: 860px) { .wave { grid-template-columns: minmax(0, 1fr) 420px; gap: 56px; } }
+.wave .widget { width: 100%; max-width: 420px; }
+.wave .widget p { font-size: 12px; color: var(--muted); margin: 10px 0 0; }
 
 /* ---------- reviews ---------- */
 .quotes { display: grid; gap: 26px; }
