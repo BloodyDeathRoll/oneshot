@@ -6,26 +6,25 @@ import AgodaMark from '../components/AgodaMark.astro';
 import HostelworldMark from '../components/HostelworldMark.astro';
 import PhoneMark from '../components/PhoneMark.astro';
 
-const hero = photo('img-012');
 const hw = rating('hostelworld'), bk = rating('booking'), gg = rating('google');
 const intro = block('intro');
 const [oneDorm, newlyBuilt] = blocks('about');
-const room = block('offer');
+const offer = block('offer');
 const [finding, practical] = blocks('info');
-const gallery = ['img-008', 'img-018', 'img-003', 'img-017', 'img-011', 'img-013', 'img-001', 'img-007'];
-const bands = { dorm: photo('img-009'), quotes: photo('img-010'), wave: photo('img-022') };
 const marks = { hostelworld: HostelworldMark, booking: BookingMark, agoda: AgodaMark };
 const platform = (l) => l.toLowerCase().includes('hostelworld') ? 'hostelworld' : l.toLowerCase().includes('agoda') ? 'agoda' : 'booking';
+const site = (p) => p === 'hostelworld' ? 'Hostelworld' : p === 'booking' ? 'Booking.com' : 'Google';
 const mapUrl = 'https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en';
 const si = c.stayInfo;
-/* The directions, split into the steps the copy already sets out. The words are
-   the copy's; the numbering is layout. */
 const steps = [
   'Follow the map to Warnagiri, Welhengoda.',
   'There is a large black gate — open it.',
   'Through the gate there is a wooden platform.',
   'The door to Layday is on the right of the house.',
 ];
+const cells = ['img-008', 'img-018', 'img-003', 'img-017'];
+const cells2 = ['img-011', 'img-013', 'img-001', 'img-007'];
+const room = c.rooms[0];
 ---
 <!doctype html>
 <html lang="en">
@@ -40,152 +39,152 @@ const steps = [
 
 <a class="sr" href="#book">Skip to booking</a>
 
-<header class="site-head wrap">
-  <div>
-    <div class="name">Layday Surf</div>
-    <div class="where">Ahangama · Sri Lanka</div>
-  </div>
-  <a class="btn head-book" href="#book">Check dates</a>
-</header>
+<!-- The card. Everything a visitor needs to decide is inside it, above the
+     fold: what it is, where it is, what people scored it, and where to book. -->
+<article class="card">
 
-<section class="hero">
-  <figure>
-    <img src={hero.src} srcset={hero.srcset} sizes="100vw" width={hero.width} height={hero.height}
-         alt={hero.alt} fetchpriority="high" />
-    <div class="scrim"></div>
-  </figure>
-  <div class="words">
-    <div class="wrap">
-      <h1>{intro.heading}</h1>
-      <p class="tagline">One dormitory, newly built, run by the family who built it.</p>
-      <p class="scores">
-        {hw && <span><b>{hw.score}</b>/{hw.scale} Hostelworld · {hw.count} reviews</span>}
-        {bk && <span><b>{bk.score}</b>/{bk.scale} Booking.com · {bk.count}</span>}
-        {gg && <span><b>{gg.score}</b>/{gg.scale} Google · {gg.count}</span>}
-      </p>
+  <div class="row row--spec">
+    <div class="cell">
+      <p class="kicker">Ahangama · Sri Lanka</p>
+      <h1 class="name">Layday Surf</h1>
+      <p class="spec">One air-conditioned dormitory, newly built, a two-minute walk from Kabalana. Run by the family who built it.</p>
+      <p class="small">{room.note}</p>
     </div>
+    <figure class="framed cell cell--pale">
+      <img src={photo('img-012').src} srcset={photo('img-012').srcset} sizes="(min-width: 820px) 420px, 92vw"
+           width={photo('img-012').width} height={photo('img-012').height} alt={photo('img-012').alt} fetchpriority="high" />
+      <figcaption>{photo('img-012').alt}</figcaption>
+    </figure>
   </div>
-</section>
 
-<section class="dock" id="book">
-  <div class="wrap inner">
-    <div class="acts">
-      {c.bookingLinks.map((b, i) => {
-        const Mark = marks[platform(b.label)];
-        return <a class={i === 0 ? 'btn btn--solid' : 'btn'} href={b.url} rel="noopener"><Mark light={i === 0} /> {b.label}</a>;
-      })}
-      <a class="btn" href={`tel:${c.contact.phone}`}><PhoneMark /> Call Layday</a>
-    </div>
-    <p class="note">There is one dormitory, and these three listings hold its live prices and availability. The property does not take credit cards on arrival.</p>
-  </div>
-</section>
-
-<main>
-
-<section class="sec wrap">
-  <p class="eyebrow">Where it is</p>
-  <div class="two-col">
-    <h2>{c.tagline}</h2>
-    <div>{paras(intro.body).map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}</div>
-  </div>
-</section>
-
-<!-- The black gate. The dossier's own gap note says guests cannot find this
-     place; a map and directions on a site would fix it today. So they get the
-     wall colour and a line of their own. -->
-<section class="panel">
-  <div class="wrap">
-    <p class="eyebrow" style="color:#5e5140">Finding the door</p>
-    <h2>{finding.heading}</h2>
-    <ol class="steps">{steps.map((s) => <li>{s}</li>)}</ol>
-    <p style="margin-top:22px"><a class="link" style="color:var(--ink)" href={mapUrl} rel="noopener">Open the map</a> — guests have got lost here. Now you will not.</p>
-  </div>
-</section>
-
-<section class="sec wrap">
-  <p class="eyebrow">The room</p>
-  <div class="two-col">
-    <h2>{oneDorm.heading}</h2>
-    <div>{paras(oneDorm.body).map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}</div>
-  </div>
-  <div class="run-in">
-    {c.rooms.map((r) => (
-      <div class="room">
-        <span class="label">{r.label}</span>
-        <span class="beds">{r.beds}</span>
-        {r.note ? <span class="note">{r.note}</span> : null}
+  <div class="row row--3">
+    {[hw, bk, gg].filter(Boolean).map((r, i) => (
+      <div class={i === 1 ? 'cell cell--ochre' : 'cell'}>
+        <p class="score">{r.score}<span> /{r.scale}</span></p>
+        <p>{site(r.platform)} · {r.count} reviews</p>
       </div>
     ))}
   </div>
-  <div class="two-col run-in">
-    <h2>{room.heading}</h2>
-    <div>{paras(room.body).map((p) => <p>{p}</p>)}</div>
-  </div>
-</section>
 
-<div class="band" role="img" aria-label={bands.dorm.alt} style={`background-image:url(${bands.dorm.src})`}></div>
-
-<section class="sec wrap">
-  <p class="eyebrow">Newly built</p>
-  <div class="two-col">
-    <h2>{newlyBuilt.heading}</h2>
-    <div>{paras(newlyBuilt.body).map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}</div>
-  </div>
-  <div class="gallery run-in">
-    {gallery.map((id) => {
-      const p = photo(id);
-      return <img src={p.src} srcset={p.srcset} sizes="(min-width: 720px) 24vw, 46vw"
-                  width={p.width} height={p.height} alt={p.alt} loading="lazy" decoding="async" />;
-    })}
-  </div>
-</section>
-
-<section class="sec wrap">
-  <p class="eyebrow">What is here</p>
-  <ul class="amen">{c.amenities.map((a) => <li>{a.label}{a.note ? <span class="note"> — {a.note}</span> : null}</li>)}</ul>
-</section>
-
-<div class="band" role="img" aria-label={bands.quotes.alt} style={`background-image:url(${bands.quotes.src})`}></div>
-
-<section class="sec wrap">
-  <p class="eyebrow">What guests wrote</p>
-  <h2 style="max-width:18ch">Small, and that is the point</h2>
-  <div class="quotes run-in">
-    {c.testimonials.map((t) => (
-      <figure class="quote">
-        <blockquote>“{t.quote}”</blockquote>
-        <figcaption>{t.author} — on {t.source === 'booking' ? 'Booking.com' : t.source === 'hostelworld' ? 'Hostelworld' : t.source}</figcaption>
-      </figure>
-    ))}
-  </div>
-</section>
-
-<div class="band" role="img" aria-label={bands.wave.alt} style={`background-image:url(${bands.wave.src})`}></div>
-
-<section class="sec wrap">
-  <p class="eyebrow">The wave</p>
-  <div class="wave">
-    <p class="lead">{c.spot}</p>
-    <div class="widget">
-      <iframe
-        src="https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
-        title="Rosa surf forecast - Kabalana"
-        width="100%" height="500"
-        style="max-width:420px;border:0;border-radius:16px;display:block"
-        loading="lazy"
-        referrerpolicy="strict-origin-when-cross-origin"
-        sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
-      ></iframe>
-      <p>Live forecast for Kabalana from rosa.surf.</p>
+  <div class="row">
+    <div class="cell" id="book">
+      <div class="book">
+        {c.bookingLinks.map((b, i) => {
+          const Mark = marks[platform(b.label)];
+          return <a class={i === 0 ? 'book-card book-card--first' : 'book-card'} href={b.url} rel="noopener"><Mark light={i === 0} /> {site(platform(b.label))}</a>;
+        })}
+        <a class="book-card" href={`tel:${c.contact.phone}`}><PhoneMark /> Call</a>
+      </div>
+      <p class="book-note">There is one dormitory, and these three listings hold its live prices and availability. The property does not take credit cards on arrival.</p>
     </div>
   </div>
-</section>
 
-<section class="sec wrap">
-  <p class="eyebrow">Before you arrive</p>
-  <div class="two-col">
-    <h2>{practical.heading}</h2>
-    <div>
+  <!-- The directions. The dossier records that guests cannot find this place -
+       an unmarked black gate - and that a map and directions on a site would
+       fix it today. So they get the wall colour and a cell of their own. -->
+  <div class="row row--2">
+    <div class="cell cell--ochre">
+      <p class="kicker" style="color:#5e5140">Finding the door</p>
+      <h2>{finding.heading}</h2>
+      <p>Guests have got lost here. Now you will not.</p>
+      <p style="margin-top:14px"><a class="link" style="color:var(--ink)" href={mapUrl} rel="noopener">Open the map</a></p>
+    </div>
+    <div class="cell cell--ochre">
+      <ol class="steps" style="margin-top:0">{steps.map((s) => <li>{s}</li>)}</ol>
+    </div>
+  </div>
+
+  <div class="row row--2">
+    <div class="cell">
+      <p class="kicker">Where it is</p>
+      <h2>{intro.heading}</h2>
+    </div>
+    <div class="cell">{paras(intro.body).map((p) => <p>{p}</p>)}</div>
+  </div>
+
+  <div class="row cell--flush">
+    <div class="cells">
+      {cells.map((id) => {
+        const p = photo(id);
+        return (
+          <figure>
+            <img src={p.src} srcset={p.srcset} sizes="(min-width: 820px) 25vw, 50vw"
+                 width={p.width} height={p.height} alt={p.alt} loading="lazy" decoding="async" />
+            <figcaption>{p.alt}</figcaption>
+          </figure>
+        );
+      })}
+    </div>
+  </div>
+
+  <div class="row row--2">
+    <div class="cell">
+      <p class="kicker">The room</p>
+      <h2>{oneDorm.heading}</h2>
+      {paras(oneDorm.body).map((p) => <p>{p}</p>)}
+    </div>
+    <div class="cell cell--pale">
+      <p class="kicker">What is in it</p>
+      <h2>{offer.heading}</h2>
+      {paras(offer.body).map((p) => <p>{p}</p>)}
+    </div>
+  </div>
+
+  <div class="row row--2">
+    <div class="cell">
+      <p class="kicker">Newly built</p>
+      <h2>{newlyBuilt.heading}</h2>
+      {paras(newlyBuilt.body).map((p) => <p>{p}</p>)}
+    </div>
+    <div class="cell cell--pale">
+      <p class="kicker">Everything here</p>
+      <ul class="amen">{c.amenities.map((a) => <li>{a.label}{a.note ? <span class="note"> — {a.note}</span> : null}</li>)}</ul>
+    </div>
+  </div>
+
+  <div class="row cell--flush">
+    <div class="cells">
+      {cells2.map((id) => {
+        const p = photo(id);
+        return (
+          <figure>
+            <img src={p.src} srcset={p.srcset} sizes="(min-width: 820px) 25vw, 50vw"
+                 width={p.width} height={p.height} alt={p.alt} loading="lazy" decoding="async" />
+            <figcaption>{p.alt}</figcaption>
+          </figure>
+        );
+      })}
+    </div>
+  </div>
+
+  <div class="row row--2">
+    {c.testimonials.slice(0, 2).map((t, i) => (
+      <div class="cell cell--ink">
+        {i === 0 ? <p class="kicker">What guests wrote</p> : null}
+        <figure class="quote">
+          <blockquote>“{t.quote}”</blockquote>
+          <figcaption>{t.author} — {t.source === 'booking' ? 'Booking.com' : 'Hostelworld'}</figcaption>
+        </figure>
+      </div>
+    ))}
+  </div>
+  <div class="row row--3">
+    {c.testimonials.slice(2).map((t) => (
+      <div class="cell">
+        <figure class="quote">
+          <blockquote>“{t.quote}”</blockquote>
+          <figcaption>{t.author} — {t.source === 'booking' ? 'Booking.com' : 'Hostelworld'}</figcaption>
+        </figure>
+      </div>
+    ))}
+  </div>
+
+  <div class="row row--2">
+    <div class="cell">
+      <p class="kicker">The wave</p>
+      <h2 style="max-width:14ch">Kabalana, two minutes away</h2>
+      <p>{c.spot}</p>
+      <p class="kicker" style="margin-top:34px">Before you arrive</p>
       {paras(practical.body).map((p) => <p>{p}</p>)}
       <ul class="facts">
         <li><span class="k">Check in</span><span>{si.checkInFrom}–{si.checkInTo}</span></li>
@@ -194,32 +193,42 @@ const steps = [
         <li><span class="k">Good to know</span><span>{si.note}</span></li>
       </ul>
     </div>
-  </div>
-</section>
-
-</main>
-
-<footer class="foot">
-  <div class="wrap">
-    <div class="cols">
-      <div>
-        <h3>Where</h3>
-        <p>{c.contact.address}</p>
-        <p><a class="link" href={mapUrl} rel="noopener">Open in Google Maps</a></p>
-      </div>
-      <div>
-        <h3>Reception</h3>
-        <p><a class="link" href={`tel:${c.contact.phone}`}>{c.contact.phone}</a></p>
-        <p>Limited hours — check in {si.checkInFrom}–{si.checkInTo}.</p>
-      </div>
-      <div>
-        <h3>Book</h3>
-        <ul>{c.bookingLinks.map((b) => <li><a class="link" href={b.url} rel="noopener">{b.label}</a></li>)}</ul>
+    <div class="cell cell--pale">
+      <p class="kicker">Today at Kabalana</p>
+      <div class="widget">
+        <iframe src="https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+          title="Rosa surf forecast - Kabalana" width="100%" height="500"
+          style="max-width:420px;border:0;border-radius:12px;display:block"
+          loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+          sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"></iframe>
+        <p>Live forecast — rosa.surf</p>
       </div>
     </div>
-    <p class="legal">Mockup 1 of 3 — “calm”. Every fact on this page comes from the dossier harvested on 19 September 2026; see notes.md. Photographs are the hostel's own.</p>
   </div>
-</footer>
+
+  <div class="row">
+    <div class="cell">
+      <div class="cols">
+        <div>
+          <h3>Where</h3>
+          <p>{c.contact.address}</p>
+          <p><a class="link" href={mapUrl} rel="noopener">Open in Google Maps</a></p>
+        </div>
+        <div>
+          <h3>Reception</h3>
+          <p><a class="link" href={`tel:${c.contact.phone}`}>{c.contact.phone}</a></p>
+          <p>Limited hours — check in {si.checkInFrom}–{si.checkInTo}.</p>
+        </div>
+        <div>
+          <h3>Book</h3>
+          <ul>{c.bookingLinks.map((b) => <li><a class="link" href={b.url} rel="noopener">{b.label}</a></li>)}</ul>
+        </div>
+      </div>
+      <p class="legal" style="margin-top:28px">Mockup 1 of 3 — “calm”, on the printed-spec-card archetype (see <code>concepts.md</code>). Every fact on this page comes from the dossier harvested on 19 September 2026; see notes.md. Photographs are the hostel's own. No bed count is published anywhere, because the platforms contradict each other and the dossier leaves it unresolved.</p>
+    </div>
+  </div>
+
+</article>
 
 <nav class="mobile-dock" aria-label="Book">
   <a href={c.bookingLinks[0].url} rel="noopener">Check dates</a>

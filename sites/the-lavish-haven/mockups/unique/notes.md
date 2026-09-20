@@ -153,3 +153,10 @@ sizes. Base.md "Before handing off" item 3 is not satisfied.
 
 Because the page is its own scroll area, a browser "full page" capture is exactly one viewport.
 `shots/*-1.png` … `-6.png` are the record: six scroll positions of the page area, at each width.
+
+## what a visitor would notice is different
+
+Against **KA Surf Hostel**: this site has photographs big enough to fill a screen and uses them;
+KA never shows one larger than a postcard, because its best is 576 px wide. Against **Layday Surf**:
+this scrolls as a continuous magazine, Layday is a single bordered card read in panels. See the
+divergence table in `sites/the-lavish-haven/concepts.md` §5.

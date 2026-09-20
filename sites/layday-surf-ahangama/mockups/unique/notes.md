@@ -117,3 +117,11 @@ is not satisfied.
    ours to hide, and playbook §5 forbids introducing a channel the owner does not monitor. Where a
    drawer exists (mockups 2 and 3) it holds the three listings the hostel already sells through and
    says why it does not ask for dates.
+
+## what a visitor would notice is different
+
+Against **The Lavish Haven**: that site is a continuous magazine that opens on a photograph filling
+the screen; this is a bordered object read in panels, and its first screen is a card, not a picture.
+Against **KA Surf Hostel**: KA is a dark wall with small prints pinned to it at angles; Layday is
+pale ochre, square, and everything sits inside hairline rules. See the divergence table in
+`sites/the-lavish-haven/concepts.md` §5.

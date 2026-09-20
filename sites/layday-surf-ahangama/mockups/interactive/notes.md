@@ -5,28 +5,21 @@ Its own Astro project. It shares the two typefaces and the wall colour with mock
 one business, so it has one brand — and shares no layout, component or stylesheet with them or with
 any other business.
 
-## direction
+## direction — archetype: **the printed spec card**, concept 2 "The card, at four o'clock"
 
-`custom.md`: *"more interactive with some bells and whistles"*, canvas/WebGL instead of static image
-grids, editorial grids, a booking UX behind a sliding drawer.
+`sites/layday-surf-ahangama/concepts.md` §3. The same card, in the same colours off the same walls —
+one business, one brand — with one difference: the card's photograph cell is full height and
+**pinned**, and the sun crosses the room inside it as you scroll while the rest of the card goes
+past. A day in a hostel with one dormitory really does mostly consist of that.
 
-**The light.** A day in a hostel with one dormitory mostly consists of the sun crossing the plaster.
-So the room is pinned for three screens and scrolling walks the light across it: a warm band with the
-shadow of the window louvres in it, low and orange in the morning, narrow and white at midday, long
-and red in the evening, breathing slightly the way light does when something outside moves.
-
-Read against `agents/designer/references.md`:
-
-- **#19** records that none of the six reference sites uses canvas or WebGL, so there was nothing
-  cached to lean on. `src/scripts/light.js` is hand-written WebGL1 — one texture, a tilted soft band,
-  a louvre mask, 6 KB of JavaScript for the whole page. No three.js, no CDN.
-- **#17 the cheapest convincing motion recipe** (Kube) — ±4 rem image parallax inside an
-  `overflow: hidden` wrapper, ±5 rem on the full-bleed bands, **off at ≤ 767 px**, 0.32 s drawer ease.
-- **#6 one accent, booking only**; **#4 persistent on a phone**; **#20 nothing covers the first
-  screen**.
-- The masonry under "The place" is one column count and one 20 px gap everywhere, with three
-  repeating frame shapes so the columns stagger without any photograph being singled out.
-- The directions keep their ochre block, for the same reason as in mockup 1.
+- **The light** is hand-written WebGL: a warm band with the shadow of the window louvres in it, low
+  and orange in the morning, narrow and white at midday, long and red at the end, breathing slightly
+  the way light does when something outside moves. No three.js, no CDN. references.md **#19** —
+  there is no canvas anywhere in the reference set to copy from.
+- Below the card, the photographs become a masonry with **one hairline gap everywhere**, carrying
+  Kube's ±4 rem parallax, off at ≤ 767 px (**#17**).
+- Booking is a drawer pulled up from the card's foot, actions centred (**#1**, **#2**).
+- The directions keep their ochre cells, for the same reason as in concept 1.
 
 ## facts
 
@@ -93,7 +86,7 @@ looking at each photograph.
 | Broken images | 0 (`tools/shoot-mockups.mjs`) |
 | Self-hosted, no third party | **partial** — 0 external requests on first load; fonts and platform marks vendored. The Rosa forecast iframe (`rosa.surf`) is one deliberate third-party embed, lazy and sandboxed. See conflicts. |
 
-**Weight** (`weight.json`, whole `dist/`): html + inlined css 27 KB · JS 6 KB · fonts 78 KB (Syne + Inter Tight) · images 1052 KB across all widths of every photograph used. First mobile load is the HTML, two fonts and the 400 px hero — inside the playbook §4 budget of 1.5 MB and 300 KB of JS.
+**Weight** (`weight.json`, whole `dist/`): html + inlined css 27 KB · JS 5 KB · fonts 78 KB (Syne + Inter Tight) · images 1052 KB across every width of every photograph used. First mobile load is the HTML, two fonts and one 400 px photograph — inside the playbook §4 budget of 1.5 MB and 300 KB of JS.
 
 **Lighthouse was not run** — there is no Lighthouse runner in `tools/`. The weights quoted are
 measured file sizes from `weight.json`, not a Lighthouse score. Base.md "Before handing off" item 3
@@ -113,3 +106,11 @@ is not satisfied.
    ours to hide, and playbook §5 forbids introducing a channel the owner does not monitor. Where a
    drawer exists (mockups 2 and 3) it holds the three listings the hostel already sells through and
    says why it does not ask for dates.
+
+## what a visitor would notice is different
+
+Against **The Lavish Haven**: that site is a continuous magazine that opens on a photograph filling
+the screen; this is a bordered object read in panels, and its first screen is a card, not a picture.
+Against **KA Surf Hostel**: KA is a dark wall with small prints pinned to it at angles; Layday is
+pale ochre, square, and everything sits inside hairline rules. See the divergence table in
+`sites/the-lavish-haven/concepts.md` §5.

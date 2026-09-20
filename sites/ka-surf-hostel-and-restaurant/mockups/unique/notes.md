@@ -3,31 +3,23 @@
 Station 4d. Built 2026-09-20 from the copy that passed station 4c and `dossier/ka-surf-hostel-and-restaurant/`.
 Its own Astro project; same two typefaces and paper as mockups 1 and 2, nothing else shared.
 
-## direction
+## direction — archetype: **the kitchen noticeboard**, concept 3 "Fifteen at the table"
 
-`custom.md`: *"full blown unique"*, canvas/WebGL, editorial asymmetric grids with varying column
-counts, overlapping kinetic type, booking behind a slide-out.
+`sites/ka-surf-hostel-and-restaurant/concepts.md` §3. The whole wall at once.
 
-**One long table.** This hostel has one photograph nobody else could take: fifteen people at one
-table at night, shot on a phone, slightly soft, slightly warm. Everything is built on it.
-
-- The hero is that photograph run like a **home film** — grain that moves every frame and is heavier
-  in the shadows, halation bleeding out of the lamp over the table, a gentle weave, a vignette.
-  Nothing is added to the photograph and nothing removed; the grain sits on top.
-  `src/scripts/reel.js`, hand-written WebGL1, 5 KB for the whole page.
-- The name is set as two overlapping lines — "One long" / *table* — that lean apart as the pointer
-  crosses the screen. That is the kinetic type `custom.md` asks for, and it is also the sentence.
-- The three platform scores are set at 6 rem as a **tally**: 9.8, 9.5, 4.8, each with its platform
-  and count, never averaged.
-- The photographs are set along **one rule** — a table edge, 2 px of ink running the width of the
-  page — at three different heights, the way plates and glasses sit on a table.
-- The guests' words are **place cards**, staggered above and below a centre line.
-- Sections sit on a 12-column grid at 1/7, 7/13, 1/6, 6/13 rather than an even split.
-
-Read against `agents/designer/references.md`: **#19** (no canvas precedent in the set — this is
-built from scratch), **#8** type doing the heavy lifting, **#10** grid-breaking with no extra assets,
-**#12** data as caption, **#18** one sideways run inside a vertical page, **#6** one accent for
-booking only, **#4** persistent booking on a phone.
+- **The head** is two overlapping lines of Newsreader — "One long" / *table* — that lean apart as
+  the pointer crosses the screen, with the long-table print beside them at 320 px on a mat, tilted.
+  Still no full-bleed photograph anywhere on the site.
+- **The tally**: 9.8, 9.5, 4.8 at display size, each with its own platform and count, never averaged.
+- **The table**: one 2 px rule running the width of the page, with the prints set *on* it at three
+  different heights — the way plates and glasses sit on a table, not the way cards sit in a grid.
+- **Place cards**: the guests' words staggered above and below a second line.
+- **The film.** The long-table print is run like a home movie — grain that moves every frame and is
+  heavier in the shadows, halation bleeding off the lamp over the table, a slow weave, a vignette.
+  Hand-written WebGL over a 576 px photograph rendered at 320. At this size grain is a kindness: it
+  gives a soft phone picture a reason to be soft. Nothing is added to the photograph; the grain
+  sits on top.
+- references.md **#19** (no canvas precedent in the set), **#8**, **#10**, **#12**, **#6**, **#4**.
 
 ## facts
 
@@ -70,6 +62,9 @@ mockups carry identical content, so the human's pick is about design (base.md, 4
 listings, at 576–1024 px. The dossier's own note: *"usable but modest… photography on location would
 beat all of it."* Two things about them shaped every one of these three mockups:
 
+0. **The best one is 576 px wide**, which is less than half what a full-bleed hero needs, and
+   `tools/build-mockup.mjs` now refuses any photograph marked `role: "bleed"` under 1200 px. Nothing
+   on this site is marked that way. The largest anything renders is a postcard.
 1. **They are photographs of people, not of rooms.** Fifteen guests and the family at a long table at
    night; the family standing on the veranda; a breakfast spread; a bowl of cut fruit held up against
    the garden. That is the business, and every review says so. None of the three mockups leads with a
@@ -97,7 +92,7 @@ roundel; unused in this round.
 | Broken images | 0 (`tools/shoot-mockups.mjs`) |
 | Self-hosted, no third party | **partial** — 0 external requests on first load; fonts and platform marks vendored. The Rosa forecast iframe (`rosa.surf`) is one deliberate third-party embed, lazy and sandboxed. See conflicts. |
 
-**Weight** (`weight.json`, whole `dist/`): html + inlined css 25 KB · JS 5 KB · fonts 83 KB (Newsreader + Public Sans) · images 649 KB across all widths of every photograph used. First mobile load is the HTML, two fonts and the 400 px hero — comfortably inside the playbook §4 budget of 1.5 MB and 300 KB of JS.
+**Weight** (`weight.json`, whole `dist/`): html + inlined css 29 KB · JS 5 KB · fonts 83 KB (Newsreader + Public Sans) · images 649 KB across every width of every photograph used. The whole `dist/` is under 800 KB, against the playbook §4 budget of 1.5 MB for the first load alone — a direct consequence of never rendering a photograph larger than a postcard.
 
 **Lighthouse was not run** — there is no Lighthouse runner in `tools/`. The weights quoted are
 measured file sizes from `weight.json`, not a Lighthouse score. Base.md "Before handing off" item 3
@@ -120,3 +115,12 @@ is not satisfied.
    ours to hide, and playbook §5 forbids introducing a channel the owner does not monitor. Where a
    drawer exists (mockups 2 and 3) it holds the three listings the hostel already sells through and
    says why it does not ask for dates.
+
+## what a visitor would notice is different
+
+Against **The Lavish Haven**: that site opens on a photograph filling the whole screen and keeps
+doing it; this one never renders a photograph wider than a postcard and its first screen has none at
+all. Against **Layday Surf**: Layday is a pale ochre card, square, everything aligned inside
+hairline rules; KA is a dark wall with many small things pinned to it at angles. Grounds, first
+screens, grids and section orders all differ; see the divergence table in
+`sites/the-lavish-haven/concepts.md` §5.
