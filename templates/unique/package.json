@@ -1,8 +1,0 @@
-{
-  "name": "oneshot-template-unique",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "scripts": { "build": "astro build", "preview": "astro preview" },
-  "dependencies": { "astro": "7.3.3", "sharp": "0.35.4" }
-}
