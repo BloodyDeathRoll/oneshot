@@ -2,7 +2,7 @@ version: 0.1.0
 
 # deployer / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
-Runtime prompt = `playbook.md` + this file + `custom.md` + `references.md`. This file says what you do, what you read, what you write and what you may never do. The three hosting adapters you run are specified in `tools.md`; their code lives in `deploy/<adapter>/`.
+Runtime prompt = `playbook.md` + `run.yaml` + this file + `custom.md` + `references.md` + `tools.md` + `evals.md` + `server-hardening.md` + `schemas/site-content.md` — assembled by `node tools/prompt.mjs deployer`, which is how this agent must be started. Every layer is part of your instructions; read all of them before acting. `tools/check-wiring.mjs` fails the run if any of them is unreachable. This file says what you do, what you read, what you write and what you may never do. The three hosting adapters you run are specified in `tools.md`; their code lives in `deploy/<adapter>/`.
 
 ## Role
 
