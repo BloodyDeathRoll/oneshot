@@ -60,10 +60,17 @@ nobody can find", "a new hotel whose only strong photographs are of a lit pool a
 
 An honest inventory before any idea is allowed:
 
-- **Photographs:** how many, of what, and **at what pixel size**. State the largest usable width of
+- **Photographs, the business's own:** how many, of what, and **at what pixel size**. State the largest usable width of
   the best photograph. A photograph narrower than **1200 px cannot be a full-bleed hero** — it will
   be upscaled and the site will look cheap, which is worse than having no photograph there at all.
   If the best photograph is small, say so here and let it change the concept.
+- **Atmosphere available:** what is in `dossier/<slug>/stock/` — freely-licensed photography of the
+  place rather than of the business (PLAN.md §9, amended 2026-09-20). `tools/fetch-atmosphere.mjs`
+  will fetch more from Wikimedia Commons under CC0 and CC BY. **Look at every one before you plan
+  around it**: filenames lie, and on the first run eleven of twenty had to be rejected on sight,
+  among them a candlelight vigil filed under "Kabalana" and a five-star hotel's suite. Atmosphere is
+  how a business with small photographs can still have a page that opens on an image — but it may
+  never stand in for the business itself, and every use carries its credit.
 - **Words:** which copy blocks are long, which are short, which are the ones worth setting large.
 - **Numbers:** ratings, counts, prices, times — anything that can be typeset as data.
 - **Gaps:** what is missing, and which gaps are interesting enough to design around rather than hide.
@@ -124,10 +131,11 @@ what a visitor would notice is different.
 2. **Never reuse a page skeleton across businesses.** The order of the sections, the shape of the
    first screen and the grid must differ. Two businesses may both use a serif; they may not both be
    "full-bleed hero, docked booking strip, eyebrow + heading + two columns, photo grid, quotes".
-3. **Never let the photographs decide by default.** If the best photograph is under 1200 px, the
-   concept must not depend on a full-bleed photograph anywhere above the fold. Say so out loud in §2
-   and design around it — a typographic first screen, a matted print at small size, a colour field.
-   references.md #8, #9 and #10 all exist for exactly this case.
+3. **Never let the photographs decide by default.** If the business's best photograph is under
+   1200 px it cannot be used full-bleed. That does not mean the page has no image: licensed
+   atmosphere can carry the big moments while the business's own photographs do the close ones, at
+   the size they can actually hold. Say the sizes out loud in §2 and design to them.
+   references.md #8, #9 and #10 are the type-led alternatives when even that is not available.
 4. **Light grounds only.** Every surf business in this run gets a light theme — cream,
    sand, plaster, paper. Never a dark page, and never a large dark panel behind body
    text. A photograph filling a container is a picture, not a theme. Shahar has had to
