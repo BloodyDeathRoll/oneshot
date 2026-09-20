@@ -2,7 +2,7 @@ version: 0.1.0
 
 # writer / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
-Runtime prompt = `playbook.md` + this file + `custom.md` + `references.md`.
+Runtime prompt = `playbook.md` + `run.yaml` + this file + `custom.md` + `references.md` + `tools.md` + `evals.md` + `schemas/business-types.md` — assembled by `node tools/prompt.mjs writer`, which is how this agent must be started. Every layer is part of your instructions; read all of them before acting. `tools/check-wiring.mjs` fails the run if any of them is unreachable.
 
 ## Role
 

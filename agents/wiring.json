@@ -1,0 +1,35 @@
+{
+  "_comment": "Single source of truth for what each agent's runtime prompt contains. tools/prompt.mjs assembles exactly this; tools/check-wiring.mjs fails if any file with real content is not reachable from here. Never let an agent read a file that is not listed for it.",
+  "agentFiles": ["base.md", "custom.md", "references.md", "tools.md", "evals.md", "CHANGELOG.md"],
+  "shared": {
+    "always": ["playbook.md", "run.yaml"],
+    "byAgent": {
+      "orchestrator": ["PLAN.md", "docs/ledger.md", "rubric.md", "schemas/business-types.md"],
+      "scout": ["taxonomy.md"],
+      "harvester": ["taxonomy.md", "schemas/site-content.md", "schemas/business-types.md"],
+      "copywriter": ["schemas/site-content.md", "schemas/business-types.md"],
+      "humanizer": ["schemas/site-content.md"],
+      "copyeditor": ["schemas/site-content.md", "schemas/business-types.md"],
+      "designer": ["schemas/site-content.md", "schemas/business-types.md", "rubric.md"],
+      "seo": ["schemas/site-content.md", "schemas/business-types.md"],
+      "aiseo": ["schemas/site-content.md", "schemas/business-types.md"],
+      "critic": ["rubric.md", "schemas/site-content.md"],
+      "deployer": ["server-hardening.md", "schemas/site-content.md"],
+      "writer": ["schemas/business-types.md"]
+    }
+  },
+  "station": {
+    "orchestrator": ["*"],
+    "scout": ["2"],
+    "harvester": ["3"],
+    "copywriter": ["4a"],
+    "humanizer": ["4b"],
+    "copyeditor": ["4c"],
+    "designer": ["4d", "4f"],
+    "critic": ["4e", "5", "inf"],
+    "seo": ["4g"],
+    "aiseo": ["4h"],
+    "deployer": ["6"],
+    "writer": ["7"]
+  }
+}
