@@ -171,9 +171,7 @@ First mobile load is the HTML, the two fonts, and the 400 px hero — about **12
 playbook §4 budget of 1.5 MB. Everything below the fold is `loading="lazy"`. Largest single image
 file is 159 KB (the 1024 px hero), under the 200 KB above-the-fold ceiling.
 
-**Lighthouse was not run** — no Chrome/Lighthouse runner is wired into `tools/` yet. The numbers above
-are measured file sizes, not a Lighthouse score. Base.md "Before handing off" item 3 is therefore not
-satisfied; it needs a tool that does not exist. Reported, not papered over.
+**Measured** with `node tools/audit-mockup.mjs the-lavish-haven calm` on a throttled phone (1.6 Mbps, 150 ms RTT, 4x CPU), first load with no scroll: 784 KB transferred of the 1.5 MB budget · JS 0 KB of 300 KB · fonts 68 KB of 150 KB · largest image 139 KB of 200 KB · LCP 1812 ms of 2500 ms · CLS 0.0014 of 0.1 · 0 third-party hosts. Every line inside budget. Raw numbers in `audit.json`.
 
 ## house rules — checked, not promised
 

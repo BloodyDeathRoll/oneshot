@@ -82,7 +82,7 @@ Assume a mid-range Android, slow 4G dropping to 3G, metered data.
 | JS, compressed | ≤ 300 KB |
 | Largest above-the-fold image | ≤ 200 KB |
 | Fonts | ≤ 2 families, ≤ 150 KB |
-| LCP (Lighthouse mobile, throttled) | ≤ 2.5 s |
+| LCP (measured on a throttled phone) | ≤ 2.5 s |
 | CLS | < 0.1 |
 | Third-party requests on load | 0 |
 

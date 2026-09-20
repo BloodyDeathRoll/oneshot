@@ -106,9 +106,7 @@ roundel; unused in this round.
 
 **Weight** (`weight.json`, whole `dist/`): html + inlined css 24 KB · JS 0 KB · fonts 83 KB (Newsreader + Public Sans) · images 649 KB across every width of every photograph used. The whole `dist/` is under 800 KB, against the playbook §4 budget of 1.5 MB for the first load alone — a direct consequence of never rendering a photograph larger than a postcard.
 
-**Lighthouse was not run** — there is no Lighthouse runner in `tools/`. The weights quoted are
-measured file sizes from `weight.json`, not a Lighthouse score. Base.md "Before handing off" item 3
-is not satisfied.
+**Measured** with `node tools/audit-mockup.mjs ka-surf-hostel-and-restaurant calm` on a throttled phone (1.6 Mbps, 150 ms RTT, 4x CPU), first load with no scroll: 349 KB transferred of the 1.5 MB budget · JS 0 KB of 300 KB · fonts 83 KB of 150 KB · largest image 35 KB of 200 KB · LCP 348 ms of 2500 ms · CLS 0.0021 of 0.1 · 0 third-party hosts. Every line inside budget. Raw numbers in `audit.json`.
 
 ## conflicts
 

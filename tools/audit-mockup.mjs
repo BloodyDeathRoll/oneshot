@@ -6,11 +6,10 @@
 // with actuals, a tap-through log for the booking CTA, screenshots, and a facts
 // table. This measures all of it and writes JSON the critic scores from.
 //
-// On Lighthouse: there is no Lighthouse binary here and pretending otherwise
-// would be worse than the gap. Instead this measures the two numbers the budget
-// actually names — LCP and CLS — in Chromium over CDP with the network and CPU
-// throttled to a mid-range phone on slow 4G, which is what playbook §4 assumes.
-// The output says "measured", never "Lighthouse".
+// Performance is measured, not estimated: LCP and CLS are read in Chromium over
+// CDP with the network and CPU throttled to a mid-range phone on slow 4G, which
+// is what playbook §4 assumes, together with the first-load transfer broken down
+// by type. Those are the numbers the budget names.
 //
 //   node tools/audit-mockup.mjs <slug> <variant>     -> writes audit.json
 //   node tools/audit-mockup.mjs --all

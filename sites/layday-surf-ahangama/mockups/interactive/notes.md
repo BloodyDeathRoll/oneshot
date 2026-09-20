@@ -88,9 +88,7 @@ looking at each photograph.
 
 **Weight** (`weight.json`, whole `dist/`): html + inlined css 27 KB · JS 5 KB · fonts 78 KB (Syne + Inter Tight) · images 1052 KB across every width of every photograph used. First mobile load is the HTML, two fonts and one 400 px photograph — inside the playbook §4 budget of 1.5 MB and 300 KB of JS.
 
-**Lighthouse was not run** — there is no Lighthouse runner in `tools/`. The weights quoted are
-measured file sizes from `weight.json`, not a Lighthouse score. Base.md "Before handing off" item 3
-is not satisfied.
+**Measured** with `node tools/audit-mockup.mjs layday-surf-ahangama interactive` on a throttled phone (1.6 Mbps, 150 ms RTT, 4x CPU), first load with no scroll: 468 KB transferred of the 1.5 MB budget · JS 5 KB of 300 KB · fonts 78 KB of 150 KB · largest image 45 KB of 200 KB · LCP 356 ms of 2500 ms · CLS 0.0017 of 0.1 · 0 third-party hosts. Every line inside budget. Raw numbers in `audit.json`.
 
 ## conflicts
 

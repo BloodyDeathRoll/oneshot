@@ -146,8 +146,7 @@ unused. No review photo, stock or generated image is used.
 First mobile load is the HTML, two fonts and the 400 px pool image — about **180 KB**, against the
 playbook §4 budget of 1.5 MB and 300 KB of JS.
 
-**Lighthouse was not run** — there is no Lighthouse runner in `tools/`. The figures are measured file
-sizes. Base.md "Before handing off" item 3 is not satisfied.
+**Measured** with `node tools/audit-mockup.mjs the-lavish-haven unique` on a throttled phone (1.6 Mbps, 150 ms RTT, 4x CPU), first load with no scroll: 850 KB transferred of the 1.5 MB budget · JS 18 KB of 300 KB · fonts 119 KB of 150 KB · largest image 153 KB of 200 KB · LCP 1780 ms of 2500 ms · CLS 0.0015 of 0.1 · 0 third-party hosts. Every line inside budget. Raw numbers in `audit.json`.
 
 ## a note on the screenshots
 

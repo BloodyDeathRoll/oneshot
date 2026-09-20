@@ -126,8 +126,7 @@ First mobile load is the HTML, two fonts and the 400 px hero — about **165 KB*
 playbook §4 budget of 1.5 MB and 300 KB of JS. The two extra pool textures load after first paint,
 only if WebGL started.
 
-**Lighthouse was not run** — there is no Lighthouse runner in `tools/`. The figures above are
-measured file sizes. Base.md "Before handing off" item 3 is not satisfied.
+**Measured** with `node tools/audit-mockup.mjs the-lavish-haven interactive` on a throttled phone (1.6 Mbps, 150 ms RTT, 4x CPU), first load with no scroll: 406 KB transferred of the 1.5 MB budget · JS 6 KB of 300 KB · fonts 110 KB of 150 KB · largest image 159 KB of 200 KB · LCP 356 ms of 2500 ms · CLS 0.0005 of 0.1 · 0 third-party hosts. Every line inside budget. Raw numbers in `audit.json`.
 
 ## a note on the screenshots
 

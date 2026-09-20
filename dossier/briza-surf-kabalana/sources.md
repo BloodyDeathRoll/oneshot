@@ -14,7 +14,7 @@ All fetched 2026-09-19 (UTC) with headless Chromium (playwright-core 1.62.1, Chr
 ## Not attempted / blocked
 - Instagram post captions and comments: logged-out wall. Never logged in (hard constraint 5).
 - Google Maps photos (2 on the listing): not downloaded; the Instagram set is licensable as business-owned, Maps photos would need per-photo attribution checks.
-- No existing site, so no mobile/desktop screenshots and no Lighthouse run.
+- No existing site, so no mobile/desktop screenshots and nothing to measure.
 
 ## For the next run
 - Skip the `/place/…/data=` URL form; it fails logged out.
