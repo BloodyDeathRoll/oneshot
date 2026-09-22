@@ -1,10 +1,13 @@
 /* sitemap.xml (station 4h). The sitemap protocol requires absolute URLs, so the file is built only when
    the build is given SITE_URL; without it there is no sitemap (and robots.txt names none). One page,
-   one locale (run.yaml: en). lastmod is the CMS document's updatedAt when there is one, never invented. */
+   one locale (run.yaml: en). lastmod is the CMS document's updatedAt when there is one, never invented.
+   A preview build (IS_PREVIEW: no SITE_URL, or a workers.dev / localhost one) gets no sitemap either —
+   it disallows everything, and a sitemap is a list of pages asking to be indexed. */
 import raw from '../tenant/content.json'
+import { IS_PREVIEW } from '../lib/site.mjs'
 
 export function getStaticPaths() {
-  return process.env.SITE_URL ? [{ params: { sitemap: 'sitemap' } }] : []
+  return IS_PREVIEW ? [] : [{ params: { sitemap: 'sitemap' } }]
 }
 
 export function GET({ site }) {
