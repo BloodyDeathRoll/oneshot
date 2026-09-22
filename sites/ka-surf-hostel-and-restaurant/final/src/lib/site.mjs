@@ -10,8 +10,11 @@ export const content = raw.locales.en
 
 /* SCHEMA GAP (no geo coordinates in v0.3, only contact.mapUrl): the JSON-LD geo point, from the
    dossier's location.plus_code "X9J2+PR Ahangama" = 5.98181, 80.35206 (matches the scout's Google
-   pin). The page no longer draws a map (Shahar 2026-09-22: a plain "Open in Google Maps" link). */
-export const MAP_PIN = { lat: 5.98181, lon: 80.35206 }
+   pin). `bbox` is the OpenStreetMap embed's window around that pin — about 950 m across, so the
+   junction on Galle Road and the beach are both in frame. Restored for round 8: Shahar asked for
+   the embed back (gate answer "Put the embed back", 2026-09-22), reversing the round-3 removal.
+   The link the address carries stays "Open in Google Maps" and still points at contact.mapUrl. */
+export const MAP_PIN = { lat: 5.98181, lon: 80.35206, bbox: '80.3455,5.9760,80.3540,5.9845' }
 
 /* SCHEMA GAP (no SEO title / place field in v0.3): the place in the page title, from the
    dossier's location.address ("… Ahangama, Sri Lanka"). */
@@ -49,6 +52,26 @@ export const AI_CRAWLERS = {
   CCBot: 'allow', 'Meta-ExternalAgent': 'allow', Amazonbot: 'allow', DuckAssistBot: 'allow',
   'MistralAI-User': 'allow',
 }
+
+/* Preview or real domain? (station 4h; Shahar's decision, 2026-09-22.) One place decides it, and every
+   file that needs it imports IS_PREVIEW from here — never its own sniffing.
+   A build is a PREVIEW when it has no production domain of its own: no SITE_URL at all, or a SITE_URL
+   on *.workers.dev (the temporary Cloudflare preview we show the owner) or on localhost / 127.0.0.1.
+   A preview must not be indexed: robots.txt disallows everything — the named AI crawlers included, so
+   no crawler is told it may read the site — and the page carries <meta name="robots" content="noindex,
+   nofollow">. Everything else stays as it is, so the preview's own links still resolve.
+   On a real domain none of that is emitted: allow-all robots with the AI group, the Sitemap line,
+   sitemap.xml, canonical, hreflang and og:* exactly as before. */
+export const isPreviewUrl = (url) => {
+  if (!url) return true
+  let host
+  try { host = new URL(url).hostname.toLowerCase().replace(/^\[|\]$/g, '') } catch { return true }
+  return host === 'workers.dev' || host.endsWith('.workers.dev')
+    || host === 'localhost' || host.endsWith('.localhost')
+    || host === '127.0.0.1' || host === '::1'
+}
+export const SITE = import.meta.env.SITE ? new URL(import.meta.env.SITE) : null
+export const IS_PREVIEW = isPreviewUrl(SITE)
 
 const COUNTRY = { 'sri lanka': 'LK' }
 /* contact.address (free text) → PostalAddress. Splits "street…, <postcode> <town>, <country>" when the

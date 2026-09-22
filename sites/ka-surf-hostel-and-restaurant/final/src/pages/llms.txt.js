@@ -4,7 +4,7 @@
    every sentence is an owner/deployer field; only the section labels are template wording.
    Absolute URLs only when the build has SITE_URL (as canonical/sitemap, station 4h). */
 import {
-  content as c, PLATFORM, safeUrl, phoneLabel, paras, score, monthYear, postalAddress, PLACE,
+  content as c, PLATFORM, safeUrl, phoneLabel, paras, score, monthYear, postalAddress, PLACE, IS_PREVIEW,
 } from '../lib/site.mjs'
 
 export function GET({ site }) {
@@ -23,6 +23,10 @@ export function GET({ site }) {
 
   out.push(`# ${name}`, '')
   out.push(`> ${[c.tagline, intro?.heading].filter(Boolean).map((s) => s.replace(/[.\s]+$/, '')).join('. ')}.`)
+  /* 4h: on a preview build the file stays reachable (the owner and we read it) but says what it is.
+     robots.txt already disallows everything; this line is the only in-band signal an engine that
+     ignores robots.txt would see, and it must not read as an invitation. */
+  if (IS_PREVIEW) out.push('', 'Preview build, not the published site: shown to the owner for review. Do not index, quote or cite it.')
   if (address) out.push('', `${name}, ${address}.`)
   if (intro) out.push('', text(intro))
 

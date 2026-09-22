@@ -8,7 +8,7 @@ import stillD from '../canopy/still-d.svg?raw'
 import stillM from '../canopy/still-m.svg?raw'
 import {
   content as c, MAP_PIN, PLACE, photoCredit, PLATFORM, platformOfUrl, safeUrl, tel, phoneLabel,
-  paras, score, monthYear, readOn, photo, LD_TYPE, postalAddress, metaDescription,
+  paras, score, monthYear, readOn, photo, LD_TYPE, postalAddress, metaDescription, SITE, IS_PREVIEW,
 } from '../lib/site.mjs'
 
 const name = c.businessName
@@ -49,8 +49,11 @@ const spotId = c.forecast?.rosaSpotId, spotName = c.forecast?.spotName || spotId
 
 /* Head and structured data (station 4h). Absolute URLs (canonical, hreflang, og:url, og:image, JSON-LD
    url/image/@id, sitemap) exist only when the build is given SITE_URL — the production domain is not
-   known yet and everything else on the page stays relative. */
-const site = import.meta.env.SITE ? new URL(import.meta.env.SITE) : null
+   known yet and everything else on the page stays relative.
+   A preview build (IS_PREVIEW in src/lib/site.mjs: no SITE_URL, or one on workers.dev / localhost) adds
+   the noindex meta below and nothing else: canonical, hreflang and og:* still point at whatever SITE_URL
+   it was given, so the preview's own links resolve. */
+const site = SITE
 const abs = (u) => (site ? new URL(u, site).href : null)
 /* the town comes from contact.address (its "<postcode> <town>" part); PLACE (SCHEMA GAP) only if the
    owner's address has no such part */
@@ -95,6 +98,7 @@ const ld = {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
+{IS_PREVIEW && <meta name="robots" content="noindex, nofollow">}
 {desc && <meta name="description" content={desc}>}
 {site && <link rel="canonical" href={site.href}>}
 {site && <link rel="alternate" hreflang="en" href={site.href}>}
@@ -216,6 +220,22 @@ const ld = {
     )}
     {st.note && <p class="note">{st.note}</p>}
     {(address || mapUrl) && <p class="addr">{address.split('\n').map((l, i) => <Fragment>{i > 0 && <br />}{l}</Fragment>)}{mapUrl && <Fragment><br /><a href={mapUrl}>Open in Google Maps</a></Fragment>}</p>}
+  </div>
+  {/* The map (Shahar, 2026-09-22: "Put the embed back"). The box is reserved by the row it shares
+     with the text, so nothing shifts when the frame arrives; the address and the Google Maps link
+     sit inside it and stay there with JS off, offline, or if the embed cannot be reached. */}
+  <div class="map">
+    <div class="map-frame">
+      <p class="map-alt"><span>{address.split('\n').join(', ')}</span>{mapUrl && <a href={mapUrl}>Open in Google Maps</a>}</p>
+      <iframe
+        data-src={`https://www.openstreetmap.org/export/embed.html?bbox=${encodeURIComponent(MAP_PIN.bbox)}&layer=mapnik&marker=${MAP_PIN.lat}%2C${MAP_PIN.lon}`}
+        title={`Map of ${name}, ${place} (OpenStreetMap)`}
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+      ></iframe>
+    </div>
+    <p class="map-cred">Map <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a></p>
   </div>
 </section>
 )}

@@ -92,6 +92,28 @@ if (fc) {
   }
 }
 
+/* ---------- the map: same rule, src set only when "Getting here" nears the viewport ----------
+   A cross-origin iframe fires `load` even when the request was blocked or the network is down, so
+   the frame alone cannot tell us whether the embed arrived. One opaque HEAD request to the same URL
+   answers that first: it resolves for any reachable response and rejects when there is no network,
+   in which case the reserved box keeps showing the address and the Google Maps link. */
+const map = document.querySelector('.map-frame'), mapFrame = map && map.querySelector('iframe');
+if (mapFrame && 'IntersectionObserver' in window && window.fetch && location.protocol !== 'file:') {
+  const io = new IntersectionObserver((es) => {
+    if (!es.some((e) => e.isIntersecting)) return;
+    io.disconnect();
+    map.dataset.loading = 'true';
+    const done = () => { delete map.dataset.loading; };
+    fetch(mapFrame.dataset.src, {method: 'HEAD', mode: 'no-cors', credentials: 'omit'})
+      .then(() => {
+        mapFrame.addEventListener('load', () => { map.classList.add('on'); done(); }, {once: true});
+        mapFrame.src = mapFrame.dataset.src;
+      })
+      .catch(done);
+  }, {rootMargin: '400px 0px'});
+  io.observe(map);
+}
+
 /* ---------- booking slide-out: every "Check dates" is a real link; this is on top ---------- */
 const panel = document.getElementById('book'), veil = document.querySelector('.veil'), ctx = panel.querySelector('.ctx');
 let lastFocus = null, closeT = 0;

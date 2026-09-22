@@ -1,6 +1,63 @@
-# KA Surf Hostel — 4g build, round 3 + correction · "Canopy" (unique)
+# KA Surf Hostel — 4g build, round 3 + corrections · "Canopy" (unique)
 
-## Correction (2026-09-22, after the round-3 build passed; shots `round-7/`)
+## Correction 2 (2026-09-22, after the preview deploy; shots `round-8/`)
+
+Two items from Shahar, seen on the live preview. Nothing else touched.
+
+1. **The OpenStreetMap embed is back in "Getting here"** (gate answer "Put the embed back",
+   reversing his earlier "replace the embedded map with a plain link"). Restored exactly as it was,
+   from the only place it survives in the repo — the picked mockup,
+   `sites/ka-surf-hostel-and-restaurant/mockups/unique/dist/index.html`, which is also
+   `agents/designer/gold/ka-surf-hostel.html`. It is **not** in commit `4648a94`: that commit is the
+   round-3 build, so the map had already been removed from `final/` before anything was committed,
+   and the 4g round-2 port was never committed at all. What came back:
+   - `src/pages/index.astro`: the `.map` column (grid 1/5, row 1) after `.go`, holding the reserved
+     `.map-frame`, the `data-src` iframe (no `src`), and the credit "Map © OpenStreetMap
+     contributors". The frame's `title`, `loading`, `referrerpolicy` and `sandbox` are the mockup's.
+   - `src/styles/site.css`: the nine `.map*` rules verbatim from the mockup, plus the two phone-only
+     rules (`.walk>.map` margin, `.map-frame` height) and `.walk .go{padding-bottom:48px}`.
+   - `src/scripts/site.js`: the IntersectionObserver that sets `src` only when the section nears the
+     viewport (`rootMargin: 400px`), and the HEAD probe round 2 added — one opaque `HEAD` to the
+     embed URL first, because a cross-origin iframe fires `load` even when the request was blocked,
+     so without it an offline visitor got a dead frame instead of the address.
+   - `src/lib/site.mjs`: `MAP_PIN.bbox` (`80.3455,5.9760,80.3540,5.9845`), removed in round 3.
+   Two things that stay as round 3 left them, as asked: the address's link under "Getting here" and
+   the footer's link both read **"Open in Google Maps"** → `contact.mapUrl` (the mockup said "Open
+   the map"), and the box's own fallback line carries the same words. Everything round 3 and later
+   changed is untouched: the copy, the rating capture dates, no test hooks, and the preview
+   `noindex` rule in `src/lib/site.mjs` / `robots.txt.js` / `[sitemap].xml.js` / `llms.txt.js`
+   (this build still emits `Disallow: /` and `<meta name="robots" content="noindex, nofollow">`).
+2. **More air between the forecast headline and Rosa's widget.** The channel was one grid gutter,
+   24 px, measured 25–26 px from the number's right edge because the fit-to-column loop sizes the
+   number to the 351 px column. It is now **96 px** — the same measure as the block's own
+   `margin-top`, and four of the page's 24 px gutters, so the air above the pair and the air between
+   its halves read as one decision and the number stays on the grid's scale. Rosa's widget is
+   untouched: same iframe, same 420 × 500 box, same theme; it only moves with the group, which
+   re-centres 36 px to the right (`.fc` is `justify-content:center`).
+   A flat 96 px would have started squeezing the widget's track 72 px of window width earlier than
+   before, so the channel, not the widget, takes the squeeze:
+   `column-gap:clamp(var(--g),calc(min(var(--wmax),100cqw - 2 * var(--m)) - 771px),96px)`.
+   Rosa's card therefore holds 420 px down to exactly the window width it held it to before.
+   The phone is unchanged: at ≤ 760 px the two stack in one column and `column-gap` does nothing.
+
+   Measured gap from the number's right edge to the widget's left edge, with the three values
+   injected into Rosa's JSON (fixture `rosa-kabalana.json`, fresh `generated_at`), Rosa's widget
+   stubbed at its real size so the measurement does not depend on the network:
+
+   | value | 1440 | 1525 | 1920 | widget |
+   |---|---|---|---|---|
+   | `0.7–1.0` | 98.2 px (was 26.2) | 98.2 (was 26.2) | 98.2 (was 26.2) | 420 × 500 |
+   | `1.8–2.4` | 96.9 px (was 24.9) | 96.9 (was 24.9) | 96.9 (was 24.9) | 420 × 500 |
+   | `10.0–12.5` | 97.6 px (was 25.6) | 97.6 (was 25.6) | 97.6 (was 25.6) | 420 × 500 |
+
+   The descriptive lines under the number (`.nd`, `.upd`, the Rosa credit) fill the column, so the
+   gap from *any* text in the left half is exactly 96 px at all three widths and all three values.
+   Also swept, same three values: 761, 850, 891, 900, 963, 1000, 1200, 1300 and 2560 px. The channel
+   never drops below 24 px (its old value) and the number never reaches the widget at any of them;
+   the widget is 420 × 500 from 891 px up, exactly as before, and 96 px of channel appears from
+   963 px up.
+
+## Correction 1 (2026-09-22, after the round-3 build passed; shots `round-7/`)
 
 Two items from Shahar, nothing else touched.
 
@@ -208,6 +265,46 @@ the shared node_modules.
 
 ## Checks (all on `dist/` served from a clean local static server)
 
+Correction 2 (the map and the forecast channel). Build:
+`SITE_URL=https://ka-surf-hostel.os1.workers.dev/ npx --no-install astro build`.
+
+- Preview rule still holds: `dist/robots.txt` is `Disallow: /` for `*` and for each named AI crawler,
+  `dist/index.html` carries `<meta name="robots" content="noindex, nofollow">`, no `sitemap.xml`.
+- check-design: `node tools/check-design.mjs sites/ka-surf-hostel-and-restaurant/final/dist
+  --no-shots` → `ok`, 0 problems, 0 warnings; look: fonts h1/h2/body "Outfit", ground
+  rgb(240, 241, 242) = hsl(210 7% 95%), all-caps labels 0, labelled headings 0/8.
+- check-places: `node tools/check-places.mjs ka-surf-hostel-and-restaurant` → 0 borrowed image uses,
+  0 failing.
+- audit: `node tools/audit-mockup.mjs ka-surf-hostel-and-restaurant ../final` → first KB **233**,
+  JS KB 0, LCP **400 ms** (408 ms on a second run), CLS **0**, 3rd party **0**, noJS links 4,
+  kbd n/a, alt miss 0. Every budget line inside. (Correction 1 was 228 KB / 396 ms; the 5 KB is the
+  map's markup, CSS and loader — nothing the map loads is on first load.) `audit.json` now also lists
+  `https://www.openstreetmap.org/copyright` among the external hrefs: the credit link.
+- **Map, 390 × 844 DPR 2, load + 2.5 s, no scroll: 7 requests, all `127.0.0.1`, third-party 0**, and
+  the iframe's `src` attribute is still `null` with `.map-frame` not `.on`. Scrolling to the section
+  sets `src` and the frame loads (`.on` true); the hosts that then appear are
+  `www.openstreetmap.org`, `tile.openstreetmap.org` and the Rosa pair, none of them before the
+  scroll.
+- **Map with JS off**, 390 and 1440: the reserved box is there (290 × 320 on the phone, 384 × 500 at
+  1440), `iframe src` null, `.map-alt` visible, showing "207/A Welahangoda, 80650 Ahangama, Sri
+  Lanka" and **"Open in Google Maps"** →
+  `https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en`
+  (character-identical to `contact.mapUrl`), credit "Map © OpenStreetMap contributors" under it,
+  0 third-party requests.
+- **Map when the embed cannot be reached** (every `*.openstreetmap.org` request aborted), 390 and
+  1440: the HEAD probe rejects, `src` is never set, `.on` stays false, `data-loading` is cleared and
+  the box keeps the address + "Open in Google Maps". No dead frame — the defect round 2 found.
+- **Layout shift over a full scroll** (`PerformanceObserver`, `hadRecentInput` false), 390 and 1440,
+  with the embed loading and with it blocked: **0.0000** in all four runs.
+- **Forecast layout shift** re-measured with the wider channel, block on screen, failure armed to
+  land after it is on screen — **390 / 1440**: success 0 / 0 · 404 after 1 s 0 / 0 · abort after 3 s
+  0 / 0 · 10 s timeout 0 / 0 · stale (48 h) 0 / 0. In every failure the `.fc-now` box keeps its
+  232 px (390) / 289 px (1440) and `.fc-rosa` its 500 px, and the plain link is visible.
+- **Forecast channel**, three injected values × three widths: the table under "Correction 2" above.
+- Reduced motion, 1440: the map loads the same way; the canopy is the static path, as before.
+- Sheets: `shots/round-8/`, desktop 15 captures / 11 689 px, phone 18 / 13 400, `shoot.json` errors
+  `[]`; compared with `shots/seo-4/` capture by capture and pixel by pixel under "Rounds".
+
 Round 3 (below each check, the earlier rounds' lines are kept where they still hold):
 
 - check-design round 3: `node tools/check-design.mjs sites/ka-surf-hostel-and-restaurant/final/dist
@@ -312,6 +409,18 @@ fold · 1 font family, 32 292 B · LCP **396 ms** · CLS **0** · third-party re
 HTML gzip 25 464 B (round 3: 25 518). Unchanged in the same run: 0 images without alt, 0 tap targets
 under 44 px, 4 booking links reachable with JS off, 14 images visible with JS off.
 
+Re-measured after correction 2 (`audit.json` rewritten 2026-09-22T20:46 UTC), every line still
+inside its target: first load **238 561 B (233 KB) / 8 requests** — HTML 80 234 B, 5 289 B more than
+correction 1's 74 945, which is the map's markup, its CSS and the loader; fonts 32 292 and images
+126 035 both unchanged, because **nothing the map or the forecast loads is on first load** ·
+JS 0 B as separate files, inline 20 930 B raw / 8 016 B gzip (correction 1: 19 654 / 7 562 — the map
+loader) · largest image on first load 47 428 B, still nothing above the fold · 1 font family,
+32 292 B · **LCP 400 ms and 408 ms over two runs** · **CLS 0** on first load, 0 over a full scroll
+with the map and the forecast arriving, 0 over a full scroll with the map blocked, and 0 on all five
+forecast paths at 390 and 1440 · **third-party requests on load 0**. HTML gzip 27 033 B. Unchanged
+in the same run: 0 images without alt, 0 tap targets under 44 px, 4 booking links reachable with
+JS off, 14 images visible with JS off.
+
 ## Rounds
 
 - **round-1** (`shots/round-1/`): first full shoot. Against round 16: same page, starting 450 px
@@ -405,6 +514,35 @@ under 44 px, 4 booking links reachable with JS off, 14 images visible with JS of
   "read 19 September / 2026", which is ragged; the alternative was a short "19 Sep 2026" that reads
   like a receipt, and I chose the ragged wrap.
 
+- **round-8** (`shots/round-8/`, correction 2; served over http from `dist/`, live network, so both
+  the forecast and the map tiles are real). Desktop 15 captures / 11 689 px — **the same page height
+  as round-6 and round-7 to the pixel**; phone 18 / 13 400 (round-7: 13 032), 368 px taller because
+  on the phone the map stacks under the text instead of sitting beside it. `shoot.json` errors `[]`
+  at both widths. The canopy rendered on the first screen (two shoots were thrown away first: the
+  known blank-leaves flake, then one where Rosa's widget was still painting at capture 11 — it was
+  fully painted at capture 12 of that same shoot, so the frame had arrived; `--settle 1400` fixed
+  the capture). Sheets opened at both widths against `shots/seo-4/`, and every capture also diffed
+  pixel by pixel:
+  - **Desktop 01–09, 13 and 14 are byte-identical to seo-4.** Only three captures differ, and they
+    are the two things that were asked for: **10** (Getting here — the map box is drawn in the left
+    column where seo-4 had empty space, with the pin on the hostel and "Map © OpenStreetMap
+    contributors" under it), **11** (the forecast — same headline, same widget, the channel between
+    them clearly wider, both halves 36 px left of where they were because the pair re-centres), and
+    **12** (2.4 %, only the top strip: the lower half of Rosa's widget, in its new position).
+    Desktop 00 differs by 1 % — the canopy's animation frame, as it does in every shoot of it.
+  - **Phone 01–12 and 17 are byte-identical.** 13 carries the top of the map box, 14–16 are the same
+    content pushed down by the map's 368 px. Nothing else.
+  Nothing overlaps, overflows, clips or is unreadable at either width. As a piece of design: the map
+  is what the section was composed around — the text column has sat at 7/12 with columns 1–4 empty
+  since the map was taken out, and a beach-and-road drawing in that hole reads as the reason the
+  text is where it is, which the empty version never did. The forecast is the better half of the
+  change: at one gutter the "m" of "0.7–1.1 m" was inside the widget's shadow and the two halves
+  read as one crowded object; at 96 px they read as the site's voice and Rosa's, side by side, which
+  is what the playbook's two-halves rule is for. What is still wrong: the map's own credit strip
+  ("Report a problem | © OpenStreetMap contributors | Make a Donation…") sits inside the frame in
+  OSM's type, directly above our own credit line — two credits in two typefaces, and only the second
+  is ours. It is OSM's frame and may not be restyled or cropped, so it stays.
+
 ## facts — every fact on the page → dossier key
 
 | on the page | dossier key |
@@ -427,8 +565,8 @@ under 44 px, 4 booking links reachable with JS off, 14 images visible with JS of
 | check-in 13:00–23:00, check-out by 13:00, reception 24 hours | `hours_note` |
 | 207/A Welahangoda, 80650 Ahangama, Sri Lanka | `location.address` (Google spelling, Shahar 2026-09-22; copy/sources.md) |
 | +94 77 374 6053 | `contact.phone` |
-| Open in Google Maps ("Getting here" and the footer, same URL — round 3) | `location.map_url` |
-| JSON-LD geo 5.98181, 80.35206 (no map on the page since round 2) | `location.plus_code` (X9J2+PR) |
+| Open in Google Maps ("Getting here", the map box's fallback and the footer, same URL) | `location.map_url` |
+| JSON-LD geo 5.98181, 80.35206, and the map embed's pin and bbox (correction 2) | `location.plus_code` (X9J2+PR) |
 | 9.8/10, 66 reviews, Hostelworld | `reviews.hostelworld` |
 | 9.5/10, 38 reviews, Booking.com | `reviews.booking` |
 | 4.8/5, 42 reviews, Google | `reviews.google` |
@@ -460,8 +598,8 @@ under 44 px, 4 booking links reachable with JS off, 14 images visible with JS of
 | the five quotes | `testimonials[]` in order: rooms, breakfast, staff (large), staff, staff (deployer-seeded; owner may delete) |
 | spot sentence | `spot` |
 | phone (Call, "or call", footer) | `contact.phone` (Contact & booking) |
-| address (Getting here, footer, JSON-LD, llms.txt, the town in the title) | `contact.address` |
-| "Open in Google Maps" (Getting here and footer, round 3) — the link target | `contact.mapUrl` |
+| address (Getting here, the map box's fallback, footer, JSON-LD, llms.txt, the town in the title) | `contact.address` |
+| "Open in Google Maps" (Getting here, the map box's fallback, footer) — the link target | `contact.mapUrl` |
 | every "Check dates" (first link), the tiles (all links) | `bookingLinks[]` (first row is the primary action) |
 | forecast on/off, spot name in it | `forecast.enabled`, `forecast.spotName` (`rosaSpotId` deployer-only) |
 
@@ -503,8 +641,8 @@ weights used (200/300/400/500), `font-display: swap`, preloaded. SIL Open Font L
 - **Instagram** is in the dossier but not in copy/en.json, and schema v0.3 has no social-links field:
   not linked.
 - **Schema gaps the design needs** (values kept in `src/lib/site.mjs`, marked SCHEMA GAP):
-  1. geo coordinates for JSON-LD `geo` (v0.3 has only `contact.mapUrl`; from `location.plus_code`;
-     the map and its bbox are gone since round 2);
+  1. geo coordinates for JSON-LD `geo` and, since correction 2, for the OpenStreetMap embed's pin
+     and bbox as well (v0.3 has only `contact.mapUrl`; both come from `location.plus_code`);
   2. the place in the page title ("Ahangama"; no SEO title/description field);
   3. a photo-credit line (the footer's "Photographs: KA Surf Hostel's own, from its Booking.com listing
      and Instagram." becomes untrue if the owner uploads a photo from elsewhere).
@@ -518,10 +656,26 @@ weights used (200/300/400/500), `font-display: swap`, preloaded. SIL Open Font L
 
 ## conflicts
 
-- **Map — resolved by Shahar (2026-09-22): "replace the embedded map with a plain 'Open in Google
-  Maps' link. Rosa stays the one embed."** Done in round 2 (above). ~~The footer's second link to the
-  same URL still says "Open the map".~~ Closed in round 3 (critic fix 1): both links now read "Open in
-  Google Maps". Round 1's record follows.
+- **Map — OPEN. The page carries a second third-party embed against playbook §4, on Shahar's
+  instruction.** Playbook 0.3.0 §4 says Rosa's widget is "the one third-party embed a site may
+  carry", and, in the same section, "Map is a static image linking to Google Maps, not an embedded
+  map on load". The page has an OpenStreetMap iframe in "Getting here" as well.
+  - What Shahar asked, twice. 2026-09-22, gate answer: *"Put the embed back"* — reversing his own
+    earlier *"replace the embedded map with a plain 'Open in Google Maps' link. Rosa stays the one
+    embed"*, which round 3 had carried out. The mockup he picked had the embed; round 3 removed it;
+    correction 2 puts it back.
+  - What I did: restored it as it was, and kept every mitigation the rule's spirit asks for — no
+    request of any kind on first load (0 third-party requests at 390 px with no scroll, `src` unset
+    until the section nears the viewport), a reserved box so nothing shifts (measured 0 layout shift
+    on a full scroll at 390 and 1440, whether the embed loads or is blocked), the address and the
+    "Open in Google Maps" link inside the box with JS off or when the embed cannot be reached, and
+    the OpenStreetMap credit. It stays outside the first-load budget, as Rosa's widget does.
+  - **The playbook is unchanged and I did not change it.** Either §4 gains a second named exception
+    for a lazy map embed, or this site keeps an instruction its own playbook forbids. That is
+    Shahar's call, not mine; it is recorded here as still open for the critic to surface.
+  - The alternative, if the playbook wins: a self-hosted static map image of the same frame, linking
+    to Google Maps — one request from our own origin, no third party at all, no pan or zoom.
+  - Round 3's own record, and round 1's, follow.
 - ~~**Map (open, for Shahar).**~~ Playbook §4: Rosa's widget is "the one third-party embed a site may
   carry", and "Map is a static image linking to Google Maps, not an embedded map on load". Kept exactly
   as the mockup has it, as briefed: OpenStreetMap's embed in "Getting here", never on first load

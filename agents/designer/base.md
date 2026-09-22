@@ -1,4 +1,4 @@
-version: 0.3.3
+version: 0.3.4
 
 # designer / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -62,7 +62,10 @@ tools and the critic, which serve `dist/`, keep working:
   headline (wave height now, time, swell, wind) in this site's own type, drawn from the checked-in
   fixture (`agents/designer/fixtures/rosa-<spot>.json`), inlined — no day-by-day boxes; on the right,
   Rosa's own widget iframe exactly as Rosa ships it, in the theme that fits the design, loaded only
-  when the block nears the viewport, in a reserved box, with the plain-link fallback.
+  when the block nears the viewport, in a reserved box, with the plain-link fallback. A page may
+  carry **at most two third-party embeds** in total (playbook §4) — the forecast widget and, at most,
+  one more (a map, say) — each lazy, each with reserved space and a plain-link fallback, and every
+  budget line still met with both loaded.
 - All three variants carry the same facts, offers and prices, so the human's pick is about design.
 
 **The look loop — mandatory, per variant, before anything is handed off:**

@@ -135,12 +135,29 @@ h2{font-weight:200;letter-spacing:-.04em;line-height:.95}
 .times div:last-child dd span{margin-left:0}
 .note,.addr{font-weight:300;font-size:17px;margin-top:28px;max-width:30em}
 .addr a,.end a,.upd a{text-decoration:none;border-bottom:1px solid var(--ink)}
+/* the map: OpenStreetMap's embed, a box reserved by the row it shares with the text, so nothing
+   shifts when it arrives; its right edge sits as far left of the line as the text sits right of it */
+.walk .map{grid-column:1/5;grid-row:1;align-self:stretch;display:flex;flex-direction:column;margin:26svh 0 22svh;position:relative;z-index:1}
+.map-frame{position:relative;flex:1 1 auto;min-height:360px;border:1px solid var(--ink)}
+.map-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;visibility:hidden}
+.map-alt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:32px;text-align:center;font-weight:300;font-size:17px;line-height:1.45}
+.map-alt a{text-decoration:none;border-bottom:1px solid var(--ink)}
+.map-frame.on iframe{visibility:visible}
+.map-frame.on .map-alt{visibility:hidden}
+.map-cred{position:absolute;top:100%;left:0;font-size:14px;margin-top:10px}
+.map-cred a{text-decoration:none;border-bottom:1px solid var(--ink)}
 
 .wave{background:var(--sky)}
 .wave .in{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g);padding:150px var(--pad) 150px}
 .spot{grid-column:1/13;font-weight:300;font-size:2.5rem;line-height:1.16;letter-spacing:-.02em}
-/* the forecast pair: headline and Rosa's widget one gutter apart, centred as a group in the column */
-.fc{grid-column:1/13;grid-row:2;display:grid;grid-template-columns:minmax(0,351px) minmax(0,420px);column-gap:var(--g);justify-content:center;align-items:start;margin-top:96px}
+/* the forecast pair: the site's headline and Rosa's widget, centred as a group in the column.
+   The channel between them is 96px (Shahar, 2026-09-22: more air than one gutter) — the same
+   measure as the block's own margin-top, and four of the page's 24px gutters, so it stays on the
+   grid's scale. The widget is untouched: it keeps its 420 x 500 box and only moves with the group.
+   The channel, not the widget, takes any squeeze: clamp() gives back whatever a narrow window is
+   short of 351 + 420, down to the old gutter, so Rosa's card holds 420 to exactly the window width
+   it held it to before (inner width = min(--wmax, 100cqw - 2 * --m); 351 + 420 = 771). */
+.fc{grid-column:1/13;grid-row:2;display:grid;grid-template-columns:minmax(0,351px) minmax(0,420px);column-gap:clamp(var(--g),calc(min(var(--wmax),100cqw - 2 * var(--m)) - 771px),96px);justify-content:center;align-items:start;margin-top:96px}
 .fc-now{margin-top:0;min-height:289px}
 .fc-now .live{visibility:hidden}
 .fc.live .fc-now .live{visibility:visible}
@@ -254,6 +271,9 @@ html:not(.js) .fc-now,.fc.off .fc-now{visibility:hidden}
   .amen{columns:1}
   .q-mia p{font-size:1.6rem}
   .walk>.line{grid-column:1/2!important;grid-row:1/span 2!important;justify-self:center!important}
+  .walk>.map{margin:0 0 16svh!important}
+  .walk .go{padding-bottom:48px}
+  .map-frame{flex:none;height:320px;min-height:0}
   .go{padding:18svh 0 16svh}
   .go h2{margin-top:0!important}
   .times{gap:20px;flex-direction:column}

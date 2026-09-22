@@ -1,4 +1,4 @@
-version: 0.3.0
+version: 0.4.0
 
 # playbook.md — what a great surf-business site is; shared by all agents.
 
@@ -70,13 +70,20 @@ Assume a mid-range Android, slow 4G dropping to 3G, metered data.
 - No video autoplay on mobile unless tiny, muted, poster-first, and outside the first-load budget.
 - Fonts: self-hosted, `font-display: swap`, subset; system fallback that doesn't reflow the page.
 - No third-party trackers, chat widgets, cookie walls, newsletter or promo pop-ups. Nothing may cover the content or the booking action on load.
-- Map is a static image linking to Google Maps, not an embedded map on load.
+- A map is either a static image linking to Google Maps, or one of the page's embeds under the rule below.
+
+- **Third-party embeds — at most two per page** (rule of 2026-09-22, Shahar; it was one until then). An embed is any iframe or script from another origin: Rosa's forecast widget, a map, anything else. All of these hold, for each one:
+  - it loads only when its own block scrolls near the viewport — **zero third-party requests on load**, so the count below stays 0;
+  - its space is reserved, so nothing shifts when it arrives, fails, or is refused;
+  - it has a plain-link fallback with JavaScript off and when the request fails;
+  - with **both** embeds loaded the page still meets every budget line below.
+  Nothing else changes: no trackers, no chat widgets, no cookie walls, no pop-ups, and nothing that covers the content or the booking action.
 - All assets self-hosted; the site must work when a CDN doesn't.
 - Tap targets ≥ 44px; phone and WhatsApp are tap-to-act links.
 - **Exception — the Rosa forecast** (optional block; the creative director decides per concept; rule of 2026-09-21, Shahar). The block has two halves:
   - **Left — the headline, drawn by the site:** wave height now, the time it is for, the swell (period and direction) and the wind (speed, on/cross/offshore), in the site's own type and colour, from Rosa's static per-spot JSON. Nothing day-by-day: no boxes, no row of days, no chart.
   - **Right — Rosa's own widget,** embedded exactly as Rosa ships it (an iframe of `https://rosa.surf/widget/`, see `agents/designer/tools.md`), in its light or dark theme, whichever fits the design. It is a promotion for Rosa and must stay recognisable as Rosa's: never restyled, cropped, covered or recoloured.
-  - **Loading:** the widget is the one third-party embed a site may carry. It and the headline's one request to the JSON are made only when the block scrolls near the viewport, never on first load, and are outside the first-load budget and the third-party-requests-on-load count below. Both halves have their space reserved with fixed dimensions, so nothing shifts when they arrive.
+  - **Loading:** the widget is one of the page's at most two third-party embeds (§4). It and the headline's one request to the JSON are made only when the block scrolls near the viewport, never on first load, and are outside the first-load budget and the third-party-requests-on-load count below. Both halves have their space reserved with fixed dimensions, so nothing shifts when they arrive.
   - **Fallback:** with JavaScript off, with a request failed, or with data older than 24 h, the block shows a plain link — "See today's forecast for <spot> on Rosa" — never an empty box, never stale numbers shown as current.
   - One credit line, "Forecast for <spot> by Rosa", linking to the spot on Rosa. No cookies or trackers set by the site.
 

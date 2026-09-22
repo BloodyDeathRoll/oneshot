@@ -1,4 +1,4 @@
-version: 0.2.2
+version: 0.2.3
 
 # creative-director / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -129,7 +129,9 @@ Each concept gets:
   never the first screen, never above the offers. It has two halves (playbook §4): the headline —
   wave height now, time, swell, wind — drawn in this concept's own type and colour, and Rosa's own
   widget beside it, embedded as Rosa ships it; say which of its themes, light or dark, fits the
-  concept. No day-by-day boxes. "No" is a complete answer.
+  concept. No day-by-day boxes. "No" is a complete answer. The concept may name **one** further
+  third-party embed (a map, say) — playbook §4 allows two per page, each lazy, with reserved space
+  and a plain-link fallback — and must say what each costs against the budget.
 - **What would make this concept fail** — the honest risk, in one sentence.
 
 ### 5. Divergence table

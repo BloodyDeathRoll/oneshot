@@ -294,3 +294,273 @@ title 24 chars · description 100 chars · h1 count 1 · h2 count 7
 ```
 
 Budget lines from `final/audit.json` (rewritten by the audit: bytes_total 232 485, bytes_js 0, bytes_fonts 32 292, largest_image_bytes 47 428, lcp_ms 396, cls 0, third_party_hosts [], requests 8) — every one inside playbook §4.
+
+---
+
+## Preview build: noindex when there is no real domain — 2026-09-22
+
+seo 0.2.0 · same run. Shahar's decision (ledger, 2026-09-22), verbatim: *"Yes, add the noindex: robots.txt Disallow: / plus the noindex meta whenever SITE_URL is absent or points at workers.dev, off on a real domain. Run it through the SEO station, not by hand."* — and *"build the preview with `SITE_URL=https://ka-surf-hostel.os1.workers.dev/`"*. The site is about to be deployed to a temporary preview at `https://ka-surf-hostel.os1.workers.dev/` to show the owner.
+
+Nothing on the page moved. Proof under "Look" below.
+
+### The rule, and the one place it lives
+
+`final/src/lib/site.mjs`, beside the other helpers:
+
+```js
+export const isPreviewUrl = (url) => {
+  if (!url) return true
+  let host
+  try { host = new URL(url).hostname.toLowerCase().replace(/^\[|\]$/g, '') } catch { return true }
+  return host === 'workers.dev' || host.endsWith('.workers.dev')
+    || host === 'localhost' || host.endsWith('.localhost')
+    || host === '127.0.0.1' || host === '::1'
+}
+export const SITE = import.meta.env.SITE ? new URL(import.meta.env.SITE) : null
+export const IS_PREVIEW = isPreviewUrl(SITE)
+```
+
+A build is a **preview** when it has no production domain of its own: no `SITE_URL` at all, a `SITE_URL` on `*.workers.dev`, or one on `localhost` / `127.0.0.1` / `::1` (a local `astro build` is a preview too). An unparseable `SITE_URL` is treated as a preview — the safe side. Everything that needs the answer imports `IS_PREVIEW`; no file sniffs the URL itself.
+
+| file | change |
+|---|---|
+| `final/src/lib/site.mjs` | the block above (`isPreviewUrl`, `SITE`, `IS_PREVIEW`). Nothing else in the file changed. |
+| `final/src/pages/robots.txt.js` | on a preview the whole file is one refusal (below). The real-domain path is byte-for-byte what it was, AI group and `Sitemap:` line included. |
+| `final/src/pages/[sitemap].xml.js` | `getStaticPaths()` is now `IS_PREVIEW ? [] : [{…}]` (it was `process.env.SITE_URL ? … : []`). A preview gets no `sitemap.xml`: it disallows everything, and a sitemap is a list of pages asking to be indexed. Unchanged for a build with no `SITE_URL` — still no sitemap. |
+| `final/src/pages/index.astro` | one line in the head: `{IS_PREVIEW && <meta name="robots" content="noindex, nofollow">}`, right after `<title>`. `const site` now reads the shared `SITE` instead of re-reading `import.meta.env.SITE`. Nothing else: canonical, `hreflang`, `og:url` and `og:image` still follow `SITE_URL`, so the preview's own links resolve. |
+| `final/src/pages/llms.txt.js` | one preview-only line (see below). This is 4i's file; the change is three lines and is marked as 4h's in a comment. |
+
+No CSS, no script, no body markup, no content. Nothing outside `final/` and this report.
+
+### Preview robots.txt, verbatim (states 1 and 2 — byte-identical to each other)
+
+```
+# Preview build: this is not the published site. Nothing here may be crawled or indexed.
+User-agent: *
+Disallow: /
+
+# The named AI crawlers repeat the refusal: a bot matching its own group ignores the "*" group.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+User-agent: Meta-ExternalAgent
+User-agent: Amazonbot
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+Disallow: /
+```
+
+**Why the AI group is repeated rather than dropped.** A crawler that matches a group of its own ignores the `*` group entirely — that is the rule 4i relied on to give the AI bots their own `Allow: /`. Leaving that group as-is under a site-wide `Disallow: /` would therefore have told exactly the fifteen named crawlers the opposite of what the file says, and dropping the group would have left them on the `*` group by silence. Repeating them with `Disallow: /` says it to every one of them in its own words. No group in the preview file allows anything, and there is no `Sitemap:` line because there is no sitemap.
+
+`AI_CRAWLERS` itself is untouched: the owner's allow/deny decision (aiseo-report.md) is still the single source, and it takes effect the moment the site gets a real domain.
+
+### /llms.txt: kept reachable, marked
+
+`/llms.txt` is still built and still served on a preview. What changed: on a preview build only, one line under the summary blockquote:
+
+```
+# KA Surf Hostel
+
+> Surf, chill and feel at home in Ahangama. Five minutes from Kabalana Beach.
+
+Preview build, not the published site: shown to the owner for review. Do not index, quote or cite it.
+```
+
+**Why this and not something else.** Three options were on the table. (a) Stop emitting the file: rejected — Shahar asked for it to stay reachable, and it is how we and the owner read what an answer engine would see. (b) Rely on `robots.txt` alone: correct for every compliant fetcher, since `Disallow: /` covers `/llms.txt` like any other path, but it leaves the file itself silent, and an engine that ignores robots.txt would read a complete, confident description of a hostel with a live URL in its "Pages" section and no hint that the URL is throwaway. (c) What I did: robots.txt keeps doing the real work, and the file says what it is in band. A static file cannot carry `X-Robots-Tag` (no server to set a header on Workers static assets) and llms.txt has no meta mechanism, so a plain sentence is the only signal available inside the file. It costs 100 bytes, it is preview-only, and it disappears on a real domain.
+
+The rest of the file is unchanged, including the `## Pages` link, which on this build reads `- [KA Surf Hostel, Ahangama](https://ka-surf-hostel.os1.workers.dev/): the website, one page` — the preview's own URL, so the owner's links work.
+
+### The three builds
+
+All three in `final/`, `npx --no-install astro build`, `dist/` inspected after each.
+
+**1 · no `SITE_URL`** — `dist/`: `fonts img index.html llms.txt photos robots.txt` (no `sitemap.xml`).
+
+```
+  ├─ /llms.txt (+3ms)
+  ├─ /robots.txt (+1ms)
+  ├─ /index.html (+4ms)
+✓ Completed in 15ms.
+[build] 1 page(s) built in 165ms
+[build] Complete!
+```
+
+robots.txt: the preview file above, verbatim. Head, verbatim (preload, inline style and JSON-LD elided):
+
+```html
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KA Surf Hostel, Ahangama</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Surf, chill and feel at home in Ahangama. Five minutes from Kabalana Beach. Dorms and private rooms.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KA Surf Hostel">
+<meta property="og:title" content="KA Surf Hostel, Ahangama">
+<meta property="og:description" content="Surf, chill and feel at home in Ahangama. Five minutes from Kabalana Beach. Dorms and private rooms.">
+<meta name="twitter:card" content="summary">
+```
+
+`grep -c canonical dist/index.html` → 0. `grep -c sitemap dist/robots.txt` → 0. JSON-LD: 14 keys, no `@id` / `url` / `image`. Exactly the old no-`SITE_URL` behaviour, plus the noindex meta.
+
+**2 · `SITE_URL=https://ka-surf-hostel.os1.workers.dev/`** (the preview that will be deployed) — `dist/`: same six entries, still **no `sitemap.xml`**.
+
+```
+  ├─ /llms.txt (+3ms)
+  ├─ /robots.txt (+1ms)
+  ├─ /index.html (+4ms)
+✓ Completed in 15ms.
+[build] 1 page(s) built in 170ms
+[build] Complete!
+```
+
+robots.txt: byte-identical to state 1 — the preview file above, **no `Sitemap:` line**. Head, verbatim:
+
+```html
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KA Surf Hostel, Ahangama</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Surf, chill and feel at home in Ahangama. Five minutes from Kabalana Beach. Dorms and private rooms.">
+<link rel="canonical" href="https://ka-surf-hostel.os1.workers.dev/">
+<link rel="alternate" hreflang="en" href="https://ka-surf-hostel.os1.workers.dev/">
+<link rel="alternate" hreflang="x-default" href="https://ka-surf-hostel.os1.workers.dev/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KA Surf Hostel">
+<meta property="og:title" content="KA Surf Hostel, Ahangama">
+<meta property="og:description" content="Surf, chill and feel at home in Ahangama. Five minutes from Kabalana Beach. Dorms and private rooms.">
+<meta property="og:url" content="https://ka-surf-hostel.os1.workers.dev/">
+<meta property="og:image" content="https://ka-surf-hostel.os1.workers.dev/photos/img-001-576.jpg">
+<meta property="og:image:width" content="576">
+<meta property="og:image:height" content="768">
+<meta property="og:image:alt" content="A private room with a double bed, white plank walls and the door open to the garden">
+<meta name="twitter:card" content="summary">
+```
+
+Canonical and `og:url` point at the preview host, as asked, so a link pasted from the preview resolves and the WhatsApp preview picture loads from the preview itself. `noindex, nofollow` is what stops that being an indexing invitation. **This is the state `dist/` is left in.**
+
+**3 · `SITE_URL=https://example.test/`** — `dist/` gains `sitemap.xml`:
+
+```
+  ├─ /llms.txt (+4ms)
+  ├─ /robots.txt (+1ms)
+  ├─ /sitemap.xml (+1ms)
+  ├─ /index.html (+4ms)
+✓ Completed in 17ms.
+[build] 1 page(s) built in 176ms
+[build] Complete!
+```
+
+robots.txt, verbatim — today's behaviour, unchanged:
+
+```
+User-agent: *
+Allow: /
+
+# AI crawlers and assistants: allowed, so answers can quote and link this site (owner to confirm)
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+User-agent: Meta-ExternalAgent
+User-agent: Amazonbot
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+Allow: /
+
+Sitemap: https://example.test/sitemap.xml
+```
+
+sitemap.xml, verbatim:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<url><loc>https://example.test/</loc><xhtml:link rel="alternate" hreflang="en" href="https://example.test/"/></url>
+</urlset>
+```
+
+Head, verbatim — **no robots meta**:
+
+```html
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KA Surf Hostel, Ahangama</title>
+<meta name="description" content="Surf, chill and feel at home in Ahangama. Five minutes from Kabalana Beach. Dorms and private rooms.">
+<link rel="canonical" href="https://example.test/">
+<link rel="alternate" hreflang="en" href="https://example.test/">
+<link rel="alternate" hreflang="x-default" href="https://example.test/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KA Surf Hostel">
+<meta property="og:title" content="KA Surf Hostel, Ahangama">
+<meta property="og:description" content="Surf, chill and feel at home in Ahangama. Five minutes from Kabalana Beach. Dorms and private rooms.">
+<meta property="og:url" content="https://example.test/">
+<meta property="og:image" content="https://example.test/photos/img-001-576.jpg">
+<meta property="og:image:width" content="576">
+<meta property="og:image:height" content="768">
+<meta property="og:image:alt" content="A private room with a double bed, white plank walls and the door open to the garden">
+<meta name="twitter:card" content="summary">
+```
+
+`grep -c noindex dist/index.html` → 0. JSON-LD: 17 keys — `@context,@type,@id,url,name,description,image,telephone,address,geo,hasMap,checkinTime,checkoutTime,amenityFeature,containsPlace,knowsLanguage,sameAs`, `@id` `https://example.test/#business`, 11 image URLs. `dist/llms.txt` has no preview line. Identical to what the round-3 re-run recorded for a `SITE_URL` build.
+
+### Checks, verbatim (on the state-2 `dist/`)
+
+```
+$ node tools/check-design.mjs sites/ka-surf-hostel-and-restaurant/final/dist --no-shots
+ok    sites/ka-surf-hostel-and-restaurant/final/dist
+      look: fonts h1 "Outfit" · h2 "Outfit" · body "Outfit"   ground rgb(240, 241, 242) = hsl(210 7% 95%)   all-caps labels 0   labelled headings 0/8
+│ 0       │ 'sites/ka-surf-hostel-and-restaurant/final/dist' │ 0        │ 0        │
+1 page(s) · 0 failing · default-look warnings never fail
+
+$ node tools/audit-mockup.mjs ka-surf-hostel-and-restaurant ../final
+audited ka-surf-hostel-and-restaurant/../final
+│ (index) │ slug                     │ variant    │ first KB │ JS KB │ LCP ms │ CLS │ 3rd party │ noJS links │ kbd ok │ alt miss │
+│ 0       │ 'ka-surf-hostel-and-res' │ '../final' │ 229      │ 0     │ 404    │ 0   │ 0         │ 4          │ 'n/a'  │ 0        │
+
+$ node tools/shoot.mjs http://127.0.0.1:8947/ --out sites/ka-surf-hostel-and-restaurant/final/shots/seo-4
+desktop: 15 captures, page 11689px
+mobile: 18 captures, page 13032px
+```
+
+Budgets (from the rewritten `final/audit.json`): bytes_total 234 770, bytes_html 76 443, bytes_js 0, bytes_fonts 32 292, largest_image 47 428, lcp_ms 404, cls 0, third_party_hosts [], requests 8 — every one inside playbook §4.
+
+| | 4g round 7 (no `SITE_URL`) | now (preview, `SITE_URL` = workers.dev) | target |
+|---|---|---|---|
+| HTML | 74 945 B | 76 443 B | — |
+| First-load transfer | 233 272 B (228 KB) | 234 770 B (229 KB), 8 requests, all local | ≤ 1.5 MB |
+| LCP | 396 ms | 404 ms | ≤ 2.5 s |
+| CLS | 0 | 0 | < 0.1 |
+| Third-party on load | 0 | 0 | 0 |
+
+The +1 498 B of HTML is **not** the noindex meta (48 B). It is the absolute URLs that a `SITE_URL` build emits and the previous no-`SITE_URL` build did not: canonical, two `hreflang`, `og:url`, four `og:image*`, and the JSON-LD `@id` / `url` / 11 `image` entries. A production build carries the same weight. LCP moved 8 ms, inside this machine's ±10 ms jitter.
+
+### Look
+
+`shoot.mjs` `final/shots/seo-4/` vs `final/shots/round-7/`: same page heights (desktop 11 689, phone 13 032) and counts (15 / 18). Pixels differing (channel delta > 8): **0.00 % on 31 of the 33 captures**. The two that move are the two known sources, both present in every earlier round:
+
+- desktop-00 297 px (0.02 %) and mobile-00 232 px (0.02 %), scattered over the whole frame — the canopy draws its leaves randomly. Both captures have leaves (checked `seo-4/desktop-00.png`); the blank-canopy flake did not happen this run.
+- desktop-11 5 722 px (0.44 %), in the box x 1069…1117, y 602…721 — the right edge of Rosa's widget, where its satellite tile had not finished painting in this shoot. Cropped and compared side by side: the widget is otherwise identical, and the rest of the frame is pixel-identical.
+
+(`round-7` also holds `jsoff-*`, `nowebgl-*` and `reduced-*` captures, which `shoot.mjs` does not produce; they have no counterpart in `seo-4`.)
+
+### What still depends on the real domain
+
+1. **Everything in this section is temporary by design.** The moment the deployer builds with the client's own `SITE_URL`, `IS_PREVIEW` is false and the site is back to today's behaviour with no change to any file: allow-all robots with the owner's AI group, the `Sitemap:` line, `sitemap.xml`, canonical, `hreflang`, `og:*`, no robots meta, and no preview line in `/llms.txt`. **A production build that forgets `SITE_URL` is now a noindexed site, not a site with a missing canonical** — louder and safer than the old silent failure, but it must be in the deploy checklist.
+2. **`*.workers.dev` is permanently treated as preview.** If a client's site were ever meant to live on its workers.dev URL for real, this rule would have to be revisited. That is not the plan (PLAN.md: Cloudflare Registrar domain per client), and I did not add an override.
+3. **The preview will not be de-indexed later — it will never be indexed.** `noindex` on a page that is also `Disallow`ed is not read by a crawler that honours robots.txt, so the two are belt and braces for different crawlers, not a sequence. If the preview URL is ever pasted somewhere public and then retired, the cleanest removal is deleting the Worker, not a robots change.
+4. **The "still wrong" list is unchanged** from the round-3 re-run: the site's name still differs from Google's "KA surf hostel and restaurant" (by decision); the schema gaps `seo.*`, `contact.geo`, `socials[]`, `alternateNames[]` are still proposed and not applied; `og:image` is still a 576×768 portrait rather than a 1200×630 crop; there is still no favicon or logo; the display headline is still a `<p>` (intended); the spot `<h2>` is still 113 chars. None of them is affected by the preview rule.
