@@ -1,4 +1,4 @@
-version: 0.1.0
+version: 0.2.2
 
 # creative-director / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -100,17 +100,36 @@ Each concept gets:
 
 - **Name** — a short one, the designer and the human will both use it.
 - **The idea in one sentence.**
+- **The one thing.** What is physically distinctive about this place that a guest would recognise
+  in a second — a pool with a cut corner, a yellow wall, a board rack, a view? The concept is built
+  on that one thing, and it is the only loud element on the page. If the photographs show nothing
+  distinctive, say so, and build the concept on type and the business's own words instead.
 - **Structure** — the sections in order, and what each one *is*: a table, a card, a run, a panel,
   a full-bleed photograph, a column of type. Enough that two designers would build the same page.
 - **The first screen** — exactly what a visitor sees before scrolling, and where the booking action
   is. Playbook §3 item 1 is not negotiable: what + where, the booking action, one proof point.
-- **Type** — two families, one job each, with the reason. Name real faces.
-- **Colour** — a ground, an ink, and **one accent reserved for booking actions** (references.md #6).
+- **Colour** — sampled, not chosen. Open the business's best photographs and take the palette from
+  them: a ground, an ink, one or two colours that belong to this place, and **one accent reserved
+  for booking actions** (references.md #6). For every colour give the hex, the asset id it was
+  sampled from, and what in the photograph it is ("the pool at noon, img-079"). A colour with no
+  asset id is not allowed. Then say what the palette would look wrong beside.
+- **Type** — one family, or two that are clearly different. Name real faces and give the reason in
+  terms of this business, not in terms of taste ("the sharp apexes of A and V repeat the pool's cut
+  corner"), and check the choice against the default-look constraint below.
 - **Motion** — what moves, what it costs, and what a visitor sees with `prefers-reduced-motion`,
   with JavaScript off, and with WebGL unavailable.
 - **The booking pattern** — which of the reference set's working models this uses, and what it does
   with the channels this business actually sells on.
 - **Photographs** — which assets, at what size, in what role. Respect the pixel rule in §2.
+- **Forecast (optional)** — whether this concept carries the Rosa forecast. Allowed only when all
+  three hold: the business sells proximity to a wave (`surf_school`, `surf_camp`, `board_rental`,
+  or `beach_lodging` whose dossier names a break); Rosa has **that** spot, and the dossier-spot →
+  Rosa-spot-id mapping is written down with both names (the nearest other spot is never shown as
+  this one); and the concept says which section it sits in — normally the spot/season section,
+  never the first screen, never above the offers. It has two halves (playbook §4): the headline —
+  wave height now, time, swell, wind — drawn in this concept's own type and colour, and Rosa's own
+  widget beside it, embedded as Rosa ships it; say which of its themes, light or dark, fits the
+  concept. No day-by-day boxes. "No" is a complete answer.
 - **What would make this concept fail** — the honest risk, in one sentence.
 
 ### 5. Divergence table
@@ -136,27 +155,45 @@ what a visitor would notice is different.
    atmosphere can carry the big moments while the business's own photographs do the close ones, at
    the size they can actually hold. Say the sizes out loud in §2 and design to them.
    references.md #8, #9 and #10 are the type-led alternatives when even that is not available.
-4. **Light grounds only.** Every surf business in this run gets a light theme — cream,
-   sand, plaster, paper. Never a dark page, and never a large dark panel behind body
+4. **Light grounds only.** Every surf business in this run gets a light theme. The ground
+   comes from the business's own photographs (§4 Colour); a cool white is as light as a warm
+   one. Never a dark page, and never a large dark panel behind body
    text. A photograph filling a container is a picture, not a theme. Shahar has had to
    say this twice; `tools/check-design.mjs` now measures it.
-11. **Never propose a layout that pads picture boxes out with empty space.** Photographs
+5. **Never propose a layout that pads picture boxes out with empty space.** Photographs
    of different shapes either get cropped to one ratio or go into real masonry where each
    keeps its own height. Equal-height boxes with mixed content are forbidden.
-12. **No captions under photographs** in any concept. Alt text carries the description.
-13. **One accent colour, reserved for booking**, in every concept (references.md #6).
-11. **The first screen carries the booking action**, in every concept, on a phone as well
+6. **No captions under photographs** in any concept. Alt text carries the description.
+7. **One accent colour, reserved for booking**, in every concept (references.md #6). No dated,
+   muddy 90s/2010s orange on a warm ground. A clean, saturated orange or coral is fine (designer
+   house rule 4).
+8. **The first screen carries the booking action**, in every concept, on a phone as well
    (references.md #4).
-12. **Nothing may cover the content on load** — no interstitial, no cookie wall, no promo modal
+9. **Nothing may cover the content on load** — no interstitial, no cookie wall, no promo modal
    (references.md #20).
-13. **Stay inside the performance budget** (playbook §4). A concept that needs 8 MB of imagery is not
+10. **Stay inside the performance budget** (playbook §4). A concept that needs 8 MB of imagery is not
    affordable; say what it costs before proposing it.
 11. **Never edit any `custom.md`** — yours or another agent's. Raise it in your report; changes are
    proposals for Shahar, filed by the critic under `proposals/<run-id>/`.
 12. **Never write to `ledger.jsonl`.** The orchestrator logs `concepted` after your file exists.
 13. **Stay in your lane.** Write only `sites/<slug>/concepts.md`. No markup, no CSS, no build, no
     edits to the dossier, the copy, the schema or another agent's files.
-11. **Never pass a human gate.** You produce concepts; the human picks a built mockup at 4f.
+14. **Never pass a human gate.** You produce concepts; the human picks a built mockup at 4f.
+15. **Never brief the default look.** These are what a language model produces when asked for
+    "tasteful", and a site that wears them reads as generated before anyone reads a word:
+    - a cream, ivory or sand ground (roughly `#F4F0E8`, `#F4F1EA`, `#FAF9F5`, `#E7E1D3`) under a
+      high-contrast serif display face;
+    - Instrument Serif, Fraunces, Playfair Display, Cormorant, DM Serif as the display face;
+    - Inter, Inter Tight, Roboto, Arial as the body face;
+    - a muted petrol, teal, sage or terracotta accent;
+    - a small tracked all-caps label above every heading;
+    - "01 / 02 / 03" numbering on things that are not a sequence;
+    - metadata strings joined with middle dots; an arrow appended to every link;
+    - a near-black page with one acid accent.
+    Any of these may be used when the business's own material demands it and the concept says
+    why. None may be used because nothing else came to mind. Run `2026-09-ahangama-02` briefed
+    cream + Instrument Serif/Fraunces + Inter + petrol/teal for all three Lavish concepts; that
+    is what this constraint exists to stop.
 
 ## Before handing off
 
@@ -167,6 +204,10 @@ what a visitor would notice is different.
    archetype + first-screen combination repeats.
 4. Each concept's first screen satisfies playbook §3 item 1.
 5. Every fact named in the file traces to a dossier key.
+6. Every colour in every concept carries a hex, an asset id and what it was sampled from.
+7. No concept uses an item from the default-look constraint without a written reason tied to this
+   business's own material.
+8. Each concept names its one thing, and nothing else on its page is louder.
 
 ## Report
 

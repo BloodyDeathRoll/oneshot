@@ -1,6 +1,6 @@
 # schemas/site-content.md — the fixed content schema: the contract between Payload and the Astro templates.
 
-**Version 0.2** · 2026-09-19 (v0.1 came out of the Payload spike; v0.2 adds `businessType` and the per-type modules below, all additive — every v0.1 document is a valid v0.2 document) · source of truth in code: `spikes/payload/cms/src/collections/Sites.ts` + `Media.ts` · reference consumer: `spikes/payload/site/` · proven by `spikes/payload/test/` (both suites green).
+**Version 0.3** · 2026-09-21 (v0.1 came out of the Payload spike; v0.2 adds `businessType` and the per-type modules below; v0.3 adds the optional `forecast` block; all additive — every v0.1 document is a valid v0.3 document) · source of truth in code: `spikes/payload/cms/src/collections/Sites.ts` + `Media.ts` · reference consumer: `spikes/payload/site/` · proven by `spikes/payload/test/` (both suites green).
 
 Rules of the contract
 
@@ -134,6 +134,18 @@ One schema for every business. `businessType` says which kind of business the do
 | Live prices are not content | Nightly rates that live on an OTA are dated inventory, not a published price. They belong in `bookingLinks[]` as a link, never copied into `rooms[]` as a number. |
 | A new type is a document change, not a code change | See `schemas/business-types.md`. |
 
+
+## v0.3 — `forecast` (optional)
+
+A surf forecast for the business's own break, drawn by the site from Rosa's per-spot JSON (endpoint, fields and units: `agents/designer/tools.md`; loading rules: playbook §4's exception). Present only when the site's concept carries it (`sites/<slug>/concepts.md`, proposal 003 §3). The group may be absent or `null`; a template renders nothing for it unless `enabled` is true **and** `rosaSpotId` is set.
+
+| Field | Type | Required | Localized | Edited by | Constraints | Example |
+|---|---|---|---|---|---|---|
+| `forecast.enabled` | checkbox (boolean) | no (default `false`) | no | owner | the owner's on/off switch; off removes the block and its request from the next build | `true` |
+| `forecast.rosaSpotId` | text | when `enabled` | no | deployer — **read-only for the owner** | `^[a-z0-9-]+$`; must be an id in Rosa's `data/index.json`; seeded from the dossier-spot → Rosa-spot mapping in `concepts.md`. The nearest other spot is never used as this one, which is why the owner cannot retype it | `"kabalana"` |
+| `forecast.spotName` | text | when `enabled` | no | owner | ≤ 60; the name shown in the block and in its credit, "Forecast for <spotName> by Rosa" | `"Kabalana"` |
+
+Forecast values themselves (heights, ratings, wind) are never content: they are not stored in Payload, not seeded from the dossier and not restated in any copy field.
 
 ## Collection `media` — photos
 

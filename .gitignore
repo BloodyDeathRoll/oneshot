@@ -23,8 +23,28 @@ dist/
 # os / editor
 .DS_Store
 
-# mockup build artefacts (regenerate with tools/build-mockup.mjs)
-sites/*/mockups/*/dist/
+# A 4e mockup is one hand-written HTML file (designer 0.3.0): its dist/index.html and dist/img/
+# are the source, not a build product, so they are tracked despite the dist/ rule above.
+# The 4g build output (sites/*/final/dist/) stays ignored by that rule.
+!sites/*/mockups/*/dist/
+
+# ...except the Astro-built dist/ of the mockups made before designer 0.3.0, which are build products
+sites/the-lavish-haven/mockups/*/dist/
+# Layday's round-2 mockups (interactive was picked 2026-09-20), moved aside for the 2026-09-22 re-run of 4d-4f
+sites/layday-surf-ahangama/mockups-picked-02/*/dist/
+sites/layday-surf-ahangama/mockups-picked-02/*/node_modules
+sites/layday-surf-ahangama/mockups-picked-02/*/public/photos/
+sites/layday-surf-ahangama/mockups-picked-02/*/.astro/
+# KA's round-2 mockups, rejected; kept for reference, same artefacts ignored as when they were mockups/
+sites/ka-surf-hostel-and-restaurant/mockups-rejected-02/*/dist/
+sites/ka-surf-hostel-and-restaurant/mockups-rejected-02/*/node_modules
+sites/ka-surf-hostel-and-restaurant/mockups-rejected-02/*/public/photos/
+sites/ka-surf-hostel-and-restaurant/mockups-rejected-02/*/.astro/
+
+# Astro build artefacts of mockups made before designer 0.3.0 (regenerate with tools/build-mockup.mjs)
 sites/*/mockups/*/node_modules
 sites/*/mockups/*/public/photos/
 sites/*/mockups/*/.astro/
+
+# local archives of sites/ (too large for git hosting)
+sites/*.zip

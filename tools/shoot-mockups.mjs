@@ -7,7 +7,7 @@
 // the rest of its scroll height blank, which is an artefact of the capture, not
 // a layout bug.
 import fs from 'node:fs'; import path from 'node:path'; import http from 'node:http';
-import { chromium } from '/home/shahar/.npm/_npx/e41f203b7505f1fb/node_modules/playwright-core/index.mjs';
+import { chromium } from 'playwright';
 
 const root = process.cwd();
 const only = process.argv.slice(2).filter((a) => !a.startsWith('-'));

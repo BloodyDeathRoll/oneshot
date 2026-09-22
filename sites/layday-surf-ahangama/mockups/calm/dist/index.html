@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Layday Surf Ahangama</title>
+<meta name="description" content="Surf, chill and feel at home in Ahangama">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#E8E9F0; --ink:#0B0F10; --berth:#E2B827; --violet:#3C1D51; --quiet:#C5C9C9;
+  --col:1200px; --gut:48px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--ground)}
+body{background:var(--ground);color:var(--ink);font-family:Urbanist,system-ui,sans-serif;font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:calc(var(--col) + 2*var(--gut));margin:0 auto;padding:0 var(--gut)}
+
+/* top line */
+.top{display:flex;justify-content:space-between;align-items:center;height:72px}
+.top .name{font-size:18px;font-weight:400;text-decoration:none}
+.top .go{font-size:16px;font-weight:500;text-decoration:none;color:var(--violet);border-bottom:1px solid var(--violet);padding:10px 0 2px}
+
+/* first screen */
+.first{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;position:relative}
+.berth{grid-column:1 / 10;grid-row:1;background:var(--berth);height:58vh;min-height:420px;position:relative;padding:48px 56px;display:flex;flex-direction:column;justify-content:flex-end}
+.berth h1{font-weight:200;font-size:clamp(3rem,8.2vw,7.4rem);line-height:.96;letter-spacing:-.04em}
+.berth .tag{font-size:1.25rem;margin-top:20px;font-weight:400}
+.ladder{position:absolute;top:-72px;bottom:calc(-42vh + 72px);right:-2px;width:2px;background:var(--ink)}
+.ladder i{position:absolute;left:0;width:30px;height:2px;background:var(--ink);bottom:calc(42vh - 72px + var(--r))}
+.ladder i:nth-child(1){--r:40px}.ladder i:nth-child(2){--r:150px}.ladder i:nth-child(3){--r:260px}
+.side{grid-column:10 / 13;grid-row:1 / 3;padding-left:24px;align-self:start}
+.side .intro{margin-top:28px;font-size:16px;line-height:1.55;max-width:288px}
+.side .intro p+p{margin-top:12px}
+.print{display:block;width:100%;max-width:288px;aspect-ratio:4/5;object-fit:cover;height:auto}
+.drawer{grid-column:1 / 10;grid-row:2;border:1px solid var(--ink);border-top:0;min-height:96px;position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:28px;padding:16px 24px}
+.drawer summary{list-style:none;cursor:pointer;background:var(--violet);color:var(--ground);font-weight:500;font-size:17px;padding:14px 26px;display:inline-block}
+.drawer summary::-webkit-details-marker{display:none}
+.drawer .plain{display:block;font-size:13px;margin-top:6px}
+.drawer .call a{text-decoration:none;border-bottom:1px solid currentColor}
+.drawer .rate{text-align:right;font-size:14px;line-height:1.35}
+.drawer .rate b{display:block;font-weight:500;font-size:16px}
+.act{position:static}
+.panel{position:absolute;left:-1px;right:-1px;top:100%;background:var(--ground);border:1px solid var(--ink);border-top:0;padding:8px 24px 24px;z-index:5}
+.panel a.l{display:block;padding:14px 0;border-bottom:1px solid var(--ink);text-decoration:none;font-size:20px;font-weight:300}
+.panel p{margin-top:16px;font-size:16px}
+
+.bar{display:none;position:fixed;left:0;right:0;bottom:0;grid-template-columns:1fr auto;z-index:10;background:var(--ground);border-top:1px solid var(--ink)}
+.bar a{display:flex;align-items:center;justify-content:center;height:56px;text-decoration:none;font-weight:500;font-size:17px}
+.bar .b{background:var(--violet);color:var(--ground)}
+.bar .c{padding:0 28px}
+
+/* the rest */
+section.s{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;margin-top:152px}
+h2{font-weight:200;letter-spacing:-.035em;line-height:1}
+.room h2{grid-column:1 / 10;font-size:5rem}
+.room .about{grid-column:1 / 6;margin-top:56px}
+.room .about p+p,.offer p+p{margin-top:16px}
+.offer{grid-column:7 / 13;margin-top:56px;border-top:1px solid var(--ink);padding-top:20px}
+.offer h3,.built h3{font-weight:400;font-size:1.5rem;letter-spacing:-.01em;margin-bottom:14px}
+.bed{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:16px 0;margin-top:28px}
+.bed b{font-weight:500;display:block}
+.bed span{font-size:15px}
+.bed a{color:var(--violet);font-weight:500;white-space:nowrap}
+.pair{grid-column:1 / 13;display:grid;grid-template-columns:640px 1fr;gap:56px;margin-top:96px;align-items:start}
+.pair img{display:block;width:640px;max-width:100%;height:auto}
+blockquote p{font-weight:300;letter-spacing:-.01em}
+.pair blockquote p{font-size:1.5rem;line-height:1.35}
+cite{display:block;font-style:normal;font-size:15px;margin-top:18px;line-height:1.4}
+.door h2{grid-column:1 / 12;font-size:6rem}
+.door .steps{grid-column:1 / 7;margin-top:56px;font-size:1.4rem;line-height:1.4;font-weight:300}
+.door .steps p+p{margin-top:14px}
+.door .steps .map{display:inline-block;margin-top:28px;font-size:1.1rem;font-weight:400}
+.door blockquote{grid-column:8 / 13;margin-top:62px;border-left:2px solid var(--ink);padding-left:28px;align-self:start}
+.door blockquote p{font-size:1.3rem;line-height:1.4}
+.built .txt{grid-column:1 / 10}
+.built .txt p{max-width:34em}
+.built h2{font-size:4.2rem;margin-bottom:32px}
+.prints{grid-column:1 / 13;display:grid;grid-template-columns:repeat(3,320px);justify-content:center;gap:24px;margin-top:72px}
+.prints figure img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.guests .scores{grid-column:1 / 13;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;border-top:1px solid var(--ink)}
+.score{padding-top:28px}
+.score .n{font-weight:200;font-size:7rem;line-height:.9;letter-spacing:-.05em}
+.score .n small{font-size:2rem;letter-spacing:0;margin-left:6px}
+.score p{margin-top:16px;font-size:16px}
+.guests .quotes{grid-column:1 / 13;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:88px}
+.guests .quotes blockquote p{font-size:1.15rem;line-height:1.45}
+.wave .lead{grid-column:1 / 10;font-size:2.4rem;font-weight:200;line-height:1.2;letter-spacing:-.02em}
+.prac h2{grid-column:1 / 13;font-size:5rem}
+.times{grid-column:1 / 13;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;border-top:1px solid var(--ink)}
+.times>div{padding-top:20px}
+.times span{display:block;font-size:15px}
+.times b{display:block;font-weight:200;font-size:5rem;letter-spacing:-.04em;line-height:1;margin-top:6px}
+.prac .txt{grid-column:1 / 6;margin-top:56px}
+.prac .txt p+p{margin-top:16px}
+.times .note{grid-column:1 / 4;padding-top:14px;font-size:15px}
+.prac .txt .map{display:inline-block;margin-top:24px}
+.amen{grid-column:7 / 13;margin-top:56px;columns:2;column-gap:24px;list-style:none;font-size:16px;line-height:1.4}
+.amen li{break-inside:avoid;padding:0 0 10px}
+.amen li span{color:#454b4d}
+footer{margin-top:176px;padding-bottom:64px}
+.drawer.end{display:block;border-top:1px solid var(--ink);padding:0;min-height:0}
+.end .head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;padding:40px 48px 16px}
+.end .head p{font-weight:200;font-size:3.4rem;letter-spacing:-.035em;line-height:1}
+.end .rows{padding:8px 48px 32px}
+.end .rows a.l{display:block;padding:18px 0;border-bottom:1px solid var(--ink);text-decoration:none;font-size:1.6rem;font-weight:300}
+.end .rows a.l:hover,.panel a.l:hover{color:var(--violet)}
+.end .rows p{margin-top:20px}
+.foot{display:flex;justify-content:space-between;gap:24px;margin-top:40px;font-size:15px}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--violet);outline-offset:3px}
+
+@media (max-width:760px){
+  :root{--gut:16px}
+  .first{display:flex;flex-direction:column}
+  .drawer{order:2}
+  .side{order:3}
+  .berth{height:52vh;min-height:340px;padding:24px 40px 24px 20px}
+  .berth h1{font-size:3rem;line-height:1}
+  .berth .tag{font-size:1.05rem}
+  .ladder{top:-16px;bottom:-16px;right:14px}
+  .ladder i{width:18px;bottom:auto}
+  .ladder i:nth-child(1){top:34%}.ladder i:nth-child(2){top:56%}.ladder i:nth-child(3){top:78%}
+  .drawer{grid-template-columns:1fr;gap:12px}
+  .drawer .rate{text-align:left}
+  .side{padding:40px 0 0}
+  .side .intro{max-width:none;font-size:17px}
+  .bar{display:grid}
+  body{padding-bottom:64px}
+}
+
+@media (max-width:760px){
+  section.s{display:block;margin-top:104px}
+  .room h2,.prac h2{font-size:2.8rem}
+  .door h2{font-size:3.2rem}
+  .built h2{font-size:2.4rem}
+  .room .about,.offer,.door .steps,.door blockquote,.prac .txt,.amen{margin-top:36px}
+  .pair{display:block;margin-top:56px}
+  .pair blockquote{margin-top:28px}
+  .pair blockquote p{font-size:1.4rem}
+  .door .steps{font-size:1.2rem}
+  .prints{display:flex;overflow-x:auto;gap:12px;margin:48px -16px 0;padding:0 16px;scroll-snap-type:x mandatory}
+  .prints figure{flex:0 0 72%;scroll-snap-align:start}
+  .guests .scores{grid-template-columns:1fr;gap:0}
+  .score{display:grid;grid-template-columns:auto 1fr;align-items:end;gap:16px;padding:20px 0;border-bottom:1px solid var(--ink)}
+  .score .n{font-size:4rem}
+  .score p{margin:0}
+  .guests .quotes{grid-template-columns:1fr;gap:36px;margin-top:56px}
+  .wave .lead{font-size:1.7rem}
+  .times b{font-size:2.6rem}
+  .amen{columns:1}
+  .end .head{grid-template-columns:1fr;padding:28px 20px 8px;gap:12px}
+  .end .head p{font-size:2.2rem}
+  .end .rows{padding:4px 20px 24px}
+  .end .rows a.l{font-size:1.25rem}
+  .foot{flex-direction:column}
+  footer{margin-top:104px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="name" href="#">Layday Surf Ahangama</a>
+    <a class="go" href="#book">Check dates</a>
+  </header>
+  <main>
+    <section class="first">
+      <div class="berth">
+        <h1>A two-minute walk from Kabalana</h1>
+        <p class="tag">Surf, chill and feel at home in Ahangama</p>
+        <span class="ladder" aria-hidden="true"><i></i><i></i><i></i></span>
+      </div>
+      <div class="side">
+        <img class="print" src="img/img-002-45.jpg" width="576" height="720" alt="A lower berth: yellow plastered walls, a white pillow, a black wall lamp, a curtain drawn back, a black steel ladder and locking drawers underneath">
+        <div class="intro">
+          <p>Small, new, and about as close to the wave as you can sleep. One dorm, a garden, and a family who built the place and still run it.</p>
+          <p>It is quiet. Guests keep saying so, and they mean it as the main point.</p>
+        </div>
+      </div>
+      <div class="drawer" id="stay">
+        <div class="act">
+        <details>
+          <summary>Check dates</summary>
+          <div class="panel">
+            <a class="l" href="https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/">Check dates on Hostelworld</a>
+            <a class="l" href="https://www.booking.com/hotel/lk/layday-surf-ahangama.html">Check dates on Booking.com</a>
+            <a class="l" href="https://www.agoda.com/layday-surf-ahangama/hotel/piyadigama-lk.html">Check dates on Agoda</a>
+            <p>Rates move with the season and the dates — the booking links show what is free.</p>
+          </div>
+        </details>
+        <a class="plain" href="https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/">Check dates on Hostelworld</a>
+        </div>
+        <p class="call">or call <a href="tel:+94778553343">+94 77 855 3343</a></p>
+        <p class="rate"><b>9.8/10 on Hostelworld, 10 reviews</b>10/10 on Booking.com, 6 reviews<br>5.0/5 on Google, 15 reviews</p>
+      </div>
+    </section>
+
+    <section class="s room" aria-labelledby="h-room">
+      <h2 id="h-room">One dorm, and that is deliberate</h2>
+      <div class="about">
+        <p>There is a single dormitory here. No second building, no crowd, nobody checking in at three in the morning. Everyone who writes about the place lands on the same two words: clean and quiet.</p>
+        <p>Every category on Hostelworld sits at 10 out of 10 — value, security, atmosphere, cleanliness, staff, location, facilities. Ten reviews is a small sample. It is also a perfect one.</p>
+      </div>
+      <div class="offer">
+        <h3>The room</h3>
+        <p>One air-conditioned dormitory, with real luggage space, a wardrobe, lockers and hot showers. There is a shared kitchen with a kettle, a dishwasher and everything you need to cook, plus a dining area, a terrace and a garden to sit in afterwards.</p>
+        <div class="bed"><div><b>Bed in the dormitory</b><span>One air-conditioned dormitory</span></div><a href="#book">Check dates</a></div>
+      </div>
+      <div class="pair">
+        <img src="img/img-012.jpg" width="1024" height="768" loading="lazy" alt="The dormitory seen through its open glass-and-timber door: yellow plastered berths with curtains along one wall, a grey concrete floor, a timber door at the far end, and a low bench with violet, ochre, green and grey cushions under an abstract painting">
+        <blockquote><p>“LayDay is so wonderful! Newly built and so well designed, Rukshan has thought of everything. As a solo female traveller I felt totally safe - it's a peaceful little sanctuary in Ahangama, just a 2-min walk to Kabalana Beach and great food spots. Super comfy beds, loads of luggage space, amazing showers, and absolutely spotless. Rukshan and his family are so kind and he keeps it immaculate daily. I extended my stay way longer than expected and didn't want to leave - will 100% be back!”</p><cite>Beth, England<br>Hostelworld, April 2026</cite></blockquote>
+      </div>
+    </section>
+
+    <section class="s door" aria-labelledby="h-door">
+      <h2 id="h-door">Finding the door</h2>
+      <div class="steps">
+        <p>This is the one thing worth reading twice.</p>
+        <p>Follow the map to Warnagiri, Welhengoda.</p>
+        <p>There is a large black gate — open it.</p>
+        <p>Through the gate there is a wooden platform, and the door to Layday is on the right of the house.</p>
+        <p>Guests have got lost here. Now you will not.</p>
+        <a class="map" href="https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en">'Warnagiri' Welhengoda, Ahangama, Sri Lanka</a>
+      </div>
+      <blockquote><p>“Well located, very clean, good air conditioning and a great host! Layday Surf is just one dorm room with 4 bunk beds so it is very quiet which was amazing. A little bit difficult to find but the host was very responsive and promises a sign will be put up ASAP.”</p><cite>Catherine, Australia<br>Hostelworld, April 2026</cite></blockquote>
+    </section>
+
+    <section class="s built" aria-labelledby="h-built">
+      <div class="txt">
+        <h2 id="h-built">Newly built, and kept that way</h2>
+        <p>The showers, the beds, the storage: all of it is new and it gets cleaned daily by the people who own it. One guest extended her stay and wrote that she did not want to leave, which is the sentence this place earns most often.</p>
+      </div>
+      <div class="prints">
+        <figure><img src="img/img-013-45.jpg" width="576" height="720" loading="lazy" alt="Lockers with cane fronts in timber frames beside open poured-concrete shelving and a potted plant"></figure>
+        <figure><img src="img/img-003-45.jpg" width="576" height="720" loading="lazy" alt="A white basin on a concrete counter over a cane-fronted cabinet, a round cane mirror on the yellow wall above"></figure>
+        <figure><img src="img/img-017-45.jpg" width="614" height="768" loading="lazy" alt="A long timber bench with a pale cushion and violet, ochre, green and grey pillows, under an abstract painting"></figure>
+      </div>
+    </section>
+
+    <section class="s guests" aria-label="Ratings and reviews">
+      <div class="scores">
+        <div class="score"><div class="n">9.8<small>/10</small></div><p>Hostelworld<br>10 reviews</p></div>
+        <div class="score"><div class="n">10<small>/10</small></div><p>Booking.com<br>6 reviews</p></div>
+        <div class="score"><div class="n">5.0<small>/5</small></div><p>Google<br>15 reviews</p></div>
+      </div>
+      <div class="quotes">
+        <blockquote><p>“Seriously the best hostel I've stayed in throughout my 7 months travelling. I'm so sad I wasn't there for long because it was just so so nice. Super clean, nice style, the showers are great, it's cosy, there's a nice inside place to sit &amp; hang out. The lovely family who own this make such an effort to be present and helpful. HIGHLY recommend!”</p><cite>Jennine, England<br>Hostelworld, April 2026</cite></blockquote>
+        <blockquote><p>“New and clean, walking distance straight to the beach”</p><cite>Akshay, Sri Lanka<br>Booking.com</cite></blockquote>
+        <blockquote><p>“Place is really it's quite small but absolutely great, very clean lots of room, beds are nice”</p><cite>Taiya, Australia<br>Booking.com</cite></blockquote>
+      </div>
+    </section>
+
+    <section class="s wave" aria-label="The wave">
+      <p class="lead">Kabalana: a sandy beach break that suits beginners and improvers, with The Rock reef alongside it when the swell is up.</p>
+      <div class="prints">
+        <figure><img src="img/img-019-45.jpg" width="614" height="768" loading="lazy" alt="Surfers spread along a line of white water off a sandy beach under a pale sky"></figure>
+        <figure><img src="img/img-021-45.jpg" width="614" height="768" loading="lazy" alt="Shallow water running up a wide flat beach, a surfer carrying a blue board along the shoreline in the distance"></figure>
+        <figure><img src="img/img-020-45.jpg" width="614" height="768" loading="lazy" alt="A long sandy beach at low tide, people walking at the water's edge, palms and a headland at the far end"></figure>
+      </div>
+    </section>
+
+    <section class="s prac" aria-labelledby="h-prac">
+      <h2 id="h-prac">Practicalities</h2>
+      <div class="times">
+        <div><span>Check in from</span><b>14:00</b></div>
+        <div><span>until</span><b>19:00</b></div>
+        <div><span>Check out by</span><b>14:00</b></div>
+        <p class="note">Credit cards are not accepted. Non-smoking. Taxes included. Reception has limited hours.</p>
+      </div>
+      <div class="txt">
+        <p>Check in between 14:00 and 19:00, check out by 14:00. Taxes are included and the property does not take credit cards. Non-smoking throughout.</p>
+        <p>Free private parking, free WiFi, laundry, daily housekeeping, bicycle rental, and an airport shuttle if you want one. Pets are welcome at no charge.</p>
+        <a class="map" href="https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en">'Warnagiri' Welhengoda, Ahangama, Sri Lanka</a>
+      </div>
+      <ul class="amen"><li>Free WiFi</li><li>Free private parking <span>no reservation needed</span></li><li>Air conditioning</li><li>Shared kitchen with dishwasher, kettle and kitchenware</li><li>Dining area and seating area</li><li>Garden and terrace with outdoor dining</li><li>Hot showers</li><li>Free security lockers</li><li>Luggage storage</li><li>Daily housekeeping</li><li>Washing machine</li><li>Laundry, dry cleaning and ironing <span>additional charge</span></li><li>Bicycle rental <span>additional charge</span></li><li>Airport shuttle</li><li>Concierge</li><li>Free city maps</li><li>24-hour security, CCTV and key access</li><li>Safety deposit box</li><li>Pets allowed <span>no extra charge</span></li></ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="drawer end" id="book">
+      <div class="head"><p>Layday Surf Ahangama</p><a class="call" href="tel:+94778553343">+94 77 855 3343</a></div>
+      <div class="rows">
+        <a class="l" href="https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/">Check dates on Hostelworld</a>
+        <a class="l" href="https://www.booking.com/hotel/lk/layday-surf-ahangama.html">Check dates on Booking.com</a>
+        <a class="l" href="https://www.agoda.com/layday-surf-ahangama/hotel/piyadigama-lk.html">Check dates on Agoda</a>
+        <p>Rates move with the season and the dates — the booking links show what is free.</p>
+      </div>
+    </div>
+    <div class="foot"><span>'Warnagiri' Welhengoda, Ahangama, Sri Lanka</span><a href="tel:+94778553343">+94 77 855 3343</a></div>
+  </footer>
+</div>
+<nav class="bar" aria-label="Booking">
+  <a class="b" href="#book">Check dates</a>
+  <a class="c" href="tel:+94778553343">Call</a>
+</nav>
+</body>
+</html>

@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KA Surf Hostel, Ahangama</title>
+<meta name="description" content="Surf, chill and feel at home in Ahangama">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#F0F1F2; --ink:#060504; --garden:#75A12B; --lit:#A3C415; --shade:#4C6909;
+  --sky:#AFCFF7; --grey:#C4C5C1; --melon:#F05654;
+  --m:48px; --g:24px; --top:56px;
+  /* wide screens: the content box grows with the window up to --wmax, then stays centred.
+     --pad is the side margin; cqw is main's width, so it excludes a scrollbar. */
+  --wmax:1200px; --pad:max(var(--m), calc((100cqw - var(--wmax)) / 2));
+}
+main{container-type:inline-size}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--ground)}
+body{background:var(--ground);color:var(--ink);font-family:Outfit,system-ui,sans-serif;font-weight:400;font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%}
+
+/* top line */
+.top{position:fixed;inset:0 0 auto 0;height:var(--top);z-index:20;background:var(--ground);border-bottom:1px solid var(--ink);display:flex;align-items:center;justify-content:space-between;padding:0 max(var(--m), calc((100% - var(--wmax)) / 2));opacity:.999}
+.top .name{font-weight:400;font-size:17px;text-decoration:none;letter-spacing:-.01em}
+.js .top .name{visibility:hidden}
+.js.past .top .name{visibility:visible}
+.top nav{display:flex;gap:28px;font-size:16px}
+.top nav a{text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:1px}
+
+/* canopy */
+.canopy{position:relative;height:100svh;min-height:600px}
+.gl .canopy{height:220svh}
+.stage{position:sticky;top:0;height:100svh;min-height:600px;overflow:hidden}
+.stage.back{z-index:0}
+.stage.front{z-index:2;margin-top:-100svh;pointer-events:none}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:none}
+.gl .stage canvas{display:block}
+.still{position:absolute;inset:0;width:100%;height:100%}
+.gl .still{display:none}
+.still.m{display:none}
+
+.clear{position:absolute;left:0;right:0;top:0;height:100svh;min-height:600px;z-index:1;display:flex;flex-direction:column;justify-content:center;padding:calc(var(--top) + 24px) var(--m) 40px calc(var(--m) + 8.4%)}
+.clear .who{display:flex;flex-direction:column;gap:2px;margin-bottom:28px}
+.clear .who b{font-weight:400;font-size:20px;letter-spacing:-.01em}
+.clear .who span{font-weight:300;font-size:18px}
+h1{font-weight:200;font-size:clamp(3.1rem,9.6vw,10rem);line-height:.9;letter-spacing:-.045em;margin-left:-.06em}
+h1 .ln{display:inline}
+.clear .act{display:flex;align-items:flex-end;gap:56px;margin-top:40px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 30px;background:var(--melon);color:var(--ink);font-weight:500;font-size:18px;text-decoration:none;opacity:.999}
+.btn:hover,.btn:focus-visible{background:var(--ink);color:var(--ground)}
+.call{font-weight:300;font-size:17px;margin-top:10px}
+.call a{text-decoration:none;border-bottom:1px solid var(--ink)}
+.score{display:flex;gap:40px;align-items:flex-end}
+.score .big{display:flex;flex-direction:column}
+.score .num{font-weight:200;font-size:4.2rem;line-height:.9;letter-spacing:-.04em}
+.score .num small{font-size:.42em;letter-spacing:0;font-weight:300}
+.score .src{font-size:15px;font-weight:300;margin-top:6px;white-space:nowrap}
+.score .src a{text-decoration:none;border-bottom:1px solid var(--ink)}
+.score .rest{font-size:15px;font-weight:300;line-height:1.55;padding-bottom:2px}
+.score .rest b{font-weight:400}
+
+/* the walk: one green line from the bed to the water */
+.sec{position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g);padding:0 var(--pad) 180px;align-items:start}
+.spine{grid-row:1/span 12;align-self:stretch;background:var(--garden);margin-bottom:-180px}
+.turn{grid-row:1;height:120px;background:var(--garden)}
+.sec>.pr,.sec>h2,.sec>.body,.sec>.q,.sec>.list,.sec>.lead,.sec>.amen,.sec>.go{position:relative;z-index:1}
+h2{font-weight:200;letter-spacing:-.04em;line-height:.95}
+.body{font-weight:300;font-size:19px;line-height:1.55;max-width:34em}
+.body p+p{margin-top:1em}
+.pr{width:384px;height:auto;aspect-ratio:3/4;object-fit:cover}
+.q p{font-weight:300;font-size:1.3rem;line-height:1.42;letter-spacing:-.005em}
+.q footer{font-size:15px;margin-top:14px;line-height:1.4}
+
+.rooms .spine{grid-column:2/4}
+.rooms .lead{grid-column:5/11;grid-row:2;padding-top:140px}
+.lead p{font-weight:300;font-size:2rem;line-height:1.25;letter-spacing:-.012em}
+.lead .p2{margin-top:.7em}
+.rooms .pr1{grid-column:3/8;grid-row:3/span 3;margin:150px 0 0 40px}
+.h-rooms{grid-column:8/13;grid-row:3;margin-top:150px;font-size:5.4rem}
+.b-rooms{grid-column:8/13;grid-row:4;margin-top:40px}
+.list{grid-column:8/13;grid-row:5;margin-top:56px;list-style:none;border-bottom:1px solid var(--ink)}
+.list li{display:grid;grid-template-columns:1fr auto;column-gap:24px;align-items:baseline;padding:14px 0 15px;border-top:1px solid var(--ink)}
+.list .rl{font-weight:300;font-size:1.45rem;letter-spacing:-.01em}
+.list .rb{grid-column:1;font-size:15px;font-weight:300}
+.list a{grid-column:2;grid-row:1/span 2;align-self:center;font-size:16px;text-decoration:none;border-bottom:1px solid var(--ink)}
+.list a:hover,.list a:focus-visible{border-color:var(--melon);color:var(--ink);background:var(--melon)}
+.rooms .pr2{grid-column:3/8;grid-row:6/span 2;margin:-120px 0 0 0}
+.q-rooms{grid-column:9/13;grid-row:6;margin-top:80px}
+
+.bfast .turn{grid-column:2/11}
+.bfast .spine{grid-column:9/11}
+.h-bfast{grid-column:1/9;grid-row:2;margin-top:110px;font-size:7rem}
+.b-bfast{grid-column:1/5;grid-row:3;margin-top:70px}
+.bfast .pr3{grid-column:6/10;grid-row:3/span 3;justify-self:end;width:480px;margin-top:70px}
+.q-bfast{grid-column:1/5;grid-row:4;margin-top:64px}
+
+.here .spine{grid-column:7/13;margin-right:calc(-1 * var(--pad))}
+.h-here{grid-column:1/7;grid-row:1;margin-top:150px;font-size:5.4rem}
+.b-here{grid-column:1/6;grid-row:2;margin-top:40px}
+.amen{grid-column:1/7;grid-row:3;margin-top:48px;list-style:none;columns:2;column-gap:var(--g);font-weight:300;font-size:17px}
+.amen li{padding:5px 0;break-inside:avoid;line-height:1.35}
+.amen i{font-style:normal;font-size:14px;display:block}
+.here .pr{width:320px}
+.here .pf1{grid-column:7/13;grid-row:1/span 12;margin-top:150px}
+.here .pf2{grid-column:7/13;grid-row:1/span 12;justify-self:end;margin-top:450px}
+.here .pf3{grid-column:7/13;grid-row:1/span 12;margin:830px 0 0 40px}
+
+.family .turn{grid-column:5/13;margin-right:calc(-1 * var(--pad))}
+.family .spine{grid-column:5/7}
+.h-family{grid-column:1/5;grid-row:2;margin-top:110px;font-size:4.4rem}
+.b-family{grid-column:1/5;grid-row:3;margin-top:40px}
+.q-clara{grid-column:1/5;grid-row:4;margin-top:64px}
+.q-saketh{grid-column:10/13;grid-row:3;margin-top:80px}
+.q-mia{grid-column:8/13;grid-row:2;margin-top:110px}
+.q-mia p{font-size:2.3rem;line-height:1.16;letter-spacing:-.02em}
+.family .pr4{grid-column:5/10;grid-row:3/span 3;margin:80px 0 0 120px}
+.family .pr5{grid-column:9/13;grid-row:5/span 2;justify-self:end;margin-top:60px}
+
+.walk{min-height:100svh;padding-bottom:0}
+.walk .line{grid-column:5/7;grid-row:1/span 2;justify-self:center;align-self:stretch;width:1px;background:var(--ink)}
+.go{grid-column:7/12;grid-row:1;padding:26svh 0 22svh}
+.go h2{font-size:4.4rem}
+.go .body{margin-top:32px}
+.times{display:flex;gap:64px;margin-top:48px}
+.times dt{font-size:15px}
+.times dd{font-weight:200;font-size:3.4rem;letter-spacing:-.03em;line-height:1}
+.times dd span{font-size:17px;font-weight:300;letter-spacing:0;margin:0 12px}
+.times div:last-child dd span{margin-left:0}
+.note,.addr{font-weight:300;font-size:17px;margin-top:28px;max-width:30em}
+.addr a,.end a,.upd a{text-decoration:none;border-bottom:1px solid var(--ink)}
+/* the map: OpenStreetMap's embed, a box reserved by the row it shares with the text, so nothing
+   shifts when it arrives; its right edge sits as far left of the line as the text sits right of it */
+.walk .map{grid-column:1/5;grid-row:1;align-self:stretch;display:flex;flex-direction:column;margin:26svh 0 22svh;position:relative;z-index:1}
+.map-frame{position:relative;flex:1 1 auto;min-height:360px;border:1px solid var(--ink)}
+.map-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;visibility:hidden}
+.map-alt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:32px;text-align:center;font-weight:300;font-size:17px;line-height:1.45}
+.map-alt a{text-decoration:none;border-bottom:1px solid var(--ink)}
+.map-frame.on iframe{visibility:visible}
+.map-frame.on .map-alt{visibility:hidden}
+.map-cred{position:absolute;top:100%;left:0;font-size:14px;margin-top:10px}
+.map-cred a{text-decoration:none;border-bottom:1px solid var(--ink)}
+
+.wave{background:var(--sky)}
+.wave .in{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g);padding:150px var(--pad) 150px}
+.spot{grid-column:1/13;font-weight:300;font-size:2.5rem;line-height:1.16;letter-spacing:-.02em}
+/* the forecast pair: headline and Rosa's widget one gutter apart, centred as a group in the column */
+.fc{grid-column:1/13;grid-row:2;display:grid;grid-template-columns:minmax(0,max-content) minmax(0,420px);column-gap:var(--g);justify-content:center;align-items:start;margin-top:96px}
+.fc-now{margin-top:0}
+.credit-rosa{font-size:16px}
+.credit-rosa a{text-decoration:none;border-bottom:1px solid var(--ink)}
+.now{margin-top:18px}
+.nh{font-weight:200;font-size:8rem;letter-spacing:-.05em;line-height:.9}
+.nh small{font-size:.3em;letter-spacing:0;font-weight:300}
+.nd{display:flex;flex-direction:column;font-weight:300;font-size:18px;margin-top:14px}
+.upd{font-size:14px;margin-top:16px}
+/* Rosa's own widget: a reserved 420 x 500 box; the frame is Rosa's, untouched */
+.fc-rosa{justify-self:start;position:relative;width:420px;max-width:100%;height:500px}
+.fc-link{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:32px;border:1px solid var(--ink);text-align:center;font-weight:300;font-size:19px;line-height:1.4}
+.fc-link{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
+.fc-rosa iframe{position:relative;visibility:hidden}
+.fc-rosa.on iframe{visibility:visible}
+.fc-rosa.on .fc-link{visibility:hidden}
+.crops{grid-column:1/13;grid-row:3;display:flex;justify-content:center;gap:48px;margin-top:130px}
+.crops img{width:300px;height:auto;aspect-ratio:3/4;object-fit:cover}
+
+.end{padding:150px var(--pad) 120px;display:flex;flex-direction:column}
+.end .rates{order:-1;font-weight:300;font-size:2rem;line-height:1.22;letter-spacing:-.015em;max-width:22em;margin-bottom:56px}
+.tiles{display:flex;gap:var(--g)}
+.end>.tiles{justify-content:center}
+.tile{display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:3/4;background:var(--melon);color:var(--ink);text-decoration:none;padding:16px;opacity:.999}
+.tile .t1{font-weight:300;font-size:16px}
+.tile .t2{font-weight:400;font-size:1.5rem;letter-spacing:-.02em;line-height:1.05}
+.tile .t3{font-size:13px;margin-top:8px}
+.tile:hover,.tile:focus-visible{background:var(--ink);color:var(--ground)}
+.tile.big{width:300px;padding:22px}
+/* the platform's own mark, one colour (ink, as the tile's text), 32 px tall on all three */
+.tile .lg{display:block;align-self:flex-start;height:32px;width:auto;margin-bottom:16px}
+.tile:hover .lg,.tile:focus-visible .lg{filter:invert(1)}
+.tile.big .t1{font-size:18px}.tile.big .t2{font-size:2.4rem}.tile.big .t3{font-size:15px}
+.contact{display:grid;grid-template-columns:1fr 1fr 2fr;gap:var(--g);margin-top:96px;padding-top:24px;border-top:1px solid var(--ink);font-weight:300;font-size:16px}
+.contact b{font-weight:400}
+.cred{font-size:14px}
+
+/* the slide-out */
+.veil{position:fixed;inset:0;z-index:45;background:rgba(240,241,242,.72)}
+.panel{position:fixed;top:0;right:0;bottom:0;z-index:50;width:min(460px,100%);background:var(--ground);border-left:1px solid var(--ink);padding:0 32px 32px;overflow:auto;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.panel.open{transform:none}
+.panel .ph{display:flex;justify-content:space-between;align-items:center;height:var(--top);border-bottom:1px solid var(--ink);margin:0 -32px;padding:0 32px}
+.panel h2{font-weight:400;font-size:17px;letter-spacing:0}
+.panel .x{font:inherit;font-size:16px;background:none;border:0;border-bottom:1px solid var(--ink);cursor:pointer;color:var(--ink);padding:0}
+.panel .ctx{font-weight:300;font-size:1.5rem;line-height:1.2;letter-spacing:-.01em;margin-top:36px}
+.panel .rates{font-weight:300;font-size:17px;margin-top:24px}
+.panel .tiles{margin-top:28px;gap:12px}
+.panel .tile{flex:1 1 0;min-width:0;padding:12px}
+.panel .tile .t2{font-size:1.2rem}
+.panel .tile .t1{font-size:14px}
+.pcall{margin-top:28px;font-weight:300}
+.pcall a{border-bottom:1px solid var(--ink);text-decoration:none}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.panel{transition:none}}
+
+.bar{display:none}
+
+@media (max-width:760px){
+  :root{--m:20px;--g:12px;--top:52px}
+  .top nav{display:none}
+  .still.d{display:none} .still.m{display:block}
+  .gl .still.m{display:none}
+  .clear{padding:calc(var(--top) + 12px) var(--m) 96px;justify-content:center}
+  .clear .who{margin-bottom:20px}
+  .clear .who b{font-size:18px}.clear .who span{font-size:16px}
+  h1{font-size:3.2rem;line-height:.95}
+  .clear .act{margin-top:26px;gap:18px;flex-direction:column;align-items:flex-start}
+  .clear .act .cta{display:none}
+  .score{gap:22px}
+  .score .num{font-size:3rem}
+  .score{flex-direction:column;align-items:flex-start;gap:10px}
+  .score .rest{font-size:15px}
+  .bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;height:64px;background:var(--ground);border-top:1px solid var(--ink);opacity:.999}
+  .bar a{flex:1;display:flex;align-items:center;justify-content:center;font-size:17px;text-decoration:none}
+  .bar .btn{flex:2;height:auto}
+
+  .js:not(.past) .top{transform:translateY(-100%)}
+  .top{transition:transform .25s}
+  .sec{grid-template-columns:repeat(6,minmax(0,1fr));padding:0 var(--m) 96px}
+  .sec>*{grid-row:auto!important;grid-column:2/7!important;margin-left:0!important;margin-right:0!important;min-width:0}
+  .sec>.pr{justify-self:start}
+  .sec>.spine{grid-row:1/span 30!important;grid-column:1/2!important;margin-left:calc(-1 * var(--m))!important;margin-bottom:-96px!important}
+  .sec>.turn{grid-row:1!important;grid-column:1/7!important;margin:0 calc(-1 * var(--m))!important;height:44px;justify-self:stretch!important}
+  .bfast>*,.here>*{grid-column:1/6!important}
+  .bfast>.spine,.here>.spine{grid-column:6/7!important;margin-left:0!important;margin-right:calc(-1 * var(--m))!important}
+  .sec>.pr{width:264px;margin-top:48px!important}
+  .rooms>.pr,.family>.pr{grid-column:1/7!important;margin-left:28px!important}
+  .bfast>.pr,.here>.pr{grid-column:1/7!important;justify-self:end!important;margin-right:28px!important}
+  .here>.pf2{justify-self:start!important;margin-left:24px!important}
+  .here>.pf3{margin-top:48px!important}
+  .sec h2{font-size:2.7rem!important}
+  .h-bfast{font-size:3rem!important}
+  .sec>h2{margin-top:72px!important}
+  .rooms .lead{padding-top:56px}
+  .lead p{font-size:1.45rem}
+  .sec>.body,.sec>.list,.sec>.amen,.sec>.q{margin-top:28px!important}
+  .body{font-size:17px}
+  .list .rl{font-size:1.2rem}
+  .amen{columns:1}
+  .q-mia p{font-size:1.6rem}
+  .walk>.line{grid-column:1/2!important;grid-row:1/span 2!important;justify-self:center!important}
+  .walk>.map{margin:0 0 16svh!important}
+  .walk .go{padding-bottom:48px}
+  .map-frame{flex:none;height:320px;min-height:0}
+  .go{padding:18svh 0 16svh}
+  .go h2{margin-top:0!important}
+  .times{gap:20px;flex-direction:column}
+  .times dd{font-size:2.4rem}
+  .wave .in{grid-template-columns:1fr;padding:88px var(--m) 96px}
+  .wave .in>*{grid-column:1!important}
+  .spot{font-size:1.65rem}
+  .wave .in>*{grid-row:auto!important}
+  .fc{grid-template-columns:minmax(0,1fr);margin-top:56px}
+  .fc-rosa{justify-self:start;width:100%;margin-top:48px}
+  .nh{font-size:4.6rem}
+  .nd{font-size:16px}
+  .crops{justify-content:flex-start;margin-top:64px;gap:12px;overflow-x:auto;margin-right:calc(-1 * var(--m));padding-right:var(--m)}
+  .crops img{width:220px;flex:none}
+  .end{padding:88px var(--m) 120px}
+  .end .rates{font-size:1.4rem;margin-bottom:32px}
+  .tiles{gap:8px}
+  .tile.big{width:auto;flex:1;padding:10px}
+  .tile .lg{height:22px;margin-bottom:10px}
+  .tile.big .t1{font-size:13px}.tile.big .t2{font-size:1.15rem}.tile.big .t3{font-size:11px}
+  .contact{grid-template-columns:1fr;margin-top:56px}
+  .panel{padding:0 20px 24px}
+  .panel .ph{margin:0 -20px;padding:0 20px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="name" href="#top">KA Surf Hostel</a>
+  <nav><a href="tel:+94773746053">Call</a><a class="book" href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/">Check dates</a></nav>
+</header>
+
+<main>
+<section class="canopy" id="top" aria-label="KA Surf Hostel">
+  <div class="stage back" aria-hidden="true">
+    <svg class="still d" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"><path fill="#4c6909" d="M1561 397L1556 420L1548 432L1536 436L1524 441L1512 446L1501 451L1489 456L1478 461L1466 466L1450 459L1432 450L1432 450L1437 429L1443 411L1454 406L1466 400L1477 395L1489 390L1501 386L1513 381L1524 377L1540 380L1559 395L1559 395ZM1561 397L1556 419L1549 432L1537 436L1526 440L1515 445L1503 450L1498 452L1567 624L1578 619L1590 614L1602 609L1614 605L1626 600L1575 449L1564 406ZM1498 452L1487 457L1476 462L1465 467L1454 472L1432 450L1432 450L1525 643L1535 638L1545 634L1555 629L1565 624L1565 624ZM1559 395L1543 383L1528 375L1518 379L1513 381L1438 212L1449 208L1460 204L1536 354L1556 386ZM1513 381L1502 385L1491 390L1480 394L1474 397L1399 227L1410 223L1420 219L1431 215L1436 212ZM1474 397L1463 401L1452 406L1442 412L1437 430L1432 450L1432 450L1403 352L1373 254L1378 237L1388 233L1398 228L1398 228ZM1153 -129L1137 -93L1116 -61L1091 -32L1067 -2L1044 29L1021 60L999 91L978 123L958 156L931 184L903 211L903 211L912 170L924 131L944 99L965 66L987 35L1010 4L1033 -27L1057 -56L1082 -86L1113 -111L1151 -131L1151 -131ZM1153 -129L1137 -94L1117 -62L1092 -33L1068 -3L1045 27L1143 111L1168 79L1193 48L1219 17L1214 -35L1158 -126L1158 -126ZM1045 27L1034 42L1022 58L1011 73L1110 157L1120 143L1130 129L1140 115L1140 115ZM1011 73L992 102L973 132L955 162L937 192L903 211L903 211L1040 271L1056 243L1072 216L1089 189L1107 162L1107 162ZM1151 -131L1114 -111L1083 -86L1058 -57L1046 -43L936 -111L962 -143L989 -174L1104 -140L1146 -134ZM1046 -43L1036 -30L1025 -16L1015 -3L1005 10L895 -58L904 -70L913 -82L923 -95L932 -107L932 -107ZM1005 10L984 38L965 67L946 96L937 111L827 43L845 15L863 -13L882 -40L891 -53ZM937 111L920 140L911 175L903 211L903 211L868 150L833 90L824 48L824 48ZM634 -170L637 -140L633 -111L625 -83L617 -55L610 -27L603 1L597 30L591 58L586 86L575 114L560 140L560 140L554 109L552 78L557 50L563 22L569 -7L576 -35L583 -63L591 -91L599 -119L612 -145L633 -170L633 -170ZM634 -170L636 -142L634 -115L627 -90L619 -64L613 -38L716 -6L723 -33L730 -61L738 -88L708 -124L640 -169L640 -169ZM613 -38L610 -26L607 -14L710 18L712 8L714 -2L714 -2ZM607 -14L604 0L600 14L597 28L595 42L592 56L695 88L698 75L700 62L703 49L706 35L709 22L709 22ZM592 56L587 81L583 106L575 130L560 140L560 140L685 147L689 125L692 103L694 92ZM633 -170L615 -148L601 -125L593 -100L586 -75L480 -92L487 -119L495 -146L543 -163L628 -171L628 -171ZM586 -75L583 -62L579 -49L576 -36L470 -54L473 -65L476 -77L478 -88L478 -88ZM576 -36L570 -11L565 14L559 40L555 65L449 48L453 23L458 -1L463 -26L469 -50L469 -50ZM555 65L552 79L551 94L554 109L557 124L560 140L560 140L532 121L503 102L474 83L446 64L448 52L448 52ZM-151 990L-156 935L-153 882L-143 832L-131 782L-118 733L-104 683L-88 635L-72 586L-53 538L-26 493L7 449L7 449L-1 500L-13 550L-31 598L-48 646L-64 695L-78 744L-91 794L-103 844L-113 894L-128 943L-149 990L-149 990ZM-151 990L-156 935L-153 882L-143 832L-264 784L-275 838L-255 902L-157 988L-157 988ZM-143 832L-138 812L-134 792L-129 772L-123 752L-244 703L-249 721L-253 740L-258 758L-262 776L-262 776ZM-123 752L-118 733L-113 714L-233 665L-238 681L-242 696L-242 696ZM-113 714L-106 690L-98 666L-91 642L-83 618L-75 594L-194 546L-202 568L-210 591L-217 613L-224 635L-231 658L-231 658ZM-75 594L-58 551L-41 507L-19 466L7 449L7 449L-154 444L-169 482L-184 520L-191 539ZM-149 990L-130 947L-115 904L-106 858L-101 835L26 859L15 908L6 957L-111 975L-143 992ZM-101 835L-89 786L-76 736L-61 688L66 711L52 757L40 804L28 851L28 851ZM-61 688L-46 640L-30 593L-12 547L-1 498L7 449L7 449L67 514L115 575L99 618L83 660L69 704L69 704ZM863 1070L840 1049L825 1026L817 1001L809 976L802 951L795 926L789 901L784 875L779 849L783 821L791 792L791 792L806 815L819 839L824 864L830 890L836 915L843 941L850 966L858 991L866 1015L869 1042L865 1070L865 1070ZM863 1070L841 1050L826 1027L818 1003L691 1029L700 1056L743 1073L857 1072L857 1072ZM818 1003L814 992L811 981L807 970L804 959L801 947L675 974L677 984L680 995L683 1005L686 1015L690 1026L690 1026ZM801 947L798 937L796 927L793 917L791 907L788 896L662 923L664 932L667 942L669 951L671 961L674 970L674 970ZM788 896L786 886L784 877L658 903L660 911L661 919L661 919ZM784 877L780 854L776 832L778 807L791 792L791 792L649 850L652 870L655 889L657 899ZM865 1070L869 1042L866 1015L858 991L850 966L843 941L836 915L959 876L966 902L973 929L981 955L990 981L963 1016L871 1068L871 1068ZM836 915L834 905L831 894L829 884L952 844L954 854L956 863L958 872L958 872ZM829 884L823 860L819 836L805 814L791 792L791 792L864 795L938 799L947 819L951 840L951 840Z"/><path fill="none" stroke="#060504" stroke-width="1" vector-effect="non-scaling-stroke" d="M1556 397L1544 402L1531 406L1519 411L1506 416L1494 421L1482 426L1470 431L1458 437L1446 443L1434 449M1143 -121L1116 -91L1089 -61L1063 -30L1038 1L1014 33L991 66L969 99L947 134L927 168L907 204M631 -161L621 -132L612 -103L604 -74L596 -45L589 -15L582 14L576 44L571 74L566 103L561 133M-148 973L-139 920L-129 867L-117 815L-105 763L-90 711L-75 660L-58 609L-39 559L-19 509L2 459M861 1062L851 1036L842 1010L834 984L826 958L819 932L812 905L806 879L801 852L796 825L792 798"/><path fill="#75a12b" d="M1541 19L1551 47L1552 72L1545 93L1537 114L1529 135L1520 156L1511 176L1501 196L1490 216L1469 232L1442 244L1442 244L1439 219L1441 195L1452 175L1462 155L1471 135L1480 114L1488 93L1496 72L1503 51L1517 32L1539 17L1539 17ZM1541 19L1550 44L1553 68L1547 87L1541 106L1689 176L1696 156L1703 135L1652 90L1549 22L1549 22ZM1541 106L1533 126L1525 145L1516 164L1507 184L1655 253L1664 235L1672 217L1680 198L1687 179L1687 179ZM1507 184L1498 202L1488 220L1478 237L1442 244L1442 244L1626 304L1636 288L1645 272L1653 256L1653 256ZM1539 17L1519 32L1504 48L1498 68L1490 88L1483 108L1479 117L1327 58L1335 38L1343 17L1350 -4L1357 -25L1494 10L1531 14ZM1479 117L1470 137L1461 157L1451 177L1441 196L1439 219L1442 244L1442 244L1356 185L1289 134L1299 116L1308 98L1317 80L1325 61L1325 61ZM1529 900L1509 883L1499 864L1496 844L1493 823L1489 803L1484 782L1479 762L1473 742L1466 722L1466 701L1479 677L1479 677L1507 691L1522 709L1529 729L1535 749L1540 769L1545 790L1549 810L1552 831L1555 852L1548 874L1531 900L1531 900ZM1529 900L1510 884L1499 866L1496 845L1493 825L1489 805L1485 786L1480 766L1474 746L1471 737L1297 771L1304 791L1309 811L1314 831L1319 852L1322 872L1325 893L1328 914L1478 901L1520 902ZM1471 737L1465 719L1458 701L1479 677L1479 677L1285 737L1291 753L1296 768L1296 768ZM1531 900L1547 876L1555 854L1552 834L1723 790L1726 811L1675 845L1540 898L1540 898ZM1552 834L1551 825L1549 815L1548 805L1718 761L1720 769L1722 778L1723 787L1723 787ZM1548 805L1544 787L1540 769L1535 750L1705 706L1710 723L1714 740L1718 758L1718 758ZM1535 750L1530 732L1524 714L1517 697L1492 683L1479 677L1479 677L1604 665L1691 663L1697 679L1702 695L1704 703ZM1398 -109L1393 -60L1381 -15L1361 27L1341 69L1321 110L1300 151L1278 192L1256 232L1233 273L1204 309L1165 341L1165 341L1175 294L1192 252L1215 211L1237 171L1259 130L1280 89L1300 48L1320 6L1340 -36L1364 -75L1396 -111L1396 -111ZM1398 -109L1393 -66L1385 -25L1369 12L1360 30L1481 105L1500 66L1518 26L1422 -72L1404 -106ZM1360 30L1351 48L1343 67L1334 85L1455 160L1463 144L1471 128L1478 112L1478 112ZM1334 85L1325 102L1316 120L1308 137L1299 154L1419 229L1428 214L1436 198L1444 182L1452 166L1452 166ZM1299 154L1290 171L1280 188L1271 205L1262 222L1382 297L1391 282L1399 266L1408 251L1416 235L1416 235ZM1262 222L1241 260L1219 297L1196 333L1165 341L1165 341L1332 385L1351 352L1369 320L1379 304ZM1396 -111L1367 -78L1343 -43L1325 -4L1194 -59L1213 -101L1275 -121L1389 -114L1389 -114ZM1325 -4L1306 36L1287 76L1266 116L1135 61L1154 24L1173 -14L1191 -52L1191 -52ZM1266 116L1257 135L1247 153L1237 172L1105 118L1114 101L1123 84L1131 68L1131 68ZM1237 172L1218 206L1199 240L1179 274L1071 232L1065 188L1083 156L1101 124L1101 124ZM1179 274L1174 296L1170 319L1165 341L1165 341L1138 310L1110 278L1083 246L1083 246ZM-130 107L-106 105L-83 110L-62 119L-41 128L-19 136L2 143L25 149L47 154L69 159L90 169L108 185L108 185L81 195L56 198L34 194L11 188L-11 182L-32 175L-54 167L-75 159L-96 149L-114 133L-131 109L-131 109ZM-130 107L-107 106L-86 109L-66 118L-46 126L-26 134L-16 137L34 17L12 11L-18 -1L-37 -10L-56 -20L-109 79L-128 101ZM-16 137L4 144L24 149L44 154L64 158L74 160L122 38L103 34L84 30L65 26L47 21L37 18ZM74 160L84 161L94 163L103 168L108 185L108 185L130 95L140 40L133 39L125 38L125 38ZM-131 109L-115 133L-96 149L-76 158L-55 167L-34 175L-24 178L-57 302L-80 295L-102 286L-123 277L-144 267L-132 152L-132 115ZM-24 178L-14 181L-5 184L4 187L-30 310L-38 308L-46 306L-54 303L-54 303ZM4 187L15 189L26 192L36 194L47 197L58 199L24 322L14 320L4 318L-6 316L-16 314L-26 311L-26 311ZM58 199L69 199L82 194L95 190L108 185L108 185L88 218L68 251L49 285L29 318L29 318ZM388 1060L368 1041L356 1018L349 994L341 970L333 946L324 922L314 898L304 875L293 852L291 826L289 799L289 799L313 818L335 836L346 859L356 882L366 906L375 930L383 954L391 978L398 1002L398 1029L390 1060L390 1060ZM388 1060L371 1043L357 1024L351 1002L348 991L218 1034L225 1058L231 1081L351 1061L381 1063ZM348 991L341 968L333 945L324 923L193 966L202 987L209 1009L217 1030L217 1030ZM324 923L321 914L317 904L313 895L182 938L185 946L189 954L192 962L192 962ZM313 895L303 873L292 851L280 829L289 799L289 799L151 876L161 895L171 915L180 935L180 935ZM390 1060L398 1030L398 1004L391 980L388 968L514 913L522 938L529 964L427 1031L396 1057ZM388 968L381 946L373 923L364 902L355 880L350 869L476 814L485 835L494 856L502 877L510 898L513 909ZM350 869L346 859L341 850L337 841L330 832L321 824L387 792L421 789L455 787L466 793L470 802L474 811L474 811ZM321 824L310 816L300 808L289 799L289 799L317 797L345 795L373 793L373 793Z"/><path fill="none" stroke="#060504" stroke-width="1" vector-effect="non-scaling-stroke" d="M1538 25L1532 48L1525 70L1517 93L1509 115L1500 136L1490 158L1480 179L1469 199L1457 220L1445 240M1530 893L1528 871L1526 849L1522 828L1519 806L1514 785L1509 764L1503 743L1496 722L1489 701L1481 681M1391 -96L1372 -52L1352 -8L1332 36L1311 80L1289 123L1266 165L1243 208L1220 250L1195 291L1170 333M-124 112L-102 123L-81 134L-59 143L-36 152L-14 160L9 166L32 172L56 177L79 181L103 184M387 1052L381 1026L374 1000L366 974L358 949L349 924L339 900L328 875L317 851L305 828L292 804"/><path fill="#a3c415" d="M1500 632L1454 620L1409 606L1365 589L1320 573L1275 557L1230 542L1185 528L1140 514L1094 501L1050 486L1006 467L1006 467L1054 472L1101 481L1147 494L1192 508L1237 522L1282 537L1327 553L1371 569L1415 586L1459 606L1500 631L1500 631ZM1500 632L1456 621L1414 608L1372 592L1330 576L1288 561L1267 554L1235 612L1280 627L1324 642L1368 659L1411 676L1472 640L1499 635ZM1267 554L1248 548L1229 542L1210 536L1179 593L1195 599L1212 604L1228 609L1228 609ZM1210 536L1169 523L1128 511L1086 499L1044 488L1006 467L1006 467L1020 548L1058 558L1096 569L1134 580L1172 591L1172 591ZM1500 631L1459 607L1417 586L1374 570L1330 554L1286 538L1242 524L1198 510L1153 496L1131 490L1139 425L1185 439L1231 453L1277 467L1322 483L1367 499L1412 516L1457 533L1484 604L1501 628ZM1131 490L1111 484L1091 479L1100 414L1116 419L1132 423L1132 423ZM1091 479L1071 474L1049 472L1027 469L1006 467L1006 467L1027 455L1049 442L1070 430L1092 417L1092 417Z"/><path fill="none" stroke="#060504" stroke-width="1" vector-effect="non-scaling-stroke" d="M1486 625L1440 607L1394 589L1347 571L1301 555L1254 539L1207 524L1159 509L1112 495L1064 482L1016 470"/></svg>
+    <svg class="still m" viewBox="0 0 390 844" preserveAspectRatio="xMidYMid slice"><path fill="#4c6909" d="M-159 -260L-122 -236L-90 -208L-61 -177L-34 -144L-8 -112L17 -79L43 -45L67 -9L88 27L104 67L118 109L118 109L91 77L66 45L45 9L21 -29L-5 -63L-30 -95L-57 -128L-84 -160L-112 -191L-138 -224L-161 -260L-161 -260ZM-159 -260L-126 -238L-95 -214L-70 -186L-45 -158L30 -201L4 -232L-23 -262L-77 -272L-156 -263L-156 -263ZM-45 -158L-20 -127L4 -96L28 -65L52 -32L125 -74L103 -105L81 -136L58 -167L34 -196L34 -196ZM52 -32L73 1L92 34L110 67L118 109L118 109L181 19L164 -11L147 -40L128 -68L128 -68ZM-161 -260L-139 -227L-116 -195L-89 -166L-63 -136L-39 -105L-26 -90L-89 -30L-114 -62L-140 -94L-168 -125L-196 -156L-165 -231L-164 -257ZM-26 -90L-2 -59L24 -26L47 12L67 47L91 78L118 109L118 109L55 109L0 103L-20 71L-42 39L-64 7L-85 -24L-85 -24ZM489 885L459 876L432 863L409 846L387 828L366 809L345 790L324 771L304 750L285 729L270 703L259 674L259 674L284 689L307 706L326 726L346 747L366 767L387 786L409 804L431 822L454 839L474 859L491 883L491 883ZM489 885L459 877L433 864L411 847L390 830L379 821L307 889L329 908L352 926L376 944L457 899L486 888ZM379 821L370 813L361 805L352 797L343 789L272 857L279 865L287 872L296 879L304 887L304 887ZM343 789L335 781L326 772L318 764L309 755L238 823L245 831L253 839L261 847L268 854L268 854ZM309 755L291 736L273 716L259 694L259 674L259 674L196 777L211 794L227 812L235 820ZM491 883L475 861L456 841L435 825L414 808L393 791L373 773L354 754L344 745L405 667L425 686L446 705L467 724L488 741L510 758L533 775L497 855L494 880ZM344 745L325 725L306 704L283 688L259 674L259 674L315 648L368 627L385 645L402 663L402 663ZM470 422L460 424L451 423L443 420L434 418L426 416L417 413L409 411L400 409L392 407L383 404L376 397L376 397L386 394L395 394L404 396L412 398L421 400L430 402L438 404L447 407L455 410L463 414L470 422L470 422ZM470 422L461 424L453 424L446 421L438 419L425 460L433 462L441 465L453 452L469 424L469 424ZM438 419L430 417L421 414L413 412L404 410L396 408L382 449L391 451L399 453L407 455L415 457L424 460L424 460ZM396 408L391 407L387 406L383 405L378 405L376 397L376 397L369 438L370 447L374 447L377 448L381 449L381 449ZM470 422L463 414L455 410L447 407L438 404L430 402L421 400L412 398L421 356L430 358L439 360L448 363L457 365L465 368L471 383L471 420L471 420ZM412 398L405 396L397 394L389 393L380 396L376 397L376 397L390 371L403 351L410 353L416 354L420 355Z"/><path fill="none" stroke="#060504" stroke-width="1" vector-effect="non-scaling-stroke" d="M-150 -250L-119 -219L-89 -186L-60 -153L-32 -119L-5 -85L22 -51L48 -13L71 25L92 62L113 101M482 879L457 862L433 844L410 826L387 807L365 787L343 767L322 746L302 724L282 702L263 679M467 421L458 418L450 415L441 413L432 410L423 408L414 405L405 403L396 401L387 399L378 397"/><path fill="#75a12b" d="M481 -300L461 -258L438 -219L413 -182L388 -143L364 -104L342 -65L321 -25L301 16L282 58L258 96L234 135L234 135L243 88L255 43L274 1L294 -40L315 -80L338 -120L361 -158L386 -197L412 -234L442 -269L479 -300L479 -300ZM481 -300L462 -260L440 -222L415 -186L391 -149L368 -111L347 -73L336 -54L413 3L435 -37L458 -77L482 -116L507 -154L534 -191L490 -268L485 -297ZM336 -54L316 -16L298 23L280 62L263 102L234 135L234 135L344 152L359 116L375 79L392 44L410 9L410 9ZM479 -300L448 -273L419 -245L397 -213L386 -197L297 -234L321 -269L345 -303L445 -295L475 -303ZM386 -197L363 -161L341 -125L319 -88L309 -69L222 -106L241 -141L261 -176L282 -211L293 -228ZM309 -69L290 -31L271 8L253 47L243 91L234 135L234 135L203 73L174 11L184 -29L201 -64L218 -99L218 -99ZM215 -320L217 -284L216 -247L211 -212L208 -176L204 -140L202 -104L199 -67L198 -31L197 5L193 41L185 76L185 76L177 40L174 3L175 -33L177 -69L179 -105L182 -141L185 -177L189 -213L193 -249L201 -285L214 -320L214 -320ZM215 -320L217 -285L216 -249L212 -214L208 -180L205 -145L202 -109L200 -74L198 -39L197 -22L266 -7L267 -44L269 -80L271 -116L274 -152L278 -188L282 -224L286 -260L232 -301L218 -320ZM197 -22L197 11L196 44L185 76L185 76L265 54L265 26L266 -2L266 -2ZM214 -320L202 -287L194 -253L190 -219L120 -215L124 -252L151 -288L211 -320L211 -320ZM190 -219L188 -202L186 -185L184 -168L115 -164L116 -180L118 -195L119 -210L119 -210ZM184 -168L182 -136L179 -104L177 -71L108 -67L110 -98L112 -128L114 -159L114 -159ZM177 -71L176 -39L175 -6L174 27L181 60L185 76L185 76L137 43L106 12L107 -18L107 -47L108 -62ZM-111 903L-93 881L-72 861L-49 845L-27 827L-6 809L15 790L35 770L55 750L74 728L96 711L120 695L120 695L108 724L94 751L76 772L56 793L36 813L15 832L-6 850L-29 867L-52 884L-78 897L-109 905L-109 905ZM-111 903L-93 881L-73 862L-50 845L-28 828L-7 810L-65 735L-88 754L-111 773L-134 790L-140 828L-114 900L-114 900ZM-7 810L4 801L14 791L24 781L-34 706L-44 715L-53 724L-62 732L-62 732ZM24 781L42 763L60 744L77 725L93 704L120 695L120 695L31 633L16 651L1 669L-15 686L-31 703L-31 703ZM-109 905L-79 897L-52 885L-30 868L-18 859L51 925L27 943L2 961L-76 919L-106 908ZM-18 859L-9 852L1 844L10 836L20 828L89 893L80 900L72 908L63 915L54 922L54 922ZM20 828L38 810L57 793L74 774L83 764L151 829L135 847L118 865L101 882L92 890ZM83 764L98 745L109 720L120 695L120 695L137 744L153 794L154 826L154 826ZM194 1034L187 1006L184 978L185 950L184 922L184 894L182 866L181 838L179 810L177 782L177 754L182 726L182 726L194 753L200 781L203 809L205 837L206 865L207 893L208 921L208 949L208 977L204 1006L196 1034L196 1034ZM194 1034L188 1006L184 979L185 951L184 923L184 895L110 891L111 920L112 949L111 979L132 1007L191 1034L191 1034ZM184 895L183 883L183 872L109 868L110 877L110 886L110 886ZM183 872L181 845L180 819L177 792L175 766L172 740L182 726L182 726L100 754L103 778L105 802L107 827L108 851L109 863ZM196 1034L204 1006L208 979L208 952L208 925L207 898L206 871L205 843L203 816L276 806L278 834L279 862L280 890L281 918L281 946L281 974L256 1003L199 1034L199 1034ZM203 816L201 790L199 764L188 739L182 726L182 726L236 747L272 768L274 791L275 802Z"/><path fill="none" stroke="#060504" stroke-width="1" vector-effect="non-scaling-stroke" d="M471 -288L442 -250L414 -211L388 -171L362 -131L338 -90L316 -48L294 -6L274 37L255 81L238 126M213 -308L207 -271L203 -233L198 -196L195 -158L192 -120L189 -83L187 -45L186 -7L185 31L185 68M-102 899L-77 883L-52 866L-29 848L-6 829L16 810L38 790L58 768L78 746L97 724L116 700M195 1025L196 995L196 966L196 937L196 907L195 878L193 849L192 820L189 790L186 761L183 732"/><path fill="#a3c415" d="M450 439L439 436L430 430L422 423L414 417L405 410L397 404L388 398L379 391L370 385L362 378L356 369L356 369L368 371L377 376L386 382L395 388L404 394L412 401L421 407L429 414L437 421L444 429L450 439L450 439ZM450 439L440 436L431 430L422 424L414 417L406 411L402 408L378 435L387 442L395 448L404 455L412 462L439 445L449 441ZM402 408L398 405L395 403L391 400L388 398L364 425L367 427L370 429L374 432L377 434L377 434ZM388 398L385 395L381 393L377 390L374 388L350 415L353 417L357 420L360 422L363 424L363 424ZM374 388L370 385L365 382L361 379L357 377L356 369L356 369L339 399L338 407L342 410L345 412L349 414L349 414ZM450 439L445 430L438 422L431 415L423 409L415 403L435 372L443 379L451 385L459 392L459 409L451 438L451 438ZM415 403L411 400L407 397L427 367L430 369L433 371L433 371ZM407 397L399 391L390 385L382 379L373 373L362 370L356 369L356 369L381 352L397 346L406 352L414 357L421 363L425 366Z"/><path fill="none" stroke="#060504" stroke-width="1" vector-effect="non-scaling-stroke" d="M447 437L439 430L430 422L422 416L413 409L404 402L395 395L386 389L377 383L367 376L358 370"/></svg>
+    <canvas class="back"></canvas>
+  </div>
+  <div class="clear">
+    <p class="who"><b>KA Surf Hostel</b><span>Surf, chill and feel at home in Ahangama</span></p>
+    <h1><span class="ln">Five minutes</span><br><span class="ln">from Kabalana</span><br><span class="ln">Beach</span></h1>
+    <div class="act">
+      <div class="cta">
+        <a class="btn book" href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/">Check dates</a>
+        <p class="call">or call <a href="tel:+94773746053">+94 77 374 6053</a></p>
+      </div>
+      <div class="score">
+        <p class="big"><span class="num">9.8<small>/10</small></span><span class="src"><a href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/">Hostelworld</a>, 66 reviews</span></p>
+        <p class="rest"><b>9.5/10</b> <a href="https://www.booking.com/hotel/lk/ka-surf-hostel.html">Booking.com</a>, 38 reviews<br><b>4.8/5</b> Google, 42 reviews</p>
+      </div>
+    </div>
+  </div>
+  <div class="stage front" aria-hidden="true"><canvas class="front"></canvas></div>
+</section>
+
+<section class="sec rooms" aria-labelledby="h-rooms">
+  <div class="spine"></div>
+  <div class="lead">
+    <p class="p1">A family runs this place, and you feel it about ten minutes after you drop your bag. Kabalana Beach is a five-minute walk — close enough to check the surf before breakfast and come back wet.</p>
+    <p class="p2">Dorms if you want the company, private rooms if you don't.</p>
+  </div>
+  <img class="pr pr1" src="img/img-001-576.jpg" width="576" height="768" alt="A private room with a double bed, white plank walls and the door open to the garden" loading="lazy">
+  <h2 id="h-rooms" class="h-rooms">Dorms and private rooms</h2>
+  <p class="body b-rooms">Mixed, female and male dormitories with bunk beds, plus double rooms and deluxe doubles. Every room has air conditioning and a fan, a private locker and a personal fridge. The bathrooms are modern, some of them open to the sky, and the showers are hot.</p>
+  <ul class="list"><li><span class="rl">Bunk bed in mixed dormitory</span><span class="rb">1 bunk bed</span><a class="book" data-room="Bunk bed in mixed dormitory, 1 bunk bed" href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/">Check dates</a></li><li><span class="rl">Bunk bed in female dormitory</span><span class="rb">1 bunk bed</span><a class="book" data-room="Bunk bed in female dormitory, 1 bunk bed" href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/">Check dates</a></li><li><span class="rl">Bunk bed in male dormitory</span><span class="rb">1 bunk bed</span><a class="book" data-room="Bunk bed in male dormitory, 1 bunk bed" href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/">Check dates</a></li><li><span class="rl">Double room</span><span class="rb">1 extra-large double bed</span><a class="book" data-room="Double room, 1 extra-large double bed" href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/">Check dates</a></li><li><span class="rl">Deluxe double room</span><span class="rb">1 extra-large double bed</span><a class="book" data-room="Deluxe double room, 1 extra-large double bed" href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/">Check dates</a></li><li><span class="rl">Deluxe double room</span><span class="rb">1 single bed</span><a class="book" data-room="Deluxe double room, 1 single bed" href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/">Check dates</a></li></ul>
+  <img class="pr pr2" src="img/img-004-576.jpg" width="576" height="768" alt="The dormitory: grey-green timber bunk beds with white linen and a blue runner, under a vaulted ceiling" loading="lazy">
+  <blockquote class="q q-rooms"><p>It's a calm and quiet place, a wonderful staff, caring owners and clean. I had a really good time even i havnt spent much time there. beds are compfy and it has aircon and warm water.</p><footer>Wolfgang, Austria<br>Booking.com</footer></blockquote>
+</section>
+
+<section class="sec bfast" aria-labelledby="h-bfast">
+  <div class="turn" data-from="left"></div>
+  <div class="spine"></div>
+  <h2 id="h-bfast" class="h-bfast">Breakfast changes every morning</h2>
+  <p class="body b-bfast">Breakfast is included and it is Sri Lankan: rotis, hoppers, pancakes, eggs, a fruit platter, and a vegan option if you need one. It changes daily, which guests mention more often than anything else on the property.</p>
+  <img class="pr pr3" src="img/img-003-576.jpg" width="576" height="768" alt="A hand holding a plate of papaya, watermelon, pineapple, passion fruit and banana in front of the garden" loading="lazy">
+  <blockquote class="q q-bfast"><p>Great family owned hostel :-) they are really friendly and helpful! The breakfast always consists of a typical Sri Lankan dish (roti, hoppers,…) which changes every day and additionally a great fruit platter!! Dorms are big, bathrooms are nice with the whole outdoor thing :-)</p><footer>Elena, Germany<br>Hostelworld, March 2026</footer></blockquote>
+</section>
+
+<section class="sec here" aria-labelledby="h-here">
+  <div class="spine"></div>
+  <h2 id="h-here" class="h-here">What is here</h2>
+  <div class="body b-here"><p>A green garden and a chill zone. Free filtered water you can refill any time. Laundry. A minimarket on site. Scooter rental, with a surf rack if you ask. Luggage storage, lockers, and a 24-hour reception.</p><p>Pets are welcome on request at no charge. Children are not accommodated.</p></div>
+  <ul class="amen"><li>Free breakfast, Sri Lankan, changes daily</li><li>Free WiFi</li><li>Air conditioning and a fan in every room</li><li>Private locker and personal fridge in every room</li><li>Hot showers</li><li>Garden and chill zone</li><li>Free filtered water</li><li>Scooter rental <i>surf rack available</i></li><li>Laundry service</li><li>Minimarket on site</li><li>Luggage storage</li><li>Tour desk</li><li>24-hour reception</li><li>24-hour security</li><li>Airport transfers</li><li>Bicycle parking</li><li>Pets allowed on request <i>no extra charge</i></li></ul>
+  <img class="pr pf1" src="img/img-005-576.jpg" width="576" height="768" alt="An open-air bathroom with a glass roof, a black shower wall, plants and a round basin" loading="lazy">
+  <img class="pr pf2" src="img/img-006-576.jpg" width="576" height="768" alt="Two small cottages under coconut palms and banana trees" loading="lazy">
+  <img class="pr pf3" src="img/img-008-576.jpg" width="576" height="768" alt="A bathroom with a round basin and a window full of banana leaves" loading="lazy">
+</section>
+
+<section class="sec family" aria-labelledby="h-family">
+  <div class="turn" data-from="right"></div>
+  <div class="spine"></div>
+  <h2 id="h-family" class="h-family">What guests say about the staff</h2>
+  <div class="body b-family"><p>"Family" is the word guests keep using. One of them caught dengue in Kandy and wrote that the staff helped nurse her back to health with Ayurvedic medicines, on top of what the hospital was already giving her.</p><p>On Booking.com the staff get 9.9 out of 10, the hostel's highest score there. Hostelworld guests give them the same 9.9, and only value for money and security do better, both at a full 10.</p></div>
+  <img class="pr pr4" src="img/img-002-576.jpg" width="576" height="768" alt="Guests around a long wooden table on the veranda at night" loading="lazy">
+  <blockquote class="q q-mia"><p>I got dengue in Kandy and the staff at KA helped nurse me back to health with Ayurvedic medicines (on top of what the hospital was already giving me) They are the kindest people and they attract good vibes. I met some of the best people here :)</p><footer>Mia, USA<br>Hostelworld, February 2026</footer></blockquote>
+  <blockquote class="q q-clara"><p>Lovely location away from the main road. So close to the beach! The most amazing family who look after you like you're one of their own. Thank you KA!</p><footer>Clara, United Kingdom<br>Booking.com</footer></blockquote>
+  <blockquote class="q q-saketh"><p>Owners very hospitable, breakfast in the morning was great, close to kabalana beach so great for surfing</p><footer>Saketh, England<br>Hostelworld, February 2026</footer></blockquote>
+  <img class="pr pr5" src="img/img-012-432.jpg" width="432" height="576" alt="A ring lamp glowing on the white wall of the house at night" loading="lazy">
+</section>
+
+<section class="sec walk" aria-labelledby="h-walk">
+  <div class="line"></div>
+  <div class="go">
+    <h2 id="h-walk">Getting here</h2>
+    <p class="body">Ahangama, a five-minute walk from Kabalana Beach. Koggala Airport is about 5 km away; Ahangama railway station is a little over 2 km. The property arranges a shuttle.</p>
+    <dl class="times">
+      <div><dt>Check-in</dt><dd>13:00<span>to</span>23:00</dd></div>
+      <div><dt>Check-out</dt><dd><span>by</span>13:00</dd></div>
+    </dl>
+    <p class="note">Reception is open 24 hours. Children are not accommodated, and cots and extra beds are not available.</p>
+    <p class="addr">No 207/A, Welhengoda, 80650 Ahangama, Sri Lanka<br><a href="https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en">Open the map</a></p>
+  </div>
+  <div class="map">
+    <div class="map-frame">
+      <p class="map-alt"><span>No 207/A, Welhengoda, 80650 Ahangama, Sri Lanka</span><a href="https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en">Open the map</a></p>
+      <iframe
+        data-src="https://www.openstreetmap.org/export/embed.html?bbox=80.3455%2C5.9760%2C80.3540%2C5.9845&amp;layer=mapnik&amp;marker=5.98181%2C80.35206"
+        title="Map of KA Surf Hostel, Ahangama (OpenStreetMap)"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+      ></iframe>
+    </div>
+    <p class="map-cred">Map <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a></p>
+  </div>
+</section>
+
+<section class="wave" aria-labelledby="h-wave">
+  <div class="in">
+    <h2 id="h-wave" class="spot">Kabalana: a sandy beach break that suits beginners and improvers, with The Rock reef alongside it when the swell is up.</h2>
+    <div class="fc">
+    <div class="fc-now">
+      <p class="credit-rosa"><a href="https://rosa.surf/spot/kabalana">Forecast for Kabalana by Rosa</a></p>
+      <p class="now"><span class="nh">0.7–1.1<small> m</small></span></p>
+      <p class="nd"><span>Now, Monday 20:30</span><span>Swell 12.6 s from the south</span><span>Wind 7 km/h from the west, cross-shore</span></p>
+      <p class="upd">Rosa, updated 21 September 2026, 19:55</p>
+    </div>
+    <div class="fc-rosa">
+      <a class="fc-link" href="https://rosa.surf/spot/kabalana"><span>See today's forecast for Kabalana on Rosa</span></a>
+      <iframe
+        data-src="https://rosa.surf/widget/?spot=kabalana&amp;theme=light&amp;units=metric"
+        title="Rosa surf forecast - Kabalana"
+        width="100%"
+        height="500"
+        style="max-width:420px;border:0;border-radius:16px;display:block"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+      ></iframe>
+    </div>
+    </div>
+    <div class="crops">
+      <img class="pc" src="img/img-023-480.jpg" width="480" height="640" alt="Surfers waiting in the water off a sandy beach, low white-water rolling in" loading="lazy">
+      <img class="pc" src="img/img-020-480.jpg" width="480" height="640" alt="A man beside a stack of blue soft-top surfboards on the beach" loading="lazy">
+      <img class="pc" src="img/img-021-480.jpg" width="480" height="640" alt="Surfboards leaning on a wooden rail by the beach" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<footer class="end" aria-label="Book and contact">
+  <div class="tiles"><a class="tile big" href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/"><img class="lg lg-hostelworld" src="img/hostelworld.svg" alt="" width="32" height="32"><span class="t1">Check dates on</span><span class="t2">Hostelworld</span><span class=t3>9.8/10, 66 reviews</span></a><a class="tile big" href="https://www.booking.com/hotel/lk/ka-surf-hostel.html"><img class="lg lg-bookingdotcom" src="img/bookingdotcom.svg" alt="" width="32" height="32"><span class="t1">Check dates on</span><span class="t2">Booking.com</span><span class=t3>9.5/10, 38 reviews</span></a><a class="tile big" href="https://www.agoda.com/en-in/ka-surf-hostel-h61738910/hotel/ahangama-lk.html"><img class="lg lg-agoda" src="img/agoda.svg" alt="" width="62" height="32"><span class="t1">Check dates on</span><span class="t2">Agoda</span></a></div>
+  <p class="rates">Rates change with the season and the dates — the booking links below show what is actually free.</p>
+  <div class="contact">
+    <p><b>KA Surf Hostel</b><br>No 207/A, Welhengoda, 80650 Ahangama, Sri Lanka</p>
+    <p><a href="tel:+94773746053">+94 77 374 6053</a><br><a href="https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en">Open the map</a></p>
+    <p class="cred">Photographs: KA Surf Hostel's own, from its Booking.com listing and Instagram.</p>
+  </div>
+</footer>
+</main>
+
+<nav class="bar" aria-label="Book">
+  <a class="btn book" href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/">Check dates</a>
+  <a href="tel:+94773746053">Call</a>
+</nav>
+
+
+<div class="veil" hidden></div>
+<aside id="book" class="panel" role="dialog" aria-modal="true" aria-labelledby="book-h" hidden>
+  <div class="ph"><h2 id="book-h">Check dates</h2><button type="button" class="x">Close</button></div>
+  <p class="ctx" aria-live="polite"></p>
+  <p class="rates">Rates change with the season and the dates — the booking links below show what is actually free.</p>
+  <div class="tiles"><a class="tile" href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/"><span class="t1">Check dates on</span><span class="t2">Hostelworld</span><span class=t3>9.8/10, 66 reviews</span></a><a class="tile" href="https://www.booking.com/hotel/lk/ka-surf-hostel.html"><span class="t1">Check dates on</span><span class="t2">Booking.com</span><span class=t3>9.5/10, 38 reviews</span></a><a class="tile" href="https://www.agoda.com/en-in/ka-surf-hostel-h61738910/hotel/ahangama-lk.html"><span class="t1">Check dates on</span><span class="t2">Agoda</span></a></div>
+  <p class="pcall">or call <a href="tel:+94773746053">+94 77 374 6053</a></p>
+</aside>
+
+<script>
+(() => {
+const R = document.documentElement;
+R.classList.add('js');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const Q = new URLSearchParams(location.search);
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+/* header name appears once the clearing has scrolled away */
+const onScrollName = () => R.classList.toggle('past', scrollY > innerHeight * 0.7);
+addEventListener('scroll', onScrollName, {passive: true}); onScrollName();
+
+
+/* ---------- Rosa's widget: src set only when the forecast block nears the viewport ---------- */
+const rosa = document.querySelector('.fc-rosa'), rosaFrame = rosa && rosa.querySelector('iframe');
+/* rosa.surf sends frame-ancestors *, which does not match a file:// page: there the frame would be
+   blocked and blank, so the plain link stays. Served over http(s), the frame loads. */
+if (rosaFrame && 'IntersectionObserver' in window && location.protocol !== 'file:') {
+  const io = new IntersectionObserver((es) => {
+    if (!es.some((e) => e.isIntersecting)) return;
+    io.disconnect();
+    rosa.dataset.loading = 'true';
+    rosaFrame.addEventListener('load', () => { rosa.classList.add('on'); delete rosa.dataset.loading; }, {once: true});
+    rosaFrame.src = rosaFrame.dataset.src;
+  }, {rootMargin: '400px 0px'});
+  io.observe(rosa);
+}
+
+/* ---------- the map: same rule, src set only when "Getting here" nears the viewport ---------- */
+const map = document.querySelector('.map-frame'), mapFrame = map && map.querySelector('iframe');
+if (mapFrame && 'IntersectionObserver' in window) {
+  const io = new IntersectionObserver((es) => {
+    if (!es.some((e) => e.isIntersecting)) return;
+    io.disconnect();
+    map.dataset.loading = 'true';
+    mapFrame.addEventListener('load', () => { map.classList.add('on'); delete map.dataset.loading; }, {once: true});
+    mapFrame.src = mapFrame.dataset.src;
+  }, {rootMargin: '400px 0px'});
+  io.observe(map);
+}
+
+/* ---------- booking slide-out: every "Check dates" is a real link; this is on top ---------- */
+const panel = document.getElementById('book'), veil = document.querySelector('.veil'), ctx = panel.querySelector('.ctx');
+let lastFocus = null, closeT = 0;
+const focusables = () => [...panel.querySelectorAll('a[href],button')];
+function key(e) {
+  if (e.key === 'Escape') { e.preventDefault(); closePanel(); return; }
+  if (e.key !== 'Tab') return;
+  const f = focusables(), i = f.indexOf(document.activeElement);
+  if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+  else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); }
+}
+function openPanel(e) {
+  if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button > 0) return;
+  e.preventDefault(); clearTimeout(closeT);
+  lastFocus = e.currentTarget;
+  const room = lastFocus.dataset.room;
+  ctx.textContent = room || ''; ctx.hidden = !room;
+  panel.hidden = false; veil.hidden = false;
+  requestAnimationFrame(() => requestAnimationFrame(() => { panel.classList.add('open'); panel.querySelector('.tile').focus({preventScroll: true}); }));
+  document.addEventListener('keydown', key);
+}
+function closePanel() {
+  panel.classList.remove('open'); veil.hidden = true;
+  document.removeEventListener('keydown', key);
+  closeT = setTimeout(() => { panel.hidden = true; }, reduce ? 0 : 300);
+  if (lastFocus) lastFocus.focus({preventScroll: true});
+}
+document.querySelectorAll('a.book').forEach((a) => a.addEventListener('click', openPanel));
+panel.querySelector('.x').addEventListener('click', closePanel);
+veil.addEventListener('click', closePanel);
+if (Q.has('open')) setTimeout(() => { const a = document.querySelector(Q.get('open') === 'room' ? '.list a.book' : '.btn.book'); a.click(); }, 300);
+
+/* ---------- headings drift against the scroll; the green line slides to its new column ---------- */
+if (!reduce) {
+  const hs = [...document.querySelectorAll('.sec h2')], turns = [...document.querySelectorAll('.turn')];
+  const scrub = () => {
+    const vh = innerHeight;
+    for (const h of hs) { const r = h.getBoundingClientRect(); if (r.bottom > -200 && r.top < vh + 200) h.style.transform = `translate3d(0,${((r.top + r.height / 2) - vh / 2) * -0.05}px,0)`; }
+    for (const t of turns) {
+      const r = t.getBoundingClientRect(), q = clamp((vh * 0.92 - r.top) / (vh * 0.4), 0, 1), k = ((1 - q) * 100).toFixed(1);
+      t.style.clipPath = t.dataset.from === 'left' ? `inset(0 ${k}% 0 0)` : `inset(0 0 0 ${k}%)`;
+    }
+  };
+  addEventListener('scroll', scrub, {passive: true}); addEventListener('resize', scrub); scrub();
+}
+
+/* ---------- the canopy ---------- */
+const COL = {shade: [0x4C, 0x69, 0x09], garden: [0x75, 0xA1, 0x2B], lit: [0xA3, 0xC4, 0x15], ink: [6, 5, 4]};
+const LAYER = [COL.shade, COL.garden, COL.lit];
+
+function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const ease = (x) => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+
+/* A blade is cut paper: a straight-sided strip with a chamfered tip, a narrow central ribbon,
+   and lateral pieces separated by angled slits, the way a banana leaf tears. */
+function makeBlade(r, o) {
+  const cuts = [[], []];
+  for (const side of [0, 1]) {
+    const n = o.whole ? 0 : Math.floor(r() * 4) + (o.L > 500 ? 2 : 1);
+    const ts = [];
+    for (let i = 0; i < n; i++) ts.push(0.22 + r() * 0.66);
+    ts.sort((a, b) => a - b);
+    cuts[side] = ts.filter((t, i) => i === 0 || t - ts[i - 1] > 0.07);
+  }
+  return Object.assign({ph: r() * 6.28, ph2: r() * 6.28, cuts, chamfer: 0.10 + r() * 0.08, delay: r() * 0.3}, o);
+}
+
+function layout(w, h, box, lines, mobile) {
+  const r = rng(11);
+  const {x0, x1, y0, y1} = box;
+  /* few, very large blades, weighted to the right and the corners so the clearing leans
+     towards the type: [base x, base y, tip x, tip y, width, layer, bend] */
+  const spec = mobile ? [
+    [w + 90, -300, w * 0.6, h * 0.16, 220, 1, 0.2],
+    [-160, -260, w * 0.3, h * 0.13, 200, 0, -0.2],
+    [w * 0.55, -320, w * 0.46, h * 0.09, 160, 1, 0.1],
+    [-110, h + 60, w * 0.3, h * 0.82, 220, 1, 0.25],
+    [w + 100, h + 40, w * 0.66, h * 0.8, 230, 0, -0.2],
+    [w * 0.5, h + 190, w * 0.47, h * 0.86, 170, 1, 0.1],
+    [w + 80, h * 0.5, w - 14, h * 0.47, 100, 0, 0.1],
+  ] : [
+    [w + 120, h * 0.44, x1 + 40, h * 0.5, 430, 0, 0.1],
+    [w + 100, h * 0.02, x1 + 50, y0 + 70, 380, 1, -0.2],
+    [w + 90, h * 1.0, x1 + 90, y1 - 90, 410, 1, 0.22],
+    [w * 0.8, -130, w * 0.63, y0 + 40, 300, 0, 0.18],
+    [w * 0.97, -110, w * 0.81, h * 0.38, 330, 1, -0.1],
+    [w * 0.44, -170, w * 0.39, y0 - 34, 250, 0, 0.12],
+    [-130, h * 0.12, x0 - 52, y0 + 8, 300, 1, 0.25],
+    [-150, h + 90, x0 - 150, h * 0.5, 300, 0, -0.18],
+    [w * 0.27, h + 160, w * 0.2, y1 + 34, 320, 1, 0.2],
+    [w * 0.6, h + 170, w * 0.55, y1 + 26, 300, 0, -0.15],
+  ];
+  const blades = spec.map(([bx, by, tx, ty, W, layer, bend]) =>
+    makeBlade(r, {x: bx, y: by, ang: Math.atan2(ty - by, tx - bx), L: Math.hypot(tx - bx, ty - by), W, bend, layer}));
+  // one short front blade nicks the end of the heading's second line
+  const ln = lines[1];
+  if (ln) {
+    const tipX = ln.right + (mobile ? 30 : 8), tipY = ln.top + ln.height * 0.58;
+    const bx = w + 60, by = tipY + (mobile ? 70 : 170);
+    blades.push(makeBlade(r, {x: bx, y: by, ang: Math.atan2(tipY - by, tipX - bx), L: Math.hypot(tipX - bx, tipY - by), W: mobile ? 84 : 150, bend: 0.1, layer: 2}));
+  }
+  const sorted = blades.slice().sort((a, b) => (a.y + a.L * Math.sin(a.ang)) - (b.y + b.L * Math.sin(b.ang)));
+  sorted.forEach((b, i) => { b.band = i / sorted.length; });
+  return blades;
+}
+
+function prof(t, side, ch) {
+  const base = clamp((t - 0.02) / 0.10, 0.05, 1);
+  const tipStart = side ? 1 - ch : 1 - ch * 0.35;   // oblique cut at the tip
+  const tip = t > tipStart ? clamp((1 - t) / (1 - tipStart), 0, 1) : 1;
+  return base * tip;
+}
+
+/* geometry for one blade: a list of strips {a:[x,y..], b:[x,y..], c:[r,g,b], layer} and one midrib polyline */
+function bladeGeom(b, now, ptr, p, spine, H, strips, ribs) {
+  const pe = p <= 0 ? 0 : ease(clamp((p - b.delay) / 0.7, 0, 1));
+  const sway = (0.016 * Math.sin(now * 0.00055 + b.ph) + 0.009 * Math.sin(now * 0.0013 + b.ph2)) * (1 - pe);
+  const a = b.ang + sway, dx = Math.cos(a), dy = Math.sin(a), nx = -dy, ny = dx;
+  const bandY = b.band * H - 30, bandH = H / 7 + 60;
+  const col = LAYER[b.layer].map((c, i) => c + (COL.garden[i] - c) * pe);
+  const P = (t, s, side) => {
+    const hw = b.W * 0.5 * prof(t, side, b.chamfer);
+    const off = b.bend * b.L * 0.2 * 4 * t * (1 - t);
+    let x = b.x + dx * b.L * t + nx * (off + s * hw), y = b.y + dy * b.L * t + ny * (off + s * hw);
+    if (ptr.k > 0.001) {
+      const ex = x - ptr.x, ey = y - ptr.y, d = Math.hypot(ex, ey) || 1;
+      if (d < ptr.R) { const q = 1 - d / ptr.R, f = q * q * ptr.push * ptr.k * (0.25 + t); x += ex / d * f; y += ey / d * f; }
+    }
+    if (pe > 0) {
+      const tx = spine.x + (s + 1) / 2 * spine.w, ty = bandY + t * bandH;
+      x += (tx - x) * pe; y += (ty - y) * pe;
+    }
+    return [x, y];
+  };
+  const strip = (t0, t1, sa, sb, side, e0, e1) => {
+    const m = Math.max(2, Math.ceil((t1 - t0) * 22));
+    const A = [], B = [];
+    for (let i = 0; i <= m; i++) {
+      const u = i / m;
+      A.push(...P(t0 + (t1 - t0) * u, sa, side));
+      B.push(...P(clamp(e0 + (e1 - e0) * u, 0, 1), sb, side));
+    }
+    strips.push({a: A, b: B, c: col, layer: b.layer});
+  };
+  const inner = 0.14;
+  strip(0, 1, -inner, inner, 1, 0, 1);
+  const sk = 0.03 * (1 - pe), gap = 0.007 * (1 - pe);
+  for (const side of [0, 1]) {
+    const sg = side ? 1 : -1;
+    const cuts = [0, ...b.cuts[side], 1];
+    for (let j = 0; j < cuts.length - 1; j++) {
+      const t0 = cuts[j], t1 = cuts[j + 1];
+      const e0 = j === 0 ? t0 : t0 + sk + gap, e1 = j === cuts.length - 2 ? t1 : t1 + sk - gap;
+      strip(t0, t1, sg * inner, sg, side, e0, e1);
+    }
+  }
+  if (pe < 1) {
+    const L = [];
+    for (let i = 0; i <= 20; i++) L.push(...P(0.03 + i / 20 * 0.95, 0, 1));
+    ribs.push({pts: L, alpha: 1 - pe, layer: b.layer});
+  }
+}
+
+/* ---------- renderers: WebGL first, 2D canvas if WebGL is not there ---------- */
+function glRenderer(cv) {
+  const gl = cv.getContext('webgl', {antialias: true, alpha: true, premultipliedAlpha: true}) || cv.getContext('experimental-webgl');
+  if (!gl) return null;
+  const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; };
+  const pr = gl.createProgram();
+  gl.attachShader(pr, sh(gl.VERTEX_SHADER, 'attribute vec2 p;attribute vec4 c;uniform vec2 r;varying vec4 v;void main(){v=c;gl_Position=vec4(p/r*2.0-1.0,0,1);gl_Position.y*=-1.0;}'));
+  gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, 'precision mediump float;varying vec4 v;void main(){gl_FragColor=vec4(v.rgb*v.a,v.a);}'));
+  gl.linkProgram(pr);
+  if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) return null;
+  gl.useProgram(pr);
+  const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  const lp = gl.getAttribLocation(pr, 'p'), lc = gl.getAttribLocation(pr, 'c'), ur = gl.getUniformLocation(pr, 'r');
+  gl.enableVertexAttribArray(lp); gl.enableVertexAttribArray(lc);
+  gl.vertexAttribPointer(lp, 2, gl.FLOAT, false, 24, 0); gl.vertexAttribPointer(lc, 4, gl.FLOAT, false, 24, 8);
+  gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+  let data = new Float32Array(1 << 16);
+  const push = (n, arr) => { if (n + arr.length > data.length) { const d = new Float32Array(data.length * 2); d.set(data); data = d; } data.set(arr, n); return n + arr.length; };
+  return {
+    kind: 'webgl',
+    draw(w, h, dpr, strips, ribs) {
+      gl.viewport(0, 0, cv.width, cv.height); gl.uniform2f(ur, w, h);
+      gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+      const byLayer = [0, 1, 2];
+      for (const L of byLayer) {
+        let n = 0;
+        for (const s of strips) {
+          if (s.layer !== L) continue;
+          const c = [s.c[0] / 255, s.c[1] / 255, s.c[2] / 255, 1];
+          const A = s.a, B = s.b;
+          for (let i = 0; i + 3 < A.length; i += 2) {
+            n = push(n, [A[i], A[i + 1], ...c, B[i], B[i + 1], ...c, A[i + 2], A[i + 3], ...c,
+                         B[i], B[i + 1], ...c, B[i + 2], B[i + 3], ...c, A[i + 2], A[i + 3], ...c]);
+          }
+        }
+        if (n) { gl.bufferData(gl.ARRAY_BUFFER, data.subarray(0, n), gl.DYNAMIC_DRAW); gl.drawArrays(gl.TRIANGLES, 0, n / 6); }
+        n = 0;
+        for (const rb of ribs) {
+          if (rb.layer !== L) continue;
+          const c = [COL.ink[0] / 255, COL.ink[1] / 255, COL.ink[2] / 255, rb.alpha];
+          for (let i = 0; i + 3 < rb.pts.length; i += 2) n = push(n, [rb.pts[i], rb.pts[i + 1], ...c, rb.pts[i + 2], rb.pts[i + 3], ...c]);
+        }
+        if (n) { gl.bufferData(gl.ARRAY_BUFFER, data.subarray(0, n), gl.DYNAMIC_DRAW); gl.lineWidth(1); gl.drawArrays(gl.LINES, 0, n / 6); }
+      }
+    }
+  };
+}
+function ctxRenderer(cv) {
+  const x = cv.getContext('2d');
+  if (!x) return null;
+  return {
+    kind: '2d',
+    draw(w, h, dpr, strips, ribs) {
+      x.setTransform(dpr, 0, 0, dpr, 0, 0); x.clearRect(0, 0, w, h);
+      for (const L of [0, 1, 2]) {
+        for (const s of strips) {
+          if (s.layer !== L) continue;
+          x.fillStyle = `rgb(${s.c[0] | 0},${s.c[1] | 0},${s.c[2] | 0})`;
+          x.beginPath(); x.moveTo(s.a[0], s.a[1]);
+          for (let i = 2; i < s.a.length; i += 2) x.lineTo(s.a[i], s.a[i + 1]);
+          for (let i = s.b.length - 2; i >= 0; i -= 2) x.lineTo(s.b[i], s.b[i + 1]);
+          x.closePath(); x.fill();
+        }
+        x.lineWidth = 1;
+        for (const rb of ribs) {
+          if (rb.layer !== L) continue;
+          x.strokeStyle = `rgba(6,5,4,${rb.alpha})`;
+          x.beginPath(); x.moveTo(rb.pts[0], rb.pts[1]);
+          for (let i = 2; i < rb.pts.length; i += 2) x.lineTo(rb.pts[i], rb.pts[i + 1]);
+          x.stroke();
+        }
+      }
+    }
+  };
+}
+
+/* static export for the no-JS / reduced-motion SVG (authoring aid, ?svg) */
+function toSVG(strips, ribs) {
+  const hex = (c) => '#' + c.map((v) => Math.round(v).toString(16).padStart(2, '0')).join('');
+  const f = (v) => Math.round(v);
+  let out = '';
+  for (const L of [0, 1, 2]) {
+    let d = {}, rb = '';
+    for (const s of strips) {
+      if (s.layer !== L) continue;
+      const k = hex(s.c);
+      let path = 'M' + f(s.a[0]) + ' ' + f(s.a[1]);
+      const step = s.a.length > 12 ? 4 : 2;
+      for (let i = step; i < s.a.length - 2; i += step) path += 'L' + f(s.a[i]) + ' ' + f(s.a[i + 1]);
+      path += 'L' + f(s.a[s.a.length - 2]) + ' ' + f(s.a[s.a.length - 1]);
+      for (let i = s.b.length - 2; i >= 0; i -= step) path += 'L' + f(s.b[i]) + ' ' + f(s.b[i + 1]);
+      path += 'L' + f(s.b[0]) + ' ' + f(s.b[1]) + 'Z';
+      d[k] = (d[k] || '') + path;
+    }
+    for (const k in d) out += `<path fill="${k}" d="${d[k]}"/>`;
+    for (const r of ribs) {
+      if (r.layer !== L) continue;
+      let p = 'M' + f(r.pts[0]) + ' ' + f(r.pts[1]);
+      for (let i = 4; i < r.pts.length; i += 4) p += 'L' + f(r.pts[i]) + ' ' + f(r.pts[i + 1]);
+      rb += p;
+    }
+    if (rb) out += `<path fill="none" stroke="#060504" stroke-width="1" vector-effect="non-scaling-stroke" d="${rb}"/>`;
+  }
+  return out;
+}
+
+const canBack = document.querySelector('canvas.back'), canFront = document.querySelector('canvas.front');
+if (reduce && !Q.has('svg')) return;
+const want2d = Q.has('no-webgl');
+const rBack = (!want2d && glRenderer(canBack)) || ctxRenderer(canBack);
+const rFront = (!want2d && glRenderer(canFront)) || ctxRenderer(canFront);
+if (!rBack || !rFront) return;
+R.classList.add('gl'); R.dataset.canopy = rBack.kind;
+
+const canopy = document.querySelector('.canopy');
+const clearBox = document.querySelector('.clear');
+const ptr = {x: -1e4, y: -1e4, k: 0, target: 0, R: 260, push: 120};
+let W = 0, H = 0, dpr = 1, blades = [], spine = {x: 0, w: 0}, mobile = false;
+
+function measure() {
+  W = innerWidth; H = document.querySelector('.stage').clientHeight; mobile = W <= 760;
+  dpr = Math.min(1.5, devicePixelRatio || 1);
+  for (const c of [canBack, canFront]) { c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); }
+  ptr.R = mobile ? 150 : 260; ptr.push = mobile ? 70 : 120;
+  const kids = [...clearBox.children].map((e) => e.getBoundingClientRect());
+  const top0 = canopy.getBoundingClientRect().top;
+  const x0 = Math.min(...kids.map((k) => k.left)), x1 = Math.max(...kids.map((k) => k.right));
+  const y0 = Math.min(...kids.map((k) => k.top)) - top0, y1 = Math.max(...kids.map((k) => k.bottom)) - top0;
+  const lines = [...document.querySelectorAll('h1 .ln')].map((e) => { const b = e.getBoundingClientRect(); return {right: b.right, top: b.top - top0, height: b.height}; });
+  blades = layout(W, H, {x0, x1, y0, y1}, lines, mobile);
+  const sp = document.querySelector('.rooms .spine');
+  if (sp) { const b = sp.getBoundingClientRect(); spine = {x: b.left, w: b.width}; }
+  else spine = mobile ? {x: 0, w: 44} : {x: W * 0.1, w: W * 0.14};
+}
+
+let running = true, last = 0;
+function frame(now) {
+  const walk = canopy.offsetHeight - H;
+  const y = scrollY;
+  const p = walk > 0 ? clamp(y / walk, 0, 1) : 0;
+  ptr.k += (ptr.target - ptr.k) * 0.08;
+  const back = [], front = [], rb = [], rf = [];
+  for (const b of blades) {
+    if (b.layer === 2) bladeGeom(b, now, ptr, p, spine, H, front, rf);
+    else bladeGeom(b, now, ptr, p, spine, H, back, rb);
+  }
+  rBack.draw(W, H, dpr, back, rb);
+  rFront.draw(W, H, dpr, front, rf);
+  if (Q.has('svg')) { window.__svg = toSVG(back.concat(front), rb.concat(rf)); return; }
+  if (y < canopy.offsetHeight) requestAnimationFrame(frame); else running = false;
+}
+const wake = () => { if (!running && scrollY < canopy.offsetHeight) { running = true; requestAnimationFrame(frame); } };
+addEventListener('scroll', wake, {passive: true});
+addEventListener('resize', () => { measure(); wake(); });
+const move = (e) => { ptr.x = e.clientX; ptr.y = e.clientY + (scrollY - canopy.offsetTop) * 0; ptr.target = 1; };
+addEventListener('pointermove', move, {passive: true});
+addEventListener('pointerdown', move, {passive: true});
+document.addEventListener('pointerleave', () => { ptr.target = 0; });
+addEventListener('pointerup', (e) => { if (e.pointerType === 'touch') ptr.target = 0; });
+
+(document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { measure(); requestAnimationFrame(frame); });
+})();
+</script>
+</body>
+</html>

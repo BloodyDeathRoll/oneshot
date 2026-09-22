@@ -1,4 +1,4 @@
-version: 0.1.0
+version: 0.3.0
 
 # playbook.md — what a great surf-business site is; shared by all agents.
 
@@ -73,6 +73,12 @@ Assume a mid-range Android, slow 4G dropping to 3G, metered data.
 - Map is a static image linking to Google Maps, not an embedded map on load.
 - All assets self-hosted; the site must work when a CDN doesn't.
 - Tap targets ≥ 44px; phone and WhatsApp are tap-to-act links.
+- **Exception — the Rosa forecast** (optional block; the creative director decides per concept; rule of 2026-09-21, Shahar). The block has two halves:
+  - **Left — the headline, drawn by the site:** wave height now, the time it is for, the swell (period and direction) and the wind (speed, on/cross/offshore), in the site's own type and colour, from Rosa's static per-spot JSON. Nothing day-by-day: no boxes, no row of days, no chart.
+  - **Right — Rosa's own widget,** embedded exactly as Rosa ships it (an iframe of `https://rosa.surf/widget/`, see `agents/designer/tools.md`), in its light or dark theme, whichever fits the design. It is a promotion for Rosa and must stay recognisable as Rosa's: never restyled, cropped, covered or recoloured.
+  - **Loading:** the widget is the one third-party embed a site may carry. It and the headline's one request to the JSON are made only when the block scrolls near the viewport, never on first load, and are outside the first-load budget and the third-party-requests-on-load count below. Both halves have their space reserved with fixed dimensions, so nothing shifts when they arrive.
+  - **Fallback:** with JavaScript off, with a request failed, or with data older than 24 h, the block shows a plain link — "See today's forecast for <spot> on Rosa" — never an empty box, never stale numbers shown as current.
+  - One credit line, "Forecast for <spot> by Rosa", linking to the spot on Rosa. No cookies or trackers set by the site.
 
 **Performance budget, mobile home page (v0.1 target):**
 

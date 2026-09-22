@@ -1,156 +1,159 @@
-# KA Surf Hostel — mockup 1, "calm"
+# KA Surf Hostel — calm · "Field" — 4e notes
 
-Station 4e, round 2. Built 2026-09-20 on the **chart** archetype
-(`sites/ka-surf-hostel-and-restaurant/concepts.md` §3, concept 1 "Five minutes").
+designer 0.3.2 · run 2026-09-ahangama-02 · 2026-09-21 · one file: `dist/index.html`, zero JavaScript.
 
-## why this replaced round 1
+## look-log
 
-Round 1 was three noticeboards and Shahar rejected all three: *"no mockup looks good."* Asked what
-was wrong he named the noticeboard idea itself, too little imagery, and *"dated / cheap"*.
+**Round 1 — first screen** (`shots/round-1/`). The heading stopped at about two-thirds of the width, so the
+right third of the screen above the prints was empty. The prints (264 px) and the field (30 % tall) were
+too small, so the green read as a tinted box behind a photo row, which is the way concepts.md says this
+concept fails. The lower left was empty and the ratings were tiny. On the phone the heading came out at two
+lines and the first print scrolled flush to the edge. A stranger would guess it was generated: it is the
+stock "headline, button, three photos" hero.
+Change: set the heading at 10.6vw on two staggered lines ("Five minutes from" left, "Kabalana Beach"
+flush right), so it spans the whole width. Tagline and ratings moved into the space left of line two. Prints
+up to 300 px, field raised to half their height and started at 31 % of the width. Phone heading at 3.3rem.
 
-The reasoning that produced the noticeboard was sound — KA's best photograph is 576 × 768 and cannot
-fill a screen — and the conclusion drawn from it was wrong. "The photographs are small" became "the
-page has no photography", and the pinned-card devices used to fill the gap (tilts, paper mats, drop
-shadows) are the visual language of about 2012. PLAN.md §9 was amended the same day to allow
-freely-licensed **atmosphere**, which removes the premise: KA can open on an image without
-pretending it took it.
+**Round 2** (`shots/round-2/`). The staggered heading carries the page and the field now reads as ground.
+But "or call +94 77 374 6053" ran into the first print, the ratings line crowded the K of "Kabalana", and
+the first print covered the left column. On the phone the first print was still flush to the edge, because
+the snap scrolled past the padding. It looks less generated, but the collision gives it away.
+Change: narrowed the left column to 21vw, put "or call" under the button, prints 288 px with a 40 px gap,
+field from 33 %, `scroll-padding-left` on the phone row.
 
-## direction
+**Round 3** (`shots/round-3/`). Nothing collides. The page has one loud thing, the green bleeding off the
+right and bottom edges, with the three photographs standing half in it. "66 reviews" still broke into
+"66 / reviews". On the phone the heading is on three lines and the second print peeks. The type scale and
+the off-centre field no longer look like a template. It still sits close to an ordinary hero, which is
+what a calm concept is allowed to be.
+Change: kept "66 reviews" on one line, then built the rest of the page.
 
-Admiralty Chart 3730 — the 1900s survey of this coast, public domain, 16733 px — is the ground. It
-is about the one thing KA's pitch is about: **position**. Five minutes from Kabalana, two kilometres
-from the station, five from the airport.
+**Round 4 — whole page** (`shots/round-4/`). In the rooms section, the room prints and their field landed
+*above* the heading: auto-placement pushed them to a new row because the h2 (cols 1–7) overlapped them (cols
+7–12). That left a screen of nothing followed by a gap. On the phone the Agoda tile in the footer was cut
+off, because three tiles do not fit at 21 px type. The rest held: breakfast, family, the widest field
+under the bathrooms, the sky panel, the three times.
+Change: gave the rooms grid explicit rows (heading row 1, list row 2, prints rows 1–2 on the right). Phone
+tiles now shrink with smaller type.
 
-- **The first screen is a split, not a hero**: the Weligama Bay plan on the left, an empty south-coast
-  beach on the right, the name across the seam, and the distance set as a **measured line** with end
-  ticks, the way a scale bar is drawn on a chart.
-- **Three scores as a rule of figures**, then the three booking platforms centred under them.
-- **The hostel's own photographs are the inside of the page** — four across at about 290 px, which is
-  inside what a 576 px source can hold. They are never asked to fill anything.
-- **Licensed ocean carries the full-bleed moments.** Every borrowed photograph shows its credit in
-  place, and all of them are listed again in the footer.
-- Flat and contemporary: **no tilts, no mats, no drop shadows.** Space Grotesk, a technical face that
-  sits with measurements and chart lettering, with Instrument Sans for reading — 51 KB together.
-- One accent, chart red, on booking only (references.md #6); persistent bar on a phone (#4); the
-  playbook §3 order (#15); nothing covers the first screen (#20).
+**Round 5 — whole page** (`shots/round-5/`). The rooms section now sits right, but the room list ran into
+the room field, and the "check dates" links (booking controls) touched the green. concepts.md says a
+booking control never sits on the green.
+Change: list narrowed to cols 1–5, the room field starts 48 px inside the prints' column.
 
-PLAN.md §9: the calm mockup skips the canvas. **Zero bytes of JavaScript.**
+**Round 6 — whole page, final** (`shots/round-6/`). The list and its links sit on white, and the field
+stands only under the two room prints. I checked both sheets for overflow, overlap and unreadable text and
+found none. Remaining imperfections, left as they are: on the phone "Check dates on" wraps inside the
+narrow booking tiles. The open sheet was also looked at (below).
 
-## correction, 2026-09-20 — the photographs were of the wrong places
+Also looked at, outside `shots/`: the booking sheet opened from the hero button at 1440 and from the
+fixed bar at 390, with `reducedMotion: 'reduce'`. The sheet drops under the top line with the rates
+sentence, three tiles and the phone, and the summary reads "Close". Reduced motion only removes the
+0.28 s drop and the 0.15 s tile fill. There is no JavaScript and no WebGL, so the no-JS page, the
+no-WebGL page and the reduced-motion page are the same static page (concept 1: "Reduced motion, JS off and
+no WebGL all see the same page").
 
-The first build of this archetype put **Hikkaduwa** (about 33 km up the coast, and named in its own
-file), **Weligama**, **Thiranagama** and **Negombo** (about 180 km away) on a page about Ahangama,
-and cropped the Admiralty sheet to its **Weligama Bay** plan — a chart of a different bay, with the
-name printed on it. Shahar: *"Hikkaduwa beach is NOT IN AHANGAMA. Weligama bay IS NOT IN AHANGAMA.
-You should have caught that by yourself."* He is right. A photograph of somewhere else shown as this
-place is a false claim about the business, in the same class as an invented price, and it should
-never have reached him.
-
-What changed, on disk rather than in a conversation:
-
-- Every atmosphere image now records **`place`** (where it was actually taken) and **`place_ok`** —
-  `local` for Ahangama itself, `neutral` for open sea, sky or a detail with no landmark and no other
-  place named in its credit. `tools/check-places.mjs` fails a build that uses anything else, and
-  warns when a source file's own name mentions a place the displayed credit does not.
-- Fourteen images were deleted: Hikkaduwa, Thiranagama, the Weligama Bay plan, a US Navy tsunami
-  clearance photograph, and nine tea-factory interiors that Commons files under "Ahangama".
-- The page now uses **photographs of Ahangama**: the reef shelf and shorebreak, the beach with the
-  stilt-fishing poles, the stilt fishermen. Plus chart texture and open sea that name nowhere.
-- Those Ahangama photographs are **CC BY-SA**, which binds adaptations, so they are shown whole with
-  their credit and are never cropped on disk or used as shader input. The shader inputs here are
-  public-domain and CC BY only. The policy is in PLAN.md §9.
-
-**The accent colour also changed**, from a chart red to the deep teal of the water off this coast.
-Shahar: *"Orange buttons look outdated. Not a great CTA color, especially with this background…
-feels cheap and outdated."* On a warm cream ground an orange button reads as a 2010s landing page,
-which is the thing these sites are sold against. The rule is now in `agents/designer/base.md`.
-
-## facts
-
-Every word other than interface labels comes from `sites/ka-surf-hostel-and-restaurant/copy/en.json`,
-which passed station 4c with 0 unsourced and 0 contradicted claims; `copy/sources.md` maps every
-paragraph to its dossier fields. The three mockups carry identical content.
-
-Two layout elements are the copy's own words re-set, not new claims: the **six breakfast items**
-(rotis, hoppers, pancakes, eggs, a fruit platter, a vegan option if you need one) and the **three
-distances** (Kabalana a five-minute walk, the station a little over 2 km, the airport about 5 km).
-Both appear verbatim in the "Breakfast changes every morning" and "Getting here" blocks.
-
-## gaps
-
-- **No prices.** Nightly rates are live dated OTA inventory. The page says the three listings hold
-  them. Pitch point.
-- **No WhatsApp, no email, no website, no socials.** Every booking pays an OTA commission. The
-  primary action is the listing KA already answers on, with `tel:` beside it. Nothing is guessed.
-- **No season, no founding year.** Omitted.
-- **The restaurant.** Google's listing name says "and restaurant"; no OTA mentions one and no menu
-  exists anywhere. The page says **breakfast**, never restaurant.
-- **TripAdvisor** 403s this harvester, so no TripAdvisor rating appears.
+**Round 7 — whole page, stock-011 removed** (`shots/round-7/`). Removed the Ahangama view (stock-011), its
+credit line beside it, its sentence in the footer credit (the hostel's own photographs sentence stays) and the
+two CSS rules that placed it; nothing added in its place and no other change. On both sheets the blue wave
+section now ends on the three beach prints with the section's own bottom padding, then "Getting here" follows
+on white; at 390 the prints scroll sideways as before and the blue closes just under them. A stranger would not
+see a gap: there is no empty column or orphaned credit where the view was.
 
 ## images
 
-**Two sources, kept apart (PLAN.md §9, amended 2026-09-20).**
-
-*The hostel's own*, from `dossier/.../assets/`, 361–1024 px, used close and small — the long table at
-night, the family on the veranda, a breakfast spread, a bowl of cut fruit, a bunk, an outdoor shower,
-the garden. The largest any of them renders is about 290 px wide. None is marked `role: "bleed"`, and
-`tools/build-mockup.mjs` would refuse it if one were: a photograph under 1200 px may not be full-bleed.
-Seven assets are stored on their side inside a square frame and carry an explicit `rotate`.
-
-*Atmosphere*, from `dossier/.../stock/`, freely licensed, of the place and never of the business:
-
-| id | what it is | place | licence |
+| file in `dist/img/` | asset | licence note (dossier) | treatment |
 |---|---|---|---|
-| `stock-025` | Open water, depth soundings and the compass rose from the 1908–09 Admiralty survey of this coast | neutral | Public domain |
-| `stock-011` | The reef shelf and shorebreak at Ahangama under a high sky | local | CC BY-SA 4.0 · shown whole, never adapted |
-| `stock-012` | The beach at Ahangama with the stilt-fishing poles standing out of the shallows | local | CC BY-SA 2.0 · shown whole, never adapted |
-| `stock-010` | Stilt fishermen on their poles off Ahangama | local | CC BY-SA 4.0 · shown whole, never adapted |
-| `stock-003` | Cloud lit orange at sunset behind palm silhouettes | neutral | CC0 |
-| `stock-007` | The sun going down over the Laccadive Sea | neutral | CC BY 3.0 |
+| img-001-576.jpg | img-001 | business-owned, property photo on its Booking.com listing | native 576×768, re-encoded |
+| img-002-576.jpg | img-002 | same | native |
+| img-003-576.jpg | img-003 | same | native; used twice (first screen, breakfast), as concepts.md says |
+| img-004-576.jpg | img-004 | same | native |
+| img-005-576.jpg | img-005 | same | native |
+| img-006-576.jpg | img-006 | same | native; used twice (first screen, what is here), as concepts.md says |
+| img-007-576.jpg | img-007 | same | native |
+| img-008-576.jpg | img-008 | same | native |
+| img-013-361.jpg | img-013 | business-owned, @kasurfhostel Instagram (reel cover) | centre crop 361×640 → 361×481 (3:4), shown at 180 px |
+| img-018-480.jpg | img-018 | business-owned, @kasurfhostel Instagram | turned upright (stored sideways), centre crop 640² → 480×640 |
+| img-023-480.jpg | img-023 | same | turned upright, centre crop 480×640 |
+| img-020-480.jpg | img-020 | same | centre crop 480×640 |
 
-Thirty-four were fetched across two rounds and twenty-four rejected on sight: a candlelight vigil
-that a filename called "Kabalana", a five-star hotel's suite, rooftop and infinity pool, nine
-tea-factory interiors filed under "Ahangama", and every photograph of a village that is not this
-one. **Nothing borrowed on this page shows an interior, a bed or a meal, and nothing is of anywhere
-but Ahangama or open water.** Every use carries its credit in place, and all of them are listed
-again in the footer.
+No photograph is drawn wider than its source. Prints are 288–300 CSS px on desktop (480 px for the
+breakfast plate) and 228–280 px on a phone.
+No captions: alt text only, written by looking at each photograph (the dossier's descriptions are
+machine-written). The beach frames are not labelled Kabalana, because the dossier does not say where they
+were taken.
+
+**Excluded under the image policy:** img-010 (the "Sea Food Restaurant" roundel, no restaurant is
+supported), img-011 (unidentified field, wrongly described in the dossier), img-014 and img-017 (group
+photos at other premises, nobody identified), img-015 (a screenshot of someone else's post about Madeira).
+All stock is excluded (concepts.md §2 allowed only stock-011).
+
+**Removed 2026-09-22:** stock-011 (CC BY-SA 4.0, "Ahangama view — Sasith Lakshan wickramasinghe"). Reason: the page served a downscaled re-saved copy, against PLAN.md §9's re-save rule for share-alike files (critic 4f round 3 hard fail); Shahar's decision, 2026-09-22. Its `<img>`, credit line, footer credit and CSS are gone and `dist/img/stock-011-*.jpg` is deleted. No photograph replaces it.
+
+## gaps
+
+- **No WhatsApp, no email** (`contact.whatsapp.gap`, `contact.email.gap`). The booking action is "Check
+  dates", which opens the three OTA listings with the phone beside them. There is no WhatsApp prefill, so
+  the visitor's choice is not carried into a message. The room rows link to Booking.com, because every
+  `room_types[]` entry is sourced there. No deep link or date parameter is invented.
+- **No rates.** The page shows the offer block's sentence ("Rates change with the season and the dates — the
+  booking links below show what is actually free.") in the booking sheet and the footer. No number appears.
+- **No season** (`season: null`). There is no season line.
+- **No reply time** (`booking.reply_time_hint` gap). None is shown.
+- **Check-in times** come from Hostelworld (13:00–23:00, check-out by 13:00), exactly as in `en.json`
+  `stayInfo`. Booking.com says 24 hours, and that contradiction stays in the dossier.
+- **Wi-Fi** is shown only as "Free WiFi" (the amenity row). The 2.5/10 Booking.com Wi-Fi score is not
+  shown and not contradicted.
+- The review attributions carry the source name linked to the listing the quote came from, plus the month
+  where `en.json` has a date. Clara and Wolfgang have no date.
 
 ## conflicts
 
-1. **Borrowed photography on a page selling a specific business.** The line, from PLAN.md §9 and
-   enforced as a hard fail in `rubric.md`: atmosphere may show the *place*, never the *business*. The
-   test applied to every image here was whether a visitor could read it as "this is where I would be
-   staying". Sea, sky, palms, shoreline and a nautical chart cannot. A hotel pool can, which is why
-   five were deleted.
-2. **The Rosa forecast is a third-party embed**, against playbook §4's "third-party requests on load:
-   0". It is `loading="lazy"`, so it never appears on first load — measured, see below — and it is
-   sandboxed. The spot sentence above it is dossier-sourced text and stands without it.
-3. **`custom.md` asks for a booking drawer over a "complex booking engine".** There is no engine of
-   ours to hide and playbook §5 forbids introducing a channel the owner does not monitor, so where a
-   drawer exists it holds the three listings KA already sells through and says so.
+1. **First-screen print size vs columns.** concepts.md asks for three prints "each 300 × 400 CSS px, 48 px
+   apart" in "columns 6–12". Three prints at 300 px plus two 48 px gaps is 996 px, but columns 6–12 at 1440 are
+   about 775 px. I used 288 × 384 with 40 px gaps (944 px), which start at column 5 and keep clear of the
+   left column. The alternative, 300 px in columns 6–12, would push the third print off the right edge.
+2. **Booking control as a real link.** base.md 4e says "Booking controls are real links to the dossier's
+   booking URL", while concept 1 specifies a `<details>` slide-down sheet with zero JavaScript. A `<summary>`
+   is not a link. I built the `<details>` because it works with JS off in every current browser and each
+   tile inside it is a real link, copied from the dossier. The per-room "check dates" links and the footer
+   tiles (`#book`) are plain links on the page itself. The cost of the alternative, a plain Hostelworld link
+   as the button, would be dropping the concept's "first tap reveals a panel" (references.md #1). Also:
+   `<details>` has no Esc-to-close. That is 4g's keyboard pass.
+3. **Two booking controls on the desktop first screen.** concepts.md places "Check dates" in the top line
+   and the watermelon button under the heading. I kept both. The top-line one is ink text with a 1 px
+   underline, not a second watermelon button, so there is still one accent on the screen. It also stays
+   reachable when the top line is sticky further down. On a phone the top-line control is hidden and the
+   fixed bar does the job.
+4. **Three copies of the sheet.** Without script, one panel cannot be opened from three places, so the
+   top line, the hero button and the phone bar each hold their own identical `<details>` sheet. At 4g it
+   becomes one component.
+5. **Mobile field height.** Concept: the green starts at 56 % of the phone screen. I built 60 %, so the three
+   lines of heading, the tagline and the score clear the prints at 390 × 844.
+6. **Typography of quotes.** Straight quote marks in `en.json` ("Family", the testimonials) are set as
+   typographic curly quotes, and each testimonial is wrapped in quotation marks. The words are unchanged.
 
-## self-check
+concepts.md §2 quotes an old heading for `copyBlocks[1]`. The page uses en.json's current "What guests say
+about the staff".
 
-| Check | Result |
-|---|---|
-| Every fact traces to the dossier | pass |
-| Booking targets match the dossier character for character | pass — Hostelworld, Booking.com, Agoda and `tel:+94773746053` |
-| No photograph under 1200 px used full-bleed | pass — enforced by the build |
-| No borrowed photograph readable as the business | pass — every atmosphere image is sea, sky, shoreline or chart |
-| Every borrowed photograph credited | pass — in place and in the footer |
-| Works with JavaScript off | pass — the build ships **0 bytes of its own JavaScript**; every action is an `<a href>` |
-| Mobile 390 px / desktop 1440 px | pass — `shots/`, no overflow, no overlap |
-| Tap targets ≥ 44 px | pass — 0 under 44 |
-| Broken images | 0 |
-| `tools/check-design.mjs` | pass — light ground, no padded picture boxes, no captions under photographs |
-| `tools/check-places.mjs` | pass — every borrowed photograph is Ahangama or place-neutral, credited, and the share-alike ones are shown rather than adapted |
+## hand-off check 6 — what a visitor would notice is different
 
-**Measured** with `node tools/audit-mockup.mjs ka-surf-hostel-and-restaurant calm` on a throttled phone (1.6 Mbps, 150 ms RTT, 4x CPU), first load with no scroll: 356 KB of the 1.5 MB budget · JS 0 KB of 300 KB · fonts 51 KB of 150 KB · largest image 85 KB of 200 KB · LCP 1496 ms of 2500 ms · CLS 0 of 0.1 · 0 third-party hosts. Every line inside budget. Raw numbers in `audit.json`.
+- **The Lavish Haven** (calm, interactive, unique mockups): its screens open on a full-bleed night pool, a
+  pinned water canvas, or giant block type over a waterline, on cream, with a serif or a heavy grotesque
+  and a docked button strip. Here the first thing seen is a very light two-line sans heading across a cool
+  white page, with three small upright photographs standing in a flat green field that runs off the right
+  and bottom edges. There is no water until the sky-blue panel near the end.
+- **Layday Surf** (all three): one bordered card on an ochre field, ruled into cells, with numbered steps
+  and all-caps labels. Here nothing is boxed or ruled into cells except the six room rows' hairlines and
+  the booking tiles. Nothing is numbered, there are no labels over headings, and the ground is white, not
+  ochre.
+- **Gold (`the-lavish-haven.html`)**: that page is a pool-shaped window of live water on white, in Jost,
+  with pool blue and lamp yellow, a cut-corner shape and a right drawer. None of that is reused here: no
+  motion or canvas, Outfit rather than Jost, leaf green and watermelon, an upright 3:4 rectangle as the only
+  shape, and a slide-down `<details>` sheet. Its section order (water, rooms strip, wave, close) is not
+  followed either: this page runs rooms → breakfast → family → what is here → wave → getting here → listings.
 
-## what a visitor would notice is different
+## check-design default-look warnings
 
-Against **The Lavish Haven**: that site is a magazine built around a pool it owns and opens on a
-photograph of it. KA opens on a chart of the coast and never claims a picture it did not take — the
-close photographs are its own and stay small, the wide ones are credited to their photographers.
-Against **Layday Surf**: Layday is a single bordered card read in panels on a sand field; KA is a
-position on a coastline you travel along. See the divergence table in `concepts.md` §5.
+None. `node tools/check-design.mjs ka-surf-hostel-and-restaurant --no-shots` reports `ok` for calm: h1, h2
+and body in Outfit, ground hsl(210 7% 95%), 0 all-caps labels, 0 labelled headings.

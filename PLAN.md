@@ -117,9 +117,9 @@ Each business moves through these stations. The orchestrator owns the order, ret
 | 4b | Humanize | humanizer | draft copy | same files rewritten so they read as a person wrote them; facts unchanged; `copy/humanizer-notes.md` | — |
 | 4c | Copy review | copyeditor | copy, draft, dossier | per-claim audit (`sourced` / `shared-context` / `framing` / `unsourced` / `contradicted`) + voice audit; `copy/review.md`; fail → back to 4a or 4b, max 2 rounds | — |
 | 4d | Concept | creative-director | dossier (incl. the images themselves), passed copy, references, every other `concepts.md` in this run | `sites/<slug>/concepts.md`: the page **archetype** for this business plus three concepts (calm / interactive / unique), and a divergence table proving no two businesses share an archetype + first-screen device |  |
-| 4e | Mockups | designer | playbook + base + custom + references + dossier + **passed copy** + `concepts.md` | 3 mockups in `sites/<slug>/mockups/{calm,interactive,unique}/`, built to the three concepts and laid out around the real words | — |
+| 4e | Mockups | designer | playbook + base + custom + references + dossier + **passed copy** + `concepts.md` | 3 mockups, **one HTML file each** at `sites/<slug>/mockups/{calm,interactive,unique}/dist/index.html` (+ `dist/img/`, `notes.md` with a look-log, `shots/round-N/`), built to the three concepts and laid out around the real words. A look, not a build: no Astro, no schema binding (designer 0.3.0, proposal 003) | — |
 | 4f | Pre-score | critic | 3 mockups | screenshot + rubric quick score per mockup | **Human picks one (pick + reason logged)** |
-| 4g | Build | designer | chosen mockup + passed copy | Astro site from chosen template + tenant content model seeded in Payload | — |
+| 4g | Build | designer | chosen mockup + passed copy | Astro site **ported from the chosen mockup without changing how it looks** + tenant content model seeded in Payload | — |
 | 4h | SEO | seo | built site, dossier | classical SEO pass on `templates/<variant>/`: JSON-LD from CMS content, head + headings, local signals, Core Web Vitals, sitemap/robots; `sites/<slug>/seo-report.md` | — |
 | 4i | AI SEO | aiseo | built site, dossier, `seo-report.md` | answer-engine pass: self-contained answers to the questions people actually ask, `FAQPage` data, `/llms.txt`, AI-crawler policy, no-JS check; `sites/<slug>/aiseo-report.md` | — |
 | 5 | Critique | critic | final site, dossier, both SEO reports | scorecard; fail → back to 4f, max 3 rounds | — |
@@ -169,8 +169,8 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 
 ### designer
 - Builds the three concepts the creative director wrote; it no longer decides what kind of page this is.
-- Produces three mockups, then the full build of the chosen one.
-- Output: Astro templates (`templates/{calm,interactive,unique}/` is the shape) written against a fixed content schema — `schemas/site-content.md`, the contract between Payload and the templates. Design lives in the template; everything the schema covers comes from Payload at build time and is never hard-coded.
+- Produces three mockups — one HTML file per variant, each made through a mandatory look loop (build, shoot with `tools/shoot.mjs`, look, revise, at least three rounds) — then the full build of the chosen one.
+- Output at 4e: the three single-file mockups. Output at 4g: one Astro project per site (no shared template; `templates/{calm,interactive,unique}/` was deleted on 2026-09-20) written against a fixed content schema — `schemas/site-content.md`, the contract between Payload and the templates. Design lives in the template; everything the schema covers comes from Payload at build time and is never hard-coded.
 - **`custom.md` (verbatim, from Shahar):**
 
   > Use custom canvas/webGL to replace static image grids with interactive movement, fluid motion and canvas-rendered depth. Use editorial layouts, asymmetrical css grid designs, varying column grids and overlapping kinetic texts whenever it fits better than the repetitive hero and card framework. Generate a painless booking UX — hide complex booking engines behind sliding modal drawers or slide-outs, maintaining visual immersion until the user chooses to book.
@@ -326,6 +326,7 @@ Phase 1 spike — Payload multi-tenant: `docker-compose up` locally, two tenants
 - Decided 2026-09-18: Worker name = the customer's brand slug, no Oneshot prefix. Dedicated Oneshot Cloudflare account (login shaharnaor@outlook.com), workers.dev subdomain `os1` → preview links look like `<brand>.os1.workers.dev`. No other Cloudflare account is ever used.
 - Decided 2026-09-18: our CMS server = second OCI account ("shibumi", Frankfurt), A1 2 OCPU / 12 GB, Pay As You Go with a free-tier quota cap. Instance `oneshot-cms` is up; both spike suites pass on it (ARM64 proven). Details: `infra/oci/README.md`.
 - Decided 2026-09-18: mockup 1 (calm) skips the canvas/WebGL animation; if it is picked, the animation is added in the build. → needs a line in `agents/designer/custom.md` (proposal below).
+- Open 2026-09-21: the Payload collection is behind the schema. `spikes/payload/cms/src/collections/Sites.ts` is still v0.1; `schemas/site-content.md` is v0.3 (v0.2 `businessType` + per-type modules, v0.3 `forecast`). Not needed for stations 4d–4f; must be closed before a 4g build binds to those fields.
 - Pitch channel: WhatsApp, email, or in-person? Affects what the writer produces.
 - Pricing/offer in the pitch — out of scope for the pipeline or a template?
 

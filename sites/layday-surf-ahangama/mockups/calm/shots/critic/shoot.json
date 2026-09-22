@@ -1,0 +1,19 @@
+{
+  "target": "http://127.0.0.1:8931/",
+  "widths": {
+    "desktop": {
+      "pageHeight": 6415,
+      "scroller": "window",
+      "captures": 8,
+      "truncated": false,
+      "errors": []
+    },
+    "mobile": {
+      "pageHeight": 8451,
+      "scroller": "window",
+      "captures": 12,
+      "truncated": false,
+      "errors": []
+    }
+  }
+}

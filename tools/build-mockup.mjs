@@ -1,5 +1,8 @@
 #!/usr/bin/env node
-// tools/build-mockup.mjs — build one mockup of one business.
+// tools/build-mockup.mjs — build one Astro project of one business: the 4g build of the picked
+// variant, and every mockup made before designer 0.3.0. A 4e mockup is now one hand-written HTML
+// file at mockups/<variant>/dist/index.html and never passes through here; the 1200 px full-bleed
+// rule below is enforced on those by tools/check-design.mjs, which measures the rendered page.
 //
 // There is no shared template (CLAUDE.md: one Astro template per site). Each
 // mockup is its own Astro project, written for that business, living at

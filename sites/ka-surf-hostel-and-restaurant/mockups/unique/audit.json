@@ -1,49 +1,58 @@
 {
  "slug": "ka-surf-hostel-and-restaurant",
  "variant": "unique",
- "measured_at": "2026-09-20T13:04:42.445Z",
+ "measured_at": "2026-09-21T20:55:00.160Z",
  "first_load": {
-  "requests": 9,
+  "requests": 5,
   "hosts": [
-   "localhost:8982"
+   "fonts.googleapis.com",
+   "localhost:8980",
+   "fonts.gstatic.com"
   ],
-  "third_party_hosts": [],
-  "bytes_total": 287785,
-  "bytes_html": 31721,
+  "third_party_hosts": [
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "bytes_total": 247329,
+  "bytes_html": 68420,
   "bytes_js": 0,
   "bytes_css": 0,
-  "bytes_fonts": 52380,
-  "bytes_images": 203684,
-  "largest_image_bytes": 66830,
-  "lcp_ms": 1020,
+  "bytes_fonts": 32292,
+  "bytes_images": 146617,
+  "largest_image_bytes": 74297,
+  "lcp_ms": 468,
   "cls": 0,
-  "dcl_ms": 325
+  "dcl_ms": 502
  },
  "booking": {
   "external_booking_hrefs": [
-   "https://www.google.com/maps/search/KA%20Surf%20Hostel%20Ahangama/@5.9736,80.3639,17z?hl=en",
    "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
    "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en",
+   "https://rosa.surf/spot/kabalana",
+   "https://commons.wikimedia.org/wiki/File:Ahangama_view.jpg",
+   "https://creativecommons.org/licenses/by-sa/4.0",
    "https://www.agoda.com/en-in/ka-surf-hostel-h61738910/hotel/ahangama-lk.html"
   ],
   "tel_hrefs": [
    "tel:+94773746053"
   ],
-  "drawer_triggers": 8,
+  "drawer_triggers": 0,
   "triggers_are_links": true,
   "primary_above_fold": true,
-  "tapped": "#book"
+  "tapped": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/"
  },
  "keyboard": {
-  "drawer_opens": true,
-  "closed": true,
-  "focus_returned": true
+  "drawer_opens": null,
+  "closed": null,
+  "focus_returned": null,
+  "note": "no drawer; every action is a plain link"
  },
  "a11y": {
-  "images": 10,
+  "images": 12,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 0,
-  "tapables": 20,
+  "tapables": 21,
   "tapables_under_44px": 0,
   "tapables_under_44px_examples": [],
   "headings": [
@@ -54,37 +63,35 @@
    "H2",
    "H2",
    "H2",
-   "H3",
-   "H3",
-   "H3",
    "H2"
   ],
   "has_skip_link": true,
   "lang": "en"
  },
  "no_js": {
-  "text_length": 5625,
-  "booking_links_reachable": 5,
-  "visible_images": 10
+  "text_length": 4937,
+  "booking_links_reachable": 4,
+  "visible_images": 12
  },
  "reduced_motion": {
-  "canvases": 1,
-  "canvases_hidden": 1,
+  "canvases": 2,
+  "canvases_hidden": 0,
   "photograph_visible": true
  },
  "facts": {
-  "numbers_on_page": 32,
+  "numbers_on_page": 38,
   "numbers_not_in_passed_copy": [
-   "58",
-   "22",
-   "3.0,",
-   "13:00.",
-   "19",
-   "4.0,",
-   "20160129",
-   "4177",
-   "25743479076",
-   "2.0,"
+   "0.7",
+   "1.1",
+   "20:30",
+   "12.6",
+   "0.8",
+   "0.5",
+   "0.6",
+   "0.9",
+   "21",
+   "19:55",
+   "4.0,"
   ],
   "note": "copy/en.json passed station 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps each paragraph to its dossier fields. A number here that is not in the copy is either an interface label (01, 02…) or a claim to chase."
  }
