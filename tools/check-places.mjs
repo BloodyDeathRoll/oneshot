@@ -17,8 +17,15 @@
 //               "neutral" open sea, sky, or a detail with no landmark AND no
 //                         other place named in its title or credit
 //
-// A build fails if an image in a mockup's photos.json has place_ok unset, or is
-// "neutral" while its title or credit names a place that is not the locality.
+// A build fails if an image a mockup uses has place_ok unset, or is "neutral"
+// while its title or credit names a place that is not the locality.
+//
+// Which images a mockup uses: its photos.json when it has one (an Astro project,
+// station 4g and every mockup before designer 0.3.0). A 4e mockup is one HTML
+// file with no photos.json, so there the stock ids are found in dist/index.html
+// and in the filenames under dist/img/. Share-alike at 4e: a CC BY-SA id
+// anywhere inside an inline <script> of dist/index.html fails, because a script
+// is how a photograph becomes shader or canvas input, and that is an adaptation.
 //
 //   node tools/check-places.mjs [slug ...]
 
@@ -55,9 +62,20 @@ for (const slug of fs.readdirSync(path.join(root, 'sites')).sort()) {
 
   for (const v of fs.readdirSync(mdir)) {
     const pf = path.join(mdir, v, 'photos.json');
-    if (!fs.existsSync(pf)) continue;
+    const page = path.join(mdir, v, 'dist', 'index.html');
+    let uses;
+    if (fs.existsSync(pf)) uses = JSON.parse(fs.readFileSync(pf, 'utf8'));
+    else if (fs.existsSync(page)) {
+      const html = fs.readFileSync(page, 'utf8');
+      const scripts = [...html.matchAll(/<script\b(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)].map((m) => m[1]).join('\n');
+      const imgDir = path.join(mdir, v, 'dist', 'img');
+      const names = fs.existsSync(imgDir) ? fs.readdirSync(imgDir).join('\n') : '';
+      const has = (text, id) => new RegExp(id.replace(/[^\w-]/g, '\\$&') + '(?!\\d)').test(text);
+      uses = [...stock.keys()].filter((id) => has(html, id) || has(names, id))
+        .map((id) => ({ id, shader: has(scripts, id), fromPage: true }));
+    } else continue;
     const problems = [], warnings = [];
-    for (const w of JSON.parse(fs.readFileSync(pf, 'utf8'))) {
+    for (const w of uses) {
       const s = stock.get(w.id);
       if (!s) continue;                                   // the business's own photograph
       checked++;
@@ -79,7 +97,8 @@ for (const slug of fs.readdirSync(path.join(root, 'sites')).sort()) {
       const titleWrong = ELSEWHERE.filter((e) => titleHay.includes(e) && !loc.near.includes(e) && !hay.includes(e));
       if (titleWrong.length) warnings.push(`${w.id}: the source file is called "${(s.title ?? '').slice(0, 46)}", which names ${titleWrong.join(', ')}. The displayed credit does not, so this is provenance rather than a claim — but check the picture is not of ${titleWrong[0]}.`);
       if (!s.credit) problems.push(`${w.id}: no credit string`);
-      if (s.modify === false && w.shader) problems.push(`${w.id}: ${s.license_name} is share-alike, so it may be shown but not adapted; it is marked as shader input`);
+      const shareAlike = s.modify === false || /BY-SA/i.test(s.license_name ?? '');
+      if (shareAlike && w.shader) problems.push(`${w.id}: ${s.license_name} is share-alike, so it may be shown but not adapted; it ${w.fromPage ? 'appears inside an inline <script> of dist/index.html' : 'is marked as shader input'}`);
     }
     if (warnings.length) { console.log(`\nWARN  ${slug} / ${v}`); for (const w of warnings) console.log('      ' + w); }
     if (problems.length) {

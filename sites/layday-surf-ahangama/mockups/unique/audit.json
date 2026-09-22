@@ -1,81 +1,91 @@
 {
  "slug": "layday-surf-ahangama",
  "variant": "unique",
- "measured_at": "2026-09-20T13:05:16.560Z",
+ "measured_at": "2026-09-22T10:55:54.262Z",
  "first_load": {
-  "requests": 12,
+  "requests": 7,
   "hosts": [
-   "localhost:8985"
+   "localhost:8980",
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
   ],
-  "third_party_hosts": [],
-  "bytes_total": 293752,
-  "bytes_html": 24881,
-  "bytes_js": 4795,
+  "third_party_hosts": [
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "bytes_total": 335715,
+  "bytes_html": 45907,
+  "bytes_js": 0,
   "bytes_css": 0,
-  "bytes_fonts": 79480,
-  "bytes_images": 184596,
-  "largest_image_bytes": 40836,
-  "lcp_ms": 1136,
-  "cls": 0.0226,
-  "dcl_ms": 522
+  "bytes_fonts": 27752,
+  "bytes_images": 262056,
+  "largest_image_bytes": 85518,
+  "lcp_ms": 532,
+  "cls": 0.0007,
+  "dcl_ms": 531
  },
  "booking": {
   "external_booking_hrefs": [
-   "https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en",
    "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en",
    "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "https://rosa.surf/spot/kabalana",
    "https://www.agoda.com/layday-surf-ahangama/hotel/piyadigama-lk.html"
   ],
   "tel_hrefs": [
    "tel:+94778553343"
   ],
-  "drawer_triggers": 3,
+  "drawer_triggers": 0,
   "triggers_are_links": true,
   "primary_above_fold": true,
-  "tapped": "#book"
+  "tapped": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/"
  },
  "keyboard": {
-  "drawer_opens": true,
-  "closed": true,
-  "focus_returned": true
+  "drawer_opens": null,
+  "closed": null,
+  "focus_returned": null,
+  "note": "no drawer; every action is a plain link"
  },
  "a11y": {
-  "images": 11,
+  "images": 10,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 0,
-  "tapables": 15,
+  "tapables": 19,
   "tapables_under_44px": 0,
   "tapables_under_44px_examples": [],
   "headings": [
    "H1",
    "H2",
-   "H2",
-   "H2",
-   "H2",
-   "H2",
-   "H2",
    "H3",
-   "H3",
-   "H3",
+   "H2",
+   "H2",
+   "H2",
    "H2"
   ],
-  "has_skip_link": true,
+  "has_skip_link": false,
   "lang": "en"
  },
  "no_js": {
-  "text_length": 5175,
-  "booking_links_reachable": 5,
-  "visible_images": 11
+  "text_length": 4823,
+  "booking_links_reachable": 0,
+  "visible_images": 10
  },
  "reduced_motion": {
   "canvases": 1,
-  "canvases_hidden": 1,
+  "canvases_hidden": 0,
   "photograph_visible": true
  },
  "facts": {
-  "numbers_on_page": 19,
+  "numbers_on_page": 28,
   "numbers_not_in_passed_copy": [
-   "19:00."
+   "5.0",
+   "0.7",
+   "1.1",
+   "21",
+   "20:30",
+   "12.6",
+   "6.5",
+   "19:55"
   ],
   "note": "copy/en.json passed station 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps each paragraph to its dossier fields. A number here that is not in the copy is either an interface label (01, 02…) or a claim to chase."
  }

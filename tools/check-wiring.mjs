@@ -6,7 +6,8 @@
 //
 // Checks:
 //  1. every agent folder has the six files PLAN.md §2 requires
-//  2. every file under agents/ is claimed by agents/wiring.json (nothing orphaned)
+//  2. every file under agents/ is claimed by agents/wiring.json (nothing orphaned); a folder is
+//     allowed only when wiring.json lists it under nonPromptDirs and the agent's base.md names it
 //  3. every repo doc with real content is reachable by at least one agent
 //  4. each base.md's "Runtime prompt =" line matches the layers wiring.json gives it
 //  5. each agent's station ids in wiring.json exist in PLAN.md §4's pipeline table
@@ -29,7 +30,11 @@ const fail = [], warn = [];
 for (const a of AGENTS) {
   const onDisk = readdirSync(join(ROOT, 'agents', a)).sort();
   for (const f of wiring.agentFiles) if (!onDisk.includes(f)) fail.push(`${a}: missing ${f}`);
-  for (const f of onDisk) if (!wiring.agentFiles.includes(f)) fail.push(`${a}: ${f} exists on disk but no agent loads it — add it to wiring.json or delete it`);
+  const dirs = wiring.nonPromptDirs?.[a] ?? [];
+  for (const d of dirs) {
+    if (onDisk.includes(d) && !read(`agents/${a}/base.md`).includes(`agents/${a}/${d}/`)) fail.push(`${a}: ${d}/ is allowed by wiring.json but base.md never names agents/${a}/${d}/, so the agent will not open it`);
+  }
+  for (const f of onDisk) if (!wiring.agentFiles.includes(f) && !dirs.includes(f)) fail.push(`${a}: ${f} exists on disk but no agent loads it — add it to wiring.json or delete it`);
 }
 
 // 3 — repo docs with content must reach some agent

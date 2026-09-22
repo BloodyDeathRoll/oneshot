@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Layday Surf Ahangama</title>
+<meta name="description" content="Surf, chill and feel at home in Ahangama">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g:#E8E9F0;      /* ground: the water cooler's white panel, img-017 */
+  --q:#C5C9C9;      /* quiet panel: the garden wall in sun, img-001 */
+  --ink:#0B0F10;    /* the berth ladder, img-008 */
+  --y:#E2B827;      /* the berth: plastered back wall, img-002 */
+  --lit:#EED38F;    /* sunlit end face of a berth, img-008 */
+  --sh:#CF9B0D;     /* back wall of a berth in its own shadow, img-018 */
+  --v:#3C1D51;      /* booking only: the violet cushion, img-012 */
+  --col:1200px;
+  --m:20px;
+  --top:64px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--g);color:var(--ink);font-family:Urbanist,system-ui,sans-serif;font-weight:400;font-size:17px;line-height:1.5;-webkit-text-size-adjust:100%}
+body{background:var(--g)}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+/* ---------- top line ---------- */
+.top{height:var(--top);display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:relative;z-index:3}
+.top .name{font-weight:400;font-size:18px;letter-spacing:-.005em}
+.top .tel{font-size:16px;text-decoration:none;border-bottom:1px solid var(--ink)}
+
+/* ---------- inside the berth ---------- */
+.inside{position:relative}
+.stage{position:relative;z-index:2;height:calc(100svh - var(--top));min-height:560px;overflow:hidden;--a:.2;background:var(--y)}
+/* static box: CSS planes (no JS, reduced motion); same geometry the WebGL camera starts from */
+.plane{position:absolute;inset:0}
+.p-ceil{background:var(--lit);clip-path:polygon(0 0,100% 0,100% calc(var(--a)*100%),calc(var(--a)*100%) calc(var(--a)*100%))}
+.p-left{background:var(--sh);clip-path:polygon(0 0,calc(var(--a)*100%) calc(var(--a)*100%),calc(var(--a)*100%) 100%,0 100%)}
+.lamp{position:absolute;left:calc((.5 + (var(--a) - .5) * 1.25) * 100%);top:calc((.5 + ((var(--a) + (1 - var(--a)) * .22) - .5) * 1.25) * 100%);width:92px;height:2px;background:var(--ink);transform-origin:0 50%;transform:rotate(22deg)}
+.lamp::before{content:"";position:absolute;left:-4px;top:-9px;width:8px;height:20px;background:var(--ink)}
+  .lamp::after{content:"";position:absolute;right:-8px;top:-4px;width:34px;height:11px;background:var(--ink);transform:rotate(38deg);transform-origin:0 50%}
+.wall{position:absolute;left:calc(var(--a)*100% + 72px);top:calc(var(--a)*100% + 44px);right:72px;bottom:56px;z-index:2;display:flex;flex-direction:column;justify-content:flex-end}
+.niche{position:absolute;right:6%;top:0;width:clamp(64px,12vw,180px);aspect-ratio:1}
+.niche i{position:absolute;inset:0;background:var(--sh)}
+.niche i::before{content:"";position:absolute;left:0;right:0;bottom:0;height:14%;background:var(--lit);clip-path:polygon(0 100%,100% 100%,86% 0,14% 0)}
+.niche i::after{content:"";position:absolute;top:0;bottom:0;left:0;width:14%;background:var(--lit);clip-path:polygon(0 0,100% 14%,100% 86%,0 100%)}
+h1{font-weight:200;font-size:clamp(2.8rem,8.4vw,9rem);line-height:.9;letter-spacing:-.045em;max-width:8.2em}
+h1 span{display:block}
+.tag{font-weight:400;font-size:clamp(1.05rem,1.5vw,1.35rem);margin-top:28px;max-width:26em}
+.score{font-size:16px;margin-top:10px}
+.score a{text-decoration:none;border-bottom:1px solid var(--ink)}
+.act{display:flex;align-items:center;gap:22px;margin-top:34px;flex-wrap:wrap}
+.book{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 30px;background:var(--v);color:var(--g);font-weight:500;font-size:17px;text-decoration:none;letter-spacing:.005em}
+.book:hover{background:#2c143d}
+.act .call{font-size:16px;text-decoration:none;border-bottom:1px solid var(--ink)}
+canvas.box{position:fixed;inset:0;width:100vw;height:100vh;z-index:1;pointer-events:none;display:none}
+
+/* WebGL / 2D camera mode: the section is taller, the stage sticks, the planes are drawn */
+html.fly .inside{height:calc(100svh - var(--top) + 90svh)}
+html.fly .stage{position:sticky;top:0;background:transparent;overflow:visible}
+html.fly .plane,html.fly .lamp,html.fly .niche i{visibility:hidden}
+html.fly canvas.box{display:block}
+html.fly .wall{transform-origin:0 0;will-change:transform,opacity}
+html.fly.docked canvas.box{display:none}
+
+/* ---------- the docked berth ---------- */
+.dock{position:fixed;right:52px;bottom:20px;z-index:5;width:176px;height:110px;background:var(--y)}
+.dock summary{list-style:none;position:absolute;left:14px;bottom:14px}
+.dock summary::-webkit-details-marker{display:none}
+.dock .book{min-height:44px;padding:0 18px;font-size:16px}
+.ladder{position:absolute;left:100%;top:0;bottom:0;width:30px;pointer-events:none;transition:top .3s cubic-bezier(.45,0,.55,1)}
+.ladder::before,.ladder::after{content:"";position:absolute;top:0;bottom:0;width:2px;background:var(--ink)}
+.ladder::before{left:0}.ladder::after{right:0}
+.ladder b{position:absolute;left:0;right:0;height:2px;background:var(--ink)}
+.dock .panel{position:absolute;right:0;bottom:calc(100% + 12px);width:300px;background:var(--y);padding:20px}
+.dock .panel a{display:block;padding:10px 0;color:var(--v);font-weight:500}
+html.fly .dock{visibility:hidden;opacity:0}
+html.fly.docked .dock{visibility:visible;opacity:1}
+
+/* ---------- the drawer: a right-edge slide-out, the berth opened ---------- */
+.drawer{position:fixed;right:0;bottom:0;z-index:10;width:min(620px,100vw);aspect-ratio:16/10;min-height:360px;background:var(--y);border:1px solid var(--ink);border-right:0;border-bottom:0;padding:40px 72px 36px 40px;transform:translateX(105%);transition:transform .3s cubic-bezier(.45,0,.55,1);display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.drawer[hidden]{display:none}
+.drawer .rates{font-weight:300;font-size:1.3rem;line-height:1.3;max-width:24em}
+.drawer ul{list-style:none;margin-top:26px;border-top:1px solid var(--ink)}
+.drawer li a{display:flex;align-items:center;min-height:52px;border-bottom:1px solid var(--ink);color:var(--v);font-weight:500;font-size:18px;text-decoration:none;transition:padding .2s}
+.drawer li a:hover,.drawer li a:focus-visible{padding-left:12px}
+.drawer .dcall{margin-top:auto;padding-top:18px;font-size:16px}
+.drawer .dcall a{text-decoration:none;border-bottom:1px solid var(--ink)}
+.drawer .x{position:absolute;right:24px;top:22px;background:none;border:0;font:inherit;font-size:16px;color:var(--ink);cursor:pointer;min-height:44px;padding:0 6px;border-bottom:1px solid var(--ink)}
+
+
+/* ---------- the open page, after the box ---------- */
+.sec{position:relative;z-index:0;max-width:calc(var(--col) + 64px);margin:0 auto;padding:0 32px}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
+.lead{grid-column:1/9;font-weight:300;font-size:2.15rem;line-height:1.25;letter-spacing:-.015em;padding-top:120px}
+.lead p+p{margin-top:.7em}
+h2{font-weight:200;font-size:6rem;line-height:.95;letter-spacing:-.045em}
+h3{font-weight:300;font-size:2rem;line-height:1.1;letter-spacing:-.02em}
+.body p+p{margin-top:1em}
+.body{font-size:18px;max-width:31em}
+.room h2{grid-column:1/13;margin-top:150px;max-width:9em}
+.room .b1{grid-column:1/6;margin-top:56px}
+.room .p18{grid-column:7/13;justify-self:end;margin-top:56px;width:512px}
+.room .p12{grid-column:1/8;margin-top:110px;width:640px}
+.room .offer{grid-column:9/13;margin-top:110px;align-self:end}
+.room .offer .body{margin-top:18px}
+.bed{margin-top:34px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:16px 0;display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.bed b{font-weight:500;display:block}
+.bed span{font-size:15px}
+.bed a{color:var(--v);font-weight:500;white-space:nowrap}
+.room .beth{grid-column:1/6;margin-top:110px;align-self:start}
+.room .pair{grid-column:6/13;margin-top:110px;display:flex;gap:24px;justify-content:flex-end}
+.pair img,.trio img{width:320px;aspect-ratio:4/5;object-fit:cover}
+blockquote p{font-weight:300;font-size:1.55rem;line-height:1.35;letter-spacing:-.01em}
+blockquote footer{font-size:15px;margin-top:14px}
+blockquote footer a{text-decoration:none;border-bottom:1px solid var(--ink)}
+.door{padding-top:180px}
+.door h2{grid-column:1/13;font-size:7rem}
+.door .steps{grid-column:1/8;margin-top:56px;font-weight:300;font-size:1.55rem;line-height:1.3;letter-spacing:-.01em}
+.door .steps span{display:block;padding:14px 0;border-top:1px solid var(--ink)}
+.door .steps span:last-child{border-bottom:1px solid var(--ink)}
+.door .steps .gap{margin-top:34px}
+.door .side{grid-column:9/13;margin-top:62px}
+.door .side blockquote p{font-size:1.25rem}
+.maplink{display:inline-block;margin-top:34px;font-size:18px;text-decoration:none;border-bottom:1px solid var(--ink)}
+.built{padding-top:180px}
+.built h2{grid-column:1/8;font-size:4.6rem}
+.built .body{grid-column:8/13;align-self:end}
+.trio{grid-column:1/13;display:flex;justify-content:center;gap:24px;margin-top:80px}
+.guests{padding-top:180px}
+.rate{grid-column:span 4;border-top:1px solid var(--ink);padding-top:22px}
+.rate .n{font-weight:200;font-size:7.5rem;line-height:.9;letter-spacing:-.05em}
+.rate .n small{font-size:.28em;letter-spacing:0;font-weight:300}
+.rate p{font-size:16px;margin-top:12px}
+.rate a{text-decoration:none;border-bottom:1px solid var(--ink)}
+.guests blockquote{grid-column:span 4;margin-top:72px}
+.guests blockquote p{font-size:1.25rem}
+.wave{padding-top:180px}
+.spot{grid-column:1/11;font-weight:300;font-size:2.5rem;line-height:1.16;letter-spacing:-.02em}
+.fc{grid-column:1/13;display:grid;grid-template-columns:minmax(0,max-content) minmax(0,420px);column-gap:72px;justify-content:center;align-items:start;margin-top:96px}
+.credit-rosa{font-size:16px}
+.credit-rosa a{text-decoration:none;border-bottom:1px solid var(--ink)}
+.now{margin-top:18px}
+.nh{font-weight:200;font-size:8rem;letter-spacing:-.05em;line-height:.9}
+.nh small{font-size:.3em;letter-spacing:0;font-weight:300}
+.nd{display:flex;flex-direction:column;font-weight:300;font-size:18px;margin-top:14px}
+.upd{font-size:14px;margin-top:16px}
+.fc-rosa{position:relative;width:420px;max-width:100%;height:500px}
+.fc-link{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:32px;border:1px solid var(--ink);text-align:center;font-weight:300;font-size:19px;line-height:1.4;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
+.fc-rosa iframe{position:relative;visibility:hidden}
+.fc-rosa.on iframe{visibility:visible}
+.fc-rosa.on .fc-link{visibility:hidden}
+.wave .trio{margin-top:110px}
+.prac{padding-top:180px}
+.prac h2{grid-column:1/13;font-size:4.6rem}
+.times{grid-column:1/13;display:flex;gap:72px;margin-top:56px}
+.times dt{font-size:15px}
+.times dd{font-weight:200;font-size:5rem;line-height:1;letter-spacing:-.04em}
+.prac .body{grid-column:1/6;margin-top:64px}
+.prac .note{margin-top:1em}
+.amen{grid-column:7/13;margin-top:64px;columns:2;column-gap:24px;list-style:none;font-size:16px}
+.amen li{break-inside:avoid;padding:7px 0;border-top:1px solid var(--ink)}
+.amen li span{display:block;font-size:14px}
+.addr{grid-column:1/13;margin-top:72px;font-size:18px}
+.addr a{margin-left:18px;text-decoration:none;border-bottom:1px solid var(--ink)}
+.end{padding:200px 32px 160px}
+.berth{position:relative;margin:0 auto;width:min(900px,calc(100% - 40px));aspect-ratio:16/10;background:var(--y);padding:56px 64px;display:flex;flex-direction:column}
+.berth .ladder b{height:2px}
+.berth .rates{font-weight:300;font-size:1.6rem;line-height:1.25;max-width:22em;letter-spacing:-.01em}
+.berth ul{list-style:none;margin-top:auto;border-top:1px solid var(--ink)}
+.berth li a{display:flex;align-items:center;min-height:64px;border-bottom:1px solid var(--ink);color:var(--v);font-weight:500;font-size:1.5rem;text-decoration:none;transition:padding .2s}
+.berth li a:hover,.berth li a:focus-visible{padding-left:14px}
+.berth .fine{display:flex;justify-content:space-between;gap:24px;margin-top:22px;font-size:16px}
+.berth .fine a{text-decoration:none;border-bottom:1px solid var(--ink)}
+.foot{max-width:calc(var(--col) + 64px);margin:0 auto;padding:0 32px 48px;font-size:15px;display:flex;justify-content:space-between}
+
+@media (max-width:767px){
+
+  .sec{padding:0 var(--m)}
+  .grid{display:block}
+  .lead{font-size:1.5rem;padding-top:72px}
+  h2,.door h2{font-size:3rem}
+  .built h2,.prac h2{font-size:2.6rem}
+  .room h2{margin-top:88px}
+  .room .b1,.room .p18,.room .p12,.room .offer,.room .beth,.room .pair{margin-top:40px;width:auto}
+  .pair,.trio{gap:12px;justify-content:flex-start}
+  .pair img{width:calc(50% - 6px)}
+  .trio{overflow-x:auto;margin-right:calc(-1 * var(--m));padding-right:var(--m)}
+  .trio img{width:220px;flex:none}
+  blockquote p{font-size:1.25rem}
+  .door,.built,.guests,.wave,.prac{padding-top:104px}
+  .door .steps{font-size:1.2rem;margin-top:36px}
+  .door .side{margin-top:40px}
+  .built .body{margin-top:24px}
+  .rate{margin-top:28px}
+  .rate .n{font-size:5rem}
+  .guests blockquote{margin-top:40px}
+  .spot{font-size:1.65rem}
+  .fc{grid-template-columns:minmax(0,1fr);margin-top:56px}
+  .fc-rosa{width:100%;margin-top:48px}
+  .nh{font-size:4.6rem}
+  .times{gap:24px}
+  .times dd{font-size:2.6rem}
+  .amen{columns:1;margin-top:40px}
+  .addr a{display:table;margin:8px 0 0}
+  .end{padding:104px var(--m) 120px}
+  .berth{width:calc(100% - 30px);margin:0;aspect-ratio:auto;padding:28px 22px}
+  .berth .rates{font-size:1.25rem}
+  .berth ul{margin-top:28px}
+  .berth li a{font-size:1.15rem;min-height:56px}
+  .berth .fine{flex-direction:column;gap:8px}
+  .foot{padding:0 var(--m) 96px;flex-direction:column;gap:6px}
+  :root{--top:56px}
+  .top{padding:0 var(--m)}
+  .top .tel{display:none}
+  .stage{--a:.09;height:calc(100svh - var(--top) - 64px);min-height:520px}
+  .wall{left:calc(var(--a)*100% + 22px);right:22px;top:calc(var(--a)*100% + 28px)}
+  .niche{right:0;top:0;width:64px}
+  h1{font-size:2.8rem}
+  .tag{font-size:1.05rem;margin-top:20px}
+  .act{margin-top:24px;gap:14px}
+  .lamp{width:34px}
+  .lamp::before{height:12px;top:-5px;width:5px}
+  .lamp::after{width:14px;height:6px}
+  html.fly .inside{height:calc(100svh - var(--top) + 80svh)}
+  html.fly .stage{height:calc(100svh - var(--top))}
+  .wall{bottom:40px}
+  .dock{left:0;right:0;bottom:0;width:auto;height:64px;display:flex;align-items:center}
+  .dock summary{position:static;margin-left:var(--m)}
+  .dock .ladder{left:auto;right:var(--m);width:24px}
+  .dock .mcall{margin-left:18px;font-size:16px;text-decoration:none;border-bottom:1px solid var(--ink)}
+  .dock .panel{left:0;right:0;width:auto}
+  .drawer{width:100vw;aspect-ratio:auto;min-height:0;padding:32px var(--m) 28px;border-left:0}
+  .drawer .rates{padding-right:76px}
+}
+@media (min-width:768px){ .dock .mcall{display:none} }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <span class="name">Layday Surf Ahangama</span>
+  <a class="tel" href="tel:+94778553343">+94 77 855 3343</a>
+</header>
+
+<main>
+<section class="inside" aria-labelledby="h-intro">
+  <div class="stage" id="stage">
+    <div class="plane p-ceil" aria-hidden="true"></div>
+    <div class="plane p-left" aria-hidden="true"></div>
+    <span class="lamp" aria-hidden="true"></span>
+    <div class="wall" id="wall">
+      <div class="niche" id="niche" aria-hidden="true"><i></i></div>
+      <h1 id="h-intro"><span>A two-minute</span> <span>walk from</span> <span>Kabalana</span></h1>
+      <p class="tag">Surf, chill and feel at home in Ahangama</p>
+      <p class="score"><a href="https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/">9.8/10 on Hostelworld, 10 reviews</a></p>
+      <p class="act">
+        <a class="book" data-drawer href="https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/">Check dates</a>
+        <a class="call" href="tel:+94778553343">or call +94 77 855 3343</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="sec room" aria-labelledby="h-room">
+  <div class="grid">
+    <div class="lead">
+      <p>Small, new, and about as close to the wave as you can sleep. One dorm, a garden, and a family who built the place and still run it.</p>
+      <p>It is quiet. Guests keep saying so, and they mean it as the main point.</p>
+    </div>
+    <h2 id="h-room">One dorm, and that is deliberate</h2>
+    <div class="body b1">
+      <p>There is a single dormitory here. No second building, no crowd, nobody checking in at three in the morning. Everyone who writes about the place lands on the same two words: clean and quiet.</p>
+      <p>Every category on Hostelworld sits at 10 out of 10 — value, security, atmosphere, cleanliness, staff, location, facilities. Ten reviews is a small sample. It is also a perfect one.</p>
+    </div>
+    <img class="p18" src="img/img-018-1024.jpg" width="1024" height="768" loading="lazy" alt="Inside a berth: yellow plaster walls and ceiling, a square niche, a black wall lamp, a white pillow, the curtain drawn back">
+    <img class="p12" src="img/img-012-1024.jpg" width="1024" height="768" loading="lazy" alt="The dormitory through its open glass-and-timber door: yellow berths with curtains, a timber door at the far end, a bench with cushions under a painting">
+    <div class="offer">
+      <h3>The room</h3>
+      <div class="body"><p>One air-conditioned dormitory, with real luggage space, a wardrobe, lockers and hot showers. There is a shared kitchen with a kettle, a dishwasher and everything you need to cook, plus a dining area, a terrace and a garden to sit in afterwards.</p></div>
+      <div class="bed"><div><b>Bed in the dormitory</b><span>One air-conditioned dormitory</span></div><a data-drawer href="https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/">check dates</a></div>
+    </div>
+    <blockquote class="beth">
+      <p>“LayDay is so wonderful! Newly built and so well designed, Rukshan has thought of everything. As a solo female traveller I felt totally safe - it's a peaceful little sanctuary in Ahangama, just a 2-min walk to Kabalana Beach and great food spots. Super comfy beds, loads of luggage space, amazing showers, and absolutely spotless. Rukshan and his family are so kind and he keeps it immaculate daily. I extended my stay way longer than expected and didn't want to leave - will 100% be back!”</p>
+      <footer>Beth, England, on <a href="https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/">Hostelworld</a>, April 2026</footer>
+    </blockquote>
+    <div class="pair">
+      <img src="img/img-002-45.jpg" width="576" height="720" loading="lazy" alt="A lower berth close up: yellow plaster, a white bed, curtains tied back, a black ladder and locking drawers underneath">
+      <img src="img/img-008-45.jpg" width="576" height="720" loading="lazy" alt="The end of a berth with its black steel ladder and a locking drawer, a potted palm beside it">
+    </div>
+  </div>
+</section>
+
+<section class="sec door" id="door" aria-labelledby="h-door">
+  <div class="grid">
+    <h2 id="h-door">Finding the door</h2>
+    <p class="steps">
+      <span>This is the one thing worth reading twice.</span>
+      <span>Follow the map to Warnagiri, Welhengoda.</span>
+      <span>There is a large black gate — open it.</span>
+      <span>Through the gate there is a wooden platform, and the door to Layday is on the right of the house.</span>
+      <span class="gap">Guests have got lost here. Now you will not.</span>
+    </p>
+    <div class="side">
+      <blockquote>
+        <p>“Well located, very clean, good air conditioning and a great host! Layday Surf is just one dorm room with 4 bunk beds so it is very quiet which was amazing. A little bit difficult to find but the host was very responsive and promises a sign will be put up ASAP.”</p>
+        <footer>Catherine, Australia, on <a href="https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/">Hostelworld</a>, April 2026</footer>
+      </blockquote>
+      <a class="maplink" href="https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en">Open the map</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec built" aria-labelledby="h-built">
+  <div class="grid">
+    <h2 id="h-built">Newly built, and kept that way</h2>
+    <div class="body"><p>The showers, the beds, the storage: all of it is new and it gets cleaned daily by the people who own it. One guest extended her stay and wrote that she did not want to leave, which is the sentence this place earns most often.</p></div>
+    <div class="trio">
+      <img src="img/img-013-45.jpg" width="576" height="720" loading="lazy" alt="Cane-fronted lockers beside poured-concrete shelving and a potted plant">
+      <img src="img/img-003-45.jpg" width="576" height="720" loading="lazy" alt="A white basin on a concrete counter under a round cane mirror, cane cabinet doors below">
+      <img src="img/img-017-45.jpg" width="576" height="720" loading="lazy" alt="A long bench with violet, ochre, green and grey cushions under an abstract painting">
+    </div>
+  </div>
+</section>
+
+<section class="sec guests" aria-label="Ratings and guest reviews">
+  <div class="grid">
+    <div class="rate"><p class="n">9.8<small>/10</small></p><p><a href="https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/">Hostelworld</a>, 10 reviews</p></div>
+    <div class="rate"><p class="n">10<small>/10</small></p><p><a href="https://www.booking.com/hotel/lk/layday-surf-ahangama.html">Booking.com</a>, 6 reviews</p></div>
+    <div class="rate"><p class="n">5.0<small>/5</small></p><p>Google, 15 reviews</p></div>
+    <blockquote><p>“Seriously the best hostel I've stayed in throughout my 7 months travelling. I'm so sad I wasn't there for long because it was just so so nice. Super clean, nice style, the showers are great, it's cosy, there's a nice inside place to sit &amp; hang out. The lovely family who own this make such an effort to be present and helpful. HIGHLY recommend!”</p><footer>Jennine, England, on <a href="https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/">Hostelworld</a>, April 2026</footer></blockquote>
+    <blockquote><p>“New and clean, walking distance straight to the beach”</p><footer>Akshay, Sri Lanka, on <a href="https://www.booking.com/hotel/lk/layday-surf-ahangama.html">Booking.com</a></footer></blockquote>
+    <blockquote><p>“Place is really it's quite small but absolutely great, very clean lots of room, beds are nice”</p><footer>Taiya, Australia, on <a href="https://www.booking.com/hotel/lk/layday-surf-ahangama.html">Booking.com</a></footer></blockquote>
+  </div>
+</section>
+
+<section class="sec wave" aria-labelledby="h-wave">
+  <div class="grid">
+    <h2 id="h-wave" class="spot">Kabalana: a sandy beach break that suits beginners and improvers, with The Rock reef alongside it when the swell is up.</h2>
+    <div class="fc">
+      <div class="fc-now">
+        <p class="credit-rosa"><a href="https://rosa.surf/spot/kabalana">Forecast for Kabalana by Rosa</a></p>
+        <p class="now"><span class="nh">0.7–1.1<small> m</small></span></p>
+        <p class="nd"><span>Monday 21 September, 20:30</span><span>Swell 12.6 s from the south</span><span>Wind 6.5 km/h from the west, cross-shore</span></p>
+        <p class="upd">Rosa, updated 21 September 2026, 19:55</p>
+      </div>
+      <div class="fc-rosa">
+        <a class="fc-link" href="https://rosa.surf/spot/kabalana"><span>See today's forecast for Kabalana on Rosa</span></a>
+        <iframe
+          data-src="https://rosa.surf/widget/?spot=kabalana&amp;theme=light&amp;units=metric"
+          title="Rosa surf forecast - Kabalana"
+          width="100%"
+          height="500"
+          style="max-width:420px;border:0;border-radius:16px;display:block"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+        ></iframe>
+      </div>
+    </div>
+    <div class="trio">
+      <img src="img/img-019-45.jpg" width="576" height="720" loading="lazy" alt="Surfers in the line-up behind white water, seen from the sand">
+      <img src="img/img-021-45.jpg" width="576" height="720" loading="lazy" alt="A blue surfboard carried through the shallows of a long sandy beach">
+      <img src="img/img-020-45.jpg" width="576" height="720" loading="lazy" alt="A man walking along wet sand, palms further up the shore">
+    </div>
+  </div>
+</section>
+
+<section class="sec prac" aria-labelledby="h-prac">
+  <div class="grid">
+    <h2 id="h-prac">Practicalities</h2>
+    <dl class="times">
+      <div><dt>Check in from</dt><dd>14:00</dd></div>
+      <div><dt>Check in until</dt><dd>19:00</dd></div>
+      <div><dt>Check out by</dt><dd>14:00</dd></div>
+    </dl>
+    <div class="body">
+      <p>Check in between 14:00 and 19:00, check out by 14:00. Taxes are included and the property does not take credit cards. Non-smoking throughout.</p>
+      <p>Free private parking, free WiFi, laundry, daily housekeeping, bicycle rental, and an airport shuttle if you want one. Pets are welcome at no charge.</p>
+      <p class="note">Credit cards are not accepted. Non-smoking. Taxes included. Reception has limited hours.</p>
+    </div>
+    <ul class="amen">
+      <li>Free WiFi</li><li>Free private parking<span>no reservation needed</span></li><li>Air conditioning</li>
+      <li>Shared kitchen with dishwasher, kettle and kitchenware</li><li>Dining area and seating area</li>
+      <li>Garden and terrace with outdoor dining</li><li>Hot showers</li><li>Free security lockers</li><li>Luggage storage</li>
+      <li>Daily housekeeping</li><li>Washing machine</li><li>Laundry, dry cleaning and ironing<span>additional charge</span></li>
+      <li>Bicycle rental<span>additional charge</span></li><li>Airport shuttle</li><li>Concierge</li><li>Free city maps</li>
+      <li>24-hour security, CCTV and key access</li><li>Safety deposit box</li><li>Pets allowed<span>no extra charge</span></li>
+    </ul>
+    <p class="addr">'Warnagiri' Welhengoda, Ahangama, Sri Lanka<a href="https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en">Open the map</a></p>
+  </div>
+</section>
+</main>
+
+<footer class="end" aria-label="Check dates">
+  <div class="berth">
+    <p class="rates">Rates move with the season and the dates — the booking links show what is free.</p>
+    <ul>
+      <li><a href="https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/">Check dates on Hostelworld</a></li>
+      <li><a href="https://www.booking.com/hotel/lk/layday-surf-ahangama.html">Check dates on Booking.com</a></li>
+      <li><a href="https://www.agoda.com/layday-surf-ahangama/hotel/piyadigama-lk.html">Check dates on Agoda</a></li>
+    </ul>
+    <p class="fine"><a href="tel:+94778553343">Call +94 77 855 3343</a><span>'Warnagiri' Welhengoda, Ahangama, Sri Lanka</span></p>
+    <span class="ladder" aria-hidden="true"><b style="top:22%"></b><b style="top:50%"></b><b style="top:78%"></b></span>
+  </div>
+</footer>
+<p class="foot"><span>Layday Surf Ahangama</span></p>
+
+<canvas class="box" id="box" aria-hidden="true"></canvas>
+
+<div class="dock" id="dock">
+ <details>
+  <summary><span class="book">Check dates</span></summary>
+  <div class="panel">
+    <a href="https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/">Check dates on Hostelworld</a>
+    <a href="https://www.booking.com/hotel/lk/layday-surf-ahangama.html">Check dates on Booking.com</a>
+    <a href="https://www.agoda.com/layday-surf-ahangama/hotel/piyadigama-lk.html">Check dates on Agoda</a>
+    <a href="tel:+94778553343">Call +94 77 855 3343</a>
+  </div>
+ </details>
+  <a class="mcall" href="tel:+94778553343">Call</a>
+  <span class="ladder" id="ladder" aria-hidden="true"><b style="top:22%"></b><b style="top:50%"></b><b style="top:78%"></b></span>
+</div>
+
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Check dates" hidden>
+  <p class="rates">Rates move with the season and the dates — the booking links show what is free.</p>
+  <ul>
+    <li><a href="https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/">Check dates on Hostelworld</a></li>
+    <li><a href="https://www.booking.com/hotel/lk/layday-surf-ahangama.html">Check dates on Booking.com</a></li>
+    <li><a href="https://www.agoda.com/layday-surf-ahangama/hotel/piyadigama-lk.html">Check dates on Agoda</a></li>
+  </ul>
+  <p class="dcall"><a href="tel:+94778553343">Call +94 77 855 3343</a></p>
+  <button class="x" type="button">Close</button>
+</div>
+
+<script>
+(() => {
+const R = document.documentElement;
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- the drawer (enhancement over real links) ---------- */
+const drawer = document.getElementById('drawer'), dock = document.getElementById('dock');
+let lastFocus = null;
+const focusables = () => [...drawer.querySelectorAll('a,button')];
+function openDrawer(from){
+  lastFocus = from || document.activeElement;
+  drawer.hidden = false;
+  requestAnimationFrame(() => requestAnimationFrame(() => drawer.classList.add('open')));
+  setTimeout(() => focusables()[0].focus(), reduce ? 0 : 60);
+}
+function closeDrawer(){
+  drawer.classList.remove('open');
+  setTimeout(() => { drawer.hidden = true; }, reduce ? 0 : 300);
+  if (lastFocus) lastFocus.focus();
+}
+document.addEventListener('click', (e) => {
+  const t = e.target.closest('[data-drawer], .dock summary');
+  if (t) { e.preventDefault(); openDrawer(t); return; }
+  if (e.target.closest('.drawer .x')) { closeDrawer(); return; }
+  if (!drawer.hidden && !e.target.closest('.drawer')) closeDrawer();
+});
+document.addEventListener('keydown', (e) => {
+  if (drawer.hidden) return;
+  if (e.key === 'Escape') { closeDrawer(); return; }
+  if (e.key === 'Tab') {
+    const f = focusables(), i = f.indexOf(document.activeElement);
+    if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+    else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); }
+  }
+});
+
+/* ---------- Rosa's widget: src set only when the forecast block nears the viewport ---------- */
+const rosa = document.querySelector('.fc-rosa'), rosaFrame = rosa && rosa.querySelector('iframe');
+/* rosa.surf sends frame-ancestors *, which does not match a file:// page: there the frame stays blank, so the link stays */
+if (rosaFrame && 'IntersectionObserver' in window && location.protocol !== 'file:') {
+  const io = new IntersectionObserver((es) => {
+    if (!es.some((e) => e.isIntersecting)) return;
+    io.disconnect();
+    rosa.dataset.loading = 'true';
+    rosaFrame.addEventListener('load', () => { rosa.classList.add('on'); delete rosa.dataset.loading; }, {once: true});
+    rosaFrame.src = rosaFrame.dataset.src;
+  }, {rootMargin: '400px 0px'});
+  io.observe(rosa);
+}
+
+/* ---------- the docked berth's ladder grows one rung while "Finding the door" is on screen ---------- */
+const ladder = document.getElementById('ladder'), door = document.getElementById('door');
+if ('IntersectionObserver' in window) {
+  const rung = document.createElement('b'); rung.style.top = '4%'; rung.className = 'extra';
+  new IntersectionObserver((es) => { for (const e of es) {
+    if (e.isIntersecting) { ladder.style.top = '-34%'; ladder.appendChild(rung); }
+    else { ladder.style.top = ''; rung.remove(); }
+  } }, {threshold: .25}).observe(door);
+}
+
+if (reduce) return;   /* reduced motion: the static CSS box, the berth docked from the start */
+
+/* ---------- the box: a dozen flat quads, a camera on a scroll path ---------- */
+const cv = document.getElementById('box');
+let gl = null, g2 = null;
+try { gl = cv.getContext('webgl', {alpha: true, antialias: true, premultipliedAlpha: true}); } catch (e) {}
+if (!gl) g2 = cv.getContext('2d');
+if (!gl && !g2) return;
+R.classList.add('fly');
+
+const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255);
+const COL = { y: hex('#E2B827'), lit: hex('#EED38F'), sh: hex('#CF9B0D'), ink: hex('#0B0F10') };
+
+let prog = null, posLoc, colLoc, resLoc, buf;
+if (gl) {
+  const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; };
+  prog = gl.createProgram();
+  gl.attachShader(prog, sh(gl.VERTEX_SHADER, 'attribute vec2 p;uniform vec2 r;void main(){vec2 c=p/r*2.0-1.0;gl_Position=vec4(c.x,-c.y,0.0,1.0);}'));
+  gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, 'precision mediump float;uniform vec3 c;void main(){gl_FragColor=vec4(c,1.0);}'));
+  gl.linkProgram(prog); gl.useProgram(prog);
+  posLoc = gl.getAttribLocation(prog, 'p'); colLoc = gl.getUniformLocation(prog, 'c'); resLoc = gl.getUniformLocation(prog, 'r');
+  buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.enableVertexAttribArray(posLoc); gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+}
+
+const stage = document.getElementById('stage'), wall = document.getElementById('wall'), niche = document.getElementById('niche');
+const EXT = 48, W = 1.6, CZ0 = 1, D0 = 1.5;
+let B = null;      /* base geometry, measured from the static layout */
+let dpr = 1, VW = 0, VH = 0;
+
+function measure(){
+  R.classList.remove('docked');
+  wall.style.transform = ''; wall.style.opacity = '';
+  dpr = Math.min(devicePixelRatio || 1, 1.5);
+  VW = innerWidth; VH = innerHeight;
+  cv.width = Math.round(VW * dpr); cv.height = Math.round(VH * dpr);
+  const s = stage.getBoundingClientRect();
+  const a = parseFloat(getComputedStyle(stage).getPropertyValue('--a')) || .2;
+  const w = s.width, h = s.height;
+  const wl = a * w, wt = a * h;
+  const kb = (w + EXT - wl) / W;                 /* px per world unit on the back wall */
+  const Hb = (h + EXT - wt) / kb;
+  const cx = (.5 - a) * w / kb, cy = Hb - (.5 - a) * h / kb;
+  const f = kb * (CZ0 + D0);
+  const n = niche.getBoundingClientRect(), wr = wall.getBoundingClientRect();
+  const toW = (sx, sy) => [cx + (sx - (s.left + w / 2)) / kb, cy - (sy - (s.top + h / 2)) / kb];
+  const [nx0, ny1] = toW(n.left, n.top), [nx1, ny0] = toW(n.right, n.bottom);
+  const mobile = w < 768;
+  B = { w, h, a, f, Hb, cx, cy, kb, mobile,
+    niche: [nx0 / W, nx1 / W, ny0 / Hb, ny1 / Hb],
+    wall0: { l: wr.left - s.left, t: wr.top - s.top },
+    back0: { l: wl, t: wt, w: w + EXT - wl } };
+  const d = dock.getBoundingClientRect();
+  B.dock = { l: d.left, t: d.top, w: d.width, h: d.height };
+  wall.style.transformOrigin = (B.back0.l - B.wall0.l) + 'px ' + (B.back0.t - B.wall0.t) + 'px';
+}
+
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = (t) => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+const lerp = (a, b, t) => a + (b - a) * t;
+
+let tilt = [0, 0], tiltT = [0, 0];
+if (matchMedia('(pointer: fine)').matches) {
+  stage.addEventListener('pointermove', (e) => {
+    const r = stage.getBoundingClientRect();
+    tiltT = [(e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1];
+    kick();
+  });
+  stage.addEventListener('pointerleave', () => { tiltT = [0, 0]; kick(); });
+}
+
+function frame(){
+  const s = stage.getBoundingClientRect();
+  const p = clamp(scrollY / (VH * 1.2));
+  tilt[0] += (tiltT[0] - tilt[0]) * .08; tilt[1] += (tiltT[1] - tilt[1]) * .08;
+  const pa = ease(clamp(p / .5)), pb = ease(clamp((p - .38) / .32)), pc = ease(clamp((p - .68) / .32));
+
+  /* camera: from lying inside, pull back out through the open side, centred */
+  const w = B.w, h = B.h;
+  const Hb = lerp(B.Hb, 1.0, pb);
+  const D = lerp(D0, 0.0001, pb);
+  const tw = B.mobile ? .66 * w : .42 * w;
+  const cz1 = B.f * W / tw;
+  const cz = 1 / lerp(1 / CZ0, 1 / cz1, pa);
+  const cx = lerp(B.cx, W / 2, pa);
+  const cy = lerp(B.cy, B.Hb / 2, pa) + (Hb - B.Hb) / 2 * pa;
+  const ppx = s.left + w / 2, ppy = s.top + h / 2;
+  /* lean: orbit about the back wall, at most 3 degrees, only while inside */
+  const lean = 1 - pa, th = tilt[0] * .0524 * lean, ph = tilt[1] * .0524 * lean;
+  const Zb = cz + D;
+  const ex = cx + Math.tan(th) * Zb * .9, ey = cy - Math.tan(ph) * Zb * .9;
+  const cth = Math.cos(th), sth = Math.sin(th), cph = Math.cos(ph), sph = Math.sin(ph);
+  const P = (x, y, z) => {
+    let X = x - ex, Y = y - ey, Z = cz - z;
+    const X1 = X * cth + Z * sth, Z1 = -X * sth + Z * cth;
+    const Y2 = Y * cph - Z1 * sph, Z2 = Y * sph + Z1 * cph;
+    return [ppx + B.f * X1 / Z2, ppy - B.f * Y2 / Z2];
+  };
+
+  const polys = [], PENDING = [];
+  const quad = (a, b, c, d, col) => polys.push([[a, b, c, d], col]);
+  const [fx0, fx1, fy0, fy1] = B.niche;
+  const nx0 = fx0 * W, nx1 = fx1 * W, nmid = (fy0 + fy1) / 2 * Hb, nh = (fy1 - fy0) * B.Hb / 2, ny0 = nmid - nh, ny1 = nmid + nh, dn = D * .22, zb = -D, zn = -D - dn;
+  /* the niche, deepest first */
+  quad(P(nx0, ny0, zn), P(nx1, ny0, zn), P(nx1, ny1, zn), P(nx0, ny1, zn), COL.sh);
+  if (ey < ny1) quad(P(nx0, ny1, zn), P(nx1, ny1, zn), P(nx1, ny1, zb), P(nx0, ny1, zb), COL.sh);
+  if (ey > ny0) quad(P(nx0, ny0, zn), P(nx1, ny0, zn), P(nx1, ny0, zb), P(nx0, ny0, zb), COL.lit);
+  if (ex > nx0) quad(P(nx0, ny0, zn), P(nx0, ny1, zn), P(nx0, ny1, zb), P(nx0, ny0, zb), COL.lit);
+  if (ex < nx1) quad(P(nx1, ny0, zn), P(nx1, ny1, zn), P(nx1, ny1, zb), P(nx1, ny0, zb), COL.lit);
+  /* the back wall, around the niche */
+  quad(P(0, 0, zb), P(nx0, 0, zb), P(nx0, Hb, zb), P(0, Hb, zb), COL.y);
+  quad(P(nx1, 0, zb), P(W, 0, zb), P(W, Hb, zb), P(nx1, Hb, zb), COL.y);
+  quad(P(nx0, ny1, zb), P(nx1, ny1, zb), P(nx1, Hb, zb), P(nx0, Hb, zb), COL.y);
+  quad(P(nx0, 0, zb), P(nx1, 0, zb), P(nx1, ny0, zb), P(nx0, ny0, zb), COL.y);
+  /* walls: left in shade, ceiling lit, right lit, floor in shade */
+  quad(P(0, 0, 0), P(0, 0, zb), P(0, Hb, zb), P(0, Hb, 0), COL.sh);
+  quad(P(W, 0, 0), P(W, 0, zb), P(W, Hb, zb), P(W, Hb, 0), COL.lit);
+  quad(P(0, Hb, 0), P(0, Hb, zb), P(W, Hb, zb), P(W, Hb, 0), COL.lit);
+  quad(P(0, 0, 0), P(0, 0, zb), P(W, 0, zb), P(W, 0, 0), COL.sh);
+  /* hairlines: the four inner corners of the box, 1px ink */
+  const seam = (A, Bp) => line(A, Bp, 1);
+  PENDING.push(() => { seam(P(0, 0, zb), P(0, Hb, zb)); seam(P(0, Hb, zb), P(W, Hb, zb)); seam(P(W, Hb, zb), P(W, 0, zb)); seam(P(W, 0, zb), P(0, 0, zb));
+    seam(P(0, Hb, zb), P(0, Hb, 0)); seam(P(W, Hb, zb), P(W, Hb, 0)); seam(P(0, 0, zb), P(0, 0, 0)); seam(P(W, 0, zb), P(W, 0, 0)); });
+  /* the lamp: a black arm on the left wall */
+  const line = (a, b, wpx) => {
+    const dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy) || 1, nx = -dy / L * wpx / 2, ny = dx / L * wpx / 2;
+    polys.push([[[a[0] + nx, a[1] + ny], [b[0] + nx, b[1] + ny], [b[0] - nx, b[1] - ny], [a[0] - nx, a[1] - ny]], COL.ink]);
+  };
+  if (pb < .98) PENDING.forEach((fn) => fn());
+  if (pb < .98) {
+    const ly = Hb * .72 - (Hb - B.Hb) * 0, lz = zb * .78;
+    const base = P(0, B.Hb * .7 * Hb / B.Hb, zb * .7), tip = P(.07, B.Hb * .66 * Hb / B.Hb, zb * .7);
+    const head = P(.12, B.Hb * .61 * Hb / B.Hb, zb * .7);
+    const pl = (y0, y1, z0, z1) => quad(P(0, y0, z0), P(0, y1, z0), P(0, y1, z1), P(0, y0, z1), COL.ink);
+    const yb = B.Hb * .7 * Hb / B.Hb;
+    pl(yb - .025, yb + .025, zb * .7 - .02, zb * .7 + .02);
+    line(base, tip, 2); line(tip, head, 11);
+  }
+
+  /* after the box is flat: it docks. 2D map from the flat rectangle to the corner berth */
+  let T = null;
+  const tl = P(0, Hb, zb), br = P(W, 0, zb);
+  const flat = { l: tl[0], t: tl[1], w: br[0] - tl[0], h: br[1] - tl[1] };
+  if (pc > 0) {
+    const d = B.dock;
+    const to = { l: lerp(flat.l, d.l, pc), t: lerp(flat.t, d.t, pc), w: lerp(flat.w, d.w, pc), h: lerp(flat.h, d.h, pc) };
+    T = (pt) => [to.l + (pt[0] - flat.l) / flat.w * to.w, to.t + (pt[1] - flat.t) / flat.h * to.h];
+    for (const q of polys) q[0] = q[0].map(T);
+  }
+  /* the ladder climbs up the flat berth's right edge */
+  if (pb > .5) {
+    const r = T ? { l: T([flat.l, flat.t])[0], t: T([flat.l, flat.t])[1], w: T([flat.l + flat.w, 0])[0] - T([flat.l, 0])[0], h: T([0, flat.t + flat.h])[1] - T([0, flat.t])[1] } : flat;
+    const k = clamp((pb - .5) / .5), lw = B.mobile ? 24 : 30, x0 = r.l + r.w, top = r.t + r.h * (1 - k);
+    if (!B.mobile || pc < .5) {
+      line([x0 + 1, r.t + r.h], [x0 + 1, top], 2);
+      line([x0 + lw - 1, r.t + r.h], [x0 + lw - 1, top], 2);
+      for (const f of [.22, .5, .78]) { const y = r.t + r.h * f; if (y >= top) line([x0, y], [x0 + lw, y], 2); }
+    }
+  }
+
+  draw(polys, pa < .999 ? Math.max(0, s.top) : 0);
+
+  /* the words on the back wall ride with it, then give way to the docked berth */
+  const s0 = B.back0, scale = (flat.w * (T ? (T([flat.l + flat.w, 0])[0] - T([flat.l, 0])[0]) / flat.w : 1)) / s0.w;
+  const L = T ? T([flat.l, flat.t]) : [flat.l, flat.t];
+  wall.style.transform = `translate(${L[0] - s.left - s0.l}px,${L[1] - s.top - s0.t}px) scale(${scale})`;
+  wall.style.opacity = String(1 - clamp((p - .26) / .16));
+  wall.style.visibility = p > .42 ? 'hidden' : '';
+  R.classList.toggle('docked', p >= 1);
+  return Math.abs(tiltT[0] - tilt[0]) + Math.abs(tiltT[1] - tilt[1]) > .002;
+}
+
+function draw(polys, clipTop){
+  if (gl) {
+    gl.viewport(0, 0, cv.width, cv.height);
+    gl.disable(gl.SCISSOR_TEST);
+    gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.enable(gl.SCISSOR_TEST);
+    gl.scissor(0, 0, cv.width, Math.max(0, Math.round((VH - clipTop) * dpr)));
+    gl.uniform2f(resLoc, VW, VH);
+    for (const [pts, c] of polys) {
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([pts[0], pts[1], pts[2], pts[0], pts[2], pts[3]].flat()), gl.STREAM_DRAW);
+      gl.uniform3f(colLoc, c[0], c[1], c[2]);
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+    }
+  } else {
+    g2.setTransform(dpr, 0, 0, dpr, 0, 0);
+    g2.clearRect(0, 0, VW, VH);
+    g2.save(); g2.beginPath(); g2.rect(0, clipTop, VW, VH - clipTop); g2.clip();
+    for (const [pts, c] of polys) {
+      g2.fillStyle = `rgb(${c.map((v) => Math.round(v * 255)).join(',')})`;
+      g2.beginPath(); g2.moveTo(pts[0][0], pts[0][1]);
+      for (let i = 1; i < pts.length; i++) g2.lineTo(pts[i][0], pts[i][1]);
+      g2.closePath(); g2.fill();
+    }
+    g2.restore();
+  }
+}
+
+let raf = 0;
+function loop(){ raf = 0; if (frame()) kick(); }
+function kick(){ if (!raf) raf = requestAnimationFrame(loop); }
+addEventListener('scroll', kick, {passive: true});
+addEventListener('resize', () => { measure(); kick(); });
+measure(); kick();
+})();
+</script>
+</body>
+</html>

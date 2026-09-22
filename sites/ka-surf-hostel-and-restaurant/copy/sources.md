@@ -7,8 +7,8 @@ One line per paragraph, naming the `dossier.json` fields it rests on. A paragrap
 | tagline | "Surf, chill and feel at home in Ahangama" | `business.tagline` — the owner's own Hostelworld headline, lower-cased |
 | intro ¶1 | family-run, five-minute walk, check the surf before breakfast | `business.run_by` · `location.distance_to_beach` ("Kabalana Beach 450 yd / a 5-minute walk") · `business.description` |
 | intro ¶2 | dorms or private rooms | `room_types[]` (3 dorm types, 3 private) · `business.description_long` ("Dorms & Private Rooms") |
-| about ¶1 | the family; the dengue story | `business.run_by` · `reviews.quotes[]` Clara, Luzzi, Nanet, Mia — the Mia quote is reproduced verbatim below, not paraphrased into a claim |
-| about ¶1 | staff 9.9 on both platforms | `reviews.booking.categories.Staff` = 9.9 · `reviews.hostelworld.categories.Staff` = 9.9 |
+| about ¶1 · para 1 | guests say "family"; the dengue story (heading: what guests say about the staff — rests on this row and the next) | `reviews.quotes[]` Clara, Luzzi, Nanet, Elena (all use "family") · Mia (dengue in Kandy, "helped nurse me back to health with Ayurvedic medicines (on top of what the hospital was already giving me)") — reported as her account, not a claim in the business's voice |
+| about ¶1 · para 2 | staff top score on Booking; 9.9 on Hostelworld behind value for money and security | `reviews.booking.categories` (Staff 9.9 is the highest; next Value for money 9.4) · `reviews.hostelworld.categories` (Staff 9.9; Value for Money 10.0 and Security 10.0 higher; all others ≤ 9.8) |
 | about ¶2 | breakfast, daily change, vegan | `business.description_long` ("daily free healthy breakfast (rotis, fruits, pancakes, eggs — vegan options available)") · `reviews.quotes[]` Elena ("roti, hoppers… changes every day") |
 | offer ¶1 | room list, A/C + fan, locker, fridge, bathrooms, hot showers | `room_types[]` · `business.description_long` · `facilities[]` |
 | offer ¶2 | rates change with dates | `gaps[]` "offers" — rates are live dated OTA inventory; no price is stated, the booking links carry it |

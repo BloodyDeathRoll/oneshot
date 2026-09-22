@@ -1,0 +1,9 @@
+{
+  "name": "oneshot",
+  "private": true,
+  "type": "module",
+  "description": "Tooling dependencies for tools/*.mjs. Sites and the CMS carry their own package.json.",
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

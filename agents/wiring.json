@@ -8,6 +8,13 @@
     "evals.md",
     "CHANGELOG.md"
   ],
+  "nonPromptDirs": {
+    "_comment": "Folders inside an agent's folder that are NOT prompt layers: the agent opens the files itself, and its base.md must name the folder. Anything else under agents/<agent>/ that is not one of agentFiles still fails check-wiring.",
+    "designer": [
+      "gold",
+      "fixtures"
+    ]
+  },
   "shared": {
     "always": [
       "playbook.md",
