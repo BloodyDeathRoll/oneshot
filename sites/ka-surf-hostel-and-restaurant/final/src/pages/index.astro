@@ -1,0 +1,290 @@
+---
+/* KA Surf Hostel — "Canopy", the picked 4e mockup (unique, round 16) ported to Astro.
+   Every owner-editable word, number, link and photograph comes from src/tenant/content.json
+   (schemas/site-content.md v0.3, REST shape); the layout, motion and interface wording are here. */
+import css from '../styles/site.css?raw'
+import js from '../scripts/site.js?raw'
+import stillD from '../canopy/still-d.svg?raw'
+import stillM from '../canopy/still-m.svg?raw'
+import {
+  content as c, MAP_PIN, PLACE, photoCredit, PLATFORM, platformOfUrl, safeUrl, tel, phoneLabel,
+  paras, score, monthYear, readOn, photo, LD_TYPE, postalAddress, metaDescription,
+} from '../lib/site.mjs'
+
+const name = c.businessName
+const blocks = c.copyBlocks ?? []
+const slot = (s, i) => blocks.filter((b) => b.slot === s)[i] ?? null
+const intro = slot('intro', 0), offer = slot('offer', 0), bfast = slot('about', 0), family = slot('about', 1)
+const here = slot('info', 0), walk = slot('info', 1)
+const offerP = paras(offer?.body)
+const rates = offerP.slice(1).join(' ')
+
+const links = (c.bookingLinks ?? []).map((l) => ({ ...l, url: safeUrl(l.url) })).filter((l) => l.url)
+const book = links[0]?.url ?? null
+const phone = tel(c.contact?.phone), phoneText = phoneLabel(c.contact?.phone)
+const mapUrl = safeUrl(c.contact?.mapUrl)
+const address = c.contact?.address ?? ''
+
+const ratings = c.ratings ?? []
+const rName = (r) => PLATFORM[r.platform]?.name ?? ''
+const ratingFor = (platform) => ratings.find((r) => r.platform === platform)
+const tiles = links.map((l) => {
+  const p = platformOfUrl(l.url), meta = p ? PLATFORM[p] : null
+  let t1 = '', t2 = l.label
+  if (meta && l.label.endsWith(meta.name)) { t2 = meta.name; t1 = l.label.slice(0, -meta.name.length).trim() }
+  const r = p ? ratingFor(p) : null
+  return { url: l.url, t1, t2, t3: r ? `${score(r)}, ${r.count} reviews` : '', t4: r ? readOn(r) : '', mark: meta?.mark, mw: meta?.mw }
+})
+
+const q = c.testimonials ?? []
+const cite = (t) => [t.author, [PLATFORM[t.source]?.name, monthYear(t.date)].filter(Boolean).join(', ')]
+
+const ph = (c.photos ?? []).map(photo)
+const P = (i) => ph[i] ?? null
+const crops = ph.slice(8).filter(Boolean)
+
+const st = c.stayInfo ?? {}
+const fcOn = c.forecast?.enabled && /^[a-z0-9-]+$/.test(c.forecast?.rosaSpotId ?? '')
+const spotId = c.forecast?.rosaSpotId, spotName = c.forecast?.spotName || spotId
+
+/* Head and structured data (station 4h). Absolute URLs (canonical, hreflang, og:url, og:image, JSON-LD
+   url/image/@id, sitemap) exist only when the build is given SITE_URL — the production domain is not
+   known yet and everything else on the page stays relative. */
+const site = import.meta.env.SITE ? new URL(import.meta.env.SITE) : null
+const abs = (u) => (site ? new URL(u, site).href : null)
+/* the town comes from contact.address (its "<postcode> <town>" part); PLACE (SCHEMA GAP) only if the
+   owner's address has no such part */
+const place = postalAddress(address)?.addressLocality ?? PLACE
+const title = `${name}, ${place}`.length <= 60 ? `${name}, ${place}` : name
+const desc = metaDescription([c.tagline, intro?.heading, offer?.heading]) || (c.tagline ?? '').slice(0, 155)
+const og = P(0)
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': LD_TYPE[c.businessType] ?? 'LocalBusiness',
+  ...(site ? { '@id': `${site.href}#business`, url: site.href } : {}),
+  name,
+  ...(desc ? { description: desc } : {}),
+  ...(site && ph.some(Boolean) ? { image: ph.filter(Boolean).map((p) => abs(p.src)) } : {}),
+  ...(c.contact?.phone ? { telephone: c.contact.phone } : {}),
+  ...(postalAddress(address) ? { address: postalAddress(address) } : {}),
+  geo: { '@type': 'GeoCoordinates', latitude: MAP_PIN.lat, longitude: MAP_PIN.lon },
+  ...(mapUrl ? { hasMap: mapUrl } : {}),
+  ...(st.checkInFrom ? { checkinTime: st.checkInFrom } : {}),
+  ...(st.checkOutTo ? { checkoutTime: st.checkOutTo } : {}),
+  ...((c.amenities ?? []).length ? {
+    amenityFeature: c.amenities.map((a) => ({
+      '@type': 'LocationFeatureSpecification', name: a.note ? `${a.label} (${a.note})` : a.label, value: true,
+    })),
+  } : {}),
+  /* 4i: the room list as the page shows it (rooms[].label, .beds, .sleeps), so "does it have a female
+     dorm / a double room" is answerable from the graph. No rates: they are live OTA inventory. */
+  ...((c.rooms ?? []).length ? {
+    containsPlace: c.rooms.map((r) => ({
+      '@type': 'HotelRoom', name: r.label,
+      ...(r.beds ? { bed: r.beds } : {}),
+      ...(r.sleeps ? { occupancy: { '@type': 'QuantitativeValue', maxValue: r.sleeps } } : {}),
+    })),
+  } : {}),
+  ...((c.languagesSpoken ?? []).length ? { knowsLanguage: c.languagesSpoken } : {}),
+  ...(links.length ? { sameAs: links.map((l) => l.url) } : {}),
+}
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+{desc && <meta name="description" content={desc}>}
+{site && <link rel="canonical" href={site.href}>}
+{site && <link rel="alternate" hreflang="en" href={site.href}>}
+{site && <link rel="alternate" hreflang="x-default" href={site.href}>}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content={name}>
+<meta property="og:title" content={title}>
+{desc && <meta property="og:description" content={desc}>}
+{site && <meta property="og:url" content={site.href}>}
+{site && og && <meta property="og:image" content={abs(og.src)}>}
+{site && og && <meta property="og:image:width" content={String(og.w)}>}
+{site && og && <meta property="og:image:height" content={String(og.h)}>}
+{site && og && og.alt && <meta property="og:image:alt" content={og.alt}>}
+<meta name="twitter:card" content="summary">
+<link rel="preload" href="fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script is:inline>document.documentElement.classList.add('js')</script>
+<style is:inline set:html={css}></style>
+<script is:inline type="application/ld+json" set:html={JSON.stringify(ld).replace(/</g, '\\u003c')}></script>
+</head>
+<body>
+<header class="top">
+  <a class="name" href="#top">{name}</a>
+  <nav>{phone && <a href={phone}>Call</a>}{book && <a class="book" href={book}>Check dates</a>}</nav>
+</header>
+
+<main>
+<section class="canopy" id="top" aria-label={name}>
+  <div class="stage back" aria-hidden="true">
+    <Fragment set:html={stillD} />
+    <Fragment set:html={stillM} />
+    <canvas class="back"></canvas>
+  </div>
+  <div class="clear">
+    {/* 4h: the page's one h1 is the business's name + what/where (the brand query); the display
+         headline is set as a paragraph with the same look. The space between name and tagline is not
+         rendered (flex container) but keeps them two words apart for crawlers and screen readers. */}
+    <h1 class="who"><b>{name}</b>{c.tagline && <Fragment>{' '}<span>{c.tagline}</span></Fragment>}</h1>
+    {intro?.heading && <p class="hl">{intro.heading}</p>}
+    <div class="act">
+      <div class="cta">
+        {book && <a class="btn book" href={book}>Check dates</a>}
+        {phone && <p class="call">or call <a href={phone}>{phoneText}</a></p>}
+      </div>
+      {ratings.length > 0 && (
+        <div class="score">
+          <p class="big"><span class="num">{ratings[0].score}<small>/{ratings[0].scale}</small></span><span class="src">{safeUrl(ratings[0].url) ? <a href={ratings[0].url}>{rName(ratings[0])}</a> : rName(ratings[0])}, {ratings[0].count} reviews</span>{readOn(ratings[0]) && <span class="when">{readOn(ratings[0])}</span>}</p>
+          {ratings.length > 1 && (
+            <p class="rest">{ratings.slice(1).map((r, i) => (
+              <Fragment>{i > 0 && <br />}<b>{score(r)}</b> {safeUrl(r.url) ? <a href={r.url}>{rName(r)}</a> : rName(r)}, {r.count} reviews{readOn(r) && <Fragment> <span class="when">{readOn(r)}</span></Fragment>}</Fragment>
+            ))}</p>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<section class="sec rooms" aria-labelledby="h-rooms">
+  <div class="spine"></div>
+  {intro && <div class="lead">{paras(intro.body).map((t, i) => <p class={`p${i + 1}`}>{t}</p>)}</div>}
+  {P(0) && <picture><source type="image/webp" srcset={P(0).webp} sizes="(max-width:760px) 264px, 384px"><img class="pr pr1" src={P(0).src} srcset={P(0).jpg} sizes="(max-width:760px) 264px, 384px" width={P(0).w} height={P(0).h} alt={P(0).alt} loading="lazy" decoding="async"></picture>}
+  {offer?.heading && <h2 id="h-rooms" class="h-rooms">{offer.heading}</h2>}
+  {offerP[0] && <p class="body b-rooms">{offerP[0]}</p>}
+  {(c.rooms ?? []).length > 0 && (
+    <ul class="list">{c.rooms.map((r) => (
+      <li><span class="rl">{r.label}</span>{r.beds && <span class="rb">{r.beds}</span>}{book && <a class="book" data-room={[r.label, r.beds].filter(Boolean).join(', ')} href={book}>Check dates</a>}</li>
+    ))}</ul>
+  )}
+  {P(1) && <picture><source type="image/webp" srcset={P(1).webp} sizes="(max-width:760px) 264px, 384px"><img class="pr pr2" src={P(1).src} srcset={P(1).jpg} sizes="(max-width:760px) 264px, 384px" width={P(1).w} height={P(1).h} alt={P(1).alt} loading="lazy" decoding="async"></picture>}
+  {q[0] && <blockquote class="q q-rooms"><p>{q[0].quote}</p><footer>{cite(q[0])[0]}<br>{cite(q[0])[1]}</footer></blockquote>}
+</section>
+
+{bfast && (
+<section class="sec bfast" aria-labelledby="h-bfast">
+  <div class="turn" data-from="left"></div>
+  <div class="spine"></div>
+  {bfast.heading && <h2 id="h-bfast" class="h-bfast">{bfast.heading}</h2>}
+  <div class="body b-bfast">{paras(bfast.body).map((t) => <p>{t}</p>)}</div>
+  {P(2) && <picture><source type="image/webp" srcset={P(2).webp} sizes="(max-width:760px) 264px, 480px"><img class="pr pr3" src={P(2).src} srcset={P(2).jpg} sizes="(max-width:760px) 264px, 480px" width={P(2).w} height={P(2).h} alt={P(2).alt} loading="lazy" decoding="async"></picture>}
+  {q[1] && <blockquote class="q q-bfast"><p>{q[1].quote}</p><footer>{cite(q[1])[0]}<br>{cite(q[1])[1]}</footer></blockquote>}
+</section>
+)}
+
+{here && (
+<section class="sec here" aria-labelledby="h-here">
+  <div class="spine"></div>
+  {here.heading && <h2 id="h-here" class="h-here">{here.heading}</h2>}
+  <div class="body b-here">{paras(here.body).map((t) => <p>{t}</p>)}</div>
+  {(c.amenities ?? []).length > 0 && <ul class="amen">{c.amenities.map((a) => <li>{a.label}{a.note && <Fragment> <i>{a.note}</i></Fragment>}</li>)}</ul>}
+  {[3, 4, 5].map((i, k) => P(i) && <picture><source type="image/webp" srcset={P(i).webp} sizes="(max-width:760px) 264px, 320px"><img class={`pr pf${k + 1}`} src={P(i).src} srcset={P(i).jpg} sizes="(max-width:760px) 264px, 320px" width={P(i).w} height={P(i).h} alt={P(i).alt} loading="lazy" decoding="async"></picture>)}
+</section>
+)}
+
+{family && (
+<section class="sec family" aria-labelledby="h-family">
+  <div class="turn" data-from="right"></div>
+  <div class="spine"></div>
+  {family.heading && <h2 id="h-family" class="h-family">{family.heading}</h2>}
+  <div class="body b-family">{paras(family.body).map((t) => <p>{t}</p>)}</div>
+  {P(6) && <picture><source type="image/webp" srcset={P(6).webp} sizes="(max-width:760px) 264px, 384px"><img class="pr pr4" src={P(6).src} srcset={P(6).jpg} sizes="(max-width:760px) 264px, 384px" width={P(6).w} height={P(6).h} alt={P(6).alt} loading="lazy" decoding="async"></picture>}
+  {q[2] && <blockquote class="q q-mia"><p>{q[2].quote}</p><footer>{cite(q[2])[0]}<br>{cite(q[2])[1]}</footer></blockquote>}
+  {q[3] && <blockquote class="q q-clara"><p>{q[3].quote}</p><footer>{cite(q[3])[0]}<br>{cite(q[3])[1]}</footer></blockquote>}
+  {q[4] && <blockquote class="q q-saketh"><p>{q[4].quote}</p><footer>{cite(q[4])[0]}<br>{cite(q[4])[1]}</footer></blockquote>}
+  {P(7) && <picture><source type="image/webp" srcset={P(7).webp} sizes="(max-width:760px) 264px, 384px"><img class="pr pr5" src={P(7).src} srcset={P(7).jpg} sizes="(max-width:760px) 264px, 384px" width={P(7).w} height={P(7).h} alt={P(7).alt} loading="lazy" decoding="async"></picture>}
+</section>
+)}
+
+{walk && (
+<section class="sec walk" aria-labelledby="h-walk">
+  <div class="line"></div>
+  <div class="go">
+    {walk.heading && <h2 id="h-walk">{walk.heading}</h2>}
+    {paras(walk.body).map((t) => <p class="body">{t}</p>)}
+    {(st.checkInFrom || st.checkOutTo) && (
+      <dl class="times">
+        {st.checkInFrom && <div><dt>Check-in</dt><dd>{st.checkInFrom}{st.checkInTo && <Fragment><span>to</span>{st.checkInTo}</Fragment>}</dd></div>}
+        {st.checkOutTo && <div><dt>Check-out</dt><dd>{st.checkOutFrom ? <Fragment>{st.checkOutFrom}<span>to</span></Fragment> : <span>by</span>}{st.checkOutTo}</dd></div>}
+      </dl>
+    )}
+    {st.note && <p class="note">{st.note}</p>}
+    {(address || mapUrl) && <p class="addr">{address.split('\n').map((l, i) => <Fragment>{i > 0 && <br />}{l}</Fragment>)}{mapUrl && <Fragment><br /><a href={mapUrl}>Open in Google Maps</a></Fragment>}</p>}
+  </div>
+</section>
+)}
+
+<section class="wave" aria-labelledby="h-wave">
+  <div class="in">
+    {c.spot && <h2 id="h-wave" class="spot">{c.spot}</h2>}
+    {fcOn && (
+    <div class="fc" data-json={`https://rosa-data-opal.vercel.app/data/spots/${spotId}.json`} data-spot={spotName}>
+    <div class="fc-now" aria-live="polite">
+      <p class="credit-rosa"><a href={`https://rosa.surf/spot/${spotId}`}>Forecast for {spotName} by Rosa</a></p>
+      <div class="live">
+        <p class="now"><span class="nh">{' '}<small> m</small></span></p>
+        <p class="nd"><span data-f="t"></span><span data-f="swell"></span><span data-f="wind"></span></p>
+        <p class="upd" data-f="upd"></p>
+      </div>
+    </div>
+    <div class="fc-rosa">
+      <a class="fc-link" href={`https://rosa.surf/spot/${spotId}`}><span>See today's forecast for {spotName} on Rosa</span></a>
+      <iframe
+        data-src={`https://rosa.surf/widget/?spot=${spotId}&theme=light&units=metric`}
+        title={`Rosa surf forecast - ${spotName}`}
+        width="100%"
+        height="500"
+        style="max-width:420px;border:0;border-radius:16px;display:block"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+      ></iframe>
+    </div>
+    </div>
+    )}
+    {crops.length > 0 && (
+    <div class="crops" tabindex="0" role="region" aria-label="Beach photographs">{crops.map((p) => (
+      <picture><source type="image/webp" srcset={p.webp} sizes="(max-width:760px) 220px, 300px"><img class="pc" src={p.src} srcset={p.jpg} sizes="(max-width:760px) 220px, 300px" width={p.w} height={p.h} alt={p.alt} loading="lazy" decoding="async"></picture>
+    ))}</div>
+    )}
+  </div>
+</section>
+
+<footer class="end" aria-label="Book and contact">
+  <div class="tiles">{tiles.map((t) => (
+    <a class="tile big" href={t.url}>{t.mark && <img class={`lg`} src={t.mark} alt="" width={t.mw} height="32">}{t.t1 && <span class="t1">{t.t1}</span>}<span class="t2">{t.t2}</span>{t.t3 && <span class="t3">{t.t3}</span>}{t.t4 && <span class="t4">{t.t4}</span>}</a>
+  ))}</div>
+  {rates && <p class="rates">{rates}</p>}
+  <div class="contact">
+    <p><b>{name}</b>{address && <Fragment><br />{address.split('\n').map((l, i) => <Fragment>{i > 0 && <br />}{l}</Fragment>)}</Fragment>}</p>
+    <p>{phone && <a href={phone}>{phoneText}</a>}{phone && mapUrl && <br />}{mapUrl && <a href={mapUrl}>Open in Google Maps</a>}</p>
+    <p class="cred">{photoCredit(name)}</p>
+  </div>
+</footer>
+</main>
+
+<nav class="bar" aria-label="Book">
+  {book && <a class="btn book" href={book}>Check dates</a>}
+  {phone && <a href={phone}>Call</a>}
+</nav>
+
+<div class="veil" hidden></div>
+<aside id="book" class="panel" role="dialog" aria-modal="true" aria-labelledby="book-h" hidden>
+  <div class="ph"><h2 id="book-h">Check dates</h2><button type="button" class="x">Close</button></div>
+  <p class="ctx" aria-live="polite"></p>
+  {rates && <p class="rates">{rates}</p>}
+  <div class="tiles">{tiles.map((t) => (
+    <a class="tile" href={t.url}>{t.t1 && <span class="t1">{t.t1}</span>}<span class="t2">{t.t2}</span>{t.t3 && <span class="t3">{t.t3}</span>}{t.t4 && <span class="t4">{t.t4}</span>}</a>
+  ))}</div>
+  {phone && <p class="pcall">or call <a href={phone}>{phoneText}</a></p>}
+</aside>
+
+<script is:inline set:html={js}></script>
+</body>
+</html>
