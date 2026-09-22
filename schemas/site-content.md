@@ -1,6 +1,6 @@
 # schemas/site-content.md — the fixed content schema: the contract between Payload and the Astro templates.
 
-**Version 0.3** · 2026-09-21 (v0.1 came out of the Payload spike; v0.2 adds `businessType` and the per-type modules below; v0.3 adds the optional `forecast` block; all additive — every v0.1 document is a valid v0.3 document) · source of truth in code: `spikes/payload/cms/src/collections/Sites.ts` + `Media.ts` · reference consumer: `spikes/payload/site/` · proven by `spikes/payload/test/` (both suites green).
+**Version 0.4** · 2026-09-22 (v0.4 adds `ratings[].capturedAt`, required by playbook §6; existing documents need the date filled in by the deployer) · **v0.3** · 2026-09-21 (v0.1 came out of the Payload spike; v0.2 adds `businessType` and the per-type modules below; v0.3 adds the optional `forecast` block; all additive — every v0.1 document is a valid v0.3 document) · source of truth in code: `spikes/payload/cms/src/collections/Sites.ts` + `Media.ts` · reference consumer: `spikes/payload/site/` · proven by `spikes/payload/test/` (both suites green).
 
 Rules of the contract
 
@@ -72,6 +72,7 @@ One schema for every business. `businessType` says which kind of business the do
 | `ratings[].scale` | select: `5` \| `10` | **yes** | no | deployer | the template prints `9.5/10`, never rescales | `"10"` |
 | `ratings[].count` | number | **yes** | no | deployer | ≥ 1 | `38` |
 | `ratings[].url` | text, `https://` URL | no | no | deployer | the listing the score comes from | |
+| `ratings[].capturedAt` | date (YYYY-MM-DD) | **yes** | no | deployer | when the score was read from the platform (the harvester's `fetched_at`); playbook §6 requires a rating to be shown with its count, source and capture date | `"2026-09-19"` |
 | `testimonials[]` | array (≤ 12 rows) | no | – | deployer (owner may delete a row) | **verbatim guest words only**; never paraphrased, never invented, never trimmed into a different meaning | |
 | `testimonials[].quote` | textarea | **yes** | no | deployer | ≤ 600; **not localized** — a guest's words are not translated | `"The most amazing family running the business…"` |
 | `testimonials[].author` | text | **yes** | no | deployer | as published, e.g. first name + country | `"Clara, United Kingdom"` |

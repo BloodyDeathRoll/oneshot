@@ -1,0 +1,494 @@
+{
+  "tenant": {
+    "id": null,
+    "slug": "ka-surf-hostel-and-restaurant",
+    "name": "KA Surf Hostel"
+  },
+  "locales": {
+    "en": {
+      "id": null,
+      "tenant": {
+        "id": null,
+        "name": "KA Surf Hostel",
+        "slug": "ka-surf-hostel-and-restaurant"
+      },
+      "businessName": "KA Surf Hostel",
+      "businessType": "beach_lodging",
+      "tagline": "Surf, chill and feel at home in Ahangama",
+      "languages": [
+        "en"
+      ],
+      "copyBlocks": [
+        {
+          "id": "seed-block-1",
+          "slot": "intro",
+          "heading": "Five minutes from Kabalana Beach",
+          "body": "A family runs this place, and they set out to make you feel at home from the moment you arrive. Kabalana Beach is a five-minute walk.\n\nDorms if you want the company, private rooms if you don't."
+        },
+        {
+          "id": "seed-block-2",
+          "slot": "offer",
+          "heading": "Dorms and private rooms",
+          "body": "Mixed, female and male dormitories with bunk beds, plus double rooms and deluxe doubles. Every room has air conditioning and a fan, private lockers and a personal fridge. The bathrooms are modern and the showers are hot.\n\nRates change with the dates, and the booking links below show what is actually free."
+        },
+        {
+          "id": "seed-block-3",
+          "slot": "about",
+          "heading": "Breakfast, every day",
+          "body": "Rotis, fruit, pancakes and eggs, with vegan options."
+        },
+        {
+          "id": "seed-block-4",
+          "slot": "info",
+          "heading": "What is here",
+          "body": "There's a green garden and a chill zone, and free filtered water you can refill any time. Laundry service is available, and there's a minimarket on site. You can rent a scooter, and it can come with a surf rack. Luggage storage and lockers, too. Reception is open 24 hours.\n\nPets are welcome on request at no charge. Children are not accommodated."
+        },
+        {
+          "id": "seed-block-5",
+          "slot": "about",
+          "heading": "What guests say about the staff",
+          "body": "\"Family\" is the word guests keep using. One of them caught dengue in Kandy and wrote that the staff helped nurse her back to health with Ayurvedic medicines, on top of what the hospital was already giving her.\n\nOn Booking.com the staff get 9.9 out of 10, the hostel's highest score there. Hostelworld guests give them the same 9.9, and only value for money and security do better, both at a full 10."
+        },
+        {
+          "id": "seed-block-6",
+          "slot": "info",
+          "heading": "Getting here",
+          "body": "Ahangama, a five-minute walk from Kabalana Beach. Koggala Airport is about 5 km away; Ahangama railway station is a little over 2 km. The property arranges a shuttle."
+        }
+      ],
+      "openingHours": [],
+      "hoursNote": null,
+      "priceList": [],
+      "photos": [
+        {
+          "id": "seed-photo-1",
+          "image": {
+            "id": 1,
+            "alt": "A private room with a double bed, white plank walls and the door open to the garden",
+            "filename": "img-001.jpg",
+            "mimeType": "image/jpeg",
+            "width": 576,
+            "height": 768,
+            "url": "/api/media/file/img-001.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-2",
+          "image": {
+            "id": 2,
+            "alt": "The dormitory: grey-green timber bunk beds with white linen and a blue runner, under a vaulted ceiling",
+            "filename": "img-004.jpg",
+            "mimeType": "image/jpeg",
+            "width": 576,
+            "height": 768,
+            "url": "/api/media/file/img-004.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-3",
+          "image": {
+            "id": 3,
+            "alt": "A hand holding a plate of papaya, watermelon, pineapple, passion fruit and banana in front of the garden",
+            "filename": "img-003.jpg",
+            "mimeType": "image/jpeg",
+            "width": 576,
+            "height": 768,
+            "url": "/api/media/file/img-003.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-4",
+          "image": {
+            "id": 4,
+            "alt": "An open-air bathroom with a glass roof, a black shower wall, plants and a round basin",
+            "filename": "img-005.jpg",
+            "mimeType": "image/jpeg",
+            "width": 576,
+            "height": 768,
+            "url": "/api/media/file/img-005.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-5",
+          "image": {
+            "id": 5,
+            "alt": "Two small cottages under coconut palms and banana trees",
+            "filename": "img-006.jpg",
+            "mimeType": "image/jpeg",
+            "width": 576,
+            "height": 768,
+            "url": "/api/media/file/img-006.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-6",
+          "image": {
+            "id": 6,
+            "alt": "A bathroom with a round basin and a window full of banana leaves",
+            "filename": "img-008.jpg",
+            "mimeType": "image/jpeg",
+            "width": 576,
+            "height": 768,
+            "url": "/api/media/file/img-008.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-7",
+          "image": {
+            "id": 7,
+            "alt": "Guests around a long wooden table on the veranda at night",
+            "filename": "img-002.jpg",
+            "mimeType": "image/jpeg",
+            "width": 576,
+            "height": 768,
+            "url": "/api/media/file/img-002.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-8",
+          "image": {
+            "id": 8,
+            "alt": "A ring lamp glowing on the white wall of the house at night",
+            "filename": "img-012.jpg",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 576,
+            "url": "/api/media/file/img-012.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-9",
+          "image": {
+            "id": 9,
+            "alt": "Surfers waiting in the water off a sandy beach, low white-water rolling in",
+            "filename": "img-023.jpg",
+            "mimeType": "image/jpeg",
+            "width": 640,
+            "height": 640,
+            "url": "/api/media/file/img-023.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-10",
+          "image": {
+            "id": 10,
+            "alt": "A man beside a stack of blue soft-top surfboards on the beach",
+            "filename": "img-020.jpg",
+            "mimeType": "image/jpeg",
+            "width": 640,
+            "height": 640,
+            "url": "/api/media/file/img-020.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-11",
+          "image": {
+            "id": 11,
+            "alt": "Surfboards leaning on a wooden rail by the beach",
+            "filename": "img-021.jpg",
+            "mimeType": "image/jpeg",
+            "width": 640,
+            "height": 640,
+            "url": "/api/media/file/img-021.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        }
+      ],
+      "contact": {
+        "phone": "+94773746053",
+        "whatsapp": null,
+        "email": null,
+        "address": "207/A Welahangoda, 80650 Ahangama, Sri Lanka",
+        "mapUrl": "https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en"
+      },
+      "bookingLinks": [
+        {
+          "id": "seed-link-1",
+          "label": "Check dates on Hostelworld",
+          "url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/"
+        },
+        {
+          "id": "seed-link-2",
+          "label": "Check dates on Booking.com",
+          "url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html"
+        },
+        {
+          "id": "seed-link-3",
+          "label": "Check dates on Agoda",
+          "url": "https://www.agoda.com/en-in/ka-surf-hostel-h61738910/hotel/ahangama-lk.html"
+        }
+      ],
+      "amenities": [
+        {
+          "note": null,
+          "id": "seed-amenity-1",
+          "label": "Free breakfast"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-2",
+          "label": "Free WiFi"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-3",
+          "label": "Air conditioning and a fan in every room"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-4",
+          "label": "Private lockers and personal fridge in every room"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-5",
+          "label": "Hot showers"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-6",
+          "label": "Garden and chill zone"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-7",
+          "label": "Free filtered water"
+        },
+        {
+          "note": "surf rack available",
+          "id": "seed-amenity-8",
+          "label": "Scooter rental"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-9",
+          "label": "Laundry service"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-10",
+          "label": "Minimarket on site"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-11",
+          "label": "Luggage storage"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-12",
+          "label": "Tour desk"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-13",
+          "label": "24-hour reception"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-14",
+          "label": "24-hour security"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-15",
+          "label": "Airport transfers"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-16",
+          "label": "Bicycle parking"
+        },
+        {
+          "note": "no extra charge",
+          "id": "seed-amenity-17",
+          "label": "Pets allowed on request"
+        }
+      ],
+      "ratings": [
+        {
+          "url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+          "id": "seed-rating-1",
+          "platform": "hostelworld",
+          "score": 9.8,
+          "scale": "10",
+          "count": 66,
+          "capturedAt": "2026-09-19"
+        },
+        {
+          "url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+          "id": "seed-rating-2",
+          "platform": "booking",
+          "score": 9.5,
+          "scale": "10",
+          "count": 38,
+          "capturedAt": "2026-09-19"
+        },
+        {
+          "url": null,
+          "id": "seed-rating-3",
+          "platform": "google",
+          "score": 4.8,
+          "scale": "5",
+          "count": 42,
+          "capturedAt": "2026-09-19"
+        }
+      ],
+      "testimonials": [
+        {
+          "id": "seed-quote-1",
+          "quote": "It's a calm and quiet place, a wonderful staff, caring owners and clean. I had a really good time even i havnt spent much time there. beds are compfy and it has aircon and warm water.",
+          "author": "Wolfgang, Austria",
+          "source": "booking",
+          "date": null
+        },
+        {
+          "id": "seed-quote-2",
+          "quote": "Great family owned hostel :-) they are really friendly and helpful! The breakfast always consists of a typical Sri Lankan dish (roti, hoppers,…) which changes every day and additionally a great fruit platter!! Dorms are big, bathrooms are nice with the whole outdoor thing :-)",
+          "author": "Elena, Germany",
+          "source": "hostelworld",
+          "date": "2026-03"
+        },
+        {
+          "id": "seed-quote-3",
+          "quote": "I got dengue in Kandy and the staff at KA helped nurse me back to health with Ayurvedic medicines (on top of what the hospital was already giving me) They are the kindest people and they attract good vibes. I met some of the best people here :)",
+          "author": "Mia, USA",
+          "source": "hostelworld",
+          "date": "2026-02"
+        },
+        {
+          "id": "seed-quote-4",
+          "quote": "Lovely location away from the main road. So close to the beach! The most amazing family who look after you like you're one of their own. Thank you KA!",
+          "author": "Clara, United Kingdom",
+          "source": "booking",
+          "date": null
+        },
+        {
+          "id": "seed-quote-5",
+          "quote": "Owners very hospitable, breakfast in the morning was great, close to kabalana beach so great for surfing",
+          "author": "Saketh, England",
+          "source": "hostelworld",
+          "date": "2026-02"
+        }
+      ],
+      "spot": "Kabalana: a sandy beach break for beginners and intermediates, and The Rock, a reef A-frame for advanced surfers.",
+      "season": null,
+      "languagesSpoken": [
+        "en"
+      ],
+      "rooms": [
+        {
+          "sleeps": null,
+          "note": null,
+          "photo": null,
+          "id": "seed-room-1",
+          "label": "Bunk bed in mixed dormitory",
+          "beds": "1 bunk bed"
+        },
+        {
+          "sleeps": null,
+          "note": null,
+          "photo": null,
+          "id": "seed-room-2",
+          "label": "Bunk bed in female dormitory",
+          "beds": "1 bunk bed"
+        },
+        {
+          "sleeps": null,
+          "note": null,
+          "photo": null,
+          "id": "seed-room-3",
+          "label": "Bunk bed in male dormitory",
+          "beds": "1 bunk bed"
+        },
+        {
+          "sleeps": null,
+          "note": null,
+          "photo": null,
+          "id": "seed-room-4",
+          "label": "Double room",
+          "beds": "1 extra-large double bed"
+        },
+        {
+          "sleeps": null,
+          "note": null,
+          "photo": null,
+          "id": "seed-room-5",
+          "label": "Deluxe double room",
+          "beds": "1 extra-large double bed"
+        },
+        {
+          "sleeps": null,
+          "note": null,
+          "photo": null,
+          "id": "seed-room-6",
+          "label": "Deluxe double room",
+          "beds": "1 single bed"
+        }
+      ],
+      "stayInfo": {
+        "checkInFrom": "13:00",
+        "checkInTo": "23:00",
+        "checkOutFrom": null,
+        "checkOutTo": "13:00",
+        "minNights": null,
+        "note": "Reception is open 24 hours. Children are not accommodated, and cots and extra beds are not available."
+      },
+      "lessons": [],
+      "credentials": [],
+      "rentals": [],
+      "brands": [],
+      "shaping": null,
+      "forecast": {
+        "enabled": true,
+        "rosaSpotId": "kabalana",
+        "spotName": "Kabalana"
+      },
+      "updatedAt": null,
+      "createdAt": null
+    }
+  }
+}

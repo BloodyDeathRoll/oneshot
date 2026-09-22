@@ -29,3 +29,49 @@ Why
 Facts: unchanged (guests use "family"; dengue story as Mia's account; Booking staff 9.9/10 = highest category; Hostelworld staff 9.9, below Value for Money 10.0 and Security 10.0). Checked against `dossier.json` `reviews.quotes[]` (Clara, Luzzi, Nanet, Elena, Mia). `sources.md` rows "about ¶1 · para 1" / "para 2" already describe the new heading and opening: no change needed.
 
 Could not fix without a fact: nothing.
+
+## 2026-09-22 — run 2026-09-ahangama-02, humanizer 0.2.0 — `copyBlocks[2].body` (breakfast), `spot`, `contact.address` only
+
+Scope: the copywriter's re-draft after critic full · round 1 (HF-1: breakfast "more often than anything else" and spot "when the swell is up" had no dossier entry; address respelled per Shahar). Draft kept byte for byte as `en.draft.json` (`cmp`: identical).
+
+Result: **all three fields left unchanged.**
+
+Why
+- Breakfast body: a long sentence built on concrete nouns (rotis, hoppers, pancakes, eggs, a fruit platter), then a short one that hands the daily change to one guest. Uneven length, no padding, no tell phrase, no triad. The colon introduces a real list, not a reveal. Rewording the second sentence risked sliding it back into the business's voice.
+- Spot: reads as a surfer's label for the field ("the wave this business sits on"). It keeps "beginners and intermediates" and "advanced surfers", carries no swell condition, and stays close to `location.spot`. The colon here names the spot and then what it holds; any looser rewording ("alongside", "go to") would add a position or behaviour the source does not give.
+- `contact.address`: postal string, not touched.
+
+Facts: unchanged (breakfast included, Sri Lankan, rotis/hoppers/pancakes/eggs/fruit platter, vegan option; daily change as Elena's account; Kabalana sandy beach break for beginners and intermediates; The Rock reef A-frame for advanced surfers). `sources.md` rows "about ¶2" and "spot" already match: no change needed.
+
+Out of scope, flagged: the heading of `copyBlocks[2]`, "Breakfast changes every morning", still states the daily change as the business's claim, while the body and `sources.md` ("no frequency claim") now give it as one guest's account. For the copywriter.
+
+Could not fix without a fact: nothing.
+
+## 2026-09-22 — run 2026-09-ahangama-02, humanizer 0.2.0 — `copyBlocks[2]` heading and body (breakfast), after 4c round 4
+
+Scope: the copywriter's re-draft of the breakfast facts after the copyeditor's round 4 fail. `copyBlocks[2].heading`, `copyBlocks[2].body`; `amenities[0]` ("Free breakfast") read but not touched, it is a list label. Draft kept byte for byte as `en.draft.json` (`cmp`: identical).
+
+Result: **both fields left unchanged.**
+
+Why
+- Heading "Breakfast, every day": short, spoken, says what the block holds. "Every day" is the owner's "daily", no claim about the menu changing. No colon, no tell phrase.
+- Body "Rotis, fruit, pancakes and eggs, with vegan options.": a fragment of concrete nouns, four items then the vegan note, which is how a person would say it at the counter. No padding, no triad, no marketing verb. Anything longer would need a fact the owner's list does not give.
+
+Facts: unchanged, and only the owner's (`business.description_long`: "rotis, fruits, pancakes, eggs — vegan options available", "daily"). Checked by script: no "Sri Lankan", "hoppers", "platter", "changes" or "free" in the block; "free" stays only in `amenities[0]`. `sources.md` rows "about ¶2 · heading", "about ¶2 · body" and "amenities[0]" already match: no change needed.
+
+Could not fix without a fact: nothing.
+
+## 2026-09-22 — run 2026-09-ahangama-02, humanizer 0.2.0 — `copyBlocks[0]`, `[3]`, `[4]` bodies, after 4c round 6
+
+Scope: the copywriter's fix of the six round-6 failing clauses, plus the copyeditor's round-6 voice note on `copyBlocks[4]`. Strict facts this round: no new time, duration, frequency, condition, season, quantity, outcome or sensory claim. Draft kept byte for byte as `en.draft.json` (`cmp`: identical).
+
+Result: `copyBlocks[0].body` **unchanged**; `copyBlocks[3].body` and `copyBlocks[4].body` changed.
+
+Why
+- Intro (`[0]`): one long sentence carrying the family's aim ("from the moment you arrive", kept as their aim), a short one for the walk, then the dorms/private fragment. Uneven, spoken, no tell phrase. Left alone.
+- Offer (`[3]`): only the last sentence. The em dash (tell 10) became ", and". Nothing else touched; "private lockers" stays plural.
+- Info (`[4]`): the run of fragments ("Laundry. A minimarket on site.") read like the amenities list pasted in as prose, and the paragraph closed on a three-item list. Rewritten as full sentences of mixed length, keeping one fragment ("Luggage storage and lockers, too.") and ending on a short plain line about reception instead of a list. "Laundry" is now "Laundry service", the source's own words (`facilities[19]`, `description_long`). The surf rack is "can come with", matching the source's "possible" / "available", with no condition.
+
+Facts: identical to the draft, checked field by field: garden, chill zone, free filtered water refillable any time, laundry service, minimarket on site, scooter rental, surf rack, luggage storage, lockers, 24-hour reception, pets on request at no charge, no children; room list, A/C and fan, private lockers, personal fridge, modern bathrooms, hot showers, rates change with the dates, booking links show availability. No fact moved between paragraphs, so `sources.md` needs no change (its info ¶1 row already lists "laundry service available"). Script: only these two bodies differ from `en.draft.json`; none of "ten minutes", "before breakfast", "come back wet", "open to the sky", "season" (outside the null `season` key), "if you ask", "a private locker" appears.
+
+Could not fix without a fact: nothing.
