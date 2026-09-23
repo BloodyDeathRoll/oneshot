@@ -1,23 +1,23 @@
 {
  "slug": "the-lavish-haven",
  "variant": "../final",
- "measured_at": "2026-09-23T09:45:48.017Z",
+ "measured_at": "2026-09-23T11:48:19.909Z",
  "first_load": {
   "requests": 12,
   "hosts": [
-   "localhost:8760"
+   "localhost:8764"
   ],
   "third_party_hosts": [],
-  "bytes_total": 585467,
-  "bytes_html": 57201,
+  "bytes_total": 589031,
+  "bytes_html": 60765,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 26576,
   "bytes_images": 501690,
   "largest_image_bytes": 122396,
-  "lcp_ms": 404,
+  "lcp_ms": 412,
   "cls": 0,
-  "dcl_ms": 727
+  "dcl_ms": 740
  },
  "booking": {
   "external_booking_hrefs": [
@@ -65,7 +65,7 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 4485,
+  "text_length": 4492,
   "booking_links_reachable": 0,
   "visible_images": 10
  },
