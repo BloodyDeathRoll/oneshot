@@ -1,0 +1,1078 @@
+[
+ {
+  "name": "json-ok",
+  "w": 390,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": true,
+  "loading": false,
+  "linkVisible": false,
+  "frameVisible": "visible",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "t1": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "errors": [],
+  "fails": []
+ },
+ {
+  "name": "json-ok",
+  "w": 1440,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": true,
+  "loading": false,
+  "linkVisible": false,
+  "frameVisible": "visible",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "t1": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "errors": [],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED"
+  ]
+ },
+ {
+  "name": "json-ok",
+  "w": 1525,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": true,
+  "loading": false,
+  "linkVisible": false,
+  "frameVisible": "visible",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "t1": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "errors": [],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED"
+  ]
+ },
+ {
+  "name": "json-404",
+  "w": 390,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc off",
+  "rosaOn": false,
+  "loading": false,
+  "linkVisible": true,
+  "frameVisible": "hidden",
+  "src": null,
+  "headline": "hidden",
+  "cls": 0,
+  "t0": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "t1": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "errors": [
+   "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "fails": []
+ },
+ {
+  "name": "json-404",
+  "w": 1440,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc off",
+  "rosaOn": false,
+  "loading": false,
+  "linkVisible": true,
+  "frameVisible": "hidden",
+  "src": null,
+  "headline": "hidden",
+  "cls": 0,
+  "t0": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "t1": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "errors": [
+   "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED"
+  ]
+ },
+ {
+  "name": "json-404",
+  "w": 1525,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc off",
+  "rosaOn": false,
+  "loading": false,
+  "linkVisible": true,
+  "frameVisible": "hidden",
+  "src": null,
+  "headline": "hidden",
+  "cls": 0,
+  "t0": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "t1": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "errors": [
+   "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED"
+  ]
+ },
+ {
+  "name": "json-abort",
+  "w": 390,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc off",
+  "rosaOn": false,
+  "loading": false,
+  "linkVisible": true,
+  "frameVisible": "hidden",
+  "src": null,
+  "headline": "hidden",
+  "cls": 0,
+  "t0": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "t1": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED"
+  ],
+  "fails": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json net::ERR_FAILED"
+  ]
+ },
+ {
+  "name": "json-abort",
+  "w": 1440,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc off",
+  "rosaOn": false,
+  "loading": false,
+  "linkVisible": true,
+  "frameVisible": "hidden",
+  "src": null,
+  "headline": "hidden",
+  "cls": 0,
+  "t0": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "t1": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED"
+  ],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED",
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json net::ERR_FAILED"
+  ]
+ },
+ {
+  "name": "json-abort",
+  "w": 1525,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc off",
+  "rosaOn": false,
+  "loading": false,
+  "linkVisible": true,
+  "frameVisible": "hidden",
+  "src": null,
+  "headline": "hidden",
+  "cls": 0,
+  "t0": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "t1": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED"
+  ],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED",
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json net::ERR_FAILED"
+  ]
+ },
+ {
+  "name": "json-hang",
+  "w": 390,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc off",
+  "rosaOn": false,
+  "loading": false,
+  "linkVisible": true,
+  "frameVisible": "hidden",
+  "src": null,
+  "headline": "hidden",
+  "cls": 0,
+  "t0": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "t1": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "errors": [],
+  "fails": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json net::ERR_ABORTED"
+  ]
+ },
+ {
+  "name": "json-hang",
+  "w": 1440,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc off",
+  "rosaOn": false,
+  "loading": false,
+  "linkVisible": true,
+  "frameVisible": "hidden",
+  "src": null,
+  "headline": "hidden",
+  "cls": 0,
+  "t0": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "t1": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "errors": [],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED",
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json net::ERR_ABORTED"
+  ]
+ },
+ {
+  "name": "json-hang",
+  "w": 1525,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc off",
+  "rosaOn": false,
+  "loading": false,
+  "linkVisible": true,
+  "frameVisible": "hidden",
+  "src": null,
+  "headline": "hidden",
+  "cls": 0,
+  "t0": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "t1": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "errors": [],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED",
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json net::ERR_ABORTED"
+  ]
+ },
+ {
+  "name": "json-stale",
+  "w": 390,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc off",
+  "rosaOn": false,
+  "loading": false,
+  "linkVisible": true,
+  "frameVisible": "hidden",
+  "src": null,
+  "headline": "hidden",
+  "cls": 0,
+  "t0": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "t1": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "errors": [],
+  "fails": []
+ },
+ {
+  "name": "json-stale",
+  "w": 1440,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc off",
+  "rosaOn": false,
+  "loading": false,
+  "linkVisible": true,
+  "frameVisible": "hidden",
+  "src": null,
+  "headline": "hidden",
+  "cls": 0,
+  "t0": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "t1": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "errors": [],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED"
+  ]
+ },
+ {
+  "name": "json-stale",
+  "w": 1525,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc off",
+  "rosaOn": false,
+  "loading": false,
+  "linkVisible": true,
+  "frameVisible": "hidden",
+  "src": null,
+  "headline": "hidden",
+  "cls": 0,
+  "t0": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "t1": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "errors": [],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED"
+  ]
+ },
+ {
+  "name": "widget-abort",
+  "w": 390,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": true,
+  "loading": false,
+  "linkVisible": false,
+  "frameVisible": "visible",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "t1": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "errors": [],
+  "fails": [
+   "GET https://rosa.surf/widget/ net::ERR_FAILED"
+  ]
+ },
+ {
+  "name": "widget-abort",
+  "w": 1440,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": true,
+  "loading": false,
+  "linkVisible": false,
+  "frameVisible": "visible",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "t1": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "errors": [],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED",
+   "GET https://rosa.surf/widget/ net::ERR_FAILED"
+  ]
+ },
+ {
+  "name": "widget-abort",
+  "w": 1525,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": true,
+  "loading": false,
+  "linkVisible": false,
+  "frameVisible": "visible",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "t1": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "errors": [],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED",
+   "GET https://rosa.surf/widget/ net::ERR_FAILED"
+  ]
+ },
+ {
+  "name": "widget-slow-abort",
+  "w": 390,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": true,
+  "loading": false,
+  "linkVisible": false,
+  "frameVisible": "visible",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "t1": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "errors": [],
+  "fails": [
+   "GET https://rosa.surf/widget/ net::ERR_FAILED"
+  ]
+ },
+ {
+  "name": "widget-slow-abort",
+  "w": 1440,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": true,
+  "loading": false,
+  "linkVisible": false,
+  "frameVisible": "visible",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "t1": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "errors": [],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED",
+   "GET https://rosa.surf/widget/ net::ERR_FAILED"
+  ]
+ },
+ {
+  "name": "widget-slow-abort",
+  "w": 1525,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": true,
+  "loading": false,
+  "linkVisible": false,
+  "frameVisible": "visible",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "t1": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "errors": [],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED",
+   "GET https://rosa.surf/widget/ net::ERR_FAILED"
+  ]
+ },
+ {
+  "name": "widget-hang",
+  "w": 390,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": false,
+  "loading": true,
+  "linkVisible": true,
+  "frameVisible": "hidden",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "t1": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "errors": [],
+  "fails": [
+   "GET https://rosa.surf/widget/ net::ERR_FAILED"
+  ]
+ },
+ {
+  "name": "widget-hang",
+  "w": 1440,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": false,
+  "loading": true,
+  "linkVisible": true,
+  "frameVisible": "hidden",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "t1": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "errors": [],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED",
+   "GET https://rosa.surf/widget/ net::ERR_FAILED"
+  ]
+ },
+ {
+  "name": "widget-hang",
+  "w": 1525,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": false,
+  "loading": true,
+  "linkVisible": true,
+  "frameVisible": "hidden",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "t1": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "errors": [],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED",
+   "GET https://rosa.surf/widget/ net::ERR_FAILED"
+  ]
+ },
+ {
+  "name": "widget-500",
+  "w": 390,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": true,
+  "loading": false,
+  "linkVisible": false,
+  "frameVisible": "visible",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "t1": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "errors": [
+   "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+  ],
+  "fails": []
+ },
+ {
+  "name": "widget-500",
+  "w": 1440,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": true,
+  "loading": false,
+  "linkVisible": false,
+  "frameVisible": "visible",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "t1": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "errors": [
+   "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+  ],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED"
+  ]
+ },
+ {
+  "name": "widget-500",
+  "w": 1525,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": true,
+  "loading": false,
+  "linkVisible": false,
+  "frameVisible": "visible",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "t1": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "errors": [
+   "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+  ],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED"
+  ]
+ },
+ {
+  "name": "widget-slow-ok",
+  "w": 390,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": true,
+  "loading": false,
+  "linkVisible": false,
+  "frameVisible": "visible",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "t1": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "errors": [],
+  "fails": []
+ },
+ {
+  "name": "widget-slow-ok",
+  "w": 1440,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": true,
+  "loading": false,
+  "linkVisible": false,
+  "frameVisible": "visible",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "t1": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "errors": [],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED"
+  ]
+ },
+ {
+  "name": "widget-slow-ok",
+  "w": 1525,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": true,
+  "loading": false,
+  "linkVisible": false,
+  "frameVisible": "visible",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "t1": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "errors": [],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED"
+  ]
+ },
+ {
+  "name": "widget-getabort",
+  "w": 390,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": true,
+  "loading": false,
+  "linkVisible": false,
+  "frameVisible": "visible",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "t1": {
+   "now": "20,11416,350,232",
+   "rosa": "20,11696,350,500",
+   "frame": "20,11696,350,500",
+   "next": "0,12649,390,798"
+  },
+  "errors": [],
+  "fails": [
+   "GET https://rosa.surf/widget/ net::ERR_FAILED"
+  ]
+ },
+ {
+  "name": "widget-getabort",
+  "w": 1440,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": true,
+  "loading": false,
+  "linkVisible": false,
+  "frameVisible": "visible",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "t1": {
+   "now": "287,9512,351,289",
+   "rosa": "734,9512,420,500",
+   "frame": "734,9512,420,500",
+   "next": "0,10692,1440,1021"
+  },
+  "errors": [],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED",
+   "GET https://rosa.surf/widget/ net::ERR_FAILED"
+  ]
+ },
+ {
+  "name": "widget-getabort",
+  "w": 1525,
+  "thirdBeforeScroll": 0,
+  "thirdAfter": "HEAD https://www.google.com/generate_204 · GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json · GET https://www.google.com/maps · GET https://rosa.surf/widget/",
+  "same": true,
+  "cls0": 0,
+  "fc": "fc live",
+  "rosaOn": true,
+  "loading": false,
+  "linkVisible": false,
+  "frameVisible": "visible",
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headline": "visible",
+  "cls": 0,
+  "t0": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "t1": {
+   "now": "329,9512,351,289",
+   "rosa": "776,9512,420,500",
+   "frame": "776,9512,420,500",
+   "next": "0,10692,1525,1021"
+  },
+  "errors": [],
+  "fails": [
+   "HEAD https://www.google.com/generate_204 net::ERR_ABORTED",
+   "GET https://rosa.surf/widget/ net::ERR_FAILED"
+  ]
+ }
+]

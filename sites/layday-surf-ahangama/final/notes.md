@@ -369,3 +369,47 @@ The input is `copy/en.json` (review.md round 3 PASS) plus the dossier, which now
   - Space reserved <920: 36 runs, 0 at the top of the page, at the end and at the skip target, and the page never moves. The only focused control under the bar is the Rosa box's link, as before.
   - Rating capture dates: 4 in the HTML.
 - `check-design`: ok, 0 problems. `shoot.mjs` → `pair-fix/shoot/`, errors [].
+
+## Widget-fail fallback (2026-09-23)
+
+Shahar approved porting The Lavish Haven's 4g round-2 fix (its notes, "4g round 2" item 4). **Bug:** `widget()`
+(`src/scripts/site.js`, was line 91) set `.on` on the frame's `load` alone. A cross-origin frame fires
+`load` even when its request fails (it loads the browser's error page), so when Rosa's JSON loaded but the
+widget failed, the box stayed empty with the plain link hidden (playbook §4).
+
+**Reproduced first**, on the pre-fix build (JSON fresh, widget failing, block on screen), at 390 / 1440 / 1525:
+widget abort, slow failure (abort after 3 s) and HTTP 500 all ended `on`, link hidden, empty frame (9 of 9
+runs). A widget that hangs showed the link but kept `src` set and `data-loading` stuck.
+`shots/widget-fail/before/`, `widget-fail-before-vs-after.png`.
+
+**Fix** (only `widget()`, same mechanics as Lavish, in this file's style): one CORS `HEAD` to the widget URL
+first (rosa.surf answers HEAD 200 with `access-control-allow-origin: *`, re-checked live 2026-09-23). The
+frame gets its `src` only if that answers OK, and `.on` is set only after `load`. A failed HEAD, a non-OK
+status or no `load` within 10 s removes `src` and leaves the link, which is visible from the start in the
+same reserved box. The headline keeps its data, because its own request succeeded. Markup and CSS are
+unchanged: the before and after `index.html` differ only in the inline script (62 550 → 63 634 B).
+
+**Matrix** (`fcstates.mjs`, adapted from Lavish's; `shots/widget-fail/states/` + `fcstates.json`), block on
+screen when each result lands, 390 / 1440 / 1525, 33 runs:
+- JSON paths: success 1 s, 404 after 1 s, abort after 3 s, hang to the 10 s timeout, stale 30 h. Success
+  shows the widget; the other four show the link with the headline hidden. Same as before the fix.
+- Widget failing with JSON fresh: abort at once, slow failure after 3 s, hang to 10 s, HTTP 500. All 12
+  runs end with the link visible, `src` removed, the frame hidden, the headline visible, and nothing
+  loading.
+- Slow widget success (3 s): widget shown.
+- CLS 0 in all 33. 0 third-party requests before the scroll in all 33. 0 page errors. The only console
+  lines are the browser's own "Failed to load resource" on the failure paths.
+- positions identical before/after at 1440 and 1525; at 390 every path that draws fresh data moves the widget box and everything below it by 1 px between the two readings (6990 → 6991), with CLS 0. That happens identically on the pre-fix build (`before/fcstates.json`), so it predates this change and I haven't touched it.
+- Harness note: the harness also stubs Google map requests (it's shared with KA). Layday makes none.
+
+**Still not covered, as at Lavish:** HEAD succeeds but the frame's own GET then fails (`widget-getabort`).
+That still leaves an empty box, and it can't be detected from outside a cross-origin frame, because Rosa's
+widget sends no `postMessage`. Cost on success: one extra HEAD to rosa.surf after the scroll.
+
+**Look:** `tools/shoot.mjs` on the rebuilt site (live network) → `shots/widget-fail/success/`, errors [] at both
+widths. For a deterministic success-path compare, I used a scratch copy of `shoot.mjs` that only adds
+routes (Rosa JSON = fixture, widget = stub, Google map = stub). I ran it twice on each build and compared
+before vs after: **0 px on all 26 captures (12 desktop + 14 mobile), in both pairs.** The live-network shoot (`success/`) differed only on desktop-00: anti-aliasing on the WebGL box edges between runs.
+
+`npm run build`: clean. Scratch: `/tmp/claude-1000/…/scratchpad/widget-fix/` (harness, pre-fix `dist`, raw runs).
+Servers on 8770–8773 stopped. Not deployed, ledger not written, nothing committed.

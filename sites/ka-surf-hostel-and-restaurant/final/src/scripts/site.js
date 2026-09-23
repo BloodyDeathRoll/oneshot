@@ -63,10 +63,32 @@ if (fc) {
       fs -= 2;
     }
   };
+  /* a cross-origin iframe fires `load` even when its request was blocked or failed (it loads the
+     browser's error page), so `load` alone showed an empty box with the link hidden. The widget is
+     shown only when a HEAD request to the same URL has answered OK (rosa.surf/widget/ answers HEAD 200
+     with access-control-allow-origin *, checked 2026-09-23) AND the frame has loaded, within 10 s.
+     Otherwise the frame loses its src and the plain link, visible all along in the same reserved box,
+     stays. The headline keeps its fresh data: that request succeeded. Same as The Lavish Haven build. */
   const widget = () => {
+    const src = rosaFrame.dataset.src;
+    let done = false;
     box.dataset.loading = 'true';
-    rosaFrame.addEventListener('load', () => { box.classList.add('on'); delete box.dataset.loading; }, {once: true});
-    rosaFrame.src = rosaFrame.dataset.src;
+    const end = (show) => {
+      if (done) return;
+      done = true;
+      clearTimeout(to);
+      delete box.dataset.loading;
+      if (show) box.classList.add('on');
+      else { box.classList.remove('on'); rosaFrame.removeAttribute('src'); }
+    };
+    const to = setTimeout(() => end(false), 10000);
+    fetch(src, {method: 'HEAD', credentials: 'omit'})
+      .then((r) => {
+        if (!r.ok) throw new Error(r.status);
+        rosaFrame.addEventListener('load', () => end(true), {once: true});
+        rosaFrame.src = src;
+      })
+      .catch(() => end(false));
   };
   if (!('IntersectionObserver' in window) || !window.fetch || location.protocol === 'file:') fail();
   else {
