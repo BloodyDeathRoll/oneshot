@@ -67,7 +67,7 @@ a{color:inherit}
 .rim{pointer-events:none}
 .rim polygon{fill:none;stroke:var(--ink);stroke-width:12;vector-effect:non-scaling-stroke;stroke-linejoin:miter}
 .hero-copy{position:relative;z-index:3;padding:clamp(120px,22svh,220px) var(--pad) 0;max-width:min(56vw,900px)}
-.hero-copy h1 span{display:block}
+.hero-copy .display span{display:block}   /* 4h: was `.hero-copy h1 span`; the headline is a <p class="display"> now, the h1 is the name */
 .proof{display:flex;flex-wrap:wrap;gap:10px 40px;margin-top:clamp(28px,5svh,56px)}
 .proof b{font-weight:500;font-size:30px;line-height:1;letter-spacing:-.01em;margin-right:8px}
 .proof li{display:flex;align-items:baseline;font-size:15px;color:var(--stone)}
@@ -99,9 +99,9 @@ a{color:inherit}
 }
 
 /* one orchestrated moment on load */
-.motion .hero-copy h1 span,.motion .proof,.motion .hero-copy .book{opacity:0;transform:translateY(22px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
-.motion .hero-copy h1 span:nth-child(2){animation-delay:.08s}
-.motion .hero-copy h1 span:nth-child(3){animation-delay:.16s}
+.motion .hero-copy .display span,.motion .proof,.motion .hero-copy .book{opacity:0;transform:translateY(22px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+.motion .hero-copy .display span:nth-child(2){animation-delay:.08s}
+.motion .hero-copy .display span:nth-child(3){animation-delay:.16s}
 .motion .proof{animation-delay:.34s}
 .motion .hero-copy .book{animation-delay:.44s}
 @keyframes rise{to{opacity:1;transform:none}}
@@ -297,3 +297,8 @@ picture{display:contents}
   .foot li>a{display:inline-flex;align-items:center;min-height:44px}
   .foot li+li{margin-top:0}
 }
+
+/* 4h (SEO): the page's one <h1> is the business name in the bar (the brand query), wrapped around the
+   existing link. display:contents gives the h1 no box, so the link stays the bar's flex item with its
+   own size, weight and tap padding; font:inherit keeps the h1's UA font from reaching the link. */
+.bar h1{display:contents;font:inherit}
