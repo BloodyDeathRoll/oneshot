@@ -1,0 +1,80 @@
+== 1440 tab order (first 40)
+A.skip "Skip to content" 146x52 outline:solid/2px inDrawer:false
+A.tel "+94 77 855 3343" 115x25 outline:solid/2px inDrawer:false
+A "9.8/10 on Hostelworld, 10 revi" 229x20 outline:solid/2px inDrawer:false
+A.book "Check dates" 157x52 outline:solid/2px inDrawer:false
+A.call "or call +94 77 855 3343" 161x25 outline:solid/2px inDrawer:false
+A "check dates" 93x26 outline:solid/2px inDrawer:false
+A "Hostelworld" 76x19 outline:solid/2px inDrawer:false
+A "Hostelworld" 76x19 outline:solid/2px inDrawer:false
+A.maplink "Open the map" 116x28 outline:solid/2px inDrawer:false
+A "Hostelworld" 85x20 outline:solid/2px inDrawer:false
+A "Booking.com" 90x20 outline:solid/2px inDrawer:false
+A "Hostelworld" 76x19 outline:solid/2px inDrawer:false
+A "Booking.com" 83x19 outline:solid/2px inDrawer:false
+A "Booking.com" 83x19 outline:solid/2px inDrawer:false
+A "Forecast for Kabalana by Rosa" 214x20 outline:solid/2px inDrawer:false
+A.fc-link "See today's forecast for Kabal" 420x500 outline:solid/2px inDrawer:false
+A "Open the map" 116x23 outline:solid/2px inDrawer:false
+A "Check dates on Hostelworld" 772x64 outline:solid/2px inDrawer:false
+A "Check dates on Booking.com" 772x64 outline:solid/2px inDrawer:false
+A "Check dates on Agoda" 772x64 outline:solid/2px inDrawer:false
+A "Call +94 77 855 3343" 144x25 outline:solid/2px inDrawer:false
+BODY "Skip to content
+Layday Surf Ah" 1440x9162 outline:none/3px inDrawer:false
+A.skip "Skip to content" 146x52 outline:solid/2px inDrawer:false
+A.tel "+94 77 855 3343" 115x25 outline:solid/2px inDrawer:false
+focused: A.book "Check dates" 157x52 outline:solid/2px inDrawer:false
+== 1440 drawer: open=true first=A "Check dates on Hostelworld" 507x52 outline:solid/2px inDrawer:true
+ cycle:
+  A "Check dates on Booking.com" 507x52 outline:solid/2px inDrawer:true
+  A "Check dates on Agoda" 507x52 outline:solid/2px inDrawer:true
+  A "Call +94 77 855 3343" 144x20 outline:solid/2px inDrawer:true
+  BUTTON.x "Close" 51x44 outline:solid/2px inDrawer:true
+  A "Check dates on Hostelworld" 507x52 outline:solid/2px inDrawer:true
+  A "Check dates on Booking.com" 507x52 outline:solid/2px inDrawer:true
+  A "Check dates on Agoda" 507x52 outline:solid/2px inDrawer:true
+ esc -> {"hidden":true,"focus":"book Check dates"} navigations=[]
+== 1440 axe {"v":[],"inc":["color-contrast x7"],"pass":25}
+== 1440 tap targets: 20, under 44 either side: 15 [["+94 77 855 3343",115,25],["9.8/10 on Hostelworld, 10 re",229,20],["or call +94 77 855 3343",161,25],["check dates",93,26],["Hostelworld",76,19],["Hostelworld",76,19],["Open the map",116,28],["Hostelworld",85,20],["Booking.com",90,20],["Hostelworld",76,19],["Booking.com",83,19],["Booking.com",83,19],["Forecast for Kabalana by Ros",214,20],["Open the map",116,23],["Call +94 77 855 3343",144,25]]
+== 390 tab order (first 40)
+A.skip "Skip to content" 146x52 outline:solid/2px inDrawer:false
+A "9.8/10 on Hostelworld, 10 revi" 229x45 outline:solid/2px inDrawer:false
+A.book "Check dates" 157x52 outline:solid/2px inDrawer:false
+A.call "or call +94 77 855 3343" 161x50 outline:solid/2px inDrawer:false
+A "check dates" 93x52 outline:solid/2px inDrawer:false
+A "Hostelworld" 76x44 outline:solid/2px inDrawer:false
+A "Hostelworld" 76x44 outline:solid/2px inDrawer:false
+A.maplink "Open the map" 116x53 outline:solid/2px inDrawer:false
+DIV.trio "" 370x275 outline:solid/2px inDrawer:false
+A "Hostelworld" 85x45 outline:solid/2px inDrawer:false
+A "Booking.com" 90x45 outline:solid/2px inDrawer:false
+A "Hostelworld" 76x44 outline:solid/2px inDrawer:false
+A "Booking.com" 83x44 outline:solid/2px inDrawer:false
+A "Booking.com" 83x44 outline:solid/2px inDrawer:false
+A "Forecast for Kabalana by Rosa" 214x45 outline:solid/2px inDrawer:false
+A.fc-link "See today's forecast for Kabal" 350x500 outline:solid/2px inDrawer:false
+DIV.trio "" 370x275 outline:solid/2px inDrawer:false
+A "Open the map" 116x53 outline:solid/2px inDrawer:false
+A "Check dates on Hostelworld" 276x56 outline:solid/2px inDrawer:false
+A "Check dates on Booking.com" 276x56 outline:solid/2px inDrawer:false
+A "Check dates on Agoda" 276x56 outline:solid/2px inDrawer:false
+A "Call +94 77 855 3343" 276x50 outline:solid/2px inDrawer:false
+SUMMARY "Check dates" 127x44 outline:solid/2px inDrawer:false
+A.mcall "Call" 41x50 outline:solid/2px inDrawer:false
+focused: A.book "Check dates" 157x52 outline:solid/2px inDrawer:false
+== 390 drawer: open=true first=A "Check dates on Hostelworld" 350x52 outline:solid/2px inDrawer:true
+ cycle:
+  A "Check dates on Booking.com" 350x52 outline:solid/2px inDrawer:true
+  A "Check dates on Agoda" 350x52 outline:solid/2px inDrawer:true
+  A "Call +94 77 855 3343" 144x45 outline:solid/2px inDrawer:true
+  BUTTON.x "Close" 51x44 outline:solid/2px inDrawer:true
+  A "Check dates on Hostelworld" 350x52 outline:solid/2px inDrawer:true
+  A "Check dates on Booking.com" 350x52 outline:solid/2px inDrawer:true
+  A "Check dates on Agoda" 350x52 outline:solid/2px inDrawer:true
+ esc -> {"hidden":true,"focus":"book Check dates"} navigations=[]
+tap hero Check dates -> {"open":true,"links":["https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/","https://www.booking.com/hotel/lk/layday-surf-ahangama.html","https://www.agoda.com/layday-surf-ahangama/hotel/piyadigama-lk.html","tel:+94778553343"]} tap first drawer link -> nav ["https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/"]
+tap bar Check dates -> {"drawerOpen":true,"detailsOpen":false,"panel":["https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/","https://www.booking.com/hotel/lk/layday-surf-ahangama.html","https://www.agoda.com/layday-surf-ahangama/hotel/piyadigama-lk.html","tel:+94778553343"]}
+bar Call -> tel:+94778553343
+== 390 axe {"v":["scrollable-region-focusable (serious) x2: .built > .grid > .trio ; .wave > .grid > .trio"],"inc":["color-contrast x17"],"pass":25}
+== 390 tap targets: 19, under 44 either side: 0 []

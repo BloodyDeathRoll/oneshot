@@ -557,3 +557,95 @@ reason: (1) a space before `.when` and before the address's map link (`index.ast
 (2) `tabindex="0"` + an `aria-label` on the two `.trio` scrollers, or no sideways scroll at 390 → dimension 6;
 (3) render either the Practicalities sentence or `stayInfo.note`'s repeated items, not both — a
 designer/copywriter call → dimension 5.
+
+# Verification after the widget-fail fix — final site, "Inside", 2026-09-23
+
+critic 0.3.2 · full mode, verification pass (not a scored round) · playbook 0.5.2 · rubric 0.1.0. Under review:
+`db47eb5`. Since round 1 (`e164d0a`) the only source change is `widget()` in `src/scripts/site.js` (+24 / −2):
+a CORS `HEAD` to Rosa's widget URL before the frame gets `src`; any failure, non-OK status or no `load`
+within 10 s removes `src` and leaves the plain link. Rebuilt with `npm run build` (clean, 0 warnings;
+`index.html` 63 634 B). I also built the pre-fix `site.js` in scratch: every file in the two `dist/` is
+byte-identical except `index.html`, and that one differs only in the inline script. Plain `python3 -m
+http.server` on 8750 (fix) and 8751 (pre-fix), both stopped. Headless Chromium, software GL, no real phone.
+
+```
+mode: full (verification)   round: 1 (unchanged)   variant: unique ("Inside")
+total: 91.5 / 100 (not re-scored)   result: pass   hard_fails: []
+```
+
+## The forecast matrix (my own harness; `critic-2/states/`)
+
+Rosa JSON and widget stubbed per path; block scrolled on screen (`.fc` 120 px under the viewport top) before
+any answer lands; 390 / 1440 / 1525. **42 runs on the fix, 30 on the pre-fix build.**
+
+| Path (JSON · widget) | Fix: end state, all 3 widths | Pre-fix build |
+|---|---|---|
+| fresh 1 s · **abort at once** | link visible and hit-tested at its centre, fills the 420×500 / 350×500 box; `src` removed, frame `about:blank`; headline shown | `on`, link hidden, frame = `chrome-error://` → empty box |
+| fresh · **abort after 3 s** | same (settles at ~4.05 s) | empty box |
+| fresh · **hang** (HEAD never answers) | same, at the 10 s timeout (~11.0 s) | link visible but `src` set and `data-loading` stuck |
+| fresh · **HTTP 500** | same (settles ~1.1 s) | `on`, 500 page in the frame |
+| fresh · HEAD 200, GET hangs (extra) | same, at the 10 s timeout | — |
+| fresh · **slow success 3 s** | widget shown, link hidden | widget shown |
+| JSON **success 1 s** · widget OK | headline + widget | same |
+| JSON **404 after 1 s** / **abort after 3 s** / **hang (10 s)** / **stale 30 h** | link, headline hidden (`.fc.off`) | same |
+
+On every one of the 42 runs: **CLS 0**; **0 third-party requests before the scroll**; after it exactly
+`GET kabalana.json` (+ `HEAD` widget on fresh data, + `GET` widget document only when the HEAD answered OK);
+**0 page errors; 0 console errors except the browser's own "Failed to load resource"** on the abort / 404 /
+500 paths (the only other console lines are warnings: Chromium's sandbox note on the unchanged iframe
+markup, and the headless GL driver). Page boxes of `.fc-now`, `.fc-rosa`, the spot heading and the next
+section are identical before and after at 1440 and 1525; at 390 every fresh-data path moves `.fc-rosa` and
+everything below it by 1 px (6990 → 6991), CLS 0 — **identical on the pre-fix build**, so it predates the fix.
+Keyboard: on a widget failure Tab goes credit → "See today's forecast for Kabalana on Rosa" → next; on
+success credit → the iframe. `matrix-after.json`, `matrix-before-fix.json`.
+
+Two things the fix does not cover, both facts, neither re-scored:
+- **HEAD 200, then the frame's own GET fails** (`w-getabort`, run at 390 / 1440 / 1525): `on`, frame =
+  `chrome-error://`, link hidden — **an empty box**, playbook §4's "never an empty box" still unmet on that
+  one path. Not detectable from outside a cross-origin frame without a `postMessage` from Rosa (as
+  `final/notes.md` says).
+- On a hung HEAD the request itself is never aborted (no `AbortController` on it); nothing visible, nothing
+  marked loading.
+
+## Success path looks the same
+
+- Stubbed (deterministic), `.wave` section, fix vs pre-fix: **0 px different** on JSON-success at 390 / 1440 /
+  1525 and on the 404 and stale paths; slow success: 0 px at 1440 / 1525, 75 px at 390 = the "updated 15:54"
+  vs "15:55" of my fixture clock, not the fix.
+- Live network, `tools/shoot.mjs` (`critic-2/shoot/`, errors `[]` at both widths; page 9 162 / 10 341 px as
+  in round 1): **0 px different from `critic-1/` on 22 of 26 captures**; the 4 others (desktop-07/08,
+  mobile-08/09) are the forecast screens, where only Rosa's live numbers changed (0.7–1.0 m at 08:30 then,
+  0.4–0.6 m at 14:30 now); same layout, same widget.
+
+## Nothing else regressed (quick re-check)
+
+- **Pick note 1** (`sweep-js-ok.json`, `sweep-js-wfail.json`, 20 px steps): 1440 — 0 steps with text under
+  the dock; 390 — top and end clear, text under the bar only mid-scroll (313 / 319 steps). **Holds.**
+- **Pick note 2:** longest empty run 40 px at 390, 80 px at 1440, as in round 1. **Holds.**
+- **Pick note 3:** "read 19 September 2026" ×4 in `index.html`. **Holds.**
+- **Taps at 390** (`tap-390-drawer.png`, `tap-390-dock.png`): hero "Check dates" opens the drawer
+  (Hostelworld / Booking.com / Agoda / `tel:+94778553343`), first link navigates to the Hostelworld listing;
+  bar "Check dates" opens the same drawer; bar "Call" = `tel:+94778553343`. Keyboard drawer at 390 / 1440:
+  focus in, Tab wraps, Esc closes, focus back on "Check dates" (`kbd-*.png`).
+- **axe** (WCAG 2.0/2.1 A+AA, page scrolled, with the widget failed and with it loaded): **1440: 0
+  violations**; **390: `scrollable-region-focusable` ×2** (the two `.trio` rows) — the same as round 1, no new
+  one. Tap targets at 390: 0 under 44 px.
+
+**Result: the fix works on all four named widget-fail paths at all three widths, the JSON paths and the
+success path are unchanged, and nothing else moved. Scores unchanged: 91.5, pass.** Round 1's non-blocking
+fix list stands.
+
+what the designer prompt got wrong: round 1 (mine) and the designer both tested the Rosa block by failing
+the **JSON**; neither failed the **widget** with the JSON fresh, which is where the empty box was. The
+matrix for any embed has two independent requests and must be run as a product — headline request × widget
+request — including "the frame's own document fails after a check succeeded", which is still an empty box
+here and can only be closed by Rosa sending a `postMessage` on load. Worth a line in `agents/designer/tools.md`
+and in critic hard constraint 9.
+
+## Evidence
+
+`sites/layday-surf-ahangama/final/shots/critic-2/`: `states/` (`<path>-<width>.png` ×36, `matrix-after.json`,
+`matrix-before-fix.json`); `shoot/` (`desktop-00…11`, `mobile-00…13`, sheets, `shoot.json`);
+`sweep-js-ok.json`, `sweep-js-wfail.json`; `kbd-{1440,390}-drawer.png`, `tap-390-drawer.png`,
+`tap-390-dock.png`, `kbd-ok.log`, `kbd-wfail.log` (tab order, drawer, taps, axe, tap targets). Harness in the
+session scratchpad (`layday-critic2/`), not in the repo.
