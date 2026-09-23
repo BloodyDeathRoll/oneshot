@@ -176,3 +176,152 @@ Method: every double-quoted string in the "Rests on" column and in "Deliberately
 - Nothing else in the file may change. The next round re-checks the whole file anyway.
 
 Round count: this is round 2, the last one base.md allows. The fact fail is not a case of the dossier being unable to support a site: the fix removes or re-grounds one clause, and the dossier holds enough for the rest. Whether a round 3 runs is Shahar's call.
+
+## round 3 — full-file re-check after the round-3 4a/4b fixes, 2026-09-23
+
+Reviewer: copyeditor 0.3.0 (runtime prompt from `node tools/prompt.mjs copyeditor`, every layer read). Independent of the copywriter and humanizer. This is a round past base.md's limit of 2: Shahar allowed it at the gate (ledger 09:03:11Z). Rules applied as in round 2: hard constraint 6, so every sentence of the whole file is checked again and so is every `sources.md` citation. A verbatim guest observation of a physical fact is a source, but never for a ranking, a frequency, a cause or ownership. No framing exemptions: `framing` is used only for headings that assert nothing.
+
+### Scope check
+- **`en.draft.json` (copywriter round 3) vs `en.json` (humanizer round 3), by JSON diff:** only `copyBlocks` differ, in three bodies (intro ¶1, dorm ¶1, offer ¶1). Every other key is equal, so the humanizer's "only `copyBlocks` differs" is true.
+  - Appeared: nothing. Intro "There is a shared kitchen, plus a garden and terrace" is the same three facilities as the draft's "with a shared kitchen, a terrace and a garden". "Someone else went as far as" attributes the third quote to a third guest and adds no count or frequency. "The showers are hot" is the draft's "hot showers".
+  - Vanished: nothing.
+  - Strengthened: nothing. "went as far as" says Beth's words are stronger than the other two quotes. They are ("absolutely spotless" against "super clean" / "very clean"), and it says nothing new about the property.
+- **Round-2 `en.json` vs round-3 `en.json` (what 4a + 4b changed together):**
+  - Intro: "with Kabalana Beach a few steps away", "It is one dorm and a garden" and "owned by a family" were removed. "There is a shared kitchen, plus a garden and terrace" was added. It moved there from the offer block and is sourced.
+  - Dorm ¶1: the triad was split into a pair plus a separate sentence.
+  - Offer ¶1: "One air-conditioned dormitory, with lockers, luggage storage and hot showers" became "The dormitory is air-conditioned, with lockers and luggage storage". Hot showers now have their own sentence, and "as well as the terrace and the garden" was removed (both are still in the intro and in `amenities[5]`).
+  - `copywriter_version` 0.3.0 → 0.3.1.
+  - No fact is lost from the file, and each one removed from a body is still in another block or in `amenities[]`. Round-2 notes N1 (intro read as "one dorm and a garden"), N2 (showers read as en-suite) and N3 (two distances in one block) are resolved.
+- **Process note:** round 2 said "Nothing else in the file may change". The copywriter still changed intro S1 (cut "a few steps away") and offer ¶1 (the N2 fix), and the humanizer reworded intro ¶1 and offer ¶1 again. Every change is covered by this full re-check and none is a fault, but the scope went beyond the gate answer (ledger 09:03:11Z: "copywriter drops 'owned by a family' … humanizer breaks the rule-of-three cleanliness line").
+
+### Fact audit (whole file)
+
+| # | Field | Sentence / claim | Dossier key (words re-read) | Verdict |
+|---|---|---|---|---|
+| 1 | `businessName` | "Layday Surf Ahangama" | `business.name` (Booking.com) | sourced |
+| 2 | `tagline` | "Surf, chill and feel at home in Ahangama" | `business.tagline` "Surf, Chill & Feel at Home in Ahangama" (the owner's Hostelworld headline); only the case and the "&" changed | sourced |
+| — | `languagesSpoken` | `[]` | `languages_spoken` is empty | no claim |
+| 3 | `copyBlocks[0].heading` | "A two-minute walk from Kabalana" | `location.distance_to_beach` "guests say a 2-minute walk"; `reviews.quotes[7]` Beth "just a 2-min walk to Kabalana Beach" (physical) | sourced |
+| 4 | `copyBlocks[0].body` S1a | "Layday is small" | `reviews.quotes[0]` Taiya "It's a tiny place"; `[1]` "quite small" | sourced |
+| 5 | `copyBlocks[0].body` S1b | "and new." | `[7]` "Newly built"; `[4]` "New and clean"; `[3]` "new and comfy" | sourced |
+| 6 | `copyBlocks[0].body` S2a | "There is a shared kitchen" | `facilities[5]` "shared kitchen with kitchenette, dishwasher, kettle and kitchenware" | sourced |
+| 7 | `copyBlocks[0].body` S2b | "plus a garden and terrace." | `facilities[7]` "garden and terrace with outdoor dining" | sourced |
+| 8 | `copyBlocks[0].body` S3 | "It is quiet, too." | `reviews.quotes[5]` Catherine "it is very quiet which was amazing" (a physical condition, quoted in the next sentence; her cause is not restated) | sourced |
+| 9 | `copyBlocks[0].body` S4 | "One guest called it "very quiet which was amazing"." | `[5]`, verbatim | sourced |
+| 10 | `copyBlocks[1].heading` | "Just one dorm" | `[5]` "just one dorm room"; `room_types[0]` | sourced |
+| 11 | `copyBlocks[1].body` S1 | "There is only the one dormitory." | same as row 10 | sourced |
+| 12 | `copyBlocks[1].body` S2 | "One guest wrote "super clean" and another "very clean"." | `[6]` Jennine "Super clean" (lower-case "super clean" is verbatim in `[0]` Taiya and `[2]` Nas); `[5]` Catherine "very clean". Two guests | sourced |
+| 13 | `copyBlocks[1].body` S3 | "Someone else went as far as "absolutely spotless"." | `[7]` Beth "absolutely spotless", a third guest who is neither Jennine nor Catherine. "went as far as" compares the quotes, not the property | sourced |
+| 14 | `copyBlocks[1].body` S4a | "On Hostelworld it scores 10 out of 10 in every category (value for money, security, atmosphere, cleanliness, staff, location and facilities)" | `reviews.hostelworld.categories`: exactly seven categories, all 10.0. The overall 9.8 is not called perfect | sourced |
+| 15 | `copyBlocks[1].body` S4b | "though that is from ten reviews." | `reviews.hostelworld.count` 10 | sourced |
+| 16 | `copyBlocks[2].heading` a | "Newly built" | `[7]` "Newly built" (physical) | sourced |
+| 17 | `copyBlocks[2].heading` b | "and kept that way" | `facilities[15]` "daily housekeeping" (Booking.com) | sourced |
+| 18 | `copyBlocks[2].body` S1 | "There is housekeeping every day." | `facilities[15]` | sourced |
+| 19 | `copyBlocks[2].body` S2 | "One guest called the beds "super comfy" and the showers "amazing"." | `[7]` "Super comfy beds", "amazing showers"; attributed to one guest | sourced |
+| 20 | `copyBlocks[2].body` S3a | "Two wrote that they stayed on longer than they had planned" | `[7]` Beth "I extended my stay way longer than expected"; `[0]` Taiya "only supposed to stay a night … ended up here a week". Exactly two, as reported speech | sourced |
+| 21 | `copyBlocks[2].body` S3b | "and one was only supposed to stay a night and "ended up here a week"." | `[0]`, verbatim, before Booking's truncation | sourced |
+| 22 | `copyBlocks[3].heading` | "The room" | labels the block | framing |
+| 23 | `copyBlocks[3].body` S1a | "The dormitory is air-conditioned" | `room_types[0]`; `facilities[8]` "air conditioning"; `[5]` Catherine "good air conditioning" | sourced |
+| 24 | `copyBlocks[3].body` S1b | "with lockers and luggage storage." | `facilities[12]` "lockers", `[20]` "free security lockers", `[14]` "baggage storage" | sourced |
+| 25 | `copyBlocks[3].body` S2a | "The shared kitchen has a kettle, a dishwasher and kitchenware" | `facilities[5]` | sourced |
+| 26 | `copyBlocks[3].body` S2b | "and there is a dining area." | `facilities[6]` "dining area and seating area" | sourced |
+| 27 | `copyBlocks[3].body` S3 | "The showers are hot." | `facilities[24]` "hot showers". It is its own sentence, after the shared spaces, so it no longer reads as en-suite (`facilities[11]` "shared bathroom"). Nothing is asserted either way | sourced |
+| 28 | `copyBlocks[3].body` S4 | "Rates change with the dates." | `booking.path.note` "live inventory on Booking.com, Hostelworld and Agoda"; `gaps[]` "offers" | sourced |
+| 29 | `copyBlocks[3].body` S5 | "The booking links show what is available." | `booking.path.note`; `booking.engine_url`; `booking.other_engines` | sourced |
+| 30 | `copyBlocks[4].heading` | "Finding the door" | labels the block | framing |
+| 31 | `copyBlocks[4].body` S1 | "One guest found it "a little bit difficult to find", so here is the way in." | `[5]` "A little bit difficult to find" (only the case changed) | sourced |
+| 32 | `copyBlocks[4].body` S2 | "Follow Google Maps." | `location.finding_it` "Follow Google Maps" | sourced |
+| 33 | `copyBlocks[4].body` S3 | "You will come to a large black gate; open it." | `location.finding_it` "there is a large black gate that you need to open" | sourced |
+| 34 | `copyBlocks[4].body` S4 | "Through the gate there is a wooden platform with a door through to the Layday area, to the right of the house." | `location.finding_it`: the order and the ambiguity are kept, and the promised sign is not written | sourced |
+| 35 | `copyBlocks[5].heading` | "Practicalities" | labels the block | framing |
+| 36 | `copyBlocks[5].body` S1 | "Check-in is between 14:00 and 19:00, and check-out is by 14:00." | `stayInfo.checkInFrom/To/checkOutTo`; `hours_note` | sourced |
+| 37 | `copyBlocks[5].body` S2 | "Credit cards are not accepted." | `stayInfo.note` | sourced |
+| 38 | `copyBlocks[5].body` S3a | "Taxes are included" | `stayInfo.note` | sourced |
+| 39 | `copyBlocks[5].body` S3b | "and it is non-smoking." | `stayInfo.note`; `facilities[4]` "non-smoking rooms" | sourced |
+| 40 | `copyBlocks[5].body` S4 | "WiFi is free, and so is the private parking." | `facilities[0]`, `[1]` | sourced |
+| 41 | `copyBlocks[5].body` S5a | "There is laundry, daily housekeeping, bicycles to rent and an airport shuttle" | `facilities[16]` (additional charge, and not called free), `[15]`, `[17]`, `[2]` | sourced |
+| 42 | `copyBlocks[5].body` S5b | "and pets can come at no extra charge." | `facilities[19]` | sourced |
+| 43 | `spot` | "Kabalana: a sandy beach break for beginners and intermediates" | `location.spot` (thesurfatlas.com, third party) | shared-context |
+| 44 | `spot` | "with The Rock, a reef A-frame for advanced surfers." | `location.spot` | shared-context |
+| — | `season` | `null` | `season.value` null; `gaps[]` | no claim |
+| 45 | `rooms[0].label` | "Bed in the dormitory" | `room_types[0]`; no bed count (`contradictions[0]`) | sourced |
+| 46 | `rooms[0].note` | "The only room: one air-conditioned dormitory" | `[5]` "just one dorm room"; `room_types[0]`; `facilities[8]` | sourced |
+| 47 | `stayInfo` times | 14:00–19:00, out by 14:00 | `stayInfo.*` (Hostelworld) | sourced |
+| 48–51 | `stayInfo.note` | credit cards · non-smoking · taxes · "Reception has limited hours." | `stayInfo.note` ×3; `hours_note` | sourced ×4 |
+| 52–70 | `amenities[0–18]` | same 19 rows as round 2, unchanged | `facilities[0]`, `[1]`, `[8]`, `[5]`, `[6]`, `[7]`, `[24]`, `[20]`, `[14]`, `[15]`, `[23]`, `[16]`, `[17]`, `[2]`, `[13]`, `[21]`, `[18]`, `[18]`, `[19]`, each re-read at its index. Charge notes are kept | sourced ×19 |
+| 71–73 | `ratings[0–2]` | Hostelworld 9.8/10 (10) · Booking.com 10/10 (6) · Google 5/5 (15) | `reviews.*`: score and count equal by script; each URL equals its `source_url`; no Google URL; not averaged | sourced ×3 |
+| 74–78 | `testimonials[0–4]` | Beth · Jennine · Catherine · Akshay · Taiya | `reviews.quotes[7, 6, 5, 4, 1]`: string equality by script, **5/5 verbatim**. Platforms and dates match | sourced ×5 |
+| 79 | `contact.phone` | "+94778553343" | `contact.phone` (Google) | sourced |
+| 80 | `contact.address` | "Warnagiri Welhengoda, Ahangama 80650, Sri Lanka" | `location.address.value` (Google listing); the only change is the capital W in "Welhengoda" (playbook §6 refinement 2) | sourced |
+| 81–83 | `bookingLinks[0–2]` | Hostelworld / Booking.com / Agoda | `booking.other_engines[0]`, `engine_url`, `other_engines[1]`, equal by script | sourced ×3 |
+
+**Counts (83 claim rows):** `sourced` 78 · `shared-context` 2 · `framing` 3 (headings only) · **`unsourced` 0** · **`contradicted` 0**.
+
+The quotes in the bodies ("very quiet which was amazing", "super clean", "very clean", "absolutely spotless", "super comfy", "amazing", "ended up here a week", "a little bit difficult to find") were all found verbatim in `reviews.quotes` by script. No ownership, staff name, bed count, price or season appears in the business's voice. `contradictions[0]` shows up only inside Catherine's quote, and `contradictions[1]` is respected, since the ratings are not averaged.
+
+### Failing sentences
+None.
+
+### Voice audit (per block)
+
+| Block | Rhythm | No triads | No padding | Concrete | Honest limit | Register | Aloud | Score |
+|---|---|---|---|---|---|---|---|---|
+| `tagline` | — | the owner's own headline | yes | yes | — | owner's | yes | clean |
+| `copyBlocks[0]` intro | "Layday is / There is / It is / One guest", short sentences throughout | yes: "small and new" is a pair, and "a shared kitchen, plus a garden and terrace" is one item plus a pair, as the dossier pairs them | "too" only links | better than round 2 (kitchen, garden, terrace); still thin, as the humanizer noted | — | yes | yes | 7/8 |
+| `copyBlocks[1]` dorm | yes: a short opener, a pair, a separate escalation, then a long sentence with a limit | **yes.** V1 is resolved: the one / another / a third list is gone. There are still three quotes on one quality, but they are set as a pair and a separate sentence with different lengths and cadence, and it reads as a person's aside, not a list (note R3-V1) | yes | yes | yes ("though that is from ten reviews") | yes | yes | 8/8 |
+| `copyBlocks[2]` kept | yes | yes | yes | yes | — | yes | yes | 8/8 |
+| `copyBlocks[3]` room | long, long, short ("The showers are hot."), short, short | inventory list ("a kettle, a dishwasher and kitchenware"), not rhetorical (as in round 2) | yes | yes | yes (no prices) | yes | yes | 8/8 |
+| `copyBlocks[4]` door | yes | yes | yes | yes | yes | yes | yes | 8/8 |
+| `copyBlocks[5]` practicalities | unchanged: "Taxes are included, and it is non-smoking" still joins two unrelated facts | yes | yes | yes | yes | listing register | yes | 7/8, notes only |
+| `spot` | one sentence | yes | yes | yes | yes | surf-guide | yes | clean |
+
+No voice fail.
+- **R3-V1** (note): "Someone else went as far as" makes Beth's quote the peak of a small crescendo. That is a writer's device, not a generated list shape, and it claims nothing. It is recorded here in case Shahar reads it as a triad in disguise.
+
+### Completeness (`beach_lodging`)
+The copy fields among the must-haves are filled: `rooms[]` (1 row) and `bookingLinks[]` (3 rows). So are the should-haves: `stayInfo`, `amenities[]` (19), `ratings[]` (3), `testimonials[]` (5) and `spot`. `season` is `null` because the dossier has a gap there. Nothing is padded.
+
+Schema limits, checked by script: the longest body is 315 of 1500 characters (dorm), the longest heading 31 of 120, `spot` 114 of 200 and `stayInfo.note` 88 of 200. Every amenity label is at most 60 characters, the phone is E.164, and every URL is `https://`.
+
+Open items carried over from round 2 (not copy fails):
+- `contact.whatsapp` is absent (dossier gap; the schema requires it).
+- `ratings[].capturedAt` is absent on all three rows (left to the deployer).
+- `contact.mapUrl` is absent although `location.map_url` exists.
+- `businessType` is left to the deployer, and `closing` is empty.
+- Resolved since round 2: `copywriter_version` is now 0.3.1 in both files and in the `sources.md` header, which matches `run.yaml`.
+- New: `en.draft.json` now carries `humanizer_version` "0.2.0", because the copywriter copied `en.json` over it. A draft that says a humanizer ran on it is misleading metadata. It does not change any fact.
+
+### Duplication across fields (notes)
+- **Shared kitchen**: intro S2 and offer S2 (new in round 3: it was added to the intro and kept in the offer), plus `amenities[3]`.
+- **Garden / terrace**: intro only, plus `amenities[5]` (down from three places).
+- **One dorm**: `copyBlocks[1]` heading and S1, and `rooms[0].note`. That is 3 places, down from 5, as the copywriter's ledger line says.
+- **Daily housekeeping**: `copyBlocks[2]` heading and S1, `copyBlocks[5]` S5 and `amenities[9]` (unchanged).
+- Practicalities vs `stayInfo`/`amenities[]`, and the body quotes vs `testimonials[]`: unchanged from round 2.
+
+### `sources.md` checked against the dossier
+Method: a script extracted every double-quoted string in the "Rests on" column and in "Deliberately not written" and searched for it in `dossier.json` (Unicode kept, "…" treated as an elision). **Every one was found.** The only non-matches are "the one dormitory" and "the dormitory", which quote the copy, not the dossier. Every indexed citation was checked by hand at its index: `facilities[0, 1, 2, 5, 6, 7, 8, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24]`, `reviews.quotes[0, 1, 3, 4, 5, 6, 7]`, `room_types[0]` and `contradictions[0]`. **All of them resolve to the value they claim.**
+
+| Row | Result |
+|---|---|
+| businessName, tagline | Accurate |
+| intro heading | Accurate. "The only distance in the block" is true: "a few steps away" is gone |
+| intro ¶1 | Accurate. It quotes the final text exactly, the citations for small, new, kitchen and garden/terrace resolve, and the "No ownership claim" ground is right. One imprecision (note S1): it says `business.run_by` "rests on one guest (`reviews.quotes[6]`)", but the run_by value "Rukshan and his family" is Beth's wording (`[7]`). The ownership words ("who own this") are Jennine's (`[6]`). The conclusion holds either way |
+| intro ¶2 | Accurate |
+| about (dorm) heading, ¶1, ¶2 | Accurate. The ¶1 row matches the new "and another …, then Someone else went as far as …" wording |
+| about (kept) heading, ¶1 S1–S3 | Accurate |
+| offer heading, ¶1 S1, S2, S3, ¶2 | Accurate. The rows match the final sentences word for word; the S3 row cites `facilities[24]`, and `[11]` is cited correctly as the reason for the sentence's position |
+| info (door), info (practical) | Accurate. The `finding_it` quote is character-exact, and so is `stayInfo.note` |
+| spot, season, rooms[0], stayInfo, amenities[0–18], ratings, testimonials, contact, bookingLinks, languagesSpoken | Accurate (same as round 2, re-checked) |
+| Deliberately not written | Accurate. Note S2: the staff-names bullet says "Rukshan appears in Beth's testimonial and the family in Jennine's". Beth's testimonial also names "his family". Nothing false is stated |
+
+### Verdict: **PASS** (round 3, full-file re-check, Shahar-allowed)
+
+0 `unsourced`, 0 `contradicted`, 78 `sourced`, 2 `shared-context`, 3 `framing`. Voice is clean: V1 is resolved and R3-V1 is only a note. The required fields are covered.
+- Row 9 from round 2 (ownership) is gone, and no ownership or staff name appears in the business's voice.
+- V1 from round 2 is resolved.
+- Notes only, with no route needed to pass:
+  - S1 and S2 (`sources.md` wording) go to the copywriter.
+  - The `en.draft.json` `humanizer_version` metadata goes to the copywriter.
+  - The new shared-kitchen duplicate between intro and offer goes to the copywriter.
+  - R3-V1 goes to the humanizer.
+  - The process note: the fixes went beyond the gate answer's scope.
