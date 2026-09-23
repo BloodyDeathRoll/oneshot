@@ -100,3 +100,29 @@ Throwaway builds went to scratch. The real `dist/` is the plain preview build. A
 - **`numberOfRooms`:** "17 rooms" is in dossier `businessType_note` only, not in content. No field carries it.
 - **`knowsLanguage`, `email`:** `languagesSpoken` is empty and `contact.email` is null. The template emits them only when they are set.
 - **No category or superlative words** added to the title or description beyond what the content says ("A new hotel…" is the owner's tagline).
+
+## Re-run (4h, after 4g rounds 2 and 3; 2026-09-23)
+
+What changed since 4h: img-073 and img-071 alt texts; spaces between text runs; the static phone rim; the Rosa widget-fail fallback (one extra HEAD to rosa.surf after the scroll); `featureLine` bound to the night line and added to llms.txt. I re-checked every item this station owns on the current build. **Nothing was broken, so no source file was changed.** `npm run build` gives a `dist/` byte-identical to the one on disk (`diff -rq`: no differences), so the look is unchanged by construction (0 px). The only file written is `final/audit.json`, rewritten by the measurement.
+
+| check | preview (`dist/`, no `SITE_URL`) | `SITE_URL=…os1.workers.dev/` (scratch) | `SITE_URL=https://example.test/` (scratch) |
+|---|---|---|---|
+| `<title>` | "The Lavish Haven, Ahangama" (26) | same | same |
+| description | 136 chars, unchanged | same | same |
+| `<h1>` (DOM, JS off and on) | exactly 1: "The Lavish Haven" | same | same |
+| robots meta | noindex, nofollow | noindex, nofollow | none |
+| canonical / hreflang | none / none | yes / en + x-default | yes / en + x-default |
+| og:* | type, site_name, title, description | + url, image `img-002-1024.jpg` 1024×768, image:alt (the unchanged img-002 alt) | same as workers.dev, own domain |
+| JSON-LD | 1 block, `Hotel`, 11 keys | 14 keys, `@id`, 10 images | 14 keys, `@id` `https://example.test/#business` |
+| robots.txt | `Disallow: /` for `*` + 15 AI bots | same | `Allow: /` for `*` + 15 AI bots, `Sitemap:` line |
+| sitemap.xml | none | none | 1 URL, hreflang en |
+
+JSON-LD, same in all three: address split `{streetAddress "No166/1 Walhengoda Road", postalCode "80650", addressLocality "Ahangama", addressCountry "LK"}` (content.json `contact.address`, which is the dossier's Google address with place names capitalised); geo 5.97946, 80.35083 (dossier `location.lat_lng`); telephone +94764832988 (dossier, Google); `containsPlace` 9 `HotelRoom` (occupancy 4 ×4, 5 ×1); **no `aggregateRating`, no `review`**; `sameAs` Booking.com + Agoda. The block parses with `JSON.parse` and sits after `</main>`. NAP on the page (JS off): phone "+94 76 483 2988" and 2 `tel:` links; address in the footer, identical to the JSON-LD parts.
+
+Images (JS off, DOM): 10 `<img>`, all with `width`/`height`, `srcset`, alt equal to content.json (the new img-073 and img-071 alts included). Hero eager; the other 9 are `loading="lazy"`.
+
+**Measured** (`tools/audit-mockup.mjs`, a scratch copy on port 8764; mobile, slow 4G, CPU ×4, first load, no scroll; 5 runs): **LCP 432 / 420 / 416 / 428 / 424 ms, CLS 0** (final `audit.json` 12:12:46Z: LCP 424). First load 589 030 B, 12 requests, all local, 0 third-party; HTML 60 764 B; font 26 576 B; largest image 122 396 B; images without alt 0; tap targets under 44 px: 0 of 18. Compared with 4h (400–416 ms), LCP is about 15 ms higher, in line with the +3.5 KB of HTML from round 2. That is far inside the 2.5 s target.
+
+**Rosa fallback vs load budget** (Playwright, JS on, 390×844, scrolled top to bottom): 0 third-party requests before the scroll. After it: the JSON GET, then HEAD and GET on `rosa.surf/widget/`, plus the widget's own sub-requests. CLS over the whole scroll is 0, with 0 page errors.
+
+Still wrong: unchanged from the list above (items 1–10). Servers on 8760 and 8764 were stopped. Throwaway builds are in scratch only.
