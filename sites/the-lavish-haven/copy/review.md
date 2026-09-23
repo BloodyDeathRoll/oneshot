@@ -419,3 +419,52 @@ None.
 ### Verdict: **PASS** (round 4, full-file re-check)
 
 0 `unsourced`, 0 `contradicted`, 0 voice fails, required fields covered. Round 4 of 4 (base.md allows 2; rounds 3 and 4 were each allowed by Shahar).
+
+## round 5 — full-file re-check after `featureLine` (schema v0.6) was drafted and kept, 2026-09-23
+
+Reviewer: copyeditor 0.3.0 (runtime prompt from `node tools/prompt.mjs copyeditor`, every layer read; playbook 0.5.2). Rules applied: hard constraint 6 (every sentence of the whole file re-checked against `dossier.json`, nothing carried over from round 4); a verbatim guest observation of a physical fact is `sourced`, never for a ranking, frequency or cause; no framing exemptions.
+
+### Scope check
+- `cmp en.json en.draft.json`: identical (humanizer 4b kept the line unchanged).
+- `git diff 5beb75d -- en.json en.draft.json` (round 4 PASS → now): one added line in each, `"featureLine": "A year-round outdoor pool, at the centre of the hotel."`. Nothing else changed.
+- `dossier.json` unchanged since `5e198a5` (before round 4).
+- Draft → final diff: none.
+
+### Fact audit (whole file)
+
+Rows 1–87 re-checked against the dossier's current words; every one holds as recorded in round 4 (same keys, same values: `business.*`, `location.setting`/`distance_to_beach`/`spot`/`address`, `contradictions[0–3]`, `gaps[]`, `hours_note`, `booking.*`, `reviews.booking` incl. categories Location 9.6 / Cleanliness 9.7 / Comfort 9.7 / Staff 9.4 / count 34, `reviews.google` 5.0 / 21, `quotes[0–7]`, `facilities[0–25]`, `room_types[0–8]`). By script this round: `rooms[0–8]` vs `room_types[0–8]` 9/9; `amenities[0–24]` vs `facilities[0–24]` 25/25, notes = the facility's own brackets; `testimonials[0–4]` vs `quotes[0,4,3,6,7]` string-equal 5/5; booking URLs and phone identical. New row:
+
+| # | Field | Sentence / claim | Dossier key (words re-read) | Verdict |
+|---|---|---|---|---|
+| 88 | `featureLine` | "A year-round outdoor pool," | `facilities[0]` "year-round outdoor swimming pool" (source_url Booking, fetched 2026-09-19); also `business.description` "a year-round outdoor swimming pool" | sourced |
+| 89 | `featureLine` | "at the centre of the hotel." | `reviews.quotes[3]` António (Booking) "the swimming pool at the center" — verbatim guest observation of a physical fact (position). His "creates a good vibe where people can meet up" is not carried. Same basis as row 27 | sourced (physical fact) |
+
+**Counts (87 claim rows):** `sourced` 85 · `shared-context` 1 · `framing` 1 · **`unsourced` 0** · **`contradicted` 0**.
+
+### Playbook 0.5.2 §6 (dates)
+The capture date is required on headline rating blocks only. `ratings[0–1]` (the headline blocks) carry no `capturedAt` in the copy; the deployer seeds it from `reviews.booking.fetched_at` / `reviews.google.fetched_at` (2026-09-19) — open item, as before, not a copy fail. The scores in body copy (intro 9.6; about 9.7 / 9.7 / 9.4 / 34; Google 5.0 / 21) each name platform and count where they are a rating, and need no date of their own under 0.5.2.
+
+### `sources.md` check
+Every key cited re-read; all exist and say what the rows claim. New `featureLine` row cites `facilities[0]`, `business.description.value`, `reviews.quotes[3]` correctly; 54/140 correct. Its "critic full round 1 item 6" provenance is not a page claim and was not checked. Minor: the header still reads "round 4"; the row itself is dated.
+
+### Voice audit (per block)
+Round 4 scores stand on re-read (all clean, notes as recorded). New:
+
+| Block | Rhythm | No triads | No padding | Concrete | Honest limit | Register | Aloud | Score |
+|---|---|---|---|---|---|---|---|---|
+| `featureLine` | fragment, fits a caption | yes | yes | yes (pool, year-round, centre) | — | yes; "centre" matches the file's British spelling | yes | clean |
+
+Voice fails: **0**.
+
+### Completeness (`beach_lodging`)
+Unchanged from round 4, plus `featureLine` 54/140. Schema limits by script: `tagline` 38, `closing` 72, `spot` 161/200, headings ≤ 27, bodies ≤ 440, `stayInfo.note` 84, `contact.address` 50. Open items unchanged: `ratings[].capturedAt` (deployer), `contact.whatsapp` (dossier gap), house number 166/1 vs 166/2 (`contradictions[3]`).
+
+### Duplication (note)
+The pool's year-round opening and central position now appear in `featureLine`, `copyBlocks[4]` S1, `amenities[0]` and `testimonials[2]`. `featureLine` is not a word-for-word repeat of `[4]` S1. Tolerated, as the other repeats in round 4.
+
+### Failing sentences
+None.
+
+### Verdict: **PASS** (round 5, full-file re-check)
+
+0 `unsourced`, 0 `contradicted`, 0 voice fails, required fields covered.
