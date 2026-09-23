@@ -860,3 +860,48 @@ weights used (200/300/400/500), `font-display: swap`, preloaded. SIL Open Font L
   only checked to refuse without credentials). `si` or any second locale: none (run.yaml `en`).
 - No throttled test of the forecast fetch itself (90 KB) beyond the 10 s timeout in code.
 - Platform marks' brand guidelines not checked (as at 4e).
+
+## Widget-fail fallback (2026-09-23)
+
+Shahar approved porting The Lavish Haven's 4g round-2 fix (its notes, "4g round 2" item 4). **Bug:** `widget()`
+(`src/scripts/site.js`, was line 68) set `.on` on the frame's `load` alone. A cross-origin frame fires
+`load` even when its request fails (it loads the browser's error page), so when Rosa's JSON loaded but the
+widget failed, the box stayed empty with the plain link hidden (playbook §4).
+
+**Reproduced first**, on the pre-fix build (JSON fresh, widget failing, block on screen), at 390 / 1440 / 1525:
+widget abort, slow failure (abort after 3 s) and HTTP 500 all ended `on`, link hidden, empty frame (9 of 9
+runs). A widget that hangs showed the link but kept `src` set and `data-loading` stuck.
+`shots/widget-fail/before/`, `widget-fail-before-vs-after.png`.
+
+**Fix** (only `widget()`, same mechanics as Lavish, in this file's style): one CORS `HEAD` to the widget URL
+first (rosa.surf answers HEAD 200 with `access-control-allow-origin: *`, re-checked live 2026-09-23). The
+frame gets its `src` only if that answers OK, and `.on` is set only after `load`. A failed HEAD, a non-OK
+status or no `load` within 10 s removes `src` and leaves the link, which is visible from the start in the
+same reserved box. The headline keeps its data, because its own request succeeded. Markup and CSS are
+unchanged: the before and after `index.html` differ only in the inline script (81 805 → 82 888 B).
+
+**Matrix** (`fcstates.mjs`, adapted from Lavish's; `shots/widget-fail/states/` + `fcstates.json`), block on
+screen when each result lands, 390 / 1440 / 1525, 33 runs:
+- JSON paths: success 1 s, 404 after 1 s, abort after 3 s, hang to the 10 s timeout, stale 30 h. Success
+  shows the widget; the other four show the link with the headline hidden. Same as before the fix.
+- Widget failing with JSON fresh: abort at once, slow failure after 3 s, hang to 10 s, HTTP 500. All 12
+  runs end with the link visible, `src` removed, the frame hidden, the headline visible, and nothing
+  loading.
+- Slow widget success (3 s): widget shown.
+- CLS 0 in all 33. 0 third-party requests before the scroll in all 33. 0 page errors. The only console
+  lines are the browser's own "Failed to load resource" on the failure paths.
+- positions of the headline box, widget box and the next section identical before/after in all 33 runs.
+- Harness note: the Google map probe/embed are stubbed. Aborting them, as Lavish's harness (which has no
+  map) did, added a map "ERR_FAILED" line that the site doesn't cause.
+
+**Still not covered, as at Lavish:** HEAD succeeds but the frame's own GET then fails (`widget-getabort`).
+That still leaves an empty box, and it can't be detected from outside a cross-origin frame, because Rosa's
+widget sends no `postMessage`. Cost on success: one extra HEAD to rosa.surf after the scroll.
+
+**Look:** `tools/shoot.mjs` on the rebuilt site (live network) → `shots/widget-fail/success/`, errors [] at both
+widths. For a deterministic success-path compare, I used a scratch copy of `shoot.mjs` that only adds
+routes (Rosa JSON = fixture, widget = stub, Google map = stub). I ran it twice on each build and compared
+before vs after: **0 px on every capture after the first screen, in both pairs**. The only diffs are the animated first screens (desktop-00/01, mobile-00); two runs of the same before build differ there by 2.1 M px, so that's run-to-run noise, not this change (the forecast loader can't run on the first screen). The live-network shoot (`success/`) also differed on the map screens: Google's live map tile had loaded in one run and not the other. That's network timing, which is why the stubbed runs were needed.
+
+`npm run build`: clean. Scratch: `/tmp/claude-1000/…/scratchpad/widget-fix/` (harness, pre-fix `dist`, raw runs).
+Servers on 8770–8773 stopped. Not deployed, ledger not written, nothing committed.
