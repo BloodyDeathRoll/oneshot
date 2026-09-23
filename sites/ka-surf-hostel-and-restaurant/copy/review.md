@@ -728,3 +728,133 @@ One note stands for whoever writes the next dossier: `gaps[]` entries and `busin
 0 `unsourced`, 0 `contradicted`, 81 `sourced`, 2 `shared-context`, 3 `framing`. Round 7's single fail (`amenities[3]`) is fixed at the source's own number, and all three `sources.md` rows it named are corrected and verified against the dossier. The voice audit is clean, with two standing notes on `copyBlocks[4]` for the humanizer. Required fields for `beach_lodging` are covered, and every schema limit holds. The copy is ready for the round-3 build.
 
 Round count: this is the eighth pass. It runs on Shahar's explicit allowance (ledger 2026-09-22T17:59:54Z), which waives base.md's third-pass rule for this one label because the dossier holds the fact.
+
+## round 9 — full-file re-check after the "available" ruling and the refined address rule, 2026-09-23
+
+Reviewer: copyeditor 0.3.0 (runtime prompt from `node tools/prompt.mjs copyeditor`, every layer read, playbook 0.5.1). Independent of the copywriter and the humanizer. Trigger: Shahar's wording ruling "Say \"available\"" (ledger 2026-09-23T08:42:00Z, logged on the-lavish-haven, naming KA) and his refined address rule (ledger 08:45:50Z and 08:46:04Z, playbook 0.5.1 §6, copywriter 0.3.1 constraint 9); copywriter field-scoped 4a (08:43:27Z, 08:46:43Z); humanizer 4b left both fields unchanged (08:47:23Z). The harvester re-fetched the Google listing (08:44:54Z): `location.address` is now Google's.
+
+Scope: **every sentence and every field** of `copy/en.json` (hard constraint 6), at round 6–8 strictness. `framing` only for headings that assert nothing. Every quote below re-read in the current `dossier.json`.
+
+### Scope check
+- `en.json` since round 8 (`git diff 4648a94`): two fields changed. `copyBlocks[3].body` last sentence "…actually free." → "…actually **available**."; `contact.address` "207/A Welahangoda, 80650 Ahangama, Sri Lanka" → "207/A Welahangoda, **Ahangama 80650**, Sri Lanka". `en.draft.json` carries the same two changes.
+- `en.draft.json` vs `en.json`: three fields differ, as in round 8 — `copyBlocks[3]` em dash → ", and"; `copyBlocks[4]` fragments → sentences; `amenities[3]` "Private locker" (draft) → "Private lockers" (`en.json`). No fact added in any of them.
+- `dossier.json` since round 8: only `location.address` (now Google's, fetched 2026-09-23), the new `location.address_other_platforms[0–1]`, `lat_lng`, `plus_code` source, and the new gap `location.address.postcode`. Every other key the copy rests on is byte-identical, so every index citation still points where it did.
+
+### Fact audit (whole file)
+
+| # | Field | Sentence / claim | Dossier key (words re-read) | Verdict |
+|---|---|---|---|---|
+| 1 | `businessName` | "KA Surf Hostel" | `business.name` "KA Surf Hostel" (Booking.com); Google's "and restaurant" not used (`contradictions[3]`) | sourced |
+| 2 | `tagline` | "Surf, chill and feel at home in Ahangama" | `business.tagline` "Surf, Chill & Feel at Home in Ahangama"; case and "&" only | sourced |
+| 3 | `languagesSpoken` | `["en"]` | `languages_spoken[0]` "English" | sourced |
+| 4 | `copyBlocks[0].heading` | "Five minutes from Kabalana Beach" | `location.distance_to_beach` "Kabalana Beach 450 yd / a 5-minute walk" | sourced |
+| 5 | `copyBlocks[0].body` S1a | "A family runs this place" | `business.run_by` "a local family"; `description_long` "managed by a local family" | sourced |
+| 6 | `copyBlocks[0].body` S1b | "they set out to make you feel at home from the moment you arrive" | `description_long` "passionate about making you feel at home from the moment you arrive"; stated as the family's aim | sourced |
+| 7 | `copyBlocks[0].body` S2 | "Kabalana Beach is a five-minute walk." | `distance_to_beach` "a 5-minute walk" | sourced |
+| 8 | `copyBlocks[0].body` S3 | "Dorms if you want the company, private rooms if you don't." | `room_types[0–5]`; `description_long` "Dorms & Private Rooms", "Mingle when you want, relax when you need"; `business.description` "the ideal balance between social vibes and personal space" | sourced (row still under-cites; round-8 note stands) |
+| 9 | `copyBlocks[1].heading` | "What guests say about the staff" | asserts nothing | framing |
+| 10 | `copyBlocks[1].body` S1 | "\"Family\" is the word guests keep using." | `reviews.quotes[1]` Clara, `[2]` Luzzi, `[6]` Nanet, `[7]` Elena (4 of 10, both platforms); `run_by.note` | sourced |
+| 11 | `copyBlocks[1].body` S2 | Mia's dengue account, attributed ("wrote that") | `reviews.quotes[9]` verbatim | sourced |
+| 12 | `copyBlocks[1].body` S3a | Booking staff 9.9/10 | `reviews.booking.categories.Staff` 9.9 | sourced |
+| 13 | `copyBlocks[1].body` S3b | "the hostel's highest score there" | Booking: Staff 9.9 max; next Value for money 9.4 | sourced |
+| 14 | `copyBlocks[1].body` S4a | Hostelworld "the same 9.9" | `reviews.hostelworld.categories.Staff` 9.9 | sourced |
+| 15 | `copyBlocks[1].body` S4b | "only value for money and security do better, both at a full 10" | Hostelworld: Value for Money 10.0, Security 10.0; all others ≤ 9.8 | sourced |
+| 16 | `copyBlocks[2].heading` | "Breakfast, every day" | `description_long` "daily free healthy breakfast" | sourced |
+| 17 | `copyBlocks[2].body` | "Rotis, fruit, pancakes and eggs" | `description_long` "(rotis, fruits, pancakes, eggs …)" | sourced |
+| 18 | `copyBlocks[2].body` | "with vegan options" | `description_long` "vegan options available" | sourced |
+| 19 | `copyBlocks[3].heading` | "Dorms and private rooms" | `description_long` "Dorms & Private Rooms"; `room_types[]` | sourced |
+| 20 | `copyBlocks[3].body` S1 | room categories | `room_types[0–5]` | sourced |
+| 21 | `copyBlocks[3].body` S2a | A/C and fan in every room | `description_long`; `facilities[22]` | sourced |
+| 22 | `copyBlocks[3].body` S2b | private lockers | `description_long` "private lockers & personal fridge in every room"; `facilities[16]` | sourced |
+| 23 | `copyBlocks[3].body` S2c | a personal fridge | `description_long`; `facilities[23]` | sourced |
+| 24 | `copyBlocks[3].body` S3a | "The bathrooms are modern" | `description_long` "modern bathrooms with hot showers" | sourced |
+| 25 | `copyBlocks[3].body` S3b | "the showers are hot" | `description_long`; `facilities[24]` | sourced |
+| 26 | `copyBlocks[3].body` S4a | "Rates change with the dates" | `booking.path.note` "live inventory on Booking.com, Hostelworld and Agoda"; `gaps[]` "offers" | sourced |
+| 27 | `copyBlocks[3].body` S4b | "and the booking links below show what is **actually available**." (changed) | `booking.path.note` "live inventory"; `booking.engine_url`; `booking.other_engines`. "Available" is availability, not price, so it drops the ambiguity "free" carried; no season, price or count added. Wording per Shahar's ruling (ledger 08:42:00Z, verified) | sourced |
+| 28 | `copyBlocks[4].heading` | "What is here" | asserts nothing | framing |
+| 29 | `copyBlocks[4].body` S1a | green garden and chill zone | `description_long` "beautiful green garden & chill zone"; `facilities[4]` | sourced |
+| 30 | `copyBlocks[4].body` S1b | free filtered water, refill any time | `description_long` "free filtered water — refill anytime"; `facilities[21]` | sourced |
+| 31 | `copyBlocks[4].body` S2a | laundry service available | `description_long`; `facilities[19]` | sourced |
+| 32 | `copyBlocks[4].body` S2b | minimarket on site | `facilities[12]` | sourced |
+| 33 | `copyBlocks[4].body` S3a | scooter rental | `description_long` "cheap scooter rental"; `facilities[20]` | sourced |
+| 34 | `copyBlocks[4].body` S3b | "it can come with a surf rack" | `description_long` "(also with surf rack possible)"; `facilities[20]` | sourced |
+| 35 | `copyBlocks[4].body` S4a | luggage storage | `facilities[8]` | sourced |
+| 36 | `copyBlocks[4].body` S4b | lockers | `facilities[16]` | sourced |
+| 37 | `copyBlocks[4].body` S5 | reception open 24 hours | `hours_note` "Reception 24 hours"; `facilities[10]`; `description_long` "24/7 reception" | sourced |
+| 38 | `copyBlocks[4].body` S6 | pets on request at no charge | `facilities[15]` | sourced |
+| 39 | `copyBlocks[4].body` S7 | children not accommodated | `house_rules[1]` | sourced |
+| 40 | `copyBlocks[5].heading` | "Getting here" | asserts nothing | framing |
+| 41 | `copyBlocks[5].body` S1 | "Ahangama, a five-minute walk from Kabalana Beach." | `location.address.value` (now Google's) "207/A welahangoda, **Ahangama**, Sri Lanka"; `distance_to_beach` "a 5-minute walk" | sourced (the claim holds on the new value; the `sources.md` row citing it does not — see below) |
+| 42 | `copyBlocks[5].body` S2a | Koggala Airport about 5 km | `location.nearby` "3.3 mi" = 5.31 km | sourced |
+| 43 | `copyBlocks[5].body` S2b | railway station a little over 2 km | `location.nearby` "1.3 mi" = 2.09 km | sourced |
+| 44 | `copyBlocks[5].body` S3 | "The property arranges a shuttle." | `facilities[13]` "shuttle service"; `facilities[18]` "airport transfers" | sourced (station-pickup reading note stands) |
+| 45 | `spot` | Kabalana sandy beach break, beginners and intermediates | `location.spot` (thesurfatlas.com) | shared-context |
+| 46 | `spot` | The Rock, reef A-frame, advanced | `location.spot` | shared-context |
+| — | `season` | `null` | `season.value` null | no claim |
+| 47–52 | `rooms[0–5]` | 3 dorm rows; Double / 1 extra-large double; Deluxe double / 1 extra-large double; Deluxe double / 1 single | `room_types[0]`, `[1]`, `[2]`, `[3]`, `[5]`, `[4]` | sourced ×6 |
+| 53 | `stayInfo.checkInFrom/To` | 13:00–23:00 | `hours_note`; `contradictions[1]` recorded, harvester's lean followed | sourced (owner item) |
+| 54 | `stayInfo.checkOutTo` | 13:00 | `hours_note` "check-out until 13:00" | sourced (same) |
+| 55 | `stayInfo.note` S1 | reception 24 hours | `hours_note`; `facilities[10]` | sourced |
+| 56 | `stayInfo.note` S2 | no children, cots or extra beds | `house_rules[1]` | sourced |
+| 57–59 | `amenities[0–2]` | Free breakfast · Free WiFi · A/C and fan in every room | `facilities[2]` + `description_long`; `facilities[0]` (existence only, `contradictions[2]`); `facilities[22]` | sourced ×3 |
+| 60 | `amenities[3]` | Private lockers and personal fridge in every room | `description_long` "private lockers & personal fridge in every room"; `facilities[16]`, `[23]` | sourced |
+| 61–73 | `amenities[4–16]` | Hot showers … Pets allowed on request (no extra charge) | `facilities[24]`; `description_long` + `[4]`; `[21]`, `[20]`, `[19]`, `[12]`, `[8]`, `[9]`, `[10]`, `[11]`, `[18]`, `[17]`, `[15]`, each re-read | sourced ×13 |
+| 74–76 | `ratings[0–2]` | Hostelworld 9.8/10 (66) · Booking 9.5/10 (38) · Google 4.8/5 (42) | `reviews.hostelworld`, `.booking`, `.google`; URLs equal the `source_url`s | sourced ×3 |
+| 77–81 | `testimonials[0–4]` | Clara · Elena · Mia · Wolfgang · Saketh | `reviews.quotes[1, 7, 9, 3, 8]`: script string-equality, **5/5 verbatim**; dates as given | sourced ×5 |
+| 82 | `contact.phone` | "+94773746053" | `contact.phone` | sourced |
+| 83 | `contact.address` | "207/A Welahangoda, Ahangama 80650, Sri Lanka" (changed) | `location.address.value` "207/A welahangoda, Ahangama, Sri Lanka" (Google, fetched 2026-09-23) — Google's words, "welahangoda" capitalised only, Booking's "Welhengoda" spelling not used; postcode **80650** from `address_other_platforms[0]` "No 207/A, Welhengoda, 80650 Ahangama, Sri Lanka" (Booking.com, `source_url` present), source noted in `sources.md` as refinement (1) requires; order street, town postcode, country per refinement (3). String equals playbook 0.5.1 §6's own example and Shahar's gate answer (ledger 08:45:50Z). 44 chars, ≤ 300 | sourced |
+| 84–86 | `bookingLinks[0–2]` | "Check dates on Hostelworld / Booking.com / Agoda" | `booking.other_engines[0]`, `booking.engine_url`, `booking.other_engines[1]`, character-identical | sourced ×3 |
+
+**Counts (86 claim rows):** `sourced` 81 · `shared-context` 2 · `framing` 3 · **`unsourced` 0** · **`contradicted` 0**.
+
+No recorded contradiction is resolved silently (parking, check-in, WiFi, restaurant name: as in round 8).
+
+### Failing items
+
+| # | Where | Fault | Verdict | Goes back to |
+|---|---|---|---|---|
+| S1 | `sources.md` row "info (getting here) ¶1" (line 25) | Cites `location.address` ("80650 Ahangama, Sri Lanka"). The dossier's `location.address.value` is now "207/A welahangoda, Ahangama, Sri Lanka"; the quoted string is not at that key (it survives only inside `address_other_platforms[0]`, Booking). The copy sentence is sourced (row 41); its trace record points at a value that no longer exists. Script check of every key-attributed quote in `sources.md`: this is the only one that does not resolve at its cited key | broken citation (traceability) | copywriter (`sources.md` only; `en.json` needs no change) |
+
+No sentence of `en.json` fails.
+
+### Voice audit (per block)
+
+| Block | Score | Note |
+|---|---|---|
+| `tagline` | clean | owner's words |
+| `copyBlocks[0]` intro | 8/8 | |
+| `copyBlocks[1]` staff | 8/8 | |
+| `copyBlocks[2]` breakfast | clean | |
+| `copyBlocks[3]` rooms | 8/8 | "actually available" reads as spoken; no tell |
+| `copyBlocks[4]` what is here | 7/8, notes only | round-7/8 notes stand: three "X, and Y" sentences in a row; "Laundry service is available" is listing register |
+| `copyBlocks[5]` getting here | 8/8 | |
+| `spot` | clean | |
+| `contact.address` | n/a | fixed rule string, not prose |
+
+No voice fail.
+
+### Completeness (`beach_lodging`)
+`rooms[]` 6 and `bookingLinks[]` 3 filled; `stayInfo`, `amenities[]` 17, `ratings[]` 3, `testimonials[]` 5, `spot` filled; `season` null with its reason. Schema limits re-checked; `contact.address` 44/300. Open items unchanged, not copy fails: no `contact.whatsapp` (dossier gap, schema-required, Payload seed item); `businessType` seeded by the deployer; `copywriter_version` / `humanizer_version` still "0.1.0" in `en.json`.
+
+Duplication notes from round 8 stand unchanged (reception ×3, lockers ×3, children, pets, room list, amenities restated in prose).
+
+### `sources.md` rows checked against the dossier
+Method: every double-quoted string extracted and searched in `dossier.json`; every `facilities[n]` / `house_rules[n]` index citation checked at its index (36 verified, 0 mismatches); then every quote attached to a named key checked **at that key** (new this round, since the address value moved). One miss: line 25 (S1 above).
+
+| Row | Result |
+|---|---|
+| offer ¶2 (changed) | Accurate. Cites `booking.path.note`, `engine_url`, `other_engines`; the ruling it names is in the ledger (08:42:00Z) |
+| contact.address (changed) | Accurate. "207/A welahangoda, Ahangama, Sri Lanka" is `location.address.value` verbatim; "No 207/A, Welhengoda, 80650 Ahangama, Sri Lanka" is `address_other_platforms[0].value` verbatim; `gaps[]` "location.address.postcode" exists; "base.md constraint 9" is copywriter 0.3.1 constraint 9, verified |
+| **info (getting here) ¶1** | **Stale.** See S1 |
+| intro ¶2 | Accurate but under-cites (round-8 note, unchanged) |
+| All other rows and "Deliberately not written" | Accurate; unchanged since round 8 against unchanged keys |
+
+Notes, not fails:
+- **Dossier wording is behind playbook 0.5.1** (harvester): `gaps[]` "location.address.postcode" says the 80650 "is not filled from there", and `location.address.note` says other platforms' versions "are not to be used on the site" and cites "playbook 0.5.0". Under 0.5.1 refinement (1) the postcode is correctly taken from Booking. The copy follows the playbook; the dossier text should be brought in line so the next reader is not misled.
+- `en.draft.json` `amenities[3]` still reads "Private locker" (singular): the round-8 copywriter fix went into `en.json` only. `humanizer-notes.md` (2026-09-23 entry) calls it one of "the three earlier humanizer edits"; it was the copywriter's.
+
+### Verdict: **FAIL** (round 9, full-file re-check)
+
+`en.json`: 0 `unsourced`, 0 `contradicted`, 81 `sourced`, 2 `shared-context`, 3 `framing`; voice clean (standing notes on `copyBlocks[4]`); required fields covered. Both changed fields pass: "actually available" and "207/A Welahangoda, Ahangama 80650, Sri Lanka" are sourced under playbook 0.5.1.
+
+The fail is one broken trace: `sources.md` line 25 cites `location.address` for a string it no longer holds (S1 → copywriter). Treated as blocking because `sources.md` is the copy's traceability record and round 8 made its accuracy a pass condition. To pass: that row cites the current `location.address.value`; nothing in `en.json` changes. The humanizer has nothing to do.
