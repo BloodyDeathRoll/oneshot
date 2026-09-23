@@ -1001,3 +1001,128 @@ Two more, facts rather than deductions, both consequences of Correction 3 that t
 what the designer prompt got wrong: nothing — all three items are built as asked, each confined to what it needed, and for once the designer's own numbers survived re-measurement in full, including the awkward ones (the 5 px the headline half gains with live data, the one-pixel-short negative margins, the 800 KB the Google frame costs). The lesson this pass adds is about *how a fix is verified*, and it is the same lesson as the last one from the other side. Correction 3 fixed a real defect that three scorecards had missed because a tool's passing condition was nearly unreachable; the fix then replaced a `border-bottom` with a gradient background, which made **axe abstain** on 26 nodes that it used to pass. Both are the same shape: a check that stops being able to fail, and a check that stops being able to pass, are both silent. `agents/designer/base.md` should require that any change to a link's decoration, background or box be re-run through the accessibility tools and the *delta in what they can still evaluate* be reported, not just the delta in violations — a rule the critic can then hold them to. Second, smaller, for `agents/designer/tools.md` and the critic's own `tools.md`: the reachability probe in front of a lazy embed is described as answering "whether the embed arrived", and it does not — `mode:'no-cors'` resolves on a 404 as readily as on a 200, which Google's own 404 to `HEAD` now demonstrates on every visit. Either the probe should be described honestly as a network-presence check, or it should be dropped, because the `iframe`'s own `load` plus the reserved box already give the same fallback without a console error.
 
 fix list (fail only): none — the site still passes.
+
+# full · Full-mode verification 3 (rebuilt site, 2026-09-23)
+
+critic 0.3.2 · station 5 · run `2026-09-ahangama-02` · playbook 0.5.2, rubric 0.1.0, schema v0.6. Full round on the **rebuilt** site: `npm run build` in `sites/ka-surf-hostel-and-restaurant/final/` (clean; `index.html` 82 888 B, md5 `d545bd92…`, byte-identical to the `dist/` it replaced). Plain `npm run build` sets no `SITE_URL`, so this is a preview build: `noindex, nofollow` meta, `robots.txt` `Disallow: /` for `*` and the named AI crawlers, no `sitemap.xml`, `llms.txt` preview line, and no canonical / `hreflang` / `og:url` / `og:image` / JSON-LD `@id`·`url`·`image` (those appear only with `SITE_URL`). Changes under review since verification 2 (93): map probe to `www.google.com/generate_204`; skip link; copy round 10 (offer "…show what is actually available.", `contact.address` "207/A Welahangoda, Ahangama 80650, Sri Lanka"); JSON-LD `PostalAddress` split for "town postcode"; Rosa widget-fail fallback (CORS HEAD before `src`, plain link on failure / 10 s); playbook 0.5.2 §6 (capture dates on headline ratings only). Every test served `dist/` from a plain `python3 -m http.server` on 127.0.0.1:8740 (stopped), headless Chromium from the repo's Playwright, software GL. `tools/audit-mockup.mjs` was run from a scratch copy that only changes its port (8746) and its output path (so `final/audit.json` in the repo was **not** rewritten; the result is `shots/critic-6/audit.json`). Harnesses in scratch, not in the repo. No real phone. Live preview not checked.
+
+```
+mode: full        round: verification 3 (rebuilt site)        variant: unique ("Canopy")
+total: 86 / 100           result: pass        hard_fails: []
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 9 | My own facts table below, every rendered string (JS on and off, identical sets), alts, accessible names, head, JSON-LD and `llms.txt` → `dossier.json`: **0 contradictions, 0 claims without an entry.** The 5 quotes are equal by string to `reviews.quotes[3,7,9,1,8]` on the page and in `llms.txt`. Address: Google's `location.address.value` "207/A welahangoda, Ahangama, Sri Lanka", place name capitalised, postcode 80650 from `address_other_platforms[0]` (Booking.com), source recorded in `copy/sources.md` row `contact.address`, order street / town postcode / country — exactly playbook 0.5.1 §6; same string ×4 on the page and ×2 in `llms.txt`; JSON-LD `streetAddress` "207/A Welahangoda", `addressLocality` "Ahangama", `postalCode` "80650", `addressCountry` "LK". Headline rating blocks carry "read 19 September 2026" ×7 (hero ×3, footer tiles ×2, sheet tiles ×2) = `reviews.*.fetched_at` 2026-09-19; the body sentence "9.9 out of 10" needs none under 0.5.2. Deductions: check-in window is Hostelworld's side of the unresolved `contradictions[1]` (carried); `llms.txt` "## Ratings" lists platform score + count **without** the capture date — the machine-readable copy of the headline block (a 0.5.2 §6 reading, small) |
+| 2 | mobile + performance | 7 | Budget met on every line (table below): `audit.json` 241 215 B / 8 requests / 0 third-party, LCP 416 ms, CLS 0; my throttled runs (1.6 Mbps, 150 ms, 4× CPU) LCP 420–432 ms at all six widths, first-load CLS 0 (390) to 0.013 (1024), 0 third-party requests on load at every width, **0 console errors** at every width with both embeds live after a full scroll, CLS over the full scroll 0 at all six. **New finding, pre-existing (the `.times` rule is unchanged since the round-3 build) and first seen now because 768/1024 had never been measured: horizontal overflow from 761 to 1070 px.** `.times` is `display:flex; gap:64px` with no wrap above the 760 px breakpoint; the Check-out block (157 px) is pushed past the viewport: `scrollWidth − innerWidth` = 152 at 768, 24 at 1024, JS on and off. At 768 "Check-out by 13:00" sits entirely off screen (x 763–920); at 1024 it is cut to "13:0" (`overflow-768.png`, `overflow-1024.png`). 0 overflow at 390, 1440, 1525, 1920. A tablet visitor would notice and loses a fact, but nothing misleads and booking is unaffected |
+| 3 | booking CTA | 9 | 390, external navigation blocked and logged: bar "Check dates" 280 × 63 → sheet opens, focus on the Hostelworld tile; tapping it issues a document navigation to `https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/`; JS off, the same tap navigates straight there. Sheet links: Hostelworld / Booking.com / Agoda / `tel:+94773746053`, character-identical to `booking.other_engines[0]`, `booking.engine_url`, `other_engines[1]`, `contact.phone`. Deduction carried: no prefilled message possible, no reply time (`reply_time_hint` gap) |
+| 4 | brand fit | 9 | Sheets (`critic-6/desktop-sheet.png` 15 captures / 11 713 px, `mobile-sheet.png` 18 / 13 448 px — same heights as `critic-5`) show the same page; the only visible changes are the "Ahangama 80650" order and "actually available". First screen: what + where, "Check dates", 9.8/10 with count, source and date. Deduction carried: the wave/spot section sits after location (playbook §3 order), as in the picked mockup |
+| 5 | copy quality | 9 | "Rates change with the dates, and the booking links below show what is actually available." — plain, true, and "below" holds wherever it is set (above the tiles in the footer and in the sheet; above "How to book" in `llms.txt`). Address reads naturally. Deduction carried: the two unfixed voice notes on `copyBlocks[4]` |
+| 6 | accessibility | 9 | **Skip link done:** first Tab stop at 390 and 1440, 144 × 52 at (8, 8), visible on focus (`skip-390.png`, `skip-1440.png`); Enter moves focus to `<main id="main">` (hash `#main`) and the next Tab lands on the first link inside main. axe-core 4.11.1 (local copy), WCAG 2.0/2.1 A+AA after a full scroll: **0 violations** at 390 and 1440 (27 / 26 rules pass); incomplete `aria-prohibited-attr` 1 and `color-contrast` 15 / 24 (the gradient underline, as in verification 2). Sheet: opens on Enter, 10 Tabs + 4 Shift+Tabs stay inside `#book`, Esc closes, focus returns to the trigger; from room row 4 the context line reads "Double room, 1 extra-large double bed" and focus returns to that row — both widths. Reduced motion: canvas `display:none`, still SVG shown, panel transition 0 s. No-WebGL (`getContext` stubbed null for webgl): `data-canopy="2d"`, 0 errors, both widths. Taps at 390: 19 / 20 / 25 targets at load / scrolled / sheet open, **0 under 44 on either side**, 0 real overlaps (two geometric overlaps with the sheet open are page links *under* the sheet, not topmost). Deduction: at 1440 header "Call" 28 × 26, header "Check dates" 88 × 26 and hero phone 125 × 22 are still under 44 high (desktop only, carried) |
+| 7 | security + delivery | 9 | Static only, no CMS call at runtime, 0 `<script src>`, exactly **2** iframes, both `data-src` only; Rosa's iframe attributes character-identical to `agents/designer/tools.md`, `spot=kabalana` = `concepts.md` mapping. 0 third-party requests on first load in every run (6 widths + 30 embed runs). Grep of `dist/` for localhost / 127.0.0.1 / `/home/` / api key / openstreetmap / `no-webgl`: 0. Filenames lowercase, URLs relative. Preview rule holds (above). **Map probe:** in the live runs the page logs 0 console errors (the 404 is gone). Deduction — embed failure paths the fallback does not cover (table below): when Google is reachable but the **embed** request fails (abort or 500) the map box is shown empty / as the error page with its link hidden, and when `rosa.surf/widget` answers HEAD but its GET fails the widget box is empty (the latter is recorded in `notes.md` as undetectable; the former is new with the `generate_204` probe, which no longer touches the embed URL). The address and "Open in Google Maps" remain in the adjacent text, so nothing is lost from the page |
+
+`total = 9×2.5 + 7×2 + 9×1.5 + 9 + 9 + 9 + 9 = 86`. No hard fail, total ≥ 80, every dimension ≥ 6, every playbook §4 budget line met. **Result: pass.** Down 7 from verification 2: dimension 2 −3 (tablet overflow, never measured before), dimension 7 −1 (uncovered embed-fail paths), dimension 6 unchanged (skip link gained, desktop targets remain).
+
+## Budget table (playbook §4) — first load, and with both embeds loaded
+
+| Item | Target | First load (`critic-6/audit.json`, 390 × 844, throttled) | Both embeds loaded |
+|---|---|---|---|
+| First-load transfer | ≤ 1.5 MB | **241 215 B, 8 requests**, host localhost only | unchanged (embeds request nothing before their blocks near) |
+| JS, compressed | ≤ 300 KB | 0 B as files; inline 22 227 B raw / 8 474 B gzip | unchanged (embed scripts run in their own frames) |
+| Largest above-the-fold image | ≤ 200 KB | none (drawn first screen); largest fetched 47 428 B | unchanged |
+| Fonts | ≤ 2 families, ≤ 150 KB | 1 (Outfit), 32 292 B | unchanged |
+| LCP | ≤ 2.5 s | **416 ms** (my runs 420–432 ms at 390/768/1024/1440/1525/1920) | first-load metric |
+| CLS | < 0.1 | **0** (390); 0.006–0.013 at 768–1920 | **0** over a full programmatic scroll at all six widths, and 0 in all 30 embed runs |
+| Third-party requests on load | 0 | **0** | **0** |
+
+## Widths (`widths.json`, `w<width>-first|map|fc.png`)
+
+| width | LCP ms (throttled) | first-load CLS | overflow px | console errors, full scroll, embeds live | map / Rosa after scroll |
+|---|---|---|---|---|---|
+| 390 × 844 | 424 | 0 | 0 | 0 | on / on |
+| 768 × 1024 | 432 | 0.006 | **152** | 0 | on / on |
+| 1024 × 768 | 420 | 0.013 | **24** | 0 | on / on |
+| 1440 × 900 | 428 | 0.010 | 0 | 0 | on / on |
+| 1525 × 900 | 428 | 0.010 | 0 | 0 | on / on |
+| 1920 × 1080 | 432 | 0.006 | 0 | 0 | on / on |
+
+Overflow sweep at 1 px steps: 761–1070 px (310 widths), cause `.times > div:last-child` (Check-out) only. JS off the same range; the canopy SVG paths also extend past the edge but are clipped and cause no overflow.
+
+## Third-party embeds (hard constraint 9) — both on screen when each result lands (`embeds/embeds.json`, `embeds/*.png`)
+
+Harness: load, wait 1.5 s, start a `PerformanceObserver` counting every shift, jump the block to the centre, wait 13 s. 15 scenarios × 390 and 1440.
+
+| scenario | CLS | end state | plain link visible |
+|---|---|---|---|
+| live | 0 | map `on`, Rosa `live` + `on` | n/a (live) |
+| map probe aborted / aborted after 3 s | 0 | map off, `src` never set | **yes** |
+| map embed hangs | 0 | `src` set, never `on`, `data-loading` stays | **yes** |
+| **map embed aborted** (probe OK) | 0 | `on`, blank box | **no** |
+| **map embed HTTP 500** (probe OK) | 0 | `on`, error body in the box | **no** |
+| Rosa JSON 404 after 3 s / abort after 3 s / hang (10 s) / stale 30 h | 0 | `fc off`, no frame | **yes** |
+| widget HEAD aborted / HEAD 500 after 2 s / HEAD hangs (10 s) | 0 | headline shown, `src` removed, frame hidden | **yes** |
+| **widget GET aborted** (HEAD OK) | 0 | `on`, empty box | **no** (recorded as undetectable in `notes.md`) |
+| everything third-party blocked | 0 | both fallbacks | **yes** |
+
+Every run: 0 third-party requests before the scroll; reserved boxes identical before and after (`.map-frame` 290 × 320 / 384 × 500, `.fc-rosa` 350 × 500 / 420 × 500); the only box change is `.fc-now` 289 → 293 px high at 1440 when the headline draws, inside its 500 px row — nothing after it moves (`.crops`, footer and page height unchanged). Console errors appear only on failure paths and are the browser's own "Failed to load resource". The Rosa widget-fail fix is confirmed on all its target paths. JS off (`nojs-map|fc-390|1440.png`): no iframe gets `src`, address + "Open in Google Maps" and "See today's forecast for Kabalana on Rosa" visible.
+
+## Facts table (mine, sentence by sentence; JS-on and JS-off string sets are identical)
+
+| On the page | Dossier key | Verdict |
+|---|---|---|
+| "KA Surf Hostel" (h1, header, footer, title, og, JSON-LD, llms) | `business.name` | match |
+| "Surf, chill and feel at home in Ahangama" | `business.tagline` | match |
+| "Five minutes from Kabalana Beach" (display, description, og, llms) | `location.distance_to_beach` | match |
+| "or call +94 77 374 6053" / `tel:+94773746053` ×5 / JSON-LD `telephone` | `contact.phone` | match |
+| 9.8/10 Hostelworld 66 · 9.5/10 Booking.com 38 · 4.8/5 Google 42, each "read 19 September 2026" (hero, tiles, sheet) | `reviews.hostelworld|booking|google` rating, count, `fetched_at` 2026-09-19 | match ×3 scores, ×7 dates |
+| "A family runs this place, and they set out to make you feel at home from the moment you arrive." | `business.run_by`; `description_long` | match |
+| "Kabalana Beach is a five-minute walk." | `distance_to_beach` | match |
+| "Dorms if you want the company, private rooms if you don't." | `room_types[]`; `description_long` | match |
+| "Mixed, female and male dormitories with bunk beds, plus double rooms and deluxe doubles." | `room_types[0–5]` | match |
+| "Every room has air conditioning and a fan, private lockers and a personal fridge." | `description_long`; `facilities[22,23,16]` | match |
+| "The bathrooms are modern and the showers are hot." | `description_long`; `facilities[24]` | match |
+| "Rates change with the dates, and the booking links below show what is actually available." (footer, sheet, llms) | `gaps[]` offers; `booking.path.note` "live inventory" | match |
+| 6 room rows + beds (page, JSON-LD `containsPlace`, llms) | `room_types[0,1,2,3,5,4]` | match ×6 |
+| "Breakfast, every day" / "Rotis, fruit, pancakes and eggs, with vegan options." | `description_long` | match |
+| "What is here" paragraph: garden + chill zone, free filtered water, laundry, minimarket, scooter with surf rack, luggage storage and lockers, reception 24 hours | `description_long`; `facilities[4,21,19,12,20,8,16,10]` | match |
+| "Pets are welcome on request at no charge. Children are not accommodated." | `facilities[15]`; `house_rules[1]` | match |
+| 17 amenity rows (page, JSON-LD, llms) | `facilities[2,0,22,16+23,24,4+description_long,21,20,19,12,8,9,10,11,18,17,15]` | match ×17 (no fibre claim; "Bicycle parking", not car parking) |
+| "'Family' is the word guests keep using." | `reviews.quotes[1,2,6,7]` | match |
+| dengue in Kandy … on top of what the hospital was already giving her | `reviews.quotes[9]` (Mia, Female) | match |
+| Booking staff 9.9, the highest there; Hostelworld staff 9.9, only value for money and security higher, both 10 | `reviews.booking.categories`, `reviews.hostelworld.categories` | match (comparisons re-checked) |
+| 5 quotes + cites (Wolfgang, Austria, Booking.com · Elena, Germany, Hostelworld, March 2026 · Mia, USA, Hostelworld, February 2026 · Clara, United Kingdom, Booking.com · Saketh, England, Hostelworld, February 2026) | `reviews.quotes[3,7,9,1,8]` | **5/5 verbatim by string equality**; dates only where the dossier has them |
+| "Ahangama, a five-minute walk from Kabalana Beach. Koggala Airport is about 5 km away; Ahangama railway station is a little over 2 km. The property arranges a shuttle." | `location.address`, `distance_to_beach`, `nearby` (3.3 mi, 1.3 mi), `facilities[13]` | match |
+| Check-in 13:00 to 23:00, Check-out by 13:00 (page, JSON-LD, llms) | `hours_note` (Hostelworld) | match; `contradictions[1]` unresolved (carried) |
+| "Reception is open 24 hours. Children are not accommodated, and cots and extra beds are not available." | `facilities[10]`; `house_rules[1]` | match |
+| "207/A Welahangoda, Ahangama 80650, Sri Lanka" (×4 page, ×2 llms, JSON-LD `PostalAddress`) | `location.address.value` + `address_other_platforms[0]` postcode, `sources.md` | match under playbook 0.5.1 §6. Fact for the harvester: `gaps[]` "location.address.postcode" still says 80650 "is not filled from there", which predates the 0.5.1 refinement |
+| "Open in Google Maps" ×3, JSON-LD `hasMap`, llms Map | `location.map_url` | match, character-identical |
+| map embed `q=5.98181,80.35206`; JSON-LD `geo` | `location.plus_code` X9J2+PR decoded; the listing pin `lat_lng` 5.9818405, 80.3520113 is ~5 m away | match |
+| "Map of KA Surf Hostel, Ahangama" (iframe title) | `business.name`, `location.address` | match |
+| "Kabalana: a sandy beach break for beginners and intermediates, and The Rock, a reef A-frame for advanced surfers." | `location.spot` (thesurfatlas.com) | match |
+| "Forecast for Kabalana by Rosa", "See today's forecast for Kabalana on Rosa", "Rosa surf forecast - Kabalana" | `concepts.md` mapping `kabalana` | match; forecast values are Rosa data, not content |
+| "Check dates on Hostelworld / Booking.com / Agoda" + hrefs; JSON-LD `sameAs`; llms "How to book" | `booking.engine_url`, `other_engines[]` | match |
+| 11 photograph alts | `images[]` business-owned (unchanged set and alts since verification 2) | match — descriptive, none tied to a named room |
+| "Photographs: KA Surf Hostel's own, from its Booking.com listing and Instagram." | `images[].license_note` | match |
+| interface strings: "Skip to content", "Call", "Check dates", "Close", "Beach photographs", "Book and contact", "Book", "Check-in/Check-out", "to/by" | template labels, assert nothing about the business | n/a |
+| title "KA Surf Hostel, Ahangama"; description/og "…Dorms and private rooms." | name, tagline, distance, `room_types[]` | match |
+| JSON-LD `@type` Hostel, `knowsLanguage` en | `business.type.note`; `languages_spoken` | match |
+| absent, as required: prices, WhatsApp, email, season, restaurant, car parking, fibre WiFi, aggregateRating | `gaps[]`, `contradictions[0,2,3]` | absent |
+
+## What would cost points / what to route (none blocks the pass)
+
+1. **Tablet overflow 761–1070 px** (dim 2) → designer: `.times` needs to wrap or stack above the 760 px breakpoint; check-out is off screen at 768 and clipped at 1024. Pre-existing since at least round 3; every earlier round measured only 390/1440/1525/1920.
+2. **Map embed failing while Google is reachable** leaves an empty/error box with the link hidden (dim 7) → designer: e.g. keep the address + link visible under or around the frame, or set `.on` only on a positive signal. Same class as the Rosa GET-abort residual already in `notes.md`.
+3. `llms.txt` "Ratings" without capture dates (dim 1) → designer/seo, small.
+4. Carried: three desktop pointer targets under 44 px high at 1440; check-in contradiction; no prefilled message / reply time; spot section after location; `copyBlocks[4]` voice notes.
+
+## Default-look facts (hard constraint 4)
+
+`check-design.mjs … final/dist --no-shots`: 0 problems, 0 warnings; fonts h1/h2/body "Outfit", ground `rgb(240, 241, 242)` = `hsl(210 7% 95%)`, all-caps labels 0, labelled headings 0/8. `check-places.mjs`: 0 borrowed image uses, 0 failing.
+
+## Evidence
+
+`final/shots/critic-6/`: `audit.json` (scratch-port copy of `tools/audit-mockup.mjs`, `measured_at 2026-09-23T12:57:55Z`), `shoot.json` + `desktop-00…14.png`, `mobile-00…17.png`, both sheets (`--settle 1400`, errors `[]` at both widths), `widths.json` + `w{390,768,1024,1440,1525,1920}-{first,map,fc}.png`, `overflow-768.png`, `overflow-1024.png`, `embeds/embeds.json` + 30 scenario captures, `a11y.json` (keyboard orders, sheet, reduced motion, no-WebGL, no-JS, axe, tap census), `skip-390|1440.png`, `drawer-390|1440.png`, `reduced-390|1440.png`, `nowebgl-390|1440.png`, `nojs-map|fc-390|1440.png`.
+
+what the designer prompt got wrong: the rebuild's own changes are correct — the probe no longer logs a 404, the skip link is right, the widget-fail fix holds on every path it targets, and the copy and address match the dossier and playbook 0.5.1 §6. What this round exposes is a gap in *where* the pipeline looks: every station, the critic included, measured 390 and ≥ 1440 only, so a flex row that overflows from 761 to 1070 px survived six reviews. `agents/designer/base.md` (self-check) and `agents/critic/base.md` should name a width sweep — at least 768 and 1024, better a 1 px sweep of `scrollWidth − innerWidth` from 360 to 1920 — as a required measurement. Second, the probe change swapped *which* failure the map fallback can see: probing `generate_204` removes the console 404 but no longer tests the embed URL, so the fallback now covers "Google unreachable" and not "embed refused"; any change to a fallback's trigger should be re-run through the whole failure matrix, not only the path it was made for.
+
+fix list (fail only): none — the site passes. Non-blocking items routed above.

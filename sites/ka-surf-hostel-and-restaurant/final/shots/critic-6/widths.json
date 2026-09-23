@@ -1,0 +1,206 @@
+{
+ "390": {
+  "h": 844,
+  "first": {
+   "lcp": 424,
+   "cls": 0,
+   "ov": 0,
+   "H": 13448,
+   "requests": 59,
+   "third_party_on_load": [],
+   "bytes_all": 1502020
+  },
+  "scroll": {
+   "cls2": 0,
+   "map": "map-frame on",
+   "mapsrc": "https://www.google.com/maps?q=5.98181,80.35206&z=15&output=embed",
+   "fc": "fc live",
+   "rosa": "fc-rosa on",
+   "rosasrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+   "ov": 0,
+   "H": 13448,
+   "ovMax": 0,
+   "hostsMainPageAfterScroll": [
+    "www.google.com",
+    "maps.gstatic.com",
+    "maps.googleapis.com",
+    "rosa-data-opal.vercel.app",
+    "rosa.surf",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "server.arcgisonline.com"
+   ]
+  },
+  "console_errors": []
+ },
+ "768": {
+  "h": 1024,
+  "first": {
+   "lcp": 432,
+   "cls": 0.006144513822315881,
+   "ov": 152,
+   "H": 13428,
+   "requests": 59,
+   "third_party_on_load": [],
+   "bytes_all": 1046429
+  },
+  "scroll": {
+   "cls2": 0,
+   "map": "map-frame on",
+   "mapsrc": "https://www.google.com/maps?q=5.98181,80.35206&z=15&output=embed",
+   "fc": "fc live",
+   "rosa": "fc-rosa on",
+   "rosasrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+   "ov": 152,
+   "H": 13572,
+   "ovMax": 152,
+   "hostsMainPageAfterScroll": [
+    "www.google.com",
+    "maps.gstatic.com",
+    "maps.googleapis.com",
+    "rosa-data-opal.vercel.app",
+    "rosa.surf",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "server.arcgisonline.com"
+   ]
+  },
+  "console_errors": []
+ },
+ "1024": {
+  "h": 768,
+  "first": {
+   "lcp": 420,
+   "cls": 0.013210164344248673,
+   "ov": 24,
+   "H": 11893,
+   "requests": 59,
+   "third_party_on_load": [],
+   "bytes_all": 1051189
+  },
+  "scroll": {
+   "cls2": 0,
+   "map": "map-frame on",
+   "mapsrc": "https://www.google.com/maps?q=5.98181,80.35206&z=15&output=embed",
+   "fc": "fc live",
+   "rosa": "fc-rosa on",
+   "rosasrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+   "ov": 24,
+   "H": 11924,
+   "ovMax": 24,
+   "hostsMainPageAfterScroll": [
+    "www.google.com",
+    "maps.gstatic.com",
+    "maps.googleapis.com",
+    "rosa-data-opal.vercel.app",
+    "rosa.surf",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "server.arcgisonline.com"
+   ]
+  },
+  "console_errors": []
+ },
+ "1440": {
+  "h": 900,
+  "first": {
+   "lcp": 428,
+   "cls": 0.009738553321116256,
+   "ov": 0,
+   "H": 11713,
+   "requests": 59,
+   "third_party_on_load": [],
+   "bytes_all": 1056358
+  },
+  "scroll": {
+   "cls2": 0,
+   "map": "map-frame on",
+   "mapsrc": "https://www.google.com/maps?q=5.98181,80.35206&z=15&output=embed",
+   "fc": "fc live",
+   "rosa": "fc-rosa on",
+   "rosasrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+   "ov": 0,
+   "H": 11713,
+   "ovMax": 0,
+   "hostsMainPageAfterScroll": [
+    "www.google.com",
+    "maps.gstatic.com",
+    "maps.googleapis.com",
+    "rosa-data-opal.vercel.app",
+    "rosa.surf",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "server.arcgisonline.com"
+   ]
+  },
+  "console_errors": []
+ },
+ "1525": {
+  "h": 900,
+  "first": {
+   "lcp": 428,
+   "cls": 0.00953943544148825,
+   "ov": 0,
+   "H": 11713,
+   "requests": 59,
+   "third_party_on_load": [],
+   "bytes_all": 1055474
+  },
+  "scroll": {
+   "cls2": 0,
+   "map": "map-frame on",
+   "mapsrc": "https://www.google.com/maps?q=5.98181,80.35206&z=15&output=embed",
+   "fc": "fc live",
+   "rosa": "fc-rosa on",
+   "rosasrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+   "ov": 0,
+   "H": 11713,
+   "ovMax": 0,
+   "hostsMainPageAfterScroll": [
+    "www.google.com",
+    "maps.gstatic.com",
+    "maps.googleapis.com",
+    "rosa-data-opal.vercel.app",
+    "rosa.surf",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "server.arcgisonline.com"
+   ]
+  },
+  "console_errors": []
+ },
+ "1920": {
+  "h": 1080,
+  "first": {
+   "lcp": 432,
+   "cls": 0.005847167921654972,
+   "ov": 0,
+   "H": 12167,
+   "requests": 59,
+   "third_party_on_load": [],
+   "bytes_all": 1056711
+  },
+  "scroll": {
+   "cls2": 0,
+   "map": "map-frame on",
+   "mapsrc": "https://www.google.com/maps?q=5.98181,80.35206&z=15&output=embed",
+   "fc": "fc live",
+   "rosa": "fc-rosa on",
+   "rosasrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+   "ov": 0,
+   "H": 12167,
+   "ovMax": 0,
+   "hostsMainPageAfterScroll": [
+    "www.google.com",
+    "maps.gstatic.com",
+    "maps.googleapis.com",
+    "rosa-data-opal.vercel.app",
+    "rosa.surf",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "server.arcgisonline.com"
+   ]
+  },
+  "console_errors": []
+ }
+}
