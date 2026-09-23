@@ -28,3 +28,15 @@ Fetched 2026-09-19 (UTC), headless Chromium (playwright-core 1.62.1) at 1440×14
 ## For the next run
 - Hostelworld is the richest source for a hostel: it carries the owner's own long-form copy, which Booking does not.
 - Send `Accept-Language: en-US` to Booking.com or the page comes back in the browser's locale.
+
+## Field-scoped pass 2026-09-23 — Google listing address (playbook 0.5.0 §6)
+
+Fetched 2026-09-23 (UTC), headless Chromium (Playwright), `locale en-US`, logged out.
+
+| URL | Yielded | Did not yield |
+|---|---|---|
+| https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en → resolved to https://www.google.com/maps/place/KA+surf+hostel+and+restaurant/@5.9794134,80.350836,17z/data=!4m9!3m8!1s0x3ae11300437b1eb3:0xc601caff438d6704!5m2!4m1!1i2!8m2!3d5.9818405!4d80.3520113!16s%2Fg%2F11y9z16whv?hl=en (08:44:02Z) | **Address `207/A welahangoda, Ahangama, Sri Lanka`** (now `location.address`); plus code `X9J2+PR Ahangama, Sri Lanka`; pin 5.9818405, 80.3520113 (from the place URL); phone +94 77 374 6053 (unchanged) | **A postcode** — the listing shows none |
+
+The Booking.com address (`No 207/A, Welhengoda, 80650 Ahangama, Sri Lanka`) and Hostelworld's `207/A welahangoda` moved to `location.address_other_platforms`; neither was re-fetched. The approximate scout pin (5.9805, 80.3486) is replaced by the listing's pin; the plus code matches the scout's.
+
+**Gap:** Google's address has no postcode, so the site's current `207/A Welahangoda, 80650 Ahangama, Sri Lanka` matches Google on neither spelling (`Welahangoda` vs `welahangoda`) nor postcode (80650 is Booking's). Recorded in `gaps[]` as `location.address.postcode`, not filled.
