@@ -35,6 +35,21 @@ export const isPreviewUrl = (url) => {
 export const SITE = import.meta.env.SITE ? new URL(import.meta.env.SITE) : null
 export const IS_PREVIEW = isPreviewUrl(SITE)
 
+/* businessType → schema.org type (station 4h). The schema has one lodging value, `beach_lodging`, and
+   no sub-type field, so the lodging sub-type is this template's call: this business is a hotel
+   (dossier business.type.note: Booking.com category "Hotel"; 17 rooms, restaurant, pool). */
+export const LD_TYPE = {
+  beach_lodging: 'Hotel', surf_camp: 'LodgingBusiness', surf_school: 'SportsActivityLocation',
+  board_rental: 'SportsActivityLocation', surf_shop: 'SportingGoodsStore', shaper: 'Store', other: 'LocalBusiness',
+}
+
+/* SCHEMA GAP (no geo field in site-content.md, so the pin cannot come through content.json): the
+   Google listing's pin, dossier location.lat_lng = 5.9794565, 80.3508299 (the place URL's !3d/!4d,
+   fetched 2026-09-23; Booking.com's pin agrees within metres). Rounded to 5 decimals (~1 m). It
+   encodes to plus code X9H2+Q8, the plus code on Google's listing (dossier location.plus_code).
+   scripts/seed-from-dossier.mjs stops if this constant and the dossier disagree. */
+export const MAP_PIN = { lat: 5.97946, lon: 80.35083 }
+
 const COUNTRY = { 'sri lanka': 'LK' }
 /* contact.address (free text) → PostalAddress. Splits "street…, town [postcode], country" (playbook
    §6 order: street, town postcode, country) only when the last part is a country it knows; otherwise

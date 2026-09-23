@@ -8,7 +8,7 @@ import css from '../styles/site.css?raw'
 import js from '../scripts/site.js?raw'
 import {
   content as c, pName, platformOf, safeUrl, tel, phoneLabel, paras, sentences, headLines, scoreText, readOn,
-  photo, SITE, IS_PREVIEW, postalAddress, metaDescription,
+  photo, SITE, IS_PREVIEW, LD_TYPE, MAP_PIN, postalAddress, metaDescription,
 } from '../lib/site.mjs'
 
 const name = c.businessName
@@ -58,11 +58,45 @@ const germanQuote = (q) => /[äöüß]/i.test(q ?? '') && ((q ?? '').match(/\b(u
 const fcOn = c.forecast?.enabled && /^[a-z0-9-]+$/.test(c.forecast?.rosaSpotId ?? '')
 const spotId = c.forecast?.rosaSpotId, spotName = c.forecast?.spotName || spotId
 
-/* Head: built from content (station 4h owns the final form). Brand first, then the town from the
-   address when the name lacks it; the description from owner-written fields, cut at a sentence. */
-const place = postalAddress(address)?.addressLocality ?? ''
-const title = place && !name.toLowerCase().includes(place.toLowerCase()) ? `${name}, ${place}` : name
+/* Head and structured data (station 4h). Absolute URLs (canonical, hreflang, og:url, og:image, JSON-LD
+   @id/url/image, sitemap) exist only when the build is given SITE_URL; everything else stays relative.
+   A preview build (IS_PREVIEW) adds the noindex meta; canonical, hreflang and og:* still follow
+   whatever SITE_URL it was given. Brand first in the title: "<name>, <town>" when the name lacks the
+   town (KA's rule), the town parsed from contact.address; the name alone if that passes 60 chars. The
+   description from owner-written fields, cut at a sentence to 155. */
+const site = SITE
+const abs = (u) => (site ? new URL(u, site).href : null)
+const postal = postalAddress(address)
+const place = postal?.addressLocality ?? ''
+const title0 = place && !name.toLowerCase().includes(place.toLowerCase()) ? `${name}, ${place}` : name
+const title = title0.length <= 60 ? title0 : name
 const desc = metaDescription([c.tagline, sentences(introP[0])[0], rooms?.heading])
+const og = P(0)
+const st = c.stayInfo ?? {}
+/* JSON-LD: one block, every value from content.json except geo (MAP_PIN, a schema gap). No
+   aggregateRating / review (Shahar's decision for KA, applied to every site in this run). */
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': LD_TYPE[c.businessType] ?? 'LocalBusiness',
+  ...(site ? { '@id': `${site.href}#business`, url: site.href } : {}),
+  name,
+  ...(desc ? { description: desc } : {}),
+  ...(site && ph.some(Boolean) ? { image: ph.filter(Boolean).map((p) => abs(p.src)) } : {}),
+  ...(c.contact?.phone ? { telephone: c.contact.phone } : {}),
+  ...(c.contact?.email ? { email: c.contact.email } : {}),
+  ...(postal ? { address: postal } : {}),
+  geo: { '@type': 'GeoCoordinates', latitude: MAP_PIN.lat, longitude: MAP_PIN.lon },
+  ...(mapUrl ? { hasMap: mapUrl } : {}),
+  ...(st.checkInFrom ? { checkinTime: st.checkInFrom } : {}),
+  ...(st.checkOutTo ? { checkoutTime: st.checkOutTo } : {}),
+  ...((c.amenities ?? []).length ? {
+    amenityFeature: c.amenities.map((a) => ({
+      '@type': 'LocationFeatureSpecification', name: a.note ? `${a.label} (${a.note})` : a.label, value: true,
+    })),
+  } : {}),
+  ...((c.languagesSpoken ?? []).length ? { knowsLanguage: c.languagesSpoken } : {}),
+  ...(links.length ? { sameAs: links.map((l) => l.url) } : {}),
+}
 ---
 <!doctype html>
 <html lang="en">
@@ -72,7 +106,19 @@ const desc = metaDescription([c.tagline, sentences(introP[0])[0], rooms?.heading
 <title>{title}</title>
 {IS_PREVIEW && <meta name="robots" content="noindex, nofollow">}
 {desc && <meta name="description" content={desc}>}
-{SITE && <link rel="canonical" href={SITE.href}>}
+{site && <link rel="canonical" href={site.href}>}
+{site && <link rel="alternate" hreflang="en" href={site.href}>}
+{site && <link rel="alternate" hreflang="x-default" href={site.href}>}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content={name}>
+<meta property="og:title" content={title}>
+{desc && <meta property="og:description" content={desc}>}
+{site && <meta property="og:url" content={site.href}>}
+{site && og && <meta property="og:image" content={abs(og.src)}>}
+{site && og && <meta property="og:image:width" content={String(og.w)}>}
+{site && og && <meta property="og:image:height" content={String(og.h)}>}
+{site && og && og.alt && <meta property="og:image:alt" content={og.alt}>}
+<meta name="twitter:card" content="summary">
 <link rel="preload" href="fonts/jost-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style is:inline set:html={css}></style>
 </head>
@@ -80,7 +126,7 @@ const desc = metaDescription([c.tagline, sentences(introP[0])[0], rooms?.heading
 <a class="skip" href="#top">Skip to content</a>
 
 <header class="bar" id="bar">
-  <a class="name" href="#top">{name}</a>
+  <h1><a class="name" href="#top">{name}</a></h1>
   {book && <a class="book" data-book href={book}>Check dates</a>}
 </header>
 
@@ -92,7 +138,7 @@ const desc = metaDescription([c.tagline, sentences(introP[0])[0], rooms?.heading
     <div class="pool" id="pool" aria-hidden="true"><canvas id="water"></canvas></div>
 
     <div class="hero-copy" id="heroCopy">
-      <h1 class="display">{c.tagline ? headLines(c.tagline).map((l) => <span>{l}</span>) : <span>{name}</span>}</h1>
+      <p class="display">{c.tagline ? headLines(c.tagline).map((l) => <span>{l}</span>) : <span>{name}</span>}</p>
       {ratings.length > 0 && (
       <ul class="proof">
         {ratings.map((r) => (
@@ -245,5 +291,7 @@ const desc = metaDescription([c.tagline, sentences(introP[0])[0], rooms?.heading
 </aside>
 
 <script is:inline set:html={js}></script>
+{/* JSON-LD at the end of the body, not in the head: in the head its ~3 KB before first paint cost Layday measurable LCP */}
+<script is:inline type="application/ld+json" set:html={JSON.stringify(ld).replace(/</g, '\\u003c')}></script>
 </body>
 </html>

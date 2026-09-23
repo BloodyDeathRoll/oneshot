@@ -138,6 +138,18 @@ const doc = {
   createdAt: null,
 }
 
+/* SCHEMA GAP (station 4h): site-content.md has no geo field, so the JSON-LD pin cannot travel through
+   content.json. It stays the MAP_PIN constant in src/lib/site.mjs, and this seed checks it against the
+   dossier's pin (location.lat_lng, Google listing, 2026-09-23) so the two cannot drift apart: rounded
+   to 5 decimals they must be equal, or the seed stops. Same check as Layday's seed. */
+{
+  const ll = dossier.location?.lat_lng?.value
+  const pin = /MAP_PIN\s*=\s*\{\s*lat:\s*([-\d.]+),\s*lon:\s*([-\d.]+)\s*\}/.exec(readFileSync(join(final, 'src', 'lib', 'site.mjs'), 'utf8'))
+  const r5 = (x) => Math.round(x * 1e5) / 1e5
+  if (!Array.isArray(ll) || !pin) throw new Error('pin: dossier location.lat_lng or MAP_PIN in src/lib/site.mjs missing')
+  if (r5(ll[0]) !== +pin[1] || r5(ll[1]) !== +pin[2]) throw new Error(`pin: MAP_PIN ${pin[1]},${pin[2]} ≠ dossier location.lat_lng ${ll.join(',')} — update MAP_PIN`)
+}
+
 writeFileSync(
   join(final, 'src', 'tenant', 'content.json'),
   JSON.stringify({ tenant: { id: null, slug, name: copy.businessName }, locales: { en: doc } }, null, 2) + '\n',
