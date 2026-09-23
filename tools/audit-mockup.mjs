@@ -146,14 +146,17 @@ async function auditOne(browser, slug, variant, port) {
           const s = getComputedStyle(e);
           return s.visibility !== 'hidden' && s.display !== 'none';
         });
-      const small = tapables.filter((e) => { const r = e.getBoundingClientRect(); return r.height < 44 && r.width < 44; });
+      /* playbook §10 / rubric: a tap target must be at least 44x44. Until 2026-09-23 this
+         flagged only targets small on BOTH sides, which no text link can fail — KA shipped 15
+         targets under 44 px high and the audit reported 0. Either side is now enough. */
+      const small = tapables.filter((e) => { const r = e.getBoundingClientRect(); return r.height < 44 || r.width < 44; });
       return {
         images: imgs.length,
         images_without_alt: imgs.filter((i) => i.getAttribute("alt") === null).length,
         images_alt_empty_decorative: imgs.filter((i) => i.getAttribute('alt') === '').length,
         tapables: tapables.length,
         tapables_under_44px: small.length,
-        tapables_under_44px_examples: small.slice(0, 4).map((e) => (e.textContent || '').trim().slice(0, 30)),
+        tapables_under_44px_examples: small.slice(0, 6).map((e) => { const r = e.getBoundingClientRect(); return `${(e.textContent || '').trim().slice(0, 24)} ${Math.round(r.width)}x${Math.round(r.height)}`; }),
         headings: [...document.querySelectorAll('h1,h2,h3')].map((h) => h.tagName),
         has_skip_link: !!document.querySelector('a[href^="#"]'),
         lang: document.documentElement.lang,

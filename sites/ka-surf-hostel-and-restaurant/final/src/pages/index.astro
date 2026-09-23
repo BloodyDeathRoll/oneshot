@@ -221,21 +221,27 @@ const ld = {
     {st.note && <p class="note">{st.note}</p>}
     {(address || mapUrl) && <p class="addr">{address.split('\n').map((l, i) => <Fragment>{i > 0 && <br />}{l}</Fragment>)}{mapUrl && <Fragment><br /><a href={mapUrl}>Open in Google Maps</a></Fragment>}</p>}
   </div>
-  {/* The map (Shahar, 2026-09-22: "Put the embed back"). The box is reserved by the row it shares
-     with the text, so nothing shifts when the frame arrives; the address and the Google Maps link
-     sit inside it and stay there with JS off, offline, or if the embed cannot be reached. */}
+  {/* The map (Shahar, 2026-09-22: "Put the embed back"; 2026-09-23: a standard Google map instead
+     of OpenStreetMap, so the frame shows the surrounding places, and no border around it).
+     https://www.google.com/maps?q=<lat>,<lng>&z=<z>&output=embed is the no-key form behind Maps'
+     own "Share → Embed a map"; it renders only inside an iframe (fetched on its own it answers
+     "The Google Maps Embed API must be used in an iframe"), it needs no API key, and it sets no
+     cookie and no storage in the frame — all measured 2026-09-23. Google's attribution ("Map data
+     ©2026", Terms, the Google mark) is drawn inside the frame, so the page carries no credit line
+     of its own. The box is reserved by the row it shares with the text, so nothing shifts when the
+     frame arrives; the address and the Google Maps link sit inside it and stay there with JS off,
+     offline, or if the embed cannot be reached. */}
   <div class="map">
     <div class="map-frame">
       <p class="map-alt"><span>{address.split('\n').join(', ')}</span>{mapUrl && <a href={mapUrl}>Open in Google Maps</a>}</p>
       <iframe
-        data-src={`https://www.openstreetmap.org/export/embed.html?bbox=${encodeURIComponent(MAP_PIN.bbox)}&layer=mapnik&marker=${MAP_PIN.lat}%2C${MAP_PIN.lon}`}
-        title={`Map of ${name}, ${place} (OpenStreetMap)`}
+        data-src={`https://www.google.com/maps?q=${MAP_PIN.lat},${MAP_PIN.lon}&z=${MAP_PIN.zoom}&output=embed`}
+        title={`Map of ${name}, ${place}`}
         loading="lazy"
         referrerpolicy="strict-origin-when-cross-origin"
         sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
       ></iframe>
     </div>
-    <p class="map-cred">Map <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a></p>
   </div>
 </section>
 )}

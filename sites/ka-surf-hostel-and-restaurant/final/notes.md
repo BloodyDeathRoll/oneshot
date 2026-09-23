@@ -1,5 +1,82 @@
 # KA Surf Hostel — 4g build, round 3 + corrections · "Canopy" (unique)
 
+## Correction 3 (2026-09-23, after the deployed 4g build; shots `round-9/`, `round-10/`)
+
+Three items from Shahar. Nothing else touched: no copy, no photographs, no schema binding, no
+other rule.
+
+1. **The map is a standard Google map now, not OpenStreetMap.**
+   `https://www.google.com/maps?q=<lat>,<lng>&z=<z>&output=embed` — the no-key form behind Maps'
+   own "Share → Embed a map". Verified by loading it, not by memory:
+   - Fetched on its own it renders one sentence, *"The Google Maps Embed API must be used in an
+     iframe"* (HTTP 200, both `maps.google.com` and `www.google.com`). Inside an iframe it renders
+     the map. So the form is real but only works framed — which is what we do.
+   - `https://www.google.com/maps/embed/v1/place?q=…` without a key answers **401**, *"You must use
+     an API key"*. Not used.
+   - `maps.google.com/maps?…` works too but adds a redirect hop to `www.google.com`, so the
+     `www.google.com` form is the one in the page. Inside the frame Google redirects itself to
+     `google.com/maps/embed?origin=mfe&pb=…`; **no `pb` string is written into our page** — we never
+     had one to obtain honestly, and none is invented.
+   - `z=15`. At `z=16` the frame holds the pin and its immediate lane but Kabalana beach (about
+     810 m south of the pin) falls outside it at both box sizes. At 15 the frame holds Kabalana
+     Road, Thiththagalla Road, the Galle Road / coastal line, Kabalana beach and the neighbouring
+     businesses' names — the "surrounding places" the swap was asked for — and the pin is still
+     clearly on the hostel's lane.
+   - Coordinates: `MAP_PIN` in `src/lib/site.mjs`, 5.98181 / 80.35206, unchanged (dossier
+     `location.plus_code` X9J2+PR). `MAP_PIN.bbox`, which only OpenStreetMap needed, is gone and
+     `zoom: 15` replaces it.
+   Everything else about the block is exactly as it was: no `src` until the section nears the
+   viewport (IntersectionObserver, `rootMargin: 400px`), the opaque HEAD probe first so a blocked
+   or offline embed shows the address instead of a dead frame, the reserved box, the JS-off
+   fallback, and "Open in Google Maps" → `contact.mapUrl`, character for character as before.
+   **The "Map © OpenStreetMap contributors" credit line is gone**, with the `.map-cred` rules and
+   the `MAP_PIN.bbox` value. Google draws its own attribution inside the frame ("Map data ©2026",
+   "Terms", "Report a map error", the Google mark), so the page carries no credit of its own — the
+   two-credits-in-two-typefaces problem recorded under round-8 is gone with it.
+2. **No border around the map.** `.map-frame`'s `border:1px solid var(--ink)` removed. The reserved
+   box is now defined by the map's own edges when it loads, and by nothing when it does not.
+3. **Every tap target at 390 px is at least 44 × 44, grown by padding, not by type size.**
+   `tools/audit-mockup.mjs` was fixed today to flag a target small on **either** side, and it
+   reported **14 of 20** under 44 on the deployed build. All 14 were under 44 *high*; none was
+   under 44 *wide*. Before → after (390 px, `a[href] | button | [role=button]`, visible):
+
+   | target | before | after |
+   |---|---|---|
+   | `.score .src a` "Hostelworld" (hero rating) | 80 × 20 | 80 × 45 |
+   | `.score .rest a` "Booking.com" (hero rating) | 87 × 19 | 87 × 45 |
+   | `.list a.book` "Check dates" × 6 (room rows) | 88 × 25 | 88 × 46 |
+   | `.addr a` "Open in Google Maps" (Getting here) | 164 × 22 | 164 × 47 |
+   | `.map-alt a` "Open in Google Maps" (map fallback) | 164 × 26 | 164 × 51 |
+   | `.map-cred a` "© OpenStreetMap contributors" | 198 × 19 | **removed with item 1** |
+   | `.credit-rosa a` "Forecast for Kabalana by Rosa" | 217 × 21 | 217 × 46 |
+   | `.contact p a` "+94 77 374 6053" (footer) | 117 × 21 | 117 × 48 |
+   | `.contact p a` "Open in Google Maps" (footer) | 150 × 21 | 150 × 48 |
+
+   Already passing and untouched: the Rosa plain-link box 350 × 500, the three footer tiles
+   (115/121/98 × 161), the phone bar's "Check dates" 280 × 63 and "Call" 110 × 63.
+   Three more that the audit cannot see because they are hidden at load were padded too, since they
+   are real targets on a phone: the header's name link (hidden until the clearing scrolls away)
+   107.6 × 21 → 107.6 × 49.5, the slide-out's "Close" 40 × 21 → 60 × 48, and the slide-out's
+   "or call +94 77 374 6053" 135 × 24 → 135 × 49. The slide-out's three tiles were already
+   108 × 168.
+   **How, without moving anything.** Vertical padding on an *inline* link grows its box without
+   pushing the lines it sits between apart, so a link inside a sentence gets its hit area and the
+   paragraph is not re-typeset. Where the target is a block or flex item (a room row's "Check
+   dates", the link in the map box, the slide-out's Close) a negative margin cancels the padding,
+   one pixel short at the bottom because those three carried a 1px `border-bottom` *inside* the old
+   box. And the underline stops being that `border-bottom`, which the padding would have pushed
+   down, and becomes a 1px gradient pinned to the bottom of the **content** box
+   (`background-origin:content-box; background-position:0 calc(100% + 1px)`) — the same pixel row
+   the border occupied. The room rows' melon hover swatch stays the old 88 × 25 for the same
+   reason: it is a second gradient the size of the content box, not a background on the padded box.
+   Checked by pixel diff against `shots/critic-4/`: the hero ratings, the room list and the
+   slide-out header are **byte-identical** before and after.
+   **The one place that had to gain space**: the footer's phone and "Open in Google Maps" sat on
+   two lines of one paragraph, 24 px apart. Two 44 px targets cannot be 24 px apart, so they became
+   inline-blocks and the contact block is about 42 px taller. Type size, weight and colour
+   unchanged. No two targets overlap at 390 px, at load, after scrolling or with the sheet open
+   (checked pairwise: 0 overlapping pairs in all three states).
+
 ## Correction 2 (2026-09-22, after the preview deploy; shots `round-8/`)
 
 Two items from Shahar, seen on the live preview. Nothing else touched.
@@ -418,8 +495,32 @@ loader) · largest image on first load 47 428 B, still nothing above the fold ·
 32 292 B · **LCP 400 ms and 408 ms over two runs** · **CLS 0** on first load, 0 over a full scroll
 with the map and the forecast arriving, 0 over a full scroll with the map blocked, and 0 on all five
 forecast paths at 390 and 1440 · **third-party requests on load 0**. HTML gzip 27 033 B. Unchanged
-in the same run: 0 images without alt, 0 tap targets under 44 px, 4 booking links reachable with
-JS off, 14 images visible with JS off.
+in the same run: 0 images without alt, 0 tap targets under 44 px *by the audit as it then was* —
+that check only flagged a target small on **both** sides, so it could not fail a text link; the tool
+was fixed on 2026-09-23 and the same build then reported 14 of 20 under 44.
+
+Re-measured after correction 3 (`audit.json` rewritten 2026-09-23T03:36:12Z; LCP 424–432 ms over
+three runs), every line still
+inside its target: first load **240 980 B (235 KB) / 8 requests** — HTML 82 653 B, 2 419 B more than
+correction 2's 80 234 (the tap-target rules and the map's new markup); fonts 32 292 and images
+126 035 both unchanged, because nothing the map or the forecast loads is on first load ·
+JS **0 B as separate files**, inline 20 923 B raw / 7 958 B gzip (correction 2: 20 930 / 8 016) ·
+largest image on first load 47 428 B, still nothing above the fold · 1 font family, 32 292 B ·
+**LCP 424 ms** · **CLS 0** · **third-party requests on load 0**. HTML gzip 27 668 B (correction 2:
+27 033). And now the line that changed: **tap targets under 44 px = 0 of 19**, with the fixed audit
+(correction 2's build reported 14 of 20 under the same tool). Unchanged in the same run: 0 images
+without alt, 4 booking links reachable with JS off, 14 images visible with JS off.
+
+Behaviour re-checked for correction 3, at 390 and 1440, with a layout-shift observer running from
+before first paint (`shots/round-10/states/`):
+
+| path | third party before scroll | CLS | what the map box shows |
+|---|---|---|---|
+| arrival, no scroll | none | 0 | address + "Open in Google Maps" |
+| scrolled to the map, live | none | 0 | Google's map |
+| scrolled to the map, `google.com`/`gstatic`/`googleapis` blocked | none | 0 | address + "Open in Google Maps" |
+| JS off | none | n/a | address + "Open in Google Maps" |
+| scrolled to the forecast, `rosa*` blocked | none | 0 | (forecast falls back to its plain link, as before) |
 
 ## Rounds
 
@@ -541,7 +642,42 @@ JS off, 14 images visible with JS off.
   is what the playbook's two-halves rule is for. What is still wrong: the map's own credit strip
   ("Report a problem | © OpenStreetMap contributors | Make a Donation…") sits inside the frame in
   OSM's type, directly above our own credit line — two credits in two typefaces, and only the second
-  is ours. It is OSM's frame and may not be restyled or cropped, so it stays.
+  is ours. It is OSM's frame and may not be restyled or cropped, so it stays. **Closed by correction
+  3:** the frame is Google's now and there is only one credit, Google's own, inside it.
+
+- **round-9** (`shots/round-9/`, correction 3; served over http from `dist/`, live network, so the
+  map tiles and the forecast are real). Desktop 15 captures / 11 713 px, phone 18 / 13 448 (round-8:
+  11 689 / 13 400 — the 24 px and 48 px are the footer's two contact links becoming 44 px targets).
+  Sheets opened at both widths and every capture diffed pixel by pixel against `shots/critic-4/`.
+  **What is wrong with it as design:** nothing in the page, but one pixel in the room list —
+  "Check dates" sat a pixel lower than before (desktop-03, 0.21 % of the capture, x 1232–1319),
+  because the symmetric negative margin centred a box one pixel shorter than the old one, which had
+  a border inside it. **What I changed:** the three block-level targets get `-11px -10px` instead of
+  `-11px -11px`, so their margin box is exactly the old one. **Would a stranger guess it was
+  generated:** no — and the map is the reason. The OpenStreetMap frame drew a pale beige street
+  plan with its own donation strip along the bottom in its own type; the Google frame draws the
+  coast in flat blue against the page's cool grey, the beach and the road labelled, the neighbours'
+  names in Google's orange and purple pins, and its attribution is a hairline of grey text along
+  the bottom edge. Without the border it stops being "an embedded widget in a box" and becomes the
+  drawing the section was composed around, facing the text across the thin ink line.
+- **round-10** (`shots/round-10/`, the one-pixel fix; same server, same live network). Same
+  geometry: desktop 15 / 11 713 px, phone 18 / 13 448. Against `shots/critic-4/`, capture by
+  capture: **desktop 02–09 and 13 are byte-identical; mobile 01–12 and 16 are byte-identical.**
+  What differs, all of it asked for or explained: desktop 10 (the map, 9.5 %), 11–12 (the forecast's
+  live numbers and Rosa's widget, 2.0 % / 0.5 %), 14 (7.9 % — the footer's contact links plus the
+  whole frame offset by the 24 px the page grew); mobile 13–14 (the map), 15 (the forecast's live
+  numbers), 17 (the footer, 21.8 %, same two causes). Desktop 00–01 differ by ~89 % and ~74 %, which
+  is the WebGL canopy's animation frame: round-9 against round-10 gives the same numbers, and the
+  hero's type, button and ratings are byte-identical in a crop that excludes the canvas.
+  **I opened the phone sheet and looked at it, not only at the numbers.** The padding does not crowd
+  the phone: the room rows were already 81–110 px tall with the link centred, so a 46 px hit area
+  disappears inside them; the hero's two rating links are 55 px apart and read exactly as before;
+  the map fallback and the Rosa credit sit alone on their lines. The one place the eye can see the
+  change is the footer, where the phone number and "Open in Google Maps" now have air between them
+  instead of touching — and it reads better, as two things you can tap rather than a two-line
+  address run-on. Nothing overlaps, overflows, clips or is unreadable at 390 or 1440.
+  `shots/round-10/states/`: `arrival-390/1440`, `map-live-390/1440`, `map-blocked-390/1440`,
+  `forecast-blocked-390/1440`, `forecast-live-390`, `cta-panel-390/1440`.
 
 ## facts — every fact on the page → dossier key
 
@@ -566,7 +702,8 @@ JS off, 14 images visible with JS off.
 | 207/A Welahangoda, 80650 Ahangama, Sri Lanka | `location.address` (Google spelling, Shahar 2026-09-22; copy/sources.md) |
 | +94 77 374 6053 | `contact.phone` |
 | Open in Google Maps ("Getting here", the map box's fallback and the footer, same URL) | `location.map_url` |
-| JSON-LD geo 5.98181, 80.35206, and the map embed's pin and bbox (correction 2) | `location.plus_code` (X9J2+PR) |
+| JSON-LD geo 5.98181, 80.35206, and the map embed's pin and centre (correction 2; correction 3 replaced the OpenStreetMap `bbox` with Google's `z=15`) | `location.plus_code` (X9J2+PR) |
+| Google's map: the roads, the beach and the neighbouring businesses drawn inside the frame | not a fact about the business, and not ours: Google's map data, credited by Google inside its own frame ("Map data ©2026", Terms, the Google mark). Nothing in it is restated in the site's copy, exactly as with Rosa's widget. **What it costs the visitor, measured 2026-09-23 after the block scrolls near — never on first load:** 32 responses across 5 Google hosts (`www.google.com`, `maps.googleapis.com`, `maps.gstatic.com`, `fonts.googleapis.com`, `fonts.gstatic.com`), **about 800 KB over the wire in the phone's 350 × 320 box at 2x** and about 570 KB in the desktop's 384 × 520 box at 1x. It sets **no cookie** on the site's context and **no cookie, localStorage or sessionStorage inside the frame** (all three read as empty). For comparison, the OpenStreetMap frame it replaces cost 11–14 requests and 370–390 KB. So the swap roughly doubles the bytes and triples the requests of a map the visitor has to scroll to, and it is still outside the first-load budget, which is unchanged at 235 KB / 8 requests / 0 third-party |
 | 9.8/10, 66 reviews, Hostelworld | `reviews.hostelworld` |
 | 9.5/10, 38 reviews, Booking.com | `reviews.booking` |
 | 4.8/5, 42 reviews, Google | `reviews.google` |
@@ -656,25 +793,26 @@ weights used (200/300/400/500), `font-display: swap`, preloaded. SIL Open Font L
 
 ## conflicts
 
-- **Map — OPEN. The page carries a second third-party embed against playbook §4, on Shahar's
-  instruction.** Playbook 0.3.0 §4 says Rosa's widget is "the one third-party embed a site may
-  carry", and, in the same section, "Map is a static image linking to Google Maps, not an embedded
-  map on load". The page has an OpenStreetMap iframe in "Getting here" as well.
-  - What Shahar asked, twice. 2026-09-22, gate answer: *"Put the embed back"* — reversing his own
-    earlier *"replace the embedded map with a plain 'Open in Google Maps' link. Rosa stays the one
-    embed"*, which round 3 had carried out. The mockup he picked had the embed; round 3 removed it;
-    correction 2 puts it back.
-  - What I did: restored it as it was, and kept every mitigation the rule's spirit asks for — no
-    request of any kind on first load (0 third-party requests at 390 px with no scroll, `src` unset
-    until the section nears the viewport), a reserved box so nothing shifts (measured 0 layout shift
-    on a full scroll at 390 and 1440, whether the embed loads or is blocked), the address and the
-    "Open in Google Maps" link inside the box with JS off or when the embed cannot be reached, and
-    the OpenStreetMap credit. It stays outside the first-load budget, as Rosa's widget does.
-  - **The playbook is unchanged and I did not change it.** Either §4 gains a second named exception
-    for a lazy map embed, or this site keeps an instruction its own playbook forbids. That is
-    Shahar's call, not mine; it is recorded here as still open for the critic to surface.
-  - The alternative, if the playbook wins: a self-hosted static map image of the same frame, linking
-    to Google Maps — one request from our own origin, no third party at all, no pan or zoom.
+- ~~**Map — OPEN. The page carries a second third-party embed against playbook §4.**~~ **Closed
+  2026-09-22 by the playbook itself:** playbook 0.4.0 §4 and designer base.md 0.3.4 now allow **two**
+  third-party embeds per page, each lazy, each with reserved space and a plain-link fallback, with
+  every budget line met with both loaded. This page has exactly two — Rosa's widget and the map —
+  and meets all of it (measured below and in the budget table). The entry stays for the record
+  because it was open for a day; it is not open now.
+- **The map is Google's, not OpenStreetMap's — no longer a conflict with anything, but here is what
+  it costs.** Correction 3 (2026-09-23) swapped the frame on Shahar's instruction so the map shows
+  the surrounding places rather than only our pin, and dropped the page's own credit line because
+  Google draws its attribution inside the frame. There is no rule in playbook §4, base.md or
+  custom.md that this breaks. Three things for the human to know anyway:
+  - It roughly doubles what the map costs a visitor who scrolls to it: ~800 KB over the wire in the
+    phone's box (OpenStreetMap: ~370 KB), 32 responses across 5 Google hosts (OSM: 11–14, one host).
+    Nothing on first load either way.
+  - It sets **no cookie** on our context and **no cookie or storage inside the frame** — measured,
+    not assumed. So it does not turn the page into something that needs a consent notice.
+  - Google's terms for the no-key embed are not something I can check from here; the frame is used
+    exactly as Maps' own "Share → Embed a map" hands it out, unmodified and uncropped.
+  - The alternative, if the bytes ever matter more than the detail: a self-hosted static map image
+    of the same frame, linking to Google Maps — one request from our own origin, no third party.
   - Round 3's own record, and round 1's, follow.
 - ~~**Map (open, for Shahar).**~~ Playbook §4: Rosa's widget is "the one third-party embed a site may
   carry", and "Map is a static image linking to Google Maps, not an embedded map on load". Kept exactly
