@@ -1,0 +1,448 @@
+{
+  "tenant": {
+    "id": null,
+    "slug": "layday-surf-ahangama",
+    "name": "Layday Surf Ahangama"
+  },
+  "locales": {
+    "en": {
+      "id": null,
+      "tenant": {
+        "id": null,
+        "name": "Layday Surf Ahangama",
+        "slug": "layday-surf-ahangama"
+      },
+      "businessName": "Layday Surf Ahangama",
+      "businessType": "beach_lodging",
+      "tagline": "Surf, chill and feel at home in Ahangama",
+      "languages": [
+        "en"
+      ],
+      "copyBlocks": [
+        {
+          "id": "seed-block-1",
+          "slot": "intro",
+          "heading": "A two-minute walk from Kabalana",
+          "body": "Small, new, and about as close to the wave as you can sleep. One dorm, a garden, and a family who built the place and still run it.\n\nIt is quiet. Guests keep saying so, and they mean it as the main point."
+        },
+        {
+          "id": "seed-block-2",
+          "slot": "about",
+          "heading": "One dorm, and that is deliberate",
+          "body": "There is a single dormitory here. No second building, no crowd, nobody checking in at three in the morning. Everyone who writes about the place lands on the same two words: clean and quiet.\n\nEvery category on Hostelworld sits at 10 out of 10 — value, security, atmosphere, cleanliness, staff, location, facilities. Ten reviews is a small sample. It is also a perfect one."
+        },
+        {
+          "id": "seed-block-3",
+          "slot": "about",
+          "heading": "Newly built, and kept that way",
+          "body": "The showers, the beds, the storage: all of it is new and it gets cleaned daily by the people who own it. One guest extended her stay and wrote that she did not want to leave, which is the sentence this place earns most often."
+        },
+        {
+          "id": "seed-block-4",
+          "slot": "offer",
+          "heading": "The room",
+          "body": "One air-conditioned dormitory, with real luggage space, a wardrobe, lockers and hot showers. There is a shared kitchen with a kettle, a dishwasher and everything you need to cook, plus a dining area, a terrace and a garden to sit in afterwards.\n\nRates move with the season and the dates — the booking links show what is free."
+        },
+        {
+          "id": "seed-block-5",
+          "slot": "info",
+          "heading": "Finding the door",
+          "body": "This is the one thing worth reading twice. Follow the map to Warnagiri, Welhengoda. There is a large black gate — open it. Through the gate there is a wooden platform, and the door to Layday is on the right of the house.\n\nGuests have got lost here. Now you will not."
+        },
+        {
+          "id": "seed-block-6",
+          "slot": "info",
+          "heading": "Practicalities",
+          "body": "Check in between 14:00 and 19:00, check out by 14:00. Taxes are included and the property does not take credit cards. Non-smoking throughout.\n\nFree private parking, free WiFi, laundry, daily housekeeping, bicycle rental, and an airport shuttle if you want one. Pets are welcome at no charge."
+        }
+      ],
+      "openingHours": [],
+      "hoursNote": null,
+      "priceList": [],
+      "photos": [
+        {
+          "id": "seed-photo-1",
+          "image": {
+            "id": 1,
+            "alt": "Inside a berth: yellow plaster walls and ceiling, a square niche, a black wall lamp, a white pillow, the curtain drawn back",
+            "filename": "img-018.jpg",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 768,
+            "url": "/api/media/file/img-018.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-2",
+          "image": {
+            "id": 2,
+            "alt": "The dormitory through its open glass-and-timber door: yellow berths with curtains, a timber door at the far end, a bench with cushions under a painting",
+            "filename": "img-012.jpg",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 768,
+            "url": "/api/media/file/img-012.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-3",
+          "image": {
+            "id": 3,
+            "alt": "A lower berth close up: yellow plaster, a white bed, curtains tied back, a black ladder and locking drawers underneath",
+            "filename": "img-002.jpg",
+            "mimeType": "image/jpeg",
+            "width": 576,
+            "height": 768,
+            "url": "/api/media/file/img-002.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-4",
+          "image": {
+            "id": 4,
+            "alt": "The end of a berth with its black steel ladder and a locking drawer, a potted palm beside it",
+            "filename": "img-008.jpg",
+            "mimeType": "image/jpeg",
+            "width": 576,
+            "height": 768,
+            "url": "/api/media/file/img-008.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-5",
+          "image": {
+            "id": 5,
+            "alt": "Cane-fronted lockers beside poured-concrete shelving and a potted plant",
+            "filename": "img-013.jpg",
+            "mimeType": "image/jpeg",
+            "width": 576,
+            "height": 768,
+            "url": "/api/media/file/img-013.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-6",
+          "image": {
+            "id": 6,
+            "alt": "A white basin on a concrete counter under a round cane mirror, cane cabinet doors below",
+            "filename": "img-003.jpg",
+            "mimeType": "image/jpeg",
+            "width": 576,
+            "height": 768,
+            "url": "/api/media/file/img-003.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-7",
+          "image": {
+            "id": 7,
+            "alt": "A long bench with violet, ochre, green and grey cushions under an abstract painting",
+            "filename": "img-017.jpg",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 768,
+            "url": "/api/media/file/img-017.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-8",
+          "image": {
+            "id": 8,
+            "alt": "Surfers in the line-up behind white water, seen from the sand",
+            "filename": "img-019.jpg",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 768,
+            "url": "/api/media/file/img-019.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-9",
+          "image": {
+            "id": 9,
+            "alt": "A blue surfboard carried through the shallows of a long sandy beach",
+            "filename": "img-021.jpg",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 768,
+            "url": "/api/media/file/img-021.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-10",
+          "image": {
+            "id": 10,
+            "alt": "A man walking along wet sand, palms further up the shore",
+            "filename": "img-020.jpg",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 768,
+            "url": "/api/media/file/img-020.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        }
+      ],
+      "contact": {
+        "phone": "+94778553343",
+        "whatsapp": null,
+        "email": null,
+        "address": "'Warnagiri' Welhengoda, Ahangama, Sri Lanka",
+        "mapUrl": "https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en"
+      },
+      "bookingLinks": [
+        {
+          "id": "seed-link-1",
+          "label": "Check dates on Hostelworld",
+          "url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/"
+        },
+        {
+          "id": "seed-link-2",
+          "label": "Check dates on Booking.com",
+          "url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html"
+        },
+        {
+          "id": "seed-link-3",
+          "label": "Check dates on Agoda",
+          "url": "https://www.agoda.com/layday-surf-ahangama/hotel/piyadigama-lk.html"
+        }
+      ],
+      "amenities": [
+        {
+          "note": null,
+          "id": "seed-amenity-1",
+          "label": "Free WiFi"
+        },
+        {
+          "note": "no reservation needed",
+          "id": "seed-amenity-2",
+          "label": "Free private parking"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-3",
+          "label": "Air conditioning"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-4",
+          "label": "Shared kitchen with dishwasher, kettle and kitchenware"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-5",
+          "label": "Dining area and seating area"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-6",
+          "label": "Garden and terrace with outdoor dining"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-7",
+          "label": "Hot showers"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-8",
+          "label": "Free security lockers"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-9",
+          "label": "Luggage storage"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-10",
+          "label": "Daily housekeeping"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-11",
+          "label": "Washing machine"
+        },
+        {
+          "note": "additional charge",
+          "id": "seed-amenity-12",
+          "label": "Laundry, dry cleaning and ironing"
+        },
+        {
+          "note": "additional charge",
+          "id": "seed-amenity-13",
+          "label": "Bicycle rental"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-14",
+          "label": "Airport shuttle"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-15",
+          "label": "Concierge"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-16",
+          "label": "Free city maps"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-17",
+          "label": "24-hour security, CCTV and key access"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-18",
+          "label": "Safety deposit box"
+        },
+        {
+          "note": "no extra charge",
+          "id": "seed-amenity-19",
+          "label": "Pets allowed"
+        }
+      ],
+      "ratings": [
+        {
+          "url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+          "id": "seed-rating-1",
+          "platform": "hostelworld",
+          "score": 9.8,
+          "scale": "10",
+          "count": 10,
+          "capturedAt": "2026-09-19"
+        },
+        {
+          "url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+          "id": "seed-rating-2",
+          "platform": "booking",
+          "score": 10,
+          "scale": "10",
+          "count": 6,
+          "capturedAt": "2026-09-19"
+        },
+        {
+          "url": null,
+          "id": "seed-rating-3",
+          "platform": "google",
+          "score": 5,
+          "scale": "5",
+          "count": 15,
+          "capturedAt": "2026-09-19"
+        }
+      ],
+      "testimonials": [
+        {
+          "id": "seed-quote-1",
+          "quote": "LayDay is so wonderful! Newly built and so well designed, Rukshan has thought of everything. As a solo female traveller I felt totally safe - it's a peaceful little sanctuary in Ahangama, just a 2-min walk to Kabalana Beach and great food spots. Super comfy beds, loads of luggage space, amazing showers, and absolutely spotless. Rukshan and his family are so kind and he keeps it immaculate daily. I extended my stay way longer than expected and didn't want to leave - will 100% be back!",
+          "author": "Beth, England",
+          "source": "hostelworld",
+          "date": "2026-04"
+        },
+        {
+          "id": "seed-quote-2",
+          "quote": "Well located, very clean, good air conditioning and a great host! Layday Surf is just one dorm room with 4 bunk beds so it is very quiet which was amazing. A little bit difficult to find but the host was very responsive and promises a sign will be put up ASAP.",
+          "author": "Catherine, Australia",
+          "source": "hostelworld",
+          "date": "2026-04"
+        },
+        {
+          "id": "seed-quote-3",
+          "quote": "Seriously the best hostel I've stayed in throughout my 7 months travelling. I'm so sad I wasn't there for long because it was just so so nice. Super clean, nice style, the showers are great, it's cosy, there's a nice inside place to sit & hang out. The lovely family who own this make such an effort to be present and helpful. HIGHLY recommend!",
+          "author": "Jennine, England",
+          "source": "hostelworld",
+          "date": "2026-04"
+        },
+        {
+          "id": "seed-quote-4",
+          "quote": "New and clean, walking distance straight to the beach",
+          "author": "Akshay, Sri Lanka",
+          "source": "booking",
+          "date": null
+        },
+        {
+          "id": "seed-quote-5",
+          "quote": "Place is really it's quite small but absolutely great, very clean lots of room, beds are nice",
+          "author": "Taiya, Australia",
+          "source": "booking",
+          "date": null
+        }
+      ],
+      "spot": "Kabalana: a sandy beach break that suits beginners and improvers, with The Rock reef alongside it when the swell is up.",
+      "season": null,
+      "languagesSpoken": [
+        "en"
+      ],
+      "rooms": [
+        {
+          "sleeps": null,
+          "note": "the whole hostel is this one room; bed count is not published consistently",
+          "photo": null,
+          "id": "seed-room-1",
+          "label": "Bed in the dormitory",
+          "beds": "One air-conditioned dormitory"
+        }
+      ],
+      "stayInfo": {
+        "checkInFrom": "14:00",
+        "checkInTo": "19:00",
+        "checkOutFrom": null,
+        "checkOutTo": "14:00",
+        "minNights": null,
+        "note": "Credit cards are not accepted. Non-smoking. Taxes included. Reception has limited hours."
+      },
+      "lessons": [],
+      "credentials": [],
+      "rentals": [],
+      "brands": [],
+      "shaping": null,
+      "forecast": {
+        "enabled": true,
+        "rosaSpotId": "kabalana",
+        "spotName": "Kabalana"
+      },
+      "updatedAt": null,
+      "createdAt": null
+    }
+  }
+}
