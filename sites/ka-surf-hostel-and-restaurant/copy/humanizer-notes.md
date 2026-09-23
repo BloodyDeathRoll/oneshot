@@ -75,3 +75,13 @@ Why
 Facts: identical to the draft, checked field by field: garden, chill zone, free filtered water refillable any time, laundry service, minimarket on site, scooter rental, surf rack, luggage storage, lockers, 24-hour reception, pets on request at no charge, no children; room list, A/C and fan, private lockers, personal fridge, modern bathrooms, hot showers, rates change with the dates, booking links show availability. No fact moved between paragraphs, so `sources.md` needs no change (its info ¶1 row already lists "laundry service available"). Script: only these two bodies differ from `en.draft.json`; none of "ten minutes", "before breakfast", "come back wet", "open to the sky", "season" (outside the null `season` key), "if you ask", "a private locker" appears.
 
 Could not fix without a fact: nothing.
+
+## 2026-09-23 — run 2026-09-ahangama-02, humanizer 0.2.0 — offer last sentence ("actually available") and `contact.address`
+
+Scope: `copyBlocks[3].body` last sentence, voice only; `contact.address` read, not touched (fixed rule string, identical in draft and `en.json`: "207/A Welahangoda, Ahangama 80650, Sri Lanka").
+
+Result: **unchanged.** `en.json` already reads "Rates change with the dates, and the booking links below show what is actually available." (the round-6 ", and" in place of the draft's em dash kept). "Actually available" is how a person says it; plain, no tell phrase, no padding.
+
+Facts: unchanged. Diff against `en.draft.json` shows only the three earlier humanizer edits (offer em dash, info body, `amenities` locker label); nothing new.
+
+Could not fix without a fact: nothing.
