@@ -119,12 +119,13 @@ const ld = {
 <script is:inline type="application/ld+json" set:html={JSON.stringify(ld).replace(/</g, '\\u003c')}></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="top">
   <a class="name" href="#top">{name}</a>
   <nav>{phone && <a href={phone}>Call</a>}{book && <a class="book" href={book}>Check dates</a>}</nav>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
 <section class="canopy" id="top" aria-label={name}>
   <div class="stage back" aria-hidden="true">
     <Fragment set:html={stillD} />

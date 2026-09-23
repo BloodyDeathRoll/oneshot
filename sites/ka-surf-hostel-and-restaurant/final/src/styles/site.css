@@ -252,6 +252,10 @@ html:not(.js) .fc-now,.fc.off .fc-now{visibility:hidden}
   background-position:0 calc(100% + 1px),0 0;background-origin:content-box,content-box}
 
 :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+/* skip link: off screen until focused, then above the fixed header */
+.skip{position:fixed;top:8px;left:8px;z-index:40;padding:13px 16px;background:var(--ink);color:var(--ground);font-size:17px;text-decoration:none;transform:translateY(-200%)}
+.skip:focus{transform:none}
+main:focus{outline:none}
 @media (prefers-reduced-motion:reduce){.panel{transition:none}}
 
 .bar{display:none}

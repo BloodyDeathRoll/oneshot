@@ -844,6 +844,16 @@ weights used (200/300/400/500), `font-display: swap`, preloaded. SIL Open Font L
 - **Pointer guard.** New in 4g: the pointer may not push a blade into the headline; everywhere else the
   canopy answers the pointer as before.
 
+- **Correction of 2026-09-23 (Shahar: stop the 404; add a skip link).** The map's pre-flight now sends
+  its opaque `HEAD` to `https://www.google.com/generate_204` (same host, answers 204) instead of the
+  embed URL, which answers `HEAD` with 404 and logged one console error per visit. The probe's job is
+  unchanged: it rejects only when Google cannot be reached, and then the address and link stay. A skip
+  link ("Skip to content") is the first focusable element, off screen until focused, and moves focus to
+  `<main id="main">`. Measured on the live preview (version `ab0642d3`) at 390 and 1440: map switched
+  on, skip link visible at top 8 px on Tab, focus lands on `main`, zero console errors and zero
+  4xx/5xx responses. Chromium reports the probe as `net::ERR_ABORTED` to automation (the opaque body is
+  dropped); it is not logged to the console.
+
 ## Not done / not verified
 
 - No real phone or GPU (headless Chromium, software GL). No Payload build (no tenant; the fetch step was
