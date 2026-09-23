@@ -70,7 +70,7 @@ for (const p of PHOTOS) {
 }
 
 /* Copy blocks in the order the design reads them within each slot:
-   intro → hero headline + lead · about[0] → "One dorm" · offer → "The room" (¶2, the rates line,
+   intro → hero headline + lead · about[0] → "Just one dorm" · offer → "The room" (¶2, the rates line,
    goes to the drawer and the footer berth) · info[0] → finding the door · about[1] → newly built ·
    info[1] → practicalities. Words untouched. */
 const blocks = copy.copyBlocks
@@ -81,7 +81,7 @@ const pick = (heading) => {
 }
 const ordered = [
   pick('A two-minute walk from Kabalana'),
-  pick('One dorm, and that is deliberate'),
+  pick('Just one dorm'),
   pick('Newly built, and kept that way'),
   pick('The room'),
   pick('Finding the door'),
@@ -135,8 +135,8 @@ const doc = {
   spot: copy.spot,
   season: copy.season,
   languagesSpoken: copy.languagesSpoken,
-  /* rooms[].note ("bed count is not published consistently") is the copywriter's internal note, not
-     owner copy for the page; it is seeded as written and the template does not render room notes. */
+  /* rooms[].note is owner copy since copy round 3 ("The only room: one air-conditioned dormitory",
+     review.md row 46); rooms[].beds was removed. The template prints the note where beds was. */
   rooms: rowIds(copy.rooms, 'room').map((r) => ({ sleeps: null, note: null, photo: null, ...r })),
   stayInfo: { checkInFrom: null, checkInTo: null, checkOutFrom: null, checkOutTo: null, minNights: null, note: null, ...copy.stayInfo },
   lessons: [],
@@ -148,6 +148,18 @@ const doc = {
   forecast: { enabled: true, rosaSpotId: 'kabalana', spotName: 'Kabalana' },
   updatedAt: null,
   createdAt: null,
+}
+
+/* SCHEMA GAP: site-content.md has no geo field, so the JSON-LD pin cannot travel through content.json
+   (inventing a field is not allowed). It stays the MAP_PIN constant in src/lib/site.mjs, and this seed
+   checks it against the dossier's own pin (location.lat_lng, Google listing, 2026-09-23) so the two
+   cannot drift apart: rounded to 5 decimals they must be equal, or the seed stops. */
+{
+  const ll = dossier.location?.lat_lng?.value
+  const pin = /MAP_PIN\s*=\s*\{\s*lat:\s*([-\d.]+),\s*lon:\s*([-\d.]+)\s*\}/.exec(readFileSync(join(final, 'src', 'lib', 'site.mjs'), 'utf8'))
+  const r5 = (x) => Math.round(x * 1e5) / 1e5
+  if (!Array.isArray(ll) || !pin) throw new Error('pin: dossier location.lat_lng or MAP_PIN in src/lib/site.mjs missing')
+  if (r5(ll[0]) !== +pin[1] || r5(ll[1]) !== +pin[2]) throw new Error(`pin: MAP_PIN ${pin[1]},${pin[2]} ≠ dossier location.lat_lng ${ll.join(',')} — update MAP_PIN`)
 }
 
 writeFileSync(

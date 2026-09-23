@@ -22,7 +22,7 @@ export function GET({ site }) {
   if (address) out.push('', `${name}, ${address}.`)
   if (intro) out.push('', text(intro))
   for (const b of others) section(b.heading || name, [text(b)])
-  section('Rooms', (c.rooms ?? []).map((r) => `- ${[r.label, r.beds].filter(Boolean).join(', ')}`))
+  section('Rooms', (c.rooms ?? []).map((r) => `- ${[r.label, r.beds].filter(Boolean).join(', ')}${r.note ? `. ${r.note}` : ''}`))
   section('Amenities', (c.amenities ?? []).map((a) => `- ${a.label}${a.note ? ` (${a.note})` : ''}`))
   section('Check-in and check-out', [
     st.checkInFrom && `- Check-in: ${st.checkInFrom}${st.checkInTo ? ` to ${st.checkInTo}` : ''}`,

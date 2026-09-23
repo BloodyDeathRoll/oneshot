@@ -144,8 +144,9 @@ const ld = {
     <div class="offer">
       {offer.heading && <h3>{offer.heading}</h3>}
       {offerP[0] && <div class="body"><p>{offerP[0]}</p></div>}
+      {/* 4g r3: rooms[].note is audited owner copy since copy round 3 (beds removed); it takes the line beds had */}
       {(c.rooms ?? []).map((r) => (
-        <div class="bed"><div><b>{r.label}</b>{r.beds && <span>{r.beds}</span>}</div>{book && <a data-drawer href={book}>check dates</a>}</div>
+        <div class="bed"><div><b>{r.label}</b>{r.beds && <span>{r.beds}</span>}{r.note && <span>{r.note}</span>}</div>{book && <a data-drawer href={book}>check dates</a>}</div>
       ))}
     </div>
     )}
