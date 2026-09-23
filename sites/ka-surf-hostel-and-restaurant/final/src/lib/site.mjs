@@ -77,19 +77,20 @@ export const SITE = import.meta.env.SITE ? new URL(import.meta.env.SITE) : null
 export const IS_PREVIEW = isPreviewUrl(SITE)
 
 const COUNTRY = { 'sri lanka': 'LK' }
-/* contact.address (free text) → PostalAddress. Splits "street…, <postcode> <town>, <country>" when the
+/* contact.address (free text) → PostalAddress. Splits "street…, <town> <postcode>, <country>" (or "<postcode> <town>") when the
    owner's text has that shape; otherwise the whole address stays in streetAddress. Never adds a part. */
 export const postalAddress = (text) => {
   const parts = (text ?? '').split(/\s*(?:\n|,)\s*/).map((s) => s.trim()).filter(Boolean)
   if (!parts.length) return null
   const a = { '@type': 'PostalAddress' }
-  const town = parts.length >= 3 ? /^(\d{4,6})\s+(.+)$/.exec(parts[parts.length - 2]) : null
+  /* 'street, town postcode, country' (playbook 0.5.1 §6) or 'street, postcode town, country' */
+  const iso = parts.length >= 3 ? COUNTRY[parts[parts.length - 1].toLowerCase()] : null
+  const town = iso ? /^(?:(\d{4,6})\s+)?(.+?)(?:\s+(\d{4,6}))?$/.exec(parts[parts.length - 2]) : null
   if (town) {
-    const country = parts[parts.length - 1]
     a.streetAddress = parts.slice(0, -2).join(', ')
-    a.postalCode = town[1]
+    if (town[1] || town[3]) a.postalCode = town[1] || town[3]
     a.addressLocality = town[2]
-    a.addressCountry = COUNTRY[country.toLowerCase()] ?? country
+    a.addressCountry = iso
   } else a.streetAddress = parts.join(', ')
   return a
 }
