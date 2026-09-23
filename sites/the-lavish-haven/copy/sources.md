@@ -24,7 +24,7 @@ Shahar's rulings applied this round: a verbatim guest observation of a physical 
 | `ratings[1]` | Google 5.0/5, 21 | `reviews.google.rating`, `.count`. No URL (as KA). `capturedAt` from `reviews.google.fetched_at` (2026-09-19), deployer |
 | `testimonials[0–4]` | Mya · Dariusz · António · Roie · Benjamin | `reviews.quotes[0]`, `[4]`, `[3]`, `[6]`, `[7]`: text and author verbatim, ellipses as Booking renders them, no dates (dossier has none). Benjamin's German untranslated. `[1]` (Shahar) excluded |
 | `contact.phone` | "+94764832988" | `contact.phone.value` (Google) |
-| `contact.address` | "No166/1 walhengoda road, Ahangama 80650, Sri Lanka" | `location.address.value` — the Google listing address, character for character, postcode included (base.md constraint 9; playbook 0.5.0 §6). Booking's "166/2 Welhengoda Road" (`location.address_other_platforms[1]`) not used; the 166/1 vs 166/2 house number is `contradictions[3]`, an owner question |
+| `contact.address` | "No166/1 Walhengoda Road, Ahangama 80650, Sri Lanka" | `location.address.value` — the Google listing address ("No166/1 walhengoda road, Ahangama 80650, Sri Lanka"), postcode included, street name capitalised, nothing else changed (base.md constraint 9; playbook §6). Booking's "166/2 Welhengoda Road" (`location.address_other_platforms[1]`) not used; the 166/1 vs 166/2 house number is `contradictions[3]`, an owner question |
 | `contact.whatsapp` | absent | `contact.whatsapp` gap "not published". Schema-required: for the Payload seed / owner |
 | `bookingLinks[0]` | "Check dates on Booking.com" | `booking.engine_url.value`; "check dates" rests on `booking.path.note` "live inventory" |
 | `bookingLinks[1]` | "Check dates on Agoda" | `booking.other_engines.value[0]`; same note |
