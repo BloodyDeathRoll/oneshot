@@ -137,8 +137,8 @@ function frame(){
   var out=seg(p,.02,.16);heroCopy.style.opacity=1-out;heroCopy.style.transform="translateY("+(-40*out)+"px)";heroCopy.style.visibility=out>=1?"hidden":"visible";cue.style.opacity=1-seg(p,0,.06);
   /* dusk */
   var night=seg(p,.38,.72);
-  var li=seg(p,.58,.74);line.style.opacity=li;
-  if(!mq.matches)line.style.transform="translateY(calc(-50% + "+(24*(1-li))+"px))";
+  var li=seg(p,.58,.74);if(line){line.style.opacity=li;
+  if(!mq.matches)line.style.transform="translateY(calc(-50% + "+(24*(1-li))+"px))";}
   print.style.transform="translate3d(0,"+Math.round(1.1*vh*(1-seg(p,.72,.96)))+"px,0)";
   /* header */
   var ow=k>.97&&r.bottom>64, so=r.bottom<=64;

@@ -21,6 +21,9 @@ export function GET({ site }) {
   if (IS_PREVIEW) out.push('', 'Preview build, not the published site: shown to the owner for review. Do not index, quote or cite it.')
   if (address) out.push('', `${name}, ${address}.`)
   if (intro) out.push('', text(intro))
+  /* schema v0.6: the owner's one line over the feature image, next to the intro it sits beside on the
+     page's first screen; kept like tagline and closing, which this file already carries */
+  if (c.featureLine) out.push('', c.featureLine)
   /* 4i: the room rows sit under the rooms block (offer[0], the same binding as the page), not in a
      separate section after the rest, so the prose and the list it describes stay together. */
   const roomsBlock = blocks.filter((b) => b.slot === 'offer')[0] ?? null
