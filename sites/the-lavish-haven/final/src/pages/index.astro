@@ -1,0 +1,249 @@
+---
+/* The Lavish Haven — the gold page Shahar picked (agents/designer/gold/the-lavish-haven.html, ledger
+   2026-09-23T04:16:49Z) ported to Astro without changing how it looks. Every owner-editable word,
+   number, link and photograph comes from src/tenant/content.json (schemas/site-content.md v0.5, REST
+   shape); the layout, motion and interface wording are here. No word of the gold page's own copy is
+   kept: the copy was rewritten and re-audited after the gold page was made (4c round 4). */
+import css from '../styles/site.css?raw'
+import js from '../scripts/site.js?raw'
+import {
+  content as c, pName, platformOf, safeUrl, tel, phoneLabel, paras, sentences, headLines, scoreText, readOn,
+  photo, SITE, IS_PREVIEW, postalAddress, metaDescription,
+} from '../lib/site.mjs'
+
+const name = c.businessName
+const blocks = c.copyBlocks ?? []
+const slot = (s, i) => blocks.filter((b) => b.slot === s)[i] ?? null
+/* slot → the gold page's sections:
+   intro[0] → "where" (heading, first paragraph as the lead, the rest as body)
+   offer[0] → the room list's heading and text
+   about[0] → "new" (first paragraph as the lead, the rest as body)
+   about[1] → the guests section over the quotes
+   offer[1] → "pool, restaurant, spa" over the amenities; its first sentence is also the night line
+              over the water, as the gold page's pool sentence was
+   info[0]  → practicalities */
+const intro = slot('intro', 0), rooms = slot('offer', 0), fresh = slot('about', 0), stay = slot('about', 1)
+const here = slot('offer', 1), prac = slot('info', 0)
+const introP = paras(intro?.body), freshP = paras(fresh?.body)
+const nightLine = sentences(paras(here?.body)[0])[0] ?? ''
+
+/* the spot: all but its last sentence set large; the last one, when there is more than one, is the
+   small line under it (the gold page's "walk" line) */
+const spotS = sentences(c.spot)
+const spotBig = spotS.length > 1 ? spotS.slice(0, -1).join(' ') : (c.spot ?? '')
+const spotWalk = spotS.length > 1 ? spotS[spotS.length - 1] : ''
+
+const links = (c.bookingLinks ?? []).map((l) => ({ ...l, url: safeUrl(l.url) })).filter((l) => l.url)
+const book = links[0]?.url ?? null
+const phone = tel(c.contact?.phone), phoneText = phoneLabel(c.contact?.phone)
+const mapUrl = safeUrl(c.contact?.mapUrl)
+const address = (c.contact?.address ?? '').split('\n').map((s) => s.trim()).filter(Boolean).join(', ')
+
+const ratings = c.ratings ?? []
+const ratingFor = (platform) => ratings.find((r) => r.platform === platform) ?? null
+/* drawer rows: platform name from the link's host; its rating beside it when the page has one */
+const chan = links.map((l) => {
+  const p = platformOf(l.url), r = p ? ratingFor(p) : null
+  return { url: l.url, name: pName(p) || l.label, rating: r }
+})
+
+const ph = (c.photos ?? []).map(photo)
+const P = (i) => ph[i] ?? null
+const strip = ph.slice(3).filter(Boolean)
+
+/* testimonials carry no language field (schema v0.5); a German quote is marked lang="de" for screen
+   readers, as the gold page marked Benjamin's, when it has a German letter and two German words */
+const germanQuote = (q) => /[äöüß]/i.test(q ?? '') && ((q ?? '').match(/\b(und|nicht|wir|war|die|der|das|gar|wieder|hier)\b/gi) ?? []).length >= 2
+
+const fcOn = c.forecast?.enabled && /^[a-z0-9-]+$/.test(c.forecast?.rosaSpotId ?? '')
+const spotId = c.forecast?.rosaSpotId, spotName = c.forecast?.spotName || spotId
+
+/* Head: built from content (station 4h owns the final form). Brand first, then the town from the
+   address when the name lacks it; the description from owner-written fields, cut at a sentence. */
+const place = postalAddress(address)?.addressLocality ?? ''
+const title = place && !name.toLowerCase().includes(place.toLowerCase()) ? `${name}, ${place}` : name
+const desc = metaDescription([c.tagline, sentences(introP[0])[0], rooms?.heading])
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{title}</title>
+{IS_PREVIEW && <meta name="robots" content="noindex, nofollow">}
+{desc && <meta name="description" content={desc}>}
+{SITE && <link rel="canonical" href={SITE.href}>}
+<link rel="preload" href="fonts/jost-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style is:inline set:html={css}></style>
+</head>
+<body>
+<a class="skip" href="#top">Skip to content</a>
+
+<header class="bar" id="bar">
+  <a class="name" href="#top">{name}</a>
+  {book && <a class="book" data-book href={book}>Check dates</a>}
+</header>
+
+<main id="top" tabindex="-1">
+
+<section class="hero" id="hero" aria-label={name}>
+  <div class="stage" id="stage">
+    <svg class="rim" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polygon id="rim" points="55,33 100,27 100,100 84,100 44,61"/></svg>
+    <div class="pool" id="pool" aria-hidden="true"><canvas id="water"></canvas></div>
+
+    <div class="hero-copy" id="heroCopy">
+      <h1 class="display">{c.tagline ? headLines(c.tagline).map((l) => <span>{l}</span>) : <span>{name}</span>}</h1>
+      {ratings.length > 0 && (
+      <ul class="proof">
+        {ratings.map((r) => (
+          <li><b>{scoreText(r)}</b><span class="t">of {r.scale} on {pName(r.platform)}, {r.count} reviews{readOn(r) && <span class="when">{readOn(r)}</span>}</span></li>
+        ))}
+      </ul>
+      )}
+    </div>
+    <p class="scrollcue" id="cue" aria-hidden="true">Scroll, and it gets dark</p>
+
+    <div class="night" id="night">
+      <p id="nightLine">{nightLine}</p>
+      {P(0) && <figure id="nightPrint"><picture><source type="image/webp" srcset={P(0).webp} sizes="(max-width:760px) calc(100vw - 54px), min(46vw, 740px)"><img src={P(0).src} srcset={P(0).jpg} sizes="(max-width:760px) calc(100vw - 54px), min(46vw, 740px)" width={P(0).w} height={P(0).h} decoding="async" alt={P(0).alt}></picture></figure>}
+    </div>
+  </div>
+</section>
+
+{intro && (
+<section class="where wrap" aria-labelledby="h-where">
+  <h2 class="title" id="h-where">{intro.heading || name}</h2>
+  <div class="col">
+    {introP[0] && <p class="lead">{introP[0]}</p>}
+    {introP.length > 1 && <div class="body measure">{introP.slice(1).map((t) => <p>{t}</p>)}</div>}
+  </div>
+  {P(1) && <figure class="aerial" data-par="-.05"><picture><source type="image/webp" srcset={P(1).webp} sizes="(max-width:900px) calc(100vw - 40px), 50vw"><img loading="lazy" decoding="async" src={P(1).src} srcset={P(1).jpg} sizes="(max-width:900px) calc(100vw - 40px), 50vw" width={P(1).w} height={P(1).h} alt={P(1).alt}></picture></figure>}
+  {P(2) && <figure class="balcony" data-par=".07"><picture><source type="image/webp" srcset={P(2).webp} sizes="(max-width:900px) 75vw, 28vw"><img loading="lazy" decoding="async" src={P(2).src} srcset={P(2).jpg} sizes="(max-width:900px) 75vw, 28vw" width={P(2).w} height={P(2).h} alt={P(2).alt}></picture></figure>}
+</section>
+)}
+
+{(rooms || (c.rooms ?? []).length > 0) && (
+<section class="rooms wrap" aria-labelledby="h-rooms">
+  <h2 class="title" id="h-rooms">{rooms?.heading}</h2>
+  {rooms && <div class="intro body small measure">{paras(rooms.body).map((t) => <p>{t}</p>)}</div>}
+  <ol>
+    {(c.rooms ?? []).map((r) => {
+      const b = [r.beds, r.note, r.sleeps ? `sleeps ${r.sleeps}` : null].filter(Boolean).join(', ')
+      return <li><a class="room" data-book data-room={r.label} href={book}><span class="n">{r.label}</span>{b && <span class="b">{b}</span>}</a></li>
+    })}
+  </ol>
+</section>
+)}
+{strip.length > 0 && (
+<section class="gallery" aria-label="Photographs">
+  <div class="strip" id="strip" tabindex="0" role="group" aria-label="Photographs of the hotel">
+    {strip.map((p) => <picture><source type="image/webp" srcset={p.webp} sizes="(max-width:960px) 230px, 24vw"><img loading="lazy" decoding="async" src={p.src} srcset={p.jpg} sizes="(max-width:960px) 230px, 24vw" width={p.w} height={p.h} alt={p.alt}></picture>)}
+  </div>
+</section>
+)}
+
+{fresh && (
+<section class="new wrap" aria-labelledby="h-new">
+  <h2 class="title" id="h-new">{fresh.heading}</h2>
+  {freshP[0] && <p class="lead">{freshP[0]}</p>}
+  {freshP.length > 1 && <div class="body measure">{freshP.slice(1).map((t) => <p>{t}</p>)}</div>}
+</section>
+)}
+
+{(stay || (c.testimonials ?? []).length > 0) && (
+<section class="staff wrap" aria-labelledby={stay?.heading ? 'h-staff' : undefined} aria-label={stay?.heading ? undefined : 'What guests wrote'}>
+  {stay?.heading && <h2 class="title" id="h-staff">{stay.heading}</h2>}
+  {stay && <div class="body">{paras(stay.body).map((t) => <p>{t}</p>)}</div>}
+  {(c.testimonials ?? []).length > 0 && (
+  <div class="quotes">
+    {c.testimonials.map((t) => {
+      const lang = germanQuote(t.quote) ? 'de' : undefined
+      return <blockquote lang={lang}><p>“{t.quote}”</p><cite lang={lang ? 'en' : undefined}>{t.author}, on {pName(t.source)}</cite></blockquote>
+    })}
+  </div>
+  )}
+</section>
+)}
+
+{(here || (c.amenities ?? []).length > 0) && (
+<section class="here wrap" aria-labelledby="h-here">
+  <h2 class="title" id="h-here">{here?.heading}</h2>
+  {here && <div class="body measure">{paras(here.body).map((t) => <p>{t}</p>)}</div>}
+  {(c.amenities ?? []).length > 0 && <ul class="amen">{c.amenities.map((a) => <li>{a.label}{a.note && <span>{a.note}</span>}</li>)}</ul>}
+</section>
+)}
+
+{(c.spot || fcOn) && (
+<section class="wave" aria-label="The wave">
+  <div class="panel">
+    {spotBig && <p class="big">{spotBig}</p>}
+    {spotWalk && <span class="walk">{spotWalk}</span>}
+    {fcOn && (
+    <div class="fc" data-json={`https://rosa-data-opal.vercel.app/data/spots/${spotId}.json`}>
+      <div class="fc-now" aria-live="polite">
+        <p class="nh"><span data-f="h"></span><small> m</small></p>
+        <p class="nd"><span data-f="t"></span><span data-f="swell"></span><span data-f="wind"></span></p>
+        <p class="credit"><a href={`https://rosa.surf/spot/${spotId}`}>Forecast for {spotName} by Rosa</a><span data-f="upd"></span></p>
+      </div>
+      <div class="rosa">
+        <a class="rosa-link" href={`https://rosa.surf/spot/${spotId}`}><span>See today's forecast for {spotName} on Rosa</span></a>
+        <iframe
+          data-src={`https://rosa.surf/widget/?spot=${spotId}&theme=light&units=metric`}
+          title={`Rosa surf forecast - ${spotName}`}
+          width="100%"
+          height="500"
+          style="max-width:420px;border:0;border-radius:16px;display:block"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+        ></iframe>
+      </div>
+    </div>
+    )}
+    <svg class="swell" viewBox="0 0 1600 120" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 30 Q100 -6 200 30 T400 30 T600 30 T800 30 T1000 30 T1200 30 T1400 30 T1600 30"/>
+      <path d="M0 60 Q100 22 200 60 T400 60 T600 60 T800 60 T1000 60 T1200 60 T1400 60 T1600 60"/>
+      <path d="M0 92 Q100 52 200 92 T400 92 T600 92 T800 92 T1000 92 T1200 92 T1400 92 T1600 92"/>
+    </svg>
+  </div>
+</section>
+)}
+
+{prac && (
+<section class="prac wrap" aria-labelledby="h-prac">
+  <h2 class="title" id="h-prac">{prac.heading}</h2>
+  <div class="body measure">{paras(prac.body).map((t) => <p>{t}</p>)}</div>
+</section>
+)}
+
+</main>
+
+<footer class="close">
+  <div class="frame"><div class="frame-in">
+    {c.closing && <h2 class="title">{c.closing}</h2>}
+    {book && <a class="book" data-book href={book}>Check dates</a>}
+  </div></div>
+  <div class="foot">
+    <div><h3>Where</h3><ul>{address && <li>{address}</li>}{mapUrl && <li><a href={mapUrl}>Open in Google Maps</a></li>}</ul></div>
+    <div>{phone && <Fragment><h3>Phone</h3><ul><li><a href={phone}>{phoneText}</a></li></ul></Fragment>}</div>
+    <div>{links.length > 0 && <Fragment><h3>Book</h3><ul>{links.map((l) => <li><a href={l.url}>{l.label}</a></li>)}</ul></Fragment>}</div>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="h-drawer" tabindex="-1">
+  <button class="x" id="closeDrawer" type="button">Close</button>
+  <h2 id="h-drawer">Check dates</h2>
+  {c.closing && <p class="why">{c.closing}</p>}
+  <p class="picked" id="picked" hidden></p>
+  <div class="chan">
+    {chan.map((x) => (
+      <a href={x.url}><strong>{x.name}</strong>{x.rating && <span>{scoreText(x.rating)} of {x.rating.scale} from {x.rating.count} reviews{readOn(x.rating) && `, ${readOn(x.rating)}`}</span>}<i>Check dates</i></a>
+    ))}
+  </div>
+  {phone && <p class="desk">Or call<br><a href={phone}>{phoneText}</a></p>}
+</aside>
+
+<script is:inline set:html={js}></script>
+</body>
+</html>
