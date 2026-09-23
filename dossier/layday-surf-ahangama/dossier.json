@@ -51,14 +51,39 @@
  },
  "location": {
   "address": {
-   "value": "'Warnagiri' Welhengoda, Ahangama, Sri Lanka",
-   "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
-   "fetched_at": "2026-09-19T18:20:00Z",
-   "note": "Booking writes 'Warnagiri welhengoda Ahangama Warnagiri, 80650 Ahangama'"
+   "value": "Warnagiri welhengoda, Ahangama 80650, Sri Lanka",
+   "source_url": "https://www.google.com/maps/place/Layday+Surf+Ahangama/@5.9794134,80.350836,17z/data=!4m9!3m8!1s0x3ae113718b0aebeb:0xe2cc089452031bbb!5m2!4m1!1i2!8m2!3d5.9784609!4d80.3526536!16s%2Fg%2F11z0ldv459?hl=en",
+   "fetched_at": "2026-09-23T08:15:11Z",
+   "note": "Google Maps listing address, character for character as the listing shows it (data-item-id=address), postcode included. Authoritative per playbook 0.5.0 §6; other platforms' versions are kept in address_other_platforms and are not to be used on the site. Google's lowercase 'welhengoda' is kept as shown."
+  },
+  "address_other_platforms": [
+   {
+    "value": "'Warnagiri' Welhengoda, Ahangama, Sri Lanka",
+    "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+    "fetched_at": "2026-09-19T18:20:00Z",
+    "note": "Hostelworld, as harvested 2026-09-19 (visible page text); re-read 2026-09-23: page shows '\"Warnagiri\" Welhengoda, Ahangama, Ahangama, Sri Lanka', JSON-LD streetAddress '\"Warnagiri\" Welhengoda, Ahangama' with postalCode 80650. Superseded by the Google listing address."
+   },
+   {
+    "value": "Warnagiri welhengoda Ahangama Warnagiri, 80650 Ahangama, Sri Lanka",
+    "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+    "fetched_at": "2026-09-23T08:15:49Z",
+    "note": "Booking.com JSON-LD PostalAddress.streetAddress (postalCode 80650). Superseded by the Google listing address."
+   }
+  ],
+  "plus_code": {
+   "value": "X9H3+93 Ahangama, Sri Lanka",
+   "source_url": "https://www.google.com/maps/place/Layday+Surf+Ahangama/@5.9794134,80.350836,17z/data=!4m9!3m8!1s0x3ae113718b0aebeb:0xe2cc089452031bbb!5m2!4m1!1i2!8m2!3d5.9784609!4d80.3526536!16s%2Fg%2F11z0ldv459?hl=en",
+   "fetched_at": "2026-09-23T08:15:11Z",
+   "note": "shown on the Google listing (data-item-id=oloc)"
   },
   "lat_lng": {
-   "value": null,
-   "gap": "not captured; the scout recorded the pin only in candidates.json"
+   "value": [
+    5.9784609,
+    80.3526536
+   ],
+   "source_url": "https://www.google.com/maps/place/Layday+Surf+Ahangama/@5.9794134,80.350836,17z/data=!4m9!3m8!1s0x3ae113718b0aebeb:0xe2cc089452031bbb!5m2!4m1!1i2!8m2!3d5.9784609!4d80.3526536!16s%2Fg%2F11z0ldv459?hl=en",
+   "fetched_at": "2026-09-23T08:15:11Z",
+   "note": "the listing's pin, from the place URL's !3d/!4d parameters. Booking pin 5.9784743,80.352641 (scout, 2026-09-19) and Hostelworld JSON-LD geo 5.9784674,80.3526422 (2026-09-23) agree to within a few metres."
   },
   "map_url": {
    "value": "https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en",
@@ -706,11 +731,6 @@
    "field": "contact.whatsapp",
    "why": "not published",
    "pitch_point": true
-  },
-  {
-   "field": "location.lat_lng",
-   "why": "not captured this run",
-   "pitch_point": false
   },
   {
    "field": "business.since",
