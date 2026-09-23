@@ -48,7 +48,7 @@ One line per paragraph, naming the `dossier.json` fields it rests on. A paragrap
 | ratings[0–2] | Hostelworld 9.8/10 (66) · Booking.com 9.5/10 (38) · Google 4.8/5 (42) | `reviews.hostelworld` (rating, count, source_url) · `reviews.booking` · `reviews.google` (no URL written for Google) |
 | testimonials[0–4] | Clara · Elena · Mia · Wolfgang · Saketh | `reviews.quotes[1]`, `[7]`, `[9]`, `[3]`, `[8]`, quotes verbatim; `source` from each quote's `source_url`; `date` only where the dossier gives one; authors shortened to first name + country |
 | contact.phone | +94773746053 | `contact.phone` |
-| contact.address | "207/A Welahangoda, 80650 Ahangama, Sri Lanka" | *207/A Welahangoda* is Google's spelling from `location.address.note` ("Google '207/A welahangoda, Ahangama'") and the scout's Google record in `reports/2026-09-ahangama-02/candidates.json`, per Shahar's decision (ledger, 2026-09-22); "80650 Ahangama, Sri Lanka" from `location.address.value` |
+| contact.address | "207/A Welahangoda, Ahangama 80650, Sri Lanka" | `location.address.value` — the Google listing address ("207/A welahangoda, Ahangama, Sri Lanka"), place name capitalised (base.md constraint 9; playbook §6). Google shows no postcode (`gaps[]` "location.address.postcode"); **80650 from Booking.com**, `location.address_other_platforms[0]` ("No 207/A, Welhengoda, 80650 Ahangama, Sri Lanka"). Order and result per Shahar, 2026-09-23 |
 | bookingLinks[0–2] | "Check dates on Hostelworld / Booking.com / Agoda" | `booking.other_engines[0]` · `booking.engine_url` · `booking.other_engines[1]`; *check dates* rests on `booking.path.note` ("live inventory") |
 
 ## Deliberately not written
