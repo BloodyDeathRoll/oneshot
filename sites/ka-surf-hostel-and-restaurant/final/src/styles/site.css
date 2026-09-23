@@ -135,17 +135,17 @@ h2{font-weight:200;letter-spacing:-.04em;line-height:.95}
 .times div:last-child dd span{margin-left:0}
 .note,.addr{font-weight:300;font-size:17px;margin-top:28px;max-width:30em}
 .addr a,.end a,.upd a{text-decoration:none;border-bottom:1px solid var(--ink)}
-/* the map: OpenStreetMap's embed, a box reserved by the row it shares with the text, so nothing
-   shifts when it arrives; its right edge sits as far left of the line as the text sits right of it */
+/* the map: Google's own embed, a box reserved by the row it shares with the text, so nothing
+   shifts when it arrives; its right edge sits as far left of the line as the text sits right of it.
+   No frame around it (Shahar, 2026-09-23) and no credit line under it — Google draws its own
+   attribution inside the map. */
 .walk .map{grid-column:1/5;grid-row:1;align-self:stretch;display:flex;flex-direction:column;margin:26svh 0 22svh;position:relative;z-index:1}
-.map-frame{position:relative;flex:1 1 auto;min-height:360px;border:1px solid var(--ink)}
+.map-frame{position:relative;flex:1 1 auto;min-height:360px}
 .map-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;visibility:hidden}
 .map-alt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:32px;text-align:center;font-weight:300;font-size:17px;line-height:1.45}
 .map-alt a{text-decoration:none;border-bottom:1px solid var(--ink)}
 .map-frame.on iframe{visibility:visible}
 .map-frame.on .map-alt{visibility:hidden}
-.map-cred{position:absolute;top:100%;left:0;font-size:14px;margin-top:10px}
-.map-cred a{text-decoration:none;border-bottom:1px solid var(--ink)}
 
 .wave{background:var(--sky)}
 .wave .in{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g);padding:150px var(--pad) 150px}
@@ -217,6 +217,40 @@ html:not(.js) .fc-now,.fc.off .fc-now{visibility:hidden}
 .panel .tile .t1{font-size:14px}
 .pcall{margin-top:28px;font-weight:300}
 .pcall a{border-bottom:1px solid var(--ink);text-decoration:none}
+
+/* ---------- tap targets ----------
+   Shahar, 2026-09-23: at 390 px every tap target is at least 44 x 44, grown by padding, never by
+   making the type bigger, and the picked mockup's look is unchanged. Two devices do that:
+   - vertical padding on an inline link grows its box without moving anything: padding-block on an
+     inline box does not push the lines it sits between apart, so a link inside a sentence gets a
+     taller hit area and the paragraph is not re-typeset. Where the target is a block or flex item
+     (a list row's "Check dates", the link in the map box, the panel's Close), a matching negative
+     margin cancels the padding so the row keeps its height and the item keeps its place.
+   - the underline stops being a border-bottom, which the padding would push down, and becomes a
+     1px gradient anchored to the bottom of the CONTENT box (background-origin: content-box,
+     position calc(100% + 1px)) — the same pixel row the border occupied.
+   One place has to gain real space: the footer's phone and map links sat on two lines of one
+   paragraph, 24 px apart, and two 44 px targets cannot be 24 px apart. They become blocks and the
+   contact block grows by about 40 px. */
+.score .src a,.score .rest a,.addr a,.credit-rosa a,.map-alt a,.pcall a{padding-block:13px}
+.contact p a{display:inline-block;padding-block:12px}
+/* the negative margins are one pixel short at the bottom on purpose: these three carried a 1px
+   border-bottom inside their old box, so a symmetric -11/-11 would centre a box one pixel shorter
+   than before and drop the type half a pixel. -11/-10 keeps the old margin box exactly. */
+.list a{padding-block:11px;margin-block:-11px -10px}
+.map-alt a{margin-block:-13px -12px}
+.top .name{padding-block:12px}
+.panel .x{padding:12px 10px;margin:-12px -10px -11px 0}
+.score .src a,.addr a,.credit-rosa a,.map-alt a,.pcall a,.contact p a,.list a,.panel .x{
+  border-bottom:0;background-image:linear-gradient(var(--ink),var(--ink));background-repeat:no-repeat;
+  background-size:100% 1px;background-position:0 calc(100% + 1px);background-origin:content-box}
+/* hover keeps the mockup's tight swatch: the melon is a second gradient the size of the content
+   box, not a background on the padded box, and the underline turns melon with it as before */
+.list a:hover,.list a:focus-visible{color:var(--ink);background-color:transparent;
+  background-image:linear-gradient(var(--melon),var(--melon)),linear-gradient(var(--melon),var(--melon));
+  background-repeat:no-repeat,no-repeat;background-size:100% 1px,100% 100%;
+  background-position:0 calc(100% + 1px),0 0;background-origin:content-box,content-box}
+
 :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){.panel{transition:none}}
 

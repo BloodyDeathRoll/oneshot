@@ -8,13 +8,16 @@ import generated from '../tenant/photos.generated.json'
 
 export const content = raw.locales.en
 
-/* SCHEMA GAP (no geo coordinates in v0.3, only contact.mapUrl): the JSON-LD geo point, from the
-   dossier's location.plus_code "X9J2+PR Ahangama" = 5.98181, 80.35206 (matches the scout's Google
-   pin). `bbox` is the OpenStreetMap embed's window around that pin — about 950 m across, so the
-   junction on Galle Road and the beach are both in frame. Restored for round 8: Shahar asked for
-   the embed back (gate answer "Put the embed back", 2026-09-22), reversing the round-3 removal.
+/* SCHEMA GAP (no geo coordinates in v0.3, only contact.mapUrl): the JSON-LD geo point and the
+   centre of the map embed, from the dossier's location.plus_code "X9J2+PR Ahangama" = 5.98181,
+   80.35206 (matches the scout's Google pin). Restored for round 8: Shahar asked for the embed back
+   (gate answer "Put the embed back", 2026-09-22), reversing the round-3 removal; swapped from
+   OpenStreetMap to a standard Google map on 2026-09-23, so the frame shows the surrounding places
+   and not only our pin. `zoom` is the embed's z: at 15 the frame holds Kabalana Road, Galle Road,
+   Kabalana beach and the neighbours' names as well as the pin, measured at both the 350 x 320 box
+   the phone draws and the 384-wide box the desktop draws; at 16 the beach falls outside it.
    The link the address carries stays "Open in Google Maps" and still points at contact.mapUrl. */
-export const MAP_PIN = { lat: 5.98181, lon: 80.35206, bbox: '80.3455,5.9760,80.3540,5.9845' }
+export const MAP_PIN = { lat: 5.98181, lon: 80.35206, zoom: 15 }
 
 /* SCHEMA GAP (no SEO title / place field in v0.3): the place in the page title, from the
    dossier's location.address ("… Ahangama, Sri Lanka"). */
