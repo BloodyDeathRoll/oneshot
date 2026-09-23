@@ -319,3 +319,103 @@ Open items, not copy fails: `ratings[].capturedAt` absent (deployer; both platfo
 1 `unsourced` (row 5), 0 `contradicted`, 0 voice fails. Everything else in the file is sourced, and the diff from draft to final added, dropped or strengthened no fact.
 
 Round count, said plainly: base.md allows 2 rounds, and still failing on the third pass is defined as "the dossier cannot support a site", with a send-back to the harvester or, in `mode: test`, out of the run. That definition does not fit the facts here: the one fail is a four-word heading clause that leans on an excluded review, and the other 85 rows show that the dossier supports the whole page without it. Whether that means a fourth pass, a ruling on `quotes[1]`, a send-back to the harvester or dropping the site is a gate for Shahar, not for me.
+
+## round 4 — full-file re-check after copywriter round 4 and humanizer round 4, 2026-09-23
+
+Reviewer: copyeditor 0.3.0 (runtime prompt from `node tools/prompt.mjs copyeditor`, every layer read). Independent of the copywriter and the humanizer. Fourth pass allowed by Shahar (ledger 2026-09-23T09:03:11Z, "Drop it, one more round"). Rules applied: hard constraint 6 (every sentence of the whole file re-checked against `dossier.json` as it stands, nothing carried over from round 3); a verbatim guest observation of a physical fact is `sourced`, never for a ranking, frequency or cause; no framing exemptions.
+
+### Scope check
+- `cmp en.json en.draft.json`: identical (humanizer round 4 changed nothing, matching `humanizer-notes.md` round 4 and ledger 09:04:40Z).
+- `git diff e384470 -- en.json` (round 3 → now): `copywriter_version` 0.3.0 → 0.3.1; `copyBlocks[0].heading` "Off the main road, over the surf" → "Among cafés and restaurants". Nothing else in `en.json` changed. (`en.draft.json` additionally caught up with round 3's humanised bodies and `humanizer_version`, so draft = final.)
+- Draft → final diff: none. Nothing appeared, vanished or strengthened in humanizing.
+- `sources.md`: header now "Copywriter 0.3.1 · round 4"; intro-heading row rewritten; the three stale strings (staying ¶1 S1, S2; pool ¶1 S1) now quote the final wording; "Shahar, Israel" bullet updated.
+
+### Fact audit (whole file)
+
+| # | Field | Sentence / claim | Dossier key (words re-read) | Verdict |
+|---|---|---|---|---|
+| 1 | `businessName` | "The Lavish Haven" | `business.name` | sourced |
+| 2 | `tagline` | "A new hotel" | "hotel": `business.type.note` "Booking category 'Hotel'". "new": `quotes[4]` "It's a brand new hotel", `[2]` "It's a new facility", `[5]` "The hotel is new" | sourced (guest observation of a physical fact) |
+| 3 | `tagline` | "two minutes from Kabalana" | `location.distance_to_beach` "Kabalana Beach is a 2-minute walk"; `contradictions[0]` "Use Booking's figure" | sourced |
+| — | `languagesSpoken` | `[]` | no staff-language key | no claim |
+| 5 | `copyBlocks[0].heading` | "Among cafés and restaurants" | `location.setting` "surrounded by cafes and restaurants" (source_url Booking); `quotes[5]` Aleksandra "There are many cafes and a fruit stand nearby" (verbatim, physical fact). Nothing ties this clause to the excluded `quotes[1]`, whose captured text mentions no cafés or restaurants. Same basis as row 7, which passed in rounds 2 and 3 | sourced. Note: "restaurants" rests on the `location.setting` key alone (no verbatim quote), "cafés" on both |
+| 7 | `copyBlocks[0].body` S1a | "Cafés and restaurants surround the hotel," | as row 5 | sourced |
+| 8 | `copyBlocks[0].body` S1b | "and there is a fruit stand nearby." | `quotes[5]` "a fruit stand nearby" | sourced (physical fact) |
+| 9 | `copyBlocks[0].body` S2 | "Guests score the location 9.6 out of 10 on Booking.com." | `reviews.booking.categories.Location` 9.6, scale 10 | sourced |
+| 10 | `copyBlocks[0].body` ¶2 | "Koggala Airport is about 5 km away." | `business.description` "Koggala Airport is 3.1 mi away" (4.99 km); shuttle kept in `[5]`, no link implied | sourced |
+| 11 | `copyBlocks[1].heading` | "New, and it shows" | as row 2 | sourced |
+| 12 | `copyBlocks[1].body` S1 | "The hotel is new." | as row 2 | sourced |
+| 13 | `copyBlocks[1].body` S2 | "On Booking.com one guest calls it "brand new", another "a new facility"." | `quotes[4]` Dariusz, `[2]` Diane, both Booking; fragments verbatim, attributed | sourced |
+| 14 | `copyBlocks[1].body` ¶2 S1 | "Booking.com guests score it 9.7 out of 10 for cleanliness and the same for comfort, and 9.4 for staff, across 34 reviews." | `reviews.booking.categories` Cleanliness 9.7, Comfort 9.7, Staff 9.4; `count` 34 | sourced |
+| 15 | `copyBlocks[1].body` ¶2 S2 | "On Google it has 5.0 out of 5 from 21 reviews." | `reviews.google` 5.0, 21 | sourced |
+| 16 | `copyBlocks[2].heading` | "Staying longer" | `quotes[0]` "stayed over a month", `[6]` "extended our stay" | sourced (no cause, no count) |
+| 17 | `copyBlocks[2].body` S1 | "One guest wrote that they moved around many hotels before finding this one, then stayed over a month." | `quotes[0]` Mya "We moved around many hotels until we found the lavish and stayed over a month" | sourced (attributed, one guest) |
+| 18 | `copyBlocks[2].body` S2 | "Another extended their stay rather than go on to a different hotel." | `quotes[6]` Roie "we extended our stay in it instead of going to another one" | sourced (no cancellation, no cause) |
+| 19 | `copyBlocks[3].heading` | "Nine kinds of room" | `room_types[]` 9 entries; types, not a count (`contradictions[1]`) | sourced |
+| 20 | `copyBlocks[3].body` ¶1 S1 | "There are king rooms with a balcony or a garden view, superior kings, and a deluxe king on the ground floor with a private patio and a pool view." | `room_types[3]`, `[2]`, `[1]`, `[0]` "Private Patio & Pool View, ground floor" | sourced (view, not access) |
+| 21 | `copyBlocks[3].body` ¶1 S2 | "Family studios and suites sleep four, and the two-bedroom suite sleeps five." | `room_types[4–7]` sleeps 4; `[8]` sleeps 5 | sourced ("the" = the type, no count; as round 3) |
+| 22 | `copyBlocks[3].body` ¶2 S1 | "Each room has a work desk, soundproofing and free WiFi." | `business.description` "each room has a work desk, soundproofing and free WiFi"; `facilities[4]` | sourced |
+| 23 | `copyBlocks[3].body` ¶2 S2 | "The family rooms have air conditioning and private bathrooms." | `business.description` "family rooms with air-conditioning, balconies and private bathrooms" | sourced (scope kept) |
+| 24 | `copyBlocks[3].body` ¶3 S1 | "There is no published price list." | `gaps[]` "offers"; `offers` `[]` | sourced |
+| 25 | `copyBlocks[3].body` ¶3 S2 | "Rates go by date, and the booking links show what is available." | `booking.path.note` "live inventory on Booking.com and Agoda"; `gaps[]` "offers" | sourced |
+| 26 | `copyBlocks[4].heading` | "Pool, restaurant, spa" | `facilities[0]`, `[1]`, `[3]` | sourced |
+| 27 | `copyBlocks[4].body` S1 | "The outdoor pool is in the middle of the hotel and open all year." | `facilities[0]` "year-round outdoor swimming pool"; `quotes[3]` "the swimming pool at the center" | sourced (physical fact) |
+| 28 | `copyBlocks[4].body` S2 | "The restaurant serves breakfast with local specialities and fresh pastries, plus Chinese, Indian and Italian dishes." | `facilities[1]`; `business.description` | sourced (no hours) |
+| 29 | `copyBlocks[4].body` S3 | "There's a coffee house on site too, and a spa and wellness centre." | `facilities[2]`, `[3]` | sourced |
+| 30 | `copyBlocks[4].body` ¶2 S1 | "For families there are the family rooms and an outdoor play area." | `facilities[5]`, `[17]`; `business.description` "outdoor play area" | sourced |
+| 31 | `copyBlocks[4].body` ¶2 S2 | "Kids' meals and babysitting cost extra." | `facilities[19]`, `[18]` "(additional charge)" | sourced |
+| 32 | `copyBlocks[5].heading` | "Practicalities" | asserts nothing | framing |
+| 33 | `copyBlocks[5].body` ¶1 S1 | "The front desk is staffed 24 hours, with private and express check-in." | `facilities[8]`, `[9]`; `hours_note` | sourced |
+| 34 | `copyBlocks[5].body` ¶1 S2 | "Parking is free and private, but you need to reserve it." | `facilities[10]` "free private parking (reservation needed)"; no location or ease (`contradictions[2]`) | sourced |
+| 35 | `copyBlocks[5].body` ¶1 S3 | "There's an airport shuttle as well." | `facilities[6]`; no airport named | sourced |
+| 36 | `copyBlocks[5].body` ¶2 S1 | "Housekeeping is daily." | `facilities[21]` | sourced |
+| 37 | `copyBlocks[5].body` ¶2 S2 | "There is laundry, dry cleaning and ironing, bicycles to rent, non-smoking rooms, and facilities for guests with disabilities." | `facilities[22]`, `[20]`, `[12]`, `[11]` | sourced (round-3 note stands: the charge on laundry and bicycles is only in `amenities[20]`, `[22]`) |
+| 38 | `spot` S1 | "Kabalana: a sandy beach break for beginners and intermediates, with The Rock reef A-frame for advanced surfers." | `location.spot` (thesurfatlas.com), source's words | shared-context |
+| 39 | `spot` S2 | "The beach is two minutes from the hotel, on foot." | `location.distance_to_beach`; `contradictions[0]` | sourced |
+| — | `season` | `null` | `season` gap | no claim |
+| 40 | `closing` S1 | "Rates move with the dates." | `booking.path.note`; `gaps[]` "offers" | sourced |
+| 41 | `closing` S2 | "Booking.com and Agoda show what is available." | `booking.path.note`; `engine_url`; `other_engines[0]` | sourced |
+| 42 | `stayInfo.note` | "The front desk is staffed 24 hours, with private and express check-in and check-out." | `hours_note`; `facilities[8]`, `[9]`; no times (`gaps[]` "stayInfo") | sourced |
+| 43–51 | `rooms[0–8]` | labels, beds, sleeps, "ground floor" | `room_types[0–8]`, compared row by row by script ("+" → "and", sleeps only where given) | sourced ×9 |
+| 52–76 | `amenities[0–24]` | 25 rows | `facilities[0–24]` index for index by script; every note is the facility's own bracket; `[25]` unused | sourced ×25 |
+| 77–78 | `ratings[0–1]` | Booking 9.2/10, 34, URL · Google 5/5, 21 | `reviews.booking`, `reviews.google` | sourced ×2 |
+| 79–83 | `testimonials[0–4]` | Mya · Dariusz · António · Roie · Benjamin | `quotes[0, 4, 3, 6, 7]`: script string-equality on text and author, 5/5; `[1]` not used | sourced ×5 |
+| 84 | `contact.phone` | "+94764832988" | `contact.phone`, identical | sourced |
+| 85 | `contact.address` | "No166/1 Walhengoda Road, Ahangama 80650, Sri Lanka" | `location.address` (Google) "No166/1 walhengoda road, Ahangama 80650, Sri Lanka": playbook §6 words, postcode, capitalisation, order ✓; `contradictions[3]` followed, owner question open | sourced |
+| 86–87 | `bookingLinks[0–1]` | "Check dates on Booking.com / Agoda" | `booking.engine_url`, `other_engines[0]`, URL-identical by script; `path.note` "live inventory" | sourced ×2 |
+
+**Counts (85 claim rows; round 3's rows 5–6 are now the single row 5; no row 4, no row 6):** `sourced` 83 · `shared-context` 1 · `framing` 1 · **`unsourced` 0** · **`contradicted` 0**. The one round-3 fail ("Off the main road") is gone, and "over the surf" (round-3 row 6, a possible view claim) went with it.
+
+### `sources.md` check
+Every key cited re-read in `dossier.json`; all exist and say what the rows claim. The three stale strings from round 3 now quote the final sentences exactly. Header version (0.3.1) matches `en.json` and `run.yaml`. The intro-heading row cites `location.setting` and `quotes[5]` correctly and records why round 3's heading was dropped. No stale or wrong citation found.
+
+### Voice audit (per block)
+
+| Block | Rhythm | No triads | No padding | Concrete | Honest limit | Register | Aloud | Score |
+|---|---|---|---|---|---|---|---|---|
+| `tagline` | — | yes | yes | yes | — | yes | yes | clean |
+| `[0]` intro | yes | yes | yes | yes | — | yes | yes | clean, note: heading "Among cafés and restaurants" repeats the body's first words "Cafés and restaurants surround the hotel" (humanizer flagged the same). Mild repetition, not a generated-text tell |
+| `[1]` new | yes | data list, not rhetorical | yes | yes | — | yes | yes | clean |
+| `[2]` staying | yes | yes | yes | yes | yes | yes | yes | clean |
+| `[3]` rooms | yes | yes | yes | yes | yes (no price list) | yes | yes | clean |
+| `[4]` pool | yes | heading a three-item list (note, as before) | yes | yes | yes ("cost extra") | yes | yes | clean, note |
+| `[5]` practicalities | yes | yes | yes | yes | yes | yes | yes | clean, note (five-item list, listing register) |
+| `spot` | yes | yes | yes | yes | yes | surf-guide | yes | clean |
+| `closing` | yes | yes | yes | yes | yes | yes | yes | clean |
+
+Voice fails: **0**.
+
+### Completeness (`beach_lodging`)
+Re-checked: `rooms[]` 9, `bookingLinks[]` 2, `amenities[]` 25, `ratings[]` 2, `testimonials[]` 5, `spot`, `closing` filled; `stayInfo` note only (no times, gap on record); `season` null (dossier gap). Schema limits by script: `tagline` 38/140, `closing` 72/140, `spot` 161/200, headings ≤ 27/120, bodies ≤ 440/1500, `stayInfo.note` 84/200, `contact.address` 50/300, booking labels ≤ 26/60, phone E.164, URLs `https://`.
+
+Open items, not copy fails (unchanged): `ratings[].capturedAt` absent (deployer seeds from `fetched_at` 2026-09-19). `contact.whatsapp` absent (schema-required, dossier gap). House number 166/1 vs 166/2 (`contradictions[3]`), owner question. Round-3's `copywriter_version` item is fixed (0.3.1). Knock-ons outside this file, not mine to act on: `concepts.md` still names concept 1 "Off the main road"; `mockups/unique/src/tenant/content.json` carries round-1 copy.
+
+### Duplication (notes)
+As round 3, plus the intro heading now repeating its own body's opening. Tolerated repeats: 24-hour desk (`[5]`, `stayInfo.note`, `amenities[8–9]`); rates by date (`[3]` ¶3, `closing`); newness (`tagline`, `[1]`, `testimonials[1]`); Mya and Roie (`[2]`, `testimonials`); pool position (`[4]`, `testimonials[2]`); room and amenity lists in prose and in modules.
+
+### Failing sentences
+None.
+
+### Verdict: **PASS** (round 4, full-file re-check)
+
+0 `unsourced`, 0 `contradicted`, 0 voice fails, required fields covered. Round 4 of 4 (base.md allows 2; rounds 3 and 4 were each allowed by Shahar).
