@@ -1,4 +1,4 @@
-version: 0.4.0
+version: 0.5.0
 
 # playbook.md — what a great surf-business site is; shared by all agents.
 
@@ -117,6 +117,7 @@ Context: of the six resort sites measured for `agents/designer/references.md`, f
 - Reviews quoted verbatim, with reviewer first name, source, date and link. Rating shown with count, source and capture date. Never edited, never invented, never cherry-picked into a claim ("best school in Mirissa") the sources don't make.
 - Named humans: owner, instructors. Certifications and safety claims only if sourced.
 - Exact location and hours. A site that hides where it is reads as a scam to a traveller.
+- **The address is the business's Google listing address, with its postcode** (standing rule of 2026-09-23, Shahar). Character for character as Google shows it, postcode included — not Booking's, Hostelworld's or the owner's own spelling, even where those look better. Local search matches the site against that listing. If the dossier does not carry the Google listing address, that is a gap: flagged, never filled from another platform.
 
 ## 7. Honesty of facts
 
