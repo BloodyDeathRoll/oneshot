@@ -57,3 +57,24 @@ Round 2's two voice fails ("free" in the availability sense) arrived already fix
 ### Could not fix without a fact
 
 None.
+
+## Round 4 · 2026-09-23 · humanizer 0.2.0 · after copywriter round 4
+
+Input: `en.json` with one field changed, `copyBlocks[0].heading` "Off the main road, over the surf" → "Among cafés and restaurants" (cut as unsourced, Shahar). Scope: that heading's voice against the intro body. Facts fixed; nothing else read for change.
+
+### Changes
+
+None. `en.json` left as it arrived.
+
+### Why it stays
+
+- Plain, concrete, no marketing verb, no triad, no padding. A place-name kind of heading, which suits a short intro.
+- It does echo the body's first words ("Cafés and restaurants surround the hotel…"). That is a mild repetition, not a generated-text tell, and any rewrite that avoids it would either need a new claim or drop the one sourced fact the heading carries (`sources.md` row `copyBlocks[0]` intro). Left alone.
+
+### For the copywriter / copyeditor (not changed here)
+
+- If the heading/body echo reads flat once laid out, the cheaper fix is in the body (e.g. open ¶1 on the fruit stand or the 9.6 location score) rather than the heading. Their call.
+
+### Could not fix without a fact
+
+None.
