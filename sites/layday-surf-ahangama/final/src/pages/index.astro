@@ -77,6 +77,18 @@ const ld = {
       '@type': 'LocationFeatureSpecification', name: a.note ? `${a.label} (${a.note})` : a.label, value: true,
     })),
   } : {}),
+  /* 4i: the rooms[] rows as HotelRoom (KA's mapping, plus description ← rooms[].note, the visible line
+     under the label), so "is there a private room / how many rooms" is answerable from the graph.
+     No bed count and no occupancy unless the content sets them: the dossier's bed count is contradicted
+     (Booking 6-bed dorm vs a guest's 4 bunk beds) and must not be published. No rates (live OTA inventory). */
+  ...((c.rooms ?? []).length ? {
+    containsPlace: c.rooms.map((r) => ({
+      '@type': 'HotelRoom', name: r.label,
+      ...(r.note ? { description: r.note } : {}),
+      ...(r.beds ? { bed: r.beds } : {}),
+      ...(r.sleeps ? { occupancy: { '@type': 'QuantitativeValue', maxValue: r.sleeps } } : {}),
+    })),
+  } : {}),
   ...((c.languagesSpoken ?? []).length ? { knowsLanguage: c.languagesSpoken } : {}),
   ...(links.length ? { sameAs: links.map((l) => l.url) } : {}),
 }
