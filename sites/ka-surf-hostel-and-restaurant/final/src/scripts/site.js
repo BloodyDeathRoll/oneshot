@@ -94,9 +94,11 @@ if (fc) {
 
 /* ---------- the map: same rule, src set only when "Getting here" nears the viewport ----------
    A cross-origin iframe fires `load` even when the request was blocked or the network is down, so
-   the frame alone cannot tell us whether the embed arrived. One opaque HEAD request to the same URL
+   the frame alone cannot tell us whether the embed arrived. One opaque HEAD request to the same host
    answers that first: it resolves for any reachable response and rejects when there is no network,
-   in which case the reserved box keeps showing the address and the Google Maps link. */
+   in which case the reserved box keeps showing the address and the Google Maps link. The probe asks
+   www.google.com/generate_204, which answers 204 to HEAD; the embed URL itself answers HEAD with 404,
+   which the browser logged as a console error on every visit (measured 2026-09-23). */
 const map = document.querySelector('.map-frame'), mapFrame = map && map.querySelector('iframe');
 if (mapFrame && 'IntersectionObserver' in window && window.fetch && location.protocol !== 'file:') {
   const io = new IntersectionObserver((es) => {
@@ -104,7 +106,7 @@ if (mapFrame && 'IntersectionObserver' in window && window.fetch && location.pro
     io.disconnect();
     map.dataset.loading = 'true';
     const done = () => { delete map.dataset.loading; };
-    fetch(mapFrame.dataset.src, {method: 'HEAD', mode: 'no-cors', credentials: 'omit'})
+    fetch('https://www.google.com/generate_204', {method: 'HEAD', mode: 'no-cors', credentials: 'omit'})
       .then(() => {
         mapFrame.addEventListener('load', () => { map.classList.add('on'); done(); }, {once: true});
         mapFrame.src = mapFrame.dataset.src;
