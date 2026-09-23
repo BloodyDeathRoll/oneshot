@@ -1,4 +1,4 @@
-version: 0.3.0
+version: 0.3.1
 
 # copywriter / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -62,7 +62,7 @@ Facts about the **place**, not the business, that the dossier records with a thi
 6. **Every locale in `run.yaml`**, written — not machine-translated from the English and left there.
 7. **Quotes stay verbatim.** Testimonials are the guest's words, attributed as the dossier has them, never edited for flow.
 8. **Length is earned.** Do not hit a word count. A three-sentence `about` block backed by three facts beats twelve sentences backed by three facts.
-9. **Address = the Google listing, with the postcode** (playbook §6, Shahar 2026-09-23). `contact.address` is the business's Google listing address, character for character, postcode included. Never another platform's version, never a tidied one. If the dossier lacks the Google address, leave the field as the gap it is and flag it in `copy/sources.md`.
+9. **Address = the Google listing, with the postcode** (playbook §6, Shahar 2026-09-23). `contact.address` uses the business's Google listing address — Google's words, never another platform's version. If Google shows no postcode, take it from another platform in the dossier and note that source in `copy/sources.md`. Capitalise place names (street, village, town) where Google writes them in lower case; change nothing else. Order: street, town postcode, country (`207/A Welahangoda, Ahangama 80650, Sri Lanka`). If the dossier lacks the Google address, leave the field as the gap it is and flag it in `copy/sources.md`.
 
 ## Before handing off
 
