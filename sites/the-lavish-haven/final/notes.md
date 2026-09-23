@@ -412,3 +412,63 @@ the intro text, no new heading. llms.txt otherwise unchanged (diff: +1 line).
 - `shoot.mjs` → `shots/4g-round-5/`: desktop 13 / mobile 15 captures, page heights 10 273 / 11 389 (as round 2), `errors []`.
 - `audit-mockup.mjs` not re-run: the only page change is 11 fewer bytes of text and a guard in the inline script.
 - Servers on 8760–8763 stopped. Nothing deployed, ledger not written, nothing committed.
+
+## Header background, JS off (2026-09-23)
+
+Shahar: "Lavish: give the header a background with JavaScript off." (critic full round 2, finding 2: with
+JS off nothing adds `.solid` to the fixed `.bar`, so it stayed transparent over page text; 62 of 98
+scroll positions at 390.) Scratch: `/tmp/claude-1000/…/scratchpad/lavish-header/` (outside the repo).
+Shots: `shots/jsoff-header/`.
+
+### What changed
+- `src/pages/index.astro`, one line in `<head>` after the inline stylesheet:
+  `<noscript><style is:inline>.bar{background:var(--paper)}</style></noscript>`. The page's ground
+  (#F5F8FA), fully opaque, at every scroll position. The JS path's `.solid` is the same colour at 92 %
+  with a blur. The no-JS bar is opaque because the brief asks that no text show through. `<noscript>` is
+  not parsed when JS runs, so the motion path and the reduced-motion path (JS on, `headerOnly()`) never
+  see it. `:root:not(.motion)` was not used: it also matches reduced motion.
+
+### JS off, 390 / 768 / 1440 / 1525 (`jsoff.mjs`, every 97 px, as the critic measured)
+| width | steps | bar background | steps not opaque | bar pixels ≠ bar at top | text under the bar's links (geometry) |
+|---|---|---|---|---|---|
+| 390 | 98 | rgb(245,248,250) | 0 (was 98) | **0** (was 97) | 62, now hidden under the ground (was drawn through) |
+| 768 | 97 | same | 0 (was 97) | **0** (was 93) | 57 |
+| 1440 | 91 | same | 0 (was 91) | **0** (was 71) | 31 |
+| 1525 | 94 | same | 0 (was 94) | **0** (was 73) | 29 |
+
+"Bar pixels ≠ bar at top": at each step I captured the bar's box and compared it to the capture at scroll 0.
+It is identical at every step and every width, so nothing passing under the bar shows through. The text
+still passes under the bar by geometry, by design. It is covered now. See `bar-closeup-before-after.png`
+(the critic's example, "The Lavish Haven" over the wave panel, is gone) and `steps-<w>-before-after.png`
+(the whole page, top row before, bottom row after).
+
+### First screen vs the gold page (JS off, scroll 0)
+Before → after: **924–969 px differ, all inside the bar's own glyphs** (bbox y 14–62: "The Lavish Haven"
+and "Check dates"). No other pixel moved. This is the text's anti-aliasing, not the layout. Headless Chromium
+on Linux switches to subpixel (colour-fringed) text once the text sits on an opaque background (zoomed:
+the letters are the same shape). Phones and macOS draw greyscale text, so they should show no change,
+but I did not check that on a device. So gold → after is 924–969 px further than gold → before (132 524 → 133 448 at 390),
+and all of the extra is in those glyphs. Two other ways to paint the bar still had 350–700 px of the same
+fringe (`will-change`, a 99.6 % ground), so I kept the plain opaque ground.
+`first-screen-<w>-gold-before-after.png`.
+
+### JS on: unchanged
+- Deterministic `pxdiff.mjs` (water canvas hidden, swell frozen, Rosa fixture and widget stub; the 4g-round-3
+  harness), before `dist` vs after `dist`: **90 of 96 compares are 0 px**. Motion path top to bottom at
+  390 / 768 / 1024 / 1440 / 1525 / 1920, **reduced motion full page at all six widths**, drawer and
+  drawer-from-a-room at 390/1440: all 0 px. The 6 that differ are the JS-off full pages, and only in the bar
+  glyphs above (bbox y 14–62).
+- `tools/shoot.mjs` at 390/1440, before vs after: the only frames that differ are the ones that also differ
+  between two runs of the unchanged build (desktop 00–03, 10, 11; mobile 00–03, 13: the WebGL water, the swell
+  animation, and the blurred bar over the swell). Every other frame is 0 px. Page heights 10 273 / 11 389,
+  `errors []` on both. The raw shots cannot give 0 px on animated frames, so the deterministic compare above
+  is the proof for those frames.
+- CSSOM, JS on, 390/1440, motion and reduced: 1 stylesheet, 174 rules, the same html class and the same bar
+  state (transparent at top, `.solid` 92 % when scrolled) before and after. 0 page errors.
+
+### Checks
+- `npm run build`: clean, 0 warnings. `index.html` 60 829 B (was 60 764).
+- `check-design.mjs <scratch copy>/index.html --no-shots`: ok, 0 problems, 0 warnings. Jost ×3, ground hsl(204 33% 97%).
+- `audit-mockup.mjs` not re-run: the only change is 65 bytes inside `<noscript>`, which is not parsed on the
+  JS-on audit path.
+- Servers on 8760–8765 stopped. Nothing deployed, ledger not written, nothing committed.
