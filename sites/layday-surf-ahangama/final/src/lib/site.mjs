@@ -45,12 +45,12 @@ export const LD_TYPE = {
   board_rental: 'SportsActivityLocation', surf_shop: 'SportingGoodsStore', shaper: 'Store', other: 'LocalBusiness',
 }
 
-/* SCHEMA GAP (no contact.geo field in site-content.md; dossier location.lat_lng is a gap that points
-   at candidates.json): the Google Maps pin the scout recorded, reports/2026-09-ahangama-02/
-   candidates.json, evidence "pin 5.9784609,80.3526536" (Google Maps, 2026-09-19). It encodes to
-   plus code 6MQ2X9H3+93 = the "X9H3+93" in Google's own address line, and Booking.com's pin
-   (5.9784743,80.352641) falls in the same cell. The @5.9794134,80.350836 in contact.mapUrl is the
-   search viewport's centre, not the pin, and is not used. */
+/* SCHEMA GAP (no geo field in site-content.md, so the pin cannot come through content.json): the
+   Google listing's pin, dossier location.lat_lng = 5.9784609, 80.3526536 (the place URL's !3d/!4d,
+   fetched 2026-09-23; Hostelworld's and Booking.com's pins agree within metres). Rounded to 5 decimals
+   (~1 m). It encodes to plus code X9H3+93, the plus code on Google's listing (dossier
+   location.plus_code). scripts/seed-from-dossier.mjs stops if this constant and the dossier disagree.
+   contact.mapUrl's @5.9794134,80.350836 is a search viewport's centre, not the pin, and is not used. */
 export const MAP_PIN = { lat: 5.97846, lon: 80.35265 }
 
 const COUNTRY = { 'sri lanka': 'LK' }

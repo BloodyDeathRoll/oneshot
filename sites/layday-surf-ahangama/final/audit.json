@@ -1,23 +1,23 @@
 {
  "slug": "layday-surf-ahangama",
  "variant": "../final",
- "measured_at": "2026-09-23T07:53:05.620Z",
+ "measured_at": "2026-09-23T09:29:40.821Z",
  "first_load": {
   "requests": 6,
   "hosts": [
-   "localhost:8752"
+   "localhost:8757"
   ],
   "third_party_hosts": [],
-  "bytes_total": 181738,
-  "bytes_html": 60456,
+  "bytes_total": 183271,
+  "bytes_html": 61989,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 27752,
   "bytes_images": 93530,
   "largest_image_bytes": 28408,
-  "lcp_ms": 380,
+  "lcp_ms": 404,
   "cls": 0,
-  "dcl_ms": 617
+  "dcl_ms": 630
  },
  "booking": {
   "external_booking_hrefs": [
@@ -61,7 +61,7 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 4752,
+  "text_length": 4566,
   "booking_links_reachable": 0,
   "visible_images": 10
  },
@@ -71,7 +71,7 @@
   "photograph_visible": true
  },
  "facts": {
-  "numbers_on_page": 21,
+  "numbers_on_page": 22,
   "numbers_not_in_passed_copy": [
    "5.0"
   ],
