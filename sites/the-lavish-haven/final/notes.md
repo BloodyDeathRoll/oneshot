@@ -363,3 +363,52 @@ static phone hero rim (JS off 320 / 390 / 600, reduced 390; every diff pixel abo
   without alt 0; tap targets under 44: 0 of 18; skip link yes.
 - `shoot.mjs` → `shots/4g-round-4/`: desktop 13 / mobile 15 captures, `errors []`.
 - Servers on 8760–8764 stopped. Nothing deployed, ledger not written, nothing committed.
+
+## 4g round 3 (critic full round 1 item 6: the night line from schema v0.6 `featureLine`; 2026-09-23)
+
+One change. The line over the night-pool photograph was the first sentence of the pool block (offer[1]
+¶1 S1, "The outdoor pool is in the middle of the hotel and open all year."). It is now the owner field
+`featureLine` (schema v0.6), copy as passed in `copy/review.md` round 5: "A year-round outdoor pool, at the
+centre of the hotel." (54/140). Scratch: `/tmp/claude-1000/…/scratchpad/lavish-4g3/` (outside the repo).
+Shots: `shots/4g-round-5/`.
+
+### What changed
+- `scripts/seed-from-dossier.mjs`: `featureLine: copy.featureLine ?? null`. `npm run seed` →
+  `src/tenant/content.json` differs by that one key only (git diff: 1 line added).
+- `src/pages/index.astro`: `nightLine = (c.featureLine ?? '').trim()`; `<p id="nightLine">` is rendered only
+  when it is non-empty (schema: empty = no line there). Slot-mapping comment updated; offer[1] no longer
+  feeds the night line.
+- `src/scripts/site.js`: the scroll script's two writes to the line are guarded (`if(line){…}`), so an
+  empty field cannot throw and stop the rest of the scroll animation.
+- `src/pages/llms.txt.js`: the line is added after the intro text (see below).
+
+### Fit — 390 / 768 / 1024 / 1440 / 1525 / 1920, JS off, reduced motion, motion (`fit.mjs`)
+New line: 2 lines at every width in every mode (old: 3 at 390 static, 3 on the motion path at
+390–1525, 2 elsewhere). Text box inside its own box, inside the 16 px side margins, no horizontal page
+overflow, and on the motion path (sampled every 40 px over the first 4 screens) never over the rising
+photograph: **0 of 18 runs with overflow or overlap. 0 page errors.** Looked at, not only counted:
+`nightline-motion-r2-vs-r3.png`, `nightline-jsoff-r2-vs-r3.png` (round 2 left, round 3 right per width).
+
+### Pixels vs round 2 (`pxdiff.mjs`, same deterministic harness as round 2; 96 compares: JS off and
+reduced full page ×6 widths, motion path ×6 widths top to bottom, drawer and drawer-from-a-room at 390/1440)
+- Round 2 → round 3: 73 of 96 are 0 px. The 23 that differ are the line itself: at 768–1920 every diff
+  bbox lies inside the line's text box, page heights unchanged. At 390 (JS off, reduced) the page is
+  31 px shorter (one line fewer, 28 px × 1.12), so everything below moves up by that much.
+- To prove nothing else moved: round 2's `dist` with only the line's text replaced by the new text vs
+  round 3: **96 of 96 compares 0 px**, 390 included. So round 3 = round 2 + the new words, nothing else.
+
+### Empty field
+Scratch copy built with `featureLine: null`: no `<p>` in the night block, JS off / reduced / motion at
+390 and 1440, 0 page errors; the photograph keeps its place (`featureline-empty.png`).
+
+### llms.txt
+Included. The file already carries the site's other short standalone owner lines — `tagline` (in the
+summary) and `closing` (as "Rates") — so this kind of line is covered. Placed as its own paragraph after
+the intro text, no new heading. llms.txt otherwise unchanged (diff: +1 line).
+
+### Checks re-run
+- `npm run build`: clean, 0 warnings. `index.html` 60 764 B (was 60 765).
+- `check-design.mjs <scratch copy of dist>/index.html --no-shots`: ok, 0 problems, 0 warnings.
+- `shoot.mjs` → `shots/4g-round-5/`: desktop 13 / mobile 15 captures, page heights 10 273 / 11 389 (as round 2), `errors []`.
+- `audit-mockup.mjs` not re-run: the only page change is 11 fewer bytes of text and a guard in the inline script.
+- Servers on 8760–8763 stopped. Nothing deployed, ledger not written, nothing committed.

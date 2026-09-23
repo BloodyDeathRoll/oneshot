@@ -1,7 +1,7 @@
 ---
 /* The Lavish Haven — the gold page Shahar picked (agents/designer/gold/the-lavish-haven.html, ledger
    2026-09-23T04:16:49Z) ported to Astro without changing how it looks. Every owner-editable word,
-   number, link and photograph comes from src/tenant/content.json (schemas/site-content.md v0.5, REST
+   number, link and photograph comes from src/tenant/content.json (schemas/site-content.md v0.6, REST
    shape); the layout, motion and interface wording are here. No word of the gold page's own copy is
    kept: the copy was rewritten and re-audited after the gold page was made (4c round 4). */
 import css from '../styles/site.css?raw'
@@ -19,13 +19,13 @@ const slot = (s, i) => blocks.filter((b) => b.slot === s)[i] ?? null
    offer[0] → the room list's heading and text
    about[0] → "new" (first paragraph as the lead, the rest as body)
    about[1] → the guests section over the quotes
-   offer[1] → "pool, restaurant, spa" over the amenities; its first sentence is also the night line
-              over the water, as the gold page's pool sentence was
-   info[0]  → practicalities */
+   offer[1] → "pool, restaurant, spa" over the amenities
+   info[0]  → practicalities
+   The night line over the water is its own field, featureLine (schema v0.6); empty = no line there. */
 const intro = slot('intro', 0), rooms = slot('offer', 0), fresh = slot('about', 0), stay = slot('about', 1)
 const here = slot('offer', 1), prac = slot('info', 0)
 const introP = paras(intro?.body), freshP = paras(fresh?.body)
-const nightLine = sentences(paras(here?.body)[0])[0] ?? ''
+const nightLine = (c.featureLine ?? '').trim()
 
 /* the spot: all but its last sentence set large; the last one, when there is more than one, is the
    small line under it (the gold page's "walk" line) */
@@ -161,7 +161,7 @@ const ld = {
     <p class="scrollcue" id="cue" aria-hidden="true">Scroll, and it gets dark</p>
 
     <div class="night" id="night">
-      <p id="nightLine">{nightLine}</p>
+      {nightLine && <p id="nightLine">{nightLine}</p>}
       {P(0) && <figure id="nightPrint"><picture><source type="image/webp" srcset={P(0).webp} sizes="(max-width:760px) calc(100vw - 54px), min(46vw, 740px)"><img src={P(0).src} srcset={P(0).jpg} sizes="(max-width:760px) calc(100vw - 54px), min(46vw, 740px)" width={P(0).w} height={P(0).h} decoding="async" alt={P(0).alt}></picture></figure>}
     </div>
   </div>

@@ -104,6 +104,7 @@ const doc = {
   businessType: dossier.business.type.value,
   tagline: copy.tagline,
   closing: copy.closing ?? null, // v0.5
+  featureLine: copy.featureLine ?? null, // v0.6: the line over the night-pool photograph
   languages: ['en'],
   copyBlocks: blocks,
   openingHours: [],
