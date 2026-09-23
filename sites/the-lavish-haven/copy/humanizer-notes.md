@@ -28,3 +28,32 @@ Result: **both lines left unchanged.** Fact set identical to the draft; `sources
 ### Could not fix without a fact
 
 None.
+
+## Round 3 · 2026-09-23 · humanizer 0.2.0 · after copywriter round 3
+
+Input: `en.draft.json` (copywriter round 3, identical to `en.json` on arrival). Scope: voice only, wherever the round-3 cuts left fragment runs or awkward joins. Every fact stays in the paragraph it was in, with the same scope, qualifier and charge; no quote touched; no heading, data field, `tagline`, `spot`, `closing`, `stayInfo` or `contact.*` touched. `humanizer_version` null → 0.2.0.
+
+Round 2's two voice fails ("free" in the availability sense) arrived already fixed by the copywriter ("available", Shahar's ruling); nothing left to do there.
+
+### Changes
+
+1. **`copyBlocks[1]` ¶2.** "Guests there score it…" → "Booking.com guests score it 9.7 out of 10 for cleanliness and the same for comfort, and 9.4 for staff, across 34 reviews." After the paragraph break "there" pointed at nothing; naming the platform fixes it. "The same for comfort" breaks the even score-list rhythm. Figures unchanged.
+2. **`copyBlocks[2]`.** "…until they found this one, and stayed over a month" → "…before finding this one, then stayed over a month". "Another extended their stay instead of going to another hotel" → "Another extended their stay rather than go on to a different hotel" (removes the another/another echo). Still two guests, no cause, no cancellation, no count.
+3. **`copyBlocks[3]` ¶1.** The fragment "Superior kings." folded into one sentence: "There are king rooms with a balcony or a garden view, superior kings, and a deluxe king on the ground floor with a private patio and a pool view. Family studios and suites sleep four, and the two-bedroom suite sleeps five." Same nine types, same sleeps figures, "pool view" kept (not "onto the pool"). ¶2 and ¶3 unchanged.
+4. **`copyBlocks[4]` ¶1.** Four fragments ("An outdoor pool… A restaurant serving… A coffee house on site. A spa and wellness centre.") → three sentences: "The outdoor pool is in the middle of the hotel and open all year. The restaurant serves breakfast with local specialities and fresh pastries, plus Chinese, Indian and Italian dishes. There’s a coffee house on site too, and a spa and wellness centre." No service hours added.
+5. **`copyBlocks[4]` ¶2.** "For families: family rooms, an outdoor play area, and kids’ meals and babysitting at an extra charge." → "For families there are the family rooms and an outdoor play area. Kids’ meals and babysitting cost extra." The charge now reads as the limit it is; still applies to both, nothing else.
+6. **`copyBlocks[5]` (all fragments).** ¶1 → "The front desk is staffed 24 hours, with private and express check-in. Parking is free and private, but you need to reserve it. There’s an airport shuttle as well." ("staffed" matches `stayInfo.note`; no parking location; no airport named, still apart from Koggala.) ¶2 → "Housekeeping is daily. There is laundry, dry cleaning and ironing, bicycles to rent, non-smoking rooms, and facilities for guests with disabilities." ("non-smoking rooms", not "the rooms are non-smoking": scope kept.)
+
+### Left as is
+
+- `copyBlocks[0]` intro, `copyBlocks[1]` ¶1 (the two short quotes read fine and stay verbatim), `copyBlocks[3]` ¶2–¶3: no tell.
+- Headings, incl. "Pool, restaurant, spa" (round 2 note, triad): a heading carries its own `sources.md` row; changing it is not worth reopening that for a note-level item.
+
+### For the copywriter / copyeditor (not changed here)
+
+- `sources.md` quotes three sentences verbatim that now read differently: staying ¶1 S1 and S2, pool ¶1 S1. Keys and facts are unchanged, so the rows are still true in substance, but the quoted text is stale. I was scoped to `en.json` and these notes, so I left `sources.md` alone.
+- `copywriter_version` in `en.json` is "0.3.0"; `run.yaml` pins copywriter 0.3.1. Not mine to change.
+
+### Could not fix without a fact
+
+None.
