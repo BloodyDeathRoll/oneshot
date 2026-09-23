@@ -28,3 +28,18 @@ Patterns found: choppy fragments left by clause cuts (4), "in one guest's words"
 
 ## Noticed, not changed
 - `copywriter_version` in en.json is 0.3.0; run.yaml pins copywriter 0.3.1.
+
+## 2026-09-23 · round 3 · humanizer 0.2.0 · over copywriter 0.3.1 round-3 text (review.md round 2, V1)
+
+Three bodies changed in `en.json`; nothing else (checked by JSON diff against `en.draft.json`: only `copyBlocks` differs). `en.draft.json` untouched. Fact set unchanged; all three cleanliness quotes still verbatim.
+
+| Block | Change | Why |
+|---|---|---|
+| about (dorm) ¶1 — **V1** | "One guest wrote "super clean", another "very clean", a third "absolutely spotless"." → "One guest wrote "super clean" and another "very clean". Someone else went as far as "absolutely spotless"." | Breaks the one / another / a third rule of three into a pair plus an escalation in its own sentence. No count, no frequency, no "guests keep saying". Quotes verbatim. |
+| intro ¶1 (copywriter round 3) | "Layday is small and new, with a shared kitchen, a terrace and a garden." → "Layday is small and new. There is a shared kitchen, plus a garden and terrace." | "small and new" + a three-item list read as a double triad. Garden and terrace paired as the dossier pairs them (`facilities[7]`), so it is two things, not three. No fact added or dropped. |
+| offer ¶1 (copywriter round 3) | "…kitchenware, and there are hot showers and a dining area." → "…kitchenware, and there is a dining area. The showers are hot." | Showers sat oddly in the kitchen sentence. Own short sentence, placed after the shared spaces and away from the dormitory sentence, so it does not read as en-suite. "Shared bathroom" not added (would be a new fact in the copy). |
+
+Needs a `sources.md` touch (not written by me; outside this station's write scope this round):
+- intro ¶1 row quotes the old sentence verbatim; new text is "Layday is small and new. There is a shared kitchen, plus a garden and terrace." Same citations.
+- about (dorm) ¶1 row says "(one / another / a third)"; now "one / another, then someone else". Same citations.
+- offer ¶1 S2 row paraphrase ("hot showers and a dining area") now spans S2 + a new S3 "The showers are hot."; same citations.
