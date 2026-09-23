@@ -1,6 +1,6 @@
 # copy sources — the-lavish-haven · en
 
-Copywriter 0.3.0 · round 3 (third pass allowed by Shahar after copyeditor round 2 FAIL), 2026-09-23.
+Copywriter 0.3.1 · round 4 (Shahar's gate after copyeditor round 3 FAIL: drop "Off the main road"), 2026-09-23. Round 3 was written under 0.3.0; the address row under 0.3.1.
 
 **This is the "no owner prose" case.** Nothing on the public web is written in this business's voice — Booking's "About this property" (`business.description`) is machine-generated. Every paragraph below was written from sourced facts in `dossier.json`. Keys are given as dossier paths; `reviews.quotes[n]` indexes the dossier array (0 Mya · 1 Shahar (excluded) · 2 Diane · 3 António · 4 Dariusz · 5 Aleksandra · 6 Roie · 7 Benjamin).
 
@@ -33,7 +33,7 @@ Shahar's rulings applied this round: a verbatim guest observation of a physical 
 
 | Block | Heading | Rests on |
 |---|---|---|
-| `copyBlocks[0]` intro | "Off the main road, over the surf" | `location.setting.value` "Off the main road, over the Kabalana surf spot" (note "from guest reviews"). Provenance caveat from review round 2: the only quote in the dossier that says "not on the main road" is `reviews.quotes[1]` (Shahar, excluded) — for Shahar to confirm |
+| `copyBlocks[0]` intro | "Among cafés and restaurants" | `location.setting.value` "surrounded by cafes and restaurants"; `reviews.quotes[5]` Aleksandra "There are many cafes and a fruit stand nearby" (physical fact). Round 3's "Off the main road, over the surf" dropped (Shahar): "off the main road" rested only on `reviews.quotes[1]` (excluded) |
 | `copyBlocks[1]` about | "New, and it shows" | as `tagline` "new": `reviews.quotes[4]`, `[2]`, `[5]` |
 | `copyBlocks[2]` about | "Staying longer" | the two accounts in its body: `reviews.quotes[0]` Mya, `[6]` Roie. States no cause and no count |
 | `copyBlocks[3]` offer | "Nine kinds of room" | `room_types[]`, 9 entries — types, not a room count (`contradictions[1]`) |
@@ -49,13 +49,13 @@ Shahar's rulings applied this round: a verbatim guest observation of a physical 
 | intro ¶2 | "Koggala Airport is about 5 km away." | `business.description.value` "Koggala Airport is 3.1 mi away" (= 4.99 km). Kept apart from the airport shuttle (info ¶1): no key says which airport the shuttle serves |
 | about ¶1 | "The hotel is new. On Booking.com one guest calls it "brand new", another "a new facility"." | `reviews.quotes[4]` Dariusz "It's a brand new hotel"; `[2]` Diane "It's a new facility" — fragments quoted verbatim, attributed to guests, not restated in the business's voice |
 | about ¶2 | cleanliness 9.7, comfort 9.7, staff 9.4, 34 reviews; Google 5.0/5 from 21 | `reviews.booking.categories` Cleanliness 9.7, Comfort 9.7, Staff 9.4; `reviews.booking.count` 34; `reviews.google.rating` 5.0, `.count` 21 |
-| staying ¶1 S1 | "One guest wrote that they moved around many hotels until they found this one, and stayed over a month." | `reviews.quotes[0]` Mya "We moved around many hotels until we found the lavish and stayed over a month". One guest, no gender |
-| staying ¶1 S2 | "Another extended their stay instead of going to another hotel." | `reviews.quotes[6]` Roie "we extended our stay in it instead of going to another one". No cancellation stated |
+| staying ¶1 S1 | "One guest wrote that they moved around many hotels before finding this one, then stayed over a month." | `reviews.quotes[0]` Mya "We moved around many hotels until we found the lavish and stayed over a month". One guest, no gender |
+| staying ¶1 S2 | "Another extended their stay rather than go on to a different hotel." | `reviews.quotes[6]` Roie "we extended our stay in it instead of going to another one". No cancellation stated |
 | offer ¶1 | balcony, garden view, deluxe king on the ground floor with private patio and pool view; superior kings; family studios and suites sleep four; two-bedroom suite sleeps five | `room_types[3]` balcony, `[2]` garden view, `[0]` "Deluxe King Room with Private Patio & Pool View, ground floor", `[1]` Superior King; `[4]` Deluxe Family Suite, `[5]` Family Studio, `[6]` Family Junior Suite, `[7]` Family Suite (all "sleeps 4"); `[8]` Two-Bedroom Suite "sleeps 5" |
 | offer ¶2 S1 | "Each room has a work desk, soundproofing and free WiFi." | `business.description.value` "each room has a work desk, soundproofing and free WiFi"; `facilities[4]` "free WiFi in all areas" |
 | offer ¶2 S2 | "The family rooms have air conditioning and private bathrooms." | `business.description.value` "family rooms with air-conditioning, balconies and private bathrooms" — scope kept to family rooms. (Balconies not repeated here: only `room_types[3]` names one.) |
 | offer ¶3 | "There is no published price list. Rates go by date, and the booking links show what is available." | `gaps[]` "offers" ("nightly rates are live dated OTA inventory, not a published price list"); `offers` `[]`; `booking.path.note` "live inventory on Booking.com and Agoda". No claim that rates vary by room. "available" per Shahar's ruling |
-| pool ¶1 S1 | "An outdoor pool, open all year, in the middle of the hotel." | `facilities[0]` "year-round outdoor swimming pool"; position: `reviews.quotes[3]` António "the swimming pool at the center" (physical fact) |
+| pool ¶1 S1 | "The outdoor pool is in the middle of the hotel and open all year." | `facilities[0]` "year-round outdoor swimming pool"; position: `reviews.quotes[3]` António "the swimming pool at the center" (physical fact) |
 | pool ¶1 S2 | restaurant: breakfast with local specialities and fresh pastries, and Chinese, Indian and Italian dishes | `facilities[1]`; `business.description.value` "breakfast with local specialities, fresh pastries and Chinese, Indian and Italian dishes". No service hours |
 | pool ¶1 S3–S4 | coffee house on site; spa and wellness centre | `facilities[2]`, `[3]` |
 | pool ¶2 | family rooms, outdoor play area, kids' meals and babysitting at an extra charge | `facilities[5]`; `facilities[17]` "outdoor play equipment for kids", `business.description.value` "outdoor play area"; `facilities[19]` "kids' meals (additional charge)", `[18]` "babysitting / child services (additional charge)" |
@@ -73,6 +73,6 @@ Shahar's rulings applied this round: a verbatim guest observation of a physical 
 - **No A/C or private bathroom promised for non-family rooms.** Booking's text scopes them to family rooms; the owner should confirm the rest.
 - **No airport named for the shuttle.** The shuttle and the Koggala distance sit in different blocks.
 - **Languages spoken left empty.** No staff-language key.
-- **The "Shahar, Israel" review is excluded.** The author name matches the operator of this pipeline (`reviews.quotes[1].note`); it is not used until that is confirmed. `location.setting` "off the main road" may rest on it (see intro heading).
+- **The "Shahar, Israel" review is excluded.** The author name matches the operator of this pipeline (`reviews.quotes[1].note`); it is not used until that is confirmed. `location.setting` "off the main road" rests on it, so the intro heading no longer says it.
 - **Truncated quotes are carried with their ellipsis**, exactly as Booking renders them, rather than completed.
 - **"Two minutes" cut from the intro.** It stays in `tagline` and `spot` S2 (the gold-page line); the intro now carries the surroundings and the location score instead.
