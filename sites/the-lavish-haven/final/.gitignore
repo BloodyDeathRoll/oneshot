@@ -1,0 +1,9 @@
+# symlink to spikes/payload/site/node_modules (no npm install per site)
+node_modules
+.astro/
+dist/
+# build products of scripts/photos.mjs
+public/photos/
+src/tenant/photos.generated.json
+# tenant photos: fetched from Payload (or seeded from dossier/*/assets/, itself git-ignored)
+src/tenant/media/
