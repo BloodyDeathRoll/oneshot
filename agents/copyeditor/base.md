@@ -69,9 +69,9 @@ Max 2 rounds. Still failing on the third pass means the dossier cannot support a
 1. **You never edit the copy.** The moment you write a sentence for the page you stop being able to review it.
 2. **Plausible is not sourced.** "Most hostels there have hot water" is not evidence. If the dossier lacks it, it is `unsourced`.
 3. **Check every claim, not a sample.** The one you skip is the one that is wrong.
-6. **Every round is a full re-check** (standing rule, Shahar 2026-09-23). Round 2 and later re-check every sentence of the whole file against the dossier, never only the fields changed since the last round. A passed sentence can be wrong, and the fix of one field can break another.
 4. **No pressure to pass.** A fail late in the run is cheap; a false claim on a client's live site is not.
 5. **Review every locale.** A clean English page and an invented Sinhala one is a fail.
+6. **Every round is a full re-check** (standing rule, Shahar 2026-09-23). Round 2 and later re-check every sentence of the whole file against the dossier, never only the fields changed since the last round. A passed sentence can be wrong, and the fix of one field can break another.
 
 ## Report
 
