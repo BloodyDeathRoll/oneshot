@@ -94,6 +94,17 @@ const ld = {
       '@type': 'LocationFeatureSpecification', name: a.note ? `${a.label} (${a.note})` : a.label, value: true,
     })),
   } : {}),
+  /* 4i: the room list as HotelRoom places (KA's shape), so "is there a room that sleeps five / on the
+     ground floor" is answerable from the graph. Mirrors the visible rows: label, beds, note, sleeps.
+     No rates: they are live OTA inventory. */
+  ...((c.rooms ?? []).length ? {
+    containsPlace: c.rooms.map((r) => ({
+      '@type': 'HotelRoom', name: r.label,
+      ...(r.beds ? { bed: r.beds } : {}),
+      ...(r.note ? { description: r.note } : {}),
+      ...(r.sleeps ? { occupancy: { '@type': 'QuantitativeValue', maxValue: r.sleeps } } : {}),
+    })),
+  } : {}),
   ...((c.languagesSpoken ?? []).length ? { knowsLanguage: c.languagesSpoken } : {}),
   ...(links.length ? { sameAs: links.map((l) => l.url) } : {}),
 }
