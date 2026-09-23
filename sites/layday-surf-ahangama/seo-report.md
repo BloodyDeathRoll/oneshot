@@ -98,3 +98,38 @@ The throwaway builds went to scratch and were deleted afterwards. I rebuilt the 
 - **`priceRange`:** there are no prices (the rates are live OTA inventory; dossier `gaps[]`).
 - **`numberOfRooms` / bed count:** the room note says "bed count is not published consistently".
 - **No category words** such as "hostel" or "best …" in the title or description. The content does not use them, and the type is carried by the JSON-LD.
+
+## 4h re-run (2026-09-23, after 4g round 3 + the berth-pair CSS fix)
+
+**Nothing was broken, so nothing changed.** No template file was touched. `npm run build` (no `SITE_URL`) produced a `dist/` byte-identical to the one on disk before this session (`diff -rq`: no differences), so the look is unchanged by definition (0 px). No new shoot was needed. The only file rewritten is `final/audit.json`, by the measurement below.
+
+| check (current build) | result |
+|---|---|
+| `<title>` | "Layday Surf Ahangama · A two-minute walk from Kabalana", 54 chars (≤ 60) |
+| description | "Surf, chill and feel at home in Ahangama. A two-minute walk from Kabalana. Layday is small and new.", 99 chars (≤ 155). This is the new copy: `tagline` + intro heading + the intro's first sentence. The next sentence would take it past 155 |
+| h1 | exactly 1: "Layday Surf Ahangama". Outline: H1, H2, H3, H2 ×4 |
+| head | `lang="en"`, og:type/site_name/title/description, twitter:card. 10 imgs, all with width/height/alt, all lazy. Font preloaded, `font-display:swap`. 0 external scripts |
+| JSON-LD | 1 block at the end of body, parses. `Hostel`; `address` PostalAddress {streetAddress "Warnagiri Welhengoda", postalCode "80650", addressLocality "Ahangama", addressCountry "LK"}; `geo` 5.97846 / 80.35265 = dossier `location.lat_lng` [5.9784609, 80.3526536] to 5 dp; `hasMap`, telephone, check-in/out, 19 amenityFeature, 3 sameAs. **No `aggregateRating`, no `review`.** `knowsLanguage` is now absent, because `languagesSpoken` is `[]` (correct: nothing to state) |
+| NAP vs Google (dossier `location.address`, Google listing, fetched 2026-09-23) | Name "Layday Surf Ahangama" matches. Phone `+94778553343` (Google) matches in 6 `tel:` links and the JSON-LD. Address "Warnagiri Welhengoda, Ahangama 80650, Sri Lanka" is Google's "Warnagiri welhengoda, Ahangama 80650, Sri Lanka" with only the place name capitalised, which is refinement (2) of playbook 0.5.1 §6. It appears 2× on the page, and the JSON-LD parts match. The old Hostelworld form ("'Warnagiri'") appears 0 times. Google Maps link 2× + `hasMap` |
+| no `SITE_URL` (`dist/`) | `noindex, nofollow`; no canonical, hreflang, og:url or og:image; robots.txt `Disallow: /` for `*` and the named AI bots; no sitemap; llms.txt has the preview line |
+| `SITE_URL=https://layday-surf-ahangama.os1.workers.dev/` (scratch outDir) | noindex **plus** canonical, hreflang en + x-default, og:url, og:image `…/photos/img-018-1024.jpg` with its size and alt; JSON-LD adds `@id`, `url`, 10 images; robots.txt still the preview refusal; no sitemap; preview line in llms.txt |
+| `SITE_URL=https://example.test/` (scratch outDir) | no noindex; canonical, hreflang, og:*; robots.txt `Allow: /` + AI group + `Sitemap: https://example.test/sitemap.xml`; one-URL sitemap.xml with hreflang en; no preview line |
+
+**Measured** (`tools/audit-mockup.mjs`, a scratch copy on ports 8751–8755; mobile 390×844, slow 4G, CPU ×4, first load, no scroll; 5 runs):
+
+| | 4h (earlier) | now | target |
+|---|---|---|---|
+| LCP | 392 / 384 / 380 ms | **388 / 388 / 388 / 400 / 396 ms** | ≤ 2.5 s |
+| CLS | 0 | **0** | < 0.1 |
+| first load | 181 738 B, 6 requests | 183 701 B, 6 requests, all local | ≤ 1.5 MB |
+| HTML | 60 456 B | 62 419 B (new copy + the pair-fix CSS) | — |
+| JS as files / third-party on load | 0 / 0 | 0 / 0 | ≤ 300 KB / 0 |
+| largest image / fonts | 28 408 B / 27 752 B | same | ≤ 200 KB / ≤ 150 KB |
+
+Headless Chromium on this machine, not a real phone. All servers stopped (no listener on 8750–8759). The throwaway builds are in scratch only.
+
+**Updates to "Still wrong":**
+- Item 1 (address not Google's) is **resolved**: the reseed uses Google's listing address, and the JSON-LD gained `postalCode` with no template change.
+- Item 2: geo is still the `MAP_PIN` constant, because the schema has no geo field. It now cites the dossier's `location.lat_lng`, and the seed guard keeps the two in sync. The other schema gaps are unchanged.
+- Items 3–8 are unchanged. The description is shorter than before (99 vs 135 chars), because the passed intro's first sentence is short. It is still accurate, and lengthening it would mean new words, which is copy's job and not this station's.
+- The audit's facts check flags "5.0" as not in the passed copy. That number is the Google rating, rendered from `ratings[]`. It is not an SEO field, so I only mention it.
