@@ -22,3 +22,15 @@ Fetched 2026-09-19 (UTC), headless Chromium (playwright-core 1.62.1) at 1440×14
 ## Two things to put to the owner later
 1. How many beds — Booking says a 6-bed dorm, a guest says one dorm of 4 bunk beds.
 2. The unmarked black gate. Guests say the place is hard to find and a sign was promised; directions and a map on the new site fix it immediately.
+
+## Field-scoped pass 2026-09-23 — Google listing address (playbook 0.5.0 §6)
+
+Fetched 2026-09-23 (UTC), headless Chromium (Playwright), `locale en-US`, logged out.
+
+| URL | Yielded | Did not yield |
+|---|---|---|
+| https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en → resolved to https://www.google.com/maps/place/Layday+Surf+Ahangama/@5.9794134,80.350836,17z/data=!4m9!3m8!1s0x3ae113718b0aebeb:0xe2cc089452031bbb!5m2!4m1!1i2!8m2!3d5.9784609!4d80.3526536!16s%2Fg%2F11z0ldv459?hl=en (08:15:11Z) | **Address `Warnagiri welhengoda, Ahangama 80650, Sri Lanka`** (now `location.address`); plus code `X9H3+93 Ahangama, Sri Lanka`; pin 5.9784609, 80.3526536 (from the place URL); phone +94 77 855 3343 (unchanged) | Nothing new beyond these |
+| https://www.booking.com/hotel/lk/layday-surf-ahangama.html (08:15:49Z) | JSON-LD streetAddress `Warnagiri welhengoda Ahangama Warnagiri, 80650 Ahangama, Sri Lanka` → `address_other_platforms` | — |
+| https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/ (08:15:55Z) | Visible `"Warnagiri" Welhengoda, Ahangama, Ahangama, Sri Lanka`; JSON-LD postalCode 80650, geo 5.9784674, 80.3526422 → noted on the kept Hostelworld entry | — |
+
+The Google address, plus code and pin match what the scout recorded on 2026-09-19. The `location.lat_lng` gap is closed.

@@ -42,10 +42,39 @@
  },
  "location": {
   "address": {
-   "value": "Ahangama, Sri Lanka",
-   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
-   "fetched_at": "2026-09-19T18:55:00Z",
-   "note": "Booking does not publish a street address for this listing"
+   "value": "No166/1 walhengoda road, Ahangama 80650, Sri Lanka",
+   "source_url": "https://www.google.com/maps/place/The+Lavish+Haven+Hotel+And+Resort/@5.9794565,80.3508299,17z/data=!4m9!3m8!1s0x3ae113bbadfe5595:0x8d858b9ae5001097!5m2!4m1!1i2!8m2!3d5.9794565!4d80.3508299!16s%2Fg%2F11ypgcrxg6?hl=en",
+   "fetched_at": "2026-09-23T08:15:20Z",
+   "note": "Google Maps listing address, character for character as the listing shows it (data-item-id=address), postcode included. Authoritative per playbook 0.5.0 §6; other platforms' versions are kept in address_other_platforms and are not to be used on the site. Google's spelling 'No166/1 walhengoda road' (no space, lowercase, 'walhengoda') is kept as shown."
+  },
+  "address_other_platforms": [
+   {
+    "value": "Ahangama, Sri Lanka",
+    "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+    "fetched_at": "2026-09-19T18:55:00Z",
+    "note": "Booking.com visible page, as harvested 2026-09-19: town only. Superseded by the Google listing address."
+   },
+   {
+    "value": "166/2 Welhengoda Road , 80650 Ahangama, Sri Lanka",
+    "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+    "fetched_at": "2026-09-23T08:16:03Z",
+    "note": "Booking.com JSON-LD PostalAddress.streetAddress (postalCode 80650), not shown in the visible page. House number 166/2 differs from Google's 166/1 — see contradictions. Superseded by the Google listing address."
+   }
+  ],
+  "plus_code": {
+   "value": "X9H2+Q8 Ahangama, Sri Lanka",
+   "source_url": "https://www.google.com/maps/place/The+Lavish+Haven+Hotel+And+Resort/@5.9794565,80.3508299,17z/data=!4m9!3m8!1s0x3ae113bbadfe5595:0x8d858b9ae5001097!5m2!4m1!1i2!8m2!3d5.9794565!4d80.3508299!16s%2Fg%2F11ypgcrxg6?hl=en",
+   "fetched_at": "2026-09-23T08:15:20Z",
+   "note": "shown on the Google listing (data-item-id=oloc)"
+  },
+  "lat_lng": {
+   "value": [
+    5.9794565,
+    80.3508299
+   ],
+   "source_url": "https://www.google.com/maps/place/The+Lavish+Haven+Hotel+And+Resort/@5.9794565,80.3508299,17z/data=!4m9!3m8!1s0x3ae113bbadfe5595:0x8d858b9ae5001097!5m2!4m1!1i2!8m2!3d5.9794565!4d80.3508299!16s%2Fg%2F11ypgcrxg6?hl=en",
+   "fetched_at": "2026-09-23T08:15:20Z",
+   "note": "the listing's pin, from the place URL's !3d/!4d parameters. Booking pin 5.97941339533991,80.3508360317383 (scout, 2026-09-19) agrees to within a few metres."
   },
   "map_url": {
    "value": "https://www.google.com/maps/search/The%20Lavish%20Haven%20Ahangama/@5.9794134,80.350836,17z?hl=en",
@@ -1477,11 +1506,6 @@
    "pitch_point": true
   },
   {
-   "field": "location.address",
-   "why": "Booking publishes no street address; only the town",
-   "pitch_point": true
-  },
-  {
    "field": "existing_site.url",
    "why": "no site, no social account — every booking pays an OTA commission",
    "pitch_point": true
@@ -1534,6 +1558,10 @@
   {
    "what": "Parking: Booking lists free private parking; a guest review calls the parking area very small and hard with a car.",
    "resolution": "Unresolved — do not promise easy parking."
+  },
+  {
+   "what": "House number: Google listing 'No166/1 walhengoda road, Ahangama 80650'; Booking.com JSON-LD '166/2 Welhengoda Road , 80650 Ahangama'.",
+   "resolution": "Site uses the Google listing address verbatim (playbook 0.5.0 §6). Which number is right is a question for the owner in a live run."
   }
  ]
 }

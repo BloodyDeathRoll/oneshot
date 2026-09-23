@@ -29,3 +29,14 @@ This filter should go into `agents/harvester/tools.md`: on Booking, cluster phot
 
 ## One caution
 One Booking review is authored by "Shahar, Israel". The name matches the operator of this pipeline. Confirm before that quote is used on a site or in a pitch.
+
+## Field-scoped pass 2026-09-23 — Google listing address (playbook 0.5.0 §6)
+
+Fetched 2026-09-23 (UTC), headless Chromium (Playwright), `locale en-US`, logged out.
+
+| URL | Yielded | Did not yield |
+|---|---|---|
+| https://www.google.com/maps/place/The+Lavish+Haven+Hotel+And+Resort/@5.9794565,80.3508299,17z/data=!4m9!3m8!1s0x3ae113bbadfe5595:0x8d858b9ae5001097!5m2!4m1!1i2!8m2!3d5.9794565!4d80.3508299!16s%2Fg%2F11ypgcrxg6?hl=en (08:15:20Z; URL from the scout's candidates.json) | **Address `No166/1 walhengoda road, Ahangama 80650, Sri Lanka`** (now `location.address`); plus code `X9H2+Q8 Ahangama, Sri Lanka`; pin 5.9794565, 80.3508299 (from the place URL); phone +94 76 483 2988 (unchanged) | Nothing new beyond these |
+| https://www.booking.com/hotel/lk/the-lavish-haven.html (08:16:03Z) | JSON-LD streetAddress `166/2 Welhengoda Road , 80650 Ahangama, Sri Lanka` — the page's visible text still shows no street address, which is why the 2026-09-19 pass missed it → `address_other_platforms` | — |
+
+The `location.address` gap is closed. New contradiction: house number 166/1 (Google) vs 166/2 (Booking JSON-LD); the site uses Google's.
