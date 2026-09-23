@@ -1,6 +1,6 @@
 # schemas/site-content.md — the fixed content schema: the contract between Payload and the Astro templates.
 
-**Version 0.4** · 2026-09-22 (v0.4 adds `ratings[].capturedAt`, required by playbook §6; existing documents need the date filled in by the deployer) · **v0.3** · 2026-09-21 (v0.1 came out of the Payload spike; v0.2 adds `businessType` and the per-type modules below; v0.3 adds the optional `forecast` block; all additive — every v0.1 document is a valid v0.3 document) · source of truth in code: `spikes/payload/cms/src/collections/Sites.ts` + `Media.ts` · reference consumer: `spikes/payload/site/` · proven by `spikes/payload/test/` (both suites green).
+**Version 0.5** · 2026-09-23 (v0.5 adds the optional `closing` line, Shahar's decision for The Lavish Haven's closing headline) · **v0.4** · 2026-09-22 (v0.4 adds `ratings[].capturedAt`, required by playbook §6; existing documents need the date filled in by the deployer) · **v0.3** · 2026-09-21 (v0.1 came out of the Payload spike; v0.2 adds `businessType` and the per-type modules below; v0.3 adds the optional `forecast` block; all additive — every v0.1 document is a valid v0.3 document) · source of truth in code: `spikes/payload/cms/src/collections/Sites.ts` + `Media.ts` · reference consumer: `spikes/payload/site/` · proven by `spikes/payload/test/` (both suites green).
 
 Rules of the contract
 
@@ -20,6 +20,7 @@ Who edits: **owner** = the business owner in the Payload admin ("My site" form, 
 | `tenant` | relationship → `tenants` | multi-tenant only | – | deployer (owners cannot change it) | absent in single-tenant | `2` |
 | `businessName` | text | **yes** | no | owner | ≤ 80 chars | `"Wobbly Pelican Surf School"` |
 | `tagline` | text | no | **yes** | owner | ≤ 140 | `"Your first wave, guaranteed wobbly."` |
+| `closing` | text | no | **yes** | owner | ≤ 140; the one line the design sets beside the page's last booking action; empty = the template shows no line there | `"Rates move with the dates. The listings show what is free."` |
 | `languages` | select, many: `en` (list grows later: de, es, pt, ru…) | **yes** | no | owner | must contain `en`; English only for now (decided 2026-09-18); the spike still carries `si` fixtures | `["en"]` |
 | `copyBlocks[]` | array (≤ 8 rows) | no | – | owner | | |
 | `copyBlocks[].slot` | select: `intro` \| `about` \| `offer` \| `info` | **yes** | no | owner | where the design places the block; several rows may share a slot | `"intro"` |
