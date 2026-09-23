@@ -34,6 +34,56 @@ export const isPreviewUrl = (url) => {
 export const SITE = import.meta.env.SITE ? new URL(import.meta.env.SITE) : null
 export const IS_PREVIEW = isPreviewUrl(SITE)
 
+/* SEO plumbing (station 4h). Template-owned, not content: every value these emit is read from
+   content.json at build time; only the vocabularies (schema.org type, ISO country code) and the one
+   SCHEMA GAP constant below live here. */
+
+/* businessType → schema.org type. beach_lodging is refined to Hostel for this site: the business
+   sells beds in one dormitory and Booking.com files it as "Hostel" (dossier business.type.note). */
+export const LD_TYPE = {
+  beach_lodging: 'Hostel', surf_camp: 'LodgingBusiness', surf_school: 'SportsActivityLocation',
+  board_rental: 'SportsActivityLocation', surf_shop: 'SportingGoodsStore', shaper: 'Store', other: 'LocalBusiness',
+}
+
+/* SCHEMA GAP (no contact.geo field in site-content.md; dossier location.lat_lng is a gap that points
+   at candidates.json): the Google Maps pin the scout recorded, reports/2026-09-ahangama-02/
+   candidates.json, evidence "pin 5.9784609,80.3526536" (Google Maps, 2026-09-19). It encodes to
+   plus code 6MQ2X9H3+93 = the "X9H3+93" in Google's own address line, and Booking.com's pin
+   (5.9784743,80.352641) falls in the same cell. The @5.9794134,80.350836 in contact.mapUrl is the
+   search viewport's centre, not the pin, and is not used. */
+export const MAP_PIN = { lat: 5.97846, lon: 80.35265 }
+
+const COUNTRY = { 'sri lanka': 'LK' }
+/* contact.address (free text) → PostalAddress. Splits "street…, [<postcode>] <town> [<postcode>],
+   <country>" only when the last part is a country it knows; otherwise the whole address stays in
+   streetAddress. Never adds a part. */
+export const postalAddress = (text) => {
+  const parts = (text ?? '').split(/\s*(?:\n|,)\s*/).map((s) => s.trim()).filter(Boolean)
+  if (!parts.length) return null
+  const a = { '@type': 'PostalAddress' }
+  const iso = parts.length >= 3 ? COUNTRY[parts[parts.length - 1].toLowerCase()] : null
+  const town = iso ? /^(?:(\d{4,6})\s+)?(.+?)(?:\s+(\d{4,6}))?$/.exec(parts[parts.length - 2]) : null
+  if (town) {
+    a.streetAddress = parts.slice(0, -2).join(', ')
+    if (town[1] || town[3]) a.postalCode = town[1] || town[3]
+    a.addressLocality = town[2]
+    a.addressCountry = iso
+  } else a.streetAddress = parts.join(', ')
+  return a
+}
+
+/* the meta description: owner-written fields only, joined as sentences and cut at a sentence
+   boundary to 155 characters. */
+export const metaDescription = (parts, max = 155) => {
+  let out = ''
+  for (const p of parts.filter(Boolean).map((s) => s.trim().replace(/[.\s]+$/, ''))) {
+    const next = out ? `${out} ${p}.` : `${p}.`
+    if (next.length > max) break
+    out = next
+  }
+  return out
+}
+
 /* platform names: interface wording, not content */
 export const PLATFORM = {
   hostelworld: { name: 'Hostelworld' }, booking: { name: 'Booking.com' }, agoda: { name: 'Agoda' },
