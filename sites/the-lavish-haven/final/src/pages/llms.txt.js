@@ -21,8 +21,12 @@ export function GET({ site }) {
   if (IS_PREVIEW) out.push('', 'Preview build, not the published site: shown to the owner for review. Do not index, quote or cite it.')
   if (address) out.push('', `${name}, ${address}.`)
   if (intro) out.push('', text(intro))
-  for (const b of others) section(b.heading || name, [text(b)])
-  section('Rooms', (c.rooms ?? []).map((r) => `- ${[r.label, r.beds, r.note, r.sleeps ? `sleeps ${r.sleeps}` : null].filter(Boolean).join(', ')}`))
+  /* 4i: the room rows sit under the rooms block (offer[0], the same binding as the page), not in a
+     separate section after the rest, so the prose and the list it describes stay together. */
+  const roomsBlock = blocks.filter((b) => b.slot === 'offer')[0] ?? null
+  const roomRows = (c.rooms ?? []).map((r) => `- ${[r.label, r.beds, r.note, r.sleeps ? `sleeps ${r.sleeps}` : null].filter(Boolean).join(', ')}`)
+  for (const b of others) section(b.heading || name, b === roomsBlock && roomRows.length ? [text(b), '', ...roomRows] : [text(b)])
+  if (!roomsBlock) section('Rooms', roomRows)
   section('Amenities', (c.amenities ?? []).map((a) => `- ${a.label}${a.note ? ` (${a.note})` : ''}`))
   section('Check-in and check-out', [
     st.checkInFrom && `- Check-in: ${st.checkInFrom}${st.checkInTo ? ` to ${st.checkInTo}` : ''}`,
@@ -50,5 +54,7 @@ export function GET({ site }) {
     `- [${name}](${site ? new URL('./', site).href : './'}): the website, one page`,
     spotId && `- [Forecast for ${c.forecast.spotName || spotId} by Rosa](https://rosa.surf/spot/${spotId})`,
   ])
+  /* 4i: from the CMS's updatedAt once a tenant exists (null in the seed, so omitted today) */
+  if (c.updatedAt && !Number.isNaN(Date.parse(c.updatedAt))) out.push('', `Last updated: ${new Date(c.updatedAt).toISOString().slice(0, 10)}`)
   return new Response(out.join('\n').replace(/\n{3,}/g, '\n\n') + '\n', { headers: { 'Content-Type': 'text/plain; charset=utf-8' } })
 }
