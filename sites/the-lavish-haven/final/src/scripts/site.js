@@ -202,11 +202,25 @@ function draw(d){
   var lastW=now.clientWidth;
   if("ResizeObserver" in window)new ResizeObserver(function(){if(now.clientWidth!==lastW){lastW=now.clientWidth;fit();}}).observe(now);
 }
+/* 4g round 2 (critic full round 1, fix 4): a cross-origin iframe fires `load` even when its request was
+   blocked or failed (it loads the browser's error page), so `load` alone showed an empty box with the
+   link hidden. The widget is shown only when a HEAD request to the same URL has answered OK
+   (rosa.surf/widget/ answers HEAD 200 with access-control-allow-origin *, checked 2026-09-23) AND the
+   frame has loaded, within 10 s. Otherwise the frame loses its src and the plain link, visible all along
+   in the same reserved box, stays. The headline keeps its fresh data: that request succeeded. */
 function widget(){
   if(!frame)return;
+  var src=frame.dataset.src,ok=false,loaded=false,done=false;
   rosa.dataset.loading="true";
-  frame.addEventListener("load",function(){rosa.classList.add("on");delete rosa.dataset.loading;},{once:true});
-  frame.src=frame.dataset.src;
+  function end(show){if(done)return;done=true;clearTimeout(to);delete rosa.dataset.loading;
+    if(show)rosa.classList.add("on");else{rosa.classList.remove("on");frame.removeAttribute("src");}}
+  function check(){if(ok&&loaded)end(true);}
+  var to=setTimeout(function(){end(false);},10000);
+  fetch(src,{method:"HEAD",credentials:"omit"})
+    .then(function(r){if(!r.ok)throw new Error(r.status);ok=true;
+      frame.addEventListener("load",function(){loaded=true;check();},{once:true});
+      frame.src=src;})
+    ["catch"](function(){end(false);});
 }
 /* rosa.surf sends frame-ancestors *, which does not match a file:// page: there, the link */
 if(!("IntersectionObserver" in window)||!window.fetch||location.protocol==="file:"){fail();return;}

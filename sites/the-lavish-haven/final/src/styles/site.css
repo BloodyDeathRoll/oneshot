@@ -302,3 +302,20 @@ picture{display:contents}
    existing link. display:contents gives the h1 no box, so the link stays the bar's flex item with its
    own size, weight and tap padding; font:inherit keeps the h1's UA font from reaching the link. */
 .bar h1{display:contents;font:inherit}
+
+/* 4g round 2 (critic full round 1, fix 2): every visual gap between two phrases is also a space in the
+   markup, so screen readers, copy-paste and textContent read "Outdoor swimming pool open all year", not
+   "…poolopen…". Between blocks, flex and grid items those spaces are not drawn at all; inside an amenity row
+   the note is spaced by its own 8 px margin, so the space there is a no-break space at font-size 0: it draws
+   nothing and adds no line-break point (a plain space let "…services" + note wrap differently at 320 px). */
+.amen li .sp{margin:0;font-size:0}
+
+/* 4g round 2 (critic full round 1, fix 3): with no animation (JS off, reduced motion, no WebGL) nothing
+   moves the rim, so at phone width it kept the desktop outline in the markup while the pool took the
+   phone clip, and the line struck through the ratings. The rim now draws the same phone outline as the
+   pool there. The animated path is untouched: it sets #rim's points itself, and .m stays hidden. */
+.rim .m{display:none}
+@media (max-width:760px){
+  :root:not(.motion) .rim #rim{display:none}
+  :root:not(.motion) .rim .m{display:inline}
+}

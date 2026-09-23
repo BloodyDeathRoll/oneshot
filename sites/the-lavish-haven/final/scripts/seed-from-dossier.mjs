@@ -44,10 +44,10 @@ const PHOTOS = [
   { id: 'img-079', focalX: 50, alt: 'The pool and the stone-paved garden seen from above, with palms behind the tiled roofs' },
   { id: 'img-069', focalX: 50, alt: 'A covered balcony with wooden chairs and a low table, looking down through the railing to the pool' },
   { id: 'img-007', focalX: 42, alt: 'A bedroom with a wooden staircase up to a loft, warm light on plaster walls' },
-  { id: 'img-073', focalX: 60, alt: 'Wooden chairs on a balcony with a textured stone wall, the pool below' },
+  { id: 'img-073', focalX: 60, alt: 'Wooden chairs and a low table on a balcony beside a mottled grey wall, the pool below' },
   { id: 'img-021', focalX: 50, alt: 'A bed under a pitched white ceiling, grey-green curtains either side of a glass door' },
   { id: 'img-028', focalX: 55, alt: 'Two beds under a timber ceiling, a wooden chair at a desk, a glass door at the far end' },
-  { id: 'img-071', focalX: 45, alt: 'A balcony with wooden chairs under a white timber roof, looking into palms' },
+  { id: 'img-071', focalX: 45, alt: 'A balcony with wooden chairs and a low table under white-painted rafters, looking into palms' },
   { id: 'img-017', focalX: 55, alt: 'A made bed with folded towels, a tall window on one side and a painting of a wave on the wall' },
   { id: 'img-008', focalX: 45, alt: 'A loft bedroom behind a timber balustrade, with purple curtains' },
 ]

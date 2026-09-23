@@ -145,15 +145,15 @@ const ld = {
 
 <section class="hero" id="hero" aria-label={name}>
   <div class="stage" id="stage">
-    <svg class="rim" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polygon id="rim" points="55,33 100,27 100,100 84,100 44,61"/></svg>
+    <svg class="rim" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polygon id="rim" points="55,33 100,27 100,100 84,100 44,61"/><polygon class="m" points="24,60 100,54 100,100 36,100 4,82"/></svg>
     <div class="pool" id="pool" aria-hidden="true"><canvas id="water"></canvas></div>
 
     <div class="hero-copy" id="heroCopy">
-      <p class="display">{c.tagline ? headLines(c.tagline).map((l) => <span>{l}</span>) : <span>{name}</span>}</p>
+      <p class="display">{c.tagline ? headLines(c.tagline).map((l, i) => <Fragment>{i > 0 && ' '}<span>{l}</span></Fragment>) : <span>{name}</span>}</p>
       {ratings.length > 0 && (
       <ul class="proof">
         {ratings.map((r) => (
-          <li><b>{scoreText(r)}</b><span class="t">of {r.scale} on {pName(r.platform)}, {r.count} reviews{readOn(r) && <span class="when">{readOn(r)}</span>}</span></li>
+          <li><b>{scoreText(r)}</b> <span class="t">of {r.scale} on {pName(r.platform)}, {r.count} reviews{readOn(r) && <Fragment> <span class="when">{readOn(r)}</span></Fragment>}</span></li>
         ))}
       </ul>
       )}
@@ -186,7 +186,7 @@ const ld = {
   <ol>
     {(c.rooms ?? []).map((r) => {
       const b = [r.beds, r.note, r.sleeps ? `sleeps ${r.sleeps}` : null].filter(Boolean).join(', ')
-      return <li><a class="room" data-book data-room={r.label} href={book}><span class="n">{r.label}</span>{b && <span class="b">{b}</span>}</a></li>
+      return <li><a class="room" data-book data-room={r.label} href={book}><span class="n">{r.label}</span>{b && <Fragment> <span class="b">{b}</span></Fragment>}</a></li>
     })}
   </ol>
 </section>
@@ -215,7 +215,7 @@ const ld = {
   <div class="quotes">
     {c.testimonials.map((t) => {
       const lang = germanQuote(t.quote) ? 'de' : undefined
-      return <blockquote lang={lang}><p>“{t.quote}”</p><cite lang={lang ? 'en' : undefined}>{t.author}, on {pName(t.source)}</cite></blockquote>
+      return <blockquote lang={lang}><p>“{t.quote}”</p> <cite lang={lang ? 'en' : undefined}>{t.author}, on {pName(t.source)}</cite></blockquote>
     })}
   </div>
   )}
@@ -226,7 +226,7 @@ const ld = {
 <section class="here wrap" aria-labelledby="h-here">
   <h2 class="title" id="h-here">{here?.heading}</h2>
   {here && <div class="body measure">{paras(here.body).map((t) => <p>{t}</p>)}</div>}
-  {(c.amenities ?? []).length > 0 && <ul class="amen">{c.amenities.map((a) => <li>{a.label}{a.note && <span>{a.note}</span>}</li>)}</ul>}
+  {(c.amenities ?? []).length > 0 && <ul class="amen">{c.amenities.map((a) => <li>{a.label}{a.note && <Fragment><span class="sp">{'\u00a0'}</span><span>{a.note}</span></Fragment>}</li>)}</ul>}
 </section>
 )}
 
@@ -239,8 +239,8 @@ const ld = {
     <div class="fc" data-json={`https://rosa-data-opal.vercel.app/data/spots/${spotId}.json`}>
       <div class="fc-now" aria-live="polite">
         <p class="nh"><span data-f="h"></span><small> m</small></p>
-        <p class="nd"><span data-f="t"></span><span data-f="swell"></span><span data-f="wind"></span></p>
-        <p class="credit"><a href={`https://rosa.surf/spot/${spotId}`}>Forecast for {spotName} by Rosa</a><span data-f="upd"></span></p>
+        <p class="nd"><span data-f="t"></span> <span data-f="swell"></span> <span data-f="wind"></span></p>
+        <p class="credit"><a href={`https://rosa.surf/spot/${spotId}`}>Forecast for {spotName} by Rosa</a> <span data-f="upd"></span></p>
       </div>
       <div class="rosa">
         <a class="rosa-link" href={`https://rosa.surf/spot/${spotId}`}><span>See today's forecast for {spotName} on Rosa</span></a>
@@ -295,10 +295,10 @@ const ld = {
   <p class="picked" id="picked" hidden></p>
   <div class="chan">
     {chan.map((x) => (
-      <a href={x.url}><strong>{x.name}</strong>{x.rating && <span>{scoreText(x.rating)} of {x.rating.scale} from {x.rating.count} reviews{readOn(x.rating) && `, ${readOn(x.rating)}`}</span>}<i>Check dates</i></a>
+      <a href={x.url}><strong>{x.name}</strong>{x.rating && <Fragment> <span>{scoreText(x.rating)} of {x.rating.scale} from {x.rating.count} reviews{readOn(x.rating) && `, ${readOn(x.rating)}`}</span></Fragment>} <i>Check dates</i></a>
     ))}
   </div>
-  {phone && <p class="desk">Or call<br><a href={phone}>{phoneText}</a></p>}
+  {phone && <p class="desk">Or call<br> <a href={phone}>{phoneText}</a></p>}
 </aside>
 
 <script is:inline set:html={js}></script>

@@ -172,10 +172,10 @@ allow Google Fonts for the gold and are the like-for-like compare.
 | 1 where | img-079 | 4:3, full | The pool and the stone-paved garden seen from above, with palms behind the tiled roofs |
 | 2 where | img-069 | 4:3, full | A covered balcony with wooden chairs and a low table, looking down through the railing to the pool |
 | 3 strip | img-007 | 4:5, focalX 42 | A bedroom with a wooden staircase up to a loft, warm light on plaster walls |
-| 4 strip | img-073 | 4:5, focalX 60 | Wooden chairs on a balcony with a textured stone wall, the pool below |
+| 4 strip | img-073 | 4:5, focalX 60 | Wooden chairs and a low table on a balcony beside a mottled grey wall, the pool below *(round 2; was "…textured stone wall…", HF-1)* |
 | 5 strip | img-021 | 4:5, focalX 50 | A bed under a pitched white ceiling, grey-green curtains either side of a glass door |
 | 6 strip | img-028 | 4:5, focalX 55 | Two beds under a timber ceiling, a wooden chair at a desk, a glass door at the far end |
-| 7 strip | img-071 | 4:5, focalX 45 | A balcony with wooden chairs under a white timber roof, looking into palms |
+| 7 strip | img-071 | 4:5, focalX 45 | A balcony with wooden chairs and a low table under white-painted rafters, looking into palms *(round 2; was "…under a white timber roof…")* |
 | 8 strip | img-017 | 4:5, focalX 55 | A made bed with folded towels, a tall window on one side and a painting of a wave on the wall |
 | 9 strip | img-008 | 4:5, focalX 45 | A loft bedroom behind a timber balustrade, with purple curtains |
 
@@ -249,3 +249,117 @@ type, colour, interface labels.
 - Rosa widget and JSON in a real browser (both answered in headless today; widget rendered).
 - The `build:cms` path against a real Payload tenant (none exists).
 - Real screen readers. Throttled LCP beyond the audit's one run.
+
+## 4g round 2 (critic full round 1 FAIL 70, fix list items 1–4 only; 2026-09-23)
+
+Fixed only items 1–4. Items 5 (dates on the in-copy ratings, 4a→4c or a Shahar ruling) and 6 (night-line
+schema field, Shahar) are not mine and are untouched. Scratch: `scratchpad/lavish-4g2/` (harness scripts,
+round-1 `dist` snapshot `dist-r1/`, every run's raw output). Shots and data: `shots/4g-round-4/`.
+
+### 1. Alt texts (HF-1) — every photograph looked at again, one row each
+
+Source files opened one by one (`dossier/the-lavish-haven/assets/img-NNN.jpg`, 1024×768). Material,
+time-of-day and room-type words treated as claims.
+
+| slot | asset | what the photograph shows | alt now | verdict |
+|---|---|---|---|---|
+| 0 | img-002 | night; pool with underwater lamps lit; two storeys of lit rooms with balconies behind | The pool at night, lit from below, with two storeys of lit rooms and balconies behind it | holds, unchanged |
+| 1 | img-079 | from an upper floor: pool, crazy-paved stone courtyard with joints between stones, lawn, terracotta tile roofs, palms behind | The pool and the stone-paved garden seen from above, with palms behind the tiled roofs | holds (individual stones visible), unchanged |
+| 2 | img-069 | covered balcony, four weathered wooden chairs, low wooden table, railing, pool below | A covered balcony with wooden chairs and a low table, looking down through the railing to the pool | holds, unchanged |
+| 3 | img-007 | bed, wooden staircase to a loft, warm lamp light on smooth rendered walls | A bedroom with a wooden staircase up to a loft, warm light on plaster walls | holds (same trowelled finish the critic called plaster), unchanged |
+| 4 | img-073 | balcony, wooden chairs and low table, one continuous grey-green trowelled wall with a framed relief, no joints, no stones; pool below through the railing | **Wooden chairs and a low table on a balcony beside a mottled grey wall, the pool below** | **changed: "stone" was false (HF-1)** |
+| 5 | img-021 | bed, pitched ceiling of white-painted boards and beams, grey-green curtains either side of a glazed door | A bed under a pitched white ceiling, grey-green curtains either side of a glass door | holds, unchanged |
+| 6 | img-028 | two beds, pitched planked (timber) ceiling, carved wooden chair at a built-in desk, glazed door at the far end | Two beds under a timber ceiling, a wooden chair at a desk, a glass door at the far end | holds, unchanged |
+| 7 | img-071 | balcony, wooden chairs and low table; the roof is white-painted rafters under corrugated sheeting, not a timber roof; palms and other trees | **A balcony with wooden chairs and a low table under white-painted rafters, looking into palms** | **changed: "timber roof" named the wrong material for the roof (the rafters are timber, the sheeting is not)** |
+| 8 | img-017 | made bed, rolled/folded towels on a stool, tall window on the left, painting of a breaking wave | A made bed with folded towels, a tall window on one side and a painting of a wave on the wall | holds, unchanged |
+| 9 | img-008 | loft bedroom seen over a timber balustrade, purple curtains | A loft bedroom behind a timber balustrade, with purple curtains | holds, unchanged |
+
+Changed in `scripts/seed-from-dossier.mjs`; `npm run seed` → `src/tenant/content.json` differs only in these
+two `alt` strings; rebuilt. Alt text draws no pixels (0 px in every compare below).
+
+### 2. Words glued in the text layer
+
+Every visual gap between two phrases is now also a space in the markup: hero lines, rating score/text/date,
+room label/beds, amenity label/note, quote/author, forecast lines and credit/updated, drawer
+name/rating/"Check dates", "Or call"/number. Where the parts are blocks, flex or grid items the space is
+not drawn. The amenity note sits inline with its own 8 px margin, so there the separator is a no-break
+space in a `font-size:0` span (`.amen li .sp`): a plain space drew nothing either, but added a line-break
+point and re-wrapped two rows at 320 px, so it was replaced (seen in the diff, not assumed).
+
+Check (`gluecheck.mjs`, forecast live, whole page incl. the drawer, 390 and 1440): adjacent text nodes with
+no whitespace inside one line-level element — round 1: **34** (7 amenity rows, 2 × "reviewsread…", 9 rooms,
+5 quotes, hero lines, forecast, drawer); round 2: **0** at both widths. Aria snapshot now reads "Outdoor
+swimming pool open all year", "Free private parking reservation needed", "… additional charge" ×5
+(`data/aria-390.yml`). `innerText` JS off and JS on read for any other joins: none.
+
+### 3. Static rim at phone width
+
+Cause: with no animation nothing rewrites `#rim`'s points, so ≤ 760 px kept the desktop outline from the
+markup while the pool took the phone clip. Fix: a second polygon `.m` with the phone outline
+(`24,60 100,54 100,100 36,100 4,82`, the pool's own clip) shown only when `:root:not(.motion)` at ≤ 760;
+`#rim` hidden there. With motion on, `.m` is `display:none` and `#rim` is driven by the script exactly as before.
+Result on the static paths: the rim now matches the pool, and both sit under the night block, so the first
+screen is words, ratings and then the night panel, with no line (`static-rim-after-jsoff.png`,
+`static-rim-after-other.png`; before: `static-rim-before-r1.png`).
+
+Check (`rimcheck.mjs`): every text line box vs every visible rim segment (stroke width included, clipped
+where the night block paints over it), JS off / reduced motion / no WebGL × 15 widths (320–760) × 5 heights
+(568–932), plus the motion path at 844 tall: **round 1: 210 of 225 static runs crossed text, round 2: 0 of 240
+runs.** Looked at the first screens, not only the count. One thing seen that is not text: at 320 × 932 (and
+any phone taller than the page's hero + night block) a 55 px strip of the pool shows below the night block;
+it now carries its rim edge, as the pool's outline does everywhere else
+(`static-320x932-stage-bottom-r1-vs-r2.png`). No text there.
+
+### 4. Rosa widget failure → plain link
+
+Cause: a cross-origin iframe fires `load` even when its request fails (it loads the browser's error page),
+and `load` alone set `.on`, which hid the link and showed an empty box. Fix (`site.js`, `widget()`): one
+CORS `HEAD` to the widget URL first (rosa.surf answers HEAD 200 with `access-control-allow-origin: *`,
+checked live 2026-09-23); only if it answers OK is the frame given its `src`, and the frame is shown only
+after `load`; a failed/erroring HEAD or no `load` within 10 s removes the `src` and leaves the link, which is
+visible in the same reserved box from the start. The headline keeps its data (its own request succeeded).
+
+Matrix (`fcstates.mjs`, `data/fcstates.json`), block **on screen** when each result lands, 390 / 1440 / 1525:
+the 5 JSON paths (success 1.5 s · 404 1.5 s · abort 3 s · hang to the 10 s timeout · stale 30 h) = the 15
+earlier runs, plus JSON fresh and the widget failing: abort at once · **slow failure (abort after 3 s)** ·
+hang to 10 s · HTTP 500 · slow success (3 s). **33 runs: every failure ends with the link visible, `src`
+removed, frame hidden; every success with the widget visible; CLS 0, the headline box, widget box and
+`#h-prac` at identical page coordinates before and after, 0 third-party requests before the scroll, 0 page
+errors** (the only console lines are the browser's own "Failed to load resource" on the failure paths).
+The same harness on the round-1 build reproduces the bug: widget abort and slow abort → `on`, link hidden,
+empty frame (`forecast-widget-fail-r1-vs-r2.png`).
+
+Not covered, stated: HEAD succeeds but the frame's own GET then fails (a blocker that filters only
+sub-frames, or the network dropping between the two requests). That case still shows an empty box
+(`widget-getabort` in the data). It cannot be detected from outside a cross-origin frame without a
+message from Rosa's widget, which sends none (checked `rosa/web/public/widget/index.html`: no
+`postMessage`). Cost on success: one extra HEAD request to rosa.surf after the scroll.
+
+**Shared mechanics:** the same `load`-only widget loader is in the KA build
+(`sites/ka-surf-hostel-and-restaurant/final/src/scripts/site.js` line 68) and the Layday build
+(`sites/layday-surf-ahangama/final/src/scripts/site.js` line 91), so the empty-box path is open there too
+(read in the source, not run). KA's map loader already uses a HEAD probe; its Rosa loader does not.
+Not touched.
+
+### Look — 0 px except where a fix must change pixels
+
+`pxdiff.mjs` (round-1 `dist` vs round-2 `dist`; water canvas hidden, swell animation frozen, Rosa JSON a
+fixture, widget a stub, so both sides are deterministic): **36 of 40 compares 0 px**: JS-off full page at
+768 / 1024 / 1440, reduced motion full page at 1440, the animated path at 390 (15 viewports) and 1440 (13
+viewports) top to bottom, drawer and drawer-from-a-room at 390 and 1440. The 4 that differ are exactly the
+static phone hero rim (JS off 320 / 390 / 600, reduced 390; every diff pixel above the night block, y
+231–398). Page heights unchanged: 10 273 px (1440), 11 389 px (390). Gold vs build:
+`compare-gold-desktop.png`, `compare-gold-mobile.png` (gold-ref left, round 4 right): same as round 1.
+
+### Checks re-run
+
+- `npm run build`: clean, 0 warnings. `index.html` 60 765 B (was 58 239: the spaces, the second polygon,
+  the CSS and the loader).
+- `check-design.mjs … --no-shots` (scratch copy, port 8763): **ok, 0 problems, 0 warnings**; Jost ×3, ground
+  hsl(204 33% 97%), all-caps 0, labelled headings 0/12.
+- `audit-mockup.mjs the-lavish-haven ../final` (scratch copy, port 8764) → `final/audit.json`
+  2026-09-23T11:48:19Z: **589 031 B / 12 requests, local only; LCP 412 ms; CLS 0; third-party on load 0**;
+  JS as files 0 B (inline 16 780 B raw / 7 158 B gzip); font 26 576 B; largest image 122 396 B; images
+  without alt 0; tap targets under 44: 0 of 18; skip link yes.
+- `shoot.mjs` → `shots/4g-round-4/`: desktop 13 / mobile 15 captures, `errors []`.
+- Servers on 8760–8764 stopped. Nothing deployed, ledger not written, nothing committed.
