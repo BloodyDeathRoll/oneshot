@@ -132,6 +132,10 @@ const ld = {
 <meta name="twitter:card" content="summary">
 <link rel="preload" href="fonts/jost-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style is:inline set:html={css}></style>
+{/* JS off only: nothing adds .solid to the fixed bar, so it would sit transparent over the page text as you
+   scroll (critic full round 2, finding 2). Give it the page's ground, opaque, at every scroll position.
+   <noscript> is inert whenever JS runs, so the motion and reduced-motion paths are unchanged. */}
+<noscript><style is:inline>.bar{background:var(--paper)}</style></noscript>
 </head>
 <body>
 <a class="skip" href="#top">Skip to content</a>
