@@ -287,6 +287,33 @@ html:not(.js) .fc-now,.fc.off .fc-now{visibility:hidden}
   .foot{padding-bottom:96px}
 }
 
+/* 4g round 2, pick note 1 under 920px — Shahar, 2026-09-23: "Reserve space". The foot bar (64px,
+   fixed, full width) never has a line of text under it where the page comes to rest. The page end
+   already reserves it (.foot padding-bottom 96px = the bar + 32px). Here the browser's own scrolling
+   reserves it too: anything scrolled into view for the visitor (keyboard focus, find-in-page,
+   scrollIntoView) stops 88px (the bar + 24px) above the window's bottom, and the skip link's #main
+   lands under the top line, i.e. on the first screen, which is already sized to clear the bar.
+   Nothing is drawn differently. */
+@media (max-width:919px){
+  html{scroll-padding-top:var(--top);scroll-padding-bottom:88px}
+}
+/* The first screen reserves the bar by ending where it starts (stage = window − top line − 64px), but
+   the stage keeps its floor (520px phone, 560px from 768) so the drawn box stays whole; on a window
+   shorter than 640px (phone) / 688px (768–919px) the floor wins and, with no camera (reduced motion,
+   JS off), the hero's last lines sat under the bar at the top of the page. There the words rise by
+   exactly that overhang, keeping the same air above the bar they have on a taller window (40 / 56px);
+   the box itself is drawn as before. Capped so the longest hero (320px wide) stays inside the box.
+   Nothing changes at 640px (phone) / 688px (768–919px) tall and up. */
+@media (max-width:767px){
+  html:not(.fly) .wall{bottom:clamp(40px,calc(40px + 520px + var(--top) + 64px - 100svh),112px)}
+}
+@media (max-width:359px){
+  html:not(.fly) .wall{bottom:clamp(40px,calc(40px + 520px + var(--top) + 64px - 100svh),83px)}
+}
+@media (min-width:768px) and (max-width:919px){
+  html:not(.fly) .wall{bottom:clamp(56px,calc(56px + 560px + var(--top) + 64px - 100svh),160px)}
+}
+
 /* ---- tap targets at phone widths: every link at least 44px high, grown by padding, not by type.
    Inline links: vertical padding does not move the lines around them. Block/flex links: a negative
    margin cancels the padding. The 1px underline that was a border-bottom becomes a 1px line pinned
