@@ -1,0 +1,260 @@
+{
+ "kbd@390": {
+  "first": "A.skip \"Skip to content\" 8",
+  "skipBox": [
+   8,
+   8,
+   144,
+   52
+  ],
+  "afterEnter": [
+   "MAIN",
+   "main",
+   "#main"
+  ],
+  "nextAfterSkip": "A \"Hostelworld\" 461",
+  "order": [
+   "A.skip \"Skip to content\" 8",
+   "A \"Hostelworld\" 461",
+   "A \"Booking.com\" 516",
+   "A.book \"Check dates\" 399",
+   "A.book \"Check dates\" 509",
+   "A.book \"Check dates\" 619",
+   "A.book \"Check dates\" 715",
+   "A.book \"Check dates\" 796",
+   "A.book \"Check dates\" 399",
+   "A \"Open in Google Maps\" 398",
+   "A \"Open in Google Maps\" 647",
+   "A \"Forecast for Kabalana by Rosa\" 399",
+   "A.fc-link \"See today's forecast for Kabal\" 344",
+   "DIV.crops \"\" 275",
+   "A.tile big \"Check dates onHostelworld9.8/1\" 341",
+   "A.tile big \"Check dates onBooking.com9.5/1\" 341",
+   "A.tile big \"Check dates onAgoda\" 341",
+   "A \"+94 77 374 6053\" 668",
+   "A \"Open in Google Maps\" 716",
+   "A.btn book \"Check dates\" 781",
+   "A \"Call\" 781",
+   "BODY \"Skip to content  KA Surf Hoste\" -12510",
+   "A.skip \"Skip to content\" 8",
+   "A.name \"KA Surf Hostel\" -51",
+   "A \"Hostelworld\" 400",
+   "A \"Booking.com\" 455",
+   "A.book \"Check dates\" 399",
+   "A.book \"Check dates\" 509",
+   "A.book \"Check dates\" 619",
+   "A.book \"Check dates\" 715"
+  ]
+ },
+ "drawer@390": {
+  "open": {
+   "hidden": false,
+   "focus": "tile Check dates onHostelworld9.8/1"
+  },
+  "allInside": true,
+  "inside": [
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "closed": {
+   "hidden": true,
+   "back": true
+  },
+  "ctxLine": "Double room, 1 extra-large double bed",
+  "focusBackToRow": true
+ },
+ "reduced@390": {
+  "canvas": "none",
+  "still": 1,
+  "panelTransition": "0s",
+  "errs": []
+ },
+ "nowebgl@390": {
+  "canopy": "2d",
+  "cls": "js gl",
+  "errs": []
+ },
+ "nojs@390": {
+  "text": 4483,
+  "links": 14,
+  "imgs": 14,
+  "mapAlt": "visible",
+  "fcLink": "visible",
+  "iframesWithSrc": 0,
+  "skip": true
+ },
+ "axe@390": {
+  "v": [],
+  "inc": [
+   [
+    "aria-prohibited-attr",
+    1
+   ],
+   [
+    "color-contrast",
+    15
+   ]
+  ],
+  "pass": 27
+ },
+ "kbd@1440": {
+  "first": "A.skip \"Skip to content\" 8",
+  "skipBox": [
+   8,
+   8,
+   144,
+   52
+  ],
+  "afterEnter": [
+   "MAIN",
+   "main",
+   "#main"
+  ],
+  "nextAfterSkip": "A.btn book \"Check dates\" 684",
+  "order": [
+   "A.skip \"Skip to content\" 8",
+   "A \"Call\" 15",
+   "A.book \"Check dates\" 15",
+   "A.btn book \"Check dates\" 684",
+   "A \"+94 77 374 6053\" 752",
+   "A \"Hostelworld\" 719",
+   "A \"Booking.com\" 716",
+   "A.book \"Check dates\" 427",
+   "A.book \"Check dates\" 514",
+   "A.book \"Check dates\" 601",
+   "A.book \"Check dates\" 689",
+   "A.book \"Check dates\" 776",
+   "A.book \"Check dates\" 854",
+   "A \"Open in Google Maps\" 427",
+   "A \"Open in Google Maps\" 217",
+   "A \"Forecast for Kabalana by Rosa\" 427",
+   "A.fc-link \"See today's forecast for Kabal\" 400",
+   "DIV.crops \"\" 250",
+   "A.tile big \"Check dates onHostelworld9.8/1\" 250",
+   "A.tile big \"Check dates onBooking.com9.5/1\" 250",
+   "A.tile big \"Check dates onAgoda\" 250",
+   "A \"+94 77 374 6053\" 771",
+   "A \"Open in Google Maps\" 819",
+   "BODY \"Skip to content  KA Surf Hoste\" -10726",
+   "A.skip \"Skip to content\" 8",
+   "A.name \"KA Surf Hostel\" 3",
+   "A \"Call\" 15",
+   "A.book \"Check dates\" 15",
+   "A.btn book \"Check dates\" 422",
+   "A \"+94 77 374 6053\" 490"
+  ]
+ },
+ "drawer@1440": {
+  "open": {
+   "hidden": false,
+   "focus": "tile Check dates onHostelworld9.8/1"
+  },
+  "allInside": true,
+  "inside": [
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "closed": {
+   "hidden": true,
+   "back": true
+  },
+  "ctxLine": "Double room, 1 extra-large double bed",
+  "focusBackToRow": true
+ },
+ "reduced@1440": {
+  "canvas": "none",
+  "still": 1,
+  "panelTransition": "0s",
+  "errs": []
+ },
+ "nowebgl@1440": {
+  "canopy": "2d",
+  "cls": "js gl",
+  "errs": []
+ },
+ "nojs@1440": {
+  "text": 4520,
+  "links": 16,
+  "imgs": 14,
+  "mapAlt": "visible",
+  "fcLink": "visible",
+  "iframesWithSrc": 0,
+  "skip": true
+ },
+ "axe@1440": {
+  "v": [],
+  "inc": [
+   [
+    "aria-prohibited-attr",
+    1
+   ],
+   [
+    "color-contrast",
+    24
+   ]
+  ],
+  "pass": 26
+ },
+ "taps390": {
+  "load": {
+   "n": 19,
+   "small": [],
+   "ov": 0
+  },
+  "scrolled": {
+   "n": 20,
+   "small": [],
+   "ov": 0
+  },
+  "sheet": {
+   "n": 25,
+   "small": [],
+   "ov": 2
+  },
+  "skipFocused": [
+   144,
+   51.5
+  ]
+ },
+ "small1440": [
+  [
+   " Call",
+   28,
+   26
+  ],
+  [
+   "book Check dates",
+   88,
+   26
+  ],
+  [
+   " +94 77 374 6053",
+   125,
+   22
+  ]
+ ]
+}
