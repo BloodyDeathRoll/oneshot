@@ -270,3 +270,72 @@ motion, type, colour, interface labels.
   page. A persistent phone control cannot avoid that without going away; if "never covers text" must
   hold literally on phones too, the bar would have to hide while scrolling, which the playbook's
   "reachable from every screen" forbids. Your call.
+
+## 4g round 2 — pick note 1 under 920 px: "Reserve space" (Shahar, 2026-09-23)
+
+Gate answer: *"Reserve space" — pad the page so no line of text ever sits under the bar at rest;
+scrolled text may still pass under it while scrolling.* Applies below 920 px, where the berth is the
+mockup's fixed full-width 64 px foot bar. The h1/`.hl`/head changes of 4h are untouched.
+
+**Interpretation applied.** A "rest" is a position the page itself produces or lands on: the top of
+the page on load, the very end of the page, any snap point (there are none), any in-page anchor target
+(there is one: the skip link's `#main`), anywhere the browser scrolls a control into view for the
+visitor (keyboard focus, find-in-page, `scrollIntoView`), and the position the page is left at after
+the booking drawer / dock panel closes. At each: no text line under the bar; the page's bottom padding
+≥ the bar + a margin; anchor and focus targets land clear of the bar. A free scroll that the visitor
+stops mid-page is "scrolling" in Shahar's sense: lines may sit under the bar there, as they sit under
+the bottom edge of the screen (see "For Shahar", round 2).
+
+**What changed** (`src/styles/site.css`, one commented block after pick note 1; nothing else):
+1. `@media (max-width:919px){ html{scroll-padding-top:var(--top);scroll-padding-bottom:88px} }` —
+   anything the browser scrolls into view stops 88 px (bar 64 + 24) above the window's bottom, and
+   `#main` lands under the top line, i.e. on the first screen, which is already sized to end where
+   the bar starts. Draws nothing.
+2. Short windows only, no camera (reduced motion, JS off; `html:not(.fly)`): the stage keeps its floor
+   (520 px phone, 560 px 768–919) so on a window shorter than 640 px (phone) / 688 px (768–919) the
+   first screen ran past the bar and the hero's last line ("or call +94 …", the "Check dates"
+   button) sat under it at the top of the page. There the hero's words rise by exactly that overhang
+   (`.wall` bottom = `clamp(40px, 40px + 520px + top + 64px − 100svh, 112px)`; 56/560/160 px at
+   768–919; cap 83 px under 360 px so the longest hero stays inside the box), keeping the 40/56 px of
+   air above the bar a tall window has. The box is drawn as before. At 640/688 px tall and up nothing
+   changes. `shots/4g-round-5/short/compare-short.png` (320 × 568, 390 × 568, 800 × 568, before |
+   after). The niche overlaps one hero line at 320–400 px at every height, before and after (the
+   mockup's); the lift adds no niche overlap at any width (measured 568/600/620/640/680 tall).
+3. The page end already reserved it: `.foot` padding-bottom 96 px = bar + 32 px. Unchanged.
+
+**Measured** (Playwright, scratch `rest.mjs`, copied to `shots/4g-round-5/rest/` with the raw JSONL and
+`summary.txt`). Widths 320–900 in 20 px steps + 390, 767, 768, 919 (34); heights 844 (< 768) / 1024
+(768–919) and 568; JS (WebGL camera), reduced motion, JS off → 204 runs, before and after. Every
+visible text node's line boxes (`Range.getClientRects`) tested against the bar's box; third-party
+requests blocked.
+
+| resting position | before | after |
+|---|---|---|
+| top of the page | 68 / 204 with a line under the bar (all 568 tall, reduced motion / JS off) | **0 / 204** |
+| end of the page | 0 / 204; gap last line → bar 34–35 px | **0 / 204**; 34–35 px |
+| skip link → `#main` (the only anchor) | 68 / 204 (the lead's first line under the bar, reduced motion / JS off) | **0 / 204** |
+| keyboard focus: focused control under the bar | 881 of 3 942 Tab stops | **102 of 3 908** — all the Rosa box's plain link at 568 tall: a 500 px box in a 424 px space; its text lines are clear (e.g. 241–294 vs bar 504) |
+| drawer / dock open + close (Esc, Close, outside click; every opener; `<details>` with JS off) moves the page | 0 | **0** |
+| focused opener under the bar after close | — | 0 (it is where the keyboard or finger left it, and focus scroll keeps it clear) |
+| other lines under the bar after close | depends on where the visitor stood: 390 / 408 at my mid-page dock test position, 118 / 544 at opener positions | same — unchanged, see "For Shahar" |
+
+**Look unchanged.** 920 px and up (1024, 1440, 1525, 1920; JS off, reduced motion, JS at page end):
+**0 px differ** full page, 255 / 255 elements with identical box and style (`rest/wide-elements.json`).
+Below 920 at 900 px tall (320, 390, 768, 800, 900): 0 px differ, the only computed difference is the
+root's `scroll-padding`. `tools/shoot.mjs` before (`4g-round-5/before/`) vs after (`after/`): 0.00 % on
+25 of 26 captures; desktop-07 4.08 % is Rosa's live widget, loaded in the after shoot and not in the
+before one (crops compared). `npm run build` clean, 0 warnings. `check-design.mjs … --no-shots`
+(scratch copy, port 8753): ok, 0 problems, 0 warnings.
+
+**For Shahar (round 2).** Everything the page itself decides now keeps text clear of the bar. What
+it cannot decide is where a visitor lifts their thumb: mid-page, a line can be left under the bar,
+exactly as a line can be left half off the bottom of the screen, and the drawer closing returns them
+to that same spot (it never moves the page). Guaranteeing that literally would need either the page
+scrolling in a box that ends above the bar (the camera, the sticky first screen and mobile browsers'
+toolbar collapse all key off the window's scroll, so a rewrite of the climb) or scroll snapping line
+by line (fights the visitor). Neither is done; say if you want one. Also: on very short windows the
+first screen cannot hold the hero above the bar. Measured after the change, top of the page, reduced
+motion: clear at 560 px tall and up at every width tested, at 540 except 320 px wide, and at 520 only
+from 430 px wide; at 390 px tall (a phone held sideways) 2–3 hero lines stay under the bar at every
+width. With the camera (JS on) the bar is hidden at the top until the box docks, so this is reduced
+motion / JS off only.
