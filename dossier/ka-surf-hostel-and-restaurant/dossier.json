@@ -50,19 +50,33 @@
  },
  "location": {
   "address": {
-   "value": "No 207/A, Welhengoda, 80650 Ahangama, Sri Lanka",
-   "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
-   "fetched_at": "2026-09-19T17:05:00Z",
-   "note": "Hostelworld writes '207/A welahangoda'; Google '207/A welahangoda, Ahangama'"
+   "value": "207/A welahangoda, Ahangama, Sri Lanka",
+   "source_url": "https://www.google.com/maps/place/KA+surf+hostel+and+restaurant/@5.9794134,80.350836,17z/data=!4m9!3m8!1s0x3ae11300437b1eb3:0xc601caff438d6704!5m2!4m1!1i2!8m2!3d5.9818405!4d80.3520113!16s%2Fg%2F11y9z16whv?hl=en",
+   "fetched_at": "2026-09-23T08:44:02Z",
+   "note": "Google Maps listing address, character for character as the listing shows it (data-item-id=address). Authoritative per playbook 0.5.0 §6; other platforms' versions are kept in address_other_platforms and are not to be used on the site. Google's lowercase 'welahangoda' is kept as shown. The listing carries NO postcode — see gaps[] 'location.address.postcode'; the 80650 used on the site so far came from Booking.com."
   },
+  "address_other_platforms": [
+   {
+    "value": "No 207/A, Welhengoda, 80650 Ahangama, Sri Lanka",
+    "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+    "fetched_at": "2026-09-19T17:05:00Z",
+    "note": "Booking.com, as harvested 2026-09-19 (postcode 80650). Superseded by the Google listing address."
+   },
+   {
+    "value": "207/A welahangoda",
+    "source_url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+    "fetched_at": "2026-09-19T17:05:00Z",
+    "note": "Hostelworld, as noted at the 2026-09-19 harvest (street part only recorded). Superseded by the Google listing address."
+   }
+  ],
   "lat_lng": {
    "value": [
-    5.9805,
-    80.3486
+    5.9818405,
+    80.3520113
    ],
-   "source_url": "https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en",
-   "fetched_at": "2026-09-19T17:05:00Z",
-   "note": "approximate: taken from the scout's pin; the plus code below is the precise reference"
+   "source_url": "https://www.google.com/maps/place/KA+surf+hostel+and+restaurant/@5.9794134,80.350836,17z/data=!4m9!3m8!1s0x3ae11300437b1eb3:0xc601caff438d6704!5m2!4m1!1i2!8m2!3d5.9818405!4d80.3520113!16s%2Fg%2F11y9z16whv?hl=en",
+   "fetched_at": "2026-09-23T08:44:02Z",
+   "note": "the listing's pin, from the place URL's !3d/!4d parameters. Replaces the approximate scout pin 5.9805, 80.3486 (2026-09-19)."
   },
   "map_url": {
    "value": "https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en",
@@ -71,9 +85,9 @@
   },
   "plus_code": {
    "value": "X9J2+PR Ahangama, Sri Lanka",
-   "source_url": "reports/2026-09-ahangama-02/candidates.json",
-   "fetched_at": "2026-09-19T17:05:00Z",
-   "note": "captured by the scout"
+   "source_url": "https://www.google.com/maps/place/KA+surf+hostel+and+restaurant/@5.9794134,80.350836,17z/data=!4m9!3m8!1s0x3ae11300437b1eb3:0xc601caff438d6704!5m2!4m1!1i2!8m2!3d5.9818405!4d80.3520113!16s%2Fg%2F11y9z16whv?hl=en",
+   "fetched_at": "2026-09-23T08:44:02Z",
+   "note": "shown on the Google listing (data-item-id=oloc); matches the scout capture of 2026-09-19"
   },
   "distance_to_beach": {
    "value": "Kabalana Beach 450 yd / a 5-minute walk",
@@ -842,6 +856,11 @@
   {
    "field": "images",
    "why": "usable but modest: 576–1024 px on Booking, 640 px on Instagram. Photography on location would beat all of it",
+   "pitch_point": true
+  },
+  {
+   "field": "location.address.postcode",
+   "why": "the Google listing address carries no postcode ('207/A welahangoda, Ahangama, Sri Lanka', live 2026-09-23). Playbook §6 wants Google's address with its postcode; the 80650 on the site so far came from Booking.com and is not filled from there. The owner can add it to the Google listing.",
    "pitch_point": true
   }
  ],
