@@ -15,8 +15,10 @@
 | offer ¶3 | pool, restaurant and its cuisines, coffee house, spa; family provision | `facilities[]` · `business.description` (Booking's facts, re-written — its wording is not reused) |
 | info | 24-hour desk, parking, shuttle, housekeeping, laundry, bicycles, accessibility, non-smoking | `facilities[]` · `hours_note` · `location.distance` to Koggala Airport |
 | spot | Kabalana beach break | `location.spot` — third-party surf guide, described as the wave, not claimed by the business |
+| spot (sentence 2, added 2026-09-23 from the gold page) | "The beach is two minutes from the hotel, on foot." | `location.distance_to_beach` ("Kabalana Beach is a 2-minute walk", Booking) · `contradictions[]` distance (one guest says 3 min; resolution: use Booking's figure). Subject is the **beach**, not The Rock reef: no source gives the reef's distance. Gold page had "Two minutes from the hotel, on foot." with no subject, which under the spot sentence could read as the reef too. Repeats the distance already in `tagline` and intro ¶1 |
 
 ## Deliberately not written
+- **Gold-page closing headline "Rates move with the dates. The listings show what is free." — not placed (2026-09-23).** The schema has no closing/call-to-action headline field; `copyBlocks[]` needs a `body`; and the fact (rates depend on dates, Booking.com and Agoda show availability — `gaps[]` offers, `booking.path` note) already lives in offer ¶1, so a second block would break the schema's one-fact-one-field rule. Sourced wording if a home is decided: "Rates move with the dates. Booking.com and Agoda show what is free." ("the listings" only makes sense next to the gold page's button).
 - **No check-in or check-out times.** Not published anywhere (`gaps[]`). The copy states only the 24-hour front desk, which is sourced.
 - **No room count.** A review summary says 17 bedrooms; Booking lists 9 room types (`contradictions[]`).
 - **No "easy parking".** Booking says free private parking; a guest calls the area very small and hard with a car (`contradictions[]`). The copy states parking exists and is by reservation, nothing about size.
