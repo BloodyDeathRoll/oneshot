@@ -365,3 +365,195 @@ designer: `audit-mockup.mjs` reports `has_skip_link: true` for any `a[href^="#"]
 ## Next
 
 **Human gate (mocked → picked).** Pick one variant, with a reason. The critic does not pick.
+
+---
+
+# Full round 1 — final site, "Inside" (unique), 2026-09-23
+
+critic 0.3.2 · station 5 · run `2026-09-ahangama-02` · playbook 0.5.1 · rubric 0.1.0. Under review:
+`sites/layday-surf-ahangama/final/dist/`, rebuilt by me with `npm run build` (clean, 0 warnings; no `SITE_URL`,
+so a preview build: `noindex, nofollow`, `robots.txt` Disallow for `*` and 15 named AI crawlers, no sitemap —
+expected). Inputs read: dossier, `copy/en.json` + `review.md` round 3 (PASS, 0 unsourced / 0 contradicted),
+`copy/sources.md`, `seo-report.md`, `aiseo-report.md`, `final/notes.md`, the picked mockup
+`mockups/unique/` round 7 (= `agents/designer/gold/layday-surf.html`). All tests over a plain
+`python3 -m http.server` on `dist/` (port 8750; scratch copies of `audit-mockup.mjs` on 8751 writing to
+`shots/critic-1/audit.json`, `check-design.mjs` on 8752; mockup on 8753 for one axe comparison; all servers
+stopped). Headless Chromium, software GL. No real phone.
+
+```
+mode: full        round: 1        variant: unique ("Inside")
+total: 91.5 / 100         result: pass        hard_fails: []
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | My own sentence-by-sentence table below (rendered page JS on and JS off, alt texts, title/meta, JSON-LD, `llms.txt`): **48 rows = 84 individual claims, 0 mismatch, 0 unsourced**. The 5 testimonials equal `reviews.quotes[7,5,6,4,1]` by string equality (script). Address = Google listing with the one allowed capitalisation. Every alt text checked against the photograph itself (lockers and drawer locks are visible keyholes in img-002/008/013). `audit.json` `numbers_not_in_passed_copy: ["5.0"]` = Google's 5.0/5, the dossier's `reviews.google.rating` 5.0. |
+| 2 | mobile + performance | 10 | `critic-1/audit.json` (390×844, 1.6 Mbps, 150 ms, 4× CPU, no scroll): **183 832 B, 6 requests, all local, LCP 388 ms, CLS 0**; my three more throttled runs: LCP 404 / 388 / 396 ms, CLS 0. No horizontal overflow at 390, 768, 1024, 1440, 1525, 1920 in any of JS / reduced motion / JS off (`sweep-*.json`, whole page in 20 px steps). **0 console errors** at all six widths with the network live and the whole page scrolled (Rosa JSON + widget loaded). Budget table below. |
+| 3 | booking CTA | 9 | Tap-through at 390 (touch): hero "Check dates" opens the drawer (no navigation), links Hostelworld / Booking.com / Agoda / `tel:+94778553343`; tapping the first issues a document navigation to `https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/` (`tap-390-drawer.png`). Foot bar "Check dates" opens the same drawer (`tap-390-dock.png`), bar "Call" = `tel:+94778553343`. JS off: every "Check dates" is the plain Hostelworld link, the dock is a native `<details>` with the three listings + phone. All 30 hrefs character-identical to `booking.engine_url`, `booking.other_engines`, `contact.phone`, `location.map_url`. Deduction: no prefill and no reply time are possible (no WhatsApp, `reply_time_hint` a gap) — dossier gaps, not build faults. |
+| 4 | brand fit | 8 | Look = the picked mockup (below). Brief met (flat-plane box, climb-out, docked berth as the booking control). Deductions, inherited from the picked mockup: the first screen says where ("A two-minute walk from Kabalana", "…in Ahangama") but not what — nothing above the fold says hostel / dorm bed (playbook §2 "business type + place in one line"); the spot comes after the reviews and the location block is at the end (playbook §3 order). No prices is a dossier gap, correctly not filled. |
+| 5 | copy quality | 8 | Passed 4c round 3; every copy field placed (6 blocks, spot, room, stayInfo, 19 amenities, 3 ratings, 5 quotes, contact, 3 links); nothing on the page outside the copy but interface labels, "read 19 September 2026" and Rosa's lines. Two deductions. (a) **On-page repetition in Practicalities:** the body's "Credit cards are not accepted. Taxes are included, and it is non-smoking." is followed two lines later by `stayInfo.note` "Credit cards are not accepted. Non-smoking. Taxes included. …", and the three times are printed large and then again in the sentence under them (`desktop-09.png`, `w390-10`); "daily housekeeping" appears 4 times on the page. The mockup had the same stacking. (b) **Missing word space in the text layer:** `…10 reviews</a><span class="when">read 19 September 2026` and `…Sri Lanka<a …>Open the map` have no whitespace, so `innerText` / copy-paste / a screen reader get "10 reviewsread 19 September 2026" (hero, all 4 rating lines similarly joined in the markup) and "Sri LankaOpen the map"; visually spaced by CSS only. |
+| 6 | accessibility | 8 | axe-core 4.x (local copy, nothing installed), WCAG 2.0/2.1 A+AA, page scrolled first, third-party blocked: **1440: 0 violations** (23 rule sets pass; incomplete `color-contrast` ×7). **390: 1 violation, `scrollable-region-focusable` (serious) ×2** — the `.built .trio` and `.wave .trio` photo rows scroll sideways on a phone; inherited (the mockup gives the same ×2 at 390); Chromium does make them tab stops (seen in my Tab run), Safari does not. Keyboard at 1440 and 390: skip link first (146×52), visible 2 px outline on every stop; hero "Check dates" + Enter opens `role="dialog" aria-modal`, focus on "Check dates on Hostelworld", Tab cycles 5 stops inside (Hostelworld, Booking.com, Agoda, Call, Close) and wraps, Esc closes, focus returns to the opener — no trap. Reduced motion: canvas `display:none`, static box, dock visible from load (`rm-*.png`). No WebGL (`getContext('webgl*')` → null): 2D box, 0 page errors (`nogl-*.png`). Tap targets at 390, whole page, visible controls, either side < 44 px: **0 of 19**. Content is DOM text; the canvas is `aria-hidden`. Deductions: the axe violation and the joined words in (5b). |
+| 7 | security + delivery | 9 | Static output only; `<script src>`: 0; one `<link>` (the self-hosted font preload); 0 hits for localhost / 127.0.0.1 / `/api/` / key / token / secret / password in `index.html` and `llms.txt`; test hooks (`no-webgl`, `?open`) 0; filenames lowercase; relative URLs. **0 third-party requests on first load** (audit + 8 instrumented runs). One third-party embed (Rosa's widget) + the Rosa JSON, both after scroll only (table below). Deduction: the map pin is a template constant (`MAP_PIN` in `src/lib/site.mjs`, guarded by the seed) because schema v0.5 has no geo field — a hard-coded business fact outside Payload, against the schema contract; `seo-report.md` records it as a SCHEMA GAP. No favicon; no canonical / `og:url` / `og:image` until the deployer builds with `SITE_URL` (expected for a preview). |
+
+`total = 10×2.5 + 10×2 + 9×1.5 + 8 + 8 + 8 + 9 = 91.5`. Full-mode pass: no hard fail, total ≥ 80, every
+dimension ≥ 6, every playbook §4 budget line met. **Result: pass.**
+
+Hard-fail list, each checked: no fact contradicts the dossier, none without a dossier entry; booking targets
+identical to the dossier; all 10 images `business-owned` (img-018, 012, 002, 008, 013, 003, 017, 019, 021, 020;
+`check-places.mjs`: 0 borrowed); no stock; 0 third-party on load; no CMS call at runtime; no keyboard trap; no
+canvas-only content; no budget line over; no secrets. **Empty.**
+
+## Shahar's pick notes, verified independently
+
+1. **The docked box never covers text.** My sweep (`sweep-js|rm|nojs.json`): 6 widths × 3 modes, whole page
+   in 20 px steps, every visible text node's line boxes (`Range.getClientRects`) tested against the dock and
+   its ladder. **≥ 920 px (1024, 1440, 1525, 1920): 0 overlapping steps in all 12 runs.** **< 920 px
+   (390, 768), "reserve space":** at the top of the page and at the end, 0 lines under the bar in all 6 runs;
+   lines pass under it only mid-scroll (304 / 283 steps with JS), which is the case Shahar allowed. Short
+   phones too (`rest` check, 360×640, 390×667, 414×736, 390×568, 800×600 × JS / reduced / JS off): top and
+   end clear in all 15 (with the camera the bar is hidden at the top until the box docks). **Holds.**
+2. **No empty screen after the hero.** Longest scroll run with no visible text line and no photo (opacity
+   and visibility respected): **40 px at 390, 80 px at 768 / 1024 / 1440 / 1525 / 1920** (≤ 0.09 of a
+   screen); 0 with reduced motion or JS off. The mockup's `mobile-01` / `desktop-01` were the box alone; the
+   build's carry the lead paragraph (`desktop-01.png`, `mobile-01.png`). **Holds.**
+3. **Capture date on each rating.** "read 19 September 2026" after the hero rating and under each of the
+   three platform lines (4 in the HTML, all present with JS off), = `reviews.{hostelworld,booking,google}.
+   fetched_at` 2026-09-19T18:20:00Z; also in `llms.txt`. **Holds** (see 5b for the missing space).
+
+## Look against the mockup (`critic-1/` vs `mockups/unique/shots/round-7/`)
+
+Same page: same flat-plane first screen, same order (lead → dorm → room + Beth → door + Catherine → newly
+built → ratings + quotes → spot + forecast → beach row → practicalities → berth footer), same type (Urbanist
+only), ground `hsl(233 21% 93%)`, yellow, violet buttons, ladders. Differences I found, each judged:
+- The copy is the round-3 passed copy (headings "Just one dorm", new lead, footer line) — content, not look.
+- Date lines under the ratings; the lead on the second screen; shorter climb-out — the pick notes. Accept.
+- Right-hand lane at 920–1703 px (right column 132 px narrower at 1440, 90 at 1525; right-column paragraphs
+  wrap earlier) and the foot bar at 768–919 — pick note 1. Accept; the cost is visible at 1440/1525 as a
+  slightly left-weighted column (`w1525-*`), no overlap.
+- 768–1007 px photo rows and the berth pair share their row instead of overrunning — fixes a mockup defect
+  (horizontal scroll, text under photos). Accept: my sweep finds 0 text lines on photos at all six widths.
+- Skip link, tap-target padding, self-hosted Urbanist — invisible at rest. Accept.
+Nothing else differs that I could see at 390, 768, 1024, 1440, 1525 or 1920.
+
+## Budget table (playbook §4, `critic-1/audit.json` first_load, 2026-09-23T09:55Z)
+
+| Item | Target | Measured |
+|---|---|---|
+| First-load transfer | ≤ 1.5 MB | 183 832 B, 6 requests (HTML 62 550, font 27 752, images 93 530) |
+| JS, compressed | ≤ 300 KB | 0 B as files; inline 19 027 B raw / 7 318 B gzip |
+| Largest above-the-fold image | ≤ 200 KB | none above the fold (drawn first screen); largest on load 28 408 B |
+| Fonts | ≤ 2 families, ≤ 150 KB | 1 family, 1 file, 27 752 B |
+| LCP (throttled) | ≤ 2.5 s | 388 ms (audit); 404 / 388 / 396 ms (mine) |
+| CLS | < 0.1 | 0 on load; ≤ 0.00017 over a full wheel scroll with Rosa live (390–1920) |
+| Third-party requests on load | 0 | 0 |
+
+With the Rosa widget loaded the page adds 1 JSON fetch + the widget document and its own assets (Google
+Fonts, ArcGIS tiles, inside Rosa's frame) — all after scrolling to the block; every line above still met.
+
+## Third-party embeds (playbook §4) and the Rosa forecast (hard constraint 9)
+
+- **Count: 1 embed** (Rosa's iframe; no map embed — "Open the map" is a link). ≤ 2.
+- Mapping `kabalana` / "Kabalana" = `concepts.md` l.267; credit "Forecast for Kabalana by Rosa" →
+  `https://rosa.surf/spot/kabalana`; iframe `data-src` only in the HTML, `src` set after the JSON arrives:
+  `https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric`, style = tools.md's, not covered or
+  cropped (420×500 at ≥1024; 100 % width, max 420, at 390/768 — Rosa's own responsive width).
+- Headline only: "0.7–1.0 m / Wednesday 23 September, 08:30 / Swell 11.5 s from the south / Wind 16.2 km/h
+  from the west, cross-shore / Rosa, updated …"; 0 day elements.
+- Paths, block on screen via wheel scroll, 390 and 1440 (`rosa-*.png`): fresh → headline + widget; 404 after
+  1.5 s, abort after 1.5 s, hang 12 s (10 s timeout), 30 h stale, JS off → the plain link "See today's
+  forecast for Kabalana on Rosa", headline hidden, **`.fc-now`, `.fc-rosa`, spot heading and beach row at
+  identical page boxes before and after on all 12 runs**; CLS ≤ 0.00016 on every JS path, 0 with JS off.
+
+## Facts table (mine, sentence by sentence; page JS on = JS off except the Rosa headline)
+
+| On the page | Dossier key | Verdict |
+|---|---|---|
+| "Layday Surf Ahangama" (h1, footer, title, og, JSON-LD, llms) | `business.name` | match |
+| "Surf, chill and feel at home in Ahangama" | `business.tagline` "Surf, Chill & Feel at Home in Ahangama" | match (case, "&") |
+| "A two-minute walk from Kabalana" (hero, title, description) | `location.distance_to_beach` "guests say a 2-minute walk"; `quotes[7]` "just a 2-min walk to Kabalana Beach" | match |
+| "9.8/10 on Hostelworld, 10 reviews" + "read 19 September 2026" | `reviews.hostelworld` 9.8 / 10 / fetched 2026-09-19 | match |
+| "Check dates" / "or call +94 77 855 3343"; header phone | `booking.other_engines[0]`; `contact.phone` +94778553343 | match |
+| "Layday is small and new." | `quotes[0]` "tiny place", `[1]` "quite small"; `[7]` "Newly built", `[4]` "New and clean", `[3]` "new and comfy" | match (guest-observed physical fact) |
+| "There is a shared kitchen, plus a garden and terrace." | `facilities[5]`, `[7]` | match |
+| "It is quiet, too." | `quotes[5]` "very quiet" | match (guest-observed) |
+| "One guest called it "very quiet which was amazing"." | `quotes[5]` verbatim | match |
+| "Just one dorm" | `quotes[5]` "just one dorm room"; `room_types[0]` (one type) | match |
+| "There is only the one dormitory." | same | match |
+| "One guest wrote "super clean" and another "very clean"." | `quotes[6]` "Super clean" (lower-case in `[0]`), `[5]` "very clean" | match |
+| "Someone else went as far as "absolutely spotless"." | `quotes[7]` | match |
+| "On Hostelworld it scores 10 out of 10 in every category (value for money, security, atmosphere, cleanliness, staff, location and facilities)" | `reviews.hostelworld.categories`, 7 × 10.0 | match |
+| "though that is from ten reviews." | `reviews.hostelworld.count` 10 | match |
+| "The room" | heading | asserts nothing |
+| "The dormitory is air-conditioned, with lockers and luggage storage." | `facilities[8]`, `[12]`, `[20]`, `[14]`; lockers visible in img-013 | match |
+| "The shared kitchen has a kettle, a dishwasher and kitchenware, and there is a dining area." | `facilities[5]`, `[6]` | match |
+| "The showers are hot." | `facilities[24]` | match |
+| "Bed in the dormitory" / "The only room: one air-conditioned dormitory" (+ JSON-LD `containsPlace`, llms) | `room_types[0]`; `quotes[5]`; `facilities[8]`; no bed count (`contradictions[0]`) | match |
+| "check dates" (room row) | Hostelworld listing | match |
+| Beth's quote, "Beth, England, on Hostelworld, April 2026" | `quotes[7]` (string-equal), author "Beth, Female, 25-30, England", date 2026-04, hostelworld URL | match |
+| "Finding the door" | heading | asserts nothing |
+| "One guest found it "a little bit difficult to find", so here is the way in." | `quotes[5]` | match |
+| "Follow Google Maps." · "You will come to a large black gate; open it." · "Through the gate there is a wooden platform with a door through to the Layday area, to the right of the house." | `location.finding_it` | match ×3 |
+| Catherine's quote, "Catherine, Australia, on Hostelworld, April 2026" | `quotes[5]` string-equal | match |
+| "Open the map" ×2 (+ JSON-LD `hasMap`, llms) | `location.map_url` character-identical | match |
+| "Newly built, and kept that way" | `quotes[7]` "Newly built"; `facilities[15]` | match |
+| "There is housekeeping every day." | `facilities[15]` | match |
+| "One guest called the beds "super comfy" and the showers "amazing"." | `quotes[7]` | match |
+| "Two wrote that they stayed on longer than they had planned, and one was only supposed to stay a night and "ended up here a week"." | `quotes[7]` Beth, `quotes[0]` Taiya (before the truncation) | match |
+| 9.8/10 Hostelworld 10 · 10/10 Booking.com 6 · 5.0/5 Google 15, each "read 19 September 2026" | `reviews.hostelworld / booking / google`, `fetched_at` 2026-09-19 | match ×3; not averaged (`contradictions[1]`) |
+| Jennine's, Akshay's, Taiya's quotes + attributions (no date on the Booking two) | `quotes[6]`, `[4]`, `[1]` string-equal; dates only where the dossier has them | match ×3 |
+| "Kabalana: a sandy beach break for beginners and intermediates, with The Rock, a reef A-frame for advanced surfers." | `location.spot` (thesurfatlas.com) | match, third-party wave description |
+| Rosa headline and credit | live Rosa data, never content (schema v0.3) | hard constraint 9, above |
+| "Check in from 14:00 · Check in until 19:00 · Check out by 14:00" (+ JSON-LD `checkinTime`/`checkoutTime`) | `stayInfo.*` | match |
+| "Check-in is between 14:00 and 19:00, and check-out is by 14:00." | `stayInfo.*`; `hours_note` | match |
+| "Credit cards are not accepted. Taxes are included, and it is non-smoking." | `stayInfo.note`; `facilities[4]` | match |
+| "WiFi is free, and so is the private parking." | `facilities[0]`, `[1]` | match |
+| "There is laundry, daily housekeeping, bicycles to rent and an airport shuttle, and pets can come at no extra charge." | `facilities[16]`, `[15]`, `[17]`, `[2]`, `[19]` | match (laundry not called free) |
+| "Credit cards are not accepted. Non-smoking. Taxes included. Reception has limited hours." | `stayInfo.note`; `hours_note` | match |
+| 19 amenity rows + notes (page, JSON-LD `amenityFeature`, llms) | `facilities[0,1,8,5,6,7,24,20,14,15,23,16,17,2,13,21,18,18,19]` | match ×19 |
+| "Warnagiri Welhengoda, Ahangama 80650, Sri Lanka" ×2 (+ llms ×2; JSON-LD street "Warnagiri Welhengoda", postalCode 80650, locality Ahangama, LK) | `location.address.value` (Google) "Warnagiri welhengoda, Ahangama 80650, Sri Lanka" | match: Google's words, "Welhengoda" capitalised, postcode, street · town postcode · country (playbook §6) |
+| "Rates change with the dates. The booking links show what is available." (footer, drawer, llms) | `booking.path.note`; `gaps[]` offers | match |
+| "Check dates on Hostelworld / Booking.com / Agoda"; "Call +94 77 855 3343" | `booking.*`; `contact.phone` | match ×4 |
+| 10 alt texts | each photograph looked at: berth niche/lamp/pillow (018), dorm through the door (012), lower berth with ladder and keyed drawers (002), berth end, keyed drawer, palm seedling (008), cane lockers with keyholes + concrete shelving (013), basin + cane mirror (003), bench + cushions + painting (017), surfers in white water (019), blue board in the shallows (021), man on wet sand, palms (020) | match ×10; none names a room or a service the dossier lacks |
+| title "Layday Surf Ahangama · A two-minute walk from Kabalana"; meta/og description "Surf, chill and feel at home in Ahangama. A two-minute walk from Kabalana. Layday is small and new." | as above | match |
+| JSON-LD `@type` Hostel; `telephone`; `geo` 5.97846, 80.35265; `sameAs` 3 listings | `business.type.note` "Booking category 'Hostel'"; `contact.phone`; `location.lat_lng` [5.9784609, 80.3526536] rounded to 5 dp; `booking.*` | match |
+| absent, as required: price, season, bed count, WhatsApp, email, reply time, staff languages, owner/staff names in the business's voice, the promised sign, `aggregateRating`, FAQPage | `gaps[]`, `contradictions[0]`, `run_by.note` "unconfirmed" | absent (Rukshan / family only inside Beth's and Jennine's quotes) |
+
+**Totals: 48 rows = 84 individual claims; 84 match, 0 mismatch, 0 unsourced, 0 missing.**
+
+## Open items (facts, not decided here)
+
+- `contact.whatsapp` is schema-required and a dossier gap: blocks a Payload seed (deployer decision).
+- `MAP_PIN` template constant (schema has no geo field); no `SITE_URL` yet (canonical, og:url, og:image,
+  sitemap come with the production build); no favicon.
+- `audit-mockup.mjs` artefacts on this page: `booking_links_reachable: 0` and `keyboard: null` (it looks for
+  `#book` / `data-open-drawer`; the page uses `data-drawer`), `reduced_motion.canvases_hidden: 0` (measured
+  before the class applies; my check shows `display:none`). `has_skip_link: true` is correct this time.
+
+## Evidence
+
+`sites/layday-surf-ahangama/final/shots/critic-1/`: `audit.json`; `desktop-00…11.png`, `mobile-00…13.png`,
+sheets + `shoot.json` (errors `[]`); `w{390,768,1024,1440,1525,1920}-NN.png` + `w{768,1024,1525,1920}-sheet.png`;
+`sweep-js.json`, `sweep-rm.json`, `sweep-nojs.json` (dock overlap, empty runs, text-on-photo, overflow per
+width); `rosa-{live}-{390,768,1024,1440,1525,1920}.png`, `rosa-{ok,404-slow,abort,hang,stale,nojs}-{390,1440}.png`;
+`kbd-{1440,390}-drawer.png`, `tap-390-drawer.png`, `tap-390-dock.png`; `rm-*`, `nogl-*`, `nojs-390-*.png`.
+The Playwright helpers ran from the session scratchpad and are not in the repo. (The `ERR_FAILED` console line
+in the sweep JSONs is my own block of the Rosa JSON; with the network live the count is 0.)
+
+what the designer prompt got wrong: the three pick notes came back built and measured, and this port is the
+first in the run whose designer proved each "never" with a sweep across widths and modes rather than a few
+screenshots — worth keeping. What the prompt still does not make the designer look at is the **text layer**:
+two inline elements set side by side with CSS spacing and no whitespace between them ("10 reviewsread 19
+September 2026", "Sri LankaOpen the map") read fine in every screenshot and wrong in copy-paste, a screen
+reader and any text extractor — exactly the surfaces 4i exists for. The designer's self-check should include
+`document.body.innerText` diffed against the copy with JS on and off, not only the sheets. Second, the prompt
+lets a schema field be rendered twice when two fields carry the same fact (`copyBlocks[5]` and
+`stayInfo.note` stacked two lines apart); "No duplication" is a schema rule the copyeditor notes but the
+designer never checks on the rendered page. Third, inherited from the mockup and never raised by any station:
+horizontally scrolling photo rows on phones fail axe `scrollable-region-focusable`; a designer-side axe run at
+390 would have caught it at 4e.
+
+fix list (fail only): none — the round passes. Non-blocking, smallest first, if Build is reopened for any
+reason: (1) a space before `.when` and before the address's map link (`index.astro`) → dimension 5/6;
+(2) `tabindex="0"` + an `aria-label` on the two `.trio` scrollers, or no sideways scroll at 390 → dimension 6;
+(3) render either the Practicalities sentence or `stayInfo.note`'s repeated items, not both — a
+designer/copywriter call → dimension 5.
