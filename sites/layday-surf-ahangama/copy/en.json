@@ -1,49 +1,48 @@
 {
  "slug": "layday-surf-ahangama",
  "locale": "en",
- "copywriter_version": "0.1.0",
- "humanizer_version": "0.1.0",
+ "copywriter_version": "0.3.0",
+ "humanizer_version": null,
  "businessName": "Layday Surf Ahangama",
  "tagline": "Surf, chill and feel at home in Ahangama",
  "copyBlocks": [
   {
    "slot": "intro",
    "heading": "A two-minute walk from Kabalana",
-   "body": "Small, new, and about as close to the wave as you can sleep. One dorm, a garden, and a family who built the place and still run it.\n\nIt is quiet. Guests keep saying so, and they mean it as the main point."
+   "body": "Small and new, and Kabalana Beach is a few steps away. One dorm, a garden, and the family who own it.\n\nIt is quiet: \"very quiet which was amazing\", in one guest's words."
   },
   {
    "slot": "about",
-   "heading": "One dorm, and that is deliberate",
-   "body": "There is a single dormitory here. No second building, no crowd, nobody checking in at three in the morning. Everyone who writes about the place lands on the same two words: clean and quiet.\n\nEvery category on Hostelworld sits at 10 out of 10 — value, security, atmosphere, cleanliness, staff, location, facilities. Ten reviews is a small sample. It is also a perfect one."
+   "heading": "Just one dorm",
+   "body": "There is a single dormitory here. Guests write about how clean it is: \"super clean\", \"very clean\", \"absolutely spotless\".\n\nEvery category on Hostelworld sits at 10 out of 10: value for money, security, atmosphere, cleanliness, staff, location, facilities. Those scores come from ten reviews."
   },
   {
    "slot": "about",
    "heading": "Newly built, and kept that way",
-   "body": "The showers, the beds, the storage: all of it is new and it gets cleaned daily by the people who own it. One guest extended her stay and wrote that she did not want to leave, which is the sentence this place earns most often."
+   "body": "Housekeeping is daily. The beds are \"super comfy\" and the showers \"amazing\", in one guest's words. Two guests wrote that they stayed longer than they meant to; one was only supposed to stay a night and \"ended up here a week\"."
   },
   {
    "slot": "offer",
    "heading": "The room",
-   "body": "One air-conditioned dormitory, with real luggage space, a wardrobe, lockers and hot showers. There is a shared kitchen with a kettle, a dishwasher and everything you need to cook, plus a dining area, a terrace and a garden to sit in afterwards.\n\nRates move with the season and the dates — the booking links show what is free."
+   "body": "One air-conditioned dormitory, with lockers, luggage storage and hot showers. There is a shared kitchen with a kettle, a dishwasher and kitchenware, plus a dining area, a terrace and a garden.\n\nRates move with the dates — the booking links show what is available."
   },
   {
    "slot": "info",
    "heading": "Finding the door",
-   "body": "This is the one thing worth reading twice. Follow the map to Warnagiri, Welhengoda. There is a large black gate — open it. Through the gate there is a wooden platform, and the door to Layday is on the right of the house.\n\nGuests have got lost here. Now you will not."
+   "body": "A guest found it \"a little bit difficult to find\", so here is the way in. Follow Google Maps. There is a large black gate — open it. Through the gate there is a wooden platform, with a door through to the Layday area, to the right of the house."
   },
   {
    "slot": "info",
    "heading": "Practicalities",
-   "body": "Check in between 14:00 and 19:00, check out by 14:00. Taxes are included and the property does not take credit cards. Non-smoking throughout.\n\nFree private parking, free WiFi, laundry, daily housekeeping, bicycle rental, and an airport shuttle if you want one. Pets are welcome at no charge."
+   "body": "Check in between 14:00 and 19:00, check out by 14:00. Taxes are included and the property does not take credit cards. It is non-smoking.\n\nFree private parking, free WiFi, laundry, daily housekeeping, bicycle rental and an airport shuttle. Pets are allowed at no extra charge."
   }
  ],
- "spot": "Kabalana: a sandy beach break that suits beginners and improvers, with The Rock reef alongside it when the swell is up.",
+ "spot": "Kabalana: a sandy beach break for beginners and intermediates, with The Rock, a reef A-frame for advanced surfers.",
  "season": null,
  "rooms": [
   {
    "label": "Bed in the dormitory",
-   "beds": "One air-conditioned dormitory",
-   "note": "the whole hostel is this one room; bed count is not published consistently"
+   "note": "The only room: one air-conditioned dormitory"
   }
  ],
  "stayInfo": {
@@ -169,7 +168,7 @@
  ],
  "contact": {
   "phone": "+94778553343",
-  "address": "'Warnagiri' Welhengoda, Ahangama, Sri Lanka"
+  "address": "Warnagiri welhengoda, Ahangama 80650, Sri Lanka"
  },
  "bookingLinks": [
   {
@@ -185,7 +184,5 @@
    "url": "https://www.agoda.com/layday-surf-ahangama/hotel/piyadigama-lk.html"
   }
  ],
- "languagesSpoken": [
-  "en"
- ]
+ "languagesSpoken": []
 }

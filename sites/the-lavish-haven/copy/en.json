@@ -1,45 +1,45 @@
 {
  "slug": "the-lavish-haven",
  "locale": "en",
- "copywriter_version": "0.2.0",
- "humanizer_version": "0.2.0",
+ "copywriter_version": "0.3.0",
+ "humanizer_version": null,
  "businessName": "The Lavish Haven",
  "tagline": "A new hotel, two minutes from Kabalana",
  "copyBlocks": [
   {
    "slot": "intro",
    "heading": "Off the main road, over the surf",
-   "body": "Kabalana Beach is a two-minute walk. The main road is not — the hotel sits back from it, which is the difference between sleeping and listening to tuk-tuks all night.\n\nCafés and restaurants are in every direction. The pool is in the middle of the hotel, and most evenings that is where people end up."
+   "body": "Cafés and restaurants surround the hotel, and there is a fruit stand nearby. Guests score the location 9.6 out of 10 on Booking.com.\n\nKoggala Airport is about 5 km away."
   },
   {
    "slot": "about",
    "heading": "New, and it shows",
-   "body": "The hotel opened recently enough that one guest wrote he was the first customer. Everything is still new: the rooms, the bathrooms, the air conditioning. Guests score it 9.7 out of 10 for cleanliness and 9.7 for comfort on Booking.com, across 34 reviews, and 5.0 on Google across 21.\n\nRooms are large — larger than the rate suggests, which is the most common thing said about the place after the staff."
+   "body": "The hotel is new. On Booking.com one guest calls it “brand new”, another “a new facility”.\n\nGuests there score it 9.7 out of 10 for cleanliness, 9.7 for comfort and 9.4 for staff, across 34 reviews. On Google it has 5.0 out of 5 from 21 reviews."
   },
   {
    "slot": "about",
-   "heading": "The staff are the reason people extend",
-   "body": "More than one guest has moved hotels, landed here, and stayed. One stayed over a month. Another cancelled the next hotel and stayed put. Staff score 9.4 on Booking.com."
+   "heading": "Staying longer",
+   "body": "One guest wrote that they moved around many hotels until they found this one, and stayed over a month. Another extended their stay instead of going to another hotel."
   },
   {
    "slot": "offer",
    "heading": "Nine kinds of room",
-   "body": "King rooms with a balcony, a garden view, or a private patio onto the pool. Superior kings. Family studios and junior suites that sleep four, and a two-bedroom suite that sleeps five.\n\nEvery room has air conditioning, a private bathroom, soundproofing, a work desk and free WiFi. Rates depend on the room and the dates — the booking links show what is free."
+   "body": "King rooms with a balcony or a garden view, and a deluxe king on the ground floor with a private patio and a pool view. Superior kings. Family studios and suites that sleep four, and a two-bedroom suite that sleeps five.\n\nEach room has a work desk, soundproofing and free WiFi. The family rooms have air conditioning and private bathrooms.\n\nThere is no published price list. Rates go by date, and the booking links show what is available."
   },
   {
    "slot": "offer",
    "heading": "Pool, restaurant, spa",
-   "body": "An outdoor pool, open all year, in the middle of the hotel. A restaurant serving breakfast with local specialities and fresh pastries, and Chinese, Indian and Italian through the day. A coffee house on site. A spa and wellness centre.\n\nFor families: family rooms, kids' meals, an outdoor play area and babysitting on request."
+   "body": "An outdoor pool, open all year, in the middle of the hotel. A restaurant serving breakfast with local specialities and fresh pastries, and Chinese, Indian and Italian dishes. A coffee house on site. A spa and wellness centre.\n\nFor families: family rooms, an outdoor play area, and kids’ meals and babysitting at an extra charge."
   },
   {
    "slot": "info",
    "heading": "Practicalities",
-   "body": "A 24-hour front desk, with private and express check-in. Free private parking on site, by reservation. An airport shuttle — Koggala Airport is about 5 km away.\n\nDaily housekeeping, laundry, dry cleaning and ironing. Bicycle rental. Facilities for guests with disabilities. Non-smoking rooms."
+   "body": "A 24-hour front desk, with private and express check-in. Free private parking, by reservation. An airport shuttle.\n\nDaily housekeeping, laundry, dry cleaning and ironing. Bicycle rental. Facilities for guests with disabilities. Non-smoking rooms."
   }
  ],
- "spot": "Kabalana: a sandy beach break that suits beginners and improvers, with The Rock reef alongside it when the swell is up. The beach is two minutes from the hotel, on foot.",
+ "spot": "Kabalana: a sandy beach break for beginners and intermediates, with The Rock reef A-frame for advanced surfers. The beach is two minutes from the hotel, on foot.",
  "season": null,
- "closing": "Rates move with the dates. Booking.com and Agoda show what is free.",
+ "closing": "Rates move with the dates. Booking.com and Agoda show what is available.",
  "rooms": [
   {
    "label": "Deluxe King Room with private patio and pool view",
@@ -181,7 +181,7 @@
   },
   {
    "platform": "google",
-   "score": 5.0,
+   "score": 5,
    "scale": "5",
    "count": 21
   }
@@ -215,7 +215,7 @@
  ],
  "contact": {
   "phone": "+94764832988",
-  "address": "Ahangama, Sri Lanka"
+  "address": "No166/1 walhengoda road, Ahangama 80650, Sri Lanka"
  },
  "bookingLinks": [
   {
@@ -227,7 +227,5 @@
    "url": "https://www.agoda.com/the-lavish-haven-h82617698/hotel/piyadigama-lk.html"
   }
  ],
- "languagesSpoken": [
-  "en"
- ]
+ "languagesSpoken": []
 }
