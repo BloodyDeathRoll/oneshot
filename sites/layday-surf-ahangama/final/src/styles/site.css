@@ -25,7 +25,7 @@ img{display:block;max-width:100%;height:auto}
 
 /* ---------- top line ---------- */
 .top{height:var(--top);display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:relative;z-index:3}
-.top .name{font-weight:400;font-size:18px;letter-spacing:-.005em}
+.top .name{font-weight:400;font-size:18px;letter-spacing:-.005em} /* 4h: now the page's h1 (the brand query); UA h1 size/weight/margin never reach it */
 .top .tel{font-size:16px;text-decoration:none;border-bottom:1px solid var(--ink)}
 
 /* ---------- inside the berth ---------- */
@@ -43,7 +43,7 @@ img{display:block;max-width:100%;height:auto}
 .niche i{position:absolute;inset:0;background:var(--sh)}
 .niche i::before{content:"";position:absolute;left:0;right:0;bottom:0;height:14%;background:var(--lit);clip-path:polygon(0 100%,100% 100%,86% 0,14% 0)}
 .niche i::after{content:"";position:absolute;top:0;bottom:0;left:0;width:14%;background:var(--lit);clip-path:polygon(0 0,100% 14%,100% 86%,0 100%)}
-h1{font-weight:200;font-size:clamp(2.8rem,8.4vw,9rem);line-height:.9;letter-spacing:-.045em;max-width:5.9em} /* 4g: the mockup's three <span> lines became a measure, so any heading the owner writes wraps; same three lines */
+.hl{font-weight:200;font-size:clamp(2.8rem,8.4vw,9rem);line-height:.9;letter-spacing:-.045em;max-width:5.9em} /* 4g: the mockup's three <span> lines became a measure, so any heading the owner writes wraps; same three lines. 4h: was h1; the h1 is now the name in the top line, this rule kept as it was */
 .tag{font-weight:400;font-size:clamp(1.05rem,1.5vw,1.35rem);margin-top:28px;max-width:26em}
 .score{font-size:16px;margin-top:10px}
 .score a{text-decoration:none;border-bottom:1px solid var(--ink)}
@@ -215,7 +215,7 @@ blockquote footer a{text-decoration:none;border-bottom:1px solid var(--ink)}
   .stage{--a:.09;height:calc(100svh - var(--top) - 64px);min-height:520px}
   .wall{left:calc(var(--a)*100% + 22px);right:22px;top:calc(var(--a)*100% + 28px)}
   .niche{right:0;top:0;width:64px}
-  h1{font-size:2.8rem}
+  .hl{font-size:2.8rem} /* 4h: was h1 */
   .tag{font-size:1.05rem;margin-top:20px}
   .act{margin-top:24px;gap:14px}
   .lamp{width:34px}

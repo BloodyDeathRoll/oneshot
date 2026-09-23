@@ -6,7 +6,7 @@ import css from '../styles/site.css?raw'
 import js from '../scripts/site.js?raw'
 import {
   content as c, pName, safeUrl, tel, phoneLabel, paras, sentences, scoreText, monthYear, readOn, photo,
-  SITE, IS_PREVIEW,
+  SITE, IS_PREVIEW, LD_TYPE, MAP_PIN, postalAddress, metaDescription,
 } from '../lib/site.mjs'
 
 const name = c.businessName
@@ -45,8 +45,41 @@ const st = c.stayInfo ?? {}
 const fcOn = c.forecast?.enabled && /^[a-z0-9-]+$/.test(c.forecast?.rosaSpotId ?? '')
 const spotId = c.forecast?.rosaSpotId, spotName = c.forecast?.spotName || spotId
 
-const title = name
-const desc = (c.tagline ?? '').slice(0, 155)
+/* Head and structured data (station 4h). Absolute URLs (canonical, hreflang, og:url, og:image, JSON-LD
+   @id/url/image, sitemap) exist only when the build is given SITE_URL; everything else stays relative.
+   A preview build (IS_PREVIEW) adds the noindex meta and nothing else: canonical, hreflang and og:*
+   still follow whatever SITE_URL it was given, so the preview's own links resolve. */
+const site = SITE
+const abs = (u) => (site ? new URL(u, site).href : null)
+const postal = postalAddress(address)
+const place = postal?.addressLocality ?? ''
+/* brand first. "<name>, <town>" when the name lacks the town; this name already carries it
+   ("… Ahangama"), so the second half is the intro heading (where it is), if the whole fits in 60. */
+const second = place && !name.toLowerCase().includes(place.toLowerCase()) ? `, ${place}` : (intro?.heading ? ` · ${intro.heading}` : '')
+const title = `${name}${second}`.length <= 60 ? `${name}${second}` : name
+const desc = metaDescription([c.tagline, intro?.heading, sentences(paras(intro?.body)[0])[0]]) || (c.tagline ?? '').slice(0, 155)
+const og = P(0)
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': LD_TYPE[c.businessType] ?? 'LocalBusiness',
+  ...(site ? { '@id': `${site.href}#business`, url: site.href } : {}),
+  name,
+  ...(desc ? { description: desc } : {}),
+  ...(site && ph.some(Boolean) ? { image: ph.filter(Boolean).map((p) => abs(p.src)) } : {}),
+  ...(c.contact?.phone ? { telephone: c.contact.phone } : {}),
+  ...(postal ? { address: postal } : {}),
+  geo: { '@type': 'GeoCoordinates', latitude: MAP_PIN.lat, longitude: MAP_PIN.lon },
+  ...(mapUrl ? { hasMap: mapUrl } : {}),
+  ...(st.checkInFrom ? { checkinTime: st.checkInFrom } : {}),
+  ...(st.checkOutTo ? { checkoutTime: st.checkOutTo } : {}),
+  ...((c.amenities ?? []).length ? {
+    amenityFeature: c.amenities.map((a) => ({
+      '@type': 'LocationFeatureSpecification', name: a.note ? `${a.label} (${a.note})` : a.label, value: true,
+    })),
+  } : {}),
+  ...((c.languagesSpoken ?? []).length ? { knowsLanguage: c.languagesSpoken } : {}),
+  ...(links.length ? { sameAs: links.map((l) => l.url) } : {}),
+}
 ---
 <!doctype html>
 <html lang="en">
@@ -56,7 +89,19 @@ const desc = (c.tagline ?? '').slice(0, 155)
 <title>{title}</title>
 {IS_PREVIEW && <meta name="robots" content="noindex, nofollow">}
 {desc && <meta name="description" content={desc}>}
-{SITE && <link rel="canonical" href={SITE.href}>}
+{site && <link rel="canonical" href={site.href}>}
+{site && <link rel="alternate" hreflang="en" href={site.href}>}
+{site && <link rel="alternate" hreflang="x-default" href={site.href}>}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content={name}>
+<meta property="og:title" content={title}>
+{desc && <meta property="og:description" content={desc}>}
+{site && <meta property="og:url" content={site.href}>}
+{site && og && <meta property="og:image" content={abs(og.src)}>}
+{site && og && <meta property="og:image:width" content={String(og.w)}>}
+{site && og && <meta property="og:image:height" content={String(og.h)}>}
+{site && og && og.alt && <meta property="og:image:alt" content={og.alt}>}
+<meta name="twitter:card" content="summary">
 <script is:inline>document.documentElement.classList.add('js')</script>
 <link rel="preload" href="fonts/urbanist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style is:inline set:html={css}></style>
@@ -65,7 +110,7 @@ const desc = (c.tagline ?? '').slice(0, 155)
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="top">
-  <span class="name">{name}</span>
+  <h1 class="name">{name}</h1>
   {phone && <a class="tel" href={phone}>{phoneText}</a>}
 </header>
 
@@ -77,7 +122,7 @@ const desc = (c.tagline ?? '').slice(0, 155)
     <span class="lamp" aria-hidden="true"></span>
     <div class="wall" id="wall">
       <div class="niche" id="niche" aria-hidden="true"><i></i></div>
-      <h1 id="h-intro">{intro?.heading || name}</h1>
+      <p class="hl" id="h-intro">{intro?.heading || name}</p>
       {c.tagline && <p class="tag">{c.tagline}</p>}
       {r0 && <p class="score">{safeUrl(r0.url) ? <a href={r0.url}>{scoreText(r0)}/{r0.scale} on {pName(r0.platform)}, {r0.count} reviews</a> : <Fragment>{scoreText(r0)}/{r0.scale} on {pName(r0.platform)}, {r0.count} reviews</Fragment>}{readOn(r0) && <span class="when">{readOn(r0)}</span>}</p>}
       <p class="act">
@@ -237,5 +282,7 @@ const desc = (c.tagline ?? '').slice(0, 155)
 </div>
 
 <script is:inline set:html={js}></script>
+<!-- 4h: structured data last, so its ~3 KB does not sit in front of the first paint (measured: +30 ms LCP in the head) -->
+<script is:inline type="application/ld+json" set:html={JSON.stringify(ld).replace(/</g, '\\u003c')}></script>
 </body>
 </html>
