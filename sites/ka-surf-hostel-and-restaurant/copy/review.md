@@ -858,3 +858,108 @@ Notes, not fails:
 `en.json`: 0 `unsourced`, 0 `contradicted`, 81 `sourced`, 2 `shared-context`, 3 `framing`; voice clean (standing notes on `copyBlocks[4]`); required fields covered. Both changed fields pass: "actually available" and "207/A Welahangoda, Ahangama 80650, Sri Lanka" are sourced under playbook 0.5.1.
 
 The fail is one broken trace: `sources.md` line 25 cites `location.address` for a string it no longer holds (S1 → copywriter). Treated as blocking because `sources.md` is the copy's traceability record and round 8 made its accuracy a pass condition. To pass: that row cites the current `location.address.value`; nothing in `en.json` changes. The humanizer has nothing to do.
+
+## round 10 — full-file re-check after the round-9 `sources.md` fix, 2026-09-23
+
+Reviewer: copyeditor 0.3.0 (runtime prompt from `node tools/prompt.mjs copyeditor`, every layer read, playbook 0.5.1). Independent of the copywriter and the humanizer. Trigger: copywriter's round-9 fix (ledger 2026-09-23T08:50:51Z, commit d26082d).
+
+Scope: **every sentence and every field** of `copy/en.json` (hard constraint 6), and every `sources.md` citation against the key it names. Every quote below re-read in the current `dossier.json`.
+
+### Scope check
+- `en.json` since round 9 (`git diff 57bd0cf`): **unchanged**.
+- `dossier.json` since round 9: **unchanged**.
+- `sources.md` since round 9: one row changed, line 25 "info (getting here) ¶1": `location.address` ("80650 Ahangama, Sri Lanka") → `location.address.value` ("207/A welahangoda, Ahangama, Sri Lanka" — the town only; no postcode in this paragraph).
+- `en.draft.json` since round 9: synced to `en.json` (offer ¶2 dash → ", and"; `copyBlocks[4]` para 1 now the humanised sentences; `amenities[3]` "Private locker" → "Private lockers"). `en.draft.json` and `en.json` are now byte-identical. No fact added. Consequence: the draft no longer records the pre-humanizer wording of those three fields; rounds 7–9 audited that diff and found no fact added, so nothing is lost for this review.
+
+### Fact audit (whole file)
+
+| # | Field | Sentence / claim | Dossier key (words re-read) | Verdict |
+|---|---|---|---|---|
+| 1 | `businessName` | "KA Surf Hostel" | `business.name` "KA Surf Hostel"; "and restaurant" not used (`contradictions[3]`) | sourced |
+| 2 | `tagline` | "Surf, chill and feel at home in Ahangama" | `business.tagline` "Surf, Chill & Feel at Home in Ahangama" | sourced |
+| 3 | `languagesSpoken` | `["en"]` | `languages_spoken[0]` "English" | sourced |
+| 4 | `copyBlocks[0].heading` | "Five minutes from Kabalana Beach" | `location.distance_to_beach` "Kabalana Beach 450 yd / a 5-minute walk" | sourced |
+| 5 | `copyBlocks[0].body` S1a | "A family runs this place" | `business.run_by` "a local family"; `description_long` "managed by a local family" | sourced |
+| 6 | `copyBlocks[0].body` S1b | "they set out to make you feel at home from the moment you arrive" | `description_long` "passionate about making you feel at home from the moment you arrive" (the family's aim) | sourced |
+| 7 | `copyBlocks[0].body` S2 | "Kabalana Beach is a five-minute walk." | `distance_to_beach` "a 5-minute walk" | sourced |
+| 8 | `copyBlocks[0].body` S3 | "Dorms if you want the company, private rooms if you don't." | `room_types[0–5]`; `description_long` "Dorms & Private Rooms", "Mingle when you want, relax when you need" | sourced (row under-cites; round-8 note stands) |
+| 9 | `copyBlocks[1].heading` | "What guests say about the staff" | asserts nothing | framing |
+| 10 | `copyBlocks[1].body` S1 | "\"Family\" is the word guests keep using." | `reviews.quotes[1]` Clara, `[2]` Luzzi, `[6]` Nanet, `[7]` Elena; `run_by.note` | sourced |
+| 11 | `copyBlocks[1].body` S2 | Mia's dengue account, attributed ("wrote that") | `reviews.quotes[9]` (Mia, Female) | sourced |
+| 12 | `copyBlocks[1].body` S3a | Booking staff 9.9/10 | `reviews.booking.categories.Staff` 9.9 | sourced |
+| 13 | `copyBlocks[1].body` S3b | "the hostel's highest score there" | next highest Value for money 9.4 | sourced |
+| 14 | `copyBlocks[1].body` S4a | Hostelworld "the same 9.9" | `reviews.hostelworld.categories.Staff` 9.9 | sourced |
+| 15 | `copyBlocks[1].body` S4b | "only value for money and security do better, both at a full 10" | Value for Money 10.0, Security 10.0; rest ≤ 9.8 | sourced |
+| 16 | `copyBlocks[2].heading` | "Breakfast, every day" | `description_long` "daily free healthy breakfast" | sourced |
+| 17 | `copyBlocks[2].body` | "Rotis, fruit, pancakes and eggs" | `description_long` "(rotis, fruits, pancakes, eggs …)" | sourced |
+| 18 | `copyBlocks[2].body` | "with vegan options" | `description_long` "vegan options available" | sourced |
+| 19 | `copyBlocks[3].heading` | "Dorms and private rooms" | `description_long`; `room_types[]` | sourced |
+| 20 | `copyBlocks[3].body` S1 | room categories | `room_types[0–5]` | sourced |
+| 21 | `copyBlocks[3].body` S2a | A/C and fan in every room | `description_long`; `facilities[22]` | sourced |
+| 22 | `copyBlocks[3].body` S2b | private lockers | `description_long` "private lockers & personal fridge in every room"; `facilities[16]` | sourced |
+| 23 | `copyBlocks[3].body` S2c | a personal fridge | `description_long`; `facilities[23]` | sourced |
+| 24 | `copyBlocks[3].body` S3a | "The bathrooms are modern" | `description_long` "modern bathrooms with hot showers" | sourced |
+| 25 | `copyBlocks[3].body` S3b | "the showers are hot" | `description_long`; `facilities[24]` | sourced |
+| 26 | `copyBlocks[3].body` S4a | "Rates change with the dates" | `booking.path.note` "live inventory …"; `gaps[]` "offers" | sourced |
+| 27 | `copyBlocks[3].body` S4b | "the booking links below show what is actually available." | `booking.path.note`; `engine_url`; `other_engines` | sourced |
+| 28 | `copyBlocks[4].heading` | "What is here" | asserts nothing | framing |
+| 29 | `copyBlocks[4].body` S1a | green garden and chill zone | `description_long` "beautiful green garden & chill zone"; `facilities[4]` | sourced |
+| 30 | `copyBlocks[4].body` S1b | free filtered water, refill any time | `description_long` "free filtered water — refill anytime"; `facilities[21]` | sourced |
+| 31 | `copyBlocks[4].body` S2a | laundry service available | `description_long`; `facilities[19]` | sourced |
+| 32 | `copyBlocks[4].body` S2b | minimarket on site | `facilities[12]` | sourced |
+| 33 | `copyBlocks[4].body` S3a | scooter rental | `description_long`; `facilities[20]` | sourced |
+| 34 | `copyBlocks[4].body` S3b | "it can come with a surf rack" | `description_long` "(also with surf rack possible)"; `facilities[20]` | sourced |
+| 35 | `copyBlocks[4].body` S4a | luggage storage | `facilities[8]` | sourced |
+| 36 | `copyBlocks[4].body` S4b | lockers | `facilities[16]` | sourced |
+| 37 | `copyBlocks[4].body` S5 | reception open 24 hours | `hours_note`; `facilities[10]`; `description_long` "24/7 reception" | sourced |
+| 38 | `copyBlocks[4].body` S6 | pets on request at no charge | `facilities[15]` | sourced |
+| 39 | `copyBlocks[4].body` S7 | children not accommodated | `house_rules[1]` | sourced |
+| 40 | `copyBlocks[5].heading` | "Getting here" | asserts nothing | framing |
+| 41 | `copyBlocks[5].body` S1 | "Ahangama, a five-minute walk from Kabalana Beach." | `location.address.value` "207/A welahangoda, Ahangama, Sri Lanka"; `distance_to_beach` | sourced (trace row now correct) |
+| 42 | `copyBlocks[5].body` S2a | Koggala Airport about 5 km | `location.nearby` "3.3 mi" = 5.31 km | sourced |
+| 43 | `copyBlocks[5].body` S2b | railway station a little over 2 km | `location.nearby` "1.3 mi" = 2.09 km | sourced |
+| 44 | `copyBlocks[5].body` S3 | "The property arranges a shuttle." | `facilities[13]` "shuttle service"; `facilities[18]` "airport transfers" | sourced (station-pickup reading note stands) |
+| 45 | `spot` | Kabalana sandy beach break, beginners and intermediates | `location.spot` (thesurfatlas.com) | shared-context |
+| 46 | `spot` | The Rock, reef A-frame, advanced | `location.spot` | shared-context |
+| — | `season` | `null` | `season.value` null | no claim |
+| 47–52 | `rooms[0–5]` | 3 dorm rows; Double / 1 extra-large double; Deluxe double / 1 extra-large double; Deluxe double / 1 single | `room_types[0]`, `[1]`, `[2]`, `[3]`, `[5]`, `[4]` | sourced ×6 |
+| 53 | `stayInfo.checkInFrom/To` | 13:00–23:00 | `hours_note`; `contradictions[1]` recorded, harvester's lean followed | sourced (owner item) |
+| 54 | `stayInfo.checkOutTo` | 13:00 | `hours_note` "check-out until 13:00" | sourced (same) |
+| 55 | `stayInfo.note` S1 | reception 24 hours | `hours_note`; `facilities[10]` | sourced |
+| 56 | `stayInfo.note` S2 | no children, cots or extra beds | `house_rules[1]` | sourced |
+| 57–59 | `amenities[0–2]` | Free breakfast · Free WiFi · A/C and fan in every room | `facilities[2]` + `description_long`; `facilities[0]` (existence only, `contradictions[2]`); `facilities[22]` | sourced ×3 |
+| 60 | `amenities[3]` | Private lockers and personal fridge in every room | `description_long`; `facilities[16]`, `[23]` | sourced |
+| 61–73 | `amenities[4–16]` | Hot showers … Pets allowed on request (no extra charge) | `facilities[24]`; `description_long` + `[4]`; `[21]`, `[20]`, `[19]`, `[12]`, `[8]`, `[9]`, `[10]`, `[11]`, `[18]`, `[17]`, `[15]`, each re-read | sourced ×13 |
+| 74–76 | `ratings[0–2]` | Hostelworld 9.8/10 (66) · Booking 9.5/10 (38) · Google 4.8/5 (42) | `reviews.hostelworld`, `.booking`, `.google`; script: scores, counts and URLs equal | sourced ×3 |
+| 77–81 | `testimonials[0–4]` | Clara · Elena · Mia · Wolfgang · Saketh | `reviews.quotes[1, 7, 9, 3, 8]`: script string-equality **5/5 verbatim**; dates and platforms match | sourced ×5 |
+| 82 | `contact.phone` | "+94773746053" | `contact.phone` (script-equal) | sourced |
+| 83 | `contact.address` | "207/A Welahangoda, Ahangama 80650, Sri Lanka" | `location.address.value` (Google) + postcode from `address_other_platforms[0]` (Booking), per playbook 0.5.1 §6 | sourced |
+| 84–86 | `bookingLinks[0–2]` | "Check dates on Hostelworld / Booking.com / Agoda" | `booking.other_engines[0]`, `engine_url`, `other_engines[1]` (script-equal) | sourced ×3 |
+
+**Counts (86 claim rows):** `sourced` 81 · `shared-context` 2 · `framing` 3 · **`unsourced` 0** · **`contradicted` 0**.
+
+No recorded contradiction is resolved silently (parking, check-in, WiFi, restaurant name).
+
+### Failing items
+None.
+
+### Voice audit (per block)
+Unchanged text; round-9 scores stand: `copyBlocks[0]`, `[1]`, `[3]`, `[5]` 8/8; `[2]`, `tagline`, `spot` clean; `copyBlocks[4]` 7/8, notes only (three "X, and Y" sentences in a row; "Laundry service is available" is listing register). No voice fail.
+
+### Completeness (`beach_lodging`)
+Unchanged from round 9: required fields covered; `season` null with reason; open items (no `contact.whatsapp`, `businessType` seeded by deployer, version strings "0.1.0") are not copy fails.
+
+### `sources.md` rows checked against the dossier
+Method (script): every parenthesised double-quoted string searched in `dossier.json` — 79 found, 0 missing; every `facilities[n]` / `house_rules[n]` / `room_types[n]` citation checked at its index — 36, 0 mismatches; every quote attached to a named key checked **at that key** — 65, 0 not at key.
+
+| Row | Result |
+|---|---|
+| info (getting here) ¶1 (changed) | **Accurate.** "207/A welahangoda, Ahangama, Sri Lanka" is `location.address.value` verbatim; the "town only" note matches the sentence. Round-9 S1 closed |
+| intro ¶2 | Accurate but under-cites (round-8 note, unchanged) |
+| All other rows and "Deliberately not written" | Accurate; unchanged against unchanged keys |
+
+Notes, not fails (carried from round 9): the dossier's `location.address.note` and `gaps[]` "location.address.postcode" wording still predates playbook 0.5.1 (harvester). The `humanizer-notes.md` attribution note is not re-checked here (no change since round 9).
+
+### Verdict: **PASS** (round 10, full-file re-check)
+
+`en.json`: 0 `unsourced`, 0 `contradicted`, 81 `sourced`, 2 `shared-context`, 3 `framing`; voice clean; required fields covered. `sources.md`: every citation resolves at its named key. Nothing goes back to the copywriter or the humanizer.
