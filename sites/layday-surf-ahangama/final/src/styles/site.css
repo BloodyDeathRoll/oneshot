@@ -334,3 +334,8 @@ html:not(.js) .fc-now,.fc.off .fc-now{visibility:hidden}
    page scrolled sideways (measured on the mockup itself: 104px at 800). They now share the row, at
    most 320px each, so from 1008px up nothing changes. */
 @media (min-width:768px){ .trio img{width:calc((100% - 48px) / 3);max-width:320px} }
+/* 4g round 3 (Shahar, 2026-09-23): the berth pair's two fixed 320px photographs overflowed their
+   7-column cell leftwards over Beth's quote from 768 to 1524px (the mockup's own overlap at 768–1100,
+   widened by pick note 1's lane). They now share the cell, at most 320px each, like .trio above;
+   from 1525px up nothing changes. */
+@media (min-width:768px){ .room .pair img{width:calc((100% - 24px) / 2);max-width:320px} }
