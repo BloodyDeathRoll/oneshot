@@ -120,3 +120,15 @@ shoot.mjs: desktop 13 captures 10273px · mobile 15 captures 11389px · errors [
 ```
 
 Servers on 8760–8762 were stopped. The throwaway production build and all comparison captures stayed in scratch. Nothing was written outside `sites/the-lavish-haven/`: no ledger line, no commit, no deploy.
+
+## Re-run (4i, after 4g rounds 2 and 3 and the 4h re-run; 2026-09-23)
+
+I re-checked on the current build what this station owns. **Nothing was broken, so no source file was changed.** The rebuilt `dist/` is byte-identical to the one on disk (0 px by construction). The 4h re-run above did not change the JSON-LD, so there is nothing to reconcile.
+
+- **llms.txt matches the content.** It is generated at build time (5 343 B preview; 5 259 B on `example.test`, where the preview line is dropped and "Pages" is absolute; 5 382 B on workers.dev, which keeps the preview line). `featureLine` "A year-round outdoor pool, at the centre of the hotel." is its own paragraph after the intro. Every line was checked against the page with JS off: 56 sentences appear verbatim. The rest are llms.txt's own joins of page fields, and each field was checked on its own: 9 room labels and beds (sleeps 4 ×4, 5 ×1, ground floor), 25 amenity labels and notes, the address, the phone, both ratings with count and read date, and 5 quotes with their authors. All are on the page. Every link in llms.txt is an `href` on the page. The one difference is still `stayInfo.note` (it says the same as "Practicalities", in different words), as recorded above. Alt texts are not in llms.txt, so the new alts change nothing there.
+- **Robots AI rules:** unchanged. Preview (`dist/`, workers.dev): `Disallow: /` for `*` and the same 15 named AI crawlers. Production (`example.test`): `Allow: /` for `*`, the 15 crawlers allowed under "owner to confirm", and a `Sitemap:` line. **Owner decision still open.**
+- **Answers with JS off** (Playwright, 390×844): all 63 content strings are in the visible text. That covers every copy-block heading and paragraph, room labels, amenity rows, quotes, tagline, `featureLine` (`#nightLine`), closing, address, name and spot. 0 are missing. Links: Booking.com 13, Agoda 2, `tel:` 2, Google Maps 1, rosa.surf 2. The "See today's forecast" link is visible. 0 third-party requests. The round-2 glue check found 0 words run together (no word-character to word-character join between adjacent text nodes in one block).
+- **No hidden text.** Elements with text that are not rendered with JS off: the scroll cue ("Scroll, and it gets dark"), the booking drawer (heading, closing line, platform rows, "Or call" and number), the Rosa credit and the forecast unit. All are interface that JS shows. Each fact in them is also visible elsewhere on the page. None is text aimed only at a model. Round 2's separator is a no-break space at `font-size:0` (`.amen li .sp`). It holds whitespace only, no words.
+- **Unchanged:** FAQPage is still declined (no question is visible on the page). R1–R5 stand.
+
+Servers on 8760 were stopped. Nothing was written outside `sites/the-lavish-haven/`: no ledger line, no commit, no deploy.
