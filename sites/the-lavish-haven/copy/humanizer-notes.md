@@ -78,3 +78,22 @@ None. `en.json` left as it arrived.
 ### Could not fix without a fact
 
 None.
+
+## Round 5 · 2026-09-23 · humanizer 0.2.0 · after copywriter round 4a
+
+Input: `en.json` with one new field, `featureLine` "A year-round outdoor pool, at the centre of the hotel." (schema v0.6, set over the night-pool photograph). Scope: that line's voice. Facts fixed; nothing else read for change.
+
+### Changes
+
+None. `en.json` left as it arrived.
+
+### Why it stays
+
+- A caption over a photograph, so a noun phrase is the right register; a full sentence would compete with the image.
+- Concrete (pool, centre of the hotel), no marketing verb, no triad, no "nestled", no mood the sources don't carry. The comma pause is a mild irregularity, not a tell.
+- It deliberately differs from pool ¶1 S1 ("in the middle of the hotel and open all year"), so the page does not repeat itself word for word. Reworking it toward "middle" or "open all year" would bring the echo back.
+- "centre" is British spelling, consistent with the rest of `en.json` ("specialities", "wellness centre").
+
+### Could not fix without a fact
+
+None.
