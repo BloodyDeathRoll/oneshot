@@ -1,6 +1,6 @@
-# schemas/site-content.md — the fixed content schema: the contract between Payload and the Astro templates (v0.1 comes out of the Payload spike).
+# schemas/site-content.md — the fixed content schema: the contract between Payload and the Astro templates.
 
-**Version 0.1** · 2026-09-18 · source of truth in code: `spikes/payload/cms/src/collections/Sites.ts` + `Media.ts` · reference consumer: `spikes/payload/site/` · proven by `spikes/payload/test/` (both suites green).
+**Version 0.6** · 2026-09-23 (v0.6 adds the optional `featureLine`, a generic short line over a site's feature image — Shahar, first used for The Lavish Haven's night-pool line) · **v0.5** · 2026-09-23 (v0.5 adds the optional `closing` line, Shahar's decision for The Lavish Haven's closing headline) · **v0.4** · 2026-09-22 (v0.4 adds `ratings[].capturedAt`, required by playbook §6; existing documents need the date filled in by the deployer) · **v0.3** · 2026-09-21 (v0.1 came out of the Payload spike; v0.2 adds `businessType` and the per-type modules below; v0.3 adds the optional `forecast` block; all additive — every v0.1 document is a valid v0.3 document) · source of truth in code: `spikes/payload/cms/src/collections/Sites.ts` + `Media.ts` · reference consumer: `spikes/payload/site/` · proven by `spikes/payload/test/` (both suites green).
 
 Rules of the contract
 
@@ -20,6 +20,8 @@ Who edits: **owner** = the business owner in the Payload admin ("My site" form, 
 | `tenant` | relationship → `tenants` | multi-tenant only | – | deployer (owners cannot change it) | absent in single-tenant | `2` |
 | `businessName` | text | **yes** | no | owner | ≤ 80 chars | `"Wobbly Pelican Surf School"` |
 | `tagline` | text | no | **yes** | owner | ≤ 140 | `"Your first wave, guaranteed wobbly."` |
+| `closing` | text | no | **yes** | owner | ≤ 140; the one line the design sets beside the page's last booking action; empty = the template shows no line there | `"Rates move with the dates. The listings show what is free."` |
+| `featureLine` | text | no | **yes** | owner | ≤ 140; a short line the design sets over the site's feature image; empty = the template shows no line there | `"The outdoor pool is in the middle of the hotel and open all year."` |
 | `languages` | select, many: `en` (list grows later: de, es, pt, ru…) | **yes** | no | owner | must contain `en`; English only for now (decided 2026-09-18); the spike still carries `si` fixtures | `["en"]` |
 | `copyBlocks[]` | array (≤ 8 rows) | no | – | owner | | |
 | `copyBlocks[].slot` | select: `intro` \| `about` \| `offer` \| `info` | **yes** | no | owner | where the design places the block; several rows may share a slot | `"intro"` |
@@ -50,6 +52,103 @@ Who edits: **owner** = the business owner in the Payload admin ("My site" form, 
 | `createdAt`, `updatedAt` | ISO date | system | – | system | | `"2026-09-17T23:03:38.651Z"` |
 
 Every array row also carries a system `id` (string). Templates must not depend on it.
+
+## v0.2 — `businessType` and the per-type modules
+
+One schema for every business. `businessType` says which kind of business the document describes; the modules below are **all optional**, and a template renders a module only when it is non-empty. A surf school leaves the lodging modules empty; a hostel leaves the lesson modules empty. No forks, no second schema.
+
+| Field | Type | Required | Localized | Edited by | Constraints | Example |
+|---|---|---|---|---|---|---|
+| `businessType` | select: `surf_school` \| `surf_camp` \| `beach_lodging` \| `board_rental` \| `surf_shop` \| `shaper` \| `other` | **yes** (default `surf_school`) | no | deployer (seeds it from the dossier); owner may correct it | must match a row in `schemas/business-types.md` | `"beach_lodging"` |
+
+### Shared modules (any type may use them)
+
+| Field | Type | Required | Localized | Edited by | Constraints | Example |
+|---|---|---|---|---|---|---|
+| `amenities[]` | array (≤ 40 rows) | no | – | owner | a flat list; the template groups and orders them, the owner does not | |
+| `amenities[].label` | text | **yes** | **yes** | owner | ≤ 60 | `"Free breakfast"` |
+| `amenities[].note` | text | no | **yes** | owner | ≤ 80; use for "additional charge", "on request" | `"additional charge"` |
+| `ratings[]` | array (≤ 6 rows) | no | – | deployer (owner may delete a row, not invent one) | one row per platform the business is actually rated on | |
+| `ratings[].platform` | select: `google` \| `booking` \| `hostelworld` \| `agoda` \| `tripadvisor` \| `airbnb` \| `other` | **yes** | no | deployer | | `"booking"` |
+| `ratings[].score` | number | **yes** | no | deployer | ≥ 0 | `9.5` |
+| `ratings[].scale` | select: `5` \| `10` | **yes** | no | deployer | the template prints `9.5/10`, never rescales | `"10"` |
+| `ratings[].count` | number | **yes** | no | deployer | ≥ 1 | `38` |
+| `ratings[].url` | text, `https://` URL | no | no | deployer | the listing the score comes from | |
+| `ratings[].capturedAt` | date (YYYY-MM-DD) | **yes** | no | deployer | when the score was read from the platform (the harvester's `fetched_at`); playbook §6 requires a rating to be shown with its count, source and capture date | `"2026-09-19"` |
+| `testimonials[]` | array (≤ 12 rows) | no | – | deployer (owner may delete a row) | **verbatim guest words only**; never paraphrased, never invented, never trimmed into a different meaning | |
+| `testimonials[].quote` | textarea | **yes** | no | deployer | ≤ 600; **not localized** — a guest's words are not translated | `"The most amazing family running the business…"` |
+| `testimonials[].author` | text | **yes** | no | deployer | as published, e.g. first name + country | `"Clara, United Kingdom"` |
+| `testimonials[].source` | select: same list as `ratings[].platform` | **yes** | no | deployer | | `"booking"` |
+| `testimonials[].date` | text `YYYY-MM` | no | no | deployer | omit rather than guess | `"2026-03"` |
+| `spot` | text | no | **yes** | owner | ≤ 200; the wave this business sits on, in the owner's words | `"Kabalana beach break, 2 minutes from the door"` |
+| `season` | text | no | **yes** | owner | ≤ 200 | `"November to April is the clean season"` |
+| `languagesSpoken[]` | select, many: `en` `si` `ta` `ru` `de` `fr` `es` `it` `sv` `other` | no | no | owner | who you can be served in — separate from `languages`, which is what the **site** is published in | `["en","ru"]` |
+
+### Lodging modules — `beach_lodging`, `surf_camp`
+
+| Field | Type | Required | Localized | Edited by | Constraints | Example |
+|---|---|---|---|---|---|---|
+| `rooms[]` | array (≤ 20 rows) | no | – | owner | | |
+| `rooms[].label` | text | **yes** | **yes** | owner | ≤ 80 | `"Deluxe Double Room"` |
+| `rooms[].beds` | text | no | **yes** | owner | ≤ 80, as the owner describes it | `"1 extra-large double bed"` |
+| `rooms[].sleeps` | number | no | no | owner | ≥ 1 | `2` |
+| `rooms[].note` | text | no | **yes** | owner | ≤ 140 | `"Private entrance, garden view"` |
+| `rooms[].photo` | upload → `media` | no | no | owner | one photo per room; the gallery stays in `photos[]` | |
+| `stayInfo.checkInFrom` / `.checkInTo` | text `HH:MM` | no | no | owner | same regex as `openingHours` | `"11:30"` / `"22:00"` |
+| `stayInfo.checkOutFrom` / `.checkOutTo` | text `HH:MM` | no | no | owner | | `"08:00"` / `"10:30"` |
+| `stayInfo.minNights` | number | no | no | owner | ≥ 1 | `2` |
+| `stayInfo.note` | text | no | **yes** | owner | ≤ 200; house rules worth stating up front | `"Children are not accommodated."` |
+
+### Teaching modules — `surf_school`, `surf_camp`
+
+| Field | Type | Required | Localized | Edited by | Constraints | Example |
+|---|---|---|---|---|---|---|
+| `lessons[]` | array (≤ 20 rows) | no | – | owner | structured lessons; a business that only wants a price row keeps using `priceList[]` | |
+| `lessons[].label` | text | **yes** | **yes** | owner | ≤ 80 | `"Beginner group lesson"` |
+| `lessons[].durationMin` | number | no | no | owner | minutes | `120` |
+| `lessons[].level` | select, many: `first_time` \| `beginner` \| `intermediate` \| `advanced` | no | no | owner | | `["first_time","beginner"]` |
+| `lessons[].groupSize` | text | no | **yes** | owner | ≤ 60 | `"max 4 per instructor"` |
+| `lessons[].includes` | text | no | **yes** | owner | ≤ 140 | `"Board, rash vest, photos"` |
+| `lessons[].price` / `.currency` / `.unit` | same types as `priceList[]` | no | no | owner | omit when the price is negotiated | `35` / `"USD"` / `"per_person"` |
+| `credentials[]` | array (≤ 8 rows) | no | – | owner | certifications, rescue training, years teaching | |
+| `credentials[].label` | text | **yes** | **yes** | owner | ≤ 100 | `"ISA-certified coaches"` |
+
+### Kit modules — `board_rental`, `surf_shop`, `shaper`
+
+| Field | Type | Required | Localized | Edited by | Constraints | Example |
+|---|---|---|---|---|---|---|
+| `rentals[]` | array (≤ 30 rows) | no | – | owner | what can be hired, and for how long | |
+| `rentals[].label` | text | **yes** | **yes** | owner | ≤ 80 | `"Soft-top 7'6\""` |
+| `rentals[].price` / `.currency` / `.unit` | same types as `priceList[]` | no | no | owner | | `1500` / `"LKR"` / `"per_day"` |
+| `rentals[].note` | text | no | **yes** | owner | ≤ 140; deposits and damage terms belong here | `"Deposit LKR 10,000; repairable damage charged at cost"` |
+| `brands[]` | array (≤ 20 rows) | no | – | owner | what the shop stocks | |
+| `brands[].label` | text | **yes** | no | owner | ≤ 60 | `"Torq"` |
+| `shaping.boardTypes` | text | no | **yes** | owner | ≤ 200 | `"Shortboards, fish, mid-lengths"` |
+| `shaping.leadTime` | text | no | **yes** | owner | ≤ 100 | `"3–4 weeks"` |
+| `shaping.customOrder` | textarea | no | **yes** | owner | ≤ 600; how a custom order works | |
+
+### Rules for the modules
+
+| Rule | |
+|---|---|
+| Optional everywhere | A template must render correctly when every module is empty. An empty module is `[]` or `null`, never a placeholder. |
+| No duplication | A fact lives in exactly one field. A room rate goes in `rooms[]`/`priceList[]`, not in a `copyBlocks[]` paragraph as well. |
+| `deployer`-edited rows are evidence | `ratings[]` and `testimonials[]` are seeded from the dossier, where every one of them carries a `source_url`. The owner may **delete** a row they dislike; neither the owner nor a template may add or reword one. |
+| Live prices are not content | Nightly rates that live on an OTA are dated inventory, not a published price. They belong in `bookingLinks[]` as a link, never copied into `rooms[]` as a number. |
+| A new type is a document change, not a code change | See `schemas/business-types.md`. |
+
+
+## v0.3 — `forecast` (optional)
+
+A surf forecast for the business's own break, drawn by the site from Rosa's per-spot JSON (endpoint, fields and units: `agents/designer/tools.md`; loading rules: playbook §4's exception). Present only when the site's concept carries it (`sites/<slug>/concepts.md`, proposal 003 §3). The group may be absent or `null`; a template renders nothing for it unless `enabled` is true **and** `rosaSpotId` is set.
+
+| Field | Type | Required | Localized | Edited by | Constraints | Example |
+|---|---|---|---|---|---|---|
+| `forecast.enabled` | checkbox (boolean) | no (default `false`) | no | owner | the owner's on/off switch; off removes the block and its request from the next build | `true` |
+| `forecast.rosaSpotId` | text | when `enabled` | no | deployer — **read-only for the owner** | `^[a-z0-9-]+$`; must be an id in Rosa's `data/index.json`; seeded from the dossier-spot → Rosa-spot mapping in `concepts.md`. The nearest other spot is never used as this one, which is why the owner cannot retype it | `"kabalana"` |
+| `forecast.spotName` | text | when `enabled` | no | owner | ≤ 60; the name shown in the block and in its credit, "Forecast for <spotName> by Rosa" | `"Kabalana"` |
+
+Forecast values themselves (heights, ratings, wind) are never content: they are not stored in Payload, not seeded from the dossier and not restated in any copy field.
 
 ## Collection `media` — photos
 

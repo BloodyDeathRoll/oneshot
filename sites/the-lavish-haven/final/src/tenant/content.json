@@ -1,0 +1,528 @@
+{
+  "tenant": {
+    "id": null,
+    "slug": "the-lavish-haven",
+    "name": "The Lavish Haven"
+  },
+  "locales": {
+    "en": {
+      "id": null,
+      "tenant": {
+        "id": null,
+        "name": "The Lavish Haven",
+        "slug": "the-lavish-haven"
+      },
+      "businessName": "The Lavish Haven",
+      "businessType": "beach_lodging",
+      "tagline": "A new hotel, two minutes from Kabalana",
+      "closing": "Rates move with the dates. Booking.com and Agoda show what is available.",
+      "featureLine": "A year-round outdoor pool, at the centre of the hotel.",
+      "languages": [
+        "en"
+      ],
+      "copyBlocks": [
+        {
+          "id": "seed-block-1",
+          "slot": "intro",
+          "heading": "Among cafés and restaurants",
+          "body": "Cafés and restaurants surround the hotel, and there is a fruit stand nearby. Guests score the location 9.6 out of 10 on Booking.com.\n\nKoggala Airport is about 5 km away."
+        },
+        {
+          "id": "seed-block-2",
+          "slot": "about",
+          "heading": "New, and it shows",
+          "body": "The hotel is new. On Booking.com one guest calls it “brand new”, another “a new facility”.\n\nBooking.com guests score it 9.7 out of 10 for cleanliness and the same for comfort, and 9.4 for staff, across 34 reviews. On Google it has 5.0 out of 5 from 21 reviews."
+        },
+        {
+          "id": "seed-block-3",
+          "slot": "about",
+          "heading": "Staying longer",
+          "body": "One guest wrote that they moved around many hotels before finding this one, then stayed over a month. Another extended their stay rather than go on to a different hotel."
+        },
+        {
+          "id": "seed-block-4",
+          "slot": "offer",
+          "heading": "Nine kinds of room",
+          "body": "There are king rooms with a balcony or a garden view, superior kings, and a deluxe king on the ground floor with a private patio and a pool view. Family studios and suites sleep four, and the two-bedroom suite sleeps five.\n\nEach room has a work desk, soundproofing and free WiFi. The family rooms have air conditioning and private bathrooms.\n\nThere is no published price list. Rates go by date, and the booking links show what is available."
+        },
+        {
+          "id": "seed-block-5",
+          "slot": "offer",
+          "heading": "Pool, restaurant, spa",
+          "body": "The outdoor pool is in the middle of the hotel and open all year. The restaurant serves breakfast with local specialities and fresh pastries, plus Chinese, Indian and Italian dishes. There’s a coffee house on site too, and a spa and wellness centre.\n\nFor families there are the family rooms and an outdoor play area. Kids’ meals and babysitting cost extra."
+        },
+        {
+          "id": "seed-block-6",
+          "slot": "info",
+          "heading": "Practicalities",
+          "body": "The front desk is staffed 24 hours, with private and express check-in. Parking is free and private, but you need to reserve it. There’s an airport shuttle as well.\n\nHousekeeping is daily. There is laundry, dry cleaning and ironing, bicycles to rent, non-smoking rooms, and facilities for guests with disabilities."
+        }
+      ],
+      "openingHours": [],
+      "hoursNote": null,
+      "priceList": [],
+      "photos": [
+        {
+          "id": "seed-photo-1",
+          "image": {
+            "id": 1,
+            "alt": "The pool at night, lit from below, with two storeys of lit rooms and balconies behind it",
+            "filename": "img-002.jpg",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 768,
+            "url": "/api/media/file/img-002.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-2",
+          "image": {
+            "id": 2,
+            "alt": "The pool and the stone-paved garden seen from above, with palms behind the tiled roofs",
+            "filename": "img-079.jpg",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 768,
+            "url": "/api/media/file/img-079.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-3",
+          "image": {
+            "id": 3,
+            "alt": "A covered balcony with wooden chairs and a low table, looking down through the railing to the pool",
+            "filename": "img-069.jpg",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 768,
+            "url": "/api/media/file/img-069.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-4",
+          "image": {
+            "id": 4,
+            "alt": "A bedroom with a wooden staircase up to a loft, warm light on plaster walls",
+            "filename": "img-007.jpg",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 768,
+            "url": "/api/media/file/img-007.jpg",
+            "focalX": 42,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-5",
+          "image": {
+            "id": 5,
+            "alt": "Wooden chairs and a low table on a balcony beside a mottled grey wall, the pool below",
+            "filename": "img-073.jpg",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 768,
+            "url": "/api/media/file/img-073.jpg",
+            "focalX": 60,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-6",
+          "image": {
+            "id": 6,
+            "alt": "A bed under a pitched white ceiling, grey-green curtains either side of a glass door",
+            "filename": "img-021.jpg",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 768,
+            "url": "/api/media/file/img-021.jpg",
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-7",
+          "image": {
+            "id": 7,
+            "alt": "Two beds under a timber ceiling, a wooden chair at a desk, a glass door at the far end",
+            "filename": "img-028.jpg",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 768,
+            "url": "/api/media/file/img-028.jpg",
+            "focalX": 55,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-8",
+          "image": {
+            "id": 8,
+            "alt": "A balcony with wooden chairs and a low table under white-painted rafters, looking into palms",
+            "filename": "img-071.jpg",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 768,
+            "url": "/api/media/file/img-071.jpg",
+            "focalX": 45,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-9",
+          "image": {
+            "id": 9,
+            "alt": "A made bed with folded towels, a tall window on one side and a painting of a wave on the wall",
+            "filename": "img-017.jpg",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 768,
+            "url": "/api/media/file/img-017.jpg",
+            "focalX": 55,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        },
+        {
+          "id": "seed-photo-10",
+          "image": {
+            "id": 10,
+            "alt": "A loft bedroom behind a timber balustrade, with purple curtains",
+            "filename": "img-008.jpg",
+            "mimeType": "image/jpeg",
+            "width": 1024,
+            "height": 768,
+            "url": "/api/media/file/img-008.jpg",
+            "focalX": 45,
+            "focalY": 50,
+            "sizes": {}
+          },
+          "caption": null
+        }
+      ],
+      "contact": {
+        "phone": "+94764832988",
+        "whatsapp": null,
+        "email": null,
+        "address": "No166/1 Walhengoda Road, Ahangama 80650, Sri Lanka",
+        "mapUrl": "https://www.google.com/maps/search/The%20Lavish%20Haven%20Ahangama/@5.9794134,80.350836,17z?hl=en"
+      },
+      "bookingLinks": [
+        {
+          "id": "seed-link-1",
+          "label": "Check dates on Booking.com",
+          "url": "https://www.booking.com/hotel/lk/the-lavish-haven.html"
+        },
+        {
+          "id": "seed-link-2",
+          "label": "Check dates on Agoda",
+          "url": "https://www.agoda.com/the-lavish-haven-h82617698/hotel/piyadigama-lk.html"
+        }
+      ],
+      "amenities": [
+        {
+          "note": "open all year",
+          "id": "seed-amenity-1",
+          "label": "Outdoor swimming pool"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-2",
+          "label": "Restaurant"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-3",
+          "label": "Coffee house on site"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-4",
+          "label": "Spa and wellness centre"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-5",
+          "label": "Free WiFi in all areas"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-6",
+          "label": "Family rooms"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-7",
+          "label": "Airport shuttle"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-8",
+          "label": "Room service"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-9",
+          "label": "24-hour front desk"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-10",
+          "label": "Private and express check-in / check-out"
+        },
+        {
+          "note": "reservation needed",
+          "id": "seed-amenity-11",
+          "label": "Free private parking"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-12",
+          "label": "Facilities for disabled guests"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-13",
+          "label": "Non-smoking rooms"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-14",
+          "label": "Sun deck, terrace, balcony and garden"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-15",
+          "label": "Outdoor dining area"
+        },
+        {
+          "note": "additional charge",
+          "id": "seed-amenity-16",
+          "label": "BBQ facilities"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-17",
+          "label": "Shared kitchen with kettle and refrigerator"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-18",
+          "label": "Outdoor play equipment for kids"
+        },
+        {
+          "note": "additional charge",
+          "id": "seed-amenity-19",
+          "label": "Babysitting and child services"
+        },
+        {
+          "note": "additional charge",
+          "id": "seed-amenity-20",
+          "label": "Kids' meals"
+        },
+        {
+          "note": "additional charge",
+          "id": "seed-amenity-21",
+          "label": "Bicycle rental"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-22",
+          "label": "Daily housekeeping"
+        },
+        {
+          "note": "additional charge",
+          "id": "seed-amenity-23",
+          "label": "Laundry, dry cleaning and ironing"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-24",
+          "label": "Baggage storage"
+        },
+        {
+          "note": null,
+          "id": "seed-amenity-25",
+          "label": "Extra-long beds"
+        }
+      ],
+      "ratings": [
+        {
+          "url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+          "id": "seed-rating-1",
+          "platform": "booking",
+          "score": 9.2,
+          "scale": "10",
+          "count": 34,
+          "capturedAt": "2026-09-19"
+        },
+        {
+          "url": null,
+          "id": "seed-rating-2",
+          "platform": "google",
+          "score": 5,
+          "scale": "5",
+          "count": 21,
+          "capturedAt": "2026-09-19"
+        }
+      ],
+      "testimonials": [
+        {
+          "id": "seed-quote-1",
+          "quote": "Everything was excellent! Best value for money there is! We moved around many hotels until we found the lavish and stayed over a month! Super...",
+          "author": "Mya, Sri Lanka",
+          "source": "booking",
+          "date": null
+        },
+        {
+          "id": "seed-quote-2",
+          "quote": "It's a brand new hotel located in the best part of Ahangama, next to the Kabalana Beach.",
+          "author": "Dariusz, Poland",
+          "source": "booking",
+          "date": null
+        },
+        {
+          "id": "seed-quote-3",
+          "quote": "The staff are calm, respectful and nice. The facilities are amazing, the swimming pool at the center creates a good vibe where people can meet up...",
+          "author": "António, Portugal",
+          "source": "booking",
+          "date": null
+        },
+        {
+          "id": "seed-quote-4",
+          "quote": "Very kind staff, we loved the hotel so much that we extended our stay in it instead of going to another one, nice rooms and nice pool we will...",
+          "author": "Roie, Israel",
+          "source": "booking",
+          "date": null
+        },
+        {
+          "id": "seed-quote-5",
+          "quote": "Hier war alles schön, und die Mitarbeiter so süss, lieb, nett und freundlich. Wir wollten gar nicht wieder weg.",
+          "author": "Benjamin, Switzerland",
+          "source": "booking",
+          "date": null
+        }
+      ],
+      "spot": "Kabalana: a sandy beach break for beginners and intermediates, with The Rock reef A-frame for advanced surfers. The beach is two minutes from the hotel, on foot.",
+      "season": null,
+      "languagesSpoken": [],
+      "rooms": [
+        {
+          "sleeps": null,
+          "note": "ground floor",
+          "photo": null,
+          "id": "seed-room-1",
+          "label": "Deluxe King Room with private patio and pool view",
+          "beds": "1 king bed"
+        },
+        {
+          "sleeps": null,
+          "note": null,
+          "photo": null,
+          "id": "seed-room-2",
+          "label": "Superior King Room",
+          "beds": "1 king bed"
+        },
+        {
+          "sleeps": null,
+          "note": null,
+          "photo": null,
+          "id": "seed-room-3",
+          "label": "King Room with garden view",
+          "beds": "1 king bed"
+        },
+        {
+          "sleeps": null,
+          "note": null,
+          "photo": null,
+          "id": "seed-room-4",
+          "label": "King Room with balcony",
+          "beds": "1 king bed"
+        },
+        {
+          "sleeps": 4,
+          "note": null,
+          "photo": null,
+          "id": "seed-room-5",
+          "label": "Deluxe Family Suite",
+          "beds": "1 king and 1 queen bed"
+        },
+        {
+          "sleeps": 4,
+          "note": null,
+          "photo": null,
+          "id": "seed-room-6",
+          "label": "Family Studio",
+          "beds": "1 full and 1 king bed"
+        },
+        {
+          "sleeps": 4,
+          "note": null,
+          "photo": null,
+          "id": "seed-room-7",
+          "label": "Family Junior Suite",
+          "beds": "1 full and 1 king bed"
+        },
+        {
+          "sleeps": 4,
+          "note": null,
+          "photo": null,
+          "id": "seed-room-8",
+          "label": "Family Suite",
+          "beds": "1 king and 1 queen bed"
+        },
+        {
+          "sleeps": 5,
+          "note": null,
+          "photo": null,
+          "id": "seed-room-9",
+          "label": "Two-Bedroom Suite",
+          "beds": "2 king beds and 1 sofa bed"
+        }
+      ],
+      "stayInfo": {
+        "checkInFrom": null,
+        "checkInTo": null,
+        "checkOutFrom": null,
+        "checkOutTo": null,
+        "minNights": null,
+        "note": "The front desk is staffed 24 hours, with private and express check-in and check-out."
+      },
+      "lessons": [],
+      "credentials": [],
+      "rentals": [],
+      "brands": [],
+      "shaping": null,
+      "forecast": {
+        "enabled": true,
+        "rosaSpotId": "kabalana",
+        "spotName": "Kabalana"
+      },
+      "updatedAt": null,
+      "createdAt": null
+    }
+  }
+}

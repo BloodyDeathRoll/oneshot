@@ -1,0 +1,159 @@
+# The Lavish Haven — mockup 2, "interactive"
+
+Station 4d. Built 2026-09-20 from `sites/the-lavish-haven/copy/en.json` (the copy that passed
+station 4c) and `dossier/the-lavish-haven/`. Its own Astro project; it shares no markup, CSS or
+component with mockup 1 or with any other business.
+
+## direction
+
+`custom.md`: *"more interactive with some bells and whistles"*, plus canvas/WebGL instead of static
+image grids, editorial asymmetric grids, and a booking UX hidden behind a sliding drawer.
+
+The idea comes from the business, not from a template. The pool is physically in the middle of this
+hotel, its two best photographs are the pool lit at night, and the copy says "most evenings that is
+where people end up". So the page opens on the pool, pinned for three screens of scroll, and the
+scroll walks it from afternoon to dusk to after dark. The water is a WebGL surface drawn over the
+hotel's own photographs: it refracts them, it catches caustics where the water is already bright,
+and it ripples under the pointer.
+
+Read against `agents/designer/references.md`:
+
+- **#19** records that none of the six reference sites uses canvas or WebGL anywhere, so there was
+  nothing cached to lean on. The shader is written by hand against WebGL1 in
+  `src/scripts/pool.js` — no three.js, no CDN, 6 KB of JavaScript for the whole page.
+- **#17 the cheapest convincing motion recipe** (Kube) — image parallax of ±4 rem inside an
+  `overflow: hidden` wrapper, scrubbed on scroll, **switched off at ≤ 767 px**, 0.3 s eases on the
+  drawer. Copied deliberately, including the cut-off.
+- **#18** — the one "interactive" pattern in the reference set that stays navigable is a horizontal
+  run inside a vertical page. The nine room types are a native horizontal scroller with snap and a
+  peeking next card (**#14**), not a transform track: it works with the keyboard, with a screen
+  reader, and with a trackpad.
+- **#6 one accent, booking only** — lamp amber `#E2A656`, taken out of the hotel's own night
+  photographs, is on the Book button, the drawer's primary action, the per-room buttons and the
+  phone bar. Nowhere else.
+- **#4 booking persistent on a phone** — amber bar on every screen under 760 px.
+- **#2 keep the first booking step tiny / #1 the CTA reveals a panel, it never navigates on first
+  tap** (Tandjung Sari, Kube) — the drawer slides down over the page and hands off only when the
+  visitor picks a channel.
+- **#20 nothing covers the first screen** on load.
+
+## revision, 2026-09-20 (Shahar's review)
+
+1. **Cream, not dark.** "A dark theme is not a good fit for surf related businesses." Correct, and
+   it also puts this mockup closer to the reference set: four of the six are warm paper. The page is
+   now `#F2ECE0`; the accent moved from lamp amber to the pool's own teal `#0E5F6B`, which has the
+   contrast the amber lost on a light ground. The pinned hero stays photographic and dark — the
+   night pool is where the contrast comes from now.
+2. **"The place" is an even masonry.** The first version placed six photographs on overlapping
+   explicit grid rows. That was chaos, not a magazine layout. It is now one column count, one gap
+   everywhere (20 px), nine photographs, and three repeating frame shapes (4:3, 3:4, 3:2) so the
+   columns stagger without any photograph being singled out. Kube's parallax still runs inside each
+   frame, still off at ≤ 767 px.
+3. **Three full-bleed photographs break the runs of text** — after the room rail, before "Recently
+   opened", and before "What guests wrote". Same parallax recipe, 5 rem instead of 4.
+4. **The drawer's actions carry their platform marks**, drawn inline as SVG (`src/components/`), so
+   nothing is fetched for them.
+
+## facts
+
+Every word other than interface labels comes from `copy/en.json`, which the copyeditor passed with
+0 unsourced and 0 contradicted claims (`copy/review.md`); each paragraph maps to dossier fields in
+`copy/sources.md`. Same fact set as mockup 1 — the three mockups carry identical content so the
+human's pick is about design (base.md, 4d outputs). See mockup 1's `notes.md` for the fact table;
+the one difference is that this page also prints the room count ("The rooms · 9 types") from
+`copy.rooms.length`, and the hero sub-line quotes the intro block's own sentence about the pool.
+
+## gaps
+
+Identical to mockup 1: no prices (live OTA inventory), no check-in/check-out times, no season, no
+WhatsApp, no street address, no email, no socials. Nothing is invented to fill them.
+
+One gap this mockup handles differently: because it has a drawer, the drawer has to say what it
+cannot do. It does, in plain words — this hotel's live availability lives on Booking.com and Agoda,
+so the drawer does not ask for dates it would then throw away.
+
+## images
+
+Same source and same problem as mockup 1: 79 business-owned photographs from the hotel's own
+Booking.com listing, every one described in the asset index only as "Booking.com listing photo", and
+no mapping from photograph to room type. Alt text was written by looking at each image. The nine
+room types are again set as **text**, in the rail; no card claims a photograph is that room.
+
+| Asset | Where |
+|---|---|
+| `img-079` | pool texture, "afternoon" |
+| `img-001` | pool texture, "dusk" |
+| `img-002` | pool texture, "after dark"; also the `<img>` that shows when WebGL is unavailable |
+| `img-072` `img-014` `img-042` `img-065` `img-057` `img-067` `img-013` `img-047` `img-078` | the masonry under "The place" |
+| `img-001` `img-073` `img-077` | the three full-bleed bands |
+
+65 further business-owned photographs unused. No review photo, stock or generated image is used.
+
+## conflicts
+
+1. **`custom.md` asks for a booking drawer over a "complex booking engine".** There is no engine of
+   ours to hide, and playbook §5 forbids introducing a channel the owner does not monitor. The drawer
+   therefore holds the two listings the hotel already sells through, plus the front desk number, and
+   says so. The alternative — a date picker that collects dates and then drops them at an OTA link
+   that ignores them — would look better in a screenshot and waste a real visitor's time.
+   The triggers are `<a href="#book">`, upgraded by script into the drawer, so the booking path
+   survives with JavaScript switched off.
+2. **`custom.md` asks for canvas over "static image grids"; references.md #19 records no precedent
+   for it in the reference set, and playbook §10 requires that content not live only inside a
+   canvas.** Resolved by keeping the canvas purely decorative: it draws the hotel's own photographs
+   and nothing else. Every word and every fact is DOM text. With WebGL off, JavaScript off, or
+   `prefers-reduced-motion`, the page is the photograph and loses nothing but the water.
+
+## self-check
+
+| Check | Result |
+|---|---|
+| Every fact traces to the dossier | pass — same content as mockup 1 |
+| Booking targets match the dossier character for character | pass — Booking.com, Agoda, `tel:+94764832988` |
+| Works with JavaScript off | pass, and verified: the hero shows `img-002`; every `Book` / `Check dates` / `Check this room` trigger is an `<a href="#book">` that lands on the footer booking block, which holds both listings and the phone number — the drawer is the enhancement, the link is the floor; the rail is a native scroller. Measured in Chromium with JavaScript disabled: 11 triggers, all anchors, 4 booking links in the footer block. |
+| WebGL missing or context lost | pass — `startPool` returns `null`, the canvas stays at `opacity: 0`, the photograph shows |
+| `prefers-reduced-motion` | pass — the shader never starts, parallax is skipped, the drawer has no transition, `scroll-behavior` is `auto` |
+| Keyboard | pass — Esc closes the drawer and focus returns to the button that opened it, verified in Chromium at 390 px and 1440 px |
+| Mobile 390 px / desktop 1440 px | pass — `shots/mobile-*.png`, `shots/desktop-*.png`; no overflow, no overlap; the fixed header takes a solid floor once the pool is behind it |
+| Tap targets ≥ 44 px | pass |
+| Broken images | 0 |
+| Self-hosted, no third party | pass — 0 external requests; fonts vendored; the shader is hand-written, not a library |
+
+**Weight** (`weight.json`): html + inlined css 22 KB · JS 6 KB · fonts 110 KB (Fraunces + Inter
+Tight) · images 1650 KB across all widths of all 12 photographs.
+
+First mobile load is the HTML, two fonts and the 400 px hero — about **165 KB**, against the
+playbook §4 budget of 1.5 MB and 300 KB of JS. The two extra pool textures load after first paint,
+only if WebGL started.
+
+**Measured** with `node tools/audit-mockup.mjs the-lavish-haven interactive` on a throttled phone (1.6 Mbps, 150 ms RTT, 4x CPU), first load with no scroll: 406 KB transferred of the 1.5 MB budget · JS 6 KB of 300 KB · fonts 110 KB of 150 KB · largest image 159 KB of 200 KB · LCP 356 ms of 2500 ms · CLS 0.0005 of 0.1 · 0 third-party hosts. Every line inside budget. Raw numbers in `audit.json`.
+
+## a note on the screenshots
+
+`shots/*-1.png` … `-6.png` are viewport stops and are the honest record. `shots/desktop.png` and
+`shots/mobile.png` are full-page captures, and a full-page capture of a page with a three-screen
+pinned hero shows that hero once and leaves the rest of its scroll height blank — an artefact of
+how the capture works, not a hole in the layout.
+
+## house rules — checked, not promised
+
+`tools/check-design.mjs` measures these on the built page at 1440 px and 390 px and fails the
+station if any of them breaks. All three were said by Shahar, then broken by a later rebuild of
+this very mockup, then said again:
+
+1. **Light theme.** Every surf business, every variant. This page's ground and every panel behind
+   body text are measured for luminance; a photograph filling a container is a picture, not a theme.
+2. **No padded picture boxes.** Where photographs of different shapes sit together they are either
+   cropped to one ratio or laid out as real masonry where each keeps its own height. Equal-height
+   boxes with mixed content — half a card empty under a portrait — are what this check exists for.
+3. **No caption under a photograph.** Alt text carries the description; attribution under a
+   quotation is not a caption and stays.
+
+Result for this mockup: **0 problems**.
+
+## what a visitor would notice is different
+
+Against **KA Surf Hostel**: this site has photographs big enough to fill a screen and uses them;
+KA never shows one larger than a postcard, because its best is 576 px wide. Against **Layday Surf**:
+this scrolls as a continuous magazine, Layday is a single bordered card read in panels. See the
+divergence table in `sites/the-lavish-haven/concepts.md` §5.

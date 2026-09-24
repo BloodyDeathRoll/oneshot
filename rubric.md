@@ -9,11 +9,11 @@ Used by the critic in both modes (PLAN.md §5): **quick** (the three mockups, be
 | # | Dimension | Weight | What is measured | Source of truth |
 |---|---|---|---|---|
 | 1 | Facts match dossier | 25 | Every checkable statement on the site (prices, hours, levels, inclusions, location, season, names, ratings, review text) traces to a `dossier.json` entry with the same value. Gaps handled as in `notes.md` (omitted or marked), never invented. | `dossier/<slug>/dossier.json`, `sites/<slug>/…/notes.md` |
-| 2 | Mobile + performance | 20 | Lighthouse mobile (throttled) on the home page; playbook §4 budget table filled with actuals; layout at 390 px with no overflow/overlap/unreadable text in every run language. | Lighthouse JSON, screenshots |
+| 2 | Mobile + performance | 20 | Home page measured on a throttled phone (playbook §4's assumptions: ~1.6 Mbps, 150 ms RTT, 4x CPU) with no scroll: first-load transfer, JS, fonts, largest image, LCP, CLS against the budget; layout at 390 px with no overflow/overlap/unreadable text in every run language. | `audit.json` from `tools/audit-mockup.mjs`, screenshots |
 | 3 | Booking CTA works end to end | 15 | The primary action is a real link (works with JS off) to the dossier's booking path, number/handle/engine URL identical character for character; prefilled message names the business and the visitor's choice; tested by tapping through on a mobile viewport. | dossier `booking`, tap-through log |
 | 4 | Brand fit vs playbook | 10 | Content hierarchy of playbook §3 present; the site answers the traveller's questions (level, price, spot, season, what's included, how to book) above the fold and in order; variant matches its brief in `custom.md` (calm / interactive / unique). | playbook §3, custom.md |
 | 5 | Copy quality | 10 | Plain, specific, no filler, no generic surf clichés, no claims beyond the dossier; every language in `run.yaml` complete (English only for now). | site text |
-| 6 | Accessibility | 10 | WCAG 2.1 AA floor: keyboard-operable everything (drawers trap and return focus, Esc closes), `prefers-reduced-motion` honoured, content as DOM text not only in canvas/video, alt text from the dossier, contrast ≥ 4.5:1, tap targets ≥ 44 px. | axe/Lighthouse a11y, manual keyboard pass |
+| 6 | Accessibility | 10 | WCAG 2.1 AA floor: keyboard-operable everything (drawers trap and return focus, Esc closes), `prefers-reduced-motion` honoured, content as DOM text not only in canvas/video, alt text from the dossier, contrast ≥ 4.5:1, tap targets ≥ 44 px. | `audit.json` keyboard / reduced-motion / alt / tap-target sections, manual keyboard pass |
 | 7 | Security + delivery baseline | 10 | Static output only: no server code, no runtime calls to the CMS, no third-party scripts/trackers/embeds on load, assets self-hosted and pinned, relative URLs, lowercase filenames; nothing weakens `server-hardening.md`. | build output, network log |
 
 Total 100.
@@ -35,7 +35,8 @@ Any one of these fails the round regardless of total:
 
 - A fact on the site contradicts the dossier, or a claim has no dossier entry.
 - The booking CTA does not land in the right chat/call/engine, or the number/URL differs from the dossier.
-- A non-business-owned image is presented as the business, or an image is used against the run's image policy.
+- A non-business-owned image is presented as the business — captioned, positioned or cropped so a visitor could read it as this business's room, pool, food or people — or an image is used against the run's image policy (PLAN.md §9).
+- A freely-licensed atmosphere image is used without the credit string recorded in `dossier/<slug>/stock/index.json`, or under a licence the policy excludes (share-alike, NC, ND).
 - Any third-party request on first load, or any runtime dependency on the CMS.
 - Keyboard trap, or content that exists only inside canvas/video with no DOM text.
 - Home page over the playbook §4 budget by more than 50 % on any line (first-load transfer, JS, LCP).
@@ -66,7 +67,7 @@ fix list (fail only): <ordered, smallest first>
 
 ## Evidence the critic must produce
 
-- Lighthouse mobile JSON and the filled budget table.
+- `audit.json` from `tools/audit-mockup.mjs`, and the playbook §4 budget table filled with its measured values.
 - Screenshots at 390 px and 1440 px, every run language.
 - The tap-through log for the booking CTA.
 - A facts table: each site claim → dossier key → match / mismatch / missing.

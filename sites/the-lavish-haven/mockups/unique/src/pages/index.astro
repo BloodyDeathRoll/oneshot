@@ -1,0 +1,348 @@
+---
+import { c, block, blocks, paras, photo, rating } from '../lib/content';
+import '../styles/site.css';
+import Swell from '../components/Swell.astro';
+
+const night = photo('img-002');
+const booking = rating('booking'), google = rating('google');
+const intro = block('intro');
+const [newness, staff] = blocks('about');
+const [roomsCopy, facilities] = blocks('offer');
+const practical = block('info');
+const primary = c.bookingLinks[0], secondary = c.bookingLinks[1];
+const mapUrl = 'https://www.google.com/maps/search/The%20Lavish%20Haven%20Ahangama/@5.9794134,80.350836,17z?hl=en';
+const bands = { rooms: photo('img-073'), quotes: photo('img-077') };
+const run = ['img-078', 'img-072', 'img-067', 'img-065', 'img-014', 'img-047', 'img-042', 'img-057', 'img-001'];
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{c.businessName} — {c.tagline}</title>
+<meta name="description" content={`${c.tagline}. ${paras(intro.body)[0]}`} />
+<link rel="preload" href="fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin />
+</head>
+<body>
+
+<a class="sr" href="#book">Skip to booking</a>
+
+<!-- The courtyard. Fixed to the bottom of every screen for the whole page,
+     because that is where the pool is in this hotel. Decoration only: every
+     heading it reflects is a real <h2> above it. -->
+<div class="courtyard" aria-hidden="true">
+  <img src={night.src} srcset={night.srcset} sizes="100vw"
+       width={night.width} height={night.height} alt="" fetchpriority="high" />
+  <canvas data-courtyard data-pool={night.src}></canvas>
+  <p class="cap">The pool, in the middle of the hotel</p>
+</div>
+
+<div class="page">
+
+<header class="site-head">
+  <span class="name">THE LAVISH HAVEN</span>
+  <a class="book-open" href="#book" data-open-drawer>Check dates</a>
+</header>
+
+<section class="hero wrap" data-label="The Lavish Haven">
+  <h1 class="sr">{c.businessName} — {c.tagline}</h1>
+  <div class="stack" data-kinetic aria-hidden="true">
+    <span>The</span><span>Lavish</span><span>Haven</span>
+  </div>
+  <div class="under">
+    <p class="claim">{c.tagline}.</p>
+    <p>{paras(intro.body)[0].split('. ')[0]}. The main road is not.</p>
+    <p class="scores">
+      {booking && <span><b>{booking.score}</b> /{booking.scale} Booking.com · {booking.count} reviews</span>}
+      {google && <span><b>{google.score}</b> /{google.scale} Google · {google.count} reviews</span>}
+    </p>
+  </div>
+  <div class="rule-swell"><Swell height={58} opacity={0.18} /></div>
+</section>
+
+<main>
+
+<section class="sec wrap" data-label="Where it is">
+  <div class="grid">
+    <div class="c1-6">
+      <p class="eyebrow">Where it is</p>
+      <h2>{intro.heading}</h2>
+    </div>
+    <div class="c8-13">{paras(intro.body).map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}</div>
+  </div>
+</section>
+
+<!-- Nine doors. The dossier does not say which photograph is which room type,
+     so the index is typographic: choose a room, read its specification. -->
+<section class="sec wrap" data-label="Nine doors">
+  <div class="grid" style="margin-bottom:34px">
+    <div class="c1-7">
+      <p class="eyebrow">The rooms · {c.rooms.length} types</p>
+      <h2>{roomsCopy.heading}</h2>
+    </div>
+    <div class="c8-13">{paras(roomsCopy.body).map((p) => <p>{p}</p>)}</div>
+  </div>
+  <div class="doors doors-ground">
+    <ol data-doors>
+      {c.rooms.map((r, i) => (
+        <li>
+          <button type="button" data-door={i} aria-current={i === 0 ? 'true' : 'false'}>
+            <span class="num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="lbl">{r.label}</span>
+          </button>
+        </li>
+      ))}
+    </ol>
+    <div class="door-detail" aria-live="polite">
+      <p class="ghost" aria-hidden="true">{c.rooms.length}</p>
+      <p class="big" data-door-label>{c.rooms[0].label}</p>
+      <dl>
+        <dt>Beds</dt><dd data-door-beds>{c.rooms[0].beds}</dd>
+        <dt>Sleeps</dt><dd data-door-sleeps>{c.rooms[0].sleeps ? `${c.rooms[0].sleeps} guests` : 'Not published'}</dd>
+        <dt>Note</dt><dd data-door-note>{c.rooms[0].note ?? '—'}</dd>
+        <dt>Rate</dt><dd>Depends on the dates — the listings show what is free</dd>
+      </dl>
+      <a class="act" href="#book" data-open-drawer data-from-door>Check this room</a>
+    </div>
+    <Swell height={72} opacity={0.14} />
+  </div>
+</section>
+
+<figure class="band">
+  <img src={bands.rooms.src} srcset={bands.rooms.srcset} sizes="100vw"
+       width={bands.rooms.width} height={bands.rooms.height} alt={bands.rooms.alt} loading="lazy" decoding="async" />
+</figure>
+
+<section class="sec wrap" data-label="The place">
+  <div class="grid" style="margin-bottom:28px">
+    <div class="c1-7"><p class="eyebrow">The place · scroll sideways</p></div>
+  </div>
+  <div class="run" role="group" aria-label="Photographs of the hotel">
+    {run.map((id) => {
+      const p = photo(id);
+      return (
+        <figure>
+          <img src={p.src} srcset={p.srcset} sizes="(min-width: 860px) 30rem, 84vw"
+               width={p.width} height={p.height} alt={p.alt} loading="lazy" decoding="async" />
+        </figure>
+      );
+    })}
+  </div>
+</section>
+
+<section class="sec wrap" data-label="What is here">
+  <div class="grid" style="margin-bottom:30px">
+    <div class="c1-6">
+      <p class="eyebrow">What is here</p>
+      <h2>{facilities.heading}</h2>
+    </div>
+    <div class="c7-13">{paras(facilities.body).map((p) => <p>{p}</p>)}</div>
+  </div>
+  <ul class="amen">
+    {c.amenities.map((a) => <li>{a.label}{a.note ? <span class="note"> — {a.note}</span> : null}</li>)}
+  </ul>
+</section>
+
+<section class="sec wrap" data-label="New, and it shows">
+  <div class="grid">
+    <div class="c1-5">
+      <p class="eyebrow">Recently opened</p>
+      <h2>{newness.heading}</h2>
+    </div>
+    <div class="c7-13">{paras(newness.body).map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}</div>
+  </div>
+</section>
+
+<figure class="band">
+  <img src={bands.quotes.src} srcset={bands.quotes.srcset} sizes="100vw"
+       width={bands.quotes.width} height={bands.quotes.height} alt={bands.quotes.alt} loading="lazy" decoding="async" />
+</figure>
+
+<section class="sec wrap" data-label="What guests wrote">
+  <div class="grid" style="margin-bottom:40px">
+    <div class="c1-6">
+      <p class="eyebrow">What guests wrote</p>
+      <h2>{staff.heading}</h2>
+    </div>
+    <div class="c8-13">{paras(staff.body).map((p) => <p>{p}</p>)}</div>
+  </div>
+  <div class="quotes">
+    {c.testimonials.map((t) => (
+      <figure class="quote">
+        <blockquote>“{t.quote}”</blockquote>
+        <figcaption>{t.author} — on {t.source === 'booking' ? 'Booking.com' : t.source}</figcaption>
+      </figure>
+    ))}
+  </div>
+</section>
+
+<section class="sec wrap" data-label="The wave">
+  <div class="wave-grid">
+    <div>
+      <p class="eyebrow">The wave</p>
+      <p class="lead">{c.spot}</p>
+      <p class="eyebrow" style="margin-top:40px">Before you arrive</p>
+      {paras(practical.body).map((p) => <p>{p}</p>)}
+    </div>
+    <div class="widget">
+      <iframe
+        src="https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+        title="Rosa surf forecast - Kabalana"
+        width="100%"
+        height="500"
+        style="max-width:420px;border:0;border-radius:16px;display:block"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+      ></iframe>
+      <p>Live forecast for Kabalana — rosa.surf</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot" id="book" data-label="The Lavish Haven">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>Where</h3>
+        <p>{c.contact.address}</p>
+        <p><a href={mapUrl} rel="noopener">Open in Google Maps</a></p>
+      </div>
+      <div>
+        <h3>Front desk</h3>
+        <p><a href={`tel:${c.contact.phone}`}>{c.contact.phone}</a></p>
+        <p>{c.stayInfo.note}</p>
+      </div>
+      <div>
+        <h3>Book</h3>
+        <ul>{c.bookingLinks.map((b) => <li><a href={b.url} rel="noopener">{b.label}</a></li>)}</ul>
+      </div>
+    </div>
+    <p class="legal">Mockup 3 of 3 — “unique”. Every fact on this page comes from the dossier harvested on 19 September 2026; see notes.md. Photographs are the hotel's own listing photographs. The water at the foot of the screen is drawn in WebGL over one of them; nothing in the photographs is altered or added.</p>
+  </div>
+</footer>
+
+</div>
+
+<details class="drawer" data-drawer>
+  <summary>Booking</summary>
+  <div class="backdrop" data-close-drawer></div>
+  <div class="panel">
+    <button class="close" type="button" data-close-drawer>Close</button>
+    <h2>Check dates</h2>
+    <p>Live availability for this hotel sits on Booking.com and Agoda, and the rate depends on the room and the dates. Rather than ask you for dates that would then be thrown away, these go straight to the listings — or call the front desk, which is staffed around the clock.</p>
+    <p class="pick" data-chosen-wrap hidden>You were looking at</p>
+    <p class="chosen" data-chosen hidden></p>
+    <div class="acts">
+      <a class="act act--pool" href={primary.url} rel="noopener">{primary.label}</a>
+      <a class="act" href={secondary.url} rel="noopener">{secondary.label}</a>
+      <a class="act" href={`tel:${c.contact.phone}`}>Call {c.contact.phone}</a>
+    </div>
+  </div>
+</details>
+
+<nav class="mobile-dock" aria-label="Book">
+  <a href="#book" data-open-drawer>Check dates</a>
+  <a class="alt" href={`tel:${c.contact.phone}`}>Call</a>
+</nav>
+
+<script>
+import { startCourtyard } from '../scripts/courtyard.js';
+import { c } from '../lib/content';
+
+/* --- the courtyard, and the heading it reflects -------------------------- */
+const canvas = document.querySelector('[data-courtyard]');
+const yard = canvas && startCourtyard(canvas, canvas.dataset.pool);
+if (yard) {
+  canvas.classList.add('on');
+  const marks = [...document.querySelectorAll('[data-label]')];
+  let last = '';
+  const pick = () => {
+    const mid = innerHeight * 0.42;
+    let best = marks[0];
+    for (const m of marks) { const r = m.getBoundingClientRect(); if (r.top <= mid) best = m; }
+    const label = best.dataset.label;
+    if (label !== last) { last = label; yard.setLabel(label); }
+  };
+  document.querySelector('.page').addEventListener('scroll', pick, { passive: true });
+  // the reflection is drawn in Bricolage; wait for it or the first frame is a fallback face
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { last = ''; pick(); });
+  pick();
+}
+
+/* --- kinetic name: the three lines lean apart with the pointer ----------- */
+const stack = document.querySelector('[data-kinetic]');
+if (stack && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const lines = [...stack.children];
+  addEventListener('pointermove', (e) => {
+    const k = (e.clientX / innerWidth - 0.5) * 2;
+    lines.forEach((l, i) => { l.style.setProperty('--x', `${(k * (i - 1) * 3.2).toFixed(2)}vw`); });
+  }, { passive: true });
+}
+
+/* --- the bands drift, Kube's recipe, off on phones and under reduced motion --- */
+const wide = matchMedia('(min-width: 768px)');
+const calm = matchMedia('(prefers-reduced-motion: reduce)');
+const scroller = document.querySelector('.page');
+const bandEls = [...document.querySelectorAll('.band')];
+let ticking = false;
+const par = () => {
+  ticking = false;
+  if (!wide.matches || calm.matches) return;
+  const vh = scroller.clientHeight;
+  for (const f of bandEls) {
+    const r = f.getBoundingClientRect();
+    if (r.bottom < -100 || r.top > vh + 100) continue;
+    const k = Math.min(1, Math.max(0, (vh * 0.7 - r.top) / (vh * 0.7 + r.height * 0.3)));
+    f.querySelector('img').style.transform = `translate3d(0, ${(-k * 5).toFixed(2)}rem, 0)`;
+  }
+};
+scroller.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(par); } }, { passive: true });
+addEventListener('resize', par);
+par();
+
+/* --- nine doors ---------------------------------------------------------- */
+const rooms = c.rooms;
+const detail = {
+  label: document.querySelector('[data-door-label]'),
+  beds: document.querySelector('[data-door-beds]'),
+  sleeps: document.querySelector('[data-door-sleeps]'),
+  note: document.querySelector('[data-door-note]'),
+};
+let chosen = rooms[0];
+document.querySelectorAll('[data-door]').forEach((b) => b.addEventListener('click', () => {
+  const r = rooms[+b.dataset.door];
+  chosen = r;
+  document.querySelectorAll('[data-door]').forEach((o) => o.setAttribute('aria-current', String(o === b)));
+  detail.label.textContent = r.label;
+  detail.beds.textContent = r.beds;
+  detail.sleeps.textContent = r.sleeps ? `${r.sleeps} guests` : 'Not published';
+  detail.note.textContent = r.note ?? '—';
+}));
+
+/* --- booking slide-out --------------------------------------------------- */
+const drawer = document.querySelector('[data-drawer]');
+const chosenEl = document.querySelector('[data-chosen]');
+const chosenWrap = document.querySelector('[data-chosen-wrap]');
+let opener = null;
+/* The triggers are real links to the booking block in the footer, so they
+   still work with JavaScript off. With JavaScript, they open the slide-out. */
+const open = (e) => {
+  e.preventDefault();
+  opener = e.currentTarget;
+  const fromDoor = opener.hasAttribute('data-from-door');
+  chosenEl.textContent = fromDoor ? chosen.label : '';
+  chosenEl.hidden = chosenWrap.hidden = !fromDoor;
+  drawer.open = true;
+  drawer.querySelector('.act')?.focus({ preventScroll: true });
+};
+const close = () => { drawer.open = false; opener?.focus({ preventScroll: true }); opener = null; };
+document.querySelectorAll('[data-open-drawer]').forEach((b) => b.addEventListener('click', open));
+document.querySelectorAll('[data-close-drawer]').forEach((b) => b.addEventListener('click', close));
+addEventListener('keydown', (e) => { if (e.key === 'Escape' && drawer.open) close(); });
+</script>
+
+</body>
+</html>

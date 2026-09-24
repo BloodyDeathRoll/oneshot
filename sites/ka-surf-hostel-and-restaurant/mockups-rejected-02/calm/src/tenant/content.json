@@ -1,0 +1,471 @@
+{
+ "slug": "ka-surf-hostel-and-restaurant",
+ "locale": "en",
+ "copywriter_version": "0.1.0",
+ "humanizer_version": "0.1.0",
+ "businessName": "KA Surf Hostel",
+ "tagline": "Surf, chill and feel at home in Ahangama",
+ "copyBlocks": [
+  {
+   "slot": "intro",
+   "heading": "Five minutes from Kabalana Beach",
+   "body": "A family runs this place, and you feel it about ten minutes after you drop your bag. Kabalana Beach is a five-minute walk — close enough to check the surf before breakfast and come back wet.\n\nDorms if you want the company, private rooms if you don't."
+  },
+  {
+   "slot": "about",
+   "heading": "Run by a family, not a front desk",
+   "body": "The people who own KA live here. Guests keep using the same word for it — family — and one of them wrote that the staff nursed her through dengue with Ayurvedic medicine on top of what the hospital had already given her.\n\nThe hostel scores 9.9 out of 10 for staff on Booking.com and 9.9 on Hostelworld. Those are the highest numbers on either listing, and they are not about the furniture."
+  },
+  {
+   "slot": "about",
+   "heading": "Breakfast changes every morning",
+   "body": "Breakfast is included and it is Sri Lankan: rotis, hoppers, pancakes, eggs, a fruit platter, and a vegan option if you need one. It changes daily, which guests mention more often than anything else on the property."
+  },
+  {
+   "slot": "offer",
+   "heading": "Dorms and private rooms",
+   "body": "Mixed, female and male dormitories with bunk beds, plus double rooms and deluxe doubles. Every room has air conditioning and a fan, a private locker and a personal fridge. The bathrooms are modern, some of them open to the sky, and the showers are hot.\n\nRates change with the season and the dates — the booking links below show what is actually free."
+  },
+  {
+   "slot": "info",
+   "heading": "What is here",
+   "body": "A green garden and a chill zone. Free filtered water you can refill any time. Laundry. A minimarket on site. Scooter rental, with a surf rack if you ask. Luggage storage, lockers, and a 24-hour reception.\n\nPets are welcome on request at no charge. Children are not accommodated."
+  },
+  {
+   "slot": "info",
+   "heading": "Getting here",
+   "body": "Ahangama, a five-minute walk from Kabalana Beach. Koggala Airport is about 5 km away; Ahangama railway station is a little over 2 km. The property arranges a shuttle."
+  }
+ ],
+ "spot": "Kabalana: a sandy beach break that suits beginners and improvers, with The Rock reef alongside it when the swell is up.",
+ "season": null,
+ "rooms": [
+  {
+   "label": "Bunk bed in mixed dormitory",
+   "beds": "1 bunk bed"
+  },
+  {
+   "label": "Bunk bed in female dormitory",
+   "beds": "1 bunk bed"
+  },
+  {
+   "label": "Bunk bed in male dormitory",
+   "beds": "1 bunk bed"
+  },
+  {
+   "label": "Double room",
+   "beds": "1 extra-large double bed"
+  },
+  {
+   "label": "Deluxe double room",
+   "beds": "1 extra-large double bed"
+  },
+  {
+   "label": "Deluxe double room",
+   "beds": "1 single bed"
+  }
+ ],
+ "stayInfo": {
+  "checkInFrom": "13:00",
+  "checkInTo": "23:00",
+  "checkOutTo": "13:00",
+  "note": "Reception is open 24 hours. Children are not accommodated, and cots and extra beds are not available."
+ },
+ "amenities": [
+  {
+   "label": "Free breakfast, Sri Lankan, changes daily"
+  },
+  {
+   "label": "Free WiFi"
+  },
+  {
+   "label": "Air conditioning and a fan in every room"
+  },
+  {
+   "label": "Private locker and personal fridge in every room"
+  },
+  {
+   "label": "Hot showers"
+  },
+  {
+   "label": "Garden and chill zone"
+  },
+  {
+   "label": "Free filtered water"
+  },
+  {
+   "label": "Scooter rental",
+   "note": "surf rack available"
+  },
+  {
+   "label": "Laundry service"
+  },
+  {
+   "label": "Minimarket on site"
+  },
+  {
+   "label": "Luggage storage"
+  },
+  {
+   "label": "Tour desk"
+  },
+  {
+   "label": "24-hour reception"
+  },
+  {
+   "label": "24-hour security"
+  },
+  {
+   "label": "Airport transfers"
+  },
+  {
+   "label": "Bicycle parking"
+  },
+  {
+   "label": "Pets allowed on request",
+   "note": "no extra charge"
+  }
+ ],
+ "ratings": [
+  {
+   "platform": "hostelworld",
+   "score": 9.8,
+   "scale": "10",
+   "count": 66,
+   "url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/"
+  },
+  {
+   "platform": "booking",
+   "score": 9.5,
+   "scale": "10",
+   "count": 38,
+   "url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html"
+  },
+  {
+   "platform": "google",
+   "score": 4.8,
+   "scale": "5",
+   "count": 42
+  }
+ ],
+ "testimonials": [
+  {
+   "quote": "Lovely location away from the main road. So close to the beach! The most amazing family who look after you like you're one of their own. Thank you KA!",
+   "author": "Clara, United Kingdom",
+   "source": "booking"
+  },
+  {
+   "quote": "Great family owned hostel :-) they are really friendly and helpful! The breakfast always consists of a typical Sri Lankan dish (roti, hoppers,…) which changes every day and additionally a great fruit platter!! Dorms are big, bathrooms are nice with the whole outdoor thing :-)",
+   "author": "Elena, Germany",
+   "source": "hostelworld",
+   "date": "2026-03"
+  },
+  {
+   "quote": "I got dengue in Kandy and the staff at KA helped nurse me back to health with Ayurvedic medicines (on top of what the hospital was already giving me) They are the kindest people and they attract good vibes. I met some of the best people here :)",
+   "author": "Mia, USA",
+   "source": "hostelworld",
+   "date": "2026-02"
+  },
+  {
+   "quote": "It's a calm and quiet place, a wonderful staff, caring owners and clean. I had a really good time even i havnt spent much time there. beds are compfy and it has aircon and warm water.",
+   "author": "Wolfgang, Austria",
+   "source": "booking"
+  },
+  {
+   "quote": "Owners very hospitable, breakfast in the morning was great, close to kabalana beach so great for surfing",
+   "author": "Saketh, England",
+   "source": "hostelworld",
+   "date": "2026-02"
+  }
+ ],
+ "contact": {
+  "phone": "+94773746053",
+  "address": "No 207/A, Welhengoda, 80650 Ahangama, Sri Lanka"
+ },
+ "bookingLinks": [
+  {
+   "label": "Check dates on Hostelworld",
+   "url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/"
+  },
+  {
+   "label": "Check dates on Booking.com",
+   "url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html"
+  },
+  {
+   "label": "Check dates on Agoda",
+   "url": "https://www.agoda.com/en-in/ka-surf-hostel-h61738910/hotel/ahangama-lk.html"
+  }
+ ],
+ "languagesSpoken": [
+  "en"
+ ],
+ "photos": {
+  "stock-025": {
+   "role": "inline",
+   "credit": "Admiralty Chart 3730, Plans on the South Coast of Ceylon, surveyed 1908–09 — United Kingdom Hydrographic Office, public domain, via Wikimedia Commons",
+   "isStock": true,
+   "id": "stock-025",
+   "alt": "Open water, depth soundings and the compass rose from the 1908–09 Admiralty survey of this coast",
+   "asset": "stock-025",
+   "license": "stock-cc",
+   "width": 1600,
+   "height": 1067,
+   "src": "photos/stock-025-1600.webp",
+   "srcset": "photos/stock-025-1600.webp 1600w, photos/stock-025-1280.webp 1280w, photos/stock-025-1024.webp 1024w, photos/stock-025-640.webp 640w, photos/stock-025-400.webp 400w",
+   "bytes": {
+    "400": 12108,
+    "640": 24196,
+    "1024": 48482,
+    "1280": 67722,
+    "1600": 89898
+   }
+  },
+  "stock-011": {
+   "role": "inline",
+   "credit": "Ahangama view — Sasith Lakshan wickramasinghe, CC BY-SA 4.0, via Wikimedia Commons",
+   "isStock": true,
+   "id": "stock-011",
+   "alt": "The reef shelf and the shorebreak at Ahangama under a high sky",
+   "asset": "stock-011",
+   "license": "stock-cc",
+   "width": 1600,
+   "height": 1200,
+   "src": "photos/stock-011-1600.webp",
+   "srcset": "photos/stock-011-1600.webp 1600w, photos/stock-011-1280.webp 1280w, photos/stock-011-1024.webp 1024w, photos/stock-011-640.webp 640w, photos/stock-011-400.webp 400w",
+   "bytes": {
+    "400": 14892,
+    "640": 36494,
+    "1024": 86568,
+    "1280": 132360,
+    "1600": 209124
+   }
+  },
+  "stock-012": {
+   "role": "inline",
+   "credit": "20160129 Sri Lanka 4177 Ahangama sRGB (25743479076) — Dan Lundberg, CC BY-SA 2.0, via Wikimedia Commons",
+   "isStock": true,
+   "id": "stock-012",
+   "alt": "The beach at Ahangama, the stilt-fishing poles standing out of the shallows",
+   "asset": "stock-012",
+   "license": "stock-cc",
+   "width": 1600,
+   "height": 1200,
+   "src": "photos/stock-012-1600.webp",
+   "srcset": "photos/stock-012-1600.webp 1600w, photos/stock-012-1280.webp 1280w, photos/stock-012-1024.webp 1024w, photos/stock-012-640.webp 640w, photos/stock-012-400.webp 400w",
+   "bytes": {
+    "400": 16140,
+    "640": 37760,
+    "1024": 87052,
+    "1280": 132478,
+    "1600": 194468
+   }
+  },
+  "stock-010": {
+   "role": "inline",
+   "credit": "Stilt Fishing in Ahangama — Diluckshan Puviraj, CC BY-SA 4.0, via Wikimedia Commons",
+   "isStock": true,
+   "id": "stock-010",
+   "alt": "Stilt fishermen on their poles off Ahangama",
+   "asset": "stock-010",
+   "license": "stock-cc",
+   "width": 1600,
+   "height": 1067,
+   "src": "photos/stock-010-1600.webp",
+   "srcset": "photos/stock-010-1600.webp 1600w, photos/stock-010-1280.webp 1280w, photos/stock-010-1024.webp 1024w, photos/stock-010-640.webp 640w, photos/stock-010-400.webp 400w",
+   "bytes": {
+    "400": 11732,
+    "640": 22108,
+    "1024": 40940,
+    "1280": 56832,
+    "1600": 75386
+   }
+  },
+  "stock-003": {
+   "role": "inline",
+   "credit": "Colorful sky during sunset (Unsplash) — Rowan Heuvel insolitus, CC0, via Wikimedia Commons",
+   "isStock": true,
+   "id": "stock-003",
+   "alt": "Cloud lit orange at sunset behind palm silhouettes",
+   "asset": "stock-003",
+   "license": "stock-cc",
+   "width": 1600,
+   "height": 1067,
+   "src": "photos/stock-003-1600.webp",
+   "srcset": "photos/stock-003-1600.webp 1600w, photos/stock-003-1280.webp 1280w, photos/stock-003-1024.webp 1024w, photos/stock-003-640.webp 640w, photos/stock-003-400.webp 400w",
+   "bytes": {
+    "400": 8672,
+    "640": 16544,
+    "1024": 29566,
+    "1280": 41504,
+    "1600": 55936
+   }
+  },
+  "stock-007": {
+   "role": "inline",
+   "credit": "Sunset over Laccadive Sea - panoramio — Alexey Komarov, CC BY 3.0, via Wikimedia Commons",
+   "isStock": true,
+   "id": "stock-007",
+   "alt": "The sun going down over the Laccadive Sea",
+   "asset": "stock-007",
+   "license": "stock-cc",
+   "width": 1600,
+   "height": 1069,
+   "src": "photos/stock-007-1600.webp",
+   "srcset": "photos/stock-007-1600.webp 1600w, photos/stock-007-1280.webp 1280w, photos/stock-007-1024.webp 1024w, photos/stock-007-640.webp 640w, photos/stock-007-400.webp 400w",
+   "bytes": {
+    "400": 6960,
+    "640": 15642,
+    "1024": 32198,
+    "1280": 46200,
+    "1600": 66830
+   }
+  },
+  "img-002": {
+   "role": "inline",
+   "credit": null,
+   "isStock": false,
+   "id": "img-002",
+   "alt": "Guests and the family eating together at the long table under the veranda at night",
+   "asset": "img-002",
+   "license": "business-owned",
+   "width": 576,
+   "height": 768,
+   "src": "photos/img-002-400.webp",
+   "srcset": "photos/img-002-400.webp 400w",
+   "bytes": {
+    "400": 30614
+   }
+  },
+  "img-013": {
+   "role": "inline",
+   "credit": null,
+   "isStock": false,
+   "id": "img-013",
+   "alt": "A breakfast spread laid out on a table: small bowls of curry, sambol, fruit and hoppers",
+   "asset": "img-013",
+   "license": "business-owned",
+   "width": 361,
+   "height": 640,
+   "src": "photos/img-013-361.webp",
+   "srcset": "photos/img-013-361.webp 361w",
+   "bytes": {
+    "361": 35840
+   }
+  },
+  "img-003": {
+   "role": "inline",
+   "credit": null,
+   "isStock": false,
+   "id": "img-003",
+   "alt": "A bowl of cut papaya, mango, pineapple and passion fruit held up against the garden",
+   "asset": "img-003",
+   "license": "business-owned",
+   "width": 576,
+   "height": 768,
+   "src": "photos/img-003-400.webp",
+   "srcset": "photos/img-003-400.webp 400w",
+   "bytes": {
+    "400": 16242
+   }
+  },
+  "img-014": {
+   "role": "inline",
+   "credit": null,
+   "isStock": false,
+   "id": "img-014",
+   "alt": "The family and four guests standing together on the veranda",
+   "asset": "img-014",
+   "license": "business-owned",
+   "width": 640,
+   "height": 640,
+   "src": "photos/img-014-640.webp",
+   "srcset": "photos/img-014-640.webp 640w, photos/img-014-400.webp 400w",
+   "bytes": {
+    "400": 21960,
+    "640": 43748
+   }
+  },
+  "img-004": {
+   "role": "inline",
+   "credit": null,
+   "isStock": false,
+   "id": "img-004",
+   "alt": "A dormitory with steel bunk beds under a tiled roof",
+   "asset": "img-004",
+   "license": "business-owned",
+   "width": 576,
+   "height": 768,
+   "src": "photos/img-004-400.webp",
+   "srcset": "photos/img-004-400.webp 400w",
+   "bytes": {
+    "400": 25064
+   }
+  },
+  "img-001": {
+   "role": "inline",
+   "credit": null,
+   "isStock": false,
+   "id": "img-001",
+   "alt": "A private room with a double bed and a door open onto the garden",
+   "asset": "img-001",
+   "license": "business-owned",
+   "width": 576,
+   "height": 768,
+   "src": "photos/img-001-400.webp",
+   "srcset": "photos/img-001-400.webp 400w",
+   "bytes": {
+    "400": 23138
+   }
+  },
+  "img-005": {
+   "role": "inline",
+   "credit": null,
+   "isStock": false,
+   "id": "img-005",
+   "alt": "An open-air shower walled in glass, with plants growing around it",
+   "asset": "img-005",
+   "license": "business-owned",
+   "width": 576,
+   "height": 768,
+   "src": "photos/img-005-400.webp",
+   "srcset": "photos/img-005-400.webp 400w",
+   "bytes": {
+    "400": 31480
+   }
+  },
+  "img-011": {
+   "role": "inline",
+   "credit": null,
+   "isStock": false,
+   "id": "img-011",
+   "alt": "The garden in front of the hostel, palms and banana leaves",
+   "asset": "img-011",
+   "license": "business-owned",
+   "width": 576,
+   "height": 768,
+   "src": "photos/img-011-400.webp",
+   "srcset": "photos/img-011-400.webp 400w",
+   "bytes": {
+    "400": 48090
+   }
+  },
+  "img-012": {
+   "role": "inline",
+   "credit": null,
+   "isStock": false,
+   "id": "img-012",
+   "alt": "The hostel at dusk, its round sign lit between two windows",
+   "asset": "img-012",
+   "license": "business-owned",
+   "width": 1024,
+   "height": 576,
+   "src": "photos/img-012-1024.webp",
+   "srcset": "photos/img-012-1024.webp 1024w, photos/img-012-640.webp 640w, photos/img-012-400.webp 400w",
+   "bytes": {
+    "400": 8188,
+    "640": 15800,
+    "1024": 28060
+   }
+  }
+ }
+}

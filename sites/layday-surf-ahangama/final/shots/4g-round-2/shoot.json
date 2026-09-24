@@ -1,0 +1,25 @@
+{
+  "target": "http://127.0.0.1:8750/",
+  "widths": {
+    "desktop": {
+      "pageHeight": 9334,
+      "scroller": "window",
+      "captures": 12,
+      "truncated": false,
+      "errors": [
+        "Access to fetch at 'https://rosa-data-opal.vercel.app/data/spots/kabalana.json' from origin 'http://127.0.0.1:8750' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ]
+    },
+    "mobile": {
+      "pageHeight": 20107,
+      "scroller": "window",
+      "captures": 40,
+      "truncated": true,
+      "errors": [
+        "Access to fetch at 'https://rosa-data-opal.vercel.app/data/spots/kabalana.json' from origin 'http://127.0.0.1:8750' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+        "Failed to load resource: net::ERR_FAILED"
+      ]
+    }
+  }
+}

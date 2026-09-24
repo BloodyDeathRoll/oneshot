@@ -1,8 +1,8 @@
-version: 0.1.0
+version: 0.2.0
 
 # writer / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
-Runtime prompt = `playbook.md` + this file + `custom.md` + `references.md`.
+Runtime prompt = `playbook.md` + `run.yaml` + this file + `custom.md` + `references.md` + `tools.md` + `evals.md` + `schemas/business-types.md` — assembled by `node tools/prompt.mjs writer`, which is how this agent must be started. Every layer is part of your instructions; read all of them before acting. `tools/check-wiring.mjs` fails the run if any of them is unreachable.
 
 ## Role
 
@@ -14,7 +14,7 @@ You are the writer (station 7, Pitch). For one business with a live preview you 
 |---|---|
 | `dossier/<slug>/dossier.json` + `assets/` | Facts, gaps (`pitch_point: true`), old-site screenshots and notes, owner language hint. |
 | `sites/<slug>/deploy.json` | Preview URL (`<brand>.workers.dev`), what is live. |
-| `reports/<run-id>/<slug>.md` (passed) | What was fixed, measured (Lighthouse, budget), so claims in the pitch are numbers. |
+| `reports/<run-id>/<slug>.md` (passed) | What was fixed, measured against the playbook §4 budget, so claims in the pitch are numbers. |
 | `playbook.md` §9 | What the owner can now edit alone — the list you promise. |
 | `PLAN.md` §1 (hosting modes, commercial default), §5 writer | The offer. |
 | `run.yaml` `hosting` | Default mode for this run. |

@@ -1,0 +1,91 @@
+{
+ "slug": "layday-surf-ahangama",
+ "variant": "interactive",
+ "measured_at": "2026-09-22T10:55:43.044Z",
+ "first_load": {
+  "requests": 9,
+  "hosts": [
+   "localhost:8980",
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "third_party_hosts": [
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "bytes_total": 434440,
+  "bytes_html": 43884,
+  "bytes_js": 0,
+  "bytes_css": 0,
+  "bytes_fonts": 27752,
+  "bytes_images": 362804,
+  "largest_image_bytes": 89938,
+  "lcp_ms": 1656,
+  "cls": 0.0015,
+  "dcl_ms": 552
+ },
+ "booking": {
+  "external_booking_hrefs": [
+   "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "https://www.agoda.com/layday-surf-ahangama/hotel/piyadigama-lk.html",
+   "https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "https://rosa.surf/spot/kabalana"
+  ],
+  "tel_hrefs": [
+   "tel:+94778553343"
+  ],
+  "drawer_triggers": 0,
+  "triggers_are_links": true,
+  "primary_above_fold": true,
+  "tapped": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/"
+ },
+ "keyboard": {
+  "drawer_opens": null,
+  "closed": null,
+  "focus_returned": null,
+  "note": "no drawer; every action is a plain link"
+ },
+ "a11y": {
+  "images": 12,
+  "images_without_alt": 0,
+  "images_alt_empty_decorative": 0,
+  "tapables": 24,
+  "tapables_under_44px": 0,
+  "tapables_under_44px_examples": [],
+  "headings": [
+   "H1",
+   "H2",
+   "H3",
+   "H2",
+   "H2",
+   "H2",
+   "H2"
+  ],
+  "has_skip_link": true,
+  "lang": "en"
+ },
+ "no_js": {
+  "text_length": 4914,
+  "booking_links_reachable": 0,
+  "visible_images": 12
+ },
+ "reduced_motion": {
+  "canvases": 2,
+  "canvases_hidden": 0,
+  "photograph_visible": true
+ },
+ "facts": {
+  "numbers_on_page": 27,
+  "numbers_not_in_passed_copy": [
+   "5.0",
+   "0.7",
+   "1.1",
+   "20:30",
+   "12.6",
+   "21",
+   "19:55"
+  ],
+  "note": "copy/en.json passed station 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps each paragraph to its dossier fields. A number here that is not in the copy is either an interface label (01, 02…) or a claim to chase."
+ }
+}

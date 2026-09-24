@@ -1,0 +1,3930 @@
+[
+ {
+  "width": 390,
+  "path": "json-ok",
+  "settled_ms": 1121,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+   "GET https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "widget_requests": [
+   "GET document"
+  ],
+  "fcClass": "fc live",
+  "rosaOn": true,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": false,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": false,
+  "frameVisible": true,
+  "frameSrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headlineVisible": true,
+  "headline": "0.4–0.6 m Wednesday 23 September, 14:30 Swell 11.1 s from the south Wind 17.9 km/h from the west, cross-shore Rosa, updated 23 September 2026, 15:54",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "positions_equal": false,
+  "before": {
+   "now": [
+    20,
+    6698,
+    350,
+    244
+   ],
+   "rosa": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "link": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "frame": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "spot": [
+    20,
+    6480,
+    350,
+    163
+   ],
+   "next": [
+    0,
+    7875,
+    390,
+    1702
+   ],
+   "trio": [
+    20,
+    7600,
+    370,
+    275
+   ]
+  },
+  "after": {
+   "now": [
+    20,
+    6698,
+    350,
+    244
+   ],
+   "rosa": [
+    20,
+    6991,
+    350,
+    500
+   ],
+   "link": [
+    20,
+    6991,
+    350,
+    500
+   ],
+   "frame": [
+    20,
+    6991,
+    350,
+    500
+   ],
+   "spot": [
+    20,
+    6480,
+    350,
+    163
+   ],
+   "next": [
+    0,
+    7876,
+    390,
+    1702
+   ],
+   "trio": [
+    20,
+    7601,
+    370,
+    275
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   },
+   {
+    "type": "warning",
+    "text": "[.WebGL-0x1400157600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/json-ok-390.png"
+ },
+ {
+  "width": 390,
+  "path": "json-404",
+  "settled_ms": 1014,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json"
+  ],
+  "widget_requests": [],
+  "fcClass": "fc off",
+  "rosaOn": false,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": true,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": true,
+  "frameVisible": false,
+  "frameSrc": null,
+  "headlineVisible": false,
+  "headline": "",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "about:blank"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    20,
+    6698,
+    350,
+    244
+   ],
+   "rosa": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "link": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "frame": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "spot": [
+    20,
+    6480,
+    350,
+    163
+   ],
+   "next": [
+    0,
+    7875,
+    390,
+    1702
+   ],
+   "trio": [
+    20,
+    7600,
+    370,
+    275
+   ]
+  },
+  "after": {
+   "now": [
+    20,
+    6698,
+    350,
+    244
+   ],
+   "rosa": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "link": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "frame": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "spot": [
+    20,
+    6480,
+    350,
+    163
+   ],
+   "next": [
+    0,
+    7875,
+    390,
+    1702
+   ],
+   "trio": [
+    20,
+    7600,
+    370,
+    275
+   ]
+  },
+  "console_failed_resource": [
+   "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   },
+   {
+    "type": "warning",
+    "text": "[.WebGL-0x140015f600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/json-404-390.png"
+ },
+ {
+  "width": 390,
+  "path": "json-abort3",
+  "settled_ms": 3037,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json"
+  ],
+  "widget_requests": [],
+  "fcClass": "fc off",
+  "rosaOn": false,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": true,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": true,
+  "frameVisible": false,
+  "frameSrc": null,
+  "headlineVisible": false,
+  "headline": "",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "about:blank"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    20,
+    6698,
+    350,
+    244
+   ],
+   "rosa": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "link": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "frame": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "spot": [
+    20,
+    6480,
+    350,
+    163
+   ],
+   "next": [
+    0,
+    7875,
+    390,
+    1702
+   ],
+   "trio": [
+    20,
+    7600,
+    370,
+    275
+   ]
+  },
+  "after": {
+   "now": [
+    20,
+    6698,
+    350,
+    244
+   ],
+   "rosa": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "link": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "frame": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "spot": [
+    20,
+    6480,
+    350,
+    163
+   ],
+   "next": [
+    0,
+    7875,
+    390,
+    1702
+   ],
+   "trio": [
+    20,
+    7600,
+    370,
+    275
+   ]
+  },
+  "console_failed_resource": [
+   "Failed to load resource: net::ERR_FAILED"
+  ],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   },
+   {
+    "type": "warning",
+    "text": "[.WebGL-0x140015f600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/json-abort3-390.png"
+ },
+ {
+  "width": 390,
+  "path": "json-hang",
+  "settled_ms": 10006,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json"
+  ],
+  "widget_requests": [],
+  "fcClass": "fc off",
+  "rosaOn": false,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": true,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": true,
+  "frameVisible": false,
+  "frameSrc": null,
+  "headlineVisible": false,
+  "headline": "",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "about:blank"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    20,
+    6698,
+    350,
+    244
+   ],
+   "rosa": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "link": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "frame": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "spot": [
+    20,
+    6480,
+    350,
+    163
+   ],
+   "next": [
+    0,
+    7875,
+    390,
+    1702
+   ],
+   "trio": [
+    20,
+    7600,
+    370,
+    275
+   ]
+  },
+  "after": {
+   "now": [
+    20,
+    6698,
+    350,
+    244
+   ],
+   "rosa": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "link": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "frame": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "spot": [
+    20,
+    6480,
+    350,
+    163
+   ],
+   "next": [
+    0,
+    7875,
+    390,
+    1702
+   ],
+   "trio": [
+    20,
+    7600,
+    370,
+    275
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   },
+   {
+    "type": "warning",
+    "text": "[.WebGL-0x1400163600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/json-hang-390.png"
+ },
+ {
+  "width": 390,
+  "path": "json-stale",
+  "settled_ms": 1010,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json"
+  ],
+  "widget_requests": [],
+  "fcClass": "fc off",
+  "rosaOn": false,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": true,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": true,
+  "frameVisible": false,
+  "frameSrc": null,
+  "headlineVisible": false,
+  "headline": "",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "about:blank"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    20,
+    6698,
+    350,
+    244
+   ],
+   "rosa": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "link": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "frame": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "spot": [
+    20,
+    6480,
+    350,
+    163
+   ],
+   "next": [
+    0,
+    7875,
+    390,
+    1702
+   ],
+   "trio": [
+    20,
+    7600,
+    370,
+    275
+   ]
+  },
+  "after": {
+   "now": [
+    20,
+    6698,
+    350,
+    244
+   ],
+   "rosa": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "link": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "frame": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "spot": [
+    20,
+    6480,
+    350,
+    163
+   ],
+   "next": [
+    0,
+    7875,
+    390,
+    1702
+   ],
+   "trio": [
+    20,
+    7600,
+    370,
+    275
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/json-stale-390.png"
+ },
+ {
+  "width": 390,
+  "path": "w-abort",
+  "settled_ms": 1121,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+   "GET https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "widget_requests": [
+   "GET document"
+  ],
+  "fcClass": "fc live",
+  "rosaOn": true,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": false,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": false,
+  "frameVisible": true,
+  "frameSrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headlineVisible": true,
+  "headline": "0.4–0.6 m Wednesday 23 September, 14:30 Swell 11.1 s from the south Wind 17.9 km/h from the west, cross-shore Rosa, updated 23 September 2026, 15:54",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "chrome-error://chromewebdata/"
+  ],
+  "positions_equal": false,
+  "before": {
+   "now": [
+    20,
+    6698,
+    350,
+    244
+   ],
+   "rosa": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "link": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "frame": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "spot": [
+    20,
+    6480,
+    350,
+    163
+   ],
+   "next": [
+    0,
+    7875,
+    390,
+    1702
+   ],
+   "trio": [
+    20,
+    7600,
+    370,
+    275
+   ]
+  },
+  "after": {
+   "now": [
+    20,
+    6698,
+    350,
+    244
+   ],
+   "rosa": [
+    20,
+    6991,
+    350,
+    500
+   ],
+   "link": [
+    20,
+    6991,
+    350,
+    500
+   ],
+   "frame": [
+    20,
+    6991,
+    350,
+    500
+   ],
+   "spot": [
+    20,
+    6480,
+    350,
+    163
+   ],
+   "next": [
+    0,
+    7876,
+    390,
+    1702
+   ],
+   "trio": [
+    20,
+    7601,
+    370,
+    275
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/w-abort-390.png"
+ },
+ {
+  "width": 390,
+  "path": "w-abort3",
+  "settled_ms": 4053,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+   "GET https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "widget_requests": [
+   "GET document"
+  ],
+  "fcClass": "fc live",
+  "rosaOn": true,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": false,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": false,
+  "frameVisible": true,
+  "frameSrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headlineVisible": true,
+  "headline": "0.4–0.6 m Wednesday 23 September, 14:30 Swell 11.1 s from the south Wind 17.9 km/h from the west, cross-shore Rosa, updated 23 September 2026, 15:54",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "chrome-error://chromewebdata/"
+  ],
+  "positions_equal": false,
+  "before": {
+   "now": [
+    20,
+    6698,
+    350,
+    244
+   ],
+   "rosa": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "link": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "frame": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "spot": [
+    20,
+    6480,
+    350,
+    163
+   ],
+   "next": [
+    0,
+    7875,
+    390,
+    1702
+   ],
+   "trio": [
+    20,
+    7600,
+    370,
+    275
+   ]
+  },
+  "after": {
+   "now": [
+    20,
+    6698,
+    350,
+    244
+   ],
+   "rosa": [
+    20,
+    6991,
+    350,
+    500
+   ],
+   "link": [
+    20,
+    6991,
+    350,
+    500
+   ],
+   "frame": [
+    20,
+    6991,
+    350,
+    500
+   ],
+   "spot": [
+    20,
+    6480,
+    350,
+    163
+   ],
+   "next": [
+    0,
+    7876,
+    390,
+    1702
+   ],
+   "trio": [
+    20,
+    7601,
+    370,
+    275
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/w-abort3-390.png"
+ },
+ {
+  "width": 390,
+  "path": "w-hang",
+  "settled_ms": null,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+   "GET https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "widget_requests": [
+   "GET document"
+  ],
+  "fcClass": "fc live",
+  "rosaOn": false,
+  "rosaLoading": "true",
+  "nowLoading": null,
+  "linkVisible": true,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": true,
+  "frameVisible": false,
+  "frameSrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headlineVisible": true,
+  "headline": "0.4–0.6 m Wednesday 23 September, 14:30 Swell 11.1 s from the south Wind 17.9 km/h from the west, cross-shore Rosa, updated 23 September 2026, 15:54",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "about:blank"
+  ],
+  "positions_equal": false,
+  "before": {
+   "now": [
+    20,
+    6698,
+    350,
+    244
+   ],
+   "rosa": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "link": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "frame": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "spot": [
+    20,
+    6480,
+    350,
+    163
+   ],
+   "next": [
+    0,
+    7875,
+    390,
+    1702
+   ],
+   "trio": [
+    20,
+    7600,
+    370,
+    275
+   ]
+  },
+  "after": {
+   "now": [
+    20,
+    6698,
+    350,
+    244
+   ],
+   "rosa": [
+    20,
+    6991,
+    350,
+    500
+   ],
+   "link": [
+    20,
+    6991,
+    350,
+    500
+   ],
+   "frame": [
+    20,
+    6991,
+    350,
+    500
+   ],
+   "spot": [
+    20,
+    6480,
+    350,
+    163
+   ],
+   "next": [
+    0,
+    7876,
+    390,
+    1702
+   ],
+   "trio": [
+    20,
+    7601,
+    370,
+    275
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/w-hang-390.png"
+ },
+ {
+  "width": 390,
+  "path": "w-500",
+  "settled_ms": 1119,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+   "GET https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "widget_requests": [
+   "GET document"
+  ],
+  "fcClass": "fc live",
+  "rosaOn": true,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": false,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": false,
+  "frameVisible": true,
+  "frameSrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headlineVisible": true,
+  "headline": "0.4–0.6 m Wednesday 23 September, 14:30 Swell 11.1 s from the south Wind 17.9 km/h from the west, cross-shore Rosa, updated 23 September 2026, 15:55",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "positions_equal": false,
+  "before": {
+   "now": [
+    20,
+    6698,
+    350,
+    244
+   ],
+   "rosa": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "link": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "frame": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "spot": [
+    20,
+    6480,
+    350,
+    163
+   ],
+   "next": [
+    0,
+    7875,
+    390,
+    1702
+   ],
+   "trio": [
+    20,
+    7600,
+    370,
+    275
+   ]
+  },
+  "after": {
+   "now": [
+    20,
+    6698,
+    350,
+    244
+   ],
+   "rosa": [
+    20,
+    6991,
+    350,
+    500
+   ],
+   "link": [
+    20,
+    6991,
+    350,
+    500
+   ],
+   "frame": [
+    20,
+    6991,
+    350,
+    500
+   ],
+   "spot": [
+    20,
+    6480,
+    350,
+    163
+   ],
+   "next": [
+    0,
+    7876,
+    390,
+    1702
+   ],
+   "trio": [
+    20,
+    7601,
+    370,
+    275
+   ]
+  },
+  "console_failed_resource": [
+   "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+  ],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/w-500-390.png"
+ },
+ {
+  "width": 390,
+  "path": "w-ok3",
+  "settled_ms": 4046,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+   "GET https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "widget_requests": [
+   "GET document"
+  ],
+  "fcClass": "fc live",
+  "rosaOn": true,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": false,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": false,
+  "frameVisible": true,
+  "frameSrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headlineVisible": true,
+  "headline": "0.4–0.6 m Wednesday 23 September, 14:30 Swell 11.1 s from the south Wind 17.9 km/h from the west, cross-shore Rosa, updated 23 September 2026, 15:55",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "positions_equal": false,
+  "before": {
+   "now": [
+    20,
+    6698,
+    350,
+    244
+   ],
+   "rosa": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "link": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "frame": [
+    20,
+    6990,
+    350,
+    500
+   ],
+   "spot": [
+    20,
+    6480,
+    350,
+    163
+   ],
+   "next": [
+    0,
+    7875,
+    390,
+    1702
+   ],
+   "trio": [
+    20,
+    7600,
+    370,
+    275
+   ]
+  },
+  "after": {
+   "now": [
+    20,
+    6698,
+    350,
+    244
+   ],
+   "rosa": [
+    20,
+    6991,
+    350,
+    500
+   ],
+   "link": [
+    20,
+    6991,
+    350,
+    500
+   ],
+   "frame": [
+    20,
+    6991,
+    350,
+    500
+   ],
+   "spot": [
+    20,
+    6480,
+    350,
+    163
+   ],
+   "next": [
+    0,
+    7876,
+    390,
+    1702
+   ],
+   "trio": [
+    20,
+    7601,
+    370,
+    275
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/w-ok3-390.png"
+ },
+ {
+  "width": 1440,
+  "path": "json-ok",
+  "settled_ms": 1117,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+   "GET https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "widget_requests": [
+   "GET document"
+  ],
+  "fcClass": "fc live",
+  "rosaOn": true,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": false,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": false,
+  "frameVisible": true,
+  "frameSrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headlineVisible": true,
+  "headline": "0.4–0.6 m Wednesday 23 September, 14:30 Swell 11.1 s from the south Wind 17.9 km/h from the west, cross-shore Rosa, updated 23 September 2026, 15:55",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    240,
+    6120,
+    336,
+    296
+   ],
+   "rosa": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "link": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "frame": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "spot": [
+    120,
+    5876,
+    886,
+    148
+   ],
+   "next": [
+    88,
+    7130,
+    1264,
+    1040
+   ],
+   "trio": [
+    120,
+    6730,
+    1068,
+    400
+   ]
+  },
+  "after": {
+   "now": [
+    240,
+    6120,
+    336,
+    296
+   ],
+   "rosa": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "link": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "frame": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "spot": [
+    120,
+    5876,
+    886,
+    148
+   ],
+   "next": [
+    88,
+    7130,
+    1264,
+    1040
+   ],
+   "trio": [
+    120,
+    6730,
+    1068,
+    400
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/json-ok-1440.png"
+ },
+ {
+  "width": 1440,
+  "path": "json-404",
+  "settled_ms": 1010,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json"
+  ],
+  "widget_requests": [],
+  "fcClass": "fc off",
+  "rosaOn": false,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": true,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": true,
+  "frameVisible": false,
+  "frameSrc": null,
+  "headlineVisible": false,
+  "headline": "",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "about:blank"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    240,
+    6120,
+    336,
+    296
+   ],
+   "rosa": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "link": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "frame": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "spot": [
+    120,
+    5876,
+    886,
+    148
+   ],
+   "next": [
+    88,
+    7130,
+    1264,
+    1040
+   ],
+   "trio": [
+    120,
+    6730,
+    1068,
+    400
+   ]
+  },
+  "after": {
+   "now": [
+    240,
+    6120,
+    336,
+    296
+   ],
+   "rosa": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "link": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "frame": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "spot": [
+    120,
+    5876,
+    886,
+    148
+   ],
+   "next": [
+    88,
+    7130,
+    1264,
+    1040
+   ],
+   "trio": [
+    120,
+    6730,
+    1068,
+    400
+   ]
+  },
+  "console_failed_resource": [
+   "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/json-404-1440.png"
+ },
+ {
+  "width": 1440,
+  "path": "json-abort3",
+  "settled_ms": 3033,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json"
+  ],
+  "widget_requests": [],
+  "fcClass": "fc off",
+  "rosaOn": false,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": true,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": true,
+  "frameVisible": false,
+  "frameSrc": null,
+  "headlineVisible": false,
+  "headline": "",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "about:blank"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    240,
+    6120,
+    336,
+    296
+   ],
+   "rosa": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "link": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "frame": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "spot": [
+    120,
+    5876,
+    886,
+    148
+   ],
+   "next": [
+    88,
+    7130,
+    1264,
+    1040
+   ],
+   "trio": [
+    120,
+    6730,
+    1068,
+    400
+   ]
+  },
+  "after": {
+   "now": [
+    240,
+    6120,
+    336,
+    296
+   ],
+   "rosa": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "link": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "frame": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "spot": [
+    120,
+    5876,
+    886,
+    148
+   ],
+   "next": [
+    88,
+    7130,
+    1264,
+    1040
+   ],
+   "trio": [
+    120,
+    6730,
+    1068,
+    400
+   ]
+  },
+  "console_failed_resource": [
+   "Failed to load resource: net::ERR_FAILED"
+  ],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/json-abort3-1440.png"
+ },
+ {
+  "width": 1440,
+  "path": "json-hang",
+  "settled_ms": 10103,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json"
+  ],
+  "widget_requests": [],
+  "fcClass": "fc off",
+  "rosaOn": false,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": true,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": true,
+  "frameVisible": false,
+  "frameSrc": null,
+  "headlineVisible": false,
+  "headline": "",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "about:blank"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    240,
+    6120,
+    336,
+    296
+   ],
+   "rosa": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "link": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "frame": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "spot": [
+    120,
+    5876,
+    886,
+    148
+   ],
+   "next": [
+    88,
+    7130,
+    1264,
+    1040
+   ],
+   "trio": [
+    120,
+    6730,
+    1068,
+    400
+   ]
+  },
+  "after": {
+   "now": [
+    240,
+    6120,
+    336,
+    296
+   ],
+   "rosa": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "link": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "frame": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "spot": [
+    120,
+    5876,
+    886,
+    148
+   ],
+   "next": [
+    88,
+    7130,
+    1264,
+    1040
+   ],
+   "trio": [
+    120,
+    6730,
+    1068,
+    400
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/json-hang-1440.png"
+ },
+ {
+  "width": 1440,
+  "path": "json-stale",
+  "settled_ms": 1009,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json"
+  ],
+  "widget_requests": [],
+  "fcClass": "fc off",
+  "rosaOn": false,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": true,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": true,
+  "frameVisible": false,
+  "frameSrc": null,
+  "headlineVisible": false,
+  "headline": "",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "about:blank"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    240,
+    6120,
+    336,
+    296
+   ],
+   "rosa": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "link": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "frame": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "spot": [
+    120,
+    5876,
+    886,
+    148
+   ],
+   "next": [
+    88,
+    7130,
+    1264,
+    1040
+   ],
+   "trio": [
+    120,
+    6730,
+    1068,
+    400
+   ]
+  },
+  "after": {
+   "now": [
+    240,
+    6120,
+    336,
+    296
+   ],
+   "rosa": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "link": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "frame": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "spot": [
+    120,
+    5876,
+    886,
+    148
+   ],
+   "next": [
+    88,
+    7130,
+    1264,
+    1040
+   ],
+   "trio": [
+    120,
+    6730,
+    1068,
+    400
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/json-stale-1440.png"
+ },
+ {
+  "width": 1440,
+  "path": "w-abort",
+  "settled_ms": 1117,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+   "GET https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "widget_requests": [
+   "GET document"
+  ],
+  "fcClass": "fc live",
+  "rosaOn": true,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": false,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": false,
+  "frameVisible": true,
+  "frameSrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headlineVisible": true,
+  "headline": "0.4–0.6 m Wednesday 23 September, 14:30 Swell 11.1 s from the south Wind 17.9 km/h from the west, cross-shore Rosa, updated 23 September 2026, 15:55",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "chrome-error://chromewebdata/"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    240,
+    6120,
+    336,
+    296
+   ],
+   "rosa": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "link": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "frame": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "spot": [
+    120,
+    5876,
+    886,
+    148
+   ],
+   "next": [
+    88,
+    7130,
+    1264,
+    1040
+   ],
+   "trio": [
+    120,
+    6730,
+    1068,
+    400
+   ]
+  },
+  "after": {
+   "now": [
+    240,
+    6120,
+    336,
+    296
+   ],
+   "rosa": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "link": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "frame": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "spot": [
+    120,
+    5876,
+    886,
+    148
+   ],
+   "next": [
+    88,
+    7130,
+    1264,
+    1040
+   ],
+   "trio": [
+    120,
+    6730,
+    1068,
+    400
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/w-abort-1440.png"
+ },
+ {
+  "width": 1440,
+  "path": "w-abort3",
+  "settled_ms": 4046,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+   "GET https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "widget_requests": [
+   "GET document"
+  ],
+  "fcClass": "fc live",
+  "rosaOn": true,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": false,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": false,
+  "frameVisible": true,
+  "frameSrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headlineVisible": true,
+  "headline": "0.4–0.6 m Wednesday 23 September, 14:30 Swell 11.1 s from the south Wind 17.9 km/h from the west, cross-shore Rosa, updated 23 September 2026, 15:55",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "chrome-error://chromewebdata/"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    240,
+    6120,
+    336,
+    296
+   ],
+   "rosa": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "link": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "frame": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "spot": [
+    120,
+    5876,
+    886,
+    148
+   ],
+   "next": [
+    88,
+    7130,
+    1264,
+    1040
+   ],
+   "trio": [
+    120,
+    6730,
+    1068,
+    400
+   ]
+  },
+  "after": {
+   "now": [
+    240,
+    6120,
+    336,
+    296
+   ],
+   "rosa": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "link": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "frame": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "spot": [
+    120,
+    5876,
+    886,
+    148
+   ],
+   "next": [
+    88,
+    7130,
+    1264,
+    1040
+   ],
+   "trio": [
+    120,
+    6730,
+    1068,
+    400
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/w-abort3-1440.png"
+ },
+ {
+  "width": 1440,
+  "path": "w-hang",
+  "settled_ms": null,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+   "GET https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "widget_requests": [
+   "GET document"
+  ],
+  "fcClass": "fc live",
+  "rosaOn": false,
+  "rosaLoading": "true",
+  "nowLoading": null,
+  "linkVisible": true,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": true,
+  "frameVisible": false,
+  "frameSrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headlineVisible": true,
+  "headline": "0.4–0.6 m Wednesday 23 September, 14:30 Swell 11.1 s from the south Wind 17.9 km/h from the west, cross-shore Rosa, updated 23 September 2026, 15:55",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "about:blank"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    240,
+    6120,
+    336,
+    296
+   ],
+   "rosa": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "link": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "frame": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "spot": [
+    120,
+    5876,
+    886,
+    148
+   ],
+   "next": [
+    88,
+    7130,
+    1264,
+    1040
+   ],
+   "trio": [
+    120,
+    6730,
+    1068,
+    400
+   ]
+  },
+  "after": {
+   "now": [
+    240,
+    6120,
+    336,
+    296
+   ],
+   "rosa": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "link": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "frame": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "spot": [
+    120,
+    5876,
+    886,
+    148
+   ],
+   "next": [
+    88,
+    7130,
+    1264,
+    1040
+   ],
+   "trio": [
+    120,
+    6730,
+    1068,
+    400
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/w-hang-1440.png"
+ },
+ {
+  "width": 1440,
+  "path": "w-500",
+  "settled_ms": 1119,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+   "GET https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "widget_requests": [
+   "GET document"
+  ],
+  "fcClass": "fc live",
+  "rosaOn": true,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": false,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": false,
+  "frameVisible": true,
+  "frameSrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headlineVisible": true,
+  "headline": "0.4–0.6 m Wednesday 23 September, 14:30 Swell 11.1 s from the south Wind 17.9 km/h from the west, cross-shore Rosa, updated 23 September 2026, 15:56",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    240,
+    6120,
+    336,
+    296
+   ],
+   "rosa": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "link": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "frame": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "spot": [
+    120,
+    5876,
+    886,
+    148
+   ],
+   "next": [
+    88,
+    7130,
+    1264,
+    1040
+   ],
+   "trio": [
+    120,
+    6730,
+    1068,
+    400
+   ]
+  },
+  "after": {
+   "now": [
+    240,
+    6120,
+    336,
+    296
+   ],
+   "rosa": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "link": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "frame": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "spot": [
+    120,
+    5876,
+    886,
+    148
+   ],
+   "next": [
+    88,
+    7130,
+    1264,
+    1040
+   ],
+   "trio": [
+    120,
+    6730,
+    1068,
+    400
+   ]
+  },
+  "console_failed_resource": [
+   "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+  ],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/w-500-1440.png"
+ },
+ {
+  "width": 1440,
+  "path": "w-ok3",
+  "settled_ms": 4047,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+   "GET https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "widget_requests": [
+   "GET document"
+  ],
+  "fcClass": "fc live",
+  "rosaOn": true,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": false,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": false,
+  "frameVisible": true,
+  "frameSrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headlineVisible": true,
+  "headline": "0.4–0.6 m Wednesday 23 September, 14:30 Swell 11.1 s from the south Wind 17.9 km/h from the west, cross-shore Rosa, updated 23 September 2026, 15:56",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    240,
+    6120,
+    336,
+    296
+   ],
+   "rosa": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "link": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "frame": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "spot": [
+    120,
+    5876,
+    886,
+    148
+   ],
+   "next": [
+    88,
+    7130,
+    1264,
+    1040
+   ],
+   "trio": [
+    120,
+    6730,
+    1068,
+    400
+   ]
+  },
+  "after": {
+   "now": [
+    240,
+    6120,
+    336,
+    296
+   ],
+   "rosa": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "link": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "frame": [
+    648,
+    6120,
+    420,
+    500
+   ],
+   "spot": [
+    120,
+    5876,
+    886,
+    148
+   ],
+   "next": [
+    88,
+    7130,
+    1264,
+    1040
+   ],
+   "trio": [
+    120,
+    6730,
+    1068,
+    400
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/w-ok3-1440.png"
+ },
+ {
+  "width": 1525,
+  "path": "json-ok",
+  "settled_ms": 1109,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+   "GET https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "widget_requests": [
+   "GET document"
+  ],
+  "fcClass": "fc live",
+  "rosaOn": true,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": false,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": false,
+  "frameVisible": true,
+  "frameSrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headlineVisible": true,
+  "headline": "0.4–0.6 m Wednesday 23 September, 14:30 Swell 11.1 s from the south Wind 17.9 km/h from the west, cross-shore Rosa, updated 23 September 2026, 15:56",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    304,
+    6074,
+    336,
+    296
+   ],
+   "rosa": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "link": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "frame": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "spot": [
+    163,
+    5830,
+    921,
+    148
+   ],
+   "next": [
+    131,
+    7084,
+    1264,
+    1040
+   ],
+   "trio": [
+    163,
+    6684,
+    1110,
+    400
+   ]
+  },
+  "after": {
+   "now": [
+    304,
+    6074,
+    336,
+    296
+   ],
+   "rosa": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "link": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "frame": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "spot": [
+    163,
+    5830,
+    921,
+    148
+   ],
+   "next": [
+    131,
+    7084,
+    1264,
+    1040
+   ],
+   "trio": [
+    163,
+    6684,
+    1110,
+    400
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/json-ok-1525.png"
+ },
+ {
+  "width": 1525,
+  "path": "json-404",
+  "settled_ms": 1009,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json"
+  ],
+  "widget_requests": [],
+  "fcClass": "fc off",
+  "rosaOn": false,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": true,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": true,
+  "frameVisible": false,
+  "frameSrc": null,
+  "headlineVisible": false,
+  "headline": "",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "about:blank"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    304,
+    6074,
+    336,
+    296
+   ],
+   "rosa": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "link": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "frame": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "spot": [
+    163,
+    5830,
+    921,
+    148
+   ],
+   "next": [
+    131,
+    7084,
+    1264,
+    1040
+   ],
+   "trio": [
+    163,
+    6684,
+    1110,
+    400
+   ]
+  },
+  "after": {
+   "now": [
+    304,
+    6074,
+    336,
+    296
+   ],
+   "rosa": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "link": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "frame": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "spot": [
+    163,
+    5830,
+    921,
+    148
+   ],
+   "next": [
+    131,
+    7084,
+    1264,
+    1040
+   ],
+   "trio": [
+    163,
+    6684,
+    1110,
+    400
+   ]
+  },
+  "console_failed_resource": [
+   "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/json-404-1525.png"
+ },
+ {
+  "width": 1525,
+  "path": "json-abort3",
+  "settled_ms": 3036,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json"
+  ],
+  "widget_requests": [],
+  "fcClass": "fc off",
+  "rosaOn": false,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": true,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": true,
+  "frameVisible": false,
+  "frameSrc": null,
+  "headlineVisible": false,
+  "headline": "",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "about:blank"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    304,
+    6074,
+    336,
+    296
+   ],
+   "rosa": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "link": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "frame": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "spot": [
+    163,
+    5830,
+    921,
+    148
+   ],
+   "next": [
+    131,
+    7084,
+    1264,
+    1040
+   ],
+   "trio": [
+    163,
+    6684,
+    1110,
+    400
+   ]
+  },
+  "after": {
+   "now": [
+    304,
+    6074,
+    336,
+    296
+   ],
+   "rosa": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "link": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "frame": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "spot": [
+    163,
+    5830,
+    921,
+    148
+   ],
+   "next": [
+    131,
+    7084,
+    1264,
+    1040
+   ],
+   "trio": [
+    163,
+    6684,
+    1110,
+    400
+   ]
+  },
+  "console_failed_resource": [
+   "Failed to load resource: net::ERR_FAILED"
+  ],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/json-abort3-1525.png"
+ },
+ {
+  "width": 1525,
+  "path": "json-hang",
+  "settled_ms": 10013,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json"
+  ],
+  "widget_requests": [],
+  "fcClass": "fc off",
+  "rosaOn": false,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": true,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": true,
+  "frameVisible": false,
+  "frameSrc": null,
+  "headlineVisible": false,
+  "headline": "",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "about:blank"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    304,
+    6074,
+    336,
+    296
+   ],
+   "rosa": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "link": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "frame": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "spot": [
+    163,
+    5830,
+    921,
+    148
+   ],
+   "next": [
+    131,
+    7084,
+    1264,
+    1040
+   ],
+   "trio": [
+    163,
+    6684,
+    1110,
+    400
+   ]
+  },
+  "after": {
+   "now": [
+    304,
+    6074,
+    336,
+    296
+   ],
+   "rosa": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "link": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "frame": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "spot": [
+    163,
+    5830,
+    921,
+    148
+   ],
+   "next": [
+    131,
+    7084,
+    1264,
+    1040
+   ],
+   "trio": [
+    163,
+    6684,
+    1110,
+    400
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/json-hang-1525.png"
+ },
+ {
+  "width": 1525,
+  "path": "json-stale",
+  "settled_ms": 1012,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json"
+  ],
+  "widget_requests": [],
+  "fcClass": "fc off",
+  "rosaOn": false,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": true,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": true,
+  "frameVisible": false,
+  "frameSrc": null,
+  "headlineVisible": false,
+  "headline": "",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "about:blank"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    304,
+    6074,
+    336,
+    296
+   ],
+   "rosa": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "link": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "frame": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "spot": [
+    163,
+    5830,
+    921,
+    148
+   ],
+   "next": [
+    131,
+    7084,
+    1264,
+    1040
+   ],
+   "trio": [
+    163,
+    6684,
+    1110,
+    400
+   ]
+  },
+  "after": {
+   "now": [
+    304,
+    6074,
+    336,
+    296
+   ],
+   "rosa": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "link": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "frame": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "spot": [
+    163,
+    5830,
+    921,
+    148
+   ],
+   "next": [
+    131,
+    7084,
+    1264,
+    1040
+   ],
+   "trio": [
+    163,
+    6684,
+    1110,
+    400
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/json-stale-1525.png"
+ },
+ {
+  "width": 1525,
+  "path": "w-abort",
+  "settled_ms": 1119,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+   "GET https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "widget_requests": [
+   "GET document"
+  ],
+  "fcClass": "fc live",
+  "rosaOn": true,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": false,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": false,
+  "frameVisible": true,
+  "frameSrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headlineVisible": true,
+  "headline": "0.4–0.6 m Wednesday 23 September, 14:30 Swell 11.1 s from the south Wind 17.9 km/h from the west, cross-shore Rosa, updated 23 September 2026, 15:56",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "chrome-error://chromewebdata/"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    304,
+    6074,
+    336,
+    296
+   ],
+   "rosa": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "link": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "frame": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "spot": [
+    163,
+    5830,
+    921,
+    148
+   ],
+   "next": [
+    131,
+    7084,
+    1264,
+    1040
+   ],
+   "trio": [
+    163,
+    6684,
+    1110,
+    400
+   ]
+  },
+  "after": {
+   "now": [
+    304,
+    6074,
+    336,
+    296
+   ],
+   "rosa": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "link": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "frame": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "spot": [
+    163,
+    5830,
+    921,
+    148
+   ],
+   "next": [
+    131,
+    7084,
+    1264,
+    1040
+   ],
+   "trio": [
+    163,
+    6684,
+    1110,
+    400
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/w-abort-1525.png"
+ },
+ {
+  "width": 1525,
+  "path": "w-abort3",
+  "settled_ms": 4054,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+   "GET https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "widget_requests": [
+   "GET document"
+  ],
+  "fcClass": "fc live",
+  "rosaOn": true,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": false,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": false,
+  "frameVisible": true,
+  "frameSrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headlineVisible": true,
+  "headline": "0.4–0.6 m Wednesday 23 September, 14:30 Swell 11.1 s from the south Wind 17.9 km/h from the west, cross-shore Rosa, updated 23 September 2026, 15:56",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "chrome-error://chromewebdata/"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    304,
+    6074,
+    336,
+    296
+   ],
+   "rosa": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "link": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "frame": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "spot": [
+    163,
+    5830,
+    921,
+    148
+   ],
+   "next": [
+    131,
+    7084,
+    1264,
+    1040
+   ],
+   "trio": [
+    163,
+    6684,
+    1110,
+    400
+   ]
+  },
+  "after": {
+   "now": [
+    304,
+    6074,
+    336,
+    296
+   ],
+   "rosa": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "link": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "frame": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "spot": [
+    163,
+    5830,
+    921,
+    148
+   ],
+   "next": [
+    131,
+    7084,
+    1264,
+    1040
+   ],
+   "trio": [
+    163,
+    6684,
+    1110,
+    400
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/w-abort3-1525.png"
+ },
+ {
+  "width": 1525,
+  "path": "w-hang",
+  "settled_ms": null,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+   "GET https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "widget_requests": [
+   "GET document"
+  ],
+  "fcClass": "fc live",
+  "rosaOn": false,
+  "rosaLoading": "true",
+  "nowLoading": null,
+  "linkVisible": true,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": true,
+  "frameVisible": false,
+  "frameSrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headlineVisible": true,
+  "headline": "0.4–0.6 m Wednesday 23 September, 14:30 Swell 11.1 s from the south Wind 17.9 km/h from the west, cross-shore Rosa, updated 23 September 2026, 15:56",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "about:blank"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    304,
+    6074,
+    336,
+    296
+   ],
+   "rosa": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "link": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "frame": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "spot": [
+    163,
+    5830,
+    921,
+    148
+   ],
+   "next": [
+    131,
+    7084,
+    1264,
+    1040
+   ],
+   "trio": [
+    163,
+    6684,
+    1110,
+    400
+   ]
+  },
+  "after": {
+   "now": [
+    304,
+    6074,
+    336,
+    296
+   ],
+   "rosa": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "link": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "frame": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "spot": [
+    163,
+    5830,
+    921,
+    148
+   ],
+   "next": [
+    131,
+    7084,
+    1264,
+    1040
+   ],
+   "trio": [
+    163,
+    6684,
+    1110,
+    400
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/w-hang-1525.png"
+ },
+ {
+  "width": 1525,
+  "path": "w-500",
+  "settled_ms": 1118,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+   "GET https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "widget_requests": [
+   "GET document"
+  ],
+  "fcClass": "fc live",
+  "rosaOn": true,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": false,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": false,
+  "frameVisible": true,
+  "frameSrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headlineVisible": true,
+  "headline": "0.4–0.6 m Wednesday 23 September, 14:30 Swell 11.1 s from the south Wind 17.9 km/h from the west, cross-shore Rosa, updated 23 September 2026, 15:57",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    304,
+    6074,
+    336,
+    296
+   ],
+   "rosa": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "link": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "frame": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "spot": [
+    163,
+    5830,
+    921,
+    148
+   ],
+   "next": [
+    131,
+    7084,
+    1264,
+    1040
+   ],
+   "trio": [
+    163,
+    6684,
+    1110,
+    400
+   ]
+  },
+  "after": {
+   "now": [
+    304,
+    6074,
+    336,
+    296
+   ],
+   "rosa": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "link": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "frame": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "spot": [
+    163,
+    5830,
+    921,
+    148
+   ],
+   "next": [
+    131,
+    7084,
+    1264,
+    1040
+   ],
+   "trio": [
+    163,
+    6684,
+    1110,
+    400
+   ]
+  },
+  "console_failed_resource": [
+   "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+  ],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/w-500-1525.png"
+ },
+ {
+  "width": 1525,
+  "path": "w-ok3",
+  "settled_ms": 4051,
+  "third_party_on_load": 0,
+  "requests_after_scroll": [
+   "GET https://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+   "GET https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "widget_requests": [
+   "GET document"
+  ],
+  "fcClass": "fc live",
+  "rosaOn": true,
+  "rosaLoading": null,
+  "nowLoading": null,
+  "linkVisible": false,
+  "linkText": "See today's forecast for Kabalana on Rosa",
+  "linkHref": "https://rosa.surf/spot/kabalana",
+  "linkFillsBox": true,
+  "linkHit": false,
+  "frameVisible": true,
+  "frameSrc": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "headlineVisible": true,
+  "headline": "0.4–0.6 m Wednesday 23 September, 14:30 Swell 11.1 s from the south Wind 17.9 km/h from the west, cross-shore Rosa, updated 23 September 2026, 15:57",
+  "blockInView": true,
+  "blockTop": 120,
+  "cls": 0,
+  "shifts": [],
+  "frame_urls": [
+   "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "positions_equal": true,
+  "before": {
+   "now": [
+    304,
+    6074,
+    336,
+    296
+   ],
+   "rosa": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "link": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "frame": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "spot": [
+    163,
+    5830,
+    921,
+    148
+   ],
+   "next": [
+    131,
+    7084,
+    1264,
+    1040
+   ],
+   "trio": [
+    163,
+    6684,
+    1110,
+    400
+   ]
+  },
+  "after": {
+   "now": [
+    304,
+    6074,
+    336,
+    296
+   ],
+   "rosa": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "link": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "frame": [
+    712,
+    6074,
+    420,
+    500
+   ],
+   "spot": [
+    163,
+    5830,
+    921,
+    148
+   ],
+   "next": [
+    131,
+    7084,
+    1264,
+    1040
+   ],
+   "trio": [
+    163,
+    6684,
+    1110,
+    400
+   ]
+  },
+  "console_failed_resource": [],
+  "console_other": [
+   {
+    "type": "warning",
+    "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+   }
+  ],
+  "page_errors": [],
+  "shot": "/tmp/claude-1000/-home-shahar-Projects-oneshot/0b1bb6a1-6e43-4c61-a933-ea631d20b2e4/scratchpad/layday-critic2/prefix/w-ok3-1525.png"
+ }
+]

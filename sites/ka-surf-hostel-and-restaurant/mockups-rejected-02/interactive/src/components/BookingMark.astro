@@ -1,0 +1,12 @@
+---
+/* Booking.com's mark, drawn inline so the page makes no outside request for it.
+   Used to label a link to this hotel's own Booking.com listing — the platform
+   it actually takes reservations on. */
+const { light = false } = Astro.props;
+---
+<svg width="18" height="18" viewBox="0 0 24 24" role="img" aria-label="Booking.com" focusable="false">
+  <rect width="24" height="24" rx="5" fill={light ? '#ffffff' : '#003580'} />
+  <path d="M8.1 6.6h4.05c2.19 0 3.5 1.1 3.5 2.86 0 1.1-.52 1.94-1.4 2.36v.05c1.2.34 1.93 1.32 1.93 2.6 0 2.02-1.47 3.13-3.83 3.13H8.1a.62.62 0 0 1-.62-.62V7.22c0-.34.28-.62.62-.62Zm1.62 4.6h2.1c.95 0 1.5-.5 1.5-1.35 0-.83-.53-1.3-1.5-1.3h-2.1v2.65Zm0 4.6h2.43c1.06 0 1.66-.55 1.66-1.47 0-.9-.62-1.45-1.7-1.45H9.72v2.92Z"
+        fill={light ? '#003580' : '#ffffff'} />
+  <circle cx="18.1" cy="16.1" r="1.45" fill={light ? '#003580' : '#ffffff'} />
+</svg>

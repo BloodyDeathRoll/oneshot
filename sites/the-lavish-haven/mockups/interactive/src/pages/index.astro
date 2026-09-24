@@ -1,0 +1,309 @@
+---
+import { c, block, blocks, paras, photo, rating } from '../lib/content';
+import '../styles/site.css';
+import BookingMark from '../components/BookingMark.astro';
+import AgodaMark from '../components/AgodaMark.astro';
+import PhoneMark from '../components/PhoneMark.astro';
+
+const day = photo('img-079'), dusk = photo('img-001'), night = photo('img-002');
+const booking = rating('booking'), google = rating('google');
+const intro = block('intro');
+const [newness, staff] = blocks('about');
+const [roomsCopy, facilities] = blocks('offer');
+const practical = block('info');
+const primary = c.bookingLinks[0], secondary = c.bookingLinks[1];
+const mapUrl = 'https://www.google.com/maps/search/The%20Lavish%20Haven%20Ahangama/@5.9794134,80.350836,17z?hl=en';
+/* three repeating frame shapes, so the masonry columns stagger without any
+   one photograph being singled out */
+const shapes = ['', 'plate--tall', 'plate--wide'];
+const plates = ['img-072', 'img-014', 'img-042', 'img-065', 'img-057', 'img-067',
+                'img-013', 'img-047', 'img-078'];
+/* full-bleed photographs between the long runs of text */
+const bands = { rooms: photo('img-001'), amen: photo('img-073'), quotes: photo('img-077') };
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{c.businessName} — {c.tagline}</title>
+<meta name="description" content={`${c.tagline}. ${paras(intro.body)[0]}`} />
+<link rel="preload" href="fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin />
+</head>
+<body>
+
+<a class="sr" href="#book">Skip to booking</a>
+
+<header class="site-head">
+  <span class="name">{c.businessName}</span>
+  <a class="book-open" href="#book" data-open-drawer>Book</a>
+</header>
+
+<!-- The pool, pinned. The canvas is an enhancement over the photograph; with no
+     WebGL, no JavaScript, or prefers-reduced-motion, the photograph is what you see. -->
+<section class="pool" id="top">
+  <div class="stick">
+    <img class="still" src={night.src} srcset={night.srcset} sizes="100vw"
+         width={night.width} height={night.height} alt={night.alt} fetchpriority="high" />
+    <canvas data-pool
+            data-sources={JSON.stringify([day.src, dusk.src, night.src])}
+            aria-hidden="true"></canvas>
+    <div class="veil"></div>
+    <p class="clock" data-clock>Afternoon</p>
+    <div class="words">
+      <div class="wrap">
+        <h1>{c.tagline}</h1>
+        <p class="sub">The pool is in the middle of the hotel, and most evenings that is where people end up.</p>
+        <p class="scores">
+          {booking && <span><b>{booking.score}</b>/{booking.scale} Booking.com · {booking.count} reviews</span>}
+          {google && <span><b>{google.score}</b>/{google.scale} Google · {google.count} reviews</span>}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main>
+
+<section class="sec">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Where it is</p>
+      <h2 class="rise">{intro.heading}</h2>
+    </div>
+    <div class="rise">{paras(intro.body).map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow">The rooms · {c.rooms.length} types</p>
+    <div class="split">
+      <h2 class="rise">{roomsCopy.heading}</h2>
+      <div class="rise">{paras(roomsCopy.body).map((p) => <p>{p}</p>)}</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="rail" role="group" aria-label="Room types — scroll sideways">
+      {c.rooms.map((r, i) => (
+        <article class="card">
+          <span class="n">{String(i + 1).padStart(2, '0')}</span>
+          <span class="label">{r.label}</span>
+          <span class="beds">{r.beds}{r.note ? `, ${r.note}` : ''}</span>
+          {r.sleeps ? <span class="sleeps">Sleeps {r.sleeps}</span> : null}
+          <a class="book" href="#book" data-open-drawer>Check this room</a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<figure class="band">
+  <img src={bands.rooms.src} srcset={bands.rooms.srcset} sizes="100vw"
+       width={bands.rooms.width} height={bands.rooms.height} alt={bands.rooms.alt} loading="lazy" decoding="async" />
+</figure>
+
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow">The place</p>
+    <div class="plates">
+      {plates.map((id, i) => {
+        const p = photo(id);
+        return (
+          <figure class={`plate ${shapes[i % shapes.length]}`}>
+            <div class="frame" style={`--ar:${p.width}/${p.height}`}>
+              <img src={p.src} srcset={p.srcset} sizes="(min-width: 1000px) 32vw, (min-width: 620px) 48vw, 92vw"
+                   width={p.width} height={p.height} alt={p.alt} loading="lazy" decoding="async" />
+            </div>
+          </figure>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">What is here</p>
+      <h2 class="rise">{facilities.heading}</h2>
+    </div>
+    <div class="rise">{paras(facilities.body).map((p) => <p>{p}</p>)}</div>
+  </div>
+  <div class="wrap">
+    <ul class="amen">
+      {c.amenities.map((a) => <li>{a.label}{a.note ? <span class="note"> — {a.note}</span> : null}</li>)}
+    </ul>
+  </div>
+</section>
+
+<figure class="band">
+  <img src={bands.amen.src} srcset={bands.amen.srcset} sizes="100vw"
+       width={bands.amen.width} height={bands.amen.height} alt={bands.amen.alt} loading="lazy" decoding="async" />
+</figure>
+
+<section class="sec">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Recently opened</p>
+      <h2 class="rise">{newness.heading}</h2>
+    </div>
+    <div class="rise">{paras(newness.body).map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}</div>
+  </div>
+</section>
+
+<figure class="band">
+  <img src={bands.quotes.src} srcset={bands.quotes.srcset} sizes="100vw"
+       width={bands.quotes.width} height={bands.quotes.height} alt={bands.quotes.alt} loading="lazy" decoding="async" />
+</figure>
+
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow">What guests wrote</p>
+    <div class="split" style="margin-bottom:44px">
+      <h2 class="rise">{staff.heading}</h2>
+      <div class="rise">{paras(staff.body).map((p) => <p>{p}</p>)}</div>
+    </div>
+    <div class="quotes">
+      {c.testimonials.map((t) => (
+        <figure class="quote rise">
+          <blockquote>“{t.quote}”</blockquote>
+          <figcaption>{t.author} — on {t.source === 'booking' ? 'Booking.com' : t.source}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">The wave</p>
+      <p class="lead rise">{c.spot}</p>
+    </div>
+    <div class="rise">
+      <p class="eyebrow">Before you arrive</p>
+      {paras(practical.body).map((p) => <p>{p}</p>)}
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot" id="book">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>Where</h3>
+        <p>{c.contact.address}</p>
+        <p><a href={mapUrl} rel="noopener">Open in Google Maps</a></p>
+      </div>
+      <div>
+        <h3>Front desk</h3>
+        <p><a href={`tel:${c.contact.phone}`}>{c.contact.phone}</a></p>
+        <p>{c.stayInfo.note}</p>
+      </div>
+      <div>
+        <h3>Book</h3>
+        <ul>{c.bookingLinks.map((b) => <li><a href={b.url} rel="noopener">{b.label}</a></li>)}</ul>
+      </div>
+    </div>
+    <p class="legal">Mockup 2 of 3 — “interactive”. Every fact on this page comes from the dossier harvested on 19 September 2026; see notes.md. Photographs are the hotel's own listing photographs. The water is drawn over them in WebGL; nothing in the photographs is altered or added.</p>
+  </div>
+</footer>
+
+<details class="drawer" data-drawer>
+  <summary>Booking</summary>
+  <div class="backdrop" data-close-drawer></div>
+  <div class="panel">
+    <div class="inner">
+      <button class="close" type="button" data-close-drawer>Close</button>
+      <h2>Check dates</h2>
+      <p>Rates change with the room and the dates, and this hotel keeps its live availability on Booking.com and Agoda. Rather than ask you for dates twice, these go straight to the listings — or call the front desk, which is staffed around the clock.</p>
+      <div class="acts">
+        <a class="act act--lamp" href={primary.url} rel="noopener"><BookingMark light /> {primary.label}</a>
+        <a class="act" href={secondary.url} rel="noopener"><AgodaMark /> {secondary.label}</a>
+        <a class="act" href={`tel:${c.contact.phone}`}><PhoneMark /> Call {c.contact.phone}</a>
+      </div>
+    </div>
+  </div>
+</details>
+
+<nav class="mobile-dock" aria-label="Book">
+  <a href="#book" data-open-drawer>Check dates</a>
+  <a class="alt" href={`tel:${c.contact.phone}`}>Call</a>
+</nav>
+
+<script>
+import { startPool } from '../scripts/pool.js';
+
+/* --- the pool ------------------------------------------------------------ */
+const canvas = document.querySelector('[data-pool]');
+const still = document.querySelector('.still');
+const clock = document.querySelector('[data-clock]');
+const pool = canvas && startPool(canvas, JSON.parse(canvas.dataset.sources), still);
+if (pool) {
+  canvas.classList.add('on');
+  const section = document.querySelector('.pool');
+  const labels = ['Afternoon', 'Dusk', 'After dark'];
+  const onScroll = () => {
+    const travel = section.offsetHeight - window.innerHeight;
+    const p = travel > 0 ? Math.min(1, Math.max(0, -section.getBoundingClientRect().top / travel)) : 0;
+    pool.setProgress(p);
+    if (clock) clock.textContent = labels[Math.min(labels.length - 1, Math.round(p * (labels.length - 1)))];
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+/* --- the header gets a floor once the pool is behind you --- */
+const head = document.querySelector('.site-head');
+const poolSec = document.querySelector('.pool');
+const solid = () => head.classList.toggle('solid', poolSec.getBoundingClientRect().bottom <= 80);
+addEventListener('scroll', solid, { passive: true });
+solid();
+
+/* --- reveals ------------------------------------------------------------- */
+const io = new IntersectionObserver((es) => {
+  for (const e of es) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}, { rootMargin: '0px 0px -8%' });
+document.querySelectorAll('.rise').forEach((el) => io.observe(el));
+
+/* --- parallax plates, Kube's recipe: off at <= 767px and reduced motion --- */
+const wide = matchMedia('(min-width: 768px)');
+const still2 = matchMedia('(prefers-reduced-motion: reduce)');
+const plates = [...document.querySelectorAll('.plate, .band')];
+let ticking = false;
+const par = () => {
+  ticking = false;
+  if (!wide.matches || still2.matches) return;
+  const vh = innerHeight;
+  for (const f of plates) {
+    const r = f.getBoundingClientRect();
+    if (r.bottom < -100 || r.top > vh + 100) continue;
+    const t = Math.min(1, Math.max(0, (vh * 0.7 - r.top) / (vh * 0.7 + r.height * 0.3)));
+    const par = f.classList.contains('band') ? 5 : 4;
+    f.querySelector('img').style.transform = `translate3d(0, ${(-t * par).toFixed(2)}rem, 0)`;
+  }
+};
+addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(par); } }, { passive: true });
+addEventListener('resize', par);
+par();
+
+/* --- booking drawer ------------------------------------------------------ */
+/* The <details> already opens, closes and takes focus without this. Added here:
+   Esc, the backdrop click, and returning focus to whatever opened it. */
+const drawer = document.querySelector('[data-drawer]');
+let opener = null;
+/* The triggers are real links to the booking block in the footer, so they
+   work with JavaScript off. With JavaScript, they open the drawer instead. */
+const open = (e) => { e.preventDefault(); opener = e.currentTarget; drawer.open = true;
+  drawer.querySelector('.act')?.focus({ preventScroll: true }); };
+const close = () => { drawer.open = false; opener?.focus({ preventScroll: true }); opener = null; };
+document.querySelectorAll('[data-open-drawer]').forEach((b) => b.addEventListener('click', open));
+document.querySelectorAll('[data-close-drawer]').forEach((b) => b.addEventListener('click', close));
+addEventListener('keydown', (e) => { if (e.key === 'Escape' && drawer.open) close(); });
+</script>
+
+</body>
+</html>

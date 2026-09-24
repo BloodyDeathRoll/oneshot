@@ -1,0 +1,198 @@
+/* Layday Surf Ahangama — mockup 2, "interactive". Archetype: the printed spec
+   card (concepts.md §3, concept 2 "The card, at four o'clock").
+
+   The same card as mockup 1, in the same colours off the same walls — one
+   business, one brand — with one difference: the card's photograph cell is
+   full height and pinned, and the sun crosses the room inside it as you
+   scroll, with the shadow of the window louvres in the light. A day in a hostel
+   with one dormitory really does mostly consist of that. */
+
+@font-face {
+  font-family: 'Syne';
+  src: url('fonts/syne.woff2') format('woff2-variations');
+  font-weight: 400 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Inter Tight';
+  src: url('fonts/intertight.woff2') format('woff2-variations');
+  font-weight: 300 700; font-style: normal; font-display: swap;
+}
+
+:root {
+  --sand: #f2e6c6;         /* the field the card sits on — cream, not mustard */
+  --ochre: #e3bc6b;        /* the wall, kept for accent cells */
+  --ochre-deep: #d6a949;
+  --paper: #f7f1e3;
+  --paper-2: #f1e6cf;
+  --ink: #171410;          /* the bunk steel */
+  --muted: #7d7263;
+  --hair: #1b1813;
+  --rule: #d9cbb0;
+  /* one accent, reserved for booking actions (references.md #6) — the rust of
+     the timber door frames */
+  --rust: #b0521f;
+  --disp: 'Syne', 'Helvetica Neue', system-ui, sans-serif;
+  --sans: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --gutter: 18px;
+  --steel: 1.5px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--sand); color: var(--ink);
+  font-family: var(--sans); font-weight: 300; font-size: 17px; line-height: 1.6;
+  font-synthesis-weight: none;
+  padding: var(--gutter) var(--gutter) 90px;
+}
+@media (min-width: 760px) { body { padding: 26px 26px 26px; } }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- the card ---------- */
+.card { max-width: 1120px; margin-inline: auto; border: var(--steel) solid var(--hair); background: var(--paper); }
+.row { display: grid; border-bottom: var(--steel) solid var(--hair); }
+.row:last-child { border-bottom: 0; }
+@media (min-width: 820px) { .row--2 { grid-template-columns: 1fr 1fr; } .row--3 { grid-template-columns: repeat(3, 1fr); } .row--spec { grid-template-columns: 1.35fr 1fr; } }
+.cell { padding: clamp(22px, 4vh, 38px) clamp(20px, 3vw, 34px); }
+@media (min-width: 820px) { .cell + .cell { border-left: var(--steel) solid var(--hair); } }
+@media (max-width: 819px) { .cell + .cell { border-top: var(--steel) solid var(--hair); } }
+.cell--ochre { background: var(--ochre); }
+.cell--pale { background: var(--paper-2); }
+/* a warm panel, not a dark one — every surf business here is a light theme */
+.cell--ink { background: var(--ochre); color: var(--ink); }
+.cell--ink .kicker { color: #5e5140; }
+.cell--flush { padding: 0; }
+
+.kicker { font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; }
+h1.name { font-family: var(--disp); font-weight: 800; margin: 0; font-size: clamp(2rem, 5.6vw, 3.4rem); line-height: .96; letter-spacing: -.045em; }
+h2 { font-family: var(--disp); font-weight: 700; margin: 0 0 .8rem; font-size: clamp(1.5rem, 3.8vw, 2.3rem); line-height: 1.02; letter-spacing: -.04em; }
+p { max-width: 34rem; }
+.spec { font-size: clamp(1.05rem, 2.4vw, 1.3rem); line-height: 1.4; margin: 14px 0 0; }
+.small { font-size: 13.5px; color: var(--muted); margin-top: 10px; }
+
+/* ---------- the pinned photograph cell ---------- */
+/* The card's right-hand cell holds the room while the light crosses it. It is
+   sticky for three screens; the rest of the card scrolls past it. */
+.pin { position: relative; }
+@media (min-width: 820px) { .pin { position: sticky; top: 0; height: 100svh; } }
+.pin .box { position: relative; height: 100%; min-height: 20rem; overflow: hidden; background: var(--ochre-deep); }
+@media (max-width: 819px) { .pin .box { aspect-ratio: 4 / 3; } }
+.pin img, .pin canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.pin canvas { opacity: 0; transition: opacity .8s ease; }
+.pin canvas.on { opacity: 1; }
+.pin .when {
+  position: absolute; left: 12px; bottom: 12px; z-index: 2;
+  background: var(--paper); color: var(--ink); padding: 5px 11px;
+  font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+}
+/* the card's left column scrolls against it */
+.spread { display: grid; }
+@media (min-width: 820px) { .spread { grid-template-columns: 1.15fr 1fr; align-items: start; } .spread > .pin { border-left: var(--steel) solid var(--hair); } }
+@media (max-width: 819px) { .spread > .pin { border-top: var(--steel) solid var(--hair); } }
+.stack-rows > .row:last-child { border-bottom: var(--steel) solid var(--hair); }
+
+/* ---------- the scores ---------- */
+.score { font-family: var(--disp); font-weight: 800; font-size: clamp(1.8rem, 3.4vw, 2.6rem); white-space: nowrap; line-height: .88; letter-spacing: -.05em; margin: 0; }
+.score span { font-size: .32em; letter-spacing: 0; }
+.score + p { font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin: 8px 0 0; }
+
+/* ---------- the booking row ---------- */
+/* Along the foot of the card, centred: three platforms and the phone. */
+.book { display: grid; gap: 10px; justify-content: center; text-align: center; }
+@media (min-width: 720px) { .book { grid-auto-flow: column; } }
+.book-card {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  min-height: 50px; padding: 0 18px; text-decoration: none;
+  border: var(--steel) solid var(--rust); color: var(--rust); background: transparent;
+  font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase;
+}
+.book-card svg { flex: none; }
+.book-card--first { background: var(--rust); color: var(--paper); }
+.book-card:hover { background: var(--rust); color: var(--paper); }
+.book-note { margin: 16px auto 0; max-width: 42rem; font-size: 13.5px; color: var(--muted); text-align: center; }
+
+/* ---------- steps ---------- */
+.steps { counter-reset: s; list-style: none; margin: 18px 0 0; padding: 0; max-width: 34rem; }
+.steps li { counter-increment: s; position: relative; padding: 11px 0 11px 42px; border-top: var(--steel) solid rgba(23,20,16,.26); font-size: 15.5px; }
+.steps li::before { content: counter(s, decimal-leading-zero); position: absolute; left: 0; top: 13px; font-family: var(--disp); font-weight: 800; font-size: 12px; }
+
+/* ---------- lists ---------- */
+.amen { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 26px; font-size: 15px; }
+@media (min-width: 1000px) { .amen { columns: 2; } }
+.amen li { break-inside: avoid; padding: 6px 0; border-bottom: 1px solid var(--rule); }
+.amen .note { color: var(--muted); font-size: 12.5px; }
+.facts { list-style: none; margin: 18px 0 0; padding: 0; }
+.facts li { display: grid; grid-template-columns: 8.5rem 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--rule); font-size: 15px; }
+.facts .k { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+
+/* ---------- reveal ---------- */
+.rise { opacity: 0; transform: translateY(10px); transition: opacity .6s ease, transform .6s ease; }
+.rise.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .rise { opacity: 1; transform: none; transition: none; } }
+
+/* ---------- masonry, one gap everywhere ---------- */
+.plates { columns: 2; column-gap: var(--steel); }
+@media (min-width: 900px) { .plates { columns: 4; } }
+.plate { margin: 0 0 var(--steel); break-inside: avoid; display: block; background: var(--paper); }
+/* Every photograph keeps its own height; nothing is padded out to match. */
+.plate .frame { overflow: hidden; display: block; position: relative; }
+.plate img { width: 100%; height: auto; display: block; }
+@media (min-width: 768px) {
+  .plate .frame { aspect-ratio: var(--ar, auto); }
+  .plate img { position: absolute; inset: 0; height: calc(100% + 4rem); object-fit: cover; will-change: transform; }
+}
+@media (prefers-reduced-motion: reduce) { .plate .frame { aspect-ratio: auto; } .plate img { position: static; height: auto; transform: none !important; } }
+
+/* ---------- the drawer, pulled from the card's foot ---------- */
+.drawer { position: fixed; inset: auto 0 0; z-index: 40; }
+.drawer > summary { list-style: none; position: absolute; width: 1px; height: 1px; overflow: hidden; }
+.drawer > summary::-webkit-details-marker { display: none; }
+.drawer .backdrop { position: fixed; inset: 0; background: rgba(23,20,16,.5); z-index: -1; }
+.drawer:not([open]) .backdrop { display: none; }
+.drawer .panel { background: var(--ink); color: var(--paper); padding: 26px 18px 30px; box-shadow: 0 -18px 50px rgba(0,0,0,.45); transform: translateY(100%); transition: transform .32s cubic-bezier(.4,0,.2,1); }
+.drawer[open] .panel { transform: none; }
+@media (prefers-reduced-motion: reduce) { .drawer .panel { transition: none; } }
+.drawer .inner { width: min(100%, 1120px); margin-inline: auto; text-align: center; }
+.drawer h2 { color: var(--paper); font-size: clamp(1.4rem, 4vw, 2.1rem); margin: 0 0 .5rem; }
+.drawer p { color: #9a8f7e; font-size: 14.5px; margin: 0 auto; max-width: 42rem; }
+.drawer .book { margin-top: 20px; }
+.drawer .book-card { border-color: rgba(247,241,227,.4); color: var(--paper); }
+.drawer .book-card--first { background: var(--rust); border-color: var(--rust); }
+.drawer .close { position: absolute; top: 12px; right: 18px; min-height: 44px; min-width: 44px; font: inherit; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; background: none; border: 0; color: #9a8f7e; cursor: pointer; }
+.open-drawer { display: inline-flex; align-items: center; min-height: 50px; padding: 0 20px; background: var(--rust); color: var(--paper); text-decoration: none; border: 0; cursor: pointer; font: inherit; font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; }
+
+/* ---------- photographs in cells ---------- */
+.cells { display: grid; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 820px) { .cells { grid-template-columns: repeat(4, 1fr); } }
+.cells figure { margin: 0; border-right: var(--steel) solid var(--hair); }
+.cells figure:last-child { border-right: 0; }
+.cells img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+.cells figcaption { font-size: 11px; color: var(--muted); padding: 9px 12px 12px; line-height: 1.4; }
+
+/* ---------- quotes ---------- */
+.quote { margin: 0; }
+.quote blockquote { margin: 0; font-size: 1.04rem; line-height: 1.48; }
+.quote figcaption { margin-top: 10px; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.cell--ink .quote figcaption { color: #5e5140; }
+
+/* ---------- the forecast ---------- */
+.widget { width: 100%; max-width: 420px; }
+.widget p { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 12px 0 0; }
+
+/* ---------- foot ---------- */
+.cols { display: grid; gap: 22px; }
+@media (min-width: 760px) { .cols { grid-template-columns: repeat(3, 1fr); gap: 34px; } }
+.cols h3 { font-size: 10px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin: 0 0 .6rem; }
+.cols p, .cols li { margin: 0 0 .3rem; font-size: 15px; }
+.cols ul { list-style: none; margin: 0; padding: 0; }
+.link { color: var(--rust); text-underline-offset: 3px; }
+.legal { font-size: 11.5px; color: var(--muted); max-width: 52rem; margin: 0; }
+
+/* ---------- persistent booking on a phone ---------- */
+.mobile-dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; display: flex; }
+.mobile-dock > * { flex: 1; min-height: 50px; display: flex; align-items: center; justify-content: center; background: var(--rust); color: var(--paper); text-decoration: none; border: 0; cursor: pointer; font: inherit; font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; }
+.mobile-dock .alt { flex: 0 0 34%; background: var(--ink); }
+@media (min-width: 760px) { .mobile-dock { display: none; } }

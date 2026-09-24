@@ -1,0 +1,19 @@
+{
+  "target": "http://127.0.0.1:8765/the-lavish-haven.html",
+  "widths": {
+    "desktop": {
+      "pageHeight": 10531,
+      "scroller": "window",
+      "captures": 13,
+      "truncated": false,
+      "errors": []
+    },
+    "mobile": {
+      "pageHeight": 11323,
+      "scroller": "window",
+      "captures": 15,
+      "truncated": false,
+      "errors": []
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "_comment": "Single source of truth for what each agent's runtime prompt contains. tools/prompt.mjs assembles exactly this; tools/check-wiring.mjs fails if any file with real content is not reachable from here. Never let an agent read a file that is not listed for it.",
+  "agentFiles": [
+    "base.md",
+    "custom.md",
+    "references.md",
+    "tools.md",
+    "evals.md",
+    "CHANGELOG.md"
+  ],
+  "nonPromptDirs": {
+    "_comment": "Folders inside an agent's folder that are NOT prompt layers: the agent opens the files itself, and its base.md must name the folder. Anything else under agents/<agent>/ that is not one of agentFiles still fails check-wiring.",
+    "designer": [
+      "gold",
+      "fixtures"
+    ]
+  },
+  "shared": {
+    "always": [
+      "playbook.md",
+      "run.yaml"
+    ],
+    "byAgent": {
+      "orchestrator": [
+        "PLAN.md",
+        "docs/ledger.md",
+        "rubric.md",
+        "schemas/business-types.md"
+      ],
+      "scout": [
+        "taxonomy.md"
+      ],
+      "harvester": [
+        "taxonomy.md",
+        "schemas/site-content.md",
+        "schemas/business-types.md"
+      ],
+      "copywriter": [
+        "schemas/site-content.md",
+        "schemas/business-types.md"
+      ],
+      "humanizer": [
+        "schemas/site-content.md"
+      ],
+      "copyeditor": [
+        "schemas/site-content.md",
+        "schemas/business-types.md"
+      ],
+      "designer": [
+        "schemas/site-content.md",
+        "schemas/business-types.md",
+        "rubric.md"
+      ],
+      "seo": [
+        "schemas/site-content.md",
+        "schemas/business-types.md"
+      ],
+      "aiseo": [
+        "schemas/site-content.md",
+        "schemas/business-types.md"
+      ],
+      "critic": [
+        "rubric.md",
+        "schemas/site-content.md"
+      ],
+      "deployer": [
+        "server-hardening.md",
+        "schemas/site-content.md"
+      ],
+      "writer": [
+        "schemas/business-types.md"
+      ],
+      "creative-director": [
+        "schemas/site-content.md",
+        "schemas/business-types.md",
+        "rubric.md"
+      ]
+    }
+  },
+  "station": {
+    "orchestrator": [
+      "*"
+    ],
+    "scout": [
+      "2"
+    ],
+    "harvester": [
+      "3"
+    ],
+    "copywriter": [
+      "4a"
+    ],
+    "humanizer": [
+      "4b"
+    ],
+    "copyeditor": [
+      "4c"
+    ],
+    "designer": [
+      "4e",
+      "4g"
+    ],
+    "critic": [
+      "4f",
+      "5",
+      "inf"
+    ],
+    "seo": [
+      "4h"
+    ],
+    "aiseo": [
+      "4i"
+    ],
+    "deployer": [
+      "6"
+    ],
+    "writer": [
+      "7"
+    ],
+    "creative-director": [
+      "4d"
+    ]
+  }
+}

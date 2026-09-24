@@ -1,4 +1,4 @@
-version: 0.1.0
+version: 0.5.2
 
 # playbook.md — what a great surf-business site is; shared by all agents.
 
@@ -70,9 +70,22 @@ Assume a mid-range Android, slow 4G dropping to 3G, metered data.
 - No video autoplay on mobile unless tiny, muted, poster-first, and outside the first-load budget.
 - Fonts: self-hosted, `font-display: swap`, subset; system fallback that doesn't reflow the page.
 - No third-party trackers, chat widgets, cookie walls, newsletter or promo pop-ups. Nothing may cover the content or the booking action on load.
-- Map is a static image linking to Google Maps, not an embedded map on load.
+- A map is either a static image linking to Google Maps, or one of the page's embeds under the rule below.
+
+- **Third-party embeds — at most two per page** (rule of 2026-09-22, Shahar; it was one until then). An embed is any iframe or script from another origin: Rosa's forecast widget, a map, anything else. All of these hold, for each one:
+  - it loads only when its own block scrolls near the viewport — **zero third-party requests on load**, so the count below stays 0;
+  - its space is reserved, so nothing shifts when it arrives, fails, or is refused;
+  - it has a plain-link fallback with JavaScript off and when the request fails;
+  - with **both** embeds loaded the page still meets every budget line below.
+  Nothing else changes: no trackers, no chat widgets, no cookie walls, no pop-ups, and nothing that covers the content or the booking action.
 - All assets self-hosted; the site must work when a CDN doesn't.
 - Tap targets ≥ 44px; phone and WhatsApp are tap-to-act links.
+- **Exception — the Rosa forecast** (optional block; the creative director decides per concept; rule of 2026-09-21, Shahar). The block has two halves:
+  - **Left — the headline, drawn by the site:** wave height now, the time it is for, the swell (period and direction) and the wind (speed, on/cross/offshore), in the site's own type and colour, from Rosa's static per-spot JSON. Nothing day-by-day: no boxes, no row of days, no chart.
+  - **Right — Rosa's own widget,** embedded exactly as Rosa ships it (an iframe of `https://rosa.surf/widget/`, see `agents/designer/tools.md`), in its light or dark theme, whichever fits the design. It is a promotion for Rosa and must stay recognisable as Rosa's: never restyled, cropped, covered or recoloured.
+  - **Loading:** the widget is one of the page's at most two third-party embeds (§4). It and the headline's one request to the JSON are made only when the block scrolls near the viewport, never on first load, and are outside the first-load budget and the third-party-requests-on-load count below. Both halves have their space reserved with fixed dimensions, so nothing shifts when they arrive.
+  - **Fallback:** with JavaScript off, with a request failed, or with data older than 24 h, the block shows a plain link — "See today's forecast for <spot> on Rosa" — never an empty box, never stale numbers shown as current.
+  - One credit line, "Forecast for <spot> by Rosa", linking to the spot on Rosa. No cookies or trackers set by the site.
 
 **Performance budget, mobile home page (v0.1 target):**
 
@@ -82,7 +95,7 @@ Assume a mid-range Android, slow 4G dropping to 3G, metered data.
 | JS, compressed | ≤ 300 KB |
 | Largest above-the-fold image | ≤ 200 KB |
 | Fonts | ≤ 2 families, ≤ 150 KB |
-| LCP (Lighthouse mobile, throttled) | ≤ 2.5 s |
+| LCP (measured on a throttled phone) | ≤ 2.5 s |
 | CLS | < 0.1 |
 | Third-party requests on load | 0 |
 
@@ -101,9 +114,10 @@ Context: of the six resort sites measured for `agents/designer/references.md`, f
 ## 6. Trust signals
 
 - Real photos of this business, its people, its beach. Image license notes from the dossier are respected; an image of unknown ownership is not used as if it were theirs.
-- Reviews quoted verbatim, with reviewer first name, source, date and link. Rating shown with count, source and capture date. Never edited, never invented, never cherry-picked into a claim ("best school in Mirissa") the sources don't make.
+- Reviews quoted verbatim, with reviewer first name, source, date and link. Rating shown with count, source and capture date. The capture date is required on the headline rating blocks (platform score + count); a score quoted inside body copy needs no date of its own (Shahar, 2026-09-23). Never edited, never invented, never cherry-picked into a claim ("best school in Mirissa") the sources don't make.
 - Named humans: owner, instructors. Certifications and safety claims only if sourced.
 - Exact location and hours. A site that hides where it is reads as a scam to a traveller.
+- **The address is the business's Google listing address, with its postcode** (standing rule of 2026-09-23, Shahar; refined the same day). Google's words, not Booking's, Hostelworld's or the owner's own spelling. Three refinements: (1) when Google shows no postcode, take it from another platform and note that source in `copy/sources.md`; (2) capitalise place names (street, village, town) even where Google writes them in lower case — no other change to the words; (3) order: street, town postcode, country — e.g. `207/A Welahangoda, Ahangama 80650, Sri Lanka`. Local search matches the site against that listing. If the dossier does not carry the Google listing address, that is a gap: flagged, never filled from another platform.
 
 ## 7. Honesty of facts
 

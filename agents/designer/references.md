@@ -158,3 +158,9 @@ Context check first: all six are resorts or operators with professional photo/vi
 23. Font sprawl (Malibu: eight families). The best-looking sites use two or three, each with one job.
 24. Brush-script and ultra-thin uppercase Latin display faces rarely survive a second language — choose type systems that still work if a non-Latin script is added later (sites are English only for now).
 25. Heavy runtimes (WordPress + slider plugins, Webflow + jQuery, Next.js) — none of it transfers to plain static files; take the patterns, write them by hand.
+
+**From the Lavish Haven design spike, 2026-09-21** (`agents/designer/gold/the-lavish-haven-notes.md`)
+26. Portrait centre-crop. Wide-angle phone photographs stretch at the edges. Cropping a 4:3 landscape frame to 4:5 portrait from near the centre removes the stretch and makes a weak photograph look composed. Crop every picture in a run of pictures to the same ratio (house rule 2).
+27. A generative first screen instead of an upscaled photograph. When no photograph clears 1200 px, the large moment is drawn — canvas, WebGL or SVG — in colours sampled from the photographs, and the best photograph appears inside it as a print at or below its native size. This is the precedent #19 says the reference set lacks.
+28. One shape. Take one shape from the place itself (Lavish: the pool's cut corner) and use it for the first-screen device, the booking button's corner and at most two panels. Nowhere else.
+29. Headless WebGL captures lie in one specific way: an opaque element layered over a WebGL canvas can punch a black or blank rectangle in the canvas in headless Chromium with software GL. It is the compositor, not the page. Confirm with `document.elementsFromPoint`; work around it with `opacity:.999` on the overlapping element.

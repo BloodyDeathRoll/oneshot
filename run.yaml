@@ -1,4 +1,11 @@
 run_id: 2026-09-ahangama-02
+mode: test                       # test | live
+# test: we are not on the ground and cannot contact anyone. A business qualifies only if
+#       its PUBLIC material alone is enough to build a complete site. Anything that would
+#       need the owner (prices they never published, photos they never posted, copy in
+#       their own voice) disqualifies the business — it does not become a question.
+# live: we are on site. Owner contact, our own photography and a briefing call are all
+#       available, so a thin public presence is a pitch opening rather than a blocker.
 area:
   mode: business                 # town | stretch | business
   # town:     one anchor (a town or beach) + shore_buffer_m along its coast
@@ -19,7 +26,16 @@ hosting:
   default_mode: managed          # managed | self_hosted_docker | static_only
   modes: {}                      # slug → mode, when the client chooses something other than the default
 agents:                          # pinned versions for reproducibility
-  scout: 0.1.0
-  harvester: 0.1.0
-  designer: 0.1.0
-  critic: 0.1.0
+  scout: 0.2.0
+  harvester: 0.3.0
+  designer: 0.3.4
+  copywriter: 0.3.1
+  humanizer: 0.2.0
+  copyeditor: 0.3.0
+  creative-director: 0.2.3
+  seo: 0.2.0
+  aiseo: 0.2.0
+  critic: 0.3.2
+  deployer: 0.2.0
+  writer: 0.2.0
+  orchestrator: 0.2.1

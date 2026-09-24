@@ -43,7 +43,7 @@ oneshot/
   taxonomy.md                 # business types, what counts as "surf-related"
   server-hardening.md         # security baseline for the one CMS server (one server, one admin)
   agents/
-    orchestrator/  scout/  harvester/  designer/  critic/  deployer/  writer/
+    orchestrator/  scout/  harvester/  copywriter/  humanizer/  copyeditor/  creative-director/  designer/  seo/  aiseo/  critic/  deployer/  writer/
       base.md        # Claude writes: role, inputs, outputs, hard constraints
       custom.md      # Shahar writes: taste, rules, house style
       references.md  # curated examples (URLs + what we like about each), cached notes
@@ -59,9 +59,9 @@ oneshot/
     static/                   # adapter: static build + source zip, no CMS
   handoff/                    # handoff kit templates: README, credentials sheet, backup/restore, update procedure, "how to edit" guide with screenshots
   schemas/                    # site-content.md — the content contract between Payload and the templates
-  scripts/                    # deterministic helpers (geocode, coastline buffer, scrape, lighthouse, zip)
+  scripts/                    # deterministic helpers (geocode, coastline buffer, scrape, zip)
   dossier/<slug>/             # dossier.json + assets/ per business
-  sites/<slug>/               # mockups/ (3 variants) + final/ (Astro site)
+  sites/<slug>/               # copy/ + concepts.md + mockups/ (3 variants) + final/ (Astro site)
   reports/<run-id>/           # per-site scorecards, run summary
   proposals/<run-id>/         # critic's proposed diffs awaiting human review
   dist/<slug>.zip             # optional static export per client (runs on any host)
@@ -113,16 +113,22 @@ Each business moves through these stations. The orchestrator owns the order, ret
 | 1 | Target | human | — | `run.yaml` | — |
 | 2 | Scout | scout | run.yaml | `candidates.json` with geo, contact, links, presence score 0–5 + reason | **Human approves shortlist** |
 | 3 | Harvest | harvester | approved candidates | `dossier/<slug>/dossier.json` + `assets/`; every fact/image carries its source; gaps flagged | — |
-| 4a | Mockups | designer | playbook + base + custom + references + dossier | 3 mockups in `sites/<slug>/mockups/{calm,interactive,unique}/` | — |
-| 4b | Pre-score | critic | 3 mockups | screenshot + rubric quick score per mockup | **Human picks one (pick + reason logged)** |
-| 4c | Build | designer | chosen mockup | Astro site from chosen template + tenant content model seeded in Payload | — |
-| 5 | Critique | critic | final site, dossier | scorecard; fail → back to 4c, max 3 rounds | — |
+| 4a | Copy | copywriter | dossier, schema | site copy per locale in `sites/<slug>/copy/<locale>.json` + `copy/sources.md` (every paragraph mapped to its dossier fields) | — |
+| 4b | Humanize | humanizer | draft copy | same files rewritten so they read as a person wrote them; facts unchanged; `copy/humanizer-notes.md` | — |
+| 4c | Copy review | copyeditor | copy, draft, dossier | per-claim audit (`sourced` / `shared-context` / `framing` / `unsourced` / `contradicted`) + voice audit; `copy/review.md`; fail → back to 4a or 4b, max 2 rounds | — |
+| 4d | Concept | creative-director | dossier (incl. the images themselves), passed copy, references, every other `concepts.md` in this run | `sites/<slug>/concepts.md`: the page **archetype** for this business plus three concepts (calm / interactive / unique), and a divergence table proving no two businesses share an archetype + first-screen device |  |
+| 4e | Mockups | designer | playbook + base + custom + references + dossier + **passed copy** + `concepts.md` | 3 mockups, **one HTML file each** at `sites/<slug>/mockups/{calm,interactive,unique}/dist/index.html` (+ `dist/img/`, `notes.md` with a look-log, `shots/round-N/`), built to the three concepts and laid out around the real words. A look, not a build: no Astro, no schema binding (designer 0.3.0, proposal 003) | — |
+| 4f | Pre-score | critic | 3 mockups | screenshot + rubric quick score per mockup | **Human picks one (pick + reason logged)** |
+| 4g | Build | designer | chosen mockup + passed copy | Astro site **ported from the chosen mockup without changing how it looks** + tenant content model seeded in Payload | — |
+| 4h | SEO | seo | built site, dossier | classical SEO pass on `templates/<variant>/`: JSON-LD from CMS content, head + headings, local signals, Core Web Vitals, sitemap/robots; `sites/<slug>/seo-report.md` | — |
+| 4i | AI SEO | aiseo | built site, dossier, `seo-report.md` | answer-engine pass: self-contained answers to the questions people actually ask, `FAQPage` data, `/llms.txt`, AI-crawler policy, no-JS check; `sites/<slug>/aiseo-report.md` | — |
+| 5 | Critique | critic | final site, dossier, both SEO reports | scorecard; fail → back to 4f, max 3 rounds | — |
 | 6 | Deliver | deployer | passing site | deployer runs the adapter for the business's `hosting_mode` (§5). `managed`: tenant + seed + `wrangler deploy` + domain + owner login; the preview URL is just the `*.workers.dev` address. `self_hosted_docker` ends with a verified handoff kit and our access revoked. `static_only` ends with the zip | — |
 | 7 | Pitch | writer | dossier, old vs new, preview URL | proposal page + outreach message in local language | **Human sends; outcome logged** |
 | ∞ | Learn | critic | reports, mockup picks, pitch outcomes | `proposals/<run>/` diffs to prompts/tools/playbook/rubric | **Human approves diffs** → merge, bump, CHANGELOG |
 
 ### Ledger states
-`discovered → scored → shortlisted → approved → harvested → mocked → picked → built → critiqued(n) → passed | failed → packaged → pitched → outcome:{reply,meeting,sale,ignored}`
+`discovered → scored → shortlisted → approved → harvested → copy_drafted → copy_humanised → copy_passed | copy_failed → concepted → mocked → picked → built → optimised → ai_optimised → critiqued(n) → passed | failed → packaged → pitched → outcome:{reply,meeting,sale,ignored}`
 
 `self_hosted_docker` only, once the client has chosen it: `… → handoff_verified → access_revoked`. `handoff_verified` = the adapter's `verify` passed on the client's box and the handoff kit is complete; `access_revoked` = our keys, users and tokens are removed from the client's box and we have checked that they no longer work.
 
@@ -153,9 +159,18 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 - Tools: headless browser, image download + dedupe + resize.
 - Evals: fact count, source coverage %, critic's "facts match dossier" score downstream.
 
+### creative-director (station 4d)
+- Added 2026-09-20, after Shahar rejected nine mockups across three businesses for looking like one cookie cutter. The cause was structural: a designer working from one playbook and one schema reaches for the same page every time, and this project's whole pitch is that the client does not look like everyone else.
+- Decides **what kind of page this is**, before any markup exists: one **archetype** per business (a hotel brochure · a kitchen noticeboard · a printed spec card · a tide table · a menu — not "editorial" or "modern and clean"), then three concepts mapped onto the designer's calm / interactive / unique brief.
+- Looks at every photograph and records the pixel width of the best one. **A photograph under 1200 px wide may not be a full-bleed hero** — that rule alone changes the page for a business whose best picture is small, and it is where several of the differences between these sites come from.
+- Ends with a divergence table covering every business already concepted in the run. No two rows may repeat archetype + first-screen device.
+- Writes only `sites/<slug>/concepts.md`. No markup, no CSS, no build. Does not pick a winner.
+- Evals: how often two businesses in a run share a first-screen device (target 0), whether the human's pick tracks the concept they preferred, critic scores by archetype over time.
+
 ### designer
-- Produces three mockups, then the full build of the chosen one.
-- Output: Astro templates (`templates/{calm,interactive,unique}/` is the shape) written against a fixed content schema — `schemas/site-content.md`, the contract between Payload and the templates. Design lives in the template; everything the schema covers comes from Payload at build time and is never hard-coded.
+- Builds the three concepts the creative director wrote; it no longer decides what kind of page this is.
+- Produces three mockups — one HTML file per variant, each made through a mandatory look loop (build, shoot with `tools/shoot.mjs`, look, revise, at least three rounds) — then the full build of the chosen one.
+- Output at 4e: the three single-file mockups. Output at 4g: one Astro project per site (no shared template; `templates/{calm,interactive,unique}/` was deleted on 2026-09-20) written against a fixed content schema — `schemas/site-content.md`, the contract between Payload and the templates. Design lives in the template; everything the schema covers comes from Payload at build time and is never hard-coded.
 - **`custom.md` (verbatim, from Shahar):**
 
   > Use custom canvas/webGL to replace static image grids with interactive movement, fluid motion and canvas-rendered depth. Use editorial layouts, asymmetrical css grid designs, varying column grids and overlapping kinetic texts whenever it fits better than the repetitive hero and card framework. Generate a painless booking UX — hide complex booking engines behind sliding modal drawers or slide-outs, maintaining visual immersion until the user chooses to book.
@@ -163,11 +178,54 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
   > For each website, create three mockups for a human to choose from: the first should be calm, moderate and expressing a conformist standard approach. The second should be more interactive with some bells and whistles, and the third full blown unique.
 
 - **`references.md` seed:** ranchosantana.com · malibupopoyo.com · morgansrock.com · tandjungsarihotel.com · white-desert.com · kubehotel-saint-tropez.com/en — Phase 1 task: analyse each (layout, motion, typography, booking UX, imagery) into reusable notes so the prompt doesn't depend on live fetches.
-- Evals: which variant humans pick and why (over time), critic score, rounds to pass, Lighthouse.
+- Evals: which variant humans pick and why (over time), critic score, rounds to pass, measured first-load weight and LCP.
+
+### copywriter (station 4a)
+- Writes the **site's** words (not the pitch — that is `writer`, station 9) **before the designer starts**, so the mockups are laid out around real copy instead of placeholder text: `copyBlocks[]`, `tagline`, `spot`, `season` and the per-type modules, per locale.
+- Built for thin dossiers. The rule that makes it safe: **expand voice, structure and atmosphere; never expand facts.** Framing around a sourced fact is writing; a new fact is a lie the owner has to answer for.
+- Shared context (what Kabalana's wave does, when the season runs) may give a paragraph somewhere to stand, but is never attributed to the business.
+- Guest testimonials in the dossier are mined for *what to talk about* and quoted verbatim where they belong — never paraphrased into the business's own voice.
+- Silence is a legitimate output: a section the dossier cannot support does not get written.
+- Every paragraph is mapped to its dossier fields in `copy/sources.md`; a paragraph with no line is not shippable.
+- Evals: sourced-claim ratio (must be 100%), sections left honestly empty, copyeditor rounds to pass.
+
+### humanizer (station 4b)
+- Rewrites the draft so it does not read as generated. Rewrites only: facts arrive fixed and leave fixed.
+- Targets the actual tells — triads, uniform sentence length, "nestled in the heart of", marketing verbs with no object, category nouns instead of concrete ones, relentless positivity, punctuation that is too clean.
+- Leaves an honest limit in (reception closes at seven, it is a walk from town): the most credible sentence on a page is the one that admits something.
+- Never chases a detector: no odd spellings, no injected typos, no invisible characters. The goal is prose a person would write, not prose that fools a classifier.
+- Evals: tell-list hits before/after, facts preserved exactly, copyeditor voice score.
+
+### copyeditor (station 4c)
+- Independent review of the words before they reach a page; separate from `critic`, who judges the built site.
+- Audits **every** claim against the dossier: `sourced` / `shared-context` / `framing` / `unsourced` / `contradicted`. One `unsourced` or `contradicted` fails the whole copy.
+- Diffs the pre-humanizer draft against the final to catch facts that appeared or vanished in the rewrite — the likeliest place for an invented claim to enter.
+- Then a voice audit, then a completeness audit against the `businessType`'s required fields.
+- Never rewrites: writing a sentence for the page would end its ability to review it. Fails with specifics and names which agent the sentence goes back to.
+- Max 2 rounds; still failing means the dossier cannot support a site, which in `mode: test` takes the business out of the run.
+- Evals: claims audited per run, unsourced caught, false-pass rate measured against the critic's later findings.
+
+### seo (station 4h)
+- Classical search: Google, Bing and the map surfaces that actually send customers to a beach business.
+- Emits JSON-LD from CMS content (`LodgingBusiness` / `Hostel` / `SportsActivityLocation` / `Store` per `businessType`), unique title + description + canonical + `hreflang` per page per locale, Open Graph, sitemap and robots.
+- Local signals: name/address/phone identical to the business's Google listing, character for character; `geo` from the dossier; map embed lazy.
+- Core Web Vitals are treated as ranking work, not polish: target LCP < 2.5 s, CLS < 0.1 on a mid-range phone on 4G, measured not estimated.
+- The query that matters most is the business's own name — the site must answer it better than the OTA listing does.
+- Fixes land in `templates/<variant>/`, never as per-site hacks. `aggregateRating` only from a real platform score in `ratings[]`, attributed to that platform.
+- Evals: measured LCP/CLS before and after, structured-data validity, brand-query position over time.
+
+### aiseo (station 4i)
+- Answer engines, not results pages: the unit of work is a self-contained, attributable, machine-readable fact that survives being lifted out of the page.
+- Writes the questions travellers actually ask for this `businessType`, ensures each has a direct answer in the rendered HTML near a matching heading, and emits `FAQPage` data alongside (not instead of) the business JSON-LD.
+- Generates `/llms.txt` at build time from the same CMS content; never hand-maintained.
+- Checks the built site with JavaScript disabled: a fact that lives only in the designer's canvas or WebGL does not exist.
+- Sets the AI-crawler policy explicitly in `robots.txt` (GPTBot, ClaudeBot, PerplexityBot, Google-Extended…). Default **allow** — being quotable is the point — but it is the owner's decision and the writer must put it to them.
+- Hard line: no hidden text, no prompt injection, nothing written for a model and concealed from a human. A page a model reads is the page a person reads.
+- Evals: share of identified questions answered on-page, `/llms.txt` accuracy, no-JS fact coverage, citations observed in assistant answers over time.
 
 ### critic
 - Two modes: **quick** (screenshot + rubric, for the 3 mockups) and **full** (final site).
-- Rubric dimensions: facts match dossier · mobile + Lighthouse · booking CTA works end-to-end · brand fit vs playbook · copy quality · accessibility · security baseline present.
+- Rubric dimensions: facts match dossier · mobile + measured performance · booking CTA works end-to-end · brand fit vs playbook · copy quality · accessibility · security baseline present.
 - Writes `reports/<run>/<slug>.md` with scores and a note on what the designer prompt got wrong.
 - After the run: reads all reports + mockup picks + pitch outcomes and writes `proposals/<run>/` — one diff per proposal, each with the evidence that motivated it.
 - Evals: agreement between critic pre-score and human pick; false-pass rate found by humans later.
@@ -260,7 +318,7 @@ Phase 1 spike — Payload multi-tenant: `docker-compose up` locally, two tenants
 
 ## 9. Open questions
 
-- ~~Image rights~~ Decided 2026-09-18: business-owned images and review photos with credit. Stock/generated: not decided, default no.
+- ~~Image rights~~ Decided 2026-09-18: business-owned images and review photos with credit. **Amended 2026-09-20 (Shahar): freely-licensed ATMOSPHERE photography is allowed** — the place, the coast, the wave, the light, the town — fetched by `tools/fetch-atmosphere.mjs` from Wikimedia Commons, CC0 and CC BY only (no share-alike, no NC, no ND), stored in `dossier/<slug>/stock/` with author, licence and the required credit string, and displayed with that credit. The business's own photographs remain the only source for anything about the business. The hard line stands and `rubric.md` still fails a build for it: **a non-business photograph is never presented as the business** — no borrowed room, pool, interior, meal or face. **Second hard line, added the same day after it was crossed: an atmosphere photograph may not be presented as a place it is not.** The first build of KA's site carried Hikkaduwa (33 km up the coast), Weligama, Thiranagama and Negombo (180 km) on a page about Ahangama, plus an Admiralty chart plan titled *Weligama Bay*. That is the same class of error as inventing a price. Every entry now records `place` and `place_ok` (`local` = the business's own locality, `neutral` = open sea, sky or a detail with no landmark and no other place named in its credit), and `tools/check-places.mjs` fails a build that uses anything else. **CC BY-SA is allowed for display only** — such a file is shown whole with its credit and is never cropped, re-saved or fed through a shader, because share-alike binds adaptations; that distinction is what makes the genuinely-local photography usable, since almost all of it is BY-SA. Every atmosphere image is looked at before use and carries a written description; across two rounds twenty-four of thirty-four fetched images were rejected on sight, including a candlelight vigil that a filename called "Kabalana", a five-star hotel's suite, and nine tea-factory interiors filed under "Ahangama". Generated imagery: still no.
 - ~~Booking~~ Decided 2026-09-18: WhatsApp/phone, plus links to the booking platforms the business is already on (Booking.com, Agoda, Airbnb…) via `bookingLinks[]`. No form → email.
 - Decided 2026-09-18: one owner login per business; self-hosted editor lives at `<domain>/admin`.
 - Decided 2026-09-18: sites are English only for now; multilingual later targets the audience (German, Spanish, Portuguese, Russian…), not Sinhala.
@@ -268,6 +326,7 @@ Phase 1 spike — Payload multi-tenant: `docker-compose up` locally, two tenants
 - Decided 2026-09-18: Worker name = the customer's brand slug, no Oneshot prefix. Dedicated Oneshot Cloudflare account (login shaharnaor@outlook.com), workers.dev subdomain `os1` → preview links look like `<brand>.os1.workers.dev`. No other Cloudflare account is ever used.
 - Decided 2026-09-18: our CMS server = second OCI account ("shibumi", Frankfurt), A1 2 OCPU / 12 GB, Pay As You Go with a free-tier quota cap. Instance `oneshot-cms` is up; both spike suites pass on it (ARM64 proven). Details: `infra/oci/README.md`.
 - Decided 2026-09-18: mockup 1 (calm) skips the canvas/WebGL animation; if it is picked, the animation is added in the build. → needs a line in `agents/designer/custom.md` (proposal below).
+- Open 2026-09-21: the Payload collection is behind the schema. `spikes/payload/cms/src/collections/Sites.ts` is still v0.1; `schemas/site-content.md` is v0.3 (v0.2 `businessType` + per-type modules, v0.3 `forecast`). Not needed for stations 4d–4f; must be closed before a 4g build binds to those fields.
 - Pitch channel: WhatsApp, email, or in-person? Affects what the writer produces.
 - Pricing/offer in the pitch — out of scope for the pipeline or a template?
 

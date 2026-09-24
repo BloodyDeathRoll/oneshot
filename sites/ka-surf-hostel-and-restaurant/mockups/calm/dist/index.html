@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KA Surf Hostel, Ahangama: five minutes from Kabalana Beach</title>
+<meta name="description" content="Surf, chill and feel at home in Ahangama. A family-run hostel with dorms and private rooms, five minutes from Kabalana Beach.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#F0F1F2; --ink:#060504; --green:#75A12B; --sky:#AFCFF7; --melon:#F05654;
+  --pad:56px; --head:72px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--ground)}
+body{background:var(--ground);color:var(--ink);font-family:Outfit,system-ui,sans-serif;font-weight:400;font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+
+/* top line */
+.top{position:sticky;top:0;z-index:20;height:var(--head);display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);background:var(--ground)}
+.name{font-size:20px;font-weight:400;letter-spacing:-.01em;text-decoration:none}
+
+/* booking: <details>, no script */
+details.book>summary{list-style:none;cursor:pointer}
+details.book>summary::-webkit-details-marker{display:none}
+.top details.book>summary{font-weight:500;font-size:17px;border-bottom:1px solid var(--ink);padding:2px 0}
+details.book[open]>summary .o,details.book:not([open])>summary .c{display:none}
+.sheet{position:fixed;left:0;right:0;top:var(--head);z-index:19;background:var(--ground);border-bottom:1px solid var(--ink);padding:40px var(--pad) 48px;display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px}
+details.book[open] .sheet{animation:drop .28s cubic-bezier(.2,.7,.2,1)}
+@keyframes drop{from{transform:translateY(-24px);opacity:0}}
+.sheet p.rates{grid-column:1/5;font-size:24px;font-weight:300;line-height:1.3;letter-spacing:-.01em}
+.sheet .tiles{grid-column:6/13;display:flex;gap:24px}
+.tile{flex:0 0 184px;aspect-ratio:3/4;border:1px solid var(--ink);padding:16px;display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;transition:background .15s}
+.tile:hover,.tile:focus-visible{background:var(--melon);outline:none}
+.tile small{font-size:15px;line-height:1.3}
+.tile b{font-weight:300;font-size:30px;letter-spacing:-.02em;line-height:1}
+.sheet .call{grid-column:6/13;margin-top:20px;font-size:17px}
+
+/* first screen */
+.hero{position:relative;min-height:calc(100vh - var(--head));min-height:calc(100svh - var(--head));padding:8px var(--pad) 0;overflow:hidden}
+h1{font-weight:200;font-size:clamp(2.7rem,10.6vw,10rem);line-height:.9;letter-spacing:-.05em}
+h1 span{display:block}
+h1 .l2{text-align:right;margin-top:-.02em}
+.lede{position:absolute;z-index:2;left:var(--pad);top:calc(8px + 10.6vw*.9 + 18px);width:min(21vw,300px)}
+.tag{font-size:24px;font-weight:300;line-height:1.25;letter-spacing:-.01em}
+.proof{margin-top:28px}
+.proof .main{font-size:22px;font-weight:400}
+.proof .main a{text-decoration:none;border-bottom:1px solid var(--ink)}
+.proof .rest{font-size:15px;margin-top:4px}
+.act{margin-top:32px;display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.btn{display:inline-block;background:var(--melon);color:var(--ink);font-weight:500;font-size:18px;padding:16px 28px;text-decoration:none;cursor:pointer}
+.act .or{font-size:16px}
+.act .or a{text-decoration:none;border-bottom:1px solid var(--ink)}
+
+.field{position:absolute;right:0;bottom:0;left:33%;height:calc(40px + 40px + 192px);background:var(--green);z-index:0}
+.prints{position:absolute;right:var(--pad);bottom:40px;display:flex;gap:40px;align-items:flex-end;z-index:1}
+.prints img{width:288px;aspect-ratio:3/4;object-fit:cover}
+.prints img:nth-child(1){margin-bottom:40px}
+.prints img:nth-child(3){margin-bottom:80px}
+
+
+/* below the fold */
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 24px;padding:0 var(--pad)}
+.sec{padding-top:176px;position:relative}
+.h2{font-weight:200;font-size:6rem;line-height:.95;letter-spacing:-.045em;grid-column:1/8}
+.h2.wide{grid-column:1/11}
+.h3{font-weight:200;font-size:4rem;line-height:1;letter-spacing:-.04em;margin-bottom:28px}
+.lead{font-size:23px;font-weight:300;line-height:1.35;letter-spacing:-.01em}
+p+p{margin-top:1em}
+.q p{font-size:21px;font-weight:300;line-height:1.4;letter-spacing:-.005em}
+.q cite{display:block;font-style:normal;font-size:15px;margin-top:12px}
+.q.big p{font-size:2rem;line-height:1.25;letter-spacing:-.015em}
+.row{display:flex;gap:40px;align-items:flex-start}
+.row img{width:288px;aspect-ratio:3/4;object-fit:cover}
+
+.rooms .h2{grid-column:1/7;grid-row:1}
+.rooms .rl-col{grid-column:1/6;grid-row:2;margin-top:48px}
+.roomlist{list-style:none;margin-top:40px;border-top:1px solid var(--ink)}
+.roomlist li{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:16px 0;border-bottom:1px solid var(--ink)}
+.rl{font-size:22px;font-weight:300;letter-spacing:-.01em}
+.rb{grid-row:2;font-size:15px}
+.rc{grid-row:1/3;grid-column:2;align-self:center;font-size:16px;font-weight:500;text-decoration:none;border-bottom:1px solid var(--ink)}
+.rc:hover{background:var(--melon)}
+.rooms .q{margin-top:64px;padding-right:12%}
+.stand{position:relative}
+.stand .field{position:absolute;left:auto;right:calc(-1 * var(--pad));bottom:0;top:auto;height:50%;width:auto}
+.stand-r{grid-column:7/13;grid-row:1/3;align-self:start;margin-top:136px;display:flex;justify-content:flex-end;padding-bottom:0}
+.stand-r .field{left:48px;height:calc(50% - 20px)}
+.stand-r .row{position:relative;padding-bottom:0}
+.stand-r .row img:nth-child(2){margin-top:120px}
+
+.breakfast .pair{grid-column:1/7;margin-top:64px;display:flex;align-items:flex-end;gap:32px}
+.breakfast .big{width:min(480px,100%);aspect-ratio:3/4;object-fit:cover}
+.breakfast .small{width:180px;aspect-ratio:3/4;object-fit:cover;margin-bottom:96px}
+.breakfast .txt{grid-column:8/12;margin-top:64px;align-self:end}
+.breakfast .q{margin-top:48px}
+
+.family .narrow{grid-column:1/5;margin-top:56px}
+.family .narrow img{width:min(384px,100%);aspect-ratio:3/4;object-fit:cover;margin-top:56px}
+.family .voices{grid-column:6/12;margin-top:56px}
+.family .voices .q+.q{margin-top:56px;max-width:30em}
+
+.here .txt-l{grid-column:1/6}
+.amen{grid-column:7/13;list-style:none;columns:2;column-gap:24px;font-size:17px;line-height:1.45;padding-top:14px}
+.amen li{break-inside:avoid;padding:0 0 10px}
+.amen small{display:block;font-size:14px}
+.stand-l{margin-top:96px;padding:0 var(--pad);display:flex}
+.stand-l .field{left:0;right:22%;height:calc(50% - 20px)}
+.stand-l .row{position:relative;margin-left:8%}
+.stand-l .row img:nth-child(2){margin-top:64px}
+.stand-l .row img:nth-child(3){margin-top:24px}
+
+.wave{margin-top:176px;background:var(--sky);padding:128px 0 112px}
+.wave .spot{grid-column:1/9;font-size:2.4rem;font-weight:300;line-height:1.2;letter-spacing:-.02em}
+.wave .q{grid-column:10/13;align-self:end}
+.wave .beach{grid-column:1/13;margin-top:88px;justify-content:flex-end}
+.wave .beach img:nth-child(2){margin-top:56px}
+
+.getting .txt-l{grid-column:1/6}
+.getting .addr{margin-top:28px}
+.times{grid-column:7/13;display:flex;gap:40px;align-self:start;padding-top:12px}
+.times dt{font-size:15px}
+.times dd{font-size:5rem;font-weight:200;letter-spacing:-.04em;line-height:1}
+.getting .note{grid-column:7/12;margin-top:32px;font-size:16px}
+
+.foot{margin-top:176px;padding:96px 0 64px;border-top:1px solid var(--ink)}
+.foot .rates{grid-column:1/5;font-size:24px;font-weight:300;line-height:1.3;letter-spacing:-.01em}
+.foot .tiles{grid-column:6/13;display:flex;gap:24px}
+.foot .tile{flex:0 0 200px}
+.fcontact{grid-column:1/5;margin-top:96px;font-size:16px}
+.fname{font-size:20px}
+.fcontact p+p{margin-top:4px}
+.fcred{grid-column:6/12;margin-top:96px;font-size:14px;align-self:end}
+
+.bar{display:none}
+
+@media (max-width:760px){
+  :root{--pad:20px;--head:56px}
+  .top details.book{display:none}
+  .hero{min-height:calc(100svh - var(--head));padding-top:4px}
+  h1{font-size:3.3rem;line-height:.96;letter-spacing:-.04em}
+  h1 .l2{text-align:left;margin:0}
+  h1 span{display:inline}
+  .lede{position:static;width:auto;margin-top:16px}
+  .tag{font-size:19px}
+  .proof{margin-top:12px}
+  .proof .main{font-size:17px}
+  .proof .rest,.hero .act{display:none}
+  .field{left:0;height:40%;bottom:0}
+  .prints{position:absolute;left:0;right:0;bottom:auto;top:calc(60% - 152px);padding:0 var(--pad);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--pad);align-items:flex-start;scrollbar-width:none}
+  .prints::-webkit-scrollbar{display:none}
+  .prints img{flex:0 0 228px;width:228px;scroll-snap-align:start;margin:0!important}
+  .bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;height:60px;background:var(--ground);border-top:1px solid var(--ink)}
+  .bar details.book{flex:1}
+  .bar details.book>summary{height:60px;display:flex;align-items:center;justify-content:center;background:var(--melon);font-weight:500;font-size:18px}
+  .bar .callb{flex:0 0 38%;display:flex;align-items:center;justify-content:center;font-weight:500;text-decoration:none;font-size:18px}
+  .bar .sheet{top:auto;bottom:60px;border-bottom:0;border-top:1px solid var(--ink);padding:28px var(--pad);display:block}
+  .sheet p.rates{font-size:19px}
+  .sheet .tiles{margin-top:20px;gap:12px}
+  .tile{flex:1 1 0;padding:10px}
+  .tile b{font-size:21px}
+  .tile small{font-size:13px}
+  .sheet .call{margin-top:16px}
+
+  .grid{display:block}
+  .sec{padding-top:112px}
+  .h2{font-size:2.9rem;line-height:1}
+  .h3{font-size:2.5rem;margin-bottom:20px}
+  .lead{font-size:19px}
+  .q p{font-size:18px}
+  .q.big p{font-size:1.55rem}
+  .row{overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--pad);gap:16px;margin:0 calc(-1*var(--pad));padding:0 var(--pad);scrollbar-width:none}
+  .row::-webkit-scrollbar{display:none}
+  .row img{flex:0 0 240px;width:240px;scroll-snap-align:start;margin-top:0!important}
+  .rooms .rl-col{margin-top:24px}
+  .rl{font-size:19px}
+  .rooms .q{margin-top:40px;padding:0}
+  .stand-r{margin-top:56px;display:block}
+  .stand-r .field,.stand-l .field{left:calc(-1*var(--pad));right:calc(-1*var(--pad));height:50%}
+  .breakfast .pair{margin-top:32px;gap:16px}
+  .breakfast .big{width:calc(100% - 136px)}
+  .breakfast .small{width:120px;margin-bottom:48px}
+  .breakfast .txt,.family .narrow,.family .voices{margin-top:32px}
+  .family .narrow img{width:280px;margin-top:40px}
+  .amen{columns:1;margin-top:32px;padding:0}
+  .stand-l{margin-top:56px;display:block}
+  .stand-l .row{margin-left:calc(-1*var(--pad))}
+  .stand-l .field{left:0;right:0}
+  .wave{margin-top:112px;padding:72px 0 64px}
+  .wave .spot{font-size:1.7rem}
+  .wave .q{margin-top:32px}
+  .wave .beach{margin-top:48px}
+  .times{margin-top:40px;gap:24px}
+  .times dd{font-size:2.6rem}
+  .getting .note{margin-top:24px}
+  .foot{margin-top:112px;padding:64px 0 120px}
+  .foot .tiles{margin-top:28px;gap:12px}
+  .foot .tile{flex:1 1 0;min-width:0;padding:8px}
+  .foot .tile b,.sheet .tile b{font-size:17px}
+  .fcontact,.fcred{margin-top:48px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="name" href="#">KA Surf Hostel</a>
+  <details class="book">
+    <summary><span class="o">Check dates</span><span class="c">Close</span></summary>
+    <div class="sheet">
+      <p class="rates">Rates change with the season and the dates — the booking links below show what is actually free.</p>
+      <div class="tiles">
+        <a class="tile" href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/"><small>9.8/10, 66 reviews</small><span><small>Check dates on</small><br><b>Hostelworld</b></span></a>
+        <a class="tile" href="https://www.booking.com/hotel/lk/ka-surf-hostel.html"><small>9.5/10, 38 reviews</small><span><small>Check dates on</small><br><b>Booking.com</b></span></a>
+        <a class="tile" href="https://www.agoda.com/en-in/ka-surf-hostel-h61738910/hotel/ahangama-lk.html"><small>&nbsp;</small><span><small>Check dates on</small><br><b>Agoda</b></span></a>
+      </div>
+      <p class="call">or call <a href="tel:+94773746053">+94 77 374 6053</a></p>
+    </div>
+  </details>
+</header>
+
+<main>
+<section class="hero">
+  <h1><span class="l1">Five minutes from</span> <span class="l2">Kabalana Beach</span></h1>
+  <div class="lede">
+    <p class="tag">Surf, chill and feel at home in Ahangama</p>
+    <div class="proof">
+      <p class="main"><a href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/">9.8/10 on Hostelworld</a>, <span style="white-space:nowrap">66 reviews</span></p>
+      <p class="rest">9.5/10 on Booking.com, 38 reviews<br>4.8/5 on Google, 42 reviews</p>
+    </div>
+    <div class="act">
+      <details class="book">
+        <summary class="btn"><span class="o">Check dates</span><span class="c">Close</span></summary>
+        <div class="sheet">
+          <p class="rates">Rates change with the season and the dates — the booking links below show what is actually free.</p>
+          <div class="tiles">
+            <a class="tile" href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/"><small>9.8/10, 66 reviews</small><span><small>Check dates on</small><br><b>Hostelworld</b></span></a>
+            <a class="tile" href="https://www.booking.com/hotel/lk/ka-surf-hostel.html"><small>9.5/10, 38 reviews</small><span><small>Check dates on</small><br><b>Booking.com</b></span></a>
+            <a class="tile" href="https://www.agoda.com/en-in/ka-surf-hostel-h61738910/hotel/ahangama-lk.html"><small>&nbsp;</small><span><small>Check dates on</small><br><b>Agoda</b></span></a>
+          </div>
+          <p class="call">or call <a href="tel:+94773746053">+94 77 374 6053</a></p>
+        </div>
+      </details>
+      <p class="or">or call <a href="tel:+94773746053">+94 77 374 6053</a></p>
+    </div>
+  </div>
+  <div class="field" aria-hidden="true"></div>
+  <div class="prints">
+    <img src="img/img-006-576.jpg" width="576" height="768" alt="Two small cottages with grey walls under coconut palms and banana plants, grass in front">
+    <img src="img/img-001-576.jpg" width="576" height="768" alt="A private room with whitewashed plank walls, a double bed with blue cushions, and a door open to the garden">
+    <img src="img/img-003-576.jpg" width="576" height="768" alt="A hand holding a plate of papaya, watermelon, pineapple, passion fruit and banana against green leaves">
+  </div>
+</section>
+
+<section class="sec rooms" id="rooms">
+  <div class="grid">
+    <h2 class="h2">Dorms and private rooms</h2>
+    <div class="rl-col">
+      <p class="lead">Mixed, female and male dormitories with bunk beds, plus double rooms and deluxe doubles. Every room has air conditioning and a fan, a private locker and a personal fridge. The bathrooms are modern, some of them open to the sky, and the showers are hot.</p>
+      <ul class="roomlist">
+        <li><span class="rl">Bunk bed in mixed dormitory</span><span class="rb">1 bunk bed</span><a class="rc" href="https://www.booking.com/hotel/lk/ka-surf-hostel.html">check dates</a></li>
+        <li><span class="rl">Bunk bed in female dormitory</span><span class="rb">1 bunk bed</span><a class="rc" href="https://www.booking.com/hotel/lk/ka-surf-hostel.html">check dates</a></li>
+        <li><span class="rl">Bunk bed in male dormitory</span><span class="rb">1 bunk bed</span><a class="rc" href="https://www.booking.com/hotel/lk/ka-surf-hostel.html">check dates</a></li>
+        <li><span class="rl">Double room</span><span class="rb">1 extra-large double bed</span><a class="rc" href="https://www.booking.com/hotel/lk/ka-surf-hostel.html">check dates</a></li>
+        <li><span class="rl">Deluxe double room</span><span class="rb">1 extra-large double bed</span><a class="rc" href="https://www.booking.com/hotel/lk/ka-surf-hostel.html">check dates</a></li>
+        <li><span class="rl">Deluxe double room</span><span class="rb">1 single bed</span><a class="rc" href="https://www.booking.com/hotel/lk/ka-surf-hostel.html">check dates</a></li>
+      </ul>
+      <blockquote class="q">
+        <p>“It's a calm and quiet place, a wonderful staff, caring owners and clean. I had a really good time even i havnt spent much time there. beds are compfy and it has aircon and warm water.”</p>
+        <cite>Wolfgang, Austria, on <a href="https://www.booking.com/hotel/lk/ka-surf-hostel.html">Booking.com</a></cite>
+      </blockquote>
+    </div>
+    <div class="stand stand-r">
+      <div class="field" aria-hidden="true"></div>
+      <div class="row">
+        <img src="img/img-004-576.jpg" width="576" height="768" loading="lazy" alt="The dorm: grey-green timber bunk beds with white linen and blue runners under a vaulted ceiling with a fan">
+        <img src="img/img-007-576.jpg" width="576" height="768" loading="lazy" alt="A cottage room seen through its open door, a bed with blue cushions inside and two mint chairs on the patio">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec breakfast" id="breakfast">
+  <div class="grid">
+    <h2 class="h2 wide">Breakfast changes every morning</h2>
+    <div class="pair">
+      <img class="big" src="img/img-003-576.jpg" width="576" height="768" loading="lazy" alt="A hand holding a plate of papaya, watermelon, pineapple, passion fruit and banana against green leaves">
+      <img class="small" src="img/img-013-361.jpg" width="361" height="481" loading="lazy" alt="Seen from above: a table laid with small bowls of curries, sambols and rotis around a patterned plate of rice">
+    </div>
+    <div class="txt">
+      <p class="lead">Breakfast is included and it is Sri Lankan: rotis, hoppers, pancakes, eggs, a fruit platter, and a vegan option if you need one. It changes daily, which guests mention more often than anything else on the property.</p>
+      <blockquote class="q">
+        <p>“Great family owned hostel :-) they are really friendly and helpful! The breakfast always consists of a typical Sri Lankan dish (roti, hoppers,…) which changes every day and additionally a great fruit platter!! Dorms are big, bathrooms are nice with the whole outdoor thing :-)”</p>
+        <cite>Elena, Germany, on <a href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/">Hostelworld</a>, March 2026</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="sec family" id="family">
+  <div class="grid">
+    <h2 class="h2 wide">What guests say about the staff</h2>
+    <div class="narrow">
+      <p>“Family” is the word guests keep using. One of them caught dengue in Kandy and wrote that the staff helped nurse her back to health with Ayurvedic medicines, on top of what the hospital was already giving her.</p>
+      <p>On Booking.com the staff get 9.9 out of 10, the hostel's highest score there. Hostelworld guests give them the same 9.9, and only value for money and security do better, both at a full 10.</p>
+      <img src="img/img-002-576.jpg" width="576" height="768" loading="lazy" alt="Guests sitting round a long wooden table at night under the veranda of the old columned house">
+    </div>
+    <div class="voices">
+      <blockquote class="q big">
+        <p>“I got dengue in Kandy and the staff at KA helped nurse me back to health with Ayurvedic medicines (on top of what the hospital was already giving me) They are the kindest people and they attract good vibes. I met some of the best people here :)”</p>
+        <cite>Mia, USA, on <a href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/">Hostelworld</a>, February 2026</cite>
+      </blockquote>
+      <blockquote class="q">
+        <p>“Lovely location away from the main road. So close to the beach! The most amazing family who look after you like you're one of their own. Thank you KA!”</p>
+        <cite>Clara, United Kingdom, on <a href="https://www.booking.com/hotel/lk/ka-surf-hostel.html">Booking.com</a></cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="sec here" id="here">
+  <div class="grid">
+    <div class="txt-l">
+      <h2 class="h3">What is here</h2>
+      <p>A green garden and a chill zone. Free filtered water you can refill any time. Laundry. A minimarket on site. Scooter rental, with a surf rack if you ask. Luggage storage, lockers, and a 24-hour reception.</p>
+      <p>Pets are welcome on request at no charge. Children are not accommodated.</p>
+    </div>
+    <ul class="amen">
+        <li>Free breakfast, Sri Lankan, changes daily</li>
+        <li>Free WiFi</li>
+        <li>Air conditioning and a fan in every room</li>
+        <li>Private locker and personal fridge in every room</li>
+        <li>Hot showers</li>
+        <li>Garden and chill zone</li>
+        <li>Free filtered water</li>
+        <li>Scooter rental <small>surf rack available</small></li>
+        <li>Laundry service</li>
+        <li>Minimarket on site</li>
+        <li>Luggage storage</li>
+        <li>Tour desk</li>
+        <li>24-hour reception</li>
+        <li>24-hour security</li>
+        <li>Airport transfers</li>
+        <li>Bicycle parking</li>
+        <li>Pets allowed on request <small>no extra charge</small></li>
+    </ul>
+  </div>
+  <div class="stand stand-l">
+    <div class="field" aria-hidden="true"></div>
+    <div class="row">
+      <img src="img/img-005-576.jpg" width="576" height="768" loading="lazy" alt="An open-air bathroom: glass roof, a black shower wall, green plants and a round white basin">
+      <img src="img/img-008-576.jpg" width="576" height="768" loading="lazy" alt="A bathroom with a window full of banana leaves, a white basin and a black-tiled shower">
+      <img src="img/img-006-576.jpg" width="576" height="768" loading="lazy" alt="Two small cottages with grey walls under coconut palms and banana plants, grass in front">
+    </div>
+  </div>
+</section>
+
+<section class="wave" id="wave">
+  <div class="grid">
+    <p class="spot">Kabalana: a sandy beach break that suits beginners and improvers, with The Rock reef alongside it when the swell is up.</p>
+    <blockquote class="q">
+      <p>“Owners very hospitable, breakfast in the morning was great, close to kabalana beach so great for surfing”</p>
+      <cite>Saketh, England, on <a href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/">Hostelworld</a>, February 2026</cite>
+    </blockquote>
+    <div class="row beach">
+      <img src="img/img-020-480.jpg" width="480" height="640" loading="lazy" alt="A man in a black T-shirt beside a stack of blue soft-top surfboards on the sand, the sea behind">
+      <img src="img/img-023-480.jpg" width="480" height="640" loading="lazy" alt="A wide sandy beach with a surfer riding a small wave and others waiting in the water">
+      <img src="img/img-018-480.jpg" width="480" height="640" loading="lazy" alt="Thatched beach shelters on the sand, a surfer walking to the water's edge, small waves breaking">
+    </div>
+  </div>
+</section>
+
+<section class="sec getting" id="getting">
+  <div class="grid">
+    <div class="txt-l">
+      <h2 class="h3">Getting here</h2>
+      <p>Ahangama, a five-minute walk from Kabalana Beach. Koggala Airport is about 5 km away; Ahangama railway station is a little over 2 km. The property arranges a shuttle.</p>
+      <p class="addr">No 207/A, Welhengoda, 80650 Ahangama, Sri Lanka<br><a href="https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en">Open in Google Maps</a></p>
+    </div>
+    <dl class="times">
+      <div><dt>Check-in from</dt><dd>13:00</dd></div>
+      <div><dt>Check-in until</dt><dd>23:00</dd></div>
+      <div><dt>Check-out by</dt><dd>13:00</dd></div>
+    </dl>
+    <p class="note">Reception is open 24 hours. Children are not accommodated, and cots and extra beds are not available.</p>
+  </div>
+</section>
+</main>
+
+<footer class="foot" id="book">
+  <div class="grid">
+    <p class="rates">Rates change with the season and the dates — the booking links below show what is actually free.</p>
+    <div class="tiles">
+      <a class="tile" href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/"><small>9.8/10, 66 reviews</small><span><small>Check dates on</small><br><b>Hostelworld</b></span></a>
+      <a class="tile" href="https://www.booking.com/hotel/lk/ka-surf-hostel.html"><small>9.5/10, 38 reviews</small><span><small>Check dates on</small><br><b>Booking.com</b></span></a>
+      <a class="tile" href="https://www.agoda.com/en-in/ka-surf-hostel-h61738910/hotel/ahangama-lk.html"><small>&nbsp;</small><span><small>Check dates on</small><br><b>Agoda</b></span></a>
+    </div>
+    <div class="fcontact">
+      <p class="fname">KA Surf Hostel</p>
+      <p><a href="tel:+94773746053">+94 77 374 6053</a></p>
+      <p>No 207/A, Welhengoda, 80650 Ahangama, Sri Lanka</p>
+      <p><a href="https://www.instagram.com/kasurfhostel/">Instagram</a></p>
+    </div>
+    <p class="fcred">Photographs of the hostel: KA Surf Hostel, from its Booking.com listing and its Instagram.</p>
+  </div>
+</footer>
+
+<nav class="bar" aria-label="Booking">
+  <details class="book">
+    <summary><span class="o">Check dates</span><span class="c">Close</span></summary>
+    <div class="sheet">
+      <p class="rates">Rates change with the season and the dates — the booking links below show what is actually free.</p>
+      <div class="tiles">
+        <a class="tile" href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/"><small>9.8/10, 66 reviews</small><span><small>Check dates on</small><br><b>Hostelworld</b></span></a>
+        <a class="tile" href="https://www.booking.com/hotel/lk/ka-surf-hostel.html"><small>9.5/10, 38 reviews</small><span><small>Check dates on</small><br><b>Booking.com</b></span></a>
+        <a class="tile" href="https://www.agoda.com/en-in/ka-surf-hostel-h61738910/hotel/ahangama-lk.html"><small>&nbsp;</small><span><small>Check dates on</small><br><b>Agoda</b></span></a>
+      </div>
+      <p class="call">or call <a href="tel:+94773746053">+94 77 374 6053</a></p>
+    </div>
+  </details>
+  <a class="callb" href="tel:+94773746053">Call</a>
+</nav>
+
+</body>
+</html>

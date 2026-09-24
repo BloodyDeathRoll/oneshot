@@ -1,8 +1,8 @@
-version: 0.1.0
+version: 0.2.0
 
 # scout / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
-Runtime prompt = `playbook.md` + this file + `custom.md` + `references.md`.
+Runtime prompt = `playbook.md` + `run.yaml` + this file + `custom.md` + `references.md` + `tools.md` + `evals.md` + `taxonomy.md` — assembled by `node tools/prompt.mjs scout`, which is how this agent must be started. Every layer is part of your instructions; read all of them before acting. `tools/check-wiring.mjs` fails the run if any of them is unreachable.
 
 ## Role
 
