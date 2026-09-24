@@ -1,116 +1,69 @@
-# Session Handoff — 2026-09-20
+# Session Handoff — 2026-09-23
 
 ## Goal
-Re-run the design station on run `2026-09-ahangama-02` after the previous session's nine mockups
-were rejected, get a human pick, and make the pipeline hold its own rules instead of relying on
-memory.
+Take all three businesses of run `2026-09-ahangama-02` (KA Surf Hostel, Layday, The Lavish Haven) through
+stations 4g → 5 to passing sites, deploy noindexed previews on `*.os1.workers.dev`, and fold Shahar's
+rulings into the prompts/playbook/schema. Branch `003-design-quality`; everything committed except `handoff.md`.
 
 ## Current State
-
-**Shahar's last words on the mockups: "These all look cheap."** That applies to the current KA
-round-2 set and, by implication, to the visual quality overall. It is the open problem. Nothing has
-been done about it — the session was closed immediately after.
-
-Ledger states (run `2026-09-ahangama-02`, `mode: test`):
-
-| business | state | note |
-|---|---|---|
-| `the-lavish-haven` | `picked` → **interactive** | "Clean, good visual to textual ratio… good enough for now" |
-| `layday-surf-ahangama` | `picked` → **interactive** | "…more movement/microanimation… good color separation, bad color tones" |
-| `ka-surf-hostel-and-restaurant` | `mocked` (round 2, chart archetype) | round 1 rejected whole; round 2 not yet judged beyond "cheap" |
-
-All nine mockups build, pass `check-design`, `check-places` and the audit: 0 third-party requests on
-first load, 0 broken images, booking targets diff identical to the dossier, JS-off path verified,
-Esc closes drawers and returns focus. Every budget line is inside playbook §4.
-
-**Nothing has been pushed to GitHub.** 14 local commits on `main`, working tree clean.
-
-Station 4g (Build) has never run for anyone. It needs Payload tenant wiring that this run has not
-done.
+- **All three previews live and verified** (HTML byte-identical to local `dist/`, noindex meta, robots
+  Disallow all, no sitemap, 0 console/HTTP errors at 390 and 1440):
+  - https://ka-surf-hostel.os1.workers.dev — version `9e3ccffb`; critic verification 3: PASS 86/100.
+  - https://layday-surf.os1.workers.dev — version `587c6687`; critic full round 1: PASS 91.5 (+ verification after widget fix).
+  - https://the-lavish-haven.os1.workers.dev — version `a7a59b77`; critic full round 2: PASS 91.5.
+- Ledger state for all three: `passed`. Preview only: **no CMS tenant, no owner login, no domain** → station 6 proper not run.
+- **Known open bugs (not fixed, not asked):**
+  - KA: horizontal overflow 761–1070 px — check-in/out row `.times` in `sites/ka-surf-hostel-and-restaurant/final/src/styles/site.css`
+    does not wrap; at 768 the page scrolls sideways 152 px. **Live in the preview.**
+  - KA: map box blank if Google is reachable but the embed itself fails (probe now hits `generate_204`, not the embed).
+  - All three: Rosa widget box stays empty if the CORS HEAD succeeds but the iframe load then fails (undetectable without a postMessage from Rosa's widget).
+  - KA: llms.txt ratings lack capture dates; three desktop links < 44 px at 1440.
+  - Lavish: two alts name parts the crop cuts off (img-017 window, img-028 glass door); Ahangama not named on first screen.
+  - Layday: axe `scrollable-region-focusable` ×2 on photo rows at 390; `stayInfo.note` repeated in Practicalities.
+- **Untested:** real phones/GPUs (headless Chromium, software GL only).
+- **Separate deliverable:** `~/Projects/design-loop/` + `~/Projects/design-loop.zip` — the creative director, designer and critic
+  packaged as a generic Claude Code loop (`.claude/agents/*`, `.claude/commands/design-loop.md`, `design-loop/{taste,references,rubric}.md`,
+  `tools/{shoot,check-design}.mjs`). Tools tested from the new location; the full `/design-loop` command was NOT run end to end.
 
 ## Active Files
-
-- `agents/creative-director/` — **new agent**, station 4d. Picks one page archetype per business and
-  writes three concepts before any markup; ends with a divergence table across the run.
-- `agents/wiring.json` + `tools/prompt.mjs` + `tools/check-wiring.mjs` — runtime prompts are now
-  assembled from disk and checked. 13 agents, 0 failures.
-- `tools/build-mockup.mjs` — per-site builder. Refuses a photo marked `role:"bleed"` under 1200 px;
-  handles EXIF and explicit `rotate`; loads both image sources and keeps them apart.
-- `tools/check-design.mjs` — fails on dark grounds, padded picture boxes, captions under photographs.
-- `tools/check-places.mjs` — fails on a borrowed photo that is not the business's locality or
-  place-neutral, uncredited, or share-alike used as shader input.
-- `tools/audit-mockup.mjs` — the evidence `rubric.md` demands: throttled first-load network log, LCP,
-  CLS, booking tap-through, JS-off, keyboard, alt, tap targets → `audit.json` per mockup.
-- `tools/fetch-atmosphere.mjs` — Wikimedia Commons, CC0/PD/CC BY freely; CC BY-SA marked
-  `modify:false`.
-- `sites/<slug>/concepts.md` × 3 — the 4d output: archetypes are *courtyard* (Lavish), *chart* (KA),
-  *printed spec card* (Layday).
-- `sites/<slug>/mockups/{calm,interactive,unique}/` — nine projects, each its own Astro build.
-- `reports/2026-09-ahangama-02/<slug>.md` — 4f pre-scores.
-- `PLAN.md`, `rubric.md`, `playbook.md`, `run.yaml`, `docs/ledger.md` — pipeline renumbered
-  4d Concept → 4i AI SEO; new state `concepted`; image policy amended; Lighthouse removed.
-- `dossier/ka-surf-hostel-and-restaurant/stock/` — 11 licensed atmosphere images + `index.json`.
+- `playbook.md` 0.5.2 — §6 address rule (Google listing, capitalised, postcode, street/town postcode/country); capture dates on headline ratings only.
+- `schemas/site-content.md` v0.6 — new optional `closing` and `featureLine`.
+- `agents/copywriter/base.md` 0.3.1 (constraint 9: address), `agents/copyeditor/base.md` 0.3.0 (constraint 6: full re-check every round; guest observation of a physical fact = source). CHANGELOGs + `run.yaml` pins match.
+- `dossier/{ka-surf-hostel-and-restaurant,layday-surf-ahangama,the-lavish-haven}/` — Google listing address/plus code/pin captured live 2026-09-23.
+- `sites/*/copy/` — re-passed copy (KA review round 10, Layday round 3, Lavish round 5).
+- `sites/layday-surf-ahangama/final/`, `sites/the-lavish-haven/final/` — new Astro builds (+ notes.md, shots, `final-vs-picked/` side-by-sides).
+- `sites/ka-surf-hostel-and-restaurant/final/` — skip link, map probe, reseed, postalAddress split, widget fix.
+- `reports/2026-09-ahangama-02/*.md` — critic rounds. `seo-report.md`/`aiseo-report.md` per site.
+- `ledger.jsonl` — every transition and Shahar decision (orchestrator wrote all lines this session).
+- Figma `Workflows` file (`DO4wXVmArw9ihwZVx6gTA4`), frame `oneshot-workflow` (198:2) — restyled.
 
 ## Changes Made This Session
-
-1. **Wired every agent's prompt from disk.** The previous rejection was partly caused by
-   `agents/designer/references.md` never being opened. Runtime prompts are now assembled by
-   `tools/prompt.mjs` from `agents/wiring.json`; `check-wiring.mjs` fails on drift. It found that
-   every `base.md` was silently dropping `tools.md`, `evals.md`, `run.yaml` and the schemas, and that
-   seven files carried stale station numbers.
-2. **Deleted `templates/` and the nine old mockups** (Shahar approved). One Astro template per site.
-3. **Rebuilt all nine mockups**, then rebuilt them again after each round of feedback.
-4. **Added the creative-director agent and station 4d** after Shahar: *"they look like they were
-   created using the same cookie cutter."* The cause was structural — one playbook + one schema
-   reaches the same page every time — so the archetype decision was moved out of the designer's hands.
-5. **Rosa widget** (`rosa.surf/widget/?spot=kabalana`) embedded in "The wave" on all nine. It breaks
-   playbook §4's "0 third-party requests"; mitigated with `loading="lazy"` + sandbox and declared as
-   a conflict in every `notes.md`.
-6. **Image policy amended** (PLAN §9) to allow freely-licensed *atmosphere* photography, then
-   tightened the same day after the place error below.
-7. **Dropped Lighthouse** from the project at Shahar's instruction; performance is measured by
-   `audit-mockup.mjs`.
-8. **Pre-scored all nine** at station 4f with real measured evidence, and recorded that the numbers
-   do not separate variants of one business and should not.
+1. KA: map probe → `https://www.google.com/generate_204` (embed URL answered HEAD 404 → console error); skip link. Redeployed.
+2. Lavish pick logged: the gold page `agents/designer/gold/the-lavish-haven.html` (Shahar 2026-09-23).
+3. Copy: Lavish's two gold lines through 4a–4c; Shahar chose a schema field for the closing line (v0.5 `closing`). Full re-check exposed 19 unsourced claims in Lavish's round-1 copy; Shahar allowed rounds 3 and 4. Layday's copy self-checked and re-passed (ownership claim cut, rule-of-three fixed; Shahar allowed round 3).
+4. Shahar rulings, each written into files: "available" instead of "free"; address = Google listing (then refined: postcode from another platform if Google lacks it, source noted, capitalise, order); copyeditor full re-check every round; guest observation of physical fact counts; rating dates on headline ratings only; generic `featureLine` field (not Lavish-only).
+5. Layday 4g (3 rounds): pick notes met (docked box never covers text ≥920; "Reserve space" chosen by Shahar below 920; rating dates); Beth's quote under photos fixed (my call, reported).
+6. Lavish 4g (3 rounds + JS-off header): gold ported; critic round 1 failed on one alt text ("stone wall"), fixed with spacing/static-rim/widget fixes.
+7. Rosa widget-fail fallback (CORS HEAD before src, plain link on failure/10 s) ported to KA and Layday (Shahar: "Fix both").
+8. Worker renamed `layday-surf` (was `layday-surf-ahangama`) per Shahar's deploy list.
+9. Figma frame restyled to Shahar's reference images: pastel role colours, line icons in titles, legend, ∞ badge, four rule cards.
+10. Deleted agent scratch in repo root (`scratchpad/`, `.tmp-textimg.mjs`) on Shahar's instruction.
 
 ## Failed Attempts
-
-- **Three shared `templates/{calm,interactive,unique}/`** — violated one-template-per-site. Deleted.
-- **The same page skeleton for three businesses** — full-bleed hero + docked strip + eyebrow/heading/
-  two-column + photo grid + quotes. Rejected as a cookie cutter. Do not return to it.
-- **KA's "kitchen noticeboard" archetype** (round 1) — rejected whole: the idea itself, too
-  text-heavy, "dated / cheap". Pinned cards, tilts, paper mats and drop shadows read as ~2012.
-- **A 576 px photograph as a full-bleed hero** (KA `img-002`) — "fit for the garbage bin". The build
-  now refuses it.
-- **Dark grounds** — done twice. Every surf business gets a light theme. Now measured.
-- **Mixed aspect ratios in equal-height grid cells** — leaves half a card empty under each portrait.
-  Crop to one ratio or use real masonry. Now measured.
-- **Captions under photographs** — reintroduced once after being told to drop them. Now measured.
-- **Orange CTAs** — "cheap and outdated" on warm cream. Greens, blues, teals, yellows only.
-- **Trusting Commons filenames** — 24 of 34 fetched images were rejected on sight: a candlelight
-  vigil filed under "Kabalana", a five-star hotel's suite/rooftop/pool, nine Handunugoda tea-factory
-  interiors filed under "Ahangama".
-- **Photographs of the wrong place** — Hikkaduwa (33 km), Weligama, Thiranagama, Negombo (180 km) and
-  a *Weligama Bay* chart plan were shipped on an Ahangama page. Shahar: *"You should have caught that
-  by yourself."* Now enforced by `check-places.mjs`.
-- **A pre-score that scored all nine 98/100** — useless. Regraded dimension 2 on measured headroom.
+- **Round-1 copy "PASS" was not a pass:** Lavish/Layday copy passed at summary level on 2026-09-20; a sentence-by-sentence re-check found 19 (Lavish) and many (Layday) unsourced claims. Never trust a summary-level review.
+- **KA's 761–1070 overflow survived 3 critic rounds** because only 390/1440/1525/1920 were measured. Always check 768 and 1024.
+- **Subagents wrote scratch into the repo** (`scratchpad/`, `.tmp-textimg.mjs`) and shared a scratch folder, overwriting each other's shots. Give each agent its own `/tmp/.../scratchpad/<name>/` and say "never in the repo".
+- **Designer base.md forbids ledger writes**; the first 4g prompt told it to write one. Orchestrator writes all ledger lines.
+- **New Worker's first minute:** 10 photo 404s on layday-surf right after first deploy; 200 a minute later. Re-verify after ~45 s.
+- **Shared tools hard-code ports** (audit-mockup 8980, check-design 8960); parallel agents ran patched scratch copies. A `--port` flag is still missing in `tools/`.
+- **`grep -c "<h1"` counted 2 on Lavish** — the second is inside a CSS comment; only one real h1.
 
 ## Next Step
+Ask Shahar whether to fix KA's 761–1070 px overflow (`.times` row, `sites/ka-surf-hostel-and-restaurant/final/src/styles/site.css`) and redeploy — it is live in the preview. Do not start without his answer.
 
-1. **Ask Shahar what "cheap" means concretely**, per business or in general, before building
-   anything. Three rounds have now been spent guessing at visual quality and each guess cost a full
-   rebuild. Candidate axes to put to him: type scale and pairing, spacing and density, photographic
-   treatment, colour tone (he already said Layday's separation is right and its *tones* are wrong),
-   or whether the small/low-res source photography is the real ceiling.
-2. Only after that: act on the two picked mockups —
-   `sites/layday-surf-ahangama/mockups/interactive/` (more movement/microanimation, fix colour tones)
-   and `sites/the-lavish-haven/mockups/interactive/` (find the small issues).
-3. Re-ask about pushing to GitHub — 14 commits are unpushed and no approval to push was ever given.
-4. Still open from earlier sessions: the unapproved `proposals/2026-09-mirissa-01/001-designer-custom-calm-variant.md`;
-   whether Surf Front and Boardwalk re-qualify; KA's unresolved parking and check-in contradictions;
-   the "Shahar, Israel" Booking review on Lavish Haven.
-
-Useful commands: `node tools/serve-mockups.mjs` (ports 8901–8909),
-`node tools/build-mockup.mjs <slug> <variant>`, `node tools/shoot-mockups.mjs`,
-`node tools/check-design.mjs`, `node tools/check-places.mjs`, `node tools/audit-mockup.mjs --all`,
-`node tools/check-wiring.mjs`.
+Follow-ups (each needs Shahar's go-ahead):
+1. Station 6 proper for any site: Payload collection `spikes/payload/cms/src/collections/Sites.ts` is still v0.1 vs schema v0.6; `contact.whatsapp` required but missing on all three; ask before any tenant or domain.
+2. Owner questions for the pitch: Lavish house number (Google 166/1 vs Booking 166/2), AI-crawler policy, WhatsApp.
+3. Proposals 004/005 unapplied; candidate proposals: `--port` flag for tools, audit-mockup's hard-coded `#book`/`data-open-drawer`, critic must check 768/1024, designer text-layer check (glued words).
+4. Dossier KA `gaps` postcode note predates playbook 0.5.1 (harvester).
+5. Rosa: ask for a widget "ready" postMessage to close the empty-box path on all three.
