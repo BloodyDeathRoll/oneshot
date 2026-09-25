@@ -2,6 +2,7 @@
 /**
  * Publisher: tiny HTTP service the CMS hooks call.
  *   POST /publish  {"tenant":"<slug>","trigger":"sites.update"}   Authorization: Bearer <PUBLISH_SECRET>
+ *                  + "wait": true → 200 with the record of the build that includes this request
  *   GET  /status                                                   Authorization: Bearer <PUBLISH_SECRET>
  *   GET  /healthz                                                  (no auth, no information)
  */
@@ -66,6 +67,12 @@ const server = http.createServer(async (req, res) => {
         return send(res, 400, { error: 'tenant must be a slug' })
       }
       const trigger = typeof body.trigger === 'string' ? body.trigger.slice(0, 80) : 'unknown'
+      if (body.wait === true) {
+        // operator path (scripts/publish.sh): same queue as the CMS hook, answer with the build record
+        const { queued, done } = queue.requestAndWait(body.tenant, trigger)
+        console.log(JSON.stringify({ event: 'request', tenant: body.tenant, trigger, queued, wait: true }))
+        return send(res, 200, await done)
+      }
       const queued = queue.request(body.tenant, trigger)
       console.log(JSON.stringify({ event: 'request', tenant: body.tenant, trigger, queued }))
       return send(res, 202, { accepted: true, tenant: body.tenant, queued })

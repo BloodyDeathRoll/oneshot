@@ -12,7 +12,7 @@ export const createQueue = ({ publish, debounceMs }) => {
 
   const get = (slug) => {
     if (!tenants.has(slug)) {
-      tenants.set(slug, { timer: null, state: 'idle', pending: false, triggers: [], requests: 0, builds: 0, last: null })
+      tenants.set(slug, { timer: null, state: 'idle', pending: false, triggers: [], requests: 0, builds: 0, last: null, waiters: [] })
     }
     return tenants.get(slug)
   }
@@ -31,6 +31,8 @@ export const createQueue = ({ publish, debounceMs }) => {
       t.last = { ok: false, tenant: slug, error: err.message }
     }
     t.builds += 1
+    for (const w of t.waiters.filter((w) => w.build <= t.builds)) w.resolve(t.last)
+    t.waiters = t.waiters.filter((w) => w.build > t.builds)
     busy = false
     if (t.pending) {
       t.pending = false
@@ -41,6 +43,9 @@ export const createQueue = ({ publish, debounceMs }) => {
     }
     void pump()
   }
+
+  /** The number of the build that will include a request made now. */
+  const nextBuildFor = (t) => t.builds + (t.state === 'building' ? 2 : 1)
 
   const request = (slug, trigger = 'unknown') => {
     const t = get(slug)
@@ -61,6 +66,15 @@ export const createQueue = ({ publish, debounceMs }) => {
     return 'debouncing'
   }
 
+  /** request() + a promise for the record of the build that includes it (never overlaps a hook build). */
+  const requestAndWait = (slug, trigger) => {
+    const t = get(slug)
+    const build = nextBuildFor(t)
+    const done = new Promise((resolve) => t.waiters.push({ build, resolve }))
+    const queued = request(slug, trigger)
+    return { queued, done }
+  }
+
   const status = () =>
     Object.fromEntries(
       [...tenants].map(([slug, t]) => [
@@ -69,5 +83,5 @@ export const createQueue = ({ publish, debounceMs }) => {
       ]),
     )
 
-  return { request, status }
+  return { request, requestAndWait, status }
 }

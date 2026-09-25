@@ -174,8 +174,10 @@ export const readExport = async (dir) => {
 /**
  * @param rest      authenticated as someone allowed to write (multi: super-admin; single: the owner)
  * @param tenantId  multi-tenant target only: id of an existing tenant; omit for single-tenant
+ * @param reuseMedia  re-seed: a media doc of this tenant with the same filename is reused (alt updated)
+ *                    instead of uploading a copy — callers must make filenames content-addressed
  */
-export const importTenant = async ({ rest, dir, tenantId }) => {
+export const importTenant = async ({ rest, dir, tenantId, reuseMedia = false }) => {
   const { manifest, content, media } = await readExport(dir)
   const locales = localesIn(content, media)
   const scope = tenantId === undefined ? {} : { tenant: tenantId }
@@ -184,7 +186,21 @@ export const importTenant = async ({ rest, dir, tenantId }) => {
   // 1. media (default locale on create, then the other locales)
   const mediaIds = {}
   const renamed = []
+  const reused = []
   for (const m of media) {
+    if (reuseMedia) {
+      const q = `where[filename][equals]=${encodeURIComponent(m.filename)}${tenantId === undefined ? '' : `&where[tenant][equals]=${tenantId}`}`
+      const found = (await rest.get(`/api/media?${q}&depth=0&limit=1`)).docs[0]
+      if (found) {
+        for (const locale of locales) {
+          const alt = pick(m.alt, locale)
+          if (alt) await rest.patch(`/api/media/${found.id}?locale=${locale}`, { alt })
+        }
+        mediaIds[m.filename] = found.id
+        reused.push(m.filename)
+        continue
+      }
+    }
     const form = new FormData()
     const bytes = await readFile(path.join(dir, 'media', m.filename))
     form.append('file', new Blob([bytes], { type: m.mimeType }), m.filename)
@@ -215,5 +231,5 @@ export const importTenant = async ({ rest, dir, tenantId }) => {
   for (const locale of locales.filter((l) => l !== DEFAULT_LOCALE)) {
     await rest.patch(`/api/sites/${saved.id}?locale=${locale}&depth=0`, forLocale(resolved, locale, rowIds))
   }
-  return { siteId: saved.id, replacedExisting: Boolean(existing), photos: media.length, renamed, locales, mediaIds, tenant: manifest.tenant }
+  return { siteId: saved.id, replacedExisting: Boolean(existing), photos: media.length, renamed, reused, locales, mediaIds, tenant: manifest.tenant }
 }

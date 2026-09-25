@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 /**
- * One-shot publish without the HTTP service:
+ * One-shot publish without the HTTP service. Only while the publisher service is STOPPED: it does not
+ * share the service's queue, so it could build a tenant at the same time as a hook build.
+ * Normal operator path: cms/scripts/publish.sh.
  *   node --env-file=../.env src/cli.mjs <tenant-slug> [<tenant-slug> …]
  * Honours DEPLOY_MODE (default dry-run). Builds run one after another.
  */
