@@ -182,6 +182,124 @@
         }
       },
       "ms": 35413
+    },
+    {
+      "step": "seed",
+      "ok": true,
+      "started": "2026-09-25T07:53:12.979Z",
+      "evidence": {
+        "source": "sites/layday-surf-ahangama/final/src/tenant/content.json (critic-passed; built from dossier/layday-surf-ahangama/dossier.json by scripts/seed-from-dossier.mjs)",
+        "siteId": 2,
+        "replacedExisting": true,
+        "locales": [
+          "en"
+        ],
+        "fieldsSeeded": [
+          "businessName",
+          "businessType",
+          "tagline",
+          "languages",
+          "copyBlocks",
+          "photos",
+          "contact",
+          "bookingLinks",
+          "amenities",
+          "ratings",
+          "testimonials",
+          "spot",
+          "rooms",
+          "stayInfo",
+          "forecast"
+        ],
+        "gaps": [
+          "openingHours",
+          "hoursNote",
+          "priceList",
+          "season",
+          "languagesSpoken",
+          "lessons",
+          "credentials",
+          "rentals",
+          "brands",
+          "shaping",
+          "contact.whatsapp",
+          "contact.email"
+        ],
+        "photos": [
+          {
+            "filename": "layday-surf-ahangama-2661c0c9-img-018.jpg",
+            "mediaId": 96
+          },
+          {
+            "filename": "layday-surf-ahangama-c569c239-img-012.jpg",
+            "mediaId": 97
+          },
+          {
+            "filename": "layday-surf-ahangama-029a7bdc-img-002.jpg",
+            "mediaId": 98
+          },
+          {
+            "filename": "layday-surf-ahangama-51d7e8d4-img-008.jpg",
+            "mediaId": 99
+          },
+          {
+            "filename": "layday-surf-ahangama-33b0ad55-img-013.jpg",
+            "mediaId": 100
+          },
+          {
+            "filename": "layday-surf-ahangama-99ceb27e-img-003.jpg",
+            "mediaId": 101
+          },
+          {
+            "filename": "layday-surf-ahangama-b7d3db3a-img-017.jpg",
+            "mediaId": 102
+          },
+          {
+            "filename": "layday-surf-ahangama-ed1dc21a-img-019.jpg",
+            "mediaId": 103
+          },
+          {
+            "filename": "layday-surf-ahangama-46384f45-img-021.jpg",
+            "mediaId": 104
+          },
+          {
+            "filename": "layday-surf-ahangama-93a585fb-img-020.jpg",
+            "mediaId": 105
+          }
+        ],
+        "renamed": [],
+        "reused": 10,
+        "unreferencedMediaRemoved": [],
+        "licence": "business-owned photographs only (dossier assets); no atmosphere/stock images are in content.json"
+      },
+      "ms": 3887
+    },
+    {
+      "step": "deploy",
+      "ok": true,
+      "started": "2026-09-25T07:53:16.866Z",
+      "evidence": {
+        "mode": "live",
+        "worker": "layday-surf",
+        "url": "https://layday-surf.os1.workers.dev",
+        "version": "fda4ec6a-78df-451b-b174-12417abeb731",
+        "buildMs": 5403,
+        "deployMs": 10689,
+        "totalMs": 16092,
+        "parity": {
+          "identical": true,
+          "note": "photo names compared without the seed's slug-hash prefix",
+          "differingLines": []
+        },
+        "live": {
+          "url": "https://layday-surf.os1.workers.dev/",
+          "status": 200,
+          "identicalToBuild": true,
+          "msUntilIdentical": 439,
+          "noindex": true
+        }
+      },
+      "ms": 22216
     }
   ]
 }

@@ -17,8 +17,8 @@ Abbreviations: **D** = `dossier/the-lavish-haven/dossier.json`; **CR2** = `repor
 | 3 | Preview URL `https://the-lavish-haven.os1.workers.dev/` (all three) | DJ `deploy.evidence.url`, `live.url`; opened 2026-09-25: HTTP 200 |
 | 4 | Private preview; search engines told not to list it; not on Google (all three) | DJ `live.noindex: true`, `verify.liveAfter.noindex: true`; live HTML 2026-09-25 has `<meta name="robots" content="noindex, nofollow">`; CR2 dim 7 (robots.txt Disallow) |
 | 5 | Guests find Booking.com, Agoda, Tripadvisor, Google Maps (page) | D `contact.socials` (tripadvisor, google_maps, booking, agoda); D `booking.other_engines` |
-| 6 | 9.2 / 10 from 34 reviews on Booking.com, 5.0 / 5 from 21 on Google, read 19 September 2026 (page, in-person) | D `reviews.booking` (9.2, 10, 34), `reviews.google` (5, 21), both `fetched_at` 2026-09-19; shown the same on the preview (CR2 facts table; SHOT `after-390-top.jpg`) |
-| 7 | Booking.com showed 9.3 on 25 September (page §confirm, in-person) | SHOT `before-booking-390.jpg` ("9.3 Wonderful · 34 reviews"). **Not in the dossier**: the preview still shows 9.2. Flagged for the orchestrator/harvester: the rating needs a refresh before go-live |
+| 6 | 9.3 / 10 from 34 reviews on Booking.com, 5.0 / 5 from 21 on Google, read 25 September 2026 (page, in-person) | D `reviews.booking` (9.3, 10, 34), `reviews.google` (5.0, 21), `fetched_at` 2026-09-25 (refreshed by the orchestrator); same values live on the preview |
+| 7 | (removed 2026-09-25: the "9.2 then 9.3" confirm item — the site now shows 9.3) | — |
 | 8 | No check-in/check-out times, price list, WhatsApp number or email found published (page, in-person) | D `gaps[stayInfo]`, `gaps[offers]`, `gaps[contact.whatsapp]`, `gaps[contact.email]` (all `pitch_point: true`); D `stayInfo.note` gap; DJ `seed.evidence.gaps` |
 | 9 | Nine room types (page, WhatsApp, in-person) | D `room_types[0–8]`; CR2 facts "Nine kinds of room", 9 room rows |
 | 10 | Your photos (page, WhatsApp, in-person) | DJ `seed.evidence.licence` "business-owned photographs only (dossier assets)"; CR2 "all 10 `license: business-owned`" |
@@ -75,5 +75,5 @@ Not captured: **Google Maps.** Headless Chrome was sent to a generic Maps view w
 - No WhatsApp and no email published, so the site's only booking path is the OTAs plus the phone, and there is no direct-booking number to show.
 - No prices, no check-in/check-out times, no owner-written description, no tagline of the owner's: the "what you can add" list is long because of this.
 - Owner's name unconfirmed (guest reviews only); the WhatsApp number is not confirmed to be on WhatsApp.
-- Booking.com score moved from 9.2 to 9.3 since the harvest; the site is out of date on its headline rating.
+- Booking.com score moved from 9.2 to 9.3 since the harvest; fixed on 2026-09-25 (dossier, site, pitch).
 - House number 166/1 vs 166/2 and Google's longer name are unresolved.

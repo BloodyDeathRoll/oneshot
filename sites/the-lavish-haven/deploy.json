@@ -184,6 +184,126 @@
         }
       },
       "ms": 35405
+    },
+    {
+      "step": "seed",
+      "ok": true,
+      "started": "2026-09-25T07:53:39.109Z",
+      "evidence": {
+        "source": "sites/the-lavish-haven/final/src/tenant/content.json (critic-passed; built from dossier/the-lavish-haven/dossier.json by scripts/seed-from-dossier.mjs)",
+        "siteId": 3,
+        "replacedExisting": true,
+        "locales": [
+          "en"
+        ],
+        "fieldsSeeded": [
+          "businessName",
+          "businessType",
+          "tagline",
+          "closing",
+          "featureLine",
+          "languages",
+          "copyBlocks",
+          "photos",
+          "contact",
+          "bookingLinks",
+          "amenities",
+          "ratings",
+          "testimonials",
+          "spot",
+          "rooms",
+          "stayInfo",
+          "forecast"
+        ],
+        "gaps": [
+          "openingHours",
+          "hoursNote",
+          "priceList",
+          "season",
+          "languagesSpoken",
+          "lessons",
+          "credentials",
+          "rentals",
+          "brands",
+          "shaping",
+          "contact.whatsapp",
+          "contact.email"
+        ],
+        "photos": [
+          {
+            "filename": "the-lavish-haven-f59c5313-img-002.jpg",
+            "mediaId": 106
+          },
+          {
+            "filename": "the-lavish-haven-af116287-img-079.jpg",
+            "mediaId": 107
+          },
+          {
+            "filename": "the-lavish-haven-7f3abd95-img-069.jpg",
+            "mediaId": 108
+          },
+          {
+            "filename": "the-lavish-haven-c969b643-img-007.jpg",
+            "mediaId": 109
+          },
+          {
+            "filename": "the-lavish-haven-e1527189-img-073.jpg",
+            "mediaId": 110
+          },
+          {
+            "filename": "the-lavish-haven-fc90eec9-img-021.jpg",
+            "mediaId": 111
+          },
+          {
+            "filename": "the-lavish-haven-99c1ce44-img-028.jpg",
+            "mediaId": 112
+          },
+          {
+            "filename": "the-lavish-haven-24e00762-img-071.jpg",
+            "mediaId": 113
+          },
+          {
+            "filename": "the-lavish-haven-12858011-img-017.jpg",
+            "mediaId": 114
+          },
+          {
+            "filename": "the-lavish-haven-138160fc-img-008.jpg",
+            "mediaId": 115
+          }
+        ],
+        "renamed": [],
+        "reused": 10,
+        "unreferencedMediaRemoved": [],
+        "licence": "business-owned photographs only (dossier assets); no atmosphere/stock images are in content.json"
+      },
+      "ms": 3666
+    },
+    {
+      "step": "deploy",
+      "ok": true,
+      "started": "2026-09-25T07:53:42.775Z",
+      "evidence": {
+        "mode": "live",
+        "worker": "the-lavish-haven",
+        "url": "https://the-lavish-haven.os1.workers.dev",
+        "version": "ae0c7011-d09b-4cde-b108-c3c535f87afc",
+        "buildMs": 5975,
+        "deployMs": 10534,
+        "totalMs": 16509,
+        "parity": {
+          "identical": true,
+          "note": "photo names compared without the seed's slug-hash prefix",
+          "differingLines": []
+        },
+        "live": {
+          "url": "https://the-lavish-haven.os1.workers.dev/",
+          "status": 200,
+          "identicalToBuild": true,
+          "msUntilIdentical": 367,
+          "noindex": true
+        }
+      },
+      "ms": 23140
     }
   ]
 }

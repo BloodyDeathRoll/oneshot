@@ -16,8 +16,8 @@ Why the critic's numbers apply to the live preview: CR measured a local build on
 | 4 | Built from your own words on Hostelworld | P, W, I | D `business.tagline`, `description`, `description_long` (Hostelworld, the owner's copy); CR facts table rows 2, 6–12 |
 | 5 | No website of its own | P, I | D `existing_site.url: null`, `existing_site.notes`; D `gaps[]` `existing_site.url` (pitch_point) |
 | 6 | Listed on Booking.com, Hostelworld, Agoda, TripAdvisor, Google Maps, and Instagram | P | D `contact.socials` |
-| 7 | 9.8/10 Hostelworld (66), 9.5/10 Booking.com (38), 4.8/5 Google (42), read 19 September 2026 | P, I (9.8) | D `reviews.hostelworld`, `.booking`, `.google` (`fetched_at` 2026-09-19) |
-| 8 | Booking.com showed 9.4 from 39 reviews on 25 September | P (caption) | SHOT `before-booking-390.jpg` |
+| 7 | 9.8/10 Hostelworld (66), 9.4/10 Booking.com (39), 4.8/5 Google (42), read 25 September 2026 | P, I (9.8) | D `reviews.hostelworld`, `.booking`, `.google` (`fetched_at` 2026-09-25, refreshed by the orchestrator); same values live on the preview |
+| 8 | Booking.com screenshot dated 25 September | P (caption) | SHOT `before-booking-390.jpg` |
 | 9 | Booking platforms take a commission on the booking | P | D `existing_site.notes` ("platforms that take a commission"); D `gaps[]` `existing_site.url` ("every booking pays an OTA commission") |
 | 10 | Best writing on Hostelworld; photos split between Booking.com and Instagram | P | D `business.description.note`; D `images[].source_url` (img-001…012 Booking.com, img-013…024 Instagram) |
 | 11 | Names: Google "KA surf hostel and restaurant", Hostelworld "K A Surf Hostel", Booking.com "KA Surf Hostel" | P | D `business.name.note`; D `contradictions[3]` |

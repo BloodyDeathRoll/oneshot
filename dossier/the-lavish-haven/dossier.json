@@ -351,21 +351,33 @@
    "rating": 5.0,
    "count": 21,
    "source_url": "https://www.google.com/maps/search/The%20Lavish%20Haven%20Ahangama/@5.9794134,80.350836,17z?hl=en",
-   "fetched_at": "2026-09-19T18:55:00Z",
+   "fetched_at": "2026-09-25T07:40:00Z",
    "breakdown": {
     "5": 21,
     "4": 0,
     "3": 0,
     "2": 0,
     "1": 0
-   }
+   },
+   "refreshed": [
+    {
+     "at": "2026-09-25T07:40:00Z",
+     "by": "orchestrator (Shahar: fix the stale numbers)",
+     "was": {
+      "rating": 5.0,
+      "count": 21,
+      "fetched_at": "2026-09-19T18:55:00Z"
+     },
+     "note": "score and count re-read; category scores/breakdown not re-read and still date from the harvest"
+    }
+   ]
   },
   "booking": {
-   "rating": 9.2,
+   "rating": 9.3,
    "scale": 10,
    "count": 34,
    "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
-   "fetched_at": "2026-09-19T18:55:00Z",
+   "fetched_at": "2026-09-25T07:40:00Z",
    "categories": {
     "Staff": 9.4,
     "Facilities": 9.5,
@@ -373,7 +385,19 @@
     "Comfort": 9.7,
     "Value for money": 9.1,
     "Location": 9.6
-   }
+   },
+   "refreshed": [
+    {
+     "at": "2026-09-25T07:40:00Z",
+     "by": "orchestrator (Shahar: fix the stale numbers)",
+     "was": {
+      "rating": 9.2,
+      "count": 34,
+      "fetched_at": "2026-09-19T18:55:00Z"
+     },
+     "note": "score and count re-read; category scores/breakdown not re-read and still date from the harvest"
+    }
+   ]
   },
   "tripadvisor": {
    "rating": null,

@@ -8,10 +8,10 @@ Short names used below: D = `dossier/layday-surf-ahangama/dossier.json`; DJ = `s
 
 | # | Claim | Where | Source |
 |---|---|---|---|
-| 1 | 9.8/10 on Hostelworld, 10 reviews | H, W, P | D `reviews.hostelworld` {rating 9.8, count 10} |
+| 1 | 10/10 on Hostelworld, 10 reviews | H, W, P | D `reviews.hostelworld` {rating 10, count 10} (re-read 2026-09-25) |
 | 2 | 10/10 on Booking.com, 6 reviews | H, W, P | D `reviews.booking` {rating 10.0, count 6} |
 | 3 | 5.0/5 on Google, 15 reviews | H, W, P | D `reviews.google` {rating 5.0, count 15} |
-| 4 | Ratings read on 19 September 2026 | H | D `reviews.*.fetched_at` 2026-09-19T18:20:00Z |
+| 4 | Ratings read on 25 September 2026 | H | D `reviews.*.fetched_at` 2026-09-25T07:40:00Z (refreshed by the orchestrator) |
 | 5 | No website, no Instagram, no Facebook | H, W, P | D `existing_site.url` null + `.notes`; `contact.socials.instagram/facebook` null |
 | 6 | A guest finds three listings (Hostelworld, Booking.com, Agoda) and a Google Maps pin | H | D `existing_site.notes`; `contact.socials` (booking, hostelworld, agoda, google_maps) |
 | 7 | The listings carry the owner's own words and photos | H | D `existing_site.notes`; `business.description` (verbatim owner copy on Hostelworld); `images[].license_note` (property-uploaded) |
@@ -69,7 +69,7 @@ Short names used below: D = `dossier/layday-surf-ahangama/dossier.json`; DJ = `s
 
 ## For the human before sending
 
-- **Live numbers moved.** The Hostelworld listing captured on 2026-09-25 shows **10 (10 reviews)**. The dossier (read 2026-09-19) and the preview show 9.8. The page and the message quote the dossier's 9.8 with its date, so they match the preview. Re-harvest before sending if you want the current figure.
+- **Live numbers moved, now fixed.** Hostelworld showed 10 (10 reviews) on 2026-09-25; the dossier, the site and this pitch were updated to it the same day.
 - The message goes to +94778553343 (the only published number). The dossier does not confirm WhatsApp on it (`contact.whatsapp` gap).
 - No fee amounts anywhere. "How much?" is answered without a number (P).
 - Not claimed on purpose: commission savings (the preview still books through the same OTAs, plus the phone); "live on Google" (noindex); a domain.

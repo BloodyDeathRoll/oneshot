@@ -186,6 +186,128 @@
         }
       },
       "ms": 38165
+    },
+    {
+      "step": "seed",
+      "ok": true,
+      "started": "2026-09-25T07:52:45.868Z",
+      "evidence": {
+        "source": "sites/ka-surf-hostel-and-restaurant/final/src/tenant/content.json (critic-passed; built from dossier/ka-surf-hostel-and-restaurant/dossier.json by scripts/seed-from-dossier.mjs)",
+        "siteId": 1,
+        "replacedExisting": true,
+        "locales": [
+          "en"
+        ],
+        "fieldsSeeded": [
+          "businessName",
+          "businessType",
+          "tagline",
+          "languages",
+          "copyBlocks",
+          "photos",
+          "contact",
+          "bookingLinks",
+          "amenities",
+          "ratings",
+          "testimonials",
+          "spot",
+          "languagesSpoken",
+          "rooms",
+          "stayInfo",
+          "forecast"
+        ],
+        "gaps": [
+          "openingHours",
+          "hoursNote",
+          "priceList",
+          "season",
+          "lessons",
+          "credentials",
+          "rentals",
+          "brands",
+          "shaping",
+          "contact.whatsapp",
+          "contact.email"
+        ],
+        "photos": [
+          {
+            "filename": "ka-surf-hostel-and-restaurant-97f205b8-img-001.jpg",
+            "mediaId": 85
+          },
+          {
+            "filename": "ka-surf-hostel-and-restaurant-5ca37065-img-004.jpg",
+            "mediaId": 86
+          },
+          {
+            "filename": "ka-surf-hostel-and-restaurant-aee15b3b-img-003.jpg",
+            "mediaId": 87
+          },
+          {
+            "filename": "ka-surf-hostel-and-restaurant-5162b917-img-005.jpg",
+            "mediaId": 88
+          },
+          {
+            "filename": "ka-surf-hostel-and-restaurant-3cb768ba-img-006.jpg",
+            "mediaId": 89
+          },
+          {
+            "filename": "ka-surf-hostel-and-restaurant-9f68bfc1-img-008.jpg",
+            "mediaId": 90
+          },
+          {
+            "filename": "ka-surf-hostel-and-restaurant-250a2853-img-002.jpg",
+            "mediaId": 91
+          },
+          {
+            "filename": "ka-surf-hostel-and-restaurant-bdb40549-img-012.jpg",
+            "mediaId": 92
+          },
+          {
+            "filename": "ka-surf-hostel-and-restaurant-9625ef30-img-023.jpg",
+            "mediaId": 93
+          },
+          {
+            "filename": "ka-surf-hostel-and-restaurant-a2190fd0-img-020.jpg",
+            "mediaId": 94
+          },
+          {
+            "filename": "ka-surf-hostel-and-restaurant-abcda471-img-021.jpg",
+            "mediaId": 95
+          }
+        ],
+        "renamed": [],
+        "reused": 11,
+        "unreferencedMediaRemoved": [],
+        "licence": "business-owned photographs only (dossier assets); no atmosphere/stock images are in content.json"
+      },
+      "ms": 4422
+    },
+    {
+      "step": "deploy",
+      "ok": true,
+      "started": "2026-09-25T07:52:50.290Z",
+      "evidence": {
+        "mode": "live",
+        "worker": "ka-surf-hostel",
+        "url": "https://ka-surf-hostel.os1.workers.dev",
+        "version": "649c2224-60e1-4af6-a134-8651e07418a9",
+        "buildMs": 5351,
+        "deployMs": 11267,
+        "totalMs": 16618,
+        "parity": {
+          "identical": true,
+          "note": "photo names compared without the seed's slug-hash prefix",
+          "differingLines": []
+        },
+        "live": {
+          "url": "https://ka-surf-hostel.os1.workers.dev/",
+          "status": 200,
+          "identicalToBuild": true,
+          "msUntilIdentical": 358,
+          "noindex": true
+        }
+      },
+      "ms": 22662
     }
   ]
 }

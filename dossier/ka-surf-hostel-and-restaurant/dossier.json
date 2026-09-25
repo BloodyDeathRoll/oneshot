@@ -366,21 +366,33 @@
    "rating": 4.8,
    "count": 42,
    "source_url": "https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en",
-   "fetched_at": "2026-09-19T17:05:00Z",
+   "fetched_at": "2026-09-25T07:40:00Z",
    "breakdown": {
     "5": 40,
     "4": 0,
     "3": 0,
     "2": 1,
     "1": 1
-   }
+   },
+   "refreshed": [
+    {
+     "at": "2026-09-25T07:40:00Z",
+     "by": "orchestrator (Shahar: fix the stale numbers)",
+     "was": {
+      "rating": 4.8,
+      "count": 42,
+      "fetched_at": "2026-09-19T17:05:00Z"
+     },
+     "note": "score and count re-read; category scores/breakdown not re-read and still date from the harvest"
+    }
+   ]
   },
   "booking": {
-   "rating": 9.5,
+   "rating": 9.4,
    "scale": 10,
-   "count": 38,
+   "count": 39,
    "source_url": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
-   "fetched_at": "2026-09-19T17:05:00Z",
+   "fetched_at": "2026-09-25T07:40:00Z",
    "categories": {
     "Staff": 9.9,
     "Facilities": 9.2,
@@ -390,14 +402,26 @@
     "Location": 9.0,
     "Free WiFi": 2.5
    },
-   "note": "Free WiFi scores 2.5/10 — the one weak number anywhere, and it contradicts the owner's 'reliable fiber internet' claim"
+   "note": "Free WiFi scores 2.5/10 — the one weak number anywhere, and it contradicts the owner's 'reliable fiber internet' claim",
+   "refreshed": [
+    {
+     "at": "2026-09-25T07:40:00Z",
+     "by": "orchestrator (Shahar: fix the stale numbers)",
+     "was": {
+      "rating": 9.5,
+      "count": 38,
+      "fetched_at": "2026-09-19T17:05:00Z"
+     },
+     "note": "score and count re-read; category scores/breakdown not re-read and still date from the harvest"
+    }
+   ]
   },
   "hostelworld": {
    "rating": 9.8,
    "scale": 10,
    "count": 66,
    "source_url": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
-   "fetched_at": "2026-09-19T17:05:00Z",
+   "fetched_at": "2026-09-25T07:40:00Z",
    "categories": {
     "Value for Money": 10.0,
     "Security": 10.0,
@@ -406,7 +430,19 @@
     "Staff": 9.9,
     "Location": 9.4,
     "Facilities": 9.8
-   }
+   },
+   "refreshed": [
+    {
+     "at": "2026-09-25T07:40:00Z",
+     "by": "orchestrator (Shahar: fix the stale numbers)",
+     "was": {
+      "rating": 9.8,
+      "count": 66,
+      "fetched_at": "2026-09-19T17:05:00Z"
+     },
+     "note": "score and count re-read; category scores/breakdown not re-read and still date from the harvest"
+    }
+   ]
   },
   "tripadvisor": {
    "rating": null,

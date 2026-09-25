@@ -334,29 +334,53 @@
    "rating": 5.0,
    "count": 15,
    "source_url": "https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en",
-   "fetched_at": "2026-09-19T18:20:00Z",
+   "fetched_at": "2026-09-25T07:40:00Z",
    "breakdown": {
     "5": 15,
     "4": 0,
     "3": 0,
     "2": 0,
     "1": 0
-   }
+   },
+   "refreshed": [
+    {
+     "at": "2026-09-25T07:40:00Z",
+     "by": "orchestrator (Shahar: fix the stale numbers)",
+     "was": {
+      "rating": 5.0,
+      "count": 15,
+      "fetched_at": "2026-09-19T18:20:00Z"
+     },
+     "note": "score and count re-read; category scores/breakdown not re-read and still date from the harvest"
+    }
+   ]
   },
   "booking": {
    "rating": 10.0,
    "scale": 10,
    "count": 6,
    "source_url": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
-   "fetched_at": "2026-09-19T18:20:00Z",
-   "note": "location scored 9.6 separately"
+   "fetched_at": "2026-09-25T07:40:00Z",
+   "note": "location scored 9.6 separately",
+   "refreshed": [
+    {
+     "at": "2026-09-25T07:40:00Z",
+     "by": "orchestrator (Shahar: fix the stale numbers)",
+     "was": {
+      "rating": 10.0,
+      "count": 6,
+      "fetched_at": "2026-09-19T18:20:00Z"
+     },
+     "note": "score and count re-read; category scores/breakdown not re-read and still date from the harvest"
+    }
+   ]
   },
   "hostelworld": {
-   "rating": 9.8,
+   "rating": 10,
    "scale": 10,
    "count": 10,
    "source_url": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
-   "fetched_at": "2026-09-19T18:20:00Z",
+   "fetched_at": "2026-09-25T07:40:00Z",
    "categories": {
     "Value for Money": 10.0,
     "Security": 10.0,
@@ -365,7 +389,19 @@
     "Staff": 10.0,
     "Location": 10.0,
     "Facilities": 10.0
-   }
+   },
+   "refreshed": [
+    {
+     "at": "2026-09-25T07:40:00Z",
+     "by": "orchestrator (Shahar: fix the stale numbers)",
+     "was": {
+      "rating": 9.8,
+      "count": 10,
+      "fetched_at": "2026-09-19T18:20:00Z"
+     },
+     "note": "score and count re-read; category scores/breakdown not re-read and still date from the harvest"
+    }
+   ]
   },
   "tripadvisor": {
    "rating": null,

@@ -54,3 +54,6 @@ sites/*.zip
 *.tsbuildinfo
 next-env.d.ts
 cms/backups/
+
+# wrangler local state
+.wrangler/

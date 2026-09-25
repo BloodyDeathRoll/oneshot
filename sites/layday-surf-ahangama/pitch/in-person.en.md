@@ -2,7 +2,7 @@
 
 Open https://layday-surf.os1.workers.dev/ on the phone before you walk in. Show it; don't read it out.
 
-**Opening line.** "Your guests love this place: 9.8 on Hostelworld, 10 on Booking.com, 5 stars on Google. But when someone searches for Layday, there is no website of its own. So we built one from your listings. Can I show you on my phone?"
+**Opening line.** "Your guests love this place: 10 on Hostelworld, 10 on Booking.com, 5 stars on Google. But when someone searches for Layday, there is no website of its own. So we built one from your listings. Can I show you on my phone?"
 
 **Points (scroll as you talk)**
 
