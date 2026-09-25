@@ -48,3 +48,9 @@ sites/*/mockups/*/.astro/
 
 # local archives of sites/ (too large for git hosting)
 sites/*.zip
+
+# CMS (cms/): Next build output, server-side backups (client content)
+.next/
+*.tsbuildinfo
+next-env.d.ts
+cms/backups/

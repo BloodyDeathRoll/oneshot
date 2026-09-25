@@ -1,0 +1,13 @@
+{
+  "name": "oneshot-site-deps",
+  "version": "0.1.0",
+  "private": true,
+  "description": "astro + sharp shared by every site template (each template pins the same versions)",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "dependencies": {
+    "astro": "7.3.3",
+    "sharp": "0.35.4"
+  }
+}

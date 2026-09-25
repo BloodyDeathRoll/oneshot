@@ -1,0 +1,40 @@
+# Oneshot CMS front door (managed, multi-tenant). Only the Payload admin + API live here — client
+# sites are static on Cloudflare and never call this server.
+#
+#   CMS_ADDRESS=<ip-with-dashes>.sslip.io   no domain yet: sslip.io resolves to the box's IP, so Caddy
+#                                           can still obtain a real certificate (Let's Encrypt/ZeroSSL)
+#   CMS_ADDRESS=cms.example.com             later, when we own a domain for it
+{
+	admin off
+	order rate_limit before reverse_proxy
+}
+
+{$CMS_ADDRESS} {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		Referrer-Policy strict-origin-when-cross-origin
+		-Server
+		-X-Powered-By
+	}
+
+	# per-IP throttle on everything that takes a password or sends a reset (Payload itself only
+	# locks the account after 5 failures, which does nothing against one IP trying many emails)
+	@auth {
+		method POST
+		path /api/users/login /api/users/forgot-password /api/users/reset-password /api/users/unlock
+	}
+	rate_limit @auth {
+		zone auth_per_ip {
+			key {remote_host}
+			events 10
+			window 1m
+		}
+	}
+
+	# the publisher is internal; nothing else is proxied
+	reverse_proxy cms:3000
+}

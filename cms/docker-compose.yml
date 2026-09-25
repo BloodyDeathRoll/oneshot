@@ -1,0 +1,99 @@
+# Oneshot CMS — production, managed hosting mode (ONESHOT_PROFILE=multi-tenant), on oneshot-cms (OCI A1, ARM64).
+#   postgres   internal network only, never published
+#   cms        Payload 3, internal only — reached through Caddy
+#   publisher  internal only; rebuilds ONE tenant's site from its own template + wrangler deploy
+#   caddy      the only published service: 80/443, HTTPS, per-IP login rate limit
+name: oneshot-cms
+
+services:
+  postgres:
+    image: postgres:17.11-alpine3.24
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: payload
+      POSTGRES_USER: payload
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?run ./scripts/init-env.sh first}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U payload -d payload"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  cms:
+    build: ./app
+    image: oneshot-cms:0.7.0
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ONESHOT_PROFILE: multi-tenant
+      DATABASE_URL: postgres://payload:${POSTGRES_PASSWORD}@postgres:5432/payload
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET:?}
+      SERVER_URL: ${SERVER_URL:?}
+      COOKIE_SECURE: ${COOKIE_SECURE:-true}
+      SUPERADMIN_EMAIL: ${SUPERADMIN_EMAIL:?}
+      SUPERADMIN_PASSWORD: ${SUPERADMIN_PASSWORD:?}
+      BUILDER_API_KEY: ${BUILDER_API_KEY:?}
+      PUBLISHER_URL: http://publisher:4100/publish
+      PUBLISH_SECRET: ${PUBLISH_SECRET:?}
+    volumes:
+      - cms_media:/app/media
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/users/me').then(r=>process.exit(r.ok?0:1),()=>process.exit(1))"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 15s
+
+  publisher:
+    build:
+      context: .
+      dockerfile: publisher/Dockerfile
+    image: oneshot-publisher:0.7.0
+    restart: unless-stopped
+    depends_on:
+      cms:
+        condition: service_healthy
+    environment:
+      ONESHOT_PROFILE: multi-tenant
+      DEPLOY_ADAPTER: cloudflare
+      DEPLOY_MODE: ${DEPLOY_MODE:-dry-run}
+      CMS_URL: http://cms:3000
+      BUILDER_API_KEY: ${BUILDER_API_KEY:?}
+      PUBLISH_SECRET: ${PUBLISH_SECRET:?}
+      DEBOUNCE_MS: ${DEBOUNCE_MS:-1500}
+      # scoped token: Workers Scripts:Edit on the one Oneshot account (PLAN §9, 2026-09-18)
+      CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN:-}
+      CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
+    volumes:
+      - publisher_data:/data
+      - ${TEMPLATES_DIR:-../sites}:/srv/templates:ro
+    # a build can never starve Payload/Postgres (spike README, "Production would need")
+    mem_limit: 2g
+    cpus: 1.5
+
+  caddy:
+    build: ./caddy
+    image: oneshot-caddy:2.11.4-ratelimit
+    restart: unless-stopped
+    depends_on:
+      cms:
+        condition: service_healthy
+    environment:
+      CMS_ADDRESS: ${CMS_ADDRESS:?}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  pg_data:
+  cms_media:
+  publisher_data:
+  caddy_data:
+  caddy_config:
