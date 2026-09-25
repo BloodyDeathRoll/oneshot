@@ -1,0 +1,191 @@
+{
+  "adapter": "managed",
+  "adapterVersion": "0.1.0",
+  "slug": "ka-surf-hostel-and-restaurant",
+  "worker": "ka-surf-hostel",
+  "cms": "https://130-61-212-182.sslip.io",
+  "steps": [
+    {
+      "step": "provision",
+      "ok": true,
+      "started": "2026-09-25T06:25:19.326Z",
+      "evidence": {
+        "template": "oneshot/sites/ka-surf-hostel-and-restaurant",
+        "tenantId": 1,
+        "createdTenant": false,
+        "ownerUserId": 2,
+        "ownerEmail": "owner+ka-surf-hostel-and-restaurant@oneshot.test",
+        "createdOwner": false,
+        "siteId": 1,
+        "createdSite": false,
+        "credentials": "sealed: ~/.oneshot/sealed/ka-surf-hostel-and-restaurant.json (not in the repo)"
+      },
+      "ms": 3503
+    },
+    {
+      "step": "seed",
+      "ok": true,
+      "started": "2026-09-25T06:25:22.830Z",
+      "evidence": {
+        "source": "sites/ka-surf-hostel-and-restaurant/final/src/tenant/content.json (critic-passed; built from dossier/ka-surf-hostel-and-restaurant/dossier.json by scripts/seed-from-dossier.mjs)",
+        "siteId": 1,
+        "replacedExisting": true,
+        "locales": [
+          "en"
+        ],
+        "fieldsSeeded": [
+          "businessName",
+          "businessType",
+          "tagline",
+          "languages",
+          "copyBlocks",
+          "photos",
+          "contact",
+          "bookingLinks",
+          "amenities",
+          "ratings",
+          "testimonials",
+          "spot",
+          "languagesSpoken",
+          "rooms",
+          "stayInfo",
+          "forecast"
+        ],
+        "gaps": [
+          "openingHours",
+          "hoursNote",
+          "priceList",
+          "season",
+          "lessons",
+          "credentials",
+          "rentals",
+          "brands",
+          "shaping",
+          "contact.whatsapp",
+          "contact.email"
+        ],
+        "photos": [
+          {
+            "filename": "ka-surf-hostel-and-restaurant-97f205b8-img-001.jpg",
+            "mediaId": 85
+          },
+          {
+            "filename": "ka-surf-hostel-and-restaurant-5ca37065-img-004.jpg",
+            "mediaId": 86
+          },
+          {
+            "filename": "ka-surf-hostel-and-restaurant-aee15b3b-img-003.jpg",
+            "mediaId": 87
+          },
+          {
+            "filename": "ka-surf-hostel-and-restaurant-5162b917-img-005.jpg",
+            "mediaId": 88
+          },
+          {
+            "filename": "ka-surf-hostel-and-restaurant-3cb768ba-img-006.jpg",
+            "mediaId": 89
+          },
+          {
+            "filename": "ka-surf-hostel-and-restaurant-9f68bfc1-img-008.jpg",
+            "mediaId": 90
+          },
+          {
+            "filename": "ka-surf-hostel-and-restaurant-250a2853-img-002.jpg",
+            "mediaId": 91
+          },
+          {
+            "filename": "ka-surf-hostel-and-restaurant-bdb40549-img-012.jpg",
+            "mediaId": 92
+          },
+          {
+            "filename": "ka-surf-hostel-and-restaurant-9625ef30-img-023.jpg",
+            "mediaId": 93
+          },
+          {
+            "filename": "ka-surf-hostel-and-restaurant-a2190fd0-img-020.jpg",
+            "mediaId": 94
+          },
+          {
+            "filename": "ka-surf-hostel-and-restaurant-abcda471-img-021.jpg",
+            "mediaId": 95
+          }
+        ],
+        "renamed": [],
+        "reused": 11,
+        "unreferencedMediaRemoved": [],
+        "licence": "business-owned photographs only (dossier assets); no atmosphere/stock images are in content.json"
+      },
+      "ms": 3819
+    },
+    {
+      "step": "deploy",
+      "ok": true,
+      "started": "2026-09-25T06:25:26.650Z",
+      "evidence": {
+        "mode": "live",
+        "worker": "ka-surf-hostel",
+        "url": "https://ka-surf-hostel.os1.workers.dev",
+        "version": "39acb824-063d-4eb1-a5ba-66d3672055d1",
+        "buildMs": 5567,
+        "deployMs": 11203,
+        "totalMs": 16770,
+        "parity": {
+          "identical": true,
+          "note": "photo names compared without the seed's slug-hash prefix",
+          "differingLines": []
+        },
+        "live": {
+          "url": "https://ka-surf-hostel.os1.workers.dev/",
+          "status": 200,
+          "identicalToBuild": true,
+          "msUntilIdentical": 386,
+          "noindex": true
+        }
+      },
+      "ms": 22975
+    },
+    {
+      "step": "verify",
+      "ok": true,
+      "started": "2026-09-25T06:25:49.625Z",
+      "evidence": {
+        "ownerSitesVisible": 1,
+        "otherTenantSites": [
+          {
+            "siteId": 3,
+            "status": 404
+          },
+          {
+            "siteId": 2,
+            "status": 404
+          }
+        ],
+        "ownerMediaForeign": 0,
+        "anonymous": {
+          "sites": 403,
+          "media": 403,
+          "tenants": 403,
+          "users": 403
+        },
+        "ownerAddsRating": 400,
+        "edit": {
+          "field": "copyBlocks[0].body (intro)",
+          "marker": "verify-6d8b397e",
+          "saveStatus": 200,
+          "saveMs": 151,
+          "saveToLiveMs": 19546
+        },
+        "restore": {
+          "saveStatus": 200,
+          "saveToLiveMs": 14876,
+          "valueMatchesOriginal": true
+        },
+        "liveAfter": {
+          "status": 200,
+          "noindex": true
+        }
+      },
+      "ms": 38165
+    }
+  ]
+}

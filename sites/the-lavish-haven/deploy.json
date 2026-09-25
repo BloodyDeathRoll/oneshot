@@ -1,0 +1,189 @@
+{
+  "adapter": "managed",
+  "adapterVersion": "0.1.0",
+  "slug": "the-lavish-haven",
+  "worker": "the-lavish-haven",
+  "cms": "https://130-61-212-182.sslip.io",
+  "steps": [
+    {
+      "step": "provision",
+      "ok": true,
+      "started": "2026-09-25T06:27:39.301Z",
+      "evidence": {
+        "template": "oneshot/sites/the-lavish-haven",
+        "tenantId": 3,
+        "createdTenant": false,
+        "ownerUserId": 4,
+        "ownerEmail": "owner+the-lavish-haven@oneshot.test",
+        "createdOwner": false,
+        "siteId": 3,
+        "createdSite": false,
+        "credentials": "sealed: ~/.oneshot/sealed/the-lavish-haven.json (not in the repo)"
+      },
+      "ms": 4029
+    },
+    {
+      "step": "seed",
+      "ok": true,
+      "started": "2026-09-25T06:27:43.330Z",
+      "evidence": {
+        "source": "sites/the-lavish-haven/final/src/tenant/content.json (critic-passed; built from dossier/the-lavish-haven/dossier.json by scripts/seed-from-dossier.mjs)",
+        "siteId": 3,
+        "replacedExisting": true,
+        "locales": [
+          "en"
+        ],
+        "fieldsSeeded": [
+          "businessName",
+          "businessType",
+          "tagline",
+          "closing",
+          "featureLine",
+          "languages",
+          "copyBlocks",
+          "photos",
+          "contact",
+          "bookingLinks",
+          "amenities",
+          "ratings",
+          "testimonials",
+          "spot",
+          "rooms",
+          "stayInfo",
+          "forecast"
+        ],
+        "gaps": [
+          "openingHours",
+          "hoursNote",
+          "priceList",
+          "season",
+          "languagesSpoken",
+          "lessons",
+          "credentials",
+          "rentals",
+          "brands",
+          "shaping",
+          "contact.whatsapp",
+          "contact.email"
+        ],
+        "photos": [
+          {
+            "filename": "the-lavish-haven-f59c5313-img-002.jpg",
+            "mediaId": 106
+          },
+          {
+            "filename": "the-lavish-haven-af116287-img-079.jpg",
+            "mediaId": 107
+          },
+          {
+            "filename": "the-lavish-haven-7f3abd95-img-069.jpg",
+            "mediaId": 108
+          },
+          {
+            "filename": "the-lavish-haven-c969b643-img-007.jpg",
+            "mediaId": 109
+          },
+          {
+            "filename": "the-lavish-haven-e1527189-img-073.jpg",
+            "mediaId": 110
+          },
+          {
+            "filename": "the-lavish-haven-fc90eec9-img-021.jpg",
+            "mediaId": 111
+          },
+          {
+            "filename": "the-lavish-haven-99c1ce44-img-028.jpg",
+            "mediaId": 112
+          },
+          {
+            "filename": "the-lavish-haven-24e00762-img-071.jpg",
+            "mediaId": 113
+          },
+          {
+            "filename": "the-lavish-haven-12858011-img-017.jpg",
+            "mediaId": 114
+          },
+          {
+            "filename": "the-lavish-haven-138160fc-img-008.jpg",
+            "mediaId": 115
+          }
+        ],
+        "renamed": [],
+        "reused": 10,
+        "unreferencedMediaRemoved": [],
+        "licence": "business-owned photographs only (dossier assets); no atmosphere/stock images are in content.json"
+      },
+      "ms": 3788
+    },
+    {
+      "step": "deploy",
+      "ok": true,
+      "started": "2026-09-25T06:27:47.118Z",
+      "evidence": {
+        "mode": "live",
+        "worker": "the-lavish-haven",
+        "url": "https://the-lavish-haven.os1.workers.dev",
+        "version": "b9fa09a7-6d0a-49c3-9c6b-02ec2f38be58",
+        "buildMs": 5917,
+        "deployMs": 12005,
+        "totalMs": 17922,
+        "parity": {
+          "identical": true,
+          "note": "photo names compared without the seed's slug-hash prefix",
+          "differingLines": []
+        },
+        "live": {
+          "url": "https://the-lavish-haven.os1.workers.dev/",
+          "status": 200,
+          "identicalToBuild": true,
+          "msUntilIdentical": 364,
+          "noindex": true
+        }
+      },
+      "ms": 24356
+    },
+    {
+      "step": "verify",
+      "ok": true,
+      "started": "2026-09-25T06:28:11.474Z",
+      "evidence": {
+        "ownerSitesVisible": 1,
+        "otherTenantSites": [
+          {
+            "siteId": 2,
+            "status": 404
+          },
+          {
+            "siteId": 1,
+            "status": 404
+          }
+        ],
+        "ownerMediaForeign": 0,
+        "anonymous": {
+          "sites": 403,
+          "media": 403,
+          "tenants": 403,
+          "users": 403
+        },
+        "ownerAddsRating": 400,
+        "edit": {
+          "field": "copyBlocks[0].body (intro)",
+          "marker": "verify-08ead781",
+          "saveStatus": 200,
+          "saveMs": 154,
+          "saveToLiveMs": 17079
+        },
+        "restore": {
+          "saveStatus": 200,
+          "saveToLiveMs": 14692,
+          "valueMatchesOriginal": true
+        },
+        "liveAfter": {
+          "status": 200,
+          "noindex": true
+        }
+      },
+      "ms": 35405
+    }
+  ]
+}

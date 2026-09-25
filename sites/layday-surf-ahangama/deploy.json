@@ -1,0 +1,187 @@
+{
+  "adapter": "managed",
+  "adapterVersion": "0.1.0",
+  "slug": "layday-surf-ahangama",
+  "worker": "layday-surf",
+  "cms": "https://130-61-212-182.sslip.io",
+  "steps": [
+    {
+      "step": "provision",
+      "ok": true,
+      "started": "2026-09-25T06:26:33.425Z",
+      "evidence": {
+        "template": "oneshot/sites/layday-surf-ahangama",
+        "tenantId": 2,
+        "createdTenant": false,
+        "ownerUserId": 3,
+        "ownerEmail": "owner+layday-surf-ahangama@oneshot.test",
+        "createdOwner": false,
+        "siteId": 2,
+        "createdSite": false,
+        "credentials": "sealed: ~/.oneshot/sealed/layday-surf-ahangama.json (not in the repo)"
+      },
+      "ms": 3992
+    },
+    {
+      "step": "seed",
+      "ok": true,
+      "started": "2026-09-25T06:26:37.418Z",
+      "evidence": {
+        "source": "sites/layday-surf-ahangama/final/src/tenant/content.json (critic-passed; built from dossier/layday-surf-ahangama/dossier.json by scripts/seed-from-dossier.mjs)",
+        "siteId": 2,
+        "replacedExisting": true,
+        "locales": [
+          "en"
+        ],
+        "fieldsSeeded": [
+          "businessName",
+          "businessType",
+          "tagline",
+          "languages",
+          "copyBlocks",
+          "photos",
+          "contact",
+          "bookingLinks",
+          "amenities",
+          "ratings",
+          "testimonials",
+          "spot",
+          "rooms",
+          "stayInfo",
+          "forecast"
+        ],
+        "gaps": [
+          "openingHours",
+          "hoursNote",
+          "priceList",
+          "season",
+          "languagesSpoken",
+          "lessons",
+          "credentials",
+          "rentals",
+          "brands",
+          "shaping",
+          "contact.whatsapp",
+          "contact.email"
+        ],
+        "photos": [
+          {
+            "filename": "layday-surf-ahangama-2661c0c9-img-018.jpg",
+            "mediaId": 96
+          },
+          {
+            "filename": "layday-surf-ahangama-c569c239-img-012.jpg",
+            "mediaId": 97
+          },
+          {
+            "filename": "layday-surf-ahangama-029a7bdc-img-002.jpg",
+            "mediaId": 98
+          },
+          {
+            "filename": "layday-surf-ahangama-51d7e8d4-img-008.jpg",
+            "mediaId": 99
+          },
+          {
+            "filename": "layday-surf-ahangama-33b0ad55-img-013.jpg",
+            "mediaId": 100
+          },
+          {
+            "filename": "layday-surf-ahangama-99ceb27e-img-003.jpg",
+            "mediaId": 101
+          },
+          {
+            "filename": "layday-surf-ahangama-b7d3db3a-img-017.jpg",
+            "mediaId": 102
+          },
+          {
+            "filename": "layday-surf-ahangama-ed1dc21a-img-019.jpg",
+            "mediaId": 103
+          },
+          {
+            "filename": "layday-surf-ahangama-46384f45-img-021.jpg",
+            "mediaId": 104
+          },
+          {
+            "filename": "layday-surf-ahangama-93a585fb-img-020.jpg",
+            "mediaId": 105
+          }
+        ],
+        "renamed": [],
+        "reused": 10,
+        "unreferencedMediaRemoved": [],
+        "licence": "business-owned photographs only (dossier assets); no atmosphere/stock images are in content.json"
+      },
+      "ms": 3840
+    },
+    {
+      "step": "deploy",
+      "ok": true,
+      "started": "2026-09-25T06:26:41.258Z",
+      "evidence": {
+        "mode": "live",
+        "worker": "layday-surf",
+        "url": "https://layday-surf.os1.workers.dev",
+        "version": "e93e9530-fe9f-4e54-a12c-34bb684c70fd",
+        "buildMs": 5443,
+        "deployMs": 10884,
+        "totalMs": 16327,
+        "parity": {
+          "identical": true,
+          "note": "photo names compared without the seed's slug-hash prefix",
+          "differingLines": []
+        },
+        "live": {
+          "url": "https://layday-surf.os1.workers.dev/",
+          "status": 200,
+          "identicalToBuild": true,
+          "msUntilIdentical": 525,
+          "noindex": true
+        }
+      },
+      "ms": 22598
+    },
+    {
+      "step": "verify",
+      "ok": true,
+      "started": "2026-09-25T06:27:03.856Z",
+      "evidence": {
+        "ownerSitesVisible": 1,
+        "otherTenantSites": [
+          {
+            "siteId": 3,
+            "status": 404
+          },
+          {
+            "siteId": 1,
+            "status": 404
+          }
+        ],
+        "ownerMediaForeign": 0,
+        "anonymous": {
+          "sites": 403,
+          "media": 403,
+          "tenants": 403,
+          "users": 403
+        },
+        "ownerAddsRating": 400,
+        "edit": {
+          "field": "copyBlocks[0].body (intro)",
+          "marker": "verify-71002426",
+          "saveStatus": 200,
+          "saveMs": 134,
+          "saveToLiveMs": 16994
+        },
+        "restore": {
+          "saveStatus": 200,
+          "saveToLiveMs": 14659,
+          "valueMatchesOriginal": true
+        },
+        "liveAfter": {
+          "status": 200,
+          "noindex": true
+        }
+      },
+      "ms": 35413
+    }
+  ]
+}
