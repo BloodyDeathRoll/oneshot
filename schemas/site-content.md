@@ -1,6 +1,6 @@
 # schemas/site-content.md — the fixed content schema: the contract between Payload and the Astro templates.
 
-**Version 0.6** · 2026-09-23 (v0.6 adds the optional `featureLine`, a generic short line over a site's feature image — Shahar, first used for The Lavish Haven's night-pool line) · **v0.5** · 2026-09-23 (v0.5 adds the optional `closing` line, Shahar's decision for The Lavish Haven's closing headline) · **v0.4** · 2026-09-22 (v0.4 adds `ratings[].capturedAt`, required by playbook §6; existing documents need the date filled in by the deployer) · **v0.3** · 2026-09-21 (v0.1 came out of the Payload spike; v0.2 adds `businessType` and the per-type modules below; v0.3 adds the optional `forecast` block; all additive — every v0.1 document is a valid v0.3 document) · source of truth in code: `spikes/payload/cms/src/collections/Sites.ts` + `Media.ts` · reference consumer: `spikes/payload/site/` · proven by `spikes/payload/test/` (both suites green).
+**Version 0.7** · 2026-09-25 (v0.7 makes `contact.whatsapp` optional — Shahar, none of run 2026-09-ahangama-02's three businesses publishes a WhatsApp number; production Payload collection `cms/src/collections/Sites.ts` now implements this version) · **v0.6** · 2026-09-23 (v0.6 adds the optional `featureLine`, a generic short line over a site's feature image — Shahar, first used for The Lavish Haven's night-pool line) · **v0.5** · 2026-09-23 (v0.5 adds the optional `closing` line, Shahar's decision for The Lavish Haven's closing headline) · **v0.4** · 2026-09-22 (v0.4 adds `ratings[].capturedAt`, required by playbook §6; existing documents need the date filled in by the deployer) · **v0.3** · 2026-09-21 (v0.1 came out of the Payload spike; v0.2 adds `businessType` and the per-type modules below; v0.3 adds the optional `forecast` block; all additive — every v0.1 document is a valid v0.3 document) · source of truth in code: `spikes/payload/cms/src/collections/Sites.ts` + `Media.ts` · reference consumer: `spikes/payload/site/` · proven by `spikes/payload/test/` (both suites green).
 
 Rules of the contract
 
@@ -42,11 +42,11 @@ Who edits: **owner** = the business owner in the Payload admin ("My site" form, 
 | `photos[].image` | upload → `media` | **yes** | no | owner | jpeg / png / webp, ≤ 8 MB | media doc (below) |
 | `photos[].caption` | text | no | **yes** | owner | ≤ 140 | `"Sunset at the school"` |
 | `contact.phone` | text, E.164 | no | no | owner | `^\+[1-9]\d{6,14}$` | `"+94410000101"` |
-| `contact.whatsapp` | text, E.164 | **yes** | no | owner | same; template builds the booking CTA `https://wa.me/<digits>?text=…` from it | `"+94770000101"` |
+| `contact.whatsapp` | text, E.164 | no (v0.7; was required) | no | owner | same; when set, the template builds the booking CTA `https://wa.me/<digits>?text=…` from it; when empty, the template's primary booking action is `bookingLinks[]` or `contact.phone` | `"+94770000101"` |
 | `contact.email` | email | no | no | owner | | `"hello@wobbly-pelican.example"` |
 | `contact.address` | textarea | no | **yes** | owner | ≤ 300; line breaks are meaningful | `"Beach Road…\nMirissa, Sri Lanka"` |
 | `contact.mapUrl` | text, `https://` URL | no | no | owner | | `"https://www.openstreetmap.org/?mlat=5.9466&mlon=80.4580#map=17/5.9466/80.4580"` |
-| `bookingLinks[]` | array (≤ 6 rows) | no | – | owner | *additional* booking paths (engine, marketplace…); WhatsApp is always the primary CTA | |
+| `bookingLinks[]` | array (≤ 6 rows) | no | – | owner | booking paths (engine, marketplace…); *additional* to WhatsApp when `contact.whatsapp` is set, otherwise the primary CTA | |
 | `bookingLinks[].label` | text | **yes** | **yes** | owner | ≤ 60 | `"Book on SurfBookings"` |
 | `bookingLinks[].url` | text, `https://` URL | **yes** | no | owner | | `"https://bookings.example/wobbly-pelican"` |
 | `createdAt`, `updatedAt` | ISO date | system | – | system | | `"2026-09-17T23:03:38.651Z"` |
