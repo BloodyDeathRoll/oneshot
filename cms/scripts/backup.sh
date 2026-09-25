@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Backup of the managed CMS: database (pg_dump, custom format) + uploaded media, then off the box.
-#   ./scripts/backup.sh            → backups/<UTC stamp>/, upload to BACKUP_PAR_URL if set, keep 14 locally
+#   ./scripts/backup.sh            → backups/<UTC stamp>/, upload to BACKUP_PAR_URL if set, keep 14 locally;
+#                                    the bucket deletes uploaded backups after 30 days (lifecycle rule expire-backups-30d)
 # Safe while live. Installed nightly by ./scripts/install-backup-cron.sh.
 # BACKUP_PAR_URL (cms/.env): an OCI Object Storage pre-authenticated request, write-only, bucket
 # oneshot-cms-backups — the box can add objects and can neither list nor read nor delete them.

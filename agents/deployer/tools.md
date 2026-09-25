@@ -1,6 +1,6 @@
 # deployer / tools.md — what the agent may call, and how.
 
-version: 0.1.0 — written after the Payload spike (`spikes/payload/README.md`); commands and env names follow it until `deploy/` and `infra/` replace them.
+version: 0.2.0 — the `managed` adapter is real code now (`deploy/managed/deploy.mjs`, first run 2026-09-25); the other two adapters still follow the Payload spike (`spikes/payload/README.md`).
 
 The deployer calls exactly one adapter per business. All three implement the same steps with the same names and the same result record (`{step, ok, started, ms, evidence}` appended to `sites/<slug>/deploy.json`).
 
@@ -16,23 +16,25 @@ The deployer calls exactly one adapter per business. All three implement the sam
 
 ## Shared tools (all adapters)
 
-- **Payload REST** of the target instance. Writes use a short-lived writer login created for the run; reads for builds use the read-only builder API key (`Authorization: builders API-Key <key>`). Nothing in the CMS is anonymous-readable.
-- **`scripts/import-tenant.mjs <dir> --cms <url> --email <owner>`** — seeds a site doc (all locales) + media from an export-format directory; `scripts/export-tenant.mjs <slug> <dir>` produces that format. The seed for a new business is a dossier → export-format conversion (`deploy/lib/dossier-to-content`, to be written) followed by the same import.
-- **Astro build** of `sites/<slug>/final/` with `TENANT_SLUG=<slug>` and the builder key in the fetch step only (stripped from the build and deploy child processes).
+- **Payload REST** of the target instance. Writes use the super-admin login, read over SSH from the server's `cms/.env` into memory for the run and never written anywhere else; reads for builds use the read-only builder API key (`Authorization: builders API-Key <key>`). Nothing in the CMS is anonymous-readable.
+- **`cms/scripts/import-tenant.mjs <dir> --cms <url> --email <e>`** — seeds a site doc (the locales present in the data) + media from an export-format directory; `cms/scripts/export-tenant.mjs <slug> <dir>` produces that format (library: `cms/scripts/lib/tenant-io.mjs`). The seed for a new business converts the critic-passed `sites/<slug>/final/src/tenant/content.json` (itself built from the dossier by the site's `scripts/seed-from-dossier.mjs`) to that format, then runs the same import.
+- **Astro build** of the site's own template (`sites/<slug>/final/`, synced to the server's `~/oneshot/sites/<slug>/`) by the publisher: `scripts/fetch-tenant.mjs` (builder key in this step only) → `scripts/photos.mjs` → `astro build`.
 - **Static check**: unpack/serve the build with a plain static server, open every page, assert no request leaves for the CMS or Cloudflare.
 - **Secret scan** of every file the adapter wrote to the repo before reporting.
 
 ## Adapter `managed` — `deploy/managed/`
 
-Target: our multi-tenant Payload (`ONESHOT_PROFILE=multi-tenant`, `docker-compose.yml`) + Cloudflare Workers static assets.
+Target: our multi-tenant Payload (`ONESHOT_PROFILE=multi-tenant`, `cms/docker-compose.yml` on `oneshot-cms`, admin at `https://130-61-212-182.sslip.io/admin` until we own a hostname) + Cloudflare Workers static assets.
+
+Run: `node deploy/managed/deploy.mjs <slug> [--steps provision,seed,deploy,verify]` — each step appends its record to `sites/<slug>/deploy.json`. Env overrides: `CMS_URL`, `CMS_SSH`, `CMS_SSH_KEY`, `CMS_REMOTE_DIR`.
 
 | Step | Calls | Evidence |
 |---|---|---|
-| `provision` | REST as super-admin: create `tenants` doc (name, slug), create the owner user (email/password generated, role `owner`, `tenants: [tenant]`), one-time writer login for seeding | tenant id, owner user id; password only to the sealed channel |
-| `seed` | dossier → export-format dir → `import-tenant.mjs` as the owner; photos only with an allowed license note | field keys seeded, gaps, media ids |
-| `deploy` | publisher `POST /publish {tenant}` with `PUBLISH_SECRET`, or `publisher/src/cli.mjs <slug>` with `DEPLOY_MODE=live`; Worker name = the customer's brand slug, no prefix (`<brand>.workers.dev`; the spike used `oneshot-spike-<slug>`); config = `name`, `compatibility_date`, `assets.directory`, no `main` | publish log line (buildMs, deployMs, url), `*.workers.dev` URL opened → 200 |
+| `provision` | rsync the template to the server (no build products, no photos); REST as super-admin: create `tenants` doc (name, slug), the owner user (email/password generated, role `owner`, `tenants: [tenant]`) and an empty `sites` doc. Idempotent | tenant id, owner user id, site id; password only to the sealed channel `~/.oneshot/sealed/<slug>.json` (mode 600, outside the repo) |
+| `seed` | `content.json` → export-format dir → import **as super-admin** (`ratings`, `testimonials` and `forecast.rosaSpotId` are deployer fields an owner cannot write). Photo names = `<slug>-<sha256:8>-<original>`: no clash across tenants (Payload renames clashes), and a re-seed reuses the stored file. Photos of the tenant the site no longer uses are deleted. Photos only with an allowed license note | field keys seeded, gaps, media ids, reused/removed |
+| `deploy` | `cms/scripts/publish.sh <slug>` over SSH → publisher `POST /publish {tenant, wait: true}` (the same queue as the CMS hook, so it never overlaps a hook build); `DEPLOY_MODE=live` in `cms/.env`; Worker config = the template's own `wrangler.jsonc` (name = the customer's brand slug, no prefix; `assets.directory: ./dist`, no `main`). Never run `publisher/src/cli.mjs` while the service is up | publish record (buildMs, deployMs, url, version); parity: the CMS-built `index.html` equals a local build of `content.json` (photo names aside); live HTML equals the build, 200, noindex on `*.workers.dev` |
 | `attach_domain` | Only after a sale (ledger `outcome:sale`). Client already owns a domain: we set up its DNS to the Worker. Otherwise Cloudflare Registrar purchase (**human "go"**, billed through to the client), then DNS + custom domain on the Worker via `infra/` scripts | domain, DNS records, HTTPS 200 on the domain |
-| `verify` | owner login → change one price → site rebuilt through the hook → new value in live HTML → restore; owner `GET /api/sites` returns exactly one doc; owner `GET` another tenant's site → 404; anonymous → 403 | status codes, strings found, save→live ms |
+| `verify` | owner login → change one price (no `priceList` rows: the intro text block) → site rebuilt through the hook → new value in live HTML → restore; owner `GET /api/sites` returns exactly one doc; owner `GET` another tenant's site → 404; owner sees no foreign media; anonymous → 403; owner adding a rating → 400 | status codes, strings found, save→live ms |
 | `handoff` | skip (managed clients get `handoff/03-how-to-edit.md` only, filled and translated) | — |
 | `export` | optional: static zip of the last build to `dist/<slug>.zip`, static check | zip sha256, pages opened |
 
