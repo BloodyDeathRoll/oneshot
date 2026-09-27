@@ -152,7 +152,7 @@ function readChangelogs() {
   return out;
 }
 
-function readProposals() {
+function readProposals(proposalDecisions = []) {
   const base = join(ROOT, 'proposals');
   if (!existsSync(base)) return [];
   const out = [];
@@ -163,7 +163,12 @@ function readProposals() {
       // Merging a proposal is a human gate (PLAN.md) and no ledger line records one yet, so the only
       // honest status is "no merge record". *-APPLY.md files are application notes, not proposals.
       const record = /-APPLY\.md$/.test(f);
-      out.push({ run_id: run, file: `proposals/${run}/${f}`, title, kind: record ? 'application record' : 'proposal', status: record ? null : 'no merge record in the ledger', custom_md: /custom\.md/i.test(title) || /custom-md/.test(f) });
+      const file = `proposals/${run}/${f}`;
+      const decision = [...proposalDecisions].reverse().find((l) => (l.note ?? '').startsWith(file));
+      out.push({ run_id: run, file, title, kind: record ? 'application record' : 'proposal',
+        status: record ? null : decision ? decision.to_state.replace('proposal:', '') : 'no merge record in the ledger',
+        decided_at: decision?.ts ?? null, decision_note: decision?.note ?? null,
+        custom_md: /custom\.md/i.test(title) || /custom-md/.test(f) });
     }
   }
   return out;
@@ -174,7 +179,7 @@ export function buildData() {
   const ledger = readJsonl('ledger.jsonl');
   const run = readRun();
   const businessLines = ledger.filter((l) => l.slug && l.slug !== '-' && l.slug !== 'dashboard');
-  const corrections = ledger.filter((l) => !l.slug || l.slug === '-');
+  const corrections = ledger.filter((l) => (!l.slug || l.slug === '-') && !/^proposal:/.test(l.to_state));
   const nonBusinessRuns = ledger.filter((l) => l.slug === 'dashboard');
 
   const byKey = new Map();
@@ -354,14 +359,16 @@ export function buildData() {
       version_pinned: run.agent_pins[name] ?? null,
       pin_matches_changelog: run.agent_pins[name] != null && run.agent_pins[name] === changelogs[name].version,
       by_run: perRun,
-      third_fail_overrides: businesses.flatMap((b) => b.overrides.map((o) => ({ ...o, slug: b.slug, run_id: b.run_id }))).filter(() => name === 'copyeditor' || name === 'critic'),
+      // An override belongs to the agent whose fail it overrode: the note names the station or agent.
+      third_fail_overrides: businesses.flatMap((b) => b.overrides.map((o) => ({ ...o, slug: b.slug, run_id: b.run_id })))
+        .filter((o) => (name === 'copyeditor' && /copyeditor|\b4c\b|copy/i.test(o.note)) || (name === 'critic' && /critic(?!.*copyeditor)/i.test(o.note) && !/\b4c\b/.test(o.note))),
     };
   }
 
   // ---- gates, decisions, activity, proposals, expenses ---------------------------------------------
-  const proposals = readProposals();
+  const proposals = readProposals(ledger.filter((l) => /^proposal:(approved|rejected)$/.test(l.to_state)));
   const gates = businesses.filter((b) => b.gate).map((b) => ({ kind: b.gate, slug: b.slug, name: b.name, run_id: b.run_id, since: b.last_change, days: b.days_since_change, target: b.gate_target }));
-  const unmerged = proposals.filter((p) => p.kind === 'proposal');
+  const unmerged = proposals.filter((p) => p.kind === 'proposal' && p.status === 'no merge record in the ledger');
   if (unmerged.length) gates.push({ kind: 'review prompt diffs', slug: null, name: `${unmerged.length} proposals without a merge record`, run_id: unmerged.at(-1).run_id, since: null, days: null, target: { view: 'decisions', proposals: unmerged.map((p) => p.file) } });
   const decisions = businessLines.filter((l) => l.agent === 'human').sort((a, b) => b.ts.localeCompare(a.ts)).map((l) => ({ ts: l.ts, slug: l.slug, run_id: l.run_id, from: l.from_state, to: l.to_state, note: l.note, gate: !!(GATES[l.from_state] && l.from_state !== l.to_state), override: OVERRIDE_RE.test(l.note ?? '') }));
   const recent_activity = [...ledger].slice(-25).reverse().map((l) => ({ ts: l.ts, slug: l.slug, run_id: l.run_id, agent: l.agent, from: l.from_state, to: l.to_state, note: l.note }));
