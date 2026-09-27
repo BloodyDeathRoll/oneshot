@@ -161,3 +161,90 @@ Judgement on the hard-fail rule "a chart without labels": statement's two sparkl
 - Instrument: round 1 `dashboard/mockups/instrument/shots/round-1/desktop-sheet.png` → final `dashboard/mockups/instrument/shots/round-5/desktop-sheet.png` (Pipeline: `round-5/pipeline-1440.png`).
 - Soft cards: round 1 `dashboard/mockups/soft-cards/shots/round-1/desktop-sheet.png` → final `dashboard/mockups/soft-cards/shots/round-5/desktop-sheet.png` (Pipeline: `round-5/w1440-pipeline-sheet.png`).
 - Statement: round 1 `dashboard/mockups/statement/shots/round-1/desktop-sheet.png` → final `dashboard/mockups/statement/shots/round-6/desktop-sheet.png` (Pipeline: `round-6/pipeline/desktop-sheet.png`).
+
+---
+
+# Final build — Soft cards (BRIEF §9 final critic pass)
+
+Critic, 2026-09-27 evening. Under review: `dashboard/mockups/soft-cards/dist/index.html` + `dist/img/*.png` as committed in 6d69d18 (designer rounds 6–8, purple lead accent per the BRIEF amendment). Measured in headless Chromium at 1440×900 and 1024×768 on all five views; scripts and `final-audit.json` in the critic scratchpad. Screenshots: `dashboard/mockups/soft-cards/final-1440-{overview,pipeline,sites,agents,decisions}.png` (full page, 1440 wide).
+
+**Verdict: PASS — 86/100, no hard fail.** One condition before it is used as a tool: fix 1 below is a data-layer error that puts a number on the Agents page the ledger does not support.
+
+| Dimension (weight) | Score | One-line evidence |
+|---|---|---|
+| Data honesty (25) | 22 | every Overview, Pipeline, Sites and Decisions value traced to `data.json` and to raw ledger lines / CHANGELOG headings; the critic card's "Overrides 4" is the copyeditor's 4 overrides attached to the critic by `data.mjs` (ledger has 0 critic overrides) |
+| The four questions (25) | 23 | a 1 s, b 3 s (funnel now on the first screen), c 2 s + the Agents glance chart shows copyeditor 5 / 2 / 1 = 8 at once, d 2 s |
+| Craft against references (25) | 20 | Shopeers KPI anatomy landed (199 px cards); the purple made the accent card heavier and Decisions/Sites over-coloured; Sites thumbnails are contact sheets with a magenta grid |
+| Charts (15) | 13 | every chart labelled, hover + focus value on all five views; "max" highlight on an all-equal column chart; "pass" label hidden under the last dot |
+| Accessibility and speed (10) | 8 | 0 text pairs under AA on any view (lowest real 4.51); 107 283 B before data; 4.04 MB of site PNGs on Sites; Sites nav button drops focus after Enter |
+| **Total** | **86** | |
+
+Hard fails: none. Contrast ≥ 4.5:1 for all text on all five views at both widths (the only sub-AA element is the shared hollow "0" outline, `#C3ACF3` on white 2.0:1, a shape with the value in `aria-label`, as before). No invented number. No chart without labels. No chart library (2 `<script>` tags: data + page code; 0 external `src`/`href`).
+
+## Staleness of the embedded data
+
+The dist embeds `data.json` generated 13:13:29 UTC (byte-identical after normalisation). The ledger has since gained 5 lines (323–327: designer `mocked`, critic `critiqued`, human `picked`, human `proposal:approved`, designer `built`) and `proposals/dashboard-01/001-control-layer-gates.md`. No business line changed, so every KPI, funnel, Pipeline, Sites and Agents number is current. Stale: Recent activity (misses the 5 dashboard-01 lines), "322 ledger lines" (327), and "6 proposals to review" (7 files now, one of them approved). `data.mjs` does not yet read the new `proposal:approved` line shape (it marks every proposal "no merge record"), so a regeneration alone would show 7 unmerged — a one-clause addition in `readProposals()`. It does not affect the verdict.
+
+## The five B fixes — did they land?
+
+| Fix asked | Measured now |
+|---|---|
+| 1. Filter counts at 3.43:1 | `.pills button i{color:var(--ink2)}`: `#4B5563` on `#F5F7FB` = 7.05:1 (31 text nodes on Pipeline). Landed. |
+| 2. Funnel under the fold; KPI cards 307 px → ~180 | Funnel card top y = 544, header y = 572 (was 692); Researched → Pitched bars visible above y = 887 in a 900 px viewport. KPI cards 235×199 (row 1) and 235×225 (row 2), down from 307/265; the 376×448 Needs-you card sets the row, so 180 is not reached. Landed, short by ~20 px. |
+| 3. Empty cards with 4–5 lines of prose | Hollow 0 + one 13 px line ("fills on packaged → pitched") + the "3 ready to send →" pill; transition and earliest date in `title`. Landed. |
+| 4. Constant-35 "Researched" sparkline | Gone; the card shows "35 · ▲ +31 vs ahangama-01 (4)". The real `gates_open` series (3,1,1,0,0,0,3,3,3) is a 130×32 white sparkline in the accent card with 19 Sep / 27 Sep and the end value 3. Landed. |
+| 5. 120 ms tooltip fade; segment tips on keyboard | `.tip,.tipdot{opacity:0;pointer-events:none}` — no transition. Station bar: focus shows the current segment's own tip ("8 Deliver · reached 25 Sep · current · packaged"), ←/→/Home/End walk the nine with a polite live region; one tab stop per row (35 on the Pipeline, was 49 incl. controls). Landed. |
+
+## Data honesty — trace (final build)
+
+- **Overview**: identical numbers to the mockup pass (35 / 24 / 10 / 3 / 0 / 0 / 0; 3 live; 3 gates since 25 Sep · 2 days; 89.7 = (86 + 91.5 + 91.5)/3; +31 vs 4; sparklines `live_sites` and `gates_open` recomputed from the raw lines); "+3 vs ahangama-01" from `deltas.needs_you`; "Also 6 proposals to review" from `gates[3]` (stale, above).
+- **Pipeline**, 8 rows re-read: KA / Layday / Lavish "8 Deliver · since 25 Sep · send the pitch · You · 2 days" (lines 318–320); Bappa, Boardwalk, Good Story, Surf Front "2 Shortlist · last there 19 Sep · dropped · 7 days" with the last note verbatim (lines 121, 136, 114, 130); Dad And Sun "not approved · score <= presence_threshold 2 · 8 days" (line 39). Presence n/5 per row = the `scored` note.
+- **Sites**: KA 86 · PASS · verification · 23 Sep · 3 rounds, 3 verifications; chart R1 73 / R2 72 / R3 92 / V1 92 / V2 93 / V3 86 = critic lines 206, 218, 230, 238, 241, 315 (tooltip dates 22/22/22/22/23/23 Sep match). Layday 91.5 · round 1 · 23 Sep = line 293. Lavish 91.5 · round 2; R1 70 / R2 91.5 = lines 296, 310. "deployed 25 Sep · CMS verified" = `sites/<slug>/deploy.json` (last ok deploy 25 Sep 07:52–07:53, verify ok). Preview hosts `ka-surf-hostel`, `layday-surf`, `the-lavish-haven` and proposal hosts `*-proposal` = `deploy.json` / `pitch/wrangler.jsonc`. "Final vs picked: no sheet on disk for this site" for KA and desktop + mobile for the other two = `final/shots/final-vs-picked/` on disk. Critic report and the 3 pitch drafts per site = files on disk. Thumbnail caption "first sheet · round-1 / 4g-round-1" = `shots.first`.
+- **Agents** (`agents{}` vs my recompute from the raw ledger, all 13 agents): copyeditor 8 passes / 8 fails / 18 lines, fails KA 5 · Lavish 2 · Layday 1 (lines 180, 183, 210, 220, 223 / 252, 275 / 276), rounds per pass 1, 4, 3, 1, 2, 1, 3, 1 (passes at lines 143, 213, 226, 146, 286, 149, 284, 300), mean 2.0; critic 7 / 3 / 15, fails KA 2 · Lavish 1 (206, 218 / 296), rounds per pass 5, 1, 1, 1, 3, 1, 3, mean 2.1; scout 35 / 0 / 94, every pass 2 lines; designer 25 / 0 / 39 (one pass of 5); harvester 13 / 0 / 22 (one pass of 2); the 8 agents without a pass/fail state show their line counts (aiseo 6, copywriter 22, creative-director 6, deployer 11, humanizer 15, orchestrator 5, seo 8, writer 0) — all equal to the ledger. Version pills: `run.yaml` pin = highest `**x.y.z**` heading in each `agents/*/CHANGELOG.md` for all 13 (copyeditor 0.3.0, critic 0.3.2, designer 0.3.4, copywriter 0.3.1, creative-director 0.2.3, orchestrator 0.2.1, rest 0.2.0 / harvester 0.3.0); the CHANGELOG line shown is that heading's line. "11 fails across 2 agents" = 8 + 3.
+  - **The one wrong number:** both the copyeditor and the critic card show "Overrides 4" and list the same four lines (184, 254, 277, 278). All four are Shahar's answers to copyeditor (4c) fails; the ledger has no critic override (KA passed the critic in round 3 without one). `data.mjs` line 357 attaches every override line to both agents (`.filter(() => name === 'copyeditor' || name === 'critic')`). The page renders `data.json` faithfully, so this is a data-layer defect — but it is a false statement about the critic on screen.
+- **Decisions**: 46 items = 46 human business lines; "17 gates" = lines whose `from_state` is a gate state and changed; "4 overrides" = the four lines above. First 10 entries (newest first) = ledger lines 302, 303, 297, 277, 278, 279, 264, 263, 258, 254 — timestamps, transitions and notes verbatim; the gate tag text ("approve the shortlist", "pick a mockup") = `gate_states[from]`. Proposals card: 7 files, "6 without a merge record" (the `-APPLY.md` is an application record) = `proposals/` at 13:13.
+
+## The four questions — re-timed (1440×900, first screen)
+
+Eye lands on the purple Needs-you card (376×448 px at 1040,72), then the 64 px/300 "3" at 1068,160. a: ~1 s (three names, "send the pitch · since 25 Sep · 2 days", Open). b: ~3 s — the funnel header sits at y = 572 and five bars are on the first screen; "stuck" is still only the Pipeline's days column. c: ~2 s (gauge 89.7 · pass 80 at y ≈ 348); on Agents the glance chart answers "which agent keeps failing" in ~2 s: `copyeditor ▇5 ▇2 ▇1 = 8`, `critic ▇2 ▇1 = 3`, the legend line "copyeditor: KA 5 · Lavish Haven 2 · Layday 1" under it, then the copyeditor card with Fails 8 in red and the chips KA 5 / Lavish Haven 2 / Layday 1 — the brief's "visible at a glance" is met. d: ~2 s (three hollow zeros + "3 ready to send →").
+
+## Craft against references — what the purple did, and the new views
+
+- Purple `#6A2FE0` is darker than the blue it replaced (6.78:1 vs 5.99:1 on white), so the one filled card now reads as the heaviest object on the page; NexaFlow's filled card is a lighter violet. Acceptable at Overview scale (one card + badge + logo), but the accent multiplies on the new views: Decisions carries 26 purple "Show the full reason" buttons, 17 purple gate dots and ~20 purple tags in one 5 493 px column; Sites puts 13 blue links (`--blue` for links is the "touch of blue") next to purple pills, arcs and lines, so two accents compete on every card. Logip's feed uses one accent per row.
+- Overview: KPI cards 235×199 with 40 px/300 numerals, the sparkline beside the number (Shopeers' anatomy), one 13 px grey line — the row now matches Shopeers' proportion (card ≈ 137 px at 1440; ours 199). Funnel and activity cards align at 772 px.
+- Sites (Shopeers card + 23andMe hairline rows): 368×762 cards, 16 px image inset, 44 px score, verdict line, 312×110 score chart with a 60/80/100 axis, dashed pass line, filled round / hollow verification dots and R/V labels, then five 19 px key–value rows. Clean. The thumbnail is the 3×3 contact sheet on its magenta ground cropped 16:10 — nine tiny pages with pink rules instead of one screenshot; Shopeers' product image is one object.
+- Agents: Logip's three-stat row (Passes / Fails / Overrides / Ledger lines, 24 px/700, hairlines), Mondly's highlighted column with the black value tag and dashed mean, NexaFlow's stacked tint bar in the glance card. The 35- and 25-column charts (scout, designer) label only the range ("KA … Wak (35 passes)"). The eight agents with no pass/fail state get 270×250 cards of near-identical text; one table would carry them in 300 px.
+- Decisions: Logip's feed rhythm on a 2 px rail; 92–139 px per item, 46 items, three filter pills; the proposals card lists 7 files with kind and status. It is a 5 600 px page; the filters make it usable.
+- 1024: all five views 1024/1024, Agents overflow from round 7 gone; Sites 2-up, Agents 1-up with 2-up minis, Decisions single column with proposals first.
+
+## Charts — all five views
+
+| View | Chart | Labels | Hover / focus value | Notes |
+|---|---|---|---|---|
+| Overview | sparkline 150×36 (live sites), white sparkline 130×32 (gates open) | first/last day + end value | ✓ / ✓ (ring on `.hit`) | |
+| | gauge 156×88 | "pass 80" tick, 36 px numeral | ✓ / ✓ (per-site list) | |
+| | funnel 696×420 | name, count 18 px, drop, dashed zero stubs | ✓ / ✓ | "3 of 35 built (9 %)" + legend 9 / 12 / 11 |
+| Pipeline | 35 station bars 288×22 | "8 Deliver · since 25 Sep" under each; gate rings | per-segment tip on hover; focus = current segment, arrows walk | one tab stop per row |
+| Sites | 3 score charts 312×110 | 60 / 80 / 100, "pass", R1–R3 / V1–V3 | ✓ / ✓ ("round 1 · 73 · FAIL · 22 Sep") | "pass" label drawn before the dots: hidden under V3 (86) on KA and R2 (91.5) on Lavish |
+| Agents | fails chart 1096×240 | agent, value inside each segment, total, dashed empty pill | ✓ / ✓ ("KA · 5 fails · copyeditor") | business names only in the legend sentence and tips |
+| | 5 rounds-per-pass column charts 508×132 | y ticks, "mean 2.0", x labels (≤ 16 columns) or a range label | ✓ / ✓ ("KA · pass on 19 Sep · 1 rounds") | max column highlighted + black tag: on scout all 35 columns are 2, the first is tagged as if it were an outlier |
+| Decisions | none (timeline) | — | — | dots: purple = gate, red ring = override |
+
+Empty states: hollow 0 + one line (Pitched / Replies / Clients), dashed empty pills for agents with 0 fails, "No built site in this run" for ahangama-01, "No decision in this range".
+
+## Accessibility and speed — measured
+
+- Contrast (rendered, backgrounds resolved incl. SVG rects): no text under 4.5:1 on any view at 1440 or 1024. Lowest real pairs: `#6B7280` on `#F5F7FB` 4.51 (title sub-line, 13 px), green `#1A7F37` on `#EDF7F0` 4.63, `#6B7280` on white 4.83. Purple pairs: white on `#6A2FE0` 6.78; `#6A2FE0` on white 6.78; `#6A2FE0` on `#F3EEFD` 5.96; `#EDE6FB` on `#6A2FE0` 5.59 (dates in the accent card); ink on `#A682EC` 6.26 and on `#C3ACF3` 9.38 (values inside the fails-chart segments). Blue link 5.99. Hollow "0" outline 2.0:1 (shape, as before).
+- Keyboard: Overview 42 stops (skip link → 6 nav → 2 selects → 9 + 1 + 9 chart data → 4 Open → 7 funnel rows → Show all), every stop with a 2 px accent outline, the pill wrapper's `:focus-within` ring or the datum's `.hit` stroke; Pipeline 34 bars + controls; Sites 23; Agents 87 (each column of each chart is a stop: 35 for scout alone); Decisions 52 (26 "Show the full reason" toggles, 7 proposal links, filters). No stop without a ring. Enter on a sidebar button switches the view and keeps focus on the button for Overview, Needs you, Pipeline, Agents, Decisions; **for Sites the active element becomes `body`** (measured twice), so the next Tab restarts at the skip link. "3 ready to send →" lands on Pipeline with "Waiting on you 3" pressed and exactly the three rows. Decisions' toggle removes the 3-line clamp and sets `aria-expanded`.
+- Reduced motion: at 120 ms every numeral is final (3, 0, 0, 0, 35, 3, 86, 91.5, 91.5), 0 animations, 0 undrawn `.pre` elements; default motion counts up once (values 2 / 21 / 46 at 120 ms) and 0 animations run after 4 s.
+- Requests: 1 (the file) on Overview, Pipeline, Agents, Decisions; 4 on Sites — the file + `img/ka-surf-hostel-and-restaurant.png` 1 222 399 B, `img/layday-surf-ahangama.png` 1 015 210 B, `img/the-lavish-haven.png` 1 798 079 B = **4.04 MB** for three 336×210 px slots (1952×2048 sources, `loading="lazy"`, so nothing loads on the other views). 0 console errors on every view. Page 360 453 B, 107 283 B before data. One font (Manrope), 0 numeric nodes without tabular figures (63 / 182 / 45 / 129 / 113 per view), 0 uppercase labels.
+
+## Top fixes (none blocking the pick; 1 blocks use as a tool)
+
+1. **`data.mjs` line 357** — `third_fail_overrides` gives the critic the copyeditor's four override lines; match the override line's `from_state` to the agent's states (copy_failed → copyeditor, critiqued(n) → critic). The critic card then shows Overrides 0. While there: read the `proposal:approved|rejected` line shape in `readProposals()` so the proposals count and status stay honest after a regeneration.
+2. **Sites images**: 4.04 MB for three thumbnails; export each `desktop-00.png` (the first tile, not the contact sheet with its magenta grid) at ≤ 720 px wide as WebP/PNG (≈ 60 KB each), keep `width`/`height`.
+3. **Sites nav button** loses focus after Enter (active element = `body`); the other five keep it. Find what steals it in `go('sites')` and keep focus on the button.
+4. **Column charts**: highlight the max column only when it is unique (or > mean + 1); on scout all 35 columns are 2 and the first is tagged. Draw the score chart's "pass" label after the dots or left of the axis so V3 (KA) and R2 (Lavish) do not cover it.
+5. **Accent budget on the new views**: "Show the full reason" ×26 in ink or `--ink2` (purple only for the gate dots and tags); on Sites keep one blue link per card (Preview) and set the rest in ink with an underline; consider one table row per no-state agent instead of eight 250 px cards. Also: group each column chart's 25–35 datums behind one tab stop with ←/→ (the station-bar pattern) to bring the Agents walk from 87 stops to ~12.
+
+Round-1 and final sheets for this build: `dashboard/mockups/soft-cards/shots/round-1/desktop-sheet.png` → `shots/round-8/desktop-sheet.png` (Overview), plus `round-8/w1440-{pipeline,sites,agents,decisions}-sheet.png`.

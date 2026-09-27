@@ -28,6 +28,8 @@ img{display:block;max-width:100%}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .lnk{color:var(--blue);font-weight:600;text-decoration:none}
 .lnk:hover{text-decoration:underline}
+.lnk2{color:var(--ink2);font-weight:500;text-decoration:underline;text-underline-offset:3px}
+.lnk2:hover{color:var(--ink)}
 
 /* ---------- sidebar ---------- */
 .side{position:sticky;top:0;height:100vh;background:var(--card);box-shadow:var(--shadow);display:flex;flex-direction:column;padding:28px 20px 24px;z-index:2}
@@ -47,7 +49,7 @@ img{display:block;max-width:100%}
 /* ---------- main ---------- */
 main{min-width:0;padding:0 24px 48px}
 .top{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px;position:sticky;top:0;background:var(--ground);z-index:1}
-.top h1{font-size:28px;font-weight:700;letter-spacing:-.015em;line-height:1}
+.top h1{font-size:28px;font-weight:700;letter-spacing:-.015em;line-height:1;outline-offset:6px}
 .top .sub{font-size:13px;color:var(--ink3);margin-left:14px;font-weight:500}
 .controls{display:flex;gap:12px;align-items:center}
 .psel{position:relative;display:inline-flex;align-items:center;background:var(--card);border-radius:999px;box-shadow:var(--shadow);height:40px;padding:0 14px;gap:8px;font-size:14px;font-weight:500;color:var(--ink2)}
@@ -247,7 +249,8 @@ td.next .why{display:block;font-size:13px;color:var(--ink3);overflow:hidden;text
 .tl .h time{margin-left:auto}
 .tl .note{font-size:14px;color:var(--ink2);margin-top:6px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .tl li.open .note{display:block;-webkit-line-clamp:unset}
-.tl .more{margin-top:6px;border:0;background:none;color:var(--acc);font-weight:700;font-size:13px;padding:0;cursor:pointer}
+.tl .more{margin-top:6px;border:0;background:none;color:var(--ink2);font-weight:600;font-size:13px;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.tl .more:hover{color:var(--ink)}
 .props li{padding:12px 0;border-bottom:1px solid var(--rule);display:grid;gap:4px}
 .props li:last-child{border-bottom:0}
 .props .t{font-size:15px;font-weight:700;line-height:1.35}
@@ -256,7 +259,8 @@ td.next .why{display:block;font-size:13px;color:var(--ink3);overflow:hidden;text
 .props .m{font-size:13px;color:var(--ink3);font-weight:500;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .props .m .tag{border-radius:999px;padding:2px 8px;font-weight:700;background:var(--ground);color:var(--ink2)}
 .props .m .tag.c{background:var(--t5);color:var(--acc)}
-.props .m a{color:var(--blue);font-weight:600;text-decoration:none}
+.props .m a{color:var(--ink2);font-weight:500;text-decoration:underline;text-underline-offset:3px}
+.props .m .tag.ok{background:var(--green-bg);color:var(--green)}
 
 /* ---------- svg shared ---------- */
 .tip,.tipdot{opacity:0;pointer-events:none}
@@ -353,7 +357,7 @@ td.next .why{display:block;font-size:13px;color:var(--ink3);overflow:hidden;text
 
 <main id="main">
   <header class="top">
-    <div style="display:flex;align-items:baseline"><h1 id="title">Overview</h1><span class="sub" id="title-sub"></span></div>
+    <div style="display:flex;align-items:baseline"><h1 id="title" tabindex="-1">Overview</h1><span class="sub" id="title-sub"></span></div>
     <div class="controls">
       <label class="psel"><span class="sr">Run</span>
         <svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4h12M2 8h8M2 12h10"/></svg>
@@ -401,7 +405,7 @@ td.next .why{display:block;font-size:13px;color:var(--ink3);overflow:hidden;text
 
   <section class="view" id="view-sites" aria-label="Sites">
     <div class="sites-head" id="sites-head"></div>
-    <div class="sites-grid" id="sites"></div>
+    <div class="sites-grid" id="sites-grid"></div>
   </section>
 
   <section class="view" id="view-agents" aria-label="Agents">
@@ -538,6 +542,7 @@ function go(view,focus){
   if(view==='sites'&&focus)target=document.getElementById('site-'+focus);
   if(view==='decisions'&&focus==='proposals')target=$('#props');
   if(target){target.focus({preventScroll:false});target.scrollIntoView({block:'start',behavior:reduced?'auto':'smooth'});target.classList.add('flash');setTimeout(()=>target.classList.remove('flash'),2400)}
+  else if(!document.activeElement||!document.activeElement.closest('.nav')){$('#title').focus({preventScroll:true})}
 }
 
 /* ---------- charts ---------- */
@@ -601,7 +606,7 @@ function scoreChart(series,W,key){
   const svg=sv('svg',{width:W,height:H,role:'img','aria-label':`Critic score across ${n} scored lines: ${series.map(s=>`${s.kind==='round'?'round '+s.round:s.kind} ${fmt(s.score)} ${s.verdict}`).join(', ')}`});
   svg.append(sv('title',{text:'Critic score per round and verification'}));
   for(const t of [60,80,100]){svg.append(sv('line',{x1:padL,x2:W-padR,y1:y(t),y2:y(t),stroke:t===80?'var(--ink2)':'var(--rule)','stroke-dasharray':t===80?'4 4':null}));svg.append(sv('text',{x:padL-8,y:y(t)+4,'text-anchor':'end',class:'ax',text:String(t)}))}
-  svg.append(sv('text',{x:W-padR,y:y(80)-5,'text-anchor':'end',class:'ax ink',text:'pass'}));
+  svg.append(sv('text',{x:padL+2,y:y(80)-6,class:'ax ink',text:'pass'}));
   const pts=series.map((s,i)=>[x(i),y(s.score)]);
   if(n>1){
     const line=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
@@ -631,22 +636,37 @@ function columns(items,W,key,opts={}){
   const x=i=>padL+i*(cw+gap);
   const y=v=>top+(1-v/max)*(H-top-bottom);
   const mean=items.reduce((a,i)=>a+i.value,0)/n;
-  const maxI=items.findIndex(i=>i.value===max);
-  const svg=sv('svg',{width:W,height:H,role:'img','aria-label':`${opts.title||key}: ${items.map(i=>`${i.label} ${i.value}`).join(', ')}; mean ${mean.toFixed(1)}`});
+  const maxI=items.filter(i=>i.value===max).length===1?items.findIndex(i=>i.value===max):-1;
+  const svg=sv('svg',{width:W,height:H});
   svg.append(sv('title',{text:opts.title||key}));
   for(let t=0;t<=max;t+=Math.max(1,Math.ceil(max/4))){svg.append(sv('line',{x1:padL,x2:W,y1:y(t),y2:y(t),stroke:'var(--rule)'}));svg.append(sv('text',{x:padL-8,y:y(t)+4,'text-anchor':'end',class:'ax',text:String(t)}))}
   svg.append(sv('line',{x1:padL,x2:W,y1:y(mean),y2:y(mean),stroke:'var(--ink2)','stroke-dasharray':'4 4'}));
   svg.append(sv('text',{x:W,y:y(mean)-5,'text-anchor':'end',class:'ax ink',text:`mean ${mean.toFixed(1)}`}));
+  const g=sv('g',{class:'bar',tabindex:0,role:'img','aria-label':`${opts.title||key}: ${items.map(i=>`${i.label} ${i.value}`).join(', ')}; mean ${mean.toFixed(1)}. Arrow keys walk the passes.`});
+  g.append(sv('rect',{x:padL-4,y:top-10,width:W-padL+8,height:H-top+10-bottom+10,rx:8,fill:'transparent',class:'hit'}));
+  const segs=[];
   items.forEach((it,i)=>{
     const hi=i===maxI&&max>1;
-    const g=sv('g',{class:'datum',tabindex:0,role:'img','aria-label':`${it.title||it.label}: ${it.value}`});
-    g.append(sv('rect',{x:x(i)-gap/2,y:top-8,width:cw+gap,height:H-top+8-bottom+8,fill:'transparent',rx:6,class:'hit'}));
-    g.append(sv('rect',{x:x(i),y:y(it.value),width:cw,height:y(0)-y(it.value),rx:Math.min(6,cw/2),fill:hi?'var(--acc)':'var(--t4)',class:'grow up pre'}));
-    if(n<=16)g.append(sv('text',{x:x(i)+cw/2,y:H-6,'text-anchor':'middle',class:'ax',text:it.label}));
-    if(hi){const tg=sv('g',{});tg.append(sv('rect',{x:x(i)+cw/2-12,y:y(it.value)-26,width:24,height:20,rx:6,fill:'var(--ink)'}));tg.append(sv('text',{x:x(i)+cw/2,y:y(it.value)-12,'text-anchor':'middle',style:'fill:#fff;font-size:13px;font-weight:700',text:String(it.value)}));g.append(tg)}
-    g.append(tip('dark',x(i)+cw/2,y(it.value)-(hi?30:4),[[`${it.title||it.label} · ${it.value} ${opts.unit||''}`.trim()],...(it.sub?[[it.sub,'sec']]:[])]));
-    svg.append(g);
+    const seg=sv('g',{class:'seg'});
+    seg.append(sv('rect',{x:x(i)-gap/2,y:top-8,width:cw+gap,height:H-top+8-bottom+8,fill:'transparent'}));
+    seg.append(sv('rect',{x:x(i),y:y(it.value),width:cw,height:y(0)-y(it.value),rx:Math.min(6,cw/2),fill:hi?'var(--acc)':'var(--t4)',class:'grow up pre'}));
+    if(n<=16)seg.append(sv('text',{x:x(i)+cw/2,y:H-6,'text-anchor':'middle',class:'ax',text:it.label}));
+    if(hi){const tg=sv('g',{});tg.append(sv('rect',{x:x(i)+cw/2-12,y:y(it.value)-26,width:24,height:20,rx:6,fill:'var(--ink)'}));tg.append(sv('text',{x:x(i)+cw/2,y:y(it.value)-12,'text-anchor':'middle',style:'fill:#fff;font-size:13px;font-weight:700',text:String(it.value)}));seg.append(tg)}
+    const lines=[[`${it.title||it.label} · ${it.value} ${opts.unit||''}`.trim()],...(it.sub?[[it.sub,'sec']]:[])];
+    seg.append(tip('dark',x(i)+cw/2,y(it.value)-(hi?30:4),lines));
+    seg.dataset.text=lines.map(l=>l[0]).join(', ');
+    g.append(seg);segs.push(seg);
   });
+  let sel=-1;
+  const select=i=>{segs.forEach((s,j)=>s.classList.toggle('sel',j===i));sel=i;if(i>=0)live(`${opts.title||key}: ${segs[i].dataset.text}`)};
+  g.addEventListener('focus',()=>select(maxI>=0?maxI:0));
+  g.addEventListener('blur',()=>select(-1));
+  g.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();select(Math.min(n-1,sel+1))}
+    else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();select(Math.max(0,sel-1))}
+    else if(e.key==='Home'){e.preventDefault();select(0)}else if(e.key==='End'){e.preventDefault();select(n-1)}
+  });
+  svg.append(g);
   if(n>16)svg.append(sv('text',{x:padL,y:H-6,class:'ax',text:`${items[0].label} … ${items.at(-1).label} (${n} passes)`}));
   requestAnimationFrame(()=>{sizeTips(svg);drawIn(svg,'cols-'+key)});
   return svg;
@@ -905,7 +925,7 @@ function renderPipeline(){
 
 /* ---------- Sites ---------- */
 function renderSites(){
-  const box=$('#sites');box.innerHTML='';
+  const box=$('#sites-grid');box.innerHTML='';
   const sites=D.businesses.filter(b=>b.run_id===state.run&&['delivered','pitched','outcome'].includes(b.group));
   const head=$('#sites-head');head.innerHTML='';
   head.append(el('span',{},el('b',{text:`${sites.length} built site${sites.length===1?'':'s'}`}),` · ${runShort(state.run)}`,sites.length?` · ${sites.filter(s=>s.gate).length} waiting for you to send the pitch`:''));
@@ -915,8 +935,8 @@ function renderSites(){
   for(const b of sites){
     const c=el('article',{class:'card site',id:'site-'+b.slug,tabindex:'-1','aria-label':b.name});
     const shot=el('a',{class:'shot',href:b.preview_url||'#',target:'_blank',rel:'noopener','aria-label':`Open the live preview of ${b.name}`});
-    if(b.shots&&b.shots.first){shot.append(el('img',{src:`img/${b.slug}.png`,width:'1952',height:'2048',loading:'lazy',alt:`First desktop contact sheet of ${b.name} (${b.shots.first.split('/shots/')[1].split('/')[0]})`}))}
-    shot.append(el('span',{text:b.shots&&b.shots.first?`first sheet · ${b.shots.first.split('/shots/')[1].split('/')[0]}`:'no screenshot on disk'}));
+    if(b.shots&&b.shots.first){shot.append(el('img',{src:`img/${b.slug}.jpg`,width:'672',height:'420',loading:'lazy',alt:`First desktop screen of ${b.name} (${b.shots.first.split('/shots/')[1].split('/')[0]})`}))}
+    shot.append(el('span',{text:b.shots&&b.shots.first?`first screen · ${b.shots.first.split('/shots/')[1].split('/')[0]}`:'no screenshot on disk'}));
     c.append(shot);
     const body=el('div',{class:'body'});
     body.append(el('div',{class:'site-h'},el('h2',{text:b.name})));
@@ -931,11 +951,11 @@ function renderSites(){
     const links=el('ul',{class:'links'});
     const row=(k,...items)=>{const li=el('li');li.append(el('span',{class:'k',text:k}));for(const it of items)li.append(it);links.append(li)};
     row('Preview',b.preview_url?el('a',{class:'lnk',href:b.preview_url,target:'_blank',rel:'noopener',text:b.preview_url.replace('https://','').replace('.os1.workers.dev',' ↗'),title:b.preview_url}):el('span',{class:'na',text:'none yet'}));
-    row('Proposal',b.pitch?.proposal_url?el('a',{class:'lnk',href:b.pitch.proposal_url,target:'_blank',rel:'noopener',text:b.pitch.proposal_url.replace('https://','').replace('.os1.workers.dev',' ↗'),title:b.pitch.proposal_url}):el('span',{class:'na',text:'none yet'}));
+    row('Proposal',b.pitch?.proposal_url?el('a',{class:'lnk2',href:b.pitch.proposal_url,target:'_blank',rel:'noopener',text:b.pitch.proposal_url.replace('https://','').replace('.os1.workers.dev',' ↗'),title:b.pitch.proposal_url}):el('span',{class:'na',text:'none yet'}));
     const fvp=b.shots?.final_vs_picked||[];
-    row('Final vs picked',...(fvp.length?fvp.flatMap((p,i)=>[el('a',{class:'lnk',href:REPO+p,text:/mobile/.test(p)?'mobile sheet':'desktop sheet'}),i<fvp.length-1?' · ':'']):[el('span',{class:'na',text:'no sheet on disk for this site'})]));
+    row('Final vs picked',...(fvp.length?fvp.flatMap((p,i)=>[el('a',{class:'lnk2',href:REPO+p,text:/mobile/.test(p)?'mobile sheet':'desktop sheet'}),i<fvp.length-1?' · ':'']):[el('span',{class:'na',text:'no sheet on disk for this site'})]));
     const rep=b.shots?.critic_report||[];
-    row('Critic report',...(rep.length?rep.map(p=>el('a',{class:'lnk',href:REPO+p,text:p.split('/').pop()})):[el('span',{class:'na',text:'none'})]));
+    row('Critic report',...(rep.length?rep.map(p=>el('a',{class:'lnk2',href:REPO+p,text:p.split('/').pop()})):[el('span',{class:'na',text:'none'})]));
     row('Pitch drafts',el('span',{text:b.pitch?.drafts?.length?b.pitch.drafts.join(' · '):'none'}));
     body.append(links);c.append(body);box.append(c);
     countUp(num,b.critic_score,'site-'+b.slug);
@@ -1029,13 +1049,13 @@ function renderDecisions(){
   }
   const pl=$('#props-list');pl.innerHTML='';
   const props=D.proposals;
-  $('#props-meta').textContent=`${props.filter(p=>p.status).length} without a merge record`;
+  $('#props-meta').textContent=`${props.filter(p=>/no merge record/.test(p.status||'')).length} without a merge record · ${props.filter(p=>/approved|rejected/.test(p.status||'')).length} decided`;
   for(const p of props){
     const li=el('li');
     li.append(el('div',{class:'t'},el('a',{href:REPO+p.file,text:p.title})));
     const m=el('div',{class:'m'});
     m.append(el('span',{text:runShort(p.run_id)}),el('span',{class:'tag'+(p.custom_md?' c':''),text:p.custom_md?'custom.md proposal':p.kind}));
-    if(p.status)m.append(el('span',{class:'tag',text:p.status}));
+    if(p.status)m.append(el('span',{class:'tag'+(/approved/.test(p.status)?' ok':''),text:p.status}));
     m.append(el('a',{href:REPO+p.file,text:p.file.split('/').pop()}));
     li.append(m);pl.append(li);
   }

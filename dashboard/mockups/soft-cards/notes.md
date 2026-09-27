@@ -256,3 +256,34 @@ keys, run-01 overview, "ready to send" landing, reduced motion.
   Tab per segment — the critic's own recommendation for Instrument, applied here.
 - `tools/shoot.mjs` still has no width or hash flag; the 1024 and the four non-Overview sheets per
   round come from the scratch shooter (same Chromium flags, 0.9 viewport steps, 700 ms settle).
+
+## Round 9 — after the final critic pass (PASS 86/100; `shots/round-9`)
+
+Data: rebuilt from `data.json` generated 18:41 UTC (327 ledger lines; the critic card now shows
+Overrides 0, the copyeditor 4; proposals carry `status` — 8 files, "6 without a merge record · 1
+decided", `001-control-layer-gates.md` tagged **approved** in green).
+
+Changed, against the critic's five and the coordinator's list:
+1. Sites thumbnails: `build.mjs` renders each site's first tile (`desktop-00.png` beside
+   `shots.first`; the sheet only if the tile is missing) through Playwright at 672×420 (2× the
+   336×210 slot, cover, top) as JPEG q82 → 31 + 22 + 33 = **87 KB** for the three (was 4.04 MB of
+   contact sheets). The card now shows one first screen, not nine tiles on a magenta grid.
+2. Sites nav button lost focus after Enter because `go()` sets `location.hash = 'sites'` and the
+   cards grid had `id="sites"` — the fragment navigation moved focus. Grid renamed `sites-grid`;
+   Enter on every nav button now keeps focus on the button. The view heading (`h1`, tabindex −1)
+   receives focus only when a hash change or deep link switches the view with nothing else to focus.
+3. Column charts highlight the max column only when it is unique (scout's 35 equal columns: no
+   tag); the score chart's "pass" label sits left, above the dashed line, clear of the dots.
+4. Accent budget: Decisions' 26 "Show the full reason" toggles and the proposal file links are
+   ink-2 with an underline; on Sites only the Preview link is blue, Proposal / sheets / report are
+   ink-2 underlined. Purple on Decisions is now the 17 gate dots and tags only.
+5. Each rounds-per-pass chart is one tab stop (`.bar`) with ←/→/Home/End walking the columns, the
+   same live region as the station bars: Agents 87 → **13** stops.
+
+Measured (final build): scrollWidth = innerWidth on all five views at 1440 and 1024; console
+errors 0 everywhere; requests 1 on Overview / Pipeline / Agents / Decisions, 4 on Sites (file + 3
+JPEGs), 0 beyond those; 355.7 KB total, **106.5 KB before data**, `dist/img` 87 KB; keyboard walk
+39 / 45 / 29 / 13 / 47 stops, all ringed; Enter on each nav button → focus stays on the button (all
+five); column chart focus + ArrowRight → "KA · pass on 22 Sep · 3 rounds" with the live region;
+station bar unchanged; reduced motion final at 120 ms, 0 animations. Contrast table unchanged
+(lowest text pair 4.51:1). The `final-1440-*.png` files in this folder are the critic's, not mine.
