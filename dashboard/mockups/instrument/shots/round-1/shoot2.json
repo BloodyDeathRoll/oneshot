@@ -1,0 +1,78 @@
+{
+  "overview-1440": {
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 900,
+    "mainScroll": {
+      "sh": 1696,
+      "ch": 856
+    },
+    "focusable": 28,
+    "svgs": 8,
+    "svgsNoTitle": 3,
+    "fonts": [
+      "IBM Plex Sans 100 700"
+    ],
+    "maxFont": 28,
+    "errors": [],
+    "requests": [],
+    "extraCaptures": 1
+  },
+  "pipeline-1440": {
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 900,
+    "mainScroll": {
+      "sh": 1696,
+      "ch": 856
+    },
+    "focusable": 315,
+    "svgs": 36,
+    "svgsNoTitle": 0,
+    "fonts": [
+      "IBM Plex Sans 100 700"
+    ],
+    "maxFont": 28,
+    "errors": [],
+    "requests": [],
+    "extraCaptures": 1
+  },
+  "overview-1024": {
+    "scrollWidth": 1024,
+    "innerWidth": 1024,
+    "scrollHeight": 768,
+    "mainScroll": {
+      "sh": 2309,
+      "ch": 724
+    },
+    "focusable": 28,
+    "svgs": 8,
+    "svgsNoTitle": 3,
+    "fonts": [
+      "IBM Plex Sans 100 700"
+    ],
+    "maxFont": 28,
+    "errors": [],
+    "requests": [],
+    "extraCaptures": 3
+  },
+  "pipeline-1024": {
+    "scrollWidth": 1024,
+    "innerWidth": 1024,
+    "scrollHeight": 768,
+    "mainScroll": {
+      "sh": 1227,
+      "ch": 724
+    },
+    "focusable": 315,
+    "svgs": 36,
+    "svgsNoTitle": 0,
+    "fonts": [
+      "IBM Plex Sans 100 700"
+    ],
+    "maxFont": 28,
+    "errors": [],
+    "requests": [],
+    "extraCaptures": 1
+  }
+}
