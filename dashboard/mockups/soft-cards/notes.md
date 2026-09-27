@@ -154,3 +154,105 @@ motion renders final values at 300 ms. Owner chip gap at 1024 fixed last (10 px)
   age; `data.mjs` could take the newest proposal file's mtime.
 - Dropped rows keep `station: 2` (their last state is `shortlisted`) although `station_dates`
   shows some reached station 3; the bar follows `station`, the per-segment tooltip shows the dates.
+
+---
+
+# Build after the pick (Shahar picked B, 2026-09-27; BRIEF Amendments)
+
+Lead accent **#6A2FE0** (saturated pure purple): 6.78:1 on white and white on it; tints for series
+and states #8859E6 / #A682EC / #C3ACF3 / #E1D5F9 / #F3EEFD; secondary text on the accent card
+#EDE6FB (5.59:1). Blue #1F4BFF survives only as the link colour (preview / proposal / file links,
+5.99:1 on white). Green / red unchanged, deltas and status only. Ground stays #F5F7FB (a
+purple-tinted #F5F6FB was tried in round 8 and dropped: #6B7280 on it measured 4.48:1).
+
+`build.mjs` now also copies each built site's `shots.first` sheet, byte for byte, to
+`dist/img/<slug>.png` (1.0–1.8 MB each, 1952 px wide; no resizer is installed in the repo) — the
+page lazy-loads them on the Sites view only. Nothing is embedded as base64 except the font.
+
+## Round 6 — recolour + critic's top 5 + Sites / Agents / Decisions first build (`shots/round-6`)
+
+Critic fixes for B (dashboard/critique-mockups.md): filter counts no longer `opacity:.7` (now
+`#4B5563`, 7.0:1 on the ground); KPI cards recomposed to Shopeers' anatomy (label · numeral 40/300
+with the sparkline beside it · one delta line) and no min-height; empty cards are the hollow 0 plus
+one grey line ("fills on packaged → pitched", transition and earliest date in `title`) and, on
+Pitched, the "3 ready to send →" action; the Researched constant-35 sparkline is gone (delta pill
+alone); the real per-day series `gates_open` moved into the accent card as a white sparkline;
+tooltips instant (no transition); station bars: focus selects the current segment's own tooltip,
+←/→/Home/End walk the nine segments, a polite live region reads each one (one tab stop per row).
+
+Look, against the references:
+- Overview: funnel now begins at y ≈ 620 (first screen at 1440×900) but the KPI cards are still
+  ~236 px tall — the four-row Needs-you card sets the grid row.
+- Sites (Shopeers card + 23andMe hairline rows): the proposal URL wraps onto its own line, "Layday
+  Surf Ahang…" truncates against its pill; otherwise the 44 px score, PASS/FAIL verdict, score line
+  (R1–R3 filled, V1–V3 hollow, dashed pass line at 80) and link rows read as intended.
+- Agents (Logip three-stat row, Mondly highlighted column + dashed mean, NexaFlow stacked tint
+  bar): the override list's `white-space:nowrap` span widened the page to 4066 px at 1440; changelog
+  lines showed raw backticks; column labels "K / L" could not tell Layday from Lavish.
+- Decisions (Logip feed rhythm on a rail): the filter pills wrapped under a two-line summary.
+
+## Round 7 — all five (`shots/round-7`)
+
+Changed: `.ovl li span{min-width:0}` (overflow gone at 1440); backticks stripped; labels "KA / Lay /
+Lav"; Needs-you rows 56 px and the proposals gate folded into a footer line with its own Open, so
+the card is ~490 px and the KPI cards ~220; site names may wrap and the link text is the host
+without `.os1.workers.dev`; decisions summary on one line. Remaining: Agents overflows only at
+1024 (glance chart measured its width while hidden and fell back to 1096 px); the numeral in
+"Live sites" hangs at the bottom of its row while the sparkline sits high; Layday's wrapped name
+pushes its score and chart ~24 px lower than the other two cards.
+
+## Round 8 — final, all five (`shots/round-8`)
+
+Changed: glance-chart width from the viewport when compact; "no gate open to …" moved to the
+sub-line's `title` (card ~440 px, KPI cards ~200 px, funnel header + four bars on the first
+screen); `kpi-row` centred; the state pill moved under the site name so all three cards align;
+`gate` filter maps to the `delivered` group so "3 ready to send →" lands on exactly the three rows;
+a `hashchange` listener so `#sites/<slug>`, `#decisions/proposals` etc. work after load as well as
+on load; ground back to #F5F7FB. Evidence in `shots/round-8/ix-*.png`: funnel hover, sparkline focus
+("21 Sep · 0" with ring), gauge focus, one station tooltip per hovered segment, bar focus + arrow
+keys, run-01 overview, "ready to send" landing, reduced motion.
+
+## Final measurements (`measure.mjs`, scratch)
+
+- scrollWidth = innerWidth on all five views at 1440 (1440/1440) and 1024 (1024/1024).
+- Console errors 0 on every view at both widths; requests: 1 (the file) on Overview, Pipeline,
+  Agents, Decisions; 4 on Sites (the file + the 3 site PNGs from `dist/img/`); 0 beyond those.
+- Size: 352.0 KB total, data 246.9 KB, **105.1 KB before data**.
+- Charts: Overview 4 (2 sparklines, gauge, funnel), Pipeline 35 station bars, Sites 3 score
+  lines, Agents 6 (fails chart + 5 rounds-per-pass columns), Decisions 0 (a timeline, no chart).
+  Every chart has a `<title>`, visible text labels, at least one focusable datum and a tooltip
+  shown on `:hover` and `:focus`; 0 charts fail any of those checks.
+- Keyboard walk at 1440, Tab from the sidebar through each view: Overview 39 stops, Pipeline 45,
+  Sites 25, Agents 96, Decisions 45 — every stop shows a ring (2 px accent outline, the pill
+  wrapper's `:focus-within` ring, or the datum's `.hit` stroke). Station bar: focus → "8 Deliver",
+  ArrowLeft → "7 Critique" tooltip at opacity 1, live region "KA Surf Hostel: 7 Critique, reached
+  22 Sep".
+- Reduced motion: at 120 ms every numeral is final (3, 0, 0, 0, 35, 3, 86, 91.5, 91.5), 0 running
+  animations, 0 undrawn elements.
+- Contrast (computed): ink on ground 17.35, on card 18.72; #4B5563 on card 7.56, on ground 7.00;
+  #6B7280 on card 4.83, on ground 4.51; accent on white 6.78; white on accent 6.78; #EDE6FB on
+  accent 5.59; accent on #F3EEFD 5.96; blue link on white 5.99; green on white 5.08, on #EDF7F0
+  4.63; red on white 6.16, on #FCEBED 5.36; tooltip text 18.72, tooltip secondary #C3ACF3 on ink
+  9.38. The hollow "0" stroke (#C3ACF3, 2.0:1) is a shape; the card's `aria-label` carries the value.
+- Text under 13 px: the 1024 rail labels and badge (11 px, concepts §B); nothing else.
+- Tabular figures verified (equal widths for 1111 / 0000); Manrope reported loaded.
+
+## Deviations from the coordinator's brief / concepts, and why
+
+- KPI numerals 40 px (concepts said 44) so the cards could drop to ~200 px; the critic's "near
+  180" is not reached because the Needs-you card (three gate rows + the proposals footer) still sets
+  the row height at 1440.
+- Agents: the eight agents with no pass/fail state in the ledger (aiseo, copywriter,
+  creative-director, deployer, humanizer, orchestrator, seo, writer) get compact cards (version pill,
+  ledger-line count, last changelog line) without a bar chart — there is nothing to chart.
+- Sites screenshots are the contact sheets on disk (magenta sheet ground with 3×3 tiles), cropped
+  16:10 from the top; KA has no `final_vs_picked` sheet on disk and the card says so.
+- Decisions: 46 lines is the whole set; notes longer than 220 characters clamp to three lines with
+  a "Show the full reason" toggle so the timeline stays scannable.
+
+## Open / not blocking
+
+- The station-bar segments are reachable by arrow keys from the bar (one tab stop per row), not by
+  Tab per segment — the critic's own recommendation for Instrument, applied here.
+- `tools/shoot.mjs` still has no width or hash flag; the 1024 and the four non-Overview sheets per
+  round come from the scratch shooter (same Chromium flags, 0.9 viewport steps, 700 ms settle).
