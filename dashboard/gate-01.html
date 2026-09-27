@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard pick</title>
+<meta name="description" content="Gate dashboard-01: pick one of three dashboard directions — instrument, soft cards, statement — with the critic's scores and the round-1 vs final sheets.">
+<style>
+  :root { --bg: #F5F7FB; --card: #fff; --ink: #111417; --grey: #4B5563; --rule: #D5DAE0; --accent: #1F4BFF; --tint: #EEF1FF; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #0F1217; --card: #171B22; --ink: #EEF1F5; --grey: #A3ACB8; --rule: #2A313B; --tint: #1B2340; } }
+  :root[data-theme="dark"] { --bg: #0F1217; --card: #171B22; --ink: #EEF1F5; --grey: #A3ACB8; --rule: #2A313B; --tint: #1B2340; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 1200px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 28px; margin: 0 0 4px; }
+  h2 { font-size: 20px; margin: 40px 0 12px; }
+  h3 { font-size: 16px; margin: 20px 0 8px; }
+  p.lead { color: var(--grey); margin: 0 0 24px; }
+  .card { background: var(--card); border-radius: 12px; padding: 16px; }
+  .sheet { display: block; width: 100%; height: auto; border-radius: 8px; background: #fff; }
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 15px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { color: var(--grey); font-weight: 500; }
+  td.n { text-align: right; }
+  .best { color: var(--accent); font-weight: 600; }
+  a { color: var(--accent); }
+  .open { display: inline-block; margin: 8px 12px 0 0; padding: 10px 14px; border-radius: 999px; background: var(--accent); color: #fff; text-decoration: none; font-weight: 500; }
+  .open.ghost { background: var(--tint); color: var(--accent); }
+  ol { padding-left: 20px; } li { margin: 6px 0; }
+  .fail { color: #B42318; }
+  small { color: var(--grey); }
+  .pair { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+  @media (max-width: 720px) { .pair { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Dashboard — pick a direction</h1>
+  <p class="lead">Gate for run <code>dashboard-01</code>. Three mockups of the Overview + Pipeline, built from the real ledger, scored by the critic (BRIEF §8). Open each mockup on a laptop for the full 1440 px experience; the sheets below work on a phone.</p>
+
+  <section class="card">
+    <h3 style="margin-top:0">Open the mockups</h3>
+    <a class="open" href="mockups/instrument.html">A · Instrument</a>
+    <a class="open" href="mockups/soft-cards.html">B · Soft cards</a>
+    <a class="open" href="mockups/statement.html">C · Statement</a>
+    <p><small>Each is one self-contained file: data embedded, font embedded, no network. Pipeline is the second tab in each.</small></p>
+  </section>
+
+  <h2>The three Overviews at 1440, side by side</h2>
+  <div class="card"><a href="mockups/overviews-1440.png"><img class="sheet" src="mockups/overviews-1440.png" alt="Instrument, Soft cards and Statement Overviews at 1440 px, full page, side by side"></a><small>Tap to open full size (4480 px wide).</small></div>
+
+  <h2>Critic scores (BRIEF §8)</h2>
+  <div class="card">
+  <table>
+    <thead><tr><th>Dimension (weight)</th><th class="n">A Instrument</th><th class="n">B Soft cards</th><th class="n">C Statement</th></tr></thead>
+    <tbody>
+      <tr><td>Data honesty (25)</td><td class="n">25</td><td class="n">24</td><td class="n">25</td></tr>
+      <tr><td>The four questions (25)</td><td class="n">19</td><td class="n">18</td><td class="n">21</td></tr>
+      <tr><td>Craft against references (25)</td><td class="n">19</td><td class="n">18</td><td class="n">20</td></tr>
+      <tr><td>Charts (15)</td><td class="n">13</td><td class="n">12</td><td class="n">10</td></tr>
+      <tr><td>Accessibility and speed (10)</td><td class="n">5</td><td class="n">7</td><td class="n">7</td></tr>
+      <tr><td><strong>Total</strong></td><td class="n"><strong>81</strong></td><td class="n"><strong>79</strong></td><td class="n best">83</td></tr>
+      <tr><td>Hard fail</td><td class="fail">AA contrast: grey on ground 4.43:1 (27 elements)</td><td class="fail">AA contrast: filter counts 3.43:1 (Pipeline only)</td><td class="fail">AA contrast: one pill 4.30:1</td></tr>
+      <tr><td>Invented numbers · unlabelled chart · chart library</td><td>none · none · none</td><td>none · none · none</td><td>none · 3 micro-charts name-only (deducted) · none</td></tr>
+    </tbody>
+  </table>
+  <p><small>Every hard fail is a one-token CSS fix and does not change the ranking. Shared and not counted: the hollow "0" empty-state numeral (1.82:1) that the concept prescribed for all three.</small></p>
+  </div>
+
+  <h2>The four questions — where the eye lands, time to each answer</h2>
+  <div class="card">
+  <table>
+    <thead><tr><th></th><th>A Instrument</th><th>B Soft cards</th><th>C Statement</th></tr></thead>
+    <tbody>
+      <tr><td>Eye lands first on</td><td>the blue funnel bars; "Needs you" is one of four equal panels (28 px "3")</td><td>the filled accent card (376×596 px), then the 64 px "3"</td><td>the 120 px "3", then the accent block with the sentence</td></tr>
+      <tr><td>a. What needs me?</td><td>~3 s</td><td>~1 s</td><td>~1 s</td></tr>
+      <tr><td>b. Where is everything, what is stuck?</td><td>~2 s (funnel on first screen)</td><td>&gt; 5 s (funnel under the fold, y = 692)</td><td>~4 s</td></tr>
+      <tr><td>c. How good is the output?</td><td>~3 s</td><td>~3 s</td><td>~3 s</td></tr>
+      <tr><td>d. Money?</td><td>~3 s</td><td>~2 s</td><td>~2 s</td></tr>
+    </tbody>
+  </table>
+  <p><small>Instrument is the only one that answers all four without scrolling; Soft cards puts b under the fold; Statement follows the brief's order a → d → b → c. None shows "stuck" per business on the Overview — all rely on the Pipeline.</small></p>
+  </div>
+
+  <h2>Round 1 vs final</h2>
+  <div class="grid">
+    <div class="card"><h3 style="margin-top:0">A · Instrument <small>(5 rounds)</small></h3><div class="pair"><a href="mockups/instrument-r1.png"><img class="sheet" src="mockups/instrument-r1.png" alt="Instrument round 1 desktop sheet"></a><a href="mockups/instrument-final.png"><img class="sheet" src="mockups/instrument-final.png" alt="Instrument round 5 desktop sheet"></a></div></div>
+    <div class="card"><h3 style="margin-top:0">B · Soft cards <small>(5 rounds)</small></h3><div class="pair"><a href="mockups/soft-cards-r1.png"><img class="sheet" src="mockups/soft-cards-r1.png" alt="Soft cards round 1 desktop sheet"></a><a href="mockups/soft-cards-final.png"><img class="sheet" src="mockups/soft-cards-final.png" alt="Soft cards round 5 desktop sheet"></a></div></div>
+    <div class="card"><h3 style="margin-top:0">C · Statement <small>(6 rounds)</small></h3><div class="pair"><a href="mockups/statement-r1.png"><img class="sheet" src="mockups/statement-r1.png" alt="Statement round 1 desktop sheet"></a><a href="mockups/statement-final.png"><img class="sheet" src="mockups/statement-final.png" alt="Statement round 6 desktop sheet"></a></div></div>
+  </div>
+
+  <h2>Top 5 fixes per variant (critic)</h2>
+  <div class="grid">
+    <div class="card"><h3 style="margin-top:0">A · Instrument</h3><ol>
+      <li>Contrast: nav and grey pills use #6B7280 on the #F3F5F9 ground (4.43:1) — use #4B5563 or a white pill.</li>
+      <li>Rank question a first: the Needs-you panel has no more weight than the funnel — give it the one saturated treatment or move it left.</li>
+      <li>Empty KPI cells: one line each, or merge Pitched · Replies · Clients while all are 0.</li>
+      <li>Barcode sparklines: print first/last day and the current value.</li>
+      <li>Needs-you rows: one accent affordance per row; 315 Pipeline tab stops → one per bar with ←/→.</li>
+    </ol></div>
+    <div class="card"><h3 style="margin-top:0">B · Soft cards</h3><ol>
+      <li>Contrast: filter counts at 3.43:1 on the Pipeline — drop the opacity.</li>
+      <li>Question b under the fold: KPI cards 307 px tall for one 44 px number; cap near 180 px so the funnel rises ~250 px.</li>
+      <li>Empty cards carry 4–5 lines of grey prose; keep one line + "3 ready to send →".</li>
+      <li>"Researched" sparkline plots a constant 35; use the delta alone or a real series.</li>
+      <li>Tooltip fade → instant; station tooltips on keyboard focus too.</li>
+    </ol></div>
+    <div class="card"><h3 style="margin-top:0">C · Statement</h3><ol>
+      <li>Contrast: "review prompt diffs" pill at 4.30:1 — #4B5563 or a white pill.</li>
+      <li>Label the micro-charts: dates and end values on the sparklines; replace the segment bar with three dots on a 0–100 track with the 80 line.</li>
+      <li>Funnel: carry the count into the tag or highlight the column needing action (pitched 0).</li>
+      <li>Keyboard: rows are tab stops with only a 3 px inset bar — add the 2 px accent outline.</li>
+      <li>First screen: tighter band and KPI padding brings the funnel base above 900 px; drop or enlarge the 12 px meta line.</li>
+    </ol></div>
+  </div>
+
+  <h2>What happens after the pick</h2>
+  <p>Say the letter and a reason. The reason is logged as the pick line in the ledger; then the remaining views (Sites, Agents, Decisions) are built in the picked direction, with the same look loop, the critic's top 5 fixes applied first, and a final critic pass. Full evidence: <code>dashboard/critique-mockups.md</code>, per-variant <code>notes.md</code> look-logs, <code>dashboard/concepts.md</code>.</p>
+</main>
+</body>
+</html>
