@@ -1,0 +1,413 @@
+#!/usr/bin/env node
+// dashboard/data.mjs — the one data layer for the OneShot dashboard (BRIEF.md §2).
+//
+// Reads the disk and emits dashboard/data.json. Never invents a number: every field is derived
+// from a file named in dashboard/DATA.md, and where the ledger has no data yet the field is null
+// and `empty_states` says which transition will fill it. tools/dashboard.mjs imports buildData()
+// to render the earlier register page; the mockups read data.json directly.
+//
+//   node dashboard/data.mjs          # writes dashboard/data.json
+//   import { buildData } from './data.mjs'
+
+import { readFileSync, existsSync, writeFileSync, mkdirSync, readdirSync, statSync } from 'node:fs';
+import { join, dirname, relative } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+const OUT = join(ROOT, 'dashboard');
+
+// ---- pipeline (PLAN.md §4 / docs/ledger.md) ----------------------------------------------------
+export const ORDER = [
+  'discovered', 'scored', 'shortlisted', 'approved', 'harvested',
+  'copy_drafted', 'copy_humanised', 'copy_failed', 'copy_passed',
+  'concepted', 'mocked', 'picked', 'built', 'optimised', 'ai_optimised',
+  'critiqued', 'failed', 'passed', 'packaged', 'pitched', 'outcome',
+  'handoff_verified', 'access_revoked',
+];
+export const GATES = { shortlisted: 'approve the shortlist', mocked: 'pick a mockup', packaged: 'send the pitch' };
+const HUMAN = 'Shahar';
+
+// Nine station segments for the Pipeline bar (concepts.md: PLAN's 1–7 + 4a–4i collapsed to nine).
+export const STATIONS = [
+  { n: 1, name: 'Scout', states: ['discovered', 'scored'] },
+  { n: 2, name: 'Shortlist', states: ['shortlisted', 'approved'], gate: 'approve the shortlist' },
+  { n: 3, name: 'Harvest', states: ['harvested'] },
+  { n: 4, name: 'Copy', states: ['copy_drafted', 'copy_humanised', 'copy_failed', 'copy_passed'] },
+  { n: 5, name: 'Concept + mockups', states: ['concepted', 'mocked', 'picked'], gate: 'pick a mockup' },
+  { n: 6, name: 'Build + SEO', states: ['built', 'optimised', 'ai_optimised'] },
+  { n: 7, name: 'Critique', states: ['critiqued', 'failed', 'passed'] },
+  { n: 8, name: 'Deliver', states: ['packaged', 'handoff_verified', 'access_revoked'] },
+  { n: 9, name: 'Pitch', states: ['pitched', 'outcome'], gate: 'send the pitch' },
+];
+
+// Next step per state (concepts.md, creative director) with its owner.
+export const NEXT_STEP = {
+  discovered: ['score', 'scout'], scored: ['shortlist', 'scout'],
+  shortlisted: ['approve the shortlist', HUMAN], approved: ['harvest', 'harvester'],
+  harvested: ['draft copy', 'copywriter'], copy_drafted: ['humanise copy', 'humanizer'],
+  copy_humanised: ['review copy', 'copyeditor'], copy_failed: ['redraft copy', 'copywriter'],
+  copy_passed: ['write concepts', 'creative-director'], concepted: ['build mockups', 'designer'],
+  mocked: ['pick a mockup', HUMAN], picked: ['build the site', 'designer'],
+  built: ['SEO', 'seo'], optimised: ['AI SEO', 'aiseo'], ai_optimised: ['critic review', 'critic'],
+  critiqued: ['fix and rebuild', 'designer'], failed: ['fix and rebuild', 'designer'],
+  passed: ['package', 'deployer'], packaged: ['send the pitch', HUMAN],
+  pitched: ['log the outcome', HUMAN], 'outcome:reply': ['follow up', HUMAN],
+  'outcome:meeting': ['follow up', HUMAN], 'outcome:sale': ['attach the domain and hand over', 'deployer'],
+  'outcome:ignored': ['leave it or re-pitch', HUMAN], handoff_verified: ['revoke our access', 'deployer'],
+  access_revoked: ['done', null],
+};
+
+const baseState = (s) => (!s ? null : s.startsWith('critiqued') ? 'critiqued' : s.startsWith('outcome:') ? 'outcome' : s);
+const rank = (s) => (s ? ORDER.indexOf(baseState(s)) : -1);
+const stationOf = (s) => STATIONS.find((st) => st.states.includes(baseState(s)))?.n ?? null;
+
+// ---- readers ----------------------------------------------------------------------------------
+const read = (rel) => (existsSync(join(ROOT, rel)) ? readFileSync(join(ROOT, rel), 'utf8') : null);
+const readJson = (rel) => { const t = read(rel); return t ? JSON.parse(t) : null; };
+const readJsonl = (rel) => (read(rel) ?? '').split('\n').filter((l) => l.trim()).map((l, i) => {
+  try { return JSON.parse(l); } catch (e) { throw new Error(`${rel}:${i + 1} is not JSON: ${e.message}`); }
+});
+const val = (x) => (x && typeof x === 'object' && 'value' in x ? x.value : x ?? null);
+const day = (ts) => ts.slice(0, 10);
+
+function readRun() {
+  const y = read('run.yaml') ?? '';
+  const scalar = (k) => (y.match(new RegExp(`^${k}:\\s*([^#\\n]+)`, 'm'))?.[1] ?? '').trim().replace(/^["']|["']$/g, '');
+  const pins = {};
+  const block = y.split(/^agents:/m)[1] ?? '';
+  for (const m of block.matchAll(/^\s+([\w-]+):\s*([\d.]+)/gm)) pins[m[1]] = m[2];
+  return {
+    run_id: scalar('run_id'), mode: scalar('mode'),
+    area_mode: (y.match(/^\s+mode:\s*(\w+)/m)?.[1] ?? ''),
+    anchors: [...y.matchAll(/^\s*-\s*"([^"]+)"/gm)].map((m) => m[1]),
+    max_sites: Number(scalar('max_sites')) || null,
+    presence_threshold: Number(scalar('presence_threshold')) || null,
+    tokens_per_business: Number((y.match(/tokens_per_business:\s*([\d_]+)/)?.[1] ?? '').replace(/_/g, '')) || null,
+    default_mode: (y.match(/default_mode:\s*(\w+)/)?.[1] ?? null),
+    agent_pins: pins,
+  };
+}
+
+function readDossier(slug) {
+  const d = readJson(`dossier/${slug}/dossier.json`);
+  if (!d) return null;
+  const ratings = {};
+  for (const [platform, r] of Object.entries(d.reviews ?? {})) {
+    if (r && typeof r === 'object' && typeof r.rating === 'number') ratings[platform] = { rating: r.rating, count: r.count ?? null, fetched_at: r.fetched_at ?? null };
+  }
+  return { name: val(d.business?.name) ?? null, type: d.businessType ?? null, harvested_at: d.harvested_at ?? null, ratings, gaps: Array.isArray(d.gaps) ? d.gaps.length : null };
+}
+
+function readDeploy(slug) {
+  const d = readJson(`sites/${slug}/deploy.json`);
+  if (!d) return null;
+  const last = (d.steps ?? []).filter((s) => s.step === 'deploy' && s.ok).at(-1);
+  return { adapter: d.adapter ?? null, cms: d.cms ?? null, url: last?.evidence?.url ?? null, version: last?.evidence?.version ?? null, deployed_at: last?.started ?? null, verified: (d.steps ?? []).some((s) => s.step === 'verify' && s.ok) };
+}
+
+function readPitch(slug) {
+  const dir = join(ROOT, 'sites', slug, 'pitch');
+  if (!existsSync(dir)) return null;
+  const worker = read(`sites/${slug}/pitch/wrangler.jsonc`)?.match(/"name":\s*"([^"]+)"/)?.[1] ?? null;
+  return { drafts: readdirSync(dir).filter((f) => /^(index\.html|message\..*\.md|in-person\..*\.md)$/.test(f)), proposal_url: worker ? `https://${worker}.os1.workers.dev` : null };
+}
+
+// Screenshots: the site's earliest and latest desktop contact sheets, and the final-vs-picked folder.
+function readShots(slug) {
+  const base = `sites/${slug}/final/shots`;
+  if (!existsSync(join(ROOT, base))) return null;
+  // Folder names differ per site (round-1, 4g-round-1, critic-2, aiseo…): the first sheet is the
+  // one named round-1 when it exists, else the oldest by mtime; the latest is the newest by mtime.
+  const mtime = (n) => statSync(join(ROOT, base, n, 'desktop-sheet.png')).mtimeMs;
+  const rounds = readdirSync(join(ROOT, base), { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name)
+    .filter((n) => existsSync(join(ROOT, base, n, 'desktop-sheet.png')))
+    .sort((a, b) => (/^(4g-)?round-1$/.test(b) - /^(4g-)?round-1$/.test(a)) || (mtime(a) - mtime(b)));
+  const fvp = join(ROOT, base, 'final-vs-picked');
+  return {
+    first: rounds[0] ? `${base}/${rounds[0]}/desktop-sheet.png` : null,
+    latest: rounds.at(-1) ? `${base}/${rounds.at(-1)}/desktop-sheet.png` : null,
+    rounds: rounds.map((r) => `${base}/${r}/desktop-sheet.png`),
+    final_vs_picked: existsSync(fvp) ? readdirSync(fvp).filter((f) => /\.(png|jpg|html|md)$/i.test(f)).map((f) => `${base}/final-vs-picked/${f}`) : [],
+    critic_report: existsSync(join(ROOT, 'reports')) ? readdirSync(join(ROOT, 'reports')).flatMap((r) => (existsSync(join(ROOT, 'reports', r, `${slug}.md`)) ? [`reports/${r}/${slug}.md`] : [])) : [],
+  };
+}
+
+// agents/*/CHANGELOG.md: highest semver in the file (the files are not all newest-first) and its line.
+function readChangelogs() {
+  const out = {};
+  for (const name of readdirSync(join(ROOT, 'agents'), { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name)) {
+    const text = read(`agents/${name}/CHANGELOG.md`);
+    if (!text) { out[name] = { version: null, line: null }; continue; }
+    let best = null;
+    for (const line of text.split('\n')) {
+      const m = line.match(/^\s*(?:##\s*|-\s*\*\*)?\[?v?(\d+\.\d+\.\d+)\]?\*{0,2}\s*[—–-]\s*(\d{4}-\d{2}-\d{2})?/);
+      if (!m) continue;
+      const v = m[1].split('.').map(Number);
+      if (!best || v.some((n, i) => n !== best.v[i] && n > best.v[i] && v.slice(0, i).every((x, j) => x === best.v[j]))) {
+        best = { v, version: m[1], date: m[2] ?? null, line: line.replace(/^\s*(?:##\s*|-\s*)/, '').trim() };
+      }
+    }
+    out[name] = best ? { version: best.version, date: best.date, line: best.line } : { version: null, line: null };
+  }
+  return out;
+}
+
+function readProposals() {
+  const base = join(ROOT, 'proposals');
+  if (!existsSync(base)) return [];
+  const out = [];
+  for (const run of readdirSync(base, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name)) {
+    for (const f of readdirSync(join(base, run)).filter((f) => f.endsWith('.md'))) {
+      const text = read(`proposals/${run}/${f}`) ?? '';
+      const title = text.match(/^#\s+(.+)$/m)?.[1] ?? f;
+      // Merging a proposal is a human gate (PLAN.md) and no ledger line records one yet, so the only
+      // honest status is "no merge record". *-APPLY.md files are application notes, not proposals.
+      const record = /-APPLY\.md$/.test(f);
+      out.push({ run_id: run, file: `proposals/${run}/${f}`, title, kind: record ? 'application record' : 'proposal', status: record ? null : 'no merge record in the ledger', custom_md: /custom\.md/i.test(title) || /custom-md/.test(f) });
+    }
+  }
+  return out;
+}
+
+// ---- build ------------------------------------------------------------------------------------
+export function buildData() {
+  const ledger = readJsonl('ledger.jsonl');
+  const run = readRun();
+  const businessLines = ledger.filter((l) => l.slug && l.slug !== '-' && l.slug !== 'dashboard');
+  const corrections = ledger.filter((l) => !l.slug || l.slug === '-');
+  const nonBusinessRuns = ledger.filter((l) => l.slug === 'dashboard');
+
+  const byKey = new Map();
+  for (const line of businessLines) {
+    const k = `${line.run_id}\u0000${line.slug}`;
+    if (!byKey.has(k)) byKey.set(k, []);
+    byKey.get(k).push(line);
+  }
+  const runsSeen = [...new Set(businessLines.map((l) => l.run_id))].sort();
+  const approvalsByRun = Object.fromEntries(runsSeen.map((r) => [r, businessLines.some((l) => l.run_id === r && l.to_state === 'approved')]));
+  const latestRunOf = {};
+  for (const k of byKey.keys()) { const [r, s] = k.split('\u0000'); if (!latestRunOf[s] || r > latestRunOf[s]) latestRunOf[s] = r; }
+  const DROP_RE = /\b(dropped|withdrawn|disqualified|reversed by|FAILS the|leaves the run|aborted)\b/i;
+  const OVERRIDE_RE = /\b(allow(?:ed|s)? (?:a )?(?:third|3rd|fourth|4th|one more|another) (?:pass|round)|allow round [3-9]|third pass|one more round|overr(?:ide|ode|ules?))\b/i;
+
+  function classify(hist, runHasApprovals, isCurrent) {
+    const last = hist.at(-1); const state = last.to_state;
+    const regressed = rank(state) < rank(last.from_state);
+    if (state.startsWith('outcome:')) return { group: 'outcome', label: state.slice(8) };
+    if (!isCurrent && rank(state) < rank('approved') && !runHasApprovals) return { group: 'superseded', label: 'run not continued' };
+    if (state === 'pitched') return { group: 'pitched', label: 'pitched' };
+    if (state === 'packaged') return { group: 'delivered', label: 'built + deployed, pitch not sent' };
+    if (state === 'access_revoked' || state === 'handoff_verified') return { group: 'delivered', label: state };
+    if (regressed || DROP_RE.test(last.note ?? '')) return { group: 'dropped', label: 'dropped' };
+    if (state === 'scored') return { group: 'not_shortlisted', label: 'scored above threshold' };
+    if (state === 'shortlisted') return runHasApprovals ? { group: 'not_approved', label: 'shortlisted, not approved' } : { group: 'gate', label: 'awaiting shortlist approval' };
+    if (GATES[state]) return { group: 'gate', label: `awaiting: ${GATES[state]}` };
+    return { group: 'pipeline', label: state };
+  }
+
+  // Critic lines → numbered rounds and post-pass verifications, each with its score when the note has one.
+  function criticSeries(hist) {
+    return hist.filter((h) => h.agent === 'critic').map((h) => {
+      const m = h.note?.match(/\b(PASS|FAIL)\b[^0-9]{0,20}(\d+(?:\.\d+)?)\s*\/\s*100/);
+      const round = h.to_state.match(/^critiqued\((\d+)\)$/)?.[1];
+      const kind = round ? 'round' : /verification/i.test(h.note ?? '') ? 'verification' : /pre-score/i.test(h.note ?? '') ? 'pre-score' : 'other';
+      return { ts: h.ts, kind, round: round ? Number(round) : null, verdict: m?.[1] ?? null, score: m ? Number(m[2]) : null, to: h.to_state };
+    }).filter((c) => c.score != null || c.kind === 'round');
+  }
+
+  const businesses = [];
+  for (const [k, hist] of byKey) {
+    const [run_id, slug] = k.split('\u0000');
+    const last = hist.at(-1); // file order = current state (CLAUDE.md)
+    const own = latestRunOf[slug] === run_id;
+    const dossier = own ? readDossier(slug) : null;
+    const deploy = own ? readDeploy(slug) : null;
+    const pitch = own ? readPitch(slug) : null;
+    const shots = own ? readShots(slug) : null;
+    const { group, label } = classify(hist, approvalsByRun[run_id], run_id === run.run_id);
+    const reached = new Set(hist.map((h) => baseState(h.to_state)));
+    const scoreNote = hist.find((h) => h.to_state === 'scored')?.note ?? '';
+    const presence = scoreNote.match(/presence\s+(\d)\s*\/\s*5/i)?.[1];
+    const pitchedLine = hist.find((h) => h.to_state === 'pitched');
+    const outcomeLine = [...hist].reverse().find((h) => h.to_state.startsWith('outcome:'));
+    const hosting = [...hist].reverse().find((h) => h.hosting_mode)?.hosting_mode ?? null;
+    const previewFromLedger = [...hist].reverse().map((h) => h.note?.match(/https:\/\/[\w.-]+\.workers\.dev/)?.[0]).find(Boolean);
+    const critic = criticSeries(hist);
+    const criticRounds = critic.filter((c) => c.kind === 'round');
+    const latestScored = [...critic].reverse().find((c) => c.score != null && c.verdict);
+    const discovered = hist.find((h) => h.to_state === 'discovered');
+    const stationDates = {};
+    for (const h of hist) { const n = stationOf(h.to_state); if (n && !stationDates[n]) stationDates[n] = h.ts; }
+    const out = ['dropped', 'not_shortlisted', 'not_approved', 'superseded'].includes(group);
+    const nextKey = NEXT_STEP[last.to_state] ? last.to_state : baseState(last.to_state);
+    const [nextStep, owner] = out ? ['—', null] : (NEXT_STEP[nextKey] ?? [null, null]);
+    const gate = (group === 'gate' || group === 'delivered') ? (GATES[last.to_state] ?? null) : null;
+    const overrides = hist.filter((h) => h.agent === 'human' && OVERRIDE_RE.test(h.note ?? '')).map((h) => ({ ts: h.ts, note: h.note }));
+
+    businesses.push({
+      slug, run_id,
+      name: dossier?.name ?? slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
+      type: dossier?.type ?? null,
+      presence: presence != null ? Number(presence) : null,
+      ratings: dossier?.ratings ?? {},
+      state: last.to_state, group, label, out,
+      why: last.note ?? '',
+      found_via: discovered?.note?.replace(/^found via\s*/i, '') ?? null,
+      first_seen: hist[0].ts, last_change: last.ts,
+      days_since_change: Math.floor((Date.now() - Date.parse(last.ts)) / 86400000),
+      station: stationOf(last.to_state), station_dates: stationDates,
+      next_step: nextStep, owner,
+      gate,
+      gate_target: gate ? { view: gate === 'send the pitch' ? 'sites' : 'pipeline', slug } : null,
+      lines: hist.length,
+      human_decisions: hist.filter((h) => h.agent === 'human').length,
+      overrides,
+      copy_rounds: hist.filter((h) => h.agent === 'copyeditor' && (h.to_state === 'copy_failed' || h.to_state === 'copy_passed')).length,
+      copy_fails: hist.filter((h) => h.agent === 'copyeditor' && h.to_state === 'copy_failed').length,
+      critic_rounds: criticRounds.length,
+      critic_score: latestScored?.score ?? null,
+      critic_score_kind: latestScored ? `${latestScored.kind}${latestScored.round ? ' ' + latestScored.round : ''}` : null,
+      critic_series: critic,
+      hosting_mode: hosting ?? (rank(last.to_state) >= rank('packaged') ? run.default_mode : null),
+      preview_url: deploy?.url ?? previewFromLedger ?? null,
+      deploy, cms_verified: deploy?.verified ?? false,
+      pitch, shots,
+      pitched_at: pitchedLine?.ts ?? null,
+      outcome: outcomeLine ? { state: outcomeLine.to_state.slice(8), ts: outcomeLine.ts, note: outcomeLine.note } : null,
+      reached: [...reached],
+      history: hist.map((h) => ({ ts: h.ts, from: h.from_state, to: h.to_state, agent: h.agent, v: h.agent_version, note: h.note, hosting_mode: h.hosting_mode })),
+    });
+  }
+  businesses.sort((a, b) => b.run_id.localeCompare(a.run_id) || (rank(b.state) - rank(a.state)) || a.slug.localeCompare(b.slug));
+
+  // ---- KPIs per run and deltas -----------------------------------------------------------------
+  const FUNNEL = ['discovered', 'shortlisted', 'harvested', 'built', 'pitched', 'outcome:reply', 'outcome:sale'];
+  const FUNNEL_LABELS = ['researched', 'shortlisted', 'harvested', 'built', 'pitched', 'replied', 'client'];
+  function kpisFor(runId) {
+    const bs = businesses.filter((b) => b.run_id === runId);
+    const live = bs.filter((b) => ['delivered', 'pitched', 'outcome'].includes(b.group));
+    const scored = live.filter((b) => b.critic_score != null);
+    const reachedCount = (s) => bs.filter((b) => b.reached.includes(baseState(s)) && (!s.startsWith('outcome:') || b.history.some((h) => h.to === s))).length;
+    return {
+      researched: bs.length,
+      live_sites: live.length,
+      needs_you: bs.filter((b) => b.gate).length,
+      pitched: bs.filter((b) => b.pitched_at).length,
+      replies: bs.filter((b) => b.outcome && ['reply', 'meeting'].includes(b.outcome.state)).length,
+      meetings: bs.filter((b) => b.outcome?.state === 'meeting').length,
+      clients: bs.filter((b) => b.outcome?.state === 'sale').length,
+      avg_critic: scored.length ? Math.round((scored.reduce((s, b) => s + b.critic_score, 0) / scored.length) * 10) / 10 : null,
+      funnel: FUNNEL.map((s, i) => ({ state: s, label: FUNNEL_LABELS[i], count: reachedCount(s) })),
+    };
+  }
+  const kpis_by_run = Object.fromEntries(runsSeen.map((r) => [r, kpisFor(r)]));
+  const prevRun = runsSeen[runsSeen.indexOf(run.run_id) - 1] ?? null;
+  const cur = kpis_by_run[run.run_id], prev = prevRun ? kpis_by_run[prevRun] : null;
+  const deltas = {};
+  for (const k of ['researched', 'live_sites', 'needs_you', 'pitched', 'replies', 'clients', 'avg_critic']) {
+    const stageReachedBefore = prev && (k === 'researched' || k === 'needs_you' || (k === 'avg_critic' ? prev.avg_critic != null : prev[k] > 0 || prev.funnel.some((f) => f.count > 0 && ['live_sites'].includes(k) && f.state === 'built')));
+    deltas[k] = { current: cur[k], previous: stageReachedBefore ? prev[k] : null, previous_run: prevRun,
+      delta: stageReachedBefore && cur[k] != null && prev[k] != null ? Math.round((cur[k] - prev[k]) * 10) / 10 : null,
+      note: prev ? (stageReachedBefore ? `vs ${prevRun}` : `first run to reach this stage (${prevRun} stopped at scoring)`) : 'first run' };
+  }
+
+  // ---- per-day series for sparklines ------------------------------------------------------------
+  const allTs = businessLines.map((l) => l.ts).sort();
+  const days = [];
+  for (let d = new Date(allTs[0].slice(0, 10)); d <= new Date(); d.setUTCDate(d.getUTCDate() + 1)) days.push(d.toISOString().slice(0, 10));
+  const series = { days, ledger_lines: [], decisions: [], gates_open: [], live_sites: [], businesses_seen: [] };
+  for (const dday of days) {
+    const upto = businessLines.filter((l) => day(l.ts) <= dday && l.run_id === run.run_id);
+    series.ledger_lines.push(businessLines.filter((l) => day(l.ts) === dday).length);
+    series.decisions.push(businessLines.filter((l) => day(l.ts) === dday && l.agent === 'human').length);
+    const lastBy = new Map();
+    for (const l of upto) lastBy.set(l.slug, l);
+    series.gates_open.push([...lastBy.values()].filter((l) => GATES[l.to_state] && !(l.to_state === 'shortlisted' && upto.some((x) => x.to_state === 'approved'))).length);
+    series.live_sites.push([...lastBy.values()].filter((l) => rank(l.to_state) >= rank('packaged')).length);
+    series.businesses_seen.push(lastBy.size);
+  }
+
+  // ---- agents -------------------------------------------------------------------------------------
+  const changelogs = readChangelogs();
+  const AGENT_PASS = { copyeditor: (h) => h.to === 'copy_passed', critic: (h) => /\bPASS\b/.test(h.note ?? '') && (h.to.startsWith('critiqued') || h.to === 'passed'), harvester: (h) => h.to === 'harvested', designer: (h) => h.to === 'built' || h.to === 'mocked', scout: (h) => h.to === 'scored' };
+  const AGENT_FAIL = { copyeditor: (h) => h.to === 'copy_failed', critic: (h) => /\bFAIL\b/.test(h.note ?? '') && h.to.startsWith('critiqued') };
+  const agents = {};
+  for (const name of Object.keys(changelogs)) {
+    const perRun = {};
+    for (const r of runsSeen) {
+      const lines = businesses.filter((b) => b.run_id === r).flatMap((b) => b.history.filter((h) => h.agent === name).map((h) => ({ ...h, slug: b.slug })));
+      const passes = lines.filter(AGENT_PASS[name] ?? (() => false));
+      const fails = lines.filter(AGENT_FAIL[name] ?? (() => false));
+      // rounds needed per pass: for each pass, the agent's lines on that slug since its previous pass
+      const roundsPerPass = passes.map((p) => {
+        const mine = lines.filter((l) => l.slug === p.slug);
+        const idx = mine.indexOf(p);
+        const prevPass = mine.slice(0, idx).map((l, i) => ((AGENT_PASS[name] ?? (() => false))(l) ? i : -1)).filter((i) => i >= 0).at(-1) ?? -1;
+        return { slug: p.slug, ts: p.ts, rounds: idx - prevPass };
+      });
+      perRun[r] = { lines: lines.length, passes: passes.length, fails: fails.length, rounds_per_pass: roundsPerPass,
+        fails_by_slug: Object.fromEntries([...new Set(fails.map((f) => f.slug))].map((s) => [s, fails.filter((f) => f.slug === s).length])),
+        versions_seen: [...new Set(lines.map((l) => l.v).filter(Boolean))] };
+    }
+    agents[name] = {
+      version_changelog: changelogs[name].version, changelog_date: changelogs[name].date ?? null, changelog_line: changelogs[name].line,
+      version_pinned: run.agent_pins[name] ?? null,
+      pin_matches_changelog: run.agent_pins[name] != null && run.agent_pins[name] === changelogs[name].version,
+      by_run: perRun,
+      third_fail_overrides: businesses.flatMap((b) => b.overrides.map((o) => ({ ...o, slug: b.slug, run_id: b.run_id }))).filter(() => name === 'copyeditor' || name === 'critic'),
+    };
+  }
+
+  // ---- gates, decisions, activity, proposals, expenses ---------------------------------------------
+  const proposals = readProposals();
+  const gates = businesses.filter((b) => b.gate).map((b) => ({ kind: b.gate, slug: b.slug, name: b.name, run_id: b.run_id, since: b.last_change, days: b.days_since_change, target: b.gate_target }));
+  const unmerged = proposals.filter((p) => p.kind === 'proposal');
+  if (unmerged.length) gates.push({ kind: 'review prompt diffs', slug: null, name: `${unmerged.length} proposals without a merge record`, run_id: unmerged.at(-1).run_id, since: null, days: null, target: { view: 'decisions', proposals: unmerged.map((p) => p.file) } });
+  const decisions = businessLines.filter((l) => l.agent === 'human').sort((a, b) => b.ts.localeCompare(a.ts)).map((l) => ({ ts: l.ts, slug: l.slug, run_id: l.run_id, from: l.from_state, to: l.to_state, note: l.note, gate: !!(GATES[l.from_state] && l.from_state !== l.to_state), override: OVERRIDE_RE.test(l.note ?? '') }));
+  const recent_activity = [...ledger].slice(-25).reverse().map((l) => ({ ts: l.ts, slug: l.slug, run_id: l.run_id, agent: l.agent, from: l.from_state, to: l.to_state, note: l.note }));
+  const leads = businesses.filter((b) => /^referral:/i.test(b.found_via ?? '')).map((b) => ({ slug: b.slug, name: b.name, referred_by: b.found_via.replace(/^referral:\s*/i, '').split(/[;\s]/)[0], state: b.state, group: b.group, first_seen: b.first_seen }));
+
+  const expenseLines = existsSync(join(ROOT, 'expenses.jsonl')) ? readJsonl('expenses.jsonl') : null;
+  const expenses = { tracked: !!expenseLines, entries: expenseLines ?? [], monthly: {}, accumulated: {}, per_client: {}, vendors: {} };
+  for (const e of expenseLines ?? []) {
+    const cur = e.currency ?? 'USD', month = (e.period ?? e.ts).slice(0, 7), who = e.slug ?? 'shared';
+    ((expenses.monthly[month] ??= {})[cur] = (expenses.monthly[month][cur] ?? 0) + e.amount);
+    expenses.accumulated[cur] = (expenses.accumulated[cur] ?? 0) + e.amount;
+    ((expenses.per_client[who] ??= {})[cur] = (expenses.per_client[who][cur] ?? 0) + e.amount);
+    ((expenses.vendors[e.vendor] ??= {})[cur] = (expenses.vendors[e.vendor][cur] ?? 0) + e.amount);
+  }
+
+  const runs = [...runsSeen].reverse().map((r) => {
+    const bs = businesses.filter((b) => b.run_id === r); const groups = {};
+    for (const b of bs) groups[b.group] = (groups[b.group] ?? 0) + 1;
+    const ts = businessLines.filter((l) => l.run_id === r).map((l) => l.ts).sort();
+    return { run_id: r, businesses: bs.length, groups, first_ts: ts[0], last_ts: ts.at(-1), current: r === run.run_id, kpis: kpis_by_run[r] };
+  });
+
+  return {
+    generated_at: new Date().toISOString(), human: HUMAN,
+    pipeline_order: ORDER, gate_states: GATES, stations: STATIONS, next_step: NEXT_STEP,
+    run, runs, kpis: cur, kpis_by_run, deltas, funnel: cur.funnel, series,
+    gates, businesses, decisions, recent_activity, leads, corrections, proposals, agents, expenses,
+    non_business_runs: nonBusinessRuns.map((l) => ({ ts: l.ts, run_id: l.run_id, agent: l.agent, to: l.to_state, note: l.note })),
+    empty_states: {
+      pitched: { filled_by: 'a ledger line packaged → pitched (agent: human)', earliest: 'when Shahar sends the first pitch; three are ready', view: 'overview, pipeline' },
+      replies: { filled_by: 'a ledger line pitched → outcome:reply or outcome:meeting', earliest: 'after the first pitch is sent', view: 'overview' },
+      clients: { filled_by: 'a ledger line → outcome:sale', earliest: 'after the first reply', view: 'overview' },
+      cost: { filled_by: 'expenses.jsonl (docs/expenses.md); token spend per business is not recorded anywhere', earliest: 'when the first charge is written; none exists yet', view: 'overview' },
+      sparkline: { filled_by: 'ledger timestamps per day (series.*)', earliest: 'present for gates_open, live_sites, ledger_lines, decisions; absent for pitched/replies/clients until they have a first value', view: 'overview KPI cards' },
+      delta: { filled_by: 'kpis_by_run of the previous run', earliest: 'a second run that reaches the stage; 2026-09-ahangama-01 stopped at scoring', view: 'overview KPI cards' },
+    },
+    totals: {
+      businesses_all_runs: new Set(businesses.map((b) => b.slug)).size, ledger_lines: ledger.length,
+      human_decisions: decisions.length, tokens_per_business_budget: run.tokens_per_business, token_spend_tracked: false,
+    },
+  };
+}
+
+if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
+  const data = buildData();
+  mkdirSync(OUT, { recursive: true });
+  writeFileSync(join(OUT, 'data.json'), JSON.stringify(data, null, 2) + '\n');
+  console.log(`dashboard/data.json: ${data.businesses.length} rows, ${data.runs.length} runs, gates ${data.gates.length}, decisions ${data.decisions.length}, agents ${Object.keys(data.agents).length}, proposals ${data.proposals.length}, days ${data.series.days.length}`);
+}
