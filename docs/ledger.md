@@ -28,6 +28,7 @@ The first eight fields are present on every line.
 - `self_hosted_docker` only, once the client has chosen it: `… → handoff_verified → access_revoked`. `handoff_verified` = the adapter's `verify` passed on the client's box and the handoff kit is complete. `access_revoked` = our keys, users and tokens are removed from the client's box and checked to no longer work.
 - Outcomes are written as `outcome:reply`, `outcome:meeting`, `outcome:sale`, `outcome:ignored`.
 - Human-gate transitions (`shortlisted → approved`, `mocked → picked`, `packaged → pitched`) always have `agent: "human"`.
+- Gate (d), prompt diffs (approved 2026-09-27, proposals/dashboard-01/001): a decision on a file under `proposals/` is a line with `slug: "-"`, `agent: "human"`, `from_state: null`, `to_state: "proposal:approved"` or `"proposal:rejected"`, `note: "<file>: <reason>"`. The merge itself (version bump, CHANGELOG) is a later code change, recorded by its commit, not by the ledger.
 
 The current state of a business is the `to_state` of its last line for the current `run_id`.
 
