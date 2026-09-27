@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oneshot dashboard</title>
+<link rel="icon" href="data:,">
+<!--
+  dashboard/template.html — the ledger, read as a page (dashboard/concept.md).
+  tools/dashboard.mjs drops the JSON into <script id="data"> and writes dashboard/index.html.
+  Everything is rendered client-side from that JSON. Zero network requests: no font, no CDN,
+  no image; opened from file://.
+-->
+<style>
+:root {
+  --ground: #F5F7F9;
+  --ink: #111417;
+  --grey: #66707A;
+  --rule: #D5DAE0;
+  --accent: #C7360D;
+  --gutter: 16px;
+  --section: 48px;
+}
+@media (min-width: 768px) { :root { --gutter: 24px; --section: 64px; } }
+@media (min-width: 1024px) { :root { --gutter: 32px; } }
+
+* { box-sizing: border-box; }
+html { background: var(--ground); }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: 400 14px/20px system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+  font-variant-numeric: tabular-nums;
+  -webkit-text-size-adjust: 100%;
+}
+main { max-width: 1360px; padding: 24px var(--gutter) 48px; }
+h1, h2, h3, p, table, ul { margin: 0; }
+h1 { font-size: 22px; line-height: 28px; font-weight: 600; }
+h2 { font-size: 17px; line-height: 24px; font-weight: 600; }
+h3 { font-size: 14px; line-height: 20px; font-weight: 600; margin-top: 32px; }
+a { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+b, strong { font-weight: 600; }
+code { font: inherit; }
+.grey, .sub { color: var(--grey); }
+.sub { display: block; font-size: 13px; line-height: 18px; font-weight: 400; }
+.lead { margin-top: 8px; }
+
+section { margin-top: var(--section); border-top: 1px solid var(--ink); padding-top: 16px; }
+section > h2 + table, section > h2 + .tablewrap, section > .lead + table, section > .lead + .tablewrap,
+section > h2 + .funnel, section > .lead + .funnel, section > h2 + .controls, section > .lead + .controls { margin-top: 24px; }
+.controls + table { margin-top: 16px; }
+
+/* Now */
+.now { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 24px; margin-top: 8px; }
+.now p:first-child { font-size: 22px; line-height: 28px; font-weight: 600; }
+
+/* Tables: the design. Fixed layout, widths on the header cells, no outer padding. */
+table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+th, td { text-align: left; vertical-align: top; padding: 8px 12px; overflow-wrap: normal; hyphens: manual; }
+.c-why, tr.whyrow > td, .c-note, a, .sub, .info { overflow-wrap: anywhere; }
+th:first-child, td:first-child { padding-left: 0; }
+th:last-child, td:last-child { padding-right: 0; }
+th { font-size: 13px; line-height: 18px; font-weight: 600; border-bottom: 1px solid var(--ink); }
+tbody td { border-top: 1px solid var(--rule); }
+tbody tr:hover > td, tbody tr:hover + tr > td { border-top-color: var(--ink); }
+td.zero, .empty td { color: var(--grey); }
+.lbl { display: none; }
+
+/* Waiting on Shahar: the only accent on the page, plus the "awaiting" status fill. */
+.gatewrap { border-left: 3px solid var(--accent); padding-left: 12px; }
+.status-gate { background: var(--accent); color: #fff; padding: 0 4px; }
+
+/* Funnel: two columns below 1280, sideways from 1280. */
+.funnel-h { display: none; }
+@media (min-width: 1280px) {
+  .funnel-v { display: none; }
+  .funnel-h { display: table; table-layout: auto; }
+  .funnel-h th, .funnel-h td { padding-left: 4px; padding-right: 4px; hyphens: manual; overflow-wrap: normal; }
+  .funnel-h th:last-child, .funnel-h td:last-child { padding-right: 0; }
+  .funnel-h th:first-child, .funnel-h td:first-child { padding-left: 0; }
+}
+
+/* Filters */
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.controls .group { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.controls .group + .group { margin-left: 8px; }
+.controls .right { margin-left: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+button { font: inherit; color: var(--ink); cursor: pointer; }
+.filter, .textbtn { background: transparent; border: 1px solid var(--ink); padding: 6px 10px; }
+.filter .n { color: var(--grey); }
+.filter[aria-pressed="true"] { background: var(--ink); color: #fff; }
+.filter[aria-pressed="true"] .n { color: #fff; }
+.textbtn { border: 0; padding: 6px 0; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+input[type="search"] {
+  font: inherit; color: var(--ink); background: transparent; border: 1px solid var(--ink);
+  padding: 6px 10px; width: 240px; max-width: 100%; border-radius: 0; -webkit-appearance: none; appearance: none;
+}
+input[type="search"]::placeholder { color: var(--grey); opacity: 1; }
+@media (max-width: 767px) {
+  .controls .search { width: 100%; } input[type="search"] { width: 100%; } .controls .right { margin-left: 0; }
+  /* 44 px hit areas: padding on the controls, padding + negative margin on inline links and names so the row rhythm holds */
+  .filter, input[type="search"] { padding: 11px 10px; }
+  .textbtn { padding: 12px 0; }
+  .biz button.name { padding: 12px 0; margin: -12px 0; }
+  td a, .info a { display: inline-block; padding: 12px 0; margin: -12px 0; }
+  .stack td.c-link, .wide td.c-link { padding-top: 12px; padding-bottom: 12px; }
+  .info { gap: 12px 24px; padding: 6px 0; }
+}
+
+/* Businesses table */
+button.name { background: none; border: 0; padding: 0; font: inherit; font-weight: 600; text-align: left; }
+.type-inline { display: none; }
+.why-full { display: none; }
+tr.open > td .why-short, tr.open + tr.whyrow .why-short { display: none; }
+tr.open > td .why-full, tr.open + tr.whyrow .why-full { display: block; }
+tr.whyrow { display: none; }
+tr.whyrow > td, tr.panel > td { border-top: 0; }
+tr.panel > td { border-bottom: 1px solid var(--ink); padding-bottom: 24px; }
+tbody tr.row:hover > td, tbody tr.row:hover + tr.whyrow + tr.row > td, tbody tr.row:has(+ tr.whyrow:hover) > td { border-top-color: var(--ink); }
+tbody tr.whyrow:hover + tr.row > td { border-top-color: var(--ink); }
+tbody tr.panel + tr.row > td { border-top-color: var(--ink); }
+tbody tr.panel:hover > td, tbody tr.panel:hover + tr > td { border-top-color: var(--rule); }
+.hist { margin-top: 16px; }
+.hist tr.human { font-weight: 600; }
+.info { display: flex; flex-wrap: wrap; gap: 4px 24px; margin-top: 0; }
+.info .k { color: var(--grey); }
+.reached { margin-top: 8px; }
+
+/* Column widths */
+@media (min-width: 1024px) {
+  .biz .h-name { width: 13%; } .biz .h-type { width: 8%; } .biz .h-run { width: 10%; } .biz .h-presence { width: 8%; }
+  .biz .h-ratings { width: 11%; } .biz .h-status { width: 12%; } .biz .h-why { width: 30%; } .biz .h-changed { width: 8%; }
+}
+@media (min-width: 1440px) {
+  .biz .h-name { width: 12%; } .biz .h-type { width: 8%; } .biz .h-run { width: 8%; } .biz .h-presence { width: 7%; }
+  .biz .h-ratings { width: 10%; } .biz .h-status { width: 9%; } .biz .h-why { width: 40%; } .biz .h-changed { width: 6%; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .biz .h-name { width: 30%; } .biz .h-status { width: 22%; } .biz .h-presence { width: 12%; } .biz .h-ratings { width: 18%; } .biz .h-changed { width: 18%; }
+  .biz .c-type, .biz .c-run, .biz .c-why, .biz .h-type, .biz .h-run, .biz .h-why { display: none; }
+  .type-inline { display: block; color: var(--grey); font-size: 13px; line-height: 18px; }
+  tr.whyrow { display: table-row; }
+  tr.whyrow > td { padding-top: 0; }
+}
+.hist .h-when { width: 16%; } .hist .h-change { width: 20%; } .hist .h-agent { width: 18%; } .hist .h-note { width: 46%; }
+@media (min-width: 1024px) { .hist .h-when { width: 15%; } .hist .h-agent { width: 14%; } .hist .h-note { width: 51%; } }
+.delivered .h-name { width: 14%; } .delivered .h-preview { width: 19%; } .delivered .h-proposal { width: 18%; } .delivered .h-critic { width: 10%; }
+.delivered .h-hosting { width: 10%; } .delivered .h-cms { width: 8%; } .delivered .h-deployed { width: 13%; } .delivered .h-pitch { width: 8%; }
+.gates .h-name { width: 30%; } .gates .h-gate { width: 30%; } .gates .h-since { width: 25%; } .gates .h-days { width: 15%; }
+.funnel-v .h-state { width: 50%; } .funnel-v .h-count { width: 50%; }
+.decisions .h-when { width: 12%; } .decisions .h-name { width: 16%; } .decisions .h-change { width: 18%; } .decisions .h-note { width: 54%; }
+.pitches .h-name { width: 16%; } .pitches .h-sent { width: 12%; } .pitches .h-channel { width: 10%; } .pitches .h-outcome { width: 12%; } .pitches .h-odate { width: 12%; } .pitches .h-note { width: 38%; }
+.leads .h-name { width: 30%; } .leads .h-ref { width: 30%; } .leads .h-state { width: 20%; } .leads .h-seen { width: 20%; }
+.corrections .h-when { width: 15%; } .corrections .h-agent { width: 15%; } .corrections .h-note { width: 70%; }
+
+/* Expenses, when tracked */
+.exp { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 24px; }
+@media (min-width: 1024px) { .exp { grid-template-columns: 1fr 1fr; gap: 32px 48px; } }
+
+/* Stacked rows: below 768 for every table, below 1024 for the wide ones (.wide). */
+@media (max-width: 767px) { .stack { --stacked: 1; } }
+@media (max-width: 1023px) { .wide { --stacked: 1; } }
+@media (max-width: 1023px) {
+  .wide, .wide tbody, .wide tr, .wide td { display: block; }
+  .wide thead { display: none; }
+  .wide tbody tr { border-top: 1px solid var(--rule); padding: 8px 0; }
+  .wide tbody tr:first-child { border-top: 0; }
+  .wide td { border: 0; padding: 2px 0; display: flex; gap: 12px; }
+  .wide td.primary { display: block; font-weight: 600; }
+  .wide .lbl { display: block; flex: 0 0 104px; color: var(--grey); font-size: 13px; line-height: 18px; padding-top: 1px; }
+  .wide .val { flex: 1 1 auto; min-width: 0; }
+  .wide.empty td, .wide tr.empty td { display: block; }
+  .wide tbody tr:hover > td, .wide tbody tr:hover + tr > td { border-top-color: transparent; }
+  .wide tbody tr:hover, .wide tbody tr:hover + tr { border-top-color: var(--ink); }
+}
+@media (max-width: 767px) {
+  .stack, .stack tbody, .stack tr, .stack td { display: block; }
+  .stack thead { display: none; }
+  .stack tbody tr { border-top: 1px solid var(--rule); padding: 8px 0; }
+  .stack tbody tr:first-child { border-top: 0; }
+  .stack td { border: 0; padding: 2px 0; display: flex; gap: 12px; }
+  .stack td.primary { display: block; font-weight: 600; }
+  .stack .lbl { display: block; flex: 0 0 104px; color: var(--grey); font-size: 13px; line-height: 18px; padding-top: 1px; }
+  .stack .val { flex: 1 1 auto; min-width: 0; }
+  .stack.empty td, .stack tr.empty td { display: block; }
+  .stack tbody tr:hover > td, .stack tbody tr:hover + tr > td { border-top-color: transparent; }
+  .stack tbody tr:hover, .stack tbody tr:hover + tr { border-top-color: var(--ink); }
+  /* businesses: why last, in full; panel and history stacked too */
+  .biz tbody tr.row { display: flex; flex-direction: column; }
+  .biz .c-why { order: 9; display: block; padding-top: 6px; }
+  .biz .c-why .lbl { margin-bottom: 2px; }
+  .biz .c-why .why-short { display: none; }
+  .biz .c-why .why-full { display: block; }
+  .biz tr.whyrow { display: none; }
+  .biz tr.panel { border-top: 0; padding: 0 0 8px; }
+  .biz tr.panel > td { display: block; border-bottom: 1px solid var(--ink); padding: 0 0 16px; }
+  .biz tr.panel:hover, .biz tr.panel:hover + tr { border-top-color: transparent; }
+  .biz tbody tr.panel + tr.row { border-top: 0; }
+  .hist tr.human td.primary { font-weight: 600; }
+}
+
+/* Focus */
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+button.name:focus-visible { outline-offset: 3px; }
+[hidden] { display: none !important; }
+
+/* Motion: none. Nothing on this page transitions, fades or slides, so prefers-reduced-motion
+   has nothing to switch off. If you add motion, gate it here. */
+@media (prefers-reduced-motion: reduce) { * { transition: none; animation: none; } }
+
+footer { margin-top: var(--section); border-top: 1px solid var(--ink); padding-top: 16px; font-size: 13px; line-height: 18px; color: var(--grey); }
+footer h3 { color: var(--ink); }
+footer table { margin-top: 16px; font-size: 14px; line-height: 20px; color: var(--ink); }
+</style>
+</head>
+<body>
+<main id="app">
+  <noscript><p>This page renders from the JSON in it and needs JavaScript.</p></noscript>
+</main>
+<script id="data" type="application/json"></script>
+<script>
+(function () {
+  'use strict';
+  var D = JSON.parse(document.getElementById('data').textContent);
+  var HUMAN = D.human || 'Shahar';
+  var app = document.getElementById('app');
+
+  // ---- helpers ------------------------------------------------------------------------------
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  function p2(n) { return (n < 10 ? '0' : '') + n; }
+  function parse(iso) { var t = Date.parse(iso); return isNaN(t) ? null : new Date(t); }
+  function fDay(iso) { var d = parse(iso); return d ? d.getUTCDate() + ' ' + MON[d.getUTCMonth()] : esc(iso); }
+  function fDate(iso) { var d = parse(iso); return d ? d.getUTCDate() + ' ' + MON[d.getUTCMonth()] + ' ' + d.getUTCFullYear() : esc(iso); }
+  function fTime(iso) { var d = parse(iso); return d ? fDate(iso) + ' ' + p2(d.getUTCHours()) + ':' + p2(d.getUTCMinutes()) : esc(iso); }
+  var DASH = '<span class="grey">—</span>';
+  function or(v, f) { return v == null || v === '' ? DASH : f(v); }
+  function num(n) { return Number(n).toLocaleString('en-GB'); }
+  function money(n) { return Number(n).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function words(s) { return String(s == null ? '' : s).replace(/_/g, ' '); }
+  function link(url, text) {
+    if (typeof url !== 'string' || !/^https:\/\/\S+$/.test(url)) return url ? esc(url) : DASH;
+    return '<a href="' + esc(url) + '">' + esc(text == null ? url : text) + '</a>';
+  }
+  function agentName(h) { return h.agent === 'human' ? HUMAN : String(h.agent || ''); }
+  function agentWithV(h) {
+    return esc(agentName(h)) + (h.agent !== 'human' && h.v ? ' <span class="grey">' + esc(h.v) + '</span>' : '');
+  }
+  // Closed "why": the first sentence, cut at the first full stop (followed by space or end)
+  // after 40 characters, or at 160 characters with an ellipsis, whichever comes first.
+  function firstSentence(s) {
+    s = String(s || '');
+    var m = /\.(?=\s|$)/g, cut = -1;
+    m.lastIndex = 40;
+    var r = m.exec(s);
+    if (r) cut = r.index + 1;
+    if (cut > -1 && cut <= 160) return s.slice(0, cut);
+    if (s.length > 160) return s.slice(0, 160).replace(/\s+\S*$/, '') + '…';
+    return s;
+  }
+  var PLATFORM = { google: 'Google', booking: 'Booking.com', hostelworld: 'Hostelworld', agoda: 'Agoda', tripadvisor: 'TripAdvisor', airbnb: 'Airbnb' };
+  function platform(k) { return PLATFORM[k] || (k.charAt(0).toUpperCase() + k.slice(1)); }
+  var GROUP_ORDER = ['gate', 'delivered', 'pitched', 'outcome', 'pipeline', 'dropped', 'not_approved', 'not_shortlisted', 'superseded'];
+  var GROUP_WORD = { gate: 'awaiting ' + HUMAN, delivered: 'delivered', pitched: 'pitched', outcome: 'outcome', pipeline: 'in progress',
+    dropped: 'dropped', not_approved: 'not approved', not_shortlisted: 'not shortlisted', superseded: 'superseded' };
+  function groupWord(g) { return GROUP_WORD[g] || words(g); }
+  function statusCell(b) {
+    var w = groupWord(b.group), label = b.label || '';
+    if (b.group === 'gate') return '<span class="status-gate">' + esc(w) + '</span>' + (label ? '<span class="sub">' + esc(label) + '</span>' : '');
+    if (b.group === 'outcome') return esc('outcome: ' + label);
+    if (label && label.toLowerCase() !== w.toLowerCase()) return esc(w) + '<span class="sub">' + esc(label) + '</span>';
+    return esc(w);
+  }
+  var nameBySlug = {};
+  D.businesses.forEach(function (b) { if (!nameBySlug[b.slug]) nameBySlug[b.slug] = b.name; });
+  function bizName(slug) { return nameBySlug[slug] || (slug ? slug : '—'); }
+  function cell(cls, label, value, extra) {
+    return '<td class="' + cls + '"><span class="lbl">' + esc(label) + '</span><span class="val">' + value + '</span>' + (extra || '') + '</td>';
+  }
+  function plural(n, one, many) { return n + ' ' + (n === 1 ? one : many); }
+
+  // ---- 1. Now ---------------------------------------------------------------------------------
+  var R = D.run || {};
+  var html = '<h1>Oneshot</h1>';
+  html += '<section id="now"><h2>Now</h2><div class="now"><p>'
+    + 'Run ' + esc(R.run_id || '—') + ', mode ' + esc(R.mode || '—')
+    + ', area ' + esc(R.area_mode || '—') + (R.anchors && R.anchors[0] ? ' (' + esc(R.anchors[0]) + ')' : '')
+    + ', up to ' + (R.max_sites != null ? plural(R.max_sites, 'site', 'sites') : '— sites')
+    + ', ' + esc(R.default_mode || '—') + ' hosting.'
+    + '</p><p class="grey">generated ' + fTime(D.generated_at) + ' UTC</p></div></section>';
+
+  // ---- 2. Waiting on Shahar -------------------------------------------------------------------
+  html += '<section id="waiting"><h2>Waiting on ' + esc(HUMAN) + '</h2>';
+  if (!D.gates || !D.gates.length) {
+    html += '<p class="lead">Nothing waits on ' + esc(HUMAN) + '.</p>';
+  } else {
+    html += '<div class="tablewrap gatewrap"><table class="gates stack"><thead><tr>'
+      + '<th class="h-name">Business</th><th class="h-gate">Gate</th><th class="h-since">Since</th><th class="h-days">Days</th></tr></thead><tbody>';
+    D.gates.forEach(function (g) {
+      html += '<tr><td class="primary">' + esc(g.name) + '<span class="sub">' + esc(g.slug) + '</span></td>'
+        + cell('', 'Gate', esc(g.gate)) + cell('', 'Since', fTime(g.since)) + cell('', 'Days', or(g.days, function (d) { return esc(d); })) + '</tr>';
+    });
+    html += '</tbody></table></div>';
+  }
+  html += '</section>';
+
+  // ---- 3. Delivered ---------------------------------------------------------------------------
+  var delivered = D.businesses.filter(function (b) { return b.group === 'delivered'; });
+  var sent = delivered.filter(function (b) { return b.pitched_at; }).length;
+  html += '<section id="delivered"><h2>Delivered</h2>';
+  if (!delivered.length) {
+    html += '<p class="lead">No site is live yet.</p>';
+  } else {
+    html += '<p class="lead">' + plural(delivered.length, 'site is', 'sites are') + ' live. '
+      + (sent === 0 ? 'No pitch has been sent.' : plural(sent, 'pitch has', 'pitches have') + ' been sent.') + '</p>';
+    html += '<table class="delivered wide"><thead><tr><th class="h-name">Business</th><th class="h-preview">Preview</th><th class="h-proposal">Proposal</th>'
+      + '<th class="h-critic">Critic</th><th class="h-hosting">Hosting</th><th class="h-cms">CMS</th><th class="h-deployed">Deployed</th><th class="h-pitch">Pitch</th></tr></thead><tbody>';
+    delivered.forEach(function (b) {
+      var critic = b.critic_score == null ? DASH : esc(b.critic_score) + ' / 100'
+        + (b.critic_rounds != null ? '<span class="sub">' + plural(b.critic_rounds, 'round', 'rounds') + '</span>' : '');
+      html += '<tr><td class="primary">' + esc(b.name) + '<span class="sub">' + esc(b.slug) + '</span></td>'
+        + cell('c-link', 'Preview', link(b.preview_url))
+        + cell('c-link', 'Proposal', link(b.pitch && b.pitch.proposal_url))
+        + cell('', 'Critic', critic)
+        + cell('', 'Hosting', or(b.hosting_mode, function (h) { return esc(words(h)); }))
+        + cell('', 'CMS', b.cms_verified ? 'verified' : 'not verified')
+        + cell('', 'Deployed', or(b.deploy && b.deploy.deployed_at, fTime))
+        + cell('', 'Pitch', b.pitched_at ? 'sent ' + fDate(b.pitched_at) : 'not sent') + '</tr>';
+    });
+    html += '</tbody></table>';
+  }
+  html += '</section>';
+
+  // ---- 4. Funnel ------------------------------------------------------------------------------
+  var F = D.funnel || [];
+  function shy(s) { return esc(s).replace(/_/g, '_<wbr>').replace(/:/g, ':<wbr>'); }
+  html += '<section id="funnel"><h2>Funnel, current run</h2><p class="lead">How many businesses of ' + esc(R.run_id || 'the current run') + ' reached each state.</p>';
+  html += '<div class="funnel"><table class="funnel-v"><thead><tr><th class="h-state">State</th><th class="h-count">Businesses</th></tr></thead><tbody>';
+  F.forEach(function (f) { html += '<tr><td>' + esc(f.state) + '</td><td class="' + (f.count === 0 ? 'zero' : '') + '">' + esc(f.count) + '</td></tr>'; });
+  html += '</tbody></table>';
+  html += '<table class="funnel-h"><thead><tr>';
+  F.forEach(function (f) { html += '<th scope="col">' + shy(f.state) + '</th>'; });
+  html += '</tr></thead><tbody><tr>';
+  F.forEach(function (f) { html += '<td class="' + (f.count === 0 ? 'zero' : '') + '">' + esc(f.count) + '</td>'; });
+  html += '</tr></tbody></table></div></section>';
+
+  // ---- 5. Businesses --------------------------------------------------------------------------
+  var groupsPresent = {};
+  D.businesses.forEach(function (b) { groupsPresent[b.group] = (groupsPresent[b.group] || 0) + 1; });
+  var groupList = GROUP_ORDER.filter(function (g) { return groupsPresent[g]; })
+    .concat(Object.keys(groupsPresent).filter(function (g) { return GROUP_ORDER.indexOf(g) < 0; }));
+  html += '<section id="businesses"><h2>Businesses, all runs</h2>'
+    + '<p class="lead">Every business researched, current run first. Why is the last ledger note, as written. The name opens the ledger lines.</p>'
+    + '<div class="controls">'
+    + '<div class="group" role="group" aria-label="Run"><span class="grey">Run</span>'
+    + '<button type="button" class="filter" data-run="">All</button>';
+  (D.runs || []).forEach(function (r) {
+    html += '<button type="button" class="filter" data-run="' + esc(r.run_id) + '">' + esc(r.run_id) + (r.current ? ' (current)' : '')
+      + ' <span class="n">' + esc(r.businesses) + '</span></button>';
+  });
+  html += '</div><div class="group" role="group" aria-label="Status"><span class="grey">Status</span>'
+    + '<button type="button" class="filter" data-group="">All</button>';
+  groupList.forEach(function (g) {
+    html += '<button type="button" class="filter" data-group="' + esc(g) + '">' + esc(groupWord(g)) + ' <span class="n">' + esc(groupsPresent[g]) + '</span></button>';
+  });
+  html += '</div><div class="search"><label class="grey" for="q">Search</label> <input type="search" id="q" placeholder="name, slug, note" autocomplete="off"></div>'
+    + '<div class="right"><span id="count" aria-live="polite"></span>'
+    + '<button type="button" class="textbtn" id="expand-all">Expand all</button><button type="button" class="textbtn" id="collapse-all">Collapse all</button></div>'
+    + '</div>';
+  html += '<table class="biz stack"><thead><tr>'
+    + '<th class="h-name">Business</th><th class="h-type">Type</th><th class="h-run">Run</th><th class="h-presence">Presence</th>'
+    + '<th class="h-ratings">Ratings</th><th class="h-status">Status</th><th class="h-why">Why</th><th class="h-changed">Changed</th>'
+    + '</tr></thead><tbody id="rows"></tbody></table></section>';
+
+  // ---- 6. Decisions ---------------------------------------------------------------------------
+  var dec = D.decisions || [];
+  html += '<section id="decisions"><h2>Decisions</h2><p class="lead">' + plural(dec.length, 'human line', 'human lines') + ' in the ledger, newest first. Every row is ' + esc(HUMAN) + '’s.</p>';
+  html += '<table class="decisions wide' + (dec.length ? '' : ' empty') + '"><thead><tr><th class="h-when">When (UTC)</th><th class="h-name">Business</th><th class="h-change">From → to</th><th class="h-note">Note</th></tr></thead><tbody>';
+  if (!dec.length) html += '<tr><td colspan="4">No human decision is in the ledger yet.</td></tr>';
+  dec.forEach(function (l) {
+    html += '<tr><td class="primary">' + fTime(l.ts) + '</td>'
+      + cell('', 'Business', esc(bizName(l.slug)) + (l.slug && l.slug !== '-' ? '<span class="sub">' + esc(l.slug) + (l.run_id ? ', ' + esc(l.run_id) : '') + '</span>' : ''))
+      + cell('', 'From → to', esc(l.from == null ? '—' : l.from) + ' → ' + esc(l.to))
+      + cell('c-note', 'Note', esc(l.note)) + '</tr>';
+  });
+  html += '</tbody></table></section>';
+
+  // ---- 7. Pitches and outcomes ----------------------------------------------------------------
+  var pitched = D.businesses.filter(function (b) { return b.pitched_at || b.outcome; });
+  function channelOf(b) {
+    var line = (b.history || []).filter(function (h) { return h.to === 'pitched'; })[0];
+    var m = line && line.note && line.note.match(/\b(whatsapp|in[ -]person|email|phone|instagram|sms)\b/i);
+    return m ? esc(m[1].toLowerCase()) : DASH;
+  }
+  html += '<section id="pitches"><h2>Pitches and outcomes</h2>';
+  html += '<table class="pitches wide' + (pitched.length ? '' : ' empty') + '"><thead><tr><th class="h-name">Business</th><th class="h-sent">Sent</th><th class="h-channel">Channel</th>'
+    + '<th class="h-outcome">Outcome</th><th class="h-odate">Outcome date</th><th class="h-note">Note</th></tr></thead><tbody>';
+  if (!pitched.length) {
+    html += '<tr><td colspan="6">No pitch has been sent. When the ledger gets a <code>pitched</code> line, the business appears here with the date; the outcome columns fill from the first <code>outcome:*</code> line.</td></tr>';
+  }
+  pitched.forEach(function (b) {
+    html += '<tr><td class="primary">' + esc(b.name) + '<span class="sub">' + esc(b.slug) + '</span></td>'
+      + cell('', 'Sent', or(b.pitched_at, fTime)) + cell('', 'Channel', channelOf(b))
+      + cell('', 'Outcome', or(b.outcome && b.outcome.state, esc))
+      + cell('', 'Outcome date', or(b.outcome && b.outcome.ts, fTime))
+      + cell('c-note', 'Note', or(b.outcome && b.outcome.note, esc)) + '</tr>';
+  });
+  html += '</tbody></table></section>';
+
+  // ---- 8. Leads -------------------------------------------------------------------------------
+  var leads = D.leads || [];
+  html += '<section id="leads"><h2>Leads</h2>';
+  html += '<table class="leads stack' + (leads.length ? '' : ' empty') + '"><thead><tr><th class="h-name">Business</th><th class="h-ref">Referred by</th><th class="h-state">State</th><th class="h-seen">First seen</th></tr></thead><tbody>';
+  if (!leads.length) {
+    html += '<tr><td colspan="4">No lead yet. A lead is a <code>discovered</code> ledger line whose note starts <code>referral:&lt;slug&gt;</code>; it appears here with the referring business.</td></tr>';
+  }
+  leads.forEach(function (l) {
+    html += '<tr><td class="primary">' + esc(l.name) + '<span class="sub">' + esc(l.slug) + '</span></td>'
+      + cell('', 'Referred by', esc(bizName(l.referred_by)) + '<span class="sub">' + esc(l.referred_by) + '</span>')
+      + cell('', 'State', esc(l.state)) + cell('', 'First seen', fDate(l.first_seen)) + '</tr>';
+  });
+  html += '</tbody></table></section>';
+
+  // ---- 9. Expenses ----------------------------------------------------------------------------
+  var E = D.expenses || { tracked: false };
+  var T = D.totals || {};
+  html += '<section id="expenses"><h2>Expenses</h2>';
+  if (!E.tracked) {
+    html += '<p class="lead">Nothing is recorded: <code>expenses.jsonl</code> does not exist yet (schema in <code>docs/expenses.md</code>).</p>'
+      + '<p>Token spend per business is not recorded anywhere' + (T.token_spend_tracked ? '' : '') + '; the budget is '
+      + (T.tokens_per_business_budget ? num(T.tokens_per_business_budget) + ' tokens per business' : 'not recorded either')
+      + ' (<code>totals.tokens_per_business_budget</code>).</p>';
+  } else {
+    html += '<p class="lead">' + plural((E.entries || []).length, 'entry', 'entries') + ' in <code>expenses.jsonl</code>.</p>';
+    function moneyTable(cls, title, firstHead, obj) {
+      var t = '<table class="' + cls + ' stack"><caption class="sub" style="text-align:left;padding-bottom:8px;color:var(--ink);font-weight:600;font-size:14px;line-height:20px">' + esc(title) + '</caption><thead><tr>';
+      if (firstHead) t += '<th>' + esc(firstHead) + '</th>';
+      t += '<th>Currency</th><th>Amount</th></tr></thead><tbody>';
+      var keys = Object.keys(obj).sort();
+      if (!keys.length) t += '<tr class="empty"><td colspan="3">No entries.</td></tr>';
+      keys.forEach(function (k) {
+        var cur = obj[k];
+        if (typeof cur === 'number') { t += '<tr><td class="primary">' + esc(k) + '</td>' + cell('', 'Amount', money(cur)) + '</tr>'; return; }
+        Object.keys(cur).sort().forEach(function (c) {
+          t += '<tr>' + (firstHead ? '<td class="primary">' + esc(k) + '</td>' : '') + cell('', 'Currency', esc(c)) + cell('', 'Amount', money(cur[c])) + '</tr>';
+        });
+      });
+      return t + '</tbody></table>';
+    }
+    html += '<div class="exp">' + moneyTable('exp-month', 'By month', 'Month', E.monthly || {})
+      + moneyTable('exp-acc', 'Accumulated', '', E.accumulated || {})
+      + moneyTable('exp-vendor', 'By vendor', 'Vendor', E.vendors || {})
+      + moneyTable('exp-client', 'By client', 'Client', E.per_client || {}) + '</div>';
+  }
+  html += '</section>';
+
+  // ---- 10. Footer -----------------------------------------------------------------------------
+  var C = D.corrections || [];
+  var dup = D.businesses.length - (T.businesses_all_runs || D.businesses.length);
+  html += '<footer><p>Generated ' + fTime(D.generated_at) + ' UTC from ' + plural(T.ledger_lines || 0, 'ledger line', 'ledger lines')
+    + ', ' + plural(T.human_decisions || 0, 'human decision', 'human decisions')
+    + ', ' + plural(T.businesses_all_runs || 0, 'business', 'businesses') + ' across ' + plural((D.runs || []).length, 'run', 'runs')
+    + (dup > 0 ? ' (' + plural(D.businesses.length, 'row', 'rows') + ': ' + dup + ' seen in ' + ((D.runs || []).length === 2 ? 'both runs' : 'more than one run') + ')' : '') + '.</p>';
+  html += '<h3>Corrections to the ledger</h3>';
+  html += '<table class="corrections wide' + (C.length ? '' : ' empty') + '"><thead><tr><th class="h-when">Date</th><th class="h-agent">Agent</th><th class="h-note">Note</th></tr></thead><tbody>';
+  if (!C.length) html += '<tr><td colspan="3" class="grey">No project-wide correction is in the ledger.</td></tr>';
+  C.forEach(function (c) {
+    html += '<tr><td class="primary">' + fTime(c.ts) + '</td>'
+      + cell('', 'Agent', esc(c.agent === 'human' ? HUMAN : c.agent) + (c.agent_version ? ' <span class="grey">' + esc(c.agent_version) + '</span>' : ''))
+      + cell('c-note', 'Note', esc(c.note)) + '</tr>';
+  });
+  html += '</tbody></table></footer>';
+
+  app.innerHTML = html;
+
+  // ---- businesses table: filters, search, expand ---------------------------------------------
+  var state = { run: '', group: '', q: '' };
+  var open = {};
+  var keyOf = function (b) { return b.run_id + '/' + b.slug; };
+  var idOf = function (k) { return k.replace(/[^A-Za-z0-9_-]/g, '_'); };
+  var rows = document.getElementById('rows');
+  var qInput = document.getElementById('q');
+  var countEl = document.getElementById('count');
+
+  function readHash() {
+    var h = location.hash.replace(/^#/, '');
+    h.split('&').forEach(function (kv) {
+      var i = kv.indexOf('='); if (i < 0) return;
+      var k = decodeURIComponent(kv.slice(0, i)), v = decodeURIComponent(kv.slice(i + 1).replace(/\+/g, ' '));
+      if (k in state) state[k] = v;
+    });
+  }
+  function writeHash() {
+    var parts = [];
+    Object.keys(state).forEach(function (k) { if (state[k]) parts.push(encodeURIComponent(k) + '=' + encodeURIComponent(state[k])); });
+    var next = parts.length ? '#' + parts.join('&') : '';
+    if (next === location.hash || (!next && !location.hash)) return;
+    try { history.replaceState(null, '', location.pathname + location.search + next); }
+    catch (e) { location.hash = next; }
+  }
+  function matches(b) {
+    if (state.run && b.run_id !== state.run) return null;
+    if (state.group && b.group !== state.group) return null;
+    if (!state.q) return { direct: true };
+    var q = state.q.toLowerCase();
+    var direct = (b.name + ' ' + b.slug + ' ' + (b.why || '')).toLowerCase().indexOf(q) > -1;
+    if (direct) return { direct: true };
+    var hist = (b.history || []).some(function (h) { return (h.note || '').toLowerCase().indexOf(q) > -1; });
+    return hist ? { direct: false, hist: true } : null;
+  }
+  function whyBlock(b, m) {
+    var last = (b.history || [])[b.history.length - 1];
+    return '<div class="why-short">' + esc(firstSentence(b.why)) + '</div><div class="why-full">' + esc(b.why) + '</div>'
+      + (last ? '<span class="sub">' + esc(agentName(last)) + ', ' + fDay(last.ts) + '</span>' : '')
+      + (m && m.hist ? '<span class="sub">matches a ledger line</span>' : '');
+  }
+  function ratingsCell(b) {
+    var ks = Object.keys(b.ratings || {});
+    if (!ks.length) return DASH;
+    return ks.map(function (k) {
+      var r = b.ratings[k];
+      return '<div>' + esc(platform(k)) + ' ' + esc(r.rating) + (r.count != null ? ' <span class="grey">' + esc(r.count) + '</span>' : '') + '</div>';
+    }).join('');
+  }
+  function rowHtml(b, m, runShown) {
+    var k = keyOf(b), id = idOf(k), isOpen = !!open[k];
+    var runText = runShown ? esc(String(b.run_id).split('-').pop()) : esc(b.run_id).replace(/-/g, '-<wbr>');
+    return '<tr class="row' + (isOpen ? ' open' : '') + '" data-key="' + esc(k) + '">'
+      + '<td class="c-name primary"><button type="button" class="name" aria-expanded="' + isOpen + '" aria-controls="p-' + id + '">' + esc(b.name) + '</button>'
+      + '<span class="sub">' + esc(b.slug) + '</span><span class="type-inline">' + esc(b.type ? words(b.type) : '—') + '</span></td>'
+      + cell('c-type', 'Type', or(b.type, function (t) { return esc(words(t)); }))
+      + cell('c-run', 'Run', '<span title="' + esc(b.run_id) + '">' + runText + '</span>')
+      + cell('c-presence', 'Presence', or(b.presence, function (p) { return esc(p) + ' / 5'; }))
+      + cell('c-ratings', 'Ratings', ratingsCell(b))
+      + cell('c-status', 'Status', statusCell(b))
+      + cell('c-why', 'Why', whyBlock(b, m))
+      + cell('c-changed', 'Changed', or(b.last_change, fDay) + (b.days_since_change != null ? '<span class="sub">' + esc(b.days_since_change) + ' d</span>' : ''))
+      + '</tr>'
+      + '<tr class="whyrow"><td colspan="8">' + whyBlock(b, m) + '</td></tr>'
+      + '<tr class="panel" id="p-' + id + '"' + (isOpen ? '' : ' hidden') + '><td colspan="8">' + (isOpen ? panelHtml(b) : '') + '</td></tr>';
+  }
+  function panelHtml(b) {
+    var h = '<div class="info">'
+      + '<span><span class="k">Found via</span> ' + link(b.found_via) + '</span>'
+      + '<span><span class="k">First seen</span> ' + or(b.first_seen, fDate) + '</span>'
+      + '<span><span class="k">Ledger lines</span> ' + esc(b.lines) + '</span>'
+      + '<span><span class="k">Decisions</span> ' + esc(b.human_decisions) + '</span>'
+      + '<span><span class="k">Copy rounds</span> ' + esc(b.copy_rounds) + '</span>'
+      + '<span><span class="k">Critic rounds</span> ' + esc(b.critic_rounds) + '</span></div>';
+    h += '<p class="reached"><span class="grey">Reached:</span> ' + esc((b.reached || []).join(', ')) + '</p>';
+    h += '<table class="hist stack"><thead><tr><th class="h-when">When (UTC)</th><th class="h-change">From → to</th><th class="h-agent">Agent</th><th class="h-note">Note</th></tr></thead><tbody>';
+    (b.history || []).forEach(function (l) {
+      h += '<tr class="' + (l.agent === 'human' ? 'human' : '') + '"><td class="primary">' + fTime(l.ts) + '</td>'
+        + cell('', 'From → to', esc(l.from == null ? '—' : l.from) + ' → ' + esc(l.to))
+        + cell('', 'Agent', agentWithV(l))
+        + cell('c-note', 'Note', esc(l.note) + (l.hosting_mode ? ' <span class="grey">' + esc(l.hosting_mode) + '</span>' : '')) + '</tr>';
+    });
+    return h + '</tbody></table>';
+  }
+  var byKey = {};
+  D.businesses.forEach(function (b) { byKey[keyOf(b)] = b; });
+
+  function render() {
+    var out = '', shown = 0, lastRun = null;
+    D.businesses.forEach(function (b) {
+      var m = matches(b); if (!m) return;
+      shown++;
+      out += rowHtml(b, m, lastRun === b.run_id);
+      lastRun = b.run_id;
+    });
+    if (!shown) out = '<tr class="empty"><td colspan="8">No business matches.</td></tr>';
+    rows.innerHTML = out;
+    countEl.textContent = 'Showing ' + shown + ' of ' + D.businesses.length + ' rows';
+    document.querySelectorAll('.filter[data-run]').forEach(function (btn) { btn.setAttribute('aria-pressed', String(btn.getAttribute('data-run') === state.run)); });
+    document.querySelectorAll('.filter[data-group]').forEach(function (btn) { btn.setAttribute('aria-pressed', String(btn.getAttribute('data-group') === state.group)); });
+    if (qInput.value !== state.q) qInput.value = state.q;
+    writeHash();
+  }
+  function setOpen(tr, want) {
+    var k = tr.getAttribute('data-key'), b = byKey[k];
+    var btn = tr.querySelector('button.name');
+    var panel = document.getElementById(btn.getAttribute('aria-controls'));
+    if (want && !open[k]) { panel.firstChild.innerHTML = panelHtml(b); }
+    open[k] = want; if (!want) delete open[k];
+    tr.classList.toggle('open', want);
+    btn.setAttribute('aria-expanded', String(want));
+    panel.hidden = !want;
+    if (!want) panel.firstChild.innerHTML = '';
+  }
+
+  document.querySelector('.controls').addEventListener('click', function (e) {
+    var t = e.target.closest('button'); if (!t) return;
+    if (t.hasAttribute('data-run')) { state.run = t.getAttribute('data-run'); render(); }
+    else if (t.hasAttribute('data-group')) { state.group = t.getAttribute('data-group'); render(); }
+    else if (t.id === 'expand-all') { rows.querySelectorAll('tr.row').forEach(function (tr) { setOpen(tr, true); }); }
+    else if (t.id === 'collapse-all') { rows.querySelectorAll('tr.row.open').forEach(function (tr) { setOpen(tr, false); }); }
+  });
+  qInput.addEventListener('input', function () { state.q = qInput.value.trim(); render(); });
+  qInput.addEventListener('search', function () { state.q = qInput.value.trim(); render(); });
+  rows.addEventListener('click', function (e) {
+    var btn = e.target.closest('button.name'); if (!btn) return;
+    var tr = btn.closest('tr.row');
+    setOpen(tr, btn.getAttribute('aria-expanded') !== 'true');
+  });
+  rows.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    var tr = e.target.closest('tr'); if (!tr) return;
+    var row = tr.classList.contains('row') ? tr : tr.classList.contains('panel') ? tr.previousElementSibling.previousElementSibling : null;
+    if (!row || !row.classList.contains('open')) return;
+    e.preventDefault();
+    setOpen(row, false);
+    row.querySelector('button.name').focus();
+  });
+  window.addEventListener('hashchange', function () { readHash(); render(); });
+
+  readHash();
+  render();
+})();
+</script>
+</body>
+</html>
