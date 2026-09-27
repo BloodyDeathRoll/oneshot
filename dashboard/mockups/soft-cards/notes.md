@@ -287,3 +287,108 @@ JPEGs), 0 beyond those; 355.7 KB total, **106.5 KB before data**, `dist/img` 87 
 five); column chart focus + ArrowRight → "KA · pass on 22 Sep · 3 rounds" with the live region;
 station bar unchanged; reduced motion final at 120 ms, 0 animations. Contrast table unchanged
 (lowest text pair 4.51:1). The `final-1440-*.png` files in this folder are the critic's, not mine.
+
+---
+
+# Run dashboard-02 — the four gate forms (proposals/dashboard-01/001, "The four gates as forms")
+
+Server: `dashboard/server.mjs` (GET /gates, /data.json, /events SSE, /files/<prefix>; POST /decide).
+The page probes `GET gates` only when served over http (or https off claude.ai): under `file://` and
+in the artifact it makes no request and renders read-only with one line under the top bar,
+"read-only · open the CLI or start dashboard/server.mjs to decide". Live: it re-fetches `data.json`
+on every SSE `data` event and re-renders in place (view, scroll and focus kept; a re-render waits
+while a form field holds text or a POST is in flight; refreshes are sequenced so an older
+`data.json` can never overwrite a newer one).
+
+Forms (one accent affordance each, reason ≥ 3 chars required client-side, pending state, the
+returned ledger line verbatim on 201, the server's error verbatim on 400/409 with a "Reload the
+page data" action on 409, `expected_state` on every business decision):
+- **a. shortlist** — approve / drop + reason, on Pipeline rows in state `shortlisted` of the
+  *selected* run when that run has no `approved` line (`data.mjs` flags this gate for the current
+  run only; the selected-run rule is identical for the current run and lets a test run be driven),
+  and on the Needs-you list (a "Decide here" toggle opens the row's form; live only).
+- **b. pick** — "Pick a mockup" on `mocked` rows opens a panel under the row: Calm / Interactive /
+  Unique side by side, each with its newest desktop sheet from `/files/sites/<slug>/mockups/<v>/
+  shots/round-N/desktop-sheet.png` (candidates tried newest-first via `<img onerror>`, then
+  `shots/desktop-1.png`, else "no desktop sheet on disk") and a link to `dist/index.html`; radio +
+  reason + "Pick this variant". Needs-you "Pick" jumps to it.
+- **c. pitch** — on the Sites card for `packaged` (and behind "Decide here" on Needs-you):
+  channel radios WhatsApp / in person / email / phone, date (default today), note, "I sent it";
+  then on `pitched` / `outcome:*` cards: reply / meeting / sale / ignored + note.
+- **d. proposal** — on Decisions under each proposal with "no merge record": approve / reject +
+  reason, `file` = its path. In live mode proposal and report links go through `/files/`.
+
+## Round 10 — first build (`shots/round-10`: read-only sheets; `live-*.png` from the server on a copy)
+
+Worse than the picked look: the read-only Overview grew the accent card to ~1000 px because every
+Needs-you row carried a full (disabled) pitch form — the first screen lost the funnel; the mode
+strip sat under the sticky top bar (negative margin); the pick toggle was a second accent button
+on a row that already has an accent pill; two Pipeline filter pills both read "Waiting on you 1"
+(groups `gate` and `delivered` shared a label); the pitch form posted the button's value ("sent")
+instead of the channel radio (400); after a proposal approval a focus-out re-render raced the
+SSE refresh and an older `data.json` won (card stayed at "6 without · 1 decided").
+
+Also found in the working tree: the `:root` line read `--acc:#--acc:#6A2FE0;;--acc:#F0A20D` —
+an orange accent written over the purple by something other than my patches (round-10 sheets
+show it). Restored to the BRIEF's purple before round 11, then replaced by Shahar's ruling below.
+
+## Round 11 — final (`shots/round-11`)
+
+Changed: Needs-you forms behind a per-row "Decide here" toggle (live only; read-only keeps the
+Overview exactly as round 9); pick toggle secondary; `delivered` filter reads "Built, pitch not
+sent"; mode strip with a normal margin; choice comes from the radio whenever a form has radios;
+POSTs hold re-renders and refreshes carry a sequence number; the accent card's forms got the
+`onacc` styles (white primary pill, translucent inputs, white focus ring).
+
+**Shahar's ruling (2026-09-27, via the coordinator): `--acc` = `#0E34CB`, "the rest
+accordingly".** Tints with the same white-mix steps as the purple set (20 / 40 / 60 / 80 / 92 %,
+secondary 88 %): `--t1 #3E5DD5 · --t2 #6E85E0 · --t3 #9FAEEA · --t4 #CFD6F5 · --t5 #ECEFFB ·
+--acc-sec #E2E7F9`; hover `#0C2EB3`; `--blue` retired (aliased to `--acc`, links use the accent).
+Green / red unchanged.
+
+Contrast (computed): accent on white 8.85 · white on accent 8.85 · `#E2E7F9` on accent 7.18 ·
+accent on `#ECEFFB` 7.72 · accent on ground 8.25 · ink on `#6E85E0` (fails-chart segments) 5.43 ·
+ink on `#9FAEEA` 8.66 · `#9FAEEA` on ink (tooltip secondary) 8.66 · ink on ground 17.46 · `#4B5563`
+on card 7.56, on ground 7.05 · `#6B7280` on card 4.83, on ground 4.51 · green on white 5.08, on
+`#EDF7F0` 4.63 · red on white 6.16, on `#FCEBED` 5.36 · hollow "0" stroke 2.16 (shape).
+
+## End-to-end test (server on port 8972, `--ledger` = a COPY in scratch; real ledger never opened for writing)
+
+Copy = `ledger.jsonl` + 30 synthetic lines: run `test-forms-01` with the-lavish-haven at
+`shortlisted` (no approval in that run); run `test-forms-02` with layday-surf-ahangama at `mocked`
+and ka-surf-hostel-and-restaurant at `packaged`. Driven by keyboard in Playwright
+(`forms-test.mjs`, scratch); `md5 ledger.jsonl` = `56e186aff79e4eef8a33526b270ca21b` before and
+after every run; no test server left listening.
+
+1. shortlist · approve (Needs-you, Enter on "Decide here", type reason, Tab, Enter on Approve) →
+   `{"gate":"shortlist","run_id":"test-forms-01","choice":"approve","reason":"Approved from the
+   dashboard test: …","slug":"the-lavish-haven","expected_state":"shortlisted"}` → **201**, copy
+   359 → 360 lines → the returned line shown in the "last written" strip; after the SSE event the
+   Pipeline row reads `approved`.
+2. pick · stale (SSE blocked by the test; a `mocked → picked` line appended to the copy between
+   page load and submit) → `{"gate":"pick",…,"choice":"calm",…,"expected_state":"mocked"}` →
+   **409** `stale: layday-surf-ahangama is now "picked", this decision needs mocked` + the ledger's
+   current line + "Reload the page data" → after Reload the row reads `picked`, panel gone.
+3. pitch · empty reason (Sites card, radio chosen, Enter on "I sent it") → **no request**; the
+   form says "a reason is required (at least 3 characters) — it becomes the ledger note verbatim"
+   and focus moves to the reason field.
+4. pitch · "I sent it" → `{"gate":"pitch",…,"choice":"whatsapp",…,"date":"2026-09-27"}` → **201**
+   → KA card re-renders as `pitched` with the outcome buttons.
+5. proposal · approve 002-pick-feedback.md → **201** `proposal:approved` → card "5 without a merge
+   record · 2 decided" (matches the server's `data.json`).
+
+## Measurements (final build, both modes, all five views at 1440 and 1024)
+
+- Read-only (file://): scrollWidth = innerWidth everywhere; console errors 0; requests 1 (the file)
+  on four views, 4 on Sites (file + 3 JPEGs); **0 beyond the file**; 375.1 KB total, **124.8 KB
+  before data**; `dist/img` 87 KB; keyboard 39 / 45 / 29 / 13 / 47 stops, all ringed; Enter on
+  every nav button keeps focus on the button; reduced motion final at 120 ms.
+- Live (server on a copy): scrollWidth = innerWidth everywhere; console errors 0; requests = the
+  page + `gates` + `data.json` + `events` (+ 3 JPEGs on Sites), nothing beyond the page's origin;
+  keyboard 42 / 45 / 15 / 13 / 65 stops (the forms add stops on Overview and Decisions; the Sites
+  count is for the test run's single card), all ringed.
+
+Open: `data.mjs` computes `days_since_change` from `generated_at`, so synthetic future-dated test
+lines show "-1 days" — a test artefact, not a page defect. The shortlist gate for a non-current
+run is a page-side rule (see form a); if `data.mjs` starts flagging it, the page's rows and the data
+gates agree by construction.

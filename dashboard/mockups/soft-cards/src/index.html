@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OneShot — Overview</title>
-<meta name="description" content="OneShot operator dashboard, direction B “Soft cards” (picked): overview, pipeline, sites, agents and decisions of run 2026-09-ahangama-02, read from data.json.">
+<meta name="description" content="OneShot operator dashboard, direction B “Soft cards” (picked): overview, pipeline, sites, agents, decisions and the four gate forms, read from data.json (live from dashboard/server.mjs when it runs).">
 <style>
 @font-face{font-family:"Manrope";font-style:normal;font-weight:200 800;font-display:swap;src:url("__FONT__") format("woff2")}
 :root{
   --ground:#F5F7FB;--card:#FFFFFF;--ink:#0B1220;--ink2:#4B5563;--ink3:#6B7280;--rule:#E5E8EF;
-  --acc:#6A2FE0;--t1:#8859E6;--t2:#A682EC;--t3:#C3ACF3;--t4:#E1D5F9;--t5:#F3EEFD;--acc-sec:#EDE6FB;
-  --blue:#1F4BFF;
+  --acc:#0E34CB;--t1:#3E5DD5;--t2:#6E85E0;--t3:#9FAEEA;--t4:#CFD6F5;--t5:#ECEFFB;--acc-sec:#E2E7F9;
+  --blue:var(--acc); /* retired 2026-09-27 (Shahar): links use the accent */
   --green:#1A7F37;--green-bg:#EDF7F0;--red:#C0182B;--red-bg:#FCEBED;
   --shadow:0 1px 2px rgba(11,18,32,.04),0 8px 24px rgba(11,18,32,.06);
   --r:20px;--r2:12px;--gap:24px;--pad:28px;
@@ -115,6 +115,7 @@ main{min-width:0;padding:0 24px 48px}
 .gates a.open{flex:none;background:#fff;color:var(--acc);text-decoration:none;font-weight:700;font-size:13px;border-radius:999px;padding:8px 14px;line-height:1}
 .gates a.open:hover{background:var(--t5)}
 .gates a.open:focus-visible{outline-color:#fff}
+.gates .btn.s{padding:8px 12px}
 .gates li.more .who b{font-weight:500}
 
 /* funnel */
@@ -262,6 +263,68 @@ td.next .why{display:block;font-size:13px;color:var(--ink3);overflow:hidden;text
 .props .m a{color:var(--ink2);font-weight:500;text-decoration:underline;text-underline-offset:3px}
 .props .m .tag.ok{background:var(--green-bg);color:var(--green)}
 
+/* ---------- gate forms ---------- */
+.mode{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink2);font-weight:500;margin:0 0 16px;min-height:20px}
+.mode i{width:8px;height:8px;border-radius:999px;background:var(--t3);flex:none}
+.mode.live i{background:var(--green)}
+.mode .lastline{margin-left:auto;display:flex;gap:10px;align-items:center;min-width:0}
+.mode code{font-family:inherit;font-size:13px;color:var(--ink);background:var(--card);border-radius:8px;padding:3px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:640px;display:inline-block;vertical-align:middle}
+.mode button{border:0;background:none;color:var(--ink2);font-size:13px;font-weight:600;text-decoration:underline;cursor:pointer;padding:0}
+form.gate{display:grid;gap:10px;margin-top:12px}
+form.gate.compact{grid-template-columns:minmax(0,1fr) auto;align-items:start}
+form.gate .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+form.gate input[type=text],form.gate input[type=date],form.gate textarea{font:inherit;font-size:14px;color:var(--ink);background:var(--card);border:1px solid var(--rule);border-radius:var(--r2);padding:9px 12px;width:100%;min-width:0}
+form.gate textarea{resize:vertical;min-height:40px}
+form.gate input:focus-visible,form.gate textarea:focus-visible{outline:2px solid var(--acc);outline-offset:1px;border-color:transparent}
+.btn{font:inherit;font-size:13px;font-weight:700;border-radius:999px;padding:9px 14px;line-height:1;cursor:pointer;border:1.5px solid transparent;white-space:nowrap}
+.btn.p{background:var(--acc);color:#fff}
+.btn.p:hover{background:#0C2EB3}
+.btn.s{background:transparent;color:var(--ink);border-color:var(--rule)}
+.btn.s:hover{background:var(--ground)}
+.btn:disabled{opacity:.5;cursor:default}
+form.gate fieldset{border:0;padding:0;margin:0;display:flex;gap:6px;flex-wrap:wrap}
+form.gate legend{font-size:13px;color:var(--ink2);font-weight:600;margin-bottom:6px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;margin:0}
+.opt span{display:inline-block;border-radius:999px;padding:7px 12px;font-size:13px;font-weight:600;background:var(--ground);color:var(--ink2);cursor:pointer;border:1.5px solid transparent}
+.opt input:checked+span{background:var(--t5);color:var(--acc);border-color:var(--acc)}
+.opt input:focus-visible+span{outline:2px solid var(--acc);outline-offset:2px}
+.gstat{font-size:13px;color:var(--ink2);line-height:1.45;grid-column:1/-1}
+.gstat.err{color:var(--red);font-weight:600}
+.gstat code{display:block;font-family:inherit;font-size:13px;color:var(--ink);background:var(--ground);border-radius:8px;padding:8px 10px;margin-top:6px;white-space:pre-wrap;word-break:break-word;font-weight:500}
+.gstat .btn{margin-top:8px}
+form.gate.ro input,form.gate.ro textarea,form.gate.ro .opt span{opacity:.55}
+/* forms on the accent card */
+.onacc form.gate input[type=text],.onacc form.gate input[type=date],.onacc form.gate textarea{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#fff}
+.onacc form.gate input::placeholder{color:var(--acc-sec)}
+.onacc .btn.p{background:#fff;color:var(--acc)}
+.onacc .btn.p:hover{background:var(--t5)}
+.onacc .btn.s{color:#fff;border-color:rgba(255,255,255,.5)}
+.onacc .btn.s:hover{background:rgba(255,255,255,.12)}
+.onacc .opt span{background:rgba(255,255,255,.14);color:#fff}
+.onacc .opt input:checked+span{background:#fff;color:var(--acc);border-color:#fff}
+.onacc .gstat{color:var(--acc-sec)}.onacc .gstat.err{color:#FFD2D8}
+.onacc .gstat code{background:rgba(255,255,255,.14);color:#fff}
+.onacc legend{color:var(--acc-sec)}
+.onacc :focus-visible,.onacc form.gate input:focus-visible,.onacc .opt input:focus-visible+span{outline-color:#fff}
+.gates li.hasform{flex-wrap:wrap}
+.gates li.hasform form.gate{flex-basis:100%;margin-top:4px;margin-bottom:6px}
+/* pick panel in the pipeline */
+tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
+.pickpanel{padding:20px 0 0}
+.variants{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.variant{border:1.5px solid var(--rule);border-radius:var(--r2);padding:10px;position:relative}
+.variant:has(input:checked){border-color:var(--acc);background:var(--t5)}
+.variant:has(input:focus-visible){outline:2px solid var(--acc);outline-offset:2px}
+.variant input{position:absolute;opacity:0;inset:0;margin:0}
+.variant .vh{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:15px;margin-bottom:8px}
+.variant .vh span{font-size:13px;color:var(--ink3);font-weight:500}
+.variant img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:8px;background:var(--ground)}
+.variant .nosheet{aspect-ratio:16/10;border-radius:8px;background:var(--ground);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--ink2);text-align:center;padding:12px}
+.variant a{position:relative;z-index:1}
+.linkrow{font-size:13px;color:var(--ink3);margin-top:8px}
+.linkrow a{color:var(--ink2)}
+
 /* ---------- svg shared ---------- */
 .tip,.tipdot{opacity:0;pointer-events:none}
 .datum:hover>.tip,.datum:focus>.tip,.datum:hover>.tipdot,.datum:focus>.tipdot,.seg:hover>.tip,.seg.sel>.tip{opacity:1}
@@ -313,6 +376,8 @@ td.next .why{display:block;font-size:13px;color:var(--ink3);overflow:hidden;text
   .pipe-head{flex-direction:column;align-items:flex-start;gap:16px}
   .pipe-sum{flex-wrap:wrap;gap:8px 16px}
   .sites-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .variants{grid-template-columns:minmax(0,1fr)}
+  .mode .lastline{display:none}
   .ag-grid{grid-template-columns:minmax(0,1fr)}
   .ag-mini{grid-template-columns:repeat(2,minmax(0,1fr))}
   .dec{grid-template-columns:minmax(0,1fr)}
@@ -372,10 +437,12 @@ td.next .why{display:block;font-size:13px;color:var(--ink3);overflow:hidden;text
     </div>
   </header>
 
+  <div class="mode" id="mode" role="status"><i aria-hidden="true"></i><span id="mode-text">read-only · open the CLI or start dashboard/server.mjs to decide</span><span class="lastline" id="lastline"></span></div>
+
   <section class="view on" id="view-overview" aria-label="Overview">
     <div class="ov">
       <div class="kpis" id="kpis"></div>
-      <section class="card needs" id="needs" tabindex="-1" aria-labelledby="needs-h"></section>
+      <section class="card needs onacc" id="needs" tabindex="-1" aria-labelledby="needs-h"></section>
       <section class="card funnel" aria-labelledby="funnel-h">
         <div class="card-h"><h2 id="funnel-h">Funnel</h2><span class="meta" id="funnel-meta"></span></div>
         <div id="funnel"></div>
@@ -444,6 +511,10 @@ let D;
 const raw=$('#data').textContent.trim();
 if(raw&&!raw.startsWith('<!--')){D=JSON.parse(raw);}
 else{D=await (await fetch('../../../data.json')).json();}
+let LIVE=false,GATE_SPEC=null;
+// probe the control server only when served over http (file:// and the claude.ai artifact never make the request)
+const canProbe=location.protocol==='http:'||(location.protocol==='https:'&&!/claude/i.test(location.hostname));
+async function probe(){if(!canProbe)return false;try{const r=await fetch('gates',{cache:'no-store'});if(!r.ok)return false;const j=await r.json();GATE_SPEC=j.decisions||null;return true}catch{return false}}
 
 /* ---------- helpers ---------- */
 const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -453,7 +524,9 @@ const runShort=id=>id.replace(/^\d{4}-\d{2}-/,'');
 const el=(tag,attrs={},...kids)=>{const e=document.createElement(tag);for(const[k,v]of Object.entries(attrs)){if(k==='class')e.className=v;else if(k==='html')e.innerHTML=v;else if(k==='text')e.textContent=v;else if(v!=null)e.setAttribute(k,v)}for(const k of kids){if(k==null)continue;e.append(k.nodeType?k:document.createTextNode(k))}return e};
 const sv=(tag,attrs={},...kids)=>{const e=document.createElementNS(SVGNS,tag);for(const[k,v]of Object.entries(attrs)){if(k==='text')e.textContent=v;else if(v!=null)e.setAttribute(k,v)}for(const k of kids)if(k)e.append(k);return e};
 const fmt=n=>Number.isInteger(n)?String(n):n.toFixed(1);
-const bizMap=new Map();for(const b of D.businesses)bizMap.set(b.slug,b.name);bizMap.set('dashboard','Dashboard');bizMap.set('-','Project');
+const bizMap=new Map();
+function setData(d){D=d;bizMap.clear();for(const b of D.businesses)bizMap.set(b.slug,b.name);bizMap.set('dashboard','Dashboard');bizMap.set('-','Project')}
+setData(D);
 const bizName=s=>bizMap.get(s)||s||'—';
 const shortName=s=>bizName(s).replace(' Surf Ahangama','').replace(' Surf Hostel','').replace('The ','');
 const agentLabel=a=>a==='human'?D.human:a;
@@ -495,7 +568,7 @@ function countUp(node,to,key){
 }
 
 /* ---------- state ---------- */
-const state={run:D.run.run_id,range:'all',view:'overview',filter:'all',decFilter:'all',feedAll:false};
+const state={run:D.run.run_id,range:'all',view:'overview',filter:'all',decFilter:'all',feedAll:false,openPick:null,openNeeds:null,results:{},dirty:false};
 const days=D.series.days;
 const RANGES=[['all',`Whole run · ${dShort(days[0])} – ${dShort(days.at(-1))}`,days.length],['7',`Last 7 days · ${dShort(days.at(-7))} – ${dShort(days.at(-1))}`,7],['3',`Last 3 days · ${dShort(days.at(-3))} – ${dShort(days.at(-1))}`,3]];
 const rangeN=()=>RANGES.find(r=>r[0]===state.range)[2];
@@ -503,23 +576,31 @@ const rangeStart=()=>days.at(-rangeN());
 const isCur=()=>state.run===D.run.run_id;
 
 const runSel=$('#run');
-for(const r of D.runs)runSel.append(el('option',{value:r.run_id,text:`${runShort(r.run_id)}${r.current?' · current':' · superseded'}`}));
-runSel.value=state.run;runSel.onchange=()=>{state.run=runSel.value;render()};
+function renderRunSel(){runSel.innerHTML='';for(const r of D.runs)runSel.append(el('option',{value:r.run_id,text:`${runShort(r.run_id)}${r.current?' · current':/^test-/.test(r.run_id)?' · test':' · superseded'}`}));if(!D.runs.find(r=>r.run_id===state.run))state.run=D.run.run_id;runSel.value=state.run}
+renderRunSel();runSel.onchange=()=>{state.run=runSel.value;render()};
 const rangeSel=$('#range');
 for(const r of RANGES)rangeSel.append(el('option',{value:r[0],text:r[1]}));
 rangeSel.onchange=()=>{state.range=rangeSel.value;render()};
 
-$('#side-foot').append(
-  el('div',{html:`<b>${runShort(D.run.run_id)}</b> · ${D.run.mode} mode`}),
-  el('div',{text:D.run.anchors[0].split(',').slice(0,2).join(',')}),
-  el('div',{text:`Data ${tShort(D.generated_at)} UTC`}),
-  el('div',{text:`${D.totals.ledger_lines} ledger lines · ${D.totals.human_decisions} decisions`})
-);
-$('#badge-needs').textContent=D.kpis.needs_you;
-$('#n-pipe').textContent=D.runs.find(r=>r.current).businesses;
-$('#n-sites').textContent=D.kpis.live_sites;
-$('#n-agents').textContent=Object.keys(D.agents).length;
-$('#n-dec').textContent=D.decisions.length;
+function renderChrome(){
+  const f=$('#side-foot');f.innerHTML='';
+  f.append(
+    el('div',{html:`<b>${runShort(D.run.run_id)}</b> · ${D.run.mode} mode`}),
+    el('div',{text:D.run.anchors[0].split(',').slice(0,2).join(',')}),
+    el('div',{text:`Data ${tShort(D.generated_at)} UTC${LIVE?' · live':''}`}),
+    el('div',{text:`${D.totals.ledger_lines} ledger lines · ${D.totals.human_decisions} decisions`})
+  );
+  $('#badge-needs').textContent=D.kpis.needs_you;
+  $('#n-pipe').textContent=D.runs.find(r=>r.current).businesses;
+  $('#n-sites').textContent=D.kpis.live_sites;
+  $('#n-agents').textContent=Object.keys(D.agents).length;
+  $('#n-dec').textContent=D.decisions.length;
+  $('#mode').classList.toggle('live',LIVE);
+  $('#mode-text').textContent=LIVE?`live · ${location.host} · decisions append to the ledger`:'read-only · open the CLI or start dashboard/server.mjs to decide';
+  const ll=$('#lastline');ll.innerHTML='';
+  const last=Object.values(state.results).filter(r=>r.status===201).sort((a,b)=>b.at-a.at)[0];
+  if(last){ll.append(el('span',{text:'last written:'}),el('code',{title:JSON.stringify(last.body.line),text:JSON.stringify(last.body.line)}));const d=el('button',{type:'button',text:'dismiss'});d.onclick=()=>{for(const k in state.results)if(state.results[k]===last)delete state.results[k];renderChrome()};ll.append(d)}
+}
 
 /* nav */
 document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view,b.dataset.focus)));
@@ -536,11 +617,12 @@ function go(view,focus){
   document.querySelectorAll('#view-'+view+' svg').forEach(sizeTips);
   $('#title').textContent=TITLES[view];document.title=`OneShot — ${TITLES[view]}`;
   window.scrollTo(0,0);
-  if(view==='pipeline'&&focus){state.filter=focus;renderPipeline()}
+  if(view==='pipeline'&&focus){if(focus.startsWith('pick:')){state.openPick=focus.slice(5);state.filter='all'}else state.filter=focus;renderPipeline()}
   let target=null;
   if(view==='overview'&&focus==='needs')target=$('#needs');
   if(view==='sites'&&focus)target=document.getElementById('site-'+focus);
   if(view==='decisions'&&focus==='proposals')target=$('#props');
+  if(view==='pipeline'&&focus&&focus.startsWith('pick:'))target=document.getElementById('pick-'+focus.slice(5));
   if(target){target.focus({preventScroll:false});target.scrollIntoView({block:'start',behavior:reduced?'auto':'smooth'});target.classList.add('flash');setTimeout(()=>target.classList.remove('flash'),2400)}
   else if(!document.activeElement||!document.activeElement.closest('.nav')){$('#title').focus({preventScroll:true})}
 }
@@ -698,6 +780,96 @@ function failsChart(rows,W){
   return svg;
 }
 
+/* ---------- gate forms ---------- */
+let posting=0,seq=0;
+const today=()=>new Date().toISOString().slice(0,10);
+const runHasApprovals=run=>D.businesses.some(b=>b.run_id===run&&(b.reached||[]).includes('approved'));
+const shortlistOpen=b=>b.state==='shortlisted'&&!runHasApprovals(b.run_id);
+const fileURL=p=>LIVE?`files/${p}`:REPO+p;
+const CHANNELS=[['whatsapp','WhatsApp'],['in_person','in person'],['email','email'],['phone','phone']];
+const OUTCOMES=[['reply','reply'],['meeting','meeting'],['sale','sale'],['ignored','ignored']];
+function gateForm(o){
+  // o: {key, gate, run_id, slug, expected_state, file, compact, radios:[[value,label]], radioLegend, buttons:[[choice,label,primary]], date, placeholder}
+  const f=el('form',{class:'gate'+(o.compact?' compact':'')+(LIVE?'':' ro'),novalidate:'','data-fkey':o.key,'aria-label':o.label||o.gate});
+  const left=el('div',{style:'display:grid;gap:8px;min-width:0'});
+  const radios=!!o.radios;
+  if(o.radios&&o.radios.length){const fs=el('fieldset');if(o.radioLegend)fs.append(el('legend',{text:o.radioLegend}));
+    o.radios.forEach(([v,l],i)=>{const lab=el('label',{class:'opt'});lab.append(el('input',{type:'radio',name:o.key+'-c',value:v,...(i===0&&o.radios.length===1?{checked:''}:{})}),el('span',{text:l}));fs.append(lab)});left.append(fs)}
+  const row=el('div',{class:'row'});
+  const reason=el('input',{type:'text',name:'reason',placeholder:o.placeholder||'reason — becomes the ledger note',required:'','aria-label':'Reason (required)',autocomplete:'off',style:'flex:1;min-width:160px'});
+  row.append(reason);
+  let date=null;if(o.date){date=el('input',{type:'date',name:'date',value:today(),'aria-label':'Date sent',style:'width:150px;flex:none'});row.append(date)}
+  left.append(row);f.append(left);
+  const btns=el('div',{class:'row',style:'align-self:end'});
+  for(const [choice,label,primary] of o.buttons)btns.append(el('button',{type:'submit',class:'btn '+(primary?'p':'s'),name:'choice',value:choice,text:label}));
+  f.append(btns);
+  const stat=el('div',{class:'gstat',role:'status','aria-live':'polite'});f.append(stat);
+  const prev=state.results[o.key];if(prev)showResult(stat,prev,f);
+  const controls=()=>[...f.querySelectorAll('input,button,textarea')];
+  if(!LIVE){controls().forEach(c=>c.disabled=true);f.setAttribute('aria-disabled','true')}
+  f.addEventListener('submit',async e=>{
+    e.preventDefault();if(!LIVE)return;
+    const choice=radios?(f.querySelector('input[type=radio]:checked')||{}).value:(e.submitter&&e.submitter.value);
+    const r=reason.value.trim();
+    stat.className='gstat';stat.textContent='';
+    if(radios&&!f.querySelector('input[type=radio]:checked')){stat.className='gstat err';stat.textContent='choose one option first';f.querySelector('input[type=radio]').focus();return}
+    if(r.length<3){stat.className='gstat err';stat.textContent='a reason is required (at least 3 characters) — it becomes the ledger note verbatim';reason.focus();return}
+    const body={gate:o.gate,run_id:o.run_id,choice,reason:r};
+    if(o.slug)body.slug=o.slug;if(o.expected_state)body.expected_state=o.expected_state;if(o.file)body.file=o.file;if(date)body.date=date.value;
+    controls().forEach(c=>c.disabled=true);stat.textContent=`sending ${o.gate} · ${choice} …`;
+    let res,json;posting++;
+    try{res=await fetch('decide',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body),cache:'no-store'});json=await res.json().catch(()=>({error:'response was not JSON'}))}
+    catch(err){json={error:String(err)};res={status:0}}
+    posting--;
+    const result={status:res.status,body:json,at:Date.now(),req:body};
+    state.results[o.key]=result;
+    controls().forEach(c=>c.disabled=false);
+    showResult(stat,result,f);
+    if(res.status===201){reason.value='';setTimeout(()=>refresh(),800)}
+    else if(state.dirty)setTimeout(()=>rerender(),50);
+  });
+  return f;
+}
+function showResult(stat,r,f){
+  stat.innerHTML='';
+  if(r.status===201){stat.className='gstat';stat.append('written to the ledger:',el('code',{text:JSON.stringify(r.body.line)}))}
+  else{stat.className='gstat err';stat.append(`${r.status||'network'}: ${r.body.error||'unknown error'}`);
+    if(r.body.current)stat.append(el('code',{text:'ledger now: '+JSON.stringify(r.body.current)}));
+    if(r.status===409){const b=el('button',{type:'button',class:'btn s',text:'Reload the page data'});b.onclick=()=>{delete state.results[f.dataset.fkey];refresh(true)};stat.append(b)}}
+}
+function pickPanel(b){
+  const key=`pick-${b.run_id}-${b.slug}`;
+  const wrap=el('div',{class:'pickpanel',tabindex:'-1',id:'pick-'+b.slug});
+  wrap.append(el('div',{class:'label',text:`Pick a mockup for ${b.name} — the three variants, ${LIVE?'sheets from /files':'links to the repo'}`}));
+  const form=gateForm({key,gate:'pick',run_id:b.run_id,slug:b.slug,expected_state:b.state,radios:[],buttons:[['pick','Pick this variant',true]],placeholder:'reason — Verbatim in the ledger, as every pick so far'});
+  const vs=el('div',{class:'variants',role:'radiogroup','aria-label':'Variants'});
+  for(const v of ['calm','interactive','unique']){
+    const card=el('label',{class:'variant'});
+    card.append(el('input',{type:'radio',name:key+'-c',value:v}));
+    card.append(el('div',{class:'vh'},v[0].toUpperCase()+v.slice(1),el('span',{text:`mockups/${v}`})));
+    const base=`sites/${b.slug}/mockups/${v}/`;
+    const cands=[...Array.from({length:9},(_,i)=>`shots/round-${9-i}/desktop-sheet.png`),'shots/desktop-sheet.png','shots/desktop-1.png'];
+    const img=el('img',{alt:`Desktop contact sheet of the ${v} mockup`,loading:'lazy'});
+    let i=0;const next=()=>{if(i<cands.length&&LIVE){img.src=fileURL(base+cands[i++])}else{img.replaceWith(el('div',{class:'nosheet',text:LIVE?'no desktop sheet on disk for this variant':'sheets load from the server in live mode'}))}};
+    img.onerror=next;next();
+    card.append(img);
+    card.append(el('div',{class:'linkrow'},el('a',{href:fileURL(base+'dist/index.html'),target:'_blank',rel:'noopener',text:'open the mockup ↗'})));
+    vs.append(card);
+  }
+  form.prepend(vs);
+  form.querySelector('.row input[type=text]').setAttribute('style','flex:1;min-width:240px');
+  const disabled=!LIVE;vs.querySelectorAll('input').forEach(r=>r.disabled=disabled);
+  wrap.append(form);
+  return wrap;
+}
+function needsForm(g,b){
+  // form for a Needs-you row; g = gate row, b = business row
+  if(!b)return null;
+  if(g.kind==='send the pitch')return gateForm({key:`pitch-${b.run_id}-${b.slug}-n`,gate:'pitch',run_id:b.run_id,slug:b.slug,expected_state:b.state,radios:CHANNELS,radioLegend:'How you sent it',date:true,buttons:[['sent','I sent it',true]],placeholder:'note — who you spoke to, what they said',label:`Send the pitch: ${b.name}`});
+  if(g.kind==='approve the shortlist')return gateForm({key:`shortlist-${b.run_id}-${b.slug}-n`,gate:'shortlist',run_id:b.run_id,slug:b.slug,expected_state:b.state,compact:true,buttons:[['approve','Approve',true],['drop','Drop',false]],label:`Shortlist: ${b.name}`});
+  return null;
+}
+
 /* ---------- Overview ---------- */
 function deltaLine(delta){
   const dl=el('div',{class:'delta'});
@@ -747,7 +919,8 @@ function renderKPIs(){
 }
 function renderNeeds(){
   const c=$('#needs');c.innerHTML='';
-  const gates=D.gates.filter(g=>g.run_id===state.run||g.slug==null);
+  let gates=D.gates.filter(g=>g.run_id===state.run||g.slug==null);
+  for(const b of D.businesses.filter(b=>b.run_id===state.run&&shortlistOpen(b)))if(!gates.some(g=>g.slug===b.slug))gates.push({kind:'approve the shortlist',slug:b.slug,name:b.name,run_id:b.run_id,since:b.last_change,days:b.days_since_change,target:{view:'pipeline',slug:b.slug}});
   const bizGates=gates.filter(g=>g.slug),other=gates.filter(g=>!g.slug);
   const K=D.kpis_by_run[state.run];
   const head=el('div',{class:'head'});
@@ -759,6 +932,7 @@ function renderNeeds(){
   head.append(bigrow);
   const sub=el('div',{class:'sub'});
   sub.append(bizGates.length===1?'business waiting on you':'businesses waiting on you');
+  if(bizGates.length!==K.needs_you)sub.title=`data.json counts ${K.needs_you}; the shortlist rows of a run with no approval are added here`;
   const dv=isCur()?D.deltas.needs_you:null;
   if(dv&&dv.delta!=null)sub.append(' · ',el('b',{text:`${dv.delta>0?'+':''}${dv.delta}`}),` vs ${runShort(dv.previous_run)}`);
   const kinds=Object.values(D.gate_states).filter(k=>!gates.some(g=>g.kind===k));
@@ -768,12 +942,19 @@ function renderNeeds(){
   for(const g of bizGates){
     const li=el('li');
     li.append(el('div',{class:'who'},el('b',{text:g.name}),el('span',{text:`${g.kind} · since ${dShort(g.since)} · ${g.days} day${g.days===1?'':'s'}`})));
-    const a=el('a',{class:'open',href:`#${g.target.view}/${g.target.slug}`,text:'Open','aria-label':`Open ${g.name}: ${g.kind}`});
-    a.onclick=e=>{e.preventDefault();go(g.target.view,g.target.slug)};
-    li.append(a);ul.append(li);
+    const b=D.businesses.find(x=>x.slug===g.slug&&x.run_id===g.run_id);
+    const isPick=g.kind==='pick a mockup';
+    const a=el('a',{class:'open',href:isPick?`#pipeline/pick:${g.slug}`:`#${g.target.view}/${g.target.slug}`,text:isPick?'Pick':'Open','aria-label':`${isPick?'Pick a mockup for':'Open'} ${g.name}: ${g.kind}`});
+    a.onclick=e=>{e.preventDefault();isPick?go('pipeline','pick:'+g.slug):go(g.target.view,g.target.slug)};
+    const canForm=LIVE&&b&&(g.kind==='send the pitch'||g.kind==='approve the shortlist');
+    if(canForm){const open=state.openNeeds===g.slug;const t=el('button',{type:'button',class:'btn s',text:open?'Close':'Decide here','aria-expanded':String(open)});t.onclick=()=>{state.openNeeds=open?null:g.slug;renderNeeds();if(!open)$('#needs form.gate input,#needs form.gate button')?.focus()};li.append(t)}
+    li.append(a);
+    if(canForm&&state.openNeeds===g.slug){const f=needsForm(g,b);if(f){li.classList.add('hasform');li.append(f)}}
+    ul.append(li);
   }
   if(!bizGates.length)ul.append(el('li',{class:'more'},el('div',{class:'who'},el('b',{text:'No business is waiting on you in this run'}),el('span',{text:'Gates appear at shortlisted, mocked and packaged.'}))));
   c.append(ul);
+  const bigN=bizGates.length;
   for(const g of other){
     const f=el('div',{class:'foot'});
     f.append(el('span',{text:`Also ${g.name.replace(/ without a merge record$/,'')} to review · ${g.kind}`}));
@@ -781,7 +962,7 @@ function renderNeeds(){
     a.onclick=e=>{e.preventDefault();go('decisions','proposals')};
     f.append(a);c.append(f);
   }
-  countUp(big,K.needs_you,'needs-'+state.run);
+  countUp(big,bigN,'needs-'+state.run+'-'+bigN);
 }
 function renderFunnel(){
   const box=$('#funnel');box.innerHTML='';
@@ -842,7 +1023,7 @@ function renderFeed(){
 }
 
 /* ---------- Pipeline ---------- */
-const GROUP_LABEL={gate:'waiting on you',delivered:'waiting on you',pipeline:'in progress',dropped:'dropped',not_approved:'not approved',not_shortlisted:'not shortlisted',superseded:'superseded',pitched:'pitched',outcome:'outcome'};
+const GROUP_LABEL={gate:'waiting on you',delivered:'built, pitch not sent',pipeline:'in progress',dropped:'dropped',not_approved:'not approved',not_shortlisted:'not shortlisted',superseded:'superseded',pitched:'pitched',outcome:'outcome'};
 const GROUP_ORDER=['gate','delivered','pitched','outcome','pipeline','dropped','not_approved','not_shortlisted','superseded'];
 function stationBar(b,W){
   const H=22,ty=8,th=8,n=D.stations.length,seg=W/n;
@@ -882,6 +1063,7 @@ function stationBar(b,W){
 }
 function pillFor(b){
   if(b.gate)return ['gate',b.gate];
+  if(shortlistOpen(b))return ['gate','approve the shortlist'];
   if(b.group==='pipeline')return ['grey',b.state];
   if(b.group==='dropped')return ['drop','dropped'];
   if(b.group==='pitched'||b.group==='outcome')return ['live',b.state];
@@ -920,13 +1102,25 @@ function renderPipeline(){
     tr.append(ow);
     tr.append(el('td',{class:'days'},String(b.days_since_change),el('span',{text:b.days_since_change===1?'day':'days'})));
     tb.append(tr);
+    if(shortlistOpen(b)){
+      const fr=el('tr',{class:'frow'});const td=el('td',{colspan:'6'});
+      td.append(gateForm({key:`shortlist-${b.run_id}-${b.slug}`,gate:'shortlist',run_id:b.run_id,slug:b.slug,expected_state:b.state,compact:true,buttons:[['approve','Approve',true],['drop','Drop',false]],label:`Shortlist: ${b.name}`,placeholder:`reason — why ${b.name} is in or out`}));
+      fr.append(td);tb.append(fr);
+    }
+    if(b.state==='mocked'){
+      const open=state.openPick===b.slug;
+      const tog=el('button',{type:'button',class:'btn s',text:open?'Close the pick':'Pick a mockup','aria-expanded':String(open),'aria-controls':'pick-'+b.slug});
+      tog.onclick=()=>{state.openPick=open?null:b.slug;renderPipeline();if(!open)document.getElementById('pick-'+b.slug)?.focus()};
+      nx.append(el('div',{style:'margin-top:8px'},tog));
+      if(open){const fr=el('tr',{class:'frow'});const td=el('td',{colspan:'6'});td.append(pickPanel(b));fr.append(td);tb.append(fr)}
+    }
   }
 }
 
 /* ---------- Sites ---------- */
 function renderSites(){
   const box=$('#sites-grid');box.innerHTML='';
-  const sites=D.businesses.filter(b=>b.run_id===state.run&&['delivered','pitched','outcome'].includes(b.group));
+  const sites=D.businesses.filter(b=>b.run_id===state.run&&(['delivered','pitched','outcome'].includes(b.group)||/^(packaged|pitched|outcome:)/.test(b.state)));
   const head=$('#sites-head');head.innerHTML='';
   head.append(el('span',{},el('b',{text:`${sites.length} built site${sites.length===1?'':'s'}`}),` · ${runShort(state.run)}`,sites.length?` · ${sites.filter(s=>s.gate).length} waiting for you to send the pitch`:''));
   if(!sites.length){box.append(el('section',{class:'card'},el('h2',{class:'label',text:'No built site in this run'}),el('p',{class:'empty',style:'margin-top:8px;font-size:15px;color:var(--ink2)',text:`Fills when a business reaches packaged; ${runShort(state.run)} stopped at scoring.`})));return}
@@ -953,11 +1147,14 @@ function renderSites(){
     row('Preview',b.preview_url?el('a',{class:'lnk',href:b.preview_url,target:'_blank',rel:'noopener',text:b.preview_url.replace('https://','').replace('.os1.workers.dev',' ↗'),title:b.preview_url}):el('span',{class:'na',text:'none yet'}));
     row('Proposal',b.pitch?.proposal_url?el('a',{class:'lnk2',href:b.pitch.proposal_url,target:'_blank',rel:'noopener',text:b.pitch.proposal_url.replace('https://','').replace('.os1.workers.dev',' ↗'),title:b.pitch.proposal_url}):el('span',{class:'na',text:'none yet'}));
     const fvp=b.shots?.final_vs_picked||[];
-    row('Final vs picked',...(fvp.length?fvp.flatMap((p,i)=>[el('a',{class:'lnk2',href:REPO+p,text:/mobile/.test(p)?'mobile sheet':'desktop sheet'}),i<fvp.length-1?' · ':'']):[el('span',{class:'na',text:'no sheet on disk for this site'})]));
+    row('Final vs picked',...(fvp.length?fvp.flatMap((p,i)=>[el('a',{class:'lnk2',href:fileURL(p),text:/mobile/.test(p)?'mobile sheet':'desktop sheet'}),i<fvp.length-1?' · ':'']):[el('span',{class:'na',text:'no sheet on disk for this site'})]));
     const rep=b.shots?.critic_report||[];
-    row('Critic report',...(rep.length?rep.map(p=>el('a',{class:'lnk2',href:REPO+p,text:p.split('/').pop()})):[el('span',{class:'na',text:'none'})]));
+    row('Critic report',...(rep.length?rep.map(p=>el('a',{class:'lnk2',href:fileURL(p),text:p.split('/').pop()})):[el('span',{class:'na',text:'none'})]));
     row('Pitch drafts',el('span',{text:b.pitch?.drafts?.length?b.pitch.drafts.join(' · '):'none'}));
-    body.append(links);c.append(body);box.append(c);
+    body.append(links);
+    if(b.state==='packaged')body.append(el('div',{class:'label',style:'margin-top:18px',text:'Send the pitch'}),gateForm({key:`pitch-${b.run_id}-${b.slug}`,gate:'pitch',run_id:b.run_id,slug:b.slug,expected_state:b.state,radios:CHANNELS,radioLegend:'How you sent it',date:true,buttons:[['sent','I sent it',true]],placeholder:'note — who you spoke to, what they said',label:`Send the pitch: ${b.name}`}));
+    else if(/^(pitched|outcome:(reply|meeting|ignored))$/.test(b.state))body.append(el('div',{class:'label',style:'margin-top:18px',text:`Outcome · now ${b.state}`}),gateForm({key:`outcome-${b.run_id}-${b.slug}`,gate:'outcome',run_id:b.run_id,slug:b.slug,expected_state:b.state,buttons:OUTCOMES.map(([v,l])=>[v,l,false]),placeholder:'note — what happened',label:`Outcome: ${b.name}`}));
+    c.append(body);box.append(c);
     countUp(num,b.critic_score,'site-'+b.slug);
   }
 }
@@ -1052,22 +1249,48 @@ function renderDecisions(){
   $('#props-meta').textContent=`${props.filter(p=>/no merge record/.test(p.status||'')).length} without a merge record · ${props.filter(p=>/approved|rejected/.test(p.status||'')).length} decided`;
   for(const p of props){
     const li=el('li');
-    li.append(el('div',{class:'t'},el('a',{href:REPO+p.file,text:p.title})));
+    li.append(el('div',{class:'t'},el('a',{href:fileURL(p.file),text:p.title})));
     const m=el('div',{class:'m'});
     m.append(el('span',{text:runShort(p.run_id)}),el('span',{class:'tag'+(p.custom_md?' c':''),text:p.custom_md?'custom.md proposal':p.kind}));
     if(p.status)m.append(el('span',{class:'tag'+(/approved/.test(p.status)?' ok':''),text:p.status}));
-    m.append(el('a',{href:REPO+p.file,text:p.file.split('/').pop()}));
-    li.append(m);pl.append(li);
+    m.append(el('a',{href:fileURL(p.file),text:p.file.split('/').pop()}));
+    li.append(m);
+    if(/no merge record/.test(p.status||''))li.append(gateForm({key:`proposal-${p.file}`,gate:'proposal',run_id:p.run_id,file:p.file,compact:true,buttons:[['approved','Approve',true],['rejected','Reject',false]],label:`Proposal: ${p.title}`,placeholder:'reason — becomes the ledger note'}));
+    pl.append(li);
   }
 }
 
 /* ---------- render ---------- */
 function render(){
+  renderChrome();renderRunSel();
   $('#title-sub').textContent=`${runShort(state.run)} · ${dShort(rangeStart())} – ${dShort(days.at(-1))}`;
   renderKPIs();renderNeeds();renderFunnel();renderFeed();renderPipeline();renderSites();renderAgents();renderDecisions();
   document.querySelectorAll('.view.on svg').forEach(sizeTips);
 }
 render();
+/* live: re-render in place, keeping view, scroll and focus; wait while a form field is focused */
+function rerender(force){
+  const ae=document.activeElement;
+  if(posting>0){state.dirty=true;return}
+  if(!force&&ae&&ae.closest('form.gate')&&(ae.tagName==='INPUT'||ae.tagName==='TEXTAREA')&&ae.value){state.dirty=true;return}
+  state.dirty=false;
+  const y=scrollY,fid=ae&&ae.id,fkey=ae&&(ae.closest('[data-fkey]')||{}).dataset?.fkey,fname=ae&&ae.name;
+  render();
+  scrollTo(0,y);
+  let back=fid?document.getElementById(fid):null;
+  if(!back&&fkey){const f=document.querySelector(`[data-fkey="${CSS.escape(fkey)}"]`);back=f&&(fname?f.querySelector(`[name="${fname}"]`):f.querySelector('input,button'))}
+  if(back)back.focus({preventScroll:true});
+}
+async function refresh(force){const my=++seq;try{const r=await fetch('data.json',{cache:'no-store'});if(!r.ok)return;const d=await r.json();if(my!==seq)return;setData(d);rerender(force)}catch{}}
+document.addEventListener('focusout',e=>{if(state.dirty&&e.target.closest('form.gate'))setTimeout(()=>{if(state.dirty&&!(document.activeElement&&document.activeElement.closest('form.gate')))rerender()},50)});
+(async()=>{
+  LIVE=await probe();
+  if(!LIVE){renderChrome();return}
+  await refresh(true);
+  const es=new EventSource('events');
+  es.addEventListener('data',()=>refresh());
+  es.onerror=()=>{/* the browser reconnects; nothing to render */};
+})();
 let rw=innerWidth;addEventListener('resize',()=>{if(Math.abs(innerWidth-rw)>40){rw=innerWidth;render()}});
 const h=location.hash.replace('#','').split('/');
 if(h[0])go(h[0],h[1]);
