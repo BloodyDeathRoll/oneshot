@@ -64,7 +64,7 @@ const stationOf = (s) => STATIONS.find((st) => st.states.includes(baseState(s)))
 // ---- readers ----------------------------------------------------------------------------------
 const read = (rel) => (existsSync(join(ROOT, rel)) ? readFileSync(join(ROOT, rel), 'utf8') : null);
 const readJson = (rel) => { const t = read(rel); return t ? JSON.parse(t) : null; };
-const readJsonl = (rel) => (read(rel) ?? '').split('\n').filter((l) => l.trim()).map((l, i) => {
+const readJsonl = (rel) => ((rel.startsWith('/') ? (existsSync(rel) ? readFileSync(rel, 'utf8') : null) : read(rel)) ?? '').split('\n').filter((l) => l.trim()).map((l, i) => {
   try { return JSON.parse(l); } catch (e) { throw new Error(`${rel}:${i + 1} is not JSON: ${e.message}`); }
 });
 const val = (x) => (x && typeof x === 'object' && 'value' in x ? x.value : x ?? null);
@@ -175,8 +175,8 @@ function readProposals(proposalDecisions = []) {
 }
 
 // ---- build ------------------------------------------------------------------------------------
-export function buildData() {
-  const ledger = readJsonl('ledger.jsonl');
+export function buildData({ ledgerPath = 'ledger.jsonl' } = {}) {
+  const ledger = readJsonl(ledgerPath);
   const run = readRun();
   const businessLines = ledger.filter((l) => l.slug && l.slug !== '-' && l.slug !== 'dashboard');
   const corrections = ledger.filter((l) => (!l.slug || l.slug === '-') && !/^proposal:/.test(l.to_state));

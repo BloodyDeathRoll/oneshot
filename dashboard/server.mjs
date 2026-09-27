@@ -132,7 +132,7 @@ const server = createServer((req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
   const path = decodeURIComponent(url.pathname);
   if (req.method === 'GET' && (path === '/' || path === '/index.html')) return serveFile(res, join(DIST, 'index.html'));
-  if (req.method === 'GET' && path === '/data.json') return send(res, 200, buildData());
+  if (req.method === 'GET' && path === '/data.json') return send(res, 200, buildData({ ledgerPath: LEDGER }));
   if (req.method === 'GET' && path === '/events') {
     res.writeHead(200, { 'content-type': 'text/event-stream', 'cache-control': 'no-store', connection: 'keep-alive' });
     res.write(`event: hello\ndata: ${JSON.stringify({ at: new Date().toISOString() })}\n\n`);
@@ -143,7 +143,7 @@ const server = createServer((req, res) => {
     if (!FILE_PREFIXES.some((p) => rel.startsWith(p))) return send(res, 403, { error: 'not a readable prefix' });
     return serveFile(res, safeUnder(ROOT, rel));
   }
-  if (req.method === 'GET' && path === '/gates') return send(res, 200, { gates: buildData().gates, decisions: Object.fromEntries(Object.entries(DECISIONS).map(([k, v]) => [k, { from: v.from, choices: v.choices }])) });
+  if (req.method === 'GET' && path === '/gates') return send(res, 200, { gates: buildData({ ledgerPath: LEDGER }).gates, decisions: Object.fromEntries(Object.entries(DECISIONS).map(([k, v]) => [k, { from: v.from, choices: v.choices }])) });
   if (req.method === 'POST' && path === '/decide') {
     let raw = '';
     req.on('data', (c) => { raw += c; if (raw.length > 64_000) req.destroy(); });
