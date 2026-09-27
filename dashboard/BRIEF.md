@@ -144,3 +144,6 @@ loop and a final critic pass.
   becomes **purple** (a saturated pure purple, adjustable ±10%, tints for chart series), with
   touches of blue as a secondary; green and red stay for deltas and status only. §5's "pure blue
   around #1F4BFF" is superseded for the picked build. Rounded corners and the side menu stay.
+- **2026-09-27, during the dashboard-02 build (Shahar):** lead accent changes again, to
+  `#0E34CB` ("change --acc to 0e34cb, and the rest accordingly"): tints derived from it, the
+  separate blue link colour retired. Green and red unchanged.
