@@ -97,6 +97,8 @@ function decide(body) {
     slug = '-';
     const file = String(body.file ?? '');
     if (!/^proposals\/[\w.-]+\/[\w.-]+\.md$/.test(file) || !existsSync(join(ROOT, file))) return { status: 400, error: 'file must be an existing proposals/<run>/<name>.md' };
+    const prior = [...readLedger()].reverse().find((l) => /^proposal:/.test(l.to_state) && (l.note ?? '').startsWith(file));
+    if (prior) return { status: 409, error: `already decided: ${file} was ${prior.to_state.slice(9)} on ${prior.ts}; a change is a CLI decision, not a second click`, current: prior };
     body = { ...body, file };
   }
   const { to_state, note } = spec.line({ ...body, reason });
