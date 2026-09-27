@@ -88,3 +88,48 @@ Re-checked at 390 / 768 / 1024 / 1280 / 1440, each closed and with all 39 rows e
 - **Empty-table header row hidden below its table's breakpoint.** Round-1 finding 5 asked for `inline-block; nowrap` on the empty heads; instead the `.empty thead` override was removed, so at 390 Pitches and Leads show heading + sentence only (thead 0 px; `shots/v2/390-pitches.png`, `390-leads.png`), and Pitches also at 768 (it is `.wide`, so hidden below 1024). Concept §6: "keeps its heading, its table header row so the shape is visible". Fix: restore `.stack.empty thead, .wide.empty thead { display: block }` with `th { display: inline-block; white-space: nowrap; margin-right: 12px }`.
 - Pitches empty header at 1024 is 53 px (two lines) because "Outcome date" wraps in its 12% column; one line at 1280+. Cosmetic.
 - Simplicity items from round 1 ("Reached:" line, "Ledger lines" count) are unchanged; 39 `.reached` lines rendered when expanded. Not required by the brief; left to the designer.
+
+## Round 3 — overview + hash-routed drill-downs (regenerated 2026-09-27T10:22Z; template 878 lines; tool adds `pipeline_order`, `gate_states`, sets `gate` on packaged rows, and takes the critic's latest PASS/FAIL score)
+
+### Verdict: PASS
+
+Screenshots in `shots/v3/`. Every overview value matches `data.json`; the six cross-checks against the ledger hold; no horizontal scroll on any view at 390 / 768 / 1024 / 1280 / 1440; 0 console messages; 1 request.
+
+### Truth (overview, 390 and 1440 identical)
+
+- Main metrics: Live sites **3** (= rows in delivered/pitched/outcome), Needs attention **3** (= `gates.length`; number in `#C7360D`, `.attn` set), Clients **0** (= rows with `outcome.state = sale`). Links `#all?group=live`, `#all?group=gate`, `#pitches`.
+- Sub-metrics: researched 35 (`totals.businesses_all_runs`; ledger: 35 unique slugs); out, with a reason **32** = dropped 9 + not approved 12 + not shortlisted 11, and `#dropped` shows "Showing 32 of 39 rows" with the "out 32" filter pressed; pitched 0; replies and meetings 0; critic, live sites **89.7** = mean(86, 91.5, 91.5) as `data.json` holds them; cost this month "not tracked" (`expenses.tracked: false`); last activity **25 Sep 06:45** = newest `runs[].last_ts` = newest `ts` in `ledger.jsonl` (KA, `passed`, "PREVIEW REDEPLOY", 2026-09-25T06:45:00Z).
+- In play: 3 rows (39 − 36 out/superseded), all with `gate` set, each "delivered / built + deployed, pitch not sent", next step "send the pitch — you" (= `gate` text, accent), since "25 Sep, 2 d" (= `last_change`, `days_since_change`), `data-href` and row link `#business/<slug>`. Order: gate rows first, ties kept in `businesses[]` order.
+- Ledger cross-checks: KA critic score 86 = the critic's newest scored line in file order ("Full-mode verification 3 on the rebuilt site: PASS, 86/100 (was 93)", 2026-09-23T13:18, after `critiqued(3)`'s 92); Layday 91.5 (one critic line); Lavish 91.5 (`critiqued(2)`); critic rounds 3 / 1 / 2 = critic-written `critiqued(n)` lines; gates' since 06:31:45 = the three `packaged` lines.
+- Concept §0 text is stale in two places, the page is right: it says Needs attention is "0 today" and the mean "91.7"; the data has 3 gates and a KA score of 86 since the tool switched to the latest critic verdict.
+
+### Layout
+
+- **390**: total height **1,255 px** (1.5 screens of 844). First screen: title + run line, all three metrics (rows 76 px each, block bottom at 346 px) and all seven sub-metrics (44 px rows, list bottom at 687 px); In play ends at 1,052 px, footer at 1,255. scrollWidth 390, 0 elements past the edge. Targets: metric links 76 px, sub-metric links 44 px, row links 44 px, footer link 44 px — nothing under 44.
+- **1440**: height 900 (one screen); metrics one row of three at 112 px; sub-metrics one row of seven (62 px); In play a four-column table, rows 55 px. scrollWidth 1440.
+- 768 / 1024 / 1280: overview 955 / 900 / 900 px tall; `#business/ka…`, `#all?group=gate`, `#dropped` expanded: scrollWidth = viewport at every width; 0 mid-word breaks (letters-only tokens, URLs excluded) on every view at 390, 768, 1024, 1280, 1440, including `#all` with all 39 rows open.
+
+### Navigation (keyboard only, 390 and 1440)
+
+Tab order: Live sites → Needs attention → Clients → 7 sub-metrics → In play rows, each with the 2 px ink focus ring. Enter on Needs attention → `#all?group=gate`, focus on the `h2` "Businesses, all runs" (`[data-focus]`, `:focus-visible`), scrollY 0, Waiting on Shahar table (3 rows) above the register, "Showing 3 of 39 rows", title "Oneshot — businesses". Enter on Back to overview → `#`, focus on `h1`, title "Oneshot — overview", metrics present. Enter on row 2 → `#business/layday-surf-ahangama`, focus on the business `h2`, 47 history rows. `history.back()` → overview with focus on `h1`; forward → the business view again. Enter on "out, with a reason" → `#dropped`, 32 rows, "out 32" pressed, title "Oneshot — out, with a reason". Reload on `#dropped` → 32 rows; reload on `#business/the-lavish-haven` → that view. `#garbage` and `#business/nope` → overview / "No such business". Filter clicks inside `#all` use `replaceState`, so back leaves the register in one step (measured: `#all?group=dropped` → back → previous view).
+
+### Accent audit
+
+Overview: exactly the Needs attention number (`.metric.attn .n`), the three gate-row left rules (`tr.gate` at 390, `td.c-name` at 768+) and the three "send the pitch — you" spans (`.next-you`). Nothing else. Drill-downs: `#all?group=gate` adds the Waiting on Shahar 3 px rule and the status fill; `#decisions`, `#funnel`, `#expenses`, `#pitches`, `#leads`, `#dropped`: no accent at all.
+
+### Findings
+
+1. **Accent fill wraps the word "delivered"** (low-medium). In `#all` gate rows and in `#business/<slug>` Status, `statusCell(b, !!b.gate)` puts `.status-gate` (accent fill, white text) around the group word, so the fill reads "delivered" (`shots/v3/1440-_all_group_gate.png`, `390-_business_ka….png`). Concept §4: the fill is for "awaiting Shahar"; the overview already does it right with the ink word + accent next step. Fix: for `b.gate && b.group !== 'gate'`, render the word in ink and the gate text (`waits on you: send the pitch`) in `.next-you` accent.
+2. **Stale document title on an in-register hash change** (low). `render()` short-circuits to `renderRows()` when already on `all`, so `#dropped → #all` (or `#all?group=live → #all`) keeps the title "Oneshot — out, with a reason" while showing 39 rows. Fix: set `document.title` before the early `return` at template line 808.
+3. **"last activity" links to `#decisions`, not to KA** (low). The newest ledger line is KA's `passed` "PREVIEW REDEPLOY" (06:45), appended after the `packaged` line, so no row's `last_change` (06:31:45) equals it and the fallback fires. The link works but the reader lands on Decisions for an activity that was a deploy. Fix in the tool: emit `last_activity: {ts, slug, to_state}` from the ledger's max `ts`; the template already prefers a slug.
+4. **Score and rounds no longer come from the same lines** (low, clarity). Delivered and the business view print "86 / 100" over "3 rounds" for KA: the rounds are the numbered `critiqued(n)` lines, the score is a later `passed → passed` verification. Truthful to the ledger, but label it: "86 / 100, latest verdict 23 Sep" or show "round 3: 92, verified: 86".
+5. **Double rule under the sub-metrics at 390 and 1440** (cosmetic). `.subs` has `border-bottom` and the In play `section` has `border-top`, 64 px apart with nothing between (`shots/v3/390-overview-screen2.png`, `1440-overview-top.png`). Drop one.
+
+### Simplicity — what the overview carries that "where do we stand" does not need
+
+- The footer's two sentences (320 ledger lines, 46 decisions, "39 rows: 4 seen in both runs", "1 correction … listed at the foot of Decisions") — provenance of the file, not state; five lines at 390. Move to the drill-downs, keep "generated …" once.
+- "generated 27 Sep 10:22 UTC" appears in the run line and again in the footer.
+- "Tap one for its history." — the underlined names already read as links.
+- The In play Status column repeats "delivered" three times under a table whose next-step column carries the meaning; at 390 it costs the first line's right half. Keep it only when statuses differ, or fold `label` into the business view.
+- "pitched 0" and "replies and meetings 0" both link to `#pitches`; one line "pitched 0, replies 0" would do until a pitch exists.
+Everything else (3 metrics, 5 remaining sub-metrics, 3 rows) is the brief.

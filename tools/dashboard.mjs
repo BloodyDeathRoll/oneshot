@@ -260,6 +260,7 @@ function expenses() {
 const data = {
   generated_at: new Date().toISOString(),
   human: HUMAN_LABEL,
+  pipeline_order: ORDER, gate_states: GATES,
   run, runs, funnel, gates, businesses, decisions, leads, corrections,
   expenses: expenses(),
   totals: {
