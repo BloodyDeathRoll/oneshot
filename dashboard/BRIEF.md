@@ -137,3 +137,10 @@ Stop after the critic. Show Shahar the three Overviews side by side at 1440, eac
 round-1 and final sheets, and the critic table. He picks one and gives a reason; only then are
 the remaining views (Sites, Agents, Decisions) built in the picked direction, with the same look
 loop and a final critic pass.
+
+## Amendments
+
+- **2026-09-27, at the pick gate (Shahar):** direction B "Soft cards" picked. The lead accent
+  becomes **purple** (a saturated pure purple, adjustable ±10%, tints for chart series), with
+  touches of blue as a secondary; green and red stay for deltas and status only. §5's "pure blue
+  around #1F4BFF" is superseded for the picked build. Rounded corners and the side menu stay.
