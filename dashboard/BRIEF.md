@@ -147,3 +147,7 @@ loop and a final critic pass.
 - **2026-09-27, during the dashboard-02 build (Shahar):** lead accent changes again, to
   `#0E34CB` ("change --acc to 0e34cb, and the rest accordingly"): tints derived from it, the
   separate blue link colour retired. Green and red unchanged.
+- **2026-09-27, final (Shahar): "back to the purple, lock it down."** Lead accent `#6A2FE0` with
+  tints `#8859E6 / #A682EC / #C3ACF3 / #E1D5F9 / #F3EEFD`, `--acc-sec #EDE6FB`, blue `#1F4BFF` for
+  links only. The `#0E34CB` amendment above is withdrawn. Locked: no further palette change
+  without Shahar's word.
