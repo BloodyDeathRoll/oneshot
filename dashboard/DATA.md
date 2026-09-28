@@ -81,7 +81,7 @@ Sources: **L** = `ledger.jsonl` (docs/ledger.md), **R** = `run.yaml`, **D** = `d
 | `version_pinned` | R | `agents:` block |
 | `pin_matches_changelog` | C, R | equality |
 | `by_run{run}.lines` | L | the agent's ledger lines in that run |
-| `by_run{run}.passes / fails` | L | copyeditor: `copy_passed` / `copy_failed`; critic: note `PASS` / `FAIL`; harvester: `harvested`; designer: `built` or `mocked`; scout: `scored`; others 0 (no pass/fail state) |
+| `by_run{run}.passes / fails` | L | copyeditor: `copy_passed` / `copy_failed`; critic: note `PASS` / `FAIL`; harvester: `harvested`; auditor: `audited`; designer: `built` or `mocked`; scout: `scored`; others 0 (no pass/fail state) |
 | `by_run{run}.rounds_per_pass[]` | L | per pass: the agent's lines on that slug since its previous pass on the same slug |
 | `by_run{run}.fails_by_slug{}` | L | fail count per business |
 | `by_run{run}.versions_seen[]` | L | `agent_version` values on its lines |

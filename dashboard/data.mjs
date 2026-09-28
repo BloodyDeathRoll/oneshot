@@ -18,7 +18,7 @@ const OUT = join(ROOT, 'dashboard');
 
 // ---- pipeline (PLAN.md §4 / docs/ledger.md) ----------------------------------------------------
 export const ORDER = [
-  'discovered', 'scored', 'shortlisted', 'approved', 'harvested',
+  'discovered', 'scored', 'shortlisted', 'approved', 'harvested', 'audited',
   'copy_drafted', 'copy_humanised', 'copy_failed', 'copy_passed',
   'concepted', 'mocked', 'picked', 'built', 'optimised', 'ai_optimised',
   'critiqued', 'failed', 'passed', 'packaged', 'pitched', 'outcome',
@@ -31,7 +31,7 @@ const HUMAN = 'Shahar';
 export const STATIONS = [
   { n: 1, name: 'Scout', states: ['discovered', 'scored'] },
   { n: 2, name: 'Shortlist', states: ['shortlisted', 'approved'], gate: 'approve the shortlist' },
-  { n: 3, name: 'Harvest', states: ['harvested'] },
+  { n: 3, name: 'Harvest', states: ['harvested', 'audited'] },
   { n: 4, name: 'Copy', states: ['copy_drafted', 'copy_humanised', 'copy_failed', 'copy_passed'] },
   { n: 5, name: 'Concept + mockups', states: ['concepted', 'mocked', 'picked'], gate: 'pick a mockup' },
   { n: 6, name: 'Build + SEO', states: ['built', 'optimised', 'ai_optimised'] },
@@ -44,7 +44,7 @@ export const STATIONS = [
 export const NEXT_STEP = {
   discovered: ['score', 'scout'], scored: ['shortlist', 'scout'],
   shortlisted: ['approve the shortlist', HUMAN], approved: ['harvest', 'harvester'],
-  harvested: ['draft copy', 'copywriter'], copy_drafted: ['humanise copy', 'humanizer'],
+  harvested: ['audit the funnel', 'auditor'], audited: ['draft copy', 'copywriter'], copy_drafted: ['humanise copy', 'humanizer'],
   copy_humanised: ['review copy', 'copyeditor'], copy_failed: ['redraft copy', 'copywriter'],
   copy_passed: ['write concepts', 'creative-director'], concepted: ['build mockups', 'designer'],
   mocked: ['pick a mockup', HUMAN], picked: ['build the site', 'designer'],
@@ -334,7 +334,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl' } = {}) {
 
   // ---- agents -------------------------------------------------------------------------------------
   const changelogs = readChangelogs();
-  const AGENT_PASS = { copyeditor: (h) => h.to === 'copy_passed', critic: (h) => /\bPASS\b/.test(h.note ?? '') && (h.to.startsWith('critiqued') || h.to === 'passed'), harvester: (h) => h.to === 'harvested', designer: (h) => h.to === 'built' || h.to === 'mocked', scout: (h) => h.to === 'scored' };
+  const AGENT_PASS = { copyeditor: (h) => h.to === 'copy_passed', critic: (h) => /\bPASS\b/.test(h.note ?? '') && (h.to.startsWith('critiqued') || h.to === 'passed'), harvester: (h) => h.to === 'harvested', auditor: (h) => h.to === 'audited', designer: (h) => h.to === 'built' || h.to === 'mocked', scout: (h) => h.to === 'scored' };
   const AGENT_FAIL = { copyeditor: (h) => h.to === 'copy_failed', critic: (h) => /\bFAIL\b/.test(h.note ?? '') && h.to.startsWith('critiqued') };
   const agents = {};
   for (const name of Object.keys(changelogs)) {
