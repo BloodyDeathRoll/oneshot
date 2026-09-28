@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Global Surf Lodge Kabalana — surf weeks on Sri Lanka's south coast</title>
+<meta name="description" content="Surf weeks for all levels on Sri Lanka's south coast, a few steps from the ocean.">
+<meta property="og:title" content="Global Surf Lodge Kabalana">
+<meta property="og:description" content="Surf weeks for all levels on Sri Lanka's south coast, a few steps from the ocean.">
+<meta property="og:image" content="img/img-005-1280.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="video/vid-009-poster.avif" type="image/avif" fetchpriority="high">
+<style>
+:root{
+  --ground:#F3F4F7; --wall:#E3E4E9; --white:#FFFFFF; --ink:#011212; --ink2:#3B4749;
+  --pool:#018DA8; --pooltext:#016F85; --coral:#F84825; --line:#011212;
+  --col:1200px; --gut:clamp(20px,4vw,48px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:90px}
+body{background:var(--ground);color:var(--ink);font:300 17px/1.65 Sora,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img,video{display:block;max-width:100%}
+ul{list-style:none}
+.wrap{max-width:calc(var(--col) + 2*var(--gut));margin:0 auto;padding:0 var(--gut)}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
+h2{font-weight:300;font-size:clamp(38px,5.4vw,76px);line-height:1.02;letter-spacing:-.035em}
+h3{font-weight:400;font-size:20px;line-height:1.3;letter-spacing:-.01em}
+p+p{margin-top:1em}
+.fill{width:100%;height:100%;object-fit:cover}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;background:var(--coral);color:var(--ink);text-decoration:none;font-weight:400;font-size:16px;letter-spacing:-.005em;border:0;text-align:center;line-height:1.25;transition:background .2s}
+.btn:hover{background:#ff5d3b}
+.btn-line{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border:1px solid var(--line);text-decoration:none;font-weight:400;font-size:15px;transition:background .2s,border-color .2s}
+.btn-line:hover{background:var(--coral);border-color:var(--coral)}
+.tlink{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px;font-weight:400}
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.hero a:focus-visible,.top a:focus-visible{outline-color:#fff}
+
+/* header */
+.top{position:absolute;inset:0 0 auto 0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:18px var(--gut);color:#fff;max-width:calc(var(--col) + 2*var(--gut));margin:0 auto}
+.top::after{content:"";position:absolute;left:var(--gut);right:var(--gut);bottom:0;height:1px;background:rgba(255,255,255,.45)}
+.top .pk,.top .mark{display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:400;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
+.top .mark{text-decoration:none;font-size:15px}
+
+/* hero */
+.hero{position:relative;height:100vh;height:100svh;min-height:560px;max-height:1100px;overflow:hidden;color:#fff;background:#9fc0e6}
+.hero picture,.hero img,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:38% 60%}
+.hero video{opacity:0;transition:opacity .8s}
+.hero video.on{opacity:1}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:62%;background:linear-gradient(to top,rgba(1,18,18,.62) 0%,rgba(1,18,18,.34) 45%,rgba(1,18,18,0) 100%);pointer-events:none}
+.hero::before{content:"";position:absolute;inset:0 0 auto 0;height:140px;z-index:1;background:linear-gradient(to bottom,rgba(1,18,18,.28),rgba(1,18,18,0));pointer-events:none}
+.hero-text{position:absolute;z-index:2;max-width:calc(var(--col) + 2*var(--gut));margin:0 auto;left:0;right:0;bottom:0;padding:0 var(--gut) clamp(36px,6vh,64px)}
+.hero h1{font-weight:300;font-size:clamp(40px,4.9vw,72px);line-height:1;letter-spacing:-.035em}
+.hero .tag{margin-top:20px;font-size:clamp(16px,1.35vw,19px);line-height:1.5;max-width:34ch}
+.hero .act{margin-top:30px;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.proof{font-size:14px;line-height:1.45;text-decoration:none;padding-left:26px;border-left:1px solid rgba(255,255,255,.6);min-height:44px;display:flex;flex-direction:column;justify-content:center}
+.proof b{font-weight:400;font-size:15px}
+.proof small{font-size:12px;opacity:.85}
+
+/* intro */
+.intro{padding:clamp(80px,11vw,160px) 0 0}
+.intro h2{grid-column:1 / 8}
+.intro .body{grid-column:8 / 12;align-self:end;font-size:18px;color:var(--ink2)}
+.pair{margin-top:clamp(56px,8vw,120px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:end}
+.pair .a{grid-column:1 / 6;aspect-ratio:4/5;overflow:hidden;margin-left:calc(-1 * max(var(--gut), (100vw - var(--col)) / 2))}
+.pair .b{grid-column:7 / 13;aspect-ratio:3/2;overflow:hidden;margin-right:calc(-1 * max(var(--gut), (100vw - var(--col)) / 2));margin-bottom:clamp(40px,8vw,120px)}
+
+/* levels */
+.levels{padding:clamp(96px,12vw,180px) 0 clamp(80px,9vw,140px)}
+.levels-head{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap}
+.levels-head .isa{font-size:15px;color:var(--ink2)}
+.lvl-row{margin-top:56px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.lvl{display:flex;flex-direction:column}
+.lvl-media{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;background:#cfd6dc}
+.lvl-media img,.lvl-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.lvl-media video{opacity:0;transition:opacity .5s,transform .4s ease}
+.lvl-media video.on{opacity:1}
+.lvl:hover .lvl-media img,.lvl:hover .lvl-media video{transform:scale(1.03)}
+.lvl-price{position:absolute;left:0;bottom:0;background:var(--white);padding:14px 18px 12px;line-height:1}
+.lvl-price b{display:block;font-weight:300;font-size:44px;letter-spacing:-.04em;color:var(--pooltext)}
+.lvl-price span{display:block;margin-top:6px;font-size:12px;color:var(--ink2);line-height:1.3}
+.lvl h3{margin-top:22px;font-size:24px;font-weight:300;letter-spacing:-.02em}
+.lvl .who{margin-top:10px;font-size:15px;line-height:1.6;color:var(--ink2)}
+.lvl .inc{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:13px;line-height:1.6;color:var(--ink2)}
+.lvl .inc b{font-weight:400;color:var(--ink)}
+.lvl .btn-line{margin-top:auto;align-self:flex-start}
+.lvl .spacer{height:22px}
+.after{margin-top:72px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:40px;border-top:1px solid var(--line);padding-top:40px}
+.after .free{grid-column:1 / 5}
+.after .free h3{font-weight:300;font-size:24px;letter-spacing:-.02em}
+.after .free p{margin-top:10px;font-size:15px;color:var(--ink2)}
+.after .free .tlink{margin-top:6px;font-size:15px}
+.after .price{grid-column:5 / 9;font-size:15px;color:var(--ink2)}
+.after .price h3{color:var(--ink);font-weight:300;font-size:24px;letter-spacing:-.02em;margin-bottom:10px}
+.after .go{grid-column:9 / 13;display:flex;flex-direction:column;gap:14px}
+.after .go .btn{width:100%}
+.trust{display:flex;align-items:baseline;gap:14px;text-decoration:none;min-height:44px}
+.trust b{font-weight:300;font-size:40px;letter-spacing:-.04em;color:var(--pooltext);line-height:1}
+.trust span{font-size:13px;line-height:1.45;color:var(--ink2)}
+.alt{display:flex;gap:10px;flex-wrap:wrap}
+.alt a{flex:1 1 auto}
+
+/* feature */
+.feature{position:relative;aspect-ratio:16/9;max-height:100vh;width:100%;overflow:hidden}
+.feature picture,.feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.feature p{position:absolute;left:0;right:0;bottom:clamp(32px,6vw,80px);max-width:calc(var(--col) + 2*var(--gut));margin:0 auto;padding:0 var(--gut);font-weight:300;font-size:clamp(30px,4.4vw,64px);line-height:1.08;letter-spacing:-.035em;color:var(--ink)}
+.feature p span{display:block;max-width:15ch}
+
+/* day */
+.day{padding:clamp(96px,12vw,180px) 0 0}
+.day h2{grid-column:1 / 8}
+.day .body{grid-column:8 / 12;align-self:end;color:var(--ink2);font-size:16px}
+.run{margin-top:clamp(48px,6vw,88px);display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--ground)}
+.run div{aspect-ratio:4/5;overflow:hidden}
+
+/* rooms */
+.rooms{padding:clamp(96px,12vw,180px) 0}
+.rooms h2{max-width:12ch}
+.rooms-grid{margin-top:56px;display:grid;grid-template-columns:7fr 5fr;gap:24px}
+.rooms-grid .big{grid-row:1 / 3;overflow:hidden;min-height:100%}
+.rooms-grid .sm{aspect-ratio:3/2;overflow:hidden}
+.rooms-text{margin-top:56px}
+.rooms-text .body{grid-column:1 / 7;color:var(--ink2);font-size:16px}
+.rooms-text .am{grid-column:8 / 13}
+.am h3{font-size:15px;font-weight:400;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.am ul{columns:2;column-gap:24px;margin-top:14px;font-size:14px;line-height:1.5;color:var(--ink2)}
+.am li{break-inside:avoid;padding:5px 0}
+.am li small{display:block;font-size:12px;opacity:.8}
+
+/* guests */
+.guests{background:var(--white);padding:clamp(96px,12vw,170px) 0}
+.score{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:end}
+.score .big{grid-column:1 / 6;display:flex;align-items:flex-end;gap:20px;text-decoration:none}
+.score .big b{font-weight:300;font-size:clamp(120px,17vw,240px);line-height:.8;letter-spacing:-.06em;color:var(--pool)}
+.score .big span{font-size:14px;line-height:1.5;color:var(--ink2);padding-bottom:6px}
+.score .sub{grid-column:7 / 13}
+.score .sub h2{font-size:clamp(32px,3.6vw,48px)}
+.score .sub p{margin-top:16px;font-size:16px;color:var(--ink2)}
+.figs{display:flex;gap:40px;margin-top:28px;padding-top:18px;border-top:1px solid var(--line)}
+.figs div{font-size:13px;color:var(--ink2);line-height:1.4}
+.figs b{display:block;font-weight:300;font-size:32px;color:var(--ink);letter-spacing:-.03em;margin-bottom:4px}
+.quotes{margin-top:clamp(64px,8vw,112px);display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(32px,6vw,96px)}
+.quotes figure{padding:28px 0 34px;border-top:1px solid var(--line)}
+.quotes figure:nth-child(even){transform:translateY(clamp(0px,6vw,80px))}
+.quotes blockquote{font-size:clamp(19px,1.7vw,23px);line-height:1.45;letter-spacing:-.015em}
+.quotes figcaption{margin-top:16px;font-size:13px;color:var(--ink2)}
+
+/* spot */
+.spot{padding:clamp(96px,12vw,170px) 0 0}
+.spot-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:40px}
+.spot-grid .t{grid-column:1 / 7}
+.spot-grid .t p.lead{margin-top:24px;font-size:19px;line-height:1.55;max-width:30ch}
+.fc{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);max-width:460px}
+.fc .h{font-weight:300;font-size:56px;letter-spacing:-.04em;line-height:1;color:var(--pooltext)}
+.fc dl{margin-top:18px;display:grid;grid-template-columns:auto 1fr;gap:6px 22px;font-size:14px}
+.fc dt{color:var(--ink2)}
+.fc .when{margin-top:14px;font-size:12px;color:var(--ink2)}
+.fc .credit{font-size:13px}
+.spot-grid .w{grid-column:8 / 13;justify-self:end;width:100%;max-width:420px}
+.rosa-box{width:100%;max-width:420px;height:500px;border-radius:16px;overflow:hidden;background:var(--wall);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-size:14px}
+.rosa-box iframe{width:100%;height:500px;border:0;display:block}
+.here{margin-top:clamp(80px,10vw,140px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:32px;align-items:start}
+.here .ph{grid-column:1 / 7;aspect-ratio:3/2;overflow:hidden}
+.here .tx{grid-column:8 / 13}
+.here .tx h2{font-size:clamp(32px,3.6vw,48px)}
+.here .tx p{margin-top:16px;font-size:16px;color:var(--ink2)}
+.here address{font-style:normal;margin-top:20px;font-size:15px}
+.stay{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--ink2)}
+.stay b{font-weight:400;color:var(--ink)}
+
+/* closing */
+.closing{margin-top:clamp(96px,12vw,170px)}
+.band{aspect-ratio:21/9;max-height:80vh;width:100%;overflow:hidden}
+.band img{width:100%;height:100%;object-fit:cover}
+.close-row{padding:clamp(56px,7vw,96px) var(--gut) clamp(64px,8vw,110px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:32px;align-items:end}
+.close-row p{grid-column:1 / 8;font-weight:300;font-size:clamp(28px,3.4vw,46px);line-height:1.15;letter-spacing:-.03em}
+.close-row .go{grid-column:8 / 13;display:flex;flex-direction:column;gap:12px}
+.close-row .go .btn{width:100%}
+footer{border-top:1px solid var(--line);padding:40px 0 140px;font-size:14px;color:var(--ink2)}
+footer .grid{row-gap:24px}
+footer .n{grid-column:1 / 5;color:var(--ink);font-weight:400;font-size:15px}
+footer .c1{grid-column:5 / 9}
+footer .c2{grid-column:9 / 13}
+footer a{display:inline-flex;min-height:44px;align-items:center}
+
+/* persistent bar */
+.bar{position:fixed;z-index:20;left:0;right:0;top:0;background:#fff;border-bottom:1px solid var(--line);transform:translateY(-110%);transition:transform .35s ease;font-size:13px}
+.bar.show{transform:none}
+.bar .in{max-width:calc(var(--col) + 2*var(--gut));margin:0 auto;padding:10px var(--gut);display:flex;align-items:center;gap:22px}
+.bar .nm{font-weight:400;font-size:14px;white-space:nowrap;text-decoration:none;margin-right:auto;min-height:44px;display:flex;align-items:center}
+.seg{display:flex;border:1px solid var(--line);background:#fff}
+.seg button{font:inherit;font-size:13px;background:none;border:0;min-height:44px;padding:0 14px;cursor:pointer;color:var(--ink)}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed=true]{background:var(--ink);color:#fff}
+.bar .pr{white-space:nowrap;line-height:1.3}
+.bar .pr b{font-weight:400;color:var(--pooltext);font-size:15px}
+.bar .pr span{display:block;color:var(--ink2);font-size:12px}
+.bar .rt{white-space:nowrap;color:var(--ink2);text-decoration:none;display:flex;align-items:center;min-height:44px}
+.bar .rt b{font-weight:400;color:var(--ink);margin-right:4px}
+.bar .btn{min-height:44px;font-size:14px;padding:0 18px;white-space:nowrap}
+.bar .short{display:none}
+
+@media (max-width:1100px){
+  .bar .rt{display:none}
+}
+@media (max-width:900px){
+  .grid,.pair,.after,.score,.spot-grid,.here,.close-row{grid-template-columns:1fr}
+  .intro h2,.intro .body,.day h2,.day .body,.rooms-text .body,.rooms-text .am,.after .free,.after .price,.after .go,.score .big,.score .sub,.spot-grid .t,.spot-grid .w,.here .ph,.here .tx,.close-row p,.close-row .go,footer .n,footer .c1,footer .c2{grid-column:1 / -1}
+  .intro .body,.day .body{margin-top:24px}
+  .rooms-text .am{margin-top:40px}
+  .pair{row-gap:16px}
+  .pair .a{grid-column:1;width:82%;margin-left:calc(-1 * var(--gut))}
+  .pair .b{grid-column:1;width:78%;justify-self:end;margin-right:calc(-1 * var(--gut));margin-bottom:0}
+  .lvl-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-left:calc(-1 * var(--gut));margin-right:calc(-1 * var(--gut));padding:0 var(--gut);scroll-padding:0 var(--gut);scrollbar-width:none}
+  .lvl-row::-webkit-scrollbar{display:none}
+  .lvl{flex:0 0 80%;scroll-snap-align:start}
+  .run{grid-template-columns:1fr 1fr}
+  .rooms-grid{grid-template-columns:1fr}
+  .rooms-grid .big{grid-row:auto;aspect-ratio:3/2;min-height:0}
+  .quotes{grid-template-columns:1fr}
+  .quotes figure:nth-child(even){transform:none}
+  .spot-grid .w{justify-self:start}
+  .feature{aspect-ratio:4/5}
+  .feature p{font-size:30px;color:#fff;bottom:28px}
+  .band{aspect-ratio:4/5;max-height:none}
+  .bar{top:auto;bottom:0;border-bottom:0;border-top:1px solid var(--line);transform:translateY(110%)}
+  .bar .in{flex-wrap:wrap;gap:8px 12px;padding:8px var(--gut) calc(8px + env(safe-area-inset-bottom))}
+  .bar .nm{display:none}
+  .seg{width:100%}
+  .seg button{flex:1}
+  .bar .pr{margin-right:auto}
+  .bar .long{display:none}
+  .bar .short{display:inline}
+}
+@media (max-width:700px){
+  .top .pk{display:none}
+  .hero{min-height:600px}
+  .hero picture img,.hero video{object-position:22% 60%}
+  .hero-text{padding-bottom:18px}
+  .proof{border-left:0;padding-left:0}
+  .hero .act{flex-direction:column;align-items:stretch;gap:14px}
+  .hero .act .btn{width:100%;min-height:56px;padding:0 12px;font-size:15px}
+  .score .big{flex-direction:column;align-items:flex-start}
+  .figs{gap:24px}
+  .am ul{columns:1}
+  .close-row .go .btn,.after .go .btn{font-size:15px;padding:0 12px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero video,.lvl-media video{display:none}
+  .bar{transition:none}
+  .lvl:hover .lvl-media img{transform:none}
+}
+</style>
+<noscript><style>.bar{position:static;transform:none}.seg{display:none}</style></noscript>
+</head>
+<body>
+
+<header class="top">
+  <a class="mark" href="#top">Global Surf Lodge Kabalana</a>
+  <a class="pk" href="https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka">Weekly packages and dates</a>
+</header>
+
+<main id="top">
+<section class="hero" aria-label="Global Surf Lodge Kabalana">
+  <picture>
+    <source type="image/avif" srcset="video/vid-009-poster.avif">
+    <source type="image/webp" media="(max-width:900px)" srcset="img/vid-009-poster-1280.webp">
+    <img src="video/vid-009-poster.jpg" width="1920" height="1080" alt="The lodge's pool deck in the sun: white daybeds on dark timber platforms over a long blue pool, white bungalows and palms behind" fetchpriority="high">
+  </picture>
+  <video muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" poster="video/vid-009-poster.avif" data-hero>
+    <source data-src="video/vid-009-m1280.webm" type="video/webm" media="(max-width:900px)">
+    <source data-src="video/vid-009-m1280.mp4" type="video/mp4" media="(max-width:900px)">
+    <source data-src="video/vid-009-d1920.webm" type="video/webm">
+    <source data-src="video/vid-009-d1920.mp4" type="video/mp4">
+  </video>
+  <div class="hero-text">
+    <h1>Global Surf Lodge Kabalana</h1>
+    <p class="tag">Surf weeks for all levels on Sri Lanka's south coast, a few steps from the ocean.</p>
+    <div class="act">
+      <a class="btn" href="https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka">See the weekly surf packages and dates</a>
+      <a class="proof" href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"><span><b>8.6/10</b> on Booking.com, 80 reviews</span><small>Read 28 Sep 2026</small></a>
+    </div>
+  </div>
+</section>
+
+<section class="intro" aria-labelledby="h-intro">
+  <div class="wrap grid">
+    <h2 id="h-intro">Next set is yours</h2>
+    <div class="body">
+      <p>We are surfing obsessed, and we invite you to join us.</p>
+      <p>The lodge sits in the green of the jungle. We run surf weeks for three levels, from your first wave to carving, and a Freestylers package for independent travellers.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="pair">
+      <div class="a"><picture><source type="image/webp" srcset="img/img-002-640.webp 640w, img/img-002-1000.webp 1000w" sizes="(max-width:900px) 82vw, 40vw"><img class="fill" src="img/img-002-1000.jpg" width="1000" height="1250" loading="lazy" alt="A guest on a daybed over the pool in front of a white bungalow, palms above"></picture></div>
+      <div class="b"><picture><source type="image/webp" srcset="img/img-017-900.webp 900w, img/img-017-1400.webp 1400w" sizes="(max-width:900px) 78vw, 50vw"><img class="fill" src="img/img-017-1400.jpg" width="1400" height="933" loading="lazy" alt="Two guests lying on a daybed on its timber platform over the pool"></picture></div>
+    </div>
+  </div>
+</section>
+
+<section class="levels" id="levels" aria-labelledby="h-levels">
+  <div class="wrap">
+    <div class="levels-head">
+      <h2 id="h-levels">Pick your level</h2>
+      <p class="isa">ISA-certified surf guides</p>
+    </div>
+
+    <div class="lvl-row">
+      <article class="lvl">
+        <a class="lvl-media" href="https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies" aria-label="Book Level 1 – Fomies">
+          <img src="img/vid-010-poster-45-864.webp" width="864" height="1080" loading="lazy" alt="A beginner standing up on a soft-top board into the low sun">
+          <video muted loop playsinline preload="none" aria-hidden="true" data-clip>
+            <source data-src="video/vid-010-m1280.webm" type="video/webm"><source data-src="video/vid-010-m1280.mp4" type="video/mp4">
+          </video>
+          <span class="lvl-price"><b>$1,466</b><span>per person, 7 nights<br>price read 28 Sep 2026</span></span>
+        </a>
+        <h3>Level 1 – Fomies</h3>
+        <p class="who">Level 1 – Fomies is for your first time on a board, no surfing experience needed. You learn on soft boards, on easy reef breaks and the sandy beaches around the lodge.</p>
+        <p class="inc"><b>Included:</b> 7 nights, 7 breakfasts, 5 dinners, 5 guided 2-hour surf sessions, 5 theory lessons, all equipment, transport to the spots, an excursion</p>
+        <div class="spacer"></div>
+        <a class="btn-line" href="https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies">Book Level 1 – Fomies</a>
+      </article>
+      <article class="lvl">
+        <a class="lvl-media" href="https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers" aria-label="Book Level 2 – Rollers">
+          <img style="object-position:47% 50%" src="img/vid-003-poster-45-864.webp" width="864" height="1080" loading="lazy" alt="A surfer riding a green reef wave">
+          <video style="object-position:47% 50%" muted loop playsinline preload="none" aria-hidden="true" data-clip>
+            <source data-src="video/vid-003-m1280.webm" type="video/webm"><source data-src="video/vid-003-m1280.mp4" type="video/mp4">
+          </video>
+          <span class="lvl-price"><b>$1,466</b><span>per person, 7 nights<br>price read 28 Sep 2026</span></span>
+        </a>
+        <h3>Level 2 – Rollers</h3>
+        <p class="who">Level 2 – Rollers is for when you can stand up, but paddling out to the line-up and catching green waves is still a struggle. You surf easy reefs and beach breaks with deep-water channels, on soft boards.</p>
+        <p class="inc"><b>Included:</b> 7 nights, 7 breakfasts, 5 dinners, 5 guided 2-hour surf sessions, 5 theory lessons, all equipment, transport to the spots, an excursion</p>
+        <div class="spacer"></div>
+        <a class="btn-line" href="https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers">Book Level 2 – Rollers</a>
+      </article>
+      <article class="lvl">
+        <a class="lvl-media" href="https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders" aria-label="Book Level 3 – Riders">
+          <img src="img/vid-002-poster-45-864.webp" width="864" height="1080" loading="lazy" alt="A surfer deep inside a right-hand barrel">
+          <video style="object-position:62% 50%" muted loop playsinline preload="none" aria-hidden="true" data-clip>
+            <source data-src="video/vid-002-m1280.webm" type="video/webm"><source data-src="video/vid-002-m1280.mp4" type="video/mp4">
+          </video>
+          <span class="lvl-price"><b>$1,466</b><span>per person, 7 nights<br>price read 28 Sep 2026</span></span>
+        </a>
+        <h3>Level 3 – Riders</h3>
+        <p class="who">Level 3 – Riders: you're already carving, and you want to sharpen your skills. From Galle to Matara, you surf the best spot of the day for the conditions, the wind and the tide.</p>
+        <p class="inc"><b>Included:</b> 7 nights, 7 breakfasts, 5 dinners, 5 coached 2-hour surf sessions, 5 theory lessons, all equipment, transport to the spots, an excursion</p>
+        <div class="spacer"></div>
+        <a class="btn-line" href="https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders">Book Level 3 – Riders</a>
+      </article>
+    </div>
+
+    <div class="after">
+      <div class="free">
+        <h3>Freestylers – B&amp;B only</h3>
+        <p>Freestylers is the package for independent travellers who want to soak up the lodge's vibe.</p>
+        <p>From 4 nights</p>
+        <a class="tlink" href="https://globalsurfadventures.bookinglayer.com/en/product/freestylers-bb-only-package">Book Freestylers – B&amp;B only</a>
+      </div>
+      <div class="price">
+        <h3>One price, three levels</h3>
+        <p>The three surf weeks cost the same, per person for seven nights. That is the base price the booking engine showed on 28 September 2026. The room you choose can add to it; the engine shows any supplement once you pick your dates.</p>
+        <p>Packages start on a Saturday and run for 7, 14, 21 or 28 nights, for up to six guests per booking. Drinking water and local coffee and tea are unlimited.</p>
+      </div>
+      <div class="go">
+        <a class="trust" href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"><b>8.6/10</b><span>on Booking.com, 80 reviews<br>read 28 Sep 2026</span></a>
+        <a class="btn" href="https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka">See the weekly surf packages and dates</a>
+        <div class="alt">
+          <a class="btn-line" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.">Ask on WhatsApp</a>
+          <a class="btn-line" href="tel:+97299733943">Call +972 9 973 3943</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature" aria-label="The pool">
+  <picture><source type="image/webp" media="(max-width:900px)" srcset="img/img-005-45-800.webp"><source type="image/webp" srcset="img/img-005-1280.webp 1280w, img/img-005-2000.webp 2000w" sizes="100vw"><img src="img/img-005-2000.jpg" width="2000" height="1333" loading="lazy" alt="The long pool seen from the water's surface, the open lounge and bar behind it"></picture>
+  <p><span>Footwear is discouraged. Chilling out is inescapable.</span></p>
+</section>
+
+<section class="day" aria-labelledby="h-day">
+  <div class="wrap grid">
+    <h2 id="h-day">Surf, breakfast, surf again</h2>
+    <div class="body">
+      <p>Head out with your group for a morning surf. Back at the lodge, a big, healthy breakfast is waiting.</p>
+      <p>After that the day is yours: relax at the lodge, or go out and explore before the afternoon surf. The evening ends with dinner, together with the other guests.</p>
+    </div>
+  </div>
+  <div class="run">
+    <div><picture><source type="image/webp" srcset="img/img-104-560.webp 560w, img/img-104-900.webp 900w" sizes="(max-width:900px) 50vw, 25vw"><img class="fill" src="img/img-104-900.jpg" width="900" height="1125" loading="lazy" alt="A group of surfers walking along the beach to the water with their boards"></picture></div>
+    <div><picture><source type="image/webp" srcset="img/img-011-560.webp 560w, img/img-011-900.webp 900w" sizes="(max-width:900px) 50vw, 25vw"><img class="fill" src="img/img-011-900.jpg" width="900" height="1125" loading="lazy" alt="A breakfast bowl with mango and banana on a dark wooden table"></picture></div>
+    <div><picture><source type="image/webp" srcset="img/img-111-560.webp 560w, img/img-111-900.webp 900w" sizes="(max-width:900px) 50vw, 25vw"><img class="fill" src="img/img-111-900.jpg" width="900" height="1125" loading="lazy" alt="A surfer riding a longboard at sunset on golden water"></picture></div>
+    <div><picture><source type="image/webp" srcset="img/img-023-560.webp 560w, img/img-023-900.webp 900w" sizes="(max-width:900px) 50vw, 25vw"><img class="fill" src="img/img-023-900.jpg" width="900" height="1125" loading="lazy" alt="Guests toasting together around a table at the lodge"></picture></div>
+  </div>
+</section>
+
+<section class="rooms" aria-labelledby="h-rooms">
+  <div class="wrap">
+    <h2 id="h-rooms">Twelve rooms, one big family</h2>
+    <div class="rooms-grid">
+      <div class="big"><picture><source type="image/webp" srcset="img/img-015-900.webp 900w, img/img-015-1400.webp 1400w" sizes="(max-width:900px) 100vw, 60vw"><img class="fill" src="img/img-015-1400.jpg" width="1400" height="933" loading="lazy" alt="A bright double room with white beds and glass doors to the garden"></picture></div>
+      <div class="sm"><picture><source type="image/webp" srcset="img/img-064-800.webp"><img class="fill" src="img/img-064-800.jpg" width="800" height="533" loading="lazy" alt="The open-air bathroom with a palm tree growing through it"></picture></div>
+      <div class="sm"><picture><source type="image/webp" srcset="img/img-012-800.webp"><img class="fill" src="img/img-012-800.jpg" width="800" height="533" loading="lazy" alt="A white bungalow with a hammock on its porch among tropical plants"></picture></div>
+    </div>
+    <div class="rooms-text grid">
+      <div class="body">
+        <p>There are just twelve rooms. That keeps a stay here personal, part of one big happy family. Every room has air conditioning, a ceiling fan, a safe box, a private toilet and shower, a socket next to each bed and, of course, a board rack.</p>
+        <p>When you're not on the water, lie out on a sunbed by the pool under the palms, hang out in the common area, take an ice-cold drink from the bar, or eat Sri Lankan produce from the lodge kitchen.</p>
+      </div>
+      <div class="am">
+        <h3>At the lodge</h3>
+        <ul>
+          <li>Outdoor swimming pool</li>
+          <li>Yoga chalet</li>
+          <li>Yoga, meditation and sound healing sessions</li>
+          <li>Ice baths</li>
+          <li>Lookout terrace<small>ocean view</small></li>
+          <li>Restaurant<small>breakfast, lunch and dinner, daily</small></li>
+          <li>Bar</li>
+          <li>Gluten-free and vegan options</li>
+          <li>Co-working space<small>high-speed internet, coffee and fresh juices</small></li>
+          <li>Free WiFi</li>
+          <li>Airport shuttle</li>
+          <li>Free private parking on site</li>
+          <li>Non-smoking rooms</li>
+          <li>Garden</li>
+          <li>Sun terrace</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="guests" aria-labelledby="h-guests">
+  <div class="wrap">
+    <div class="score">
+      <a class="big" href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"><b>8.6</b><span>out of 10 on Booking.com<br>80 reviews, read 28 Sep 2026</span></a>
+      <div class="sub">
+        <h2 id="h-guests">What guests say</h2>
+        <p>Booking.com guests score the staff 9.5 out of 10, and the facilities and the cleanliness 9.2 each.</p>
+        <p>In their reviews they write about the pool area, the open-air bathroom and the breakfast bowls.</p>
+        <div class="figs" aria-label="Booking.com category scores">
+          <div><b>9.5</b>staff</div><div><b>9.2</b>facilities</div><div><b>9.2</b>cleanliness</div>
+        </div>
+      </div>
+    </div>
+    <div class="quotes">
+      <figure><blockquote>“We loved the cozy, bohoo-vibes at the lodge: starting from the open-air-bathroom, the relaxing pool area and especially the great breakfast bowls!”</blockquote><figcaption>Fanny, Germany · Booking.com</figcaption></figure>
+      <figure><blockquote>“This place felt like something inbetween a hostel and a luxurious hotel. The styling was gorgeous, the beds very comfortable, the (bath)room very spacious with lockers and personal storage space.”</blockquote><figcaption>Myrthe, Netherlands · Booking.com</figcaption></figure>
+      <figure><blockquote>“The room was modern, quiet and incredibly clean with daily servicing. The grounds were well kept with a gorgeous pool and dining area. There are hammocks, loungers and beanbags in social areas. It was a really really great place.”</blockquote><figcaption>Abigail, Myanmar · Booking.com</figcaption></figure>
+      <figure><blockquote>“A lovely hotel and a team of champions. Ariel, a professional surf guide, raised the level of surfing for us by several steps during the week we were there. This is our second time at the same hotel and with the same guide. We will return next year as well”</blockquote><figcaption>Seagallas · review</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="spot" aria-labelledby="h-spot">
+  <div class="wrap">
+    <div class="spot-grid">
+      <div class="t">
+        <h2 id="h-spot">The spot</h2>
+        <p class="lead">The lodge overlooks two spots, The Rock and South Point. More waves are a few minutes away by tuk-tuk.</p>
+        <div class="fc" id="fc">
+          <div class="h">0.7–1.0 m</div>
+          <dl>
+            <dt>Swell</dt><dd>1.1 m at 14.4 s from the south-southwest (198°)</dd>
+            <dt>Wind</dt><dd>7 km/h from the west (276°), cross-shore</dd>
+          </dl>
+          <p class="when">For 28 Sep 2026, 20:30 local time · Rosa data built 28 Sep 2026, 19:56 local</p>
+          <a class="tlink credit" href="https://rosa.surf/spot/south-point">Forecast for South Point by Rosa</a>
+        </div>
+      </div>
+      <div class="w">
+        <div class="rosa-box" id="rosa" data-src="https://rosa.surf/widget/?spot=south-point&amp;theme=light&amp;units=metric">
+          <a class="tlink" href="https://rosa.surf/spot/south-point">See today's forecast for South Point on Rosa</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="here">
+      <div class="ph"><picture><source type="image/webp" srcset="img/img-072-900.webp"><img class="fill" src="img/img-072-900.jpg" width="900" height="600" loading="lazy" alt="The round Globalsurf Lodge Kabalana sign on a post beside the coast road"></picture></div>
+      <div class="tx">
+        <h2>Getting here</h2>
+        <p>Booking.com puts Kathaluwa West Beach 40 m from the lodge and Kabalana Beach 350 m. Kathaluwa station is 400 m away, Ahangama Beach 4 km and Koggala Airport 3.9 km.</p>
+        <address>Henewatta Addara Gederawata, Ahangama 80650, Sri Lanka</address>
+        <a class="tlink" href="https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en">Open in Google Maps</a>
+        <div class="stay"><b>Check-in</b> 14:00–20:00 · <b>Check-out</b> by 11:00<br>No pets and no extra beds; cots are free on request for children up to 5.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing" aria-label="Book your week">
+  <div class="band"><picture><source type="image/webp" media="(max-width:900px)" srcset="img/img-093-45-800.webp"><source type="image/webp" srcset="img/img-093-1536.webp"><img src="img/img-093-1536.jpg" width="1536" height="658" loading="lazy" alt="The pool and the open lounge at dusk, lights on under the palms"></picture></div>
+  <div class="close-row" style="max-width:calc(var(--col) + 2*var(--gut));margin:0 auto">
+    <p>Book the week for your level. Not sure which one fits? Ask us on WhatsApp first.</p>
+    <div class="go">
+      <a class="btn" href="https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka">See the weekly surf packages and dates</a>
+      <a class="btn-line" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.">Ask on WhatsApp</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap grid">
+    <div class="n">Global Surf Lodge Kabalana</div>
+    <div class="c1">
+      <address style="font-style:normal">Henewatta Addara Gederawata, Ahangama 80650, Sri Lanka</address>
+      <a href="https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en">Google Maps</a>
+    </div>
+    <div class="c2">
+      <a href="tel:+97299733943">+972 9 973 3943</a><br>
+      <a href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.">WhatsApp</a><br>
+      <a href="mailto:info@globalsurf.com">info@globalsurf.com</a>
+    </div>
+  </div>
+</footer>
+
+<div class="bar" id="bar" role="region" aria-label="Book">
+  <div class="in">
+    <a class="nm" href="#top">Global Surf Lodge Kabalana</a>
+    <div class="seg" role="group" aria-label="Your level">
+      <button type="button" aria-pressed="false" data-l="0">Fomies</button>
+      <button type="button" aria-pressed="false" data-l="1">Rollers</button>
+      <button type="button" aria-pressed="false" data-l="2">Riders</button>
+    </div>
+    <div class="pr"><b>$1,466</b> pp, 7 nights<span>lessons, meals, room</span></div>
+    <a class="rt" href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"><b>8.6</b> Booking.com</a>
+    <a class="btn" id="barbtn" href="https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"><span class="long">See the weekly surf packages and dates</span><span class="short">Packages and dates</span></a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var save=!!(navigator.connection&&navigator.connection.saveData);
+  var still=calm||save;
+  function attach(v){
+    if(v.dataset.ready)return;
+    v.dataset.ready=1;
+    v.querySelectorAll('source[data-src]').forEach(function(s){s.src=s.dataset.src});
+    v.load();
+    v.addEventListener('playing',function(){v.classList.add('on')});
+  }
+  function play(v){attach(v);var p=v.play();if(p&&p.catch)p.catch(function(){})}
+
+  // hero: after first paint
+  var hv=document.querySelector('video[data-hero]');
+  function go(){ if(hv&&!still) play(hv); }
+  if(document.readyState==='complete')requestAnimationFrame(function(){setTimeout(go,50)});
+  else addEventListener('load',function(){requestAnimationFrame(function(){setTimeout(go,50)})});
+
+  // level clips: hover/focus on pointer devices; in view on touch, one at a time
+  var clips=[].slice.call(document.querySelectorAll('.lvl'));
+  var fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+  if(!still){
+    if(fine){
+      clips.forEach(function(el){
+        var v=el.querySelector('video[data-clip]');
+        el.addEventListener('mouseenter',function(){play(v)});
+        el.addEventListener('mouseleave',function(){v.pause()});
+        el.addEventListener('focusin',function(){play(v)});
+        el.addEventListener('focusout',function(){v.pause()});
+      });
+    } else if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){
+        es.forEach(function(e){var v=e.target.querySelector('video[data-clip]');
+          if(e.intersectionRatio>=.75)play(v);else v.pause();});
+      },{threshold:[0,.75]});
+      clips.forEach(function(el){io.observe(el.querySelector('.lvl-media'))});
+    }
+  }
+
+  // persistent bar
+  var bar=document.getElementById('bar'),hero=document.querySelector('.hero'),btn=document.getElementById('barbtn');
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){bar.classList.toggle('show',!es[0].isIntersecting)},{threshold:0}).observe(hero);
+  } else bar.classList.add('show');
+  var links=['https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies','https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers','https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders'];
+  var names=['Book Level 1 – Fomies','Book Level 2 – Rollers','Book Level 3 – Riders'];
+  var short=['Book Fomies','Book Rollers','Book Riders'];
+  var segs=[].slice.call(bar.querySelectorAll('.seg button'));
+  segs.forEach(function(b){b.addEventListener('click',function(){
+    var i=+b.dataset.l;
+    segs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+    btn.href=links[i];
+    btn.querySelector('.long').textContent=names[i];
+    btn.querySelector('.short').textContent=short[i];
+  })});
+
+  // Rosa widget: only when the block nears the viewport
+  var box=document.getElementById('rosa');
+  if(box&&'IntersectionObserver' in window){
+    var ro=new IntersectionObserver(function(es){
+      if(!es[0].isIntersecting)return; ro.disconnect();
+      var f=document.createElement('iframe');
+      f.src=box.dataset.src; f.title='Rosa surf forecast - South Point'; f.width='100%'; f.height='500';
+      f.style.cssText='max-width:420px;border:0;border-radius:16px;display:block';
+      f.loading='lazy'; f.referrerPolicy='strict-origin-when-cross-origin';
+      f.setAttribute('sandbox','allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin');
+      f.onload=function(){box.style.padding='0';box.style.background='none'};
+      box.textContent=''; box.appendChild(f);
+    },{rootMargin:'400px 0px'});
+    ro.observe(box);
+  }
+})();
+</script>
+</body>
+</html>

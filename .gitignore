@@ -71,3 +71,6 @@ dossier/*/funnel/page-*.png
 # shoot.mjs per-viewport frames: the contact sheets (*-sheet.png) and shoot.json are the record; frames are reproducible
 sites/*/mockups/*/shots/**/desktop-[0-9]*.png
 sites/*/mockups/*/shots/**/mobile-[0-9]*.png
+
+# mockup video renditions: copies of dossier/<slug>/assets/video/ (git-ignored), reproducible with tools/fetch-video.mjs
+sites/*/mockups/*/dist/video/
