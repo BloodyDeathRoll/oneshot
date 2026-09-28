@@ -1,0 +1,257 @@
+{
+ "slug": "global-surf-adventures",
+ "locale": "en",
+ "copywriter_version": "0.3.3",
+ "businessName": "Global Surf Lodge Kabalana",
+ "businessType": "surf_camp",
+ "tagline": "Surf weeks for all levels on Sri Lanka's south coast, a few steps from the ocean.",
+ "closing": "Book the week for your level. Not sure which one fits? Ask us on WhatsApp first.",
+ "featureLine": "Footwear is discouraged. Chilling out is inescapable.",
+ "copyBlocks": [
+  {
+   "slot": "intro",
+   "heading": "Next set is yours",
+   "body": "We are surfing obsessed, and we invite you to join us.\n\nThe lodge sits in the green of the jungle, on the beach at Kabalana. We run surf weeks for three levels, from your first wave to carving, and a bed-and-breakfast stay for independent travellers."
+  },
+  {
+   "slot": "about",
+   "heading": "Surf, breakfast, surf again",
+   "body": "Mornings start with your group and a surf session. Back at the lodge, a big, healthy breakfast is waiting.\n\nAfter that the day is yours: relax at the lodge, or go out and explore before the afternoon surf. The evening ends with dinner, together with the other guests."
+  },
+  {
+   "slot": "offer",
+   "heading": "Pick your level",
+   "body": "Level 1 – Fomies is for your first time on a board. You don't need any surfing experience. You learn on soft boards, on easy reef breaks and the sandy beaches around the lodge.\n\nLevel 2 – Rollers is for surfers who can stand up but still struggle to paddle out to the line-up and catch green waves. You surf easy reefs and beach breaks with deep-water channels, on soft boards.\n\nLevel 3 – Riders is for surfers who are already carving and want to sharpen their skills. From Galle to Matara, you surf the best spot of the day for the conditions, the wind and the tide.\n\nFreestylers is bed and breakfast only, for independent travellers who want to soak up the lodge's vibe."
+  },
+  {
+   "slot": "offer",
+   "heading": "One price, three levels",
+   "body": "The three surf weeks cost the same, per person for seven nights. That is the base price the booking engine showed on 28 September 2026. The room you choose can add to it; the engine shows any supplement once you pick your dates.\n\nPackages start on a Saturday and run for 7, 14, 21 or 28 nights, for up to six guests per booking. Drinking water and local coffee and tea are unlimited."
+  },
+  {
+   "slot": "about",
+   "heading": "Twelve rooms, one big family",
+   "body": "There are just twelve rooms, which keeps a stay here personal: part of one big happy family. Every room has air conditioning, a ceiling fan, a safe box, a private toilet and shower, a socket next to each bed and, of course, a board rack.\n\nWhen you're not on the water, lie out on a sunbed by the pool under the palms, hang out in the common area, take an ice-cold drink from the bar, or eat Sri Lankan produce from the lodge kitchen."
+  },
+  {
+   "slot": "about",
+   "heading": "Between sessions",
+   "body": "The lodge has a yoga chalet and ice baths, and holds yoga, meditation and sound healing sessions. There's a lookout terrace with an ocean view."
+  },
+  {
+   "slot": "about",
+   "heading": "What guests say",
+   "body": "Booking.com guests score the staff 9.5 out of 10, and the facilities and the cleanliness 9.2 each.\n\nIn their reviews they write about the pool area, the open-air bathroom and the breakfast bowls."
+  },
+  {
+   "slot": "info",
+   "heading": "Getting here",
+   "body": "Booking.com puts Kathaluwa West Beach 40 m from the lodge and Kabalana Beach 350 m. Kathaluwa station is 400 m away, Ahangama Beach 4 km and Koggala Airport 3.9 km."
+  }
+ ],
+ "spot": "On the beach at Kabalana, overlooking two spots: The Rock and South Point. More waves are a few minutes away by tuk-tuk.",
+ "season": null,
+ "lessons": [
+  {
+   "label": "Level 1 – Fomies",
+   "level": [
+    "first_time",
+    "beginner"
+   ],
+   "includes": "7 nights, 7 breakfasts, 5 dinners, 5 guided 2-hour surf sessions, 5 theory lessons, all equipment, transport to the spots, an excursion",
+   "price": 1466,
+   "currency": "USD",
+   "unit": "per_person"
+  },
+  {
+   "label": "Level 2 – Rollers",
+   "level": [
+    "intermediate"
+   ],
+   "includes": "7 nights, 7 breakfasts, 5 dinners, 5 guided 2-hour surf sessions, 5 theory lessons, all equipment, transport to the spots, an excursion",
+   "price": 1466,
+   "currency": "USD",
+   "unit": "per_person"
+  },
+  {
+   "label": "Level 3 – Riders",
+   "level": [
+    "advanced"
+   ],
+   "includes": "7 nights, 7 breakfasts, 5 dinners, 5 coached 2-hour surf sessions, 5 theory lessons, all equipment, transport to the spots, an excursion",
+   "price": 1466,
+   "currency": "USD",
+   "unit": "per_person"
+  },
+  {
+   "label": "Freestylers – B&B only",
+   "includes": "Bed and breakfast, from 4 nights"
+  }
+ ],
+ "priceList": [],
+ "credentials": [
+  {
+   "label": "ISA-certified surf guides"
+  }
+ ],
+ "rooms": [
+  {
+   "label": "Mixed dorm room",
+   "beds": "4 single beds",
+   "sleeps": 4,
+   "note": "Private outdoor bathroom"
+  },
+  {
+   "label": "Shared Twin Room",
+   "beds": "1 double bed and 1 single bed",
+   "note": "Private bathroom and a beach view all day"
+  }
+ ],
+ "stayInfo": {
+  "checkInFrom": "14:00",
+  "checkInTo": "20:00",
+  "checkOutTo": "11:00",
+  "note": "No pets and no extra beds; cots are free on request for children up to 5."
+ },
+ "amenities": [
+  {
+   "label": "Outdoor swimming pool"
+  },
+  {
+   "label": "Yoga chalet"
+  },
+  {
+   "label": "Yoga, meditation and sound healing sessions"
+  },
+  {
+   "label": "Ice baths"
+  },
+  {
+   "label": "Lookout terrace",
+   "note": "ocean view"
+  },
+  {
+   "label": "Restaurant",
+   "note": "breakfast, lunch and dinner, daily"
+  },
+  {
+   "label": "Bar"
+  },
+  {
+   "label": "Gluten-free and vegan options"
+  },
+  {
+   "label": "Co-working space",
+   "note": "high-speed internet, coffee and fresh juices"
+  },
+  {
+   "label": "Free WiFi"
+  },
+  {
+   "label": "Airport shuttle"
+  },
+  {
+   "label": "Free private parking on site"
+  },
+  {
+   "label": "Non-smoking rooms"
+  },
+  {
+   "label": "Garden"
+  },
+  {
+   "label": "Sun terrace"
+  }
+ ],
+ "ratings": [
+  {
+   "platform": "booking",
+   "score": 8.6,
+   "scale": "10",
+   "count": 80,
+   "url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+   "capturedAt": "2026-09-28"
+  }
+ ],
+ "testimonials": [
+  {
+   "quote": "We loved the cozy, bohoo-vibes at the lodge: starting from the open-air-bathroom, the relaxing pool area and especially the great breakfast bowls!",
+   "author": "Fanny, Germany",
+   "source": "booking"
+  },
+  {
+   "quote": "This place felt like something inbetween a hostel and a luxurious hotel. The styling was gorgeous, the beds very comfortable, the (bath)room very spacious with lockers and personal storage space.",
+   "author": "Myrthe, Netherlands",
+   "source": "booking"
+  },
+  {
+   "quote": "A lovely hotel and a team of champions. Ariel, a professional surf guide, raised the level of surfing for us by several steps during the week we were there. This is our second time at the same hotel and with the same guide. We will return next year as well",
+   "author": "Seagallas",
+   "source": "other"
+  },
+  {
+   "quote": "The room was modern, quiet and incredibly clean with daily servicing. The grounds were well kept with a gorgeous pool and dining area. There are hammocks, loungers and beanbags in social areas. It was a really really great place.",
+   "author": "Abigail, Myanmar",
+   "source": "booking"
+  },
+  {
+   "quote": "I had a wonderful stay at this hostel in Kabalana. The place was very clean, comfortable, and well maintained, and the staff were incredibly friendly and welcoming.",
+   "author": "Maryam, Netherlands",
+   "source": "booking"
+  },
+  {
+   "quote": "We stayed at Global Kablana Sri Lanka as a couple and two girls and it was just fun and lovely. The atmosphere, the rooms, the stunning staff. Just everything.",
+   "author": "Dana Amsalem-Cohen",
+   "source": "other"
+  },
+  {
+   "quote": "The common areas and the rooms are really nice! Staff is very helpful and the breakfast options are awesome.",
+   "author": "Agustin, Chile",
+   "source": "booking"
+  },
+  {
+   "quote": "Super nice place, beautiful rooms, nice hangout area with pool and pillows and delicious breakfast!",
+   "author": "Sara, Austria",
+   "source": "booking"
+  },
+  {
+   "quote": "The staff were lovely and welcoming. The property itself was clean and comfortable.",
+   "author": "Hannah, Oman",
+   "source": "booking"
+  }
+ ],
+ "contact": {
+  "phone": "+97299733943",
+  "whatsapp": "",
+  "email": "info@globalsurf.com",
+  "address": "Henewatta Addara Gederawata, Ahangama 80650, Sri Lanka",
+  "mapUrl": "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en"
+ },
+ "bookingLinks": [
+  {
+   "label": "See the weekly surf packages and dates",
+   "url": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"
+  },
+  {
+   "label": "Book Level 1 – Fomies",
+   "url": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies"
+  },
+  {
+   "label": "Book Level 2 – Rollers",
+   "url": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers"
+  },
+  {
+   "label": "Book Level 3 – Riders",
+   "url": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders"
+  },
+  {
+   "label": "Book Freestylers – B&B only",
+   "url": "https://globalsurfadventures.bookinglayer.com/en/product/freestylers-bb-only-package"
+  },
+  {
+   "label": "Ask on WhatsApp",
+   "url": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+  }
+ ],
+ "languagesSpoken": []
+}
