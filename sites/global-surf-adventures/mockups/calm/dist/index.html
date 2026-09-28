@@ -76,6 +76,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 
 /* levels — three film stills, one per level, words and price quiet beside them */
 .levels{padding:clamp(88px,10vw,150px) 0 clamp(72px,8vw,120px)}
+.deck+.levels{padding-top:clamp(52px,6vw,88px)}
 .levels-head{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap}
 .levels-head .isa{font-size:15px;color:var(--ink2);max-width:28ch}
 .lvl{margin-top:clamp(56px,7vw,110px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:center;scroll-margin:90px}
@@ -125,7 +126,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 .run div{aspect-ratio:4/5;overflow:hidden}
 
 /* rooms */
-.rooms{padding:clamp(80px,9vw,130px) 0 clamp(72px,8vw,110px)}
+.rooms{padding:clamp(80px,9vw,130px) 0 0}
 .rooms h2{max-width:14ch}
 .rooms-grid{margin-top:48px;display:grid;grid-template-columns:7fr 5fr;gap:16px}
 .rooms-grid .big{grid-row:1 / 3;overflow:hidden;min-height:100%}
@@ -137,27 +138,31 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 .am ul{columns:2;column-gap:24px;margin-top:14px;font-size:14px;line-height:1.5;color:var(--ink2)}
 .am li{break-inside:avoid;padding:5px 0}
 .am li small{display:block;font-size:12px;opacity:.8}
-.lounge{aspect-ratio:21/9;width:100%;overflow:hidden;max-height:80vh}
-.lounge img{width:100%;height:100%;object-fit:cover}
+/* the deck: every chapter opens on the timber edge of the pool, morning to dusk */
+.deck{height:clamp(84px,12.5vw,190px);width:100%;overflow:hidden;margin-top:clamp(72px,8vw,120px)}
+.deck img{width:100%;height:100%;object-fit:cover;object-position:var(--dx,50%) 50%}
+.deck+section{padding-top:clamp(52px,6vw,88px)}
 
 /* guests */
-.guests{background:var(--white);padding:clamp(72px,8vw,120px) 0 clamp(96px,11vw,160px)}
-.score{margin-top:40px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:end}
-.score .big{grid-column:1 / 7;display:flex;align-items:flex-end;gap:20px;text-decoration:none}
-.score .big b{font-weight:300;font-size:clamp(120px,17vw,240px);line-height:.8;letter-spacing:-.06em;color:var(--pool)}
-.score .big span{font-size:14px;line-height:1.5;color:var(--ink2);padding-bottom:6px}
-.score .sub{grid-column:7 / 13}
-.score .sub p{font-size:16px;color:var(--ink2)}
-.figs{display:flex;gap:40px;margin-top:28px;padding-top:18px;border-top:1px solid var(--line)}
+.guests{background:var(--ground);padding:0 0 clamp(72px,8vw,110px)}
+.g-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:28px;align-items:start}
+.g-score{grid-column:1 / 6}
+.g-score .big{display:flex;align-items:flex-end;gap:18px;text-decoration:none;margin-top:28px}
+.g-score .big b{font-weight:300;font-size:clamp(104px,13vw,190px);line-height:.8;letter-spacing:-.06em;color:var(--pool)}
+.g-score .big span{font-size:13px;line-height:1.5;color:var(--ink2);padding-bottom:4px}
+.g-lead{grid-column:7 / 13;grid-row:1 / 3;align-self:end;padding-top:24px;border-top:1px solid var(--line)}
+.g-lead blockquote{font-size:clamp(24px,2.4vw,34px);line-height:1.3;letter-spacing:-.025em}
+.g-lead figcaption{margin-top:18px;font-size:13px;color:var(--ink2)}
+.g-sub{grid-column:1 / 6;font-size:15px;color:var(--ink2)}
+.figs{display:flex;gap:36px;margin-top:22px;padding-top:16px;border-top:1px solid var(--line)}
 .figs div{font-size:13px;color:var(--ink2);line-height:1.4}
-.figs b{display:block;font-weight:300;font-size:32px;color:var(--ink);letter-spacing:-.03em;margin-bottom:4px}
-.quotes{margin-top:clamp(56px,7vw,96px);display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(32px,6vw,96px)}
-.quotes figure{padding:28px 0 34px;border-top:1px solid var(--line)}
-.quotes figure:nth-child(even){transform:translateY(clamp(0px,6vw,80px))}
-.quotes blockquote{font-size:clamp(19px,1.7vw,23px);line-height:1.45;letter-spacing:-.015em}
-.quotes figcaption{margin-top:16px;font-size:13px;color:var(--ink2)}
+.figs b{display:block;font-weight:300;font-size:30px;color:var(--ink);letter-spacing:-.03em;margin-bottom:4px}
+.quotes{margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:repeat(3,1fr);column-gap:clamp(24px,3vw,48px)}
+.quotes figure{padding-top:22px;border-top:1px solid var(--line)}
+.quotes blockquote{font-size:16px;line-height:1.55}
+.quotes figcaption{margin-top:14px;font-size:13px;color:var(--ink2)}
 .quotes figcaption a{text-underline-offset:4px}
-.allrev{margin-top:clamp(40px,6vw,96px)}
+.allrev{margin-top:20px}
 
 /* spot */
 .spot{padding:clamp(88px,10vw,150px) 0 0}
@@ -217,7 +222,7 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
 
 @media (max-width:1180px){ .bar .rt{display:none} }
 @media (max-width:900px){
-  .grid,.after,.score,.spot-grid,.here,.close-row,.intro-grid{grid-template-columns:1fr}
+  .grid,.after,.spot-grid,.here,.close-row,.intro-grid{grid-template-columns:1fr}
   .day h2,.day .body,.rooms-text .body,.rooms-text .am,.after .free,.after .price-t,.after .go,.score .big,.score .sub,.spot-grid .t,.spot-grid .w,.here .ph,.here .tx,.close-row p,.close-row .go,footer .n,footer .c1,footer .c2{grid-column:1 / -1}
   .day .body{margin-top:24px}
   .intro .txt{grid-column:1;grid-row:1;padding-bottom:0}
@@ -231,14 +236,18 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
   .run{grid-template-columns:1fr;gap:2px}
   .rooms-grid{grid-template-columns:1fr}
   .rooms-grid .big{grid-row:auto;aspect-ratio:3/2;min-height:0}
-  .quotes{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:20px;margin-left:calc(-1 * var(--gut));margin-right:calc(-1 * var(--gut));padding:0 var(--gut);scrollbar-width:none}
+  .g-grid{grid-template-columns:1fr;row-gap:24px}
+  .g-score,.g-lead,.g-sub{grid-column:1;grid-row:auto}
+  .g-score .big b{font-size:104px}
+  .g-lead blockquote{font-size:22px}
+  .quotes{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:20px;margin:40px calc(-1 * var(--gut)) 0;padding:0 var(--gut);scrollbar-width:none}
   .quotes::-webkit-scrollbar{display:none}
   .quotes figure{flex:0 0 84%;scroll-snap-align:start}
-  .quotes figure:nth-child(even){transform:none}
   .spot-grid .w{justify-self:start}
   .feature{height:auto;min-height:0;aspect-ratio:4/5}
   .feature p{font-size:30px;color:#fff;bottom:28px}
-  .band,.lounge{aspect-ratio:4/5;max-height:none}
+  .band{aspect-ratio:4/5;max-height:none}
+  .deck{height:96px;margin-top:64px}
   .score .sub{margin-top:28px}
   .bar{top:auto;bottom:0;border-bottom:0;border-top:1px solid var(--line);transform:translateY(110%)}
   .bar .in{flex-wrap:wrap;gap:8px 12px;padding:8px var(--gut) calc(8px + env(safe-area-inset-bottom))}
@@ -251,19 +260,18 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
 }
 @media (max-width:700px){
   .top .pk{display:none}
-  .hero{height:auto;min-height:0;max-height:none;overflow:visible}
-  .film{position:relative;inset:auto;height:calc(100svh - 360px);min-height:330px}
-  .film::after{display:none}
-  .plate{position:static;background:var(--white);color:var(--ink)}
-  .plate .in{padding:24px var(--gut) 20px}
-  .plate .name,.plate .act{max-width:none}
-  .plate h1{font-size:38px;text-shadow:none}
-  .plate .tag{font-size:16px;color:var(--ink2);text-shadow:none}
-  .plate .act{align-items:stretch;margin-top:20px}
+  .hero{min-height:620px}
+  .top .mark{visibility:hidden}
+  .top::after{display:none}
+  .film img,.film video{object-position:50% 50%}
+  .film::after{-webkit-mask-image:none;mask-image:none;background:linear-gradient(to bottom,rgba(1,18,18,.62) 0,rgba(1,18,18,.62) 100px,rgba(1,18,18,0) 280px,rgba(1,18,18,0) calc(100% - 364px),rgba(1,18,18,.7) calc(100% - 254px),rgba(1,18,18,.7) 100%)}
+  .plate{top:0}
+  .plate .in{height:100%;display:flex;flex-direction:column;padding:64px var(--gut) 36px}
+  .plate .name{display:contents}
+  .plate h1{font-size:40px;order:0}
+  .plate .tag{order:1;margin-top:auto;font-size:16px}
+  .plate .act{order:2;max-width:none;align-items:stretch;margin-top:16px}
   .plate .act .btn{min-height:56px;padding:0 12px;font-size:15px}
-  .proof{text-shadow:none}
-  .proof small{color:var(--ink2)}
-  .plate a:focus-visible{outline-color:var(--ink)}
   .score .big{flex-direction:column;align-items:flex-start}
   .figs{gap:24px}
   .am ul{columns:1}
@@ -324,6 +332,8 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
     </div>
   </div>
 </section>
+
+<div class="deck" style="--dx:40%"><picture><source type="image/webp" srcset="img/deck-1-img-008.webp"><img src="img/deck-1-img-008.jpg" width="2000" height="250" loading="lazy" alt="A guest in a yoga stretch on the timber deck at the edge of the pool"></picture></div>
 
 <section class="levels" id="levels" aria-labelledby="h-levels">
   <div class="wrap">
@@ -409,8 +419,8 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
   </div>
 </section>
 
-<section class="feature" aria-label="The pool">
-  <picture><source type="image/webp" media="(max-width:900px)" srcset="img/img-005-45-800.webp"><source type="image/webp" srcset="img/img-005-1280.webp 1280w, img/img-005-2000.webp 2000w" sizes="100vw"><img src="img/img-005-2000.jpg" width="2000" height="1333" loading="lazy" alt="The long pool seen from the water's surface, the open lounge and bar behind it"></picture>
+<section class="feature" aria-label="A daybed over the pool">
+  <picture><source type="image/webp" media="(max-width:900px)" srcset="img/img-017-45-800.webp"><source type="image/webp" srcset="img/img-017-1280.webp 1280w, img/img-017-2000.webp 2000w" sizes="100vw"><img src="img/img-017-2000.jpg" width="2000" height="1333" loading="lazy" alt="Two guests laughing on a daybed on its timber platform over the pool, a white bungalow behind"></picture>
   <p><span>Footwear is discouraged. Chilling out is inescapable.</span></p>
 </section>
 
@@ -429,6 +439,8 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
     <div><picture><source type="image/webp" srcset="img/img-023-560.webp 560w, img/img-023-900.webp 900w" sizes="(max-width:900px) 100vw, 25vw"><img class="fill" src="img/img-023-900.jpg" width="900" height="1125" loading="lazy" alt="Guests toasting together around a table at the lodge"></picture></div>
   </div>
 </section>
+
+<div class="deck" style="--dx:72%"><picture><source type="image/webp" srcset="img/deck-2-img-009.webp"><img src="img/deck-2-img-009.jpg" width="2000" height="250" loading="lazy" alt="Bare feet on a red cushion on the timber daybed platform over the pool"></picture></div>
 
 <section class="rooms" aria-labelledby="h-rooms">
   <div class="wrap">
@@ -467,14 +479,17 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
   </div>
 </section>
 
-<div class="lounge"><picture><source type="image/webp" media="(max-width:900px)" srcset="img/img-075-45-800.webp"><source type="image/webp" srcset="img/img-075-219-1280.webp 1280w, img/img-075-219-2000.webp 2000w" sizes="100vw"><img src="img/img-075-219-2000.jpg" width="2000" height="857" loading="lazy" alt="The open lounge beside the pool, white beanbags on the timber deck under the roof"></picture></div>
+<div class="deck" style="--dx:60%"><picture><source type="image/webp" srcset="img/deck-3-img-075.webp"><img src="img/deck-3-img-075.jpg" width="2000" height="250" loading="lazy" alt="White beanbags on the timber deck beside the blue pool"></picture></div>
 
 <section class="guests" aria-labelledby="h-guests">
   <div class="wrap">
-    <h2 id="h-guests">What guests say</h2>
-    <div class="score">
-      <a class="big" href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"><b>8.6</b><span>out of 10 on Booking.com<br>80 reviews, read 28 Sep 2026</span></a>
-      <div class="sub">
+    <div class="g-grid">
+      <div class="g-score">
+        <h2 id="h-guests">What guests say</h2>
+        <a class="big" href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"><b>8.6</b><span>out of 10 on Booking.com<br>80 reviews, read 28 Sep 2026</span></a>
+      </div>
+      <figure class="g-lead"><blockquote>“We loved the cozy, bohoo-vibes at the lodge: starting from the open-air-bathroom, the relaxing pool area and especially the great breakfast bowls!”</blockquote><figcaption>Fanny, Germany · Booking.com</figcaption></figure>
+      <div class="g-sub">
         <p>Booking.com guests score the staff 9.5 out of 10, and the facilities and the cleanliness 9.2 each.</p>
         <p>In their reviews they write about the pool area, the open-air bathroom and the breakfast bowls.</p>
         <div class="figs" aria-label="Booking.com category scores">
@@ -483,7 +498,6 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
       </div>
     </div>
     <div class="quotes">
-      <figure><blockquote>“We loved the cozy, bohoo-vibes at the lodge: starting from the open-air-bathroom, the relaxing pool area and especially the great breakfast bowls!”</blockquote><figcaption>Fanny, Germany · Booking.com</figcaption></figure>
       <figure><blockquote>“This place felt like something inbetween a hostel and a luxurious hotel. The styling was gorgeous, the beds very comfortable, the (bath)room very spacious with lockers and personal storage space.”</blockquote><figcaption>Myrthe, Netherlands · Booking.com</figcaption></figure>
       <figure><blockquote>“The room was modern, quiet and incredibly clean with daily servicing. The grounds were well kept with a gorgeous pool and dining area. There are hammocks, loungers and beanbags in social areas. It was a really really great place.”</blockquote><figcaption>Abigail, Myanmar · Booking.com</figcaption></figure>
       <figure><blockquote>“A lovely hotel and a team of champions. Ariel, a professional surf guide, raised the level of surfing for us by several steps during the week we were there. This is our second time at the same hotel and with the same guide. We will return next year as well”</blockquote><figcaption>Seagallas · <a href="https://www.globalsurf.com/kabalana-lodge-surf-packages/">globalsurf.com</a></figcaption></figure>

@@ -57,6 +57,10 @@ Round-9 sheets showed the day heading breaking into four lines in a 30 vw column
 - **Empty phone screens around "The spot".** Vertical spacing tightened on phones in the lodge, guests, quotes, spot, forecast and getting-here sections, and the forecast's reserved minimum height dropped on phones. The 500 px widget box stays, because the reserved-space rule requires it; over http it holds Rosa's card.
 - Everything the critics kept is unchanged: the giant "Kabalana", Barlow Condensed, the desktop level stage, the desktop hair-flip feature, the closing trio of level words.
 
+**Round 14 — two regressions after the round-4 pass (visual 8, experience 9).**
+- **Phone poster at 0.5 s.** The phone poster is back to a small preloaded file: 432×936, 21 KB webp, `fetchpriority="high"`. Behind it sits a 24×52 inline placeholder (616 bytes) in the poster's own colours, so the pool is painted from the first frame (`shots/round-14/phone-cold-500ms.png`). LCP over 5 cold throttled runs: 752–772 ms (the LCP element is the "Kabalana" span); round 3 was 788 ms.
+- **Laptop feature line.** It is now white, bottom-left over the pool, with a local gradient at the photo's foot, the same treatment the phone got in round 11, so it no longer crosses the sunshade or the hair. Measured with the text hidden, at section start/centre/end, at 1024×768, 1280×720, 1366×768, 1440×900, 1512×982, 1536×864 and 1920×1080: ≥ 6.2:1 at p75, ≥ 5.1:1 at p95. Nothing else changed.
+
 ## images
 
 All `business-owned` (dossier `images[].license`, `assets/index.json` for the edits).
