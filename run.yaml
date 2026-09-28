@@ -1,4 +1,4 @@
-run_id: 2026-09-ahangama-02
+run_id: 2026-09-globalsurf-01
 mode: test                       # test | live
 # test: we are not on the ground and cannot contact anyone. A business qualifies only if
 #       its PUBLIC material alone is enough to build a complete site. Anything that would
@@ -12,12 +12,12 @@ area:
   # stretch:  two anchors + shore_buffer_m along the coastline between them
   # business: one anchor (a named business) + radius_m circle around it
   anchors:
-    - "The Lavish Haven, Ahangama, Sri Lanka"
-  radius_m: 300                  # business mode
+    - "Global Surf Adventures (globalsurf.com)"   # named by Shahar 2026-09-28; one business, no area search
+  radius_m: 0                    # business mode; 0 = the anchor business only
   shore_buffer_m: 100            # town / stretch modes
 types: [surf_school, board_rental, surf_shop, surf_camp, beach_lodging, shaper]
-presence_threshold: 2            # shortlist businesses scoring <= this (0–5)
-max_sites: 3
+presence_threshold: 5            # shortlist businesses scoring <= this (0–5); 5 for this run: a business with a real site, chosen for the funnel audit
+max_sites: 1
 languages: [en]                  # English only for now; audience languages (de, es, pt, ru…) may come later
 budget:
   tokens_per_business: 2_000_000
