@@ -322,3 +322,76 @@ Interactive's 480 px file is soft on a 2x phone. Unique serves lower tiers than 
 - **calm:** the quiet, clear one. It works well on a phone, but you won't remember it.
 
 All three are clearly better than the current site. Only unique reaches 8.
+
+---
+
+# Round 4 (interactive and calm only; unique passed in round 3)
+
+Re-scored from scratch. The pages were served again on 127.0.0.1:8982 and shot fresh at 1440 and 390. Round-4 shots are in `reports/2026-09-globalsurf-02/visual/global-surf-adventures/r4/{calm,interactive}/`, with hero frames 5 s after load in `r4/*-hero-5s.png`. The current-site and gold shots are unchanged (`current-lodge/`, `gold-lavish/`, `gold-layday/`).
+
+What each page plays (Playwright, 5 s after load):
+
+| Page | Desktop | Phone |
+|---|---|---|
+| calm | vid-009e d1920 | vid-009e m1280 |
+| interactive | vid-009e d1920 | `hero-p960.webm` (960 px wide, up from 480) |
+
+## interactive, round 4: 8/10, PASS
+
+**Three seconds.** Desktop (`r4/interactive-hero-5s.png`): the tint is gone. It is a bright turquoise carve in full sun, the rock island top right, and a giant white "Kabalana" across the foot. The name, tagline and rating sit in one clean line under the header. It is the boldest first screen of the three and now also a sunny one. Phone (`r4/interactive/mobile-sheet.png`, first frame): the rider is sharp and in frame, with the coral button above "Kabalana".
+
+**What changed since round 3.**
+- The hero grade is fixed.
+- The phone video is now sharp enough.
+- Fomies now opens on a surfer with his arms up after a wave, a person rather than legs, on desktop (`r4/interactive/desktop-sheet.png`, row 1) and on a phone (`mobile-sheet`, 3rd frame).
+- Together with the barrel stage, the hair-flip feature, Barlow Condensed and the closing trio of level words, the page has one voice from top to bottom.
+
+**Still weak** (none blocks):
+- The Fomies clip shows celebration, not riding.
+- The phone screens around "What guests say" and "The spot" are still thin, with large gaps between blocks (`mobile-sheet`, row 2, frames 1–3).
+- The day run repeats the pinned heading across four screens on desktop (row 3). That is by design, but it is slow.
+
+**Better than current?** Yes, clearly, on the first screen (`r4/interactive-hero-5s.png` vs `current-lodge/desktop-00.png`) and on the whole page (`r4/interactive/desktop-sheet.png` vs `current-lodge/desktop-sheet.png`).
+
+**Closest reference.** Layday gold: one bold typographic idea on the first screen, carried in the business's own colour. It is at that level now, and its media is stronger.
+
+**Remaining fixes** (polish):
+1. Close the phone gaps around "What guests say" and "The spot".
+2. If a riding moment of the vid-010 stand-up exists, let Fomies open on it, and keep the cheer as its second beat.
+
+**Keep.** Everything: the hero, the stage, the hair-flip feature, the type, the closing words.
+
+## calm, round 4: 7/10, FAIL
+
+**Three seconds.** Desktop (`r4/calm-hero-5s.png`): the sunny carve now runs full height, with the name, tagline, button and rating low-left on a soft gradient. It is clean and well set. It is also exactly what a good hotel template's hero looks like. Phone (`r4/calm/mobile-sheet.png`, first frame): a sharp video band, then text on white. Still the best phone first screen of the three.
+
+**What changed since round 3.** All three round-3 fixes are done:
+- the video runs full height on desktop;
+- the feature line is white over the pool (`r4/calm/desktop-sheet.png`, row 3);
+- the dangling labels are gone, and each level now leads with a full sentence set large ("Level 1 – Fomies is for your first time on a board…").
+
+The level rows (video and text, staggered) are now good editorial work.
+
+**Why it still is not an 8.**
+- Nothing on the page is its own idea. Cover the name and it could be any tasteful villa site. The gold pages and the other two variants each have one move a visitor remembers (a pool window, the giant place word, the waterline); calm has none, which is the risk its concept named.
+- The rhythm below the fold goes slack. The rating section splits across screens, with "What guests say" at the foot of a photo screen and the "8.6" cut off (`desktop-sheet`, row 4). A near-empty screen holds only "Read all 80 reviews" (`desktop-sheet`, row 5; `mobile-sheet`, row 3, frame 1).
+
+**Better than current?** Yes, clearly, on the first screen (`r4/calm-hero-5s.png` vs `current-lodge/desktop-00.png`) and on the whole page (`r4/calm/desktop-sheet.png` vs `current-lodge/desktop-sheet.png`).
+
+**Remaining fixes:**
+1. Give calm one quiet signature and repeat it: for example, the daybed-over-the-pool photograph as a recurring 4:5 print, or the level names set at display size over their own clips.
+2. Keep "What guests say", the 8.6 and the first quote on one screen.
+3. Remove the near-empty "Read all reviews" screen by putting the link under the quotes.
+
+**Keep.** The full-height sunny hero. The phone hero. The editorial level rows. The white feature line on the pool. The day strip. The night band. Sora.
+
+## Round 4 result and final 4f ranking (visual only)
+
+1. **unique, 8/10, pass** (round 3).
+2. **interactive, 8/10, pass** (round 4).
+3. **calm, 7/10, fail.**
+
+**For Shahar, one sentence each:**
+- **unique:** the surf week as one continuous film, from a sunny reef wave through a live waterline into the lodge.
+- **interactive:** a giant "Kabalana" over a sunlit wave and a stage where you pick your water. The boldest type, now finished.
+- **calm:** clean, clear and the best on a phone, but a well-made hotel template with no idea of its own. It does not reach the bar.

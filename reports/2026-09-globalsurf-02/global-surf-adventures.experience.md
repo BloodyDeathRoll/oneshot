@@ -475,3 +475,62 @@ Unique's claim holds. Round 2 had 379 of 1,292 phone frames over 50 ms; round 3 
 Interactive and unique tie on score. Interactive ranks first because it has no open issue that affects a visitor, and it is the lightest on a phone. Unique still has the hard-to-read hero rating and 7.4 MB of scroll-time video.
 
 **The sentence for Shahar:** all three now beat the current site. Interactive is the easiest week to choose and book (tap your level, watch your water, book), unique is the most beautiful and now scrolls smoothly, and calm is clear and dependable but the quietest.
+
+---
+
+# Round 4 (4f) — 2026-09-29 · calm and interactive only
+
+**How I walked it:**
+- Same method as before: re-walked from scratch on the rebuilt `dist/`, served on 127.0.0.1:8983 and stopped afterwards.
+- Phone on slow 4G with 4× CPU, then laptop at 1440 × 900.
+- Wheel-scroll motion measured alone for each page.
+- Level taps, and taps through to the booking engine (`r4/probe.json`).
+- Reduced motion and JS off.
+- Frames are in `reports/2026-09-globalsurf-02/experience/global-surf-adventures/r4/<page>/`.
+- Unique was not re-walked; its round-3 result stands (9/10, pass).
+- I did not open the other reviewers' reports.
+
+**Checks that passed on both pages:**
+- **Booking:** the first-screen CTA reaches `/category/sri-lanka` in 1 tap, and "Book Level 1" reaches `/product/level-1-fomies` in 1 tap.
+- **Bar:** the bar's level switch changes the clip and the Book target on both pages.
+- **Motion:** wheel scroll on phone and laptop ran at p50 16.7 ms / p95 ≤ 16.8 ms, with 0 frames over 50 ms on either page.
+- **Reduced motion:** no video requested.
+- **JS off:** complete on both.
+
+## calm "Daybed", round 4 — **8/10, pass; better than current: yes**
+
+**What is fixed since round 3:**
+- **Poster at 0.5 s:** the pool is painted at 0.5 s (`r4/calm/phone-cold-500ms.jpg`; LCP 584 ms, the inline poster).
+- **Full-bleed hero on the laptop:** the film fills the screen with the name, CTA and rating over it. By load + 4 s it shows the surfer on the reef (`laptop-cold-*`, `laptop-settled.jpg`).
+- **Whole-sentence level headings** read well ("Level 1 – Fomies is for your first time on a board…", `phone-scroll-02/03`).
+- **Solid coral "Book Level n"** buttons are back (`phone-scroll-03/05/07`, `laptop-scroll-02…04`).
+- **Feature line on img-005:** white on the pool, readable on the phone and the laptop (`phone-scroll-09`, `laptop-scroll-06`).
+- **Quote swipe row** with "Read all 80 reviews on Booking.com" (`phone-scroll-19`) replaces the four screens of text.
+
+**Remaining fixes:**
+1. **The phone hero is still not full-bleed.** The picture takes the top ≈ 57 % and the name and CTA sit on white below (`phone-cold-*`, `phone-settled.jpg`). The laptop now arrives in the film; the phone arrives at a card. Carry the full-bleed treatment to 390 px.
+2. **Below the quote swipe row the phone shows about half a screen of empty ground** before "The spot" (`phone-scroll-19/20`). Tighten it.
+
+It is still the quietest of the three, but it is now polished end to end and books without friction.
+
+## interactive "Pick your water", round 4 — **9/10, pass; better than current: yes**
+
+**What is fixed or improved since round 3:**
+- **Portrait hero on the phone:** the 960 px phone video (`hero-p960.webm`) is playing by 1.5 s. By load + 4 s the surfer fills the portrait frame, with a lighter text band at the top and the CTA and "Kabalana" at the foot (`phone-settled.jpg`).
+- **Fomies stage on the phone:** the clip is framed on the beginner in the whitewater and the cheering instructor (`phone-scroll-01`, `level-tab-0.jpg`). Riders is the barrel (`level-tab-2.jpg`).
+- **Tighter phone spacing:** the page is 10,987 px, down from 11,207 px.
+- **Weight:** 3.0 MB on the phone walk, 7.0 MB on the laptop with every level clip viewed.
+
+**Remaining fixes:**
+1. **Regression at 0.5 s:** the phone hero is a grey-to-white wash with no picture. "Kabalana" in white sits on pale grey and barely reads (`r4/interactive/phone-cold-500ms.jpg`). The poster only arrives by 1.5 s (in round 3 it was painted at 0.5 s). LCP is 912 ms (was 788 ms). Paint the poster (or a dark sampled colour) behind the text from the first frame.
+2. **Laptop feature line:** "Footwear is discouraged. Chilling out is inescapable." is still dark ink where it crosses the dark sunshade and the wet hair (`laptop-scroll-04/05`). On the phone it is white and fine (`phone-scroll-05`). Make the laptop white as well.
+
+## Ranking after round 4 (unique carried over from round 3)
+
+| rank | page | score | 4f | better than current |
+|---|---|---|---|---|
+| 1 | interactive "Pick your water" | 9 | pass | yes |
+| 2 | unique "Waterline" (round 3) | 9 | pass | yes |
+| 3 | calm "Daybed" | 8 | pass | yes |
+
+**The sentence for Shahar:** all three beat the current site. Interactive is the easiest week to choose and book, unique is the most beautiful, and calm is now polished and dependable but still the quietest, and on a phone it opens on a card rather than the film.
