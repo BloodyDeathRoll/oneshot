@@ -395,3 +395,60 @@ The level rows (video and text, staggered) are now good editorial work.
 - **unique:** the surf week as one continuous film, from a sunny reef wave through a live waterline into the lodge.
 - **interactive:** a giant "Kabalana" over a sunlit wave and a stage where you pick your water. The boldest type, now finished.
 - **calm:** clean, clear and the best on a phone, but a well-made hotel template with no idea of its own. It does not reach the bar.
+
+---
+
+# Round 5 (calm re-scored; interactive regression check)
+
+Re-scored from scratch. The pages were served again on 127.0.0.1:8982 and shot fresh at 1440 and 390. Round-5 shots are in `reports/2026-09-globalsurf-02/visual/global-surf-adventures/r5/{calm,interactive}/`, with hero frames 5 s after load in `r5/*-hero-5s.png`. The current-site and gold shots are unchanged.
+
+Both pages play vid-009e d1920 on desktop. On a phone, calm plays vid-009e m1280 and interactive plays hero-p960.
+
+## calm, round 5: 8/10, PASS (the lowest of the three passes)
+
+**Three seconds.**
+- Desktop (`r5/calm-hero-5s.png`, `r5/calm/desktop-00.png`): the full-height sunny carve, with the name, button and rating low-left. It is unchanged since round 4 and it is good.
+- Phone (`r5/calm/mobile-sheet.png`, first frame): now full-bleed. The rider is big, the name sits top-left on the water, and the button and rating are at the foot. It is a real first screen now, not a hotel header.
+
+**The signature, "the deck".** Each chapter opens on a letterbox strip of the pool's timber edge, and the light moves through the day:
+- the morning pool edge before "Pick your level" (`desktop-sheet`, row 1);
+- the red-cushion deck before "Twelve rooms" (`r5/calm/desktop-08.png`);
+- the white beanbags, dark timber and blue tile before "What guests say" (`r5/calm/desktop-10.png`);
+- the night deck with its orange cushions at the close.
+
+It is quiet, but it is an idea: the same horizontal cut through the same place, repeated. That is what calm lacked. The `desktop-10` strip is the best of them.
+
+**Also improved.**
+- The feature is now img-017, two women laughing on a daybed over the pool (`desktop-sheet`, row 3). It is warm and human, the best feature photograph calm has had, with the white line low-left.
+- "What guests say", the 8.6 and the first quote now open together on one screen (`desktop-10`).
+
+**Still weak** (none blocks):
+- The "Twelve rooms" strip is a slice of someone's feet on a cushion (`desktop-08`). It reads as an accidental crop rather than the deck. Use a frame where the timber edge and the water carry the strip.
+- The strips are all about the same height and look alike, so the morning-to-dusk light change is too subtle to notice until the night one. Push the grade.
+- It is still the least distinctive of the three. It passes on craft and restraint, not on surprise.
+
+**Better than current?** Yes, clearly, on the first screen (`r5/calm-hero-5s.png` vs `current-lodge/desktop-00.png`) and on the whole page (`r5/calm/desktop-sheet.png` vs `current-lodge/desktop-sheet.png`).
+
+**Closest reference.** Lavish Haven gold in manner: white ground, one light face, the pool as a recurring device. It is below Lavish in invention, but at the bar.
+
+## interactive, round 5: holds 8/10, PASS
+
+- **Laptop feature** (`r5/interactive/desktop-05.png`): "Footwear is discouraged. Chilling out is inescapable." is now white Barlow Condensed low-left over the pool. It is better than the dark type over the wall in round 4, and it is one of the best screens across all three pages.
+- **Phone hero** (`r5/interactive/mobile-sheet.png`, first frame): it paints the rider, and I see no regression at 390.
+- **Desktop hero** (`r5/interactive-hero-5s.png`): unchanged from round 4, sunny with the giant "Kabalana".
+- **Rest of the page** (`r5/interactive/desktop-sheet.png`): no regression anywhere.
+
+**Better than current?** Yes / yes.
+
+## Final 4f result (visual only)
+
+| Rank | Mockup | Score | Pass | Better than current |
+|---|---|---|---|---|
+| 1 | unique | 8 (round 3) | pass | yes / yes |
+| 2 | interactive | 8 (round 5) | pass | yes / yes |
+| 3 | calm | 8 (round 5) | pass | yes / yes |
+
+**For Shahar, one sentence each:**
+- **unique:** the surf week as one continuous film, from a sunny reef wave through a live waterline into the lodge. The most distinctive.
+- **interactive:** a giant "Kabalana" over a sunlit wave and a stage where you pick your water. The boldest type.
+- **calm:** the quiet one. A sunny surf opening, then chapters that open on the pool deck as the light moves from morning to night. Clear, warm and the best on a phone, but the least surprising.

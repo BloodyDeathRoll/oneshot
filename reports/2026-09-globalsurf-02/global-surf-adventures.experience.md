@@ -534,3 +534,54 @@ It is still the quietest of the three, but it is now polished end to end and boo
 | 3 | calm "Daybed" | 8 | pass | yes |
 
 **The sentence for Shahar:** all three beat the current site. Interactive is the easiest week to choose and book, unique is the most beautiful, and calm is now polished and dependable but still the quietest, and on a phone it opens on a card rather than the film.
+
+---
+
+# Round 5 (4f) — 2026-09-29 · calm and interactive only
+
+**How it was walked:** the same method as rounds 1–4, re-walked from scratch on the rebuilt `dist/`, served on 127.0.0.1:8983 and stopped afterwards.
+- Phone on slow 4G with 4× CPU, then laptop at 1440 × 900.
+- Each page's wheel-scroll motion was measured alone.
+- Level taps and engine landings were checked (`r5/probe.json`).
+- Reduced motion and JS off were checked on both pages.
+- Frames are in `reports/2026-09-globalsurf-02/experience/global-surf-adventures/r5/<page>/`.
+- Unique was not re-walked; its round-3 result stands.
+- I did not open the other reviewers' reports.
+
+**Both pages:**
+- **Booking:** the first-screen CTA reaches `/category/sri-lanka` in 1 tap, and "Book Level 1" reaches `/product/level-1-fomies` in 1 tap. The bar's level switch changes both the clip and the Book target (calm: Rollers plays `l2-vid-003`, Riders plays `l3-vid-002e`; interactive: `lv2`, `lv3`).
+- **Motion:** 0 frames over 50 ms on phone or laptop (p95 ≤ 16.8 ms).
+- **Reduced motion:** no video requested.
+- **JS off:** complete, with no broken images.
+
+## calm "Daybed", round 5 — **8/10, pass; better than current: yes**
+
+**Fixed since round 4:**
+- **Full-bleed phone hero:** at 0.5 s the pool poster already fills the phone, with the name at the top and the tagline, CTA and rating at the foot (`r5/calm/phone-cold-500ms.jpg`). By load + 4 s it is the surfer on the reef (`phone-settled.jpg`). LCP 584 ms. The phone now arrives in the film, like the laptop.
+- **Feature on img-017:** two guests laughing on a daybed over the pool, with "Footwear is discouraged. Chilling out is inescapable." in white. It is the warmest moment on the page (`phone-scroll-09`, `laptop-scroll-06`).
+- **Guests on one screen:** "8.6", Fanny's quote, the 9.5 / 9.2 / 9.2 scores and a swipe row with "Read all 80 reviews" (`phone-scroll-18/19`). The empty half-screen from round 4 is gone.
+- **Level films and solid Book buttons:** unchanged from round 4, and still good (`phone-scroll-02…07`).
+
+**Remaining issues:**
+1. **"The deck" strips** are thin letterbox crops of the timber deck used as dividers. Twice they cut people oddly: bare legs and feet on a daybed with no body (`phone-scroll-01` bottom, `phone-scroll-14` top). They read as accidental crops, not a signature. Crop them to deck, water and cushions only, or drop the people frames. This is what holds calm at 8.
+2. Calm is still the quietest page by design. Nothing else in it slows or confuses a visitor.
+
+## interactive "Pick your water", round 5 — **9/10, pass; better than current: yes**
+
+**Both round-4 regressions are fixed:**
+- **Phone poster at 0.5 s:** the pool poster is painted behind the text, "Kabalana" reads white on the picture, and the CTA is usable (`r5/interactive/phone-cold-500ms.jpg`). By load + 4 s the 960 px portrait surfer is playing. LCP 780 ms.
+- **Laptop feature line:** "Footwear is discouraged. Chilling out is inescapable." is now white over the pool and reads cleanly (`laptop-scroll-05`). The dark-ink-on-sunshade frame is gone (`laptop-scroll-04`).
+
+**Everything else holds:** the stage (tap a level, the water changes, the price and Book follow), the synced bar, the "Not sure which level?" drawer, and the barrel for Riders (`level-tab-*.jpg`, `drawer-00.jpg`).
+
+**Remaining issues:** none that affect a visitor. Polish only: the rooms tap list runs long on the phone (`phone-scroll-08/09`).
+
+## Ranking after round 5 (unique from round 3)
+
+| rank | page | score | 4f | better than current |
+|---|---|---|---|---|
+| 1 | interactive "Pick your water" | 9 | pass | yes |
+| 2 | unique "Waterline" (round 3) | 9 | pass | yes |
+| 3 | calm "Daybed" | 8 | pass | yes |
+
+**The sentence for Shahar:** all three beat the current site and book in one tap. Interactive is the easiest week to choose and book, unique is the most beautiful, and calm is now a full-bleed, warm, dependable page and still the quietest.

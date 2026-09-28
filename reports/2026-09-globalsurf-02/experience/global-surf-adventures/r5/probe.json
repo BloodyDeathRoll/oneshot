@@ -1,0 +1,344 @@
+{
+ "calm": {
+  "primaryBox": {
+   "x": 20,
+   "y": 696,
+   "width": 350,
+   "height": 56
+  },
+  "primaryText": "See the weekly surf packages and dates",
+  "primaryLanded": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+  "levelsTop": {
+   "f": "level-00-section.jpg",
+   "vids": [
+    {
+     "src": "l1-vid-010-m720.mp4",
+     "paused": false,
+     "t": 1.5,
+     "vis": "1"
+    }
+   ],
+   "bar": "Fomies Rollers Riders $1,466 pp, 7 nights lessons, meals, room Book Fomies",
+   "barLinks": [
+    "Book Level 1 – FomiesBook Fomies -> level-1-fomies"
+   ]
+  },
+  "levelTaps": [
+   {
+    "tapped": "/^Rollers/",
+    "at": {
+     "x": 136,
+     "y": 739,
+     "w": 116,
+     "h": 44
+    },
+    "y": 2859,
+    "f": "level-01-tap.jpg",
+    "vids": [
+     {
+      "src": "l2-vid-003-m720.mp4",
+      "paused": false,
+      "t": 1.7,
+      "vis": "1"
+     }
+    ],
+    "bar": "Fomies Rollers Riders $1,466 pp, 7 nights lessons, meals, room Book Rollers",
+    "barLinks": [
+     "Book Level 2 – RollersBook Rollers -> level-2-rollers"
+    ]
+   },
+   {
+    "tapped": "/^Riders/",
+    "at": {
+     "x": 253,
+     "y": 739,
+     "w": 116,
+     "h": 44
+    },
+    "y": 3910,
+    "f": "level-02-tap.jpg",
+    "vids": [
+     {
+      "src": "l3-vid-002e-m720.mp4",
+      "paused": false,
+      "t": 1.7,
+      "vis": "1"
+     }
+    ],
+    "bar": "Fomies Rollers Riders $1,466 pp, 7 nights lessons, meals, room Book Riders",
+    "barLinks": [
+     "Book Level 3 – RidersBook Riders -> level-3-riders"
+    ]
+   },
+   {
+    "tapped": "/^Fomies/",
+    "at": {
+     "x": 21,
+     "y": 739,
+     "w": 115,
+     "h": 44
+    },
+    "y": 1845,
+    "f": "level-03-tap.jpg",
+    "vids": [
+     {
+      "src": "l1-vid-010-m720.mp4",
+      "paused": false,
+      "t": 3.2,
+      "vis": "1"
+     }
+    ],
+    "bar": "Fomies Rollers Riders $1,466 pp, 7 nights lessons, meals, room Book Fomies",
+    "barLinks": [
+     "Book Level 1 – FomiesBook Fomies -> level-1-fomies"
+    ]
+   }
+  ],
+  "level1Landed": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+  "fine": [
+   {
+    "y": 1177,
+    "f": "fine-00.jpg"
+   },
+   {
+    "y": 1377,
+    "f": "fine-01.jpg"
+   },
+   {
+    "y": 1577,
+    "f": "fine-02.jpg"
+   },
+   {
+    "y": 1777,
+    "f": "fine-03.jpg"
+   },
+   {
+    "y": 1977,
+    "f": "fine-04.jpg"
+   },
+   {
+    "y": 2177,
+    "f": "fine-05.jpg"
+   },
+   {
+    "y": 2377,
+    "f": "fine-06.jpg"
+   },
+   {
+    "y": 2577,
+    "f": "fine-07.jpg"
+   },
+   {
+    "y": 2777,
+    "f": "fine-08.jpg"
+   },
+   {
+    "y": 2977,
+    "f": "fine-09.jpg"
+   },
+   {
+    "y": 3177,
+    "f": "fine-10.jpg"
+   },
+   {
+    "y": 3377,
+    "f": "fine-11.jpg"
+   },
+   {
+    "y": 3577,
+    "f": "fine-12.jpg"
+   },
+   {
+    "y": 3777,
+    "f": "fine-13.jpg"
+   },
+   {
+    "y": 3977,
+    "f": "fine-14.jpg"
+   },
+   {
+    "y": 4177,
+    "f": "fine-15.jpg"
+   }
+  ],
+  "day0": "day-00.jpg",
+  "dayBox": {
+   "h": 2394,
+   "scroller": null
+  },
+  "day1": "day-01-swipe.jpg",
+  "day2": "day-02-scrolled.jpg",
+  "dayScroller": null,
+  "lapFine": [
+   {
+    "y": 1753,
+    "f": "lapfine-00.jpg",
+    "vids": [
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     }
+    ]
+   },
+   {
+    "y": 2053,
+    "f": "lapfine-01.jpg",
+    "vids": [
+     {
+      "src": "l1-vid-010-m1280.webm",
+      "paused": false,
+      "t": 0.4,
+      "vis": "0.8736"
+     }
+    ]
+   },
+   {
+    "y": 2353,
+    "f": "lapfine-02.jpg",
+    "vids": [
+     {
+      "src": "l1-vid-010-m1280.webm",
+      "paused": false,
+      "t": 0.8,
+      "vis": "1"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     }
+    ]
+   },
+   {
+    "y": 2653,
+    "f": "lapfine-03.jpg",
+    "vids": [
+     {
+      "src": "l1-vid-010-m1280.webm",
+      "paused": false,
+      "t": 1.3,
+      "vis": "1"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     }
+    ]
+   },
+   {
+    "y": 2953,
+    "f": "lapfine-04.jpg",
+    "vids": [
+     {
+      "src": "l1-vid-010-m1280.webm",
+      "paused": true,
+      "t": 1.3,
+      "vis": "1"
+     },
+     {
+      "src": "l2-vid-003-m1280.webm",
+      "paused": false,
+      "t": 0.4,
+      "vis": "0.950092"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     }
+    ]
+   },
+   {
+    "y": 3253,
+    "f": "lapfine-05.jpg",
+    "vids": [
+     {
+      "src": "l2-vid-003-m1280.webm",
+      "paused": false,
+      "t": 0.9,
+      "vis": "1"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     }
+    ]
+   },
+   {
+    "y": 3553,
+    "f": "lapfine-06.jpg",
+    "vids": [
+     {
+      "src": "l2-vid-003-m1280.webm",
+      "paused": true,
+      "t": 1,
+      "vis": "1"
+     },
+     {
+      "src": "l3-vid-002e-m1280.webm",
+      "paused": false,
+      "t": 0.4,
+      "vis": "0.924887"
+     }
+    ]
+   },
+   {
+    "y": 3853,
+    "f": "lapfine-07.jpg",
+    "vids": [
+     {
+      "src": "l3-vid-002e-m1280.webm",
+      "paused": false,
+      "t": 0.9,
+      "vis": "1"
+     }
+    ]
+   },
+   {
+    "y": 4153,
+    "f": "lapfine-08.jpg",
+    "vids": [
+     {
+      "src": "l3-vid-002e-m1280.webm",
+      "paused": true,
+      "t": 1,
+      "vis": "1"
+     }
+    ]
+   },
+   {
+    "y": 4453,
+    "f": "lapfine-09.jpg",
+    "vids": []
+   },
+   {
+    "y": 4753,
+    "f": "lapfine-10.jpg",
+    "vids": []
+   },
+   {
+    "y": 5053,
+    "f": "lapfine-11.jpg",
+    "vids": []
+   },
+   {
+    "y": 5353,
+    "f": "lapfine-12.jpg",
+    "vids": []
+   },
+   {
+    "y": 5653,
+    "f": "lapfine-13.jpg",
+    "vids": []
+   }
+  ]
+ }
+}

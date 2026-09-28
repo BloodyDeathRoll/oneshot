@@ -441,3 +441,115 @@ fix list for 4g (all variants, smallest first):
 what the designer prompt got wrong (round 3): The prompt allows a copy sentence to be split across elements for layout, but it does not require the pieces to stay adjacent in DOM and reading order. It also does not carry playbook §1a's 8–20 s length window to clips the orchestrator edits.
 
 Not tested in round 3: a real phone or GPU, Safari, axe, the engine's screens after landing, and a frame-by-frame contrast scan of the round-3 hero.
+
+---
+
+# Round 5 (final 4f check; calm and interactive only)
+
+critic 0.4.0 · rubric 0.3.0 · 2026-09-29 · calm at `b675c0e` (4e rounds 4–5), interactive at `b55c296` (round 4 plus the round-5 regression fixes) · dimensions 1–7 only. unique is unchanged since round 3, and its round-3 score stands. The visual critics' reports were not opened.
+
+Same checks in the same order as round 3, with one addition: every `<img alt>` and video label is checked against the dossier's `images[].description` and `place`, and against the pixels where the alt describes a crop.
+
+Evidence:
+- `reports/2026-09-globalsurf-02/critic/r5/<variant>/shots/`, `<variant>-probe.json` and `<variant>-text.txt`
+- `sites/global-surf-adventures/mockups/{calm,interactive}/audit.json` (overwritten with this run)
+
+## The sentence the human needs (round 5)
+
+Both pass the critic's gates, with no hard fail and scores unchanged from round 3.
+- interactive: 0 third-party requests on load, 0 tap targets under 44 px.
+- calm still loads Google Fonts and keeps one 99×17 credit link.
+- Both still use the 6.8 s hero edit, under playbook §1a's 8 s.
+
+| variant | d1 | d2 | d3 | d4 | d5 | d6 | d7 | total /80 | r3 | hard fails |
+|---|---|---|---|---|---|---|---|---|---|---|
+| calm | 10 | 9 | 9 | 8 | 9 | 9 | 8 | **72.8** | 72.8 | none |
+| interactive | 10 | 9 | 9 | 9 | 9 | 9 | 10 | **74.7** | 74.7 | none |
+| unique (not re-run) | – | – | – | – | – | – | – | 69.5 | 69.5 | none |
+
+## Measured (round 5)
+
+| line | target | calm | interactive |
+|---|---|---|---|
+| first load, phone (audit.json) | ≤ 1.5 MB | 248 KB (HTML 79 KB) | 207 KB (HTML with font subsets 114 KB) |
+| LCP / CLS on load | ≤ 2.5 s / < 0.1 | 628 ms / 0 | 744 ms / 0 |
+| CLS after a full scroll, phone / desktop | – | 0.003 / 0.005 | 0 / 0 |
+| third-party on load | 0 | 2 (Google Fonts, allowed at 4e) | 0 |
+| largest image | ≤ 300 KB | 55 KB | 64 KB |
+| tap targets < 44 px | 0 | "globalsurf.com" credit 99×17 (both widths) | 0 |
+| skip link first, target exists | yes | "Skip to the surf weeks and prices" → `#levels` ✓ | "Skip to the surf weeks" → `#levels` ✓ |
+| overflow-x at 390 | 0 | 0 | 0 |
+| Tab pass (60 stops) | visible focus | all visible | all visible except Rosa's iframe |
+
+**Video, round 5:**
+- **Hero request after first paint:** calm +384 ms (phone, `vid-009e-m1280.webm` 1.36 MB) and +364 ms (desktop, `d1920.webm` 2.59 MB). Interactive +49 ms (phone, new portrait `hero-p960.webm` 1.54 MB; mp4 1.63 MB, 960×2080) and +30 ms (desktop, `d1920.webm` 2.59 MB).
+- **Poster:** both posters are in the HTML.
+- **Reduced motion and Save-Data: 0 video requests** on load and after a full scroll, at both widths, in both variants.
+- **Files:** every served file has no audio track, every MP4 is faststart, and every size is inside ≤ 2 MB (phone) / ≤ 4 MB (desktop).
+- **Hero length:** 6.8 s, **under §1a's 8–20 s** (unchanged from round 3).
+- **Level clips, scroll only:**
+  - calm: 3.0–4.3 s trims; phone 1.1 MB for three, desktop 2.1 MB.
+  - interactive: phone 0.24 MB for the first (lv1 re-cut to 3.6 s, 576×720), desktop 2.9 MB for three.
+- **Provenance:** `vid-009e` and `vid-002e` are **now in `dossier.json` `videos[]`**, license business-owned. The round-3 item is closed.
+
+**Rosa (both):** 0 requests on load; after scroll, one `south-point.json` request plus the widget frame; with JS off, the plain link "See today's forecast for South Point on Rosa" shows.
+
+**Tap-through (phone):** in both, "See the weekly surf packages and dates" navigates to `https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka`, class engine, the same as `recommended`. With JS off, 11 (calm) and 10 (interactive) booking links are reachable. Product, WhatsApp and tel URLs match char-for-char, as in earlier rounds.
+
+## Facts, copy and alt texts, round 5
+
+- **Copy:**
+  - calm renders **38/38** en.json sentences in visible text. The new whole-sentence level headings ("Level 1 – Fomies is for your first time on a board, no surfing experience needed.") are en.json sentences, verbatim, and the body continues with the next sentence. Nothing is split mid-sentence, and the reading order is intact.
+  - interactive: 34/38 visible and 38/38 in the DOM (the Level 2/3 bodies sit in inactive stage panels, as in round 3).
+- **Testimonials:** calm 4 (Fanny, Myrthe, Seagallas, Abigail) and interactive 9, all verbatim with sources.
+- **New label (calm):** "Read all 80 reviews on Booking.com" → `reviews.booking.count` 80 and the listing URL. Match.
+- **Ratings:** every 8.6 on both pages carries its count and date. No bare "8.6 Booking.com" in either.
+- **Alt texts: 18 in calm and 22 in interactive, plus 4 video labels in interactive. All match the dossier `description` / `place`:**
+  - Surf frames whose place is unidentified (img-104, img-111, img-118) carry no lodge or wave claim.
+  - Lodge photos are named "the lodge" only where the dossier's `place` is lodge.
+  - Two alts describe crops, so I checked them against the pixels:
+    - calm `deck-2-img-009` "Bare feet on a red cushion on the timber daybed platform over the pool": the 2000×250 strip of img-009 shows exactly that.
+    - interactive `img-062` "between the coast road and the railway": the road and the railway line are both visible.
+  - calm's four videos are `aria-hidden`, and their posters carry the alt. The DOM text around them states the level.
+- **Result:** 0 mismatches and 0 unsourced claims in either variant.
+
+---
+
+```
+mode: quick        round: 5        variant: calm
+total: 72.8 / 80 (d1–7)   result: pass (critic gates; d8 from the visual critics)   hard_fails: []
+```
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | 38/38 copy sentences; 0 mismatches; 18 alts consistent with the dossier; ratings with count and date. |
+| 2 | mobile + perf | 9 | 248 KB, LCP 628 ms, CLS 0. Hero after paint, 1.36 / 2.59 MB. Minus: Google Fonts; hero 6.8 s. |
+| 3 | booking CTA | 9 | Tap lands on the engine category; per-level product links char-for-char. Minus: the WhatsApp prefill does not name the level. |
+| 4 | brand fit | 8 | §3 order; the deck strips and the guests section add no claim. Minus: level clips move against the calm brief (declared); no drawer. |
+| 5 | copy | 9 | Verbatim whole sentences; reading order intact. |
+| 6 | accessibility | 9 | Skip link, 0 alts missing, focus visible on every stop, 0 video under reduced motion. Minus: the credit link is 99×17. The phone hero is full-bleed again with white type on the film (`r5/calm/shots/mobile-00.png` reads cleanly), but no frame-by-frame contrast scan was run. |
+| 7 | security + delivery | 8 | Static, relative, 1 lazy embed. Minus: Google Fonts. |
+
+```
+mode: quick        round: 5        variant: interactive
+total: 74.7 / 80 (d1–7)   result: pass (critic gates; d8 from the visual critics)   hard_fails: []
+```
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | 0 mismatches; 22 alts and 4 video labels consistent with the dossier; ratings with count and date. |
+| 2 | mobile + perf | 9 | 207 KB, LCP 744 ms, CLS 0, phone hero 1.54 MB. Minus: hero 6.8 s. |
+| 3 | booking CTA | 9 | Tap lands on the engine category; stage and bar product links char-for-char; level-specific WhatsApp prefills. Not tapped on a real phone. |
+| 4 | brand fit | 9 | Cool ground hsl(204 33% 97%); brief met. Minus: no drawer. |
+| 5 | copy | 9 | Verbatim; the L2/L3 bodies sit in inactive panels (in the DOM). |
+| 6 | accessibility | 9 | 0 targets under 44 px, skip link, 0 alts missing, 0 video under reduced motion. Minus: Rosa's iframe focus ring; no frame-by-frame contrast scan of the new phone hero. |
+| 7 | security + delivery | 10 | 0 third-party on load, fonts self-hosted, 1 lazy embed with a fallback. |
+
+check-design default-look facts (none fail): calm Sora, ground hsl(225 20% 96%) · interactive Barlow / Barlow Condensed, ground hsl(204 33% 97%) · 0 all-caps labels, 0 labelled headings.
+
+fix list for 4g (smallest first):
+1. Make calm's "globalsurf.com" credit link 44 px tall.
+2. Name the level in calm's WhatsApp prefill.
+3. Self-host Sora (calm).
+4. Decide whether a 6.8 s hero is accepted under §1a's 8–20 s.
+5. Run a frame-by-frame contrast scan of both phone heroes on the built site.
+
+Not tested in round 5: a real phone or GPU, Safari, axe, the engine's screens after landing, and a frame-by-frame contrast scan of either hero.
