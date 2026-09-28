@@ -43,7 +43,7 @@ oneshot/
   taxonomy.md                 # business types, what counts as "surf-related"
   server-hardening.md         # security baseline for the one CMS server (one server, one admin)
   agents/
-    orchestrator/  scout/  harvester/  copywriter/  humanizer/  copyeditor/  creative-director/  designer/  seo/  aiseo/  critic/  deployer/  writer/
+    orchestrator/  scout/  harvester/  auditor/  copywriter/  humanizer/  copyeditor/  creative-director/  designer/  seo/  aiseo/  critic/  deployer/  writer/
       base.md        # Claude writes: role, inputs, outputs, hard constraints
       custom.md      # Shahar writes: taste, rules, house style
       references.md  # curated examples (URLs + what we like about each), cached notes
@@ -58,7 +58,7 @@ oneshot/
     self-hosted-docker/       # adapter: single-tenant compose stack (Payload + Postgres + Astro builder + Caddy) on the client's VPS
     static/                   # adapter: static build + source zip, no CMS
   handoff/                    # handoff kit templates: README, credentials sheet, backup/restore, update procedure, "how to edit" guide with screenshots
-  schemas/                    # site-content.md — the content contract between Payload and the templates
+  schemas/                    # audit.md (auditor output, proposal 007); site-content.md — the content contract between Payload and the templates
   scripts/                    # deterministic helpers (geocode, coastline buffer, scrape, zip)
   dossier/<slug>/             # dossier.json + assets/ per business
   sites/<slug>/               # copy/ + concepts.md + mockups/ (3 variants) + final/ (Astro site)
@@ -111,8 +111,9 @@ Each business moves through these stations. The orchestrator owns the order, ret
 | # | Station | Agent | Input | Output | Gate |
 |---|---|---|---|---|---|
 | 1 | Target | human | — | `run.yaml` | — |
-| 2 | Scout | scout | run.yaml | `candidates.json` with geo, contact, links, presence score 0–5 + reason | **Human approves shortlist** |
+| 2 | Scout | scout | run.yaml | `candidates.json` with geo, contact, links, presence score 0–5 + reason, and `existing_site.funnel` (taps to book, measured with `tools/funnel.mjs --depth 1`) | **Human approves shortlist** |
 | 3 | Harvest | harvester | approved candidates | `dossier/<slug>/dossier.json` + `assets/`; every fact/image carries its source; gaps flagged | — |
+| 3b | Audit | auditor | dossier, old site, `candidates.json` entry | `dossier/<slug>/audit.json` + `audit.md` + `funnel/` (`schemas/audit.md`): the old path to a booking measured with `tools/funnel.mjs`, findings with evidence, and the recommended funnel in site-schema terms (proposal 007). Businesses with no site are audited too (`scope: no_site`) | — |
 | 4a | Copy | copywriter | dossier, schema | site copy per locale in `sites/<slug>/copy/<locale>.json` + `copy/sources.md` (every paragraph mapped to its dossier fields) | — |
 | 4b | Humanize | humanizer | draft copy | same files rewritten so they read as a person wrote them; facts unchanged; `copy/humanizer-notes.md` | — |
 | 4c | Copy review | copyeditor | copy, draft, dossier | per-claim audit (`sourced` / `shared-context` / `framing` / `unsourced` / `contradicted`) + voice audit; `copy/review.md`; fail → back to 4a or 4b, max 2 rounds | — |
@@ -122,13 +123,13 @@ Each business moves through these stations. The orchestrator owns the order, ret
 | 4g | Build | designer | chosen mockup + passed copy | Astro site **ported from the chosen mockup without changing how it looks** + tenant content model seeded in Payload | — |
 | 4h | SEO | seo | built site, dossier | classical SEO pass on `templates/<variant>/`: JSON-LD from CMS content, head + headings, local signals, Core Web Vitals, sitemap/robots; `sites/<slug>/seo-report.md` | — |
 | 4i | AI SEO | aiseo | built site, dossier, `seo-report.md` | answer-engine pass: self-contained answers to the questions people actually ask, `FAQPage` data, `/llms.txt`, AI-crawler policy, no-JS check; `sites/<slug>/aiseo-report.md` | — |
-| 5 | Critique | critic | final site, dossier, both SEO reports | scorecard; fail → back to 4f, max 3 rounds | — |
+| 5 | Critique | critic | final site, dossier, both SEO reports, `audit.json` | scorecard, including `tools/funnel.mjs` on the built site against `audit.json.recommended`; fail → back to 4f, max 3 rounds | — |
 | 6 | Deliver | deployer | passing site | deployer runs the adapter for the business's `hosting_mode` (§5). `managed`: tenant + seed + `wrangler deploy` + domain + owner login; the preview URL is just the `*.workers.dev` address. `self_hosted_docker` ends with a verified handoff kit and our access revoked. `static_only` ends with the zip | — |
-| 7 | Pitch | writer | dossier, old vs new, preview URL | proposal page + outreach message in local language | **Human sends; outcome logged** |
+| 7 | Pitch | writer | dossier, `audit.md`, old vs new, preview URL | proposal page + outreach message in local language | **Human sends; outcome logged** |
 | ∞ | Learn | critic | reports, mockup picks, pitch outcomes | `proposals/<run>/` diffs to prompts/tools/playbook/rubric | **Human approves diffs** → merge, bump, CHANGELOG |
 
 ### Ledger states
-`discovered → scored → shortlisted → approved → harvested → copy_drafted → copy_humanised → copy_passed | copy_failed → concepted → mocked → picked → built → optimised → ai_optimised → critiqued(n) → passed | failed → packaged → pitched → outcome:{reply,meeting,sale,ignored}`
+`discovered → scored → shortlisted → approved → harvested → audited → copy_drafted → copy_humanised → copy_passed | copy_failed → concepted → mocked → picked → built → optimised → ai_optimised → critiqued(n) → passed | failed → packaged → pitched → outcome:{reply,meeting,sale,ignored}`
 
 `self_hosted_docker` only, once the client has chosen it: `… → handoff_verified → access_revoked`. `handoff_verified` = the adapter's `verify` passed on the client's box and the handoff kit is complete; `access_revoked` = our keys, users and tokens are removed from the client's box and we have checked that they no longer work.
 
@@ -148,6 +149,7 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 - Discovery sources: Google Places/Maps, OpenStreetMap, Instagram/Facebook pages, TripAdvisor, local directories.
 - Geo filter: anchors → coastline → buffer polygon → point-in-polygon.
 - Presence score 0–5: none / Facebook-only / dead link / not mobile / no booking / stale content. Each score carries the reason.
+- Funnel probe (proposal 007): when the site loads, `tools/funnel.mjs --depth 1` → `existing_site.funnel` (taps to book, primary action, CTA above fold), cited in the reason.
 - Output schema: `candidates.json` (name, type, lat/lng, address, phone, WhatsApp, socials, existing site URL, score, reason, evidence links).
 - Evals: precision of "surf-related" (human spot-check), % of shortlist the human approves.
 
@@ -179,6 +181,14 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 
 - **`references.md` seed:** ranchosantana.com · malibupopoyo.com · morgansrock.com · tandjungsarihotel.com · white-desert.com · kubehotel-saint-tropez.com/en — Phase 1 task: analyse each (layout, motion, typography, booking UX, imagery) into reusable notes so the prompt doesn't depend on live fetches.
 - Evals: which variant humans pick and why (over time), critic score, rounds to pass, measured first-load weight and LCP.
+
+### auditor (station 3b, proposal 007)
+- For one harvested business: measures the old path to a booking on a phone with `tools/funnel.mjs` (depth 3) and one walk by hand (site, Google listing, top OTA page), and writes `dossier/<slug>/audit.json` + `audit.md` (`schemas/audit.md`).
+- Findings are what a visitor meets, each with evidence a reader can open (URL, screenshot, click path); a finding without evidence is deleted.
+- Writes the recommended funnel in `schemas/site-content.md` terms only: primary action (= the dossier's booking path), label, above-fold order by type, offer framing, closing line, off-site advice. Required for businesses with no site too.
+- No money or conversion numbers. Not a fact source for the site.
+- Consumers: creative director (above-fold order, primary action), copywriter (CTA label, offer framing), critic (measures the built site with the same tool), writer (before/after taps with screenshots).
+- Evals: evidence coverage 100 %, Shahar's spot-check of 3 findings per business, target met on the built site.
 
 ### copywriter (station 4a)
 - Writes the **site's** words (not the pitch — that is `writer`, station 9) **before the designer starts**, so the mockups are laid out around real copy instead of placeholder text: `copyBlocks[]`, `tagline`, `spot`, `season` and the per-type modules, per locale.

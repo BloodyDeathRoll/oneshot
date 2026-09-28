@@ -74,6 +74,11 @@
         "schemas/site-content.md",
         "schemas/business-types.md",
         "rubric.md"
+      ],
+      "auditor": [
+        "schemas/site-content.md",
+        "schemas/business-types.md",
+        "schemas/audit.md"
       ]
     }
   },
@@ -119,6 +124,9 @@
     ],
     "creative-director": [
       "4d"
+    ],
+    "auditor": [
+      "3b"
     ]
   }
 }
