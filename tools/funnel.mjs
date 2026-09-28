@@ -54,7 +54,7 @@ const ENGINES = [
   'lodgify.com', 'guesty.com', 'hostaway.com', 'eviivo.com', 'sirvoy.com', 'octorate.com', 'wubook.net',
   'mews.com', 'surfbookings', 'bookwhen.com',
   // 0.1.2: surf-camp and tour engines (Global Surf's hero CTA went unseen)
-  'bookinglayer.io', 'booksurfcamps.com', 'surfcamp-online', 'regiondo.', 'xola.com', 'rezgo.com', 'bokun.', 'palisis', 'tripworks', 'wetravel.com', 'stripe.com/pay', 'payment.link',
+  'bookinglayer.io', 'bookinglayer.com', 'booksurfcamps.com', 'surfcamp-online', 'regiondo.', 'xola.com', 'rezgo.com', 'bokun.', 'palisis', 'tripworks', 'wetravel.com', 'stripe.com/pay', 'payment.link',
 ];
 // "book" in the languages a Sri Lankan surf site is likely to carry; extend per run when needed.
 const BOOK_WORDS = /\b(book|booking|reserve|reservation|check availability|availability|enquire|enquiry|inquire|inquiry|contact us|get in touch|buchen|reservieren|anfrage|reservar|reserva|réserver|prenota|boka|забронировать)\b/i;

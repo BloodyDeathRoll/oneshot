@@ -64,3 +64,6 @@ dashboard/data.json
 
 # dashboard mockups: dist/index.html is the built artefact Shahar picks from; keep it, like the site mockups
 !dashboard/mockups/*/dist/
+
+# funnel.mjs --shots per-page captures: large, reproducible, not evidence unless an audit cites them
+dossier/*/funnel/page-*.png
