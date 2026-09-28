@@ -1,0 +1,420 @@
+{
+  "run_id": "2026-09-globalsurf-02",
+  "generated_at": "2026-09-28T16:55:00Z",
+  "scout_version": "0.3.0",
+  "area": {
+    "mode": "business",
+    "anchors": [
+      {
+        "query": "Global Surf Adventures (globalsurf.com) — located at its owned lodge: Global Surf Lodge, Kabalana, Ahangama, Sri Lanka",
+        "lat": 5.9810484,
+        "lng": 80.3420635,
+        "geocoder": "Google Maps place pin 'Global Surf Lodge' (search 'Global Surf Lodge Kabalana Ahangama'; listing's website link = globalsurf.com lodge page). Nominatim returned [] for 'Global Surf Lodge Kabalana Ahangama' and 'Global Surf Adventures' (2026-09-28T16:52:56Z). Cross-check: Booking.com property pin 5.9811597,80.3420327, 12.8 m away.",
+        "geocoder_source_url": "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en",
+        "fetched_at": "2026-09-28T16:52:13Z"
+      }
+    ],
+    "radius_m": 0,
+    "shore_buffer_m": null,
+    "polygon": "reports/2026-09-globalsurf-02/area.geojson",
+    "note": "radius_m 0: the area is the anchor business only; the only candidate is the anchor (inside by definition). No area search."
+  },
+  "presence_threshold": 5,
+  "candidates": [
+    {
+      "slug": "global-surf-adventures",
+      "name": "Global Surf Adventures",
+      "type": "surf_camp",
+      "type_note": "Mismatch: Global Surf Adventures is an Israel-registered surf travel agency (terms page) selling trips to Sri Lanka, Maldives, Morocco, Angola, Mozambique plus retreats; its one owned property is Global Surf Lodge Kabalana (Ahangama, Sri Lanka), sold as level-based surf packages. surf_camp fits the lodge; no run.yaml type fits a multi-destination agency. Coordinates are the lodge's Google pin (the Israeli HQ publishes a phone but no address).",
+      "location": {
+        "lat": 5.9810484,
+        "lng": 80.3420635,
+        "address": "Henewatta addara gederawata, Ahangama 80650, Sri Lanka (Google Maps; plus code X8JR+CR Ahangama)",
+        "inside_buffer": true,
+        "distance_to_anchor_m": 0,
+        "distance_to_shore_m": 45,
+        "other_locations": [
+          "HQ Israel: +97299733943, no address published",
+          "Maldives (yachts/resorts)",
+          "Morocco",
+          "Angola",
+          "Mozambique, Bali/Indonesia, Arugam Bay (YouTube only)"
+        ]
+      },
+      "contact": {
+        "phone": "+97299733943",
+        "whatsapp": "+972523593240",
+        "email": "info@globalsurf.com",
+        "phone_lodge": "+94770776747",
+        "note": "phone/whatsapp/email from globalsurf.com footer/contact (HQ Israel; the site also links api.whatsapp.com/send?phone=+97299733943). phone_lodge from the Google Maps listing."
+      },
+      "socials": {
+        "instagram": "https://www.instagram.com/globalsurf_/",
+        "instagram_lodge": "https://www.instagram.com/globalsurf_kabalana/",
+        "facebook": "https://www.facebook.com/GlobalSURFltd/",
+        "tripadvisor": "https://www.tripadvisor.com/Hotel_Review-g674590-d10171834-Reviews-Global_Surf_Lodge_Kabalana-Ahangama_Galle_District_Southern_Province.html",
+        "google_maps": "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en",
+        "youtube": "https://www.youtube.com/@globalsurf1582",
+        "booking_com": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.html"
+      },
+      "existing_site": {
+        "url": "https://www.globalsurf.com/",
+        "status": 200,
+        "mobile_friendly": true,
+        "last_updated_hint": "footer 'All rights reserved Global Surf Adventures 2019'; dateModified home 2023-05-09, lodge 2023-05-07, contact 2023-12-07; newest sitemap lastmod 2026-03-18 (an Angola workshop contact page)",
+        "has_booking": true,
+        "booking_note": "Bookinglayer engine from the above-fold hero button; lodge 'BOOK YOUR STAY' links to a '/tests/en/category/sri-lanka' URL (lands on bookinglayer.com/en/tests/en/category/sri-lanka, HTTP 200). Plus WhatsApp, tel, contact form. No prices on the site itself. Site loads Facebook Pixel and an Elfsight Facebook chat widget.",
+        "funnel": {
+          "clicks_to_book": 1,
+          "primary_action": "engine",
+          "cta_above_fold": true,
+          "measured_at": "2026-09-28T16:50:05.613Z",
+          "tool_version": "0.1.2",
+          "report": "reports/2026-09-globalsurf-02/funnel/global-surf-adventures/funnel.json"
+        }
+      },
+      "presence": {
+        "score": 4,
+        "reason": "Mobile site (viewport meta) with a working Bookinglayer engine one tap from the landing page (funnel probe: clicks_to_book 1, primary action engine, CTA above the fold), but the content is stale: footer '© 2019', home and lodge pages last modified May 2023, and the lodge's booking link goes through a '/tests/' URL.",
+        "criteria": [
+          "mobile_viewport",
+          "booking_engine",
+          "whatsapp",
+          "cta_above_fold",
+          "content_stale",
+          "test_url_in_booking_link",
+          "no_prices_on_site",
+          "multi_destination_agency"
+        ]
+      },
+      "videos": {
+        "note": "Video presence found by the scout for the harvester to collect (playbook §1a). Not part of schemas/candidates.md v0.2.0; added as an extension field. Sri Lanka lodge videos are the most relevant to the lodge site: eE-YzSYizm0, RHbSfJFg-Fo, ERkqRTIbwrg, Cq6u_7x8CE4, EXW-rN_nlvs, 6FMqhhFMwG4, OsSu_wzYhgo.",
+        "site_embedded": [
+          {
+            "url": "https://www.youtube.com/watch?v=t0EF-4uKNuM",
+            "platform": "youtube",
+            "found_on": "https://www.globalsurf.com/",
+            "note": "home page hero background video (Elementor, background_play_on_mobile yes)",
+            "fetched_at": "2026-09-28T16:49:30Z"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=eE-YzSYizm0",
+            "platform": "youtube",
+            "found_on": "https://www.globalsurf.com/global-hotels/sri-lanka/kabalana-surf-lodge/",
+            "note": "lodge page hero background video; also on /global-hotels/locations/sri-lanka/ and /levels/hotels/kabalan-surf-lodge/",
+            "fetched_at": "2026-09-28T16:49:30Z"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=bqISDBfdUCc",
+            "platform": "youtube",
+            "found_on": "https://www.globalsurf.com/about/",
+            "note": "about page video; also on /thanks/ and the Kabalana/Maldives thank-you pages",
+            "fetched_at": "2026-09-28T16:49:30Z"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=EXW-rN_nlvs",
+            "platform": "youtube",
+            "found_on": "https://www.globalsurf.com/kabalana-lodge-surf-packages/",
+            "note": "Kabalana packages page; also /levels/kabalan-surf-lodge/level-three/",
+            "fetched_at": "2026-09-28T16:49:30Z"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=6FMqhhFMwG4",
+            "platform": "youtube",
+            "found_on": "https://www.globalsurf.com/levels/kabalan-surf-lodge/level-one/",
+            "note": "Kabalana Level 1 page",
+            "fetched_at": "2026-09-28T16:49:30Z"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=OsSu_wzYhgo",
+            "platform": "youtube",
+            "found_on": "https://www.globalsurf.com/levels/kabalan-surf-lodge/level-two/",
+            "note": "Kabalana Level 2 page",
+            "fetched_at": "2026-09-28T16:49:30Z"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=tAyHnAuyySI",
+            "platform": "youtube",
+            "found_on": "https://www.globalsurf.com/global-hotels/maldives/malidves-surf-adventure/",
+            "note": "Maldives page hero",
+            "fetched_at": "2026-09-28T16:49:30Z"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=PIuf9PwtlUY",
+            "platform": "youtube",
+            "found_on": "https://www.globalsurf.com/yachts/myna/",
+            "note": "Maldives yacht Myna (YouTube title 'GLOBALSURF - Central Atolls - August 2022', 1,470 views)",
+            "fetched_at": "2026-09-28T16:49:30Z"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=StHadymX1ps",
+            "platform": "youtube",
+            "found_on": "https://www.globalsurf.com/yachts/niyama-maldives/",
+            "note": "Maldives resort page",
+            "fetched_at": "2026-09-28T16:49:30Z"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=6AHIkeFxMVk",
+            "platform": "youtube",
+            "found_on": "https://www.globalsurf.com/yachts/holiday-inn-kandooma/",
+            "note": "Maldives resort page; also /yachts/pasta-point-resort/",
+            "fetched_at": "2026-09-28T16:49:30Z"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=ISRAqQpe8oU",
+            "platform": "youtube",
+            "found_on": "https://www.globalsurf.com/yachts/ayada-maldives/",
+            "note": "Maldives resort page",
+            "fetched_at": "2026-09-28T16:49:30Z"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=iCPZ2x-Wxig",
+            "platform": "youtube",
+            "found_on": "https://www.globalsurf.com/global-hotels/marocco/morocco-surf-trips/",
+            "note": "Morocco page hero; also /levels/marocco/the-yogi-surfer/",
+            "fetched_at": "2026-09-28T16:49:30Z"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=qfPsqK0f-UY",
+            "platform": "youtube",
+            "found_on": "https://www.globalsurf.com/levels/marocco/the-soul-house-morocco/",
+            "note": "Morocco Soul House page",
+            "fetched_at": "2026-09-28T16:49:30Z"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=8cJVcKjcVRs",
+            "platform": "youtube",
+            "found_on": "https://www.globalsurf.com/global-hotels/angola/african-adventure/",
+            "note": "Angola page hero",
+            "fetched_at": "2026-09-28T16:49:30Z"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=bCAh8vntcgA",
+            "platform": "youtube",
+            "found_on": "https://www.globalsurf.com/levels/angola/muckamuck-surf-trip-angola/",
+            "note": "Angola trip pages (3)",
+            "fetched_at": "2026-09-28T16:49:30Z"
+          }
+        ],
+        "youtube_channel": {
+          "url": "https://www.youtube.com/@globalsurf1582",
+          "channel_url": "https://www.youtube.com/channel/UCh-GTj4Wu2FbdXpr-xNSGzQ",
+          "subscribers": "542",
+          "videos": "223",
+          "latest_upload": "2026-09-03",
+          "fetched_at": "2026-09-28T16:51:08Z",
+          "recent_uploads": [
+            {
+              "url": "https://www.youtube.com/watch?v=pXbkq_o16cI",
+              "title": "One wave from Cabo Ledo",
+              "published": "2026-09-03",
+              "views": 68
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=5MFilMKsjdg",
+              "title": "(Hebrew title: bereaved fathers learn to surf)",
+              "published": "2025-11-26",
+              "views": 50
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=RHbSfJFg-Fo",
+              "title": "Global Surf - Kabalana Lodge Experience",
+              "published": "2024-05-29",
+              "views": 547
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=WZVXcoKsf5M",
+              "title": "GLOBALSURF Retreats - Join us on a wellness retreat",
+              "published": "2024-05-29",
+              "views": 53
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=nzrxvj1I3RQ",
+              "title": "GLOBALSURF Retreats - Yoga & Wellness Retreats",
+              "published": "2024-05-22",
+              "views": 333
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=zaL-NXreIhY",
+              "title": "GLOBALSURF Retreats - Join us on a yoga & wellness retreat in Sri Lanka",
+              "published": "2024-05-22",
+              "views": 290
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=gkQ9-ZfeJEY",
+              "title": "Global Surf - Arugam Bay Surf Retreat",
+              "published": "2024-04-04",
+              "views": 394
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=CQfKjAy_XFM",
+              "title": "Global Surf Indonesia",
+              "published": "2024-04-04",
+              "views": 170
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=Z-jWOxX-K7k",
+              "title": "Global Surf Mozambique",
+              "published": "2024-04-04",
+              "views": 466
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=Cq6u_7x8CE4",
+              "title": "SURF & YOGA RETREAT - Global Surf Lodge Kabalana",
+              "published": "2024-02-03",
+              "views": 328
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=ERkqRTIbwrg",
+              "title": "Global Surf's Lodge Kabalana",
+              "published": "2024-02-03",
+              "views": 182
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=vGLu1iN5_6E",
+              "title": "Global Surf Bali",
+              "published": "2023-06-16",
+              "views": 27
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=dIgo10doDnU",
+              "title": "Global Surf Bali",
+              "published": "2023-06-16",
+              "views": 27
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=vChEun7hxh4",
+              "title": "Global Surf Bali, Indonesia",
+              "published": "2023-06-16",
+              "views": 32
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=PIuf9PwtlUY",
+              "title": "GLOBALSURF - Central Atolls - August 2022",
+              "published": "2023-05-08",
+              "views": 1470
+            }
+          ],
+          "source": "https://www.youtube.com/feeds/videos.xml?channel_id=UCh-GTj4Wu2FbdXpr-xNSGzQ (15 most recent) + channel /videos page counts"
+        },
+        "instagram_reels": [
+          {
+            "account": "https://www.instagram.com/globalsurf_/",
+            "reels_tab": "https://www.instagram.com/globalsurf_/reels/",
+            "fetched_at": "2026-09-28T16:52:37Z",
+            "sample": [
+              "https://www.instagram.com/globalsurf_/reel/DdyBBSQOiSx/",
+              "https://www.instagram.com/globalsurf_/reel/DdTWiDFOeYi/",
+              "https://www.instagram.com/globalsurf_/reel/Dc--Bt9O6kM/",
+              "https://www.instagram.com/globalsurf_/reel/DblLVYmN2VC/",
+              "https://www.instagram.com/globalsurf_/reel/DbVI-iDunIV/",
+              "https://www.instagram.com/globalsurf_/reel/DbVH3OYO-SX/",
+              "https://www.instagram.com/globalsurf_/reel/DbDqnvotULF/",
+              "https://www.instagram.com/globalsurf_/reel/DaCnfCXtjRB/",
+              "https://www.instagram.com/globalsurf_/reel/DZ2daU_tf5J/",
+              "https://www.instagram.com/globalsurf_/reel/DZuA8UBNvsB/",
+              "https://www.instagram.com/globalsurf_/reel/DYzB70VtYzE/",
+              "https://www.instagram.com/globalsurf_/reel/DYSWXgFsor4/"
+            ],
+            "note": "first 12 reel links rendered logged-out"
+          },
+          {
+            "account": "https://www.instagram.com/globalsurf_kabalana/",
+            "fetched_at": "2026-09-28T16:52:31Z",
+            "sample": [
+              "https://www.instagram.com/globalsurf_kabalana/reel/DWfvELQDOpY/",
+              "https://www.instagram.com/globalsurf_kabalana/reel/DWLDlX8Chj0/",
+              "https://www.instagram.com/globalsurf_kabalana/reel/DVqNnIvjCbE/",
+              "https://www.instagram.com/globalsurf_kabalana/reel/DUnd854DKus/"
+            ],
+            "note": "the lodge's own account; its grid also shows reels owned by other accounts (noushka.escapes, travel_with__rb) and by @globalsurf_ — only own-account reels listed"
+          }
+        ],
+        "facebook": {
+          "url": "https://www.facebook.com/GlobalSURFltd/",
+          "fetched_at": "2026-09-28T16:51:39Z",
+          "note": "page has a Reels tab; latest post (1 day old) is a 6-second video. Reels list needs login; not enumerated."
+        },
+        "vimeo": null,
+        "tiktok": null
+      },
+      "evidence": [
+        {
+          "source_url": "https://www.globalsurf.com/",
+          "fetched_at": "2026-09-28T16:48:37Z",
+          "note": "HTTP 200, viewport meta, title 'Welcome to Global Surf - Surf Vacations & Trips For All Levels'; hero YouTube background t0EF-4uKNuM; footer © 2019, tel:+97299733943, wa.me/972523593240, Instagram/Facebook/YouTube; dateModified 2023-05-09."
+        },
+        {
+          "source_url": "https://www.globalsurf.com/global-hotels/sri-lanka/kabalana-surf-lodge/",
+          "fetched_at": "2026-09-28T16:48:39Z",
+          "note": "Lodge page: 'Just a few steps from the ocean', '12 well designed rooms … from 4 beds dorms to luxurious and cozy private rooms'; hero video eE-YzSYizm0; BOOK YOUR STAY → bookinglayer '/tests/' URL; dateModified 2023-05-07."
+        },
+        {
+          "source_url": "https://www.globalsurf.com/contact/",
+          "fetched_at": "2026-09-28T16:48:38Z",
+          "note": "tel:+97299733943, wa.me/972523593240, Bookinglayer links; dateModified 2023-12-07."
+        },
+        {
+          "source_url": "https://www.globalsurf.com/terms-conditions/",
+          "fetched_at": "2026-09-28T16:48:41Z",
+          "note": "'Global Surf is a company registered in Israel … Global Surf Lanka is a company registered in Srilanka'; mailto:info@globalsurf.com; dateModified 2024-11-06."
+        },
+        {
+          "source_url": "https://www.globalsurf.com/sitemap_index.xml",
+          "fetched_at": "2026-09-28T16:49:00Z",
+          "note": "12 sitemaps, 64 URLs; all scanned for video embeds (15 distinct YouTube IDs, no Vimeo/mp4). Newest lastmod 2026-03-18."
+        },
+        {
+          "source_url": "reports/2026-09-globalsurf-02/funnel/global-surf-adventures/funnel.json",
+          "fetched_at": "2026-09-28T16:50:05.613Z",
+          "note": "tools/funnel.mjs 0.1.2 --depth 1, 390×844: clicks_to_book 1, primary engine 'READY TO CATCH MY FIRST WAVE' → globalsurfadventures.bookinglayer.io/frontoffice/#/, cta_above_fold true, 16 pages, 0 page errors, 20 console errors."
+        },
+        {
+          "source_url": "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en",
+          "fetched_at": "2026-09-28T16:52:13Z",
+          "note": "Google Maps 'Global Surf Lodge', 4.7 (review count not rendered), 3-star hotel, 'Henewatta addara gederawata, Ahangama 80650, Sri Lanka', X8JR+CR Ahangama, website = globalsurf.com lodge page, +94 77 077 6747, check-in 14:00 / out 11:00, pin 5.9810484,80.3420635."
+        },
+        {
+          "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.html",
+          "fetched_at": "2026-09-28T16:51:53Z",
+          "note": "'Global Surf Lodge Kabalana (Hostel)', 'Henewaththa Addara Gedarawaththa Kathaluwa, 80650 Ahangama', 8.6 Excellent · 80 reviews, 200 m from Kathaluwa station; pin 5.9811597,80.3420327."
+        },
+        {
+          "source_url": "https://www.instagram.com/globalsurf_/",
+          "fetched_at": "2026-09-28T16:51:31Z",
+          "note": "GLOBAL SURF: 17K followers (rendered 17.2K), 1,622 posts; bio links @globalsurf_kabalana and @globalsurf.retreats."
+        },
+        {
+          "source_url": "https://www.instagram.com/globalsurf_kabalana/",
+          "fetched_at": "2026-09-28T16:52:31Z",
+          "note": "Global Surf Lodge Kabalana: 1,867 followers, 75 posts, 'part of the @globalsurf_ family'."
+        },
+        {
+          "source_url": "https://www.facebook.com/GlobalSURFltd/",
+          "fetched_at": "2026-09-28T16:51:39Z",
+          "note": "Global SURF, Travel agency: 11,277 followers, 98% recommend (54 reviews), +972 9-973-3943, info@globalsurf.com. Second footer link facebook.com/globalsurfadventures1 not checked (curl 400)."
+        },
+        {
+          "source_url": "https://www.youtube.com/@globalsurf1582",
+          "fetched_at": "2026-09-28T16:51:08Z",
+          "note": "542 subscribers, 223 videos; latest upload 2026-09-03 ('One wave from Cabo Ledo')."
+        },
+        {
+          "source_url": "https://api.openstreetmap.org/api/0.6/map.json?bbox=80.337,5.977,80.347,5.986",
+          "fetched_at": "2026-09-28T16:53:07Z",
+          "note": "OSM coastline way 23463869: Google pin 45.1 m from shore (Booking pin 57.8 m)."
+        },
+        {
+          "source_url": "https://www.tripadvisor.com/Hotel_Review-g674590-d10171834-Reviews-Global_Surf_Lodge_Kabalana-Ahangama_Galle_District_Southern_Province.html",
+          "fetched_at": "2026-09-28T16:53:18Z",
+          "note": "HTTP 403 (bot wall); URL not verified first-hand."
+        }
+      ],
+      "surf_related_confidence": 0.95,
+      "languages_seen": [
+        "en",
+        "he"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "role": "anchor",
+    "query": "Global Surf Adventures (globalsurf.com) — located at its owned lodge: Global Surf Lodge, Kabalana, Ahangama, Sri Lanka",
+    "geocoder": "Google Maps place pin 'Global Surf Lodge' (search 'Global Surf Lodge Kabalana Ahangama'; listing's website link = globalsurf.com lodge page). Nominatim returned [] for 'Global Surf Lodge Kabalana Ahangama' and 'Global Surf Adventures' (2026-09-28T16:52:56Z). Cross-check: Booking.com property pin 5.9811597,80.3420327, 12.8 m away.",
+    "source_url": "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en",
+    "fetched_at": "2026-09-28T16:52:13Z"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     80.3420635,
+     5.9810484
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "role": "area",
+    "mode": "business",
+    "radius_m": 0,
+    "method": "radius_m 0 → the area is the anchor point itself; no circle, no coastline segment."
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     80.3420635,
+     5.9810484
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "role": "candidate",
+    "slug": "global-surf-adventures",
+    "inside": true
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     80.3420635,
+     5.9810484
+    ]
+   }
+  }
+ ]
+}
