@@ -4,3 +4,4 @@
 - **0.2.0** — 2026-09-20 — Runtime prompt is now assembled from `agents/wiring.json` by `node tools/prompt.mjs orchestrator`, and the `Runtime prompt =` line names every layer it really gets (`tools.md`, `evals.md`, `run.yaml` and the schemas were silently dropped before). `tools/check-wiring.mjs` fails the run if any layer is unreachable.
 - **0.2.2** — 2026-09-28 — From proposal 007 (approved by Shahar). Station 3b (auditor) in the order; `audited` requires `dossier/<slug>/audit.json`.
 - **0.3.0** — 2026-09-28 — 4f/5 run three independent reviewers (critic + visual-critic + experience-critic); failing mockups loop back to the designer before the human gate (max 3 rounds); usage.jsonl per agent run.
+- **0.3.1** — 2026-09-28 — The gate always shows three passing mockups: loop until all three pass; after round 5 ask the human. (Shahar: "I asked for 3 mockups" — 0.3.0 had dropped the two that failed after round 3.)
