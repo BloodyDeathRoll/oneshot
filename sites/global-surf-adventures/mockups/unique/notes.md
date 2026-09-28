@@ -92,13 +92,14 @@ product link.
 All business-owned (the business's YouTube channel / globalsurf.com, per `assets/index.json`).
 | asset | use | licence note |
 |---|---|---|
-| vid-009 cut + poster | hero film, full-bleed | business-owned, YouTube @globalsurf1582 |
+| vid-009e (orchestrator edit of vid-009: pool deck → reef surf) + poster | hero film, full-bleed | business-owned, YouTube @globalsurf1582 |
 | vid-010 cut + poster | Level 1 scene | business-owned; faint badge top-left, cropped by cover/4:5 |
 | vid-003 cut + poster | Level 2 scene | business-owned; badge top-left cropped by a 1.14 zoom anchored bottom-right |
-| vid-002 cut + poster | Level 3 scene | business-owned; badge cropped the same way |
+| vid-002e (orchestrator edit: two barrels) + poster | Level 3 scene | business-owned; badge cropped the same way |
 | img-100 (2000) | intro print, drawn ≤ 720 px | business-owned; surf place unidentified, no caption or place claim |
 | img-005 (2000) | feature, full-bleed | business-owned, lodge |
-| img-118, img-024, img-011, img-111, img-023 | day masonry, own ratios, ≤ 800 px | business-owned; surf frames unidentified place, not captioned |
+| img-118, img-111 (1280, 3:2) + img-011, img-024, img-023 (4:5 crops) | day section: two big frames and a 3-up strip | business-owned; surf frames unidentified place, not captioned |
+| img-075 | beside the amenities list, 3:2 | business-owned, lodge |
 | img-026 (2000×1123) | lodge scene, full-bleed | business-owned, lodge |
 | img-015, img-064, img-063 | rooms, cropped 3:2 | business-owned, lodge; not tied to a room type |
 | img-016 | guests print, 4:5 | business-owned, lodge |
@@ -147,3 +148,47 @@ Expanded on the whitewater-foam ground `#DDE5F0`.
   load only when their scene is within one screen.
 - Not verified: a real phone or GPU (software GL only); Safari (no AV1 → MP4 path untested); fonts
   from Google Fonts at 4e.
+
+## Round 2 of review (4f → 4e), 2026-09-28
+
+Reviews read: `reports/2026-09-globalsurf-02/global-surf-adventures.visual.md` (unique 7/10),
+`.experience.md` (unique 8/10), `.md` (critic 72.0/80).
+
+### Round 8 — whole page after the review fixes (`shots/round-8/`)
+- **Wrong as design (before):** hero loop was a seven-shot montage (tuk-tuk driver under the title);
+  the first 0.5 s on a slow phone was a flat teal panel; the waterline swept a whole screen with
+  heavy refraction, so mid-scroll frames were smeared; level panels were tall pale-blue slabs with a
+  dangling "Level n –"; Fomies opened on legs on sand, Riders on roofs; no level switch on the phone;
+  level scenes pulled d1920 clips (8.2 MB); laptop p95 frame 50 ms.
+- **Change:** hero = vid-009e (pool deck → reef surf), level 3 = vid-002e (barrels); every scene has
+  a gradient sampled from its own poster behind the poster `<img>` (never flat teal; a 40 px LQIP
+  image failed check-design's full-bleed rule, so it is colour only), level posters load eagerly;
+  the transition now runs over ≈ 0.22 of a screen and at 55 % strength (less magnification, less
+  displacement, lighter tint), and the canvas switches off as soon as the line has left a scene;
+  level panel = name beside price and button, who-it's-for and includes below on hairlines, label
+  "Level n" with the dash visually hidden (still in the heading text); Fomies starts at 0.5 s (the
+  stand-up) and never loops back before it; phone bar = price line + Fomies / Rollers / Riders
+  (jump, current one inked) + a button that becomes "Book Fomies/Rollers/Riders" with that product
+  link while its scene is on screen (desktop header button does the same); level scenes use m1280 on
+  desktop; rating links, skip link and header rating ≥ 44 px; shader has no chromatic pass, 3
+  caustic iterations, 1.0 resolution on desktop. Day section: two big 3:2 frames and a 4:5 strip;
+  img-075 beside the amenities.
+- **Against the old site** (old-site-lodge-desktop-fold / -mobile-fold beside round-8 sheets): the
+  old fold is a sepia tractor with a badge through the headline and no price; ours opens on the pool
+  sliding into a real surfer on a reef wave with the water line across it, one coral button, a dated
+  rating, and each level's own water with its price one scroll down. Clearly better on both widths.
+
+### Round 9 — final (`shots/round-9/`)
+Hero scrim moved up so "Global Surf" no longer sits white on the white roof; the level the bar
+reports is the one whose panel is on screen (35 % line, not 50 %). No overflow or overlap at 1440
+or 390.
+
+### Before / after (measured, headless, software GL, over http)
+| | before | after |
+|---|---|---|
+| laptop scroll frame time p95 / frames > 50 ms | 50 ms / 82 (critic walk) | 16.8 ms / 4 (max 67) |
+| phone scroll p95 / > 50 ms | 33 ms / 5 | 16.8 ms / 0 |
+| level clips on a desktop scroll | 8.2 MB (d1920) | 5.4 MB (m1280) |
+| first load, no video | 279 KB | 287 KB |
+| hero video after first paint | 1.50 MB phone / 2.98 MB desktop | 1.89 MB / 3.62 MB (vid-009e) |
+| check-design / funnel | ok / 1 tap | ok / 1 tap (engine), level product 1 tap from its scene, 2 from the phone bar |

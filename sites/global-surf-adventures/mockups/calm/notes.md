@@ -78,3 +78,60 @@ None (the run has one business). The interactive and unique variants of this bus
 Level clips load only on hover/in-view: 1.3–2.0 MB each (m1280 webm).
 
 `tools/funnel.mjs` on the file: clicks_to_book 1, primary class engine ("See the weekly surf packages and dates"), CTA above the fold, 0 broken. `tools/check-design.mjs` on the file: pass, 0 warnings (Sora for h1/h2/body, ground hsl(225 20% 96%), 0 all-caps labels). All engine, product and WhatsApp URLs match `dossier.booking` character for character.
+
+---
+
+# Round 2 (after 4f: visual-critic 6/10, experience-critic 7/10)
+
+Inputs added by the orchestrator: vid-009e (hero, pool deck ≈ 2.6 s → surfer on a reef wave, 8.7 s loop, poster at 1.2 s) and vid-002e (Level 3, two barrels, 7.9 s). Their dossier `videos[]` entries are not in `dossier.json` yet; the files and `assets/index.json` entries are.
+
+## look-log, round 2
+
+**Round 8 — whole page.** Old-site screenshots beside the sheets (`old-site-lodge-desktop-fold.png`, `old-site-home-mobile-fold.png`). Hero: vid-009e, and the text no longer sits on the film. It sits on a **white plate** at the bottom left, flush with the page ground, like a daybed floating on the pool. That makes legibility a matter of construction, not of which frame the scrim happens to cover. The brightest lower-left region of the loop (mean luma 169/255, the foam at ≈ 3.75 s, measured at 4 fps) no longer touches any text. On a phone the film is its own box (100svh − 360 px, framed at 34 % so the daybeds and pool fill it) with the plate below, and the CTA, rating and name still fit on the first screen. The intro is img-001, big, bleeding left, with the text beside it; the AC-grille crop is gone. The level cards are the big moment: a wider row (up to 1440), white cards, a clip on water with a surfer on each (vid-010, vid-003, vid-002e), "$1,466" in pool blue on the ground beside the level name (no sticker), and a solid coral "Book Level n" on every card. A lounge band (img-075) breaks the white run between the amenities and the reviews, and "What guests say" now heads its own section instead of being stranded under an empty screen. Wrong: the intro photo at 4:5 across seven columns ran taller than the screen, so the heading dropped below the fold; "Level 1 – Fomies" wrapped next to the price in the 86 vw phone card.
+
+**Round 9 — whole page, final.** Intro photo capped (1:1.08, ≤ 92vh) and the text centred beside it; level names no longer wrap; phone prices at 30 px. Nothing overflows or overlaps at 1440 or 390. Side by side with the old lodge page (a dark rock under a YouTube glyph, a badge over a breadcrumb, and "Choose your level" twice with no price), this opens on their own pool, then their water; the whole page shows the week's price, what's included, three one-tap level bookings and the rating, which their page never states. It is clearly better at a glance and on the whole page.
+
+Checks in `shots/round-9/static/`: the bar and the card row stay in sync on a phone. Tapping "Riders" in the bar scrolls the row to the Riders card (scrollLeft 577), marks it, and repoints the button to `level-3-riders`. Swiping the row to Rollers sets the bar to Rollers and `level-2-rollers`. Under reduced motion, a full scroll makes 0 video requests. A normal phone scroll to the levels requests only the hero m1280 webm and `vid-010-m720.mp4`.
+
+Could not verify: seeking the hero video in headless Chromium kept rendering the paused frame, so I have no screenshot of each hero frame. That no longer affects legibility: no text sits on the film except the header's small white name and link. They sit over the top 150 px, which is sky on the pool shot and dark jungle and rocks on the surf shot, under a 0.34 ink scrim with a soft text shadow.
+
+## what changed (critic fix → done)
+
+- Hero loop without surfing → vid-009e (pool → reef-wave surfer).
+- Phone crop was roof and parasol → a separate film box, framed at 34 % on daybeds + pool.
+- Text legibility on the brightest frame → text moved onto a white plate: ink on white, about 17:1.
+- Orphan intro crops with the AC grille → img-001 big, bleeding left, text beside it.
+- Level 3 showed a roof or dirt-lot drone frame → vid-002e (barrels), with a barrel poster frame.
+- Level cards were not the big moment → a wider row, clip on water, solid coral book buttons, price set in the layout instead of a sticker, one card per screen on a phone (86 vw, snap centre).
+- Bar and cards out of sync → two-way sync: tapping the bar scrolls to the card and plays it; swiping, hovering or focusing a card updates the bar. The selected card gets a coral underline.
+- Dead gaps before "Twelve rooms" and "What guests say" → section paddings cut by about a third. "What guests say" leads its own section, and the img-075 lounge band sits between the amenities and the reviews.
+- Phone day grid read as a thumbnail sheet → full-width 4:5 frames on a phone.
+- No skip link → "Skip to the surf weeks and prices" (visible on focus, jumps to `#levels`).
+- Seagallas credited "· review" → "Seagallas · globalsurf.com", linked to the dossier's `source_url`.
+- Bar rating had no count or date → "8.6/10 Booking.com, 80 reviews · read 28 Sep 2026".
+- Clips below the fold → m720 MP4 on phones (the hero is m1280 there) and m1280 on desktop (the hero is d1920).
+- Level name repeated at the start of each body → the heading carries the name and the body continues the same sentence ("Level 1 – Fomies" / "is for your first time…"). The words are en.json's, in order, split across the heading and the paragraph. For Riders the heading keeps the copy's colon ("Level 3 – Riders:").
+
+## images added / removed (round 2)
+
+Added: img-001 (4:5 and 1:1.08, lodge, business-owned), img-075 (21:9 desktop, 4:5 phone, lodge, business-owned), vid-009e + poster (hero), vid-002e + a 4:5 crop of its poster (Level 3), vid-010 / vid-003 m720 (phone clips). Removed: img-002, img-017, vid-009, vid-002.
+
+## conflicts, round 2
+
+9. **Hero text on a white plate, not white type on the film.** The concept asked for type on the video with a light gradient. The coordinator asked for legibility guaranteed on the brightest frame, and a gradient cannot guarantee it over white foam. The plate can, and it is the daybed idea in its own right. What it costs: less film visible behind the text at bottom left on desktop.
+10. **Level 3 heading keeps the copy's colon**, so the sentence stays verbatim when split across the heading and the body.
+11. **vid-009e's m1280 MP4 fallback is 2.27 MB**, over the 2 MB phone line. The phone plays the 1.89 MB WebM first; only a browser without AV1 WebM would take the MP4.
+
+## measured, round 2 (headless Chromium, local static server, no scroll, 8 s)
+
+| | phone 390 | desktop 1440 |
+|---|---|---|
+| first load, video excluded | 258 KB | 328 KB |
+| hero video after first paint | 1.89 MB (vid-009e m1280 webm) | 3.62 MB (vid-009e d1920 webm) |
+| largest above-the-fold image | poster AVIF 45 KB | poster AVIF 45 KB |
+| video requests, reduced motion, full scroll | 0 | — |
+| non-local requests on load | 2 (Google Fonts) | 2 |
+
+Level clips load one at a time, only when played: 1.6–1.9 MB m720 MP4 on phones, 1.65–1.99 MB m1280 WebM on desktop.
+
+`tools/check-design.mjs` (file path): pass, 0 failing, no warnings. `tools/funnel.mjs` (file path): clicks_to_book 1, primary class engine ("See the weekly surf packages and dates"), CTA above the fold, 0 broken.

@@ -23,23 +23,33 @@ Every round was shot with `tools/shoot.mjs` into `shots/round-N/` and looked at 
 
 **Round 8 — whole page, served over http** so Rosa's widget renders (it refuses to be framed from file://). Poster `<img>` is the only still requested (the duplicate JPEG `poster=` attribute was dropped after the weight probe showed it double-loading); level clips are attached only 200 px before the stage. Last look for overflow, overlap and unreadable text: none found at 1440 or 390. Side by side with the old site: the first screen is their own film with the place's name as big as the picture, and the booking section is the lodge's own footage of each level with the week's price and a one-tap link to that level's product — the current site states no price anywhere and every book button loses the package (audit F1–F4). Not verified on a real phone or GPU.
 
+**Round 9 — critic round 2 (visual-critic 6/10, experience-critic 8/10; reports/2026-09-globalsurf-02/global-surf-adventures.{visual,experience,}.md).** Rebuilt against their list, biggest first:
+- **Hero.** Now vid-009e (the pool deck crossfading into a surfer on a reef wave, 8.7 s), replacing vid-009's seven-shot montage. One name only, "Global Surf Lodge Kabalana", is the h1 in the header at 20 px Barlow 500; the second, thin name block is gone. Tagline and "8.6/10 Booking.com · 80 reviews · 28 Sep 2026" sit on one row above a hairline, with the giant "Kabalana" as the only big type. The word is fitted in pure CSS: (container width − 2 gutters) / 2.93 em, measured from Barlow Condensed Light's ink box. So it no longer depends on JS; with JS off at 390 px its ink runs 16→374 px inside the column, no clipping (`shots/round-10/nojs-mobile-00.png`).
+- **Fonts.** Barlow and Barlow Condensed are self-hosted as data URIs (Google Fonts is no longer used). Fallback faces use size-adjust and ascent/descent overrides measured against Liberation Sans and Liberation Sans Narrow (Arial metric clones). Measured CLS is 0.0000 on a throttled phone (1.6 Mbps, 150 ms RTT, 4× CPU) and on desktop; round 1 was 0.026 / 0.052.
+- **Contrast.** The scrim is deeper at the foot. Every 0.4 s of the loop was scanned with the text hidden and the 75th-percentile background luminance measured behind each text box. Worst frame, white text: tagline 8.1:1 on phone, 6.4:1 at 1440, 5.6:1 at 1525 and at 1920. Rating line ≥ 14:1, name ≥ 4.8:1. Round 1 measured 2.4:1.
+- **Level clips.** I re-cut them into `dist/video/` from the dossier renditions: `lv1` = vid-010, src 20–24.2 s (stand-up into the sun, silhouettes) + src 28–31 s (whitewater ride, the instructor cheering); `lv2` = vid-003, first 7 s of its cut (reef rides only, chalkboard and beach dropped); `lv3` = vid-002e (two barrels). Each clip ships as a desktop 1280 WebM/MP4 (1.2–1.8 MB) and a phone 4:5 crop at 480×600, centred on the rider (0.45–0.61 MB). That is a smaller rendition than the hero (1.9 MB phone / 3.6 MB desktop). Each clip's first frame shows water and a surfer (`shots/round-10/stage-sheet.png`).
+- **Photo run.** The aqua half-band is removed. The run sits on the ground with its heading in a fixed left column on desktop; on the phone the heading sits above a swipe row that opens on a photograph.
+- **Feature line.** The footwear line is back over the hair-flip photograph, in ink on the white wall (right of the spray on desktop, under the shade sail on phone).
+- **Details.** The active level is ink with the aqua underline (the sky blue is gone). Mobile bar: "8.6/10 · 80 reviews / Booking.com, 28 Sep 2026". Every link and button measured ≥ 44 × 44 at both widths. Ground is now cool white `#F5F8FA` (hsl 204 33% 97%, from custom.md; was the concept's warm `#FFFDFC`). `img{height:auto}` fixes the "Getting here" aerial, which had drawn at its HTML height (two phone screens).
+Round-9 sheets showed the day heading breaking into four lines in a 30 vw column, and the phone footwear line sitting on the black shade sail.
+
+**Round 10.** The day heading column is widened to 34 vw with a smaller heading; the phone footwear line moved down onto the wall; nav links widened to 44 px. Against the old lodge page (`shots/round-10/vs-old-site.png`, their fold beside ours at both widths): theirs is a dark aerial of earth with a breadcrumb, a stamp over the headline and a Messenger bubble. Ours is their own pool and wave with the place's name at picture size, the rating with count and date, and one coral action. The booking section now plays real surfing on all three levels. It is clearly better at a glance. Not verified on a real phone or GPU.
+
 ## images
 
-All `business-owned` (dossier `images[].license` / `videos[].license`).
+All `business-owned` (dossier `images[].license`, `assets/index.json` for the edits).
 
 | use | asset | source px | note |
 |---|---|---|---|
-| hero video + poster | vid-009 cut (d1920/m1280 webm+mp4), vid-009-poster (avif, jpg fallback) | 1920×1080 | no watermark |
-| Level 1 clip | vid-010 cut (m1280 webm+mp4 desktop, m720 mp4 phone) + poster | 1920×1080 | faint corner badge cropped out by the 7/12 and 4:5 frames |
-| Level 2 clip | vid-003 (m1280 webm+mp4, m720 mp4) + poster | 1920×1080 | used instead of the still img-125 the concept named (a real cut now exists); corner badge cropped out as above |
-| Level 3 clip | vid-002 cut + poster | 1920×1080 | corner badge cropped out as above |
-| feature, full-bleed | img-016 | 2000×1333 | only full-bleed photograph; ≥ 1920 |
-| the day run (4:5) | img-118, img-104, img-011, img-001, img-111, img-023 | 2000×1333 | surf photos are "unidentified place" — shown as the day, never named as the lodge's wave |
+| hero video + poster | vid-009e (orchestrator edit of vid-009): d1920/m1280 webm+mp4, poster avif/jpg | 1920×1080 | copied unchanged |
+| Level 1 clip | `lv1-*`: my re-cut of the vid-010 d1920 rendition (src 20–24.2 s + 28–31 s); desktop 1280 WebM/MP4, phone 4:5 crop 480×600 | 1920×1080 | the crop removes the corner badge |
+| Level 2 clip | `lv2-*`: vid-003 cut, first 7 s (reef rides) | 1920×1080 | the crop removes the corner badge |
+| Level 3 clip | `lv3-*`: vid-002e (orchestrator edit, two barrels) | 1920×1080 | the crop removes the corner badge |
+| feature, full-bleed | img-016 | 2000×1333 | footwear line set over its white wall |
+| the day run (4:5) | img-118, img-104, img-011, img-001, img-111, img-023 | 2000×1333 | surf photos from an unidentified place, never named as the lodge's wave |
 | lodge list (4:5) | img-015, img-063, img-064, img-005, img-075, img-077, img-059 | 2000×1333 (img-059 1125×2000) | |
-| guests (3:2) | img-064, img-005, img-011 | 2000×1333 | the three things Fanny names |
-| getting here | img-062 | 2000×1123 | drawn ≤ 820 px wide |
-
-No stock, no generated imagery, no captions under photographs.
+| guests (3:2) | img-064, img-005, img-011 | 2000×1333 | |
+| getting here | img-062 | 2000×1123 | |
 
 ## gaps
 
@@ -58,13 +68,17 @@ No stock, no generated imagery, no captions under photographs.
 - **Mobile persistent bar during the stage.** The bar (fixed bottom) stays on the phone while the stage is in view, so the level switch appears twice there; they are synced. On desktop the bar hides while the stage is pinned.
 - **Hero scrim.** custom.md says no decorative gradients; the hero carries a functional scrim at its foot (and a stronger one on phones) so the small white type stays AA-readable over the moving picture. No gradient anywhere else.
 
+- **Ground (round 9).** The concept sampled `#FFFDFC`, a warm white. custom.md asks for cool whites, and the critic flagged it, so the ground is now `#F5F8FA`.
+- **Level clips re-cut by the designer (round 9).** The coordinator asked for smaller renditions for the level clips and for phone crops on the rider. I made them in `dist/video/` from the dossier's own renditions (trim + crop + re-encode, no audio); the dossier itself is untouched. At 4g the publisher makes renditions from Payload uploads, so these files exist only in the mockup.
+- **Hero scrim (round 9).** The scrim at the foot of the hero is deeper than in round 1. That was needed to hold AA on the brightest frame of the loop; see the look-log for the numbers.
+
 ## other businesses in this run
 
 None (run has one business; `concepts.md` divergence table). Against the two sibling variants: this is the only one whose booking section is a pinned stage where the clip changes with the chosen level, the only one with the giant place word over the hero and the pinned horizontal day run.
 
-## checks (run once, at the end)
+## checks (run once, at the end of round 10)
 
-- `node tools/check-design.mjs sites/global-surf-adventures/mockups/interactive/dist/index.html` → ok, 0 problems, 0 warnings (fonts Barlow / Barlow Condensed, ground hsl(20 100% 99%), all-caps labels 0).
+- `node tools/check-design.mjs sites/global-surf-adventures/mockups/interactive/dist/index.html` → ok, 0 problems, 0 warnings (Barlow / Barlow Condensed, ground hsl(204 33% 97%), all-caps labels 0).
 - `node tools/funnel.mjs sites/global-surf-adventures/mockups/interactive/dist/index.html --out …/interactive/funnel` → clicks_to_book 1, primary engine ("See the weekly surf packages and dates"), CTA above the fold true, broken 0.
-- Weight (headless Chromium, served over http, no scroll, 8 s): first load without video 260 KB on 390×844 (HTML 53, poster AVIF 41, fonts 86, one level poster 16, img-016 64 fetched by Chrome's lazy threshold), 226 KB on 1440×900. Hero video after first paint: 1.47 MB (m1280 webm) phone, 2.9 MB (d1920 webm) desktop. Level clip, only when the stage is within 200 px: 1.8 MB (m720 mp4) phone, 1.9 MB (m1280 webm) desktop; other levels only on selection. Reduced motion: 0 video requests.
-- Booking links copied from `copy/en.json` `bookingLinks[]` character for character; not tapped through to the live engine from a phone.
+- Weight (headless Chromium over http, no scroll). First load without video: phone 286 KB (HTML with inline fonts 166, poster 45, the Level 1 phone poster 11, img-016 64 pulled early by Chrome's lazy-load threshold); desktop 271 KB. Hero video after first paint: 1.85 MB phone (vid-009e m1280 webm), 3.54 MB desktop (d1920 webm). Level clip only within 200 px of the stage: 0.50 MB phone (lv1-p480 webm), 1.29 MB desktop (lv1-d1280 webm); other levels load only when chosen. Reduced motion: 0 video requests. CLS 0.0000 at both widths; LCP 1.15 s on the throttled phone.
+- Booking links still match `copy/en.json` `bookingLinks[]` character for character.

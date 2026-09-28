@@ -11,12 +11,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="video/vid-009-poster.avif" type="image/avif" fetchpriority="high">
+<link rel="preload" as="image" href="video/vid-009e-poster.avif" type="image/avif" fetchpriority="high">
 <style>
 :root{
   --ground:#F3F4F7; --wall:#E3E4E9; --white:#FFFFFF; --ink:#011212; --ink2:#3B4749;
   --pool:#018DA8; --pooltext:#016F85; --coral:#F84825; --line:#011212;
   --col:1200px; --gut:clamp(20px,4vw,48px);
+  --edge:max(var(--gut), calc((100vw - var(--col)) / 2));
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:90px}
@@ -30,6 +31,8 @@ h2{font-weight:300;font-size:clamp(38px,5.4vw,76px);line-height:1.02;letter-spac
 h3{font-weight:400;font-size:20px;line-height:1.3;letter-spacing:-.01em}
 p+p{margin-top:1em}
 .fill{width:100%;height:100%;object-fit:cover}
+.skip{position:absolute;left:12px;top:-60px;z-index:50;background:var(--white);color:var(--ink);padding:12px 16px;font-weight:400;text-decoration:none;border:1px solid var(--line)}
+.skip:focus{top:12px}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;background:var(--coral);color:var(--ink);text-decoration:none;font-weight:400;font-size:16px;letter-spacing:-.005em;border:0;text-align:center;line-height:1.25;transition:background .2s}
@@ -38,64 +41,65 @@ p+p{margin-top:1em}
 .btn-line:hover{background:var(--coral);border-color:var(--coral)}
 .tlink{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px;font-weight:400}
 a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-.hero a:focus-visible,.top a:focus-visible{outline-color:#fff}
+.top a:focus-visible{outline-color:#fff}
 
 /* header */
-.top{position:absolute;inset:0 0 auto 0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:18px var(--gut);color:#fff;max-width:calc(var(--col) + 2*var(--gut));margin:0 auto}
-.top::after{content:"";position:absolute;left:var(--gut);right:var(--gut);bottom:0;height:1px;background:rgba(255,255,255,.45)}
+.top{position:absolute;inset:0 0 auto 0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:18px var(--gut);color:#fff;max-width:calc(var(--col) + 2*var(--gut));margin:0 auto;text-shadow:0 0 12px rgba(1,18,18,.35)}
+.top::after{content:"";position:absolute;left:var(--gut);right:var(--gut);bottom:0;height:1px;background:rgba(255,255,255,.5)}
 .top .pk,.top .mark{display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:400;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
 .top .mark{text-decoration:none;font-size:15px}
 
-/* hero */
-.hero{position:relative;height:100vh;height:100svh;min-height:560px;max-height:1100px;overflow:hidden;color:#fff;background:#9fc0e6}
-.hero picture,.hero img,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:38% 60%}
-.hero video{opacity:0;transition:opacity .8s}
-.hero video.on{opacity:1}
-.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:62%;background:linear-gradient(to top,rgba(1,18,18,.62) 0%,rgba(1,18,18,.34) 45%,rgba(1,18,18,0) 100%);pointer-events:none}
-.hero::before{content:"";position:absolute;inset:0 0 auto 0;height:140px;z-index:1;background:linear-gradient(to bottom,rgba(1,18,18,.28),rgba(1,18,18,0));pointer-events:none}
-.hero-text{position:absolute;z-index:2;max-width:calc(var(--col) + 2*var(--gut));margin:0 auto;left:0;right:0;bottom:0;padding:0 var(--gut) clamp(36px,6vh,64px)}
-.hero h1{font-weight:300;font-size:clamp(40px,4.9vw,72px);line-height:1;letter-spacing:-.035em}
-.hero .tag{margin-top:20px;font-size:clamp(16px,1.35vw,19px);line-height:1.5;max-width:34ch}
-.hero .act{margin-top:30px;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
-.proof{font-size:14px;line-height:1.45;text-decoration:none;padding-left:26px;border-left:1px solid rgba(255,255,255,.6);min-height:44px;display:flex;flex-direction:column;justify-content:center}
+/* hero: the film, and a white plate floating on it like a daybed */
+.hero{position:relative;height:100vh;height:100svh;min-height:600px;max-height:1100px;overflow:hidden}
+.film{position:absolute;inset:0;background:#9fc0e6}
+.film img,.film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 62%}
+.film video{opacity:0;transition:opacity .8s}
+.film video.on{opacity:1}
+.film::before{content:"";position:absolute;inset:0 0 auto 0;height:150px;z-index:1;background:linear-gradient(to bottom,rgba(1,18,18,.34),rgba(1,18,18,0));pointer-events:none}
+.plate{position:absolute;z-index:2;left:var(--edge);bottom:0;width:min(640px,calc(100% - 2*var(--gut)));background:var(--white);color:var(--ink);padding:40px 44px 34px}
+.plate h1{font-weight:300;font-size:clamp(38px,4.2vw,60px);line-height:1.02;letter-spacing:-.035em}
+.plate .tag{margin-top:16px;font-size:17px;line-height:1.55;color:var(--ink2);max-width:36ch}
+.plate .act{margin-top:26px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.proof{font-size:14px;line-height:1.45;text-decoration:none;padding-left:24px;border-left:1px solid var(--line);min-height:44px;display:flex;flex-direction:column;justify-content:center}
 .proof b{font-weight:400;font-size:15px}
-.proof small{font-size:12px;opacity:.85}
+.proof small{font-size:12px;color:var(--ink2)}
 
 /* intro */
-.intro{padding:clamp(80px,11vw,160px) 0 0}
-.intro h2{grid-column:1 / 8}
-.intro .body{grid-column:8 / 12;align-self:end;font-size:18px;color:var(--ink2)}
-.pair{margin-top:clamp(56px,8vw,120px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:end}
-.pair .a{grid-column:1 / 6;aspect-ratio:4/5;overflow:hidden;margin-left:calc(-1 * max(var(--gut), (100vw - var(--col)) / 2))}
-.pair .b{grid-column:7 / 13;aspect-ratio:3/2;overflow:hidden;margin-right:calc(-1 * max(var(--gut), (100vw - var(--col)) / 2));margin-bottom:clamp(40px,8vw,120px)}
+.intro{padding:clamp(72px,9vw,130px) 0 0}
+.intro-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:end}
+.intro .ph{grid-column:1 / 8;aspect-ratio:1/1.08;max-height:92vh;overflow:hidden;margin-left:calc(-1 * var(--edge))}
+.intro .txt{grid-column:9 / 13;align-self:center}
+.intro .txt .body{margin-top:32px;font-size:17px;color:var(--ink2)}
 
-/* levels */
-.levels{padding:clamp(96px,12vw,180px) 0 clamp(80px,9vw,140px)}
+/* levels — the big moment */
+.levels{padding:clamp(88px,10vw,150px) 0 clamp(72px,8vw,120px)}
 .levels-head{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap}
-.levels-head .isa{font-size:15px;color:var(--ink2)}
-.lvl-row{margin-top:56px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-.lvl{display:flex;flex-direction:column}
+.levels-head .isa{font-size:15px;color:var(--ink2);max-width:28ch}
+.lvl-row{margin:56px auto 0;max-width:1440px;padding:0 max(16px, calc(var(--edge) - 72px));display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.lvl{display:flex;flex-direction:column;background:var(--white);scroll-margin:100px}
 .lvl-media{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;background:#cfd6dc}
-.lvl-media img,.lvl-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
-.lvl-media video{opacity:0;transition:opacity .5s,transform .4s ease}
+.lvl-media img,.lvl-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.lvl-media video{opacity:0;transition:opacity .5s,transform .5s ease}
 .lvl-media video.on{opacity:1}
 .lvl:hover .lvl-media img,.lvl:hover .lvl-media video{transform:scale(1.03)}
-.lvl-price{position:absolute;left:0;bottom:0;background:var(--white);padding:14px 18px 12px;line-height:1}
-.lvl-price b{display:block;font-weight:300;font-size:44px;letter-spacing:-.04em;color:var(--pooltext)}
-.lvl-price span{display:block;margin-top:6px;font-size:12px;color:var(--ink2);line-height:1.3}
-.lvl h3{margin-top:22px;font-size:24px;font-weight:300;letter-spacing:-.02em}
-.lvl .who{margin-top:10px;font-size:15px;line-height:1.6;color:var(--ink2)}
-.lvl .inc{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:13px;line-height:1.6;color:var(--ink2)}
+.lvl-body{display:flex;flex-direction:column;flex:1;padding:26px 28px 28px}
+.lvl-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.lvl h3{white-space:nowrap;font-size:clamp(20px,1.9vw,27px);font-weight:300;letter-spacing:-.025em;line-height:1.15}
+.lvl .price{text-align:right;white-space:nowrap}
+.lvl .price b{display:block;font-weight:300;font-size:clamp(34px,3vw,44px);letter-spacing:-.04em;line-height:1;color:var(--pooltext)}
+.lvl .per{margin-top:8px;font-size:12px;color:var(--ink2);line-height:1.4}
+.lvl .who{margin-top:16px;font-size:15px;line-height:1.6;color:var(--ink2)}
+.lvl .inc{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:13px;line-height:1.6;color:var(--ink2);margin-bottom:26px}
 .lvl .inc b{font-weight:400;color:var(--ink)}
-.lvl .btn-line{margin-top:auto;align-self:flex-start}
-.lvl .spacer{height:22px}
+.lvl .btn{margin-top:auto;width:100%}
+.lvl.sel{box-shadow:inset 0 -3px 0 var(--coral)}
 .after{margin-top:72px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:40px;border-top:1px solid var(--line);padding-top:40px}
 .after .free{grid-column:1 / 5}
-.after .free h3{font-weight:300;font-size:24px;letter-spacing:-.02em}
+.after .free h3,.after .price-t h3{font-weight:300;font-size:24px;letter-spacing:-.02em}
 .after .free p{margin-top:10px;font-size:15px;color:var(--ink2)}
 .after .free .tlink{margin-top:6px;font-size:15px}
-.after .price{grid-column:5 / 9;font-size:15px;color:var(--ink2)}
-.after .price h3{color:var(--ink);font-weight:300;font-size:24px;letter-spacing:-.02em;margin-bottom:10px}
+.after .price-t{grid-column:5 / 9;font-size:15px;color:var(--ink2)}
+.after .price-t h3{color:var(--ink);margin-bottom:10px}
 .after .go{grid-column:9 / 13;display:flex;flex-direction:column;gap:14px}
 .after .go .btn{width:100%}
 .trust{display:flex;align-items:baseline;gap:14px;text-decoration:none;min-height:44px}
@@ -111,46 +115,48 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 .feature p span{display:block;max-width:15ch}
 
 /* day */
-.day{padding:clamp(96px,12vw,180px) 0 0}
+.day{padding:clamp(88px,10vw,150px) 0 0}
 .day h2{grid-column:1 / 8}
 .day .body{grid-column:8 / 12;align-self:end;color:var(--ink2);font-size:16px}
-.run{margin-top:clamp(48px,6vw,88px);display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--ground)}
+.run{margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
 .run div{aspect-ratio:4/5;overflow:hidden}
 
 /* rooms */
-.rooms{padding:clamp(96px,12vw,180px) 0}
-.rooms h2{max-width:12ch}
-.rooms-grid{margin-top:56px;display:grid;grid-template-columns:7fr 5fr;gap:24px}
+.rooms{padding:clamp(80px,9vw,130px) 0 clamp(72px,8vw,110px)}
+.rooms h2{max-width:14ch}
+.rooms-grid{margin-top:48px;display:grid;grid-template-columns:7fr 5fr;gap:16px}
 .rooms-grid .big{grid-row:1 / 3;overflow:hidden;min-height:100%}
 .rooms-grid .sm{aspect-ratio:3/2;overflow:hidden}
-.rooms-text{margin-top:56px}
+.rooms-text{margin-top:48px}
 .rooms-text .body{grid-column:1 / 7;color:var(--ink2);font-size:16px}
 .rooms-text .am{grid-column:8 / 13}
 .am h3{font-size:15px;font-weight:400;padding-bottom:12px;border-bottom:1px solid var(--line)}
 .am ul{columns:2;column-gap:24px;margin-top:14px;font-size:14px;line-height:1.5;color:var(--ink2)}
 .am li{break-inside:avoid;padding:5px 0}
 .am li small{display:block;font-size:12px;opacity:.8}
+.lounge{aspect-ratio:21/9;width:100%;overflow:hidden;max-height:80vh}
+.lounge img{width:100%;height:100%;object-fit:cover}
 
 /* guests */
-.guests{background:var(--white);padding:clamp(96px,12vw,170px) 0}
-.score{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:end}
-.score .big{grid-column:1 / 6;display:flex;align-items:flex-end;gap:20px;text-decoration:none}
+.guests{background:var(--white);padding:clamp(72px,8vw,120px) 0 clamp(96px,11vw,160px)}
+.score{margin-top:40px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:end}
+.score .big{grid-column:1 / 7;display:flex;align-items:flex-end;gap:20px;text-decoration:none}
 .score .big b{font-weight:300;font-size:clamp(120px,17vw,240px);line-height:.8;letter-spacing:-.06em;color:var(--pool)}
 .score .big span{font-size:14px;line-height:1.5;color:var(--ink2);padding-bottom:6px}
 .score .sub{grid-column:7 / 13}
-.score .sub h2{font-size:clamp(32px,3.6vw,48px)}
-.score .sub p{margin-top:16px;font-size:16px;color:var(--ink2)}
+.score .sub p{font-size:16px;color:var(--ink2)}
 .figs{display:flex;gap:40px;margin-top:28px;padding-top:18px;border-top:1px solid var(--line)}
 .figs div{font-size:13px;color:var(--ink2);line-height:1.4}
 .figs b{display:block;font-weight:300;font-size:32px;color:var(--ink);letter-spacing:-.03em;margin-bottom:4px}
-.quotes{margin-top:clamp(64px,8vw,112px);display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(32px,6vw,96px)}
+.quotes{margin-top:clamp(56px,7vw,96px);display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(32px,6vw,96px)}
 .quotes figure{padding:28px 0 34px;border-top:1px solid var(--line)}
 .quotes figure:nth-child(even){transform:translateY(clamp(0px,6vw,80px))}
 .quotes blockquote{font-size:clamp(19px,1.7vw,23px);line-height:1.45;letter-spacing:-.015em}
 .quotes figcaption{margin-top:16px;font-size:13px;color:var(--ink2)}
+.quotes figcaption a{text-underline-offset:4px}
 
 /* spot */
-.spot{padding:clamp(96px,12vw,170px) 0 0}
+.spot{padding:clamp(88px,10vw,150px) 0 0}
 .spot-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:40px}
 .spot-grid .t{grid-column:1 / 7}
 .spot-grid .t p.lead{margin-top:24px;font-size:19px;line-height:1.55;max-width:30ch}
@@ -163,7 +169,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 .spot-grid .w{grid-column:8 / 13;justify-self:end;width:100%;max-width:420px}
 .rosa-box{width:100%;max-width:420px;height:500px;border-radius:16px;overflow:hidden;background:var(--wall);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-size:14px}
 .rosa-box iframe{width:100%;height:500px;border:0;display:block}
-.here{margin-top:clamp(80px,10vw,140px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:32px;align-items:start}
+.here{margin-top:clamp(72px,9vw,120px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:32px;align-items:start}
 .here .ph{grid-column:1 / 7;aspect-ratio:3/2;overflow:hidden}
 .here .tx{grid-column:8 / 13}
 .here .tx h2{font-size:clamp(32px,3.6vw,48px)}
@@ -173,10 +179,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 .stay b{font-weight:400;color:var(--ink)}
 
 /* closing */
-.closing{margin-top:clamp(96px,12vw,170px)}
+.closing{margin-top:clamp(88px,10vw,150px)}
 .band{aspect-ratio:21/9;max-height:80vh;width:100%;overflow:hidden}
 .band img{width:100%;height:100%;object-fit:cover}
-.close-row{padding:clamp(56px,7vw,96px) var(--gut) clamp(64px,8vw,110px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:32px;align-items:end}
+.close-row{max-width:calc(var(--col) + 2*var(--gut));margin:0 auto;padding:clamp(56px,7vw,96px) var(--gut) clamp(64px,8vw,110px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:32px;align-items:end}
 .close-row p{grid-column:1 / 8;font-weight:300;font-size:clamp(28px,3.4vw,46px);line-height:1.15;letter-spacing:-.03em}
 .close-row .go{grid-column:8 / 13;display:flex;flex-direction:column;gap:12px}
 .close-row .go .btn{width:100%}
@@ -193,32 +199,32 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
 .bar .in{max-width:calc(var(--col) + 2*var(--gut));margin:0 auto;padding:10px var(--gut);display:flex;align-items:center;gap:22px}
 .bar .nm{font-weight:400;font-size:14px;white-space:nowrap;text-decoration:none;margin-right:auto;min-height:44px;display:flex;align-items:center}
 .seg{display:flex;border:1px solid var(--line);background:#fff}
-.seg button{font:inherit;font-size:13px;background:none;border:0;min-height:44px;padding:0 14px;cursor:pointer;color:var(--ink)}
+.seg button{font:inherit;font-size:13px;background:#fff;border:0;min-height:44px;padding:0 14px;cursor:pointer;color:var(--ink)}
 .seg button+button{border-left:1px solid var(--line)}
 .seg button[aria-pressed=true]{background:var(--ink);color:#fff}
 .bar .pr{white-space:nowrap;line-height:1.3}
 .bar .pr b{font-weight:400;color:var(--pooltext);font-size:15px}
 .bar .pr span{display:block;color:var(--ink2);font-size:12px}
-.bar .rt{white-space:nowrap;color:var(--ink2);text-decoration:none;display:flex;align-items:center;min-height:44px}
-.bar .rt b{font-weight:400;color:var(--ink);margin-right:4px}
+.bar .rt{white-space:nowrap;color:var(--ink2);text-decoration:none;display:flex;flex-direction:column;justify-content:center;min-height:44px;line-height:1.3}
+.bar .rt b{font-weight:400;color:var(--ink)}
+.bar .rt small{font-size:11px}
 .bar .btn{min-height:44px;font-size:14px;padding:0 18px;white-space:nowrap}
 .bar .short{display:none}
 
-@media (max-width:1100px){
-  .bar .rt{display:none}
-}
+@media (max-width:1180px){ .bar .rt{display:none} }
 @media (max-width:900px){
-  .grid,.pair,.after,.score,.spot-grid,.here,.close-row{grid-template-columns:1fr}
-  .intro h2,.intro .body,.day h2,.day .body,.rooms-text .body,.rooms-text .am,.after .free,.after .price,.after .go,.score .big,.score .sub,.spot-grid .t,.spot-grid .w,.here .ph,.here .tx,.close-row p,.close-row .go,footer .n,footer .c1,footer .c2{grid-column:1 / -1}
-  .intro .body,.day .body{margin-top:24px}
+  .grid,.after,.score,.spot-grid,.here,.close-row,.intro-grid{grid-template-columns:1fr}
+  .day h2,.day .body,.rooms-text .body,.rooms-text .am,.after .free,.after .price-t,.after .go,.score .big,.score .sub,.spot-grid .t,.spot-grid .w,.here .ph,.here .tx,.close-row p,.close-row .go,footer .n,footer .c1,footer .c2{grid-column:1 / -1}
+  .day .body{margin-top:24px}
+  .intro .txt{grid-column:1;grid-row:1;padding-bottom:0}
+  .intro .ph{grid-column:1;grid-row:2;margin:40px calc(-1 * var(--gut)) 0}
   .rooms-text .am{margin-top:40px}
-  .pair{row-gap:16px}
-  .pair .a{grid-column:1;width:82%;margin-left:calc(-1 * var(--gut))}
-  .pair .b{grid-column:1;width:78%;justify-self:end;margin-right:calc(-1 * var(--gut));margin-bottom:0}
-  .lvl-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-left:calc(-1 * var(--gut));margin-right:calc(-1 * var(--gut));padding:0 var(--gut);scroll-padding:0 var(--gut);scrollbar-width:none}
+  .lvl-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding:0 var(--gut);scroll-padding:0 var(--gut);scrollbar-width:none;margin-top:40px}
   .lvl-row::-webkit-scrollbar{display:none}
-  .lvl{flex:0 0 80%;scroll-snap-align:start}
-  .run{grid-template-columns:1fr 1fr}
+  .lvl{flex:0 0 86%;scroll-snap-align:center}
+  .lvl-body{padding:22px 20px 22px}
+  .lvl .price b{font-size:30px}
+  .run{grid-template-columns:1fr;gap:2px}
   .rooms-grid{grid-template-columns:1fr}
   .rooms-grid .big{grid-row:auto;aspect-ratio:3/2;min-height:0}
   .quotes{grid-template-columns:1fr}
@@ -226,7 +232,8 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
   .spot-grid .w{justify-self:start}
   .feature{aspect-ratio:4/5}
   .feature p{font-size:30px;color:#fff;bottom:28px}
-  .band{aspect-ratio:4/5;max-height:none}
+  .band,.lounge{aspect-ratio:4/5;max-height:none}
+  .score .sub{margin-top:28px}
   .bar{top:auto;bottom:0;border-bottom:0;border-top:1px solid var(--line);transform:translateY(110%)}
   .bar .in{flex-wrap:wrap;gap:8px 12px;padding:8px var(--gut) calc(8px + env(safe-area-inset-bottom))}
   .bar .nm{display:none}
@@ -238,19 +245,22 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
 }
 @media (max-width:700px){
   .top .pk{display:none}
-  .hero{min-height:600px}
-  .hero picture img,.hero video{object-position:22% 60%}
-  .hero-text{padding-bottom:18px}
+  .hero{height:auto;min-height:0;max-height:none;overflow:visible}
+  .film{position:relative;inset:auto;height:calc(100svh - 360px);min-height:330px;overflow:hidden}
+  .film img,.film video{object-position:34% 50%}
+  .plate{position:static;width:auto;padding:26px var(--gut) 20px}
+  .plate h1{font-size:38px}
+  .plate .tag{font-size:16px;margin-top:12px}
+  .plate .act{flex-direction:column;align-items:stretch;gap:12px;margin-top:20px}
+  .plate .act .btn{width:100%;min-height:56px;padding:0 12px;font-size:15px}
   .proof{border-left:0;padding-left:0}
-  .hero .act{flex-direction:column;align-items:stretch;gap:14px}
-  .hero .act .btn{width:100%;min-height:56px;padding:0 12px;font-size:15px}
   .score .big{flex-direction:column;align-items:flex-start}
   .figs{gap:24px}
   .am ul{columns:1}
   .close-row .go .btn,.after .go .btn{font-size:15px;padding:0 12px}
 }
 @media (prefers-reduced-motion:reduce){
-  .hero video,.lvl-media video{display:none}
+  .film video,.lvl-media video{display:none}
   .bar{transition:none}
   .lvl:hover .lvl-media img{transform:none}
 }
@@ -258,6 +268,7 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
 <noscript><style>.bar{position:static;transform:none}.seg{display:none}</style></noscript>
 </head>
 <body>
+<a class="skip" href="#levels">Skip to the surf weeks and prices</a>
 
 <header class="top">
   <a class="mark" href="#top">Global Surf Lodge Kabalana</a>
@@ -266,18 +277,20 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
 
 <main id="top">
 <section class="hero" aria-label="Global Surf Lodge Kabalana">
-  <picture>
-    <source type="image/avif" srcset="video/vid-009-poster.avif">
-    <source type="image/webp" media="(max-width:900px)" srcset="img/vid-009-poster-1280.webp">
-    <img src="video/vid-009-poster.jpg" width="1920" height="1080" alt="The lodge's pool deck in the sun: white daybeds on dark timber platforms over a long blue pool, white bungalows and palms behind" fetchpriority="high">
-  </picture>
-  <video muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" poster="video/vid-009-poster.avif" data-hero>
-    <source data-src="video/vid-009-m1280.webm" type="video/webm" media="(max-width:900px)">
-    <source data-src="video/vid-009-m1280.mp4" type="video/mp4" media="(max-width:900px)">
-    <source data-src="video/vid-009-d1920.webm" type="video/webm">
-    <source data-src="video/vid-009-d1920.mp4" type="video/mp4">
-  </video>
-  <div class="hero-text">
+  <div class="film">
+    <picture>
+      <source type="image/avif" srcset="video/vid-009e-poster.avif">
+      <source type="image/webp" srcset="img/vid-009e-poster-1280.webp">
+      <img src="video/vid-009e-poster.jpg" width="1920" height="1080" alt="The lodge's pool deck in the sun: white daybeds on dark timber platforms over a long blue pool, white bungalows and palms behind" fetchpriority="high">
+    </picture>
+    <video muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" poster="video/vid-009e-poster.avif" data-hero>
+      <source data-src="video/vid-009e-m1280.webm" type="video/webm" media="(max-width:900px)">
+      <source data-src="video/vid-009e-m1280.mp4" type="video/mp4" media="(max-width:900px)">
+      <source data-src="video/vid-009e-d1920.webm" type="video/webm">
+      <source data-src="video/vid-009e-d1920.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="plate">
     <h1>Global Surf Lodge Kabalana</h1>
     <p class="tag">Surf weeks for all levels on Sri Lanka's south coast, a few steps from the ocean.</p>
     <div class="act">
@@ -288,17 +301,14 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
 </section>
 
 <section class="intro" aria-labelledby="h-intro">
-  <div class="wrap grid">
-    <h2 id="h-intro">Next set is yours</h2>
-    <div class="body">
-      <p>We are surfing obsessed, and we invite you to join us.</p>
-      <p>The lodge sits in the green of the jungle. We run surf weeks for three levels, from your first wave to carving, and a Freestylers package for independent travellers.</p>
-    </div>
-  </div>
-  <div class="wrap">
-    <div class="pair">
-      <div class="a"><picture><source type="image/webp" srcset="img/img-002-640.webp 640w, img/img-002-1000.webp 1000w" sizes="(max-width:900px) 82vw, 40vw"><img class="fill" src="img/img-002-1000.jpg" width="1000" height="1250" loading="lazy" alt="A guest on a daybed over the pool in front of a white bungalow, palms above"></picture></div>
-      <div class="b"><picture><source type="image/webp" srcset="img/img-017-900.webp 900w, img/img-017-1400.webp 1400w" sizes="(max-width:900px) 78vw, 50vw"><img class="fill" src="img/img-017-1400.jpg" width="1400" height="933" loading="lazy" alt="Two guests lying on a daybed on its timber platform over the pool"></picture></div>
+  <div class="wrap intro-grid">
+    <div class="ph"><picture><source type="image/webp" srcset="img/img-001-45-700.webp 700w, img/img-001-45-1100.webp 1100w" sizes="(max-width:900px) 100vw, 60vw"><img class="fill" src="img/img-001-45-1100.jpg" width="1100" height="1375" loading="lazy" alt="A guest stretched out on a daybed at the edge of the pool, trailing her hand in the water, a white bungalow behind"></picture></div>
+    <div class="txt">
+      <h2 id="h-intro">Next set is yours</h2>
+      <div class="body">
+        <p>We are surfing obsessed, and we invite you to join us.</p>
+        <p>The lodge sits in the green of the jungle. We run surf weeks for three levels, from your first wave to carving, and a Freestylers package for independent travellers.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -309,52 +319,69 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
       <h2 id="h-levels">Pick your level</h2>
       <p class="isa">ISA-certified surf guides</p>
     </div>
+  </div>
 
-    <div class="lvl-row">
-      <article class="lvl">
-        <a class="lvl-media" href="https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies" aria-label="Book Level 1 – Fomies">
-          <img src="img/vid-010-poster-45-864.webp" width="864" height="1080" loading="lazy" alt="A beginner standing up on a soft-top board into the low sun">
-          <video muted loop playsinline preload="none" aria-hidden="true" data-clip>
-            <source data-src="video/vid-010-m1280.webm" type="video/webm"><source data-src="video/vid-010-m1280.mp4" type="video/mp4">
-          </video>
-          <span class="lvl-price"><b>$1,466</b><span>per person, 7 nights<br>price read 28 Sep 2026</span></span>
-        </a>
-        <h3>Level 1 – Fomies</h3>
-        <p class="who">Level 1 – Fomies is for your first time on a board, no surfing experience needed. You learn on soft boards, on easy reef breaks and the sandy beaches around the lodge.</p>
+  <div class="lvl-row" id="lvlrow">
+    <article class="lvl" data-l="0" id="level-1">
+      <a class="lvl-media" href="https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies" tabindex="-1" aria-hidden="true">
+        <img src="img/vid-010-poster-45-864.webp" width="864" height="1080" loading="lazy" alt="A beginner standing up on a soft-top board into the low sun">
+        <video muted loop playsinline preload="none" data-clip>
+          <source data-src="video/vid-010-m720.mp4" type="video/mp4" media="(max-width:900px)">
+          <source data-src="video/vid-010-m1280.webm" type="video/webm"><source data-src="video/vid-010-m1280.mp4" type="video/mp4">
+        </video>
+      </a>
+      <div class="lvl-body">
+        <div class="lvl-top">
+          <h3>Level 1 – Fomies</h3>
+          <p class="price"><b>$1,466</b></p>
+        </div>
+        <p class="per">per person, 7 nights · price read 28 Sep 2026</p>
+        <p class="who">is for your first time on a board, no surfing experience needed. You learn on soft boards, on easy reef breaks and the sandy beaches around the lodge.</p>
         <p class="inc"><b>Included:</b> 7 nights, 7 breakfasts, 5 dinners, 5 guided 2-hour surf sessions, 5 theory lessons, all equipment, transport to the spots, an excursion</p>
-        <div class="spacer"></div>
-        <a class="btn-line" href="https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies">Book Level 1 – Fomies</a>
-      </article>
-      <article class="lvl">
-        <a class="lvl-media" href="https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers" aria-label="Book Level 2 – Rollers">
-          <img style="object-position:47% 50%" src="img/vid-003-poster-45-864.webp" width="864" height="1080" loading="lazy" alt="A surfer riding a green reef wave">
-          <video style="object-position:47% 50%" muted loop playsinline preload="none" aria-hidden="true" data-clip>
-            <source data-src="video/vid-003-m1280.webm" type="video/webm"><source data-src="video/vid-003-m1280.mp4" type="video/mp4">
-          </video>
-          <span class="lvl-price"><b>$1,466</b><span>per person, 7 nights<br>price read 28 Sep 2026</span></span>
-        </a>
-        <h3>Level 2 – Rollers</h3>
-        <p class="who">Level 2 – Rollers is for when you can stand up, but paddling out to the line-up and catching green waves is still a struggle. You surf easy reefs and beach breaks with deep-water channels, on soft boards.</p>
+        <a class="btn" href="https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies">Book Level 1 – Fomies</a>
+      </div>
+    </article>
+    <article class="lvl" data-l="1" id="level-2">
+      <a class="lvl-media" href="https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers" tabindex="-1" aria-hidden="true">
+        <img style="object-position:47% 50%" src="img/vid-003-poster-45-864.webp" width="864" height="1080" loading="lazy" alt="A surfer riding a green reef wave">
+        <video style="object-position:47% 50%" muted loop playsinline preload="none" data-clip>
+          <source data-src="video/vid-003-m720.mp4" type="video/mp4" media="(max-width:900px)">
+          <source data-src="video/vid-003-m1280.webm" type="video/webm"><source data-src="video/vid-003-m1280.mp4" type="video/mp4">
+        </video>
+      </a>
+      <div class="lvl-body">
+        <div class="lvl-top">
+          <h3>Level 2 – Rollers</h3>
+          <p class="price"><b>$1,466</b></p>
+        </div>
+        <p class="per">per person, 7 nights · price read 28 Sep 2026</p>
+        <p class="who">is for when you can stand up, but paddling out to the line-up and catching green waves is still a struggle. You surf easy reefs and beach breaks with deep-water channels, on soft boards.</p>
         <p class="inc"><b>Included:</b> 7 nights, 7 breakfasts, 5 dinners, 5 guided 2-hour surf sessions, 5 theory lessons, all equipment, transport to the spots, an excursion</p>
-        <div class="spacer"></div>
-        <a class="btn-line" href="https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers">Book Level 2 – Rollers</a>
-      </article>
-      <article class="lvl">
-        <a class="lvl-media" href="https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders" aria-label="Book Level 3 – Riders">
-          <img src="img/vid-002-poster-45-864.webp" width="864" height="1080" loading="lazy" alt="A surfer deep inside a right-hand barrel">
-          <video style="object-position:62% 50%" muted loop playsinline preload="none" aria-hidden="true" data-clip>
-            <source data-src="video/vid-002-m1280.webm" type="video/webm"><source data-src="video/vid-002-m1280.mp4" type="video/mp4">
-          </video>
-          <span class="lvl-price"><b>$1,466</b><span>per person, 7 nights<br>price read 28 Sep 2026</span></span>
-        </a>
-        <h3>Level 3 – Riders</h3>
-        <p class="who">Level 3 – Riders: you're already carving, and you want to sharpen your skills. From Galle to Matara, you surf the best spot of the day for the conditions, the wind and the tide.</p>
+        <a class="btn" href="https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers">Book Level 2 – Rollers</a>
+      </div>
+    </article>
+    <article class="lvl" data-l="2" id="level-3">
+      <a class="lvl-media" href="https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders" tabindex="-1" aria-hidden="true">
+        <img style="object-position:64% 50%" src="img/vid-002e-poster-45-864.webp" width="864" height="1080" loading="lazy" alt="A surfer deep inside a green barrel">
+        <video style="object-position:64% 50%" muted loop playsinline preload="none" data-clip>
+          <source data-src="video/vid-002e-m720.mp4" type="video/mp4" media="(max-width:900px)">
+          <source data-src="video/vid-002e-m1280.webm" type="video/webm"><source data-src="video/vid-002e-m1280.mp4" type="video/mp4">
+        </video>
+      </a>
+      <div class="lvl-body">
+        <div class="lvl-top">
+          <h3>Level 3 – Riders:</h3>
+          <p class="price"><b>$1,466</b></p>
+        </div>
+        <p class="per">per person, 7 nights · price read 28 Sep 2026</p>
+        <p class="who">you're already carving, and you want to sharpen your skills. From Galle to Matara, you surf the best spot of the day for the conditions, the wind and the tide.</p>
         <p class="inc"><b>Included:</b> 7 nights, 7 breakfasts, 5 dinners, 5 coached 2-hour surf sessions, 5 theory lessons, all equipment, transport to the spots, an excursion</p>
-        <div class="spacer"></div>
-        <a class="btn-line" href="https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders">Book Level 3 – Riders</a>
-      </article>
-    </div>
+        <a class="btn" href="https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders">Book Level 3 – Riders</a>
+      </div>
+    </article>
+  </div>
 
+  <div class="wrap">
     <div class="after">
       <div class="free">
         <h3>Freestylers – B&amp;B only</h3>
@@ -362,7 +389,7 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
         <p>From 4 nights</p>
         <a class="tlink" href="https://globalsurfadventures.bookinglayer.com/en/product/freestylers-bb-only-package">Book Freestylers – B&amp;B only</a>
       </div>
-      <div class="price">
+      <div class="price-t">
         <h3>One price, three levels</h3>
         <p>The three surf weeks cost the same, per person for seven nights. That is the base price the booking engine showed on 28 September 2026. The room you choose can add to it; the engine shows any supplement once you pick your dates.</p>
         <p>Packages start on a Saturday and run for 7, 14, 21 or 28 nights, for up to six guests per booking. Drinking water and local coffee and tea are unlimited.</p>
@@ -393,10 +420,10 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
     </div>
   </div>
   <div class="run">
-    <div><picture><source type="image/webp" srcset="img/img-104-560.webp 560w, img/img-104-900.webp 900w" sizes="(max-width:900px) 50vw, 25vw"><img class="fill" src="img/img-104-900.jpg" width="900" height="1125" loading="lazy" alt="A group of surfers walking along the beach to the water with their boards"></picture></div>
-    <div><picture><source type="image/webp" srcset="img/img-011-560.webp 560w, img/img-011-900.webp 900w" sizes="(max-width:900px) 50vw, 25vw"><img class="fill" src="img/img-011-900.jpg" width="900" height="1125" loading="lazy" alt="A breakfast bowl with mango and banana on a dark wooden table"></picture></div>
-    <div><picture><source type="image/webp" srcset="img/img-111-560.webp 560w, img/img-111-900.webp 900w" sizes="(max-width:900px) 50vw, 25vw"><img class="fill" src="img/img-111-900.jpg" width="900" height="1125" loading="lazy" alt="A surfer riding a longboard at sunset on golden water"></picture></div>
-    <div><picture><source type="image/webp" srcset="img/img-023-560.webp 560w, img/img-023-900.webp 900w" sizes="(max-width:900px) 50vw, 25vw"><img class="fill" src="img/img-023-900.jpg" width="900" height="1125" loading="lazy" alt="Guests toasting together around a table at the lodge"></picture></div>
+    <div><picture><source type="image/webp" srcset="img/img-104-560.webp 560w, img/img-104-900.webp 900w" sizes="(max-width:900px) 100vw, 25vw"><img class="fill" src="img/img-104-900.jpg" width="900" height="1125" loading="lazy" alt="A group of surfers walking along the beach to the water with their boards"></picture></div>
+    <div><picture><source type="image/webp" srcset="img/img-011-560.webp 560w, img/img-011-900.webp 900w" sizes="(max-width:900px) 100vw, 25vw"><img class="fill" src="img/img-011-900.jpg" width="900" height="1125" loading="lazy" alt="A breakfast bowl with mango and banana on a dark wooden table"></picture></div>
+    <div><picture><source type="image/webp" srcset="img/img-111-560.webp 560w, img/img-111-900.webp 900w" sizes="(max-width:900px) 100vw, 25vw"><img class="fill" src="img/img-111-900.jpg" width="900" height="1125" loading="lazy" alt="A surfer riding a longboard at sunset on golden water"></picture></div>
+    <div><picture><source type="image/webp" srcset="img/img-023-560.webp 560w, img/img-023-900.webp 900w" sizes="(max-width:900px) 100vw, 25vw"><img class="fill" src="img/img-023-900.jpg" width="900" height="1125" loading="lazy" alt="Guests toasting together around a table at the lodge"></picture></div>
   </div>
 </section>
 
@@ -437,12 +464,14 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
   </div>
 </section>
 
+<div class="lounge"><picture><source type="image/webp" media="(max-width:900px)" srcset="img/img-075-45-800.webp"><source type="image/webp" srcset="img/img-075-219-1280.webp 1280w, img/img-075-219-2000.webp 2000w" sizes="100vw"><img src="img/img-075-219-2000.jpg" width="2000" height="857" loading="lazy" alt="The open lounge beside the pool, white beanbags on the timber deck under the roof"></picture></div>
+
 <section class="guests" aria-labelledby="h-guests">
   <div class="wrap">
+    <h2 id="h-guests">What guests say</h2>
     <div class="score">
       <a class="big" href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"><b>8.6</b><span>out of 10 on Booking.com<br>80 reviews, read 28 Sep 2026</span></a>
       <div class="sub">
-        <h2 id="h-guests">What guests say</h2>
         <p>Booking.com guests score the staff 9.5 out of 10, and the facilities and the cleanliness 9.2 each.</p>
         <p>In their reviews they write about the pool area, the open-air bathroom and the breakfast bowls.</p>
         <div class="figs" aria-label="Booking.com category scores">
@@ -454,7 +483,7 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
       <figure><blockquote>“We loved the cozy, bohoo-vibes at the lodge: starting from the open-air-bathroom, the relaxing pool area and especially the great breakfast bowls!”</blockquote><figcaption>Fanny, Germany · Booking.com</figcaption></figure>
       <figure><blockquote>“This place felt like something inbetween a hostel and a luxurious hotel. The styling was gorgeous, the beds very comfortable, the (bath)room very spacious with lockers and personal storage space.”</blockquote><figcaption>Myrthe, Netherlands · Booking.com</figcaption></figure>
       <figure><blockquote>“The room was modern, quiet and incredibly clean with daily servicing. The grounds were well kept with a gorgeous pool and dining area. There are hammocks, loungers and beanbags in social areas. It was a really really great place.”</blockquote><figcaption>Abigail, Myanmar · Booking.com</figcaption></figure>
-      <figure><blockquote>“A lovely hotel and a team of champions. Ariel, a professional surf guide, raised the level of surfing for us by several steps during the week we were there. This is our second time at the same hotel and with the same guide. We will return next year as well”</blockquote><figcaption>Seagallas · review</figcaption></figure>
+      <figure><blockquote>“A lovely hotel and a team of champions. Ariel, a professional surf guide, raised the level of surfing for us by several steps during the week we were there. This is our second time at the same hotel and with the same guide. We will return next year as well”</blockquote><figcaption>Seagallas · <a href="https://www.globalsurf.com/kabalana-lodge-surf-packages/">globalsurf.com</a></figcaption></figure>
     </div>
   </div>
 </section>
@@ -497,7 +526,7 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
 
 <section class="closing" aria-label="Book your week">
   <div class="band"><picture><source type="image/webp" media="(max-width:900px)" srcset="img/img-093-45-800.webp"><source type="image/webp" srcset="img/img-093-1536.webp"><img src="img/img-093-1536.jpg" width="1536" height="658" loading="lazy" alt="The pool and the open lounge at dusk, lights on under the palms"></picture></div>
-  <div class="close-row" style="max-width:calc(var(--col) + 2*var(--gut));margin:0 auto">
+  <div class="close-row">
     <p>Book the week for your level. Not sure which one fits? Ask us on WhatsApp first.</p>
     <div class="go">
       <a class="btn" href="https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka">See the weekly surf packages and dates</a>
@@ -531,7 +560,7 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
       <button type="button" aria-pressed="false" data-l="2">Riders</button>
     </div>
     <div class="pr"><b>$1,466</b> pp, 7 nights<span>lessons, meals, room</span></div>
-    <a class="rt" href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"><b>8.6</b> Booking.com</a>
+    <a class="rt" href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"><span><b>8.6/10</b> Booking.com, 80 reviews</span><small>read 28 Sep 2026</small></a>
     <a class="btn" id="barbtn" href="https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"><span class="long">See the weekly surf packages and dates</span><span class="short">Packages and dates</span></a>
   </div>
 </div>
@@ -548,51 +577,67 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
     v.load();
     v.addEventListener('playing',function(){v.classList.add('on')});
   }
-  function play(v){attach(v);var p=v.play();if(p&&p.catch)p.catch(function(){})}
+  function play(v){if(still||!v)return;attach(v);var p=v.play();if(p&&p.catch)p.catch(function(){})}
 
   // hero: after first paint
   var hv=document.querySelector('video[data-hero]');
-  function go(){ if(hv&&!still) play(hv); }
+  function go(){ play(hv); }
   if(document.readyState==='complete')requestAnimationFrame(function(){setTimeout(go,50)});
   else addEventListener('load',function(){requestAnimationFrame(function(){setTimeout(go,50)})});
 
-  // level clips: hover/focus on pointer devices; in view on touch, one at a time
-  var clips=[].slice.call(document.querySelectorAll('.lvl'));
-  var fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
-  if(!still){
-    if(fine){
-      clips.forEach(function(el){
-        var v=el.querySelector('video[data-clip]');
-        el.addEventListener('mouseenter',function(){play(v)});
-        el.addEventListener('mouseleave',function(){v.pause()});
-        el.addEventListener('focusin',function(){play(v)});
-        el.addEventListener('focusout',function(){v.pause()});
-      });
-    } else if('IntersectionObserver' in window){
-      var io=new IntersectionObserver(function(es){
-        es.forEach(function(e){var v=e.target.querySelector('video[data-clip]');
-          if(e.intersectionRatio>=.75)play(v);else v.pause();});
-      },{threshold:[0,.75]});
-      clips.forEach(function(el){io.observe(el.querySelector('.lvl-media'))});
-    }
-  }
-
-  // persistent bar
+  // bar + level cards, kept in sync
   var bar=document.getElementById('bar'),hero=document.querySelector('.hero'),btn=document.getElementById('barbtn');
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(es){bar.classList.toggle('show',!es[0].isIntersecting)},{threshold:0}).observe(hero);
   } else bar.classList.add('show');
+  var cards=[].slice.call(document.querySelectorAll('.lvl'));
+  var clips=cards.map(function(c){return c.querySelector('video[data-clip]')});
+  var segs=[].slice.call(bar.querySelectorAll('.seg button'));
   var links=['https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies','https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers','https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders'];
   var names=['Book Level 1 – Fomies','Book Level 2 – Rollers','Book Level 3 – Riders'];
   var short=['Book Fomies','Book Rollers','Book Riders'];
-  var segs=[].slice.call(bar.querySelectorAll('.seg button'));
-  segs.forEach(function(b){b.addEventListener('click',function(){
-    var i=+b.dataset.l;
-    segs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
-    btn.href=links[i];
-    btn.querySelector('.long').textContent=names[i];
-    btn.querySelector('.short').textContent=short[i];
-  })});
+  var cur=-1;
+  function select(i,fromBar){
+    if(i!==cur){
+      cur=i;
+      segs.forEach(function(x,j){x.setAttribute('aria-pressed',j===i?'true':'false')});
+      cards.forEach(function(c,j){c.classList.toggle('sel',j===i)});
+      btn.href=links[i];
+      btn.querySelector('.long').textContent=names[i];
+      btn.querySelector('.short').textContent=short[i];
+      clips.forEach(function(v,j){if(j!==i&&v)v.pause()});
+      play(clips[i]);
+    }
+    if(fromBar){
+      var row=document.getElementById('lvlrow'),card=cards[i];
+      var r=card.getBoundingClientRect(),vh=innerHeight;
+      var inView=r.top<vh*.85&&r.bottom>vh*.15;
+      if(row.scrollWidth>row.clientWidth){
+        row.scrollTo({left:card.offsetLeft-(row.clientWidth-card.offsetWidth)/2,behavior:calm?'auto':'smooth'});
+      }
+      if(!inView)card.scrollIntoView({block:'center',behavior:calm?'auto':'smooth'});
+    }
+  }
+  segs.forEach(function(b){b.addEventListener('click',function(){select(+b.dataset.l,true)})});
+
+  var fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+  cards.forEach(function(c,i){
+    c.addEventListener('focusin',function(){select(i,false)});
+    if(fine){
+      c.addEventListener('mouseenter',function(){select(i,false)});
+    }
+  });
+  if(!fine&&'IntersectionObserver' in window){
+    // touch: the card that fills the screen is the selected level, and plays
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var i=cards.indexOf(e.target.closest('.lvl'));
+        if(e.intersectionRatio>=.75){select(i,false);play(clips[i]);}
+        else if(clips[i]&&i===cur)clips[i].pause();
+      });
+    },{threshold:[0,.75]});
+    cards.forEach(function(c){io.observe(c.querySelector('.lvl-media'))});
+  }
 
   // Rosa widget: only when the block nears the viewport
   var box=document.getElementById('rosa');
