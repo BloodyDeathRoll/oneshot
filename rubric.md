@@ -1,4 +1,4 @@
-version: 0.1.0
+version: 0.2.0
 
 # rubric.md — critic scoring: dimensions, weights, pass thresholds.
 
@@ -10,7 +10,7 @@ Used by the critic in both modes (PLAN.md §5): **quick** (the three mockups, be
 |---|---|---|---|---|
 | 1 | Facts match dossier | 25 | Every checkable statement on the site (prices, hours, levels, inclusions, location, season, names, ratings, review text) traces to a `dossier.json` entry with the same value. Gaps handled as in `notes.md` (omitted or marked), never invented. | `dossier/<slug>/dossier.json`, `sites/<slug>/…/notes.md` |
 | 2 | Mobile + performance | 20 | Home page measured on a throttled phone (playbook §4's assumptions: ~1.6 Mbps, 150 ms RTT, 4x CPU) with no scroll: first-load transfer, JS, fonts, largest image, LCP, CLS against the budget; layout at 390 px with no overflow/overlap/unreadable text in every run language. | `audit.json` from `tools/audit-mockup.mjs`, screenshots |
-| 3 | Booking CTA works end to end | 15 | The primary action is a real link (works with JS off) to the dossier's booking path, number/handle/engine URL identical character for character; prefilled message names the business and the visitor's choice; tested by tapping through on a mobile viewport. | dossier `booking`, tap-through log |
+| 3 | Booking CTA works end to end | 15 | The primary action is a real link (works with JS off) to the dossier's booking path, number/handle/engine URL identical character for character; prefilled message names the business and the visitor's choice; tested by tapping through on a mobile viewport. Full mode also: `tools/funnel.mjs` on the built site meets `audit.json.recommended` — `clicks_to_book` at or under the target, primary action class equal (proposal 007). Over the target: dimension 3 ≤ 6. | dossier `booking`, tap-through log, `funnel.json` vs `dossier/<slug>/audit.json` |
 | 4 | Brand fit vs playbook | 10 | Content hierarchy of playbook §3 present; the site answers the traveller's questions (level, price, spot, season, what's included, how to book) above the fold and in order; variant matches its brief in `custom.md` (calm / interactive / unique). | playbook §3, custom.md |
 | 5 | Copy quality | 10 | Plain, specific, no filler, no generic surf clichés, no claims beyond the dossier; every language in `run.yaml` complete (English only for now). | site text |
 | 6 | Accessibility | 10 | WCAG 2.1 AA floor: keyboard-operable everything (drawers trap and return focus, Esc closes), `prefers-reduced-motion` honoured, content as DOM text not only in canvas/video, alt text from the dossier, contrast ≥ 4.5:1, tap targets ≥ 44 px. | `audit.json` keyboard / reduced-motion / alt / tap-target sections, manual keyboard pass |
@@ -35,6 +35,7 @@ Any one of these fails the round regardless of total:
 
 - A fact on the site contradicts the dossier, or a claim has no dossier entry.
 - The booking CTA does not land in the right chat/call/engine, or the number/URL differs from the dossier.
+- Full mode: the built site's primary booking action is a different class (WhatsApp / phone / engine) from `audit.json.recommended.primary_action`.
 - A non-business-owned image is presented as the business — captioned, positioned or cropped so a visitor could read it as this business's room, pool, food or people — or an image is used against the run's image policy (PLAN.md §9).
 - A freely-licensed atmosphere image is used without the credit string recorded in `dossier/<slug>/stock/index.json`, or under a licence the policy excludes (share-alike, NC, ND).
 - Any third-party request on first load, or any runtime dependency on the CMS.
@@ -69,7 +70,7 @@ fix list (fail only): <ordered, smallest first>
 
 - `audit.json` from `tools/audit-mockup.mjs`, and the playbook §4 budget table filled with its measured values.
 - Screenshots at 390 px and 1440 px, every run language.
-- The tap-through log for the booking CTA.
+- The tap-through log for the booking CTA; in full mode the `tools/funnel.mjs` output for the built site.
 - A facts table: each site claim → dossier key → match / mismatch / missing.
 - Network log of first load (host list, transfer size).
 

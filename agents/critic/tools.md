@@ -43,3 +43,7 @@ It assumes the booking block has `id="book"` and drawers use `data-open-drawer` 
 
 `node tools/check-design.mjs <slug | variant | path/to/page.html> [--no-shots]`. Fails on the house rules (dark ground, captions under photographs, padded picture boxes) and on a full-bleed image from a source under 1200 px. Its default-look lines (`look:` and `WARN default look`) never fail; report them to the human as facts (hard constraint 4).
 
+
+## `tools/funnel.mjs` — taps to book on the built site (proposal 007)
+
+`node tools/funnel.mjs <served site url> --depth 3 --out reports/<run-id>/funnel/<slug>-r<n>` in full mode. Compare `clicks_to_book` and `primary_action.class` with `dossier/<slug>/audit.json` `recommended.clicks_to_book` / `recommended.primary_action` (rubric 0.2.0 dimension 3 and hard fails). Action classes and the counting rule are in `agents/auditor/tools.md`.

@@ -26,17 +26,17 @@ hosting:
   default_mode: managed          # managed | self_hosted_docker | static_only
   modes: {}                      # slug → mode, when the client chooses something other than the default
 agents:                          # pinned versions for reproducibility
-  scout: 0.2.0
+  scout: 0.3.0
   harvester: 0.3.0
   auditor: 0.1.0
   designer: 0.3.4
-  copywriter: 0.3.1
+  copywriter: 0.3.2
   humanizer: 0.2.0
-  copyeditor: 0.3.0
-  creative-director: 0.2.3
+  copyeditor: 0.3.1
+  creative-director: 0.2.4
   seo: 0.2.0
   aiseo: 0.2.0
-  critic: 0.3.2
+  critic: 0.3.3
   deployer: 0.2.0
-  writer: 0.2.0
-  orchestrator: 0.2.1
+  writer: 0.2.1
+  orchestrator: 0.2.2

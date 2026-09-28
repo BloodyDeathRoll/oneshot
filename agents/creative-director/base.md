@@ -1,4 +1,4 @@
-version: 0.2.3
+version: 0.2.4
 
 # creative-director / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -41,6 +41,7 @@ concept wins; the human does that at the 4f gate, after the designer has built a
 | `agents/designer/references.md` | The cached analysis of six reference sites. **Read it in full.** It is the only researched design material in the repo, and the last run's mockups were rejected partly because it was never opened. |
 | `agents/designer/custom.md` | The three-variant brief (calm / interactive / unique) that your concepts must map onto, and the house instruction about canvas, editorial grids and booking drawers. Read-only. |
 | `dossier/<slug>/dossier.json` | The only source of facts. Read the gaps and the contradictions as carefully as the facts: they usually contain the idea. |
+| `dossier/<slug>/audit.json` (`recommended`) | The auditor's funnel for this business (the auditor, 3b, `schemas/audit.md`): primary action, its label, what must sit above the fold and in what order, the taps-to-book target. A constraint on every concept, not a suggestion. Not a fact source. |
 | `dossier/<slug>/assets/` + the images themselves | **Look at every photograph.** Not the filenames — the pictures. Their subject, their quality and their pixel dimensions decide what kind of page is possible. |
 | `sites/<slug>/copy/en.json` | The words that already passed 4c. The page is built around these, not around placeholder shapes. |
 | `sites/<slug>/../*/concepts.md` | **Every concept already written for every other business in this run.** You must diverge from all of them. |
@@ -170,7 +171,9 @@ what a visitor would notice is different.
    muddy 90s/2010s orange on a warm ground. A clean, saturated orange or coral is fine (designer
    house rule 4).
 8. **The first screen carries the booking action**, in every concept, on a phone as well
-   (references.md #4).
+   (references.md #4). It is `audit.json.recommended.primary_action` with its label, the items of
+   `recommended.above_fold` appear in that order before the first scroll, and each concept states
+   how it meets `recommended.clicks_to_book` (the critic measures it on the built site).
 9. **Nothing may cover the content on load** — no interstitial, no cookie wall, no promo modal
    (references.md #20).
 10. **Stay inside the performance budget** (playbook §4). A concept that needs 8 MB of imagery is not

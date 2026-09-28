@@ -1,4 +1,4 @@
-version: 0.3.1
+version: 0.3.2
 
 # copywriter / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -17,6 +17,7 @@ The line you must hold, because the whole project depends on it: **you expand vo
 | Input | Use |
 |---|---|
 | `dossier/<slug>/dossier.json` | The only source of facts. Every sentence you write traces to a field here, or to the shared context below. |
+| `dossier/<slug>/audit.json` (`recommended`, findings with `area: offer \| cta`) | How the page should sell (the auditor, 3b): `primary_label` for the booking action, `offer_framing` for prices and packages, `closing` for `closing`. **Not a fact source**: a sentence that rests on the audit and not on the dossier is `unsourced`. |
 | `schemas/site-content.md` | Where the copy goes: `copyBlocks[]` slots (`intro`, `about`, `offer`, `info`), `tagline`, `spot`, `season`, plus the per-type modules. Write to the field, not to a page. |
 | `schemas/business-types.md` | The type, which decides what the reader needs to know and in what order. |
 | `run.yaml` | `languages` (write every locale), `mode`. |
