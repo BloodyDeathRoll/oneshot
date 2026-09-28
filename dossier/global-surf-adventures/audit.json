@@ -1,0 +1,337 @@
+{
+  "slug": "global-surf-adventures",
+  "run_id": "2026-09-globalsurf-02",
+  "auditor_version": "0.1.2",
+  "audited_at": "2026-09-28T18:02:28Z",
+  "scope": "site",
+  "measured": {
+    "url": "https://www.globalsurf.com/",
+    "status": 200,
+    "clicks_to_book": 1,
+    "primary_action": {
+      "class": "engine",
+      "label": "READY TO CATCH MY FIRST WAVE",
+      "href": "https://globalsurfadventures.bookinglayer.io/frontoffice/#/"
+    },
+    "cta_above_fold": true,
+    "terminal_above_fold": true,
+    "pages_crawled": 30,
+    "broken_pages": [],
+    "funnel_json": "funnel/funnel.json"
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "area": "funnel",
+      "severity": "high",
+      "title": "Every booking button on the lodge and level pages loses the package the visitor chose",
+      "what_a_visitor_meets": "On the Level 1 page, tapping 'READY TO CATCH MY FIRST WAVE' (a '/tests/en/product/level-1-fomies' link) lands on the engine's home page, which shows one 'Sri Lanka' card; the Level 1 package the visitor was reading about is gone, and they have to find it again through the category list. The lodge page's 'BOOK YOUR STAY' and the Level 2, Level 3 and Freestylers buttons use the same '/tests/' links.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk-05-level-one-cta-engine-fold.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk-04-level-one-fold.png"
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "https://www.globalsurf.com/levels/kabalan-surf-lodge/level-one/",
+            "READY TO CATCH MY FIRST WAVE",
+            "→ https://globalsurfadventures.bookinglayer.com/en (engine home)"
+          ]
+        },
+        {
+          "type": "url",
+          "value": "https://globalsurfadventures.bookinglayer.com/tests/en/product/level-1-fomies"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#booking.engine_url.note"
+        }
+      ],
+      "playbook_ref": "§5 booking path ('lands in … the engine with the right business, with the chosen details carried over')",
+      "fix_in_new_site": "bookingLinks[] rows pointing at the real product pages (https://globalsurfadventures.bookinglayer.com/en/product/<slug>, dossier booking.engine_products), one per package, each beside its lessons[] row; never a '/tests/' URL",
+      "pitch_point": true
+    },
+    {
+      "id": "F2",
+      "area": "offer",
+      "severity": "high",
+      "title": "No price anywhere on the site; the weekly package price appears only deep inside the engine",
+      "what_a_visitor_meets": "None of the 30 pages crawled, including the lodge, packages and level pages, states a price. The engine's category list shows the four packages without prices too; the price ('Base price') appears only after the visitor opens a package, picks guests and picks a Saturday start date — the site button, then 'Sri Lanka', then the package, then guests and a date.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk-10-engine-sri-lanka-list-fold.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk-06-engine-product-level-1-fold.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "assets/engine-level-1-fomies-female-13_February_2027.png"
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "https://www.globalsurf.com/",
+            "READY TO CATCH MY FIRST WAVE",
+            "Sri Lanka",
+            "LEVEL 1 - Fomies",
+            "Choose guests",
+            "start date"
+          ]
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#gaps (offers[].price on the site)"
+        }
+      ],
+      "playbook_ref": "§2 'What does it cost?'",
+      "fix_in_new_site": "lessons[] (one row per level package) with price, currency and unit from dossier offers[], the note carrying '7 nights, Saturday check-in' and the capture date; the owner confirms before go-live (playbook §7)",
+      "pitch_point": true
+    },
+    {
+      "id": "F3",
+      "area": "funnel",
+      "severity": "medium",
+      "title": "The home page's one booking button opens the engine's front page, not a package",
+      "what_a_visitor_meets": "Tapping 'READY TO CATCH MY FIRST WAVE' on the home page (a beginner's promise) opens the engine on a page holding a single 'Sri Lanka' photo card; the visitor must tap it to see the four packages for all levels, and tap again to reach one.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/landing-fold.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk-02-home-cta-engine-fold.png"
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "https://www.globalsurf.com/",
+            "READY TO CATCH MY FIRST WAVE",
+            "→ https://globalsurfadventures.bookinglayer.com/en"
+          ]
+        }
+      ],
+      "playbook_ref": "§5 booking path",
+      "fix_in_new_site": "the primary action is bookingLinks[0] to the Sri Lanka category page (dossier booking.engine_url, one tap to all packages), and each lessons[] row has its own product link (F1)",
+      "pitch_point": true
+    },
+    {
+      "id": "F4",
+      "area": "content",
+      "severity": "medium",
+      "title": "The home page sells five destinations; the lodge is one card in a carousel",
+      "what_a_visitor_meets": "The first phone screen of globalsurf.com is 'Tailor-Made Surf Trips Like Never Before' over drone footage of Maldives reefs (the home hero video is the agency's multi-destination reel); 'Global Surf Lodge Kabalana' is the fourth card of an 'Our Destinations' carousel below the fold, after Angola, Mozambique and the Maldives.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/landing-fold.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/landing-mobile.png"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#videos (vid-001: shows, use_note)"
+        }
+      ],
+      "playbook_ref": "§2 'What is this and where?'; §3 item 1 first screen",
+      "fix_in_new_site": "playbook §3 first screen: businessName + what and where (surf camp, Kabalana, south coast of Sri Lanka) over the lodge's own video (heroVideo), with the primary action",
+      "pitch_point": true
+    },
+    {
+      "id": "F5",
+      "area": "contact",
+      "severity": "medium",
+      "title": "WhatsApp is a 22-pixel icon at the bottom of every page, and neither it nor the phone reaches the lodge",
+      "what_a_visitor_meets": "The only visible WhatsApp link is a 22×24 px icon with the label 'What’sup' in the footer (3,795 px down the home page, 7,332 px down the lodge page); it opens an Israeli mobile number (+972). The site's 'CALL NOW' is an Israeli landline, and the home page also carries two hidden 'Call Now' links that open WhatsApp to that landline. The lodge's own Sri Lankan number is on its Google listing only.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/landing-mobile.png"
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "https://www.globalsurf.com/",
+            "scroll to the footer",
+            "What’sup"
+          ]
+        },
+        {
+          "type": "url",
+          "value": "https://wa.me/972523593240"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk-07-contact-fold.png"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#contact.phone_lodge"
+        }
+      ],
+      "playbook_ref": "§5 booking path; §4 tap targets ≥ 44px",
+      "fix_in_new_site": "contact.whatsapp (+972523593240, the number the site already publishes) as a secondary action in the booking section and persistent bar at ≥ 44 px; contact.phone as tel:; which number the lodge answers is the owner's call before go-live (dossier contradictions: WhatsApp target)",
+      "pitch_point": true
+    },
+    {
+      "id": "F6",
+      "area": "mobile",
+      "severity": "medium",
+      "title": "A Messenger chat bubble sits over the content on every page",
+      "what_a_visitor_meets": "On a phone the Facebook Messenger bubble with a red dot covers the lower right of the first screen on the home, lodge, level and contact pages, over the text the visitor is reading.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/landing-fold.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk-03-lodge-fold.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk-04-level-one-fold.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk-07-contact-fold.png"
+        }
+      ],
+      "playbook_ref": "§4 'No … chat widgets … Nothing may cover the content or the booking action on load'",
+      "fix_in_new_site": "playbook §4: no chat widget; the persistent booking bar carries the primary action and contact.whatsapp instead",
+      "pitch_point": true
+    },
+    {
+      "id": "F7",
+      "area": "mobile",
+      "severity": "medium",
+      "title": "The home and lodge pages are 9–20 MB on a phone before any scroll",
+      "what_a_visitor_meets": "On a 390 px phone the home page transferred 8.9 MB (harvester) and 13.4 MB (this audit) and the lodge page 14.8 MB and 20.0 MB before any scroll, with 17–23 third-party hosts (Google Tag Manager, DoubleClick, Facebook, Elfsight, YouTube, Kuula) — on a local SIM that is the traveller's data allowance spent on one page.",
+      "evidence": [
+        {
+          "type": "dossier",
+          "value": "dossier.json#existing_site.measurements"
+        },
+        {
+          "type": "dossier",
+          "value": "funnel/walk-hand.json#steps (11-weight-home, 11-weight-lodge)"
+        },
+        {
+          "type": "url",
+          "value": "https://www.globalsurf.com/global-hotels/sri-lanka/kabalana-surf-lodge/"
+        }
+      ],
+      "playbook_ref": "§4 performance budget (first load ≤ 1.5 MB, 0 third-party requests on load)",
+      "fix_in_new_site": "playbook §4 and §1a: poster-first heroVideo from the build's renditions (m1280 ≤ 2 MB after first paint), photos[] through the build's responsive pipeline, no trackers or embeds on load",
+      "pitch_point": false,
+      "notes": "Single unthrottled headless runs; the two runs differ because the YouTube background videos stream for different lengths. No screenshot can show bytes, so this is not a pitch point under schemas/audit.md; the writer may still cite the measurement from dossier.existing_site."
+    },
+    {
+      "id": "F8",
+      "area": "trust",
+      "severity": "medium",
+      "title": "The lodge page's reviews are about other destinations, and the lodge's own Booking.com rating is not on the site",
+      "what_a_visitor_meets": "The two testimonials on the lodge page praise the Maldives and Morocco trips ('I had the best experience ever with global surf in the Maldives and Morocco!'); nothing on the page shows what guests of the lodge say, although its Booking.com page carries a rating with a review count and guest quotes about the lodge.",
+      "evidence": [
+        {
+          "type": "url",
+          "value": "https://www.globalsurf.com/global-hotels/sri-lanka/kabalana-surf-lodge/"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#reviews.booking"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#reviews.quotes"
+        }
+      ],
+      "playbook_ref": "§2 'Can I trust them?'; §6 trust signals",
+      "fix_in_new_site": "ratings[] (booking, with count and capturedAt) and testimonials[] seeded verbatim from the dossier's Booking.com quotes",
+      "pitch_point": false
+    },
+    {
+      "id": "F9",
+      "area": "offer",
+      "severity": "medium",
+      "title": "The site and the engine list different things in the same package",
+      "what_a_visitor_meets": "The Level 1 page lists five yoga sessions, Wi-Fi and a full-day surf trip; the engine's Level 1 package lists no yoga and adds an Ayurvedic spa treatment, and the number of feedback and filmed sessions differs — a visitor comparing the two cannot tell what they are buying.",
+      "evidence": [
+        {
+          "type": "url",
+          "value": "https://www.globalsurf.com/levels/kabalan-surf-lodge/level-one/"
+        },
+        {
+          "type": "url",
+          "value": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#contradictions (package inclusions site vs engine)"
+        }
+      ],
+      "playbook_ref": "§2 'What's included?'; §7 honesty of facts",
+      "fix_in_new_site": "one lessons[].includes per package, taken from one source the owner confirms before go-live",
+      "pitch_point": false
+    },
+    {
+      "id": "F10",
+      "area": "content",
+      "severity": "low",
+      "title": "Signs of an unmaintained site: '© 2019' and a heading repeated over unrelated text",
+      "what_a_visitor_meets": "The footer reads 'All rights reserved Global Surf Adventures 2019'; the lodge page puts the heading 'Choose your level' twice, over two paragraphs that are about the lodge, not levels.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk-03-lodge-fold.png"
+        },
+        {
+          "type": "dossier",
+          "value": "funnel/walk-hand.json#steps (12-home-footer)"
+        }
+      ],
+      "playbook_ref": "§6 trust signals",
+      "fix_in_new_site": "copyBlocks[] with headings that match their body; the footer year comes from the template",
+      "pitch_point": false
+    }
+  ],
+  "recommended": {
+    "primary_action": "engine",
+    "primary_label": "See the weekly surf packages and dates",
+    "secondary_actions": [
+      "whatsapp",
+      "tel"
+    ],
+    "clicks_to_book": 1,
+    "above_fold": [
+      "level",
+      "price",
+      "included",
+      "trust",
+      "primary_action"
+    ],
+    "offer_framing": "three weekly packages by level (lessons[]: level, what is included, price per person for 7 nights with its capture date, each with its own product link in bookingLinks[]), then the Freestylers B&B package without a price, then rooms[] and amenities[]; stays of 7/14/21/28 nights from a Saturday stated once",
+    "closing_intent": "send the reader to the package for their level and name WhatsApp as the way to ask first",
+    "off_site": [],
+    "notes": "Media, a recommendation for the creative director (not a fact; playbook §0 and §1a): lead with dossier video vid-009 ('Global Surf Lodge Kabalana - Our experience - 2019', the harvester's hero_candidate rank 1) as heroVideo, using its prepared cut (from 3 s, 12 s, skipping the 2 s title card) and its sunlit pool-deck poster: it is the only watermark-free clip and shows the lodge itself from the air, its pool and the reef coast. Use vid-010 (golden-hour beginner session, rank 2) as a videos[] row beside the Level 1 package and vid-002 (right-hand barrel, rank 3; top-left badge) beside Level 3. Do not use vid-001 (the old home hero: other destinations), vid-006/vid-007 (text on every frame) or vid-008 (a different beach). Describe the surf clips without naming the wave: the dossier has not verified that the surf in them is Kabalana's break. After the hero, the harvester's 84 lodge photos at ≥ 1920 px carry the page full-bleed; the price and package data sit in the booking section below the first screen, never in place of the video."
+  },
+  "built_site_gaps": [],
+  "not_measurable": [
+    "Google Maps listing: not re-opened (the harvester's 2026-09-28 visit records the lodge phone and the website field; its exact link target was not verified, so no finding about it)",
+    "Booking.com and TripAdvisor paths: not walked in this audit (TripAdvisor 403 to the harvester); the lodge is on Booking.com, but the direct path is the business's own engine",
+    "Engine beyond the product page: no guests or dates chosen in this walk, 'Continue' never pressed; the price screen is the harvester's (assets/engine-*.png)",
+    "Whether the owner answers the +972 WhatsApp or the +94 lodge phone, and reply time: no contact in test mode",
+    "Instagram and Facebook paths (reels, DMs): behind login",
+    "Conversion rate: no analytics access"
+  ]
+}
