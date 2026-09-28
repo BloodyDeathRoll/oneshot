@@ -153,3 +153,152 @@ fix list (not failing; smallest first): set the rating links and skip link to 44
 
 - Look-logs: calm 7 rounds, interactive 8, unique 7, each with ≥ 3 first-screen rounds that make visible changes. No hollow loop.
 - Not tested (stated, not scored): a real phone or GPU; Safari (the MP4 path); axe; CLS after the Rosa widget arrives; the live engine UI after landing (the SPA returns 200).
+
+---
+
+# Round 2
+
+critic 0.4.0 · rubric 0.3.0 · 2026-09-28 · mockups at commit `2ef1d00` (4e round 2) · dimensions 1–7 only. The visual critics' reports were not opened.
+
+Same checks in the same order as round 1:
+1. `audit-mockup.mjs` per variant.
+2. `shoot.mjs` over http://127.0.0.1:8981.
+3. The critic probe. This round it adds three checks: a tap-through with navigation capture, a first-focusable/skip-target check, and CLS after a full scroll.
+4. `check-design.mjs`.
+5. Page text against en.json and the dossier.
+6. ffprobe on every rendition.
+
+Evidence:
+- `reports/2026-09-globalsurf-02/critic/r2/<variant>/shots/`, `<variant>-probe.json` and `<variant>-text.txt`
+- `sites/global-surf-adventures/mockups/<variant>/audit.json` (overwritten with the round-2 run)
+
+## The sentence the human needs (round 2)
+
+All three still clear the critic's gates, with no hard fail. Every round-1 critic finding is fixed and each fix was measured. The remaining differences:
+- **interactive** is now the only one with 0 third-party requests on load (its fonts are self-hosted). Its LCP rose to 1.09 s because the fonts sit inline in a 166 KB HTML file.
+- **unique** is the only one without a forecast. It has the largest layout shift while scrolling (0.089 desktop), still under 0.1.
+- **calm** still loads Google Fonts.
+
+## Summary (round 2)
+
+| variant | d1 (20) | d2 (15) | d3 (15) | d4 (5) | d5 (10) | d6 (8) | d7 (7) | total /80 | r1 | hard fails |
+|---|---|---|---|---|---|---|---|---|---|---|
+| calm | 10 | 9 | 9 | 8 | 9 | 9 | 8 | **72.8** | 70.0 | none |
+| interactive | 10 | 9 | 9 | 9 | 9 | 9 | 10 | **74.7** | 69.2 | none |
+| unique | 10 | 9 | 9 | 9 | 9 | 9 | 8 | **73.3** | 72.0 | none |
+
+## Measured (round 2)
+
+| line | target | calm | interactive | unique |
+|---|---|---|---|---|
+| first-load transfer, phone, no scroll (audit.json) | ≤ 1.5 MB | 257 KB | 286 KB | 285 KB |
+| LCP / CLS on load | ≤ 2.5 s / < 0.1 | 628 ms / 0 | **1092 ms** / 0 | 636 ms / 0.0015 |
+| CLS after a full scroll (probe, phone / desktop) | – | 0.005 / 0.001 | 0 / 0 | 0.043 / **0.089** |
+| fonts | ≤ 2 families, 150 KB | Sora 25 KB (Google) | Barlow + Barlow Condensed, 84 KB inline data URIs (self-hosted) | Archivo 90 KB (Google) |
+| largest image | ≤ 300 KB | 53 KB | 66 KB | 58 KB |
+| third-party on load | 0 | 2 (Google Fonts, allowed at 4e) | **0** | 2 (Google Fonts) |
+| overflow-x at 390 | 0 | 0 | 0 | 0 |
+
+**Video, round 2 (probe + ffprobe):**
+- **Poster first in all three.** The `vid-009e` poster (AVIF, 45 KB) is in the HTML, and the hero video is requested after first paint: calm +372 ms (phone) / +361 ms (desktop), interactive +37 / +9, unique +478 / +462.
+  - interactive's gap is small but positive: it attaches on `load` + rAF + 60 ms, and its first paint came at 108–196 ms.
+- **Reduced motion and Save-Data: 0 video requests** on load and after a full scroll, at both widths, in all three.
+- **Hero `vid-009e`, 8.72 s, video stream only, faststart:**
+  - m1280 webm 1.89 MB and m1280 mp4 1.58 MB (the phone limit is ≤ 2 MB; the round-1 designer note of 2.27 MB is out of date, and the file on disk is 1.58 MB).
+  - d1920 webm 3.62 MB and mp4 3.87 MB (desktop limit ≤ 4 MB).
+  - unique's m720 mp4 is 1.85 MB.
+  - All inside the limits.
+- **Level clips (scroll only, one at a time):**
+  - calm: phone vid-010 m720 1.86 MB.
+  - interactive: phone lv1-p480 0.50 MB; desktop lv1–3 d1280 1.2–1.5 MB each, 3.9 MB for all three.
+  - unique: m1280 on both widths, 4.9 MB for all three (was 8.2 MB).
+  - All faststart with no audio.
+  - Level clips run 7.0–7.9 s (lv1–3, vid-002e), under the 8 s low end that playbook §1a sets for renditions. This is informational; the line is written for the hero.
+- **Provenance:** `vid-009e` and `vid-002e` are business-owned edits (`assets/index.json`: `derived_from` vid-009 / vid-002, `license: business-owned`). They are **not yet in `dossier.json` `videos[]`**, which the v0.8 seed reads. Add them before 4g. No claim depends on them.
+
+**Rosa (calm and interactive, unchanged mapping `south-point`):**
+- 0 Rosa requests on load.
+- After scroll: one `south-point.json` request plus the widget frame.
+- JS off: "See today's forecast for South Point on Rosa" shows.
+- CLS after the widget arrived: 0.005 (calm phone) and 0 (interactive). This closes round 1's untested item.
+
+**Tap-through (phone, probe):** in all three, the first above-the-fold booking action is "See the weekly surf packages and dates". Tapping it produced a navigation to `https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka`, class engine, the same as `audit.json.recommended`.
+- unique's `audit.json` `tapped` still reads booking.com, because the tool takes the first `http` link in the DOM. The tap itself lands on the engine.
+
+## Facts table, round 2 (changes only; every round-1 row re-checked and still matches)
+
+| claim / label on page | dossier key | calm | interactive | unique |
+|---|---|---|---|---|
+| "Seagallas · globalsurf.com" (linked to the review's `source_url`) | `reviews[…].source_url` globalsurf.com/kabalana-lodge-surf-packages/ | **fixed**, match | match | match |
+| bar rating "8.6/10 · 80 reviews · Booking.com, 28 Sep 2026" | `reviews.booking` 8.6/80, fetched 2026-09-28 | – (bar shows price only) | **fixed**, match | – |
+| "ISA-certified surf guides · 8.6/10 on Booking.com, 80 reviews, 28 Sep 2026" | `credentials[0]`, `reviews.booking` | – | match | – |
+| "per person, 7 nights · price read 28 Sep 2026" | `offers[0..2]` | match | – | – |
+| "$1,466 pp, 7 nights · lessons, meals, room" (bar) | `offers[].price`; "room/meals/lessons" ⊂ `includes` | match | match | match |
+| "Book Fomies / Rollers / Riders" (bar, per level) | `booking.engine_products` | product URLs char-for-char | "Book Level 1" etc., char-for-char | char-for-char |
+| "Skip to the surf weeks and prices" / "Skip to the surf weeks" / "Skip to content" | interface label | no claim | no claim | no claim |
+| level headings split from the body ("Level 1 – Fomies" / "is for your first time…"; "Level 3 – Riders:") | en.json `copyBlocks[offer]` | words verbatim, in order | – | "Level n" with the dash visually hidden; heading text verbatim |
+| testimonials shown | en.json `testimonials` | 4/4 verbatim | 9/9 verbatim | 6/6 verbatim |
+
+0 mismatches, 0 unsourced claims. The gaps (season, languages, reply time, Google count) are still omitted.
+
+---
+
+```
+mode: quick        round: 2        variant: calm
+total: 72.8 / 80 (d1–7)   result: pass (critic gates; d8 from the visual critics)   hard_fails: []
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | Facts table: 0 mismatches. The Seagallas credit now names globalsurf.com and links its source. Every rating instance carries count + date. |
+| 2 | mobile + perf | 9 | 257 KB, LCP 628 ms, CLS 0 (0.005 after the full scroll including Rosa), largest image 53 KB. Hero +372 ms, 1.89 MB phone, 3.62 MB desktop. overflow 0. Minus: Google Fonts on load. |
+| 3 | booking CTA | 9 | Tap-through lands on the engine category (probe). The bar's "Book <level>" goes to the product URLs, char-for-char. With JS off, all 11 links are present. Minus: the WhatsApp prefill still does not name the visitor's level. Not tapped on a real phone. |
+| 4 | brand fit | 8 | §3 order kept. Minus: the level clips move, against the "almost no motion" brief (declared); no booking drawer. |
+| 5 | copy | 9 | en.json verbatim, including the split level sentences. Labels add no claim. |
+| 6 | accessibility | 9 | Skip link is the first Tab stop, visible, and its target `#levels` exists. 0 of 16 without alt. Reduced motion: 0 video. Minus: the "globalsurf.com" credit link is 99×17 (under 44 px). The Rosa iframe takes focus without a visible ring (Rosa's frame, not the page). |
+| 7 | security + delivery | 8 | Static, relative, lowercase, no secrets, 1 lazy embed. Minus: Google Fonts on load. |
+
+fix list (not failing; smallest first): make the credit link 44 px tall · name the level in the WhatsApp prefill · self-host Sora.
+
+```
+mode: quick        round: 2        variant: interactive
+total: 74.7 / 80 (d1–7)   result: pass (critic gates; d8 from the visual critics)   hard_fails: []
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | 0 mismatches. The bar rating now carries count + date (`r2/interactive/shots/mobile-04.png`). 9/9 quotes verbatim, with sources. |
+| 2 | mobile + perf | 9 | 286 KB, 0 third-party, CLS 0 (and 0 after the full scroll). Hero +37 ms, 1.89 MB phone, 3.62 MB desktop. Phone level clip 0.50 MB. Minus: LCP up from 624 to 1092 ms (inside 2.5 s) because the 84 KB of fonts inline into a 166 KB HTML file that cannot be cached separately. |
+| 3 | booking CTA | 9 | Tap-through lands on the engine category. The per-level bar button and stage links go to the product URLs, char-for-char. Four level-specific WhatsApp prefills. Not tapped on a real phone. |
+| 4 | brand fit | 9 | Ground is now cool `#F5F8FA` (hsl 204 33% 97%). Interactive brief met. Minus: no booking drawer. |
+| 5 | copy | 9 | en.json verbatim. Labels plain. |
+| 6 | accessibility | 9 | 0 tap targets under 44 px at either width. Skip link is first and its target exists. 0 of 22 without alt. Reduced motion: 0 video. Hero type: the designer reports a worst frame of 6.4–8.1:1. I checked only the captured frame, which reads cleanly (`mobile-00.png`); I did not re-scan the loop. Minus: the phone feature line (large text, ink on the grey wall) measures about 3.2–3.4:1 in `mobile-04.png`. That passes AA only as large text. The Rosa iframe focus ring is Rosa's. |
+| 7 | security + delivery | 10 | 0 third-party requests on load. Fonts self-hosted. Static, relative, lowercase, no secrets. Rosa is the one lazy embed with a fallback. |
+
+fix list (not failing): move the fonts out of the HTML into cached woff2 files (brings LCP back down) · give the phone feature line ≥ 4.5:1 · name vid-009e/vid-002e and the lv1–3 re-cuts in the dossier before 4g.
+
+```
+mode: quick        round: 2        variant: unique
+total: 73.3 / 80 (d1–7)   result: pass (critic gates; d8 from the visual critics)   hard_fails: []
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | 0 mismatches. 6/6 quotes verbatim with sources. Every rating instance carries count + date. |
+| 2 | mobile + perf | 9 | 285 KB, LCP 636 ms, CLS 0.0015 on load. Hero +478 ms, 1.89 MB phone, 3.62 MB desktop. Level clips now m1280 (4.9 MB for a full scroll, was 8.2 MB). Minus: Google Fonts; CLS accumulated over a full scroll is 0.089 on desktop and 0.043 on the phone (0.042 / 0.028 under reduced motion), close to the 0.1 line. |
+| 3 | booking CTA | 9 | Tap-through lands on the engine category. The phone bar now switches levels, and its button becomes "Book <level>" with the product URL (screenshots `mobile-03…06`). Minus: the WhatsApp prefill does not name the level. Not tapped on a real phone. |
+| 4 | brand fit | 9 | Phone level switch added (round-1 conflict closed). Cool ground. Unique brief met. Minus: no booking drawer. |
+| 5 | copy | 9 | en.json verbatim. Labels plain. |
+| 6 | accessibility | 9 | Skip link first, target `#main` exists. Phone: 0 tap targets under 44 px. Reduced motion: canvases hidden, 0 video. Minus: the desktop header logo link is 237×23. |
+| 7 | security + delivery | 8 | Static, relative, lowercase, no secrets, 0 embeds, 0 third-party after scroll. Minus: Google Fonts on load. |
+
+fix list (not failing): find the scroll-time layout shift (0.089 desktop) · make the logo link 44 px tall · name the level in the WhatsApp prefill · self-host Archivo.
+
+### check-design default-look facts, round 2 (none fail)
+- calm: Sora; ground hsl(225 20% 96%); 0 all-caps; 0/14 labelled headings.
+- interactive: Barlow / Barlow Condensed; ground **hsl(204 33% 97%)** (was the warm hsl(20 100% 99%)); 0 all-caps; 0/17.
+- unique: Archivo; ground hsl(215 39% 90%); 0 all-caps; 0/12.
+
+what the designer prompt got wrong (round 2): The prompt still does not say that a clip the orchestrator edits must be entered in `dossier.json` `videos[]`, and not only in `assets/index.json`, before it reaches a mockup. The v0.8 seed reads only the dossier. It also does not say that self-hosted fonts belong in cacheable woff2 files, not in data URIs inside the HTML. interactive's inline fonts cost 470 ms of LCP.
+
+Not tested in round 2: a real phone or GPU, Safari, axe, a frame-by-frame contrast scan of the vid-009e loop, and the engine's screens after landing.

@@ -113,3 +113,102 @@ Playback check (Playwright, 5 s after load): all three pages play `vid-009-d1920
 None reaches 8. Under rubric dimension 8 all three are hard fails and go back to the designer before Shahar sees them. All three are better than the current site.
 
 **What the designer prompt got wrong.** It accepted the prepared vid-009 cut as the hero without judging it as a loop. Seven shots in twelve seconds, including a driver's back and a neighbour's house, is a trailer, not a first screen. The prompt should require a hero loop of at most two shots, chosen frame by frame, that shows the one thing (here, the pool) for the whole loop, and it should require every level clip's first frame to show water and a surfer.
+
+---
+
+# Round 2
+
+Re-scored from scratch. The pages were served again on 127.0.0.1:8982 and shot fresh at 1440 and 390. All round-2 shots are in `reports/2026-09-globalsurf-02/visual/global-surf-adventures/r2/`:
+- `r2/{calm,interactive,unique}/`
+- hero frames 5 s after load: `r2/*-hero-5s.png`
+- the new cuts at 1 fps: `r2/vid-009e-d1920-1fps.png`, `r2/vid-002e-m1280-1fps.png`
+- the hero poster: `r2/vid-009e-poster.jpg`
+- three phone first screens side by side: `r2/m-compare.png`
+
+The current-site and gold shots are unchanged from round 1 (`current-lodge/`, `gold-lavish/`, `gold-layday/`). All three pages play `vid-009e` (d1920 on desktop, m1280 on a phone), poster first.
+
+**The new cuts.** vid-009e is 8.7 s: the sunlit pool deck (the poster, 0–2 s), a crossfade, then about 6 s of one surfer on a reef wave under a rocky, jungled headland. It is one idea and far better than the round-1 montage. The surf half is overcast and grey-green, so the first screen's mood is set by the grey half, not the sunny poster. vid-002e has two good barrels (0–3 s), then flat water with small surfers (4–7 s), and a round globe badge in the top-left corner of every frame (`r2/vid-002e-m1280-1fps.png`).
+
+## calm, round 2: 6/10, FAIL
+
+**Three seconds.** Desktop (`r2/calm/desktop-00.png`): a grey surf headland with a large **white card** laid over the lower left. The card hides the surfer; only his head shows above its top edge. It looks like a hotel booking widget over a video. Phone (`r2/m-compare.png`, 4th): the video is a band at the top with the surfer well framed, and the text sits below on white. This is the best phone composition of the three.
+
+**What improved.** The intro photograph is now the guest on the daybed over the pool (`r2/calm/desktop-01.png`), not the AC grille. The level images are now water and surfing, including the barrel.
+
+**What still holds it down:**
+- The level section is now **three white pricing cards**, each with a full-width coral button, plus the header button and the Freestylers button: five coral buttons on one screen (`r2/calm/desktop-03.png`). It reads as a SaaS pricing table, the form Shahar rejected in run 01.
+- The level bodies now start as lowercase fragments ("is for your first time…", "you're already carving…"), and there is a stray colon in "Level 3 – Riders:".
+- Between the pictures the page is still an unremarkable template.
+
+**Better than current?** Yes, on the first screen (`r2/calm/desktop-00.png` vs `current-lodge/desktop-00.png`) and on the whole page (`r2/calm/desktop-sheet.png` vs `current-lodge/desktop-sheet.png`).
+
+**Top fixes:**
+1. Remove the hero card. Set the name straight on the video's darker water and sky, low-left, as in round 1, and never over the surfer.
+2. Take the levels out of the cards. Use three tall photographs with the price printed on each, one coral button for the chosen level, and outline or text links for the others.
+3. Restore full sentences in the level bodies and drop the stray colon.
+
+**Keep.** The phone hero layout (video band, then text on white). The daybed intro photograph. The edge-to-edge day strip. The night closing band. Sora.
+
+## interactive, round 2: 7/10, FAIL
+
+**Three seconds.** Desktop (`r2/interactive/desktop-00.png`, `r2/interactive-hero-5s.png`): one name in the header, one line of tagline, the rating right-aligned, and the giant "Kabalana" across the wave with the surfer riding above it. It is clean, confident and editorial, and the round-1 name clutter is gone. Phone (`r2/m-compare.png`, 1st): the crop is rocks and jungle, **with no surfer in frame**, then "Kabalana". The phone first screen is a grey shoreline.
+
+**What improved:**
+- The Riders stage is now a real barrel (`r2/interactive/desktop-03.png`).
+- The aqua band is gone.
+- The feature line is set over the hair-flip photograph (`r2/interactive/desktop-05.png`). This is the best single screen on any of the three pages.
+- The active level is now plain ink, and the inactive levels are grey.
+
+**What still holds it down:**
+- On a phone the hero loses its subject.
+- On a phone the Fomies stage opens on silhouetted legs on sand (`r2/m-compare.png`, 3rd).
+- On a phone the feature crop cuts the woman's face out, leaving spray, a grey wall and a thin dark-green line of type (`r2/m-compare.png`, 2nd).
+- The stage and hero footage are soft at 7/12 and full width, which is the source's limit.
+
+**Better than current?** Yes, on the first screen (`r2/interactive/desktop-00.png` vs `current-lodge/desktop-00.png`) and on the whole page (`r2/interactive/desktop-sheet.png` vs `current-lodge/desktop-sheet.png`).
+
+**Top fixes:**
+1. Phone hero: set `object-position` on the surfer (about 35–45 % x, 60 % y in the surf half), or on a phone hold the pool poster longer and crop the surf shot on the rider. The phone first screen must show a person on a wave or the pool, never rocks.
+2. Phone Fomies stage: start on the stand-up into the sun (vid-010 source ≈ 20–21 s) and crop 4:5 on the rider.
+3. Phone feature: crop on her face and the spray arc, and set the line in white over the pool, not dark green over the wall.
+
+Also verify that the final "a" of "Kabalana" is not trimmed at the right container edge (`r2/int-kabalana-edge.png`).
+
+**Keep.** The desktop hero exactly as it is. Barlow Condensed. The level stage with the barrel. The hair-flip feature on desktop. The closing trio of level words.
+
+## unique, round 2: 7/10, FAIL (one fix from 8)
+
+**Three seconds.** Desktop (`r2/unique/desktop-00.png`, `r2/unique-hero-5s.png`): the surfer on the reef wave, the wide Archivo name, a coral button, and the live waterline refracting sea below it. It is cinematic and it is surfing, the right first screen for this business. But the name block sits **on the surfer**: "Kabalana" runs across his body in both frames. Phone (`r2/unique/mobile-00.png`): grey rocks and jungle, **with no surfer in frame**, then the waterline. It is soft and gloomy, and weaker than round 1's sunny pool on a phone.
+
+**What improved:**
+- Riders is now the barrel as a full-bleed scene. The first frame is great, but at the loop's tail the scene shows flat water with tiny surfers (`r2/unique/desktop-06.png`).
+- The level panels are tighter: name, price and button in one row, with no dangling dash (`r2/unique/desktop-03.png`).
+- The day masonry is now big (the board through the jungle and the sunset session, `r2/unique/desktop-sheet.png`, row 3).
+- Transitions caught mid-scroll no longer show smeared frames.
+
+**What still holds it down:**
+- The name is set over the subject on desktop, and the subject is missing on a phone.
+- vid-002e carries a watermark badge top-left and a dead tail.
+- The level bodies still repeat the level name ("Level 1 – Fomies is for…").
+
+**Better than current?** Yes, clearly, on the first screen (`r2/unique/desktop-00.png` vs `current-lodge/desktop-00.png`) and on the whole page (`r2/unique/desktop-sheet.png` vs `current-lodge/desktop-sheet.png`).
+
+**Top fixes:**
+1. Hero composition. On desktop, move the name block so it clears the rider, or reframe the video right (`object-position` ≈ 65 % x) so the surfer rides in the open right half. On a phone, crop on the rider or let the sunny pool poster carry the phone first screen.
+2. vid-002e: trim to the two barrels (0–3.5 s, looped or slowed) and crop or cover the globe badge. The Riders scene must never show flat water.
+3. Remove the repeated level name from the start of each body.
+
+**Keep.** The waterline. The full-bleed level scenes. The tightened level panels. The big day masonry. Archivo Expanded. The drone-over-pool rooms scene. The persistent bar.
+
+## Round 2 ranking (visual only)
+
+1. **unique, 7/10, fail.** The strongest page. It is the one to take to 8: fix where the title and the phone crop sit on the surf video, and trim the Riders loop to the barrels.
+2. **interactive, 7/10, fail.** A beautiful desktop page with the best type and the best single photograph. Its phone crops (hero, stage, feature) lose every subject.
+3. **calm, 6/10, fail.** The best phone layout, but a white card hides the surfer on desktop, and the levels have become a five-button pricing table.
+
+**For Shahar, one sentence each:**
+- **unique:** surfing and the pool as one continuous film with the waterline. It is the most distinctive and the closest to ready.
+- **interactive:** a giant "Kabalana" over the wave and a stage where you pick your water. It is the strongest editorial type, but weak on a phone.
+- **calm:** the quiet one. It is clear, but it reads like a hotel template.
+
+None reaches 8, so the round fails on dimension 8. All three are clearly better than the current site.

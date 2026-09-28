@@ -1,0 +1,421 @@
+{
+ "variant": "interactive",
+ "url": "http://127.0.0.1:8981/interactive/dist/",
+ "normal_phone": {
+  "first_paint_ms": 196,
+  "onload_video": [
+   {
+    "url": "video/vid-009e-m1280.webm",
+    "ms_after_first_paint": 37,
+    "kb": 1893
+   }
+  ],
+  "onload_third_party": [],
+  "onload_nonvideo_kb": 371,
+  "scroll_video": [
+   {
+    "url": "video/lv1-p480.webm",
+    "ms_after_first_paint": 8110,
+    "kb": 507
+   }
+  ],
+  "scroll_video_total_kb": 507,
+  "scroll_third_party_hosts": [
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "rosa-data-opal.vercel.app",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "scroll_json": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json"
+  ],
+  "cls_after_full_scroll": 0
+ },
+ "reduced_phone": {
+  "first_paint_ms": 60,
+  "onload_video": [],
+  "onload_third_party": [],
+  "onload_nonvideo_kb": 371,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "rosa-data-opal.vercel.app",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "scroll_json": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json"
+  ],
+  "cls_after_full_scroll": 0
+ },
+ "savedata_phone": {
+  "first_paint_ms": 60,
+  "onload_video": [],
+  "onload_third_party": [],
+  "onload_nonvideo_kb": 371,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "rosa-data-opal.vercel.app",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "scroll_json": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json"
+  ],
+  "cls_after_full_scroll": 0
+ },
+ "normal_desktop": {
+  "first_paint_ms": 108,
+  "onload_video": [
+   {
+    "url": "video/vid-009e-d1920.webm",
+    "ms_after_first_paint": 9,
+    "kb": 3621
+   }
+  ],
+  "onload_third_party": [],
+  "onload_nonvideo_kb": 356,
+  "scroll_video": [
+   {
+    "url": "video/lv1-d1280.webm",
+    "ms_after_first_paint": 8204,
+    "kb": 1321
+   },
+   {
+    "url": "video/lv2-d1280.webm",
+    "ms_after_first_paint": 9229,
+    "kb": 1450
+   },
+   {
+    "url": "video/lv3-d1280.webm",
+    "ms_after_first_paint": 9479,
+    "kb": 1176
+   }
+  ],
+  "scroll_video_total_kb": 3947,
+  "scroll_third_party_hosts": [
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "rosa-data-opal.vercel.app",
+   "fonts.gstatic.com"
+  ],
+  "scroll_json": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json"
+  ],
+  "cls_after_full_scroll": 0
+ },
+ "reduced_desktop": {
+  "first_paint_ms": 76,
+  "onload_video": [],
+  "onload_third_party": [],
+  "onload_nonvideo_kb": 780,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "rosa-data-opal.vercel.app",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "scroll_json": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json"
+  ],
+  "cls_after_full_scroll": 0
+ },
+ "savedata_desktop": {
+  "first_paint_ms": 96,
+  "onload_video": [],
+  "onload_third_party": [],
+  "onload_nonvideo_kb": 356,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "rosa-data-opal.vercel.app",
+   "fonts.gstatic.com"
+  ],
+  "scroll_json": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json"
+  ],
+  "cls_after_full_scroll": 0
+ },
+ "dom_phone": {
+  "overflowX": 0,
+  "above_fold_links": [
+   {
+    "text": "Skip to the surf weeks",
+    "href": "#levels"
+   },
+   {
+    "text": "Global Surf Lodge Kabalana",
+    "href": "#top"
+   },
+   {
+    "text": "8.6/10 Booking.com · 80 reviews · 28 Sep 2026",
+    "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+   },
+   {
+    "text": "See the weekly surf packages and dates",
+    "href": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"
+   }
+  ],
+  "small_targets": [],
+  "first_focusable": "Skip to the surf weeks -> #levels",
+  "skip_target_exists": true,
+  "title": "Global Surf Lodge Kabalana — surf weeks on Sri Lanka's south coast",
+  "lang": "en",
+  "h1": [
+   "Global Surf Lodge Kabalana"
+  ]
+ },
+ "links": [
+  {
+   "text": "Skip to the surf weeks",
+   "href": "#levels"
+  },
+  {
+   "text": "Global Surf Lodge Kabalana",
+   "href": "#top"
+  },
+  {
+   "text": "Levels",
+   "href": "#levels"
+  },
+  {
+   "text": "The day",
+   "href": "#day"
+  },
+  {
+   "text": "The lodge",
+   "href": "#lodge"
+  },
+  {
+   "text": "Getting here",
+   "href": "#spot"
+  },
+  {
+   "text": "See the weekly surf packages and dates",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"
+  },
+  {
+   "text": "8.6/10 Booking.com · 80 reviews · 28 Sep 2026",
+   "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+  },
+  {
+   "text": "See the weekly surf packages and dates",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"
+  },
+  {
+   "text": "8.6/10 on Booking.com, 80 reviews, 28 Sep 2026",
+   "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+  },
+  {
+   "text": "Book Level 1 – Fomies",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies"
+  },
+  {
+   "text": "8.6/10 on Booking.com, 80 reviews, 28 Sep 2026",
+   "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+  },
+  {
+   "text": "Book Level 2 – Rollers",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers"
+  },
+  {
+   "text": "8.6/10 on Booking.com, 80 reviews, 28 Sep 2026",
+   "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+  },
+  {
+   "text": "Book Level 3 – Riders",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders"
+  },
+  {
+   "text": "Book Freestylers – B&B only",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/product/freestylers-bb-only-package"
+  },
+  {
+   "text": "See the weekly surf packages and dates",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"
+  },
+  {
+   "text": "Ask on WhatsApp",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+  },
+  {
+   "text": "Call +972 9-973-3943",
+   "href": "tel:+97299733943"
+  },
+  {
+   "text": "8.6/10",
+   "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+  },
+  {
+   "text": "Forecast for South Point by Rosa",
+   "href": "https://rosa.surf/spot/south-point"
+  },
+  {
+   "text": "See today's forecast for South Point on Rosa",
+   "href": "https://rosa.surf/spot/south-point"
+  },
+  {
+   "text": "Open in Google Maps",
+   "href": "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en"
+  },
+  {
+   "text": "Fomies Book Level 1",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies"
+  },
+  {
+   "text": "Rollers Book Level 2",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers"
+  },
+  {
+   "text": "Riders Book Level 3",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders"
+  },
+  {
+   "text": "See the weekly surf packages and dates",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"
+  },
+  {
+   "text": "Ask on WhatsApp",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+  },
+  {
+   "text": "Call +972 9-973-3943",
+   "href": "tel:+97299733943"
+  },
+  {
+   "text": "Ask on WhatsApp",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+  },
+  {
+   "text": "+972 9-973-3943",
+   "href": "tel:+97299733943"
+  },
+  {
+   "text": "info@globalsurf.com",
+   "href": "mailto:info@globalsurf.com"
+  },
+  {
+   "text": "See the weekly surf packages and dates",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"
+  },
+  {
+   "text": "Global Surf Lodge Kabalana",
+   "href": "#top"
+  },
+  {
+   "text": "Book Level 1",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies"
+  },
+  {
+   "text": "Never surfedprobably Level 1 – Fomies",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.%20I%20have%20never%20surfed.%20Which%20level%20fits%20me%3F"
+  },
+  {
+   "text": "I stand up, can't get out the backprobably Level 2 – Rollers",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.%20I%20can%20stand%20up%2C%20but%20I%20can%27t%20get%20out%20the%20back%20yet.%20Which%20level%20fits%20me%3F"
+  },
+  {
+   "text": "I carveprobably Level 3 – Riders",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.%20I%20already%20carve.%20Which%20level%20fits%20me%3F"
+  },
+  {
+   "text": "Not sureask us on WhatsApp",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.%20I%27m%20not%20sure%20which%20level%20fits%20me."
+  }
+ ],
+ "tap_through": {
+  "label": "See the weekly surf packages and dates",
+  "href": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+  "landed_request": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"
+ },
+ "dom_desktop": {
+  "overflowX": 0,
+  "above_fold_links": [
+   {
+    "text": "Skip to the surf weeks",
+    "href": "#levels"
+   },
+   {
+    "text": "Global Surf Lodge Kabalana",
+    "href": "#top"
+   },
+   {
+    "text": "Levels",
+    "href": "#levels"
+   },
+   {
+    "text": "The day",
+    "href": "#day"
+   },
+   {
+    "text": "The lodge",
+    "href": "#lodge"
+   },
+   {
+    "text": "Getting here",
+    "href": "#spot"
+   },
+   {
+    "text": "See the weekly surf packages and dates",
+    "href": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"
+   },
+   {
+    "text": "8.6/10 Booking.com · 80 reviews · 28 Sep 2026",
+    "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+   }
+  ],
+  "small_targets": [],
+  "first_focusable": "Skip to the surf weeks -> #levels",
+  "skip_target_exists": true,
+  "title": "Global Surf Lodge Kabalana — surf weeks on Sri Lanka's south coast",
+  "lang": "en",
+  "h1": [
+   "Global Surf Lodge Kabalana"
+  ]
+ },
+ "nojs": {
+  "text_len": 7166,
+  "booking_links": [
+   "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+   "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+   "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+   "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers",
+   "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+   "https://globalsurfadventures.bookinglayer.com/en/product/freestylers-bb-only-package",
+   "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.",
+   "tel:+97299733943",
+   "https://rosa.surf/spot/south-point",
+   "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en"
+  ],
+  "rosa_fallback_visible": [
+   "Forecast for South Point by Rosa",
+   "See today's forecast for South Point on Rosa"
+  ],
+  "videos_with_src": 0
+ },
+ "keyboard": {
+  "first_stop": {
+   "tag": "A",
+   "text": "Skip to the surf weeks",
+   "outline": true,
+   "boxShadow": false,
+   "visible": true
+  },
+  "stops": 59,
+  "no_visible_focus": [
+   "IFRAME:"
+  ],
+  "invisible_targets": []
+ }
+}

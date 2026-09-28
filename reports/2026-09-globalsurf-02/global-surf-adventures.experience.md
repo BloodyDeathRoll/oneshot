@@ -213,3 +213,147 @@ Everything else (speed, clarity, price, getting to book) loses badly.
 Why interactive is above unique: both make me want to go, and unique does it more strongly on a laptop. But interactive makes the traveller's actual decision (which level, what it costs, book it) a pleasure. It is smooth on every frame, and a phone user can compare levels in two taps. Unique needs six screens of scrolling and has the only frame drops.
 
 The sentence the human needs to pick: **interactive is the easiest week to choose and book, unique is the most beautiful to watch, and calm is fast and clear but forgettable.**
+
+---
+
+# Round 2 (4f) — 2026-09-28
+
+The same method as round 1, re-walked from scratch on the rebuilt `dist/`, again served on 127.0.0.1:8983:
+
+- phone on slow 4G with 4× CPU: cold frames at 0.5, 1.5 and 3 s, then human-pace scroll;
+- motion runs on phone and laptop;
+- level taps, and taps through to the engine;
+- reduced motion and JavaScript off;
+- laptop at 1440 × 900.
+
+Frames and logs are in `reports/2026-09-globalsurf-02/experience/global-surf-adventures/r2/<page>/`, with `r2/probe.json`. The current site is the round-1 walk from the same day (`current-lodge/`, `current-home/`). I did not open the critic's or visual-critic's reports.
+
+**New cuts, checked in the pages:**
+- The hero `vid-009e` plays on all three pages. It opens on the pool deck, and by load + 4 s shows a surfer on a reef wave (`*/phone-settled.jpg`, `*/laptop-settled.jpg`).
+- Level 3 now plays `vid-002e` (calm and unique) or `lv3-*` (interactive). Tapping Riders shows a wave or a rider within 1.5 s (`interactive/level-tab-2.jpg`, `unique/level-02-tap.jpg`, `calm/level-02-tap.jpg`). The drone and pool frames are gone.
+
+## calm "Daybed", round 2
+
+**Timeline, phone:**
+- **0.5 s:** the top ≈ 57 % is a flat light-blue block. The name, tagline, full-width coral CTA and "8.6/10 … Read 28 Sep 2026" sit on white below it and are already usable (`r2/calm/phone-cold-500ms.jpg`).
+- **1.5 s:** the poster (the pool deck).
+- **3 s:** the video is playing.
+- **load + 4 s:** a surfer on a reef wave.
+- **Numbers:** LCP 636 ms (the poster), CLS 0.
+
+The hero is no longer full-bleed on the phone: picture above, text on white. It is clearer, but less immersive than round 1. On the laptop the text sits in a white card over the moving picture (`laptop-cold-*`).
+
+**The walk:**
+- **Levels:** the cards are now ≈ 300 px wide, each playing its clip with price and level on one line. Each card has a **solid coral "Book Level n – …"** (`phone-scroll-02/03`).
+- **Bar and cards are in sync:** tapping Rollers or Riders in the bar scrolls the row to that card, and the bar button becomes "Book Rollers" or "Book Riders" (`level-01-tap.jpg`, `level-02-tap.jpg`). The round-1 mismatch is gone.
+- **Day run:** full-width photographs (`phone-scroll-06…09`). A lounge photograph now breaks the amenities list (`phone-scroll-13`). The white stretches that lost me in round 1 are shorter.
+- **featureLine:** white on the pool, readable (`phone-scroll-05`).
+- **Where attention drops:** only the long quote column (`phone-scroll-15/16`).
+- **Level card 1:** caught mid-dissolve in one frame, a ghosted double image (`phone-scroll-02`). It is the clip's own transition; harmless, but it looks soft at that moment.
+
+**Taps to book:**
+- From the first screen, 1 tap to `/category/sri-lanka`.
+- From a card, 1 tap to `/product/level-1-fomies` (checked).
+- From any screen, 1 tap on the bar's "Book <level>" (2 taps if you switch level first).
+- This meets `clicks_to_book: 1`.
+
+**Motion:**
+- Phone and laptop both at p50 = p95 = 16.7 ms, no frame over 50 ms.
+- Reduced motion requested no video.
+- With JS off the page is complete: no broken images, no hidden sections.
+- The laptop walk loaded 4.7 MB.
+
+**Score: 8/10 — pass.** It is still the quietest of the three, but it now sells surf on the first screen. The level cards are the page's big moment, and booking is effortless. **Better than the current site: yes.**
+
+**Top fixes:**
+1. Phone hero: paint the poster (or its dominant colour, sampled from the photo) at 0.5 s, not a flat blue block. Consider giving the picture the full screen again, with text over the bottom gradient: the half-and-half split feels like a card, not an arrival.
+2. Cut the dissolve out of the Level 1 card clip, or use a hard cut, so the card never shows a ghosted frame.
+3. Break the quote column with one picture.
+
+**Keep:** the synced bar and cards; the solid per-card Book buttons; the full-width day photographs; the lounge photograph after the amenities; white featureLine on the pool; smooth motion; the reduced-motion and no-JS behaviour.
+
+## interactive "Pick your water", round 2
+
+**Timeline, phone:**
+- **0.5 s:** the poster, with a slimmer hero: name in the header, then tagline, "8.6/10 Booking.com · 80 reviews · 28 Sep 2026", a full-width coral CTA and the giant "Kabalana". The 0.5 s and 1.5 s frames have the same layout, so the round-1 font reflow is gone (`r2/interactive/phone-cold-500ms.jpg`, `-1500ms`).
+- **Video:** playing by 1.5 s; surfer on the reef wave at load + 4 s.
+- **Numbers:** LCP 1,172 ms (up from 648 ms, still well inside 2.5 s), CLS 0.
+
+**The walk:**
+- **The stage:** tap Fomies, Rollers or Riders and the clip changes (golden-hour beginner, rider on a green wall, **now a real barrel for Riders**). The words, price and "Book Level n" follow, and the bar stays in sync (`level-tab-0/1/2.jpg`, `level-bar-2.jpg`).
+- **"Not sure which level?"** opens the four answer tiles that lead to WhatsApp (`drawer-00.jpg`).
+- **Day run:** now opens on a photograph (the woman carrying a board), not the empty aqua slab (`day-00.jpg`, `phone-scroll-06`). Native swipe works.
+- **Aerial:** the "Getting here" aerial is capped to a normal frame (`phone-scroll-14`).
+- **JS off:** "Kabalana" now fits at 390 px (`nojs-00.jpg`).
+- **featureLine (the one weak spot):** it is set in dark ink over the hair-flip photo. Where it crosses the dark sunshade (`phone-scroll-04`, `laptop-scroll-04`) it is hard to read, and it appears again at the top of the next frame as it scrolls over the photo (`phone-scroll-05`).
+
+**Taps to book:**
+- From the first screen, 1 tap to `/category/sri-lanka` (checked in the probe).
+- From the stage: 1 tap to choose a level, 1 tap "Book Level n", which lands on `/product/level-1-fomies` (checked).
+- From any screen, the synced bar: 1 tap for the shown level, 2 to switch.
+
+**Motion:**
+- Phone p50 = p95 = 16.7 ms, no frame over 50 ms.
+- Laptop p95 16.8 ms, 1 frame at 50 ms.
+- Reduced motion requested no video.
+- With JS off the page is complete.
+- The laptop walk loaded 9.2 MB, with every level clip viewed.
+
+**Score: 9/10 — pass.** Every round-1 issue is fixed. It is the most engaging way to choose a week: you watch your water, see the price and book in two taps. The hero now shows surfing under the giant place word. **Better than the current site: yes, by a wide margin.**
+
+**Top fixes:**
+1. featureLine: white type, or keep it off the sunshade and on the water, so it stays readable over its whole scroll.
+2. Bring phone LCP back towards 0.6 s: the hero text span now paints at 1.17 s; preload the font or paint the tagline with the fallback font.
+
+**Keep:** the stage and its synced bar; the "Not sure" drawer; the slimmer hero with "Kabalana"; the day run opening on a photograph; the barrel for Riders; the capped aerial; the huge level words at the close; smooth motion.
+
+## unique "Waterline", round 2
+
+**Timeline, phone:**
+- **0.5 s:** a graded placeholder (sky blue at the top down to dark teal) with name, tagline, coral CTA and "8.6/10" usable. Still no picture (`r2/unique/phone-cold-500ms.jpg`). It is better than round 1's flat teal, but it is not the pool.
+- **1.5 s:** the poster, with the waterline across the bottom.
+- **load + 4 s:** the surfer on the reef wave.
+- **Numbers:** LCP 640 ms (the H1).
+
+**The walk:**
+- **The bar now has a level switch** ("Fomies · Rollers · Riders" plus "Book <level>"). Tapping Rollers jumps to its scene and the button follows (`level-01-tap.jpg`: `vid-003` playing, bar "Book Rollers").
+- **Riders** opens on a green lineup wave, then the barrel (`level-02-tap.jpg`, `phone-scroll-05/06`). Fixed.
+- **Laptop level scenes:** name, price and Book now share one row beside or under the film (`laptop-scroll-02…06`). It is the most cinematic walk of the three.
+- **Day masonry:** now leads with the board-carrying photograph (`phone-scroll-10/11`).
+- **The lodge from above** is still the best single picture on any page (`laptop-scroll-12`).
+- **Where attention drops:** amenities (`phone-scroll-15/16`), and the long quote column.
+
+**Taps to book:**
+- From the first screen, 1 tap to `/category/sri-lanka`.
+- From a scene or the bar, 1 tap to `/product/level-1-fomies` (checked).
+- Switching level from anywhere: 1 tap in the bar, then Book.
+
+**Motion — regression:**
+- Scrolling now drops frames heavily. Phone: p95 83 ms, **379 of 1,292 frames over 50 ms**, max 133 ms. Laptop: p95 83 ms, 326 of 1,211 over 50 ms, max 167 ms.
+- Round 1 in the same harness was p95 33 ms phone and 50 ms laptop.
+- I re-ran the motion walk alone (no parallel load) and got the same result.
+- Idle frames are clean (p95 16.7 ms at the hero, levels, day and guests), so the cost is in the scroll-linked work.
+- Software GL overstates GPU cost, but the jump from round 1 is the page's own.
+
+**Other checks:** reduced motion requested no video; with JS off the page is complete; the laptop walk loaded 8.4 MB.
+
+**Score: 8/10 — pass, at the line.** It is the page that makes you most want to be there, and the round-1 booking gaps are closed (level switch in the bar, barrel for Riders). What holds it at 8 is the scroll jank, which a traveller on a mid-range Android would feel in exactly the moments the page is built on, plus the picture-less first half-second. **Better than the current site: yes.**
+
+**Top fixes:**
+1. Find the scroll-time cost: in the round-2 build it is new, and it is in scroll handling, not idle rendering. Throttle scroll work to one rAF, run the shader only while a join is on screen, and lower the resolution while scrolling. Verify on a real mid-range Android before build.
+2. Paint the poster at 0.5 s: an `<img>` under the canvas, not a gradient.
+3. One picture in the amenities or quotes stretch.
+
+**Keep:** the waterline; the level switch in the bar that jumps to scenes; the laptop's one-row level scenes; the barrel for Riders; the lodge-from-above rooms scene; the reduced-motion and no-WebGL fallbacks.
+
+## Experience ranking, round 2
+
+| rank | page | score | 4f | better than current | taps to book (first screen → engine / → level product) |
+|---|---|---|---|---|---|
+| 1 | interactive "Pick your water" | 9 | pass | yes | 1 / 2 (tap level, tap Book) or 1 from the bar |
+| 2 | unique "Waterline" | 8 | pass (at the line; fix the scroll jank before build) | yes | 1 / 1 |
+| 3 | calm "Daybed" | 8 | pass (at the line) | yes | 1 / 1 |
+
+All three pass round 2.
+
+**The sentence for Shahar:** interactive is the one I'd book from: tap your level, watch your water, see $1,466 and book in two taps. Unique is the most beautiful, but it now stutters when you scroll. Calm is clear and smooth, but the quietest.

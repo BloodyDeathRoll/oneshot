@@ -1,28 +1,23 @@
 {
  "slug": "global-surf-adventures",
  "variant": "interactive",
- "measured_at": "2026-09-28T19:01:36.435Z",
+ "measured_at": "2026-09-28T19:33:51.533Z",
  "first_load": {
-  "requests": 9,
+  "requests": 4,
   "hosts": [
-   "localhost:8980",
-   "fonts.googleapis.com",
-   "fonts.gstatic.com"
+   "localhost:8980"
   ],
-  "third_party_hosts": [
-   "fonts.googleapis.com",
-   "fonts.gstatic.com"
-  ],
-  "bytes_total": 268808,
-  "bytes_html": 58667,
+  "third_party_hosts": [],
+  "bytes_total": 292840,
+  "bytes_html": 170036,
   "bytes_js": 0,
   "bytes_css": 0,
-  "bytes_fonts": 86448,
-  "bytes_images": 123693,
+  "bytes_fonts": 0,
+  "bytes_images": 122804,
   "largest_image_bytes": 65730,
-  "lcp_ms": 624,
-  "cls": 0.0266,
-  "dcl_ms": 643
+  "lcp_ms": 1092,
+  "cls": 0,
+  "dcl_ms": 1197
  },
  "booking": {
   "external_booking_hrefs": [
@@ -59,12 +54,8 @@
   "images_without_alt": 0,
   "images_alt_empty_decorative": 0,
   "tapables": 39,
-  "tapables_under_44px": 3,
-  "tapables_under_44px_examples": [
-   "Global Surf Lodge 135x22",
-   "8.6/10 on Booking.com, 8 323x39",
-   "Forecast for South Point 200x17"
-  ],
+  "tapables_under_44px": 0,
+  "tapables_under_44px_examples": [],
   "headings": [
    "H1",
    "H2",
@@ -88,7 +79,7 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 7152,
+  "text_length": 7166,
   "booking_links_reachable": 0,
   "visible_images": 22
  },

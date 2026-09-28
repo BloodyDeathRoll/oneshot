@@ -1,7 +1,7 @@
 {
  "slug": "global-surf-adventures",
  "variant": "unique",
- "measured_at": "2026-09-28T19:01:53.506Z",
+ "measured_at": "2026-09-28T19:34:00.958Z",
  "first_load": {
   "requests": 8,
   "hosts": [
@@ -13,16 +13,16 @@
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 284327,
-  "bytes_html": 47515,
+  "bytes_total": 292306,
+  "bytes_html": 50750,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 90104,
-  "bytes_images": 146708,
+  "bytes_images": 151452,
   "largest_image_bytes": 58214,
-  "lcp_ms": 648,
+  "lcp_ms": 636,
   "cls": 0.0015,
-  "dcl_ms": 652
+  "dcl_ms": 649
  },
  "booking": {
   "external_booking_hrefs": [
@@ -50,17 +50,12 @@
   "note": "no drawer; every action is a plain link"
  },
  "a11y": {
-  "images": 18,
+  "images": 19,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 0,
-  "tapables": 26,
-  "tapables_under_44px": 4,
-  "tapables_under_44px_examples": [
-   "Skip to content 115x26",
-   "8.6/10 on Booking.com, 8 358x24",
-   "8.6/10 on Booking.com, 8 358x24",
-   "8.6/10 on Booking.com, 8 358x24"
-  ],
+  "tapables": 29,
+  "tapables_under_44px": 0,
+  "tapables_under_44px_examples": [],
   "headings": [
    "H1",
    "H2",
@@ -79,9 +74,9 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 6265,
+  "text_length": 6292,
   "booking_links_reachable": 0,
-  "visible_images": 18
+  "visible_images": 19
  },
  "reduced_motion": {
   "canvases": 7,
