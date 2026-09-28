@@ -76,3 +76,18 @@ Below the bar on a question → that use is dropped, not tuned for a week.
 Approve the one-day pilot (§3) with the pass bar in §4? If yes, it runs as a report under
 `reports/2026-09-ahangama-02/laya-pilot.md`; the wiring proposals follow only for the questions
 that pass.
+
+## 7. Result (2026-09-28)
+
+Run by `tools/laya-pilot.py` (laya 0.3.21, CPU, ~23 s for all four); full report
+`reports/2026-09-ahangama-02/laya-pilot.md` + `.json`. Pass bars unchanged from §4.
+
+| Question | Result | In one line |
+|---|---|---|
+| A scout pre-filter | PASS (marginal) | at P(surf) < 0.5: 0 approved lost, 54/77 excluded filtered, but 3 included lost — one a Google "Surf shop" |
+| B claim triage | FAIL | best recall 0.93 at 0.18 precision; it cannot tell a sourced fact from an unsourced one without the dossier |
+| C injection guard | FAIL | 10/20 planted instructions caught at 0 false alarms; 15/20 at 2 |
+| D ledger categories | FAIL | 0.645 agreement with the regexes; many disagreements are regex misses (e.g. "allows one more copy pass" = override) |
+
+Per §4, B, C and D are dropped. A is the only candidate for wiring, and only as an ordering
+hint for the scout, never a filter, given the lost surf shop.
