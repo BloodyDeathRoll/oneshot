@@ -57,7 +57,8 @@ export default buildConfig({
   cors: [serverURL],
   csrf: [serverURL],
   graphQL: { disable: true },
-  upload: { limits: { fileSize: 8 * 1024 * 1024 }, abortOnLimit: true },
+  // request cap = the video cap (collections/Media.ts); photos are held to 8 MB by Media's own hook
+  upload: { limits: { fileSize: 20 * 1024 * 1024 }, abortOnLimit: true },
   sharp,
   telemetry: false,
   typescript: { outputFile: path.resolve(dirname, 'payload-types.ts') },

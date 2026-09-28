@@ -208,12 +208,34 @@ export interface Site {
       }[]
     | null;
   /**
+   * Optional. A short clip (8–20 seconds) shown silently and on a loop at the top of the page, instead of the first photo. Needs a poster image below.
+   */
+  heroVideo?: (number | null) | Media;
+  /**
+   * The still shown before the video plays, and instead of it on slow connections.
+   */
+  heroVideoPoster?: (number | null) | Media;
+  /**
    * The first photo is the big one at the top of the page.
    */
   photos?:
     | {
         image: number | Media;
         caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * More short clips. The design decides where they play; each needs a poster image.
+   */
+  videos?:
+    | {
+        video: number | Media;
+        poster: number | Media;
+        /**
+         * What the video shows, for people who cannot see it.
+         */
+        description: string;
         id?: string | null;
       }[]
     | null;
@@ -375,7 +397,7 @@ export interface Media {
   id: number;
   tenant?: (number | null) | Tenant;
   /**
-   * Describe the photo for people who cannot see it.
+   * Describe the photo or video for people who cannot see it.
    */
   alt: string;
   updatedAt: string;
@@ -574,11 +596,21 @@ export interface SitesSelect<T extends boolean = true> {
         note?: T;
         id?: T;
       };
+  heroVideo?: T;
+  heroVideoPoster?: T;
   photos?:
     | T
     | {
         image?: T;
         caption?: T;
+        id?: T;
+      };
+  videos?:
+    | T
+    | {
+        video?: T;
+        poster?: T;
+        description?: T;
         id?: T;
       };
   rooms?:

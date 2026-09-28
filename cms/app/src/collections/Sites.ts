@@ -6,9 +6,10 @@ import { enforceOwnTenant } from '../hooks/enforceOwnTenant'
 import { evidenceRowsDeleteOnly } from '../hooks/evidenceRowsDeleteOnly'
 import { publishAfterChange, publishAfterDelete } from '../hooks/notifyPublisher'
 import { e164, hhmm, httpsUrl, isoDate, slugId, yearMonth } from '../lib/validators'
+import { IMAGE_MIME_TYPES, VIDEO_MIME_TYPES } from './Media'
 
 /**
- * Site content — schema v0.7 (contract: /schemas/site-content.md).
+ * Site content — schema v0.8 (contract: /schemas/site-content.md).
  *
  * Registered with the multi-tenant plugin as `isGlobal`: exactly one document per tenant, shown
  * to the owner as a single "My site" form. Localized fields hold en + si values.
@@ -29,6 +30,10 @@ export const SPOKEN = ['en', 'si', 'ta', 'ru', 'de', 'fr', 'es', 'it', 'sv', 'ot
 export const LEVELS = ['first_time', 'beginner', 'intermediate', 'advanced'] as const
 
 const opts = (values: readonly string[]) => values.map((v) => ({ label: v, value: v }))
+
+/** Upload pickers only offer (and validation only accepts) media of the right kind. */
+const onlyVideos = { mimeType: { in: [...VIDEO_MIME_TYPES] } }
+const onlyImages = { mimeType: { in: [...IMAGE_MIME_TYPES] } }
 
 /** price / currency / unit, all optional — lessons[] and rentals[] (priceList[] has its own, required). */
 const optionalPrice: Field = {
@@ -203,8 +208,31 @@ export const Sites: CollectionConfig = {
           ],
         },
         {
-          label: 'Photos',
+          label: 'Photos & video',
           fields: [
+            {
+              name: 'heroVideo',
+              type: 'upload',
+              relationTo: 'media',
+              filterOptions: onlyVideos,
+              admin: {
+                description:
+                  'Optional. A short clip (8–20 seconds) shown silently and on a loop at the top of the page, instead of the first photo. Needs a poster image below.',
+              },
+            },
+            {
+              name: 'heroVideoPoster',
+              type: 'upload',
+              relationTo: 'media',
+              filterOptions: onlyImages,
+              // a video is never shown without a still in front of it (slow phones, Save-Data, reduced motion)
+              validate: (value: unknown, { siblingData }: { siblingData?: Record<string, unknown> }) =>
+                !siblingData?.heroVideo || Boolean(value) || 'A video needs a poster image: the still shown until it plays.',
+              admin: {
+                description: 'The still shown before the video plays, and instead of it on slow connections.',
+                condition: (_, siblingData) => Boolean(siblingData?.heroVideo),
+              },
+            },
             {
               name: 'photos',
               type: 'array',
@@ -212,8 +240,27 @@ export const Sites: CollectionConfig = {
               maxRows: 24,
               admin: { description: 'The first photo is the big one at the top of the page.' },
               fields: [
-                { name: 'image', type: 'upload', relationTo: 'media', required: true },
+                { name: 'image', type: 'upload', relationTo: 'media', required: true, filterOptions: onlyImages },
                 { name: 'caption', type: 'text', localized: true, maxLength: 140 },
+              ],
+            },
+            {
+              name: 'videos',
+              type: 'array',
+              labels: { singular: 'Video', plural: 'Videos' },
+              maxRows: 6,
+              admin: { description: 'More short clips. The design decides where they play; each needs a poster image.' },
+              fields: [
+                { name: 'video', type: 'upload', relationTo: 'media', required: true, filterOptions: onlyVideos },
+                { name: 'poster', type: 'upload', relationTo: 'media', required: true, filterOptions: onlyImages },
+                {
+                  name: 'description',
+                  type: 'text',
+                  localized: true,
+                  required: true,
+                  maxLength: 200,
+                  admin: { description: 'What the video shows, for people who cannot see it.' },
+                },
               ],
             },
           ],
@@ -232,7 +279,7 @@ export const Sites: CollectionConfig = {
                 { name: 'beds', type: 'text', localized: true, maxLength: 80 },
                 { name: 'sleeps', type: 'number', min: 1 },
                 { name: 'note', type: 'text', localized: true, maxLength: 140 },
-                { name: 'photo', type: 'upload', relationTo: 'media' },
+                { name: 'photo', type: 'upload', relationTo: 'media', filterOptions: onlyImages },
               ],
             },
             {

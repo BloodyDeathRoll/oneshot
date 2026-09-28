@@ -1,6 +1,6 @@
 # schemas/site-content.md — the fixed content schema: the contract between Payload and the Astro templates.
 
-**Version 0.7** · 2026-09-25 (v0.7 makes `contact.whatsapp` optional — Shahar, none of run 2026-09-ahangama-02's three businesses publishes a WhatsApp number; production Payload collection `cms/src/collections/Sites.ts` now implements this version) · **v0.6** · 2026-09-23 (v0.6 adds the optional `featureLine`, a generic short line over a site's feature image — Shahar, first used for The Lavish Haven's night-pool line) · **v0.5** · 2026-09-23 (v0.5 adds the optional `closing` line, Shahar's decision for The Lavish Haven's closing headline) · **v0.4** · 2026-09-22 (v0.4 adds `ratings[].capturedAt`, required by playbook §6; existing documents need the date filled in by the deployer) · **v0.3** · 2026-09-21 (v0.1 came out of the Payload spike; v0.2 adds `businessType` and the per-type modules below; v0.3 adds the optional `forecast` block; all additive — every v0.1 document is a valid v0.3 document) · source of truth in code: `spikes/payload/cms/src/collections/Sites.ts` + `Media.ts` · reference consumer: `spikes/payload/site/` · proven by `spikes/payload/test/` (both suites green).
+**Version 0.8** · 2026-09-28 (v0.8 adds owner-editable video — `heroVideo` + `heroVideoPoster` and `videos[]` — and lets `media` hold MP4/WebM; Shahar, 2026-09-28: "Videos are much more engaging than images and whenever you find one you should use it!"; the admin tab "Photos" is now "Photos & video"; `cms/app/src/collections/Sites.ts` + `Media.ts` implement this version) · **v0.7** · 2026-09-25 (v0.7 makes `contact.whatsapp` optional — Shahar, none of run 2026-09-ahangama-02's three businesses publishes a WhatsApp number; production Payload collection `cms/src/collections/Sites.ts` now implements this version) · **v0.6** · 2026-09-23 (v0.6 adds the optional `featureLine`, a generic short line over a site's feature image — Shahar, first used for The Lavish Haven's night-pool line) · **v0.5** · 2026-09-23 (v0.5 adds the optional `closing` line, Shahar's decision for The Lavish Haven's closing headline) · **v0.4** · 2026-09-22 (v0.4 adds `ratings[].capturedAt`, required by playbook §6; existing documents need the date filled in by the deployer) · **v0.3** · 2026-09-21 (v0.1 came out of the Payload spike; v0.2 adds `businessType` and the per-type modules below; v0.3 adds the optional `forecast` block; all additive — every v0.1 document is a valid v0.3 document) · source of truth in code: `spikes/payload/cms/src/collections/Sites.ts` + `Media.ts` · reference consumer: `spikes/payload/site/` · proven by `spikes/payload/test/` (both suites green).
 
 Rules of the contract
 
@@ -10,7 +10,7 @@ Rules of the contract
 - Plain text only. No rich text, no HTML, no Markdown in v0.1. Paragraphs in `body` fields are separated by a blank line.
 - Links the owner can type are validated server-side to be `https://` URLs. Templates must still never put an unvalidated value in an `href` (the reference template re-checks).
 
-Who edits: **owner** = the business owner in the Payload admin ("My site" form, tabs in this order: Basics · Text · Opening hours · Prices · Photos · Contact & booking). **deployer** = our pipeline (creates the tenant and seeds the first version from the dossier). **system** = Payload.
+Who edits: **owner** = the business owner in the Payload admin ("My site" form, tabs in this order: Basics · Text · Opening hours · Prices · Photos & video · Rooms & stay · Lessons · Rentals & shop · Amenities · Surf · Reviews · Contact & booking). **deployer** = our pipeline (creates the tenant and seeds the first version from the dossier). **system** = Payload.
 
 ## Collection `sites` — one document per business
 
@@ -39,8 +39,14 @@ Who edits: **owner** = the business owner in the Payload admin ("My site" form, 
 | `priceList[].unit` | select: `per_hour` \| `per_lesson` \| `per_day` \| `per_week` \| `per_person` \| `flat` | **yes** (default `per_lesson`) | no | owner | template owns the wording per locale | `"per_person"` |
 | `priceList[].note` | text | no | **yes** | owner | ≤ 140 | `"Board and rash vest included"` |
 | `photos[]` | array (≤ 24 rows) | no | – | owner | **first row is the hero photo**; order is the owner's order | |
-| `photos[].image` | upload → `media` | **yes** | no | owner | jpeg / png / webp, ≤ 8 MB | media doc (below) |
+| `photos[].image` | upload → `media` | **yes** | no | owner | **image only** (v0.8: enforced, now that `media` also holds video): jpeg / png / webp, ≤ 8 MB | media doc (below) |
 | `photos[].caption` | text | no | **yes** | owner | ≤ 140 | `"Sunset at the school"` |
+| `heroVideo` | upload → `media` | no | no | owner (deployer seeds it from the dossier) | **video only**: mp4 / webm, ≤ 20 MB, 8–20 s (guidance, not enforced), audio never played; when set it **replaces the hero photo** (`photos[0]` then becomes the first gallery photo); the template shows it muted, looped, `playsinline`, **poster first**, loaded after first paint, and shows the poster alone under `prefers-reduced-motion: reduce` or `Save-Data` | media doc, `mimeType: "video/mp4"` |
+| `heroVideoPoster` | upload → `media` | **when `heroVideo` is set** | no | owner | **image only**: jpeg / png / webp, ≤ 8 MB; the still painted before the video plays and instead of it; a frame of that video, never an unrelated photo | media doc, `mimeType: "image/jpeg"` |
+| `videos[]` | array (≤ 6 rows) | no | – | owner (deployer seeds it from the dossier) | further clips; the design decides where they play (same playback rules as `heroVideo`: muted, poster first, never autoplay with sound) | |
+| `videos[].video` | upload → `media` | **yes** | no | owner | video only: mp4 / webm, ≤ 20 MB | media doc |
+| `videos[].poster` | upload → `media` | **yes** | no | owner | image only: jpeg / png / webp, ≤ 8 MB | media doc |
+| `videos[].description` | text | **yes** | **yes** | owner | ≤ 200; what the clip shows, used as its accessible name (`aria-label`) — the video counterpart of `media.alt` | `"Two surfers on the right-hander at dawn, filmed from the reef"` |
 | `contact.phone` | text, E.164 | no | no | owner | `^\+[1-9]\d{6,14}$` | `"+94410000101"` |
 | `contact.whatsapp` | text, E.164 | no (v0.7; was required) | no | owner | same; when set, the template builds the booking CTA `https://wa.me/<digits>?text=…` from it; when empty, the template's primary booking action is `bookingLinks[]` or `contact.phone` | `"+94770000101"` |
 | `contact.email` | email | no | no | owner | | `"hello@wobbly-pelican.example"` |
@@ -93,7 +99,7 @@ One schema for every business. `businessType` says which kind of business the do
 | `rooms[].beds` | text | no | **yes** | owner | ≤ 80, as the owner describes it | `"1 extra-large double bed"` |
 | `rooms[].sleeps` | number | no | no | owner | ≥ 1 | `2` |
 | `rooms[].note` | text | no | **yes** | owner | ≤ 140 | `"Private entrance, garden view"` |
-| `rooms[].photo` | upload → `media` | no | no | owner | one photo per room; the gallery stays in `photos[]` | |
+| `rooms[].photo` | upload → `media` | no | no | owner | image only; one photo per room; the gallery stays in `photos[]` | |
 | `stayInfo.checkInFrom` / `.checkInTo` | text `HH:MM` | no | no | owner | same regex as `openingHours` | `"11:30"` / `"22:00"` |
 | `stayInfo.checkOutFrom` / `.checkOutTo` | text `HH:MM` | no | no | owner | | `"08:00"` / `"10:30"` |
 | `stayInfo.minNights` | number | no | no | owner | ≥ 1 | `2` |
@@ -150,16 +156,26 @@ A surf forecast for the business's own break, drawn by the site from Rosa's per-
 
 Forecast values themselves (heights, ratings, wind) are never content: they are not stored in Payload, not seeded from the dossier and not restated in any copy field.
 
-## Collection `media` — photos
+## v0.8 — video
+
+| Rule | |
+|---|---|
+| Video leads when it exists | A business that published a usable video (`license: business-owned` in the dossier) gets it as `heroVideo`; a template must render correctly with and without one. |
+| Seeded from the dossier | `schemas/dossier.md` `videos[]` → the entry with `hero_candidate.rank: 1` → `heroVideo` (its `hero-desktop` MP4 rendition) + `heroVideoPoster` (its poster JPEG); every other usable entry with a cut → a `videos[]` row (`video` ← its `hero-desktop` MP4, `poster` ← its poster, `description` ← `shows`). Renditions and posters come from `tools/fetch-video.mjs`. |
+| Never sound | Templates never play audio: `muted` is always set, and no control to unmute is offered. Renditions from `tools/fetch-video.mjs` carry no audio track at all. |
+| Poster first | The poster is in the HTML (`<video poster>` or an `<img>` behind it) so the first paint and LCP are the still, not the video. The video source is attached after first paint; under `prefers-reduced-motion: reduce` or `navigator.connection.saveData` it is never attached. |
+| Responsive renditions | Payload keeps one original per upload (as for photos). The dossier carries mobile renditions (1280 w / 720 w, ≤ 2 MB); producing them from an owner's own upload is the build's job and is not wired yet. |
+
+## Collection `media` — photos and videos
 
 | Field | Type | Required | Localized | Edited by | Notes |
 |---|---|---|---|---|---|
 | `id` | number | system | – | system | |
 | `tenant` | relationship → `tenants` | multi-tenant only | – | system (auto-filled with the owner's tenant) | |
-| `alt` | text | **yes** | **yes** | owner | describe the photo; used as `<img alt>` |
+| `alt` | text | **yes** | **yes** | owner | describe the photo or video; used as `<img alt>` (for a video in `videos[]`, the row's `description` is what the template uses) |
 | `filename` | text | system | – | system | unique per CMS instance — Payload appends `-1`, `-2`… on a name collision |
 | `url` | text | system | – | system | **absolute** URL built from the CMS's public `SERVER_URL`; needs auth (nothing is public). Build tools should use only its path against their own CMS origin |
-| `mimeType`, `filesize`, `width`, `height` | system | | – | system | only the original is stored (`sizes: {}`); responsive variants (avif/webp/jpeg at several widths) are produced by the Astro build |
+| `mimeType`, `filesize`, `width`, `height` | system | | – | system | accepted: `image/jpeg` `image/png` `image/webp` (≤ 8 MB) and, since v0.8, `video/mp4` `video/webm` (≤ 20 MB; request limit 20 MB, the 8 MB image cap is enforced by a hook on `media`). `width`/`height` are null for video. Only the original is stored (`sizes: {}`); responsive variants (avif/webp/jpeg at several widths) are produced by the Astro build |
 | `focalX`, `focalY`, `thumbnailURL` | system | | – | system | unused in v0.1 |
 
 ## What the template receives (REST shape)
