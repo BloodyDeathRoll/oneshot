@@ -68,14 +68,23 @@ for (const locale of LOCALES) {
 await rm(outDir, { recursive: true, force: true })
 await mkdir(path.join(outDir, 'media'), { recursive: true })
 
-// Photos: same files in every locale, so walk the default locale only.
+// Photos and (schema v0.8) videos + their posters: same files in every locale, so walk the
+// default locale only. Video renditions are made later by cms/publisher/src/video.mjs.
+const site = locales.en
+const uploads = [
+  ...(site.photos ?? []).map((row) => row.image),
+  site.heroVideo,
+  site.heroVideoPoster,
+  ...(site.videos ?? []).flatMap((row) => [row.video, row.poster]),
+]
 const files = new Map()
-for (const row of locales.en.photos ?? []) {
-  const m = row.image
-  if (!m || typeof m !== 'object') continue // depth=0 or a deleted upload
+let videos = 0
+for (const m of uploads) {
+  if (!m || typeof m !== 'object') continue // unset, depth=0 or a deleted upload
   if (tenant.id !== null && String(m.tenant?.id ?? m.tenant) !== String(tenant.id)) {
     throw new Error(`media ${m.id} does not belong to tenant ${TENANT_SLUG}`) // never expected
   }
+  if (!files.has(m.filename) && String(m.mimeType).startsWith('video/')) videos++
   files.set(m.filename, m.url)
 }
 for (const [filename, url] of files) {
@@ -92,4 +101,4 @@ await writeFile(
   path.join(outDir, 'content.json'),
   JSON.stringify({ tenant: { id: tenant.id, slug: tenant.slug, name: tenant.name }, locales }, null, 2),
 )
-console.log(`fetch-tenant: ${TENANT_SLUG} — ${LOCALES.length} locales, ${files.size} photos → src/tenant/`)
+console.log(`fetch-tenant: ${TENANT_SLUG} — ${LOCALES.length} locales, ${files.size - videos} photos, ${videos} videos → src/tenant/`)

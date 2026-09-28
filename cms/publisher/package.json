@@ -7,7 +7,7 @@
     "start": "node src/server.mjs",
     "start:host": "node --env-file=../.env src/server.mjs",
     "publish": "node --env-file=../.env src/cli.mjs",
-    "test": "node --test test/queue.test.mjs"
+    "test": "node --test test/queue.test.mjs test/video.test.mjs"
   },
   "engines": {
     "node": ">=22.12.0"

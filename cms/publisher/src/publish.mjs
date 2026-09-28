@@ -7,14 +7,17 @@
  * Every site has its own Astro template (sites/<slug>/final in the repo), synced to
  * TEMPLATES_ROOT/<tenant>/. The template is never built in place: each build copies it into
  * WORK_ROOT/<tenant>, links the shared site dependencies (astro + sharp, one install for all
- * templates) and runs the template's own steps: scripts/fetch-tenant.mjs → scripts/photos.mjs →
- * astro build.
+ * templates) and runs the template's own steps: scripts/fetch-tenant.mjs → [video.mjs, ours:
+ * video renditions, schema v0.9] → scripts/photos.mjs → astro build.
  */
 import { spawn } from 'node:child_process'
 import { appendFile, cp, mkdir, readFile, readdir, rename, rm, stat, symlink } from 'node:fs/promises'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 import { config, TENANT_RE } from './config.mjs'
+
+const VIDEO_STEP = path.join(path.dirname(fileURLToPath(import.meta.url)), 'video.mjs')
 
 const run = (cmd, args, { cwd, env }) =>
   new Promise((resolve, reject) => {
@@ -137,6 +140,10 @@ export const publish = async (tenant, triggers = ['manual']) => {
       ASTRO_TELEMETRY_DISABLED: '1',
     }
     await run(process.execPath, ['scripts/fetch-tenant.mjs'], { cwd: work, env: buildEnv })
+    // owner video → web renditions (a child process: encodes must not block the HTTP server);
+    // it may still need the builder key to fetch originals a pre-v0.8 fetch step did not download
+    const videoLog = await run(process.execPath, [VIDEO_STEP, work], { cwd: work, env: { ...buildEnv, VIDEO_CACHE_DIR: config.videoCacheDir } })
+    record.video = videoLog.trim().split('\n').pop()
     delete buildEnv.BUILDER_API_KEY
     await run(process.execPath, ['scripts/photos.mjs'], { cwd: work, env: buildEnv })
     await run(path.join(config.siteDepsModules, '.bin', 'astro'), ['build'], { cwd: work, env: buildEnv })

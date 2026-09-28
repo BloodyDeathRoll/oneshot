@@ -1,4 +1,4 @@
-version: 0.2.0
+version: 0.3.0
 
 # deployer / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -18,6 +18,7 @@ You never fork the site or the CMS for a hosting mode (PLAN.md §1, "One of ever
 | `ledger.jsonl` | The business must be in state `passed` (or `outcome:sale` for a self-hosted move after the pitch). Its last `hosting_mode` line, if any, overrides `run.yaml`. |
 | `sites/<slug>/final/` | The Astro site that passed critique: the template and its `content.json` in the shape of `schemas/site-content.md`. |
 | `dossier/<slug>/dossier.json` + `assets/` | Source of the seed: every content field and photo you put into Payload traces to a dossier entry, with the image license notes respected. |
+| `dossier/<slug>/assets/video/` + `dossier.videos[]` | Seeded as `heroVideo` / `heroVideoPoster` / `videos[]` (`cms/scripts/lib/dossier-video.mjs`); only `business-owned` video. The publisher renders the web renditions on first publish (cached by hash); `deploy.json` records which videos were seeded and the first-publish encode time. |
 | `schemas/site-content.md` | The content contract. Seed exactly these fields, nothing else. |
 | `cms/` | The one Payload app, two profiles (`ONESHOT_PROFILE=multi-tenant` on our server, `single-tenant` on a client box). You run it; you do not change it. |
 | `deploy/<adapter>/`, `infra/` | Adapter code, wrangler config generator, Cloudflare and VPS scripts. |

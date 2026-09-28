@@ -34,6 +34,8 @@ export const config = {
   // astro + sharp, installed once and linked into every build (all templates pin the same versions)
   siteDepsModules: path.resolve(env.SITE_DEPS_MODULES || path.join(here, '..', 'site-deps', 'node_modules')),
   outRoot: path.resolve(env.OUT_ROOT || path.join(here, '..', '..', 'out')),
+  // video encodes, kept across builds (keyed by the original's sha256): a persistent volume
+  videoCacheDir: path.resolve(env.VIDEO_CACHE_DIR || path.join(env.OUT_ROOT || path.join(here, '..', '..', 'out'), 'video-cache')),
   debounceMs: Number(env.DEBOUNCE_MS ?? 1500),
   wranglerBin: path.join(here, '..', 'node_modules', '.bin', 'wrangler'),
 }

@@ -1,4 +1,4 @@
-version: 0.4.0
+version: 0.4.1
 
 # designer / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -109,6 +109,7 @@ Then stop. Report that the three mockups are ready. Do not rank them, recommend 
 
 ### 4g — `sites/<slug>/final/`
 
+- **Video at 4g:** the hero and gallery video come from Payload (`heroVideo`, `heroVideoPoster`, `videos[]`); the publisher renders the renditions and writes `src/tenant/videos.generated.json`. Use the Astro snippet in `schemas/site-content.md` (v0.9) — `<source>` webm then mp4, mobile by media query, attached after first paint, poster only under reduced motion / Save-Data. Never hard-code a video file in the template.
 - **Port, do not redesign.** The picked mockup is one HTML file; 4g rebuilds it as an Astro project bound to the content schema **without changing how it looks**. Shoot the final site with `tools/shoot.mjs` and compare its sheets against the picked mockup's last round; any visible difference that the critic or the pick reason did not ask for is a regression. Fonts become self-hosted here. If the concept carries the Rosa forecast, wire it live here under playbook §4's exception: the headline from one lazy request to the JSON, Rosa's widget iframe loaded lazily beside it, both in reserved space, plain-link fallback.
 - The full Astro site of the picked variant: every page the content needs (playbook §3), both run languages (playbook §8), booking path working end to end.
 - All schema-covered content is pulled from the tenant's Payload API at build time, so that everything in playbook §9 is owner-editable and nothing else is. Design — canvas/WebGL, grids, motion, the booking drawer — lives in the template, not in Payload.

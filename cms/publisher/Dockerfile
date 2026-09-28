@@ -1,4 +1,4 @@
-# Publisher = Node HTTP service + the shared site dependencies (astro + sharp) + wrangler.
+# Publisher = Node HTTP service + the shared site dependencies (astro + sharp) + wrangler + ffmpeg.
 # Build context: cms/   The site templates are NOT in the image: they are mounted at
 # TEMPLATES_ROOT (one dir per tenant, synced from the repo's sites/<slug>/final).
 FROM node:24.21.0-bookworm-slim AS base
@@ -18,6 +18,10 @@ RUN if [ "$WITH_WRANGLER" = "true" ]; then npm ci --include=dev --no-audit --no-
 
 FROM base AS runner
 WORKDIR /app
+# ffmpeg: the video step (src/video.mjs) turns an owner's upload into web renditions (x264 + SVT-AV1)
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends ffmpeg \
+ && rm -rf /var/lib/apt/lists/*
 COPY --from=publisher-deps /app/publisher/node_modules ./publisher/node_modules
 COPY --from=site-deps /app/publisher/site-deps/node_modules ./publisher/site-deps/node_modules
 COPY publisher/src ./publisher/src

@@ -11,6 +11,7 @@
  * Steps (attach_domain, handoff, export are skipped for this adapter until a sale):
  *   provision  sync the site's template to the server; tenant + owner user + empty site doc
  *   seed       sites/<slug>/final/src/tenant/{content.json,media/} → export format → import
+ *              (video: content.json's, else dossier/<slug> videos[] → heroVideo/heroVideoPoster/videos[])
  *   deploy     publisher builds the tenant from the CMS and runs `wrangler deploy`; URL → 200;
  *              parity: the CMS-built index.html against a local build of the repo's content.json
  *   verify     owner path: login, one edit round-tripped to the live site and restored, tenant
@@ -20,13 +21,14 @@
  * Owner credentials: generated here, written ONLY to ~/.oneshot/sealed/<slug>.json (mode 600).
  */
 import { execFileSync, spawnSync } from 'node:child_process'
-import { createHash, randomBytes } from 'node:crypto'
+import { randomBytes } from 'node:crypto'
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync, chmodSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import { importTenant, Rest } from '../../cms/scripts/lib/tenant-io.mjs'
+import { resolveVideo, writeSeedExport } from './seed-export.mjs'
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..')
 const ADAPTER_VERSION = '0.1.0'
@@ -99,6 +101,7 @@ const STEPS = {
       '-a', '--delete', '-e', `ssh -i ${SSH_KEY} -o BatchMode=yes`,
       '--exclude', 'node_modules', '--exclude', 'dist', '--exclude', '.astro', '--exclude', 'shots',
       '--exclude', 'public/photos', '--exclude', 'src/tenant/media', '--exclude', 'src/tenant/photos.generated.json',
+      '--exclude', 'public/video', '--exclude', 'src/tenant/videos.generated.json',
       '--exclude', 'package-lock.json', '--exclude', 'audit.json', '--exclude', 'notes.md', '--exclude', '*-vs-*',
       `${final}/`, `${CMS_SSH}:${REMOTE}/sites/${slug}/`,
     ], { encoding: 'utf8' })
@@ -135,51 +138,10 @@ const STEPS = {
     // content.json (the dossier → schema conversion the build already passed critique with) → export format v1
     const dir = mkdtempSync(path.join(os.tmpdir(), `oneshot-seed-${slug}-`))
     try {
-      mkdirSync(path.join(dir, 'media'))
-      const media = []
-      const out = structuredClone(site)
-      for (const k of ['id', 'tenant', 'createdAt', 'updatedAt']) delete out[k]
-      // Payload rejects a group set to null (TypeError in its field traversal): an empty group is omitted
-      for (const g of ['contact', 'stayInfo', 'shaping', 'forecast']) if (out[g] == null) delete out[g]
-      const wrap = (v) => (v == null ? v : { en: v })
-      for (const f of ['tagline', 'featureLine', 'closing', 'hoursNote', 'spot', 'season']) if (f in out) out[f] = wrap(out[f])
-      const groups = { contact: ['address'], stayInfo: ['note'], shaping: ['boardTypes', 'leadTime', 'customOrder'] }
-      for (const [g, fs] of Object.entries(groups)) if (out[g]) for (const f of fs) if (f in out[g]) out[g][f] = wrap(out[g][f])
-      const arrays = {
-        copyBlocks: ['heading', 'body'], priceList: ['label', 'note'], photos: ['caption'], bookingLinks: ['label'],
-        amenities: ['label', 'note'], rooms: ['label', 'beds', 'note'], lessons: ['label', 'groupSize', 'includes'],
-        credentials: ['label'], rentals: ['label', 'note'],
-      }
-      const allArrays = [...Object.keys(arrays), 'openingHours', 'ratings', 'testimonials', 'brands']
-      for (const a of allArrays) {
-        if (!Array.isArray(out[a])) continue
-        out[a] = out[a].map(({ id, ...row }) => {
-          for (const f of arrays[a] ?? []) if (f in row) row[f] = wrap(row[f])
-          return row
-        })
-      }
-      for (const [a, f] of [['photos', 'image'], ['rooms', 'photo']]) {
-        for (const row of out[a] ?? []) {
-          const m = row[f]
-          if (!m) continue
-          // media filenames are unique per CMS instance, not per tenant, and Payload renames a clash
-          // (img-001 → img-2). Name = slug + content hash + original name: no clash across tenants,
-          // and a re-seed finds the file it uploaded last time and reuses it instead of uploading again
-          const bytes = readFileSync(path.join(final, 'src', 'tenant', 'media', m.filename))
-          const name = `${slug}-${createHash('sha256').update(bytes).digest('hex').slice(0, 8)}-${m.filename}`
-          if (!media.some((x) => x.filename === name)) {
-            writeFileSync(path.join(dir, 'media', name), bytes)
-            media.push({ filename: name, mimeType: m.mimeType, alt: { en: m.alt } })
-          }
-          row[f] = name
-        }
-      }
-      writeFileSync(path.join(dir, 'site.json'), JSON.stringify(out, null, 2))
-      writeFileSync(path.join(dir, 'media.json'), JSON.stringify(media, null, 2))
-      writeFileSync(path.join(dir, 'manifest.json'), JSON.stringify({
-        format: 'oneshot-tenant-export', version: 1, exportedAt: new Date().toISOString(),
-        source: { profile: 'repo', path: `sites/${slug}/final/src/tenant/content.json` }, tenant: { slug, name: site.businessName },
-      }))
+      // video: content.json's own video fields, else the dossier's videos[] (schema v0.8 mapping)
+      const seedSite = structuredClone(site)
+      const video = resolveVideo(seedSite, { dossierPath: path.join(repo, 'dossier', slug, 'dossier.json') })
+      const { media } = writeSeedExport({ site: seedSite, slug, mediaDir: path.join(final, 'src', 'tenant', 'media'), dir })
 
       // super-admin: ratings/testimonials/forecast.rosaSpotId are deployer fields an owner cannot write
       const sa = await superAdmin()
@@ -203,11 +165,18 @@ const STEPS = {
         siteId: result.siteId, replacedExisting: result.replacedExisting, locales: result.locales,
         fieldsSeeded: Object.keys(site).filter((k) => !['id', 'tenant', 'createdAt', 'updatedAt'].includes(k) && !empty.includes(k)),
         gaps: [...empty, ...contactEmpty],
-        photos: media.map((m) => ({ filename: m.filename, mediaId: result.mediaIds[m.filename] })),
+        photos: media.filter((m) => !m.mimeType.startsWith('video/')).map((m) => ({ filename: m.filename, mediaId: result.mediaIds[m.filename] })),
+        video: {
+          source: video.source, // content.json | dossier | none
+          heroVideo: seedSite.heroVideo ? { from: seedSite.heroVideo.path ? path.relative(repo, seedSite.heroVideo.path) : seedSite.heroVideo.filename } : null,
+          rows: (seedSite.videos ?? []).length,
+          files: media.filter((m) => m.mimeType.startsWith('video/')).map((m) => ({ filename: m.filename, mediaId: result.mediaIds[m.filename] })),
+          dossierEntriesNotUsed: video.skipped,
+        },
         renamed: result.renamed,
         reused: result.reused.length,
         unreferencedMediaRemoved: removed,
-        licence: 'business-owned photographs only (dossier assets); no atmosphere/stock images are in content.json',
+        licence: 'business-owned photographs and videos only (dossier assets); no atmosphere/stock images are in content.json',
       }
     } finally {
       rmSync(dir, { recursive: true, force: true })
@@ -225,7 +194,7 @@ const STEPS = {
     const b = spawnSync('npm', ['run', 'build'], { cwd: final, encoding: 'utf8' })
     if (b.status !== 0) throw new Error(`local build failed: ${b.stderr.slice(-1000)}`)
     const localHtml = readFileSync(path.join(final, 'dist', 'index.html'), 'utf8')
-    const diff = lineDiff(localHtml, cmsHtml.replace(new RegExp(`${slug}-[0-9a-f]{8}-img-`, 'g'), 'img-'))
+    const diff = lineDiff(localHtml, cmsHtml.replace(new RegExp(`${slug}-[0-9a-f]{8}-(img|vid)-`, 'g'), '$1-'))
 
     let live = null
     if (rec.mode === 'live') {
@@ -236,7 +205,7 @@ const STEPS = {
     }
     return {
       mode: rec.mode, worker: rec.worker, url: rec.url, version: rec.version, buildMs: rec.buildMs, deployMs: rec.deployMs, totalMs: rec.totalMs,
-      parity: { identical: diff.length === 0, note: 'photo names compared without the seed\'s slug-hash prefix', differingLines: diff.slice(0, 20) },
+      parity: { identical: diff.length === 0, note: 'photo and video names compared without the seed\'s slug-hash prefix', differingLines: diff.slice(0, 20) },
       live,
     }
   },

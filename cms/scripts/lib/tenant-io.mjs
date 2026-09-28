@@ -5,8 +5,9 @@
  * Export directory format (version 1) — also the format of seed/fixtures/*:
  *   manifest.json  { format, version, exportedAt, source: { profile }, tenant: { slug, name } }
  *   site.json      the `sites` document with EVERY locale (localized fields are { en, si } objects);
- *                  ids/timestamps/tenant removed; photos[].image is a media FILENAME
- *   media.json     [{ filename, mimeType, alt: { en, si } }]
+ *                  ids/timestamps/tenant removed; every upload field (photos[].image, rooms[].photo,
+ *                  heroVideo, heroVideoPoster, videos[].video, videos[].poster) is a media FILENAME
+ *   media.json     [{ filename, mimeType, alt: { en, si } }]   (photos and, since v0.8, videos)
  *   media/<filename>
  *
  * Zero dependencies (Node >= 22: global fetch, FormData, Blob).
@@ -18,13 +19,14 @@ export const FORMAT = 'oneshot-tenant-export'
 export const LOCALES = ['en', 'si']
 const DEFAULT_LOCALE = 'en'
 
-/** Localized field paths of schema v0.7 (keep in sync with cms/app/src/collections/Sites.ts). */
+/** Localized field paths of schema v0.9 (keep in sync with cms/app/src/collections/Sites.ts). */
 const LOCALIZED = {
   top: ['tagline', 'featureLine', 'closing', 'hoursNote', 'spot', 'season'],
   arrays: {
     copyBlocks: ['heading', 'body'],
     priceList: ['label', 'note'],
     photos: ['caption'],
+    videos: ['description'],
     bookingLinks: ['label'],
     amenities: ['label', 'note'],
     rooms: ['label', 'beds', 'note'],
@@ -35,11 +37,26 @@ const LOCALIZED = {
   groups: { contact: ['address'], stayInfo: ['note'], shaping: ['boardTypes', 'leadTime', 'customOrder'] },
 }
 const ARRAYS = [
-  'copyBlocks', 'openingHours', 'priceList', 'photos', 'bookingLinks', 'amenities', 'ratings', 'testimonials',
+  'copyBlocks', 'openingHours', 'priceList', 'photos', 'videos', 'bookingLinks', 'amenities', 'ratings', 'testimonials',
   'rooms', 'lessons', 'credentials', 'rentals', 'brands',
 ]
-/** Upload fields holding a media FILENAME in the export format: [array, field]. */
-const UPLOADS = [['photos', 'image'], ['rooms', 'photo']]
+/** Upload fields holding a media FILENAME in the export format: [array, field] rows, top-level fields. */
+const UPLOADS = [['photos', 'image'], ['rooms', 'photo'], ['videos', 'video'], ['videos', 'poster']]
+const TOP_UPLOADS = ['heroVideo', 'heroVideoPoster']
+
+/** Every upload slot of a site document as { get, set } pairs (arrays row by row, then top-level). */
+const uploadSlots = (doc) => {
+  const slots = []
+  for (const [array, field] of UPLOADS) {
+    for (const row of Array.isArray(doc[array]) ? doc[array] : []) {
+      slots.push({ get: () => row[field], set: (v) => { row[field] = v } })
+    }
+  }
+  for (const field of TOP_UPLOADS) {
+    if (field in doc) slots.push({ get: () => doc[field], set: (v) => { doc[field] = v } })
+  }
+  return slots
+}
 
 /** Locales that actually carry a value somewhere in the export (a site may be English only). */
 const localesIn = (content, media) => {
@@ -111,18 +128,16 @@ export const exportTenant = async ({ rest, profile, tenantSlug, dir }) => {
 
   await mkdir(path.join(dir, 'media'), { recursive: true })
   const media = []
-  for (const [array, field] of UPLOADS) {
-    for (const row of site[array] ?? []) {
-      const m = row[field]
-      if (!m || typeof m !== 'object') continue
-      if (!media.some((x) => x.filename === m.filename)) {
-        const res = await rest.raw('GET', new URL(m.url, rest.baseUrl).pathname) // url is absolute (SERVER_URL)
-        if (!res.ok) throw new Error(`download ${m.url} → ${res.status}`)
-        await writeFile(path.join(dir, 'media', path.basename(m.filename)), Buffer.from(await res.arrayBuffer()))
-        media.push({ filename: m.filename, mimeType: m.mimeType, alt: m.alt })
-      }
-      row[field] = m.filename
+  for (const slot of uploadSlots(site)) {
+    const m = slot.get()
+    if (!m || typeof m !== 'object') continue
+    if (!media.some((x) => x.filename === m.filename)) {
+      const res = await rest.raw('GET', new URL(m.url, rest.baseUrl).pathname) // url is absolute (SERVER_URL)
+      if (!res.ok) throw new Error(`download ${m.url} → ${res.status}`)
+      await writeFile(path.join(dir, 'media', path.basename(m.filename)), Buffer.from(await res.arrayBuffer()))
+      media.push({ filename: m.filename, mimeType: m.mimeType, alt: m.alt })
     }
+    slot.set(m.filename)
   }
 
   const { id, tenant: _t, createdAt, updatedAt, ...content } = site
@@ -134,7 +149,7 @@ export const exportTenant = async ({ rest, profile, tenantSlug, dir }) => {
     path.join(dir, 'manifest.json'),
     JSON.stringify({ format: FORMAT, version: 1, exportedAt: new Date().toISOString(), source: { profile }, tenant: { slug: tenant.slug, name: tenant.name } }, null, 2) + '\n',
   )
-  return { tenant, photos: media.length, dir }
+  return { tenant, photos: media.filter((m) => !m.mimeType?.startsWith('video/')).length, videos: media.filter((m) => m.mimeType?.startsWith('video/')).length, dir }
 }
 
 // ---------------------------------------------------------------- import
@@ -216,9 +231,11 @@ export const importTenant = async ({ rest, dir, tenantId, reuseMedia = false }) 
 
   // 2. site document: default locale first (create or overwrite) …
   const resolved = structuredClone(content)
-  for (const [array, field] of UPLOADS) {
-    if (!Array.isArray(resolved[array])) continue
-    resolved[array] = resolved[array].map((row) => ({ ...row, [field]: row[field] == null ? null : mediaIds[row[field]] }))
+  for (const slot of uploadSlots(resolved)) {
+    const name = slot.get()
+    if (name == null) continue
+    if (!(name in mediaIds)) throw new Error(`${dir}: site.json references media "${name}", which media.json does not list`)
+    slot.set(mediaIds[name])
   }
   const existing = (await rest.get(`/api/sites?${filter}depth=0&limit=1`)).docs[0]
   const base = forLocale(resolved, DEFAULT_LOCALE)

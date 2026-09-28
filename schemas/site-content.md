@@ -1,6 +1,6 @@
 # schemas/site-content.md — the fixed content schema: the contract between Payload and the Astro templates.
 
-**Version 0.8** · 2026-09-28 (v0.8 adds owner-editable video — `heroVideo` + `heroVideoPoster` and `videos[]` — and lets `media` hold MP4/WebM; Shahar, 2026-09-28: "Videos are much more engaging than images and whenever you find one you should use it!"; the admin tab "Photos" is now "Photos & video"; `cms/app/src/collections/Sites.ts` + `Media.ts` implement this version) · **v0.7** · 2026-09-25 (v0.7 makes `contact.whatsapp` optional — Shahar, none of run 2026-09-ahangama-02's three businesses publishes a WhatsApp number; production Payload collection `cms/src/collections/Sites.ts` now implements this version) · **v0.6** · 2026-09-23 (v0.6 adds the optional `featureLine`, a generic short line over a site's feature image — Shahar, first used for The Lavish Haven's night-pool line) · **v0.5** · 2026-09-23 (v0.5 adds the optional `closing` line, Shahar's decision for The Lavish Haven's closing headline) · **v0.4** · 2026-09-22 (v0.4 adds `ratings[].capturedAt`, required by playbook §6; existing documents need the date filled in by the deployer) · **v0.3** · 2026-09-21 (v0.1 came out of the Payload spike; v0.2 adds `businessType` and the per-type modules below; v0.3 adds the optional `forecast` block; all additive — every v0.1 document is a valid v0.3 document) · source of truth in code: `spikes/payload/cms/src/collections/Sites.ts` + `Media.ts` · reference consumer: `spikes/payload/site/` · proven by `spikes/payload/test/` (both suites green).
+**Version 0.9** · 2026-09-28 (v0.9 adds no field: the build now makes an owner's video upload into web renditions — desktop + mobile, MP4 + WebM, no audio — and writes `src/tenant/videos.generated.json`; the fetch step downloads videos and posters; see "v0.9 — video renditions". Chosen over a separate `heroVideoMobile` upload field. DB migrations for the v0.8 fields: `cms/app/src/migrations/*/20260928_*_video.ts`) · **v0.8** · 2026-09-28 (v0.8 adds owner-editable video — `heroVideo` + `heroVideoPoster` and `videos[]` — and lets `media` hold MP4/WebM; Shahar, 2026-09-28: "Videos are much more engaging than images and whenever you find one you should use it!"; the admin tab "Photos" is now "Photos & video"; `cms/app/src/collections/Sites.ts` + `Media.ts` implement this version) · **v0.7** · 2026-09-25 (v0.7 makes `contact.whatsapp` optional — Shahar, none of run 2026-09-ahangama-02's three businesses publishes a WhatsApp number; production Payload collection `cms/src/collections/Sites.ts` now implements this version) · **v0.6** · 2026-09-23 (v0.6 adds the optional `featureLine`, a generic short line over a site's feature image — Shahar, first used for The Lavish Haven's night-pool line) · **v0.5** · 2026-09-23 (v0.5 adds the optional `closing` line, Shahar's decision for The Lavish Haven's closing headline) · **v0.4** · 2026-09-22 (v0.4 adds `ratings[].capturedAt`, required by playbook §6; existing documents need the date filled in by the deployer) · **v0.3** · 2026-09-21 (v0.1 came out of the Payload spike; v0.2 adds `businessType` and the per-type modules below; v0.3 adds the optional `forecast` block; all additive — every v0.1 document is a valid v0.3 document) · source of truth in code: `spikes/payload/cms/src/collections/Sites.ts` + `Media.ts` · reference consumer: `spikes/payload/site/` · proven by `spikes/payload/test/` (both suites green).
 
 Rules of the contract
 
@@ -41,7 +41,7 @@ Who edits: **owner** = the business owner in the Payload admin ("My site" form, 
 | `photos[]` | array (≤ 24 rows) | no | – | owner | **first row is the hero photo**; order is the owner's order | |
 | `photos[].image` | upload → `media` | **yes** | no | owner | **image only** (v0.8: enforced, now that `media` also holds video): jpeg / png / webp, ≤ 8 MB | media doc (below) |
 | `photos[].caption` | text | no | **yes** | owner | ≤ 140 | `"Sunset at the school"` |
-| `heroVideo` | upload → `media` | no | no | owner (deployer seeds it from the dossier) | **video only**: mp4 / webm, ≤ 20 MB, 8–20 s (guidance, not enforced), audio never played; when set it **replaces the hero photo** (`photos[0]` then becomes the first gallery photo); the template shows it muted, looped, `playsinline`, **poster first**, loaded after first paint, and shows the poster alone under `prefers-reduced-motion: reduce` or `Save-Data` | media doc, `mimeType: "video/mp4"` |
+| `heroVideo` | upload → `media` | no | no | owner (deployer seeds it from the dossier) | **video only**: mp4 / webm, ≤ 20 MB, 8–20 s (guidance, not enforced; the build uses at most the first 20 s), audio never played; the one original the build makes every rendition from (v0.9); when set it **replaces the hero photo** (`photos[0]` then becomes the first gallery photo); the template shows it muted, looped, `playsinline`, **poster first**, loaded after first paint, and shows the poster alone under `prefers-reduced-motion: reduce` or `Save-Data` | media doc, `mimeType: "video/mp4"` |
 | `heroVideoPoster` | upload → `media` | **when `heroVideo` is set** | no | owner | **image only**: jpeg / png / webp, ≤ 8 MB; the still painted before the video plays and instead of it; a frame of that video, never an unrelated photo | media doc, `mimeType: "image/jpeg"` |
 | `videos[]` | array (≤ 6 rows) | no | – | owner (deployer seeds it from the dossier) | further clips; the design decides where they play (same playback rules as `heroVideo`: muted, poster first, never autoplay with sound) | |
 | `videos[].video` | upload → `media` | **yes** | no | owner | video only: mp4 / webm, ≤ 20 MB | media doc |
@@ -164,7 +164,96 @@ Forecast values themselves (heights, ratings, wind) are never content: they are 
 | Seeded from the dossier | `schemas/dossier.md` `videos[]` → the entry with `hero_candidate.rank: 1` → `heroVideo` (its `hero-desktop` MP4 rendition) + `heroVideoPoster` (its poster JPEG); every other usable entry with a cut → a `videos[]` row (`video` ← its `hero-desktop` MP4, `poster` ← its poster, `description` ← `shows`). Renditions and posters come from `tools/fetch-video.mjs`. |
 | Never sound | Templates never play audio: `muted` is always set, and no control to unmute is offered. Renditions from `tools/fetch-video.mjs` carry no audio track at all. |
 | Poster first | The poster is in the HTML (`<video poster>` or an `<img>` behind it) so the first paint and LCP are the still, not the video. The video source is attached after first paint; under `prefers-reduced-motion: reduce` or `navigator.connection.saveData` it is never attached. |
-| Responsive renditions | Payload keeps one original per upload (as for photos). The dossier carries mobile renditions (1280 w / 720 w, ≤ 2 MB); producing them from an owner's own upload is the build's job and is not wired yet. |
+| Responsive renditions | Payload keeps one original per upload (as for photos); the build makes the renditions from it (v0.9, below). The seed uploads the dossier's `hero-desktop` MP4 as that original. |
+
+## v0.9 — video renditions (the build's job)
+
+**Decision (2026-09-28): a build step, not a `heroVideoMobile` field.** An owner will upload one clip from a phone, not three encodes, and whatever they upload has an audio track, an arbitrary bitrate and no `+faststart`; every served file therefore has to be re-encoded anyway to honour "never sound" and the size caps. A second upload field would only move that work onto the owner, drift out of sync with the desktop clip when they replace it, and still leave WebM, audio stripping and caps undone. The build step keeps the schema at one original per video — the same rule as photos, whose variants `scripts/photos.mjs` makes — and costs no field, no migration and no admin UI. The cost is encode time, paid once per original: encodes are cached by the file's sha256 in the publisher's volume, so only the first publish after a new video waits for it (measured locally with the publisher capped at 1.5 CPU on an x86 dev box: 75 s for two clips, 10 s at 1080p + 8 s at 720p, AV1 being most of it; a cached rebuild adds 0.6 s. The ARM server has not been measured).
+
+| | |
+|---|---|
+| Where | `cms/publisher/src/video.mjs`, run by the publisher for every site between the template's `scripts/fetch-tenant.mjs` and `scripts/photos.mjs`. A template can run it itself: `node <repo>/cms/publisher/src/video.mjs <site-dir>`. Needs `ffmpeg`/`ffprobe` only when the site has a video (in the publisher image since v0.9). |
+| Fetch | `scripts/fetch-tenant.mjs` (reference: `spikes/payload/site/scripts/fetch-tenant.mjs`) downloads `heroVideo`, `heroVideoPoster`, `videos[].video` and `videos[].poster` into `src/tenant/media/` with the photos. For a template whose fetch step predates v0.8, the video step downloads any missing original itself with the builder key. |
+| Renditions | per video, from its first ≤ 20 s: `d1920` (1920 w, ≤ 4 MB), `m1280` (1280 w, ≤ 2 MB), `m720` (720 w, ≤ 2 MB) as H.264 MP4 (`+faststart`), `d1920` and `m1280` also as AV1 WebM. No audio track in any of them. Never upscaled: a tier wider than the original points at the same file as the widest tier that fits. Per poster: JPEG at 1920 w and 1280 w (never upscaled). |
+| Output | `public/video/<stem>.<tier>.<mp4\|webm>`, `public/video/<poster-stem>.<1920\|1280>.jpg` (`<stem>` = media file name without extension, lowercased, `[a-z0-9-]`), and `src/tenant/videos.generated.json` (below). Nothing is written, and the manifest is removed, when the site has no video. Paths are relative (`video/…`), like `photos/…`. |
+
+`src/tenant/videos.generated.json`, keyed by the media `filename` from content.json:
+
+```json
+{
+  "recipe": "v1",
+  "videos": {
+    "example-surf-8c763de6-vid-001-d1920.mp4": {
+      "source": { "width": 1920, "height": 1080, "duration_s": 10, "hadAudio": false },
+      "length_s": 10,
+      "tiers": {
+        "d1920": { "webm": { "src": "video/…-vid-001-d1920.d1920.webm", "type": "video/webm; codecs=\"av01.0.08M.08\"", "width": 1920, "height": 1080, "bytes": 3158065 },
+                   "mp4":  { "src": "video/…-vid-001-d1920.d1920.mp4",  "type": "video/mp4; codecs=\"avc1.640028\"",   "width": 1920, "height": 1080, "bytes": 3790900 } },
+        "m1280": { "webm": { … }, "mp4": { … } },
+        "m720":  { "mp4": { … } }
+      }
+    }
+  },
+  "posters": {
+    "example-surf-8054794f-vid-001-poster.jpg": { "1920": { "src": "video/…-vid-001-poster.1920.jpg", "width": 1920, "height": 1080 }, "1280": { … } }
+  }
+}
+```
+
+### How a template uses the hero video (Astro)
+
+Poster first (an `<img srcset>` that is the LCP, plus `poster` on the video so it never flashes black), sources attached on `load` + one frame, WebM before MP4 in each tier, the phone tier first with `media`, and nothing attached under reduced motion or Save-Data. Checked in headless Chromium against a publisher build: desktop plays `d1920.webm`, a 390 px phone plays `m1280.webm`, reduced motion and Save-Data request no video at all.
+
+```astro
+---
+// src/components/HeroVideo.astro — renders nothing when the site has no heroVideo
+import content from '../tenant/content.json'
+const gen = Object.values(import.meta.glob('../tenant/videos.generated.json', { eager: true, import: 'default' }))[0]
+const site = content.locales.en
+const v = site.heroVideo && gen?.videos[site.heroVideo.filename]
+const poster = site.heroVideoPoster && gen?.posters[site.heroVideoPoster.filename]
+const PHONE = '(max-width: 767px)'
+const sources = v
+  ? [[v.tiers.m1280.webm, PHONE], [v.tiers.m1280.mp4, PHONE], [v.tiers.d1920.webm], [v.tiers.d1920.mp4]].filter(([s]) => s)
+  : []
+---
+{v && poster && (
+  <div class="hero-media">
+    <img class="hero-poster" src={poster[1280].src} srcset={`${poster[1280].src} ${poster[1280].width}w, ${poster[1920].src} ${poster[1920].width}w`}
+      sizes="100vw" width={poster[1920].width} height={poster[1920].height} alt={site.heroVideo.alt} fetchpriority="high" />
+    <video class="hero-video" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true"
+      poster={poster[1280].src} data-hero-video>
+      {sources.map(([s, media]) => <source data-src={s.src} type={s.type} media={media} />)}
+    </video>
+  </div>
+)}
+
+<script>
+  const video = document.querySelector<HTMLVideoElement>('video[data-hero-video]')
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches
+  const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData === true
+  const attach = () => {
+    if (!video) return
+    for (const s of video.querySelectorAll<HTMLSourceElement>('source[data-src]')) {
+      if (s.media && !matchMedia(s.media).matches) s.remove() // older engines ignore `media` on <source>
+      else s.src = s.dataset.src!
+    }
+    video.load()
+    video.play().catch(() => {}) // autoplay refused (Low Power Mode…): the poster stays
+  }
+  if (video && !calm && !saveData) {
+    const later = () => requestAnimationFrame(() => setTimeout(attach, 0)) // after first paint
+    document.readyState === 'complete' ? later() : addEventListener('load', later, { once: true })
+  }
+</script>
+
+<style>
+  .hero-media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; }
+  .hero-poster, .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+</style>
+```
+
+The `m720` tier is in the manifest for designs that show a clip small (a card, a strip); `videos[]` rows use the same pattern, with the row's `description` as the element's `aria-label` instead of `aria-hidden`.
 
 ## Collection `media` — photos and videos
 
@@ -242,7 +331,7 @@ GET /api/sites?locale=<en|si>&fallback-locale=en&depth=1&limit=1                
 
 Optional fields that are empty arrive as `null` (text) or `[]` (arrays). With `locale=all` every localized field becomes an object `{ "en": …, "si": … }` — that shape is used by the tenant export/import format, not by templates.
 
-What a template actually works with: the reference site's `scripts/fetch-tenant.mjs` runs before `astro build`, makes the two requests above, downloads each `photos[].image` into `src/tenant/media/<filename>` and writes `src/tenant/content.json`:
+What a template actually works with: the reference site's `scripts/fetch-tenant.mjs` runs before `astro build`, makes the two requests above, downloads each `photos[].image` (and, since v0.9, `heroVideo`, `heroVideoPoster`, `videos[].video`, `videos[].poster`) into `src/tenant/media/<filename>` and writes `src/tenant/content.json`:
 
 ```json
 { "tenant": { "id": 2, "slug": "wobbly-pelican", "name": "…" }, "locales": { "en": <site>, "si": <site> } }
