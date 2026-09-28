@@ -23,4 +23,4 @@ docker compose --env-file .env up -d --build --wait
 ./scripts/publish.sh <tenant-slug>                      # rebuild + deploy one tenant now
 ```
 
-Live deploys need `DEPLOY_MODE=live` and `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` in `cms/.env` (a scoped token, Workers Scripts:Edit on the Oneshot account only).
+Live deploys need `DEPLOY_MODE=live` and `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` in `cms/.env` (a scoped token, Workers Scripts:Edit on the Oneshot account only). A copy of the same token lives on the operator machine at `~/.oneshot/cf-token` (mode 600, never in the repo; Shahar, 2026-09-28) for deploys run from there, such as the proposal pages: `CLOUDFLARE_API_TOKEN=$(cat ~/.oneshot/cf-token) npx wrangler deploy`. Rotating it means updating both places.
