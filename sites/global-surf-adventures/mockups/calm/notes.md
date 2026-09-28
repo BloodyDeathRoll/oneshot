@@ -76,6 +76,19 @@ right half empty on desktop — accepted as the air a calm page needs rather tha
 would not guess generated: the one fare repeated in a ruled column and the figure table are specific to
 this business.
 
+### Round 8 — includes table, critic fix (`shots/round-8/`, section in `desktop-03`, `mobile-03`)
+Critic quick hard fail (`reports/2026-09-globalsurf-01/global-surf-adventures.md`): the row "Filmed or
+photographed sessions" printed Levels 1 and 3 as "not included" (– with screen-reader text), but the
+dossier lists them (`offers[0].includes_engine` "2 photographed/filmed session", `includes_site` "A
+filming and photography day"; `offers[2].includes_engine` "4", `includes_site` "×5"); the copy left
+them out only because site and engine disagree on the count. An empty cell is a claim. Before: 8 rows,
+that row reading "– / 2 / –". After: the row is removed (7 rows), and Level 2's figure, which the
+passed copy states, moves to the note line under the table as "Level 2's package lists 2 filmed or
+photographed sessions." — worded so it says nothing about Levels 1 and 3. Rest of the table checked
+for the same pattern: every remaining cell is filled from `lessons[].includes` or the offer block
+("seven days of unlimited equipment use", every level); no other empty or "not included" cell. The
+section looks the same otherwise; the table is one row shorter and the note line now has three parts.
+
 ## images
 All `license: business-owned` in `dossier.json` `images[]`; none of the harvester's 11 "not the
 lodge's wave" frames, none of `img-020`–`img-023` / `img-042`–`img-052` (concept §2 rejects), no stock.
@@ -111,7 +124,7 @@ No captions under photographs; alt text from the dossier descriptions.
   checkable claim with no dossier entry.
 - **Concept: "tick in ink where it applies"** in the includes table → figures instead ("7", "5
   guided", "5 coached", "2", "7 days"), because every inclusion in `lessons[].includes` is a count; a
-  tick would hide the one real difference (guided vs coached, 2 filmed sessions). Level 2's excursion
+  tick would hide the one real difference (guided vs coached). Since round 8 the filmed-sessions row is gone (see look-log) and Level 2's 2 sessions are a line under the table. Level 2's excursion
   is printed as the copy words it ("an excursion"), not as "cultural or nature".
 - **The intro block** (`copyBlocks` slot `intro`) has no place in the concept's structure; set after
   the full-bleed photograph. The offer block is split across the page as the concept asks (paragraph 1

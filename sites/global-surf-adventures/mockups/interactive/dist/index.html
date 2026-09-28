@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Global Surf Lodge Kabalana: surf weeks for every level</title>
 <meta name="description" content="A surf camp in Kabalana, Ahangama, on Sri Lanka's south coast. Three levels, one week each, from USD 1,466 per person.">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@200;300;500&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
@@ -125,7 +126,6 @@ html.js .panel h4{position:absolute;width:1px;height:1px;overflow:hidden;clip:re
 html.js .panel[hidden]{display:none}
 .panel ul{list-style:none;margin:0;padding:0}
 .panel li{border-bottom:1px solid var(--ink);padding:12px 0;font-size:18px}
-.panel li.diff{color:var(--red);font-weight:500}
 .pfoot{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:20px 0 0}
 .pfoot .fare{font-size:2.6rem;padding:0}
 a.plate{text-decoration:none;display:inline-block;margin:0}
@@ -173,11 +173,18 @@ html.px .mf img{height:calc(100% + 4rem);transform:translate3d(0,var(--py,-2rem)
 .nd dt{font-size:14px;align-self:center}
 .nd dd{margin:0;font-size:18px}
 .upd{font-size:14px;margin-top:12px}
-.fc-rosa{position:relative;width:420px;max-width:100%;height:500px}
-.fc-link{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;border:1px solid var(--ink);font:300 1.5rem/1.2 var(--cond)}
-.fc-rosa iframe{position:relative;visibility:hidden}
+.fc-rosa{position:relative;width:420px;max-width:100%}
+.fc-link{display:block;padding:16px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);font:300 1.5rem/1.2 var(--cond)}
+.fc-rosa iframe{display:none!important}
+html.js .fc-rosa iframe{display:block!important}
+html.js .fc-rosa{height:500px}
+html.js .fc-rosa iframe{position:relative;visibility:hidden}
+html.js .fc-link{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;border:1px solid var(--ink)}
 .fc-rosa.on iframe{visibility:visible}
 .fc-rosa.on .fc-link{visibility:hidden}
+html.js .fc-rosa.fail{height:auto}
+html.js .fc-rosa.fail iframe{display:none}
+html.js .fc-rosa.fail .fc-link{position:static;display:block;padding:16px 0;border-width:1px 0;text-align:left}
 .surf{grid-column:1/9;margin-top:48px}
 .surf img{width:100%}
 
@@ -273,14 +280,8 @@ html.js .lbar.off{transform:translateY(110%)}
     </svg>
   </div>
 
-  <div class="side">
-    <p>Questions first?</p>
-    <p><a class="wa" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%27d%20like%20to%20ask%20about%20a%20surf%20week.">Ask on WhatsApp</a></p>
-    <p><a href="tel:+97299733943">+972 9-973-3943</a></p>
-  </div>
-
   <section class="fares" aria-labelledby="h-fares">
-    <h2 id="h-fares" class="fhead"><span>Every Saturday, 7 nights</span><span>per person</span></h2>
+    <h2 id="h-fares" class="fhead"><span>Starts on a Saturday, 7 nights</span><span>per person</span></h2>
     <a class="row" data-level="Level 1" href="https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies">
       <span class="num">1</span>
       <span class="lv"><b>Level 1</b><span>first-timers and beginners</span></span>
@@ -306,6 +307,12 @@ html.js .lbar.off{transform:translateY(110%)}
       <span>captured 28 September 2026</span>
     </p>
   </section>
+
+  <div class="side">
+    <p>Questions first?</p>
+    <p><a class="wa" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%27d%20like%20to%20ask%20about%20a%20surf%20week.">Ask on WhatsApp</a></p>
+    <p><a href="tel:+97299733943">+972 9-973-3943</a></p>
+  </div>
 </header>
 
 <main>
@@ -356,12 +363,12 @@ html.js .lbar.off{transform:translateY(110%)}
     </div>
     <div class="panel" id="p2" role="tabpanel" aria-labelledby="t2">
       <h4>Level 2, intermediate</h4>
-      <ul><li>5 guided 2-hour surf sessions</li><li>5 surf theory lessons</li><li class="diff">2 filmed or photographed sessions</li><li>7 breakfasts</li><li>5 dinners</li><li>an excursion</li></ul>
+      <ul><li>5 guided 2-hour surf sessions</li><li>5 surf theory lessons</li><li>2 filmed or photographed sessions</li><li>7 breakfasts</li><li>5 dinners</li><li>an excursion</li></ul>
       <p class="pfoot"><span class="fare"><small>USD</small>1,466</span><a class="plate" href="https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers">Level 2: see dates and prices</a></p>
     </div>
     <div class="panel" id="p3" role="tabpanel" aria-labelledby="t3">
       <h4>Level 3, advanced</h4>
-      <ul><li class="diff">5 coached 2-hour surf sessions</li><li>5 surf theory lessons</li><li>7 breakfasts</li><li>5 dinners</li><li>a cultural or nature excursion</li></ul>
+      <ul><li>5 coached 2-hour surf sessions</li><li>5 surf theory lessons</li><li>7 breakfasts</li><li>5 dinners</li><li>a cultural or nature excursion</li></ul>
       <p class="pfoot"><span class="fare"><small>USD</small>1,466</span><a class="plate" href="https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders">Level 3: see dates and prices</a></p>
     </div>
   </div>
@@ -526,7 +533,6 @@ html.js .lbar.off{transform:translateY(110%)}
 </nav>
 
 <script>
-document.documentElement.classList.add('js');
 /* tabs: information, never a gate */
 (() => {
   const tabs = [...document.querySelectorAll('[role=tab]')];
@@ -590,18 +596,25 @@ document.documentElement.classList.add('js');
   });
   document.querySelectorAll('.fares .row, .cplates').forEach((el) => io.observe(el));
 })();
-/* Rosa's widget: src set only when the forecast block nears the viewport */
+/* Rosa's widget: src set only when the forecast block nears the viewport.
+   A refused or failed frame still fires "load", so success is decided by a no-cors probe of the same URL first;
+   on any failure (probe rejected, timeout, or a file:// page, which frame-ancestors * refuses) the reserved box
+   collapses to the plain link. Only content below the box moves, and only after the block is on screen. */
 (() => {
   const rosa = document.querySelector('.fc-rosa'), f = rosa && rosa.querySelector('iframe');
-  /* rosa.surf sends frame-ancestors *, which does not match a file:// page: there the link stays */
-  if (!f || !('IntersectionObserver' in window) || location.protocol === 'file:') return;
+  if (!f) return;
+  const fail = () => { if (rosa.classList.contains('on')) return; rosa.classList.add('fail'); f.remove(); delete rosa.dataset.loading; };
+  if (!('IntersectionObserver' in window) || !window.fetch || location.protocol === 'file:') { fail(); return; }
   const io = new IntersectionObserver((es) => {
     if (!es.some((e) => e.isIntersecting)) return;
     io.disconnect();
     rosa.dataset.loading = 'true';
-    const t = setTimeout(() => { delete rosa.dataset.loading; }, 8000);
-    f.addEventListener('load', () => { clearTimeout(t); rosa.classList.add('on'); delete rosa.dataset.loading; }, {once: true});
-    f.src = f.dataset.src;
+    const t = setTimeout(fail, 10000);
+    fetch(f.dataset.src, {mode: 'no-cors', cache: 'no-store'}).then(() => {
+      if (rosa.classList.contains('fail')) return;
+      f.addEventListener('load', () => { if (rosa.classList.contains('fail')) return; clearTimeout(t); rosa.classList.add('on'); delete rosa.dataset.loading; }, {once: true});
+      f.src = f.dataset.src;
+    }, () => { clearTimeout(t); fail(); });
   }, {rootMargin: '400px 0px'});
   io.observe(rosa);
 })();

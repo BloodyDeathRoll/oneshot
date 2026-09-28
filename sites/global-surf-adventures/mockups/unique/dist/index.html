@@ -133,6 +133,8 @@ h1{font:200 88px/.92 var(--cond);letter-spacing:-.015em}
 .fc-rosa iframe{position:relative;visibility:hidden}
 .fc-rosa.on iframe{visibility:visible}
 .fc-rosa.on .fc-link{visibility:hidden}
+.fc-rosa.fail{height:auto;width:auto;justify-self:start;align-self:start}
+.fc-rosa.fail .fc-link{position:static;border:0;padding:0;display:inline;text-align:left}
 
 /* ---------- a day ---------- */
 .day-copy{grid-column:1/6;align-self:start;position:sticky;top:64px}
@@ -388,7 +390,6 @@ h1{font:200 88px/.92 var(--cond);letter-spacing:-.015em}
         <tbody>
           <tr><th scope="row">5 surf sessions, 2 hours each</th><td>guided</td><td>guided</td><td>coached</td></tr>
           <tr><th scope="row">5 surf theory lessons</th><td><i class="tick"></i><span class="sr">included</span></td><td><i class="tick"></i><span class="sr">included</span></td><td><i class="tick"></i><span class="sr">included</span></td></tr>
-          <tr><th scope="row">2 filmed or photographed sessions</th><td><i class="none"></i><span class="sr">not listed</span></td><td><i class="tick"></i><span class="sr">included</span></td><td><i class="none"></i><span class="sr">not listed</span></td></tr>
           <tr><th scope="row">7 breakfasts</th><td><i class="tick"></i><span class="sr">included</span></td><td><i class="tick"></i><span class="sr">included</span></td><td><i class="tick"></i><span class="sr">included</span></td></tr>
           <tr><th scope="row">5 dinners</th><td><i class="tick"></i><span class="sr">included</span></td><td><i class="tick"></i><span class="sr">included</span></td><td><i class="tick"></i><span class="sr">included</span></td></tr>
           <tr><th scope="row">An excursion</th><td>cultural or nature</td><td><i class="tick"></i><span class="sr">included</span></td><td>cultural or nature</td></tr>
@@ -712,17 +713,25 @@ var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   addEventListener('scroll', tick, { passive: true }); addEventListener('resize', tick); tick();
 })();
 
-/* Rosa's widget and nothing else from another origin: its src is set only when the block nears the
-   viewport. Until it loads (or if it fails) the reserved box shows the plain link. */
+/* Rosa's widget and nothing else from another origin: nothing is requested until the block nears
+   the viewport. Chrome fires the iframe's load event even for a refused or failed frame, so load is
+   not taken as success: first a no-cors request to the widget URL must succeed (it rejects when
+   rosa.surf is blocked or unreachable), then the frame must load within 10 s. Until then the plain
+   link stays visible; on failure the frame is removed and the reserved box collapses to that link.
+   Everything above the block keeps its place. */
 (function(){
   var box = document.getElementById('rosa'), fr = box && box.querySelector('iframe');
-  if (!fr || !('IntersectionObserver' in window)) return;
+  if (!fr || !('IntersectionObserver' in window) || !window.fetch) return;
+  function fail(){ if (box.classList.contains('on')) return; fr.remove(); box.classList.add('fail'); box.removeAttribute('data-loading'); }
   var io = new IntersectionObserver(function(e){
     if (!e[0].isIntersecting) return; io.disconnect();
+    var url = fr.getAttribute('data-src');
     box.setAttribute('data-loading', 'true');
-    fr.addEventListener('load', function(){ box.classList.add('on'); box.removeAttribute('data-loading'); });
-    fr.src = fr.getAttribute('data-src');
-    setTimeout(function(){ box.removeAttribute('data-loading'); }, 6000);
+    var timer = setTimeout(fail, 10000);
+    fetch(url, { mode: 'no-cors', credentials: 'omit', referrerPolicy: 'strict-origin-when-cross-origin' }).then(function(){
+      fr.addEventListener('load', function(){ if (box.classList.contains('fail')) return; clearTimeout(timer); box.classList.add('on'); box.removeAttribute('data-loading'); });
+      fr.src = url;
+    }, function(){ clearTimeout(timer); fail(); });
   }, { rootMargin: '400px 0px' });
   io.observe(box);
 })();
