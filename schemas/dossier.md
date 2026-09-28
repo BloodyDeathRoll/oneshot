@@ -72,3 +72,7 @@ Everything downstream (designer, deployer seed, critic, writer) takes facts from
 | Booking | `path` ∈ `whatsapp` \| `phone` \| `engine` \| `none`; `none` is a blocking gap for the designer. |
 | Gaps | listed once in `gaps[]` with `pitch_point: true` when the missing thing is a selling point of the new site. |
 | Mapping | `schemas/site-content.md` fields map from: `business.*`, `contact.*`, `booking.*`, `hours` → `openingHours`, `hours_note` → `hoursNote`, `offers` → `priceList`, `images` → `photos`, `location.map_url` → `contact.mapUrl`. The deployer's seed uses this mapping; the designer's mockup `content.json` uses the same. |
+
+## Beside the dossier
+
+`dossier/<slug>/audit.json` + `audit.md` + `funnel/` (`schemas/audit.md`) are the auditor's (station 3b), not the harvester's. They are **not a fact source**: nothing in them may appear on the site as content.
