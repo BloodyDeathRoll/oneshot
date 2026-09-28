@@ -33,3 +33,31 @@ Input: `en.json` from copywriter 0.3.3, kept unchanged as `en.draft.json`. Outpu
 ### Could not fix without a fact
 
 None.
+
+## Round 2 · 2026-09-28 · humanizer 0.2.0 · after copyeditor round-1 fail
+
+Input: `en.json` as the copywriter left it. My round-1 rewrites are still there, and two strings are new: `tagline` and `copyBlocks[4]` ¶3. I re-read the whole file.
+
+### Changes
+
+None. `en.json` and `sources.md` are unchanged in this round.
+
+### Why the two new strings stay
+
+- **`tagline`** "A surf camp in Kabalana, Ahangama, on Sri Lanka's south coast". It says what and where on one line, with no padding and no marketing verb. Dropping "a few steps from the ocean" also removes the repetition I noted in round 1.
+- **`copyBlocks[4]` ¶3** "Booking.com's house rules list cash as the accepted payment method." It reads a little formal. It was kept as is because it has to say exactly what `booking.payment_methods` holds (["Cash"], from Booking.com's house rules), no more:
+  - A friendlier version ("pay in cash", "cash only", "at the lodge") would claim how or where the stay is paid, or that cash is the only method. That is what the copyeditor failed in round 1.
+  - Attributing it to the house rules is the scope, not stiffness.
+  - It is also one of the page's few honest limits.
+
+### Rest of the file
+
+It has no new tells. My round-1 rewrites (`copyBlocks[1]` ¶2, `[3]` ¶2, `[4]` ¶1–¶2) and the owner prose (left alone) are as before.
+
+### `en.draft.json`
+
+Not refreshed. It is still the copywriter's round-1 draft. base.md says only that the previous draft is kept. It does not say to refresh the file each round, and this round rewrote nothing.
+
+### Could not fix without a fact
+
+None.
