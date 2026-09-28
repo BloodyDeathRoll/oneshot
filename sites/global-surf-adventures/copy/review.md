@@ -166,3 +166,167 @@ Back to the **humanizer** (voice):
 | V1 | levels ¶1 S1 | "Level 1 – Fomies is your first time on a board, and you don't need any surfing experience." | a package "is your first time"; reads wrong aloud; introduced in the rewrite |
 
 Everything else passes. Round 2 will be a full re-check of every sentence (hard constraint 6), not only these. If round 2 still fails, the round after it is the third pass, and base.md sends the business out of the run (`mode: test`).
+
+---
+
+## Round 2 — full-file re-check after copywriter round 2 and humanizer round 2, 2026-09-28
+
+Reviewer: copyeditor 0.3.1. Independent of the copywriter and the humanizer. Hard constraint 6 applies: every sentence and field of `copy/en.json` was re-traced to `dossier/global-surf-adventures/dossier.json`, changed or not. Nothing is carried over from round 1 on trust.
+
+## Verdict: **PASS** (round 2)
+
+0 `unsourced` · 0 `contradicted` · voice audit clean · completeness covered (every empty required field has a stated reason; see C1).
+
+### Scope check
+
+- Dossier unchanged since round 1 (last commit `a372213`, station 3).
+- `en.json` round 1 (`27b647e`) → now (`f6ac133`). Every change is a removal or a narrowing:
+  - intro ¶2 S1 and S2 · day ¶1 S1 · levels ¶1 S1 and ¶4 · "Between sessions" block removed · `spot` S1 · `lessons[3].includes` · `rooms[]` → `[]`.
+  - No new fact appeared.
+- Copywriter round 2 (`78ce8b5`) → humanizer round 2 (`f6ac133`): one sentence changed, levels ¶1 S1 (colon → ", no surfing experience needed"). Same fact.
+- `en.draft.json` is still the round-1 draft; the round-2 fixes were made on the humanised file. The diff that shows what the humanizer did this round is `78ce8b5` → `f6ac133`, above.
+- Testimonials: all nine machine-checked again (text, author, source identical to `reviews.quotes[]`).
+- Booking links: unchanged, and re-checked against `booking.engine_url` and `engine_products[0–3]`.
+- Lengths within limits: `spot` 102/200; `lessons[].includes` 135 / 135 / 136 / 13.
+
+### Round-1 findings
+
+| ID | Round 1 | Now | Closed? |
+|---|---|---|---|
+| F1 | intro ¶2 S1 "on the beach at Kabalana" | "The lodge sits in the green of the jungle." | yes |
+| F2 | `spot` "On the beach at Kabalana, …" | "The lodge overlooks two spots, The Rock and South Point." | yes |
+| F3 | intro ¶2 S2 "a bed-and-breakfast stay" | "a Freestylers package for independent travellers" | yes |
+| F4 | levels ¶4 "bed and breakfast only" | "Freestylers is the package for independent travellers …" | yes |
+| F5 | `lessons[3].includes` "Bed and breakfast, from 4 nights" | "From 4 nights" | yes |
+| F6 | `rooms[0–1]` engine options as the room list | `rooms[]` = `[]` | yes (see C1) |
+| F7 | day ¶1 "Mornings start with … a surf session" | "Head out with your group for a morning surf." | yes (no order claimed) |
+| D1 | "Between sessions" repeats `amenities[1–4]` | block removed | yes |
+| V1 | "Level 1 – Fomies is your first time on a board" | "… is for your first time on a board, no surfing experience needed." | yes |
+
+### Fact audit (whole file)
+
+| # | Field | Sentence / claim | Dossier key (words re-read) | Verdict |
+|---|---|---|---|---|
+| 1 | `businessName` | "Global Surf Lodge Kabalana" | `business.name.value` | sourced |
+| 2 | `businessType` | `surf_camp` | `businessType`; `business.type.value` | sourced |
+| 3 | `tagline` | "Surf weeks for all levels" | `offers[0–2]`; `business.description_packages` "weekly retreats, available for all levels" | sourced |
+| 4 | `tagline` | "on Sri Lanka's south coast" | `location.area_name`; `description_packages` "South Coast of Sri Lanka" | sourced |
+| 5 | `tagline` | "a few steps from the ocean" | `location.distance_to_beach.value` (owner); consistent with `.others[0]` 40 m | sourced |
+| 6 | `closing` S1 | "Book the week for your level." | `offers[0–2]`; `booking.engine_products[0–2]` | sourced |
+| 7 | `closing` S2–S3 | "Not sure which one fits? Ask us on WhatsApp first." | `contact.whatsapp.value`, `booking.whatsapp.value`; `contradictions[0]` true on both sides (round 1, ruling 4) | sourced |
+| 8 | `featureLine` | "Footwear is discouraged. Chilling out is inescapable." | `business.description` (owner) | sourced |
+| 9 | intro heading | "Next set is yours" | `business.description` | sourced |
+| 10 | intro ¶1 | "We are surfing obsessed, and we invite you to join us." | `business.description` verbatim | sourced |
+| 11 | intro ¶2 S1 | "The lodge sits in the green of the jungle." | `business.experiences.note` "nestled in the lush green jungle". No place name, so `contradictions[5]` is not touched | sourced |
+| 12 | intro ¶2 S2a | "We run surf weeks for three levels, from your first wave to carving," | `offers[0–2]`, `levels[0–2]`; `offers[0].description` "Catch your first wave"; `offers[2].description` "already carving it up" | sourced |
+| 13 | intro ¶2 S2b | "and a Freestylers package for independent travellers." | `booking.engine_products[3]` (name); `offers[3].description` "The package perfectly fit independent travelers". No board stated (`contradictions[1]` not touched) | sourced |
+| 14 | day heading | "Surf, breakfast, surf again" | `business.day_at_the_camp`: morning surf → breakfast → afternoon surf. This order holds for every level, with or without the yoga that comes first on Levels 1–2 | sourced |
+| 15 | day ¶1 S1 | "Head out with your group for a morning surf." | `day_at_the_camp` "head out with your group for a refreshing morning surf session"; says nothing about what comes first | sourced |
+| 16 | day ¶1 S2 | "Back at the lodge, a big, healthy breakfast is waiting." | `day_at_the_camp` | sourced |
+| 17 | day ¶2 S1 | "After that the day is yours: relax at the lodge, or go out and explore before the afternoon surf." | `day_at_the_camp` | sourced |
+| 18 | day ¶2 S2 | "The evening ends with dinner, together with the other guests." | `day_at_the_camp` "End your day with an epic dinner together with the other guests" (a typical day) | sourced |
+| 19 | levels heading | "Pick your level" | — | framing |
+| 20 | levels ¶1 S1 | "Level 1 – Fomies is for your first time on a board, no surfing experience needed." | `offers[0].description`; `booking.engine_products[0].label` | sourced |
+| 21 | levels ¶1 S2 | "You learn on soft boards, on easy reef breaks and the sandy beaches around the lodge." | `facilities[10]`; `location.spot.note` (beginners) | sourced |
+| 22 | levels ¶2 S1 | "Level 2 – Rollers is for when you can stand up, but paddling out … is still a struggle." | `offers[1].description` | sourced |
+| 23 | levels ¶2 S2 | "You surf easy reefs and beach breaks with deep-water channels, on soft boards." | `location.spot.note` (intermediates); `facilities[10]` | sourced |
+| 24 | levels ¶3 S1 | "Level 3 – Riders: you're already carving, and you want to sharpen your skills." | `offers[2].description` | sourced |
+| 25 | levels ¶3 S2 | "From Galle to Matara, you surf the best spot of the day for the conditions, the wind and the tide." | `location.spot.note` (advanced) | sourced |
+| 26 | levels ¶4 | "Freestylers is the package for independent travellers who want to soak up the lodge's vibe." | `offers[3].description` "The package perfectly fit independent travelers who want to soak up the vibes of our Lodge"; no board stated | sourced |
+| 27 | price heading | "One price, three levels" | `offers[0–2].price` all 1466 | sourced |
+| 28 | price ¶1 S1 | "The three surf weeks cost the same, per person for seven nights." | `offers[0–2].price`, `.unit` | sourced |
+| 29 | price ¶1 S2 | "That is the base price the booking engine showed on 28 September 2026." | `offers[].note` "Engine 'Base price'"; `.fetched_at` 2026-09-28 (round 1, ruling 1) | sourced |
+| 30 | price ¶1 S3a | "The room you choose can add to it;" | `offers[0].note` room supplement | sourced |
+| 31 | price ¶1 S3b | "the engine shows any supplement once you pick your dates." | `offers[0].evidence` screenshot (13 Feb 2027): start date set → "Accommodation $140.04" line | sourced |
+| 32 | price ¶2 S1 | "Packages start on a Saturday and run for 7, 14, 21 or 28 nights, for up to six guests per booking." | `offers[0–2].duration_options`; `.max_guests_per_booking` 6 | sourced |
+| 33 | price ¶2 S2 | "Drinking water and local coffee and tea are unlimited." | `includes_engine` and `includes_site` both list it | sourced |
+| 34 | rooms heading | "Twelve rooms, one big family" | `business.staying_with_us` "just 12 suites … one big happy family"; `rooms[0].note` "12 … rooms". The count is not part of `contradictions[3]`, which is about the mix | sourced (round-1 N2 stands) |
+| 35 | rooms ¶1 S1 | "There are just twelve rooms." | as row 34 | sourced |
+| 36 | rooms ¶1 S2 | "That keeps a stay here personal, part of one big happy family." | `staying_with_us` (owner) | sourced |
+| 37 | rooms ¶1 S3 | "Every room has air conditioning, a ceiling fan, a safe box, a private toilet and shower, a socket next to each bed and, of course, a board rack." | `room_amenities.value` "All of our rooms have …"; "private" is narrower than "en-suite", not wider | sourced |
+| 38 | rooms ¶2 | "When you're not on the water, lie out on a sunbed by the pool under the palms, … Sri Lankan produce from the lodge kitchen." | `staying_with_us` | sourced |
+| 39 | guests heading | "What guests say" | — | framing |
+| 40 | guests ¶1 | "Booking.com guests score the staff 9.5 out of 10, and the facilities and the cleanliness 9.2 each." | `reviews.booking.categories`; count 80 on `ratings[0]` | sourced (round-1 N3 stands) |
+| 41 | guests ¶2 | "In their reviews they write about the pool area, the open-air bathroom and the breakfast bowls." | `reviews.quotes[1]`; pool also `[3]`, `[5]` | sourced |
+| 42 | getting heading | "Getting here" | — | framing |
+| 43 | getting S1 | "Booking.com puts Kathaluwa West Beach 40 m from the lodge and Kabalana Beach 350 m." | `location.distance_to_beach.others[0]` | sourced |
+| 44 | getting S2 | "Kathaluwa station is 400 m away, Ahangama Beach 4 km and Koggala Airport 3.9 km." | same key | sourced |
+| 45 | `spot` S1 | "The lodge overlooks two spots, The Rock and South Point." | `location.spot.value` "overlooking 2 great spots – The Rock & South point" (owner); "great" dropped; no place name | sourced |
+| 46 | `spot` S2 | "More waves are a few minutes away by tuk-tuk." | `location.spot.value` | sourced |
+| 47 | `season` | `null` | `season.value` null; `gaps[]` | correctly empty |
+| 48 | `languagesSpoken` | `[]` | `languages_spoken.value` null; `gaps[]` | correctly empty |
+| 49 | `lessons[0–2].label` | Level 1 / 2 / 3 names | `booking.engine_products[0–2].label` | sourced |
+| 50 | `lessons[0–2].level` | `first_time`+`beginner` / `intermediate` / `advanced` | `levels[0–2]` | sourced |
+| 51 | `lessons[0–1].includes` | "7 nights, 7 breakfasts, 5 dinners, 5 guided 2-hour surf sessions, 5 theory lessons, all equipment, transport to the spots, an excursion" | in both `includes_engine` and `includes_site`; equipment also `business.concept`; transport `facilities[9]` (round-1 N4 stands) | sourced |
+| 52 | `lessons[2].includes` | same, "coached" | `offers[2].includes_engine` / `.includes_site` | sourced |
+| 53 | `lessons[0–2].price/currency/unit` | 1466 / USD / `per_person` | `offers[0–2]` (round 1, ruling 1) | sourced |
+| 54 | `lessons[3].label` | "Freestylers – B&B only" | `booking.engine_products[3].label` — the product's name (round 1, ruling 3) | sourced |
+| 55 | `lessons[3].includes` | "From 4 nights" | `offers[3].gap` "min 4 nights" (entry carries the engine `source_url`) | sourced |
+| 56 | `credentials[0]` | "ISA-certified surf guides" | `credentials[0]` | sourced |
+| 57 | `rooms[]` | `[]` | `contradictions[3]` open; reason stated in `sources.md` "Room mix" | correctly empty (C1) |
+| 58 | `stayInfo` check-in / check-out | 14:00–20:00 / until 11:00 | `stayInfo.checkIn.value`, `.checkOut.value` | sourced |
+| 59 | `stayInfo.note` | "No pets and no extra beds; cots are free on request for children up to 5." | `stayInfo.rules` | sourced |
+| 60 | `amenities[0–14]` | fifteen rows, unchanged | `facilities[0]`, `[1]`, `[7]` (no "daily"), `[6]`, `[2]`, `[3]`, `[4]`, `[11]`, `[5]`, `[12]`–`[17]` | sourced |
+| 61 | `ratings[0]` | Booking 8.6/10, 80, URL, 2026-09-28 | `reviews.booking` | sourced |
+| 62 | `testimonials[0–8]` | nine quotes | `reviews.quotes[1, 2, 9, 3, 0, 8, 4, 5, 6]` verbatim (machine-checked) | sourced |
+| 63 | `contact.phone` | "+97299733943" | `contact.phone.value` (HQ line; owner item) | sourced |
+| 64 | `contact.whatsapp` | `""` | the engine stays the primary action (`booking.path`); WhatsApp is `bookingLinks[5]` | correctly empty |
+| 65 | `contact.email` | "info@globalsurf.com" | `contact.email.value` | sourced |
+| 66 | `contact.address` | "Henewatta Addara Gederawata, Ahangama 80650, Sri Lanka" | `location.address.value` (Google; capitalised per playbook §6) | sourced |
+| 67 | `contact.mapUrl` | Google place URL | `location.map_url.value` | sourced |
+| 68 | `bookingLinks[0]` | "See the weekly surf packages and dates" | `booking.engine_url.value` | sourced |
+| 69 | `bookingLinks[1–4]` | "Book Level 1 – Fomies" … "Book Freestylers – B&B only" | `booking.engine_products[0–3]` (labels are product names) | sourced |
+| 70 | `bookingLinks[5]` | "Ask on WhatsApp" → `wa.me/972523593240?text=…` | `booking.whatsapp.value` | sourced |
+
+Counts: sourced 61 · framing 3 · correctly empty 4 · unsourced **0** · contradicted **0** (70 rows).
+
+Open contradictions, each checked against the whole file:
+- `[0]` WhatsApp: true on both sides.
+- `[1]` Freestylers board: no board stated anywhere except the engine product's name.
+- `[2]` inclusions: only items both lists share.
+- `[3]` room mix: no room list.
+- `[4]` yoga frequency: no frequency, and yoga now appears only as an amenity.
+- `[5]` location name: "Kabalana" appears only in the business name and in Booking's attributed "Kabalana Beach 350 m".
+- `[6]` Mozambique: absent.
+
+### Voice audit (per section)
+
+| Section | Rhythm | Triads | Padding | Concrete | Reads aloud | Note |
+|---|---|---|---|---|---|---|
+| tagline / closing / featureLine | ✓ | ✓ | ✓ | ✓ | ✓ | |
+| intro | ✓ | ✓ | ✓ | ✓ | ✓ | ¶2 S1 is short now; plain, and it does not stumble |
+| day | ✓ | ✓ | ✓ | ✓ | ✓ | the imperative opening fits the owner's register |
+| Pick your level | ✓ | ✓ | ✓ | ✓ | ✓ | V1 closed; one colon left (L3) |
+| One price, three levels | ✓ | ✓ | ✓ | ✓ | ✓ | the honest limit (room supplement, capture date) |
+| Twelve rooms | ✓ | ✓ | owner's phrases kept as owner prose | ✓ | ✓ | |
+| What guests say | ✓ | ¶2 is Fanny's own list | ✓ | ✓ | ✓ | |
+| Getting here | ✓ | ✓ | ✓ | ✓ | ✓ | |
+
+Nothing reads as generated. At least one honest limit: yes. Register matches the owner's: yes.
+
+### Completeness (`surf_camp`)
+
+- **C1 — `rooms[]` empty.** base.md's completeness test is "copy or a stated reason it is empty". The reason is stated in `sources.md` ("Room mix": `contradictions[3]` is open, and any one list would state one side of it), so the test is met.
+  - This leaves `schemas/business-types.md`'s `surf_camp` must-have "≥ 1 `rooms[]` row" unmet.
+  - The ledger (18:19:42Z, copywriter line) records this as an orchestrator decision: an owner item, with the rooms shown through photos.
+  - That is a buildability decision for the orchestrator or Shahar, not a copy verdict. It is recorded here so it is not lost.
+- **Other required fields:**
+  - `contact` (phone, email, engine, WhatsApp as a link) ✓; `lessons[]` ×4 ✓.
+  - Empty, each with a stated reason: `season`, `languagesSpoken`, `groupSize` / `durationMin`, `lessons[3].price`, `openingHours`, `priceList`.
+- **Duplication:**
+  - The facts that were in "Between sessions" now live only in `amenities[]`.
+  - Rooms ¶2 (pool, bar) overlaps `amenities[0]` / `[6]`. That is the owner's own paragraph, so it is a note only.
+
+### Owner items carried forward (not copy failures)
+
+- The room list (C1).
+- The Freestylers board and price.
+- Which phone and WhatsApp reach the lodge (+972 HQ vs +94 lodge).
+- The engine price must be confirmed before go-live.
+- One inclusion list per package.
+- Level 1 spelling ("Fomies" vs "Foamie").
+- The twelve-room count against the engine's "new gallery room".
+
+### Verdict: **PASS** (round 2, full-file re-check)
+
+Ledger line due (not written by me): `copy_humanised → copy_passed`, with the note "round 2 PASS: 70 rows, 0 unsourced, 0 contradicted; all 9 round-1 findings closed; rooms[] empty (owner item, surf_camp must-have unmet)".
