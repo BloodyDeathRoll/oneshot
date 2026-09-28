@@ -22,7 +22,7 @@ export const ORDER = [
   'copy_drafted', 'copy_humanised', 'copy_failed', 'copy_passed',
   'concepted', 'mocked', 'picked', 'built', 'optimised', 'ai_optimised',
   'critiqued', 'failed', 'passed', 'packaged', 'pitched', 'outcome',
-  'handoff_verified', 'access_revoked',
+  'handoff_verified', 'access_revoked', 'void',
 ];
 export const GATES = { shortlisted: 'approve the shortlist', mocked: 'pick a mockup', packaged: 'send the pitch' };
 const HUMAN = 'Shahar';
@@ -54,7 +54,7 @@ export const NEXT_STEP = {
   pitched: ['log the outcome', HUMAN], 'outcome:reply': ['follow up', HUMAN],
   'outcome:meeting': ['follow up', HUMAN], 'outcome:sale': ['attach the domain and hand over', 'deployer'],
   'outcome:ignored': ['leave it or re-pitch', HUMAN], handoff_verified: ['revoke our access', 'deployer'],
-  access_revoked: ['done', null],
+  access_revoked: ['done', null], void: ['voided by Shahar — ignore', null],
 };
 
 const baseState = (s) => (!s ? null : s.startsWith('critiqued') ? 'critiqued' : s.startsWith('outcome:') ? 'outcome' : s);
