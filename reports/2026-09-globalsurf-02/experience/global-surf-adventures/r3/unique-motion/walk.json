@@ -1,0 +1,1047 @@
+{
+ "name": "unique-motion",
+ "url": "http://127.0.0.1:8983/unique/dist/index.html",
+ "modes": [
+  "motion"
+ ],
+ "runs": {
+  "motion_phone": {
+   "secs": 25.058,
+   "H": 15222,
+   "frames": {
+    "n": 1495,
+    "p50": 16.7,
+    "p95": 16.7,
+    "over50": 0,
+    "max": 33
+   },
+   "mid": [
+    {
+     "f": "motion-phone-00.jpg",
+     "y": 450,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m720.mp4",
+       "t": 3.26,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "vid-010-m720.mp4",
+       "t": 0,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-phone-01.jpg",
+     "y": 1710,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m720.mp4",
+       "t": 3.99,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 1.41,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "vid-003-m720.mp4",
+       "t": 0,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-phone-02.jpg",
+     "y": 2970,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m720.mp4",
+       "t": 3.99,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 2.34,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m720.mp4",
+       "t": 1.7,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "vid-002e-m720.mp4",
+       "t": 0,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-phone-03.jpg",
+     "y": 4230,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m720.mp4",
+       "t": 3.99,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 2.34,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m720.mp4",
+       "t": 2.38,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002e-m720.mp4",
+       "t": 1.96,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      }
+     ]
+    },
+    {
+     "f": "motion-phone-04.jpg",
+     "y": 5490,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m720.mp4",
+       "t": 3.99,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 2.34,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m720.mp4",
+       "t": 2.38,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002e-m720.mp4",
+       "t": 2.34,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-phone-05.jpg",
+     "y": 6780,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m720.mp4",
+       "t": 3.99,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 2.34,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m720.mp4",
+       "t": 2.38,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002e-m720.mp4",
+       "t": 2.34,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-phone-06.jpg",
+     "y": 8040,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m720.mp4",
+       "t": 3.99,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 2.34,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m720.mp4",
+       "t": 2.38,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002e-m720.mp4",
+       "t": 2.34,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-phone-07.jpg",
+     "y": 9300,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m720.mp4",
+       "t": 3.99,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 2.34,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m720.mp4",
+       "t": 2.38,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002e-m720.mp4",
+       "t": 2.34,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-phone-08.jpg",
+     "y": 10560,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m720.mp4",
+       "t": 3.99,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 2.34,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m720.mp4",
+       "t": 2.38,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002e-m720.mp4",
+       "t": 2.34,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-phone-09.jpg",
+     "y": 11820,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m720.mp4",
+       "t": 3.99,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 2.34,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m720.mp4",
+       "t": 2.38,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002e-m720.mp4",
+       "t": 2.34,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-phone-10.jpg",
+     "y": 13110,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m720.mp4",
+       "t": 3.99,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 2.34,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m720.mp4",
+       "t": 2.38,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002e-m720.mp4",
+       "t": 2.34,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-phone-11.jpg",
+     "y": 14370,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m720.mp4",
+       "t": 3.99,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 2.34,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m720.mp4",
+       "t": 2.38,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002e-m720.mp4",
+       "t": 2.34,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    }
+   ],
+   "canvases": [
+    {
+     "cls": "",
+     "w": 390,
+     "h": 844,
+     "gl": false
+    },
+    {
+     "cls": "",
+     "w": 390,
+     "h": 488,
+     "gl": false
+    },
+    {
+     "cls": "",
+     "w": 390,
+     "h": 488,
+     "gl": false
+    },
+    {
+     "cls": "",
+     "w": 390,
+     "h": 488,
+     "gl": false
+    },
+    {
+     "cls": "",
+     "w": 390,
+     "h": 488,
+     "gl": false
+    },
+    {
+     "cls": "",
+     "w": 390,
+     "h": 488,
+     "gl": false
+    },
+    {
+     "cls": "",
+     "w": 390,
+     "h": 293,
+     "gl": false
+    }
+   ]
+  },
+  "motion_laptop": {
+   "secs": 26.549,
+   "H": 14413,
+   "frames": {
+    "n": 1488,
+    "p50": 16.7,
+    "p95": 33.3,
+    "over50": 5,
+    "max": 67
+   },
+   "mid": [
+    {
+     "f": "motion-laptop-00.jpg",
+     "y": 450,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m1280.mp4",
+       "t": 4.03,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "vid-010-m1280.mp4",
+       "t": 0,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-laptop-01.jpg",
+     "y": 1800,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m1280.mp4",
+       "t": 5.11,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.mp4",
+       "t": 1.6,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "vid-003-m1280.mp4",
+       "t": 0,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-laptop-02.jpg",
+     "y": 3150,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m1280.mp4",
+       "t": 5.11,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.mp4",
+       "t": 3.57,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.mp4",
+       "t": 1.7,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "vid-002e-m1280.mp4",
+       "t": 0,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-laptop-03.jpg",
+     "y": 4500,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m1280.mp4",
+       "t": 5.11,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.mp4",
+       "t": 3.57,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.mp4",
+       "t": 3.53,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002e-m1280.mp4",
+       "t": 1.82,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      }
+     ]
+    },
+    {
+     "f": "motion-laptop-04.jpg",
+     "y": 5850,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m1280.mp4",
+       "t": 5.11,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.mp4",
+       "t": 3.57,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.mp4",
+       "t": 3.53,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002e-m1280.mp4",
+       "t": 3.25,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-laptop-05.jpg",
+     "y": 7200,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m1280.mp4",
+       "t": 5.11,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.mp4",
+       "t": 3.57,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.mp4",
+       "t": 3.53,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002e-m1280.mp4",
+       "t": 3.25,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-laptop-06.jpg",
+     "y": 8550,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m1280.mp4",
+       "t": 5.11,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.mp4",
+       "t": 3.57,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.mp4",
+       "t": 3.53,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002e-m1280.mp4",
+       "t": 3.25,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-laptop-07.jpg",
+     "y": 9900,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m1280.mp4",
+       "t": 5.11,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.mp4",
+       "t": 3.57,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.mp4",
+       "t": 3.53,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002e-m1280.mp4",
+       "t": 3.25,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-laptop-08.jpg",
+     "y": 11250,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m1280.mp4",
+       "t": 5.11,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.mp4",
+       "t": 3.57,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.mp4",
+       "t": 3.53,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002e-m1280.mp4",
+       "t": 3.25,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-laptop-09.jpg",
+     "y": 12600,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009e-m1280.mp4",
+       "t": 5.11,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.mp4",
+       "t": 3.57,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.mp4",
+       "t": 3.53,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002e-m1280.mp4",
+       "t": 3.25,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    }
+   ],
+   "canvases": [
+    {
+     "cls": "",
+     "w": 1440,
+     "h": 900,
+     "gl": false
+    },
+    {
+     "cls": "",
+     "w": 1440,
+     "h": 900,
+     "gl": false
+    },
+    {
+     "cls": "",
+     "w": 1440,
+     "h": 900,
+     "gl": false
+    },
+    {
+     "cls": "",
+     "w": 1440,
+     "h": 900,
+     "gl": false
+    },
+    {
+     "cls": "",
+     "w": 1440,
+     "h": 900,
+     "gl": false
+    },
+    {
+     "cls": "",
+     "w": 1440,
+     "h": 792,
+     "gl": false
+    },
+    {
+     "cls": "",
+     "w": 1440,
+     "h": 617,
+     "gl": false
+    }
+   ]
+  }
+ }
+}

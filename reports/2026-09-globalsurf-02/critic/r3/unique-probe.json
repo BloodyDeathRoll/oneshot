@@ -1,0 +1,395 @@
+{
+ "variant": "unique",
+ "url": "http://127.0.0.1:8981/unique/dist/",
+ "normal_phone": {
+  "first_paint_ms": 344,
+  "onload_video": [
+   {
+    "url": "video/vid-009e-m720.mp4",
+    "ms_after_first_paint": 501,
+    "kb": 1533
+   }
+  ],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..500&display=swap",
+   "https://fonts.gstatic.com/s/archivo/v25/k3kQo8UDI-1M0wlSfdnoLg.woff2"
+  ],
+  "onload_nonvideo_kb": 302,
+  "scroll_video": [
+   {
+    "url": "video/vid-010-m720.mp4",
+    "ms_after_first_paint": 8700,
+    "kb": 1855
+   },
+   {
+    "url": "video/vid-003-m720.mp4",
+    "ms_after_first_paint": 9196,
+    "kb": 1727
+   },
+   {
+    "url": "video/vid-002e-m720.mp4",
+    "ms_after_first_paint": 9951,
+    "kb": 1030
+   }
+  ],
+  "scroll_video_total_kb": 4612,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0.0052
+ },
+ "reduced_phone": {
+  "first_paint_ms": 328,
+  "onload_video": [],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..500&display=swap",
+   "https://fonts.gstatic.com/s/archivo/v25/k3kQo8UDI-1M0wlSfdnoLg.woff2"
+  ],
+  "onload_nonvideo_kb": 302,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0.0052
+ },
+ "savedata_phone": {
+  "first_paint_ms": 324,
+  "onload_video": [],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..500&display=swap",
+   "https://fonts.gstatic.com/s/archivo/v25/k3kQo8UDI-1M0wlSfdnoLg.woff2"
+  ],
+  "onload_nonvideo_kb": 302,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0.0052
+ },
+ "normal_desktop": {
+  "first_paint_ms": 376,
+  "onload_video": [
+   {
+    "url": "video/vid-009e-m1280.mp4",
+    "ms_after_first_paint": 541,
+    "kb": 1872
+   }
+  ],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..500&display=swap",
+   "https://fonts.gstatic.com/s/archivo/v25/k3kQo8UDI-1M0wlSfdnoLg.woff2"
+  ],
+  "onload_nonvideo_kb": 302,
+  "scroll_video": [
+   {
+    "url": "video/vid-010-m1280.mp4",
+    "ms_after_first_paint": 8948,
+    "kb": 1902
+   },
+   {
+    "url": "video/vid-003-m1280.mp4",
+    "ms_after_first_paint": 9858,
+    "kb": 1878
+   },
+   {
+    "url": "video/vid-002e-m1280.mp4",
+    "ms_after_first_paint": 10641,
+    "kb": 1346
+   }
+  ],
+  "scroll_video_total_kb": 5126,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0.0079
+ },
+ "reduced_desktop": {
+  "first_paint_ms": 348,
+  "onload_video": [],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..500&display=swap",
+   "https://fonts.gstatic.com/s/archivo/v25/k3kQo8UDI-1M0wlSfdnoLg.woff2"
+  ],
+  "onload_nonvideo_kb": 302,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0.0079
+ },
+ "savedata_desktop": {
+  "first_paint_ms": 396,
+  "onload_video": [],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..500&display=swap",
+   "https://fonts.gstatic.com/s/archivo/v25/k3kQo8UDI-1M0wlSfdnoLg.woff2"
+  ],
+  "onload_nonvideo_kb": 302,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0.0079
+ },
+ "dom_phone": {
+  "overflowX": 0,
+  "above_fold_links": [
+   {
+    "text": "Skip to content",
+    "href": "#main"
+   },
+   {
+    "text": "See the weekly surf packages and dates →",
+    "href": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"
+   },
+   {
+    "text": "8.6/10 on Booking.com, 80 reviews as of 28 Sep 2026",
+    "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+   }
+  ],
+  "small_targets": [],
+  "first_focusable": "Skip to content -> #main",
+  "skip_target_exists": true,
+  "title": "Global Surf Lodge Kabalana — surf weeks for all levels, Sri Lanka",
+  "lang": "en",
+  "h1": [
+   "Global Surf Lodge Kabalana"
+  ]
+ },
+ "links": [
+  {
+   "text": "Skip to content",
+   "href": "#main"
+  },
+  {
+   "text": "",
+   "href": "#top"
+  },
+  {
+   "text": "Fomies",
+   "href": "#level-1"
+  },
+  {
+   "text": "Rollers",
+   "href": "#level-2"
+  },
+  {
+   "text": "Riders",
+   "href": "#level-3"
+  },
+  {
+   "text": "8.6 Booking.com",
+   "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+  },
+  {
+   "text": "Levels and prices",
+   "href": "#levels"
+  },
+  {
+   "text": "The lodge",
+   "href": "#lodge"
+  },
+  {
+   "text": "Guests",
+   "href": "#guests"
+  },
+  {
+   "text": "Getting here",
+   "href": "#getting-here"
+  },
+  {
+   "text": "See the weekly surf packages and dates",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"
+  },
+  {
+   "text": "See the weekly surf packages and dates →",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"
+  },
+  {
+   "text": "8.6/10 on Booking.com, 80 reviews as of 28 Sep 2026",
+   "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+  },
+  {
+   "text": "Pick your level ↓",
+   "href": "#levels"
+  },
+  {
+   "text": "Book Level 1 – Fomies →",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies"
+  },
+  {
+   "text": "8.6/10 on Booking.com, 80 reviews · 28 Sep 2026",
+   "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+  },
+  {
+   "text": "Book Level 2 – Rollers →",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers"
+  },
+  {
+   "text": "8.6/10 on Booking.com, 80 reviews · 28 Sep 2026",
+   "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+  },
+  {
+   "text": "Book Level 3 – Riders →",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders"
+  },
+  {
+   "text": "8.6/10 on Booking.com, 80 reviews · 28 Sep 2026",
+   "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+  },
+  {
+   "text": "Book Freestylers – B&B only →",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/product/freestylers-bb-only-package"
+  },
+  {
+   "text": "See the weekly surf packages and dates →",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"
+  },
+  {
+   "text": "Ask on WhatsApp",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+  },
+  {
+   "text": "Call +972 9-973-3943",
+   "href": "tel:+97299733943"
+  },
+  {
+   "text": "8.6 out of 10 on Booking.com 80 reviews · 28 Sep 2026",
+   "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+  },
+  {
+   "text": "Open in Google Maps →",
+   "href": "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en"
+  },
+  {
+   "text": "See the weekly surf packages and dates →",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"
+  },
+  {
+   "text": "Ask on WhatsApp",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+  },
+  {
+   "text": "Level 1 – Fomies",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies"
+  },
+  {
+   "text": "Level 2 – Rollers",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers"
+  },
+  {
+   "text": "Level 3 – Riders",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders"
+  },
+  {
+   "text": "Freestylers – B&B only",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/product/freestylers-bb-only-package"
+  },
+  {
+   "text": "WhatsApp +972 52-359-3240",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+  },
+  {
+   "text": "+972 9-973-3943",
+   "href": "tel:+97299733943"
+  },
+  {
+   "text": "info@globalsurf.com",
+   "href": "mailto:info@globalsurf.com"
+  },
+  {
+   "text": "Fomies",
+   "href": "#level-1"
+  },
+  {
+   "text": "Rollers",
+   "href": "#level-2"
+  },
+  {
+   "text": "Riders",
+   "href": "#level-3"
+  },
+  {
+   "text": "Packages and dates",
+   "href": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"
+  }
+ ],
+ "tap_through": {
+  "label": "See the weekly surf packages and dates →",
+  "href": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+  "landed_request": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"
+ },
+ "dom_desktop": {
+  "overflowX": 0,
+  "above_fold_links": [
+   {
+    "text": "Skip to content",
+    "href": "#main"
+   },
+   {
+    "text": "Global Surf Lodge Kabalana",
+    "href": "#top"
+   },
+   {
+    "text": "Levels and prices",
+    "href": "#levels"
+   },
+   {
+    "text": "The lodge",
+    "href": "#lodge"
+   },
+   {
+    "text": "Guests",
+    "href": "#guests"
+   },
+   {
+    "text": "Getting here",
+    "href": "#getting-here"
+   },
+   {
+    "text": "See the weekly surf packages and dates →",
+    "href": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"
+   },
+   {
+    "text": "8.6/10 on Booking.com, 80 reviews as of 28 Sep 2026",
+    "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+   }
+  ],
+  "small_targets": [
+   "Global Surf Lodge Kabalana 237x23"
+  ],
+  "first_focusable": "Skip to content -> #main",
+  "skip_target_exists": true,
+  "title": "Global Surf Lodge Kabalana — surf weeks for all levels, Sri Lanka",
+  "lang": "en",
+  "h1": [
+   "Global Surf Lodge Kabalana"
+  ]
+ },
+ "nojs": {
+  "text_len": 6241,
+  "booking_links": [
+   "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+   "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+   "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+   "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers",
+   "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+   "https://globalsurfadventures.bookinglayer.com/en/product/freestylers-bb-only-package",
+   "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.",
+   "tel:+97299733943",
+   "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en"
+  ],
+  "rosa_fallback_visible": [],
+  "videos_with_src": 0
+ },
+ "keyboard": {
+  "first_stop": {
+   "tag": "A",
+   "text": "Skip to content",
+   "outline": true,
+   "boxShadow": false,
+   "visible": true
+  },
+  "stops": 59,
+  "no_visible_focus": [],
+  "invisible_targets": []
+ }
+}

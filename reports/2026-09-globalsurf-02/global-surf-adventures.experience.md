@@ -357,3 +357,121 @@ The hero is no longer full-bleed on the phone: picture above, text on white. It 
 All three pass round 2.
 
 **The sentence for Shahar:** interactive is the one I'd book from: tap your level, watch your water, see $1,466 and book in two taps. Unique is the most beautiful, but it now stutters when you scroll. Calm is clear and smooth, but the quietest.
+
+---
+
+# Round 3 (4f, final before the human) — 2026-09-28
+
+**How it was walked:**
+- Same method, re-walked from scratch on the rebuilt `dist/`, served on 127.0.0.1:8983 (stopped afterwards).
+- Phone on slow 4G with 4× CPU, laptop at 1440 × 900.
+- Each page's motion run is a wheel scroll, measured **alone** (no parallel load), with rAF frame intervals logged.
+- Level taps and engine landings were checked in `r3/probe.json`.
+- Frames: `reports/2026-09-globalsurf-02/experience/global-surf-adventures/r3/<page>/` (motion runs in `r3/<page>-motion/`).
+- I did not open the other reviewers' reports.
+
+**Frame times, wheel scroll (rAF interval):**
+
+| page | phone p50 / p95 / frames > 50 ms / max | laptop p50 / p95 / frames > 50 ms / max |
+|---|---|---|
+| calm | 16.7 / 16.8 / 0 of 1,589 / 17 | 16.7 / 16.7 / 0 of 1,172 / 17 |
+| interactive | 16.7 / 16.8 / 0 of 1,063 / 17 | 16.7 / 16.7 / 0 of 1,259 / 17 |
+| unique | 16.7 / 16.7 / **0 of 1,495** / 33 | 16.7 / 33.3 / **5 of 1,488** / 67 |
+
+Unique's claim holds. Round 2 had 379 of 1,292 phone frames over 50 ms; round 3 has none. It is now as smooth as the other two on the phone, and near it on the laptop.
+
+**New clips, checked in the pages:**
+- The `vid-009e` hero reaches a surfer on a sunny reef wave by load + 4 s on every page (`*/phone-settled.jpg`, `*/laptop-settled.jpg`).
+- Level 3 (`vid-002e`, or `lv3-*` on interactive) is barrels only. Tapping Riders shows a rider in the barrel within 1.5 s (`calm/level-02-tap.jpg`, `unique/level-02-tap.jpg`, `interactive/level-tab-2.jpg`).
+
+**Booking, all three:**
+- The first-screen CTA reaches `/category/sri-lanka` in 1 tap.
+- A level's Book link reaches `/product/level-1-fomies` in 1 tap (checked on every page).
+- The persistent bar carries a level switch and "Book <level>".
+- Reduced motion requested no video on any page.
+- JS off: all three complete, no broken images, no hidden sections.
+
+## calm "Daybed", round 3 — **8/10, pass; better than current: yes**
+
+**Timeline, phone:**
+- **0.5 s:** a blue-to-sand gradient block where the picture goes. The name, tagline, full-width coral CTA and rating on white below it are usable (`r3/calm/phone-cold-500ms.jpg`).
+- **1.5 s:** the pool poster.
+- **Numbers:** LCP 640 ms (the poster).
+
+**The walk:**
+- **Levels restructured:** each level is now a full-width clip followed by its name, words, **$1,466**, what's included and "Book Level n" (`phone-scroll-02…07`). It is bigger and more immersive than round 2's swipe row.
+- **The bar follows your scroll:** its highlight moves Fomies → Rollers → Riders, and the button becomes "Book Rollers", then "Book Riders" (`phone-scroll-03…06`, `level-01/02-tap.jpg`).
+- **Regression:** the per-level "Book Level n" buttons are **outline buttons again** (`phone-scroll-03`, `level-02-tap.jpg`, `laptop-scroll-02…04`). The solid coral bar button still carries the booking, so no tap is lost.
+- **Laptop featureLine:** dark ink over blue water, hard to read (`laptop-scroll-06`). On the phone it is white on the pool and fine (`phone-scroll-09`).
+- **The long quote column** (`phone-scroll-18…21`) is still four screens of text.
+
+**Weight:** the phone walk loaded 3.5 MB (hero and three level clips); the laptop 4.9 MB.
+
+**Verdict:** clear, smooth, and surf on the first screen, but still the quietest page.
+
+**Remaining fixes:**
+1. Solid coral per-level Book buttons.
+2. Paint the poster at 0.5 s, not a gradient.
+3. White (or ink-on-light) featureLine on the laptop.
+4. One picture in the quote column.
+
+**Keep:** full-width level clips with the price under them; the scroll-synced bar; the full-width day photographs; smooth motion.
+
+## interactive "Pick your water", round 3 — **9/10, pass; better than current: yes**
+
+**Timeline, phone:**
+- **0.5 s:** the new phone crop is painted. Name, tagline and "8.6/10 · 80 reviews · 28 Sep 2026" sit at the top on the dark sky; the pool and umbrellas fill the middle; the coral CTA and the giant "Kabalana" sit at the bottom (`r3/interactive/phone-cold-500ms.jpg`).
+- **1.5 s:** the video is playing (a 480-px phone rendition).
+- **load + 4 s:** the surfer is centred in the frame (`phone-settled.jpg`). It is the strongest phone first screen of the three.
+- **Numbers:** LCP 788 ms (was 1,172 ms), CLS 0.
+
+**The walk:**
+- **The stage:** tap a level and the water changes (golden hour, green wall, barrel), and the price, words, "Book Level n" and bar follow (`level-tab-0/1/2.jpg`, `level-bar-2.jpg`).
+- **"Not sure which level?"** opens the WhatsApp tiles (`drawer-00.jpg`).
+- **featureLine is now white** on the hair-flip photo and reads cleanly (`phone-scroll-05`).
+- The day run opens on a photograph; the aerial is capped.
+
+**Weight:** the phone walk loaded 2.5 MB, the lightest; the laptop 7.1 MB, with every level clip viewed.
+
+**Verdict:** every earlier issue is fixed. Choosing a level is a pleasure, and booking is always one tap away.
+
+**Remaining fixes:** none that would change a visitor's experience. Polish only:
+- the rooms tap list sits beside one photo and runs long on the phone (`phone-scroll-08`);
+- the quote column is text-heavy.
+
+**Keep:** everything, especially the stage, the synced bar, the new phone hero crop and the "Not sure" drawer.
+
+## unique "Waterline", round 3 — **9/10, pass; better than current: yes**
+
+**Timeline, phone:**
+- **0.5 s:** the poster (the pool and umbrellas) is painted, with the name and tagline at the top, the coral CTA low, and the waterline across the foot (`r3/unique/phone-cold-500ms.jpg`). The round-1 and round-2 blank opening is fixed.
+- **Video:** playing by 1.5 s, the surfer on the reef wave by load + 4 s.
+- **Numbers:** LCP 608 ms.
+
+**The walk:**
+- **Level scenes:** Fomies (golden hour) → Rollers (the green wall) → Riders (**a pure barrel**, `phone-scroll-05/06`, `laptop-scroll-05`), each rising through the thin waterline, with price and a solid coral "Book Level n →" below.
+- **The bar's level switch** jumps between scenes and the Book button follows (`level-01/02-tap.jpg`).
+- **Laptop:** the most cinematic of the three (`laptop-scroll-02…06`). Scrolling it is now smooth (table above).
+- **Hero legibility:** once the video plays, "8.6/10 on Booking.com, 80 reviews, as of 28 Sep 2026" sits in white on the pale refracted water under the line, and it is hard to read (`phone-settled.jpg`).
+- **Weight:** the phone walk pulled 7.4 MB of video as the level scenes came into view (hero plus three m720 clips), the heaviest of the three. It all loads after first paint and only as you scroll, but on a metered SIM it adds up.
+
+**Verdict:** now smooth, with a real picture from the first half-second and barrels for Riders. It is the page that most makes you want to go.
+
+**Remaining fixes:**
+1. Move the rating above the waterline, or set it on a dark scrim.
+2. Load each level clip only when its scene is within one screen, and release it after, to bring the phone video total down.
+3. One picture in the amenities or quotes stretch.
+
+**Keep:** the waterline; the barrels; the bar's level switch; the poster at 0.5 s; the scroll performance fix.
+
+## Experience ranking, round 3 (final 4f)
+
+| rank | page | score | 4f | better than current | taps to book (first screen → engine / → level product) |
+|---|---|---|---|---|---|
+| 1 | interactive "Pick your water" | 9 | pass | yes | 1 / 1–2 (stage tap, then Book; or the bar) |
+| 2 | unique "Waterline" | 9 | pass | yes | 1 / 1 |
+| 3 | calm "Daybed" | 8 | pass | yes | 1 / 1 |
+
+Interactive and unique tie on score. Interactive ranks first because it has no open issue that affects a visitor, and it is the lightest on a phone. Unique still has the hard-to-read hero rating and 7.4 MB of scroll-time video.
+
+**The sentence for Shahar:** all three now beat the current site. Interactive is the easiest week to choose and book (tap your level, watch your water, book), unique is the most beautiful and now scrolls smoothly, and calm is clear and dependable but the quietest.

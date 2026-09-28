@@ -212,3 +212,113 @@ Also verify that the final "a" of "Kabalana" is not trimmed at the right contain
 - **calm:** the quiet one. It is clear, but it reads like a hotel template.
 
 None reaches 8, so the round fails on dimension 8. All three are clearly better than the current site.
+
+---
+
+# Round 3 (final 4f round)
+
+Re-scored from scratch. The pages were served again on 127.0.0.1:8982 and shot fresh at 1440 and 390. All round-3 shots are in `reports/2026-09-globalsurf-02/visual/global-surf-adventures/r3/`:
+- `r3/{calm,interactive,unique}/`
+- hero frames 5 s after load: `r3/*-hero-5s.png`
+- the new cuts at 1 fps: `r3/vid-009e-d1920-1fps.png`, `r3/vid-002e-m1280-1fps.png`
+
+The current-site and gold shots are unchanged from round 1 (`current-lodge/`, `gold-lavish/`, `gold-layday/`).
+
+**The new cuts.** vid-009e is 6.8 s: the sunny pool deck, a crossfade, then a surfer carving a sunlit turquoise wave in front of a rock island. Bright, clear and on subject; this is the right hero at last. vid-002e is 5.2 s: two barrels and then a GoPro-style ride, with no badge visible. The last 2 s are hazier and weaker than the barrels, but acceptable.
+
+**What each page plays** (Playwright, 5 s after load):
+
+| Page | Desktop | Phone |
+|---|---|---|
+| calm | vid-009e d1920 | vid-009e m1280 |
+| interactive | vid-009e d1920 | a 480-px-wide `hero-p480.webm` |
+| unique | vid-009e **m1280** | vid-009e **m720** |
+
+Interactive's 480 px file is soft on a 2x phone. Unique serves lower tiers than the other two on both widths, which costs sharpness full-bleed at 1440.
+
+## unique, round 3: 8/10, PASS (just)
+
+**Three seconds.** Desktop (`r3/unique-hero-5s.png`): a woman carving bright turquoise water. The name, tagline, coral button and rating sit in the open left half, clear of her, with the live waterline below. It is sunny, alive and unmistakably surf. I would keep scrolling. Phone (`r3/unique/mobile-00.png`): the name at the top, the rider in frame, then the button below the waterline. The subject is right, but the picture is soft because the m720 tier is stretched to 780 device px.
+
+**What changed.**
+- The round-2 problems with the hero composition and the phone crop are fixed.
+- Riders is the barrel (`r3/unique/desktop-sheet.png`, row 2).
+- The level panels are tight: the name at display size, price and button on one row.
+- The day masonry is big.
+- The page reads as one continuous film from the reef to the pool to the night.
+
+**Still weak.**
+- The Fomies scene, caught mid-scroll, is ankles and a board in murky light (`r3/unique/desktop-03.png`).
+- The level bodies now open on a lowercase fragment ("is for your first time on a board…", `desktop-03`).
+- The footage is YouTube-soft at full bleed; that is a limit of the source, not the design.
+
+**Better than current?** Yes, clearly, on the first screen (`r3/unique-hero-5s.png` vs `current-lodge/desktop-00.png`) and on the whole page (`r3/unique/desktop-sheet.png` vs `current-lodge/desktop-sheet.png`).
+
+**Closest reference.** Lavish Haven gold: the same family, with water as the device. It is now at that level: a single idea, carried consistently, on stronger media.
+
+**Remaining fixes** (polish; none blocks):
+1. Serve the d1920 tier on desktop and m1280 on phones, as the other two pages do.
+2. Fomies: pin `object-position` so the rider's upper body stays in frame during the scroll; the scene should never rest on feet.
+3. Restore full sentences at the start of the level bodies, e.g. "Fomies is for your first time on a board…".
+
+**Keep.** Everything structural: the sunny hero and its layout, the waterline, the full-bleed level scenes, the panels, the masonry, Archivo Expanded, the one-coral booking system.
+
+## interactive, round 3: 7/10, FAIL
+
+**Three seconds.** Desktop (`r3/interactive-hero-5s.png`): the sunny carve with a giant "Kabalana" across the foot. The type is still the boldest move on any of the three pages. But the hero is now under a heavy dark teal tint that turns the sunlit turquoise murky; it loses the light that makes the new cut good. Phone (`r3/interactive/mobile-sheet.png`, first frame): the rider is in frame now, but soft (the 480 px file) and tinted dark.
+
+**What changed.**
+- Fomies is now a standing surfer on desktop (`r3/interactive/desktop-sheet.png`, row 1).
+- Riders is the barrel.
+- The phone feature line sits on a teal band above the hair-flip photograph, which now shows her face.
+
+**Still weak.**
+- The hero grade.
+- The phone video is soft.
+- The phone Fomies stage still crops to legs and board (`mobile-sheet`, 3rd frame).
+- The phone sections between "What guests say" and "The spot" leave near-empty screens (`mobile-sheet`, row 2, frames 3–4).
+
+**Better than current?** Yes, both on the first screen (`r3/interactive-hero-5s.png` vs `current-lodge/desktop-00.png`) and on the whole page (`r3/interactive/desktop-sheet.png` vs `current-lodge/desktop-sheet.png`).
+
+**Remaining fixes:**
+1. Lift the hero tint to a bottom-third gradient only, so the water stays turquoise and the sun stays in it.
+2. Serve m1280 on phones instead of the 480 px file.
+3. On a phone, crop the Fomies stage on the rider's upper body.
+4. Close the empty phone screens around "The spot".
+
+**Keep.** The giant "Kabalana". Barlow Condensed. The desktop level stage. The desktop hair-flip feature. The closing trio of level words.
+
+## calm, round 3: 7/10, FAIL
+
+**Three seconds.** Desktop (`r3/calm-hero-5s.png`): the sunny carve as a clean top band, then the name and button on white below. It is calm, legible and honest, but the video is cut off by a white slab at 72 % of the height, so it reads more as a hotel header than a surf first screen. Phone (`r3/calm/mobile-sheet.png`, first frame): the best of the three phone first screens. The rider is sharp in the band, then the name, button and rating on white.
+
+**What changed.**
+- The pricing cards are gone. The levels are now staggered editorial rows of video plus text, with outline buttons (`r3/calm/desktop-sheet.png`, row 2). This is a large improvement.
+- The desktop hero card no longer covers the surfer.
+
+**Still weak.**
+- The feature line "Footwear is discouraged…" is set in dark ink on dark pool water on desktop (`desktop-sheet`, row 3); it is barely readable.
+- The dangling "Level 1 –" labels with the dash are back.
+- Between the pictures it is still a well-made hotel template: nothing on the page is its own idea.
+
+**Better than current?** Yes, both on the first screen (`r3/calm-hero-5s.png` vs `current-lodge/desktop-00.png`) and on the whole page (`r3/calm/desktop-sheet.png` vs `current-lodge/desktop-sheet.png`).
+
+**Remaining fixes:**
+1. Set the feature line in white over the pool.
+2. On desktop, let the video run full height and set the name low-left on it, keeping the white-panel layout for phones.
+3. Drop the "Level n –" dash labels.
+
+**Keep.** The phone hero. The editorial level rows. The daybed intro. The day strip. The night band. Sora.
+
+## Round 3 ranking (visual only)
+
+1. **unique, 8/10, pass.** The only variant that clears the bar: a sunny surf film that flows into the lodge through a waterline.
+2. **interactive, 7/10, fail.** The strongest type, but the dark tint smothers the new sunny hero and the phone video is soft.
+3. **calm, 7/10, fail.** Clean and the best on a phone, but still a hotel template with a white slab under a cropped video.
+
+**For Shahar, one sentence each:**
+- **unique:** the surf week as one continuous film, from a sunny reef wave through a live waterline into the lodge. The one I'd show.
+- **interactive:** a giant "Kabalana" over the wave and a stage where you pick your water. The boldest type, not yet finished on a phone or in the hero grade.
+- **calm:** the quiet, clear one. It works well on a phone, but you won't remember it.
+
+All three are clearly better than the current site. Only unique reaches 8.

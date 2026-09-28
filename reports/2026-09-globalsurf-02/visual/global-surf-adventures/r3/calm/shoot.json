@@ -1,0 +1,19 @@
+{
+  "target": "http://127.0.0.1:8982/calm/dist/index.html",
+  "widths": {
+    "desktop": {
+      "pageHeight": 12391,
+      "scroller": "window",
+      "captures": 16,
+      "truncated": false,
+      "errors": []
+    },
+    "mobile": {
+      "pageHeight": 16411,
+      "scroller": "window",
+      "captures": 22,
+      "truncated": false,
+      "errors": []
+    }
+  }
+}

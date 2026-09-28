@@ -302,3 +302,142 @@ fix list (not failing): find the scroll-time layout shift (0.089 desktop) · mak
 what the designer prompt got wrong (round 2): The prompt still does not say that a clip the orchestrator edits must be entered in `dossier.json` `videos[]`, and not only in `assets/index.json`, before it reaches a mockup. The v0.8 seed reads only the dossier. It also does not say that self-hosted fonts belong in cacheable woff2 files, not in data URIs inside the HTML. interactive's inline fonts cost 470 ms of LCP.
 
 Not tested in round 2: a real phone or GPU, Safari, axe, a frame-by-frame contrast scan of the vid-009e loop, and the engine's screens after landing.
+
+---
+
+# Round 3 (final)
+
+critic 0.4.0 · rubric 0.3.0 · 2026-09-28 · mockups at commit `5933b4d` (4e round 3) · dimensions 1–7 only. The visual critics' reports were not opened.
+
+Same checks in the same order as round 2: `audit-mockup.mjs` → `shoot.mjs` over http://127.0.0.1:8981 → the critic probe (tap-through, skip target, reduced motion, Save-Data, CLS after a full scroll) → `check-design.mjs` → page text against en.json and the dossier. This round the text check also confirms that every en.json sentence is rendered, including sentences split across a heading and a paragraph. Then ffprobe on every rendition.
+
+Evidence:
+- `reports/2026-09-globalsurf-02/critic/r3/<variant>/shots/`, `<variant>-probe.json` and `<variant>-text.txt`
+- `sites/global-surf-adventures/mockups/<variant>/audit.json` (overwritten with the round-3 run)
+
+## The sentence the human needs (round 3)
+
+All three pass the critic's gates, with no hard fail.
+- **interactive** is the cleanest: 0 third-party requests on load, fonts self-hosted, and no tap target under 44 px.
+- **unique** reads correctly on screen, but its level sentences are split so that screen-reader order puts the price, button and rating between "Level 1 – Fomies" and "is for your first time…". Its desktop bar also shows "8.6 Booking.com" with no count or date.
+- In all three, the new hero edit runs 6.8 s, under playbook §1a's 8 s low end.
+
+## Summary (round 3)
+
+| variant | d1 (20) | d2 (15) | d3 (15) | d4 (5) | d5 (10) | d6 (8) | d7 (7) | total /80 | r2 | r1 | hard fails |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| calm | 10 | 9 | 9 | 8 | 9 | 9 | 8 | **72.8** | 72.8 | 70.0 | none |
+| interactive | 10 | 9 | 9 | 9 | 9 | 9 | 10 | **74.7** | 74.7 | 69.2 | none |
+| unique | 9 | 9 | 9 | 9 | 8 | 8 | 8 | **69.5** | 73.3 | 72.0 | none |
+
+## Measured (round 3)
+
+| line | target | calm | interactive | unique |
+|---|---|---|---|---|
+| first-load transfer, phone (audit.json) | ≤ 1.5 MB | 202 KB | 211 KB | 280 KB |
+| LCP / CLS on load | ≤ 2.5 s / < 0.1 | 644 ms / 0 | 720 ms / 0 | 660 ms / 0.0012 |
+| CLS after a full scroll, phone / desktop | – | 0.011 / 0.005 | 0 / 0 | 0.005 / 0.008 (was 0.089) |
+| third-party on load | 0 | 2 (Google Fonts, allowed at 4e) | **0** | 2 (Google Fonts) |
+| largest image | ≤ 300 KB | 51 KB | 64 KB | 56 KB |
+| tap targets < 44 px (phone / desktop) | 0 | "globalsurf.com" credit 99×17 (both) | 0 / 0 | 0 / logo 237×23 |
+| skip link first, target exists | yes | yes (`#levels`) | yes (`#levels`) | yes (`#main`) |
+| overflow-x at 390 | 0 | 0 | 0 | 0 |
+
+**Video, round 3:**
+- **Poster first in all three.** The video request follows first paint: calm +370 ms (phone) / +355 ms (desktop), interactive +45 / +27, unique +501 / +541.
+- **Reduced motion and Save-Data: 0 video requests** on load and after a full scroll, at both widths, in all three.
+- **Hero `vid-009e` (round-3 edit), 6.8 s, video stream only, all MP4 faststart:**
+  - m1280 webm 1.36 MB / mp4 1.87 MB, d1920 webm 2.59 MB / mp4 3.27 MB.
+  - interactive's phone portrait `hero-p480` is 0.94 MB webm / 1.09 MB mp4.
+  - unique serves m720 mp4 (1.53 MB) on the phone and m1280 on desktop; its dist has no d1920.
+  - All sizes are inside ≤ 2 MB / ≤ 4 MB. **The length, 6.8 s, is under §1a's "8–20 s".**
+- **Level clips, scroll only:**
+  - calm: designer trims of 3.0–4.3 s; phone 1.1 MB for all three, desktop 2.1 MB.
+  - interactive: phone 0.30 MB for one; desktop 3.0 MB for three.
+  - unique: 4.6 MB (phone) / 5.1 MB (desktop) for three.
+- **Provenance:** `vid-009e` and `vid-002e` are still only in `assets/index.json` (business-owned edits). `dossier.json` `videos[]` has 0 entries for them, and the v0.8 seed needs them before 4g.
+
+**Rosa (calm and interactive):**
+- 0 Rosa requests on load.
+- After scroll: one `south-point.json` request plus the widget frame.
+- JS off: the plain link shows.
+- CLS after the widget arrived: ≤ 0.011.
+
+**Tap-through (phone):** in all three, the first above-the-fold booking action is "See the weekly surf packages and dates". Tapping it navigated to `https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka`, class engine, the same as `recommended`. With JS off, 9–11 booking links are reachable.
+
+## Facts and copy, round 3
+
+- **Every en.json sentence rendered?**
+  - Calm: 38/38.
+  - Interactive: 34/38 in `innerText`. The 4 misses are the Level 2 and Level 3 bodies, which sit in inactive stage panels; they are in the DOM and show on selection or with JS off.
+  - Unique: 35/38 as whole sentences. The 3 split level sentences are covered below.
+- **Testimonials:** calm 4, interactive 9, unique 6, all verbatim with named sources.
+- **Unique's split sentences, checked word by word.** The heading holds "Level 1 – Fomies" (the dash visually hidden) and the paragraph "is for your first time on a board, no surfing experience needed. …". The same pattern holds for Rollers, and for Riders with its colon.
+  - The words are en.json's, in order, with nothing added or dropped, so the statement is unchanged.
+  - On screen the heading sits directly above the paragraph at both widths (`r3/unique/shots/`), so it reads as one sentence.
+  - **In DOM and reading order, though, the price, "Base price…", the book button and the rating link come between the heading and "is for…".** A screen reader, reader mode or a CSS-off view reads a subjectless fragment. This is scored under d5/d6, not d1: nothing is misstated.
+- **New labels this round:**
+  - calm: "per person, 7 nights" and "price read 28 Sep 2026" on separate lines. Match with `offers[]`, fetched 2026-09-28.
+  - unique desktop header: **"8.6 Booking.com" with no count or capture date** (the HTML's only 8.6 without "reviews"). Playbook §6 requires both on a headline rating block. The page's other rating blocks carry them.
+  - Everything else is unchanged from round 2 and still matches.
+- 0 mismatches and 0 unsourced claims in all three.
+
+---
+
+```
+mode: quick        round: 3        variant: calm
+total: 72.8 / 80 (d1–7)   result: pass (critic gates; d8 from the visual critics)   hard_fails: []
+```
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | 38/38 copy sentences; 0 mismatches; ratings carry count and date. |
+| 2 | mobile + perf | 9 | 202 KB, LCP 644 ms, CLS 0. Hero 1.36 MB phone, 2.59 MB desktop, after paint. Minus: Google Fonts; hero 6.8 s under §1a's 8 s. |
+| 3 | booking CTA | 9 | Tap lands on the engine category. Per-level product URLs char-for-char. Minus: the WhatsApp prefill does not name the level. |
+| 4 | brand fit | 8 | §3 order. Minus: level clips move against the calm brief (declared); no drawer. |
+| 5 | copy | 9 | en.json verbatim. |
+| 6 | accessibility | 9 | Skip link, alt 0 missing, 0 video under reduced motion. Minus: the "globalsurf.com" credit is still 99×17. |
+| 7 | security + delivery | 8 | Static, relative, 1 lazy embed. Minus: Google Fonts. |
+
+```
+mode: quick        round: 3        variant: interactive
+total: 74.7 / 80 (d1–7)   result: pass (critic gates; d8 from the visual critics)   hard_fails: []
+```
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | 0 mismatches; 9/9 quotes; ratings (bar included) carry count and date. |
+| 2 | mobile + perf | 9 | 211 KB, LCP 720 ms (down from 1092; inline font subsets now, HTML 113 KB), CLS 0. Phone hero 0.94 MB. Minus: hero 6.8 s under 8 s. |
+| 3 | booking CTA | 9 | Tap lands on the engine category. Stage/bar product links char-for-char. Level-specific WhatsApp prefills. Not tapped on a real phone. |
+| 4 | brand fit | 9 | Cool ground hsl(204 33% 97%). Brief met. Minus: no drawer. |
+| 5 | copy | 9 | en.json verbatim; the L2/L3 bodies sit in inactive panels (in the DOM). |
+| 6 | accessibility | 9 | 0 targets under 44 px, skip link, alt 0 missing, 0 video under reduced motion. Minus: the Rosa iframe focus ring is Rosa's; I did not re-scan the feature-line contrast on the phone (the designer reports 4.6–5.0:1 on desktop). |
+| 7 | security + delivery | 10 | 0 third-party on load; fonts self-hosted; 1 lazy embed with a fallback. |
+
+```
+mode: quick        round: 3        variant: unique
+total: 69.5 / 80 (d1–7)   result: pass (critic gates; d8 from the visual critics)   hard_fails: []
+```
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 9 | 0 mismatches. Minus: the desktop header's "8.6 Booking.com" has no count or date (playbook §6). |
+| 2 | mobile + perf | 9 | 280 KB, LCP 660 ms, CLS 0.0012; scroll CLS fixed (0.008). Hero 1.53 MB phone m720, 1.87 MB desktop m1280. Minus: Google Fonts; hero 6.8 s. |
+| 3 | booking CTA | 9 | Tap lands on the engine category. Level scenes and the bar go to the product URLs. Minus: the WhatsApp prefill does not name the level. |
+| 4 | brand fit | 9 | Phone level switch; cool ground; unique brief met. Minus: no drawer. |
+| 5 | copy | 8 | Level sentences split across heading and paragraph, words verbatim, but read in DOM order the price, button and rating separate the subject from "is for…". |
+| 6 | accessibility | 8 | Skip link, 0 targets under 44 px on the phone, 0 video under reduced motion, canvases hidden. Minus: the reading-order split above; desktop logo 237×23. |
+| 7 | security + delivery | 8 | Static, 0 embeds, 0 third-party after scroll. Minus: Google Fonts. |
+
+### check-design default-look facts, round 3 (none fail)
+calm Sora, hsl(225 20% 96%) · interactive Barlow / Barlow Condensed, hsl(204 33% 97%) · unique Archivo, hsl(215 39% 90%). All: 0 all-caps labels, 0 labelled headings.
+
+fix list for 4g (all variants, smallest first):
+1. Put the count and date on unique's header rating.
+2. Make calm's credit link and unique's logo link 44 px tall.
+3. In unique, move each level's `.who` paragraph directly after its heading in the DOM (the layout can stay).
+4. Name the level in the calm/unique WhatsApp prefills.
+5. Self-host the fonts (calm, unique).
+6. Enter `vid-009e` / `vid-002e` in `dossier.json` `videos[]`.
+7. Decide whether a 6.8 s hero is accepted under §1a's 8–20 s.
+
+what the designer prompt got wrong (round 3): The prompt allows a copy sentence to be split across elements for layout, but it does not require the pieces to stay adjacent in DOM and reading order. It also does not carry playbook §1a's 8–20 s length window to clips the orchestrator edits.
+
+Not tested in round 3: a real phone or GPU, Safari, axe, the engine's screens after landing, and a frame-by-frame contrast scan of the round-3 hero.
