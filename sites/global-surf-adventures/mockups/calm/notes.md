@@ -162,3 +162,33 @@ Old-site screenshots beside the sheets. **Desktop hero:** the white plate over t
 | video requests, reduced motion, full scroll | 0 | — |
 
 `check-design` (file path): pass. `funnel` (file path): clicks_to_book 1, primary engine, CTA above the fold, 0 broken.
+
+---
+
+# Round 4 (after 4f round 3: visual-critic 7 fail, experience-critic 8)
+
+## look-log, round 11
+
+Old-site screenshots beside the sheets.
+- **Desktop hero:** the film runs full-bleed to the fold again; the white slab is gone. The title sits quietly low-left, clear of the surfer, who is centre-right in every surf frame. Behind the words only, a soft local shade: ink at 0.62, fading out from 43 % to 67 % of the width and from 42 % to 61 % of the height (mask). I measured it against every frame of vid-009e at 6 fps (41 frames), cropped as the page crops it at 1440×900, taking the 95th-percentile background under each text box. Worst case: name 5.6:1, tagline 5.6:1, rating 6.1:1. The phone keeps the film band with the text on white below, which the critics rated the best phone first screen.
+- **Poster at 0.5 s:** the poster is a 25 KB AVIF inlined in the HTML, so it paints with the document. `static/slow4g-0.5s-390.png` shows the pool poster at 0.5 s on simulated 4G, not a gradient. The video's `poster` is set from that image when the video is attached.
+- **Feature line, the page's one still moment:** img-005 fills the viewport, the pool from the water's surface. "Footwear is discouraged. Chilling out is inescapable." sits on the water below the waterline, in white, over a soft local shade. Measured against the image without the text: 6.6:1 (95th percentile) at 1440 and 5.2:1 at 390.
+- **Levels:** no dash labels. Each level's heading is en.json's first sentence, whole ("Level 1 – Fomies is for your first time on a board, no surfing experience needed."), and its second sentence follows as the body. The Book buttons are solid coral again. The stills are big, alternate sides, and use single-shot trimmed clips. The Fomies crop is re-centred on the rider at 42 % on desktop and 46 % on the phone.
+- **Quotes:** on the phone they are now a swipe row with a peek instead of four screens of text; on desktop they stay in two columns. "Read all 80 reviews on Booking.com" follows.
+
+Versus the old lodge page: their own sunlit surf on the full first screen, then the pool, then a priced week per level. It is clearly better at a glance and over the whole page.
+
+## conflicts, round 4
+
+15. **The hero shade is a local gradient on the film, not a panel.** check-design passes. The shade is part of the picture and never sits behind body text outside the hero.
+16. **The inlined poster (25 KB AVIF, about 34 KB of base64) adds to the HTML** (76 KB transferred), in exchange for a poster that paints at 0.5 s. The page also fetches no separate poster AVIF.
+
+## measured, round 4
+
+| | phone 390 | desktop 1440 |
+|---|---|---|
+| first load, video excluded | 192 KB | 228 KB |
+| hero video after first paint | 1.36 MB | 2.59 MB |
+| video requests, reduced motion, full scroll | 0 | — |
+
+check-design (file path): pass. funnel (file path): clicks_to_book 1, primary engine, CTA above the fold, 0 broken.

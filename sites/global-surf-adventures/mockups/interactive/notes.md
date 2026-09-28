@@ -47,14 +47,24 @@ Round-9 sheets showed the day heading breaking into four lines in a 30 vw column
 
 **Round 12 — final look.** `shots/round-12/vs-old-site.png` puts the old lodge fold beside ours at both widths, each on the pool poster and on a surf frame. `stage-sheet.png` shows the three levels at both widths: Fomies opens on the stand-up, Rollers on the reef ride, Riders in the barrel. Ours is clearly better at a glance: their own sunny pool, then a surfer, with the place's name as the one big word, the rating with count and date, and one coral action, against a dark earth aerial with a breadcrumb. Not checked on a real phone or GPU.
 
+**Round 13 — critic round 4 (visual 7, experience 9; cap lifted).**
+- **Hero grade.** The full-height dark tint is gone; the sunny water now reads true (`shots/round-13/vs-old-site.png`, pool and surf frames). On desktop too, the tagline and rating moved to a row under the header, so the text needs only a short gradient at the top (to ≈ 29 % height) plus a light one behind the giant word at the foot (to 30 %).
+- **Hero contrast.** Measured on every frame of the served loop at 2.5 fps, white text, p75. Tagline ≥ 6.2:1, rating ≥ 7.8:1, name ≥ 8.3:1, nav ≥ 8.7:1 at 1024–1920. On 390 and 360 phones everything is ≥ 5.4:1.
+- **Phone hero video.** New `hero-p960` (960×2080), same pool-to-surfer pan. It is Lanczos-upscaled with light unshar from the 498 px of real source width a portrait crop of the 1920×1080 original allows, two-pass encoded to 1.57 MB webm / 1.67 MB mp4, within the 2 MB phone budget. The poster is 960 px wide (57 KB webp). The softness is the source's limit; this rendition only stops the browser's own upscale.
+- **Phone Fomies.** Two causes:
+  - The sticky level switch was sliding over the top of the clip as the stage scrolled, which hid the rider's head and left legs; the switch is no longer sticky on phones (the bottom bar still switches levels).
+  - The phone clip is now an upper-body 4:5 crop (576×720 from a 648×810 window at the top of the frame), cut to src 19.9–21.1 s + 28.6–31 s. The stand-up, the whitewater ride and the cheering instructor all keep their heads in frame (`stage-mobile-sheet.png`).
+- **Empty phone screens around "The spot".** Vertical spacing tightened on phones in the lodge, guests, quotes, spot, forecast and getting-here sections, and the forecast's reserved minimum height dropped on phones. The 500 px widget box stays, because the reserved-space rule requires it; over http it holds Rosa's card.
+- Everything the critics kept is unchanged: the giant "Kabalana", Barlow Condensed, the desktop level stage, the desktop hair-flip feature, the closing trio of level words.
+
 ## images
 
 All `business-owned` (dossier `images[].license`, `assets/index.json` for the edits).
 
 | use | asset | source px | note |
 |---|---|---|---|
-| hero video + poster | vid-009e (orchestrator edit, round-3 version): d1920/m1280 webm+mp4 and poster copied unchanged; `hero-p480` phone portrait pan-crop (mine) + its poster crop | 1920×1080 | |
-| Level 1 clip | `lv1-*`: my re-cut of the vid-010 d1920 rendition (src 19.9–21.1 s + 28–31 s); desktop 1280 WebM/MP4, phone 4:5 crop 480×600 | 1920×1080 | the crop removes the corner badge |
+| hero video + poster | vid-009e (orchestrator edit, round-3 version): d1920/m1280 webm+mp4 and poster copied unchanged; `hero-p960` phone portrait pan-crop, 960 px Lanczos upscale of a 498 px source window (mine) + its poster crop | 1920×1080 | |
+| Level 1 clip | `lv1-*`: my re-cut of the vid-010 d1920 rendition (src 19.9–21.1 s + 28.6–31 s); desktop 1280 WebM/MP4, phone upper-body 4:5 crop 576×720 | 1920×1080 | the crop removes the corner badge |
 | Level 2 clip | `lv2-*`: vid-003 cut, first 7 s (reef rides) | 1920×1080 | the crop removes the corner badge |
 | Level 3 clip | `lv3-*`: from vid-002e (orchestrator edit, barrels only, badge already cropped) | 1920×1080 | |
 | feature, full-bleed | img-016 | 2000×1333 | footwear line set over its white wall |
@@ -88,9 +98,9 @@ All `business-owned` (dossier `images[].license`, `assets/index.json` for the ed
 
 None (run has one business; `concepts.md` divergence table). Against the two sibling variants: this is the only one whose booking section is a pinned stage where the clip changes with the chosen level, the only one with the giant place word over the hero and the pinned horizontal day run.
 
-## checks (run once, at the end of round 12)
+## checks (run once, at the end of round 13)
 
-- `node tools/check-design.mjs sites/global-surf-adventures/mockups/interactive/dist/index.html` → ok, 0 problems, 0 warnings (Barlow / Barlow Condensed, ground hsl(204 33% 97%), all-caps labels 0).
+- `node tools/check-design.mjs sites/global-surf-adventures/mockups/interactive/dist/index.html` → ok, 0 problems, 0 warnings.
 - `node tools/funnel.mjs sites/global-surf-adventures/mockups/interactive/dist/index.html --out …/interactive/funnel` → clicks_to_book 1, primary engine, CTA above the fold true, broken 0.
-- Weight (headless over http, no scroll). First load without video: phone 212 KB (HTML with inline font subsets 113, hero poster 24, Level 1 poster 10, img-016 64 pulled by the lazy-load threshold); desktop 216 KB. Hero video after first paint: 0.92 MB phone (`hero-p480.webm`), 2.53 MB desktop (vid-009e d1920 webm). Level clip only within 200 px of the stage: 0.29 MB phone, 0.73 MB desktop; other levels only when chosen. Reduced motion: 0 video requests. CLS 0.0000 at both widths.
-- LCP: 0.77 s on the throttled phone (1.6 Mbps, 150 ms RTT, 4× CPU); round 2 was 1.15 s.
+- Weight (headless over http, no scroll). First load without video: phone 244 KB (HTML 114, hero poster 57, Level 1 poster 8, img-016 64 via the lazy-load threshold); desktop 216 KB. Hero video after first paint: 1.50 MB phone (`hero-p960.webm`), 2.53 MB desktop. Level clip only within 200 px of the stage: 0.23 MB phone, 0.60 MB desktop. Reduced motion: 0 video requests. CLS 0.0000 at both widths.
+- LCP: 0.89 s on the throttled phone (1.6 Mbps, 150 ms RTT, 4× CPU).
