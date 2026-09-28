@@ -53,6 +53,8 @@ const ENGINES = [
   'simplybook.', 'acuityscheduling.com', 'bokun.io', 'viator.com', 'getyourguide.', 'trekksoft.com',
   'lodgify.com', 'guesty.com', 'hostaway.com', 'eviivo.com', 'sirvoy.com', 'octorate.com', 'wubook.net',
   'mews.com', 'surfbookings', 'bookwhen.com',
+  // 0.1.2: surf-camp and tour engines (Global Surf's hero CTA went unseen)
+  'bookinglayer.io', 'booksurfcamps.com', 'surfcamp-online', 'regiondo.', 'xola.com', 'rezgo.com', 'bokun.', 'palisis', 'tripworks', 'wetravel.com', 'stripe.com/pay', 'payment.link',
 ];
 // "book" in the languages a Sri Lankan surf site is likely to carry; extend per run when needed.
 const BOOK_WORDS = /\b(book|booking|reserve|reservation|check availability|availability|enquire|enquiry|inquire|inquiry|contact us|get in touch|buchen|reservieren|anfrage|reservar|reserva|réserver|prenota|boka|забронировать)\b/i;
@@ -192,7 +194,7 @@ for (const p of pages) {
 }
 // Tapping an action on the landing page is itself one tap: clicks_to_book = depth + 1.
 const summary = {
-  tool: 'funnel.mjs', version: '0.1.1', measured_at: new Date().toISOString(),
+  tool: 'funnel.mjs', version: '0.1.2', measured_at: new Date().toISOString(),
   start_url: start, whitelabel_engine: whitelabelEngine, final_landing_url: landing?.final_url ?? null, landing_status: landing?.status ?? null,
   landing_error: landing?.error ?? null,
   viewport: VIEWPORT, viewport_meta: landing?.viewport_meta ?? false, landing_text_chars: landing?.text_chars ?? 0,

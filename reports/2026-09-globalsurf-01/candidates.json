@@ -1,0 +1,183 @@
+{
+  "run_id": "2026-09-globalsurf-01",
+  "generated_at": "2026-09-28T12:15:00Z",
+  "scout_version": "0.3.0",
+  "area": {
+    "mode": "business",
+    "anchors": [
+      {
+        "query": "Global Surf Adventures (globalsurf.com) — primary location: Global Surf Lodge Kabalana, Ahangama, Sri Lanka",
+        "lat": 5.9810484,
+        "lng": 80.3420635,
+        "geocoder": "Google Maps place pin for 'Global Surf Lodge' (listing links to globalsurf.com/global-hotels/sri-lanka/kabalana-surf-lodge/); Nominatim returned [] for 'Global Surf Adventures', 'Global Surf Lodge Kabalana, Ahangama, Sri Lanka' and 'Global Surf Lodge, Ahangama' (2026-09-28T12:13:19Z). Cross-checked against the Booking.com property pin 5.9811597,80.3420327 (13 m away).",
+        "geocoder_source_url": "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!8m2!3d5.9810484!4d80.3420635?hl=en",
+        "fetched_at": "2026-09-28T12:12:08Z"
+      }
+    ],
+    "radius_m": 0,
+    "shore_buffer_m": null,
+    "polygon": "reports/2026-09-globalsurf-01/area.geojson",
+    "note": "radius_m 0: the area is the anchor business only, no polygon search. area.geojson carries the anchor Point as the area; the only candidate is the anchor itself (inside by definition)."
+  },
+  "presence_threshold": 5,
+  "candidates": [
+    {
+      "slug": "global-surf-adventures",
+      "name": "Global Surf Adventures",
+      "type": "surf_camp",
+      "type_note": "Global Surf Adventures is an Israel-registered surf travel agency ('A unique travel agency for ocean lovers') selling trips to Sri Lanka, Maldives, Morocco, Angola and Mozambique plus retreats and ISA courses; it owns/operates one property, Global Surf Lodge Kabalana (Ahangama, Sri Lanka), sold as level-based surf packages. surf_camp fits the lodge; no run.yaml type fits a multi-destination travel agency. Coordinates are the lodge's, as the best-evidenced physical location (the Israeli HQ has a phone number but no published address).",
+      "location": {
+        "lat": 5.9810484,
+        "lng": 80.3420635,
+        "address": "Henewatta addara gederawata, Ahangama 80650, Sri Lanka (Google Maps; plus code X8JR+CR Ahangama)",
+        "inside_buffer": true,
+        "distance_to_anchor_m": 0,
+        "distance_to_shore_m": 45,
+        "other_locations": [
+          "Maldives (liveaboard/resort trips)",
+          "Morocco",
+          "Angola",
+          "Mozambique (page timed out in the probe)",
+          "HQ Israel: phone +97299733943, no address published on the site"
+        ]
+      },
+      "contact": {
+        "phone": "+97299733943",
+        "whatsapp": "+972523593240",
+        "email": "info@globalsurf.com",
+        "phone_lodge": "+94770776747",
+        "note": "phone/whatsapp/email from globalsurf.com (HQ, Israel); phone_lodge from the Google Maps listing of Global Surf Lodge."
+      },
+      "socials": {
+        "instagram": "https://www.instagram.com/globalsurf_/",
+        "facebook": "https://www.facebook.com/GlobalSURFltd/",
+        "tripadvisor": "https://www.tripadvisor.com/Hotel_Review-g674590-d10171834-Reviews-Global_Surf_Lodge_Kabalana-Ahangama_Galle_District_Southern_Province.html",
+        "google_maps": "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!8m2!3d5.9810484!4d80.3420635?hl=en",
+        "youtube": "https://www.youtube.com/channel/UCh-GTj4Wu2FbdXpr-xNSGzQ",
+        "booking_com": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.html",
+        "booksurfcamps": "https://www.booksurfcamps.com/global-surf-lodge-kabalana"
+      },
+      "existing_site": {
+        "url": "https://www.globalsurf.com/",
+        "status": 200,
+        "mobile_friendly": true,
+        "last_updated_hint": "footer '© 2019'; key pages dateModified 2023 (home 2023-05-09, lodge 2023-05-07, contact 2023-12-07); newest sitemap page 2026-03-18",
+        "has_booking": true,
+        "booking_note": "Bookinglayer engine (globalsurfadventures.bookinglayer.com) with Sri Lanka level packages, linked from the above-fold hero button and 'Book Your Stay'; the lodge page's link goes via a '/tests/' URL that redirects to the engine home. Plus WhatsApp, tel and inquiry forms. No prices on the site itself.",
+        "funnel": {
+          "clicks_to_book": 1,
+          "primary_action": "engine",
+          "cta_above_fold": true,
+          "measured_at": "2026-09-28T12:16:51.750Z",
+          "report": "reports/2026-09-globalsurf-01/funnel/global-surf-adventures/funnel.json",
+          "note": "re-measured by the orchestrator with tools/funnel.mjs 0.1.2 after the scout reported 0.1.1 missed the Bookinglayer hero button"
+        }
+      },
+      "presence": {
+        "score": 4,
+        "reason": "Mobile site with a working Bookinglayer engine and WhatsApp (funnel probe: clicks_to_book 1 via the footer WhatsApp link, cta_above_fold false because the probe does not recognise the engine the hero button links to), but content is stale: footer '© 2019', key pages last modified 2023, the lodge's booking link points at a '/tests/' URL, and the Mozambique page timed out.",
+        "criteria": [
+          "mobile_viewport",
+          "booking_engine",
+          "whatsapp",
+          "content_stale",
+          "no_cta_above_fold",
+          "broken_page",
+          "no_prices_on_site",
+          "multi_destination_agency"
+        ]
+      },
+      "evidence": [
+        {
+          "source_url": "https://www.globalsurf.com/",
+          "fetched_at": "2026-09-28T12:10:23Z",
+          "note": "Home page, HTTP 200, viewport meta present, lang en-US. Title 'Welcome to Global Surf - Surf Vacations & Trips For All Levels'. Hero button 'Ready to catch my first wave' links to https://globalsurfadventures.bookinglayer.io/frontoffice/#/. Footer: 'All rights reserved Global Surf Adventures 2019', info@globalsurf.com, wa.me/972523593240, Instagram/Facebook/YouTube links. dateModified 2023-05-09."
+        },
+        {
+          "source_url": "https://www.globalsurf.com/global-hotels/sri-lanka/kabalana-surf-lodge/",
+          "fetched_at": "2026-09-28T12:10:27Z",
+          "note": "Lodge page: 'Global Surf Lodge Kabalana … just a few steps from the ocean', 12 rooms from 4-bed dorms to private rooms, levels 1–3 + Freestylers, daily yoga. 'BOOK YOUR STAY' links to globalsurfadventures.bookinglayer.com/tests/en/category/sri-lanka (a '/tests/' URL). No prices on the page. dateModified 2023-05-07."
+        },
+        {
+          "source_url": "https://www.globalsurf.com/contact/",
+          "fetched_at": "2026-09-28T12:10:24Z",
+          "note": "Contact page: tel:+97299733943 'CALL NOW', WhatsApp wa.me/972523593240, inquiry form (name/email/phone/destination Sri Lanka, Maldives, Morocco, Angola/message), info@globalsurf.com. dateModified 2023-12-07."
+        },
+        {
+          "source_url": "https://www.globalsurf.com/terms-conditions/",
+          "fetched_at": "2026-09-28T12:13:30Z",
+          "note": "'Global Surf is a company registered in Israel … our operations in each and every country, are registered by a local company which is part of Global Surf HQ … Global Surf Lanka is a company registered in Srilan[ka]'; phone 00 972 9 973 3943; charges in NIS or USD."
+        },
+        {
+          "source_url": "https://www.globalsurf.com/page-sitemap.xml",
+          "fetched_at": "2026-09-28T12:14:00Z",
+          "note": "Most recent page lastmod 2026-03-18 (contact-us-longboard-mastermind-workshop-angola); next 2024-11-06 (terms), 2024-03-22, 2024-02-09 (kabalana-lodge-surf-packages)."
+        },
+        {
+          "source_url": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+          "fetched_at": "2026-09-28T12:11:30Z",
+          "note": "Bookinglayer engine (headless, JS-rendered): Sri Lanka category lists 'LEVEL 1 - Fomies', 'LEVEL 2 - Rollers', 'LEVEL 3 - Riders', 'Freestylers - B&B only package'. The site's '/tests/en/category/sri-lanka' and 'bookinglayer.io/frontoffice/#/category/8337' links both redirect to the engine home /en."
+        },
+        {
+          "source_url": "reports/2026-09-globalsurf-01/funnel/global-surf-adventures/funnel.json",
+          "fetched_at": "2026-09-28T12:10:11.725Z",
+          "note": "tools/funnel.mjs 0.1.1 --depth 1, 390×844: clicks_to_book 1 (footer WhatsApp icon at top 3795 px), cta_above_fold false, 16 pages crawled, 1 error (Mozambique page timed out after 30 s). bookinglayer.io/.com is not in the probe's ENGINES list, so the hero engine button was not counted as a booking action."
+        },
+        {
+          "source_url": "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!8m2!3d5.9810484!4d80.3420635?hl=en",
+          "fetched_at": "2026-09-28T12:12:08Z",
+          "note": "Google Maps place 'Global Surf Lodge', 4.7 stars (review count not rendered in headless view), 3-star hotel, address 'Henewatta addara gederawata, Ahangama 80650, Sri Lanka', plus code X8JR+CR Ahangama, website globalsurf.com (lodge page), phone +94 77 077 6747, check-in 14:00 / check-out 11:00, pin 5.9810484,80.3420635."
+        },
+        {
+          "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.html",
+          "fetched_at": "2026-09-28T12:12:00Z",
+          "note": "Booking.com 'Global Surf Lodge Kabalana' (URL slug is the older name 'Kabalana by Ceilao Villas'): pin 5.9811597,80.3420327, address 'Henewaththa Addara Gedarawaththa Kathaluwa, 80650 Ahangama, Sri Lanka', score 8.6 'Excellent · 80 reviews'."
+        },
+        {
+          "source_url": "https://www.tripadvisor.com/Hotel_Review-g674590-d10171834-Reviews-Global_Surf_Lodge_Kabalana-Ahangama_Galle_District_Southern_Province.html",
+          "fetched_at": "2026-09-28T12:11:40Z",
+          "note": "TripAdvisor listing 'Global Surf Lodge Kabalana' — found by web search (snippet: ranked #8 of 86 B&Bs/inns in Ahangama, 4 of 5). Direct fetch returned 403 (bot wall); not verified first-hand."
+        },
+        {
+          "source_url": "https://www.booksurfcamps.com/global-surf-lodge-kabalana",
+          "fetched_at": "2026-09-28T12:11:40Z",
+          "note": "BookSurfCamps listing — found by web search (snippet: 12 rooms, between Ahangama and Kathaluwa stations, 30% non-refundable deposit; package '8 Day 7 Night Surf & Yoga Camp …'). Direct fetch returned 403 (Cloudflare challenge); not verified first-hand."
+        },
+        {
+          "source_url": "https://www.surfcamp-online.com/en/surfcamps/viewproperty/global-surf-lodge-kabalana-ahangama-sri-lanka/876",
+          "fetched_at": "2026-09-28T12:11:30Z",
+          "note": "Surfcamp-online listing, from web search result only (not fetched)."
+        },
+        {
+          "source_url": "https://www.kayak.co.in/Ahangama-Hotels-Global-Surf-Lodge-Kabalana.3525330.ksp",
+          "fetched_at": "2026-09-28T12:11:30Z",
+          "note": "KAYAK listing, from web search result only (not fetched). Also listed on trip.com and lakpura.com per the same search."
+        },
+        {
+          "source_url": "https://www.instagram.com/globalsurf_/",
+          "fetched_at": "2026-09-28T12:12:38Z",
+          "note": "Instagram @globalsurf_ (linked from site footer): meta 'GLOBAL SURF (@globalsurf_) … 17K Followers, 1,622 Posts', bio '≋ We curate holistic surf & wellness experiences ≋'. Rendered page showed '2K followers' — the two counts disagree; neither verified further."
+        },
+        {
+          "source_url": "https://www.facebook.com/GlobalSURFltd/",
+          "fetched_at": "2026-09-28T12:12:43Z",
+          "note": "Facebook 'Global SURF' (linked from site footer): 11,277 followers, '98% recommend (54 reviews)'. Second footer link facebook.com/globalsurfadventures1 returned a login wall (no content)."
+        },
+        {
+          "source_url": "https://www.youtube.com/channel/UCh-GTj4Wu2FbdXpr-xNSGzQ",
+          "fetched_at": "2026-09-28T12:12:57Z",
+          "note": "YouTube channel linked from footer; consent wall in headless, content not checked."
+        },
+        {
+          "source_url": "https://api.openstreetmap.org/api/0.6/way/23463869/full.json",
+          "fetched_at": "2026-09-28T12:13:11Z",
+          "note": "OSM coastline way 23463869 (1,222 nodes). Google pin is 45 m from the nearest coastline segment (Booking pin 57 m)."
+        }
+      ],
+      "surf_related_confidence": 0.95,
+      "languages_seen": [
+        "en"
+      ]
+    }
+  ]
+}

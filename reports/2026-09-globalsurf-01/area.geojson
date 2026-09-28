@@ -1,0 +1,39 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "role": "anchor",
+    "query": "Global Surf Adventures (globalsurf.com) \u2014 primary location: Global Surf Lodge Kabalana, Ahangama, Sri Lanka",
+    "geocoder": "Google Maps place pin for 'Global Surf Lodge' (listing links to globalsurf.com/global-hotels/sri-lanka/kabalana-surf-lodge/); Nominatim returned [] for 'Global Surf Adventures', 'Global Surf Lodge Kabalana, Ahangama, Sri Lanka' and 'Global Surf Lodge, Ahangama' (2026-09-28T12:13:19Z). Cross-checked against the Booking.com property pin 5.9811597,80.3420327 (13 m away).",
+    "source_url": "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!8m2!3d5.9810484!4d80.3420635?hl=en",
+    "fetched_at": "2026-09-28T12:12:08Z",
+    "address": "Henewatta addara gederawata, Ahangama 80650, Sri Lanka (Google Maps; plus code X8JR+CR Ahangama)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     80.3420635,
+     5.9810484
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "role": "area",
+    "mode": "business",
+    "radius_m": 0,
+    "method": "radius_m 0 in run.yaml: area = the anchor point itself (no circle). Chosen location: Global Surf Lodge Kabalana, the business's only owned property and best-evidenced physical site; other destinations (Maldives, Morocco, Angola, Mozambique) and the Israeli HQ are recorded in candidates.json, not mapped."
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     80.3420635,
+     5.9810484
+    ]
+   }
+  }
+ ]
+}
