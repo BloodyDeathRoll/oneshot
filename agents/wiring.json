@@ -79,6 +79,14 @@
         "schemas/site-content.md",
         "schemas/business-types.md",
         "schemas/audit.md"
+      ],
+      "visual-critic": [
+        "rubric.md",
+        "schemas/site-content.md"
+      ],
+      "experience-critic": [
+        "rubric.md",
+        "schemas/site-content.md"
       ]
     }
   },
@@ -127,6 +135,14 @@
     ],
     "auditor": [
       "3b"
+    ],
+    "visual-critic": [
+      "4f",
+      "5"
+    ],
+    "experience-critic": [
+      "4f",
+      "5"
     ]
   }
 }

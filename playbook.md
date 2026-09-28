@@ -1,10 +1,27 @@
-version: 0.5.2
+version: 0.6.0
 
 # playbook.md — what a great surf-business site is; shared by all agents.
 
 About the site and the business's customer. Not about visual taste (that lives in `agents/designer/custom.md`) and not about scoring (that lives in `rubric.md`). Scout uses it to judge what is missing, harvester to know what to collect, designer to build, critic to check, writer to explain what was fixed.
 
 Targets marked **(v0.1 target)** are starting numbers, to be tuned by the learning loop. Pass/fail thresholds belong in `rubric.md`.
+
+## 0. The bar (Shahar, 2026-09-28 — read this first)
+
+Every site we deliver must be **visually top level**, not only factually right. On 2026-09-28 three mockups for Global Surf were rejected because they were far worse than the business's own ageing site: ruled price tables and line drawings, while the business had hours of surf video and fifty photographs at 1920 px or more. Shahar: *"I dont ever want to see such low quality designs, for any reason."* So:
+
+- **Better than the current site, visibly, at a glance.** If the business has a site, the new one must beat it side by side on the first screen and on the whole page — more beautiful, more engaging, clearer to book. A mockup that does not is not shown to a human.
+- **At the level of the best surf and hospitality sites.** `agents/designer/references.md` and `agents/designer/gold/` are the bar. Ask of every page: would a top studio put this in its portfolio?
+- **Lead with the business's strongest media.** A surf business sells a feeling: water, light, people surfing. Video first, then the best photographs, big. Type and data support the imagery; they do not replace it when the imagery is good.
+- **The funnel lives inside a beautiful page, not instead of it.** One clear booking action is always visible (first screen and a persistent bar on mobile); prices and packages are one scroll or one tap away. A price table is never the first screen of a business that has strong media.
+- **Two visual critics judge every mockup and every final site** (rubric.md). Either one below the bar blocks it.
+
+## 1a. Media: video leads, big photography follows
+
+- **Use video whenever the business has any.** Their site's hero video, their YouTube/Vimeo channel, their public Instagram/Facebook reels: the harvester collects them (`dossier.videos[]`, `tools/fetch-video.mjs`) and the site uses the best of them. Video is more engaging than any still; not using a good video the business already made is a failure, not a style choice.
+- **Hero video:** muted, looped, `playsinline`, no controls, a real poster image that is itself a great frame. The poster paints first; the video starts after first paint. Under `prefers-reduced-motion`, with `Save-Data`, or on a failed load, the poster stays and nothing moves. Renditions per `tools/fetch-video.mjs`: desktop ≤ 4 MB, mobile ≤ 2 MB, 8–20 s, faststart.
+- **Full-bleed photography is the preferred first screen whenever the material is strong enough** — a business-owned photograph at ≥ 1920 px (≥ 1200 px is the hard floor for anything drawn full-width). The pixel floor exists to stop upscaled phone photos; it is never a reason to avoid big imagery when big imagery exists.
+- **More video later.** When a business has no video, say so as a pitch point; producing video for businesses that lack it is a planned service.
 
 ---
 
@@ -49,7 +66,7 @@ By business type (`run.yaml` `types`), what leads:
 
 Order on the home page, mobile first. One page can carry all of it for a small business; split into pages only when a section outgrows a screen or two.
 
-1. **First screen:** what + where, primary booking action, one proof point (rating with count and source). Nothing else has to load for this to be usable.
+1. **First screen:** the business's strongest media (video, else a great photograph) with what + where, the primary booking action, and one proof point (rating with count and source). The text and the booking action are usable before the media arrives.
 2. Offers with prices (lessons by level / rentals / packages / rooms).
 3. What's included, and who it's for.
 4. The spot and the season.
@@ -67,7 +84,7 @@ Assume a mid-range Android, slow 4G dropping to 3G, metered data.
 
 - Text and the booking action are usable before images, fonts or scripts arrive. Core content is in the HTML, not injected by JS.
 - Images: responsive `srcset`, AVIF/WebP with JPEG fallback, explicit dimensions, lazy below the fold.
-- No video autoplay on mobile unless tiny, muted, poster-first, and outside the first-load budget.
+- Video: muted, looped, poster-first, started after first paint (§1a). The poster counts in the first-load budget; the video file is loaded after first paint and counts in its own line below. Poster only under `prefers-reduced-motion`, `Save-Data`, or a failed load.
 - Fonts: self-hosted, `font-display: swap`, subset; system fallback that doesn't reflow the page.
 - No third-party trackers, chat widgets, cookie walls, newsletter or promo pop-ups. Nothing may cover the content or the booking action on load.
 - A map is either a static image linking to Google Maps, or one of the page's embeds under the rule below.
@@ -91,9 +108,10 @@ Assume a mid-range Android, slow 4G dropping to 3G, metered data.
 
 | Item | Target |
 |---|---|
-| First-load transfer (no scroll) | ≤ 1.5 MB |
+| First-load transfer (no scroll, video excluded) | ≤ 1.5 MB |
+| Hero video after first paint | ≤ 2 MB mobile · ≤ 4 MB desktop |
 | JS, compressed | ≤ 300 KB |
-| Largest above-the-fold image | ≤ 200 KB |
+| Largest above-the-fold image (poster or hero photo, AVIF/WebP) | ≤ 300 KB |
 | Fonts | ≤ 2 families, ≤ 150 KB |
 | LCP (measured on a throttled phone) | ≤ 2.5 s |
 | CLS | < 0.1 |

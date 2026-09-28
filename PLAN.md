@@ -43,7 +43,7 @@ oneshot/
   taxonomy.md                 # business types, what counts as "surf-related"
   server-hardening.md         # security baseline for the one CMS server (one server, one admin)
   agents/
-    orchestrator/  scout/  harvester/  auditor/  copywriter/  humanizer/  copyeditor/  creative-director/  designer/  seo/  aiseo/  critic/  deployer/  writer/
+    orchestrator/  scout/  harvester/  auditor/  visual-critic/  experience-critic/  copywriter/  humanizer/  copyeditor/  creative-director/  designer/  seo/  aiseo/  critic/  deployer/  writer/
       base.md        # Claude writes: role, inputs, outputs, hard constraints
       custom.md      # Shahar writes: taste, rules, house style
       references.md  # curated examples (URLs + what we like about each), cached notes
@@ -119,11 +119,11 @@ Each business moves through these stations. The orchestrator owns the order, ret
 | 4c | Copy review | copyeditor | copy, draft, dossier | per-claim audit (`sourced` / `shared-context` / `framing` / `unsourced` / `contradicted`) + voice audit; `copy/review.md`; fail → back to 4a or 4b, max 2 rounds | — |
 | 4d | Concept | creative-director | dossier (incl. the images themselves), passed copy, references, every other `concepts.md` in this run | `sites/<slug>/concepts.md`: the page **archetype** for this business plus three concepts (calm / interactive / unique), and a divergence table proving no two businesses share an archetype + first-screen device |  |
 | 4e | Mockups | designer | playbook + base + custom + references + dossier + **passed copy** + `concepts.md` | 3 mockups, **one HTML file each** at `sites/<slug>/mockups/{calm,interactive,unique}/dist/index.html` (+ `dist/img/`, `notes.md` with a look-log, `shots/round-N/`), built to the three concepts and laid out around the real words. A look, not a build: no Astro, no schema binding (designer 0.3.0, proposal 003) | — |
-| 4f | Pre-score | critic | 3 mockups | screenshot + rubric quick score per mockup | **Human picks one (pick + reason logged)** |
+| 4f | Pre-score | critic + visual-critic + experience-critic (independent) | 3 mockups, the current site | rubric quick score per mockup: critic dimensions 1–7, the two visual critics dimension 8 each, side by side with the current site. A mockup below 8/10 from either visual critic, or not better than the current site, loops back to 4e (max 3) before the gate | **Human picks one (pick + reason logged)** |
 | 4g | Build | designer | chosen mockup + passed copy | Astro site **ported from the chosen mockup without changing how it looks** + tenant content model seeded in Payload | — |
 | 4h | SEO | seo | built site, dossier | classical SEO pass on `templates/<variant>/`: JSON-LD from CMS content, head + headings, local signals, Core Web Vitals, sitemap/robots; `sites/<slug>/seo-report.md` | — |
 | 4i | AI SEO | aiseo | built site, dossier, `seo-report.md` | answer-engine pass: self-contained answers to the questions people actually ask, `FAQPage` data, `/llms.txt`, AI-crawler policy, no-JS check; `sites/<slug>/aiseo-report.md` | — |
-| 5 | Critique | critic | final site, dossier, both SEO reports, `audit.json` | scorecard, including `tools/funnel.mjs` on the built site against `audit.json.recommended`; fail → back to 4f, max 3 rounds | — |
+| 5 | Critique | critic + visual-critic + experience-critic (independent) | final site, dossier, both SEO reports, `audit.json`, the current site | scorecard, including `tools/funnel.mjs` on the built site against `audit.json.recommended`; fail → back to 4f, max 3 rounds | — |
 | 6 | Deliver | deployer | passing site | deployer runs the adapter for the business's `hosting_mode` (§5). `managed`: tenant + seed + `wrangler deploy` + domain + owner login; the preview URL is just the `*.workers.dev` address. `self_hosted_docker` ends with a verified handoff kit and our access revoked. `static_only` ends with the zip | — |
 | 7 | Pitch | writer | dossier, `audit.md`, old vs new, preview URL | proposal page + outreach message in local language | **Human sends; outcome logged** |
 | ∞ | Learn | critic | reports, mockup picks, pitch outcomes | `proposals/<run>/` diffs to prompts/tools/playbook/rubric | **Human approves diffs** → merge, bump, CHANGELOG |
@@ -158,7 +158,8 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 - Every fact and image carries `source_url` + `fetched_at`; images carry a license/ownership note (business-owned, review photo, stock, unknown).
 - Gaps are flagged, not invented — they become pitch talking points.
 - Output schema: `dossier.json` (define in Phase 1) + `assets/`.
-- Tools: headless browser, image download + dedupe + resize.
+- Tools: headless browser, image download + dedupe + resize, `tools/fetch-video.mjs` (business-owned video: download, web renditions, posters).
+- Video (2026-09-28): every business-owned video is harvested into `videos[]`; a business that publishes video and has none in its dossier is an incomplete harvest.
 - Evals: fact count, source coverage %, critic's "facts match dossier" score downstream.
 
 ### creative-director (station 4d)
@@ -189,6 +190,12 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 - No money or conversion numbers. Not a fact source for the site.
 - Consumers: creative director (above-fold order, primary action), copywriter (CTA label, offer framing), critic (measures the built site with the same tool), writer (before/after taps with screenshots).
 - Evals: evidence coverage 100 %, Shahar's spot-check of 3 findings per business, target met on the built site.
+
+### visual-critic and experience-critic (stations 4f and 5, 2026-09-28)
+- Added after Shahar rejected every Global Surf mockup as far below the business's own site: *"A Critic that judges whether a page looks good is ABSOLUTELY CRITICAL. I'd even rather have two independent ones running, with some overlap."*
+- **visual-critic** judges the page as design (media use, composition, type, colour, hierarchy, polish, distinctiveness); **experience-critic** walks it as a traveller on a phone and a laptop (first seconds, story, desire, booking, motion). Overlap: both score rubric dimension 8 (0–10), both say whether the page beats the current site, both judge the first screen and the use of video.
+- Independent: neither reads the other's or the critic's report for the round. Either one below 8, or "not better than the current site", is a hard fail and the mockup goes back to the designer before any human sees it.
+- Evals: a mockup Shahar rejects as weak must never have passed either of them.
 
 ### copywriter (station 4a)
 - Writes the **site's** words (not the pitch — that is `writer`, station 9) **before the designer starts**, so the mockups are laid out around real copy instead of placeholder text: `copyBlocks[]`, `tagline`, `spot`, `season` and the per-type modules, per locale.

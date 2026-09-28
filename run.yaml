@@ -28,15 +28,17 @@ hosting:
 agents:                          # pinned versions for reproducibility
   scout: 0.3.0
   harvester: 0.3.0
-  auditor: 0.1.1
-  designer: 0.3.4
+  auditor: 0.1.2
+  designer: 0.4.0
   copywriter: 0.3.3
   humanizer: 0.2.0
   copyeditor: 0.3.1
-  creative-director: 0.2.4
+  creative-director: 0.3.0
   seo: 0.2.0
   aiseo: 0.2.0
-  critic: 0.3.3
+  critic: 0.4.0
+  visual-critic: 0.1.0
+  experience-critic: 0.1.0
   deployer: 0.2.0
   writer: 0.2.1
-  orchestrator: 0.2.2
+  orchestrator: 0.3.0

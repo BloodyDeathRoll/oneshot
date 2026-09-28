@@ -1,4 +1,4 @@
-version: 0.1.1
+version: 0.1.2
 
 # auditor / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -56,7 +56,7 @@ The scope is the whole path to a booking, not only the site: the Google listing,
 2. Walk the path yourself once on the mobile viewport, from the landing page to the moment a booking would be sent, and from the Google listing and the top OTA page to the same moment. Screenshot what the tool did not (an engine's first screen, an inquiry form, a prices page).
 3. For each of playbook §2's questions, record where the old presence answers it (which page, how many taps) or does not. Missing answers that the dossier *can* answer are findings (`content`, `offer`); missing answers the dossier cannot answer are already `gaps[]` and are not repeated.
 4. Write the findings, severity per `schemas/audit.md`, pitch points only where a screenshot backs them.
-5. Write `recommended`: the primary action, its working label, what sits above the fold (fixed terms, `schemas/audit.md`) in the type's order, how the offer is framed, the closing intent, the off-site advice. If the site is already built, add `built_site_gaps[]` (constraint 12).
+5. Write `recommended`: the primary action, its working label, the order of the booking section and persistent bar (`above_fold`, fixed terms, `schemas/audit.md` — not a list for the first screen, which belongs to the media), how the offer is framed, the closing intent, the off-site advice. If the site is already built, add `built_site_gaps[]` (constraint 12).
 6. Self-check (below), then the report.
 
 ## Before handing off

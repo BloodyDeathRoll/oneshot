@@ -1,4 +1,4 @@
-version: 0.1.1
+version: 0.1.2
 
 # schemas/audit.md — `audit.json`, the auditor's output (PLAN.md §4 station 3b, proposal 007)
 
@@ -72,7 +72,7 @@ One file per business: `dossier/<slug>/audit.json`, beside `audit.md` (the same 
 | `findings[].pitch_point` | `true` when the writer may cite it as "what visitors could not do before". Only `high` and `medium` with a screenshot qualify. |
 | `recommended.primary_action` | Must equal `dossier.booking.path`. The audit does not introduce a channel the owner does not monitor (playbook §5). |
 | `recommended.secondary_actions` | Only channels the business publishes itself for customers, or that reviewers in the dossier say they used (auditor constraint 6). Empty when none qualifies. |
-| `recommended.above_fold` | Ordered, from these terms only (playbook §2 questions): `what_where`, `level`, `price`, `included`, `spot`, `season`, `trust`, `languages`, `primary_action`. For OTA-only lodging `price` means a link to live dates, never a copied nightly rate (site-content "Live prices are not content"). |
+| `recommended.above_fold` | The order of the **booking section and the persistent booking bar** (since 2026-09-28; the key name is historical). The first screen itself needs only what + where, the primary action and one proof point (playbook §3), and is built on the business's strongest media. Ordered, from these terms only (playbook §2 questions): `what_where`, `level`, `price`, `included`, `spot`, `season`, `trust`, `languages`, `primary_action`. For OTA-only lodging `price` means a link to live dates, never a copied nightly rate (site-content "Live prices are not content"). |
 | `recommended.off_site[]` | `{ channel, finding, advice }`; `finding` is an id from `findings[]`. |
 | `recommended.clicks_to_book` | 1 when the primary action is WhatsApp or tel; ≤ 2 when it is an engine (the tap that leaves the site counts). The critic measures the built site against this. |
 | Numbers | No revenue, conversion or "X % more bookings" figures anywhere, and no computed commission. A platform's own words about what it charges may be quoted verbatim with URL and screenshot (auditor constraint 4). |
