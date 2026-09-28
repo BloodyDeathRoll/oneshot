@@ -214,3 +214,153 @@ Minor points:
 The rulings on `contradictions[3]` and `[10]` (engine side written) are stated above for Shahar to overrule if he reads them differently.
 
 Round 1 of 2. The dossier supports this site. The failure is one clause, not a missing fact. The next round re-checks the whole file.
+
+---
+
+## Round 2 — full-file re-check after copywriter round 2 and humanizer round 2, 2026-09-28
+
+Reviewer: copyeditor 0.3.1, with the same runtime prompt and rules as round 1. I am independent of the copywriter and the humanizer. Hard constraint 6 applies: every sentence and field of `en.json` is re-traced against `dossier.json`, and nothing is carried over because it passed in round 1.
+
+### Scope check
+- **`git diff e7da2be HEAD`** (from the round-1 review commit to now):
+  - `en.json` has two changed strings, `tagline` and `copyBlocks[4]` ¶3.
+  - `sources.md` changed three things: the contradictions header, the `tagline` row, and the `[4]` ¶3 row. The address row's rule citation was also corrected.
+  - `humanizer-notes.md` has a round-2 section, which says the humanizer made no wording changes.
+  - `dossier.json` is unchanged.
+- **`en.draft.json`** was not refreshed, as `humanizer-notes.md` says. The draft→final diff is round 1's three humanizer rewrites plus the two copywriter round-2 strings. Every one of them is traced below (rows 3, 12–15, 24–27, 29–31, 33).
+- **Script re-run on the current files:**
+  - Testimonials are string-equal to `reviews.quotes[6, 0, 1, 2, 3, 4]` (6/6).
+  - The owner prose is verbatim: intro ¶1–¶2, the day ¶1–¶2 (yoga sentence removed, "Then grab" → "Grab") and the lodge ¶1.
+  - Room labels match `room_types.engine`.
+  - `bookingLinks[0–2]` are in `engine_products`, `[3]` uses the dossier's WhatsApp number, and `[4]` is `socials.booking`.
+  - `mapUrl` = `ratings[0].url` = `location.map_url`.
+  - Ratings match on score, count and `capturedAt`, which equals `fetched_at` (2026-09-28).
+  - `lessons[]` prices and levels = `offers[0–2]`.
+  - Phone and email are identical to the dossier.
+
+### Fact audit (whole file)
+
+| # | Field | Sentence / claim | Dossier key (words re-read) | Verdict |
+|---|---|---|---|---|
+| 1 | `businessName` | "Global Surf Lodge Kabalana" | `business.name.value` | sourced |
+| 2 | `businessType` | `surf_camp` | `businessType`; `business.type.value` | sourced |
+| 3 | `tagline` (changed) | "A surf camp in Kabalana, Ahangama, on Sri Lanka's south coast" | "surf camp": `business.type`, `contact.instagram_profile.value.bio` "Srilanka surf camp" (not one of the classes in `contradictions[7]`). "Kabalana, Ahangama": `location.area_name.value`. "south coast": `business.description_packages` "the beautiful South Coast of Sri Lanka". It no longer makes a distance claim | sourced |
+| 4 | `[0]` heading | "Surf weeks for every level" | `business.description_packages` "We offer weekly retreats, available for all levels"; `levels[0–3]` | sourced |
+| 5 | `[0]` ¶1 | "Just a few steps from the ocean, find Global Surf Lodge Kabalana – a wild oasis where footwear is discouraged, chilling out is inescapable, and good times never stop." | `business.description.value`, verbatim (script) | sourced (owner's words) |
+| 6 | `[0]` ¶2 S1 | "We are surfing obsessed, … great surfing for all levels." | the same, verbatim | sourced (owner's words) |
+| 7 | `[0]` ¶2 S2 | "Next set is yours!" | the same; asserts nothing | framing |
+| 8 | `[1]` heading | "Three levels, one week each" | `offers[0–2]`, unit "per person (7-night package)" | sourced (note as round 1: "one week" is the package unit; `stayInfo.note` gives 7–28 nights) |
+| 9 | `[1]` ¶1 S1 | "Level 1 needs no surfing experience." | `levels[0].note` | sourced |
+| 10 | `[1]` ¶1 S2 | "Level 2 is for intermediate surfers, Level 3 for advanced ones." | `offers[1–2].label`; `levels[2–3]` | sourced |
+| 11 | `[1]` ¶2 S1 | "Take a bed in the four-bed mixed dorm and the package price is all you pay, tax included." | `offers[0–2].note` dorm "$0 (2026-10-03)"; `samples[0]` base = total 1466; `engine_rules.price_type` "including_tax" | sourced (note: one sampled check-in; dated by ¶3; owner to confirm) |
+| 12 | `[1]` ¶2 S2 | "The shared twin room costs more, and having it to yourselves costs more again." | `offers[0–2].note` +$140.04 / +$160.05; "Privately reserve … an additional $350"; `samples[1]` | sourced |
+| 13 | `[1]` ¶2 S3 | "The booking engine shows how much for your dates." | `offers[].note` has_seasonal_pricing; `gaps[]` "offers (prices on the site)" | sourced |
+| 14 | `[1]` ¶2 S4 | "Every level package in the engine also comes with seven days of unlimited equipment use." | `offers[0–2].includes_engine`; `offers_extras_engine.value[0]`. It is attributed to the engine, as `test_mode_verdict.caveats[2]` allows. `sources.md` header now states this | sourced |
+| 15 | `[1]` ¶3 | "Prices as the booking engine showed them on 28 September 2026." | `offers[0–2].fetched_at` | sourced |
+| 16 | `[2]` heading | "A day at the camp" | owner's heading (`business.description.note`) | sourced |
+| 17–20 | `[2]` ¶1 S1–S2, ¶2 S1–S2 | "Grab your board … morning surf session." · "A big, healthy breakfast …" · "Afterwards, … afternoon surf." · "End your day with an epic dinner … aloha vibes." | `business.day_at_the_camp.value`, verbatim (script); the yoga sentence was removed (`contradictions[1]`) | sourced (owner's words) ×4 |
+| 21 | `[3]` heading | "The lodge" | — | framing |
+| 22 | `[3]` ¶1 | "At Global Surf Lodge Kabalana, we provide … local culture, and nature." | `business.description_packages.value`, verbatim | sourced (owner's words) |
+| 23 | `[3]` ¶2 S1 | "The rooms are spread around the garden, each one apart from the others." | `room_types.site.value` "all the rooms are located separately around the lush gardens"; count and class not written | sourced |
+| 24 | `[3]` ¶2 S2 | "The pool has sunbeds under the palms, and there's a bar and a laid-back common area too." | `facilities[7]`, `[9]`, `[8]` | sourced |
+| 25 | `[3]` ¶2 S3 | "One guest on Booking.com called the place "something inbetween a hostel and a luxurious hotel"." | `reviews.quotes[1]` Myrthe (Booking), fragment verbatim, attributed | sourced |
+| 26 | `[3]` ¶2 S4 | "On the same site the staff get 9.5 out of 10, across 80 reviews." | `reviews.booking.categories.Staff` 9.5, `.count` 80, `.scale` 10 | sourced |
+| 27 | `[4]` heading | "Getting here" | — | framing |
+| 28 | `[4]` ¶1 S1 | "Colombo airport is about two and a half hours away by road." | `location.getting_there.value` "about 2.5 hours drive from Colombo airport" | sourced |
+| 29 | `[4]` ¶1 S2 | "There's an airport shuttle, for an extra charge." | `facilities[12]` "Airport shuttle (additional charge)" | sourced |
+| 30 | `[4]` ¶2 S1 | "Cross the Matara road and you're on the beach at Kathaluwa West, 40 metres from the lodge." | `distance_to_beach.others[0]` "Kathaluwa West Beach 40 m"; `.others[1]` "right across Matara road" | sourced |
+| 31 | `[4]` ¶2 S2 | "Kabalana Beach is 350 metres away." | `distance_to_beach.others[0]` | sourced |
+| 32 | `[4]` ¶3 (changed) | "Booking.com's house rules list cash as the accepted payment method." | `booking.payment_methods.value` ["Cash"] (Booking URL, fetched 2026-09-28), note "Booking.com house rules 'Accepted payment methods: Cash'". Attribution, content and scope match the key: one method listed, so "the accepted payment method" is exact. It claims nothing about prepayment, deposit, or where or how the whole stay is paid, which is the round-1 fault (`gaps[]` deposit/cancellation) | sourced |
+| 33 | `[5]` heading | "Beyond Kabalana" | — | framing |
+| 34 | `[5]` S1a | "Global Surf Adventures, the company behind the lodge," | `business.brand.value`; `business.name.note`; `businessType_note` | sourced |
+| 35 | `[5]` S1b | "also arranges surf trips to the Maldives, Morocco, Angola and Mozambique." | `other_destinations[0–3].text` (Mozambique: guided tours between surfing towns, on a page about its surfing season). No season is written (`contradictions[8]`) | sourced |
+| 36 | `[5]` S2 | "Ask about them on WhatsApp or by email." | `contact.whatsapp`, `contact.email` | sourced |
+| 37 | `spot` S1a | "Beach breaks, points and reefs a few steps from the lodge," | `location.spot.note` (packages page, owner); no spot names (`contradictions[4]`) | sourced (owner's claim) |
+| 38 | `spot` S1b | "and more waves a few minutes away by tuk-tuk." | `location.spot.value` | sourced |
+| 39 | `season` S1 | "The main season runs from October to April." | `season.others[0].value` (owner, ~2019) | sourced (owner to confirm) |
+| 40 | `season` S2 | "May to September is the low season." | the same | sourced |
+| 41 | `closing` S1 | "Pick your level to see the dates still open." | `booking.engine_products`; engine availability | sourced |
+| 42 | `closing` S2 | "Questions first? Ask on WhatsApp." | `contact.whatsapp.value` | sourced |
+| 43 | `lessons[0]` | Level 1, `first_time`/`beginner`, 1466 USD `per_person`, 7 nights | `offers[0]`; `levels[0–1]`; engine side of `contradictions[10]` (ruling below) | sourced |
+| 44 | `lessons[0].includes` | 5 guided 2-hour sessions, 5 theory lessons, 7 breakfasts, 5 dinners, a cultural or nature excursion | items on both `offers[0].includes_site` and `.includes_engine` | sourced |
+| 45 | `lessons[1]` | Level 2, `intermediate`, 1466 USD | `offers[1]`; `levels[2]` | sourced |
+| 46 | `lessons[1].includes` | as row 44, plus 2 filmed or photographed sessions; "an excursion" | `offers[1].includes_site` / `.includes_engine` | sourced |
+| 47 | `lessons[2]` | Level 3, `advanced`, 1466 USD | `offers[2]`; `levels[3]` | sourced |
+| 48 | `lessons[2].includes` | 5 coached 2-hour sessions, … | `offers[2].includes_site` / `.includes_engine` | sourced |
+| 49 | `credentials[0]` | "ISA-certified surf guides" | `credentials[0].value`; `facilities[0]` | sourced |
+| 50 | `rooms[0]` | Mixed dorm, 4 single beds, sleeps 4, private outdoor bathroom | `room_types.engine.value[0]` | sourced |
+| 51 | `rooms[1]` | Shared Twin Room - 2 Beds, sleeps 2, private bathroom; beds not written (`contradictions[0]`) | `room_types.engine.value[1]` | sourced |
+| 52 | `stayInfo` times | 14:00–20:00 in, until 11:00 out | `stayInfo.checkInFrom` / `.checkInTo` / `.checkOutTo` | sourced |
+| 53 | `stayInfo.note` S1 | "Packages start on a Saturday and run 7, 14, 21 or 28 nights." | `stayInfo.package_rules.value`; `engine_rules.check_in_day`, `.durations_nights`; engine side of `contradictions[3]` (ruling below) | sourced |
+| 54 | `stayInfo.note` S2 | "You must be 18 or over to book a package online." | `stayInfo.package_rules.value`; `min_guest_age` 18 | sourced |
+| 55 | `stayInfo.note` S3 | "No pets." | `stayInfo.note.value` | sourced |
+| 56–63 | `amenities[0–6, 9]` | pool (sunbeds, shallow end) · yoga/meditation/sound healing · ice baths · video and photography (in-house photographer) · getting to lessons (foot or tuk-tuk, in the packages) · water/coffee/tea all day (in the packages) · restaurant (vegan, vegetarian, GF) · co-working (coffee, juices) | `facilities[7]/[10]`, `[2]/[19]`, `[3]`, `[1]`, `[6]` + `includes_engine`, `includes_site`/`includes_engine`, `[4]/[13]`, `[5]`; qualifiers re-read, none widened | sourced ×8 |
+| 64–79 | `amenities[7–8, 10–23]` | Bar · Coffee house · common area · Garden · Sun terrace · Free WiFi · AC · housekeeping · shuttle (additional charge) · parking (reservation needed) · water sport (additional charge) · tour desk · luggage · safety box · 24-hour security · non-smoking | `facilities[9]/[15]`, `[16]`, `[8]`, `[17]`, `[18]`, `[11]`, `[26]`, `[20]`, `[12]`, `[14]`, `[23]`, `[22]`, `[21]`, `[25]`, `[24]`, `[27]` | sourced ×16 |
+| 80–81 | `ratings[0–1]` | Google 4.7/5, 198 · Booking 8.6/10, 80; captured 2026-09-28 | `reviews.google`, `reviews.booking` (script) | sourced ×2 |
+| 82–87 | `testimonials[0–5]` | Nina van der Burgh · Fanny · Myrthe · Agustin · Sara · Hannah | `reviews.quotes[6, 0–4]`, string-equal (script) | sourced ×6 |
+| 88 | `languagesSpoken` | `["en","other"]` | `languages_spoken.value` ["en","he"]; the enum lacks `he` | sourced |
+| 89 | `contact.phone` | "+97299733943" | `contact.phone.value`; not called the lodge's (`contradictions[6]`) | sourced |
+| 90 | `contact.email` | "info@globalsurf.com" | `contact.email.value` | sourced |
+| 91 | `contact.address` | "Henewatta Addara Gederawata, Ahangama 80650, Sri Lanka" | `location.address.value` (Google), playbook §6 form; `contradictions[5]` resolved by the harvester | sourced |
+| 92 | `contact.mapUrl` | Google place URL | `location.map_url.value` | sourced |
+| 93–95 | `bookingLinks[0–2]` | "Level 1/2/3: see dates and prices" | `booking.engine_products.value[0–2]` | sourced ×3 |
+| 96 | `bookingLinks[3]` | "Ask on WhatsApp" | `contact.whatsapp.value` | sourced |
+| 97 | `bookingLinks[4]` | "Stay without a package: Booking.com" | `contact.socials.booking`; `other_engines.value[0]` | sourced |
+| — | `openingHours`, `hoursNote`, `priceList`, `featureLine`, `forecast`, `contact.whatsapp` | empty | reasons as round 1 | no claim |
+
+**Counts (97 claims):** `sourced` 93 · `framing` 4 · `shared-context` 0 · **`unsourced` 0** · **`contradicted` 0**.
+
+### Contradictions
+All eleven were re-checked against the current copy, and each is as round 1 recorded:
+- **Not stated:** [0], [2], [4], [6], [7], [8], [9].
+- **Resolved by the harvester:** [5].
+- **[1]:** only the items on both lists are written, and equipment is attributed to the engine.
+- **[3] and [10]:** the engine side is written. These are the same rulings as round 1 and are open for Shahar to overrule. The `sources.md` header now states this correctly, which closes round 1's minor point.
+
+### `sources.md` check
+- Every cited key was re-read in `dossier.json`.
+- The new `[4]` ¶3 row quotes `booking.payment_methods` and the full `gaps[]` deposit/cancellation entry, both verbatim.
+- The `tagline` row is correct at 61/140.
+- The address row now cites playbook §6.
+- No wrong or stale citation was found.
+- One point is still open and is not a fail: the spa and equipment asymmetry in `contradictions[1]`. The header now explains equipment as "the engine's own claim". The spa is still left out.
+
+### Voice audit (per block)
+The two changed strings are scored below. Every other block was re-read and its round-1 score stands:
+- `[1]`, `[3]`, `[4]` ¶1–¶2, `[5]`, `spot`, `season`, `closing`, `stayInfo.note` and the modules are clean, with round 1's notes.
+- The owner prose blocks are not scored.
+
+| Block | Rhythm | No triads | No padding | Concrete | Honest limit | Register | Aloud | Score |
+|---|---|---|---|---|---|---|---|---|
+| `tagline` | — | yes | yes | yes (type, town, coast) | — | yes | yes | clean. Round 1's echo with intro ¶1 is gone |
+| `[4]` ¶3 | a short plain sentence after two place sentences | yes | yes | yes | yes (cash only for Booking.com stays) | slightly formal ("house rules list … as the accepted payment method"). It is an attribution that keeps the scope; it does not read as generated | yes | clean, note |
+
+Voice fails: **0**.
+
+### Completeness (`surf_camp`)
+The must-haves and should-haves are unchanged from round 1 and covered.
+
+Schema limits, by script:
+- `tagline` 61/140, `closing` 78/140, `spot` 104/200, `season` 79/200, `stayInfo.note` 118/200, `contact.address` 54/300.
+- Headings ≤ 27/120 and bodies ≤ 473/1500.
+
+The open items are unchanged and none is a copy fail:
+- `contact.whatsapp` is null, against playbook §5's WhatsApp-first rule.
+- The WhatsApp prefill cannot carry the chosen level.
+- The `languagesSpoken` enum lacks `he`.
+- The owner's day text describes two surfs a day, against 5 guided sessions in the packages.
+
+### Duplication (notes)
+- "A few steps" now appears only in intro ¶1 (the owner's words) and in `spot`. The tagline repeat is gone.
+- The other repeats are as round 1 recorded and are tolerated.
+
+### Failing sentences
+None.
+
+### Verdict: **PASS** (round 2, full-file re-check)
+
+0 `unsourced`, 0 `contradicted`, 0 voice fails, and the required fields are covered. This is round 2 of 2.
+
+**Open for Shahar (not blocking):**
+- The rulings on `contradictions[3]` and `[10]` (engine side written).
+- The copywriter's call on the spa versus equipment inclusions.
