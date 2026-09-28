@@ -67,3 +67,7 @@ dashboard/data.json
 
 # funnel.mjs --shots per-page captures: large, reproducible, not evidence unless an audit cites them
 dossier/*/funnel/page-*.png
+
+# shoot.mjs per-viewport frames: the contact sheets (*-sheet.png) and shoot.json are the record; frames are reproducible
+sites/*/mockups/*/shots/**/desktop-[0-9]*.png
+sites/*/mockups/*/shots/**/mobile-[0-9]*.png
