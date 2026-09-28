@@ -11,7 +11,7 @@ Guests name the owner as Amal in Booking.com reviews (unconfirmed). Ask for the 
 ## Points (scroll as you go)
 
 1. **First screen.** "Your name, 'a new hotel, two minutes from Kabalana', and both ratings: 9.3 on Booking.com, 5.0 on Google, with the date we read them. The yellow 'Check dates' button stays on screen and goes straight to your Booking.com page." (Booking.com showed 9.3 on 25 September; say we will update it.)
-2. **Rooms and photos.** Scroll to "Nine kinds of room" and the photo strip. "All nine room types from your listing, your photos, and your guests' own words, copied exactly."
+2. **Rooms and photos.** Scroll to "Twelve kinds of room" and the photo strip. "All twelve room types from your listing, your photos, and your guests' own words, copied exactly."
 3. **Fast on a phone.** "On a slow mobile connection the first screen shows in under half a second in our test." No other number needed.
 4. **What they could add.** "We only used what's public. We couldn't find a price list, an email or a WhatsApp number. If you have a WhatsApp number, we can add a 'message us' button for you."
 5. **They edit it.** "You get your own login. Rooms, photos, text, hours, prices, contact: you change them yourself, and in our test a change was live about 17 seconds later. The design can't break."

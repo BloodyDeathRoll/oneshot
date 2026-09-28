@@ -23,8 +23,8 @@
   },
   {
    "slot": "offer",
-   "heading": "Nine kinds of room",
-   "body": "There are king rooms with a balcony or a garden view, superior kings, and a deluxe king on the ground floor with a private patio and a pool view. Family studios and suites sleep four, and the two-bedroom suite sleeps five.\n\nEach room has a work desk, soundproofing and free WiFi. The family rooms have air conditioning and private bathrooms.\n\nThere is no published price list. Rates go by date, and the booking links show what is available."
+   "heading": "Twelve kinds of room",
+   "body": "There are six king rooms. Three are on the ground floor, two with a private patio and one with a private kitchen. The other three have a private balcony, over the garden, the pool or both. The family rooms are four suites and a studio; the studio and three of the suites sleep four. The two-bedroom suite sleeps five.\n\nEach room has a work desk, soundproofing and free WiFi. The family rooms have air conditioning and private bathrooms.\n\nThere is no published price list. Rates go by date, and the booking links show what is available."
   },
   {
    "slot": "offer",
@@ -43,46 +43,57 @@
  "featureLine": "A year-round outdoor pool, at the centre of the hotel.",
  "rooms": [
   {
-   "label": "Deluxe King Room with private patio and pool view",
-   "beds": "1 king bed",
-   "note": "ground floor"
+   "label": "Deluxe King Room with Private Patio & Pool View - Ground Floor",
+   "beds": "1 extra-large double bed"
   },
   {
-   "label": "Superior King Room",
-   "beds": "1 king bed"
+   "label": "Superior King Room with Private Balcony, Garden & Pool View",
+   "beds": "1 extra-large double bed"
   },
   {
-   "label": "King Room with garden view",
-   "beds": "1 king bed"
+   "label": "Deluxe King Room with Private Kitchen - Ground Floor",
+   "beds": "1 extra-large double bed"
   },
   {
-   "label": "King Room with balcony",
-   "beds": "1 king bed"
-  },
-  {
-   "label": "Deluxe Family Suite",
-   "beds": "1 king and 1 queen bed",
+   "label": "Family Suite with Patio",
+   "beds": "1 extra-large double bed and 1 large double bed",
    "sleeps": 4
   },
   {
-   "label": "Family Studio",
-   "beds": "1 full and 1 king bed",
+   "label": "Deluxe King Room with Private Patio & Garden View - Ground Floor",
+   "beds": "1 extra-large double bed"
+  },
+  {
+   "label": "Deluxe King Room with Private Balcony & Garden View",
+   "beds": "1 extra-large double bed"
+  },
+  {
+   "label": "Deluxe Family Studio with 2 Private Balconies, Pool & Garden Views",
+   "beds": "1 double bed and 1 extra-large double bed",
    "sleeps": 4
   },
   {
-   "label": "Family Junior Suite",
-   "beds": "1 full and 1 king bed",
-   "sleeps": 4
-  },
-  {
-   "label": "Family Suite",
-   "beds": "1 king and 1 queen bed",
+   "label": "Family Junior Suite with Private Patio and Kitchenette",
+   "beds": "1 double bed and 1 extra-large double bed",
    "sleeps": 4
   },
   {
    "label": "Two-Bedroom Suite",
-   "beds": "2 king beds and 1 sofa bed",
+   "beds": "2 extra-large double beds and 1 sofa bed",
    "sleeps": 5
+  },
+  {
+   "label": "Deluxe King Room with Private Balcony & Pool View - First Floor",
+   "beds": "1 extra-large double bed"
+  },
+  {
+   "label": "Family Suite with Private Balcony, Pool & Garden Views - First Floor",
+   "beds": "1 extra-large double bed and 1 large double bed",
+   "sleeps": 4
+  },
+  {
+   "label": "Family Suite with Private Kitchen, Balcony & Garden View",
+   "beds": "1 single bed and 1 extra-large double bed"
   }
  ],
  "stayInfo": {
