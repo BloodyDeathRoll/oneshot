@@ -35,3 +35,21 @@ Left alone on purpose:
 ### Could not fix without a fact
 
 - The page has no honest limit other than the price caveat. The obvious ones would be season, reply time and the distance to the named breaks, and none of them is in the dossier. This goes to the owner.
+
+## Round 2 · 2026-09-28 · humanizer 0.2.0 · after copywriter round 2
+
+Input: `en.json` with the copywriter's fixes for copyeditor round 1 (`review.md` F1–F7, D1, V1). I re-read the whole file once. Facts unchanged. The location wording (intro ¶2 S1, `spot`), the Freestylers wording (intro ¶2 S2, levels ¶4, `lessons[3].includes`) and the day schedule (day ¶1) are narrow on purpose, so I left them as they arrived.
+
+### Changes
+
+1. **levels ¶1 S1.** "Level 1 – Fomies is for your first time on a board: you don't need any surfing experience." → "Level 1 – Fomies is for your first time on a board, no surfing experience needed." With ¶3's "Level 3 – Riders: …" the block had two colons, which is the colon habit. The fact and V1's fix ("is *for* your first time") are kept. I updated the `sources.md` levels ¶1 quote to match.
+
+### Left as is
+
+- intro ¶2 S1 "The lodge sits in the green of the jungle." It is short after F1's cut, but plain. Any reword would bring location back into it.
+- day ¶1 "Head out with your group for a morning surf.": it reads naturally and says nothing about what comes first.
+- levels ¶4, `spot`, rooms block: these have no tells.
+
+### Could not fix without a fact
+
+Same as round 1: no honest limit on the page except the price caveat (season, reply time, distance to the breaks). Owner item.
