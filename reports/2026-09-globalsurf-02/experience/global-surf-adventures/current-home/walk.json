@@ -1,0 +1,803 @@
+{
+ "name": "current-home",
+ "url": "https://www.globalsurf.com/",
+ "modes": [
+  "phone",
+  "book",
+  "laptop"
+ ],
+ "runs": {
+  "phone": {
+   "timeline": [
+    {
+     "at": 500,
+     "actual": 500,
+     "f": "Error: page.screenshot: Protocol error (Page.captureScreenshot): Unable to captu",
+     "video": [],
+     "info": {
+      "y": 0,
+      "H": 844,
+      "fixed": [],
+      "book": [],
+      "headings": []
+     }
+    },
+    {
+     "at": 1500,
+     "actual": 3561,
+     "f": "phone-cold-1500ms.jpg",
+     "video": [],
+     "info": {
+      "y": 0,
+      "H": 4113,
+      "fixed": [],
+      "book": [
+       {
+        "t": "Ready to catch my first wave",
+        "h": "https://globalsurfadventures.bookinglayer.io/frontoffice/#/",
+        "w": 261,
+        "hh": 42
+       }
+      ],
+      "headings": [
+       "Tailor-Made Surf Trips Like Never Before",
+       "Our Destinations"
+      ]
+     }
+    },
+    {
+     "at": 3000,
+     "actual": 5532,
+     "f": "phone-cold-3000ms.jpg",
+     "video": [],
+     "info": {
+      "y": 0,
+      "H": 3970,
+      "fixed": [],
+      "book": [
+       {
+        "t": "Ready to catch my first wave",
+        "h": "https://globalsurfadventures.bookinglayer.io/frontoffice/#/",
+        "w": 241,
+        "hh": 42
+       }
+      ],
+      "headings": [
+       "Tailor-Made Surf Trips Like Never Before",
+       "Our Destinations",
+       "Mozambique"
+      ]
+     }
+    },
+    {
+     "at": "load+4s",
+     "loadAt": 27190,
+     "f": "phone-settled.jpg",
+     "cookie": "none-found",
+     "video": [],
+     "perf": {
+      "lcp": 15644,
+      "lcpEl": "DIV.elementor-cta__bg elementor-bg -content/uploads/2024/03/1-1-768x306.png",
+      "cls": 0.136
+     },
+     "navRes": "ok"
+    },
+    {
+     "at": "load+7s",
+     "video": []
+    }
+   ],
+   "firstLoad": {
+    "kb": 4364,
+    "hosts": {
+     "www.globalsurf.com": 96,
+     "static.elfsight.com": 1,
+     "scontent.xx.fbcdn.net": 1,
+     "www.youtube.com": 20,
+     "connect.facebook.net": 3,
+     "fonts.gstatic.com": 2,
+     "www.googletagmanager.com": 3,
+     "ad.doubleclick.net": 1,
+     "www.google.com": 2,
+     "www.facebook.com": 1,
+     "region1.google-analytics.com": 3,
+     "static.doubleclick.net": 1,
+     "googleads.g.doubleclick.net": 1,
+     "rr16---sn-n8v7znsd.googlevideo.com": 1,
+     "jnn-pa.googleapis.com": 2,
+     "i.ytimg.com": 1,
+     "www.gstatic.com": 1,
+     "rr1---sn-4g5edndk.googlevideo.com": 1
+    },
+    "video": []
+   },
+   "afterScroll": {
+    "kb": 6750,
+    "video": []
+   },
+   "scroll": [
+    {
+     "f": "phone-scroll-00.jpg",
+     "y": 590,
+     "info": {
+      "y": 590,
+      "H": 3992,
+      "fixed": [
+       {
+        "tag": "SECTION",
+        "cls": "elementor-section elementor-top-section ",
+        "pos": "fixed",
+        "top": 0,
+        "h": 50
+       },
+       {
+        "tag": "DIV",
+        "cls": "jsx-1005922490 eafc-chat-window-containe",
+        "pos": "fixed",
+        "top": 768,
+        "h": 76
+       }
+      ],
+      "book": [],
+      "headings": [
+       "Angola Surf Trips",
+       "Mozambique",
+       "Maldives Surf Adventures",
+       "Global Surf Lodge Kabalana",
+       "The land of pumping rights",
+       "Angola Surf Trips",
+       "Mozambique",
+       "Maldives Surf Adventures",
+       "Global Surf Lodge Kabalana",
+       "The land of pumping rights",
+       "Angola Surf Trips"
+      ]
+     },
+     "video": []
+    },
+    {
+     "f": "phone-scroll-01.jpg",
+     "y": 1180,
+     "info": {
+      "y": 1180,
+      "H": 4420,
+      "fixed": [
+       {
+        "tag": "SECTION",
+        "cls": "elementor-section elementor-top-section ",
+        "pos": "fixed",
+        "top": 0,
+        "h": 50
+       },
+       {
+        "tag": "DIV",
+        "cls": "jsx-1005922490 eafc-chat-window-containe",
+        "pos": "fixed",
+        "top": 768,
+        "h": 76
+       }
+      ],
+      "book": [],
+      "headings": [
+       "Why Travel with Global Surf?"
+      ]
+     },
+     "video": []
+    },
+    {
+     "f": "phone-scroll-02.jpg",
+     "y": 1770,
+     "info": {
+      "y": 1770,
+      "H": 4420,
+      "fixed": [
+       {
+        "tag": "SECTION",
+        "cls": "elementor-section elementor-top-section ",
+        "pos": "fixed",
+        "top": 0,
+        "h": 50
+       },
+       {
+        "tag": "DIV",
+        "cls": "jsx-1005922490 eafc-chat-window-containe",
+        "pos": "fixed",
+        "top": 768,
+        "h": 76
+       }
+      ],
+      "book": [],
+      "headings": [
+       "Why Travel with Global Surf?"
+      ]
+     },
+     "video": []
+    },
+    {
+     "f": "phone-scroll-03.jpg",
+     "y": 2360,
+     "info": {
+      "y": 2360,
+      "H": 4420,
+      "fixed": [
+       {
+        "tag": "SECTION",
+        "cls": "elementor-section elementor-top-section ",
+        "pos": "fixed",
+        "top": 0,
+        "h": 50
+       },
+       {
+        "tag": "DIV",
+        "cls": "jsx-1005922490 eafc-chat-window-containe",
+        "pos": "fixed",
+        "top": 768,
+        "h": 76
+       }
+      ],
+      "book": [],
+      "headings": []
+     },
+     "video": []
+    },
+    {
+     "f": "phone-scroll-04.jpg",
+     "y": 2950,
+     "info": {
+      "y": 2950,
+      "H": 4420,
+      "fixed": [
+       {
+        "tag": "SECTION",
+        "cls": "elementor-section elementor-top-section ",
+        "pos": "fixed",
+        "top": 0,
+        "h": 50
+       },
+       {
+        "tag": "DIV",
+        "cls": "jsx-1005922490 eafc-chat-window-containe",
+        "pos": "fixed",
+        "top": 768,
+        "h": 76
+       }
+      ],
+      "book": [
+       {
+        "t": "Ready to catch my first wave",
+        "h": "https://globalsurfadventures.bookinglayer.io/frontoffice/#/",
+        "w": 241,
+        "hh": 42
+       }
+      ],
+      "headings": []
+     },
+     "video": []
+    },
+    {
+     "f": "phone-scroll-05.jpg",
+     "y": 3540,
+     "info": {
+      "y": 3540,
+      "H": 4420,
+      "fixed": [
+       {
+        "tag": "SECTION",
+        "cls": "elementor-section elementor-top-section ",
+        "pos": "fixed",
+        "top": 0,
+        "h": 50
+       },
+       {
+        "tag": "DIV",
+        "cls": "jsx-1005922490 eafc-chat-window-containe",
+        "pos": "fixed",
+        "top": 768,
+        "h": 76
+       }
+      ],
+      "book": [
+       {
+        "t": "",
+        "h": "https://wa.me/972523593240",
+        "w": 22,
+        "hh": 24
+       },
+       {
+        "t": "What’sup",
+        "h": "https://wa.me/972523593240",
+        "w": 65,
+        "hh": 22
+       }
+      ],
+      "headings": []
+     },
+     "video": []
+    },
+    {
+     "f": "phone-scroll-06.jpg",
+     "y": 3576,
+     "info": {
+      "y": 3576,
+      "H": 4420,
+      "fixed": [
+       {
+        "tag": "SECTION",
+        "cls": "elementor-section elementor-top-section ",
+        "pos": "fixed",
+        "top": 0,
+        "h": 50
+       },
+       {
+        "tag": "DIV",
+        "cls": "jsx-1005922490 eafc-chat-window-containe",
+        "pos": "fixed",
+        "top": 768,
+        "h": 76
+       }
+      ],
+      "book": [
+       {
+        "t": "",
+        "h": "https://wa.me/972523593240",
+        "w": 22,
+        "hh": 24
+       },
+       {
+        "t": "What’sup",
+        "h": "https://wa.me/972523593240",
+        "w": 65,
+        "hh": 22
+       }
+      ],
+      "headings": []
+     },
+     "video": []
+    },
+    {
+     "end": true
+    }
+   ]
+  },
+  "book": {
+   "firstScreenLinks": [
+    {
+     "t": "",
+     "h": "https://www.globalsurf.com/",
+     "w": 130,
+     "hh": 45,
+     "x": 20,
+     "y": 5
+    },
+    {
+     "t": "Ready to catch my first wave",
+     "h": "https://globalsurfadventures.bookinglayer.io/frontoffice/#/",
+     "w": 241,
+     "hh": 42,
+     "x": 75,
+     "y": 335
+    },
+    {
+     "t": "Angola Surf Trips Angola Take me there",
+     "h": "https://www.globalsurf.com/global-hotels/angola/african-adventure/",
+     "w": 330,
+     "hh": 350,
+     "x": -320,
+     "y": 616
+    },
+    {
+     "t": "Mozambique Mozambique Take me there",
+     "h": "https://www.globalsurf.com/global-hotels/mozambique/mozambique/",
+     "w": 330,
+     "hh": 350,
+     "x": 30,
+     "y": 616
+    },
+    {
+     "t": "Maldives Surf Adventures Maldives Take me there",
+     "h": "https://www.globalsurf.com/global-hotels/maldives/malidves-surf-adventure/",
+     "w": 330,
+     "hh": 350,
+     "x": 380,
+     "y": 616
+    },
+    {
+     "t": "Global Surf Lodge Kabalana Sri Lanka Take me there",
+     "h": "https://www.globalsurf.com/global-hotels/sri-lanka/kabalana-surf-lodge/",
+     "w": 330,
+     "hh": 350,
+     "x": 730,
+     "y": 616
+    },
+    {
+     "t": "The land of pumping rights Morocco Take me there",
+     "h": "https://www.globalsurf.com/global-hotels/marocco/morocco-surf-trips/",
+     "w": 330,
+     "hh": 350,
+     "x": 1080,
+     "y": 616
+    },
+    {
+     "t": "Angola Surf Trips Angola Take me there",
+     "h": "https://www.globalsurf.com/global-hotels/angola/african-adventure/",
+     "w": 330,
+     "hh": 350,
+     "x": 1430,
+     "y": 616
+    },
+    {
+     "t": "Mozambique Mozambique Take me there",
+     "h": "https://www.globalsurf.com/global-hotels/mozambique/mozambique/",
+     "w": 330,
+     "hh": 350,
+     "x": 1780,
+     "y": 616
+    },
+    {
+     "t": "Maldives Surf Adventures Maldives Take me there",
+     "h": "https://www.globalsurf.com/global-hotels/maldives/malidves-surf-adventure/",
+     "w": 330,
+     "hh": 350,
+     "x": 2130,
+     "y": 616
+    },
+    {
+     "t": "Global Surf Lodge Kabalana Sri Lanka Take me there",
+     "h": "https://www.globalsurf.com/global-hotels/sri-lanka/kabalana-surf-lodge/",
+     "w": 330,
+     "hh": 350,
+     "x": 2480,
+     "y": 616
+    },
+    {
+     "t": "The land of pumping rights Morocco Take me there",
+     "h": "https://www.globalsurf.com/global-hotels/marocco/morocco-surf-trips/",
+     "w": 330,
+     "hh": 350,
+     "x": 2830,
+     "y": 616
+    },
+    {
+     "t": "Angola Surf Trips Angola Take me there",
+     "h": "https://www.globalsurf.com/global-hotels/angola/african-adventure/",
+     "w": 330,
+     "hh": 350,
+     "x": 3180,
+     "y": 616
+    }
+   ]
+  },
+  "laptop": {
+   "timeline": [
+    {
+     "at": 500,
+     "actual": 500,
+     "f": "laptop-cold-500ms.jpg",
+     "video": [],
+     "info": {
+      "y": 0,
+      "H": 4858,
+      "fixed": [],
+      "book": [
+       {
+        "t": "Ready to catch my first wave",
+        "h": "https://globalsurfadventures.bookinglayer.io/frontoffice/#/",
+        "w": 261,
+        "hh": 42
+       }
+      ],
+      "headings": [
+       "Tailor-Made Surf Trips Like Never Before",
+       "Our Destinations"
+      ]
+     }
+    },
+    {
+     "at": 1500,
+     "actual": 1610,
+     "f": "laptop-cold-1500ms.jpg",
+     "video": [],
+     "info": {
+      "y": 0,
+      "H": 4811,
+      "fixed": [
+       {
+        "tag": "SECTION",
+        "cls": "elementor-section elementor-top-section ",
+        "pos": "fixed",
+        "top": 0,
+        "h": 60
+       },
+       {
+        "tag": "DIV",
+        "cls": "jsx-2458828017 eafc-chat-window-containe",
+        "pos": "fixed",
+        "top": 824,
+        "h": 76
+       }
+      ],
+      "book": [
+       {
+        "t": "Ready to catch my first wave",
+        "h": "https://globalsurfadventures.bookinglayer.io/frontoffice/#/",
+        "w": 241,
+        "hh": 42
+       }
+      ],
+      "headings": [
+       "Tailor-Made Surf Trips Like Never Before",
+       "Our Destinations"
+      ]
+     }
+    },
+    {
+     "at": 3000,
+     "actual": 3026,
+     "f": "laptop-cold-3000ms.jpg",
+     "video": [],
+     "info": {
+      "y": 0,
+      "H": 4811,
+      "fixed": [
+       {
+        "tag": "SECTION",
+        "cls": "elementor-section elementor-top-section ",
+        "pos": "fixed",
+        "top": 0,
+        "h": 60
+       },
+       {
+        "tag": "DIV",
+        "cls": "jsx-2458828017 eafc-chat-window-containe",
+        "pos": "fixed",
+        "top": 824,
+        "h": 76
+       }
+      ],
+      "book": [
+       {
+        "t": "Ready to catch my first wave",
+        "h": "https://globalsurfadventures.bookinglayer.io/frontoffice/#/",
+        "w": 241,
+        "hh": 42
+       }
+      ],
+      "headings": [
+       "Tailor-Made Surf Trips Like Never Before",
+       "Our Destinations"
+      ]
+     }
+    },
+    {
+     "at": "load+4s",
+     "loadAt": 3057,
+     "f": "laptop-settled.jpg",
+     "cookie": "none-found",
+     "video": [],
+     "perf": {
+      "lcp": 1964,
+      "lcpEl": "H2.elementor-heading-title elementor-size-default ",
+      "cls": 0.061
+     },
+     "navRes": "ok"
+    },
+    {
+     "at": "load+7s",
+     "video": []
+    }
+   ],
+   "kb": 15230,
+   "video": [],
+   "scroll": [
+    {
+     "f": "laptop-scroll-00.jpg",
+     "y": 720,
+     "info": {
+      "y": 720,
+      "H": 5169,
+      "fixed": [
+       {
+        "tag": "SECTION",
+        "cls": "elementor-section elementor-top-section ",
+        "pos": "fixed",
+        "top": 0,
+        "h": 60
+       },
+       {
+        "tag": "DIV",
+        "cls": "jsx-2458828017 eafc-chat-window-containe",
+        "pos": "fixed",
+        "top": 824,
+        "h": 76
+       }
+      ],
+      "book": [],
+      "headings": [
+       "Our Destinations",
+       "Global Surf Lodge Kabalana",
+       "The land of pumping rights",
+       "Angola Surf Trips",
+       "Mozambique",
+       "Maldives Surf Adventures",
+       "Global Surf Lodge Kabalana",
+       "The land of pumping rights",
+       "Angola Surf Trips",
+       "Mozambique",
+       "Maldives Surf Adventures",
+       "Global Surf Lodge Kabalana",
+       "The land of pumping rights",
+       "Angola Surf Trips"
+      ]
+     },
+     "video": []
+    },
+    {
+     "f": "laptop-scroll-01.jpg",
+     "y": 1440,
+     "info": {
+      "y": 1440,
+      "H": 5169,
+      "fixed": [
+       {
+        "tag": "SECTION",
+        "cls": "elementor-section elementor-top-section ",
+        "pos": "fixed",
+        "top": 0,
+        "h": 60
+       },
+       {
+        "tag": "DIV",
+        "cls": "jsx-2458828017 eafc-chat-window-containe",
+        "pos": "fixed",
+        "top": 824,
+        "h": 76
+       }
+      ],
+      "book": [],
+      "headings": []
+     },
+     "video": []
+    },
+    {
+     "f": "laptop-scroll-02.jpg",
+     "y": 2160,
+     "info": {
+      "y": 2160,
+      "H": 5169,
+      "fixed": [
+       {
+        "tag": "SECTION",
+        "cls": "elementor-section elementor-top-section ",
+        "pos": "fixed",
+        "top": 0,
+        "h": 60
+       },
+       {
+        "tag": "DIV",
+        "cls": "jsx-2458828017 eafc-chat-window-containe",
+        "pos": "fixed",
+        "top": 824,
+        "h": 76
+       }
+      ],
+      "book": [],
+      "headings": [
+       "Why Travel with Global Surf?"
+      ]
+     },
+     "video": []
+    },
+    {
+     "f": "laptop-scroll-03.jpg",
+     "y": 2880,
+     "info": {
+      "y": 2880,
+      "H": 5169,
+      "fixed": [
+       {
+        "tag": "SECTION",
+        "cls": "elementor-section elementor-top-section ",
+        "pos": "fixed",
+        "top": 0,
+        "h": 60
+       },
+       {
+        "tag": "DIV",
+        "cls": "jsx-2458828017 eafc-chat-window-containe",
+        "pos": "fixed",
+        "top": 824,
+        "h": 76
+       }
+      ],
+      "book": [],
+      "headings": []
+     },
+     "video": []
+    },
+    {
+     "f": "laptop-scroll-04.jpg",
+     "y": 3600,
+     "info": {
+      "y": 3600,
+      "H": 5169,
+      "fixed": [
+       {
+        "tag": "SECTION",
+        "cls": "elementor-section elementor-top-section ",
+        "pos": "fixed",
+        "top": 0,
+        "h": 60
+       },
+       {
+        "tag": "DIV",
+        "cls": "jsx-2458828017 eafc-chat-window-containe",
+        "pos": "fixed",
+        "top": 824,
+        "h": 76
+       }
+      ],
+      "book": [
+       {
+        "t": "Ready to catch my first wave",
+        "h": "https://globalsurfadventures.bookinglayer.io/frontoffice/#/",
+        "w": 241,
+        "hh": 42
+       }
+      ],
+      "headings": []
+     },
+     "video": []
+    },
+    {
+     "f": "laptop-scroll-05.jpg",
+     "y": 4269,
+     "info": {
+      "y": 4269,
+      "H": 5169,
+      "fixed": [
+       {
+        "tag": "SECTION",
+        "cls": "elementor-section elementor-top-section ",
+        "pos": "fixed",
+        "top": 0,
+        "h": 60
+       },
+       {
+        "tag": "DIV",
+        "cls": "jsx-2458828017 eafc-chat-window-containe",
+        "pos": "fixed",
+        "top": 824,
+        "h": 76
+       }
+      ],
+      "book": [
+       {
+        "t": "Ready to catch my first wave",
+        "h": "https://globalsurfadventures.bookinglayer.io/frontoffice/#/",
+        "w": 241,
+        "hh": 42
+       },
+       {
+        "t": "",
+        "h": "https://wa.me/972523593240",
+        "w": 17,
+        "hh": 19
+       },
+       {
+        "t": "What’sup",
+        "h": "https://wa.me/972523593240",
+        "w": 65,
+        "hh": 22
+       }
+      ],
+      "headings": []
+     },
+     "video": []
+    },
+    {
+     "end": true
+    }
+   ]
+  }
+ }
+}

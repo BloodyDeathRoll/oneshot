@@ -1,0 +1,4589 @@
+{
+ "name": "interactive",
+ "url": "http://127.0.0.1:8983/interactive/dist/index.html",
+ "modes": [
+  "phone",
+  "motion",
+  "book",
+  "reduced",
+  "nojs",
+  "laptop"
+ ],
+ "runs": {
+  "phone": {
+   "timeline": [
+    {
+     "at": 500,
+     "actual": 500,
+     "f": "phone-cold-500ms.jpg",
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ],
+     "info": {
+      "y": 0,
+      "H": 12955,
+      "fixed": [],
+      "book": [
+       {
+        "t": "See the weekly surf packages and dates",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+        "w": 358,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "Global Surf Lodge KabalanaSurf weeks for all levels on Sri L"
+      ]
+     }
+    },
+    {
+     "at": 1500,
+     "actual": 1500,
+     "f": "phone-cold-1500ms.jpg",
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ],
+     "info": {
+      "y": 0,
+      "H": 12599,
+      "fixed": [],
+      "book": [
+       {
+        "t": "See the weekly surf packages and dates",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+        "w": 358,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "Global Surf Lodge KabalanaSurf weeks for all levels on Sri L"
+      ]
+     }
+    },
+    {
+     "at": 3000,
+     "actual": 3000,
+     "f": "phone-cold-3000ms.jpg",
+     "video": [
+      {
+       "cls": "",
+       "src": "vid-009-m1280.webm",
+       "t": 0,
+       "paused": false,
+       "ready": 1,
+       "net": 2,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ],
+     "info": {
+      "y": 0,
+      "H": 12599,
+      "fixed": [],
+      "book": [
+       {
+        "t": "See the weekly surf packages and dates",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+        "w": 358,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "Global Surf Lodge KabalanaSurf weeks for all levels on Sri L"
+      ]
+     }
+    },
+    {
+     "at": "load+4s",
+     "loadAt": 3080,
+     "f": "phone-settled.jpg",
+     "cookie": "none-found",
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 4.1,
+       "paused": false,
+       "ready": 4,
+       "net": 2,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ],
+     "perf": {
+      "lcp": 648,
+      "lcpEl": "SPAN. ",
+      "cls": 0.026
+     },
+     "navRes": "ok"
+    },
+    {
+     "at": "load+7s",
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 7.11,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    }
+   ],
+   "firstLoad": {
+    "kb": 1737,
+    "hosts": {
+     "127.0.0.1:8983": 5,
+     "fonts.googleapis.com": 1,
+     "fonts.gstatic.com": 4
+    },
+    "video": [
+     "vid-009-m1280.webm"
+    ]
+   },
+   "afterScroll": {
+    "kb": 4523,
+    "video": [
+     "vid-009-m1280.webm",
+     "vid-010-m720.mp4"
+    ]
+   },
+   "scroll": [
+    {
+     "f": "phone-scroll-00.jpg",
+     "y": 590,
+     "info": {
+      "y": 590,
+      "H": 12599,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "head",
+        "pos": "sticky",
+        "top": 721,
+        "h": 163
+       }
+      ],
+      "book": [
+       {
+        "t": "See the weekly surf packages and dates",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+        "w": 358,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "Next set is yours",
+       "Pick your level"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 8.87,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "vid-010-m720.mp4",
+       "t": 0,
+       "paused": false,
+       "ready": 1,
+       "net": 2,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "phone-scroll-01.jpg",
+     "y": 1180,
+     "info": {
+      "y": 1180,
+      "H": 12599,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "head",
+        "pos": "sticky",
+        "top": 131,
+        "h": 163
+       },
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 756,
+        "h": 88
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 119,
+        "hh": 44
+       }
+      ],
+      "headings": [
+       "Pick your level"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 10.66,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 0.76,
+       "paused": false,
+       "ready": 2,
+       "net": 2,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "phone-scroll-02.jpg",
+     "y": 1770,
+     "info": {
+      "y": 1770,
+      "H": 12599,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "head",
+        "pos": "sticky",
+        "top": 0,
+        "h": 163
+       },
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 756,
+        "h": 88
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 1 – Fomies",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 197,
+        "hh": 48
+       },
+       {
+        "t": "Book Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 119,
+        "hh": 44
+       }
+      ],
+      "headings": [
+       "Pick your level",
+       "One price, three levels"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 0.28,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 1.56,
+       "paused": false,
+       "ready": 3,
+       "net": 2,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "phone-scroll-03.jpg",
+     "y": 2360,
+     "info": {
+      "y": 2360,
+      "H": 12599,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "head",
+        "pos": "sticky",
+        "top": -103,
+        "h": 163
+       },
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 756,
+        "h": 88
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 1 – Fomies",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 197,
+        "hh": 48
+       },
+       {
+        "t": "Book Freestylers – B&B only",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/freestylers-bb-only-pac",
+        "w": 208,
+        "hh": 44
+       },
+       {
+        "t": "See the weekly surf packages and dates",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+        "w": 358,
+        "hh": 48
+       },
+       {
+        "t": "Ask on WhatsApp",
+        "h": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20h",
+        "w": 129,
+        "hh": 44
+       },
+       {
+        "t": "Call +972 9-973-3943",
+        "h": "tel:+97299733943",
+        "w": 153,
+        "hh": 44
+       },
+       {
+        "t": "Book Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 119,
+        "hh": 44
+       }
+      ],
+      "headings": [
+       "One price, three levels",
+       "Freestylers – B&B only"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 2.06,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 3.34,
+       "paused": false,
+       "ready": 3,
+       "net": 2,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "phone-scroll-04.jpg",
+     "y": 2950,
+     "info": {
+      "y": 2950,
+      "H": 12599,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 756,
+        "h": 88
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Freestylers – B&B only",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/freestylers-bb-only-pac",
+        "w": 208,
+        "hh": 44
+       },
+       {
+        "t": "See the weekly surf packages and dates",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+        "w": 358,
+        "hh": 48
+       },
+       {
+        "t": "Ask on WhatsApp",
+        "h": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20h",
+        "w": 129,
+        "hh": 44
+       },
+       {
+        "t": "Call +972 9-973-3943",
+        "h": "tel:+97299733943",
+        "w": 153,
+        "hh": 44
+       },
+       {
+        "t": "Book Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 119,
+        "hh": 44
+       }
+      ],
+      "headings": []
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 3.82,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 5.1,
+       "paused": false,
+       "ready": 3,
+       "net": 2,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "phone-scroll-05.jpg",
+     "y": 3540,
+     "info": {
+      "y": 3540,
+      "H": 12599,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 756,
+        "h": 88
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 119,
+        "hh": 44
+       }
+      ],
+      "headings": [
+       "Surf, breakfast, surf again"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 5.61,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 6.89,
+       "paused": false,
+       "ready": 4,
+       "net": 2,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "phone-scroll-06.jpg",
+     "y": 4130,
+     "info": {
+      "y": 4130,
+      "H": 12599,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 756,
+        "h": 88
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 119,
+        "hh": 44
+       }
+      ],
+      "headings": [
+       "Surf, breakfast, surf again"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 7.36,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 8.64,
+       "paused": false,
+       "ready": 4,
+       "net": 2,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "phone-scroll-07.jpg",
+     "y": 4720,
+     "info": {
+      "y": 4720,
+      "H": 12599,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 756,
+        "h": 88
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 119,
+        "hh": 44
+       }
+      ],
+      "headings": [
+       "Twelve rooms, one big family"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 9.1,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 10.38,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "phone-scroll-08.jpg",
+     "y": 5310,
+     "info": {
+      "y": 5310,
+      "H": 12599,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 756,
+        "h": 88
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 119,
+        "hh": 44
+       }
+      ],
+      "headings": [
+       "Twelve rooms, one big family",
+       "Also at the lodge"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 10.85,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 0.12,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "phone-scroll-09.jpg",
+     "y": 5900,
+     "info": {
+      "y": 5900,
+      "H": 12599,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 756,
+        "h": 88
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 119,
+        "hh": 44
+       }
+      ],
+      "headings": [
+       "Also at the lodge",
+       "What guests say"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 0.58,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 1.87,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "phone-scroll-10.jpg",
+     "y": 6490,
+     "info": {
+      "y": 6490,
+      "H": 12599,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 756,
+        "h": 88
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 119,
+        "hh": 44
+       }
+      ],
+      "headings": [
+       "What guests say"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 2.33,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 3.62,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "phone-scroll-11.jpg",
+     "y": 7080,
+     "info": {
+      "y": 7080,
+      "H": 12599,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 756,
+        "h": 88
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 119,
+        "hh": 44
+       }
+      ],
+      "headings": []
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 4.08,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 5.37,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "phone-scroll-12.jpg",
+     "y": 7670,
+     "info": {
+      "y": 7670,
+      "H": 12599,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 756,
+        "h": 88
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 119,
+        "hh": 44
+       }
+      ],
+      "headings": []
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 5.83,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 7.11,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "phone-scroll-13.jpg",
+     "y": 8260,
+     "info": {
+      "y": 8260,
+      "H": 12599,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 756,
+        "h": 88
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 119,
+        "hh": 44
+       }
+      ],
+      "headings": [
+       "The spot"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 7.62,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 8.9,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "phone-scroll-14.jpg",
+     "y": 8850,
+     "info": {
+      "y": 8850,
+      "H": 12599,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 756,
+        "h": 88
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 119,
+        "hh": 44
+       }
+      ],
+      "headings": [
+       "The spot"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 9.37,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 10.65,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "phone-scroll-15.jpg",
+     "y": 9440,
+     "info": {
+      "y": 9440,
+      "H": 12599,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 756,
+        "h": 88
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 119,
+        "hh": 44
+       }
+      ],
+      "headings": []
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 11.11,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 0.39,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "phone-scroll-16.jpg",
+     "y": 10030,
+     "info": {
+      "y": 10030,
+      "H": 12599,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 756,
+        "h": 88
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 119,
+        "hh": 44
+       }
+      ],
+      "headings": [
+       "Getting here"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 0.84,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 2.14,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "phone-scroll-17.jpg",
+     "y": 10620,
+     "info": {
+      "y": 10620,
+      "H": 12599,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 756,
+        "h": 88
+       }
+      ],
+      "book": [
+       {
+        "t": "FomiesBook Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 358,
+        "hh": 102
+       },
+       {
+        "t": "RollersBook Level 2",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers",
+        "w": 358,
+        "hh": 102
+       },
+       {
+        "t": "Book Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 119,
+        "hh": 44
+       }
+      ],
+      "headings": [
+       "Getting here",
+       "FomiesBook Level 1 RollersBook Level 2 RidersBook Level 3"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 2.59,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 3.89,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "phone-scroll-18.jpg",
+     "y": 11210,
+     "info": {
+      "y": 11210,
+      "H": 12599,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 756,
+        "h": 88
+       }
+      ],
+      "book": [
+       {
+        "t": "FomiesBook Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 358,
+        "hh": 102
+       },
+       {
+        "t": "RollersBook Level 2",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers",
+        "w": 358,
+        "hh": 102
+       },
+       {
+        "t": "RidersBook Level 3",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+        "w": 358,
+        "hh": 102
+       },
+       {
+        "t": "See the weekly surf packages and dates",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+        "w": 334,
+        "hh": 48
+       },
+       {
+        "t": "Ask on WhatsApp",
+        "h": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20h",
+        "w": 129,
+        "hh": 44
+       },
+       {
+        "t": "Call +972 9-973-3943",
+        "h": "tel:+97299733943",
+        "w": 153,
+        "hh": 44
+       }
+      ],
+      "headings": [
+       "FomiesBook Level 1 RollersBook Level 2 RidersBook Level 3",
+       "Global Surf Lodge Kabalana"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 4.34,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 5.64,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "phone-scroll-19.jpg",
+     "y": 11755,
+     "info": {
+      "y": 11755,
+      "H": 12599,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 756,
+        "h": 88
+       }
+      ],
+      "book": [
+       {
+        "t": "See the weekly surf packages and dates",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+        "w": 334,
+        "hh": 48
+       },
+       {
+        "t": "Ask on WhatsApp",
+        "h": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20h",
+        "w": 129,
+        "hh": 44
+       },
+       {
+        "t": "Call +972 9-973-3943",
+        "h": "tel:+97299733943",
+        "w": 153,
+        "hh": 44
+       },
+       {
+        "t": "Ask on WhatsApp",
+        "h": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20h",
+        "w": 114,
+        "hh": 44
+       },
+       {
+        "t": "+972 9-973-3943",
+        "h": "tel:+97299733943",
+        "w": 109,
+        "hh": 44
+       },
+       {
+        "t": "See the weekly surf packages and dates",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+        "w": 261,
+        "hh": 44
+       }
+      ],
+      "headings": [
+       "Global Surf Lodge Kabalana",
+       "WhatsApp",
+       "Phone and email",
+       "Book"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 6.09,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 7.39,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "end": true
+    }
+   ]
+  },
+  "motion_phone": {
+   "secs": 20.087,
+   "H": 12599,
+   "frames": {
+    "n": 1204,
+    "p50": 16.7,
+    "p95": 16.7,
+    "over50": 0,
+    "max": 17
+   },
+   "mid": [
+    {
+     "f": "motion-phone-00.jpg",
+     "y": 450,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 3.27,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 0.4,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-phone-01.jpg",
+     "y": 1710,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 5.43,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 2.56,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-phone-02.jpg",
+     "y": 2970,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 7.57,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 4.7,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-phone-03.jpg",
+     "y": 4230,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 9.71,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 6.84,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-phone-04.jpg",
+     "y": 5490,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 11.86,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 8.99,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-phone-05.jpg",
+     "y": 6780,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 1.81,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 11.2,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-phone-06.jpg",
+     "y": 8040,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 3.96,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 1.21,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-phone-07.jpg",
+     "y": 9300,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 6.12,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 3.37,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-phone-08.jpg",
+     "y": 10560,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-m1280.webm",
+       "t": 8.26,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m720.mp4",
+       "t": 5.51,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    }
+   ],
+   "canvases": []
+  },
+  "motion_laptop": {
+   "secs": 23.678,
+   "H": 14684,
+   "frames": {
+    "n": 1416,
+    "p50": 16.7,
+    "p95": 16.7,
+    "over50": 0,
+    "max": 33
+   },
+   "mid": [
+    {
+     "f": "motion-laptop-00.jpg",
+     "y": 450,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 3.21,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 0.19,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-laptop-01.jpg",
+     "y": 1800,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 5.51,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 2.5,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": true
+      }
+     ]
+    },
+    {
+     "f": "motion-laptop-02.jpg",
+     "y": 3150,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 8.07,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 2.67,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 0.86,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 1.48,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      }
+     ]
+    },
+    {
+     "f": "motion-laptop-03.jpg",
+     "y": 4500,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 10.37,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 2.67,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 0.86,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 3.77,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-laptop-04.jpg",
+     "y": 5850,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 0.62,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 2.67,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 0.86,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 6.07,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-laptop-05.jpg",
+     "y": 7200,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 2.9,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 2.67,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 0.86,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 8.35,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-laptop-06.jpg",
+     "y": 8550,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 5.18,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 2.67,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 0.86,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 0.55,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-laptop-07.jpg",
+     "y": 9900,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 7.46,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 2.67,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 0.86,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 2.83,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-laptop-08.jpg",
+     "y": 11250,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 9.74,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 2.67,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 0.86,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 5.11,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "motion-laptop-09.jpg",
+     "y": 12600,
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 0.01,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 2.67,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 0.86,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 7.42,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    }
+   ],
+   "canvases": []
+  },
+  "book": {
+   "firstScreenLinks": [
+    {
+     "t": "Skip to the surf weeks",
+     "h": "http://127.0.0.1:8983/interactive/dist/index.html#levels",
+     "w": 191,
+     "hh": 46,
+     "x": -999,
+     "y": 8
+    },
+    {
+     "t": "Global Surf Lodge",
+     "h": "http://127.0.0.1:8983/interactive/dist/index.html#top",
+     "w": 137,
+     "hh": 22,
+     "x": 16,
+     "y": 14
+    },
+    {
+     "t": "8.6/10 on Booking.com, 80 reviewscaptured 28 Sep 2026",
+     "h": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+     "w": 245,
+     "hh": 48,
+     "x": 16,
+     "y": 600
+    },
+    {
+     "t": "See the weekly surf packages and dates",
+     "h": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+     "w": 358,
+     "hh": 48,
+     "x": 16,
+     "y": 683
+    }
+   ],
+   "tapped": {
+    "t": "8.6/10 on Booking.com, 80 reviewscaptured 28 Sep 2026",
+    "h": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+    "w": 245,
+    "hh": 48,
+    "x": 16,
+    "y": 600
+   },
+   "landedUrl": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html?chal_t=1790622298440&force_referer=http%3A%2F%2F127.0.0.1%3A8983%2F",
+   "newTab": false,
+   "landedCookie": "declined:/decline/i",
+   "landedTitle": "Global Surf Lodge Kabalana, Ahangama (updated prices 2026)"
+  },
+  "reduced": {
+   "first": {
+    "f": "reduced-00.jpg",
+    "video": [
+     {
+      "cls": "",
+      "src": "",
+      "t": 0,
+      "paused": true,
+      "ready": 0,
+      "net": 0,
+      "inView": false
+     },
+     {
+      "cls": "",
+      "src": "",
+      "t": 0,
+      "paused": true,
+      "ready": 0,
+      "net": 0,
+      "inView": false
+     },
+     {
+      "cls": "",
+      "src": "",
+      "t": 0,
+      "paused": true,
+      "ready": 0,
+      "net": 0,
+      "inView": false
+     },
+     {
+      "cls": "",
+      "src": "",
+      "t": 0,
+      "paused": true,
+      "ready": 0,
+      "net": 0,
+      "inView": false
+     }
+    ]
+   },
+   "videoRequests": [],
+   "scroll": [
+    {
+     "f": "reduced-00.jpg",
+     "y": 840
+    },
+    {
+     "f": "reduced-01.jpg",
+     "y": 1680
+    },
+    {
+     "f": "reduced-02.jpg",
+     "y": 2520
+    },
+    {
+     "f": "reduced-03.jpg",
+     "y": 3360
+    },
+    {
+     "f": "reduced-04.jpg",
+     "y": 4200
+    },
+    {
+     "f": "reduced-05.jpg",
+     "y": 5040
+    },
+    {
+     "f": "reduced-06.jpg",
+     "y": 5880
+    },
+    {
+     "f": "reduced-07.jpg",
+     "y": 6720
+    },
+    {
+     "f": "reduced-08.jpg",
+     "y": 7560
+    },
+    {
+     "f": "reduced-09.jpg",
+     "y": 8400
+    },
+    {
+     "f": "reduced-10.jpg",
+     "y": 9240
+    },
+    {
+     "f": "reduced-11.jpg",
+     "y": 10080
+    },
+    {
+     "f": "reduced-12.jpg",
+     "y": 10920
+    },
+    {
+     "f": "reduced-13.jpg",
+     "y": 11755
+    },
+    {}
+   ]
+  },
+  "nojs": {
+   "H": 14370,
+   "frames": [
+    "nojs-00.jpg",
+    "nojs-01.jpg",
+    "nojs-02.jpg",
+    "nojs-03.jpg",
+    "nojs-04.jpg",
+    "nojs-05.jpg",
+    "nojs-06.jpg",
+    "nojs-07.jpg",
+    "nojs-08.jpg",
+    "nojs-09.jpg",
+    "nojs-10.jpg",
+    "nojs-11.jpg",
+    "nojs-12.jpg",
+    "nojs-13.jpg",
+    "nojs-14.jpg",
+    "nojs-15.jpg",
+    "nojs-16.jpg",
+    "nojs-17.jpg"
+   ],
+   "info": {
+    "imgs": "0 broken/unloaded of 22",
+    "hidden": 0
+   }
+  },
+  "laptop": {
+   "timeline": [
+    {
+     "at": 500,
+     "actual": 500,
+     "f": "laptop-cold-500ms.jpg",
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ],
+     "info": {
+      "y": 0,
+      "H": 14684,
+      "fixed": [],
+      "book": [
+       {
+        "t": "See the weekly surf packages and dates",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+        "w": 325,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "Global Surf Lodge KabalanaSurf weeks for all levels on Sri L"
+      ]
+     }
+    },
+    {
+     "at": 1500,
+     "actual": 1500,
+     "f": "laptop-cold-1500ms.jpg",
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 0.35,
+       "paused": false,
+       "ready": 4,
+       "net": 2,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ],
+     "info": {
+      "y": 0,
+      "H": 14684,
+      "fixed": [],
+      "book": [
+       {
+        "t": "See the weekly surf packages and dates",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+        "w": 325,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "Global Surf Lodge KabalanaSurf weeks for all levels on Sri L"
+      ]
+     }
+    },
+    {
+     "at": 3000,
+     "actual": 3000,
+     "f": "laptop-cold-3000ms.jpg",
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 1.84,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ],
+     "info": {
+      "y": 0,
+      "H": 14684,
+      "fixed": [],
+      "book": [
+       {
+        "t": "See the weekly surf packages and dates",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+        "w": 325,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "Global Surf Lodge KabalanaSurf weeks for all levels on Sri L"
+      ]
+     }
+    },
+    {
+     "at": "load+4s",
+     "loadAt": 3035,
+     "f": "laptop-settled.jpg",
+     "cookie": "none-found",
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 5.9,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ],
+     "perf": {
+      "lcp": 424,
+      "lcpEl": "SPAN. ",
+      "cls": 0.052
+     },
+     "navRes": "ok"
+    },
+    {
+     "at": "load+7s",
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 8.9,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": false
+      }
+     ]
+    }
+   ],
+   "kb": 9436,
+   "video": [
+    "vid-009-d1920.webm",
+    "vid-010-m1280.webm",
+    "vid-003-m1280.webm",
+    "vid-002-m1280.webm"
+   ],
+   "scroll": [
+    {
+     "f": "laptop-scroll-00.jpg",
+     "y": 720,
+     "info": {
+      "y": 720,
+      "H": 14684,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "stage",
+        "pos": "sticky",
+        "top": 736,
+        "h": 900
+       }
+      ],
+      "book": [],
+      "headings": [
+       "Next set is yours",
+       "Pick your level"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 10.44,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 1.23,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": true
+      }
+     ]
+    },
+    {
+     "f": "laptop-scroll-01.jpg",
+     "y": 1440,
+     "info": {
+      "y": 1440,
+      "H": 14684,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "stage",
+        "pos": "sticky",
+        "top": 16,
+        "h": 900
+       },
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 0,
+        "h": 65
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 1 – Fomies",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 195,
+        "hh": 48
+       },
+       {
+        "t": "Book Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 131,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "Pick your level"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 11.99,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 2.78,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": true
+      }
+     ]
+    },
+    {
+     "f": "laptop-scroll-02.jpg",
+     "y": 2160,
+     "info": {
+      "y": 2160,
+      "H": 14684,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "stage",
+        "pos": "sticky",
+        "top": 0,
+        "h": 900
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 2 – Rollers",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers",
+        "w": 197,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "Pick your level"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 1.43,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 3.13,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 1.18,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "net": 0,
+       "inView": true
+      }
+     ]
+    },
+    {
+     "f": "laptop-scroll-03.jpg",
+     "y": 2880,
+     "info": {
+      "y": 2880,
+      "H": 14684,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "stage",
+        "pos": "sticky",
+        "top": -74,
+        "h": 900
+       },
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 0,
+        "h": 65
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 3 – Riders",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+        "w": 192,
+        "hh": 48
+       },
+       {
+        "t": "Book Level 3",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+        "w": 133,
+        "hh": 48
+       }
+      ],
+      "headings": []
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 3.09,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 3.13,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 1.31,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 1.42,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      }
+     ]
+    },
+    {
+     "f": "laptop-scroll-04.jpg",
+     "y": 3600,
+     "info": {
+      "y": 3600,
+      "H": 14684,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "stage",
+        "pos": "sticky",
+        "top": -794,
+        "h": 900
+       },
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 0,
+        "h": 65
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Freestylers – B&B only",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/freestylers-bb-only-pac",
+        "w": 204,
+        "hh": 44
+       },
+       {
+        "t": "See the weekly surf packages and dates",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+        "w": 322,
+        "hh": 48
+       },
+       {
+        "t": "Ask on WhatsApp",
+        "h": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20h",
+        "w": 126,
+        "hh": 44
+       },
+       {
+        "t": "Call +972 9-973-3943",
+        "h": "tel:+97299733943",
+        "w": 153,
+        "hh": 44
+       },
+       {
+        "t": "Book Level 3",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+        "w": 133,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "One price, three levels",
+       "Freestylers – B&B only"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 4.62,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 3.13,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 1.31,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 2.96,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": true
+      }
+     ]
+    },
+    {
+     "f": "laptop-scroll-05.jpg",
+     "y": 4320,
+     "info": {
+      "y": 4320,
+      "H": 14684,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 0,
+        "h": 65
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 3",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+        "w": 133,
+        "hh": 48
+       }
+      ],
+      "headings": []
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 6.16,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 3.13,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 1.31,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 4.49,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "laptop-scroll-06.jpg",
+     "y": 5040,
+     "info": {
+      "y": 5040,
+      "H": 14684,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "pin",
+        "pos": "sticky",
+        "top": 413,
+        "h": 900
+       },
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 0,
+        "h": 65
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 3",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+        "w": 133,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "Surf, breakfast, surf again"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 7.69,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 3.13,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 1.31,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 6.03,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "laptop-scroll-07.jpg",
+     "y": 5760,
+     "info": {
+      "y": 5760,
+      "H": 14684,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "pin",
+        "pos": "sticky",
+        "top": 0,
+        "h": 900
+       },
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 0,
+        "h": 65
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 3",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+        "w": 133,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "Surf, breakfast, surf again"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 9.22,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 3.13,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 1.31,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 7.55,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "laptop-scroll-08.jpg",
+     "y": 6480,
+     "info": {
+      "y": 6480,
+      "H": 14684,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "pin",
+        "pos": "sticky",
+        "top": 0,
+        "h": 900
+       },
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 0,
+        "h": 65
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 3",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+        "w": 133,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "Surf, breakfast, surf again"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 10.75,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 3.13,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 1.31,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 9.09,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "laptop-scroll-09.jpg",
+     "y": 7200,
+     "info": {
+      "y": 7200,
+      "H": 14684,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "pin",
+        "pos": "sticky",
+        "top": 0,
+        "h": 900
+       },
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 0,
+        "h": 65
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 3",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+        "w": 133,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "Surf, breakfast, surf again"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 0.24,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 3.13,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 1.31,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 0.39,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "laptop-scroll-10.jpg",
+     "y": 7920,
+     "info": {
+      "y": 7920,
+      "H": 14684,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "pin",
+        "pos": "sticky",
+        "top": 0,
+        "h": 900
+       },
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 0,
+        "h": 65
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 3",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+        "w": 133,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "Surf, breakfast, surf again"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 1.78,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 3.13,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 1.31,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 1.92,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "laptop-scroll-11.jpg",
+     "y": 8640,
+     "info": {
+      "y": 8640,
+      "H": 14684,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "pin",
+        "pos": "sticky",
+        "top": -429,
+        "h": 900
+       },
+       {
+        "tag": "DIV",
+        "cls": "pic",
+        "pos": "sticky",
+        "top": 630,
+        "h": 780
+       },
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 0,
+        "h": 65
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 3",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+        "w": 133,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "Twelve rooms, one big family"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 3.31,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 3.13,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 1.31,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 3.46,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "laptop-scroll-12.jpg",
+     "y": 9360,
+     "info": {
+      "y": 9360,
+      "H": 14684,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "pic",
+        "pos": "sticky",
+        "top": 90,
+        "h": 780
+       },
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 0,
+        "h": 65
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 3",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+        "w": 133,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "Twelve rooms, one big family",
+       "Also at the lodge"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 4.84,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 3.13,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 1.31,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 4.99,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "laptop-scroll-13.jpg",
+     "y": 10080,
+     "info": {
+      "y": 10080,
+      "H": 14684,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "pic",
+        "pos": "sticky",
+        "top": -501,
+        "h": 780
+       },
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 0,
+        "h": 65
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 3",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+        "w": 133,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "Also at the lodge",
+       "What guests say"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 6.38,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 3.13,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 1.31,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 6.52,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "laptop-scroll-14.jpg",
+     "y": 10800,
+     "info": {
+      "y": 10800,
+      "H": 14684,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 0,
+        "h": 65
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 3",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+        "w": 133,
+        "hh": 48
+       }
+      ],
+      "headings": []
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 7.91,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 3.13,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 1.31,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 8.06,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "laptop-scroll-15.jpg",
+     "y": 11520,
+     "info": {
+      "y": 11520,
+      "H": 14684,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 0,
+        "h": 65
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 3",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+        "w": 133,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "The spot"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 9.44,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 3.13,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 1.31,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 9.59,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "laptop-scroll-16.jpg",
+     "y": 12240,
+     "info": {
+      "y": 12240,
+      "H": 14684,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 0,
+        "h": 65
+       }
+      ],
+      "book": [
+       {
+        "t": "Book Level 3",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+        "w": 133,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "Getting here"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 10.98,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 3.13,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 1.31,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 1.11,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "laptop-scroll-17.jpg",
+     "y": 12960,
+     "info": {
+      "y": 12960,
+      "H": 14684,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 0,
+        "h": 65
+       }
+      ],
+      "book": [
+       {
+        "t": "FomiesBook Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 398,
+        "hh": 175
+       },
+       {
+        "t": "RollersBook Level 2",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers",
+        "w": 371,
+        "hh": 175
+       },
+       {
+        "t": "RidersBook Level 3",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+        "w": 350,
+        "hh": 175
+       },
+       {
+        "t": "Book Level 3",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+        "w": 133,
+        "hh": 48
+       }
+      ],
+      "headings": [
+       "FomiesBook Level 1 RollersBook Level 2 RidersBook Level 3"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 0.47,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 3.13,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 1.31,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 2.64,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "laptop-scroll-18.jpg",
+     "y": 13680,
+     "info": {
+      "y": 13680,
+      "H": 14684,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 0,
+        "h": 65
+       }
+      ],
+      "book": [
+       {
+        "t": "FomiesBook Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 398,
+        "hh": 175
+       },
+       {
+        "t": "RollersBook Level 2",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers",
+        "w": 371,
+        "hh": 175
+       },
+       {
+        "t": "RidersBook Level 3",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+        "w": 350,
+        "hh": 175
+       },
+       {
+        "t": "See the weekly surf packages and dates",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+        "w": 325,
+        "hh": 48
+       },
+       {
+        "t": "Ask on WhatsApp",
+        "h": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20h",
+        "w": 126,
+        "hh": 44
+       },
+       {
+        "t": "Call +972 9-973-3943",
+        "h": "tel:+97299733943",
+        "w": 153,
+        "hh": 44
+       }
+      ],
+      "headings": [
+       "FomiesBook Level 1 RollersBook Level 2 RidersBook Level 3",
+       "Global Surf Lodge Kabalana",
+       "WhatsApp",
+       "Phone and email",
+       "Book"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 2.01,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 3.13,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 1.31,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 4.18,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "f": "laptop-scroll-19.jpg",
+     "y": 13784,
+     "info": {
+      "y": 13784,
+      "H": 14684,
+      "fixed": [
+       {
+        "tag": "DIV",
+        "cls": "bar show",
+        "pos": "fixed",
+        "top": 0,
+        "h": 65
+       }
+      ],
+      "book": [
+       {
+        "t": "FomiesBook Level 1",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+        "w": 398,
+        "hh": 175
+       },
+       {
+        "t": "RollersBook Level 2",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers",
+        "w": 371,
+        "hh": 175
+       },
+       {
+        "t": "RidersBook Level 3",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+        "w": 350,
+        "hh": 175
+       },
+       {
+        "t": "See the weekly surf packages and dates",
+        "h": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+        "w": 325,
+        "hh": 48
+       },
+       {
+        "t": "Ask on WhatsApp",
+        "h": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20h",
+        "w": 126,
+        "hh": 44
+       },
+       {
+        "t": "Call +972 9-973-3943",
+        "h": "tel:+97299733943",
+        "w": 153,
+        "hh": 44
+       }
+      ],
+      "headings": [
+       "FomiesBook Level 1 RollersBook Level 2 RidersBook Level 3",
+       "Global Surf Lodge Kabalana",
+       "WhatsApp",
+       "Phone and email",
+       "Book"
+      ]
+     },
+     "video": [
+      {
+       "cls": "on",
+       "src": "vid-009-d1920.webm",
+       "t": 3.54,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-010-m1280.webm",
+       "t": 3.13,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-003-m1280.webm",
+       "t": 1.31,
+       "paused": true,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      },
+      {
+       "cls": "on",
+       "src": "vid-002-m1280.webm",
+       "t": 5.71,
+       "paused": false,
+       "ready": 4,
+       "net": 1,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "end": true
+    }
+   ]
+  }
+ }
+}

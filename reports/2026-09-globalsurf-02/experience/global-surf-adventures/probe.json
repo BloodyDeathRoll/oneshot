@@ -1,0 +1,1095 @@
+{
+ "calm": {
+  "primaryBox": {
+   "x": 20,
+   "y": 712,
+   "width": 350,
+   "height": 56
+  },
+  "primaryText": "See the weekly surf packages and dates",
+  "primaryLanded": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+  "levelsTop": {
+   "f": "img",
+   "vids": [
+    {
+     "src": "vid-010-m1280.webm",
+     "paused": false,
+     "t": 1.5,
+     "vis": "1"
+    },
+    {
+     "src": "",
+     "paused": true,
+     "t": 0,
+     "vis": "0"
+    },
+    {
+     "src": "",
+     "paused": true,
+     "t": 0,
+     "vis": "0"
+    }
+   ],
+   "bar": "Fomies Rollers Riders $1,466 pp, 7 nights lessons, meals, room Packages and dates",
+   "barLinks": [
+    "See the weekly surf packages and datesPackages and dates -> sri-lanka"
+   ]
+  },
+  "levelTaps": [
+   {
+    "tapped": "/^Rollers/",
+    "at": {
+     "x": 136,
+     "y": 739,
+     "w": 116,
+     "h": 44
+    },
+    "y": 1735,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-010-m1280.webm",
+      "paused": false,
+      "t": 3.5,
+      "vis": "1"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     }
+    ],
+    "bar": "Fomies Rollers Riders $1,466 pp, 7 nights lessons, meals, room Book Rollers",
+    "barLinks": [
+     "Book Level 2 \u2013 RollersBook Rollers -> level-2-rollers"
+    ]
+   },
+   {
+    "tapped": "/^Riders/",
+    "at": {
+     "x": 253,
+     "y": 739,
+     "w": 116,
+     "h": 44
+    },
+    "y": 1735,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-010-m1280.webm",
+      "paused": false,
+      "t": 5.3,
+      "vis": "1"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     }
+    ],
+    "bar": "Fomies Rollers Riders $1,466 pp, 7 nights lessons, meals, room Book Riders",
+    "barLinks": [
+     "Book Level 3 \u2013 RidersBook Riders -> level-3-riders"
+    ]
+   },
+   {
+    "tapped": "/^Fomies/",
+    "at": {
+     "x": 21,
+     "y": 739,
+     "w": 115,
+     "h": 44
+    },
+    "y": 1735,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-010-m1280.webm",
+      "paused": false,
+      "t": 7.2,
+      "vis": "1"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     }
+    ],
+    "bar": "Fomies Rollers Riders $1,466 pp, 7 nights lessons, meals, room Book Fomies",
+    "barLinks": [
+     "Book Level 1 \u2013 FomiesBook Fomies -> level-1-fomies"
+    ]
+   }
+  ],
+  "level1Landed": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+  "fine": [
+   {
+    "y": 1181,
+    "f": "img"
+   },
+   {
+    "y": 1381,
+    "f": "img"
+   },
+   {
+    "y": 1581,
+    "f": "img"
+   },
+   {
+    "y": 1781,
+    "f": "img"
+   },
+   {
+    "y": 1981,
+    "f": "img"
+   },
+   {
+    "y": 2181,
+    "f": "img"
+   },
+   {
+    "y": 2381,
+    "f": "img"
+   },
+   {
+    "y": 2581,
+    "f": "img"
+   },
+   {
+    "y": 2781,
+    "f": "img"
+   },
+   {
+    "y": 2981,
+    "f": "img"
+   },
+   {
+    "y": 3181,
+    "f": "img"
+   },
+   {
+    "y": 3381,
+    "f": "img"
+   },
+   {
+    "y": 3581,
+    "f": "img"
+   },
+   {
+    "y": 3781,
+    "f": "img"
+   },
+   {
+    "y": 3981,
+    "f": "img"
+   },
+   {
+    "y": 4181,
+    "f": "img"
+   }
+  ],
+  "day0": "img",
+  "dayBox": {
+   "h": 933,
+   "scroller": null
+  },
+  "day1": "img",
+  "day2": "img",
+  "dayScroller": null,
+  "lapFine": [
+   {
+    "y": 1757,
+    "f": "img",
+    "vids": [
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     }
+    ]
+   },
+   {
+    "y": 2057,
+    "f": "img",
+    "vids": [
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     }
+    ]
+   },
+   {
+    "y": 2357,
+    "f": "img",
+    "vids": [
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     }
+    ]
+   },
+   {
+    "y": 2657,
+    "f": "img",
+    "vids": [
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     }
+    ]
+   },
+   {
+    "y": 2957,
+    "f": "img",
+    "vids": []
+   },
+   {
+    "y": 3257,
+    "f": "img",
+    "vids": []
+   },
+   {
+    "y": 3557,
+    "f": "img",
+    "vids": []
+   },
+   {
+    "y": 3857,
+    "f": "img",
+    "vids": []
+   },
+   {
+    "y": 4157,
+    "f": "img",
+    "vids": []
+   },
+   {
+    "y": 4457,
+    "f": "img",
+    "vids": []
+   },
+   {
+    "y": 4757,
+    "f": "img",
+    "vids": []
+   },
+   {
+    "y": 5057,
+    "f": "img",
+    "vids": []
+   },
+   {
+    "y": 5357,
+    "f": "img",
+    "vids": []
+   },
+   {
+    "y": 5657,
+    "f": "img",
+    "vids": []
+   }
+  ]
+ },
+ "interactive": {
+  "primaryBox": {
+   "x": 16,
+   "y": 682.921875,
+   "width": 358,
+   "height": 48
+  },
+  "primaryText": "See the weekly surf packages and dates",
+  "primaryLanded": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+  "levelsTop": {
+   "f": "img",
+   "vids": [
+    {
+     "src": "vid-010-m720.mp4",
+     "paused": false,
+     "t": 1.5,
+     "vis": "1"
+    }
+   ],
+   "bar": "Fomies Rollers Riders $1,466 pp, 7 nights 8.6 Booking.com Book Level 1",
+   "barLinks": [
+    "Book Level 1 -> level-1-fomies"
+   ]
+  },
+  "levelTaps": [
+   {
+    "tapped": "/^Rollers/",
+    "at": {
+     "x": 16,
+     "y": 10098,
+     "w": 358,
+     "h": 102
+    },
+    "y": 0,
+    "f": "img",
+    "vids": [],
+    "bar": "",
+    "barLinks": []
+   },
+   {
+    "tapped": "/^Riders/",
+    "at": null,
+    "y": 0,
+    "f": "img",
+    "vids": [],
+    "bar": "Choose guests",
+    "barLinks": []
+   },
+   {
+    "tapped": "/^Fomies/",
+    "at": null,
+    "y": 0,
+    "f": "img",
+    "vids": [],
+    "bar": "Choose guests",
+    "barLinks": []
+   }
+  ],
+  "fine": [
+   {
+    "y": 667,
+    "f": "img"
+   },
+   {
+    "y": 867,
+    "f": "img"
+   },
+   {
+    "y": 1067,
+    "f": "img"
+   },
+   {
+    "y": 1267,
+    "f": "img"
+   },
+   {
+    "y": 1467,
+    "f": "img"
+   },
+   {
+    "y": 1667,
+    "f": "img"
+   },
+   {
+    "y": 1867,
+    "f": "img"
+   },
+   {
+    "y": 2067,
+    "f": "img"
+   },
+   {
+    "y": 2267,
+    "f": "img"
+   },
+   {
+    "y": 2467,
+    "f": "img"
+   },
+   {
+    "y": 2667,
+    "f": "img"
+   },
+   {
+    "y": 2867,
+    "f": "img"
+   },
+   {
+    "y": 3067,
+    "f": "img"
+   },
+   {
+    "y": 3267,
+    "f": "img"
+   },
+   {
+    "y": 3467,
+    "f": "img"
+   },
+   {
+    "y": 3667,
+    "f": "img"
+   }
+  ],
+  "day0": "img",
+  "dayBox": {
+   "h": 508,
+   "scroller": "track 2609/390"
+  },
+  "day1": "img",
+  "day2": "img",
+  "dayScroller": {
+   "cls": "track",
+   "sl": 309,
+   "sw": 2609,
+   "cw": 390,
+   "tf": "none"
+  },
+  "lapFine": [
+   {
+    "y": 1056,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-010-m1280.webm",
+      "paused": false,
+      "t": 1.3,
+      "vis": "1"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     }
+    ]
+   },
+   {
+    "y": 1356,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-010-m1280.webm",
+      "paused": false,
+      "t": 1.7,
+      "vis": "1"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     }
+    ]
+   },
+   {
+    "y": 1656,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-010-m1280.webm",
+      "paused": false,
+      "t": 2.2,
+      "vis": "1"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     }
+    ]
+   },
+   {
+    "y": 1956,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-010-m1280.webm",
+      "paused": true,
+      "t": 2.4,
+      "vis": "1"
+     },
+     {
+      "src": "vid-003-m1280.webm",
+      "paused": false,
+      "t": 0.3,
+      "vis": "0.773455"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     }
+    ]
+   },
+   {
+    "y": 2256,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-010-m1280.webm",
+      "paused": true,
+      "t": 2.4,
+      "vis": "1"
+     },
+     {
+      "src": "vid-003-m1280.webm",
+      "paused": false,
+      "t": 0.8,
+      "vis": "1"
+     },
+     {
+      "src": "",
+      "paused": true,
+      "t": 0,
+      "vis": "0"
+     }
+    ]
+   },
+   {
+    "y": 2556,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-010-m1280.webm",
+      "paused": true,
+      "t": 2.4,
+      "vis": "1"
+     },
+     {
+      "src": "vid-003-m1280.webm",
+      "paused": true,
+      "t": 0.9,
+      "vis": "1"
+     },
+     {
+      "src": "vid-002-m1280.webm",
+      "paused": false,
+      "t": 0.4,
+      "vis": "0.924882"
+     }
+    ]
+   },
+   {
+    "y": 2856,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-010-m1280.webm",
+      "paused": true,
+      "t": 2.4,
+      "vis": "1"
+     },
+     {
+      "src": "vid-003-m1280.webm",
+      "paused": true,
+      "t": 0.9,
+      "vis": "1"
+     },
+     {
+      "src": "vid-002-m1280.webm",
+      "paused": false,
+      "t": 0.9,
+      "vis": "1"
+     }
+    ]
+   },
+   {
+    "y": 3156,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-010-m1280.webm",
+      "paused": true,
+      "t": 2.4,
+      "vis": "1"
+     },
+     {
+      "src": "vid-003-m1280.webm",
+      "paused": true,
+      "t": 0.9,
+      "vis": "1"
+     },
+     {
+      "src": "vid-002-m1280.webm",
+      "paused": false,
+      "t": 1.4,
+      "vis": "1"
+     }
+    ]
+   },
+   {
+    "y": 3456,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-010-m1280.webm",
+      "paused": true,
+      "t": 2.4,
+      "vis": "1"
+     },
+     {
+      "src": "vid-003-m1280.webm",
+      "paused": true,
+      "t": 0.9,
+      "vis": "1"
+     },
+     {
+      "src": "vid-002-m1280.webm",
+      "paused": false,
+      "t": 1.8,
+      "vis": "1"
+     }
+    ]
+   },
+   {
+    "y": 3756,
+    "f": "img",
+    "vids": []
+   },
+   {
+    "y": 4056,
+    "f": "img",
+    "vids": []
+   },
+   {
+    "y": 4356,
+    "f": "img",
+    "vids": []
+   },
+   {
+    "y": 4656,
+    "f": "img",
+    "vids": []
+   },
+   {
+    "y": 4956,
+    "f": "img",
+    "vids": []
+   }
+  ]
+ },
+ "unique": {
+  "primaryBox": {
+   "x": 16,
+   "y": 528.328125,
+   "width": 358,
+   "height": 54
+  },
+  "primaryText": "See the weekly surf packages and dates\u2192",
+  "primaryLanded": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+  "levelsTop": {
+   "f": "img",
+   "vids": [
+    {
+     "src": "vid-010-m1280.webm",
+     "paused": false,
+     "t": 1.5,
+     "vis": "1"
+    }
+   ],
+   "bar": "$1,466 pp, 7 nights lessons, meals, room Packages and dates",
+   "barLinks": [
+    "Packages and dates -> sri-lanka"
+   ]
+  },
+  "levelTaps": [
+   {
+    "tapped": "/^Rollers/",
+    "at": null,
+    "y": 1649,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-010-m1280.webm",
+      "paused": false,
+      "t": 3.4,
+      "vis": "1"
+     }
+    ],
+    "bar": "$1,466 pp, 7 nights lessons, meals, room Packages and dates",
+    "barLinks": [
+     "Packages and dates -> sri-lanka"
+    ]
+   },
+   {
+    "tapped": "/^Riders/",
+    "at": null,
+    "y": 1649,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-010-m1280.webm",
+      "paused": false,
+      "t": 5.3,
+      "vis": "1"
+     }
+    ],
+    "bar": "$1,466 pp, 7 nights lessons, meals, room Packages and dates",
+    "barLinks": [
+     "Packages and dates -> sri-lanka"
+    ]
+   },
+   {
+    "tapped": "/^Fomies/",
+    "at": null,
+    "y": 1649,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-010-m1280.webm",
+      "paused": false,
+      "t": 7.2,
+      "vis": "1"
+     }
+    ],
+    "bar": "$1,466 pp, 7 nights lessons, meals, room Packages and dates",
+    "barLinks": [
+     "Packages and dates -> sri-lanka"
+    ]
+   }
+  ],
+  "level1Landed": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+  "fine": [
+   {
+    "y": 1005,
+    "f": "img"
+   },
+   {
+    "y": 1205,
+    "f": "img"
+   },
+   {
+    "y": 1405,
+    "f": "img"
+   },
+   {
+    "y": 1605,
+    "f": "img"
+   },
+   {
+    "y": 1805,
+    "f": "img"
+   },
+   {
+    "y": 2005,
+    "f": "img"
+   },
+   {
+    "y": 2205,
+    "f": "img"
+   },
+   {
+    "y": 2405,
+    "f": "img"
+   },
+   {
+    "y": 2605,
+    "f": "img"
+   },
+   {
+    "y": 2805,
+    "f": "img"
+   },
+   {
+    "y": 3005,
+    "f": "img"
+   },
+   {
+    "y": 3205,
+    "f": "img"
+   },
+   {
+    "y": 3405,
+    "f": "img"
+   },
+   {
+    "y": 3605,
+    "f": "img"
+   },
+   {
+    "y": 3805,
+    "f": "img"
+   },
+   {
+    "y": 4005,
+    "f": "img"
+   }
+  ],
+  "day0": "img",
+  "dayBox": {
+   "h": 961,
+   "scroller": null
+  },
+  "day1": "img",
+  "day2": "img",
+  "dayScroller": null,
+  "lapFine": [
+   {
+    "y": 1370,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-010-d1920.webm",
+      "paused": false,
+      "t": 1.6,
+      "vis": "1"
+     }
+    ]
+   },
+   {
+    "y": 1670,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-010-d1920.webm",
+      "paused": false,
+      "t": 2.5,
+      "vis": "1"
+     }
+    ]
+   },
+   {
+    "y": 1970,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-010-d1920.webm",
+      "paused": false,
+      "t": 3.3,
+      "vis": "1"
+     }
+    ]
+   },
+   {
+    "y": 2270,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-010-d1920.webm",
+      "paused": false,
+      "t": 4.2,
+      "vis": "1"
+     }
+    ]
+   },
+   {
+    "y": 2570,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-010-d1920.webm",
+      "paused": false,
+      "t": 5.5,
+      "vis": "1"
+     },
+     {
+      "src": "vid-003-d1920.webm",
+      "paused": false,
+      "t": 3.6,
+      "vis": "1"
+     }
+    ]
+   },
+   {
+    "y": 2870,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-003-d1920.webm",
+      "paused": false,
+      "t": 4.7,
+      "vis": "1"
+     }
+    ]
+   },
+   {
+    "y": 3170,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-003-d1920.webm",
+      "paused": false,
+      "t": 5.5,
+      "vis": "1"
+     }
+    ]
+   },
+   {
+    "y": 3470,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-003-d1920.webm",
+      "paused": false,
+      "t": 6.4,
+      "vis": "1"
+     }
+    ]
+   },
+   {
+    "y": 3770,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-003-d1920.webm",
+      "paused": false,
+      "t": 7.3,
+      "vis": "1"
+     },
+     {
+      "src": "vid-002-d1920.webm",
+      "paused": false,
+      "t": 2.3,
+      "vis": "1"
+     }
+    ]
+   },
+   {
+    "y": 4070,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-003-d1920.webm",
+      "paused": false,
+      "t": 8.8,
+      "vis": "1"
+     },
+     {
+      "src": "vid-002-d1920.webm",
+      "paused": false,
+      "t": 3.8,
+      "vis": "1"
+     }
+    ]
+   },
+   {
+    "y": 4370,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-002-d1920.webm",
+      "paused": false,
+      "t": 4.9,
+      "vis": "1"
+     }
+    ]
+   },
+   {
+    "y": 4670,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-002-d1920.webm",
+      "paused": false,
+      "t": 5.7,
+      "vis": "1"
+     }
+    ]
+   },
+   {
+    "y": 4970,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-002-d1920.webm",
+      "paused": false,
+      "t": 6.6,
+      "vis": "1"
+     }
+    ]
+   },
+   {
+    "y": 5270,
+    "f": "img",
+    "vids": [
+     {
+      "src": "vid-002-d1920.webm",
+      "paused": false,
+      "t": 7.5,
+      "vis": "1"
+     }
+    ]
+   }
+  ]
+ }
+}

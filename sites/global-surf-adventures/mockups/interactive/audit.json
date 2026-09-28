@@ -1,0 +1,110 @@
+{
+ "slug": "global-surf-adventures",
+ "variant": "interactive",
+ "measured_at": "2026-09-28T19:01:36.435Z",
+ "first_load": {
+  "requests": 9,
+  "hosts": [
+   "localhost:8980",
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "third_party_hosts": [
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "bytes_total": 268808,
+  "bytes_html": 58667,
+  "bytes_js": 0,
+  "bytes_css": 0,
+  "bytes_fonts": 86448,
+  "bytes_images": 123693,
+  "largest_image_bytes": 65730,
+  "lcp_ms": 624,
+  "cls": 0.0266,
+  "dcl_ms": 643
+ },
+ "booking": {
+  "external_booking_hrefs": [
+   "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka",
+   "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+   "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+   "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers",
+   "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
+   "https://globalsurfadventures.bookinglayer.com/en/product/freestylers-bb-only-package",
+   "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.",
+   "https://rosa.surf/spot/south-point",
+   "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en",
+   "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.%20I%20have%20never%20surfed.%20Which%20level%20fits%20me%3F",
+   "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.%20I%20can%20stand%20up%2C%20but%20I%20can%27t%20get%20out%20the%20back%20yet.%20Which%20level%20fits%20me%3F",
+   "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.%20I%20already%20carve.%20Which%20level%20fits%20me%3F",
+   "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.%20I%27m%20not%20sure%20which%20level%20fits%20me."
+  ],
+  "tel_hrefs": [
+   "tel:+97299733943"
+  ],
+  "drawer_triggers": 0,
+  "triggers_are_links": true,
+  "primary_above_fold": true,
+  "tapped": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"
+ },
+ "keyboard": {
+  "drawer_opens": null,
+  "closed": null,
+  "focus_returned": null,
+  "note": "no drawer; every action is a plain link"
+ },
+ "a11y": {
+  "images": 22,
+  "images_without_alt": 0,
+  "images_alt_empty_decorative": 0,
+  "tapables": 39,
+  "tapables_under_44px": 3,
+  "tapables_under_44px_examples": [
+   "Global Surf Lodge 135x22",
+   "8.6/10 on Booking.com, 8 323x39",
+   "Forecast for South Point 200x17"
+  ],
+  "headings": [
+   "H1",
+   "H2",
+   "H2",
+   "H3",
+   "H3",
+   "H2",
+   "H2",
+   "H3",
+   "H2",
+   "H2",
+   "H2",
+   "H2",
+   "H3",
+   "H3",
+   "H3",
+   "H3",
+   "H2"
+  ],
+  "has_skip_link": true,
+  "lang": "en"
+ },
+ "no_js": {
+  "text_length": 7152,
+  "booking_links_reachable": 0,
+  "visible_images": 22
+ },
+ "reduced_motion": {
+  "canvases": 0,
+  "canvases_hidden": 0,
+  "photograph_visible": true
+ },
+ "facts": {
+  "numbers_on_page": 36,
+  "numbers_not_in_passed_copy": [
+   "1,466",
+   "20:30",
+   "0.7",
+   "1.0"
+  ],
+  "note": "copy/en.json passed station 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps each paragraph to its dossier fields. A number here that is not in the copy is either an interface label (01, 02…) or a claim to chase."
+ }
+}
