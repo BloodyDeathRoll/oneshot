@@ -1,0 +1,231 @@
+{
+  "tool": "funnel.mjs",
+  "version": "0.1.0",
+  "measured_at": "2026-09-28T09:02:18.401Z",
+  "start_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+  "whitelabel_engine": true,
+  "final_landing_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+  "landing_status": 202,
+  "landing_error": null,
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "viewport_meta": true,
+  "landing_text_chars": 15934,
+  "clicks_to_book": 1,
+  "primary_action": {
+    "class": "engine",
+    "href": "https://account.booking.com/auth/oauth2?client_id=vO1Kblk7xX9tUn2cpZLS&redirect_uri=https%3A%2F%2Fsecure.booking.com%2Flogin.html%3Fop%3Doauth_return&response_type=code&lang=de&aid=304142&bkng_action=hotel&prompt=signin&state=UtEB7Kk8_8uG480IScRictotzmpuNzPowkr_-rE9XCAKyklO5j40myDAxdgxtKScr48QTURGcm3qQBeA0iUgLzWot3YF_FexAbTQAKJIf3f6CQ4tRWt8I9YtJG-tNbSlUz3ALyid92t9zgXMBsP0D6DHp4yvi_PIIOpNdM7okn80Cqg_7EFoSl9IUwpQlOUKSSQdsYIaIEC9WBH0VJRLk0f508_raZ-b-2_loc0azPMIIa9pwNMjOuo7FC7jG1OFK0KO447qqPZCuUft9sb-1cAzX3c%3D*eyJpZCI6InRyYXZlbGxlcl9oZWFkZXIifQ%3D%3D",
+    "label": "Anmelden oder Konto erstellen",
+    "page": "https://www.booking.com/hotel/lk/the-lavish-haven.html"
+  },
+  "cta_above_fold": true,
+  "terminal_above_fold": true,
+  "any_action_above_fold": true,
+  "landing_actions": [
+    {
+      "class": "book_link",
+      "terminal": false,
+      "href": "https://www.booking.com/index.de.html",
+      "label": "Booking.com",
+      "tag": "a",
+      "top": 22,
+      "height": 16,
+      "width": 96,
+      "above_fold": true,
+      "tap_target_ok": false
+    },
+    {
+      "class": "engine",
+      "terminal": true,
+      "href": "https://account.booking.com/auth/oauth2?client_id=vO1Kblk7xX9tUn2cpZLS&redirect_uri=https%3A%2F%2Fsecure.booking.com%2Flogin.html%3Fop%3Doauth_return&response_type=code&lang=de&aid=304142&bkng_action=hotel&prompt=signin&state=UtEB7Kk8_8uG480IScRictotzmpuNzPowkr_-rE9XCAKyklO5j40myDAxdgxtKScr48QTURGcm3qQBeA0iUgLzWot3YF_FexAbTQAKJIf3f6CQ4tRWt8I9YtJG-tNbSlUz3ALyid92t9zgXMBsP0D6DHp4yvi_PIIOpNdM7okn80Cqg_7EFoSl9IUwpQlOUKSSQdsYIaIEC9WBH0VJRLk0f508_raZ-b-2_loc0azPMIIa9pwNMjOuo7FC7jG1OFK0KO447qqPZCuUft9sb-1cAzX3c%3D*eyJpZCI6InRyYXZlbGxlcl9oZWFkZXIifQ%3D%3D",
+      "label": "Anmelden oder Konto erstellen",
+      "tag": "a",
+      "top": 8,
+      "height": 48,
+      "width": 48,
+      "above_fold": true,
+      "tap_target_ok": true
+    },
+    {
+      "class": "book_link",
+      "terminal": false,
+      "href": null,
+      "label": "Reserve",
+      "tag": "button",
+      "top": 505,
+      "height": 36,
+      "width": 84,
+      "above_fold": true,
+      "tap_target_ok": false
+    },
+    {
+      "class": "engine",
+      "terminal": true,
+      "href": "https://account.booking.com/auth/oauth2?client_id=vO1Kblk7xX9tUn2cpZLS&redirect_uri=https%3A%2F%2Fsecure.booking.com%2Flogin.html%3Fop%3Doauth_return&response_type=code&lang=de&aid=304142&bkng_action=hotel&prompt=signin&state=UtEB7Kk8_8uG480IScRictotzmpuNzPowkr_-rE9XCAKyklO5j40myDAxdgxtKScr48QTURGcm3qQBeA0iUgLzWot3YF_FexAbTQAKJIf3f6CQ4tRWt8I9YtJG-tNbSlUz3ALyid92t9zgXMBsP0D6DHp4yvi_PIIOpNdM7okn80Cqg_7EFoSl9IUwpQlOUKSSQdsYIaIEC9WBH0VJRLk0f508_raZ-b-2_loc0azPMIIa9pwNMjOuo7FC7jG1OFK0KO447qqPZCuUft9sb-1cAzX3c%3D*eyJpZCI6Im1lcmNoX3BsYXRmb3JtX3Byb3BlcnR5X3BhZ2VfY3RhIn0%3D",
+      "label": "Anmelden",
+      "tag": "a",
+      "top": 1735,
+      "height": 36,
+      "width": 87,
+      "above_fold": false,
+      "tap_target_ok": false
+    },
+    {
+      "class": "engine",
+      "terminal": true,
+      "href": "https://account.booking.com/auth/oauth2?client_id=vO1Kblk7xX9tUn2cpZLS&redirect_uri=https%3A%2F%2Fsecure.booking.com%2Flogin.html%3Fop%3Doauth_return&response_type=code&lang=de&aid=304142&bkng_action=hotel&prompt=signin&state=UtEB7Kk8_8uG480IScRictotzmpuNzPowkr_-rE9XCAKyklO5j40myDAxdgxtKScr48QTURGcm3qQBeA0iUgLzWot3YF_FexAbTQAKJIf3f6CQ4tRWt8I9YtJG-tNbSlUz3ALyid92t9zgXMBsP0D6DHp4yvi_PIIOpNdM7okn80Cqg_7EFoSl9IUwpQlOUKSSQdsYIaIEC9WBH0VJRLk0f508_raZ-b-2_loc0azPMIIa9pwNMjOuo7FC7jG1OFK0KO447qqPZCuUft9sb-1cAzX3c%3D*eyJpZCI6Im1lcmNoX3BsYXRmb3JtX3Byb3BlcnR5X3BhZ2VfY3RhIn0%3D",
+      "label": "Kostenloses Konto erstellen",
+      "tag": "a",
+      "top": 1733,
+      "height": 40,
+      "width": 174,
+      "above_fold": false,
+      "tap_target_ok": false
+    },
+    {
+      "class": "form",
+      "terminal": false,
+      "href": "https://www.booking.com/searchresults.de.html",
+      "label": "form (1 fields)",
+      "tag": "form",
+      "top": 120,
+      "above_fold": true
+    },
+    {
+      "class": "dated_form",
+      "terminal": true,
+      "href": "https://secure.booking.com/book.html",
+      "label": "form (0 fields)",
+      "tag": "form",
+      "top": 499,
+      "above_fold": true
+    },
+    {
+      "class": "form",
+      "terminal": false,
+      "href": "https://www.booking.com/searchresults.de.html",
+      "label": "form (0 fields)",
+      "tag": "form",
+      "top": 1902,
+      "above_fold": false
+    }
+  ],
+  "action_classes_seen": [
+    "book_link",
+    "engine",
+    "form",
+    "dated_form"
+  ],
+  "pages_crawled": 1,
+  "pages_with_errors": [],
+  "console_errors": [
+    "Provider's accounts list is empty."
+  ],
+  "pages": [
+    {
+      "url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "depth": 0,
+      "via": null,
+      "status": 202,
+      "final_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "title": "The Lavish Haven - Ahangama, Ahangama (updated prices 2026)",
+      "viewport_meta": true,
+      "text_chars": 15934,
+      "actions": [
+        {
+          "class": "book_link",
+          "terminal": false,
+          "href": "https://www.booking.com/index.de.html",
+          "label": "Booking.com",
+          "tag": "a",
+          "top": 22,
+          "height": 16,
+          "width": 96,
+          "above_fold": true,
+          "tap_target_ok": false
+        },
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://account.booking.com/auth/oauth2?client_id=vO1Kblk7xX9tUn2cpZLS&redirect_uri=https%3A%2F%2Fsecure.booking.com%2Flogin.html%3Fop%3Doauth_return&response_type=code&lang=de&aid=304142&bkng_action=hotel&prompt=signin&state=UtEB7Kk8_8uG480IScRictotzmpuNzPowkr_-rE9XCAKyklO5j40myDAxdgxtKScr48QTURGcm3qQBeA0iUgLzWot3YF_FexAbTQAKJIf3f6CQ4tRWt8I9YtJG-tNbSlUz3ALyid92t9zgXMBsP0D6DHp4yvi_PIIOpNdM7okn80Cqg_7EFoSl9IUwpQlOUKSSQdsYIaIEC9WBH0VJRLk0f508_raZ-b-2_loc0azPMIIa9pwNMjOuo7FC7jG1OFK0KO447qqPZCuUft9sb-1cAzX3c%3D*eyJpZCI6InRyYXZlbGxlcl9oZWFkZXIifQ%3D%3D",
+          "label": "Anmelden oder Konto erstellen",
+          "tag": "a",
+          "top": 8,
+          "height": 48,
+          "width": 48,
+          "above_fold": true,
+          "tap_target_ok": true
+        },
+        {
+          "class": "book_link",
+          "terminal": false,
+          "href": null,
+          "label": "Reserve",
+          "tag": "button",
+          "top": 505,
+          "height": 36,
+          "width": 84,
+          "above_fold": true,
+          "tap_target_ok": false
+        },
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://account.booking.com/auth/oauth2?client_id=vO1Kblk7xX9tUn2cpZLS&redirect_uri=https%3A%2F%2Fsecure.booking.com%2Flogin.html%3Fop%3Doauth_return&response_type=code&lang=de&aid=304142&bkng_action=hotel&prompt=signin&state=UtEB7Kk8_8uG480IScRictotzmpuNzPowkr_-rE9XCAKyklO5j40myDAxdgxtKScr48QTURGcm3qQBeA0iUgLzWot3YF_FexAbTQAKJIf3f6CQ4tRWt8I9YtJG-tNbSlUz3ALyid92t9zgXMBsP0D6DHp4yvi_PIIOpNdM7okn80Cqg_7EFoSl9IUwpQlOUKSSQdsYIaIEC9WBH0VJRLk0f508_raZ-b-2_loc0azPMIIa9pwNMjOuo7FC7jG1OFK0KO447qqPZCuUft9sb-1cAzX3c%3D*eyJpZCI6Im1lcmNoX3BsYXRmb3JtX3Byb3BlcnR5X3BhZ2VfY3RhIn0%3D",
+          "label": "Anmelden",
+          "tag": "a",
+          "top": 1735,
+          "height": 36,
+          "width": 87,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://account.booking.com/auth/oauth2?client_id=vO1Kblk7xX9tUn2cpZLS&redirect_uri=https%3A%2F%2Fsecure.booking.com%2Flogin.html%3Fop%3Doauth_return&response_type=code&lang=de&aid=304142&bkng_action=hotel&prompt=signin&state=UtEB7Kk8_8uG480IScRictotzmpuNzPowkr_-rE9XCAKyklO5j40myDAxdgxtKScr48QTURGcm3qQBeA0iUgLzWot3YF_FexAbTQAKJIf3f6CQ4tRWt8I9YtJG-tNbSlUz3ALyid92t9zgXMBsP0D6DHp4yvi_PIIOpNdM7okn80Cqg_7EFoSl9IUwpQlOUKSSQdsYIaIEC9WBH0VJRLk0f508_raZ-b-2_loc0azPMIIa9pwNMjOuo7FC7jG1OFK0KO447qqPZCuUft9sb-1cAzX3c%3D*eyJpZCI6Im1lcmNoX3BsYXRmb3JtX3Byb3BlcnR5X3BhZ2VfY3RhIn0%3D",
+          "label": "Kostenloses Konto erstellen",
+          "tag": "a",
+          "top": 1733,
+          "height": 40,
+          "width": 174,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "href": "https://www.booking.com/searchresults.de.html",
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 120,
+          "above_fold": true
+        },
+        {
+          "class": "dated_form",
+          "terminal": true,
+          "href": "https://secure.booking.com/book.html",
+          "label": "form (0 fields)",
+          "tag": "form",
+          "top": 499,
+          "above_fold": true
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "href": "https://www.booking.com/searchresults.de.html",
+          "label": "form (0 fields)",
+          "tag": "form",
+          "top": 1902,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 50,
+      "error": null,
+      "screenshot": "landing-mobile.png",
+      "fold_screenshot": "landing-fold.png"
+    }
+  ]
+}
