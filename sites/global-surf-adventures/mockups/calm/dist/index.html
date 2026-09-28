@@ -49,18 +49,21 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 .top .pk,.top .mark{display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:400;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
 .top .mark{text-decoration:none;font-size:15px}
 
-/* hero: the film, and a white plate floating on it like a daybed */
-.hero{position:relative;height:100vh;height:100svh;min-height:600px;max-height:1100px;overflow:hidden}
-.film{position:absolute;inset:0;background:#9fc0e6}
-.film img,.film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 62%}
+/* hero: the film clear on top, its title card on white below (the phone treatment, widened) */
+.hero{display:flex;flex-direction:column;height:100vh;height:100svh;min-height:640px;max-height:1200px}
+.film{position:relative;flex:1;min-height:0;overflow:hidden;background:#8fb6d8 linear-gradient(to bottom,#6296e1 0%,#81a0bb 25%,#78715e 50%,#555558 75%,#1f4162 100%)}
+.film img,.film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%}
 .film video{opacity:0;transition:opacity .8s}
 .film video.on{opacity:1}
 .film::before{content:"";position:absolute;inset:0 0 auto 0;height:150px;z-index:1;background:linear-gradient(to bottom,rgba(1,18,18,.34),rgba(1,18,18,0));pointer-events:none}
-.plate{position:absolute;z-index:2;left:var(--edge);bottom:0;width:min(640px,calc(100% - 2*var(--gut)));background:var(--white);color:var(--ink);padding:40px 44px 34px}
-.plate h1{font-weight:300;font-size:clamp(38px,4.2vw,60px);line-height:1.02;letter-spacing:-.035em}
-.plate .tag{margin-top:16px;font-size:17px;line-height:1.55;color:var(--ink2);max-width:36ch}
-.plate .act{margin-top:26px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
-.proof{font-size:14px;line-height:1.45;text-decoration:none;padding-left:24px;border-left:1px solid var(--line);min-height:44px;display:flex;flex-direction:column;justify-content:center}
+.plate{background:var(--white);color:var(--ink)}
+.plate .in{max-width:calc(var(--col) + 2*var(--gut));margin:0 auto;padding:30px var(--gut) 32px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:end}
+.plate .name{grid-column:1 / 8}
+.plate h1{font-weight:300;font-size:clamp(38px,4.3vw,64px);line-height:1.02;letter-spacing:-.035em}
+.plate .tag{margin-top:12px;font-size:17px;line-height:1.55;color:var(--ink2);max-width:44ch}
+.plate .act{grid-column:8 / 13;display:flex;flex-direction:column;align-items:stretch;gap:12px}
+.plate .act .btn{width:100%}
+.proof{font-size:14px;line-height:1.45;text-decoration:none;min-height:44px;display:flex;flex-direction:column;justify-content:center}
 .proof b{font-weight:400;font-size:15px}
 .proof small{font-size:12px;color:var(--ink2)}
 
@@ -71,28 +74,29 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset
 .intro .txt{grid-column:9 / 13;align-self:center}
 .intro .txt .body{margin-top:32px;font-size:17px;color:var(--ink2)}
 
-/* levels — the big moment */
+/* levels — three film stills, one per level, words and price quiet beside them */
 .levels{padding:clamp(88px,10vw,150px) 0 clamp(72px,8vw,120px)}
 .levels-head{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap}
 .levels-head .isa{font-size:15px;color:var(--ink2);max-width:28ch}
-.lvl-row{margin:56px auto 0;max-width:1440px;padding:0 max(16px, calc(var(--edge) - 72px));display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.lvl{display:flex;flex-direction:column;background:var(--white);scroll-margin:100px}
-.lvl-media{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;background:#cfd6dc}
-.lvl-media img,.lvl-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
-.lvl-media video{opacity:0;transition:opacity .5s,transform .5s ease}
+.lvl{margin-top:clamp(56px,7vw,110px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:center;scroll-margin:90px}
+.lvl-media{grid-column:1 / 8;grid-row:1;position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:#9ab8c4;margin-left:calc(-1 * var(--edge))}
+.lvl:nth-of-type(even) .lvl-media{grid-column:6 / 13;margin-left:0;margin-right:calc(-1 * var(--edge))}
+.lvl-media img,.lvl-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--fx,50%) 50%}
+.lvl-media video{opacity:0;transition:opacity .6s}
 .lvl-media video.on{opacity:1}
-.lvl:hover .lvl-media img,.lvl:hover .lvl-media video{transform:scale(1.03)}
-.lvl-body{display:flex;flex-direction:column;flex:1;padding:26px 28px 28px}
-.lvl-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
-.lvl h3{white-space:nowrap;font-size:clamp(20px,1.9vw,27px);font-weight:300;letter-spacing:-.025em;line-height:1.15}
-.lvl .price{text-align:right;white-space:nowrap}
-.lvl .price b{display:block;font-weight:300;font-size:clamp(34px,3vw,44px);letter-spacing:-.04em;line-height:1;color:var(--pooltext)}
-.lvl .per{margin-top:8px;font-size:12px;color:var(--ink2);line-height:1.4}
-.lvl .who{margin-top:16px;font-size:15px;line-height:1.6;color:var(--ink2)}
-.lvl .inc{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:13px;line-height:1.6;color:var(--ink2);margin-bottom:26px}
+.lvl-text{grid-column:9 / 13;grid-row:1}
+.lvl:nth-of-type(even) .lvl-text{grid-column:1 / 5}
+.lvl h3{font-weight:300;line-height:1}
+.lvl h3 .n{display:block;font-size:15px;letter-spacing:0;color:var(--ink2);margin-bottom:10px}
+.lvl h3 .w{display:block;font-size:clamp(52px,6vw,88px);letter-spacing:-.045em}
+.lvl .who{margin-top:22px;font-size:15px;line-height:1.65;color:var(--ink2)}
+.lvl .price{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--ink2)}
+.lvl .price b{font-weight:300;font-size:36px;letter-spacing:-.04em;line-height:1;color:var(--pooltext)}
+.lvl .price small{flex-basis:100%;font-size:12px}
+.lvl .inc{margin-top:12px;font-size:13px;line-height:1.6;color:var(--ink2)}
 .lvl .inc b{font-weight:400;color:var(--ink)}
-.lvl .btn{margin-top:auto;width:100%}
-.lvl.sel{box-shadow:inset 0 -3px 0 var(--coral)}
+.lvl .btn-line{margin-top:22px}
+.lvl.sel .btn-line{border-width:2px}
 .after{margin-top:72px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:40px;border-top:1px solid var(--line);padding-top:40px}
 .after .free{grid-column:1 / 5}
 .after .free h3,.after .price-t h3{font-weight:300;font-size:24px;letter-spacing:-.02em}
@@ -219,11 +223,11 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
   .intro .txt{grid-column:1;grid-row:1;padding-bottom:0}
   .intro .ph{grid-column:1;grid-row:2;margin:40px calc(-1 * var(--gut)) 0}
   .rooms-text .am{margin-top:40px}
-  .lvl-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding:0 var(--gut);scroll-padding:0 var(--gut);scrollbar-width:none;margin-top:40px}
-  .lvl-row::-webkit-scrollbar{display:none}
-  .lvl{flex:0 0 86%;scroll-snap-align:center}
-  .lvl-body{padding:22px 20px 22px}
-  .lvl .price b{font-size:30px}
+  .lvl{grid-template-columns:1fr;margin-top:56px}
+  .lvl-media,.lvl:nth-of-type(even) .lvl-media{grid-column:1;grid-row:1;aspect-ratio:4/5;margin:0 calc(-1 * var(--gut))}
+  .lvl-media img,.lvl-media video{object-position:var(--fp,50%) 50%}
+  .lvl-text,.lvl:nth-of-type(even) .lvl-text{grid-column:1;grid-row:2;padding-top:24px}
+  .lvl h3 .w{font-size:56px}
   .run{grid-template-columns:1fr;gap:2px}
   .rooms-grid{grid-template-columns:1fr}
   .rooms-grid .big{grid-row:auto;aspect-ratio:3/2;min-height:0}
@@ -245,15 +249,13 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
 }
 @media (max-width:700px){
   .top .pk{display:none}
-  .hero{height:auto;min-height:0;max-height:none;overflow:visible}
-  .film{position:relative;inset:auto;height:calc(100svh - 360px);min-height:330px;overflow:hidden}
-  .film img,.film video{object-position:34% 50%}
-  .plate{position:static;width:auto;padding:26px var(--gut) 20px}
+  .hero{height:auto;min-height:0;max-height:none}
+  .film{flex:none;height:calc(100svh - 360px);min-height:330px}
+  .plate .in{grid-template-columns:1fr;padding:24px var(--gut) 20px;row-gap:20px}
+  .plate .name,.plate .act{grid-column:1}
   .plate h1{font-size:38px}
-  .plate .tag{font-size:16px;margin-top:12px}
-  .plate .act{flex-direction:column;align-items:stretch;gap:12px;margin-top:20px}
-  .plate .act .btn{width:100%;min-height:56px;padding:0 12px;font-size:15px}
-  .proof{border-left:0;padding-left:0}
+  .plate .tag{font-size:16px}
+  .plate .act .btn{min-height:56px;padding:0 12px;font-size:15px}
   .score .big{flex-direction:column;align-items:flex-start}
   .figs{gap:24px}
   .am ul{columns:1}
@@ -290,14 +292,16 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
       <source data-src="video/vid-009e-d1920.mp4" type="video/mp4">
     </video>
   </div>
-  <div class="plate">
-    <h1>Global Surf Lodge Kabalana</h1>
-    <p class="tag">Surf weeks for all levels on Sri Lanka's south coast, a few steps from the ocean.</p>
+  <div class="plate"><div class="in">
+    <div class="name">
+      <h1>Global Surf Lodge Kabalana</h1>
+      <p class="tag">Surf weeks for all levels on Sri Lanka's south coast, a few steps from the ocean.</p>
+    </div>
     <div class="act">
       <a class="btn" href="https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka">See the weekly surf packages and dates</a>
       <a class="proof" href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"><span><b>8.6/10</b> on Booking.com, 80 reviews</span><small>Read 28 Sep 2026</small></a>
     </div>
-  </div>
+  </div></div>
 </section>
 
 <section class="intro" aria-labelledby="h-intro">
@@ -321,62 +325,53 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
     </div>
   </div>
 
-  <div class="lvl-row" id="lvlrow">
-    <article class="lvl" data-l="0" id="level-1">
-      <a class="lvl-media" href="https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies" tabindex="-1" aria-hidden="true">
-        <img src="img/vid-010-poster-45-864.webp" width="864" height="1080" loading="lazy" alt="A beginner standing up on a soft-top board into the low sun">
-        <video muted loop playsinline preload="none" data-clip>
-          <source data-src="video/vid-010-m720.mp4" type="video/mp4" media="(max-width:900px)">
-          <source data-src="video/vid-010-m1280.webm" type="video/webm"><source data-src="video/vid-010-m1280.mp4" type="video/mp4">
+  <div class="wrap">
+    <article class="lvl" data-l="0" id="level-1" style="--fx:30%;--fp:6%">
+      <div class="lvl-media">
+        <picture><source type="image/webp" media="(max-width:900px)" srcset="img/l1-vid-010-45-864.webp"><source type="image/webp" srcset="img/l1-vid-010-43-1280.webp"><img src="img/l1-vid-010-43-1280.jpg" width="1280" height="960" loading="lazy" alt="A beginner standing up on a soft-top board into the low sun"></picture>
+        <video muted loop playsinline preload="none" aria-hidden="true" data-clip>
+          <source data-src="video/l1-vid-010-m720.mp4" type="video/mp4" media="(max-width:900px)">
+          <source data-src="video/l1-vid-010-m1280.webm" type="video/webm"><source data-src="video/l1-vid-010-m1280.mp4" type="video/mp4">
         </video>
-      </a>
-      <div class="lvl-body">
-        <div class="lvl-top">
-          <h3>Level 1 – Fomies</h3>
-          <p class="price"><b>$1,466</b></p>
-        </div>
-        <p class="per">per person, 7 nights · price read 28 Sep 2026</p>
-        <p class="who">is for your first time on a board, no surfing experience needed. You learn on soft boards, on easy reef breaks and the sandy beaches around the lodge.</p>
+      </div>
+      <div class="lvl-text">
+        <h3><span class="n">Level 1 –</span><span class="w">Fomies</span></h3>
+        <p class="who">Level 1 – Fomies is for your first time on a board, no surfing experience needed. You learn on soft boards, on easy reef breaks and the sandy beaches around the lodge.</p>
+        <p class="price"><b>$1,466</b> per person, 7 nights<small>price read 28 Sep 2026</small></p>
         <p class="inc"><b>Included:</b> 7 nights, 7 breakfasts, 5 dinners, 5 guided 2-hour surf sessions, 5 theory lessons, all equipment, transport to the spots, an excursion</p>
-        <a class="btn" href="https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies">Book Level 1 – Fomies</a>
+        <a class="btn-line" href="https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies">Book Level 1 – Fomies</a>
       </div>
     </article>
-    <article class="lvl" data-l="1" id="level-2">
-      <a class="lvl-media" href="https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers" tabindex="-1" aria-hidden="true">
-        <img style="object-position:47% 50%" src="img/vid-003-poster-45-864.webp" width="864" height="1080" loading="lazy" alt="A surfer riding a green reef wave">
-        <video style="object-position:47% 50%" muted loop playsinline preload="none" data-clip>
-          <source data-src="video/vid-003-m720.mp4" type="video/mp4" media="(max-width:900px)">
-          <source data-src="video/vid-003-m1280.webm" type="video/webm"><source data-src="video/vid-003-m1280.mp4" type="video/mp4">
+    <article class="lvl" data-l="1" id="level-2" style="--fx:40%;--fp:50%">
+      <div class="lvl-media">
+        <picture><source type="image/webp" media="(max-width:900px)" srcset="img/l2-vid-003-45-864.webp"><source type="image/webp" srcset="img/l2-vid-003-43-1280.webp"><img src="img/l2-vid-003-43-1280.jpg" width="1280" height="960" loading="lazy" alt="A surfer in a blue rash vest riding a reef wave"></picture>
+        <video muted loop playsinline preload="none" aria-hidden="true" data-clip>
+          <source data-src="video/l2-vid-003-m720.mp4" type="video/mp4" media="(max-width:900px)">
+          <source data-src="video/l2-vid-003-m1280.webm" type="video/webm"><source data-src="video/l2-vid-003-m1280.mp4" type="video/mp4">
         </video>
-      </a>
-      <div class="lvl-body">
-        <div class="lvl-top">
-          <h3>Level 2 – Rollers</h3>
-          <p class="price"><b>$1,466</b></p>
-        </div>
-        <p class="per">per person, 7 nights · price read 28 Sep 2026</p>
-        <p class="who">is for when you can stand up, but paddling out to the line-up and catching green waves is still a struggle. You surf easy reefs and beach breaks with deep-water channels, on soft boards.</p>
+      </div>
+      <div class="lvl-text">
+        <h3><span class="n">Level 2 –</span><span class="w">Rollers</span></h3>
+        <p class="who">Level 2 – Rollers is for when you can stand up, but paddling out to the line-up and catching green waves is still a struggle. You surf easy reefs and beach breaks with deep-water channels, on soft boards.</p>
+        <p class="price"><b>$1,466</b> per person, 7 nights<small>price read 28 Sep 2026</small></p>
         <p class="inc"><b>Included:</b> 7 nights, 7 breakfasts, 5 dinners, 5 guided 2-hour surf sessions, 5 theory lessons, all equipment, transport to the spots, an excursion</p>
-        <a class="btn" href="https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers">Book Level 2 – Rollers</a>
+        <a class="btn-line" href="https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers">Book Level 2 – Rollers</a>
       </div>
     </article>
-    <article class="lvl" data-l="2" id="level-3">
-      <a class="lvl-media" href="https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders" tabindex="-1" aria-hidden="true">
-        <img style="object-position:64% 50%" src="img/vid-002e-poster-45-864.webp" width="864" height="1080" loading="lazy" alt="A surfer deep inside a green barrel">
-        <video style="object-position:64% 50%" muted loop playsinline preload="none" data-clip>
-          <source data-src="video/vid-002e-m720.mp4" type="video/mp4" media="(max-width:900px)">
-          <source data-src="video/vid-002e-m1280.webm" type="video/webm"><source data-src="video/vid-002e-m1280.mp4" type="video/mp4">
+    <article class="lvl" data-l="2" id="level-3" style="--fx:100%;--fp:56%">
+      <div class="lvl-media">
+        <picture><source type="image/webp" media="(max-width:900px)" srcset="img/l3-vid-002e-45-864.webp"><source type="image/webp" srcset="img/l3-vid-002e-43-1280.webp"><img src="img/l3-vid-002e-43-1280.jpg" width="1280" height="960" loading="lazy" alt="A surfer deep inside a green barrel"></picture>
+        <video muted loop playsinline preload="none" aria-hidden="true" data-clip>
+          <source data-src="video/l3-vid-002e-m720.mp4" type="video/mp4" media="(max-width:900px)">
+          <source data-src="video/l3-vid-002e-m1280.webm" type="video/webm"><source data-src="video/l3-vid-002e-m1280.mp4" type="video/mp4">
         </video>
-      </a>
-      <div class="lvl-body">
-        <div class="lvl-top">
-          <h3>Level 3 – Riders:</h3>
-          <p class="price"><b>$1,466</b></p>
-        </div>
-        <p class="per">per person, 7 nights · price read 28 Sep 2026</p>
-        <p class="who">you're already carving, and you want to sharpen your skills. From Galle to Matara, you surf the best spot of the day for the conditions, the wind and the tide.</p>
+      </div>
+      <div class="lvl-text">
+        <h3><span class="n">Level 3 –</span><span class="w">Riders</span></h3>
+        <p class="who">Level 3 – Riders: you're already carving, and you want to sharpen your skills. From Galle to Matara, you surf the best spot of the day for the conditions, the wind and the tide.</p>
+        <p class="price"><b>$1,466</b> per person, 7 nights<small>price read 28 Sep 2026</small></p>
         <p class="inc"><b>Included:</b> 7 nights, 7 breakfasts, 5 dinners, 5 coached 2-hour surf sessions, 5 theory lessons, all equipment, transport to the spots, an excursion</p>
-        <a class="btn" href="https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders">Book Level 3 – Riders</a>
+        <a class="btn-line" href="https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders">Book Level 3 – Riders</a>
       </div>
     </article>
   </div>
@@ -609,33 +604,22 @@ footer a{display:inline-flex;min-height:44px;align-items:center}
       play(clips[i]);
     }
     if(fromBar){
-      var row=document.getElementById('lvlrow'),card=cards[i];
-      var r=card.getBoundingClientRect(),vh=innerHeight;
-      var inView=r.top<vh*.85&&r.bottom>vh*.15;
-      if(row.scrollWidth>row.clientWidth){
-        row.scrollTo({left:card.offsetLeft-(row.clientWidth-card.offsetWidth)/2,behavior:calm?'auto':'smooth'});
-      }
-      if(!inView)card.scrollIntoView({block:'center',behavior:calm?'auto':'smooth'});
+      var r=cards[i].getBoundingClientRect();
+      if(r.top<0||r.top>innerHeight*.5)cards[i].scrollIntoView({block:'start',behavior:calm?'auto':'smooth'});
     }
   }
   segs.forEach(function(b){b.addEventListener('click',function(){select(+b.dataset.l,true)})});
 
-  var fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
-  cards.forEach(function(c,i){
-    c.addEventListener('focusin',function(){select(i,false)});
-    if(fine){
-      c.addEventListener('mouseenter',function(){select(i,false)});
-    }
-  });
-  if(!fine&&'IntersectionObserver' in window){
-    // touch: the card that fills the screen is the selected level, and plays
+  cards.forEach(function(c,i){c.addEventListener('focusin',function(){select(i,false)})});
+  if('IntersectionObserver' in window){
+    // the level whose picture fills most of the screen is the selected one, and the only clip playing
+    var ratios=cards.map(function(){return 0});
     var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        var i=cards.indexOf(e.target.closest('.lvl'));
-        if(e.intersectionRatio>=.75){select(i,false);play(clips[i]);}
-        else if(clips[i]&&i===cur)clips[i].pause();
-      });
-    },{threshold:[0,.75]});
+      es.forEach(function(e){ratios[cards.indexOf(e.target.closest('.lvl'))]=e.intersectionRatio});
+      var best=-1,m=0;ratios.forEach(function(r,j){if(r>m){m=r;best=j}});
+      if(best>-1&&m>=.6){select(best,false);play(clips[best])}
+      else clips.forEach(function(v){if(v)v.pause()});
+    },{threshold:[0,.3,.6,.8,1]});
     cards.forEach(function(c){io.observe(c.querySelector('.lvl-media'))});
   }
 

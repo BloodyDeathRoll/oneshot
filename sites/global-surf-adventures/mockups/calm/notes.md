@@ -135,3 +135,30 @@ Added: img-001 (4:5 and 1:1.08, lodge, business-owned), img-075 (21:9 desktop, 4
 Level clips load one at a time, only when played: 1.6–1.9 MB m720 MP4 on phones, 1.65–1.99 MB m1280 WebM on desktop.
 
 `tools/check-design.mjs` (file path): pass, 0 failing, no warnings. `tools/funnel.mjs` (file path): clicks_to_book 1, primary class engine ("See the weekly surf packages and dates"), CTA above the fold, 0 broken.
+
+---
+
+# Round 3 (after 4f round 2: visual-critic 6 fail, experience-critic 8)
+
+Inputs: re-edited vid-009e (pool deck → sunny teal reef surf, 6.8 s) and vid-002e (barrels, 5.2 s, badge cropped), copied fresh from the dossier. Hero poster WebP regenerated from the new vid-009e poster.
+
+## look-log, round 10 (final)
+
+Old-site screenshots beside the sheets. **Desktop hero:** the white plate over the film is gone. The film is a clear band across the top (the header's hairline, name and link are the only things on it) and the surfer sits in the middle of it, uncovered. Below it, on white, the title card: the name and tagline at left, the coral button and rating at right, the phone treatment widened to 12 columns. **Levels:** no more cards. Each level is a large 4:3 film still bleeding to the page edge, alternating left and right (Fomies, Rollers, Riders), with its clip playing only while it fills the screen. Beside it, quiet: "Level n –" small, the level word at display size, the en.json sentence whole and verbatim ("Level 1 – Fomies is for your first time…"; "Level 3 – Riders: you're already carving…"), the price in pool blue, what's included, and an ink-outline "Book Level n". The only coral on those screens is the bar's; the primary coral returns once, after Riders, beside the trust figure. Phone: each level is a full-width 4:5 still with the text below, and the bar follows the level on screen (Fomies → Rollers → Riders in the sheet). **Poster first:** the film box is painted with a gradient sampled from the poster before any image arrives (`static/slow-3g-1.2s-390.png` shows the blurred pool, not a flat block). **Clips:** the three level clips are my own single-shot trims, so no card can show a dissolve: vid-010 0.8–5.1 s (the stand-up into the sun, hard cut to the beach), vid-003 0–3.0 s (the rider in blue), vid-002e 0–3.2 s (barrels only). They are trimmed with ffmpeg from the dossier's d1920 cuts into `dist/video/l{1,2,3}-*`; each still is a frame from that trim. Against the old lodge page it is clearly better at a glance and over the whole page: their own sunlit water on a clear film, then a priced week per level, where theirs shows a dark rock, a badge over the breadcrumb, and no price.
+
+## conflicts, round 3
+
+12. **Plate replaced by a title card under the film** (conflict 9 withdrawn). Legibility is still structural: ink on white, with no text over the moving picture except the header.
+13. **The level clips are designer-made trims** of the business's own cuts, not dossier renditions: single shots, no dissolves, 0.3–1.3 MB each. At 4g they must come from Payload (`videos[]`), so the owner-facing originals would need these cut points.
+14. **The level heading shows "Level n –" and the level word**, and the paragraph repeats the full sentence from en.json. The duplication is kept on purpose so the copy stays whole sentences.
+
+## measured, round 3 (headless Chromium, local server, no scroll)
+
+| | phone 390 | desktop 1440 |
+|---|---|---|
+| first load, video excluded | 204 KB | 239 KB |
+| hero video after first paint | 1.36 MB (vid-009e m1280 webm) | 2.59 MB (vid-009e d1920 webm) |
+| level clips (only while on screen, one at a time) | 0.32–0.49 MB m720 mp4 | 0.55–1.02 MB m1280 webm |
+| video requests, reduced motion, full scroll | 0 | — |
+
+`check-design` (file path): pass. `funnel` (file path): clicks_to_book 1, primary engine, CTA above the fold, 0 broken.

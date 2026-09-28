@@ -192,3 +192,62 @@ or 390.
 | first load, no video | 279 KB | 287 KB |
 | hero video after first paint | 1.50 MB phone / 2.98 MB desktop | 1.89 MB / 3.62 MB (vid-009e) |
 | check-design / funnel | ok / 1 tap | ok / 1 tap (engine), level product 1 tap from its scene, 2 from the phone bar |
+
+## Round 3 of review (last), 2026-09-28
+
+Reviews read: visual 7/10 ("one fix from 8"), experience 8/10 (scroll jank p95 83 ms), critic pass.
+The orchestrator re-edited vid-009e (pool deck ≈ 2.7 s → sunny teal reef surf, 6.8 s) and vid-002e
+(barrels only, 5.2 s, badge cropped out) and copied them over `dist/video/`. Derived stills
+regenerated: the poster-sampled gradients for both, and the inline phone poster (below). Riders no
+longer needs the 1.14 zoom crop.
+
+**Scroll jank — cause found and fixed.** Reproduced the critic's numbers with wheel scrolling
+(laptop p95 83–100 ms, phone ×4 CPU p95 100 ms). Isolated by switching parts off: reduced motion was
+clean; GL without video was clean; video without GL was not; one clip at a time showed it was only
+vid-010: the round-2 "start at the stand-up" code re-seeked on every `timeupdate` below 0.5 s, and an
+AV1 decoder mid-seek stalls the main thread. Now it seeks once on load and loops plainly. Also, as
+asked: all layout is measured once (on load, resize, font load, body resize) and the scroll path
+does no layout reads; scroll only sets a flag, one rAF does everything and writes a class only when
+it changes; the title "surfacing" is a `transform: scaleX` transition, not `font-stretch` (no
+reflow); shaders compile in idle time and contexts are no longer torn down and recompiled while
+scrolling; a scene's canvas is off whenever no water line is in it; video textures upload only on a
+new video frame (`requestVideoFrameCallback`); clips fetch one screen ahead but only on-screen
+clips decode (at most two); H.264 is preferred where the browser has it (hardware decode on phones);
+hero uses the 1280 rendition on desktop (the canvas never draws wider than that); canvases draw at
+1 device pixel on phones.
+
+| wheel scroll, whole page, software GL | before (round 2) | after |
+|---|---|---|
+| phone 390, CPU ×4: p95 / frames > 50 ms / max | 100 ms / 382 / 183 ms | 16.8 ms / 5 / 100 ms |
+| laptop 1440: p95 / frames > 50 ms / max | 83.4 ms / 333 / 167 ms | 16.8 ms / 5 / 67 ms |
+
+**First half-second.** On the phone the hero now carries an 11 KB inline WebP of the pool poster,
+cropped to the phone frame, as its background (desktop keeps the preloaded AVIF poster; the inline
+image is drawn 390 px wide, so the full-bleed rule holds). Cold load on slow 4G with ×4 CPU: the
+0.5 s frame is the pool with the name and button on it (`shots/static/cold-phone-500.png`, `cold-laptop-500.png`).
+
+**Hero composition.** Desktop: the film is framed at the left edge (`object-position` / shader focus
+x = 0), so the rider sits in the right half; the name block is narrower (≤ 36 vw, name on three
+lines) and the rating sits under the button. Round 10's capture shows the rider clear of the type.
+Phone: framing at x = 0.42 (the pool and palm in the first half, the rider centred in the second);
+the name and tagline sit at the top over sky / deep water, the coral button and rating sit under the
+waterline, so the middle of the frame (pool, then rider) is never covered.
+
+**Level bodies.** The heading is the start of the copy's sentence and the body continues it:
+"Level 1 – Fomies" (heading, dash visually hidden) + "is for your first time on a board…";
+"Level 3 – Riders:" (colon visually hidden) + "you're already carving…". Same words in the same order
+in the DOM; the name appears once. (Conflict note: this splits a copy sentence across two elements;
+no word is changed.)
+
+### Round 10 — final (`shots/round-10/`), old site beside it
+- **Wrong as design:** nothing new at 1440 or 390; the lowercase start of each level body under the
+  giant name is the one editorial choice a reviewer may question.
+- **Against the old site** (`old-site-lodge-desktop-fold.png`, `-mobile-fold.png`): the old lodge
+  fold is a sepia tractor, a badge through the headline, a Messenger bubble, no price. Ours: desktop
+  opens on the pool then a surfer on a sunny reef wave, clear of the name, with the waterline under
+  both; the phone opens on the sunny pool at 0.5 s with the name, one coral button and a dated
+  rating. Clearly better at a glance on both widths.
+
+Checks (once, at the end): `check-design` ok (0 problems); `funnel` clicks_to_book 1, primary
+engine, CTA above the fold. First load without video 302 KB (both widths); hero video 1.53 MB phone
+(m1280 webm), 1.87 MB desktop (m1280 webm).
