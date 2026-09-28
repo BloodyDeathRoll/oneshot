@@ -19,7 +19,7 @@ Abbreviations: **D** = `dossier/the-lavish-haven/dossier.json`; **CR2** = `repor
 | 5 | Guests find Booking.com, Agoda, Tripadvisor, Google Maps (page) | D `contact.socials` (tripadvisor, google_maps, booking, agoda); D `booking.other_engines` |
 | 6 | 9.3 / 10 from 34 reviews on Booking.com, 5.0 / 5 from 21 on Google, read 25 September 2026 (page, in-person) | D `reviews.booking` (9.3, 10, 34), `reviews.google` (5.0, 21), `fetched_at` 2026-09-25 (refreshed by the orchestrator); same values live on the preview |
 | 7 | (removed 2026-09-25: the "9.2 then 9.3" confirm item — the site now shows 9.3) | — |
-| 8 | No check-in/check-out times, price list, WhatsApp number or email found published (page, in-person) | D `gaps[stayInfo]`, `gaps[offers]`, `gaps[contact.whatsapp]`, `gaps[contact.email]` (all `pitch_point: true`); D `stayInfo.note` gap; DJ `seed.evidence.gaps` |
+| 8 | No price list, WhatsApp number or email found published (page, in-person) | D `gaps[offers]`, `gaps[contact.whatsapp]`, `gaps[contact.email]` (all `pitch_point: true`); DJ `seed.evidence.gaps`. **2026-09-28:** check-in/check-out times removed from this claim and from the page's "what you could add" list: the harvester's re-fetch found them in Booking's house rules (D `stayInfo`; `gaps[stayInfo]` closed), and the site now shows them |
 | 9 | Nine room types (page, WhatsApp, in-person) | D `room_types[0–8]`; CR2 facts "Nine kinds of room", 9 room rows |
 | 10 | Your photos (page, WhatsApp, in-person) | DJ `seed.evidence.licence` "business-owned photographs only (dossier assets)"; CR2 "all 10 `license: business-owned`" |
 | 11 | Guests' own words, word for word, with the guest's name; 5 quotes (page, WhatsApp, in-person) | CR2 dim 1: 5 testimonials = D `reviews.quotes[0,4,3,6,7]` by string equality, authors too |
@@ -29,7 +29,7 @@ Abbreviations: **D** = `dossier/the-lavish-haven/dossier.json`; **CR2** = `repor
 | 15 | Every link checked against your listings (page) | CR2 dim 1 "Each is identical to the dossier"; dim 3 |
 | 16 | 0.42 s for the main content of the first screen, slow mobile connection simulated; target 2.5 s (page); "under half a second" (in-person) | CR2 dim 2 and budget table: LCP 424 / 420 / 424 ms at 390×844, 1.6 Mbps, 150 ms RTT, 4× CPU; target PB §4 LCP ≤ 2.5 s. Headless Chromium, no real phone (stated in CR2) |
 | 17 | 589 KB first load, under the 1.5 MB limit (page) | CR2 budget table: 589 030 B, 12 requests; PB §4 ≤ 1.5 MB |
-| 18 | 60 of 60 facts checked; nothing made up; unpublished facts left out (page) | CR2 dim 1 "60 rows, 60 match, 0 mismatch, 0 unsourced"; CR2 facts table last row "absent as required: prices, check-in times…" |
+| 18 | 60 of 60 facts checked; nothing made up; unpublished facts left out (page) | CR2 dim 1 "60 rows, 60 match, 0 mismatch, 0 unsourced"; CR2 facts table last row "absent as required: prices, check-in times…". **2026-09-28:** the page's example now reads "like prices" only (check-in times are on the site) |
 | 19 | 25 amenities, as the Booking.com listing gives them (page) | D `facilities` (26 rows, all `source_url` booking.com); CR2: 25 shown, CCTV omitted |
 | 20 | 0 accessibility errors, automated check, WCAG 2.1 AA, phone and laptop (page) | CR2 dim 6: axe-core 4.13.0, WCAG 2.0/2.1 A+AA, 0 violations at 390 and 1440 |
 | 21 | Every button at least 44 px (page) | CR2 dim 6: 17 page targets, 0 under 44 px; drawer targets ≥ 44 |
@@ -73,7 +73,7 @@ Not captured: **Google Maps.** Headless Chrome was sent to a generic Maps view w
 ## Weak spots in the pitch (dossier gaps)
 
 - No WhatsApp and no email published, so the site's only booking path is the OTAs plus the phone, and there is no direct-booking number to show.
-- No prices, no check-in/check-out times, no owner-written description, no tagline of the owner's: the "what you can add" list is long because of this.
+- No prices, no owner-written description, no tagline of the owner's: the "what you can add" list is long because of this.
 - Owner's name unconfirmed (guest reviews only); the WhatsApp number is not confirmed to be on WhatsApp.
 - Booking.com score moved from 9.2 to 9.3 since the harvest; fixed on 2026-09-25 (dossier, site, pitch).
 - House number 166/1 vs 166/2 and Google's longer name are unresolved.

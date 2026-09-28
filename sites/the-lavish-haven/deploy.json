@@ -304,6 +304,169 @@
         }
       },
       "ms": 23140
+    },
+    {
+      "step": "seed",
+      "ok": true,
+      "started": "2026-09-28T09:18:41.626Z",
+      "evidence": {
+        "source": "sites/the-lavish-haven/final/src/tenant/content.json (critic-passed; built from dossier/the-lavish-haven/dossier.json by scripts/seed-from-dossier.mjs)",
+        "siteId": 3,
+        "replacedExisting": true,
+        "locales": [
+          "en"
+        ],
+        "fieldsSeeded": [
+          "businessName",
+          "businessType",
+          "tagline",
+          "closing",
+          "featureLine",
+          "languages",
+          "copyBlocks",
+          "photos",
+          "contact",
+          "bookingLinks",
+          "amenities",
+          "ratings",
+          "testimonials",
+          "spot",
+          "rooms",
+          "stayInfo",
+          "forecast"
+        ],
+        "gaps": [
+          "openingHours",
+          "hoursNote",
+          "priceList",
+          "season",
+          "languagesSpoken",
+          "lessons",
+          "credentials",
+          "rentals",
+          "brands",
+          "shaping",
+          "contact.whatsapp",
+          "contact.email"
+        ],
+        "photos": [
+          {
+            "filename": "the-lavish-haven-f59c5313-img-002.jpg",
+            "mediaId": 106
+          },
+          {
+            "filename": "the-lavish-haven-af116287-img-079.jpg",
+            "mediaId": 107
+          },
+          {
+            "filename": "the-lavish-haven-7f3abd95-img-069.jpg",
+            "mediaId": 108
+          },
+          {
+            "filename": "the-lavish-haven-c969b643-img-007.jpg",
+            "mediaId": 109
+          },
+          {
+            "filename": "the-lavish-haven-e1527189-img-073.jpg",
+            "mediaId": 110
+          },
+          {
+            "filename": "the-lavish-haven-fc90eec9-img-021.jpg",
+            "mediaId": 111
+          },
+          {
+            "filename": "the-lavish-haven-99c1ce44-img-028.jpg",
+            "mediaId": 112
+          },
+          {
+            "filename": "the-lavish-haven-24e00762-img-071.jpg",
+            "mediaId": 113
+          },
+          {
+            "filename": "the-lavish-haven-12858011-img-017.jpg",
+            "mediaId": 114
+          },
+          {
+            "filename": "the-lavish-haven-138160fc-img-008.jpg",
+            "mediaId": 115
+          }
+        ],
+        "renamed": [],
+        "reused": 10,
+        "unreferencedMediaRemoved": [],
+        "licence": "business-owned photographs only (dossier assets); no atmosphere/stock images are in content.json"
+      },
+      "ms": 5001
+    },
+    {
+      "step": "deploy",
+      "ok": true,
+      "started": "2026-09-28T09:18:46.627Z",
+      "evidence": {
+        "mode": "live",
+        "worker": "the-lavish-haven",
+        "url": "https://the-lavish-haven.os1.workers.dev",
+        "version": "bd13248a-bbe8-45f8-8933-9e15798821aa",
+        "buildMs": 5974,
+        "deployMs": 12192,
+        "totalMs": 18166,
+        "parity": {
+          "identical": true,
+          "note": "photo names compared without the seed's slug-hash prefix",
+          "differingLines": []
+        },
+        "live": {
+          "url": "https://the-lavish-haven.os1.workers.dev/",
+          "status": 200,
+          "identicalToBuild": true,
+          "msUntilIdentical": 6892,
+          "noindex": true
+        }
+      },
+      "ms": 31355
+    },
+    {
+      "step": "verify",
+      "ok": true,
+      "started": "2026-09-28T09:19:17.983Z",
+      "evidence": {
+        "ownerSitesVisible": 1,
+        "otherTenantSites": [
+          {
+            "siteId": 2,
+            "status": 404
+          },
+          {
+            "siteId": 1,
+            "status": 404
+          }
+        ],
+        "ownerMediaForeign": 0,
+        "anonymous": {
+          "sites": 403,
+          "media": 403,
+          "tenants": 403,
+          "users": 403
+        },
+        "ownerAddsRating": 400,
+        "edit": {
+          "field": "copyBlocks[0].body (intro)",
+          "marker": "verify-6a3d9318",
+          "saveStatus": 200,
+          "saveMs": 155,
+          "saveToLiveMs": 19387
+        },
+        "restore": {
+          "saveStatus": 200,
+          "saveToLiveMs": 14870,
+          "valueMatchesOriginal": true
+        },
+        "liveAfter": {
+          "status": 200,
+          "noindex": true
+        }
+      },
+      "ms": 38716
     }
   ]
 }

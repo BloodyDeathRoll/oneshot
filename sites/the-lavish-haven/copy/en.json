@@ -34,7 +34,7 @@
   {
    "slot": "info",
    "heading": "Practicalities",
-   "body": "The front desk is staffed 24 hours, with private and express check-in. Parking is free and private, but you need to reserve it. There’s an airport shuttle as well.\n\nHousekeeping is daily. There is laundry, dry cleaning and ironing, bicycles to rent, non-smoking rooms, and facilities for guests with disabilities."
+   "body": "The front desk is staffed 24 hours, with private and express check-in. You can check in from 14:00 until midnight and check out at any hour. Payment at the hotel is cash only. Parking is free and private, but you need to reserve it. There’s an airport shuttle as well.\n\nHousekeeping is daily. There is laundry, dry cleaning and ironing, bicycles to rent, non-smoking rooms, and facilities for guests with disabilities."
   }
  ],
  "spot": "Kabalana: a sandy beach break for beginners and intermediates, with The Rock reef A-frame for advanced surfers. The beach is two minutes from the hotel, on foot.",
@@ -86,7 +86,8 @@
   }
  ],
  "stayInfo": {
-  "note": "The front desk is staffed 24 hours, with private and express check-in and check-out."
+  "checkInFrom": "14:00",
+  "note": "Check-in from 14:00 until midnight; check-out at any hour. The front desk is staffed 24 hours, with private and express check-in and check-out. Payment at the hotel is cash only."
  },
  "amenities": [
   {

@@ -55,7 +55,7 @@
           "id": "seed-block-6",
           "slot": "info",
           "heading": "Practicalities",
-          "body": "The front desk is staffed 24 hours, with private and express check-in. Parking is free and private, but you need to reserve it. There’s an airport shuttle as well.\n\nHousekeeping is daily. There is laundry, dry cleaning and ironing, bicycles to rent, non-smoking rooms, and facilities for guests with disabilities."
+          "body": "The front desk is staffed 24 hours, with private and express check-in. You can check in from 14:00 until midnight and check out at any hour. Payment at the hotel is cash only. Parking is free and private, but you need to reserve it. There’s an airport shuttle as well.\n\nHousekeeping is daily. There is laundry, dry cleaning and ironing, bicycles to rent, non-smoking rooms, and facilities for guests with disabilities."
         }
       ],
       "openingHours": [],
@@ -504,12 +504,12 @@
         }
       ],
       "stayInfo": {
-        "checkInFrom": null,
+        "checkInFrom": "14:00",
         "checkInTo": null,
         "checkOutFrom": null,
         "checkOutTo": null,
         "minNights": null,
-        "note": "The front desk is staffed 24 hours, with private and express check-in and check-out."
+        "note": "Check-in from 14:00 until midnight; check-out at any hour. The front desk is staffed 24 hours, with private and express check-in and check-out. Payment at the hotel is cash only."
       },
       "lessons": [],
       "credentials": [],

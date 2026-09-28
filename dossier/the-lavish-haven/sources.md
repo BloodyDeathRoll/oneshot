@@ -40,3 +40,17 @@ Fetched 2026-09-23 (UTC), headless Chromium (Playwright), `locale en-US`, logged
 | https://www.booking.com/hotel/lk/the-lavish-haven.html (08:16:03Z) | JSON-LD streetAddress `166/2 Welhengoda Road , 80650 Ahangama, Sri Lanka` — the page's visible text still shows no street address, which is why the 2026-09-19 pass missed it → `address_other_platforms` | — |
 
 The `location.address` gap is closed. New contradiction: house number 166/1 (Google) vs 166/2 (Booking JSON-LD); the site uses Google's.
+
+## Field-scoped correction 2026-09-28 — house rules and room table (harvester 0.3.0)
+
+Prompted by the auditor trial (`funnel/booking-policies.png`); every item re-verified on a fresh fetch, not taken from the audit. Fetched 2026-09-28T09:12:44Z (UTC), headless Chromium (Playwright 1.62.1) at 1440×1400, `locale en-GB`, logged out, cookie dialog declined.
+
+| URL | Yielded | Did not yield |
+|---|---|---|
+| https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html (HTTP 202, page rendered) | House rules, verbatim: **"Check-in — From 14:00 to 00:00"**, **"Check-out — Available 24 hours"**, **"Accepted payment methods — Cash"** (only method listed) → `stayInfo`. Room type table: **12 rows**, each a distinct name with its own beds (list in `room_types`) → `room_types` 9 → 12; the old 9 kept as `room_types_previous` | Nightly rates (need dates); cancellation/prepayment terms ("vary according to accommodation type") |
+
+What changed in `dossier.json`: `stayInfo.checkInFrom` "14:00", `.checkInTo` "00:00" (midnight), `.checkOut` "Available 24 hours" (raw text, not a range), `.paymentMethods` ["Cash"]; `gaps[]` "stayInfo" removed; `room_types` replaced with the 12 names verbatim; `contradictions[1]` reworded (17 bedrooms vs 12 types — still unresolved); `hours_note.note` points at `stayInfo`; a `corrections[]` entry records this pass.
+
+The 2026-09-19 pass's "check-in/check-out — not published" and "9 distinct room types" were wrong: it read the room table with shortened, merged names, and did not capture the house-rules block. Also on the page, not acted on: cot free on request, extra bed US$30 per night, pets not allowed, parties/events not allowed, children of any age welcome.
+
+The "put to an owner" item 2 above (check-in/check-out times) is closed; item 1 (room count) now reads 17 bedrooms vs 12 types.

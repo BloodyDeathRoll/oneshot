@@ -153,60 +153,113 @@
   "value": "24-hour front desk; private and express check-in/out available",
   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
   "fetched_at": "2026-09-19T18:55:00Z",
-  "note": "Booking publishes no check-in or check-out window for this listing"
+  "note": "Check-in/check-out window: see stayInfo (Booking house rules, re-fetched 2026-09-28)"
  },
  "stayInfo": {
+  "checkInFrom": {
+   "value": "14:00",
+   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+   "fetched_at": "2026-09-28T09:12:44Z",
+   "note": "House rules, verbatim: 'Check-in — From 14:00 to 00:00' (en-gb). The en-US page renders the same window as 'From 2:00 PM to 12:00 AM'."
+  },
+  "checkInTo": {
+   "value": "00:00",
+   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+   "fetched_at": "2026-09-28T09:12:44Z",
+   "note": "End of the check-in window: 00:00 = midnight at the end of the arrival day (en-US '12:00 AM')."
+  },
+  "checkOut": {
+   "value": "Available 24 hours",
+   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+   "fetched_at": "2026-09-28T09:12:44Z",
+   "note": "House rules, verbatim: 'Check-out — Available 24 hours'. Not a time range: no checkOutFrom/checkOutTo exists to record."
+  },
+  "paymentMethods": {
+   "value": [
+    "Cash"
+   ],
+   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+   "fetched_at": "2026-09-28T09:12:44Z",
+   "note": "House rules, verbatim: 'Accepted payment methods — Cash'. Cash is the only method listed (payment at the property; online prepayment terms 'vary according to accommodation type')."
+  },
   "note": {
    "value": null,
-   "gap": "no check-in/check-out times published"
+   "gap": "no owner-written house-rules note; the facts above are Booking.com house rules"
   }
  },
  "offers": [],
  "room_types": [
   {
-   "value": "Deluxe King Room with Private Patio & Pool View, ground floor (1 king bed)",
-   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
-   "fetched_at": "2026-09-19T18:55:00Z"
+   "value": "Deluxe King Room with Private Patio & Pool View - Ground Floor (1 extra-large double bed)",
+   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+   "fetched_at": "2026-09-28T09:12:44Z",
+   "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
   },
   {
-   "value": "Superior King Room (1 king bed)",
-   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
-   "fetched_at": "2026-09-19T18:55:00Z"
+   "value": "Superior King Room with Private Balcony, Garden & Pool View (1 extra-large double bed)",
+   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+   "fetched_at": "2026-09-28T09:12:44Z",
+   "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
   },
   {
-   "value": "King Room with Garden View (1 king bed)",
-   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
-   "fetched_at": "2026-09-19T18:55:00Z"
+   "value": "Deluxe King Room with Private Kitchen - Ground Floor (1 extra-large double bed)",
+   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+   "fetched_at": "2026-09-28T09:12:44Z",
+   "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
   },
   {
-   "value": "King Room with Balcony (1 king bed)",
-   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
-   "fetched_at": "2026-09-19T18:55:00Z"
+   "value": "Family Suite with Patio (1 extra-large double bed and 1 large double bed, sleeps 4)",
+   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+   "fetched_at": "2026-09-28T09:12:44Z",
+   "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
   },
   {
-   "value": "Deluxe Family Suite (1 king + 1 queen bed, sleeps 4)",
-   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
-   "fetched_at": "2026-09-19T18:55:00Z"
+   "value": "Deluxe King Room with Private Patio & Garden View - Ground Floor (1 extra-large double bed)",
+   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+   "fetched_at": "2026-09-28T09:12:44Z",
+   "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
   },
   {
-   "value": "Family Studio (1 full + 1 king bed, sleeps 4)",
-   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
-   "fetched_at": "2026-09-19T18:55:00Z"
+   "value": "Deluxe King Room with Private Balcony & Garden View (1 extra-large double bed)",
+   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+   "fetched_at": "2026-09-28T09:12:44Z",
+   "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
   },
   {
-   "value": "Family Junior Suite (1 full + 1 king bed, sleeps 4)",
-   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
-   "fetched_at": "2026-09-19T18:55:00Z"
+   "value": "Deluxe Family Studio with 2 Private Balconies, Pool & Garden Views (1 double bed and 1 extra-large double bed, sleeps 4)",
+   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+   "fetched_at": "2026-09-28T09:12:44Z",
+   "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
   },
   {
-   "value": "Family Suite (1 king + 1 queen bed, sleeps 4)",
-   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
-   "fetched_at": "2026-09-19T18:55:00Z"
+   "value": "Family Junior Suite with Private Patio and Kitchenette (1 double bed and 1 extra-large double bed, sleeps 4)",
+   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+   "fetched_at": "2026-09-28T09:12:44Z",
+   "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
   },
   {
-   "value": "Two-Bedroom Suite (2 king beds + 1 sofa bed, sleeps 5)",
-   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
-   "fetched_at": "2026-09-19T18:55:00Z"
+   "value": "Two-Bedroom Suite (1 extra-large double bed, 1 extra-large double bed, 1 sofa bed, sleeps 5)",
+   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+   "fetched_at": "2026-09-28T09:12:44Z",
+   "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
+  },
+  {
+   "value": "Deluxe King Room with Private Balcony & Pool View - First Floor (1 extra-large double bed)",
+   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+   "fetched_at": "2026-09-28T09:12:44Z",
+   "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
+  },
+  {
+   "value": "Family Suite with Private Balcony, Pool & Garden Views - First Floor (1 extra-large double bed and 1 large double bed, sleeps 4)",
+   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+   "fetched_at": "2026-09-28T09:12:44Z",
+   "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
+  },
+  {
+   "value": "Family Suite with Private Kitchen, Balcony & Garden View (1 single bed and 1 extra-large double bed)",
+   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+   "fetched_at": "2026-09-28T09:12:44Z",
+   "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
   }
  ],
  "facilities": [
@@ -1525,11 +1578,6 @@
    "pitch_point": true
   },
   {
-   "field": "stayInfo",
-   "why": "no check-in or check-out times published",
-   "pitch_point": true
-  },
-  {
    "field": "existing_site.url",
    "why": "no site, no social account — every booking pays an OTA commission",
    "pitch_point": true
@@ -1576,7 +1624,7 @@
    "resolution": "Minor. Use Booking's figure or say 'a few minutes'."
   },
   {
-   "what": "Room count: a review summary mentions 17 bedrooms; Booking lists 9 distinct room types with some names repeating.",
+   "what": "Room count: a review summary mentions 17 bedrooms; Booking lists 12 distinct room types (re-fetched 2026-09-28; the first pass recorded 9).",
    "resolution": "Unresolved — do not publish a room count."
   },
   {
@@ -1586,6 +1634,30 @@
   {
    "what": "House number: Google listing 'No166/1 walhengoda road, Ahangama 80650'; Booking.com JSON-LD '166/2 Welhengoda Road , 80650 Ahangama'.",
    "resolution": "Site uses the Google listing address verbatim (playbook 0.5.0 §6). Which number is right is a question for the owner in a live run."
+  }
+ ],
+ "room_types_previous": {
+  "value": [
+   "Deluxe King Room with Private Patio & Pool View, ground floor (1 king bed)",
+   "Superior King Room (1 king bed)",
+   "King Room with Garden View (1 king bed)",
+   "King Room with Balcony (1 king bed)",
+   "Deluxe Family Suite (1 king + 1 queen bed, sleeps 4)",
+   "Family Studio (1 full + 1 king bed, sleeps 4)",
+   "Family Junior Suite (1 full + 1 king bed, sleeps 4)",
+   "Family Suite (1 king + 1 queen bed, sleeps 4)",
+   "Two-Bedroom Suite (2 king beds + 1 sofa bed, sleeps 5)"
+  ],
+  "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+  "fetched_at": "2026-09-19T18:55:00Z",
+  "note": "Superseded 2026-09-28: the 2026-09-19 pass collapsed Booking's room table into 9 shortened names. Re-fetched, the table lists 12 distinct room types (12 rows under 'Room type', each its own name and beds; no dates entered, so these are not rate plans)."
+ },
+ "corrections": [
+  {
+   "at": "2026-09-28T09:12:44Z",
+   "by": "harvester 0.3.0 (field-scoped re-fetch, Shahar 2026-09-28)",
+   "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+   "what": "stayInfo check-in 14:00 to 00:00 and check-out 'Available 24 hours' added; payment method Cash added; room_types 9 -> 12; gap 'stayInfo' closed. Prompted by the auditor trial (funnel/booking-policies.png) and verified on a fresh fetch."
   }
  ]
 }

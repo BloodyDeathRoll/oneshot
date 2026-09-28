@@ -468,3 +468,24 @@ None.
 ### Verdict: **PASS** (round 5, full-file re-check)
 
 0 `unsourced`, 0 `contradicted`, 0 voice fails, required fields covered.
+
+---
+
+## 2026-09-28 — scoped check: stay info and payment (copyeditor 0.3.1)
+
+Scope: only the sentences changed by the harvester correction of 2026-09-28 (`dossier/the-lavish-haven/sources.md`, "Field-scoped correction 2026-09-28"). Every key re-read in `dossier.json` after the correction.
+
+| Where | Sentence / value | Rests on | Verdict |
+|---|---|---|---|
+| `copyBlocks[5]` info ¶1 S2 | "You can check in from 14:00 until midnight and check out at any hour." | `stayInfo.checkInFrom.value` "14:00"; `stayInfo.checkInTo.value` "00:00", note "midnight at the end of the arrival day"; `stayInfo.checkOut.value` "Available 24 hours" | `sourced` |
+| `copyBlocks[5]` info ¶1 S3 | "Payment at the hotel is cash only." | `stayInfo.paymentMethods.value` ["Cash"], note: the only method listed under Booking's "Accepted payment methods" (payment at the property). "at the hotel" keeps it off online prepayment, which Booking says varies by room | `sourced` |
+| `stayInfo.checkInFrom` | "14:00" | `stayInfo.checkInFrom.value` | `sourced` |
+| `stayInfo.note` S1 | "Check-in from 14:00 until midnight; check-out at any hour." | as info ¶1 S2 | `sourced` |
+| `stayInfo.note` S2 | "The front desk is staffed 24 hours, with private and express check-in and check-out." | unchanged from round 5 (`hours_note.value`; `facilities[8]`, `[9]`) | `sourced` |
+| `stayInfo.note` S3 | "Payment at the hotel is cash only." | as info ¶1 S3 | `sourced` |
+
+Lengths: `stayInfo.note` 178/200; info body 418/1500. Voice: plain statements, no padding, 24-hour clock as Booking's en-gb page gives it; clean. Unchanged: info ¶1 S1 and S4–S5, info ¶2.
+
+**Verdict on the changed sentences: PASS** — 6 `sourced`, 0 `unsourced`, 0 `contradicted`.
+
+**Outside this scope, now `contradicted` by the corrected dossier (not re-reviewed, not changed):** `copyBlocks[3]` heading "Nine kinds of room" and offer ¶1, and `rooms[0–8]` (nine rows from the superseded `room_types`). `room_types` now holds 12 types (Booking re-fetch 2026-09-28); the old nine are `room_types_previous`. Goes back to the copywriter (facts) if Shahar wants the room list corrected.
