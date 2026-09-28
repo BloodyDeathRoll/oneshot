@@ -1,9 +1,9 @@
 {
  "slug": "global-surf-adventures",
  "variant": "interactive",
- "measured_at": "2026-09-28T14:30:46.791Z",
+ "measured_at": "2026-09-28T14:44:30.649Z",
  "first_load": {
-  "requests": 16,
+  "requests": 17,
   "hosts": [
    "localhost:8980",
    "fonts.googleapis.com",
@@ -13,25 +13,25 @@
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 522923,
-  "bytes_html": 48561,
+  "bytes_total": 566034,
+  "bytes_html": 49524,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 107508,
-  "bytes_images": 366854,
+  "bytes_images": 409002,
   "largest_image_bytes": 119456,
   "lcp_ms": 576,
-  "cls": 0.0641,
-  "dcl_ms": 589
+  "cls": 0.0681,
+  "dcl_ms": 573
  },
  "booking": {
   "external_booking_hrefs": [
-   "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%27d%20like%20to%20ask%20about%20a%20surf%20week.",
    "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
    "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers",
    "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
    "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!8m2!3d5.9810484!4d80.3420635?hl=en",
    "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.html",
+   "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%27d%20like%20to%20ask%20about%20a%20surf%20week.",
    "https://rosa.surf/spot/kabalana"
   ],
   "tel_hrefs": [
@@ -40,7 +40,7 @@
   "drawer_triggers": 0,
   "triggers_are_links": true,
   "primary_above_fold": true,
-  "tapped": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%27d%20like%20to%20ask%20about%20a%20surf%20week."
+  "tapped": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies"
  },
  "keyboard": {
   "drawer_opens": null,
@@ -81,7 +81,7 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 6502,
+  "text_length": 6508,
   "booking_links_reachable": 0,
   "visible_images": 14
  },

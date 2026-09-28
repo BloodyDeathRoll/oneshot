@@ -171,3 +171,149 @@ fix list (fail only): 1. Drop the Level 1 and Level 3 cells on the filmed-sessio
 | unique | 67 | fail | 1 (facts: L1/L3 filming "not listed") | 267 KB | 1 (engine) |
 
 Each hard fail is a one-line text change. Every other gating dimension (3 and 7) is ≥ 6 on all three.
+
+---
+
+# Round 2 (quick, after designer fixes in commit a820fb8)
+
+critic 0.3.3 · rubric 0.2.0 · 2026-09-28 · evidence in `reports/2026-09-globalsurf-01/critic-quick-r2/`. Screenshots are in `sites/global-surf-adventures/mockups/<v>/shots/critic-quick-r2/`.
+
+Same checks, same order and same viewports as round 1 for all three, with one change the coordinator asked for: `tools/funnel.mjs` ran at `--depth 1`. The runs were `audit-mockup.mjs`, then `check-design.mjs <file path> --no-shots`, then `funnel.mjs`, then `shoot.mjs` (file://). After those came the critic probe over http (tap-through, JS off, Rosa lazy load and blocked request, keyboard, reduced motion), then text against copy and a table dump, then contrast.
+
+**The one sentence the human needs:** all three now pass quick with no hard fail. Each takes 1 tap to the level's page in the booking engine, and check-design reports no default-look findings. The measured differences: calm 284 KB with no JavaScript and no forecast; interactive 553 KB, the heaviest, and it carries the Rosa forecast; unique 268 KB with the Rosa forecast and a drawn sea animated on a canvas.
+
+## Round-1 hard fails re-checked
+
+| variant | round-1 fail | round 2 |
+|---|---|---|
+| calm | Level 1 and Level 3 filming "not included" | Row removed from the includes table. The new line under it, "Level 2's package lists 2 filmed or photographed sessions.", matches `offers[1].includes_engine` and `includes_site`. **Cleared** |
+| interactive | "Every Saturday, 7 nights" | Now "Starts on a Saturday, 7 nights" (= `stayInfo.package_rules`). **Cleared** |
+| unique | Level 1 and Level 3 filming "not listed" | Row removed from the comparison table. **Cleared** |
+| interactive, unique | Rosa request blocked → empty box | Blocked request now shows "See today's forecast for Kabalana on Rosa" (`probe.json rosa_blocked.link_visible: true`, `rosa-blocked-<v>.png`). **Cleared** |
+| interactive | WhatsApp first in DOM | Tab order now starts with the three fare rows. audit-mockup's `tapped` is now the Level 1 engine page. **Cleared** |
+
+## check-design default-look findings (facts)
+
+All three: 0 problems, 0 default-look warnings. Headings Barlow Condensed (interactive h2: Barlow), body Barlow, background `rgb(244,245,251)` = hsl(231 47% 97%) (cool white), 0 all-caps labels. Labelled headings: 0/13 (calm), 0/16 (interactive), 0/15 (unique).
+
+## Budget, playbook §4 (throttled phone, no scroll; `audit-<v>.json`)
+
+| Line | Target | calm | interactive | unique |
+|---|---|---|---|---|
+| First-load transfer | ≤ 1.5 MB | 284 KB | 553 KB | 268 KB |
+| JS | ≤ 300 KB | 0 | 0 external; inline ≈ 6 KB | 0 external; inline ≈ 3 KB |
+| Largest image | ≤ 200 KB | 79 KB | 119 KB | 132 KB |
+| Fonts | ≤ 2 families, 150 KB | 2 families, 107 KB (Google) | 2, 107 KB (Google) | 2, 86 KB (Google) |
+| LCP | ≤ 2.5 s | 600 ms | 576 ms | 600 ms |
+| CLS | < 0.1 | 0.045 | 0.068 | 0.018 |
+| Third-party on load | 0 | Google Fonts only (expected at 4e, tools.md) | same | same |
+
+Interactive's images on load rose from 367 KB in round 1 to 409 KB. No page overflows horizontally at 390.
+
+## Taps to book (`funnel.mjs --depth 1`) vs `audit.json.recommended` (engine, 1)
+
+| | clicks_to_book | primary class | CTA above fold | matches |
+|---|---|---|---|---|
+| calm | 1 | engine (`…/level-1-fomies`) | yes | yes |
+| interactive | 1 | engine | yes | yes |
+| unique | 1 | engine | yes | yes |
+
+Tap-through at 390 (`probe.json`): on all three, fare rows 1, 2 and 3 went to `…/level-1-fomies`, `…/level-2-rollers` and `…/level-3-riders`, identical to `booking.engine_products`. On calm and unique, WhatsApp and phone were tapped and landed on `wa.me/972523593240?text=…` and `tel:+97299733943`. On interactive the first six visible booking links the probe took were engine and Booking.com links; its WhatsApp and phone hrefs are identical in the DOM, and they were tapped in round 1. The persistent bar at 50 % scroll shows "Level 1 / Level 2 / Level 3 / WhatsApp" on all three. With JS off, the engine links are visible (15 / 12 / 15).
+
+## Facts table, round 2 (in full)
+
+| Page item | Dossier key | calm | inter. | unique |
+|---|---|---|---|---|
+| USD 1,466 per person, 7 nights, each level, tax incl., dorm | `offers[0..2].price`, `.samples`, `booking.engine_rules.price_type` | match | match | match |
+| Prices captured 28 September 2026 | `offers[].fetched_at` | match | match | match |
+| Google 4.7/5, 198 reviews, captured 28 Sep 2026 | `reviews.google` | match | match | match |
+| Booking.com 8.6/10, 80 reviews; staff 9.5 | `reviews.booking` | match | match | match |
+| 6 testimonials, verbatim, author, platform | `reviews.quotes[]` | match | match | match |
+| Engine product URLs ×3 | `booking.engine_products` | match | match | match |
+| WhatsApp, phone, email | `contact.whatsapp`, `.phone`, `.email` | match | match | match |
+| Address (Google, capitalised) | `location.address` | match | match | match |
+| Check-in 14:00–20:00, out by 11:00 | `stayInfo` | match | match | match |
+| 40 m / 350 m / ~2.5 h / shuttle extra | `location.distance_to_beach.others`, `location.getting_there` | match | match | match |
+| Season Oct–Apr, May–Sep low | `season.others[0]` | match | match | match |
+| Rooms (dorm 4 single beds, outdoor bath; shared twin 2, private bath) | `room_types`, copy `rooms[]` | match | match | match |
+| 5 guided (L1, L2) / coached (L3) 2-h sessions, 5 theory, 7 breakfasts, 5 dinners, excursion, 7 days equipment | `offers[0..2].includes_engine` / `includes_site` | match | match | match |
+| Level 2: 2 filmed or photographed sessions | `offers[1].includes_engine`, `includes_site` | match | match | match (not printed) |
+| Filming for Level 1 and Level 3 | `offers[0]`, `offers[2]` | not printed (gap left out) | not printed | not printed |
+| Start day: "Starts on a Saturday, 7 nights" | `stayInfo.package_rules`, `booking.engine_rules` | match | match | match |
+| "ISA-certified surf guides" | `credentials[0]` | match | match | match |
+| Rosa spot `kabalana`, widget `spot=kabalana&theme=light&units=metric` | `concepts.md` mapping | n/a | match | match |
+| Rosa headline (fixture, dated 21 Sep 20:30, never "now") | `agents/designer/fixtures/rosa-kabalana.json` | n/a | match | match (wind rounded 6.5 → 7 km/h) |
+
+18 of 18 applicable rows match on all three; 0 mismatches, 0 unsupported claims.
+
+## Rosa and embeds (hard constraint 9)
+
+| Check | calm | interactive | unique |
+|---|---|---|---|
+| Embeds | 0 | 1 | 1 |
+| Rosa on first load | — | none | none |
+| After scroll to the block | — | widget frame loads; CLS 0 | same |
+| Reserved space | — | 358 × 500 at 390 | same |
+| JS off | — | link visible | link visible |
+| Request to rosa.surf blocked | — | link visible | link visible |
+
+---
+
+```
+mode: quick        round: 2        variant: calm
+total: 86 / 100    result: pass     hard_fails: []
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 9 | 18/18 match (table above). Minus 1: Level 1 and Level 3 filming is left out of the page. It is a dossier gap (site and engine counts differ), so the reader can't learn those levels include it |
+| 2 | mobile + perf | 9 | 284 KB, LCP 600 ms, CLS 0.045, 0 JS, no overflow. Google Fonts |
+| 3 | booking CTA | 9 | 1 tap, engine, above fold. Every tap landed on the dossier URL. JS-off links work. The prefill does not name the chosen level |
+| 4 | brand fit | 8 | Unchanged from round 1 (`shots/critic-quick-r2/mobile-00.png`) |
+| 5 | copy | 8 | Copy unchanged. The new interface line is sourced |
+| 6 | accessibility | 7 | 0 images without alt, 0 contrast failures, visible focus. 16 of 28 tap targets under 44 px. No skip link |
+| 7 | security + delivery | 9 | Static, 0 scripts, relative URLs, lowercase names, 0 embeds. Google Fonts on load |
+
+---
+
+```
+mode: quick        round: 2        variant: interactive
+total: 83 / 100    result: pass     hard_fails: []
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 9 | 18/18 match. Same gap handling as calm |
+| 2 | mobile + perf | 8 | 553 KB (the heaviest; 409 KB of images on load), LCP 576 ms, CLS 0.068 (the highest). Google Fonts |
+| 3 | booking CTA | 9 | 1 tap, engine, above fold. Fare rows now first in DOM and tab order. Same prefill note as calm |
+| 4 | brand fit | 8 | The sign swings and the tabs work with arrow keys (`probe.json tabs_arrow`). WhatsApp is not on the phone's first screen (`mobile-00.png`) |
+| 5 | copy | 8 | Copy unchanged. Interface wording is sourced |
+| 6 | accessibility | 7 | 0 images without alt, 0 contrast failures, visible focus, working tablist. 20 of 31 tap targets under 44 px. No skip link |
+| 7 | security + delivery | 8 | Static, relative, lowercase, no CMS. Rosa lazy, reserved, fallback on JS off and on a blocked request. Google Fonts on load |
+
+---
+
+```
+mode: quick        round: 2        variant: unique
+total: 85 / 100    result: pass     hard_fails: []
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 9 | 18/18 match. Same gap handling as calm |
+| 2 | mobile + perf | 9 | 268 KB, LCP 600 ms, CLS 0.018, no overflow. The aerial (132 KB) is still pulled on first load by the lazy threshold. Google Fonts |
+| 3 | booking CTA | 9 | 1 tap, engine, above fold. Every tap landed on the dossier URL. Same prefill note as calm |
+| 4 | brand fit | 8 | Unchanged from round 1. WhatsApp and phone are on the phone's first screen |
+| 5 | copy | 8 | Copy unchanged. Interface wording is sourced |
+| 6 | accessibility | 7 | 0 images without alt, 0 contrast failures, focus shown (`.row:focus-visible .plate`). The reduced-motion canvas is hidden and static. 15 of 29 tap targets under 44 px. No skip link |
+| 7 | security + delivery | 8 | Static, relative, lowercase, no CMS. Rosa lazy, reserved, fallback on JS off and on a blocked request. Google Fonts on load |
+
+what the designer prompt got wrong (round 2): nothing new. The round-1 lessons stand: an empty or "not" cell in a comparison grid is a claim, and concept wording used as an interface label is still a checkable claim. Both were fixed in the pages, not in the prompt, so they belong in a learn-mode proposal.
+
+## Round 2 summary
+
+| variant | total | result | hard fails | first load | taps to book |
+|---|---|---|---|---|---|
+| calm | 86 | pass | 0 | 284 KB | 1 (engine) |
+| interactive | 83 | pass | 0 | 553 KB | 1 (engine) |
+| unique | 85 | pass | 0 | 268 KB | 1 (engine) |

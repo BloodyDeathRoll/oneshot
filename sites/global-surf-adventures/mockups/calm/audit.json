@@ -1,7 +1,7 @@
 {
  "slug": "global-surf-adventures",
  "variant": "calm",
- "measured_at": "2026-09-28T14:30:34.829Z",
+ "measured_at": "2026-09-28T14:44:18.234Z",
  "first_load": {
   "requests": 10,
   "hosts": [
@@ -13,16 +13,16 @@
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 290922,
-  "bytes_html": 38354,
+  "bytes_total": 290722,
+  "bytes_html": 38154,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 107508,
   "bytes_images": 145060,
   "largest_image_bytes": 79302,
-  "lcp_ms": 604,
-  "cls": 0.0449,
-  "dcl_ms": 307
+  "lcp_ms": 600,
+  "cls": 0.0445,
+  "dcl_ms": 308
  },
  "booking": {
   "external_booking_hrefs": [
@@ -80,7 +80,7 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 6552,
+  "text_length": 6545,
   "booking_links_reachable": 0,
   "visible_images": 11
  },
