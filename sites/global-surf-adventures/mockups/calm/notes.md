@@ -192,3 +192,43 @@ Versus the old lodge page: their own sunlit surf on the full first screen, then 
 | video requests, reduced motion, full scroll | 0 | — |
 
 check-design (file path): pass. funnel (file path): clicks_to_book 1, primary engine, CTA above the fold, 0 broken.
+
+---
+
+# Round 5 (after 4f round 4: visual-critic 7 "no idea of its own", experience-critic 8)
+
+## The signature: the deck
+
+Every chapter opens on the timber edge of the pool. A thin full-bleed strip, cut from the lodge's own photographs, shows a daybed platform over the water. Each strip is cropped to the same 8:1 band, and down the page the light moves through the day:
+- the page opens on the hero film, whose first shot is the sunlit pool deck;
+- **morning:** img-008, a yoga stretch on the deck edge, before "Pick your level";
+- **afternoon:** the full-screen still of two guests laughing on a daybed over the pool (img-017) carries "Footwear is discouraged. Chilling out is inescapable.";
+- **day:** img-009, bare feet on a red cushion on the platform, before "Twelve rooms";
+- **late afternoon:** img-075, beanbags on the deck beside the pool, before "What guests say";
+- **dusk:** the page closes on the dusk band, img-093, where the deck and pool are lit.
+
+It is one move, a photographic strip with no graphic device, and it is the concept's "one thing": the daybeds on dark timber over the long blue pool.
+
+How it differs from the other two variants, checked against their round-3/4 sheets:
+- unique's device is a live WebGL waterline refracting between scenes, and its feature is img-005. Calm uses no water surface as a device, and I moved its feature off img-005 to img-017.
+- interactive's device is the giant word "Kabalana" and a level stage.
+- Calm's strips are still photographs of the deck edge, and nothing moves.
+
+## look-log, round 12
+
+Old-site screenshots (`old-site-lodge-desktop-fold.png`, `old-site-home-mobile-fold.png`) and the unique/interactive sheets sat beside the sheets.
+- **Phone hero:** now full-bleed. The film fills the first screen, framed at 62 % so the surfer is inside the crop. The name sits at the top on a local shade, and the tagline, button and rating sit at the foot on a second local shade. I modelled this against all 41 frames of vid-009e at 390×844, using the brightest 5 % of background under each text box: name 9.6:1, tagline 8.2:1, rating 7.9:1. At 0.5 s on simulated 4G the inlined poster is already painted (`static/slow4g-0.5s-390.png`).
+- **Guests:** "What guests say", the 8.6 and Fanny's quote now share one screen (`static/guests-1440.png`). The category scores sit under the 8.6; three more quotes follow in three columns (a swipe row on the phone), with "Read all 80 reviews on Booking.com" directly under them. The phone gap before "The spot" is cut to 48 px.
+- **Feature line** on img-017: I cropped the image at the top to remove the air-conditioning unit. The line is white over a local shade on the pool. Measured against the image without the text, brightest 5 %: 5.8:1 at 1440, 7.6:1 at 390.
+
+Versus the old site: their own surf on the whole first screen at both widths, then the deck running through the page morning to dusk. It is clearly better at a glance and on the whole page, and it is distinct from unique and interactive.
+
+## measured, round 5
+
+| | phone 390 | desktop 1440 |
+|---|---|---|
+| first load, video excluded | 249 KB | 285 KB |
+| hero video after first paint | 1.36 MB | 2.59 MB |
+| video requests, reduced motion, full scroll | 0 | — |
+
+check-design (file path): pass, 0 failing. funnel (file path): clicks_to_book 1, primary engine, CTA above the fold, 0 broken.
