@@ -1,4 +1,4 @@
-version: 0.1.0
+version: 0.1.1
 
 # schemas/audit.md — `audit.json`, the auditor's output (PLAN.md §4 station 3b, proposal 007)
 
@@ -32,7 +32,7 @@ One file per business: `dossier/<slug>/audit.json`, beside `audit.md` (the same 
       "evidence": [
         { "type": "url", "value": "https://hotels.cloudbeds.com/reservation/0CGfsM#checkin=2024-04-21&checkout=2024-04-22" },
         { "type": "screenshot", "value": "funnel/landing-fold.png" },
-        { "type": "click_path", "value": ["/", "Book Now"] }
+        { "type": "click_path", "value": ["/", "Book Now"] }       // type ∈ url | screenshot | click_path | dossier (value = a dossier key path, e.g. "dossier.json#booking.path")
       ],
       "playbook_ref": "§5 booking path",
       "fix_in_new_site": "bookingLinks[0].url without a prefilled date; label 'Check rooms and prices'",
@@ -41,16 +41,19 @@ One file per business: `dossier/<slug>/audit.json`, beside `audit.md` (the same 
   ],
   "recommended": {                              // the funnel the new site should have, in schemas/site-content.md terms only
     "primary_action": "engine",                 // whatsapp | tel | engine — must equal dossier.booking.path
-    "primary_label": "Check rooms and prices",  // ≤ 60 chars, one verb, names what happens next
+    "primary_label": "Check rooms and prices",  // working label, ≤ 60 chars, names what happens next; the copywriter owns the final wording
     "secondary_actions": ["whatsapp"],          // only channels the dossier proves the owner answers
     "clicks_to_book": 1,                        // target the critic measures on the new site with tools/funnel.mjs
-    "above_fold": ["what and where", "price from", "primary action"],   // playbook §2 items that must be visible before a scroll, in order
-    "offer_framing": "rooms with a nightly price and what is included, then the link to live dates",
-    "closing": "Rates move with the dates. The listings show what is free.",
+    "above_fold": ["what_where", "price", "primary_action"],   // fixed terms, in order (table below)
+    "offer_framing": "room types and what is included, then the link to live dates",
+    "closing_intent": "send the reader to live dates and name the listings",   // what the last line must do; never the line itself
     "off_site": [                               // fixes outside the site; not built by us, offered as advice in the pitch
-      { "channel": "google_business_profile", "finding": "no website link on the listing", "advice": "add the new site URL" }
+      { "channel": "google_business_profile", "finding": "F5", "advice": "add the new site URL to the listing" }   // finding = an id in findings[]; the problem is not restated
     ]
   },
+  "built_site_gaps": [                          // only when the site already exists (auditor constraint 12); else []
+    { "recommended": "primary_label", "built": "Book now", "evidence": "sites/<slug>/final/shots/…" }
+  ],
   "not_measurable": ["conversion rate — no analytics access", "reply time — no owner contact in test mode"]
 }
 ```
@@ -59,14 +62,18 @@ One file per business: `dossier/<slug>/audit.json`, beside `audit.md` (the same 
 
 | Field | Rule |
 |---|---|
-| `scope` | `site` when `dossier.existing_site.url` is set and loads; `no_site` otherwise. In `no_site` scope `measured` is `null`, `findings[].area` is `offsite` only, and the audit says what the business pays for having no direct channel (commission is quoted only from a sourced page, never a guessed percentage). |
+| `scope` | `site` when `dossier.existing_site.url` is set and loads; `no_site` otherwise. In `no_site` scope `measured` is `null`, `funnel/walk.json` lists the pages walked, `findings[].area` is `offsite` only, and the audit shows what having no direct channel means for a visitor (a platform's cost only in its own quoted words). |
 | `recommended` | **Required in both scopes.** A business with no old site still gets its funnel designed here, from the dossier's booking path, the OTA/Google path a visitor takes today, and the type's lead order (playbook §2). The critic measures the built site against it either way. |
 | `measured` | Numbers come from `funnel/funnel.json` (`tools/funnel.mjs`). The auditor copies, never edits. If the tool failed, `measured.error` carries the message and no funnel finding is made from memory. |
 | `findings[].evidence` | ≥ 1 entry, and for `area: funnel \| cta \| mobile` at least one `screenshot` or `click_path`. A finding a reader cannot reproduce by opening the evidence is deleted, not softened. |
-| `findings[].severity` | `high` only when the evidence shows a booking blocked or a price/offer hidden; `medium` = extra taps, mislabelled or below-fold action, dead link on the path; `low` = wording, order, polish. |
-| `findings[].fix_in_new_site` | Expressed in `schemas/site-content.md` fields or the playbook's page structure. A fix the schema cannot hold is written under `recommended.off_site` or dropped; it is never a request for a new template feature. |
+| `findings[].severity` | `high` when the evidence shows a visitor who wants to book or ask **cannot**: the booking is blocked, a price or offer the business publishes is hidden from them, or there is no way to reach the business before paying (on site or off site). `medium` = extra taps, a mislabelled or below-fold action, a dead link on the path, an interstitial in front of the listing. `low` = wording, order, polish. |
+| `findings[].fix_in_new_site` | Expressed in `schemas/site-content.md` fields or the playbook's page structure. For an `offsite` finding: what the new site changes for that visitor, or `null` when it cannot help. Never a request for a new template feature. |
+| `findings[]` keys | exactly the keys in the example; free-text remarks go in an optional `notes` string, nothing else is added. |
 | `findings[].pitch_point` | `true` when the writer may cite it as "what visitors could not do before". Only `high` and `medium` with a screenshot qualify. |
 | `recommended.primary_action` | Must equal `dossier.booking.path`. The audit does not introduce a channel the owner does not monitor (playbook §5). |
+| `recommended.secondary_actions` | Only channels the business publishes itself for customers, or that reviewers in the dossier say they used (auditor constraint 6). Empty when none qualifies. |
+| `recommended.above_fold` | Ordered, from these terms only (playbook §2 questions): `what_where`, `level`, `price`, `included`, `spot`, `season`, `trust`, `languages`, `primary_action`. For OTA-only lodging `price` means a link to live dates, never a copied nightly rate (site-content "Live prices are not content"). |
+| `recommended.off_site[]` | `{ channel, finding, advice }`; `finding` is an id from `findings[]`. |
 | `recommended.clicks_to_book` | 1 when the primary action is WhatsApp or tel; ≤ 2 when it is an engine (the tap that leaves the site counts). The critic measures the built site against this. |
-| Numbers | No revenue, conversion or "X % more bookings" figures anywhere. The audit shows what a visitor can and cannot do; money claims need data we do not have. |
+| Numbers | No revenue, conversion or "X % more bookings" figures anywhere, and no computed commission. A platform's own words about what it charges may be quoted verbatim with URL and screenshot (auditor constraint 4). |
 | Not a fact source | Nothing in `audit.json` may appear on the site as content. The copyeditor treats a site sentence sourced to the audit as `unsourced`. |

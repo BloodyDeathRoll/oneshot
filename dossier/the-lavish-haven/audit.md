@@ -1,12 +1,12 @@
 This audit is not a fact source for the site: nothing below may appear on the site as content.
 
-# Audit — The Lavish Haven (run 2026-09-ahangama-02, auditor 0.1.0, 2026-09-28)
+# Audit — The Lavish Haven (run 2026-09-ahangama-02, auditor 0.1.0, 2026-09-28; migrated to 0.1.1 by hand)
 
 Scope: **no_site**. `existing_site.url` is null, so `tools/funnel.mjs` was not run as the measurement and `measured` is null. The path audited is the one a traveller takes today: Google Maps listing → Booking.com / Agoda / TripAdvisor, on a 390×844 phone viewport, logged out. Screenshots in `funnel/`.
 
 ## Findings
 
-- **F1 · medium · pitch** — On Booking.com the visitor cannot reach the hotel before booking: "Contacting the Property" says contact details come only after booking, and the page has no phone, email or WhatsApp. [funnel/booking-contacting-property.png](funnel/booking-contacting-property.png)
+- **F1 · high · pitch** — On Booking.com the visitor cannot reach the hotel before booking: "Contacting the Property" says contact details come only after booking, and the page has no phone, email or WhatsApp. [funnel/booking-contacting-property.png](funnel/booking-contacting-property.png)
 - **F2 · medium · pitch** — A visitor who wants to book direct finds no site, email or WhatsApp; Booking.com's own "Preferred Partner Program" section says the property "will pay us a higher commission if you make a booking". No rate is stated anywhere fetched. [funnel/booking-preferred-partner.png](funnel/booking-preferred-partner.png)
 - **F3 · medium · pitch** — The first phone screen of the Booking.com page is app banner, Booking header and a cookie dialog; the hotel photo is cut off and "Check availability" is below the first screen. [funnel/booking-fold.png](funnel/booking-fold.png), [funnel/booking-choose-dates.png](funnel/booking-choose-dates.png)
 - **F4 · medium** — The Agoda link opens on a phone with "We have even lower prices in our app!" over a placeholder image; no hotel name or photo on that screen. [funnel/agoda-fold.png](funnel/agoda-fold.png)
@@ -18,12 +18,12 @@ Scope: **no_site**. `existing_site.url` is null, so `tools/funnel.mjs` was not r
 1. Primary action: **engine** (= `dossier.booking.path`), `bookingLinks[0]` → Booking.com property page.
 2. Label: "Check dates and prices on Booking.com".
 3. Clicks to book: **1** (the tap that leaves the site).
-4. Secondary actions: none recorded as proven-answered; `contact.phone` sits in the footer contact block (playbook §3.9).
+4. Secondary actions: `tel` — the phone is on the business's own Google listing (auditor 0.1.1 constraint 6).
 5. Above the fold, in order: what and where (hotel, Ahangama, 2-minute walk to Kabalana Beach) → Booking.com rating with count and capture date → primary action.
 6. Offer: `rooms[]` with beds and sleeps, `amenities[]`, then `bookingLinks[]` to live dates; no nightly number.
 7. `bookingLinks[]` order: Booking.com, then Agoda.
 8. Closing (the line already decided for this site, site-content v0.5): "Rates move with the dates. The listings show what is free."
-9. Off-site advice: add the site URL to the Google listing; use one name across listings; fix the 166/1 vs 166/2 house number.
+8. Closing intent: send the reader to live dates and name the listings (the copywriter writes the line; this site already has one).
 10. No cookie wall, nothing covering the first screen (playbook §4).
 
 ## Not measured

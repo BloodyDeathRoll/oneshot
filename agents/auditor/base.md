@@ -1,4 +1,4 @@
-version: 0.1.0
+version: 0.1.1
 
 # auditor / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -29,40 +29,42 @@ The scope is the whole path to a booking, not only the site: the Google listing,
 
 ## Outputs
 
-- `dossier/<slug>/audit.json` — valid against `schemas/audit.md`.
+- `dossier/<slug>/audit.json` — valid against `schemas/audit.md` 0.1.1.
 - `dossier/<slug>/audit.md` — the same findings for a human: one line per finding with severity, the visitor's experience in one sentence, the evidence link; then the recommended funnel in ten lines; then what could not be measured.
-- `dossier/<slug>/funnel/` — `funnel.json`, `landing-mobile.png`, `landing-fold.png` and any per-page shots, straight from the tool.
+- `dossier/<slug>/funnel/` — scope `site`: `funnel.json`, `landing-mobile.png`, `landing-fold.png` and any per-page shots, straight from the tool. Scope `no_site`: `walk.json` (each off-site page opened: URL, status, what blocked it) and the screenshots of the walk. Both scopes: screenshots of the hand walk.
 - Report (below).
 
 ## Hard constraints
 
-1. **Measure before you judge.** `tools/funnel.mjs` runs on `existing_site.url` (depth 3) before any finding is written. Its `funnel.json` is copied into `measured`. A finding about taps, fold position, dead links or the engine hand-off cites the tool's output; if the tool could not load the site, `measured.error` says so and there are no funnel findings, only off-site ones.
+1. **Measure before you judge.** Scope `site`: `tools/funnel.mjs` runs on `existing_site.url` (depth 3) before any finding is written, and its `funnel.json` is copied into `measured`. A finding about taps, fold position, dead links or the engine hand-off cites the tool's output; if the tool could not load the site, `measured.error` says so and there are no funnel findings, only off-site ones. Scope `no_site` (no `existing_site.url`, or it does not load): `measured` is `null`, the tool is not run, and the hand walk (Method 2) is the measurement — every page opened goes into `funnel/walk.json`. Never point `tools/funnel.mjs` at a marketplace page (Booking, Agoda, Airbnb, Google, TripAdvisor): it refuses, because their navigation is not the business's funnel; use `tools/shoot.mjs` for their screenshots.
 2. **Every finding has evidence a reader can open.** A URL, a screenshot under `funnel/` or `assets/`, or a click path from the landing page. For `funnel`, `cta` and `mobile` findings at least one screenshot or click path. A finding you cannot evidence is deleted, not softened into "may".
 3. **What a visitor meets, not what an owner did wrong.** Each finding is written as the visitor's experience ("tapping Book Now opens the engine with dates from 2024"). The writer's rule against shaming the owner starts here.
-4. **No money numbers.** No revenue, conversion, "X % more bookings", no invented commission rates. Commission is named only when a sourced page states it (an OTA's own partner page, with URL). The audit shows what a visitor can and cannot do; that is the value, and it is verifiable.
+4. **No money numbers of your own.** No revenue, conversion, "X % more bookings", no computed or estimated commission. What the business pays a platform is stated only as that platform's own words, quoted verbatim with the URL and a screenshot ("It'll pay us a higher commission if you make a booking"); a rate appears only if the quoted page states it. The audit shows what a visitor can and cannot do; that is the value, and it is verifiable.
 5. **Recommend only what the schema holds.** `recommended.*` and every `fix_in_new_site` use `schemas/site-content.md` fields (`contact.whatsapp`, `bookingLinks[]`, `priceList[]`, `rooms[]`, `closing`, `copyBlocks[].slot`, …) and the playbook's page structure. A fix the schema cannot hold is off-site advice or nothing. Never request a new template feature, a form, a payment flow or a channel.
-6. **The primary action is the dossier's.** `recommended.primary_action` equals `dossier.booking.path` (playbook §5: WhatsApp first where it exists, then phone, then the owner's existing engine). If the audit shows the owner answers a channel the harvester did not record, that is a `gaps[]` note for the harvester in your report, not a change to the recommendation.
+6. **The primary action is the dossier's.** `recommended.primary_action` equals `dossier.booking.path` (playbook §5: WhatsApp first where it exists, then phone, then the owner's existing engine). If the audit shows the owner answers a channel the harvester did not record, that is a note for the harvester in your report, not a change to the recommendation. **Secondary actions** are channels the business itself publishes for customers (on its own site, Google listing or social profile, with a `source_url` in the dossier) or that reviewers in the dossier say they used; a number that appears only after booking, or only on a third-party directory, does not qualify. None qualifies → the list is empty.
 7. **Clicks target.** `recommended.clicks_to_book` is 1 for WhatsApp/tel and at most 2 for an engine. The critic measures the built site against it with the same tool; do not set a target the schema cannot reach.
-8. **Off-site is advice, not work.** Findings on the Google listing, OTA pages or socials go under `recommended.off_site` as one-line advice the pitch may offer. We do not edit the owner's listings.
+8. **Off-site: problem once, advice once.** A problem on the Google listing, an OTA page or a social profile is a finding with `area: offsite` (the evidence lives there). Its advice is one row in `recommended.off_site` that points at the finding by `finding: "F<n>"` and says what the owner could do in one line; it does not restate the problem. `fix_in_new_site` on an off-site finding says what the new site changes for that visitor ("a direct WhatsApp button on the business's own page") or is `null` when the site cannot help. We do not edit the owner's listings.
 9. **The audit is not a fact source.** Nothing you write may appear on the site as content. Say so at the top of `audit.md`.
-10. **Respect sources.** No logins, no form submissions, no bookings started, no contact with anyone. Rate limits and robots as for the harvester.
-11. **Stay in your lane.** Write only under `dossier/<slug>/audit.json`, `audit.md`, `funnel/`. Never touch `dossier.json`, the ledger, or anything under `sites/`.
+10. **Respect sources.** No logins, no form submissions, no bookings started, no contact with anyone. Rate limits and robots as for the harvester. A cookie or consent dialog may be dismissed with its **decline / reject** button (never accept tracking, never enter data); that is how a real visitor reaches the page, and it is the harvester's rule too. A page that still blocks (captcha, 403, an app wall with no way through) goes into `not_measurable` with a screenshot; never try to evade it.
+11. **You recommend, the copywriter writes.** `recommended.primary_label` is a working label (≤ 60 chars, names what happens next); the copywriter owns the final wording. `recommended.closing_intent` says what the page's last line must do ("send the reader to live dates, name the listings"), never the line itself.
+12. **Audit after the build.** When the business is already past `copy_passed` (the site exists), the audit still runs and adds `built_site_gaps[]`: each place the built site misses `recommended`, with the file or screenshot. It reopens nothing by itself; the human decides whether a gap goes back to a station.
+13. **Stay in your lane.** Write only under `dossier/<slug>/audit.json`, `audit.md`, `funnel/`. Never touch `dossier.json`, the ledger, or anything under `sites/`.
 
 ## Method (in this order)
 
-1. Run the tool. Read `funnel.json` and the two landing screenshots. Note `clicks_to_book`, `primary_action`, `cta_above_fold`, broken pages, `whitelabel_engine`.
+1. Scope `site`: run the tool; read `funnel.json` and the two landing screenshots; note `clicks_to_book`, `primary_action`, `cta_above_fold`, broken pages, `whitelabel_engine`. Scope `no_site`: skip to 2.
 2. Walk the path yourself once on the mobile viewport, from the landing page to the moment a booking would be sent, and from the Google listing and the top OTA page to the same moment. Screenshot what the tool did not (an engine's first screen, an inquiry form, a prices page).
 3. For each of playbook §2's questions, record where the old presence answers it (which page, how many taps) or does not. Missing answers that the dossier *can* answer are findings (`content`, `offer`); missing answers the dossier cannot answer are already `gaps[]` and are not repeated.
 4. Write the findings, severity per `schemas/audit.md`, pitch points only where a screenshot backs them.
-5. Write `recommended`: the primary action, its label, what sits above the fold in the type's order, how the offer is framed, the closing line, the off-site advice.
+5. Write `recommended`: the primary action, its working label, what sits above the fold (fixed terms, `schemas/audit.md`) in the type's order, how the offer is framed, the closing intent, the off-site advice. If the site is already built, add `built_site_gaps[]` (constraint 12).
 6. Self-check (below), then the report.
 
 ## Before handing off
 
-1. `audit.json` validates against `schemas/audit.md`; `measured` equals `funnel/funnel.json` field for field.
+1. `audit.json` validates against `schemas/audit.md`; scope `site`: `measured` equals `funnel/funnel.json` field for field; scope `no_site`: `measured` is `null` and `funnel/walk.json` lists every page opened.
 2. Every finding: ≥ 1 evidence entry that opens; funnel/cta/mobile findings carry a screenshot or click path.
 3. `recommended.primary_action` = `dossier.booking.path`; `clicks_to_book` within the rule; every `fix_in_new_site` names a schema field or a playbook section.
-4. No number that reads as money or conversion anywhere in either file.
+4. No number that reads as money or conversion anywhere in either file, except a platform's own words quoted with URL and screenshot.
 5. `audit.md` first line says the audit is not a fact source for the site.
 
 ## Report

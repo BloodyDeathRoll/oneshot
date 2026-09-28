@@ -2,7 +2,10 @@
 // tools/funnel.mjs — measure a site's booking funnel from a phone: how many taps from the landing
 // page to a real booking action, and whether that action is visible before the first scroll.
 //
-//   node tools/funnel.mjs <http(s)://url | file.html> [--out <dir>] [--depth 3] [--pages 30] [--shots]
+//   node tools/funnel.mjs <http(s)://url | file.html> [--out <dir>] [--depth 3] [--pages 30] [--shots] [--allow-ota]
+//
+// 0.1.1: English locale (sites and engines otherwise answer in the server's language); refuses
+// marketplace pages (Booking, Agoda, Airbnb, Google…) — their nav is not the business's funnel.
 //
 // Why: the scout and the auditor (proposal 007) both need "clicks to book" as a number a human can
 // verify, not an opinion. Every action found carries its page URL, its label, its position and
@@ -76,13 +79,20 @@ const TERMINAL = new Set(['whatsapp', 'tel', 'engine', 'dated_form']);
 
 await mkdir(out, { recursive: true });
 const browser = await chromium.launch();
-const ctx = await browser.newContext({ viewport: VIEWPORT, deviceScaleFactor: 2, isMobile: true, hasTouch: true, ignoreHTTPSErrors: true });
+const ctx = await browser.newContext({ viewport: VIEWPORT, deviceScaleFactor: 2, isMobile: true, hasTouch: true, ignoreHTTPSErrors: true, locale: 'en-US', extraHTTPHeaders: { 'Accept-Language': 'en-US,en;q=0.9' } });
 const page = await ctx.newPage();
 const consoleErrors = [];
 page.on('console', (m) => { if (m.type() === 'error') consoleErrors.push(m.text().slice(0, 200)); });
 
 const startHost = host(start);
 const whitelabelEngine = ENGINES.some((e) => startHost.includes(e.replace(/\.$/, '')));
+// OTA / marketplace pages are not a business's funnel: their own nav (sign-in, flights, cars) would be
+// classified as "engine". Refuse unless it is a white-label engine site the business uses as its site.
+const OTA_HOSTS = ['booking.com', 'agoda.com', 'airbnb.', 'hostelworld.com', 'expedia.', 'hotels.com', 'tripadvisor.', 'google.'];
+if (OTA_HOSTS.some((h) => startHost.includes(h.replace(/\.$/, ''))) && !flag('allow-ota')) {
+  console.error(`funnel.mjs: ${startHost} is a marketplace, not the business's site. Its navigation would be misread as booking actions. Screenshot it with tools/shoot.mjs instead (or pass --allow-ota for a raw inventory you will not score).`);
+  process.exit(3);
+}
 const queue = [{ url: start, depth: 0, via: null }];
 const seen = new Set([norm(start)]);
 const pages = [];
@@ -182,7 +192,7 @@ for (const p of pages) {
 }
 // Tapping an action on the landing page is itself one tap: clicks_to_book = depth + 1.
 const summary = {
-  tool: 'funnel.mjs', version: '0.1.0', measured_at: new Date().toISOString(),
+  tool: 'funnel.mjs', version: '0.1.1', measured_at: new Date().toISOString(),
   start_url: start, whitelabel_engine: whitelabelEngine, final_landing_url: landing?.final_url ?? null, landing_status: landing?.status ?? null,
   landing_error: landing?.error ?? null,
   viewport: VIEWPORT, viewport_meta: landing?.viewport_meta ?? false, landing_text_chars: landing?.text_chars ?? 0,
