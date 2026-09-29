@@ -1,4 +1,4 @@
-version: 0.6.0
+version: 0.6.1
 
 # playbook.md — what a great surf-business site is; shared by all agents.
 
@@ -103,6 +103,8 @@ Assume a mid-range Android, slow 4G dropping to 3G, metered data.
   - **Loading:** the widget is one of the page's at most two third-party embeds (§4). It and the headline's one request to the JSON are made only when the block scrolls near the viewport, never on first load, and are outside the first-load budget and the third-party-requests-on-load count below. Both halves have their space reserved with fixed dimensions, so nothing shifts when they arrive.
   - **Fallback:** with JavaScript off, with a request failed, or with data older than 24 h, the block shows a plain link — "See today's forecast for <spot> on Rosa" — never an empty box, never stale numbers shown as current.
   - One credit line, "Forecast for <spot> by Rosa", linking to the spot on Rosa. No cookies or trackers set by the site.
+
+- **Booking-engine data (2026-09-29, pending Shahar's confirmation; treated like the Rosa exception):** a site whose owner sells through an engine with a public, CORS-open API (Bookinglayer: `docs/bookinglayer.md`) may call it **only after the visitor interacts** with the booking section (chooses a level, dates or guests) — never on first load — to show live dates, rooms and totals. A build-time snapshot ("prices as of <date>") is always the fallback, and the hand-off is a plain link / GET form to the engine's deepest documented step, so everything works with JavaScript off. No guest data, holds or payment on our pages.
 
 **Performance budget, mobile home page (v0.1 target):**
 
