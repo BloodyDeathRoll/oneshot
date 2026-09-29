@@ -29,6 +29,27 @@ var q = new URLSearchParams(location.search);
 if (LEVELS[q.get('level')]) $('input[name=level][value="' + q.get('level') + '"]').checked = true;
 if (ROOMS[q.get('room')]) $('input[name=room][value="' + q.get('room') + '"]').checked = true;
 
+/* Saturday chips from the select's options, grouped by month */
+var sel = $('#f-start'), chips = $('[data-chips]');
+(function(){
+  var months = {};
+  $$('option', sel).forEach(function(o){ if (!o.value) return; var k = o.value.slice(0, 7); (months[k] = months[k] || []).push(o); });
+  Object.keys(months).forEach(function(k){
+    var m = document.createElement('div'); m.className = 'chips-m';
+    var t = new Date(k + '-01T12:00:00Z').toLocaleDateString('en-GB', {month: 'long', year: 'numeric', timeZone: 'UTC'});
+    m.innerHTML = '<p>' + t + '</p><div></div>';
+    months[k].forEach(function(o){
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'chip'; b.dataset.v = o.value;
+      b.textContent = 'Sat ' + (+o.value.slice(8)); b.setAttribute('aria-pressed', 'false'); b.setAttribute('aria-label', o.textContent);
+      b.addEventListener('click', function(){ sel.value = o.value; sel.dispatchEvent(new Event('change', {bubbles: true})); });
+      $('div', m).appendChild(b);
+    });
+    chips.appendChild(m);
+  });
+  chips.hidden = false; $('#l-chips').hidden = false; document.documentElement.classList.add('chips-on');
+})();
+function syncChips(){ $$('.chip', chips).forEach(function(b){ var o = $('option[value="' + b.dataset.v + '"]', sel); b.disabled = o.disabled; b.setAttribute('aria-pressed', sel.value === b.dataset.v ? 'true' : 'false'); }); }
+
 /* steppers */
 $$('.stp').forEach(function(w){
   var inp = $('input', w);
@@ -52,7 +73,7 @@ function show(k){
   media.forEach(function(m){
     var v = $('video', m); if (!v) return;
     if (m.dataset.m === want && !calm && booted) {
-      if (!v.dataset.ready) { v.dataset.ready = 1; var s = document.createElement('source'); if (innerWidth < 768) { s.src = v.dataset.mp; s.type = 'video/mp4'; } else { s.src = v.dataset.wb; s.type = 'video/webm'; } v.appendChild(s); v.load(); }
+      if (!v.dataset.ready) { v.dataset.ready = 1; [[v.dataset.webm, 'video/webm'], [v.dataset.mp4, 'video/mp4']].forEach(function(x){ var s = document.createElement('source'); s.src = x[0]; s.type = x[1]; v.appendChild(s); }); v.load(); }
       var p = v.play(); if (p) p.catch(function(){});
     } else if (!v.paused) v.pause();
   });
@@ -75,6 +96,7 @@ var band = $('.bk-media');
 function render(){
   var lv = level(), g = guests(), rm = room(), st = $('#f-start').value, n = nights();
   $$('[data-incl-list]').forEach(function(l){ l.hidden = l.dataset.inclList !== LEVELS[lv].n; });
+  syncChips();
   $('[data-s=level]').textContent = LEVELS[lv].name;
   $('[data-s=dates]').textContent = st ? fmt(st) + ' – ' + fmt(addDays(st, n)) + ' | ' + n + ' nights' : 'Choose a Saturday';
   var parts = []; if (g.female) parts.push(g.female + ' ' + (g.female === 1 ? 'woman' : 'women')); if (g.male) parts.push(g.male + ' ' + (g.male === 1 ? 'man' : 'men')); if (g.couple) parts.push(g.couple + ' ' + (g.couple === 1 ? 'couple' : 'couples'));
@@ -123,6 +145,7 @@ function refreshDates(){
       if (!o.value) return; var ok = d[o.value] ? d[o.value].choosable : false;
       o.disabled = !ok; o.textContent = o.textContent.replace(/ \| full$/, '') + (ok ? '' : ' | full');
     });
+    syncChips();
   }).catch(function(){ dateKey = ''; });
 }
 function refreshQuote(){
@@ -164,7 +187,7 @@ F.addEventListener('change', function(e){
 /* hand-off: GET to the engine's product with start, end (never duration) and the guest mix */
 F.addEventListener('submit', function(ev){
   var st = $('#f-start').value;
-  if (!st || !guests().n) { ev.preventDefault(); document.getElementById('step-dates').scrollIntoView({behavior: calm ? 'auto' : 'smooth'}); (st ? $('#f-female') : $('#f-start')).focus({preventScroll: true}); return; }
+  if (!st || !guests().n) { ev.preventDefault(); document.getElementById('step-dates').scrollIntoView({behavior: calm ? 'auto' : 'smooth'}); (st ? $('#f-female') : ($('.chip:not(:disabled)') || $('#f-start'))).focus({preventScroll: true}); return; }
   var e = document.createElement('input'); e.type = 'hidden'; e.name = 'end'; e.value = addDays(st, nights()); F.appendChild(e);
   ['#f-female', '#f-male', '#f-couple'].forEach(function(s){ var i = $(s); if (!(+i.value)) i.disabled = true; });
   setTimeout(function(){ ['#f-female', '#f-male', '#f-couple'].forEach(function(s){ $(s).disabled = false; }); e.remove(); }, 500);

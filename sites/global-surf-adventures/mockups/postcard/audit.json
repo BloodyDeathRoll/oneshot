@@ -1,9 +1,9 @@
 {
  "slug": "global-surf-adventures",
  "variant": "postcard",
- "measured_at": "2026-09-29T18:37:22.273Z",
+ "measured_at": "2026-09-29T19:14:29.719Z",
  "first_load": {
-  "requests": 11,
+  "requests": 14,
   "hosts": [
    "fonts.googleapis.com",
    "localhost:8980",
@@ -13,15 +13,15 @@
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 319628,
-  "bytes_html": 63935,
+  "bytes_total": 484910,
+  "bytes_html": 63420,
   "bytes_js": 5856,
-  "bytes_css": 26069,
-  "bytes_fonts": 113944,
-  "bytes_images": 109824,
-  "largest_image_bytes": 40580,
-  "lcp_ms": 752,
-  "cls": 0.0215,
+  "bytes_css": 28480,
+  "bytes_fonts": 130184,
+  "bytes_images": 256970,
+  "largest_image_bytes": 67174,
+  "lcp_ms": 764,
+  "cls": 0.0011,
   "dcl_ms": 818
  },
  "booking": {
@@ -54,15 +54,8 @@
   "images_without_alt": 0,
   "images_alt_empty_decorative": 1,
   "tapables": 67,
-  "tapables_under_44px": 37,
-  "tapables_under_44px_examples": [
-   " 128x39",
-   " 28x28",
-   " 28x28",
-   " 28x28",
-   " 28x28",
-   " 28x28"
-  ],
+  "tapables_under_44px": 0,
+  "tapables_under_44px_examples": [],
   "headings": [
    "H1",
    "H2",
@@ -90,7 +83,7 @@
  "no_js": {
   "text_length": 6026,
   "booking_links_reachable": 0,
-  "visible_images": 37
+  "visible_images": 39
  },
  "reduced_motion": {
   "canvases": 0,

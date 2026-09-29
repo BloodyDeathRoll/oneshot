@@ -141,7 +141,7 @@ SPRITE = f'''<svg width="0" height="0" style="position:absolute" aria-hidden="tr
 </g></svg>'''
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-         '<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">')
+         '<link href="https://fonts.googleapis.com/css2?family=Satisfy&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">')
 
 def head(pre, title, desc, extra=''):
     return f'''<!doctype html>
@@ -283,12 +283,13 @@ def home():
 
     waves = f"""<section class="sec" id="waves"><div class="wrap waves">
 <div><h2 class="script">{e(X['section_titles']['waves'])}</h2><p class="lead">{e(C['spot'])}</p>
-<div class="now">
-<div><div class="v">0.7–1.0<small>m</small></div><div class="k">Wave height, chest-high</div></div>
-<div><div class="v">14<small>s</small></div><div class="k">Swell from the SSW</div></div>
-<div><div class="v">7<small>km/h</small></div><div class="k">Wind, cross-shore</div></div>
+<div class="now" id="rosa-now" data-generated="2026-09-28T14:26:37+00:00" data-json="https://rosa-data-opal.vercel.app/data/spots/{ROSA_SPOT}.json">
+<div><div class="v" id="rosa-h">0.7–1.0<small>m</small></div><div class="k" id="rosa-hk">Wave height, chest-high</div></div>
+<div><div class="v" id="rosa-p">14<small>s</small></div><div class="k" id="rosa-pk">Swell from the SSW</div></div>
+<div><div class="v" id="rosa-w">7<small>km/h</small></div><div class="k" id="rosa-wk">Wind, cross-shore</div></div>
 </div>
-<p class="detail">Mon 28 Sep, 20:30<span class="sep">|</span><a class="credit" href="https://rosa.surf/spot/{ROSA_SPOT}">Forecast for {ROSA_NAME} by Rosa</a></p></div>
+<p class="rosa-link" id="rosa-plain" hidden><a class="btn btn-white" href="https://rosa.surf/spot/{ROSA_SPOT}">See today's forecast for {ROSA_NAME} on Rosa</a></p>
+<p class="detail" id="rosa-meta"><span id="rosa-time">Mon 28 Sep, 20:30</span><span class="sep">|</span><a class="credit" href="https://rosa.surf/spot/{ROSA_SPOT}">Forecast for {ROSA_NAME} by Rosa</a></p></div>
 <div class="rosa-box" data-rosa="https://rosa.surf/widget/?spot={ROSA_SPOT}&amp;theme=light&amp;units=metric" data-title="Rosa surf forecast - {ROSA_NAME}">
 <div class="fallback"><a class="btn btn-white" href="https://rosa.surf/spot/{ROSA_SPOT}">See today's forecast for {ROSA_NAME} on Rosa</a></div></div>
 </div></section>"""

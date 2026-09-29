@@ -211,3 +211,28 @@ Fixes, in the coordinator's order:
 Weights (phone, no scroll): home 0.78 MB without video (hero 1.39 MB after paint); booking page 0.38 MB + level clip after paint.
 Checks: `check-design` ok on both pages (0 problems, 0 warnings); `funnel` over http: clicks_to_book 1, CTA above fold true, 0 broken.
 Still open: Google Fonts on load (third-party; 4g self-hosts); the dates step on phones puts guests below the fold under the Saturday chips.
+
+---
+
+## Fix round 3 (visual 6.5, experience 7)
+
+**look-log, round 8** (`shots/round-8`, booking `shots/fix-book-2/`), beside old-site-home/lodge: title legibility was
+the one thing losing to the old site. Water Brush's "r" read as "ß". Tested 14 scripts on every title word (Our
+rooms, Your room, Surf, breakfast, surf again, Getting here, Dates and guests, Footwear is discouraged);
+**Satisfy** reads unambiguously and keeps an elegant hand (Postcard uses Caveat Brush, The Sign Damion — no
+overlap). The page now matches the old site's handwritten character and beats it on content and booking.
+
+1. Section, step, card, footer titles and the feature line: Satisfy (check-design: h2 "Satisfy", body "Figtree").
+2. Feature: img-016 (hair spray) → **img-005 cropped to the calm pool water** (object-position bottom; on phones
+   scaled 1.8× from the bottom so only water sits behind the line). Lodge slideshow drops 005, adds 073.
+3. Level video: the sources are YouTube 1080p at ~480 kbit/s, so no sharper original exists. Level 1 re-cut as
+   `vid-010c-d1728`: a 1728×972 crop at native pixels (no scaling, badge removed), 3.9 MB mp4 / 3.4 MB webm;
+   Levels 2–3 play d1920. The desktop stage is now video 7/12 + info 5/12 (video ≈ 625 css px, native pixels cover
+   it at 2× DPR for Levels 2–3, ≈1.4× for Level 1); phones play m1280 at 16:9.
+4. Hero CTA → "Book package now" (`ctas.hero_c1`) → `book/`.
+5. No header "Book now" over the video: phone header pill removed; desktop header CTA only after the hero;
+   phones get the persistent bottom bar after the hero.
+6. Desktop nav links 48 px tall. Measured: 0 visible targets under 44 px at 1440 and 390 (home and booking).
+
+Checks: check-design ok on both pages (0 problems, 0 warnings); funnel over http: CTA above fold true,
+clicks_to_book 1, 0 broken. Hand-off re-tested (JS on and off, couple, L2, 20–27 Feb): start/end, couple=1.

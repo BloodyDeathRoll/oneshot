@@ -4,12 +4,12 @@
 <title>Book your surf week | Global Surf Lodge Kabalana</title><meta name="description" content="Surf weeks for all levels on Sri Lanka's south coast, a few steps from the ocean.">
 <meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Water+Brush&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap" rel="stylesheet">
 <style>:root{
   --ground:#FFFFFF; --tint:#D9E9EC; --tint-soft:#EDF5F6; --ink:#0A1920; --ink-2:#3C4A52;
   --place:#008292; --book:#C8432F; --book-deep:#AD3825; --wa:#1FA855;
   --r:16px; --btn-r:10px; --gut:clamp(16px,4vw,48px); --max:1120px;
-  --serif:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif; --script:"Water Brush","Segoe Script",cursive;
+  --serif:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif; --script:"Satisfy","Segoe Script",cursive;
   --ease:cubic-bezier(.22,.7,.2,1);
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -27,7 +27,7 @@ svg.i{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-widt
 svg.f{fill:currentColor;stroke:none}
 
 /* ---------- script titles ---------- */
-.title{font-family:var(--script);font-weight:400;font-size:clamp(50px,6vw,74px);line-height:1;letter-spacing:0;margin:0 0 18px;color:var(--ink)}
+.title{font-family:var(--script);font-weight:400;font-size:clamp(42px,4.8vw,60px);line-height:1.15;letter-spacing:0;margin:0 0 18px;color:var(--ink)}
 .title.c{text-align:center}
 .lede{font-size:18.5px;color:var(--ink-2);max-width:640px}
 .lede.c{margin-inline:auto;text-align:center}
@@ -57,7 +57,7 @@ svg.f{fill:currentColor;stroke:none}
 .logo svg{width:132px;height:auto}
 .logo svg path,.logo svg polygon{fill:currentColor}
 .nav{display:flex;gap:30px;margin-left:auto;font-size:17px}
-.nav a{opacity:.92;padding:8px 0}
+.nav a{opacity:.92;display:inline-flex;align-items:center;min-height:48px}
 .nav a:hover{opacity:1}
 .hdr .btn-book{min-height:44px;padding:0 20px;font-size:16px;opacity:0;pointer-events:none;transform:translateY(-4px);transition:opacity .25s,transform .25s,background-color .2s}
 .hdr.solid{background:#fff;color:var(--ink)}
@@ -132,7 +132,7 @@ svg.f{fill:currentColor;stroke:none}
 /* ---------- footer ---------- */
 .foot{padding:80px 0 30px;background:var(--tint)}
 .foot-grid{display:grid;grid-template-columns:1.2fr .9fr 1.2fr;gap:56px;align-items:start}
-.foot h3{font-family:var(--script);font-weight:400;font-size:44px;line-height:1;margin:0 0 16px}
+.foot h3{font-family:var(--script);font-weight:400;font-size:36px;line-height:1.15;margin:0 0 16px}
 .foot .logo{color:var(--ink);margin-bottom:14px}
 .foot .logo svg{width:170px}
 .foot p{color:var(--ink-2);font-size:16.5px}
@@ -176,7 +176,7 @@ svg.f{fill:currentColor;stroke:none}
 @keyframes stepBack{from{opacity:0;transform:translateX(-56px)}to{opacity:1;transform:none}}
 .step-h{text-align:center;margin-bottom:22px}
 .step-h .count{font-size:15px;color:var(--ink-2);margin:0 0 2px}
-.step-h h1,.step-h h2{font-family:var(--script);font-weight:400;font-size:clamp(50px,5.4vw,68px);line-height:1;margin:0}
+.step-h h1,.step-h h2{font-family:var(--script);font-weight:400;font-size:clamp(40px,4.4vw,56px);line-height:1.15;margin:0}
 .step-h h1:focus,.step-h h2:focus{outline:none}
 .band{position:relative;height:clamp(240px,40vh,440px);border-radius:var(--r);overflow:hidden;background:#dfe3e6}
 .band .lv-clip,.band .lv-clip img,.band .lv-clip video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -186,7 +186,7 @@ svg.f{fill:currentColor;stroke:none}
 .lvsum{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px);margin-top:34px}
 .lvsum h3{font-family:var(--serif);font-weight:600;font-size:28px;letter-spacing:-.015em;margin:0 0 6px}
 .lvsum .one{font-size:18.5px;margin-bottom:12px}
-.lvsum h4{font-family:var(--script);font-weight:400;font-size:44px;line-height:1;margin:0 0 18px}
+.lvsum h4{font-family:var(--script);font-weight:400;font-size:36px;line-height:1.15;margin:0 0 18px}
 .lvsum .note{margin:20px 0 0;font-size:15.5px;color:var(--ink-2)}
 .lv-panel[hidden]{display:none}
 .no-js .lv-panel{margin-bottom:36px}
@@ -218,7 +218,7 @@ svg.f{fill:currentColor;stroke:none}
 .seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
 .fl.segf{padding-top:34px;padding-bottom:10px}
 .card{background:var(--tint-soft);border-radius:var(--r);padding:28px}
-.card h3{font-family:var(--script);font-weight:400;font-size:46px;line-height:1;margin:0 0 16px}
+.card h3{font-family:var(--script);font-weight:400;font-size:38px;line-height:1.15;margin:0 0 16px}
 .rows{margin:0;display:grid;gap:10px}
 .rows div{display:flex;justify-content:space-between;gap:18px;align-items:baseline}
 .rows dt{color:var(--ink-2)}
@@ -387,7 +387,6 @@ svg.f{fill:currentColor;stroke:none}
   <a class="logo" href="../" aria-label="Global Surf Lodge Kabalana, home"><svg width="128" height="39" viewBox="0 0 128 39" aria-hidden="true" focusable="false"><use href="#logo"/></svg></a>
   <nav class="nav" aria-label="Main"><a href="../#levels">Levels</a><a href="../#rooms">Rooms</a><a href="../#lodge">The lodge</a><a href="../#contact">Contact</a></nav>
   <a class="btn btn-soft btn-sm hdr-wa" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."><svg class="i f wa" aria-hidden="true"><use href="#i-wa"/></svg>Questions? Ask us</a>
-  
   <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg class="i" aria-hidden="true"><use href="#i-menu"/></svg></button>
 </div></header>
 <div class="sheet" id="menu" aria-hidden="true" role="dialog" aria-label="Menu">
@@ -409,8 +408,8 @@ svg.f{fill:currentColor;stroke:none}
   <video class="lv-vid" hidden muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true">
   <source data-src="../video/vid-010c-m1280.webm" data-media="(max-width: 900px)" type="video/webm">
   <source data-src="../video/vid-010c-m1280.mp4" data-media="(max-width: 900px)" type="video/mp4">
-  <source data-src="../video/vid-010c-d1600.webm" data-media="(min-width: 901px)" type="video/webm">
-  <source data-src="../video/vid-010c-d1600.mp4" data-media="(min-width: 901px)" type="video/mp4"></video></div><div class="lv-clip "><img class="vposter" src="../video/vid-003e-poster.webp" alt="A surfer in a blue rash vest rides a reef wave" loading="lazy" width="1280" height="720">
+  <source data-src="../video/vid-010c-d1728.webm" data-media="(min-width: 901px)" type="video/webm">
+  <source data-src="../video/vid-010c-d1728.mp4" data-media="(min-width: 901px)" type="video/mp4"></video></div><div class="lv-clip "><img class="vposter" src="../video/vid-003e-poster.webp" alt="A surfer in a blue rash vest rides a reef wave" loading="lazy" width="1280" height="720">
   <video class="lv-vid" hidden muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true">
   <source data-src="../video/vid-003e-m1280.webm" data-media="(max-width: 900px)" type="video/webm">
   <source data-src="../video/vid-003e-m1280.mp4" data-media="(max-width: 900px)" type="video/mp4">

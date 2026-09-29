@@ -31,9 +31,8 @@ var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
 var wide = matchMedia('(min-width: 1001px)');
 function ensure(vid){
   if (vid.dataset.ready) return; vid.dataset.ready = '1';
-  var s = document.createElement('source');
-  if (innerWidth < 768) { s.src = vid.dataset.m; s.type = 'video/mp4'; } else { s.src = vid.dataset.d; s.type = vid.dataset.dt; }
-  vid.appendChild(s); vid.load();
+  [[vid.dataset.webm, 'video/webm'], [vid.dataset.mp4, 'video/mp4']].forEach(function(x){ var s = document.createElement('source'); s.src = x[0]; s.type = x[1]; vid.appendChild(s); });
+  vid.load();
 }
 function playOnly(p){
   panels.forEach(function(q){

@@ -78,20 +78,43 @@
   $$('[data-show]').forEach((s) => { const tr = $('.show-track', s); rig(tr, [...tr.children], $('.dots', s), $('.prev', s), $('.next', s)); });
   $$('[data-row]').forEach((r) => rig(r, [...r.children], r.nextElementSibling));
 
-  // ---- Rosa widget: only when its block nears the viewport; reserved box; plain-link fallback stays underneath
-  $$('[data-rosa]').forEach((box) => {
-    const load = () => {
+  // ---- Rosa (playbook §4): one lazy request to the spot JSON when the block nears the viewport.
+  // Data older than 24 h, or no answer: the headline and the widget give way to the plain link.
+  const box = $('[data-rosa]'), now = $('#rosa-now');
+  if (box && now && 'IntersectionObserver' in window) {
+    const DAY = 864e5, fresh = (iso) => Date.now() - new Date(iso).getTime() <= DAY;
+    const pts = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];
+    const compass = (d) => pts[Math.round(((d % 360) + 360) % 360 / 22.5) % 16];
+    const plain = () => { now.hidden = true; $('#rosa-meta').hidden = true; $('#rosa-plain').hidden = false; box.classList.add('off'); };
+    const widget = () => {
       const f = document.createElement('iframe');
       f.src = box.dataset.rosa; f.title = box.dataset.title; f.loading = 'lazy';
       f.referrerPolicy = 'strict-origin-when-cross-origin';
       f.setAttribute('sandbox', 'allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin');
       f.style.cssText = 'position:relative;z-index:1';
       box.style.position = 'relative';
-      const fb = $('.fallback', box); fb.style.cssText = 'position:absolute;inset:0;display:grid;place-items:center';
+      $('.fallback', box).style.cssText = 'position:absolute;inset:0;display:grid;place-items:center';
       box.appendChild(f);
     };
-    if (!('IntersectionObserver' in window)) return;
-    const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); load(); } }, { rootMargin: '300px' });
+    const draw = (j) => {
+      const c = j.current, sw = (c.swells || []).find((x) => x.in_window);
+      const h = c.h.map((x) => x.toFixed(1)).join('–');
+      $('#rosa-h').innerHTML = `${h}<small>m</small>`; $('#rosa-hk').textContent = `Wave height, ${c.phrase}`;
+      if (sw) { $('#rosa-p').innerHTML = `${Math.round(sw.period)}<small>s</small>`; $('#rosa-pk').textContent = `Swell from the ${compass(sw.dir)}`; }
+      $('#rosa-w').innerHTML = `${Math.round(c.wind.kph)}<small>km/h</small>`; $('#rosa-wk').textContent = `Wind, ${c.wind.class}`;
+      const t = new Date(c.t);
+      $('#rosa-time').textContent = t.toLocaleString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Colombo' }).replace(',', '').replace('Sept', 'Sep');
+    };
+    const go = async () => {
+      if (fresh(now.dataset.generated)) { widget(); return; }
+      try {
+        const c = new AbortController(); setTimeout(() => c.abort(), 8000);
+        const r = await fetch(now.dataset.json, { signal: c.signal }); if (!r.ok) throw 0;
+        const j = await r.json(); if (!j.current || !fresh(j.generated_at)) throw 0;
+        draw(j); widget();
+      } catch (e) { plain(); }
+    };
+    const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); go(); } }, { rootMargin: '300px' });
     io.observe(box);
-  });
+  }
 })();

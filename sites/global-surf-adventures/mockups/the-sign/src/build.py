@@ -96,7 +96,7 @@ def incl_list(level, hidden=False, cls='ilist'):
 
 def quotes():
     src = {'booking': 'Booking.com', 'other': 'globalsurf.com'}
-    return '\n'.join(f'<blockquote class="quote"><p>“{e(t["quote"])}”</p><footer><strong>{e(t["author"])}</strong> | on {src[t["source"]]}</footer></blockquote>' for t in COPY['testimonials'])
+    return '\n'.join(f'<blockquote class="quote"><p>“{e(t["quote"])}”</p><footer><strong>{e(t["author"])}</strong> | on {src[t["source"]]}</footer></blockquote>' for t in COPY['testimonials'] if t['source'] == 'booking')
 
 def footer(prefix=''):
     c = COPY['contact']; S = X['socials']; C = X['ctas']

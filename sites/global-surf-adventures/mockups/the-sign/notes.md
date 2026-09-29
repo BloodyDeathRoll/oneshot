@@ -56,6 +56,31 @@ The old site was open beside this round.
   - Hand-off with JS on: `…/level-2-rollers?start=2027-02-13&couple=1&end=2027-02-20`, with a live total of $3,092.05.
 - **Against the old site:** calmer and closer to its tasteful white-plus-script look, but with the lodge's own footage, prices, sold rooms and a working booking desk. Clearly better at a glance.
 
+### Round 7: polish after the r2 re-score (`shots/round-7/`, `shots/round-7-book/`)
+The old site was open beside this round.
+- **Level footage:** new 4:5 portrait cuts at 864×1080. I made them in `dist/video/` with ffmpeg; they are derivatives and not in `dossier.videos[]`. Each is a centre crop of the 1080 p source with no upscaling, used on both phone and desktop; phones previously got the 720×406 rendition upscaled. The poster JPGs are extracted at q3.
+  - `vid-010-p45`: from `vid-010-source.mp4`, 20–29 s, the golden-hour stand-up; webm 1.9 MB.
+  - `vid-003e-p45`: from 1.4 s, which trims the opening frames with the dark rock; webm 1.27 MB.
+  - `vid-002e-p45`: webm 0.94 MB.
+  - Removed: the old m720/m1280/d1920 level renditions and the CSS zoom.
+- **Closing band:** a short script line, "All levels, steps from the beach" (`hero.subtitle`, approved copy). Under it, the closing sentence at 18 px and 460 px wide, then the buttons, all centred. The photo is framed low (pool, not palm fronds) and darkened to .5.
+- **Confident middle section:** "What guests say" is now a full-bleed img-023 (guests toasting), darkened, with white text. A navy band would put more than a third of the viewport of dark ground behind text, which `check-design` fails. A darkened photograph counts as a picture, not a dark theme.
+- **Length:** the phone page went from 15.3k to 12.3k px in these shots; the critic measured 14,374 before.
+  - The second photo pair of the week is gone (the bowl and the toast; the toast moved to the reviews).
+  - On phones the level cards became a swipe row with dots.
+  - Section padding on phones is tighter.
+  - The reviews show only the 7 Booking.com reviews; the two dropped are testimonials from globalsurf.com. At 44 px each, 9 dots can't fit a 390 px phone.
+- **Booking level cards:** each has a 76×95 thumbnail from its clip.
+- **Room selection:** the photos, text and tick now sit in one card. The selected card turns a light blue-grey (`#D6E1EA`) with an ink tick. I tried navy first, but on the phone the navy card is taller than a third of the screen and `check-design` fails it ("dark ground behind text").
+- **Check-in:** with JS, Saturday date chips grouped by month, built from the select's options (the same snapshot). Chips the live calendar marks full are disabled. Without JS, the native select and the check-out select remain.
+- **Tap targets:** 0 targets under 44 px measured at 390 px on both pages. The review dots are now 7 × 44 px.
+- **Checks:**
+  - `check-design`: ok on both pages.
+  - `funnel`: clicks_to_book 1, CTA above the fold, 0 broken.
+  - Hand-off with JS on (chip Sat 13 Feb, 1 couple, Level 2): `…/level-2-rollers?start=2027-02-13&couple=1&end=2027-02-20`, live total $3,092.05.
+  - Hand-off with JS off: `…/level-2-rollers?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1`.
+  - No video is visible with JS off.
+
 ## Tested (Playwright, 1440 and 390)
 
 - **First load:** 0 requests to Bookinglayer.

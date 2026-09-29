@@ -2,7 +2,7 @@
   --ground:#FFFFFF; --tint:#D9E9EC; --tint-soft:#EDF5F6; --ink:#0A1920; --ink-2:#3C4A52;
   --place:#008292; --book:#C8432F; --book-deep:#AD3825; --wa:#1FA855;
   --r:16px; --btn-r:10px; --gut:clamp(16px,4vw,48px); --max:1120px;
-  --serif:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif; --script:"Water Brush","Segoe Script",cursive;
+  --serif:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif; --script:"Satisfy","Segoe Script",cursive;
   --ease:cubic-bezier(.22,.7,.2,1);
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -20,7 +20,7 @@ svg.i{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-widt
 svg.f{fill:currentColor;stroke:none}
 
 /* ---------- script titles ---------- */
-.title{font-family:var(--script);font-weight:400;font-size:clamp(50px,6vw,74px);line-height:1;letter-spacing:0;margin:0 0 18px;color:var(--ink)}
+.title{font-family:var(--script);font-weight:400;font-size:clamp(42px,4.8vw,60px);line-height:1.15;letter-spacing:0;margin:0 0 18px;color:var(--ink)}
 .title.c{text-align:center}
 .lede{font-size:18.5px;color:var(--ink-2);max-width:640px}
 .lede.c{margin-inline:auto;text-align:center}
@@ -50,7 +50,7 @@ svg.f{fill:currentColor;stroke:none}
 .logo svg{width:132px;height:auto}
 .logo svg path,.logo svg polygon{fill:currentColor}
 .nav{display:flex;gap:30px;margin-left:auto;font-size:17px}
-.nav a{opacity:.92;padding:8px 0}
+.nav a{opacity:.92;display:inline-flex;align-items:center;min-height:48px}
 .nav a:hover{opacity:1}
 .hdr .btn-book{min-height:44px;padding:0 20px;font-size:16px;opacity:0;pointer-events:none;transform:translateY(-4px);transition:opacity .25s,transform .25s,background-color .2s}
 .hdr.solid{background:#fff;color:var(--ink)}
@@ -125,7 +125,7 @@ svg.f{fill:currentColor;stroke:none}
 /* ---------- footer ---------- */
 .foot{padding:80px 0 30px;background:var(--tint)}
 .foot-grid{display:grid;grid-template-columns:1.2fr .9fr 1.2fr;gap:56px;align-items:start}
-.foot h3{font-family:var(--script);font-weight:400;font-size:44px;line-height:1;margin:0 0 16px}
+.foot h3{font-family:var(--script);font-weight:400;font-size:36px;line-height:1.15;margin:0 0 16px}
 .foot .logo{color:var(--ink);margin-bottom:14px}
 .foot .logo svg{width:170px}
 .foot p{color:var(--ink-2);font-size:16.5px}

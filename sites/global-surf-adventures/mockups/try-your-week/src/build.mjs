@@ -58,7 +58,7 @@ const LV = [
     aria: 'A surfer rides deep in a right-hand barrel' },
 ];
 LV.forEach((l, k) => { l.label = C.lessons[k].label; l.one = X.levels[k].one_liner; l.cta = X.ctas['level_' + l.n]; });
-const DT = { 'vid-010c': 'd1600', 'vid-003e': 'd1920', 'vid-002e': 'd1920' };
+const DT = { 'vid-010c': 'd1728', 'vid-003e': 'd1920', 'vid-002e': 'd1920' };
 const vidEl = (l, R, cls = '') => `<div class="lv-clip ${cls}"><img class="vposter" src="${R}video/${l.vid}-poster.webp" alt="${esc(l.aria)}" loading="lazy" width="1280" height="720">
   <video class="lv-vid" hidden muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true">
   <source data-src="${R}video/${l.vid}-m1280.webm" data-media="(max-width: 900px)" type="video/webm">
@@ -105,7 +105,6 @@ function header(R, book) {
   <nav class="nav" aria-label="Main">${nav}</nav>
   ${book ? `<a class="btn btn-soft btn-sm hdr-wa" href="${wa}">${ic('wa', 'i f wa')}${esc(X.ctas.whatsapp)}</a>`
          : `<a class="btn btn-book" href="${R}book/">${esc(X.ctas.header_and_bar)}</a>`}
-  ${book ? '' : `<a class="btn btn-book btn-sm mbook" href="${R}book/">${esc(X.ctas.header_and_bar)}</a>`}
   <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu">${ic('menu')}</button>
 </div></header>
 <div class="sheet" id="menu" aria-hidden="true" role="dialog" aria-label="Menu">
@@ -147,7 +146,7 @@ function footer(R) {
 </div></footer>`;
 }
 const fonts = `<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Water+Brush&display=swap" rel="stylesheet">`;
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap" rel="stylesheet">`;
 const page = (R, title, desc, pageCss, body, pageJs) => `<!doctype html>
 <html lang="en" class="no-js"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -183,7 +182,8 @@ const homeCss = `
 .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(40px,5vw,66px);line-height:1.05;letter-spacing:-.025em;margin:0}
 .hero p{font-size:clamp(18px,1.5vw,21px);margin:12px 0 30px;font-weight:500}
 .hero .btn{text-shadow:none;min-width:220px;box-shadow:0 8px 28px rgba(0,0,0,.18)}
-.stage-wrap{max-width:960px;margin:0 auto}
+.stage-wrap{max-width:1120px;margin:0 auto}
+@media (min-width:901px){.lv-panel{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:center}.lv-panel .incl{grid-column:1/-1}.lv-info{grid-template-columns:1fr!important;padding:0!important;gap:22px!important}.lv-info h3{font-size:28px!important}}
 .lv-panels{display:grid}
 .lv-panel{grid-area:1/1;transition:opacity .4s var(--ease),visibility .4s}
 .js .lv-panel[aria-hidden="true"]{opacity:0;visibility:hidden}
@@ -213,7 +213,8 @@ const homeCss = `
 .feature::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 50% 40% at 50% 50%,rgba(8,20,28,.32),rgba(8,20,28,0) 100%);pointer-events:none}
 .closing::after{content:"";position:absolute;inset:0;background:rgba(6,16,22,.52);pointer-events:none}
 .feature p,.closing .in{z-index:2}
-.feature p{position:relative;font-family:var(--script);font-size:clamp(44px,5.4vw,76px);line-height:1.05;max-width:900px;margin:0;padding:0 var(--gut);text-shadow:0 2px 26px rgba(0,0,0,.45)}
+.feature img.calm{object-position:50% 100%}
+.feature p{position:relative;font-family:var(--script);font-size:clamp(40px,4.6vw,64px);line-height:1.15;max-width:880px;margin:0;padding:0 var(--gut);text-shadow:0 2px 26px rgba(0,0,0,.45)}
 .lodge-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,72px);align-items:center}
 .am{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:14px 28px}
 .am li{display:flex;gap:12px;align-items:flex-start;font-size:16.5px;line-height:1.35}
@@ -272,6 +273,7 @@ const homeCss = `
   .lv-info .detail{white-space:normal}
   .feature{height:auto;aspect-ratio:4/5;min-height:0}
   .feature img{object-position:40% 50%}
+  .feature img.calm{object-position:50% 100%;transform:scale(1.8);transform-origin:50% 100%}
 }
 @media (min-width:701px){.lvx::before{content:""}}
 `;
@@ -290,7 +292,7 @@ ${header('', false)}
   <div class="hero-in">
     <h1>${esc(X.hero.title_c2)}</h1>
     <p>${esc(X.hero.subtitle)}</p>
-    <a class="btn btn-book" href="book/">${esc(X.ctas.hero_c2)}</a>
+    <a class="btn btn-book" href="book/">${esc(X.ctas.hero_c1)}</a>
   </div>
 </section>
 
@@ -340,7 +342,7 @@ ${header('', false)}
 </section>
 
 <section class="feature" aria-label="${esc(C.featureLine)}">
-  ${img('016', { sizes: '100vw', big: true })}
+  ${img('005', { sizes: '100vw', cls: 'calm' })}
   <p>${esc(C.featureLine)}</p>
 </section>
 
@@ -348,7 +350,7 @@ ${header('', false)}
  <div class="wrap">
   <div class="sec-head"><h2 class="title c" id="lo-title">${esc(X.section_titles.lodge)}</h2><p class="lede c">${esc(tw2)}</p></div>
   <div class="lodge-grid">
-    ${slides(['005', '075', '077', '026', '061', '093'], 'Photo of the lodge', { sizes: '(max-width: 900px) 100vw, 640px' })}
+    ${slides(['075', '073', '077', '026', '061', '093'], 'Photo of the lodge', { sizes: '(max-width: 900px) 100vw, 640px' })}
     <ul class="am">${C.amenities.map((a) => `<li>${ic(AM[a.label] || 'check')}<span>${esc(a.label)}${a.note ? `<small>${esc(a.note)}</small>` : ''}</span></li>`).join('')}</ul>
   </div>
  </div>

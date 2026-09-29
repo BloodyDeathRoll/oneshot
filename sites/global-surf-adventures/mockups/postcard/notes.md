@@ -97,3 +97,15 @@ look-log, one round beside the old site (`shots/r2-round-1..3`, `r2-round-2-book
 - Vs old site: first screen and whole page now clearly better — same bones (video, centred title, coral button, brush titles, distinct sections, Instagram strip, footer) with prices, levels with footage and sold rooms.
 
 Checks: check-design ok on home and (root copy of) book page, 0 problems; funnel unchanged (clicks_to_book 1, CTA above fold, primary reported as whatsapp for the reason in conflicts 5).
+
+## Round 3 (visual 7, experience 8)
+
+Shots: `shots/r3-round-1/` (+ `vs-old-*.png`, `closing-d/m.png`, `waves-390.png`, `waves-blocked-390.png`), `shots/r3-round-1-book/`.
+- **Watermark:** img-104 (group walking to the water) re-cropped to 1700×1133 from (170,200), removing the Global Surf badge top-left; all its renditions replaced.
+- **Closing:** a flatter, lower crop of img-093 (bottom-aligned, band 500 px min) with a flat 42 % dark tone on the photo only (not on video) and a stronger soft shadow; text and both buttons centred and readable at 1440 and 390. Conflict note: custom.md's "no decorative gradients" — this is a flat legibility tone on a photograph, which the visual critic asked for.
+- **Script face:** Satisfy (a fine slanted brush, closest open face to globalsurf.com's "Our Destinations") replaces Caveat Brush. Not used by the sibling mockups (Water Brush, Damion).
+- **Hero title:** DM Sans 600 at a text optical size (opsz 14, the display optical size is what tightened it), +0.012em tracking.
+- **Rosa (playbook §4):** the inlined fixture is kept only if ≤ 24 h old; otherwise one lazy request to the spot JSON when the block nears the viewport. Fresh → headline redrawn (e.g. "Tue 29 Sep 20:30", 0.6–0.9 m) and the widget loads; stale or no answer → headline and the 500 px box collapse to the plain "See today's forecast for South Point on Rosa" button (text wraps, no clipping). Tested with the network blocked. With JS off the box is not reserved (the link only).
+- **Calendar popover** now fits the column exactly (24–366 px at 390).
+- **One action at the total step:** the phone bar hides while any part of step 4 is on screen.
+- check-design ok (home and booking page), funnel unchanged.

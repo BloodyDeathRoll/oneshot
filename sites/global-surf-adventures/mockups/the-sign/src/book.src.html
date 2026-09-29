@@ -38,9 +38,9 @@
 
 <main id="main" class="bk">
   <div class="bk-media" aria-hidden="true">
-    <div class="m on" data-m="level-1-fomies" style="background:url(video/vid-010-poster.jpg) center/cover"><video muted loop playsinline preload="none" poster="video/vid-010-poster.jpg" data-mp="video/vid-010-m720.mp4" data-wb="video/vid-010-d1920.webm"></video></div>
-    <div class="m" data-m="level-2-rollers" style="background:url(video/vid-003e-poster.jpg) center/cover"><video muted loop playsinline preload="none" poster="video/vid-003e-poster.jpg" data-mp="video/vid-003e-m720.mp4" data-wb="video/vid-003e-d1920.webm"></video></div>
-    <div class="m" data-m="level-3-riders" style="background:url(video/vid-002e-poster.jpg) center/cover"><video muted loop playsinline preload="none" poster="video/vid-002e-poster.jpg" data-mp="video/vid-002e-m720.mp4" data-wb="video/vid-002e-d1920.webm"></video></div>
+    <div class="m on" data-m="level-1-fomies" style="background:url(video/vid-010-p45-poster.jpg) center/cover"><video muted loop playsinline preload="none" poster="video/vid-010-p45-poster.jpg" data-webm="video/vid-010-p45.webm" data-mp4="video/vid-010-p45.mp4"></video></div>
+    <div class="m" data-m="level-2-rollers" style="background:url(video/vid-003e-p45-poster.jpg) center/cover"><video muted loop playsinline preload="none" poster="video/vid-003e-p45-poster.jpg" data-webm="video/vid-003e-p45.webm" data-mp4="video/vid-003e-p45.mp4"></video></div>
+    <div class="m" data-m="level-3-riders" style="background:url(video/vid-002e-p45-poster.jpg) center/cover"><video muted loop playsinline preload="none" poster="video/vid-002e-p45-poster.jpg" data-webm="video/vid-002e-p45.webm" data-mp4="video/vid-002e-p45.mp4"></video></div>
     <div class="m" data-m="room"><img src="img/img-063-1600.webp" width="1600" height="1067" alt="" loading="lazy"></div>
     <div class="m" data-m="dates"><img src="img/img-001-1600.webp" width="1600" height="1066" alt="" loading="lazy"></div>
     <div class="m" data-m="total"><img src="img/img-093-1536.webp" width="1536" height="1023" alt="" loading="lazy"></div>
@@ -53,11 +53,11 @@
       <h1 class="script" id="t-level">Your level</h1>
       <div class="picks" role="radiogroup" aria-labelledby="t-level">
         <label class="pick"><input type="radio" name="level" value="level-1-fomies" form="none" checked>
-          <span class="pick-t"><strong>Level 1 – Fomies</strong><span>Your first time on a board. No experience needed.</span><span class="detail">From $1,466 pp | 7 nights</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></label>
+          <img class="pick-th" src="video/vid-010-p45-poster.jpg" width="864" height="1080" alt="" loading="lazy"><span class="pick-t"><strong>Level 1 – Fomies</strong><span>Your first time on a board. No experience needed.</span><span class="detail">From $1,466 pp | 7 nights</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></label>
         <label class="pick"><input type="radio" name="level" value="level-2-rollers" form="none">
-          <span class="pick-t"><strong>Level 2 – Rollers</strong><span>You can stand up. Now catch green waves.</span><span class="detail">From $1,466 pp | 7 nights</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></label>
+          <img class="pick-th" src="video/vid-003e-p45-poster.jpg" width="864" height="1080" alt="" loading="lazy"><span class="pick-t"><strong>Level 2 – Rollers</strong><span>You can stand up. Now catch green waves.</span><span class="detail">From $1,466 pp | 7 nights</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></label>
         <label class="pick"><input type="radio" name="level" value="level-3-riders" form="none">
-          <span class="pick-t"><strong>Level 3 – Riders</strong><span>Already carving? Get sharper, on whichever spot is best that day.</span><span class="detail">From $1,466 pp | 7 nights</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></label>
+          <img class="pick-th" src="video/vid-002e-p45-poster.jpg" width="864" height="1080" alt="" loading="lazy"><span class="pick-t"><strong>Level 3 – Riders</strong><span>Already carving? Get sharper, on whichever spot is best that day.</span><span class="detail">From $1,466 pp | 7 nights</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></label>
       </div>
       <div class="free-s">
         <p><strong>Freestylers – B&amp;B only</strong> | from 4 nights<br><span class="small">For independent travellers who want the lodge's vibe.</span></p>
@@ -80,7 +80,9 @@
     <section class="step" id="step-dates" data-media="dates" aria-labelledby="t-dates">
       <p class="step-n">Step 3 of 4</p>
       <h2 class="script" id="t-dates">Dates and guests</h2>
-      <div class="fl has">
+      <p class="chips-l" id="l-chips" hidden>Check-in (Saturdays)</p>
+      <div class="chips" data-chips role="group" aria-labelledby="l-chips" hidden></div>
+      <div class="fl has" id="w-start">
         <select id="f-start" name="start">
           <option value="">Choose a Saturday</option>
           <option value="2026-10-03">Sat 3 Oct 2026</option>

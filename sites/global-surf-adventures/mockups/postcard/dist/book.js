@@ -13,7 +13,7 @@
   const iso = (d) => d.toISOString().slice(0, 10);
   const dt = (s) => new Date(s + 'T00:00:00Z');
   const addDays = (s, n) => { const d = dt(s); d.setUTCDate(d.getUTCDate() + n); return iso(d); };
-  const fmtD = (s, y = true) => dt(s).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: y ? 'numeric' : undefined, timeZone: 'UTC' }).replace(',', '');
+  const fmtD = (s, y = true) => dt(s).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: y ? 'numeric' : undefined, timeZone: 'UTC' }).replace(',', '').replace('Sept', 'Sep');
   // cents only on a live quote; snapshot and "from" figures are whole dollars
   const money = (x) => { const c = live.status === 'live'; const r = c ? Math.round(x * 100) / 100 : Math.round(x); return '$' + r.toLocaleString('en-US', { minimumFractionDigits: c && r % 1 ? 2 : 0, maximumFractionDigits: c ? 2 : 0 }); };
   const g = () => ({ f: +$('#g-female').value || 0, m: +$('#g-male').value || 0, c: +$('#g-couple').value || 0 });
@@ -53,7 +53,7 @@
     const i = months.indexOf(month);
     $('[data-m="-1"]', cal).disabled = i <= 0; $('[data-m="1"]', cal).disabled = i >= months.length - 1;
     const first = dt(month + '-01');
-    $('#cal-month').textContent = first.toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' }).replace(',', '');
+    $('#cal-month').textContent = first.toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' }).replace(',', '').replace('Sept', 'Sep');
     let h = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'].map((d) => `<span class="dow" aria-hidden="true">${d}</span>`).join('');
     const pad = (first.getUTCDay() + 6) % 7; h += '<span></span>'.repeat(pad);
     const n = new Date(Date.UTC(first.getUTCFullYear(), first.getUTCMonth() + 1, 0)).getUTCDate();
@@ -184,7 +184,7 @@
   form.addEventListener('submit', (ev) => { if (missing()) ev.preventDefault(); });
   $('#m-go').addEventListener('click', () => { if (!missing()) form.requestSubmit(); });
 
-  const bar = $('#mbar'), go = $('#go');
+  const bar = $('#mbar'), go = $('#step-total');
   if (bar && go && 'IntersectionObserver' in window) new IntersectionObserver((es) => bar.classList.toggle('away', es[0].isIntersecting)).observe(go);
 
   setLevel(S.level, true);

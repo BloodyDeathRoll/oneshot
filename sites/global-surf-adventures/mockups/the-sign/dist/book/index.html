@@ -142,17 +142,25 @@ svg.wa{color:var(--wa)}
 /* level and room picks */
 .picks{display:flex;flex-direction:column;gap:12px}
 .pick,.rpick{position:relative;display:flex;gap:16px;align-items:flex-start;background:var(--soft);border-radius:14px;padding:20px 22px;cursor:pointer;transition:background-color .2s}
-.pick:hover,.rpick:hover{background:#E3ECF1}
+.pick{align-items:center;padding:12px 18px 12px 12px}
+.pick:hover,.rcard:hover{background:#E3E9EE}
+.pick-th{width:76px;height:95px;object-fit:cover;border-radius:10px;flex:none}
+.rcard{background:var(--soft);border-radius:18px;padding:10px 10px 4px;transition:background-color .2s}
+.rcard .rpick{background:none;padding:12px 12px 16px}
+.rcard .bk-rg{margin-bottom:0}
+.rcard:has(input:checked){background:#D6E1EA}
+.rcard:has(input:checked) .tick{background:var(--ink);color:#fff}
+.rcard:has(input:focus-visible){outline:3px solid var(--ink);outline-offset:3px}
 .pick input,.rpick input{position:absolute;opacity:0;pointer-events:none}
 .pick-t,.rpick-t{display:flex;flex-direction:column;gap:3px;flex:1}
 .pick-t strong,.rpick-t strong{font-size:21px;font-weight:700;letter-spacing:-.01em}
 .pick-t .detail,.rpick-t .detail{margin-top:4px}
 .tick{width:32px;height:32px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none;color:transparent;transition:background-color .2s}
 .tick svg{width:18px;height:18px}
-.pick:has(input:checked),.rpick:has(input:checked){background:var(--ink);color:#fff}
-.pick:has(input:checked) .detail,.rpick:has(input:checked) .detail{color:#D5D8E6}
-.pick:has(input:checked) .tick,.rpick:has(input:checked) .tick{background:#fff;color:var(--ink)}
-.pick:has(input:focus-visible),.rpick:has(input:focus-visible){outline:3px solid var(--ink);outline-offset:3px}
+.pick:has(input:checked){background:var(--ink);color:#fff}
+.pick:has(input:checked) .detail{color:#D5D8E6}
+.pick:has(input:checked) .tick{background:#fff;color:var(--ink)}
+.pick:has(input:focus-visible){outline:3px solid var(--ink);outline-offset:3px}
 .free-s{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px}
 .free-s p{margin:0}
 .ilist.bk{list-style:none;padding:0;margin:0 0 20px;display:grid;grid-template-columns:1fr 1fr;gap:18px 28px}
@@ -230,7 +238,17 @@ svg.wa{color:var(--wa)}
   .sum .big dd{font-size:28px}
   .bk-rg .arrow{display:none}
 }
-.bk-media [data-m=level-2-rollers] video{transform:scale(1.25);transform-origin:62% 8%}
+
+/* Saturday chips (JS); the select stays for JS off */
+.chips-l{font-size:13px;font-weight:500;color:var(--ink2);margin:0 0 8px}
+.chips{display:flex;flex-direction:column;gap:14px;margin-bottom:8px}
+.chips-m p{margin:0 0 8px;font-weight:600}
+.chips-m div{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-width:84px;min-height:48px;padding:0 14px;border:0;border-radius:10px;background:var(--soft);font-weight:600;font-size:16px;cursor:pointer}
+.chip:hover{background:#E3E9EE}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff}
+.chip:disabled{opacity:.4;cursor:not-allowed;text-decoration:line-through}
+.chips-on #w-start{display:none}
 
 </style>
 </head>
@@ -272,9 +290,9 @@ svg.wa{color:var(--wa)}
 
 <main id="main" class="bk">
   <div class="bk-media" aria-hidden="true">
-    <div class="m on" data-m="level-1-fomies" style="background:url(../video/vid-010-poster.jpg) center/cover"><video muted loop playsinline preload="none" poster="../video/vid-010-poster.jpg" data-mp="../video/vid-010-m720.mp4" data-wb="../video/vid-010-d1920.webm"></video></div>
-    <div class="m" data-m="level-2-rollers" style="background:url(../video/vid-003e-poster.jpg) center/cover"><video muted loop playsinline preload="none" poster="../video/vid-003e-poster.jpg" data-mp="../video/vid-003e-m720.mp4" data-wb="../video/vid-003e-d1920.webm"></video></div>
-    <div class="m" data-m="level-3-riders" style="background:url(../video/vid-002e-poster.jpg) center/cover"><video muted loop playsinline preload="none" poster="../video/vid-002e-poster.jpg" data-mp="../video/vid-002e-m720.mp4" data-wb="../video/vid-002e-d1920.webm"></video></div>
+    <div class="m on" data-m="level-1-fomies" style="background:url(../video/vid-010-p45-poster.jpg) center/cover"><video muted loop playsinline preload="none" poster="../video/vid-010-p45-poster.jpg" data-webm="../video/vid-010-p45.webm" data-mp4="video/vid-010-p45.mp4"></video></div>
+    <div class="m" data-m="level-2-rollers" style="background:url(../video/vid-003e-p45-poster.jpg) center/cover"><video muted loop playsinline preload="none" poster="../video/vid-003e-p45-poster.jpg" data-webm="../video/vid-003e-p45.webm" data-mp4="video/vid-003e-p45.mp4"></video></div>
+    <div class="m" data-m="level-3-riders" style="background:url(../video/vid-002e-p45-poster.jpg) center/cover"><video muted loop playsinline preload="none" poster="../video/vid-002e-p45-poster.jpg" data-webm="../video/vid-002e-p45.webm" data-mp4="video/vid-002e-p45.mp4"></video></div>
     <div class="m" data-m="room"><img src="../img/img-063-1600.webp" width="1600" height="1067" alt="" loading="lazy"></div>
     <div class="m" data-m="dates"><img src="../img/img-001-1600.webp" width="1600" height="1066" alt="" loading="lazy"></div>
     <div class="m" data-m="total"><img src="../img/img-093-1536.webp" width="1536" height="1023" alt="" loading="lazy"></div>
@@ -287,11 +305,11 @@ svg.wa{color:var(--wa)}
       <h1 class="script" id="t-level">Your level</h1>
       <div class="picks" role="radiogroup" aria-labelledby="t-level">
         <label class="pick"><input type="radio" name="level" value="level-1-fomies" form="none" checked>
-          <span class="pick-t"><strong>Level 1 – Fomies</strong><span>Your first time on a board. No experience needed.</span><span class="detail">From $1,466 pp | 7 nights</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></label>
+          <img class="pick-th" src="../video/vid-010-p45-poster.jpg" width="864" height="1080" alt="" loading="lazy"><span class="pick-t"><strong>Level 1 – Fomies</strong><span>Your first time on a board. No experience needed.</span><span class="detail">From $1,466 pp | 7 nights</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></label>
         <label class="pick"><input type="radio" name="level" value="level-2-rollers" form="none">
-          <span class="pick-t"><strong>Level 2 – Rollers</strong><span>You can stand up. Now catch green waves.</span><span class="detail">From $1,466 pp | 7 nights</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></label>
+          <img class="pick-th" src="../video/vid-003e-p45-poster.jpg" width="864" height="1080" alt="" loading="lazy"><span class="pick-t"><strong>Level 2 – Rollers</strong><span>You can stand up. Now catch green waves.</span><span class="detail">From $1,466 pp | 7 nights</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></label>
         <label class="pick"><input type="radio" name="level" value="level-3-riders" form="none">
-          <span class="pick-t"><strong>Level 3 – Riders</strong><span>Already carving? Get sharper, on whichever spot is best that day.</span><span class="detail">From $1,466 pp | 7 nights</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></label>
+          <img class="pick-th" src="../video/vid-002e-p45-poster.jpg" width="864" height="1080" alt="" loading="lazy"><span class="pick-t"><strong>Level 3 – Riders</strong><span>Already carving? Get sharper, on whichever spot is best that day.</span><span class="detail">From $1,466 pp | 7 nights</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></label>
       </div>
       <div class="free-s">
         <p><strong>Freestylers – B&amp;B only</strong> | from 4 nights<br><span class="small">For independent travellers who want the lodge's vibe.</span></p>
@@ -365,7 +383,9 @@ svg.wa{color:var(--wa)}
     <section class="step" id="step-dates" data-media="dates" aria-labelledby="t-dates">
       <p class="step-n">Step 3 of 4</p>
       <h2 class="script" id="t-dates">Dates and guests</h2>
-      <div class="fl has">
+      <p class="chips-l" id="l-chips" hidden>Check-in (Saturdays)</p>
+      <div class="chips" data-chips role="group" aria-labelledby="l-chips" hidden></div>
+      <div class="fl has" id="w-start">
         <select id="f-start" name="start">
           <option value="">Choose a Saturday</option>
           <option value="2026-10-03">Sat 3 Oct 2026</option>
@@ -538,6 +558,7 @@ function wire(root, track, step){
   upd();
 }
 document.querySelectorAll('[data-show]').forEach(function(r){ wire(r, r.querySelector('.slides')); });
+document.querySelectorAll('[data-panels]').forEach(function(r){ wire(r, r.querySelector('.panels')); });
 document.querySelectorAll('[data-gallery]').forEach(function(r){ wire(r, r.querySelector('.rg-track')); });
 })();
 (function(){
@@ -571,6 +592,27 @@ var q = new URLSearchParams(location.search);
 if (LEVELS[q.get('level')]) $('input[name=level][value="' + q.get('level') + '"]').checked = true;
 if (ROOMS[q.get('room')]) $('input[name=room][value="' + q.get('room') + '"]').checked = true;
 
+/* Saturday chips from the select's options, grouped by month */
+var sel = $('#f-start'), chips = $('[data-chips]');
+(function(){
+  var months = {};
+  $$('option', sel).forEach(function(o){ if (!o.value) return; var k = o.value.slice(0, 7); (months[k] = months[k] || []).push(o); });
+  Object.keys(months).forEach(function(k){
+    var m = document.createElement('div'); m.className = 'chips-m';
+    var t = new Date(k + '-01T12:00:00Z').toLocaleDateString('en-GB', {month: 'long', year: 'numeric', timeZone: 'UTC'});
+    m.innerHTML = '<p>' + t + '</p><div></div>';
+    months[k].forEach(function(o){
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'chip'; b.dataset.v = o.value;
+      b.textContent = 'Sat ' + (+o.value.slice(8)); b.setAttribute('aria-pressed', 'false'); b.setAttribute('aria-label', o.textContent);
+      b.addEventListener('click', function(){ sel.value = o.value; sel.dispatchEvent(new Event('change', {bubbles: true})); });
+      $('div', m).appendChild(b);
+    });
+    chips.appendChild(m);
+  });
+  chips.hidden = false; $('#l-chips').hidden = false; document.documentElement.classList.add('chips-on');
+})();
+function syncChips(){ $$('.chip', chips).forEach(function(b){ var o = $('option[value="' + b.dataset.v + '"]', sel); b.disabled = o.disabled; b.setAttribute('aria-pressed', sel.value === b.dataset.v ? 'true' : 'false'); }); }
+
 /* steppers */
 $$('.stp').forEach(function(w){
   var inp = $('input', w);
@@ -594,7 +636,7 @@ function show(k){
   media.forEach(function(m){
     var v = $('video', m); if (!v) return;
     if (m.dataset.m === want && !calm && booted) {
-      if (!v.dataset.ready) { v.dataset.ready = 1; var s = document.createElement('source'); if (innerWidth < 768) { s.src = v.dataset.mp; s.type = 'video/mp4'; } else { s.src = v.dataset.wb; s.type = 'video/webm'; } v.appendChild(s); v.load(); }
+      if (!v.dataset.ready) { v.dataset.ready = 1; [[v.dataset.webm, 'video/webm'], [v.dataset.mp4, 'video/mp4']].forEach(function(x){ var s = document.createElement('source'); s.src = x[0]; s.type = x[1]; v.appendChild(s); }); v.load(); }
       var p = v.play(); if (p) p.catch(function(){});
     } else if (!v.paused) v.pause();
   });
@@ -617,6 +659,7 @@ var band = $('.bk-media');
 function render(){
   var lv = level(), g = guests(), rm = room(), st = $('#f-start').value, n = nights();
   $$('[data-incl-list]').forEach(function(l){ l.hidden = l.dataset.inclList !== LEVELS[lv].n; });
+  syncChips();
   $('[data-s=level]').textContent = LEVELS[lv].name;
   $('[data-s=dates]').textContent = st ? fmt(st) + ' – ' + fmt(addDays(st, n)) + ' | ' + n + ' nights' : 'Choose a Saturday';
   var parts = []; if (g.female) parts.push(g.female + ' ' + (g.female === 1 ? 'woman' : 'women')); if (g.male) parts.push(g.male + ' ' + (g.male === 1 ? 'man' : 'men')); if (g.couple) parts.push(g.couple + ' ' + (g.couple === 1 ? 'couple' : 'couples'));
@@ -665,6 +708,7 @@ function refreshDates(){
       if (!o.value) return; var ok = d[o.value] ? d[o.value].choosable : false;
       o.disabled = !ok; o.textContent = o.textContent.replace(/ \| full$/, '') + (ok ? '' : ' | full');
     });
+    syncChips();
   }).catch(function(){ dateKey = ''; });
 }
 function refreshQuote(){
@@ -706,7 +750,7 @@ F.addEventListener('change', function(e){
 /* hand-off: GET to the engine's product with start, end (never duration) and the guest mix */
 F.addEventListener('submit', function(ev){
   var st = $('#f-start').value;
-  if (!st || !guests().n) { ev.preventDefault(); document.getElementById('step-dates').scrollIntoView({behavior: calm ? 'auto' : 'smooth'}); (st ? $('#f-female') : $('#f-start')).focus({preventScroll: true}); return; }
+  if (!st || !guests().n) { ev.preventDefault(); document.getElementById('step-dates').scrollIntoView({behavior: calm ? 'auto' : 'smooth'}); (st ? $('#f-female') : ($('.chip:not(:disabled)') || $('#f-start'))).focus({preventScroll: true}); return; }
   var e = document.createElement('input'); e.type = 'hidden'; e.name = 'end'; e.value = addDays(st, nights()); F.appendChild(e);
   ['#f-female', '#f-male', '#f-couple'].forEach(function(s){ var i = $(s); if (!(+i.value)) i.disabled = true; });
   setTimeout(function(){ ['#f-female', '#f-male', '#f-couple'].forEach(function(s){ $(s).disabled = false; }); e.remove(); }, 500);

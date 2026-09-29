@@ -51,5 +51,6 @@ function wire(root, track, step){
   upd();
 }
 document.querySelectorAll('[data-show]').forEach(function(r){ wire(r, r.querySelector('.slides')); });
+document.querySelectorAll('[data-panels]').forEach(function(r){ wire(r, r.querySelector('.panels')); });
 document.querySelectorAll('[data-gallery]').forEach(function(r){ wire(r, r.querySelector('.rg-track')); });
 })();

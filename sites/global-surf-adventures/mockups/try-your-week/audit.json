@@ -1,7 +1,7 @@
 {
  "slug": "global-surf-adventures",
  "variant": "try-your-week",
- "measured_at": "2026-09-29T18:37:33.274Z",
+ "measured_at": "2026-09-29T19:14:41.648Z",
  "first_load": {
   "requests": 22,
   "hosts": [
@@ -13,16 +13,16 @@
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 875483,
-  "bytes_html": 120911,
+  "bytes_total": 781932,
+  "bytes_html": 121132,
   "bytes_js": 0,
   "bytes_css": 0,
-  "bytes_fonts": 201492,
+  "bytes_fonts": 107720,
   "bytes_images": 553080,
   "largest_image_bytes": 43608,
-  "lcp_ms": 540,
-  "cls": 0.0037,
-  "dcl_ms": 1081
+  "lcp_ms": 556,
+  "cls": 0.0046,
+  "dcl_ms": 988
  },
  "booking": {
   "external_booking_hrefs": [
@@ -31,9 +31,9 @@
    "https://www.globalsurf.com/kabalana-lodge-surf-packages/",
    "https://rosa.surf/spot/south-point",
    "https://www.instagram.com/globalsurf_kabalana/",
-   "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en",
    "https://www.youtube.com/channel/UCh-GTj4Wu2FbdXpr-xNSGzQ",
-   "https://www.facebook.com/GlobalSURFltd/"
+   "https://www.facebook.com/GlobalSURFltd/",
+   "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en"
   ],
   "tel_hrefs": [
    "tel:+97299733943"
@@ -50,19 +50,12 @@
   "note": "no drawer; every action is a plain link"
  },
  "a11y": {
-  "images": 39,
+  "images": 42,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 1,
-  "tapables": 77,
-  "tapables_under_44px": 44,
-  "tapables_under_44px_examples": [
-   " 132x40",
-   " 28x28",
-   " 28x28",
-   " 28x28",
-   " 28x28",
-   " 28x28"
-  ],
+  "tapables": 68,
+  "tapables_under_44px": 0,
+  "tapables_under_44px_examples": [],
   "headings": [
    "H1",
    "H2",
@@ -78,16 +71,15 @@
    "H2",
    "H2",
    "H2",
-   "H3",
    "H3"
   ],
   "has_skip_link": true,
   "lang": "en"
  },
  "no_js": {
-  "text_length": 6263,
+  "text_length": 6220,
   "booking_links_reachable": 0,
-  "visible_images": 39
+  "visible_images": 42
  },
  "reduced_motion": {
   "canvases": 0,

@@ -144,12 +144,12 @@ section{scroll-margin-top:var(--hdr)}
 .panel{flex:1 1 0;min-width:0;display:flex;flex-direction:column}
 .panel-media{display:block;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:#CFDCE4 center/cover no-repeat}
 .panel-media video{width:100%;height:100%;object-fit:cover}
-.panel[data-level=level-2-rollers] .panel-media video{transform:scale(1.32);transform-origin:62% 8%}
 .panel-t{flex:1;display:flex;flex-direction:column}
 .panel-t .btn{margin-top:auto;align-self:flex-start}
 .panel-t{padding:24px 4px 0}
 .panel-t p{margin-bottom:.5em}
 .panel-t .detail{margin-bottom:18px}
+.panel-dots{display:none}
 .free{display:flex;align-items:center;justify-content:space-between;gap:24px;background:#fff;border-radius:16px;padding:28px 32px;margin-top:56px}
 .free h3{font-size:24px}
 .free p{margin:0}
@@ -205,7 +205,15 @@ section{scroll-margin-top:var(--hdr)}
 .incl .small{margin-bottom:24px}
 
 /* guests */
-.guests{padding:110px 0 100px}
+.guests{position:relative;padding:120px 0 90px;color:#fff;overflow:hidden}
+.guests-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.42) saturate(1.05)}
+.guests-c{position:relative}
+.guests .script{color:#fff}
+.guests .detail,.guests .quote footer{color:#E6E8F0}
+.guests .quote footer strong{color:#fff}
+.guests .dots button::after{background:#fff;opacity:.45}
+.guests .dots button[aria-current="true"]::after{opacity:1}
+.guests :focus-visible{outline-color:#fff}
 .rating{font-size:19px;margin:0 0 4px}
 .quotes{margin-top:40px}
 .quotes .slides{border-radius:0}
@@ -240,10 +248,11 @@ section{scroll-margin-top:var(--hdr)}
 .tiles a:hover img{transform:scale(1.04)}
 
 /* closing */
-.closing{position:relative;height:min(78vh,760px);min-height:460px;overflow:hidden;color:#fff}
-.closing>img{width:100%;height:100%;object-fit:cover;filter:brightness(.52) saturate(1.05)}
+.closing{position:relative;height:min(72vh,680px);min-height:460px;overflow:hidden;color:#fff}
+.closing>img{width:100%;height:100%;object-fit:cover;filter:brightness(.5) saturate(1.05);object-position:50% 85%}
+.closing-c .script{color:#fff;margin-bottom:12px}
 .closing-c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 var(--gut)}
-.closing-c p{font-size:clamp(24px,2.5vw,32px);font-weight:600;line-height:1.35;max-width:620px;text-wrap:balance;margin-bottom:32px}
+.closing-c p{font-size:18px;font-weight:500;line-height:1.5;max-width:460px;text-wrap:balance;margin-bottom:28px}
 .btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
 
 /* phone booking bar */
@@ -262,15 +271,24 @@ section{scroll-margin-top:var(--hdr)}
 @media (max-width:620px){
   body{font-size:16.5px}
   .hero h1{font-size:46px;line-height:1.05;max-width:330px}
-  .welcome{padding:72px 0 64px}
+  .welcome{padding:60px 0 52px}
   .welcome p,.week-t p,.rooms>.wrap:first-child p,.waves-t>p,.insta .wrap p{font-size:17.5px}
-  .levels,.incl,.waves{padding:72px 0 64px}
+  .levels,.incl,.waves{padding:60px 0 52px}
   .levels .script{margin-bottom:28px}
   .free{flex-direction:column;align-items:stretch;padding:24px;margin-top:48px}
   .free .btn{width:100%}
-  .week-t{padding:64px var(--gut)}
-  .rooms,.lodge,.guests{padding:72px 0}
-  .room{margin-top:56px}
+  .week-t{padding:52px var(--gut) 8px}
+  .rooms,.lodge{padding:60px 0}
+  .guests{padding:72px 0 56px}
+  .panels{flex-direction:row;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--gut));padding:0 var(--gut);scroll-padding:0 var(--gut)}
+  .panels::-webkit-scrollbar{display:none}
+  .panel{flex:0 0 82%;scroll-snap-align:start}
+  .panel-dots{display:flex}
+  .free{margin-top:28px}
+  .room{margin-top:44px}
+  .rooms-foot{margin-top:44px}
+  .insta{padding-top:60px}
+  .tiles{margin-top:32px}
   .rg-track{gap:8px}
   .rg-track img{height:auto;width:84vw;border-radius:12px}
   .rg .arrow{display:none}
@@ -280,10 +298,9 @@ section{scroll-margin-top:var(--hdr)}
   .ilist{grid-template-columns:1fr;gap:18px;max-width:420px}
   .pills button{padding:0 16px}
   .tiles{grid-template-columns:repeat(3,1fr)}
-  .closing{height:auto;min-height:640px}
+  .closing{height:auto;min-height:560px}
   .closing>img{position:absolute;inset:0}
   .closing-c{padding:80px var(--gut)}
-  .closing-c p{font-size:24px}
   .closing-c .btn{width:100%}
   .hero .btn{min-width:250px}
   .btns{width:100%;max-width:360px}
@@ -355,10 +372,11 @@ section{scroll-margin-top:var(--hdr)}
 <section class="levels aqua" id="levels" aria-labelledby="t-levels">
   <div class="wrap">
     <h2 class="script center" id="t-levels">Choose your level</h2>
+    <div class="panels-w" data-panels>
     <div class="panels">
       <article class="panel" data-level="level-1-fomies">
-        <a class="panel-media" href="book/?level=level-1-fomies" tabindex="-1" aria-hidden="true" style="background-image:url(video/vid-010-poster.jpg)">
-          <video muted loop playsinline preload="none" poster="video/vid-010-poster.jpg" data-m="video/vid-010-m720.mp4" data-d="video/vid-010-d1920.webm" data-dt="video/webm"></video>
+        <a class="panel-media" href="book/?level=level-1-fomies" tabindex="-1" aria-hidden="true" style="background-image:url(video/vid-010-p45-poster.jpg)">
+          <video muted loop playsinline preload="none" poster="video/vid-010-p45-poster.jpg" data-webm="video/vid-010-p45.webm" data-mp4="video/vid-010-p45.mp4"></video>
         </a>
         <div class="panel-t">
           <h3>Level 1 – Fomies</h3>
@@ -368,8 +386,8 @@ section{scroll-margin-top:var(--hdr)}
         </div>
       </article>
       <article class="panel" data-level="level-2-rollers">
-        <a class="panel-media" href="book/?level=level-2-rollers" tabindex="-1" aria-hidden="true" style="background-image:url(video/vid-003e-poster.jpg)">
-          <video muted loop playsinline preload="none" poster="video/vid-003e-poster.jpg" data-m="video/vid-003e-m720.mp4" data-d="video/vid-003e-d1920.webm" data-dt="video/webm"></video>
+        <a class="panel-media" href="book/?level=level-2-rollers" tabindex="-1" aria-hidden="true" style="background-image:url(video/vid-003e-p45-poster.jpg)">
+          <video muted loop playsinline preload="none" poster="video/vid-003e-p45-poster.jpg" data-webm="video/vid-003e-p45.webm" data-mp4="video/vid-003e-p45.mp4"></video>
         </a>
         <div class="panel-t">
           <h3>Level 2 – Rollers</h3>
@@ -379,8 +397,8 @@ section{scroll-margin-top:var(--hdr)}
         </div>
       </article>
       <article class="panel" data-level="level-3-riders">
-        <a class="panel-media" href="book/?level=level-3-riders" tabindex="-1" aria-hidden="true" style="background-image:url(video/vid-002e-poster.jpg)">
-          <video muted loop playsinline preload="none" poster="video/vid-002e-poster.jpg" data-m="video/vid-002e-m720.mp4" data-d="video/vid-002e-d1920.webm" data-dt="video/webm"></video>
+        <a class="panel-media" href="book/?level=level-3-riders" tabindex="-1" aria-hidden="true" style="background-image:url(video/vid-002e-p45-poster.jpg)">
+          <video muted loop playsinline preload="none" poster="video/vid-002e-p45-poster.jpg" data-webm="video/vid-002e-p45.webm" data-mp4="video/vid-002e-p45.mp4"></video>
         </a>
         <div class="panel-t">
           <h3>Level 3 – Riders</h3>
@@ -389,6 +407,8 @@ section{scroll-margin-top:var(--hdr)}
           <a class="btn btn-book" href="book/?level=level-3-riders">Choose Level 3</a>
         </div>
       </article>
+    </div>
+    <div class="dots panel-dots" aria-hidden="true"></div>
     </div>
     <div class="free">
       <div>
@@ -411,10 +431,6 @@ section{scroll-margin-top:var(--hdr)}
     <h2 class="script" id="t-week">Surf, breakfast, surf again</h2>
     <p>Head out with your group for a morning surf. Back at the lodge, a big, healthy breakfast is waiting.</p>
     <p>After that the day is yours: relax at the lodge, or go out and explore before the afternoon surf. The evening ends with dinner, together with the other guests.</p>
-  </div>
-  <div class="pair">
-    <img src="img/img-011-800.webp" srcset="img/img-011-800.webp 800w, img/img-011-1600.webp 1600w" sizes="50vw" width="1600" height="1067" loading="lazy" alt="A fruit and granola bowl from above">
-    <img src="img/img-023-800.webp" srcset="img/img-023-800.webp 800w, img/img-023-1600.webp 1600w" sizes="50vw" width="1600" height="1067" loading="lazy" alt="Guests toasting at the dinner table">
   </div>
 </section>
 
@@ -526,7 +542,8 @@ section{scroll-margin-top:var(--hdr)}
 </section>
 
 <section class="guests" aria-labelledby="t-guests">
-  <div class="wrap narrow center">
+  <img class="guests-bg" src="img/img-023-1600.webp" srcset="img/img-023-800.webp 800w, img/img-023-1600.webp 1600w" sizes="100vw" width="1600" height="1067" loading="lazy" alt="">
+  <div class="wrap narrow center guests-c">
     <h2 class="script" id="t-guests">What guests say</h2>
     <p class="rating"><strong>8.6</strong> on Booking.com | 80 reviews | 28 Sep 2026</p>
     <p class="detail">Staff 9.5 | Facilities 9.2 | Cleanliness 9.2</p>
@@ -534,10 +551,8 @@ section{scroll-margin-top:var(--hdr)}
       <div class="slides" tabindex="0" role="region" aria-label="Guest reviews">
         <blockquote class="quote"><p>“We loved the cozy, bohoo-vibes at the lodge: starting from the open-air-bathroom, the relaxing pool area and especially the great breakfast bowls!”</p><footer><strong>Fanny, Germany</strong> | on Booking.com</footer></blockquote>
 <blockquote class="quote"><p>“This place felt like something inbetween a hostel and a luxurious hotel. The styling was gorgeous, the beds very comfortable, the (bath)room very spacious with lockers and personal storage space.”</p><footer><strong>Myrthe, Netherlands</strong> | on Booking.com</footer></blockquote>
-<blockquote class="quote"><p>“A lovely hotel and a team of champions. Ariel, a professional surf guide, raised the level of surfing for us by several steps during the week we were there. This is our second time at the same hotel and with the same guide. We will return next year as well”</p><footer><strong>Seagallas</strong> | on globalsurf.com</footer></blockquote>
 <blockquote class="quote"><p>“The room was modern, quiet and incredibly clean with daily servicing. The grounds were well kept with a gorgeous pool and dining area. There are hammocks, loungers and beanbags in social areas. It was a really really great place.”</p><footer><strong>Abigail, Myanmar</strong> | on Booking.com</footer></blockquote>
 <blockquote class="quote"><p>“I had a wonderful stay at this hostel in Kabalana. The place was very clean, comfortable, and well maintained, and the staff were incredibly friendly and welcoming.”</p><footer><strong>Maryam, Netherlands</strong> | on Booking.com</footer></blockquote>
-<blockquote class="quote"><p>“We stayed at Global Kablana Sri Lanka as a couple and two girls and it was just fun and lovely. The atmosphere, the rooms, the stunning staff. Just everything.”</p><footer><strong>Dana Amsalem-Cohen</strong> | on globalsurf.com</footer></blockquote>
 <blockquote class="quote"><p>“The common areas and the rooms are really nice! Staff is very helpful and the breakfast options are awesome.”</p><footer><strong>Agustin, Chile</strong> | on Booking.com</footer></blockquote>
 <blockquote class="quote"><p>“Super nice place, beautiful rooms, nice hangout area with pool and pillows and delicious breakfast!”</p><footer><strong>Sara, Austria</strong> | on Booking.com</footer></blockquote>
 <blockquote class="quote"><p>“The staff were lovely and welcoming. The property itself was clean and comfortable.”</p><footer><strong>Hannah, Oman</strong> | on Booking.com</footer></blockquote>
@@ -586,6 +601,7 @@ section{scroll-margin-top:var(--hdr)}
 <section class="closing" aria-label="Book your week">
   <img src="img/img-093-1536.webp" srcset="img/img-093-800.webp 800w, img/img-093-1536.webp 1536w" sizes="100vw" width="1536" height="1023" loading="lazy" alt="The lodge pool and lounge at dusk, lights on">
   <div class="closing-c">
+    <h2 class="script">All levels, steps from the beach</h2>
     <p>Book the week for your level. Not sure which one fits? Ask us on WhatsApp first.</p>
     <div class="btns">
       <a class="btn btn-book btn-lg" href="book/">Book package now</a>
@@ -688,6 +704,7 @@ function wire(root, track, step){
   upd();
 }
 document.querySelectorAll('[data-show]').forEach(function(r){ wire(r, r.querySelector('.slides')); });
+document.querySelectorAll('[data-panels]').forEach(function(r){ wire(r, r.querySelector('.panels')); });
 document.querySelectorAll('[data-gallery]').forEach(function(r){ wire(r, r.querySelector('.rg-track')); });
 })();
 (function(){
@@ -723,9 +740,8 @@ var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
 var wide = matchMedia('(min-width: 1001px)');
 function ensure(vid){
   if (vid.dataset.ready) return; vid.dataset.ready = '1';
-  var s = document.createElement('source');
-  if (innerWidth < 768) { s.src = vid.dataset.m; s.type = 'video/mp4'; } else { s.src = vid.dataset.d; s.type = vid.dataset.dt; }
-  vid.appendChild(s); vid.load();
+  [[vid.dataset.webm, 'video/webm'], [vid.dataset.mp4, 'video/mp4']].forEach(function(x){ var s = document.createElement('source'); s.src = x[0]; s.type = x[1]; vid.appendChild(s); });
+  vid.load();
 }
 function playOnly(p){
   panels.forEach(function(q){

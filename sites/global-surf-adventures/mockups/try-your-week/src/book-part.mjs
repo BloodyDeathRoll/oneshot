@@ -32,7 +32,7 @@ export function buildBook(ctx) {
 @keyframes stepBack{from{opacity:0;transform:translateX(-56px)}to{opacity:1;transform:none}}
 .step-h{text-align:center;margin-bottom:22px}
 .step-h .count{font-size:15px;color:var(--ink-2);margin:0 0 2px}
-.step-h h1,.step-h h2{font-family:var(--script);font-weight:400;font-size:clamp(50px,5.4vw,68px);line-height:1;margin:0}
+.step-h h1,.step-h h2{font-family:var(--script);font-weight:400;font-size:clamp(40px,4.4vw,56px);line-height:1.15;margin:0}
 .step-h h1:focus,.step-h h2:focus{outline:none}
 .band{position:relative;height:clamp(240px,40vh,440px);border-radius:var(--r);overflow:hidden;background:#dfe3e6}
 .band .lv-clip,.band .lv-clip img,.band .lv-clip video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -42,7 +42,7 @@ export function buildBook(ctx) {
 .lvsum{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px);margin-top:34px}
 .lvsum h3{font-family:var(--serif);font-weight:600;font-size:28px;letter-spacing:-.015em;margin:0 0 6px}
 .lvsum .one{font-size:18.5px;margin-bottom:12px}
-.lvsum h4{font-family:var(--script);font-weight:400;font-size:44px;line-height:1;margin:0 0 18px}
+.lvsum h4{font-family:var(--script);font-weight:400;font-size:36px;line-height:1.15;margin:0 0 18px}
 .lvsum .note{margin:20px 0 0;font-size:15.5px;color:var(--ink-2)}
 .lv-panel[hidden]{display:none}
 .no-js .lv-panel{margin-bottom:36px}
@@ -74,7 +74,7 @@ export function buildBook(ctx) {
 .seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
 .fl.segf{padding-top:34px;padding-bottom:10px}
 .card{background:var(--tint-soft);border-radius:var(--r);padding:28px}
-.card h3{font-family:var(--script);font-weight:400;font-size:46px;line-height:1;margin:0 0 16px}
+.card h3{font-family:var(--script);font-weight:400;font-size:38px;line-height:1.15;margin:0 0 16px}
 .rows{margin:0;display:grid;gap:10px}
 .rows div{display:flex;justify-content:space-between;gap:18px;align-items:baseline}
 .rows dt{color:var(--ink-2)}
