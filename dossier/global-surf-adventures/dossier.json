@@ -5682,7 +5682,7 @@
     {
       "id": "vid-009e",
       "derived_from": "vid-009",
-      "describe": "hero edit: pool deck 5.3-8.0 s + sunny reef surf 40.4-45.0 s of vid-009, ~6.8 s",
+      "describe": "hero edit: pool deck 5.3-8.0 s + sunny reef surf 40.4-45.0 s of vid-009, hard cut, ~7.3 s",
       "license": "business-owned",
       "made_by": "orchestrator",
       "made_at": "2026-09-28T20:17:42Z",
@@ -5700,6 +5700,17 @@
       "files": "assets/video/vid-002e-*",
       "source_url": "https://www.youtube.com/@globalsurf1582",
       "fetched_at": "2026-09-28T20:17:42Z"
+    },
+    {
+      "id": "vid-003e",
+      "derived_from": "vid-003",
+      "describe": "Level 2 edit: sunny ride 10.8-14.0 s + reef ride 14.2-17.8 s of vid-003, watermark cropped, ~6.3 s",
+      "license": "business-owned",
+      "made_by": "orchestrator",
+      "made_at": "2026-09-29T18:59:57Z",
+      "files": "assets/video/vid-003e-*",
+      "source_url": "https://www.youtube.com/@globalsurf1582",
+      "fetched_at": "2026-09-29T18:59:57Z"
     }
   ],
   "existing_site": {

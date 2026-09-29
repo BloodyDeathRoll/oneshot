@@ -1,0 +1,203 @@
+{
+ "m": "try-your-week",
+ "mode": "phone",
+ "firstLoadBytes": 862058,
+ "reqCount": 23,
+ "thirdOnLoad": [
+  "https://fonts.googleapis.com/css2?family=Mansalva&family=Newsreader:opsz,wght@6..72,300..650&display=swap",
+  "https://fonts.gstatic.com/s/newsreader/v26/cY9AfjOCX1hbuyalUrK4397yjIJFJpc.woff2",
+  "https://fonts.gstatic.com/s/mansalva/v16/aWB4m0aacbtDfvq5NKliKY_NdDBh.woff2"
+ ],
+ "lcp": 556,
+ "cls": 0.006614085602933563,
+ "videosAfterLoad": [
+  {
+   "src": "vid-009e-m1280.webm",
+   "paused": false,
+   "t": 2,
+   "rs": 4,
+   "top": 0,
+   "h": 844
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1286,
+   "h": 448
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1286,
+   "h": 448
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1286,
+   "h": 448
+  }
+ ],
+ "hero": {
+  "h1": "Next set is yours",
+  "font": "Newsreader, Georgia, \"Times New Roman\", serif",
+  "size": "40px",
+  "center": [
+   195,
+   359
+  ],
+  "btns": [
+   {
+    "t": "Choose your level",
+    "bg": "rgb(200, 67, 47)",
+    "color": "rgb(255, 255, 255)",
+    "ff": "Newsreader",
+    "w": 280,
+    "h": 52
+   }
+  ],
+  "fonts": [
+   "Mansalva 400",
+   "Newsreader 300 650"
+  ]
+ },
+ "pageHeight": 10653,
+ "frames": {
+  "n": 1547,
+  "p50": 16.7,
+  "p95": 16.8,
+  "p99": 16.8,
+  "max": 83.4,
+  "over50": 1
+ },
+ "sections": [
+  [
+   0,
+   675,
+   "levels | Choose your level"
+  ],
+  [
+   1,
+   1350,
+   "levels | Choose your level"
+  ],
+  [
+   2,
+   2025,
+   "week | Surf, breakfast, surf again"
+  ],
+  [
+   3,
+   2700,
+   "week | Surf, breakfast, surf again"
+  ],
+  [
+   4,
+   3375,
+   "rooms | Our rooms"
+  ],
+  [
+   5,
+   4050,
+   "rooms | Our rooms"
+  ],
+  [
+   6,
+   4725,
+   "lodge | The lodge"
+  ],
+  [
+   7,
+   5400,
+   "lodge | The lodge"
+  ],
+  [
+   8,
+   6075,
+   "guests | What guests say"
+  ],
+  [
+   9,
+   6750,
+   "guests | What guests say"
+  ],
+  [
+   10,
+   7425,
+   "waves | The waves"
+  ],
+  [
+   11,
+   8100,
+   "instagram | Follow the lodge"
+  ],
+  [
+   12,
+   8775,
+   "closing | "
+  ],
+  [
+   13,
+   9450,
+   "contact | Getting here"
+  ],
+  [
+   14,
+   9809,
+   "contact | Getting here"
+  ]
+ ],
+ "videosAfterScroll": [
+  {
+   "src": "vid-009e-m1280.webm",
+   "paused": false,
+   "t": 3.13,
+   "rs": 4,
+   "top": 0,
+   "h": 844
+  },
+  {
+   "src": "vid-010c-m720.mp4",
+   "paused": true,
+   "t": 1.13,
+   "rs": 4,
+   "top": 1286,
+   "h": 448
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1286,
+   "h": 448
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1286,
+   "h": 448
+  }
+ ],
+ "totalBytes": 3217805,
+ "thirdAll": [
+  "https://fonts.googleapis.com/css2?family=Mansalva&family=Newsreader:opsz,wght@6..72,300..650&display=swap",
+  "https://fonts.gstatic.com/s/newsreader/v26/cY9AfjOCX1hbuyalUrK4397yjIJFJpc.woff2",
+  "https://fonts.gstatic.com/s/mansalva/v16/aWB4m0aacbtDfvq5NKliKY_NdDBh.woff2",
+  "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+  "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+  "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+  "https://rosa.surf/favicon.svg",
+  "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924"
+ ]
+}

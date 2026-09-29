@@ -1,0 +1,205 @@
+{
+ "m": "postcard",
+ "mode": "laptop",
+ "firstLoadBytes": 3110082,
+ "reqCount": 15,
+ "thirdOnLoad": [
+  "https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap",
+  "https://fonts.gstatic.com/s/dmsans/v17/rP2Hp2ywxg089UriCZOIHQ.woff2",
+  "https://fonts.gstatic.com/s/caveat/v23/WnznHAc5bAfYB2QRah7pcpNvOx-pjSx6eIWpYQ.woff2"
+ ],
+ "lcp": 284,
+ "cls": 0.001787871033468364,
+ "videosAfterLoad": [
+  {
+   "src": "vid-009e-d1920.webm",
+   "paused": false,
+   "t": 0.19,
+   "rs": 4,
+   "top": 0,
+   "h": 900
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1826,
+   "h": 457
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1826,
+   "h": 457
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1826,
+   "h": 457
+  }
+ ],
+ "hero": {
+  "h1": "Surf weeks in Sri Lanka",
+  "font": "\"DM Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
+  "size": "62px",
+  "center": [
+   720,
+   407
+  ],
+  "btns": [
+   {
+    "t": "Book package now",
+    "bg": "rgb(200, 70, 60)",
+    "color": "rgb(255, 255, 255)",
+    "ff": "\"DM Sans\"",
+    "w": 230,
+    "h": 56
+   }
+  ],
+  "fonts": [
+   "Caveat 600",
+   "DM Sans 400",
+   "DM Sans 500",
+   "DM Sans 600"
+  ]
+ },
+ "pageHeight": 11294,
+ "frames": {
+  "n": 1304,
+  "p50": 16.7,
+  "p95": 16.8,
+  "p99": 16.8,
+  "max": 33.3,
+  "over50": 0
+ },
+ "sections": [
+  [
+   0,
+   720,
+   "welcome | Next set is yours"
+  ],
+  [
+   1,
+   1440,
+   "levels | Choose your level"
+  ],
+  [
+   2,
+   2160,
+   "levels | Choose your level"
+  ],
+  [
+   3,
+   2880,
+   "included | What's included"
+  ],
+  [
+   4,
+   3600,
+   "week | Surf, breakfast, surf again"
+  ],
+  [
+   5,
+   4320,
+   "week | Surf, breakfast, surf again"
+  ],
+  [
+   6,
+   5040,
+   "rooms | Our rooms"
+  ],
+  [
+   7,
+   5760,
+   "rooms | Our rooms"
+  ],
+  [
+   8,
+   6480,
+   "rooms | Our rooms"
+  ],
+  [
+   9,
+   7200,
+   "feature | "
+  ],
+  [
+   10,
+   7920,
+   "guests | What guests say"
+  ],
+  [
+   11,
+   8640,
+   "waves | The waves"
+  ],
+  [
+   12,
+   9360,
+   "instagram | Follow the lodge"
+  ],
+  [
+   13,
+   10080,
+   "feature closing | "
+  ],
+  [
+   14,
+   10394,
+   "feature closing | "
+  ]
+ ],
+ "videosAfterScroll": [
+  {
+   "src": "vid-009e-d1920.webm",
+   "paused": false,
+   "t": 6.89,
+   "rs": 4,
+   "top": 0,
+   "h": 900
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1826,
+   "h": 457
+  },
+  {
+   "src": "vid-003e-m1280.webm",
+   "paused": true,
+   "t": 0.09,
+   "rs": 4,
+   "top": 1826,
+   "h": 457
+  },
+  {
+   "src": "vid-002e-m1280.webm",
+   "paused": true,
+   "t": 1.37,
+   "rs": 4,
+   "top": 1826,
+   "h": 457
+  }
+ ],
+ "totalBytes": 7580892,
+ "thirdAll": [
+  "https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap",
+  "https://fonts.gstatic.com/s/dmsans/v17/rP2Hp2ywxg089UriCZOIHQ.woff2",
+  "https://fonts.gstatic.com/s/caveat/v23/WnznHAc5bAfYB2QRah7pcpNvOx-pjSx6eIWpYQ.woff2",
+  "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+  "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+  "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+  "https://rosa.surf/favicon.svg",
+  "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924"
+ ]
+}

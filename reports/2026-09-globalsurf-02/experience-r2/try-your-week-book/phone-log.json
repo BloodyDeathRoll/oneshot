@@ -1,0 +1,120 @@
+{
+ "m": "try-your-week-book",
+ "mode": "phone",
+ "firstLoadBytes": 584241,
+ "reqCount": 15,
+ "thirdOnLoad": [
+  "https://fonts.googleapis.com/css2?family=Mansalva&family=Newsreader:opsz,wght@6..72,300..650&display=swap",
+  "https://fonts.gstatic.com/s/newsreader/v26/cY9AfjOCX1hbuyalUrK4397yjIJFJpc.woff2",
+  "https://fonts.gstatic.com/s/mansalva/v16/aWB4m0aacbtDfvq5NKliKY_NdDBh.woff2"
+ ],
+ "lcp": 1536,
+ "cls": 0.002004881852427463,
+ "videosAfterLoad": [
+  {
+   "src": "vid-010c-m720.mp4",
+   "paused": false,
+   "t": 4.71,
+   "rs": 4,
+   "top": 343,
+   "h": 287
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 343,
+   "h": 287
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 343,
+   "h": 287
+  }
+ ],
+ "hero": {
+  "h1": "Your level",
+  "font": "Mansalva, \"Segoe Script\", cursive",
+  "size": "40px",
+  "center": [
+   195,
+   212
+  ],
+  "btns": [
+   {
+    "t": "Next",
+    "bg": "rgb(200, 67, 47)",
+    "color": "rgb(255, 255, 255)",
+    "ff": "Newsreader",
+    "w": 74,
+    "h": 52
+   }
+  ],
+  "fonts": [
+   "Mansalva 400",
+   "Newsreader 300 650"
+  ]
+ },
+ "pageHeight": 2815,
+ "frames": {
+  "n": 309,
+  "p50": 16.7,
+  "p95": 16.8,
+  "p99": 16.8,
+  "max": 16.8,
+  "over50": 0
+ },
+ "sections": [
+  [
+   0,
+   675,
+   "s-level | Your level"
+  ],
+  [
+   1,
+   1350,
+   "contact | Getting here"
+  ],
+  [
+   2,
+   1971,
+   "contact | Getting here"
+  ]
+ ],
+ "videosAfterScroll": [
+  {
+   "src": "vid-010c-m720.mp4",
+   "paused": false,
+   "t": 9.91,
+   "rs": 4,
+   "top": 343,
+   "h": 287
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 343,
+   "h": 287
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 343,
+   "h": 287
+  }
+ ],
+ "totalBytes": 1795978,
+ "thirdAll": [
+  "https://fonts.googleapis.com/css2?family=Mansalva&family=Newsreader:opsz,wght@6..72,300..650&display=swap",
+  "https://fonts.gstatic.com/s/newsreader/v26/cY9AfjOCX1hbuyalUrK4397yjIJFJpc.woff2",
+  "https://fonts.gstatic.com/s/mansalva/v16/aWB4m0aacbtDfvq5NKliKY_NdDBh.woff2"
+ ]
+}

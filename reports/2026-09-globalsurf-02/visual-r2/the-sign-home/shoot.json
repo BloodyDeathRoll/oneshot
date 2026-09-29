@@ -1,0 +1,19 @@
+{
+  "target": "http://localhost:8982/the-sign/dist/",
+  "widths": {
+    "desktop": {
+      "pageHeight": 13138,
+      "scroller": "window",
+      "captures": 17,
+      "truncated": false,
+      "errors": []
+    },
+    "mobile": {
+      "pageHeight": 14241,
+      "scroller": "window",
+      "captures": 19,
+      "truncated": false,
+      "errors": []
+    }
+  }
+}

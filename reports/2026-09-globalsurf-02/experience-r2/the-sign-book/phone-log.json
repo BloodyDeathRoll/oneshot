@@ -1,0 +1,308 @@
+{
+ "m": "the-sign-book",
+ "mode": "phone",
+ "firstLoadBytes": 1139626,
+ "reqCount": 27,
+ "thirdOnLoad": [
+  "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Yellowtail&display=swap",
+  "https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInHWVyNJ.woff2",
+  "https://fonts.gstatic.com/s/yellowtail/v25/OZpGg_pnoDtINPfRIlLohlvHwWL9f4k.woff2"
+ ],
+ "lcp": 820,
+ "cls": 0.0003174819834373753,
+ "videosAfterLoad": [
+  {
+   "src": "vid-010-m720.mp4",
+   "paused": false,
+   "t": 1.63,
+   "rs": 4,
+   "top": 64,
+   "h": 321
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 64,
+   "h": 321
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 64,
+   "h": 321
+  }
+ ],
+ "hero": {
+  "h1": "Your level",
+  "font": "Yellowtail, \"Brush Script MT\", cursive",
+  "size": "46px",
+  "center": [
+   195,
+   482
+  ],
+  "btns": [
+   {
+    "t": "Continue",
+    "bg": "rgb(209, 64, 42)",
+    "color": "rgb(255, 255, 255)",
+    "ff": "\"Bricolage Grotesque\"",
+    "w": 128,
+    "h": 48
+   }
+  ],
+  "fonts": [
+   "Bricolage Grotesque 400",
+   "Bricolage Grotesque 500",
+   "Bricolage Grotesque 600",
+   "Bricolage Grotesque 700",
+   "Yellowtail 400"
+  ]
+ },
+ "pageHeight": 6988,
+ "frames": {
+  "n": 4120,
+  "p50": 16.7,
+  "p95": 16.7,
+  "p99": 16.8,
+  "max": 16.8,
+  "over50": 0
+ },
+ "sections": [
+  [
+   0,
+   675,
+   "step-level | Your level"
+  ],
+  [
+   1,
+   1350,
+   "step-level | Your level"
+  ],
+  [
+   2,
+   2025,
+   "step-room | Your room"
+  ],
+  [
+   3,
+   2700,
+   "step-room | Your room"
+  ],
+  [
+   4,
+   3375,
+   "step-room | Your room"
+  ],
+  [
+   5,
+   4050,
+   "step-dates | Dates and guests"
+  ],
+  [
+   6,
+   4725,
+   "step-total | Your total"
+  ],
+  [
+   7,
+   5400,
+   "contact | Talk to us"
+  ],
+  [
+   8,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   9,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   10,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   11,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   12,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   13,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   14,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   15,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   16,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   17,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   18,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   19,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   20,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   21,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   22,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   23,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   24,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   25,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   26,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   27,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   28,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   29,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   30,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   31,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   32,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   33,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   34,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   35,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   36,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   37,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   38,
+   5992,
+   "contact | Talk to us"
+  ],
+  [
+   39,
+   5992,
+   "contact | Talk to us"
+  ]
+ ],
+ "videosAfterScroll": [
+  {
+   "src": "vid-010-m720.mp4",
+   "paused": true,
+   "t": 10.4,
+   "rs": 4,
+   "top": 5434,
+   "h": 169
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 5434,
+   "h": 169
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 5434,
+   "h": 169
+  }
+ ],
+ "totalBytes": 3039473,
+ "thirdAll": [
+  "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Yellowtail&display=swap",
+  "https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInHWVyNJ.woff2",
+  "https://fonts.gstatic.com/s/yellowtail/v25/OZpGg_pnoDtINPfRIlLohlvHwWL9f4k.woff2"
+ ]
+}

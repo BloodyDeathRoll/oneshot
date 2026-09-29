@@ -1,4 +1,4 @@
-version: 0.6.1
+version: 0.6.2
 
 # playbook.md — what a great surf-business site is; shared by all agents.
 
@@ -19,7 +19,7 @@ Every site we deliver must be **visually top level**, not only factually right. 
 ## 1a. Media: video leads, big photography follows
 
 - **Use video whenever the business has any.** Their site's hero video, their YouTube/Vimeo channel, their public Instagram/Facebook reels: the harvester collects them (`dossier.videos[]`, `tools/fetch-video.mjs`) and the site uses the best of them. Video is more engaging than any still; not using a good video the business already made is a failure, not a style choice.
-- **Hero video:** muted, looped, `playsinline`, no controls, a real poster image that is itself a great frame. The poster paints first; the video starts after first paint. Under `prefers-reduced-motion`, with `Save-Data`, or on a failed load, the poster stays and nothing moves. Renditions per `tools/fetch-video.mjs`: desktop ≤ 4 MB, mobile ≤ 2 MB, 8–20 s, faststart.
+- **Hero video:** muted, looped, `playsinline`, no controls, a real poster image that is itself a great frame. The poster paints first; the video starts after first paint. Under `prefers-reduced-motion`, with `Save-Data`, or on a failed load, the poster stays and nothing moves. Renditions per `tools/fetch-video.mjs`: desktop ≤ 4 MB, mobile ≤ 2 MB, 6–20 s (6 s floor since 2026-09-30: a clean two-shot loop of the business's best footage beats a longer one padded with weaker shots), faststart.
 - **Full-bleed photography is the preferred first screen whenever the material is strong enough** — a business-owned photograph at ≥ 1920 px (≥ 1200 px is the hard floor for anything drawn full-width). The pixel floor exists to stop upscaled phone photos; it is never a reason to avoid big imagery when big imagery exists.
 - **More video later.** When a business has no video, say so as a pitch point; producing video for businesses that lack it is a planned service.
 

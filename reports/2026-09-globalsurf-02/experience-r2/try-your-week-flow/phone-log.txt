@@ -1,0 +1,46 @@
+[0 taps] home -> phone-01-home.jpg url=/try-your-week/dist/
+[1 taps] before-hero-cta -> phone-02-before-hero-cta.jpg url=/try-your-week/dist/
+[1 taps] after-hero-cta -> phone-03-after-hero-cta.jpg url=/try-your-week/dist/#levels
+[2 taps] before-tab-rollers -> phone-04-before-tab-rollers.jpg url=/try-your-week/dist/#levels
+[2 taps] after-tab-rollers -> phone-05-after-tab-rollers.jpg url=/try-your-week/dist/#levels
+[3 taps] before-choose-level2 -> phone-06-before-choose-level2.jpg url=/try-your-week/dist/#levels
+[3 taps] after-choose-level2 -> phone-07-after-choose-level2.jpg url=/try-your-week/dist/book/?level=2#level
+VISIBLE ["","1Level","2Room","3Dates & guests","4Total","Level 1 Fomies","Level 2 Rollers","Level 3 Riders","Next"]
+[4 taps] before-next1 -> phone-08-before-next1.jpg url=/try-your-week/dist/book/?level=2#level
+[4 taps] after-next1 -> phone-09-after-next1.jpg url=/try-your-week/dist/book/?level=2#room
+[5 taps] before-tab-twin -> phone-10-before-tab-twin.jpg url=/try-your-week/dist/book/?level=2#room
+[5 taps] after-tab-twin -> phone-11-after-tab-twin.jpg url=/try-your-week/dist/book/?level=2#room
+[6 taps] before-choose-twin -> phone-12-before-choose-twin.jpg url=/try-your-week/dist/book/?level=2#room
+[6 taps] after-choose-twin -> phone-13-after-choose-twin.jpg url=/try-your-week/dist/book/?level=2#dates
+VISIBLE ["","Level","Room","3Dates & guests","4Total","","","","","","","Next"]
+[7 taps] before-female- -> phone-14-before-female-.jpg url=/try-your-week/dist/book/?level=2#dates
+[7 taps] after-female- -> phone-15-after-female-.jpg url=/try-your-week/dist/book/?level=2#dates
+[8 taps] before-couple+ -> phone-16-before-couple+.jpg url=/try-your-week/dist/book/?level=2#dates
+[8 taps] after-couple+ -> phone-17-after-couple+.jpg url=/try-your-week/dist/book/?level=2#dates
+[9 taps] before-open-cal-checkin -> phone-18-before-open-cal-checkin.jpg url=/try-your-week/dist/book/?level=2#dates
+[9 taps] after-open-cal-checkin -> phone-19-after-open-cal-checkin.jpg url=/try-your-week/dist/book/?level=2#dates
+CAL <div class="cal-top"><button type="button" data-m="-1" aria-label="Previous month" disabled=""></button><span>October 2026</span><button type="button" data-m="1" aria-label="Next month"></button></div><table role="grid"><thead><tr><th scope="col">Mo</th><th scope="col">Tu</th><th scope="col">We</th><th scope="col">Th</th><th scope="col">Fr</th><th scope="col">Sa</th><th scope="col">Su</th></tr></thead><tbody><tr><td></td><td></td><td></td><td><button type="button" disabled="" tabindex="-1" aria-hidden="true" aria-pressed="false">1</button></td><td><button type="button" disabled="" tabindex="-1" aria-hidden="true" aria-pressed="false">2</button></td><td><button type="button" class="ok" data-d="2026-10-03" aria-label="Sat, 3 Oct 2026" aria-pressed="false">3</button></td><td><button type="button" disabled="" tabindex="-1" aria-hidden="true" aria-pressed="false">4</button></td></tr><tr><td><
+[10 taps] before-next-month -> phone-20-before-next-month.jpg url=/try-your-week/dist/book/?level=2#dates
+[10 taps] after-next-month -> phone-21-after-next-month.jpg url=/try-your-week/dist/book/?level=2#dates
+[11 taps] before-next-month -> phone-22-before-next-month.jpg url=/try-your-week/dist/book/?level=2#dates
+[11 taps] after-next-month -> phone-23-after-next-month.jpg url=/try-your-week/dist/book/?level=2#dates
+[12 taps] before-next-month -> phone-24-before-next-month.jpg url=/try-your-week/dist/book/?level=2#dates
+[12 taps] after-next-month -> phone-25-after-next-month.jpg url=/try-your-week/dist/book/?level=2#dates
+[13 taps] before-next-month -> phone-26-before-next-month.jpg url=/try-your-week/dist/book/?level=2#dates
+[13 taps] after-next-month -> phone-27-after-next-month.jpg url=/try-your-week/dist/book/?level=2#dates
+[14 taps] before-day20 -> phone-28-before-day20.jpg url=/try-your-week/dist/book/?level=2#dates
+[14 taps] after-day20 -> phone-29-after-day20.jpg url=/try-your-week/dist/book/?level=2#dates
+VISIBLE ["","","","","","","","","Next"]
+[15 taps] before-next3 -> phone-30-before-next3.jpg url=/try-your-week/dist/book/?level=2#dates
+[15 taps] after-next3 -> phone-31-after-next3.jpg url=/try-your-week/dist/book/?level=2#total
+[15 taps] total-settled -> phone-32-total-settled.jpg url=/try-your-week/dist/book/?level=2#total
+VISIBLE ["","Level","Room","Dates & guests","4Total","Continue booking"]
+[16 taps] before-continue-booking -> phone-33-before-continue-booking.jpg url=/try-your-week/dist/book/?level=2#total
+[16 taps] after-continue-booking -> phone-34-after-continue-booking.jpg url=https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&end=2027-02-27&couple=1
+HANDOFF https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&end=2027-02-27&couple=1
+TAPS 16
+API [
+ "GET https://api.bookinglayer.io/public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities?format=choosable&show_available_only=1&mode=checkin&start=2026-0",
+ "GET https://api.bookinglayer.io/public/accommodations/availabilities?product=4b58b491-24fc-4fb8-a40d-2705df961db4&start=2027-02-20&end=2027-02-27&currency=USD&femal",
+ "POST https://api.bookinglayer.io/public/packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items?BD"
+]
