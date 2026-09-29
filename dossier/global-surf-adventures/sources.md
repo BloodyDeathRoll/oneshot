@@ -74,3 +74,19 @@ Full-page and first-screen (`-fold`) shots at 390 px (DPR 2, Android UA) and 144
 - Kept **198**, all `business-owned` (own site, or property uploads on Booking — OTA photos usable per Shahar's 2026-09-19 decision, as applied in earlier dossiers). Resized to ≤ 2000 px long edge only where larger (originals up to 6000 px); `original_width/height` recorded.
 - Every image carries `place`: `lodge` (95 — the lodge, its rooms, pool, food, people there), `surf_kabalana` (1 — filename says Kabalana), `unidentified` (77 — mostly surf shots whose wave cannot be identified; do not caption as the lodge's wave), `not_lodge` (25 — Global Surf Beach House (a different property), Hikkaduwa by filename, Koggala Lake/river trips, retreat venues). Photographer credits in filenames (`capt_nir`, `@wat3rman_visuals`) are in `license_note`.
 - 152 of 198 originals are ≥ 1920 px on the long edge; 84 of the 95 lodge photos are.
+
+## Addendum 2026-09-29 (harvester 0.4.0, for the creative director)
+
+Read only. Nothing booked, no guest data, no login, no cookies.
+
+| URL | Yielded | Did not yield |
+|---|---|---|
+| `https://api.bookinglayer.io/public/products/{level-1-fomies,level-2-rollers,level-3-riders,freestylers-bb-only-package}?new_pax_picker=1&expand[]=linkable_contents&business_domain=…` (17:35:03Z) | Each level's `extended_description` inclusion list (13 items each, verbatim → `offers[0..2].includes_engine`) | Freestylers: `extended_description` null (no inclusion list) |
+| `https://api.bookinglayer.io/public/accommodations/availabilities?product=<L1/L2/L3 id>&start=2027-02-20&end=2027-02-27&currency=USD&{female=1 \| couple=1}&business_domain=…` (6 calls, 17:35:19Z) | Same 3 room types for all three levels: Mixed dorm room - 4 beds ($0), Shared Twin Room - 2 Beds (+$140.04 1 female; +$80.025 pp / $160.05 couple; single-room supplement $350 pp), Deluxe double room (+$418.46 pp either mix); titles, descriptions verbatim, capacity, engine photo URLs → `rooms_engine` | Beds field (read from title/description); Deluxe double photo (none in engine) |
+| `POST https://api.bookinglayer.io/public/packages/<L1/L2/L3 id>/items?business_domain=…` (stateless quote, 1 guest, 20–27 Feb 2027, `items: []`, 17:39:50Z) | Base $1466 each; the "Upgrade your package" items with descriptions and prices → `offers[0..2].package_items_engine`; only paid add-on Airport pickup / drop off from $220 pp | Nothing held (no cart id/token in the response) |
+| `https://bookinglayer-cdn.ams3.cdn.digitaloceanspaces.com/uploads/businesses/1291/images/c4a-1662954204.png` | Engine twin photo (800×533) viewed for photo grouping; not stored in assets (the dossier photos are larger) | — |
+| `https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html` (headless render, HTTP 202, 17:37:04Z; plain curl got a 4 KB bot page) | Room galleries per Booking room type (`RoomPhoto` lists): Dorm 9 photos, Superior Twin 8, Deluxe Double 14 → matched to `images[]` by bstatic photo id → `room_photo_groups` | — |
+| `https://www.globalsurf.com/` (17:37:58Z) | Logo: `wp-content/uploads/2019/03/Logo_GlobalSurf.svg` (schema.org Organization logo; globe mark + wordmark) → `assets/logo-001.svg`; `…/global_web_logo_white-02.svg` (white wordmark) → `assets/logo-002.svg` | No lodge-specific logo file |
+| `https://www.instagram.com/globalsurf_/` (headless, logged out, 17:39:07Z) | 17.2K followers (meta "17K"), 1,622 posts, bio → `contact.instagram_profiles` | Posts (login wall) |
+| `https://www.instagram.com/globalsurf_kabalana/` (headless, logged out, 17:39:15Z) | 1,869 followers, 75 posts, bio, 10 highlight titles | Posts, highlight contents (login wall) |
+| `assets/index.json` (local) | vid-003 cut 11–21 s, 5 renditions + poster already on disk → `videos[vid-003]` | — |

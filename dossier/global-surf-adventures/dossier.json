@@ -109,6 +109,26 @@
       "source_url": "https://www.globalsurf.com/kabalana-lodge-surf-packages/",
       "fetched_at": "2026-09-28T16:57:06Z",
       "note": "named only inside a guest testimonial (Seagallas). ISA course host Pat Renaud (2024 course) is a visiting presenter, not staff. No current team list published."
+    },
+    "logo": {
+      "value": "assets/logo-001.svg",
+      "source_url": "https://www.globalsurf.com/wp-content/uploads/2019/03/Logo_GlobalSurf.svg",
+      "fetched_at": "2026-09-29T17:37:58Z",
+      "license": "business-owned",
+      "license_note": "the business's own logo, declared as the Organization logo in globalsurf.com's schema.org JSON-LD",
+      "found_on": "https://www.globalsurf.com/",
+      "format": "SVG (vector), black globe mark + GLOBALSURF wordmark, viewBox 128×39",
+      "variants": [
+        {
+          "file": "assets/logo-002.svg",
+          "source_url": "https://www.globalsurf.com/wp-content/uploads/2019/03/global_web_logo_white-02.svg",
+          "fetched_at": "2026-09-29T17:37:58Z",
+          "license": "business-owned",
+          "license_note": "image on the business's own homepage (wp-image-4911)",
+          "format": "SVG, white GLOBALSURF wordmark only (no globe), viewBox 257.2×88.8"
+        }
+      ],
+      "note": "agency logo (GLOBALSURF); no separate lodge logo file found — the lodge's \"Lodge\" brush lettering exists only on the roadside sign (img-072)"
     }
   },
   "location": {
@@ -212,7 +232,69 @@
       "source_url": "https://www.globalsurf.com/",
       "fetched_at": "2026-09-28T16:57:06Z",
       "note": "instagram/facebook/youtube from the site footer; lodge Instagram from the scout (bio of @globalsurf_); tripadvisor URL unverified (403)"
-    }
+    },
+    "instagram_profiles": [
+      {
+        "handle": "@globalsurf_",
+        "url": "https://www.instagram.com/globalsurf_/",
+        "name": "GLOBAL SURF",
+        "followers": {
+          "value": "17.2K",
+          "meta_value": "17K",
+          "source_url": "https://www.instagram.com/globalsurf_/",
+          "fetched_at": "2026-09-29T17:39:07Z",
+          "note": "rendered profile header \"17.2K followers\"; page meta \"17K Followers, 1,874 Following, 1,622 Posts\""
+        },
+        "posts": {
+          "value": "1,622",
+          "source_url": "https://www.instagram.com/globalsurf_/",
+          "fetched_at": "2026-09-29T17:39:07Z"
+        },
+        "bio": {
+          "value": "≋ We curate holistic surf & wellness experiences\n≋ Wellness experiences >>@globalsurf.retreats\n≋ Srilanka surf camp >>@globalsurf_kabalana\n#beglobal",
+          "source_url": "https://www.instagram.com/globalsurf_/",
+          "fetched_at": "2026-09-29T17:39:07Z"
+        }
+      },
+      {
+        "handle": "@globalsurf_kabalana",
+        "url": "https://www.instagram.com/globalsurf_kabalana/",
+        "name": "Global Surf Lodge Kabalana",
+        "followers": {
+          "value": "1,869",
+          "source_url": "https://www.instagram.com/globalsurf_kabalana/",
+          "fetched_at": "2026-09-29T17:39:15Z",
+          "note": "rendered header and page meta agree: \"1,869 Followers, 171 Following, 75 Posts\" (header shows 168 following)"
+        },
+        "posts": {
+          "value": "75",
+          "source_url": "https://www.instagram.com/globalsurf_kabalana/",
+          "fetched_at": "2026-09-29T17:39:15Z"
+        },
+        "bio": {
+          "value": "≈ the home for all ocean lovers\n≈ footwear is discouraged\n≈ part of the @globalsurf_ family",
+          "source_url": "https://www.instagram.com/globalsurf_kabalana/",
+          "fetched_at": "2026-09-29T17:39:15Z"
+        },
+        "highlights": {
+          "value": [
+            "Season 26-27❤️",
+            "F & B",
+            "Pool & Chill",
+            "Ice Bath Zone",
+            "The XP Room",
+            "Accommodation",
+            "Lodge life",
+            "Day schedule",
+            "Lessons",
+            "Wellness"
+          ],
+          "source_url": "https://www.instagram.com/globalsurf_kabalana/",
+          "fetched_at": "2026-09-29T17:39:15Z",
+          "note": "highlight titles only; contents behind login"
+        }
+      }
+    ]
   },
   "booking": {
     "path": {
@@ -349,8 +431,11 @@
           "Local Coffee & Tea all day",
           "Cultural or nature adventure (Half day excursion)"
         ],
+        "heading": "The LEVEL 1 package includes:",
+        "count": 13,
         "source_url": "https://api.bookinglayer.io/public/products/level-1-fomies?new_pax_picker=1&expand%5B%5D=linkable_contents&business_domain=globalsurfadventures.bookinglayer.com",
-        "fetched_at": "2026-09-28T17:04:00Z"
+        "fetched_at": "2026-09-29T17:35:03Z",
+        "note": "verbatim from the product's extended_description (HTML stripped, nbsp → space); this is the list the engine shows"
       },
       "includes_site": {
         "value": [
@@ -377,6 +462,77 @@
         "value": "It’s your first time grabbing a surfboard but you’re ready to make love to the ocean! You don’t need any previous surfing experience to become a Foamie and join LEVEL 1 - Catch your first wave!",
         "source_url": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
         "fetched_at": "2026-09-28T17:06:10Z"
+      },
+      "package_items_engine": {
+        "value": [
+          {
+            "title": "Dinner",
+            "description": "Whatever your dietary preference is, we have great dishes that will make you want to back again and again!",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Complementary snacks / coffee & tea",
+            "description": "While staying with us, we want you to feel spoiled and welcomed at all times! We offer you unlimited local coffee and fresh drinking water for your convenience.",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Surfboard rental",
+            "description": "We have a great variety of soft boards in many sizes and shapes, perfectly suited for beginners to intermediates surfers. You can try as many boards as you want until you'll find your match!",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Guided surf session (2 hours net water time)",
+            "description": "The surf is ready, are you? Our dedicated team of instructors will take you to surf in small groups of up to 6 people in order to ensure maximal attention and maintain a positive learning curve",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Cultural / Nature exploration trip",
+            "description": "Sri Lanka has an amazing culture, nature, and wildlife. We want you to feel it yourself! On our excursions, we will check some of our favorite Buddhist temples, go to local tea plantations and more.",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Video analysis & technique improvement",
+            "description": "There is no better way to improve your surfing than watching your sessions and analyze your position, body movements, and stance!",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Massage",
+            "description": null,
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Airport pickup / drop off",
+            "description": "We are happy to offer you our airport shuttle service.\nA driver will be waiting for you at the welcoming hall and will bring you all the way to our camp.\nThe drive usually takes 2.5-3 hours.",
+            "price_from": 220,
+            "price_current": null,
+            "pricing": "person",
+            "included": false
+          }
+        ],
+        "source_url": "https://api.bookinglayer.io/public/packages/877aef3d-86ed-4b60-8932-03e49c613af8/items?business_domain=globalsurfadventures.bookinglayer.com",
+        "fetched_at": "2026-09-29T17:39:50Z",
+        "note": "the engine's \"Upgrade your package\" step items, from a stateless price-quote POST (1 guest, 20–27 Feb 2027, items: []); nothing booked or held. price_current 0 = included; only \"Airport pickup / drop off\" is paid (from $220 pp). This list differs from includes_engine (e.g. Level 1 has no surf-theory item here, and \"Massage\" vs \"Ayurvedic spa treatment\")."
       }
     },
     {
@@ -419,8 +575,11 @@
           "Local Coffee & Tea all day",
           "Cultural or nature adventure (Half day excursion)"
         ],
+        "heading": "The LEVEL 2 package includes:",
+        "count": 13,
         "source_url": "https://api.bookinglayer.io/public/products/level-2-rollers?new_pax_picker=1&expand%5B%5D=linkable_contents&business_domain=globalsurfadventures.bookinglayer.com",
-        "fetched_at": "2026-09-28T17:04:00Z"
+        "fetched_at": "2026-09-29T17:35:03Z",
+        "note": "verbatim from the product's extended_description (HTML stripped, nbsp → space); this is the list the engine shows"
       },
       "includes_site": {
         "value": [
@@ -448,6 +607,101 @@
         "value": "You’re already hooked on surfing, can stand up on a board, but you still struggle with paddling out to the line-up and catching slick green waves - Join LEVEL 2 to catch your first green waves!",
         "source_url": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers",
         "fetched_at": "2026-09-28T17:06:10Z"
+      },
+      "package_items_engine": {
+        "value": [
+          {
+            "title": "Dinner",
+            "description": "Whatever your dietary preference is, we have great dishes that will make you want to back again and again!",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Complementary snacks / coffee & tea",
+            "description": "While staying with us, we want you to feel spoiled and welcomed at all times! We offer you unlimited local coffee and fresh drinking water for your convenience.",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Surfboard rental",
+            "description": "We have a great variety of soft boards in many sizes and shapes, perfectly suited for beginners to intermediates surfers. You can try as many boards as you want until you'll find your match!",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Surf theory lessons",
+            "description": "In addition to the practical knowledge and water time, we aim to share our experience and teach you the theory, history, and unwritten rules of this amazing sport. Stay tuned and bring your notebook!",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Photographed surf session (2 hours)",
+            "description": "Who doesn't wanna have the greatest waves of his life filmed? Pictures are not only a way to preserve great memories but also a wonderful way to progress and improve your surfing. Say cheese!",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Video analysis & technique improvement",
+            "description": "There is no better way to improve your surfing than watching your sessions and analyze your position, body movements, and stance!",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Cultural / Nature exploration trip",
+            "description": "Sri Lanka has an amazing culture, nature, and wildlife. We want you to feel it yourself! On our excursions, we will check some of our favorite Buddhist temples, go to local tea plantations and more.",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "1 on 1 feedback session",
+            "description": "Get 1-on-1 feedback with your surf instructors, share your expectations and satisfaction from the learning process, and get personal tips that will help you step up your game!",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Guided surf session (2 hours net water time)",
+            "description": "The surf is ready, are you? Our dedicated team of instructors will take you to surf in small groups of up to 6 people in order to ensure maximal attention and maintain a positive learning curve",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Massage",
+            "description": null,
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Airport pickup / drop off",
+            "description": "We are happy to offer you our airport shuttle service.\nA driver will be waiting for you at the welcoming hall and will bring you all the way to our camp.\nThe drive usually takes 2.5-3 hours.",
+            "price_from": 220,
+            "price_current": null,
+            "pricing": "person",
+            "included": false
+          }
+        ],
+        "source_url": "https://api.bookinglayer.io/public/packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items?business_domain=globalsurfadventures.bookinglayer.com",
+        "fetched_at": "2026-09-29T17:39:50Z",
+        "note": "the engine's \"Upgrade your package\" step items, from a stateless price-quote POST (1 guest, 20–27 Feb 2027, items: []); nothing booked or held. price_current 0 = included; only \"Airport pickup / drop off\" is paid (from $220 pp). This list differs from includes_engine (e.g. Level 1 has no surf-theory item here, and \"Massage\" vs \"Ayurvedic spa treatment\")."
       }
     },
     {
@@ -480,7 +734,7 @@
           "7 breakfasts",
           "7 days of unlimited equipment use",
           "5 dinners",
-          "5 surf session with our professional coach ( 2 hours net water time each)",
+          "5 surf session with our professional coach (2 hours net water time each)",
           "5 surf theory lesson",
           "4 photographed/filmed session",
           "3 Video analysis sessions",
@@ -490,8 +744,11 @@
           "Local Coffee & Tea all day",
           "Cultural or nature adventure (Half day excursion)"
         ],
+        "heading": "The LEVEL 3 package includes:",
+        "count": 13,
         "source_url": "https://api.bookinglayer.io/public/products/level-3-riders?new_pax_picker=1&expand%5B%5D=linkable_contents&business_domain=globalsurfadventures.bookinglayer.com",
-        "fetched_at": "2026-09-28T17:04:00Z"
+        "fetched_at": "2026-09-29T17:35:03Z",
+        "note": "verbatim from the product's extended_description (HTML stripped, nbsp → space); this is the list the engine shows; the 2026-09-28 capture read item 5 as \"( 2 hours\" — the HTML has no space after the bracket"
       },
       "includes_site": {
         "value": [
@@ -518,6 +775,85 @@
         "value": "You’re already carving it up, but you want to improve your skill set. It’s time to make the most of the epic Kabalana conditions and score the best waves around - LEVEL 3 is ready for you!",
         "source_url": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders",
         "fetched_at": "2026-09-28T17:06:10Z"
+      },
+      "package_items_engine": {
+        "value": [
+          {
+            "title": "Dinner",
+            "description": "Whatever your dietary preference is, we have great dishes that will make you want to back again and again!",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Complementary snacks / coffee & tea",
+            "description": "While staying with us, we want you to feel spoiled and welcomed at all times! We offer you unlimited local coffee and fresh drinking water for your convenience.",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Surf theory lessons",
+            "description": "In addition to the practical knowledge and water time, we aim to share our experience and teach you the theory, history, and unwritten rules of this amazing sport. Stay tuned and bring your notebook!",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Video analysis & technique improvement",
+            "description": "There is no better way to improve your surfing than watching your sessions and analyze your position, body movements, and stance!",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Photographed surf session (2 hours)",
+            "description": "Who doesn't wanna have the greatest waves of his life filmed? Pictures are not only a way to preserve great memories but also a wonderful way to progress and improve your surfing. Say cheese!",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Cultural / Nature exploration trip",
+            "description": "Sri Lanka has an amazing culture, nature, and wildlife. We want you to feel it yourself! On our excursions, we will check some of our favorite Buddhist temples, go to local tea plantations and more.",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Guided surf session (2 hours net water time)",
+            "description": "The surf is ready, are you? Our dedicated team of instructors will take you to surf in small groups of up to 6 people in order to ensure maximal attention and maintain a positive learning curve",
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Massage",
+            "description": null,
+            "price_from": null,
+            "price_current": 0,
+            "pricing": "person",
+            "included": true
+          },
+          {
+            "title": "Airport pickup / drop off",
+            "description": "We are happy to offer you our airport shuttle service.\nA driver will be waiting for you at the welcoming hall and will bring you all the way to our camp.\nThe drive usually takes 2.5-3 hours.",
+            "price_from": 220,
+            "price_current": null,
+            "pricing": "person",
+            "included": false
+          }
+        ],
+        "source_url": "https://api.bookinglayer.io/public/packages/54ec3447-2efb-4677-8685-f272e00d32e8/items?business_domain=globalsurfadventures.bookinglayer.com",
+        "fetched_at": "2026-09-29T17:39:50Z",
+        "note": "the engine's \"Upgrade your package\" step items, from a stateless price-quote POST (1 guest, 20–27 Feb 2027, items: []); nothing booked or held. price_current 0 = included; only \"Airport pickup / drop off\" is paid (from $220 pp). This list differs from includes_engine (e.g. Level 1 has no surf-theory item here, and \"Massage\" vs \"Ayurvedic spa treatment\")."
       }
     },
     {
@@ -4867,7 +5203,67 @@
       ],
       "source_file": "assets/video/vid-003-source.mp4",
       "sheet": "assets/video/vid-003-sheet.jpg",
-      "sha256": "71aea3f832d2a53fa3886724c86392cc690c7115e6aa5bd45ad648b2b306b528"
+      "sha256": "71aea3f832d2a53fa3886724c86392cc690c7115e6aa5bd45ad648b2b306b528",
+      "cut": {
+        "start_s": 11,
+        "length_s": 10
+      },
+      "renditions": [
+        {
+          "id": "vid-003-d1920-mp4",
+          "file": "assets/video/vid-003-d1920.mp4",
+          "mime": "video/mp4",
+          "width": 1920,
+          "height": 1080,
+          "bytes": 3758571,
+          "role": "hero-desktop"
+        },
+        {
+          "id": "vid-003-m1280-mp4",
+          "file": "assets/video/vid-003-m1280.mp4",
+          "mime": "video/mp4",
+          "width": 1280,
+          "height": 720,
+          "bytes": 1922442,
+          "role": "hero-mobile"
+        },
+        {
+          "id": "vid-003-m720-mp4",
+          "file": "assets/video/vid-003-m720.mp4",
+          "mime": "video/mp4",
+          "width": 720,
+          "height": 406,
+          "bytes": 1768471,
+          "role": "hero-mobile-small"
+        },
+        {
+          "id": "vid-003-d1920-webm",
+          "file": "assets/video/vid-003-d1920.webm",
+          "mime": "video/webm",
+          "width": 1920,
+          "height": 1080,
+          "bytes": 2943046,
+          "role": "hero-desktop"
+        },
+        {
+          "id": "vid-003-m1280-webm",
+          "file": "assets/video/vid-003-m1280.webm",
+          "mime": "video/webm",
+          "width": 1280,
+          "height": 720,
+          "bytes": 1777359,
+          "role": "hero-mobile"
+        }
+      ],
+      "poster": {
+        "id": "vid-003-poster-jpg",
+        "file": "assets/video/vid-003-poster.jpg",
+        "avif": "assets/video/vid-003-poster.avif",
+        "at_s": 14,
+        "width": 1920,
+        "height": 1080
+      },
+      "cut_note": "cut 11–21 s (after the title card), made 2026-09-28 with tools/fetch-video.mjs; recorded from assets/index.json. Level 2 clip: a rider on a reef wave, a surfer paddling. The poster frame carries the channel's round badge top-left. Not a hero candidate; vid-003e (cropped) is being added separately."
     },
     {
       "id": "vid-004",
@@ -5474,6 +5870,30 @@
       "why": "no video names the wave on screen; the surf in the picks is south-coast Sri Lanka footage from the lodge's own videos, not verified as Kabalana's own break",
       "pitch_point": false,
       "blocking": false
+    },
+    {
+      "field": "room_photo_groups",
+      "why": "which photo shows which bookable engine room type is a proposal (Booking.com labels + visual evidence); owner must confirm",
+      "pitch_point": false,
+      "blocking": false
+    },
+    {
+      "field": "rooms_engine[Deluxe double room].photos_engine",
+      "why": "the engine has no photo for the Deluxe double room",
+      "pitch_point": true,
+      "blocking": false
+    },
+    {
+      "field": "offers[Freestylers].rooms / inclusions",
+      "why": "Freestylers has no extended_description in the engine and no choosable dates, so no room types or supplements could be sampled",
+      "pitch_point": false,
+      "blocking": false
+    },
+    {
+      "field": "instagram posts",
+      "why": "posts, reels and highlight contents are behind the login wall; only profile header (followers, posts count, bio, highlight titles) collected",
+      "pitch_point": false,
+      "blocking": false
     }
   ],
   "contradictions": [
@@ -5525,6 +5945,27 @@
       "b": "April until November",
       "source_url": "https://www.globalsurf.com/global-hotels/mozambique/mozambique/",
       "fetched_at": "2026-09-28T16:57:06Z"
+    },
+    {
+      "field": "rooms (twin bed configuration)",
+      "values": [
+        {
+          "value": "Shared Twin Room - 2 Beds: \"one double bed and one single bed\"",
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z"
+        },
+        {
+          "value": "Superior Twin Room: 2 single beds",
+          "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+          "fetched_at": "2026-09-29T17:37:04Z"
+        },
+        {
+          "value": "\"4 twin Rooms, 4 double/triple rooms, and 4 family rooms\"",
+          "source_url": "https://www.globalsurf.com/kabalana-lodge-surf-packages/",
+          "fetched_at": "2026-09-28T16:57:06Z"
+        }
+      ],
+      "note": "three sources describe the rooms differently; owner to confirm"
     }
   ],
   "test_mode_verdict": {
@@ -5537,5 +5978,491 @@
     },
     "verdict": "buildable",
     "note": "buildable as the Kabalana lodge site; the agency scope is a schema gap, not a blocker"
+  },
+  "rooms_engine": {
+    "value": [
+      {
+        "engine_title": {
+          "value": "Mixed dorm room - 4 beds",
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z"
+        },
+        "description": {
+          "value": "Our new gallery room is fitted with 4 comfortable single beds and features a private outdoor bathroom. The dorm is suitable for larger groups or travelers on a budget without compromising",
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z",
+          "language": "en",
+          "note": "verbatim; the engine text ends mid-sentence (\"without compromising\")"
+        },
+        "beds": {
+          "value": "4 single beds",
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z",
+          "note": "the engine has no beds field; read from title \"4 beds\"; description \"fitted with 4 comfortable single beds\""
+        },
+        "capacity": {
+          "value": 4,
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z",
+          "note": "engine `capacity` of the physical room returned (pax.max 4)"
+        },
+        "is_private": {
+          "value": false,
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z"
+        },
+        "supplement_samples": [
+          {
+            "product": "LEVEL 1 - Fomies",
+            "start": "2027-02-20",
+            "end": "2027-02-27",
+            "nights": 7,
+            "guests": "1 female",
+            "per_person": 0,
+            "total": 0,
+            "currency": "USD",
+            "unit": "per person, whole stay, on top of the package base price",
+            "raw": null,
+            "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+            "fetched_at": "2026-09-29T17:35:19Z",
+            "note": "price.from null = included in the base price ($0)"
+          },
+          {
+            "product": "LEVEL 1 - Fomies",
+            "start": "2027-02-20",
+            "end": "2027-02-27",
+            "nights": 7,
+            "guests": "1 couple (2 guests)",
+            "per_person": 0,
+            "total": 0,
+            "currency": "USD",
+            "unit": "per person, whole stay, on top of the package base price",
+            "raw": null,
+            "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=0&male=0&couple=1&business_domain=globalsurfadventures.bookinglayer.com",
+            "fetched_at": "2026-09-29T17:35:19Z",
+            "note": "price.from null = included in the base price ($0)"
+          }
+        ],
+        "photos_engine": {
+          "value": [
+            "https://bookinglayer-cdn.ams3.cdn.digitaloceanspaces.com/uploads/businesses/1291/2019/10/26/20190913-_DSC8048-HDRroom%206.jpg"
+          ],
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z"
+        },
+        "engine_ids_seen": {
+          "value": [
+            {
+              "id": "43112c20-a260-403d-9d5e-01450e01162d",
+              "backoffice_title": "Mixed dorm - 2"
+            }
+          ],
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z",
+          "note": "one physical room per type is returned per query; ids vary by date"
+        }
+      },
+      {
+        "engine_title": {
+          "value": "Shared Twin Room - 2 Beds",
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z"
+        },
+        "description": {
+          "value": "Our twin rooms have one double bed and one single bed, a lovely private bathroom and all day beach view. Note - to privately reserve the room, please make sure you mark the section box above!",
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z",
+          "language": "en"
+        },
+        "beds": {
+          "value": "1 double bed + 1 single bed",
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z",
+          "note": "the engine has no beds field; read from description \"one double bed and one single bed\" (title says \"2 Beds\")"
+        },
+        "capacity": {
+          "value": 2,
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z",
+          "note": "engine `capacity` of the physical room returned (pax.max 2)"
+        },
+        "is_private": {
+          "value": false,
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z"
+        },
+        "supplement_samples": [
+          {
+            "product": "LEVEL 1 - Fomies",
+            "start": "2027-02-20",
+            "end": "2027-02-27",
+            "nights": 7,
+            "guests": "1 female",
+            "per_person": 140.04,
+            "total": 140.04,
+            "currency": "USD",
+            "unit": "per person, whole stay, on top of the package base price",
+            "raw": 140.03999999999996,
+            "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+            "fetched_at": "2026-09-29T17:35:19Z"
+          },
+          {
+            "product": "LEVEL 1 - Fomies",
+            "start": "2027-02-20",
+            "end": "2027-02-27",
+            "nights": 7,
+            "guests": "1 couple (2 guests)",
+            "per_person": 80.025,
+            "total": 160.05,
+            "currency": "USD",
+            "unit": "per person, whole stay, on top of the package base price",
+            "raw": 80.02499999999998,
+            "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=0&male=0&couple=1&business_domain=globalsurfadventures.bookinglayer.com",
+            "fetched_at": "2026-09-29T17:35:19Z"
+          }
+        ],
+        "photos_engine": {
+          "value": [
+            "https://bookinglayer-cdn.ams3.cdn.digitaloceanspaces.com/uploads/businesses/1291/images/c4a-1662954204.png"
+          ],
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z"
+        },
+        "engine_ids_seen": {
+          "value": [
+            {
+              "id": "08c9a89b-4cce-4d0d-a89d-b999ed2867e1",
+              "backoffice_title": "Twin room - 5"
+            }
+          ],
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z",
+          "note": "one physical room per type is returned per query; ids vary by date"
+        },
+        "single_room_supplement": {
+          "value": 350,
+          "currency": "USD",
+          "unit": "per person",
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z",
+          "note": "engine field `pax.single_room_supplement`; the twin description refers to it (\"to privately reserve the room … mark the section box above\")"
+        }
+      },
+      {
+        "engine_title": {
+          "value": "Deluxe double room",
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z"
+        },
+        "description": {
+          "value": "Our double rooms have one queen-size bed and an optional additional single bed.\nNote - to privately reserve this room, please make sure you mark the selection box above upon proceeding to check out!",
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z",
+          "language": "en"
+        },
+        "beds": {
+          "value": "1 queen-size bed + optional additional single bed",
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z",
+          "note": "the engine has no beds field; read from description \"one queen-size bed and an optional additional single bed\""
+        },
+        "capacity": {
+          "value": 2,
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z",
+          "note": "engine `capacity` of the physical room returned (pax.max 2)"
+        },
+        "is_private": {
+          "value": true,
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z"
+        },
+        "supplement_samples": [
+          {
+            "product": "LEVEL 1 - Fomies",
+            "start": "2027-02-20",
+            "end": "2027-02-27",
+            "nights": 7,
+            "guests": "1 female",
+            "per_person": 418.46,
+            "total": 418.46,
+            "currency": "USD",
+            "unit": "per person, whole stay, on top of the package base price",
+            "raw": 418.46000000000004,
+            "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+            "fetched_at": "2026-09-29T17:35:19Z"
+          },
+          {
+            "product": "LEVEL 1 - Fomies",
+            "start": "2027-02-20",
+            "end": "2027-02-27",
+            "nights": 7,
+            "guests": "1 couple (2 guests)",
+            "per_person": 418.46,
+            "total": 836.92,
+            "currency": "USD",
+            "unit": "per person, whole stay, on top of the package base price",
+            "raw": 418.46000000000004,
+            "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=0&male=0&couple=1&business_domain=globalsurfadventures.bookinglayer.com",
+            "fetched_at": "2026-09-29T17:35:19Z"
+          }
+        ],
+        "photos_engine": {
+          "value": [],
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z",
+          "note": "the engine has no photo for this room type"
+        },
+        "engine_ids_seen": {
+          "value": [
+            {
+              "id": "d712a99e-bb1c-4e71-9421-2bdcc88468ed",
+              "backoffice_title": "Double room - 4"
+            }
+          ],
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z",
+          "note": "one physical room per type is returned per query; ids vary by date"
+        }
+      }
+    ],
+    "note": "Every accommodation type the engine offered with the Kabalana packages for the sample stay 20–27 Feb 2027 (7 nights). Levels 1, 2 and 3 returned the same three types and the same supplements for both guest mixes: {\"L1\": [\"Mixed dorm room - 4 beds\", \"Shared Twin Room - 2 Beds\", \"Deluxe double room\"], \"L2\": [\"Mixed dorm room - 4 beds\", \"Shared Twin Room - 2 Beds\", \"Deluxe double room\"], \"L3\": [\"Mixed dorm room - 4 beds\", \"Shared Twin Room - 2 Beds\", \"Deluxe double room\"]}. Which types are offered changes by date (docs/bookinglayer.md §2.1: on 3 Oct 2026 and 13 Feb 2027 only one type was free). Supplements are samples for these dates, not a price list; the API returns floats, rounded here (raw kept). Package base price is separate ($1466 pp for 7 nights, offers[]). Freestylers (flexible, min 4 nights) had no choosable dates and was not sampled.",
+    "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+    "fetched_at": "2026-09-29T17:35:19Z"
+  },
+  "room_photo_groups": {
+    "status": "proposal — the owner must confirm which photo shows which bookable room type",
+    "type_mapping": [
+      {
+        "booking_com": "Single Bed in Dormitory Room (1 single bed)",
+        "engine": "Mixed dorm room - 4 beds",
+        "confidence": "high",
+        "why": "Booking dorm gallery = the loft room with ladder; the engine's own dorm photo (_DSC8048) is the same frame as img-063/img-078"
+      },
+      {
+        "booking_com": "Superior Twin Room (2 single beds)",
+        "engine": "Shared Twin Room - 2 Beds",
+        "confidence": "medium",
+        "why": "name matches and the engine's twin photo (c4a-1662954204.png) shows the same room style as Booking's twin photo img-080 (two beds side by side, brown floral cushions); but beds disagree: Booking says 2 single beds, engine says one double + one single (see contradictions)"
+      },
+      {
+        "booking_com": "Deluxe Double Room (1 large double bed)",
+        "engine": "Deluxe double room",
+        "confidence": "high",
+        "why": "same name; engine has no photo of its own for this type"
+      }
+    ],
+    "groups": {
+      "Mixed dorm room - 4 beds": [
+        {
+          "image": "img-063",
+          "confidence": "high",
+          "basis": "the engine's dorm photo is this frame (DSC8048); source filename \"…-HDRdorm-room-6.jpg\"; loft with ladder and single beds",
+          "source_url": "https://api.bookinglayer.io/public/accommodations/availabilities?product=877aef3d-86ed-4b60-8932-03e49c613af8&start=2027-02-20&end=2027-02-27&currency=USD&female=1&male=0&couple=0&business_domain=globalsurfadventures.bookinglayer.com",
+          "fetched_at": "2026-09-29T17:35:19Z"
+        },
+        {
+          "image": "img-078",
+          "confidence": "high",
+          "basis": "Booking.com lists this photo under its room type \"Single Bed in Dormitory Room\" (property-uploaded room gallery, `RoomPhoto` lists in the page data); loft with ladder visible",
+          "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+          "fetched_at": "2026-09-29T17:37:04Z"
+        },
+        {
+          "image": "img-095",
+          "confidence": "high",
+          "basis": "Booking.com lists this photo under its room type \"Single Bed in Dormitory Room\" (property-uploaded room gallery, `RoomPhoto` lists in the page data); two single mattresses on the timber loft floor",
+          "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+          "fetched_at": "2026-09-29T17:37:04Z"
+        },
+        {
+          "image": "img-042",
+          "confidence": "high",
+          "basis": "Booking.com lists this photo under its room type \"Single Bed in Dormitory Room\" (property-uploaded room gallery, `RoomPhoto` lists in the page data); looking down from the loft floor",
+          "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+          "fetched_at": "2026-09-29T17:37:04Z"
+        },
+        {
+          "image": "img-050",
+          "confidence": "high",
+          "basis": "Booking.com lists this photo under its room type \"Single Bed in Dormitory Room\" (property-uploaded room gallery, `RoomPhoto` lists in the page data); exterior of the room (hammock at the entrance), not an interior",
+          "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+          "fetched_at": "2026-09-29T17:37:04Z"
+        },
+        {
+          "image": "img-068",
+          "confidence": "medium",
+          "basis": "same loft space as img-095 (same wall art and wall fan, mattresses on the timber loft floor); globalsurf.com filename \"…room-1.jpg\""
+        }
+      ],
+      "Shared Twin Room - 2 Beds": [
+        {
+          "image": "img-080",
+          "confidence": "medium",
+          "basis": "Booking.com lists this photo under its room type \"Superior Twin Room\" (property-uploaded room gallery, `RoomPhoto` lists in the page data); type mapping is medium (bed configuration disagrees)",
+          "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+          "fetched_at": "2026-09-29T17:37:04Z"
+        },
+        {
+          "image": "img-084",
+          "confidence": "medium",
+          "basis": "Booking.com lists this photo under its room type \"Superior Twin Room\" (property-uploaded room gallery, `RoomPhoto` lists in the page data); lamp close-up with the room behind",
+          "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+          "fetched_at": "2026-09-29T17:37:04Z"
+        },
+        {
+          "image": "img-083",
+          "confidence": "medium",
+          "basis": "Booking.com lists this photo under its room type \"Superior Twin Room\" (property-uploaded room gallery, `RoomPhoto` lists in the page data); detail (towels, magazine on a bench), not a room view",
+          "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+          "fetched_at": "2026-09-29T17:37:04Z"
+        },
+        {
+          "image": "img-013",
+          "confidence": "medium",
+          "basis": "two beds side by side with brown floral cushions and dark headboards, the same set-up as the engine's twin photo; not labelled at its source"
+        }
+      ],
+      "Deluxe double room": [
+        {
+          "image": "img-081",
+          "confidence": "high",
+          "basis": "Booking.com lists this photo under its room type \"Deluxe Double Room\" (property-uploaded room gallery, `RoomPhoto` lists in the page data); double bed plus a single daybed (engine: queen + optional single)",
+          "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+          "fetched_at": "2026-09-29T17:37:04Z"
+        },
+        {
+          "image": "img-082",
+          "confidence": "high",
+          "basis": "Booking.com lists this photo under its room type \"Deluxe Double Room\" (property-uploaded room gallery, `RoomPhoto` lists in the page data)",
+          "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+          "fetched_at": "2026-09-29T17:37:04Z"
+        },
+        {
+          "image": "img-028",
+          "confidence": "high",
+          "basis": "Booking.com lists this photo under its room type \"Deluxe Double Room\" (property-uploaded room gallery, `RoomPhoto` lists in the page data); portrait",
+          "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+          "fetched_at": "2026-09-29T17:37:04Z"
+        },
+        {
+          "image": "img-029",
+          "confidence": "high",
+          "basis": "Booking.com lists this photo under its room type \"Deluxe Double Room\" (property-uploaded room gallery, `RoomPhoto` lists in the page data); portrait",
+          "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+          "fetched_at": "2026-09-29T17:37:04Z"
+        },
+        {
+          "image": "img-041",
+          "confidence": "high",
+          "basis": "Booking.com lists this photo under its room type \"Deluxe Double Room\" (property-uploaded room gallery, `RoomPhoto` lists in the page data)",
+          "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+          "fetched_at": "2026-09-29T17:37:04Z"
+        },
+        {
+          "image": "img-043",
+          "confidence": "high",
+          "basis": "Booking.com lists this photo under its room type \"Deluxe Double Room\" (property-uploaded room gallery, `RoomPhoto` lists in the page data)",
+          "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+          "fetched_at": "2026-09-29T17:37:04Z"
+        },
+        {
+          "image": "img-045",
+          "confidence": "high",
+          "basis": "Booking.com lists this photo under its room type \"Deluxe Double Room\" (property-uploaded room gallery, `RoomPhoto` lists in the page data); portrait, window detail",
+          "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+          "fetched_at": "2026-09-29T17:37:04Z"
+        },
+        {
+          "image": "img-048",
+          "confidence": "high",
+          "basis": "listed under Booking.com \"Deluxe Double Room\" and also under \"Superior Twin Room\"; cushion detail, portrait",
+          "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+          "fetched_at": "2026-09-29T17:37:04Z"
+        },
+        {
+          "image": "img-044",
+          "confidence": "high",
+          "basis": "Booking.com lists this photo under its room type \"Deluxe Double Room\" (property-uploaded room gallery, `RoomPhoto` lists in the page data); detail (sofa, prints)",
+          "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+          "fetched_at": "2026-09-29T17:37:04Z"
+        },
+        {
+          "image": "img-071",
+          "confidence": "high",
+          "basis": "Booking.com lists this photo under its room type \"Deluxe Double Room\" (property-uploaded room gallery, `RoomPhoto` lists in the page data); detail (framed prints)",
+          "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+          "fetched_at": "2026-09-29T17:37:04Z"
+        },
+        {
+          "image": "img-066",
+          "confidence": "medium",
+          "basis": "double bed plus a wooden single bed with red cushions, the same pairing as Booking-labelled Deluxe img-081 and the engine's \"queen-size bed and an optional additional single bed\"; could also be read as the engine twin (\"one double bed and one single bed\"); globalsurf.com filename \"…room-4.jpg\""
+        }
+      ]
+    },
+    "shared_all_types": [
+      {
+        "image": "img-064",
+        "confidence": "high",
+        "basis": "Booking.com lists it under all three room types; filename \"…dorm-room-6.jpg\" — the bathroom style is common to every room",
+        "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+        "fetched_at": "2026-09-29T17:37:04Z"
+      },
+      {
+        "image": "img-069",
+        "confidence": "high",
+        "basis": "Booking.com lists it under all three room types (bathroom)",
+        "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+        "fetched_at": "2026-09-29T17:37:04Z"
+      },
+      {
+        "image": "img-079",
+        "confidence": "high",
+        "basis": "Booking.com lists it under all three room types (bathroom)",
+        "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+        "fetched_at": "2026-09-29T17:37:04Z"
+      },
+      {
+        "image": "img-049",
+        "confidence": "high",
+        "basis": "Booking.com lists it under all three room types (towel ladder by the pool)",
+        "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+        "fetched_at": "2026-09-29T17:37:04Z"
+      }
+    ],
+    "unassigned": [
+      {
+        "image": "img-015",
+        "why": "two beds, one single against the wall; could be twin or deluxe with extra single"
+      },
+      {
+        "image": "img-020",
+        "why": "cushion close-up on two beds; no room evidence"
+      },
+      {
+        "image": "img-014",
+        "why": "open-air bathroom; not labelled; bathrooms are shared across types (see shared_all_types)"
+      },
+      {
+        "image": "img-012",
+        "why": "bungalow exterior with hammock; every bungalow type may look like this"
+      },
+      {
+        "image": "img-067",
+        "why": "hammock terrace; filename \"…room-4.jpg\" ties it to the same room as img-066, whose type is itself medium"
+      },
+      {
+        "image": "img-070",
+        "why": "toiletries detail"
+      },
+      {
+        "image": "img-085",
+        "why": "towel rack and bench detail"
+      }
+    ],
+    "source_url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+    "fetched_at": "2026-09-29T17:37:04Z",
+    "note": "Booking.com room types come from the property's own room galleries in the rendered page (headless, no login); photo ids matched to images[] by the bstatic photo id in source_url/also_at. Booking.com names its types differently from the engine; the mapping above is ours."
   }
 }
