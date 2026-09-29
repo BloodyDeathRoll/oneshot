@@ -552,3 +552,108 @@ Both are a verbless three-item fragment followed by a rhetorical-question hook, 
 ### Verdict: **FAIL** (round 3, full-file re-check)
 
 Ledger line due (not written by me): `copy_humanised → copy_failed`, reason "round 3: 5 unsourced in mockup_extras (Deluxe 'pick for a couple'; dorm loft from the photo-grouping proposal; 3 photo placements with no source) + V2 room-card template voice; passed fields and deposit line clean; word limits met".
+
+---
+
+## Round 4 — full-file re-check after the copywriter's round-4 fixes (the humanizer changed nothing), 2026-09-29
+
+Reviewer: copyeditor 0.3.1. Hard constraint 6 applies: I re-traced the whole of `copy/en.json` against `dossier/global-surf-adventures/dossier.json`, not only the fixed fields.
+
+## Verdict: **PASS** (round 4)
+
+0 `unsourced` · 0 `contradicted` · voice audit clean · completeness unchanged (C1 stands as an owner item).
+
+### Scope check
+
+- **Dossier:** unchanged since round 3 (`git diff be408d6 HEAD -- dossier/` is empty).
+- **`en.json`:** round 3 (`be408d6`) → round 4 (`fe4b59f`; humanizer `f31e718` made no change). Machine diff: seven values changed, all in `mockup_extras.rooms`. Nothing else in the file changed.
+  - `rooms[0].line` · `rooms[0].description` · `rooms[1].description` · `rooms[2].description`
+  - `rooms[0].gallery` −img-068 · `rooms[1].gallery` −img-013 · `rooms[2].gallery` −img-066
+- **Testimonials:** machine-checked again (verbatim).
+- **Word limits:** unchanged and met. Hero titles 5 / 4 / 5 words; every CTA and `bookingLinks[].label` ≤ 3 words.
+
+### Round-3 findings
+
+| ID | Round 3 | Now | Closed? |
+|---|---|---|---|
+| R3-F1 | "The pick for a couple: …" | "Our double rooms have one queen-size bed and a private bathroom." | yes. No recommendation; the engine's own words plus `room_amenities` |
+| R3-F2 | "Four single beds and a loft up a ladder." | "Four single beds." | yes. The loft is gone; nothing rests on `room_photo_groups` in words |
+| R3-F3 | img-068 / img-013 / img-066 placed under room types | removed from the three galleries | yes. Every remaining placement is Booking-labelled or `shared_all_types` |
+| V2 | parallel three-item fragments + question hooks on the dorm and twin cards | dorm: "Our new gallery room sleeps four in comfortable single beds and has its own outdoor bathroom. It suits larger groups, and travellers on a budget." · twin: "The twin rooms look out on the beach all day, and each has a lovely private bathroom. There are two beds; the room is shared unless you choose private use on the booking page." | yes. Full sentences with different shapes, no hooks |
+
+### Fact audit (whole file)
+
+**Passed fields, rows 1–70** (round-2 numbering; round-3 rows 68–69 for the short labels). I re-traced each against the same dossier keys as in round 3. The keys and the copy are unchanged. Verdicts:
+
+| Rows | Fields | Verdict |
+|---|---|---|
+| 1–18 | name, type, tagline, closing, featureLine, intro, day | sourced |
+| 19, 39, 42 | three headings | framing |
+| 20–38, 40–41, 43–46 | levels, price block, rooms block, guests, getting here, spot | sourced |
+| 47–48, 57, 64 | `season`, `languagesSpoken`, `rooms[]`, `contact.whatsapp` | correctly empty |
+| 49–56, 58–63, 65–70 | lessons, credentials, stayInfo, amenities, ratings, testimonials, contact, bookingLinks | sourced |
+
+**`mockup_extras`** (round-3 numbering; rows R3-1 to R3-28, R3-30, R3-33 to R3-35, R3-37, R3-38 and R3-40 to R3-61 unchanged: re-traced, verdicts as in round 3). The rows that changed:
+
+| # | Key | Claim now | Dossier key (re-read) | Verdict |
+|---|---|---|---|---|
+| R3-29 | dorm `line` S1 | "Four single beds." | `rooms_engine[0].description` "4 comfortable single beds"; `.beds` | sourced |
+| R3-30 | dorm `line` S2 | "The bathroom is outdoors, and it's yours." | `.description` "private outdoor bathroom" | sourced |
+| R3-31/32 | dorm `description` | "Our new gallery room sleeps four in comfortable single beds and has its own outdoor bathroom. It suits larger groups, and travellers on a budget." | `.description` "Our new gallery room is fitted with 4 comfortable single beds and features a private outdoor bathroom. The dorm is suitable for larger groups or travelers on a budget"; `.capacity` 4 | sourced |
+| R3-35 | dorm `gallery` | img-063, 078, 095, 042, 050, 064 | Booking dorm gallery / engine dorm photo; img-064 `shared_all_types` | sourced (implied) |
+| R3-36 | (img-068) | removed | — | closed |
+| R3-39 | twin `description` S1 | "The twin rooms look out on the beach all day, and each has a lovely private bathroom." | `rooms_engine[1].description` "a lovely private bathroom and all day beach view" (owner's words) | sourced |
+| R3-39 | twin `description` S2 | "There are two beds; the room is shared unless you choose private use on the booking page." | title "2 Beds" (true in all three sources of `contradictions[7]`); `.is_private` false; the private-reservation note | sourced |
+| R3-42 | twin `gallery` | img-080, 084, 083, 069, 079 | Booking "Superior Twin" gallery / `shared_all_types`; no bed configuration stated | sourced (implied) |
+| R3-43 | (img-013) | removed | — | closed |
+| R3-46/47 | deluxe `description` S1 | "Our double rooms have one queen-size bed and a private bathroom." | `rooms_engine[2].description` "Our double rooms have one queen-size bed …"; `room_amenities`. The "optional additional single bed" is still left out (vs "No extra beds") | sourced |
+| R3-48 | deluxe `description` S2 | "To keep it just for the two of you, choose private use when you check out on the booking page." | `.description` (owner's words); `.is_private` true pulls the other way (owner item) | sourced |
+| R3-51 | deluxe `gallery` / `gallery_portrait` | img-081, 082, 041, 043, 044, 071; 028, 029, 045, 048 | Booking "Deluxe Double Room" gallery | sourced (implied) |
+| R3-52 | (img-066) | removed | — | closed |
+
+Counts:
+- Passed fields: 70 rows, 0 unsourced, 0 contradicted.
+- `mockup_extras`: 58 rows (61 in round 3, less the three removed photos), 0 unsourced, 0 contradicted.
+
+**Open contradictions `[0]`–`[7]`**, checked against the whole file: unchanged from round 3.
+- None is resolved in the copy's favour.
+- `[7]`: only "two beds" is stated.
+- The Deluxe's extra single bed is still not stated.
+
+**Rulings from round 3 still in force:**
+- The deposit line is `sourced`.
+- `room_photo_groups` is a proposal, not a source.
+- "Our rooms" is `framing`.
+
+### Voice audit (per section)
+
+| Section | Rhythm | Triads | Padding | Concrete | Reads aloud | Note |
+|---|---|---|---|---|---|---|
+| passed blocks | ✓ | ✓ | ✓ | ✓ | ✓ | unchanged |
+| hero / CTAs / titles / microcopy | ✓ | ✓ | ✓ | ✓ | ✓ | unchanged |
+| level one-liners | ✓ | ✓ | ✓ | ✓ | ~ | the L3 comma (note only, as in round 3) |
+| room cards | ✓ | ✓ | ✓ | ✓ | ✓ | V2 closed. The three descriptions now differ in shape. The owner's own phrases ("lovely private bathroom", "new gallery room") are kept |
+
+The question hooks left elsewhere ("Already carving?", "Questions? Ask us", "Booking less than 45 days ahead?", "Not sure which one fits?") are spread across separate sections and no longer stack on sibling cards. This is a note only.
+
+### Completeness
+
+- C1 stands: `rooms[]` is `[]`, and `mockup_extras.rooms` is for mockups only until the owner confirms the rooms.
+- The twin `line` and `description` both mention the beach view and the private bathroom. This is the short and long text of one card, not a fact in two blocks. Note only.
+
+### Owner items (carried; not copy failures)
+
+- The room mix and the room-photo grouping.
+- The twin beds.
+- Whether the Deluxe is private by default, and whether it sleeps 2 or 3.
+- The deposit terms: whether the engine charges 40%, and the currency.
+- The Freestylers board and price.
+- The +972 vs +94 phone and WhatsApp.
+- The engine price, to be confirmed before go-live.
+- One inclusion list per package.
+- The agency logo.
+- "Fomies" vs "Foamie".
+
+### Verdict: **PASS** (round 4, full-file re-check)
+
+Ledger line due (not written by me): `copy_humanised → copy_passed`, note "round 4 PASS: 128 rows (70 passed fields + 58 mockup_extras), 0 unsourced, 0 contradicted; R3-F1–F3 and V2 closed; rooms[] still empty (owner item)".
