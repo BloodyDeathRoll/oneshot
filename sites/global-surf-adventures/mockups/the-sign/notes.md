@@ -35,6 +35,27 @@ The old site was open beside every round: `old-site-home-desktop-fold.png` / `-m
 
 Reduced motion (`shots/reduced-motion-390.png`): the hero attaches no video sources and shows only the poster, and the level panels don't open or play. There is no WebGL on either page.
 
+### Round 6: fixes from the r2 critics (`shots/round-6/`, `shots/round-6-book/`)
+The old site was open beside this round.
+- **Colour:** the aqua `#A2E6FB` sections are gone. The section, footer and total-card ground is now a cool light neutral, `#EEF2F5`. Coral now sits only on white, on light grey or on a photograph. Booking selections are ink `#27293E` with white text; blue fills are gone. Sand was not used: custom.md bans sand and proposal 002 asks for "clean whites and light neutrals". A deep navy section would put body text on a dark panel, which house rule 1 forbids.
+- **Level cards:** three equal 4:5 columns, and each button sits on the card's bottom line. The widening on hover is gone; pointing at a card only plays its clip. The posters are now the JPGs (the AVIFs were soft), and desktop clips use the d1920 webm. The Level 2 clip is scaled 1.32 from the top so the rock drops out of frame.
+- **Closing band:** img-093 is darkened (brightness .52). The line and both buttons are centred, 620 px wide.
+- **Feature line:** it sits at the centre of the water (the image is framed on the bottom of the photo), at no more than 60 % of the width.
+- **Script face:** Yellowtail becomes Damion. Yellowtail's "F" read as "+" ("+ollow"); Damion's F is clear.
+- **Hero:** the subtitle is dropped (the critic found it hard to read in 3 of 4 frames). This closes conflict 1: the hero is now title plus button only.
+- **"Questions? Ask us" → "WhatsApp us"** (`ctas.whatsapp_footer`, already approved copy). The button was always a filled button. What read as an underline was the long tail of Bricolage's "Q", and the font has no alternate glyph for it.
+- **Booking on phones:** the media band is a 34vh block (min 220 px) that scrolls away with the page. It no longer sticks or covers step titles.
+- **JS off:** Chromium forces native controls on video when scripts are off, so `.no-js video{display:none}` hides them. The hero, the level cards and the booking media show their posters as CSS backgrounds instead. Measured: 0 visible videos on either page.
+- **Tap targets:** dots are 44×44, the steppers 44 wide, and the logo, Rosa credit and "Terms and conditions" links at least 44 px tall. Measured on the booking page at 390 px: 0 targets under 44 px.
+- **Booking-page clip:** now attached after `load` + 60 ms. Measured: first paint at 212 ms, then the level clip requested at +356 ms.
+- **Not borrowed:** the pill switcher and the sticky summary. The equal cards fixed the level choice, and the split screen already keeps the media beside the steps; the total step carries the summary.
+- **Checks:**
+  - `check-design`: ok on both pages; fonts Damion + Bricolage.
+  - `funnel`: clicks_to_book 1, CTA above the fold, 0 broken.
+  - Hand-off with JS off: `…/level-1-fomies?start=2027-02-20&end=2027-02-27&female=1&male=0&couple=0`.
+  - Hand-off with JS on: `…/level-2-rollers?start=2027-02-13&couple=1&end=2027-02-20`, with a live total of $3,092.05.
+- **Against the old site:** calmer and closer to its tasteful white-plus-script look, but with the lodge's own footage, prices, sold rooms and a working booking desk. Clearly better at a glance.
+
 ## Tested (Playwright, 1440 and 390)
 
 - **First load:** 0 requests to Bookinglayer.
@@ -79,7 +100,7 @@ All `business-owned` per `dossier.images[]`, none `not_lodge`, no stock.
 
 ## conflicts
 
-1. **Subtitle vs concept.** Concept 3 says the hero carries "nothing else" but the title. The playbook §3 asks for what + where above the fold, and the calibration allows a very short subtitle. I added `hero.subtitle_alt`, "Sri Lanka's south coast, all levels", at 20 px. Alternative: drop it and rely on the header and page title for the place.
+1. **Subtitle vs concept (closed in round 6: the subtitle was dropped).** Concept 3 says the hero carries "nothing else" but the title. The playbook §3 asks for what + where above the fold, and the calibration allows a very short subtitle. I added `hero.subtitle_alt`, "Sri Lanka's south coast, all levels", at 20 px. Alternative: drop it and rely on the header and page title for the place.
 2. **JS-off dates** (fixed at the coordinator's request): the hand-off now uses only `start` + `end`. Without JS the visitor picks the check-out from a second select whose options are grouped by check-in, so a mismatched pair is possible; the engine validates it. The select's labels "Check-out" and "Choose your check-out" are new interface microcopy, not in `copy/en.json`.
 3. **Level on the JS-off booking page.** The level radio can't change the form action without JS, so JS-off shows three "Continue with Level n" buttons.
 4. **custom.md vs gate feedback:** script titles, soft rounded buttons and cards, gentle shadows on the arrows and phone bar, and no thin black lines. Resolved in favour of Shahar's gate feedback, per proposal 002.

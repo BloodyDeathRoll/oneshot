@@ -1,0 +1,19 @@
+{
+  "target": "http://127.0.0.1:18431/book/?level=level-3-riders&room=deluxe",
+  "widths": {
+    "desktop": {
+      "pageHeight": 6552,
+      "scroller": "window",
+      "captures": 8,
+      "truncated": false,
+      "errors": []
+    },
+    "mobile": {
+      "pageHeight": 7320,
+      "scroller": "window",
+      "captures": 10,
+      "truncated": false,
+      "errors": []
+    }
+  }
+}

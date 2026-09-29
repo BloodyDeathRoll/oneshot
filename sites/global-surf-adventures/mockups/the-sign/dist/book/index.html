@@ -8,13 +8,13 @@
 <script>document.documentElement.className='js'</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Yellowtail&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Damion&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#27293E; --ink2:#3F4260; --white:#fff; --aqua:#A2E6FB; --aqua2:#C9F0FC; --soft:#EEF3F6;
+  --ink:#27293E; --ink2:#3F4260; --white:#fff; --aqua:#EEF2F5; --soft:#EEF2F5; --soft2:#E2E8ED;
   --book:#D1402A; --book-h:#B7331F; --wa:#1FAF54;
   --sans:'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --script:'Yellowtail', 'Brush Script MT', cursive;
+  --script:'Damion', 'Brush Script MT', cursive;
   --wrap:1320px; --gut:clamp(20px,4vw,48px); --hdr:76px;
 }
 *{box-sizing:border-box}
@@ -35,7 +35,7 @@ svg{width:22px;height:22px;flex:none}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
 .narrow{max-width:760px}
 .center{text-align:center}
-.script{font-family:var(--script);font-size:clamp(46px,5.2vw,68px);line-height:1.08;letter-spacing:.005em;color:var(--ink);margin-bottom:.35em}
+.script{font-family:var(--script);font-size:clamp(44px,4.8vw,62px);line-height:1.1;letter-spacing:.01em;color:var(--ink);margin-bottom:.35em}
 h3{font-weight:700;font-size:26px;line-height:1.2;letter-spacing:-.01em;margin-bottom:.35em}
 .detail{font-size:15.5px;font-weight:500;color:var(--ink2);letter-spacing:.005em}
 .small{font-size:14.5px;color:var(--ink2)}
@@ -56,12 +56,14 @@ h3{font-weight:700;font-size:26px;line-height:1.2;letter-spacing:-.01em;margin-b
 .btn-ink:hover{background:#1B1D2E}
 .btn svg{width:22px;height:22px}
 svg.wa{color:var(--wa)}
-.on-white .btn-soft, .btn-soft.on-white{background:var(--soft)}
+.on-white .btn-soft, .btn-soft.on-white{background:var(--soft2)}
+.aqua .btn-soft{background:#fff}
+.no-js video{display:none}
 
 /* header */
 .hdr{position:fixed;inset:0 0 auto 0;z-index:40;height:var(--hdr);color:#fff;transition:background-color .25s,color .25s}
 .hdr-in{max-width:1440px;margin:0 auto;height:100%;display:flex;align-items:center;gap:36px;padding:0 var(--gut)}
-.logo{display:block;color:inherit}
+.logo{display:flex;align-items:center;min-height:44px;color:inherit}
 .logo svg{display:block;width:170px;height:34px}
 .nav{display:flex;gap:34px;margin-left:auto;font-weight:500;font-size:16.5px}
 .nav a{padding:10px 0;opacity:.95}
@@ -88,8 +90,8 @@ svg.wa{color:var(--wa)}
 .slides::-webkit-scrollbar{display:none}
 .slides>*{flex:0 0 100%;scroll-snap-align:start}
 .slides>img{aspect-ratio:3/2;object-fit:cover;width:100%;height:auto}
-.dots{display:flex;justify-content:center;gap:4px;margin-top:14px;min-height:20px}
-.dots button{width:30px;height:30px;padding:0;border:0;background:none;cursor:pointer;display:grid;place-items:center}
+.dots{display:flex;justify-content:center;gap:0;margin-top:6px;min-height:44px}
+.dots button{width:44px;height:44px;padding:0;border:0;background:none;cursor:pointer;display:grid;place-items:center}
 .dots button::after{content:"";width:9px;height:9px;border-radius:50%;background:var(--ink);opacity:.25;transition:opacity .2s,transform .2s}
 .dots button[aria-current="true"]::after{opacity:1;transform:scale(1.15)}
 .arrow{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:0;background:#fff;color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 18px rgba(20,24,40,.18);z-index:2}
@@ -108,7 +110,8 @@ svg.wa{color:var(--wa)}
 .social a{width:52px;height:52px;border-radius:50%;background:#fff;display:grid;place-items:center}
 .social a:hover{background:#F2F6F8}
 .legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:64px;font-size:14.5px}
-.legal a{font-weight:600}
+.legal a{font-weight:600;display:inline-flex;align-items:center;min-height:44px}
+.legal{align-items:center}
 @media (max-width:1000px){.foot-g{grid-template-columns:1fr 1fr}}
 @media (max-width:620px){.foot-g{grid-template-columns:1fr;gap:40px}.foot{padding:64px 0 110px}.foot .btn{width:100%}}
 
@@ -146,8 +149,9 @@ svg.wa{color:var(--wa)}
 .pick-t .detail,.rpick-t .detail{margin-top:4px}
 .tick{width:32px;height:32px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none;color:transparent;transition:background-color .2s}
 .tick svg{width:18px;height:18px}
-.pick:has(input:checked),.rpick:has(input:checked){background:var(--aqua)}
-.pick:has(input:checked) .tick,.rpick:has(input:checked) .tick{background:var(--ink);color:#fff}
+.pick:has(input:checked),.rpick:has(input:checked){background:var(--ink);color:#fff}
+.pick:has(input:checked) .detail,.rpick:has(input:checked) .detail{color:#D5D8E6}
+.pick:has(input:checked) .tick,.rpick:has(input:checked) .tick{background:#fff;color:var(--ink)}
 .pick:has(input:focus-visible),.rpick:has(input:focus-visible){outline:3px solid var(--ink);outline-offset:3px}
 .free-s{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px}
 .free-s p{margin:0}
@@ -185,7 +189,7 @@ svg.wa{color:var(--wa)}
 .no-js .stp .sb{display:none}
 .stp{display:flex;align-items:stretch}
 .stp input{flex:1;min-width:0}
-.sb{width:40px;flex:none;border:0;background:none;font-size:24px;font-weight:500;cursor:pointer;color:var(--ink);border-radius:10px;margin:8px 4px 8px 0}
+.sb{width:44px;min-height:44px;flex:none;border:0;background:none;font-size:24px;font-weight:500;cursor:pointer;color:var(--ink);border-radius:10px;margin:8px 4px 8px 0}
 .sb:hover{background:#fff}
 
 /* total */
@@ -211,7 +215,7 @@ svg.wa{color:var(--wa)}
 
 @media (max-width:900px){
   .bk{grid-template-columns:1fr}
-  .bk-media{position:sticky;top:var(--hdr);height:38vh;z-index:5;transition:height .15s}
+  .bk-media{position:relative;top:auto;height:34vh;min-height:220px}
   .bk-steps{padding:0 20px 120px;max-width:none}
   .step{padding:44px 0 24px}
   .bar{display:flex}
@@ -226,6 +230,7 @@ svg.wa{color:var(--wa)}
   .sum .big dd{font-size:28px}
   .bk-rg .arrow{display:none}
 }
+.bk-media [data-m=level-2-rollers] video{transform:scale(1.25);transform-origin:62% 8%}
 
 </style>
 </head>
@@ -267,9 +272,9 @@ svg.wa{color:var(--wa)}
 
 <main id="main" class="bk">
   <div class="bk-media" aria-hidden="true">
-    <div class="m on" data-m="level-1-fomies"><video muted loop playsinline preload="none" poster="../video/vid-010-poster.avif" data-mp="../video/vid-010-m720.mp4" data-wb="../video/vid-010-m1280.webm"></video></div>
-    <div class="m" data-m="level-2-rollers"><video muted loop playsinline preload="none" poster="../video/vid-003e-poster.avif" data-mp="../video/vid-003e-m720.mp4" data-wb="../video/vid-003e-m1280.webm"></video></div>
-    <div class="m" data-m="level-3-riders"><video muted loop playsinline preload="none" poster="../video/vid-002e-poster.avif" data-mp="../video/vid-002e-m720.mp4" data-wb="../video/vid-002e-m1280.webm"></video></div>
+    <div class="m on" data-m="level-1-fomies" style="background:url(../video/vid-010-poster.jpg) center/cover"><video muted loop playsinline preload="none" poster="../video/vid-010-poster.jpg" data-mp="../video/vid-010-m720.mp4" data-wb="../video/vid-010-d1920.webm"></video></div>
+    <div class="m" data-m="level-2-rollers" style="background:url(../video/vid-003e-poster.jpg) center/cover"><video muted loop playsinline preload="none" poster="../video/vid-003e-poster.jpg" data-mp="../video/vid-003e-m720.mp4" data-wb="../video/vid-003e-d1920.webm"></video></div>
+    <div class="m" data-m="level-3-riders" style="background:url(../video/vid-002e-poster.jpg) center/cover"><video muted loop playsinline preload="none" poster="../video/vid-002e-poster.jpg" data-mp="../video/vid-002e-m720.mp4" data-wb="../video/vid-002e-d1920.webm"></video></div>
     <div class="m" data-m="room"><img src="../img/img-063-1600.webp" width="1600" height="1067" alt="" loading="lazy"></div>
     <div class="m" data-m="dates"><img src="../img/img-001-1600.webp" width="1600" height="1066" alt="" loading="lazy"></div>
     <div class="m" data-m="total"><img src="../img/img-093-1536.webp" width="1536" height="1023" alt="" loading="lazy"></div>
@@ -436,7 +441,7 @@ svg.wa{color:var(--wa)}
       </noscript>
       <p class="handoff">Next, on our Bookinglayer booking page: confirm your room, add airport pickup if you want it, then enter your details and pay.</p>
       <p class="small">Nothing is booked until you check out there.</p>
-      <a class="btn btn-soft on-white" data-wa href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."><svg class="wa"><use href="#i-wa"/></svg>Questions? Ask us</a>
+      <a class="btn btn-soft on-white" data-wa href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."><svg class="wa"><use href="#i-wa"/></svg>WhatsApp us</a>
     </section>
   </form>
 </main>
@@ -581,14 +586,14 @@ $$('.stp').forEach(function(w){
 /* media: crossfade by step (desktop pinned half / phone band) */
 var media = $$('.bk-media .m');
 var narrow = matchMedia('(max-width: 900px)');
-var cur = 'level';
+var cur = 'level', booted = false;
 function key(k){ return (k === 'level' || (k === 'room' && narrow.matches)) ? level() : k; }
 function show(k){
   cur = k; var want = key(k);
   media.forEach(function(m){ m.classList.toggle('on', m.dataset.m === want); });
   media.forEach(function(m){
     var v = $('video', m); if (!v) return;
-    if (m.dataset.m === want && !calm) {
+    if (m.dataset.m === want && !calm && booted) {
       if (!v.dataset.ready) { v.dataset.ready = 1; var s = document.createElement('source'); if (innerWidth < 768) { s.src = v.dataset.mp; s.type = 'video/mp4'; } else { s.src = v.dataset.wb; s.type = 'video/webm'; } v.appendChild(s); v.load(); }
       var p = v.play(); if (p) p.catch(function(){});
     } else if (!v.paused) v.pause();
@@ -606,8 +611,7 @@ $$('.rcard').forEach(function(c){
 });
 /* phone: the band shrinks as you scroll */
 var band = $('.bk-media');
-function shrink(){ if (!narrow.matches) { band.style.height = ''; return; } var h = Math.max(20, 38 - scrollY / 25); band.style.height = h + 'vh'; }
-addEventListener('scroll', shrink, {passive: true}); shrink();
+
 
 /* the summary */
 function render(){
@@ -716,7 +720,9 @@ $('[data-next]').addEventListener('click', function(){
   document.getElementById(order[i + 1]).scrollIntoView({behavior: calm ? 'auto' : 'smooth'});
 });
 
-render(); show('level');
+render();
+function boot(){ setTimeout(function(){ booted = true; show(cur); }, 60); }
+if (document.readyState === 'complete') boot(); else addEventListener('load', boot);
 })();
 
 </script>

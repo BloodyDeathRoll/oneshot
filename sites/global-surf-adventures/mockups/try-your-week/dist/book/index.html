@@ -4,18 +4,19 @@
 <title>Book your surf week | Global Surf Lodge Kabalana</title><meta name="description" content="Surf weeks for all levels on Sri Lanka's south coast, a few steps from the ocean.">
 <meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mansalva&family=Newsreader:opsz,wght@6..72,300..650&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Water+Brush&display=swap" rel="stylesheet">
 <style>:root{
-  --ground:#FFFFFF; --tint:#E3E4E9; --tint-soft:#EEEFF3; --ink:#0A1920; --ink-2:#3C4A52;
+  --ground:#FFFFFF; --tint:#D9E9EC; --tint-soft:#EDF5F6; --ink:#0A1920; --ink-2:#3C4A52;
   --place:#008292; --book:#C8432F; --book-deep:#AD3825; --wa:#1FA855;
   --r:16px; --btn-r:10px; --gut:clamp(16px,4vw,48px); --max:1120px;
-  --serif:"Newsreader",Georgia,"Times New Roman",serif; --script:"Mansalva","Segoe Script",cursive;
+  --serif:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif; --script:"Water Brush","Segoe Script",cursive;
   --ease:cubic-bezier(.22,.7,.2,1);
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:88px}
-body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.55;font-optical-sizing:auto;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--serif);font-size:17.5px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img,video{display:block;max-width:100%}
+[hidden]{display:none!important}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit}
 p{margin:0 0 1em}
@@ -26,15 +27,15 @@ svg.i{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-widt
 svg.f{fill:currentColor;stroke:none}
 
 /* ---------- script titles ---------- */
-.title{font-family:var(--script);font-weight:400;font-size:clamp(40px,5vw,58px);line-height:1.05;letter-spacing:.005em;margin:0 0 20px;color:var(--ink)}
+.title{font-family:var(--script);font-weight:400;font-size:clamp(50px,6vw,74px);line-height:1;letter-spacing:0;margin:0 0 18px;color:var(--ink)}
 .title.c{text-align:center}
-.lede{font-size:19px;color:var(--ink-2);max-width:620px}
+.lede{font-size:18.5px;color:var(--ink-2);max-width:640px}
 .lede.c{margin-inline:auto;text-align:center}
 .detail{font-size:16px;color:var(--ink-2);letter-spacing:.01em}
 .detail b{color:var(--ink);font-weight:600}
 
 /* ---------- buttons ---------- */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:var(--btn-r);border:0;cursor:pointer;font-family:var(--serif);font-size:17px;font-weight:600;letter-spacing:.01em;white-space:nowrap;transition:background-color .2s,transform .2s,box-shadow .2s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:var(--btn-r);border:0;cursor:pointer;font-family:var(--serif);font-size:16.5px;font-weight:600;letter-spacing:0;white-space:nowrap;transition:background-color .2s,transform .2s,box-shadow .2s}
 .btn:active{transform:translateY(1px)}
 .btn-book{background:var(--book);color:#fff}
 .btn-book:hover{background:var(--book-deep)}
@@ -52,7 +53,7 @@ svg.f{fill:currentColor;stroke:none}
 /* ---------- header ---------- */
 .hdr{position:fixed;inset:0 0 auto 0;z-index:40;height:76px;display:flex;align-items:center;color:#fff;transition:background-color .3s,color .3s,box-shadow .3s}
 .hdr .wrap{display:flex;align-items:center;gap:28px;width:min(1320px,100% - 2*var(--gut))}
-.logo{display:flex;align-items:center;color:inherit}
+.logo{display:flex;align-items:center;color:inherit;min-height:48px}
 .logo svg{width:132px;height:auto}
 .logo svg path,.logo svg polygon{fill:currentColor}
 .nav{display:flex;gap:30px;margin-left:auto;font-size:17px}
@@ -69,7 +70,8 @@ svg.f{fill:currentColor;stroke:none}
 .sheet nav{display:flex;flex-direction:column;gap:6px;margin:40px 0 auto}
 .sheet nav a{font-size:30px;padding:8px 0}
 .sheet .btn{width:100%}
-@media (max-width:900px){.nav,.hdr .btn-book{display:none}.menu-btn{display:block}.hdr{height:64px}}
+.mbook{display:none}
+@media (max-width:900px){.nav,.hdr .btn-book{display:none}.menu-btn{display:block}.mbook+.menu-btn{margin-left:4px}.hdr{height:64px}.hdr .mbook{display:inline-flex;margin-left:auto;opacity:1;pointer-events:auto;transform:none;min-height:44px;padding:0 16px}.logo svg{width:118px}.hdr.solid .mbook{display:none}.hdr.solid .menu-btn{margin-left:auto}}
 
 /* ---------- sections ---------- */
 .sec{padding:clamp(72px,9vw,120px) 0}
@@ -82,8 +84,8 @@ svg.f{fill:currentColor;stroke:none}
 .slides .track{display:flex;transition:transform .35s var(--ease);will-change:transform}
 .slides .track>*{flex:0 0 100%;min-width:0}
 .slides .track img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/2;user-select:none;-webkit-user-drag:none}
-.dots{display:flex;justify-content:center;gap:4px;margin-top:14px}
-.dots button{width:28px;height:28px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center}
+.dots{display:flex;justify-content:center;gap:0;margin-top:6px}
+.dots button{width:44px;height:44px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center}
 .dots button::after{content:"";width:8px;height:8px;border-radius:50%;background:#B9BDC6;transition:width .25s,background-color .25s,border-radius .25s}
 .dots button[aria-current="true"]::after{width:22px;border-radius:5px;background:var(--place)}
 .arrow{position:absolute;top:50%;width:48px;height:48px;margin-top:-24px;border-radius:50%;border:0;background:rgba(255,255,255,.94);color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 18px rgba(10,25,32,.14);opacity:0;transition:opacity .2s}
@@ -114,7 +116,7 @@ svg.f{fill:currentColor;stroke:none}
 /* ---------- room viewer ---------- */
 .room{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:center}
 .room .slides .track img{aspect-ratio:16/10}
-.room h3{font-family:var(--serif);font-size:32px;line-height:1.15;font-weight:500;margin:0 0 10px;letter-spacing:-.01em}
+.room h3{font-family:var(--serif);font-size:28px;line-height:1.2;font-weight:600;margin:0 0 10px;letter-spacing:-.015em}
 .room .line{font-size:20px;color:var(--ink);margin-bottom:14px}
 .room .desc{color:var(--ink-2)}
 .room .price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:18px 0 24px;font-size:18px;font-weight:600}
@@ -128,19 +130,20 @@ svg.f{fill:currentColor;stroke:none}
 @media (max-width:900px){.room{grid-template-columns:1fr}}
 
 /* ---------- footer ---------- */
-.foot{padding:88px 0 28px;background:var(--ground)}
-.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:48px}
-.foot h3{font-family:var(--script);font-weight:400;font-size:34px;margin:0 0 16px}
-.foot .logo{color:var(--ink);margin-bottom:18px}
-.foot .logo svg{width:150px}
+.foot{padding:80px 0 30px;background:var(--tint)}
+.foot-grid{display:grid;grid-template-columns:1.2fr .9fr 1.2fr;gap:56px;align-items:start}
+.foot h3{font-family:var(--script);font-weight:400;font-size:44px;line-height:1;margin:0 0 16px}
+.foot .logo{color:var(--ink);margin-bottom:14px}
+.foot .logo svg{width:170px}
 .foot p{color:var(--ink-2);font-size:16.5px}
-.foot .stack{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
-.foot .stack .btn{min-width:210px;justify-content:flex-start}
-.social{display:flex;gap:10px}
-.social a{width:48px;height:48px;border-radius:50%;background:var(--tint-soft);display:grid;place-items:center;transition:background-color .2s}
-.social a:hover{background:var(--tint)}
-.legal{margin-top:64px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14.5px;color:var(--ink-2)}
-@media (max-width:900px){.foot-grid{grid-template-columns:1fr;gap:40px}.foot{padding-bottom:110px}}
+.foot p b{color:var(--ink);font-weight:600}
+.foot .stack{display:flex;flex-direction:column;gap:12px}
+.foot .stack .btn{justify-content:flex-start;width:100%}
+.social{display:flex;gap:10px;margin-top:22px}
+.social a{width:48px;height:48px;border-radius:50%;background:#fff;display:grid;place-items:center;transition:background-color .2s,color .2s}
+.social a:hover{background:var(--ink);color:#fff}
+.legal{margin-top:56px;padding-top:0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14.5px;color:var(--ink-2)}
+@media (max-width:900px){.foot-grid{grid-template-columns:1fr;gap:36px}.foot{padding-bottom:110px}}
 
 /* ---------- mobile bottom bar ---------- */
 .mbar{position:fixed;left:0;right:0;bottom:0;z-index:35;background:#fff;box-shadow:0 -8px 30px rgba(10,25,32,.10);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:none;align-items:center;gap:12px;transform:translateY(110%);transition:transform .3s var(--ease)}
@@ -154,10 +157,10 @@ svg.f{fill:currentColor;stroke:none}
   *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
 }
 
-.desk{padding:104px 0 150px}
-.prog{list-style:none;margin:0 auto 36px;padding:0;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
-.prog button{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 18px 0 8px;border-radius:999px;border:0;background:var(--tint-soft);color:var(--ink-2);font-size:16px;cursor:pointer}
-.prog .n{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#fff;font-size:14px;font-weight:600}
+.desk{padding:100px 0 150px}
+.prog{list-style:none;margin:0 auto 30px;padding:0;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.prog button{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 18px 0 8px;border-radius:999px;border:0;background:var(--tint-soft);color:var(--ink-2);font-size:15.5px;font-weight:500;cursor:pointer}
+.prog .n{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#fff;font-size:13.5px;font-weight:700}
 .prog .n svg{width:16px;height:16px;stroke-width:2.4}
 .prog button[aria-current="step"]{background:var(--ink);color:#fff}
 .prog button[aria-current="step"] .n{background:rgba(255,255,255,.16);color:#fff}
@@ -166,105 +169,90 @@ svg.f{fill:currentColor;stroke:none}
 .prog button:disabled{cursor:default;opacity:.7}
 .step{max-width:1120px;margin:0 auto}
 .js .step:not(.on){display:none}
-.no-js .step{margin-bottom:96px}
+.no-js .step{margin-bottom:88px}
 .js .step.in{animation:stepIn .3s var(--ease)}
 .js .step.in.back{animation-name:stepBack}
 @keyframes stepIn{from{opacity:0;transform:translateX(56px)}to{opacity:1;transform:none}}
 @keyframes stepBack{from{opacity:0;transform:translateX(-56px)}to{opacity:1;transform:none}}
-.step-h{text-align:center;margin-bottom:26px}
-.step-h .count{font-size:15px;color:var(--ink-2);margin:0 0 4px}
-.step-h h1,.step-h h2{font-family:var(--script);font-weight:400;font-size:clamp(40px,4.6vw,54px);line-height:1.05;margin:0}
+.step-h{text-align:center;margin-bottom:22px}
+.step-h .count{font-size:15px;color:var(--ink-2);margin:0 0 2px}
+.step-h h1,.step-h h2{font-family:var(--script);font-weight:400;font-size:clamp(50px,5.4vw,68px);line-height:1;margin:0}
 .step-h h1:focus,.step-h h2:focus{outline:none}
 .band{position:relative;height:clamp(240px,40vh,440px);border-radius:var(--r);overflow:hidden;background:#dfe3e6}
-.band img,.band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.band .lv-vid{transition:opacity .4s var(--ease)}
-.js .band .lv-vid:not(.on){opacity:0}
-.no-js .band .lv-vid:not(:first-of-type){display:none}
-.lvsum{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px);margin-top:36px}
-.lvsum h3{font-family:var(--serif);font-weight:500;font-size:32px;margin:0 0 8px;letter-spacing:-.01em}
-.lvsum .one{font-size:20px;margin-bottom:14px}
-.lvsum h4{font-family:var(--script);font-weight:400;font-size:34px;margin:0 0 18px}
-.lvsum .note{margin:22px 0 0;font-size:16px;color:var(--ink-2)}
+.band .lv-clip,.band .lv-clip img,.band .lv-clip video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.band .lv-clip{transition:opacity .4s var(--ease)}
+.js .band .lv-clip:not(.on){opacity:0;visibility:hidden}
+.no-js .band .lv-clip:not(:first-child){display:none}
+.lvsum{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px);margin-top:34px}
+.lvsum h3{font-family:var(--serif);font-weight:600;font-size:28px;letter-spacing:-.015em;margin:0 0 6px}
+.lvsum .one{font-size:18.5px;margin-bottom:12px}
+.lvsum h4{font-family:var(--script);font-weight:400;font-size:44px;line-height:1;margin:0 0 18px}
+.lvsum .note{margin:20px 0 0;font-size:15.5px;color:var(--ink-2)}
 .lv-panel[hidden]{display:none}
-.no-js .lv-panel{margin-bottom:40px}
-.chosen{display:none;align-items:center;gap:8px;color:var(--place);font-weight:600;font-size:16px;margin-top:14px}
-.room-panel.picked .chosen{display:flex}
+.no-js .lv-panel{margin-bottom:36px}
 .room .flag{display:none;font-size:15.5px;color:var(--book);font-weight:600;margin:-8px 0 14px}
 .room-panel.full .flag{display:block}
-.fields{max-width:760px;margin:36px auto 0;display:grid;gap:18px}
-.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.fl{position:relative;min-height:64px;border-radius:12px;background:var(--tint-soft);padding:26px 16px 8px;display:flex;align-items:center;gap:10px;transition:background-color .2s,box-shadow .2s}
+.dgrid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:start}
+.fields{display:grid;gap:14px}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.fl{position:relative;min-height:64px;border-radius:12px;background:var(--tint-soft);padding:26px 14px 8px 16px;display:flex;align-items:center;gap:8px;transition:background-color .2s,box-shadow .2s}
 .fl:focus-within{background:#fff;box-shadow:0 0 0 2px var(--place)}
-.fl>label,.fl>.lab{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:17px;color:var(--ink-2);pointer-events:none;transition:top .2s var(--ease),font-size .2s var(--ease),transform .2s var(--ease)}
-.fl.filled>label,.fl.filled>.lab,.fl:focus-within>label,.fl.up>.lab{top:14px;transform:none;font-size:13.5px;letter-spacing:.01em}
-.fl .val{flex:1;font-size:18px;font-weight:500;min-width:0}
-.fl input[type=number]{flex:1;min-width:0;border:0;background:none;font:inherit;font-size:18px;font-weight:500;color:var(--ink);padding:0;-moz-appearance:textfield;outline:none}
+.fl>label,.fl>.lab{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:16.5px;color:var(--ink-2);pointer-events:none;transition:top .2s var(--ease),font-size .2s var(--ease),transform .2s var(--ease)}
+.fl.filled>label,.fl.filled>.lab,.fl:focus-within>label,.fl.up>.lab{top:12px;transform:none;font-size:13px;font-weight:500}
+.fl input[type=number]{flex:1;min-width:0;border:0;background:none;font:inherit;font-size:18px;font-weight:600;color:var(--ink);padding:0;-moz-appearance:textfield;outline:none}
 .fl input::-webkit-inner-spin-button{-webkit-appearance:none}
-.fl select{flex:1;border:0;background:none;font:inherit;font-size:18px;color:var(--ink);outline:none;padding:0;appearance:none}
-.step-btn{width:40px;height:40px;border-radius:50%;border:0;background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);box-shadow:0 1px 4px rgba(10,25,32,.08)}
+.fl select{flex:1;border:0;background:none;font:inherit;font-size:17px;font-weight:500;color:var(--ink);outline:none;padding:0;appearance:none;min-height:30px}
+.step-btn{width:44px;height:44px;border-radius:50%;border:0;background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);box-shadow:0 1px 4px rgba(10,25,32,.08);flex:none}
 .step-btn:disabled{opacity:.35;cursor:default}
 .step-btn svg{width:18px;height:18px;stroke-width:2}
-.date-btn{position:absolute;inset:0;border:0;background:none;cursor:pointer;border-radius:12px}
-.fl .cal-i{margin-left:auto;color:var(--ink-2)}
-.help{font-size:15px;color:var(--ink-2);margin:-8px 0 0 4px}
-.err{color:var(--book);font-weight:600}
+.help{font-size:15px;color:var(--ink-2);margin:-4px 0 0 4px}
+.help.err{color:var(--book);font-weight:600}
+.chips{padding:34px 12px 12px 16px;display:block}
+.chips .mo{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.chips .mo span{width:84px;font-size:14.5px;color:var(--ink-2);font-weight:500}
+.chips button{min-width:56px;min-height:44px;padding:0 12px;border-radius:10px;border:0;background:#fff;font:inherit;font-size:16px;font-weight:600;color:var(--ink);cursor:pointer;transition:background-color .2s,color .2s}
+.chips button:hover{background:#DDF0F1}
+.chips button[aria-pressed="true"]{background:var(--ink);color:#fff}
 .seg{display:flex;gap:6px;flex:1}
-.fl.segf{padding-top:36px;padding-bottom:10px}
-.seg label{flex:1;position:relative}
-.seg input{position:absolute;opacity:0;inset:0}
-.seg span{display:grid;place-items:center;min-height:36px;border-radius:8px;background:#fff;font-size:17px;cursor:pointer;transition:background-color .2s,color .2s}
-.seg input:checked+span{background:var(--ink);color:#fff}
-.seg input:focus-visible+span{outline:3px solid var(--place);outline-offset:2px}
-.cal{position:absolute;z-index:20;left:0;top:calc(100% + 8px);width:min(360px,calc(100vw - 32px));background:#fff;border-radius:16px;box-shadow:0 18px 50px rgba(10,25,32,.18);padding:16px}
-.cal[hidden]{display:none}
-.cal-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;font-weight:600}
-.cal-top button{width:40px;height:40px;border-radius:50%;border:0;background:var(--tint-soft);display:grid;place-items:center;cursor:pointer}
-.cal-top button:disabled{opacity:.3}
-.cal table{width:100%;border-collapse:collapse;text-align:center;font-size:15.5px}
-.cal th{font-weight:500;color:var(--ink-2);font-size:13.5px;padding:6px 0}
-.cal td{padding:2px}
-.cal td button{width:40px;height:40px;border-radius:50%;border:0;background:none;color:#9AA1AA;font:inherit}
-.cal td button.ok{color:var(--ink);background:rgba(0,130,146,.12);font-weight:600;cursor:pointer}
-.cal td button.ok:hover{background:rgba(0,130,146,.24)}
-.cal td button[aria-pressed="true"]{background:var(--ink);color:#fff}
-.datewrap{position:relative}
-.js .nojs-date,.no-js .js-date,.no-js #cal{display:none}
-.tot{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);margin-top:36px;align-items:start}
-.card{background:var(--tint-soft);border-radius:var(--r);padding:30px}
-.card h3{font-family:var(--script);font-weight:400;font-size:32px;margin:0 0 16px}
-.rows{margin:0;display:grid;gap:12px}
+.seg button{flex:1;min-height:44px;border-radius:9px;border:0;background:#fff;font:inherit;font-size:16.5px;font-weight:600;color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.fl.segf{padding-top:34px;padding-bottom:10px}
+.card{background:var(--tint-soft);border-radius:var(--r);padding:28px}
+.card h3{font-family:var(--script);font-weight:400;font-size:46px;line-height:1;margin:0 0 16px}
+.rows{margin:0;display:grid;gap:10px}
 .rows div{display:flex;justify-content:space-between;gap:18px;align-items:baseline}
 .rows dt{color:var(--ink-2)}
-.rows dd{margin:0;text-align:right;font-weight:500}
-.rows .sum{padding-top:12px;margin-top:4px;font-size:20px}
-.rows .sum dt{color:var(--ink);font-weight:600}
-.rows .sum dd{font-weight:650;font-size:24px}
-.card .small{font-size:15px;color:var(--ink-2);margin:14px 0 0}
-.handoff .btn{width:100%}
-.handoff p{font-size:16px;color:var(--ink-2);margin:14px 0 0}
+.rows dd{margin:0;text-align:right;font-weight:600}
+.rows .sum{padding-top:10px;margin-top:4px}
+.rows .sum dt{color:var(--ink);font-weight:700;font-size:18px}
+.rows .sum dd{font-weight:700;font-size:26px;letter-spacing:-.02em}
+.rows+.rows{margin-top:18px}
+.card .small{font-size:14.5px;color:var(--ink-2);margin:12px 0 0}
+.card .btn{width:100%;margin-top:18px}
+.card .hand{font-size:15px;color:var(--ink-2);margin:12px 0 0;text-align:center}
 .nojs-go{display:grid;gap:10px}
 .js .nojs-go{display:none}
-.no-js .js-go{display:none}
+.no-js .js-go,.no-js .jsonly{display:none}
+.js .nojsonly{display:none}
 .bbar{position:fixed;left:0;right:0;bottom:0;z-index:35;background:#fff;box-shadow:0 -8px 30px rgba(10,25,32,.10);padding:12px 0 calc(12px + env(safe-area-inset-bottom))}
-.bbar .wrap{display:flex;align-items:center;gap:14px}
+.bbar .wrap{display:flex;align-items:center;gap:12px}
 .bbar .sum{flex:1;min-width:0;line-height:1.25}
-.bbar .sum b{font-size:20px;display:block}
-.bbar .sum span{font-size:14.5px;color:var(--ink-2)}
+.bbar .sum b{font-size:19px;display:block}
+.bbar .sum span{font-size:14px;color:var(--ink-2);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .no-js .bbar{display:none}
 .hdr-wa .wa{color:var(--wa)}
+@media (min-width:901px){.dgrid .card{position:sticky;top:96px}}
 @media (max-width:900px){
   .hdr-wa{display:none}
-  .lvsum,.tot{grid-template-columns:1fr}
+  .lvsum,.dgrid{grid-template-columns:1fr}
   .desk{padding-top:84px}
   .prog button{padding:0 12px 0 6px;font-size:14.5px}
-  .prog .t{display:none}
-  .prog button[aria-current="step"] .t{display:inline}
 }
 @media (max-width:640px){
   .fgrid{grid-template-columns:1fr}
-  .band{height:34vh}
-  .bbar .btn{padding:0 18px}
+  .band{height:32vh}
   .bbar .back{display:none}
+  .chips .mo span{width:100%}
 }
 </style></head>
 <body><svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
@@ -399,6 +387,7 @@ svg.f{fill:currentColor;stroke:none}
   <a class="logo" href="../" aria-label="Global Surf Lodge Kabalana, home"><svg width="128" height="39" viewBox="0 0 128 39" aria-hidden="true" focusable="false"><use href="#logo"/></svg></a>
   <nav class="nav" aria-label="Main"><a href="../#levels">Levels</a><a href="../#rooms">Rooms</a><a href="../#lodge">The lodge</a><a href="../#contact">Contact</a></nav>
   <a class="btn btn-soft btn-sm hdr-wa" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."><svg class="i f wa" aria-hidden="true"><use href="#i-wa"/></svg>Questions? Ask us</a>
+  
   <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg class="i" aria-hidden="true"><use href="#i-menu"/></svg></button>
 </div></header>
 <div class="sheet" id="menu" aria-hidden="true" role="dialog" aria-label="Menu">
@@ -411,21 +400,27 @@ svg.f{fill:currentColor;stroke:none}
 </div>
 <main id="main" class="desk">
 <form id="bk" method="get" action="https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies" class="wrap" novalidate>
- <ol class="prog" aria-label="Booking steps"><li><button type="button" data-step="0" aria-current="step"><span class="n">1</span><span class="t">Level</span></button></li><li><button type="button" data-step="1" disabled><span class="n">2</span><span class="t">Room</span></button></li><li><button type="button" data-step="2" disabled><span class="n">3</span><span class="t">Dates &amp; guests</span></button></li><li><button type="button" data-step="3" disabled><span class="n">4</span><span class="t">Total</span></button></li></ol>
+ <ol class="prog" aria-label="Booking steps"><li><button type="button" data-step="0" aria-current="step"><span class="n">1</span><span class="t">Level</span></button></li><li><button type="button" data-step="1" disabled><span class="n">2</span><span class="t">Room</span></button></li><li><button type="button" data-step="2" disabled><span class="n">3</span><span class="t">Dates &amp; guests</span></button></li></ol>
 
- <section class="step on" id="s-level" data-hash="level" aria-labelledby="h-level">
-  <div class="step-h"><p class="count">Step 1 of 4</p><h1 id="h-level" tabindex="-1">Your level</h1></div>
+ <section class="step on" id="s-level" aria-labelledby="h-level">
+  <div class="step-h"><p class="count">Step 1 of 3</p><h1 id="h-level" tabindex="-1">Your level</h1></div>
   <div class="pills-row"><div class="pills" role="tablist" aria-label="Surf level"><button type="button" role="tab" id="btab-1" aria-controls="blv-1" aria-selected="true"><span class="lvn">Level 1</span> <span class="lvx">Fomies</span></button><button type="button" role="tab" id="btab-2" aria-controls="blv-2" aria-selected="false"><span class="lvn">Level 2</span> <span class="lvx">Rollers</span></button><button type="button" role="tab" id="btab-3" aria-controls="blv-3" aria-selected="false"><span class="lvn">Level 3</span> <span class="lvx">Riders</span></button></div></div>
-  <div class="band"><video class="lv-vid on" muted loop playsinline preload="none" disablepictureinpicture poster="../video/vid-010c-poster.webp" aria-label="A beginner stands up on a soft-top in the golden evening light">
-  <source data-src="../video/vid-010c-m720.mp4" data-media="(max-width: 700px)" type="video/mp4">
-  <source data-src="../video/vid-010c-m1280.webm" data-media="(min-width: 701px)" type="video/webm">
-  <source data-src="../video/vid-010c-m1280.mp4" data-media="(min-width: 701px)" type="video/mp4"></video><video class="lv-vid " muted loop playsinline preload="none" disablepictureinpicture poster="../video/vid-003e-poster.webp" aria-label="A surfer in a blue rash vest rides a reef wave">
-  <source data-src="../video/vid-003e-m720.mp4" data-media="(max-width: 700px)" type="video/mp4">
-  <source data-src="../video/vid-003e-m1280.webm" data-media="(min-width: 701px)" type="video/webm">
-  <source data-src="../video/vid-003e-m1280.mp4" data-media="(min-width: 701px)" type="video/mp4"></video><video class="lv-vid " muted loop playsinline preload="none" disablepictureinpicture poster="../video/vid-002e-poster.webp" aria-label="A surfer rides deep in a right-hand barrel">
-  <source data-src="../video/vid-002e-m720.mp4" data-media="(max-width: 700px)" type="video/mp4">
-  <source data-src="../video/vid-002e-m1280.webm" data-media="(min-width: 701px)" type="video/webm">
-  <source data-src="../video/vid-002e-m1280.mp4" data-media="(min-width: 701px)" type="video/mp4"></video></div>
+  <div class="band"><div class="lv-clip on"><img class="vposter" src="../video/vid-010c-poster.webp" alt="A beginner stands up on a soft-top in the golden evening light" loading="lazy" width="1280" height="720">
+  <video class="lv-vid" hidden muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true">
+  <source data-src="../video/vid-010c-m1280.webm" data-media="(max-width: 900px)" type="video/webm">
+  <source data-src="../video/vid-010c-m1280.mp4" data-media="(max-width: 900px)" type="video/mp4">
+  <source data-src="../video/vid-010c-d1600.webm" data-media="(min-width: 901px)" type="video/webm">
+  <source data-src="../video/vid-010c-d1600.mp4" data-media="(min-width: 901px)" type="video/mp4"></video></div><div class="lv-clip "><img class="vposter" src="../video/vid-003e-poster.webp" alt="A surfer in a blue rash vest rides a reef wave" loading="lazy" width="1280" height="720">
+  <video class="lv-vid" hidden muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true">
+  <source data-src="../video/vid-003e-m1280.webm" data-media="(max-width: 900px)" type="video/webm">
+  <source data-src="../video/vid-003e-m1280.mp4" data-media="(max-width: 900px)" type="video/mp4">
+  <source data-src="../video/vid-003e-d1920.webm" data-media="(min-width: 901px)" type="video/webm">
+  <source data-src="../video/vid-003e-d1920.mp4" data-media="(min-width: 901px)" type="video/mp4"></video></div><div class="lv-clip "><img class="vposter" src="../video/vid-002e-poster.webp" alt="A surfer rides deep in a right-hand barrel" loading="lazy" width="1280" height="720">
+  <video class="lv-vid" hidden muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true">
+  <source data-src="../video/vid-002e-m1280.webm" data-media="(max-width: 900px)" type="video/webm">
+  <source data-src="../video/vid-002e-m1280.mp4" data-media="(max-width: 900px)" type="video/mp4">
+  <source data-src="../video/vid-002e-d1920.webm" data-media="(min-width: 901px)" type="video/webm">
+  <source data-src="../video/vid-002e-d1920.mp4" data-media="(min-width: 901px)" type="video/mp4"></video></div></div>
   <div class="lv-panel" id="blv-1" role="tabpanel" aria-labelledby="btab-1">
    <div class="lvsum">
     <div><h3>Level 1 – Fomies</h3><p class="one">Your first time on a board. No experience needed.</p>
@@ -447,8 +442,8 @@ svg.f{fill:currentColor;stroke:none}
    </div></div>
  </section>
 
- <section class="step" id="s-room" data-hash="room" aria-labelledby="h-room">
-  <div class="step-h"><p class="count">Step 2 of 4</p><h2 id="h-room" tabindex="-1">Your room</h2></div>
+ <section class="step" id="s-room" aria-labelledby="h-room">
+  <div class="step-h"><p class="count">Step 2 of 3</p><h2 id="h-room" tabindex="-1">Your room</h2></div>
   <div id="bookRooms"><div class="room-box">
   <div class="pills-row"><div class="pills" role="tablist" aria-label="Room type"><button type="button" role="tab" id="brt-dorm" aria-controls="broom-dorm" aria-selected="true">Dorm</button><button type="button" role="tab" id="brt-twin" aria-controls="broom-twin" aria-selected="false">Twin</button><button type="button" role="tab" id="brt-deluxe" aria-controls="broom-deluxe" aria-selected="false">Deluxe double</button></div></div>
   <div class="room-panels">
@@ -465,7 +460,7 @@ svg.f{fill:currentColor;stroke:none}
       <p class="desc">Our new gallery room sleeps four in comfortable single beds and has its own outdoor bathroom. It suits larger groups, and travellers on a budget.</p>
       <p class="detail">Sleeps 4 | 4 single beds | Private outdoor bathroom | Shared</p>
       <p class="price" data-price>Included in the package price</p>
-      <p class="flag">Not free on these dates</p><button type="button" class="btn btn-book pick" data-room="dorm">Choose this room</button><p class="chosen"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Mixed dorm room – 4 beds</p>
+      <p class="flag">Not free on these dates</p><button type="button" class="btn btn-book pick jsonly" data-room="dorm">Choose this room</button>
      </div>
     </div>
    </div>
@@ -482,7 +477,7 @@ svg.f{fill:currentColor;stroke:none}
       <p class="desc">The twin rooms look out on the beach all day, and each has a lovely private bathroom. There are two beds; the room is shared unless you choose private use on the booking page.</p>
       <p class="detail">Sleeps 2 | 2 beds | Private bathroom | Shared, or book it privately</p>
       <p class="price" data-price>+$140 pp for 7 nights, one guest<br>+$80 pp for 7 nights, two sharing</p>
-      <p class="flag">Not free on these dates</p><button type="button" class="btn btn-book pick" data-room="twin">Choose this room</button><p class="chosen"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Shared Twin Room – 2 Beds</p>
+      <p class="flag">Not free on these dates</p><button type="button" class="btn btn-book pick jsonly" data-room="twin">Choose this room</button>
      </div>
     </div>
    </div>
@@ -499,121 +494,106 @@ svg.f{fill:currentColor;stroke:none}
       <p class="desc">Our double rooms have one queen-size bed and a private bathroom. To keep it just for the two of you, choose private use when you check out on the booking page.</p>
       <p class="detail">Sleeps 2 | Queen-size bed | Private bathroom</p>
       <p class="price" data-price>+$418 pp for 7 nights</p>
-      <p class="flag">Not free on these dates</p><button type="button" class="btn btn-book pick" data-room="deluxe">Choose this room</button><p class="chosen"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Deluxe double room</p>
+      <p class="flag">Not free on these dates</p><button type="button" class="btn btn-book pick jsonly" data-room="deluxe">Choose this room</button>
      </div>
     </div>
    </div>
   </div></div></div>
-  <p class="detail" style="text-align:center;margin-top:28px">Room prices change with the dates. Sample for 20–27 Feb 2027; prices from the booking engine, 29 Sep 2026.</p>
+  <p class="detail" style="text-align:center;margin-top:24px">Room prices change with the dates. Sample for 20–27 Feb 2027; prices from the booking engine, 29 Sep 2026.</p>
  </section>
 
- <section class="step" id="s-dates" data-hash="dates" aria-labelledby="h-dates">
-  <div class="step-h"><p class="count">Step 3 of 4</p><h2 id="h-dates" tabindex="-1">Dates and guests</h2></div>
-  <div class="band"><img src="../img/img-001-1400.webp" srcset="../img/img-001-800.webp 800w, ../img/img-001-1400.webp 1400w" sizes="(max-width: 1160px) 100vw, 1120px" width="1400" height="933" alt="woman on a daybed by the lodge pool, white bungalow behind" loading="lazy" decoding="async"></div>
-  <div class="fields">
+ <section class="step" id="s-dates" aria-labelledby="h-dates">
+  <div class="step-h"><p class="count">Step 3 of 3</p><h2 id="h-dates" tabindex="-1">Dates and guests</h2></div>
+  <div class="dgrid">
+   <div class="fields">
+    <div class="fl up chips jsonly" role="group" aria-labelledby="dlab"><span class="lab" id="dlab">Check-in (Saturdays)</span><div id="chips"></div></div>
+    <div class="fl filled nojsonly"><label for="d-start">Check-in (Saturdays)</label>
+      <select id="d-start" name="start"><option value="">Choose a Saturday</option><option value="2026-10-03">Sat, 3 Oct 2026</option><option value="2026-10-24">Sat, 24 Oct 2026</option><option value="2026-10-31">Sat, 31 Oct 2026</option><option value="2026-12-19">Sat, 19 Dec 2026</option><option value="2027-01-23">Sat, 23 Jan 2027</option><option value="2027-01-30">Sat, 30 Jan 2027</option><option value="2027-02-13">Sat, 13 Feb 2027</option><option value="2027-02-20">Sat, 20 Feb 2027</option><option value="2027-02-27">Sat, 27 Feb 2027</option><option value="2027-03-06">Sat, 6 Mar 2027</option><option value="2027-03-13">Sat, 13 Mar 2027</option><option value="2027-03-20">Sat, 20 Mar 2027</option><option value="2027-03-27">Sat, 27 Mar 2027</option><option value="2027-04-03">Sat, 3 Apr 2027</option></select></div>
+    <div class="fl filled nojsonly"><label for="d-end">Check-out (Saturdays)</label>
+      <select id="d-end" name="end"><option value="">Choose a Saturday</option><option value="2026-10-10">Sat, 10 Oct 2026</option><option value="2026-10-17">Sat, 17 Oct 2026</option><option value="2026-10-24">Sat, 24 Oct 2026</option><option value="2026-10-31">Sat, 31 Oct 2026</option><option value="2026-11-07">Sat, 7 Nov 2026</option><option value="2026-11-14">Sat, 14 Nov 2026</option><option value="2026-11-21">Sat, 21 Nov 2026</option><option value="2026-11-28">Sat, 28 Nov 2026</option><option value="2026-12-26">Sat, 26 Dec 2026</option><option value="2027-01-02">Sat, 2 Jan 2027</option><option value="2027-01-09">Sat, 9 Jan 2027</option><option value="2027-01-16">Sat, 16 Jan 2027</option><option value="2027-01-30">Sat, 30 Jan 2027</option><option value="2027-02-06">Sat, 6 Feb 2027</option><option value="2027-02-13">Sat, 13 Feb 2027</option><option value="2027-02-20">Sat, 20 Feb 2027</option><option value="2027-02-27">Sat, 27 Feb 2027</option><option value="2027-03-06">Sat, 6 Mar 2027</option><option value="2027-03-13">Sat, 13 Mar 2027</option><option value="2027-03-20">Sat, 20 Mar 2027</option><option value="2027-03-27">Sat, 27 Mar 2027</option><option value="2027-04-03">Sat, 3 Apr 2027</option><option value="2027-04-10">Sat, 10 Apr 2027</option><option value="2027-04-17">Sat, 17 Apr 2027</option><option value="2027-04-24">Sat, 24 Apr 2027</option><option value="2027-05-01">Sat, 1 May 2027</option></select></div>
+    <p class="help" id="dhelp">Packages start on a Saturday.</p>
+    <div class="fl up segf jsonly" role="group" aria-labelledby="nlab"><span class="lab" id="nlab">Nights</span>
+      <div class="seg"><button type="button" data-nights="7" aria-pressed="true">7</button><button type="button" data-nights="14" aria-pressed="false">14</button><button type="button" data-nights="21" aria-pressed="false">21</button><button type="button" data-nights="28" aria-pressed="false">28</button></div></div>
     <div class="fgrid">
       <div class="fl filled"><label for="g-female">Women</label>
-        <input id="g-female" name="female" type="number" inputmode="numeric" min="0" max="6" value="1">
-        <button type="button" class="step-btn" data-dec="female" aria-label="One less: Women"><svg class="i" aria-hidden="true"><use href="#i-minus"/></svg></button>
-        <button type="button" class="step-btn" data-inc="female" aria-label="One more: Women"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></button>
+        <input id="g-female" name="female" type="number" inputmode="numeric" min="0" max="6" value="0">
+        <button type="button" class="step-btn jsonly" data-dec="female" aria-label="One less: Women"><svg class="i" aria-hidden="true"><use href="#i-minus"/></svg></button>
+        <button type="button" class="step-btn jsonly" data-inc="female" aria-label="One more: Women"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></button>
       </div>
       <div class="fl filled"><label for="g-male">Men</label>
         <input id="g-male" name="male" type="number" inputmode="numeric" min="0" max="6" value="0">
-        <button type="button" class="step-btn" data-dec="male" aria-label="One less: Men"><svg class="i" aria-hidden="true"><use href="#i-minus"/></svg></button>
-        <button type="button" class="step-btn" data-inc="male" aria-label="One more: Men"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></button>
+        <button type="button" class="step-btn jsonly" data-dec="male" aria-label="One less: Men"><svg class="i" aria-hidden="true"><use href="#i-minus"/></svg></button>
+        <button type="button" class="step-btn jsonly" data-inc="male" aria-label="One more: Men"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></button>
       </div>
       <div class="fl filled"><label for="g-couple">Couples</label>
         <input id="g-couple" name="couple" type="number" inputmode="numeric" min="0" max="3" value="0">
-        <button type="button" class="step-btn" data-dec="couple" aria-label="One less: Couples"><svg class="i" aria-hidden="true"><use href="#i-minus"/></svg></button>
-        <button type="button" class="step-btn" data-inc="couple" aria-label="One more: Couples"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></button>
+        <button type="button" class="step-btn jsonly" data-dec="couple" aria-label="One less: Couples"><svg class="i" aria-hidden="true"><use href="#i-minus"/></svg></button>
+        <button type="button" class="step-btn jsonly" data-inc="couple" aria-label="One more: Couples"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></button>
       </div></div>
-    <p class="help">Up to 6 guests per booking.</p>
-    <div class="datewrap">
-      <div class="fl nojs-date filled"><label for="d-start">Check-in (Saturdays)</label>
-        <select id="d-start" name="start"><option value="">Choose a Saturday</option><option value="2026-10-03">Sat, 3 Oct 2026</option><option value="2026-10-24">Sat, 24 Oct 2026</option><option value="2026-10-31">Sat, 31 Oct 2026</option><option value="2026-12-19">Sat, 19 Dec 2026</option><option value="2027-01-23">Sat, 23 Jan 2027</option><option value="2027-01-30">Sat, 30 Jan 2027</option><option value="2027-02-13">Sat, 13 Feb 2027</option><option value="2027-02-20">Sat, 20 Feb 2027</option><option value="2027-02-27">Sat, 27 Feb 2027</option><option value="2027-03-06">Sat, 6 Mar 2027</option><option value="2027-03-13">Sat, 13 Mar 2027</option><option value="2027-03-20">Sat, 20 Mar 2027</option><option value="2027-03-27">Sat, 27 Mar 2027</option><option value="2027-04-03">Sat, 3 Apr 2027</option></select><svg class="i cal-i" aria-hidden="true"><use href="#i-down"/></svg></div>
-      <div class="fl js-date" id="dateField"><span class="lab" id="dlab">Check-in (Saturdays)</span><span class="val" id="dval"></span><svg class="i cal-i" aria-hidden="true"><use href="#i-cal"/></svg>
-        <button type="button" class="date-btn" id="dateBtn" aria-haspopup="dialog" aria-expanded="false" aria-labelledby="dlab dval"></button></div>
-      <div class="cal" id="cal" role="dialog" aria-label="Check-in (Saturdays)" hidden></div>
-    </div>
-    <p class="help" id="dhelp">Packages start on a Saturday.</p>
-    <div class="fl up segf" role="radiogroup" aria-labelledby="nlab"><span class="lab" id="nlab">Nights</span>
-      <div class="seg"><label><input type="radio" name="duration" value="8" data-nights="7" checked><span>7</span></label><label><input type="radio" name="duration" value="15" data-nights="14"><span>14</span></label><label><input type="radio" name="duration" value="22" data-nights="21"><span>21</span></label><label><input type="radio" name="duration" value="29" data-nights="28"><span>28</span></label></div></div>
-    <input type="hidden" id="d-end" value="">
-  </div>
- </section>
-
- <section class="step" id="s-total" data-hash="total" aria-labelledby="h-total">
-  <div class="step-h"><p class="count">Step 4 of 4</p><h2 id="h-total" tabindex="-1">Your total</h2></div>
-  <div class="band"><img src="../img/img-093-1400.webp" srcset="../img/img-093-800.webp 800w, ../img/img-093-1400.webp 1400w" sizes="(max-width: 1160px) 100vw, 1120px" width="1400" height="933" alt="lodge pool and lounge at dusk, lights on" loading="lazy" decoding="async"></div>
-  <div class="tot">
-    <div class="card">
-      <dl class="rows">
-        <div><dt>Level</dt><dd id="t-level">Level 1 – Fomies</dd></div>
-        <div><dt>Dates</dt><dd id="t-dates">–</dd></div>
-        <div><dt>Guests</dt><dd id="t-guests">1</dd></div>
-        <div><dt>Room</dt><dd id="t-room">Mixed dorm room – 4 beds</dd></div>
-      </dl>
-      <p class="small err" id="t-roomflag" hidden></p>
-    </div>
-    <div class="card">
-      <dl class="rows">
-        <div><dt>Package, per person</dt><dd id="p-base">$1,466</dd></div>
-        <div><dt>Room, per person</dt><dd id="p-room">Included</dd></div>
-        <div><dt>Total per person</dt><dd id="p-pp">$1,466</dd></div>
-        <div class="sum"><dt id="p-all-l">Total for 1 guests</dt><dd id="p-all">$1,466</dd></div>
-      </dl>
-      <p class="small" id="p-src">Prices from the booking engine, 29 Sep 2026 | Prices in USD</p>
-      <p class="small">40% deposit to book, the rest 45 days before arrival. Booking less than 45 days ahead? You pay in full.</p>
-    </div>
-  </div>
-  <div class="handoff" style="max-width:640px;margin:40px auto 0;text-align:center">
-    <div class="js-go"><button type="submit" class="btn btn-book">Continue booking</button></div>
-    <div class="nojs-go"><button type="submit" class="btn btn-book" formaction="https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies">Continue booking: Level 1 – Fomies</button><button type="submit" class="btn btn-book" formaction="https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers">Continue booking: Level 2 – Rollers</button><button type="submit" class="btn btn-book" formaction="https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders">Continue booking: Level 3 – Riders</button></div>
-    <p>Next, on our Bookinglayer booking page: confirm your room, add airport pickup if you want it, then enter your details and pay. Nothing is booked until you check out there.</p>
-    <div class="btn-row c" style="margin-top:18px"><a class="btn btn-soft" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."><svg class="i f wa" aria-hidden="true"><use href="#i-wa"/></svg>Questions? Ask us</a></div>
+    <p class="help" id="ghelp">Up to 6 guests per booking.</p>
+   </div>
+   <div class="card" aria-live="polite">
+     <h3>Your total</h3>
+     <dl class="rows">
+       <div><dt>Level</dt><dd id="t-level">Level 1 – Fomies</dd></div>
+       <div><dt>Room</dt><dd id="t-room">Mixed dorm room – 4 beds</dd></div>
+       <div class="jsonly"><dt>Dates</dt><dd id="t-dates">–</dd></div>
+       <div class="jsonly"><dt>Guests</dt><dd id="t-guests">–</dd></div>
+     </dl>
+     <p class="small err" id="t-roomflag" hidden style="color:var(--book);font-weight:600"></p>
+     <dl class="rows">
+       <div><dt>Package, per person</dt><dd id="p-base">$1,466</dd></div>
+       <div><dt>Room, per person</dt><dd id="p-room">Included</dd></div>
+       <div><dt>Total per person</dt><dd id="p-pp">$1,466</dd></div>
+       <div class="sum jsonly"><dt id="p-all-l">Total for 0 guests</dt><dd id="p-all">–</dd></div>
+     </dl>
+     <p class="small" id="p-src">Prices from the booking engine, 29 Sep 2026 | Prices in USD</p>
+     <p class="small">40% deposit to book, the rest 45 days before arrival. Booking less than 45 days ahead? You pay in full.</p>
+     <div class="js-go"><button type="submit" class="btn btn-book">Continue booking</button></div>
+     <div class="nojs-go"><button type="submit" class="btn btn-book" formaction="https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies">Continue booking: Level 1 – Fomies</button><button type="submit" class="btn btn-book" formaction="https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers">Continue booking: Level 2 – Rollers</button><button type="submit" class="btn btn-book" formaction="https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders">Continue booking: Level 3 – Riders</button></div>
+     <p class="hand">Next, on our Bookinglayer booking page: confirm your room, add airport pickup if you want it, then enter your details and pay. Nothing is booked until you check out there.</p>
+     <a class="btn btn-white" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages." data-wa><svg class="i f wa" aria-hidden="true"><use href="#i-wa"/></svg>Questions? Ask us</a>
+   </div>
   </div>
  </section>
 </form>
 </main>
 <footer class="foot" id="contact"><div class="wrap">
   <div class="foot-grid">
-    <div>
+    <div class="fbrand">
       <a class="logo" href="../" aria-label="Global Surf Lodge Kabalana, home"><svg width="128" height="39" viewBox="0 0 128 39" aria-hidden="true" focusable="false"><use href="#logo"/></svg></a>
       <p>Surf weeks for all levels on Sri Lanka's south coast, a few steps from the ocean.</p>
-      <div class="stack">
-        <a class="btn btn-soft" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."><svg class="i f wa" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp us</a>
-        <a class="btn btn-soft" href="tel:+97299733943"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call us</a>
-        <a class="btn btn-soft" href="mailto:info@globalsurf.com"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>Email us</a>
-      </div>
-    </div>
-    <div>
-      <h3>Getting here</h3>
-      <p>Henewatta Addara Gederawata, Ahangama 80650, Sri Lanka</p>
-      <p>Booking.com puts Kathaluwa West Beach 40 m from the lodge and Kabalana Beach 350 m. Kathaluwa station is 400 m away, Ahangama Beach 4 km and Koggala Airport 3.9 km.</p>
-      <p>Check-in 14:00–20:00 | check-out by 11:00</p>
-      <a class="btn btn-soft" href="https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Open in Maps</a>
-    </div>
-    <div>
-      <h3>Follow the lodge</h3>
-      <p>The home for all ocean lovers.</p>
       <div class="social">
         <a href="https://www.instagram.com/globalsurf_kabalana/" aria-label="Instagram"><svg class="i" aria-hidden="true"><use href="#i-ig"/></svg></a>
         <a href="https://www.youtube.com/channel/UCh-GTj4Wu2FbdXpr-xNSGzQ" aria-label="YouTube"><svg class="i" aria-hidden="true"><use href="#i-yt"/></svg></a>
         <a href="https://www.facebook.com/GlobalSURFltd/" aria-label="Facebook"><svg class="i" aria-hidden="true"><use href="#i-fb"/></svg></a>
       </div>
     </div>
+    <div class="stack">
+      <a class="btn btn-white" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages." data-wa><svg class="i f wa" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp us</a>
+      <a class="btn btn-white" href="tel:+97299733943"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call us</a>
+      <a class="btn btn-white" href="mailto:info@globalsurf.com"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>Email us</a>
+    </div>
+    <div>
+      <h3>Getting here</h3>
+      <p><b>Henewatta Addara Gederawata, Ahangama 80650, Sri Lanka</b></p>
+      <p>Booking.com puts Kathaluwa West Beach 40 m from the lodge and Kabalana Beach 350 m. Kathaluwa station is 400 m away, Ahangama Beach 4 km and Koggala Airport 3.9 km.</p>
+      <p>Check-in 14:00–20:00 | check-out by 11:00</p>
+      <a class="btn btn-white" href="https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Open in Maps</a>
+    </div>
   </div>
   <div class="legal"><span>© Global Surf Lodge Kabalana</span><span>12 rooms | Saturday check-in | ISA-certified surf guides</span></div>
 </div></footer>
 <div class="bbar" id="bbar"><div class="wrap">
-  <p class="sum" style="margin:0"><b id="b-total">$1,466</b><span id="b-sub"></span></p>
-  <button type="button" class="btn btn-soft back" id="b-back"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></button>
+  <p class="sum" style="margin:0"><b id="b-total">From $1,466 pp</b><span id="b-sub"></span></p>
+  <button type="button" class="btn btn-soft back" id="b-back" aria-label="Back"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></button>
   <button type="button" class="btn btn-book" id="b-next">Next</button>
 </div></div>
 
 <script>(function(){
 var d=document, root=d.documentElement;
 root.classList.remove('no-js'); root.classList.add('js');
+d.querySelectorAll('video[hidden]').forEach(function(v){v.hidden=false;v.style.opacity=0;});
 var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var SD=!!(navigator.connection&&navigator.connection.saveData);
 var GS=window.GS={RM:RM,SD:SD,calm:RM||SD};
@@ -627,7 +607,7 @@ GS.attach=function(v,play){
       if(m&&!matchMedia(m).matches){s.remove();return;}
       s.src=s.dataset.src; s.removeAttribute('data-src');
     });
-    v.dataset.ready='1'; v.load();
+    v.dataset.ready='1'; v.addEventListener('playing',function(){v.style.transition='opacity .4s';v.style.opacity='';},{once:true}); v.load();
   }
   if(play!==false){var p=v.play(); if(p&&p.catch)p.catch(function(){});}
   return true;
@@ -734,139 +714,120 @@ if(mb&&sheet){
 var LV=[{"n":1,"slug":"level-1-fomies","id":"877aef3d-86ed-4b60-8932-03e49c613af8","label":"Level 1 – Fomies"},{"n":2,"slug":"level-2-rollers","id":"4b58b491-24fc-4fb8-a40d-2705df961db4","label":"Level 2 – Rollers"},{"n":3,"slug":"level-3-riders","id":"54ec3447-2efb-4677-8685-f272e00d32e8","label":"Level 3 – Riders"}];
 var RMS=[{"key":"dorm","label":"Mixed dorm room – 4 beds","title":"Mixed dorm room - 4 beds"},{"key":"twin","label":"Shared Twin Room – 2 Beds","title":"Shared Twin Room - 2 Beds"},{"key":"deluxe","label":"Deluxe double room","title":"Deluxe double room"}];
 var SNAP={"asOf":"29 Sep 2026","base7":1466,"saturdays":["2026-10-03","2026-10-24","2026-10-31","2026-12-19","2027-01-23","2027-01-30","2027-02-13","2027-02-20","2027-02-27","2027-03-06","2027-03-13","2027-03-20","2027-03-27","2027-04-03"],"rooms":{"dorm":{"one":0,"two":0},"twin":{"one":140.04,"two":80.025},"deluxe":{"one":418.46,"two":418.46}}};
-var T={"next":"Next","go":"Continue booking","incl":"Included","supp":"+${amount} pp","notFree":"Not free on these dates","onlyOne":"Only the {room} is free on these dates","all":"Total for {n} guests","snap":"Prices from the booking engine, {date}","live":"Live price from the booking engine","fb":"Live prices didn't load. These are the booking engine's prices from {date}.","cur":"Prices in USD","choose":"Choose a Saturday","help":"Packages start on a Saturday."};
+var T={"next":"Next","go":"Continue booking","incl":"Included","supp":"+${amount} pp","notFree":"Not free on these dates","onlyOne":"Only the {room} is free on these dates","all":"Total for {n} guests","snap":"Prices from the booking engine, {date}","live":"Live price from the booking engine","fb":"Live prices didn't load. These are the booking engine's prices from {date}.","cur":"Prices in USD","choose":"Choose a Saturday","guestsHelp":"Up to 6 guests per booking.","women":"Women","men":"Men","couples":"Couples","wa":"https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."};
 var BD='globalsurfadventures.bookinglayer.com',API='https://api.bookinglayer.io/public/';
 var q=new URLSearchParams(location.search);
-var S={level:Math.max(0,Math.min(2,(+q.get('level')||1)-1)),room:Math.max(0,RMS.findIndex(function(r){return r.key===q.get('room');})),start:'',nights:7,g:{female:1,male:0,couple:0},live:null,choosable:SNAP.saturdays.slice(),step:0,reached:0};
+var lvq=+q.get('level');
+var S={level:lvq>=1&&lvq<=3?lvq-1:0,room:Math.max(0,RMS.findIndex(function(r){return r.key===q.get('room');})),start:'',nights:7,g:{female:0,male:0,couple:0},live:null,liveFail:false,choosable:SNAP.saturdays.slice(),step:0,reached:0};
 var steps=[].slice.call(d.querySelectorAll('.step')),prog=[].slice.call(d.querySelectorAll('.prog button'));
 function money(v){var r=Math.round(v*100)/100;return '$'+r.toLocaleString('en-US',{minimumFractionDigits:r%1?2:0,maximumFractionDigits:2});}
 function persons(){return S.g.female+S.g.male+2*S.g.couple;}
 function addDays(s,n){var t=new Date(s+'T12:00:00Z');t.setUTCDate(t.getUTCDate()+n);return t.toISOString().slice(0,10);}
 function fmt(s){return new Date(s+'T12:00:00Z').toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric',timeZone:'UTC'});}
 function short(s){return new Date(s+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',timeZone:'UTC'});}
+function guestText(){var gl=[];if(S.g.female)gl.push(T.women+': '+S.g.female);if(S.g.male)gl.push(T.men+': '+S.g.male);if(S.g.couple)gl.push(T.couples+': '+S.g.couple);return gl.join(', ');}
 
-/* ---- level ---- */
-var band=d.querySelector('#s-level .band'),bvids=[].slice.call(band.querySelectorAll('video')),lpanels=[].slice.call(d.querySelectorAll('#s-level .lv-panel'));
-function showLevel(k){S.level=k;bvids.forEach(function(v,j){v.classList.toggle('on',j===k);if(j===k&&S.step===0)GS.attach(v);else if(!v.paused)v.pause();});lpanels.forEach(function(p,j){p.hidden=j!==k;});d.getElementById('bk').action='https://globalsurfadventures.bookinglayer.com/en/product/'+LV[k].slug;S.live=null;S.choosable=SNAP.saturdays.slice();render();}
-var ltabs=GS.tabs(d.querySelector('#s-level [role=tablist]'),function(k){showLevel(k);if(S.step>=2)refreshLive();});
+/* ---- level (clip attached after first paint) ---- */
+var clips=[].slice.call(d.querySelectorAll('#s-level .band .lv-clip')),lpanels=[].slice.call(d.querySelectorAll('#s-level .lv-panel')),painted=false;
+function playLevel(){clips.forEach(function(c,j){var v=c.querySelector('video');if(j===S.level&&S.step===0&&painted)GS.attach(v);else if(!v.paused)v.pause();});}
+function showLevel(k){S.level=k;clips.forEach(function(c,j){c.classList.toggle('on',j===k);});lpanels.forEach(function(p,j){p.hidden=j!==k;});S.live=null;S.choosable=SNAP.saturdays.slice();playLevel();render();}
+var ltabs=GS.tabs(d.querySelector('#s-level [role=tablist]'),function(k){showLevel(k);if(persons())fetchCal();});
+addEventListener('load',function(){requestAnimationFrame(function(){setTimeout(function(){painted=true;playLevel();},150);});});
 
 /* ---- rooms ---- */
 var rbox=d.getElementById('bookRooms'),rpanels=[].slice.call(rbox.querySelectorAll('.room-panel'));
-var rtabs=GS.roomViewer(rbox);
-rpanels.forEach(function(p,k){p.hidden=k!==S.room;});
-function markRoom(){rpanels.forEach(function(p,k){p.classList.toggle('picked',k===S.room&&S.reached>1);});}
-rbox.querySelectorAll('.pick').forEach(function(b,k){b.addEventListener('click',function(){S.room=k;S.reached=Math.max(S.reached,2);markRoom();render();go(2);});});
+var rtabs=GS.roomViewer(rbox,function(k){S.room=k;render();});
+rbox.querySelectorAll('.pick').forEach(function(b,k){b.addEventListener('click',function(){S.room=k;go(2);});});
+
+/* ---- check-in chips ---- */
+var chips=d.getElementById('chips');
+function drawChips(){var by={},h='';S.choosable.forEach(function(s){var m=s.slice(0,7);(by[m]=by[m]||[]).push(s);});
+  Object.keys(by).sort().forEach(function(m){var lab=new Date(m+'-15T12:00:00Z').toLocaleDateString('en-GB',{month:'short',year:'numeric',timeZone:'UTC'});
+    h+='<div class="mo"><span>'+lab+'</span>'+by[m].map(function(s){return '<button type="button" data-d="'+s+'" aria-pressed="'+(s===S.start)+'" aria-label="'+fmt(s)+'">Sat '+(+s.slice(8))+'</button>';}).join('')+'</div>';});
+  chips.innerHTML=h;}
+chips.addEventListener('click',function(e){var b=e.target.closest('[data-d]');if(!b)return;S.start=b.dataset.d;S.live=null;d.getElementById('dhelp').className='help';drawChips();render();refreshLive();});
+d.querySelectorAll('[data-nights]').forEach(function(b){b.addEventListener('click',function(){S.nights=+b.dataset.nights;d.querySelectorAll('[data-nights]').forEach(function(x){x.setAttribute('aria-pressed',x===b);});S.live=null;render();refreshLive();});});
 
 /* ---- guests ---- */
-['female','male','couple'].forEach(function(n){var inp=d.getElementById('g-'+n);
-  function set(v){var max=n==='couple'?3:6;v=Math.max(0,Math.min(max,v|0));var others=persons()-(n==='couple'?2:1)*S.g[n];var per=n==='couple'?2:1;while(v>0&&others+per*v>6)v--;S.g[n]=v;inp.value=v;guestsChanged();}
+['female','male','couple'].forEach(function(n){var inp=d.getElementById('g-'+n),per=n==='couple'?2:1,max=n==='couple'?3:6;
+  function set(v){v=Math.max(0,Math.min(max,v|0));var others=persons()-per*S.g[n];while(v>0&&others+per*v>6)v--;S.g[n]=v;inp.value=v;d.getElementById('ghelp').className='help';S.live=null;render();clearTimeout(gt);gt=setTimeout(function(){fetchCal();refreshLive();},600);}
   d.querySelector('[data-dec='+n+']').addEventListener('click',function(){set(S.g[n]-1);});
   d.querySelector('[data-inc='+n+']').addEventListener('click',function(){set(S.g[n]+1);});
   inp.addEventListener('change',function(){set(+inp.value);});});
-var gt;function guestsChanged(){S.live=null;render();clearTimeout(gt);gt=setTimeout(fetchCal,600);}
-function stepBtns(){var p=persons();['female','male','couple'].forEach(function(n){d.querySelector('[data-dec='+n+']').disabled=S.g[n]<=0;d.querySelector('[data-inc='+n+']').disabled=p+(n==='couple'?2:1)>6||S.g[n]>=(n==='couple'?3:6);});}
-
-/* ---- nights ---- */
-d.querySelectorAll('input[name=duration]').forEach(function(r){r.addEventListener('change',function(){S.nights=+r.dataset.nights;S.live=null;render();refreshLive();});});
-
-/* ---- calendar ---- */
-var cal=d.getElementById('cal'),dbtn=d.getElementById('dateBtn'),dfield=d.getElementById('dateField'),month=null;
-function ym(s){return s.slice(0,7);}
-function drawCal(){var first=month?month:ym(S.start||S.choosable[0]||SNAP.saturdays[0]);month=first;
-  var y=+first.slice(0,4),m=+first.slice(5,7)-1,start=new Date(Date.UTC(y,m,1)),dow=(start.getUTCDay()+6)%7,days=new Date(Date.UTC(y,m+1,0)).getUTCDate();
-  var months=S.choosable.map(ym),minM=months[0]||first,maxM=months[months.length-1]||first;
-  var h='<div class="cal-top"><button type="button" data-m="-1" aria-label="Previous month"'+(first<=minM?' disabled':'')+'><svg class="i"><use href="#i-left"/></svg></button><span>'+start.toLocaleDateString('en-GB',{month:'long',year:'numeric',timeZone:'UTC'})+'</span><button type="button" data-m="1" aria-label="Next month"'+(first>=maxM?' disabled':'')+'><svg class="i"><use href="#i-right"/></svg></button></div><table role="grid"><thead><tr>'+['Mo','Tu','We','Th','Fr','Sa','Su'].map(function(x){return '<th scope="col">'+x+'</th>';}).join('')+'</tr></thead><tbody><tr>';
-  for(var i=0;i<dow;i++)h+='<td></td>';
-  for(var dd=1;dd<=days;dd++){var s=first+'-'+String(dd).padStart(2,'0'),ok=S.choosable.indexOf(s)>-1;
-    h+='<td><button type="button" '+(ok?'class="ok" data-d="'+s+'" aria-label="'+fmt(s)+'"':'disabled tabindex="-1" aria-hidden="true"')+' aria-pressed="'+(s===S.start)+'">'+dd+'</button></td>';
-    if((dow+dd)%7===0&&dd<days)h+='</tr><tr>';}
-  cal.innerHTML=h+'</tr></tbody></table>';}
-function shiftM(n){var y=+month.slice(0,4),m=+month.slice(5,7)-1+n;var t=new Date(Date.UTC(y,m,1));month=t.toISOString().slice(0,7);drawCal();}
-function openCal(){month=null;drawCal();cal.hidden=false;dbtn.setAttribute('aria-expanded','true');dfield.classList.add('up');var b=cal.querySelector('[aria-pressed=true]')||cal.querySelector('.ok');(b||cal.querySelector('button')).focus();}
-function closeCal(f){cal.hidden=true;dbtn.setAttribute('aria-expanded','false');if(!S.start)dfield.classList.remove('up');if(f)dbtn.focus();}
-dbtn.addEventListener('click',function(){cal.hidden?openCal():closeCal();});
-cal.addEventListener('click',function(e){e.stopPropagation();var b=e.target.closest('button');if(!b)return;if(b.dataset.m){shiftM(+b.dataset.m);cal.querySelector('[data-m="'+b.dataset.m+'"]').focus();return;}if(b.dataset.d){S.start=b.dataset.d;S.live=null;d.getElementById('d-start').value=S.start;closeCal(true);render();refreshLive();}});
-cal.addEventListener('keydown',function(e){if(e.key==='Escape')closeCal(true);});
-d.addEventListener('click',function(e){if(!cal.hidden&&!e.target.closest('.datewrap'))closeCal();});
+var gt;
+function stepBtns(){var p=persons();['female','male','couple'].forEach(function(n){var per=n==='couple'?2:1;d.querySelector('[data-dec='+n+']').disabled=S.g[n]<=0;d.querySelector('[data-inc='+n+']').disabled=p+per>6||S.g[n]>=(n==='couple'?3:6);});}
 
 /* ---- live data, only after the visitor interacts (docs/bookinglayer.md §6) ---- */
 function tfetch(u,o){var c=new AbortController();setTimeout(function(){c.abort();},8000);o=o||{};o.signal=c.signal;return fetch(u,o).then(function(r){if(!r.ok)throw r.status;return r.json();});}
 function gq(){return '&female='+S.g.female+'&male='+S.g.male+'&couple='+S.g.couple+'&business_domain='+BD;}
 function fetchCal(){if(persons()<1)return;var lv=LV[S.level],t=new Date(),e=new Date();e.setUTCFullYear(e.getUTCFullYear()+1);
   tfetch(API+'products/'+lv.id+'/availabilities?format=choosable&show_available_only=1&mode=checkin&start='+t.toISOString().slice(0,10)+'&end='+e.toISOString().slice(0,10)+gq())
-  .then(function(j){var ds=j&&j.data&&j.data.dates;if(!ds)throw 'shape';var list=Object.keys(ds).filter(function(k){return ds[k].choosable;}).sort();if(!list.length)throw 'empty';S.choosable=list;if(S.start&&list.indexOf(S.start)<0){S.start='';d.getElementById('dhelp').innerHTML='<span class=err>'+T.choose+'</span>';}render();refreshLive();})
+  .then(function(j){var ds=j&&j.data&&j.data.dates;if(!ds)throw 'shape';var list=Object.keys(ds).filter(function(k){return ds[k].choosable;}).sort();if(!list.length)throw 'empty';S.choosable=list;if(S.start&&list.indexOf(S.start)<0){S.start='';}drawChips();render();})
   .catch(function(){});}
 var lt;function refreshLive(){clearTimeout(lt);if(!S.start||persons()<1)return;lt=setTimeout(function(){
-  var lv=LV[S.level],end=addDays(S.start,S.nights),key=[lv.id,S.start,end,S.g.female,S.g.male,S.g.couple].join();
-  var guests=[];for(var i=0;i<persons();i++)guests.push({id:(crypto.randomUUID?crypto.randomUUID():'g'+i+Date.now()),index:i+1});
+  var lv=LV[S.level],end=addDays(S.start,S.nights),guests=[];for(var i=0;i<persons();i++)guests.push({id:(crypto.randomUUID?crypto.randomUUID():'g'+i+Date.now()),index:i+1});
   Promise.all([tfetch(API+'accommodations/availabilities?product='+lv.id+'&start='+S.start+'&end='+end+'&currency=USD'+gq()),
     tfetch(API+'packages/'+lv.id+'/items?business_domain='+BD,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({start:S.start,end:end,currency:'USD',guests:guests,items:[]})})])
   .then(function(r){var acc=r[0]&&r[0].data,tot=r[1]&&r[1].data&&r[1].data.totals;if(!Array.isArray(acc)||!tot||typeof tot.base!=='number')throw 'shape';
     var rooms={};acc.forEach(function(a){var t=a.translations&&a.translations.en&&a.translations.en.title;if(!t)return;var p=a.price&&a.price.from;if(!(t in rooms)||(p||0)<rooms[t])rooms[t]=p||0;});
-    S.live={key:key,base:tot.base,rooms:rooms};S.liveFail=false;render();})
+    S.live={base:tot.base,rooms:rooms};S.liveFail=false;render();})
   .catch(function(){S.liveFail=true;render();});},300);}
 
 /* ---- totals ---- */
 function calc(){var n=persons(),r=RMS[S.room];
-  if(S.live){var free=r.title in S.live.rooms;return{known:true,live:true,free:free,basePP:S.live.base/n,roomPP:free?S.live.rooms[r.title]:null};}
+  if(S.live&&n){var free=r.title in S.live.rooms;return{known:true,live:true,free:free,basePP:S.live.base/n,roomPP:free?S.live.rooms[r.title]:0};}
   if(S.nights!==7)return{known:false};
   var sr=SNAP.rooms[r.key];return{known:true,live:false,free:true,basePP:SNAP.base7,roomPP:n>=2?sr.two:sr.one};}
-function render(){var n=persons(),c=calc(),lv=LV[S.level],r=RMS[S.room];
+function waLink(){var u=new URL(T.wa),txt=u.searchParams.get('text')||'',lv=LV[S.level],bits=[lv.label];
+  if(S.step>=1||q.get('room'))bits.push(RMS[S.room].label);if(S.start)bits.push(fmt(S.start)+', '+S.nights+' nights');if(persons())bits.push(guestText());
+  return u.origin+u.pathname+'?text='+encodeURIComponent(txt+' '+bits.join(' | '));}
+function render(){var n=persons(),c=calc(),lv=LV[S.level],r=RMS[S.room],has=!!S.start,end=has?addDays(S.start,S.nights):'';
   stepBtns();
-  var has=!!S.start;dfield.classList.toggle('filled',has);dfield.classList.toggle('up',has||!cal.hidden);d.getElementById('dval').textContent=has?fmt(S.start):'';
-  var end=has?addDays(S.start,S.nights):'';d.getElementById('d-end').value=end;
-  d.getElementById('t-level').textContent=lv.label;
-  d.getElementById('t-dates').textContent=has?fmt(S.start)+' – '+fmt(end):'–';
-  var gl=[];if(S.g.female)gl.push(S.g.female+' '+"Women");if(S.g.male)gl.push(S.g.male+' '+"Men");if(S.g.couple)gl.push(S.g.couple+' '+"Couples");
-  d.getElementById('t-guests').textContent=gl.join(' | ')||'–';
-  d.getElementById('t-room').textContent=r.label;
-  /* room availability flags */
+  d.getElementById('t-level').textContent=lv.label;d.getElementById('t-room').textContent=r.label;
+  d.getElementById('t-dates').textContent=has?'Sat '+short(S.start)+' – Sat '+short(end)+' '+end.slice(0,4):'–';
+  d.getElementById('t-guests').textContent=guestText()||'–';
   var freeList=S.live?RMS.filter(function(x){return x.title in S.live.rooms;}):RMS;
   rpanels.forEach(function(p,k){p.classList.toggle('full',!!S.live&&!(RMS[k].title in S.live.rooms));
     if(S.live&&RMS[k].title in S.live.rooms){var v=S.live.rooms[RMS[k].title];p.querySelector('[data-price]').textContent=v?T.supp.replace('{amount}',(Math.round(v*100)/100).toLocaleString('en-US')):T.incl;}});
   var flag=d.getElementById('t-roomflag');
   if(S.live&&!c.free){flag.hidden=false;flag.textContent=freeList.length===1?T.onlyOne.replace('{room}',freeList[0].label):T.notFree;}else flag.hidden=true;
   var lbl=T.all.replace('{n}',n);if(n===1)lbl=lbl.replace(/guests$/,'guest');d.getElementById('p-all-l').textContent=lbl;
-  if(c.known){var rp=c.roomPP==null?0:c.roomPP,pp=c.basePP+rp;
-    d.getElementById('p-base').textContent=money(c.basePP);d.getElementById('p-room').textContent=rp?'+'+money(rp):T.incl;
-    d.getElementById('p-pp').textContent=money(pp);d.getElementById('p-all').textContent=money(pp*n);
-    d.getElementById('b-total').textContent=(has?'':'From ')+money(pp*n);}
+  if(c.known){var pp=c.basePP+c.roomPP;
+    d.getElementById('p-base').textContent=money(c.basePP);d.getElementById('p-room').textContent=c.roomPP?'+'+money(c.roomPP):T.incl;
+    d.getElementById('p-pp').textContent=money(pp);d.getElementById('p-all').textContent=n?money(pp*n):'–';
+    d.getElementById('b-total').textContent=n&&has?money(pp*n):'From '+money(pp)+' pp';}
   else{['p-base','p-room','p-pp','p-all'].forEach(function(id){d.getElementById(id).textContent='–';});d.getElementById('b-total').textContent='From '+money(SNAP.base7)+' pp';}
   d.getElementById('p-src').textContent=(c.live?T.live:(S.liveFail?T.fb.replace('{date}',SNAP.asOf):T.snap.replace('{date}',SNAP.asOf)))+' | '+T.cur;
-  d.getElementById('b-sub').textContent=lv.label+(n?' | '+lbl:'')+(has?' | '+short(S.start)+'–'+short(end):'');
-  var nx=d.getElementById('b-next');nx.textContent=S.step===3?T.go:T.next;
-  d.getElementById('b-back').style.visibility=S.step?'visible':'hidden';}
+  d.getElementById('b-sub').textContent=lv.label+(S.step>=1?' | '+r.label:'')+(has?' | '+short(S.start)+'–'+short(end):'');
+  d.getElementById('b-next').textContent=S.step===2?T.go:T.next;
+  d.getElementById('b-back').style.visibility=S.step?'visible':'hidden';
+  var w=waLink();d.querySelectorAll('[data-wa]').forEach(function(a){a.href=w;});}
 
 /* ---- steps ---- */
-var hashes=['level','room','dates','total'];
-function go(k,fromHash){if(k===S.step)return;
-  if(k>=3&&!(S.start&&persons()>0)){k=2;}
-  var back=k<S.step;S.step=k;S.reached=Math.max(S.reached,k);
+var hashes=['level','room','dates'];
+function go(k,fromHash){var back=k<S.step;S.step=k;S.reached=Math.max(S.reached,k);
   steps.forEach(function(s,j){s.classList.remove('in','back');s.classList.toggle('on',j===k);});
   var s=steps[k];void s.offsetWidth;s.classList.add('in');if(back)s.classList.add('back');
-  prog.forEach(function(b,j){b.disabled=j>S.reached;b.classList.toggle('done',j<S.reached&&j!==k);if(j===k)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');b.querySelector('.n').innerHTML=(j<S.reached&&j!==k)?'<svg class="i"><use href="#i-check"/></svg>':String(j+1);});
-  bvids.forEach(function(v,j){if(k===0&&j===S.level)GS.attach(v);else if(!v.paused)v.pause();});
-  if(k===1)GS.slides(rpanels[S.room].querySelector('.slides'));
-  markRoom();render();
-  if(!fromHash)history.pushState(null,'','#'+hashes[k]);
+  prog.forEach(function(b,j){b.disabled=j>S.reached;var done=j<S.reached&&j!==k;b.classList.toggle('done',done);if(j===k)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');b.querySelector('.n').innerHTML=done?'<svg class="i"><use href="#i-check"/></svg>':String(j+1);});
+  playLevel();if(k===1)GS.slides(rpanels[S.room].querySelector('.slides'));
+  render();if(!fromHash)history.pushState(null,'','#'+hashes[k]);
   scrollTo({top:0,behavior:GS.RM?'auto':'smooth'});s.querySelector('[tabindex="-1"]').focus({preventScroll:true});}
 prog.forEach(function(b,j){b.addEventListener('click',function(){go(j);});});
-function next(){if(S.step===1){S.room=rtabs.tabs.findIndex(function(t){return t.getAttribute('aria-selected')==='true';});S.reached=Math.max(S.reached,2);}
-  if(S.step===2&&!S.start){d.getElementById('dhelp').innerHTML='<span class=err>'+T.choose+'</span>';openCal();return;}
-  if(S.step===3){submit();return;}go(S.step+1);}
-d.getElementById('b-next').addEventListener('click',next);
-d.getElementById('b-back').addEventListener('click',function(){go(Math.max(0,S.step-1));});
-addEventListener('popstate',function(){var k=hashes.indexOf(location.hash.slice(1));go(k<0?0:Math.min(k,S.reached),true);});
-function submit(){if(!S.start||persons()<1){go(2);return;}
+function submit(){var ok=true;
+  if(!S.start){d.getElementById('dhelp').className='help err';d.getElementById('dhelp').textContent=T.choose;ok=false;}
+  if(persons()<1){d.getElementById('ghelp').className='help err';ok=false;}
+  if(!ok){if(S.step!==2)go(2);return;}
   var u='https://globalsurfadventures.bookinglayer.com/en/product/'+LV[S.level].slug+'?start='+S.start+'&end='+addDays(S.start,S.nights);
   ['female','male','couple'].forEach(function(n){if(S.g[n])u+='&'+n+'='+S.g[n];});location.href=u;}
+d.getElementById('b-next').addEventListener('click',function(){if(S.step===2){submit();return;}go(S.step+1);});
+d.getElementById('b-back').addEventListener('click',function(){go(Math.max(0,S.step-1));});
+addEventListener('popstate',function(){var k=hashes.indexOf(location.hash.slice(1));go(k<0?0:Math.min(k,S.reached),true);});
 d.getElementById('bk').addEventListener('submit',function(e){e.preventDefault();submit();});
 
-/* ---- init ---- */
-rtabs.select(S.room);ltabs.select(S.level);showLevel(S.level);
+/* ---- init: a level chosen on the home page skips straight to the room ---- */
+rtabs.select(S.room);ltabs.select(S.level);showLevel(S.level);drawChips();
 rpanels.forEach(function(p,k){p.hidden=k!==S.room;});
-if(q.get('room'))S.reached=0;
-history.replaceState(null,'','#level');render();
+if(lvq>=1&&lvq<=3){S.reached=1;go(1,true);history.replaceState(null,'','#room');}else{history.replaceState(null,'','#level');render();}
 })();
 </script>
 </body></html>

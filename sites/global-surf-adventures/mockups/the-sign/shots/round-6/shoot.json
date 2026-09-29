@@ -1,0 +1,19 @@
+{
+  "target": "http://localhost:8765/",
+  "widths": {
+    "desktop": {
+      "pageHeight": 13041,
+      "scroller": "window",
+      "captures": 16,
+      "truncated": false,
+      "errors": []
+    },
+    "mobile": {
+      "pageHeight": 14288,
+      "scroller": "window",
+      "captures": 19,
+      "truncated": false,
+      "errors": []
+    }
+  }
+}

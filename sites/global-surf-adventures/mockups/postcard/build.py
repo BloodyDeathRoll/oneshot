@@ -141,7 +141,7 @@ SPRITE = f'''<svg width="0" height="0" style="position:absolute" aria-hidden="tr
 </g></svg>'''
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-         '<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">')
+         '<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">')
 
 def head(pre, title, desc, extra=''):
     return f'''<!doctype html>
@@ -202,69 +202,69 @@ def home():
 
     intro = C['copyBlocks'][0]
     paras = ''.join(f'<p>{e(p)}</p>' for p in intro['body'].split('\n\n'))
-    welcome = f'''<section class="sec" id="welcome"><div class="welcome">
-<div class="flank l">{pic(pre,'img-118',ALT['img-118'],[640],640,'22vw',tag='-p',w=640,h=800)}</div>
-<div class="text"><h2 class="script">{e(X['section_titles']['welcome'])}</h2>{paras}
+    welcome = f"""<section class="sec welcome" id="welcome"><div class="wrap split">
+<div class="w-media"><div class="w-main">{pic(pre,'img-118',ALT['img-118'],[640,1066],1066,'(max-width:900px) 100vw, 44vw',tag='-p',w=1066,h=1333)}</div>
+<div class="w-small">{pic(pre,'img-024',ALT['img-024'],[640],640,'(max-width:900px) 40vw, 18vw',tag='-p',w=640,h=800)}</div></div>
+<div class="w-text"><h2 class="script">{e(X['section_titles']['welcome'])}</h2><div class="lead">{paras}</div>
 <p class="detail">{detail(X['detail_lines']['welcome'])}</p></div>
-<div class="flank r">{pic(pre,'img-024',ALT['img-024'],[640],640,'22vw',tag='-p',w=640,h=800)}</div>
-</div></section>'''
+</div></section>"""
 
     one_price = C['copyBlocks'][3]['body'].split('\n\n')[0]
     cards = ''
     for L in LEVELS:
         v = L['vid']
-        cards += f'''<article class="lvl">
+        cards += f"""<article class="lvl">
 <div class="lvl-media"><picture><source type="image/webp" srcset="img/{v}-poster-45.webp"><img src="img/{v}-poster-45.jpg" width="640" height="800" alt="{e(L['alt'])}" loading="lazy" decoding="async"></picture>
 <video muted loop playsinline preload="none" aria-hidden="true" data-clip data-webm-m="video/{v}-m1280.webm" data-mp4-m="video/{v}-m720.mp4"></video></div>
 <div class="lvl-body"><h3>{e(L['name'])}</h3><p>{e(L['one'])}</p>
 <div class="price">{price_html()}</div>
-<a class="btn btn-book" href="book/?level={L['slug']}">{e(L['cta'])}</a></div></article>'''
-    levels = f'''<section class="sec tint" id="levels"><div class="wrap">
-<div class="sec-head"><h2 class="script">{e(X['section_titles']['levels'])}</h2><p>{e(one_price)}</p></div>
+<a class="btn btn-book" href="book/?level={L['slug']}">{e(L['cta'])}</a></div></article>"""
+    levels = f"""<section class="sec tint" id="levels"><div class="wrap">
+<div class="head-split"><h2 class="script">{e(X['section_titles']['levels'])}</h2><p>{e(one_price)}</p></div>
 <div class="levels" data-row>{cards}</div>
 <div class="dots lvl-dots" role="group" aria-label="Choose a level card"></div>
 <div class="free"><div class="ph">{pic(pre,'img-001',ALT['img-001'],[800],1200,'(max-width:900px) 100vw, 420px',w=1200,h=800)}</div>
 <div><h3>{e(FREE['name'])}</h3><p>{e(FREE['one'])}</p><p class="detail" style="margin-top:6px">{detail(X['detail_lines']['freestylers'])}</p></div>
 <a class="btn btn-white" href="{e(WA_FREE)}">{icon('wa','wa')}{e(X['ctas']['freestylers'])}</a></div>
 <p class="trust">{trust_html()}</p>
-</div></section>'''
+</div></section>"""
 
     inc = X['inclusions']
     lis = ''.join(f'<li>{icon(i["icon"])}<span>{e(i["text"])}</span></li>' for i in inc['level_1'])
     l3 = [i['text'] for i in inc['level_3'] if 'coached' in i['text']][0]
-    included = f'''<section class="sec" id="included"><div class="wrap incl">
-<div><h2 class="script">{e(X['section_titles']['included'])}</h2>
+    included = f"""<section class="incl" id="included">
+<div class="incl-media">{pic(pre,'img-115',ALT['img-115'],[640,1066],1066,'(max-width:900px) 100vw, 50vw',tag='-p',w=1066,h=1333)}</div>
+<div class="incl-body"><h2 class="script">{e(X['section_titles']['included'])}</h2>
 <ul>{lis}</ul>
 <p class="note">{e(LEVELS[2]['name'])}<span class="sep">|</span>{e(l3)}<br>{e(inc['optional_extra'])}</p></div>
-<div class="ph">{pic(pre,'img-115',ALT['img-115'],[800,1600],1200,'(max-width:900px) 100vw, 45vw',w=1200,h=800)}</div>
-</div></section>'''
+</section>"""
 
     wk = C['copyBlocks'][1]
     wparas = ''.join(f'<p>{e(p)}</p>' for p in wk['body'].split('\n\n'))
-    week = f'''<section class="sec tint" id="week"><div class="wrap">
+    week = f"""<section class="sec tint week" id="week"><div class="week-grid">
 <div class="week-text"><h2 class="script">{e(X['section_titles']['week'])}</h2>{wparas}</div>
-{slideshow(pre, ['img-104','img-011','img-111','img-023','img-114','img-060'], 'Photos of a week at the lodge', '(max-width:1100px) 100vw, 1040px', 'week-show')}
-</div></section>'''
+{slideshow(pre, ['img-104','img-011','img-111','img-023','img-114','img-060'], 'Photos of a week at the lodge', '(max-width:900px) 100vw, 62vw', 'week-show')}
+</div></section>"""
 
     rm = C['copyBlocks'][4]['body'].split('\n\n')[0]
     rows = ''
     for i, R in enumerate(X['rooms']):
         key = ['dorm', 'twin', 'deluxe'][i]
-        rows += f'''<article class="room">
-{slideshow(pre, R['gallery'], 'Photos: ' + R['label'], '(max-width:900px) 100vw, 58vw')}
-<div><h3>{e(R['label'])}</h3><p class="line">{e(R['line'])}</p><p class="desc">{e(R['description'])}</p>
+        rows += f"""<article class="room">
+{slideshow(pre, R['gallery'], 'Photos: ' + R['label'], '(max-width:900px) 100vw, 62vw')}
+<div class="room-text"><h3>{e(R['label'])}</h3><p class="line">{e(R['line'])}</p><p class="desc">{e(R['description'])}</p>
 <p class="detail">{detail(R['details'])}</p>
 <p class="price-note">{room_price_html(R)}</p>
-<a class="btn btn-soft" href="book/?room={key}#step-room">{e(X['ctas']['room'])}</a></div></article>'''
-    rooms = f'''<section class="sec" id="rooms"><div class="wrap">
-<div class="sec-head"><h2 class="script">{e(X['section_titles']['rooms'])}</h2><p>{e(rm)}</p></div>
+<a class="btn btn-soft" href="book/?room={key}#step-room">{e(X['ctas']['room'])}</a></div></article>"""
+    rooms = f"""<section class="sec" id="rooms"><div class="wrap">
+<div class="head-split"><h2 class="script">{e(X['section_titles']['rooms'])}</h2><p>{e(rm)}</p></div>
 <div class="rooms">{rows}</div>
 <p class="detail every">{detail(X['detail_lines']['every_room'])}</p>
-</div></section>'''
+</div></section>"""
 
-    feature = f'''<section class="feature" aria-label="The pool">
+    feature = f"""<section class="feature" aria-label="The pool">
 <picture><source media="(max-width:700px)" type="image/webp" srcset="img/img-005-p-800.webp"><source type="image/webp" srcset="img/img-005-1000.webp 1000w, img/img-005-2000.webp 2000w" sizes="100vw"><img src="img/img-005-2000.jpg" width="2000" height="1125" alt="{e(ALT['img-005'])}" loading="lazy" decoding="async"></picture>
-<p>{e(C['featureLine'])}</p></section>'''
+<p>{e(C['featureLine'])}</p></section>"""
 
     R0 = C['ratings'][0]
     src_name = {'booking': 'Booking.com'}
@@ -273,38 +273,38 @@ def home():
         s = src_name.get(t['source'])
         cite = f'<b>{e(t["author"])}</b>' + (f'<span class="sep">|</span>{s}' if s else '')
         qs += f'<figure class="q"><blockquote>“{e(t["quote"])}”</blockquote><figcaption><cite>{cite}</cite></figcaption></figure>'
-    guests = f'''<section class="sec tint" id="guests"><div class="wrap">
-<div class="sec-head" style="margin-bottom:28px"><h2 class="script">{e(X['section_titles']['guests'])}</h2></div>
+    guests = f"""<section class="sec tint" id="guests"><div class="wrap guests">
+<div class="g-score"><h2 class="script">{e(X['section_titles']['guests'])}</h2>
 <div class="score"><span class="num">{R0['score']}</span><span class="src"><b>Booking.com</b>{R0['count']} reviews<span class="sep">|</span>28 Sep 2026</span></div>
-<p class="detail cats">{detail(X['detail_lines']['rating_categories'])}</p>
+<p class="detail">{detail(X['detail_lines']['rating_categories'])}</p></div>
 <div class="quotes" data-show aria-roledescription="carousel" aria-label="Guest reviews"><div class="q-track show-track" style="aspect-ratio:auto" tabindex="0">{qs}</div>
 <div class="dots" role="group" aria-label="Choose a review"></div></div>
-</div></section>'''
+</div></section>"""
 
-    waves = f'''<section class="sec" id="waves"><div class="wrap waves">
+    waves = f"""<section class="sec" id="waves"><div class="wrap waves">
 <div><h2 class="script">{e(X['section_titles']['waves'])}</h2><p class="lead">{e(C['spot'])}</p>
 <div class="now">
 <div><div class="v">0.7–1.0<small>m</small></div><div class="k">Wave height, chest-high</div></div>
 <div><div class="v">14<small>s</small></div><div class="k">Swell from the SSW</div></div>
 <div><div class="v">7<small>km/h</small></div><div class="k">Wind, cross-shore</div></div>
 </div>
-<p class="detail">Mon 28 Sep, 20:30<span class="sep">|</span><a href="https://rosa.surf/spot/{ROSA_SPOT}" style="color:var(--place);font-weight:500">Forecast for {ROSA_NAME} by Rosa</a></p></div>
+<p class="detail">Mon 28 Sep, 20:30<span class="sep">|</span><a class="credit" href="https://rosa.surf/spot/{ROSA_SPOT}">Forecast for {ROSA_NAME} by Rosa</a></p></div>
 <div class="rosa-box" data-rosa="https://rosa.surf/widget/?spot={ROSA_SPOT}&amp;theme=light&amp;units=metric" data-title="Rosa surf forecast - {ROSA_NAME}">
 <div class="fallback"><a class="btn btn-white" href="https://rosa.surf/spot/{ROSA_SPOT}">See today's forecast for {ROSA_NAME} on Rosa</a></div></div>
-</div></section>'''
+</div></section>"""
 
-    tiles = ''.join(f'<a href="{e(IG["url"])}" aria-label="{e(IG["tile_link_label"])}">{pic(pre,x,ALT[x],[600],600,"(max-width:800px) 33vw, 16vw",tag="-sq",w=600,h=600)}</a>'
+    tiles = ''.join(f'<a href="{e(IG["url"])}" aria-label="{e(IG["tile_link_label"])}">{pic(pre,x,ALT[x],[600],600,"(max-width:800px) 33vw, 17vw",tag="-sq",w=600,h=600)}</a>'
                     for x in ['img-016', 'img-077', 'img-026', 'img-072', 'img-061', 'img-075'])
-    insta = f'''<section class="sec tint" id="instagram"><div class="wrap">
-<div class="ig-head"><h2 class="script" style="margin:0">{e(X['section_titles']['instagram'])}</h2><p>{e(IG['line'])}</p>
+    insta = f"""<section class="insta" id="instagram"><div class="wrap ig-head">
+<div><h2 class="script">{e(X['section_titles']['instagram'])}</h2><p>{e(IG['line'])}</p></div>
 <a class="btn btn-white" href="{e(IG['url'])}">{icon('ig','ig-ico')}{e(X['ctas']['instagram'])}</a></div>
-<div class="ig">{tiles}</div></div></section>'''
+<div class="ig">{tiles}</div></section>"""
 
-    closing = f'''<section class="feature closing" aria-label="Book">
+    closing = f"""<section class="feature closing" aria-label="Book">
 <picture><source media="(max-width:700px)" type="image/webp" srcset="img/img-093-p-800.webp"><source type="image/webp" srcset="img/img-093-800.webp 800w, img/img-093-1536.webp 1536w" sizes="100vw"><img src="img/img-093-1536.jpg" width="1536" height="658" alt="{e(ALT['img-093'])}" loading="lazy" decoding="async"></picture>
 <div class="inner"><p>{e(C['closing'])}</p><div class="btns">
 <a class="btn btn-book btn-lg" href="book/">{e(X['ctas']['closing'])}</a>
-<a class="btn btn-white btn-lg" href="{e(WA_URL)}">{icon('wa','wa')}{e(X['ctas']['whatsapp'])}</a></div></div></section>'''
+<a class="btn btn-white btn-lg" href="{e(WA_URL)}">{icon('wa','wa')}{e(X['ctas']['whatsapp'])}</a></div></div></section>"""
 
     mbar = f'''<div class="mbar" id="mbar"><div class="t"><b>{e(PRICE_LINE.split('|')[0].strip())}</b>{e(PRICE_LINE.split('|')[1].strip())}</div>
 <a class="btn btn-book" href="book/">{e(X['ctas']['header_and_bar'])}</a></div>'''
@@ -399,7 +399,7 @@ def book():
 <div class="fields">
 <div class="field nojs-only"><select id="start" name="start" required><option value="" disabled selected hidden></option>{starts}</select><label for="start">{e(B['field_checkin'])}</label>{icon('down','chev')}</div>
 <div class="field nojs-only"><select id="end" name="end" required><option value="" disabled selected hidden></option>{endo}</select><label for="end">Check-out (Saturdays)</label>{icon('down','chev')}</div>
-<div class="js-only"><div class="field" id="cal-field"><button class="val" type="button" id="cal-btn" aria-expanded="false" aria-controls="cal"></button><span class="lab" id="cal-lab">{e(B['field_checkin'])}</span>{icon('down','chev')}</div>
+<div class="js-only"><div class="field up" id="cal-field"><button class="val ph" type="button" id="cal-btn" aria-expanded="false" aria-controls="cal" aria-labelledby="cal-lab cal-btn">{e(B["field_checkin_nojs_placeholder"])}</button><span class="lab" id="cal-lab">{e(B['field_checkin'])}</span>{icon('down','chev')}</div>
 <div class="cal" id="cal" role="dialog" aria-label="{e(B['field_checkin'])}"><div class="cal-top"><button type="button" data-m="-1" aria-label="Previous month">{icon('left')}</button><b id="cal-month"></b><button type="button" data-m="1" aria-label="Next month">{icon('right')}</button></div>
 <div class="cal-grid" id="cal-grid"></div><p class="cal-foot" id="cal-foot"></p></div>
 <p class="help">{e(B['field_checkin_help'])}</p>
@@ -424,7 +424,7 @@ def book():
 <div class="handoff"><div class="js-only"><button class="btn btn-book" type="submit" id="go">{e(X['ctas']['handoff'])}</button></div>
 <div class="nojs-only nojs-go">{nojs_btns}</div>
 <p>{e(B['handoff'])} {e(B['handoff_nothing_booked'])}</p>
-<div class="or"><a class="btn btn-white" href="{e(WA_URL)}">{icon('wa','wa')}{e(X['ctas']['whatsapp'])}</a></div></div>
+<div class="or"><a class="btn btn-white" id="wa-q" href="{e(WA_URL)}">{icon('wa','wa')}{e(X['ctas']['whatsapp'])}</a></div></div>
 </section>'''
 
     S = B['summary_labels']
@@ -440,7 +440,7 @@ def book():
 <button class="btn btn-book js-only" type="button" id="m-go">{e(X['ctas']['bar_on_booking_page'])}</button></div>'''
 
     data = dict(
-        engine=ENGINE, asOf='29 Sep 2026', base7=1466, saturdays=SATURDAYS, bd='globalsurfadventures.bookinglayer.com',
+        engine=ENGINE, wa=f'https://wa.me/{WA_NUM}?text=', asOf='29 Sep 2026', base7=1466, saturdays=SATURDAYS, bd='globalsurfadventures.bookinglayer.com',
         levels={L['slug']: dict(name=L['name'], id=L['id'], vid=L['vid'], incl=L['key']) for L in LEVELS},
         rooms={['dorm', 'twin', 'deluxe'][i]: dict(title=R['engine_title'], label=R['label'],
                single=R['supplement'].get('one_guest_per_person', R['supplement'].get('per_person', 0)),

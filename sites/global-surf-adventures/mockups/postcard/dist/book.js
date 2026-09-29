@@ -13,8 +13,9 @@
   const iso = (d) => d.toISOString().slice(0, 10);
   const dt = (s) => new Date(s + 'T00:00:00Z');
   const addDays = (s, n) => { const d = dt(s); d.setUTCDate(d.getUTCDate() + n); return iso(d); };
-  const fmtD = (s, y = true) => dt(s).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: y ? 'numeric' : undefined, timeZone: 'UTC' });
-  const money = (x) => { const r = Math.round(x * 100) / 100; return '$' + r.toLocaleString('en-US', { minimumFractionDigits: r % 1 ? 2 : 0, maximumFractionDigits: 2 }); };
+  const fmtD = (s, y = true) => dt(s).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: y ? 'numeric' : undefined, timeZone: 'UTC' }).replace(',', '');
+  // cents only on a live quote; snapshot and "from" figures are whole dollars
+  const money = (x) => { const c = live.status === 'live'; const r = c ? Math.round(x * 100) / 100 : Math.round(x); return '$' + r.toLocaleString('en-US', { minimumFractionDigits: c && r % 1 ? 2 : 0, maximumFractionDigits: c ? 2 : 0 }); };
   const g = () => ({ f: +$('#g-female').value || 0, m: +$('#g-male').value || 0, c: +$('#g-couple').value || 0 });
   const count = () => { const x = g(); return x.f + x.m + 2 * x.c; };
 
@@ -52,7 +53,7 @@
     const i = months.indexOf(month);
     $('[data-m="-1"]', cal).disabled = i <= 0; $('[data-m="1"]', cal).disabled = i >= months.length - 1;
     const first = dt(month + '-01');
-    $('#cal-month').textContent = first.toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+    $('#cal-month').textContent = first.toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' }).replace(',', '');
     let h = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'].map((d) => `<span class="dow" aria-hidden="true">${d}</span>`).join('');
     const pad = (first.getUTCDay() + 6) % 7; h += '<span></span>'.repeat(pad);
     const n = new Date(Date.UTC(first.getUTCFullYear(), first.getUTCMonth() + 1, 0)).getUTCDate();
@@ -77,8 +78,8 @@
   const setSel = (sel, v) => { if (!v) { sel.value = ''; return; } if (![...sel.options].some((o) => o.value === v)) sel.add(new Option(v, v)); sel.value = v; };
   const stay = () => {
     setSel($('#start'), S.start); setSel($('#end'), S.start ? addDays(S.start, S.nights) : '');
-    btn.textContent = S.start ? `${fmtD(S.start)}  –  ${fmtD(addDays(S.start, S.nights))}` : '';
-    field.classList.toggle('up', !!S.start);
+    btn.textContent = S.start ? `${fmtD(S.start)}  –  ${fmtD(addDays(S.start, S.nights))}` : D.t.place;
+    btn.classList.toggle('ph', !S.start);
     live.rooms = live.base = null; refreshLive(); render();
   };
 
@@ -156,6 +157,13 @@
     const sr = $('#s-room'); sr.textContent = R ? R.label : '–'; sr.classList.toggle('muted', !R);
     $('#s-total').textContent = pp == null ? '–' : money(pp * k);
     $('#m-total').textContent = pp == null ? D.t.later.replace('{n}', S.nights) : money(pp * k);
+    // WhatsApp question carries what the visitor chose
+    const parts = [D.levels[S.level].name];
+    if (S.start) parts.push(`${fmtD(S.start, false)} – ${fmtD(addDays(S.start, S.nights))} (${S.nights} nights)`);
+    const gp = []; if (x.f) gp.push(`${x.f} ${x.f > 1 ? 'women' : 'woman'}`); if (x.m) gp.push(`${x.m} ${x.m > 1 ? 'men' : 'man'}`); if (x.c) gp.push(`${x.c} ${x.c > 1 ? 'couples' : 'couple'}`);
+    if (gp.length) parts.push(gp.join(', '));
+    if (R) parts.push(R.label);
+    const wa = $('#wa-q'); if (wa) wa.href = D.wa + encodeURIComponent(`Hi Global Surf Lodge Kabalana, I have a question about ${parts.join(', ')}.`);
     // room cards against live availability
     const free = live.rooms ? [...live.rooms.keys()] : null;
     $$('.rcard').forEach((c) => {
@@ -175,6 +183,9 @@
   };
   form.addEventListener('submit', (ev) => { if (missing()) ev.preventDefault(); });
   $('#m-go').addEventListener('click', () => { if (!missing()) form.requestSubmit(); });
+
+  const bar = $('#mbar'), go = $('#go');
+  if (bar && go && 'IntersectionObserver' in window) new IntersectionObserver((es) => bar.classList.toggle('away', es[0].isIntersecting)).observe(go);
 
   setLevel(S.level, true);
   clampAll();

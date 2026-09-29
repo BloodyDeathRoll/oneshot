@@ -169,3 +169,45 @@ All `license: business-owned` (globalsurf.com or property-uploaded on Booking.co
 
 None — Global Surf is the only business in run 2026-09-globalsurf-02. Concepts 1 and 3 for it are built in
 parallel by other designers in their own folders; not opened.
+
+---
+
+## Fix round after 4f r2 (visual 5.5, experience 5, critic d3 at the floor)
+
+**look-log, round 7** (`shots/round-7`, booking `shots/fix-book/`), beside old-site-home/lodge: the r2 page lost to
+the old site on character — marker script + small dated serif. Now: **Figtree** (clean sans, 17.5 px body,
+600 headings/buttons) + **Water Brush** (a dry brush hand close to globalsurf.com's section titles) for section
+titles, the feature line and the booking step titles. Light aqua tint from the pool (`#EDF5F6` / footer `#D9E9EC`)
+replaces the grey. Side by side it now keeps the old site's brand feel (brush titles, centred title on video,
+coral button, Instagram, real footer) and beats it on clarity, prices, rooms and booking. A handwritten hero
+title was considered and rejected (reads as an invitation over video); the hero title stays in the sans.
+
+Fixes, in the coordinator's order:
+1. **Fonts** as above (default-look check: h1 Figtree, h2 Water Brush, body Figtree, 0 warnings).
+2. **Level stage:** capped at 960 px; desktop plays `d1920` (vid-003e, vid-002e) / new `vid-010c-d1600` (from the
+   1651×929 crop, downscaled, 3.6 MB mp4 / 3.6 MB webm); phones play m1280 at 16:9 — the 4:5 phone crop (which
+   upscaled a 720 clip to ~2×) is gone, and so are the duplicate level dots.
+3. **Footer:** aqua ground, logo + tagline + white social buttons, white WhatsApp/Call/Email buttons, Getting here
+   with address, map button, legal row. **Closing band:** image darkened (52 % ink), text 22–30 px sans,
+   max 620 px, centred, buttons centred under it.
+4. **Phone first screen:** hero "Choose your level" now links to `book/` (level step), and the phone header
+   carries a coral "Book now" until the bottom bar takes over. `funnel.mjs`: **cta_above_fold true**.
+5. **JS off:** check-in + **check-out selects** (Saturdays) → `start` + `end`, never `duration`; guests default 0.
+   Tested: couple, L2, 20–27 Feb → `…/level-2-rollers?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1`.
+   Hero and level clips are no longer `<video>` in the static HTML view: videos carry `hidden` (+ a global
+   `[hidden]{display:none!important}`, since `video{display:block}` had been overriding it) and a real poster
+   `<img>`; JS unhides them. JS-off hero = poster (`shots/fix-book/nojs-home-mobile.png`).
+6. **Shorter walk:** booking is 3 steps (Level | Room | Dates & guests, with the total card beside the fields).
+   "Choose Level n" on the home page opens the Room step with the level set. Check-in is a set of Saturday chips
+   grouped by month (no month arrows). No preset guest. Minimum from the home stage: Choose Level n → Choose
+   this room → a Saturday → + guest → Continue booking = **5 taps**; the scripted walk that also switches level
+   and room tab is 7. JS-on hand-off: `…/level-2-rollers?start=2027-02-20&end=2027-02-27&couple=1`.
+7. **Tap targets:** 0 visible targets under 44 px on phone home and booking page (measured): slideshow dots are
+   44×44 hit areas, review links 44 px tall, Rosa credit is a button, logo 48 px, steppers 44 px; the 9-page
+   review carousel uses two 52 px arrows on phones instead of 9 dots. **Booking-page clip** attaches only after
+   load + a frame (0 video before first paint). **WhatsApp** on the booking page carries the choices, e.g.
+   "…surf packages. Level 2 – Rollers | Shared Twin Room – 2 Beds | Sat, 20 Feb 2027, 7 nights | Couples: 1".
+
+Weights (phone, no scroll): home 0.78 MB without video (hero 1.39 MB after paint); booking page 0.38 MB + level clip after paint.
+Checks: `check-design` ok on both pages (0 problems, 0 warnings); `funnel` over http: clicks_to_book 1, CTA above fold true, 0 broken.
+Still open: Google Fonts on load (third-party; 4g self-hosts); the dates step on phones puts guests below the fold under the Saturday chips.

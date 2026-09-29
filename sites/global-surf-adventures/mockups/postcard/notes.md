@@ -83,3 +83,17 @@ Alt texts are written from what the photographs show; the dossier has no descrip
 ## other businesses in this run
 
 None besides Global Surf. The two sibling mockups (concepts 2 "Try your week" and 3 "The sign") are built in parallel by other designers; not opened. Per concepts.md §5 a visitor would see: Postcard = DM Sans centred title + Caveat script titles, three level cards with in-view clips, alternating room rows with slideshows, a single scrolling booking page with a sticky summary card.
+
+## Fix round (after visual 6/10, experience 7/10, critic pass)
+
+look-log, one round beside the old site (`shots/r2-round-1..3`, `r2-round-2-book`, `r2-round-3-book`, `r2-tap-through/`):
+- **Scale.** Body 18 px, wrap 1320 px, script titles 44–76 px in **Caveat Brush** (more presence than Caveat 600, closer to the old site's brush titles), room slideshows ~62 % of the row, level cards and room/booking type larger.
+- **Each section its own layout.** Welcome: asymmetric split, big 4:5 photo with a small print over its corner (phone: photo full-bleed). Levels and Rooms: split headers (script title left, text right). What's included: full-bleed half photo + list. The week: text left, slideshow running off the right edge (phone: full-bleed). Guests: score column + big quote slideshow. Instagram: header row + six tiles edge to edge. Closing: text and both buttons centred on the full-bleed photo (no card). Phone now has 7 full-bleed image/video moments between text blocks.
+- **Booking column** no longer widens: grid tracks `minmax(0,1fr)`; measured at 390 px after level, room, guests and date: every block stays 24–366 px (symmetric gutters). The check-in is a floating-label field ("Check-in (Saturdays)" above, "Choose a Saturday" in the value line). The bottom bar hides while "Continue booking" is on screen (one final action). Snapshot/"from" figures are whole dollars; cents only on a live quote.
+- **Hero title**: DM Sans 600, tracking +0.003em (was -0.018em), stronger soft shadow.
+- **WhatsApp** "Questions? Ask us" on the booking page carries the choices, e.g. "…a question about Level 2 – Rollers, Sat 20 Feb – Sat 27 Feb 2027 (7 nights), 1 couple, Shared Twin Room – 2 Beds."
+- **Tap targets**: slideshow dots 44×44 (wrap when many), calendar days 44 px, logo link, Rosa credit and "Terms and conditions" ≥ 44 px tall. Audit at 390/1440, home and book: 0 targets under 44 px.
+- Also fixed: a mobile overflow the new guests grid introduced (scrollWidth 1591 → 390).
+- Vs old site: first screen and whole page now clearly better — same bones (video, centred title, coral button, brush titles, distinct sections, Instagram strip, footer) with prices, levels with footage and sold rooms.
+
+Checks: check-design ok on home and (root copy of) book page, 0 problems; funnel unchanged (clicks_to_book 1, CTA above fold, primary reported as whatsapp for the reason in conflicts 5).

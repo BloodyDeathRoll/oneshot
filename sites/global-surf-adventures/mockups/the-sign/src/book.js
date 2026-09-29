@@ -44,14 +44,14 @@ $$('.stp').forEach(function(w){
 /* media: crossfade by step (desktop pinned half / phone band) */
 var media = $$('.bk-media .m');
 var narrow = matchMedia('(max-width: 900px)');
-var cur = 'level';
+var cur = 'level', booted = false;
 function key(k){ return (k === 'level' || (k === 'room' && narrow.matches)) ? level() : k; }
 function show(k){
   cur = k; var want = key(k);
   media.forEach(function(m){ m.classList.toggle('on', m.dataset.m === want); });
   media.forEach(function(m){
     var v = $('video', m); if (!v) return;
-    if (m.dataset.m === want && !calm) {
+    if (m.dataset.m === want && !calm && booted) {
       if (!v.dataset.ready) { v.dataset.ready = 1; var s = document.createElement('source'); if (innerWidth < 768) { s.src = v.dataset.mp; s.type = 'video/mp4'; } else { s.src = v.dataset.wb; s.type = 'video/webm'; } v.appendChild(s); v.load(); }
       var p = v.play(); if (p) p.catch(function(){});
     } else if (!v.paused) v.pause();
@@ -69,8 +69,7 @@ $$('.rcard').forEach(function(c){
 });
 /* phone: the band shrinks as you scroll */
 var band = $('.bk-media');
-function shrink(){ if (!narrow.matches) { band.style.height = ''; return; } var h = Math.max(20, 38 - scrollY / 25); band.style.height = h + 'vh'; }
-addEventListener('scroll', shrink, {passive: true}); shrink();
+
 
 /* the summary */
 function render(){
@@ -179,5 +178,7 @@ $('[data-next]').addEventListener('click', function(){
   document.getElementById(order[i + 1]).scrollIntoView({behavior: calm ? 'auto' : 'smooth'});
 });
 
-render(); show('level');
+render();
+function boot(){ setTimeout(function(){ booted = true; show(cur); }, 60); }
+if (document.readyState === 'complete') boot(); else addEventListener('load', boot);
 })();

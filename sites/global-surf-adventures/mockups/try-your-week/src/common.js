@@ -1,6 +1,7 @@
 (function(){
 var d=document, root=d.documentElement;
 root.classList.remove('no-js'); root.classList.add('js');
+d.querySelectorAll('video[hidden]').forEach(function(v){v.hidden=false;v.style.opacity=0;});
 var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var SD=!!(navigator.connection&&navigator.connection.saveData);
 var GS=window.GS={RM:RM,SD:SD,calm:RM||SD};
@@ -14,7 +15,7 @@ GS.attach=function(v,play){
       if(m&&!matchMedia(m).matches){s.remove();return;}
       s.src=s.dataset.src; s.removeAttribute('data-src');
     });
-    v.dataset.ready='1'; v.load();
+    v.dataset.ready='1'; v.addEventListener('playing',function(){v.style.transition='opacity .4s';v.style.opacity='';},{once:true}); v.load();
   }
   if(play!==false){var p=v.play(); if(p&&p.catch)p.catch(function(){});}
   return true;

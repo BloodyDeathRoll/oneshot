@@ -44,7 +44,6 @@ function playOnly(p){
 }
 function open(p){
   if (!wide.matches || calm) return;
-  panels.forEach(function(q){ q.classList.toggle('open', q === p); });
   playOnly(p);
 }
 panels.forEach(function(p){
@@ -53,7 +52,7 @@ panels.forEach(function(p){
 });
 document.querySelector('.panels').addEventListener('mouseleave', function(){
   if (!wide.matches) return;
-  panels.forEach(function(q){ q.classList.remove('open'); }); playOnly(null);
+  playOnly(null);
 });
 if ('IntersectionObserver' in window) {
   var io = new IntersectionObserver(function(es){

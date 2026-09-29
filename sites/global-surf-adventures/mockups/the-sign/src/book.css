@@ -23,8 +23,9 @@
 .pick-t .detail,.rpick-t .detail{margin-top:4px}
 .tick{width:32px;height:32px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none;color:transparent;transition:background-color .2s}
 .tick svg{width:18px;height:18px}
-.pick:has(input:checked),.rpick:has(input:checked){background:var(--aqua)}
-.pick:has(input:checked) .tick,.rpick:has(input:checked) .tick{background:var(--ink);color:#fff}
+.pick:has(input:checked),.rpick:has(input:checked){background:var(--ink);color:#fff}
+.pick:has(input:checked) .detail,.rpick:has(input:checked) .detail{color:#D5D8E6}
+.pick:has(input:checked) .tick,.rpick:has(input:checked) .tick{background:#fff;color:var(--ink)}
 .pick:has(input:focus-visible),.rpick:has(input:focus-visible){outline:3px solid var(--ink);outline-offset:3px}
 .free-s{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px}
 .free-s p{margin:0}
@@ -62,7 +63,7 @@
 .no-js .stp .sb{display:none}
 .stp{display:flex;align-items:stretch}
 .stp input{flex:1;min-width:0}
-.sb{width:40px;flex:none;border:0;background:none;font-size:24px;font-weight:500;cursor:pointer;color:var(--ink);border-radius:10px;margin:8px 4px 8px 0}
+.sb{width:44px;min-height:44px;flex:none;border:0;background:none;font-size:24px;font-weight:500;cursor:pointer;color:var(--ink);border-radius:10px;margin:8px 4px 8px 0}
 .sb:hover{background:#fff}
 
 /* total */
@@ -88,7 +89,7 @@
 
 @media (max-width:900px){
   .bk{grid-template-columns:1fr}
-  .bk-media{position:sticky;top:var(--hdr);height:38vh;z-index:5;transition:height .15s}
+  .bk-media{position:relative;top:auto;height:34vh;min-height:220px}
   .bk-steps{padding:0 20px 120px;max-width:none}
   .step{padding:44px 0 24px}
   .bar{display:flex}
@@ -103,3 +104,4 @@
   .sum .big dd{font-size:28px}
   .bk-rg .arrow{display:none}
 }
+.bk-media [data-m=level-2-rollers] video{transform:scale(1.25);transform-origin:62% 8%}

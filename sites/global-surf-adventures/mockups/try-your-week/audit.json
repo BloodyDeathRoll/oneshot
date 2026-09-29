@@ -1,0 +1,106 @@
+{
+ "slug": "global-surf-adventures",
+ "variant": "try-your-week",
+ "measured_at": "2026-09-29T18:37:33.274Z",
+ "first_load": {
+  "requests": 22,
+  "hosts": [
+   "fonts.googleapis.com",
+   "localhost:8980",
+   "fonts.gstatic.com"
+  ],
+  "third_party_hosts": [
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "bytes_total": 875483,
+  "bytes_html": 120911,
+  "bytes_js": 0,
+  "bytes_css": 0,
+  "bytes_fonts": 201492,
+  "bytes_images": 553080,
+  "largest_image_bytes": 43608,
+  "lcp_ms": 540,
+  "cls": 0.0037,
+  "dcl_ms": 1081
+ },
+ "booking": {
+  "external_booking_hrefs": [
+   "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.",
+   "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+   "https://www.globalsurf.com/kabalana-lodge-surf-packages/",
+   "https://rosa.surf/spot/south-point",
+   "https://www.instagram.com/globalsurf_kabalana/",
+   "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en",
+   "https://www.youtube.com/channel/UCh-GTj4Wu2FbdXpr-xNSGzQ",
+   "https://www.facebook.com/GlobalSURFltd/"
+  ],
+  "tel_hrefs": [
+   "tel:+97299733943"
+  ],
+  "drawer_triggers": 0,
+  "triggers_are_links": true,
+  "primary_above_fold": true,
+  "tapped": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+ },
+ "keyboard": {
+  "drawer_opens": null,
+  "closed": null,
+  "focus_returned": null,
+  "note": "no drawer; every action is a plain link"
+ },
+ "a11y": {
+  "images": 39,
+  "images_without_alt": 0,
+  "images_alt_empty_decorative": 1,
+  "tapables": 77,
+  "tapables_under_44px": 44,
+  "tapables_under_44px_examples": [
+   " 132x40",
+   " 28x28",
+   " 28x28",
+   " 28x28",
+   " 28x28",
+   " 28x28"
+  ],
+  "headings": [
+   "H1",
+   "H2",
+   "H3",
+   "H3",
+   "H3",
+   "H2",
+   "H2",
+   "H3",
+   "H3",
+   "H3",
+   "H2",
+   "H2",
+   "H2",
+   "H2",
+   "H3",
+   "H3"
+  ],
+  "has_skip_link": true,
+  "lang": "en"
+ },
+ "no_js": {
+  "text_length": 6263,
+  "booking_links_reachable": 0,
+  "visible_images": 39
+ },
+ "reduced_motion": {
+  "canvases": 0,
+  "canvases_hidden": 0,
+  "photograph_visible": true
+ },
+ "facts": {
+  "numbers_on_page": 30,
+  "numbers_not_in_passed_copy": [
+   "0.6",
+   "0.9",
+   "20:30"
+  ],
+  "note": "copy/en.json passed station 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps each paragraph to its dossier fields. A number here that is not in the copy is either an interface label (01, 02…) or a claim to chase."
+ }
+}
