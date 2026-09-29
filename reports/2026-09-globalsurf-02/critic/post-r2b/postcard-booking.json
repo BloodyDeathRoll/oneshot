@@ -1,0 +1,110 @@
+{
+ "variant": "postcard",
+ "url": "http://127.0.0.1:8981/postcard/dist/book/?level=level-2-rollers",
+ "scenario": "Level 2, 1 couple, check-in 2027-02-20, 7 nights",
+ "live": {
+  "load_third_party": [
+   "https://fonts.googleapis.com/css2",
+   "https://fonts.gstatic.com/s/dmsans/v17/rP2Hp2ywxg089UriCZOIHQ.woff2",
+   "https://fonts.gstatic.com/s/caveatbrush/v12/EYq0maZfwr9S9-ETZc3fKXt8XLOS.woff2"
+  ],
+  "load_bookinglayer": 0,
+  "interaction": [
+   "couple+1",
+   "calendar 2027-02-20"
+  ],
+  "after_interaction": [
+   "GET https://api.bookinglayer.io/public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities?format=choosable&show_available_only=1&mode=checkin&start=2026-09-29&end=2",
+   "GET https://api.bookinglayer.io/public/accommodations/availabilities?product=4b58b491-24fc-4fb8-a40d-2705df961db4&start=2027-02-20&end=2027-02-27&currency=USD&female=0&male=0",
+   "POST https://api.bookinglayer.io/public/packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items?BD"
+  ],
+  "after_interaction_hosts": [
+   "api.bookinglayer.io"
+  ],
+  "shown": {
+   "source_line": "Prices in USD|Live price from the booking engine",
+   "total": "$2,932",
+   "per_person": "$1,466",
+   "room": "–",
+   "room_supp": "–",
+   "flags": [],
+   "wa": [
+    "Hi Global Surf Lodge Kabalana, I would like to ask about dates for the Freestylers – B&B only package.",
+    "Hi Global Surf Lodge Kabalana, I have a question about Level 2 – Rollers, Sat 20 Feb – Sat 27 Feb 2027 (7 nights), 1 couple.",
+    "Hi Global Surf Lodge Kabalana, I have a question about the surf packages."
+   ]
+  },
+  "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1",
+  "handoff_has_duration": false
+ },
+ "api_blocked": {
+  "load_third_party": [
+   "https://fonts.googleapis.com/css2",
+   "https://fonts.gstatic.com/s/dmsans/v17/rP2Hp2ywxg089UriCZOIHQ.woff2",
+   "https://fonts.gstatic.com/s/caveatbrush/v12/EYq0maZfwr9S9-ETZc3fKXt8XLOS.woff2"
+  ],
+  "load_bookinglayer": 0,
+  "interaction": [
+   "couple+1",
+   "calendar 2027-02-20"
+  ],
+  "after_interaction": [
+   "GET https://api.bookinglayer.io/public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities?format=choosable&show_available_only=1&mode=checkin&start=2026-09-29&end=2 [blocked]",
+   "GET https://api.bookinglayer.io/public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities?format=choosable&show_available_only=1&mode=checkin&start=2026-09-29&end=2 [blocked]"
+  ],
+  "after_interaction_hosts": [
+   "api.bookinglayer.io"
+  ],
+  "shown": {
+   "source_line": "Prices in USD|Live prices didn't load. These are the booking engine's prices from 29 Sep 2026.",
+   "total": "$2,932",
+   "per_person": "$1,466",
+   "room": "–",
+   "room_supp": "–",
+   "flags": [],
+   "wa": [
+    "Hi Global Surf Lodge Kabalana, I would like to ask about dates for the Freestylers – B&B only package.",
+    "Hi Global Surf Lodge Kabalana, I have a question about Level 2 – Rollers, Sat 20 Feb – Sat 27 Feb 2027 (7 nights), 1 couple.",
+    "Hi Global Surf Lodge Kabalana, I have a question about the surf packages."
+   ]
+  },
+  "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1",
+  "handoff_has_duration": false
+ },
+ "nojs": {
+  "load_third_party": [
+   "https://fonts.googleapis.com/css2",
+   "https://fonts.gstatic.com/s/dmsans/v17/rP2Hp2ywxg089UriCZOIHQ.woff2",
+   "https://fonts.gstatic.com/s/caveatbrush/v12/EYq0maZfwr9S9-ETZc3fKXt8XLOS.woff2"
+  ],
+  "load_bookinglayer": 0,
+  "visible_controls": [
+   "INPUT:lvl:",
+   "INPUT:lvl:",
+   "INPUT:lvl:",
+   "INPUT:room:",
+   "INPUT:room:",
+   "INPUT:room:",
+   "SELECT:start:",
+   "SELECT:end:",
+   "INPUT:female:",
+   "INPUT:male:",
+   "INPUT:couple:",
+   "BUTTON::https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+   "BUTTON::https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers",
+   "BUTTON::https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders"
+  ],
+  "start_field": "start",
+  "end_options_sample": [
+   "",
+   "2026-10-10",
+   "2026-10-17",
+   "2026-10-24",
+   "2026-10-31",
+   "2026-11-07"
+  ],
+  "submit_button_text": "Continue booking: Level 2 – Rollers",
+  "click_unstable": true,
+  "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1"
+ }
+}

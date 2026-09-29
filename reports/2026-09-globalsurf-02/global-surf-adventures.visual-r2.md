@@ -142,3 +142,38 @@ Other polish issues: the level cards have unequal widths (Level 3 is twice as wi
 3. **Try your week — 5.5/10.** The best hero frame, then a childish marker script, dated small serif body, soft upscaled level video and an unfinished footer.
 
 Result: **all three fail the 4f bar (below 8)**. Back to the designer. Take The Sign forward with its fixes, and borrow Try-your-week's level pill switcher and Postcard's sticky booking summary.
+
+---
+
+# Round 2 (re-score after designer fixes, 2026-09-29)
+
+Re-scored from scratch on fresh shots: `visual-r2/round2/<mockup>-home|book/` (1440 + 390) and `visual-r2/round2/try-your-week-book-walk/` (click-through of the step wizard). Same bar and calibration as above. The other reviewers' reports were not opened.
+
+## The Sign — 8/10 · would Shahar accept: yes (as the pick) · better than current: yes
+Sky-blue is gone: sections now alternate white with a pale cool grey, so coral only sits on white or dark (`the-sign-home/desktop-sheet`). The level cards are three equal columns with buttons on one baseline (`desktop-02`). The booking selection states are ink, not blue (`the-sign-book/desktop-sheet`). The brush-script titles, full-bleed photo pairs, room carousels, Instagram strip, footer and split-screen booking desk are all kept. The page is professional and specific to this place, and it beats the current site on the first screen and on the whole page.
+Remaining fixes:
+1. Level footage is still soft, and there is a dark rock corner bottom-left in Level 2 (`desktop-02`). Use sharper renditions or re-crop.
+2. The closing line is still two long lines in the lower third over palm fronds (`desktop-14`). Cut it to ≤ 6 words and centre it vertically.
+3. Booking step-1 level cards have no footage thumbnail (`the-sign-book/desktop-00`).
+4. Now that the blue is gone, the mid-page white/grey rhythm is a little flat. One dark (navy) section, e.g. the forecast or reviews, would restore pace.
+
+## Postcard — 7/10 · would Shahar accept: no · better than current: yes (first screen and whole page, narrowly)
+There are real layout changes: an asymmetric welcome with overlapping photos, a full-bleed "What's included" split, a large offset slideshow, a split reviews block, an edge-to-edge Instagram grid and bigger room galleries (`postcard-home/desktop-sheet`). The booking page is unchanged in structure, and check-in now has a floating label (`postcard-book/desktop-sheet`). It still reads a notch more "template" than The Sign.
+Remaining fixes:
+1. **Watermark:** the group-walk photo shows the Global Surf badge top-left (`desktop-05`). Crop it.
+2. The closing text sits over palm fronds with tight tracking and poor legibility (`desktop-12`). Add a scrim, a shorter line, and centre it.
+3. The new chunky brush title face reads slightly comic. Try a finer hand.
+4. The hero title tracking is still tight (`desktop-00`).
+
+## Try your week — 6.5/10 · would Shahar accept: no · better than current: no (roughly equal)
+The booking wizard is now the best of the three. It has three steps, Saturday date chips by month, a live total card, and one continuous look (`try-your-week-book-walk/desktop-step3`). The footer is now designed (`desktop-11`). But the new dry-brush script is hard to read: "Our rooms", "Your level" and "Footwear is discouraged" all mis-read (`try-your-week-home/desktop-05`, `book-walk/mobile-step1`). The feature line is set over the busy hair-spray frame, and the level clip is still soft.
+Remaining fixes:
+1. Replace the script with a legible hand, the same family as The Sign's.
+2. Move the feature line onto calm water, or shorten it.
+3. Use sharper level footage.
+4. Rebuild the closing band as in The Sign.
+
+## Ranking (visual quality only)
+1. **The Sign (8, pass):** calm, specific, beautifully sold rooms and a booking desk that belongs to the site. It is the one to show Shahar.
+2. **Postcard (7, fail):** now properly composed, but the watermarked photo, the closing band and the title face keep it below the bar.
+3. **Try your week (6.5, fail):** the best booking flow of the three, hurt by an illegible script and soft footage. Its date-chip picker is worth reusing in The Sign.

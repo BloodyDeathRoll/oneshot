@@ -1,0 +1,19 @@
+{
+  "target": "http://127.0.0.1:8981/try-your-week/dist/book/",
+  "widths": {
+    "desktop": {
+      "pageHeight": 1812,
+      "scroller": "window",
+      "captures": 3,
+      "truncated": false,
+      "errors": []
+    },
+    "mobile": {
+      "pageHeight": 2673,
+      "scroller": "window",
+      "captures": 4,
+      "truncated": false,
+      "errors": []
+    }
+  }
+}

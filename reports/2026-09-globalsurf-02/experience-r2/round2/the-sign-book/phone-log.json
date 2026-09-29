@@ -1,0 +1,158 @@
+{
+ "m": "the-sign-book",
+ "mode": "phone",
+ "firstLoadBytes": 1350170,
+ "reqCount": 27,
+ "thirdOnLoad": [
+  "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Damion&display=swap",
+  "https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInHWVyNJ.woff2",
+  "https://fonts.gstatic.com/s/damion/v15/hv-XlzJ3KEUe_YZkamw2EzJwVw.woff2"
+ ],
+ "lcp": 2808,
+ "cls": 0.0005215775442185451,
+ "videosAfterLoad": [
+  {
+   "src": "vid-010-m720.mp4",
+   "paused": false,
+   "t": 1.29,
+   "rs": 4,
+   "top": 64,
+   "h": 287
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 58,
+   "h": 359
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 64,
+   "h": 287
+  }
+ ],
+ "hero": {
+  "h1": "Your level",
+  "font": "Damion, \"Brush Script MT\", cursive",
+  "size": "46px",
+  "center": [
+   195,
+   448
+  ],
+  "btns": [
+   {
+    "t": "Continue",
+    "bg": "rgb(209, 64, 42)",
+    "color": "rgb(255, 255, 255)",
+    "ff": "\"Bricolage Grotesque\"",
+    "w": 128,
+    "h": 48
+   }
+  ],
+  "fonts": [
+   "Bricolage Grotesque 400",
+   "Bricolage Grotesque 500",
+   "Bricolage Grotesque 600",
+   "Bricolage Grotesque 700",
+   "Damion 400"
+  ]
+ },
+ "pageHeight": 7021,
+ "frames": {
+  "n": 1030,
+  "p50": 16.7,
+  "p95": 16.7,
+  "p99": 16.8,
+  "max": 16.8,
+  "over50": 0
+ },
+ "sections": [
+  [
+   0,
+   675,
+   "step-level | Your level"
+  ],
+  [
+   1,
+   1350,
+   "step-level | Your level"
+  ],
+  [
+   2,
+   2025,
+   "step-room | Your room"
+  ],
+  [
+   3,
+   2700,
+   "step-room | Your room"
+  ],
+  [
+   4,
+   3375,
+   "step-room | Your room"
+  ],
+  [
+   5,
+   4050,
+   "step-dates | Dates and guests"
+  ],
+  [
+   6,
+   4725,
+   "step-total | Your total"
+  ],
+  [
+   7,
+   5400,
+   "contact | Talk to us"
+  ],
+  [
+   8,
+   6075,
+   "contact | Talk to us"
+  ],
+  [
+   9,
+   6177,
+   "contact | Talk to us"
+  ]
+ ],
+ "videosAfterScroll": [
+  {
+   "src": "vid-010-m720.mp4",
+   "paused": true,
+   "t": 10.73,
+   "rs": 4,
+   "top": 64,
+   "h": 287
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 58,
+   "h": 359
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 64,
+   "h": 287
+  }
+ ],
+ "totalBytes": 3250017,
+ "thirdAll": [
+  "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Damion&display=swap",
+  "https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInHWVyNJ.woff2",
+  "https://fonts.gstatic.com/s/damion/v15/hv-XlzJ3KEUe_YZkamw2EzJwVw.woff2"
+ ]
+}

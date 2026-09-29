@@ -98,3 +98,66 @@ The current site (my walk, `current-home/`, `current-lodge/`): a dark header bar
 3. **try-your-week**: a clear wizard but the longest booking (16 taps), a hero CTA that doesn't book, a marker/serif type pair below the current site, and a broken JS-off hero and hand-off.
 
 None reaches 8. All three beat the Bookinglayer engine page on feel, and all three hand off correct start/end/guests with JS on. Postcard is one fix round from a pass. The other two need type/colour work before a human sees them.
+
+---
+
+# Round 2 (after the fix round, commit 7d2bad2)
+
+I re-walked everything from scratch with the same setup: phone 390×844 throttled, laptop 1440×900, reduced motion, JavaScript off, and the booking flows up to an intercepted hand-off. The engine was never opened. Frames are in `experience-r2/round2/`. Other reviewers' reports were not opened.
+
+## Shared measurements
+
+| | postcard | try-your-week | the-sign |
+|---|---|---|---|
+| Fonts (script titles + text) | Caveat Brush + DM Sans | Water Brush + Figtree | Damion + Bricolage Grotesque |
+| First load, phone throttled | 470 KB | 763 KB | 454 KB |
+| LCP / CLS (phone) | 0.79 s / 0.001 | 0.56 s / 0.009 | 0.51 s / 0.002 |
+| Scroll frames, phone 4× CPU | p95 16.8 ms, max 83 ms | p95 16.7 ms, max 100 ms | p95 16.7 ms, max 83 ms |
+| Reduced motion | poster only | poster only | poster only |
+| JS off, home and booking | poster, no controls ✓ | poster, no controls ✓ (fixed) | poster, no controls ✓ (fixed) |
+| Hand-off, JS on | `…level-2-rollers?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1` ✓ | `…?start=2027-02-20&end=2027-02-27&couple=1` ✓ | `…?start=2027-02-20&couple=1&end=2027-02-27` ✓ |
+| Hand-off, JS off | ✓ start/end/guests | ✓ start/end, guests 0/0/1 (fixed: no `duration`, no leftover woman) | ✓ start/end/guests |
+| Taps, home → hand-off (L2, 20 Feb, couple, twin) | 9 (2 are month arrows) | **8** | 10 (the native select counts as 2) |
+| Underlined actions / dark text on coral | none | none | none |
+| Third-party on load | 3 Google Fonts requests (for the critic) | same | same |
+
+## postcard: 8/10 · pass · would Shahar accept: **yes** · better than current: **yes**
+
+The phone page now breaks its rhythm with full-bleed photos: the woman carrying a board with an inset photo, the surf-theory class, the group walking to the water. The heavier brush script gives the titles the presence of the current site's lettering. The laptop (`round2/postcard/sheet-laptop.jpg`) is now editorial: photo/text splits, three level cards with photos, large room slideshows and a proper footer. It is clearly better than globalsurf.com.
+
+Booking is fixed. The booking column stays 24–366 px through every choice (measured). The calendar skips empty months, the hero re-titles per level, and the live total reads $3,092.05.
+
+**Remaining fixes:**
+1. The Rosa block's fallback on phone is a ~500 px empty grey box with its button text clipped ("See today's forecast for South Point o"). Reserve a smaller box and let the text wrap.
+2. The waves headline shows "Mon 28 Sep, 20:30" while the-sign shows Tue 29 Sep. Check the 24 h staleness rule.
+3. The calendar popover is 2 px wider than the column (24–392 px).
+4. Hide the bar's "Continue" once "Continue booking" is on screen.
+5. Self-host the fonts.
+
+## the-sign: 8/10 · pass · would Shahar accept: **yes** · better than current: **yes**
+
+The aqua blocks are gone. Soft grey tints and navy selected cards make it calm and consistent. The underlines are gone. The sticky media band on the booking page now scrolls away, and the step titles show in full (`round2/the-sign-flow/sheet.jpg`). Big level photos and the laptop room rows are still the strongest imagery of the three. The hero is script title + CTA only.
+
+**Remaining fixes:**
+1. The phone home page is the longest of the three (14,374 px). Trim a section.
+2. The selected room card on the booking page becomes a large navy block apart from its photos. Keep the photo and the selection together.
+3. Check-in is a native select (2 taps). A chip or calendar picker like the other two would feel more part of the site.
+4. The Rosa widget area is an empty white box until it loads.
+5. Self-host the fonts.
+
+## try-your-week: 7/10 · fail · would Shahar accept: **no** · better than current: **yes on booking, no on type**
+
+The booking is now the best of the run: 3 steps, Saturday chips grouped by month, guests start at 0, and 8 taps to the hand-off. JS off is fixed. It fails on the title script. Water Brush's "r" reads as "ß" ("Your ßoom", "Our ßooms", `round2/try-your-week/sheet-a.jpg`, `round2/try-your-week-flow/sheet.jpg`). That breaks the "fonts must be tasteful and readable" bar in the headings a visitor reads most.
+
+**Remaining fixes:**
+1. Replace Water Brush with a brush script whose lower-case r is unambiguous.
+2. Hero CTA "Choose your level" → "Book package now". It goes to `book/` anyway.
+3. Drop the header "Book now" pill over the video while the hero CTA is on screen.
+4. On phone the level tabs duplicate the carousel dots.
+5. Self-host the fonts.
+
+## Ranking (round 2)
+
+1. **postcard**: now a complete, editorial site that beats globalsurf.com on phone and laptop and has the best-integrated booking. Its remaining issues are small (Rosa fallback box, stale forecast time).
+2. **the-sign**: calm and consistent after the fixes, with the strongest imagery. It loses on length and the native date select.
+3. **try-your-week**: the fastest booking of the three (8 taps), held back by a title script whose "r" reads as "ß".

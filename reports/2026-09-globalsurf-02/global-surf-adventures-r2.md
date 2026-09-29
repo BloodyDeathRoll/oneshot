@@ -175,3 +175,152 @@ total: 71.2 / 80 (d1–7)   result: pass (critic gates; d8 from the visual criti
 what the designer prompt got wrong: The brief says the hand-off uses `start`/`end` and never `duration`, but the prompt does not say how to build `end` without JavaScript. One designer shipped the `duration` radios as the no-JS path, and another needed a coordinator fix. The prompt should name the pattern: a build-time check-out select, grouped by check-in. The 44 px tap floor is also not applied to slideshow dots, which all three drew at 28–30 px.
 
 Not tested: a real phone or GPU, Safari, axe, the engine's screens past `/accommodation`, a frame-by-frame contrast scan of the heroes, and first-load throttled numbers for the booking pages (the probe was unthrottled).
+
+---
+
+# Round 2
+
+critic 0.4.0 · rubric 0.3.0 · 2026-09-29 · mockups at `7d2bad2` (post-gate fix round; HEAD `2f4bd5e` changes only usage.jsonl) · dimensions 1–7 only. The visual critics' reports were not opened.
+
+Checks: the same as round 1, in the same order, on port 8981 (the server was stopped afterwards).
+
+Evidence:
+- `reports/2026-09-globalsurf-02/critic/post-r2b/<variant>/{home,book}/shots/`
+- `…/post-r2b/<variant>{,-book}-probe.json`, `-text.txt`, `<variant>-booking.json`
+- `sites/global-surf-adventures/mockups/<variant>/audit.json` (overwritten)
+
+## The sentence the human needs (round 2)
+
+All three pass the critic's gates, with no hard fail, and all three now score 72.0.
+- Every round-1 booking finding is fixed:
+  - try-your-week sends `start`/`end` with JS off.
+  - try-your-week's first screen now has a booking action.
+  - The booking-page clips start after first paint.
+  - postcard's WhatsApp prefill carries the visitor's choices.
+- What remains:
+  - Google Fonts on all three.
+  - the-sign's phone dots are 39×44.
+  - try-your-week's desktop nav links are 43 px tall.
+  - `vid-010c` is not in `dossier.videos[]`.
+
+| variant | d1 (20) | d2 (15) | d3 (15) | d4 (5) | d5 (10) | d6 (8) | d7 (7) | total /80 | r1 | hard fails |
+|---|---|---|---|---|---|---|---|---|---|---|
+| postcard | 10 | 9 | 9 | 8 | 9 | 8 | 8 | **72.0** | 71.2 | none |
+| try-your-week | 10 | 9 | 9 | 8 | 9 | 8 | 8 | **72.0** | 66.7 | none |
+| the-sign | 10 | 9 | 9 | 8 | 9 | 8 | 8 | **72.0** | 71.2 | none |
+
+## Measured (round 2)
+
+| line | target | postcard | try-your-week | the-sign |
+|---|---|---|---|---|
+| first load, phone, no scroll (audit.json) | ≤ 1.5 MB | 474 KB | 764 KB | 456 KB |
+| LCP / CLS on load | ≤ 2.5 s / < 0.1 | 764 ms / 0.001 | 556 ms / 0.005 | 500 ms / 0.003 |
+| CLS after full scroll, phone / desktop | – | 0 / 0.004 | 0 / 0.003 | 0 / 0.004 |
+| booking page on load, phone (unthrottled probe) | – | 758 KB | 493 KB | 1.33 MB |
+| fonts (check-design) | ≤ 2 families | DM Sans + Caveat Brush | Figtree + Water Brush | Bricolage Grotesque + Damion |
+| third-party on load, home + book | 0 | Google Fonts only (allowed at 4e) | same | same |
+| Bookinglayer on load (book) | 0 | 0 | 0 | 0 |
+| targets < 44 px (probe, phone / desktop) | 0 | 0 / 0 | 0 / 4 nav links at 43 px tall | **9 dots 39×44** / 0 |
+| skip link first, target exists; overflow-x | ✓; 0 | ✓; 0 | ✓; 0 | ✓; 0 |
+| check-design | 0 problems | 0 | 0 | 0 |
+
+**Video (ffprobe + probe):**
+- **Files:** every rendition has no audio track, and every MP4 is faststart. Phone tiers are ≤ 2 MB (largest: `vid-010-m1280.webm` at 1.94 MB). Desktop tiers are ≤ 4 MB (largest: `vid-010c-d1600.webm` 3.50 MB, `vid-009e-d1920.mp4` 3.48 MB).
+- **Hero `vid-009e`:** 7.3 s, now inside playbook 0.6.2's 6–20 s. The dossier records the hard-cut edit (~7.3 s).
+- **Hero request after first paint:**
+  - Phone: postcard +228 ms, try-your-week +197 ms, the-sign +63 ms.
+  - Desktop: +221, +248 and +130 ms.
+- **Booking-page level clip (round-1 finding fixed):** now after first paint, +111 to +287 ms.
+  - try-your-week desktop pulls `vid-010c-d1600.webm` (3.5 MB).
+  - the-sign desktop pulls `vid-010-d1920.webm` (3.2 MB).
+- **Reduced motion and Save-Data:** 0 video requests on load and after a full scroll, on all six pages, at both widths.
+- **Provenance:**
+  - `vid-003e` is now in `dossier.videos[]`.
+  - **`vid-010c` (try-your-week's crop of business-owned vid-010) is still not recorded.**
+
+**Rosa (home, all three):**
+- 0 requests on load. After scroll, one `south-point.json` request plus the widget frame.
+- With JS off, the page shows "See today's forecast for South Point on Rosa".
+- Headline fixtures are unchanged from round 1: postcard 28 Sep 20:30, the other two 29 Sep 20:30.
+
+## Booking (phone; Level 2, 1 couple, 20 Feb 2027, 7 nights)
+
+| check | postcard | try-your-week (now 3 steps) | the-sign |
+|---|---|---|---|
+| calls after interaction | GET calendar, GET rooms, POST quote (`api.bookinglayer.io` only) | same | same |
+| live label / total | "Live price from the booking engine", $2,932 | same | same |
+| API blocked | "Live prices didn't load. These are the booking engine's prices from 29 Sep 2026.", snapshot $2,932 | same | same |
+| hand-off, JS on | `…/level-2-rollers?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1` | `…?start=2027-02-20&end=2027-02-27&couple=1` | `…?start=2027-02-20&couple=1&end=2027-02-27` |
+| hand-off, JS off (level-2 button) | `…?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1` | **`…?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1`** (fixed) | same as postcard |
+| `duration` anywhere | no | no | no |
+| WhatsApp prefill carries the choices | yes ("…about Level 2 – Rollers, Sat 20 Feb – Sat 27 Feb 2027 (7 nights), 1 couple.") | yes | yes |
+| first-screen booking action (phone) | "Book package now" → `book/` | **"Book now" + "Choose your level" → `book/`** (fixed) | "Book your week" → `book/` |
+
+## Facts and copy (round 2)
+
+- `copy/en.json` is unchanged since round 1.
+- The rendered text on all six pages still matches en.json, apart from the same template labels as round 1. try-your-week's booking page now reads "Step n of 3".
+- No new label makes a claim.
+- Room-gallery image ids are unchanged on every page. try-your-week's booking page dropped img-001 and img-093 (bands). They all still come from `room_photo_groups` (owner-unconfirmed; flagged, not failed).
+- 0 mismatches and 0 unsourced claims.
+
+---
+
+```
+mode: quick        round: 2 (post-gate)        variant: postcard
+total: 72.0 / 80 (d1–7)   result: pass (critic gates; d8 from the visual critics)   hard_fails: []
+```
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | 0 mismatches; dated prices; galleries from `room_photo_groups` (flagged). |
+| 2 | mobile + perf | 9 | 474 KB, LCP 764 ms, CLS 0.001; video after paint and inside the caps. Minus: Google Fonts. |
+| 3 | booking CTA | 9 | Live, fallback and `start`/`end` on both paths; the prefill carries the choices. Minus: not tapped on a real phone. |
+| 4 | brand fit | 8 | §3 order. No first-screen proof point (calibration). |
+| 5 | copy | 9 | en.json verbatim. |
+| 6 | accessibility | 8 | 0 targets < 44 px on either page; skip link; focus visible (fields through `:focus-within`); 0 video under reduced motion. axe not run. |
+| 7 | delivery | 8 | Static, 1 lazy embed with a fallback, 0 Bookinglayer requests on load. Minus: Google Fonts. |
+
+```
+mode: quick        round: 2 (post-gate)        variant: try-your-week
+total: 72.0 / 80 (d1–7)   result: pass   hard_fails: []
+```
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | As postcard. |
+| 2 | mobile + perf | 9 | 764 KB, LCP 556 ms. Minus: Google Fonts; the desktop booking clip is 3.5 MB. |
+| 3 | booking CTA | 9 | JS-off hand-off now `start`/`end` (round-1 blocker closed); first screen → `book/`; prefill carries the choices. Minus: not tapped on a real phone. |
+| 4 | brand fit | 8 | As postcard. |
+| 5 | copy | 9 | Verbatim. |
+| 6 | accessibility | 8 | 0 phone targets < 44 px. Minus: the 4 desktop nav links are 43 px tall. |
+| 7 | delivery | 8 | As postcard. |
+
+```
+mode: quick        round: 2 (post-gate)        variant: the-sign
+total: 72.0 / 80 (d1–7)   result: pass   hard_fails: []
+```
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | As postcard. |
+| 2 | mobile + perf | 9 | 456 KB, LCP 500 ms. Minus: Google Fonts; 4.2 MB of level-panel video on a phone scroll; booking page 1.33 MB on load. |
+| 3 | booking CTA | 9 | As postcard. |
+| 4 | brand fit | 8 | As postcard. |
+| 5 | copy | 9 | Verbatim. |
+| 6 | accessibility | 8 | Skip link, focus visible, 0 video under reduced motion. Minus: 9 slideshow dots at 39×44 on the phone; Rosa's iframe has no focus ring. |
+| 7 | delivery | 8 | As postcard. |
+
+check-design default-look facts (none fail):
+- postcard: DM Sans + Caveat Brush.
+- try-your-week: Figtree + Water Brush.
+- the-sign: Bricolage Grotesque + Damion.
+- All three: ground `#FFFFFF`, 0 all-caps labels, 0 labelled headings.
+
+fix list (not failing; smallest first):
+1. the-sign: make the phone dots 44 px wide.
+2. try-your-week: make the desktop nav links 44 px tall.
+3. Record `vid-010c` in `dossier.videos[]`.
+4. At 4g: self-host the fonts and make the Rosa headline live.
+5. Owner: confirm the room ↔ photo mapping.
+
+what the designer prompt got wrong (round 2): The prompt sets no weight rule for below-the-fold clips on desktop. Two booking pages pull a 3.2–3.5 MB desktop tier for a side-panel clip that an m1280 file would fill.
+
+Not tested in round 2: a real phone or GPU, Safari, axe, the engine's screens past `/accommodation`, and throttled numbers for the booking pages.

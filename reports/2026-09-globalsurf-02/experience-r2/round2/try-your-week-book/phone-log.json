@@ -1,0 +1,120 @@
+{
+ "m": "try-your-week-book",
+ "mode": "phone",
+ "firstLoadBytes": 482573,
+ "reqCount": 15,
+ "thirdOnLoad": [
+  "https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Water+Brush&display=swap",
+  "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DaRvzig.woff2",
+  "https://fonts.gstatic.com/s/waterbrush/v6/AYCPpXPqc8cJWLhp4hywKEJt5vOt5o_H.woff2"
+ ],
+ "lcp": 1612,
+ "cls": 0.0031931834854367204,
+ "videosAfterLoad": [
+  {
+   "src": "vid-010c-m1280.webm",
+   "paused": false,
+   "t": 4.79,
+   "rs": 4,
+   "top": 392,
+   "h": 270
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 392,
+   "h": 270
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 392,
+   "h": 270
+  }
+ ],
+ "hero": {
+  "h1": "Your level",
+  "font": "\"Water Brush\", \"Segoe Script\", cursive",
+  "size": "50px",
+  "center": [
+   195,
+   261
+  ],
+  "btns": [
+   {
+    "t": "Next",
+    "bg": "rgb(200, 67, 47)",
+    "color": "rgb(255, 255, 255)",
+    "ff": "Figtree",
+    "w": 85,
+    "h": 52
+   }
+  ],
+  "fonts": [
+   "Figtree 400 700",
+   "Water Brush 400"
+  ]
+ },
+ "pageHeight": 2725,
+ "frames": {
+  "n": 309,
+  "p50": 16.7,
+  "p95": 16.7,
+  "p99": 16.8,
+  "max": 16.8,
+  "over50": 0
+ },
+ "sections": [
+  [
+   0,
+   675,
+   "s-level | Your level"
+  ],
+  [
+   1,
+   1350,
+   "contact | Getting here"
+  ],
+  [
+   2,
+   1881,
+   "contact | Getting here"
+  ]
+ ],
+ "videosAfterScroll": [
+  {
+   "src": "vid-010c-m1280.webm",
+   "paused": false,
+   "t": 9.99,
+   "rs": 4,
+   "top": 392,
+   "h": 270
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 392,
+   "h": 270
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 392,
+   "h": 270
+  }
+ ],
+ "totalBytes": 2092055,
+ "thirdAll": [
+  "https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Water+Brush&display=swap",
+  "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DaRvzig.woff2",
+  "https://fonts.gstatic.com/s/waterbrush/v6/AYCPpXPqc8cJWLhp4hywKEJt5vOt5o_H.woff2"
+ ]
+}

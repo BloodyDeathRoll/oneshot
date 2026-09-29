@@ -1,0 +1,286 @@
+{
+ "variant": "postcard",
+ "url": "http://127.0.0.1:8981/postcard/dist/book/",
+ "normal_phone": {
+  "first_paint_ms": 228,
+  "onload_video": [
+   {
+    "url": "http://127.0.0.1:8981/postcard/dist/video/vid-010-m1280.webm",
+    "ms_after_first_paint": 287,
+    "kb": 1943
+   }
+  ],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Caveat+Brush&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap",
+   "https://fonts.gstatic.com/s/dmsans/v17/rP2Hp2ywxg089UriCZOIHQ.woff2",
+   "https://fonts.gstatic.com/s/caveatbrush/v12/EYq0maZfwr9S9-ETZc3fKXt8XLOS.woff2"
+  ],
+  "onload_nonvideo_kb": 758,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0
+ },
+ "reduced_phone": {
+  "first_paint_ms": 192,
+  "onload_video": [],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Caveat+Brush&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap",
+   "https://fonts.gstatic.com/s/dmsans/v17/rP2Hp2ywxg089UriCZOIHQ.woff2",
+   "https://fonts.gstatic.com/s/caveatbrush/v12/EYq0maZfwr9S9-ETZc3fKXt8XLOS.woff2"
+  ],
+  "onload_nonvideo_kb": 758,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0
+ },
+ "savedata_phone": {
+  "first_paint_ms": 240,
+  "onload_video": [],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Caveat+Brush&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap",
+   "https://fonts.gstatic.com/s/dmsans/v17/rP2Hp2ywxg089UriCZOIHQ.woff2",
+   "https://fonts.gstatic.com/s/caveatbrush/v12/EYq0maZfwr9S9-ETZc3fKXt8XLOS.woff2"
+  ],
+  "onload_nonvideo_kb": 758,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0
+ },
+ "normal_desktop": {
+  "first_paint_ms": 192,
+  "onload_video": [
+   {
+    "url": "http://127.0.0.1:8981/postcard/dist/video/vid-010-m1280.webm",
+    "ms_after_first_paint": 243,
+    "kb": 1943
+   }
+  ],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Caveat+Brush&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap",
+   "https://fonts.gstatic.com/s/dmsans/v17/rP2Hp2ywxg089UriCZOIHQ.woff2",
+   "https://fonts.gstatic.com/s/caveatbrush/v12/EYq0maZfwr9S9-ETZc3fKXt8XLOS.woff2"
+  ],
+  "onload_nonvideo_kb": 617,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0.0035
+ },
+ "reduced_desktop": {
+  "first_paint_ms": 184,
+  "onload_video": [],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Caveat+Brush&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap",
+   "https://fonts.gstatic.com/s/dmsans/v17/rP2Hp2ywxg089UriCZOIHQ.woff2",
+   "https://fonts.gstatic.com/s/caveatbrush/v12/EYq0maZfwr9S9-ETZc3fKXt8XLOS.woff2"
+  ],
+  "onload_nonvideo_kb": 617,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0.0035
+ },
+ "savedata_desktop": {
+  "first_paint_ms": 200,
+  "onload_video": [],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Caveat+Brush&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap",
+   "https://fonts.gstatic.com/s/dmsans/v17/rP2Hp2ywxg089UriCZOIHQ.woff2",
+   "https://fonts.gstatic.com/s/caveatbrush/v12/EYq0maZfwr9S9-ETZc3fKXt8XLOS.woff2"
+  ],
+  "onload_nonvideo_kb": 617,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0.0035
+ },
+ "dom_phone": {
+  "overflowX": 0,
+  "above_fold_links": [
+   {
+    "text": "",
+    "href": ".././"
+   }
+  ],
+  "small_targets": [],
+  "first_focusable": "Skip to content -> #main",
+  "skip_target_exists": true,
+  "title": "Your level | Global Surf Lodge Kabalana",
+  "lang": "en",
+  "h1": [
+   "Level 1 – Fomies"
+  ]
+ },
+ "links": [
+  {
+   "text": "Skip to content",
+   "href": "#main"
+  },
+  {
+   "text": "",
+   "href": ".././"
+  },
+  {
+   "text": "Levels",
+   "href": "../#levels"
+  },
+  {
+   "text": "Rooms",
+   "href": "../#rooms"
+  },
+  {
+   "text": "The lodge",
+   "href": "../#welcome"
+  },
+  {
+   "text": "Contact",
+   "href": "../#contact"
+  },
+  {
+   "text": "Book now",
+   "href": "../book/"
+  },
+  {
+   "text": "",
+   "href": ".././"
+  },
+  {
+   "text": "Levels",
+   "href": "../#levels"
+  },
+  {
+   "text": "Rooms",
+   "href": "../#rooms"
+  },
+  {
+   "text": "The lodge",
+   "href": "../#welcome"
+  },
+  {
+   "text": "Contact",
+   "href": "../#contact"
+  },
+  {
+   "text": "Book now",
+   "href": "../book/"
+  },
+  {
+   "text": "Ask about dates",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20would%20like%20to%20ask%20about%20dates%20for%20the%20Freestylers%20%E2%80%93%20B%26B%20only%20package."
+  },
+  {
+   "text": "Questions? Ask us",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20Level%201%20%E2%80%93%20Fomies."
+  },
+  {
+   "text": "",
+   "href": ".././"
+  },
+  {
+   "text": "WhatsApp us",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+  },
+  {
+   "text": "Call us",
+   "href": "tel:+97299733943"
+  },
+  {
+   "text": "Email us",
+   "href": "mailto:info@globalsurf.com"
+  },
+  {
+   "text": "Open in Maps",
+   "href": "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en"
+  },
+  {
+   "text": "",
+   "href": "https://www.instagram.com/globalsurf_kabalana/"
+  },
+  {
+   "text": "",
+   "href": "https://www.youtube.com/channel/UCh-GTj4Wu2FbdXpr-xNSGzQ"
+  },
+  {
+   "text": "",
+   "href": "https://www.facebook.com/GlobalSURFltd/"
+  },
+  {
+   "text": "Terms and conditions",
+   "href": "https://www.globalsurf.com/terms-conditions/"
+  }
+ ],
+ "dom_desktop": {
+  "overflowX": 0,
+  "above_fold_links": [
+   {
+    "text": "",
+    "href": ".././"
+   },
+   {
+    "text": "Levels",
+    "href": "../#levels"
+   },
+   {
+    "text": "Rooms",
+    "href": "../#rooms"
+   },
+   {
+    "text": "The lodge",
+    "href": "../#welcome"
+   },
+   {
+    "text": "Contact",
+    "href": "../#contact"
+   }
+  ],
+  "small_targets": [],
+  "first_focusable": "Skip to content -> #main",
+  "skip_target_exists": true,
+  "title": "Your level | Global Surf Lodge Kabalana",
+  "lang": "en",
+  "h1": [
+   "Level 1 – Fomies"
+  ]
+ },
+ "nojs": {
+  "text_len": 3360,
+  "booking_links": [
+   "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20would%20like%20to%20ask%20about%20dates%20for%20the%20Freestylers%20%E2%80%93%20B%26B%20only%20package.",
+   "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.",
+   "tel:+97299733943",
+   "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en",
+   "https://www.instagram.com/globalsurf_kabalana/",
+   "https://www.youtube.com/channel/UCh-GTj4Wu2FbdXpr-xNSGzQ",
+   "https://www.facebook.com/GlobalSURFltd/",
+   "https://www.globalsurf.com/terms-conditions/"
+  ],
+  "rosa_fallback_visible": [],
+  "videos_with_src": 0
+ },
+ "keyboard": {
+  "first_stop": {
+   "tag": "A",
+   "text": "Skip to content",
+   "outline": true,
+   "boxShadow": true,
+   "visible": true
+  },
+  "stops": 59,
+  "no_visible_focus": [
+   "BUTTON:Choose a Saturday",
+   "INPUT:",
+   "INPUT:",
+   "INPUT:"
+  ],
+  "invisible_targets": []
+ }
+}

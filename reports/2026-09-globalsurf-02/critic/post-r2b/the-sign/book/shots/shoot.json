@@ -1,0 +1,19 @@
+{
+  "target": "http://127.0.0.1:8981/the-sign/dist/book/",
+  "widths": {
+    "desktop": {
+      "pageHeight": 5793,
+      "scroller": "window",
+      "captures": 8,
+      "truncated": false,
+      "errors": []
+    },
+    "mobile": {
+      "pageHeight": 6940,
+      "scroller": "window",
+      "captures": 10,
+      "truncated": false,
+      "errors": []
+    }
+  }
+}

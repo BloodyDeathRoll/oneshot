@@ -1,0 +1,19 @@
+{
+  "target": "http://localhost:8982/postcard/dist/",
+  "widths": {
+    "desktop": {
+      "pageHeight": 11166,
+      "scroller": "window",
+      "captures": 14,
+      "truncated": false,
+      "errors": []
+    },
+    "mobile": {
+      "pageHeight": 13768,
+      "scroller": "window",
+      "captures": 19,
+      "truncated": false,
+      "errors": []
+    }
+  }
+}

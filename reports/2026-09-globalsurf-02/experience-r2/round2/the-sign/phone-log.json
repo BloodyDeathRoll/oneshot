@@ -1,0 +1,234 @@
+{
+ "m": "the-sign",
+ "mode": "phone",
+ "firstLoadBytes": 453884,
+ "reqCount": 9,
+ "thirdOnLoad": [
+  "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Damion&display=swap",
+  "https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInHWVyNJ.woff2",
+  "https://fonts.gstatic.com/s/damion/v15/hv-XlzJ3KEUe_YZkamw2EzJwVw.woff2"
+ ],
+ "lcp": 508,
+ "cls": 0.0023035477639765504,
+ "videosAfterLoad": [
+  {
+   "src": "vid-009e-m1280.webm",
+   "paused": false,
+   "t": 4.15,
+   "rs": 4,
+   "top": 0,
+   "h": 844
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1495,
+   "h": 438
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 2189,
+   "h": 578
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 2880,
+   "h": 438
+  }
+ ],
+ "hero": {
+  "h1": "Your surf week starts here",
+  "font": "Damion, \"Brush Script MT\", cursive",
+  "size": "46px",
+  "center": [
+   195,
+   411
+  ],
+  "btns": [
+   {
+    "t": "Book your week",
+    "bg": "rgb(209, 64, 42)",
+    "color": "rgb(255, 255, 255)",
+    "ff": "\"Bricolage Grotesque\"",
+    "w": 250,
+    "h": 56
+   }
+  ],
+  "fonts": [
+   "Bricolage Grotesque 400",
+   "Bricolage Grotesque 500",
+   "Bricolage Grotesque 600",
+   "Bricolage Grotesque 700",
+   "Damion 400"
+  ]
+ },
+ "pageHeight": 14374,
+ "frames": {
+  "n": 2158,
+  "p50": 16.7,
+  "p95": 16.7,
+  "p99": 16.8,
+  "max": 83.3,
+  "over50": 1
+ },
+ "sections": [
+  [
+   0,
+   675,
+   "welcome | Next set is yours"
+  ],
+  [
+   1,
+   1350,
+   "levels | Choose your level"
+  ],
+  [
+   2,
+   2025,
+   "levels | Choose your level"
+  ],
+  [
+   3,
+   2700,
+   "levels | Choose your level"
+  ],
+  [
+   4,
+   3375,
+   "levels | Choose your level"
+  ],
+  [
+   5,
+   4050,
+   "week | Surf, breakfast, surf again"
+  ],
+  [
+   6,
+   4725,
+   "rooms | Our rooms"
+  ],
+  [
+   7,
+   5400,
+   "rooms | Our rooms"
+  ],
+  [
+   8,
+   6075,
+   "rooms | Our rooms"
+  ],
+  [
+   9,
+   6750,
+   "rooms | Our rooms"
+  ],
+  [
+   10,
+   7425,
+   "feature | "
+  ],
+  [
+   11,
+   8100,
+   "lodge | The lodge"
+  ],
+  [
+   12,
+   8775,
+   "lodge | The lodge"
+  ],
+  [
+   13,
+   9450,
+   "incl aqua | What's included"
+  ],
+  [
+   14,
+   10125,
+   "guests | What guests say"
+  ],
+  [
+   15,
+   10800,
+   "waves aqua | The waves"
+  ],
+  [
+   16,
+   11475,
+   "waves aqua | The waves"
+  ],
+  [
+   17,
+   12150,
+   "closing | "
+  ],
+  [
+   18,
+   12825,
+   "contact | Talk to us"
+  ],
+  [
+   19,
+   13500,
+   "contact | Talk to us"
+  ],
+  [
+   20,
+   13530,
+   "contact | Talk to us"
+  ]
+ ],
+ "videosAfterScroll": [
+  {
+   "src": "vid-009e-m1280.webm",
+   "paused": false,
+   "t": 2.67,
+   "rs": 4,
+   "top": 0,
+   "h": 844
+  },
+  {
+   "src": "vid-010-m720.mp4",
+   "paused": true,
+   "t": 0.02,
+   "rs": 4,
+   "top": 1495,
+   "h": 438
+  },
+  {
+   "src": "vid-003e-m720.mp4",
+   "paused": true,
+   "t": 0,
+   "rs": 4,
+   "top": 2189,
+   "h": 578
+  },
+  {
+   "src": "vid-002e-m720.mp4",
+   "paused": true,
+   "t": 0.06,
+   "rs": 4,
+   "top": 2880,
+   "h": 438
+  }
+ ],
+ "totalBytes": 3432700,
+ "thirdAll": [
+  "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Damion&display=swap",
+  "https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInHWVyNJ.woff2",
+  "https://fonts.gstatic.com/s/damion/v15/hv-XlzJ3KEUe_YZkamw2EzJwVw.woff2",
+  "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+  "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+  "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+  "https://rosa.surf/favicon.svg",
+  "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2"
+ ]
+}
