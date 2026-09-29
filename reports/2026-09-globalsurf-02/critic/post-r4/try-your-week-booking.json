@@ -1,0 +1,103 @@
+{
+ "variant": "try-your-week",
+ "url": "http://127.0.0.1:8981/try-your-week/dist/book/?level=2",
+ "scenario": "Level 2, 1 couple, check-in 2027-02-20, 7 nights",
+ "live": {
+  "load_third_party": [
+   "https://fonts.googleapis.com/css2",
+   "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DQ.woff2",
+   "https://fonts.gstatic.com/s/satisfy/v22/rP2Hp2yn6lkG50LoCZOIHQ.woff2"
+  ],
+  "load_bookinglayer": 0,
+  "interaction": [
+   "couple+1",
+   "calendar 2027-02-20"
+  ],
+  "after_interaction": [
+   "GET https://api.bookinglayer.io/public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities?format=choosable&show_available_only=1&mode=checkin&start=2026-09-29&end=2",
+   "GET https://api.bookinglayer.io/public/accommodations/availabilities?product=4b58b491-24fc-4fb8-a40d-2705df961db4&start=2027-02-20&end=2027-02-27&currency=USD&female=0&male=0",
+   "POST https://api.bookinglayer.io/public/packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items?BD"
+  ],
+  "after_interaction_hosts": [
+   "api.bookinglayer.io"
+  ],
+  "shown": {
+   "source_line": "Live price from the booking engine | Prices in USD",
+   "total": "$2,932",
+   "per_person": "$1,466",
+   "room": "Step 2 of 3Your room DormTwinDeluxe double Mixed dorm room – 4 beds Four single beds. The bathroom is outdoors, and it's yours. Our new gallery room sleeps four in comfortable single beds and has its own outdoor bathroom. It suits larger groups, and travellers on a budget. Sleeps 4 | 4 single beds | Private outdoor bathroom | Shared Included Not free on these datesChoose this room Shared Twin Room – 2 Beds Two beds and a private bathroom, with the beach in view all day. The twin rooms look out on the beach all day, and each has a lovely private bathroom. There are two beds; the room is shared unless you choose private use on the booking page. Sleeps 2 | 2 beds | Private bathroom | Shared, or book it privately +$80.02 pp Not free on these datesChoose this room Deluxe double room A queen-size bed for two and a private bathroom of its own. Our double rooms have one queen-size bed and a private bathroom. To keep it just for the two of you, choose private use when you check out on the booking page. Sleeps 2 | Queen-size bed | Private bathroom +$418.46 pp Not free on these datesChoose this room Room prices change with the dates. Sample for 20–27 Feb 2027; prices from the booking engine, 29 Sep 2026.",
+   "room_supp": "Mixed dorm room – 4 beds",
+   "flags": [],
+   "wa": [
+    "Hi Global Surf Lodge Kabalana, I have a question about the surf packages.",
+    "Hi Global Surf Lodge Kabalana, I have a question about the surf packages. Level 2 – Rollers | Mixed dorm room – 4 beds | Sat, 20 Feb 2027, 7 nights | Couples: 1"
+   ]
+  },
+  "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&end=2027-02-27&couple=1",
+  "handoff_has_duration": false
+ },
+ "api_blocked": {
+  "load_third_party": [
+   "https://fonts.googleapis.com/css2",
+   "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DQ.woff2",
+   "https://fonts.gstatic.com/s/satisfy/v22/rP2Hp2yn6lkG50LoCZOIHQ.woff2"
+  ],
+  "load_bookinglayer": 0,
+  "interaction": [
+   "couple+1",
+   "calendar 2027-02-20"
+  ],
+  "after_interaction": [
+   "GET https://api.bookinglayer.io/public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities?format=choosable&show_available_only=1&mode=checkin&start=2026-09-29&end=2 [blocked]",
+   "GET https://api.bookinglayer.io/public/accommodations/availabilities?product=4b58b491-24fc-4fb8-a40d-2705df961db4&start=2027-02-20&end=2027-02-27&currency=USD&female=0&male=0 [blocked]",
+   "POST https://api.bookinglayer.io/public/packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items?BD [blocked]"
+  ],
+  "after_interaction_hosts": [
+   "api.bookinglayer.io"
+  ],
+  "shown": {
+   "source_line": "Live prices didn't load. These are the booking engine's prices from 29 Sep 2026. | Prices in USD",
+   "total": "$2,932",
+   "per_person": "$1,466",
+   "room": "Step 2 of 3Your room DormTwinDeluxe double Mixed dorm room – 4 beds Four single beds. The bathroom is outdoors, and it's yours. Our new gallery room sleeps four in comfortable single beds and has its own outdoor bathroom. It suits larger groups, and travellers on a budget. Sleeps 4 | 4 single beds | Private outdoor bathroom | Shared Included in the package price Not free on these datesChoose this room Shared Twin Room – 2 Beds Two beds and a private bathroom, with the beach in view all day. The twin rooms look out on the beach all day, and each has a lovely private bathroom. There are two beds; the room is shared unless you choose private use on the booking page. Sleeps 2 | 2 beds | Private bathroom | Shared, or book it privately +$140 pp for 7 nights, one guest+$80 pp for 7 nights, two sharing Not free on these datesChoose this room Deluxe double room A queen-size bed for two and a private bathroom of its own. Our double rooms have one queen-size bed and a private bathroom. To keep it just for the two of you, choose private use when you check out on the booking page. Sleeps 2 | Queen-size bed | Private bathroom +$418 pp for 7 nights Not free on these datesChoose this room Room prices change with the dates. Sample for 20–27 Feb 2027; prices from the booking engine, 29 Sep 2026.",
+   "room_supp": "Mixed dorm room – 4 beds",
+   "flags": [],
+   "wa": [
+    "Hi Global Surf Lodge Kabalana, I have a question about the surf packages.",
+    "Hi Global Surf Lodge Kabalana, I have a question about the surf packages. Level 2 – Rollers | Mixed dorm room – 4 beds | Sat, 20 Feb 2027, 7 nights | Couples: 1"
+   ]
+  },
+  "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&end=2027-02-27&couple=1",
+  "handoff_has_duration": false
+ },
+ "nojs": {
+  "load_third_party": [
+   "https://fonts.googleapis.com/css2",
+   "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DQ.woff2",
+   "https://fonts.gstatic.com/s/satisfy/v22/rP2Hp2yn6lkG50LoCZOIHQ.woff2"
+  ],
+  "load_bookinglayer": 0,
+  "visible_controls": [
+   "SELECT:start:",
+   "SELECT:end:",
+   "INPUT:female:",
+   "INPUT:male:",
+   "INPUT:couple:",
+   "BUTTON::https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+   "BUTTON::https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers",
+   "BUTTON::https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders"
+  ],
+  "start_field": "start",
+  "end_options_sample": [
+   "",
+   "2026-10-10",
+   "2026-10-17",
+   "2026-10-24",
+   "2026-10-31",
+   "2026-11-07"
+  ],
+  "submit_button_text": "Continue booking: Level 2 – Rollers",
+  "click_unstable": true,
+  "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1"
+ }
+}

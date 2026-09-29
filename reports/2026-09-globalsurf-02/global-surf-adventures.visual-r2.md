@@ -240,3 +240,57 @@ Remaining fixes:
 1. **The Sign (8.5, pass):** finished, calm and unmistakably this lodge, with a booking desk that belongs to the site. Show it.
 2. **Try your week (7.5, fail, close):** now legible, with the best booking flow, but a centred, safe home that looks too much like Postcard.
 3. **Postcard (7.5, fail, close):** well composed and clean, held back by the tight tracking, the long closing line, and its near-twin in Try your week. It ranks just below Try your week because Try your week's booking flow is stronger.
+
+---
+
+# Round 4 (re-score, 2026-09-29)
+
+Re-scored from scratch on fresh shots: `visual-r2/round4/<mockup>-home|book/` (1440 + 390) and `visual-r2/round4/try-your-week-book-walk/`. Same bar, same calibration. The other reviewers' reports were not opened. The server on 8982 was stopped afterwards.
+
+## The Sign — 8.5/10 · would Shahar accept: yes · better than current: yes
+Unchanged in design. The hero script now reads cleanly over the wave (`the-sign-home/desktop-00`). The dark reviews band, the centred closing, the booking page with footage thumbnails and the footer all hold (`desktop-sheet`, `the-sign-book/*`).
+Remaining fixes (minor):
+1. The closing sub-line could be one line.
+2. The level clips are still slightly soft at card size.
+
+## Postcard — 7.5/10 · would Shahar accept: no (close) · better than current: yes
+Now clearly its own design:
+- The pool-deck opening frame is back, with a Lora serif title (`postcard-home/desktop-00`).
+- A warm sand palette and Marck Script titles in teal.
+- A sunset surfer photo beside the closing text instead of text over a photo (`desktop-12`). This is the best closing of the three.
+- A new footer with the address in a sand card.
+- The booking page carries the same sand, serif and script (`postcard-book/desktop-sheet`).
+
+What holds it below 8:
+1. Marck Script is set with very wide letter- and word-spacing ("Follow  the  lodge", "Surf, / breakfast, surf / again" breaking over three lines). It looks loose and amateur next to The Sign's brush. Tighten it to normal tracking, or use a size and measure that keep each title to one or two lines.
+2. The hero title is a bold serif over the busiest part of the palm frame. Move it onto the sky or water band, or reduce the weight.
+3. The level cards are still small (≈ 190 px wide) against the large room galleries.
+
+## Try your week — 7.5/10 · would Shahar accept: no (close) · better than current: yes, narrowly
+Changes:
+- A sea-glass palette.
+- A surfer-first hero.
+- An edge-to-edge level video with the info row under it (`try-your-week-home/desktop-02`).
+- A dusk-palms closing with a Satisfy title (`desktop-10`).
+- A new footer with a map/address column and four contact tiles (`desktop-11`). It is designed, distinct and good.
+
+The booking wizard is still the strongest flow of the three.
+What holds it below 8:
+1. The closing photo is a soft video frame with a large out-of-focus brown blob across the bottom (`desktop-10`, `desktop-11` top). It reads like a mistake. Crop above the blob or use another frame.
+2. The edge-to-edge level video is visibly soft at 1440 wide. Cap its width, or use the sharpest rendition.
+3. The mid-page is still mostly centred title + centred paragraph on white.
+
+## Are they three distinct designs? Yes, mostly.
+- **Postcard** is now clearly separate: pool-deck opening, warm sand, serif body, teal hand script, a photo-beside-text closing and a sand footer.
+- **Try your week vs The Sign** now share an opening. Both heroes are the same surfer-on-the-wave frame with a centred script title and a coral button (`the-sign-home/desktop-00` vs `try-your-week-home/desktop-00`), so their first screens are near-twins. Past the fold they separate:
+  - palette: sea-glass vs cool grey + navy;
+  - script: black Satisfy vs navy brush;
+  - level section: a single stage with pills vs a three-card row;
+  - footer: tiles vs a four-column footer;
+  - booking: a step wizard vs a split screen with a sticky photo.
+- Fix: give Try your week a different opening frame, e.g. the vid-010 golden-hour stand-up or the vid-002e barrel, so the three first screens differ.
+
+## Ranking (visual quality only)
+1. **The Sign (8.5, pass):** finished, calm and unmistakably this lodge, with a booking desk that belongs to the site. The one to show.
+2. **Postcard (7.5, fail, close):** now distinct and warm, with the best closing, held back by loosely spaced script titles and a hero title on a busy background.
+3. **Try your week (7.5, fail, close):** the best booking flow and a good new footer, let down by a blurred closing frame, soft edge-to-edge level video, and a hero that duplicates The Sign's. It ranks behind Postcard because of that visible flaw on the closing.

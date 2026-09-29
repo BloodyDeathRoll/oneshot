@@ -1,0 +1,30 @@
+[0 taps] home -> phone-01-home.jpg url=/try-your-week/dist/
+[1 taps] before-hero-cta -> phone-02-before-hero-cta.jpg url=/try-your-week/dist/
+[1 taps] after-hero-cta -> phone-03-after-hero-cta.jpg url=/try-your-week/dist/book/#level
+[2 taps] before-tab-rollers -> phone-04-before-tab-rollers.jpg url=/try-your-week/dist/book/#level
+[2 taps] after-tab-rollers -> phone-05-after-tab-rollers.jpg url=/try-your-week/dist/book/#level
+[3 taps] before-next1 -> phone-06-before-next1.jpg url=/try-your-week/dist/book/#level
+[3 taps] after-next1 -> phone-07-after-next1.jpg url=/try-your-week/dist/book/#room
+[4 taps] before-tab-twin -> phone-08-before-tab-twin.jpg url=/try-your-week/dist/book/#room
+[4 taps] after-tab-twin -> phone-09-after-tab-twin.jpg url=/try-your-week/dist/book/#room
+[5 taps] before-choose-twin -> phone-10-before-choose-twin.jpg url=/try-your-week/dist/book/#room
+[5 taps] after-choose-twin -> phone-11-after-choose-twin.jpg url=/try-your-week/dist/book/#dates
+VISIBLE ["","Level","Room","3Dates & guests","Sat 3","Sat 24","Sat 31","Sat 19","Sat 23","Sat 30","Sat 13","Sat 20","Sat 27","Sat 6","Sat 13","Sat 20","Sat 27","Sat 3","Continue booking"]
+female=0
+[6 taps] before-couple+ -> phone-12-before-couple+.jpg url=/try-your-week/dist/book/#dates
+[6 taps] after-couple+ -> phone-13-after-couple+.jpg url=/try-your-week/dist/book/#dates
+CHIP <button type="button" data-d="2027-02-20" aria-pressed="false" aria-label="Sat, 20 Feb 2027">Sat 20</button>
+[7 taps] before-sat20 -> phone-14-before-sat20.jpg url=/try-your-week/dist/book/#dates
+[7 taps] after-sat20 -> phone-15-after-sat20.jpg url=/try-your-week/dist/book/#dates
+[7 taps] total-settled -> phone-16-total-settled.jpg url=/try-your-week/dist/book/#dates
+VISIBLE ["","Level","Room","3Dates & guests","Sat 3","Sat 24","Sat 31","Sat 23","Sat 30","Sat 13","Sat 20","Sat 27","Sat 6","Sat 13","Sat 20","Sat 27","Sat 3","7","14","21","28","","","Continue booking"]
+bnext=Continue booking
+[8 taps] before-continue-booking -> phone-17-before-continue-booking.jpg url=/try-your-week/dist/book/#dates
+[8 taps] after-continue-booking -> phone-18-after-continue-booking.jpg url=https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&end=2027-02-27&couple=1
+HANDOFF https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&end=2027-02-27&couple=1
+TAPS 8
+API [
+ "GET https://api.bookinglayer.io/public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities?format=choosable&show_available_only=1&mode=checkin&start=2026-0",
+ "GET https://api.bookinglayer.io/public/accommodations/availabilities?product=4b58b491-24fc-4fb8-a40d-2705df961db4&start=2027-02-20&end=2027-02-27&currency=USD&femal",
+ "POST https://api.bookinglayer.io/public/packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items?BD"
+]

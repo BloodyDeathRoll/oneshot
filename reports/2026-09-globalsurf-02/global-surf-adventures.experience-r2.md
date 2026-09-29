@@ -220,3 +220,70 @@ The new Satisfy script is legible: "Our rooms", "Your room" and "Dates and guest
 1. **the-sign**: the most complete experience, with strong imagery, handwritten titles like the original's, and a booking flow that now has chips, photos in the selection cards and one consistent style to the total.
 2. **postcard**: an editorial, well-built site with the most elegant booking-page hero. It is held back only by the duplicate final button and a quieter booking page.
 3. **try-your-week**: now legible, with the quickest booking. Its hero is the only one of the three that paints late on a slow phone.
+
+---
+
+# Round 4 (commit 9fa6c2f)
+
+I re-walked all three from scratch with the same setup: phone 390×844 throttled, laptop 1440×900, reduced motion, JavaScript off, and booking flows up to an intercepted hand-off. The engine was never opened. Frames are in `experience-r2/round4/`, plus the hero-clip strips `postcard-hero-clip-strip.jpg` and `tyw-hero-clip-strip.jpg`. Other reviewers' reports were not opened.
+
+## Shared measurements
+
+| | postcard | try-your-week | the-sign |
+|---|---|---|---|
+| Fonts / palette | Marck Script + Lora; cream, teal, coral | Satisfy + Figtree; white and pale aqua, coral | Damion + Bricolage; white and grey, navy, coral |
+| Hero clip | vid-009p: pool-deck dolly, 10.4 s, forward then reversed | vid-009r: surf on the reef → pool deck, 7 s, two hard cuts | vid-009e (unchanged) |
+| First load / LCP / CLS (phone) | 431 KB / 0.84 s / 0.001 | 713 KB / 0.31 s / 0.00 | 598 KB / 0.50 s / 0.003 |
+| Cold frame at 0.5 s | poster + title + CTA | **poster + title + CTA (fixed)**; the logo only appears after 1.5 s | poster + title + CTA |
+| Scroll, phone 4× CPU | p95 16.7 ms, max 50 ms | p95 16.8 ms, max 83 ms | p95 16.7 ms, max 100 ms |
+| Reduced motion / JS off | poster only / poster, no controls ✓ | ✓ / ✓ | ✓ / ✓ |
+| Hand-off, JS on | `level-2-rollers?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1` ✓ | `…?start=2027-02-20&end=2027-02-27&couple=1` ✓ | `…?start=2027-02-20&couple=1&end=2027-02-27` ✓ |
+| Hand-off, JS off | ✓ | ✓ | ✓ |
+| Taps, home → hand-off (L2, 20 Feb, couple, twin) | 9 (2 month arrows) | 8 | 9 |
+| Third-party on load | **4** Google Fonts requests (was 3) | 3 | 3 |
+
+### Postcard's forward-then-back hero loop: does it feel natural? No.
+
+I measured frame-to-frame motion over all 260 frames of `vid-009p-m1280.webm` (mean pixel difference, 160 px wide). The dolly runs at a steady 1.7–2.2. At the midpoint (frames ~127–133) it drops to **0.0 for 6 frames, a 0.24 s freeze**, then restarts at full speed in the opposite direction with no easing. At the loop seam it reverses again at full speed. So twice per 10.4 s the camera stops dead and snaps backwards. On the reversed half the palm fronds and pool ripples also move backwards. On a phone it reads as a boomerang/rewind, not a slow cinematic move. It is the first thing a visitor sees and draws attention to itself. The earlier vid-009e (pool → surf, one cut) felt natural. This does not.
+
+## the-sign: 9/10 · pass · would Shahar accept: **yes** · better than current: **yes, clearly**
+
+Unchanged in substance from round 3 and still the most complete experience. It has big level video cards, room slideshows, handwritten Damion titles, a dark reviews band over the lodge photo, a chip date picker and a live total. Fonts and colours are consistent from the hero to the total.
+
+**Remaining fixes:**
+1. On the laptop hero the script title still sits across the white umbrellas. A slightly darker poster crop behind the title would help.
+2. Self-host the fonts.
+
+## try-your-week: 8/10 · pass · would Shahar accept: **yes** · better than current: **yes**
+
+The hero now opens on the lodge's own reef-surf footage, and the poster paints by 0.5 s. It is the most energetic first screen of the three and a clear difference from the other two. The pale-aqua sections, a new closing over the palm photo and the new 2×2 contact tiles in the footer make it feel like its own site. The booking is unchanged and still the quickest: 3 steps, Saturday chips, 8 taps.
+
+**Remaining fixes:**
+1. The header logo is missing at 0.5 s and 1.5 s on the cold phone load. Only the menu icon shows until the logo arrives. Inline or preload it.
+2. The footer tiles break "WhatsApp / us" over two lines. Use "WhatsApp" alone or a wider tile.
+3. The clip cuts hard twice in 7 s (surf → pool, and pool → surf at the loop). It is acceptable, but a single scene or a softer cut would feel calmer.
+4. Self-host the fonts.
+
+## postcard: 7/10 · fail · would Shahar accept: **no (because of the hero clip)** · better than current: **yes, below the hero**
+
+Everything below the hero is good:
+- Warm cream palette and Lora serif body at 18 px.
+- Editorial laptop layout.
+- Booking pages restyled in the same cream and teal, with the per-level hero and the calendar that skips empty months.
+
+But:
+- **The boomerang hero** (above) is the first impression, and it looks like a rewind. That alone decides the score.
+- **Marck Script** has very wide natural word spacing. At 50 px on a phone, the section titles break apart and wrap into fragments ("Next set is / yours", "Choose your / level", "What guests / say"). It reads less composed than round 3's Caveat Brush.
+- A 4th Google Fonts request was added on first load.
+
+**Remaining fixes:**
+1. Replace the ping-pong loop with a one-directional clip: vid-009e, or a forward-only cut of the dolly with a crossfade at the loop point.
+2. Tighten Marck Script (`word-spacing: -0.15em`) or return to Caveat Brush. Keep phone section titles to one or two lines.
+3. Hide the bar's "Continue" when "Continue booking" is on screen (still open from round 3).
+4. Self-host the fonts.
+
+## Ranking (round 4)
+
+1. **the-sign**: still the most complete and consistent experience, from the video hero to the total.
+2. **try-your-week**: now visibly its own site, with a surf-first hero that paints fast and the quickest booking of the three.
+3. **postcard**: a warm, well-built page and booking flow let down by a hero loop that visibly stops and plays backwards every 5 seconds.

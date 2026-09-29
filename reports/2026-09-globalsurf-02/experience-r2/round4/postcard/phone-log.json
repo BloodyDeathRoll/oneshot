@@ -1,0 +1,233 @@
+{
+ "m": "postcard",
+ "mode": "phone",
+ "firstLoadBytes": 430653,
+ "reqCount": 16,
+ "thirdOnLoad": [
+  "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Marck+Script&display=swap",
+  "https://fonts.gstatic.com/s/lora/v37/0QIvMX1D_JOuMwr7I_FMl_E.woff2",
+  "https://fonts.gstatic.com/s/marckscript/v22/nwpTtK2oNgBA3Or78gapdwuyyCg_SsDV7A.woff2",
+  "https://fonts.gstatic.com/s/lora/v37/0QI8MX1D_JOuMw_hLdO6T2wV9KnW-MoFoq92nPWa3Zw.woff2"
+ ],
+ "lcp": 844,
+ "cls": 0.0011183343361732493,
+ "videosAfterLoad": [
+  {
+   "src": "vid-009p-m1280.webm",
+   "paused": false,
+   "t": 4.72,
+   "rs": 4,
+   "top": 0,
+   "h": 844
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 2352,
+   "h": 351
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 2352,
+   "h": 351
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 2352,
+   "h": 351
+  }
+ ],
+ "hero": {
+  "h1": "Surf weeks in Sri Lanka",
+  "font": "Lora, Georgia, \"Times New Roman\", serif",
+  "size": "34px",
+  "center": [
+   195,
+   378
+  ],
+  "btns": [
+   {
+    "t": "Book package now",
+    "bg": "rgb(200, 70, 60)",
+    "color": "rgb(255, 255, 255)",
+    "ff": "Lora",
+    "w": 342,
+    "h": 56
+   }
+  ],
+  "fonts": [
+   "Lora 400",
+   "Lora 400",
+   "Lora 500",
+   "Lora 600",
+   "Marck Script 400"
+  ]
+ },
+ "pageHeight": 14342,
+ "frames": {
+  "n": 2058,
+  "p50": 16.7,
+  "p95": 16.7,
+  "p99": 16.8,
+  "max": 50.1,
+  "over50": 1
+ },
+ "sections": [
+  [
+   0,
+   675,
+   "welcome | Next set is yours"
+  ],
+  [
+   1,
+   1350,
+   "welcome | Next set is yours"
+  ],
+  [
+   2,
+   2025,
+   "levels | Choose your level"
+  ],
+  [
+   3,
+   2700,
+   "levels | Choose your level"
+  ],
+  [
+   4,
+   3375,
+   "levels | Choose your level"
+  ],
+  [
+   5,
+   4050,
+   "included | What's included"
+  ],
+  [
+   6,
+   4725,
+   "week | Surf, breakfast, surf again"
+  ],
+  [
+   7,
+   5400,
+   "week | Surf, breakfast, surf again"
+  ],
+  [
+   8,
+   6075,
+   "rooms | Our rooms"
+  ],
+  [
+   9,
+   6750,
+   "rooms | Our rooms"
+  ],
+  [
+   10,
+   7425,
+   "rooms | Our rooms"
+  ],
+  [
+   11,
+   8100,
+   "rooms | Our rooms"
+  ],
+  [
+   12,
+   8775,
+   "rooms | Our rooms"
+  ],
+  [
+   13,
+   9450,
+   "guests | What guests say"
+  ],
+  [
+   14,
+   10125,
+   "guests | What guests say"
+  ],
+  [
+   15,
+   10800,
+   "waves | The waves"
+  ],
+  [
+   16,
+   11475,
+   "instagram | Follow the lodge"
+  ],
+  [
+   17,
+   12150,
+   "closing | Book the week for your level."
+  ],
+  [
+   18,
+   12825,
+   "contact | Talk to us"
+  ],
+  [
+   19,
+   13498,
+   "contact | Talk to us"
+  ]
+ ],
+ "videosAfterScroll": [
+  {
+   "src": "vid-009p-m1280.webm",
+   "paused": false,
+   "t": 7.66,
+   "rs": 4,
+   "top": 0,
+   "h": 844
+  },
+  {
+   "src": "vid-010-m1280.webm",
+   "paused": true,
+   "t": 0,
+   "rs": 4,
+   "top": 2352,
+   "h": 351
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 2352,
+   "h": 351
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 2352,
+   "h": 351
+  }
+ ],
+ "totalBytes": 3328452,
+ "thirdAll": [
+  "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Marck+Script&display=swap",
+  "https://fonts.gstatic.com/s/lora/v37/0QIvMX1D_JOuMwr7I_FMl_E.woff2",
+  "https://fonts.gstatic.com/s/marckscript/v22/nwpTtK2oNgBA3Or78gapdwuyyCg_SsDV7A.woff2",
+  "https://fonts.gstatic.com/s/lora/v37/0QI8MX1D_JOuMw_hLdO6T2wV9KnW-MoFoq92nPWa3Zw.woff2",
+  "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+  "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+  "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+  "https://rosa.surf/favicon.svg",
+  "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924"
+ ]
+}

@@ -1,0 +1,24 @@
+{
+ "normal": {
+  "text": "The waves The lodge overlooks two spots, The Rock and South Point. More waves are a few minutes away by tuk-tuk. 0.6–0.9m Wave height, waist-high 12s Swell from the SSW 8km/h Wind, cross-shore Tue 29 Sep 20:30|Forecast for South Point by Rosa See today's forecast for South Point on Rosa",
+  "iframe": [
+   "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric"
+  ],
+  "plain_link_visible": 1,
+  "rosa_requests_on_load": 0,
+  "rosa_requests_after_scroll": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "https://rosa.surf/widget/",
+   "https://rosa.surf/favicon.svg"
+  ]
+ },
+ "json_blocked": {
+  "text": "The waves The lodge overlooks two spots, The Rock and South Point. More waves are a few minutes away by tuk-tuk. See today's forecast for South Point on Rosa",
+  "iframe": [],
+  "plain_link_visible": 1,
+  "rosa_requests_on_load": 0,
+  "rosa_requests_after_scroll": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json"
+  ]
+ }
+}

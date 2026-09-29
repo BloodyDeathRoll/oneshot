@@ -1,0 +1,208 @@
+{
+ "m": "postcard",
+ "mode": "laptop",
+ "firstLoadBytes": 3918157,
+ "reqCount": 16,
+ "thirdOnLoad": [
+  "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Marck+Script&display=swap",
+  "https://fonts.gstatic.com/s/lora/v37/0QIvMX1D_JOuMwr7Iw.woff2",
+  "https://fonts.gstatic.com/s/marckscript/v22/nwpTtK2oNgBA3Or78gapdwuyyCg_.woff2",
+  "https://fonts.gstatic.com/s/lora/v37/0QI8MX1D_JOuMw_hLdO6T2wV9KnW-MoFoq92nA.woff2"
+ ],
+ "lcp": 256,
+ "cls": 0.0013728641211741253,
+ "videosAfterLoad": [
+  {
+   "src": "vid-009p-d1920.webm",
+   "paused": false,
+   "t": 7.59,
+   "rs": 4,
+   "top": 0,
+   "h": 900
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 2166,
+   "h": 557
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 2166,
+   "h": 557
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 2166,
+   "h": 557
+  }
+ ],
+ "hero": {
+  "h1": "Surf weeks in Sri Lanka",
+  "font": "Lora, Georgia, \"Times New Roman\", serif",
+  "size": "60.48px",
+  "center": [
+   720,
+   406
+  ],
+  "btns": [
+   {
+    "t": "Book package now",
+    "bg": "rgb(200, 70, 60)",
+    "color": "rgb(255, 255, 255)",
+    "ff": "Lora",
+    "w": 230,
+    "h": 56
+   }
+  ],
+  "fonts": [
+   "Lora 400",
+   "Lora 400",
+   "Lora 500",
+   "Lora 600",
+   "Marck Script 400"
+  ]
+ },
+ "pageHeight": 11296,
+ "frames": {
+  "n": 1305,
+  "p50": 16.7,
+  "p95": 16.7,
+  "p99": 16.8,
+  "max": 16.8,
+  "over50": 0
+ },
+ "sections": [
+  [
+   0,
+   720,
+   "welcome | Next set is yours"
+  ],
+  [
+   1,
+   1440,
+   "levels | Choose your level"
+  ],
+  [
+   2,
+   2160,
+   "levels | Choose your level"
+  ],
+  [
+   3,
+   2880,
+   "levels | Choose your level"
+  ],
+  [
+   4,
+   3600,
+   "included | What's included"
+  ],
+  [
+   5,
+   4320,
+   "week | Surf, breakfast, surf again"
+  ],
+  [
+   6,
+   5040,
+   "rooms | Our rooms"
+  ],
+  [
+   7,
+   5760,
+   "rooms | Our rooms"
+  ],
+  [
+   8,
+   6480,
+   "rooms | Our rooms"
+  ],
+  [
+   9,
+   7200,
+   "feature | "
+  ],
+  [
+   10,
+   7920,
+   "guests | What guests say"
+  ],
+  [
+   11,
+   8640,
+   "waves | The waves"
+  ],
+  [
+   12,
+   9360,
+   "instagram | Follow the lodge"
+  ],
+  [
+   13,
+   10080,
+   "closing | Book the week for your level."
+  ],
+  [
+   14,
+   10396,
+   "contact | Talk to us"
+  ]
+ ],
+ "videosAfterScroll": [
+  {
+   "src": "vid-009p-d1920.webm",
+   "paused": false,
+   "t": 8.26,
+   "rs": 4,
+   "top": 0,
+   "h": 900
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 2166,
+   "h": 557
+  },
+  {
+   "src": "vid-003e-m1280.webm",
+   "paused": true,
+   "t": 0.05,
+   "rs": 4,
+   "top": 2166,
+   "h": 557
+  },
+  {
+   "src": "vid-002e-m1280.webm",
+   "paused": true,
+   "t": 1.4,
+   "rs": 4,
+   "top": 2166,
+   "h": 557
+  }
+ ],
+ "totalBytes": 8063471,
+ "thirdAll": [
+  "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Marck+Script&display=swap",
+  "https://fonts.gstatic.com/s/lora/v37/0QIvMX1D_JOuMwr7Iw.woff2",
+  "https://fonts.gstatic.com/s/marckscript/v22/nwpTtK2oNgBA3Or78gapdwuyyCg_.woff2",
+  "https://fonts.gstatic.com/s/lora/v37/0QI8MX1D_JOuMw_hLdO6T2wV9KnW-MoFoq92nA.woff2",
+  "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+  "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+  "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+  "https://rosa.surf/favicon.svg",
+  "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924"
+ ]
+}

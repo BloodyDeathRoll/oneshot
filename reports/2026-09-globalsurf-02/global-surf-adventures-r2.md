@@ -458,3 +458,123 @@ fix list (not failing; smallest first):
 what the designer prompt got wrong (round 3): The prompt does not say that the Rosa headline baked into the HTML is also what JS-off visitors see, so the 24 h rule has to hold for that path too. It also doesn't require checking a sub-page's relative media paths (`book/` → `../video/`) with the browser's fallback source, not only the one Chromium plays.
 
 Not tested in round 3: a real phone, Safari (where the 404 MP4 path would show), axe, the engine past `/accommodation`, and throttled booking-page numbers.
+
+---
+
+# Round 4
+
+critic 0.4.0 · rubric 0.3.0 · 2026-09-29 · mockups at `9fa6c2f` · dimensions 1–7 only. The visual critics' reports were not opened.
+
+Checks: the same as round 3, in the same order, on port 8981 (the server was stopped afterwards).
+- **Tools:** `audit-mockup` → booking probe → page probe (home + book) → Rosa probe → `shoot` → `check-design` → text vs en.json → alt texts vs dossier → ffprobe.
+
+Evidence:
+- `reports/2026-09-globalsurf-02/critic/post-r4/`
+- `sites/global-surf-adventures/mockups/<variant>/audit.json` (overwritten)
+
+## The sentence the human needs (round 4)
+
+All three pass the critic's gates, with no hard fail, and scores are unchanged at 72.0.
+- **Fixed:** the-sign's MP4 fallback paths and `vid-010-p45` size.
+- **postcard's closing:** still en.json's words exactly.
+- **New heroes:** postcard `vid-009p` (10.4 s) and try-your-week `vid-009r` (7.0 s) are inside the 6–20 s range and the size caps. Neither is recorded in `dossier.videos[]`. `vid-009p` is slowed ×2 with motion interpolation, so some of its frames are synthesised.
+- **postcard's ground** is now warm off-white `#FCFAF6`.
+
+| variant | d1 | d2 | d3 | d4 | d5 | d6 | d7 | total /80 | r3 | hard fails |
+|---|---|---|---|---|---|---|---|---|---|---|
+| postcard | 10 | 9 | 9 | 8 | 9 | 8 | 8 | **72.0** | 72.0 | none |
+| try-your-week | 10 | 9 | 9 | 8 | 9 | 8 | 8 | **72.0** | 72.0 | none |
+| the-sign | 10 | 9 | 9 | 8 | 9 | 8 | 8 | **72.0** | 72.0 | none |
+
+## Measured (round 4)
+
+| line | postcard | try-your-week | the-sign |
+|---|---|---|---|
+| first load, phone (audit.json) / LCP / CLS | 435 KB / 808 ms / 0.001 | 692 KB / 292 ms / 0.003 | 595 KB / 484 ms / 0.003 |
+| CLS after full scroll, phone / desktop | 0 / 0.003 | 0 / 0.002 | 0 / 0.006 |
+| booking page on load, phone (probe) | 686 KB | 306 KB | 1.20 MB |
+| third-party on load (home + book) | Google Fonts only | same | same |
+| Bookinglayer on load | 0 | 0 | 0 |
+| targets < 44 px (all pages, both widths) | 0 | 0 | 0 |
+| skip link; overflow-x at 390 | ✓; 0 | ✓; 0 | ✓; 0 |
+| first-screen booking action | "Book package now" → `book/` | same | "Book your week" → `book/` |
+| check-design | 0 problems; Lora + Marck Script; ground hsl(40 50% 98%) | 0; Figtree + Satisfy; #FFF | 0; Bricolage Grotesque + Damion; #FFF |
+
+## Video (round 4)
+
+**Hero loops (all without audio; every MP4 is faststart):**
+
+| variant | clip | length | phone | desktop | requested after first paint (phone / desktop) |
+|---|---|---|---|---|---|
+| postcard | `vid-009p` | **10.4 s** | m1280 webm 1.75 MB, m720 mp4 1.58 MB | d1920 webm 3.40 MB, mp4 3.35 MB | +219 / +218 ms |
+| try-your-week | `vid-009r` | **7.0 s** | m1280 webm 1.64 MB, mp4 1.56 MB | d1920 webm 3.00 MB, mp4 3.21 MB | +137 / +241 ms |
+| the-sign | `vid-009e` (unchanged) | 7.3 s | – | – | +83 / +128 ms |
+
+All three loops are inside 6–20 s and the ≤ 2 / ≤ 4 MB caps.
+
+**the-sign fixes, verified:**
+- `book/` now has `data-mp4="../video/…-p45.mp4"`, which returns HTTP 200.
+- `vid-010-p45.mp4` is now 1.83 MB (was 2.47 MB). Every served phone file is ≤ 2 MB.
+
+**All three:**
+- Booking-page clips are requested after first paint (+146 to +277 ms).
+- 0 video requests under reduced motion and Save-Data, on all six pages, at both widths.
+
+**Provenance:**
+- **`vid-009p` and `vid-009r` are not in `dossier.videos[]`** (the same gap as `vid-010c` and the `-p45` cuts).
+- `vid-009p` is the owner's 2.6 s pool shot, slowed ×2 with motion interpolation and played forward then back. Its frames are partly synthesised, so it is a derivative that goes beyond a trim or crop. That is fact, not a fail, but the dossier should carry it and the owner should see it.
+
+## Booking (phone; Level 2, 1 couple, 20 Feb 2027, 7 nights)
+
+All three, unchanged from round 3:
+- 0 Bookinglayer requests on load.
+- After interaction, 3 calls to `api.bookinglayer.io`: "Live price from the booking engine", $2,932.
+- With the API blocked: snapshot with "Live prices didn't load. These are the booking engine's prices from 29 Sep 2026."
+- Hand-off with JS on and off: `…/level-2-rollers?start=2027-02-20&end=2027-02-27` plus the guests. No `duration`.
+
+**Rosa:** unchanged from round 3.
+- postcard: fetches fresh data when its baked fixture is stale, and with the JSON blocked shows only the plain link.
+- try-your-week and the-sign: a static 29 Sep headline (a 4g item).
+
+## Facts and copy (round 4)
+
+- `copy/en.json` and `dossier.json` are unchanged.
+- **Closing line, exact en.json words on all three.** `closing` = "Book the week for your level. Not sure which one fits? Ask us on WhatsApp first."
+  - postcard: two elements, "Book the week for your level." (script h2) + "Not sure which one fits? Ask us on WhatsApp first." (p). Verbatim, in order, adjacent in the DOM.
+  - try-your-week: two `<p>` elements, verbatim and adjacent.
+  - the-sign: one `<p>`.
+- **Testimonials, verbatim:** postcard 9/9, try-your-week 9/9, the-sign 7/7 (Booking.com only). Ratings keep their count and date.
+- **Rendered text:** en.json plus the known template labels. No new claim.
+- **New images:**
+  - try-your-week closing img-105: business-owned (globalsurf.com, credit "capt_nir"), `place: unidentified`. Alt "palm silhouettes at dusk" = the dossier description, and no lodge claim.
+  - postcard closing img-111: alt "A surfer on a longboard at sunset" = the description, `place: unidentified`, no claim.
+  - try-your-week logo: now `img/logo.svg`, `alt=""` inside a link named "Global Surf Lodge Kabalana, home".
+- **Alt drift (postcard, minor, not a business claim):**
+  - img-024 "A pineapple floating in the pool" (dossier: "held above the pool surface").
+  - img-061 "Beanbags on the timber deck by the pool" (dossier: a drone shot of the lounge and deck).
+- **Tally:** 0 mismatches and 0 unsourced claims. Room galleries are unchanged (from `room_photo_groups`, owner-unconfirmed, flagged).
+
+## Scorecards (round 4)
+
+| # | postcard | try-your-week | the-sign |
+|---|---|---|---|
+| 1 facts | 10: 0 mismatches; closing verbatim; 9/9 quotes | 10: same | 10: 7/7 quotes |
+| 2 mobile + perf | 9: 435 KB, LCP 808 ms; hero 1.75 / 3.40 MB. Minus: Google Fonts | 9: 692 KB, LCP 292 ms. Minus: Google Fonts; 3.3 MB desktop booking clip | 9: 595 KB, LCP 484 ms; phone files ≤ 2 MB now. Minus: Google Fonts; booking page 1.2 MB |
+| 3 booking CTA | 9: live, fallback, `start`/`end` both paths | 9: same | 9: same |
+| 4 brand fit | 8: no first-screen proof point (calibration) | 8 | 8 |
+| 5 copy | 9 | 9 | 9 |
+| 6 accessibility | 8: 0 targets < 44; two alts drift from the dossier description | 8: 0 targets < 44 | 8: 0 targets < 44; Rosa iframe has no focus ring |
+| 7 delivery | 8: Google Fonts | 8: Google Fonts | 8: Google Fonts (the MP4 404 is fixed) |
+
+All three: total **72.0 / 80**, result pass (critic gates; d8 from the visual critics), hard fails `[]`.
+
+fix list (not failing; smallest first):
+1. postcard: align the img-024 and img-061 alts with the dossier descriptions.
+2. Record `vid-009p` (marked as interpolated), `vid-009r`, `vid-010c`, `vid-010c-d1728` and the three `-p45` cuts in `dossier.videos[]`.
+3. postcard: hide the baked Rosa headline with JS off, or bake it only when it is < 24 h old.
+4. At 4g: live Rosa headline with the 24 h rule on try-your-week and the-sign; self-host the fonts.
+5. Owner: confirm the room ↔ photo mapping, and approve the interpolated hero loop.
+
+what the designer prompt got wrong (round 4): The prompt says video comes from the business's footage. It does not say whether synthesised frames (slow motion by interpolation) are allowed. It also doesn't require every new cut to be entered in `dossier.videos[]` before it ships in a mockup.
+
+Not tested in round 4: a real phone, Safari, axe, the engine past `/accommodation`, and throttled booking-page numbers.
