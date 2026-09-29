@@ -82,3 +82,7 @@ Input: copywriter round 3 (`e62feab`). Only the new material read: `mockup_extra
 ### For the copy editor
 
 - Deluxe "The pick for a couple" is a suggestion, not a fact; cut it if it reads as a claim that the twin is not for couples.
+
+## Round 4 · 2026-09-29 · humanizer 0.2.0 · `mockup_extras.rooms` after copyeditor round 3
+
+Read the four changed strings once (dorm `line` and `description`, twin `description`, deluxe `description`). No changes: plain, no triads or stock phrases, and the two descriptions no longer share an opener. "The pick for a couple" is gone as ruled; no recommendation added back. "Look out on the beach" (twin) rests on the engine's "all day beach view". `en.json` and `sources.md` untouched this round.
