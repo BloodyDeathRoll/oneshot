@@ -53,3 +53,32 @@ Input: `en.json` with the copywriter's fixes for copyeditor round 1 (`review.md`
 ### Could not fix without a fact
 
 Same as round 1: no honest limit on the page except the price caveat (season, reply time, distance to the breaks). Owner item.
+
+## Round 3 · 2026-09-29 · humanizer 0.2.0 · `mockup_extras` and short booking labels
+
+Input: copywriter round 3 (`e62feab`). Only the new material read: `mockup_extras` and `bookingLinks[0–4].label`. Previous draft kept as `en.draft.json`. Facts unchanged; `sources.md` quotes updated for every changed line. Hero titles (≤ 5 words) and CTAs (≤ 3 words) all still within limits; none changed.
+
+### Patterns found
+
+- Triads in the room `line`s (3 of 3): "four beds, a loft, a bathroom" and the like.
+- Two room descriptions opening the same way ("Our … rooms have …") and closing on the same sentence (twin, deluxe).
+- Stock phrases: "Sharpen your skills" (level 3), "It suits larger groups" (dorm).
+- A category noun leading an inclusion ("Surf equipment, unlimited all week").
+
+### Changes
+
+1. `levels[2].one_liner`: "Sharpen your skills on the day's best spot." → "Get sharper, on whichever spot is best that day."
+2. `inclusions.level_1/2/3`: "Surf equipment, unlimited all week" → "Unlimited surf equipment all week".
+3. `inclusions.optional_extra`: now opens "Not included: airport pickup." Same fact (`included: false`), said plainly; it is the one honest limit in the booking drawer.
+4. Room `line`s: triads broken (dorm: two sentences, "The bathroom is outdoors, and it's yours."; twin: "with the beach in view all day"; deluxe: "a private bathroom of its own").
+5. Room `description`s: dorm now ends "On a budget? This is the one."; twin drops the "Our twin rooms have" opener and splits the private-use line into a question; deluxe opens "The pick for a couple:" and ends "just for the two of you". No bed, view, size or privacy fact added or removed (twin bed layout and deluxe extra bed still left out).
+
+### Left as is
+
+- `hero.*`, `ctas.*`, `section_titles.*`, `booking.*`, `detail_lines.*`, `instagram.line` (owner's words), `levels[0,1,3]`: short, plain, no tells.
+- `bookingLinks[0–4].label` ("Book package now", "Book Level 1/2/3", "Book Freestylers"): fine. "Book package now" reads slightly clipped (no article), kept because it is the coordinator's wording and matches `ctas.hero_c1`.
+- `hero.subtitle` "steps from the beach": a beachfront implication, but sourced (owner "a few steps from the ocean", Booking 40 m).
+
+### For the copy editor
+
+- Deluxe "The pick for a couple" is a suggestion, not a fact; cut it if it reads as a claim that the twin is not for couples.
