@@ -1,0 +1,477 @@
+{
+ "variant": "try-your-week",
+ "url": "http://127.0.0.1:8981/try-your-week/dist/",
+ "normal_phone": {
+  "first_paint_ms": 228,
+  "onload_video": [
+   {
+    "url": "video/vid-009e-m1280.webm",
+    "ms_after_first_paint": 191,
+    "kb": 1434
+   }
+  ],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap",
+   "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DQ.woff2",
+   "https://fonts.gstatic.com/s/satisfy/v22/rP2Hp2yn6lkG50LoCZOIHQ.woff2"
+  ],
+  "onload_nonvideo_kb": 745,
+  "scroll_video": [
+   {
+    "url": "video/vid-010c-m1280.webm",
+    "ms_after_first_paint": 9007,
+    "kb": 1572
+   }
+  ],
+  "scroll_video_total_kb": 1572,
+  "scroll_third_party_hosts": [
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "rosa-data-opal.vercel.app",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "scroll_json": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json"
+  ],
+  "cls_after_full_scroll": 0
+ },
+ "reduced_phone": {
+  "first_paint_ms": 192,
+  "onload_video": [],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap",
+   "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DQ.woff2",
+   "https://fonts.gstatic.com/s/satisfy/v22/rP2Hp2yn6lkG50LoCZOIHQ.woff2"
+  ],
+  "onload_nonvideo_kb": 745,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "rosa-data-opal.vercel.app",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "scroll_json": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json"
+  ],
+  "cls_after_full_scroll": 0
+ },
+ "savedata_phone": {
+  "first_paint_ms": 184,
+  "onload_video": [],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap",
+   "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DQ.woff2",
+   "https://fonts.gstatic.com/s/satisfy/v22/rP2Hp2yn6lkG50LoCZOIHQ.woff2"
+  ],
+  "onload_nonvideo_kb": 745,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "rosa-data-opal.vercel.app",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "scroll_json": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json"
+  ],
+  "cls_after_full_scroll": 0
+ },
+ "normal_desktop": {
+  "first_paint_ms": 212,
+  "onload_video": [
+   {
+    "url": "video/vid-009e-d1920.webm",
+    "ms_after_first_paint": 216,
+    "kb": 2628
+   }
+  ],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap",
+   "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DQ.woff2",
+   "https://fonts.gstatic.com/s/satisfy/v22/rP2Hp2yn6lkG50LoCZOIHQ.woff2"
+  ],
+  "onload_nonvideo_kb": 764,
+  "scroll_video": [
+   {
+    "url": "video/vid-010c-d1728.webm",
+    "ms_after_first_paint": 9028,
+    "kb": 3284
+   }
+  ],
+  "scroll_video_total_kb": 3284,
+  "scroll_third_party_hosts": [
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "rosa-data-opal.vercel.app",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "scroll_json": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json"
+  ],
+  "cls_after_full_scroll": 0.0023
+ },
+ "reduced_desktop": {
+  "first_paint_ms": 200,
+  "onload_video": [],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap",
+   "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DQ.woff2",
+   "https://fonts.gstatic.com/s/satisfy/v22/rP2Hp2yn6lkG50LoCZOIHQ.woff2"
+  ],
+  "onload_nonvideo_kb": 764,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "rosa-data-opal.vercel.app",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "scroll_json": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json"
+  ],
+  "cls_after_full_scroll": 0.0023
+ },
+ "savedata_desktop": {
+  "first_paint_ms": 200,
+  "onload_video": [],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap",
+   "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DQ.woff2",
+   "https://fonts.gstatic.com/s/satisfy/v22/rP2Hp2yn6lkG50LoCZOIHQ.woff2"
+  ],
+  "onload_nonvideo_kb": 764,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "rosa-data-opal.vercel.app",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "scroll_json": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json"
+  ],
+  "cls_after_full_scroll": 0.0023
+ },
+ "dom_phone": {
+  "overflowX": 0,
+  "above_fold_links": [
+   {
+    "text": "Skip to content",
+    "href": "#main"
+   },
+   {
+    "text": "",
+    "href": "#top"
+   },
+   {
+    "text": "Book package now",
+    "href": "book/"
+   }
+  ],
+  "small_targets": [],
+  "first_focusable": "Skip to content -> #main",
+  "skip_target_exists": true,
+  "title": "Global Surf Lodge Kabalana | Surf weeks for all levels",
+  "lang": "en",
+  "h1": [
+   "Next set is yours"
+  ]
+ },
+ "links": [
+  {
+   "text": "Skip to content",
+   "href": "#main"
+  },
+  {
+   "text": "",
+   "href": "#top"
+  },
+  {
+   "text": "Levels",
+   "href": "#levels"
+  },
+  {
+   "text": "Rooms",
+   "href": "#rooms"
+  },
+  {
+   "text": "The lodge",
+   "href": "#lodge"
+  },
+  {
+   "text": "Contact",
+   "href": "#contact"
+  },
+  {
+   "text": "Book now",
+   "href": "book/"
+  },
+  {
+   "text": "",
+   "href": "#levels"
+  },
+  {
+   "text": "",
+   "href": "#rooms"
+  },
+  {
+   "text": "",
+   "href": "#lodge"
+  },
+  {
+   "text": "",
+   "href": "#contact"
+  },
+  {
+   "text": "",
+   "href": "book/"
+  },
+  {
+   "text": "",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+  },
+  {
+   "text": "Book package now",
+   "href": "book/"
+  },
+  {
+   "text": "Choose Level 1",
+   "href": "book/?level=1"
+  },
+  {
+   "text": "",
+   "href": "book/?level=2"
+  },
+  {
+   "text": "",
+   "href": "book/?level=3"
+  },
+  {
+   "text": "Ask about dates",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+  },
+  {
+   "text": "Choose this room",
+   "href": "book/?room=dorm"
+  },
+  {
+   "text": "Choose this room",
+   "href": "book/?room=twin"
+  },
+  {
+   "text": "Choose this room",
+   "href": "book/?room=deluxe"
+  },
+  {
+   "text": "Booking.com",
+   "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+  },
+  {
+   "text": "Booking.com",
+   "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+  },
+  {
+   "text": "globalsurf.com",
+   "href": "https://www.globalsurf.com/kabalana-lodge-surf-packages/"
+  },
+  {
+   "text": "Booking.com",
+   "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+  },
+  {
+   "text": "Booking.com",
+   "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+  },
+  {
+   "text": "globalsurf.com",
+   "href": "https://www.globalsurf.com/kabalana-lodge-surf-packages/"
+  },
+  {
+   "text": "Booking.com",
+   "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+  },
+  {
+   "text": "Booking.com",
+   "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+  },
+  {
+   "text": "Booking.com",
+   "href": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"
+  },
+  {
+   "text": "Forecast for South Point by Rosa",
+   "href": "https://rosa.surf/spot/south-point"
+  },
+  {
+   "text": "See today's forecast for South Point on Rosa",
+   "href": "https://rosa.surf/spot/south-point"
+  },
+  {
+   "text": "Follow @globalsurf_kabalana",
+   "href": "https://www.instagram.com/globalsurf_kabalana/"
+  },
+  {
+   "text": "",
+   "href": "https://www.instagram.com/globalsurf_kabalana/"
+  },
+  {
+   "text": "",
+   "href": "https://www.instagram.com/globalsurf_kabalana/"
+  },
+  {
+   "text": "",
+   "href": "https://www.instagram.com/globalsurf_kabalana/"
+  },
+  {
+   "text": "",
+   "href": "https://www.instagram.com/globalsurf_kabalana/"
+  },
+  {
+   "text": "",
+   "href": "https://www.instagram.com/globalsurf_kabalana/"
+  },
+  {
+   "text": "",
+   "href": "https://www.instagram.com/globalsurf_kabalana/"
+  },
+  {
+   "text": "",
+   "href": "https://www.instagram.com/globalsurf_kabalana/"
+  },
+  {
+   "text": "",
+   "href": "https://www.instagram.com/globalsurf_kabalana/"
+  },
+  {
+   "text": "Book package now",
+   "href": "book/"
+  },
+  {
+   "text": "Questions? Ask us",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+  },
+  {
+   "text": "",
+   "href": "#top"
+  },
+  {
+   "text": "",
+   "href": "https://www.instagram.com/globalsurf_kabalana/"
+  },
+  {
+   "text": "",
+   "href": "https://www.youtube.com/channel/UCh-GTj4Wu2FbdXpr-xNSGzQ"
+  },
+  {
+   "text": "",
+   "href": "https://www.facebook.com/GlobalSURFltd/"
+  },
+  {
+   "text": "WhatsApp us",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+  },
+  {
+   "text": "Call us",
+   "href": "tel:+97299733943"
+  },
+  {
+   "text": "Email us",
+   "href": "mailto:info@globalsurf.com"
+  },
+  {
+   "text": "Open in Maps",
+   "href": "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en"
+  },
+  {
+   "text": "Book now",
+   "href": "book/"
+  }
+ ],
+ "dom_desktop": {
+  "overflowX": 0,
+  "above_fold_links": [
+   {
+    "text": "Skip to content",
+    "href": "#main"
+   },
+   {
+    "text": "",
+    "href": "#top"
+   },
+   {
+    "text": "Levels",
+    "href": "#levels"
+   },
+   {
+    "text": "Rooms",
+    "href": "#rooms"
+   },
+   {
+    "text": "The lodge",
+    "href": "#lodge"
+   },
+   {
+    "text": "Contact",
+    "href": "#contact"
+   },
+   {
+    "text": "Book now",
+    "href": "book/"
+   },
+   {
+    "text": "Book package now",
+    "href": "book/"
+   }
+  ],
+  "small_targets": [],
+  "first_focusable": "Skip to content -> #main",
+  "skip_target_exists": true,
+  "title": "Global Surf Lodge Kabalana | Surf weeks for all levels",
+  "lang": "en",
+  "h1": [
+   "Next set is yours"
+  ]
+ },
+ "nojs": {
+  "text_len": 6210,
+  "booking_links": [
+   "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.",
+   "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+   "https://www.globalsurf.com/kabalana-lodge-surf-packages/",
+   "https://rosa.surf/spot/south-point",
+   "https://www.instagram.com/globalsurf_kabalana/",
+   "https://www.youtube.com/channel/UCh-GTj4Wu2FbdXpr-xNSGzQ",
+   "https://www.facebook.com/GlobalSURFltd/",
+   "tel:+97299733943",
+   "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en"
+  ],
+  "rosa_fallback_visible": [
+   "Forecast for South Point by Rosa",
+   "See today's forecast for South Point on Rosa"
+  ],
+  "videos_with_src": 0
+ },
+ "keyboard": {
+  "first_stop": {
+   "tag": "A",
+   "text": "Skip to content",
+   "outline": true,
+   "boxShadow": false,
+   "visible": true
+  },
+  "stops": 60,
+  "no_visible_focus": [],
+  "invisible_targets": []
+ }
+}

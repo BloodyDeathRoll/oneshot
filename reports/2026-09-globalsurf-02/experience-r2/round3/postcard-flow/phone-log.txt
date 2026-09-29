@@ -1,0 +1,30 @@
+[0 taps] home -> phone-01-home.jpg url=/postcard/dist/
+[1 taps] before-hero-cta -> phone-02-before-hero-cta.jpg url=/postcard/dist/
+[1 taps] after-hero-cta -> phone-03-after-hero-cta.jpg url=/postcard/dist/book/
+[2 taps] before-level2 -> phone-04-before-level2.jpg url=/postcard/dist/book/
+[2 taps] after-level2 -> phone-05-after-level2.jpg url=/postcard/dist/book/
+[3 taps] before-twin -> phone-06-before-twin.jpg url=/postcard/dist/book/
+[3 taps] after-twin -> phone-07-after-twin.jpg url=/postcard/dist/book/
+[4 taps] before-couple+ -> phone-08-before-couple+.jpg url=/postcard/dist/book/
+[4 taps] after-couple+ -> phone-09-after-couple+.jpg url=/postcard/dist/book/
+[5 taps] before-open-cal-checkin -> phone-10-before-open-cal-checkin.jpg url=/postcard/dist/book/
+[5 taps] after-open-cal-checkin -> phone-11-after-open-cal-checkin.jpg url=/postcard/dist/book/
+CAL <div class="cal-top"><button type="button" data-m="-1" aria-label="Previous month" disabled=""></button><b id="cal-month">October 2026</b><button type="button" data-m="1" aria-label="Next month"></button></div>
+<div class="cal-grid" id="cal-grid"><span class="dow" aria-hidden="true">Mo</span><span class="dow" aria-hidden="true">Tu</span><span class="dow" aria-hidden="true">We</span><span class="dow" aria-hidden="true">Th</span><span class="dow" aria-hidden="true">Fr</span><span class="dow" aria-hidden="true">Sa</span><span class="dow" aria-hidden="true">Su</span><span></span><span></span><span></span><span class="d" aria-hidden="true">1</span><span class="d" aria-hidden="true">2</span><button type="button" data-d="2026-10-03" aria-pressed="false" aria-label="Sat 3 Oct 2026">3</button><span class="d" aria-hidden="true">4</span><span class="d" aria-hidden="true">5</span><span class="d" ari
+[6 taps] before-next-month -> phone-12-before-next-month.jpg url=/postcard/dist/book/
+[6 taps] after-next-month -> phone-13-after-next-month.jpg url=/postcard/dist/book/
+[7 taps] before-next-month -> phone-14-before-next-month.jpg url=/postcard/dist/book/
+[7 taps] after-next-month -> phone-15-after-next-month.jpg url=/postcard/dist/book/
+[8 taps] before-day20 -> phone-16-before-day20.jpg url=/postcard/dist/book/
+[8 taps] after-day20 -> phone-17-after-day20.jpg url=/postcard/dist/book/
+[8 taps] total-settled -> phone-18-total-settled.jpg url=/postcard/dist/book/
+VISIBLE ["","Sat 20 Feb 2027 – Sat 27 Feb 2027","","","","","",""]
+[9 taps] before-continue-booking -> phone-19-before-continue-booking.jpg url=/postcard/dist/book/
+[9 taps] after-continue-booking -> phone-20-after-continue-booking.jpg url=https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1
+HANDOFF https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1
+TAPS 9
+API [
+ "GET https://api.bookinglayer.io/public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities?format=choosable&show_available_only=1&mode=checkin&start=2026-0",
+ "GET https://api.bookinglayer.io/public/accommodations/availabilities?product=4b58b491-24fc-4fb8-a40d-2705df961db4&start=2027-02-20&end=2027-02-27&currency=USD&femal",
+ "POST https://api.bookinglayer.io/public/packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items?BD"
+]

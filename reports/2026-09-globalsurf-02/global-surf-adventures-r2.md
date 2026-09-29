@@ -324,3 +324,137 @@ fix list (not failing; smallest first):
 what the designer prompt got wrong (round 2): The prompt sets no weight rule for below-the-fold clips on desktop. Two booking pages pull a 3.2–3.5 MB desktop tier for a side-panel clip that an m1280 file would fill.
 
 Not tested in round 2: a real phone or GPU, Safari, axe, the engine's screens past `/accommodation`, and throttled numbers for the booking pages.
+
+---
+
+# Round 3
+
+critic 0.4.0 · rubric 0.3.0 · 2026-09-29 · mockups at `1167414` (round-3 polish) · dimensions 1–7 only. The visual critics' reports were not opened.
+
+Checks: the same as round 2, in the same order, plus two new ones:
+- a Rosa probe per home page (JS on; JSON blocked; JS off);
+- a full-verbatim testimonial check.
+
+Port 8981 was used and stopped afterwards.
+
+Evidence:
+- `reports/2026-09-globalsurf-02/critic/post-r3/` (shots, `*-probe.json`, `*-booking.json`, `*-rosa.json`, `*-text.txt`)
+- `sites/global-surf-adventures/mockups/<variant>/audit.json` (overwritten)
+
+## The sentence the human needs (round 3)
+
+All three pass the critic's gates, with no hard fail, and scores are unchanged at 72.0.
+- **Tap targets:** 0 under 44 px on all six pages.
+- **Hand-offs:** `start`/`end` on both paths everywhere.
+- **Fonts:** postcard and try-your-week now use the **same script face, Satisfy**.
+- **the-sign booking page:** its MP4 fallback paths point at `book/video/…`, which returns 404.
+- **Rosa:** only postcard applies the 24 h rule with JS on. With JS off, all three show a baked headline, and postcard's is 28 Sep, more than 24 h old.
+
+| variant | d1 | d2 | d3 | d4 | d5 | d6 | d7 | total /80 | r2 | hard fails |
+|---|---|---|---|---|---|---|---|---|---|---|
+| postcard | 10 | 9 | 9 | 8 | 9 | 8 | 8 | **72.0** | 72.0 | none |
+| try-your-week | 10 | 9 | 9 | 8 | 9 | 8 | 8 | **72.0** | 72.0 | none |
+| the-sign | 10 | 9 | 9 | 8 | 9 | 8 | 8 | **72.0** | 72.0 | none |
+
+## Measured (round 3)
+
+| line | postcard | try-your-week | the-sign |
+|---|---|---|---|
+| first load, phone (audit.json) / LCP / CLS | 442 KB / 772 ms / 0.000 | 759 KB / 556 ms / 0.008 | 609 KB / 492 ms / 0.003 |
+| CLS after full scroll, phone / desktop | 0.002 / 0.003 | 0 / 0.002 | 0 / 0.005 |
+| booking page on load, phone (probe) | 717 KB | 304 KB | 1.20 MB |
+| third-party on load (home + book) | Google Fonts only | same | same |
+| Bookinglayer on load | 0 | 0 | 0 |
+| targets < 44 px, phone / desktop, home + book | 0 | 0 | 0 |
+| skip link; overflow-x at 390 | ✓; 0 | ✓; 0 | ✓; 0 |
+| first-screen booking action | "Book package now" → `book/` | "Book package now" → `book/` | "Book your week" → `book/` |
+| check-design | 0 problems; DM Sans + Satisfy | 0; Figtree + **Satisfy** | 0; Bricolage Grotesque + Damion |
+
+## Booking (phone; Level 2, 1 couple, 20 Feb 2027, 7 nights)
+
+**On load:** 0 Bookinglayer requests on all three.
+
+**After interaction:** 3 calls, all to `api.bookinglayer.io`. The page shows "Live price from the booking engine", $2,932.
+
+**With the API blocked:** the snapshot stays, $2,932, with "Live prices didn't load. These are the booking engine's prices from 29 Sep 2026."
+
+**Hand-off URLs (level-2 button):**
+
+| variant | JS on | JS off |
+|---|---|---|
+| postcard | `…/level-2-rollers?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1` | same |
+| try-your-week | `…?start=2027-02-20&end=2027-02-27&couple=1` | `…&female=0&male=0&couple=1` |
+| the-sign | `…?start=2027-02-20&couple=1&end=2027-02-27` (the new date chips drive the same select) | `…?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1` |
+
+No `duration` on any path.
+
+## Rosa staleness (playbook §4: data older than 24 h, or JS off, gives the plain link)
+
+| | postcard | try-your-week | the-sign |
+|---|---|---|---|
+| on load | 0 Rosa requests | 0 | 0 |
+| JS on, near the block | baked fixture is from 28 Sep, so stale → fetches `south-point.json` → redraws "Tue 29 Sep 20:30, 0.6–0.9 m", then the widget loads | no site request; the static 29 Sep 20:30 headline stays (the only JSON request is the widget's own) | same as try-your-week |
+| JSON blocked | headline and widget removed; only "See today's forecast for South Point on Rosa" (**rule met**) | static headline unchanged | static headline unchanged |
+| JS off | **stale 28 Sep 20:30 headline shown** (with its time) beside the plain link | 29 Sep 20:30 headline shown | 29 Sep 20:30 headline shown |
+
+- At 4e the headline may be a fixture (critic base.md hard constraint 9), so this is not scored as a fail.
+- try-your-week and the-sign have no staleness logic: their headline becomes stale on 30 Sep at 14:26 UTC.
+- postcard's JS-off path breaks "never stale numbers shown as current".
+- **This is the 4g item:** a live headline with JS, and the plain link only with JS off.
+
+## Video (round 3)
+
+- **New renditions.** Every file has no audio track, and every MP4 is faststart.
+
+  | file | variant | size | length |
+  |---|---|---|---|
+  | `vid-010c-d1728.webm` | try-your-week | 3.28 MB | 12.0 s |
+  | `vid-010c-d1728.mp4` | try-your-week | 3.80 MB | 12.0 s |
+  | `vid-010-p45` | the-sign (864×1080) | webm 1.85 MB · **mp4 2.47 MB** | 9.0 s |
+  | `vid-003e-p45` | the-sign (864×1080) | webm 1.24 MB · mp4 1.79 MB | 4.9 s |
+  | `vid-002e-p45` | the-sign (864×1080) | webm 0.92 MB · mp4 1.52 MB | 5.2 s |
+
+- **Phone cap:** the-sign serves the same p45 files to phones. The `vid-010-p45.mp4` fallback is over the ≤ 2 MB phone tier. Chromium plays the webm (1.85 MB).
+- **Broken fallback (the-sign booking page):** all three level clips have `data-mp4="video/vid-…-p45.mp4"`, which is missing the `../`. It resolves to `/book/video/…` and returns **HTTP 404** (tested). A browser without VP9 webm keeps the poster. The home page's paths are correct.
+- **Timing:** hero and booking clips are requested after first paint (+79 to +227 ms).
+- **Reduced motion and Save-Data:** 0 video requests on all six pages, at both widths.
+- **Provenance:** `vid-010c` / `-d1728` and the three `-p45` cuts are not in `dossier.videos[]`. All derive from business-owned vid-010, vid-003 and vid-002.
+- **postcard img-104:** re-cropped to remove the Global Surf badge. It is still business-owned, and the alt text is unchanged.
+
+## Facts and copy (round 3)
+
+- `copy/en.json` and `dossier.json` are unchanged since round 2.
+- **Rendered text:** all en.json strings, plus the same template labels as before. the-sign adds month headings and "Sat N" date chips, built from the snapshot calendar. No new label makes a claim.
+- **Testimonials:**
+  - postcard and try-your-week show **9/9 verbatim**.
+  - the-sign shows **7/7 verbatim**: the seven with `source: booking`. The two it dropped (Seagallas, Dana Amsalem-Cohen) are the `source: other` quotes from globalsurf.com.
+  - Dropping rows is allowed (schema: rows may be deleted, never reworded). No quote is edited, and 8.6 / 80 reviews / 28 Sep 2026 is unchanged.
+- **Images:** try-your-week dropped img-016 and uses a crop of img-005 as the feature image. the-sign dropped img-011. Room galleries are unchanged and still come from `room_photo_groups` (owner-unconfirmed; flagged).
+- **Tally:** 0 mismatches and 0 unsourced claims.
+
+## Scorecards (round 3)
+
+| # | postcard | try-your-week | the-sign |
+|---|---|---|---|
+| 1 facts | 10: 0 mismatches, 9/9 quotes | 10: same | 10: 7/7 Booking.com quotes, verbatim |
+| 2 mobile + perf | 9: 442 KB, LCP 772 ms. Minus: Google Fonts | 9: 759 KB, LCP 556 ms. Minus: Google Fonts; 3.3 MB desktop booking clip | 9: 609 KB, LCP 492 ms. Minus: Google Fonts; `vid-010-p45.mp4` 2.47 MB on the phone fallback |
+| 3 booking CTA | 9: live, fallback, `start`/`end` both paths, prefill with choices | 9: same | 9: same |
+| 4 brand fit | 8: no first-screen proof point (calibration) | 8: same | 8: same |
+| 5 copy | 9 | 9 | 9 |
+| 6 accessibility | 8: 0 targets < 44; focus visible (fields through `:focus-within`) | 8: 0 targets < 44 | 8: 0 targets < 44; Rosa iframe has no focus ring |
+| 7 delivery | 8: Google Fonts | 8: Google Fonts | 8: Google Fonts. Also: book-page MP4 404s (a static-output defect, not a request on load) |
+
+All three: total **72.0 / 80**, result pass (critic gates; d8 from the visual critics), hard fails `[]`.
+
+fix list (not failing; smallest first):
+1. the-sign `book/`: change `data-mp4="video/…"` to `../video/…` (3 clips).
+2. the-sign: make a ≤ 2 MB MP4 for `vid-010-p45`, or serve m720 to phones.
+3. postcard: with JS off, hide the baked Rosa headline, or bake it only when it is < 24 h old.
+4. Record `vid-010c`, `vid-010c-d1728` and the three `-p45` cuts in `dossier.videos[]`.
+5. Note for the human: postcard and try-your-week now share the Satisfy script face.
+6. At 4g: live Rosa headline with the 24 h rule on all three; self-host the fonts.
+7. Owner: confirm the room ↔ photo mapping.
+
+what the designer prompt got wrong (round 3): The prompt does not say that the Rosa headline baked into the HTML is also what JS-off visitors see, so the 24 h rule has to hold for that path too. It also doesn't require checking a sub-page's relative media paths (`book/` → `../video/`) with the browser's fallback source, not only the one Chromium plays.
+
+Not tested in round 3: a real phone, Safari (where the 404 MP4 path would show), axe, the engine past `/accommodation`, and throttled booking-page numbers.

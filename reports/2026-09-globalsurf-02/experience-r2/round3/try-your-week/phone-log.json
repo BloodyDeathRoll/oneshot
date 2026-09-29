@@ -1,0 +1,203 @@
+{
+ "m": "try-your-week",
+ "mode": "phone",
+ "firstLoadBytes": 762610,
+ "reqCount": 23,
+ "thirdOnLoad": [
+  "https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap",
+  "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DaRvzig.woff2",
+  "https://fonts.gstatic.com/s/satisfy/v22/rP2Hp2yn6lkG50LoCZOIHTWEBlw.woff2"
+ ],
+ "lcp": 600,
+ "cls": 0.008542832184602887,
+ "videosAfterLoad": [
+  {
+   "src": "vid-009e-m1280.webm",
+   "paused": false,
+   "t": 2.51,
+   "rs": 4,
+   "top": 0,
+   "h": 844
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1320,
+   "h": 201
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1320,
+   "h": 201
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1320,
+   "h": 201
+  }
+ ],
+ "hero": {
+  "h1": "Next set is yours",
+  "font": "Figtree, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+  "size": "40px",
+  "center": [
+   195,
+   361
+  ],
+  "btns": [
+   {
+    "t": "Book package now",
+    "bg": "rgb(200, 67, 47)",
+    "color": "rgb(255, 255, 255)",
+    "ff": "Figtree",
+    "w": 282,
+    "h": 52
+   }
+  ],
+  "fonts": [
+   "Figtree 400 700",
+   "Satisfy 400"
+  ]
+ },
+ "pageHeight": 10397,
+ "frames": {
+  "n": 1538,
+  "p50": 16.7,
+  "p95": 16.8,
+  "p99": 16.8,
+  "max": 100,
+  "over50": 1
+ },
+ "sections": [
+  [
+   0,
+   675,
+   "levels | Choose your level"
+  ],
+  [
+   1,
+   1350,
+   "levels | Choose your level"
+  ],
+  [
+   2,
+   2025,
+   "week | Surf, breakfast, surf again"
+  ],
+  [
+   3,
+   2700,
+   "rooms | Our rooms"
+  ],
+  [
+   4,
+   3375,
+   "rooms | Our rooms"
+  ],
+  [
+   5,
+   4050,
+   "feature | "
+  ],
+  [
+   6,
+   4725,
+   "lodge | The lodge"
+  ],
+  [
+   7,
+   5400,
+   "lodge | The lodge"
+  ],
+  [
+   8,
+   6075,
+   "guests | What guests say"
+  ],
+  [
+   9,
+   6750,
+   "waves | The waves"
+  ],
+  [
+   10,
+   7425,
+   "waves | The waves"
+  ],
+  [
+   11,
+   8100,
+   "instagram | Follow the lodge"
+  ],
+  [
+   12,
+   8775,
+   "closing | "
+  ],
+  [
+   13,
+   9450,
+   "contact | Getting here"
+  ],
+  [
+   14,
+   9553,
+   "contact | Getting here"
+  ]
+ ],
+ "videosAfterScroll": [
+  {
+   "src": "vid-009e-m1280.webm",
+   "paused": false,
+   "t": 3.53,
+   "rs": 4,
+   "top": 0,
+   "h": 844
+  },
+  {
+   "src": "vid-010c-m1280.webm",
+   "paused": true,
+   "t": 1.12,
+   "rs": 4,
+   "top": 1320,
+   "h": 201
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1320,
+   "h": 201
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1320,
+   "h": 201
+  }
+ ],
+ "totalBytes": 3028571,
+ "thirdAll": [
+  "https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap",
+  "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DaRvzig.woff2",
+  "https://fonts.gstatic.com/s/satisfy/v22/rP2Hp2yn6lkG50LoCZOIHTWEBlw.woff2",
+  "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+  "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+  "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+  "https://rosa.surf/favicon.svg",
+  "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924"
+ ]
+}

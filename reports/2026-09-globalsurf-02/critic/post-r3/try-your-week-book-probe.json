@@ -1,0 +1,283 @@
+{
+ "variant": "try-your-week",
+ "url": "http://127.0.0.1:8981/try-your-week/dist/book/",
+ "normal_phone": {
+  "first_paint_ms": 240,
+  "onload_video": [
+   {
+    "url": "http://127.0.0.1:8981/try-your-week/dist/video/vid-010c-m1280.webm",
+    "ms_after_first_paint": 162,
+    "kb": 1572
+   }
+  ],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap",
+   "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DQ.woff2",
+   "https://fonts.gstatic.com/s/satisfy/v22/rP2Hp2yn6lkG50LoCZOIHQ.woff2"
+  ],
+  "onload_nonvideo_kb": 304,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0
+ },
+ "reduced_phone": {
+  "first_paint_ms": 168,
+  "onload_video": [],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap",
+   "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DQ.woff2",
+   "https://fonts.gstatic.com/s/satisfy/v22/rP2Hp2yn6lkG50LoCZOIHQ.woff2"
+  ],
+  "onload_nonvideo_kb": 304,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0
+ },
+ "savedata_phone": {
+  "first_paint_ms": 188,
+  "onload_video": [],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap",
+   "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DQ.woff2",
+   "https://fonts.gstatic.com/s/satisfy/v22/rP2Hp2yn6lkG50LoCZOIHQ.woff2"
+  ],
+  "onload_nonvideo_kb": 304,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0
+ },
+ "normal_desktop": {
+  "first_paint_ms": 188,
+  "onload_video": [
+   {
+    "url": "http://127.0.0.1:8981/try-your-week/dist/video/vid-010c-d1728.webm",
+    "ms_after_first_paint": 223,
+    "kb": 3284
+   }
+  ],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap",
+   "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DQ.woff2",
+   "https://fonts.gstatic.com/s/satisfy/v22/rP2Hp2yn6lkG50LoCZOIHQ.woff2"
+  ],
+  "onload_nonvideo_kb": 304,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0.002
+ },
+ "reduced_desktop": {
+  "first_paint_ms": 168,
+  "onload_video": [],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap",
+   "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DQ.woff2",
+   "https://fonts.gstatic.com/s/satisfy/v22/rP2Hp2yn6lkG50LoCZOIHQ.woff2"
+  ],
+  "onload_nonvideo_kb": 304,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0.002
+ },
+ "savedata_desktop": {
+  "first_paint_ms": 184,
+  "onload_video": [],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap",
+   "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DQ.woff2",
+   "https://fonts.gstatic.com/s/satisfy/v22/rP2Hp2yn6lkG50LoCZOIHQ.woff2"
+  ],
+  "onload_nonvideo_kb": 304,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0.002
+ },
+ "dom_phone": {
+  "overflowX": 0,
+  "above_fold_links": [
+   {
+    "text": "Skip to content",
+    "href": "#main"
+   },
+   {
+    "text": "",
+    "href": "../"
+   }
+  ],
+  "small_targets": [],
+  "first_focusable": "Skip to content -> #main",
+  "skip_target_exists": true,
+  "title": "Book your surf week | Global Surf Lodge Kabalana",
+  "lang": "en",
+  "h1": [
+   "Your level"
+  ]
+ },
+ "links": [
+  {
+   "text": "Skip to content",
+   "href": "#main"
+  },
+  {
+   "text": "",
+   "href": "../"
+  },
+  {
+   "text": "Levels",
+   "href": "../#levels"
+  },
+  {
+   "text": "Rooms",
+   "href": "../#rooms"
+  },
+  {
+   "text": "The lodge",
+   "href": "../#lodge"
+  },
+  {
+   "text": "Contact",
+   "href": "../#contact"
+  },
+  {
+   "text": "Questions? Ask us",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+  },
+  {
+   "text": "",
+   "href": "../#levels"
+  },
+  {
+   "text": "",
+   "href": "../#rooms"
+  },
+  {
+   "text": "",
+   "href": "../#lodge"
+  },
+  {
+   "text": "",
+   "href": "../#contact"
+  },
+  {
+   "text": "",
+   "href": "../book/"
+  },
+  {
+   "text": "",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+  },
+  {
+   "text": "Questions? Ask us",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.%20Level%201%20%E2%80%93%20Fomies"
+  },
+  {
+   "text": "",
+   "href": "../"
+  },
+  {
+   "text": "",
+   "href": "https://www.instagram.com/globalsurf_kabalana/"
+  },
+  {
+   "text": "",
+   "href": "https://www.youtube.com/channel/UCh-GTj4Wu2FbdXpr-xNSGzQ"
+  },
+  {
+   "text": "",
+   "href": "https://www.facebook.com/GlobalSURFltd/"
+  },
+  {
+   "text": "WhatsApp us",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.%20Level%201%20%E2%80%93%20Fomies"
+  },
+  {
+   "text": "Call us",
+   "href": "tel:+97299733943"
+  },
+  {
+   "text": "Email us",
+   "href": "mailto:info@globalsurf.com"
+  },
+  {
+   "text": "Open in Maps",
+   "href": "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en"
+  }
+ ],
+ "dom_desktop": {
+  "overflowX": 0,
+  "above_fold_links": [
+   {
+    "text": "Skip to content",
+    "href": "#main"
+   },
+   {
+    "text": "",
+    "href": "../"
+   },
+   {
+    "text": "Levels",
+    "href": "../#levels"
+   },
+   {
+    "text": "Rooms",
+    "href": "../#rooms"
+   },
+   {
+    "text": "The lodge",
+    "href": "../#lodge"
+   },
+   {
+    "text": "Contact",
+    "href": "../#contact"
+   },
+   {
+    "text": "Questions? Ask us",
+    "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+   }
+  ],
+  "small_targets": [],
+  "first_focusable": "Skip to content -> #main",
+  "skip_target_exists": true,
+  "title": "Book your surf week | Global Surf Lodge Kabalana",
+  "lang": "en",
+  "h1": [
+   "Your level"
+  ]
+ },
+ "nojs": {
+  "text_len": 4774,
+  "booking_links": [
+   "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.",
+   "https://www.instagram.com/globalsurf_kabalana/",
+   "https://www.youtube.com/channel/UCh-GTj4Wu2FbdXpr-xNSGzQ",
+   "https://www.facebook.com/GlobalSURFltd/",
+   "tel:+97299733943",
+   "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en"
+  ],
+  "rosa_fallback_visible": [],
+  "videos_with_src": 0
+ },
+ "keyboard": {
+  "first_stop": {
+   "tag": "A",
+   "text": "Skip to content",
+   "outline": true,
+   "boxShadow": false,
+   "visible": true
+  },
+  "stops": 57,
+  "no_visible_focus": [],
+  "invisible_targets": []
+ }
+}

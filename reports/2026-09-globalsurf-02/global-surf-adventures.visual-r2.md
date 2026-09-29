@@ -177,3 +177,66 @@ Remaining fixes:
 1. **The Sign (8, pass):** calm, specific, beautifully sold rooms and a booking desk that belongs to the site. It is the one to show Shahar.
 2. **Postcard (7, fail):** now properly composed, but the watermarked photo, the closing band and the title face keep it below the bar.
 3. **Try your week (6.5, fail):** the best booking flow of the three, hurt by an illegible script and soft footage. Its date-chip picker is worth reusing in The Sign.
+
+---
+
+# Round 3 (re-score, 2026-09-29)
+
+Re-scored from scratch on fresh shots: `visual-r2/round3/<mockup>-home|book/` (1440 + 390) and `visual-r2/round3/try-your-week-book-walk/`. Same bar, same calibration. The other reviewers' reports were not opened.
+
+## The Sign — 8.5/10 · would Shahar accept: yes · better than current: yes
+Changes:
+- A dark photo-backed reviews band adds the missing pace (`the-sign-home/desktop-sheet`).
+- The closing band now has a short centred script line, "All levels, steps from the beach", with a small sub-line and aligned buttons (`desktop-14`).
+- The booking page's level choices now carry footage thumbnails (`the-sign-book/desktop-00`).
+- The Level 2 rock is gone.
+
+It is the most finished and most place-specific of the three.
+Remaining fixes (minor):
+1. The closing sub-line is still two lines of chat. One line would do.
+2. The level footage is still slightly soft at card size.
+
+## Try your week — 7.5/10 · would Shahar accept: no (close) · better than current: yes, narrowly
+Changes:
+- Satisfy replaces the illegible dry brush, so titles now read (`try-your-week-home/desktop-01`).
+- The level stage is a sharper split (video left, text and CTA right).
+- The feature line sits on calm water (`desktop-05`).
+- The hero CTA is now "Book package now".
+- The booking wizard is still the best of the three: 3 steps, room pills, a big gallery and a total bar (`try-your-week-book-walk/desktop-step2`).
+
+Remaining fixes:
+1. The home still leans on centred title + centred paragraph blocks on white or pale blue-grey. It needs one or two full-bleed or dark moments besides the feature.
+2. The closing band sets its long two-line sentence at the bottom edge (`desktop-11`). Shorten it and centre it.
+3. The footer and closing band are the same as the other two mockups (see below).
+
+## Postcard — 7.5/10 · would Shahar accept: no (close) · better than current: yes
+Changes:
+- The watermark is cropped from the group photo (`postcard-home/desktop-05`).
+- Satisfy in teal replaces the chunky brush and is legible.
+- The closing band now has a scrim (`desktop-12`).
+- The asymmetric welcome, the full-bleed inclusions split, the offset slideshow and the edge-to-edge Instagram grid are all kept.
+
+Remaining fixes:
+1. The closing line is still a long two-line sentence with tight negative tracking. Shorten it and loosen the tracking.
+2. The hero title tracking is still tight.
+3. The level cards are small beside the rest.
+
+## Are they still three distinct designs? Only partly.
+- The Sign stands apart: navy brush script, a condensed wordmark, full-bleed photo pairs, a dark reviews band and a split-screen booking page.
+- **Postcard and Try your week have converged.** They share:
+  - the same Satisfy titles;
+  - a similar light geometric sans on white and pale-grey grounds;
+  - the same hero clip and frame, with a centred title and a coral "Book package now";
+  - the same night-pool closing photo with the same sentence and two buttons;
+  - the same four-column footer.
+
+  They differ in title colour (teal vs black), a few layouts (Postcard's asymmetric splits vs Try your week's pill stage) and the booking pattern (sticky summary vs wizard). On the first screen all three are near-identical. Shahar would be picking between layouts rather than between designs.
+- To restore the choice:
+  1. Give Postcard back its pool-deck opening frame (its concept) and a distinct closing photo.
+  2. Give Try your week a different script, or none (e.g. a display serif), and its own colour ground.
+  3. Vary the three footers.
+
+## Ranking (visual quality only)
+1. **The Sign (8.5, pass):** finished, calm and unmistakably this lodge, with a booking desk that belongs to the site. Show it.
+2. **Try your week (7.5, fail, close):** now legible, with the best booking flow, but a centred, safe home that looks too much like Postcard.
+3. **Postcard (7.5, fail, close):** well composed and clean, held back by the tight tracking, the long closing line, and its near-twin in Try your week. It ranks just below Try your week because Try your week's booking flow is stronger.

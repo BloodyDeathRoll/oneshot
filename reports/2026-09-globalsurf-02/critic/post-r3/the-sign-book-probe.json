@@ -1,0 +1,284 @@
+{
+ "variant": "the-sign",
+ "url": "http://127.0.0.1:8981/the-sign/dist/book/",
+ "normal_phone": {
+  "first_paint_ms": 228,
+  "onload_video": [
+   {
+    "url": "http://127.0.0.1:8981/the-sign/dist/video/vid-010-p45.webm",
+    "ms_after_first_paint": 110,
+    "kb": 1852
+   }
+  ],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Damion&display=swap",
+   "https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInE.woff2",
+   "https://fonts.gstatic.com/s/damion/v15/hv-XlzJ3KEUe_YZkamw2.woff2"
+  ],
+  "onload_nonvideo_kb": 1203,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0
+ },
+ "reduced_phone": {
+  "first_paint_ms": 200,
+  "onload_video": [],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Damion&display=swap",
+   "https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInE.woff2",
+   "https://fonts.gstatic.com/s/damion/v15/hv-XlzJ3KEUe_YZkamw2.woff2"
+  ],
+  "onload_nonvideo_kb": 1203,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0
+ },
+ "savedata_phone": {
+  "first_paint_ms": 172,
+  "onload_video": [],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Damion&display=swap",
+   "https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInE.woff2",
+   "https://fonts.gstatic.com/s/damion/v15/hv-XlzJ3KEUe_YZkamw2.woff2"
+  ],
+  "onload_nonvideo_kb": 1203,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0
+ },
+ "normal_desktop": {
+  "first_paint_ms": 200,
+  "onload_video": [
+   {
+    "url": "http://127.0.0.1:8981/the-sign/dist/video/vid-010-p45.webm",
+    "ms_after_first_paint": 134,
+    "kb": 1852
+   }
+  ],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Damion&display=swap",
+   "https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInE.woff2",
+   "https://fonts.gstatic.com/s/damion/v15/hv-XlzJ3KEUe_YZkamw2.woff2"
+  ],
+  "onload_nonvideo_kb": 1578,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0.0004
+ },
+ "reduced_desktop": {
+  "first_paint_ms": 192,
+  "onload_video": [],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Damion&display=swap",
+   "https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInE.woff2",
+   "https://fonts.gstatic.com/s/damion/v15/hv-XlzJ3KEUe_YZkamw2.woff2"
+  ],
+  "onload_nonvideo_kb": 1578,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0.0004
+ },
+ "savedata_desktop": {
+  "first_paint_ms": 176,
+  "onload_video": [],
+  "onload_third_party": [
+   "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Damion&display=swap",
+   "https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInE.woff2",
+   "https://fonts.gstatic.com/s/damion/v15/hv-XlzJ3KEUe_YZkamw2.woff2"
+  ],
+  "onload_nonvideo_kb": 1578,
+  "scroll_video": [],
+  "scroll_video_total_kb": 0,
+  "scroll_third_party_hosts": [],
+  "scroll_json": [],
+  "cls_after_full_scroll": 0.0004
+ },
+ "dom_phone": {
+  "overflowX": 0,
+  "above_fold_links": [
+   {
+    "text": "Skip to content",
+    "href": "#main"
+   },
+   {
+    "text": "",
+    "href": "../"
+   }
+  ],
+  "small_targets": [],
+  "first_focusable": "Skip to content -> #main",
+  "skip_target_exists": true,
+  "title": "Book your surf week | Global Surf Lodge Kabalana",
+  "lang": "en",
+  "h1": [
+   "Your level"
+  ]
+ },
+ "links": [
+  {
+   "text": "Skip to content",
+   "href": "#main"
+  },
+  {
+   "text": "",
+   "href": "../"
+  },
+  {
+   "text": "Levels",
+   "href": "../#levels"
+  },
+  {
+   "text": "Rooms",
+   "href": "../#rooms"
+  },
+  {
+   "text": "The lodge",
+   "href": "../#lodge"
+  },
+  {
+   "text": "Contact",
+   "href": "#contact"
+  },
+  {
+   "text": "Levels",
+   "href": "../#levels"
+  },
+  {
+   "text": "Rooms",
+   "href": "../#rooms"
+  },
+  {
+   "text": "The lodge",
+   "href": "../#lodge"
+  },
+  {
+   "text": "Contact",
+   "href": "#contact"
+  },
+  {
+   "text": "Ask about dates",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+  },
+  {
+   "text": "WhatsApp us",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.%20Level%201%20%E2%80%93%20Fomies%2C%20Mixed%20dorm%20room%20%E2%80%93%204%20beds."
+  },
+  {
+   "text": "",
+   "href": "../"
+  },
+  {
+   "text": "WhatsApp us",
+   "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+  },
+  {
+   "text": "Call us",
+   "href": "tel:+97299733943"
+  },
+  {
+   "text": "Email us",
+   "href": "mailto:info@globalsurf.com"
+  },
+  {
+   "text": "Open in Maps",
+   "href": "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en"
+  },
+  {
+   "text": "",
+   "href": "https://www.instagram.com/globalsurf_kabalana/"
+  },
+  {
+   "text": "",
+   "href": "https://www.youtube.com/channel/UCh-GTj4Wu2FbdXpr-xNSGzQ"
+  },
+  {
+   "text": "",
+   "href": "https://www.facebook.com/GlobalSURFltd/"
+  },
+  {
+   "text": "Terms and conditions",
+   "href": "https://www.globalsurf.com/terms-conditions/"
+  }
+ ],
+ "dom_desktop": {
+  "overflowX": 0,
+  "above_fold_links": [
+   {
+    "text": "Skip to content",
+    "href": "#main"
+   },
+   {
+    "text": "",
+    "href": "../"
+   },
+   {
+    "text": "Levels",
+    "href": "../#levels"
+   },
+   {
+    "text": "Rooms",
+    "href": "../#rooms"
+   },
+   {
+    "text": "The lodge",
+    "href": "../#lodge"
+   },
+   {
+    "text": "Contact",
+    "href": "#contact"
+   },
+   {
+    "text": "Ask about dates",
+    "href": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+   }
+  ],
+  "small_targets": [],
+  "first_focusable": "Skip to content -> #main",
+  "skip_target_exists": true,
+  "title": "Book your surf week | Global Surf Lodge Kabalana",
+  "lang": "en",
+  "h1": [
+   "Your level"
+  ]
+ },
+ "nojs": {
+  "text_len": 4636,
+  "booking_links": [
+   "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.",
+   "tel:+97299733943",
+   "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en",
+   "https://www.instagram.com/globalsurf_kabalana/",
+   "https://www.youtube.com/channel/UCh-GTj4Wu2FbdXpr-xNSGzQ",
+   "https://www.facebook.com/GlobalSURFltd/",
+   "https://www.globalsurf.com/terms-conditions/"
+  ],
+  "rosa_fallback_visible": [],
+  "videos_with_src": 0
+ },
+ "keyboard": {
+  "first_stop": {
+   "tag": "A",
+   "text": "Skip to content",
+   "outline": true,
+   "boxShadow": false,
+   "visible": true
+  },
+  "stops": 60,
+  "no_visible_focus": [
+   "INPUT:",
+   "INPUT:",
+   "INPUT:"
+  ],
+  "invisible_targets": []
+ }
+}

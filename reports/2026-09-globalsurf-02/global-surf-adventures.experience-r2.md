@@ -161,3 +161,62 @@ The booking is now the best of the run: 3 steps, Saturday chips grouped by month
 1. **postcard**: now a complete, editorial site that beats globalsurf.com on phone and laptop and has the best-integrated booking. Its remaining issues are small (Rosa fallback box, stale forecast time).
 2. **the-sign**: calm and consistent after the fixes, with the strongest imagery. It loses on length and the native date select.
 3. **try-your-week**: the fastest booking of the three (8 taps), held back by a title script whose "r" reads as "ß".
+
+---
+
+# Round 3 (commits 1167414 + 91abce4)
+
+I re-walked all three from scratch with the same setup: phone 390×844 throttled, laptop 1440×900, reduced motion, JavaScript off, and booking flows up to an intercepted hand-off. The engine was never opened. Frames are in `experience-r2/round3/`. Other reviewers' reports were not opened.
+
+## Shared measurements
+
+| | postcard | try-your-week | the-sign |
+|---|---|---|---|
+| Hero (phone) | "Surf weeks in Sri Lanka" + "Book package now" | "Next set is yours" + subtitle + "Book package now" | script "Your surf week starts here" + "Book your week" |
+| First load / LCP / CLS (phone) | 443 KB / 0.79 s / 0.00 | 763 KB / 0.60 s / 0.009 | 597 KB / 0.50 s / 0.002 |
+| Cold frames 0.5 / 1.5 / 3 s | poster, title, CTA from 0.5 s | **blank white at 0.5 s**, text on a flat tint at 1.5 s, poster at 3 s | poster, title, CTA from 0.5 s |
+| Scroll, phone 4× CPU | p95 16.7 ms, max 67 ms | p95 16.8 ms, max 100 ms | p95 16.7 ms, max 83 ms |
+| Reduced motion / JS off | poster only / poster, no controls ✓ | ✓ / ✓ | ✓ / ✓ |
+| Hand-off, JS on | `level-2-rollers?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1` ✓ | `…?start=2027-02-20&end=2027-02-27&couple=1` ✓ | `…?start=2027-02-20&couple=1&end=2027-02-27` ✓ |
+| Hand-off, JS off | ✓ start/end/guests | ✓ | ✓ |
+| Taps, home → hand-off (L2, 20 Feb, couple, twin) | 9 (2 month arrows) | 8 | 9 |
+| Third-party on load | 3 Google Fonts requests (for the critic) | same | same |
+
+## the-sign: 9/10 · pass · would Shahar accept: **yes** · better than current: **yes, clearly**
+
+The polish shows in the booking. Check-in is now a set of Saturday chips grouped by month, like try-your-week's. Room cards keep their photo inside the selected card. Level cards carry thumbnails, and the selected state is navy with white text (`round3/the-sign-flow/sheet.jpg`). The home page is shorter (12,340 px, down from 14,374). It has the strongest imagery of the run: big level video cards, two-photo room rows on the laptop and a lodge photo band. The Damion script gives the titles the handwritten feel of the current site. Fonts and colours are the same from the hero to the total.
+
+**Remaining fixes:**
+1. On the laptop hero the script title sits across the white umbrellas, and the light strokes thin out against them. Add a slightly stronger text shadow, or crop the poster darker behind the title.
+2. The "Choose Level N" buttons on phone are a row below each photo card and are easy to miss while swiping the level carousel.
+3. Self-host the fonts.
+
+## postcard: 8/10 · pass · would Shahar accept: **yes** · better than current: **yes**
+
+The round-2 issues are fixed:
+- The Rosa block loads cleanly.
+- The forecast time now reads "Tue 29 Sep 20:30".
+- The booking column holds its width.
+
+It keeps the best booking-page hero (re-titles per level), the most editorial laptop, and a calendar that skips empty months. It sits one point under the-sign because the booking page is visually quieter and the step titles use less of the imagery.
+
+**Remaining fixes:**
+1. At the total step the bar's "Continue" still competes with "Continue booking". Hide the bar's button there.
+2. The calendar popover is still 2 px wider than the column.
+3. Self-host the fonts.
+
+## try-your-week: 8/10 · pass · would Shahar accept: **yes** · better than current: **yes**
+
+The new Satisfy script is legible: "Our rooms", "Your room" and "Dates and guests" read correctly (`round3/try-your-week/sheet-phone.jpg`). The hero CTA is "Book package now". The booking is still the fastest (8 taps), a clear 3-step flow with Saturday chips and guests starting at 0.
+
+**Remaining fixes:**
+1. **Cold load:** the phone shows a blank white screen at 0.5 s and a flat tint at 1.5 s before the poster (`round3/heroes.jpg`). The other two paint the poster at 0.5 s. Preload the poster, and set a matching background image or colour behind it.
+2. After a guest count is chosen but before a date, the bar says "From $1,546.03 pp", a per-person figure that changes with the room. Show the per-person price only once a date is picked, and drop the cents.
+3. The level tabs and the carousel dots on the home page are still two controls for the same thing.
+4. Self-host the fonts.
+
+## Ranking (round 3)
+
+1. **the-sign**: the most complete experience, with strong imagery, handwritten titles like the original's, and a booking flow that now has chips, photos in the selection cards and one consistent style to the total.
+2. **postcard**: an editorial, well-built site with the most elegant booking-page hero. It is held back only by the duplicate final button and a quieter booking page.
+3. **try-your-week**: now legible, with the quickest booking. Its hero is the only one of the three that paints late on a slow phone.
