@@ -85,7 +85,8 @@
     const DAY = 864e5, fresh = (iso) => Date.now() - new Date(iso).getTime() <= DAY;
     const pts = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];
     const compass = (d) => pts[Math.round(((d % 360) + 360) % 360 / 22.5) % 16];
-    const plain = () => { now.hidden = true; $('#rosa-meta').hidden = true; $('#rosa-plain').hidden = false; box.classList.add('off'); };
+    const plain = () => { now.hidden = true; $('#rosa-meta').hidden = true; $('#rosa-plain').classList.add('on'); box.classList.add('off'); };
+    const ok = () => { now.classList.add('ok'); $('#rosa-meta').classList.add('ok'); };
     const widget = () => {
       const f = document.createElement('iframe');
       f.src = box.dataset.rosa; f.title = box.dataset.title; f.loading = 'lazy';
@@ -106,12 +107,12 @@
       $('#rosa-time').textContent = t.toLocaleString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Colombo' }).replace(',', '').replace('Sept', 'Sep');
     };
     const go = async () => {
-      if (fresh(now.dataset.generated)) { widget(); return; }
+      if (fresh(now.dataset.generated)) { ok(); widget(); return; }
       try {
         const c = new AbortController(); setTimeout(() => c.abort(), 8000);
         const r = await fetch(now.dataset.json, { signal: c.signal }); if (!r.ok) throw 0;
         const j = await r.json(); if (!j.current || !fresh(j.generated_at)) throw 0;
-        draw(j); widget();
+        draw(j); ok(); widget();
       } catch (e) { plain(); }
     };
     const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); go(); } }, { rootMargin: '300px' });

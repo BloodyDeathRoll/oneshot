@@ -24,7 +24,9 @@ const logoSrc = fs.readFileSync(path.join(repo, 'dossier/global-surf-adventures/
   .replace(/fill="#000000"/g, 'fill="currentColor"');
 const logoSym = logoSrc.replace(/<svg[^>]*>/, '<symbol id="logo" viewBox="0 0 128 39">').replace(/<\/svg>\s*$/, '</symbol>');
 let R0 = '';
+const LOGO_URI = 'data:image/png;base64,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';
 const logoImg = (R) => `<img class="logo-img" src="${R}img/logo.svg" width="128" height="39" alt="">`;
+const logoHead = () => `<img class="logo-img" src="${LOGO_URI}" width="128" height="39" alt="">`;
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const paras = (s) => s.split(/\n\n/).map((p) => `<p>${esc(p)}</p>`).join('');
 const block = (h) => C.copyBlocks.find((b) => b.heading === h);
@@ -38,7 +40,7 @@ const rating = C.ratings[0];
 const W = { '010': [800, 1333, 2000], '024': [800, 1333, 2000], '026': [800, 1400, 786], '060': [800, 1400, 785], '061': [800, 1400, 785] };
 function img(id, { sizes = '100vw', lazy = true, cls = '', big = false, R = '' } = {}) {
   const [a, b, h] = W[id] || [800, 1400, 933];
-  const extra = big && (id === '016' || id === '005') ? `, ${R}img/img-${id}-2000.webp 2000w` : '';
+  const extra = big && ['016', '005', '036'].includes(id) ? `, ${R}img/img-${id}-2000.webp 2000w` : '';
   return `<img${cls ? ` class="${cls}"` : ''} src="${R}img/img-${id}-${b}.webp" srcset="${R}img/img-${id}-${a}.webp ${a}w, ${R}img/img-${id}-${b}.webp ${b}w${extra}" sizes="${sizes}" width="${b}" height="${h}" alt="${esc(alt['img-' + id] || '')}"${lazy ? ' loading="lazy" decoding="async"' : ''}>`;
 }
 function slides(ids, label, { sizes, R = '', cls = '' } = {}) {
@@ -55,11 +57,11 @@ const LV = [
     aria: 'A beginner stands up on a soft-top in the golden evening light' },
   { n: 2, slug: 'level-2-rollers', id: '4b58b491-24fc-4fb8-a40d-2705df961db4', vid: 'vid-003e', name: 'Rollers', inc: X.inclusions.level_2,
     aria: 'A surfer in a blue rash vest rides a reef wave' },
-  { n: 3, slug: 'level-3-riders', id: '54ec3447-2efb-4677-8685-f272e00d32e8', vid: 'vid-002e', name: 'Riders', inc: X.inclusions.level_3,
-    aria: 'A surfer rides deep in a right-hand barrel' },
+  { n: 3, slug: 'level-3-riders', id: '54ec3447-2efb-4677-8685-f272e00d32e8', vid: 'vid-002g', name: 'Riders', inc: X.inclusions.level_3,
+    aria: 'A surfer carves a green wave into the low evening sun' },
 ];
 LV.forEach((l, k) => { l.label = C.lessons[k].label; l.one = X.levels[k].one_liner; l.cta = X.ctas['level_' + l.n]; });
-const DT = { 'vid-010c': 'd1728', 'vid-003e': 'd1920', 'vid-002e': 'd1920' };
+const DT = { 'vid-010c': 'd1728', 'vid-003e': 'd1920', 'vid-002g': 'd1728' };
 const vidEl = (l, R, cls = '') => `<div class="lv-clip ${cls}"><img class="vposter" src="${R}video/${l.vid}-poster.webp" alt="${esc(l.aria)}" loading="lazy" width="1280" height="720">
   <video class="lv-vid" hidden muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true">
   <source data-src="${R}video/${l.vid}-m1280.webm" data-media="(max-width: 900px)" type="video/webm">
@@ -102,7 +104,7 @@ function header(R, book) {
   const nav = links.map(([h, t]) => `<a href="${book ? '../' : ''}${h}">${t}</a>`).join('');
   return `<a class="sr" href="#main">Skip to content</a>
 <header class="hdr${book ? ' solid always' : ''}"><div class="wrap">
-  <a class="logo" href="${book ? '../' : '#top'}" aria-label="${esc(X.logo.home_link_label)}">${logoImg(R)}</a>
+  <a class="logo" href="${book ? '../' : '#top'}" aria-label="${esc(X.logo.home_link_label)}">${logoHead()}</a>
   <nav class="nav" aria-label="Main">${nav}</nav>
   ${book ? `<a class="btn btn-soft btn-sm hdr-wa" href="${wa}">${ic('wa', 'i f wa')}${esc(X.ctas.whatsapp)}</a>`
          : `<a class="btn btn-book" href="${R}book/">${esc(X.ctas.header_and_bar)}</a>`}
@@ -181,8 +183,8 @@ const igTiles = ['001', '024', '060', '099', '114', '010', '073', '012'];
 const homeCss = `
 .hero{position:relative;height:100svh;min-height:560px;overflow:hidden;color:#fff;display:grid;place-items:center;text-align:center;background:#9cc9d6 linear-gradient(180deg,#2f5f86 0%,#1d6883 40%,#2e8ea3 68%,#cfe6ea 100%)}
 .hero picture{position:absolute;inset:0}
-.hero .poster,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero::after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 46% 34% at 50% 52%,rgba(8,20,28,.30),rgba(8,20,28,0) 100%);pointer-events:none}
+.hero .poster,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.2);transform-origin:0% 100%}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 40% 26% at 50% 50%,rgba(8,20,28,.30),rgba(8,20,28,0) 100%);pointer-events:none}
 .hero-in{position:relative;z-index:2;padding:0 var(--gut);text-shadow:0 2px 24px rgba(0,0,0,.4),0 1px 3px rgba(0,0,0,.25)}
 .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(40px,5vw,66px);line-height:1.05;letter-spacing:-.025em;margin:0}
 .hero p{font-size:clamp(18px,1.5vw,21px);margin:12px 0 30px;font-weight:500}
@@ -192,7 +194,9 @@ const homeCss = `
 .lv-panel{grid-area:1/1;transition:opacity .4s var(--ease),visibility .4s}
 .js .lv-panel[aria-hidden="true"]{opacity:0;visibility:hidden}
 .no-js .lv-panels{display:block}.no-js .lv-panel{margin-bottom:56px}
-.lv-media{position:relative;height:min(76vh,56.25vw);min-height:220px;overflow:hidden;background:#0d3a45;touch-action:pan-y}
+.lv-media{position:relative;width:min(1040px,100% - 2*var(--gut));margin:0 auto;aspect-ratio:16/9;border-radius:var(--r);overflow:hidden;background:#0d3a45;touch-action:pan-y}
+.stage .wrap{width:min(1040px,100% - 2*var(--gut))}
+.lv-foot{background:#fff!important}
 .lv-clip,.lv-clip img,.lv-clip video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .lv-info{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:center;padding:28px 4px 0}
 .lv-info h3{font-family:var(--serif);font-weight:600;font-size:24px;margin:0 0 2px;letter-spacing:-.015em}
@@ -226,6 +230,12 @@ const homeCss = `
 .feature p,.closing .in{z-index:2}
 .feature img.calm{object-position:50% 100%;transform:scale(1.5);transform-origin:50% 100%}
 .feature p{position:relative;font-family:var(--script);font-size:clamp(40px,4.6vw,64px);line-height:1.15;max-width:880px;margin:0;padding:0 var(--gut);text-shadow:0 2px 26px rgba(0,0,0,.45)}
+.lodgeb{display:grid;grid-template-columns:minmax(0,1fr) 55vw;align-items:center;background:var(--tint-soft)}
+.lodgeb .copy{padding:72px clamp(24px,5vw,80px);max-width:640px;justify-self:end}
+.lodgeb .lede{margin-bottom:26px}
+.lodgeb .slides.bleed .track img{aspect-ratio:4/5}
+.sec-head.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(24px,5vw,72px);align-items:end}
+.sec-head.split .lede{margin:0}
 .lodge-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,72px);align-items:center}
 .am{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:14px 28px}
 .am li{display:flex;gap:12px;align-items:flex-start;font-size:16.5px;line-height:1.35}
@@ -273,7 +283,9 @@ const homeCss = `
 @media (max-width:900px){
   .lv-info{grid-template-columns:1fr;gap:14px;padding-top:20px}
   .lv-info .btn-row .btn{flex:1}
-  .weekb,.lodge-grid,.waves{grid-template-columns:1fr}
+  .weekb,.lodge-grid,.waves,.lodgeb,.sec-head.split{grid-template-columns:1fr}
+  .lodgeb .copy{order:2;padding:44px var(--gut) 56px;justify-self:stretch}
+  .lodgeb .slides.bleed .track img{aspect-ratio:4/3}
   .weekb .copy{padding:48px var(--gut) 56px}
   .quotes{--per:1}
   .rosa-box{justify-self:center}
@@ -282,7 +294,7 @@ const homeCss = `
 @media (max-width:700px){
   .am{grid-template-columns:1fr}
   .hero .btn{width:100%;max-width:340px}
-  .hero .poster,.hero video{object-position:64% 50%}
+  .hero .poster,.hero video{object-position:55% 50%;transform:scale(1.25);transform-origin:50% 100%}
   .lv-foot{padding:20px}
   .lv-foot .btn{width:100%}
   .lv-info .detail{white-space:normal}
@@ -293,17 +305,17 @@ const homeCss = `
 @media (min-width:701px){.lvx::before{content:""}}
 `;
 
-const homeHead = `<link rel="preload" as="image" href="video/vid-009r-poster-1280.webp" type="image/webp" media="(max-width: 900px)" fetchpriority="high"><link rel="preload" as="image" href="video/vid-009r-poster-1920.webp" type="image/webp" media="(min-width: 901px)" fetchpriority="high">\n`;
+const homeHead = `<link rel="preload" as="image" href="video/vid-002h-poster-1280.webp" type="image/webp" media="(max-width: 900px)" fetchpriority="high"><link rel="preload" as="image" href="video/vid-002h-poster-1920.webp" type="image/webp" media="(min-width: 901px)" fetchpriority="high">\n`;
 const home = page('', `${C.businessName} | Surf weeks for all levels`, C.tagline, homeCss, `
 ${header('', false)}
 <main id="main">
 <section class="hero" id="top" aria-label="${esc(C.businessName)}">
-  <picture><source media="(max-width: 900px)" srcset="video/vid-009r-poster-1280.webp" type="image/webp"><source srcset="video/vid-009r-poster-1920.webp" type="image/webp"><img class="poster" src="video/vid-009r-poster.jpg" alt="" fetchpriority="high" width="1920" height="1080"></picture>
+  <picture><source media="(max-width: 900px)" srcset="video/vid-002h-poster-1280.webp" type="image/webp"><source srcset="video/vid-002h-poster-1920.webp" type="image/webp"><img class="poster" src="video/vid-002h-poster.jpg" alt="" fetchpriority="high" width="1920" height="1080"></picture>
   <video id="heroVid" hidden muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true">
-    <source data-src="video/vid-009r-m1280.webm" data-media="(max-width: 900px)" type="video/webm">
-    <source data-src="video/vid-009r-m1280.mp4" data-media="(max-width: 900px)" type="video/mp4">
-    <source data-src="video/vid-009r-d1920.webm" data-media="(min-width: 901px)" type="video/webm">
-    <source data-src="video/vid-009r-d1920.mp4" data-media="(min-width: 901px)" type="video/mp4">
+    <source data-src="video/vid-002h-m1280.webm" data-media="(max-width: 900px)" type="video/webm">
+    <source data-src="video/vid-002h-m1280.mp4" data-media="(max-width: 900px)" type="video/mp4">
+    <source data-src="video/vid-002h-d1920.webm" data-media="(min-width: 901px)" type="video/webm">
+    <source data-src="video/vid-002h-d1920.mp4" data-media="(min-width: 901px)" type="video/mp4">
   </video>
   <div class="hero-in">
     <h1>${esc(X.hero.title_c2)}</h1>
@@ -312,7 +324,7 @@ ${header('', false)}
   </div>
 </section>
 
-<section class="sec" id="levels" aria-labelledby="lv-title">
+<section class="sec tint on-tint" id="levels" aria-labelledby="lv-title">
  <div class="wrap">
   <div class="sec-head">
     <h2 class="title c" id="lv-title">${esc(X.section_titles.levels)}</h2>
@@ -346,14 +358,14 @@ ${header('', false)}
  </div>
 </section>
 
-<section class="weekb tint on-tint" id="week" aria-labelledby="wk-title">
+<section class="weekb" id="week" aria-labelledby="wk-title">
   ${slides(['104', '011', '118', '115', '114', '023'], 'Photo of the week', { sizes: '(max-width: 900px) 100vw, 58vw', cls: 'bleed' })}
   <div class="copy"><h2 class="title" id="wk-title">${esc(day.heading)}</h2>${paras(day.body)}</div>
 </section>
 
 <section class="sec" id="rooms" aria-labelledby="rm-title">
  <div class="wrap">
-  <div class="sec-head"><h2 class="title c" id="rm-title">${esc(X.section_titles.rooms)}</h2><p class="lede c">${esc(tw1)}</p></div>
+  <div class="sec-head split"><h2 class="title" id="rm-title">${esc(X.section_titles.rooms)}</h2><p class="lede">${esc(tw1)}</p></div>
   ${roomViewer('', '', (r) => `<a class="btn btn-book" href="book/?room=${r.key}">${esc(X.ctas.room)}</a>`)}
   <p class="detail" style="text-align:center;margin-top:36px">${esc(X.rooms_note)}</p>
  </div>
@@ -364,14 +376,13 @@ ${header('', false)}
   <p>${esc(C.featureLine)}</p>
 </section>
 
-<section class="sec tint on-tint" id="lodge" aria-labelledby="lo-title">
- <div class="wrap">
-  <div class="sec-head"><h2 class="title c" id="lo-title">${esc(X.section_titles.lodge)}</h2><p class="lede c">${esc(tw2)}</p></div>
-  <div class="lodge-grid">
-    ${slides(['075', '073', '077', '026', '061', '093'], 'Photo of the lodge', { sizes: '(max-width: 900px) 100vw, 640px' })}
+<section class="lodgeb" id="lodge" aria-labelledby="lo-title">
+  <div class="copy">
+    <h2 class="title" id="lo-title">${esc(X.section_titles.lodge)}</h2>
+    <p class="lede">${esc(tw2)}</p>
     <ul class="am">${C.amenities.map((a) => `<li>${ic(AM[a.label] || 'check')}<span>${esc(a.label)}${a.note ? `<small>${esc(a.note)}</small>` : ''}</span></li>`).join('')}</ul>
   </div>
- </div>
+  ${slides(['075', '073', '077', '026', '061', '093'], 'Photo of the lodge', { sizes: '(max-width: 900px) 100vw, 55vw', cls: 'bleed' })}
 </section>
 
 <section class="sec" id="guests" aria-labelledby="gu-title">
@@ -419,7 +430,7 @@ ${header('', false)}
 </section>
 
 <section class="closing" aria-label="${esc(X.ctas.closing)}">
-  ${img('105', { sizes: '100vw' })}
+  ${img('036', { sizes: '100vw', big: true })}
   <div class="in"><p class="big">${esc(C.closing.split(/(?<=\.) /)[0])}</p><p>${esc(C.closing.split(/(?<=\.) /).slice(1).join(' '))}</p>
     <div class="btn-row c"><a class="btn btn-book" href="book/">${esc(X.ctas.closing)}</a><a class="btn btn-white" href="${wa}">${ic('wa', 'i f wa')}${esc(X.ctas.whatsapp)}</a></div>
   </div>

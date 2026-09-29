@@ -143,3 +143,16 @@ Concepts 1 and 2 are being built in parallel by other designers in their own fol
 - **Phone level carousel:** each card's media is 1:1 on phones and its "Choose Level N" button is full-width, so the whole card, button included, is on screen while swiping (`round-8/levels-390.png`).
 - **Closing sub-line:** one line from 900 px up; it wraps, balanced, below that (`round-8/closing-1440.png`).
 - **check-design:** ok on both pages.
+
+## Round 9: hero title placement (`shots/round-9/`)
+- From 900 px up, the title and button still sit centred horizontally but now at the bottom of the hero, `max(64px, 11vh)` from its lower edge.
+- The pool frame puts the stack on the dark pool water, clear of the white umbrellas and loungers. The surf frame puts it on the water below the surfer. Checked at 1440 and 1920 on both frames, poster and playing (`hero-1440/1920-poster|video.png`).
+- Phones are unchanged (vertically centred).
+- The closing sub-line was already one line from 900 px up (round 8).
+- **Conflict:** the calibration asks for a title centred horizontally and vertically; on laptop it is now centred horizontally only, at the coordinator's request.
+
+## Round 10: hero title back to the centre (`shots/round-10/`)
+- **Round 9 reverted:** Shahar's rule is explicit, so the title and button are centred horizontally and vertically again at every width.
+- **Legibility over the umbrellas:** a soft radial shade behind the title text only (an `h1::before` gradient, alpha .38 at its centre fading to 0, extending 36/64 px beyond the text), on top of the existing text-shadow and 0.9 px stroke. Nothing lies over the rest of the video.
+- **`object-position` doesn't help:** it can't move the umbrellas. The clip is 16:9, so it has no vertical slack at 1440×900 or 1920×1080.
+- Checked at 1440 and 1920 on the pool frame (poster) and the surf frame (playing). `check-design`: ok. The round-9 conflict is closed.

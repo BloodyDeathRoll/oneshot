@@ -279,3 +279,44 @@ Checks: check-design ok on both pages (0 problems); funnel over http: CTA above 
 at dusk, business-owned, place unidentified — atmosphere, not captioned or presented as the lodge; not used by
 Postcard or The Sign), 30 % shade, same centred Satisfy line, one short line and buttons. Shots:
 `shots/round-10/closing-desktop.png`, `closing-mobile.png`. check-design ok.
+
+---
+
+## Fix round 5 (visual 7.5, experience 8)
+
+**look-log, round 11** (`shots/round-11`, booking `shots/fix-book-4/`, cold load `shots/checks/cold-sheet.png`),
+beside old-site-home/lodge and the other two first screens: the surfer-by-the-rock opening twinned The Sign's, the
+closing was a soft frame, the full-width level clip was soft at 1440, and the middle was centred text on white.
+Now the opening is the barrels, the stage is framed at its source's size on a sea-glass band, and the mid-page
+alternates compositions (half-bleed week left, split rooms header, mirrored half-bleed lodge right).
+
+1. **Hero:** `vid-002h` = vid-002e (the two barrels, then the water-level ride) trimmed to 4.9 s to drop the end
+   splash; plain one-directional loop. d1920 webm 1.6 MB / mp4 2.5 MB, m1280 webm 0.9 MB / mp4 1.2 MB; poster
+   WebP 1920 / 1280 + JPG (barrel frame at 2 s). The title block sits in the lower third over the flat water,
+   centred horizontally, with the soft shade moved there. vid-009r and all vid-009e files removed from dist.
+   Because Level 3 used vid-002e, Level 3 now plays **`vid-002g`**: the golden-hour carve at 21.6–24.0 s of the
+   business-owned vid-002 source, badge cropped at native pixels (1728×972), slowed 1.6× to 3.8 s (d1728 / m1280).
+2. **Closing:** **img-036** (pool and lounge under palms, 2000 px, business-owned, place: lodge; not used by
+   Postcard img-111 or The Sign img-093 anywhere); 30 % shade; centred Satisfy line + one short line + buttons.
+3. **Level video:** the stage is framed — max 1040 px wide, 16:9, rounded — on a sea-glass band, so the 1920/1728
+   sources are never stretched past what they hold (≤ 1040 css px at 1×).
+4. **Composition:** Rooms opens with a split header (title left, intro right); The lodge is a mirrored half-bleed
+   (title, intro and amenity list left, 4:5 slideshow bleeding to the right edge). Week stays half-bleed left.
+5. **Logo on a cold phone:** the header logo is an inline 6.5 KB PNG data URI (rasterised from logo-001.svg at 2×);
+   footer and menu keep the SVG file. At 1.6 Mbit/s, 150 ms, 4× CPU: poster, logo, title and CTA at 0.5 s; LCP 352 ms.
+6. **Footer tiles:** labels no longer wrap ("WhatsApp us" on one line at 390 and 1440).
+
+Removed unused files from dist (old hero clips, img-016/105/111, m720 renditions). Checks: check-design ok on both
+pages (0 problems); funnel over http: CTA above fold true, clicks_to_book 1, 0 broken; 0 targets under 44 px at 390
+and 1440; hand-off JS on/off re-tested (start/end, couple=1); 0 Bookinglayer requests on load.
+
+**Round 12 (two corrections):** (1) Hero title, subtitle and CTA are back at true centre (horizontal and vertical);
+legibility = soft radial shade behind the text only (40 % × 26 % ellipse at centre) + text shadow. The clip is
+reframed so the surfer clears the centre: desktop `scale(1.2)` from the bottom-left corner (the 1920 source fills
+1440×900 at 1:1, no upscale at 1×), phone `scale(1.25)` from the bottom with object-position 55 %. Checked at 0.4,
+1.6, 2.8 and 4.2 s at 1440 and 390 (`shots/round-12/hero-*-sheet.png`): the surfer is above/right of the title in
+3 of 4 frames on each width. (2) The previous Level 3 clip was retimed with `setpts=1.6*PTS` (no interpolation,
+but each real frame held longer — an effective 15.6 fps, stuttery). Replaced by a **real-speed cut**: vid-002
+source 18.56–23.98 s (two consecutive shots as edited by the business — the whitewater turn, then the golden-hour
+carve; cuts found with ffmpeg scene detection at 18.52 / 21.6 / 24.04 s), badge cropped at native pixels
+1728×972, 25 fps in → 25 fps out, 136 frames, no retiming, no duplicated or synthesised frames. check-design ok.

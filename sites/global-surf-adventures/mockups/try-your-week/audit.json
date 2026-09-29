@@ -1,7 +1,7 @@
 {
  "slug": "global-surf-adventures",
  "variant": "try-your-week",
- "measured_at": "2026-09-29T19:57:42.406Z",
+ "measured_at": "2026-09-29T20:33:58.590Z",
  "first_load": {
   "requests": 22,
   "hosts": [
@@ -13,16 +13,16 @@
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 758950,
-  "bytes_html": 120650,
+  "bytes_total": 709081,
+  "bytes_html": 78497,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 42880,
-  "bytes_images": 595420,
+  "bytes_images": 587704,
   "largest_image_bytes": 66254,
-  "lcp_ms": 556,
-  "cls": 0.0075,
-  "dcl_ms": 1044
+  "lcp_ms": 292,
+  "cls": 0.0029,
+  "dcl_ms": 1447
  },
  "booking": {
   "external_booking_hrefs": [
@@ -31,9 +31,9 @@
    "https://www.globalsurf.com/kabalana-lodge-surf-packages/",
    "https://rosa.surf/spot/south-point",
    "https://www.instagram.com/globalsurf_kabalana/",
+   "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en",
    "https://www.youtube.com/channel/UCh-GTj4Wu2FbdXpr-xNSGzQ",
-   "https://www.facebook.com/GlobalSURFltd/",
-   "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en"
+   "https://www.facebook.com/GlobalSURFltd/"
   ],
   "tel_hrefs": [
    "tel:+97299733943"
@@ -50,9 +50,9 @@
   "note": "no drawer; every action is a plain link"
  },
  "a11y": {
-  "images": 42,
+  "images": 45,
   "images_without_alt": 0,
-  "images_alt_empty_decorative": 1,
+  "images_alt_empty_decorative": 4,
   "tapables": 67,
   "tapables_under_44px": 0,
   "tapables_under_44px_examples": [],
@@ -77,9 +77,9 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 6210,
+  "text_length": 6232,
   "booking_links_reachable": 0,
-  "visible_images": 42
+  "visible_images": 45
  },
  "reduced_motion": {
   "canvases": 0,

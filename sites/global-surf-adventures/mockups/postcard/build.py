@@ -82,6 +82,11 @@ ALT = {
     'img-093': 'The pool and lounge at dusk with the lights on',
 }
 
+_D = json.load(open(os.path.join(ROOT, 'dossier/global-surf-adventures/dossier.json')))
+for _im in (_D['images'] if isinstance(_D['images'], list) else []):
+    if isinstance(_im, dict) and _im.get('id') in ALT and _im.get('description'):
+        _t = _im['description'].strip(); ALT[_im['id']] = _t[0].upper() + _t[1:]
+
 def pic(pre, id, alt, widths, jpg, sizes='100vw', eager=False, tag='', cls='', w=None, h=None):
     src = ', '.join(f'{pre}img/{id}{tag}-{x}.webp {x}w' for x in widths)
     load = 'fetchpriority="high"' if eager else 'loading="lazy"'
@@ -191,8 +196,8 @@ def footer(pre):
 def home():
     pre = ''
     hero = f'''<section class="hero" aria-label="{e(C['businessName'])}">
-<picture class="hero-media"><source media="(max-width:700px)" type="image/webp" srcset="img/vid-009p-poster-m.webp"><source type="image/webp" srcset="img/vid-009p-poster-960.webp 960w, img/vid-009p-poster-1920.webp 1920w" sizes="100vw"><img src="video/vid-009p-poster.jpg" width="1920" height="1080" alt="" fetchpriority="high"></picture>
-<video muted loop playsinline preload="none" aria-hidden="true" data-hero data-webm-d="video/vid-009p-d1920.webm" data-mp4-d="video/vid-009p-d1920.mp4" data-webm-m="video/vid-009p-m1280.webm" data-mp4-m="video/vid-009p-m720.mp4"></video>
+<picture class="hero-media"><source media="(max-width:700px)" type="image/webp" srcset="img/vid-010g-poster-m.webp"><source type="image/webp" srcset="img/vid-010g-poster-960.webp 960w, img/vid-010g-poster-1728.webp 1728w" sizes="100vw"><img src="video/vid-010g-poster.jpg" width="1728" height="972" alt="" fetchpriority="high"></picture>
+<video muted loop playsinline preload="none" aria-hidden="true" data-hero data-webm-d="video/vid-010g-d1728.webm" data-mp4-d="video/vid-010g-d1728.mp4" data-webm-m="video/vid-010g-m1280.webm" data-mp4-m="video/vid-010g-m720.mp4"></video>
 <div class="hero-copy"><h1>{e(X['hero']['title_c1'])}</h1>
 <a class="btn btn-book btn-lg" href="book/">{e(X['ctas']['hero_c1'])}</a></div>
 </section>'''
@@ -285,7 +290,7 @@ def home():
 <div><div class="v" id="rosa-p">14<small>s</small></div><div class="k" id="rosa-pk">Swell from the SSW</div></div>
 <div><div class="v" id="rosa-w">7<small>km/h</small></div><div class="k" id="rosa-wk">Wind, cross-shore</div></div>
 </div>
-<p class="rosa-link" id="rosa-plain" hidden><a class="btn btn-white" href="https://rosa.surf/spot/{ROSA_SPOT}">See today's forecast for {ROSA_NAME} on Rosa</a></p>
+<p class="rosa-link" id="rosa-plain"><a class="btn btn-white" href="https://rosa.surf/spot/{ROSA_SPOT}">See today's forecast for {ROSA_NAME} on Rosa</a></p>
 <p class="detail" id="rosa-meta"><span id="rosa-time">Mon 28 Sep, 20:30</span><span class="sep">|</span><a class="credit" href="https://rosa.surf/spot/{ROSA_SPOT}">Forecast for {ROSA_NAME} by Rosa</a></p></div>
 <div class="rosa-box" data-rosa="https://rosa.surf/widget/?spot={ROSA_SPOT}&amp;theme=light&amp;units=metric" data-title="Rosa surf forecast - {ROSA_NAME}">
 <div class="fallback"><a class="btn btn-white" href="https://rosa.surf/spot/{ROSA_SPOT}">See today's forecast for {ROSA_NAME} on Rosa</a></div></div>

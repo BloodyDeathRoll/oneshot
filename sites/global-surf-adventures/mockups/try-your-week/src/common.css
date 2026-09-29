@@ -130,7 +130,7 @@ svg.f{fill:currentColor;stroke:none}
 .foot p{color:var(--ink-2);font-size:16.5px}
 .foot .addr{color:var(--ink);font-size:19px;font-weight:600}
 .ftalk{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.ftalk .tile{display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:132px;padding:22px;border-radius:var(--r);background:#fff;font-weight:600;font-size:17px;transition:transform .25s var(--ease),box-shadow .25s}
+.ftalk .tile{display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:132px;padding:22px 18px;white-space:nowrap;border-radius:var(--r);background:#fff;font-weight:600;font-size:17px;transition:transform .25s var(--ease),box-shadow .25s}
 .ftalk .tile svg{width:28px;height:28px}
 .ftalk .tile:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(10,40,48,.10)}
 .foot-bar{display:flex;align-items:center;gap:24px;margin-top:64px;flex-wrap:wrap}

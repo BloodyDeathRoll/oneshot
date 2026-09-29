@@ -123,3 +123,21 @@ Shots: `shots/r4-round-1/`, `shots/r4-round-2/` (+ `vs-old-*.png`), `shots/r4-ro
 - **Calendar:** grid gap 0, side padding 2 px → at 360 px the popover and grid fit the column exactly (0 px overflow, 44 px day cells); below 340 px the cells may shrink under 44.
 - Unused media removed (vid-009e renditions, night-pool crops, 3:2 copies of img-111/115).
 - check-design ok on both pages (fonts Lora / Marck Script); funnel unchanged (1 tap, CTA above fold); hand-off re-verified: live $3,092.05 → `level-2-rollers?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1`; no 404s on either page.
+
+## Round 5 (visual 7.5, experience 7 — the boomerang hero)
+
+Shots: `shots/r5-round-1/` (+ `vs-old-*.png`), `shots/r5-round-1-book/`.
+- **Hero:** vid-009p (ping-pong, interpolated frames) deleted from dist. New `vid-010h`: vid-010, one direction, from Try your week's badge-free 1728 crop (`vid-010c-d1728.mp4`, copied/re-encoded, not linked), trimmed at 0.76 s so it opens on the warm golden-hour stand-up instead of the blue wide shot: 11.24 s, d1728 webm 2.42 MB / mp4 3.54 MB, m1280 webm 1.39 MB, m720 mp4 1.64 MB, no audio, faststart; poster = its first frame. No synthesised frames. Level 1's card uses the same footage (vid-010 is the only beginner clip).
+- **Title placement:** title and button in the upper sky band (≈21 vh from the top, centred horizontally) with a warm soft halo shadow; phone crop at 62 %. Conflict: calibration asks for vertical centring; this clip's vertical centre is the surfer, so the quiet band wins (coordinator's instruction).
+- **Script:** Marck Script tightened (-0.012em, word-spacing -0.2em, balanced wrap; 40–50 px on phones). Phone titles now one line; "Surf, breakfast, surf again" two.
+- **Level cards:** ≈450 px wide at 1440 (4:5 clips); phone carousel cards 88 %; booking-page level thumbnails 150 px (96 px on phones).
+- **One action at the end:** the phone bar is `visibility:hidden` from step 4 on; checked at the total and the hand-off.
+- **Alt texts** now come from `dossier.json images[].description` wherever one exists (img-024 "Pineapple held above the pool surface", img-061 "Drone shot of the open lounge and pool deck", …).
+- **Rosa, JS off:** only the plain link (no headline, no box). JS on: numbers stay invisible (space reserved) until the live JSON confirms ≤ 24 h; otherwise the plain link.
+- check-design ok on both pages; funnel unchanged; hand-off re-verified ($3,092.05 live → `level-2-rollers?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1`).
+
+## Round 6 (hero title back to true centre)
+
+- Hero clip is now `vid-010g`: vid-010 source, same badge-free crop (1728×972 at 192,108), cut from the golden-hour shots whose people stand off-centre or below the centre band: src 19.76–24.16 + 28.16–31.00 + 36.44–38.16 → 8.96 s, one direction (d1728 webm 2.02 MB / mp4 2.53 MB, m1280 webm 1.15 MB, m720 mp4 1.23 MB). vid-010h deleted.
+- Title and button centred horizontally and vertically again, with a soft radial shade behind the title only plus the halo shadow; header shadow strengthened for the pale sky frames.
+- Checked at 4 loop times (0.7, 3.2, 5.6, 8.4 s) at 1440 and 390 (`shots/r6-hero/sheet.png`): the title never sits over a head; it crosses bodies/water in some shots. check-design ok.
