@@ -330,3 +330,225 @@ Nothing reads as generated. At least one honest limit: yes. Register matches the
 ### Verdict: **PASS** (round 2, full-file re-check)
 
 Ledger line due (not written by me): `copy_humanised → copy_passed`, with the note "round 2 PASS: 70 rows, 0 unsourced, 0 contradicted; all 9 round-1 findings closed; rooms[] empty (owner item, surf_camp must-have unmet)".
+
+---
+
+## Round 3 — full-file re-check after the mockup gate (`mockup_extras`, short booking labels), 2026-09-29
+
+Reviewer: copyeditor 0.3.1. I am independent of the copywriter (0.3.3) and the humanizer (0.2.0). Hard constraint 6 applies: I re-traced every sentence and field of `copy/en.json` to `dossier/global-surf-adventures/dossier.json`, passed or new. Nothing is carried over from round 2 on trust.
+
+## Verdict: **FAIL** (round 3)
+
+2 `unsourced` sentences and 3 `unsourced` photo placements (implied claims) · 0 `contradicted` · 1 voice failure. The fix list is at the end. Everything else passes, including the deposit line and the word limits.
+
+### Scope check
+
+- **Dossier** `a372213` → `3ea58be` (harvest addendum). Machine diff:
+  - New keys: `rooms_engine`, `room_photo_groups`, `offers[0–2].package_items_engine`, `business.logo`, `contact.instagram_profiles`, `contradictions[7]` (twin bed configuration), and `gaps[16–19]`.
+  - `offers[0–2].includes_engine` is re-fetched with the same items (L3 `[4]`: a whitespace fix only).
+  - No key behind a passed field changed.
+- **`en.json`** round 2 (`f6ac133`) → now:
+  - `bookingLinks[0–4].label` shortened. URLs unchanged.
+  - `mockup_extras` added.
+  - No other field changed (machine diff).
+- **Draft → final** (`en.draft.json` → `en.json`): the humanizer changed `levels[2].one_liner`, the three `inclusions` equipment lines, `optional_extra`, and `rooms[0–2].line` / `.description`. Each of these is guilty until traced, and each is traced below. Two lines that appeared in this step fail: R3-F1 and R3-F2.
+- **Testimonials:** all nine machine-checked again against `reviews.quotes[]`.
+- **Word limits** (machine count):
+  - Hero titles: "Surf weeks in Sri Lanka" 5, "Next set is yours" 4, "Your surf week starts here" 5. **All ≤ 5.** The subtitles have 6 words each, but they are subtitles, not titles.
+  - CTAs: all 20 `ctas.*` and all six `bookingLinks[].label` are **≤ 3 words.** The longest are "Book package now", "Choose your level", "Choose this room", "Questions? Ask us" and "Open in Maps".
+
+### Rulings asked for
+
+1. **Deposit line — `booking.deposit`: "40% deposit to book, the rest 45 days before arrival. Booking less than 45 days ahead? You pay in full." → `sourced`.**
+   - `booking.deposit_terms.value` reads "40% deposit; remaining 60% within 45 days before arrival; full payment when booked less than 45 days before arrival" (the business's terms page, fetched 2026-09-28). `business.legal.note` says the same.
+   - Every clause of the line is in that source. No `contradictions[]` entry covers payment terms.
+   - Booking.com's "cash only" (`stayInfo.rules`) is another channel's rule, not a contrary statement.
+   - Stating the business's own terms is not payment capture, so playbook §4/§5 ("no guest data, holds or payment on our pages") is not breached.
+   - Carried as owner items:
+     - The terms page is the agency's general T&C.
+     - The engine's checkout was never reached (`docs/bookinglayer.md`), so it is unverified that the engine charges 40%.
+     - The currency (NIS or USD) is not stated. The line gives a percentage only, which is correct.
+2. **"The pick for a couple" (Deluxe `description`) → `unsourced`, R3-F1.**
+   - It is a recommendation, and the dossier makes none.
+   - It is traced only to `rooms_engine[2].capacity` 2. The Shared Twin has the same capacity (2) and, per its engine text, a double bed.
+   - The engine samples a "couple" guest mix for all three types. For a couple the dorm is +$0 and the twin +$80 pp, against +$418 pp for the Deluxe.
+   - The line first appeared in humanizer round 3 (the draft read "Our double rooms have …").
+   - The rest of that description is `sourced` (rows R3-47, R3-48).
+3. **Claims that rest on the proposed room photo grouping (`room_photo_groups`) → a proposal is not a source.**
+   - The block's own status reads "proposal — the owner must confirm which photo shows which bookable room type", and `gaps[16]` says the same. It is treated like `audit.json`: it can order and place things, but it never sources a claim.
+   - **Words.** Dorm `line` "Four single beds and a loft up a ladder." → **`unsourced`, R3-F2.**
+     - No dossier text mentions a loft. The engine description says only "4 comfortable single beds".
+     - The loft comes from the harvester's reading of photos (img-063, img-078) inside the proposal block.
+     - The grouping also shows mattresses on the loft floor (img-095, img-068), so "four single beds **and** a loft" may misdescribe where the beds are.
+     - This line first appeared in humanizer round 3. The draft had the same loft clause, so it goes back to the copywriter.
+   - **Photos (implied claims: "this photo is this room").**
+     - These placements are acceptable: the photo is in the property's own Booking.com room gallery (with `source_url`), under the Booking type that the name maps to. That covers the dorm img-063/078/095/042/050, the twin img-080/084/083, the deluxe img-081/082/041/043/044/071 and portraits img-028/029/045/048, and the shared bathrooms img-064/069/079.
+     - The twin mapping is medium confidence because of `contradictions[7]`. It still passes, because the twin copy states no bed configuration.
+     - Three placements have **no source**, only the harvester's visual match. Each is `unsourced` (implied), R3-F3:
+       - **img-068** in the dorm gallery ("medium", no `source_url`).
+       - **img-013** in the twin gallery ("medium", "not labelled at its source").
+       - **img-066** in the deluxe gallery ("medium … could also be read as the engine twin"). Placing it under Deluxe settles that ambiguity.
+     - The whole grouping must be confirmed by the owner before any of it moves into the live `rooms[].photo` / `photos[]`.
+4. **Word limits:** met (scope check).
+5. **"Our rooms" with the three engine types — `framing`, not `contradicted`.**
+   - This differs from round-1 F6 (two engine options, while the site named three categories).
+   - Every source now names three categories that line up: site "twin / double-triple / family (usable as shared)", lodge page "4 beds dorms … private rooms", Booking "Superior Twin / Deluxe Double / Dorm", and engine "Shared Twin / Deluxe double / Mixed dorm".
+   - The cards avoid what is still disputed: the twin's beds (`[7]`), the Deluxe's extra single bed, and a type count.
+   - `rooms[]` itself stays `[]` until the owner confirms (C1 stands).
+
+### Fact audit (whole file)
+
+**Passed fields.** Re-traced one by one. The dossier keys behind them are unchanged. Row numbers follow the round-2 table.
+
+| # | Field | Claim | Dossier key (re-read) | Verdict |
+|---|---|---|---|---|
+| 1–2 | `businessName`, `businessType` | "Global Surf Lodge Kabalana", `surf_camp` | `business.name`, `businessType`, `business.type` | sourced |
+| 3–5 | `tagline` | all levels / south coast / a few steps from the ocean | `description_packages`; `business.description`; `distance_to_beach` (+ Booking 40 m) | sourced |
+| 6–7 | `closing` | week per level; ask on WhatsApp | `offers[0–2]`; `booking.whatsapp`; `contradictions[0]` true on both sides | sourced |
+| 8 | `featureLine` | footwear / chilling out | `business.description` | sourced |
+| 9–13 | intro | heading, ¶1, jungle, three levels, Freestylers for independent travellers | `business.description`; `experiences.note`; `offers[0–3]` | sourced |
+| 14–18 | day | morning surf → breakfast → free time → afternoon surf → dinner | `business.day_at_the_camp` | sourced |
+| 19 | levels heading | "Pick your level" | — | framing |
+| 20–26 | levels ¶1–¶4 | L1/L2/L3 descriptions, soft boards, spot notes, Freestylers | `offers[0–3].description`; `facilities[10]`; `location.spot.note` | sourced |
+| 27–33 | price block | $1,466 pp / 7 nights, engine base price on 28 Sep, supplements, Saturday start, 7–28 nights, ≤ 6 guests, water/coffee/tea | `offers[0–2]` (.price, .note, .duration_options, .max_guests_per_booking, both inclusion lists) | sourced |
+| 34–38 | rooms block | twelve rooms, one big family, every-room amenities, pool/bar/kitchen | `staying_with_us`; `rooms[0].note`; `room_amenities` | sourced. The dorm's "private outdoor bathroom" (`rooms_engine[0]`) is consistent with "private toilet and shower" |
+| 39–41 | guests | categories 9.5 / 9.2 / 9.2; pool, open-air bathroom, bowls | `reviews.booking.categories`; `reviews.quotes[1]` | sourced |
+| 42–44 | getting here | Booking distances | `distance_to_beach.others[0]` | sourced |
+| 45–46 | `spot` | The Rock and South Point; tuk-tuk | `location.spot.value` | sourced |
+| 47–48 | `season`, `languagesSpoken` | empty | gaps | correctly empty |
+| 49–55 | `lessons[0–3]` | labels, levels, includes, price, "From 4 nights" | `engine_products`; `levels`; both inclusion lists; `offers[3].gap` | sourced |
+| 56 | `credentials[0]` | ISA-certified surf guides | `credentials[0]` | sourced |
+| 57 | `rooms[]` | `[]` | `contradictions[3]` and now `[7]` open | correctly empty (C1) |
+| 58–59 | `stayInfo` | 14:00–20:00 / 11:00; pets, extra beds, cots | `stayInfo.checkIn/checkOut/rules` | sourced |
+| 60 | `amenities[0–14]` | fifteen rows | `facilities[]`. "Airport shuttle" does not conflict with the new "airport pickup not included": no "free" is claimed | sourced |
+| 61 | `ratings[0]` | 8.6/10, 80, 2026-09-28 | `reviews.booking` | sourced |
+| 62 | `testimonials[0–8]` | nine quotes | `reviews.quotes[]` verbatim (machine-checked) | sourced |
+| 63–67 | `contact` | phone, WhatsApp empty, email, address, map | `contact.*`, `location.address`, `location.map_url` | sourced / correctly empty |
+| 68 | `bookingLinks[0]` | **"Book package now"** → category page | `booking.engine_url` (label: a template-style CTA; no claim) | sourced |
+| 69 | `bookingLinks[1–4]` | **"Book Level 1/2/3", "Book Freestylers"** | `engine_products[0–3]`. The disputed "B&B only" is gone from the button | sourced |
+| 70 | `bookingLinks[5]` | "Ask on WhatsApp" + prefill | `booking.whatsapp` | sourced |
+
+**`mockup_extras`.** Every key.
+
+| # | Key | Claim | Dossier key (re-read) | Verdict |
+|---|---|---|---|---|
+| R3-1 | `hero.title_c1` | "Surf weeks in Sri Lanka" | `offers[0–2]`; `description_packages` | sourced |
+| R3-2 | `hero.title_c2` | "Next set is yours" | `business.description` | sourced |
+| R3-3 | `hero.title_c3` | "Your surf week starts here" | `tagline.candidates[0]` (owner headline), shortened | framing |
+| R3-4 | `hero.subtitle` | "All levels, steps from the beach" | `description_packages`; `business.description` "Just a few steps from the ocean"; Booking 40 m. No place name (`[5]` untouched) | sourced |
+| R3-5 | `hero.subtitle_alt` | "Sri Lanka's south coast, all levels" | `description_packages` | sourced |
+| R3-6 | `ctas.*` (20) | labels only | targets `engine_products`, `booking.whatsapp`, `contact.*`, `map_url`, `instagram_profiles[1]`. "Choose this room", not "book", because the engine cannot receive the room (`docs/bookinglayer.md` §3) | framing |
+| R3-7 | `section_titles.*` | "Our rooms", "The lodge", "The waves", … | ruling 5; `location.spot` | framing |
+| R3-8 | `levels[0].one_liner` | "Your first time on a board. No experience needed." | `offers[0].description` | sourced |
+| R3-9 | `levels[1].one_liner` | "You can stand up. Now catch green waves." | `offers[1].description` | sourced |
+| R3-10 | `levels[2].one_liner` | "Already carving? Get sharper, on whichever spot is best that day." | `offers[2].description`; `location.spot.note` | sourced |
+| R3-11 | `levels[3].one_liner` | "For independent travellers who want the lodge's vibe." | `offers[3].description`; no board (`[1]` untouched) | sourced |
+| R3-12 | `detail_lines.welcome` | "12 rooms \| Saturday check-in \| ISA-certified surf guides" | `staying_with_us`; `duration_options` "Saturday check-in only"; `credentials[0]` | sourced |
+| R3-13 | `detail_lines.level_price` | "From $1,466 pp \| 7 nights" | `offers[0–2].price`; "From" because of `rooms_engine` supplements | sourced |
+| R3-14 | `detail_lines.freestylers` | "Freestylers – B&B only \| from 4 nights" | product name `engine_products[3]` (round-1 ruling 3); `offers[3].gap` | sourced |
+| R3-15 | `detail_lines.trust` | "8.6 on Booking.com \| 80 reviews \| 28 Sep 2026" | `reviews.booking` | sourced |
+| R3-16 | `detail_lines.rating_categories` | 9.5 / 9.2 / 9.2 | `reviews.booking.categories` | sourced |
+| R3-17 | `detail_lines.every_room` | a/c, fan, safe, private toilet and shower, board rack | `room_amenities` | sourced |
+| R3-18 | `detail_lines.stay` | 14:00–20:00 / by 11:00 | `stayInfo` | sourced |
+| R3-19 | `inclusions.*` "7 nights' accommodation", "7 breakfasts", "5 dinners" | per level | `includes_engine` and `includes_site`, all three levels | sourced |
+| R3-20 | "5 guided surf sessions of 2 hours" (L1, L2) / "5 coached …" (L3) | per level | both lists; L3 engine "professional coach", site "coached" | sourced |
+| R3-21 | "5 surf theory lessons" | all levels | both lists (L1 `package_items_engine` lacks it: an absence, not a contrary statement) | sourced |
+| R3-22 | "Unlimited surf equipment all week" | all levels | engine "7 days of unlimited equipment use"; `business.concept` | sourced |
+| R3-23 | "Walk or ride to the surf, depending on the spot" | all levels | engine "Walk or transport (depending on surf location)"; `facilities[9]` | sourced |
+| R3-24 | "A cultural or nature excursion" | all levels | both lists ("half day" left out) | sourced |
+| R3-25 | "Unlimited drinking water", "Unlimited local coffee and tea" | all levels | both lists | sourced |
+| R3-26 | `inclusions.optional_extra` | "Not included: airport pickup. From $220 pp, add it on the booking page." | `package_items_engine` "Airport pickup / drop off", `included: false`, `price_from` 220, per person | sourced |
+| R3-27 | `inclusions.freestylers` | `[]` | `gaps[18]`; `[1]` | correctly empty |
+| R3-28 | dorm `label` | "Mixed dorm room – 4 beds" | `rooms_engine[0].engine_title` | sourced |
+| R3-29 | dorm `line` S1 | "Four single beds and a loft up a ladder." | beds: `.description`. **loft/ladder: `room_photo_groups` only (proposal)** | **unsourced — R3-F2** |
+| R3-30 | dorm `line` S2 | "The bathroom is outdoors, and it's yours." | `.description` "private outdoor bathroom" | sourced |
+| R3-31 | dorm `description` S1–S2 | "Our new gallery room. Four comfortable single beds, a private outdoor bathroom, and space for a group that wants to stay together." | `.description` "new gallery room … 4 comfortable single beds … private outdoor bathroom … suitable for larger groups" | sourced |
+| R3-32 | dorm `description` S3–S4 | "On a budget? This is the one." | `.description` "travelers on a budget"; supplement $0 on the sample | sourced (the owner's own claim; see V2 on the form) |
+| R3-33 | dorm `details` | "Sleeps 4 \| 4 single beds \| Private outdoor bathroom \| Shared" | `.capacity`, `.beds`, `.description`, `.is_private` false | sourced |
+| R3-34 | dorm `supplement` | "Included in the package price" (sample, as of 29 Sep 2026) | `.supplement_samples` 0 / 0 | sourced (a sample; `rooms_note` dates it) |
+| R3-35 | dorm `gallery` | img-063, 078, 095, 042, 050, 064 | `room_photo_groups` (Booking dorm gallery / engine photo); img-064 `shared_all_types` | sourced (implied) |
+| R3-36 | dorm `gallery` | **img-068** | medium, no `source_url` | **unsourced (implied) — R3-F3** |
+| R3-37 | twin `label` | "Shared Twin Room – 2 Beds" | `rooms_engine[1].engine_title` | sourced |
+| R3-38 | twin `line` | "Two beds and a private bathroom, with the beach in view all day." | `.description` "private bathroom and all day beach view"; "2 Beds" is true in all three sources of `[7]` | sourced |
+| R3-39 | twin `description` | "Two beds, a lovely private bathroom, and the beach in view all day long. It's a shared room. Want it to yourselves? Choose private use when you check out on the booking page." | `.description` (incl. the private-reservation note); `.is_private` false | sourced. The engine puts the box on the accommodation step ("above"), not at checkout, but "on the booking page" holds |
+| R3-40 | twin `details` | "Sleeps 2 \| 2 beds \| Private bathroom \| Shared, or book it privately" | `.capacity`; title; `.description`; `.single_room_supplement` exists | sourced |
+| R3-41 | twin `supplement` | "+$140 pp … one guest" / "+$80 pp … two sharing" | `.supplement_samples` 140.04 / 80.025 | sourced (rounded; sample) |
+| R3-42 | twin `gallery` | img-080, 084, 083, 069, 079 | Booking "Superior Twin" gallery / `shared_all_types` | sourced (implied; mapping medium, no bed configuration stated) |
+| R3-43 | twin `gallery` | **img-013** | "not labelled at its source" | **unsourced (implied) — R3-F3** |
+| R3-44 | deluxe `label` | "Deluxe double room" | `rooms_engine[2].engine_title` | sourced |
+| R3-45 | deluxe `line` | "A queen-size bed for two and a private bathroom of its own." | `.description` queen; `.capacity` 2; `room_amenities` | sourced |
+| R3-46 | deluxe `description` S1a | **"The pick for a couple"** | none (ruling 2) | **unsourced — R3-F1** |
+| R3-47 | deluxe `description` S1b | "one queen-size bed and a private bathroom" | `.description`; `room_amenities` | sourced |
+| R3-48 | deluxe `description` S2 | "To keep it just for the two of you, choose private use when you check out on the booking page." | `.description` "to privately reserve this room … mark the selection box … upon proceeding to check out" (owner's words) | sourced. Note: `.is_private` true pulls the other way; owner item already listed |
+| R3-49 | deluxe `details` | "Sleeps 2 \| Queen-size bed \| Private bathroom" | `.capacity` 2; Booking "1 large double bed" | sourced. Note: the site's "double/triple" and the engine's "optional additional single bed" would make it 3; owner item |
+| R3-50 | deluxe `supplement` | "+$418 pp for 7 nights" | `.supplement_samples` 418.46 | sourced |
+| R3-51 | deluxe `gallery` / `gallery_portrait` | img-081, 082, 041, 043, 044, 071; 028, 029, 045, 048 | Booking "Deluxe Double Room" gallery | sourced (implied) |
+| R3-52 | deluxe `gallery` | **img-066** | medium; "could also be read as the engine twin" | **unsourced (implied) — R3-F3** |
+| R3-53 | `rooms_note` | "Room prices change with the dates. Sample for 20–27 Feb 2027; prices from the booking engine, 29 Sep 2026." | `rooms_engine.note`, `.fetched_at` | sourced |
+| R3-54 | `booking.field_checkin*`, `nights_options` | Saturdays; 7/14/21/28 | `duration_options` ("start on a Saturday", never "every Saturday") | sourced |
+| R3-55 | `booking.field_women/men/couples`, `guests_help` | guest types; "Up to 6 guests per booking." | `rooms_engine` source params; `max_guests_per_booking` 6 | sourced |
+| R3-56 | `booking.room_*`, `total_*`, `currency_note`, `prices_*`, `step_*`, `summary_labels`, `stepper_*` | interface labels | `rooms_engine.note` (types vary by date); currency USD. `prices_live` depends on the playbook §4 booking-engine rule, which is still pending Shahar's confirmation (not a copy matter) | framing |
+| R3-57 | `booking.deposit` | 40% / rest 45 days before / full if < 45 days | `booking.deposit_terms`; `business.legal.note` (ruling 1) | sourced |
+| R3-58 | `booking.handoff`, `handoff_nothing_booked` | confirm room → airport pickup → details → pay; nothing booked until checkout | `booking.path`; `package_items_engine`; `docs/bookinglayer.md` flow (accommodation → add-ons → guest form → payment) | sourced |
+| R3-59 | `logo.*` | files; alt "Global Surf"; home label | `business.logo` (+ `.variants[0]`), business-owned; the agency logo (owner item) | sourced |
+| R3-60 | `instagram.*` | @globalsurf_kabalana; "The home for all ocean lovers."; tile label | `contact.instagram_profiles[1]` handle, url, bio | sourced |
+| R3-61 | `socials.*` | lodge IG; YouTube; Facebook GlobalSURFltd | `contact.socials` | sourced |
+
+Counts:
+- Passed fields: 70 rows, 0 unsourced, 0 contradicted.
+- `mockup_extras`: 61 rows, **5 unsourced** (R3-29, R3-36, R3-43, R3-46, R3-52), 0 contradicted.
+
+**Open contradictions, each checked against the whole file:**
+- `[0]` WhatsApp: true on both sides.
+- `[1]` Freestylers board: only in product names.
+- `[2]` inclusions: only shared items appear.
+- `[3]` room mix: ruling 5.
+- `[4]` yoga frequency: absent.
+- `[5]` place name: absent from the new lines.
+- `[6]` Mozambique: absent.
+- `[7]` twin beds: only "2 beds", which is true in all three sources.
+- Not yet an entry: the deluxe extra single bed vs "No extra beds". Not stated.
+
+### Voice audit (per section)
+
+| Section | Rhythm | Triads | Padding | Concrete | Reads aloud | Note |
+|---|---|---|---|---|---|---|
+| passed blocks | ✓ | ✓ | ✓ | ✓ | ✓ | unchanged from round 2 |
+| hero / CTAs / section titles | ✓ | ✓ | ✓ | ✓ | ✓ | |
+| level one-liners | ✓ | ✓ | ✓ | ✓ | ~ | L3 "Get sharper, on whichever spot is best that day" — the comma stumbles aloud. Note only |
+| inclusions | ✓ | – | ✓ | ✓ | ✓ | list items |
+| room cards | ✗ | ✗ | ✓ | ✓ | ✗ | **V2**, below |
+| booking microcopy | ✓ | ✓ | ✓ | ✓ | ✓ | |
+
+**V2 (voice, humanizer).** The dorm and twin cards are built on the same template, and it reads as generated:
+- Dorm: "Four comfortable single beds, a private outdoor bathroom, and space for a group that wants to stay together. On a budget? This is the one."
+- Twin: "Two beds, a lovely private bathroom, and the beach in view all day long. It's a shared room. Want it to yourselves? Choose …"
+
+Both are a verbless three-item fragment followed by a rhetorical-question hook, on two sibling cards. The question hook also recurs across the new lines ("Already carving?", "Questions? Ask us", "On a budget?", "Want it to yourselves?", "Booking less than 45 days ahead?"), on top of the passed "Not sure which one fits?".
+
+### Completeness
+
+- C1 (round 2) stands: `rooms[]` is `[]`. `mockup_extras.rooms` is for mockups only. Moving it into `rooms[]` needs the owner's confirmation of the rooms and a copyeditor ruling.
+- The schema gaps that `sources.md` lists (hero lines, one-liners, inclusion lists, room descriptions and galleries, logo, socials) are correctly not forced into existing fields.
+- No duplication: the detail lines are compositions of passed fields, not second copies.
+
+### Fix list — what must change to pass
+
+| ID | Where | Sentence / item | Verdict | Back to |
+|---|---|---|---|---|
+| R3-F1 | `mockup_extras.rooms[2].description` | "The pick for a couple" | unsourced (a recommendation the dossier does not make; the twin also sleeps 2 and costs less) | copywriter (appeared in humanizer round 3) |
+| R3-F2 | `mockup_extras.rooms[0].line` | "Four single beds and a loft up a ladder." | unsourced (loft/ladder rests only on the `room_photo_groups` proposal; bed placement unclear) | copywriter |
+| R3-F3 | `mockup_extras.rooms[0].gallery` img-068 · `rooms[1].gallery` img-013 · `rooms[2].gallery` img-066 | photo placed under a room type | unsourced (implied; the harvester's visual match only, no `source_url`; img-066 is ambiguous between twin and deluxe) | copywriter |
+| V2 | `mockup_extras.rooms[0–1].description` | the parallel three-item fragment + question hook on sibling cards | voice | humanizer |
+
+### Owner items (added this round; not copy failures)
+
+- The deposit terms: whether the engine charges 40%, and the currency.
+- The whole room-photo grouping (`gaps[16]`).
+- Whether the Deluxe is private by default, and whether it sleeps 2 or 3.
+- The Deluxe has no engine photo.
+- The logo is the agency's; there is no lodge logo.
+
+### Verdict: **FAIL** (round 3, full-file re-check)
+
+Ledger line due (not written by me): `copy_humanised → copy_failed`, reason "round 3: 5 unsourced in mockup_extras (Deluxe 'pick for a couple'; dorm loft from the photo-grouping proposal; 3 photo placements with no source) + V2 room-card template voice; passed fields and deposit line clean; word limits met".
