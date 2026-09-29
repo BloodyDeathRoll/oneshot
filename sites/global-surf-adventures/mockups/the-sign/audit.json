@@ -1,9 +1,9 @@
 {
  "slug": "global-surf-adventures",
  "variant": "the-sign",
- "measured_at": "2026-09-29T19:14:54.881Z",
+ "measured_at": "2026-09-29T20:02:41.221Z",
  "first_load": {
-  "requests": 8,
+  "requests": 15,
   "hosts": [
    "fonts.googleapis.com",
    "localhost:8980",
@@ -13,16 +13,16 @@
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 467220,
-  "bytes_html": 67771,
+  "bytes_total": 609441,
+  "bytes_html": 67970,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 104852,
-  "bytes_images": 294597,
-  "largest_image_bytes": 100441,
-  "lcp_ms": 500,
+  "bytes_images": 436619,
+  "largest_image_bytes": 49384,
+  "lcp_ms": 492,
   "cls": 0.0026,
-  "dcl_ms": 769
+  "dcl_ms": 807
  },
  "booking": {
   "external_booking_hrefs": [
@@ -49,19 +49,12 @@
   "note": "no drawer; every action is a plain link"
  },
  "a11y": {
-  "images": 34,
+  "images": 33,
   "images_without_alt": 0,
-  "images_alt_empty_decorative": 0,
-  "tapables": 70,
-  "tapables_under_44px": 9,
-  "tapables_under_44px_examples": [
-   " 39x44",
-   " 39x44",
-   " 39x44",
-   " 39x44",
-   " 39x44",
-   " 39x44"
-  ],
+  "images_alt_empty_decorative": 1,
+  "tapables": 71,
+  "tapables_under_44px": 0,
+  "tapables_under_44px_examples": [],
   "headings": [
    "H1",
    "H2",
@@ -82,15 +75,16 @@
    "H2",
    "H2",
    "H2",
+   "H2",
    "H2"
   ],
   "has_skip_link": true,
   "lang": "en"
  },
  "no_js": {
-  "text_length": 6589,
+  "text_length": 6129,
   "booking_links_reachable": 0,
-  "visible_images": 34
+  "visible_images": 33
  },
  "reduced_motion": {
   "canvases": 0,

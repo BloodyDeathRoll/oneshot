@@ -1,0 +1,19 @@
+{
+  "target": "http://127.0.0.1:18431/book/?level=level-2-rollers&room=twin",
+  "widths": {
+    "desktop": {
+      "pageHeight": 6631,
+      "scroller": "window",
+      "captures": 9,
+      "truncated": false,
+      "errors": []
+    },
+    "mobile": {
+      "pageHeight": 7360,
+      "scroller": "window",
+      "captures": 10,
+      "truncated": false,
+      "errors": []
+    }
+  }
+}

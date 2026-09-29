@@ -135,3 +135,11 @@ All `business-owned` per `dossier.images[]`, none `not_lodge`, no stock.
 ## other variants
 
 Concepts 1 and 2 are being built in parallel by other designers in their own folders. They were not open when this was written, so the hard-constraint-5 comparison is left to the orchestrator and critic. Only one business is in this run.
+
+## Round 8: small fixes (`shots/round-8/`)
+- **Booking-page MP4 fallback:** the `data-mp4` paths were missing `../` because the build's path regex skipped attribute names with digits. Fixed. Re-tested with every `.webm` request blocked, at 1440 and 390: `200 ../video/vid-002e-p45.mp4`, and the clip plays.
+- **`vid-010-p45.mp4`:** re-encoded at crf 28 to 1.92 MB, under the 2 MB phone cap. The webm is 1.90 MB.
+- **Hero title:** 0.9 px white stroke on the Damion title and a soft layered text-shadow (the title's own shade only, no band on the video). It now holds over the white umbrellas (`round-8/hero-poster-1440.png`).
+- **Phone level carousel:** each card's media is 1:1 on phones and its "Choose Level N" button is full-width, so the whole card, button included, is on screen while swiping (`round-8/levels-390.png`).
+- **Closing sub-line:** one line from 900 px up; it wraps, balanced, below that (`round-8/closing-1440.png`).
+- **check-design:** ok on both pages.

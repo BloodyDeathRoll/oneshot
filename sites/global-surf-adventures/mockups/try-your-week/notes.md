@@ -236,3 +236,46 @@ overlap). The page now matches the old site's handwritten character and beats it
 
 Checks: check-design ok on both pages (0 problems, 0 warnings); funnel over http: CTA above fold true,
 clicks_to_book 1, 0 broken. Hand-off re-tested (JS on and off, couple, L2, 20–27 Feb): start/end, couple=1.
+
+---
+
+## Fix round 4 (visual 7.5, experience 8, critic pass) — make the interactive one its own
+
+**look-log, round 9** (`shots/round-9`, booking `shots/fix-book-3/`, cold load `shots/checks/cold-*.png`), beside
+old-site-home/lodge and against Postcard's convergence: the page had become centred text on pale grounds with
+Postcard's hero frame, closing and footer. Now it has its own rhythm: surf-first hero → full-bleed level cinema →
+half-bleed week slideshow → room viewer → full-bleed calm-water feature → lodge → guests → waves → Instagram →
+sunset closing → tile footer. It keeps the old site's handwritten titles and centred hero, and beats it clearly.
+
+1. **Pace:** the level stage is now full-bleed (video edge to edge, `min(76vh, 56.25vw)` tall; 1920/1728 sources
+   drawn ≤ 1440 css px, so not upscaled at 1×), with the pills above and the info row below. "The week" is a
+   half-bleed section: the slideshow runs to the left viewport edge (58 vw, 4:3, dots on the photo), text beside
+   it. With the feature and closing that gives four full-width picture moments. No dark ground behind body text.
+2. **Own colour:** sea-glass from the pool, `--tint-soft #DCEFED` / footer `#C5E2E0` (Postcard stays grey).
+   **Own closing:** img-111 (a longboarder at sunset), light 38 % shade; the first sentence of `closing` ("Book
+   the week for your level.") in Satisfy, centred mid-band; the rest as one short line under it; buttons below.
+3. **Own footer:** two columns — "Getting here" (address, directions, stay line, map button) beside a 2×2 grid of
+   white contact tiles (WhatsApp, Call, Email, Instagram) — then a strip with logo, tagline and social icons, and
+   the legal row.
+4. **Own hero frame:** `vid-009r` is vid-009e re-ordered to open on the surf half (2.85 s → end, then the pool
+   deck), so the poster and first seconds are the surfer by the rock island, not Postcard's pool deck.
+   Renditions: d1920 webm 3.1 MB / mp4 3.3 MB, m1280 webm 1.7 MB / mp4 1.6 MB; poster WebP 1920 (33 KB) / 1280
+   (21 KB) + JPG. Phone crop keeps the surfer (object-position 64 %).
+5. **Poster by 0.5 s on a slow phone:** the poster is preloaded (`<link rel=preload as=image>`, per breakpoint,
+   fetchpriority high); Google Fonts CSS no longer blocks rendering (media=print swap + noscript); the 44 KB logo
+   moved out of the inline sprite into `img/logo.svg`; the icon sprite moved to the end of the body. HTML 119 KB →
+   75 KB. A colour gradient sits behind the poster (a 32 px LQIP image failed check-design's full-bleed-source rule).
+   Measured at 1.6 Mbit/s, 150 ms RTT, 4× CPU, 390 px: poster, title and CTA painted at 0.5 s; LCP 308 ms.
+6. **Bar price:** stays "From $1,466 pp" (the snapshot) until a date is chosen; then the total ($3,092.05 for the
+   couple / twin / 20 Feb test).
+7. **Duplicate control:** the home level stage has only the pill tabs (plus swipe on the video); the old dots were
+   removed in round 2 and are not in the markup. The room viewer has room pills + photo dots, which control
+   different things (room vs photo).
+
+Checks: check-design ok on both pages (0 problems); funnel over http: CTA above fold true, clicks_to_book 1,
+0 broken; 0 tap targets under 44 px at 390 and 1440; hand-off re-tested JS on and off (start/end, couple=1).
+
+**Round 10 (closing only):** Postcard now also closes on img-111, so the closing is **img-105** (palm silhouettes
+at dusk, business-owned, place unidentified — atmosphere, not captioned or presented as the lodge; not used by
+Postcard or The Sign), 30 % shade, same centred Satisfy line, one short line and buttons. Shots:
+`shots/round-10/closing-desktop.png`, `closing-mobile.png`. check-design ok.

@@ -141,7 +141,7 @@ SPRITE = f'''<svg width="0" height="0" style="position:absolute" aria-hidden="tr
 </g></svg>'''
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-         '<link href="https://fonts.googleapis.com/css2?family=Satisfy&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">')
+         '<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Marck+Script&display=swap" rel="stylesheet">')
 
 def head(pre, title, desc, extra=''):
     return f'''<!doctype html>
@@ -172,30 +172,27 @@ def header(pre, home):
 def footer(pre):
     st = X['detail_lines']['stay']
     addr = C['contact']['address']
-    return f'''<footer class="foot" id="contact"><div class="wrap">
-<div class="foot-grid">
-<div><a class="logo" href="{pre}./" aria-label="{e(X['logo']['home_link_label'])}"><svg viewBox="0 0 128 39"><use href="#logo"/></svg></a>
-<p>{e(C['tagline'])}</p></div>
-<div><h2>Talk to us</h2><div class="stack">
+    return f'''<footer class="foot" id="contact">
+<div class="wrap foot-top"><div class="brand"><a class="logo" href="{pre}./" aria-label="{e(X['logo']['home_link_label'])}"><svg viewBox="0 0 128 39"><use href="#logo"/></svg></a><p>{e(C['tagline'])}</p></div>
+<div class="talk"><h2>Talk to us</h2><div class="row">
 <a class="btn btn-white" href="{e(WA_URL)}">{icon('wa','wa')}{e(X['ctas']['whatsapp_footer'])}</a>
 <a class="btn btn-white" href="tel:{TEL}">{icon('phone')}{e(X['ctas']['call'])}</a>
-<a class="btn btn-white" href="mailto:{MAIL}">{icon('mail')}{e(X['ctas']['email'])}</a></div></div>
-<div><h2>Visit</h2><p>{e(addr)}<br>{e(st)}</p>
-<a class="btn btn-white" href="{e(MAP)}">{icon('pin')}{e(X['ctas']['map'])}</a></div>
-<div><h2>Follow</h2><div class="social">
+<a class="btn btn-white" href="mailto:{MAIL}">{icon('mail')}{e(X['ctas']['email'])}</a></div></div></div>
+<div class="wrap foot-mid"><div class="visit">{icon('pin','pin')}<p><b>{e(addr)}</b><br>{e(st)}</p></div>
+<a class="btn btn-white" href="{e(MAP)}">{e(X['ctas']['map'])}</a>
+<div class="social" aria-label="Follow">
 <a href="{e(SOC['instagram'])}" aria-label="Instagram">{icon('ig')}</a>
 <a href="{e(SOC['youtube'])}" aria-label="YouTube">{icon('yt')}</a>
 <a href="{e(SOC['facebook'])}" aria-label="Facebook">{icon('fb')}</a></div></div>
-</div>
-<div class="legal"><span>© Global Surf Adventures</span><a href="{TERMS}">Terms and conditions</a></div>
-</div></footer>'''
+<div class="wrap legal"><span>© Global Surf Adventures</span><a href="{TERMS}">Terms and conditions</a></div>
+</footer>'''
 
 # ---------------------------------------------------------------- home page
 def home():
     pre = ''
     hero = f'''<section class="hero" aria-label="{e(C['businessName'])}">
-<picture class="hero-media"><source media="(max-width:700px)" type="image/webp" srcset="img/vid-009e-poster-m.webp"><source type="image/avif" srcset="video/vid-009e-poster.avif"><source type="image/webp" srcset="img/vid-009e-poster-960.webp 960w, img/vid-009e-poster-1920.webp 1920w" sizes="100vw"><img src="img/vid-009e-poster-1920.jpg" width="1920" height="1080" alt="" fetchpriority="high"></picture>
-<video muted loop playsinline preload="none" aria-hidden="true" data-hero data-webm-d="video/vid-009e-d1920.webm" data-mp4-d="video/vid-009e-d1920.mp4" data-webm-m="video/vid-009e-m1280.webm" data-mp4-m="video/vid-009e-m720.mp4"></video>
+<picture class="hero-media"><source media="(max-width:700px)" type="image/webp" srcset="img/vid-009p-poster-m.webp"><source type="image/webp" srcset="img/vid-009p-poster-960.webp 960w, img/vid-009p-poster-1920.webp 1920w" sizes="100vw"><img src="video/vid-009p-poster.jpg" width="1920" height="1080" alt="" fetchpriority="high"></picture>
+<video muted loop playsinline preload="none" aria-hidden="true" data-hero data-webm-d="video/vid-009p-d1920.webm" data-mp4-d="video/vid-009p-d1920.mp4" data-webm-m="video/vid-009p-m1280.webm" data-mp4-m="video/vid-009p-m720.mp4"></video>
 <div class="hero-copy"><h1>{e(X['hero']['title_c1'])}</h1>
 <a class="btn btn-book btn-lg" href="book/">{e(X['ctas']['hero_c1'])}</a></div>
 </section>'''
@@ -243,7 +240,7 @@ def home():
     wparas = ''.join(f'<p>{e(p)}</p>' for p in wk['body'].split('\n\n'))
     week = f"""<section class="sec tint week" id="week"><div class="week-grid">
 <div class="week-text"><h2 class="script">{e(X['section_titles']['week'])}</h2>{wparas}</div>
-{slideshow(pre, ['img-104','img-011','img-111','img-023','img-114','img-060'], 'Photos of a week at the lodge', '(max-width:900px) 100vw, 62vw', 'week-show')}
+{slideshow(pre, ['img-104','img-011','img-023','img-114','img-060'], 'Photos of a week at the lodge', '(max-width:900px) 100vw, 62vw', 'week-show')}
 </div></section>"""
 
     rm = C['copyBlocks'][4]['body'].split('\n\n')[0]
@@ -301,9 +298,10 @@ def home():
 <a class="btn btn-white" href="{e(IG['url'])}">{icon('ig','ig-ico')}{e(X['ctas']['instagram'])}</a></div>
 <div class="ig">{tiles}</div></section>"""
 
-    closing = f"""<section class="feature closing" aria-label="Book">
-<picture><source media="(max-width:700px)" type="image/webp" srcset="img/img-093-p-800.webp"><source type="image/webp" srcset="img/img-093-800.webp 800w, img/img-093-1536.webp 1536w" sizes="100vw"><img src="img/img-093-1536.jpg" width="1536" height="658" alt="{e(ALT['img-093'])}" loading="lazy" decoding="async"></picture>
-<div class="inner"><p>{e(C['closing'])}</p><div class="btns">
+    cl1, cl2 = [x.strip() + '.' if not x.strip().endswith(('.', '?')) else x.strip() for x in C['closing'].split('. ', 1)]
+    closing = f"""<section class="closing" aria-label="Book">
+<div class="cl-media">{pic(pre,'img-111',ALT['img-111'],[640,1066],1066,'(max-width:900px) 100vw, 46vw',tag='-p',w=1066,h=1333)}</div>
+<div class="cl-body"><h2 class="script">{e(cl1)}</h2><p>{e(cl2)}</p><div class="btns">
 <a class="btn btn-book btn-lg" href="book/">{e(X['ctas']['closing'])}</a>
 <a class="btn btn-white btn-lg" href="{e(WA_URL)}">{icon('wa','wa')}{e(X['ctas']['whatsapp'])}</a></div></div></section>"""
 

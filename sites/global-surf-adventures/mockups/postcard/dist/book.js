@@ -184,8 +184,10 @@
   form.addEventListener('submit', (ev) => { if (missing()) ev.preventDefault(); });
   $('#m-go').addEventListener('click', () => { if (!missing()) form.requestSubmit(); });
 
-  const bar = $('#mbar'), go = $('#step-total');
-  if (bar && go && 'IntersectionObserver' in window) new IntersectionObserver((es) => bar.classList.toggle('away', es[0].isIntersecting)).observe(go);
+  // one action at the end: once step 4 is on screen (or passed), the bar steps aside for "Continue booking"
+  const bar = $('#mbar'), end = $('#step-total');
+  const away = () => bar && bar.classList.toggle('away', end.getBoundingClientRect().top < innerHeight - 80);
+  addEventListener('scroll', away, { passive: true }); addEventListener('resize', away); away();
 
   setLevel(S.level, true);
   clampAll();

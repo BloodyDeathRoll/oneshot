@@ -136,7 +136,7 @@ def footer(prefix=''):
 
 def fix_paths(s, prefix):
     if not prefix: return s
-    s = re.sub(r'(src|href|srcset|poster|data-[a-z-]+)="((?:img|video)/)', lambda m: f'{m.group(1)}="{prefix}{m.group(2)}', s)
+    s = re.sub(r'(src|href|srcset|poster|data-[a-z0-9-]+)="((?:img|video)/)', lambda m: f'{m.group(1)}="{prefix}{m.group(2)}', s)
     return re.sub(r'(w, )(img/)', lambda m: m.group(1) + prefix + m.group(2), s)
 
 def build_home():

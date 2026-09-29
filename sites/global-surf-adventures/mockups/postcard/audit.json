@@ -1,7 +1,7 @@
 {
  "slug": "global-surf-adventures",
  "variant": "postcard",
- "measured_at": "2026-09-29T19:14:29.719Z",
+ "measured_at": "2026-09-29T19:51:22.746Z",
  "first_load": {
   "requests": 14,
   "hosts": [
@@ -13,16 +13,16 @@
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 484910,
-  "bytes_html": 63420,
-  "bytes_js": 5856,
-  "bytes_css": 28480,
-  "bytes_fonts": 130184,
+  "bytes_total": 442239,
+  "bytes_html": 63363,
+  "bytes_js": 7578,
+  "bytes_css": 28880,
+  "bytes_fonts": 85448,
   "bytes_images": 256970,
   "largest_image_bytes": 67174,
-  "lcp_ms": 764,
-  "cls": 0.0011,
-  "dcl_ms": 818
+  "lcp_ms": 772,
+  "cls": 0.0004,
+  "dcl_ms": 825
  },
  "booking": {
   "external_booking_hrefs": [

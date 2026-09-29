@@ -109,3 +109,17 @@ Shots: `shots/r3-round-1/` (+ `vs-old-*.png`, `closing-d/m.png`, `waves-390.png`
 - **Calendar popover** now fits the column exactly (24–366 px at 390).
 - **One action at the total step:** the phone bar hides while any part of step 4 is on screen.
 - check-design ok (home and booking page), funnel unchanged.
+
+## Round 4 (visual 7.5 — "near-twin of Try your week"; experience 8)
+
+Shots: `shots/r4-round-1/`, `shots/r4-round-2/` (+ `vs-old-*.png`), `shots/r4-round-2-book/`. Sibling dist files were checked only to be sure of the difference (Try your week: Satisfy + Figtree, vid-009e; The Sign: Damion + Bricolage, vid-009e).
+- **Type:** Marck Script (a fine pen hand) for titles, **Lora** (a text serif) for everything else, booking included. Neither sibling uses them; the serif echoes the old site's serif hero title.
+- **Hero:** our own clip. The 2.6 s pool-deck shot from the owner's vid-009 source (5.36–7.96 s), slowed ×2 with motion interpolation and played forward-then-back → a calm 10.4 s seamless loop of the pool deck only (`video/vid-009p-*`; d1920 webm 3.48 MB / mp4 3.43 MB, m1280 webm 1.79 MB, m720 mp4 1.62 MB, no audio, faststart; poster = its first frame). The siblings use vid-009e (pool → reef cut). Title in Lora 600 with +0.02em tracking and word spacing.
+- **Closing:** not the night pool: img-111 (sunset longboard, 4:5) beside the line on sand, split layout, no text over the photo. The copy's `closing` is set in two parts, unchanged in wording: "Book the week for your level." in script, "Not sure which one fits? Ask us on WhatsApp first." under it, then the two buttons. img-093 is no longer used.
+- **Footer:** own layout — large logo + tagline left, "Talk to us" with three buttons in a row right; under it one sand strip with the address, stay times, "Open in Maps", and social icons; legal line.
+- **Palette:** warm white ground `#FCFAF6`, sand tint `#F4EEE5` (the beach of img-114), pool teal `#006A86` for script titles and icons (5.35:1 on sand), navy ink, coral `#C8463C` with white text only. check-design reads the ground as hsl(40 50% 98%) — not flagged as cream. Conflict: custom.md says no sand/beige grounds; the coordinator relayed that Shahar's feedback overrides custom.md here, and the coral stays clean and saturated (house rule 4).
+- **Level cards larger:** the level row runs 1432 px wide at 1440 (cards ≈ 460 px, 4:5 clips), names 30 px.
+- **One action at the end:** the phone bar steps aside as soon as step 4 is on screen and stays away below it (checked at 360/390/414/768).
+- **Calendar:** grid gap 0, side padding 2 px → at 360 px the popover and grid fit the column exactly (0 px overflow, 44 px day cells); below 340 px the cells may shrink under 44.
+- Unused media removed (vid-009e renditions, night-pool crops, 3:2 copies of img-111/115).
+- check-design ok on both pages (fonts Lora / Marck Script); funnel unchanged (1 tap, CTA above fold); hand-off re-verified: live $3,092.05 → `level-2-rollers?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1`; no 404s on either page.

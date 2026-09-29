@@ -16,14 +16,15 @@ const D = JSON.parse(fs.readFileSync(path.join(repo, 'dossier/global-surf-advent
 const X = C.mockup_extras;
 const read = (f) => fs.readFileSync(path.join(here, f), 'utf8');
 const css = read('common.css'), js = read('common.js');
-const sprite = () => read('sprite.svg').replace('</svg>', logoSym + '</svg>');
+const sprite = () => read('sprite.svg');
 const rosa = JSON.parse(read('rosa-south-point.json'));
 
 const logoSrc = fs.readFileSync(path.join(repo, 'dossier/global-surf-adventures/assets/logo-001.svg'), 'utf8')
   .replace(/<\?xml[^>]*>/, '').replace(/<!--[\s\S]*?-->/g, '').replace(/<title>[\s\S]*?<\/title>|<desc>[\s\S]*?<\/desc>/g, '')
   .replace(/fill="#000000"/g, 'fill="currentColor"');
 const logoSym = logoSrc.replace(/<svg[^>]*>/, '<symbol id="logo" viewBox="0 0 128 39">').replace(/<\/svg>\s*$/, '</symbol>');
-const logo = '<svg width="128" height="39" viewBox="0 0 128 39" aria-hidden="true" focusable="false"><use href="#logo"/></svg>';
+let R0 = '';
+const logoImg = (R) => `<img class="logo-img" src="${R}img/logo.svg" width="128" height="39" alt="">`;
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const paras = (s) => s.split(/\n\n/).map((p) => `<p>${esc(p)}</p>`).join('');
 const block = (h) => C.copyBlocks.find((b) => b.heading === h);
@@ -37,7 +38,7 @@ const rating = C.ratings[0];
 const W = { '010': [800, 1333, 2000], '024': [800, 1333, 2000], '026': [800, 1400, 786], '060': [800, 1400, 785], '061': [800, 1400, 785] };
 function img(id, { sizes = '100vw', lazy = true, cls = '', big = false, R = '' } = {}) {
   const [a, b, h] = W[id] || [800, 1400, 933];
-  const extra = big && id === '016' ? `, ${R}img/img-016-2000.webp 2000w` : '';
+  const extra = big && (id === '016' || id === '005') ? `, ${R}img/img-${id}-2000.webp 2000w` : '';
   return `<img${cls ? ` class="${cls}"` : ''} src="${R}img/img-${id}-${b}.webp" srcset="${R}img/img-${id}-${a}.webp ${a}w, ${R}img/img-${id}-${b}.webp ${b}w${extra}" sizes="${sizes}" width="${b}" height="${h}" alt="${esc(alt['img-' + id] || '')}"${lazy ? ' loading="lazy" decoding="async"' : ''}>`;
 }
 function slides(ids, label, { sizes, R = '', cls = '' } = {}) {
@@ -101,14 +102,14 @@ function header(R, book) {
   const nav = links.map(([h, t]) => `<a href="${book ? '../' : ''}${h}">${t}</a>`).join('');
   return `<a class="sr" href="#main">Skip to content</a>
 <header class="hdr${book ? ' solid always' : ''}"><div class="wrap">
-  <a class="logo" href="${book ? '../' : '#top'}" aria-label="${esc(X.logo.home_link_label)}">${logo}</a>
+  <a class="logo" href="${book ? '../' : '#top'}" aria-label="${esc(X.logo.home_link_label)}">${logoImg(R)}</a>
   <nav class="nav" aria-label="Main">${nav}</nav>
   ${book ? `<a class="btn btn-soft btn-sm hdr-wa" href="${wa}">${ic('wa', 'i f wa')}${esc(X.ctas.whatsapp)}</a>`
          : `<a class="btn btn-book" href="${R}book/">${esc(X.ctas.header_and_bar)}</a>`}
   <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu">${ic('menu')}</button>
 </div></header>
 <div class="sheet" id="menu" aria-hidden="true" role="dialog" aria-label="Menu">
-  <div class="sheet-top"><span class="logo" style="color:var(--ink)">${logo}</span><button class="close menu-btn" style="display:block" type="button" aria-label="Close menu">${ic('close')}</button></div>
+  <div class="sheet-top"><span class="logo" style="color:var(--ink)">${logoImg(R)}</span><button class="close menu-btn" style="display:block" type="button" aria-label="Close menu">${ic('close')}</button></div>
   <nav aria-label="Menu">${nav}</nav>
   <div class="btn-row" style="flex-direction:column">
     <a class="btn btn-book" href="${R}book/">${esc(X.ctas.header_and_bar)}</a>
@@ -118,44 +119,48 @@ function header(R, book) {
 }
 function footer(R) {
   const s = X.socials, info = block('Getting here');
-  return `<footer class="foot" id="contact"><div class="wrap">
-  <div class="foot-grid">
-    <div class="fbrand">
-      <a class="logo" href="${R || '#top'}" aria-label="${esc(X.logo.home_link_label)}">${logo}</a>
-      <p>${esc(C.tagline)}</p>
-      <div class="social">
-        <a href="${s.instagram}" aria-label="Instagram">${ic('ig')}</a>
-        <a href="${s.youtube}" aria-label="YouTube">${ic('yt')}</a>
-        <a href="${s.facebook}" aria-label="Facebook">${ic('fb')}</a>
-      </div>
-    </div>
-    <div class="stack">
-      <a class="btn btn-white" href="${wa}" data-wa>${ic('wa', 'i f wa')}${esc(X.ctas.whatsapp_footer)}</a>
-      <a class="btn btn-white" href="tel:${C.contact.phone}">${ic('phone')}${esc(X.ctas.call)}</a>
-      <a class="btn btn-white" href="mailto:${C.contact.email}">${ic('mail')}${esc(X.ctas.email)}</a>
-    </div>
-    <div>
+  return `<footer class="foot" id="contact">
+ <div class="wrap">
+  <div class="foot-top">
+    <div class="fvisit">
       <h3>${esc(X.section_titles.getting_here)}</h3>
-      <p><b>${esc(C.contact.address)}</b></p>
+      <p class="addr">${esc(C.contact.address)}</p>
       <p>${esc(info.body)}</p>
       <p>${esc(X.detail_lines.stay)}</p>
       <a class="btn btn-white" href="${esc(C.contact.mapUrl)}">${ic('pin')}${esc(X.ctas.map)}</a>
     </div>
+    <div class="ftalk">
+      <a class="tile" href="${wa}" data-wa>${ic('wa', 'i f wa')}<span>${esc(X.ctas.whatsapp_footer)}</span></a>
+      <a class="tile" href="tel:${C.contact.phone}">${ic('phone')}<span>${esc(X.ctas.call)}</span></a>
+      <a class="tile" href="mailto:${C.contact.email}">${ic('mail')}<span>${esc(X.ctas.email)}</span></a>
+      <a class="tile" href="${X.instagram.url}">${ic('ig')}<span>${esc(X.instagram.handle)}</span></a>
+    </div>
+  </div>
+  <div class="foot-bar">
+    <a class="logo" href="${R || '#top'}" aria-label="${esc(X.logo.home_link_label)}">${logoImg(R)}</a>
+    <p>${esc(C.tagline)}</p>
+    <div class="social">
+      <a href="${s.youtube}" aria-label="YouTube">${ic('yt')}</a>
+      <a href="${s.facebook}" aria-label="Facebook">${ic('fb')}</a>
+    </div>
   </div>
   <div class="legal"><span>© ${esc(C.businessName)}</span><span>${esc(X.detail_lines.welcome)}</span></div>
-</div></footer>`;
+ </div>
+</footer>`;
 }
+const FONT_URL = 'https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap';
 const fonts = `<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap" rel="stylesheet">`;
-const page = (R, title, desc, pageCss, body, pageJs) => `<!doctype html>
+<link rel="stylesheet" href="${FONT_URL}" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="${FONT_URL}"></noscript>`;
+const page = (R, title, desc, pageCss, body, pageJs, head = '') => `<!doctype html>
 <html lang="en" class="no-js"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(title)}</title><meta name="description" content="${esc(desc)}">
 <meta name="theme-color" content="#ffffff">
-${fonts}
+${head}${fonts}
 <style>${css}${pageCss}</style></head>
-<body>${sprite()}
+<body>
 ${body}
+${sprite()}
 <script>${js}</script>
 <script>${pageJs}</script>
 </body></html>`;
@@ -174,7 +179,7 @@ const srcLabel = (q) => q.source === 'booking' ? ['Booking.com', rating.url] : [
 const igTiles = ['001', '024', '060', '099', '114', '010', '073', '012'];
 
 const homeCss = `
-.hero{position:relative;height:100svh;min-height:560px;overflow:hidden;color:#fff;display:grid;place-items:center;text-align:center;background:#8fb7c4}
+.hero{position:relative;height:100svh;min-height:560px;overflow:hidden;color:#fff;display:grid;place-items:center;text-align:center;background:#9cc9d6 linear-gradient(180deg,#2f5f86 0%,#1d6883 40%,#2e8ea3 68%,#cfe6ea 100%)}
 .hero picture{position:absolute;inset:0}
 .hero .poster,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero::after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 46% 34% at 50% 52%,rgba(8,20,28,.30),rgba(8,20,28,0) 100%);pointer-events:none}
@@ -183,12 +188,11 @@ const homeCss = `
 .hero p{font-size:clamp(18px,1.5vw,21px);margin:12px 0 30px;font-weight:500}
 .hero .btn{text-shadow:none;min-width:220px;box-shadow:0 8px 28px rgba(0,0,0,.18)}
 .stage-wrap{max-width:1120px;margin:0 auto}
-@media (min-width:901px){.lv-panel{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:center}.lv-panel .incl{grid-column:1/-1}.lv-info{grid-template-columns:1fr!important;padding:0!important;gap:22px!important}.lv-info h3{font-size:28px!important}}
 .lv-panels{display:grid}
 .lv-panel{grid-area:1/1;transition:opacity .4s var(--ease),visibility .4s}
 .js .lv-panel[aria-hidden="true"]{opacity:0;visibility:hidden}
 .no-js .lv-panels{display:block}.no-js .lv-panel{margin-bottom:56px}
-.lv-media{position:relative;aspect-ratio:16/9;border-radius:var(--r);overflow:hidden;background:#dfe3e6;touch-action:pan-y}
+.lv-media{position:relative;height:min(76vh,56.25vw);min-height:220px;overflow:hidden;background:#0d3a45;touch-action:pan-y}
 .lv-clip,.lv-clip img,.lv-clip video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .lv-info{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:center;padding:28px 4px 0}
 .lv-info h3{font-family:var(--serif);font-weight:600;font-size:24px;margin:0 0 2px;letter-spacing:-.015em}
@@ -206,14 +210,21 @@ const homeCss = `
 .trust{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:28px;font-size:16px;color:var(--ink-2)}
 .trust .stars{display:flex;color:var(--place)}.trust .stars svg{width:16px;height:16px;fill:currentColor;stroke:none}
 .trust b{color:var(--ink)}
-.two{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,88px);align-items:center}
+.weekb{display:grid;grid-template-columns:58vw minmax(0,1fr);align-items:center}
+.weekb .copy{padding:64px clamp(24px,5vw,88px);max-width:560px}
+.weekb .copy p{color:var(--ink-2)}
+.slides.bleed .vp{border-radius:0;background:#cfe3e2}
+.slides.bleed .track img{aspect-ratio:4/3}
+.slides.bleed .dots{position:absolute;left:0;right:0;bottom:10px;margin:0}
+.slides.bleed .dots button::after{background:rgba(255,255,255,.7)}
+.slides.bleed .dots button[aria-current="true"]::after{background:#fff}
 .two .copy p{color:var(--ink-2)}
 .feature{position:relative;height:min(86vh,820px);min-height:480px;display:grid;place-items:center;overflow:hidden;color:#fff;text-align:center}
 .feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .feature::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 50% 40% at 50% 50%,rgba(8,20,28,.32),rgba(8,20,28,0) 100%);pointer-events:none}
-.closing::after{content:"";position:absolute;inset:0;background:rgba(6,16,22,.52);pointer-events:none}
+.closing::after{content:"";position:absolute;inset:0;background:rgba(6,16,22,.30);pointer-events:none}
 .feature p,.closing .in{z-index:2}
-.feature img.calm{object-position:50% 100%}
+.feature img.calm{object-position:50% 100%;transform:scale(1.5);transform-origin:50% 100%}
 .feature p{position:relative;font-family:var(--script);font-size:clamp(40px,4.6vw,64px);line-height:1.15;max-width:880px;margin:0;padding:0 var(--gut);text-shadow:0 2px 26px rgba(0,0,0,.45)}
 .lodge-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,72px);align-items:center}
 .am{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:14px 28px}
@@ -253,14 +264,17 @@ const homeCss = `
 .ig-row img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;transition:transform .5s var(--ease)}
 .ig-row a:hover img{transform:scale(1.04)}
 .ig-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.closing{position:relative;min-height:74vh;display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden}
+.closing{position:relative;min-height:82vh;display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden}
 .closing img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .closing .in{position:relative;z-index:2;padding:80px var(--gut);max-width:760px}
-.closing p{font-size:clamp(22px,2.4vw,30px);line-height:1.35;font-weight:500;margin:0 auto 30px;max-width:620px}
+.closing p{font-size:17.5px;line-height:1.5;font-weight:500;margin:0 auto 26px;max-width:620px}
+.closing p.big{font-family:var(--script);font-size:clamp(46px,5.6vw,76px);line-height:1.1;font-weight:400;margin-bottom:10px;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.closing{min-height:82vh}
 @media (max-width:900px){
   .lv-info{grid-template-columns:1fr;gap:14px;padding-top:20px}
   .lv-info .btn-row .btn{flex:1}
-  .two,.lodge-grid,.waves{grid-template-columns:1fr}
+  .weekb,.lodge-grid,.waves{grid-template-columns:1fr}
+  .weekb .copy{padding:48px var(--gut) 56px}
   .quotes{--per:1}
   .rosa-box{justify-self:center}
   .ig-row a{flex-basis:calc((100% - 16px)/2.3)}
@@ -268,26 +282,28 @@ const homeCss = `
 @media (max-width:700px){
   .am{grid-template-columns:1fr}
   .hero .btn{width:100%;max-width:340px}
+  .hero .poster,.hero video{object-position:64% 50%}
   .lv-foot{padding:20px}
   .lv-foot .btn{width:100%}
   .lv-info .detail{white-space:normal}
   .feature{height:auto;aspect-ratio:4/5;min-height:0}
   .feature img{object-position:40% 50%}
-  .feature img.calm{object-position:50% 100%;transform:scale(1.8);transform-origin:50% 100%}
+  .feature img.calm{transform:scale(1.8)}
 }
 @media (min-width:701px){.lvx::before{content:""}}
 `;
 
+const homeHead = `<link rel="preload" as="image" href="video/vid-009r-poster-1280.webp" type="image/webp" media="(max-width: 900px)" fetchpriority="high"><link rel="preload" as="image" href="video/vid-009r-poster-1920.webp" type="image/webp" media="(min-width: 901px)" fetchpriority="high">\n`;
 const home = page('', `${C.businessName} | Surf weeks for all levels`, C.tagline, homeCss, `
 ${header('', false)}
 <main id="main">
 <section class="hero" id="top" aria-label="${esc(C.businessName)}">
-  <picture><source srcset="video/vid-009e-poster.avif" type="image/avif"><img class="poster" src="video/vid-009e-poster.jpg" alt="" fetchpriority="high" width="1920" height="1080"></picture>
+  <picture><source media="(max-width: 900px)" srcset="video/vid-009r-poster-1280.webp" type="image/webp"><source srcset="video/vid-009r-poster-1920.webp" type="image/webp"><img class="poster" src="video/vid-009r-poster.jpg" alt="" fetchpriority="high" width="1920" height="1080"></picture>
   <video id="heroVid" hidden muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true">
-    <source data-src="video/vid-009e-m1280.webm" data-media="(max-width: 900px)" type="video/webm">
-    <source data-src="video/vid-009e-m1280.mp4" data-media="(max-width: 900px)" type="video/mp4">
-    <source data-src="video/vid-009e-d1920.webm" data-media="(min-width: 901px)" type="video/webm">
-    <source data-src="video/vid-009e-d1920.mp4" data-media="(min-width: 901px)" type="video/mp4">
+    <source data-src="video/vid-009r-m1280.webm" data-media="(max-width: 900px)" type="video/webm">
+    <source data-src="video/vid-009r-m1280.mp4" data-media="(max-width: 900px)" type="video/mp4">
+    <source data-src="video/vid-009r-d1920.webm" data-media="(min-width: 901px)" type="video/webm">
+    <source data-src="video/vid-009r-d1920.mp4" data-media="(min-width: 901px)" type="video/mp4">
   </video>
   <div class="hero-in">
     <h1>${esc(X.hero.title_c2)}</h1>
@@ -302,35 +318,37 @@ ${header('', false)}
     <h2 class="title c" id="lv-title">${esc(X.section_titles.levels)}</h2>
     <div class="lede c">${paras(intro.body)}</div>
   </div>
-  <div class="stage-wrap" id="stage">
-   <div class="pills-row">${tabsLv('')}</div>
+  <div class="pills-row">${tabsLv('')}</div>
+ </div>
+ <div class="stage" id="stage">
    <div class="lv-panels">${LV.map((l, k) => `
     <div class="lv-panel" id="lv-${l.n}" role="tabpanel" aria-labelledby="tab-${l.n}" aria-hidden="${k ? 'true' : 'false'}" data-slug="${l.slug}">
       <div class="lv-media">${vidEl(l, '')}</div>
-      <div class="lv-info">
+      <div class="wrap">
+       <div class="lv-info">
         <div><h3>${esc(l.label)}</h3><p>${esc(l.one)}</p><p class="detail" style="margin-top:6px">${esc(X.detail_lines.level_price).replace('$1,466', '<b>$1,466</b>')} | Saturday check-in</p></div>
         <div class="btn-row">
           <a class="btn btn-book" href="book/?level=${l.n}">${esc(l.cta)}</a>
           <button type="button" class="btn btn-soft incl-toggle" aria-expanded="false" aria-controls="incl-${l.n}">${esc(X.ctas.inclusions_toggle)} ${ic('down')}</button>
         </div>
+       </div>
+       <div class="incl" id="incl-${l.n}" hidden>${incList(l)}<p class="note">${esc(X.inclusions.optional_extra)}</p></div>
       </div>
-      <div class="incl" id="incl-${l.n}" hidden>${incList(l)}<p class="note">${esc(X.inclusions.optional_extra)}</p></div>
     </div>`).join('')}
    </div>
+ </div>
+ <div class="wrap">
    <div class="lv-foot">
      <p><b>${esc(X.detail_lines.freestylers)}</b><br><span class="detail">${esc(X.levels[3].one_liner)}</span></p>
      <a class="btn btn-white" href="${wa}">${ic('wa', 'i f wa')}${esc(X.ctas.freestylers)}</a>
    </div>
    <p class="trust"><span><b>${rating.score}</b> ${esc(X.detail_lines.trust.replace(/^8\.6 /, ''))}</span></p>
-  </div>
  </div>
 </section>
 
-<section class="sec tint on-tint" id="week" aria-labelledby="wk-title">
- <div class="wrap two">
+<section class="weekb tint on-tint" id="week" aria-labelledby="wk-title">
+  ${slides(['104', '011', '118', '115', '114', '023'], 'Photo of the week', { sizes: '(max-width: 900px) 100vw, 58vw', cls: 'bleed' })}
   <div class="copy"><h2 class="title" id="wk-title">${esc(day.heading)}</h2>${paras(day.body)}</div>
-  ${slides(['104', '011', '118', '115', '111', '023'], 'Photo of the week', { sizes: '(max-width: 900px) 100vw, 640px' })}
- </div>
 </section>
 
 <section class="sec" id="rooms" aria-labelledby="rm-title">
@@ -342,7 +360,7 @@ ${header('', false)}
 </section>
 
 <section class="feature" aria-label="${esc(C.featureLine)}">
-  ${img('005', { sizes: '100vw', cls: 'calm' })}
+  ${img('005', { sizes: '100vw', cls: 'calm', big: true })}
   <p>${esc(C.featureLine)}</p>
 </section>
 
@@ -401,8 +419,8 @@ ${header('', false)}
 </section>
 
 <section class="closing" aria-label="${esc(X.ctas.closing)}">
-  ${img('093', { sizes: '100vw' })}
-  <div class="in"><p>${esc(C.closing)}</p>
+  ${img('105', { sizes: '100vw' })}
+  <div class="in"><p class="big">${esc(C.closing.split(/(?<=\.) /)[0])}</p><p>${esc(C.closing.split(/(?<=\.) /).slice(1).join(' '))}</p>
     <div class="btn-row c"><a class="btn btn-book" href="book/">${esc(X.ctas.closing)}</a><a class="btn btn-white" href="${wa}">${ic('wa', 'i f wa')}${esc(X.ctas.whatsapp)}</a></div>
   </div>
 </section>
@@ -420,7 +438,7 @@ new IntersectionObserver(function(e){var past=!e[0].isIntersecting;hdr.classList
 var stage=d.getElementById('stage'),panels=[].slice.call(stage.querySelectorAll('.lv-panel')),cur=0,inView=false;
 function vids(){return panels.map(function(p){return p.querySelector('video');});}
 function sync(){vids().forEach(function(v,k){if(k===cur&&inView){GS.attach(v);}else if(!v.paused){v.pause();}});}
-var tabs=GS.tabs(stage.querySelector('[role=tablist]'),function(k){cur=k;panels.forEach(function(p,j){p.setAttribute('aria-hidden',j!==k);p.querySelectorAll('a,button').forEach(function(a){a.tabIndex=j===k?0:-1;});});sync();});
+var tabs=GS.tabs(d.querySelector('#levels [role=tablist]'),function(k){cur=k;panels.forEach(function(p,j){p.setAttribute('aria-hidden',j!==k);p.querySelectorAll('a,button').forEach(function(a){a.tabIndex=j===k?0:-1;});});sync();});
 panels.forEach(function(p,j){if(j)p.querySelectorAll('a,button').forEach(function(a){a.tabIndex=-1;});});
 new IntersectionObserver(function(e){inView=e[0].isIntersecting;sync();},{threshold:.4}).observe(stage.querySelector('.lv-panels'));
 stage.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('click',function(){tabs.select(+b.dataset.go);});});
@@ -443,7 +461,7 @@ row.addEventListener('scroll',igMark,{passive:true});addEventListener('resize',i
 var rb=d.getElementById('rosa');
 new IntersectionObserver(function(e,o){if(!e[0].isIntersecting)return;o.disconnect();var f=d.createElement('iframe');f.src=rb.dataset.src.replace(/&amp;/g,'&');f.title='Rosa surf forecast - South Point';f.width='100%';f.height='500';f.loading='lazy';f.referrerPolicy='strict-origin-when-cross-origin';f.setAttribute('sandbox','allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin');f.style.cssText='max-width:420px;border:0;border-radius:16px;display:block';rb.appendChild(f);f.style.position='absolute';f.style.inset='0';},{rootMargin:'300px'}).observe(rb);
 })();
-`);
+`, homeHead);
 
 // ================= BOOK =================
 const book = buildBook({ C, X, LV, RM, esc, ic, img, vidEl, incList, tabsLv, roomViewer, header, footer, page, wa });

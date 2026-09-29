@@ -277,7 +277,7 @@ function render(){var n=persons(),c=calc(),lv=LV[S.level],r=RMS[S.room],has=!!S.
   if(c.known){var pp=c.basePP+c.roomPP;
     d.getElementById('p-base').textContent=money(c.basePP);d.getElementById('p-room').textContent=c.roomPP?'+'+money(c.roomPP):T.incl;
     d.getElementById('p-pp').textContent=money(pp);d.getElementById('p-all').textContent=n?money(pp*n):'–';
-    d.getElementById('b-total').textContent=n&&has?money(pp*n):'From '+money(pp)+' pp';}
+    d.getElementById('b-total').textContent=n&&has?money(pp*n):'From '+money(SNAP.base7)+' pp';}
   else{['p-base','p-room','p-pp','p-all'].forEach(function(id){d.getElementById(id).textContent='–';});d.getElementById('b-total').textContent='From '+money(SNAP.base7)+' pp';}
   d.getElementById('p-src').textContent=(c.live?T.live:(S.liveFail?T.fb.replace('{date}',SNAP.asOf):T.snap.replace('{date}',SNAP.asOf)))+' | '+T.cur;
   d.getElementById('b-sub').textContent=lv.label+(S.step>=1?' | '+r.label:'')+(has?' | '+short(S.start)+'–'+short(end):'');
