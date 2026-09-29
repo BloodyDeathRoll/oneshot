@@ -1,0 +1,163 @@
+/* hero */
+.hero{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#CDE4EE url(video/vid-009e-poster.avif) center/cover no-repeat;color:#fff}
+.hero-v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:var(--hdr) var(--gut) 0}
+.hero h1{color:#fff;font-size:clamp(44px,5vw,68px);text-shadow:0 2px 24px rgba(0,0,0,.35);margin:0 0 8px;text-wrap:balance}
+.hero-sub{font-size:20px;font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,.35),0 1px 18px rgba(0,0,0,.45);margin:0 0 32px}
+
+section{scroll-margin-top:var(--hdr)}
+.welcome{padding:110px 0 100px}
+.welcome p{font-size:19px}
+.welcome .detail{font-size:16px;margin-top:22px}
+
+/* levels */
+.levels{padding:100px 0 90px}
+.levels .script{margin-bottom:44px}
+.panels{display:flex;gap:18px}
+.panel{flex:1 1 0;min-width:0;transition:flex-grow .45s cubic-bezier(.3,.7,.2,1)}
+.panel.open{flex-grow:1.9}
+.panel-media{display:block;height:min(66vh,640px);min-height:420px;border-radius:16px;overflow:hidden;background:#7cc7dd}
+.panel-media video{width:100%;height:100%;object-fit:cover}
+.panel-t{padding:24px 4px 0}
+.panel-t p{margin-bottom:.5em}
+.panel-t .detail{margin-bottom:18px}
+.free{display:flex;align-items:center;justify-content:space-between;gap:24px;background:#fff;border-radius:16px;padding:28px 32px;margin-top:56px}
+.free h3{font-size:24px}
+.free p{margin:0}
+.free .detail{margin-top:4px}
+.free .btn-soft{background:var(--soft)}
+.trust{margin:30px 0 0;font-weight:500}
+.trust strong,.rating strong{font-weight:700}
+
+/* week */
+.week{padding:0 0 0}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.pair img{width:100%;aspect-ratio:3/2;object-fit:cover;height:auto}
+.week-t{padding:96px var(--gut) 96px}
+.week-t p{font-size:19px}
+
+/* rooms */
+.rooms{padding:110px 0 70px}
+.rooms>.wrap:first-child p{font-size:19px}
+.room{margin-top:84px}
+.rg{position:relative}
+.rg-track{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 max(var(--gut), calc((100vw - var(--wrap)) / 2 + var(--gut)));scroll-padding:0 max(var(--gut), calc((100vw - var(--wrap)) / 2 + var(--gut)))}
+.rg-track::-webkit-scrollbar{display:none}
+.rg-track img{flex:none;height:clamp(300px,62vh,600px);width:auto;aspect-ratio:3/2;object-fit:cover;border-radius:14px;scroll-snap-align:start}
+.rg .arrow.prev{left:max(12px, calc((100vw - var(--wrap)) / 2))}
+.rg .arrow.next{right:max(12px, calc((100vw - var(--wrap)) / 2))}
+.room-t{display:grid;grid-template-columns:1fr 1.25fr;gap:56px;margin-top:30px;align-items:start}
+.room-t h3{font-size:34px}
+.room-line{font-size:21px;line-height:1.4;margin:0}
+.room-price{font-weight:700;font-size:18px;margin:6px 0 20px}
+.rooms-foot{margin-top:84px}
+
+/* feature */
+.feature{position:relative;height:min(86vh,820px);min-height:480px;overflow:hidden}
+.feature img{width:100%;height:100%;object-fit:cover}
+.feature p{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 var(--gut);margin:0;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.35);font-size:clamp(40px,4.6vw,64px)}
+
+/* lodge */
+.lodge{padding:110px 0}
+.lodge-g{display:grid;grid-template-columns:1fr 1.35fr;gap:64px;align-items:center}
+.lodge-t p{font-size:18px}
+.lodge-t .detail{font-size:15.5px;line-height:1.75}
+
+/* included */
+.incl{padding:100px 0 90px}
+.pills{display:flex;justify-content:center;gap:8px;margin:0 0 40px}
+.pills button{min-height:48px;padding:0 22px;border-radius:999px;border:0;background:rgba(255,255,255,.6);font-weight:600;font-size:16px;cursor:pointer}
+.pills button[aria-selected="true"]{background:var(--ink);color:#fff}
+.ilist{list-style:none;margin:0 auto 36px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:26px 40px;max-width:1080px}
+.ilist li{display:flex;align-items:center;gap:16px;font-size:18px;font-weight:500;line-height:1.3}
+.ilist svg{width:30px;height:30px;color:var(--ink);stroke-width:1.6}
+.ilist[hidden]{display:none}
+.incl .small{margin-bottom:24px}
+
+/* guests */
+.guests{padding:110px 0 100px}
+.rating{font-size:19px;margin:0 0 4px}
+.quotes{margin-top:40px}
+.quotes .slides{border-radius:0}
+.quote{margin:0;padding:0 8px}
+.quote p{font-size:clamp(22px,2.3vw,30px);line-height:1.4;font-weight:500;letter-spacing:-.01em;margin-bottom:18px}
+.quote footer{font-size:16px;color:var(--ink2)}
+.quote footer strong{color:var(--ink);font-weight:700}
+
+/* waves */
+.waves{padding:100px 0}
+.waves-g{display:grid;grid-template-columns:1fr 420px;gap:64px;align-items:center;max-width:1080px}
+.waves-t>p{font-size:19px}
+.rosa-h{margin-top:30px}
+.rosa-when{font-weight:600;margin-bottom:2px}
+.rosa-big{font-size:56px;font-weight:700;letter-spacing:-.02em;line-height:1.1;margin:0 0 10px}
+.rosa-big span{font-size:22px;font-weight:500;letter-spacing:0}
+.rosa-h .detail{margin:0 0 4px;font-size:17px}
+.rosa-h .small{margin-top:16px}
+.rosa-w{position:relative;width:100%;max-width:420px;height:500px;border-radius:16px;background:#fff;display:grid;place-items:center;justify-self:end}
+.rosa-w iframe{position:absolute;inset:0;height:500px}
+.rosa-w iframe:not([src]){display:none}
+.rosa-fb{white-space:normal;text-align:center;max-width:320px;line-height:1.3;padding:14px 22px}
+
+/* instagram */
+.insta{padding:100px 0 0}
+.insta .wrap p{font-size:19px;margin-bottom:24px}
+.tiles{display:grid;grid-template-columns:repeat(6,1fr);margin-top:48px}
+.tiles a{display:block;overflow:hidden}
+.tiles img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;transition:transform .5s}
+.tiles a:hover img{transform:scale(1.04)}
+
+/* closing */
+.closing{position:relative;height:min(78vh,760px);min-height:460px;overflow:hidden;color:#fff}
+.closing>img{width:100%;height:100%;object-fit:cover}
+.closing-c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 var(--gut)}
+.closing-c p{font-size:clamp(24px,2.6vw,34px);font-weight:600;line-height:1.3;max-width:760px;text-shadow:0 1px 3px rgba(0,0,0,.45),0 2px 26px rgba(0,0,0,.6);margin-bottom:30px}
+.btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+
+/* phone booking bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:none;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#fff;box-shadow:0 -8px 24px rgba(20,24,40,.12);transform:translateY(110%);transition:transform .3s}
+.bar p{margin:0;font-size:15.5px}
+.bar .btn{min-height:48px}
+.bar.on{transform:none}
+
+@media (max-width:1000px){
+  .panels{flex-direction:column;gap:48px}
+  .panel.open{flex-grow:1}
+  .panel-media{height:auto;min-height:0;aspect-ratio:4/5}
+  .lodge-g,.waves-g,.room-t{grid-template-columns:1fr;gap:28px}
+  .rosa-w{justify-self:center}
+  .ilist{grid-template-columns:1fr 1fr}
+}
+@media (max-width:860px){ .bar{display:flex} }
+@media (max-width:620px){
+  body{font-size:16.5px}
+  .hero h1{font-size:46px;line-height:1.05;max-width:330px}
+  .hero-sub{font-size:17px}
+  .welcome{padding:72px 0 64px}
+  .welcome p,.week-t p,.rooms>.wrap:first-child p,.waves-t>p,.insta .wrap p{font-size:17.5px}
+  .levels,.incl,.waves{padding:72px 0 64px}
+  .levels .script{margin-bottom:28px}
+  .free{flex-direction:column;align-items:stretch;padding:24px;margin-top:48px}
+  .free .btn{width:100%}
+  .week-t{padding:64px var(--gut)}
+  .rooms,.lodge,.guests{padding:72px 0}
+  .room{margin-top:56px}
+  .rg-track{gap:8px}
+  .rg-track img{height:auto;width:84vw;border-radius:12px}
+  .rg .arrow{display:none}
+  .room-t h3{font-size:28px}
+  .room-t{margin-top:22px}
+  .room-t .btn{width:100%}
+  .ilist{grid-template-columns:1fr;gap:18px;max-width:420px}
+  .pills button{padding:0 16px}
+  .tiles{grid-template-columns:repeat(3,1fr)}
+  .closing{height:auto;min-height:640px}
+  .closing>img{position:absolute;inset:0}
+  .closing-c{padding:80px var(--gut)}
+  .closing-c p{font-size:24px}
+  .closing-c .btn{width:100%}
+  .hero .btn{min-width:250px}
+  .btns{width:100%;max-width:360px}
+  .rosa-big{font-size:44px}
+  .feature{height:72vh}
+}
