@@ -74,3 +74,4 @@ sites/*/mockups/*/shots/**/mobile-[0-9]*.png
 
 # mockup video renditions: copies of dossier/<slug>/assets/video/ (git-ignored), reproducible with tools/fetch-video.mjs
 sites/*/mockups/*/dist/video/
+sites/*/mockups-rejected-*/*/dist/video/
