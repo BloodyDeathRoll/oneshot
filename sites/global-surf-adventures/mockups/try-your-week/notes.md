@@ -295,7 +295,7 @@ alternates compositions (half-bleed week left, split rooms header, mirrored half
    WebP 1920 / 1280 + JPG (barrel frame at 2 s). The title block sits in the lower third over the flat water,
    centred horizontally, with the soft shade moved there. vid-009r and all vid-009e files removed from dist.
    Because Level 3 used vid-002e, Level 3 now plays **`vid-002g`**: the golden-hour carve at 21.6–24.0 s of the
-   business-owned vid-002 source, badge cropped at native pixels (1728×972), slowed 1.6× to 3.8 s (d1728 / m1280).
+   business-owned vid-002 source, badge cropped at native pixels (1728×972). *[Superseded in round 12: that first cut was retimed 1.6× (setpts); it is now a real-speed cut, 18.56–23.98 s, 25 fps, no retiming.]*
 2. **Closing:** **img-036** (pool and lounge under palms, 2000 px, business-owned, place: lodge; not used by
    Postcard img-111 or The Sign img-093 anywhere); 30 % shade; centred Satisfy line + one short line + buttons.
 3. **Level video:** the stage is framed — max 1040 px wide, 16:9, rounded — on a sea-glass band, so the 1920/1728
@@ -320,3 +320,26 @@ but each real frame held longer — an effective 15.6 fps, stuttery). Replaced b
 source 18.56–23.98 s (two consecutive shots as edited by the business — the whitewater turn, then the golden-hour
 carve; cuts found with ffmpeg scene detection at 18.52 / 21.6 / 24.04 s), badge cropped at native pixels
 1728×972, 25 fps in → 25 fps out, 136 frames, no retiming, no duplicated or synthesised frames. check-design ok.
+
+
+---
+
+## Fix round 6 (visual 7.5, experience 8)
+
+**look-log, round 13** (`shots/round-13`, booking `shots/fix-book-5/`), beside old-site-home/lodge.
+1. **Hero `vid-002w`** (replaces vid-002h): real-speed cut of the vid-002 source, 25 fps, no retiming —
+   8.86–12.50 s (the barrel shot, one take) followed by 25.20–28.60 s (the next barrel take in the business's own
+   edit), with a 0.4 s crossfade at the loop seam; 6.64 s, 166 frames, one direction. Tiers: desktop/landscape
+   **d1728** (native 1728×972 crop, badge removed; webm 2.2 MB / mp4 2.9 MB) and portrait phones **p810** — a
+   native 810×1080 portrait crop of the 1080p source, no scaling (webm 1.1 MB / mp4 1.6 MB). Posters are native
+   frames at 1.2 s (WebP 1728 w 29 KB, portrait 810 w 15 KB, JPG fallback). vid-002h removed. Title/subtitle/CTA
+   stay at true centre with the radial shade.
+2. **Guests** is a composed split: guest photo img-023 (dinner toast, 4:5) left; script title, 8.6 rating line and
+   a one-at-a-time large quote slideshow (29 px, arrows + dots) right. **Choose your level** opens with a split
+   header (script title left, intro + level pills right). The week slideshow uses img-017 instead of img-023.
+3. **Type:** titles Satisfy at 52–88 px (was 42–60); hero title Figtree 800 up to 84 px, tight tracking; room and
+   level names Figtree 750; lede 18.5–21 px; buttons 700. Same two families, stronger contrast.
+4. notes corrected: vid-002g is a real-speed cut (round 12), not "slowed 1.6×".
+
+Checks: check-design ok on both pages; funnel CTA above fold true, clicks_to_book 1, 0 broken; 0 targets < 44 px
+at 390/1440; cold phone LCP 356 ms; hand-off JS on/off unchanged; no horizontal overflow at 390.

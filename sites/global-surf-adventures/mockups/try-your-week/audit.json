@@ -1,7 +1,7 @@
 {
  "slug": "global-surf-adventures",
  "variant": "try-your-week",
- "measured_at": "2026-09-29T20:33:58.590Z",
+ "measured_at": "2026-09-29T21:10:21.988Z",
  "first_load": {
   "requests": 22,
   "hosts": [
@@ -13,16 +13,16 @@
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 709081,
-  "bytes_html": 78497,
+  "bytes_total": 721197,
+  "bytes_html": 87989,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 42880,
-  "bytes_images": 587704,
+  "bytes_images": 590328,
   "largest_image_bytes": 66254,
-  "lcp_ms": 292,
-  "cls": 0.0029,
-  "dcl_ms": 1447
+  "lcp_ms": 336,
+  "cls": 0,
+  "dcl_ms": 1565
  },
  "booking": {
   "external_booking_hrefs": [

@@ -183,10 +183,11 @@ const igTiles = ['001', '024', '060', '099', '114', '010', '073', '012'];
 const homeCss = `
 .hero{position:relative;height:100svh;min-height:560px;overflow:hidden;color:#fff;display:grid;place-items:center;text-align:center;background:#9cc9d6 linear-gradient(180deg,#2f5f86 0%,#1d6883 40%,#2e8ea3 68%,#cfe6ea 100%)}
 .hero picture{position:absolute;inset:0}
-.hero .poster,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.2);transform-origin:0% 100%}
+.hero .poster,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@media (min-width:901px),(orientation:landscape){.hero .poster,.hero video{transform:scale(1.08);transform-origin:0% 100%}}
 .hero::after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 40% 26% at 50% 50%,rgba(8,20,28,.30),rgba(8,20,28,0) 100%);pointer-events:none}
 .hero-in{position:relative;z-index:2;padding:0 var(--gut);text-shadow:0 2px 24px rgba(0,0,0,.4),0 1px 3px rgba(0,0,0,.25)}
-.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(40px,5vw,66px);line-height:1.05;letter-spacing:-.025em;margin:0}
+.hero h1{font-family:var(--serif);font-weight:800;font-size:clamp(44px,6vw,84px);line-height:1;letter-spacing:-.04em;margin:0}
 .hero p{font-size:clamp(18px,1.5vw,21px);margin:12px 0 30px;font-weight:500}
 .hero .btn{text-shadow:none;min-width:220px;box-shadow:0 8px 28px rgba(0,0,0,.18)}
 .stage-wrap{max-width:1120px;margin:0 auto}
@@ -199,7 +200,7 @@ const homeCss = `
 .lv-foot{background:#fff!important}
 .lv-clip,.lv-clip img,.lv-clip video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .lv-info{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:center;padding:28px 4px 0}
-.lv-info h3{font-family:var(--serif);font-weight:600;font-size:24px;margin:0 0 2px;letter-spacing:-.015em}
+.lv-info h3{font-family:var(--serif);font-weight:750;font-size:26px;margin:0 0 2px;letter-spacing:-.015em}
 .lv-info p{margin:0;color:var(--ink-2)}
 .lv-info .detail{font-size:16.5px;white-space:nowrap}
 .incl{padding:28px 4px 4px}
@@ -234,6 +235,10 @@ const homeCss = `
 .lodgeb .copy{padding:72px clamp(24px,5vw,80px);max-width:640px;justify-self:end}
 .lodgeb .lede{margin-bottom:26px}
 .lodgeb .slides.bleed .track img{aspect-ratio:4/5}
+.lvhead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:8px clamp(24px,5vw,72px);align-items:end;max-width:1040px;margin-left:auto;margin-right:auto}
+.lvhead .title{grid-row:1/3;align-self:start}
+.lvhead .lede{margin:0}.lvhead .lede p:last-child{margin:0}
+.lvhead .lvtabs{grid-column:2;margin-top:18px}
 .sec-head.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(24px,5vw,72px);align-items:end}
 .sec-head.split .lede{margin:0}
 .lodge-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,72px);align-items:center}
@@ -241,22 +246,24 @@ const homeCss = `
 .am li{display:flex;gap:12px;align-items:flex-start;font-size:16.5px;line-height:1.35}
 .am svg{color:var(--place)}
 .am small{display:block;color:var(--ink-2);font-size:14.5px}
-.rate{display:flex;align-items:center;justify-content:center;gap:18px;margin:-6px 0 36px;flex-wrap:wrap;text-align:left}
-.rate .big{font-size:64px;line-height:1;font-weight:600;letter-spacing:-.03em}
-.rate p{margin:0;color:var(--ink-2);font-size:16.5px}
+.guestsb{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:center}
+.gphoto img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r)}
+.rate{display:flex;align-items:center;gap:16px;margin:0 0 28px;flex-wrap:wrap}
+.rate .big{font-size:56px;line-height:1;font-weight:700;letter-spacing:-.04em}
+.rate p{margin:0;color:var(--ink-2);font-size:16px}
 .rate p b{color:var(--ink)}
-.quotes{--per:3}
-.quotes .vp{background:none;border-radius:0;margin:0 -12px}
-.quotes .track>*{flex-basis:calc(100% / var(--per));padding:0 12px}
-.qnav{display:none;justify-content:center;gap:12px;margin-top:18px}
-.qnav .btn{width:52px;padding:0}
-@media (max-width:640px){.quotes .dots{display:none}.js .qnav{display:flex}}
-.q{height:100%;background:var(--tint-soft);border-radius:var(--r);padding:32px 30px;display:flex;flex-direction:column;margin:0}
-.q blockquote{margin:0 0 18px;font-size:17.5px;line-height:1.6;flex:1}
-.q blockquote::before{content:"\\201C";display:block;font-family:var(--script);font-size:54px;line-height:.6;color:var(--place);margin-bottom:10px}
-.q figcaption{font-size:15.5px;color:var(--ink-2)}
+.quotes{--per:1}
+.quotes .vp{background:none;border-radius:0}
+.q{margin:0}
+.q blockquote{margin:0 0 20px;font-size:clamp(22px,2.2vw,29px);line-height:1.4;font-weight:500;letter-spacing:-.015em;color:var(--ink);min-height:6.2em}
+.q blockquote::before{content:"\\201C";display:block;font-family:var(--script);font-size:72px;line-height:.5;color:var(--place);margin-bottom:14px}
+.q figcaption{font-size:16px;color:var(--ink-2);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.q figcaption b{color:var(--ink);font-weight:700}
 .q figcaption a{display:inline-flex;align-items:center;min-height:44px;color:var(--place);font-weight:600}
-.q figcaption b{color:var(--ink);font-weight:600;display:block;font-size:16.5px}
+.qnav{display:flex;align-items:center;gap:8px;margin-top:18px}
+.qnav .btn{width:52px;padding:0}
+.qnav .dots{margin:0;flex:1;justify-content:flex-start}
+.no-js .qnav{display:none}
 .waves{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:clamp(32px,6vw,96px);align-items:center}
 .now{display:flex;align-items:baseline;gap:14px;margin:26px 0 6px}
 .now .h{font-size:clamp(46px,5.5vw,60px);line-height:1;font-weight:600;letter-spacing:-.03em;white-space:nowrap}
@@ -283,18 +290,24 @@ const homeCss = `
 @media (max-width:900px){
   .lv-info{grid-template-columns:1fr;gap:14px;padding-top:20px}
   .lv-info .btn-row .btn{flex:1}
-  .weekb,.lodge-grid,.waves,.lodgeb,.sec-head.split{grid-template-columns:1fr}
+  .weekb,.lodge-grid,.waves,.lodgeb,.sec-head.split,.lvhead{grid-template-columns:1fr}
+  .lvhead .title{grid-row:auto}.lvhead .lvtabs{grid-column:auto}
   .lodgeb .copy{order:2;padding:44px var(--gut) 56px;justify-self:stretch}
   .lodgeb .slides.bleed .track img{aspect-ratio:4/3}
   .weekb .copy{padding:48px var(--gut) 56px}
-  .quotes{--per:1}
+  .guestsb{grid-template-columns:minmax(0,1fr)}
+  .q blockquote{min-height:0;font-size:21px}
+  .quotes .track{align-items:flex-start}
+  .rosa-box .btn{white-space:normal;text-align:center;max-width:100%}
+  .gphoto img{aspect-ratio:4/3}
+  .qnav .dots{display:none}
   .rosa-box{justify-self:center}
   .ig-row a{flex-basis:calc((100% - 16px)/2.3)}
 }
 @media (max-width:700px){
   .am{grid-template-columns:1fr}
   .hero .btn{width:100%;max-width:340px}
-  .hero .poster,.hero video{object-position:55% 50%;transform:scale(1.25);transform-origin:50% 100%}
+
   .lv-foot{padding:20px}
   .lv-foot .btn{width:100%}
   .lv-info .detail{white-space:normal}
@@ -305,17 +318,18 @@ const homeCss = `
 @media (min-width:701px){.lvx::before{content:""}}
 `;
 
-const homeHead = `<link rel="preload" as="image" href="video/vid-002h-poster-1280.webp" type="image/webp" media="(max-width: 900px)" fetchpriority="high"><link rel="preload" as="image" href="video/vid-002h-poster-1920.webp" type="image/webp" media="(min-width: 901px)" fetchpriority="high">\n`;
+const homeHead = `<link rel="preload" as="image" href="video/vid-002w-poster-p810.webp" type="image/webp" media="(max-width: 900px) and (orientation: portrait)" fetchpriority="high"><link rel="preload" as="image" href="video/vid-002w-poster-1728.webp" type="image/webp" media="(min-width: 901px), (orientation: landscape)" fetchpriority="high">
+`;
 const home = page('', `${C.businessName} | Surf weeks for all levels`, C.tagline, homeCss, `
 ${header('', false)}
 <main id="main">
 <section class="hero" id="top" aria-label="${esc(C.businessName)}">
-  <picture><source media="(max-width: 900px)" srcset="video/vid-002h-poster-1280.webp" type="image/webp"><source srcset="video/vid-002h-poster-1920.webp" type="image/webp"><img class="poster" src="video/vid-002h-poster.jpg" alt="" fetchpriority="high" width="1920" height="1080"></picture>
+  <picture><source media="(max-width: 900px) and (orientation: portrait)" srcset="video/vid-002w-poster-p810.webp" type="image/webp"><source srcset="video/vid-002w-poster-1728.webp" type="image/webp"><img class="poster" src="video/vid-002w-poster.jpg" alt="" fetchpriority="high" width="1728" height="972"></picture>
   <video id="heroVid" hidden muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true">
-    <source data-src="video/vid-002h-m1280.webm" data-media="(max-width: 900px)" type="video/webm">
-    <source data-src="video/vid-002h-m1280.mp4" data-media="(max-width: 900px)" type="video/mp4">
-    <source data-src="video/vid-002h-d1920.webm" data-media="(min-width: 901px)" type="video/webm">
-    <source data-src="video/vid-002h-d1920.mp4" data-media="(min-width: 901px)" type="video/mp4">
+    <source data-src="video/vid-002w-p810.webm" data-media="(max-width: 900px) and (orientation: portrait)" type="video/webm">
+    <source data-src="video/vid-002w-p810.mp4" data-media="(max-width: 900px) and (orientation: portrait)" type="video/mp4">
+    <source data-src="video/vid-002w-d1728.webm" data-media="(min-width: 901px), (orientation: landscape)" type="video/webm">
+    <source data-src="video/vid-002w-d1728.mp4" data-media="(min-width: 901px), (orientation: landscape)" type="video/mp4">
   </video>
   <div class="hero-in">
     <h1>${esc(X.hero.title_c2)}</h1>
@@ -326,11 +340,11 @@ ${header('', false)}
 
 <section class="sec tint on-tint" id="levels" aria-labelledby="lv-title">
  <div class="wrap">
-  <div class="sec-head">
-    <h2 class="title c" id="lv-title">${esc(X.section_titles.levels)}</h2>
-    <div class="lede c">${paras(intro.body)}</div>
+  <div class="sec-head lvhead">
+    <h2 class="title" id="lv-title">${esc(X.section_titles.levels)}</h2>
+    <div class="lede">${paras(intro.body)}</div>
+    <div class="lvtabs">${tabsLv('')}</div>
   </div>
-  <div class="pills-row">${tabsLv('')}</div>
  </div>
  <div class="stage" id="stage">
    <div class="lv-panels">${LV.map((l, k) => `
@@ -359,7 +373,7 @@ ${header('', false)}
 </section>
 
 <section class="weekb" id="week" aria-labelledby="wk-title">
-  ${slides(['104', '011', '118', '115', '114', '023'], 'Photo of the week', { sizes: '(max-width: 900px) 100vw, 58vw', cls: 'bleed' })}
+  ${slides(['104', '011', '118', '115', '114', '017'], 'Photo of the week', { sizes: '(max-width: 900px) 100vw, 58vw', cls: 'bleed' })}
   <div class="copy"><h2 class="title" id="wk-title">${esc(day.heading)}</h2>${paras(day.body)}</div>
 </section>
 
@@ -386,15 +400,17 @@ ${header('', false)}
 </section>
 
 <section class="sec" id="guests" aria-labelledby="gu-title">
- <div class="wrap">
-  <h2 class="title c" id="gu-title">${esc(X.section_titles.guests)}</h2>
-  <div class="rate"><span class="big">${rating.score}</span><p><b>${esc(X.detail_lines.trust.replace(/^8\.6 /, ''))}</b><br>${esc(X.detail_lines.rating_categories)}</p></div>
-  <div class="slides quotes" data-label="Reviews, page">
-    <div class="vp"><div class="track">${C.testimonials.map((q) => { const [s, u] = srcLabel(q); return `
-      <div><figure class="q"><blockquote>${esc(q.quote)}</blockquote><figcaption><b>${esc(q.author)}</b><a href="${esc(u)}">${s}</a></figcaption></figure></div>`; }).join('')}
-    </div></div>
-    <div class="dots"></div>
-    <div class="qnav"><button type="button" class="prev btn btn-soft" aria-label="Previous review">${ic('left')}</button><button type="button" class="next btn btn-soft" aria-label="Next review">${ic('right')}</button></div>
+ <div class="wrap guestsb">
+  <div class="gphoto">${img('023', { sizes: '(max-width: 900px) 100vw, 460px' })}</div>
+  <div class="gtext">
+    <h2 class="title" id="gu-title">${esc(X.section_titles.guests)}</h2>
+    <div class="rate"><span class="big">${rating.score}</span><p><b>${esc(X.detail_lines.trust.replace(/^8\.6 /, ''))}</b><br>${esc(X.detail_lines.rating_categories)}</p></div>
+    <div class="slides quotes" data-label="Review">
+      <div class="vp"><div class="track">${C.testimonials.map((q) => { const [s, u] = srcLabel(q); return `
+        <div><figure class="q"><blockquote>${esc(q.quote)}</blockquote><figcaption><b>${esc(q.author)}</b><a href="${esc(u)}">${s}</a></figcaption></figure></div>`; }).join('')}
+      </div></div>
+      <div class="qnav"><button type="button" class="prev btn btn-soft" aria-label="Previous review">${ic('left')}</button><div class="dots"></div><button type="button" class="next btn btn-soft" aria-label="Next review">${ic('right')}</button></div>
+    </div>
   </div>
  </div>
 </section>

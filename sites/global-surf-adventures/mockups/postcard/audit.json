@@ -1,7 +1,7 @@
 {
  "slug": "global-surf-adventures",
  "variant": "postcard",
- "measured_at": "2026-09-29T20:27:19.663Z",
+ "measured_at": "2026-09-29T21:03:42.252Z",
  "first_load": {
   "requests": 15,
   "hosts": [
@@ -13,16 +13,16 @@
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 445336,
-  "bytes_html": 79890,
-  "bytes_js": 7578,
-  "bytes_css": 30544,
+  "bytes_total": 427071,
+  "bytes_html": 79426,
+  "bytes_js": 7683,
+  "bytes_css": 31986,
   "bytes_fonts": 73896,
-  "bytes_images": 253428,
+  "bytes_images": 234080,
   "largest_image_bytes": 67174,
-  "lcp_ms": 808,
+  "lcp_ms": 768,
   "cls": 0.0009,
-  "dcl_ms": 833
+  "dcl_ms": 811
  },
  "booking": {
   "external_booking_hrefs": [
@@ -53,7 +53,7 @@
   "images": 38,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 1,
-  "tapables": 66,
+  "tapables": 65,
   "tapables_under_44px": 0,
   "tapables_under_44px_examples": [],
   "headings": [
@@ -80,7 +80,7 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 6013,
+  "text_length": 5881,
   "booking_links_reachable": 0,
   "visible_images": 38
  },
@@ -90,12 +90,8 @@
   "photograph_visible": true
  },
  "facts": {
-  "numbers_on_page": 30,
-  "numbers_not_in_passed_copy": [
-   "0.7",
-   "1.0",
-   "20:30"
-  ],
+  "numbers_on_page": 26,
+  "numbers_not_in_passed_copy": [],
   "note": "copy/en.json passed station 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps each paragraph to its dossier fields. A number here that is not in the copy is either an interface label (01, 02…) or a claim to chase."
  }
 }

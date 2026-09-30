@@ -20,15 +20,15 @@ svg.i{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-widt
 svg.f{fill:currentColor;stroke:none}
 
 /* ---------- script titles ---------- */
-.title{font-family:var(--script);font-weight:400;font-size:clamp(42px,4.8vw,60px);line-height:1.15;letter-spacing:0;margin:0 0 18px;color:var(--ink)}
+.title{font-family:var(--script);font-weight:400;font-size:clamp(52px,6.2vw,88px);line-height:1.05;letter-spacing:0;margin:0 0 18px;color:var(--ink)}
 .title.c{text-align:center}
-.lede{font-size:18.5px;color:var(--ink-2);max-width:640px}
+.lede{font-size:clamp(18.5px,1.5vw,21px);line-height:1.55;color:var(--ink-2);max-width:640px}
 .lede.c{margin-inline:auto;text-align:center}
 .detail{font-size:16px;color:var(--ink-2);letter-spacing:.01em}
 .detail b{color:var(--ink);font-weight:600}
 
 /* ---------- buttons ---------- */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:var(--btn-r);border:0;cursor:pointer;font-family:var(--serif);font-size:16.5px;font-weight:600;letter-spacing:0;white-space:nowrap;transition:background-color .2s,transform .2s,box-shadow .2s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:var(--btn-r);border:0;cursor:pointer;font-family:var(--serif);font-size:16.5px;font-weight:700;letter-spacing:-.005em;white-space:nowrap;transition:background-color .2s,transform .2s,box-shadow .2s}
 .btn:active{transform:translateY(1px)}
 .btn-book{background:var(--book);color:#fff}
 .btn-book:hover{background:var(--book-deep)}
@@ -110,7 +110,7 @@ svg.f{fill:currentColor;stroke:none}
 /* ---------- room viewer ---------- */
 .room{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:center}
 .room .slides .track img{aspect-ratio:16/10}
-.room h3{font-family:var(--serif);font-size:28px;line-height:1.2;font-weight:600;margin:0 0 10px;letter-spacing:-.015em}
+.room h3{font-family:var(--serif);font-size:32px;line-height:1.1;font-weight:750;margin:0 0 10px;letter-spacing:-.015em}
 .room .line{font-size:20px;color:var(--ink);margin-bottom:14px}
 .room .desc{color:var(--ink-2)}
 .room .price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:18px 0 24px;font-size:18px;font-weight:600}

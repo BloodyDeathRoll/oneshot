@@ -141,3 +141,8 @@ Shots: `shots/r5-round-1/` (+ `vs-old-*.png`), `shots/r5-round-1-book/`.
 - Hero clip is now `vid-010g`: vid-010 source, same badge-free crop (1728×972 at 192,108), cut from the golden-hour shots whose people stand off-centre or below the centre band: src 19.76–24.16 + 28.16–31.00 + 36.44–38.16 → 8.96 s, one direction (d1728 webm 2.02 MB / mp4 2.53 MB, m1280 webm 1.15 MB, m720 mp4 1.23 MB). vid-010h deleted.
 - Title and button centred horizontally and vertically again, with a soft radial shade behind the title only plus the halo shadow; header shadow strengthened for the pale sky frames.
 - Checked at 4 loop times (0.7, 3.2, 5.6, 8.4 s) at 1440 and 390 (`shots/r6-hero/sheet.png`): the title never sits over a head; it crosses bodies/water in some shots. check-design ok.
+
+## Round 7 (phone first screen)
+
+- vid-010g recut (8.08 s, one direction): opens on the golden beach silhouettes (whole figures, darker ground), then the surfer on blue water, the clap, a short shot, the woman in the water, the sunset silhouette; the overexposed stand-up shot is dropped. d1728 webm 1.88 MB / mp4 2.44 MB, m1280 webm 1.09 MB, m720 mp4 1.18 MB. Poster = the silhouettes frame; phone poster/crop at 80 % (whole silhouette, darker sand behind the centred title).
+- Checked at 390 (poster + 0.6, 2.2, 4.6, 7.4 s: `shots/r7-hero/sheet.png`): title centred both ways, on mid-dark ground in every frame, never over a head. check-design ok.

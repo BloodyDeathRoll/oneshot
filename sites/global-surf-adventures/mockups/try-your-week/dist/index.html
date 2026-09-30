@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Global Surf Lodge Kabalana | Surf weeks for all levels</title><meta name="description" content="Surf weeks for all levels on Sri Lanka's south coast, a few steps from the ocean.">
 <meta name="theme-color" content="#ffffff">
-<link rel="preload" as="image" href="video/vid-002h-poster-1280.webp" type="image/webp" media="(max-width: 900px)" fetchpriority="high"><link rel="preload" as="image" href="video/vid-002h-poster-1920.webp" type="image/webp" media="(min-width: 901px)" fetchpriority="high">
+<link rel="preload" as="image" href="video/vid-002w-poster-p810.webp" type="image/webp" media="(max-width: 900px) and (orientation: portrait)" fetchpriority="high"><link rel="preload" as="image" href="video/vid-002w-poster-1728.webp" type="image/webp" media="(min-width: 901px), (orientation: landscape)" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap"></noscript>
 <style>:root{
@@ -28,15 +28,15 @@ svg.i{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-widt
 svg.f{fill:currentColor;stroke:none}
 
 /* ---------- script titles ---------- */
-.title{font-family:var(--script);font-weight:400;font-size:clamp(42px,4.8vw,60px);line-height:1.15;letter-spacing:0;margin:0 0 18px;color:var(--ink)}
+.title{font-family:var(--script);font-weight:400;font-size:clamp(52px,6.2vw,88px);line-height:1.05;letter-spacing:0;margin:0 0 18px;color:var(--ink)}
 .title.c{text-align:center}
-.lede{font-size:18.5px;color:var(--ink-2);max-width:640px}
+.lede{font-size:clamp(18.5px,1.5vw,21px);line-height:1.55;color:var(--ink-2);max-width:640px}
 .lede.c{margin-inline:auto;text-align:center}
 .detail{font-size:16px;color:var(--ink-2);letter-spacing:.01em}
 .detail b{color:var(--ink);font-weight:600}
 
 /* ---------- buttons ---------- */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:var(--btn-r);border:0;cursor:pointer;font-family:var(--serif);font-size:16.5px;font-weight:600;letter-spacing:0;white-space:nowrap;transition:background-color .2s,transform .2s,box-shadow .2s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:var(--btn-r);border:0;cursor:pointer;font-family:var(--serif);font-size:16.5px;font-weight:700;letter-spacing:-.005em;white-space:nowrap;transition:background-color .2s,transform .2s,box-shadow .2s}
 .btn:active{transform:translateY(1px)}
 .btn-book{background:var(--book);color:#fff}
 .btn-book:hover{background:var(--book-deep)}
@@ -118,7 +118,7 @@ svg.f{fill:currentColor;stroke:none}
 /* ---------- room viewer ---------- */
 .room{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:center}
 .room .slides .track img{aspect-ratio:16/10}
-.room h3{font-family:var(--serif);font-size:28px;line-height:1.2;font-weight:600;margin:0 0 10px;letter-spacing:-.015em}
+.room h3{font-family:var(--serif);font-size:32px;line-height:1.1;font-weight:750;margin:0 0 10px;letter-spacing:-.015em}
 .room .line{font-size:20px;color:var(--ink);margin-bottom:14px}
 .room .desc{color:var(--ink-2)}
 .room .price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:18px 0 24px;font-size:18px;font-weight:600}
@@ -164,10 +164,11 @@ svg.f{fill:currentColor;stroke:none}
 
 .hero{position:relative;height:100svh;min-height:560px;overflow:hidden;color:#fff;display:grid;place-items:center;text-align:center;background:#9cc9d6 linear-gradient(180deg,#2f5f86 0%,#1d6883 40%,#2e8ea3 68%,#cfe6ea 100%)}
 .hero picture{position:absolute;inset:0}
-.hero .poster,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.2);transform-origin:0% 100%}
+.hero .poster,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@media (min-width:901px),(orientation:landscape){.hero .poster,.hero video{transform:scale(1.08);transform-origin:0% 100%}}
 .hero::after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 40% 26% at 50% 50%,rgba(8,20,28,.30),rgba(8,20,28,0) 100%);pointer-events:none}
 .hero-in{position:relative;z-index:2;padding:0 var(--gut);text-shadow:0 2px 24px rgba(0,0,0,.4),0 1px 3px rgba(0,0,0,.25)}
-.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(40px,5vw,66px);line-height:1.05;letter-spacing:-.025em;margin:0}
+.hero h1{font-family:var(--serif);font-weight:800;font-size:clamp(44px,6vw,84px);line-height:1;letter-spacing:-.04em;margin:0}
 .hero p{font-size:clamp(18px,1.5vw,21px);margin:12px 0 30px;font-weight:500}
 .hero .btn{text-shadow:none;min-width:220px;box-shadow:0 8px 28px rgba(0,0,0,.18)}
 .stage-wrap{max-width:1120px;margin:0 auto}
@@ -180,7 +181,7 @@ svg.f{fill:currentColor;stroke:none}
 .lv-foot{background:#fff!important}
 .lv-clip,.lv-clip img,.lv-clip video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .lv-info{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:center;padding:28px 4px 0}
-.lv-info h3{font-family:var(--serif);font-weight:600;font-size:24px;margin:0 0 2px;letter-spacing:-.015em}
+.lv-info h3{font-family:var(--serif);font-weight:750;font-size:26px;margin:0 0 2px;letter-spacing:-.015em}
 .lv-info p{margin:0;color:var(--ink-2)}
 .lv-info .detail{font-size:16.5px;white-space:nowrap}
 .incl{padding:28px 4px 4px}
@@ -215,6 +216,10 @@ svg.f{fill:currentColor;stroke:none}
 .lodgeb .copy{padding:72px clamp(24px,5vw,80px);max-width:640px;justify-self:end}
 .lodgeb .lede{margin-bottom:26px}
 .lodgeb .slides.bleed .track img{aspect-ratio:4/5}
+.lvhead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:8px clamp(24px,5vw,72px);align-items:end;max-width:1040px;margin-left:auto;margin-right:auto}
+.lvhead .title{grid-row:1/3;align-self:start}
+.lvhead .lede{margin:0}.lvhead .lede p:last-child{margin:0}
+.lvhead .lvtabs{grid-column:2;margin-top:18px}
 .sec-head.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(24px,5vw,72px);align-items:end}
 .sec-head.split .lede{margin:0}
 .lodge-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,72px);align-items:center}
@@ -222,22 +227,24 @@ svg.f{fill:currentColor;stroke:none}
 .am li{display:flex;gap:12px;align-items:flex-start;font-size:16.5px;line-height:1.35}
 .am svg{color:var(--place)}
 .am small{display:block;color:var(--ink-2);font-size:14.5px}
-.rate{display:flex;align-items:center;justify-content:center;gap:18px;margin:-6px 0 36px;flex-wrap:wrap;text-align:left}
-.rate .big{font-size:64px;line-height:1;font-weight:600;letter-spacing:-.03em}
-.rate p{margin:0;color:var(--ink-2);font-size:16.5px}
+.guestsb{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:center}
+.gphoto img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r)}
+.rate{display:flex;align-items:center;gap:16px;margin:0 0 28px;flex-wrap:wrap}
+.rate .big{font-size:56px;line-height:1;font-weight:700;letter-spacing:-.04em}
+.rate p{margin:0;color:var(--ink-2);font-size:16px}
 .rate p b{color:var(--ink)}
-.quotes{--per:3}
-.quotes .vp{background:none;border-radius:0;margin:0 -12px}
-.quotes .track>*{flex-basis:calc(100% / var(--per));padding:0 12px}
-.qnav{display:none;justify-content:center;gap:12px;margin-top:18px}
-.qnav .btn{width:52px;padding:0}
-@media (max-width:640px){.quotes .dots{display:none}.js .qnav{display:flex}}
-.q{height:100%;background:var(--tint-soft);border-radius:var(--r);padding:32px 30px;display:flex;flex-direction:column;margin:0}
-.q blockquote{margin:0 0 18px;font-size:17.5px;line-height:1.6;flex:1}
-.q blockquote::before{content:"\201C";display:block;font-family:var(--script);font-size:54px;line-height:.6;color:var(--place);margin-bottom:10px}
-.q figcaption{font-size:15.5px;color:var(--ink-2)}
+.quotes{--per:1}
+.quotes .vp{background:none;border-radius:0}
+.q{margin:0}
+.q blockquote{margin:0 0 20px;font-size:clamp(22px,2.2vw,29px);line-height:1.4;font-weight:500;letter-spacing:-.015em;color:var(--ink);min-height:6.2em}
+.q blockquote::before{content:"\201C";display:block;font-family:var(--script);font-size:72px;line-height:.5;color:var(--place);margin-bottom:14px}
+.q figcaption{font-size:16px;color:var(--ink-2);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.q figcaption b{color:var(--ink);font-weight:700}
 .q figcaption a{display:inline-flex;align-items:center;min-height:44px;color:var(--place);font-weight:600}
-.q figcaption b{color:var(--ink);font-weight:600;display:block;font-size:16.5px}
+.qnav{display:flex;align-items:center;gap:8px;margin-top:18px}
+.qnav .btn{width:52px;padding:0}
+.qnav .dots{margin:0;flex:1;justify-content:flex-start}
+.no-js .qnav{display:none}
 .waves{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:clamp(32px,6vw,96px);align-items:center}
 .now{display:flex;align-items:baseline;gap:14px;margin:26px 0 6px}
 .now .h{font-size:clamp(46px,5.5vw,60px);line-height:1;font-weight:600;letter-spacing:-.03em;white-space:nowrap}
@@ -264,18 +271,24 @@ svg.f{fill:currentColor;stroke:none}
 @media (max-width:900px){
   .lv-info{grid-template-columns:1fr;gap:14px;padding-top:20px}
   .lv-info .btn-row .btn{flex:1}
-  .weekb,.lodge-grid,.waves,.lodgeb,.sec-head.split{grid-template-columns:1fr}
+  .weekb,.lodge-grid,.waves,.lodgeb,.sec-head.split,.lvhead{grid-template-columns:1fr}
+  .lvhead .title{grid-row:auto}.lvhead .lvtabs{grid-column:auto}
   .lodgeb .copy{order:2;padding:44px var(--gut) 56px;justify-self:stretch}
   .lodgeb .slides.bleed .track img{aspect-ratio:4/3}
   .weekb .copy{padding:48px var(--gut) 56px}
-  .quotes{--per:1}
+  .guestsb{grid-template-columns:minmax(0,1fr)}
+  .q blockquote{min-height:0;font-size:21px}
+  .quotes .track{align-items:flex-start}
+  .rosa-box .btn{white-space:normal;text-align:center;max-width:100%}
+  .gphoto img{aspect-ratio:4/3}
+  .qnav .dots{display:none}
   .rosa-box{justify-self:center}
   .ig-row a{flex-basis:calc((100% - 16px)/2.3)}
 }
 @media (max-width:700px){
   .am{grid-template-columns:1fr}
   .hero .btn{width:100%;max-width:340px}
-  .hero .poster,.hero video{object-position:55% 50%;transform:scale(1.25);transform-origin:50% 100%}
+
   .lv-foot{padding:20px}
   .lv-foot .btn{width:100%}
   .lv-info .detail{white-space:normal}
@@ -304,12 +317,12 @@ svg.f{fill:currentColor;stroke:none}
 </div>
 <main id="main">
 <section class="hero" id="top" aria-label="Global Surf Lodge Kabalana">
-  <picture><source media="(max-width: 900px)" srcset="video/vid-002h-poster-1280.webp" type="image/webp"><source srcset="video/vid-002h-poster-1920.webp" type="image/webp"><img class="poster" src="video/vid-002h-poster.jpg" alt="" fetchpriority="high" width="1920" height="1080"></picture>
+  <picture><source media="(max-width: 900px) and (orientation: portrait)" srcset="video/vid-002w-poster-p810.webp" type="image/webp"><source srcset="video/vid-002w-poster-1728.webp" type="image/webp"><img class="poster" src="video/vid-002w-poster.jpg" alt="" fetchpriority="high" width="1728" height="972"></picture>
   <video id="heroVid" hidden muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true">
-    <source data-src="video/vid-002h-m1280.webm" data-media="(max-width: 900px)" type="video/webm">
-    <source data-src="video/vid-002h-m1280.mp4" data-media="(max-width: 900px)" type="video/mp4">
-    <source data-src="video/vid-002h-d1920.webm" data-media="(min-width: 901px)" type="video/webm">
-    <source data-src="video/vid-002h-d1920.mp4" data-media="(min-width: 901px)" type="video/mp4">
+    <source data-src="video/vid-002w-p810.webm" data-media="(max-width: 900px) and (orientation: portrait)" type="video/webm">
+    <source data-src="video/vid-002w-p810.mp4" data-media="(max-width: 900px) and (orientation: portrait)" type="video/mp4">
+    <source data-src="video/vid-002w-d1728.webm" data-media="(min-width: 901px), (orientation: landscape)" type="video/webm">
+    <source data-src="video/vid-002w-d1728.mp4" data-media="(min-width: 901px), (orientation: landscape)" type="video/mp4">
   </video>
   <div class="hero-in">
     <h1>Next set is yours</h1>
@@ -320,11 +333,11 @@ svg.f{fill:currentColor;stroke:none}
 
 <section class="sec tint on-tint" id="levels" aria-labelledby="lv-title">
  <div class="wrap">
-  <div class="sec-head">
-    <h2 class="title c" id="lv-title">Choose your level</h2>
-    <div class="lede c"><p>We are surfing obsessed, and we invite you to join us.</p><p>The lodge sits in the green of the jungle. We run surf weeks for three levels, from your first wave to carving, and a Freestylers package for independent travellers.</p></div>
+  <div class="sec-head lvhead">
+    <h2 class="title" id="lv-title">Choose your level</h2>
+    <div class="lede"><p>We are surfing obsessed, and we invite you to join us.</p><p>The lodge sits in the green of the jungle. We run surf weeks for three levels, from your first wave to carving, and a Freestylers package for independent travellers.</p></div>
+    <div class="lvtabs"><div class="pills" role="tablist" aria-label="Surf level"><button type="button" role="tab" id="tab-1" aria-controls="lv-1" aria-selected="true"><span class="lvn">Level 1</span> <span class="lvx">Fomies</span></button><button type="button" role="tab" id="tab-2" aria-controls="lv-2" aria-selected="false"><span class="lvn">Level 2</span> <span class="lvx">Rollers</span></button><button type="button" role="tab" id="tab-3" aria-controls="lv-3" aria-selected="false"><span class="lvn">Level 3</span> <span class="lvx">Riders</span></button></div></div>
   </div>
-  <div class="pills-row"><div class="pills" role="tablist" aria-label="Surf level"><button type="button" role="tab" id="tab-1" aria-controls="lv-1" aria-selected="true"><span class="lvn">Level 1</span> <span class="lvx">Fomies</span></button><button type="button" role="tab" id="tab-2" aria-controls="lv-2" aria-selected="false"><span class="lvn">Level 2</span> <span class="lvx">Rollers</span></button><button type="button" role="tab" id="tab-3" aria-controls="lv-3" aria-selected="false"><span class="lvn">Level 3</span> <span class="lvx">Riders</span></button></div></div>
  </div>
  <div class="stage" id="stage">
    <div class="lv-panels">
@@ -395,7 +408,7 @@ svg.f{fill:currentColor;stroke:none}
 
 <section class="weekb" id="week" aria-labelledby="wk-title">
   <div class="slides bleed" data-label="Photo of the week" tabindex="-1">
-  <div class="vp"><div class="track"><div><img src="img/img-104-1400.webp" srcset="img/img-104-800.webp 800w, img/img-104-1400.webp 1400w" sizes="(max-width: 900px) 100vw, 58vw" width="1400" height="933" alt="surf group walking along the beach"></div><div><img src="img/img-011-1400.webp" srcset="img/img-011-800.webp 800w, img/img-011-1400.webp 1400w" sizes="(max-width: 900px) 100vw, 58vw" width="1400" height="933" alt="fruit and granola bowl from above" loading="lazy" decoding="async"></div><div><img src="img/img-118-1400.webp" srcset="img/img-118-800.webp 800w, img/img-118-1400.webp 1400w" sizes="(max-width: 900px) 100vw, 58vw" width="1400" height="933" alt="woman carrying a board over her head in the jungle" loading="lazy" decoding="async"></div><div><img src="img/img-115-1400.webp" srcset="img/img-115-800.webp 800w, img/img-115-1400.webp 1400w" sizes="(max-width: 900px) 100vw, 58vw" width="1400" height="933" alt="surf theory lesson in the lodge" loading="lazy" decoding="async"></div><div><img src="img/img-114-1400.webp" srcset="img/img-114-800.webp 800w, img/img-114-1400.webp 1400w" sizes="(max-width: 900px) 100vw, 58vw" width="1400" height="933" alt="surf theory group on the sand" loading="lazy" decoding="async"></div><div><img src="img/img-023-1400.webp" srcset="img/img-023-800.webp 800w, img/img-023-1400.webp 1400w" sizes="(max-width: 900px) 100vw, 58vw" width="1400" height="933" alt="guests toasting at the table" loading="lazy" decoding="async"></div></div></div>
+  <div class="vp"><div class="track"><div><img src="img/img-104-1400.webp" srcset="img/img-104-800.webp 800w, img/img-104-1400.webp 1400w" sizes="(max-width: 900px) 100vw, 58vw" width="1400" height="933" alt="surf group walking along the beach"></div><div><img src="img/img-011-1400.webp" srcset="img/img-011-800.webp 800w, img/img-011-1400.webp 1400w" sizes="(max-width: 900px) 100vw, 58vw" width="1400" height="933" alt="fruit and granola bowl from above" loading="lazy" decoding="async"></div><div><img src="img/img-118-1400.webp" srcset="img/img-118-800.webp 800w, img/img-118-1400.webp 1400w" sizes="(max-width: 900px) 100vw, 58vw" width="1400" height="933" alt="woman carrying a board over her head in the jungle" loading="lazy" decoding="async"></div><div><img src="img/img-115-1400.webp" srcset="img/img-115-800.webp 800w, img/img-115-1400.webp 1400w" sizes="(max-width: 900px) 100vw, 58vw" width="1400" height="933" alt="surf theory lesson in the lodge" loading="lazy" decoding="async"></div><div><img src="img/img-114-1400.webp" srcset="img/img-114-800.webp 800w, img/img-114-1400.webp 1400w" sizes="(max-width: 900px) 100vw, 58vw" width="1400" height="933" alt="surf theory group on the sand" loading="lazy" decoding="async"></div><div><img src="img/img-017-1400.webp" srcset="img/img-017-800.webp 800w, img/img-017-1400.webp 1400w" sizes="(max-width: 900px) 100vw, 58vw" width="1400" height="933" alt="two guests relaxing on the pool daybed" loading="lazy" decoding="async"></div></div></div>
   <button type="button" class="arrow prev" aria-label="Previous photo"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></button>
   <button type="button" class="arrow next" aria-label="Next photo"><svg class="i" aria-hidden="true"><use href="#i-right"/></svg></button>
   <div class="dots"></div></div>
@@ -483,23 +496,25 @@ svg.f{fill:currentColor;stroke:none}
 </section>
 
 <section class="sec" id="guests" aria-labelledby="gu-title">
- <div class="wrap">
-  <h2 class="title c" id="gu-title">What guests say</h2>
-  <div class="rate"><span class="big">8.6</span><p><b>on Booking.com | 80 reviews | 28 Sep 2026</b><br>Staff 9.5 | Facilities 9.2 | Cleanliness 9.2</p></div>
-  <div class="slides quotes" data-label="Reviews, page">
-    <div class="vp"><div class="track">
-      <div><figure class="q"><blockquote>We loved the cozy, bohoo-vibes at the lodge: starting from the open-air-bathroom, the relaxing pool area and especially the great breakfast bowls!</blockquote><figcaption><b>Fanny, Germany</b><a href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html">Booking.com</a></figcaption></figure></div>
-      <div><figure class="q"><blockquote>This place felt like something inbetween a hostel and a luxurious hotel. The styling was gorgeous, the beds very comfortable, the (bath)room very spacious with lockers and personal storage space.</blockquote><figcaption><b>Myrthe, Netherlands</b><a href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html">Booking.com</a></figcaption></figure></div>
-      <div><figure class="q"><blockquote>A lovely hotel and a team of champions. Ariel, a professional surf guide, raised the level of surfing for us by several steps during the week we were there. This is our second time at the same hotel and with the same guide. We will return next year as well</blockquote><figcaption><b>Seagallas</b><a href="https://www.globalsurf.com/kabalana-lodge-surf-packages/">globalsurf.com</a></figcaption></figure></div>
-      <div><figure class="q"><blockquote>The room was modern, quiet and incredibly clean with daily servicing. The grounds were well kept with a gorgeous pool and dining area. There are hammocks, loungers and beanbags in social areas. It was a really really great place.</blockquote><figcaption><b>Abigail, Myanmar</b><a href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html">Booking.com</a></figcaption></figure></div>
-      <div><figure class="q"><blockquote>I had a wonderful stay at this hostel in Kabalana. The place was very clean, comfortable, and well maintained, and the staff were incredibly friendly and welcoming.</blockquote><figcaption><b>Maryam, Netherlands</b><a href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html">Booking.com</a></figcaption></figure></div>
-      <div><figure class="q"><blockquote>We stayed at Global Kablana Sri Lanka as a couple and two girls and it was just fun and lovely. The atmosphere, the rooms, the stunning staff. Just everything.</blockquote><figcaption><b>Dana Amsalem-Cohen</b><a href="https://www.globalsurf.com/kabalana-lodge-surf-packages/">globalsurf.com</a></figcaption></figure></div>
-      <div><figure class="q"><blockquote>The common areas and the rooms are really nice! Staff is very helpful and the breakfast options are awesome.</blockquote><figcaption><b>Agustin, Chile</b><a href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html">Booking.com</a></figcaption></figure></div>
-      <div><figure class="q"><blockquote>Super nice place, beautiful rooms, nice hangout area with pool and pillows and delicious breakfast!</blockquote><figcaption><b>Sara, Austria</b><a href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html">Booking.com</a></figcaption></figure></div>
-      <div><figure class="q"><blockquote>The staff were lovely and welcoming. The property itself was clean and comfortable.</blockquote><figcaption><b>Hannah, Oman</b><a href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html">Booking.com</a></figcaption></figure></div>
-    </div></div>
-    <div class="dots"></div>
-    <div class="qnav"><button type="button" class="prev btn btn-soft" aria-label="Previous review"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></button><button type="button" class="next btn btn-soft" aria-label="Next review"><svg class="i" aria-hidden="true"><use href="#i-right"/></svg></button></div>
+ <div class="wrap guestsb">
+  <div class="gphoto"><img src="img/img-023-1400.webp" srcset="img/img-023-800.webp 800w, img/img-023-1400.webp 1400w" sizes="(max-width: 900px) 100vw, 460px" width="1400" height="933" alt="guests toasting at the table" loading="lazy" decoding="async"></div>
+  <div class="gtext">
+    <h2 class="title" id="gu-title">What guests say</h2>
+    <div class="rate"><span class="big">8.6</span><p><b>on Booking.com | 80 reviews | 28 Sep 2026</b><br>Staff 9.5 | Facilities 9.2 | Cleanliness 9.2</p></div>
+    <div class="slides quotes" data-label="Review">
+      <div class="vp"><div class="track">
+        <div><figure class="q"><blockquote>We loved the cozy, bohoo-vibes at the lodge: starting from the open-air-bathroom, the relaxing pool area and especially the great breakfast bowls!</blockquote><figcaption><b>Fanny, Germany</b><a href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html">Booking.com</a></figcaption></figure></div>
+        <div><figure class="q"><blockquote>This place felt like something inbetween a hostel and a luxurious hotel. The styling was gorgeous, the beds very comfortable, the (bath)room very spacious with lockers and personal storage space.</blockquote><figcaption><b>Myrthe, Netherlands</b><a href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html">Booking.com</a></figcaption></figure></div>
+        <div><figure class="q"><blockquote>A lovely hotel and a team of champions. Ariel, a professional surf guide, raised the level of surfing for us by several steps during the week we were there. This is our second time at the same hotel and with the same guide. We will return next year as well</blockquote><figcaption><b>Seagallas</b><a href="https://www.globalsurf.com/kabalana-lodge-surf-packages/">globalsurf.com</a></figcaption></figure></div>
+        <div><figure class="q"><blockquote>The room was modern, quiet and incredibly clean with daily servicing. The grounds were well kept with a gorgeous pool and dining area. There are hammocks, loungers and beanbags in social areas. It was a really really great place.</blockquote><figcaption><b>Abigail, Myanmar</b><a href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html">Booking.com</a></figcaption></figure></div>
+        <div><figure class="q"><blockquote>I had a wonderful stay at this hostel in Kabalana. The place was very clean, comfortable, and well maintained, and the staff were incredibly friendly and welcoming.</blockquote><figcaption><b>Maryam, Netherlands</b><a href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html">Booking.com</a></figcaption></figure></div>
+        <div><figure class="q"><blockquote>We stayed at Global Kablana Sri Lanka as a couple and two girls and it was just fun and lovely. The atmosphere, the rooms, the stunning staff. Just everything.</blockquote><figcaption><b>Dana Amsalem-Cohen</b><a href="https://www.globalsurf.com/kabalana-lodge-surf-packages/">globalsurf.com</a></figcaption></figure></div>
+        <div><figure class="q"><blockquote>The common areas and the rooms are really nice! Staff is very helpful and the breakfast options are awesome.</blockquote><figcaption><b>Agustin, Chile</b><a href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html">Booking.com</a></figcaption></figure></div>
+        <div><figure class="q"><blockquote>Super nice place, beautiful rooms, nice hangout area with pool and pillows and delicious breakfast!</blockquote><figcaption><b>Sara, Austria</b><a href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html">Booking.com</a></figcaption></figure></div>
+        <div><figure class="q"><blockquote>The staff were lovely and welcoming. The property itself was clean and comfortable.</blockquote><figcaption><b>Hannah, Oman</b><a href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html">Booking.com</a></figcaption></figure></div>
+      </div></div>
+      <div class="qnav"><button type="button" class="prev btn btn-soft" aria-label="Previous review"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></button><div class="dots"></div><button type="button" class="next btn btn-soft" aria-label="Next review"><svg class="i" aria-hidden="true"><use href="#i-right"/></svg></button></div>
+    </div>
   </div>
  </div>
 </section>

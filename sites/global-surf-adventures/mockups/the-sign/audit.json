@@ -1,7 +1,7 @@
 {
  "slug": "global-surf-adventures",
  "variant": "the-sign",
- "measured_at": "2026-09-29T20:39:14.583Z",
+ "measured_at": "2026-09-29T21:15:36.411Z",
  "first_load": {
   "requests": 15,
   "hosts": [
@@ -13,8 +13,8 @@
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 609719,
-  "bytes_html": 68248,
+  "bytes_total": 610085,
+  "bytes_html": 68614,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 104852,
@@ -22,7 +22,7 @@
   "largest_image_bytes": 49384,
   "lcp_ms": 484,
   "cls": 0.0029,
-  "dcl_ms": 873
+  "dcl_ms": 840
  },
  "booking": {
   "external_booking_hrefs": [
