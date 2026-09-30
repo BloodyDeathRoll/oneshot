@@ -1,0 +1,19 @@
+{
+  "target": "http://localhost:8982/try-your-week/dist/",
+  "widths": {
+    "desktop": {
+      "pageHeight": 9472,
+      "scroller": "window",
+      "captures": 12,
+      "truncated": false,
+      "errors": []
+    },
+    "mobile": {
+      "pageHeight": 10673,
+      "scroller": "window",
+      "captures": 14,
+      "truncated": false,
+      "errors": []
+    }
+  }
+}

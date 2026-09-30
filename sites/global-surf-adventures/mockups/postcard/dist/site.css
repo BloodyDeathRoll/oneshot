@@ -484,3 +484,10 @@ h1,h2,h3{margin:0;font-weight:500}
 @media (max-width:600px){.opt{grid-template-columns:96px 1fr auto}}
 @media (max-width:900px){.levels{margin:0 calc(var(--gut)*-1)}}
 @media (max-width:700px){.hero-media img,.hero video{object-position:80% 50%}}
+
+/* phones: a soft vertical band behind the title zone instead of the radial glow */
+@media (max-width:700px){
+  .hero h1::before{display:none}
+  .hero::after{content:"";position:absolute;left:0;right:0;top:28%;height:44%;z-index:1;pointer-events:none;
+    background:linear-gradient(to bottom,rgba(28,16,6,0),rgba(28,16,6,.26) 30%,rgba(28,16,6,.26) 70%,rgba(28,16,6,0))}
+}

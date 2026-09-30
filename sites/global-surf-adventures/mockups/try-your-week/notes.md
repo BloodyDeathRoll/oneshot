@@ -343,3 +343,5 @@ carve; cuts found with ffmpeg scene detection at 18.52 / 21.6 / 24.04 s), badge 
 
 Checks: check-design ok on both pages; funnel CTA above fold true, clicks_to_book 1, 0 broken; 0 targets < 44 px
 at 390/1440; cold phone LCP 356 ms; hand-off JS on/off unchanged; no horizontal overflow at 390.
+
+**Round 14:** booking step 1 band is now the full 16:9 frame (max 880 px, no crop); all three levels show the whole surfer at 1440 and 390 (`shots/round-14/`). check-design ok.

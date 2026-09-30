@@ -146,3 +146,8 @@ Shots: `shots/r5-round-1/` (+ `vs-old-*.png`), `shots/r5-round-1-book/`.
 
 - vid-010g recut (8.08 s, one direction): opens on the golden beach silhouettes (whole figures, darker ground), then the surfer on blue water, the clap, a short shot, the woman in the water, the sunset silhouette; the overexposed stand-up shot is dropped. d1728 webm 1.88 MB / mp4 2.44 MB, m1280 webm 1.09 MB, m720 mp4 1.18 MB. Poster = the silhouettes frame; phone poster/crop at 80 % (whole silhouette, darker sand behind the centred title).
 - Checked at 390 (poster + 0.6, 2.2, 4.6, 7.4 s: `shots/r7-hero/sheet.png`): title centred both ways, on mid-dark ground in every frame, never over a head. check-design ok.
+
+## Round 8 (phone hero)
+
+- Phones play `vid-010s` (the golden-beach silhouette shot only, src 22.52–24.12, 1.6 s, same crop; m1280 webm 271 KB, m720 mp4 243 KB) once and hold its last frame (`loop` off on phones, no retiming); the poster is that shot's first frame. Desktop keeps the 8.08 s vid-010g loop and the radial shade. The now-unused vid-010g phone renditions are deleted.
+- Phones: the radial glow is replaced by a soft vertical band (transparent → 26 % warm dark → transparent) across the title zone. Checked 6 frames at 390 (`shots/r8-hero/sheet.png`: poster, 0.3, 0.8, 1.3 s, ended, held 5 s later). check-design ok.

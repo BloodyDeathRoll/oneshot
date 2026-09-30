@@ -10,6 +10,7 @@
     const d = v.dataset, m = small();
     const webm = (m ? d.webmM : d.webmD) || d.webmM, mp4 = (m ? d.mp4M : d.mp4D) || d.mp4M;
     v.innerHTML = `<source src="${webm}" type="video/webm"><source src="${mp4}" type="video/mp4">`;
+    if (m && 'onceM' in d) v.loop = false; // phones: the short silhouette shot plays once and holds its last frame
     v.addEventListener('playing', () => v.classList.add('on'), { once: true });
     v.addEventListener('error', () => v.remove(), true);
     v.load();

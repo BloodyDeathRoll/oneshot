@@ -344,3 +344,42 @@ Remaining fixes:
 1. **The Sign (8.5, pass):** the most finished and most place-specific, with a booking desk that belongs to the site. Recommended pick.
 2. **Postcard (8, pass, borderline):** warm, editorial and distinct, with the best closing and big level cards. Only the soft hero clip and some awkward room-title wraps remain.
 3. **Try your week (7.5, fail, close):** the best booking flow and a strong new closing, but a pixelated phone hero and a centred, generic mid-page keep it just under the bar.
+
+---
+
+# Round 6 (final check, 2026-09-30)
+
+Scope: Try your week re-scored in full (home + booking). Postcard's phone first screen checked. The Sign unchanged since round 5.
+Shots:
+- `visual-r2/round6/try-your-week-home/`, `try-your-week-book/` and `try-your-week-book-walk/`.
+- `postcard-home/` and `postcard-phone-hero/`: 12 frames at 1 s over the phone loop, plus `sheet.png`. The video that played was `vid-010g-m1280.webm`, 1280×720, 8.1 s.
+
+The other reviewers' reports were not opened. The server on 8982 was stopped afterwards.
+
+## Try your week — 8/10 (pass, borderline) · would Shahar accept: yes · better than current: yes
+- **Phone hero:** the real-speed barrel is now sharp enough on a phone. The title, subtitle and button are centred both ways (`try-your-week-home/mobile-00`).
+- **Level section:** the split header ("Choose your level" script left, text and pills right) and the larger type fix the centred-block monotony (`desktop-01`).
+- **Guests:** the section is now composed, with a photo left and one large quote with the score right, plus arrows and dots, instead of three pale cards (`desktop-07`).
+- **Kept:** the lodge split, the img-036 closing, the sea-glass tile footer and the 3-step booking wizard.
+
+Remaining fix (do before it goes to Shahar if possible): booking step 1 shows the Level 1 clip as a wide 16:9 crop. Only a torso and legs show, overexposed and soft, with the head cut off (`try-your-week-book-walk/desktop-step1`). Use a 4:5 or 1:1 frame that keeps the whole surfer, or the level's poster frame.
+
+## Postcard — phone first screen does NOT hold 8 as shipped → 7.5 · would Shahar accept: no · better than current: yes
+- **Poster and opening:** the golden-beach silhouettes, with whole figures and a centred Lora title, are good (`postcard-phone-hero/t00`, `t01`).
+- **Loop, 8.1 s:** the rest cycles through weak phone frames (`postcard-phone-hero/sheet.png`):
+  - grey, near-empty sky and whitewater (`t03`, `t07`);
+  - a hand cut off at the left edge (`t06`);
+  - a woman from behind, cropped at the hips in the centre of the frame (`t04`, `t11`);
+  - soft palm and board frames (`t05`).
+- **Title halo:** on the light frames, the dark glow behind the title shows as a grey blob (`round6/postcard-home/mobile-00`).
+- The desktop first screen and the rest of the page still read at 8.
+
+Fix (small): on phones, loop only the golden-silhouette segment (≈ 0–2.5 s) or show the poster still. Replace the title glow with a soft full-width gradient, or drop it on frames bright enough to need none. With that fix, 8.
+
+## The Sign — 8.5/10 (pass) · unchanged since round 5
+Would Shahar accept: yes · better than current: yes.
+
+## Final ranking and the one sentence each, for Shahar
+1. **The Sign (8.5):** the lodge's own sign lettering in brush script over its pool-and-reef film, with big room galleries and a booking page that looks like the rest of the site. The most finished of the three, and the recommended pick.
+2. **Try your week (8):** watch your level before you book it. A barrel-wave opening, a level switcher that plays each level's footage, and the clearest three-step booking flow. Its booking-page level clip needs a better crop.
+3. **Postcard (7.5 on phone as shipped, 8 on desktop):** a warm, editorial brochure in sand and serif with the best closing section. Its phone opening loop drifts into weak frames, and it needs to hold on the golden-beach shot to be at 8.
