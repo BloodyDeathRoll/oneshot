@@ -1,0 +1,44 @@
+[
+ {
+  "name": "1440",
+  "engineCallsOnLoad": 0,
+  "engineCalls": [
+   "GET https://api.bookinglayer.io/public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities",
+   "GET https://api.bookinglayer.io/public/accommodations/availabilities",
+   "POST https://api.bookinglayer.io/public/packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items",
+   "GET https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers"
+  ],
+  "afterBack": "#dates dates",
+  "total": "$3,092.05 | Prices in USD | Live prices didn't load. These are the booking engine's prices from 29 Sep 2026.",
+  "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&couple=1&end=2027-02-27",
+  "url": "chrome-error://chromewebdata/",
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ {
+  "name": "390",
+  "engineCallsOnLoad": 0,
+  "engineCalls": [
+   "GET https://api.bookinglayer.io/public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities",
+   "GET https://api.bookinglayer.io/public/accommodations/availabilities",
+   "POST https://api.bookinglayer.io/public/packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items",
+   "GET https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers"
+  ],
+  "afterBack": "#dates dates",
+  "total": "$3,092.05 | Prices in USD | Live prices didn't load. These are the booking engine's prices from 29 Sep 2026.",
+  "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&couple=1&end=2027-02-27",
+  "url": "chrome-error://chromewebdata/",
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ {
+  "name": "nojs",
+  "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1"
+ }
+]

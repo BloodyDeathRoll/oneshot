@@ -1,0 +1,57 @@
+{
+ "taps-home-390": [],
+ "taps-book-level-390": [],
+ "taps-book-room-390": [],
+ "taps-book-dates-390": [],
+ "taps-book-total-390": [],
+ "taps-home-1440": [],
+ "taps-book-level-1440": [],
+ "taps-book-room-1440": [],
+ "taps-book-dates-1440": [],
+ "taps-book-total-1440": [],
+ "reducedMotionVideoRequests": [],
+ "paint-390": {
+  "fcp": 308,
+  "lcp": [
+   {
+    "t": 364,
+    "el": "H1"
+   }
+  ],
+  "posterSrc": "hero-poster-m.webp",
+  "posterDone": 544,
+  "posterBytes": 29876,
+  "firstLoadBytesNoVideo": 443057,
+  "byType": {
+   "document": 39580,
+   "image": 245847,
+   "stylesheet": 21534,
+   "font": 136096
+  },
+  "videoBytes": 1715932
+ },
+ "paint-1440": {
+  "fcp": 308,
+  "lcp": [
+   {
+    "t": 308,
+    "el": "A"
+   },
+   {
+    "t": 364,
+    "el": "H1"
+   }
+  ],
+  "posterSrc": "hero-poster-d.webp",
+  "posterDone": 2067,
+  "posterBytes": 65902,
+  "firstLoadBytesNoVideo": 500967,
+  "byType": {
+   "document": 39580,
+   "image": 303757,
+   "stylesheet": 21534,
+   "font": 136096
+  },
+  "videoBytes": 3408960
+ }
+}
