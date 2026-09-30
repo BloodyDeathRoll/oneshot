@@ -35,4 +35,5 @@ ffmpeg -v error -y -ss 0.04 -i $T/m.mp4 -frames:v 1 -q:v 3 $OUT/hero-poster-m.jp
 for s in d m; do ffmpeg -v error -y -i $OUT/hero-poster-$s.jpg -c:v libwebp -quality 74 $OUT/hero-poster-$s.webp; done
 # small copies, inlined in the page so the first paint already carries the picture (the full poster replaces them)
 ffmpeg -v error -y -i $OUT/hero-poster-m.jpg -vf scale=270:480 -c:v libwebp -quality 42 $OUT/hero-poster-m-lq.webp
+ffmpeg -v error -y -i $OUT/hero-poster-d.jpg -vf scale=512:288 -c:v libwebp -quality 42 $OUT/hero-poster-d-lq.webp
 ls -l $OUT/hero-*

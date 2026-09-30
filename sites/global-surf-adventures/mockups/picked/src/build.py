@@ -114,7 +114,7 @@ _wa = re.search(r'<symbol id="i-wa".*?</symbol>', SIGN_BUILD).group(0)
 SPRITE = re.sub(r'<symbol id="i-wa".*?</symbol>', lambda m: _wa, SPRITE)
 ic = lambda n, cls='': f'<svg{f" class={chr(34)}{cls}{chr(34)}" if cls else ""} aria-hidden="true"><use href="#{n}"/></svg>'
 
-FONT_URL = 'https://fonts.googleapis.com/css2?family=Give+You+Glory&family=Lora:ital,wght@0,400;0,500;0,600;1,500&display=swap'
+FONT_URL = 'https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,500&display=swap'
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
          f'<link rel="stylesheet" href="{FONT_URL}" media="print" onload="this.media=\'all\'"><noscript><link rel="stylesheet" href="{FONT_URL}"></noscript>')
 

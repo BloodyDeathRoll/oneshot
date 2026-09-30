@@ -43,7 +43,7 @@ section{scroll-margin-top:var(--hdr)}
 .sec{padding:110px 0}
 
 /* type: Dancing Script (400 only, never synthesised bold) for every handwritten title, Lora for everything else */
-.script{font-family:var(--script);font-weight:600;font-synthesis:none;font-size:clamp(52px,5.4vw,80px);line-height:1.18;letter-spacing:.01em;color:var(--ink);margin:0 0 .32em;text-wrap:balance}
+.script{font-family:var(--script);font-weight:600;font-synthesis:none;font-size:56px;line-height:1.18;letter-spacing:.01em;color:var(--ink);margin:0 0 .32em;text-wrap:balance}
 h3{font-weight:600;font-size:26px;line-height:1.2;letter-spacing:-.005em;margin-bottom:.35em}
 .lead{font-size:clamp(18px,1.45vw,21px);line-height:1.6}
 .detail{font-size:16px;color:var(--ink2);letter-spacing:.005em}
@@ -155,7 +155,7 @@ svg.wa{color:var(--wa)}
 .hero-v{opacity:0;transition:opacity .3s}
 .hero-v.on{opacity:1}
 .hero-c{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:var(--hdr) var(--gut) 0}
-.hero h1{position:relative;color:#fff;font-family:var(--script);font-weight:600;font-synthesis:none;font-size:clamp(52px,5.2vw,76px);line-height:1.15;
+.hero h1{position:relative;color:#fff;font-family:var(--sans);font-weight:500;font-size:48px;line-height:1.2;letter-spacing:-.005em;
   text-shadow:0 1px 2px rgba(0,0,0,.35),0 2px 18px rgba(0,0,0,.35),0 0 60px rgba(0,0,0,.28);margin:0 0 28px;text-wrap:balance}
 /* a soft local shade behind the title text only (not over the video) [sign round 10] */
 .hero h1::before{content:"";position:absolute;inset:-36px -64px;z-index:-1;pointer-events:none;background:radial-gradient(closest-side,rgba(12,22,34,.38),rgba(12,22,34,.18) 60%,rgba(12,22,34,0))}
@@ -206,10 +206,10 @@ svg.wa{color:var(--wa)}
 .week-show .dots{justify-content:flex-start}
 .week-text p{font-size:19px}
 
-/* ---------- rooms: split header + room viewer with pills [week] ---------- */
-.sec-head.split2{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:48px}
-.sec-head.split2 .script{margin:0}
-.sec-head.split2 p{margin:0;color:var(--ink2);font-size:18px;max-width:560px;justify-self:end}
+/* ---------- rooms: centred header (title over the line) + room viewer with pills [week] ---------- */
+.sec-head.split2{text-align:center;margin-bottom:48px}
+.sec-head.split2 .script{margin:0 0 14px}
+.sec-head.split2 p{margin:0 auto;color:var(--ink2);font-size:18px;max-width:560px}
 .room{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:center}
 .room .show-track img{aspect-ratio:16/10}
 .room h3{font-size:32px;line-height:1.12;margin:0 0 10px}
@@ -306,8 +306,7 @@ svg.wa{color:var(--wa)}
   .week-text{padding:0 var(--gut)}
   .week-show .show-frame{border-radius:0}
   .week-show .dots{justify-content:center}
-  .sec-head.split2{grid-template-columns:1fr;gap:14px;margin-bottom:32px}
-  .sec-head.split2 p{justify-self:start}
+  .sec-head.split2{margin-bottom:32px}
   .guests{grid-template-columns:minmax(0,1fr);gap:36px}
   .score .num{font-size:84px}
   .now{gap:10px 22px}
@@ -688,33 +687,23 @@ function attach(){
 }
 if (document.readyState === 'complete') setTimeout(attach, 50); else addEventListener('load', function(){ setTimeout(attach, 50); });
 
-/* level panels: one clip at a time. Desktop: point/focus to play. Phone: the one in view plays. [sign] */
+/* level panels: all three clips loop while the row is on screen, no hover needed (Shahar, 2026-09-30). [sign] */
 var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
-var wide = matchMedia('(min-width: 1001px)');
 function ensure(vid){
   if (vid.dataset.ready) return; vid.dataset.ready = '1';
   [[vid.dataset.webm, 'video/webm'], [vid.dataset.mp4, 'video/mp4']].forEach(function(x){ var s = document.createElement('source'); s.src = x[0]; s.type = x[1]; vid.appendChild(s); });
   vid.load();
 }
-function playOnly(p){
+function playAll(on){
   panels.forEach(function(q){
     var vid = q.querySelector('video');
-    if (q === p && !calm) { ensure(vid); var r = vid.play(); if (r) r.catch(function(){}); }
+    if (on && !calm) { ensure(vid); var r = vid.play(); if (r) r.catch(function(){}); }
     else if (!vid.paused) vid.pause();
   });
 }
-panels.forEach(function(p){
-  p.addEventListener('mouseenter', function(){ if (wide.matches) playOnly(p); });
-  p.addEventListener('focusin', function(){ if (wide.matches) playOnly(p); });
-});
-document.querySelector('.panels').addEventListener('mouseleave', function(){ if (wide.matches) playOnly(null); });
 if ('IntersectionObserver' in window) {
-  var io = new IntersectionObserver(function(es){
-    if (wide.matches) return;
-    es.forEach(function(en){ if (en.isIntersecting) playOnly(en.target); else { var vd = en.target.querySelector('video'); if (!vd.paused) vd.pause(); } });
-  }, {threshold: .6});
-  panels.forEach(function(p){ io.observe(p); });
-}
+  new IntersectionObserver(function(es){ playAll(es[es.length - 1].isIntersecting); }, {rootMargin: '200px 0px'}).observe(document.querySelector('.panels'));
+} else playAll(true);
 
 /* rooms [week] */
 GS.roomViewer(document.getElementById('rooms'));

@@ -28,33 +28,23 @@ function attach(){
 }
 if (document.readyState === 'complete') setTimeout(attach, 50); else addEventListener('load', function(){ setTimeout(attach, 50); });
 
-/* level panels: one clip at a time. Desktop: point/focus to play. Phone: the one in view plays. [sign] */
+/* level panels: all three clips loop while the row is on screen, no hover needed (Shahar, 2026-09-30). [sign] */
 var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
-var wide = matchMedia('(min-width: 1001px)');
 function ensure(vid){
   if (vid.dataset.ready) return; vid.dataset.ready = '1';
   [[vid.dataset.webm, 'video/webm'], [vid.dataset.mp4, 'video/mp4']].forEach(function(x){ var s = document.createElement('source'); s.src = x[0]; s.type = x[1]; vid.appendChild(s); });
   vid.load();
 }
-function playOnly(p){
+function playAll(on){
   panels.forEach(function(q){
     var vid = q.querySelector('video');
-    if (q === p && !calm) { ensure(vid); var r = vid.play(); if (r) r.catch(function(){}); }
+    if (on && !calm) { ensure(vid); var r = vid.play(); if (r) r.catch(function(){}); }
     else if (!vid.paused) vid.pause();
   });
 }
-panels.forEach(function(p){
-  p.addEventListener('mouseenter', function(){ if (wide.matches) playOnly(p); });
-  p.addEventListener('focusin', function(){ if (wide.matches) playOnly(p); });
-});
-document.querySelector('.panels').addEventListener('mouseleave', function(){ if (wide.matches) playOnly(null); });
 if ('IntersectionObserver' in window) {
-  var io = new IntersectionObserver(function(es){
-    if (wide.matches) return;
-    es.forEach(function(en){ if (en.isIntersecting) playOnly(en.target); else { var vd = en.target.querySelector('video'); if (!vd.paused) vd.pause(); } });
-  }, {threshold: .6});
-  panels.forEach(function(p){ io.observe(p); });
-}
+  new IntersectionObserver(function(es){ playAll(es[es.length - 1].isIntersecting); }, {rootMargin: '200px 0px'}).observe(document.querySelector('.panels'));
+} else playAll(true);
 
 /* rooms [week] */
 GS.roomViewer(document.getElementById('rooms'));
