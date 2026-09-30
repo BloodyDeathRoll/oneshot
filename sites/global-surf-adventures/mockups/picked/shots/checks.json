@@ -11,46 +11,46 @@
  "taps-book-total-1440": [],
  "reducedMotionVideoRequests": [],
  "paint-390": {
-  "fcp": 308,
+  "fcp": 296,
   "lcp": [
    {
-    "t": 364,
+    "t": 296,
     "el": "H1"
    }
   ],
   "posterSrc": "hero-poster-m.webp",
-  "posterDone": 544,
+  "posterDone": 664,
   "posterBytes": 29876,
-  "firstLoadBytesNoVideo": 443057,
+  "firstLoadBytesNoVideo": 373931,
   "byType": {
-   "document": 39580,
+   "document": 28655,
    "image": 245847,
-   "stylesheet": 21534,
-   "font": 136096
+   "stylesheet": 19553,
+   "font": 79876
   },
   "videoBytes": 1715932
  },
  "paint-1440": {
-  "fcp": 308,
+  "fcp": 260,
   "lcp": [
    {
-    "t": 308,
+    "t": 260,
     "el": "A"
    },
    {
-    "t": 364,
+    "t": 304,
     "el": "H1"
    }
   ],
   "posterSrc": "hero-poster-d.webp",
-  "posterDone": 2067,
+  "posterDone": 2029,
   "posterBytes": 65902,
-  "firstLoadBytesNoVideo": 500967,
+  "firstLoadBytesNoVideo": 431841,
   "byType": {
-   "document": 39580,
+   "document": 28655,
    "image": 303757,
-   "stylesheet": 21534,
-   "font": 136096
+   "stylesheet": 19553,
+   "font": 79876
   },
   "videoBytes": 3408960
  }

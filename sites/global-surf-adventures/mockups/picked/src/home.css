@@ -4,7 +4,7 @@
 .hero-v{opacity:0;transition:opacity .3s}
 .hero-v.on{opacity:1}
 .hero-c{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:var(--hdr) var(--gut) 0}
-.hero h1{position:relative;color:#fff;font-family:var(--script);font-weight:700;font-size:clamp(52px,5.1vw,74px);line-height:1.02;
+.hero h1{position:relative;color:#fff;font-family:var(--script);font-weight:400;font-synthesis:none;font-size:clamp(52px,5.2vw,76px);line-height:1.15;-webkit-text-stroke:.8px #fff;
   text-shadow:0 1px 2px rgba(0,0,0,.35),0 2px 18px rgba(0,0,0,.35),0 0 60px rgba(0,0,0,.28);margin:0 0 28px;text-wrap:balance}
 /* a soft local shade behind the title text only (not over the video) [sign round 10] */
 .hero h1::before{content:"";position:absolute;inset:-36px -64px;z-index:-1;pointer-events:none;background:radial-gradient(closest-side,rgba(12,22,34,.38),rgba(12,22,34,.18) 60%,rgba(12,22,34,0))}
@@ -170,8 +170,8 @@
 @media (max-width:860px){ .bar{display:flex} }
 @media (max-width:620px){
   body{font-size:17px}
-  .script{font-size:clamp(46px,12.5vw,56px);line-height:1.04}
-  .hero h1{font-size:54px;line-height:1.02;max-width:330px}
+  .script{font-size:clamp(42px,11.4vw,50px);line-height:1.18}
+  .hero h1{font-size:41px;line-height:1.15;max-width:350px}
   .hero .btn{min-width:250px}
   .lead,.week-text p,.ig-head p{font-size:17.5px}
   .levels{padding:60px 0 52px}

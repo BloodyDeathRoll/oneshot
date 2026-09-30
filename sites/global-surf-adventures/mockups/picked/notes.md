@@ -22,7 +22,7 @@ Rebuild: `bash src/make-hero.sh && python3 src/build.py`.
 | # | Section | From | Notes |
 |---|---|---|---|
 | 1 | Hero | #1 | Video, header only, `title_c3` "Your surf week starts here" + "Book package now" (`ctas.hero_c1`), centred both ways, with #1's soft local shade behind the title only. New three-scene loop (below). |
-| 2 | Fonts | #3 → Caveat | Lora for all text (#3). Caveat 600/700 for every section/handwritten title: hero, section titles, footer titles and booking step titles. Marck Script is gone. |
+| 2 | Fonts | #3 → Give You Glory | Lora for all text (#3). **Give You Glory** (Google, 400 only, no synthesised bold) for every section/handwritten title: hero, section titles, footer titles and booking step titles. Marck Script and Caveat are gone. It is the only font on the site besides Lora. |
 | 3 | "Next set is yours" | #3 | Asymmetric split, img-118 4:5 with img-024 over its corner. |
 | 4 | Choose your level | #1 | Three living 4:5 clips (vid-010/003e/002e p45 cuts), Freestylers card. **The Booking.com trust line is removed.** Phone: swipe row with dots. |
 | 5 | What's included | #3 | Full-bleed half photo (img-115) + icon list (Level 1) + the Level 3 "coached" line + the airport-pickup note. |
@@ -49,7 +49,7 @@ Rebuild: `bash src/make-hero.sh && python3 src/build.py`.
   - #2's transform slider and its pill-shaped active dot are not used, so all dots look the same.
   - #2's room pills and panel slide-in animation are kept as they were.
 - **One header, one footer, one logo** (#1's SVG path, currentColor) on both pages.
-- **Fonts:** one Google Fonts request (Caveat 600/700 + Lora 400/500/600 + 500 italic), loaded without blocking the first paint.
+- **Fonts:** one Google Fonts request (Give You Glory + Lora 400/500/600 + 500 italic), loaded without blocking the first paint.
 
 ## Hero loop
 
@@ -76,7 +76,7 @@ Rebuild: `bash src/make-hero.sh && python3 src/build.py`.
 - **Posters:** the first frame of each rendition, so the video starts exactly where the poster is: the pool deck under palms.
   - `hero-poster-d.webp` 66 KB / jpg 138 KB.
   - `hero-poster-m.webp` 30 KB / jpg 60 KB.
-  - Small copies (`-lq`, 10 KB and 7.8 KB) are inlined as the hero background, so the picture is in the first paint.
+  - A small phone copy (`hero-poster-m-lq.webp`, 7.8 KB) is inlined as the phone hero background, so the picture is in the first paint on phones. It is phones only: a 512 px desktop copy drawn full-bleed at 1440 failed check-design (hard constraint 7), so it was removed.
 - **Reduced motion or Save-Data:** poster only, no video source attached. Measured: 0 video requests on home and booking.
 
 ## Booking: one step per screen
@@ -141,19 +141,32 @@ Every round's sheets are in `shots/`. `shots/sources/` holds the three source mo
     - a real footer.
   - Against the old site and the three sources: it keeps the bar's shape (video, centred title, coral button, handwritten titles, distinct sections, Instagram, footer) and reads as one designed site. The recoloured #2/#3 sections sit on the same white/neutral ground as #1's.
 
+- **Round 5 — font change** (`round-6-font/`, `round-6-font/hero/`, `round-6-font-book/`)
+  - Shahar (via coordinator): *"I still do not like the font. try google's 'give you glory' instead of caveat. There should be only one more font on the site."*
+  - Caveat is replaced by Give You Glory everywhere (hero, all section titles, footer titles, booking step titles and the "What's included" subtitle). The Caveat request is removed; the only other face is Lora.
+  - Give You Glory is thin and wide, so it was retuned:
+    - weight 400 with `font-synthesis:none`;
+    - a hairline `-webkit-text-stroke` in the text colour (.35 px on titles, .3 px footer, .8 px white on the hero) so the strokes hold on white and over video;
+    - sections clamp(52px, 5.4vw, 80px) at line-height 1.18 and +.01em tracking, phones 42–50 px;
+    - hero clamp(52px, 5.2vw, 76px) on desktop and 41 px on phones, which keeps it to two balanced lines inside the gutters;
+    - footer titles 40 px; booking subtitle 40–52 px.
+  - Every title was read at 390 and 1440 (home sheets, hero sheets at five loop times, booking steps). All read clearly.
+  - The face's own letterforms (its "r" is a small capital R) stay as designed.
+  - Because the face is wide, two split-column titles wrap: "Next set / is yours" on desktop, and "Surf, breakfast, / surf again" in three lines in the 470 px week column. Both are balanced, and nothing overflows.
+
 Known compromise, first screen: with the title centred both ways, the stand-up, the guide and the reef rider pass behind the title in their shots. That is also true of the source heroes. #1's radial shade behind the words keeps it legible on every sampled frame.
 
 ## Checks (once, at the end)
 
-- **`check-design`:**
-  - Home: **ok**, 0 problems, 0 warnings (h1/h2 Caveat, body Lora, ground white, 0 all-caps labels).
+- **`check-design`** (re-run after the font change):
+  - Home: **ok**, 0 problems (h1/h2 Give You Glory, body Lora, ground white, 0 all-caps labels). The first re-run failed on the inlined 512 px desktop poster (constraint 7), which is now phones only.
   - Booking: **ok** through a temporary root-level copy with `../` rewritten. It was deleted afterwards, as for postcard, because the tool serves the page's own folder.
 - **`funnel`** (`funnel/funnel.json`, over http): clicks_to_book 1, CTA above the fold, 8 pages, 0 broken. It reports the primary action as whatsapp, the same tool gap as the sources: it does not classify the GET form to the engine.
 - **Tap targets** (`src/checks.mjs`, `shots/checks.json`): 0 visible targets under 44 px on home and on each booking step, at 390 and 1440.
 - **Reduced motion:** 0 video requests on home (after scrolling) and on booking. Poster only.
 - **Poster paint** (throttled phone: 150 ms RTT, 1.6 Mb/s, CPU ×4, gzip as the host would serve):
-  - FCP **0.31 s** with the inline poster in it, at 390 and at 1440.
-  - Full phone poster arrives by 0.54 s; full desktop poster by 2.1 s. The inline copy covers the gap.
+  - Phone: FCP **0.30 s** with the inline poster in the first paint. The full poster arrives by 0.66 s.
+  - Desktop: FCP 0.26 s (title and button on the #CDE4EE ground). The full 66 KB poster arrives by 2.0 s at that throttle. Desktop is not the slow-phone case.
 - **Booking walk** (`round-5-book/walk.json`): 0 engine calls on load, snapshot total $3,092.05 (L2, couple, twin, 20 Feb 2027), back/forward correct, hand-offs as above, no console errors apart from the requests the test aborted on purpose.
 
 ## Weights
@@ -162,8 +175,8 @@ Known compromise, first screen: with the title centred both ways, the stand-up, 
 |---|---|
 | Home HTML (CSS + JS inline, two small posters inlined) | 98 KB, **40 KB gzip** |
 | Booking HTML | 79 KB, **21 KB gzip** |
-| Home first load, phone, no scroll, video excluded (gzip) | **443 KB**: document 40, images 246 (poster 30 + lazy images the browser pulls within its look-ahead margin), fonts 136 (Google), font CSS 22 |
-| Home first load, desktop | 501 KB (poster 66 KB) |
+| Home first load, phone, no scroll, video excluded (gzip) | **374 KB** (after the font change), including the poster, the lazy images the browser pulls within its look-ahead margin, and the Google fonts |
+| Home first load, desktop | 432 KB (poster 66 KB) |
 | Hero video after first paint | phone webm 1.72 MB / mp4 1.95 MB · desktop webm 3.41 MB / mp4 3.63 MB |
 | Level clips (on hover/in view, one at a time) | 0.9–1.9 MB each (the-sign's p45 cuts) |
 | Booking first load, phone, video excluded | ~145 KB + fonts |
@@ -218,8 +231,8 @@ All are `business-owned` (dossier). No stock, so `check-places` has nothing to c
 ## conflicts / what I had to change
 
 1. **Hero CTA:** #1's page read "Book your week" (`ctas.hero_c3`). Shahar's brief and the gold notes say "Book package now", so it is `ctas.hero_c1` (approved copy).
-2. **Script face in the hero:** #1's hero title was its script face. It is now Caveat 700, like every handwritten title, per "Caveat everywhere".
-3. **Feature line:** #3 sets it in Lora italic, not script, and I kept it that way (it is a line, not a title). Switching it to Caveat is one CSS rule.
+2. **Script face in the hero:** #1's hero title was its script face. It is now Give You Glory, like every handwritten title.
+3. **Feature line:** #3 sets it in Lora italic, not script, and I kept it that way (it is a line, not a title). Switching it to Give You Glory is one CSS rule.
 4. **Rooms step media:** #1's desktop media half followed the chosen room's photo. With #2's gallery on the same screen that showed the same photo twice, so the room step keeps the level clip. The alternative would be to drop the gallery from the step, which contradicts the brief.
 5. **The first screen crosses subjects** (see look-log). The alternative is moving the title off-centre, which Shahar's rule forbids.
 6. **Fonts** still load from Google Fonts: allowed at this station, self-hosted at 4g.

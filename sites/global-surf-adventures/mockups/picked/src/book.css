@@ -32,7 +32,7 @@
 .step-n{font-weight:600;font-size:15px;color:var(--ink2);margin:0 0 2px}
 .step .script{margin-bottom:26px}
 .step .script:focus{outline:none}
-.step .script.sub{font-size:clamp(42px,3.8vw,54px);margin:48px 0 20px}
+.step .script.sub{font-size:clamp(40px,3.6vw,52px);margin:48px 0 20px}
 .help{margin:8px 0 26px}
 
 /* step navigation: sticky at the bottom of the column (desktop), fixed bar (phone) */

@@ -114,7 +114,7 @@ _wa = re.search(r'<symbol id="i-wa".*?</symbol>', SIGN_BUILD).group(0)
 SPRITE = re.sub(r'<symbol id="i-wa".*?</symbol>', lambda m: _wa, SPRITE)
 ic = lambda n, cls='': f'<svg{f" class={chr(34)}{cls}{chr(34)}" if cls else ""} aria-hidden="true"><use href="#{n}"/></svg>'
 
-FONT_URL = 'https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,500&display=swap'
+FONT_URL = 'https://fonts.googleapis.com/css2?family=Give+You+Glory&family=Lora:ital,wght@0,400;0,500;0,600;1,500&display=swap'
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
          f'<link rel="stylesheet" href="{FONT_URL}" media="print" onload="this.media=\'all\'"><noscript><link rel="stylesheet" href="{FONT_URL}"></noscript>')
 
@@ -375,8 +375,8 @@ def home():
 
     import base64
     lq = {k: base64.b64encode(open(os.path.join(DIST, f'video/hero-poster-{k}-lq.webp'), 'rb').read()).decode() for k in 'md'}
-    lq_css = (f'.hero{{background:#CDE4EE url(data:image/webp;base64,{lq["d"]}) center/cover no-repeat}}'
-              f'@media (max-width: 767px) and (orientation: portrait){{.hero{{background-image:url(data:image/webp;base64,{lq["m"]})}}}}')
+    # phones only: nothing under 1200 px is drawn full-bleed at desktop widths (hard constraint 7)
+    lq_css = f'@media (max-width: 767px) and (orientation: portrait){{.hero{{background:#CDE4EE url(data:image/webp;base64,{lq["m"]}) center/cover no-repeat}}}}'
     pre_poster = '<link rel="preload" as="image" type="image/webp" href="video/hero-poster-m.webp" media="(max-width: 767px) and (orientation: portrait)"><link rel="preload" as="image" type="image/webp" href="video/hero-poster-d.webp" media="not all and (max-width: 767px) and (orientation: portrait)">'
     out = (head(pre, f"{C['businessName']} | {X['hero']['title_c1']}", C['tagline'], rd('site.css') + rd('home.css') + lq_css, pre_poster)
            + f'\n<body class="home">\n{SPRITE}\n{header(pre, True)}\n<main id="main">\n{hero}\n{welcome}\n{levels}\n{included}\n{week}\n{rooms}\n{feature}\n{guests}\n{waves}\n{insta}\n{closing}\n</main>\n{footer(pre)}\n{bar}\n<script>\n{rd("common.js")}\n{rd("home.js")}\n</script>\n</body>\n</html>\n')
