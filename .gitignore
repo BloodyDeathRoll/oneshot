@@ -14,7 +14,8 @@ venv/
 *.egg-info/
 
 # oneshot
-dossier/*/assets/
+# (no trailing slash: in a checkout this is a link into ~/.oneshot/assets, made by tools/link-assets.sh)
+dossier/*/assets
 dist/
 .env
 .env.*
@@ -73,5 +74,6 @@ sites/*/mockups/*/shots/**/desktop-[0-9]*.png
 sites/*/mockups/*/shots/**/mobile-[0-9]*.png
 
 # mockup video renditions: copies of dossier/<slug>/assets/video/ (git-ignored), reproducible with tools/fetch-video.mjs
-sites/*/mockups/*/dist/video/
-sites/*/mockups-rejected-*/*/dist/video/
+# (no trailing slash: a link into ~/.oneshot/assets, made by tools/link-assets.sh)
+sites/*/mockups/*/dist/video
+sites/*/mockups-rejected-*/*/dist/video
