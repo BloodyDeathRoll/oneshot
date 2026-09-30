@@ -1,77 +1,71 @@
-# Session Handoff — 2026-09-28
+# Session Handoff — 2026-09-30
 
 ## Goal
-Build Oneshot's internal dashboard (read the ledger at a glance, drill down, answer the human
-gates from the page) through creative director → designer → critic with Shahar's pick gate; keep
-the three Ahangama sites (run `2026-09-ahangama-02`) parked at `packaged` until Shahar sends the
-pitches; fold the process learnings into the generic `~/Projects/design-loop` package.
+Take Global Surf Adventures (globalsurf.com; site = their Kabalana lodge, `surf_camp`) through the
+pipeline to a website visibly better than their current one, with video-led design and our own
+booking pages handing off to their Bookinglayer engine. Next: Shahar's approval of the picked
+composite mockup, then the real Astro build (4g) and the full review/check process.
 
 ## Current State
-- **Dashboard shipped, PASS.** Picked direction B "Soft cards" (Shahar, 2026-09-27); all five
-  views (Overview, Pipeline, Sites, Agents, Decisions) built from real ledger data; critic final
-  pass 86/100, forms review 88/100, no hard fails. Palette **locked** to purple `#6A2FE0`
-  (Shahar: "back to the purple, lock it down"), blue `#1F4BFF` for links only — marked LOCKED in
-  `src/index.html` and `dashboard/BRIEF.md` Amendments.
-- **Control layer step 1 works** (`proposals/dashboard-01/001`, approved 2026-09-27):
-  `node dashboard/server.mjs` → http://127.0.0.1:8970, live `data.json` + SSE; the four gate
-  forms (shortlist / pick / pitch+outcome / proposal) POST `/decide`, which appends exactly one
-  `human` ledger line after a stale-state check; a decided proposal cannot be decided twice (409).
-  Tested only against ledger copies; **no real decision has been written through it yet.**
-- Read-only snapshot: `node dashboard/mockups/soft-cards/build.mjs` → `dist/index.html`
-  (zero requests, forms disabled). Published: https://claude.ai/artifact/99EX88HbA7rDWhfg2nVE9L (v5, purple).
-- Three sites: still `packaged`, pitches drafted, not sent. Ledger: run 02 unchanged.
-- `origin/main` = `~/Projects/oneshot` main = `230b26e`; the worktree has ONE unpushed commit
-  `a605081` (proposal 006, Laya pilot). Branch `resume-session` also pushed at 230b26e.
-- Figma `Workflows` file, frame `oneshot-workflow` (198:2): updated 2026-09-28 (Dashboard card
-  `308:2`, Deliver/Pitch/gate/rule-1 texts, schema v0.7).
-- `~/Projects/design-loop` 0.2.0 + `design-loop.zip`: rewritten agents/command/rubric/taste, two
-  job types, `ref/`, templates, `shoot.mjs --widths/--hash/--reduced-motion` (tool smoke-tested;
-  the `/design-loop` command NOT run end to end).
-- **Open from the critic on the forms** (low, not fixed): live re-render aborts if a Sites card has
-  no critic score (`countUp(null)`); focus drops to body after a decided row disappears; pick panel
-  probes 8 missing sheet paths; read-only mode renders dead forms; shortlist gate loses the other
-  rows' forms after one approval (batch "approve N" needs Shahar's call).
-- **Untested:** the server behind Caddy/tunnel for the phone; real phones/GPUs for the sites.
+- **Run `2026-09-globalsurf-02`** (run.yaml). Ledger state: `picked` (a COMPOSITE, see below).
+  Run `2026-09-globalsurf-01` was voided by Shahar (files deleted, ledger lines kept + `void` line).
+- **Picked composite mockup:** `sites/global-surf-adventures/mockups/picked/dist/` (home) and
+  `.../picked/dist/book/` (standalone booking, one step per screen). Served locally at
+  http://127.0.0.1:8971/picked/dist/ (a `python3 -m http.server 8971` from
+  `sites/global-surf-adventures/mockups/`; may not survive the session — restart it).
+- **Title font:** last quick swap to **Dancing Script** (600) + Lora, done by sed on `dist/` only.
+  `picked/src/` build scripts still reference Give You Glory → a rebuild would revert it. Shahar has
+  NOT approved Dancing Script yet (he rejected Caveat and Give You Glory).
+- **Three source mockups** (`mockups/the-sign`, `try-your-week`, `postcard`) passed all three
+  reviewers. On 2026-09-30 Shahar said of them: "This is how you design a website! I don't want to
+  see anything less for any target!" They are now designer gold (`agents/designer/gold/global-surf-notes.md`).
+- **The composite has NOT been reviewed by the critics** — orchestrator-checked only.
+- Untested anywhere: real phones, Safari, axe. Fonts still from Google (must self-host at 4g).
+  Rosa headline fixed/stale in mockups (must be live at 4g). Owner must confirm room↔photo mapping.
+- **Cost:** run 02 = 28.9M+ agent tokens (`node tools/usage.mjs 2026-09-globalsurf-02`), ~14× the 2M
+  budget; resumed agents inflate the count. A cost-cutting proposal is owed.
+- All work committed and pushed to `main` (and `resume-session`), last commit `1c46305`.
 
 ## Active Files
-- `dashboard/BRIEF.md` — Shahar's product-UI brief + dated Amendments (accent history, lock).
-- `dashboard/data.mjs` + `DATA.md` — the data layer (`buildData({ledgerPath})`), every field → source.
-- `dashboard/server.mjs` — control layer (GET /data.json, /events, /gates, /files/<allowlist>; POST /decide).
-- `dashboard/mockups/soft-cards/{src/index.html,build.mjs,dist/,notes.md,shots/round-1..11}` — the picked build; rounds 10–11 = forms.
-- `dashboard/mockups/{instrument,statement}/` — the two unpicked directions (kept).
-- `dashboard/concepts.md`, `dashboard/critique-mockups.md` (rounds + "Final build" + "dashboard-02 forms"), `dashboard/gate-01.html`, `dashboard/mockups/overviews-1440.png`, `final-1440-*.png`, `forms-1440-*.png`.
-- `dashboard/template.html` + `tools/dashboard.mjs` — the earlier register page (superseded, still renders).
-- `docs/expenses.md` (schema, file not yet created), `docs/pricing.md` (DRAFT price sheet, numbers unconfirmed), `docs/ledger.md` (+ `proposal:approved|rejected` line shape).
-- `proposals/dashboard-01/001-control-layer-gates.md` (approved), `proposals/2026-09-ahangama-02/006-laya-classifier-pilot.md` (filed, undecided).
-- `ledger.jsonl` — runs `dashboard-01` (briefed→…→passed) and `dashboard-02` (briefed→built→passed), one `proposal:approved` line.
-- `.gitignore` — `dashboard/index.html`, `dashboard/data.json` ignored; `dashboard/mockups/*/dist/` kept.
+- `playbook.md` 0.6.3 — §0 quality bar, §1a video first, engine-data rule (§4), hero loop 6–20 s, the Global Surf standard.
+- `rubric.md` 0.3.0 — dimension 8 visual quality (25) scored by the two visual critics; hard fails.
+- `agents/visual-critic/`, `agents/experience-critic/` — new independent reviewers (0.1.0).
+- `agents/{designer,visual-critic,experience-critic,creative-director}/references.md` — "Calibration: Shahar's verdict…" (his hard rules).
+- `agents/designer/gold/global-surf-notes.md` + `shots/global-surf/` — the approved bar.
+- `agents/orchestrator/base.md` 0.3.1 — three reviewers at 4f; loop until all three pass; ask Shahar after round 5.
+- `agents/creative-director` 0.3.0, `designer` 0.4.1, `critic` 0.4.0, `harvester` 0.4.0, `auditor` 0.1.2, `deployer` 0.3.0.
+- `tools/funnel.mjs`, `tools/fetch-video.mjs`, `tools/usage.mjs`, `docs/usage.md`, `usage.jsonl` — funnel probe, video harvest, cost tracking.
+- `docs/bookinglayer.md` — public CORS API + documented deep links (`?start&end&female&male&couple`, never `duration`).
+- `schemas/audit.md`, `schemas/site-content.md` v0.9 (heroVideo/videos[]), `schemas/dossier.md` (videos[]).
+- `cms/` — video migrations (both profiles), publisher video renditions; `deploy/managed/` seed-export.
+- `dossier/global-surf-adventures/` — dossier (rooms_engine, room_photo_groups, videos[]), audit, assets (git-ignored).
+- `sites/global-surf-adventures/copy/en.json` — passed copy incl. `mockup_extras` (short hero, CTAs, rooms, booking microcopy).
+- `proposals/2026-09-ahangama-02/007-funnel-audit.md` (applied), `006` Laya pilot (run, B/C/D failed), `proposals/2026-09-globalsurf-02/001,002` custom.md proposals (not applied; Shahar edits custom.md himself).
 
 ## Changes Made This Session
-1. Resumed; answered Shahar's six workflow questions (tracker, affiliates — **pinned, not started**, leads, upsells, prices, expenses).
-2. First dashboard = a register page (`tools/dashboard.mjs`, `template.html`); Shahar: too much → overview + drill-down. Both superseded by the product build but left in place.
-3. Shahar's BRIEF (dashboard/BRIEF.md) → CD wrote three directions → three designers in parallel → critic (81/79/83) → gate page → **pick B**, reason verbatim in ledger.
-4. Data layer moved to `dashboard/data.mjs`; fixed by critic findings: critic overrides misattributed; critic score = latest scored verdict (KA 86, not 92); proposals read decisions from the ledger.
-5. B built out (purple), critic PASS 86, round 9 polish (thumbnails 4 MB→87 KB, focus, accent budget).
-6. Proposal 001 written and approved → `server.mjs` + forms; critic PASS 88.
-7. Accent: purple → `#0E34CB` (Shahar) → **back to purple, locked** (Shahar). Lesson: republish the artifact the moment a visual change lands.
-8. Pushed main (fast-forward) on "push all"; local main fast-forwarded too.
-9. Price sheet draft, Laya proposal, Figma frame update, design-loop 0.2.0.
+1. Proposal 007 (funnel audit): auditor agent, station 3b, `tools/funnel.mjs`; applied on Shahar's "start building".
+2. Laya installed (`~/Projects/laya`); pilot: A marginal pass, B/C/D fail → not wired. Jev not tried (Shahar: scratch).
+3. Cloudflare token copied from the VPS to `~/.oneshot/cf-token` (Shahar: "copy it"); proposal Workers deploy with it.
+4. Global Surf run 01 → mockups rejected as far worse than the old site → **voided**, files deleted.
+5. Overhaul (Shahar's orders): video first + `fetch-video`, full-bleed preferred, two visual critics, quality bar, CMS/seed video support.
+6. Run 02: harvest with video, audit, copy, concepts, 3 mockups × 5 rounds → reviewers passed → Shahar: "still far off" + detailed calibration → our own booking pages (decision: own pages, hand off to Bookinglayer; his feedback overrides designer custom.md).
+7. New concepts + fresh designers → The sign / Try your week / Postcard, 5 review rounds → approved as the bar.
+8. Shahar picked a composite (#1 the-sign, #2 try-your-week, #3 postcard), verbatim in the ledger: hero #1 + #3's beginner stand-up scene; #3 fonts with script replaced; sections in his order; footer #1; booking = #1 design, standalone, one step per screen, rooms step with #2's Dorm/Twin/Deluxe selector + "Choose this room". Orchestrator assumption: #1's palette (told to Shahar, not confirmed).
+9. Script font: Caveat → Give You Glory (both rejected) → Dancing Script (pending).
 
 ## Failed Attempts
-- **Colour change invisible for an hour:** I routed the recolour through the designer and never republished the artifact; Shahar saw purple and thought nothing happened. Republish after every visual change.
-- **Data layer bugs, page blamed twice:** critic rounds counted human lines; critic score took round 3 not the later verification; critic card showed the copyeditor's overrides. When a number is wrong, check `data.mjs` first.
-- **Register dashboard (v1) rejected** as "mass of info"; the at-a-glance overview is what Shahar wants.
-- **A corrupted `:root` (orange `#F0A20D`) appeared in `src/index.html`** between designer rounds, from no agent — likely a manual edit. Purple restored; watch for hand edits in `src/`.
-- **`pkill` in a `&&` chain** aborted later steps (exit 144) twice — put the kill last or `; true`.
-- **`NODE_PATH` doesn't resolve ESM imports**; testing design-loop's `shoot.mjs` needed a copy inside the worktree.
-- Shared `tools/shoot.mjs` still lacks `--width`/`--hash`; designers used scratch copies. (Fixed only in the design-loop package's copy.)
+- Rule-compliant design ≠ good design: run 01 and run 02's first rounds passed critics at 8/10 and Shahar rejected them. Critics became useful only after his written calibration.
+- My own "avoid the full-bleed hero" rule (creative-director) caused type-only pages — removed.
+- Hero clip mistakes: 7-shot montage with no surf; overcast surf; ping-pong loop with motion-interpolated frames (synthesised — not allowed); retimed `setpts` clips; clips shared across variants; 0.5 s crossfade reads as double exposure in stills. Use real-speed, one-direction, distinct clips per variant.
+- Designers repeatedly moved hero titles off-centre to dodge subjects; Shahar's rule is centred horizontally AND vertically.
+- Variants converged (same font/closing photo) when fixed in parallel — check siblings before shipping.
+- JS-off hand-offs sent `duration` (counts days) — use `start`+`end`.
+- `pkill` inside `&&` chains aborts the chain (exit 144) — put it last or `; true`.
+- Long compound Bash commands produce unreadable permission prompts for Shahar — keep commands short and describe them first.
+- Resuming agents for small fixes costs ~400–600k tokens each (context reread); cost ballooned.
 
 ## Next Step
-1. Ask Shahar: push `a605081` (Laya proposal) to main? decide proposal 006 (pilot yes/no)?
-   confirm the price sheet numbers (`docs/pricing.md` §5)? shortlist batch "approve N"?
-2. Then the phone path for the control layer: run `dashboard/server.mjs` on the CMS VPS behind
-   Caddy + basic auth (or a Cloudflare tunnel) — a `deploy/` script + README; test `/decide`
-   from a phone against a ledger copy first.
-3. Fix the five low critic items on the forms (`dashboard/mockups/soft-cards/src/index.html`).
-4. Pitch gate for the three sites is Shahar's: `packaged → pitched` (now possible from the dashboard).
-Pinned: affiliate links (Shahar: "put a pin on it").
+1. Ask Shahar whether the Dancing Script titles (http://127.0.0.1:8971/picked/dist/) are approved, and whether #1's palette is right. Do not assume either.
+2. On approval: port the font change into `sites/global-surf-adventures/mockups/picked/src/` so a rebuild keeps it, then run the three reviewers on the composite (home + booking), then station 4g (Astro build per designer 4g + `schemas/site-content.md` v0.9; self-host fonts; live Rosa; record vid-010c/-p45/vid-002g/-002w/-010g/-010s/composite hero cut in `dossier.videos[]`).
+3. Write the cost-cutting proposal (fresh agents over resumed ones for small fixes; hero-clip and centring rules in round 1; one visual check before three-reviewer rounds).
+4. Still open for Shahar: daily rebuild for price snapshots; `bookings.globalsurf.com` engine domain; Freestylers "ask us"; custom.md proposal 002; three parked Ahangama pitches.
