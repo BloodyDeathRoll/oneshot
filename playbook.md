@@ -1,4 +1,4 @@
-version: 0.6.2
+version: 0.6.3
 
 # playbook.md — what a great surf-business site is; shared by all agents.
 
@@ -15,6 +15,7 @@ Every site we deliver must be **visually top level**, not only factually right. 
 - **Lead with the business's strongest media.** A surf business sells a feeling: water, light, people surfing. Video first, then the best photographs, big. Type and data support the imagery; they do not replace it when the imagery is good.
 - **The funnel lives inside a beautiful page, not instead of it.** One clear booking action is always visible (first screen and a persistent bar on mobile); prices and packages are one scroll or one tap away. A price table is never the first screen of a business that has strong media.
 - **Two visual critics judge every mockup and every final site** (rubric.md). Either one below the bar blocks it.
+- **The standard, set 2026-09-30:** the three Global Surf mockups (`agents/designer/gold/global-surf-notes.md`). Shahar: *"This is how you design a website! I don't want to see anything less for any target!"* Every business gets three designs at that level or better.
 
 ## 1a. Media: video leads, big photography follows
 
