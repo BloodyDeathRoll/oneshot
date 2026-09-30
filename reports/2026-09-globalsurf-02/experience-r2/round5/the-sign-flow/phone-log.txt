@@ -1,0 +1,29 @@
+[0 taps] home -> phone-01-home.jpg url=/the-sign/dist/
+[1 taps] before-hero-cta -> phone-02-before-hero-cta.jpg url=/the-sign/dist/
+[1 taps] after-hero-cta -> phone-03-after-hero-cta.jpg url=/the-sign/dist/book/
+[2 taps] before-level2 -> phone-04-before-level2.jpg url=/the-sign/dist/book/
+[2 taps] after-level2 -> phone-05-after-level2.jpg url=/the-sign/dist/book/
+[3 taps] before-continue1 -> phone-06-before-continue1.jpg url=/the-sign/dist/book/
+[3 taps] after-continue1 -> phone-07-after-continue1.jpg url=/the-sign/dist/book/
+VISIBLE ["","","","","","","Mixed dorm room – 4 bedsFour single beds. The bath","Continue"]
+[4 taps] before-twin -> phone-08-before-twin.jpg url=/the-sign/dist/book/
+[4 taps] after-twin -> phone-09-after-twin.jpg url=/the-sign/dist/book/
+[5 taps] before-continue2 -> phone-10-before-continue2.jpg url=/the-sign/dist/book/
+[5 taps] after-continue2 -> phone-11-after-continue2.jpg url=/the-sign/dist/book/
+[6 taps] before-sat20 -> phone-12-before-sat20.jpg url=/the-sign/dist/book/
+[6 taps] after-sat20 -> phone-13-after-sat20.jpg url=/the-sign/dist/book/
+[7 taps] before-couple+ -> phone-14-before-couple+.jpg url=/the-sign/dist/book/
+[7 taps] after-couple+ -> phone-15-after-couple+.jpg url=/the-sign/dist/book/
+[8 taps] before-continue3 -> phone-16-before-continue3.jpg url=/the-sign/dist/book/
+[8 taps] after-continue3 -> phone-17-after-continue3.jpg url=/the-sign/dist/book/
+[8 taps] total-settled -> phone-18-total-settled.jpg url=/the-sign/dist/book/
+VISIBLE ["","−","+","Continue booking","Continue"]
+[9 taps] before-continue-booking -> phone-19-before-continue-booking.jpg url=/the-sign/dist/book/
+[9 taps] after-continue-booking -> phone-20-after-continue-booking.jpg url=https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&couple=1&end=2027-02-27
+HANDOFF https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&couple=1&end=2027-02-27
+TAPS 9
+API [
+ "GET https://api.bookinglayer.io/public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities?format=choosable&show_available_only=1&mode=checkin&start=2026-0",
+ "GET https://api.bookinglayer.io/public/accommodations/availabilities?product=4b58b491-24fc-4fb8-a40d-2705df961db4&start=2027-02-20&end=2027-02-27&currency=USD&femal",
+ "POST https://api.bookinglayer.io/public/packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items?BD"
+]

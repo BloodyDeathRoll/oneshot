@@ -287,3 +287,60 @@ But:
 1. **the-sign**: still the most complete and consistent experience, from the video hero to the total.
 2. **try-your-week**: now visibly its own site, with a surf-first hero that paints fast and the quickest booking of the three.
 3. **postcard**: a warm, well-built page and booking flow let down by a hero loop that visibly stops and plays backwards every 5 seconds.
+
+---
+
+# Round 5 (commits b99ae13 + ad2d451): last round before Shahar decides
+
+I re-walked all three from scratch with the same setup: phone 390×844 throttled, laptop 1440×900, reduced motion, JavaScript off, and booking flows up to an intercepted hand-off. The engine was never opened. Frames are in `experience-r2/round5/`, plus the clip strips `vid-010g-m1280-strip.jpg` and `vid-002h-m1280-strip.jpg`, and `heroes.jpg` (phone at 0.5/1.5/3/6 s plus the laptop heroes). Other reviewers' reports were not opened.
+
+## Shared measurements
+
+| | postcard | try-your-week | the-sign |
+|---|---|---|---|
+| Hero clip | vid-010g, golden-hour beginners, 9 s, **6 shots** (cuts at ~1.3/2.7/4.4/5.6/7.2 s + seam) | vid-002h, reef barrels, 4.9 s, 1 continuous take + seam cut | vid-009e (unchanged) |
+| Clip direction | forward only, no freeze (min frame motion 0.74) ✓ | forward only, steady (3–12) ✓ | ✓ |
+| Title centred (phone, x/y of centre) | 195 / 378 ✓ | 195 / 361 ✓ | 195 / 411 ✓ |
+| First load / LCP / CLS (phone) | 412 KB / 0.81 s / 0.001 | 725 KB / 0.36 s / 0.00 | 598 KB / 0.49 s / 0.003 |
+| Cold frame at 0.5 s | poster + title + CTA | poster + **logo (fixed)** + title + CTA | poster + title + CTA |
+| Scroll, phone 4× CPU | p95 16.7 ms, max 67 ms | p95 16.7 ms, max 83 ms | p95 16.7 ms, max 117 ms (1 frame) |
+| Reduced motion / JS off | poster only / poster, no controls ✓ | ✓ / ✓ | ✓ / ✓ |
+| Hand-off, JS on and off | `level-2-rollers?start=2027-02-20&end=2027-02-27&…couple=1` ✓ | ✓ | ✓ |
+| Taps, home → hand-off (L2, 20 Feb, couple, twin) | 9 (2 month arrows) | 8 | 9 |
+| Third-party on load | 4 Google Fonts requests | 3 | 3 |
+
+## the-sign: 9/10 · pass · would Shahar accept: **yes** · better than current: **yes, clearly**
+
+Unchanged, and still the most complete and consistent experience. The pool-to-surf hero is calm and legible. It has big level video cards, room slideshows, the handwritten Damion titles, and a chip date picker with a live total in the same style.
+
+**Remaining fixes:**
+1. On the laptop hero the script title still crosses the white umbrellas (`round5/heroes.jpg`).
+2. Self-host the fonts.
+
+## try-your-week: 8/10 · pass · would Shahar accept: **yes** · better than current: **yes**
+
+The new reef-barrel hero is one steady forward take. It is the most striking first screen of the three, and the title and CTA stay readable over the green wall. The logo is now in the header by 0.5 s. The footer tiles read "WhatsApp us" on one line. The booking is still the quickest: 3 steps, Saturday chips, 8 taps.
+
+**Remaining fixes:**
+1. The loop seam is a hard cut from the end of the ride back to the start of the barrel every 4.9 s. It is short enough to notice. Add a 0.3 s crossfade, or use a longer take.
+2. The poster is slightly soft on phone (upscaled frame). Use a sharper still from the same take.
+3. Self-host the fonts.
+
+## postcard: 8/10 · pass · would Shahar accept: **yes, if the phone poster is swapped** · better than current: **yes**
+
+The ping-pong loop is gone: vid-010g only moves forward, with no freeze or reversal. The Marck Script titles now sit on one line ("Next set is yours", "Choose your level"). The bar's "Continue" is hidden at the total step, as promised. The cream, teal and coral palette with Lora is warm, and it carries through to the booking pages.
+
+What holds it at 8:
+- **Phone first screen:** the poster frame is an overexposed cream shot cropped to a headless torso and an outstretched arm. The white title sits on pale sky and only reads through its shadow halo (`round5/heroes.jpg`, first four frames). On the laptop the same clip opens on a strong silhouette, so this is a phone-crop problem.
+- **The clip is a 6-shot montage in 9 s.** It runs forward and feels natural, but it is busier behind the title than the other two heroes.
+
+**Remaining fixes:**
+1. Use a phone poster and crop that keeps a whole subject and a darker area behind the title: the golden-hour silhouette or the woman standing up on the board.
+2. Trim the montage to 3–4 shots, or hold each for ≥ 2 s.
+3. Remove the 4th Google Fonts request, and self-host the fonts.
+
+## Ranking (round 5)
+
+1. **the-sign**: the most complete and consistent experience from the video hero to the total, and the safest pick.
+2. **try-your-week**: the most striking hero (a single forward barrel take) and the quickest booking. It needs only a softer loop seam.
+3. **postcard**: warm and well-built, with the ping-pong fixed. Its phone first screen is a washed-out, headless crop that the other two don't have.

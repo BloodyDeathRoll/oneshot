@@ -1,0 +1,328 @@
+{
+ "m": "try-your-week",
+ "mode": "phone",
+ "firstLoadBytes": 724860,
+ "reqCount": 23,
+ "thirdOnLoad": [
+  "https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap",
+  "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DaRvzig.woff2",
+  "https://fonts.gstatic.com/s/satisfy/v22/rP2Hp2yn6lkG50LoCZOIHTWEBlw.woff2"
+ ],
+ "lcp": 356,
+ "cls": 0,
+ "videosAfterLoad": [
+  {
+   "src": "vid-002h-m1280.webm",
+   "paused": false,
+   "t": 3.53,
+   "rs": 4,
+   "top": -211,
+   "h": 1055
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1320,
+   "h": 201
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1320,
+   "h": 201
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1320,
+   "h": 201
+  }
+ ],
+ "hero": {
+  "h1": "Next set is yours",
+  "font": "Figtree, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+  "size": "40px",
+  "center": [
+   195,
+   361
+  ],
+  "btns": [
+   {
+    "t": "Book package now",
+    "bg": "rgb(200, 67, 47)",
+    "color": "rgb(255, 255, 255)",
+    "ff": "Figtree",
+    "w": 282,
+    "h": 52
+   }
+  ],
+  "fonts": [
+   "Figtree 400 700",
+   "Satisfy 400"
+  ]
+ },
+ "pageHeight": 10409,
+ "frames": {
+  "n": 4108,
+  "p50": 16.7,
+  "p95": 16.7,
+  "p99": 16.8,
+  "max": 83.3,
+  "over50": 1
+ },
+ "sections": [
+  [
+   0,
+   675,
+   "levels | Choose your level"
+  ],
+  [
+   1,
+   1350,
+   "levels | Choose your level"
+  ],
+  [
+   2,
+   2025,
+   "week | Surf, breakfast, surf again"
+  ],
+  [
+   3,
+   2700,
+   "rooms | Our rooms"
+  ],
+  [
+   4,
+   3375,
+   "rooms | Our rooms"
+  ],
+  [
+   5,
+   4050,
+   "feature | "
+  ],
+  [
+   6,
+   4725,
+   "lodge | The lodge"
+  ],
+  [
+   7,
+   5400,
+   "lodge | The lodge"
+  ],
+  [
+   8,
+   6075,
+   "guests | What guests say"
+  ],
+  [
+   9,
+   6750,
+   "waves | The waves"
+  ],
+  [
+   10,
+   7425,
+   "waves | The waves"
+  ],
+  [
+   11,
+   8100,
+   "instagram | Follow the lodge"
+  ],
+  [
+   12,
+   8775,
+   "closing | "
+  ],
+  [
+   13,
+   9450,
+   "contact | Getting here"
+  ],
+  [
+   14,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   15,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   16,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   17,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   18,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   19,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   20,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   21,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   22,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   23,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   24,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   25,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   26,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   27,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   28,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   29,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   30,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   31,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   32,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   33,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   34,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   35,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   36,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   37,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   38,
+   9560,
+   "contact | Getting here"
+  ],
+  [
+   39,
+   9560,
+   "contact | Getting here"
+  ]
+ ],
+ "videosAfterScroll": [
+  {
+   "src": "vid-002h-m1280.webm",
+   "paused": false,
+   "t": 2.35,
+   "rs": 4,
+   "top": -211,
+   "h": 1055
+  },
+  {
+   "src": "vid-010c-m1280.webm",
+   "paused": true,
+   "t": 2.05,
+   "rs": 4,
+   "top": 1320,
+   "h": 201
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1320,
+   "h": 201
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1320,
+   "h": 201
+  }
+ ],
+ "totalBytes": 3969458,
+ "thirdAll": [
+  "https://fonts.googleapis.com/css2?family=Figtree:wght@400..700&family=Satisfy&display=swap",
+  "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DaRvzig.woff2",
+  "https://fonts.gstatic.com/s/satisfy/v22/rP2Hp2yn6lkG50LoCZOIHTWEBlw.woff2",
+  "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+  "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+  "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+  "https://rosa.surf/favicon.svg",
+  "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924"
+ ]
+}

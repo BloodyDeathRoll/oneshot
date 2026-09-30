@@ -1,0 +1,19 @@
+{
+  "target": "http://localhost:8982/postcard/dist/book/",
+  "widths": {
+    "desktop": {
+      "pageHeight": 6743,
+      "scroller": "window",
+      "captures": 9,
+      "truncated": false,
+      "errors": []
+    },
+    "mobile": {
+      "pageHeight": 7324,
+      "scroller": "window",
+      "captures": 10,
+      "truncated": false,
+      "errors": []
+    }
+  }
+}

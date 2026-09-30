@@ -294,3 +294,53 @@ What holds it below 8:
 1. **The Sign (8.5, pass):** finished, calm and unmistakably this lodge, with a booking desk that belongs to the site. The one to show.
 2. **Postcard (7.5, fail, close):** now distinct and warm, with the best closing, held back by loosely spaced script titles and a hero title on a busy background.
 3. **Try your week (7.5, fail, close):** the best booking flow and a good new footer, let down by a blurred closing frame, soft edge-to-edge level video, and a hero that duplicates The Sign's. It ranks behind Postcard because of that visible flaw on the closing.
+
+---
+
+# Round 5 (re-score, 2026-09-30; last round before Shahar decides)
+
+Re-scored from scratch on fresh shots: `visual-r2/round5/<mockup>-home|book/` (1440 + 390), `visual-r2/round5/try-your-week-book-walk/` and `visual-r2/round5/mobile-heroes.png` (the three 390 px first screens side by side). Same bar, same calibration. The other reviewers' reports were not opened. The server on 8982 was stopped afterwards.
+
+## The Sign — 8.5/10 · would Shahar accept: yes · better than current: yes
+- The hero is the pool→reef clip. The brush title and the short coral "Book your week" are centred both ways at both widths (`the-sign-home/desktop-00`, `mobile-heroes.png` right).
+- The rest is as in round 4: equal level cards, room carousels, a dark reviews band, a centred closing, the four-column footer, and a split-screen booking page with footage thumbnails.
+
+Remaining fixes (minor):
+1. The phone hero video is soft at 2×. Serve the m1280 tier, not m720.
+2. The closing sub-line could be one line.
+
+## Postcard — 8/10 · would Shahar accept: yes (borderline) · better than current: yes
+- The golden-hour beach hero (vid-010g) with a centred Lora title is warm and unlike the other two (`postcard-home/desktop-00`).
+- The level cards are now large, about 450 px, with readable serif type and full-width coral buttons (`desktop-03`).
+- Marck Script is tighter and titles now break over two lines at most ("Surf, breakfast, / surf again", `desktop-sheet`).
+- The sunset-beside-text closing and the sand footer hold. The booking page matches in sand, serif and script.
+
+Remaining fixes:
+1. The hero clip is grainy and soft, especially on the phone (`mobile-heroes.png` left). Use the sharpest rendition or a still poster at 1920.
+2. Room titles wrap awkwardly ("Mixed dorm room – 4 / beds", "Shared Twin Room – 2 / Beds"). Widen the text column or drop the size one step.
+3. The sepia grade of the hero sits a little flat against the bright room photos. Keep the brand warmth, but lift the contrast.
+
+## Try your week — 7.5/10 · would Shahar accept: no (close) · better than current: yes
+- Improvements:
+  - The barrel hero (vid-002h) with a centred Figtree title and a short subtitle is dramatic and distinct (`try-your-week-home/desktop-00`).
+  - The new img-036 closing, the lodge's own pool and lounge (Booking.com, business-owned), is sharp and bright with the title and buttons centred (`desktop-10`).
+  - "The lodge" is now a split with a full-height slideshow (`desktop-06`).
+  - The sea-glass footer with contact tiles is good.
+  - The booking wizard is still the best flow.
+- What still holds it below 8:
+  1. The barrel hero is visibly soft at 390 (`mobile-heroes.png` centre). The pixelation reads cheap on the first screen a phone visitor sees.
+  2. The mid-page still leans on centred title + paragraph + pill blocks ("Choose your level", "Our rooms", "What guests say", "Follow the lodge"). The three pale review cards read as a SaaS testimonial row.
+  3. The Satisfy + Figtree pairing is the most generic of the three. It is legible, but has less character than Postcard's Marck + Lora or The Sign's brush + grotesque.
+
+## Three distinct designs? Yes.
+- The first screens now differ in clip, colour and type (`mobile-heroes.png`):
+  - Postcard: golden-hour beach, warm sepia, Lora serif.
+  - Try your week: the green barrel, cool sea-glass, Figtree sans.
+  - The Sign: pool→reef, deep blue, brush script.
+- Palettes (sand, sea-glass, cool grey + navy), type pairs, level presentation (large cards, pill stage, three-card row), closings (photo beside text, pool photo, night deck) and footers all differ.
+- What they share (coral booking colour, content order, room photos, the Rosa block) is the brand and the facts. That is not convergence.
+
+## Ranking (visual quality only)
+1. **The Sign (8.5, pass):** the most finished and most place-specific, with a booking desk that belongs to the site. Recommended pick.
+2. **Postcard (8, pass, borderline):** warm, editorial and distinct, with the best closing and big level cards. Only the soft hero clip and some awkward room-title wraps remain.
+3. **Try your week (7.5, fail, close):** the best booking flow and a strong new closing, but a pixelated phone hero and a centred, generic mid-page keep it just under the bar.

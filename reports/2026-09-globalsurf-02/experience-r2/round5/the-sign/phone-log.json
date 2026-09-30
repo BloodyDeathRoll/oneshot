@@ -1,0 +1,216 @@
+{
+ "m": "the-sign",
+ "mode": "phone",
+ "firstLoadBytes": 598072,
+ "reqCount": 16,
+ "thirdOnLoad": [
+  "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Damion&display=swap",
+  "https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInHWVyNJ.woff2",
+  "https://fonts.gstatic.com/s/damion/v15/hv-XlzJ3KEUe_YZkamw2EzJwVw.woff2"
+ ],
+ "lcp": 488,
+ "cls": 0.0025047870667774755,
+ "videosAfterLoad": [
+  {
+   "src": "vid-009e-m1280.webm",
+   "paused": false,
+   "t": 3.5,
+   "rs": 4,
+   "top": 0,
+   "h": 844
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1459,
+   "h": 287
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1459,
+   "h": 287
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1459,
+   "h": 287
+  }
+ ],
+ "hero": {
+  "h1": "Your surf week starts here",
+  "font": "Damion, \"Brush Script MT\", cursive",
+  "size": "46px",
+  "center": [
+   195,
+   411
+  ],
+  "btns": [
+   {
+    "t": "Book your week",
+    "bg": "rgb(209, 64, 42)",
+    "color": "rgb(255, 255, 255)",
+    "ff": "\"Bricolage Grotesque\"",
+    "w": 250,
+    "h": 56
+   }
+  ],
+  "fonts": [
+   "Bricolage Grotesque 400",
+   "Bricolage Grotesque 500",
+   "Bricolage Grotesque 600",
+   "Bricolage Grotesque 700",
+   "Damion 400"
+  ]
+ },
+ "pageHeight": 12260,
+ "frames": {
+  "n": 1744,
+  "p50": 16.7,
+  "p95": 16.7,
+  "p99": 16.8,
+  "max": 116.6,
+  "over50": 2
+ },
+ "sections": [
+  [
+   0,
+   675,
+   "welcome | Next set is yours"
+  ],
+  [
+   1,
+   1350,
+   "levels | Choose your level"
+  ],
+  [
+   2,
+   2025,
+   "week | Surf, breakfast, surf again"
+  ],
+  [
+   3,
+   2700,
+   "rooms | Our rooms"
+  ],
+  [
+   4,
+   3375,
+   "rooms | Our rooms"
+  ],
+  [
+   5,
+   4050,
+   "rooms | Our rooms"
+  ],
+  [
+   6,
+   4725,
+   "rooms | Our rooms"
+  ],
+  [
+   7,
+   5400,
+   "rooms | Our rooms"
+  ],
+  [
+   8,
+   6075,
+   "lodge | The lodge"
+  ],
+  [
+   9,
+   6750,
+   "lodge | The lodge"
+  ],
+  [
+   10,
+   7425,
+   "incl aqua | What's included"
+  ],
+  [
+   11,
+   8100,
+   "guests | What guests say"
+  ],
+  [
+   12,
+   8775,
+   "waves aqua | The waves"
+  ],
+  [
+   13,
+   9450,
+   "waves aqua | The waves"
+  ],
+  [
+   14,
+   10125,
+   "closing | All levels, steps from the beach"
+  ],
+  [
+   15,
+   10800,
+   "contact | Talk to us"
+  ],
+  [
+   16,
+   11416,
+   "contact | Talk to us"
+  ]
+ ],
+ "videosAfterScroll": [
+  {
+   "src": "vid-009e-m1280.webm",
+   "paused": false,
+   "t": 1.67,
+   "rs": 4,
+   "top": 0,
+   "h": 844
+  },
+  {
+   "src": "vid-010-p45.webm",
+   "paused": true,
+   "t": 0.12,
+   "rs": 4,
+   "top": 1459,
+   "h": 287
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1459,
+   "h": 287
+  },
+  {
+   "src": "",
+   "paused": true,
+   "t": 0,
+   "rs": 0,
+   "top": 1459,
+   "h": 287
+  }
+ ],
+ "totalBytes": 3276471,
+ "thirdAll": [
+  "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Damion&display=swap",
+  "https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInHWVyNJ.woff2",
+  "https://fonts.gstatic.com/s/damion/v15/hv-XlzJ3KEUe_YZkamw2EzJwVw.woff2",
+  "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+  "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+  "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+  "https://rosa.surf/favicon.svg",
+  "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924"
+ ]
+}

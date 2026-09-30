@@ -578,3 +578,141 @@ fix list (not failing; smallest first):
 what the designer prompt got wrong (round 4): The prompt says video comes from the business's footage. It does not say whether synthesised frames (slow motion by interpolation) are allowed. It also doesn't require every new cut to be entered in `dossier.videos[]` before it ships in a mockup.
 
 Not tested in round 4: a real phone, Safari, axe, the engine past `/accommodation`, and throttled booking-page numbers.
+
+---
+
+# Round 5 (last before Shahar's decision)
+
+critic 0.4.0 · rubric 0.3.0 · 2026-09-29 21:20 UTC · mockups at `b99ae13` (HEAD `ad2d451` changes only usage.jsonl) · dimensions 1–7 only. The visual critics' reports were not opened.
+
+Checks: the same as round 4, in the same order, on port 8981 (the server was stopped afterwards).
+
+Added this round:
+- a real-speed check. Every 12th frame of each new cut is matched against the business's source video (64×36 grey MSE after the same 1728×972 crop).
+- alt texts on all six pages against the dossier `images[].description`.
+
+Evidence:
+- `reports/2026-09-globalsurf-02/critic/post-r5/`
+- `sites/global-surf-adventures/mockups/<variant>/audit.json` (overwritten)
+
+## The sentence the human needs (round 5)
+
+All three pass the critic's gates, with no hard fail.
+- **try-your-week's new hero `vid-002h` is 4.9 s, under playbook §1a's 6 s floor.** Every other clip and every other check passes.
+- **Real speed:** all new cuts play at real speed (no synthesised or retimed frames). try-your-week's `notes.md` still says `vid-002g` is "slowed 1.6×", which is no longer true.
+- **Dossier:** `vid-010g`, `vid-002h` and `vid-002g` are not in `dossier.videos[]`.
+- **postcard:** alts now equal the dossier descriptions, and with JS off the Rosa block shows only the plain link.
+
+| variant | d1 | d2 | d3 | d4 | d5 | d6 | d7 | total /80 | r4 | hard fails |
+|---|---|---|---|---|---|---|---|---|---|---|
+| postcard | 10 | 9 | 9 | 8 | 9 | 9 | 8 | **72.8** | 72.0 | none |
+| try-your-week | 10 | 8 | 9 | 8 | 9 | 8 | 8 | **70.5** | 72.0 | none |
+| the-sign | 10 | 9 | 9 | 8 | 9 | 8 | 8 | **72.0** | 72.0 | none |
+
+## Measured (round 5)
+
+| line | postcard | try-your-week | the-sign |
+|---|---|---|---|
+| first load, phone (audit.json) / LCP / CLS | 417 KB / 768 ms / 0.001 | 704 KB / 336 ms / 0 | 596 KB / 484 ms / 0.003 |
+| CLS after full scroll, phone / desktop | 0 / 0.004 | 0 / 0.002 | 0 / 0.007 |
+| booking page on load, phone (probe) | 688 KB | 324 KB | 1.20 MB |
+| third-party on load (home + book) | Google Fonts only | same | same |
+| Bookinglayer on load | 0 | 0 | 0 |
+| targets < 44 px (all pages, both widths) | 0 | 0 | 0 |
+| skip link; overflow-x at 390 | ✓; 0 | ✓; 0 | ✓; 0 |
+| first-screen booking action | "Book package now" → `book/` | same | "Book your week" → `book/` |
+| check-design | 0; Lora + Marck Script; hsl(40 50% 98%) | 0; Figtree + Satisfy; #FFF | 0; Bricolage Grotesque + Damion; #FFF |
+
+## Video (round 5)
+
+**Hero clips**
+
+| variant | clip | length | tiers | requested after first paint (phone / desktop) | 6–20 s |
+|---|---|---|---|---|---|
+| postcard | `vid-010g` | 9.0 s | m1280 webm 1.13 MB · m720 mp4 1.20 MB · d1728 webm 1.97 MB · mp4 2.48 MB | +199 / +219 ms | ✓ |
+| try-your-week | `vid-002h` | **4.9 s** | m1280 webm 0.87 MB · mp4 1.12 MB · d1920 webm 1.52 MB · mp4 2.46 MB | +136 / +264 ms | **✗ under the 6 s floor** |
+| the-sign | `vid-009e` (unchanged) | 7.3 s | – | +112 / +120 ms | ✓ |
+
+**try-your-week Level 3 `vid-002g`:**
+- 5.4 s. Tiers: m1280 webm 1.55 MB, mp4 1.80 MB; d1728 webm 2.26 MB, mp4 3.43 MB.
+- Every tier is inside ≤ 2 MB (phone) / ≤ 4 MB (desktop).
+
+**All served files:**
+- Every file is video only (no audio track), 25 fps, and every MP4 is faststart.
+- 0 video requests under reduced motion and Save-Data, on all six pages, at both widths.
+- Booking-page clips are requested after first paint (+123 to +271 ms).
+
+**Real speed (no synthesised or retimed frames).** Each sampled frame 0.48 s apart in the cut matches a source frame 0.48 s apart, so the step is 1:1.
+
+| cut | source | matched source times | frame match (MSE) |
+|---|---|---|---|
+| `vid-002g` | vid-002 | 18.56 → 23.84 s | 0.4–0.5 |
+| `vid-010g` | vid-010 | 19.76–24.08, 28.56–30.96, 36.88–37.84 s | 0.5–1.7 |
+| `vid-002h` | vid-002 | 8.92–11.80 then 27.52–28.48 s | 6–29, because its crop differs from `vid-002e` |
+
+- `vid-010g`'s three pieces are hard cuts, and they match the notes.
+- postcard's interpolated `vid-009p` is gone from `dist/`.
+- **Stale note:** try-your-week `notes.md` round-5 item 1 still says `vid-002g` is "slowed 1.6× to 3.8 s". The file is 5.4 s at real speed (source 18.56–23.98 s), which is what the coordinator described.
+- **Provenance:** `vid-010g`, `vid-002h` and `vid-002g` are not in `dossier.videos[]`. They join `vid-010c` / `-d1728` and the three `-p45` cuts. All are trims or crops of business-owned vid-002 and vid-010.
+
+## Booking (phone; Level 2, 1 couple, 20 Feb 2027, 7 nights)
+
+All three, unchanged from round 4:
+- 0 Bookinglayer requests on load.
+- After interaction, 3 calls to `api.bookinglayer.io`: "Live price from the booking engine", $2,932.
+- With the API blocked: snapshot with "Live prices didn't load. These are the booking engine's prices from 29 Sep 2026."
+- Hand-off with JS on and off: `…/level-2-rollers?start=2027-02-20&end=2027-02-27` plus the guests. No `duration`.
+
+## Rosa (round 5)
+
+| | postcard | try-your-week | the-sign |
+|---|---|---|---|
+| on load | 0 Rosa requests | 0 | 0 |
+| JS on | numbers held until the live JSON is ≤ 24 h old; drawn "Tue 29 Sep 20:30", then the widget | static 29 Sep 20:30 headline (fixture, 4e) | static 29 Sep 20:30 headline |
+| JSON blocked | plain link only | static headline | static headline |
+| JS off | **plain link only** (fixed) | 29 Sep 20:30 headline + link | 29 Sep 20:30 headline + link |
+
+The try-your-week and the-sign fixtures were generated on 29 Sep at 14:26 UTC. They are still under 24 h old at test time and go stale on 30 Sep at 14:26 UTC (a 4g item).
+
+## Facts, copy, alt texts (round 5)
+
+- `copy/en.json` and `dossier.json` are unchanged.
+- **Rendered text:** en.json plus the known template labels. No new claim.
+- **Closing:** verbatim on all three.
+- **Testimonials:** postcard 9/9, try-your-week 9/9, the-sign 7/7, all verbatim.
+- **Alt texts against the dossier `description`:**
+  - **postcard: all images match exactly** (round-4 drift fixed).
+  - **try-your-week: 54/54 match.**
+  - **the-sign:** 52 alts are close paraphrases.
+    - Several decorative booking-band duplicates carry `alt=""` (img-023, 063, 001, 093).
+    - One adds detail: img-095 "Single beds under the timber roof of the loft" (dossier: "twin beds under a timber roof").
+    - None claims more than the dossier.
+- **New images:**
+  - try-your-week closing img-036: business-owned, `place: lodge`, 2000 px. Alt "pool and lounge under palms" = the description.
+  - try-your-week logo: now an inline PNG, `alt=""`, inside a link named "Global Surf Lodge Kabalana, home".
+- **Tally:** 0 mismatches and 0 unsourced claims. Room galleries come from `room_photo_groups` (owner-unconfirmed, flagged).
+
+## Scorecards (round 5)
+
+| # | postcard | try-your-week | the-sign |
+|---|---|---|---|
+| 1 facts | 10: 0 mismatches; alts = dossier | 10: 0 mismatches; alts = dossier | 10: 0 mismatches |
+| 2 mobile + perf | 9: 417 KB, LCP 768 ms; hero 9.0 s real speed, 1.13 / 1.97 MB. Minus: Google Fonts | **8**: 704 KB, LCP 336 ms. **Hero 4.9 s, under §1a's 6 s**; Google Fonts; 3.3 MB desktop booking clip | 9: 596 KB, LCP 484 ms. Minus: Google Fonts; booking page 1.2 MB |
+| 3 booking CTA | 9: live, fallback, `start`/`end` both paths | 9: same | 9: same |
+| 4 brand fit | 8: no first-screen proof point (calibration) | 8 | 8 |
+| 5 copy | 9 | 9 | 9 |
+| 6 accessibility | 9: 0 targets < 44; alts = dossier; focus visible; 0 video under reduced motion | 8: 0 targets < 44 | 8: 0 targets < 44; Rosa iframe has no focus ring |
+| 7 delivery | 8: Google Fonts | 8: Google Fonts | 8: Google Fonts |
+
+Result: postcard **72.8**, try-your-week **70.5**, the-sign **72.0** (/80). All pass the critic gates; d8 comes from the visual critics. Hard fails `[]`.
+
+fix list (not failing; smallest first):
+1. try-your-week: correct `notes.md` (`vid-002g` is real speed, 5.4 s).
+2. try-your-week: lengthen the hero to ≥ 6 s, for example by keeping 1.1 s more of the water-level ride.
+3. Record `vid-010g`, `vid-002h`, `vid-002g`, `vid-010c` / `-d1728` and the three `-p45` cuts in `dossier.videos[]`.
+4. At 4g: live Rosa headline with the 24 h rule on try-your-week and the-sign; self-host the fonts.
+5. Owner: confirm the room ↔ photo mapping.
+
+what the designer prompt got wrong (round 5): After a clip is re-cut, the prompt does not make the designer re-check it against playbook §1a's length window: a trim to "drop the end splash" took the hero under 6 s. It also doesn't require `notes.md` to be corrected when a cut changes, so the notes kept describing a retimed version that no longer ships.
+
+Not tested in round 5: a real phone, Safari, axe, the engine past `/accommodation`, throttled booking-page numbers, and frame matching of the desktop tiers (only m1280 was matched; all tiers have the same length).
