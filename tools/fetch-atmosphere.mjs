@@ -62,7 +62,9 @@ const indexFile = path.join(outDir, 'index.json');
 const index = fs.existsSync(indexFile) ? JSON.parse(fs.readFileSync(indexFile, 'utf8')) : [];
 const have = new Set(index.map((i) => i.source_url));
 
-let n = index.length;
+/* Number on from the highest id issued, not from the count: entries are deleted after the look
+   (last lines of this file), and a count would re-issue an id that is still in use. */
+let n = Math.max(0, ...index.map((i) => Number(/^stock-(\d+)$/.exec(i.id)?.[1] ?? 0)));
 for (const q of queries) {
   const d = await api({ action: 'query', generator: 'search', gsrsearch: q, gsrnamespace: '6',
                         gsrlimit: '20', prop: 'imageinfo', iiprop: 'url|size|extmetadata' });
@@ -120,6 +122,7 @@ for (const q of queries) {
       description: null,   // filled in by whoever looks at it
     };
     index.push(entry); have.add(ii.descriptionurl);
+    fs.writeFileSync(indexFile, JSON.stringify(index, null, 1));   // a later Commons error must not lose this record
     console.log(`${id}  ${String(ii.width).padStart(5)}x${ii.height}  ${entry.license_name.padEnd(12)}  ${free ? 'may adapt ' : 'show only '}  ${entry.title.slice(0, 46)}`);
     if (index.length >= 24) break;
   }

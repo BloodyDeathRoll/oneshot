@@ -117,8 +117,10 @@ function readShots(slug) {
   const base = `sites/${slug}/final/shots`;
   if (!existsSync(join(ROOT, base))) return null;
   // Folder names differ per site (round-1, 4g-round-1, critic-2, aiseo…): the first sheet is the
-  // one named round-1 when it exists, else the oldest by mtime; the latest is the newest by mtime.
-  const mtime = (n) => statSync(join(ROOT, base, n, 'desktop-sheet.png')).mtimeMs;
+  // one named round-1 when it exists, else the earliest by capture time; the latest is the newest.
+  // Capture time is shoot.json's `at`; folders shot before it was recorded fall back to mtime,
+  // which a clone or checkout does not preserve.
+  const mtime = (n) => Date.parse(readJson(`${base}/${n}/shoot.json`)?.at ?? '') || statSync(join(ROOT, base, n, 'desktop-sheet.png')).mtimeMs;
   const rounds = readdirSync(join(ROOT, base), { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name)
     .filter((n) => existsSync(join(ROOT, base, n, 'desktop-sheet.png')))
     .sort((a, b) => (/^(4g-)?round-1$/.test(b) - /^(4g-)?round-1$/.test(a)) || (mtime(a) - mtime(b)));
@@ -197,7 +199,9 @@ export function buildData({ ledgerPath = 'ledger.jsonl' } = {}) {
 
   function classify(hist, runHasApprovals, isCurrent) {
     const last = hist.at(-1); const state = last.to_state;
-    const regressed = rank(state) < rank(last.from_state);
+    // A drop goes back to before the approval gate. A step back to any later state is a rework loop
+    // (copy_failed → copy_drafted, critiqued(n) → copy_drafted, mocked → concepted): still in the pipeline.
+    const regressed = rank(state) < rank(last.from_state) && rank(state) < rank('approved');
     if (state.startsWith('outcome:')) return { group: 'outcome', label: state.slice(8) };
     if (!isCurrent && rank(state) < rank('approved') && !runHasApprovals) return { group: 'superseded', label: 'run not continued' };
     if (state === 'pitched') return { group: 'pitched', label: 'pitched' };
@@ -306,8 +310,10 @@ export function buildData({ ledgerPath = 'ledger.jsonl' } = {}) {
     };
   }
   const kpis_by_run = Object.fromEntries(runsSeen.map((r) => [r, kpisFor(r)]));
-  const prevRun = runsSeen[runsSeen.indexOf(run.run_id) - 1] ?? null;
-  const cur = kpis_by_run[run.run_id], prev = prevRun ? kpis_by_run[prevRun] : null;
+  // A run with no ledger line yet (run.yaml just bumped, or an empty ledger) is not in runsSeen.
+  const runIdx = runsSeen.indexOf(run.run_id);
+  const prevRun = (runIdx === -1 ? runsSeen.filter((r) => r < run.run_id).at(-1) : runsSeen[runIdx - 1]) ?? null;
+  const cur = kpis_by_run[run.run_id] ?? kpisFor(run.run_id), prev = prevRun ? kpis_by_run[prevRun] : null;
   const deltas = {};
   for (const k of ['researched', 'live_sites', 'needs_you', 'pitched', 'replies', 'clients', 'avg_critic']) {
     const stageReachedBefore = prev && (k === 'researched' || k === 'needs_you' || (k === 'avg_critic' ? prev.avg_critic != null : prev[k] > 0 || prev.funnel.some((f) => f.count > 0 && ['live_sites'].includes(k) && f.state === 'built')));
@@ -319,7 +325,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl' } = {}) {
   // ---- per-day series for sparklines ------------------------------------------------------------
   const allTs = businessLines.map((l) => l.ts).sort();
   const days = [];
-  for (let d = new Date(allTs[0].slice(0, 10)); d <= new Date(); d.setUTCDate(d.getUTCDate() + 1)) days.push(d.toISOString().slice(0, 10));
+  for (let d = new Date((allTs[0] ?? new Date().toISOString()).slice(0, 10)); d <= new Date(); d.setUTCDate(d.getUTCDate() + 1)) days.push(d.toISOString().slice(0, 10));
   const series = { days, ledger_lines: [], decisions: [], gates_open: [], live_sites: [], businesses_seen: [] };
   for (const dday of days) {
     const upto = businessLines.filter((l) => day(l.ts) <= dday && l.run_id === run.run_id);

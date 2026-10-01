@@ -77,7 +77,7 @@ function currentState(run_id, slug) {
 }
 
 function decide(body) {
-  const spec = DECISIONS[body.gate];
+  const spec = Object.hasOwn(DECISIONS, body.gate) ? DECISIONS[body.gate] : null;
   if (!spec) return { status: 400, error: `unknown gate "${body.gate}"; one of ${Object.keys(DECISIONS).join(', ')}` };
   if (!spec.choices.includes(body.choice)) return { status: 400, error: `choice must be one of ${spec.choices.join(', ')}` };
   const reason = String(body.reason ?? '').trim();
@@ -130,7 +130,7 @@ function serveFile(res, abs) {
   createReadStream(abs).pipe(res);
 }
 
-const server = createServer((req, res) => {
+function handle(req, res) {
   const url = new URL(req.url, `http://${req.headers.host}`);
   const path = decodeURIComponent(url.pathname);
   if (req.method === 'GET' && (path === '/' || path === '/index.html')) return serveFile(res, join(DIST, 'index.html'));
@@ -142,16 +142,20 @@ const server = createServer((req, res) => {
   }
   if (req.method === 'GET' && path.startsWith('/files/')) {
     const rel = path.slice('/files/'.length);
-    if (!FILE_PREFIXES.some((p) => rel.startsWith(p))) return send(res, 403, { error: 'not a readable prefix' });
-    return serveFile(res, safeUnder(ROOT, rel));
+    const abs = safeUnder(ROOT, rel); // test the resolved path: "sites/../x" starts with a prefix and is not under one
+    if (!abs || !FILE_PREFIXES.some((p) => abs.startsWith(join(ROOT, p)))) return send(res, 403, { error: 'not a readable prefix' });
+    return serveFile(res, abs);
   }
   if (req.method === 'GET' && path === '/gates') return send(res, 200, { gates: buildData({ ledgerPath: LEDGER }).gates, decisions: Object.fromEntries(Object.entries(DECISIONS).map(([k, v]) => [k, { from: v.from, choices: v.choices }])) });
   if (req.method === 'POST' && path === '/decide') {
+    // A page on another origin can send text/plain or a form without a preflight; JSON it cannot.
+    if (!/^application\/json\b/i.test(req.headers['content-type'] ?? '')) return send(res, 415, { error: 'content-type must be application/json' });
     let raw = '';
     req.on('data', (c) => { raw += c; if (raw.length > 64_000) req.destroy(); });
     req.on('end', () => {
       let body; try { body = JSON.parse(raw); } catch { return send(res, 400, { error: 'body must be JSON' }); }
-      const out = decide(body);
+      if (!body || typeof body !== 'object' || Array.isArray(body)) return send(res, 400, { error: 'body must be a JSON object' });
+      let out; try { out = decide(body); } catch (e) { return send(res, 500, { error: String(e.message ?? e) }); }
       if (out.status === 201) notify('decision');
       return send(res, out.status, out);
     });
@@ -159,6 +163,13 @@ const server = createServer((req, res) => {
   }
   if (req.method === 'GET') return serveFile(res, safeUnder(DIST, path.slice(1)));
   send(res, 405, { error: 'method not allowed' });
+}
+// One bad request must not take the control layer down: a throw in a handler is an uncaught exception.
+const server = createServer((req, res) => {
+  try { handle(req, res); } catch (e) {
+    if (res.headersSent) return res.end();
+    send(res, e instanceof URIError || e.code === 'ERR_INVALID_URL' ? 400 : 500, { error: String(e.message ?? e) });
+  }
 });
 
 server.listen(PORT, HOST, () => console.log(`dashboard server on http://${HOST}:${PORT}  dist=${DIST}  ledger=${LEDGER}`));

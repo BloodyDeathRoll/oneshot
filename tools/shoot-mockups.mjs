@@ -6,21 +6,13 @@
 // a full-page capture of a sticky hero shows the sticky element once and leaves
 // the rest of its scroll height blank, which is an artefact of the capture, not
 // a layout bug.
-import fs from 'node:fs'; import path from 'node:path'; import http from 'node:http';
+import fs from 'node:fs'; import path from 'node:path';
 import { chromium } from 'playwright';
+import { serve } from './_serve.mjs';
 
 const root = process.cwd();
 const only = process.argv.slice(2).filter((a) => !a.startsWith('-'));
 const STOPS = 6;
-const types = {'.html':'text/html','.css':'text/css','.js':'text/javascript','.mjs':'text/javascript','.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml','.woff2':'font/woff2','.json':'application/json'};
-const serve = (dir, port) => new Promise(res => {
-  const s = http.createServer((req, rp) => {
-    let f = path.join(dir, decodeURIComponent(req.url.split('?')[0]));
-    if (f.endsWith('/')) f += 'index.html';
-    fs.readFile(f, (e, b) => e ? (rp.statusCode = 404, rp.end('nope'))
-      : (rp.setHeader('content-type', types[path.extname(f)] || 'application/octet-stream'), rp.end(b)));
-  }).listen(port, () => res(s));
-});
 
 /* Some mockups scroll the document; some put the page in its own scroll area so
    that a fixed element can never cover content. Find whichever one actually

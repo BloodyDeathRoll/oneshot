@@ -45,7 +45,7 @@ await mkdir(out, { recursive: true });
 const browser = await chromium.launch({
   args: ['--use-gl=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'],
 });
-const report = { target, widths: {} };
+const report = { target, at: new Date().toISOString(), widths: {} };
 
 for (const w of WIDTHS) {
   const ctx = await browser.newContext(w);

@@ -42,11 +42,11 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import http from 'node:http';
 import os from 'node:os';
 import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
+import { serve } from './_serve.mjs';
 
 const root = process.cwd();
 const only = process.argv.slice(2).filter((a) => !a.startsWith('-'));
@@ -58,15 +58,6 @@ const DEFAULT_BODY = ['inter', 'inter tight', 'roboto', 'arial'];
 const MIN_LUM = 0.55;      // the page's own ground
 const MIN_BLOCK_LUM = 0.35; // a panel behind text
 const MAX_SLACK = 0.12;
-const types = {'.html':'text/html','.jpeg':'image/jpeg','.css':'text/css','.js':'text/javascript','.webp':'image/webp','.jpg':'image/jpeg','.png':'image/png','.svg':'image/svg+xml','.woff2':'font/woff2','.json':'application/json'};
-const serve = (dir, port) => new Promise((res) => {
-  const s = http.createServer((req, rp) => {
-    let f = path.join(dir, decodeURIComponent(req.url.split('?')[0]));
-    if (f.endsWith('/')) f += 'index.html';
-    fs.readFile(f, (e, b) => e ? (rp.statusCode = 404, rp.end())
-      : (rp.setHeader('content-type', types[path.extname(f)] || 'application/octet-stream'), rp.end(b)));
-  }).listen(port, () => res(s));
-});
 
 const PROBE = `(async () => {
   const lum = (c) => {

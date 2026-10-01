@@ -16,19 +16,10 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import http from 'node:http';
 import { chromium } from 'playwright';
+import { serve } from './_serve.mjs';
 
 const root = process.cwd();
-const types = {'.html':'text/html','.css':'text/css','.js':'text/javascript','.webp':'image/webp','.jpg':'image/jpeg','.png':'image/png','.svg':'image/svg+xml','.woff2':'font/woff2','.json':'application/json'};
-const serve = (dir, port) => new Promise((res) => {
-  const s = http.createServer((req, rp) => {
-    let f = path.join(dir, decodeURIComponent(req.url.split('?')[0]));
-    if (f.endsWith('/')) f += 'index.html';
-    fs.readFile(f, (e, b) => e ? (rp.statusCode = 404, rp.end())
-      : (rp.setHeader('content-type', types[path.extname(f)] || 'application/octet-stream'), rp.end(b)));
-  }).listen(port, () => res(s));
-});
 
 /* playbook §4: a mid-range Android on slow 4G, metered. */
 const SLOW_4G = { offline: false, downloadThroughput: 1.6 * 1024 * 1024 / 8, uploadThroughput: 750 * 1024 / 8, latency: 150 };
