@@ -1,0 +1,9 @@
+#!/bin/sh
+# Refuse direct pushes to main: work goes through a branch and a PR (docs/team.md).
+while read local_ref local_sha remote_ref remote_sha; do
+  if [ "$remote_ref" = "refs/heads/main" ]; then
+    echo "pre-push: never push to main; push a branch and open a PR." >&2
+    exit 1
+  fi
+done
+exit 0

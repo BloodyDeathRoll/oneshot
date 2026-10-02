@@ -52,14 +52,22 @@ state, what was just done and why, what is open, decisions the human made that a
 ledger, and anything the next person must not undo. Short. `handoff.md` stays the session-level
 handoff; this is the business-level one.
 
-## Git: two people on `main`
+## Git: branches and pull requests, never straight to `main`
 
-- Pull before starting (`git pull --rebase`), commit small, push when a step is done.
+- Nobody pushes to `main`. Every piece of work goes on its own branch (`<operator>/<slug>-<what>`,
+  e.g. `alon/globalsurf-4g`; `<operator>/<topic>` for repo-wide work) and reaches `main` through a pull request.
+  `tools/hooks/pre-push` refuses a push to `main` (on after `tools/setup.sh`).
+- Start from a fresh `main`: `git switch main && git pull --rebase && git switch -c <branch>`.
+  Commit small, push the branch, open the PR (`gh pr create`). Keep PRs short-lived: one step or
+  one business station each, merged the same day where possible.
+- Before merging: `git pull --rebase origin main` on the branch (or GitHub's "Update branch"),
+  check the PR touches nothing the other operator has open (`node tools/team.mjs status`).
+  Only a human merges.
 - `ledger.jsonl`, `usage.jsonl` and `activity.jsonl` merge with `merge=union` (`.gitattributes`):
   when both of you appended, git keeps both sides' lines. Order inside the file may then interleave;
   readers sort by `ts` where order matters.
-- Before passing a gate, pull: the other operator may already have passed it. `dashboard/server.mjs`
-  refuses a decision on a business whose state changed since the page loaded.
+- Before passing a gate, pull `main`: the other operator may already have passed it.
+  `dashboard/server.mjs` refuses a decision on a business whose state changed since the page loaded.
 
 ## Media: on disk, never in git
 
