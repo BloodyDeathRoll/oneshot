@@ -14,9 +14,10 @@
 | `agent` | string | Who made the transition: `orchestrator`, `scout`, `harvester`, `auditor`, `visual-critic`, `experience-critic`, `copywriter`, `humanizer`, `copyeditor`, `creative-director`, `designer`, `seo`, `aiseo`, `critic`, `deployer`, `writer`, or `human` for gates |
 | `agent_version` | string \| null | Semver pinned in `run.yaml`; `null` when `agent` is `human` |
 | `note` | string | Short free text: reason, score, pick reason, error, outcome detail |
+| `operator` | string | Who ran the session that wrote the line, an id from `team.json` (`node tools/team.mjs whoami`). For `agent: "human"` lines it is the person who decided. Required from 2026-10-02 (docs/team.md); lines before that have none and are Shahar's |
 | `hosting_mode` | string, optional | `managed` \| `self_hosted_docker` \| `static_only`. Present on every line written by the `deployer`, and on the `human` line that records a client's choice of mode. The last line that carries it is the business's hosting mode; absent = `run.yaml` `hosting.default_mode`. |
 
-The first eight fields are present on every line.
+The first eight fields are present on every line, and `operator` on every line from 2026-10-02.
 
 ## States (PLAN.md §4)
 
@@ -29,7 +30,8 @@ The first eight fields are present on every line.
 - `self_hosted_docker` only, once the client has chosen it: `… → handoff_verified → access_revoked`. `handoff_verified` = the adapter's `verify` passed on the client's box and the handoff kit is complete. `access_revoked` = our keys, users and tokens are removed from the client's box and checked to no longer work.
 - `void` (2026-09-28): a human voids a run's business; its files are deleted, its earlier lines stay (append-only), and the dashboard shows it as voided.
 - Outcomes are written as `outcome:reply`, `outcome:meeting`, `outcome:sale`, `outcome:ignored`.
-- Human-gate transitions (`shortlisted → approved`, `mocked → picked`, `packaged → pitched`) always have `agent: "human"`.
+- Human-gate transitions (`shortlisted → approved`, `mocked → picked`, `packaged → pitched`) always have `agent: "human"`. Either operator may pass any gate; `operator` says which one did.
+- Work that is not a state change (a fix, a tweak, a re-cut) is not a ledger line: it goes to `activity.jsonl` (docs/team.md).
 - Gate (d), prompt diffs (approved 2026-09-27, proposals/dashboard-01/001): a decision on a file under `proposals/` is a line with `slug: "-"`, `agent: "human"`, `from_state: null`, `to_state: "proposal:approved"` or `"proposal:rejected"`, `note: "<file>: <reason>"`. The merge itself (version bump, CHANGELOG) is a later code change, recorded by its commit, not by the ledger.
 
 The current state of a business is the `to_state` of its last line for the current `run_id`.

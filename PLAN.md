@@ -28,6 +28,8 @@ Workflow graph: Figma → Workflows file → `workflows` page → frame `oneshot
 | Agent prompts | Two layers per agent: `base.md` (Claude: role, I/O, constraints) + `custom.md` (Shahar: taste, rules, references). Runtime prompt = playbook + base + custom + references |
 | Preview | The site's `*.workers.dev` address is the before/after link; production is the same Worker on the client's domain |
 | Human gates | (a) shortlist approval (b) mockup pick (c) send pitch (d) approve prompt diffs |
+| Operators | Decided 2026-10-02: two operators, Shahar and Alon (`team.json`), each on their own machine and Claude Code sessions, one repo, both pushing to `main`. Either may pass any gate. Every ledger line carries `operator`; work between states and assignments go to `activity.jsonl`; `notes/<slug>.md` is the per-business handoff; the dashboard shows who worked on what last and who has an open assignment. `docs/team.md` |
+| Media | Decided 2026-10-02: no image or video in git, ever, and none hosted online. Each operator keeps media on disk and in a local store (`~/.oneshot/assets`); `media/<slug>.tsv` lists every file with its sha256 and source, and every new file must be made by a committed recipe, so the other operator rebuilds it (`tools/media.mjs restore`). Screenshots are scratch: one shared set per page, deleted after each scored round. The 3.5 GB of images already in git history are removed by a one-time history rewrite. `docs/team.md` |
 
 ---
 
@@ -60,12 +62,16 @@ oneshot/
   handoff/                    # handoff kit templates: README, credentials sheet, backup/restore, update procedure, "how to edit" guide with screenshots
   schemas/                    # audit.md (auditor output, proposal 007); site-content.md — the content contract between Payload and the templates
   scripts/                    # deterministic helpers (geocode, coastline buffer, scrape, zip)
-  dossier/<slug>/             # dossier.json + assets/ per business
+  dossier/<slug>/             # dossier.json + assets/ per business (assets: local only, listed in media/<slug>.tsv)
   sites/<slug>/               # copy/ + concepts.md + mockups/ (3 variants) + final/ (Astro site)
   reports/<run-id>/           # per-site scorecards, run summary
   proposals/<run-id>/         # critic's proposed diffs awaiting human review
   dist/<slug>.zip             # optional static export per client (runs on any host)
   ledger.jsonl                # append-only: every state change of every business
+  activity.jsonl              # append-only: work between states + assignments, per operator (docs/team.md)
+  team.json                   # the operators and how a session knows who it is
+  notes/<slug>.md             # per-business handoff between operators
+  media/<slug>.tsv            # every image/video of a business: path, sha256, size, source (files stay local)
 ```
 
 ---
