@@ -20,5 +20,5 @@ mockups; his verbatim instructions are in that ledger line's note.
 yet: ask Shahar for `node tools/media.mjs pack global-surf-adventures`.
 
 ## Open
-See `handoff.md` (2026-09-30) "Next Step": font + palette approval, reviewers on the composite, then
+See the 2026-09-30 handoff (`git show 4c29f7b:handoff.md`), "Next Step": font + palette approval, reviewers on the composite, then
 4g. Check `node tools/team.mjs status global-surf-adventures` for open assignments.
