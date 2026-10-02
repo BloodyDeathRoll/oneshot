@@ -3,15 +3,19 @@
 # Fast-forwards main (never resets, stashes or forces), then prints git and team status.
 # stdout goes into the new session's context.
 cd "${CLAUDE_PROJECT_DIR:-$(dirname "$0")/..}" || exit 0
-timeout 20 git fetch -q origin 2>/dev/null || echo "git fetch failed (offline?)"
+T=; command -v timeout >/dev/null && T="timeout 20"   # macOS has no GNU timeout
+stale=; $T git fetch -q origin 2>/dev/null || { stale="(stale: fetch failed) "; echo "git fetch failed (offline?)"; }
 branch=$(git branch --show-current)
 if [ "$branch" = main ]; then
-  git pull -q --ff-only 2>/dev/null && echo "main pulled: $(git log --oneline -1)" \
-    || echo "main NOT pulled — local changes, or ahead/behind origin/main: $(git rev-list --left-right --count main...origin/main | tr '\t' '/'). Resolve by hand."
+  if err=$(git merge -q --ff-only origin/main 2>&1); then
+    echo "${stale}main at origin/main: $(git log --oneline -1)"
+  else
+    echo "${stale}main NOT fast-forwarded (ahead/behind origin/main: $(git rev-list --left-right --count main...origin/main | tr '\t' '/')): $(echo "$err" | head -1)"
+  fi
 elif [ -z "$branch" ]; then
-  echo "detached HEAD at $(git log --oneline -1), $(git rev-list --count HEAD..origin/main 2>/dev/null) commits behind origin/main"
+  echo "${stale}detached HEAD at $(git log --oneline -1), $(git rev-list --count HEAD..origin/main 2>/dev/null) commits behind origin/main"
 else
-  echo "on branch $branch, $(git rev-list --count HEAD..origin/main 2>/dev/null) commits behind origin/main"
+  echo "${stale}on branch $branch, $(git rev-list --count HEAD..origin/main 2>/dev/null) commits behind origin/main"
 fi
 changes=$(git status --short)
 [ -n "$changes" ] && printf 'uncommitted:\n%s\n' "$changes"

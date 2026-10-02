@@ -1,6 +1,6 @@
 ---
 name: start
-description: Start a Oneshot session — pull the latest main and show team status (open assignments, who worked last). Runs automatically on session startup (SessionStart hook); use it by hand when the user says start, sync, or "what's going on".
+description: Start a Oneshot session — pull the latest main and show team status (open assignments, who worked last). Runs automatically when a session starts or after /clear (SessionStart hook); use it by hand when the user says start, sync, or "what's going on".
 ---
 
 # Start a Oneshot session
