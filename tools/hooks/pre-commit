@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# tools/hooks/pre-commit — keeps images and video out of git (docs/team.md). Enabled per clone by
+# tools/setup.sh (git config core.hooksPath tools/hooks).
+#   1. refuses any staged image or video, even one added with --force;
+#   2. saves media into the local store and refreshes media/<slug>.tsv, staging the manifests;
+#   3. refuses new media that no committed recipe can make (source "local"), unless
+#      ONESHOT_ALLOW_LOCAL=1 — then the other operator can only get it from `media.mjs pack`.
+set -euo pipefail
+cd "$(git rev-parse --show-toplevel)"
+MEDIA='\.(png|jpe?g|webp|gif|avif|heic|tiff?|bmp|ico|mp4|webm|mov|m4v|mkv|avi)$'
+staged=$(git diff --cached --name-only --diff-filter=ACMR | grep -iE "$MEDIA" || true)
+if [ -n "$staged" ]; then
+  echo "pre-commit: images and video never go in git (docs/team.md). Unstage them:" >&2
+  echo "$staged" | sed 's/^/  /' >&2
+  exit 1
+fi
+node tools/media.mjs save >/dev/null
+git add media/
+new_local=$(git diff --cached -U0 -- media/ | grep -E '^\+[^+].*	local$' | cut -f1 | sed 's/^+//' || true)
+if [ -n "$new_local" ] && [ "${ONESHOT_ALLOW_LOCAL:-}" != 1 ]; then
+  echo "pre-commit: $(echo "$new_local" | wc -l) new media file(s) have no recipe, so the other operator cannot rebuild them:" >&2
+  echo "$new_local" | head -10 | sed 's/^/  /' >&2
+  echo "Add a make-*.sh/.py/.mjs script with a '# media: <glob>' line that produces them, or commit with" >&2
+  echo "ONESHOT_ALLOW_LOCAL=1 and send them with: node tools/media.mjs pack <slug>" >&2
+  exit 1
+fi

@@ -6,6 +6,7 @@
 #  4 reef           vid-009-source 40.36–45.00 s (the surfer on the reef, the reef shot of vid-009e)
 # Phone reef shot: the crop follows the surfer with a slow 150 px pan (real frames, no interpolation).
 # vid-010 carries a corner badge top-left: desktop crops x>=192, phone crop is central, so it never shows.
+# media: sites/global-surf-adventures/mockups/picked/dist/video/hero-*
 set -euo pipefail
 cd "$(dirname "$0")/../../../../.."
 SRC=dossier/global-surf-adventures/assets/video

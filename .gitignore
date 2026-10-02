@@ -77,3 +77,27 @@ sites/*/mockups/*/shots/**/mobile-[0-9]*.png
 # (no trailing slash: a link into ~/.oneshot/assets, made by tools/link-assets.sh)
 sites/*/mockups/*/dist/video
 sites/*/mockups-rejected-*/*/dist/video
+
+# Images and video never go in git (decided 2026-10-02, docs/team.md). They live on each operator's
+# disk and in the local store (~/.oneshot/assets); media/<slug>.tsv lists every file and how to get
+# it back (tools/media.mjs). SVG is markup, not a picture, and stays tracked.
+*.[pP][nN][gG]
+*.[jJ][pP][gG]
+*.[jJ][pP][eE][gG]
+*.webp
+*.gif
+*.avif
+*.heic
+*.tif
+*.tiff
+*.bmp
+*.ico
+*.mp4
+*.webm
+*.mov
+*.m4v
+*.mkv
+*.avi
+# review screenshots are scratch, deleted after scoring (tools/clean-shots.mjs)
+shots/
+!agents/designer/gold/shots/

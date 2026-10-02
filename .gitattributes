@@ -1,0 +1,5 @@
+# Append-only logs: when both operators append and push, git keeps both sides' lines instead of
+# stopping on a conflict (docs/team.md). Never use this for files that are rewritten in place.
+ledger.jsonl   merge=union
+usage.jsonl    merge=union
+activity.jsonl merge=union

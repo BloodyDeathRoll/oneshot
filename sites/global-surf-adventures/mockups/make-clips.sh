@@ -4,6 +4,10 @@
 # from the session logs after the files were lost with a worktree — keep this file current when a
 # clip changes. Before it: tools/link-assets.sh, then the sources and their renditions
 # (tools/fetch-video.mjs; cuts are in dossier.videos[]).
+# media: sites/global-surf-adventures/mockups/the-sign/dist/video/**
+# media: sites/global-surf-adventures/mockups/try-your-week/dist/video/**
+# media: sites/global-surf-adventures/mockups/postcard/dist/video/**
+# media: sites/global-surf-adventures/mockups/picked/dist/video/s/**
 set -euo pipefail
 cd "$(dirname "$0")/../../.."
 A=dossier/global-surf-adventures/assets/video
