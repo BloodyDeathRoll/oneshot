@@ -56,6 +56,7 @@ handoff; this is the business-level one.
 
 - Nobody pushes to `main`. Every piece of work goes on its own branch (`<operator>/<slug>-<what>`,
   e.g. `alon/globalsurf-4g`; `<operator>/<topic>` for repo-wide work) and reaches `main` through a pull request.
+  `tools/hooks/pre-push` refuses a push to `main` (on after `tools/setup.sh`).
 - Start from a fresh `main`: `git switch main && git pull --rebase && git switch -c <branch>`.
   Commit small, push the branch, open the PR (`gh pr create`). Keep PRs short-lived: one step or
   one business station each, merged the same day where possible.

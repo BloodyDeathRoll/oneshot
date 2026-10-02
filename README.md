@@ -12,7 +12,7 @@ Claude Code agents run the pipeline. Two operators share the repo (`docs/team.md
 
 ```bash
 npm ci
-tools/setup.sh                 # git hook, links + restores media from ~/.oneshot
+tools/setup.sh                 # git hooks, links + restores media from ~/.oneshot
 node tools/team.mjs whoami     # fails? add your git user.email to team.json
 ```
 
