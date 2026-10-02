@@ -7,7 +7,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 git config core.hooksPath tools/hooks
-for d in dossier/*/; do s=$(basename "$d"); [ -f "media/$s.tsv" ] && bash tools/link-assets.sh "$s" >/dev/null; done
+for d in dossier/*/; do bash tools/link-assets.sh "$(basename "$d")" >/dev/null; done
 for f in media/*.tsv; do s=$(basename "$f" .tsv); node tools/media.mjs restore "$s"; done
 node tools/media.mjs status
 node tools/team.mjs whoami || true

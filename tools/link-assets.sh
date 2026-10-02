@@ -23,5 +23,5 @@ link() { # $1 path in the checkout, $2 folder in the store
 
 link "dossier/$slug/assets" "$STORE"
 for m in sites/"$slug"/mockups/*/; do
-  [ -d "${m}dist" ] && link "${m}dist/video" "$STORE/mockups/$(basename "$m")/video"
+  if [ -d "${m}dist" ]; then link "${m}dist/video" "$STORE/mockups/$(basename "$m")/video"; fi
 done
