@@ -39,7 +39,10 @@ def image(e):
     raw = fetch(e['source_url'])
     if raw is None:
         return e['id'], 'DOWNLOAD FAILED ' + e['source_url']
-    src = Image.open(io.BytesIO(raw))
+    try:
+        src = Image.open(io.BytesIO(raw))
+    except Exception:  # the URL now serves something else (an expired CDN link, a login page)
+        return e['id'], 'NOT AN IMAGE ANY MORE ' + e['source_url']
     im = ImageOps.exif_transpose(src).convert('RGB')
     buf = io.BytesIO()
     if max(im.size) > 2000:

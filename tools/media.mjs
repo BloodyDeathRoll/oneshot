@@ -14,7 +14,7 @@
 //   node tools/media.mjs forget <path>      # drop manifest rows for files deleted on purpose (path or folder)
 //
 // Sources (column 4 of the manifest), and what restore does with each:
-//   dossier        dossier/<slug>/assets images: tools/restore-assets.py re-downloads them from dossier.json
+//   dossier        dossier/<slug>/assets images whose own URL is in dossier.json: tools/restore-assets.py re-downloads them
 //   video          dossier/<slug>/assets/video: tools/fetch-video.mjs with the dossier.videos[] source_url (restore names them)
 //   stock          dossier/<slug>/stock: re-downloaded from Wikimedia Commons (stock/index.json)
 //   recipe:<file>  made by a committed script whose header declares it with "# media: <glob>"
@@ -72,10 +72,28 @@ function recipes() {
   return out;
 }
 
+const urlCache = new Map();
+function imageUrls(slug) {
+  if (!urlCache.has(slug)) {
+    const set = new Set();
+    try {
+      const d = JSON.parse(readFileSync(join(ROOT, 'dossier', slug, 'dossier.json'), 'utf8'));
+      const logo = d.business?.logo ?? {};
+      const entries = [...(d.images ?? []).map((e) => [e.file, e.source_url]), [logo.value, logo.source_url], ...(logo.variants ?? []).map((v) => [v.file, v.source_url])];
+      for (const [file, url] of entries) if (file && /^https?:\/\/.+\.(jpe?g|png|webp|gif|avif|svg)(\?.*)?$/i.test(url ?? '')) set.add(file);
+    } catch {}
+    urlCache.set(slug, set);
+  }
+  return urlCache.get(slug);
+}
+
 export function sourceOf(p, rs = recipes()) {
   const r = rs.find((x) => x.re.test(p));
   if (r) return `recipe:${r.script}`;
-  if (/^dossier\/[^/]+\/assets\/(img|logo)-[^/]+$/.test(p)) return 'dossier';
+  // dossier images come back only when dossier.json recorded the image's own URL; older harvests
+  // recorded the page it was found on, which cannot be downloaded as the file
+  const dm = p.match(/^dossier\/([^/]+)\/(assets\/(?:img|logo)-[^/]+)$/);
+  if (dm && imageUrls(dm[1]).has(dm[2])) return 'dossier';
   if (/^dossier\/[^/]+\/assets\/video\//.test(p)) return 'video';
   if (/^dossier\/[^/]+\/stock\/[^/]+$/.test(p)) return 'stock';
   return 'local';
@@ -160,7 +178,13 @@ async function fetchStock(slug, rows) {
     const e = idx.find((x) => `dossier/${slug}/${x.file}` === r.path);
     const name = e?.source_url?.match(/\/wiki\/File:(.+)$/)?.[1];
     if (!name) continue;
-    const res = await fetch(`https://commons.wikimedia.org/wiki/Special:FilePath/${name}`, { headers: { 'User-Agent': 'oneshot-media-restore/1 (operator tool)' } });
+    let res;
+    for (let attempt = 1; attempt <= 5; attempt++) { // Commons rate-limits bursts (429): wait as told, then retry
+      res = await fetch(`https://commons.wikimedia.org/wiki/Special:FilePath/${name}`, { headers: { 'User-Agent': 'oneshot-media-restore/1 (operator tool)' } });
+      if (res.status !== 429 && res.status < 500) break;
+      await new Promise((ok) => setTimeout(ok, (Number(res.headers.get('retry-after')) || 10 * attempt) * 1000));
+    }
+    await new Promise((ok) => setTimeout(ok, 1500));
     if (!res.ok) { console.log(`  stock ${r.path}: HTTP ${res.status}`); continue; }
     const buf = Buffer.from(await res.arrayBuffer());
     if (createHash('sha256').update(buf).digest('hex') !== r.sha256) { console.log(`  stock ${r.path}: downloaded file differs from the manifest (re-saved or cropped after fetch)`); continue; }
