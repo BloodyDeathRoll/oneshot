@@ -2,6 +2,6 @@
   "_doc": "Oneshot operators (docs/team.md). Identity, in order: ONESHOT_OPERATOR env var, git user.email, git user.name. Both operators may pass every human gate (decided 2026-10-02).",
   "operators": {
     "shahar": { "name": "Shahar", "git_emails": ["shibumi1974@gmail.com"], "git_names": ["shahar", "Shahar Naor"] },
-    "alon":   { "name": "Alon",   "git_emails": [], "git_names": ["alon", "Alon"] }
+    "alon":   { "name": "Alon",   "git_emails": ["lavi.alon@gmail.com"], "git_names": ["alon", "Alon"] }
   }
 }
