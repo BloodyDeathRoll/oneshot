@@ -57,7 +57,7 @@ ssh -i ~/.ssh/oneshot_cms ubuntu@130.61.212.182
 
 - Admin: https://130-61-212-182.sslip.io/admin
 - Stack: `~/oneshot/cms` on the box (`docker compose --env-file .env up -d --build --wait`)
-- Rebuild and deploy one tenant now: `./scripts/publish.sh <tenant-slug>`
+- Rebuild and deploy one tenant now: `cd ~/oneshot/cms && ./scripts/publish.sh <tenant-slug>`
 - Backups run nightly to OCI Object Storage. Restore with `cms/scripts/restore.sh`.
 
 ## Cloudflare
