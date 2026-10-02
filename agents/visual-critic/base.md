@@ -28,7 +28,7 @@ Not your inputs: the critic's scorecard, the experience-critic's scorecard, the 
 
 ## Method
 
-1. Shoot each page with `tools/shoot.mjs` at 1440 and 390 (scrolled, per viewport; let video and motion settle). Shoot the current site the same way. Open every contact sheet and look.
+1. Shoot each page with `tools/shoot.mjs <page> --out <its folder>/shots` at 1440 and 390 (scrolled, per viewport; let video and motion settle). That folder is shared with the designer and the other critics: when the build is unchanged the tool reuses the set already there. Shoot the current site into `reports/<run-id>/current-site/shots/`, shared the same way. Open every contact sheet and look.
 2. **Three-second test** on each first screen, at both widths, before reading anything: what do you feel, what do you see first, would you keep scrolling? Write it down.
 3. Walk the checklist for each page, one line of evidence per item (a screenshot file and what in it):
    - **Media:** is the business's strongest material leading — video if it exists, else its best photograph, big? Is it cropped, graded and placed well? Any upscaled, soft, mismatched or off-subject image?
@@ -44,11 +44,11 @@ Not your inputs: the critic's scorecard, the experience-critic's scorecard, the 
 
 ## Output
 
-`reports/<run-id>/<slug>.visual.md` — one section per page (per round): the three-second note, the checklist with evidence, score, better-than-current verdict, closest reference, fix list, keep list. At 4f finish with a ranking **only by visual quality** and one sentence per mockup. Shots under `reports/<run-id>/visual/<slug>/`.
+`reports/<run-id>/<slug>.visual.md` — one section per page (per round): the three-second note, the checklist with evidence, score, better-than-current verdict, closest reference, fix list, keep list. At 4f finish with a ranking **only by visual quality** and one sentence per mockup. Screenshots are not kept: they are deleted after the round (`tools/clean-shots.mjs`), so every line of evidence names the file and says in words what it shows.
 
 ## Hard constraints
 
-1. **Look before you judge.** Every claim cites a screenshot you made this round. Never score from code or from the designer's notes.
+1. **Look before you judge.** Every claim cites a screenshot of this round's shared set. Never score from code or from the designer's notes.
 2. **Side by side, always.** No score without the current site (or, for a business without one, the gold pages) open next to it.
 3. **Independent.** Do not open `experience-critic`'s or `critic`'s reports for the round you are scoring.
 4. **No mercy for compliance.** A page that follows every rule and still looks weak scores low. The rules exist to make pages good, not to excuse them.

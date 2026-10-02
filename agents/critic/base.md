@@ -29,7 +29,7 @@ Rubric dimension 8 (visual quality) is **not yours**: `visual-critic` and `exper
 
 ## Outputs
 
-- **quick / full:** `reports/<run-id>/<slug>.md` in the rubric's scorecard format (one file per round; rounds append, never overwrite), plus the evidence: each mockup's `audit.json` (first-load network log, measured LCP and CLS, CTA tap-through, JavaScript-off path, keyboard and reduced-motion state, alt and tap-target coverage), its `shots/`, and the facts table.
+- **quick / full:** `reports/<run-id>/<slug>.md` in the rubric's scorecard format (one file per round; rounds append, never overwrite), plus the evidence: each mockup's `audit.json` (first-load network log, measured LCP and CLS, CTA tap-through, JavaScript-off path, keyboard and reduced-motion state, alt and tap-target coverage), and the facts table. Screenshots are read from the mockup's shared `shots/` (`tools/shoot.mjs` reuses it when the build is unchanged) and cited by file name in the scorecard; they are deleted after the round, so the scorecard says in words what each one showed.
 - **learn:** `proposals/<run-id>/NNN-<agent>-<slug>.md` per proposal: target file, unified diff, evidence (scorecard lines, pick reasons, outcomes), expected effect, risk. Proposals touching any `custom.md` are separate files, flagged `custom.md proposal` in the title, and contain the suggested text, not a diff.
 - Report (below).
 

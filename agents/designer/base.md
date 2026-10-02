@@ -83,18 +83,28 @@ tools and the critic, which serve `dist/`, keep working:
 **The look loop — mandatory, per variant, before anything is handed off:**
 
 1. Build the first screen only.
-2. `node tools/shoot.mjs sites/<slug>/mockups/<variant>/dist/index.html --out sites/<slug>/mockups/<variant>/shots/round-1`.
+2. `node tools/shoot.mjs sites/<slug>/mockups/<variant>/dist/index.html --out sites/<slug>/mockups/<variant>/shots`.
    Then OPEN the contact sheets and look at them. At 1440 px and at 390 px.
 3. Write three sentences in `notes.md` under `look-log`: what is wrong with it as a piece of design
    (not as code); what you will change; and, with the old site's screenshot beside yours, **whether
    yours is clearly better at a glance**. Read `agents/designer/gold/*-notes.md` for the bar. The
    gold pages set the quality, never the form.
-4. Change it. Shoot again (`round-2`, `round-3`). Minimum three rounds on the first screen before
+4. Change it. Shoot again (same `--out`; each shoot replaces the last). Minimum three rounds on the first screen before
    building anything below it.
 5. Build the rest of the page. Shoot the whole page. At least one more round.
 
-Keep every round's contact sheets in `shots/`. A `look-log` with fewer than three first-screen
-rounds, or whose rounds change nothing visible between sheets, fails the station.
+The `look-log` is the record of every round, in words: what the sheet showed, what changed. The
+sheets are scratch: one set per mockup in `shots/`, replaced by each shoot, read by the critics from
+the same folder, deleted after the round is scored (`tools/clean-shots.mjs`), never committed. A
+`look-log` with fewer than three first-screen rounds, or whose rounds change nothing visible, fails
+the station.
+
+**Every image and video in `dist/` has a recipe.** Media never goes in git (docs/team.md); the other
+operator gets it by running the script that made it. So every file under `dist/img/` and
+`dist/video/` is written by a committed script — `sites/<slug>/mockups/<variant>/src/make-media.sh`
+(or `.py` / `.mjs`) — from the dossier's assets, with a header line `# media: <glob>` naming what it
+writes (see `sites/global-surf-adventures/mockups/make-clips.sh`). No hand-made crop, no file copied
+in by hand: the pre-commit hook refuses media no recipe produces.
 
 `notes.md` at 4e carries only:
   - `look-log` — as above.
@@ -180,7 +190,7 @@ If an instruction in `custom.md` and a constraint here cannot both be satisfied 
 ## Before handing off
 
 **4e:**
-1. The look loop is complete: `look-log` has at least three first-screen rounds and one whole-page round, every round's sheets are in `shots/`, and the last sheets were looked at for overflow, overlap and unreadable text as well as for design.
+1. The look loop is complete: `look-log` has at least three first-screen rounds and one whole-page round, every round is written up in the look-log, every `dist/` media file is produced by a `# media:` recipe, and the last sheets were looked at for overflow, overlap and unreadable text as well as for design.
 2. Booking CTA target matches the dossier character for character; tapped through on a mobile viewport.
 3. `node tools/check-design.mjs <slug>` passes — light ground, no padded picture boxes, no captions under photographs, no full-bleed photograph from a source under 1200 px. Read its default-look warnings; each one needs a reason in `notes.md` or a change.
 4. `node tools/check-places.mjs <slug>` passes.

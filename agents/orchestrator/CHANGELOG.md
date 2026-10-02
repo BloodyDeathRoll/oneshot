@@ -5,3 +5,4 @@
 - **0.2.2** — 2026-09-28 — From proposal 007 (approved by Shahar). Station 3b (auditor) in the order; `audited` requires `dossier/<slug>/audit.json`.
 - **0.3.0** — 2026-09-28 — 4f/5 run three independent reviewers (critic + visual-critic + experience-critic); failing mockups loop back to the designer before the human gate (max 3 rounds); usage.jsonl per agent run.
 - **0.3.1** — 2026-09-28 — The gate always shows three passing mockups: loop until all three pass; after round 5 ask the human. (Shahar: "I asked for 3 mockups" — 0.3.0 had dropped the two that failed after round 3.)
+- **0.3.2** — 2026-10-02 — Approved by Shahar in session (two operators, docs/team.md). `mocked` no longer requires kept `shots/round-N/` folders (the look-log is the record); after every scored round run `tools/clean-shots.mjs`; every ledger line carries `operator`, and each station appends an `activity.jsonl` line.

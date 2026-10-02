@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // tools/shoot.mjs — scrolled, per-viewport screenshots of a page, plus one contact sheet per width.
 //
-//   node tools/shoot.mjs <file.html | dir-with-index.html | http(s)://url> [--out <dir>] [--step 0.9] [--settle 700] [--max 40]
+//   node tools/shoot.mjs <file.html | dir-with-index.html | http(s)://url> [--out <dir>] [--step 0.9] [--settle 700] [--max 40] [--force]
 //
 // Why: a single full-page capture never fires scroll-driven content, so it shows a page nobody will
 // ever see. This scrolls top to bottom in viewport steps, lets motion settle, and captures each
@@ -10,12 +10,19 @@
 //
 // Output in <out> (default ./shots): desktop-00.png …, mobile-00.png …, desktop-sheet.html,
 // mobile-sheet.html, desktop-sheet.png, mobile-sheet.png, shoot.json (page height, console errors).
+//
+// One shared set per build (docs/team.md): the designer and all three critics read the same <out>.
+// A local target is fingerprinted (every file under its folder, by path, size and mtime); when
+// <out>/shoot.json carries the same fingerprint the shoot is skipped and the existing set reused.
+// --force shoots anyway. A new shoot clears the folder's old images first, so it never mixes rounds.
+// Screenshots are scratch: tools/clean-shots.mjs deletes them after the round is scored.
 // Known artefact: an opaque element over a WebGL canvas can punch a black rectangle in the canvas
 // under software GL. It is the compositor, not the page (designer/references.md #29).
 
 import { chromium } from 'playwright';
-import { mkdir, writeFile, stat } from 'node:fs/promises';
-import { resolve, join } from 'node:path';
+import { mkdir, writeFile, stat, readFile, readdir, rm } from 'node:fs/promises';
+import { resolve, join, dirname, relative } from 'node:path';
+import { createHash } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 
 const args = process.argv.slice(2);
@@ -30,10 +37,38 @@ const settle = Number(opt('settle', 700));
 const max = Number(opt('max', 40));
 
 let target = args[0];
+let build = null;
 if (!/^https?:\/\//.test(target)) {
   let p = resolve(target);
   if ((await stat(p)).isDirectory()) p = join(p, 'index.html');
   target = pathToFileURL(p).href;
+  build = await fingerprint(dirname(p));
+}
+
+// path + size + mtime of every file the page could load (its own folder, minus screenshots)
+async function fingerprint(dir) {
+  const h = createHash('sha256');
+  const walk = async (d) => {
+    for (const e of (await readdir(d, { withFileTypes: true })).sort((a, b) => a.name.localeCompare(b.name))) {
+      if (e.name === 'shots' || e.name === 'node_modules') continue;
+      const f = join(d, e.name);
+      const st = await stat(f).catch(() => null);
+      if (!st) continue;
+      if (st.isDirectory()) await walk(f);
+      else h.update(`${relative(dir, f)}\t${st.size}\t${st.mtimeMs}\n`);
+    }
+  };
+  await walk(dir);
+  return h.digest('hex').slice(0, 16);
+}
+
+if (build && !args.includes('--force')) {
+  const prev = JSON.parse(await readFile(join(out, 'shoot.json'), 'utf8').catch(() => 'null'));
+  const sheets = await Promise.all(['desktop-sheet.png', 'mobile-sheet.png'].map((f) => stat(join(out, f)).then(() => true, () => false)));
+  if (prev?.build === build && prev?.target === target && sheets.every(Boolean)) {
+    console.log(`unchanged build ${build}: reusing ${out} (shot ${prev.at}); --force to shoot again`);
+    process.exit(0);
+  }
 }
 
 const WIDTHS = [
@@ -42,10 +77,11 @@ const WIDTHS = [
 ];
 
 await mkdir(out, { recursive: true });
+for (const f of await readdir(out)) if (/\.(png|html)$/.test(f)) await rm(join(out, f));
 const browser = await chromium.launch({
   args: ['--use-gl=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'],
 });
-const report = { target, at: new Date().toISOString(), widths: {} };
+const report = { target, build, at: new Date().toISOString(), widths: {} };
 
 for (const w of WIDTHS) {
   const ctx = await browser.newContext(w);
