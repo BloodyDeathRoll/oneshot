@@ -20,7 +20,7 @@ const json = JSON.stringify(data).replace(/<\/script/gi, '<\\/script').replace(/
 const fontUri = 'data:font/woff2;base64,' + font.toString('base64');
 
 if (!src.includes('__FONT__') || !src.includes('<!--__DATA__-->')) throw new Error('placeholders missing in src/index.html');
-const out = src.replace('__FONT__', fontUri).replace('<!--__DATA__-->', json);
+const out = src.replace('__FONT__', fontUri).replace('<!--__DATA__-->', () => json);
 
 await rm(join(here, 'dist/img'), { recursive: true, force: true });
 await mkdir(join(here, 'dist/img'), { recursive: true });

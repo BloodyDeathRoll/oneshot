@@ -24,7 +24,7 @@ const json = JSON.stringify(data).replace(/<\//g, '<\\/');
 
 let out = src;
 if (!out.includes('/*FONT*/') || !out.includes('<!--DATA-->')) throw new Error('src/index.html lost a placeholder');
-out = out.replace('/*FONT*/', fontFace).replace('<!--DATA-->', json);
+out = out.replace('/*FONT*/', fontFace).replace('<!--DATA-->', () => json);
 
 await mkdir(join(here, 'dist'), { recursive: true });
 await writeFile(join(here, 'dist', 'index.html'), out);

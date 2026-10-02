@@ -26,6 +26,6 @@ if (!dataOnly) {
   const marker = '<script id="data" type="application/json"></script>';
   if (!tpl.includes(marker)) { console.error(`template lacks ${marker}`); process.exit(2); }
   const safe = JSON.stringify(data).replace(/<\//g, '<\\/');
-  writeFileSync(join(OUT, 'index.html'), tpl.replace(marker, `<script id="data" type="application/json">${safe}</script>`));
+  writeFileSync(join(OUT, 'index.html'), tpl.replace(marker, () => `<script id="data" type="application/json">${safe}</script>`));
   console.log('dashboard/index.html written');
 }

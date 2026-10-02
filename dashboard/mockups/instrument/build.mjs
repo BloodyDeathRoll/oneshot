@@ -27,7 +27,7 @@ const safe = JSON.stringify(JSON.parse(data)).replace(/</g, '\\u003c').replace(/
 const dataTag = `<script id="data" type="application/json">${safe}</script>`;
 
 if (!src.includes('<!--FONT-->') || !src.includes('<!--DATA-->')) throw new Error('src/index.html is missing <!--FONT--> or <!--DATA-->');
-const out = src.replace('<!--FONT-->', fontCss).replace('<!--DATA-->', dataTag);
+const out = src.replace('<!--FONT-->', fontCss).replace('<!--DATA-->', () => dataTag);
 await mkdir(join(here, 'dist'), { recursive: true });
 await writeFile(join(here, 'dist/index.html'), out);
 
