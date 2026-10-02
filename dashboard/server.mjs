@@ -8,7 +8,10 @@
 //      after checking the business is still in the state the page saw (a stale page is rejected).
 // It holds no Claude credentials, runs no agent, and can write only the line shapes in DECISIONS.
 //
-//   node dashboard/server.mjs [--port 8970] [--host 127.0.0.1] [--root dashboard/mockups/soft-cards/dist] [--ledger ledger.jsonl]
+//   node dashboard/server.mjs [--port 8970] [--host 127.0.0.1] [--root dashboard/mockups/soft-cards/dist] [--ledger ledger.jsonl] [--operator shahar]
+//
+// The operator running the server (team.json; default `tools/team.mjs whoami`) is the one whose
+// decisions it records: every line it appends carries `operator` (docs/team.md).
 //
 // Local by default. For a phone: run it behind Caddy + basic auth on the CMS box, or a Cloudflare
 // Tunnel to this machine; never expose it bare.
@@ -18,6 +21,7 @@ import { readFileSync, existsSync, appendFileSync, watch, statSync, createReadSt
 import { join, dirname, resolve, extname, normalize, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildData } from './data.mjs';
+import { whoami, team } from '../tools/team.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const arg = (k, d) => { const i = process.argv.indexOf(`--${k}`); return i > 0 ? process.argv[i + 1] : d; };
@@ -25,7 +29,10 @@ const PORT = Number(arg('port', 8970));
 const HOST = arg('host', '127.0.0.1');
 const DIST = resolve(ROOT, arg('root', 'dashboard/mockups/soft-cards/dist'));
 const LEDGER = resolve(ROOT, arg('ledger', 'ledger.jsonl'));
-const HUMAN = 'Shahar';
+let OPERATOR;
+try { OPERATOR = arg('operator', null) ?? whoami(); if (!team()[OPERATOR]) throw new Error(`${OPERATOR} is not in team.json`); }
+catch (e) { console.error(`dashboard server: ${e.message}`); process.exit(2); }
+const HUMAN = team()[OPERATOR].name;
 
 // Repo files the page may read (sheets to pick from, pitch drafts, proposals) — prefixes only, read-only.
 const FILE_PREFIXES = ['sites/', 'proposals/', 'reports/', 'dashboard/mockups/', 'agents/designer/gold/shots/'];
@@ -102,7 +109,7 @@ function decide(body) {
     body = { ...body, file };
   }
   const { to_state, note } = spec.line({ ...body, reason });
-  const line = { ts: new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'), run_id: body.run_id, slug, agent: 'human', agent_version: null, from_state, to_state, note };
+  const line = { ts: new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'), run_id: body.run_id, slug, agent: 'human', agent_version: null, from_state, to_state, note, operator: OPERATOR };
   appendFileSync(LEDGER, JSON.stringify(line) + '\n');
   return { status: 201, line };
 }
@@ -114,7 +121,7 @@ function notify(what) {
   clearTimeout(timer);
   timer = setTimeout(() => { for (const res of clients) res.write(`event: data\ndata: ${JSON.stringify({ changed: what, at: new Date().toISOString() })}\n\n`); }, 300);
 }
-for (const rel of ['ledger.jsonl', 'run.yaml', 'proposals', 'sites', 'expenses.jsonl']) {
+for (const rel of ['ledger.jsonl', 'activity.jsonl', 'run.yaml', 'proposals', 'sites', 'expenses.jsonl', 'media']) {
   const abs = join(ROOT, rel);
   if (!existsSync(abs)) continue;
   try { watch(abs, { recursive: statSync(abs).isDirectory() }, (_e, f) => notify(f ? `${rel}/${f}` : rel)); } catch { /* recursive watch unsupported: ledger still watched */ }
@@ -134,7 +141,7 @@ function handle(req, res) {
   const url = new URL(req.url, `http://${req.headers.host}`);
   const path = decodeURIComponent(url.pathname);
   if (req.method === 'GET' && (path === '/' || path === '/index.html')) return serveFile(res, join(DIST, 'index.html'));
-  if (req.method === 'GET' && path === '/data.json') return send(res, 200, buildData({ ledgerPath: LEDGER }));
+  if (req.method === 'GET' && path === '/data.json') return send(res, 200, buildData({ ledgerPath: LEDGER, operator: OPERATOR }));
   if (req.method === 'GET' && path === '/events') {
     res.writeHead(200, { 'content-type': 'text/event-stream', 'cache-control': 'no-store', connection: 'keep-alive' });
     res.write(`event: hello\ndata: ${JSON.stringify({ at: new Date().toISOString() })}\n\n`);
@@ -146,7 +153,7 @@ function handle(req, res) {
     if (!abs || !FILE_PREFIXES.some((p) => abs.startsWith(join(ROOT, p)))) return send(res, 403, { error: 'not a readable prefix' });
     return serveFile(res, abs);
   }
-  if (req.method === 'GET' && path === '/gates') return send(res, 200, { gates: buildData({ ledgerPath: LEDGER }).gates, decisions: Object.fromEntries(Object.entries(DECISIONS).map(([k, v]) => [k, { from: v.from, choices: v.choices }])) });
+  if (req.method === 'GET' && path === '/gates') return send(res, 200, { gates: buildData({ ledgerPath: LEDGER, operator: OPERATOR }).gates, decisions: Object.fromEntries(Object.entries(DECISIONS).map(([k, v]) => [k, { from: v.from, choices: v.choices }])) });
   if (req.method === 'POST' && path === '/decide') {
     // A page on another origin can send text/plain or a form without a preflight; JSON it cannot.
     if (!/^application\/json\b/i.test(req.headers['content-type'] ?? '')) return send(res, 415, { error: 'content-type must be application/json' });

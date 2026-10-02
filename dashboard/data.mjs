@@ -12,6 +12,9 @@
 import { readFileSync, existsSync, writeFileSync, mkdirSync, readdirSync, statSync } from 'node:fs';
 import { join, dirname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
+import { readActivity, assignments as toAssignments, team as readTeam, operatorFor, whoami } from '../tools/team.mjs';
+import { status as mediaStatus } from '../tools/media.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'dashboard');
@@ -135,6 +138,27 @@ function readShots(slug) {
 }
 
 // agents/*/CHANGELOG.md: highest semver in the file (the files are not all newest-first) and its line.
+// ---- operators (docs/team.md) -------------------------------------------------------------------
+// Ledger lines before the operator field existed are Shahar's: he ran every session until 2026-10-02.
+const opOfLine = (l) => l.operator ?? (l.ts < '2026-10-02' ? 'shahar' : null);
+
+// Commits that touched one business (sites/, dossier/ or notes/<slug>), newest first. A commit that
+// touched more than three businesses is project-wide housekeeping, not work on any one of them.
+function readCommits(ops) {
+  let out = '';
+  try { out = execFileSync('git', ['log', '-n', '800', '--format=%x1e%h%x09%aI%x09%ae%x09%an%x09%s', '--name-only', '--', 'sites', 'dossier', 'notes'], { cwd: ROOT, encoding: 'utf8', maxBuffer: 256e6 }); } catch { return {}; }
+  const bySlug = {};
+  for (const rec of out.split('\x1e').filter((r) => r.trim())) {
+    const [head, ...files] = rec.split('\n').filter(Boolean);
+    const [ref, ts, email, name, subject] = head.split('\t');
+    const slugs = new Set(files.map((f) => f.match(/^(?:sites|dossier|notes)\/([^/.]+)/)?.[1]).filter((s) => s && s !== 'README'));
+    if (slugs.size > 3) continue;
+    const ev = { ts: new Date(ts).toISOString().replace(/\.\d+Z$/, 'Z'), operator: operatorFor({ email, name }, ops) ?? name, kind: 'commit', note: subject, ref };
+    for (const s of slugs) (bySlug[s] ??= []).push(ev);
+  }
+  return bySlug;
+}
+
 function readChangelogs() {
   const out = {};
   for (const name of readdirSync(join(ROOT, 'agents'), { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name)) {
@@ -177,8 +201,16 @@ function readProposals(proposalDecisions = []) {
 }
 
 // ---- build ------------------------------------------------------------------------------------
-export function buildData({ ledgerPath = 'ledger.jsonl' } = {}) {
+export function buildData({ ledgerPath = 'ledger.jsonl', operator = null } = {}) {
   const ledger = readJsonl(ledgerPath);
+  const ops = readTeam();
+  let viewer = operator;
+  if (!viewer) { try { viewer = whoami(); } catch { viewer = Object.keys(ops)[0]; } }
+  const viewerName = ops[viewer]?.name ?? viewer;
+  const activity = readActivity();
+  const allAssignments = toAssignments(activity);
+  const commitsBySlug = readCommits(ops);
+  const media = mediaStatus();
   const run = readRun();
   const businessLines = ledger.filter((l) => l.slug && l.slug !== '-' && l.slug !== 'dashboard');
   const corrections = ledger.filter((l) => (!l.slug || l.slug === '-') && !/^proposal:/.test(l.to_state));
@@ -249,7 +281,15 @@ export function buildData({ ledgerPath = 'ledger.jsonl' } = {}) {
     for (const h of hist) { const n = stationOf(h.to_state); if (n && !stationDates[n]) stationDates[n] = h.ts; }
     const out = ['dropped', 'not_shortlisted', 'not_approved', 'superseded'].includes(group);
     const nextKey = NEXT_STEP[last.to_state] ? last.to_state : baseState(last.to_state);
-    const [nextStep, owner] = out ? ['—', null] : (NEXT_STEP[nextKey] ?? [null, null]);
+    const [nextStep, ownerRaw] = out ? ['—', null] : (NEXT_STEP[nextKey] ?? [null, null]);
+    const owner = ownerRaw === HUMAN ? viewerName : ownerRaw; // a gate is either operator's: shown as "you"
+    // One timeline per business: ledger transitions, operators' work and assignments, commits.
+    const timeline = [
+      ...hist.map((h) => ({ ts: h.ts, operator: opOfLine(h), kind: 'ledger', agent: h.agent, note: `${h.from_state ?? '—'} → ${h.to_state}${h.note ? ': ' + h.note : ''}` })),
+      ...(own ? activity.filter((a) => a.slug === slug).map((a) => ({ ts: a.ts, operator: a.operator, kind: a.kind, note: a.kind === 'assign' ? `assigned to ${ops[a.to]?.name ?? a.to}: ${a.task}` : a.note, files: a.files ?? null, id: a.id ?? null })) : []),
+      ...(own ? commitsBySlug[slug] ?? [] : []),
+    ].sort((x, y) => y.ts.localeCompare(x.ts));
+    const lastWorked = timeline.find((e) => e.operator && (e.kind !== 'ledger' || e.agent === 'human' || e.ts >= '2026-10-02')) ?? timeline.find((e) => e.operator) ?? null;
     const gate = (group === 'gate' || group === 'delivered') ? (GATES[last.to_state] ?? null) : null;
     const overrides = hist.filter((h) => h.agent === 'human' && OVERRIDE_RE.test(h.note ?? '')).map((h) => ({ ts: h.ts, note: h.note }));
 
@@ -281,6 +321,10 @@ export function buildData({ ledgerPath = 'ledger.jsonl' } = {}) {
       preview_url: deploy?.url ?? previewFromLedger ?? null,
       deploy, cms_verified: deploy?.verified ?? false,
       pitch, shots,
+      last_worked: lastWorked ? { operator: lastWorked.operator, name: ops[lastWorked.operator]?.name ?? lastWorked.operator, ts: lastWorked.ts, kind: lastWorked.kind, note: lastWorked.note } : null,
+      assignments: own ? allAssignments.filter((a) => a.slug === slug) : [],
+      timeline: timeline.slice(0, 80),
+      media: own ? media[slug] ?? null : null,
       pitched_at: pitchedLine?.ts ?? null,
       outcome: outcomeLine ? { state: outcomeLine.to_state.slice(8), ts: outcomeLine.ts, note: outcomeLine.note } : null,
       reached: [...reached],
@@ -398,7 +442,19 @@ export function buildData({ ledgerPath = 'ledger.jsonl' } = {}) {
   });
 
   return {
-    generated_at: new Date().toISOString(), human: HUMAN,
+    generated_at: new Date().toISOString(), human: viewerName,
+    team: {
+      viewer, operators: Object.fromEntries(Object.entries(ops).map(([id, o]) => [id, o.name])),
+      open_assignments: allAssignments.filter((a) => a.open).map((a) => ({ ...a, to_name: ops[a.to]?.name ?? a.to, by_name: ops[a.by]?.name ?? a.by, business: businesses.find((b) => b.slug === a.slug)?.name ?? a.slug })),
+      // per operator: their latest piece of work, on which business
+      last_by_operator: Object.fromEntries(Object.keys(ops).map((id) => {
+        const e = businesses.flatMap((b) => b.timeline.filter((t) => t.operator === id && t.kind !== 'ledger').map((t) => ({ ...t, slug: b.slug, business: b.name })))
+          .concat(activity.filter((a) => a.operator === id && a.slug === '-').map((a) => ({ ...a, business: 'Project' })))
+          .sort((x, y) => y.ts.localeCompare(x.ts))[0];
+        return [id, e ? { ts: e.ts, slug: e.slug ?? '-', business: e.business, kind: e.kind, note: e.note } : null];
+      })),
+      media: Object.fromEntries(Object.entries(media).filter(([g]) => g === '_shared')),
+    },
     pipeline_order: ORDER, gate_states: GATES, stations: STATIONS, next_step: NEXT_STEP,
     run, runs, kpis: cur, kpis_by_run, deltas, funnel: cur.funnel, series,
     gates, businesses, decisions, recent_activity, leads, corrections, proposals, agents, expenses,

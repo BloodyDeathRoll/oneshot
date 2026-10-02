@@ -9,11 +9,15 @@ Sources: **L** = `ledger.jsonl` (docs/ledger.md), **R** = `run.yaml`, **D** = `d
 **P** = `proposals/<run>/*.md`, **E** = `expenses.jsonl` (docs/expenses.md; absent today),
 **K** = constants in `data.mjs` (pipeline order, stations, next-step table — from PLAN.md §4 and concepts.md).
 
+Sources added 2026-10-02: **A** = `activity.jsonl`, **G** = `git log`, **M** = `media/*.tsv` + the disk.
+
 ## Top level
 
 | Field | Source | Derivation |
 |---|---|---|
 | `generated_at` | clock | ISO time the file was written |
+| `human` | team.json | name of the operator viewing (the server's `--operator`, else `tools/team.mjs whoami`); gate owners show as this name |
+| `team` | team.json, A | `viewer`, `operators{id: name}`, `open_assignments[]`, `last_by_operator{id: newest non-ledger event}`, `media` for `_shared` |
 | `human` | K | `"Shahar"` |
 | `pipeline_order` | K | PLAN.md §4 state order |
 | `gate_states` | K | `shortlisted / mocked / packaged` → gate text |
@@ -72,6 +76,10 @@ Sources: **L** = `ledger.jsonl` (docs/ledger.md), **R** = `run.yaml`, **D** = `d
 | `outcome` | L | `{state, ts, note}` of the last `outcome:*` line — null everywhere today |
 | `reached[]` | L | states ever reached (base names) |
 | `history[]` | L | every line: `ts, from, to, agent, v, note, hosting_mode` |
+| `last_worked` | L, A, G | `{operator, name, ts, kind, note}`: newest of the business's human ledger lines (and every line from 2026-10-02, which carry `operator`), its `activity.jsonl` lines, and its commits (docs/team.md). Ledger lines before 2026-10-02 are Shahar's |
+| `assignments[]` | A | every `assign` line for the slug with `open`, `done_ts`, `done_by`, `done_note` (`tools/team.mjs`) |
+| `timeline[]` | L, A, G | newest first, up to 80: ledger lines, activity lines and commits touching `sites/<slug>`, `dossier/<slug>` or `notes/<slug>.md` (a commit touching more than three businesses is skipped as housekeeping) |
+| `media` | M | `media/<slug>.tsv` against this disk: `files, bytes, present, missing, no_recipe, missing_no_recipe` (`tools/media.mjs status`) |
 
 ## `agents{name}`
 

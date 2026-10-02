@@ -139,8 +139,7 @@ export function status(only) {
     const rows = readManifest(g);
     const missing = rows.filter((r) => !existsSync(join(ROOT, r.path)));
     out[g] = { files: rows.length, bytes: rows.reduce((s, r) => s + r.bytes, 0), present: rows.length - missing.length, missing: missing.length,
-      no_recipe: rows.filter((r) => r.source === 'local').length, missing_no_recipe: missing.filter((r) => r.source === 'local').length,
-      in_store: rows.filter((r) => existsSync(join(STORE, r.path))).length };
+      no_recipe: rows.filter((r) => r.source === 'local').length, missing_no_recipe: missing.filter((r) => r.source === 'local').length };
   }
   return out;
 }
