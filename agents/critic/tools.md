@@ -46,4 +46,4 @@ It assumes the booking block has `id="book"` and drawers use `data-open-drawer` 
 
 ## `tools/funnel.mjs` — taps to book on the built site (proposal 007)
 
-`node tools/funnel.mjs <served site url> --depth 3 --out reports/<run-id>/funnel/<slug>-r<n>` in full mode. Compare `clicks_to_book` and `primary_action.class` with `dossier/<slug>/audit.json` `recommended.clicks_to_book` / `recommended.primary_action` (rubric 0.2.0 dimension 3 and hard fails). Action classes and the counting rule are in `agents/auditor/tools.md`.
+`node tools/funnel.mjs <served site url> --depth 3 --out reports/<run-id>/funnel/<slug>-r<n>` in full mode. Compare `clicks_to_book` and `primary_action.class` with `dossier/<slug>/audit.json` `recommended.clicks_to_book` / `recommended.primary_action` (rubric 0.2.0 dimension 3 and hard fails). With `recommended.booking_flow`, compare `hero_action.class` / `hero_action.clicks_to_flow` instead (rubric 0.3.1). Action classes and the counting rule are in `agents/auditor/tools.md`.

@@ -6,6 +6,10 @@
 //
 // 0.1.1: English locale (sites and engines otherwise answer in the server's language); refuses
 // marketplace pages (Booking, Agoda, Airbnb, Google…) — their nav is not the business's funnel.
+// 0.2.0: own booking pages (Shahar, 2026-10-04). A form that submits to an engine is an `engine`
+// action (a booking flow), and `hero_action` follows the first screen's main CTA to the page it
+// opens, so a WhatsApp link in the footer no longer counts as the primary action of a site whose
+// hero leads to a stepped booking flow. `clicks_to_book` / `primary_action` keep their meaning.
 //
 // Why: the scout and the auditor (proposal 007) both need "clicks to book" as a number a human can
 // verify, not an opinion. Every action found carries its page URL, its label, its position and
@@ -140,7 +144,7 @@ while (queue.length && pages.length < maxPages) {
         });
       }
       const forms = [...document.querySelectorAll('form')].filter(vis).map((f) => ({
-        action: f.getAttribute('action') || null,
+        action: f.getAttribute('action') ? f.action : null,
         dated: !!f.querySelector('input[type=date], input[name*=date i], input[placeholder*=date i], input[name*=checkin i], input[name*=check-in i], input[name*=arrival i]'),
         fields: f.querySelectorAll('input:not([type=hidden]), select, textarea').length,
         top: Math.round(f.getBoundingClientRect().top + scrollY),
@@ -155,7 +159,10 @@ while (queue.length && pages.length < maxPages) {
       if (cls) rec.actions.push({ class: cls, terminal: TERMINAL.has(cls), href: it.href, label: it.text, tag: it.tag, top: it.top, height: it.height, width: it.width, above_fold: it.above_fold, tap_target_ok: it.height >= 44 && it.width >= 44 });
     }
     for (const f of raw.forms) {
-      rec.actions.push({ class: f.dated ? 'dated_form' : 'form', terminal: f.dated, href: f.action, label: `form (${f.fields} fields)`, tag: 'form', top: f.top, above_fold: f.above_fold });
+      // A form that submits to an engine on another host is a booking flow: the hand-off is its submit.
+      const flow = !!f.action && host(f.action) !== startHost && ENGINES.some((e) => f.action.toLowerCase().includes(e));
+      const cls = flow ? 'engine' : f.dated ? 'dated_form' : 'form';
+      rec.actions.push({ class: cls, terminal: flow || f.dated, flow, href: f.action, label: `${flow ? 'booking flow ' : ''}form (${f.fields} fields)`, tag: 'form', top: f.top, above_fold: f.above_fold });
     }
 
     const internal = [];
@@ -192,14 +199,26 @@ for (const p of pages) {
   const t = p.actions.find((a) => a.terminal);
   if (t && (clicksToBook === null || p.depth < clicksToBook)) { clicksToBook = p.depth; firstTerminal = { page: p.url, ...t }; }
 }
+// hero_action: the first screen's top-most booking action, followed one tap when it is a link that
+// stays on the site (e.g. "Book package now" → /book/). clicks_to_flow = taps to the page holding
+// the terminal action it leads to; the steps inside a booking flow are counted by the critic's walk.
+let heroAction = null;
+const heroCta = (landing?.actions ?? []).filter((a) => a.above_fold && (a.terminal || a.class === 'book_link')).sort((a, b) => a.top - b.top)[0];
+if (heroCta?.terminal) heroAction = { label: heroCta.label, class: heroCta.class, href: heroCta.href, flow_page: landing.url, clicks_to_flow: 0 };
+else if (heroCta) {
+  const dest = pages.find((p) => p.depth === 1 && norm(p.url) === norm(heroCta.href));
+  const t = dest?.actions.find((a) => a.flow) ?? dest?.actions.find((a) => a.terminal);
+  heroAction = { label: heroCta.label, class: t?.class ?? null, href: t?.href ?? heroCta.href, flow_page: dest?.url ?? null, clicks_to_flow: t ? 1 : null };
+}
 // Tapping an action on the landing page is itself one tap: clicks_to_book = depth + 1.
 const summary = {
-  tool: 'funnel.mjs', version: '0.1.2', measured_at: new Date().toISOString(),
+  tool: 'funnel.mjs', version: '0.2.0', measured_at: new Date().toISOString(),
   start_url: start, whitelabel_engine: whitelabelEngine, final_landing_url: landing?.final_url ?? null, landing_status: landing?.status ?? null,
   landing_error: landing?.error ?? null,
   viewport: VIEWPORT, viewport_meta: landing?.viewport_meta ?? false, landing_text_chars: landing?.text_chars ?? 0,
   clicks_to_book: clicksToBook === null ? null : clicksToBook + 1,
   primary_action: firstTerminal ? { class: firstTerminal.class, href: firstTerminal.href, label: firstTerminal.label, page: firstTerminal.page } : null,
+  hero_action: heroAction,
   cta_above_fold: !!landing?.actions.some((a) => (a.terminal || a.class === 'book_link') && a.above_fold),
   terminal_above_fold: !!landing?.actions.some((a) => a.terminal && a.above_fold),
   any_action_above_fold: !!landing?.actions.some((a) => a.above_fold),
@@ -210,6 +229,6 @@ const summary = {
   pages,
 };
 await writeFile(join(out, 'funnel.json'), JSON.stringify(summary, null, 2));
-const line = `${summary.final_landing_url ?? start} — status ${summary.landing_status}, clicks_to_book ${summary.clicks_to_book ?? 'none found'}, primary ${summary.primary_action?.class ?? '-'} (${summary.primary_action?.label ?? '-'}), CTA above fold ${summary.cta_above_fold}, pages ${summary.pages_crawled}, broken ${summary.pages_with_errors.length}`;
+const line = `${summary.final_landing_url ?? start} — status ${summary.landing_status}, clicks_to_book ${summary.clicks_to_book ?? 'none found'}, primary ${summary.primary_action?.class ?? '-'} (${summary.primary_action?.label ?? '-'}), hero ${summary.hero_action?.class ?? '-'} (${summary.hero_action?.label ?? '-'}, ${summary.hero_action?.clicks_to_flow ?? '-'} tap to flow), CTA above fold ${summary.cta_above_fold}, pages ${summary.pages_crawled}, broken ${summary.pages_with_errors.length}`;
 console.log(line);
 console.log(`→ ${join(out, 'funnel.json')}`);
