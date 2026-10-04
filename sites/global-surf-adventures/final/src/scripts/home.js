@@ -79,8 +79,9 @@ function igDraw(){ dots.innerHTML = ''; var n = igPages(); for (var k = 0; k < n
 function igMark(){ var n = dots.children.length, max = row.scrollWidth - row.clientWidth, k = max > 0 ? Math.round(row.scrollLeft / max * (n - 1)) : 0; [].forEach.call(dots.children, function(b, j){ b.setAttribute('aria-current', j === k); }); }
 row.addEventListener('scroll', igMark, {passive: true}); addEventListener('resize', igDraw); igDraw();
 
-/* Rosa (playbook §4) [postcard]: one lazy request to the spot JSON when the block nears the viewport.
-   Data older than 24 h, or no answer: the headline and the widget give way to the plain link. */
+/* Rosa (playbook §4 exception) [postcard], live at 4g: one request to the spot's JSON when the block nears the
+   viewport (never on first load), then Rosa's widget beside it. Data older than 24 h, or no answer: the headline
+   and the widget give way to the plain link. No forecast value is in the page before that answer. */
 var box = document.querySelector('[data-rosa]'), now = document.getElementById('rosa-now');
 if (box && now && 'IntersectionObserver' in window) {
   var DAY = 864e5, fresh = function(iso){ return Date.now() - new Date(iso).getTime() <= DAY; };
@@ -110,7 +111,6 @@ if (box && now && 'IntersectionObserver' in window) {
     $('#rosa-time').textContent = t.toLocaleString('en-GB', {weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Colombo'}).replace(',', '').replace('Sept', 'Sep');
   };
   var go = function(){
-    if (fresh(now.dataset.generated)) { ok(); widget(); return; }
     var c = new AbortController(); setTimeout(function(){ c.abort(); }, 8000);
     fetch(now.dataset.json, {signal: c.signal}).then(function(r){ if (!r.ok) throw 0; return r.json(); })
       .then(function(j){ if (!j.current || !fresh(j.generated_at)) throw 0; draw(j); ok(); widget(); })
