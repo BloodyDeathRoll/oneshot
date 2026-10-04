@@ -11,7 +11,7 @@
 //   node tools/run.mjs           # this session's run: "<run_id>\truns/<run_id>.yaml"
 //   node tools/run.mjs list      # every run: id, operator, status
 
-import { readFileSync, readdirSync, existsSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync, realpathSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { whoami } from './team.mjs';
@@ -50,7 +50,8 @@ export function currentRun({ operator } = {}) {
     : `${op} has no active run (active: ${active}): create ${RUNS_DIR}/<run_id>.yaml with operator: ${op}, or set ONESHOT_RUN=<run_id>`);
 }
 
-if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
+// realpath: the module URL is the real path, argv[1] may run through a symlink (macOS /var → /private/var)
+if (process.argv[1] && fileURLToPath(import.meta.url) === realpathSync(process.argv[1])) {
   try {
     if (process.argv[2] === 'list') {
       for (const r of listRuns()) console.log(`${r.run_id}\t${r.operator ?? '-'}\t${r.status}`);

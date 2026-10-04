@@ -2,7 +2,7 @@
 // (tools/run.mjs), the run layer of the prompt (tools/prompt.mjs), and the merge with origin/main
 // (tools/origin.mjs).
 //
-//   node --test tools/test/
+//   npm test
 //
 // run.mjs and origin.mjs resolve the repo from their own location, so each test copies them into a
 // throwaway git repo (with a bare "origin") and imports the copies from there.
