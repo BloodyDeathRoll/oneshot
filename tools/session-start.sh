@@ -20,5 +20,7 @@ fi
 changes=$(git status --short)
 [ -n "$changes" ] && printf 'uncommitted:\n%s\n' "$changes"
 node tools/team.mjs whoami 2>&1
+echo "run: $(node tools/run.mjs 2>&1)"
+node tools/run.mjs list 2>&1 | awk -F'\t' '$3=="active"{print "  active: "$1" ("$2")"}'
 node tools/team.mjs status 2>&1
 exit 0

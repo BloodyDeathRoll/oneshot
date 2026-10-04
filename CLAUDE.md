@@ -8,7 +8,7 @@ Read `PLAN.md` fully before doing anything. It is the source of truth for decisi
 2. **Ledger.** Every business state change is appended to `ledger.jsonl` (schema: `docs/ledger.md`). Append only — never rewrite or delete lines.
 3. **Two-layer prompts.** Each agent's prompt is `base.md` (Claude writes) + `custom.md` (Shahar writes). Never edit any `custom.md`; propose changes to it as a separate proposal under `proposals/<run-id>/`, flagged as a custom.md proposal. Runtime prompt = `playbook.md` + `base.md` + `custom.md` + `references.md`.
 4. **Small commits.** One commit per step, with a clear message.
-5. **Two operators** (`docs/team.md`). Know who you work for: `node tools/team.mjs whoami`. Pull `main` before starting. Work on a branch and open a PR; never push to `main`, never merge without the human. Every ledger line carries `operator`. Log work that is not a state change with `tools/team.mjs log`, claim work before starting it with `tools/team.mjs assign`, close it with `done`, and rewrite `notes/<slug>.md` before the session ends. Check the dashboard / `tools/team.mjs status <slug>` first: never redo what the other operator already did.
+5. **Two operators** (`docs/team.md`). Know who you work for: `node tools/team.mjs whoami`. Pull `main` before starting. Work on a branch and open a PR; never push to `main`, never merge without the human. Every ledger line carries `operator`. Log work that is not a state change with `tools/team.mjs log`, claim work before starting it with `tools/team.mjs assign`, close it with `done`, and rewrite `notes/<slug>.md` before the session ends. Check the dashboard / `tools/team.mjs status <slug>` first: never redo what the other operator already did. **Parallel runs:** each operator runs their own run (`runs/<run_id>.yaml`, `operator:` = them); a new run is a new file, never an edit of someone else's run file, and a business belongs to one active run.
 6. **No images or video in git.** They stay on disk and in the local store; `media/<slug>.tsv` lists them. Every new media file is made by a committed recipe with a `# media: <glob>` header. Screenshots are scratch: delete them after each scored round (`tools/clean-shots.mjs`). New clone or worktree: `tools/setup.sh`.
 
 ## Architecture (fixed constraint — final, do not re-litigate)
@@ -20,7 +20,7 @@ Read `PLAN.md` fully before doing anything. It is the source of truth for decisi
 - **Publish flow:** owner saves in Payload → `afterChange` hook → rebuild only that tenant's site → `wrangler deploy` → live in ~1 minute.
 - **Export/handoff:** any client can receive their static build as a zip that runs on any host (GoDaddy included). Optional, not the deliverable.
 - **Commercial default:** "we host it, you edit it, monthly fee". The writer's pitch reflects this.
-- **Hosting modes**, per business, recorded in the ledger and `run.yaml`: `managed` (the default, everything above), `self_hosted_docker` (single-tenant Payload + Postgres + Astro builder + Caddy in one compose stack on the client's VPS; we install, verify, hand over, revoke our access), `static_only` (static build + source zip, no CMS). No split mode.
+- **Hosting modes**, per business, recorded in the ledger and the run file (`runs/<run_id>.yaml`): `managed` (the default, everything above), `self_hosted_docker` (single-tenant Payload + Postgres + Astro builder + Caddy in one compose stack on the client's VPS; we install, verify, hand over, revoke our access), `static_only` (static build + source zip, no CMS). No split mode.
 - **One of everything:** one content schema (`schemas/site-content.md`), one Astro template per site, one Payload config (two profiles, multi-tenant / single-tenant, selected by env var). Hosting mode is a deployer adapter, never a fork of the site or the CMS. Anything that would need a second renderer or a second CMS is out of scope.
 - No PHP flat-file CMS port, no PHP CMS of any kind.
 
@@ -28,10 +28,10 @@ Read `PLAN.md` fully before doing anything. It is the source of truth for decisi
 
 Disk is the memory — no daemon, no DB.
 
-1. Read `run.yaml` for the current `run_id`, budgets and pinned agent versions.
+1. Find this session's run: `node tools/run.mjs` (`ONESHOT_RUN`, else your operator's one active run in `runs/`). If it fails — no active run, or several — stop and ask. Read that `runs/<run_id>.yaml` for the `run_id`, budgets and pinned agent versions. Other active runs belong to the other operator: never advance their businesses.
 2. Read `ledger.jsonl` and keep only lines with that `run_id`. For each `slug`, the **last** line's `to_state` is the business's current state.
 3. Map each state to its next station using PLAN.md §4 (`discovered → scored → shortlisted → approved → harvested → copy_drafted → copy_humanised → copy_passed | copy_failed → concepted → mocked → picked → built → optimised → ai_optimised → critiqued(n) → passed | failed → packaged → pitched → outcome:*`).
 4. If the next transition is a human gate (`shortlisted → approved`, `mocked → picked`, `packaged → pitched`, or merging anything in `proposals/`), stop and ask. Do not infer approval from files on disk.
 5. Otherwise, check that the current state's outputs actually exist on disk (e.g. `harvested` → `dossier/<slug>/dossier.json`). If they are missing or partial, redo that station rather than trusting the ledger line.
 6. Work one business at a time. Append a ledger line as each transition completes — after the output is written, never before.
-7. An empty ledger means nothing has run: start at Scout for the current `run.yaml`.
+7. No ledger line for this `run_id` means nothing has run: start at Scout for this run file.

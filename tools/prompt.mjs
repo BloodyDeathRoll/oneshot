@@ -14,6 +14,7 @@
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { currentRun } from './run.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const wiring = JSON.parse(readFileSync(join(ROOT, 'agents/wiring.json'), 'utf8'));
@@ -26,6 +27,8 @@ export function isStub(text) {
   return body.length === 0;
 }
 
+export const RUN_LAYER = 'run.yaml';
+
 export function layersFor(agent) {
   if (!AGENTS.includes(agent)) throw new Error(`unknown agent "${agent}" (have: ${AGENTS.join(', ')})`);
   const paths = [
@@ -34,6 +37,13 @@ export function layersFor(agent) {
     ...(wiring.shared.byAgent[agent] ?? []),
   ];
   return paths.map((rel) => {
+    // `run.yaml` in wiring.json and in every prompt means this session's run file, runs/<run_id>.yaml
+    // (tools/run.mjs). The layer keeps the name the prompts use and says which file it is.
+    if (rel === RUN_LAYER) {
+      let run;
+      try { run = currentRun(); } catch (e) { return { rel, missing: true, why: e.message }; }
+      return { rel, src: run.file, text: run.text, bytes: Buffer.byteLength(run.text), stub: isStub(run.text) };
+    }
     const abs = join(ROOT, rel);
     if (!existsSync(abs)) return { rel, missing: true };
     const text = readFileSync(abs, 'utf8');
@@ -45,8 +55,8 @@ function manifest(agent) {
   const rows = layersFor(agent);
   const out = [`${agent}  (station ${(wiring.station[agent] ?? ['?']).join(', ')})`];
   for (const l of rows) {
-    out.push(l.missing ? `  MISSING  ${l.rel}`
-      : `  ${l.stub ? 'stub    ' : 'LOADED  '} ${String(l.bytes).padStart(6)} B  ${l.rel}`);
+    out.push(l.missing ? `  MISSING  ${l.rel}${l.why ? ` (${l.why})` : ''}`
+      : `  ${l.stub ? 'stub    ' : 'LOADED  '} ${String(l.bytes).padStart(6)} B  ${l.rel}${l.src ? ` = ${l.src}` : ''}`);
   }
   const loaded = rows.filter((l) => !l.missing && !l.stub);
   out.push(`  -> ${loaded.length} file(s) with content, ${rows.filter((l) => l.stub).length} stub(s), ` +
@@ -58,7 +68,7 @@ function manifest(agent) {
 function prompt(agent) {
   const rows = layersFor(agent);
   const missing = rows.filter((l) => l.missing);
-  if (missing.length) throw new Error(`cannot assemble ${agent}: missing ${missing.map((m) => m.rel).join(', ')}`);
+  if (missing.length) throw new Error(`cannot assemble ${agent}: missing ${missing.map((m) => m.rel + (m.why ? ` (${m.why})` : '')).join(', ')}`);
   const head = [
     `# RUNTIME PROMPT — agent: ${agent}  (station ${(wiring.station[agent] ?? ['?']).join(', ')})`,
     `# Assembled by tools/prompt.mjs from agents/wiring.json at ${new Date().toISOString()}.`,
@@ -67,7 +77,7 @@ function prompt(agent) {
     '',
   ].join('\n');
   const body = rows.map((l) =>
-    `\n\n${'='.repeat(78)}\n=== LAYER: ${l.rel}${l.stub ? '   [stub — no instructions yet]' : ''}\n${'='.repeat(78)}\n\n${l.text.trimEnd()}\n`
+    `\n\n${'='.repeat(78)}\n=== LAYER: ${l.rel}${l.src ? ` (this session's run: ${l.src})` : ''}${l.stub ? '   [stub — no instructions yet]' : ''}\n${'='.repeat(78)}\n\n${l.text.trimEnd()}\n`
   ).join('');
   return head + body;
 }

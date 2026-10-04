@@ -7,7 +7,7 @@
 | Field | Type | Description |
 |---|---|---|
 | `ts` | string | UTC, ISO 8601, when the run finished |
-| `run_id` | string | `run.yaml` `run_id` |
+| `run_id` | string | the session's run (`node tools/run.mjs`) |
 | `slug` | string | business slug, or `-` for a run-wide station (scout) |
 | `station` | string | PLAN.md §4 id: `2`, `3`, `3b`, `4a` … `7`, or `orchestrator` |
 | `agent` | string | agent name, or `human` for gate waits |

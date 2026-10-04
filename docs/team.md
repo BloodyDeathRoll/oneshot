@@ -52,6 +52,28 @@ state, what was just done and why, what is open, decisions the human made that a
 ledger, and anything the next person must not undo. Short. `handoff.md` stays the session-level
 handoff; this is the business-level one.
 
+## Parallel runs
+
+Decided 2026-10-04. Each operator can run their own run at the same time, on their own machine.
+
+- **One file per run:** `runs/<run_id>.yaml` (PLAN.md §3), with `operator:` (who runs it) and
+  `status: active | closed`. Starting a run = adding a file with your operator id, on a branch, by
+  PR. Never repoint or edit the other operator's run file.
+- **A session works on one run:** `node tools/run.mjs` prints it: `ONESHOT_RUN=<run_id>` if set,
+  else your one active run. No active run, or several, and it stops: set `ONESHOT_RUN` or ask.
+  `node tools/run.mjs list` shows every run. `tools/prompt.mjs` loads your run file as the agents'
+  `run.yaml` layer, and `tools/check-wiring.mjs` fails if the session has no run.
+- **One ledger for all runs.** Every line carries `run_id`; `merge=union` keeps both operators'
+  lines. A business belongs to one active run: check the dashboard before adding it to yours.
+- **Shared results on the dashboard.** `dashboard/server.mjs` fetches `origin/main` every minute
+  (`--sync <s>`, `0` = never) and merges main's ledger, activity and run files with this
+  checkout's, so it shows everything either operator has merged plus your own unmerged work. It
+  opens on your run; the run picker lists every run with its operator. A gate decision is checked
+  against the merged ledger, so a gate the other operator already passed and merged is refused.
+  Results reach the other operator only when merged: keep PRs small (one station or gate each).
+- Images and video stay per machine (below), so the other operator's sheets show only after
+  `tools/media.mjs restore`.
+
 ## Git: branches and pull requests, never straight to `main`
 
 - Nobody pushes to `main`. Every piece of work goes on its own branch (`<operator>/<slug>-<what>`,

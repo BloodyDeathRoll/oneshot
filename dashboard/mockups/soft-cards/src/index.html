@@ -550,6 +550,7 @@ function setData(d){D=d;bizMap.clear();for(const b of D.businesses)bizMap.set(b.
 setData(D);
 const bizName=s=>bizMap.get(s)||s||'—';
 const shortName=s=>bizName(s).replace(' Surf Ahangama','').replace(' Surf Hostel','').replace('The ','');
+const opName=id=>(D.team&&D.team.operators[id])||id||'—';
 // a human line is labelled by the operator who made it, not by whoever is viewing
 const humanName=op=>(op&&D.team?.operators[op])||op||D.human;
 const agentLabel=(a,op)=>a==='human'?humanName(op):a;
@@ -599,7 +600,7 @@ const rangeStart=()=>days.at(-rangeN());
 const isCur=()=>state.run===D.run.run_id;
 
 const runSel=$('#run');
-function renderRunSel(){runSel.innerHTML='';for(const r of D.runs)runSel.append(el('option',{value:r.run_id,text:`${runShort(r.run_id)}${r.current?' · current':/^test-/.test(r.run_id)?' · test':' · superseded'}`}));if(!D.runs.find(r=>r.run_id===state.run))state.run=D.run.run_id;runSel.value=state.run}
+function renderRunSel(){runSel.innerHTML='';for(const r of D.runs)runSel.append(el('option',{value:r.run_id,text:`${runShort(r.run_id)}${r.active?` · active · ${r.operator?opName(r.operator):'no operator'}`:r.status==='closed'?' · closed':/^test-/.test(r.run_id)?' · test':' · superseded'}`}));if(!D.runs.find(r=>r.run_id===state.run))state.run=D.run.run_id;runSel.value=state.run}
 renderRunSel();runSel.onchange=()=>{state.run=runSel.value;render()};
 const rangeSel=$('#range');
 for(const r of RANGES)rangeSel.append(el('option',{value:r[0],text:r[1]}));
@@ -608,9 +609,10 @@ rangeSel.onchange=()=>{state.range=rangeSel.value;render()};
 function renderChrome(){
   const f=$('#side-foot');f.innerHTML='';
   f.append(
-    el('div',{html:`<b>${runShort(D.run.run_id)}</b> · ${D.run.mode} mode`}),
-    el('div',{text:D.run.anchors[0].split(',').slice(0,2).join(',')}),
-    el('div',{text:`Data ${tShort(D.generated_at)} UTC${LIVE?' · live':''}`}),
+    el('div',{html:`<b>${runShort(D.run.run_id)}</b> · ${D.run.mode} mode${D.run.operator?` · ${opName(D.run.operator)}`:''}`}),
+    el('div',{text:(D.run.anchors[0]??'').split(',').slice(0,2).join(',')}),
+    el('div',{text:`Data ${tShort(D.generated_at)} UTC${LIVE?' · live':''}${D.sync?.origin_main?` · main ${D.sync.origin_main.slice(0,7)}`:''}`}),
+    D.runs.filter(r=>r.active).length>1?el('div',{text:`${D.runs.filter(r=>r.active).length} active runs: ${D.runs.filter(r=>r.active).map(r=>`${runShort(r.run_id)} (${opName(r.operator)})`).join(', ')}`}):'',
     el('div',{text:`${D.totals.ledger_lines} ledger lines · ${D.totals.human_decisions} decisions`})
   );
   $('#badge-needs').textContent=D.kpis.needs_you;
@@ -1046,7 +1048,6 @@ function renderFeed(){
 }
 
 /* ---------- Team (docs/team.md) ---------- */
-const opName=id=>(D.team&&D.team.operators[id])||id||'—';
 const opDisc=(id,small)=>el(small?'i':'span',{class:(small?'':'disc ')+(id===D.team?.viewer?'human you':''),'aria-hidden':'true',text:(opName(id)||'?')[0].toUpperCase()});
 function renderTeam(){
   const T=D.team;if(!T)return;
