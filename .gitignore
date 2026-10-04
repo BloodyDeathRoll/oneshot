@@ -101,3 +101,5 @@ sites/*/mockups-rejected-*/*/dist/video
 # review screenshots are scratch, deleted after scoring (tools/clean-shots.mjs)
 shots/
 !agents/designer/gold/shots/
+# session handoff is local, per machine
+handoff.md
