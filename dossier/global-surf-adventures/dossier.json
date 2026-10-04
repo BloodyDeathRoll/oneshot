@@ -5711,6 +5711,144 @@
       "files": "assets/video/vid-003e-*",
       "source_url": "https://www.youtube.com/@globalsurf1582",
       "fetched_at": "2026-09-29T18:59:57Z"
+    },
+    {
+      "id": "vid-hero-c",
+      "derived_from": [
+        "vid-009",
+        "vid-010"
+      ],
+      "describe": "hero loop of the picked composite: pool deck (vid-009 5.28–8.04 s) | beginner stands up (vid-010 28.16–29.44 s) | guide cheers, arms up (vid-010 29.44–31.08 s) | surfer on the reef (vid-009 40.36–45.00 s); real speed, hard cuts, no audio, 10.32 s; vid-010 shots cropped at x 192 (badge) with a mild eq lift",
+      "shows": "the lodge pool deck under palms in the sun, a beginner standing up on a golden-hour wave as the guide cheers, a surfer on the reef",
+      "recipe": "sites/global-surf-adventures/mockups/picked/src/make-hero.sh (mockup renditions); sites/global-surf-adventures/final/scripts/make-media.sh (the site's upload, gs-hero-loop.mp4)",
+      "used_as": "heroVideo + heroVideoPoster (final site seed)",
+      "files": [
+        {
+          "file": "assets/mockups/picked/video/hero-d1728.mp4",
+          "bytes": 3626625,
+          "sha256": "b5374eb164efa7fb579454b6d6d8409a2458ce70bd56e1715a6852302793f2f5"
+        },
+        {
+          "file": "assets/mockups/picked/video/hero-d1728.webm",
+          "bytes": 3408957,
+          "sha256": "08a9fc31594f77f210ab7c396962ffe7334a7a0f8e970ce1d311324c2c9a976a"
+        },
+        {
+          "file": "assets/mockups/picked/video/hero-m608.mp4",
+          "bytes": 1951328,
+          "sha256": "e0e7d0b31b506055c002473fd8638f8b1bdc34b75fb283104dd94238c1c571c2"
+        },
+        {
+          "file": "assets/mockups/picked/video/hero-m608.webm",
+          "bytes": 1943360,
+          "sha256": "f329cacff7bf14f9660a91d9490315722dd885f7935ed64a0e7ee400531bcbd9"
+        },
+        {
+          "file": "assets/mockups/picked/video/hero-poster-d.jpg",
+          "bytes": 137481,
+          "sha256": "69154d56e419cb60c233c9ef24f758e4e13583101c0f11d78e91ce8a43ccbaa1"
+        },
+        {
+          "file": "assets/mockups/picked/video/hero-poster-m.jpg",
+          "bytes": 60042,
+          "sha256": "70131231d4eb645774adab363712fe2f69a1a7c0781ee18b4bce0ebbcbef1117"
+        }
+      ],
+      "license": "business-owned",
+      "made_by": "designer (station 4g, from the picked mockup's recipes)",
+      "made_at": "2026-10-05T00:00:00Z",
+      "source_url": "https://www.youtube.com/@globalsurf1582",
+      "fetched_at": "2026-10-05T00:00:00Z"
+    },
+    {
+      "id": "vid-book-l1",
+      "derived_from": "vid-010",
+      "describe": "booking desk clip, Level 1: vid-010-source 20.00–29.00 s, the golden-hour stand-up; native 864×1080 crop (x 528, clear of the corner badge/watermark), real speed, hard cuts, no audio",
+      "shows": "a golden-hour beginner session at the beach: a rider stands up into the sun",
+      "recipe": "sites/global-surf-adventures/mockups/picked/src/make-book-clips.sh (mockup renditions); sites/global-surf-adventures/final/scripts/make-media.sh (the site's upload, gs-level-1-desk.mp4)",
+      "used_as": "videos[3] (final site seed): booking step 1, desktop media half; phones show its poster",
+      "files": [
+        {
+          "file": "assets/mockups/picked/video/b/level-1.mp4",
+          "bytes": 3245587,
+          "sha256": "6381a94e145f16c928d6ec544a3782c3a3570bab70feeb63870adf85bc1811e8"
+        },
+        {
+          "file": "assets/mockups/picked/video/b/level-1.webm",
+          "bytes": 2495913,
+          "sha256": "29f3bff6f268f1c4eaa669c8f7a465c7fb89d9a026520f5a871c8b4b33514d80"
+        },
+        {
+          "file": "assets/mockups/picked/video/b/level-1-poster.jpg",
+          "bytes": 51792,
+          "sha256": "6170084798f25a8bc88c53f5395686320eeec9457d1d2eb6053b4f8a21bbb97f"
+        }
+      ],
+      "license": "business-owned",
+      "made_by": "designer (station 4g, from the picked mockup's recipes)",
+      "made_at": "2026-10-05T00:00:00Z",
+      "source_url": "https://www.youtube.com/@globalsurf1582",
+      "fetched_at": "2026-10-05T00:00:00Z"
+    },
+    {
+      "id": "vid-book-l2",
+      "derived_from": "vid-003",
+      "describe": "booking desk clip, Level 2: vid-003-source 12.20–14.00 + 14.20–17.80 s, a sunny ride then a reef ride (vid-003e's takes); native 864×1080 crop (x 631, clear of the corner badge/watermark), real speed, hard cuts, no audio",
+      "shows": "an intermediate surfer rides a sunny reef wave, then another rider on the reef",
+      "recipe": "sites/global-surf-adventures/mockups/picked/src/make-book-clips.sh (mockup renditions); sites/global-surf-adventures/final/scripts/make-media.sh (the site's upload, gs-level-2-desk.mp4)",
+      "used_as": "videos[4] (final site seed): booking step 1, desktop media half; phones show its poster",
+      "files": [
+        {
+          "file": "assets/mockups/picked/video/b/level-2.mp4",
+          "bytes": 2680431,
+          "sha256": "42eb20e833ae1e8380c6dec051ff25002fb8e6f8abea6f1f1b82f2513d383dbc"
+        },
+        {
+          "file": "assets/mockups/picked/video/b/level-2.webm",
+          "bytes": 1986682,
+          "sha256": "8515f169ed6ecd57b7cd2eabf8a18959f9f6808a35ad46710ff1ef739101ec28"
+        },
+        {
+          "file": "assets/mockups/picked/video/b/level-2-poster.jpg",
+          "bytes": 71898,
+          "sha256": "a0e1631f754408a1db5509fc68dfa75712821bc477d9ca7ffbecddc0a6ea1a94"
+        }
+      ],
+      "license": "business-owned",
+      "made_by": "designer (station 4g, from the picked mockup's recipes)",
+      "made_at": "2026-10-05T00:00:00Z",
+      "source_url": "https://www.youtube.com/@globalsurf1582",
+      "fetched_at": "2026-10-05T00:00:00Z"
+    },
+    {
+      "id": "vid-book-l3",
+      "derived_from": "vid-002",
+      "describe": "booking desk clip, Level 3: vid-002-source 8.90–12.50 + 26.80–28.90 s, two right-hand barrels (vid-002e's takes); native 864×1080 crop (x 631, clear of the corner badge/watermark), real speed, hard cuts, no audio",
+      "shows": "a surfer rides deep in a right-hand barrel, twice",
+      "recipe": "sites/global-surf-adventures/mockups/picked/src/make-book-clips.sh (mockup renditions); sites/global-surf-adventures/final/scripts/make-media.sh (the site's upload, gs-level-3-desk.mp4)",
+      "used_as": "videos[5] (final site seed): booking step 1, desktop media half; phones show its poster",
+      "files": [
+        {
+          "file": "assets/mockups/picked/video/b/level-3.mp4",
+          "bytes": 2026582,
+          "sha256": "dc65fcb060f57a95380f1733622cc76f9c28434cd3bf356827b633ce495eed3a"
+        },
+        {
+          "file": "assets/mockups/picked/video/b/level-3.webm",
+          "bytes": 1283466,
+          "sha256": "36244d1699f0f3d594ee8621ce5f1ee1eb05847d69e6ebe6c47e0481763f3063"
+        },
+        {
+          "file": "assets/mockups/picked/video/b/level-3-poster.jpg",
+          "bytes": 59930,
+          "sha256": "b5d0dcf78f2f6951b0a9347a927daba6ff95466c4a0af82a2bc9ddd27d2e6539"
+        }
+      ],
+      "license": "business-owned",
+      "made_by": "designer (station 4g, from the picked mockup's recipes)",
+      "made_at": "2026-10-05T00:00:00Z",
+      "source_url": "https://www.youtube.com/@globalsurf1582",
+      "fetched_at": "2026-10-05T00:00:00Z"
     }
   ],
   "existing_site": {
