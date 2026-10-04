@@ -50,13 +50,19 @@ if ('IntersectionObserver' in window) {
   new IntersectionObserver(function(es){ playAll(es[es.length - 1].isIntersecting); }, {rootMargin: '200px 0px'}).observe(document.querySelector('.panels'));
 } else playAll(true);
 
-/* guest quotes: the slideshow takes the height of the quote on show (no grey gap under a short one);
-   phones step through them with ‹ n / 9 › instead of nine dots that would wrap */
+/* guest quotes: phones step through them with ‹ n / 9 › instead of nine dots that would wrap. On phones the
+   slideshow takes the height of the TALLEST quote, measured once the fonts are in and again on resize, so the
+   ‹ › control never moves under the thumb and no attribution is cut off (4g must-fix 5; it used to follow
+   each quote's height, measured before Lora arrived) */
 var qs = document.querySelector('.quotes');
 if (qs) {
   var qt = qs.querySelector('.show-track'), qn = qs.querySelector('.qnav'), qi = 0, qitems = [].slice.call(qt.children);
-  var qfit = function(){ if (innerWidth <= 900) qt.style.height = qitems[qi].offsetHeight + 'px'; else qt.style.height = ''; };
-  qs.addEventListener('slide', function(e){ qi = e.detail.index; qfit();
+  var qfit = function(){
+    qt.style.height = '';
+    if (innerWidth <= 900) qt.style.height = Math.max.apply(null, qitems.map(function(x){ return x.offsetHeight; })) + 'px';
+  };
+  qfit(); if (document.fonts) document.fonts.ready.then(qfit);
+  qs.addEventListener('slide', function(e){ qi = e.detail.index;
     if (qn) { qn.querySelector('span').textContent = (qi + 1) + ' / ' + qitems.length; qn.querySelector('.qp').disabled = qi === 0; qn.querySelector('.qx').disabled = qi === qitems.length - 1; } });
   var qgo = function(d){ var k = Math.max(0, Math.min(qitems.length - 1, qi + d)); qt.scrollTo({left: qitems[k].offsetLeft - qitems[0].offsetLeft, behavior: GS.RM ? 'auto' : 'smooth'}); };
   if (qn) { qn.querySelector('.qp').addEventListener('click', function(){ qgo(-1); }); qn.querySelector('.qx').addEventListener('click', function(){ qgo(1); }); }

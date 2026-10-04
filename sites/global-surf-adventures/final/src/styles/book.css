@@ -180,6 +180,8 @@
   .pick-t .detail{font-size:15px}
   .sum{padding:22px 20px 10px}
   .sum .big dd{font-size:28px}
+  .sum [data-s=dates] .di{display:block}  /* 4g: range, then "7 nights" on its own line */
+  .sum [data-s=dates] .sep{display:none}
   .bk .room .show{margin:0 -20px}
   .prog a{font-size:13px}
   /* room step on a phone: the room, its price and the action on the first screen */

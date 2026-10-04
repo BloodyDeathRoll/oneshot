@@ -197,7 +197,10 @@ function render(){
   $$('[data-incl-list]').forEach(function(l){ l.hidden = l.dataset.inclList !== (LV ? LV.n : '1'); });
   syncChips(); chosenTab();
   $('[data-s=level]').textContent = LV ? LV.name : '—';
-  $('[data-s=dates]').textContent = st ? fmt(st) + ' – ' + fmt(addDays(st, n)) + ' | ' + n + ' nights' : 'Choose a Saturday';
+  /* the range and the nights are two items: one line with ' | ' where it fits, two lines on phones ("7 nights" never splits; must-fix 5) */
+  var dd = $('[data-s=dates]');
+  if (st) dd.innerHTML = '<span class="di">' + fmt(st) + ' – ' + fmt(addDays(st, n)) + '<span class="sep">|</span></span><span class="di">' + n + '\u00a0nights</span>';
+  else dd.textContent = TX.field_checkin_nojs_placeholder;
   var parts = guestParts(g);
   $('[data-s=guests]').textContent = parts.length ? parts.join(', ') : '—';
   $('[data-s=room]').textContent = rm ? ROOMS[rm] : '—';
