@@ -1,41 +1,27 @@
 # Global Surf Adventures (run 2026-09-globalsurf-02)
 
-Last updated 2026-10-04 by shahar. Written from the ledger, activity log and git log, not from memory.
+Last updated 2026-10-05 by shahar (designer 4g session). Written from the ledger, activity log and git log.
 
 ## State
-`picked` (ledger, 2026-09-30, gate passed by Shahar). The pick is a **composite** of the three
-mockups; his verbatim instructions are in that ledger line's note.
+`built` (ledger, 2026-10-04T22:36Z, designer 0.4.2). Next stations: 4h SEO, 4i AI SEO, then 5 critique.
 
-## The picked mockup
-- `sites/global-surf-adventures/mockups/picked/` — home (`dist/index.html`) and a standalone booking
-  flow, one step per screen (`dist/book/`). Source in `picked/src/`; rebuild with `build.py` / `book.py`.
-- **Approved by Shahar 2026-10-04:** Dancing Script titles + Lora (hero title Lora), and the #1
-  "The sign" palette (activity log, commit 0770cdb).
-- 4f on the composite: round 1 visual 7.5 fail → designer fix round (commit 2c7a17e) → round 2
-  **all three pass**: critic 72.8/80, visual 8, experience 8 (`reports/2026-09-globalsurf-02/*-composite-r2.md`).
-- Preview config: `global-surf-adventures-mockup.os1.workers.dev` (commit ef1e901).
+## The build
+- `sites/global-surf-adventures/final/` — Astro port of the picked composite (home + standalone `book/`).
+  Rebuild: `bash scripts/make-media.sh && npm run build` (needs `tools/link-assets.sh global-surf-adventures`,
+  ffmpeg with libx264/libsvtav1/libwebp). Details, checks and conflicts: `final/notes.md`.
+- Content is a seed in Payload's shape (`src/tenant/content.json`); no tenant exists yet (deployer, station 6).
+- Schema gaps (room galleries and texts, level one-liners, inclusions, logo, socials, booking snapshot) live in
+  `src/gaps/gaps.json` — a schema proposal is needed before the owner can edit them.
+- Shahar's 4g must-fix list (2026-10-04) is done, each item probed (table in `final/notes.md`).
+- `dossier.videos[]` gained `vid-hero-c` and `vid-book-l1..l3` (append only).
 
-## Must fix in 4g (Shahar, 2026-10-04: fix in the build, not another mockup round)
-- **Dates step drops `start`:** a chosen Saturday that the live calendar later strikes out (e.g. after
-  adding guests) stays selected; the total shows "Not free" with Continue still active, and the
-  hand-off goes out as `?couple=1&end=…` with no `start` (experience-composite-r2 fix 1). Clear the
-  date and say why, put the guest pickers above the dates, never send `end` without `start`.
-- Other open items from the r2 reports: home "Choose this room" assumes Level 1; room silently
-  switches when live availability drops it; JS-off accepts check-out before check-in; phone quote
-  controls jump; "7 / nights" wraps at 390; room photos load 800 px on desktop; level-1 phone crop;
-  room title casing; record the hero loop + booking clips in `dossier.videos[]`; self-host fonts.
-
-## Funnel target (Shahar, 2026-10-04)
-Own booking pages: 1 tap hero → booking page, at most 8 taps to the Bookinglayer hand-off.
-`tools/funnel.mjs` 0.2.0 reports this as `hero_action` (measured on the composite: engine, 1 tap);
-rubric 0.3.1 / critic 0.4.2 / `schemas/audit.md` 0.1.3 use it when `audit.json.recommended.booking_flow`
-is set; `dossier/global-surf-adventures/audit.json` carries it.
+## For Shahar
+- Phone hero: v0.9 allows one upload, so phones get a build-made portrait crop (546×972) instead of the
+  mockup's hand-panned 9:16 edit. Same subjects, slightly tighter, no reef pan (`final/notes.md` conflict 1).
+- JS-off hand-off now sends `duration` (days) instead of a check-out list; checked read-only on the live engine.
+- Not done (not on the list): 360×640 room CTA under the bar, desktop Dates nights below the fold, hero video
+  playing off-screen, closing-split white space, reef-frame title contrast.
 
 ## Media
-`media/global-surf-adventures.tsv`. Dossier photos restore from the web; clips from
-`mockups/make-clips.sh`, `picked/src/make-hero.sh`, `picked/src/make-book-clips.sh`. The mockups'
-`dist/img/` files have no recipe yet: ask Shahar for `node tools/media.mjs pack global-surf-adventures`.
-
-## Next
-Station 4g: Astro build ported from the picked composite (designer 4g + `schemas/site-content.md`),
-with the must-fix list above. PR #10 holds the review rounds.
+`media/global-surf-adventures.tsv`; the final site's files come from `final/scripts/make-media.sh`.
+The mockups' `dist/img/` files still have no recipe (ask for `node tools/media.mjs pack global-surf-adventures`).
