@@ -20,6 +20,9 @@ const steps = ['level', 'room', 'dates', 'total']
 /* media half [sign]: level clips (videos[3–5], desktop only; phones show the first-frame poster in a slim
    band), the viewed room's gallery (desktop), then one photograph each for dates and total */
 const desk = LEVELS.map((L, k) => ({ L, cl: clip(3 + k) }))
+/* phones show the level's first frame in a ~390×135 band: where to cut it so the surfer, not a torso, is in
+   it (must-fix 6, visual-critic r2 fix 3). Vertical position per level card, read off the three posters. */
+const BAND_Y = ['12%', '38%', '40%']
 const roomLayers = ROOMS.map((r) => ({
   r, slides: r.gallery.map((g) => `<figure>${wimg(g.file, g.alt, '(min-width: 901px) max(50vw, calc((100vh - 76px) * 1.5)), 100vw', pre)}</figure>`),
 }))
@@ -83,7 +86,7 @@ const css = fontFaces(pre) + siteCss + bookCss + homeCss.slice(homeCss.indexOf('
   <div class="bk-media">
     {desk.map(({ L, cl }, k) => (
       <div class={k === 0 ? 'm on' : 'm'} data-m={L.slug} aria-hidden="true">
-        {cl && <img src={pre + cl.p[1280].src} width={cl.p[1280].width} height={cl.p[1280].height} alt="" loading={k === 0 ? undefined : 'lazy'} />}
+        {cl && <img src={pre + cl.p[1280].src} width={cl.p[1280].width} height={cl.p[1280].height} alt="" loading={k === 0 ? undefined : 'lazy'} style={`--band-y:${BAND_Y[k] ?? '50%'}`} />}
         {cl && <video muted loop playsinline preload="none" data-webm={pre + cl.v.tiers.d1920.webm?.src} data-mp4={pre + cl.v.tiers.d1920.mp4.src}></video>}
       </div>
     ))}

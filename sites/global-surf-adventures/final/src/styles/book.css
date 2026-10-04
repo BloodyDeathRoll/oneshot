@@ -157,6 +157,7 @@
   .bk{grid-template-columns:1fr}
   .bk-media{position:relative;top:auto;height:clamp(112px,16vh,150px)}
   .bk-media .m-room{display:none}
+  .bk-media .m>img{object-position:50% var(--band-y,50%)}
   .book[data-step="room"] .bk-media{display:none}
   .bk-col{padding:0 20px;min-height:0}
   .prog{padding-top:20px}
