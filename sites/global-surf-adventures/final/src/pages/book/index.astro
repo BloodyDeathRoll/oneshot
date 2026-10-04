@@ -37,7 +37,6 @@ const sats = G.snapshot.saturdays.filter((s) => s >= today)
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 const fmt = (iso) => { const d = new Date(iso + 'T12:00:00Z'); return `${DAYS[d.getUTCDay()]} ${d.getUTCDate()} ${MON[d.getUTCMonth()]} ${d.getUTCFullYear()}` }
 const addDays = (iso, n) => { const d = new Date(iso + 'T12:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10) }
-const nojsEnd = sats.map((s) => ({ label: `From ${fmt(s)}`, opts: [7, 14, 21, 28].map((n) => ({ v: addDays(s, n), t: `${n} nights, to ${fmt(addDays(s, n))}` })) }))
 const stp = (nm, lab, mx) => `<div class="fl has stp"><input id="f-${nm}" name="${nm}" type="number" inputmode="numeric" min="0" max="${mx}" value="0"><label for="f-${nm}">${e(lab)}</label><button type="button" class="sb" data-d="-1" aria-label="${e(B.stepper_less)}, ${e(lab)}">−</button><button type="button" class="sb" data-d="1" aria-label="${e(B.stepper_more)}, ${e(lab)}">+</button></div>`
 
 /* total */
@@ -144,9 +143,12 @@ const css = fontFaces(pre) + siteCss + bookCss + homeCss.slice(homeCss.indexOf('
       <fieldset class="seg"><legend>{B.field_nights}</legend><div class="seg-r">
         {B.nights_options.map((n) => <label><input type="radio" name="nights" form="none" value={n} checked={n === '7'} /><span>{n}</span></label>)}
       </div></fieldset>
-      <noscript><div class="fl has nojs-end"><select id="f-end" name="end" required><option value="">Choose your check-out</option>
-        {nojsEnd.map((g) => <optgroup label={g.label}>{g.opts.map((o) => <option value={o.v}>{o.t}</option>)}</optgroup>)}
-      </select><label for="f-end">Check-out</label><svg class="chev"><use href="#i-chev"/></svg></div></noscript>
+      <!-- JS off: the stay length as the engine's documented `duration` (days = nights + 1), so a check-out can
+           never fall before the check-in (must-fix 4; the JS path sends `end`). Checked read-only on 2026-10-05:
+           …/level-2-rollers?start=2027-02-20&duration=8&couple=1 lands on the same step as end=2027-02-27. -->
+      <noscript><div class="fl has nojs-end"><select id="f-dur" name="duration" required><option value="">Choose your nights</option>
+        {B.nights_options.map((n) => <option value={String(+n + 1)}>{n} nights</option>)}
+      </select><label for="f-dur">{B.field_nights}</label><svg class="chev"><use href="#i-chev"/></svg></div></noscript>
     </section>
 
     <section class="step" id="total" data-media="total" aria-labelledby="t-total">
