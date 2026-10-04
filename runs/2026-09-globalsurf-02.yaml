@@ -1,4 +1,6 @@
 run_id: 2026-09-globalsurf-02
+operator: shahar                 # who runs it (team.json); a session runs only its operator's runs
+status: active                   # active | closed
 mode: test                       # test | live
 # test: we are not on the ground and cannot contact anyone. A business qualifies only if
 #       its PUBLIC material alone is enough to build a complete site. Anything that would

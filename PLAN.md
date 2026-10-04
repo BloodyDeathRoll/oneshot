@@ -20,7 +20,7 @@ Workflow graph: Figma → Workflows file → `workflows` page → frame `oneshot
 | Publish flow | Owner edits are drafts; pressing **Publish** in Payload → hook → rebuild only that tenant's site → `wrangler deploy` → live in ~1 minute. Not on every save (decided 2026-09-18). |
 | Export | Any client can receive their static build as a zip that runs on any host (GoDaddy included). Optional handoff, not the deliverable; replaces the old per-site-CMS-in-a-zip idea. |
 | Commercial default | "We host it, you edit it, monthly fee." The pitch reflects this. |
-| Hosting modes | Per business, recorded in the ledger and `run.yaml`. **`managed`** (default) — our multi-tenant Payload + Cloudflare Workers; monthly fee. **`self_hosted_docker`** — the client's own VPS (Hetzner, Contabo, Hostinger KVM, DigitalOcean — anything with Docker; 2 vCPU / 4 GB minimum): single-tenant Payload + Postgres + Astro builder + Caddy (HTTPS) in one `docker-compose.yml`, rebuild-on-save inside the stack; we install, verify, hand over, revoke our access. **`static_only`** — static build + source zip, no CMS; runs on any host including shared PHP hosting; edits require a developer. Self-hosted is the client's choice at pitch time. No split mode, no PHP flat-file CMS port. |
+| Hosting modes | Per business, recorded in the ledger and the run file (`runs/<run_id>.yaml`). **`managed`** (default) — our multi-tenant Payload + Cloudflare Workers; monthly fee. **`self_hosted_docker`** — the client's own VPS (Hetzner, Contabo, Hostinger KVM, DigitalOcean — anything with Docker; 2 vCPU / 4 GB minimum): single-tenant Payload + Postgres + Astro builder + Caddy (HTTPS) in one `docker-compose.yml`, rebuild-on-save inside the stack; we install, verify, hand over, revoke our access. **`static_only`** — static build + source zip, no CMS; runs on any host including shared PHP hosting; edits require a developer. Self-hosted is the client's choice at pitch time. No split mode, no PHP flat-file CMS port. |
 | One of everything | One content schema (`schemas/site-content.md`), one Astro template per site, one Payload config. Hosting mode is a deployer adapter, never a fork of the site or the CMS. Anything that would need a second renderer or a second CMS is out of scope. |
 | Mockups | Designer produces **three** mockups per business: (1) calm, standard (2) interactive, some bells and whistles (3) full-blown unique |
 | Critique of mockups | Critic scores all three cheaply (screenshot + rubric) *before* the human sees them; only the human's pick goes through the full build/CMS/critique rounds |
@@ -28,7 +28,8 @@ Workflow graph: Figma → Workflows file → `workflows` page → frame `oneshot
 | Agent prompts | Two layers per agent: `base.md` (Claude: role, I/O, constraints) + `custom.md` (Shahar: taste, rules, references). Runtime prompt = playbook + base + custom + references |
 | Preview | The site's `*.workers.dev` address is the before/after link; production is the same Worker on the client's domain |
 | Human gates | (a) shortlist approval (b) mockup pick (c) send pitch (d) approve prompt diffs |
-| Operators | Decided 2026-10-02: two operators, Shahar and Alon (`team.json`), each on their own machine and Claude Code sessions, one repo, both pushing to `main`. Either may pass any gate. Every ledger line carries `operator`; work between states and assignments go to `activity.jsonl`; `notes/<slug>.md` is the per-business handoff; the dashboard shows who worked on what last and who has an open assignment. `docs/team.md` |
+| Operators | Decided 2026-10-02: two operators, Shahar and Alon (`team.json`), each on their own machine and Claude Code sessions, one repo. Work goes on branches and reaches `main` only through pull requests that a human merges; nobody pushes to `main`. Either may pass any gate. Every ledger line carries `operator`; work between states and assignments go to `activity.jsonl`; `notes/<slug>.md` is the per-business handoff; the dashboard shows who worked on what last and who has an open assignment. `docs/team.md` |
+| Parallel runs | Decided 2026-10-04: several runs can be active at once, one per operator and machine. Each run is one file, `runs/<run_id>.yaml`, with an `operator` and a `status` (`active` \| `closed`); a session works on exactly one run (`ONESHOT_RUN`, else its operator's one active run; `node tools/run.mjs`). All runs share one `ledger.jsonl` (lines carry `run_id`; `merge=union`). The dashboard shows every run, with the ledger and activity of this checkout merged with `origin/main`, fetched every minute, so each operator sees what the other has merged. A business belongs to one active run at a time. `docs/team.md` |
 | Media | Decided 2026-10-02: no image or video in git, ever, and none hosted online. Each operator keeps media on disk and in a local store (`~/.oneshot/assets`); `media/<slug>.tsv` lists every file with its sha256 and source, and every new file must be made by a committed recipe, so the other operator rebuilds it (`tools/media.mjs restore`). Screenshots are scratch: one shared set per page, deleted after each scored round. The 3.5 GB of images already in git history are removed by a one-time history rewrite. `docs/team.md` |
 
 ---
@@ -39,7 +40,7 @@ Workflow graph: Figma → Workflows file → `workflows` page → frame `oneshot
 oneshot/
   PLAN.md                     # this file
   CLAUDE.md                   # instructions for Claude Code sessions in this repo
-  run.yaml                    # current run definition
+  runs/<run_id>.yaml          # one file per run: area, budgets, pins, operator, status (§3)
   playbook.md                 # what a great surf-business site is — shared by all agents
   rubric.md                   # critic scoring, weights, pass thresholds
   taxonomy.md                 # business types, what counts as "surf-related"
@@ -76,10 +77,12 @@ oneshot/
 
 ---
 
-## 3. `run.yaml`
+## 3. The run file: `runs/<run_id>.yaml`
 
 ```yaml
-run_id: 2026-09-ahangama-02
+run_id: 2026-09-ahangama-02        # = the file name
+operator: shahar                   # team.json id; only this operator's sessions run it
+status: active                     # active | closed
 area:
   mode: business                 # town | stretch | business
   # town:     one anchor (a town or beach) + shore_buffer_m along its coast
@@ -106,6 +109,8 @@ agents:                          # pinned versions for reproducibility
   critic: 0.1.0
 ```
 
+Several runs may be active at once; one active run per operator is the norm, and an operator with two picks one per session with `ONESHOT_RUN=<run_id>`. `node tools/run.mjs` prints the session's run, `node tools/run.mjs list` all of them. Closing a run = `status: closed`; the file stays. In agent prompts, `playbook.md`, `rubric.md` and the schemas, "`run.yaml`" means the session's run file: `tools/prompt.mjs` loads it as the `run.yaml` layer and names the file.
+
 Scout geocodes the anchors and builds the area polygon: `town` = the anchor's coast buffered by `shore_buffer_m`; `stretch` = the OSM coastline between the two anchors buffered by `shore_buffer_m`; `business` = a circle of `radius_m` around the one anchor. Only businesses whose location falls inside the polygon are kept.
 
 ---
@@ -116,8 +121,8 @@ Each business moves through these stations. The orchestrator owns the order, ret
 
 | # | Station | Agent | Input | Output | Gate |
 |---|---|---|---|---|---|
-| 1 | Target | human | — | `run.yaml` | — |
-| 2 | Scout | scout | run.yaml | `candidates.json` with geo, contact, links, presence score 0–5 + reason, and `existing_site.funnel` (taps to book, measured with `tools/funnel.mjs --depth 1`) | **Human approves shortlist** |
+| 1 | Target | human | — | `runs/<run_id>.yaml` | — |
+| 2 | Scout | scout | the run file | `candidates.json` with geo, contact, links, presence score 0–5 + reason, and `existing_site.funnel` (taps to book, measured with `tools/funnel.mjs --depth 1`) | **Human approves shortlist** |
 | 3 | Harvest | harvester | approved candidates | `dossier/<slug>/dossier.json` + `assets/`; every fact/image carries its source; gaps flagged | — |
 | 3b | Audit | auditor | dossier, old site, `candidates.json` entry | `dossier/<slug>/audit.json` + `audit.md` + `funnel/` (`schemas/audit.md`): the old path to a booking measured with `tools/funnel.mjs`, findings with evidence, and the recommended funnel in site-schema terms (proposal 007). Businesses with no site are audited too (`scope: no_site`) | — |
 | 4a | Copy | copywriter | dossier, schema | site copy per locale in `sites/<slug>/copy/<locale>.json` + `copy/sources.md` (every paragraph mapped to its dossier fields) | — |
@@ -146,7 +151,7 @@ Each business moves through these stations. The orchestrator owns the order, ret
 Each agent folder has the same six files (§2). Below: what `base.md` must cover, and what is already known for `custom.md`.
 
 ### orchestrator
-- Reads `run.yaml`, walks each business through §4 in order, one at a time.
+- Reads the session's run file (`node tools/run.mjs`), walks each of that run's businesses through §4 in order, one at a time. Never touches another run's businesses.
 - Enforces budgets, retries (max 2 per station), stops at human gates, never runs past a gate unattended.
 - Writes ledger entries; resumable from any state after a crash.
 - Tools: Claude Code headless, `scripts/`.
@@ -299,7 +304,7 @@ Phase 1 spike — Payload multi-tenant: `docker-compose up` locally, two tenants
 
 1. After every run, critic writes `proposals/<run-id>/NNN-<agent>-<slug>.md`: target file, diff, evidence (report lines, pick reasons, outcomes).
 2. Human reviews each: approve / edit / reject (PR-style, can be literal PRs).
-3. Approved diffs are merged, the agent's version bumps (semver in `run.yaml` pins), CHANGELOG gets one line per diff.
+3. Approved diffs are merged, the agent's version bumps (semver pins in each active run file), CHANGELOG gets one line per diff.
 4. `custom.md` is never edited by the critic — it may only *propose* additions there, flagged separately.
 5. Conflicts between `base.md` and `custom.md` are surfaced by the critic, not resolved silently.
 

@@ -7,15 +7,15 @@
 | Field | Type | Description |
 |---|---|---|
 | `ts` | string | UTC timestamp, ISO 8601 (`2026-09-17T14:05:00Z`), when the transition completed |
-| `run_id` | string | `run_id` from `run.yaml` |
+| `run_id` | string | `run_id` of the session's run (`runs/<run_id>.yaml`, `node tools/run.mjs`) |
 | `slug` | string | Business slug; matches `dossier/<slug>/` and `sites/<slug>/` |
 | `from_state` | string \| null | Previous state; `null` only for the first line of a business (`discovered`) |
 | `to_state` | string | New state |
 | `agent` | string | Who made the transition: `orchestrator`, `scout`, `harvester`, `auditor`, `visual-critic`, `experience-critic`, `copywriter`, `humanizer`, `copyeditor`, `creative-director`, `designer`, `seo`, `aiseo`, `critic`, `deployer`, `writer`, or `human` for gates |
-| `agent_version` | string \| null | Semver pinned in `run.yaml`; `null` when `agent` is `human` |
+| `agent_version` | string \| null | Semver pinned in the run file (`runs/<run_id>.yaml`); `null` when `agent` is `human` |
 | `note` | string | Short free text: reason, score, pick reason, error, outcome detail |
 | `operator` | string | Who ran the session that wrote the line, an id from `team.json` (`node tools/team.mjs whoami`). For `agent: "human"` lines it is the person who decided. Required from 2026-10-02 (docs/team.md); lines before that have none and are Shahar's |
-| `hosting_mode` | string, optional | `managed` \| `self_hosted_docker` \| `static_only`. Present on every line written by the `deployer`, and on the `human` line that records a client's choice of mode. The last line that carries it is the business's hosting mode; absent = `run.yaml` `hosting.default_mode`. |
+| `hosting_mode` | string, optional | `managed` \| `self_hosted_docker` \| `static_only`. Present on every line written by the `deployer`, and on the `human` line that records a client's choice of mode. The last line that carries it is the business's hosting mode; absent = the run file's `hosting.default_mode`. |
 
 The first eight fields are present on every line, and `operator` on every line from 2026-10-02.
 

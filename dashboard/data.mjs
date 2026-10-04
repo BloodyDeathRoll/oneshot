@@ -15,6 +15,8 @@ import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { readActivity, assignments as toAssignments, team as readTeam, operatorFor, whoami } from '../tools/team.mjs';
 import { status as mediaStatus } from '../tools/media.mjs';
+import { readJsonlMerged, showMain, lsMain, mainSha, MAIN } from '../tools/origin.mjs';
+import { RUNS_DIR } from '../tools/run.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'dashboard');
@@ -73,14 +75,23 @@ const readJsonl = (rel) => ((rel.startsWith('/') ? (existsSync(rel) ? readFileSy
 const val = (x) => (x && typeof x === 'object' && 'value' in x ? x.value : x ?? null);
 const day = (ts) => ts.slice(0, 10);
 
-function readRun() {
-  const y = read('run.yaml') ?? '';
+// Every run file (runs/<run_id>.yaml): this checkout's, plus the ones only on origin/main
+// (the other operator's merged runs). A file in both is read from this checkout.
+function readRuns() {
+  const files = new Map();
+  for (const f of lsMain(RUNS_DIR)) if (f.endsWith('.yaml')) files.set(f, showMain(`${RUNS_DIR}/${f}`));
+  if (existsSync(join(ROOT, RUNS_DIR))) for (const f of readdirSync(join(ROOT, RUNS_DIR))) if (f.endsWith('.yaml')) files.set(f, read(`${RUNS_DIR}/${f}`));
+  return [...files.values()].filter(Boolean).map(parseRun).sort((a, b) => a.run_id.localeCompare(b.run_id));
+}
+
+function parseRun(y) {
   const scalar = (k) => (y.match(new RegExp(`^${k}:\\s*([^#\\n]+)`, 'm'))?.[1] ?? '').trim().replace(/^["']|["']$/g, '');
   const pins = {};
   const block = y.split(/^agents:/m)[1] ?? '';
   for (const m of block.matchAll(/^\s+([\w-]+):\s*([\d.]+)/gm)) pins[m[1]] = m[2];
   return {
     run_id: scalar('run_id'), mode: scalar('mode'),
+    operator: scalar('operator') || null, status: scalar('status') || 'active',
     area_mode: (y.match(/^\s+mode:\s*(\w+)/m)?.[1] ?? ''),
     anchors: [...y.matchAll(/^\s*-\s*"([^"]+)"/gm)].map((m) => m[1]),
     max_sites: Number(scalar('max_sites')) || null,
@@ -146,7 +157,7 @@ const opOfLine = (l) => l.operator ?? (l.ts < '2026-10-02' ? 'shahar' : null);
 // touched more than three businesses is project-wide housekeeping, not work on any one of them.
 function readCommits(ops) {
   let out = '';
-  try { out = execFileSync('git', ['log', '-n', '800', '--format=%x1e%h%x09%aI%x09%ae%x09%an%x09%s', '--name-only', '--', 'sites', 'dossier', 'notes'], { cwd: ROOT, encoding: 'utf8', maxBuffer: 256e6 }); } catch { return {}; }
+  try { out = execFileSync('git', ['log', '-n', '800', 'HEAD', ...(mainSha() ? [MAIN] : []), '--format=%x1e%h%x09%aI%x09%ae%x09%an%x09%s', '--name-only', '--', 'sites', 'dossier', 'notes'], { cwd: ROOT, encoding: 'utf8', maxBuffer: 256e6 }); } catch { return {}; }
   const bySlug = {};
   for (const rec of out.split('\x1e').filter((r) => r.trim())) {
     const [head, ...files] = rec.split('\n').filter(Boolean);
@@ -201,17 +212,25 @@ function readProposals(proposalDecisions = []) {
 }
 
 // ---- build ------------------------------------------------------------------------------------
-export function buildData({ ledgerPath = 'ledger.jsonl', operator = null } = {}) {
-  const ledger = readJsonl(ledgerPath);
+// The ledger and activity are this checkout's lines plus origin/main's (tools/origin.mjs), so the
+// page shows what either operator has merged. `origin: false` reads this checkout only.
+export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin = true } = {}) {
+  const ledgerAbs = ledgerPath.startsWith('/') ? ledgerPath : join(ROOT, ledgerPath);
+  const ledger = origin && ledgerAbs === join(ROOT, 'ledger.jsonl') ? readJsonlMerged('ledger.jsonl') : readJsonl(ledgerPath);
   const ops = readTeam();
   let viewer = operator;
   if (!viewer) { try { viewer = whoami(); } catch { viewer = Object.keys(ops)[0]; } }
   const viewerName = ops[viewer]?.name ?? viewer;
-  const activity = readActivity();
+  const activity = origin ? readJsonlMerged('activity.jsonl') : readActivity();
   const allAssignments = toAssignments(activity);
   const commitsBySlug = readCommits(ops);
   const media = mediaStatus();
-  const run = readRun();
+  // Several runs can be active at once, one per operator (docs/team.md). `run` is the one the page
+  // opens on: the viewer's active run, else the newest active one, else the newest file.
+  const runFiles = readRuns();
+  const activeRuns = runFiles.filter((r) => r.status === 'active');
+  const run = activeRuns.find((r) => r.operator === viewer) ?? activeRuns.at(-1) ?? runFiles.at(-1) ?? parseRun('');
+  const isActive = (r) => activeRuns.some((x) => x.run_id === r);
   const businessLines = ledger.filter((l) => l.slug && l.slug !== '-' && l.slug !== 'dashboard');
   const corrections = ledger.filter((l) => (!l.slug || l.slug === '-') && !/^proposal:/.test(l.to_state));
   const nonBusinessRuns = ledger.filter((l) => l.slug === 'dashboard');
@@ -265,7 +284,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null } = {})
     const deploy = own ? readDeploy(slug) : null;
     const pitch = own ? readPitch(slug) : null;
     const shots = own ? readShots(slug) : null;
-    const { group, label } = classify(hist, approvalsByRun[run_id], run_id === run.run_id);
+    const { group, label } = classify(hist, approvalsByRun[run_id], isActive(run_id));
     const reached = new Set(hist.map((h) => baseState(h.to_state)));
     const scoreNote = hist.find((h) => h.to_state === 'scored')?.note ?? '';
     const presence = scoreNote.match(/presence\s+(\d)\s*\/\s*5/i)?.[1];
@@ -354,7 +373,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null } = {})
     };
   }
   const kpis_by_run = Object.fromEntries(runsSeen.map((r) => [r, kpisFor(r)]));
-  // A run with no ledger line yet (run.yaml just bumped, or an empty ledger) is not in runsSeen.
+  // A run with no ledger line yet (a run file just created, or an empty ledger) is not in runsSeen.
   const runIdx = runsSeen.indexOf(run.run_id);
   const prevRun = (runIdx === -1 ? runsSeen.filter((r) => r < run.run_id).at(-1) : runsSeen[runIdx - 1]) ?? null;
   const cur = kpis_by_run[run.run_id] ?? kpisFor(run.run_id), prev = prevRun ? kpis_by_run[prevRun] : null;
@@ -434,15 +453,19 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null } = {})
     ((expenses.vendors[e.vendor] ??= {})[cur] = (expenses.vendors[e.vendor][cur] ?? 0) + e.amount);
   }
 
-  const runs = [...runsSeen].reverse().map((r) => {
+  // Runs with ledger lines, plus active runs that have none yet (a run file just created).
+  const runIds = [...new Set([...runsSeen, ...activeRuns.map((r) => r.run_id)])].sort();
+  const runs = [...runIds].reverse().map((r) => {
+    const file = runFiles.find((x) => x.run_id === r);
     const bs = businesses.filter((b) => b.run_id === r); const groups = {};
     for (const b of bs) groups[b.group] = (groups[b.group] ?? 0) + 1;
     const ts = businessLines.filter((l) => l.run_id === r).map((l) => l.ts).sort();
-    return { run_id: r, businesses: bs.length, groups, first_ts: ts[0], last_ts: ts.at(-1), current: r === run.run_id, kpis: kpis_by_run[r] };
+    return { run_id: r, businesses: bs.length, groups, first_ts: ts[0], last_ts: ts.at(-1), current: r === run.run_id, active: isActive(r), operator: file?.operator ?? null, status: file ? file.status : null, kpis: kpis_by_run[r] ?? kpisFor(r) };
   });
 
   return {
     generated_at: new Date().toISOString(), human: viewerName,
+    sync: { origin_main: origin ? mainSha() : null, note: origin ? `this checkout + ${MAIN}` : 'this checkout only' },
     team: {
       viewer, operators: Object.fromEntries(Object.entries(ops).map(([id, o]) => [id, o.name])),
       open_assignments: allAssignments.filter((a) => a.open).map((a) => ({ ...a, to_name: ops[a.to]?.name ?? a.to, by_name: ops[a.by]?.name ?? a.by, business: businesses.find((b) => b.slug === a.slug)?.name ?? a.slug })),

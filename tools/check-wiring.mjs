@@ -9,6 +9,7 @@
 //  2. every file under agents/ is claimed by agents/wiring.json (nothing orphaned); a folder is
 //     allowed only when wiring.json lists it under nonPromptDirs and the agent's base.md names it
 //  3. every repo doc with real content is reachable by at least one agent
+//  3b. runs/*.yaml are well formed and this session resolves to exactly one run (tools/run.mjs)
 //  4. each base.md's "Runtime prompt =" line matches the layers wiring.json gives it
 //  5. each agent's station ids in wiring.json exist in PLAN.md §4's pipeline table
 //  6. each agent listed in PLAN.md §2 has a folder, and vice versa
@@ -16,7 +17,9 @@
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { layersFor, isStub } from './prompt.mjs';
+import { layersFor, isStub, RUN_LAYER } from './prompt.mjs';
+import { listRuns, currentRun } from './run.mjs';
+import { team, whoami } from './team.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (rel) => readFileSync(join(ROOT, rel), 'utf8');
@@ -40,11 +43,22 @@ for (const a of AGENTS) {
 // 3 — repo docs with content must reach some agent
 const reachable = new Set(AGENTS.flatMap((a) => layersFor(a).map((l) => l.rel)));
 for (const rel of ['playbook.md', 'rubric.md', 'taxonomy.md', 'server-hardening.md', 'PLAN.md',
-                   'docs/ledger.md', 'schemas/site-content.md', 'schemas/business-types.md', 'run.yaml']) {
+                   'docs/ledger.md', 'schemas/site-content.md', 'schemas/business-types.md']) {
   if (!existsSync(join(ROOT, rel))) { fail.push(`shared doc missing: ${rel}`); continue; }
   if (isStub(read(rel))) warn.push(`${rel} is a stub — no agent gets instructions from it yet`);
   else if (!reachable.has(rel)) fail.push(`${rel} has content but no agent loads it`);
 }
+
+// 3b — the run layer: every runs/*.yaml is well formed, and this session resolves to one run
+if (!reachable.has(RUN_LAYER)) fail.push(`${RUN_LAYER} (the session's run file) is not loaded by any agent`);
+// The files are checked on any machine; resolving this session's run needs a known operator, so an
+// unknown one (a fresh clone, CI) is a warning, not a wiring failure.
+try {
+  for (const r of listRuns()) if (r.status === 'active' && !team()[r.operator]) fail.push(`${r.file}: active run's operator "${r.operator}" is not in team.json`);
+} catch (e) { fail.push(`run: ${e.message}`); }
+let op = null;
+try { op = whoami(); } catch (e) { warn.push(`run: not resolved for this session (${e.message})`); }
+if (op) try { currentRun({ operator: op }); } catch (e) { fail.push(`run: ${e.message}`); }
 
 // 4 — base.md's declared assembly must match reality
 for (const a of AGENTS) {

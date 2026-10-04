@@ -6,7 +6,7 @@ Claude Code agents run the pipeline. Two operators share the repo (`docs/team.md
 - `PLAN.md`: decisions, pipeline, phases (source of truth)
 - `CLAUDE.md`: rules for every Claude Code session
 - `ledger.jsonl`: every business state change, append only (`docs/ledger.md`)
-- `run.yaml`: current run, budgets, pinned agent versions
+- `runs/<run_id>.yaml`: one file per run (area, budgets, pinned agent versions, `operator`, `status`); several can be active, one per operator (`node tools/run.mjs`)
 
 ## Setup (new clone or worktree)
 

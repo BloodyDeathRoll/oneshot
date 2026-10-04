@@ -3,12 +3,13 @@
 //
 // One Node process, no dependencies. It does three things and nothing else:
 //   1. serves the dashboard build and a live data.json (buildData() on every request);
-//   2. pushes a Server-Sent Event whenever ledger.jsonl / run.yaml / deploy.json / proposals change;
+//   2. pushes a Server-Sent Event whenever ledger.jsonl / runs/ / deploy.json / proposals change, or
+//      origin/main moves (it fetches every --sync seconds, default 60, 0 = never; docs/team.md);
 //   3. accepts a human gate decision on POST /decide and appends exactly one ledger line for it,
 //      after checking the business is still in the state the page saw (a stale page is rejected).
 // It holds no Claude credentials, runs no agent, and can write only the line shapes in DECISIONS.
 //
-//   node dashboard/server.mjs [--port 8970] [--host 127.0.0.1] [--root dashboard/mockups/soft-cards/dist] [--ledger ledger.jsonl] [--operator shahar]
+//   node dashboard/server.mjs [--port 8970] [--host 127.0.0.1] [--root dashboard/mockups/soft-cards/dist] [--ledger ledger.jsonl] [--operator shahar] [--sync 60]
 //
 // The operator running the server (team.json; default `tools/team.mjs whoami`) is the one whose
 // decisions it records: every line it appends carries `operator` (docs/team.md).
@@ -22,6 +23,7 @@ import { join, dirname, resolve, extname, normalize, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildData } from './data.mjs';
 import { whoami, team } from '../tools/team.mjs';
+import { readJsonlMerged, fetch as fetchMain } from '../tools/origin.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const arg = (k, d) => { const i = process.argv.indexOf(`--${k}`); return i > 0 ? process.argv[i + 1] : d; };
@@ -29,6 +31,7 @@ const PORT = Number(arg('port', 8970));
 const HOST = arg('host', '127.0.0.1');
 const DIST = resolve(ROOT, arg('root', 'dashboard/mockups/soft-cards/dist'));
 const LEDGER = resolve(ROOT, arg('ledger', 'ledger.jsonl'));
+const SYNC_S = Number(arg('sync', 60));
 let OPERATOR;
 try { OPERATOR = arg('operator', null) ?? whoami(); if (!team()[OPERATOR]) throw new Error(`${OPERATOR} is not in team.json`); }
 catch (e) { console.error(`dashboard server: ${e.message}`); process.exit(2); }
@@ -75,7 +78,10 @@ const DECISIONS = {
   },
 };
 
+// The default ledger is read merged with origin/main's, so a gate the other operator already passed
+// and merged is seen here as passed (tools/origin.mjs).
 function readLedger() {
+  if (LEDGER === join(ROOT, 'ledger.jsonl')) return readJsonlMerged('ledger.jsonl');
   return readFileSync(LEDGER, 'utf8').split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l));
 }
 function currentState(run_id, slug) {
@@ -121,12 +127,17 @@ function notify(what) {
   clearTimeout(timer);
   timer = setTimeout(() => { for (const res of clients) res.write(`event: data\ndata: ${JSON.stringify({ changed: what, at: new Date().toISOString() })}\n\n`); }, 300);
 }
-for (const rel of ['ledger.jsonl', 'activity.jsonl', 'run.yaml', 'proposals', 'sites', 'expenses.jsonl', 'media']) {
+for (const rel of ['ledger.jsonl', 'activity.jsonl', 'runs', 'proposals', 'sites', 'expenses.jsonl', 'media']) {
   const abs = join(ROOT, rel);
   if (!existsSync(abs)) continue;
   try { watch(abs, { recursive: statSync(abs).isDirectory() }, (_e, f) => notify(f ? `${rel}/${f}` : rel)); } catch { /* recursive watch unsupported: ledger still watched */ }
 }
 if (LEDGER !== join(ROOT, 'ledger.jsonl') && existsSync(LEDGER)) watch(LEDGER, () => notify('ledger'));
+// What the other operator merged reaches this page through origin/main.
+if (SYNC_S > 0) {
+  const sync = async () => { if (await fetchMain()) notify('origin/main'); };
+  sync(); setInterval(sync, SYNC_S * 1000).unref();
+}
 
 // ---- http -----------------------------------------------------------------------------------------
 const send = (res, status, body, type = 'application/json') => { res.writeHead(status, { 'content-type': type, 'cache-control': 'no-store' }); res.end(typeof body === 'string' ? body : JSON.stringify(body)); };

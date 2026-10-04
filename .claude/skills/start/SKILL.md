@@ -9,5 +9,5 @@ description: Start a Oneshot session — pull the latest main and show team stat
    - fetches `origin` (a failed fetch is reported, the rest still runs);
    - on `main`: fast-forwards only — never resets, stashes or forces; if it can't, it reports ahead/behind;
    - on a branch or detached HEAD: reports how far behind `origin/main` it is (no rebase);
-   - prints uncommitted files, `tools/team.mjs whoami` and `tools/team.mjs status`.
+   - prints uncommitted files, `tools/team.mjs whoami`, this session's run and every active run (`tools/run.mjs`), and `tools/team.mjs status`.
 2. Report its output in a few lines. If `main` was not pulled or `whoami` failed, say so plainly. Then wait — start no work.
