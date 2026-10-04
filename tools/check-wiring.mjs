@@ -96,6 +96,15 @@ for (const a of AGENTS) {
   }
 }
 
+// 7 — PLAN.md §2's agents/ folder list and the folders on disk must agree (header check 6)
+const layout = plan.split(/^## 2\./m)[1]?.split(/^## /m)[0] ?? '';
+const planAgents = layout.match(/^[ \t]*agents\/[ \t]*\n[ \t]*((?:[\w-]+\/[ \t]*)+)$/m)?.[1].match(/[\w-]+(?=\/)/g) ?? [];
+if (!planAgents.length) fail.push('PLAN.md §2: no agents/ folder list found');
+else {
+  for (const a of planAgents) if (!AGENTS.includes(a)) fail.push(`PLAN.md §2 lists agents/${a}/, which does not exist`);
+  for (const a of AGENTS) if (!planAgents.includes(a)) fail.push(`agents/${a}/ is not listed in PLAN.md §2`);
+}
+
 for (const w of warn) console.log(`WARN  ${w}`);
 for (const f of fail) console.log(`FAIL  ${f}`);
 console.log(`\n${AGENTS.length} agents · ${fail.length} failure(s) · ${warn.length} warning(s)`);
