@@ -1,0 +1,322 @@
+{
+ "390": {
+  "line_boxes": [
+   {
+    "x": 52,
+    "y": 362,
+    "w": 285,
+    "h": 52
+   },
+   {
+    "x": 93,
+    "y": 409,
+    "w": 205,
+    "h": 52
+   }
+  ],
+  "frames": {
+   "poster": {
+    "src": "http://127.0.0.1:8971/picked/dist/video/hero-m608.webm",
+    "mode": "poster",
+    "median": 9.02,
+    "p10_lightest": 3.34,
+    "min": 1.41,
+    "share_under_3": 0.069,
+    "mean_rgb": [
+     88,
+     83,
+     77
+    ]
+   },
+   "0.5": {
+    "frame": "m-0.5.jpg",
+    "median": 9.22,
+    "p10_lightest": 3.57,
+    "min": 1.74,
+    "share_under_3": 0.049,
+    "mean_rgb": [
+     84,
+     81,
+     73
+    ]
+   },
+   "2.0": {
+    "frame": "m-2.0.jpg",
+    "median": 7.08,
+    "p10_lightest": 2.75,
+    "min": 1.63,
+    "share_under_3": 0.121,
+    "mean_rgb": [
+     92,
+     92,
+     85
+    ]
+   },
+   "3.4": {
+    "frame": "m-3.4.jpg",
+    "median": 5.29,
+    "p10_lightest": 3.48,
+    "min": 1.76,
+    "share_under_3": 0.033,
+    "mean_rgb": [
+     103,
+     101,
+     101
+    ]
+   },
+   "4.2": {
+    "frame": "m-4.2.jpg",
+    "median": 17.22,
+    "p10_lightest": 4.82,
+    "min": 2.81,
+    "share_under_3": 0.002,
+    "mean_rgb": [
+     36,
+     40,
+     45
+    ]
+   },
+   "4.8": {
+    "frame": "m-4.8.jpg",
+    "median": 16.41,
+    "p10_lightest": 4.18,
+    "min": 2.73,
+    "share_under_3": 0.004,
+    "mean_rgb": [
+     55,
+     61,
+     66
+    ]
+   },
+   "5.4": {
+    "frame": "m-5.4.jpg",
+    "median": 16.34,
+    "p10_lightest": 4.53,
+    "min": 2.9,
+    "share_under_3": 0,
+    "mean_rgb": [
+     46,
+     48,
+     53
+    ]
+   },
+   "6.5": {
+    "frame": "m-6.5.jpg",
+    "median": 13.1,
+    "p10_lightest": 6.03,
+    "min": 1.78,
+    "share_under_3": 0.049,
+    "mean_rgb": [
+     32,
+     62,
+     79
+    ]
+   },
+   "7.5": {
+    "frame": "m-7.5.jpg",
+    "median": 10.59,
+    "p10_lightest": 8.84,
+    "min": 1.87,
+    "share_under_3": 0.001,
+    "mean_rgb": [
+     28,
+     68,
+     85
+    ]
+   },
+   "8.5": {
+    "frame": "m-8.5.jpg",
+    "median": 6.09,
+    "p10_lightest": 3.66,
+    "min": 1.56,
+    "share_under_3": 0.038,
+    "mean_rgb": [
+     70,
+     94,
+     107
+    ]
+   },
+   "9.0": {
+    "frame": "m-9.0.jpg",
+    "median": 4.68,
+    "p10_lightest": 2.8,
+    "min": 2.08,
+    "share_under_3": 0.16,
+    "mean_rgb": [
+     90,
+     105,
+     119
+    ]
+   },
+   "9.8": {
+    "frame": "m-9.8.jpg",
+    "median": 5.03,
+    "p10_lightest": 3.61,
+    "min": 1.91,
+    "share_under_3": 0.03,
+    "mean_rgb": [
+     75,
+     98,
+     110
+    ]
+   }
+  }
+ },
+ "1440": {
+  "line_boxes": [
+   {
+    "x": 423,
+    "y": 415,
+    "w": 594,
+    "h": 61
+   }
+  ],
+  "frames": {
+   "poster": {
+    "src": "http://127.0.0.1:8971/picked/dist/video/hero-d1728.webm",
+    "mode": "poster",
+    "median": 6.15,
+    "p10_lightest": 3.19,
+    "min": 1.44,
+    "share_under_3": 0.091,
+    "mean_rgb": [
+     97,
+     93,
+     94
+    ]
+   },
+   "0.5": {
+    "frame": "d-0.5.jpg",
+    "median": 6.35,
+    "p10_lightest": 3.86,
+    "min": 1.56,
+    "share_under_3": 0.028,
+    "mean_rgb": [
+     92,
+     89,
+     90
+    ]
+   },
+   "2.0": {
+    "frame": "d-2.0.jpg",
+    "median": 7,
+    "p10_lightest": 3.43,
+    "min": 1.4,
+    "share_under_3": 0.069,
+    "mean_rgb": [
+     90,
+     89,
+     86
+    ]
+   },
+   "3.4": {
+    "frame": "d-3.4.jpg",
+    "median": 5.85,
+    "p10_lightest": 4.3,
+    "min": 2.96,
+    "share_under_3": 0,
+    "mean_rgb": [
+     93,
+     98,
+     104
+    ]
+   },
+   "4.2": {
+    "frame": "d-4.2.jpg",
+    "median": 14.84,
+    "p10_lightest": 3.63,
+    "min": 2.91,
+    "share_under_3": 0,
+    "mean_rgb": [
+     66,
+     73,
+     78
+    ]
+   },
+   "4.8": {
+    "frame": "d-4.8.jpg",
+    "median": 5.64,
+    "p10_lightest": 3.65,
+    "min": 2.97,
+    "share_under_3": 0,
+    "mean_rgb": [
+     71,
+     79,
+     83
+    ]
+   },
+   "5.4": {
+    "frame": "d-5.4.jpg",
+    "median": 7.64,
+    "p10_lightest": 3.77,
+    "min": 3.04,
+    "share_under_3": 0,
+    "mean_rgb": [
+     68,
+     75,
+     80
+    ]
+   },
+   "6.5": {
+    "frame": "d-6.5.jpg",
+    "median": 13.2,
+    "p10_lightest": 3.69,
+    "min": 1.53,
+    "share_under_3": 0.075,
+    "mean_rgb": [
+     36,
+     65,
+     81
+    ]
+   },
+   "7.5": {
+    "frame": "d-7.5.jpg",
+    "median": 10.59,
+    "p10_lightest": 8.79,
+    "min": 1.74,
+    "share_under_3": 0,
+    "mean_rgb": [
+     28,
+     68,
+     85
+    ]
+   },
+   "8.5": {
+    "frame": "d-8.5.jpg",
+    "median": 5.55,
+    "p10_lightest": 3.54,
+    "min": 1.92,
+    "share_under_3": 0.026,
+    "mean_rgb": [
+     80,
+     105,
+     119
+    ]
+   },
+   "9.0": {
+    "frame": "d-9.0.jpg",
+    "median": 4.14,
+    "p10_lightest": 2.41,
+    "min": 1.76,
+    "share_under_3": 0.179,
+    "mean_rgb": [
+     104,
+     120,
+     134
+    ]
+   },
+   "9.8": {
+    "frame": "d-9.8.jpg",
+    "median": 4.77,
+    "p10_lightest": 3.17,
+    "min": 1.42,
+    "share_under_3": 0.084,
+    "mean_rgb": [
+     87,
+     113,
+     125
+    ]
+   }
+  }
+ }
+}

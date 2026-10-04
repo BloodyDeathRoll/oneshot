@@ -1,0 +1,32 @@
+nojs phone home: hero video {"controls":false} video requests 0
+nojs phone submit without end -> handoff null validation: Please select an item in the list.
+nojs phone start 2027-02-20 + end 2026-10-31 -> handoff https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&end=2026-10-31&female=0&male=0&couple=1
+nojs phone correct submit -> handoff https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1 no duration
+nojs phone start options 2026-10-24,2026-10-31,2026-12-19,2027-01-23,2027-01-30,2027-02-13,2027-02-20,2027-02-27,2027-03-06,2027-03-13,2027-03-20,2027-03-27,2027-04-03
+nojs laptop home: hero video {"controls":false} video requests 0
+nojs laptop submit without end -> handoff null validation: Please select an item in the list.
+nojs laptop start 2027-02-20 + end 2026-10-31 -> handoff https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&end=2026-10-31&female=0&male=0&couple=1
+nojs laptop correct submit -> handoff https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1 no duration
+nojs laptop start options 2026-10-24,2026-10-31,2026-12-19,2027-01-23,2027-01-30,2027-02-13,2027-02-20,2027-02-27,2027-03-06,2027-03-13,2027-03-20,2027-03-27,2027-04-03
+reduced motion phone: video requests home+book 0 []
+reduced motion laptop: video requests home+book 0 []
+clock 2026-10-25, API blocked: chips ["2026-10-31","2026-12-19","2027-01-23","2027-01-30"] select ["2026-10-31","2026-12-19","2027-01-23"]
+home Deluxe "Choose this room" -> {"url":"book/?room=double#room","step":"room","level":"level-1-fomies","chosen":"double","bar":"From $1,466 pp Next"}
+then Next -> dates
+guests section height per quote (phone) 681,719,786,795,742,714,675,647,627 ctl 1 / 9 / 2 / 9 / 3 / 9 / 4 / 9 / 5 / 9 / 6 / 9 / 7 / 9 / 8 / 9 / 9 / 9date first (19 Dec) then couple: {
+  before: 'From $1,466 pp Next',
+  after: {
+    bar: 'From $1,466 pp Next',
+    start: '2026-12-19',
+    chip: { cls: 'chip', pressed: 'true', dis: true },
+    msgs: [ 'Packages start on a Saturday.', 'Up to 6 guests per booking.' ]
+  }
+}
+Next -> {
+  step: 'total',
+  focus: '<h2 class="script" id="t-total" tabindex="-1">Your total</h2>'
+}
+  }
+}
+total summary Level Level 2 – Rollers Dates 19 Dec 2026 – 26 Dec 2026 | 7 nights Guests 1 couple Room Shared Twin Room – 2 Beds Package, per person $1,466 Room, per person Not free on these dates Total per person — Total for 2 guests — Prices in USD | Live price from the booking engine 40% deposit to book, the rest 45 days before arrival. Booking less than 45 days ahead? You pay in full. || bar: $1,466 pp Continue booking
+handoff https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?couple=1&end=2026-12-26

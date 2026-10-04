@@ -1,0 +1,60 @@
+[
+ {
+  "name": "1440",
+  "vinfo": {
+   "src": "http://127.0.0.1:8971/picked/dist/video/hero-d1728.webm",
+   "w": 1728,
+   "h": 972,
+   "paused": false,
+   "t": 4.1865
+  },
+  "onLoad": 0,
+  "engine": 3,
+  "go": {
+   "g": [
+    {
+     "t": "Continue booking",
+     "top": 834,
+     "bottom": 886,
+     "bg": "rgb(209, 64, 42)"
+    }
+   ],
+   "vh": 900,
+   "hash": "#total"
+  },
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ {
+  "name": "390",
+  "vinfo": {
+   "src": "http://127.0.0.1:8971/picked/dist/video/hero-m608.webm",
+   "w": 608,
+   "h": 1080,
+   "paused": false,
+   "t": 4.227225
+  },
+  "onLoad": 0,
+  "engine": 3,
+  "go": {
+   "g": [
+    {
+     "t": "Continue booking",
+     "top": 786,
+     "bottom": 834,
+     "bg": "rgb(183, 51, 31)"
+    }
+   ],
+   "vh": 844,
+   "hash": "#total"
+  },
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ]
+ }
+]

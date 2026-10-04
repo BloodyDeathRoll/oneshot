@@ -1,0 +1,30 @@
+tap 1: "Choose Level 2" card
+01-landed {"url":"book/?level=level-2-rollers#room","step":"room","bar":"From $1,466 pp Next","go":{"y":0,"b":0,"shown":false,"inView":true},"goHit":null,"next":{"y":786,"b":834,"shown":true,"inView":true},"media":{"h":0,"display":"none","on":["room-dorm"]},"sy":0,"docH":2394}
+engine calls on booking load 0 []
+03-room {"url":"book/?level=level-2-rollers#room","step":"room","bar":"From $1,466 pp Next","go":{"y":0,"b":0,"shown":false,"inView":true},"goHit":null,"next":{"y":786,"b":834,"shown":true,"inView":true},"media":{"h":0,"display":"none","on":["room-dorm"]},"sy":0,"docH":2394}
+03b-room-next-without-choice {"url":"book/?level=level-2-rollers#room","step":"room","bar":"From $1,466 pp Next","go":{"y":0,"b":0,"shown":false,"inView":true},"goHit":null,"next":{"y":786,"b":834,"shown":true,"inView":true},"media":{"h":0,"display":"none","on":["room-dorm"]},"sy":205,"docH":2394}
+focused after soft Next <input type="radio" name="room" value="dorm" form="none" style="">
+tap 2: Twin pill
+04-twin {"url":"book/?level=level-2-rollers#room","step":"room","bar":"From $1,466 pp Next","go":{"y":0,"b":0,"shown":false,"inView":true},"goHit":null,"next":{"y":786,"b":834,"shown":true,"inView":true},"media":{"h":0,"display":"none","on":["room-twin"]},"sy":178,"docH":2449}
+04a-twin-photo2 {"url":"book/?level=level-2-rollers#room","step":"room","bar":"From $1,466 pp Next","go":{"y":0,"b":0,"shown":false,"inView":true},"goHit":null,"next":{"y":786,"b":834,"shown":true,"inView":true},"media":{"h":0,"display":"none","on":["room-twin"]},"sy":178,"docH":2449}
+tap 3: "Choose this room"
+05-dates {"url":"book/?level=level-2-rollers&room=twin#dates","step":"dates","bar":"From $1,466 pp Next","go":{"y":0,"b":0,"shown":false,"inView":true},"goHit":null,"next":{"y":786,"b":834,"shown":true,"inView":true},"media":{"h":135,"display":"block","on":["dates"]},"sy":0,"docH":2840}
+chips before guests 13 past: []
+select options 13 past: [] first 2026-10-24
+tap 4: Couples +
+06-guests {"url":"book/?level=level-2-rollers&room=twin#dates","step":"dates","bar":"From $1,466 pp Next","go":{"y":0,"b":0,"shown":false,"inView":true},"goHit":null,"next":{"y":786,"b":834,"shown":true,"inView":true},"media":{"h":135,"display":"block","on":["dates"]},"sy":997,"docH":2840}
+chips after guests 13 past: [] disabled: 2026-12-19
+choosing 2027-02-20
+tap 5: check-in chip 2027-02-20
+07-dates-filled {"url":"book/?level=level-2-rollers&room=twin#dates","step":"dates","bar":"Total $3,092 Next","go":{"y":0,"b":0,"shown":false,"inView":true},"goHit":null,"next":{"y":786,"b":834,"shown":true,"inView":true},"media":{"h":135,"display":"block","on":["dates"]},"sy":371,"docH":2840}
+tap 6: Next
+08-total {"url":"book/?level=level-2-rollers&room=twin#total","step":"total","bar":"$3,092 Continue booking","go":{"y":786,"b":834,"shown":true,"inView":true},"goHit":true,"next":{"y":0,"b":0,"shown":false,"inView":true},"media":{"h":135,"display":"block","on":["total"]},"sy":0,"docH":2480}
+summary Level Level 2 – Rollers Dates 20 Feb 2027 – 27 Feb 2027 | 7 nights Guests 1 couple Room Shared Twin Room – 2 Beds Package, per person $1,466 Room, per person +$80 Total per person $1,546 Total for 2 guests $3,092 Prices in USD | Live price from the booking engine 40% deposit to book, the rest 45 days before arrival. Booking less than 45 days ahead? You pay in full.
+after back #dates dates
+after forward #total total
+tap 7: "Continue booking"
+HANDOFF https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&couple=1&end=2027-02-27
+handoff params {"start":"2027-02-20","couple":"1","end":"2027-02-27"} has duration: false start+end: true
+taps from home to hand-off, entry tap included: 7
+api calls 3 ["GET /public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities","GET /public/accommodations/availabilities","POST /public/packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items"]
+errors []
