@@ -10,8 +10,10 @@ var ENGINE = F.getAttribute('action').replace(/[^/]+$/, '');
 var API = D.engine.api;
 var BD = 'business_domain=' + D.engine.businessDomain;
 var LEVELS = D.levels;
-/* build-time snapshot: lessons[].price (7 nights) and the engine's room supplements, per person: one guest / a couple sharing */
-var SNAP = {base7: D.snap.base7, supp: function(k, g){ var r = D.snap.rooms[k]; return r ? ((g.n === 2 && g.couple === 1) ? r.couple : r.one) : null; }};
+/* build-time snapshot: lessons[].price (7 nights) and the engine's room supplements, per person: one guest / a couple sharing.
+   Every price is rounded to whole dollars once, where it enters (snapshot or live), so the lines and the totals on the page
+   always add up (must-fix 7: $80.025 + $1,466 used to be rounded only at display) */
+var SNAP = {base7: Math.round(D.snap.base7), supp: function(k, g){ var r = D.snap.rooms[k]; return r ? Math.round((g.n === 2 && g.couple === 1) ? r.couple : r.one) : null; }};
 var ROOMS = {};
 var STEPS = ['level', 'room', 'dates', 'total'];
 var live = null;
@@ -37,7 +39,7 @@ if (!LEVELS[q.get('level')] && ROOMS[q.get('room')]) $$('input[name=level]').for
 /* room selector (Dorm / Twin / Deluxe double) [week]; on desktop the viewed room's gallery fills the media half */
 var roomBox = $('#room .room-box');
 var tabs = GS.roomViewer(roomBox, function(){ if (cur === 'room') show('room'); });
-function viewed(){ var t = tabs.tabs.filter(function(x){ return x.getAttribute('aria-selected') === 'true'; })[0]; return t ? t.getAttribute('aria-controls').replace('b-room-', '') : 'dorm'; }
+function viewed(){ var t = tabs.tabs.filter(function(x){ return x.getAttribute('aria-selected') === 'true'; })[0]; return t ? t.getAttribute('aria-controls').replace('b-room-', '') : Object.keys(ROOMS)[0]; }
 function chosenTab(){ var r = room(); tabs.tabs.forEach(function(t){ t.classList.toggle('chosen', !!r && t.getAttribute('aria-controls') === 'b-room-' + r); }); }
 (function(){ var k = Object.keys(ROOMS).indexOf(room()); if (k > 0) tabs.select(k); chosenTab(); })();
 
@@ -278,10 +280,10 @@ function refreshQuote(){
     var supp = {dorm: null, twin: null, double: null};
     list.forEach(function(a){
       var t = (a.translations && a.translations.en && a.translations.en.title) || '';
-      $$('.room-panel').forEach(function(c){ if (c.dataset.engineTitle === t) supp[c.dataset.room] = a.price && typeof a.price.from === 'number' ? a.price.from : 0; });
+      $$('.room-panel').forEach(function(c){ if (c.dataset.engineTitle === t) supp[c.dataset.room] = a.price && typeof a.price.from === 'number' ? Math.round(a.price.from) : 0; });
     });
     if (lk !== liveKey()) return;
-    live = {key: lk, basePP: tot.base / g.n, supp: supp}; liveFailed = false;
+    live = {key: lk, basePP: Math.round(tot.base / g.n), supp: supp}; liveFailed = false;
     var free = Object.keys(supp).filter(function(k){ return supp[k] != null; });
     live.only = free.length === 1 ? free[0] : null;
     render();
