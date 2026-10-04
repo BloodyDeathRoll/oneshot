@@ -15,7 +15,9 @@ import { S, INSTAGRAM } from '../lib/slots.mjs'
 
 const pre = ''
 
-/* ---- hero [sign] (schema v0.9 snippet: poster first, sources attached after first paint) */
+/* ---- hero [sign] (schema v0.9 snippet: poster first, sources attached after first paint). The <video> carries
+   no poster attribute: it stays transparent until it plays (.hero-v.on), so the <picture> under it is the poster,
+   and a phone does not also fetch the landscape poster it never shows. */
 const hv = heroVideo()
 const PHONE = '(max-width: 767px) and (orientation: portrait)'
 const heroSources = hv ? [
@@ -118,7 +120,7 @@ const css = fontFaces(pre) + siteCss + homeCss + lqCss
     </picture>
   )}
   {hv && (
-    <video class="hero-v" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" poster={hv.poster[1280].src} data-hero-video>
+    <video class="hero-v" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" data-hero-video>
       {heroSources.map(([s, media]) => <source data-src={s.src} type={s.type} media={media} />)}
     </video>
   )}
