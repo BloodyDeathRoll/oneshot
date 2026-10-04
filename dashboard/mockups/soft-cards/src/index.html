@@ -550,8 +550,10 @@ function setData(d){D=d;bizMap.clear();for(const b of D.businesses)bizMap.set(b.
 setData(D);
 const bizName=s=>bizMap.get(s)||s||'—';
 const shortName=s=>bizName(s).replace(' Surf Ahangama','').replace(' Surf Hostel','').replace('The ','');
-const agentLabel=a=>a==='human'?D.human:a;
-const initial=a=>a==='human'?D.human[0]:a==='creative-director'?'CD':a[0].toUpperCase();
+// a human line is labelled by the operator who made it, not by whoever is viewing
+const humanName=op=>(op&&D.team?.operators[op])||op||D.human;
+const agentLabel=(a,op)=>a==='human'?humanName(op):a;
+const initial=(a,op)=>a==='human'?humanName(op)[0]:a==='creative-director'?'CD':a[0].toUpperCase();
 const live=t=>{$('#live').textContent=t};
 
 /* tooltip: dark (Logip) or light (Shopeers) */
@@ -1031,9 +1033,9 @@ function renderFeed(){
   $('#act-meta').textContent=`last ${D.recent_activity.length} ledger lines`;
   for(const a of items){
     const li=el('li');
-    li.append(el('span',{class:'disc'+(a.agent==='human'?' human':''),'aria-hidden':'true',text:initial(a.agent)}));
+    li.append(el('span',{class:'disc'+(a.agent==='human'?' human':''),'aria-hidden':'true',text:initial(a.agent,a.operator)}));
     const b=el('div',{class:'body'});
-    b.append(el('div',{class:'l1row'},el('div',{class:'l1',text:agentLabel(a.agent)}),el('time',{datetime:a.ts,text:tShort(a.ts)})));
+    b.append(el('div',{class:'l1row'},el('div',{class:'l1',text:agentLabel(a.agent,a.operator)}),el('time',{datetime:a.ts,text:tShort(a.ts)})));
     b.append(el('div',{class:'l2'},el('span',{text:bizName(a.slug)}),' · ',el('b',{text:`${a.from??'start'} → ${a.to}`})));
     if(a.note)b.append(el('div',{class:'l3',title:a.note,text:a.note}));
     li.append(b);ol.append(li);
