@@ -29,8 +29,7 @@ mockups; his verbatim instructions are in that ledger line's note.
 Own booking pages: 1 tap hero → booking page, at most 8 taps to the Bookinglayer hand-off.
 `tools/funnel.mjs` 0.2.0 reports this as `hero_action` (measured on the composite: engine, 1 tap);
 rubric 0.3.1 / critic 0.4.2 / `schemas/audit.md` 0.1.3 use it when `audit.json.recommended.booking_flow`
-is set. **That field is not yet written in `dossier/global-surf-adventures/audit.json`** (the session's
-write was blocked by the permission classifier; Shahar to add it by hand).
+is set; `dossier/global-surf-adventures/audit.json` carries it.
 
 ## Media
 `media/global-surf-adventures.tsv`. Dossier photos restore from the web; clips from
