@@ -28,7 +28,7 @@ ffmpeg -v error -y -i $SRC/vid-009-source.mp4 -i $SRC/vid-010-source.mp4 -filter
 [a][b][b2][c]concat=n=4:v=1:a=0,fps=25[v]" -map "[v]" -an -c:v libx264 -crf 12 -preset slow -pix_fmt yuv420p $T/m.mp4
 ffmpeg -v error -y -i $T/d.mp4 -c:v libvpx-vp9 -b:v 0 -crf ${DCRF:-39} -row-mt 1 -deadline good -cpu-used 2 -an $OUT/hero-d1728.webm
 ffmpeg -v error -y -i $T/d.mp4 -c:v libx264 -crf ${DXCRF:-29} -preset slow -profile:v high -pix_fmt yuv420p -movflags +faststart -an $OUT/hero-d1728.mp4
-ffmpeg -v error -y -i $T/m.mp4 -c:v libvpx-vp9 -b:v 0 -crf ${MCRF:-37} -row-mt 1 -deadline good -cpu-used 2 -an $OUT/hero-m608.webm
+ffmpeg -v error -y -i $T/m.mp4 -c:v libvpx-vp9 -b:v 0 -crf ${MCRF:-35} -row-mt 1 -deadline good -cpu-used 2 -an $OUT/hero-m608.webm
 ffmpeg -v error -y -i $T/m.mp4 -c:v libx264 -crf ${MXCRF:-27} -preset slow -profile:v high -pix_fmt yuv420p -movflags +faststart -an $OUT/hero-m608.mp4
 # posters = first frame of each rendition (so the video starts where the poster is)
 ffmpeg -v error -y -ss 0.04 -i $T/d.mp4 -frames:v 1 -q:v 3 $OUT/hero-poster-d.jpg

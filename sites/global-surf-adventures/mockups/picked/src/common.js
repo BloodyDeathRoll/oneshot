@@ -54,6 +54,23 @@ GS.wire = function(root, track){
 document.querySelectorAll('[data-show]').forEach(function(r){ GS.wire(r, r.querySelector('.show-track')); });
 document.querySelectorAll('[data-panels]').forEach(function(r){ GS.wire(r, r.querySelector('.panels')); });
 
+/* ' | ' details: a separator whose next item starts a new line is hidden, so no line ends on a bare '|' */
+GS.seps = function(root){
+  (root || document).querySelectorAll('.di > .sep').forEach(function(s){
+    var a = s.parentNode.getBoundingClientRect(), n = s.parentNode.nextElementSibling;
+    s.style.visibility = (n && a.height && n.getBoundingClientRect().top >= a.bottom - 4) ? 'hidden' : '';
+  });
+};
+(function(){
+  var hosts = [].slice.call(document.querySelectorAll('.di')).map(function(d){ return d.parentNode; }).filter(function(h, i, l){ return l.indexOf(h) === i; });
+  if ('ResizeObserver' in window) { var ro = new ResizeObserver(function(es){ es.forEach(function(x){ GS.seps(x.target); }); }); hosts.forEach(function(h){ ro.observe(h); }); }
+  /* re-measure when a line comes into view too: fonts, images and hidden panels change the breaks after the first pass */
+  if ('IntersectionObserver' in window) { var io = new IntersectionObserver(function(es){ es.forEach(function(x){ if (x.isIntersecting) GS.seps(x.target); }); }); hosts.forEach(function(h){ io.observe(h); }); }
+  if (document.fonts) { document.fonts.ready.then(function(){ GS.seps(); }); document.fonts.addEventListener('loadingdone', function(){ GS.seps(); }); }  /* the web fonts arrive after load (non-blocking stylesheet) */
+  addEventListener('load', function(){ GS.seps(); });
+  GS.seps();
+})();
+
 /* tabs + room viewer [week] */
 GS.tabs = function(list, onchange){
   var tabs = [].slice.call(list.querySelectorAll('[role=tab]'));

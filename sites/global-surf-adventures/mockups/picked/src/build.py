@@ -26,10 +26,13 @@ def a(origin, name, kind='img'):
     rel = f'{kind}/{origin}/{name}'
     dst = os.path.join(DIST, rel)
     if not os.path.exists(src):
-        raise SystemExit('missing asset ' + src)
-    os.makedirs(os.path.dirname(dst), exist_ok=True)
-    if not os.path.exists(dst) or os.path.getmtime(dst) < os.path.getmtime(src):
-        shutil.copy2(src, dst)
+        # the source mockups' dist/img are not restored in every checkout (media out of git); a copy already here is kept
+        if not os.path.exists(dst):
+            raise SystemExit('missing asset ' + src)
+    else:
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        if not os.path.exists(dst) or os.path.getmtime(dst) < os.path.getmtime(src):
+            shutil.copy2(src, dst)
     USED.add(rel)
     return rel
 
@@ -77,8 +80,11 @@ FREE = dict(name=C['lessons'][3]['label'], one=X['levels'][3]['one_liner'])
 ROOMS = [dict(r, key=k, short=s, gallery=[g for g in r['gallery'] if g != 'img-078'])
          for r, k, s in zip(X['rooms'], ['dorm', 'twin', 'double'], ['Dorm', 'Twin', 'Deluxe double'])]  # short names: TEMPLATE-LABEL [week]
 
-def detail(s):
-    return '<span class="sep">|</span>'.join(e(p.strip()) for p in s.split('|'))
+def detail(s, drop=None):
+    """' | ' details: each item is kept whole (it wraps as a unit), its separator travels with it and is
+    hidden by common.js when the next item starts a new line, so no line ends on a bare ' | '."""
+    parts = [p.strip() for p in s.split('|') if p.strip() and p.strip() != drop]
+    return ''.join(f'<span class="di">{e(p)}' + ('<span class="sep">|</span>' if k < len(parts) - 1 else '') + '</span>' for k, p in enumerate(parts))
 
 # ------------------------------------------------------------------ icons [sign sprite + postcard inclusion icons]
 ICON = {
@@ -189,7 +195,7 @@ def wimg(pre, i, sizes, lazy=True, aspect_w=1400, aspect_h=933):  # try-your-wee
     return (f'<img src="{pre}{s14}" srcset="{pre}{s8} 800w, {pre}{s14} {big}w" sizes="{sizes}" width="{aspect_w}" height="{aspect_h}" alt="{e(alt(i))}"'
             + (' loading="lazy" decoding="async"' if lazy else '') + '>')
 
-def room_viewer(pre, action, idp=''):  # [week]
+def room_viewer(pre, action, idp='', cta_first=False):  # [week]
     pills = ''.join(f'<button type="button" role="tab" id="{idp}rt-{r["key"]}" aria-controls="{idp}room-{r["key"]}" aria-selected="{"true" if k == 0 else "false"}">{e(r["short"])}</button>' for k, r in enumerate(ROOMS))
     panels = ''
     for k, r in enumerate(ROOMS):
@@ -202,12 +208,11 @@ def room_viewer(pre, action, idp=''):  # [week]
   {show(pre, slides, r['label'] + ', photographs')}
   <div class="room-txt">
    <h3>{e(r['label'])}</h3>
+   {f'<p class="price" data-rprice>{price}</p><p class="rstate" data-rstate hidden></p>{action(r, k)}' if cta_first else ''}
    <p class="line">{e(r['line'])}</p>
    <p class="desc">{e(r['description'])}</p>
    <p class="detail">{detail(r['details'])}</p>
-   <p class="price" data-rprice>{price}</p>
-   <p class="rstate" data-rstate hidden></p>
-   {action(r, k)}
+   {'' if cta_first else f'<p class="price" data-rprice>{price}</p><p class="rstate" data-rstate hidden></p>{action(r, k)}'}
   </div>
  </div>
 </div>'''
@@ -279,7 +284,7 @@ def home():
     <h2 class="script center" id="t-levels">{e(ST['levels'])}</h2>
     <div class="panels-w" data-panels><div class="panels">{panels}</div><div class="dots panel-dots"></div></div>
     <div class="free">
-      <div><h3>{e(FREE['name'])}</h3><p>{e(FREE['one'])}</p><p class="detail">{detail(X['detail_lines']['freestylers'])}</p></div>
+      <div><h3>{e(FREE['name'])}</h3><p>{e(FREE['one'])}</p><p class="detail">{detail(X['detail_lines']['freestylers'], drop=FREE['name'])}</p></div>
       <a class="btn btn-soft" href="{e(WA)}">{ic('i-wa', 'wa')}{e(CT['freestylers'])}</a>
     </div>
   </div>
@@ -310,7 +315,7 @@ def home():
     rooms = f'''<section class="sec" id="rooms" aria-labelledby="t-rooms">
  <div class="wrap">
   <div class="sec-head split2"><h2 class="script" id="t-rooms">{e(ST['rooms'])}</h2><p>{e(tw1)}</p></div>
-  {room_viewer(pre, lambda r, k: f'<a class="btn btn-book" href="book/?room={r["key"]}">{e(CT["room"])}</a>')}
+  {room_viewer(pre, lambda r, k: f'<a class="btn btn-book" href="book/?room={r["key"]}#room">{e(CT["room"])}</a>')}
   <p class="detail rooms-note">{e(X['rooms_note'])}</p>
  </div>
 </section>'''
@@ -326,11 +331,12 @@ def home():
         s = {'booking': 'Booking.com'}.get(t['source'])
         cite = f'<b>{e(t["author"])}</b>' + (f'<span class="sep">|</span>{s}' if s else '')
         qs.append(f'<figure class="q"><blockquote>“{e(t["quote"])}”</blockquote><figcaption><cite>{cite}</cite></figcaption></figure>')
-    guests = f'''<section class="sec bg-soft" id="guests" aria-labelledby="t-guests"><div class="wrap guests">
+    g8 = a('p', 'img-023-800.webp'); g16 = a('p', 'img-023-1600.webp')
+    guests = f'''<section class="sec ink" id="guests" aria-labelledby="t-guests"><img class="ink-bg" src="{g16}" srcset="{g8} 800w, {g16} 1600w" sizes="100vw" width="1600" height="1067" alt="" loading="lazy" decoding="async"><div class="wrap guests">
 <div class="g-score"><h2 class="script" id="t-guests">{e(ST['guests'])}</h2>
-<div class="score"><span class="num">{R0['score']}</span><span class="src"><b>Booking.com</b>{R0['count']} reviews<span class="sep">|</span>28 Sep 2026</span></div>
+<div class="score"><span class="num">{R0['score']}</span><span class="src"><b>Booking.com</b>{detail(f"{R0['count']} reviews | 28 Sep 2026")}</span></div>
 <p class="detail">{detail(X['detail_lines']['rating_categories'])}</p></div>
-{show(pre, qs, 'Guest reviews', 'quotes', arrows=False)}
+{show(pre, qs, 'Guest reviews', 'quotes', arrows=False).replace('<div class="dots"></div></div>', f'<div class="dots"></div><div class="qnav"><button type="button" class="qp" aria-label="Previous review">{ic("i-l")}</button><span aria-live="polite">1 / {len(qs)}</span><button type="button" class="qx" aria-label="Next review">{ic("i-r")}</button></div></div>')}
 </div></section>'''
 
     waves = f'''<section class="sec" id="waves" aria-labelledby="t-waves"><div class="wrap waves">
@@ -341,7 +347,7 @@ def home():
 <div><div class="v" id="rosa-w">7<small>km/h</small></div><div class="k" id="rosa-wk">Wind, cross-shore</div></div>
 </div>
 <p class="rosa-link" id="rosa-plain"><a class="btn btn-soft" href="https://rosa.surf/spot/{ROSA_SPOT}">See today's forecast for {ROSA_NAME} on Rosa</a></p>
-<p class="detail" id="rosa-meta"><span id="rosa-time">Mon 28 Sep, 20:30</span><span class="sep">|</span><a class="credit" href="https://rosa.surf/spot/{ROSA_SPOT}">Forecast for {ROSA_NAME} by Rosa</a></p></div>
+<p class="detail" id="rosa-meta"><span class="di"><span id="rosa-time">Mon 28 Sep, 20:30</span><span class="sep">|</span></span><a class="credit di" href="https://rosa.surf/spot/{ROSA_SPOT}">Forecast for {ROSA_NAME} by Rosa</a></p></div>
 <div class="rosa-box" data-rosa="https://rosa.surf/widget/?spot={ROSA_SPOT}&amp;theme=light&amp;units=metric" data-title="Rosa surf forecast - {ROSA_NAME}">
 <div class="fallback"><a class="btn btn-soft" href="https://rosa.surf/spot/{ROSA_SPOT}">See today's forecast for {ROSA_NAME} on Rosa</a></div></div>
 </div></section>'''

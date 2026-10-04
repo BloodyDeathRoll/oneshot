@@ -39,6 +39,7 @@ h3{font-weight:600;font-size:26px;line-height:1.2;letter-spacing:-.005em;margin-
 .detail b{font-weight:600;color:var(--ink)}
 .small{font-size:15px;color:var(--ink2)}
 .sep{opacity:.45;padding:0 .35em}
+.di{display:inline-block}  /* one ' | ' item: wraps as a unit; common.js hides its separator at a line end */
 
 /* buttons [sign] */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:10px;border:0;
