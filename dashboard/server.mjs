@@ -134,7 +134,10 @@ for (const rel of ['ledger.jsonl', 'activity.jsonl', 'runs', 'proposals', 'sites
 }
 if (LEDGER !== join(ROOT, 'ledger.jsonl') && existsSync(LEDGER)) watch(LEDGER, () => notify('ledger'));
 // What the other operator merged reaches this page through origin/main.
-if (SYNC_S > 0) { fetchMain(); setInterval(() => { if (fetchMain()) notify('origin/main'); }, SYNC_S * 1000).unref(); }
+if (SYNC_S > 0) {
+  const sync = async () => { if (await fetchMain()) notify('origin/main'); };
+  sync(); setInterval(sync, SYNC_S * 1000).unref();
+}
 
 // ---- http -----------------------------------------------------------------------------------------
 const send = (res, status, body, type = 'application/json') => { res.writeHead(status, { 'content-type': type, 'cache-control': 'no-store' }); res.end(typeof body === 'string' ? body : JSON.stringify(body)); };

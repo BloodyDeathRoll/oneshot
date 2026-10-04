@@ -8,7 +8,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { execFileSync } from 'node:child_process';
+import { execFileSync, execFile } from 'node:child_process';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 export const MAIN = 'origin/main';
@@ -16,11 +16,12 @@ const git = (...a) => execFileSync('git', a, { cwd: ROOT, encoding: 'utf8', stdi
 
 export function mainSha() { try { return git('rev-parse', '--verify', '-q', MAIN).trim(); } catch { return null; } }
 
-// git fetch origin main; true when origin/main moved.
+// git fetch origin main, without blocking the caller; resolves true when origin/main moved. Never
+// prompts for credentials; gives up after 20 s.
 export function fetch() {
   const before = mainSha();
-  try { execFileSync('git', ['fetch', '-q', 'origin', 'main'], { cwd: ROOT, stdio: 'ignore', timeout: 20_000 }); } catch { return false; }
-  return mainSha() !== before;
+  return new Promise((done) => execFile('git', ['fetch', '-q', 'origin', 'main'], { cwd: ROOT, timeout: 20_000, env: { ...process.env, GIT_TERMINAL_PROMPT: '0' } },
+    (err) => done(!err && mainSha() !== before)));
 }
 
 // A file as it is on origin/main, or null (no remote, or not there).

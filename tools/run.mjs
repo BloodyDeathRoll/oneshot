@@ -50,7 +50,7 @@ export function currentRun({ operator } = {}) {
     : `${op} has no active run (active: ${active}): create ${RUNS_DIR}/<run_id>.yaml with operator: ${op}, or set ONESHOT_RUN=<run_id>`);
 }
 
-if (process.argv[1] && process.argv[1].endsWith('run.mjs')) {
+if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   try {
     if (process.argv[2] === 'list') {
       for (const r of listRuns()) console.log(`${r.run_id}\t${r.operator ?? '-'}\t${r.status}`);
