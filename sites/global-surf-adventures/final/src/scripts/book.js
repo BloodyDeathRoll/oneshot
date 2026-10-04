@@ -20,7 +20,7 @@ function $(s, r){ return (r || document).querySelector(s); }
 function $$(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
 $$('.room-panel').forEach(function(p){ ROOMS[p.dataset.room] = $('h3', p).textContent; });
 function money(x){ return '$' + Math.round(x).toLocaleString('en-US'); }  /* whole dollars on the page; the engine works out the cents */
-function level(){ return $('input[name=level]:checked').value; }
+function level(){ var r = $('input[name=level]:checked'); return r ? r.value : null; }  /* null when the visitor came from a room and has not chosen yet */
 function room(){ var r = $('input[name=room]:checked'); return r ? r.value : null; }  /* null until the visitor chooses */
 function nights(){ return +$('input[name=nights]:checked').value; }
 function guests(){ var f = +$('#f-female').value || 0, m = +$('#f-male').value || 0, c = +$('#f-couple').value || 0; return {female: f, male: m, couple: c, n: f + m + 2 * c}; }
@@ -31,6 +31,8 @@ function fmt(iso){ var t = new Date(iso + 'T12:00:00Z'); return t.toLocaleDateSt
 var q = new URLSearchParams(location.search);
 if (LEVELS[q.get('level')]) $('input[name=level][value="' + q.get('level') + '"]').checked = true;
 if (ROOMS[q.get('room')]) $('input[name=room][value="' + q.get('room') + '"]').checked = true;
+/* a room chosen on the home page says nothing about the level: no level is assumed (must-fix 3) */
+if (!LEVELS[q.get('level')] && ROOMS[q.get('room')]) $$('input[name=level]').forEach(function(r){ r.checked = false; });
 
 /* room selector (Dorm / Twin / Deluxe double) [week]; on desktop the viewed room's gallery fills the media half */
 var roomBox = $('#room .room-box');
@@ -90,7 +92,7 @@ $$('.stp').forEach(function(w){
 var media = $$('.bk-media .m'), booted = false, cur = 'level';
 var wide = matchMedia('(min-width: 901px)');
 function show(k){
-  var want = k === 'level' ? level() : k === 'room' ? 'room-' + viewed() : k;
+  var want = k === 'level' ? (level() || Object.keys(LEVELS)[0]) : k === 'room' ? 'room-' + viewed() : k;
   media.forEach(function(m){ m.classList.toggle('on', m.dataset.m === want); });
   /* step photographs load when their step is first shown, and the next one just before */
   [want, STEPS[STEPS.indexOf(k) + 1]].forEach(function(n){ var im = $('.bk-media [data-m="' + n + '"] img[data-src]'); if (im) { im.src = im.dataset.src; im.removeAttribute('data-src'); } });
@@ -116,7 +118,7 @@ function navState(){
   goBtn.hidden = cur !== 'total' || blocked; fixBtn.hidden = cur !== 'total' || !blocked;
   fixBtn.dataset.to = (!dateOk() || noneFree()) ? 'dates' : 'room';
   fixBtn.firstChild.textContent = fixBtn.dataset.to === 'dates' ? D.t.changeDates : D.t.changeRoom;
-  var soft = cur === 'room' && !room();
+  var soft = (cur === 'room' && !room()) || (cur === 'level' && !level());
   next.classList.toggle('btn-book', !soft); next.classList.toggle('btn-soft', soft);
 }
 function go(k, how){
@@ -143,6 +145,12 @@ function go(k, how){
 var furthest = 0;
 function reached(j){ return j <= furthest; }
 function advance(k){ furthest = Math.max(furthest, STEPS.indexOf(k)); go(k, 'push'); }
+function levelOk(){
+  if (level()) return true;
+  if (cur !== 'level') go('level', 'push');
+  var pk = $('.pick'); if (pk) { $('input', pk).focus({preventScroll: true}); pk.classList.remove('nudge'); void pk.offsetWidth; pk.classList.add('nudge'); }
+  return false;
+}
 function roomOk(force){
   if (room() && !force) return true;
   if (cur !== 'room') go('room', 'push');
@@ -161,6 +169,7 @@ fixBtn.addEventListener('click', function(){ var k = fixBtn.dataset.to; if (k ==
 $$('[data-to-room]').forEach(function(b){ b.addEventListener('click', function(){ roomOk(true); }); });
 next.addEventListener('click', function(){
   var i = STEPS.indexOf(cur);
+  if (cur === 'level' && !levelOk()) return;
   if (cur === 'room' && !roomOk()) return;
   if (cur === 'dates' && (!datesOk() || !roomOk())) return;
   advance(STEPS[i + 1]);
@@ -172,7 +181,7 @@ back.addEventListener('click', function(){
   if (depth > 0 && history.state && history.state.from === prev) { history.back(); }
   else go(prev, 'push');
 });
-prog.forEach(function(a){ a.addEventListener('click', function(ev){ ev.preventDefault(); var k = a.dataset.go; if (k === cur) return; var j = STEPS.indexOf(k); if (j > STEPS.indexOf('room') && !roomOk()) return; if (j > STEPS.indexOf('dates') && !datesOk()) return; advance(k); }); });
+prog.forEach(function(a){ a.addEventListener('click', function(ev){ ev.preventDefault(); var k = a.dataset.go; if (k === cur) return; var j = STEPS.indexOf(k); if (j > 0 && !levelOk()) return; if (j > STEPS.indexOf('room') && !roomOk()) return; if (j > STEPS.indexOf('dates') && !datesOk()) return; advance(k); }); });
 addEventListener('popstate', function(){ go(location.hash.slice(1) || 'level', 'pop'); });
 /* choosing a room shows "Chosen", then moves on to dates; tapping a level card moves on to the room
    (pointer taps only: arrow keys inside the radio group must not jump steps) */
@@ -180,14 +189,14 @@ $$('input[name=room]').forEach(function(r){ r.addEventListener('click', function
 $$('.pick').forEach(function(l){ l.addEventListener('click', function(ev){ if (!ev.detail || ev.target.tagName === 'INPUT') return; setTimeout(function(){ if (cur === 'level') advance('room'); }, calm ? 0 : 320); }); });
 
 /* keep the choices in the URL, so a reload or a shared link keeps them */
-function syncURL(){ var u = new URL(location.href); u.searchParams.set('level', level()); if (room()) u.searchParams.set('room', room()); else u.searchParams.delete('room'); history.replaceState(history.state, '', u); }
+function syncURL(){ var u = new URL(location.href); if (level()) u.searchParams.set('level', level()); if (room()) u.searchParams.set('room', room()); else u.searchParams.delete('room'); history.replaceState(history.state, '', u); }
 
 /* the summary */
 function render(){
-  var lv = level(), g = guests(), rm = room(), st = $('#f-start').value, n = nights();
-  $$('[data-incl-list]').forEach(function(l){ l.hidden = l.dataset.inclList !== LEVELS[lv].n; });
+  var lv = level(), LV = LEVELS[lv] || null, g = guests(), rm = room(), st = $('#f-start').value, n = nights();
+  $$('[data-incl-list]').forEach(function(l){ l.hidden = l.dataset.inclList !== (LV ? LV.n : '1'); });
   syncChips(); chosenTab();
-  $('[data-s=level]').textContent = LEVELS[lv].name;
+  $('[data-s=level]').textContent = LV ? LV.name : '—';
   $('[data-s=dates]').textContent = st ? fmt(st) + ' – ' + fmt(addDays(st, n)) + ' | ' + n + ' nights' : 'Choose a Saturday';
   var parts = guestParts(g);
   $('[data-s=guests]').textContent = parts.length ? parts.join(', ') : '—';
@@ -224,9 +233,10 @@ function render(){
   });
   /* WhatsApp message carries the choices */
   var wa = $('[data-wa]'); var base = D.wa ? D.wa.base : null;
-  var msg = (D.wa ? D.wa.prefix + ' ' : '') + LEVELS[lv].name + (st ? ', check-in ' + fmt(st) + ', ' + n + ' nights' : '') + (parts.length ? ', ' + parts.join(', ') : '') + (rm ? ', ' + ROOMS[rm] : '') + '.';
-  if (wa && base) wa.href = base + '?text=' + encodeURIComponent(msg);
-  F.action = ENGINE + lv;
+  var bits = [LV ? LV.name : '', st ? 'check-in ' + fmt(st) : '', st ? n + ' nights' : ''].concat(parts, rm ? [ROOMS[rm]] : []).filter(Boolean);
+  var wmsg = (D.wa ? D.wa.prefix : '') + (bits.length ? ' ' + bits.join(', ') + '.' : '');
+  if (wa && base) wa.href = base + '?text=' + encodeURIComponent(wmsg);
+  F.action = ENGINE + (lv || Object.keys(LEVELS)[0]);
 }
 
 /* live data from the engine, only after the visitor has touched the booking controls */
@@ -235,7 +245,7 @@ function liveKey(){ var g = guests(); return [level(), $('#f-start').value, nigh
 function timeout(p, ms){ return Promise.race([p, new Promise(function(_, rej){ setTimeout(function(){ rej(new Error('timeout')); }, ms); })]); }
 function getJSON(u, opt){ return timeout(fetch(u, opt).then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); }), 7000); }
 function refreshDates(){
-  var g = guests(); if (!g.n) return; var id = LEVELS[level()].id;
+  var g = guests(); if (!g.n || !level()) return; var id = LEVELS[level()].id;
   var dk = level() + '|' + g.female + '|' + g.male + '|' + g.couple; if (dk === dateKey) return; dateKey = dk;
   var today = new Date().toISOString().slice(0, 10), end = addDays(today, 300);
   getJSON(API + 'products/' + id + '/availabilities?format=choosable&show_available_only=1&mode=checkin&start=' + today + '&end=' + end + '&female=' + g.female + '&male=' + g.male + '&couple=' + g.couple + '&' + BD).then(function(j){
@@ -254,7 +264,7 @@ function refreshDates(){
   }).catch(function(){ dateKey = ''; });
 }
 function refreshQuote(){
-  var g = guests(), st = $('#f-start').value; if (!g.n || !st) return;
+  var g = guests(), st = $('#f-start').value; if (!g.n || !st || !level()) return;
   var lk = liveKey(), id = LEVELS[level()].id, end = addDays(st, nights());
   var gs = []; for (var i = 1; i <= g.n; i++) gs.push({id: 'g' + i + '-' + Date.now(), index: i});
   var roomsP = getJSON(API + 'accommodations/availabilities?product=' + id + '&start=' + st + '&end=' + end + '&currency=USD&female=' + g.female + '&male=' + g.male + '&couple=' + g.couple + '&' + BD);
@@ -285,7 +295,7 @@ F.addEventListener('change', function(e){
 /* hand-off: GET to the engine's product with start, end (never duration) and the guest mix */
 F.addEventListener('submit', function(ev){
   /* never an end without a start, never dates or a room the engine has just said no to */
-  if (!roomOk() || !datesOk() || !roomFree()) { ev.preventDefault(); if (!roomFree()) roomOk(true); return; }
+  if (!levelOk() || !roomOk() || !datesOk() || !roomFree()) { ev.preventDefault(); if (!roomFree()) roomOk(true); return; }
   var st = sel.value;
   if (!st) { ev.preventDefault(); return; }
   var e = document.createElement('input'); e.type = 'hidden'; e.name = 'end'; e.value = addDays(st, nights()); F.appendChild(e);

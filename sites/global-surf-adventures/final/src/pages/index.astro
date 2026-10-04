@@ -51,8 +51,9 @@ const weekSlides = S.week.map((n) => slotRow(n)).filter(Boolean)
 /* ---- rooms [week] */
 const roomsBlock = block('about', 1)
 const roomsLead = paras(roomsBlock?.body)[0] ?? ''
-/* "Choose this room" opens the booking page on the Level step with that room kept (must-fix 3) */
-const roomAction = (r) => `<a class="btn btn-book" href="book/?room=${r.key}#room">${e(CT.room)}</a>`
+/* "Choose this room" opens the booking page on the Level step with that room kept and no level
+   assumed (must-fix 3: it used to land on the Room step with Level 1 marked done) */
+const roomAction = (r) => `<a class="btn btn-book" href="book/?room=${r.key}">${e(CT.room)}</a>`
 
 /* ---- feature [postcard] */
 const fRow = slotRow(S.feature)
