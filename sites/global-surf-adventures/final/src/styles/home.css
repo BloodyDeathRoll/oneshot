@@ -1,0 +1,213 @@
+/* ---------- hero [sign], new three-scene loop ---------- */
+.hero{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#CDE4EE;color:#fff}
+.hero-p,.hero-p img,.hero-v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-v{opacity:0;transition:opacity .3s}
+.hero-v.on{opacity:1}
+.hero-c{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:var(--hdr) var(--gut) 0}
+.hero h1{position:relative;color:#fff;font-family:var(--sans);font-weight:500;font-size:48px;line-height:1.2;letter-spacing:-.005em;
+  text-shadow:0 1px 2px rgba(0,0,0,.35),0 2px 18px rgba(0,0,0,.35),0 0 60px rgba(0,0,0,.28);margin:0 0 28px;text-wrap:balance}
+/* a soft local shade behind the title text only (not over the video) [sign round 10] */
+.hero h1::before{content:"";position:absolute;inset:-44px -84px;z-index:-1;pointer-events:none;background:radial-gradient(closest-side,rgba(16,20,34,.56),rgba(16,20,34,.3) 58%,rgba(16,20,34,0))}
+
+/* ---------- welcome: asymmetric split, big photo with a small print over its corner [postcard] ---------- */
+.split{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(40px,7vw,110px);align-items:center}
+.w-media{position:relative;padding-bottom:70px}
+.w-main{border-radius:22px;overflow:hidden;aspect-ratio:4/5;max-width:560px}
+.w-main img,.w-small img{width:100%;height:100%;object-fit:cover}
+.w-small{position:absolute;right:0;bottom:0;width:42%;aspect-ratio:4/5;border-radius:18px;overflow:hidden;box-shadow:0 0 0 10px #fff}
+.w-text .lead p{margin-bottom:1.1em}
+.w-text .detail{margin-top:28px}
+
+/* ---------- levels: three living 4:5 clips [sign] ---------- */
+.levels{padding:100px 0 100px}
+.levels .script{margin-bottom:44px}
+.panels{display:flex;gap:18px}
+.panel{flex:1 1 0;min-width:0;display:flex;flex-direction:column}
+.panel-media{display:block;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:#CFDCE4 center/cover no-repeat}
+.panel-media{position:relative}
+.panel-media img,.panel-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.panel-t{flex:1;display:flex;flex-direction:column;padding:24px 4px 0}
+.panel-t h3{font-size:27px}
+.panel-t p{margin-bottom:.5em}
+.panel-t .detail{margin-bottom:18px}
+.panel-t .btn{margin-top:auto;align-self:flex-start}
+.panel-dots{display:none}
+.free{display:flex;align-items:center;justify-content:space-between;gap:24px;background:#fff;border-radius:16px;padding:28px 32px;margin-top:56px}
+.free h3{font-size:24px}
+.free p{margin:0}
+.free .detail{margin-top:4px}
+.free .btn-soft{background:var(--soft)}
+
+/* ---------- included: full-bleed half photo + icon list [postcard] ---------- */
+.incl{display:grid;grid-template-columns:1fr 1fr;min-height:760px}
+.incl-media{position:relative;overflow:hidden}
+.incl-media picture,.incl-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.incl-body{padding:110px var(--edge) 110px clamp(40px,6vw,96px);align-self:center}
+.incl ul{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:22px 36px}
+.incl li{display:flex;gap:14px;align-items:flex-start;line-height:1.45}
+.incl li svg{width:28px;height:28px;flex:none;color:var(--ink);margin-top:-2px}
+.incl .note{margin-top:34px;color:var(--ink2);font-size:16px}
+.incl .btn{margin-top:6px}
+
+/* ---------- the week: text left, slideshow running off the right edge [postcard] ---------- */
+.week-grid{display:grid;grid-template-columns:minmax(0,470px) minmax(0,1fr);gap:clamp(40px,6vw,90px);align-items:center;padding-left:var(--edge)}
+.week-show .show-frame{border-radius:22px 0 0 22px}
+.week-show .dots{justify-content:flex-start}
+.week-text p{font-size:19px}
+
+/* ---------- rooms: centred header (title over the line) + room viewer with pills [week] ---------- */
+.sec-head.split2{text-align:center;margin-bottom:48px}
+.sec-head.split2 .script{margin:0 0 14px}
+.sec-head.split2 p{margin:0 auto;color:var(--ink2);font-size:18px;max-width:560px}
+.room{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:center}
+.room .show-track img{aspect-ratio:16/10}
+.room h3{font-size:32px;line-height:1.12;margin:0 0 10px}
+.room .line{font-size:20px;margin-bottom:14px}
+.room .desc{color:var(--ink2)}
+.room .price{margin:18px 0 24px;font-size:18px;font-weight:600}
+.room-panel[hidden]{display:none}
+.js .room-panel.enter{animation:roomIn .35s cubic-bezier(.2,.7,.2,1)}
+.js .room-panel.enter.back{animation-name:roomInBack}
+@keyframes roomIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+@keyframes roomInBack{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}
+.no-js .room-panel+.room-panel{margin-top:72px}
+.rooms-note{text-align:center;margin-top:36px}
+
+/* ---------- feature photograph [postcard] ---------- */
+.feature{position:relative;aspect-ratio:16/9;max-height:92vh;width:100%;overflow:hidden;display:grid;place-items:end center;padding-bottom:7%;color:#fff;text-align:center}
+.feature picture,.feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.feature p{position:relative;z-index:1;font:500 italic clamp(26px,2.9vw,40px)/1.25 var(--sans);letter-spacing:.005em;max-width:1000px;padding:0 var(--gut);margin:0;text-shadow:0 2px 26px rgba(0,0,0,.4);text-wrap:balance}
+
+/* ---------- guests: score column + big quote [postcard] ---------- */
+.guests{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:clamp(40px,7vw,120px);align-items:center}
+.score{display:flex;align-items:center;gap:20px;margin:10px 0 14px}
+.score .num{font:500 104px/1 var(--sans);letter-spacing:-.03em;color:var(--ink)}
+.score .src{font-size:16px;color:var(--ink2);line-height:1.5}
+.score .src b{display:block;color:var(--ink);font-weight:600;font-size:19px}
+/* the page's one ink moment: the guests' toast at the pool, toned into the palette's ink */
+.ink{position:relative;overflow:hidden;background:var(--ink);color:#fff}
+.ink-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.3;filter:grayscale(1) contrast(1.05);mix-blend-mode:luminosity}
+.ink>.wrap{position:relative}
+.ink .script,.ink .score .num,.ink .score .src b,.ink .q cite b{color:#fff}
+.ink .detail,.ink .score .src,.ink .q cite{color:rgba(255,255,255,.8)}
+.ink .dots button::after{background:#fff;opacity:.4}
+.ink .dots button[aria-current="true"]::after{opacity:1}
+.ink :focus-visible{outline-color:#fff}
+.q{margin:0;padding:0 4px}
+.q blockquote{margin:0 0 24px;font:400 clamp(24px,2.5vw,36px)/1.4 var(--sans);letter-spacing:-.01em}
+.q cite{font-style:normal;font-size:16px;color:var(--ink2)}
+.q cite b{color:var(--ink);font-weight:600}
+.quotes .show-track{align-items:flex-start;overflow-y:hidden;transition:height .35s ease}
+.qnav{display:none;align-items:center;gap:6px;margin-top:10px}
+.qnav button{width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;display:grid;place-items:center;cursor:pointer}
+.qnav button[disabled]{opacity:.35;cursor:default}
+.qnav span{min-width:64px;text-align:center;font-weight:600;font-variant-numeric:tabular-nums}
+.quotes .dots{justify-content:flex-start;margin-left:-14px;max-width:calc(100% + 14px)}
+
+/* ---------- waves, Rosa [postcard] ---------- */
+.credit{font-weight:600;display:inline-flex;align-items:center;min-height:44px}
+.waves{display:grid;grid-template-columns:1fr 420px;gap:80px;align-items:center}
+.now{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:12px 48px;margin:30px 0 22px}
+.now .v{font:500 40px/1.1 var(--sans);letter-spacing:-.02em}
+.now .v small{font-size:18px;font-weight:500;margin-left:4px}
+.now .k{font-size:14px;color:var(--ink2)}
+.rosa-box{position:relative;width:100%;max-width:420px;height:500px;border-radius:16px;overflow:hidden;background:var(--soft);display:grid;place-items:center;text-align:center;justify-self:end}
+.rosa-box iframe{width:100%;height:500px;border:0;display:block}
+.rosa-box .fallback{position:absolute;inset:0;display:grid;place-items:center;padding:24px}
+.rosa-box .btn,.rosa-link .btn{white-space:normal;text-align:center;line-height:1.3;padding:12px 22px}
+.rosa-box.off{display:none}
+.rosa-link{margin:26px 0 0}
+.js #rosa-plain:not(.on){display:none}
+.js #rosa-now:not(.ok),.js #rosa-meta:not(.ok){visibility:hidden}
+.no-js #rosa-now,.no-js #rosa-meta,.no-js .rosa-box{display:none}
+
+/* ---------- instagram: header row + snap row of tiles with dots [week] ---------- */
+.ig-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.ig-head .script{margin:0 0 6px}
+.ig-head p{margin:0;color:var(--ink2);font-size:19px}
+.ig-row{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.ig-row::-webkit-scrollbar{display:none}
+.ig-row a{flex:0 0 calc((100% - 4*16px)/4.4);scroll-snap-align:start;border-radius:14px;overflow:hidden}
+.ig-row img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;transition:transform .5s}
+.ig-row a:hover img{transform:scale(1.04)}
+#igDots{margin-top:14px}
+
+/* ---------- closing: photo left, the line in script right [postcard] ---------- */
+.closing{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:640px}
+.cl-media{position:relative;overflow:hidden}
+.cl-media picture,.cl-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cl-body{align-self:center;padding:96px var(--edge) 96px clamp(40px,6vw,110px);max-width:760px}
+.cl-body .script{margin-bottom:18px}
+.cl-body p{font-size:21px;line-height:1.55;color:var(--ink2);margin:0 0 36px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+
+/* ---------- phone booking bar [sign] ---------- */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:none;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#fff;box-shadow:0 -8px 24px rgba(20,24,40,.12);transform:translateY(110%);transition:transform .3s}
+.bar p{margin:0;font-size:15.5px}
+.bar .btn{min-height:48px}
+.bar.on{transform:none}
+.no-js .bar{display:none!important}
+
+@media (max-width:1000px){
+  .panels{flex-direction:column;gap:48px}
+  .waves{grid-template-columns:1fr;gap:40px}
+  .rosa-box{justify-self:center}
+  .room{grid-template-columns:1fr}
+}
+@media (max-width:900px){
+  .sec{padding:80px 0}
+  .split{grid-template-columns:minmax(0,1fr);gap:36px}
+  .welcome{padding-top:0}
+  .w-media{margin:0 calc(var(--gut)*-1);padding-bottom:56px}
+  .w-main{border-radius:0;max-width:none}
+  .w-small{width:40%;right:var(--gut);border-radius:14px;box-shadow:0 0 0 6px #fff}
+  .incl{grid-template-columns:minmax(0,1fr);min-height:0}
+  .incl-media{aspect-ratio:4/5}
+  .incl-body{padding:56px var(--gut) 80px}
+  .week-grid{grid-template-columns:minmax(0,1fr);padding-left:0}
+  .week-text{padding:0 var(--gut)}
+  .week-show .show-frame{border-radius:0}
+  .week-show .dots{justify-content:center}
+  .sec-head.split2{margin-bottom:32px}
+  .guests{grid-template-columns:minmax(0,1fr);gap:36px}
+  .score .num{font-size:84px}
+  .now{gap:10px 22px}
+  .now .v{font-size:28px;white-space:nowrap}
+  .ig-row a{flex-basis:calc((100% - 16px)/2.3)}
+  .closing{grid-template-columns:minmax(0,1fr);min-height:0}
+  .cl-media{aspect-ratio:4/5}
+  .cl-body{padding:56px var(--gut) 72px}
+  .cl-body .btn{width:100%}
+}
+@media (max-width:860px){ .bar{display:flex} }
+@media (max-width:620px){
+  body{font-size:17px}
+  .script{font-size:clamp(42px,11.4vw,50px);line-height:1.18}
+  .hero h1{font-size:41px;line-height:1.15;max-width:350px}
+  .hero .btn{min-width:250px}
+  .lead,.week-text p,.ig-head p{font-size:17.5px}
+  .levels{padding:60px 0 52px}
+  .levels .script{margin-bottom:28px}
+  .free{flex-direction:column;align-items:stretch;padding:24px;margin-top:28px}
+  .free .btn{width:100%}
+  .panels{flex-direction:row;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--gut));padding:0 var(--gut);scroll-padding:0 var(--gut)}
+  .panels::-webkit-scrollbar{display:none}
+  .panel{flex:0 0 82%;scroll-snap-align:start}
+  .panel-media{aspect-ratio:1/1}
+  .panel-t{padding-top:16px}
+  .panel-t .btn{align-self:stretch}
+  .panel-dots{display:flex}
+  .incl ul{grid-template-columns:1fr;gap:16px}
+  .room .show{margin:0 calc(var(--gut)*-1)}
+  .room .show-frame{border-radius:0}
+  .room h3{font-size:28px}
+  .room .btn{width:100%}
+  .feature{aspect-ratio:4/5;max-height:none}
+  .quotes .dots{display:none}
+  .js .qnav{display:flex}
+}
+@media (max-width:620px){
+  .hero h1{text-shadow:0 1px 2px rgba(0,0,0,.45),0 2px 14px rgba(0,0,0,.45),0 0 44px rgba(0,0,0,.35)}
+  .hero h1::before{inset:-28px -36px;background:radial-gradient(closest-side,rgba(16,20,34,.52),rgba(16,20,34,.28) 60%,rgba(12,22,34,0))}
+}
+@media (max-width:700px){.feature{padding-bottom:22%}}

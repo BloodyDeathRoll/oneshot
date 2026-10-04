@@ -1,0 +1,181 @@
+---
+/* Global Surf Lodge Kabalana — the standalone booking page, one step per screen (#level → #room →
+   #dates → #total). The picked mockup's book.py ported to Astro. JS off: the four steps stack as one
+   working GET form to the engine. The data book.js needs (levels, engine, snapshot, wording) is written
+   into the page as JSON from the same sources as the markup, never typed into the script. */
+import siteCss from '../../styles/site.css?raw'
+import homeCss from '../../styles/home.css?raw'
+import bookCss from '../../styles/book.css?raw'
+import commonJs from '../../scripts/common.js?raw'
+import bookJs from '../../scripts/book.js?raw'
+import {
+  c, G, CT, ST, B, e, detail, WA, waWith, levelPrice, LEVELS, FREE, ROOMS, slotRow, shapeOf, atLeast, FULL,
+  clip, fontFaces, SPRITE, ic, header, footer, show, wimg, roomViewer,
+} from '../../lib/site.mjs'
+import { S } from '../../lib/slots.mjs'
+
+const pre = '../'
+const steps = ['level', 'room', 'dates', 'total']
+
+/* media half [sign]: level clips (videos[3–5], desktop only; phones show the first-frame poster in a slim
+   band), the viewed room's gallery (desktop), then one photograph each for dates and total */
+const desk = LEVELS.map((L, k) => ({ L, cl: clip(3 + k) }))
+const roomLayers = ROOMS.map((r) => ({
+  r, slides: r.gallery.map((g) => `<figure>${wimg(g.file, g.alt, '(min-width: 901px) max(50vw, calc((100vh - 76px) * 1.5)), 100vw', pre)}</figure>`),
+}))
+const still = (n, w) => { const row = slotRow(n); const sh = row && shapeOf(row.filename, FULL); return sh ? atLeast(sh, w) : null }
+const dImg = still(S.dates, 1600), tImg = still(S.total, 1536)
+
+/* level picks: the home card posters (videos[0–2]) as thumbnails */
+const picks = LEVELS.map((L, k) => ({ L, th: clip(k)?.p[1280] ?? null, checked: k === 0 }))
+const inc = G.inclusions
+
+/* dates: the snapshot's Saturdays from the build's date on (book.js drops them again against the
+   visitor's own today) */
+const today = new Date().toISOString().slice(0, 10)
+const sats = G.snapshot.saturdays.filter((s) => s >= today)
+const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const fmt = (iso) => { const d = new Date(iso + 'T12:00:00Z'); return `${DAYS[d.getUTCDay()]} ${d.getUTCDate()} ${MON[d.getUTCMonth()]} ${d.getUTCFullYear()}` }
+const addDays = (iso, n) => { const d = new Date(iso + 'T12:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10) }
+const nojsEnd = sats.map((s) => ({ label: `From ${fmt(s)}`, opts: [7, 14, 21, 28].map((n) => ({ v: addDays(s, n), t: `${n} nights, to ${fmt(addDays(s, n))}` })) }))
+const stp = (nm, lab, mx) => `<div class="fl has stp"><input id="f-${nm}" name="${nm}" type="number" inputmode="numeric" min="0" max="${mx}" value="0"><label for="f-${nm}">${e(lab)}</label><button type="button" class="sb" data-d="-1" aria-label="${e(B.stepper_less)}, ${e(lab)}">−</button><button type="button" class="sb" data-d="1" aria-label="${e(B.stepper_more)}, ${e(lab)}">+</button></div>`
+
+/* total */
+const SL = B.summary_labels
+const [lpFrom, ...lpRest] = (levelPrice.split('|')[0] ?? '').trim().split(' ')
+const lpPP = lpRest.join(' ')
+const base7 = Math.min(...(c.lessons ?? []).filter((l) => typeof l.price === 'number').map((l) => l.price))
+
+/* rooms step: nothing is chosen until the visitor chooses; "Chosen": TEMPLATE-LABEL */
+const choose = (r) => `<label class="choose"><input type="radio" name="room" value="${r.key}" form="none"><span class="btn"><span class="c-no">${e(CT.room)}</span><span class="c-yes">${ic('i-check')}Chosen</span></span></label>`
+
+/* what book.js reads */
+const data = {
+  engine: G.engine,
+  levels: Object.fromEntries(LEVELS.map((L) => [L.slug, { name: L.name, id: L.productId, n: L.n }])),
+  snap: { base7, rooms: Object.fromEntries(ROOMS.map((r) => [r.key, { one: r.supplement.onePP, couple: r.supplement.couplePP }])), baseAsOf: G.snapshot.baseAsOf, roomsAsOf: G.snapshot.roomsAsOf },
+  wa: WA ? { base: WA.split('?')[0], prefix: new URLSearchParams(WA.split('?')[1] ?? '').get('text') ?? '' } : null,
+  b: B,
+}
+const css = fontFaces(pre) + siteCss + bookCss + homeCss.slice(homeCss.indexOf('.room{display:grid'), homeCss.indexOf('.rooms-note'))
+---
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{`Book your surf week | ${c.businessName}`}</title>
+<meta name="description" content="Choose your level, your room, your dates and guests. Prices from the booking engine.">
+<script is:inline>document.documentElement.className='js'</script>
+<style is:inline set:html={css}></style>
+</head>
+<body class="book">
+<Fragment set:html={SPRITE} />
+<Fragment set:html={header(pre, false)} />
+<main id="main" class="bk">
+  <div class="bk-media">
+    {desk.map(({ L, cl }, k) => (
+      <div class={k === 0 ? 'm on' : 'm'} data-m={L.slug} aria-hidden="true">
+        {cl && <img src={pre + cl.p[1280].src} width={cl.p[1280].width} height={cl.p[1280].height} alt="" loading={k === 0 ? undefined : 'lazy'} />}
+        {cl && <video muted loop playsinline preload="none" data-webm={pre + cl.v.tiers.d1920.webm?.src} data-mp4={pre + cl.v.tiers.d1920.mp4.src}></video>}
+      </div>
+    ))}
+    {roomLayers.map(({ r, slides }) => (
+      <div class="m m-room" data-m={`room-${r.key}`} set:html={show(slides, r.label + ', photographs', 'm-show')}></div>
+    ))}
+    {dImg && <div class="m" data-m="dates" aria-hidden="true"><img data-src={pre + dImg.webp} width={dImg.w} height={dImg.h} alt="" /></div>}
+    {tImg && <div class="m" data-m="total" aria-hidden="true"><img data-src={pre + tImg.webp} width={tImg.w} height={tImg.h} alt="" /></div>}
+  </div>
+  <div class="bk-col">
+  <ol class="prog" aria-label="Booking steps">
+    {steps.map((s, i) => <li><a href={`#${s}`} data-go={s}><span class="pn">{i + 1}</span><span class="pt">{B.step_pills[i]}</span></a></li>)}
+  </ol>
+  <form class="bk-steps" id="bk" method="get" action={G.engine.product + LEVELS[0].slug}>
+    <section class="step" id="level" data-media="level" aria-labelledby="t-level">
+      <p class="step-n">{B.step_counter.replace('{n}', '1').replace('{total}', '4')}</p>
+      <h1 class="script" id="t-level" tabindex="-1">{ST.book_level}</h1>
+      <div class="picks" role="radiogroup" aria-labelledby="t-level">
+        {picks.map(({ L, th, checked }) => (
+          <label class="pick"><input type="radio" name="level" value={L.slug} form="none" checked={checked} />
+            {th && <img class="pick-th" src={pre + th.src} width={th.width} height={th.height} alt="" loading="lazy" />}<span class="pick-t"><strong>{L.name}</strong><span>{L.oneLiner}</span><span class="detail" set:html={detail(levelPrice)}></span></span><span class="tick" set:html={ic('i-check')}></span></label>
+        ))}
+      </div>
+      <div class="free-s">
+        <p><strong>{FREE.name}</strong><br><span class="small">{FREE.one}</span>{FREE.detail && <Fragment><br><span class="detail" set:html={detail(FREE.detail)}></span></Fragment>}</p>
+        {WA && <a class="btn btn-soft" href={waWith(G.freestylers.whatsappText)} set:html={ic('i-wa', 'wa') + e(CT.freestylers)}></a>}
+      </div>
+      <h2 class="script sub">{ST.book_included}</h2>
+      {[1, 2, 3].map((k) => (
+        <ul class="ilist bk" data-incl-list={String(k)} hidden={k !== 1} set:html={(inc[k] ?? []).map((i) => `<li>${ic('ic-' + i.icon)}${e(i.text)}</li>`).join('')}></ul>
+      ))}
+      <p class="small">{inc.optionalExtra}</p>
+    </section>
+
+    <section class="step" id="room" data-media="room" aria-labelledby="t-room">
+      <p class="step-n">{B.step_counter.replace('{n}', '2').replace('{total}', '4')}</p>
+      <h2 class="script" id="t-room" tabindex="-1">{ST.book_room}</h2>
+      <Fragment set:html={roomViewer(pre, choose, { idp: 'b-', ctaFirst: true })} />
+      <p class="small rooms-note" data-rooms-note>{G.roomsNote}</p>
+    </section>
+
+    <section class="step" id="dates" data-media="dates" aria-labelledby="t-dates">
+      <p class="step-n">{B.step_counter.replace('{n}', '3').replace('{total}', '4')}</p>
+      <h2 class="script" id="t-dates" tabindex="-1">{ST.book_dates}</h2>
+      <p class="chips-l" id="l-chips" hidden>{B.field_checkin}</p>
+      <div class="chips" data-chips role="group" aria-labelledby="l-chips" hidden></div>
+      <div class="fl has" id="w-start">
+        <select id="f-start" name="start" required><option value="">{B.field_checkin_nojs_placeholder}</option>{sats.map((s) => <option value={s}>{fmt(s)}</option>)}</select>
+        <label for="f-start">{B.field_checkin}</label>
+        <svg class="chev"><use href="#i-chev"/></svg>
+      </div>
+      <p class="help small" id="h-start">{B.field_checkin_help}</p>
+      <fieldset class="seg"><legend>{B.field_nights}</legend><div class="seg-r">
+        {B.nights_options.map((n) => <label><input type="radio" name="nights" form="none" value={n} checked={n === '7'} /><span>{n}</span></label>)}
+      </div></fieldset>
+      <noscript><div class="fl has nojs-end"><select id="f-end" name="end" required><option value="">Choose your check-out</option>
+        {nojsEnd.map((g) => <optgroup label={g.label}>{g.opts.map((o) => <option value={o.v}>{o.t}</option>)}</optgroup>)}
+      </select><label for="f-end">Check-out</label><svg class="chev"><use href="#i-chev"/></svg></div></noscript>
+      <div class="guests" set:html={stp('female', B.field_women, 6) + stp('male', B.field_men, 6) + stp('couple', B.field_couples, 3)}></div>
+      <p class="help small">{B.guests_help}</p>
+    </section>
+
+    <section class="step" id="total" data-media="total" aria-labelledby="t-total">
+      <p class="step-n">{B.step_counter.replace('{n}', '4').replace('{total}', '4')}</p>
+      <h2 class="script" id="t-total" tabindex="-1">{ST.book_total}</h2>
+      <div class="sum" aria-live="polite">
+        <dl class="sum-g">
+          <div><dt>{SL.level}</dt><dd data-s="level">{LEVELS[0].name}</dd></div>
+          <div><dt>{SL.dates}</dt><dd data-s="dates">{B.field_checkin_nojs_placeholder}</dd></div>
+          <div><dt>{SL.guests}</dt><dd data-s="guests">—</dd></div>
+          <div><dt>{SL.room}</dt><dd data-s="room">—</dd></div>
+        </dl>
+        <dl class="sum-p">
+          <div><dt>{B.total_package}</dt><dd data-s="base">{'$' + base7.toLocaleString('en-US')}</dd></div>
+          <div><dt>{B.total_room}</dt><dd data-s="supp">{B.room_included}</dd></div>
+          <div><dt>{B.total_per_person}</dt><dd data-s="pp">{'$' + base7.toLocaleString('en-US')}</dd></div>
+          <div class="big"><dt data-s="alllabel">Total for 1 guest</dt><dd data-s="all">{'$' + base7.toLocaleString('en-US')}</dd></div>
+        </dl>
+        <p class="small" data-s="note">{B.currency_note} | {B.prices_snapshot.replace('{date}', G.snapshot.roomsAsOf)}</p>
+        <p class="small">{B.deposit}</p>
+      </div>
+      <noscript><div class="nojs-go">
+        {LEVELS.map((L) => <button class="btn btn-book btn-lg" type="submit" formaction={G.engine.product + L.slug}>Continue with Level {L.n}</button>)}
+      </div></noscript>
+      <p class="handoff">{B.handoff}</p>
+      <p class="small">{B.handoff_nothing_booked}</p>
+      {WA && <a class="btn btn-soft" data-wa href={WA} set:html={ic('i-wa', 'wa') + e(CT.whatsapp_footer)}></a>}
+    </section>
+  </form>
+  <div class="snav js-only" id="snav">
+    <button type="button" class="btn btn-soft back" data-back aria-label="Back" set:html={ic('i-l') + '<span>Back</span>'}></button>
+    <p class="snav-t" data-total={SL.total}><span data-s="barlabel">{lpFrom}</span> <strong data-s="bartotal">{lpPP}</strong></p>
+    <button type="button" class="btn btn-book next" data-next set:html={e(CT.step_next) + ic('i-r')}></button>
+    <button type="submit" form="bk" class="btn btn-book go" hidden set:html={e(CT.handoff) + ic('i-r')}></button>
+  </div>
+  </div>
+</main>
+<Fragment set:html={footer(pre)} />
+<script is:inline type="application/json" id="bk-data" set:html={JSON.stringify(data).replace(/</g, '\\u003c')}></script>
+<script is:inline set:html={commonJs + '\n' + bookJs}></script>
+</body>
+</html>
