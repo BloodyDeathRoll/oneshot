@@ -258,7 +258,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     if (state === 'pitched') return { group: 'pitched', label: 'pitched' };
     if (state === 'packaged') return { group: 'delivered', label: 'built + deployed, pitch not sent' };
     if (state === 'access_revoked' || state === 'handoff_verified') return { group: 'delivered', label: state };
-    if (regressed || DROP_RE.test(last.note ?? '')) return { group: 'dropped', label: 'dropped' };
+    if (regressed || (rank(state) < rank('approved') && DROP_RE.test(last.note ?? ''))) return { group: 'dropped', label: 'dropped' };
     if (state === 'scored') return { group: 'not_shortlisted', label: 'scored above threshold' };
     if (state === 'shortlisted') return runHasApprovals ? { group: 'not_approved', label: 'shortlisted, not approved' } : { group: 'gate', label: 'awaiting shortlist approval' };
     if (GATES[state]) return { group: 'gate', label: `awaiting: ${GATES[state]}` };
