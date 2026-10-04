@@ -1,0 +1,22 @@
+tap 1: hero Book package now
+api calls before interaction on book/ 0
+{"url":"/picked/dist/book/","sw":390,"nav":[]}
+tap 2: Level 2
+{"url":"/picked/dist/book/?level=level-2-rollers&room=dorm","sw":390,"nav":[]}
+tap 3: Next
+{"url":"/picked/dist/book/?level=level-2-rollers&room=dorm#room","sw":390,"nav":[]}
+tap 4: Twin pill
+tap 5: Choose this room
+{"url":"/picked/dist/book/?level=level-2-rollers&room=twin#dates","sw":390,"nav":[]}
+tap 6: Couples +
+chips 2026-10-03x 2026-10-24 2026-10-31 2026-12-19x 2027-01-23 2027-01-30 2027-02-13 2027-02-20 2027-02-27 2027-03-06 2027-03-13 2027-03-20 2027-03-27 2027-04-03
+tap 7: Saturday chip 2027-02-20
+{"url":"/picked/dist/book/?level=level-2-rollers&room=twin#dates","sw":390,"nav":[]}
+tap 8: Next
+{"url":"/picked/dist/book/?level=level-2-rollers&room=twin#total","sw":390,"nav":[]}
+summary Level: Level 2 – Rollers || Dates: 20 Feb 2027 – 27 Feb 2027 | 7 nights || Guests: 1 couple || Room: Shared Twin Room – 2 Beds || Package, per person: $1,466 || Room, per person: +$80.03 || Total per person: $1,546.03 || Total for 2 guests: $3,092.05 || Prices in USD | Live price from the booking engine / 40% deposit to book, the rest 45 days before arrival. Booking less than 45 days ahead? You pay in full.
+tap 9: Continue booking
+HANDOFF intercepted https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&couple=1&end=2027-02-27
+handoff https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&couple=1&end=2027-02-27 taps 9
+api calls 3 ["GET products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities?format=choosable&show_av","GET accommodations/availabilities?product=4b58b491-24fc-4fb8-a40d-2705df961db4&start=2027","POST packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items?BD"]
+after back {"url":"/picked/dist/book/?level=level-2-rollers&room=twin#total","sw":390,"nav":[]}
