@@ -49,6 +49,13 @@ const base7 = Math.min(...(c.lessons ?? []).filter((l) => typeof l.price === 'nu
 /* rooms step: nothing is chosen until the visitor chooses; "Chosen": TEMPLATE-LABEL */
 const choose = (r) => `<label class="choose"><input type="radio" name="room" value="${r.key}" form="none"><span class="btn"><span class="c-no">${e(CT.room)}</span><span class="c-yes">${ic('i-check')}Chosen</span></span></label>`
 
+/* interface wording the copy lacks (TEMPLATE-LABEL, notes.md) */
+const T = {
+  dateGone: '{date} isn’t available for {guests}. Choose another Saturday.',
+  changeRoom: 'Change room',
+  changeDates: 'Change dates',
+}
+
 /* what book.js reads */
 const data = {
   engine: G.engine,
@@ -56,6 +63,7 @@ const data = {
   snap: { base7, rooms: Object.fromEntries(ROOMS.map((r) => [r.key, { one: r.supplement.onePP, couple: r.supplement.couplePP }])), baseAsOf: G.snapshot.baseAsOf, roomsAsOf: G.snapshot.roomsAsOf },
   wa: WA ? { base: WA.split('?')[0], prefix: new URLSearchParams(WA.split('?')[1] ?? '').get('text') ?? '' } : null,
   b: B,
+  t: T,
 }
 const css = fontFaces(pre) + siteCss + bookCss + homeCss.slice(homeCss.indexOf('.room{display:grid'), homeCss.indexOf('.rooms-note'))
 ---
@@ -121,6 +129,10 @@ const css = fontFaces(pre) + siteCss + bookCss + homeCss.slice(homeCss.indexOf('
     <section class="step" id="dates" data-media="dates" aria-labelledby="t-dates">
       <p class="step-n">{B.step_counter.replace('{n}', '3').replace('{total}', '4')}</p>
       <h2 class="script" id="t-dates" tabindex="-1">{ST.book_dates}</h2>
+      <!-- the guests first: their mix decides which Saturdays the engine still offers (must-fix 1) -->
+      <div class="guests" set:html={stp('female', B.field_women, 6) + stp('male', B.field_men, 6) + stp('couple', B.field_couples, 3)}></div>
+      <p class="help small">{B.guests_help}</p>
+      <div class="dmsg" data-dmsg role="status" hidden><p></p><button type="button" class="btn btn-soft" data-to-room hidden>{T.changeRoom}</button></div>
       <p class="chips-l" id="l-chips" hidden>{B.field_checkin}</p>
       <div class="chips" data-chips role="group" aria-labelledby="l-chips" hidden></div>
       <div class="fl has" id="w-start">
@@ -135,8 +147,6 @@ const css = fontFaces(pre) + siteCss + bookCss + homeCss.slice(homeCss.indexOf('
       <noscript><div class="fl has nojs-end"><select id="f-end" name="end" required><option value="">Choose your check-out</option>
         {nojsEnd.map((g) => <optgroup label={g.label}>{g.opts.map((o) => <option value={o.v}>{o.t}</option>)}</optgroup>)}
       </select><label for="f-end">Check-out</label><svg class="chev"><use href="#i-chev"/></svg></div></noscript>
-      <div class="guests" set:html={stp('female', B.field_women, 6) + stp('male', B.field_men, 6) + stp('couple', B.field_couples, 3)}></div>
-      <p class="help small">{B.guests_help}</p>
     </section>
 
     <section class="step" id="total" data-media="total" aria-labelledby="t-total">
@@ -158,6 +168,7 @@ const css = fontFaces(pre) + siteCss + bookCss + homeCss.slice(homeCss.indexOf('
         <p class="small" data-s="note">{B.currency_note} | {B.prices_snapshot.replace('{date}', G.snapshot.roomsAsOf)}</p>
         <p class="small">{B.deposit}</p>
       </div>
+      <div class="dmsg" data-dmsg role="status" hidden><p></p><button type="button" class="btn btn-soft" data-to-room hidden>{T.changeRoom}</button></div>
       <noscript><div class="nojs-go">
         {LEVELS.map((L) => <button class="btn btn-book btn-lg" type="submit" formaction={G.engine.product + L.slug}>Continue with Level {L.n}</button>)}
       </div></noscript>
@@ -171,6 +182,7 @@ const css = fontFaces(pre) + siteCss + bookCss + homeCss.slice(homeCss.indexOf('
     <p class="snav-t" data-total={SL.total}><span data-s="barlabel">{lpFrom}</span> <strong data-s="bartotal">{lpPP}</strong></p>
     <button type="button" class="btn btn-book next" data-next set:html={e(CT.step_next) + ic('i-r')}></button>
     <button type="submit" form="bk" class="btn btn-book go" hidden set:html={e(CT.handoff) + ic('i-r')}></button>
+    <button type="button" class="btn btn-book fix" hidden set:html={`<span>${e(T.changeDates)}</span>` + ic('i-r')}></button>
   </div>
   </div>
 </main>

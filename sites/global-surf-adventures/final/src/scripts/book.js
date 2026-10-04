@@ -63,6 +63,16 @@ sel.required = false; F.noValidate = true;
   chips.hidden = false; $('#l-chips').hidden = false; document.documentElement.classList.add('chips-on');
 })();
 function syncChips(){ $$('.chip', chips).forEach(function(b){ var o = $('option[value="' + b.dataset.v + '"]', sel); b.disabled = o.disabled; b.setAttribute('aria-pressed', sel.value === b.dataset.v ? 'true' : 'false'); }); }
+/* a check-in counts only while the engine still offers it: a date the live calendar strikes out is cleared, and the page says why */
+function dateOk(){ var o = sel.options[sel.selectedIndex]; return !!(sel.value && o && !o.disabled); }
+var dateNote = '';
+function guestParts(g){ var p = []; if (g.female) p.push(g.female + ' ' + (g.female === 1 ? 'woman' : 'women')); if (g.male) p.push(g.male + ' ' + (g.male === 1 ? 'man' : 'men')); if (g.couple) p.push(g.couple + ' ' + (g.couple === 1 ? 'couple' : 'couples')); return p; }
+/* the live answer for the current choices, or null */
+function liveNow(){ return live && live.key === liveKey() ? live : null; }
+/* the chosen room is never switched behind the visitor's back: when the engine says it is not free, it stays chosen and
+   the step on screen says so (dates, total), with a way to change it */
+function roomFree(){ var rm = room(), L = liveNow(); return !(rm && L && L.supp[rm] == null); }
+function noneFree(){ var L = liveNow(); return !!L && !Object.keys(L.supp).some(function(k){ return L.supp[k] != null; }); }
 
 /* steppers */
 $$('.stp').forEach(function(w){
@@ -95,12 +105,17 @@ function show(k){
   var g = $('.bk-media [data-m="' + want + '"] [data-show]'); if (g && g._upd) g._upd();
 }
 /* steps: one per screen, URL per step */
-var prog = $$('.prog a'), back = $('[data-back]'), next = $('[data-next]'), goBtn = $('.snav .go'), barT = $('.snav-t');
+var prog = $$('.prog a'), back = $('[data-back]'), next = $('[data-next]'), goBtn = $('.snav .go'), fixBtn = $('.snav .fix'), barT = $('.snav-t');
 var FROM = [$('[data-s=barlabel]').textContent, $('[data-s=bartotal]').textContent];
 /* the bar: Next is the coral action except on the room step before a room is chosen ("Choose this room" is it then);
    on the total step the hand-off itself sits in the bar */
 function navState(){
-  next.hidden = cur === 'total'; goBtn.hidden = cur !== 'total';
+  var blocked = !dateOk() || !roomFree();
+  next.hidden = cur === 'total';
+  /* on the total step the hand-off is offered only for dates and a room the engine still has; otherwise the bar offers the fix */
+  goBtn.hidden = cur !== 'total' || blocked; fixBtn.hidden = cur !== 'total' || !blocked;
+  fixBtn.dataset.to = (!dateOk() || noneFree()) ? 'dates' : 'room';
+  fixBtn.firstChild.textContent = fixBtn.dataset.to === 'dates' ? D.t.changeDates : D.t.changeRoom;
   var soft = cur === 'room' && !room();
   next.classList.toggle('btn-book', !soft); next.classList.toggle('btn-soft', soft);
 }
@@ -128,20 +143,22 @@ function go(k, how){
 var furthest = 0;
 function reached(j){ return j <= furthest; }
 function advance(k){ furthest = Math.max(furthest, STEPS.indexOf(k)); go(k, 'push'); }
-function roomOk(){
-  if (room()) return true;
+function roomOk(force){
+  if (room() && !force) return true;
   if (cur !== 'room') go('room', 'push');
   var c = $$('#room .room-panel').filter(function(x){ return !x.hidden; })[0], ch = c && $('.choose', c);
   if (ch) { $('input', ch).focus({preventScroll: true}); ch.classList.remove('nudge'); void ch.offsetWidth; ch.classList.add('nudge'); ch.scrollIntoView({block: 'center', behavior: calm ? 'auto' : 'smooth'}); }
   return false;
 }
 function datesOk(){
-  var st = $('#f-start').value, g = guests();
-  if (st && g.n) return true;
+  var g = guests();
+  if (dateOk() && g.n) return true;
   if (cur !== 'dates') go('dates', 'push');
-  (st ? $('#f-female') : ($('.chip:not(:disabled)') || $('#f-start'))).focus();
+  (!g.n ? $('#f-female') : ($('.chip:not(:disabled)') || sel)).focus();  /* the guests come first: they decide which Saturdays are free */
   return false;
 }
+fixBtn.addEventListener('click', function(){ var k = fixBtn.dataset.to; if (k === 'dates') { if (cur !== 'dates') go('dates', 'push'); ($('.chip:not(:disabled)') || sel).focus(); } else roomOk(true); });
+$$('[data-to-room]').forEach(function(b){ b.addEventListener('click', function(){ roomOk(true); }); });
 next.addEventListener('click', function(){
   var i = STEPS.indexOf(cur);
   if (cur === 'room' && !roomOk()) return;
@@ -172,7 +189,7 @@ function render(){
   syncChips(); chosenTab();
   $('[data-s=level]').textContent = LEVELS[lv].name;
   $('[data-s=dates]').textContent = st ? fmt(st) + ' – ' + fmt(addDays(st, n)) + ' | ' + n + ' nights' : 'Choose a Saturday';
-  var parts = []; if (g.female) parts.push(g.female + ' ' + (g.female === 1 ? 'woman' : 'women')); if (g.male) parts.push(g.male + ' ' + (g.male === 1 ? 'man' : 'men')); if (g.couple) parts.push(g.couple + ' ' + (g.couple === 1 ? 'couple' : 'couples'));
+  var parts = guestParts(g);
   $('[data-s=guests]').textContent = parts.length ? parts.join(', ') : '—';
   $('[data-s=room]').textContent = rm ? ROOMS[rm] : '—';
 
@@ -187,9 +204,13 @@ function render(){
   $('[data-s=alllabel]').textContent = 'Total for ' + cnt + ' ' + (cnt === 1 ? 'guest' : 'guests');
   $('[data-s=all]').textContent = pp == null ? '—' : money(pp * cnt);
   /* the bar shows a total only once level, room, a Saturday and the guests are all set; "From $1,466 pp" until then */
-  var full = pp != null && st && g.n && rm;
+  var full = pp != null && dateOk() && g.n && rm;
   $('[data-s=barlabel]').textContent = full ? $('.snav-t').dataset.total : FROM[0];
   $('[data-s=bartotal]').textContent = full ? money(pp * cnt) : FROM[1];
+  /* what is wrong with the choices, on the step the visitor is on */
+  var msg = dateNote, roomGone = !roomFree();
+  if (roomGone) msg = (msg ? msg + ' ' : '') + TX.room_not_free + ': ' + ROOMS[rm] + '.' + (L.only ? ' ' + TX.room_only_one_free.replace('{room}', ROOMS[L.only]) + '.' : '');
+  $$('[data-dmsg]').forEach(function(d){ d.hidden = !msg; $('p', d).textContent = msg; $('[data-to-room]', d).hidden = !roomGone || noneFree(); });
   navState();
   $('[data-s=note]').textContent = TX.currency_note + ' | ' + (L ? TX.prices_live : (liveFailed ? TX.prices_fallback.replace('{date}', D.snap.roomsAsOf) : TX.prices_snapshot.replace('{date}', D.snap.roomsAsOf)));
   $$('.room-panel').forEach(function(c){
@@ -219,11 +240,17 @@ function refreshDates(){
   var today = new Date().toISOString().slice(0, 10), end = addDays(today, 300);
   getJSON(API + 'products/' + id + '/availabilities?format=choosable&show_available_only=1&mode=checkin&start=' + today + '&end=' + end + '&female=' + g.female + '&male=' + g.male + '&couple=' + g.couple + '&' + BD).then(function(j){
     var d = j && j.data && j.data.dates; if (!d) throw new Error('shape');
+    if (dk !== dateKey) return;  /* a newer guest mix is already being asked for */
+    var chosen = sel.options[sel.selectedIndex], chosenLabel = chosen && chosen.value ? chosen.textContent.replace(/ \| full$/, '') : '';
     $$('#f-start option').forEach(function(o){
       if (!o.value) return; var ok = d[o.value] ? d[o.value].choosable : false;
       o.disabled = !ok; o.textContent = o.textContent.replace(/ \| full$/, '') + (ok ? '' : ' | full');
     });
-    syncChips();
+    if (chosenLabel && chosen.disabled) {
+      sel.value = '';
+      dateNote = D.t.dateGone.replace('{date}', chosenLabel).replace('{guests}', guestParts(guests()).join(', '));
+    }
+    render();
   }).catch(function(){ dateKey = ''; });
 }
 function refreshQuote(){
@@ -243,7 +270,6 @@ function refreshQuote(){
     if (lk !== liveKey()) return;
     live = {key: lk, basePP: tot.base / g.n, supp: supp}; liveFailed = false;
     var free = Object.keys(supp).filter(function(k){ return supp[k] != null; });
-    if (free.length && room() && supp[room()] == null) { $('input[name=room][value="' + free[0] + '"]').checked = true; syncURL(); }
     live.only = free.length === 1 ? free[0] : null;
     render();
   }).catch(function(){ liveFailed = true; render(); });
@@ -251,14 +277,17 @@ function refreshQuote(){
 function onTouch(){ clearTimeout(tmr); tmr = setTimeout(function(){ refreshDates(); refreshQuote(); }, 500); }
 F.addEventListener('input', function(){ render(); onTouch(); });
 F.addEventListener('change', function(e){
+  if (e.target === sel) dateNote = '';
   render(); onTouch(); syncURL();
   if (e.target.name === 'level' && cur === 'level') show('level');
 });
 
 /* hand-off: GET to the engine's product with start, end (never duration) and the guest mix */
 F.addEventListener('submit', function(ev){
-  if (!roomOk() || !datesOk()) { ev.preventDefault(); return; }
-  var st = $('#f-start').value;
+  /* never an end without a start, never dates or a room the engine has just said no to */
+  if (!roomOk() || !datesOk() || !roomFree()) { ev.preventDefault(); if (!roomFree()) roomOk(true); return; }
+  var st = sel.value;
+  if (!st) { ev.preventDefault(); return; }
   var e = document.createElement('input'); e.type = 'hidden'; e.name = 'end'; e.value = addDays(st, nights()); F.appendChild(e);
   ['#f-female', '#f-male', '#f-couple'].forEach(function(s){ var i = $(s); if (!(+i.value)) i.disabled = true; });
   setTimeout(function(){ ['#f-female', '#f-male', '#f-couple'].forEach(function(s){ $(s).disabled = false; }); e.remove(); }, 500);

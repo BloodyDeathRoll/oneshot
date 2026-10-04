@@ -194,3 +194,9 @@
   .bk .room .price{font-size:16px;margin-bottom:12px}
   .bk .room .choose{margin-bottom:16px}
 }
+
+/* 4g: what is wrong with the visitor's choices, said on the step they are on (dates, total) */
+.dmsg{background:var(--soft);border-radius:12px;padding:14px 18px;margin:0 0 22px}
+.dmsg p{margin:0;font-weight:600;color:var(--ink)}
+.dmsg .btn-soft{background:#fff;margin-top:12px}
+.snav .fix{gap:6px;padding:0 20px 0 26px}
