@@ -518,7 +518,7 @@ const el=(tag,attrs={},...kids)=>{const e=document.createElement(tag);for(const[
 const sv=(tag,attrs={},...kids)=>{const e=document.createElementNS(SVGNS,tag);for(const[k,v]of Object.entries(attrs)){if(k==='text')e.textContent=v;else if(v!=null)e.setAttribute(k,v)}for(const k of kids)if(k)e.append(k);return e};
 const fmt=n=>Number.isInteger(n)?String(n):n.toFixed(1);
 const bizMap=new Map();
-function setData(d){D=d;bizMap.clear();for(const b of D.businesses)if(!bizMap.has(b.slug))bizMap.set(b.slug,b.name); // newest run firstbizMap.set('dashboard','Dashboard');bizMap.set('-','Project')}
+function setData(d){D=d;bizMap.clear();for(const b of D.businesses)if(!bizMap.has(b.slug))bizMap.set(b.slug,b.name);/* newest run first */bizMap.set('dashboard','Dashboard');bizMap.set('-','Project')}
 setData(D);
 const bizName=s=>bizMap.get(s)||s||'—';
 const shortName=s=>bizName(s).replace(' Surf Ahangama','').replace(' Surf Hostel','').replace('The ','');
