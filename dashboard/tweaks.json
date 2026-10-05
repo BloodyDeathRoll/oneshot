@@ -16,7 +16,7 @@
   },
   "proposals/2026-09-globalsurf-02/002-custom-md-designer-from-gate-feedback.md": {
     "title": "Rewrite your designer taste notes to match your Global Surf feedback",
-    "agent": "Designer (your custom.md)",
+    "agent": "Designer (your rules)",
     "what": "Replaces the text of your own designer notes with your Sep 29 feedback: lead with the business's own video and photos, readable text plus one script font for titles, no decorative lines or borders, soft rounded cards are fine, booking inside the site.",
     "why": "Your current notes still say \"thin black lines\", \"geometric sans only\" and \"minimal, extreme\". That pushed the designer toward the near-empty pages you rejected. Until this is pasted, the agents are told your gate feedback wins wherever the notes disagree.",
     "custom_md": true,
@@ -32,7 +32,7 @@
   },
   "proposals/2026-09-ahangama-02/003-custom-md-draft.md": {
     "title": "Colour and type rules for your designer taste notes",
-    "agent": "Designer (your custom.md)",
+    "agent": "Designer (your rules)",
     "what": "Cool clean colours, one strong colour, geometric sans, thin black lines.",
     "why": "Your notes said nothing about colour or type.",
     "custom_md": true,
@@ -41,7 +41,7 @@
   },
   "proposals/2026-09-globalsurf-02/001-custom-md-designer-media-first.md": {
     "title": "Designer taste notes: put the business's media first",
-    "agent": "Designer (your custom.md)",
+    "agent": "Designer (your rules)",
     "what": "Three lines of your notes rewritten so the designer leads with video and photos.",
     "why": "Every Global Surf mockup was rejected on Sep 28 for ignoring the media.",
     "custom_md": true,
@@ -50,7 +50,7 @@
   },
   "proposals/2026-09-mirissa-01/001-designer-custom-calm-variant.md": {
     "title": "The calm mockup skips the animation layer",
-    "agent": "Designer (your custom.md)",
+    "agent": "Designer (your rules)",
     "what": "Mockup 1 (calm) is built without canvas/WebGL animation; it is added only if you pick it.",
     "why": "Your decision of 18 Sep.",
     "custom_md": true,

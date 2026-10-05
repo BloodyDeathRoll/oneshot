@@ -85,9 +85,26 @@ Checked at all four widths:
 - Copied WhatsApp text (KA) 512 characters, as in round 2. Visible text scanned for jargon (state names, file names,
   run ids, `node`, `localhost`, raw dates): none.
 
+**Round 4 (after Shahar picked B, 2026-10-06).** His words: "Center align the revenues and expenses. Color the
+suggestions with light purple background. Add icons for update status cta. Remove icons from also waiting on you".
+Plus the round-3 critic's fixes 2–4. Changes:
+- Revenues and Expenses: label, figure, "This month" and hint centred.
+- Suggested buttons: `#F3EEFD` with purple `#6A2FE0` text (6.0:1), hover `#EDE6FB`.
+- Update status: a pencil icon.
+- "Also waiting on you": no icons; title, sub-line, Review.
+- Hand off: a ghost button (no border, grey text), quieter than Update status.
+- Ages: elapsed days, as `days_since_change`: 10 / 10 / 7 / since today (round 3 counted calendar days: 11 / 11 / 8 / 1).
+- 1024: every row one height (shared rows, `grid-auto-rows:1fr`), 119 px each. The thumb is 128×80, button padding is
+  10 px, and the Suggested icons are hidden there, so Global Surf's "Pitch · not online yet" fits on one line.
+  Before, the rows were 122 / 139 / 123 / 167.
+- Checked at 1920 / 1440 / 1024 / 390 (shots in `round-4/`): no sideways scroll, contrast ≥ 4.83:1, the Tab walk is
+  unchanged, × / Esc / veil click close, Copy prompt copies 443 characters, no jargon.
+
+Not done in this round: the critic's fix 1 ("Also waiting on you" on the right at 1440). It was not in this round's ask.
+
 ## Not fixed, not blocking
 
-- At 1440 "Also waiting on you" starts just under the fold (see the decision above).
+- At 1440 "Also waiting on you" starts just under the fold (see the decision above; the critic's fix 1).
 - Four filled Update status buttons are the strongest colour on the page, as in round 2.
 - In the 1024 sidebar the "S" avatar sits mid-height (inherited from r2/b's rail; outside this round's ask).
 

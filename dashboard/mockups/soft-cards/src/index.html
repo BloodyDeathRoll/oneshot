@@ -70,31 +70,96 @@ main{min-width:0;padding:0 24px 48px}
 .label{font-size:13px;font-weight:700;color:var(--ink2)}
 .card:focus-visible,.card.flash{outline:2px solid var(--acc);outline-offset:4px;border-radius:var(--r)}
 
-/* overview: money, tiles, sites for pitching, handoffs, other gates */
-.money{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap);margin-bottom:var(--gap)}
-.money .card{padding:24px 28px}
-.money .big{font-size:56px;font-weight:300;line-height:1;letter-spacing:-.03em;margin-top:10px;color:var(--ink)}
-.money .big.zero{color:var(--ink3)}
-.money .hint{font-size:13px;color:var(--ink3);font-weight:500;margin-top:10px}
-.money .hint code{font-family:inherit;color:var(--ink2);background:var(--ground);border-radius:6px;padding:1px 6px}
-.tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--gap);margin-bottom:var(--gap)}
-.tile{padding:18px 22px}
-.tile .num{font-size:36px;margin-top:6px}
-.tile .num.zero{color:var(--ink3)}
-.tile .hint{font-size:13px;color:var(--ink3);font-weight:500;margin-top:6px}
-.ov2{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:var(--gap);margin-top:var(--gap);align-items:start}
-.psites>li{display:grid;grid-template-columns:224px minmax(0,1fr) auto;gap:20px;padding:16px 0;border-bottom:1px solid var(--rule);align-items:start}
-.psites>li:first-child{padding-top:0}
-.psites>li:last-child{border-bottom:0;padding-bottom:0}
+/* overview: dashboard-03 round 3, option B (picked by Shahar 2026-10-06). Scoped with ov- so the
+   .ln/.cta/.btn users on the other views are untouched. */
+#view-overview{--ln:#E6E8EE;--ctl:#D5D9E2;--hov:#F7F8FA;--soft:#F7F8FA;--gbg:#EEF0F3;--tw:176px;--th:110px;--rp:24px;font-size:14px;line-height:20px;font-weight:500}
+.ov-sum{margin:0 0 20px;font-size:16px;line-height:24px;color:var(--ink2);text-wrap:pretty}
+.ov-sum b{color:var(--ink);font-weight:700}
+.ov-surf{background:var(--card);border:1px solid var(--ln);border-radius:12px}
+.ov-band{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:24px}
+.ov-m{padding:24px;display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0}
+.ov-m+.ov-m{border-left:1px solid var(--ln)}
+.ov-m .lab{color:var(--ink2)}
+.ov-m .fig{font-size:48px;line-height:56px;font-weight:600;letter-spacing:-.02em;margin-top:8px;color:var(--ink)}
+.ov-m .fig small{font-size:16px;line-height:24px;font-weight:600;color:var(--ink3);letter-spacing:0;margin-left:8px}
+.ov-m .month{margin-top:4px;color:var(--ink2)}
+.ov-m .month b{color:var(--ink);font-weight:600}
+.ov-m .hint{margin-top:16px;max-width:44ch;color:var(--ink3);text-wrap:pretty}
+.ov-m .hint q{quotes:"\201C" "\201D";color:var(--ink2);font-weight:600}
+.ov-counts{margin:0;border-left:1px solid var(--ln);padding:8px 24px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px;align-content:center}
+.ov-counts .r{display:flex;flex-direction:column;justify-content:center;gap:2px;min-height:76px;padding:10px 0;border-top:1px solid var(--ln);min-width:0}
+.ov-counts .r:nth-child(-n+2){border-top:0}
+.ov-counts dt{color:var(--ink2)}
+.ov-counts dd{margin:0;font-size:28px;line-height:36px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+.ov-counts dd.z{color:var(--ink3)}
+.ov-counts button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:4px;border-radius:6px}
+.ov-counts button:hover{color:var(--acc)}
+.ov-counts button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.ov-counts button svg{width:18px;height:18px;color:var(--ink3)}
+.ov-body{display:grid;grid-template-columns:minmax(0,1fr) 33.3333%;gap:24px;align-items:start}
+.ov-lh{display:flex;align-items:center;gap:10px;height:64px;padding:0 var(--rp);border-bottom:1px solid var(--ln)}
+.ov-lh h2{font-size:18px;line-height:28px;font-weight:700}
+.ov-lh h2:focus{outline:0}
+.ov-lh .meta{margin-left:auto;color:var(--ink3)}
+.ov-cnt{min-width:24px;height:24px;padding:0 8px;border-radius:6px;background:var(--t5);color:var(--acc);font-weight:700;display:inline-grid;place-items:center}
+.ov-cnt.z{background:var(--gbg);color:var(--ink2)}
+/* one row per site; rows share columns (subgrid), and the thumb track carries the row padding */
+.ov-rows{display:grid;grid-template-columns:calc(var(--tw) + var(--rp)) minmax(0,1fr) auto auto;grid-auto-rows:1fr;column-gap:20px}
+.ov-row{grid-column:1/-1;display:grid;grid-template-columns:subgrid;align-items:center;padding:16px var(--rp);border-top:1px solid var(--ln)}
+.ov-row:first-child{border-top:0}
+.ov-row.empty{display:block;color:var(--ink3)}
+.ov-thumb{grid-column:1;display:block;width:var(--tw);height:var(--th);border-radius:8px;overflow:hidden;border:1px solid var(--ln);background:var(--soft);position:relative}
+.ov-thumb img{width:100%;height:100%;object-fit:cover;object-position:top}
+.ov-thumb .noshot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;color:var(--ink3)}
+.ov-rt{grid-column:2;display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:0}
+.ov-nm{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:8px}
+.ov-nm h3{font-size:16px;line-height:24px;font-weight:700;letter-spacing:-.005em;overflow-wrap:anywhere}
+.ov-nm .by{color:var(--ink3);white-space:nowrap}
+.ov-links{display:flex;flex-wrap:wrap;align-items:center;column-gap:16px}
+.ov-lk{display:inline-flex;align-items:center;gap:4px;min-height:28px;color:var(--blue);font-weight:600;text-decoration:none;white-space:nowrap;border-radius:6px}
+.ov-lk:hover{text-decoration:underline;text-underline-offset:3px}
+.ov-lk svg{width:12px;height:12px}
+.ov-off{display:inline-flex;align-items:center;gap:6px;min-height:28px;color:var(--ink3);font-weight:600;white-space:nowrap;cursor:help}
+.ov-off svg{width:14px;height:14px}
+.ov-meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-top:6px;color:var(--ink3)}
+.ov-badge{display:inline-flex;align-items:center;height:24px;padding:0 8px;border-radius:6px;font-weight:600;white-space:nowrap}
+.ov-badge.ready{background:var(--t5);color:var(--acc)}
+.ov-badge.sent{background:var(--gbg);color:var(--ink2)}
+.ov-badge.good{background:var(--green-bg);color:var(--green)}
+.ov-badge.bad{background:var(--red-bg);color:var(--red)}
+.ov-ho{display:inline-flex;align-items:center;gap:6px;margin-top:6px;color:var(--ink2);font-weight:600}
+.ov-ho svg{width:14px;height:14px;flex:none}
+.ov-acts{grid-column:3/5;display:grid;grid-template-columns:subgrid;row-gap:8px;align-self:center}
+.ov-acts .ovb{width:100%}
+.ovb{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;padding:0 14px;border-radius:8px;border:1px solid transparent;font:inherit;font-weight:600;white-space:nowrap;text-decoration:none;cursor:pointer;background:none;color:var(--ink)}
+.ovb svg{width:16px;height:16px;flex:none}
+.ovb.p{background:var(--acc);color:#fff}
+.ovb.p:hover{background:#5A24C7}
+.ovb.ho{color:var(--ink2)}
+.ovb.ho:hover{background:var(--hov);color:var(--ink)}
+.ovb.sg{background:var(--t5);color:var(--acc)}
+.ovb.sg:hover{background:var(--acc-sec)}
+.ovb.s{background:#fff;border-color:var(--ctl);height:32px;padding:0 12px}
+.ovb.s:hover{background:var(--hov)}
+.ov-wh{display:flex;align-items:center;gap:10px;height:64px;padding:0 var(--rp);border-bottom:1px solid var(--ln)}
+.ov-wh h2{font-size:18px;line-height:28px;font-weight:700}
+.ov-wl li{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:14px;padding:16px var(--rp);border-top:1px solid var(--ln)}
+.ov-wl li:first-child{border-top:0}
+.ov-wl b{display:block;font-weight:600;color:var(--ink);text-wrap:pretty}
+.ov-wl span{display:block;color:var(--ink3);margin-top:2px}
+.ov-wl li.empty{display:block;color:var(--ink3)}
+/* the handoff popup: the request in plain words, the full prompt folded */
+.ov-done{display:grid;gap:14px}
+.ov-done .ok{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;color:var(--ink)}
+.ov-done .ok i{width:24px;height:24px;border-radius:50%;background:var(--green-bg);color:var(--green);display:grid;place-items:center;font-style:normal}
+.ov-done dl{margin:0;display:grid;grid-template-columns:72px minmax(0,1fr);gap:8px 12px;font-size:15px}
+.ov-done dt{color:var(--ink3);font-weight:600}
+.ov-done dd{margin:0;color:var(--ink)}
+.ov-done details summary{cursor:pointer;color:var(--ink2);font-weight:600}
 .thumb{display:block;border-radius:var(--r2);overflow:hidden;background:var(--t5);aspect-ratio:16/10;position:relative}
 .thumb img{width:100%;height:100%;object-fit:cover;object-position:top}
 .thumb .noshot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--ink2);text-align:center;padding:12px}
-.psite h3{font-size:17px;font-weight:700;letter-spacing:-.005em;line-height:1.25}
-.psite .m{font-size:13px;color:var(--ink3);font-weight:500;margin-top:4px}
-.psite .m b{color:var(--ink2);font-weight:700}
-.psite .st{margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--ink2);font-weight:500}
 .ln{margin-top:10px;display:flex;gap:8px 10px;flex-wrap:wrap;font-size:13px}
-.psite .ln .na{color:var(--ink3)}
 .cta{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--rule);background:var(--card);color:var(--ink);font:inherit;font-size:13px;font-weight:700;border-radius:999px;padding:7px 12px;line-height:1;text-decoration:none;cursor:pointer;white-space:nowrap}
 .cta:hover{background:var(--ground)}
 .cta.link{color:var(--blue);border-color:#D6DEFF}
@@ -114,16 +179,9 @@ dialog.modal::backdrop{background:rgba(255,255,255,.8)}
 .msgbox .iconbtn{position:absolute;top:10px;right:10px}
 .msgnotes{margin-top:14px;font-size:13px;color:var(--ink3);white-space:pre-wrap;line-height:1.5}
 .msgnotes summary{cursor:pointer;color:var(--ink2);font-weight:600}
-.psite .acts{display:flex;flex-direction:column;gap:8px;align-items:stretch;min-width:150px}
-.psite .panel{grid-column:1/-1;background:#FAFAFE;border-radius:var(--r2);padding:16px}
-.psite .panel .label{margin-bottom:4px}
 .ho select{font:inherit;font-size:14px;border:1px solid var(--rule);border-radius:var(--r2);padding:8px 10px;background:var(--card)}
 .ho textarea{font:inherit;font-size:14px;color:var(--ink);background:var(--card);border:1px solid var(--rule);border-radius:var(--r2);padding:9px 12px;width:100%;min-height:72px;resize:vertical}
 .prompt{white-space:pre-wrap;font-size:13px;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 12px;margin-top:8px;color:var(--ink)}
-.ogates li{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:52px;padding:6px 0;border-bottom:1px solid var(--rule)}
-.ogates li:last-child{border-bottom:0}
-.ogates b{display:block;font-size:15px;font-weight:700}
-.ogates span{display:block;font-size:13px;color:var(--ink3);font-weight:500;margin-top:2px}
 .empty{font-size:14px;color:var(--ink3);padding:6px 0}
 .hist-list{list-style:none;margin:0;padding:12px 20px 0;max-height:420px;overflow:auto;text-align:left}
 .hist-list li{display:grid;grid-template-columns:110px 92px 74px minmax(0,1fr);gap:12px;padding:6px 0;border-bottom:1px solid var(--rule);font-size:13px;align-items:baseline}
@@ -375,7 +433,7 @@ form.gate textarea{resize:vertical;min-height:40px}
 form.gate input:focus-visible,form.gate textarea:focus-visible{outline:2px solid var(--acc);outline-offset:1px;border-color:transparent}
 .btn{font:inherit;font-size:13px;font-weight:700;border-radius:999px;padding:9px 14px;line-height:1;cursor:pointer;border:1.5px solid transparent;white-space:nowrap}
 .btn.p{background:var(--acc);color:#fff}
-.btn.p:hover{background:#0C2EB3}
+.btn.p:hover{background:#5A22C9}
 .btn.s{background:transparent;color:var(--ink);border-color:var(--rule)}
 .btn.s:hover{background:var(--ground)}
 .btn:disabled{opacity:.5;cursor:default}
@@ -449,6 +507,45 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 .anim .fadein.pre{opacity:0}
 @media (prefers-reduced-motion:reduce){.anim .draw,.anim .grow,.anim .fadein{transition:none}}
 
+/* ---------- overview widths ---------- */
+/* below 1600 the rows need the full width: Also waiting on you moves under the list */
+@media (max-width:1599px){#view-overview{--tw:160px;--th:100px}.ov-body{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:1280px){
+  #view-overview{--tw:120px;--th:75px;--rp:20px}
+  .ov-m,.ov-counts{padding-left:20px;padding-right:20px}
+  .ov-m .fig{font-size:40px;line-height:48px}
+  .ov-counts{column-gap:20px}
+  .ov-counts dd{font-size:24px;line-height:32px}
+  .ov-counts .r{min-height:68px}
+  .ov-rows{column-gap:16px}
+  .ov-acts .ovb{padding:0 10px}
+  .ov-acts .ovb.sg svg{display:none} /* the label names the channel; keeps each row one height */
+  .ov-links{column-gap:12px}
+  .ov-off{gap:4px}
+}
+@media (max-width:720px){
+  #view-overview{--tw:96px;--th:60px;--rp:16px}
+  .ov-sum{font-size:15px;line-height:22px}
+  .ov-band{grid-template-columns:minmax(0,1fr)}
+  .ov-m{padding:16px}
+  .ov-m+.ov-m{border-left:0;border-top:1px solid var(--ln)}
+  .ov-m .fig{font-size:32px;line-height:40px;margin-top:4px}
+  .ov-counts{border-left:0;border-top:1px solid var(--ln);padding:4px 16px;column-gap:16px}
+  .ov-counts .r{min-height:60px;padding:8px 0}
+  .ov-counts dd{font-size:22px;line-height:28px}
+  .ov-body{gap:16px}
+  .ov-lh,.ov-wh{height:56px}
+  .ov-lh .meta{display:none}
+  .ov-rows{display:block}
+  .ov-row{display:grid;grid-template-columns:var(--tw) minmax(0,1fr);column-gap:12px;row-gap:14px;align-items:start}
+  .ov-acts{grid-column:1/-1;grid-template-columns:minmax(0,1fr)} /* one button per line: a 270 px column has no room for two */
+  .ov-acts>span:empty{display:none}
+  .ov-off{white-space:normal}
+  .ov-acts .ovb{height:44px}
+  .ov-acts .ovb.sg svg{display:inline}
+  .ov-lk,.ov-off{min-height:32px}
+  .ov-wl li{grid-template-columns:minmax(0,1fr);row-gap:8px;justify-items:start}
+}
 /* ---------- 1024 ---------- */
 @media (max-width:1280px){
   body{grid-template-columns:72px minmax(0,1fr)}
@@ -460,12 +557,7 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
   .nav .badge{position:absolute;top:2px;right:2px;margin:0;min-width:18px;height:18px;font-size:11px;padding:0 5px}
   .nav .n{display:none}
   .side-foot{display:none}
-  .tiles{grid-template-columns:repeat(3,minmax(0,1fr))}
   .dec2{grid-template-columns:minmax(0,1fr)}
-  .money .big{font-size:44px}
-  .ov2{grid-template-columns:minmax(0,1fr)}
-  .psites>li{grid-template-columns:160px minmax(0,1fr)}
-  .psite .acts{grid-column:1/-1;flex-direction:row;flex-wrap:wrap}
   .hist-list li{grid-template-columns:96px 80px minmax(0,1fr)}.hist-list li .k{display:none}
   .top .sub{display:none}
   .prog{width:200px}
@@ -537,20 +629,20 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
   <div class="mode" id="mode" role="status"><i aria-hidden="true"></i><span id="mode-text">read-only · open the CLI or start dashboard/server.mjs to decide</span><span class="lastline" id="lastline"></span></div>
 
   <section class="view on" id="view-overview" aria-label="Overview">
-    <div class="money" id="ov-money"></div>
-    <div class="tiles" id="ov-tiles"></div>
-    <section class="card" id="needs" tabindex="-1" aria-labelledby="ps-h">
-      <div class="card-h"><h2 id="ps-h">Sites for pitching</h2><span class="meta" id="ps-meta"></span></div>
-      <ol class="psites" id="psites"></ol>
+    <p class="ov-sum" id="ov-sum"></p>
+    <section class="ov-band ov-surf" aria-label="Money and where every site stands">
+      <div class="ov-m" id="ov-rev"></div>
+      <div class="ov-m" id="ov-exp"></div>
+      <dl class="ov-counts" id="ov-counts" aria-label="Where every site stands"></dl>
     </section>
-    <div class="ov2">
-      <section class="card" aria-labelledby="ho-h">
-        <div class="card-h"><h2 id="ho-h">Handoffs and open work</h2><span class="meta" id="ho-meta"></span></div>
-        <ol class="feed" id="handoffs"></ol>
+    <div class="ov-body">
+      <section class="ov-surf" id="ov-sites" aria-labelledby="ps-h">
+        <div class="ov-lh"><h2 id="ps-h" tabindex="-1">Sites to pitch</h2><span class="ov-cnt" id="ps-n"></span><span class="meta" id="ps-meta"></span></div>
+        <ol class="ov-rows" id="psites"></ol>
       </section>
-      <section class="card" aria-labelledby="og-h">
-        <div class="card-h"><h2 id="og-h">Other gates waiting</h2><span class="meta" id="og-meta"></span></div>
-        <ul class="ogates" id="ogates"></ul>
+      <section class="ov-surf" aria-labelledby="ow-h">
+        <div class="ov-wh"><h2 id="ow-h">Also waiting on you</h2><span class="ov-cnt" id="ow-n"></span></div>
+        <ul class="ov-wl" id="ov-wait"></ul>
       </section>
     </div>
   </section>
@@ -733,7 +825,7 @@ function go(view,focus){
   document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='view-'+view));
   document.querySelectorAll('#view-'+view+' svg').forEach(sizeTips);
   $('#title').textContent=TITLES[view];document.title=`OneShot — ${TITLES[view]}`;
-  $('#controls').hidden=!PER_RUN.includes(view);$('#title-sub').textContent=PER_RUN.includes(view)&&state.run!=='all'?runShort(state.run):'all runs';if(view==='ledger')renderLedgerMap();
+  $('#controls').hidden=!PER_RUN.includes(view);$('#title-sub').textContent=PER_RUN.includes(view)&&state.run!=='all'?runShort(state.run):view==='overview'?'':'all runs';if(view==='ledger')renderLedgerMap();
   window.scrollTo(0,0);
   if(view==='pipeline'&&focus){if(focus.startsWith('pick:')){state.openPick=focus.slice(5);state.filter='all'}else state.filter=focus;renderPipeline()}
   let target=null;
@@ -977,19 +1069,20 @@ async function openDraft(b,file,label){
   modal(`${label} — ${b.name}`,box);
   let t;try{const r=await fetch(fileURL(`sites/${b.slug}/pitch/${file}`),{cache:'no-store'});if(!r.ok)throw new Error(r.status);t=await r.text()}
   catch(e){box.replaceChildren(el('pre',{text:`Could not load sites/${b.slug}/pitch/${file} (${e.message}).${LIVE?'':' Start dashboard/server.mjs to read drafts.'}`}));return}
-  const {msg,notes}=splitDraft(t);
+  const {msg,notes}=splitDraft(t.replace(/\*\*([^*]+)\*\*/g,'$1'));
   const cp=el('button',{type:'button',class:'iconbtn','aria-label':'Copy',title:'Copy',html:ICON_COPY});
   cp.onclick=()=>copyText(msg,cp,true);
   box.replaceChildren(el('pre',{text:msg}),cp);
   if(notes){const det=el('details',{class:'msgnotes'},el('summary',{text:'Notes for the sender'}),el('div',{text:notes}));box.after(det)}
 }
+const pitchLive=b=>!!(b.pitch?.proposal_url&&b.pitch.proposal_live!==false);
 function siteLinks(b){
   const ln=el('div',{class:'ln'});
   const ext=(href,text)=>{const a=el('a',{class:'cta link',href,target:'_blank',rel:'noopener'});a.append(text,el('span',{html:ICON_EXT}));return a};
   const off=(text,why)=>el('span',{class:'cta','aria-disabled':'true',title:why,text});
   ln.append(b.preview_url?ext(b.preview_url,'Preview website'):off('Preview website','no preview deployed'));
   const pu=b.pitch?.proposal_url;
-  ln.append(pu&&b.pitch.proposal_live!==false?ext(pu,'Pitch'):off('Pitch',pu?`pitch page written but not deployed (${pu.replace('https://','')} is not live)`:'no pitch page'));
+  ln.append(pitchLive(b)?ext(pu,'Pitch'):off('Pitch',pu?`pitch page written but not deployed (${pu.replace('https://','')} is not live)`:'no pitch page'));
   for(const [re,label] of DRAFTS){const f=(b.pitch?.drafts||[]).find(f=>re.test(f));if(!f)continue;const bt=el('button',{type:'button',class:'cta',text:label});bt.onclick=()=>openDraft(b,f,label);ln.append(bt)}
   return ln;
 }
@@ -997,7 +1090,7 @@ function handoffPrompt(b,to,task,id){
   const from=opName(D.team?.viewer);
   return [`Oneshot handoff from ${from} to ${opName(to)} (${new Date().toISOString().slice(0,10)}).`,
     `Business: ${b.name} (${b.slug}) · run ${b.run_id} · state: ${b.state}`,
-    [b.preview_url&&`Preview: ${b.preview_url}`,b.pitch?.proposal_url&&b.pitch.proposal_live!==false&&`Pitch: ${b.pitch.proposal_url}`].filter(Boolean).join(' · '),
+    [b.preview_url&&`Preview: ${b.preview_url}`,pitchLive(b)&&`Pitch: ${b.pitch.proposal_url}`].filter(Boolean).join(' · '),
     `Request: ${task||'<write the request>'}`,
     `Start: pull main, read CLAUDE.md, PLAN.md and notes/${b.slug}.md, then run \`node tools/team.mjs status ${b.slug}\`.`+(id?` This is assignment ${id}: close it with \`node tools/team.mjs done ${id} "<what you did>"\` when finished.`:'')
   ].filter(Boolean).join('\n');
@@ -1011,105 +1104,144 @@ function handoffForm(b){
   const others=ops.filter(o=>o!==D.team?.viewer);
   const f=el('form',{class:'gate ho','data-fkey':'ho-'+b.slug,'aria-label':`Hand off ${b.name}`});
   const sel=el('select',{name:'to','aria-label':'To'});for(const o of [...others,...ops.filter(o=>!others.includes(o))])sel.append(el('option',{value:o,text:opName(o)+(o===D.team?.viewer?' (you)':'')}));
-  const ta=el('textarea',{name:'task',placeholder:'what you need done — becomes the assignment and the prompt','aria-label':'Request'});
+  const ta=el('textarea',{name:'task',placeholder:'What should they do? For example: send the WhatsApp pitch, you know the owner','aria-label':'Request'});
   const prev=state.handoffs[b.slug];if(prev?.task)ta.value=prev.task;
   const go=el('button',{type:'submit',class:'btn p',text:'Hand off'});
-  const cp=el('button',{type:'button',class:'btn s',text:'Copy prompt'});
   const stat=el('div',{class:'gstat',role:'status','aria-live':'polite'});
-  f.append(el('div',{class:'row'},el('span',{class:'label',text:'To'}),sel),ta,el('div',{class:'row'},go,cp),stat);
+  const fields=el('div',{style:'display:grid;gap:10px'},el('div',{class:'row'},el('span',{class:'label',text:'To'}),sel),ta,el('div',{class:'row'},go));
+  f.append(fields,stat);
   if(!LIVE){go.disabled=true;go.title='start dashboard/server.mjs to write the assignment'}
-  const showDone=r=>{stat.innerHTML='';stat.append(`Assigned ${r.line.id} to ${opName(r.line.to)} (activity.jsonl; they see it once your PR merges). Send them this prompt:`,el('div',{class:'prompt',text:handoffPrompt(b,r.line.to,r.line.task,r.line.id)}))};
+  const showDone=r=>{
+    fields.hidden=true;stat.className='gstat';stat.innerHTML='';
+    const prompt=handoffPrompt(b,r.line.to,r.line.task,r.line.id);
+    const cp=el('button',{type:'button',class:'btn s',text:'Copy prompt'});cp.onclick=()=>copyText(prompt,cp);
+    stat.append(el('div',{class:'ov-done'},
+      el('p',{class:'ok'},el('i',{html:'<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>'}),`Handed off to ${opName(r.line.to)}.`),
+      el('dl',{},el('dt',{text:'Request'}),el('dd',{text:r.line.task}),el('dt',{text:'Site'}),el('dd',{text:b.name})),
+      el('p',{text:`Nothing was sent to ${opName(r.line.to)}. Copy the prompt and paste it to them.`}),
+      el('div',{},cp),
+      el('details',{},el('summary',{text:'Show the full prompt'}),el('div',{class:'prompt',text:prompt.replace(/`/g,'')}))));
+    return cp;
+  };
   if(prev?.line)showDone(prev);
-  cp.onclick=()=>copyText(handoffPrompt(b,sel.value,ta.value.trim(),state.handoffs[b.slug]?.line?.id),cp);
   f.addEventListener('submit',async e=>{
     e.preventDefault();if(!LIVE)return;
-    const task=ta.value.trim();stat.className='gstat';
-    if(task.length<3){stat.className='gstat err';stat.textContent='write the request first';ta.focus();return}
+    const task=ta.value.trim();stat.className='gstat';stat.textContent='';
+    if(task.length<3){stat.className='gstat err';stat.textContent='Write the request first.';ta.focus();return}
     go.disabled=true;posting++;let res,json;
     try{res=await fetch('handoff',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({slug:b.slug,to:sel.value,task}),cache:'no-store'});json=await res.json().catch(()=>({error:'response was not JSON'}))}
     catch(err){res={status:0};json={error:String(err)}}
     posting--;go.disabled=false;
-    if(res.status===201){state.handoffs[b.slug]={task,line:json.line};showDone(state.handoffs[b.slug]);copyText(handoffPrompt(b,json.line.to,task,json.line.id),cp);setTimeout(()=>refresh(),800)}
+    if(res.status===201){state.handoffs[b.slug]={task,line:json.line};const cp=showDone(state.handoffs[b.slug]);copyText(handoffPrompt(b,json.line.to,task,json.line.id),cp);cp.focus();setTimeout(()=>refresh(),800)}
     else{stat.className='gstat err';stat.textContent=`${res.status||'network'}: ${json.error||'unknown error'}`}
   });
   return f;
 }
+function handoffModal(b){
+  const other=opName(Object.keys(D.team?.operators||{}).find(o=>o!==D.team?.viewer));
+  const d=modal(`Hand off — ${b.name}`,el('p',{class:'gstat',style:'margin-bottom:6px',text:`Ask ${other} to do something on this site. Nothing is sent from here: you get a prompt to paste to them.`}),handoffForm(b));
+  d.addEventListener('close',()=>{delete state.handoffs[b.slug]}); // the next Hand off on this site starts a fresh request
+  d.querySelector('textarea')?.focus();
+}
 const money=(amt)=>{const e=Object.entries(amt||{}).filter(([,v])=>v);if(!e.length)return '$0';return e.map(([c,v])=>new Intl.NumberFormat('en-US',{style:'currency',currency:c,maximumFractionDigits:v%1?2:0}).format(v)).join(' + ')};
+/* ---------- Overview (dashboard-03 round 3, option B) ---------- */
+const ovSvg=(d,sw=1.75)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+const OVI={
+  status:ovSvg('<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/>'),
+  handoff:ovSvg('<path d="M4 12h12M12 7l5 5-5 5"/><path d="M20 5v14"/>'),
+  email:ovSvg('<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/>'),
+  whatsapp:ovSvg('<path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.2A8 8 0 1 1 20 11.5z"/>'),
+  inperson:ovSvg('<circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/>'),
+  ext:ovSvg('<path d="M7 17 17 7M9 7h8v8"/>',2.4),
+  clock:ovSvg('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'),
+  chev:ovSvg('<path d="m9 6 6 6-6 6"/>',2),
+};
+const ovPlural=(n,w,ws)=>`${n} ${n===1?w:(ws||w+'s')}`;
+const ovDays=iso=>Math.max(0,Math.floor((Date.now()-new Date(iso))/864e5)); // elapsed days, as days_since_change
+const canUpdate=b=>b.state==='packaged'||/^(pitched|outcome:(reply|meeting|ignored))$/.test(b.state);
+const ovAgent=a=>(a||'agent').replace(/\s*\(your custom\.md\)/i,'');
+function renderOvSummary(){
+  const items=needsItems(),n=k=>items.filter(i=>i.kind===k).length;
+  const bits=[[n('pitch'),'pitch to send','pitches to send'],[n('outcome'),'site to follow up','sites to follow up'],[n('tweak'),'suggested agent tweak','suggested agent tweaks'],[n('gate'),'other decision','other decisions'],[n('handoff'),'handoff to you','handoffs to you']]
+    .filter(([c])=>c).map(([c,one,many])=>`${c} ${c===1?one:many}`);
+  const p=$('#ov-sum');p.innerHTML='';
+  if(!items.length){p.textContent='Nothing is waiting on you.';return}
+  p.append(el('b',{text:`${items.length===1?'1 thing is':items.length+' things are'} waiting on you`}),`: ${bits.length>1?bits.slice(0,-1).join(', ')+' and '+bits.at(-1):bits[0]}.`);
+}
 function renderMoney(){
-  const box=$('#ov-money');box.innerHTML='';
   const month=new Date().toISOString().slice(0,7);
-  for(const [label,book,cmd] of [['Revenues',D.revenues,'node tools/money.mjs revenue <slug> <item> <amount>'],['Expenses',D.expenses,'node tools/money.mjs expense <vendor> <item> <amount>']]){
-    const total=money(book?.accumulated),n=book?.entries?.length||0;
-    const hint=n?`${money(book.monthly?.[month])} this month · ${n} payment${n===1?'':'s'} recorded`:null;
-    const c=el('article',{class:'card','aria-label':`${label}: ${total}`},el('span',{class:'label',text:label}),el('div',{class:'big'+(n?'':' zero'),text:total}));
-    c.append(hint?el('div',{class:'hint',text:hint}):el('div',{class:'hint'},'None recorded yet. Add one after each payment: ',el('code',{text:cmd})));
-    box.append(c);
+  for(const [id,label,book,empty] of [['#ov-rev','Revenues',D.revenues,'No payments recorded yet. Tell Claude <q>record a payment</q> when a client pays.'],['#ov-exp','Expenses',D.expenses,'No expenses recorded yet. Tell Claude <q>record an expense</q> when you pay for something.']]){
+    const total=money(book?.accumulated),m=money(book?.monthly?.[month]),n=book?.entries?.length||0,box=$(id);
+    box.innerHTML='';box.setAttribute('role','group');box.setAttribute('aria-label',`${label}: ${total} in total, ${m} this month`);
+    box.append(el('div',{class:'lab',text:label}),el('div',{class:'fig'},total,el('small',{text:'in total'})),el('div',{class:'month'},'This month ',el('b',{text:m})),
+      el('p',{class:'hint',html:n?`${ovPlural(n,label==='Revenues'?'payment':'expense')} recorded.`:empty}));
   }
 }
 function renderTiles(){
-  const box=$('#ov-tiles');box.innerHTML='';
+  const box=$('#ov-counts');box.innerHTML='';
   const ps=pitchSites(),bs=D.businesses;
   const building=bs.filter(b=>D.runs.find(r=>r.run_id===b.run_id)?.active&&['pipeline','gate'].includes(b.group)&&!PITCH_FROM.includes(baseOf(b.state))).length;
-  const T=[['Ready to send',ps.filter(b=>b.state==='packaged').length,'pitch written, not sent'],
-    ['Pitched',bs.filter(b=>b.pitched_at).length,'sent to the owner'],
-    ['Replies',bs.filter(b=>b.history.some(h=>h.to==='outcome:reply'||h.to==='outcome:meeting')).length,'reply or meeting'],
-    ['Clients',bs.filter(b=>b.outcome?.state==='sale'||['product_chosen','delivered','handoff_verified','access_revoked'].includes(b.state)).length,'sold'],
-    ['Being built',building,'in active runs']];
-  for(const [l,n,h] of T)box.append(el('article',{class:'card tile','aria-label':`${l}: ${n}`},el('span',{class:'label',text:l}),el('div',{class:'num'+(n?'':' zero'),text:String(n)}),el('div',{class:'hint',text:h})));
+  const T=[['Being built',building,()=>go('pipeline')],
+    ['Ready to send',ps.filter(b=>b.state==='packaged').length,()=>{const h=$('#ps-h');h.scrollIntoView({block:'start',behavior:reduced?'auto':'smooth'});h.focus({preventScroll:true})}],
+    ['Pitched',bs.filter(b=>b.pitched_at).length,()=>go('sites')],
+    ['Replies',bs.filter(b=>(b.history||[]).some(h=>h.to==='outcome:reply'||h.to==='outcome:meeting')).length,()=>go('sites')],
+    ['Clients',bs.filter(b=>b.outcome?.state==='sale'||['product_chosen','delivered','handoff_verified','access_revoked'].includes(b.state)).length,()=>go('sites')]];
+  for(const [l,v,act] of T){
+    const dd=el('dd',{class:v?'':'z'});
+    if(v){const bt=el('button',{type:'button','aria-label':`${l}: ${v}. ${l==='Ready to send'?'Go to the list':l==='Being built'?'Open Pipeline':'Open Sites'}`},String(v),el('span',{html:OVI.chev}));bt.onclick=act;dd.append(bt)}
+    else dd.append(String(v));
+    box.append(el('div',{class:'r'},el('dt',{text:l}),dd));
+  }
 }
 function renderPitchSites(){
   const ol=$('#psites');ol.innerHTML='';
-  const ps=pitchSites();
-  $('#ps-meta').textContent=`${ps.length} site${ps.length===1?'':'s'}`;
-  if(!ps.length)ol.append(el('li',{class:'empty',text:'No site has a preview yet.'}));
+  const stage=b=>PITCH_FROM.indexOf(baseOf(b.state));
+  const ps=pitchSites().slice().sort((a,b)=>(a.state==='packaged'?0:1)-(b.state==='packaged'?0:1)||stage(a)-stage(b)||new Date(a.last_change)-new Date(b.last_change)||a.name.localeCompare(b.name));
+  const ready=ps.filter(b=>b.state==='packaged').length,rest=ps.length-ready;
+  $('#ps-h').textContent=rest?'Sites to pitch or follow up':'Sites to pitch';
+  const n=$('#ps-n');n.textContent=String(ps.length);n.className='ov-cnt'+(ps.length?'':' z');n.setAttribute('aria-label',ovPlural(ps.length,'site'));
+  $('#ps-meta').textContent=rest?`${ready} ready to send · ${rest} further along`:'Oldest first';
+  if(!ps.length){ol.append(el('li',{class:'ov-row empty',text:'No site has a preview yet. Sites appear here when their preview is online.'}));return}
+  const BADGE={gate:'ready',live:'good',drop:'bad',grey:'sent'};
   for(const b of ps){
-    const li=el('li',{class:'psite',id:'ps-'+b.slug});
-    li.append(thumb(b,'thumb'));
-    const info=el('div');
-    info.append(el('h3',{text:b.name}));
-    info.append(el('div',{class:'m'},[b.type?b.type.replace(/_/g,' '):null,runShort(b.run_id)].filter(Boolean).join(' · ')+' · ran by ',el('b',{text:b.ran_by?.name||'—'})));
-    const [cls,txt]=pitchStatus(b);
-    const st=el('div',{class:'st'},el('span',{class:'spill '+cls,text:txt}));
-    if(b.critic_score!=null)st.append(`critic ${fmt(b.critic_score)}`);
-    info.append(st,siteLinks(b));
-    for(const a of (b.assignments||[]).filter(a=>a.open))info.append(el('div',{class:'asg'},el('span',{class:'who',text:`${opName(a.by)} → ${opName(a.to)}:`}),` ${a.task}`));
-    li.append(info);
-    const acts=el('div',{class:'acts'});
-    const open=state.openSite;
-    const tog=(key,label)=>{const k=b.slug+':'+key,on=open===k;const t=el('button',{type:'button',class:'btn '+(on?'s':key==='ho'?'s':'p'),text:on?'Close':label,'aria-expanded':String(on)});t.onclick=()=>{state.openSite=on?null:k;renderPitchSites();if(!on)document.querySelector(`#ps-${b.slug} .panel textarea, #ps-${b.slug} .panel input`)?.focus()};acts.append(t)};
-    if(b.state==='packaged'||/^(pitched|outcome:(reply|meeting|ignored))$/.test(b.state)){const u=el('button',{type:'button',class:'btn p',text:'Update status'});u.onclick=()=>statusModal(b);acts.append(u)}
-    tog('ho','Hand off');
-    li.append(acts);
-    if(open===b.slug+':ho')li.append(el('div',{class:'panel'},el('div',{class:'label',text:`Hand off ${b.name}`}),handoffForm(b)));
-    ol.append(li);
+    const li=el('li',{class:'ov-row',id:'ps-'+b.slug});
+    const th=thumb(b,'ov-thumb');th.setAttribute('tabindex','-1');th.setAttribute('aria-hidden','true');li.append(th);
+    const links=el('div',{class:'ov-links'});
+    if(b.preview_url){const a=el('a',{class:'ov-lk',href:b.preview_url,target:'_blank',rel:'noopener'},'Preview website',el('span',{class:'sr',text:` of ${b.name} (opens a new tab)`}),el('span',{html:OVI.ext}));links.append(a)}
+    if(pitchLive(b))links.append(el('a',{class:'ov-lk',href:b.pitch.proposal_url,target:'_blank',rel:'noopener'},'Pitch',el('span',{class:'sr',text:` page for ${b.name} (opens a new tab)`}),el('span',{html:OVI.ext})));
+    else{const why=b.pitch?.proposal_url?`The pitch page for ${b.name} is written but not online yet.`:`${b.name} has no pitch page yet.`;
+      links.append(el('span',{class:'ov-off',role:'link','aria-disabled':'true',tabindex:'0',title:why,'aria-label':`Pitch, not online yet. ${why}`},el('span',{html:OVI.clock}),'Pitch · not online yet'))}
+    const [cls,txt]=pitchStatus(b),age=ovDays(b.last_change);
+    const meta=el('div',{class:'ov-meta'},el('span',{class:'ov-badge '+(BADGE[cls]||'sent'),text:txt}));
+    if(b.state==='packaged')meta.append(el('span',{text:age?`for ${ovPlural(age,'day')}`:'since today',title:`Ready to send since ${dShort(b.last_change)}`}));
+    const rt=el('div',{class:'ov-rt'},el('div',{class:'ov-nm'},el('h3',{text:b.name}),b.ran_by?.name?el('span',{class:'by',text:`by ${b.ran_by.name}`}):null),links,meta);
+    for(const a of (b.assignments||[]).filter(a=>a.open))rt.append(el('div',{class:'ov-ho',title:a.task},el('span',{html:OVI.handoff}),a.by===a.to?`${opName(a.to)} is on it`:a.to===D.team?.viewer?`${opName(a.by)} asks you`:`Handed off to ${opName(a.to)}`));
+    li.append(rt);
+    const acts=el('div',{class:'ov-acts'});
+    if(canUpdate(b)){const u=el('button',{type:'button',class:'ovb p'},el('span',{html:OVI.status}),'Update status',el('span',{class:'sr',text:` of ${b.name}`}));u.onclick=()=>statusModal(b);acts.append(u)}
+    else acts.append(el('span'));
+    const ho=el('button',{type:'button',class:'ovb ho'},el('span',{html:OVI.handoff}),'Hand off',el('span',{class:'sr',text:` ${b.name}`}));ho.onclick=()=>handoffModal(b);acts.append(ho);
+    for(const [re,label] of DRAFTS){const f=(b.pitch?.drafts||[]).find(f=>re.test(f));if(!f)continue;
+      const kind=/email/.test(f)?'email':/whatsapp/.test(f)?'whatsapp':'inperson';
+      const bt=el('button',{type:'button',class:'ovb sg'},el('span',{html:OVI[kind]}),label,el('span',{class:'sr',text:` for ${b.name}`}));bt.onclick=()=>openDraft(b,f,label);acts.append(bt)}
+    li.append(acts);ol.append(li);
   }
 }
-function renderHandoffs(){
-  const ol=$('#handoffs');ol.innerHTML='';
-  const open=(D.team?.open_assignments||[]).slice().sort((a,b)=>b.ts.localeCompare(a.ts));
-  $('#ho-meta').textContent=`${open.filter(a=>a.to===D.team?.viewer).length} for you · ${open.length} open`;
-  if(!open.length)ol.append(el('li',{class:'empty',text:'Nothing open. Use Hand off on a site to ask the other operator for something.'}));
-  for(const a of open){
-    const b=D.businesses.find(x=>x.slug===a.slug);
-    const li=el('li');li.append(opDisc(a.to));
-    const body=el('div',{class:'body'});
-    body.append(el('div',{class:'l1row'},el('div',{class:'l1',text:`${a.by===a.to?opName(a.to)+' (own task)':`${a.by_name} → ${a.to_name}`}${a.to===D.team?.viewer?' · for you':''}`}),el('time',{datetime:a.ts,text:'since '+dShort(a.ts)})));
-    body.append(el('div',{class:'l2'},el('b',{text:a.business})));
-    body.append(el('div',{class:'l3',title:a.task,text:a.task}));
-    if(b){const cp=el('button',{type:'button',class:'linkbtn',text:'Copy prompt',style:'margin-top:6px'});cp.onclick=()=>copyText(handoffPrompt(b,a.to,a.task,a.id),cp);body.append(cp)}
-    li.append(body);ol.append(li);
-  }
-}
-function renderOtherGates(){
-  const ul=$('#ogates');ul.innerHTML='';
-  const gs=D.gates.filter(g=>g.kind!=='send the pitch');
-  $('#og-meta').textContent=gs.length?`${gs.length} open`:'';
-  if(!gs.length)ul.append(el('li',{class:'empty',text:'None. Pitches are in the list above.'}));
-  for(const g of gs){
-    const isPick=g.kind==='pick a mockup',isProp=g.target?.view==='decisions';
-    const a=el('a',{class:'btn s',href:'#',text:isPick?'Pick':'Open'});
-    a.onclick=e=>{e.preventDefault();if(isProp)go('decisions','proposals');else{state.run=g.run_id;renderRunSel();renderPipeline();renderAgents();isPick?go('pipeline','pick:'+g.slug):go(g.target.view,g.target.slug)}};
-    ul.append(el('li',{},el('div',{},el('b',{text:g.name}),el('span',{text:`${g.kind}${g.run_id?' · '+runShort(g.run_id):''}${g.since?' · since '+dShort(g.since):''}`})),a));
+// everything on the Needs you list that is not a site row
+function renderAlsoWaiting(){
+  const ul=$('#ov-wait');ul.innerHTML='';
+  const items=needsItems().filter(i=>i.kind==='tweak'||i.kind==='gate'||i.kind==='handoff');
+  const n=$('#ow-n');n.textContent=String(items.length);n.className='ov-cnt'+(items.length?'':' z');n.setAttribute('aria-label',ovPlural(items.length,'item'));
+  if(!items.length){ul.append(el('li',{class:'empty',text:'Nothing else is waiting on you.'}));return}
+  for(const it of items){
+    let title=it.title,sub=it.sub,btn;
+    if(it.kind==='tweak'){sub=`Suggested tweak to the ${ovAgent(it.p.agent)}${/custom\.md/i.test(it.p.agent||'')?' (your own notes)':''} · approve or reject`;
+      btn=el('button',{type:'button',class:'ovb s'},'Review',el('span',{class:'sr',text:`: ${it.p.title}, in Decisions`}));btn.onclick=()=>go('decisions','proposals')}
+    else if(it.kind==='gate'){sub=it.g.since?`Since ${dShort(it.g.since)}`:'';const pick=it.g.kind==='pick a mockup';
+      btn=el('button',{type:'button',class:'ovb s',text:pick?'Pick':'Open'});btn.onclick=()=>{state.run=it.g.run_id;renderRunSel();renderPipeline();pick?go('pipeline','pick:'+it.g.slug):go(it.g.target.view,it.g.target.slug)}}
+    else{sub=`${it.a.business} · since ${dShort(it.a.ts)}`;const b=D.businesses.find(x=>x.slug===it.a.slug);
+      if(b){btn=el('button',{type:'button',class:'ovb s',text:'Copy prompt'});btn.onclick=()=>copyText(handoffPrompt(b,it.a.to,it.a.task,it.a.id),btn)}}
+    ul.append(el('li',{},el('div',{},el('b',{text:title}),el('span',{text:sub})),btn||el('span')));
   }
 }
 // Recording what happened outside the system: the pitch was sent, or what the owner answered.
@@ -1217,7 +1349,7 @@ async function renderLedgerMap(){
   $('#lg-mapnote').textContent=`${pts.length} businesses with a location · dashed outline: the search area of each run`;
 }
 
-function renderOverview(){renderMoney();renderTiles();renderPitchSites();renderHandoffs();renderOtherGates()}
+function renderOverview(){renderOvSummary();renderMoney();renderTiles();renderPitchSites();renderAlsoWaiting()}
 
 function historyRow(b,cols){
   const fr=el('tr',{class:'frow'});const td=el('td',{colspan:String(cols)});
@@ -1550,7 +1682,7 @@ function renderDecisions(){
 /* ---------- render ---------- */
 function render(){
   renderChrome();renderRunSel();
-  $('#title-sub').textContent=PER_RUN.includes(state.view)&&state.run!=='all'?runShort(state.run):'all runs';$('#controls').hidden=!PER_RUN.includes(state.view);
+  $('#title-sub').textContent=PER_RUN.includes(state.view)&&state.run!=='all'?runShort(state.run):state.view==='overview'?'':'all runs';$('#controls').hidden=!PER_RUN.includes(state.view);
   renderOverview();renderNeedsView();renderLedger();if(state.view==='ledger')renderLedgerMap();renderPipeline();renderSites();renderAgents();renderDecisions();
   document.querySelectorAll('.view.on svg').forEach(sizeTips);
 }

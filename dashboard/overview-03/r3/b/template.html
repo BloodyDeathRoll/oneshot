@@ -61,14 +61,14 @@ svg{width:16px;height:16px;flex:none}
 
 /* ---------- band: Revenues | Expenses | the five counts ---------- */
 .band{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:24px}
-.m{padding:24px;display:flex;flex-direction:column;min-width:0}
+.m{padding:24px;display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0}
 .m+.m{border-left:1px solid var(--line)}
 .m .lab{color:var(--ink2)}
 .m .fig{font-size:48px;line-height:56px;font-weight:600;letter-spacing:-.02em;margin-top:8px}
 .m .fig small{font-size:16px;line-height:24px;font-weight:600;color:var(--ink3);letter-spacing:0;margin-left:8px}
 .m .month{margin-top:4px;color:var(--ink2)}
 .m .month b{color:var(--ink);font-weight:600}
-.m .hint{margin-top:16px;max-width:52ch;color:var(--ink3);text-wrap:pretty}
+.m .hint{margin-top:16px;max-width:44ch;color:var(--ink3);text-wrap:pretty}
 .m .hint q{quotes:"“" "”";color:var(--ink2);font-weight:600}
 .counts{margin:0;border-left:1px solid var(--line);padding:8px 24px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px;align-content:center}
 .counts .r{display:flex;flex-direction:column;justify-content:center;gap:2px;min-height:76px;padding:10px 0;border-top:1px solid var(--line);min-width:0}
@@ -95,7 +95,7 @@ svg{width:16px;height:16px;flex:none}
 /* one row per site: thumb | name, links, status | the 2x2 action block. Rows share columns (subgrid),
    so every row's action block has the same two column widths and the same right edge. */
 /* a subgrid's padding is taken out of its edge tracks, so the thumb track carries the row padding (--rp) */
-.rows{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:calc(var(--tw) + var(--rp)) minmax(0,1fr) auto auto;column-gap:20px}
+.rows{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:calc(var(--tw) + var(--rp)) minmax(0,1fr) auto auto;grid-auto-rows:1fr;column-gap:20px}
 .row{grid-column:1/-1;display:grid;grid-template-columns:subgrid;align-items:center;padding:16px var(--rp);border-top:1px solid var(--line)}
 .row:first-child{border-top:0}
 .thumb{grid-column:1;display:block;width:var(--tw);height:var(--th);border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--soft)}
@@ -134,14 +134,17 @@ svg{width:16px;height:16px;flex:none}
 .btn.g{background:none;color:var(--ink2);padding:0 10px}
 .btn.g:hover{background:var(--hover);color:var(--ink)}
 .btn.sm{height:32px;padding:0 12px}
+.btn.sg{background:var(--acc-t);border-color:var(--acc-t);color:var(--acc);box-shadow:none}
+.btn.sg:hover{background:var(--acc-sec);border-color:var(--acc-sec)}
+.btn.sg svg{color:var(--acc)}
+.btn.ho{background:none;border-color:transparent;color:var(--ink2);box-shadow:none}
+.btn.ho:hover{background:var(--hover);color:var(--ink)}
 
 /* ---------- Also waiting on you ---------- */
 .wait .wh{display:flex;align-items:center;gap:10px;height:64px;padding:0 24px;border-bottom:1px solid var(--line)}
 .wlist{list-style:none;margin:0;padding:0}
-.wlist li{display:grid;grid-template-columns:32px minmax(0,1fr) auto;align-items:center;column-gap:14px;padding:16px 24px;border-top:1px solid var(--line)}
+.wlist li{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:14px;padding:16px 24px;border-top:1px solid var(--line)}
 .wlist li:first-child{border-top:0}
-.wlist .ic{width:32px;height:32px;border-radius:8px;background:var(--soft);display:grid;place-items:center;color:var(--ink2);align-self:start}
-.wlist .ic svg{width:18px;height:18px}
 .wlist .tx{min-width:0}
 .wlist .tx b{display:block;font-weight:600;color:var(--ink);text-wrap:pretty}
 .wlist .tx span{display:block;color:var(--ink3);margin-top:2px}
@@ -231,7 +234,11 @@ dialog.sheet::backdrop{background:rgba(255,255,255,.8)}
   .body{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:1280px){
-  :root{--side:80px;--gut:24px;--tw:144px;--th:90px}
+  :root{--side:80px;--gut:24px;--tw:128px;--th:80px}
+  .acts .btn{padding:0 10px}
+  .links{column-gap:12px}
+  .off{gap:4px}
+  .acts .btn.sg svg{display:none} /* the label says which channel; keeps the links on one line at 1024 */
   .side-in{padding:16px 4px}
   .side .logo{justify-content:center;padding:0 0 20px}
   .side .logo b{display:none}
@@ -282,8 +289,7 @@ dialog.sheet::backdrop{background:rgba(255,255,255,.8)}
   .acts .sg{grid-column:1/-1}
   .acts .btn{height:44px}
   .lk,.off{min-height:32px}
-  .wlist li{padding:14px 16px;grid-template-columns:minmax(0,1fr) auto}
-  .wlist .ic{display:none}
+  .wlist li{padding:14px 16px}
   /* popups become bottom sheets */
   dialog.pop{width:100%;max-width:none;max-height:90vh;margin:auto 0 0;border-radius:16px 16px 0 0;border-bottom:0}
   .choices{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -379,6 +385,7 @@ const I={
   reply:svg('<path d="M9.5 8 5 12.5 9.5 17"/><path d="M5 12.5h9a5 5 0 0 1 5 5V19"/>'),
   star:svg('<path d="M12 3.5 14.6 9l5.9.6-4.4 4 1.3 5.9L12 16.6l-5.4 2.9 1.3-5.9-4.4-4L9.4 9z"/>'),
   x2:svg('<circle cx="12" cy="12" r="8.5"/><path d="M9 9l6 6M15 9l-6 6"/>'),
+  status:svg('<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/>'),
   tweak:svg('<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>'),
 };
 const CH_ICON={email:I.mail,whatsapp:I.chat,inperson:I.person};
@@ -390,7 +397,7 @@ const TODAY=NOW.toLocaleDateString('en-CA');            // local YYYY-MM-DD, not
 const op=id=>D.operators[id]||id;
 const other=Object.keys(D.operators).find(o=>o!==D.viewer);
 const asDate=d=>typeof d==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(d)?new Date(+d.slice(0,4),+d.slice(5,7)-1,+d.slice(8,10)):new Date(d);
-const daysSince=ts=>{const a=asDate(ts),b=new Date(NOW.getFullYear(),NOW.getMonth(),NOW.getDate());return Math.max(0,Math.round((b-new Date(a.getFullYear(),a.getMonth(),a.getDate()))/864e5))};
+const daysSince=ts=>Math.max(0,Math.floor((NOW-asDate(ts))/864e5)); // elapsed days, as data.json's days_since_change
 const dShort=d=>asDate(d).toLocaleDateString('en-GB',{day:'numeric',month:'short'});
 const plural=(n,w,ws)=>`${n} ${n===1?w:(ws||w+'s')}`;
 const ageText=n=>n===0?'today':`${plural(n,'day')} ago`;
@@ -530,9 +537,9 @@ function row(s){
       when?h('span',{class:'age'+(st.k==='ready'&&age>=14?' old':''),text:when,title:st.k==='ready'?`Ready to send since ${dShort(s.since)}`:null}):null),
     ho?h('span',{class:'ho-note'},ic(I.handoff),`Handed off to ${op(ho.to)} ${ageText(daysSince(ho.ts))}`):null));
   li.append(h('div',{class:'acts'},
-    h('button',{type:'button',class:'btn p',onclick:e=>openStatus(e.currentTarget,s)},'Update status',h('span',{class:'sr',text:` of ${s.name}`})),
-    h('button',{type:'button',class:'btn s',onclick:e=>openHandoff(e.currentTarget,s)},ic(I.handoff),'Hand off',h('span',{class:'sr',text:` ${s.name} to ${op(other)}`})),
-    ...s.drafts.map(d=>h('button',{type:'button',class:'btn s sg',onclick:e=>openDraft(e.currentTarget,s,d)},ic(CH_ICON[d.kind]),d.label,h('span',{class:'sr',text:` for ${s.name}`})))));
+    h('button',{type:'button',class:'btn p',onclick:e=>openStatus(e.currentTarget,s)},ic(I.status),'Update status',h('span',{class:'sr',text:` of ${s.name}`})),
+    h('button',{type:'button',class:'btn ho',onclick:e=>openHandoff(e.currentTarget,s)},ic(I.handoff),'Hand off',h('span',{class:'sr',text:` ${s.name} to ${op(other)}`})),
+    ...s.drafts.map(d=>h('button',{type:'button',class:'btn sg',onclick:e=>openDraft(e.currentTarget,s,d)},ic(CH_ICON[d.kind]),d.label,h('span',{class:'sr',text:` for ${s.name}`})))));
   return li;
 }
 function renderList(){
@@ -554,12 +561,12 @@ function renderWait(){
   const ul=$('#wlist');ul.innerHTML='';
   for(const x of w.toMe){
     const s=D.sites.find(y=>y.slug===x.slug);
-    ul.append(h('li',{},h('span',{class:'ic',html:I.handoff}),h('div',{class:'tx'},h('b',{text:`${op(x.by)} asks: ${x.task}`}),h('span',{text:`${s?s.name:x.business||x.name} · ${dShort(x.ts)}`})),
+    ul.append(h('li',{},h('div',{class:'tx'},h('b',{text:`${op(x.by)} asks: ${x.task}`}),h('span',{text:`${s?s.name:x.business||x.name} · ${dShort(x.ts)}`})),
       s?copyBtn(()=>handoffPrompt(x),'Copy prompt','btn s sm'):h('span')));
   }
-  for(const g of w.gates)ul.append(h('li',{},h('span',{class:'ic',html:I.decisions}),h('div',{class:'tx'},h('b',{text:`${g.name}: ${g.kind}`}),h('span',{text:g.since?`Since ${dShort(g.since)}`:''})),
+  for(const g of w.gates)ul.append(h('li',{},h('div',{class:'tx'},h('b',{text:`${g.name}: ${g.kind}`}),h('span',{text:g.since?`Since ${dShort(g.since)}`:''})),
     h('button',{type:'button',class:'btn s sm',onclick:()=>elsewhere('Pipeline')},'Open')));
-  for(const t of w.tweaks)ul.append(h('li',{},h('span',{class:'ic',html:I.tweak}),
+  for(const t of w.tweaks)ul.append(h('li',{},
     h('div',{class:'tx'},h('b',{text:t.title}),h('span',{text:`Suggested tweak to the ${t.agent}${t.custom?' (your own notes)':''} · approve or reject`})),
     h('button',{type:'button',class:'btn s sm',onclick:()=>elsewhere('Decisions')},'Review',h('span',{class:'sr',text:`: ${t.title}, in Decisions`}))));
   const n=w.toMe.length+w.gates.length+w.tweaks.length;
