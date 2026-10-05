@@ -43,7 +43,7 @@ catch (e) { console.error(`dashboard server: ${e.message}`); process.exit(2); }
 const HUMAN = team()[OPERATOR].name;
 
 // Repo files the page may read (sheets to pick from, pitch drafts, proposals) — prefixes only, read-only.
-const FILE_PREFIXES = ['sites/', 'proposals/', 'reports/', 'dashboard/mockups/', 'agents/designer/gold/shots/'];
+const FILE_PREFIXES = ['sites/', 'proposals/', 'reports/', 'dashboard/mockups/', 'dashboard/overview-03/', 'dashboard/agents-04/', 'agents/designer/gold/shots/'];
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.svg': 'image/svg+xml', '.md': 'text/markdown; charset=utf-8', '.woff2': 'font/woff2', '.txt': 'text/plain; charset=utf-8' };
 
 // ---- the only seven things this server can write --------------------------------------------------
