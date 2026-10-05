@@ -228,6 +228,21 @@ function readProposals(proposalDecisions = []) {
   return out;
 }
 
+// Scout output per run: reports/<run>/candidates.json (location, presence score + reason) and the
+// search area, reports/<run>/area.geojson. For the Ledger view's table and map.
+function readCandidates() {
+  const out = {}, areas = {};
+  const base = join(ROOT, 'reports');
+  if (!existsSync(base)) return { bySlug: out, areas };
+  for (const r of readdirSync(base)) {
+    const c = readJson(`reports/${r}/candidates.json`);
+    for (const x of c?.candidates ?? []) (out[x.slug] ??= {})[r] = x;
+    const a = readJson(`reports/${r}/area.geojson`);
+    if (a) areas[r] = a;
+  }
+  return { bySlug: out, areas };
+}
+
 // ---- build ------------------------------------------------------------------------------------
 // The ledger and activity are this checkout's lines plus origin/main's (tools/origin.mjs), so the
 // page shows what either operator has merged. `origin: false` reads this checkout only.
@@ -491,6 +506,37 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     ((expenses.vendors[e.vendor] ??= {})[cur] = (expenses.vendors[e.vendor][cur] ?? 0) + e.amount);
   }
 
+  // ---- ledger view: every business ever reviewed, once, in its newest run --------------------------
+  const cands = readCandidates();
+  const seenSlug = new Set();
+  const clean = (n) => (n ?? '').replace(/^gate a:\s*/i, '').replace(/^mode: test\s*[—-]?\s*/i, '').trim();
+  const prospects = businesses.filter((b) => !seenSlug.has(b.slug) && seenSlug.add(b.slug)).map((b) => {
+    const h = b.history;
+    const cand = cands.bySlug[b.slug]?.[b.run_id] ?? Object.values(cands.bySlug[b.slug] ?? {}).at(-1) ?? null;
+    const scored = h.find((x) => x.to === 'scored');
+    const approved = [...h].reverse().find((x) => x.to === 'approved');
+    const left = [...h].reverse().find((x) => rank(x.to) < rank(x.from) && rank(x.to) < rank('approved') && x.from);
+    const google = (scored?.note ?? cand?.presence?.reason ?? '').match(/Google[^()]*?\((\d(?:\.\d)?),\s*(\d+)\s+reviews?/i);
+    const reached = (s) => b.reached.includes(s);
+    let verdict, why;
+    if (b.state === 'void') { verdict = 'voided'; why = b.why; }
+    else if (reached('built') || reached('passed') || reached('previewed') || reached('packaged')) { verdict = 'built'; why = clean(approved?.note); }
+    else if (approved && left && left.ts > approved.ts) { verdict = 'dropped'; why = clean(left.note); }
+    else if (approved) { verdict = 'in progress'; why = clean(approved.note); }
+    else if (b.group === 'not_shortlisted') { verdict = 'not shortlisted'; why = `Already has a decent online presence (${b.presence}/5 is above the cut-off). ${cand?.presence?.reason ?? scored?.note?.replace(/^presence \d\/5:\s*/, '') ?? ''}`.trim(); }
+    else if (b.group === 'superseded') { verdict = 'not continued'; why = 'Found in a run that stopped before the shortlist.'; }
+    else if (b.state === 'shortlisted') { verdict = 'shortlisted, not picked'; why = left ? clean(left.note) : 'Made the shortlist; other businesses were picked for the run.'; }
+    else { verdict = 'in progress'; why = b.why; }
+    return {
+      slug: b.slug, name: cand?.name ?? b.name, type: cand?.type ?? b.type, run_id: b.run_id, state: b.state, verdict, why,
+      presence: b.presence, presence_reason: cand?.presence?.reason ?? scored?.note?.replace(/^presence \d\/5:\s*/, '') ?? null,
+      google: google ? { rating: Number(google[1]), reviews: Number(google[2]) } : null,
+      site_url: cand?.existing_site?.url ?? null,
+      lat: cand?.location?.lat ?? null, lng: cand?.location?.lng ?? null, address: cand?.location?.address ?? null,
+      first_seen: b.first_seen, ran_by: b.ran_by,
+    };
+  });
+
   // Runs with ledger lines, plus active runs that have none yet (a run file just created).
   const runIds = [...new Set([...runsSeen, ...activeRuns.map((r) => r.run_id)])].sort();
   const runs = [...runIds].reverse().map((r) => {
@@ -518,7 +564,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     },
     pipeline_order: ORDER, gate_states: GATES, stations: STATIONS, next_step: NEXT_STEP,
     run, runs, kpis: cur, kpis_by_run, deltas, funnel: cur.funnel, series,
-    gates, businesses, decisions, recent_activity, leads, corrections, proposals, agents, expenses, revenues,
+    gates, businesses, prospects, areas: cands.areas, decisions, recent_activity, leads, corrections, proposals, agents, expenses, revenues,
     non_business_runs: nonBusinessRuns.map((l) => ({ ts: l.ts, run_id: l.run_id, agent: l.agent, to: l.to_state, note: l.note })),
     empty_states: {
       pitched: { filled_by: 'a ledger line packaged → pitched (agent: human)', earliest: 'when Shahar sends the first pitch; three are ready', view: 'overview, pipeline' },

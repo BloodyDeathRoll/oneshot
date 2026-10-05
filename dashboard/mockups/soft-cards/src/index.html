@@ -93,7 +93,7 @@ main{min-width:0;padding:0 24px 48px}
 .psite .m{font-size:13px;color:var(--ink3);font-weight:500;margin-top:4px}
 .psite .m b{color:var(--ink2);font-weight:700}
 .psite .st{margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--ink2);font-weight:500}
-.psite .ln{margin-top:10px;display:flex;gap:6px 14px;flex-wrap:wrap;font-size:13px}
+.ln{margin-top:10px;display:flex;gap:8px 10px;flex-wrap:wrap;font-size:13px}
 .psite .ln .na{color:var(--ink3)}
 .cta{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--rule);background:var(--card);color:var(--ink);font:inherit;font-size:13px;font-weight:700;border-radius:999px;padding:7px 12px;line-height:1;text-decoration:none;cursor:pointer;white-space:nowrap}
 .cta:hover{background:var(--ground)}
@@ -209,6 +209,7 @@ td.next .why{display:block;font-size:13px;color:var(--ink3);overflow:hidden;text
 .site-score .v b{color:var(--ink);font-weight:700;font-size:14px}
 .site-score .v .pass{color:var(--green)}.site-score .v .fail{color:var(--red)}
 .scorechart{margin-top:14px}
+.site .site-acts{margin-top:18px;border-top:1px solid var(--rule);padding-top:16px}
 .site .links{margin-top:18px;border-top:1px solid var(--rule);padding-top:12px;display:grid;gap:8px;font-size:13px;color:var(--ink3);font-weight:500}
 .site .links li{display:flex;gap:8px;flex-wrap:wrap;align-items:baseline}
 .site .links li span.k{min-width:76px;color:var(--ink2)}
@@ -243,6 +244,41 @@ td.next .why{display:block;font-size:13px;color:var(--ink3);overflow:hidden;text
 .mini .vpill{margin-top:8px}
 .mini .n{font-size:13px;color:var(--ink3);margin-top:10px;font-weight:500}
 .mini .chlog{-webkit-line-clamp:3}
+
+/* ---------- needs you ---------- */
+.nd-list>li{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:18px;align-items:center;padding:16px 0;border-bottom:1px solid var(--rule)}
+.nd-list>li:last-child{border-bottom:0}
+.nd-list .ic{width:56px;height:40px;border-radius:10px;background:var(--t5);color:var(--acc);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.nd-list .ic img{width:100%;height:100%;object-fit:cover;object-position:top}
+.nd-list .ic svg{width:22px;height:22px}
+.nd-list b{display:block;font-size:16px;font-weight:700}
+.nd-list .s{display:block;font-size:14px;color:var(--ink2);margin-top:3px}
+.nd-list .a{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+/* ---------- ledger ---------- */
+.lg-sum{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:var(--gap)}
+.lg-sum button{border:0;background:var(--card);box-shadow:var(--shadow);border-radius:999px;padding:10px 16px;font:inherit;font-size:14px;font-weight:600;color:var(--ink2);cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.lg-sum button b{color:var(--ink);font-weight:800}
+.lg-sum button i{width:10px;height:10px;border-radius:999px;flex:none}
+.lg-sum button[aria-pressed="true"]{background:var(--ink);color:#fff}.lg-sum button[aria-pressed="true"] b{color:#fff}
+.lg-mapcard{padding:0;overflow:hidden}
+.lg-map{height:440px;background:var(--t5)}
+.lg-attr{font-size:12px;color:var(--ink3);padding:8px 16px}
+table.lg{width:100%;border-collapse:collapse}
+table.lg th{font-size:13px;font-weight:700;color:var(--ink3);text-align:left;padding:0 16px 10px 0;border-bottom:1px solid var(--rule);white-space:nowrap}
+table.lg td{padding:14px 16px 14px 0;border-bottom:1px solid var(--rule);vertical-align:top;font-size:14px}
+table.lg tr:last-child td{border-bottom:0}
+table.lg tbody tr{cursor:pointer}
+table.lg tbody tr:hover td,table.lg tbody tr.sel td{background:#FAFAFE}
+table.lg td.n b{display:block;font-size:15px;font-weight:700}
+table.lg td.n span{display:block;font-size:13px;color:var(--ink3);margin-top:2px}
+table.lg td.r{white-space:nowrap;font-weight:600}
+table.lg td.r span{color:var(--ink3);font-weight:500}
+table.lg td.w{color:var(--ink2);line-height:1.5;max-width:560px}
+.opill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 10px;font-size:13px;font-weight:700;white-space:nowrap}
+.opill::before{content:"";width:8px;height:8px;border-radius:999px;background:currentColor}
+.pbar{display:inline-flex;gap:3px;vertical-align:middle;margin-right:8px}.pbar i{width:10px;height:10px;border-radius:3px;background:var(--rule)}.pbar i.on{background:var(--acc)}
+.lg-pin{width:16px;height:16px;border-radius:999px;border:2.5px solid #fff;box-shadow:0 1px 4px rgba(11,18,32,.35)}
+.dec2{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:var(--gap);align-items:start}
 
 /* ---------- decisions: suggested agent tweaks ---------- */
 .tw-intro{font-size:15px;color:var(--ink2);margin:-6px 0 20px;max-width:760px;line-height:1.55}
@@ -425,6 +461,7 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
   .nav .n{display:none}
   .side-foot{display:none}
   .tiles{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .dec2{grid-template-columns:minmax(0,1fr)}
   .money .big{font-size:44px}
   .ov2{grid-template-columns:minmax(0,1fr)}
   .psites>li{grid-template-columns:160px minmax(0,1fr)}
@@ -457,9 +494,9 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2.5"/><rect x="13" y="3" width="8" height="8" rx="2.5"/><rect x="3" y="13" width="8" height="8" rx="2.5"/><rect x="13" y="13" width="8" height="8" rx="2.5"/></svg>
       <span>Overview</span>
     </button>
-    <button type="button" data-view="overview" data-focus="needs" id="nav-needs">
+    <button type="button" data-view="needs" id="nav-needs">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 10.5V7a6 6 0 0 1 12 0v3.5l1.5 3.5h-15z"/><path d="M10 18a2 2 0 0 0 4 0"/></svg>
-      <span>Needs you</span><span class="badge" id="badge-needs" aria-label="open gates">3</span>
+      <span>Needs you</span><span class="badge" id="badge-needs" aria-label="things waiting on you"></span>
     </button>
     <button type="button" data-view="pipeline">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h13"/><circle cx="18" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg>
@@ -476,6 +513,10 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
     <button type="button" data-view="decisions">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M3 6l1.5 1.5L7 5M3 12l1.5 1.5L7 11M3 18l1.5 1.5L7 17"/></svg>
       <span>Decisions</span><span class="n" id="n-dec"></span>
+    </button>
+    <button type="button" data-view="ledger">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11A6.5 6.5 0 0 1 18.5 10c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+      <span>Ledger</span><span class="n" id="n-ledger"></span>
     </button>
   </nav>
   <div class="side-foot" id="side-foot"></div>
@@ -514,6 +555,22 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
     </div>
   </section>
 
+  <section class="view" id="view-needs" aria-label="Needs you">
+    <section class="card">
+      <div class="card-h"><h2>Everything waiting on you</h2><span class="meta" id="nd-meta"></span></div>
+      <ol class="nd-list" id="nd-list"></ol>
+    </section>
+  </section>
+
+  <section class="view" id="view-ledger" aria-label="Ledger">
+    <div class="lg-sum" id="lg-sum" role="group" aria-label="Filter by outcome"></div>
+    <section class="card lg-mapcard"><div id="lg-map" class="lg-map" role="region" aria-label="Map of every business reviewed"></div><p class="lg-attr" id="lg-mapnote"></p></section>
+    <section class="card" style="margin-top:var(--gap)">
+      <div class="card-h"><h2>Every business we reviewed</h2><span class="meta" id="lg-meta"></span></div>
+      <div style="overflow-x:auto"><table class="lg" id="lg-table"><thead><tr><th scope="col">Business</th><th scope="col">Google rating</th><th scope="col">Web presence</th><th scope="col">Outcome</th><th scope="col">Why</th></tr></thead><tbody id="lg-body"></tbody></table></div>
+    </section>
+  </section>
+
   <section class="view" id="view-pipeline" aria-label="Pipeline">
     <section class="card">
       <div class="card-h pipe-head" style="align-items:center">
@@ -544,16 +601,18 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
   </section>
 
   <section class="view" id="view-decisions" aria-label="Decisions">
+    <div class="dec2">
     <section class="card tweaks" id="props" tabindex="-1" aria-labelledby="props-h">
       <div class="card-h"><h2 id="props-h">Suggested agent tweaks</h2><span class="meta" id="props-meta"></span></div>
       <p class="tw-intro">After each run the critic suggests changes to how an agent works. Approve the ones you want; Claude applies an approved tweak in its next session, as one pull request.</p>
       <ol class="tw-list" id="props-list"></ol>
       <details class="tw-done" id="props-done"></details>
     </section>
-    <section class="card" style="margin-top:var(--gap)" aria-labelledby="dec-h">
-      <div class="card-h"><h2 id="dec-h">Decisions by site</h2><span class="meta" id="dec-sum"></span></div>
+    <section class="card" aria-labelledby="dec-h">
+      <div class="card-h"><h2 id="dec-h">Your decisions, by site</h2><span class="meta" id="dec-sum"></span></div>
       <ul class="dsites" id="dsites"></ul>
     </section>
+    </div>
   </section>
 </main>
 
@@ -630,12 +689,13 @@ function countUp(node,to,key){
 }
 
 /* ---------- state ---------- */
-const state={run:D.run.run_id,view:'overview',filter:'all',openPick:null,openSite:null,openDec:null,results:{},handoffs:{},dirty:false};
+const state={run:'all',view:'overview',filter:'all',openPick:null,openSite:null,openDec:null,results:{},handoffs:{},dirty:false};
 // Overview, Sites and Decisions cover every run; Pipeline and Agents show the run in the picker.
 const PER_RUN=['pipeline','agents'];
+const agentRun=()=>state.run==='all'?D.run.run_id:state.run;
 
 const runSel=$('#run');
-function renderRunSel(){runSel.innerHTML='';for(const r of D.runs)runSel.append(el('option',{value:r.run_id,text:`${runShort(r.run_id)}${r.active?` · active · ${r.operator?opName(r.operator):'no operator'}`:r.status==='closed'?' · closed':/^test-/.test(r.run_id)?' · test':' · superseded'}`}));if(!D.runs.find(r=>r.run_id===state.run))state.run=D.run.run_id;runSel.value=state.run}
+function renderRunSel(){runSel.innerHTML='';runSel.append(el('option',{value:'all',text:'All runs'}));for(const r of D.runs)runSel.append(el('option',{value:r.run_id,text:`${runShort(r.run_id)}${r.active?` · active · ${r.operator?opName(r.operator):'no operator'}`:r.status==='closed'?' · closed':/^test-/.test(r.run_id)?' · test':' · superseded'}`}));if(state.run!=='all'&&!D.runs.find(r=>r.run_id===state.run))state.run='all';runSel.value=state.run}
 renderRunSel();runSel.onchange=()=>{state.run=runSel.value;render()};
 
 function renderChrome(){
@@ -647,11 +707,11 @@ function renderChrome(){
     D.runs.filter(r=>r.active).length>1?el('div',{text:`${D.runs.filter(r=>r.active).length} active runs: ${D.runs.filter(r=>r.active).map(r=>`${runShort(r.run_id)} (${opName(r.operator)})`).join(', ')}`}):'',
     el('div',{text:`${D.totals.ledger_lines} ledger lines · ${D.totals.human_decisions} decisions`})
   );
-  $('#badge-needs').textContent=D.gates.length;
-  $('#n-pipe').textContent=D.runs.find(r=>r.current)?.businesses??'';
+  $('#badge-needs').textContent=needsItems().length;
+  $('#n-pipe').textContent=pipeRows().length;$('#n-ledger').textContent=(D.prospects||[]).length;
   $('#n-sites').textContent=pitchSites().length;
   $('#n-agents').textContent=Object.keys(D.agents).length;
-  $('#n-dec').textContent=D.decisions.length;
+  $('#n-dec').textContent=builtDecisions().length;
   $('#mode').classList.toggle('live',LIVE);
   $('#mode-text').textContent=LIVE?`live · ${location.host} · decisions append to the ledger`:'read-only · open the CLI or start dashboard/server.mjs to decide';
   const ll=$('#lastline');ll.innerHTML='';
@@ -661,7 +721,7 @@ function renderChrome(){
 
 /* nav */
 document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view,b.dataset.focus)));
-const TITLES={overview:'Overview',pipeline:'Pipeline',sites:'Sites',agents:'Agents',decisions:'Decisions'};
+const TITLES={overview:'Overview',needs:'Needs you',pipeline:'Pipeline',sites:'Sites',agents:'Agents',decisions:'Decisions',ledger:'Ledger'};
 let lastHash='';
 addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(h!==lastHash){const p=h.split('/');go(p[0]||'overview',p[1])}});
 function go(view,focus){
@@ -673,11 +733,11 @@ function go(view,focus){
   document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='view-'+view));
   document.querySelectorAll('#view-'+view+' svg').forEach(sizeTips);
   $('#title').textContent=TITLES[view];document.title=`OneShot — ${TITLES[view]}`;
-  $('#controls').hidden=!PER_RUN.includes(view);$('#title-sub').textContent=PER_RUN.includes(view)?runShort(state.run):'all runs';
+  $('#controls').hidden=!PER_RUN.includes(view);$('#title-sub').textContent=PER_RUN.includes(view)&&state.run!=='all'?runShort(state.run):'all runs';if(view==='ledger')renderLedgerMap();
   window.scrollTo(0,0);
   if(view==='pipeline'&&focus){if(focus.startsWith('pick:')){state.openPick=focus.slice(5);state.filter='all'}else state.filter=focus;renderPipeline()}
   let target=null;
-  if(view==='overview'&&focus==='needs')target=$('#needs');
+
   if(view==='sites'&&focus)target=document.getElementById('site-'+focus);
   if(view==='decisions'&&focus==='proposals')target=$('#props');
   if(view==='pipeline'&&focus&&focus.startsWith('pick:'))target=document.getElementById('pick-'+focus.slice(5));
@@ -1000,7 +1060,7 @@ function renderTiles(){
 function renderPitchSites(){
   const ol=$('#psites');ol.innerHTML='';
   const ps=pitchSites();
-  $('#ps-meta').textContent=`${ps.length} site${ps.length===1?'':'s'} · ${new Set(ps.map(b=>b.run_id)).size} runs`;
+  $('#ps-meta').textContent=`${ps.length} site${ps.length===1?'':'s'}`;
   if(!ps.length)ol.append(el('li',{class:'empty',text:'No site has a preview yet.'}));
   for(const b of ps){
     const li=el('li',{class:'psite',id:'ps-'+b.slug});
@@ -1062,6 +1122,101 @@ function statusModal(b){
     gateForm({key:`outcome-${b.run_id}-${b.slug}`,gate:'outcome',run_id:b.run_id,slug:b.slug,expected_state:b.state,buttons:OUTCOMES.map(([v,l])=>[v,l,v==='sale']),placeholder:'note — what happened',label:`Outcome: ${b.name}`}));
   document.querySelector('dialog.modal input,dialog.modal button:not(.iconbtn)')?.focus();
 }
+/* ---------- Needs you: one flat list, the count is the list ---------- */
+const ICON_BELL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M3 6l1.5 1.5L7 5M3 12l1.5 1.5L7 11M3 18l1.5 1.5L7 17"/></svg>';
+function needsItems(){
+  const out=[];
+  for(const b of pitchSites().filter(b=>b.state==='packaged'))out.push({kind:'pitch',b,title:`Send ${b.name}'s pitch`,sub:`Send it yourself (WhatsApp, email or in person), then press Update status · ready since ${dShort(b.last_change)}`});
+  for(const b of pitchSites().filter(b=>/^(pitched|outcome:(reply|meeting))$/.test(b.state)))out.push({kind:'outcome',b,title:`Follow up with ${b.name}`,sub:`${pitchStatus(b)[1]} — record what the owner said`});
+  for(const p of D.proposals.filter(p=>p.kind==='proposal'&&p.status==='pending'))out.push({kind:'tweak',p,title:p.title,sub:`Suggested agent tweak · ${p.agent||'agent'} — approve or reject`});
+  for(const g of D.gates.filter(g=>g.slug&&g.kind!=='send the pitch'))out.push({kind:'gate',g,title:`${g.name}: ${g.kind}`,sub:`${runShort(g.run_id)} · since ${dShort(g.since)}`});
+  for(const a of (D.team?.open_assignments||[]).filter(a=>a.to===D.team?.viewer&&a.by!==a.to))out.push({kind:'handoff',a,title:`${a.by_name} asks: ${a.task}`,sub:`Handoff · ${a.business} · since ${dShort(a.ts)}`});
+  return out;
+}
+function renderNeedsView(){
+  const ol=$('#nd-list');ol.innerHTML='';
+  const items=needsItems();
+  $('#nd-meta').textContent=`${items.length} thing${items.length===1?'':'s'}`;
+  if(!items.length)ol.append(el('li',{class:'empty',style:'display:block',text:'Nothing is waiting on you.'}));
+  for(const it of items){
+    const ic=el('span',{class:'ic','aria-hidden':'true'});
+    if(it.b&&it.b.preview_url){const im=el('img',{src:thumbSrc(it.b.slug),alt:''});im.onerror=()=>im.remove();ic.append(im)}else ic.innerHTML=ICON_BELL;
+    const a=el('div',{class:'a'});
+    if(it.kind==='pitch'||it.kind==='outcome'){
+      for(const [re,label] of DRAFTS){const f=(it.b.pitch?.drafts||[]).find(f=>re.test(f));if(!f)continue;const bt=el('button',{type:'button',class:'cta',text:label});bt.onclick=()=>openDraft(it.b,f,label);a.append(bt)}
+      const u=el('button',{type:'button',class:'btn p',text:'Update status'});u.onclick=()=>statusModal(it.b);a.append(u);
+    }else if(it.kind==='tweak'){const o=el('button',{type:'button',class:'btn p',text:'Review'});o.onclick=()=>{go('decisions','proposals')};a.append(o)}
+    else if(it.kind==='gate'){const o=el('button',{type:'button',class:'btn p',text:it.g.kind==='pick a mockup'?'Pick':'Open'});o.onclick=()=>{state.run=it.g.run_id;renderRunSel();renderPipeline();it.g.kind==='pick a mockup'?go('pipeline','pick:'+it.g.slug):go(it.g.target.view,it.g.target.slug)};a.append(o)}
+    else if(it.kind==='handoff'){const b=D.businesses.find(x=>x.slug===it.a.slug);if(b){const cp=el('button',{type:'button',class:'btn s',text:'Copy prompt'});cp.onclick=()=>copyText(handoffPrompt(b,it.a.to,it.a.task,it.a.id),cp);a.append(cp)}}
+    ol.append(el('li',{},ic,el('div',{},el('b',{text:it.title}),el('span',{class:'s',text:it.sub})),a));
+  }
+}
+
+/* ---------- Ledger: every business reviewed, why in or out, on a map ---------- */
+const VERDICT={built:['Built','var(--green)','var(--green-bg)'],'in progress':['In progress','var(--acc)','var(--t5)'],dropped:['Dropped after approval','var(--red)','var(--red-bg)'],'shortlisted, not picked':['Shortlisted, not picked','#8A5A00','#FFF4DC'],'not shortlisted':['Not shortlisted','var(--ink2)','var(--ground)'],'not continued':['Run not continued','var(--ink2)','var(--ground)'],voided:['Voided','var(--ink2)','var(--ground)']};
+const VORDER=['built','in progress','dropped','shortlisted, not picked','not shortlisted','not continued','voided'];
+const PIN={built:'#1A7F37','in progress':'#6A2FE0',dropped:'#C0182B','shortlisted, not picked':'#D99A00','not shortlisted':'#8A93A3','not continued':'#B8BEC9',voided:'#B8BEC9'};
+state.lgFilter='all';state.lgSel=null;
+const lgRows=()=>(D.prospects||[]).filter(p=>state.lgFilter==='all'||p.verdict===state.lgFilter).sort((a,b)=>VORDER.indexOf(a.verdict)-VORDER.indexOf(b.verdict)||(b.google?.rating||0)-(a.google?.rating||0)||a.name.localeCompare(b.name));
+function presenceBar(n){const w=el('span',{class:'pbar','aria-hidden':'true'});for(let i=1;i<=5;i++)w.append(el('i',{class:i<=n?'on':''}));return w}
+function renderLedger(){
+  const P=D.prospects||[];
+  const sum=$('#lg-sum');sum.innerHTML='';
+  const cnt={};for(const p of P)cnt[p.verdict]=(cnt[p.verdict]||0)+1;
+  for(const k of ['all',...VORDER.filter(k=>cnt[k])]){
+    const b=el('button',{type:'button','aria-pressed':String(state.lgFilter===k)});
+    if(k!=='all')b.append(el('i',{style:`background:${PIN[k]}`}));
+    b.append(k==='all'?'All reviewed':VERDICT[k][0],el('b',{text:String(k==='all'?P.length:cnt[k])}));
+    b.onclick=()=>{state.lgFilter=k;renderLedger();renderLedgerMap()};sum.append(b);
+  }
+  const rows=lgRows();
+  $('#lg-meta').textContent=`${rows.length} of ${P.length} · web presence: how strong their own online presence is (0 = none, 5 = a good site). We look for 0–2.`;
+  const tb=$('#lg-body');tb.innerHTML='';
+  for(const p of rows){
+    const [vl,vc,vb]=VERDICT[p.verdict]||[p.verdict,'var(--ink2)','var(--ground)'];
+    const tr=el('tr',{id:'lg-'+p.slug,class:state.lgSel===p.slug?'sel':''});
+    tr.append(el('td',{class:'n'},el('b',{text:p.name}),el('span',{text:[p.type?p.type.replace(/_/g,' '):null,runShort(p.run_id),p.ran_by?'by '+p.ran_by.name:null].filter(Boolean).join(' · ')})));
+    tr.append(el('td',{class:'r'},p.google?el('span',{},el('b',{style:'color:var(--ink)',text:`★ ${fmt(p.google.rating)}`}),el('span',{text:` (${p.google.reviews})`})):el('span',{text:'—'})));
+    const pr=el('td',{class:'r'});if(p.presence!=null){pr.append(presenceBar(p.presence),`${p.presence}/5`)}else pr.append('—');tr.append(pr);
+    tr.append(el('td',{},el('span',{class:'opill',style:`color:${vc};background:${vb}`,text:vl})));
+    tr.append(el('td',{class:'w',text:p.why||''}));
+    tr.onclick=()=>{state.lgSel=p.slug;document.querySelectorAll('#lg-body tr.sel').forEach(x=>x.classList.remove('sel'));tr.classList.add('sel');const m=LG.markers[p.slug];if(m&&LG.map){LG.map.setView(m.getLatLng(),Math.max(LG.map.getZoom(),16));m.openPopup()}};
+    tb.append(tr);
+  }
+}
+const LG={map:null,layer:null,markers:{},loading:null};
+function loadLeaflet(){
+  if(window.L)return Promise.resolve();
+  if(LG.loading)return LG.loading;
+  LG.loading=new Promise((res,rej)=>{
+    const css=el('link',{rel:'stylesheet',href:'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css'});document.head.append(css);
+    const js=el('script',{src:'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js'});js.onload=res;js.onerror=rej;document.head.append(js);
+  });
+  return LG.loading;
+}
+async function renderLedgerMap(){
+  if(state.view!=='ledger')return;
+  try{await loadLeaflet()}catch{$('#lg-map').textContent='The map needs an internet connection (map tiles).';return}
+  if(!LG.map){
+    LG.map=L.map('lg-map',{scrollWheelZoom:false});
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,attribution:'Tiles © Esri — Esri, HERE, Garmin, © OpenStreetMap contributors'}).addTo(LG.map);
+  }
+  if(LG.layer)LG.layer.remove();
+  LG.layer=L.layerGroup().addTo(LG.map);LG.markers={};
+  for(const a of Object.values(D.areas||{}))L.geoJSON(a,{style:{color:'#6A2FE0',weight:1.5,fillColor:'#6A2FE0',fillOpacity:.05,dashArray:'4 4'},pointToLayer:()=>null}).addTo(LG.layer);
+  const pts=[];
+  for(const p of lgRows().filter(p=>p.lat!=null)){
+    const icon=L.divIcon({className:'',html:`<div class="lg-pin" style="background:${PIN[p.verdict]||'#8A93A3'}"></div>`,iconSize:[16,16],iconAnchor:[8,8]});
+    const m=L.marker([p.lat,p.lng],{icon,title:p.name}).addTo(LG.layer);
+    const pop=el('div',{style:'font-family:Manrope,system-ui;font-size:13px;max-width:260px'},el('b',{style:'font-size:14px',text:p.name}),el('div',{style:'margin:4px 0;color:'+(PIN[p.verdict]||'#555')+';font-weight:700',text:(VERDICT[p.verdict]||[p.verdict])[0]}),el('div',{style:'color:#4B5563',text:[p.google?`Google ★ ${fmt(p.google.rating)} (${p.google.reviews})`:null,p.presence!=null?`web presence ${p.presence}/5`:null].filter(Boolean).join(' · ')}));
+    m.bindPopup(pop);m.on('click',()=>{state.lgSel=p.slug;document.querySelectorAll('#lg-body tr.sel').forEach(x=>x.classList.remove('sel'));const tr=document.getElementById('lg-'+p.slug);if(tr){tr.classList.add('sel');tr.scrollIntoView({block:'nearest',behavior:reduced?'auto':'smooth'})}});
+    LG.markers[p.slug]=m;pts.push([p.lat,p.lng]);
+  }
+  if(pts.length)LG.map.fitBounds(pts,{padding:[40,40],maxZoom:15});
+  setTimeout(()=>LG.map.invalidateSize(),50);
+  $('#lg-mapnote').textContent=`${pts.length} businesses with a location · dashed outline: the search area of each run`;
+}
+
 function renderOverview(){renderMoney();renderTiles();renderPitchSites();renderHandoffs();renderOtherGates()}
 
 function historyRow(b,cols){
@@ -1121,8 +1276,9 @@ function pillFor(b){
   if(b.group==='pitched'||b.group==='outcome')return ['live',b.state];
   return ['grey',GROUP_LABEL[b.group]||b.group];
 }
+function pipeRows(){const seen=new Set();return state.run==='all'?D.businesses.filter(b=>b.state!=='void'&&!seen.has(b.slug)&&seen.add(b.slug)):D.businesses.filter(b=>b.run_id===state.run)}
 function renderPipeline(){
-  const rows=D.businesses.filter(b=>b.run_id===state.run);
+  const rows=pipeRows();
   const groups={};for(const b of rows)groups[b.group]=(groups[b.group]||0)+1;
   const filt=$('#pipe-filters');filt.innerHTML='';
   const opts=[['all','All',rows.length],...GROUP_ORDER.filter(g=>groups[g]).map(g=>[g,GROUP_LABEL[g][0].toUpperCase()+GROUP_LABEL[g].slice(1),groups[g]])];
@@ -1203,18 +1359,9 @@ function renderSites(){
     sc.append(el('div',{class:'v',html:last?`<b class="${last.verdict==='PASS'?'pass':'fail'}">${last.verdict}</b> · ${b.critic_score_kind} · ${dShort(last.ts)}<br>${b.critic_rounds} round${b.critic_rounds===1?'':'s'}, ${b.critic_series.filter(s=>s.kind==='verification').length} verification${b.critic_series.filter(s=>s.kind==='verification').length===1?'':'s'}`:'no critic score'}));
     body.append(sc);
     if(scored.length)body.append(el('figure',{class:'scorechart'},scoreChart(scored,W,b.slug)));
-    const links=el('ul',{class:'links'});
-    const row=(k,...items)=>{const li=el('li');li.append(el('span',{class:'k',text:k}));for(const it of items)li.append(it);links.append(li)};
-    row('Preview',b.preview_url?el('a',{class:'lnk',href:b.preview_url,target:'_blank',rel:'noopener',text:b.preview_url.replace('https://','').replace('.os1.workers.dev',' ↗'),title:b.preview_url}):el('span',{class:'na',text:'none yet'}));
-    row('Pitch',b.pitch?.proposal_url?el('a',{class:'lnk2',href:b.pitch.proposal_url,target:'_blank',rel:'noopener',text:b.pitch.proposal_url.replace('https://','').replace('.os1.workers.dev',' ↗'),title:b.pitch.proposal_url}):el('span',{class:'na',text:'none yet'}));
-    const fvp=b.shots?.final_vs_picked||[];
-    row('Final vs picked',...(fvp.length?fvp.flatMap((p,i)=>[el('a',{class:'lnk2',href:fileURL(p),text:/mobile/.test(p)?'mobile sheet':'desktop sheet'}),i<fvp.length-1?' · ':'']):[el('span',{class:'na',text:'no sheet on disk for this site'})]));
-    const rep=b.shots?.critic_report||[];
-    row('Critic report',...(rep.length?rep.map(p=>el('a',{class:'lnk2',href:fileURL(p),text:p.split('/').pop()})):[el('span',{class:'na',text:'none'})]));
-    row('Pitch drafts',el('span',{text:b.pitch?.drafts?.length?b.pitch.drafts.join(' · '):'none'}));
-    body.append(links);
-    if(b.state==='packaged')body.append(el('div',{class:'label',style:'margin-top:18px',text:'Send the pitch'}),gateForm({key:`pitch-${b.run_id}-${b.slug}`,gate:'pitch',run_id:b.run_id,slug:b.slug,expected_state:b.state,radios:CHANNELS,radioLegend:'How you sent it',date:true,buttons:[['sent','I sent it',true]],placeholder:'note — who you spoke to, what they said',label:`Send the pitch: ${b.name}`}));
-    else if(/^(pitched|outcome:(reply|meeting|ignored))$/.test(b.state))body.append(el('div',{class:'label',style:'margin-top:18px',text:`Outcome · now ${b.state}`}),gateForm({key:`outcome-${b.run_id}-${b.slug}`,gate:'outcome',run_id:b.run_id,slug:b.slug,expected_state:b.state,buttons:OUTCOMES.map(([v,l])=>[v,l,false]),placeholder:'note — what happened',label:`Outcome: ${b.name}`}));
+    const acts=siteLinks(b);acts.classList.add('site-acts');
+    if(b.state==='packaged'||/^(pitched|outcome:(reply|meeting|ignored))$/.test(b.state)){const u=el('button',{type:'button',class:'btn p',text:'Update status'});u.onclick=()=>statusModal(b);acts.prepend(u)}
+    body.append(acts);
     c.append(body);box.append(c);
     if(b.critic_score!=null)countUp(num,b.critic_score,'site-'+b.slug);else num.textContent='—';
   }
@@ -1222,7 +1369,7 @@ function renderSites(){
 
 /* ---------- Agents ---------- */
 function renderAgents(){
-  const run=state.run;
+  const run=agentRun();
   const A=Object.entries(D.agents).map(([name,a])=>({name,a,r:a.by_run[run]||{lines:0,passes:0,fails:0,rounds_per_pass:[],fails_by_slug:{},versions_seen:[]}}));
   const withFails=A.filter(x=>x.r.fails>0).sort((p,q)=>q.r.fails-p.r.fails);
   const totalFails=withFails.reduce((s,x)=>s+x.r.fails,0);
@@ -1375,11 +1522,13 @@ function renderTweaks(){
   }
   det.append(ul);det.open=wasOpen;
 }
+const builtSlugs=()=>new Set(D.businesses.filter(b=>(b.reached||[]).some(s=>['built','passed','previewed','packaged','pitched'].includes(s))).map(b=>b.slug));
+const builtDecisions=()=>{const s=builtSlugs();return D.decisions.filter(d=>s.has(d.slug))};
 function renderDecisions(){
   const bySlug=new Map();
-  for(const d of D.decisions){if(!bySlug.has(d.slug))bySlug.set(d.slug,[]);bySlug.get(d.slug).push(d)}
+  for(const d of builtDecisions()){if(!bySlug.has(d.slug))bySlug.set(d.slug,[]);bySlug.get(d.slug).push(d)}
   const groups=[...bySlug.entries()].sort((a,b)=>b[1][0].ts.localeCompare(a[1][0].ts));
-  $('#dec-sum').textContent=`${D.decisions.length} decisions · ${groups.length} sites · all runs`;
+  $('#dec-sum').textContent=`${builtDecisions().length} decisions · ${groups.length} sites`;
   const ul=$('#dsites');ul.innerHTML='';
   if(!groups.length)ul.append(el('li',{class:'empty',text:'No decision yet.'}));
   for(const [slug,ds] of groups){
@@ -1401,8 +1550,8 @@ function renderDecisions(){
 /* ---------- render ---------- */
 function render(){
   renderChrome();renderRunSel();
-  $('#title-sub').textContent=PER_RUN.includes(state.view)?runShort(state.run):'all runs';$('#controls').hidden=!PER_RUN.includes(state.view);
-  renderOverview();renderPipeline();renderSites();renderAgents();renderDecisions();
+  $('#title-sub').textContent=PER_RUN.includes(state.view)&&state.run!=='all'?runShort(state.run):'all runs';$('#controls').hidden=!PER_RUN.includes(state.view);
+  renderOverview();renderNeedsView();renderLedger();if(state.view==='ledger')renderLedgerMap();renderPipeline();renderSites();renderAgents();renderDecisions();
   document.querySelectorAll('.view.on svg').forEach(sizeTips);
 }
 render();
