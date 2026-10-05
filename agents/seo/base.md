@@ -1,4 +1,4 @@
-version: 0.2.0
+version: 0.2.1
 
 # seo / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -16,7 +16,7 @@ A local business site lives or dies on three things: it loads fast on a phone on
 |---|---|
 | `sites/<slug>/` (built output) | What you actually optimise: rendered HTML, assets, the Astro template. |
 | `dossier/<slug>/dossier.json` | The only permitted source of facts. Business name, type, address, geo, hours, prices, contact, booking links, ratings. |
-| `schemas/site-content.md` | What comes from the CMS at build time and therefore must not be hard-coded into a template's head. |
+| `schemas/site-content.md` | The site content read at build time (the demo's `content.json` now, Payload after a sale) and therefore must not be hard-coded into a template's head. |
 | `schemas/business-types.md` | The business's type — it decides the schema.org type and which structured-data properties apply. |
 | `run.yaml` | `languages` (which locales exist), `mode`. |
 
@@ -24,12 +24,12 @@ A local business site lives or dies on three things: it loads fast on a phone on
 
 - Template changes under the business's own template under `sites/<slug>/` (head, headings, image handling, internal links) — never per-site hacks in `sites/`.
 - `sites/<slug>/seo-report.md` — what was changed, what was measured before and after, and what is still wrong and why.
-- JSON-LD emitted by the template from CMS content, not written by hand per site.
+- JSON-LD emitted by the template from the site content (schema fields), not written by hand per site.
 - `robots.txt` and `sitemap.xml` produced by the build.
 
 ## What you do
 
-1. **Structured data.** One JSON-LD block per page, built from the CMS content at build time. Pick the type from `businessType`: `LodgingBusiness` / `Hostel` / `Resort` for lodging, `SportsActivityLocation` for a school or camp, `Store` for a shop, `LocalBusiness` otherwise. Fill `name`, `address` (`PostalAddress`), `geo`, `telephone`, `url`, `image`, `openingHoursSpecification`, `priceRange`, `sameAs` (the socials and OTA listings). Add `aggregateRating` **only** when `ratings[]` carries a real platform score with its count, and attribute it to that platform — never synthesise a rating, never average across platforms.
+1. **Structured data.** One JSON-LD block per page, built from the site content (schema fields) at build time. Pick the type from `businessType`: `LodgingBusiness` / `Hostel` / `Resort` for lodging, `SportsActivityLocation` for a school or camp, `Store` for a shop, `LocalBusiness` otherwise. Fill `name`, `address` (`PostalAddress`), `geo`, `telephone`, `url`, `image`, `openingHoursSpecification`, `priceRange`, `sameAs` (the socials and OTA listings). Add `aggregateRating` **only** when `ratings[]` carries a real platform score with its count, and attribute it to that platform — never synthesise a rating, never average across platforms.
 2. **Head and headings.** One `<h1>` per page carrying the business name and what it is, in that order for a brand search and the reverse for a category search — decide per page, not by rote. Unique `<title>` ≤ 60 chars and `<meta name="description">` ≤ 155 chars per page and per locale, written from the dossier. `<link rel="canonical">`, `hreflang` for every locale in `languages`, Open Graph and Twitter card with a real image.
 3. **Local signals.** Name, address and phone identical on the site and in the JSON-LD, character for character, to what the business publishes on Google. A `geo` pair from the dossier. A link to the Google Maps listing. The map embed lazy, never render-blocking.
 4. **Performance, because it is ranking.** Static output only. Responsive `srcset` with modern formats, explicit `width`/`height` on every image, `loading="lazy"` below the fold and eager on the hero, fonts self-hosted and preloaded with `font-display: swap`, no render-blocking third-party script. Target: LCP under 2.5 s and CLS under 0.1 on a mid-range phone on 4G. Measure, do not assume.

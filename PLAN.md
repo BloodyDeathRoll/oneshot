@@ -132,7 +132,7 @@ Each business moves through these stations. The orchestrator owns the order, ret
 | 4e | Mockups | designer | playbook + base + custom + references + dossier + **passed copy** + `concepts.md` | 3 mockups, **one HTML file each** at `sites/<slug>/mockups/{calm,interactive,unique}/dist/index.html` (+ `dist/img/`, `notes.md` with a look-log, `shots/round-N/`), built to the three concepts and laid out around the real words. A look, not a build: no Astro, no schema binding (designer 0.3.0, proposal 003) | — |
 | 4f | Pre-score | critic + visual-critic + experience-critic (independent) | 3 mockups, the current site | rubric quick score per mockup: critic dimensions 1–7, the two visual critics dimension 8 each, side by side with the current site. A mockup below 8/10 from either visual critic, or not better than the current site, loops back to 4e (max 3) before the gate | **Human picks one (pick + reason logged)** |
 | 4g | Build | designer | chosen mockup + passed copy | Astro site **ported from the chosen mockup without changing how it looks**, bound to `schemas/site-content.md` and built from its own `src/tenant/content.json`; nothing is seeded in Payload before a sale (station 8) | — |
-| 4h | SEO | seo | built site, dossier | classical SEO pass on `templates/<variant>/`: JSON-LD from CMS content, head + headings, local signals, Core Web Vitals, sitemap/robots; `sites/<slug>/seo-report.md` | — |
+| 4h | SEO | seo | built site, dossier | classical SEO pass on `templates/<variant>/`: JSON-LD from the site content (schema fields), head + headings, local signals, Core Web Vitals, sitemap/robots; `sites/<slug>/seo-report.md` | — |
 | 4i | AI SEO | aiseo | built site, dossier, `seo-report.md` | answer-engine pass: self-contained answers to the questions people actually ask, `FAQPage` data, `/llms.txt`, AI-crawler policy, no-JS check; `sites/<slug>/aiseo-report.md` | — |
 | 5 | Critique | critic + visual-critic + experience-critic (independent) | final site, dossier, both SEO reports, `audit.json`, the current site | scorecard, including `tools/funnel.mjs` on the built site against `audit.json.recommended`; fail → back to 4f, max 3 rounds | — |
 | 6 | Preview | deployer | passing site | the static build of `sites/<slug>/final/` deployed with Wrangler to `<brand>.os1.workers.dev` (noindex, robots `Disallow`, no sitemap) and verified: 200s, live HTML byte-identical to the local build. **No CMS, no tenant, no owner login, no domain.** URL + evidence in the `previewed` ledger line | — |
@@ -240,7 +240,7 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 
 ### seo (station 4h)
 - Classical search: Google, Bing and the map surfaces that actually send customers to a beach business.
-- Emits JSON-LD from CMS content (`LodgingBusiness` / `Hostel` / `SportsActivityLocation` / `Store` per `businessType`), unique title + description + canonical + `hreflang` per page per locale, Open Graph, sitemap and robots.
+- Emits JSON-LD from the site content (schema fields: `content.json` in the demo, Payload after a sale) (`LodgingBusiness` / `Hostel` / `SportsActivityLocation` / `Store` per `businessType`), unique title + description + canonical + `hreflang` per page per locale, Open Graph, sitemap and robots.
 - Local signals: name/address/phone identical to the business's Google listing, character for character; `geo` from the dossier; map embed lazy.
 - Core Web Vitals are treated as ranking work, not polish: target LCP < 2.5 s, CLS < 0.1 on a mid-range phone on 4G, measured not estimated.
 - The query that matters most is the business's own name — the site must answer it better than the OTA listing does.
@@ -250,7 +250,7 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 ### aiseo (station 4i)
 - Answer engines, not results pages: the unit of work is a self-contained, attributable, machine-readable fact that survives being lifted out of the page.
 - Writes the questions travellers actually ask for this `businessType`, ensures each has a direct answer in the rendered HTML near a matching heading, and emits `FAQPage` data alongside (not instead of) the business JSON-LD.
-- Generates `/llms.txt` at build time from the same CMS content; never hand-maintained.
+- Generates `/llms.txt` at build time from the same site content; never hand-maintained.
 - Checks the built site with JavaScript disabled: a fact that lives only in the designer's canvas or WebGL does not exist.
 - Sets the AI-crawler policy explicitly in `robots.txt` (GPTBot, ClaudeBot, PerplexityBot, Google-Extended…). Default **allow** — being quotable is the point — but it is the owner's decision and the writer must put it to them.
 - Hard line: no hidden text, no prompt injection, nothing written for a model and concealed from a human. A page a model reads is the page a person reads.
