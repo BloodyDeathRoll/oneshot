@@ -1,4 +1,4 @@
-version: 0.6.4
+version: 0.6.5
 
 # playbook.md — what a great surf-business site is; shared by all agents.
 
@@ -155,7 +155,7 @@ Context: of the six resort sites measured for `agents/designer/references.md`, f
 - Multilingual may come later, targeting the travelling audience (German, Spanish, Portuguese, Russian…), not the local language. Until then: no language switch, no half-translated pages.
 - Keep the door open: all visible text comes through the content schema, so adding a language later is a content change, not a template rewrite. Nothing in the layout may depend on an English word's width.
 - Business name, place names, prices and phone numbers are never translated.
-- The outreach message (writer) is in the owner's language; the site's language is the customer's.
+- The pitch (writer: message and page) is always in English (Shahar, 2026-10-05); the site's language is the customer's.
 
 ## 9. What the owner must be able to edit alone
 

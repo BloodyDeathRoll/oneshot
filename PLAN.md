@@ -136,7 +136,7 @@ Each business moves through these stations. The orchestrator owns the order, ret
 | 4i | AI SEO | aiseo | built site, dossier, `seo-report.md` | answer-engine pass: self-contained answers to the questions people actually ask, `FAQPage` data, `/llms.txt`, AI-crawler policy, no-JS check; `sites/<slug>/aiseo-report.md` | — |
 | 5 | Critique | critic + visual-critic + experience-critic (independent) | final site, dossier, both SEO reports, `audit.json`, the current site | scorecard, including `tools/funnel.mjs` on the built site against `audit.json.recommended`; fail → back to 4f, max 3 rounds | — |
 | 6 | Preview | deployer | passing site | the static build of `sites/<slug>/final/` deployed with Wrangler to `<brand>.os1.workers.dev` (noindex, robots `Disallow`, no sitemap) and verified: 200s, live HTML byte-identical to the local build. **No CMS, no tenant, no owner login, no domain.** URL + evidence in the `previewed` ledger line | — |
-| 7 | Pitch | writer | dossier, `audit.md`, old vs new, preview URL from the `previewed` ledger line | proposal page + outreach message in local language; presents the product options (`managed` recommended — we host, you edit, monthly fee; `self_hosted_docker`; `static_only`) **for the client to choose**, and claims no CMS or login that does not exist yet | **Human sends; outcome logged** |
+| 7 | Pitch | writer | dossier, `audit.md`, old vs new, preview URL from the `previewed` ledger line | proposal page + outreach message, always in English; presents the product options (`managed` recommended — we host, you edit, monthly fee; `self_hosted_docker`; `static_only`) **for the client to choose**, and claims no CMS or login that does not exist yet | **Human sends; outcome logged** |
 | 8 | Deliver | deployer | `outcome:sale` + the client's product choice (`product_chosen` line with `hosting_mode`) | the adapter for that mode (§5): `managed` — CMS tenant + seed + publish + domain + owner login + verify; `self_hosted_docker` — install, verify, handoff, revoke; `static_only` — build + zip. The CMS, and any CMS server upgrade it needs, is implemented here and never earlier | **Before it: the client's product choice, recorded by a human** |
 | ∞ | Learn | critic | reports, mockup picks, pitch outcomes | `proposals/<run>/` diffs to prompts/tools/playbook/rubric | **Human approves diffs** → merge, bump, CHANGELOG |
 
@@ -284,7 +284,7 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 - Proposal page: before vs after, what was fixed, and what the owner would be able to edit alone once they choose a product with the CMS. The preview is a finished static build: the pitch never claims a CMS, login or domain exists yet.
 - The pitch presents the products **for the client to choose** and states the trade honestly: **managed** (recommended; monthly fee, we host it, they edit it, we keep it alive — hosting, updates, backups are ours) · **self-hosted on their own VPS** (one-time fee, fully theirs, ~$6–12/mo to their host, they carry updates and backups) · **static only** (the finished site as files, no CMS; edits need a developer). The choice comes back after a sale and is logged as `product_chosen` (gate e).
 - Preview URL from the ledger's `previewed` line (`deploy.json` exists only after station 8).
-- Outreach message in the local language, short, with the preview (`*.workers.dev`) link.
+- Outreach message in English (always, whatever the owner's language — Shahar, 2026-10-05), short, with the preview (`*.workers.dev`) link.
 
 ---
 
