@@ -170,7 +170,7 @@ function notify(what) {
   clearTimeout(timer);
   timer = setTimeout(() => { for (const res of clients) res.write(`event: data\ndata: ${JSON.stringify({ changed: what, at: new Date().toISOString() })}\n\n`); }, 300);
 }
-for (const rel of ['ledger.jsonl', 'activity.jsonl', 'runs', 'proposals', 'sites', 'expenses.jsonl', 'media']) {
+for (const rel of ['ledger.jsonl', 'activity.jsonl', 'runs', 'proposals', 'sites', 'expenses.jsonl', 'revenues.jsonl', 'media']) {
   const abs = join(ROOT, rel);
   if (!existsSync(abs)) continue;
   try { watch(abs, { recursive: statSync(abs).isDirectory() }, (_e, f) => notify(f ? `${rel}/${f}` : rel)); } catch { /* recursive watch unsupported: ledger still watched */ }

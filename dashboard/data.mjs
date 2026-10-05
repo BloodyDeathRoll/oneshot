@@ -463,8 +463,18 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
   const recent_activity = [...ledger].slice(-25).reverse().map((l) => ({ ts: l.ts, slug: l.slug, run_id: l.run_id, agent: l.agent, operator: opOfLine(l), from: l.from_state, to: l.to_state, note: l.note }));
   const leads = businesses.filter((b) => /^referral:/i.test(b.found_via ?? '')).map((b) => ({ slug: b.slug, name: b.name, referred_by: b.found_via.replace(/^referral:\s*/i, '').split(/[;\s]/)[0], state: b.state, group: b.group, first_seen: b.first_seen }));
 
-  const expenseLines = existsSync(join(ROOT, 'expenses.jsonl')) ? readJsonl('expenses.jsonl') : null;
+  // Money books, both operators' lines (tools/money.mjs, docs/expenses.md, docs/revenues.md).
+  const book = (rel) => { const l = origin ? readJsonlMerged(rel) : (existsSync(join(ROOT, rel)) ? readJsonl(rel) : []); return l.length ? l : null; };
+  const expenseLines = book('expenses.jsonl');
   const expenses = { tracked: !!expenseLines, entries: expenseLines ?? [], monthly: {}, accumulated: {}, per_client: {}, vendors: {} };
+  const revenueLines = book('revenues.jsonl');
+  const revenues = { tracked: !!revenueLines, entries: revenueLines ?? [], monthly: {}, accumulated: {}, per_client: {} };
+  for (const e of revenueLines ?? []) {
+    const cur = e.currency ?? 'USD', month = (e.period ?? e.ts).slice(0, 7);
+    ((revenues.monthly[month] ??= {})[cur] = (revenues.monthly[month][cur] ?? 0) + e.amount);
+    revenues.accumulated[cur] = (revenues.accumulated[cur] ?? 0) + e.amount;
+    ((revenues.per_client[e.slug] ??= {})[cur] = (revenues.per_client[e.slug][cur] ?? 0) + e.amount);
+  }
   for (const e of expenseLines ?? []) {
     const cur = e.currency ?? 'USD', month = (e.period ?? e.ts).slice(0, 7), who = e.slug ?? 'shared';
     ((expenses.monthly[month] ??= {})[cur] = (expenses.monthly[month][cur] ?? 0) + e.amount);
@@ -500,7 +510,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     },
     pipeline_order: ORDER, gate_states: GATES, stations: STATIONS, next_step: NEXT_STEP,
     run, runs, kpis: cur, kpis_by_run, deltas, funnel: cur.funnel, series,
-    gates, businesses, decisions, recent_activity, leads, corrections, proposals, agents, expenses,
+    gates, businesses, decisions, recent_activity, leads, corrections, proposals, agents, expenses, revenues,
     non_business_runs: nonBusinessRuns.map((l) => ({ ts: l.ts, run_id: l.run_id, agent: l.agent, to: l.to_state, note: l.note })),
     empty_states: {
       pitched: { filled_by: 'a ledger line packaged → pitched (agent: human)', earliest: 'when Shahar sends the first pitch; three are ready', view: 'overview, pipeline' },

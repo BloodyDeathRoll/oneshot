@@ -70,7 +70,13 @@ main{min-width:0;padding:0 24px 48px}
 .label{font-size:13px;font-weight:700;color:var(--ink2)}
 .card:focus-visible,.card.flash{outline:2px solid var(--acc);outline-offset:4px;border-radius:var(--r)}
 
-/* overview: tiles, sites for pitching, handoffs, other gates */
+/* overview: money, tiles, sites for pitching, handoffs, other gates */
+.money{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap);margin-bottom:var(--gap)}
+.money .card{padding:24px 28px}
+.money .big{font-size:56px;font-weight:300;line-height:1;letter-spacing:-.03em;margin-top:10px;color:var(--ink)}
+.money .big.zero{color:var(--ink3)}
+.money .hint{font-size:13px;color:var(--ink3);font-weight:500;margin-top:10px}
+.money .hint code{font-family:inherit;color:var(--ink2);background:var(--ground);border-radius:6px;padding:1px 6px}
 .tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--gap);margin-bottom:var(--gap)}
 .tile{padding:18px 22px}
 .tile .num{font-size:36px;margin-top:6px}
@@ -378,6 +384,7 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
   .nav .n{display:none}
   .side-foot{display:none}
   .tiles{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .money .big{font-size:44px}
   .ov2{grid-template-columns:minmax(0,1fr)}
   .psites>li{grid-template-columns:160px minmax(0,1fr)}
   .psite .acts{grid-column:1/-1;flex-direction:row;flex-wrap:wrap}
@@ -450,6 +457,7 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
   <div class="mode" id="mode" role="status"><i aria-hidden="true"></i><span id="mode-text">read-only · open the CLI or start dashboard/server.mjs to decide</span><span class="lastline" id="lastline"></span></div>
 
   <section class="view on" id="view-overview" aria-label="Overview">
+    <div class="money" id="ov-money"></div>
     <div class="tiles" id="ov-tiles"></div>
     <section class="card" id="needs" tabindex="-1" aria-labelledby="ps-h">
       <div class="card-h"><h2 id="ps-h">Sites for pitching</h2><span class="meta" id="ps-meta"></span></div>
@@ -927,6 +935,18 @@ function handoffForm(b){
   });
   return f;
 }
+const money=(amt)=>{const e=Object.entries(amt||{}).filter(([,v])=>v);if(!e.length)return '$0';return e.map(([c,v])=>new Intl.NumberFormat('en-US',{style:'currency',currency:c,maximumFractionDigits:v%1?2:0}).format(v)).join(' + ')};
+function renderMoney(){
+  const box=$('#ov-money');box.innerHTML='';
+  const month=new Date().toISOString().slice(0,7);
+  for(const [label,book,cmd] of [['Revenues',D.revenues,'node tools/money.mjs revenue <slug> <item> <amount>'],['Expenses',D.expenses,'node tools/money.mjs expense <vendor> <item> <amount>']]){
+    const total=money(book?.accumulated),n=book?.entries?.length||0;
+    const hint=n?`${money(book.monthly?.[month])} this month · ${n} payment${n===1?'':'s'} recorded`:null;
+    const c=el('article',{class:'card','aria-label':`${label}: ${total}`},el('span',{class:'label',text:label}),el('div',{class:'big'+(n?'':' zero'),text:total}));
+    c.append(hint?el('div',{class:'hint',text:hint}):el('div',{class:'hint'},'None recorded yet. Add one after each payment: ',el('code',{text:cmd})));
+    box.append(c);
+  }
+}
 function renderTiles(){
   const box=$('#ov-tiles');box.innerHTML='';
   const ps=pitchSites(),bs=D.businesses;
@@ -1003,7 +1023,7 @@ function statusModal(b){
     gateForm({key:`outcome-${b.run_id}-${b.slug}`,gate:'outcome',run_id:b.run_id,slug:b.slug,expected_state:b.state,buttons:OUTCOMES.map(([v,l])=>[v,l,v==='sale']),placeholder:'note — what happened',label:`Outcome: ${b.name}`}));
   document.querySelector('dialog.modal input,dialog.modal button:not(.iconbtn)')?.focus();
 }
-function renderOverview(){renderTiles();renderPitchSites();renderHandoffs();renderOtherGates()}
+function renderOverview(){renderMoney();renderTiles();renderPitchSites();renderHandoffs();renderOtherGates()}
 
 function historyRow(b,cols){
   const fr=el('tr',{class:'frow'});const td=el('td',{colspan:String(cols)});
