@@ -41,7 +41,7 @@ const HUMAN = team()[OPERATOR].name;
 const FILE_PREFIXES = ['sites/', 'proposals/', 'reports/', 'dashboard/mockups/', 'agents/designer/gold/shots/'];
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.svg': 'image/svg+xml', '.md': 'text/markdown; charset=utf-8', '.woff2': 'font/woff2', '.txt': 'text/plain; charset=utf-8' };
 
-// ---- the only six things this server can write --------------------------------------------------
+// ---- the only seven things this server can write --------------------------------------------------
 // Each decision: which state the business must be in now, and the line it produces.
 const DECISIONS = {
   // gate a — one call per business on the shortlist
@@ -69,6 +69,13 @@ const DECISIONS = {
     from: ['pitched', 'outcome:reply', 'outcome:meeting', 'outcome:ignored'],
     choices: ['reply', 'meeting', 'sale', 'ignored'],
     line: ({ choice, reason }) => ({ to_state: `outcome:${choice}`, note: reason }),
+  },
+  // gate e — after a sale, the product the client chose (2026-10-05: the CMS comes only after this);
+  // the line carries hosting_mode, which decides the deployer's station-8 adapter (docs/ledger.md)
+  product: {
+    from: ['outcome:sale'],
+    choices: ['managed', 'self_hosted_docker', 'static_only'],
+    line: ({ choice, reason }) => ({ to_state: 'product_chosen', hosting_mode: choice, note: `gate e: the client chose ${choice}, recorded by ${HUMAN} via dashboard. Verbatim: "${reason}"` }),
   },
   // gate d — a prompt diff under proposals/ (slug "-"); the merge itself stays a code change
   proposal: {
@@ -114,8 +121,8 @@ function decide(body) {
     if (prior) return { status: 409, error: `already decided: ${file} was ${prior.to_state.slice(9)} on ${prior.ts}; a change is a CLI decision, not a second click`, current: prior };
     body = { ...body, file };
   }
-  const { to_state, note } = spec.line({ ...body, reason });
-  const line = { ts: new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'), run_id: body.run_id, slug, agent: 'human', agent_version: null, from_state, to_state, note, operator: OPERATOR };
+  const { to_state, note, hosting_mode } = spec.line({ ...body, reason });
+  const line = { ts: new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'), run_id: body.run_id, slug, agent: 'human', agent_version: null, from_state, to_state, note, operator: OPERATOR, ...(hosting_mode ? { hosting_mode } : {}) };
   appendFileSync(LEDGER, JSON.stringify(line) + '\n');
   return { status: 201, line };
 }

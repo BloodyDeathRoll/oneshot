@@ -20,8 +20,8 @@ Sources added 2026-10-02: **A** = `activity.jsonl`, **G** = `git log`, **M** = `
 | `team` | team.json, A | `viewer`, `operators{id: name}`, `open_assignments[]`, `last_by_operator{id: newest non-ledger event}`, `media` for `_shared` |
 | `human` | K | `"Shahar"` |
 | `pipeline_order` | K | PLAN.md §4 state order |
-| `gate_states` | K | `shortlisted / mocked / packaged` → gate text |
-| `stations[]` | K | nine bar segments `{n, name, states[], gate?}` (concepts.md mapping of PLAN 1–7 + 4a–4i) |
+| `gate_states` | K | `shortlisted / mocked / packaged / outcome:sale` → gate text (`outcome:sale` = gate e, the client's product choice, from 2026-10-05) |
+| `stations[]` | K | ten bar segments `{n, name, states[], gate?}` (concepts.md mapping of PLAN 1–8 + 4a–4i; from 2026-10-05: 8 Preview `previewed`, 9 Pitch `packaged/pitched/outcome`, 10 Deliver `product_chosen/delivered/handoff_verified/access_revoked`) |
 | `next_step` | K | state → `[next step, owner]`; owner is `"Shahar"` or an agent name |
 | `run` | R | the run the page opens on: the viewer's active run, else the newest active one. `run_id, mode, operator, status, area_mode, anchors[], max_sites, presence_threshold, tokens_per_business, default_mode, agent_pins{}` |
 | `runs[]` | L, R | per `run_id` (with ledger lines, or active with none yet): business count, group counts, first/last ts, `current` (= `run`), `active`, `operator`, `status`, `kpis` (see below) |
@@ -30,7 +30,7 @@ Sources added 2026-10-02: **A** = `activity.jsonl`, **G** = `git log`, **M** = `
 | `kpis_by_run{}` | L | per run: `researched` (rows), `live_sites` (group delivered/pitched/outcome), `needs_you` (rows with a gate), `pitched` (`pitched_at` set), `replies` (outcome reply or meeting), `meetings`, `clients` (outcome sale), `avg_critic` (mean of latest critic scores of live sites, 1 dp), `funnel[]` |
 | `deltas{}` | L | per KPI: `current`, `previous` (null when the previous run never reached the stage), `delta`, `note` |
 | `funnel[]` | L | researched → shortlisted → harvested → built → pitched → replied → client: businesses of the current run that ever reached the state |
-| `series` | L | per UTC day from the first ledger line to today: `ledger_lines`, `decisions` (human lines), `gates_open`, `live_sites` (reached packaged), `businesses_seen` — current run only for the last three |
+| `series` | L | per UTC day from the first ledger line to today: `ledger_lines`, `decisions` (human lines), `gates_open`, `live_sites` (reached previewed), `businesses_seen` — current run only for the last three |
 | `gates[]` | L, P | rows whose state is a gate (`kind, slug, name, run_id, since, days, target{view,slug}`) plus one `review prompt diffs` item when proposal files exist without a merge record |
 | `businesses[]` | L, D, S | see below |
 | `decisions[]` | L | every `agent: human` line, newest first: `ts, slug, run_id, from, to, note, gate` (a real gate transition), `override` (note matches the override pattern) |
@@ -54,20 +54,20 @@ Sources added 2026-10-02: **A** = `activity.jsonl`, **G** = `git log`, **M** = `
 | `presence` | L | `presence N/5` in the `scored` note |
 | `ratings{platform}` | D | `reviews.<platform>.rating / count / fetched_at` |
 | `state` | L | `to_state` of the LAST LINE in file order (CLAUDE.md), not by timestamp |
-| `group, label, out` | L | delivered / pitched / outcome / dropped (regressed or drop words in the note) / not_shortlisted (last = scored) / not_approved (last = shortlisted in a run with approvals) / superseded (older run never reached approval) / gate / pipeline; `out` = dropped, not_shortlisted, not_approved, superseded |
+| `group, label, out` | L | delivered (a live site: `previewed`, `packaged`, and after a sale `product_chosen` / `delivered` / `handoff_verified` / `access_revoked`; the label says which) / pitched / outcome / dropped (regressed or drop words in the note) / not_shortlisted (last = scored) / not_approved (last = shortlisted in a run with approvals) / superseded (older run never reached approval) / gate / pipeline; `out` = dropped, not_shortlisted, not_approved, superseded |
 | `why` | L | the last line's note, verbatim |
 | `found_via` | L | the `discovered` note without "found via" |
 | `first_seen, last_change, days_since_change` | L | first/last line ts |
 | `station, station_dates{n}` | L, K | station of the current state; first ts a line reached each station |
 | `next_step, owner` | K | from `next_step[state]`; `—`/null when out |
-| `gate, gate_target` | L, K | gate text for gate/delivered rows; `{view, slug}` |
+| `gate, gate_target` | L, K | gate text for gate/delivered/outcome rows (outcome: only `outcome:sale`, the product choice); `{view, slug}` |
 | `lines, human_decisions` | L | counts |
 | `overrides[]` | L | human lines whose note matches "allow(ed) a third/one more pass/round", "overrode", "third pass" |
 | `copy_rounds, copy_fails` | L | copyeditor lines to `copy_passed`/`copy_failed`; fails only |
 | `critic_rounds` | L | critic lines `critiqued(n)` |
 | `critic_score, critic_score_kind` | L | the critic's latest line carrying `PASS|FAIL … N/100`; kind = `round n` or `verification` |
 | `critic_series[]` | L | every critic line with a score: `{ts, kind (round / verification / pre-score), round, verdict, score, to}` |
-| `hosting_mode` | L, R | last line carrying `hosting_mode`, else `run.default_mode` once packaged |
+| `hosting_mode` | L, R | last line carrying `hosting_mode` (the client's `product_chosen` line from 2026-10-05), else `run.default_mode` once `product_chosen` is reached; null before |
 | `preview_url` | S, L | `deploy.json` last ok deploy step `evidence.url`, else a `*.workers.dev` URL in a ledger note |
 | `deploy` | S | `adapter, cms, url, version, deployed_at, verified` |
 | `cms_verified` | S | a `verify` step with `ok: true` |
