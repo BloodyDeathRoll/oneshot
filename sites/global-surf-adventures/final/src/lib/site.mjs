@@ -261,6 +261,20 @@ export const isPreviewUrl = (url) => {
 }
 export const SITE = import.meta.env.SITE ? new URL(import.meta.env.SITE) : null
 export const IS_PREVIEW = isPreviewUrl(SITE)
+
+/* AI crawlers and assistants (station 4i), named one by one so the policy is a decision on record, not a
+   default. 'allow' for every one: being quotable is the point of the site (aiseo base.md §7). It is the
+   owner's decision and has not been put to them yet (aiseo-report.md); blocking one is changing its value
+   to 'disallow' here. robots.txt.js writes the groups; on a preview build they repeat the refusal. Same
+   list as this pipeline's other finals (KA, Layday, Lavish). */
+export const AI_CRAWLERS = {
+  GPTBot: 'allow', 'OAI-SearchBot': 'allow', 'ChatGPT-User': 'allow',
+  ClaudeBot: 'allow', 'Claude-SearchBot': 'allow', 'Claude-User': 'allow',
+  PerplexityBot: 'allow', 'Perplexity-User': 'allow',
+  'Google-Extended': 'allow', 'Applebot-Extended': 'allow',
+  CCBot: 'allow', 'Meta-ExternalAgent': 'allow', Amazonbot: 'allow', DuckAssistBot: 'allow',
+  'MistralAI-User': 'allow',
+}
 export const abs = (u) => (SITE ? new URL(u, SITE).href : null)
 /* the two routes, for the sitemap and the canonicals */
 export const ROUTES = ['', 'book/']
@@ -348,6 +362,46 @@ export const businessLd = ({ description, images = [] } = {}) => {
     } : {}),
     ...((c.languagesSpoken ?? []).length ? { knowsLanguage: c.languagesSpoken } : {}),
     ...(same.length ? { sameAs: [...new Set(same)] } : {}),
+    ...answerLd(),
+  }
+}
+
+/* Station 4i: what the page sells and where you sleep, as data, so an answer engine can say "a surf week
+   at Global Surf Lodge Kabalana starts from …" without reading the design. Both mirror rows the home page
+   shows (the level cards and the room viewer); nothing is added that the page does not print.
+   makesOffer ← lessons[] (label, from-price, currency) + the level's one-liner (gaps.levels / freestylers)
+   + lessons[].includes; url = that level on the site's own booking page, only with SITE_URL.
+   containsPlace ← the rooms the page shows (gaps.rooms: label, description, sleeps). rooms[] is empty by
+   the copy ruling, so the SCHEMA GAP file is the page's source, as it is for the room viewer. Room
+   supplements are dated samples, not prices, so they stay out. */
+const unitWords = { per_person: 'per person' }
+export const answerLd = () => {
+  const offers = (c.lessons ?? []).filter((l) => l.label).map((l) => {
+    const lv = LEVELS.find((L) => L.name === l.label)
+    const one = lv?.oneLiner ?? (l.label === FREE.name ? FREE.one : null)
+    const description = [one, l.includes].filter(Boolean).map((s) => s.trim().replace(/[.\s]+$/, '') + '.').join(' ')
+    const priced = typeof l.price === 'number' && l.currency
+    return {
+      '@type': 'Offer',
+      name: l.label,
+      ...(description ? { description } : {}),
+      ...(priced ? {
+        priceCurrency: l.currency,
+        /* "From $1,466 pp | 7 nights" on the page: the package's base price, per person, 7 nights (4h priceRange) */
+        priceSpecification: { '@type': 'UnitPriceSpecification', minPrice: l.price, priceCurrency: l.currency, unitText: [unitWords[l.unit], '7 nights'].filter(Boolean).join(', ') },
+      } : {}),
+      ...(SITE && lv ? { url: abs(`book/?level=${lv.slug}`) } : {}),
+    }
+  })
+  const rooms = (ROOMS ?? []).filter((r) => r.label).map((r) => ({
+    '@type': 'Room',
+    name: r.label,
+    ...(r.description ? { description: r.description } : {}),
+    ...(r.sleeps ? { occupancy: { '@type': 'QuantitativeValue', maxValue: r.sleeps } } : {}),
+  }))
+  return {
+    ...(offers.length ? { makesOffer: offers } : {}),
+    ...(rooms.length ? { containsPlace: rooms } : {}),
   }
 }
 /* JSON in a <script>: '<' escaped so no value can close the element */
