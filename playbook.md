@@ -1,4 +1,4 @@
-version: 0.6.3
+version: 0.6.4
 
 # playbook.md — what a great surf-business site is; shared by all agents.
 
@@ -180,4 +180,4 @@ Not owner-editable: layout, styles, scripts, fonts, SEO plumbing. Those stay fix
 
 ## 11. Delivery constraints every agent should know
 
-Static Astro build per site, served from Cloudflare Workers static assets; no server code and no admin on the site itself. Content comes from the shared Payload CMS at build time; owners edit there and the site rebuilds (PLAN.md §1, §6). The built output is plain static files, so it can also be exported as a zip that runs on any host. Server baseline: `server-hardening.md`.
+Static Astro build per site, served from Cloudflare Workers static assets; no server code and no admin on the site itself. Until a sale the site is a demo built from its own content file in the schema's shape, previewed on `*.workers.dev`. After a sale the client chooses the product (PLAN.md §4 station 8): with a CMS, content comes from Payload at build time and owners edit there and the site rebuilds (PLAN.md §1, §6). The built output is plain static files, so it can also be exported as a zip that runs on any host. Server baseline: `server-hardening.md`.
