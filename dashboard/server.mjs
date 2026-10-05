@@ -86,7 +86,8 @@ const DECISIONS = {
   proposal: {
     from: null,
     choices: ['approved', 'rejected'],
-    line: ({ choice, reason, file }) => ({ to_state: `proposal:${choice}`, note: `${file}: ${reason}` }),
+    reasonOptional: true, // a yes/no on a suggested agent tweak needs no explanation
+    line: ({ choice, reason, file }) => ({ to_state: `proposal:${choice}`, note: `${file}: ${choice} by ${HUMAN} via dashboard${reason ? `. ${reason}` : ''}` }),
   },
 };
 
@@ -106,7 +107,7 @@ function decide(body) {
   if (!spec) return { status: 400, error: `unknown gate "${body.gate}"; one of ${Object.keys(DECISIONS).join(', ')}` };
   if (!spec.choices.includes(body.choice)) return { status: 400, error: `choice must be one of ${spec.choices.join(', ')}` };
   const reason = String(body.reason ?? '').trim();
-  if (reason.length < 3) return { status: 400, error: 'a reason is required; it becomes the ledger note verbatim' };
+  if (reason.length < 3 && !spec.reasonOptional) return { status: 400, error: 'a reason is required; it becomes the ledger note verbatim' };
   if (!body.run_id) return { status: 400, error: 'run_id is required' };
 
   let from_state = null, slug;

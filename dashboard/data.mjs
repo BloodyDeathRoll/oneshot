@@ -198,9 +198,12 @@ function readChangelogs() {
   return out;
 }
 
+// proposals/ = suggested agent tweaks. dashboard/tweaks.json carries a plain-language summary of each
+// and whether it is already applied or out of date; a ledger approve/reject line always wins.
 function readProposals(proposalDecisions = []) {
   const base = join(ROOT, 'proposals');
   if (!existsSync(base)) return [];
+  const plain = readJson('dashboard/tweaks.json') ?? {};
   const out = [];
   for (const run of readdirSync(base, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name)) {
     for (const f of readdirSync(join(base, run)).filter((f) => f.endsWith('.md'))) {
@@ -211,10 +214,15 @@ function readProposals(proposalDecisions = []) {
       const record = /-APPLY\.md$/.test(f);
       const file = `proposals/${run}/${f}`;
       const decision = [...proposalDecisions].reverse().find((l) => (l.note ?? '').startsWith(file));
-      out.push({ run_id: run, file, title, kind: record ? 'application record' : 'proposal',
-        status: record ? null : decision ? decision.to_state.replace('proposal:', '') : 'no merge record in the ledger',
-        decided_at: decision?.ts ?? null, decision_note: decision?.note ?? null,
-        custom_md: /custom\.md/i.test(title) || /custom-md/.test(f) });
+      const t = plain[file] ?? {};
+      if (t.hidden) continue;
+      out.push({ run_id: run, file, title: t.title ?? title, file_title: title, kind: record ? 'application record' : 'proposal',
+        agent: t.agent ?? null, what: t.what ?? null, why: t.why ?? null,
+        // pending | approved | rejected | applied | superseded | info
+        status: record ? null : decision ? decision.to_state.replace('proposal:', '') : (t.status ?? 'pending'),
+        status_note: decision ? null : t.status_note ?? null,
+        decided_at: decision?.ts ?? null, decision_note: decision?.note ?? null, decided_by: decision ? opOfLine(decision) : null,
+        custom_md: t.custom_md ?? (/custom\.md/i.test(title) || /custom-md/.test(f)) });
     }
   }
   return out;
@@ -457,8 +465,8 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
   // ---- gates, decisions, activity, proposals, expenses ---------------------------------------------
   const proposals = readProposals(ledger.filter((l) => /^proposal:(approved|rejected)$/.test(l.to_state)));
   const gates = businesses.filter((b) => b.gate).map((b) => ({ kind: b.gate, slug: b.slug, name: b.name, run_id: b.run_id, since: b.last_change, days: b.days_since_change, target: b.gate_target }));
-  const unmerged = proposals.filter((p) => p.kind === 'proposal' && p.status === 'no merge record in the ledger');
-  if (unmerged.length) gates.push({ kind: 'review prompt diffs', slug: null, name: `${unmerged.length} proposals without a merge record`, run_id: unmerged.at(-1).run_id, since: null, days: null, target: { view: 'decisions', proposals: unmerged.map((p) => p.file) } });
+  const unmerged = proposals.filter((p) => p.kind === 'proposal' && p.status === 'pending');
+  if (unmerged.length) gates.push({ kind: 'approve or reject', slug: null, name: `${unmerged.length} suggested agent tweak${unmerged.length === 1 ? '' : 's'}`, run_id: null, since: null, days: null, target: { view: 'decisions', proposals: unmerged.map((p) => p.file) } });
   const decisions = businessLines.filter((l) => l.agent === 'human').sort((a, b) => b.ts.localeCompare(a.ts)).map((l) => ({ ts: l.ts, slug: l.slug, run_id: l.run_id, operator: opOfLine(l), from: l.from_state, to: l.to_state, note: l.note, gate: !!(GATES[l.from_state] && l.from_state !== l.to_state), override: OVERRIDE_RE.test(l.note ?? '') }));
   const recent_activity = [...ledger].slice(-25).reverse().map((l) => ({ ts: l.ts, slug: l.slug, run_id: l.run_id, agent: l.agent, operator: opOfLine(l), from: l.from_state, to: l.to_state, note: l.note }));
   const leads = businesses.filter((b) => /^referral:/i.test(b.found_via ?? '')).map((b) => ({ slug: b.slug, name: b.name, referred_by: b.found_via.replace(/^referral:\s*/i, '').split(/[;\s]/)[0], state: b.state, group: b.group, first_seen: b.first_seen }));
