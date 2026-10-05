@@ -4,7 +4,7 @@ Read `PLAN.md` fully before doing anything. It is the source of truth for decisi
 
 ## Rules (every session)
 
-1. **Gates.** Never pass a human gate unattended: shortlist approval, mockup pick, send pitch, approve prompt diffs. Stop, present what the human needs, and wait.
+1. **Gates.** Never pass a human gate unattended: shortlist approval, mockup pick, send pitch, the client's product choice after a sale, approve prompt diffs. Stop, present what the human needs, and wait.
 2. **Ledger.** Every business state change is appended to `ledger.jsonl` (schema: `docs/ledger.md`). Append only — never rewrite or delete lines.
 3. **Two-layer prompts.** Each agent's prompt is `base.md` (Claude writes) + `custom.md` (Shahar writes). Never edit any `custom.md`; propose changes to it as a separate proposal under `proposals/<run-id>/`, flagged as a custom.md proposal. Runtime prompt = `playbook.md` + `base.md` + `custom.md` + `references.md`.
 4. **Small commits.** One commit per step, with a clear message.
@@ -20,7 +20,7 @@ Read `PLAN.md` fully before doing anything. It is the source of truth for decisi
 - **Publish flow:** owner saves in Payload → `afterChange` hook → rebuild only that tenant's site → `wrangler deploy` → live in ~1 minute.
 - **Export/handoff:** any client can receive their static build as a zip that runs on any host (GoDaddy included). Optional, not the deliverable.
 - **Commercial default:** "we host it, you edit it, monthly fee". The writer's pitch reflects this.
-- **Hosting modes**, per business, recorded in the ledger and the run file (`runs/<run_id>.yaml`): `managed` (the default, everything above), `self_hosted_docker` (single-tenant Payload + Postgres + Astro builder + Caddy in one compose stack on the client's VPS; we install, verify, hand over, revoke our access), `static_only` (static build + source zip, no CMS). No split mode.
+- **Hosting modes**, per business, recorded in the ledger and the run file (`runs/<run_id>.yaml`): `managed` (the default, everything above), `self_hosted_docker` (single-tenant Payload + Postgres + Astro builder + Caddy in one compose stack on the client's VPS; we install, verify, hand over, revoke our access), `static_only` (static build + source zip, no CMS). No split mode. **The client chooses the mode after a sale** (ledger `product_chosen`, a human gate); until then the business has only a static preview on `*.workers.dev` — no CMS tenant, no owner login, no domain. The CMS is implemented for a client at station 8 Deliver and never before (Shahar, 2026-10-05).
 - **One of everything:** one content schema (`schemas/site-content.md`), one Astro template per site, one Payload config (two profiles, multi-tenant / single-tenant, selected by env var). Hosting mode is a deployer adapter, never a fork of the site or the CMS. Anything that would need a second renderer or a second CMS is out of scope.
 - No PHP flat-file CMS port, no PHP CMS of any kind.
 
@@ -30,8 +30,8 @@ Disk is the memory — no daemon, no DB.
 
 1. Find this session's run: `node tools/run.mjs` (`ONESHOT_RUN`, else your operator's one active run in `runs/`). If it fails — no active run, or several — stop and ask. Read that `runs/<run_id>.yaml` for the `run_id`, budgets and pinned agent versions. Other active runs belong to the other operator: never advance their businesses.
 2. Read `ledger.jsonl` and keep only lines with that `run_id`. For each `slug`, the **last** line's `to_state` is the business's current state.
-3. Map each state to its next station using PLAN.md §4 (`discovered → scored → shortlisted → approved → harvested → copy_drafted → copy_humanised → copy_passed | copy_failed → concepted → mocked → picked → built → optimised → ai_optimised → critiqued(n) → passed | failed → packaged → pitched → outcome:*`).
-4. If the next transition is a human gate (`shortlisted → approved`, `mocked → picked`, `packaged → pitched`, or merging anything in `proposals/`), stop and ask. Do not infer approval from files on disk.
+3. Map each state to its next station using PLAN.md §4 (`discovered → scored → shortlisted → approved → harvested → audited → copy_drafted → copy_humanised → copy_passed | copy_failed → concepted → mocked → picked → built → optimised → ai_optimised → critiqued(n) → passed | failed → previewed → packaged → pitched → outcome:*`; after `outcome:sale`: `→ product_chosen → delivered`, and for `self_hosted_docker` `→ handoff_verified → access_revoked`).
+4. If the next transition is a human gate (`shortlisted → approved`, `mocked → picked`, `packaged → pitched`, `outcome:sale → product_chosen` (the client's product choice, with `hosting_mode`), or merging anything in `proposals/`), stop and ask. Do not infer approval from files on disk.
 5. Otherwise, check that the current state's outputs actually exist on disk (e.g. `harvested` → `dossier/<slug>/dossier.json`). If they are missing or partial, redo that station rather than trusting the ledger line.
 6. Work one business at a time. Append a ledger line as each transition completes — after the output is written, never before.
 7. No ledger line for this `run_id` means nothing has run: start at Scout for this run file.
