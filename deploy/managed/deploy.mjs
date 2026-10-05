@@ -2,7 +2,7 @@
 /**
  * Deployer adapter `managed` (agents/deployer/tools.md): our multi-tenant Payload + Cloudflare Workers.
  *
- *   node deploy/managed/deploy.mjs <slug> [--steps provision,seed,deploy,verify]
+ *   node deploy/managed/deploy.mjs <slug> [--steps provision,seed,deploy,verify,check]
  *
  * Runs from the operator's machine. Talks to the CMS over HTTPS (CMS_URL) and to the CMS server
  * over SSH (CMS_SSH) for the two things that are not exposed on the internet: the super-admin
@@ -15,35 +15,35 @@
  *   deploy     publisher builds the tenant from the CMS and runs `wrangler deploy`; URL → 200;
  *              parity: the CMS-built index.html against a local build of the repo's content.json
  *   verify     owner path: login, one edit round-tripped to the live site and restored, tenant
- *              isolation, anonymous 403, evidence rows delete-only
+ *              isolation, anonymous 403 (reads and writes), evidence rows delete-only
+ *   check      the post-CMS acceptance suite, tools/site-check.mjs <slug> --full, against the live
+ *              site; full report in sites/<slug>/site-check.json, summary in deploy.json
  *
  * Each step appends {step, ok, started, ms, evidence} to sites/<slug>/deploy.json.
  * Owner credentials: generated here, written ONLY to ~/.oneshot/sealed/<slug>.json (mode 600).
  */
-import { execFileSync, spawnSync } from 'node:child_process'
+import { spawnSync } from 'node:child_process'
 import { randomBytes } from 'node:crypto'
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync, chmodSync } from 'node:fs'
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync, chmodSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import { importTenant, Rest } from '../../cms/scripts/lib/tenant-io.mjs'
+import { importTenant } from '../../cms/scripts/lib/tenant-io.mjs'
+import { CMS_URL, CMS_SSH, SSH_KEY, REMOTE, SEALED, ssh, superAdmin, cmsBuiltHtml, fetchText, waitFor, ownerPath } from './lib/cms.mjs'
+import * as cmsLib from './lib/cms.mjs'
+import { parity } from './lib/parity.mjs'
 import { resolveVideo, writeSeedExport } from './seed-export.mjs'
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..')
-const ADAPTER_VERSION = '0.1.0'
-const CMS_URL = process.env.CMS_URL || 'https://130-61-212-182.sslip.io'
-const CMS_SSH = process.env.CMS_SSH || 'ubuntu@130.61.212.182'
-const SSH_KEY = process.env.CMS_SSH_KEY || path.join(os.homedir(), '.ssh', 'oneshot_cms')
-const REMOTE = process.env.CMS_REMOTE_DIR || 'oneshot' // on the server: ~/oneshot/{cms,sites}
-const SEALED = path.join(os.homedir(), '.oneshot', 'sealed')
+const ADAPTER_VERSION = '0.2.0'
 const OWNER_DOMAIN = 'oneshot.test' // test run: owners are never contacted (Shahar, 2026-09-25)
 
 const args = process.argv.slice(2)
 const slug = args[0]
-const steps = (args.includes('--steps') ? args[args.indexOf('--steps') + 1] : 'provision,seed,deploy,verify').split(',')
+const steps = (args.includes('--steps') ? args[args.indexOf('--steps') + 1] : 'provision,seed,deploy,verify,check').split(',')
 if (!slug || !/^[a-z0-9-]+$/.test(slug)) {
-  console.error('usage: deploy.mjs <slug> [--steps provision,seed,deploy,verify]')
+  console.error('usage: deploy.mjs <slug> [--steps provision,seed,deploy,verify,check]')
   process.exit(2)
 }
 const final = path.join(repo, 'sites', slug, 'final')
@@ -54,13 +54,8 @@ const liveUrl = `https://${worker}.os1.workers.dev/`
 const deployJsonPath = path.join(repo, 'sites', slug, 'deploy.json')
 
 // ------------------------------------------------------------------ helpers
-
-const ssh = (cmd, { input } = {}) =>
-  execFileSync('ssh', ['-i', SSH_KEY, '-o', 'BatchMode=yes', CMS_SSH, cmd], { input, encoding: 'utf8', maxBuffer: 64 << 20 })
-
-const remoteEnv = (key) => ssh(`grep -E '^${key}=' ${REMOTE}/cms/.env | head -1 | cut -d= -f2-`).trim()
-
-const superAdmin = async () => Rest.login(CMS_URL, remoteEnv('SUPERADMIN_EMAIL'), remoteEnv('SUPERADMIN_PASSWORD'))
+// ssh, superAdmin, fetchText, waitFor and the owner-path checks live in ./lib/cms.mjs (shared with
+// tools/site-check.mjs --full)
 
 const sealedPath = path.join(SEALED, `${slug}.json`)
 const ownerCredentials = () => {
@@ -76,21 +71,8 @@ const record = { adapter: 'managed', adapterVersion: ADAPTER_VERSION, slug, work
 if (existsSync(deployJsonPath)) Object.assign(record, JSON.parse(readFileSync(deployJsonPath, 'utf8')), { adapterVersion: ADAPTER_VERSION })
 const save = () => writeFileSync(deployJsonPath, JSON.stringify(record, null, 2) + '\n')
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
-const fetchText = async (url) => {
-  const res = await fetch(url, { cache: 'no-store', headers: { 'cache-control': 'no-cache' } })
-  return { status: res.status, text: await res.text() }
-}
-const waitFor = async (predicate, { timeoutMs = 240_000, everyMs = 2000 } = {}) => {
-  const t0 = Date.now()
-  while (Date.now() - t0 < timeoutMs) {
-    if (await predicate()) return Date.now() - t0
-    await sleep(everyMs)
-  }
-  return null
-}
-const tenantOf = async (rest) => (await rest.get(`/api/tenants?where[slug][equals]=${slug}&depth=0&limit=1`)).docs[0]
-const siteOf = async (rest, tenantId, q = 'depth=0') => (await rest.get(`/api/sites?where[tenant][equals]=${tenantId}&${q}&limit=1`)).docs[0]
+const tenantOf = (rest) => cmsLib.tenantOf(rest, slug)
+const siteOf = cmsLib.siteOf
 
 // ------------------------------------------------------------------ steps
 
@@ -190,11 +172,13 @@ const STEPS = {
 
     // parity: the CMS round trip must not change the site. Build the repo's content.json locally the
     // same way and compare index.html with what the publisher built from Payload.
-    const cmsHtml = ssh(`cd ${REMOTE}/cms && docker compose --env-file .env exec -T publisher cat /data/out/${slug}/dist/index.html`)
+    const cmsHtml = cmsBuiltHtml(slug)
     const b = spawnSync('npm', ['run', 'build'], { cwd: final, encoding: 'utf8' })
     if (b.status !== 0) throw new Error(`local build failed: ${b.stderr.slice(-1000)}`)
     const localHtml = readFileSync(path.join(final, 'dist', 'index.html'), 'utf8')
-    const diff = lineDiff(localHtml, cmsHtml.replace(new RegExp(`${slug}-[0-9a-f]{8}-(img|vid)-`, 'g'), '$1-'))
+    // the whole `<slug>-<sha256:8>-` prefix, whatever the file is called (0.2.0: was img-/vid- only,
+    // a false diff for sites whose files are named otherwise, e.g. gs-*.mp4)
+    const par = parity(localHtml, cmsHtml, slug)
 
     let live = null
     if (rec.mode === 'live') {
@@ -205,7 +189,7 @@ const STEPS = {
     }
     return {
       mode: rec.mode, worker: rec.worker, url: rec.url, version: rec.version, buildMs: rec.buildMs, deployMs: rec.deployMs, totalMs: rec.totalMs,
-      parity: { identical: diff.length === 0, note: 'photo and video names compared without the seed\'s slug-hash prefix', differingLines: diff.slice(0, 20) },
+      parity: par,
       live,
     }
   },
@@ -214,75 +198,23 @@ const STEPS = {
     if (!record.steps.some((s) => s.step === 'deploy' && s.ok && s.evidence?.mode === 'live')) {
       throw new Error('verify needs a live deploy first (DEPLOY_MODE=live on the server)')
     }
-    const creds = ownerCredentials()
-    const owner = await Rest.login(CMS_URL, creds.email, creds.password)
-    const ev = {}
+    // owner login, isolation, anonymous 403 (reads and writes), ratings delete-only, one edit
+    // round-tripped to the live site and restored (lib/cms.mjs ownerPath; restores even on failure)
+    return ownerPath({ slug, liveUrl, creds: ownerCredentials(), sa: await superAdmin() })
+  },
 
-    // isolation
-    const mine = await owner.get('/api/sites?depth=0&limit=10')
-    ev.ownerSitesVisible = mine.totalDocs
-    if (mine.totalDocs !== 1) throw new Error(`owner sees ${mine.totalDocs} sites`)
-    const sa = await superAdmin()
-    const others = (await sa.get('/api/sites?depth=0&limit=50')).docs.filter((d) => d.id !== mine.docs[0].id)
-    ev.otherTenantSites = []
-    for (const o of others) {
-      const r = await owner.raw('GET', `/api/sites/${o.id}?depth=0`)
-      ev.otherTenantSites.push({ siteId: o.id, status: r.status })
-      if (r.status !== 404) throw new Error(`owner read site ${o.id}: ${r.status}`)
-    }
-    const media = await owner.get('/api/media?depth=0&limit=100')
-    const tenantId = (await tenantOf(sa)).id
-    ev.ownerMediaForeign = media.docs.filter((m) => String(m.tenant) !== String(tenantId)).length
-    if (ev.ownerMediaForeign) throw new Error('owner sees foreign media')
-    ev.anonymous = {}
-    for (const c of ['sites', 'media', 'tenants', 'users']) ev.anonymous[c] = (await fetch(new URL(`/api/${c}`, CMS_URL))).status
-    if (Object.values(ev.anonymous).some((s) => s !== 403)) throw new Error(`anonymous access: ${JSON.stringify(ev.anonymous)}`)
-
-    // evidence rows are delete-only for owners
-    const doc = (await owner.get(`/api/sites/${mine.docs[0].id}?depth=0&locale=en`))
-    const addRating = await owner.raw('PATCH', `/api/sites/${doc.id}?locale=en`, {
-      json: { ratings: [...(doc.ratings ?? []), { platform: 'google', score: 5, scale: '5', count: 999, capturedAt: '2026-09-25' }] },
-    })
-    ev.ownerAddsRating = addRating.status
-    if (addRating.ok) throw new Error('owner could add a rating')
-
-    // one edit through the normal publish flow (no priceList rows on this site: the intro text instead)
-    const marker = `verify-${randomBytes(4).toString('hex')}`
-    const blocks = doc.copyBlocks.map((b) => ({ ...b }))
-    const target = blocks.findIndex((b) => b.slot === 'intro')
-    const original = blocks[target].body
-    blocks[target].body = `${original} ${marker}`
-    const t0 = Date.now()
-    const saved = await owner.raw('PATCH', `/api/sites/${doc.id}?locale=en&depth=0`, { json: { copyBlocks: blocks } })
-    ev.edit = { field: `copyBlocks[${target}].body (intro)`, marker, saveStatus: saved.status, saveMs: Date.now() - t0 }
-    if (!saved.ok) throw new Error(`owner save: ${saved.status} ${await saved.text()}`)
-    const liveMs = await waitFor(async () => (await fetchText(liveUrl)).text.includes(marker))
-    ev.edit.saveToLiveMs = liveMs === null ? null : liveMs + ev.edit.saveMs
-    if (liveMs === null) throw new Error('edit never reached the live site')
-
-    blocks[target].body = original
-    const restored = await owner.raw('PATCH', `/api/sites/${doc.id}?locale=en&depth=0`, { json: { copyBlocks: blocks } })
-    const goneMs = await waitFor(async () => !(await fetchText(liveUrl)).text.includes(marker))
-    ev.restore = { saveStatus: restored.status, saveToLiveMs: goneMs }
-    if (!restored.ok || goneMs === null) throw new Error('restore did not reach the live site')
-    const after = (await owner.get(`/api/sites/${doc.id}?depth=0&locale=en`)).copyBlocks[target].body
-    ev.restore.valueMatchesOriginal = after === original
-    if (!ev.restore.valueMatchesOriginal) throw new Error('restored value differs from the original')
-    const liveNow = await fetchText(liveUrl)
-    ev.liveAfter = { status: liveNow.status, noindex: /<meta name="robots" content="noindex/.test(liveNow.text) }
+  async check() {
+    // the post-CMS acceptance suite (tools/site-check.mjs --full) against the live site (the client's
+    // domain once attach_domain recorded one, else the Worker); the full report goes to
+    // sites/<slug>/site-check.json, its summary into this step's evidence
+    const out = path.join(repo, 'sites', slug, 'site-check.json')
+    const r = spawnSync(process.execPath, [path.join(repo, 'tools', 'site-check.mjs'), slug, '--full', '--report', out], { encoding: 'utf8', maxBuffer: 64 << 20 })
+    if (!existsSync(out)) throw new Error(`site-check wrote no report: ${(r.stderr || r.stdout).slice(-2000)}`)
+    const rep = JSON.parse(readFileSync(out, 'utf8'))
+    const ev = { report: path.relative(repo, out), ok: rep.ok, url: rep.url, checks: Object.fromEntries(rep.checks.map((c) => [c.id, c.ok])), failures: rep.failures }
+    if (!rep.ok) throw Object.assign(new Error(`site-check: ${rep.failures.length} failure(s): ${rep.failures.slice(0, 5).join(' | ')}`), { evidence: ev })
     return ev
   },
-}
-
-/** Lines that differ between two HTML files (after splitting tags onto their own lines). */
-function lineDiff(a, b) {
-  const split = (s) => s.replace(/></g, '>\n<').split('\n')
-  const A = split(a), B = split(b)
-  const out = []
-  for (let i = 0; i < Math.max(A.length, B.length); i++) {
-    if (A[i] !== B[i]) out.push({ line: i + 1, local: (A[i] ?? '').slice(0, 200), cms: (B[i] ?? '').slice(0, 200) })
-  }
-  return out
 }
 
 // ------------------------------------------------------------------ run
@@ -296,6 +228,7 @@ for (const step of steps) {
     entry.ok = true
   } catch (err) {
     entry.error = err.message
+    if (err.evidence) entry.evidence = err.evidence
   }
   entry.ms = Date.now() - started.getTime()
   record.steps.push(entry)
