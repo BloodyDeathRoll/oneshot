@@ -89,6 +89,25 @@ main{min-width:0;padding:0 24px 48px}
 .psite .st{margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--ink2);font-weight:500}
 .psite .ln{margin-top:10px;display:flex;gap:6px 14px;flex-wrap:wrap;font-size:13px}
 .psite .ln .na{color:var(--ink3)}
+.cta{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--rule);background:var(--card);color:var(--ink);font:inherit;font-size:13px;font-weight:700;border-radius:999px;padding:7px 12px;line-height:1;text-decoration:none;cursor:pointer;white-space:nowrap}
+.cta:hover{background:var(--ground)}
+.cta.link{color:var(--blue);border-color:#D6DEFF}
+.cta.link:hover{background:#F2F5FF}
+.cta[aria-disabled="true"]{color:var(--ink3);border-style:dashed;cursor:not-allowed;background:transparent}
+.cta svg{width:14px;height:14px}
+dialog.modal{border:0;border-radius:var(--r);box-shadow:0 2px 6px rgba(11,18,32,.06),0 24px 64px rgba(11,18,32,.16);padding:0;width:min(640px,calc(100% - 32px));max-height:calc(100vh - 64px);color:var(--ink);background:var(--card)}
+dialog.modal::backdrop{background:rgba(255,255,255,.8)}
+.modal .mh{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 24px 0}
+.modal .mh h2{font-size:18px;font-weight:700;letter-spacing:-.005em}
+.modal .mb{padding:16px 24px 24px;overflow:auto;max-height:calc(100vh - 140px)}
+.iconbtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1.5px solid var(--rule);background:var(--card);border-radius:999px;height:36px;min-width:36px;padding:0 10px;cursor:pointer;color:var(--ink);font:inherit;font-size:13px;font-weight:700}
+.iconbtn:hover{background:var(--ground)}
+.iconbtn svg{width:16px;height:16px}
+.msgbox{position:relative;background:var(--ground);border-radius:var(--r2);padding:16px 16px 16px}
+.msgbox pre{margin:0;padding-right:44px;white-space:pre-wrap;word-break:break-word;font:inherit;font-size:14px;line-height:1.55;color:var(--ink)}
+.msgbox .iconbtn{position:absolute;top:10px;right:10px}
+.msgnotes{margin-top:14px;font-size:13px;color:var(--ink3);white-space:pre-wrap;line-height:1.5}
+.msgnotes summary{cursor:pointer;color:var(--ink2);font-weight:600}
 .psite .acts{display:flex;flex-direction:column;gap:8px;align-items:stretch;min-width:150px}
 .psite .panel{grid-column:1/-1;background:#FAFAFE;border-radius:var(--r2);padding:16px}
 .psite .panel .label{margin-bottom:4px}
@@ -830,12 +849,41 @@ function thumb(b,cls){
   else a.append(el('span',{class:'noshot',text:'no preview yet'}));
   return a;
 }
-const ext=(href,text,cls='lnk')=>el('a',{class:cls,href,target:'_blank',rel:'noopener',text});
+const ICON_COPY='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="2"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>';
+const ICON_EXT='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 3H3.5A1.5 1.5 0 0 0 2 4.5v8A1.5 1.5 0 0 0 3.5 14h8a1.5 1.5 0 0 0 1.5-1.5V10M9 2h5v5M14 2 7.5 8.5"/></svg>';
+// a clean popup over a white 80% veil; closes on ×, Esc or a click on the veil
+function modal(title,...content){
+  const d=el('dialog',{class:'modal','aria-label':title});
+  const x=el('button',{type:'button',class:'iconbtn','aria-label':'Close',html:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>'});
+  x.onclick=()=>d.close();
+  d.append(el('div',{class:'mh'},el('h2',{text:title}),x),el('div',{class:'mb'},...content));
+  d.addEventListener('click',e=>{if(e.target===d)d.close()});
+  d.addEventListener('close',()=>{d.remove();if(state.dirty)rerender()});
+  document.body.append(d);d.showModal();
+  return d;
+}
+// A draft is the whole file, or — when it carries notes around a ```text fence — just the fenced message.
+function splitDraft(t){const m=t.match(/```(?:text)?\n([\s\S]*?)\n```/);return m?{msg:m[1].trim(),notes:t.replace(m[0],'').trim()}:{msg:t.trim(),notes:''}}
+const DRAFTS=[[/^message\.en\.email\.md$/,'Suggested email'],[/^message\.en\.whatsapp\.md$/,'Suggested WhatsApp'],[/^in-person\.en\.md$/,'Suggested in-person script']];
+async function openDraft(b,file,label){
+  const box=el('div',{class:'msgbox'},el('pre',{text:'loading…'}));
+  modal(`${label} — ${b.name}`,box);
+  let t;try{const r=await fetch(fileURL(`sites/${b.slug}/pitch/${file}`),{cache:'no-store'});if(!r.ok)throw new Error(r.status);t=await r.text()}
+  catch(e){box.replaceChildren(el('pre',{text:`Could not load sites/${b.slug}/pitch/${file} (${e.message}).${LIVE?'':' Start dashboard/server.mjs to read drafts.'}`}));return}
+  const {msg,notes}=splitDraft(t);
+  const cp=el('button',{type:'button',class:'iconbtn','aria-label':'Copy',title:'Copy',html:ICON_COPY});
+  cp.onclick=()=>copyText(msg,cp,true);
+  box.replaceChildren(el('pre',{text:msg}),cp);
+  if(notes){const det=el('details',{class:'msgnotes'},el('summary',{text:'Notes for the sender'}),el('div',{text:notes}));box.after(det)}
+}
 function siteLinks(b){
   const ln=el('div',{class:'ln'});
-  ln.append(b.preview_url?ext(b.preview_url,'Preview ↗'):el('span',{class:'na',text:'no preview'}));
-  ln.append(b.pitch?.proposal_url?ext(b.pitch.proposal_url,'Proposal ↗'):el('span',{class:'na',text:'no proposal page'}));
-  for(const f of (b.pitch?.drafts||[]).filter(f=>/^(message|in-person)\./.test(f)))ln.append(ext(fileURL(`sites/${b.slug}/pitch/${f}`),f.replace(/\.md$/,'').replace(/^message\.en\./,'message: ').replace(/^in-person\.en/,'in person'),'lnk2'));
+  const ext=(href,text)=>{const a=el('a',{class:'cta link',href,target:'_blank',rel:'noopener'});a.append(text,el('span',{html:ICON_EXT}));return a};
+  const off=(text,why)=>el('span',{class:'cta','aria-disabled':'true',title:why,text});
+  ln.append(b.preview_url?ext(b.preview_url,'Preview website'):off('Preview website','no preview deployed'));
+  const pu=b.pitch?.proposal_url;
+  ln.append(pu&&b.pitch.proposal_live!==false?ext(pu,'Pitch'):off('Pitch',pu?`pitch page written but not deployed (${pu.replace('https://','')} is not live)`:'no pitch page'));
+  for(const [re,label] of DRAFTS){const f=(b.pitch?.drafts||[]).find(f=>re.test(f));if(!f)continue;const bt=el('button',{type:'button',class:'cta',text:label});bt.onclick=()=>openDraft(b,f,label);ln.append(bt)}
   return ln;
 }
 function handoffPrompt(b,to,task,id){
@@ -847,9 +895,9 @@ function handoffPrompt(b,to,task,id){
     `Start: pull main, read CLAUDE.md, PLAN.md and notes/${b.slug}.md, then run \`node tools/team.mjs status ${b.slug}\`.`+(id?` This is assignment ${id}: close it with \`node tools/team.mjs done ${id} "<what you did>"\` when finished.`:'')
   ].filter(Boolean).join('\n');
 }
-async function copyText(t,btn){
-  try{await navigator.clipboard.writeText(t)}catch{const ta=el('textarea',{style:'position:fixed;opacity:0'});ta.value=t;document.body.append(ta);ta.select();document.execCommand('copy');ta.remove()}
-  const was=btn.textContent;btn.textContent='Copied';setTimeout(()=>{btn.textContent=was},1600);live('prompt copied');
+async function copyText(t,btn,icon){
+  try{await navigator.clipboard.writeText(t)}catch{const ta=el('textarea',{style:'position:fixed;opacity:0'});ta.value=t;(btn.closest('dialog')||document.body).append(ta);ta.select();document.execCommand('copy');ta.remove()}
+  const was=btn.innerHTML;if(icon)btn.append(' Copied');else btn.textContent='Copied';setTimeout(()=>{btn.innerHTML=was},1600);live('copied');
 }
 function handoffForm(b){
   const ops=Object.keys(D.team?.operators||{});
@@ -910,12 +958,9 @@ function renderPitchSites(){
     const acts=el('div',{class:'acts'});
     const open=state.openSite;
     const tog=(key,label)=>{const k=b.slug+':'+key,on=open===k;const t=el('button',{type:'button',class:'btn '+(on?'s':key==='ho'?'s':'p'),text:on?'Close':label,'aria-expanded':String(on)});t.onclick=()=>{state.openSite=on?null:k;renderPitchSites();if(!on)document.querySelector(`#ps-${b.slug} .panel textarea, #ps-${b.slug} .panel input`)?.focus()};acts.append(t)};
-    if(b.state==='packaged')tog('pitch','Send the pitch');
-    if(/^(pitched|outcome:(reply|meeting|ignored))$/.test(b.state))tog('outcome','Log outcome');
+    if(b.state==='packaged'||/^(pitched|outcome:(reply|meeting|ignored))$/.test(b.state)){const u=el('button',{type:'button',class:'btn p',text:'Update status'});u.onclick=()=>statusModal(b);acts.append(u)}
     tog('ho','Hand off');
     li.append(acts);
-    if(open===b.slug+':pitch')li.append(el('div',{class:'panel'},el('div',{class:'label',text:`Record that you sent ${b.name}'s pitch`}),gateForm({key:`pitch-${b.run_id}-${b.slug}`,gate:'pitch',run_id:b.run_id,slug:b.slug,expected_state:b.state,radios:CHANNELS,radioLegend:'How you sent it',date:true,buttons:[['sent','I sent it',true]],placeholder:'note — who you spoke to, what they said',label:`Send the pitch: ${b.name}`})));
-    if(open===b.slug+':outcome')li.append(el('div',{class:'panel'},el('div',{class:'label',text:`Outcome · now ${b.state}`}),gateForm({key:`outcome-${b.run_id}-${b.slug}`,gate:'outcome',run_id:b.run_id,slug:b.slug,expected_state:b.state,buttons:OUTCOMES.map(([v,l])=>[v,l,false]),placeholder:'note — what happened',label:`Outcome: ${b.name}`})));
     if(open===b.slug+':ho')li.append(el('div',{class:'panel'},el('div',{class:'label',text:`Hand off ${b.name}`}),handoffForm(b)));
     ol.append(li);
   }
@@ -947,6 +992,16 @@ function renderOtherGates(){
     a.onclick=e=>{e.preventDefault();if(isProp)go('decisions','proposals');else{state.run=g.run_id;renderRunSel();renderPipeline();renderAgents();isPick?go('pipeline','pick:'+g.slug):go(g.target.view,g.target.slug)}};
     ul.append(el('li',{},el('div',{},el('b',{text:g.name}),el('span',{text:`${g.kind}${g.run_id?' · '+runShort(g.run_id):''}${g.since?' · since '+dShort(g.since):''}`})),a));
   }
+}
+// Recording what happened outside the system: the pitch was sent, or what the owner answered.
+function statusModal(b){
+  if(b.state==='packaged')modal(`Update status — ${b.name}`,
+    el('p',{class:'gstat',style:'margin-bottom:6px',text:'Sent the pitch yourself? Record it here: the business moves to pitched. Nothing is sent from the dashboard.'}),
+    gateForm({key:`pitch-${b.run_id}-${b.slug}`,gate:'pitch',run_id:b.run_id,slug:b.slug,expected_state:b.state,radios:CHANNELS,radioLegend:'How you sent it',date:true,buttons:[['sent','Mark as pitched',true]],placeholder:'note — who you spoke to, what they said',label:`Pitch sent: ${b.name}`}));
+  else modal(`Update status — ${b.name}`,
+    el('p',{class:'gstat',style:'margin-bottom:6px',text:`Now: ${pitchStatus(b)[1]}. What did the owner do?`}),
+    gateForm({key:`outcome-${b.run_id}-${b.slug}`,gate:'outcome',run_id:b.run_id,slug:b.slug,expected_state:b.state,buttons:OUTCOMES.map(([v,l])=>[v,l,v==='sale']),placeholder:'note — what happened',label:`Outcome: ${b.name}`}));
+  document.querySelector('dialog.modal input,dialog.modal button:not(.iconbtn)')?.focus();
 }
 function renderOverview(){renderTiles();renderPitchSites();renderHandoffs();renderOtherGates()}
 

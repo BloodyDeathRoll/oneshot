@@ -16,6 +16,7 @@ const dataRaw = await readFile(join(repo, 'dashboard/data.json'), 'utf8');
 const font = await readFile(join(here, 'src/fonts/manrope-latin-wght-normal.woff2'));
 
 const data = JSON.parse(dataRaw);
+await (await import('../../thumbs.mjs')).markPitchLive(data); // pitch pages written but never deployed show as inactive
 const json = JSON.stringify(data).replace(/<\/script/gi, '<\\/script').replace(/<!--/g, '<\\!--');
 const fontUri = 'data:font/woff2;base64,' + font.toString('base64');
 

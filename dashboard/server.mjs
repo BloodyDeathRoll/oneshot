@@ -27,7 +27,7 @@ import { join, dirname, resolve, extname, normalize, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildData } from './data.mjs';
 import { whoami, team, assign } from '../tools/team.mjs';
-import { shootThumb, thumbFresh } from './thumbs.mjs';
+import { shootThumb, thumbFresh, markPitchLive } from './thumbs.mjs';
 import { readJsonlMerged, fetch as fetchMain } from '../tools/origin.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -195,7 +195,7 @@ function handle(req, res) {
   const url = new URL(req.url, `http://${req.headers.host}`);
   const path = decodeURIComponent(url.pathname);
   if (req.method === 'GET' && (path === '/' || path === '/index.html')) return serveFile(res, join(DIST, 'index.html'));
-  if (req.method === 'GET' && path === '/data.json') return send(res, 200, buildData({ ledgerPath: LEDGER, operator: OPERATOR }));
+  if (req.method === 'GET' && path === '/data.json') { markPitchLive(buildData({ ledgerPath: LEDGER, operator: OPERATOR })).then((d) => send(res, 200, d), (e) => send(res, 500, { error: String(e.message ?? e) })); return; }
   if (req.method === 'GET' && path === '/events') {
     res.writeHead(200, { 'content-type': 'text/event-stream', 'cache-control': 'no-store', connection: 'keep-alive' });
     res.write(`event: hello\ndata: ${JSON.stringify({ at: new Date().toISOString() })}\n\n`);

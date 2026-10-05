@@ -1,4 +1,5 @@
-// dashboard/thumbs.mjs — first-screen thumbnail of a site's live preview, for the Overview and Sites views.
+// dashboard/thumbs.mjs — first-screen thumbnail of a site's live preview, for the Overview and Sites views,
+// and whether a site's pitch page is deployed.
 // Output: dashboard/mockups/<variant>/dist/img/<slug>.jpg (git-ignored, skipped by tools/media.mjs).
 //
 // Shot from the preview URL (the `previewed` ledger line), never from review screenshots: those are
@@ -30,3 +31,18 @@ export function shootThumb(url, outPath) {
 }
 
 export async function closeThumbs() { if (browser) { await browser.close(); browser = null; } }
+
+// Is a page live? (a pitch page can be written and never deployed). Cached 5 minutes per URL.
+const liveCache = new Map();
+export async function isLive(url) {
+  const c = liveCache.get(url);
+  if (c && Date.now() - c.at < 300_000) return c.ok;
+  let ok = false;
+  try { ok = (await fetch(url, { method: 'HEAD', redirect: 'follow', signal: AbortSignal.timeout(4000) })).ok; } catch { ok = false; }
+  liveCache.set(url, { ok, at: Date.now() });
+  return ok;
+}
+export async function markPitchLive(data) {
+  await Promise.all(data.businesses.filter((b) => b.pitch?.proposal_url).map(async (b) => { b.pitch.proposal_live = await isLive(b.pitch.proposal_url); }));
+  return data;
+}
