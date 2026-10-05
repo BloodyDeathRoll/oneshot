@@ -1,6 +1,6 @@
 # Oneshot — Project Plan
 
-Find surf businesses along a defined stretch of coast that have no or weak websites, harvest everything public about them, one-shot a new site + CMS from a tuned prompt, and pitch it. Every agent is a versioned prompt that improves after each run: the critic proposes diffs, a human approves.
+Find surf businesses along a defined stretch of coast that have no or weak websites, harvest everything public about them, one-shot a new site from a tuned prompt, and pitch it as a demo on a static preview. The CMS comes only after a sale, once the client has chosen the product (Shahar, 2026-10-05: "We build a demo to sell to a client. If we succeed and the client wants a CMS, THEN you implement a CMS. NOT BEFORE."). Every agent is a versioned prompt that improves after each run: the critic proposes diffs, a human approves.
 
 Workflow graph: Figma → Workflows file → `workflows` page → frame `oneshot-workflow`.
 
@@ -16,18 +16,18 @@ Workflow graph: Figma → Workflows file → `workflows` page → frame `oneshot
 | Site output | Every client site is a static **Astro** build that pulls its tenant's content from Payload's API at build time. Design lives in the Astro template (this is where the designer's canvas/WebGL, editorial grids and booking drawers go); editable content (hours, prices, photos, copy blocks, contact, booking links) lives in Payload. **Not WordPress.** |
 | CMS | One CMS for all client sites, run by us: Payload CMS 3 with the official multi-tenant plugin, Postgres, Docker Compose, on one VPS — decided 2026-09-18: the second Oracle Cloud Always Free account, Ampere A1 shape (ARM64, up to 2 OCPU / 12 GB), account upgraded to pay-as-you-go so the instance cannot be idle-reclaimed; env-configurable so it can move (e.g. Hetzner CX23) later. One tenant per business. Each owner gets an email/password login scoped to their tenant only. |
 | Hosting | Cloudflare Workers with static assets, one Worker per site, deployed with Wrangler, custom domain per site via Cloudflare. **Not** Cloudflare Pages (being folded into Workers). **Not** Vercel or GoDaddy. |
-| Domains | Cloudflare Registrar, one per client, billed through to the client. Bought only after a sale, never at Deliver. Clients who already own a domain keep it; we set up the DNS. |
+| Domains | Cloudflare Registrar, one per client, billed through to the client. Bought only after a sale and the client's product choice, at station 8 Deliver, never for the preview. Clients who already own a domain keep it; we set up the DNS. |
 | Publish flow | Owner edits are drafts; pressing **Publish** in Payload → hook → rebuild only that tenant's site → `wrangler deploy` → live in ~1 minute. Not on every save (decided 2026-09-18). |
 | Export | Any client can receive their static build as a zip that runs on any host (GoDaddy included). Optional handoff, not the deliverable; replaces the old per-site-CMS-in-a-zip idea. |
-| Commercial default | "We host it, you edit it, monthly fee." The pitch reflects this. |
-| Hosting modes | Per business, recorded in the ledger and the run file (`runs/<run_id>.yaml`). **`managed`** (default) — our multi-tenant Payload + Cloudflare Workers; monthly fee. **`self_hosted_docker`** — the client's own VPS (Hetzner, Contabo, Hostinger KVM, DigitalOcean — anything with Docker; 2 vCPU / 4 GB minimum): single-tenant Payload + Postgres + Astro builder + Caddy (HTTPS) in one `docker-compose.yml`, rebuild-on-save inside the stack; we install, verify, hand over, revoke our access. **`static_only`** — static build + source zip, no CMS; runs on any host including shared PHP hosting; edits require a developer. Self-hosted is the client's choice at pitch time. No split mode, no PHP flat-file CMS port. |
+| Commercial default | "We host it, you edit it, monthly fee." The pitch recommends it, as one of the three products the client chooses from (hosting modes, below). |
+| Hosting modes | Per business, recorded in the ledger and the run file (`runs/<run_id>.yaml`). **`managed`** (default) — our multi-tenant Payload + Cloudflare Workers; monthly fee. **`self_hosted_docker`** — the client's own VPS (Hetzner, Contabo, Hostinger KVM, DigitalOcean — anything with Docker; 2 vCPU / 4 GB minimum): single-tenant Payload + Postgres + Astro builder + Caddy (HTTPS) in one `docker-compose.yml`, rebuild-on-save inside the stack; we install, verify, hand over, revoke our access. **`static_only`** — static build + source zip, no CMS; runs on any host including shared PHP hosting; edits require a developer. No split mode, no PHP flat-file CMS port. **The client chooses the mode after a sale** (decided 2026-10-05): the pitch presents the three as products to choose from, the choice is a human gate recorded as a ledger line `product_chosen` carrying `hosting_mode`, and only then does station 8 build what that mode needs. No CMS tenant, owner login or domain exists before that. |
 | One of everything | One content schema (`schemas/site-content.md`), one Astro template per site, one Payload config. Hosting mode is a deployer adapter, never a fork of the site or the CMS. Anything that would need a second renderer or a second CMS is out of scope. |
 | Mockups | Designer produces **three** mockups per business: (1) calm, standard (2) interactive, some bells and whistles (3) full-blown unique |
-| Critique of mockups | Critic scores all three cheaply (screenshot + rubric) *before* the human sees them; only the human's pick goes through the full build/CMS/critique rounds |
+| Critique of mockups | Critic scores all three cheaply (screenshot + rubric) *before* the human sees them; only the human's pick goes through the full build/critique rounds |
 | Self-improvement | Critic writes diffs to prompts/tools/playbook/rubric with evidence; human approves each; merged → version bump → CHANGELOG |
 | Agent prompts | Two layers per agent: `base.md` (Claude: role, I/O, constraints) + `custom.md` (Shahar: taste, rules, references). Runtime prompt = playbook + base + custom + references |
-| Preview | The site's `*.workers.dev` address is the before/after link; production is the same Worker on the client's domain |
-| Human gates | (a) shortlist approval (b) mockup pick (c) send pitch (d) approve prompt diffs |
+| Preview | The site's `*.workers.dev` address is the before/after link: station 6 deploys the static build there (noindex, no CMS) for the pitch; production is the same Worker on the client's domain after Deliver |
+| Human gates | (a) shortlist approval (b) mockup pick (c) send pitch (d) approve prompt diffs (e) the client's product choice after a sale (added 2026-10-05) |
 | Operators | Decided 2026-10-02: two operators, Shahar and Alon (`team.json`), each on their own machine and Claude Code sessions, one repo. Work goes on branches and reaches `main` only through pull requests that a human merges; nobody pushes to `main`. Either may pass any gate. Every ledger line carries `operator`; work between states and assignments go to `activity.jsonl`; `notes/<slug>.md` is the per-business handoff; the dashboard shows who worked on what last and who has an open assignment. `docs/team.md` |
 | Parallel runs | Decided 2026-10-04: several runs can be active at once, one per operator and machine. Each run is one file, `runs/<run_id>.yaml`, with an `operator` and a `status` (`active` \| `closed`); a session works on exactly one run (`ONESHOT_RUN`, else its operator's one active run; `node tools/run.mjs`). All runs share one `ledger.jsonl` (lines carry `run_id`; `merge=union`). The dashboard shows every run, with the ledger and activity of this checkout merged with `origin/main`, fetched every minute, so each operator sees what the other has merged. A business belongs to one active run at a time. `docs/team.md` |
 | Media | Decided 2026-10-02: no image or video in git, ever, and none hosted online. Each operator keeps media on disk and in a local store (`~/.oneshot/assets`); `media/<slug>.tsv` lists every file with its sha256 and source, and every new file must be made by a committed recipe, so the other operator rebuilds it (`tools/media.mjs restore`). Screenshots are scratch: one shared set per page, deleted after each scored round. The 3.5 GB of images already in git history are removed by a one-time history rewrite. `docs/team.md` |
@@ -131,18 +131,23 @@ Each business moves through these stations. The orchestrator owns the order, ret
 | 4d | Concept | creative-director | dossier (incl. the images themselves), passed copy, references, every other `concepts.md` in this run | `sites/<slug>/concepts.md`: the page **archetype** for this business plus three concepts (calm / interactive / unique), and a divergence table proving no two businesses share an archetype + first-screen device |  |
 | 4e | Mockups | designer | playbook + base + custom + references + dossier + **passed copy** + `concepts.md` | 3 mockups, **one HTML file each** at `sites/<slug>/mockups/{calm,interactive,unique}/dist/index.html` (+ `dist/img/`, `notes.md` with a look-log, `shots/round-N/`), built to the three concepts and laid out around the real words. A look, not a build: no Astro, no schema binding (designer 0.3.0, proposal 003) | — |
 | 4f | Pre-score | critic + visual-critic + experience-critic (independent) | 3 mockups, the current site | rubric quick score per mockup: critic dimensions 1–7, the two visual critics dimension 8 each, side by side with the current site. A mockup below 8/10 from either visual critic, or not better than the current site, loops back to 4e (max 3) before the gate | **Human picks one (pick + reason logged)** |
-| 4g | Build | designer | chosen mockup + passed copy | Astro site **ported from the chosen mockup without changing how it looks** + tenant content model seeded in Payload | — |
-| 4h | SEO | seo | built site, dossier | classical SEO pass on `templates/<variant>/`: JSON-LD from CMS content, head + headings, local signals, Core Web Vitals, sitemap/robots; `sites/<slug>/seo-report.md` | — |
+| 4g | Build | designer | chosen mockup + passed copy | Astro site **ported from the chosen mockup without changing how it looks**, bound to `schemas/site-content.md` and built from its own `src/tenant/content.json`; nothing is seeded in Payload before a sale (station 8) | — |
+| 4h | SEO | seo | built site, dossier | classical SEO pass on `templates/<variant>/`: JSON-LD from the site content (schema fields), head + headings, local signals, Core Web Vitals, sitemap/robots; `sites/<slug>/seo-report.md` | — |
 | 4i | AI SEO | aiseo | built site, dossier, `seo-report.md` | answer-engine pass: self-contained answers to the questions people actually ask, `FAQPage` data, `/llms.txt`, AI-crawler policy, no-JS check; `sites/<slug>/aiseo-report.md` | — |
 | 5 | Critique | critic + visual-critic + experience-critic (independent) | final site, dossier, both SEO reports, `audit.json`, the current site | scorecard, including `tools/funnel.mjs` on the built site against `audit.json.recommended`; fail → back to 4f, max 3 rounds | — |
-| 6 | Deliver | deployer | passing site | deployer runs the adapter for the business's `hosting_mode` (§5). `managed`: tenant + seed + `wrangler deploy` + domain + owner login; the preview URL is just the `*.workers.dev` address. `self_hosted_docker` ends with a verified handoff kit and our access revoked. `static_only` ends with the zip | — |
-| 7 | Pitch | writer | dossier, `audit.md`, old vs new, preview URL | proposal page + outreach message in local language | **Human sends; outcome logged** |
+| 6 | Preview | deployer | passing site | the static build of `sites/<slug>/final/` deployed with Wrangler to `<brand>.os1.workers.dev` (noindex, robots `Disallow`, no sitemap) and verified: 200s, live HTML byte-identical to the local build. **No CMS, no tenant, no owner login, no domain.** URL + evidence in the `previewed` ledger line | — |
+| 7 | Pitch | writer | dossier, `audit.md`, old vs new, preview URL from the `previewed` ledger line | proposal page + outreach message, always in English; presents the product options (`managed` recommended — we host, you edit, monthly fee; `self_hosted_docker`; `static_only`) **for the client to choose**, and claims no CMS or login that does not exist yet | **Human sends; outcome logged** |
+| 8 | Deliver | deployer | `outcome:sale` + the client's product choice (`product_chosen` line with `hosting_mode`) | the adapter for that mode (§5): `managed` — CMS tenant + seed + publish + domain + owner login + verify; `self_hosted_docker` — install, verify, handoff, revoke; `static_only` — build + zip. Then `check`, the post-CMS acceptance suite (`node tools/site-check.mjs <slug> --full`, 2026-10-05): pages, assets, booking hand-off (never sent to the engine), forecast, video, playbook §4 budgets, SEO plumbing, and with a CMS its health, parity, the owner path and tenant isolation; report in `sites/<slug>/site-check.json`. The same suite runs for every tenant after any CMS server upgrade, and its smoke subset runs every 6 h on every live site (`.github/workflows/site-monitor.yml`; a failed run is the alert). The CMS, and any CMS server upgrade it needs, is implemented here and never earlier | **Before it: the client's product choice, recorded by a human** |
 | ∞ | Learn | critic | reports, mockup picks, pitch outcomes | `proposals/<run>/` diffs to prompts/tools/playbook/rubric | **Human approves diffs** → merge, bump, CHANGELOG |
 
 ### Ledger states
-`discovered → scored → shortlisted → approved → harvested → audited → copy_drafted → copy_humanised → copy_passed | copy_failed → concepted → mocked → picked → built → optimised → ai_optimised → critiqued(n) → passed | failed → packaged → pitched → outcome:{reply,meeting,sale,ignored}`
+`discovered → scored → shortlisted → approved → harvested → audited → copy_drafted → copy_humanised → copy_passed | copy_failed → concepted → mocked → picked → built → optimised → ai_optimised → critiqued(n) → passed | failed → previewed → packaged → pitched → outcome:{reply,meeting,sale,ignored}`
 
-`self_hosted_docker` only, once the client has chosen it: `… → handoff_verified → access_revoked`. `handoff_verified` = the adapter's `verify` passed on the client's box and the handoff kit is complete; `access_revoked` = our keys, users and tokens are removed from the client's box and we have checked that they no longer work.
+After `outcome:sale`: `→ product_chosen → delivered`. `product_chosen` is the human line that records the client's choice and carries `hosting_mode`; `delivered` is written when the chosen adapter has finished (`managed`: verify and check passed; `static_only`: zip built and checked).
+
+`self_hosted_docker` only, once the client has chosen it: `… → delivered → handoff_verified → access_revoked`. `handoff_verified` = the adapter's `verify` passed on the client's box and the handoff kit is complete; `access_revoked` = our keys, users and tokens are removed from the client's box and we have checked that they no longer work.
+
+History: until 2026-10-05, station 6 was Deliver (CMS tenant + seed + deploy + owner login, before the pitch) and wrote `packaged` for "full deploy done"; Pitch then went `packaged → pitched`. Those lines stay as written (append-only); from 2026-10-05 `packaged` means "pitch written, waiting for a human to send it" (`docs/ledger.md`).
 
 ---
 
@@ -209,7 +214,7 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 - Evals: a mockup Shahar rejects as weak must never have passed either of them.
 
 ### copywriter (station 4a)
-- Writes the **site's** words (not the pitch — that is `writer`, station 9) **before the designer starts**, so the mockups are laid out around real copy instead of placeholder text: `copyBlocks[]`, `tagline`, `spot`, `season` and the per-type modules, per locale.
+- Writes the **site's** words (not the pitch — that is `writer`, station 7) **before the designer starts**, so the mockups are laid out around real copy instead of placeholder text: `copyBlocks[]`, `tagline`, `spot`, `season` and the per-type modules, per locale.
 - Built for thin dossiers. The rule that makes it safe: **expand voice, structure and atmosphere; never expand facts.** Framing around a sourced fact is writing; a new fact is a lie the owner has to answer for.
 - Shared context (what Kabalana's wave does, when the season runs) may give a paragraph somewhere to stand, but is never attributed to the business.
 - Guest testimonials in the dossier are mined for *what to talk about* and quoted verbatim where they belong — never paraphrased into the business's own voice.
@@ -235,7 +240,7 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 
 ### seo (station 4h)
 - Classical search: Google, Bing and the map surfaces that actually send customers to a beach business.
-- Emits JSON-LD from CMS content (`LodgingBusiness` / `Hostel` / `SportsActivityLocation` / `Store` per `businessType`), unique title + description + canonical + `hreflang` per page per locale, Open Graph, sitemap and robots.
+- Emits JSON-LD from the site content (schema fields: `content.json` in the demo, Payload after a sale) (`LodgingBusiness` / `Hostel` / `SportsActivityLocation` / `Store` per `businessType`), unique title + description + canonical + `hreflang` per page per locale, Open Graph, sitemap and robots.
 - Local signals: name/address/phone identical to the business's Google listing, character for character; `geo` from the dossier; map embed lazy.
 - Core Web Vitals are treated as ranking work, not polish: target LCP < 2.5 s, CLS < 0.1 on a mid-range phone on 4G, measured not estimated.
 - The query that matters most is the business's own name — the site must answer it better than the OTA listing does.
@@ -245,7 +250,7 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 ### aiseo (station 4i)
 - Answer engines, not results pages: the unit of work is a self-contained, attributable, machine-readable fact that survives being lifted out of the page.
 - Writes the questions travellers actually ask for this `businessType`, ensures each has a direct answer in the rendered HTML near a matching heading, and emits `FAQPage` data alongside (not instead of) the business JSON-LD.
-- Generates `/llms.txt` at build time from the same CMS content; never hand-maintained.
+- Generates `/llms.txt` at build time from the same site content; never hand-maintained.
 - Checks the built site with JavaScript disabled: a fact that lives only in the designer's canvas or WebGL does not exist.
 - Sets the AI-crawler policy explicitly in `robots.txt` (GPTBot, ClaudeBot, PerplexityBot, Google-Extended…). Default **allow** — being quotable is the point — but it is the owner's decision and the writer must put it to them.
 - Hard line: no hidden text, no prompt injection, nothing written for a model and concealed from a human. A page a model reads is the page a person reads.
@@ -259,6 +264,7 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 - Evals: agreement between critic pre-score and human pick; false-pass rate found by humans later.
 
 ### deployer (was packager)
+- Two invocations per business (2026-10-05): **station 6 Preview** — `wrangler deploy` of the static build to `<brand>.os1.workers.dev` (noindex, robots `Disallow`, no sitemap), verified, no CMS; and **station 8 Deliver**, only after `outcome:sale` and the client's `product_chosen` line — the adapter below for the chosen mode. Nothing in the adapter table runs at station 6.
 - One `base.md`; three adapter tool specs in `tools.md` — `managed`, `self_hosted_docker`, `static_only` — with their code in `deploy/<adapter>/`. The adapter is picked by the business's `hosting_mode`. Adapters never fork the site or the CMS (§1).
 - Every adapter implements the same steps:
 
@@ -266,25 +272,26 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
   |---|---|---|---|---|
   | `provision` | make the place the CMS runs | tenant in our Payload | compose stack on the client's VPS | skip |
   | `seed` | tenant + content + assets from the dossier | ✓ | ✓ | skip |
-  | `deploy` | build the Astro site and put it live | `wrangler deploy` to the site's Worker (`*.workers.dev` = preview) | build inside the stack, served by Caddy | build, no CMS |
+  | `deploy` | build the Astro site and put it live | `wrangler deploy` to the site's Worker (the same Worker as the station-6 preview, now built from Payload) | build inside the stack, served by Caddy | build, no CMS |
   | `attach_domain` | client's domain on the site | Cloudflare (Registrar, billed through) | DNS to the client's box, Caddy HTTPS | client's host |
   | `verify` | owner login works, one edit round-trips to the live site | ✓ | ✓ | skip |
+  | `check` | the acceptance suite, `tools/site-check.mjs` (2026-10-05) | `--full` (CMS too) | acceptance | acceptance, if we host it |
   | `handoff` | credentials sheet, revoke our keys | skip | ✓ — kit from `handoff/`, then `access_revoked` | zip + README only |
   | `export` | static zip that runs on any host | ✓ optional | ✓ | ✓ — the deliverable (build + source) |
 
 - Owner credentials are always handed over sealed, never in a README or zip.
 
 ### writer
-- Proposal page: before vs after, what was fixed, what the owner can now edit alone.
-- The pitch offers two options and states the trade honestly in one paragraph: **managed** (monthly fee, we keep it alive — hosting, updates, backups are ours) vs **self-hosted on their own VPS** (one-time fee, fully theirs, ~$6–12/mo to their host, they carry updates and backups). Managed is the default.
-- `static_only` is mentioned only if the owner says they never intend to edit.
-- Outreach message in the local language, short, with the preview (`*.workers.dev`) link.
+- Proposal page: before vs after, what was fixed, and what the owner would be able to edit alone once they choose a product with the CMS. The preview is a finished static build: the pitch never claims a CMS, login or domain exists yet.
+- The pitch presents the products **for the client to choose** and states the trade honestly: **managed** (recommended; monthly fee, we host it, they edit it, we keep it alive — hosting, updates, backups are ours) · **self-hosted on their own VPS** (one-time fee, fully theirs, ~$6–12/mo to their host, they carry updates and backups) · **static only** (the finished site as files, no CMS; edits need a developer). The choice comes back after a sale and is logged as `product_chosen` (gate e).
+- Preview URL from the ledger's `previewed` line (`deploy.json` exists only after station 8).
+- Outreach message in English (always, whatever the owner's language — Shahar, 2026-10-05), short, with the preview (`*.workers.dev`) link.
 
 ---
 
 ## 6. CMS + server hardening
 
-One Payload instance serves every client (§1). Client sites are static files on Cloudflare, so there is nothing to patch on them; the single ops surface is our CMS server.
+One Payload instance serves every client (§1). Client sites are static files on Cloudflare, so there is nothing to patch on them; the single ops surface is our CMS server. A client gets a tenant only at station 8 Deliver, after a sale and their product choice; the pipeline up to the pitch never needs the CMS (2026-10-05).
 
 Phase 1 spike — Payload multi-tenant: `docker-compose up` locally, two tenants, one Astro template rendering each tenant, `afterChange` hook triggering a rebuild + `wrangler deploy` to two `*.workers.dev` sites. Deliverable: `spikes/payload/README.md` with what worked and the content schema v0.1. The same spike builds the single-tenant profile: same codebase, selected by env var, tenants plugin off, one admin user, running in a self-hosted compose stack (Payload + Postgres + Astro builder + Caddy) with rebuild-on-save inside the stack.
 
@@ -324,8 +331,8 @@ Phase 1 spike — Payload multi-tenant: `docker-compose up` locally, two tenants
 - Designer `base.md` v0.1 (Claude), `custom.md` (Shahar, as above).
 
 **Phase 2 — Vertical slice, one business**
-- Hand-pick one business in the Mirissa stretch. Run Harvest → Mockups → pick → Build → Critique → Deploy manually, station by station.
-- Goal: one site live on its `*.workers.dev` address, editable by its owner in Payload, and one pitch page.
+- Hand-pick one business in the Mirissa stretch. Run Harvest → Mockups → pick → Build → Critique → Preview → Pitch manually, station by station.
+- Goal: one site live on its `*.workers.dev` preview and one pitch page. The owner's Payload login comes at Deliver, after a sale (2026-10-05).
 - The vertical slice stays `managed`.
 
 **Phase 2b — Self-hosted handoff**
@@ -354,7 +361,7 @@ Phase 1 spike — Payload multi-tenant: `docker-compose up` locally, two tenants
 - Decided 2026-09-18: Worker name = the customer's brand slug, no Oneshot prefix. Dedicated Oneshot Cloudflare account (login shaharnaor@outlook.com), workers.dev subdomain `os1` → preview links look like `<brand>.os1.workers.dev`. No other Cloudflare account is ever used.
 - Decided 2026-09-18: our CMS server = second OCI account ("shibumi", Frankfurt), A1 2 OCPU / 12 GB, Pay As You Go with a free-tier quota cap. Instance `oneshot-cms` is up; both spike suites pass on it (ARM64 proven). Details: `infra/oci/README.md`.
 - Decided 2026-09-18: mockup 1 (calm) skips the canvas/WebGL animation; if it is picked, the animation is added in the build. → needs a line in `agents/designer/custom.md` (proposal below).
-- Open 2026-09-21: the Payload collection is behind the schema. `spikes/payload/cms/src/collections/Sites.ts` is still v0.1; `schemas/site-content.md` is v0.3 (v0.2 `businessType` + per-type modules, v0.3 `forecast`). Not needed for stations 4d–4f; must be closed before a 4g build binds to those fields.
+- ~~Open 2026-09-21: the Payload collection is behind the schema. `spikes/payload/cms/src/collections/Sites.ts` is still v0.1; `schemas/site-content.md` is v0.3 (v0.2 `businessType` + per-type modules, v0.3 `forecast`). Not needed for stations 4d–4f; must be closed before a 4g build binds to those fields.~~ Closed (checked 2026-10-05): the production app `cms/app/src/collections/Sites.ts` (header "schema v0.8": `businessType` + the `rooms` / `lessons` / `rentals` / `amenities` modules, `forecast`, `featureLine`, `closing`, `ratings[].capturedAt`, `heroVideo` / `heroVideoPoster` / `videos[]`) + `Media.ts` (MP4/WebM accepted) implement `schemas/site-content.md` v0.8, and v0.9 adds no field (renditions are made by the build). The spike's copy under `spikes/` stays v0.1 and is not used. Note: the CMS *server* may run an older build (ledger 2026-10-05: "shared CMS 0.7.0 has no video support"); upgrading it is station 8 work.
 - Pitch channel: WhatsApp, email, or in-person? Affects what the writer produces.
 - Pricing/offer in the pitch — out of scope for the pipeline or a template?
 

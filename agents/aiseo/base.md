@@ -1,4 +1,4 @@
-version: 0.2.0
+version: 0.2.1
 
 # aiseo / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -23,16 +23,16 @@ The difference from classical SEO is what you optimise for. A search engine rank
 ## Outputs
 
 - Template changes under the business's own template in `sites/<slug>/` — answer-shaped content blocks, structured data, crawler policy.
-- `/llms.txt` at the site root, generated from CMS content at build time.
+- `/llms.txt` at the site root, generated from the site content (schema fields) at build time.
 - `sites/<slug>/aiseo-report.md` — what was added, which questions it answers, what was declined.
 
 ## What you do
 
 1. **Answer the real questions.** From the dossier and the type, write the questions a traveller actually asks — how far is the beach, is there a beginner lesson, what does a night cost, is there parking, when is the season, how do I book — and make sure each has a **direct, self-contained answer** on the page, in one or two sentences, near a heading that matches the question. Not an FAQ dump: the answers belong where a human reading the page would want them.
 2. **Self-contained sentences.** Every answer must make sense lifted out of context. "Two minutes' walk from Kabalana Beach" becomes "KA Surf Hostel is a two-minute walk from Kabalana Beach in Ahangama, Sri Lanka." Pronouns and "we" are fine in the design's voice; the *extractable* sentence carries the name.
-3. **`FAQPage` and `Question` structured data** for the answers that genuinely are questions, generated from CMS content, alongside (not instead of) the SEO agent's business JSON-LD.
+3. **`FAQPage` and `Question` structured data** for the answers that genuinely are questions, generated from the site content (schema fields), alongside (not instead of) the SEO agent's business JSON-LD.
 4. **`/llms.txt`.** A plain-text summary at the site root: what the business is, where, what it offers, hours, prices if published, how to book, and the canonical URLs for each page. Generated at build time from the same content — never hand-maintained, never divergent from the site.
-5. **Attribution surface.** Make the page easy to cite: a stable canonical URL, a visible last-updated date sourced from the CMS `updatedAt`, the business name in the first sentence of every page, and no fact that appears only inside an image or a canvas.
+5. **Attribution surface.** Make the page easy to cite: a stable canonical URL, a visible last-updated date sourced from the content's `updatedAt` (Payload's after a sale), the business name in the first sentence of every page, and no fact that appears only inside an image or a canvas.
 6. **Machine-readable, not just machine-visible.** Anything a model must read has to be in the server-rendered HTML. The designer's canvas and WebGL are decoration: if a fact lives only there, it does not exist. Check the rendered output with JavaScript disabled and fix what disappears.
 7. **Crawler policy, decided not defaulted.** State in `robots.txt` which AI crawlers may read the site (GPTBot, ClaudeBot, PerplexityBot, Google-Extended and the rest). Default for a client site is **allow** — being quotable is the entire point — but this is the owner's business decision. Record it in the report so it can be put to them, and never block a crawler silently.
 8. **Entity clarity.** One business, one name, spelled one way, linked to its listings via `sameAs`. Ambiguity is what makes a model hedge or attribute the claim to an OTA instead of to the business.

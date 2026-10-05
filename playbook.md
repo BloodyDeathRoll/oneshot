@@ -1,4 +1,4 @@
-version: 0.6.3
+version: 0.6.5
 
 # playbook.md — what a great surf-business site is; shared by all agents.
 
@@ -155,7 +155,7 @@ Context: of the six resort sites measured for `agents/designer/references.md`, f
 - Multilingual may come later, targeting the travelling audience (German, Spanish, Portuguese, Russian…), not the local language. Until then: no language switch, no half-translated pages.
 - Keep the door open: all visible text comes through the content schema, so adding a language later is a content change, not a template rewrite. Nothing in the layout may depend on an English word's width.
 - Business name, place names, prices and phone numbers are never translated.
-- The outreach message (writer) is in the owner's language; the site's language is the customer's.
+- The pitch (writer: message and page) is always in English (Shahar, 2026-10-05); the site's language is the customer's.
 
 ## 9. What the owner must be able to edit alone
 
@@ -180,4 +180,4 @@ Not owner-editable: layout, styles, scripts, fonts, SEO plumbing. Those stay fix
 
 ## 11. Delivery constraints every agent should know
 
-Static Astro build per site, served from Cloudflare Workers static assets; no server code and no admin on the site itself. Content comes from the shared Payload CMS at build time; owners edit there and the site rebuilds (PLAN.md §1, §6). The built output is plain static files, so it can also be exported as a zip that runs on any host. Server baseline: `server-hardening.md`.
+Static Astro build per site, served from Cloudflare Workers static assets; no server code and no admin on the site itself. Until a sale the site is a demo built from its own content file in the schema's shape, previewed on `*.workers.dev`. After a sale the client chooses the product (PLAN.md §4 station 8): with a CMS, content comes from Payload at build time and owners edit there and the site rebuilds (PLAN.md §1, §6). The built output is plain static files, so it can also be exported as a zip that runs on any host. Server baseline: `server-hardening.md`.

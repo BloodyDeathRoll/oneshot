@@ -22,17 +22,24 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'dashboard');
 
 // ---- pipeline (PLAN.md §4 / docs/ledger.md) ----------------------------------------------------
+// From 2026-10-05: 6 Preview (previewed, static, no CMS) → 7 Pitch (packaged = pitch written, gate c
+// → pitched → outcome:*) → after outcome:sale, gate e: the client's product choice (product_chosen,
+// carries hosting_mode) → 8 Deliver (delivered; self-hosted then handoff_verified → access_revoked).
+// A `packaged` line dated before 2026-10-05 meant "full deploy done" (docs/ledger.md, History).
 export const ORDER = [
   'discovered', 'scored', 'shortlisted', 'approved', 'harvested', 'audited',
   'copy_drafted', 'copy_humanised', 'copy_failed', 'copy_passed',
   'concepted', 'mocked', 'picked', 'built', 'optimised', 'ai_optimised',
-  'critiqued', 'failed', 'passed', 'packaged', 'pitched', 'outcome',
-  'handoff_verified', 'access_revoked', 'void',
+  'critiqued', 'failed', 'passed', 'previewed', 'packaged', 'pitched', 'outcome',
+  'product_chosen', 'delivered', 'handoff_verified', 'access_revoked', 'void',
 ];
-export const GATES = { shortlisted: 'approve the shortlist', mocked: 'pick a mockup', packaged: 'send the pitch' };
+const PRODUCT_GATE = "record the client's product choice";
+export const GATES = { shortlisted: 'approve the shortlist', mocked: 'pick a mockup', packaged: 'send the pitch', 'outcome:sale': PRODUCT_GATE };
+const PACKAGED_MEANING_CHANGED = '2026-10-05'; // docs/ledger.md, "History: packaged before 2026-10-05"
 const HUMAN = 'Shahar';
 
-// Nine station segments for the Pipeline bar (concepts.md: PLAN's 1–7 + 4a–4i collapsed to nine).
+// Ten station segments for the Pipeline bar (concepts.md: PLAN's 1–8 + 4a–4i collapsed; Preview and
+// Deliver split on 2026-10-05).
 export const STATIONS = [
   { n: 1, name: 'Scout', states: ['discovered', 'scored'] },
   { n: 2, name: 'Shortlist', states: ['shortlisted', 'approved'], gate: 'approve the shortlist' },
@@ -41,8 +48,9 @@ export const STATIONS = [
   { n: 5, name: 'Concept + mockups', states: ['concepted', 'mocked', 'picked'], gate: 'pick a mockup' },
   { n: 6, name: 'Build + SEO', states: ['built', 'optimised', 'ai_optimised'] },
   { n: 7, name: 'Critique', states: ['critiqued', 'failed', 'passed'] },
-  { n: 8, name: 'Deliver', states: ['packaged', 'handoff_verified', 'access_revoked'] },
-  { n: 9, name: 'Pitch', states: ['pitched', 'outcome'], gate: 'send the pitch' },
+  { n: 8, name: 'Preview', states: ['previewed'] },
+  { n: 9, name: 'Pitch', states: ['packaged', 'pitched', 'outcome'], gate: 'send the pitch' },
+  { n: 10, name: 'Deliver', states: ['product_chosen', 'delivered', 'handoff_verified', 'access_revoked'], gate: PRODUCT_GATE },
 ];
 
 // Next step per state (concepts.md, creative director) with its owner.
@@ -55,9 +63,10 @@ export const NEXT_STEP = {
   mocked: ['pick a mockup', HUMAN], picked: ['build the site', 'designer'],
   built: ['SEO', 'seo'], optimised: ['AI SEO', 'aiseo'], ai_optimised: ['critic review', 'critic'],
   critiqued: ['fix and rebuild', 'designer'], failed: ['fix and rebuild', 'designer'],
-  passed: ['package', 'deployer'], packaged: ['send the pitch', HUMAN],
+  passed: ['deploy the preview', 'deployer'], previewed: ['write the pitch', 'writer'], packaged: ['send the pitch', HUMAN],
   pitched: ['log the outcome', HUMAN], 'outcome:reply': ['follow up', HUMAN],
-  'outcome:meeting': ['follow up', HUMAN], 'outcome:sale': ['attach the domain and hand over', 'deployer'],
+  'outcome:meeting': ['follow up', HUMAN], 'outcome:sale': [PRODUCT_GATE, HUMAN],
+  product_chosen: ['deliver the chosen product', 'deployer'], delivered: ['done', null],
   'outcome:ignored': ['leave it or re-pitch', HUMAN], handoff_verified: ['revoke our access', 'deployer'],
   access_revoked: ['done', null], void: ['voided by Shahar — ignore', null],
 };
@@ -256,8 +265,10 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     if (state.startsWith('outcome:')) return { group: 'outcome', label: state.slice(8) };
     if (!isCurrent && rank(state) < rank('approved') && !runHasApprovals) return { group: 'superseded', label: 'run not continued' };
     if (state === 'pitched') return { group: 'pitched', label: 'pitched' };
-    if (state === 'packaged') return { group: 'delivered', label: 'built + deployed, pitch not sent' };
-    if (state === 'access_revoked' || state === 'handoff_verified') return { group: 'delivered', label: state };
+    if (state === 'previewed') return { group: 'delivered', label: 'preview live, pitch not written' };
+    if (state === 'packaged') return { group: 'delivered', label: last.ts < PACKAGED_MEANING_CHANGED ? 'built + deployed, pitch not sent' : 'preview live, pitch ready to send' };
+    if (state === 'product_chosen') return { group: 'delivered', label: 'sold, product chosen, delivery pending' };
+    if (['delivered', 'handoff_verified', 'access_revoked'].includes(state)) return { group: 'delivered', label: state };
     if (regressed || (rank(state) < rank('approved') && DROP_RE.test(last.note ?? ''))) return { group: 'dropped', label: 'dropped' };
     if (state === 'scored') return { group: 'not_shortlisted', label: 'scored above threshold' };
     if (state === 'shortlisted') return runHasApprovals ? { group: 'not_approved', label: 'shortlisted, not approved' } : { group: 'gate', label: 'awaiting shortlist approval' };
@@ -300,7 +311,8 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     for (const h of hist) { const n = stationOf(h.to_state); if (n && !stationDates[n]) stationDates[n] = h.ts; }
     const out = ['dropped', 'not_shortlisted', 'not_approved', 'superseded'].includes(group);
     const nextKey = NEXT_STEP[last.to_state] ? last.to_state : baseState(last.to_state);
-    const [nextStep, ownerRaw] = out ? ['—', null] : (NEXT_STEP[nextKey] ?? [null, null]);
+    const selfHostedDelivered = last.to_state === 'delivered' && hosting === 'self_hosted_docker';
+    const [nextStep, ownerRaw] = out ? ['—', null] : selfHostedDelivered ? ['verify the handoff', 'deployer'] : (NEXT_STEP[nextKey] ?? [null, null]);
     const owner = ownerRaw === HUMAN ? viewerName : ownerRaw; // a gate is either operator's: shown as "you"
     // One timeline per business: ledger transitions, operators' work and assignments, commits.
     const timeline = [
@@ -309,7 +321,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
       ...(own ? commitsBySlug[slug] ?? [] : []),
     ].sort((x, y) => y.ts.localeCompare(x.ts));
     const lastWorked = timeline.find((e) => e.operator && (e.kind !== 'ledger' || e.agent === 'human' || e.ts >= '2026-10-02')) ?? timeline.find((e) => e.operator) ?? null;
-    const gate = (group === 'gate' || group === 'delivered') ? (GATES[last.to_state] ?? null) : null;
+    const gate = (group === 'gate' || group === 'delivered' || group === 'outcome') ? (GATES[last.to_state] ?? null) : null;
     const overrides = hist.filter((h) => h.agent === 'human' && OVERRIDE_RE.test(h.note ?? '')).map((h) => ({ ts: h.ts, note: h.note }));
 
     businesses.push({
@@ -326,7 +338,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
       station: stationOf(last.to_state), station_dates: stationDates,
       next_step: nextStep, owner,
       gate,
-      gate_target: gate ? { view: gate === 'send the pitch' ? 'sites' : 'pipeline', slug } : null,
+      gate_target: gate ? { view: gate === 'send the pitch' || gate === PRODUCT_GATE ? 'sites' : 'pipeline', slug } : null,
       lines: hist.length,
       human_decisions: hist.filter((h) => h.agent === 'human').length,
       overrides,
@@ -336,7 +348,8 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
       critic_score: latestScored?.score ?? null,
       critic_score_kind: latestScored ? `${latestScored.kind}${latestScored.round ? ' ' + latestScored.round : ''}` : null,
       critic_series: critic,
-      hosting_mode: hosting ?? (rank(last.to_state) >= rank('packaged') ? run.default_mode : null),
+      // The client chooses the mode after a sale (product_chosen carries it); before that, none is shown.
+      hosting_mode: hosting ?? (rank(last.to_state) >= rank('product_chosen') ? run.default_mode : null),
       preview_url: deploy?.url ?? previewFromLedger ?? null,
       deploy, cms_verified: deploy?.verified ?? false,
       pitch, shots,
@@ -397,7 +410,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     const lastBy = new Map();
     for (const l of upto) lastBy.set(l.slug, l);
     series.gates_open.push([...lastBy.values()].filter((l) => GATES[l.to_state] && !(l.to_state === 'shortlisted' && upto.some((x) => x.to_state === 'approved'))).length);
-    series.live_sites.push([...lastBy.values()].filter((l) => rank(l.to_state) >= rank('packaged')).length);
+    series.live_sites.push([...lastBy.values()].filter((l) => rank(l.to_state) >= rank('previewed')).length);
     series.businesses_seen.push(lastBy.size);
   }
 

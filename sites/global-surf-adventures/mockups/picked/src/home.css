@@ -7,7 +7,7 @@
 .hero h1{position:relative;color:#fff;font-family:var(--sans);font-weight:500;font-size:48px;line-height:1.2;letter-spacing:-.005em;
   text-shadow:0 1px 2px rgba(0,0,0,.35),0 2px 18px rgba(0,0,0,.35),0 0 60px rgba(0,0,0,.28);margin:0 0 28px;text-wrap:balance}
 /* a soft local shade behind the title text only (not over the video) [sign round 10] */
-.hero h1::before{content:"";position:absolute;inset:-36px -64px;z-index:-1;pointer-events:none;background:radial-gradient(closest-side,rgba(12,22,34,.38),rgba(12,22,34,.18) 60%,rgba(12,22,34,0))}
+.hero h1::before{content:"";position:absolute;inset:-44px -84px;z-index:-1;pointer-events:none;background:radial-gradient(closest-side,rgba(16,20,34,.56),rgba(16,20,34,.3) 58%,rgba(16,20,34,0))}
 
 /* ---------- welcome: asymmetric split, big photo with a small print over its corner [postcard] ---------- */
 .split{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(40px,7vw,110px);align-items:center}
@@ -84,11 +84,24 @@
 .score .num{font:500 104px/1 var(--sans);letter-spacing:-.03em;color:var(--ink)}
 .score .src{font-size:16px;color:var(--ink2);line-height:1.5}
 .score .src b{display:block;color:var(--ink);font-weight:600;font-size:19px}
+/* the page's one ink moment: the guests' toast at the pool, toned into the palette's ink */
+.ink{position:relative;overflow:hidden;background:var(--ink);color:#fff}
+.ink-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.3;filter:grayscale(1) contrast(1.05);mix-blend-mode:luminosity}
+.ink>.wrap{position:relative}
+.ink .script,.ink .score .num,.ink .score .src b,.ink .q cite b{color:#fff}
+.ink .detail,.ink .score .src,.ink .q cite{color:rgba(255,255,255,.8)}
+.ink .dots button::after{background:#fff;opacity:.4}
+.ink .dots button[aria-current="true"]::after{opacity:1}
+.ink :focus-visible{outline-color:#fff}
 .q{margin:0;padding:0 4px}
 .q blockquote{margin:0 0 24px;font:400 clamp(24px,2.5vw,36px)/1.4 var(--sans);letter-spacing:-.01em}
 .q cite{font-style:normal;font-size:16px;color:var(--ink2)}
 .q cite b{color:var(--ink);font-weight:600}
-.quotes .show-track{align-items:flex-start}
+.quotes .show-track{align-items:flex-start;overflow-y:hidden;transition:height .35s ease}
+.qnav{display:none;align-items:center;gap:6px;margin-top:10px}
+.qnav button{width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;display:grid;place-items:center;cursor:pointer}
+.qnav button[disabled]{opacity:.35;cursor:default}
+.qnav span{min-width:64px;text-align:center;font-weight:600;font-variant-numeric:tabular-nums}
 .quotes .dots{justify-content:flex-start;margin-left:-14px;max-width:calc(100% + 14px)}
 
 /* ---------- waves, Rosa [postcard] ---------- */
@@ -98,9 +111,9 @@
 .now .v{font:500 40px/1.1 var(--sans);letter-spacing:-.02em}
 .now .v small{font-size:18px;font-weight:500;margin-left:4px}
 .now .k{font-size:14px;color:var(--ink2)}
-.rosa-box{width:100%;max-width:420px;height:500px;border-radius:16px;overflow:hidden;background:var(--soft);display:grid;place-items:center;text-align:center;justify-self:end}
+.rosa-box{position:relative;width:100%;max-width:420px;height:500px;border-radius:16px;overflow:hidden;background:var(--soft);display:grid;place-items:center;text-align:center;justify-self:end}
 .rosa-box iframe{width:100%;height:500px;border:0;display:block}
-.rosa-box .fallback{padding:24px}
+.rosa-box .fallback{position:absolute;inset:0;display:grid;place-items:center;padding:24px}
 .rosa-box .btn,.rosa-link .btn{white-space:normal;text-align:center;line-height:1.3;padding:12px 22px}
 .rosa-box.off{display:none}
 .rosa-link{margin:26px 0 0}
@@ -190,9 +203,11 @@
   .room h3{font-size:28px}
   .room .btn{width:100%}
   .feature{aspect-ratio:4/5;max-height:none}
+  .quotes .dots{display:none}
+  .js .qnav{display:flex}
 }
 @media (max-width:620px){
   .hero h1{text-shadow:0 1px 2px rgba(0,0,0,.45),0 2px 14px rgba(0,0,0,.45),0 0 44px rgba(0,0,0,.35)}
-  .hero h1::before{inset:-28px -36px;background:radial-gradient(closest-side,rgba(12,22,34,.42),rgba(12,22,34,.2) 60%,rgba(12,22,34,0))}
+  .hero h1::before{inset:-28px -36px;background:radial-gradient(closest-side,rgba(16,20,34,.52),rgba(16,20,34,.28) 60%,rgba(12,22,34,0))}
 }
 @media (max-width:700px){.feature{padding-bottom:22%}}

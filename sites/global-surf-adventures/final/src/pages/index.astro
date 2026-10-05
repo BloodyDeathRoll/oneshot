@@ -1,0 +1,277 @@
+---
+/* Global Surf Lodge Kabalana — home page. The picked composite mockup (mockups/picked/, build.py
+   home()) ported to Astro without changing how it looks. Content: src/lib/site.mjs (Payload's
+   content.json, the SCHEMA GAP file and the approved labels). */
+import siteCss from '../styles/site.css?raw'
+import homeCss from '../styles/home.css?raw'
+import commonJs from '../scripts/common.js?raw'
+import homeJs from '../scripts/home.js?raw'
+import {
+  c, G, CT, ST, e, paras, block, detail, money, dayMonYear, safeUrl, WA, waWith, levelPrice, PLATFORM,
+  LEVELS, FREE, slotRow, picture, wimg, shapeOf, srcset, top, atLeast, R45, R32, R169, FULL,
+  heroVideo, clip, fontFaces, SPRITE, ic, header, footer, show, roomViewer,
+  sentences, metaDescription, businessLd, ldJson, seoHead,
+} from '../lib/site.mjs'
+import { S, INSTAGRAM } from '../lib/slots.mjs'
+
+const pre = ''
+
+/* ---- hero [sign] (schema v0.9 snippet: poster first, sources attached after first paint). The <video> carries
+   no poster attribute: it stays transparent until it plays (.hero-v.on), so the <picture> under it is the poster,
+   and a phone does not also fetch the landscape poster it never shows. */
+const hv = heroVideo()
+const PHONE = '(max-width: 767px) and (orientation: portrait)'
+const heroSources = hv ? [
+  hv.pv?.webm && [hv.pv.webm, PHONE], hv.pv?.mp4 && [hv.pv.mp4, PHONE],
+  [hv.v.tiers.m1280?.webm, '(max-width: 767px)'], [hv.v.tiers.m1280?.mp4, '(max-width: 767px)'],
+  [hv.v.tiers.d1920?.webm], [hv.v.tiers.d1920?.mp4],
+].filter((x) => x && x[0]) : []
+const posterSet = hv ? `${hv.poster[1280].src} ${hv.poster[1280].width}w, ${hv.poster[1920].src} ${hv.poster[1920].width}w` : ''
+const heroTitle = G.heroTitle
+
+/* ---- welcome [postcard] */
+const intro = block('intro', 0)
+const welcomeMain = picture(slotRow(S.welcome), R45, '(max-width:900px) 100vw, 44vw', 1066)
+const welcomeSmall = picture(slotRow(S.welcomeSmall), R45, '(max-width:900px) 40vw, 18vw', 640)
+
+/* ---- levels [sign]: three living 4:5 clips (videos[0–2]) */
+const panels = LEVELS.map((L, k) => {
+  const cl = clip(k)
+  const t = cl?.v.tiers
+  const srcs = cl ? [[t.d1920?.webm], [t.m720?.mp4, '(max-width: 767px)'], [t.d1920?.mp4]].filter((x) => x[0]) : []
+  return { L, poster: cl ? cl.p[1280] : null, srcs }
+})
+
+/* ---- included [postcard] */
+const inc = G.inclusions
+const l3coached = (inc[3] ?? []).map((i) => i.text).find((t) => /coached/.test(t))
+
+/* ---- the week [postcard] */
+const week = block('about', 0)
+const weekSlides = S.week.map((n) => slotRow(n)).filter(Boolean)
+  .map((row) => `<figure>${picture(row, R32, '(max-width:900px) 100vw, 62vw', 1200)}</figure>`)
+
+/* ---- rooms [week] */
+const roomsBlock = block('about', 1)
+const roomsLead = paras(roomsBlock?.body)[0] ?? ''
+/* "Choose this room" opens the booking page on the Level step with that room kept and no level
+   assumed (must-fix 3: it used to land on the Room step with Level 1 marked done) */
+const roomAction = (r) => `<a class="btn btn-book" href="book/?room=${r.key}">${e(CT.room)}</a>`
+
+/* ---- feature [postcard] */
+const fRow = slotRow(S.feature)
+const f169 = fRow && shapeOf(fRow.filename, R169), f45 = fRow && shapeOf(fRow.filename, R45)
+
+/* ---- guests [postcard], set in ink over the toast photograph */
+const r0 = (c.ratings ?? [])[0] ?? null
+const guestsBlock = block('about', 2)
+const quotes = (c.testimonials ?? []).map((t) => {
+  const s = PLATFORM[t.source]
+  return `<figure class="q"><blockquote>“${e(t.quote)}”</blockquote><figcaption><cite><b>${e(t.author)}</b>${s ? `<span class="sep">|</span>${s}` : ''}</cite></figcaption></figure>`
+})
+const qnav = `<div class="qnav"><button type="button" class="qp" aria-label="Previous review">${ic('i-l')}</button><span aria-live="polite">1 / ${quotes.length}</span><button type="button" class="qx" aria-label="Next review">${ic('i-r')}</button></div>`
+const gRow = slotRow(S.guests), g32 = gRow && shapeOf(gRow.filename, R32)
+
+/* ---- the waves [postcard]: Rosa, live (playbook §4 exception) */
+const fc = c.forecast?.enabled && /^[a-z0-9-]+$/.test(c.forecast?.rosaSpotId ?? '') ? c.forecast : null
+const spotId = fc?.rosaSpotId, spotName = fc?.spotName || spotId
+
+/* ---- instagram [week] */
+const IG = G.instagram
+const tiles = INSTAGRAM.map((n) => slotRow(n)).filter(Boolean)
+  .map((row) => `<a href="${e(IG.url)}" aria-label="${e(IG.tile_link_label)}">${wimg(row.filename, row.alt, '(max-width: 900px) 45vw, 260px', pre)}</a>`).join('')
+
+/* ---- closing [postcard] */
+const [cl1, cl2] = (() => {
+  const s = c.closing ?? ''
+  const i = s.indexOf('. ')
+  return i < 0 ? [s, ''] : [s.slice(0, i + 1), s.slice(i + 2)]
+})()
+const closingPic = picture(slotRow(S.closing), R45, '(max-width:900px) 100vw, 50vw', 1066)
+
+/* ---- phone bar [sign] */
+const lp = levelPrice.split('|').map((s) => s.trim())
+
+const title = `${c.businessName} | Surf weeks in Sri Lanka` // the mockup's title_c1 (copy, mockup_extras.hero)
+/* Head and structured data (station 4h). The description: owner-written fields only (tagline, the
+   welcome's lodge sentence, the rooms block's first sentence), cut at a sentence to 155. og:image is
+   the hero poster (a frame of the hero video, 1280×720), absolute only with SITE_URL. */
+const desc = metaDescription([c.tagline, sentences(paras(intro?.body)[1])[0], sentences(paras(roomsBlock?.body)[0])[0]])
+const ogImage = hv ? { ...hv.poster[1280], alt: hv.alt } : null
+const ldImages = [hv?.poster[1920].src, ...(c.photos ?? []).map((_, n) => slotRow(n)).filter(Boolean)
+  .map((row) => { const sh = shapeOf(row.filename, FULL); return sh ? top(sh).jpg : null })].filter(Boolean)
+const ld = businessLd({ description: desc, images: ldImages })
+const lq = hv?.pp?.lq
+const lqCss = lq ? `@media ${PHONE}{.hero{background:#CDE4EE url(${lq}) center/cover no-repeat}}` : ''
+const css = fontFaces(pre) + siteCss + homeCss + lqCss
+---
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{title}</title>
+{desc && <meta name="description" content={desc}>}
+<Fragment set:html={seoHead({ path: '', title, description: desc, image: ogImage })} />
+<script is:inline>document.documentElement.className='js'</script>
+{hv?.pp && <link rel="preload" as="image" type="image/webp" href={hv.pp.webp} media={PHONE}>}
+{hv && <link rel="preload" as="image" imagesrcset={posterSet} imagesizes="100vw" media={`not all and ${PHONE}`}>}
+<style is:inline set:html={css}></style>
+</head>
+<body class="home">
+<Fragment set:html={SPRITE} />
+<Fragment set:html={header(pre, true)} />
+<main id="main">
+<section class="hero" id="top" aria-label={c.businessName}>
+  {hv && (
+    <picture class="hero-p">
+      {hv.pp && <source media={PHONE} type="image/webp" srcset={hv.pp.webp} />}
+      <img src={hv.poster[1280].src} srcset={posterSet} sizes="100vw" width={hv.poster[1920].width} height={hv.poster[1920].height} alt={hv.alt} fetchpriority="high" />
+    </picture>
+  )}
+  {hv && (
+    <video class="hero-v" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" data-hero-video>
+      {heroSources.map(([s, media]) => <source data-src={s.src} type={s.type} media={media} />)}
+    </video>
+  )}
+  <div class="hero-c">
+    <h1>{heroTitle}</h1>
+    <a class="btn btn-book btn-lg" href="book/">{CT.hero_c1}</a>
+  </div>
+</section>
+
+<section class="sec welcome" id="welcome" aria-labelledby="t-welcome"><div class="wrap split">
+<div class="w-media"><div class="w-main" set:html={welcomeMain}></div>
+<div class="w-small" set:html={welcomeSmall}></div></div>
+<div class="w-text"><h2 class="script" id="t-welcome">{intro?.heading ?? ST.welcome}</h2><div class="lead" set:html={paras(intro?.body).map((p) => `<p>${e(p)}</p>`).join('')}></div>
+<p class="detail" set:html={detail(G.details.welcome)}></p></div>
+</div></section>
+
+<section class="levels bg-soft" id="levels" aria-labelledby="t-levels">
+  <div class="wrap">
+    <h2 class="script center" id="t-levels">{ST.levels}</h2>
+    <div class="panels-w" data-panels><div class="panels">
+      {panels.map(({ L, poster, srcs }) => (
+        <article class="panel" data-level={L.slug}>
+          <a class="panel-media" href={`book/?level=${L.slug}#room`} tabindex="-1" aria-hidden="true">
+            {poster && <img src={poster.src} width={poster.width} height={poster.height} alt="" loading="lazy" decoding="async" />}
+            <video muted loop playsinline preload="none">
+              {srcs.map(([s, media]) => <source data-src={s.src} type={s.type} media={media} />)}
+            </video>
+          </a>
+          <div class="panel-t">
+            <h3>{L.name}</h3>
+            <p>{L.oneLiner}</p>
+            <p class="detail" set:html={detail(levelPrice)}></p>
+            <a class="btn btn-book" href={`book/?level=${L.slug}#room`}>{L.cta}</a>
+          </div>
+        </article>
+      ))}
+    </div><div class="dots panel-dots"></div></div>
+    <div class="free">
+      <div><h3>{FREE.name}</h3><p>{FREE.one}</p>{FREE.detail && <p class="detail" set:html={detail(FREE.detail)}></p>}</div>
+      {WA && <a class="btn btn-soft" href={waWith(G.freestylers.whatsappText)} set:html={ic('i-wa', 'wa') + e(CT.freestylers)}></a>}
+    </div>
+  </div>
+</section>
+
+<section class="incl" id="included" aria-labelledby="t-incl">
+<div class="incl-media" set:html={picture(slotRow(S.included), R45, '(max-width:900px) 100vw, 50vw', 1066)}></div>
+<div class="incl-body"><h2 class="script" id="t-incl">{ST.included}</h2>
+<ul set:html={(inc[1] ?? []).map((i) => `<li>${ic('ic-' + i.icon)}<span>${e(i.text)}</span></li>`).join('')}></ul>
+<p class="note" set:html={`${e(LEVELS[2].name)}<span class="sep">|</span>${e(l3coached ?? '')}<br>${e(inc.optionalExtra)}`}></p></div>
+</section>
+
+<section class="sec bg-soft week" id="week" aria-labelledby="t-week"><div class="week-grid">
+<div class="week-text"><h2 class="script" id="t-week">{week?.heading ?? ST.week}</h2><Fragment set:html={paras(week?.body).map((p) => `<p>${e(p)}</p>`).join('')} /></div>
+<Fragment set:html={show(weekSlides, 'Photos of a week at the lodge', 'week-show')} />
+</div></section>
+
+<section class="sec" id="rooms" aria-labelledby="t-rooms">
+ <div class="wrap">
+  <div class="sec-head split2"><h2 class="script" id="t-rooms">{ST.rooms}</h2><p>{roomsLead}</p></div>
+  <Fragment set:html={roomViewer(pre, roomAction)} />
+  <p class="detail rooms-note">{G.roomsNote}</p>
+ </div>
+</section>
+
+{fRow && f169 && (
+  <section class="feature" aria-label="The pool">
+    <picture>
+      {f45 && <source media="(max-width:700px)" type="image/webp" srcset={srcset(f45)} />}
+      <source type="image/webp" srcset={srcset(f169)} sizes="100vw" />
+      <img src={top(f169).jpg} width={top(f169).w} height={top(f169).h} alt={fRow.alt} loading="lazy" decoding="async" />
+    </picture>
+    {c.featureLine && <p>{c.featureLine}</p>}
+  </section>
+)}
+
+<section class="sec ink" id="guests" aria-labelledby="t-guests">
+  {g32 && <img class="ink-bg" src={atLeast(g32, 1600).webp} srcset={srcset(g32)} sizes="100vw" width={atLeast(g32, 1600).w} height={atLeast(g32, 1600).h} alt="" loading="lazy" decoding="async" />}
+  <div class="wrap guests">
+    <div class="g-score"><h2 class="script" id="t-guests">{guestsBlock?.heading ?? ST.guests}</h2>
+      {r0 && <div class="score"><span class="num">{r0.score}</span><span class="src"><b>{PLATFORM[r0.platform] ?? ''}</b><Fragment set:html={detail(`${r0.count} reviews | ${dayMonYear(r0.capturedAt)}`)} /></span></div>}
+      <p class="detail" set:html={detail(G.details.ratingCategories)}></p></div>
+    <Fragment set:html={show(quotes, 'Guest reviews', 'quotes', false, qnav)} />
+  </div>
+</section>
+
+<section class="sec" id="waves" aria-labelledby="t-waves"><div class="wrap waves">
+<div><h2 class="script" id="t-waves">{ST.waves}</h2><p class="lead">{c.spot}</p>
+{fc && (
+  <div class="rosa-head" id="rosa-head">
+    {/* station-5 fix: the headline's space at every width. The ghost holds Rosa's longest wording (invisible); the
+        reading, the plain link and the ghost share one grid cell, so nothing moves when one replaces another. */}
+    <div class="rosa-ghost" aria-hidden="true">
+      <div class="now">
+        <div><div class="v">0.0–0.0<small>m</small></div><div class="k">Wave height, double overhead+</div></div>
+        <div><div class="v">00<small>s</small></div><div class="k">Swell from the WSW</div></div>
+        <div><div class="v">00<small>km/h</small></div><div class="k">Wind, cross-shore</div></div>
+      </div>
+      <p class="detail"><span class="di"><span>Wed 28 Sep 00:00</span><span class="sep">|</span></span><span class="credit di">Forecast for {spotName} by Rosa</span></p>
+    </div>
+    <div class="rosa-live">
+      <div class="now" id="rosa-now" data-json={`https://rosa-data-opal.vercel.app/data/spots/${spotId}.json`}>
+        <div><div class="v" id="rosa-h">0.0–0.0<small>m</small></div><div class="k" id="rosa-hk">Wave height</div></div>
+        <div><div class="v" id="rosa-p">00<small>s</small></div><div class="k" id="rosa-pk">Swell</div></div>
+        <div><div class="v" id="rosa-w">00<small>km/h</small></div><div class="k" id="rosa-wk">Wind</div></div>
+      </div>
+      <p class="detail" id="rosa-meta"><span class="di"><span id="rosa-time">–</span><span class="sep">|</span></span><a class="credit di" href={`https://rosa.surf/spot/${spotId}`}>Forecast for {spotName} by Rosa</a></p>
+    </div>
+    <p class="rosa-link" id="rosa-plain"><a class="btn btn-soft" href={`https://rosa.surf/spot/${spotId}`}>See today's forecast for {spotName} on Rosa</a></p>
+  </div>
+)}
+</div>
+{fc && (
+  <div class="rosa-box" data-rosa={`https://rosa.surf/widget/?spot=${spotId}&theme=light&units=metric`} data-title={`Rosa surf forecast - ${spotName}`}>
+    <div class="fallback"><a class="btn btn-soft" href={`https://rosa.surf/spot/${spotId}`}>See today's forecast for {spotName} on Rosa</a></div>
+  </div>
+)}
+</div></section>
+
+<section class="sec bg-soft" id="instagram" aria-labelledby="t-insta">
+ <div class="wrap">
+  <div class="ig-head">
+    <div><h2 class="script" id="t-insta">{ST.instagram}</h2><p>{IG.line}</p></div>
+    <a class="btn btn-ink" href={IG.url} set:html={ic('i-ig') + e(CT.instagram)}></a>
+  </div>
+  <div class="ig-row" id="igRow" set:html={tiles}></div>
+  <div class="dots" id="igDots"></div>
+ </div>
+</section>
+
+<section class="closing" aria-label={CT.closing}>
+<div class="cl-media" set:html={closingPic}></div>
+<div class="cl-body"><h2 class="script">{cl1}</h2>{cl2 && <p>{cl2}</p>}<div class="btns">
+<a class="btn btn-book btn-lg" href="book/">{CT.closing}</a>
+{WA && <a class="btn btn-soft btn-lg" href={WA} set:html={ic('i-wa', 'wa') + e(CT.whatsapp)}></a>}</div></div></section>
+</main>
+<Fragment set:html={footer(pre)} />
+<div class="bar" id="bar" aria-hidden="true">
+  <p><strong>{lp[0]}</strong> | {lp[1]}</p>
+  <a class="btn btn-book" href="book/" tabindex="-1">{CT.header_and_bar}</a>
+</div>
+<script is:inline set:html={commonJs + '\n' + homeJs}></script>
+<script is:inline type="application/ld+json" set:html={ldJson(ld)}></script>
+</body>
+</html>

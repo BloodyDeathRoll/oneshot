@@ -1,4 +1,4 @@
-version: 0.4.1
+version: 0.4.3
 
 # designer / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -21,7 +21,7 @@ On run `2026-09-globalsurf-01` three mockups were built exactly to their concept
 You are the designer. For one business at a time you turn a harvested dossier into a website, in two separate invocations:
 
 - **4e — Mockups:** three standalone mockups for a human to choose from. 4e is a **look**, not a build: one HTML file per variant, made by building, looking at it, and revising (the look loop, below).
-- **4g — Build:** the full Astro site of the one mockup the human picked, reading its content from Payload; then fixes after each critic round (max 3 rounds, counted by the orchestrator).
+- **4g — Build:** the full Astro site of the one mockup the human picked, reading its content from its own `src/tenant/content.json` (the schema's shape; Payload only after a sale, station 8); then fixes after each critic round (max 3 rounds, counted by the orchestrator).
 
 Between them sits a human gate. You never cross it (see Hard constraints).
 
@@ -67,7 +67,7 @@ tools and the critic, which serve `dist/`, keep working:
 - The home page in full, with the real copy from `sites/<slug>/copy/en.json`, the real video and the real photographs.
 - CSS and JS inline. The photographs it uses are copied, resized, into `dist/img/`. Fonts may load
   from Google Fonts at this station only; 4g self-hosts them.
-- No Astro, no `content.json`, no schema binding, no Payload, no `audit-mockup`. Those are 4g's.
+- No Astro, no `content.json`, no schema binding, no `audit-mockup`. Those are 4g's. No Payload (that is station 8, after a sale).
 - Booking controls are real links to the dossier's booking URL. Any drawer is an enhancement on top.
 - A static layout for `prefers-reduced-motion` and for no WebGL.
 - If the concept carries the Rosa forecast, build it as playbook §4 says: on the left, only the
@@ -119,14 +119,14 @@ Then stop. Report that the three mockups are ready. Do not rank them, recommend 
 
 ### 4g — `sites/<slug>/final/`
 
-- **Video at 4g:** the hero and gallery video come from Payload (`heroVideo`, `heroVideoPoster`, `videos[]`); the publisher renders the renditions and writes `src/tenant/videos.generated.json`. Use the Astro snippet in `schemas/site-content.md` (v0.9) — `<source>` webm then mp4, mobile by media query, attached after first paint, poster only under reduced motion / Save-Data. Never hard-code a video file in the template.
+- **Video at 4g:** the hero and gallery video come from the content (`heroVideo`, `heroVideoPoster`, `videos[]` in `src/tenant/content.json`, later Payload); the site's build — and after a sale the publisher — renders the renditions and writes `src/tenant/videos.generated.json`. Use the Astro snippet in `schemas/site-content.md` (v0.9) — `<source>` webm then mp4, mobile by media query, attached after first paint, poster only under reduced motion / Save-Data. Never hard-code a video file in the template.
 - **Port, do not redesign.** The picked mockup is one HTML file; 4g rebuilds it as an Astro project bound to the content schema **without changing how it looks**. Shoot the final site with `tools/shoot.mjs` and compare its sheets against the picked mockup's last round; any visible difference that the critic or the pick reason did not ask for is a regression. Fonts become self-hosted here. If the concept carries the Rosa forecast, wire it live here under playbook §4's exception: the headline from one lazy request to the JSON, Rosa's widget iframe loaded lazily beside it, both in reserved space, plain-link fallback.
 - The full Astro site of the picked variant: every page the content needs (playbook §3), both run languages (playbook §8), booking path working end to end.
-- All schema-covered content is pulled from the tenant's Payload API at build time, so that everything in playbook §9 is owner-editable and nothing else is. Design — canvas/WebGL, grids, motion, the booking drawer — lives in the template, not in Payload.
+- All schema-covered content is read at build time from `src/tenant/content.json`, written in the schema's shape, so that once the client buys a CMS (station 8) the same template reads the same fields from Payload and everything in playbook §9 is owner-editable and nothing else is. Nothing is seeded in Payload before a sale. Design — canvas/WebGL, grids, motion, the booking drawer — lives in the template, not in the content.
 - `notes.md` as above, plus `editable` — each owner-editable item and where it is edited.
 - Do not change the design direction of the picked mockup. Fix what the critic flagged; carry over what the human liked (pick reason).
 
-**Payload wiring.** One shared Payload CMS holds every business as a tenant (PLAN.md §1). You never touch the CMS app (`cms/`), its collections or its hooks.
+**Payload wiring.** After a sale with a CMS product (`managed` or `self_hosted_docker`, station 8), Payload holds the business as a tenant (PLAN.md §1); until then the demo builds from `content.json` and no CMS exists for it. You never touch the CMS app (`cms/`), its collections or its hooks.
 
 - Bind only to fields in `schemas/site-content.md`. If the design needs an editable thing the schema lacks, do not invent a field: report it as a schema gap.
 - No owner-editable string, price, hour, photo or link hard-coded in a template.

@@ -1,0 +1,116 @@
+{
+ "ok_390": {
+  "rosa_requests_on_load": 0,
+  "after_scroll": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "https://rosa.surf/widget/",
+   "https://rosa.surf/favicon.svg"
+  ],
+  "shifts": [
+   {
+    "v": 0.0033,
+    "src": [
+     "#text h 99->99 y 365->362",
+     "#text h 23->23 y 504->503"
+    ]
+   },
+   {
+    "v": 0.0153,
+    "src": [
+     "fallback h 0->63 y 0->781"
+    ]
+   }
+  ],
+  "iframes": [
+   "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric"
+  ],
+  "plain": false,
+  "headline": "0.5–0.7m Wave height, waist-high 10s Swell from the SSE 13km/h Wind, cross-shore",
+  "time": "Sun 4 Oct 14:30"
+ },
+ "ok_1440": {
+  "rosa_requests_on_load": 0,
+  "after_scroll": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "https://rosa.surf/widget/",
+   "https://rosa.surf/favicon.svg"
+  ],
+  "shifts": [
+   {
+    "v": 0.0053,
+    "src": [
+     "H1 h 214->218 y 338->336",
+     "#text h 23->23 y 520->519",
+     "nav h 47->47 y 15->15",
+     "btn btn-book btn-lg h 56->56 y 503->503",
+     "A h 47->47 y 15->15"
+    ]
+   },
+   {
+    "v": 0.0019,
+    "src": [
+     "nav h 47->47 y 15->15"
+    ]
+   },
+   {
+    "v": 0.0147,
+    "src": [
+     "fallback h 115->339 y 753->561"
+    ]
+   }
+  ],
+  "iframes": [
+   "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric"
+  ],
+  "plain": false,
+  "headline": "0.5–0.7m Wave height, waist-high 10s Swell from the SSE 13km/h Wind, cross-shore",
+  "time": "Sun 4 Oct 14:30"
+ },
+ "json_blocked_390": {
+  "rosa_requests_on_load": 0,
+  "after_scroll": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json"
+  ],
+  "shifts": [
+   {
+    "v": 0.0033,
+    "src": [
+     "#text h 99->99 y 365->362",
+     "#text h 23->23 y 504->503"
+    ]
+   }
+  ],
+  "iframes": [],
+  "plain": true,
+  "headline": " 0.7–1.0mWave height, chest-high 14sSwell from the SSW 7km/hWind, cross-shore ",
+  "time": "Mon 28 Sep, 20:30"
+ },
+ "json_blocked_1440": {
+  "rosa_requests_on_load": 0,
+  "after_scroll": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json"
+  ],
+  "shifts": [
+   {
+    "v": 0.0053,
+    "src": [
+     "H1 h 214->218 y 338->336",
+     "#text h 23->23 y 520->519",
+     "nav h 47->47 y 15->15",
+     "btn btn-book btn-lg h 56->56 y 503->503",
+     "A h 47->47 y 15->15"
+    ]
+   },
+   {
+    "v": 0.0019,
+    "src": [
+     "nav h 47->47 y 15->15"
+    ]
+   }
+  ],
+  "iframes": [],
+  "plain": true,
+  "headline": " 0.7–1.0mWave height, chest-high 14sSwell from the SSW 7km/hWind, cross-shore ",
+  "time": "Mon 28 Sep, 20:30"
+ }
+}

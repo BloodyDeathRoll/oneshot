@@ -4,13 +4,20 @@ def book():
     B = X['booking']; CT = X['ctas']; ST = X['section_titles']
     steps = ['level', 'room', 'dates', 'total']
     # media half [sign]
+    # level clips: native-resolution cuts made by src/make-book-clips.sh (video/b), played on desktop only;
+    # phones show the first-frame poster in a slim band
     layers = ''
     for k, L in enumerate(LEVELS):
-        v = L['vid']; po = a('s', f'{v}-poster.jpg', 'video'); wb = a('s', f'{v}.webm', 'video'); mp = a('s', f'{v}.mp4', 'video')
-        layers += f'<div class="m{" on" if k == 0 else ""}" data-m="{L["slug"]}" style="background:url({pre}{po}) center/cover"><video muted loop playsinline preload="none" poster="{pre}{po}" data-webm="{pre}{wb}" data-mp4="{pre}{mp}"></video></div>'
+        b = f'video/b/level-{L["n"]}'; USED.update({b + '.webm', b + '.mp4', b + '-poster.jpg'})
+        layers += (f'<div class="m{" on" if k == 0 else ""}" data-m="{L["slug"]}" aria-hidden="true"><img src="{pre}{b}-poster.jpg" width="864" height="1080" alt=""{"" if k == 0 else " loading=\"lazy\""}>'
+                   f'<video muted loop playsinline preload="none" data-webm="{pre}{b}.webm" data-mp4="{pre}{b}.mp4"></video></div>')
+    # room step, desktop: the chosen room's gallery fills the media half (the column keeps name, price and the action)
+    for r in ROOMS:
+        slides = [f'<figure>{wimg(pre, g, "50vw", lazy=True)}</figure>' for g in r['gallery']]
+        layers += f'<div class="m m-room" data-m="room-{r["key"]}">{show(pre, slides, r["label"] + ", photographs", "m-show")}</div>'
     d1 = a('s', 'img-001-1600.webp'); t1 = a('s', 'img-093-1536.webp')
-    layers += (               f'<div class="m" data-m="dates"><img data-src="{pre}{d1}" width="1600" height="1066" alt=""></div>'
-               f'<div class="m" data-m="total"><img data-src="{pre}{t1}" width="1536" height="1023" alt=""></div>')
+    layers += (               f'<div class="m" data-m="dates" aria-hidden="true"><img data-src="{pre}{d1}" width="1600" height="1066" alt=""></div>'
+               f'<div class="m" data-m="total" aria-hidden="true"><img data-src="{pre}{t1}" width="1536" height="1023" alt=""></div>')
 
     prog = '<ol class="prog" aria-label="Booking steps">' + ''.join(
         f'<li><a href="#{s}" data-go="{s}"><span class="pn">{i+1}</span><span class="pt">{e(t)}</span></a></li>'
@@ -30,7 +37,7 @@ def book():
   <h1 class="script" id="t-level" tabindex="-1">{e(ST['book_level'])}</h1>
   <div class="picks" role="radiogroup" aria-labelledby="t-level">{picks}</div>
   <div class="free-s">
-    <p><strong>{detail(X['detail_lines']['freestylers'])}</strong><br><span class="small">{e(FREE['one'])}</span></p>
+    <p><strong>{e(FREE['name'])}</strong><br><span class="small">{e(FREE['one'])}</span><br><span class="detail">{detail(X['detail_lines']['freestylers'], drop=FREE['name'])}</span></p>
     <a class="btn btn-soft" href="{e(WA)}">{ic('i-wa', 'wa')}{e(CT['freestylers'])}</a>
   </div>
   <h2 class="script sub">{e(ST['book_included'])}</h2>
@@ -38,18 +45,19 @@ def book():
   <p class="small">{e(inc['optional_extra'])}</p>
 </section>'''
 
-    def choose(r, k):
-        return (f'<label class="choose"><input type="radio" name="room" value="{r["key"]}" form="none"{" checked" if k == 0 else ""}>'
-                f'<span class="btn">{ic("i-check")}{e(CT["room"])}</span></label>')
+    def choose(r, k):  # nothing is chosen until the visitor chooses; "Chosen": TEMPLATE-LABEL
+        return (f'<label class="choose"><input type="radio" name="room" value="{r["key"]}" form="none">'
+                f'<span class="btn"><span class="c-no">{e(CT["room"])}</span><span class="c-yes">{ic("i-check")}Chosen</span></span></label>')
     s_room = f'''<section class="step" id="room" data-media="room" aria-labelledby="t-room">
   {stepn(2)}
   <h2 class="script" id="t-room" tabindex="-1">{e(ST['book_room'])}</h2>
-  {room_viewer(pre, choose, 'b-')}
+  {room_viewer(pre, choose, 'b-', cta_first=True)}
   <p class="small rooms-note" data-rooms-note>{e(X['rooms_note'])}</p>
 </section>'''
 
     sats = ['2026-10-03', '2026-10-24', '2026-10-31', '2026-12-19', '2027-01-23', '2027-01-30', '2027-02-13',
             '2027-02-20', '2027-02-27', '2027-03-06', '2027-03-13', '2027-03-20', '2027-03-27', '2027-04-03']  # docs/bookinglayer.md §2.1 snapshot
+    sats = [s for s in sats if s >= dt.date.today().isoformat()]  # never a past Saturday (book.js drops them again against the visitor's today)
     f = lambda d: d.strftime('%a %-d %b %Y')
     opts = ''.join(f'<option value="{s}">{f(dt.date.fromisoformat(s))}</option>' for s in sats)
     groups = ''
@@ -57,7 +65,7 @@ def book():
         d0 = dt.date.fromisoformat(s)
         o = ''.join(f'<option value="{(d0 + dt.timedelta(days=n)).isoformat()}">{n} nights, to {f(d0 + dt.timedelta(days=n))}</option>' for n in (7, 14, 21, 28))
         groups += f'<optgroup label="From {f(d0)}">{o}</optgroup>'
-    nojs_end = ('<noscript><div class="fl has nojs-end"><select id="f-end" name="end"><option value="">Choose your check-out</option>'
+    nojs_end = ('<noscript><div class="fl has nojs-end"><select id="f-end" name="end" required><option value="">Choose your check-out</option>'
                 + groups + '</select><label for="f-end">Check-out</label><svg class="chev"><use href="#i-chev"/></svg></div></noscript>')  # TEMPLATE-LABEL [sign]
     nights = ''.join(f'<label><input type="radio" name="nights" form="none" value="{n}"{" checked" if n == "7" else ""}><span>{n}</span></label>' for n in B['nights_options'])
     def stp(nm, lab, mx):
@@ -69,7 +77,7 @@ def book():
   <p class="chips-l" id="l-chips" hidden>{e(B['field_checkin'])}</p>
   <div class="chips" data-chips role="group" aria-labelledby="l-chips" hidden></div>
   <div class="fl has" id="w-start">
-    <select id="f-start" name="start"><option value="">{e(B['field_checkin_nojs_placeholder'])}</option>{opts}</select>
+    <select id="f-start" name="start" required><option value="">{e(B['field_checkin_nojs_placeholder'])}</option>{opts}</select>
     <label for="f-start">{e(B['field_checkin'])}</label>
     <svg class="chev"><use href="#i-chev"/></svg>
   </div>
@@ -81,6 +89,7 @@ def book():
 </section>'''
 
     SL = B['summary_labels']
+    lp_from, lp_pp = X['detail_lines']['level_price'].split('|')[0].strip().split(' ', 1)  # "From" + "$1,466 pp" (copy)
     nojs_go = ''.join(f'<button class="btn btn-book btn-lg" type="submit" formaction="{ENGINE}{L["slug"]}">Continue with Level {L["n"]}</button>' for L in LEVELS)  # TEMPLATE-LABEL [sign]
     s_total = f'''<section class="step" id="total" data-media="total" aria-labelledby="t-total">
   {stepn(4)}
@@ -90,7 +99,7 @@ def book():
       <div><dt>{e(SL['level'])}</dt><dd data-s="level">{e(LEVELS[0]['name'])}</dd></div>
       <div><dt>{e(SL['dates'])}</dt><dd data-s="dates">{e(B['field_checkin_nojs_placeholder'])}</dd></div>
       <div><dt>{e(SL['guests'])}</dt><dd data-s="guests">—</dd></div>
-      <div><dt>{e(SL['room'])}</dt><dd data-s="room">{e(ROOMS[0]['label'])}</dd></div>
+      <div><dt>{e(SL['room'])}</dt><dd data-s="room">—</dd></div>
     </dl>
     <dl class="sum-p">
       <div><dt>{e(B['total_package'])}</dt><dd data-s="base">$1,466</dd></div>
@@ -101,7 +110,6 @@ def book():
     <p class="small" data-s="note">{e(B['currency_note'])} | {e(B['prices_snapshot'].format(date='29 Sep 2026'))}</p>
     <p class="small">{e(B['deposit'])}</p>
   </div>
-  <div class="js-only"><button class="btn btn-book btn-lg go" type="submit">{e(CT['handoff'])}</button></div>
   <noscript><div class="nojs-go">{nojs_go}</div></noscript>
   <p class="handoff">{e(B['handoff'])}</p>
   <p class="small">{e(B['handoff_nothing_booked'])}</p>
@@ -110,12 +118,13 @@ def book():
 
     snav = f'''<div class="snav js-only" id="snav">
   <button type="button" class="btn btn-soft back" data-back aria-label="Back">{ic('i-l')}<span>Back</span></button>
-  <p class="snav-t"><span>{e(SL['total'])}</span> <strong data-s="bartotal">$1,466</strong></p>
+  <p class="snav-t" data-total="{e(SL['total'])}"><span data-s="barlabel">{e(lp_from)}</span> <strong data-s="bartotal">{e(lp_pp)}</strong></p>
   <button type="button" class="btn btn-book next" data-next>{e(CT['step_next'])}{ic('i-r')}</button>
+  <button type="submit" form="bk" class="btn btn-book go" hidden>{e(CT['handoff'])}{ic('i-r')}</button>
 </div>'''  # "Back": TEMPLATE-LABEL
 
     main = f'''<main id="main" class="bk">
-  <div class="bk-media" aria-hidden="true">{layers}</div>
+  <div class="bk-media">{layers}</div>
   <div class="bk-col">
   {prog}
   <form class="bk-steps" id="bk" method="get" action="{ENGINE}{LEVELS[0]['slug']}">

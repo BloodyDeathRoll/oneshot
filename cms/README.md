@@ -24,3 +24,13 @@ docker compose --env-file .env up -d --build --wait
 ```
 
 Live deploys need `DEPLOY_MODE=live` and `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` in `cms/.env` (a scoped token, Workers Scripts:Edit on the Oneshot account only). A copy of the same token lives on the operator machine at `~/.oneshot/cf-token` (mode 600, never in the repo; Shahar, 2026-09-28) for deploys run from there, such as the proposal pages: `CLOUDFLARE_API_TOKEN=$(cat ~/.oneshot/cf-token) npx wrangler deploy`. Rotating it means updating both places.
+
+**After any CMS server upgrade** (Payload, Postgres, the publisher, Caddy, the site-deps, the box itself), run the post-CMS acceptance suite for every tenant before calling the upgrade done (deployer `tools.md`, 2026-10-05):
+
+```bash
+for s in $(node -e "for (const f of require('fs').readdirSync('sites')) { try { const d = require('./sites/' + f + '/deploy.json'); if (d.adapter === 'managed') console.log(f) } catch {} }"); do
+  node tools/site-check.mjs "$s" --full --no-parity || echo "FAILED: $s"
+done
+```
+
+`--full` logs in as each owner, makes one edit, publishes it and puts it back (the live HTML is compared byte for byte before and after); `--no-parity` because an owner's own edits make the CMS build differ from the repo's `content.json` on purpose — drop it for tenants nobody has edited. Between upgrades, `.github/workflows/site-monitor.yml` checks this server's public health (`/admin`, `/api/users/me`) and every live site every 6 h.

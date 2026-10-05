@@ -330,7 +330,7 @@ footer table { margin-top: 16px; font-size: 14px; line-height: 20px; color: var(
   var LIVE = ['delivered', 'pitched', 'outcome'];
   var OUT = ['dropped', 'not_approved', 'not_shortlisted'];          // out, with a reason
   var NOT_IN_PLAY = OUT.concat(['superseded']);                        // superseded = earlier run of a slug counted once
-  var GROUP_WORD = { gate: 'awaiting ' + HUMAN, delivered: 'delivered', pitched: 'pitched', outcome: 'outcome', pipeline: 'in progress',
+  var GROUP_WORD = { gate: 'awaiting ' + HUMAN, delivered: 'live', pitched: 'pitched', outcome: 'outcome', pipeline: 'in progress',
     dropped: 'dropped', not_approved: 'not approved', not_shortlisted: 'not shortlisted', superseded: 'superseded' };
   function groupWord(g) { return GROUP_WORD[g] || words(g); }
   function statusCell(b, forceAccent) {
@@ -346,9 +346,10 @@ footer table { margin-top: 16px; font-size: 14px; line-height: 20px; color: var(
     copy_humanised: ['review copy', 'Claude'], copy_failed: ['redraft copy', 'Claude'], copy_passed: ['write concepts', 'Claude'],
     concepted: ['build mockups', 'Claude'], mocked: ['pick a mockup', 'you'], picked: ['build the site', 'Claude'],
     built: ['SEO', 'Claude'], optimised: ['AI SEO', 'Claude'], ai_optimised: ['critic review', 'Claude'],
-    critiqued: ['fix and rebuild', 'Claude'], failed: ['fix and rebuild', 'Claude'], passed: ['package', 'Claude'],
-    packaged: ['send the pitch', 'you'], pitched: ['log the outcome', 'you'], 'outcome:reply': ['follow up', 'you'],
-    'outcome:meeting': ['follow up', 'you'], 'outcome:sale': ['attach the domain and hand over', 'Claude'],
+    critiqued: ['fix and rebuild', 'Claude'], failed: ['fix and rebuild', 'Claude'], passed: ['deploy the preview', 'Claude'],
+    previewed: ['write the pitch', 'Claude'], packaged: ['send the pitch', 'you'], pitched: ['log the outcome', 'you'], 'outcome:reply': ['follow up', 'you'],
+    'outcome:meeting': ['follow up', 'you'], 'outcome:sale': ['record the client\'s product choice', 'you'],
+    product_chosen: ['deliver the chosen product', 'Claude'], delivered: ['done', ''],
     'outcome:ignored': ['leave it or re-pitch', 'you'], handoff_verified: ['revoke our access', 'Claude'], access_revoked: ['done', ''] };
   function nextStep(b) {
     var n = b.gate ? [b.gate, 'you'] : (NEXT[String(b.state || '')] || NEXT[String(b.state || '').replace(/\(\d+\)$/, '')]);
@@ -488,7 +489,7 @@ footer table { margin-top: 16px; font-size: 14px; line-height: 20px; color: var(
   }
   function deliveredSection() {
     var sent = live.filter(function (b) { return b.pitched_at; }).length;
-    var h = sectionOpen('delivered', 'Delivered', live.length ? plural(live.length, 'site is', 'sites are') + ' live. '
+    var h = sectionOpen('delivered', 'Live sites', live.length ? plural(live.length, 'site is', 'sites are') + ' live. '
       + (sent === 0 ? 'No pitch has been sent.' : plural(sent, 'pitch has', 'pitches have') + ' been sent.') : 'No site is live yet.');
     if (!live.length) return h + '</section>';
     h += '<table class="delivered wide"><thead><tr><th class="h-name">Business</th><th class="h-preview">Preview</th><th class="h-proposal">Proposal</th>'

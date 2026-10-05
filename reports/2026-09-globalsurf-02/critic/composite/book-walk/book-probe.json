@@ -1,0 +1,698 @@
+{
+ "phone_live": {
+  "errors": [],
+  "on_load": {
+   "engine_calls": 0,
+   "hosts": [
+    "127.0.0.1:8971",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com"
+   ],
+   "kb": 2131,
+   "videos": [
+    "vid-010-p45.webm"
+   ]
+  },
+  "timing": [
+   {
+    "f": "vid-010-p45.webm",
+    "rel_fcp": 205
+   }
+  ],
+  "s1_level": {
+   "hash": "",
+   "search": "",
+   "cur": "level",
+   "visible_steps": [
+    "level"
+   ],
+   "page_h": 3386,
+   "footer_top": 2109,
+   "viewport_h": 844,
+   "title": "Your level / \"Dancing Script\" 600 56px",
+   "bar": "$1,466",
+   "small": [],
+   "overflow_x": 0
+  },
+  "s1_level_media": "level-2-rollers",
+  "s2_room": {
+   "hash": "#room",
+   "search": "?level=level-2-rollers&room=dorm",
+   "cur": "room",
+   "visible_steps": [
+    "room"
+   ],
+   "page_h": 2826,
+   "footer_top": 1549,
+   "viewport_h": 844,
+   "title": "Your room / \"Dancing Script\" 600 56px",
+   "bar": "$1,466",
+   "small": [],
+   "overflow_x": 0
+  },
+  "s2_room_ui": {
+   "pills": [
+    "Dorm*",
+    "Twin",
+    "Deluxe double"
+   ],
+   "choose": [
+    "Choose this room bg rgb(39, 41, 62) 350x52"
+   ],
+   "media": "level-2-rollers"
+  },
+  "s2b": {
+   "hash": "#room",
+   "search": "?level=level-2-rollers&room=dorm",
+   "cur": "room",
+   "visible_steps": [
+    "room"
+   ],
+   "page_h": 2884,
+   "footer_top": 1607,
+   "viewport_h": 844,
+   "title": "Your room / \"Dancing Script\" 600 56px",
+   "bar": "$1,466",
+   "small": [],
+   "overflow_x": 0
+  },
+  "s3_dates": {
+   "hash": "#dates",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "dates",
+   "visible_steps": [
+    "dates"
+   ],
+   "page_h": 3030,
+   "footer_top": 1753,
+   "viewport_h": 844,
+   "title": "Dates and guests / \"Dancing Script\" 600 56px",
+   "bar": "$1,606.04",
+   "small": [],
+   "overflow_x": 0
+  },
+  "s3_dates_options": {
+   "chips": [
+    "Sat 3",
+    "Sat 24",
+    "Sat 31",
+    "Sat 19",
+    "Sat 23",
+    "Sat 30",
+    "Sat 13",
+    "Sat 20",
+    "Sat 27",
+    "Sat 6",
+    "Sat 13",
+    "Sat 20",
+    "Sat 27",
+    "Sat 3"
+   ],
+   "select_first": [
+    "2026-10-03",
+    "2026-10-24",
+    "2026-10-31"
+   ]
+  },
+  "s3_missing": {
+   "cur": "dates",
+   "focus": "chip"
+  },
+  "s3c": {
+   "hash": "#dates",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "dates",
+   "visible_steps": [
+    "dates"
+   ],
+   "page_h": 3030,
+   "footer_top": 1753,
+   "viewport_h": 844,
+   "title": "Dates and guests / \"Dancing Script\" 600 56px",
+   "bar": "$3,092.05",
+   "small": [],
+   "overflow_x": 0
+  },
+  "s4_total": {
+   "hash": "#total",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "total",
+   "visible_steps": [
+    "total"
+   ],
+   "page_h": 2745,
+   "footer_top": 1467,
+   "viewport_h": 844,
+   "title": "Your total / \"Dancing Script\" 600 56px",
+   "bar": "$3,092.05",
+   "small": [],
+   "overflow_x": 0
+  },
+  "s4_sum": {
+   "level": "Level 2 – Rollers",
+   "dates": "20 Feb 2027 – 27 Feb 2027 | 7 nights",
+   "guests": "1 couple",
+   "room": "Shared Twin Room – 2 Beds",
+   "base": "$1,466",
+   "supp": "+$80.02",
+   "pp": "$1,546.03",
+   "alllabel": "Total for 2 guests",
+   "all": "$3,092.05",
+   "note": "Prices in USD | Live price from the booking engine"
+  },
+  "s4_wa": "https://wa.me/972523593240?text=Hi Global Surf Lodge Kabalana, I have a question about the surf packages. Level 2 – Rollers, check-in 20 Feb 2027, 7 nights, 1 couple, Shared Twin Room – 2 Beds.",
+  "s4_status": [
+   "Prices in USD | Live price from the booking engine",
+   "40% deposit to book, the rest 45 days before arrival. Booking less than 45 days ahead? You pay in full.",
+   "Nothing is booked until you check out there."
+  ],
+  "after_back": "#dates cur=dates",
+  "after_forward": "#total cur=total",
+  "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&couple=1&end=2027-02-27",
+  "engine_calls": [
+   "GET /public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities",
+   "GET /public/accommodations/availabilities",
+   "POST /public/packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items"
+  ],
+  "cls": 0,
+  "deeplink_level3_room": {
+   "cur": "room",
+   "level": "level-3-riders"
+  },
+  "deeplink_room_double": {
+   "cur": "level",
+   "room": "double",
+   "tab": "Deluxe double"
+  },
+  "tab_first_40": [
+   "A Skip to content ring=true",
+   "A Global Surf Lodge Ka ring=true",
+   "BUTTON:button Menu ring=true",
+   "A 1Level ring=true",
+   "A 2Room ring=true",
+   "A 3Dates & guests ring=true",
+   "A 4Total ring=true",
+   "INPUT:radio level-1-fomies ring=true",
+   "A Ask about dates ring=true",
+   "BUTTON:button Next ring=true",
+   "A Global Surf Lodge Ka ring=true",
+   "A WhatsApp us ring=true",
+   "A Call us ring=true",
+   "A Email us ring=true",
+   "A Open in Maps ring=true",
+   "A Instagram ring=true",
+   "A YouTube ring=true",
+   "A Facebook ring=true",
+   "A Terms and conditions ring=true",
+   "BODY Skip to content\n\n  \n ring=false",
+   "A Skip to content ring=true",
+   "A Global Surf Lodge Ka ring=true",
+   "BUTTON:button Menu ring=true",
+   "A 1Level ring=true",
+   "A 2Room ring=true",
+   "A 3Dates & guests ring=true",
+   "A 4Total ring=true",
+   "INPUT:radio level-1-fomies ring=true",
+   "A Ask about dates ring=true",
+   "BUTTON:button Next ring=true",
+   "A Global Surf Lodge Ka ring=true",
+   "A WhatsApp us ring=true",
+   "A Call us ring=true",
+   "A Email us ring=true",
+   "A Open in Maps ring=true",
+   "A Instagram ring=true",
+   "A YouTube ring=true",
+   "A Facebook ring=true",
+   "A Terms and conditions ring=true",
+   "BODY Skip to content\n\n  \n ring=false"
+  ]
+ },
+ "desktop_live": {
+  "errors": [],
+  "on_load": {
+   "engine_calls": 0,
+   "hosts": [
+    "127.0.0.1:8971",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com"
+   ],
+   "kb": 2131,
+   "videos": [
+    "vid-010-p45.webm"
+   ]
+  },
+  "timing": [
+   {
+    "f": "vid-010-p45.webm",
+    "rel_fcp": 272
+   }
+  ],
+  "s1_level": {
+   "hash": "",
+   "search": "",
+   "cur": "level",
+   "visible_steps": [
+    "level"
+   ],
+   "page_h": 2019,
+   "footer_top": 1436,
+   "viewport_h": 900,
+   "title": "Your level / \"Dancing Script\" 600 56px",
+   "bar": "$1,466",
+   "small": [],
+   "overflow_x": 0
+  },
+  "s1_level_media": "level-2-rollers",
+  "s2_room": {
+   "hash": "#room",
+   "search": "?level=level-2-rollers&room=dorm",
+   "cur": "room",
+   "visible_steps": [
+    "room"
+   ],
+   "page_h": 1952,
+   "footer_top": 1369,
+   "viewport_h": 900,
+   "title": "Your room / \"Dancing Script\" 600 56px",
+   "bar": "$1,466",
+   "small": [],
+   "overflow_x": 0
+  },
+  "s2_room_ui": {
+   "pills": [
+    "Dorm*",
+    "Twin",
+    "Deluxe double"
+   ],
+   "choose": [
+    "Choose this room bg rgb(39, 41, 62) 220x52"
+   ],
+   "media": "level-2-rollers"
+  },
+  "s2b": {
+   "hash": "#room",
+   "search": "?level=level-2-rollers&room=dorm",
+   "cur": "room",
+   "visible_steps": [
+    "room"
+   ],
+   "page_h": 2013,
+   "footer_top": 1431,
+   "viewport_h": 900,
+   "title": "Your room / \"Dancing Script\" 600 56px",
+   "bar": "$1,466",
+   "small": [],
+   "overflow_x": 0
+  },
+  "s3_dates": {
+   "hash": "#dates",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "dates",
+   "visible_steps": [
+    "dates"
+   ],
+   "page_h": 1910,
+   "footer_top": 1328,
+   "viewport_h": 900,
+   "title": "Dates and guests / \"Dancing Script\" 600 56px",
+   "bar": "$1,606.04",
+   "small": [],
+   "overflow_x": 0
+  },
+  "s3_dates_options": {
+   "chips": [
+    "Sat 3",
+    "Sat 24",
+    "Sat 31",
+    "Sat 19",
+    "Sat 23",
+    "Sat 30",
+    "Sat 13",
+    "Sat 20",
+    "Sat 27",
+    "Sat 6",
+    "Sat 13",
+    "Sat 20",
+    "Sat 27",
+    "Sat 3"
+   ],
+   "select_first": [
+    "2026-10-03",
+    "2026-10-24",
+    "2026-10-31"
+   ]
+  },
+  "s3_missing": {
+   "cur": "dates",
+   "focus": "chip"
+  },
+  "s3c": {
+   "hash": "#dates",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "dates",
+   "visible_steps": [
+    "dates"
+   ],
+   "page_h": 1910,
+   "footer_top": 1328,
+   "viewport_h": 900,
+   "title": "Dates and guests / \"Dancing Script\" 600 56px",
+   "bar": "$3,092.05",
+   "small": [],
+   "overflow_x": 0
+  },
+  "s4_total": {
+   "hash": "#total",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "total",
+   "visible_steps": [
+    "total"
+   ],
+   "page_h": 1776,
+   "footer_top": 1194,
+   "viewport_h": 900,
+   "title": "Your total / \"Dancing Script\" 600 56px",
+   "bar": "$3,092.05",
+   "small": [],
+   "overflow_x": 0
+  },
+  "s4_sum": {
+   "level": "Level 2 – Rollers",
+   "dates": "20 Feb 2027 – 27 Feb 2027 | 7 nights",
+   "guests": "1 couple",
+   "room": "Shared Twin Room – 2 Beds",
+   "base": "$1,466",
+   "supp": "+$80.03",
+   "pp": "$1,546.03",
+   "alllabel": "Total for 2 guests",
+   "all": "$3,092.05",
+   "note": "Prices in USD | Live price from the booking engine"
+  },
+  "s4_wa": "https://wa.me/972523593240?text=Hi Global Surf Lodge Kabalana, I have a question about the surf packages. Level 2 – Rollers, check-in 20 Feb 2027, 7 nights, 1 couple, Shared Twin Room – 2 Beds.",
+  "s4_status": [
+   "Prices in USD | Live price from the booking engine",
+   "40% deposit to book, the rest 45 days before arrival. Booking less than 45 days ahead? You pay in full.",
+   "Nothing is booked until you check out there."
+  ],
+  "after_back": "#dates cur=dates",
+  "after_forward": "#total cur=total",
+  "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&couple=1&end=2027-02-27",
+  "engine_calls": [
+   "GET /public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities",
+   "GET /public/accommodations/availabilities",
+   "POST /public/packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items"
+  ],
+  "cls": 0,
+  "deeplink_level3_room": {
+   "cur": "room",
+   "level": "level-3-riders"
+  },
+  "deeplink_room_double": {
+   "cur": "level",
+   "room": "double",
+   "tab": "Deluxe double"
+  },
+  "tab_first_40": [
+   "A Skip to content ring=true",
+   "A Global Surf Lodge Ka ring=true",
+   "A Levels ring=true",
+   "A Rooms ring=true",
+   "A The lodge ring=true",
+   "A Contact ring=true",
+   "A 1Level ring=true",
+   "A 2Room ring=true",
+   "A 3Dates & guests ring=true",
+   "A 4Total ring=true",
+   "INPUT:radio level-1-fomies ring=true",
+   "A Ask about dates ring=true",
+   "BUTTON:button Next ring=true",
+   "A Global Surf Lodge Ka ring=true",
+   "A WhatsApp us ring=true",
+   "A Call us ring=true",
+   "A Email us ring=true",
+   "A Open in Maps ring=true",
+   "A Instagram ring=true",
+   "A YouTube ring=true",
+   "A Facebook ring=true",
+   "A Terms and conditions ring=true",
+   "BODY Skip to content\n\n  \n ring=false",
+   "A Skip to content ring=true",
+   "A Global Surf Lodge Ka ring=true",
+   "A Levels ring=true",
+   "A Rooms ring=true",
+   "A The lodge ring=true",
+   "A Contact ring=true",
+   "A 1Level ring=true",
+   "A 2Room ring=true",
+   "A 3Dates & guests ring=true",
+   "A 4Total ring=true",
+   "INPUT:radio level-1-fomies ring=true",
+   "A Ask about dates ring=true",
+   "BUTTON:button Next ring=true",
+   "A Global Surf Lodge Ka ring=true",
+   "A WhatsApp us ring=true",
+   "A Call us ring=true",
+   "A Email us ring=true"
+  ]
+ },
+ "phone_blocked": {
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ],
+  "on_load": {
+   "engine_calls": 0,
+   "hosts": [
+    "127.0.0.1:8971",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com"
+   ],
+   "kb": 2131,
+   "videos": [
+    "vid-010-p45.webm"
+   ]
+  },
+  "timing": [
+   {
+    "f": "vid-010-p45.webm",
+    "rel_fcp": 282
+   }
+  ],
+  "s1_level": {
+   "hash": "",
+   "search": "",
+   "cur": "level",
+   "visible_steps": [
+    "level"
+   ],
+   "page_h": 3386,
+   "footer_top": 2109,
+   "viewport_h": 844,
+   "title": "Your level / \"Dancing Script\" 600 56px",
+   "bar": "$1,466",
+   "small": [],
+   "overflow_x": 0
+  },
+  "s1_level_media": "level-2-rollers",
+  "s2_room": {
+   "hash": "#room",
+   "search": "?level=level-2-rollers&room=dorm",
+   "cur": "room",
+   "visible_steps": [
+    "room"
+   ],
+   "page_h": 2826,
+   "footer_top": 1549,
+   "viewport_h": 844,
+   "title": "Your room / \"Dancing Script\" 600 56px",
+   "bar": "$1,466",
+   "small": [],
+   "overflow_x": 0
+  },
+  "s2_room_ui": {
+   "pills": [
+    "Dorm*",
+    "Twin",
+    "Deluxe double"
+   ],
+   "choose": [
+    "Choose this room bg rgb(39, 41, 62) 350x52"
+   ],
+   "media": "level-2-rollers"
+  },
+  "s2b": {
+   "hash": "#room",
+   "search": "?level=level-2-rollers&room=dorm",
+   "cur": "room",
+   "visible_steps": [
+    "room"
+   ],
+   "page_h": 2884,
+   "footer_top": 1607,
+   "viewport_h": 844,
+   "title": "Your room / \"Dancing Script\" 600 56px",
+   "bar": "$1,466",
+   "small": [],
+   "overflow_x": 0
+  },
+  "s3_dates": {
+   "hash": "#dates",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "dates",
+   "visible_steps": [
+    "dates"
+   ],
+   "page_h": 3030,
+   "footer_top": 1753,
+   "viewport_h": 844,
+   "title": "Dates and guests / \"Dancing Script\" 600 56px",
+   "bar": "$1,606.04",
+   "small": [],
+   "overflow_x": 0
+  },
+  "s3_dates_options": {
+   "chips": [
+    "Sat 3",
+    "Sat 24",
+    "Sat 31",
+    "Sat 19",
+    "Sat 23",
+    "Sat 30",
+    "Sat 13",
+    "Sat 20",
+    "Sat 27",
+    "Sat 6",
+    "Sat 13",
+    "Sat 20",
+    "Sat 27",
+    "Sat 3"
+   ],
+   "select_first": [
+    "2026-10-03",
+    "2026-10-24",
+    "2026-10-31"
+   ]
+  },
+  "s3_missing": {
+   "cur": "dates",
+   "focus": "chip"
+  },
+  "s3c": {
+   "hash": "#dates",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "dates",
+   "visible_steps": [
+    "dates"
+   ],
+   "page_h": 3030,
+   "footer_top": 1753,
+   "viewport_h": 844,
+   "title": "Dates and guests / \"Dancing Script\" 600 56px",
+   "bar": "$3,092.05",
+   "small": [],
+   "overflow_x": 0
+  },
+  "s4_total": {
+   "hash": "#total",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "total",
+   "visible_steps": [
+    "total"
+   ],
+   "page_h": 2769,
+   "footer_top": 1492,
+   "viewport_h": 844,
+   "title": "Your total / \"Dancing Script\" 600 56px",
+   "bar": "$3,092.05",
+   "small": [],
+   "overflow_x": 0
+  },
+  "s4_sum": {
+   "level": "Level 2 – Rollers",
+   "dates": "20 Feb 2027 – 27 Feb 2027 | 7 nights",
+   "guests": "1 couple",
+   "room": "Shared Twin Room – 2 Beds",
+   "base": "$1,466",
+   "supp": "+$80.03",
+   "pp": "$1,546.03",
+   "alllabel": "Total for 2 guests",
+   "all": "$3,092.05",
+   "note": "Prices in USD | Live prices didn't load. These are the booking engine's prices from 29 Sep 2026."
+  },
+  "s4_wa": "https://wa.me/972523593240?text=Hi Global Surf Lodge Kabalana, I have a question about the surf packages. Level 2 – Rollers, check-in 20 Feb 2027, 7 nights, 1 couple, Shared Twin Room – 2 Beds.",
+  "s4_status": [
+   "Prices in USD | Live prices didn't load. These are the booking engine's prices from 29 Sep 2026.",
+   "40% deposit to book, the rest 45 days before arrival. Booking less than 45 days ahead? You pay in full.",
+   "Nothing is booked until you check out there."
+  ],
+  "after_back": "#dates cur=dates",
+  "after_forward": "#total cur=total",
+  "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&couple=1&end=2027-02-27",
+  "engine_calls": [
+   "GET /public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities",
+   "GET /public/accommodations/availabilities",
+   "POST /public/packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items"
+  ],
+  "cls": 0,
+  "deeplink_level3_room": {
+   "cur": "room",
+   "level": "level-3-riders"
+  },
+  "deeplink_room_double": {
+   "cur": "level",
+   "room": "double",
+   "tab": "Deluxe double"
+  },
+  "tab_first_40": [
+   "A Skip to content ring=true",
+   "A Global Surf Lodge Ka ring=true",
+   "BUTTON:button Menu ring=true",
+   "A 1Level ring=true",
+   "A 2Room ring=true",
+   "A 3Dates & guests ring=true",
+   "A 4Total ring=true",
+   "INPUT:radio level-1-fomies ring=true",
+   "A Ask about dates ring=true",
+   "BUTTON:button Next ring=true",
+   "A Global Surf Lodge Ka ring=true",
+   "A WhatsApp us ring=true",
+   "A Call us ring=true",
+   "A Email us ring=true",
+   "A Open in Maps ring=true",
+   "A Instagram ring=true",
+   "A YouTube ring=true",
+   "A Facebook ring=true",
+   "A Terms and conditions ring=true",
+   "BODY Skip to content\n\n  \n ring=false",
+   "A Skip to content ring=true",
+   "A Global Surf Lodge Ka ring=true",
+   "BUTTON:button Menu ring=true",
+   "A 1Level ring=true",
+   "A 2Room ring=true",
+   "A 3Dates & guests ring=true",
+   "A 4Total ring=true",
+   "INPUT:radio level-1-fomies ring=true",
+   "A Ask about dates ring=true",
+   "BUTTON:button Next ring=true",
+   "A Global Surf Lodge Ka ring=true",
+   "A WhatsApp us ring=true",
+   "A Call us ring=true",
+   "A Email us ring=true",
+   "A Open in Maps ring=true",
+   "A Instagram ring=true",
+   "A YouTube ring=true",
+   "A Facebook ring=true",
+   "A Terms and conditions ring=true",
+   "BODY Skip to content\n\n  \n ring=false"
+  ]
+ },
+ "reduced_videos": 0,
+ "nojs_visible_steps": [
+  "level",
+  "room",
+  "dates",
+  "total"
+ ],
+ "nojs_handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-20&end=2027-02-27&female=0&male=0&couple=1"
+}

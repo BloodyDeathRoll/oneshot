@@ -80,7 +80,7 @@ v0.2 (2026-09-28) adds `videos[]`: Shahar rejected a run because video the busin
     }
   ],
   "existing_site": { "url": "…", "status": 200, "notes": "no mobile viewport, prices from 2021", "screenshot": "assets/old-site-mobile.png" },
-  "languages": { "seen": ["en"], "owner_language_hint": "si" },  // owner_language_hint drives the writer's outreach message only
+  "languages": { "seen": ["en"], "owner_language_hint": "si" },  // owner_language_hint is context only; the pitch is always in English (2026-10-05)
   "gaps": [
     { "field": "business.tagline", "why": "none published", "pitch_point": true },
     { "field": "contact.email", "why": "not published", "pitch_point": false }

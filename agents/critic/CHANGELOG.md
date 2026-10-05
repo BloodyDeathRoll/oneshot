@@ -7,3 +7,4 @@
 - **0.3.3** — 2026-09-28 — From proposal 007 (approved by Shahar). Input `audit.json`; hard constraint 3: full mode runs `tools/funnel.mjs` on the built site against the auditor's target (rubric 0.2.0).
 - **0.4.0** — 2026-09-28 — Rubric 0.3.0: dimension 8 (visual quality, weight 25) belongs to the two new visual critics; the critic scores 1–7 and stays independent of them.
 - **0.4.1** — 2026-10-02 — Approved by Shahar in session (docs/team.md). Screenshots are read from the mockup's shared `shots/` and not kept; the scorecard says in words what each cited one showed. 5,300 committed screenshots had made the repo 3.5 GB.
+- **0.4.2** — 2026-10-04 — Approved by Shahar in session. Rubric 0.3.1: a site with its own stepped booking pages (`audit.json.recommended.booking_flow`) is measured by `funnel.json.hero_action` and the walked taps to the engine, not by `clicks_to_book`. Global Surf's "Ask about dates" WhatsApp link was being read as the primary action.

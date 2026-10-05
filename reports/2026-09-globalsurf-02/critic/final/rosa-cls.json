@@ -1,0 +1,98 @@
+{
+ "390_0": {
+  "shifts": [
+   {
+    "v": 0.0087,
+    "t": 2654,
+    "src": [
+     "rosa-box [747.0625,96.9375,818.3125,25.6875]"
+    ]
+   }
+  ],
+  "before": [
+   "rosa-link h=0",
+   "rosa-box h=500"
+  ],
+  "after": [
+   "rosa-link h=0",
+   "rosa-box h=500"
+  ],
+  "link": [
+   "See today's forecast for South Point on Rosa 0x0 vis=visible clip=auto pos=static hiddenAncestor=false",
+   "Forecast for South Point by Rosa 245.5625x44 vis=visible clip=auto pos=static hiddenAncestor=false",
+   "See today's forecast for South Point on Rosa 302x66.875 vis=visible clip=auto pos=static hiddenAncestor=false"
+  ]
+ },
+ "390_1": {
+  "shifts": [
+   {
+    "v": 0.0069,
+    "t": 2633,
+    "src": [
+     "rosa-box [767.0625,76.9375,838.3125,5.6875]"
+    ]
+   }
+  ],
+  "before": [
+   "rosa-link h=0",
+   "rosa-box h=500"
+  ],
+  "after": [
+   "rosa-link h=0",
+   "rosa-box h=500"
+  ],
+  "link": [
+   "See today's forecast for South Point on Rosa 0x0 vis=visible clip=auto pos=static hiddenAncestor=false",
+   "Forecast for South Point by Rosa 245.5625x44 vis=visible clip=auto pos=static hiddenAncestor=false",
+   "See today's forecast for South Point on Rosa 302x66.875 vis=visible clip=auto pos=static hiddenAncestor=false"
+  ]
+ },
+ "1440_0": {
+  "shifts": [
+   {
+    "v": 0.0019,
+    "t": 1812,
+    "src": [
+     "nav [14.640625,46.71875,14.640625,46.71875]"
+    ]
+   }
+  ],
+  "before": [
+   "rosa-link h=0",
+   "rosa-box h=500"
+  ],
+  "after": [
+   "rosa-link h=0",
+   "rosa-box h=500"
+  ],
+  "link": [
+   "See today's forecast for South Point on Rosa 0x0 vis=visible clip=auto pos=static hiddenAncestor=false",
+   "Forecast for South Point by Rosa 245.5625x44 vis=visible clip=auto pos=static hiddenAncestor=false",
+   "See today's forecast for South Point on Rosa 372x66.875 vis=visible clip=auto pos=static hiddenAncestor=false"
+  ]
+ },
+ "1440_1": {
+  "shifts": [
+   {
+    "v": 0.0019,
+    "t": 1815,
+    "src": [
+     "nav [14.640625,46.71875,14.640625,46.71875]"
+    ]
+   }
+  ],
+  "before": [
+   "rosa-link h=0",
+   "rosa-box h=500"
+  ],
+  "after": [
+   "rosa-link h=0",
+   "rosa-box h=500"
+  ],
+  "link": [
+   "See today's forecast for South Point on Rosa 0x0 vis=visible clip=auto pos=static hiddenAncestor=false",
+   "Forecast for South Point by Rosa 245.5625x44 vis=visible clip=auto pos=static hiddenAncestor=false",
+   "See today's forecast for South Point on Rosa 372x66.875 vis=visible clip=auto pos=static hiddenAncestor=false"
+  ]
+ }
+}

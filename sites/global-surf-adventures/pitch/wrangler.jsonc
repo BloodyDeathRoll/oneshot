@@ -1,0 +1,13 @@
+{
+  // The proposal page as a noindex Worker, like the other pitches. Not deployed by the writer:
+  // publishing it is the human's call (gate c).
+  "name": "global-surf-lodge-kabalana-proposal",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": ".",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  },
+  "workers_dev": true,
+  "preview_urls": false
+}

@@ -313,6 +313,11 @@
       "tel"
     ],
     "clicks_to_book": 1,
+    "booking_flow": {
+      "clicks_to_flow": 1,
+      "max_taps_to_engine": 8,
+      "decided": "Shahar, 2026-10-04"
+    },
     "above_fold": [
       "level",
       "price",

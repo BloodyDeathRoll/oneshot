@@ -1,0 +1,50 @@
+phone t=500ms video {"src":"","t":0,"paused":true,"rs":0}
+phone t=1500ms video {"src":"","t":0,"paused":true,"rs":0}
+phone t=3000ms video {"src":"http://127.0.0.1:8971/picked/dist/video/hero-m608.webm","t":0,"paused":false,"rs":0}
+phone t=6000ms video {"src":"http://127.0.0.1:8971/picked/dist/video/hero-m608.webm","t":2.83,"paused":false,"rs":4}
+phone load {"lcp":476,"cls":0.0033,"fonts":["Dancing Script 600","Lora 500","Lora 400","Lora 500","Lora 600"],"h1":"Lora, Georgia, \"Times New Roman\", serif","h2":"\"Dancing Script\", \"Segoe Print\", \"Bradley Hand\", cursive","body":"Lora, Georgia, \"Times New Roman\", serif","overflowX":0}
+phone requests before scroll (no video): 12 hosts ["127.0.0.1:8971","fonts.googleapis.com","fonts.gstatic.com"]
+phone video requests before scroll ["video/hero-m608.webm"]
+phone hero contents [{"tag":"H1","txt":"Your surf week starts here","cls":""},{"tag":"A","txt":"Book package now","cls":"btn btn-book btn-lg"}]
+phone scroll-01 y=675 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"matrix(1, 0, 0, 1, 0, 74.8)","ah":"true"},"sec":["welcome"],"playing":["hero-m608.webm"]}
+phone scroll-02 y=1350 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["welcome"],"playing":["hero-m608.webm","vid-010-p45.webm","vid-003e-p45.webm","vid-002e-p45.webm"]}
+phone scroll-03 y=2025 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["levels"],"playing":["hero-m608.webm","vid-010-p45.webm","vid-003e-p45.webm","vid-002e-p45.webm"]}
+phone scroll-04 y=2700 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["included"],"playing":["hero-m608.webm","vid-010-p45.webm","vid-003e-p45.webm","vid-002e-p45.webm"]}
+phone scroll-05 y=3375 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["included"],"playing":["hero-m608.webm"]}
+phone scroll-06 y=4050 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["week"],"playing":["hero-m608.webm"]}
+phone scroll-07 y=4725 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["rooms"],"playing":["hero-m608.webm"]}
+phone scroll-08 y=5400 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["rooms"],"playing":["hero-m608.webm"]}
+phone scroll-09 y=6075 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["rooms","feature"],"playing":["hero-m608.webm"]}
+phone scroll-10 y=6750 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["guests"],"playing":["hero-m608.webm"]}
+phone scroll-11 y=7425 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["waves"],"playing":["hero-m608.webm"]}
+phone scroll-12 y=8100 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["waves"],"playing":["hero-m608.webm"]}
+phone scroll-13 y=8775 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["instagram","closing"],"playing":["hero-m608.webm"]}
+phone scroll-14 y=9450 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["closing"],"playing":["hero-m608.webm"]}
+phone scroll-15 y=10125 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":[],"playing":["hero-m608.webm"]}
+phone scroll-16 y=10604 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":[],"playing":["hero-m608.webm"]}
+phone sections {"guestsBg":"rgb(39, 41, 62)","guestsText":"What guests say 8.6 Booking.com 80 reviews|28 Sep 2026 Staff 9.5|Facilities 9.2|Cleanliness 9.2 “We loved the cozy, bohoo-vibes at the lodge: starting from the open-air-bathroom, the relaxing pool a","guestsH":681,"quoteCtl":null,"quoteDots":9,"dotsVisible":"none","quoteCount":18,"rosa":"The waves The lodge overlooks two spots, The Rock and South Point. More waves are a few minutes away by tuk-tuk. 0.5–0.7m Wave height, waist-high 10s Swell from the SSE 13km/h Wind, cross-shore Sun 4 Oct 14:30Forecast for South Point by Rosa See today's forecast for South Point on Rosa","freestylers":["We are surfing obsessed, and we invite you to join us. The lodge sits in the green of the jungle. We run surf weeks for three levels, from your first wave to ca","Freestylers – B&B only For independent travellers who want the lodge's vibe. from 4 nights"],"bars":0}
+phone errors []
+phone total requests 44 bytes(content-length sum, no video) 1537258
+laptop t=500ms video {"src":"http://127.0.0.1:8971/picked/dist/video/hero-d1728.webm","t":0.44,"paused":false,"rs":4}
+laptop t=1500ms video {"src":"http://127.0.0.1:8971/picked/dist/video/hero-d1728.webm","t":1.15,"paused":false,"rs":4}
+laptop t=3000ms video {"src":"http://127.0.0.1:8971/picked/dist/video/hero-d1728.webm","t":2.66,"paused":false,"rs":4}
+laptop load {"lcp":80,"cls":0.0053,"fonts":["Dancing Script 600","Lora 500","Lora 400","Lora 500","Lora 600"],"h1":"Lora, Georgia, \"Times New Roman\", serif","h2":"\"Dancing Script\", \"Segoe Print\", \"Bradley Hand\", cursive","body":"Lora, Georgia, \"Times New Roman\", serif","overflowX":0}
+laptop requests before scroll (no video): 12 hosts ["127.0.0.1:8971","fonts.googleapis.com","fonts.gstatic.com"]
+laptop video requests before scroll ["video/hero-d1728.webm"]
+laptop hero contents [{"tag":"H1","txt":"Your surf week starts here","cls":""},{"tag":"A","txt":"Book package now","cls":"btn btn-book btn-lg"}]
+laptop scroll-01 y=720 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"true"},"sec":["welcome"],"playing":["hero-d1728.webm"]}
+laptop scroll-02 y=1440 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["welcome","levels"],"playing":["hero-d1728.webm","vid-010-p45.webm","vid-003e-p45.webm","vid-002e-p45.webm"]}
+laptop scroll-03 y=2160 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["levels"],"playing":["hero-d1728.webm","vid-010-p45.webm","vid-003e-p45.webm","vid-002e-p45.webm"]}
+laptop scroll-04 y=2880 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["included"],"playing":["hero-d1728.webm","vid-010-p45.webm","vid-003e-p45.webm","vid-002e-p45.webm"]}
+laptop scroll-05 y=3600 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["week"],"playing":["hero-d1728.webm"]}
+laptop scroll-06 y=4320 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["week","rooms"],"playing":["hero-d1728.webm"]}
+laptop scroll-07 y=5040 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["rooms"],"playing":["hero-d1728.webm"]}
+laptop scroll-08 y=5760 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["feature"],"playing":["hero-d1728.webm"]}
+laptop scroll-09 y=6480 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["guests"],"playing":["hero-d1728.webm"]}
+laptop scroll-10 y=7200 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["waves"],"playing":["hero-d1728.webm"]}
+laptop scroll-11 y=7920 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["instagram"],"playing":["hero-d1728.webm"]}
+laptop scroll-12 y=8640 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":["closing"],"playing":["hero-d1728.webm"]}
+laptop scroll-13 y=9038 {"bar":{"txt":"From $1,466 pp | 7 nights Book now","op":"1","vis":"visible","tr":"none","ah":"false"},"sec":[],"playing":["hero-d1728.webm"]}
+laptop sections {"guestsBg":"rgb(39, 41, 62)","guestsText":"What guests say 8.6 Booking.com 80 reviews|28 Sep 2026 Staff 9.5|Facilities 9.2|Cleanliness 9.2 “We loved the cozy, bohoo-vibes at the lodge: starting from the open-air-bathroom, the relaxing pool a","guestsH":626,"quoteCtl":null,"quoteDots":9,"dotsVisible":"flex","quoteCount":18,"rosa":"The waves The lodge overlooks two spots, The Rock and South Point. More waves are a few minutes away by tuk-tuk. 0.5–0.7m Wave height, waist-high 10s Swell from the SSE 13km/h Wind, cross-shore Sun 4 Oct 14:30|Forecast for South Point by Rosa See today's forecast for South Point on Rosa","freestylers":["We are surfing obsessed, and we invite you to join us. The lodge sits in the green of the jungle. We run surf weeks for three levels, from your first wave to ca","Freestylers – B&B only For independent travellers who want the lodge's vibe. from 4 nights"],"bars":1}
+laptop errors []
+laptop total requests 40 bytes(content-length sum, no video) 1589750
