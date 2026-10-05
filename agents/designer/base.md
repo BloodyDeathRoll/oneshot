@@ -1,4 +1,4 @@
-version: 0.4.1
+version: 0.4.2
 
 # designer / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
