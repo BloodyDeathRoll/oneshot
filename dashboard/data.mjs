@@ -323,6 +323,10 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     const lastWorked = timeline.find((e) => e.operator && (e.kind !== 'ledger' || e.agent === 'human' || e.ts >= '2026-10-02')) ?? timeline.find((e) => e.operator) ?? null;
     const gate = (group === 'gate' || group === 'delivered' || group === 'outcome') ? (GATES[last.to_state] ?? null) : null;
     const overrides = hist.filter((h) => h.agent === 'human' && OVERRIDE_RE.test(h.note ?? '')).map((h) => ({ ts: h.ts, note: h.note }));
+    // Who ran the site: the run file's operator, else whoever wrote most of its ledger lines.
+    const lineOps = hist.map(opOfLine).filter(Boolean);
+    const ranBy = runFiles.find((r) => r.run_id === run_id)?.operator
+      ?? [...new Set(lineOps)].sort((a, b) => lineOps.filter((o) => o === b).length - lineOps.filter((o) => o === a).length)[0] ?? null;
 
     businesses.push({
       slug, run_id,
@@ -358,6 +362,9 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
       timeline: timeline.slice(0, 80),
       media: own ? media[slug] ?? null : null,
       pitched_at: pitchedLine?.ts ?? null,
+      // the server writes "sent by <name> via <channel>[ on <date>]. <note>" (dashboard/server.mjs, gate c)
+      pitch_sent: pitchedLine ? { ts: pitchedLine.ts, by: opOfLine(pitchedLine), channel: pitchedLine.note?.match(/\bvia (whatsapp|in person|email|phone)\b/i)?.[1] ?? null, note: pitchedLine.note ?? null } : null,
+      ran_by: ranBy ? { operator: ranBy, name: ops[ranBy]?.name ?? ranBy } : null,
       outcome: outcomeLine ? { state: outcomeLine.to_state.slice(8), ts: outcomeLine.ts, note: outcomeLine.note } : null,
       reached: [...reached],
       history: hist.map((h) => ({ ts: h.ts, from: h.from_state, to: h.to_state, agent: h.agent, v: h.agent_version, note: h.note, hosting_mode: h.hosting_mode })),
@@ -452,7 +459,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
   const gates = businesses.filter((b) => b.gate).map((b) => ({ kind: b.gate, slug: b.slug, name: b.name, run_id: b.run_id, since: b.last_change, days: b.days_since_change, target: b.gate_target }));
   const unmerged = proposals.filter((p) => p.kind === 'proposal' && p.status === 'no merge record in the ledger');
   if (unmerged.length) gates.push({ kind: 'review prompt diffs', slug: null, name: `${unmerged.length} proposals without a merge record`, run_id: unmerged.at(-1).run_id, since: null, days: null, target: { view: 'decisions', proposals: unmerged.map((p) => p.file) } });
-  const decisions = businessLines.filter((l) => l.agent === 'human').sort((a, b) => b.ts.localeCompare(a.ts)).map((l) => ({ ts: l.ts, slug: l.slug, run_id: l.run_id, from: l.from_state, to: l.to_state, note: l.note, gate: !!(GATES[l.from_state] && l.from_state !== l.to_state), override: OVERRIDE_RE.test(l.note ?? '') }));
+  const decisions = businessLines.filter((l) => l.agent === 'human').sort((a, b) => b.ts.localeCompare(a.ts)).map((l) => ({ ts: l.ts, slug: l.slug, run_id: l.run_id, operator: opOfLine(l), from: l.from_state, to: l.to_state, note: l.note, gate: !!(GATES[l.from_state] && l.from_state !== l.to_state), override: OVERRIDE_RE.test(l.note ?? '') }));
   const recent_activity = [...ledger].slice(-25).reverse().map((l) => ({ ts: l.ts, slug: l.slug, run_id: l.run_id, agent: l.agent, operator: opOfLine(l), from: l.from_state, to: l.to_state, note: l.note }));
   const leads = businesses.filter((b) => /^referral:/i.test(b.found_via ?? '')).map((b) => ({ slug: b.slug, name: b.name, referred_by: b.found_via.replace(/^referral:\s*/i, '').split(/[;\s]/)[0], state: b.state, group: b.group, first_seen: b.first_seen }));
 

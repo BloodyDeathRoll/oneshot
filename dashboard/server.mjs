@@ -6,8 +6,12 @@
 //   2. pushes a Server-Sent Event whenever ledger.jsonl / runs/ / deploy.json / proposals change, or
 //      origin/main moves (it fetches every --sync seconds, default 60, 0 = never; docs/team.md);
 //   3. accepts a human gate decision on POST /decide and appends exactly one ledger line for it,
-//      after checking the business is still in the state the page saw (a stale page is rejected).
-// It holds no Claude credentials, runs no agent, and can write only the line shapes in DECISIONS.
+//      after checking the business is still in the state the page saw (a stale page is rejected);
+//   4. accepts a handoff on POST /handoff and appends one assignment line to activity.jsonl
+//      (tools/team.mjs assign — never a ledger line), and serves /thumb/<slug>.jpg, the first screen
+//      of the site's live preview (dashboard/thumbs.mjs).
+// It holds no Claude credentials, runs no agent, and can write only the ledger line shapes in DECISIONS
+// plus one activity.jsonl shape (an assignment, via /handoff).
 //
 //   node dashboard/server.mjs [--port 8970] [--host 127.0.0.1] [--root dashboard/mockups/soft-cards/dist] [--ledger ledger.jsonl] [--operator shahar] [--sync 60]
 //
@@ -22,7 +26,8 @@ import { readFileSync, existsSync, appendFileSync, watch, statSync, createReadSt
 import { join, dirname, resolve, extname, normalize, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildData } from './data.mjs';
-import { whoami, team } from '../tools/team.mjs';
+import { whoami, team, assign } from '../tools/team.mjs';
+import { shootThumb, thumbFresh } from './thumbs.mjs';
 import { readJsonlMerged, fetch as fetchMain } from '../tools/origin.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -127,6 +132,37 @@ function decide(body) {
   return { status: 201, line };
 }
 
+// ---- handoff: an assignment for the other operator (docs/team.md) ---------------------------------
+// Reaches them through activity.jsonl once merged to main; the page offers the prompt to copy and send.
+function handoff(body) {
+  const slug = String(body.slug ?? ''), to = String(body.to ?? ''), task = String(body.task ?? '').trim();
+  if (!team()[to]) return { status: 400, error: `to must be one of ${Object.keys(team()).join(', ')}` };
+  if (task.length < 3) return { status: 400, error: 'a request is required (at least 3 characters)' };
+  if (!readLedger().some((l) => l.slug === slug)) return { status: 400, error: `${slug} has no ledger line` };
+  return { status: 201, line: assign(slug, task, to, OPERATOR) };
+}
+
+// ---- thumbnails -------------------------------------------------------------------------------------
+let previewCache = { at: 0, urls: {} };
+function previewUrl(slug) {
+  if (Date.now() - previewCache.at > 60_000) {
+    const urls = {};
+    for (const b of buildData({ ledgerPath: LEDGER, operator: OPERATOR }).businesses) if (b.preview_url) urls[b.slug] = b.preview_url;
+    previewCache = { at: Date.now(), urls };
+  }
+  return previewCache.urls[slug] ?? null;
+}
+async function serveThumb(res, slug) {
+  if (!/^[a-z0-9-]+$/.test(slug)) return send(res, 400, { error: 'bad slug' });
+  const out = join(DIST, 'img', `${slug}.jpg`);
+  if (!thumbFresh(out)) {
+    const url = previewUrl(slug);
+    if (!url) return send(res, 404, { error: `${slug} has no preview URL` });
+    try { await shootThumb(url, out); } catch (e) { if (!existsSync(out)) return send(res, 502, { error: `could not shoot ${url}: ${e.message}` }); }
+  }
+  serveFile(res, out);
+}
+
 // ---- live updates ---------------------------------------------------------------------------------
 const clients = new Set();
 let timer = null;
@@ -171,7 +207,21 @@ function handle(req, res) {
     if (!abs || !FILE_PREFIXES.some((p) => abs.startsWith(join(ROOT, p)))) return send(res, 403, { error: 'not a readable prefix' });
     return serveFile(res, abs);
   }
+  if (req.method === 'GET' && path.startsWith('/thumb/') && path.endsWith('.jpg')) { serveThumb(res, path.slice(7, -4)).catch((e) => { if (!res.headersSent) send(res, 500, { error: String(e.message ?? e) }); }); return; }
   if (req.method === 'GET' && path === '/gates') return send(res, 200, { gates: buildData({ ledgerPath: LEDGER, operator: OPERATOR }).gates, decisions: Object.fromEntries(Object.entries(DECISIONS).map(([k, v]) => [k, { from: v.from, choices: v.choices }])) });
+  if (req.method === 'POST' && path === '/handoff') {
+    if (!/^application\/json\b/i.test(req.headers['content-type'] ?? '')) return send(res, 415, { error: 'content-type must be application/json' });
+    let raw = '';
+    req.on('data', (c) => { raw += c; if (raw.length > 64_000) req.destroy(); });
+    req.on('end', () => {
+      let body; try { body = JSON.parse(raw); } catch { return send(res, 400, { error: 'body must be JSON' }); }
+      if (!body || typeof body !== 'object' || Array.isArray(body)) return send(res, 400, { error: 'body must be a JSON object' });
+      let out; try { out = handoff(body); } catch (e) { return send(res, 500, { error: String(e.message ?? e) }); }
+      if (out.status === 201) notify('handoff');
+      return send(res, out.status, out);
+    });
+    return;
+  }
   if (req.method === 'POST' && path === '/decide') {
     // A page on another origin can send text/plain or a form without a preflight; JSON it cannot.
     if (!/^application\/json\b/i.test(req.headers['content-type'] ?? '')) return send(res, 415, { error: 'content-type must be application/json' });
