@@ -41,6 +41,6 @@ agents:                          # pinned versions for reproducibility
   critic: 0.4.2
   visual-critic: 0.1.1
   experience-critic: 0.1.0
-  deployer: 0.3.0
-  writer: 0.2.1
-  orchestrator: 0.3.2
+  deployer: 0.4.0
+  writer: 0.3.0
+  orchestrator: 0.4.0
