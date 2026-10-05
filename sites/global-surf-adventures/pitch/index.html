@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<title>A website for Global Surf Lodge Kabalana</title>
+<meta name="description" content="A proposal for Global Surf Lodge Kabalana: the website preview we built for the lodge, what it changes for a guest booking on a phone, what you will be able to edit yourself, and the ways it can run.">
+<style>
+:root{
+  --bg:#f6f8fa; --paper:#ffffff; --ink:#0f1a2b; --muted:#4f5b6b; --line:#d9e0e7;
+  --accent:#c9442c; --accent-ink:#ffffff; --blue:#0b5cad; --soft:#eaf2fb;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#0e141c; --paper:#16202b; --ink:#e8edf3; --muted:#a8b3c0; --line:#2a3644; --blue:#7db8ff; --soft:#1a2836; }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+a{color:var(--blue)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header.top{padding:40px 16px 24px}
+.kicker{color:var(--muted);font-size:15px;margin:0 0 8px}
+h1{font-size:clamp(30px,6vw,48px);line-height:1.1;font-weight:600;margin:0 0 16px;letter-spacing:-.01em}
+h2{font-size:clamp(23px,4vw,30px);line-height:1.2;font-weight:600;margin:0 0 14px}
+h3{font-size:18px;margin:0 0 6px}
+p{margin:0 0 14px}
+.lede{font-size:19px;max-width:44em}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:12px 20px;background:var(--accent);color:var(--accent-ink);font-weight:600;text-decoration:none;border-radius:4px;word-break:break-all}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.note{color:var(--muted);font-size:15px}
+section{padding:36px 16px;border-top:1px solid var(--line)}
+.grid2{display:grid;gap:24px;grid-template-columns:1fr}
+.shots{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+figure{margin:0}
+figure img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+figcaption{font-size:14px;color:var(--muted);margin-top:6px}
+.wide{margin-top:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:18px}
+.fix{display:grid;gap:18px;grid-template-columns:1fr;margin-top:20px}
+.fix .card h3{margin-bottom:10px}
+.fix .label{display:block;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:10px 0 2px}
+.fix figure{max-width:300px}
+table{border-collapse:collapse;width:100%;background:var(--paper);border:1px solid var(--line);border-radius:8px;font-size:16px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-top:1px solid var(--line)}
+thead th{border-top:0;font-size:14px;color:var(--muted);font-weight:600}
+tbody th{font-weight:600;width:22%}
+.tablewrap{overflow-x:auto}
+.tabs{list-style:none;padding:0;margin:0;display:grid;gap:8px;grid-template-columns:1fr}
+.tabs li{padding:10px 14px;background:var(--paper);border:1px solid var(--line);border-radius:6px}
+.tabs li>strong:first-child{display:block}
+.offer{background:var(--soft);border-left:4px solid var(--blue);padding:18px 20px;border-radius:4px;max-width:46em}
+ol.confirm{padding-left:22px;margin:0;max-width:46em}
+ol.confirm li{margin-bottom:10px}
+footer{padding:28px 16px 48px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (min-width:720px){
+  .grid2{grid-template-columns:1fr 1fr}
+  .fix{grid-template-columns:1fr 1fr}
+  .tabs{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  table,thead,tbody,tr,th,td{display:block}
+  thead{display:none}
+  tbody tr{border-top:1px solid var(--line);padding:10px 12px}
+  tbody tr:first-child{border-top:0}
+  tbody th,tbody td{border:0;padding:2px 0;width:auto}
+  tbody td::before{content:attr(data-h);display:block;font-size:13px;font-weight:600;color:var(--muted)}
+}
+@media (max-width:420px){ .shots{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<header class="top wrap">
+  <p class="kicker">A proposal for Global Surf Lodge Kabalana, Ahangama, Sri Lanka</p>
+  <h1>We built the lodge a website of its own</h1>
+  <p class="lede">Your guests rate the lodge 8.6 out of 10 on Booking.com, from 80 reviews (read 28 September 2026). On globalsurf.com the lodge shares the site with your other destinations. We built a site for the lodge alone, from your own pages, photos, videos and booking engine, and from your guests' reviews. You can open it now:</p>
+  <p><a class="btn" href="https://global-surf-lodge-kabalana.os1.workers.dev/">global-surf-lodge-kabalana.os1.workers.dev</a></p>
+  <p class="note">This is a private preview. Search engines are told not to list it, so it is not on Google. globalsurf.com and your other destinations stay exactly as they are. Nothing goes public until you decide.</p>
+</header>
+
+<main>
+<section class="wrap" aria-labelledby="h-first">
+  <h2 id="h-first">The first screen on a phone</h2>
+  <div class="shots">
+    <figure>
+      <img src="before-home-390.jpg" width="780" height="1688" loading="lazy" alt="Our screenshot of globalsurf.com on a phone, 28 September 2026: the headline Tailor-Made Surf Trips Like Never Before over an aerial video of a reef, the button Ready to catch my first wave, the start of an Our Destinations carousel showing the Maldives, and a Messenger chat bubble in the lower right corner.">
+      <figcaption>Today: globalsurf.com on a phone. Our screenshot, 28 September 2026.</figcaption>
+    </figure>
+    <figure>
+      <img src="after-390-top.jpg" width="780" height="1688" loading="lazy" alt="The preview on a phone: the lodge's pool deck under palm trees, the title Your surf week starts here and the button Book package now.">
+      <figcaption>The preview on a phone, 5 October 2026. The lodge's own video plays behind the title (here its first frame).</figcaption>
+    </figure>
+  </div>
+  <figure class="wide">
+    <img src="after-1440-top.jpg" width="1440" height="900" loading="lazy" alt="The preview on a laptop: the lodge's pool deck full width, the menu Levels, Rooms, The lodge, Contact, the title Your surf week starts here and the button Book package now.">
+    <figcaption>The preview on a laptop, 5 October 2026.</figcaption>
+  </figure>
+</section>
+
+<section class="wrap" aria-labelledby="h-numbers">
+  <h2 id="h-numbers">Booking from a phone, before and after</h2>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th scope="col"></th><th scope="col">globalsurf.com today</th><th scope="col">The preview</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">The price</th>
+        <td data-h="globalsurf.com today">Not on any of the 30 pages we read. In the booking engine it appears after five steps: the site's button, the Sri Lanka card, the package, the guests and a Saturday start date.</td>
+        <td data-h="The preview">"From $1,466 pp | 7 nights" on every level card, and in a bar that stays at the bottom of the phone screen after the first scroll.</td></tr>
+      <tr><th scope="row">The booking button</th>
+        <td data-h="globalsurf.com today">One tap, and the guest leaves the site for the engine's front page, with one "Sri Lanka" card. The package they were reading about is gone.</td>
+        <td data-h="The preview">One tap opens the lodge's own booking page: level, room, dates and guests, total. Eight taps from the first screen, the guest is on your Bookinglayer page with the package, the guests, the start date and 7 nights already filled in.</td></tr>
+      <tr><th scope="row">WhatsApp</th>
+        <td data-h="globalsurf.com today">A 22 × 24 pixel icon labelled "What'sup" in the footer, 3,795 pixels down the home page.</td>
+        <td data-h="The preview">A full-size button with the packages, at the end of the page and in the footer. On the booking page's last step the message is already written for the guest: the lodge's name, their level, date, nights, guests and room.</td></tr>
+      <tr><th scope="row">On top of the page</th>
+        <td data-h="globalsurf.com today">A Messenger chat bubble over the first screen of every page.</td>
+        <td data-h="The preview">Nothing covers the page. No chat widget, no pop-up, no tracker.</td></tr>
+      <tr><th scope="row">Data to open the page</th>
+        <td data-h="globalsurf.com today">Home page 8.9 MB, loaded from 19 outside servers as well as your own (one phone-size run, 28 September 2026).</td>
+        <td data-h="The preview">506 KB, and 0 requests to outside servers, on a slowed-down phone test (5 October 2026). Main content showed in 0.44 seconds.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note wide">Every button and link on the preview is at least 44 pixels high, and booking still works with JavaScript switched off.</p>
+</section>
+
+<section class="wrap" aria-labelledby="h-fixed">
+  <h2 id="h-fixed">What a guest meets today, and what the preview does instead</h2>
+  <p>We walked globalsurf.com on a phone on 28 September 2026, as a guest would, without booking anything. These screenshots are from that walk.</p>
+  <div class="fix">
+    <div class="card">
+      <h3>The lodge is one card among five destinations</h3>
+      <span class="label">Today</span>
+      <p>The first phone screen says "Tailor-Made Surf Trips Like Never Before" over a reef from another destination. The lodge is the fourth card of the "Our Destinations" carousel, below the fold, after Angola, Mozambique and the Maldives.</p>
+      <span class="label">On the preview</span>
+      <p>The whole site is the lodge: its pool, surf sessions from your own videos, its rooms. One button, "Book package now". Your other destinations keep their place on globalsurf.com.</p>
+      <figure><img src="before-home-390.jpg" width="780" height="1688" loading="lazy" alt="Our screenshot of the globalsurf.com home page on a phone, 28 September 2026, as described above."><figcaption>globalsurf.com home, first screen, 28 September 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>The booking button loses the package</h3>
+      <span class="label">Today</span>
+      <p>On the Level 1 page, "READY TO CATCH MY FIRST WAVE" opens the engine's front page, which shows one "Sri Lanka" card. The Level 1 package is gone, and the guest has to find it again. The lodge page's "BOOK YOUR STAY" and the Level 2, Level 3 and Freestylers buttons use the same links. The home page button lands on the same card.</p>
+      <span class="label">On the preview</span>
+      <p>Every level has its own button, which opens the booking page with that level already chosen. At the end, the guest lands on that package in your engine with their choices filled in.</p>
+      <figure><img src="before-engine-390.jpg" width="780" height="1688" loading="lazy" alt="Our screenshot of the page the Level 1 booking button opens, 28 September 2026: the GLOBALSURF header and a single photo card labelled Sri Lanka, the rest of the screen empty."><figcaption>What "READY TO CATCH MY FIRST WAVE" opens, 28 September 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>No price until deep in the engine</h3>
+      <span class="label">Today</span>
+      <p>None of the 30 pages states a price. The engine's list of the four packages shows no prices either. The price appears only after the guest opens a package, picks guests and picks a Saturday.</p>
+      <span class="label">On the preview</span>
+      <p>The price is on every level card and in the bar at the bottom of the screen: from $1,466 per person for 7 nights, as your engine showed it on 28 September 2026.</p>
+      <figure><img src="before-packages-390.jpg" width="780" height="1688" loading="lazy" alt="Our screenshot of the engine's Sri Lanka list on a phone, 28 September 2026: photo cards for Level 1 Fomies and Level 2 Rollers, with names and no prices."><figcaption>The engine's package list, 28 September 2026.</figcaption></figure>
+      <figure class="wide"><img src="after-390-levels.jpg" width="780" height="1688" loading="lazy" alt="The preview's level cards on a phone: a clip of a beginner surfing at sunset, Level 1 Fomies, Your first time on a board. No experience needed., From $1,466 pp, 7 nights, the button Choose Level 1, and the bar From $1,466 pp, 7 nights, Book now."><figcaption>The preview's level cards, 5 October 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>WhatsApp is hard to find</h3>
+      <span class="label">Today</span>
+      <p>The only visible WhatsApp link is a 22 × 24 pixel icon labelled "What'sup" in the footer, 3,795 pixels down the home page and 7,332 pixels down the lodge page.</p>
+      <span class="label">On the preview</span>
+      <p>WhatsApp is a full-size button with the packages, at the end of the page and in the footer, next to the phone. A guest who asks from the booking page's last step sends a message that already says what they chose.</p>
+      <figure><img src="before-whatsapp-390.jpg" width="780" height="320" loading="lazy" alt="Our screenshot of the globalsurf.com footer on a phone, 28 September 2026: small icons with the handwritten labels Instagram, Youtube, What'sup, Facebook and info@globalsurf.com."><figcaption>The globalsurf.com footer, 28 September 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>A chat bubble over the text</h3>
+      <span class="label">Today</span>
+      <p>On a phone, the Facebook Messenger bubble with a red dot covers the lower right of the first screen on the home, lodge, level and contact pages, over the text the guest is reading.</p>
+      <span class="label">On the preview</span>
+      <p>No chat widget. The bar at the bottom carries the price and "Book now" instead, and WhatsApp is one tap away on the page.</p>
+    </div>
+    <div class="card">
+      <h3>What guests say about the lodge</h3>
+      <span class="label">On the preview</span>
+      <p>Your 8.6 on Booking.com with the review count and the date we read it, and nine guest reviews quoted word for word with the guest's name: seven from Booking.com, two from your own site.</p>
+      <figure><img src="after-390-guests.jpg" width="780" height="1688" loading="lazy" alt="The preview's guest section on a phone: 8.6 Booking.com, 80 reviews, 28 Sep 2026, Staff 9.5, Facilities 9.2, Cleanliness 9.2, and a quote from Fanny, Germany, about the bohemian vibe, the open-air bathroom, the pool area and the breakfast bowls."><figcaption>The preview's guest section, 5 October 2026.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-also">
+  <h2 id="h-also">Also on the preview</h2>
+  <div class="grid2">
+    <div>
+      <ul>
+        <li>Your own videos and photographs only: the hero, the three levels and the rooms.</li>
+        <li>A booking page in four steps (level, room, dates and guests, total) that reads live prices and free dates from your Bookinglayer engine when the guest uses it, and hands over to it.</li>
+        <li>The three room types from your engine, each with its photos and what it adds to the package price.</li>
+        <li>Today's surf forecast for South Point, by Rosa.</li>
+        <li>Every fact on the preview comes from your site, your booking engine, Booking.com or Google. Our reviewer checked each one: 0 mismatches.</li>
+      </ul>
+    </div>
+    <figure>
+      <img src="after-390-book.jpg" width="780" height="1688" loading="lazy" alt="The preview's booking page on a phone: a progress bar Level, Room, Dates and guests, Total, the title Your level, Level 1 Fomies selected, Level 2 Rollers and Level 3 Riders below, each from $1,466 pp for 7 nights, and the bar From $1,466 pp, Next.">
+      <figcaption>The booking page, step 1, 5 October 2026.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-edit">
+  <h2 id="h-edit">What you will be able to change yourself</h2>
+  <p>Today the preview is a finished build, with no login yet. With the managed or the self-hosted option below, you get your own login to a simple admin page that shows only the lodge. You fill in fields, not code, so an edit can't break the design. Press Publish, and the site rebuilds itself.</p>
+  <ul class="tabs">
+    <li><strong>Basics</strong> the lodge's name, the tagline, the closing line</li>
+    <li><strong>Text</strong> the welcome, the week, the rooms introduction, getting here</li>
+    <li><strong>Photos and video</strong> the hero video and its still, the level clips, the gallery photos. Upload from your phone; the site makes the sizes itself.</li>
+    <li><strong>Packages</strong> the package names and the "from" price</li>
+    <li><strong>Stay</strong> check-in and check-out times</li>
+    <li><strong>Reviews</strong> remove any rating or quote; we add new ones with their source</li>
+    <li><strong>Surf</strong> the spot text, and the forecast on or off</li>
+    <li><strong>Contact and booking</strong> phone, WhatsApp, email, address, map link, and the links into your booking engine</li>
+  </ul>
+  <p class="wide">The layout, colours and fonts stay fixed. Some parts of this design have no field yet: the room galleries and descriptions, the level one-liners, the lists of what each package includes, and the booking page's fallback dates and prices. We change those for you when you ask.</p>
+</section>
+
+<section class="wrap" aria-labelledby="h-offer">
+  <h2 id="h-offer">How it can run: you choose</h2>
+  <div class="offer">
+    <p>Nothing is set up yet: no hosting, no login, no domain. We set it up once you choose. <strong>Managed</strong> is the one we recommend: we host the site and keep it running, and hosting, updates and backups are our job. You pay a monthly fee that we agree with you, and you edit your content whenever you like. <strong>Self-hosted</strong>: we install the same site and editor on a server of your own for a one-time fee that we agree with you. It is then fully yours. You pay your server company roughly $6–12 a month, and you take care of updates and backups yourself. <strong>Files only</strong>: if you never want to edit it yourself, we hand you the finished site as files that run on any web host; every change then needs a developer.</p>
+    <p class="note">If you want the site on a domain you already own, we connect it.</p>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-confirm">
+  <h2 id="h-confirm">Before it goes live, we need you to confirm</h2>
+  <ol class="confirm">
+    <li><strong>Which numbers reach the lodge.</strong> The preview uses the numbers globalsurf.com publishes: WhatsApp +972 52 359 3240 and phone +972 9 973 3943. Google lists the lodge with +94 77 077 6747. Tell us which one guests should use.</li>
+    <li><strong>The name.</strong> The preview says "Global Surf Lodge Kabalana", as your site and Booking.com do. Google lists "Global Surf Lodge".</li>
+    <li><strong>Prices and what each package includes.</strong> The prices are the ones your engine showed on 28 and 29 September 2026. Your site and your engine list different things for the same package (yoga, the spa treatment, the filmed sessions), so the preview shows only the items both agree on.</li>
+    <li><strong>The rooms.</strong> Your site, your engine and Booking.com describe the rooms differently. The preview shows the engine's three: the mixed dorm, the shared twin and the deluxe double.</li>
+    <li><strong>AI assistants.</strong> Once live, assistants such as ChatGPT can read the site and quote it to travellers. Keep that, or block the ones that train on it?</li>
+  </ol>
+  <p class="wide">We could not find your surf season, your team or details of the surf spots published anywhere. If you send them, we add them.</p>
+</section>
+
+<section class="wrap" aria-labelledby="h-reply">
+  <h2 id="h-reply">How to reply</h2>
+  <p>Open the preview first: <a href="https://global-surf-lodge-kabalana.os1.workers.dev/">global-surf-lodge-kabalana.os1.workers.dev</a>. If you have questions, or want to go ahead, reply to the WhatsApp message or the email this page came with. There is no obligation, and the preview stays private until you decide.</p>
+</section>
+</main>
+
+<footer class="wrap">
+  <p>Prepared 5 October 2026. Screenshots of globalsurf.com and of your booking engine are ours, taken on a phone-size screen on 28 September 2026. Screenshots of the preview were taken on 5 October 2026.</p>
+</footer>
+</body>
+</html>
