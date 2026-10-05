@@ -79,19 +79,24 @@ function igDraw(){ dots.innerHTML = ''; var n = igPages(); for (var k = 0; k < n
 function igMark(){ var n = dots.children.length, max = row.scrollWidth - row.clientWidth, k = max > 0 ? Math.round(row.scrollLeft / max * (n - 1)) : 0; [].forEach.call(dots.children, function(b, j){ b.setAttribute('aria-current', j === k); }); }
 row.addEventListener('scroll', igMark, {passive: true}); addEventListener('resize', igDraw); igDraw();
 
-/* Rosa (playbook §4 exception) [postcard], live at 4g: one request to the spot's JSON when the block nears the
-   viewport (never on first load), then Rosa's widget beside it. Data older than 24 h, or no answer: the headline
-   and the widget give way to the plain link. No forecast value is in the page before that answer. */
-var box = document.querySelector('[data-rosa]'), now = document.getElementById('rosa-now');
-if (box && now && 'IntersectionObserver' in window) {
-  var DAY = 864e5, fresh = function(iso){ return Date.now() - new Date(iso).getTime() <= DAY; };
+/* Rosa (playbook §4 exception) [postcard], live at 4g; made robust after station 5. Nothing third-party on first
+   load: when the block nears the viewport, Rosa's widget is framed (it is Rosa's own and does not need our JSON)
+   and the headline asks for the spot's JSON — up to 4 tries, 6 s each, 1 / 3 / 7 s apart, and again when the
+   browser comes back online. Until a reading arrives the plain link stands in (after 3 s or the first failure);
+   data older than 24 h is an answer, not a failure: the plain link, never stale numbers. Ghost, reading and link
+   share one reserved cell (index.astro), so nothing moves whichever way it goes; a reading that lands while the
+   block is still below the screen drops the ghost, so the block keeps its designed height. */
+var box = document.querySelector('[data-rosa]'), now = document.getElementById('rosa-now'), head = document.getElementById('rosa-head');
+if (box && now && head && 'IntersectionObserver' in window) {
+  var DAY = 864e5, TRIES = 4, WAIT = 6000, GAP = [1000, 3000, 7000];
   var pts = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];
   var compass = function(d){ return pts[Math.round(((d % 360) + 360) % 360 / 22.5) % 16]; };
   var $ = function(s){ return document.querySelector(s); };
-  var plain = function(){ now.hidden = true; $('#rosa-meta').hidden = true; $('#rosa-plain').classList.add('on'); box.classList.add('off'); };
-  var ok = function(){ now.classList.add('ok'); $('#rosa-meta').classList.add('ok'); };
-  var widget = function(){
-    var f = document.createElement('iframe');
+  var show = function(s){ head.classList.toggle('ok', s === 'ok'); head.classList.toggle('plain', s === 'plain'); head.removeAttribute('data-loading'); };
+  var widget = function(again){
+    var f = box.querySelector('iframe');
+    if (f) { if (again) f.src = box.dataset.rosa; return; }
+    f = document.createElement('iframe');
     f.src = box.dataset.rosa; f.title = box.dataset.title; f.loading = 'lazy';
     f.referrerPolicy = 'strict-origin-when-cross-origin';
     f.setAttribute('sandbox', 'allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin');
@@ -104,19 +109,42 @@ if (box && now && 'IntersectionObserver' in window) {
   var draw = function(j){
     var c = j.current, sw = (c.swells || []).find(function(x){ return x.in_window; });
     var h = c.h.map(function(x){ return x.toFixed(1); }).join('–');
+    var wind = Math.round(c.wind.kph) + '<small>km/h</small>', wk = 'Wind, ' + c.wind.class, t = new Date(c.t);
+    if (isNaN(t)) throw 0;
     $('#rosa-h').innerHTML = h + '<small>m</small>'; $('#rosa-hk').textContent = 'Wave height, ' + c.phrase;
-    if (sw) { $('#rosa-p').innerHTML = Math.round(sw.period) + '<small>s</small>'; $('#rosa-pk').textContent = 'Swell from the ' + compass(sw.dir); }
-    $('#rosa-w').innerHTML = Math.round(c.wind.kph) + '<small>km/h</small>'; $('#rosa-wk').textContent = 'Wind, ' + c.wind.class;
-    var t = new Date(c.t);
+    $('#rosa-p').innerHTML = sw ? Math.round(sw.period) + '<small>s</small>' : '–'; $('#rosa-pk').textContent = sw ? 'Swell from the ' + compass(sw.dir) : 'Swell';
+    $('#rosa-w').innerHTML = wind; $('#rosa-wk').textContent = wk;
     $('#rosa-time').textContent = t.toLocaleString('en-GB', {weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Colombo'}).replace(',', '').replace('Sept', 'Sep');
   };
-  var go = function(){
-    var c = new AbortController(); setTimeout(function(){ c.abort(); }, 8000);
-    fetch(now.dataset.json, {signal: c.signal}).then(function(r){ if (!r.ok) throw 0; return r.json(); })
-      .then(function(j){ if (!j.current || !fresh(j.generated_at)) throw 0; draw(j); ok(); widget(); })
-      .catch(function(){ plain(); });
+  var busy = false, failed = false, drawn = false, expire;
+  var load = function(){
+    if (busy) return; busy = true; failed = false;
+    var n = 0, wait = setTimeout(function(){ if (!drawn) show('plain'); }, 3000);
+    if (!drawn) head.setAttribute('data-loading', 'true');
+    var done = function(){ clearTimeout(wait); busy = false; };
+    var attempt = function(){
+      var c = new AbortController(), t = setTimeout(function(){ c.abort(); }, WAIT);
+      fetch(now.dataset.json, {signal: c.signal, cache: n ? 'no-cache' : 'default'})
+        .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+        .then(function(j){
+          clearTimeout(t);
+          var g = new Date(j && j.generated_at).getTime();
+          if (!j || !j.current) throw 0;
+          if (!(Date.now() - g <= DAY)) { done(); drawn = false; show('plain'); return; }
+          draw(j); done(); drawn = true; show('ok');
+          if (head.getBoundingClientRect().top > innerHeight) head.classList.add('fit');  /* out of sight below: the reading's own height, as designed */
+          clearTimeout(expire); expire = setTimeout(function(){ drawn = false; show('plain'); load(); }, g + DAY - Date.now());
+        })
+        .catch(function(){
+          clearTimeout(t);
+          if (!drawn) show('plain');
+          if (++n < TRIES) setTimeout(attempt, GAP[n - 1]); else { done(); failed = true; }
+        });
+    };
+    attempt();
   };
-  var rio = new IntersectionObserver(function(es){ if (es.some(function(x){ return x.isIntersecting; })) { rio.disconnect(); go(); } }, {rootMargin: '300px'});
-  rio.observe(box);
+  addEventListener('online', function(){ if (failed) { load(); widget(true); } });
+  var rio = new IntersectionObserver(function(es){ if (es.some(function(x){ return x.isIntersecting; })) { rio.disconnect(); widget(); load(); } }, {rootMargin: '300px'});
+  rio.observe(head); rio.observe(box);
 }
 })();

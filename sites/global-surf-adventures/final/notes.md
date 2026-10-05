@@ -39,8 +39,45 @@ sharp 0.35.4), as for the other finals. Nothing is deployed here: `wrangler.json
 | 5 | Phone quote control jumps; "7 / nights" | Quote slideshow takes the tallest quote's height (after fonts, on resize); summary dates as two items, two lines on phones | 390: › at the same y for all 9 quotes, no attribution clipped; "20 Feb 2027 – 27 Feb 2027" / "7 nights" |
 | 6 | Room photos 800 px on desktop; level-1 phone crop; casing | Media-half gallery sized for its ~1240 px cover draw, 1400/2000 renditions; band cut per level (12/38/40 %); room names sentence case in the seed | 1440×900 loads `img-063-full-1400.webp`; band screenshot shows the head and arm; "Shared twin room – 2 beds" |
 | 7 | Rounding; `viewed()` fallback | Snapshot and live prices rounded once where they enter; fallback = first room in the page | probe totals $3,092 / $2,932 |
-| 8 | Self-host fonts; Rosa live | `public/fonts/`; the forecast has no inlined reading, one lazy request to Rosa's south-point JSON, widget after it | home load: 0 third-party requests; live → headline + widget; JSON blocked → plain link only |
+| 8 | Self-host fonts; Rosa live | `public/fonts/`; the forecast has no inlined reading. Reworked after station 5 (below): the JSON is retried, the widget no longer waits for it, the block's space is reserved in every state | home load: 0 third-party requests; see "Rosa forecast after station 5" |
 | 9 | Hero loop + booking clips in `dossier.videos[]` | Appended `vid-hero-c`, `vid-book-l1..l3` (append only) | `dossier.json` diff: 138 insertions, 0 deletions |
+
+### Rosa forecast after station 5 (Shahar, 2026-10-05: "the forecast does not fail")
+
+The critic found the block collapsing when the JSON failed in view (1016 → 404 px at 390, CLS 0.27) and the
+widget moving down 71 px at 390 when the reading arrived. Now (`home.js`, `index.astro`, `home.css`):
+- **Start:** nothing third-party on first load. When the headline or the widget box comes within 300 px of the
+  viewport, Rosa's widget is framed (it is Rosa's own and reads Rosa's data itself; it no longer waits for our
+  JSON) and the headline asks for `south-point.json`.
+- **Retry:** up to 4 tries, 6 s each, 1 / 3 / 7 s apart (≈ 35 s worst case); a new round when the browser
+  comes back online (and the frame is reloaded then). The plain link "See today's forecast for South Point on
+  Rosa" stands in after 3 s or the first failed try; a later success replaces it with the reading.
+- **Stale:** `generated_at` older than 24 h is an answer, not a failure: the plain link, no retry. A reading
+  on screen turns into the plain link and is fetched again when it reaches 24 h.
+- **Reserved space:** a hidden ghost of the headline with Rosa's longest wording ("double overhead+", "WSW",
+  "cross-shore", "Wed 28 Sep 00:00"), the reading and the plain link share one grid cell, so the cell has its
+  final height before anything arrives, at every width. A reading that lands while the block is still below
+  the screen drops the ghost, so the block keeps its designed height (identical geometry to the 4g build at
+  320–1920 px, measured). The widget box is 420 × 500 in every state (no more `.off`). No swell in window →
+  "–", never the placeholder "00".
+- **JS off:** the plain link only, no frame (unchanged).
+
+Measured on the local build (headless Chromium, block scrolled into view before the JSON answers; CLS after
+the scroll; the 1440 runs also log the header's own 0.0019 shift, `nav`, which predates this and is not Rosa):
+
+| scenario | 390: #waves height, Rosa CLS | 1440 | ends with | widget |
+|---|---|---|---|---|
+| live | 1087 → 1087, 0 | 720 → 720, 0 | reading | Rosa's widget |
+| JSON refused (4 tries) | 1087 → 1087, 0 | 720 → 720, 0 | plain link | Rosa's widget |
+| 3 s then refused, each try | 1087 → 1087, 0 | 720 → 720, 0 | plain link | Rosa's widget |
+| no answer (6 s timeouts) | 1087 → 1087, 0 | 720 → 720, 0 | plain link | Rosa's widget |
+| first 2 tries refused | 1087 → 1087, 0 | 720 → 720, 0 | reading (3rd try) | Rosa's widget |
+| `generated_at` 25 h old | 1087 → 1087, 0 | 720 → 720, 0 | plain link | Rosa's widget |
+| offline while loading, then online | 1087 → 1087, 0 | 720 → 720, 0 | plain link, then reading | Rosa's widget (reloaded) |
+| widget refused | 1087 → 1087, 0 | 720 → 720, 0 | reading | box keeps its own plain link (390 screenshot: refused and hanging) |
+
+The critic's own probes (`reports/…/critic/final/probe-rosa*.mjs`) on this build: no Rosa shift in any run;
+slow failure in view 1087 → 1087 px at 390 (was 1016 → 404, 0.269) and 720 → 720 at 1440 (was 720 → 449, 0.099).
 
 ## Funnel (`tools/funnel.mjs` 0.2.0, built site over http, depth 3)
 

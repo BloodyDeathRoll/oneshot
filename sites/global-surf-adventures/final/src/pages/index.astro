@@ -219,15 +219,27 @@ const css = fontFaces(pre) + siteCss + homeCss + lqCss
 <section class="sec" id="waves" aria-labelledby="t-waves"><div class="wrap waves">
 <div><h2 class="script" id="t-waves">{ST.waves}</h2><p class="lead">{c.spot}</p>
 {fc && (
-  <Fragment>
-    <div class="now" id="rosa-now" data-json={`https://rosa-data-opal.vercel.app/data/spots/${spotId}.json`}>
-      <div><div class="v" id="rosa-h">0.0–0.0<small>m</small></div><div class="k" id="rosa-hk">Wave height</div></div>
-      <div><div class="v" id="rosa-p">00<small>s</small></div><div class="k" id="rosa-pk">Swell</div></div>
-      <div><div class="v" id="rosa-w">00<small>km/h</small></div><div class="k" id="rosa-wk">Wind</div></div>
+  <div class="rosa-head" id="rosa-head">
+    {/* station-5 fix: the headline's space at every width. The ghost holds Rosa's longest wording (invisible); the
+        reading, the plain link and the ghost share one grid cell, so nothing moves when one replaces another. */}
+    <div class="rosa-ghost" aria-hidden="true">
+      <div class="now">
+        <div><div class="v">0.0–0.0<small>m</small></div><div class="k">Wave height, double overhead+</div></div>
+        <div><div class="v">00<small>s</small></div><div class="k">Swell from the WSW</div></div>
+        <div><div class="v">00<small>km/h</small></div><div class="k">Wind, cross-shore</div></div>
+      </div>
+      <p class="detail"><span class="di"><span>Wed 28 Sep 00:00</span><span class="sep">|</span></span><span class="credit di">Forecast for {spotName} by Rosa</span></p>
+    </div>
+    <div class="rosa-live">
+      <div class="now" id="rosa-now" data-json={`https://rosa-data-opal.vercel.app/data/spots/${spotId}.json`}>
+        <div><div class="v" id="rosa-h">0.0–0.0<small>m</small></div><div class="k" id="rosa-hk">Wave height</div></div>
+        <div><div class="v" id="rosa-p">00<small>s</small></div><div class="k" id="rosa-pk">Swell</div></div>
+        <div><div class="v" id="rosa-w">00<small>km/h</small></div><div class="k" id="rosa-wk">Wind</div></div>
+      </div>
+      <p class="detail" id="rosa-meta"><span class="di"><span id="rosa-time">–</span><span class="sep">|</span></span><a class="credit di" href={`https://rosa.surf/spot/${spotId}`}>Forecast for {spotName} by Rosa</a></p>
     </div>
     <p class="rosa-link" id="rosa-plain"><a class="btn btn-soft" href={`https://rosa.surf/spot/${spotId}`}>See today's forecast for {spotName} on Rosa</a></p>
-    <p class="detail" id="rosa-meta"><span class="di"><span id="rosa-time">–</span><span class="sep">|</span></span><a class="credit di" href={`https://rosa.surf/spot/${spotId}`}>Forecast for {spotName} by Rosa</a></p>
-  </Fragment>
+  </div>
 )}
 </div>
 {fc && (
