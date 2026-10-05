@@ -1,6 +1,6 @@
 # Pitch notes: global-surf-adventures (run 2026-09-globalsurf-02, writer 0.2.1, 2026-10-05)
 
-Channels: WhatsApp + email (assumed: the two channels the business publishes, `contact.whatsapp` and `contact.email`; the run file names none). Language: the messages are in Hebrew (`languages.owner_language_hint` = `he`), the page in English (the site's language). Run `mode: test`: nothing sent, nothing deployed by the writer.
+Channels: WhatsApp + email (assumed: the two channels the business publishes, `contact.whatsapp` and `contact.email`; the run file names none). Language: English for the messages and the page (Shahar, 2026-10-05: the dossier's `owner_language_hint` = `he` is an inference, not a published fact; switched from the first Hebrew draft). Run `mode: test`: nothing sent, nothing deployed by the writer.
 
 Short names: D = `dossier/global-surf-adventures/dossier.json`; A = `dossier/global-surf-adventures/audit.json` (findings F1–F10) / `audit.md`; CR = `reports/2026-09-globalsurf-02/global-surf-adventures.critic-final.md`; VR = `….visual-final.md`; ER = `….experience-final.md`; AI = `sites/global-surf-adventures/aiseo-report.md`; SEO = `sites/global-surf-adventures/seo-report.md`; FN = `sites/global-surf-adventures/final/notes.md`; ST = `cms/app/src/collections/Sites.ts`; SC = `schemas/site-content.md`; L = the last `ledger.jsonl` line for this slug (2026-10-05T09:58:01Z, the static preview deploy); P = `PLAN.md`. H = index.html, W = WhatsApp message, E = email.
 
@@ -64,17 +64,15 @@ Not claimed on purpose: that the WhatsApp or phone reaches the lodge (open owner
 
 All made by `make-pitch-media.sh` (recipe, `# media:` headers; listed in `media/global-surf-adventures.tsv`). The before images are crops/re-encodes of the auditor's 2026-09-28 captures (`dossier/global-surf-adventures/funnel/*.png`, `local` media restored from `~/.oneshot/assets`; sha256 matched the manifest). The dossier's own old-site screenshots (`existing_site.screenshots`, `assets/old-site-*.png`) are not on disk or in the store, so they were not used. The after images are the live preview at 390×844 @2x and 1440×900, reduced motion on (hero poster).
 
-## Language and native check
+## Language
 
-- `message.he.whatsapp.md` and `message.he.email.md` are machine-written Hebrew: **[needs native check]**.
-- English back-translation, WhatsApp: "Hello! Guests give Global Surf Lodge Kabalana 8.6 on Booking.com (80 reviews). On globalsurf.com the lodge shares space with four other destinations, there's no price, and the booking button opens the booking engine without the package the guest chose. We built the lodge a site of its own, as a preview: <link>. Your videos and photos, the price on every level, and a booking page that hands over to your Bookinglayer with the package, the date and the guests already filled in. We can host and maintain it for a monthly fee and you update the content yourselves, or we install it on a server of yours. Interested? Just reply here."
-- English back-translation, email: subject "A site of its own for Global Surf Lodge Kabalana – preview". Body: the same facts as the WhatsApp, plus the price ($1,466 pp for 7 nights as the engine showed on 28 Sep 2026), the four booking steps, the WhatsApp prefill, the rating and nine verbatim reviews; "all the details, before and after, on the proposal page (in English): [LINK TO THE PROPOSAL PAGE]"; the two options (managed: we host, hosting/updates/backups ours, monthly fee, you edit texts, photos, prices and contact details; self-hosted: one-time fee, fully yours, ~$6–12/month to the server company, updates and backups yours; fees agreed together); preview hidden from search engines; "just reply to this email".
+- `message.en.whatsapp.md` and `message.en.email.md` are in English (Shahar, 2026-10-05). The first draft was Hebrew from `dossier.languages.owner_language_hint` = `he`, which the harvester inferred from the agency being Israeli; no owner language is published. Same facts and offer as that draft.
 
 ## Checks before handoff (2026-10-05)
 
 - Preview https://global-surf-lodge-kabalana.os1.workers.dev/ → 200, `/book/` → 200 (curl); `noindex, nofollow` present.
 - Old-site screenshots present: 4 (`before-*.jpg`), from the audit's own captures.
-- WhatsApp message: **539 characters** (≤ 600), Hebrew, contains the preview link. Email version present.
+- WhatsApp message: **583 characters** (≤ 600), English, contains the preview link. Email version present.
 - `index.html` static check: served by `python3 -m http.server` on 127.0.0.1, loaded and fully scrolled in Playwright at 390×844, 1440×900 and 360×640: **10 requests, all to 127.0.0.1, 0 external**; 0 console errors; 0 broken images; 0 px horizontal overflow. Inline CSS, system fonts, no scripts, favicon `data:,`. Ten JPEGs, 15–129 KB.
 
 ## For the human before sending
