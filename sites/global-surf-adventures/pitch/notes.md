@@ -1,6 +1,6 @@
 # Pitch notes: global-surf-adventures (run 2026-09-globalsurf-02, writer 0.2.1, 2026-10-05)
 
-Channels: WhatsApp + email (assumed: the two channels the business publishes, `contact.whatsapp` and `contact.email`; the run file names none). Language: English for the messages and the page (Shahar, 2026-10-05: the dossier's `owner_language_hint` = `he` is an inference, not a published fact; switched from the first Hebrew draft). Run `mode: test`: nothing sent, nothing deployed by the writer.
+Channels: WhatsApp + email (assumed: the two channels the business publishes, `contact.whatsapp` and `contact.email`; the run file names none). Language: English for the messages and the page. The owner is Israeli (`owner_language_hint` = `he` is correct), but Shahar prefers an English pitch (2026-10-05); the first draft was Hebrew. Run `mode: test`: nothing sent, nothing deployed by the writer.
 
 Short names: D = `dossier/global-surf-adventures/dossier.json`; A = `dossier/global-surf-adventures/audit.json` (findings F1–F10) / `audit.md`; CR = `reports/2026-09-globalsurf-02/global-surf-adventures.critic-final.md`; VR = `….visual-final.md`; ER = `….experience-final.md`; AI = `sites/global-surf-adventures/aiseo-report.md`; SEO = `sites/global-surf-adventures/seo-report.md`; FN = `sites/global-surf-adventures/final/notes.md`; ST = `cms/app/src/collections/Sites.ts`; SC = `schemas/site-content.md`; L = the last `ledger.jsonl` line for this slug (2026-10-05T09:58:01Z, the static preview deploy); P = `PLAN.md`. H = index.html, W = WhatsApp message, E = email.
 
@@ -66,7 +66,7 @@ All made by `make-pitch-media.sh` (recipe, `# media:` headers; listed in `media/
 
 ## Language
 
-- `message.en.whatsapp.md` and `message.en.email.md` are in English (Shahar, 2026-10-05). The first draft was Hebrew from `dossier.languages.owner_language_hint` = `he`, which the harvester inferred from the agency being Israeli; no owner language is published. Same facts and offer as that draft.
+- `message.en.whatsapp.md` and `message.en.email.md` are in English: the owner is Israeli (`dossier.languages.owner_language_hint` = `he`, correct), but Shahar prefers an English pitch (2026-10-05). Same facts and offer as the first, Hebrew, draft.
 
 ## Checks before handoff (2026-10-05)
 
