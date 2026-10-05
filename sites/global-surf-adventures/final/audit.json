@@ -1,15 +1,15 @@
 {
  "slug": "global-surf-adventures",
  "variant": "../final",
- "measured_at": "2026-10-04T22:30:38.711Z",
+ "measured_at": "2026-10-05T07:43:06.671Z",
  "first_load": {
   "requests": 11,
   "hosts": [
    "localhost:8980"
   ],
   "third_party_hosts": [],
-  "bytes_total": 512851,
-  "bytes_html": 91963,
+  "bytes_total": 515801,
+  "bytes_html": 94913,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 103872,
@@ -17,7 +17,7 @@
   "largest_image_bytes": 73030,
   "lcp_ms": 432,
   "cls": 0.0033,
-  "dcl_ms": 1462
+  "dcl_ms": 1513
  },
  "booking": {
   "external_booking_hrefs": [

@@ -245,3 +245,133 @@ export const roomViewer = (pre, action, { idp = '', ctaFirst = false, sizes = '(
   }).join('')
   return `<div class="room-box"><div class="pills-row"><div class="pills" role="tablist" aria-label="Room type">${pills}</div></div><div class="room-panels">${panels}</div></div>`
 }
+
+/* ---------------------------------------------------------------- SEO plumbing (station 4h) */
+/* Preview or real domain? One place decides it (the rule KA's build set, Shahar 2026-09-22; same code as
+   this run's Lavish/Layday finals). PREVIEW = no SITE_URL, or a SITE_URL on *.workers.dev / localhost.
+   A preview is not indexed: robots.txt disallows everything, both pages carry
+   <meta name="robots" content="noindex, nofollow">, and there is no sitemap. SITE_URL must end in '/'. */
+export const isPreviewUrl = (url) => {
+  if (!url) return true
+  let host
+  try { host = new URL(url).hostname.toLowerCase().replace(/^\[|\]$/g, '') } catch { return true }
+  return host === 'workers.dev' || host.endsWith('.workers.dev')
+    || host === 'localhost' || host.endsWith('.localhost')
+    || host === '127.0.0.1' || host === '::1'
+}
+export const SITE = import.meta.env.SITE ? new URL(import.meta.env.SITE) : null
+export const IS_PREVIEW = isPreviewUrl(SITE)
+export const abs = (u) => (SITE ? new URL(u, SITE).href : null)
+/* the two routes, for the sitemap and the canonicals */
+export const ROUTES = ['', 'book/']
+
+/* one paragraph → its sentences */
+export const sentences = (p) => (p ?? '').split(/(?<=[.!?])\s+(?=[A-Z0-9'“"])/).map((s) => s.trim()).filter(Boolean)
+/* the meta description: owner-written fields only, joined as sentences, cut at a sentence boundary to 155 */
+export const metaDescription = (parts, max = 155) => {
+  let out = ''
+  for (const p of parts.filter(Boolean).map((s) => s.trim().replace(/[.\s]+$/, ''))) {
+    const next = out ? `${out} ${p}.` : `${p}.`
+    if (next.length > max) break
+    out = next
+  }
+  return out
+}
+
+const COUNTRY = { 'sri lanka': 'LK' }
+/* contact.address (free text) → PostalAddress. Splits "street…, town [postcode], country" (playbook §6
+   order) only when the last part is a country it knows; otherwise the whole address stays in
+   streetAddress. Never adds a part. */
+export const postalAddress = (text) => {
+  const parts = (text ?? '').split(/\s*(?:\n|,)\s*/).map((s) => s.trim()).filter(Boolean)
+  if (!parts.length) return null
+  const a = { '@type': 'PostalAddress' }
+  const iso = parts.length >= 3 ? COUNTRY[parts[parts.length - 1].toLowerCase()] : null
+  const town = iso ? /^(?:(\d{4,6})\s+)?(.+?)(?:\s+(\d{4,6}))?$/.exec(parts[parts.length - 2]) : null
+  if (town) {
+    a.streetAddress = parts.slice(0, -2).join(', ')
+    if (town[1] || town[3]) a.postalCode = town[1] || town[3]
+    a.addressLocality = town[2]
+    a.addressCountry = iso
+  } else a.streetAddress = parts.join(', ')
+  return a
+}
+
+/* geo from contact.mapUrl: a Google Maps *place* URL carries the listing's own pin as !3d<lat>!4d<lng>
+   (the @lat,lng part is only the viewport). The schema has no geo field, so the pin rides on the
+   owner-editable map link: change the link and the pin follows; a link without a pin gives no geo. */
+export const pinFromMapUrl = (u) => {
+  const m = /!3d(-?\d{1,2}\.\d+)!4d(-?\d{1,3}\.\d+)/.exec(u ?? '')
+  if (!m) return null
+  const lat = +m[1], lng = +m[2]
+  return Math.abs(lat) <= 90 && Math.abs(lng) <= 180 ? { lat, lng } : null
+}
+
+/* businessType → schema.org type. A surf camp sells the bed and the lessons, so it is typed as both
+   (schema.org allows a multi-typed entity): LodgingBusiness carries checkinTime / checkoutTime /
+   amenityFeature, SportsActivityLocation is base.md's type for a school or camp. */
+export const LD_TYPE = {
+  surf_camp: ['LodgingBusiness', 'SportsActivityLocation'], beach_lodging: 'LodgingBusiness',
+  surf_school: 'SportsActivityLocation', board_rental: 'SportsActivityLocation',
+  surf_shop: 'SportingGoodsStore', shaper: 'Store', other: 'LocalBusiness',
+}
+
+/* JSON-LD for the business: one block, every value from content.json (and, for sameAs, the footer's
+   SCHEMA GAP Instagram link). No aggregateRating / review: Shahar's no-ratings-markup decision for KA,
+   applied to every site since. Absolute @id / url / image only with SITE_URL. */
+export const businessLd = ({ description, images = [] } = {}) => {
+  const k = c.contact ?? {}
+  const postal = postalAddress(k.address)
+  const pin = pinFromMapUrl(k.mapUrl)
+  const map = safeUrl(k.mapUrl)
+  const priced = (c.lessons ?? []).filter((l) => typeof l.price === 'number' && l.currency)
+  const low = priced.length ? priced.reduce((a, b) => (b.price < a.price ? b : a)) : null
+  const same = [safeUrl(G.instagram?.url), ...(c.ratings ?? []).map((r) => safeUrl(r.url))].filter(Boolean)
+  return {
+    '@context': 'https://schema.org',
+    '@type': LD_TYPE[c.businessType] ?? 'LocalBusiness',
+    ...(SITE ? { '@id': `${SITE.href}#business`, url: SITE.href } : {}),
+    name: c.businessName,
+    ...(description ? { description } : {}),
+    ...(SITE && images.length ? { image: images.map(abs) } : {}),
+    ...(tel(k.phone) ? { telephone: k.phone } : {}),
+    ...(k.email ? { email: k.email } : {}),
+    ...(postal ? { address: postal } : {}),
+    ...(pin ? { geo: { '@type': 'GeoCoordinates', latitude: pin.lat, longitude: pin.lng } } : {}),
+    ...(map ? { hasMap: map } : {}),
+    /* the lowest package price, as the page prints it ("From $1,466 pp | 7 nights": lessons[].price, per person, 7 nights) */
+    ...(low ? { priceRange: `From ${low.currency} ${low.price.toLocaleString('en-US')} per person, 7 nights` } : {}),
+    ...(st.checkInFrom ? { checkinTime: st.checkInFrom } : {}),
+    ...(st.checkOutTo ? { checkoutTime: st.checkOutTo } : {}),
+    ...((c.amenities ?? []).length ? {
+      amenityFeature: c.amenities.map((a) => ({ '@type': 'LocationFeatureSpecification', name: a.note ? `${a.label} (${a.note})` : a.label, value: true })),
+    } : {}),
+    ...((c.languagesSpoken ?? []).length ? { knowsLanguage: c.languagesSpoken } : {}),
+    ...(same.length ? { sameAs: [...new Set(same)] } : {}),
+  }
+}
+/* JSON in a <script>: '<' escaped so no value can close the element */
+export const ldJson = (o) => JSON.stringify(o).replace(/</g, '\\u003c')
+
+/* head tags shared by both pages (after <title> and the description). og:image only with SITE_URL. */
+export const seoHead = ({ path, title, description, image }) => {
+  const url = abs(path)
+  return [
+    IS_PREVIEW ? '<meta name="robots" content="noindex, nofollow">' : '',
+    url ? `<link rel="canonical" href="${e(url)}">` : '',
+    url ? `<link rel="alternate" hreflang="en" href="${e(url)}">` : '',
+    url ? `<link rel="alternate" hreflang="x-default" href="${e(url)}">` : '',
+    '<meta property="og:type" content="website">',
+    `<meta property="og:site_name" content="${e(c.businessName)}">`,
+    `<meta property="og:title" content="${e(title)}">`,
+    description ? `<meta property="og:description" content="${e(description)}">` : '',
+    url ? `<meta property="og:url" content="${e(url)}">` : '',
+    ...(SITE && image ? [
+      `<meta property="og:image" content="${e(abs(image.src))}">`,
+      `<meta property="og:image:width" content="${image.width}">`,
+      `<meta property="og:image:height" content="${image.height}">`,
+      image.alt ? `<meta property="og:image:alt" content="${e(image.alt)}">` : '',
+    ] : []),
+    `<meta name="twitter:card" content="${SITE && image ? 'summary_large_image' : 'summary'}">`,
+  ].filter(Boolean).join('\n')
+}

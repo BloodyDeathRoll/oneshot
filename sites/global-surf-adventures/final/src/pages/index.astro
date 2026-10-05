@@ -10,6 +10,7 @@ import {
   c, G, CT, ST, e, paras, block, detail, money, dayMonYear, safeUrl, WA, waWith, levelPrice, PLATFORM,
   LEVELS, FREE, slotRow, picture, wimg, shapeOf, srcset, top, atLeast, R45, R32, R169, FULL,
   heroVideo, clip, fontFaces, SPRITE, ic, header, footer, show, roomViewer,
+  sentences, metaDescription, businessLd, ldJson, seoHead,
 } from '../lib/site.mjs'
 import { S, INSTAGRAM } from '../lib/slots.mjs'
 
@@ -92,6 +93,14 @@ const closingPic = picture(slotRow(S.closing), R45, '(max-width:900px) 100vw, 50
 const lp = levelPrice.split('|').map((s) => s.trim())
 
 const title = `${c.businessName} | Surf weeks in Sri Lanka` // the mockup's title_c1 (copy, mockup_extras.hero)
+/* Head and structured data (station 4h). The description: owner-written fields only (tagline, the
+   welcome's lodge sentence, the rooms block's first sentence), cut at a sentence to 155. og:image is
+   the hero poster (a frame of the hero video, 1280×720), absolute only with SITE_URL. */
+const desc = metaDescription([c.tagline, sentences(paras(intro?.body)[1])[0], sentences(paras(roomsBlock?.body)[0])[0]])
+const ogImage = hv ? { ...hv.poster[1280], alt: hv.alt } : null
+const ldImages = [hv?.poster[1920].src, ...(c.photos ?? []).map((_, n) => slotRow(n)).filter(Boolean)
+  .map((row) => { const sh = shapeOf(row.filename, FULL); return sh ? top(sh).jpg : null })].filter(Boolean)
+const ld = businessLd({ description: desc, images: ldImages })
 const lq = hv?.pp?.lq
 const lqCss = lq ? `@media ${PHONE}{.hero{background:#CDE4EE url(${lq}) center/cover no-repeat}}` : ''
 const css = fontFaces(pre) + siteCss + homeCss + lqCss
@@ -102,7 +111,8 @@ const css = fontFaces(pre) + siteCss + homeCss + lqCss
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{title}</title>
-{c.tagline && <meta name="description" content={c.tagline}>}
+{desc && <meta name="description" content={desc}>}
+<Fragment set:html={seoHead({ path: '', title, description: desc, image: ogImage })} />
 <script is:inline>document.documentElement.className='js'</script>
 {hv?.pp && <link rel="preload" as="image" type="image/webp" href={hv.pp.webp} media={PHONE}>}
 {hv && <link rel="preload" as="image" imagesrcset={posterSet} imagesizes="100vw" media={`not all and ${PHONE}`}>}
@@ -250,5 +260,6 @@ const css = fontFaces(pre) + siteCss + homeCss + lqCss
   <a class="btn btn-book" href="book/" tabindex="-1">{CT.header_and_bar}</a>
 </div>
 <script is:inline set:html={commonJs + '\n' + homeJs}></script>
+<script is:inline type="application/ld+json" set:html={ldJson(ld)}></script>
 </body>
 </html>

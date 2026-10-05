@@ -11,6 +11,7 @@ import bookJs from '../../scripts/book.js?raw'
 import {
   c, G, CT, ST, B, e, detail, WA, waWith, levelPrice, LEVELS, FREE, ROOMS, slotRow, shapeOf, atLeast, FULL,
   clip, fontFaces, SPRITE, ic, header, footer, show, wimg, roomViewer,
+  SITE, LD_TYPE, ldJson, seoHead,
 } from '../../lib/site.mjs'
 import { S } from '../../lib/slots.mjs'
 
@@ -67,6 +68,16 @@ const data = {
   b: B,
   t: T,
 }
+/* Head and structured data (station 4h). The description is interface wording (the flow's steps), not a
+   business fact. JSON-LD: this page as a WebPage about the business, which the home page describes in
+   full (linked by @id when the build has SITE_URL). */
+const title = `Book your surf week | ${c.businessName}`
+const desc = 'Choose your level, your room, your dates and guests. Prices from the booking engine.'
+const ld = {
+  '@context': 'https://schema.org', '@type': 'WebPage', name: title, description: desc,
+  ...(SITE ? { '@id': new URL('book/', SITE).href, url: new URL('book/', SITE).href } : {}),
+  about: SITE ? { '@id': `${SITE.href}#business` } : { '@type': LD_TYPE[c.businessType] ?? 'LocalBusiness', name: c.businessName },
+}
 const css = fontFaces(pre) + siteCss + bookCss + homeCss.slice(homeCss.indexOf('.room{display:grid'), homeCss.indexOf('.rooms-note'))
 ---
 <!doctype html>
@@ -74,8 +85,9 @@ const css = fontFaces(pre) + siteCss + bookCss + homeCss.slice(homeCss.indexOf('
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{`Book your surf week | ${c.businessName}`}</title>
-<meta name="description" content="Choose your level, your room, your dates and guests. Prices from the booking engine.">
+<title>{title}</title>
+<meta name="description" content={desc}>
+<Fragment set:html={seoHead({ path: 'book/', title, description: desc })} />
 <script is:inline>document.documentElement.className='js'</script>
 <style is:inline set:html={css}></style>
 </head>
@@ -194,5 +206,6 @@ const css = fontFaces(pre) + siteCss + bookCss + homeCss.slice(homeCss.indexOf('
 <Fragment set:html={footer(pre)} />
 <script is:inline type="application/json" id="bk-data" set:html={JSON.stringify(data).replace(/</g, '\\u003c')}></script>
 <script is:inline set:html={commonJs + '\n' + bookJs}></script>
+<script is:inline type="application/ld+json" set:html={ldJson(ld)}></script>
 </body>
 </html>
