@@ -1,0 +1,1402 @@
+{
+ "phone": {
+  "errors": [],
+  "timing": {
+   "fcp": 256,
+   "vids": [
+    {
+     "f": "gs-hero-loop.p546.webm",
+     "start": 291,
+     "rel_fcp": 35
+    }
+   ]
+  },
+  "load_hosts": [
+   "127.0.0.1:8764"
+  ],
+  "load_rosa": [],
+  "first_screen": {
+   "actions": [
+    {
+     "t": "Skip to content",
+     "href": "#main",
+     "w": 153,
+     "h": 52
+    },
+    {
+     "t": "",
+     "href": "./",
+     "w": 128,
+     "h": 44
+    },
+    {
+     "t": "",
+     "href": null,
+     "w": 48,
+     "h": 48
+    },
+    {
+     "t": "Book package now",
+     "href": "book/",
+     "w": 250,
+     "h": 56
+    }
+   ],
+   "h1": {
+    "text": "Your surf week starts here",
+    "font": "Lora, Georgia, \"Times New Roman\", serif",
+    "weight": "500",
+    "size": "41px",
+    "color": "rgb(255, 255, 255)",
+    "shadow": "rgba(0, 0, 0, 0.45) 0px 1px 2px, rgba(0, 0, 0, 0.45) 0px 2px 14px, rgba(0, 0, 0, 0.35) 0px 0px 44px"
+   }
+  },
+  "overflow_x": 0,
+  "cls_full_scroll": 0,
+  "scroll_videos": [
+   {
+    "f": "gs-hero-loop.p546.webm",
+    "kb": 1243
+   },
+   {
+    "f": "gs-level-3-card.d1920.webm",
+    "kb": 528
+   },
+   {
+    "f": "gs-level-2-card.d1920.webm",
+    "kb": 714
+   },
+   {
+    "f": "gs-level-1-card.d1920.webm",
+    "kb": 1279
+   }
+  ],
+  "scroll_rosa": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "https://rosa.surf/widget/",
+   "https://rosa.surf/favicon.svg"
+  ],
+  "third_party_after_scroll": [
+   "127.0.0.1:8764",
+   "rosa-data-opal.vercel.app",
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "server.arcgisonline.com",
+   "fonts.gstatic.com"
+  ],
+  "small_targets": [],
+  "titles": [
+   {
+    "tag": "H1",
+    "cls": "",
+    "t": "Your surf week starts here",
+    "font": "Lora",
+    "w": "500",
+    "size": "41px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "script",
+    "t": "Next set is yours",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "44.46px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "script center",
+    "t": "Choose your level",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "44.46px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H3",
+    "cls": "",
+    "t": "Level 1 – Fomies",
+    "font": "Lora",
+    "w": "600",
+    "size": "27px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H3",
+    "cls": "",
+    "t": "Level 2 – Rollers",
+    "font": "Lora",
+    "w": "600",
+    "size": "27px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H3",
+    "cls": "",
+    "t": "Level 3 – Riders",
+    "font": "Lora",
+    "w": "600",
+    "size": "27px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H3",
+    "cls": "",
+    "t": "Freestylers – B&B only",
+    "font": "Lora",
+    "w": "600",
+    "size": "24px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "script",
+    "t": "What's included",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "44.46px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "script",
+    "t": "Surf, breakfast, surf again",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "44.46px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "script",
+    "t": "Our rooms",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "44.46px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H3",
+    "cls": "",
+    "t": "Mixed dorm room – 4 beds",
+    "font": "Lora",
+    "w": "600",
+    "size": "28px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H3",
+    "cls": "",
+    "t": "Shared twin room – 2 beds",
+    "font": "Lora",
+    "w": "600",
+    "size": "28px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H3",
+    "cls": "",
+    "t": "Deluxe double room",
+    "font": "Lora",
+    "w": "600",
+    "size": "28px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "P",
+    "cls": "",
+    "t": "Footwear is discouraged. Chilling out is",
+    "font": "Lora",
+    "w": "500",
+    "size": "26px",
+    "color": "rgb(255, 255, 255)",
+    "style": "italic"
+   },
+   {
+    "tag": "H2",
+    "cls": "script",
+    "t": "What guests say",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "44.46px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "BLOCKQUOTE",
+    "cls": "",
+    "t": "“We loved the cozy, bohoo-vibes at the l",
+    "font": "Lora",
+    "w": "400",
+    "size": "24px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "BLOCKQUOTE",
+    "cls": "",
+    "t": "“This place felt like something inbetwee",
+    "font": "Lora",
+    "w": "400",
+    "size": "24px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "BLOCKQUOTE",
+    "cls": "",
+    "t": "“A lovely hotel and a team of champions.",
+    "font": "Lora",
+    "w": "400",
+    "size": "24px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "BLOCKQUOTE",
+    "cls": "",
+    "t": "“The room was modern, quiet and incredib",
+    "font": "Lora",
+    "w": "400",
+    "size": "24px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "BLOCKQUOTE",
+    "cls": "",
+    "t": "“I had a wonderful stay at this hostel i",
+    "font": "Lora",
+    "w": "400",
+    "size": "24px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "BLOCKQUOTE",
+    "cls": "",
+    "t": "“We stayed at Global Kablana Sri Lanka a",
+    "font": "Lora",
+    "w": "400",
+    "size": "24px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "BLOCKQUOTE",
+    "cls": "",
+    "t": "“The common areas and the rooms are real",
+    "font": "Lora",
+    "w": "400",
+    "size": "24px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "BLOCKQUOTE",
+    "cls": "",
+    "t": "“Super nice place, beautiful rooms, nice",
+    "font": "Lora",
+    "w": "400",
+    "size": "24px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "BLOCKQUOTE",
+    "cls": "",
+    "t": "“The staff were lovely and welcoming. Th",
+    "font": "Lora",
+    "w": "400",
+    "size": "24px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "script",
+    "t": "The waves",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "44.46px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "script",
+    "t": "Follow the lodge",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "44.46px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "script",
+    "t": "Book the week for your level.",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "44.46px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "",
+    "t": "Talk to us",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "40px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "",
+    "t": "Getting here",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "40px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "",
+    "t": "Follow",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "40px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   }
+  ],
+  "fonts_loaded": [
+   "Lora 400 700 normal",
+   "Lora 500 italic",
+   "Dancing Script 400 700 normal"
+  ],
+  "colors": {
+   "bg rgb(39, 41, 62)": {
+    "n": 4,
+    "ex": [
+     "A.skip",
+     "BUTTON.",
+     "SECTION.sec",
+     "A.btn"
+    ]
+   },
+   "fg rgb(255, 255, 255)": {
+    "n": 34,
+    "ex": [
+     "A.skip",
+     "H1.",
+     "A.btn",
+     "BUTTON.",
+     "P.",
+     "H2.script"
+    ]
+   },
+   "bg rgb(255, 255, 255)": {
+    "n": 10,
+    "ex": [
+     "HEADER.hdr",
+     "DIV.free",
+     "A.btn",
+     "A.",
+     "DIV.bar"
+    ]
+   },
+   "bg rgb(205, 228, 238)": {
+    "n": 1,
+    "ex": [
+     "SECTION.hero"
+    ]
+   },
+   "bg rgb(209, 64, 42)": {
+    "n": 7,
+    "ex": [
+     "A.btn"
+    ]
+   },
+   "fg rgb(39, 41, 62)": {
+    "n": 56,
+    "ex": [
+     "H2.script",
+     "P.",
+     "H3.",
+     "A.btn",
+     "SPAN.",
+     "P.line"
+    ]
+   },
+   "fg rgb(63, 66, 96)": {
+    "n": 36,
+    "ex": [
+     "SPAN.di",
+     "SPAN.sep",
+     "P.note",
+     "P.",
+     "BUTTON.",
+     "P.desc"
+    ]
+   },
+   "bg rgb(238, 242, 245)": {
+    "n": 9,
+    "ex": [
+     "SECTION.levels",
+     "A.btn",
+     "SECTION.sec",
+     "DIV.pills",
+     "DIV.rosa-box",
+     "FOOTER.foot"
+    ]
+   },
+   "bg rgb(207, 220, 228)": {
+    "n": 3,
+    "ex": [
+     "A.panel-media"
+    ]
+   },
+   "fg rgba(255, 255, 255, 0.8)": {
+    "n": 22,
+    "ex": [
+     "SPAN.di",
+     "SPAN.sep",
+     "CITE."
+    ]
+   },
+   "bg rgba(255, 255, 255, 0.12)": {
+    "n": 2,
+    "ex": [
+     "BUTTON.qp",
+     "BUTTON.qx"
+    ]
+   }
+  },
+  "colors_off_palette": [
+   "bg rgb(205, 228, 238)",
+   "bg rgb(207, 220, 228)",
+   "fg rgba(255, 255, 255, 0.8)",
+   "bg rgba(255, 255, 255, 0.12)"
+  ],
+  "tab": {
+   "stops": 90,
+   "first": [
+    "Skip to content",
+    "Global Surf Lodge Kabalana, ho",
+    "Menu"
+   ],
+   "no_ring": [
+    "IFRAME",
+    "Skip to content\n\n  \n    \n    L",
+    "IFRAME"
+   ],
+   "invisible": [],
+   "repeated_same": 10
+  },
+  "video_requests": 4
+ },
+ "desktop": {
+  "errors": [],
+  "timing": {
+   "fcp": 96,
+   "vids": [
+    {
+     "f": "gs-hero-loop.d1920.webm",
+     "start": 126,
+     "rel_fcp": 30
+    }
+   ]
+  },
+  "load_hosts": [
+   "127.0.0.1:8764"
+  ],
+  "load_rosa": [],
+  "first_screen": {
+   "actions": [
+    {
+     "t": "Skip to content",
+     "href": "#main",
+     "w": 163,
+     "h": 53
+    },
+    {
+     "t": "",
+     "href": "./",
+     "w": 170,
+     "h": 44
+    },
+    {
+     "t": "Levels",
+     "href": "#levels",
+     "w": 50,
+     "h": 47
+    },
+    {
+     "t": "Rooms",
+     "href": "#rooms",
+     "w": 54,
+     "h": 47
+    },
+    {
+     "t": "The lodge",
+     "href": "#welcome",
+     "w": 77,
+     "h": 47
+    },
+    {
+     "t": "Contact",
+     "href": "#contact",
+     "w": 63,
+     "h": 47
+    },
+    {
+     "t": "Book package now",
+     "href": "book/",
+     "w": 220,
+     "h": 56
+    }
+   ],
+   "h1": {
+    "text": "Your surf week starts here",
+    "font": "Lora, Georgia, \"Times New Roman\", serif",
+    "weight": "500",
+    "size": "48px",
+    "color": "rgb(255, 255, 255)",
+    "shadow": "rgba(0, 0, 0, 0.35) 0px 1px 2px, rgba(0, 0, 0, 0.35) 0px 2px 18px, rgba(0, 0, 0, 0.28) 0px 0px 60px"
+   }
+  },
+  "overflow_x": 0,
+  "cls_full_scroll": 0.0072,
+  "scroll_videos": [
+   {
+    "f": "gs-hero-loop.d1920.webm",
+    "kb": 2762
+   },
+   {
+    "f": "gs-level-2-card.d1920.webm",
+    "kb": 714
+   },
+   {
+    "f": "gs-level-3-card.d1920.webm",
+    "kb": 528
+   },
+   {
+    "f": "gs-level-1-card.d1920.webm",
+    "kb": 1279
+   }
+  ],
+  "scroll_rosa": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "https://rosa.surf/widget/",
+   "https://rosa.surf/favicon.svg"
+  ],
+  "third_party_after_scroll": [
+   "127.0.0.1:8764",
+   "rosa-data-opal.vercel.app",
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "server.arcgisonline.com",
+   "fonts.gstatic.com"
+  ],
+  "small_targets": [],
+  "titles": [
+   {
+    "tag": "H1",
+    "cls": "",
+    "t": "Your surf week starts here",
+    "font": "Lora",
+    "w": "500",
+    "size": "48px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "script",
+    "t": "Next set is yours",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "56px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "script center",
+    "t": "Choose your level",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "56px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H3",
+    "cls": "",
+    "t": "Level 1 – Fomies",
+    "font": "Lora",
+    "w": "600",
+    "size": "27px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H3",
+    "cls": "",
+    "t": "Level 2 – Rollers",
+    "font": "Lora",
+    "w": "600",
+    "size": "27px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H3",
+    "cls": "",
+    "t": "Level 3 – Riders",
+    "font": "Lora",
+    "w": "600",
+    "size": "27px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H3",
+    "cls": "",
+    "t": "Freestylers – B&B only",
+    "font": "Lora",
+    "w": "600",
+    "size": "24px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "script",
+    "t": "What's included",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "56px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "script",
+    "t": "Surf, breakfast, surf again",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "56px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "script",
+    "t": "Our rooms",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "56px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H3",
+    "cls": "",
+    "t": "Mixed dorm room – 4 beds",
+    "font": "Lora",
+    "w": "600",
+    "size": "32px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H3",
+    "cls": "",
+    "t": "Shared twin room – 2 beds",
+    "font": "Lora",
+    "w": "600",
+    "size": "32px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H3",
+    "cls": "",
+    "t": "Deluxe double room",
+    "font": "Lora",
+    "w": "600",
+    "size": "32px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "P",
+    "cls": "",
+    "t": "Footwear is discouraged. Chilling out is",
+    "font": "Lora",
+    "w": "500",
+    "size": "40px",
+    "color": "rgb(255, 255, 255)",
+    "style": "italic"
+   },
+   {
+    "tag": "H2",
+    "cls": "script",
+    "t": "What guests say",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "56px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "BLOCKQUOTE",
+    "cls": "",
+    "t": "“We loved the cozy, bohoo-vibes at the l",
+    "font": "Lora",
+    "w": "400",
+    "size": "36px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "BLOCKQUOTE",
+    "cls": "",
+    "t": "“This place felt like something inbetwee",
+    "font": "Lora",
+    "w": "400",
+    "size": "36px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "BLOCKQUOTE",
+    "cls": "",
+    "t": "“A lovely hotel and a team of champions.",
+    "font": "Lora",
+    "w": "400",
+    "size": "36px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "BLOCKQUOTE",
+    "cls": "",
+    "t": "“The room was modern, quiet and incredib",
+    "font": "Lora",
+    "w": "400",
+    "size": "36px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "BLOCKQUOTE",
+    "cls": "",
+    "t": "“I had a wonderful stay at this hostel i",
+    "font": "Lora",
+    "w": "400",
+    "size": "36px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "BLOCKQUOTE",
+    "cls": "",
+    "t": "“We stayed at Global Kablana Sri Lanka a",
+    "font": "Lora",
+    "w": "400",
+    "size": "36px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "BLOCKQUOTE",
+    "cls": "",
+    "t": "“The common areas and the rooms are real",
+    "font": "Lora",
+    "w": "400",
+    "size": "36px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "BLOCKQUOTE",
+    "cls": "",
+    "t": "“Super nice place, beautiful rooms, nice",
+    "font": "Lora",
+    "w": "400",
+    "size": "36px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "BLOCKQUOTE",
+    "cls": "",
+    "t": "“The staff were lovely and welcoming. Th",
+    "font": "Lora",
+    "w": "400",
+    "size": "36px",
+    "color": "rgb(255, 255, 255)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "script",
+    "t": "The waves",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "56px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "script",
+    "t": "Follow the lodge",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "56px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "script",
+    "t": "Book the week for your level.",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "56px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "",
+    "t": "Talk to us",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "40px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "",
+    "t": "Getting here",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "40px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   },
+   {
+    "tag": "H2",
+    "cls": "",
+    "t": "Follow",
+    "font": "\"Dancing Script\"",
+    "w": "600",
+    "size": "40px",
+    "color": "rgb(39, 41, 62)",
+    "style": "normal"
+   }
+  ],
+  "fonts_loaded": [
+   "Lora 400 700 normal",
+   "Lora 500 italic",
+   "Dancing Script 400 700 normal"
+  ],
+  "colors": {
+   "bg rgb(39, 41, 62)": {
+    "n": 4,
+    "ex": [
+     "A.skip",
+     "BUTTON.",
+     "SECTION.sec",
+     "A.btn"
+    ]
+   },
+   "fg rgb(255, 255, 255)": {
+    "n": 33,
+    "ex": [
+     "A.skip",
+     "A.btn",
+     "H1.",
+     "BUTTON.",
+     "P.",
+     "H2.script"
+    ]
+   },
+   "bg rgb(255, 255, 255)": {
+    "n": 13,
+    "ex": [
+     "HEADER.hdr",
+     "DIV.free",
+     "BUTTON.arrow",
+     "A.btn",
+     "A."
+    ]
+   },
+   "fg rgb(39, 41, 62)": {
+    "n": 58,
+    "ex": [
+     "A.",
+     "H2.script",
+     "P.",
+     "H3.",
+     "A.btn",
+     "SPAN."
+    ]
+   },
+   "bg rgb(209, 64, 42)": {
+    "n": 7,
+    "ex": [
+     "A.btn"
+    ]
+   },
+   "bg rgb(205, 228, 238)": {
+    "n": 1,
+    "ex": [
+     "SECTION.hero"
+    ]
+   },
+   "fg rgb(63, 66, 96)": {
+    "n": 38,
+    "ex": [
+     "SPAN.di",
+     "SPAN.sep",
+     "P.note",
+     "P.",
+     "BUTTON.",
+     "P.desc"
+    ]
+   },
+   "bg rgb(238, 242, 245)": {
+    "n": 9,
+    "ex": [
+     "SECTION.levels",
+     "A.btn",
+     "SECTION.sec",
+     "DIV.pills",
+     "DIV.rosa-box",
+     "FOOTER.foot"
+    ]
+   },
+   "bg rgb(207, 220, 228)": {
+    "n": 3,
+    "ex": [
+     "A.panel-media"
+    ]
+   },
+   "fg rgba(255, 255, 255, 0.8)": {
+    "n": 22,
+    "ex": [
+     "SPAN.di",
+     "SPAN.sep",
+     "CITE."
+    ]
+   }
+  },
+  "colors_off_palette": [
+   "bg rgb(205, 228, 238)",
+   "bg rgb(207, 220, 228)",
+   "fg rgba(255, 255, 255, 0.8)"
+  ],
+  "tab": {
+   "stops": 90,
+   "first": [
+    "Skip to content",
+    "Global Surf Lodge Kabalana, ho",
+    "Levels"
+   ],
+   "no_ring": [
+    "IFRAME",
+    "Skip to content\n\n  \n    \n    L"
+   ],
+   "invisible": [],
+   "repeated_same": 7
+  },
+  "video_requests": 4
+ },
+ "phone_tap": {
+  "errors": [],
+  "timing": {
+   "fcp": 64,
+   "vids": [
+    {
+     "f": "gs-hero-loop.p546.webm",
+     "start": 117,
+     "rel_fcp": 53
+    }
+   ]
+  },
+  "load_hosts": [
+   "127.0.0.1:8764"
+  ],
+  "load_rosa": [],
+  "first_screen": {
+   "actions": [
+    {
+     "t": "Skip to content",
+     "href": "#main",
+     "w": 153,
+     "h": 52
+    },
+    {
+     "t": "",
+     "href": "./",
+     "w": 128,
+     "h": 44
+    },
+    {
+     "t": "",
+     "href": null,
+     "w": 48,
+     "h": 48
+    },
+    {
+     "t": "Book package now",
+     "href": "book/",
+     "w": 250,
+     "h": 56
+    }
+   ],
+   "h1": {
+    "text": "Your surf week starts here",
+    "font": "Lora, Georgia, \"Times New Roman\", serif",
+    "weight": "500",
+    "size": "41px",
+    "color": "rgb(255, 255, 255)",
+    "shadow": "rgba(0, 0, 0, 0.45) 0px 1px 2px, rgba(0, 0, 0, 0.45) 0px 2px 14px, rgba(0, 0, 0, 0.35) 0px 0px 44px"
+   }
+  },
+  "overflow_x": 0,
+  "video_requests": 1,
+  "hero_cta": {
+   "href": "book/",
+   "landed": "http://127.0.0.1:8764/book/",
+   "step": "level"
+  }
+ },
+ "phone_reduced": {
+  "errors": [],
+  "timing": {
+   "fcp": 56,
+   "vids": []
+  },
+  "load_hosts": [
+   "127.0.0.1:8764"
+  ],
+  "load_rosa": [],
+  "first_screen": {
+   "actions": [
+    {
+     "t": "Skip to content",
+     "href": "#main",
+     "w": 153,
+     "h": 52
+    },
+    {
+     "t": "",
+     "href": "./",
+     "w": 128,
+     "h": 44
+    },
+    {
+     "t": "",
+     "href": null,
+     "w": 48,
+     "h": 48
+    },
+    {
+     "t": "Book package now",
+     "href": "book/",
+     "w": 250,
+     "h": 56
+    }
+   ],
+   "h1": {
+    "text": "Your surf week starts here",
+    "font": "Lora, Georgia, \"Times New Roman\", serif",
+    "weight": "500",
+    "size": "41px",
+    "color": "rgb(255, 255, 255)",
+    "shadow": "rgba(0, 0, 0, 0.45) 0px 1px 2px, rgba(0, 0, 0, 0.45) 0px 2px 14px, rgba(0, 0, 0, 0.35) 0px 0px 44px"
+   }
+  },
+  "overflow_x": 0,
+  "cls_full_scroll": 0,
+  "scroll_videos": [],
+  "scroll_rosa": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "https://rosa.surf/widget/",
+   "https://rosa.surf/favicon.svg"
+  ],
+  "third_party_after_scroll": [
+   "127.0.0.1:8764",
+   "rosa-data-opal.vercel.app",
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "server.arcgisonline.com",
+   "fonts.gstatic.com"
+  ],
+  "fonts_loaded": [
+   "Lora 400 700 normal",
+   "Lora 500 italic",
+   "Dancing Script 400 700 normal"
+  ],
+  "colors_off_palette": [
+   "bg rgb(205, 228, 238)",
+   "bg rgb(207, 220, 228)",
+   "fg rgba(255, 255, 255, 0.8)",
+   "bg rgba(255, 255, 255, 0.12)"
+  ],
+  "video_requests": 0
+ },
+ "desktop_reduced": {
+  "errors": [],
+  "timing": {
+   "fcp": 68,
+   "vids": []
+  },
+  "load_hosts": [
+   "127.0.0.1:8764"
+  ],
+  "load_rosa": [],
+  "first_screen": {
+   "actions": [
+    {
+     "t": "Skip to content",
+     "href": "#main",
+     "w": 163,
+     "h": 53
+    },
+    {
+     "t": "",
+     "href": "./",
+     "w": 170,
+     "h": 44
+    },
+    {
+     "t": "Levels",
+     "href": "#levels",
+     "w": 50,
+     "h": 47
+    },
+    {
+     "t": "Rooms",
+     "href": "#rooms",
+     "w": 54,
+     "h": 47
+    },
+    {
+     "t": "The lodge",
+     "href": "#welcome",
+     "w": 77,
+     "h": 47
+    },
+    {
+     "t": "Contact",
+     "href": "#contact",
+     "w": 63,
+     "h": 47
+    },
+    {
+     "t": "Book package now",
+     "href": "book/",
+     "w": 220,
+     "h": 56
+    }
+   ],
+   "h1": {
+    "text": "Your surf week starts here",
+    "font": "Lora, Georgia, \"Times New Roman\", serif",
+    "weight": "500",
+    "size": "48px",
+    "color": "rgb(255, 255, 255)",
+    "shadow": "rgba(0, 0, 0, 0.35) 0px 1px 2px, rgba(0, 0, 0, 0.35) 0px 2px 18px, rgba(0, 0, 0, 0.28) 0px 0px 60px"
+   }
+  },
+  "overflow_x": 0,
+  "cls_full_scroll": 0.0072,
+  "scroll_videos": [],
+  "scroll_rosa": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "https://rosa.surf/widget/",
+   "https://rosa.surf/favicon.svg"
+  ],
+  "third_party_after_scroll": [
+   "127.0.0.1:8764",
+   "rosa-data-opal.vercel.app",
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "server.arcgisonline.com",
+   "fonts.gstatic.com"
+  ],
+  "fonts_loaded": [
+   "Lora 400 700 normal",
+   "Lora 500 italic",
+   "Dancing Script 400 700 normal"
+  ],
+  "colors_off_palette": [
+   "bg rgb(205, 228, 238)",
+   "bg rgb(207, 220, 228)",
+   "fg rgba(255, 255, 255, 0.8)"
+  ],
+  "video_requests": 0
+ },
+ "phone_savedata": {
+  "errors": [],
+  "timing": {
+   "fcp": 52,
+   "vids": []
+  },
+  "load_hosts": [
+   "127.0.0.1:8764"
+  ],
+  "load_rosa": [],
+  "first_screen": {
+   "actions": [
+    {
+     "t": "Skip to content",
+     "href": "#main",
+     "w": 153,
+     "h": 52
+    },
+    {
+     "t": "",
+     "href": "./",
+     "w": 128,
+     "h": 44
+    },
+    {
+     "t": "",
+     "href": null,
+     "w": 48,
+     "h": 48
+    },
+    {
+     "t": "Book package now",
+     "href": "book/",
+     "w": 250,
+     "h": 56
+    }
+   ],
+   "h1": {
+    "text": "Your surf week starts here",
+    "font": "Lora, Georgia, \"Times New Roman\", serif",
+    "weight": "500",
+    "size": "41px",
+    "color": "rgb(255, 255, 255)",
+    "shadow": "rgba(0, 0, 0, 0.45) 0px 1px 2px, rgba(0, 0, 0, 0.45) 0px 2px 14px, rgba(0, 0, 0, 0.35) 0px 0px 44px"
+   }
+  },
+  "overflow_x": 0,
+  "cls_full_scroll": 0,
+  "scroll_videos": [],
+  "scroll_rosa": [
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "https://rosa.surf/widget/",
+   "https://rosa.surf/favicon.svg"
+  ],
+  "third_party_after_scroll": [
+   "127.0.0.1:8764",
+   "rosa-data-opal.vercel.app",
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "server.arcgisonline.com",
+   "fonts.gstatic.com"
+  ],
+  "fonts_loaded": [
+   "Lora 400 700 normal",
+   "Lora 500 italic",
+   "Dancing Script 400 700 normal"
+  ],
+  "colors_off_palette": [
+   "bg rgb(205, 228, 238)",
+   "bg rgb(207, 220, 228)",
+   "fg rgba(255, 255, 255, 0.8)",
+   "bg rgba(255, 255, 255, 0.12)"
+  ],
+  "video_requests": 0
+ },
+ "phone_nojs": {
+  "errors": [],
+  "load_hosts": [
+   "127.0.0.1:8764"
+  ],
+  "load_rosa": [],
+  "first_screen": {
+   "actions": [
+    {
+     "t": "Skip to content",
+     "href": "#main",
+     "w": 153,
+     "h": 52
+    },
+    {
+     "t": "",
+     "href": "./",
+     "w": 128,
+     "h": 44
+    },
+    {
+     "t": "",
+     "href": null,
+     "w": 48,
+     "h": 48
+    },
+    {
+     "t": "Book package now",
+     "href": "book/",
+     "w": 250,
+     "h": 56
+    }
+   ],
+   "h1": {
+    "text": "Your surf week starts here",
+    "font": "Lora, Georgia, \"Times New Roman\", serif",
+    "weight": "500",
+    "size": "41px",
+    "color": "rgb(255, 255, 255)",
+    "shadow": "rgba(0, 0, 0, 0.45) 0px 1px 2px, rgba(0, 0, 0, 0.45) 0px 2px 14px, rgba(0, 0, 0, 0.35) 0px 0px 44px"
+   }
+  },
+  "overflow_x": 0,
+  "video_requests": 0,
+  "nojs": {
+   "text": 5633,
+   "rosa": "The waves\n\nThe lodge overlooks two spots, The Rock and South Point. More waves are a few minutes away by tuk-tuk.\n\nSee today's forecast for South Point on Rosa",
+   "book_links": [
+    "book/",
+    "book/",
+    "book/",
+    "book/?level=level-1-fomies#room",
+    "book/?level=level-1-fomies#room",
+    "book/?level=level-2-rollers#room",
+    "book/?level=level-2-rollers#room",
+    "book/?level=level-3-riders#room",
+    "book/?level=level-3-riders#room",
+    "book/?room=dorm"
+   ]
+  }
+ }
+}

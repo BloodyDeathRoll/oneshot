@@ -1,0 +1,37 @@
+{
+ "390": {
+  "waves_height_while_loading": 1016,
+  "waves_height_after_fail": 404,
+  "shifts": [
+   {
+    "v": 0.2692,
+    "src": [
+     "sec bg-soft [0,531]"
+    ]
+   }
+  ],
+  "cls_total": 0.2692
+ },
+ "1440": {
+  "waves_height_while_loading": 720,
+  "waves_height_after_fail": 449,
+  "shifts": [
+   {
+    "v": 0.0019,
+    "src": [
+     "nav [15,15]"
+    ]
+   },
+   {
+    "v": 0.0985,
+    "src": [
+     "sec bg-soft [872,600]",
+     "DIV [346,261]",
+     "ig-row [0,853]",
+     "[object SVGAnimatedString] [0,776]"
+    ]
+   }
+  ],
+  "cls_total": 0.1057
+ }
+}

@@ -1,0 +1,1267 @@
+{
+ "phone_live": {
+  "mode": "live",
+  "errors": [],
+  "landed": "http://127.0.0.1:8764/book/",
+  "on_load": {
+   "engine_calls": 0,
+   "hosts": [
+    "127.0.0.1:8764"
+   ],
+   "videos": [
+    "gs-hero-loop.p546.webm"
+   ]
+  },
+  "s1_level": {
+   "hash": "",
+   "search": "",
+   "cur": "level",
+   "level": "level-1-fomies",
+   "room_checked": null,
+   "bar": {
+    "top": 776,
+    "bottom": 844,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "Next btn btn-book next",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": null,
+   "guests_field": null,
+   "small": [],
+   "overflow_x": 0
+  },
+  "s2_room_arrival": {
+   "hash": "#room",
+   "search": "?level=level-2-rollers",
+   "cur": "room",
+   "level": "level-2-rollers",
+   "room_checked": null,
+   "bar": {
+    "top": 776,
+    "bottom": 844,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "Next btn next btn-soft",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": {
+    "text": "Choose this roomChosen",
+    "top": 633,
+    "bottom": 685,
+    "in_view": true,
+    "under_bar": false
+   },
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": null,
+   "guests_field": null,
+   "small": [],
+   "overflow_x": 0
+  },
+  "s3_dates_arrival": {
+   "hash": "#dates",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "dates",
+   "level": "level-2-rollers",
+   "room_checked": "twin",
+   "bar": {
+    "top": 776,
+    "bottom": 844,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "Next btn next btn-book",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": {
+    "top": 1424,
+    "bottom": 1513,
+    "in_view": false
+   },
+   "guests_field": {
+    "top": 437,
+    "bottom": 641,
+    "in_view": true
+   },
+   "small": [],
+   "overflow_x": 0
+  },
+  "s3_chips": [
+   "2026-10-24",
+   "2026-10-31",
+   "2026-12-19(x)",
+   "2027-01-23",
+   "2027-01-30",
+   "2027-02-13",
+   "2027-02-20",
+   "2027-02-27",
+   "2027-03-06",
+   "2027-03-13",
+   "2027-03-20",
+   "2027-03-27",
+   "2027-04-03"
+  ],
+  "date_chosen": "2027-02-20",
+  "s3c": {
+   "hash": "#dates",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "dates",
+   "level": "level-2-rollers",
+   "room_checked": "twin",
+   "bar": {
+    "top": 776,
+    "bottom": 844,
+    "in_view": true,
+    "text": "Total $3,092",
+    "next": "Next btn next btn-book",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": {
+    "top": 791,
+    "bottom": 880,
+    "in_view": false
+   },
+   "guests_field": {
+    "top": -196,
+    "bottom": 8,
+    "in_view": false
+   },
+   "small": [],
+   "overflow_x": 0
+  },
+  "s4_total": {
+   "hash": "#total",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "total",
+   "level": "level-2-rollers",
+   "room_checked": "twin",
+   "bar": {
+    "top": 776,
+    "bottom": 844,
+    "in_view": true,
+    "text": "Total $3,092",
+    "next": "hidden",
+    "go": "Continue booking {\"top\":786,\"bottom\":834,\"in_view\":true}",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": null,
+   "guests_field": null,
+   "small": [],
+   "overflow_x": 0
+  },
+  "s4_sum": {
+   "level": "Level 2 – Rollers",
+   "dates": "20 Feb 2027 – 27 Feb 2027|7 nights",
+   "guests": "1 couple",
+   "room": "Shared twin room – 2 beds",
+   "base": "$1,466",
+   "supp": "+$80",
+   "pp": "$1,546",
+   "alllabel": "Total for 2 guests",
+   "all": "$3,092",
+   "note": "Prices in USD | Live price from the booking engine"
+  },
+  "s4_wa": "https://wa.me/972523593240?text=Hi Global Surf Lodge Kabalana, I have a question about the surf packages. Level 2 – Rollers, check-in 20 Feb 2027, 7 nights, 1 couple, Shared twin room – 2 beds.",
+  "taps_home_hero_to_engine": 8,
+  "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?couple=1&start=2027-02-20&end=2027-02-27",
+  "engine_calls": [
+   "GET /public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities",
+   "GET /public/accommodations/availabilities",
+   "POST /public/packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items"
+  ],
+  "cls": 0
+ },
+ "desktop_live": {
+  "mode": "live",
+  "errors": [],
+  "landed": "http://127.0.0.1:8764/book/",
+  "on_load": {
+   "engine_calls": 0,
+   "hosts": [
+    "127.0.0.1:8764"
+   ],
+   "videos": [
+    "gs-hero-loop.d1920.webm",
+    "gs-level-1-desk.d1920.webm"
+   ]
+  },
+  "s1_level": {
+   "hash": "",
+   "search": "",
+   "cur": "level",
+   "level": "level-1-fomies",
+   "room_checked": null,
+   "bar": {
+    "top": 820,
+    "bottom": 900,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "Next btn btn-book next",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": null,
+   "guests_field": null,
+   "small": [],
+   "overflow_x": 0
+  },
+  "s2_room_arrival": {
+   "hash": "#room",
+   "search": "?level=level-2-rollers",
+   "cur": "room",
+   "level": "level-2-rollers",
+   "room_checked": null,
+   "bar": {
+    "top": 820,
+    "bottom": 900,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "Next btn next btn-soft",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": {
+    "text": "Choose this roomChosen",
+    "top": 481,
+    "bottom": 533,
+    "in_view": true,
+    "under_bar": false
+   },
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": null,
+   "guests_field": null,
+   "small": [],
+   "overflow_x": 0
+  },
+  "s3_dates_arrival": {
+   "hash": "#dates",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "dates",
+   "level": "level-2-rollers",
+   "room_checked": "twin",
+   "bar": {
+    "top": 820,
+    "bottom": 900,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "Next btn next btn-book",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": {
+    "top": 1093,
+    "bottom": 1182,
+    "in_view": false
+   },
+   "guests_field": {
+    "top": 306,
+    "bottom": 366,
+    "in_view": true
+   },
+   "small": [],
+   "overflow_x": 0
+  },
+  "s3_chips": [
+   "2026-10-24",
+   "2026-10-31",
+   "2026-12-19(x)",
+   "2027-01-23",
+   "2027-01-30",
+   "2027-02-13",
+   "2027-02-20",
+   "2027-02-27",
+   "2027-03-06",
+   "2027-03-13",
+   "2027-03-20",
+   "2027-03-27",
+   "2027-04-03"
+  ],
+  "date_chosen": "2027-02-20",
+  "s3c": {
+   "hash": "#dates",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "dates",
+   "level": "level-2-rollers",
+   "room_checked": "twin",
+   "bar": {
+    "top": 820,
+    "bottom": 900,
+    "in_view": true,
+    "text": "Total $3,092",
+    "next": "Next btn next btn-book",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": {
+    "top": 1093,
+    "bottom": 1182,
+    "in_view": false
+   },
+   "guests_field": {
+    "top": 306,
+    "bottom": 366,
+    "in_view": true
+   },
+   "small": [],
+   "overflow_x": 0
+  },
+  "s4_total": {
+   "hash": "#total",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "total",
+   "level": "level-2-rollers",
+   "room_checked": "twin",
+   "bar": {
+    "top": 820,
+    "bottom": 900,
+    "in_view": true,
+    "text": "Total $3,092",
+    "next": "hidden",
+    "go": "Continue booking {\"top\":834,\"bottom\":886,\"in_view\":true}",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": null,
+   "guests_field": null,
+   "small": [],
+   "overflow_x": 0
+  },
+  "s4_sum": {
+   "level": "Level 2 – Rollers",
+   "dates": "20 Feb 2027 – 27 Feb 2027|7 nights",
+   "guests": "1 couple",
+   "room": "Shared twin room – 2 beds",
+   "base": "$1,466",
+   "supp": "+$80",
+   "pp": "$1,546",
+   "alllabel": "Total for 2 guests",
+   "all": "$3,092",
+   "note": "Prices in USD | Live price from the booking engine"
+  },
+  "s4_wa": "https://wa.me/972523593240?text=Hi Global Surf Lodge Kabalana, I have a question about the surf packages. Level 2 – Rollers, check-in 20 Feb 2027, 7 nights, 1 couple, Shared twin room – 2 beds.",
+  "taps_home_hero_to_engine": 8,
+  "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?couple=1&start=2027-02-20&end=2027-02-27",
+  "engine_calls": [
+   "GET /public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities",
+   "GET /public/accommodations/availabilities",
+   "POST /public/packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items"
+  ],
+  "cls": 0
+ },
+ "phone_blocked": {
+  "mode": "blocked",
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ],
+  "landed": "http://127.0.0.1:8764/book/",
+  "on_load": {
+   "engine_calls": 0,
+   "hosts": [
+    "127.0.0.1:8764"
+   ],
+   "videos": [
+    "gs-hero-loop.p546.webm"
+   ]
+  },
+  "s1_level": {
+   "hash": "",
+   "search": "",
+   "cur": "level",
+   "level": "level-1-fomies",
+   "room_checked": null,
+   "bar": {
+    "top": 776,
+    "bottom": 844,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "Next btn btn-book next",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": null,
+   "guests_field": null,
+   "small": [],
+   "overflow_x": 0
+  },
+  "s2_room_arrival": {
+   "hash": "#room",
+   "search": "?level=level-2-rollers",
+   "cur": "room",
+   "level": "level-2-rollers",
+   "room_checked": null,
+   "bar": {
+    "top": 776,
+    "bottom": 844,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "Next btn next btn-soft",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": {
+    "text": "Choose this roomChosen",
+    "top": 633,
+    "bottom": 685,
+    "in_view": true,
+    "under_bar": false
+   },
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": null,
+   "guests_field": null,
+   "small": [],
+   "overflow_x": 0
+  },
+  "s3_dates_arrival": {
+   "hash": "#dates",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "dates",
+   "level": "level-2-rollers",
+   "room_checked": "twin",
+   "bar": {
+    "top": 776,
+    "bottom": 844,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "Next btn next btn-book",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": {
+    "top": 1424,
+    "bottom": 1513,
+    "in_view": false
+   },
+   "guests_field": {
+    "top": 437,
+    "bottom": 641,
+    "in_view": true
+   },
+   "small": [],
+   "overflow_x": 0
+  },
+  "s3_chips": [
+   "2026-10-24",
+   "2026-10-31",
+   "2026-12-19",
+   "2027-01-23",
+   "2027-01-30",
+   "2027-02-13",
+   "2027-02-20",
+   "2027-02-27",
+   "2027-03-06",
+   "2027-03-13",
+   "2027-03-20",
+   "2027-03-27",
+   "2027-04-03"
+  ],
+  "date_chosen": "2027-02-20",
+  "s3c": {
+   "hash": "#dates",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "dates",
+   "level": "level-2-rollers",
+   "room_checked": "twin",
+   "bar": {
+    "top": 776,
+    "bottom": 844,
+    "in_view": true,
+    "text": "Total $3,092",
+    "next": "Next btn next btn-book",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": {
+    "top": 791,
+    "bottom": 880,
+    "in_view": false
+   },
+   "guests_field": {
+    "top": -196,
+    "bottom": 8,
+    "in_view": false
+   },
+   "small": [],
+   "overflow_x": 0
+  },
+  "s4_total": {
+   "hash": "#total",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "total",
+   "level": "level-2-rollers",
+   "room_checked": "twin",
+   "bar": {
+    "top": 776,
+    "bottom": 844,
+    "in_view": true,
+    "text": "Total $3,092",
+    "next": "hidden",
+    "go": "Continue booking {\"top\":786,\"bottom\":834,\"in_view\":true}",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": null,
+   "guests_field": null,
+   "small": [],
+   "overflow_x": 0
+  },
+  "s4_sum": {
+   "level": "Level 2 – Rollers",
+   "dates": "20 Feb 2027 – 27 Feb 2027|7 nights",
+   "guests": "1 couple",
+   "room": "Shared twin room – 2 beds",
+   "base": "$1,466",
+   "supp": "+$80",
+   "pp": "$1,546",
+   "alllabel": "Total for 2 guests",
+   "all": "$3,092",
+   "note": "Prices in USD | Live prices didn't load. These are the booking engine's prices from 29 Sep 2026."
+  },
+  "s4_wa": "https://wa.me/972523593240?text=Hi Global Surf Lodge Kabalana, I have a question about the surf packages. Level 2 – Rollers, check-in 20 Feb 2027, 7 nights, 1 couple, Shared twin room – 2 beds.",
+  "taps_home_hero_to_engine": 8,
+  "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?couple=1&start=2027-02-20&end=2027-02-27",
+  "engine_calls": [
+   "GET /public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities",
+   "GET /public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities",
+   "GET /public/accommodations/availabilities",
+   "POST /public/packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items"
+  ],
+  "cls": 0
+ },
+ "phone_mock_dorm_only": {
+  "mode": "mock-dorm-only",
+  "errors": [],
+  "landed": "http://127.0.0.1:8764/book/",
+  "on_load": {
+   "engine_calls": 0,
+   "hosts": [
+    "127.0.0.1:8764"
+   ],
+   "videos": [
+    "gs-hero-loop.p546.webm"
+   ]
+  },
+  "s1_level": {
+   "hash": "",
+   "search": "",
+   "cur": "level",
+   "level": "level-1-fomies",
+   "room_checked": null,
+   "bar": {
+    "top": 776,
+    "bottom": 844,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "Next btn btn-book next",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": null,
+   "guests_field": null,
+   "small": [],
+   "overflow_x": 0
+  },
+  "s2_room_arrival": {
+   "hash": "#room",
+   "search": "?level=level-2-rollers",
+   "cur": "room",
+   "level": "level-2-rollers",
+   "room_checked": null,
+   "bar": {
+    "top": 776,
+    "bottom": 844,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "Next btn next btn-soft",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": {
+    "text": "Choose this roomChosen",
+    "top": 633,
+    "bottom": 685,
+    "in_view": true,
+    "under_bar": false
+   },
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": null,
+   "guests_field": null,
+   "small": [],
+   "overflow_x": 0
+  },
+  "s3_dates_arrival": {
+   "hash": "#dates",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "dates",
+   "level": "level-2-rollers",
+   "room_checked": "twin",
+   "bar": {
+    "top": 776,
+    "bottom": 844,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "Next btn next btn-book",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": {
+    "top": 1424,
+    "bottom": 1513,
+    "in_view": false
+   },
+   "guests_field": {
+    "top": 437,
+    "bottom": 641,
+    "in_view": true
+   },
+   "small": [],
+   "overflow_x": 0
+  },
+  "s3_chips": [
+   "2026-10-24(x)",
+   "2026-10-31(x)",
+   "2026-12-19(x)",
+   "2027-01-23(x)",
+   "2027-01-30(x)",
+   "2027-02-13(x)",
+   "2027-02-20",
+   "2027-02-27(x)",
+   "2027-03-06(x)",
+   "2027-03-13(x)",
+   "2027-03-20(x)",
+   "2027-03-27(x)",
+   "2027-04-03(x)"
+  ],
+  "date_chosen": "2027-02-20",
+  "s3c": {
+   "hash": "#dates",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "dates",
+   "level": "level-2-rollers",
+   "room_checked": "twin",
+   "bar": {
+    "top": 776,
+    "bottom": 844,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "Next btn next btn-book",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [
+    "Not free on these dates: Shared twin room – 2 beds. Only the Mixed dorm room – 4 beds is free on these dates.Change room"
+   ],
+   "rstate": [
+    "Only the Mixed dorm room – 4 beds is free on these dates",
+    "Not free on these dates",
+    "Not free on these dates"
+   ],
+   "nights_field": {
+    "top": 790,
+    "bottom": 879,
+    "in_view": false
+   },
+   "guests_field": {
+    "top": -398,
+    "bottom": -194,
+    "in_view": false
+   },
+   "small": [],
+   "overflow_x": 0
+  },
+  "s4_total": {
+   "hash": "#total",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "total",
+   "level": "level-2-rollers",
+   "room_checked": "twin",
+   "bar": {
+    "top": 772,
+    "bottom": 844,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "hidden",
+    "go": "hidden",
+    "fix": "Change room"
+   },
+   "choose": null,
+   "dmsg": [
+    "Not free on these dates: Shared twin room – 2 beds. Only the Mixed dorm room – 4 beds is free on these dates.Change room"
+   ],
+   "rstate": [
+    "Only the Mixed dorm room – 4 beds is free on these dates",
+    "Not free on these dates",
+    "Not free on these dates"
+   ],
+   "nights_field": null,
+   "guests_field": null,
+   "small": [],
+   "overflow_x": 0
+  },
+  "s4_sum": {
+   "level": "Level 2 – Rollers",
+   "dates": "20 Feb 2027 – 27 Feb 2027|7 nights",
+   "guests": "1 couple",
+   "room": "Shared twin room – 2 beds",
+   "base": "$1,466",
+   "supp": "Not free on these dates",
+   "pp": "—",
+   "alllabel": "Total for 2 guests",
+   "all": "—",
+   "note": "Prices in USD | Live price from the booking engine"
+  },
+  "s4_wa": "https://wa.me/972523593240?text=Hi Global Surf Lodge Kabalana, I have a question about the surf packages. Level 2 – Rollers, check-in 20 Feb 2027, 7 nights, 1 couple, Shared twin room – 2 beds.",
+  "s4_go_hidden": true,
+  "s4_submit": "blocked",
+  "s4b_after_dorm": {
+   "hash": "#total",
+   "search": "?level=level-2-rollers&room=dorm",
+   "cur": "total",
+   "level": "level-2-rollers",
+   "room_checked": "dorm",
+   "bar": {
+    "top": 776,
+    "bottom": 844,
+    "in_view": true,
+    "text": "Total $2,932",
+    "next": "hidden",
+    "go": "Continue booking {\"top\":786,\"bottom\":834,\"in_view\":true}",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [
+    "Only the Mixed dorm room – 4 beds is free on these dates",
+    "Not free on these dates",
+    "Not free on these dates"
+   ],
+   "nights_field": null,
+   "guests_field": null,
+   "small": [],
+   "overflow_x": 0
+  },
+  "s4b_sum": {
+   "level": "Level 2 – Rollers",
+   "dates": "20 Feb 2027 – 27 Feb 2027|7 nights",
+   "guests": "1 couple",
+   "room": "Mixed dorm room – 4 beds",
+   "base": "$1,466",
+   "supp": "Included",
+   "pp": "$1,466",
+   "alllabel": "Total for 2 guests",
+   "all": "$2,932",
+   "note": "Prices in USD | Live price from the booking engine"
+  },
+  "taps_home_hero_to_engine": 8,
+  "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?couple=1&start=2027-02-20&end=2027-02-27",
+  "engine_calls": [
+   "GET /public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities",
+   "GET /public/accommodations/availabilities",
+   "POST /public/packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items",
+   "GET /public/accommodations/availabilities",
+   "POST /public/packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items"
+  ],
+  "cls": 0
+ },
+ "phone_mock_date_struck": {
+  "mode": "mock-date-struck",
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ],
+  "landed": "http://127.0.0.1:8764/book/",
+  "on_load": {
+   "engine_calls": 0,
+   "hosts": [
+    "127.0.0.1:8764"
+   ],
+   "videos": [
+    "gs-hero-loop.p546.webm"
+   ]
+  },
+  "s1_level": {
+   "hash": "",
+   "search": "",
+   "cur": "level",
+   "level": "level-1-fomies",
+   "room_checked": null,
+   "bar": {
+    "top": 776,
+    "bottom": 844,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "Next btn btn-book next",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": null,
+   "guests_field": null,
+   "small": [],
+   "overflow_x": 0
+  },
+  "s2_room_arrival": {
+   "hash": "#room",
+   "search": "?level=level-2-rollers",
+   "cur": "room",
+   "level": "level-2-rollers",
+   "room_checked": null,
+   "bar": {
+    "top": 776,
+    "bottom": 844,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "Next btn next btn-soft",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": {
+    "text": "Choose this roomChosen",
+    "top": 633,
+    "bottom": 685,
+    "in_view": true,
+    "under_bar": false
+   },
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": null,
+   "guests_field": null,
+   "small": [],
+   "overflow_x": 0
+  },
+  "s3_dates_arrival": {
+   "hash": "#dates",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "dates",
+   "level": "level-2-rollers",
+   "room_checked": "twin",
+   "bar": {
+    "top": 776,
+    "bottom": 844,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "Next btn next btn-book",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": {
+    "top": 1424,
+    "bottom": 1513,
+    "in_view": false
+   },
+   "guests_field": {
+    "top": 437,
+    "bottom": 641,
+    "in_view": true
+   },
+   "small": [],
+   "overflow_x": 0
+  },
+  "s3_chips": [
+   "2026-10-24(x)",
+   "2026-10-31(x)",
+   "2026-12-19(x)",
+   "2027-01-23(x)",
+   "2027-01-30(x)",
+   "2027-02-13(x)",
+   "2027-02-20",
+   "2027-02-27",
+   "2027-03-06(x)",
+   "2027-03-13(x)",
+   "2027-03-20(x)",
+   "2027-03-27(x)",
+   "2027-04-03(x)"
+  ],
+  "date_chosen": "2027-02-20",
+  "s3_struck": {
+   "hash": "#dates",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "dates",
+   "level": "level-2-rollers",
+   "room_checked": "twin",
+   "bar": {
+    "top": 776,
+    "bottom": 844,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "Next btn next btn-book",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [
+    "Sat 20 Feb 2027 isn’t available for 1 woman, 1 couple. Choose another Saturday.Change room"
+   ],
+   "rstate": [],
+   "nights_field": {
+    "top": 1548,
+    "bottom": 1637,
+    "in_view": false
+   },
+   "guests_field": {
+    "top": 424,
+    "bottom": 628,
+    "in_view": true
+   },
+   "small": [],
+   "overflow_x": 0
+  },
+  "s3_struck_start": "",
+  "s3_struck_next": "dates",
+  "s3_struck_submit": "blocked",
+  "handoff": null
+ },
+ "phone_small_blocked": {
+  "mode": "blocked",
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ],
+  "landed": "http://127.0.0.1:8764/book/",
+  "on_load": {
+   "engine_calls": 0,
+   "hosts": [
+    "127.0.0.1:8764"
+   ],
+   "videos": [
+    "gs-hero-loop.p546.webm"
+   ]
+  },
+  "s1_level": {
+   "hash": "",
+   "search": "",
+   "cur": "level",
+   "level": "level-1-fomies",
+   "room_checked": null,
+   "bar": {
+    "top": 572,
+    "bottom": 640,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "Next btn btn-book next",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": null,
+   "guests_field": null,
+   "small": [],
+   "overflow_x": 0
+  },
+  "s2_room_arrival": {
+   "hash": "#room",
+   "search": "?level=level-2-rollers",
+   "cur": "room",
+   "level": "level-2-rollers",
+   "room_checked": null,
+   "bar": {
+    "top": 572,
+    "bottom": 640,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "Next btn next btn-soft",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": {
+    "text": "Choose this roomChosen",
+    "top": 615,
+    "bottom": 667,
+    "in_view": false,
+    "under_bar": true
+   },
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": null,
+   "guests_field": null,
+   "small": [],
+   "overflow_x": 0
+  },
+  "s3_dates_arrival": {
+   "hash": "#dates",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "dates",
+   "level": "level-2-rollers",
+   "room_checked": "twin",
+   "bar": {
+    "top": 572,
+    "bottom": 640,
+    "in_view": true,
+    "text": "From $1,466 pp",
+    "next": "Next btn next btn-book",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": {
+    "top": 1401,
+    "bottom": 1490,
+    "in_view": false
+   },
+   "guests_field": {
+    "top": 414,
+    "bottom": 618,
+    "in_view": true
+   },
+   "small": [],
+   "overflow_x": 0
+  },
+  "s3_chips": [
+   "2026-10-24",
+   "2026-10-31",
+   "2026-12-19",
+   "2027-01-23",
+   "2027-01-30",
+   "2027-02-13",
+   "2027-02-20",
+   "2027-02-27",
+   "2027-03-06",
+   "2027-03-13",
+   "2027-03-20",
+   "2027-03-27",
+   "2027-04-03"
+  ],
+  "date_chosen": "2027-02-20",
+  "s3c": {
+   "hash": "#dates",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "dates",
+   "level": "level-2-rollers",
+   "room_checked": "twin",
+   "bar": {
+    "top": 572,
+    "bottom": 640,
+    "in_view": true,
+    "text": "Total $3,092",
+    "next": "Next btn next btn-book",
+    "go": "hidden",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": {
+    "top": 689,
+    "bottom": 778,
+    "in_view": false
+   },
+   "guests_field": {
+    "top": -298,
+    "bottom": -94,
+    "in_view": false
+   },
+   "small": [],
+   "overflow_x": 0
+  },
+  "s4_total": {
+   "hash": "#total",
+   "search": "?level=level-2-rollers&room=twin",
+   "cur": "total",
+   "level": "level-2-rollers",
+   "room_checked": "twin",
+   "bar": {
+    "top": 572,
+    "bottom": 640,
+    "in_view": true,
+    "text": "Total $3,092",
+    "next": "hidden",
+    "go": "Continue booking {\"top\":582,\"bottom\":630,\"in_view\":true}",
+    "fix": "hidden"
+   },
+   "choose": null,
+   "dmsg": [],
+   "rstate": [],
+   "nights_field": null,
+   "guests_field": null,
+   "small": [],
+   "overflow_x": 0
+  },
+  "s4_sum": {
+   "level": "Level 2 – Rollers",
+   "dates": "20 Feb 2027 – 27 Feb 2027|7 nights",
+   "guests": "1 couple",
+   "room": "Shared twin room – 2 beds",
+   "base": "$1,466",
+   "supp": "+$80",
+   "pp": "$1,546",
+   "alllabel": "Total for 2 guests",
+   "all": "$3,092",
+   "note": "Prices in USD | Live prices didn't load. These are the booking engine's prices from 29 Sep 2026."
+  },
+  "s4_wa": "https://wa.me/972523593240?text=Hi Global Surf Lodge Kabalana, I have a question about the surf packages. Level 2 – Rollers, check-in 20 Feb 2027, 7 nights, 1 couple, Shared twin room – 2 beds.",
+  "taps_home_hero_to_engine": 8,
+  "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?couple=1&start=2027-02-20&end=2027-02-27",
+  "engine_calls": [
+   "GET /public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities",
+   "GET /public/products/4b58b491-24fc-4fb8-a40d-2705df961db4/availabilities",
+   "GET /public/accommodations/availabilities",
+   "POST /public/packages/4b58b491-24fc-4fb8-a40d-2705df961db4/items"
+  ],
+  "cls": 0
+ },
+ "home_book_hrefs": [
+  "Book now -> book/",
+  "Book package now -> book/",
+  " -> book/?level=level-1-fomies#room",
+  "Choose Level 1 -> book/?level=level-1-fomies#room",
+  " -> book/?level=level-2-rollers#room",
+  "Choose Level 2 -> book/?level=level-2-rollers#room",
+  " -> book/?level=level-3-riders#room",
+  "Choose Level 3 -> book/?level=level-3-riders#room",
+  "Choose this room -> book/?room=dorm",
+  "Choose this room -> book/?room=twin",
+  "Choose this room -> book/?room=double"
+ ],
+ "deeplink_room_double": {
+  "cur": "level",
+  "level": null,
+  "room": "double",
+  "next": "btn next btn-soft"
+ },
+ "deeplink_level3": {
+  "cur": "level",
+  "level": "level-3-riders",
+  "room": null,
+  "next": "btn btn-book next"
+ },
+ "deeplink_room_double_next_without_level": "level",
+ "deeplink_room_double_after_level3": {
+  "cur": "room",
+  "room": "double"
+ },
+ "tab_first_40": [
+  "A Skip to content ring=true",
+  "A Global Surf Lodge Ka ring=true",
+  "BUTTON:button Menu ring=true",
+  "A 1Level ring=true",
+  "A 2Room ring=true",
+  "A 3Dates & guests ring=true",
+  "A 4Total ring=true",
+  "INPUT:radio level-1-fomies ring=true",
+  "A Ask about dates ring=true",
+  "BUTTON:button Next ring=true",
+  "A Global Surf Lodge Ka ring=true",
+  "A WhatsApp us ring=true",
+  "A Call us ring=true",
+  "A Email us ring=true",
+  "A Open in Maps ring=true",
+  "A Instagram ring=true",
+  "A YouTube ring=true",
+  "A Facebook ring=true",
+  "A Terms and conditions ring=true",
+  "BODY Skip to content\n\n  \n ring=false",
+  "A Skip to content ring=true",
+  "A Global Surf Lodge Ka ring=true",
+  "BUTTON:button Menu ring=true",
+  "A 1Level ring=true",
+  "A 2Room ring=true",
+  "A 3Dates & guests ring=true",
+  "A 4Total ring=true",
+  "INPUT:radio level-1-fomies ring=true",
+  "A Ask about dates ring=true",
+  "BUTTON:button Next ring=true",
+  "A Global Surf Lodge Ka ring=true",
+  "A WhatsApp us ring=true",
+  "A Call us ring=true",
+  "A Email us ring=true",
+  "A Open in Maps ring=true",
+  "A Instagram ring=true",
+  "A YouTube ring=true",
+  "A Facebook ring=true",
+  "A Terms and conditions ring=true",
+  "BODY Skip to content\n\n  \n ring=false"
+ ],
+ "reduced_videos_desktop": 0,
+ "phone_video_requests": [],
+ "nojs_390": {
+  "visible_steps": [
+   "level",
+   "room",
+   "dates",
+   "total"
+  ],
+  "first_start": [
+   "2026-10-24",
+   "2026-10-31"
+  ],
+  "submit_without_duration": "blocked (no request)",
+  "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?female=0&male=0&couple=1&start=2027-02-20&duration=8"
+ },
+ "nojs_1440": {
+  "visible_steps": [
+   "level",
+   "room",
+   "dates",
+   "total"
+  ],
+  "first_start": [
+   "2026-10-24",
+   "2026-10-31"
+  ],
+  "submit_without_duration": "blocked (no request)",
+  "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?female=0&male=0&couple=1&start=2027-02-20&duration=8"
+ }
+}

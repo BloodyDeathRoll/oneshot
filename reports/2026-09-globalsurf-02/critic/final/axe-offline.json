@@ -1,0 +1,84 @@
+{
+ "axe": {
+  "home_390": {
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "n": 22
+    }
+   ]
+  },
+  "book_level_390": {
+   "violations": [],
+   "incomplete": []
+  },
+  "book_room_390": {
+   "violations": [],
+   "incomplete": []
+  },
+  "book_dates_390": {
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "n": 3
+    }
+   ]
+  },
+  "book_total_390": {
+   "violations": [],
+   "incomplete": []
+  },
+  "home_1440": {
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "n": 17
+    }
+   ]
+  },
+  "book_level_1440": {
+   "violations": [],
+   "incomplete": []
+  },
+  "book_room_1440": {
+   "violations": [],
+   "incomplete": []
+  },
+  "book_dates_1440": {
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "n": 3
+    }
+   ]
+  },
+  "book_total_1440": {
+   "violations": [],
+   "incomplete": []
+  }
+ },
+ "offline": {
+  "home": {
+   "status": 200,
+   "third_party_attempted_on_load": {},
+   "third_party_attempted_after_scroll": {
+    "rosa-data-opal.vercel.app": 1
+   },
+   "local_failed": [],
+   "text_chars": 4956,
+   "rosa_text": "The waves The lodge overlooks two spots, The Rock and South Point. More waves are a few minutes away by tuk-tuk. See today's forecast for South Point on Rosa"
+  },
+  "book/": {
+   "status": 200,
+   "third_party_attempted_on_load": {},
+   "third_party_attempted_after_scroll": {},
+   "local_failed": [],
+   "text_chars": 1299,
+   "rosa_text": null
+  }
+ }
+}

@@ -1,0 +1,19 @@
+BLOCK false
+   DIV.wrap y=80 h=856   ->   DIV.wrap y=80 h=927
+   DIV. y=80 h=316   ->   DIV. y=80 h=387
+   DIV.now y=261 h=53   ->   DIV.now y=261 h=99
+   P.rosa-link y=-7729 h=0   ->   P.rosa-link y=-128 h=0
+   P.detail y=336 h=44   ->   P.detail y=381 h=70
+   DIV.rosa-box y=436 h=500   ->   DIV.rosa-box y=507 h=500
+   DIV.fallback y=436 h=500   ->   DIV.fallback y=507 h=500
+   undefined   ->   IFRAME. y=507 h=500
+  visible link {"cls":"btn btn-soft","parent":"fallback","topEl":null,"same":false}
+BLOCK true
+   DIV.wrap y=80 h=856   ->   DIV.wrap y=80 h=244
+   DIV. y=80 h=316   ->   DIV. y=80 h=244
+   DIV.now y=261 h=53   ->   DIV.now y=-128 h=0 [hidden]
+   P.rosa-link y=-7729 h=0   ->   P.rosa-link y=257 h=67
+   P.detail y=336 h=44   ->   P.detail y=-128 h=0 [hidden]
+   DIV.rosa-box y=436 h=500   ->   DIV.rosa-box y=-128 h=0
+   DIV.fallback y=436 h=500   ->   DIV.fallback y=-128 h=0
+  visible link {"cls":"btn btn-soft","parent":"rosa-link on","topEl":"A.btn btn-soft","same":true}
