@@ -67,3 +67,30 @@ Exactly as `dashboard/BRIEF-overview-03.md` §4–§6, with these paths:
   any health signal that is not traceable to data.
 
 Stop after the critic; Shahar picks.
+
+## Amendment — pick (Shahar, 2026-10-06): B "Board", with these changes
+
+Verbatim: *"For the agents, generally speaking option B works best. I do not understand what "shared
+with..." means. Main table: there is TOO MUCH info. The checked work colord graphics is enoth, we do not
+need the "Why it's red" line under it. Too much red too. Make the states super opaque light red, and the
+texts red. We do not need the initial icons for the agents. Inner view: we absolutely DO NOT need the full
+story of interaction with the agent. You can keep your access to the data, but humans DO NOT need to
+re-read this. Keep things concise. Suggest a change - is that your suggestion, or where you want me to
+write a suggestion? Not clear. To sum things up: Table needs to be cleaner, with less info. Inner page
+should be WAY LESS info. We can have an "Advanced" view that shows all this data. Simple view should be way
+more concise. What does the agent do, what is wrong, and a CTA for YOU to suggest a correction, that we can
+copy and send a claude session as a prompt."*
+
+Read as:
+- **Table:** agent name + one-line role, state, the checked-work marks, the sent-back fraction. Nothing
+  else: no "Why it's red" line, no initials tiles, no "Shared with …" line (two agents judged together
+  can simply show the same marks). States as a very light red fill with red text; red used sparingly.
+- **Agent page, simple view (default):** three things only — *What it does* (2–3 plain sentences),
+  *What is wrong* (one or two plain sentences, or "Nothing checks its work yet"), and one CTA: Claude's
+  suggested correction as a ready prompt with **Copy prompt** (to paste into a Claude session). The
+  prompt is built from the data (what is wrong, where, which file to change) and asks the session to
+  propose the change — it does not invent the change. Pending tweaks for this agent stay as a small
+  Approve / Reject line if any.
+- **Advanced view (toggle):** everything else — full record, every send-back, history, the agent's files
+  and the editors ("Your rules" saves directly; Claude's file edits become a suggested tweak), with
+  labels that say plainly who writes what.

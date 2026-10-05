@@ -82,3 +82,58 @@ preview) — reference them by relative path from the mockup; do not copy them i
 
 Stop after the critic. Show Shahar the three Overviews side by side; he picks one. Only then is it
 built into `dashboard/mockups/soft-cards/src/index.html`.
+
+## Amendment — round 2 (Shahar at the gate, 2026-10-05, no pick)
+
+Verbatim: *"None are full width so hard to judge next to what we have now. Generally speaking: Top part of
+C is better — clearer, better divisions, not loving the colored card though, and the smaller matrixes need
+work. We dont need the Alon/Shahar differentiation, its not a contest. What does 'active run' mean? Sites
+lists of A is better, but still way too messy. We need small thumbs of the websites and CTAs. We have the
+full view on the sites tab we do not need all of it here. Lets try again, 3 more mockups. Try to get
+inspired from clean dashboards like Stripe."*
+
+What this changes for round 2:
+- **Full width**, fluid like the current dashboard (sidebar + content filling the window); no centred
+  max-width page. Judge at 1440 and 1920 too.
+- **Top:** C's structure (clear divisions) but **no solid coloured money card** — Stripe-like: white
+  surfaces, hairline dividers, restrained colour, numbers carry the weight. The small count tiles/chain
+  need real work (Stripe's metric row is the bar).
+- **No per-operator comparison** (no Shahar | Alon card). "Who ran it" stays as a quiet attribute per site.
+- **No run jargon** ("active run", run ids) on the Overview.
+- **Sites list:** A's list idea, much cleaner — a compact row per site: small thumbnail, name, status,
+  and the CTAs. Nothing else (the Sites tab has the full view). Think Stripe's payments/customers tables.
+- **Inspiration:** Stripe Dashboard (home, payments list, balances) — calm white, generous whitespace,
+  thin rules, compact tables, one accent. Plus the existing reference PNGs.
+- Keep everything else in §1–§5 (exact CTA labels, popups over a white 80 % veil, real data) and fix the
+  round-1 critic's hard fail: after Hand off, show the request in plain words; keep the full prompt
+  collapsed (Copy prompt still copies it).
+- Outputs: `dashboard/overview-03/r2/concepts.md`, `dashboard/overview-03/r2/{a,b,c}/index.html` +
+  `notes.md`, `dashboard/overview-03/r2/critique.md`; comparison page `dashboard/overview-03/r2/index.html`
+  whose "Open" links open each mockup full width.
+
+## Amendment — round 3 (Shahar, 2026-10-06, no pick; two options to build)
+
+Verbatim: *"For overview, I want another run on two options:
+Option A: Use option B's top section (revene/expenses + 5 others). Make the 5 others bigger, but keep the
+structure: Three columns (revenu/expenses/others) - and the "others" can be arranged in two inner columns
+(3 rows). Bottom part: Sites & Also waiting for you on the same row, sites as the lead. Remove handoffs.
+Use WAY bigger thumbs for the websites, and two rows for status/website/messages column
+Option B: Same instructions as A for the top. For the bottom part: Move both suggestions to the update
+status/handoff block, underneath these two. Aligned to right of line, vertical align to center of line. On
+the left: Larger thumbs. Preview and pitch closer to the titles. On the right: remove handoffs"*
+
+Read as (base: round 2 — top from `r2/b`, site table from `r2/a`):
+- **Top, both options:** r2/b's money band, laid out as three columns — Revenues | Expenses | the five
+  counts. The five counts are bigger, in two inner columns × three rows (5 items, one cell empty or used
+  for nothing). Keep r2/b's structure and calm.
+- **Option A bottom:** one row with two blocks — Sites (lead, wide) and "Also waiting on you" (narrow).
+  No Handoffs block. Site rows: WAY bigger thumbnails; the status / website (Preview website, Pitch) /
+  messages (Suggested …) column is two rows.
+- **Option B bottom:** r2/a-style site rows. Left: larger thumbnail, with Preview website and Pitch right
+  under the site name. Right end of the row: Update status and Hand off, and directly under them the two
+  Suggested message buttons — the whole action block right-aligned and vertically centred in the row.
+  The right-hand column ("Also waiting on you") stays, without Handoffs.
+- Everything else from §1–§5 and the round-2 amendment holds (full width, Stripe-clean, exact labels,
+  popups over a white 80 % veil, waiting count = Needs you = 7, no jargon).
+- Outputs: `dashboard/overview-03/r3/{a,b}/index.html` + `notes.md`, `r3/critique.md`, comparison page
+  `r3/index.html`.
