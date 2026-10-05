@@ -1,0 +1,40 @@
+# Site monitor — the smoke subset of the post-CMS acceptance suite (tools/site-check.mjs --all --smoke),
+# every 6 hours and on demand, against every live client site (sites/*/deploy.json, the ledger's
+# previews and deliveries) and each CMS's public health. Read-only: no secrets, no logins, no browser,
+# never a request to a booking engine. A failing check fails this run; GitHub's failed-run email is
+# the alert (agents/deployer/tools.md). Scheduled runs only run from the default branch.
+name: Site monitor
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-monitor
+  cancel-in-progress: false
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # no npm install: the smoke subset uses only Node's fetch
+      - name: Smoke-check every live site and the CMS
+        run: node tools/site-check.mjs --all --smoke --report site-monitor.json
+      - name: Keep the report of a failed run
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-monitor-report
+          path: site-monitor.json
+          retention-days: 7
