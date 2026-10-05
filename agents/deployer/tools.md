@@ -1,8 +1,20 @@
 # deployer / tools.md — what the agent may call, and how.
 
-version: 0.2.0 — the `managed` adapter is real code now (`deploy/managed/deploy.mjs`, first run 2026-09-25); the other two adapters still follow the Payload spike (`spikes/payload/README.md`).
+version: 0.3.0 — station 6 is now Preview (static build to `*.workers.dev`, no CMS); the three adapters below run only at station 8 Deliver, after `outcome:sale` and the client's `product_chosen` line (2026-10-05). The `managed` adapter is real code (`deploy/managed/deploy.mjs`, first run 2026-09-25); the other two adapters still follow the Payload spike (`spikes/payload/README.md`).
 
-The deployer calls exactly one adapter per business. All three implement the same steps with the same names and the same result record (`{step, ok, started, ms, evidence}` appended to `sites/<slug>/deploy.json`).
+## Station 6 — Preview (no adapter, no CMS)
+
+| Step | Calls | Evidence |
+|---|---|---|
+| build | in `sites/<slug>/final/`: `npm run build` as a **preview build** — no production `SITE_URL` (unset, or the `https://<brand>.os1.workers.dev` address; the site's preview rule, `IS_PREVIEW` in `src/lib/site.mjs` on the sites built so far, then writes noindex, a disallow-all `robots.txt` and no sitemap) | build output, `dist/` page list |
+| deploy | `npx wrangler deploy` from `sites/<slug>/final/` with the template's own `wrangler.jsonc` (name = the customer's brand slug, no prefix; `workers_dev: true`; `assets.directory: ./dist`; no `main`), logged in to the Oneshot Cloudflare account only (PLAN.md §9) | URL, Worker version id |
+| verify | `curl` every page → 200; live HTML of every page byte-identical to `dist/` (e.g. `cmp` / sha256 of each); noindex meta in the live HTML; `robots.txt` disallows all; `/sitemap.xml` → 404 | status codes, hashes, the strings found |
+
+Nothing else: no Payload call, no tenant, no seed, no owner user, no domain, no `sites/<slug>/deploy.json`, no zip. The report's URL and evidence go into the orchestrator's `previewed` line.
+
+## Station 8 — Deliver: the three adapters
+
+The deployer calls exactly one adapter per business, the one named by the `hosting_mode` of the `product_chosen` line. All three implement the same steps with the same names and the same result record (`{step, ok, started, ms, evidence}` appended to `sites/<slug>/deploy.json`).
 
 | Step | managed | self_hosted_docker | static_only |
 |---|---|---|---|
@@ -33,7 +45,7 @@ Run: `node deploy/managed/deploy.mjs <slug> [--steps provision,seed,deploy,verif
 | `provision` | rsync the template to the server (no build products, no photos); REST as super-admin: create `tenants` doc (name, slug), the owner user (email/password generated, role `owner`, `tenants: [tenant]`) and an empty `sites` doc. Idempotent | tenant id, owner user id, site id; password only to the sealed channel `~/.oneshot/sealed/<slug>.json` (mode 600, outside the repo) |
 | `seed` | `content.json` → export-format dir → import **as super-admin** (`ratings`, `testimonials` and `forecast.rosaSpotId` are deployer fields an owner cannot write). Photo names = `<slug>-<sha256:8>-<original>`: no clash across tenants (Payload renames clashes), and a re-seed reuses the stored file. Photos of the tenant the site no longer uses are deleted. Photos only with an allowed license note | field keys seeded, gaps, media ids, reused/removed |
 | `deploy` | `cms/scripts/publish.sh <slug>` over SSH → publisher `POST /publish {tenant, wait: true}` (the same queue as the CMS hook, so it never overlaps a hook build); `DEPLOY_MODE=live` in `cms/.env`; Worker config = the template's own `wrangler.jsonc` (name = the customer's brand slug, no prefix; `assets.directory: ./dist`, no `main`). Never run `publisher/src/cli.mjs` while the service is up | publish record (buildMs, deployMs, url, version); parity: the CMS-built `index.html` equals a local build of `content.json` (photo names aside); live HTML equals the build, 200, noindex on `*.workers.dev` |
-| `attach_domain` | Only after a sale (ledger `outcome:sale`). Client already owns a domain: we set up its DNS to the Worker. Otherwise Cloudflare Registrar purchase (**human "go"**, billed through to the client), then DNS + custom domain on the Worker via `infra/` scripts | domain, DNS records, HTTPS 200 on the domain |
+| `attach_domain` | Station 8 only, after the client's `product_chosen` line. Client already owns a domain: we set up its DNS to the Worker. Otherwise Cloudflare Registrar purchase (**human "go"**, billed through to the client), then DNS + custom domain on the Worker via `infra/` scripts | domain, DNS records, HTTPS 200 on the domain |
 | `verify` | owner login → change one price (no `priceList` rows: the intro text block) → site rebuilt through the hook → new value in live HTML → restore; owner `GET /api/sites` returns exactly one doc; owner `GET` another tenant's site → 404; owner sees no foreign media; anonymous → 403; owner adding a rating → 400 | status codes, strings found, save→live ms |
 | `handoff` | skip (managed clients get `handoff/03-how-to-edit.md` only, filled and translated) | — |
 | `export` | optional: static zip of the last build to `dist/<slug>.zip`, static check | zip sha256, pages opened |
