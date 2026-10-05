@@ -29,6 +29,7 @@ button,input,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
 svg{display:block;flex:none}
 :focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:6px}
+h1[tabindex="-1"]:focus{outline:none}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:16px;top:-60px;background:#fff;padding:10px 16px;border-radius:10px;z-index:50;font-weight:700}
 .skip:focus{top:12px}
@@ -91,16 +92,16 @@ main{min-width:0;padding:0 40px 72px;width:100%}
 .bhead{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding:20px 0 14px}
 .bhead h2{font-size:20px;font-weight:700;letter-spacing:-.01em}
 .bhead p{font-size:15px;color:var(--ink2);margin-top:4px}
-.grid-row{display:grid;grid-template-columns:248px 136px minmax(0,1fr) 88px 104px 32px;align-items:center}
-.work{display:grid;grid-template-columns:minmax(0,1fr) 104px;row-gap:10px;align-items:center}
+.grid-row{display:grid;grid-template-columns:300px 160px minmax(0,1fr) 32px;align-items:center}
+.work{display:grid;grid-template-columns:minmax(0,1fr) 120px;row-gap:10px;align-items:center}
 .thead{min-height:44px;border-top:1px solid var(--rule2);border-bottom:1px solid var(--rule2);font-size:14px;font-weight:600;color:var(--ink3)}
 .thead .work{row-gap:0}
 .thead .r{text-align:right;padding-right:16px}
 .thead .c-step.thc{text-align:center;line-height:1.25;font-size:14px;font-weight:600}
-.brow{position:relative;min-height:72px;padding:12px 0;border-bottom:1px solid var(--rule2)}
+.brow{position:relative;min-height:76px;padding:14px 0;border-bottom:1px solid var(--rule2)}
 .brow:last-child{border-bottom:0}
 .brow:hover{background:var(--hover);box-shadow:-24px 0 0 var(--hover),24px 0 0 var(--hover)}
-.brow.two{min-height:88px}
+.brow.two{min-height:96px}
 .c-agent{display:flex;align-items:center;gap:14px;min-width:0;padding-right:16px}
 .mono{width:40px;height:40px;border-radius:12px;background:var(--chip);color:var(--ink2);font-size:14px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;flex:none;letter-spacing:.02em}
 .c-agent>div{min-width:0}
@@ -118,7 +119,7 @@ main{min-width:0;padding:0 40px 72px;width:100%}
 .c-go svg{width:20px;height:20px}
 .frac{text-align:right;padding-right:16px;line-height:1.1}
 .frac b{display:block;font-size:22px;font-weight:700;letter-spacing:-.01em}
-.frac b.red{color:var(--red)}.frac b.amber{color:var(--amber)}.frac b.green{color:var(--green)}
+
 .why{grid-column:1/-1;font-size:14px;color:var(--ink3);font-weight:500;margin-top:-2px;line-height:1.4}
 .why b{color:var(--ink2);font-weight:600}
 .why b.wr{color:var(--red);font-weight:700}
@@ -133,9 +134,9 @@ code{font-family:inherit;font-size:.9em;font-weight:600;background:var(--chip);c
 /* state pills (concepts §1.3) */
 .state{display:inline-flex;align-items:center;gap:7px;height:32px;padding:0 13px 0 10px;border-radius:999px;font-size:14px;font-weight:700;white-space:nowrap;line-height:1}
 .state i{width:16px;height:16px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-style:normal;font-size:12px;font-weight:800;flex:none}
-.state.red{background:var(--red);color:#fff}.state.red i{background:#fff;color:var(--red)}
-.state.amber{background:var(--amber-bg);color:var(--ink);box-shadow:inset 0 0 0 2px var(--amber)}.state.amber i{background:var(--amber);color:#fff}
-.state.green{background:var(--green);color:#fff}.state.green i{background:#fff;color:var(--green)}
+.state.red{background:var(--red-bg);color:var(--red)}.state.red i{background:var(--red);color:#fff}
+.state.amber{background:var(--amber-bg);color:#7A4600}.state.amber i{background:#9A5B00;color:#fff}
+.state.green{background:var(--green-bg);color:#14652C}.state.green i{background:var(--green);color:#fff}
 .state.early{background:#fff;color:var(--ink2);box-shadow:inset 0 0 0 1.5px var(--grey)}.state.early i{width:8px;height:8px;background:var(--grey);margin:0 4px}
 .state.none{background:#fff;color:var(--ink2);box-shadow:inset 0 0 0 1.5px var(--grey)}.state.none i{background:transparent;color:var(--ink2);font-size:15px}
 .state.sm{height:26px;font-size:13px;padding:0 10px 0 8px;gap:5px}
@@ -166,7 +167,11 @@ code{font-family:inherit;font-size:.9em;font-weight:600;background:var(--chip);c
 .bdg{min-width:22px;height:22px;border-radius:999px;background:var(--acc);color:#fff;font-size:13px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 7px}
 
 /* legend */
-.legend{border-top:1px solid var(--rule2);margin:0 -24px;padding:18px 24px 20px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px 20px;background:#FBFCFE;border-radius:0 0 20px 20px}
+.legend{border-top:1px solid var(--rule2);margin:0 -24px;padding:14px 24px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px;background:#FBFCFE;border-radius:0 0 20px 20px}
+.legend details{margin-left:auto;font-size:14px;color:var(--ink2)}
+.legend summary{cursor:pointer;font-weight:700;color:var(--ink2);border-radius:6px}
+.legend .rules{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px 20px;margin-top:12px}
+.legend details[open]{flex-basis:100%;margin-left:0}
 .legend .li{display:flex;flex-direction:column;align-items:flex-start;gap:8px;font-size:14px;color:var(--ink2);line-height:1.4}
 .legend .keys{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px 24px;padding-top:12px;border-top:1px dashed var(--rule)}
 .legend .k{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--ink2)}
@@ -210,11 +215,14 @@ code{font-family:inherit;font-size:.9em;font-weight:600;background:var(--chip);c
 .doc{min-width:0}
 .tabs{position:sticky;top:0;z-index:5;background:#fff;border-radius:20px 20px 0 0;padding:16px 24px 0;border-bottom:1px solid var(--rule2)}
 .tablist{display:flex;gap:4px;flex-wrap:wrap}
-.tab{position:relative;height:48px;padding:0 16px;border:0;background:transparent;font-size:16px;font-weight:600;color:var(--ink2);border-radius:12px 12px 0 0;display:inline-flex;align-items:center;gap:6px}
+.tab{position:relative;min-height:48px;padding-top:8px;padding-bottom:8px;padding:0 16px;border:0;background:transparent;font-size:16px;font-weight:600;color:var(--ink2);border-radius:12px 12px 0 0;display:inline-flex;align-items:center;gap:6px}
 .tab:hover{color:var(--ink);background:var(--ground)}
 .tab[aria-selected="true"]{color:var(--acc);font-weight:700}
 .tab[aria-selected="true"]::after{content:"";position:absolute;left:12px;right:12px;bottom:-1px;height:3px;border-radius:3px 3px 0 0;background:var(--acc)}
 .tab svg{width:16px;height:16px}
+.tab .tl{display:flex;flex-direction:column;align-items:flex-start;line-height:1.2}
+.tab .tl small{font-size:13px;font-weight:500;color:var(--ink3);margin-top:3px}
+.tab[aria-selected="true"] .tl small{color:var(--acc)}
 .tab .dotp{width:7px;height:7px;border-radius:50%;background:var(--acc)}
 .morewrap{position:relative}
 .moremenu{position:absolute;left:0;top:52px;min-width:240px;background:#fff;border-radius:14px;box-shadow:var(--shadow-pop),0 0 0 1px var(--rule);padding:6px;z-index:10}
@@ -318,6 +326,30 @@ textarea.ed:focus{outline:2px solid var(--acc);outline-offset:1px;border-color:v
 .diff .del{background:var(--red-bg);color:#A3142A;text-decoration:line-through;text-decoration-thickness:1px}
 .diff .del::before{content:"−";color:#A3142A}
 .diff .gap{color:var(--ink3);font-size:14px;padding:4px 14px 4px 36px;background:#FBFCFE}
+
+/* ---------- simple agent page ---------- */
+.shead{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:12px 0 24px;flex-wrap:wrap}
+.viewseg button{min-width:112px}
+.simple{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:24px;align-items:stretch}
+.sblock{padding:28px 32px 30px;display:flex;flex-direction:column}
+.sblock h2{font-size:15px;font-weight:700;color:var(--ink3);margin-bottom:12px}
+.sblock .big{font-size:20px;line-height:1.55;color:var(--read)}
+.sblock .big b{font-weight:700}
+.sblock .cta{margin-top:auto;padding-top:24px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px}
+.sblock .cta p{font-size:15px;color:var(--ink2);line-height:1.5;flex:1;min-width:240px}
+.sblock .cta .btn-p{height:52px;padding:0 24px;font-size:16px}
+.twlines{margin-top:24px;padding:18px 24px;border-radius:20px;background:#fff;box-shadow:var(--shadow)}
+.twlines h2{font-size:15px;font-weight:700;color:var(--ink3);margin-bottom:6px}
+.twl{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;padding:10px 0;flex-wrap:wrap}
+.twl+.twl{border-top:1px solid var(--rule2)}
+.twl .tt{font-size:16px;font-weight:600;color:var(--ink);flex:1;min-width:240px}
+.twl .tt small{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:999px;background:var(--t5);color:var(--acc);font-size:13px;font-weight:700;margin-right:8px;vertical-align:1px}
+.twl .tb{display:flex;gap:8px;flex-wrap:wrap}
+.twl .done{font-size:15px;color:var(--ink2)}
+.twl .done b{color:var(--ink)}
+.prompt-box{white-space:pre-wrap;background:var(--ground);border-radius:14px;padding:18px 20px;font-size:15px;line-height:1.6;color:var(--read);max-height:52vh;overflow:auto;overflow-wrap:anywhere}
+.steps{font-size:16px;color:var(--ink2);line-height:1.6;margin-bottom:14px}
+.steps b{color:var(--ink)}
 
 /* ---------- rail ---------- */
 .rail{display:flex;flex-direction:column;gap:16px;min-width:0}
@@ -427,7 +459,7 @@ textarea.field{min-height:104px;resize:vertical}
   .cell .ic{width:44px;height:44px}
   .board{padding:4px 20px 0}
   .legend{margin:0 -20px;padding:16px 20px 18px;grid-template-columns:repeat(3,minmax(0,1fr))}
-  .grid-row{grid-template-columns:232px 136px minmax(0,1fr) 40px}
+  .grid-row{grid-template-columns:232px 150px minmax(0,1fr) 32px}
   .grid-row.thead .c-step,.grid-row.thead .c-tw{display:none}
   .brow{grid-template-rows:auto auto;row-gap:8px}
   .brow .c-agent,.brow .c-state,.brow .c-go{grid-row:1/3}
@@ -442,6 +474,8 @@ textarea.field{min-height:104px;resize:vertical}
   .brow .meta.empty{display:none}
   .brow:hover{box-shadow:-20px 0 0 var(--hover),20px 0 0 var(--hover)}
   .dgrid{grid-template-columns:minmax(0,1fr) 312px}
+  .simple{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}
+  .legend .rules{grid-template-columns:repeat(3,minmax(0,1fr))}
   .tabline,.docbody{padding-left:28px;padding-right:28px}
   .tabs{padding:12px 16px 0}
   .tab{padding:0 12px;font-size:15px}
@@ -452,8 +486,8 @@ textarea.field{min-height:104px;resize:vertical}
   .brow:has(.meta.empty) .work{grid-row:1/3}
 }
 @media (min-width:1600px){
-  .grid-row{grid-template-columns:340px 160px minmax(0,1fr) 120px 120px 40px}
-  .work{grid-template-columns:minmax(0,560px) 120px;justify-content:start}
+  .grid-row{grid-template-columns:380px 180px minmax(0,1fr) 40px}
+  .work{grid-template-columns:minmax(0,640px) 140px;justify-content:start}
   .dgrid{grid-template-columns:minmax(0,1fr) 440px}
   .docbody,.tabline{padding-left:56px;padding-right:56px}
   .edfoot{margin-left:-56px;margin-right:-56px;padding-left:56px;padding-right:56px}
@@ -509,6 +543,12 @@ textarea.field{min-height:104px;resize:vertical}
   .dhead .mono{width:48px;height:48px;font-size:16px;border-radius:14px}
   .dt h1{font-size:26px}
   .dgrid{grid-template-columns:minmax(0,1fr);gap:16px}
+  .simple{grid-template-columns:minmax(0,1fr);gap:16px}
+  .sblock{padding:22px 20px}
+  .sblock .big{font-size:18px}
+  .sblock .cta .btn-p{width:100%}
+  .shead .seg{width:100%;display:grid;grid-template-columns:1fr 1fr}
+  .legend .rules{grid-template-columns:minmax(0,1fr)}
   .rail{order:-1}
   .tabs{padding:8px 8px 0;overflow-x:auto;top:56px}
   .edit-on .toast{bottom:150px}
@@ -616,6 +656,7 @@ const I = {
   lock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
   shield: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>',
   info: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.1"/></svg>',
+  copy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="3"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>',
   plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
 };
 const NAV = [
@@ -825,12 +866,12 @@ function board() {
   <section class="card board" aria-labelledby="board-h">
     <div class="bhead"><div><h2 id="board-h">Agents whose work is checked</h2><p>Ranked worst first. Each square is one piece of work that was checked, oldest on the left.</p></div></div>
     <div role="table" aria-label="Agents whose work is checked, worst first">
-    <div class="grid-row thead" role="row"><span role="columnheader">Agent</span><span role="columnheader">State</span><div class="work"><span role="columnheader">Checked work</span><span class="r" role="columnheader">Sent back</span></div><span class="c-step thc" role="columnheader">You stepped in</span><span class="c-tw" role="columnheader" style="justify-content:center">Tweaks</span><span role="columnheader"><span class="sr">Open</span></span></div>`;
+    <div class="grid-row thead" role="row"><span role="columnheader">Agent</span><span role="columnheader">State</span><div class="work"><span role="columnheader">Checked work</span><span class="r" role="columnheader">Sent back</span></div><span role="columnheader"><span class="sr">Open</span></span></div>`;
   for (const x of judged) h += row(x);
   h += `</div>
-    <div class="legend" aria-label="What the states mean">
-      ${['red', 'amber', 'green', 'early', 'none'].map((s) => `<div class="li">${pill(s, true)}<span>${STATE[s].rule}${s === 'red' || s === 'green' ? ' At least 4 pieces checked.' : ''}</span></div>`).join('')}
-      <div class="keys"><span class="k"><span class="sq"></span>Round: kept, or picked</span><span class="k"><span class="sq bad"></span>Square: sent back, dropped, or no pick</span><span class="k"><span class="sq ex"></span>Hollow: not counted against this agent</span><span class="k"><span class="sq step"></span>You stepped in</span><span class="k"><span class="tick" style="height:16px;margin:0 4px"></span>Its last change</span><span class="rule">Half, 1 in 5 and 4 pieces are design choices: copy review allows 2 rounds and critique 3.</span></div>
+    <div class="legend" aria-label="What the marks mean">
+      <span class="k"><span class="sq"></span>Round: kept, or picked</span><span class="k"><span class="sq bad"></span>Square: sent back, dropped, or no pick</span><span class="k"><span class="sq ex"></span>Hollow: not counted against this agent</span><span class="k"><span class="sq step"></span>You stepped in</span><span class="k"><span class="tick" style="height:16px;margin:0 4px"></span>Its last change</span>
+      <details><summary>How the state is decided</summary><div class="rules">${['red', 'amber', 'green', 'early', 'none'].map((s) => `<div class="li">${pill(s, true)}<span>${STATE[s].rule}${s === 'red' || s === 'green' ? ' At least 4 pieces checked.' : ''}</span></div>`).join('')}</div><p style="margin-top:10px">Half, 1 in 5 and 4 pieces are design choices: copy review allows 2 rounds and critique 3.</p></details>
     </div>
   </section>
   <section class="nosig" aria-labelledby="ns-h"><h2 id="ns-h">Nothing checks these yet <span class="count">${none.length}</span></h2>
@@ -849,21 +890,14 @@ function board() {
 function row(x) {
   const a = AG[x.id];
   const two = x.parts.length > 1;
-  const shared = x.parts.flatMap((p) => p.j.shared).filter((v, k, s) => s.indexOf(v) === k);
   const works = x.parts.map((p) => {
-    const st = p.total ? stateOf(p.bad, p.total) : 'early';
-    const frac = p.total ? `<b class="${st === 'red' || st === 'amber' ? st : ''}">${p.bad} of ${p.total}</b><small>${p.j.noun}</small>` : '<span class="none">–</span>';
+    const frac = p.total ? `<b>${p.bad} of ${p.total}</b><small>${p.j.noun}</small>` : '<span class="none">–</span>';
     return `${strip(p, a, { label: two, draw: true })}<div class="frac">${frac}</div>`;
-  }).join('') + `<p class="why">${whyLine(x)}</p>`;
-  const n = pendingFor(x.id);
-  const noStep = x.id === 'scout' || x.parts.every((p) => p.j.kind === 'mock');
-  const stepTxt = noStep ? '<span class="z" aria-label="Not counted here">–</span>' : x.steps ? `${x.steps}` : '<span class="z">0</span>';
+  }).join('');
   return `<div class="grid-row brow${two ? ' two' : ''}" role="row">
-    <div class="c-agent" role="cell"><span class="mono" aria-hidden="true">${mono(a.id)}</span><div><a class="nm" href="#agents/${a.id}">${esc(a.name)}</a><span class="role" title="${esc(a.role)}">${esc(a.role)}</span>${shared.length ? `<span class="shared">${I.link}Shared with ${shared.map((s) => esc(AG[s].name)).join(', ')}</span>` : ''}</div></div>
+    <div class="c-agent" role="cell"><div><a class="nm" href="#agents/${a.id}">${esc(a.name)}</a><span class="role" title="${esc(a.role)}">${esc(a.role)}</span></div></div>
     <div class="c-state" role="cell">${pill(x.state)}</div>
     <div class="work" role="cell">${works}</div>
-    <div class="meta${noStep && !n ? ' empty' : ''}"><div class="c-step${noStep ? ' nost' : ''}" role="cell"><span class="lab">You stepped in </span>${stepTxt}</div>
-    <div class="c-tw" role="cell">${n ? `<button type="button" class="twpill" data-twgo="${a.id}">${n} waiting</button>` : '<span class="z">–</span>'}</div></div>
     <div class="c-go" role="cell" aria-hidden="true">${I.chev}</div>
   </div>`;
 }
@@ -906,7 +940,7 @@ function ncard(id) {
     fact = a.checker === 'copy' ? `Sent copy back ${bad} of ${v.length} times` : `Sent builds back ${bad} of ${v.length} times · you overruled it ${D.facts.critic_overrides} times`;
     fact = `<p class="nf">${I.shield}<span>${fact}</span></p>`;
   } else if (D.facts[id]) fact = `<p class="nf">${I.info}<span>${esc(D.facts[id])}</span></p>`;
-  return `<a class="ncard" href="#agents/${id}"><div class="nh"><span class="mono" aria-hidden="true">${mono(a.id)}</span><div><b>${esc(a.name)}</b><span class="role">${esc(a.role)}</span></div></div>${n ? `<span class="bdg" aria-label="${n} tweak waiting">${n}</span>` : ''}${fact}<p class="nl">Last changed ${day(a.changed.date)}</p></a>`;
+  return `<a class="ncard" href="#agents/${id}"><div class="nh"><div><b>${esc(a.name)}</b><span class="role">${esc(a.role)}</span></div></div>${n ? `<span class="bdg" aria-label="${n} tweak waiting">${n}</span>` : ''}${fact}<p class="nl">Last changed ${day(a.changed.date)}</p></a>`;
 }
 function countUp() {
   if (reduce || S.counted) return; S.counted = true;
@@ -952,44 +986,185 @@ document.addEventListener('scroll', hideTip, true);
 
 // ---------------------------------------------------------------- detail page
 const TABS = {
-  base: { label: 'What it does', line: 'Written by Claude. A change you make here is sent to you as a suggested tweak first.', ic: I.claude },
-  custom: { label: 'Your rules', line: 'Written by you. Saved straight away. Claude never edits this file.', ic: I.you },
+  base: { label: "Claude's instructions", sub: 'an edit becomes a suggested tweak', line: 'Claude writes these. An edit you make becomes a suggested tweak for you to approve.', ic: I.claude },
+  custom: { label: 'Your rules', sub: 'you write these; saves directly', line: 'You write these. A save takes effect directly; Claude never edits them.', ic: I.you },
   history: { label: 'History', line: 'One entry per approved change, newest first.', ic: I.clock },
   more: { label: 'More', line: 'Read-only here. Changes to these go through Claude.', ic: I.lock },
 };
 const MORE = { references: ['References', 'Examples it is shown, and what we like in each'], tools: ['Tools', 'What it may run, and how'], evals: ["How it's judged", 'How its work is measured'] };
 
+function viewSeg(adv) {
+  return `<div class="seg viewseg" role="radiogroup" aria-label="How much to show"><button type="button" role="radio" aria-checked="${!adv}" data-view="simple">Simple</button><button type="button" role="radio" aria-checked="${adv}" data-view="advanced">Advanced</button></div>`;
+}
 function detail(id, opts = {}) {
   const a = AG[id]; const x = health(id, 'all');
   if (S.view.name !== id) { S.view = { name: id, tab: 'base', more: 'references' }; S.edit = null; }
   if (opts.tab) S.view.tab = opts.tab;
-  const shared = x.parts.flatMap((p) => p.j.shared).filter((v, k, s) => s.indexOf(v) === k);
-  $('#main').innerHTML = `<a class="backlink" href="#agents">${I.back}All agents</a>
-  <header class="dhead"><span class="mono${x.state === 'red' ? ' red' : ''}" aria-hidden="true">${mono(a.id)}</span><div>
-    <div class="dt"><h1 id="agent-h" tabindex="-1">${esc(a.name)}</h1>${pill(x.state)}</div>
-    <p class="drole">${esc(a.role)}</p>
-    <div class="dmeta">${shared.map((s) => `<button type="button" class="sharedbtn" data-goto="${s}">${I.link}Shares this verdict with ${esc(AG[s].name)}</button>`).join('')}
-    <p class="changed"><b>Last changed ${day(a.changed.date)}${a.changed.line ? ':' : '.'}</b> ${a.changed.line ? esc(a.changed.line) : ''} <button type="button" class="linkbtn" id="read-hist">Read the history</button></p></div>
-  </div></header>
+  S.adv = !!opts.adv;
+  const head = `<a class="backlink" href="#agents">${I.back}All agents</a>
+  <header class="shead"><div><div class="dt"><h1 id="agent-h" tabindex="-1">${esc(a.name)}</h1>${pill(x.state)}</div>${S.adv ? `<p class="drole">${esc(a.role)}</p>` : ''}</div>${viewSeg(S.adv)}</header>`;
+  document.title = `${a.name} · OneShot Agents`;
+  if (!S.adv) { simple(id, x, head, opts); return; }
+  document.body.classList.remove('edit-on');
+  $('#main').innerHTML = `${head}
+  <p class="changed" style="margin:-8px 0 24px"><b>Last changed ${day(a.changed.date)}${a.changed.line ? ':' : '.'}</b> ${a.changed.line ? esc(a.changed.line) : ''} <button type="button" class="linkbtn" id="read-hist">Read the history</button></p>
   <div class="dgrid">
-    <section class="card doc" aria-label="${esc(a.name)}'s instructions" id="doc"></section>
-    <aside class="rail" aria-label="How it's doing and what is waiting">
-      <section class="card rcard how" aria-labelledby="how-h"><h2 id="how-h">How it's doing</h2>${howHtml(id, x)}</section>
-      <section class="card rcard" aria-labelledby="wait-h" id="wait"><h2 id="wait-h">Waiting for you ${pendingFor(id) ? `<span class="bdg">${pendingFor(id)}</span>` : ''}</h2><div id="twlist"></div></section>
+    <section class="card doc" aria-label="${esc(a.name)}'s files" id="doc"></section>
+    <aside class="rail" aria-label="Full record and what is waiting">
+      <section class="card rcard how" aria-labelledby="how-h"><h2 id="how-h">Full record</h2>${howHtml(id, x)}</section>
+      <section class="card rcard" aria-labelledby="wait-h" id="wait"><h2 id="wait-h">Waiting for you</h2><div id="twlist"></div></section>
       ${sentBackHtml(id, x)}
     </aside>
   </div>`;
-  document.title = `${a.name} · OneShot Agents`;
-  $$('[data-goto]').forEach((b) => b.addEventListener('click', () => go(`agents/${b.dataset.goto}`)));
+  wireView(id);
   $('#read-hist').addEventListener('click', () => { switchTab('history'); $('#doc').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); });
   $$('[data-read]').forEach((b) => b.addEventListener('click', () => openReport(b.dataset.read, b.dataset.title)));
   renderTweaks(id);
   renderDoc();
   rovInit();
+  if (opts.rules) {
+    const t = D.tweaks.find((y) => y.id === opts.rules);
+    if (t) { S.edit = { fromTweak: t.id }; startEdit('custom', t.suggested); $('#doc').scrollIntoView({ behavior: 'auto' }); return; }
+  }
   if (opts.tweak) {
     const el = opts.tweak === 'first' ? $('#twlist .twc') : $(`#twlist [data-tw="${CSS.escape(opts.tweak)}"]`);
     if (el) { el.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' }); el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 2000); $('button', el)?.focus({ preventScroll: true }); }
-  } else { scrollTo(0, 0); $('#agent-h').focus({ preventScroll: true }); }
+  } else if (opts.focusView) { scrollTo(0, 0); $('.viewseg [data-view="advanced"]').focus({ preventScroll: true }); }
+  else { scrollTo(0, 0); $('#agent-h').focus({ preventScroll: true }); }
+}
+function wireView(id) {
+  $$('.viewseg [data-view]').forEach((b) => b.addEventListener('click', () => {
+    const adv = b.dataset.view === 'advanced'; if (adv === S.adv) return;
+    const leave = () => { S.edit = null; go(`agents/${id}${adv ? '/advanced' : ''}`, { focusView: true }); };
+    if (!adv && S.edit && dirty()) confirmDiscard(leave); else leave();
+  }));
+  $('.viewseg').addEventListener('keydown', (e) => { if (['ArrowLeft', 'ArrowRight'].includes(e.key)) { e.preventDefault(); $$('[data-view]', e.currentTarget).find((b) => b.getAttribute('aria-checked') !== 'true').click(); } });
+}
+
+// ---- simple view: what it does, what is wrong, one action
+function topCat(bad) {
+  const cnt = {}; for (const x of bad) for (const k of Object.keys(x.cats || {})) if (x.cats[k]) cnt[k] = (cnt[k] || 0) + 1;
+  const k = Object.keys(cnt).sort((a, z) => cnt[z] - cnt[a])[0]; return k ? { k, n: cnt[k], all: cnt } : null;
+}
+function wrongOf(id) {
+  const a = AG[id]; const x = health(id, 'all'); const out = []; let fix = false;
+  if (!x.parts.length) {
+    out.push('Nothing checks its work yet.');
+    if (id === 'copyeditor' && D.criticOnCopy.length) {
+      const c = D.criticOnCopy;
+      out.push(`But the critic sent <b>${c.length} builds</b> of ${esc(c[0].name)} back (${day(c[0].ts)}) for copy the copyeditor had passed: “${esc(c[0].text)}”.`);
+      fix = true;
+    }
+    return { html: out.join(' '), fix };
+  }
+  const sinceTxt = (p) => {
+    const sv = a.cut ? p.all.filter((y) => y.ts >= a.cut && !y.excluded) : [];
+    return sv.length ? `Since its last change on ${day(a.changed.date)}: ${sv.filter((y) => y.bad).length} of ${sv.length}.` : `Nothing has been judged since its last change on ${day(a.changed.date)}.`;
+  };
+  for (const p of x.parts) {
+    const bad = p.c.filter((y) => y.bad), n = p.c.length;
+    if (p.j.kind === 'copy') {
+      const t = topCat(bad);
+      out.push(`Copy review sent the copy back <b>${bad.length} of ${n} times</b>${t ? `, mostly for ${LBL[t.k]} (in ${t.n} of the ${bad.length})` : ''}.`);
+    } else if (p.j.kind === 'shortlist') {
+      const cnt = {}; for (const y of bad) cnt[y.cat] = (cnt[y.cat] || 0) + 1; const k = Object.keys(cnt).sort((q, z) => cnt[z] - cnt[q])[0];
+      out.push(`The harvester dropped <b>${bad.length} of the ${n}</b> businesses you approved and kept, most often for ${k} (${cnt[k]}). Your own ${p.ex} drops are not counted.`);
+    } else if (p.j.kind === 'mock') {
+      const q = bad.find((y) => y.quote);
+      out.push(`<b>${bad.length} of your ${n}</b> mockup decisions ended without a pick${q ? `; you said “${esc(q.quote)}”` : ''}.`);
+    } else if (bad.length) {
+      const w = [...new Set(bad.map((y) => y.why).filter(Boolean))];
+      out.push(`The critic sent back <b>${bad.length} of ${n}</b> builds for its own work${w.length ? `: ${esc(w.join('; '))}` : ''}.`);
+    }
+  }
+  if (x.parts.length === 1 && (x.state === 'red' || x.state === 'amber')) out.push(sinceTxt(x.parts[0]));
+  if (x.state === 'early') out.push('Too few checks so far to judge.');
+  if (x.state === 'green') out.push('Less than 1 in 5 was sent back.');
+  fix = x.state === 'red' || x.state === 'amber';
+  return { html: out.slice(0, 3).join(' '), fix };
+}
+function promptFor(id) {
+  const a = AG[id]; const x = health(id, 'all'); const nm = a.name.toLowerCase();
+  const L = [`The ${nm} agent in Oneshot is not performing. Please look into it.`, '', 'What is wrong (all runs, counted from ledger.jsonl):'];
+  const ex = [];
+  if (!x.parts.length && id === 'copyeditor') {
+    const v = D.kinds.copy; L.push(`- It sent the copy back ${v.filter((y) => y.bad).length} of ${v.length} times, but nothing checks its own verdicts.`);
+    for (const c of D.criticOnCopy) { L.push(`- The critic failed a build of ${c.name} (${c.slug}, run ${c.run}, ${day(c.ts)}) for copy the copyeditor had passed: "${c.text}".`); }
+  }
+  for (const p of x.parts) {
+    const bad = p.c.filter((y) => y.bad), n = p.c.length;
+    if (!bad.length) continue;
+    const label = { copy: 'Copy review sent the copy back', shortlist: 'The harvester dropped (of the businesses Shahar approved and kept)', mock: 'Mockup decisions that ended without a pick', build: 'Critique rounds sent back for its own work' }[p.j.kind];
+    let line = `- ${label}: ${bad.length} of ${n}.`;
+    if (p.j.kind === 'copy') { const t = topCat(bad); if (t) line += ` By kind: ${Object.entries(t.all).sort((q, z) => z[1] - q[1]).map(([k, c]) => `${LBL[k]} ${c}`).join(', ')}.`; }
+    L.push(line);
+    if (p.j.shared.length) L.push(`  This verdict is shared with the ${p.j.shared.map((o) => AG[o].name.toLowerCase()).join(' and ')} (the same work is judged once for both).`);
+    const sv = a.cut ? p.c.filter((y) => y.ts >= a.cut) : [];
+    L.push(`  Since its current version ${a.version || ''} (first used ${a.cut ? day(a.cut) : 'never'}): ${sv.length ? `${sv.filter((y) => y.bad).length} of ${sv.length}` : 'not judged yet'}.`);
+    if (p.ex) L.push(`  Not counted against it: ${p.ex} ${p.j.kind === 'shortlist' ? 'businesses Shahar dropped himself' : 'rounds the critic put on copy that had passed copy review'}.`);
+    ex.push(...bad.slice(-3).reverse().map((y) => `- ${y.name} (${y.slug}, run ${y.run}, ${day(y.when)}): ${y.text}`));
+  }
+  if (ex.length) L.push('', 'Most recent examples:', ...ex);
+  const tw = pending().filter((t) => t.agents.includes(id));
+  if (tw.length) L.push('', `Suggested tweaks already waiting for this agent (read them first, do not duplicate them): ${tw.map((t) => `"${t.title}"`).join('; ')}.`);
+  L.push('', `Read agents/${id}/base.md (Claude's instructions for this agent) and agents/${id}/custom.md (Shahar's rules: read it, never edit it), then the ledger lines${id === 'copyeditor' || x.parts.some((p) => p.j.kind === 'copy') ? ' and copy reviews' : ''} for the examples above. Find what in the instructions lets this happen.`);
+  L.push(`Propose a change to agents/${id}/base.md to fix this and save it as a suggested tweak under proposals/, with the evidence. Do not apply the change, and do not change the counts above.`);
+  return L.join('\n');
+}
+function simple(id, x, head, opts) {
+  const a = AG[id]; const w = wrongOf(id);
+  const cta = w.fix
+    ? `<div class="cta"><button type="button" class="btn-p" id="fix">${I.claude}Get Claude's suggested fix</button><p>A ready prompt for a Claude session. Claude proposes a fix as a suggested tweak; nothing changes until you approve it.</p></div>`
+    : `<div class="cta"><p>Nothing to fix from the data. To read or change this agent anyway, open Advanced.</p></div>`;
+  $('#main').innerHTML = `${head}
+  <div class="simple">
+    <section class="card sblock" aria-labelledby="does-h"><h2 id="does-h">What it does</h2><p class="big">${esc(a.does)}</p></section>
+    <section class="card sblock" aria-labelledby="wrong-h"><h2 id="wrong-h">What is wrong</h2><p class="big">${w.html}</p>${cta}</section>
+  </div>
+  <div id="twsimple"></div>`;
+  wireView(id);
+  $('#fix')?.addEventListener('click', () => openFix(id));
+  simpleTweaks(id);
+  if (opts.tweak) { const el = $('#twsimple button'); if (el) { el.scrollIntoView({ block: 'center' }); el.focus({ preventScroll: true }); } }
+  else if (opts.focusView) $(`.viewseg [data-view="simple"]`).focus();
+  else { scrollTo(0, 0); $('#agent-h').focus({ preventScroll: true }); }
+}
+function simpleTweaks(id) {
+  const list = tweaksFor(id); const box = $('#twsimple'); if (!box) return;
+  if (!list.length) { box.innerHTML = ''; return; }
+  const st = (t) => (t.local ? t.status : S.tweaks[t.id].status);
+  box.innerHTML = `<section class="twlines" aria-labelledby="tws-h"><h2 id="tws-h">Waiting for your answer</h2>${list.map((t) => {
+    const s2 = st(t);
+    const done = s2 === 'approved' ? '<b>Approved just now</b> · Claude applies it in its next session' : s2 === 'rejected' ? '<b>Rejected</b>' : s2 === 'ruled' ? '<b>Put in your rules just now</b>' : '';
+    return `<div class="twl" data-tw="${esc(t.id)}"><span class="tt">${t.custom ? '<small>For your rules</small>' : ''}${esc(t.title)}</span>${done ? `<span class="done">${done}</span>` : `<span class="tb">${t.custom ? '<button type="button" class="btn-p btn-s" data-a="rules">Put it in my rules</button>' : '<button type="button" class="btn-p btn-s" data-a="approve">Approve</button>'}<button type="button" class="btn-o btn-s" data-a="reject">Reject</button><button type="button" class="btn-g btn-s" data-a="read">Read it</button></span>`}</div>`;
+  }).join('')}</section>`;
+  $$('.twl', box).forEach((row) => {
+    const t = list.find((y) => y.id === row.dataset.tw);
+    const set = (v, msg) => { if (t.local) t.status = v; else S.tweaks[t.id].status = v; simpleTweaks(id); renderNav(); const el = $(`[data-tw="${CSS.escape(t.id)}"]`, box); el?.setAttribute('tabindex', '-1'); el?.focus(); live(msg); };
+    $('[data-a="approve"]', row)?.addEventListener('click', () => set('approved', 'Approved. Claude applies it in its next session.'));
+    $('[data-a="reject"]', row)?.addEventListener('click', () => set('rejected', 'Rejected.'));
+    $('[data-a="read"]', row)?.addEventListener('click', () => openTweak(t));
+    $('[data-a="rules"]', row)?.addEventListener('click', () => go(`agents/${id}/advanced`, { rules: t.id }));
+  });
+}
+function openFix(id) {
+  const text = promptFor(id);
+  openDlg({
+    title: "Claude's suggested fix", sub: `A prompt about the ${esc(AG[id].name.toLowerCase())}, built from the counts above`, size: 'wide',
+    body: `<p class="steps"><b>Copy the prompt</b> and paste it into a Claude session. Claude looks into it and saves its proposed change as a suggested tweak. It shows up here with Approve and Reject; <b>nothing changes until you approve it</b>.</p><div class="prompt-box" id="prompt" tabindex="0" aria-label="The prompt">${esc(text)}</div>`,
+    foot: `<button type="button" class="btn-g" data-x="close">Close</button><button type="button" class="btn-p" data-x="copy">${I.copy}Copy prompt</button>`,
+    wire: (d) => {
+      $('[data-x="close"]', d).onclick = () => closeDlg();
+      $('[data-x="copy"]', d).onclick = async (e) => {
+        const b = e.currentTarget; let ok = false;
+        try { await navigator.clipboard.writeText(text); ok = true; } catch { const r = document.createRange(); r.selectNodeContents($('#prompt')); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); try { ok = document.execCommand('copy'); } catch {} }
+        b.innerHTML = ok ? `${I.check}Copied` : 'Select the text and copy it';
+        live(ok ? 'Prompt copied.' : 'Copy failed; the prompt is selected.');
+        setTimeout(() => { if (b.isConnected) b.innerHTML = 'Copy prompt'; }, 2500);
+      };
+    },
+    focus: '[data-x="copy"]',
+  });
 }
 function howHtml(id, x) {
   const a = AG[id]; const nm = a.name.toLowerCase();
@@ -1016,7 +1191,7 @@ function howHtml(id, x) {
     } else if (p.j.kind === 'copy') s = `<p class="bigline">Copy sent back <b class="${cls}">${bad} of ${n}</b> times.</p>`;
     else if (p.j.kind === 'mock') s = `<p class="bigline">${x.parts.length > 1 ? '<b>Mockups.</b> ' : ''}You picked ${n - bad} times in ${n} mockup decisions; <b class="${cls}">${bad} ended without a pick</b>.</p>`;
     else s = `<p class="bigline">${x.parts.length > 1 ? '<b>Builds.</b> ' : ''}The critic sent back <b class="${cls}">${bad} of ${n}</b> rounds for the designer's own work.</p>${p.ex ? `<p>${p.ex} more ${p.ex === 1 ? 'was' : 'were'} sent back for copy that had passed copy review (the critic's own words). They are not counted against the designer.</p>` : ''}`;
-    if (p.j.shared.length) s += `<p>Shared with the ${p.j.shared.map((o) => esc(AG[o].name.toLowerCase())).join(' and ')}: ${p.j.kind === 'copy' ? 'the copyeditor sends the copy back to both' : 'your pick judges concept and mockup together'}.</p>`;
+    if (p.j.shared.length) s += `<p>${p.j.kind === 'copy' ? `The copyeditor judges the copy once, for the copywriter and the humanizer together, so both show the same marks.` : `Your pick judges the concept and the mockup together, so the creative director and the designer show the same marks.`}</p>`;
     if (bad) s += `<p class="reason"><b>Why:</b> ${esc(reasonOf(p))}</p>`;
     const steps = p.j.kind === 'copy' || p.j.kind === 'build' ? p.c.reduce((k, y) => k + y.steps, 0) : 0;
     const exSteps = p.v.filter((y) => y.excluded).reduce((k, y) => k + y.steps, 0);
@@ -1058,13 +1233,13 @@ function sentBackHtml(id, x) {
 // ---- the document column
 function renderDoc() {
   const id = S.view.name; const a = AG[id]; const tab = S.view.tab; const nm = a.name.toLowerCase();
-  const tabs = ['base', 'custom', 'history'].map((t) => `<button type="button" role="tab" class="tab" id="tab-${t}" aria-selected="${tab === t}" aria-controls="tabpanel" tabindex="${tab === t ? 0 : -1}" data-tab="${t}">${TABS[t].label}${t === 'custom' && !a.customEmpty && !S.custom[id] ? '' : ''}</button>`).join('')
+  const tabs = ['base', 'custom', 'history'].map((t) => `<button type="button" role="tab" class="tab" id="tab-${t}" aria-selected="${tab === t}" aria-controls="tabpanel" tabindex="${tab === t ? 0 : -1}" data-tab="${t}"><span class="tl">${TABS[t].label}${TABS[t].sub ? `<small>${TABS[t].sub}</small>` : ''}</span></button>`).join('')
     + `<span class="morewrap"><button type="button" role="tab" class="tab" id="tab-more" aria-selected="${tab === 'more'}" aria-controls="tabpanel" tabindex="${tab === 'more' ? 0 : -1}" aria-haspopup="menu" aria-expanded="false" data-tab="more">${tab === 'more' ? MORE[S.view.more][0] : 'More'}${I.down}</button><div class="moremenu" role="menu" hidden>${Object.entries(MORE).map(([k, [l, s]]) => `<button type="button" role="menuitem" data-more="${k}">${l}<small>${s}</small></button>`).join('')}</div></span>`;
   let action = '';
   const editing = S.edit && S.edit.agent === id;
   document.body.classList.toggle('edit-on', !!editing);
   if (!editing) {
-    if (tab === 'base') action = `<button type="button" class="btn-o" id="act">${I.pen}Suggest a change</button>`;
+    if (tab === 'base') action = `<button type="button" class="btn-o" id="act">${I.pen}Edit as a suggested tweak</button>`;
     if (tab === 'custom' && !customEmpty(id)) action = `<button type="button" class="btn-p" id="act">${I.pen}Edit your rules</button>`;
   }
   const line = tab === 'more' ? `${MORE[S.view.more][1]}. ${TABS.more.line}` : TABS[tab].line;
@@ -1139,10 +1314,10 @@ function editorHtml() {
   const panel = ops ? `<div class="diffpanel"><p>The suggested text is in place below. Changed lines, highlighted:</p>${diffHtml(ops, 0)}</div>` : '';
   const hint = e.file === 'base' ? `Your change goes to suggested tweaks for you to approve. The ${esc(nm)}'s instructions stay as they are until then.` : `Saves to your rules right away. The ${esc(nm)} uses them from its next run.`;
   return `<div class="editor">${banner}${panel}
-    <div class="edtop"><div class="seg" role="radiogroup" aria-label="Editor view"><button type="button" role="radio" aria-checked="${e.mode === 'write'}" data-em="write">Write</button><button type="button" role="radio" aria-checked="${e.mode === 'preview'}" data-em="preview">Preview</button></div><span class="what">${e.file === 'base' ? 'Editing what it does' : 'Editing your rules'}</span></div>
+    <div class="edtop"><div class="seg" role="radiogroup" aria-label="Editor view"><button type="button" role="radio" aria-checked="${e.mode === 'write'}" data-em="write">Write</button><button type="button" role="radio" aria-checked="${e.mode === 'preview'}" data-em="preview">Preview</button></div><span class="what">${e.file === 'base' ? "Editing Claude's instructions" : 'Editing your rules'}</span></div>
     ${e.mode === 'write' ? `<label class="sr" for="ed">${e.file === 'base' ? `The ${esc(nm)}'s instructions` : `Your rules for the ${esc(nm)}`}</label><textarea class="ed" id="ed" spellcheck="true" placeholder="${e.file === 'custom' ? `One rule per line or paragraph, in plain words. For example: “Never use orange as a background.”` : ''}">${esc(e.text)}</textarea>` : `<div class="edprev prose">${e.text.trim() ? md(e.text, { reading: e.file === 'base' }) : '<p class="empty-line">Nothing written yet.</p>'}</div>`}
     <p class="pcopy">${I.info}Preview copy: changes stay on this page.</p>
-    <div class="edfoot"><span class="hint">${hint}</span><button type="button" class="btn-g" id="ed-cancel">Cancel</button><button type="button" class="btn-p" id="ed-save">${e.file === 'base' ? 'Review my suggestion' : 'Save'}</button></div>
+    <div class="edfoot"><span class="hint">${hint}</span><button type="button" class="btn-g" id="ed-cancel">Cancel</button><button type="button" class="btn-p" id="ed-save">${e.file === 'base' ? 'Review my edit' : 'Save'}</button></div>
   </div>`;
 }
 function grow(ta) { ta.style.height = 'auto'; ta.style.height = ta.scrollHeight + 4 + 'px'; }
@@ -1183,7 +1358,7 @@ function reviewSuggestion() {
   const e = S.edit; const nm = AG[e.agent].name.toLowerCase();
   const ops = diffLines(e.orig, e.text); const n = changed(ops);
   openDlg({
-    title: `Suggest a change to the ${esc(nm)}`,
+    title: `Your edit to the ${esc(nm)}'s instructions`,
     body: n ? `<p class="sub">What changes <small>· ${ops.filter((o) => o[0] === '-').length} line${ops.filter((o) => o[0] === '-').length === 1 ? '' : 's'} out, ${ops.filter((o) => o[0] === '+').length} in</small></p>${diffHtml(ops)}
       <label class="sub" for="why" style="display:block;margin-top:22px">Why <small>(optional)</small></label><textarea class="field" id="why" placeholder="What went wrong? For example, which site and what it missed."></textarea>`
       : `<p class="say">You haven't changed anything yet. Go back to editing, change the text, then review it here.</p>`,
@@ -1280,13 +1455,15 @@ let pendingOpts = null;
 function go(hash, opts) { pendingOpts = opts || null; if (location.hash.slice(1) === hash) route(); else location.hash = hash; }
 function route() {
   hideTip();
+  if ($('#dlg').open) $('#dlg').close();
   const h = location.hash.slice(1).split('/');
   const opts = pendingOpts; pendingOpts = null;
   if (h[0] === 'agents' && h[1] && AG[h[1]]) {
-    if (!$('#doc')) S.scroll = scrollY;
-    detail(h[1], opts || {});
+    if (S.onBoard) S.scroll = scrollY;
+    S.onBoard = false;
+    detail(h[1], { ...(opts || {}), adv: h[2] === 'advanced' });
   } else {
-    const was = !!$('#doc');
+    const was = S.onBoard === false; S.onBoard = true;
     if (was && S.edit && dirty()) { const keep = S.view.name; confirmDiscard(() => { S.edit = null; board(); scrollTo(0, S.scroll); }); history.replaceState(null, '', '#agents/' + keep); return; }
     S.view.name = null; S.edit = null;
     board();

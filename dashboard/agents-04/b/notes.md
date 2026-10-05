@@ -202,6 +202,83 @@ any scroll. Side by side with Models, it is calmer: one red family, neutral tile
 Still worse after round 6: the red reason lines make rows taller. At 1440×1000 four red rows and the start of the
 fifth (the designer) are on the first screen; before, all five were. The reason is worth the scroll.
 
+## After the pick (Shahar, 2026-10-06; `BRIEF-agents-04.md`, "Amendment — pick")
+
+Shots at 1920×1080, 1440×1000, 1024×800 and 390×844 in `round-7/` and `round-8/`: the board, the simple page for
+copywriter, designer and harvester, the fix popup, advanced copywriter, the advanced edit popup, and "Put it in my
+rules". `scrollWidth` = viewport at every width; no page errors.
+
+**What changed**
+
+- **Board.**
+  - Each row has four things: name with a one-line role, state, the checked-work marks, and the sent-back fraction.
+  - Removed: the "Why it's red" line, the initials tiles, "Shared with …" (agents judged together simply show the
+    same marks), and the "You stepped in" and "Tweaks" columns.
+  - States are a light tint with coloured text: red `#FDECEE` with `#C0182B` (5.4:1), amber, green. Fractions are
+    ink, not red. The only red left is the marks, the state text and the summary's "5".
+  - The legend is one line of mark shapes; the state rules sit under a closed "How the state is decided".
+  - The no-signal cards lost their tiles too.
+- **Agent page, Simple (the default, `#agents/<name>`).**
+  - **What it does:** two plain sentences per agent, restated from PLAN.md §5 (in `build.mjs`, `DOES`).
+  - **What is wrong:** one or two sentences, computed from the same counts as the board. Examples:
+    - copywriter: "Copy review sent the copy back 11 of 22 times, mostly for claims with no source (in 8 of the 11).
+      Since its last change on 28 Sep: 3 of 6.";
+    - harvester: "Nothing checks its work yet.";
+    - copyeditor: "Nothing checks its work yet. But the critic sent 2 builds of KA Surf Hostel back (22 Sep) for
+      copy the copyeditor had passed: “Hard fail from the passed copy, not the build”."
+  - **One action, "Get Claude's suggested fix".** It opens a popup with a ready prompt and **Copy prompt**. It shows
+    only where the data says something is wrong: the 5 red agents and the copyeditor. Elsewhere one line says
+    "Nothing to fix from the data …".
+  - **What the prompt contains,** all built from the data, never a fix:
+    - the agent and what is wrong, with counts, kinds of send-back, and the since-last-change count;
+    - what is not counted;
+    - the 3 most recent examples, with business, run and date;
+    - any tweak already waiting, so the session doesn't duplicate it;
+    - which file to change (`agents/<name>/base.md`, and `custom.md` as read-only);
+    - "Propose a change … and save it as a suggested tweak under proposals/ … Do not apply the change".
+  - The prompt is the one place a file name appears outside the agents' own files: it is written for Claude, and
+    the coordinator asked for the file in it.
+  - **Pending tweaks** are one small line each, under "Waiting for your answer", with Approve / Reject / Read it.
+    The rules tweak has "Put it in my rules", which opens Advanced with the editor filled in.
+  - The simple page has no history and no send-back list. **All 16 simple pages fit one screen at 1440×1000**
+    (`scrollHeight` = 1000 for each). They also fit at 1920. At 1024 the designer runs slightly over (two tweak
+    lines). On a phone the page scrolls.
+- **Advanced** (a Simple | Advanced switch in the header, `#agents/<name>/advanced`). Holds everything from before:
+  - the full record and every send-back, "Where it was sent back", and "Waiting for you" with full tweak cards;
+  - the History tab and the agent's files;
+  - the two editors. The tabs say who writes what: **"Claude's instructions"** (*an edit becomes a suggested tweak*)
+    and **"Your rules"** (*you write these; saves directly*).
+  - "Suggest a change", which Shahar found unclear, is now **"Edit as a suggested tweak"**. Its review popup is
+    "Your edit to the <agent>'s instructions".
+- **Fixed on the way:**
+  - A popup now closes when the page navigates (Back, or a deep link).
+  - The programmatic focus on the page heading no longer draws a ring.
+  - The critic's quote on the copyeditor is verbatim again ("never re-audited").
+
+**Look rounds**
+
+- **Round 7:**
+  - The board fits all five rows on the first screen at 1440 again, and the red is down to the marks.
+  - On the simple page, the role line under the name repeated "What it does".
+  - The heading showed a focus ring after load.
+  - The tabs said who writes what only after you clicked them.
+  - At 1024 the designer page ran over by its two tweak lines.
+- **Round 8:**
+  - The role line shows on the Advanced page only.
+  - The focus ring on load is gone.
+  - Each tab carries its own small "who writes it" line.
+  - The note under the action is shorter.
+  - The 1024 overflow remains for the designer only, because it has two tweaks, and is accepted: the brief's
+    one-screen target is 1440.
+
+**Checks, round 8**
+
+- **Jargon grep (Playwright):** 5,677 text pieces checked, with no file names or jargon outside the agents' own
+  files. It covered the board in both modes, every tooltip, and all 16 agents in Simple and Advanced with their
+  tabs.
+- **Keyboard:** 11 Tab presses from the first board row to the first no-signal card.
+- **Copy prompt:** the clipboard holds the prompt.
+
 ## Blocking
 
 None.

@@ -35,6 +35,26 @@ const AGENTS = [
   ['orchestrator', 'Orchestrator', 'Moves each business along the line and stops at your decisions'],
 ];
 const NAME = Object.fromEntries(AGENTS.map(([id, n]) => [id, n]));
+// "What it does" on the simple agent page: two plain sentences each, restated from PLAN.md §5 (the agents' spec),
+// with file names and station codes left out. Nothing here is a measurement.
+const DOES = {
+  scout: "Finds the surf businesses in a run's area and scores how weak each one's web presence is, from 0 to 5, with a reason. You approve the shortlist; it never approves, harvests or builds.",
+  harvester: "Collects each approved business's facts, photos and video from its site, listings, socials and reviews, each with where it came from. Gaps are flagged, never filled in.",
+  auditor: "Measures how many taps it takes to book on the business's current site, on a phone, with evidence for every finding. That sets the target the new site has to beat.",
+  copywriter: "Writes the site's words before the design starts, from the business's facts only. It may add atmosphere around a fact, never a new fact.",
+  humanizer: 'Rewrites the copy so it reads as a person wrote it. Facts arrive fixed and leave fixed.',
+  copyeditor: "Checks every claim in the copy against the business's facts, then the voice. One claim with no source sends the copy back; it never rewrites anything itself.",
+  'creative-director': 'Decides what kind of page each business gets, before any design exists, and writes three concepts for the designer. No two businesses in a run may get the same first screen.',
+  designer: 'Builds three mockups from the concepts for you to pick from, looking at each and revising it at least three times. Then it builds the full site from your pick.',
+  seo: "Makes the site findable on Google, Bing and maps: the business's details, page titles, the business's own name as a search, and fast loading.",
+  aiseo: 'Makes the site quotable by answer engines such as ChatGPT and Claude: direct answers to the questions travellers ask, readable even without scripts. Nothing is hidden from people.',
+  critic: 'Scores the built site on facts, speed, booking, brand fit, copy and accessibility. It passes the site or sends it back with a report.',
+  'visual-critic': "Judges each page as design, without reading the other critics. Below 8 of 10, or not better than the business's current site, sends it back.",
+  'experience-critic': 'Walks each page as a traveller would, on a phone and a laptop, without reading the other critics. Below 8 of 10, or not better than the current site, sends it back.',
+  deployer: 'Puts the finished site online as a preview before the pitch. After a sale, it delivers the site in the hosting option the client chose.',
+  writer: 'Writes the pitch page and the short message you send the owner, with the preview link. It lays out the hosting options for the owner to choose from.',
+  orchestrator: 'Moves each business in a run through the pipeline, one step at a time. It keeps to the budgets and always stops at your decisions.',
+};
 
 const runName = (id) => id.replace(/^\d{4}-\d{2}-/, '').split('-').map((w, i) => (i === 0 ? w[0].toUpperCase() + w.slice(1) : w)).join(' ');
 const bs = D.businesses;
@@ -275,7 +295,7 @@ const agents = AGENTS.map(([id, name, role]) => {
   const newest = history[0];
   const lines = bs.reduce((n, b) => n + b.history.filter((h) => h.agent === id).length, 0);
   const a = {
-    id, name, role, cut: cutOf(id), checker: CHECKER[id] || null,
+    id, name, role, does: DOES[id], cut: cutOf(id), checker: CHECKER[id] || null, version: D.agents[id]?.version_changelog || null,
     judged: JUDGED[id] || [],
     // Plain words only when the CHANGELOG line has none of the jargon above; otherwise only the date (concepts §7 gap 7).
     changed: newest ? { date: newest.date, line: isPlain(lastChangedLine(newest.text)) ? lastChangedLine(newest.text) : null } : null,
@@ -304,7 +324,7 @@ const criticOnCopy = [];
 for (const b of bs) for (const h of b.history) {
   if (h.agent !== 'critic' || !/^critiqued/.test(h.to)) continue;
   const m = h.note.match(/Hard fail from (the passed copy|unchanged c[a-z]*)[^.:]*/);
-  if (m) criticOnCopy.push({ ts: h.ts, name: b.name, slug: b.slug, run: b.run_id, text: m[0].replace(/re-audited/, 're-checked') });
+  if (m) criticOnCopy.push({ ts: h.ts, name: b.name, slug: b.slug, run: b.run_id, text: m[0] });
 }
 
 const reports = {};
