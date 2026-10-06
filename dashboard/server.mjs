@@ -7,6 +7,10 @@
 //      origin/main moves (it fetches every --sync seconds, default 60, 0 = never; docs/team.md);
 //   3. accepts a human gate decision on POST /decide and appends exactly one ledger line for it,
 //      after checking the business is still in the state the page saw (a stale page is rejected);
+//   5. saves an agent's definition from the Agents view: POST /agent-rules writes the operator's own
+//      agents/<name>/custom.md; POST /agent-tweak turns an edit of Claude's base.md into a suggested
+//      tweak (proposals/<run>/NNN-<agent>-<title>.md + its plain summary in dashboard/tweaks.json) and
+//      never touches base.md itself. Both refuse a file that changed since the page read it.
 //   4. accepts a handoff on POST /handoff and appends one assignment line to activity.jsonl
 //      (tools/team.mjs assign — never a ledger line), and serves /thumb/<slug>.jpg, the first screen
 //      of the site's live preview (dashboard/thumbs.mjs).
@@ -22,11 +26,15 @@
 // Tunnel to this machine; never expose it bare.
 
 import { createServer } from 'node:http';
-import { readFileSync, existsSync, appendFileSync, watch, statSync, createReadStream } from 'node:fs';
+import { readFileSync, existsSync, appendFileSync, writeFileSync, mkdirSync, readdirSync, mkdtempSync, rmSync, watch, statSync, createReadStream } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
+import { tmpdir } from 'node:os';
 import { join, dirname, resolve, extname, normalize, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildData } from './data.mjs';
-import { whoami, team, assign } from '../tools/team.mjs';
+import { whoami, team, assign, ACTIVITY } from '../tools/team.mjs';
+import { currentRun } from '../tools/run.mjs';
 import { shootThumb, thumbFresh, markPitchLive } from './thumbs.mjs';
 import { readJsonlMerged, fetch as fetchMain } from '../tools/origin.mjs';
 
@@ -143,6 +151,60 @@ function handoff(body) {
   return { status: 201, line: assign(slug, task, to, OPERATOR) };
 }
 
+// ---- agent definitions (the Agents view) ----------------------------------------------------------
+// custom.md is the operator's own layer (CLAUDE.md: Claude never edits it); the operator saves it here.
+// base.md is Claude's: an edit from the dashboard only becomes a suggested tweak for gate d.
+const shaOf = (t) => createHash('sha256').update(t).digest('hex').slice(0, 16);
+const agentDir = (a) => (typeof a === 'string' && /^[a-z][a-z-]*$/.test(a) && existsSync(join(ROOT, 'agents', a, 'base.md')) ? join(ROOT, 'agents', a) : null);
+const logWork = (slug, note, files) => appendFileSync(ACTIVITY, JSON.stringify({ ts: new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'), operator: OPERATOR, slug, kind: 'work', note, files }) + '\n');
+function saveRules(body) {
+  const dir = agentDir(body.agent);
+  if (!dir) return { status: 400, error: 'unknown agent' };
+  if (typeof body.text !== 'string' || body.text.length > 200_000) return { status: 400, error: 'text is required' };
+  const path = join(dir, 'custom.md');
+  const cur = existsSync(path) ? readFileSync(path, 'utf8') : '';
+  if (body.base_sha && body.base_sha !== shaOf(cur)) return { status: 409, error: 'This file changed since you opened it. Reload the page, then make your edit again.' };
+  const header = cur.match(/^#\s[^\n]*\n(?:\s*\n)*---\s*\n/)?.[0] ?? '';
+  const next = header + body.text.trim() + '\n';
+  writeFileSync(path, next);
+  logWork('-', `${body.agent}: ${HUMAN} saved their rules (custom.md) from the dashboard`, [`agents/${body.agent}/custom.md`]);
+  return { status: 201, sha: shaOf(next), file: `agents/${body.agent}/custom.md` };
+}
+function suggestTweak(body) {
+  const dir = agentDir(body.agent);
+  if (!dir) return { status: 400, error: 'unknown agent' };
+  const title = String(body.title ?? '').trim(), what = String(body.what ?? '').trim(), why = String(body.why ?? '').trim();
+  if (title.length < 3 || what.length < 3 || why.length < 3) return { status: 400, error: 'Give the tweak a title, what it changes and why.' };
+  if (typeof body.text !== 'string' || body.text.length > 400_000) return { status: 400, error: 'text is required' };
+  const cur = readFileSync(join(dir, 'base.md'), 'utf8');
+  if (body.base_sha && body.base_sha !== shaOf(cur)) return { status: 409, error: "Claude's instructions changed since you opened them. Reload the page, then make your edit again." };
+  const next = body.text.endsWith('\n') ? body.text : body.text + '\n';
+  if (next === cur) return { status: 400, error: 'Nothing changed.' };
+  const tmp = mkdtempSync(join(tmpdir(), 'tweak-'));
+  let diff = '';
+  try {
+    writeFileSync(join(tmp, 'a'), cur); writeFileSync(join(tmp, 'b'), next);
+    try { execFileSync('diff', ['-u', '--label', `a/agents/${body.agent}/base.md`, '--label', `b/agents/${body.agent}/base.md`, join(tmp, 'a'), join(tmp, 'b')], { encoding: 'utf8' }); }
+    catch (e) { diff = e.stdout ?? ''; }
+  } finally { rmSync(tmp, { recursive: true, force: true }); }
+  let run; try { run = currentRun({ operator: OPERATOR }).run_id; } catch { run = 'dashboard'; }
+  const pdir = join(ROOT, 'proposals', run);
+  mkdirSync(pdir, { recursive: true });
+  const n = Math.max(0, ...readdirSync(pdir).map((f) => Number(f.match(/^(\d{3})-/)?.[1] ?? 0))) + 1;
+  const num = String(n).padStart(3, '0');
+  const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 48);
+  const rel = `proposals/${run}/${num}-${body.agent}-${slug}.md`;
+  const today = new Date().toISOString().slice(0, 10);
+  writeFileSync(join(ROOT, rel), `# ${num} — ${body.agent}: ${title}\n\nFiled ${today} by ${HUMAN} from the dashboard (Agents → Edit as a suggested tweak). **Not applied.** Awaiting approval (gate d); on approval Claude applies the diff to \`agents/${body.agent}/base.md\`, bumps its version and adds a CHANGELOG line.\n\n**Target:** \`agents/${body.agent}/base.md\`\n\n## What changes\n\n${what}\n\n## Why\n\n${why}\n\n## Diff\n\n\`\`\`diff\n${diff.trimEnd()}\n\`\`\`\n`);
+  const tw = join(ROOT, 'dashboard', 'tweaks.json');
+  const plain = existsSync(tw) ? JSON.parse(readFileSync(tw, 'utf8')) : {};
+  const name = body.agent.replace(/-/g, ' ').replace(/^./, (c) => c.toUpperCase());
+  plain[rel] = { title, agent: name, what, why, status: 'pending' };
+  writeFileSync(tw, JSON.stringify(plain, null, 2) + '\n');
+  logWork('-', `${body.agent}: ${HUMAN} suggested a tweak to Claude's instructions from the dashboard: ${title}`, [rel, 'dashboard/tweaks.json']);
+  return { status: 201, file: rel };
+}
+
 // ---- thumbnails -------------------------------------------------------------------------------------
 let previewCache = { at: 0, urls: {} };
 function previewUrl(slug) {
@@ -171,7 +233,7 @@ function notify(what) {
   clearTimeout(timer);
   timer = setTimeout(() => { for (const res of clients) res.write(`event: data\ndata: ${JSON.stringify({ changed: what, at: new Date().toISOString() })}\n\n`); }, 300);
 }
-for (const rel of ['ledger.jsonl', 'activity.jsonl', 'runs', 'proposals', 'sites', 'expenses.jsonl', 'revenues.jsonl', 'media']) {
+for (const rel of ['ledger.jsonl', 'activity.jsonl', 'runs', 'proposals', 'sites', 'expenses.jsonl', 'revenues.jsonl', 'media', 'agents', 'dashboard/tweaks.json']) {
   const abs = join(ROOT, rel);
   if (!existsSync(abs)) continue;
   try { watch(abs, { recursive: statSync(abs).isDirectory() }, (_e, f) => notify(f ? `${rel}/${f}` : rel)); } catch { /* recursive watch unsupported: ledger still watched */ }
@@ -210,6 +272,19 @@ function handle(req, res) {
   }
   if (req.method === 'GET' && path.startsWith('/thumb/') && path.endsWith('.jpg')) { serveThumb(res, path.slice(7, -4)).catch((e) => { if (!res.headersSent) send(res, 500, { error: String(e.message ?? e) }); }); return; }
   if (req.method === 'GET' && path === '/gates') return send(res, 200, { gates: buildData({ ledgerPath: LEDGER, operator: OPERATOR }).gates, decisions: Object.fromEntries(Object.entries(DECISIONS).map(([k, v]) => [k, { from: v.from, choices: v.choices }])) });
+  if (req.method === 'POST' && (path === '/agent-rules' || path === '/agent-tweak')) {
+    if (!/^application\/json\b/i.test(req.headers['content-type'] ?? '')) return send(res, 415, { error: 'content-type must be application/json' });
+    let raw = '';
+    req.on('data', (c) => { raw += c; if (raw.length > 1_000_000) req.destroy(); });
+    req.on('end', () => {
+      let body; try { body = JSON.parse(raw); } catch { return send(res, 400, { error: 'body must be JSON' }); }
+      if (!body || typeof body !== 'object' || Array.isArray(body)) return send(res, 400, { error: 'body must be a JSON object' });
+      let out; try { out = path === '/agent-rules' ? saveRules(body) : suggestTweak(body); } catch (e) { return send(res, 500, { error: String(e.message ?? e) }); }
+      if (out.status === 201) notify(path.slice(1));
+      return send(res, out.status, out);
+    });
+    return;
+  }
   if (req.method === 'POST' && path === '/handoff') {
     if (!/^application\/json\b/i.test(req.headers['content-type'] ?? '')) return send(res, 415, { error: 'content-type must be application/json' });
     let raw = '';
