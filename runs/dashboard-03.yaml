@@ -1,0 +1,11 @@
+run_id: dashboard-03
+operator: shahar                 # who runs it (team.json)
+status: closed                   # active | closed
+kind: dashboard                  # a run on the dashboard itself, not on businesses: no scout, no area, no sites
+started: 2026-10-05
+closed: 2026-10-06
+# Overview redesign (dashboard/BRIEF-overview-03.md): three rounds of creative director → designer → critic; Shahar picked round 3 option B on 2026-10-06; built into the live dashboard.
+# Ledger lines: run_id dashboard-03, slug "dashboard".
+budget: {}                       # none was set
+agents: {}                       # not pinned: the creative director, designer and critic were briefed by the BRIEF file
+                                 # (their task layer), not run from agents/<name>/ at a pinned version
