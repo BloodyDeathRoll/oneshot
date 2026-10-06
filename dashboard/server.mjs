@@ -225,7 +225,7 @@ function suggestTweak(body) {
     message: `proposals/${run}: suggested tweak to ${body.agent} — ${title} (from the dashboard)`,
     title: `Suggested tweak to ${body.agent}: ${title}`,
     body: `## What changes\n\n${what}\n\n## Why\n\n${why}\n\nFiled by ${HUMAN} from the dashboard as a suggested tweak to Claude's instructions for the ${body.agent} agent. This PR adds the suggestion only (\`${rel}\`); \`agents/${body.agent}/base.md\` is unchanged. Approve or reject it on the Decisions page; Claude applies it after approval.\n\nOpened by the dashboard on save.`,
-    // tweaks.json is the page's plain summary; skipped while main has none yet
+    // tweaks.json is the page's plain summary; left out when main's copy differs (it has none yet)
     files: [{ rel, before: '', after: readFileSync(join(ROOT, rel), 'utf8') }, { rel: 'dashboard/tweaks.json', before: twBefore, after: twAfter, optional: true }],
   };
   return { status: 201, file: rel, pr };

@@ -885,6 +885,8 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 .agv-menu button:hover,.agv-menu button:focus-visible{background:var(--ground)}
 .agv-tabline{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 40px;border-bottom:1px solid var(--agv-rule2);background:#FBFCFE}
 .agv-tabline p{font-size:15px;color:var(--ink2);line-height:1.45}
+.agv-tabline p a{color:#1F4BFF;font-weight:600}
+.agv-tabline p .agv-err{color:#B4232F;font-weight:600}
 .agv-docbody{padding:30px 40px 44px}
 .agv-empty{font-size:15px;color:var(--ink3)}
 .agv-emptyrules{display:flex;gap:20px;align-items:flex-start;padding:26px;border-radius:16px;background:var(--ground);max-width:640px}
@@ -1734,6 +1736,7 @@ function wireEditor(host) {
   $('#agv-save', host)?.addEventListener('click', () => saveEdit(host));
 }
 // Save: your rules are written directly; an edit of Claude's instructions is filed as a suggested tweak (dashboard/server.mjs).
+// Either way the server then opens a PR with the change; the page waits for it and links it.
 async function sha16(t) { const h = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t)); return [...new Uint8Array(h)].map((b) => b.toString(16).padStart(2, '0')).join('').slice(0, 16); }
 async function saveEdit(host) {
   const e = S.edit; const id = S.agent; const hint = $('#agv-savehint', host); const btn = $('#agv-save', host);
@@ -1741,7 +1744,7 @@ async function saveEdit(host) {
   const say = (t, err) => { hint.className = 'agv-hint' + (err ? ' err' : ''); hint.textContent = t; };
   if (e.file === 'base' && e.text === e.orig) return say('Nothing changed yet.', true);
   if (e.file === 'base' && ![e.title, e.what, e.why].every((x) => (x || '').trim().length >= 3)) { say('Give the tweak a title, what it changes and why.', true); $('#agv-tw-title', host)?.focus(); return; }
-  btn.disabled = true; say('Saving…');
+  btn.disabled = true; say('Saving and opening a PR…');
   const orig = fileText(path) ?? '';
   const body = { agent: id, text: e.text, base_sha: await sha16(orig), ...(e.file === 'base' ? { title: e.title.trim(), what: e.what.trim(), why: e.why.trim() } : {}) };
   let r, j;
@@ -1750,7 +1753,8 @@ async function saveEdit(host) {
   if (r.status !== 201) { btn.disabled = false; return say(`Not saved: ${j.error || r.status}`, true); }
   delete S.files[path]; S.edit = null;
   api.live(e.file === 'base' ? 'Saved as a suggested tweak' : 'Your rules are saved');
-  S.saved = { tab: e.file, html: e.file === 'base' ? '<b>Saved as a suggested tweak.</b> Approve it on the Decisions page; Claude applies it after that.' : '<b>Saved.</b> The agent reads your rules on its next run. They reach the other operator when this branch is merged.' };
+  const pr = j.pr ? ` <a href="${esc(j.pr)}" target="_blank" rel="noopener">PR opened</a>: merge it to share this with the other operator.` : ` <span class="agv-err">The PR was not opened: ${esc(j.pr_error || 'unknown error')}</span>`;
+  S.saved = { tab: e.file, html: (e.file === 'base' ? '<b>Saved as a suggested tweak.</b> Approve it on the Decisions page; Claude applies it after that.' : '<b>Saved.</b> The agent reads your rules on its next run.') + pr };
   renderDoc(); api.refresh();
 }
 
