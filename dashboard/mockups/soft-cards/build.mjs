@@ -6,6 +6,7 @@
 // woff2 data URI. The page itself makes no network request; the Sites view lazy-loads one JPEG per
 // site from dist/img/<slug>.jpg — the first screen of its live preview (dashboard/thumbs.mjs).
 import { readFile, writeFile, mkdir, rm } from 'node:fs/promises';
+import { readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -21,7 +22,9 @@ const json = JSON.stringify(data).replace(/<\/script/gi, '<\\/script').replace(/
 const fontUri = 'data:font/woff2;base64,' + font.toString('base64');
 
 if (!src.includes('__FONT__') || !src.includes('<!--__DATA__-->')) throw new Error('placeholders missing in src/index.html');
-const out = src.replace('__FONT__', fontUri).replace('<!--__DATA__-->', () => json);
+// <!--include:<file>--> pulls a view kept in its own file under src/ (e.g. the Agents view) into the page.
+const withViews = src.replace(/<!--include:([\w.-]+)-->/g, (_, f) => readFileSync(join(here, 'src', f), 'utf8'));
+const out = withViews.replace('__FONT__', fontUri).replace('<!--__DATA__-->', () => json);
 
 await mkdir(join(here, 'dist/img'), { recursive: true });
 await writeFile(join(here, 'dist/index.html'), out);

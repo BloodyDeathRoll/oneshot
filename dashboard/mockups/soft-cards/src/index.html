@@ -50,7 +50,7 @@ img{display:block;max-width:100%}
 
 /* ---------- main ---------- */
 main{min-width:0;padding:0 24px 48px}
-.top{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px;position:sticky;top:0;background:var(--ground);z-index:1}
+.top{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px;position:sticky;top:0;background:var(--ground);z-index:1100}
 .top h1{font-size:28px;font-weight:700;letter-spacing:-.015em;line-height:1;outline-offset:6px}
 .top .sub{font-size:13px;color:var(--ink3);margin-left:14px;font-weight:500}
 .controls{display:flex;gap:12px;align-items:center}
@@ -313,7 +313,7 @@ td.next .why{display:block;font-size:13px;color:var(--ink3);overflow:hidden;text
 .nd-list .s{display:block;font-size:14px;color:var(--ink2);margin-top:3px}
 .nd-list .a{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
 /* ---------- ledger ---------- */
-.lg-sum{display:flex;gap:10px;flex-wrap:wrap;margin:var(--gap) 0}
+.lg-sum{display:flex;gap:10px;flex-wrap:wrap;margin:var(--gap) 0;padding:10px 0;position:sticky;top:72px;z-index:1050;background:var(--ground)}
 .lg-sum button{border:0;background:var(--card);box-shadow:var(--shadow);border-radius:999px;padding:10px 16px;font:inherit;font-size:14px;font-weight:600;color:var(--ink2);cursor:pointer;display:inline-flex;gap:8px;align-items:center}
 .lg-sum button b{color:var(--ink);font-weight:800}
 .lg-sum button i{width:10px;height:10px;border-radius:999px;flex:none}
@@ -626,7 +626,6 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
     </div>
   </header>
 
-  <div class="mode" id="mode" role="status"><i aria-hidden="true"></i><span id="mode-text">read-only · open the CLI or start dashboard/server.mjs to decide</span><span class="lastline" id="lastline"></span></div>
 
   <section class="view on" id="view-overview" aria-label="Overview">
     <p class="ov-sum" id="ov-sum"></p>
@@ -664,10 +663,10 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
   </section>
 
   <section class="view" id="view-pipeline" aria-label="Pipeline">
+    <div class="lg-sum" id="pipe-filters" role="group" aria-label="Filter rows" style="margin-top:0"></div>
     <section class="card">
       <div class="card-h pipe-head" style="align-items:center">
         <div><h2>Every business</h2><div class="pipe-sum" id="pipe-sum"></div></div>
-        <div class="pills" id="pipe-filters" role="group" aria-label="Filter rows"></div>
       </div>
       <div style="overflow-x:auto">
       <table class="pipe" id="pipe-table">
@@ -684,15 +683,12 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
   </section>
 
   <section class="view" id="view-agents" aria-label="Agents">
-    <section class="card" id="ag-glance" aria-labelledby="agg-h">
-      <div class="card-h"><h2 id="agg-h">Fails this run, by agent and business</h2><span class="meta" id="agg-meta"></span></div>
-      <div id="agg-chart"></div>
-    </section>
-    <div class="ag-grid" id="ag-grid"></div>
-    <div class="ag-mini" id="ag-mini"></div>
+<!--include:agents-view.html-->
   </section>
 
   <section class="view" id="view-decisions" aria-label="Decisions">
+<!--include:decisions-view.html-->
+    <div id="dec-legacy">
     <div class="dec2">
     <section class="card tweaks" id="props" tabindex="-1" aria-labelledby="props-h">
       <div class="card-h"><h2 id="props-h">Suggested agent tweaks</h2><span class="meta" id="props-meta"></span></div>
@@ -704,6 +700,7 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
       <div class="card-h"><h2 id="dec-h">Your decisions, by site</h2><span class="meta" id="dec-sum"></span></div>
       <ul class="dsites" id="dsites"></ul>
     </section>
+    </div>
     </div>
   </section>
 </main>
@@ -781,7 +778,7 @@ function countUp(node,to,key){
 }
 
 /* ---------- state ---------- */
-const state={run:'all',view:'overview',filter:'all',openPick:null,openSite:null,openDec:null,results:{},handoffs:{},dirty:false};
+const state={run:'all',view:'overview',filter:'delivered',openPick:null,openSite:null,openDec:null,results:{},handoffs:{},dirty:false};
 // Overview, Sites and Decisions cover every run; Pipeline and Agents show the run in the picker.
 const PER_RUN=['pipeline','agents'];
 const agentRun=()=>state.run==='all'?D.run.run_id:state.run;
@@ -804,11 +801,6 @@ function renderChrome(){
   $('#n-sites').textContent=pitchSites().length;
   $('#n-agents').textContent=Object.keys(D.agents).length;
   $('#n-dec').textContent=builtDecisions().length;
-  $('#mode').classList.toggle('live',LIVE);
-  $('#mode-text').textContent=LIVE?`live · ${location.host} · decisions append to the ledger`:'read-only · open the CLI or start dashboard/server.mjs to decide';
-  const ll=$('#lastline');ll.innerHTML='';
-  const last=Object.values(state.results).filter(r=>r.status===201).sort((a,b)=>b.at-a.at)[0];
-  if(last){ll.append(el('span',{text:'last written:'}),el('code',{title:JSON.stringify(last.body.line),text:JSON.stringify(last.body.line)}));const d=el('button',{type:'button',text:'dismiss'});d.onclick=()=>{for(const k in state.results)if(state.results[k]===last)delete state.results[k];renderChrome()};ll.append(d)}
 }
 
 /* nav */
@@ -1413,10 +1405,10 @@ function renderPipeline(){
   const rows=pipeRows();
   const groups={};for(const b of rows)groups[b.group]=(groups[b.group]||0)+1;
   const filt=$('#pipe-filters');filt.innerHTML='';
-  const opts=[['all','All',rows.length],...GROUP_ORDER.filter(g=>groups[g]).map(g=>[g,GROUP_LABEL[g][0].toUpperCase()+GROUP_LABEL[g].slice(1),groups[g]])];
+  const opts=[...GROUP_ORDER.filter(g=>groups[g]).map(g=>[g,g==='delivered'?'Built':GROUP_LABEL[g][0].toUpperCase()+GROUP_LABEL[g].slice(1),groups[g]]),['all','All',rows.length]];
   if(state.filter==='gate'&&!groups.gate)state.filter=groups.delivered?'delivered':'all';
   if(!opts.find(o=>o[0]===state.filter))state.filter='all';
-  for(const [k,l,n] of opts){const b=el('button',{type:'button','aria-pressed':String(state.filter===k)});b.append(l,el('i',{text:n}));b.onclick=()=>{state.filter=k;renderPipeline()};filt.append(b)}
+  for(const [k,l,n] of opts){const b=el('button',{type:'button','aria-pressed':String(state.filter===k)});b.append(l,el('b',{text:String(n)}));b.onclick=()=>{state.filter=k;renderPipeline()};filt.append(b)}
   const shown=rows.filter(b=>state.filter==='all'||b.group===state.filter).sort((a,b)=>GROUP_ORDER.indexOf(a.group)-GROUP_ORDER.indexOf(b.group)||b.station-a.station||a.name.localeCompare(b.name));
   $('#pipe-sum').innerHTML='';
   $('#pipe-sum').append(el('span',{text:`${runShort(state.run)} · ${rows.length} businesses`}),el('span',{text:`${shown.length} shown`}),el('span',{text:`${rows.filter(b=>b.gate).length} waiting on you`}));
@@ -1473,7 +1465,6 @@ function renderSites(){
   const box=$('#sites-grid');box.innerHTML='';
   const sites=pitchSites();
   const head=$('#sites-head');head.innerHTML='';
-  head.append(el('span',{},el('b',{text:`${sites.length} site${sites.length===1?'':'s'} with a preview`}),` · all runs`,sites.length?` · ${sites.filter(s=>s.state==='packaged').length} ready to send`:''));
   if(!sites.length){box.append(el('section',{class:'card'},el('h2',{class:'label',text:'No site has a preview yet'}),el('p',{class:'empty',style:'margin-top:8px;font-size:15px;color:var(--ink2)',text:'Fills when a business reaches previewed.'})));return}
   const compact=matchMedia('(max-width:1280px)').matches;
   const W=compact?(Math.min(1232,innerWidth)-72-48-24)/2-56:(1152-48)/3-56;
@@ -1500,7 +1491,11 @@ function renderSites(){
 }
 
 /* ---------- Agents ---------- */
-function renderAgents(){
+// Views kept in their own files (src/agents-view.html, src/decisions-view.html) register a render
+// function on window.OSViews and get this page's data and helpers through OSAPI.
+const OSAPI={get D(){return D},get LIVE(){return LIVE},state,el,sv,modal,openDoc,mdToHtml,copyText,fileURL,go,refresh:()=>refresh(),opName,bizName,dShort,tShort,runShort,live,thumbSrc};
+window.OSAPI=OSAPI;
+function renderAgents(){if(window.OSViews?.agents)return window.OSViews.agents(OSAPI);if(!$("#agg-chart"))return;
   const run=agentRun();
   const A=Object.entries(D.agents).map(([name,a])=>({name,a,r:a.by_run[run]||{lines:0,passes:0,fails:0,rounds_per_pass:[],fails_by_slug:{},versions_seen:[]}}));
   const withFails=A.filter(x=>x.r.fails>0).sort((p,q)=>q.r.fails-p.r.fails);
@@ -1656,7 +1651,7 @@ function renderTweaks(){
 }
 const builtSlugs=()=>new Set(D.businesses.filter(b=>(b.reached||[]).some(s=>['built','passed','previewed','packaged','pitched'].includes(s))).map(b=>b.slug));
 const builtDecisions=()=>{const s=builtSlugs();return D.decisions.filter(d=>s.has(d.slug))};
-function renderDecisions(){
+function renderDecisions(){if(window.OSViews?.decisions){const lg=$('#dec-legacy');if(lg)lg.hidden=true;return window.OSViews.decisions(OSAPI)}
   const bySlug=new Map();
   for(const d of builtDecisions()){if(!bySlug.has(d.slug))bySlug.set(d.slug,[]);bySlug.get(d.slug).push(d)}
   const groups=[...bySlug.entries()].sort((a,b)=>b[1][0].ts.localeCompare(a[1][0].ts));
