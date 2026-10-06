@@ -977,7 +977,7 @@ function renderDoc() {
   else if (tab === 'history') { const ch = parseChangelog(text); body = ch.length ? `<ol class="agv-hist">${ch.map((e) => `<li><time datetime="${e.date}">${day(e.date)} ${e.date.slice(0, 4)}</time><div><div class="agv-prose">${md(e.text)}</div><span class="agv-vt">${e.file ? `${esc((MORE[e.file] || [e.file])[0])} · ` : ''}version ${esc(e.v)}</span></div></li>`).join('')}</ol>` : `<div class="agv-prose">${md(text, { reading: true })}</div>`; }
   else body = `<div class="agv-prose">${md(text, { reading: true })}</div>`;
   host.innerHTML = `<div class="agv-tabs"><div class="agv-tablist" role="tablist" aria-label="${esc(a.name)}'s files">${tabs}</div></div>
-    <div class="agv-tabline"><p>${esc(tab === 'more' ? `${MORE[S.more][1]}. ${TABS.more.line}` : TABS[tab].line)}</p>${action}</div>
+    <div class="agv-tabline"><p>${S.saved && S.saved.tab === tab && !editing ? S.saved.html : esc(tab === 'more' ? `${MORE[S.more][1]}. ${TABS.more.line}` : TABS[tab].line)}</p>${action}</div>
     <div class="agv-docbody" id="agv-panel" role="tabpanel" aria-labelledby="agv-tab-${tab}">${body}</div>`;
   const tl = $('.agv-tablist', host);
   $$('[data-tab]', tl).forEach((b) => b.addEventListener('click', () => {
@@ -988,7 +988,7 @@ function renderDoc() {
   tl.addEventListener('keydown', (e) => { const T = $$('[role="tab"]', tl); const k = T.indexOf(document.activeElement); if (k < 0) return; if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); T[(k + (e.key === 'ArrowRight' ? 1 : T.length - 1)) % T.length].focus(); } });
   $$('[data-more]', host).forEach((b) => b.addEventListener('click', () => { if (S.edit && S.edit.text !== S.edit.orig && !confirm('Leave the editor? Your edit is not saved anywhere.')) return; S.edit = null; S.more = b.dataset.more; S.tab = 'more'; S.menuOpen = false; renderDoc(); $('#agv-tab-more')?.focus(); }));
   $('.agv-menu', host)?.addEventListener('keydown', (e) => { if (e.key === 'Escape') { e.stopPropagation(); S.menuOpen = false; renderDoc(); $('#agv-tab-more')?.focus(); } });
-  const start = () => { const orig = tab === 'base' ? fileText(path) : customBody(fileText(path) || ''); S.edit = { file: tab, orig, text: orig, mode: 'write' }; renderDoc(); $('#agv-ed')?.focus(); };
+  const start = () => { S.saved = null; const orig = tab === 'base' ? fileText(path) : customBody(fileText(path) || ''); S.edit = { file: tab, orig, text: orig, mode: 'write' }; renderDoc(); $('#agv-ed')?.focus(); };
   $('#agv-act', host)?.addEventListener('click', start);
   $('#agv-first', host)?.addEventListener('click', start);
   if (editing) wireEditor(host);
@@ -1034,10 +1034,8 @@ async function saveEdit(host) {
   if (r.status !== 201) { btn.disabled = false; return say(`Not saved: ${j.error || r.status}`, true); }
   delete S.files[path]; S.edit = null;
   api.live(e.file === 'base' ? 'Saved as a suggested tweak' : 'Your rules are saved');
-  renderDoc();
-  const line = $('.agv-tabline p', host);
-  if (line) line.innerHTML = e.file === 'base' ? '<b>Saved as a suggested tweak.</b> Approve it on the Decisions page; Claude applies it after that.' : '<b>Saved.</b> The agent reads your rules on its next run. They reach the other operator when this branch is merged.';
-  api.refresh();
+  S.saved = { tab: e.file, html: e.file === 'base' ? '<b>Saved as a suggested tweak.</b> Approve it on the Decisions page; Claude applies it after that.' : '<b>Saved.</b> The agent reads your rules on its next run. They reach the other operator when this branch is merged.' };
+  renderDoc(); api.refresh();
 }
 
 // ------------------------------------------------------------------ draw: on every index render and on our own navigation

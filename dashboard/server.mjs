@@ -164,7 +164,9 @@ function saveRules(body) {
   const path = join(dir, 'custom.md');
   const cur = existsSync(path) ? readFileSync(path, 'utf8') : '';
   if (body.base_sha && body.base_sha !== shaOf(cur)) return { status: 409, error: 'This file changed since you opened it. Reload the page, then make your edit again.' };
-  const header = cur.match(/^#\s[^\n]*\n(?:\s*\n)*---\s*\n/)?.[0] ?? '';
+  // keep the file's own first line ("# <agent> / custom.md — written by …") and a --- rule if it has one
+  const m = cur.match(/^(#\s[^\n]*)\n(?:[ \t]*\n)*(---[ \t]*(?:\n|$))?/);
+  const header = m ? `${m[1]}\n${m[2] ? '---\n' : '\n'}` : '';
   const next = header + body.text.trim() + '\n';
   writeFileSync(path, next);
   logWork('-', `${body.agent}: ${HUMAN} saved their rules (custom.md) from the dashboard`, [`agents/${body.agent}/custom.md`]);
@@ -192,7 +194,7 @@ function suggestTweak(body) {
   mkdirSync(pdir, { recursive: true });
   const n = Math.max(0, ...readdirSync(pdir).map((f) => Number(f.match(/^(\d{3})-/)?.[1] ?? 0))) + 1;
   const num = String(n).padStart(3, '0');
-  const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 48);
+  const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').replace(new RegExp(`^${body.agent}-`), '').slice(0, 48);
   const rel = `proposals/${run}/${num}-${body.agent}-${slug}.md`;
   const today = new Date().toISOString().slice(0, 10);
   writeFileSync(join(ROOT, rel), `# ${num} — ${body.agent}: ${title}\n\nFiled ${today} by ${HUMAN} from the dashboard (Agents → Edit as a suggested tweak). **Not applied.** Awaiting approval (gate d); on approval Claude applies the diff to \`agents/${body.agent}/base.md\`, bumps its version and adds a CHANGELOG line.\n\n**Target:** \`agents/${body.agent}/base.md\`\n\n## What changes\n\n${what}\n\n## Why\n\n${why}\n\n## Diff\n\n\`\`\`diff\n${diff.trimEnd()}\n\`\`\`\n`);
