@@ -62,6 +62,15 @@ export function assignments(lines = readActivity()) {
 const now = () => new Date().toISOString().replace(/\.\d+Z$/, 'Z');
 const append = (line) => appendFileSync(ACTIVITY, JSON.stringify(line) + '\n');
 
+// Opens an assignment and returns its line. Also used by the dashboard's handoff button.
+export function assign(slug, task, to, by = whoami()) {
+  if (to && !team()[to]) throw new Error(`--to ${to} is not in team.json`);
+  const id = `a-${now().replace(/[-:TZ]/g, '').slice(0, 12)}-${Math.random().toString(36).slice(2, 6)}`;
+  const line = { ts: now(), operator: by, slug, kind: 'assign', id, to: to ?? by, task };
+  append(line);
+  return line;
+}
+
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const [cmd, ...rest] = process.argv.slice(2);
   const flag = (k) => { const i = rest.indexOf(`--${k}`); if (i < 0) return null; const v = rest[i + 1]; rest.splice(i, 2); return v; };
@@ -76,11 +85,7 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
     } else if (cmd === 'assign') {
       const to = flag('to'); const [slug, task] = rest;
       if (!slug || !task) usage();
-      const me = whoami();
-      if (to && !team()[to]) throw new Error(`--to ${to} is not in team.json`);
-      const id = `a-${now().replace(/[-:TZ]/g, '').slice(0, 12)}-${Math.random().toString(36).slice(2, 6)}`;
-      append({ ts: now(), operator: me, slug, kind: 'assign', id, to: to ?? me, task });
-      console.log(id);
+      console.log(assign(slug, task, to).id);
     } else if (cmd === 'done') {
       const [id, note] = rest;
       const a = assignments().find((x) => x.id === id);

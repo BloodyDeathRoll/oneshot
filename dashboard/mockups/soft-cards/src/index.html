@@ -17,6 +17,7 @@
   --r:20px;--r2:12px;--gap:24px;--pad:28px;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{font-family:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;color:var(--ink);background:var(--ground);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 body{margin:0;background:var(--ground);display:grid;grid-template-columns:240px minmax(0,1fr);min-height:100vh;font-size:15px;line-height:1.45;font-weight:400}
 a{color:inherit}
@@ -26,6 +27,9 @@ ul,ol{padding:0;list-style:none}
 svg{display:block;overflow:visible}
 img{display:block;max-width:100%}
 :focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:4px}
+#title:focus{outline:none}
+@media (max-width:640px){.top{flex-wrap:wrap;height:auto;padding:12px 0}.controls{max-width:100%}.psel select{max-width:200px}
+  .sites-grid{grid-template-columns:minmax(0,1fr)!important}.scorechart svg{max-width:100%;height:auto}}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .lnk{color:var(--blue);font-weight:600;text-decoration:none}
 .lnk:hover{text-decoration:underline}
@@ -49,7 +53,7 @@ img{display:block;max-width:100%}
 
 /* ---------- main ---------- */
 main{min-width:0;padding:0 24px 48px}
-.top{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px;position:sticky;top:0;background:var(--ground);z-index:1}
+.top{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px;position:sticky;top:0;background:var(--ground);z-index:1100}
 .top h1{font-size:28px;font-weight:700;letter-spacing:-.015em;line-height:1;outline-offset:6px}
 .top .sub{font-size:13px;color:var(--ink3);margin-left:14px;font-weight:500}
 .controls{display:flex;gap:12px;align-items:center}
@@ -69,78 +73,146 @@ main{min-width:0;padding:0 24px 48px}
 .label{font-size:13px;font-weight:700;color:var(--ink2)}
 .card:focus-visible,.card.flash{outline:2px solid var(--acc);outline-offset:4px;border-radius:var(--r)}
 
-/* overview grid */
-.ov{display:grid;grid-template-columns:minmax(0,1fr) 376px;grid-template-areas:"kpis needs" "funnel activity" "team team";gap:var(--gap);align-items:stretch}
-.team{grid-area:team}
-.team-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:var(--gap)}
-.team h3{font-size:13px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em;margin:0 0 4px}
-.team .empty{font-size:14px;color:var(--ink3);padding:10px 0}
+/* overview: dashboard-03 round 3, option B (picked by Shahar 2026-10-06). Scoped with ov- so the
+   .ln/.cta/.btn users on the other views are untouched. */
+#view-overview{--ln:#E6E8EE;--ctl:#D5D9E2;--hov:#F7F8FA;--soft:#F7F8FA;--gbg:#EEF0F3;--tw:176px;--th:110px;--rp:24px;font-size:14px;line-height:20px;font-weight:500}
+.ov-sum{margin:0 0 20px;font-size:16px;line-height:24px;color:var(--ink2);text-wrap:pretty}
+.ov-sum b{color:var(--ink);font-weight:700}
+.ov-surf{background:var(--card);border:1px solid var(--ln);border-radius:12px}
+.ov-band{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:24px}
+.ov-m{padding:24px;display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0}
+.ov-m+.ov-m{border-left:1px solid var(--ln)}
+.ov-m .lab{color:var(--ink2)}
+.ov-m .fig{font-size:48px;line-height:56px;font-weight:600;letter-spacing:-.02em;margin-top:8px;color:var(--ink)}
+.ov-m .fig small{font-size:16px;line-height:24px;font-weight:600;color:var(--ink3);letter-spacing:0;margin-left:8px}
+.ov-m .month{margin-top:4px;color:var(--ink2)}
+.ov-m .month b{color:var(--ink);font-weight:600}
+.ov-m .hint{margin-top:16px;max-width:44ch;color:var(--ink3);text-wrap:pretty}
+.ov-m .hint q{quotes:"\201C" "\201D";color:var(--ink2);font-weight:600}
+.ov-counts{margin:0;border-left:1px solid var(--ln);padding:8px 24px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px;align-content:center}
+.ov-counts .r{display:flex;flex-direction:column;justify-content:center;gap:2px;min-height:76px;padding:10px 0;border-top:1px solid var(--ln);min-width:0}
+.ov-counts .r:nth-child(-n+2){border-top:0}
+.ov-counts dt{color:var(--ink2)}
+.ov-counts dd{margin:0;font-size:28px;line-height:36px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+.ov-counts dd.z{color:var(--ink3)}
+.ov-counts button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:4px;border-radius:6px}
+.ov-counts button:hover{color:var(--acc)}
+.ov-counts button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.ov-counts button svg{width:18px;height:18px;color:var(--ink3)}
+.ov-body{display:grid;grid-template-columns:minmax(0,1fr) 33.3333%;gap:24px;align-items:start}
+.ov-lh{display:flex;align-items:center;gap:10px;height:64px;padding:0 var(--rp);border-bottom:1px solid var(--ln)}
+.ov-lh h2{font-size:18px;line-height:28px;font-weight:700}
+.ov-lh h2:focus{outline:0}
+.ov-lh .meta{margin-left:auto;color:var(--ink3)}
+.ov-cnt{min-width:24px;height:24px;padding:0 8px;border-radius:6px;background:var(--t5);color:var(--acc);font-weight:700;display:inline-grid;place-items:center}
+.ov-cnt.z{background:var(--gbg);color:var(--ink2)}
+/* one row per site; rows share columns (subgrid), and the thumb track carries the row padding */
+.ov-rows{display:grid;grid-template-columns:calc(var(--tw) + var(--rp)) minmax(0,1fr) auto;grid-auto-rows:1fr;column-gap:24px}
+.ov-row{grid-column:1/-1;display:grid;grid-template-columns:subgrid;grid-template-rows:auto auto auto;align-content:center;align-items:center;row-gap:8px;padding:16px var(--rp);border-top:1px solid var(--ln)}
+.ov-row:first-child{border-top:0}
+.ov-row.empty{display:block;color:var(--ink3)}
+.ov-thumb{grid-column:1;grid-row:1/4;align-self:center;display:block;width:var(--tw);height:var(--th);border-radius:8px;overflow:hidden;border:1px solid var(--ln);background:var(--soft);position:relative}
+.ov-thumb img{width:100%;height:100%;object-fit:cover;object-position:top}
+.ov-thumb .noshot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;color:var(--ink3)}
+.ov-nm{grid-column:2;grid-row:1}
+.ov-links{grid-column:2;grid-row:2}
+.ov-meta{grid-column:2;grid-row:3}
+.ov-hob{grid-column:3;grid-row:1;justify-self:end}
+.ov-row .sugs{grid-column:3;grid-row:2;justify-self:end}
+.ov-upd{grid-column:3;grid-row:3;justify-self:stretch}
+.ov-nm{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:8px}
+.ov-nm h3{font-size:16px;line-height:24px;font-weight:700;letter-spacing:-.005em;overflow-wrap:anywhere}
+.ov-nm .by{color:var(--ink3);white-space:nowrap}
+.ov-links{display:flex;flex-wrap:wrap;align-items:center;column-gap:16px}
+.ov-lk{display:inline-flex;align-items:center;gap:4px;min-height:28px;color:var(--blue);font-weight:600;text-decoration:none;white-space:nowrap;border-radius:6px}
+.ov-lk:hover{text-decoration:underline;text-underline-offset:3px}
+.ov-lk svg{width:12px;height:12px}
+.ov-off{display:inline-flex;align-items:center;gap:6px;min-height:28px;color:var(--ink3);font-weight:600;white-space:nowrap;cursor:help}
+.ov-off svg{width:14px;height:14px}
+.ov-meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;color:var(--ink3)}
+.ov-badge{display:inline-flex;align-items:center;height:24px;padding:0 8px;border-radius:6px;font-weight:600;white-space:nowrap}
+.ov-badge.ready{background:var(--green-bg);color:var(--green)}
+.ov-badge.sent{background:var(--gbg);color:var(--ink2)}
+.ov-badge.good{background:var(--green-bg);color:var(--green)}
+.ov-badge.bad{background:var(--red-bg);color:var(--red)}
+.ov-ho{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);font-weight:600}
+.ov-ho svg{width:14px;height:14px;flex:none}
+.sugs{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.sugs-l{color:var(--ink3);font-weight:600;font-size:14px;margin-right:4px}
+.sug-ib{width:36px;height:36px;border:1px solid var(--ctl,#D5D9E2);border-radius:8px;background:#fff;color:var(--ink2);display:inline-grid;place-items:center;cursor:pointer;padding:0}
+.sug-ib svg{width:18px;height:18px}
+.sug-ib.wa svg{width:20px;height:20px}
+.sug-ib:hover{background:#F7F8FA;border-color:#B9BFCB}
+.ovb{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;padding:0 14px;border-radius:8px;border:1px solid transparent;font:inherit;font-weight:600;white-space:nowrap;text-decoration:none;cursor:pointer;background:none;color:var(--ink)}
+.ovb svg{width:16px;height:16px;flex:none}
+.ovb.p{background:var(--acc);color:#fff}
+.ovb.p:hover{background:#5A24C7}
+.ovb.ho{color:var(--ink2)}
+.ovb.sm{height:28px;padding:0 8px;gap:4px}
+.ovb.sm svg{width:14px;height:14px}
+.ovb.ho:hover{background:var(--hov);color:var(--ink)}
+.ovb.sg{background:var(--t5);color:var(--acc)}
+.ovb.sg:hover{background:var(--acc-sec)}
+.ovb.s{background:#fff;border-color:var(--ctl);height:32px;padding:0 12px}
+.ovb.s:hover{background:var(--hov)}
+.ov-wh{display:flex;align-items:center;gap:10px;height:64px;padding:0 var(--rp);border-bottom:1px solid var(--ln)}
+.ov-wh h2{font-size:18px;line-height:28px;font-weight:700}
+.ov-wl li{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:14px;padding:16px var(--rp);border-top:1px solid var(--ln)}
+.ov-wl li:first-child{border-top:0}
+.ov-wl b{display:block;font-weight:600;color:var(--ink);text-wrap:pretty}
+.ov-wl span{display:block;color:var(--ink3);margin-top:2px}
+.ov-wl li.empty{display:block;color:var(--ink3)}
+/* the handoff popup: the request in plain words, the full prompt folded */
+.ov-done{display:grid;gap:14px}
+.ov-done .ok{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;color:var(--ink)}
+.ov-done .ok i{width:24px;height:24px;border-radius:50%;background:var(--green-bg);color:var(--green);display:grid;place-items:center;font-style:normal}
+.ov-done dl{margin:0;display:grid;grid-template-columns:72px minmax(0,1fr);gap:8px 12px;font-size:15px}
+.ov-done dt{color:var(--ink3);font-weight:600}
+.ov-done dd{margin:0;color:var(--ink)}
+.ov-done details summary{cursor:pointer;color:var(--ink2);font-weight:600}
+.thumb{display:block;border-radius:var(--r2);overflow:hidden;background:var(--t5);aspect-ratio:16/10;position:relative}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:top}
+.thumb .noshot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--ink2);text-align:center;padding:12px}
+.ln{margin-top:10px;display:flex;gap:8px 10px;flex-wrap:wrap;font-size:13px}
+.cta{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--rule);background:var(--card);color:var(--ink);font:inherit;font-size:13px;font-weight:700;border-radius:999px;padding:7px 12px;line-height:1;text-decoration:none;cursor:pointer;white-space:nowrap}
+.cta:hover{background:var(--ground)}
+.cta.link{color:var(--blue);border-color:#D6DEFF}
+.cta.link:hover{background:#F2F5FF}
+.cta[aria-disabled="true"]{color:var(--ink3);border-style:dashed;cursor:not-allowed;background:transparent}
+.cta svg{width:14px;height:14px}
+dialog.modal{border:0;border-radius:var(--r);box-shadow:0 2px 6px rgba(11,18,32,.06),0 24px 64px rgba(11,18,32,.16);padding:0;width:min(640px,calc(100% - 32px));max-height:calc(100vh - 64px);color:var(--ink);background:var(--card)}
+dialog.modal::backdrop{background:rgba(255,255,255,.8)}
+.modal .mh{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:24px 24px 18px;border-bottom:1px solid var(--rule)}
+.modal .mh .mt{min-width:0}
+.modal .mh h2{font-size:22px;line-height:28px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+.modal .mh p{margin-top:4px;font-size:14px;line-height:20px;font-weight:500;color:var(--ink3)}
+.modal .mb{padding:20px 24px 24px;overflow:auto;max-height:calc(100vh - 160px)}
+.iconbtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1.5px solid var(--rule);background:var(--card);border-radius:999px;height:36px;min-width:36px;padding:0 10px;cursor:pointer;color:var(--ink);font:inherit;font-size:13px;font-weight:700}
+.iconbtn:hover{background:var(--ground)}
+.iconbtn svg{width:16px;height:16px}
+.msgbox{position:relative;background:var(--ground);border-radius:var(--r2);padding:16px 16px 16px}
+.msgbox pre{margin:0;padding-right:44px;white-space:pre-wrap;word-break:break-word;font:inherit;font-size:14px;line-height:1.55;color:var(--ink)}
+.msgbox .iconbtn{position:absolute;top:10px;right:10px}
+.msgbox .msgmd{font-size:15px;line-height:1.6;padding-right:44px;max-width:none}
+.msgbox .msgmd h1,.msgbox .msgmd h2,.msgbox .msgmd h3{font-size:15px;margin:14px 0 4px}
+.msgbox .msgmd>:first-child{margin-top:0}
+.msgnotes{margin-top:14px;font-size:13px;color:var(--ink3);white-space:pre-wrap;line-height:1.5}
+.msgnotes summary{cursor:pointer;color:var(--ink2);font-weight:600}
+.ho select{font:inherit;font-size:14px;border:1px solid var(--rule);border-radius:var(--r2);padding:8px 10px;background:var(--card)}
+.ho textarea{font:inherit;font-size:14px;color:var(--ink);background:var(--card);border:1px solid var(--rule);border-radius:var(--r2);padding:9px 12px;width:100%;min-height:72px;resize:vertical}
+.prompt{white-space:pre-wrap;font-size:13px;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 12px;margin-top:8px;color:var(--ink)}
+.empty{font-size:14px;color:var(--ink3);padding:6px 0}
+.hist-list{list-style:none;margin:0;padding:12px 20px 0;max-height:420px;overflow:auto;text-align:left}
+.hist-list li{display:grid;grid-template-columns:110px 92px 74px minmax(0,1fr);gap:12px;padding:6px 0;border-bottom:1px solid var(--rule);font-size:13px;align-items:baseline}
+.hist-list li .k{color:var(--ink3);font-weight:600}
+.hist-list li .n{color:var(--ink);overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .asg{font-size:13px;color:var(--ink2);margin-top:4px}
 .asg .who{color:var(--ink);font-weight:700;display:inline}
 .lw{display:flex;flex-direction:column;gap:2px;font-size:13px;color:var(--ink2);white-space:nowrap}
 .lw .owner{font-size:14px}
 .media-note{font-size:12px;color:var(--ink3);margin-top:2px}
 .media-note.miss{color:var(--acc);font-weight:600}
-.hist-list{list-style:none;margin:0;padding:12px 20px 0;max-height:420px;overflow:auto;text-align:left}
-.hist-list li{display:grid;grid-template-columns:110px 92px 74px minmax(0,1fr);gap:12px;padding:6px 0;border-bottom:1px solid var(--rule);font-size:13px;align-items:baseline}
-.hist-list li .k{color:var(--ink3);font-weight:600}
-.hist-list li .n{color:var(--ink);overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.kpis{grid-area:kpis;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);align-content:stretch}
-.needs{grid-area:needs}.funnel{grid-area:funnel}.activity{grid-area:activity}
-
-/* kpi card (compact, Shopeers anatomy) */
-.kpi{display:flex;flex-direction:column;padding:22px 24px}
-.kpi .label{display:block;margin-bottom:10px}
-.kpi-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .num{font-size:40px;font-weight:300;line-height:1;letter-spacing:-.02em;color:var(--ink)}
-.num.hollow{color:transparent;-webkit-text-stroke:1.5px var(--t3)}
-@supports not (-webkit-text-stroke:1px #000){.num.hollow{color:var(--t3)}}
-.delta{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:13px;color:var(--ink3);font-weight:500;min-height:22px;flex-wrap:wrap}
-.dpill{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:2px 8px;font-weight:700;font-size:13px;line-height:18px}
-.dpill.up{background:var(--green-bg);color:var(--green)}
-.dpill.down{background:var(--red-bg);color:var(--red)}
-.dpill.flat{background:var(--ground);color:var(--ink2)}
-.dpill svg{width:10px;height:10px}
-.spark .dates{display:flex;justify-content:space-between;font-size:13px;color:var(--ink3);margin-top:4px;font-weight:500}
-.kpi .empty{margin-top:12px;font-size:13px;color:var(--ink3);line-height:1.4;font-weight:500}
-.btn-tint{display:inline-flex;align-items:center;margin-top:auto;padding-top:12px;color:var(--acc);font-weight:700;font-size:13px;text-decoration:none;align-self:flex-start}
-.btn-tint span{background:var(--t5);border-radius:999px;padding:6px 12px}
-.btn-tint:hover span{background:var(--t4)}
-.gauge-row{display:flex;align-items:flex-end;gap:12px;margin-top:2px}
-
-/* needs-you accent card */
-.needs{background:var(--acc);color:#fff;display:flex;flex-direction:column;padding:var(--pad)}
-.needs .label{color:#fff;display:flex;align-items:center;gap:12px}
-.needs .circ{width:40px;height:40px;border-radius:999px;border:1.5px solid rgba(255,255,255,.7);display:inline-flex;align-items:center;justify-content:center;flex:none}
-.needs .circ svg{width:20px;height:20px}
-.needs .bigrow{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-top:20px}
-.needs .big{font-size:64px;font-weight:300;line-height:1;letter-spacing:-.03em}
-.needs .wspark .dates{color:var(--acc-sec)}
-.needs .sub{color:var(--acc-sec);font-size:14px;font-weight:500;margin-top:8px}
-.needs .sub b{color:#fff;font-weight:700}
-.gates{margin-top:16px;border-top:1px solid rgba(255,255,255,.22)}
-.gates li{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.22)}
-.needs .foot{margin-top:auto;padding-top:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;color:var(--acc-sec);font-weight:500;border-top:1px solid rgba(255,255,255,.22)}
-.needs .foot a.open{flex:none;background:#fff;color:var(--acc);text-decoration:none;font-weight:700;font-size:13px;border-radius:999px;padding:8px 14px;line-height:1}
-.needs .foot a.open:focus-visible{outline-color:#fff}
-.gates li:last-child{border-bottom:0}
-.gates .who{min-width:0}
-.gates .who b{display:block;font-weight:700;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.gates .who span{display:block;font-size:13px;color:var(--acc-sec);font-weight:500;margin-top:2px}
-.gates a.open{flex:none;background:#fff;color:var(--acc);text-decoration:none;font-weight:700;font-size:13px;border-radius:999px;padding:8px 14px;line-height:1}
-.gates a.open:hover{background:var(--t5)}
-.gates a.open:focus-visible{outline-color:#fff}
-.gates .btn.s{padding:8px 12px}
-.gates li.more .who b{font-weight:500}
-
-/* funnel */
-.fsum{margin-top:20px;padding-top:20px;border-top:1px solid var(--rule);font-size:15px;color:var(--ink2);font-weight:500}
-.fsum b{color:var(--ink);font-weight:700}
-.fleg{margin-top:8px}
-.fleg li{display:flex;align-items:center;gap:12px;height:44px;border-bottom:1px solid var(--rule);font-size:15px;color:var(--ink2);font-weight:500}
-.fleg li:last-child{border-bottom:0}
-.fleg i{width:10px;height:10px;border-radius:999px;flex:none}
-.fleg b{margin-left:auto;font-weight:700;color:var(--ink);font-size:16px}
 
 /* activity */
 .feed li{display:flex;align-items:flex-start;gap:12px;min-height:56px;padding:10px 0;border-bottom:1px solid var(--rule)}
@@ -203,7 +275,7 @@ td.next .why{display:block;font-size:13px;color:var(--ink3);overflow:hidden;text
 .site{padding:16px 16px 28px;display:flex;flex-direction:column;gap:0}
 .site .shot{display:block;border-radius:var(--r2);overflow:hidden;background:var(--t5);aspect-ratio:16/10;position:relative}
 .site .shot img{width:100%;height:100%;object-fit:cover;object-position:top}
-.site .shot span{position:absolute;right:10px;bottom:10px;background:rgba(11,18,32,.78);color:#fff;font-size:13px;font-weight:600;border-radius:999px;padding:4px 10px}
+.site .shot .noshot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--ink2);text-align:center;padding:12px}
 .site .body{padding:20px 12px 0}
 .site-h{display:flex;justify-content:space-between;align-items:center;gap:12px}
 .site-h h2{font-size:18px;font-weight:700;letter-spacing:-.005em;line-height:1.25}
@@ -214,6 +286,7 @@ td.next .why{display:block;font-size:13px;color:var(--ink3);overflow:hidden;text
 .site-score .v b{color:var(--ink);font-weight:700;font-size:14px}
 .site-score .v .pass{color:var(--green)}.site-score .v .fail{color:var(--red)}
 .scorechart{margin-top:14px}
+.site .site-acts{margin-top:18px;border-top:1px solid var(--rule);padding-top:16px}
 .site .links{margin-top:18px;border-top:1px solid var(--rule);padding-top:12px;display:grid;gap:8px;font-size:13px;color:var(--ink3);font-weight:500}
 .site .links li{display:flex;gap:8px;flex-wrap:wrap;align-items:baseline}
 .site .links li span.k{min-width:76px;color:var(--ink2)}
@@ -249,7 +322,96 @@ td.next .why{display:block;font-size:13px;color:var(--ink3);overflow:hidden;text
 .mini .n{font-size:13px;color:var(--ink3);margin-top:10px;font-weight:500}
 .mini .chlog{-webkit-line-clamp:3}
 
+/* ---------- needs you ---------- */
+.nd-list>li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:18px;align-items:center;padding:16px 0;border-bottom:1px solid var(--rule)}
+.nd-list .nb{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;min-width:0}
+.nd-list .nb>div:first-child{flex:1 1 320px;min-width:0}
+.nd-list>li:last-child{border-bottom:0}
+.nd-list .ic{width:56px;height:40px;border-radius:10px;background:var(--t5);color:var(--acc);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.nd-list .ic img{width:100%;height:100%;object-fit:cover;object-position:top}
+.nd-list .ic svg{width:22px;height:22px}
+.nd-list b{display:block;font-size:16px;font-weight:700}
+.nd-list .s{display:block;font-size:14px;color:var(--ink2);margin-top:3px}
+.nd-list .a{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-left:auto}
+.nd-list .a .ovb{font-size:14px}
+/* ---------- ledger ---------- */
+.lg-sum{display:flex;gap:10px;flex-wrap:wrap;margin:var(--gap) 0;padding:10px 0;position:sticky;top:72px;z-index:1050;background:var(--ground)}
+.lg-sum button{border:0;background:var(--card);box-shadow:var(--shadow);border-radius:999px;padding:10px 16px;font:inherit;font-size:14px;font-weight:600;color:var(--ink2);cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.lg-sum button b{color:var(--ink);font-weight:800}
+.lg-sum button i{width:10px;height:10px;border-radius:999px;flex:none}
+.lg-sum button[aria-pressed="true"]{background:var(--ink);color:#fff}.lg-sum button[aria-pressed="true"] b{color:#fff}
+.lg-mapcard{padding:0;overflow:hidden}
+.lg-map{height:440px;background:var(--t5)}
+.lg-attr{font-size:12px;color:var(--ink3);padding:8px 16px}
+table.lg{width:100%;border-collapse:collapse}
+table.lg th{font-size:13px;font-weight:700;color:var(--ink3);text-align:left;padding:0 16px 10px 0;border-bottom:1px solid var(--rule);white-space:nowrap}
+table.lg td{padding:14px 16px 14px 0;border-bottom:1px solid var(--rule);vertical-align:top;font-size:14px}
+table.lg tr:last-child td{border-bottom:0}
+table.lg tbody tr{cursor:pointer}
+table.lg tbody tr:hover td,table.lg tbody tr.sel td{background:#FAFAFE}
+table.lg td.n b{display:block;font-size:15px;font-weight:700}
+table.lg td.n span{display:block;font-size:13px;color:var(--ink3);margin-top:2px}
+table.lg td.r{white-space:nowrap;font-weight:600}
+table.lg td.r span{color:var(--ink3);font-weight:500}
+table.lg td.w{color:var(--ink2);line-height:1.5;max-width:560px}
+.opill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 10px;font-size:13px;font-weight:700;white-space:nowrap}
+.opill::before{content:"";width:8px;height:8px;border-radius:999px;background:currentColor}
+.pbar{display:inline-flex;gap:3px;vertical-align:middle;margin-right:8px}.pbar i{width:10px;height:10px;border-radius:3px;background:var(--rule)}.pbar i.on{background:var(--acc)}
+.lg-pin{width:16px;height:16px;border-radius:999px;border:2.5px solid #fff;box-shadow:0 1px 4px rgba(11,18,32,.35)}
+.dec2{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:var(--gap);align-items:start}
+
+/* ---------- decisions: suggested agent tweaks ---------- */
+.tw-intro{font-size:15px;color:var(--ink2);margin:-6px 0 20px;max-width:760px;line-height:1.55}
+.tw-list>li{border:1.5px solid var(--rule);border-radius:var(--r2);padding:22px 24px;margin-bottom:16px}
+.tw-list .ag{display:inline-block;font-size:13px;font-weight:700;color:var(--acc);background:var(--t5);border-radius:999px;padding:4px 10px}
+.tw-list h3{font-size:21px;font-weight:700;letter-spacing:-.01em;line-height:1.3;margin-top:12px;max-width:820px}
+.tw-list .kv{display:grid;grid-template-columns:120px minmax(0,1fr);gap:8px 16px;margin-top:14px;font-size:16px;line-height:1.6;max-width:900px}
+.tw-list .kv dt{font-weight:700;color:var(--ink3);font-size:14px;padding-top:2px}
+.tw-list .kv dd{margin:0;color:var(--ink)}
+.tw-list .own{margin-top:14px;font-size:14px;color:var(--ink2);background:#FFF8E6;border-radius:8px;padding:10px 12px;max-width:900px}
+.tw-list .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:18px}
+.tw-list .btn{font-size:14px;padding:11px 18px}
+.tw-list .res{font-size:14px;color:var(--ink2);margin-top:12px}
+.tw-list .res.err{color:var(--red);font-weight:600}
+.tw-done{margin-top:8px}
+.tw-done summary{cursor:pointer;font-size:15px;font-weight:700;color:var(--ink2);padding:8px 0}
+.tw-done li{display:flex;gap:12px;align-items:baseline;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.tw-done li:last-child{border-bottom:0}
+.tw-done li b{font-weight:600}
+.tw-done li span.s{font-size:13px;color:var(--ink3);display:block;margin-top:2px}
+.stag{flex:none;border-radius:999px;padding:4px 10px;font-size:13px;font-weight:700;background:var(--ground);color:var(--ink2);white-space:nowrap}
+.stag.ok{background:var(--green-bg);color:var(--green)}.stag.no{background:var(--red-bg);color:var(--red)}
+/* document reader: a markdown file rendered for people */
+dialog.modal.doc{width:min(900px,calc(100% - 32px))}
+.md{font-size:17px;line-height:1.7;color:var(--ink);max-width:760px}
+.md h1{font-size:28px;line-height:1.25;letter-spacing:-.015em;margin:0 0 18px}
+.md h2{font-size:22px;line-height:1.3;margin:30px 0 10px}
+.md h3{font-size:18px;margin:24px 0 8px}
+.md p,.md ul,.md ol,.md table,.md pre,.md blockquote{margin:0 0 16px}
+.md ul,.md ol{padding-left:24px}.md ul{list-style:disc}.md ol{list-style:decimal}
+.md li{margin:4px 0}
+.md code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--ground);border-radius:5px;padding:1px 5px}
+.md pre{background:var(--ground);border-radius:var(--r2);padding:14px 16px;overflow:auto;font-size:14px;line-height:1.55}
+.md pre code{background:none;padding:0;font-size:inherit}
+.md pre .add{color:var(--green);display:block}.md pre .del{color:var(--red);display:block}.md pre .hunk{color:var(--ink3);display:block}
+.md blockquote{border-left:3px solid var(--t3);padding:2px 0 2px 16px;color:var(--ink2)}
+.md table{border-collapse:collapse;font-size:15px;line-height:1.5;display:block;overflow:auto}
+.md th,.md td{border-bottom:1px solid var(--rule);padding:8px 12px 8px 0;text-align:left;vertical-align:top}
+.md th{font-weight:700;color:var(--ink2)}
+.md a{color:var(--blue)}
+.md hr{border:0;border-top:1px solid var(--rule);margin:24px 0}
+
 /* ---------- decisions ---------- */
+.dsites>li{border-bottom:1px solid var(--rule)}
+.dsites>li:last-child{border-bottom:0}
+.dsites .dh{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:16px;align-items:center;width:100%;text-align:left;border:0;background:none;padding:14px 4px;cursor:pointer}
+.dsites .dh:hover{background:#FAFAFE}
+.dsites .dh b{display:block;font-size:15px;font-weight:700}
+.dsites .dh span.s{display:block;font-size:13px;color:var(--ink3);font-weight:500;margin-top:2px}
+.dsites .dh .c{font-size:13px;color:var(--ink2);font-weight:600;white-space:nowrap}
+.dsites .dh .chev{width:12px;height:12px;transition:transform .2s}
+.dsites .dh[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.dsites .tl{padding:4px 4px 8px}
 .dec{display:grid;grid-template-columns:minmax(0,1fr) 376px;gap:var(--gap);align-items:start}
 .tl{list-style:none;margin-top:8px;position:relative}
 .tl::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:2px;background:var(--rule)}
@@ -293,7 +455,7 @@ form.gate textarea{resize:vertical;min-height:40px}
 form.gate input:focus-visible,form.gate textarea:focus-visible{outline:2px solid var(--acc);outline-offset:1px;border-color:transparent}
 .btn{font:inherit;font-size:13px;font-weight:700;border-radius:999px;padding:9px 14px;line-height:1;cursor:pointer;border:1.5px solid transparent;white-space:nowrap}
 .btn.p{background:var(--acc);color:#fff}
-.btn.p:hover{background:#0C2EB3}
+.btn.p:hover{background:#5A22C9}
 .btn.s{background:transparent;color:var(--ink);border-color:var(--rule)}
 .btn.s:hover{background:var(--ground)}
 .btn:disabled{opacity:.5;cursor:default}
@@ -367,6 +529,50 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 .anim .fadein.pre{opacity:0}
 @media (prefers-reduced-motion:reduce){.anim .draw,.anim .grow,.anim .fadein{transition:none}}
 
+/* ---------- overview widths ---------- */
+/* below 1600 the rows need the full width: Also waiting on you moves under the list */
+@media (max-width:1599px){#view-overview{--tw:160px;--th:100px}.ov-body{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:1280px){
+  #view-overview{--tw:120px;--th:75px;--rp:20px}
+  .ov-m,.ov-counts{padding-left:20px;padding-right:20px}
+  .ov-m .fig{font-size:40px;line-height:48px}
+  .ov-counts{column-gap:20px}
+  .ov-counts dd{font-size:24px;line-height:32px}
+  .ov-counts .r{min-height:68px}
+  .ov-rows{column-gap:16px}
+}
+@media (max-width:720px){
+  #view-overview{--tw:96px;--th:60px;--rp:16px}
+  .ov-sum{font-size:15px;line-height:22px}
+  .ov-band{grid-template-columns:minmax(0,1fr)}
+  .ov-m{padding:16px}
+  .ov-m+.ov-m{border-left:0;border-top:1px solid var(--ln)}
+  .ov-m .fig{font-size:32px;line-height:40px;margin-top:4px}
+  .ov-counts{border-left:0;border-top:1px solid var(--ln);padding:4px 16px;column-gap:16px}
+  .ov-counts .r{min-height:60px;padding:8px 0}
+  .ov-counts dd{font-size:22px;line-height:28px}
+  .ov-body{gap:16px}
+  .ov-lh,.ov-wh{height:56px}
+  .ov-lh .meta{display:none}
+  .ov-rows{display:block}
+  .ov-row{display:grid;grid-template-columns:var(--tw) minmax(0,1fr);grid-template-rows:none;column-gap:12px;row-gap:8px;align-items:start}
+  .ov-thumb{grid-row:1;align-self:start}
+  .ov-nm{grid-row:1;align-self:center}
+  .ov-links{grid-column:1/-1;grid-row:2}
+  .ov-meta{grid-column:1/-1;grid-row:3}
+  .ov-row .sugs{grid-column:1/-1;grid-row:4;justify-self:start;margin-top:6px}
+  .ov-upd{grid-column:1/-1;grid-row:5;height:44px}
+  .ov-hob{grid-column:1/-1;grid-row:6;justify-self:start;height:36px}
+  .ov-off{white-space:normal}
+  .sug-ib{width:44px;height:44px}
+  .ov-lk,.ov-off{min-height:32px}
+  .ov-wl li{grid-template-columns:minmax(0,1fr);row-gap:8px;justify-items:start}
+  /* Needs you on a phone: the row is too narrow for a thumbnail beside the text and the actions */
+  .nd-list>li{grid-template-columns:minmax(0,1fr)}
+  .nd-list .ic{display:none}
+  .nd-list .a{margin-left:0}
+  .nd-list .a .sug-ib{width:44px;height:44px}
+}
 /* ---------- 1024 ---------- */
 @media (max-width:1280px){
   body{grid-template-columns:72px minmax(0,1fr)}
@@ -378,12 +584,8 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
   .nav .badge{position:absolute;top:2px;right:2px;margin:0;min-width:18px;height:18px;font-size:11px;padding:0 5px}
   .nav .n{display:none}
   .side-foot{display:none}
-  .ov{grid-template-columns:minmax(0,1fr);grid-template-areas:"needs" "kpis" "funnel" "activity" "team"}
-  .team-grid{grid-template-columns:minmax(0,1fr)}
+  .dec2{grid-template-columns:minmax(0,1fr)}
   .hist-list li{grid-template-columns:96px 80px minmax(0,1fr)}.hist-list li .k{display:none}
-  .needs{flex-direction:row;align-items:stretch;gap:32px}
-  .needs .head{flex:0 0 260px;display:flex;flex-direction:column}
-  .needs .gates{margin-top:0;flex:1;border-top:0}
   .top .sub{display:none}
   .prog{width:200px}
   .biz b{max-width:180px}
@@ -397,8 +599,6 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
   .mode .lastline{display:none}
   .ag-grid{grid-template-columns:minmax(0,1fr)}
   .ag-mini{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .dec{grid-template-columns:minmax(0,1fr)}
-  .dec .props-card{order:-1}
 }
 </style>
 </head>
@@ -413,9 +613,13 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2.5"/><rect x="13" y="3" width="8" height="8" rx="2.5"/><rect x="3" y="13" width="8" height="8" rx="2.5"/><rect x="13" y="13" width="8" height="8" rx="2.5"/></svg>
       <span>Overview</span>
     </button>
-    <button type="button" data-view="overview" data-focus="needs" id="nav-needs">
+    <button type="button" data-view="needs" id="nav-needs">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 10.5V7a6 6 0 0 1 12 0v3.5l1.5 3.5h-15z"/><path d="M10 18a2 2 0 0 0 4 0"/></svg>
-      <span>Needs you</span><span class="badge" id="badge-needs" aria-label="open gates">3</span>
+      <span>Needs you</span><span class="badge" id="badge-needs" aria-label="things waiting on you"></span>
+    </button>
+    <button type="button" data-view="ledger">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11A6.5 6.5 0 0 1 18.5 10c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+      <span>Ledger</span><span class="n" id="n-ledger"></span>
     </button>
     <button type="button" data-view="pipeline">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h13"/><circle cx="18" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg>
@@ -440,47 +644,60 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 <main id="main">
   <header class="top">
     <div style="display:flex;align-items:baseline"><h1 id="title" tabindex="-1">Overview</h1><span class="sub" id="title-sub"></span></div>
-    <div class="controls">
+    <div class="controls" id="controls">
       <label class="psel"><span class="sr">Run</span>
         <svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4h12M2 8h8M2 12h10"/></svg>
         <select id="run"></select>
         <svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg>
       </label>
-      <label class="psel"><span class="sr">Date range</span>
-        <svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 7h12M5 1.5v3M11 1.5v3"/></svg>
-        <select id="range"></select>
-        <svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg>
-      </label>
     </div>
   </header>
 
-  <div class="mode" id="mode" role="status"><i aria-hidden="true"></i><span id="mode-text">read-only · open the CLI or start dashboard/server.mjs to decide</span><span class="lastline" id="lastline"></span></div>
 
   <section class="view on" id="view-overview" aria-label="Overview">
-    <div class="ov">
-      <div class="kpis" id="kpis"></div>
-      <section class="card needs onacc" id="needs" tabindex="-1" aria-labelledby="needs-h"></section>
-      <section class="card funnel" aria-labelledby="funnel-h">
-        <div class="card-h"><h2 id="funnel-h">Funnel</h2><span class="meta" id="funnel-meta"></span></div>
-        <div id="funnel"></div>
+    <p class="ov-sum" id="ov-sum"></p>
+    <section class="ov-band ov-surf" aria-label="Money and where every site stands">
+      <div class="ov-m" id="ov-rev"></div>
+      <div class="ov-m" id="ov-exp"></div>
+      <dl class="ov-counts" id="ov-counts" aria-label="Where every site stands"></dl>
+    </section>
+    <div class="ov-body">
+      <section class="ov-surf" id="ov-sites" aria-labelledby="ps-h">
+        <div class="ov-lh"><h2 id="ps-h" tabindex="-1">Sites to pitch</h2><span class="ov-cnt" id="ps-n"></span><span class="meta" id="ps-meta"></span></div>
+        <ol class="ov-rows" id="psites"></ol>
       </section>
-      <section class="card activity" aria-labelledby="act-h">
-        <div class="card-h"><h2 id="act-h">Recent activity</h2><span class="meta" id="act-meta"></span></div>
-        <ol class="feed" id="feed"></ol>
-        <div class="feed-foot" id="feed-foot"></div>
-      </section>
-      <section class="card team" aria-labelledby="team-h">
-        <div class="card-h"><h2 id="team-h">Team</h2><span class="meta" id="team-meta"></span></div>
-        <div class="team-grid"><div><h3>Last worked on</h3><ol class="feed" id="team-last"></ol></div><div><h3>Open assignments</h3><ol class="feed" id="team-asg"></ol></div></div>
+      <section class="ov-surf" aria-labelledby="ow-h">
+        <div class="ov-wh"><h2 id="ow-h">Also waiting on you</h2><span class="ov-cnt" id="ow-n"></span></div>
+        <ul class="ov-wl" id="ov-wait"></ul>
       </section>
     </div>
   </section>
 
+  <section class="view" id="view-needs" aria-label="Needs you">
+    <section class="card" aria-labelledby="ndw-h">
+      <div class="card-h"><h2 id="ndw-h">Websites</h2><span class="meta" id="nd-meta"></span></div>
+      <ol class="nd-list" id="nd-list"></ol>
+    </section>
+    <section class="card" aria-labelledby="nda-h" style="margin-top:var(--gap)">
+      <div class="card-h"><h2 id="nda-h">Agents</h2><span class="meta" id="nd-ameta"></span></div>
+      <ol class="nd-list" id="nd-alist"></ol>
+    </section>
+  </section>
+
+  <section class="view" id="view-ledger" aria-label="Ledger">
+    <section class="card lg-mapcard"><div id="lg-map" class="lg-map" role="region" aria-label="Map of every business reviewed"></div><p class="lg-attr" id="lg-mapnote"></p></section>
+    <div class="lg-sum" id="lg-sum" role="group" aria-label="Filter by outcome"></div>
+    <section class="card">
+      <div class="card-h"><h2>Every business we reviewed</h2><span class="meta" id="lg-meta"></span></div>
+      <div style="overflow-x:auto"><table class="lg" id="lg-table"><thead><tr><th scope="col">Business</th><th scope="col">Google rating</th><th scope="col">Web presence</th><th scope="col">Outcome</th><th scope="col">Why</th></tr></thead><tbody id="lg-body"></tbody></table></div>
+    </section>
+  </section>
+
   <section class="view" id="view-pipeline" aria-label="Pipeline">
+    <div class="lg-sum" id="pipe-filters" role="group" aria-label="Filter rows" style="margin-top:0"></div>
     <section class="card">
       <div class="card-h pipe-head" style="align-items:center">
         <div><h2>Every business</h2><div class="pipe-sum" id="pipe-sum"></div></div>
-        <div class="pills" id="pipe-filters" role="group" aria-label="Filter rows"></div>
       </div>
       <div style="overflow-x:auto">
       <table class="pipe" id="pipe-table">
@@ -497,24 +714,24 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
   </section>
 
   <section class="view" id="view-agents" aria-label="Agents">
-    <section class="card" id="ag-glance" aria-labelledby="agg-h">
-      <div class="card-h"><h2 id="agg-h">Fails this run, by agent and business</h2><span class="meta" id="agg-meta"></span></div>
-      <div id="agg-chart"></div>
-    </section>
-    <div class="ag-grid" id="ag-grid"></div>
-    <div class="ag-mini" id="ag-mini"></div>
+<!--include:agents-view.html-->
   </section>
 
   <section class="view" id="view-decisions" aria-label="Decisions">
-    <div class="dec">
-      <section class="card" aria-labelledby="dec-h">
-        <div class="card-h pipe-head" style="align-items:center"><div><h2 id="dec-h">Your decisions</h2><div class="pipe-sum" id="dec-sum"></div></div><div class="pills" id="dec-filters" role="group" aria-label="Filter decisions"></div></div>
-        <ol class="tl" id="tl"></ol>
-      </section>
-      <section class="card props-card" id="props" tabindex="-1" aria-labelledby="props-h">
-        <div class="card-h"><h2 id="props-h">Proposals to review</h2><span class="meta" id="props-meta"></span></div>
-        <ul class="props" id="props-list"></ul>
-      </section>
+<!--include:decisions-view.html-->
+    <div id="dec-legacy">
+    <div class="dec2">
+    <section class="card tweaks" id="props" tabindex="-1" aria-labelledby="props-h">
+      <div class="card-h"><h2 id="props-h">Suggested agent tweaks</h2><span class="meta" id="props-meta"></span></div>
+      <p class="tw-intro">After each run the critic suggests changes to how an agent works. Approve the ones you want; Claude applies an approved tweak in its next session, as one pull request.</p>
+      <ol class="tw-list" id="props-list"></ol>
+      <details class="tw-done" id="props-done"></details>
+    </section>
+    <section class="card" aria-labelledby="dec-h">
+      <div class="card-h"><h2 id="dec-h">Your decisions, by site</h2><span class="meta" id="dec-sum"></span></div>
+      <ul class="dsites" id="dsites"></ul>
+    </section>
+    </div>
     </div>
   </section>
 </main>
@@ -546,7 +763,7 @@ const el=(tag,attrs={},...kids)=>{const e=document.createElement(tag);for(const[
 const sv=(tag,attrs={},...kids)=>{const e=document.createElementNS(SVGNS,tag);for(const[k,v]of Object.entries(attrs)){if(k==='text')e.textContent=v;else if(v!=null)e.setAttribute(k,v)}for(const k of kids)if(k)e.append(k);return e};
 const fmt=n=>Number.isInteger(n)?String(n):n.toFixed(1);
 const bizMap=new Map();
-function setData(d){D=d;bizMap.clear();for(const b of D.businesses)bizMap.set(b.slug,b.name);bizMap.set('dashboard','Dashboard');bizMap.set('-','Project')}
+function setData(d){D=d;bizMap.clear();for(const b of D.businesses)if(!bizMap.has(b.slug))bizMap.set(b.slug,b.name);/* newest run first */bizMap.set('dashboard','Dashboard');bizMap.set('-','Project')}
 setData(D);
 const bizName=s=>bizMap.get(s)||s||'—';
 const shortName=s=>bizName(s).replace(' Surf Ahangama','').replace(' Surf Hostel','').replace('The ','');
@@ -592,19 +809,14 @@ function countUp(node,to,key){
 }
 
 /* ---------- state ---------- */
-const state={run:D.run.run_id,range:'all',view:'overview',filter:'all',decFilter:'all',feedAll:false,openPick:null,openNeeds:null,results:{},dirty:false};
-const days=D.series.days;
-const RANGES=[['all',`Whole run · ${dShort(days[0])} – ${dShort(days.at(-1))}`,days.length],['7',`Last 7 days · ${dShort(days.at(-7))} – ${dShort(days.at(-1))}`,7],['3',`Last 3 days · ${dShort(days.at(-3))} – ${dShort(days.at(-1))}`,3]];
-const rangeN=()=>RANGES.find(r=>r[0]===state.range)[2];
-const rangeStart=()=>days.at(-rangeN());
-const isCur=()=>state.run===D.run.run_id;
+const state={run:'all',view:'overview',filter:'delivered',openPick:null,openSite:null,openDec:null,results:{},handoffs:{},dirty:false};
+// Overview, Sites and Decisions cover every run; Pipeline and Agents show the run in the picker.
+const PER_RUN=['pipeline'];
+const agentRun=()=>state.run==='all'?D.run.run_id:state.run;
 
 const runSel=$('#run');
-function renderRunSel(){runSel.innerHTML='';for(const r of D.runs)runSel.append(el('option',{value:r.run_id,text:`${runShort(r.run_id)}${r.active?` · active · ${r.operator?opName(r.operator):'no operator'}`:r.status==='closed'?' · closed':/^test-/.test(r.run_id)?' · test':' · superseded'}`}));if(!D.runs.find(r=>r.run_id===state.run))state.run=D.run.run_id;runSel.value=state.run}
+function renderRunSel(){runSel.innerHTML='';runSel.append(el('option',{value:'all',text:'All runs'}));for(const r of D.runs)runSel.append(el('option',{value:r.run_id,text:`${runShort(r.run_id)}${r.active?` · active · ${r.operator?opName(r.operator):'no operator'}`:r.status==='closed'?' · closed':/^test-/.test(r.run_id)?' · test':' · superseded'}`}));if(state.run!=='all'&&!D.runs.find(r=>r.run_id===state.run))state.run='all';runSel.value=state.run}
 renderRunSel();runSel.onchange=()=>{state.run=runSel.value;render()};
-const rangeSel=$('#range');
-for(const r of RANGES)rangeSel.append(el('option',{value:r[0],text:r[1]}));
-rangeSel.onchange=()=>{state.range=rangeSel.value;render()};
 
 function renderChrome(){
   const f=$('#side-foot');f.innerHTML='';
@@ -615,21 +827,16 @@ function renderChrome(){
     D.runs.filter(r=>r.active).length>1?el('div',{text:`${D.runs.filter(r=>r.active).length} active runs: ${D.runs.filter(r=>r.active).map(r=>`${runShort(r.run_id)} (${opName(r.operator)})`).join(', ')}`}):'',
     el('div',{text:`${D.totals.ledger_lines} ledger lines · ${D.totals.human_decisions} decisions`})
   );
-  $('#badge-needs').textContent=D.kpis.needs_you;
-  $('#n-pipe').textContent=D.runs.find(r=>r.current).businesses;
-  $('#n-sites').textContent=D.kpis.live_sites;
+  $('#badge-needs').textContent=needsItems().length;
+  $('#n-pipe').textContent=pipeRows().length;$('#n-ledger').textContent=(D.prospects||[]).length;
+  $('#n-sites').textContent=pitchSites().length;
   $('#n-agents').textContent=Object.keys(D.agents).length;
-  $('#n-dec').textContent=D.decisions.length;
-  $('#mode').classList.toggle('live',LIVE);
-  $('#mode-text').textContent=LIVE?`live · ${location.host} · decisions append to the ledger`:'read-only · open the CLI or start dashboard/server.mjs to decide';
-  const ll=$('#lastline');ll.innerHTML='';
-  const last=Object.values(state.results).filter(r=>r.status===201).sort((a,b)=>b.at-a.at)[0];
-  if(last){ll.append(el('span',{text:'last written:'}),el('code',{title:JSON.stringify(last.body.line),text:JSON.stringify(last.body.line)}));const d=el('button',{type:'button',text:'dismiss'});d.onclick=()=>{for(const k in state.results)if(state.results[k]===last)delete state.results[k];renderChrome()};ll.append(d)}
+  $('#n-dec').textContent=builtDecisions().length;
 }
 
 /* nav */
 document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view,b.dataset.focus)));
-const TITLES={overview:'Overview',pipeline:'Pipeline',sites:'Sites',agents:'Agents',decisions:'Decisions'};
+const TITLES={overview:'Overview',needs:'Needs you',pipeline:'Pipeline',sites:'Sites',agents:'Agents',decisions:'Decisions',ledger:'Ledger'};
 let lastHash='';
 addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(h!==lastHash){const p=h.split('/');go(p[0]||'overview',p[1])}});
 function go(view,focus){
@@ -641,10 +848,11 @@ function go(view,focus){
   document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='view-'+view));
   document.querySelectorAll('#view-'+view+' svg').forEach(sizeTips);
   $('#title').textContent=TITLES[view];document.title=`OneShot — ${TITLES[view]}`;
+  $('#controls').hidden=!PER_RUN.includes(view);$('#title-sub').textContent=PER_RUN.includes(view)&&state.run!=='all'?runShort(state.run):view==='overview'?'':'all runs';if(view==='ledger')renderLedgerMap();
   window.scrollTo(0,0);
   if(view==='pipeline'&&focus){if(focus.startsWith('pick:')){state.openPick=focus.slice(5);state.filter='all'}else state.filter=focus;renderPipeline()}
   let target=null;
-  if(view==='overview'&&focus==='needs')target=$('#needs');
+
   if(view==='sites'&&focus)target=document.getElementById('site-'+focus);
   if(view==='decisions'&&focus==='proposals')target=$('#props');
   if(view==='pipeline'&&focus&&focus.startsWith('pick:'))target=document.getElementById('pick-'+focus.slice(5));
@@ -653,59 +861,8 @@ function go(view,focus){
 }
 
 /* ---------- charts ---------- */
-function sparkline(days,values,key,opts={}){
-  const W=opts.w||150,H=opts.h||36,pad=3,n=values.length,white=!!opts.white;
-  const max=Math.max(1,...values)*1.35;
-  const x=i=>pad+i*(W-pad*2-28)/(n-1);
-  const y=v=>H-pad-(v/max)*(H-pad*2);
-  const svg=sv('svg',{width:W,height:H,role:'img','aria-label':`${key} per day, ${dShort(days[0])} to ${dShort(days.at(-1))}`});
-  svg.append(sv('title',{text:`${key} per day`}));
-  const pts=values.map((v,i)=>[x(i),y(v)]);
-  const line=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
-  const stroke=white?'#fff':'var(--acc)',fill=white?'rgba(255,255,255,.16)':'var(--t5)';
-  svg.append(sv('path',{d:`${line} L${pts.at(-1)[0]} ${H} L${pts[0][0]} ${H}Z`,fill,class:'fadein pre'}));
-  const path=sv('path',{d:line,fill:'none',stroke,'stroke-width':2,'stroke-linejoin':'round','stroke-linecap':'round',class:'draw'});
-  svg.append(path);
-  svg.append(sv('circle',{cx:pts.at(-1)[0],cy:pts.at(-1)[1],r:4,fill:stroke}));
-  svg.append(sv('text',{x:pts.at(-1)[0]+9,y:pts.at(-1)[1]+4.5,style:`font-weight:700;font-size:13px;fill:${white?'#fff':'var(--ink)'}`,text:fmt(values.at(-1))}));
-  values.forEach((v,i)=>{
-    const g=sv('g',{class:'datum',tabindex:0,role:'img','aria-label':`${dShort(days[i])}: ${fmt(v)} ${key.toLowerCase()}`});
-    g.append(sv('circle',{cx:pts[i][0],cy:pts[i][1],r:7,fill:'transparent',class:'hit'}));
-    g.append(sv('circle',{cx:pts[i][0],cy:pts[i][1],r:3,fill:white?'var(--acc)':'#fff',stroke:stroke,'stroke-width':2,class:'tipdot'}));
-    g.append(tip('light',pts[i][0],pts[i][1]-4,[[`${dShort(days[i])} · ${fmt(v)}`]]));
-    svg.append(g);
-  });
-  const fig=el('figure',{class:'spark'+(white?' wspark':'')});
-  fig.append(svg,el('div',{class:'dates'},el('span',{text:dShort(days[0])}),el('span',{text:dShort(days.at(-1))})));
-  requestAnimationFrame(()=>{const L=path.getTotalLength();path.style.strokeDasharray=L;path.style.strokeDashoffset=L;sizeTips(svg);drawIn(svg,'spark-'+key+'-'+state.run+'-'+state.range)});
-  return fig;
-}
-function gauge(value,sites){
-  const W=156,H=88,cx=78,cy=80,r=60,sw=10;
-  const svg=sv('svg',{width:W,height:H,role:'img','aria-label':`Critic mean ${fmt(value)} of 100; pass mark 80`});
-  svg.append(sv('title',{text:'Critic mean, last score of each live site'}));
-  const arc=`M${cx-r} ${cy} A${r} ${r} 0 0 1 ${cx+r} ${cy}`;
-  svg.append(sv('path',{d:arc,fill:'none',stroke:'var(--t5)','stroke-width':sw,'stroke-linecap':'round'}));
-  const L=Math.PI*r;
-  const val=sv('path',{d:arc,fill:'none',stroke:'var(--acc)','stroke-width':sw,'stroke-linecap':'round',class:'draw'});
-  val.style.strokeDasharray=L;val.style.strokeDashoffset=L-(value/100)*L;
-  svg.append(val);
-  const a=Math.PI*(1-0.8),tx=cx+Math.cos(a)*r,ty=cy-Math.sin(a)*r,dx=Math.cos(a),dy=-Math.sin(a);
-  svg.append(sv('line',{x1:tx+dx*9,y1:ty+dy*9,x2:tx+dx*15,y2:ty+dy*15,stroke:'var(--ink)','stroke-width':2,'stroke-linecap':'round'}));
-  svg.append(sv('text',{x:tx+dx*20,y:ty+dy*20+5,class:'ax ink',text:'pass 80'}));
-  const num=sv('text',{x:cx,y:cy-2,'text-anchor':'middle',style:'font-size:36px;font-weight:300;letter-spacing:-.02em;fill:var(--ink)',text:'0'});
-  svg.append(num);
-  const g=sv('g',{class:'datum',tabindex:0,role:'img','aria-label':`Per site: ${sites.map(s=>`${s.name} ${fmt(s.score)}`).join(', ')}`});
-  g.append(sv('rect',{x:0,y:0,width:W,height:H,fill:'transparent',rx:12,class:'hit'}));
-  g.append(tip('dark',cx,cy-r-14,[['Latest score per site'],...sites.map(s=>[`${s.name}  ${fmt(s.score)}`,'sec'])]));
-  svg.append(g);
-  countUp(num,value,'gauge-'+state.run);
-  requestAnimationFrame(()=>sizeTips(svg));
-  if(!reduced&&once('gauge-draw-'+state.run)){val.style.strokeDashoffset=L;requestAnimationFrame(()=>requestAnimationFrame(()=>{val.style.strokeDashoffset=L-(value/100)*L}))}
-  return svg;
-}
 /* score across rounds and verifications (Sites) */
-function scoreChart(series,W,key){
+function scoreChart(series,W,key){W=Math.max(240,Math.min(W||0,innerWidth-110));
   const H=110,padL=30,padR=12,top=14,bottom=24,n=series.length;
   const x=i=>n===1?padL+(W-padL-padR)/2:padL+i*(W-padL-padR)/(n-1);
   const lo=50,hi=100;
@@ -822,7 +979,7 @@ function gateForm(o){
     o.radios.forEach(([v,l],i)=>{const lab=el('label',{class:'opt'});lab.append(el('input',{type:'radio',name:o.key+'-c',value:v,...(i===0&&o.radios.length===1?{checked:''}:{})}),el('span',{text:l}));fs.append(lab)});left.append(fs)}
   const row=el('div',{class:'row'});
   const reason=el('input',{type:'text',name:'reason',placeholder:o.placeholder||'reason — becomes the ledger note',required:'','aria-label':'Reason (required)',autocomplete:'off',style:'flex:1;min-width:160px'});
-  row.append(reason);
+  if(!o.noReason)row.append(reason);
   let date=null;if(o.date){date=el('input',{type:'date',name:'date',value:today(),'aria-label':'Date sent',style:'width:150px;flex:none'});row.append(date)}
   left.append(row);f.append(left);
   const btns=el('div',{class:'row',style:'align-self:end'});
@@ -838,7 +995,7 @@ function gateForm(o){
     const r=reason.value.trim();
     stat.className='gstat';stat.textContent='';
     if(radios&&!f.querySelector('input[type=radio]:checked')){stat.className='gstat err';stat.textContent='choose one option first';f.querySelector('input[type=radio]').focus();return}
-    if(r.length<3){stat.className='gstat err';stat.textContent='a reason is required (at least 3 characters) — it becomes the ledger note verbatim';reason.focus();return}
+    if(r.length<3&&!o.noReason){stat.className='gstat err';stat.textContent='a reason is required (at least 3 characters) — it becomes the ledger note verbatim';reason.focus();return}
     const body={gate:o.gate,run_id:o.run_id,choice,reason:r};
     if(o.slug)body.slug=o.slug;if(o.expected_state)body.expected_state=o.expected_state;if(o.file)body.file=o.file;if(date)body.date=date.value;
     controls().forEach(c=>c.disabled=true);stat.textContent=`sending ${o.gate} · ${choice} …`;
@@ -887,191 +1044,359 @@ function pickPanel(b){
   wrap.append(form);
   return wrap;
 }
-function needsForm(g,b){
-  // form for a Needs-you row; g = gate row, b = business row
-  if(!b)return null;
-  if(g.kind==='send the pitch')return gateForm({key:`pitch-${b.run_id}-${b.slug}-n`,gate:'pitch',run_id:b.run_id,slug:b.slug,expected_state:b.state,radios:CHANNELS,radioLegend:'How you sent it',date:true,buttons:[['sent','I sent it',true]],placeholder:'note — who you spoke to, what they said',label:`Send the pitch: ${b.name}`});
-  if(g.kind==='approve the shortlist')return gateForm({key:`shortlist-${b.run_id}-${b.slug}-n`,gate:'shortlist',run_id:b.run_id,slug:b.slug,expected_state:b.state,compact:true,buttons:[['approve','Approve',true],['drop','Drop',false]],label:`Shortlist: ${b.name}`});
-  return null;
-}
-
-/* ---------- Overview ---------- */
-function deltaLine(delta){
-  const dl=el('div',{class:'delta'});
-  if(delta&&delta.delta!=null){
-    const d=delta.delta;const p=el('span',{class:'dpill '+(d>0?'up':d<0?'down':'flat')});
-    if(d!==0)p.append(sv('svg',{viewBox:'0 0 10 10','aria-hidden':'true'},sv('path',{d:d>0?'M5 1 9 8H1z':'M5 9 1 2h8z',fill:'currentColor'})));
-    p.append((d>0?'+':'')+fmt(d));
-    dl.append(p,el('span',{text:`vs ${runShort(delta.previous_run)} (${fmt(delta.previous)})`}));
-  }else dl.append(el('span',{text:'no earlier run to compare',title:delta?delta.note:''}));
-  return dl;
-}
-function kpiCard(key,label,val,delta,spark){
-  const c=el('article',{class:'card kpi','aria-label':`${label}: ${fmt(val)}`});
-  c.append(el('span',{class:'label',text:label}));
-  const row=el('div',{class:'kpi-row'});
-  const n=el('div',{class:'num',text:'0'});row.append(n);
-  if(spark)row.append(spark);
-  c.append(row,deltaLine(delta));
-  countUp(n,val,'kpi-'+key+'-'+state.run);
-  return c;
-}
-function emptyCard(key,label,delta){
-  const es=D.empty_states[key];
-  const c=el('article',{class:'card kpi','aria-label':`${label}: 0, ${es.filled_by}`});
-  c.append(el('span',{class:'label',text:label}),el('div',{class:'kpi-row'},el('div',{class:'num hollow',text:'0'})));
-  c.append(el('p',{class:'empty',title:`${es.filled_by}. ${es.earliest[0].toUpperCase()+es.earliest.slice(1)}. ${delta&&delta.note?delta.note:''}`,text:`fills on ${es.filled_by.replace(/^a ledger line /,'').replace(' (agent: human)','')}`}));
-  return c;
-}
-function renderKPIs(){
-  const box=$('#kpis');box.innerHTML='';
-  const K=D.kpis_by_run[state.run];
-  const dl=k=>isCur()?D.deltas[k]:{delta:null,note:'no earlier run'};
-  const n=rangeN(),dd=days.slice(-n);
-  box.append(kpiCard('live','Live sites',K.live_sites,dl('live_sites'),isCur()?sparkline(dd,D.series.live_sites.slice(-n),'Live sites'):null));
-  const pit=K.pitched===0?emptyCard('pitched','Pitched',dl('pitched')):kpiCard('pitched','Pitched',K.pitched,dl('pitched'));
-  if(K.pitched===0&&K.needs_you>0){const a=el('a',{class:'btn-tint',href:'#pipeline/gate'});a.append(el('span',{text:`${K.needs_you} ready to send →`}));a.onclick=e=>{e.preventDefault();go('pipeline','gate')};pit.append(a)}
-  box.append(pit);
-  box.append(K.replies===0?emptyCard('replies','Replies',dl('replies')):kpiCard('replies','Replies',K.replies,dl('replies')));
-  box.append(K.clients===0?emptyCard('clients','Clients',dl('clients')):kpiCard('clients','Clients',K.clients,dl('clients')));
-  const sites=D.businesses.filter(b=>b.run_id===state.run&&b.critic_score!=null).map(b=>({name:shortName(b.slug),score:b.critic_score}));
-  const cr=el('article',{class:'card kpi','aria-label':`Critic mean ${K.avg_critic==null?'not yet':fmt(K.avg_critic)}`});
-  cr.append(el('span',{class:'label',text:'Critic mean'}));
-  if(K.avg_critic==null){cr.append(el('div',{class:'kpi-row'},el('div',{class:'num hollow',text:'0'})),el('p',{class:'empty',title:'fills with the first critic line carrying a score /100',text:'no site reached the critic'}))}
-  else{cr.append(el('div',{class:'gauge-row'},gauge(K.avg_critic,sites)));const dv=dl('avg_critic');cr.append(el('div',{class:'delta'},el('span',{text:`mean of ${sites.length} site${sites.length>1?'s':''}, last score each`,title:dv.note||''})))}
-  box.append(cr);
-  box.append(kpiCard('researched','Researched',K.researched,dl('researched'),null));
-}
-function renderNeeds(){
-  const c=$('#needs');c.innerHTML='';
-  let gates=D.gates.filter(g=>g.run_id===state.run||g.slug==null);
-  for(const b of D.businesses.filter(b=>b.run_id===state.run&&shortlistOpen(b)))if(!gates.some(g=>g.slug===b.slug))gates.push({kind:'approve the shortlist',slug:b.slug,name:b.name,run_id:b.run_id,since:b.last_change,days:b.days_since_change,target:{view:'pipeline',slug:b.slug}});
-  const bizGates=gates.filter(g=>g.slug),other=gates.filter(g=>!g.slug);
-  const K=D.kpis_by_run[state.run];
-  const head=el('div',{class:'head'});
-  head.append(el('h2',{class:'label',id:'needs-h'},el('span',{class:'circ','aria-hidden':'true',html:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11V6.5a1.5 1.5 0 0 1 3 0V11M10 10.5V5a1.5 1.5 0 0 1 3 0v5.5M13 10.5V6a1.5 1.5 0 0 1 3 0v6M16 12V9.5a1.5 1.5 0 0 1 3 0V14a6 6 0 0 1-6 6h-1.5a6 6 0 0 1-4.6-2.2L4 14.6a1.5 1.5 0 0 1 2.3-1.9L7 13.5"/></svg>'}),'Needs you'));
-  const bigrow=el('div',{class:'bigrow'});
-  const big=el('div',{class:'big',text:'0'});bigrow.append(big);
-  const n=rangeN();
-  if(isCur())bigrow.append(sparkline(days.slice(-n),D.series.gates_open.slice(-n),'Gates open',{white:true,w:130,h:32}));
-  head.append(bigrow);
-  const sub=el('div',{class:'sub'});
-  sub.append(bizGates.length===1?'business waiting on you':'businesses waiting on you');
-  if(bizGates.length!==K.needs_you)sub.title=`data.json counts ${K.needs_you}; the shortlist rows of a run with no approval are added here`;
-  const dv=isCur()?D.deltas.needs_you:null;
-  if(dv&&dv.delta!=null)sub.append(' · ',el('b',{text:`${dv.delta>0?'+':''}${dv.delta}`}),` vs ${runShort(dv.previous_run)}`);
-  const kinds=Object.values(D.gate_states).filter(k=>!gates.some(g=>g.kind===k));
-  if(kinds.length)sub.title=`No gate open to ${kinds.join(' or ')}.`;
-  head.append(sub);c.append(head);
-  const ul=el('ul',{class:'gates'});
-  for(const g of bizGates){
-    const li=el('li');
-    li.append(el('div',{class:'who'},el('b',{text:g.name}),el('span',{text:`${g.kind} · since ${dShort(g.since)} · ${g.days} day${g.days===1?'':'s'}`})));
-    const b=D.businesses.find(x=>x.slug===g.slug&&x.run_id===g.run_id);
-    const isPick=g.kind==='pick a mockup';
-    const a=el('a',{class:'open',href:isPick?`#pipeline/pick:${g.slug}`:`#${g.target.view}/${g.target.slug}`,text:isPick?'Pick':'Open','aria-label':`${isPick?'Pick a mockup for':'Open'} ${g.name}: ${g.kind}`});
-    a.onclick=e=>{e.preventDefault();isPick?go('pipeline','pick:'+g.slug):go(g.target.view,g.target.slug)};
-    const canForm=LIVE&&b&&(g.kind==='send the pitch'||g.kind==='approve the shortlist');
-    if(canForm){const open=state.openNeeds===g.slug;const t=el('button',{type:'button',class:'btn s',text:open?'Close':'Decide here','aria-expanded':String(open)});t.onclick=()=>{state.openNeeds=open?null:g.slug;renderNeeds();if(!open)$('#needs form.gate input,#needs form.gate button')?.focus()};li.append(t)}
-    li.append(a);
-    if(canForm&&state.openNeeds===g.slug){const f=needsForm(g,b);if(f){li.classList.add('hasform');li.append(f)}}
-    ul.append(li);
-  }
-  if(!bizGates.length)ul.append(el('li',{class:'more'},el('div',{class:'who'},el('b',{text:'No business is waiting on you in this run'}),el('span',{text:'Gates appear at shortlisted, mocked and packaged.'}))));
-  c.append(ul);
-  const bigN=bizGates.length;
-  for(const g of other){
-    const f=el('div',{class:'foot'});
-    f.append(el('span',{text:`Also ${g.name.replace(/ without a merge record$/,'')} to review · ${g.kind}`}));
-    const a=el('a',{class:'open',href:`#decisions/proposals`,text:'Open','aria-label':`Open ${g.name}`});
-    a.onclick=e=>{e.preventDefault();go('decisions','proposals')};
-    f.append(a);c.append(f);
-  }
-  countUp(big,bigN,'needs-'+state.run+'-'+bigN);
-}
-function renderFunnel(){
-  const box=$('#funnel');box.innerHTML='';
-  const rows=D.kpis_by_run[state.run].funnel;
-  $('#funnel-meta').textContent=`${runShort(state.run)} · ever reached`;
-  const W=box.clientWidth||696,rowH=60,H=rows.length*rowH;
-  const labelW=124,countW=104,barX=labelW,barW=W-labelW-countW,bh=32;
-  const max=Math.max(1,...rows.map(r=>r.count));
-  const lastReached=[...rows].reverse().find(r=>r.count>0);
-  const svg=sv('svg',{width:W,height:H,role:'img','aria-label':`Funnel: ${rows.map(r=>`${r.label} ${r.count}`).join(', ')}`});
-  svg.append(sv('title',{text:'Funnel of the run, businesses that ever reached each state'}));
-  rows.forEach((r,i)=>{
-    const y=i*rowH+rowH/2,w=Math.max(0,(r.count/max)*barW);
-    const prev=i?rows[i-1].count:null,drop=prev!=null?r.count-prev:null,pct=prev?Math.round(r.count/prev*100):null;
-    const g=sv('g',{class:'datum',tabindex:0,role:'img','aria-label':`${r.label}: ${r.count}${pct!=null?`, ${pct}% of ${rows[i-1].label}`:''}`});
-    g.append(sv('rect',{x:0,y:y-rowH/2+2,width:W,height:rowH-4,rx:12,fill:'transparent',class:'hit'}));
-    g.append(sv('text',{x:0,y:y+5,class:'ax ink',style:'font-weight:600;font-size:15px',text:r.label[0].toUpperCase()+r.label.slice(1)}));
-    if(r.count>0)g.append(sv('rect',{x:barX,y:y-bh/2,width:w,height:bh,rx:10,fill:r===lastReached?'var(--acc)':'var(--t4)',class:'grow pre'}));
-    else g.append(sv('rect',{x:barX+.5,y:y-bh/2+.5,width:56,height:bh-1,rx:10,fill:'none',stroke:'var(--t3)','stroke-dasharray':'3 3'}));
-    g.append(sv('text',{x:W,y:y+6,'text-anchor':'end',class:'ax b',style:r.count===0?'fill:var(--ink3);font-weight:400':'',text:String(r.count)}));
-    if(drop!=null)g.append(sv('text',{x:W-60,y:y+5,'text-anchor':'end',class:'ax',text:drop===0?(r.count===0?'':'±0'):(drop>0?'+':'−')+Math.abs(drop)}));
-    const lines=[[`${r.label} · ${r.count}`]];
-    if(pct!=null)lines.push([`${pct}% of ${rows[i-1].label} (${prev})`,'sec']);
-    if(r.count===0)lines.push([`no ${r.state.replace('outcome:','')} line in the ledger yet`,'sec']);
-    g.append(tip('dark',barX+Math.max(w,56)/2,y-bh/2,lines));
-    svg.append(g);
-  });
-  box.append(svg);
-  const run=D.runs.find(r=>r.run_id===state.run);
-  const built=rows.find(r=>r.state==='built')?.count??0,top=rows[0].count;
-  const gatesN=D.businesses.filter(b=>b.run_id===state.run&&b.gate).length;
-  const sum=el('p',{class:'fsum'});
-  sum.append(el('b',{text:`${built} of ${top} built`}),` (${top?Math.round(built/top*100):0}%)`,gatesN?` · all ${gatesN} waiting on you to pitch`:'');
-  const leg=el('ul',{class:'fleg','aria-label':'Where the rest left the run'});
-  const LEFT=[['dropped','Dropped after approval','var(--t2)'],['not_approved','Shortlisted, not approved','var(--t3)'],['not_shortlisted','Scored below the threshold','var(--t4)'],['superseded','Superseded by a later run','var(--t4)']];
-  for(const [k,label,col] of LEFT){if(!run.groups[k])continue;leg.append(el('li',{},el('i',{style:`background:${col}`,'aria-hidden':'true'}),el('span',{text:label}),el('b',{text:String(run.groups[k])})))}
-  box.append(sum,leg);
-  requestAnimationFrame(()=>{sizeTips(svg);drawIn(svg,'funnel-'+state.run)});
-}
-function renderFeed(){
-  const ol=$('#feed');ol.innerHTML='';
-  const start=rangeStart();
-  const all=D.recent_activity.filter(a=>a.ts.slice(0,10)>=start);
-  const N=state.feedAll?all.length:6,items=all.slice(0,N);
-  $('#act-meta').textContent=`last ${D.recent_activity.length} ledger lines`;
-  for(const a of items){
-    const li=el('li');
-    li.append(el('span',{class:'disc'+(a.agent==='human'?' human':''),'aria-hidden':'true',text:initial(a.agent,a.operator)}));
-    const b=el('div',{class:'body'});
-    b.append(el('div',{class:'l1row'},el('div',{class:'l1',text:agentLabel(a.agent,a.operator)}),el('time',{datetime:a.ts,text:tShort(a.ts)})));
-    b.append(el('div',{class:'l2'},el('span',{text:bizName(a.slug)}),' · ',el('b',{text:`${a.from??'start'} → ${a.to}`})));
-    if(a.note)b.append(el('div',{class:'l3',title:a.note,text:a.note}));
-    li.append(b);ol.append(li);
-  }
-  const f=$('#feed-foot');f.innerHTML='';
-  f.append(el('span',{text:`${items.length} of ${all.length} in range`}));
-  if(all.length>N||state.feedAll){const b=el('button',{class:'linkbtn',type:'button',text:state.feedAll?'Show fewer':`Show all ${all.length}`});b.onclick=()=>{state.feedAll=!state.feedAll;renderFeed()};f.append(b)}
-}
-
-/* ---------- Team (docs/team.md) ---------- */
+/* ---------- Overview: what we can act on, every run ---------- */
 const opDisc=(id,small)=>el(small?'i':'span',{class:(small?'':'disc ')+(id===D.team?.viewer?'human you':''),'aria-hidden':'true',text:(opName(id)||'?')[0].toUpperCase()});
-function renderTeam(){
-  const T=D.team;if(!T)return;
-  const last=$('#team-last'),asg=$('#team-asg');last.innerHTML='';asg.innerHTML='';
-  $('#team-meta').textContent=`${Object.keys(T.operators).length} operators · you are ${opName(T.viewer)}`;
-  for(const [id,e] of Object.entries(T.last_by_operator)){
-    const li=el('li');li.append(opDisc(id));
-    const b=el('div',{class:'body'});
-    b.append(el('div',{class:'l1row'},el('div',{class:'l1',text:opName(id)+(id===T.viewer?' (you)':'')}),e?el('time',{datetime:e.ts,text:tShort(e.ts)}):''));
-    if(e){b.append(el('div',{class:'l2'},el('b',{text:e.business}),` · ${e.kind}`));if(e.note)b.append(el('div',{class:'l3',title:e.note,text:e.note}))}
-    else b.append(el('div',{class:'l2',text:'nothing recorded yet'}));
-    li.append(b);last.append(li);
+const PITCH_FROM=['previewed','packaged','pitched','outcome','product_chosen','delivered','handoff_verified','access_revoked'];
+const baseOf=s=>s.startsWith('outcome:')?'outcome':s;
+// every site with a live preview, newest run first; a slug that reappears in a later run shows once
+function pitchSites(){
+  const seen=new Set();
+  return D.businesses.filter(b=>PITCH_FROM.includes(baseOf(b.state))).filter(b=>!seen.has(b.slug)&&seen.add(b.slug))
+    .sort((a,b)=>PITCH_FROM.indexOf(baseOf(a.state))-PITCH_FROM.indexOf(baseOf(b.state))||a.name.localeCompare(b.name));
+}
+const CH={whatsapp:'WhatsApp',email:'email',phone:'phone','in person':'in person'};
+function pitchStatus(b){
+  const s=b.state;
+  if(s==='previewed')return ['grey','Preview live · pitch not written'];
+  if(s==='packaged')return ['gate','Ready to send'];
+  const sent=b.pitch_sent?`Pitched ${dShort(b.pitch_sent.ts)}${b.pitch_sent.channel?' · '+(CH[b.pitch_sent.channel.toLowerCase()]||b.pitch_sent.channel):''}${b.pitch_sent.by?' · by '+opName(b.pitch_sent.by):''}`:'Pitched';
+  if(s==='pitched')return ['live',sent];
+  if(s.startsWith('outcome:')){const o=s.slice(8);return [o==='ignored'?'drop':'live',`${o[0].toUpperCase()+o.slice(1)} · ${dShort(b.last_change)}`]}
+  return ['live',`Sold${b.hosting_mode?' · '+b.hosting_mode.replace(/_/g,' '):''} · ${s.replace(/_/g,' ')}`];
+}
+const thumbSrc=slug=>LIVE?`thumb/${slug}.jpg`:`img/${slug}.jpg`;
+function thumb(b,cls){
+  const a=el('a',{class:cls,href:b.preview_url||'#',target:'_blank',rel:'noopener','aria-label':`Open the live preview of ${b.name}`});
+  if(b.preview_url){const img=el('img',{src:thumbSrc(b.slug),alt:`First screen of ${b.name}`,loading:'lazy',width:'672',height:'420'});img.onerror=()=>img.replaceWith(el('span',{class:'noshot',text:LIVE?'preview could not be shot':'thumbnail shows when the dashboard server runs'}));a.append(img)}
+  else a.append(el('span',{class:'noshot',text:'no preview yet'}));
+  return a;
+}
+const ICON_COPY='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="2"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>';
+const ICON_EXT='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 3H3.5A1.5 1.5 0 0 0 2 4.5v8A1.5 1.5 0 0 0 3.5 14h8a1.5 1.5 0 0 0 1.5-1.5V10M9 2h5v5M14 2 7.5 8.5"/></svg>';
+// a clean popup over a white 80% veil; closes on ×, Esc or a click on the veil
+// modal(title, ...content) or modal({title, sub}, ...content): the title is the action, in large type; sub is
+// what it acts on (the business), smaller and muted under it.
+function modal(head,...content){
+  const hd=head&&typeof head==='object'&&!head.nodeType?head:{title:String(head)};
+  const d=el('dialog',{class:'modal','aria-label':hd.sub?`${hd.title}: ${hd.sub}`:hd.title});
+  const x=el('button',{type:'button',class:'iconbtn','aria-label':'Close',html:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>'});
+  x.onclick=()=>d.close();
+  d.append(el('div',{class:'mh'},el('div',{class:'mt'},el('h2',{text:hd.title}),hd.sub?el('p',{text:hd.sub}):null),x),el('div',{class:'mb'},...content));
+  d.addEventListener('click',e=>{if(e.target===d)d.close()});
+  d.addEventListener('close',()=>{d.remove();if(state.dirty)rerender()});
+  document.body.append(d);d.showModal();
+  return d;
+}
+// A draft is the whole file, or — when it carries notes around a ```text fence — just the fenced message.
+// A draft is the message alone: the ```text fence, else the text between the first two --- rules, else the whole
+// file. The file's own "# title" line is dropped; what is left around the message becomes the sender's notes.
+function splitDraft(t){
+  const untitle=x=>x.replace(/^#\s.*\n+/,'').trim();
+  const m=t.match(/```(?:text)?\n([\s\S]*?)\n```/)||t.match(/\n-{3,}\n([\s\S]*?)\n-{3,}(?:\n|$)/);
+  return m?{msg:m[1].trim(),notes:untitle(t.replace(m[0],'\n'))}:{msg:untitle(t),notes:''};
+}
+const DRAFTS=[[/^message\.en\.email\.md$/,'Suggested email'],[/^message\.en\.whatsapp\.md$/,'Suggested WhatsApp'],[/^in-person\.en\.md$/,'Suggested in-person script']];
+async function openDraft(b,file,label){
+  const box=el('div',{class:'msgbox'},el('pre',{text:'loading…'}));
+  modal({title:label,sub:b.name},box);
+  let t;try{const r=await fetch(fileURL(`sites/${b.slug}/pitch/${file}`),{cache:'no-store'});if(!r.ok)throw new Error(r.status);t=await r.text()}
+  catch(e){box.replaceChildren(el('pre',{text:`Could not load sites/${b.slug}/pitch/${file} (${e.message}).${LIVE?'':' Start dashboard/server.mjs to read drafts.'}`}));return}
+  const script=/^in-person/.test(file);
+  const {msg,notes}=splitDraft(script?t:t.replace(/\*\*([^*]+)\*\*/g,'$1'));
+  const plain=script?msg.replace(/\*\*([^*]+)\*\*/g,'$1').replace(/^#{1,6}\s+/gm,''):msg;
+  const cp=el('button',{type:'button',class:'iconbtn','aria-label':'Copy the text',title:'Copy',html:ICON_COPY});
+  cp.onclick=()=>copyText(plain,cp,true);
+  // an in-person script keeps its headings and lists; a message shows exactly what will be sent
+  box.replaceChildren(script?el('div',{class:'md msgmd',html:mdToHtml(msg)}):el('pre',{text:msg}),cp);
+  if(notes){const det=el('details',{class:'msgnotes'},el('summary',{text:'Notes for the sender'}),el('div',{text:notes}));box.after(det)}
+}
+const ICON_WA='<svg viewBox="0 0 24 24" aria-hidden="true" fill="#159947"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>';
+const ICON_PERSON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>';
+const ICON_MAIL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>';
+// "Suggestions:" and one icon button per draft on disk (WhatsApp, in person, email), each named and with a tooltip
+function suggestions(b){
+  const box=el('div',{class:'sugs'},el('span',{class:'sugs-l',text:'Suggestions:'}));
+  for(const [re,label] of [[/^message\.en\.whatsapp\.md$/,'Suggested WhatsApp'],[/^in-person\.en\.md$/,'Suggested in-person script'],[/^message\.en\.email\.md$/,'Suggested email']]){
+    const f=(b.pitch?.drafts||[]).find(f=>re.test(f));if(!f)continue;
+    const bt=el('button',{type:'button',class:'sug-ib'+(/whatsapp/.test(f)?' wa':''),title:label,'aria-label':`${label} for ${b.name}`,html:/whatsapp/.test(f)?ICON_WA:/email/.test(f)?ICON_MAIL:ICON_PERSON});
+    bt.onclick=()=>openDraft(b,f,label);box.append(bt);
   }
-  const open=T.open_assignments.slice().sort((a,b)=>a.ts.localeCompare(b.ts));
-  if(!open.length)asg.append(el('li',{class:'empty',text:'None open. Claim work with: node tools/team.mjs assign <slug> "<task>"'}));
-  for(const a of open){
-    const li=el('li');li.append(opDisc(a.to));
-    const b=el('div',{class:'body'});
-    b.append(el('div',{class:'l1row'},el('div',{class:'l1',text:`${a.to_name}${a.to===T.viewer?' (you)':''} · ${a.business}`}),el('time',{datetime:a.ts,text:'since '+dShort(a.ts)})));
-    b.append(el('div',{class:'l3',title:a.task,text:a.task}));
-    b.append(el('div',{class:'l2',text:`assigned by ${a.by_name} · ${a.id}`}));
-    li.append(b);asg.append(li);
+  return box.children.length>1?box:null;
+}
+const pitchLive=b=>!!(b.pitch?.proposal_url&&b.pitch.proposal_live!==false);
+function siteLinks(b){
+  const ln=el('div',{class:'ln'});
+  const ext=(href,text)=>{const a=el('a',{class:'cta link',href,target:'_blank',rel:'noopener'});a.append(text,el('span',{html:ICON_EXT}));return a};
+  const off=(text,why)=>el('span',{class:'cta','aria-disabled':'true',title:why,text});
+  ln.append(b.preview_url?ext(b.preview_url,'Preview website'):off('Preview website','no preview deployed'));
+  const pu=b.pitch?.proposal_url;
+  ln.append(pitchLive(b)?ext(pu,'Pitch'):off('Pitch',pu?`pitch page written but not deployed (${pu.replace('https://','')} is not live)`:'no pitch page'));
+  for(const [re,label] of DRAFTS){const f=(b.pitch?.drafts||[]).find(f=>re.test(f));if(!f)continue;const bt=el('button',{type:'button',class:'cta',text:label});bt.onclick=()=>openDraft(b,f,label);ln.append(bt)}
+  return ln;
+}
+function handoffPrompt(b,to,task,id){
+  const from=opName(D.team?.viewer);
+  return [`Oneshot handoff from ${from} to ${opName(to)} (${new Date().toISOString().slice(0,10)}).`,
+    `Business: ${b.name} (${b.slug}) · run ${b.run_id} · state: ${b.state}`,
+    [b.preview_url&&`Preview: ${b.preview_url}`,pitchLive(b)&&`Pitch: ${b.pitch.proposal_url}`].filter(Boolean).join(' · '),
+    `Request: ${task||'<write the request>'}`,
+    `Start: pull main, read CLAUDE.md, PLAN.md and notes/${b.slug}.md, then run \`node tools/team.mjs status ${b.slug}\`.`+(id?` This is assignment ${id}: close it with \`node tools/team.mjs done ${id} "<what you did>"\` when finished.`:'')
+  ].filter(Boolean).join('\n');
+}
+async function copyText(t,btn,icon){
+  try{await navigator.clipboard.writeText(t)}catch{const ta=el('textarea',{style:'position:fixed;opacity:0'});ta.value=t;(btn.closest('dialog')||document.body).append(ta);ta.select();document.execCommand('copy');ta.remove()}
+  const was=btn.innerHTML;if(icon)btn.append(' Copied');else btn.textContent='Copied';setTimeout(()=>{btn.innerHTML=was},1600);live('copied');
+}
+function handoffForm(b){
+  const ops=Object.keys(D.team?.operators||{});
+  const others=ops.filter(o=>o!==D.team?.viewer);
+  const f=el('form',{class:'gate ho','data-fkey':'ho-'+b.slug,'aria-label':`Hand off ${b.name}`});
+  const sel=el('select',{name:'to','aria-label':'To'});for(const o of [...others,...ops.filter(o=>!others.includes(o))])sel.append(el('option',{value:o,text:opName(o)+(o===D.team?.viewer?' (you)':'')}));
+  const ta=el('textarea',{name:'task',placeholder:'What should they do? For example: send the WhatsApp pitch, you know the owner','aria-label':'Request'});
+  const prev=state.handoffs[b.slug];if(prev?.task)ta.value=prev.task;
+  const go=el('button',{type:'submit',class:'btn p',text:'Hand off'});
+  const stat=el('div',{class:'gstat',role:'status','aria-live':'polite'});
+  const fields=el('div',{style:'display:grid;gap:10px'},el('div',{class:'row'},el('span',{class:'label',text:'To'}),sel),ta,el('div',{class:'row'},go));
+  f.append(fields,stat);
+  if(!LIVE){go.disabled=true;go.title='start dashboard/server.mjs to write the assignment'}
+  const showDone=r=>{
+    fields.hidden=true;stat.className='gstat';stat.innerHTML='';
+    const prompt=handoffPrompt(b,r.line.to,r.line.task,r.line.id);
+    const cp=el('button',{type:'button',class:'btn s',text:'Copy prompt'});cp.onclick=()=>copyText(prompt,cp);
+    stat.append(el('div',{class:'ov-done'},
+      el('p',{class:'ok'},el('i',{html:'<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>'}),`Handed off to ${opName(r.line.to)}.`),
+      el('dl',{},el('dt',{text:'Request'}),el('dd',{text:r.line.task}),el('dt',{text:'Site'}),el('dd',{text:b.name})),
+      el('p',{text:`Nothing was sent to ${opName(r.line.to)}. Copy the prompt and paste it to them.`}),
+      el('div',{},cp),
+      el('details',{},el('summary',{text:'Show the full prompt'}),el('div',{class:'prompt',text:prompt.replace(/`/g,'')}))));
+    return cp;
+  };
+  if(prev?.line)showDone(prev);
+  f.addEventListener('submit',async e=>{
+    e.preventDefault();if(!LIVE)return;
+    const task=ta.value.trim();stat.className='gstat';stat.textContent='';
+    if(task.length<3){stat.className='gstat err';stat.textContent='Write the request first.';ta.focus();return}
+    go.disabled=true;posting++;let res,json;
+    try{res=await fetch('handoff',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({slug:b.slug,to:sel.value,task}),cache:'no-store'});json=await res.json().catch(()=>({error:'response was not JSON'}))}
+    catch(err){res={status:0};json={error:String(err)}}
+    posting--;go.disabled=false;
+    if(res.status===201){state.handoffs[b.slug]={task,line:json.line};const cp=showDone(state.handoffs[b.slug]);copyText(handoffPrompt(b,json.line.to,task,json.line.id),cp);cp.focus();setTimeout(()=>refresh(),800)}
+    else{stat.className='gstat err';stat.textContent=`${res.status||'network'}: ${json.error||'unknown error'}`}
+  });
+  return f;
+}
+function handoffModal(b){
+  const other=opName(Object.keys(D.team?.operators||{}).find(o=>o!==D.team?.viewer));
+  const d=modal({title:'Hand off',sub:b.name},el('p',{class:'gstat',style:'margin-bottom:6px',text:`Ask ${other} to do something on this site. Nothing is sent from here: you get a prompt to paste to them.`}),handoffForm(b));
+  d.addEventListener('close',()=>{delete state.handoffs[b.slug]}); // the next Hand off on this site starts a fresh request
+  d.querySelector('textarea')?.focus();
+}
+const money=(amt)=>{const e=Object.entries(amt||{}).filter(([,v])=>v);if(!e.length)return '$0';return e.map(([c,v])=>new Intl.NumberFormat('en-US',{style:'currency',currency:c,maximumFractionDigits:v%1?2:0}).format(v)).join(' + ')};
+/* ---------- Overview (dashboard-03 round 3, option B) ---------- */
+const ovSvg=(d,sw=1.75)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+const OVI={
+  status:ovSvg('<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/>'),
+  handoff:ovSvg('<path d="M4 12h12M12 7l5 5-5 5"/><path d="M20 5v14"/>'),
+  email:ovSvg('<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/>'),
+  whatsapp:ovSvg('<path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.2A8 8 0 1 1 20 11.5z"/>'),
+  inperson:ovSvg('<circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/>'),
+  ext:ovSvg('<path d="M7 17 17 7M9 7h8v8"/>',2.4),
+  clock:ovSvg('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'),
+  chev:ovSvg('<path d="m9 6 6 6-6 6"/>',2),
+};
+const ovPlural=(n,w,ws)=>`${n} ${n===1?w:(ws||w+'s')}`;
+const ovDays=iso=>Math.max(0,Math.floor((Date.now()-new Date(iso))/864e5)); // elapsed days, as days_since_change
+const canUpdate=b=>b.state==='packaged'||/^(pitched|outcome:(reply|meeting|ignored))$/.test(b.state);
+const ovAgent=a=>(a||'agent').replace(/\s*\(your custom\.md\)/i,'');
+function renderOvSummary(){
+  const items=needsItems(),n=k=>items.filter(i=>i.kind===k).length;
+  const bits=[[n('pitch'),'pitch to send','pitches to send'],[n('outcome'),'site to follow up','sites to follow up'],[n('tweak'),'suggested agent tweak','suggested agent tweaks'],[n('gate'),'other decision','other decisions'],[n('handoff'),'handoff to you','handoffs to you']]
+    .filter(([c])=>c).map(([c,one,many])=>`${c} ${c===1?one:many}`);
+  const p=$('#ov-sum');p.innerHTML='';
+  if(!items.length){p.textContent='Nothing is waiting on you.';return}
+  p.append(el('b',{text:`${items.length===1?'1 thing is':items.length+' things are'} waiting on you`}),`: ${bits.length>1?bits.slice(0,-1).join(', ')+' and '+bits.at(-1):bits[0]}.`);
+}
+function renderMoney(){
+  const month=new Date().toISOString().slice(0,7);
+  for(const [id,label,book,empty] of [['#ov-rev','Revenues',D.revenues,'No payments recorded yet. Tell Claude <q>record a payment</q> when a client pays.'],['#ov-exp','Expenses',D.expenses,'No expenses recorded yet. Tell Claude <q>record an expense</q> when you pay for something.']]){
+    const total=money(book?.accumulated),m=money(book?.monthly?.[month]),n=book?.entries?.length||0,box=$(id);
+    box.innerHTML='';box.setAttribute('role','group');box.setAttribute('aria-label',`${label}: ${total} in total, ${m} this month`);
+    box.append(el('div',{class:'lab',text:label}),el('div',{class:'fig'},total,el('small',{text:'in total'})),el('div',{class:'month'},'This month ',el('b',{text:m})),
+      el('p',{class:'hint',html:n?`${ovPlural(n,label==='Revenues'?'payment':'expense')} recorded.`:empty}));
   }
 }
+function renderTiles(){
+  const box=$('#ov-counts');box.innerHTML='';
+  const ps=pitchSites(),bs=D.businesses;
+  const building=bs.filter(b=>D.runs.find(r=>r.run_id===b.run_id)?.active&&['pipeline','gate'].includes(b.group)&&!PITCH_FROM.includes(baseOf(b.state))).length;
+  const T=[['Being built',building,()=>go('pipeline')],
+    ['Ready to send',ps.filter(b=>b.state==='packaged').length,()=>{const h=$('#ps-h');h.scrollIntoView({block:'start',behavior:reduced?'auto':'smooth'});h.focus({preventScroll:true})}],
+    ['Pitched',bs.filter(b=>b.pitched_at).length,()=>go('sites')],
+    ['Replies',bs.filter(b=>(b.history||[]).some(h=>h.to==='outcome:reply'||h.to==='outcome:meeting')).length,()=>go('sites')],
+    ['Clients',bs.filter(b=>b.outcome?.state==='sale'||['product_chosen','delivered','handoff_verified','access_revoked'].includes(b.state)).length,()=>go('sites')]];
+  for(const [l,v,act] of T){
+    const dd=el('dd',{class:v?'':'z'});
+    if(v){const bt=el('button',{type:'button','aria-label':`${l}: ${v}. ${l==='Ready to send'?'Go to the list':l==='Being built'?'Open Pipeline':'Open Sites'}`},String(v),el('span',{html:OVI.chev}));bt.onclick=act;dd.append(bt)}
+    else dd.append(String(v));
+    box.append(el('div',{class:'r'},el('dt',{text:l}),dd));
+  }
+}
+function renderPitchSites(){
+  const ol=$('#psites');ol.innerHTML='';
+  const stage=b=>PITCH_FROM.indexOf(baseOf(b.state));
+  const ps=pitchSites().slice().sort((a,b)=>(a.state==='packaged'?0:1)-(b.state==='packaged'?0:1)||stage(a)-stage(b)||new Date(a.last_change)-new Date(b.last_change)||a.name.localeCompare(b.name));
+  const ready=ps.filter(b=>b.state==='packaged').length,rest=ps.length-ready;
+  $('#ps-h').textContent=rest?'Sites to pitch or follow up':'Sites to pitch';
+  const n=$('#ps-n');n.textContent=String(ps.length);n.className='ov-cnt'+(ps.length?'':' z');n.setAttribute('aria-label',ovPlural(ps.length,'site'));
+  $('#ps-meta').textContent=rest?`${ready} ready to send · ${rest} further along`:'Oldest first';
+  if(!ps.length){ol.append(el('li',{class:'ov-row empty',text:'No site has a preview yet. Sites appear here when their preview is online.'}));return}
+  const BADGE={gate:'ready',live:'good',drop:'bad',grey:'sent'};
+  for(const b of ps){
+    const li=el('li',{class:'ov-row',id:'ps-'+b.slug});
+    const th=thumb(b,'ov-thumb');th.setAttribute('tabindex','-1');th.setAttribute('aria-hidden','true');li.append(th);
+    const links=el('div',{class:'ov-links'});
+    if(b.preview_url){const a=el('a',{class:'ov-lk',href:b.preview_url,target:'_blank',rel:'noopener'},'Preview',el('span',{class:'sr',text:` the website of ${b.name} (opens a new tab)`}),el('span',{html:OVI.ext}));links.append(a)}
+    if(pitchLive(b))links.append(el('a',{class:'ov-lk',href:b.pitch.proposal_url,target:'_blank',rel:'noopener'},'Pitch',el('span',{class:'sr',text:` page for ${b.name} (opens a new tab)`}),el('span',{html:OVI.ext})));
+    else{const why=b.pitch?.proposal_url?`The pitch page for ${b.name} is written but not online yet.`:`${b.name} has no pitch page yet.`;
+      links.append(el('span',{class:'ov-off',role:'link','aria-disabled':'true',tabindex:'0',title:why,'aria-label':`Pitch, not online yet. ${why}`},el('span',{html:OVI.clock}),'Pitch · not online yet'))}
+    const [cls,txt]=pitchStatus(b),age=ovDays(b.last_change);
+    const meta=el('div',{class:'ov-meta'},el('span',{class:'ov-badge '+(BADGE[cls]||'sent'),text:txt}));
+    if(b.state==='packaged')meta.append(el('span',{text:age?`for ${ovPlural(age,'day')}`:'since today',title:`Ready to send since ${dShort(b.last_change)}`}));
+    for(const a of (b.assignments||[]).filter(a=>a.open))meta.append(el('span',{class:'ov-ho',title:a.task},el('span',{html:OVI.handoff}),a.by===a.to?`${opName(a.to)} is on it`:a.to===D.team?.viewer?`${opName(a.by)} asks you`:`Handed off to ${opName(a.to)}`));
+    li.append(el('div',{class:'ov-nm'},el('h3',{text:b.name}),b.ran_by?.name?el('span',{class:'by',text:`by ${b.ran_by.name}`}):null));
+    const ho=el('button',{type:'button',class:'ovb ho sm ov-hob'},el('span',{html:OVI.handoff}),'Hand off',el('span',{class:'sr',text:` ${b.name}`}));ho.onclick=()=>handoffModal(b);li.append(ho);
+    li.append(links);
+    const sg=suggestions(b);li.append(sg||el('span'));
+    li.append(meta);
+    if(canUpdate(b)){const u=el('button',{type:'button',class:'ovb p ov-upd'},el('span',{html:OVI.status}),'Update status',el('span',{class:'sr',text:` of ${b.name}`}));u.onclick=()=>statusModal(b);li.append(u)}
+    ol.append(li);
+  }
+}
+// everything on the Needs you list that is not a site row
+function renderAlsoWaiting(){
+  const ul=$('#ov-wait');ul.innerHTML='';
+  const items=needsItems().filter(i=>i.kind==='tweak'||i.kind==='gate'||i.kind==='handoff');
+  const n=$('#ow-n');n.textContent=String(items.length);n.className='ov-cnt'+(items.length?'':' z');n.setAttribute('aria-label',ovPlural(items.length,'item'));
+  if(!items.length){ul.append(el('li',{class:'empty',text:'Nothing else is waiting on you.'}));return}
+  for(const it of items){
+    let title=it.title,sub=it.sub,btn;
+    if(it.kind==='tweak'){sub=`Suggested tweak to the ${ovAgent(it.p.agent)}${/custom\.md/i.test(it.p.agent||'')?' (your own notes)':''} · approve or reject`;
+      btn=el('button',{type:'button',class:'ovb s'},'Review',el('span',{class:'sr',text:`: ${it.p.title}, in Decisions`}));btn.onclick=()=>go('decisions','proposals')}
+    else if(it.kind==='gate'){sub=it.g.since?`Since ${dShort(it.g.since)}`:'';const pick=it.g.kind==='pick a mockup';
+      btn=el('button',{type:'button',class:'ovb s',text:pick?'Pick':'Open'});btn.onclick=()=>{state.run=it.g.run_id;renderRunSel();renderPipeline();pick?go('pipeline','pick:'+it.g.slug):go(it.g.target.view,it.g.target.slug)}}
+    else{sub=`${it.a.business} · since ${dShort(it.a.ts)}`;const b=D.businesses.find(x=>x.slug===it.a.slug);
+      if(b){btn=el('button',{type:'button',class:'ovb s',text:'Copy prompt'});btn.onclick=()=>copyText(handoffPrompt(b,it.a.to,it.a.task,it.a.id),btn)}}
+    ul.append(el('li',{},el('div',{},el('b',{text:title}),el('span',{text:sub})),btn||el('span')));
+  }
+}
+// Recording what happened outside the system: the pitch was sent, or what the owner answered.
+function statusModal(b){
+  if(b.state==='packaged')modal({title:'Update status',sub:b.name},
+    el('p',{class:'gstat',style:'margin-bottom:6px',text:'Sent the pitch yourself? Record it here: the business moves to pitched. Nothing is sent from the dashboard.'}),
+    gateForm({key:`pitch-${b.run_id}-${b.slug}`,gate:'pitch',run_id:b.run_id,slug:b.slug,expected_state:b.state,radios:CHANNELS,radioLegend:'How you sent it',date:true,buttons:[['sent','Mark as pitched',true]],placeholder:'note — who you spoke to, what they said',label:`Pitch sent: ${b.name}`}));
+  else modal({title:'Update status',sub:b.name},
+    el('p',{class:'gstat',style:'margin-bottom:6px',text:`Now: ${pitchStatus(b)[1]}. What did the owner do?`}),
+    gateForm({key:`outcome-${b.run_id}-${b.slug}`,gate:'outcome',run_id:b.run_id,slug:b.slug,expected_state:b.state,buttons:OUTCOMES.map(([v,l])=>[v,l,v==='sale']),placeholder:'note — what happened',label:`Outcome: ${b.name}`}));
+  document.querySelector('dialog.modal input,dialog.modal button:not(.iconbtn)')?.focus();
+}
+/* ---------- Needs you: one flat list, the count is the list ---------- */
+const ICON_BELL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M3 6l1.5 1.5L7 5M3 12l1.5 1.5L7 11M3 18l1.5 1.5L7 17"/></svg>';
+function needsItems(){
+  const out=[];
+  for(const b of pitchSites().filter(b=>b.state==='packaged'))out.push({kind:'pitch',b,title:`Send ${b.name}'s pitch`,sub:`Send it yourself (WhatsApp, email or in person), then press Update status · ready since ${dShort(b.last_change)}`});
+  for(const b of pitchSites().filter(b=>/^(pitched|outcome:(reply|meeting))$/.test(b.state)))out.push({kind:'outcome',b,title:`Follow up with ${b.name}`,sub:`${pitchStatus(b)[1]} — record what the owner said`});
+  for(const p of D.proposals.filter(p=>p.kind==='proposal'&&p.status==='pending'))out.push({kind:'tweak',p,title:p.title,sub:`Suggested agent tweak · ${p.agent||'agent'} — approve or reject`});
+  for(const g of D.gates.filter(g=>g.slug&&g.kind!=='send the pitch'))out.push({kind:'gate',g,title:`${g.name}: ${g.kind}`,sub:`${runShort(g.run_id)} · since ${dShort(g.since)}`});
+  for(const a of (D.team?.open_assignments||[]).filter(a=>a.to===D.team?.viewer&&a.by!==a.to))out.push({kind:'handoff',a,title:`${a.by_name} asks: ${a.task}`,sub:`Handoff · ${a.business} · since ${dShort(a.ts)}`});
+  return out;
+}
+function renderNeedsView(){
+  const items=needsItems(),agents=items.filter(i=>i.kind==='tweak'),sites=items.filter(i=>i.kind!=='tweak');
+  const fill=(ol,list,empty)=>{ol.innerHTML='';if(!list.length)ol.append(el('li',{class:'empty',style:'display:block',text:empty}));for(const it of list)ol.append(needsRow(it))};
+  $('#nd-meta').textContent=`${sites.length} thing${sites.length===1?'':'s'}`;$('#nd-ameta').textContent=`${agents.length} thing${agents.length===1?'':'s'}`;
+  fill($('#nd-list'),sites,'Nothing on a website is waiting on you.');
+  fill($('#nd-alist'),agents,'No suggested agent tweak is waiting on you.');
+}
+function needsRow(it){
+  const ic=el('span',{class:'ic','aria-hidden':'true'});
+  if(it.b&&it.b.preview_url){const im=el('img',{src:thumbSrc(it.b.slug),alt:''});im.onerror=()=>im.remove();ic.append(im)}else ic.innerHTML=ICON_BELL;
+  const a=el('div',{class:'a'});
+  if(it.kind==='pitch'||it.kind==='outcome'){
+    const sg=suggestions(it.b);if(sg)a.append(sg);
+    const u=el('button',{type:'button',class:'ovb p'},el('span',{html:OVI.status}),'Update status',el('span',{class:'sr',text:` of ${it.b.name}`}));u.onclick=()=>statusModal(it.b);a.append(u);
+  }else if(it.kind==='tweak'){const o=el('button',{type:'button',class:'btn p',text:'Review'});o.onclick=()=>{go('decisions','proposals')};a.append(o)}
+  else if(it.kind==='gate'){const o=el('button',{type:'button',class:'btn p',text:it.g.kind==='pick a mockup'?'Pick':'Open'});o.onclick=()=>{state.run=it.g.run_id;renderRunSel();renderPipeline();it.g.kind==='pick a mockup'?go('pipeline','pick:'+it.g.slug):go(it.g.target.view,it.g.target.slug)};a.append(o)}
+  else if(it.kind==='handoff'){const b=D.businesses.find(x=>x.slug===it.a.slug);if(b){const cp=el('button',{type:'button',class:'btn s',text:'Copy prompt'});cp.onclick=()=>copyText(handoffPrompt(b,it.a.to,it.a.task,it.a.id),cp);a.append(cp)}}
+  return el('li',{},ic,el('div',{class:'nb'},el('div',{},el('b',{text:it.title}),el('span',{class:'s',text:it.sub})),a));
+}
+
+/* ---------- Ledger: every business reviewed, why in or out, on a map ---------- */
+const VERDICT={built:['Built','var(--green)','var(--green-bg)'],'in progress':['In progress','var(--acc)','var(--t5)'],dropped:['Dropped after approval','var(--red)','var(--red-bg)'],'shortlisted, not picked':['Shortlisted, not picked','#8A5A00','#FFF4DC'],'not shortlisted':['Not shortlisted','var(--ink2)','var(--ground)'],'not continued':['Run not continued','var(--ink2)','var(--ground)'],voided:['Voided','var(--ink2)','var(--ground)']};
+const VORDER=['built','in progress','dropped','shortlisted, not picked','not shortlisted','not continued','voided'];
+const PIN={built:'#1A7F37','in progress':'#6A2FE0',dropped:'#C0182B','shortlisted, not picked':'#D99A00','not shortlisted':'#8A93A3','not continued':'#B8BEC9',voided:'#B8BEC9'};
+state.lgFilter='all';state.lgSel=null;
+const lgRows=()=>(D.prospects||[]).filter(p=>state.lgFilter==='all'||p.verdict===state.lgFilter).sort((a,b)=>VORDER.indexOf(a.verdict)-VORDER.indexOf(b.verdict)||(b.google?.rating||0)-(a.google?.rating||0)||a.name.localeCompare(b.name));
+function presenceBar(n){const w=el('span',{class:'pbar','aria-hidden':'true'});for(let i=1;i<=5;i++)w.append(el('i',{class:i<=n?'on':''}));return w}
+function renderLedger(){
+  const P=D.prospects||[];
+  const sum=$('#lg-sum');sum.innerHTML='';
+  const cnt={};for(const p of P)cnt[p.verdict]=(cnt[p.verdict]||0)+1;
+  for(const k of ['all',...VORDER.filter(k=>cnt[k])]){
+    const b=el('button',{type:'button','aria-pressed':String(state.lgFilter===k)});
+    if(k!=='all')b.append(el('i',{style:`background:${PIN[k]}`}));
+    b.append(k==='all'?'All reviewed':VERDICT[k][0],el('b',{text:String(k==='all'?P.length:cnt[k])}));
+    b.onclick=()=>{state.lgFilter=k;renderLedger();renderLedgerMap()};sum.append(b);
+  }
+  const rows=lgRows();
+  $('#lg-meta').textContent=`${rows.length} of ${P.length} · web presence: how strong their own online presence is (0 = none, 5 = a good site). We look for 0–2.`;
+  const tb=$('#lg-body');tb.innerHTML='';
+  for(const p of rows){
+    const [vl,vc,vb]=VERDICT[p.verdict]||[p.verdict,'var(--ink2)','var(--ground)'];
+    const tr=el('tr',{id:'lg-'+p.slug,class:state.lgSel===p.slug?'sel':''});
+    tr.append(el('td',{class:'n'},el('b',{text:p.name}),el('span',{text:[p.type?p.type.replace(/_/g,' '):null,runShort(p.run_id),p.ran_by?'by '+p.ran_by.name:null].filter(Boolean).join(' · ')})));
+    tr.append(el('td',{class:'r'},p.google?el('span',{},el('b',{style:'color:var(--ink)',text:`★ ${fmt(p.google.rating)}`}),el('span',{text:` (${p.google.reviews})`})):el('span',{text:'—'})));
+    const pr=el('td',{class:'r'});if(p.presence!=null){pr.append(presenceBar(p.presence),`${p.presence}/5`)}else pr.append('—');tr.append(pr);
+    tr.append(el('td',{},el('span',{class:'opill',style:`color:${vc};background:${vb}`,text:vl})));
+    tr.append(el('td',{class:'w',text:p.why||''}));
+    tr.onclick=()=>{state.lgSel=p.slug;document.querySelectorAll('#lg-body tr.sel').forEach(x=>x.classList.remove('sel'));tr.classList.add('sel');const m=LG.markers[p.slug];if(m&&LG.map){LG.map.setView(m.getLatLng(),Math.max(LG.map.getZoom(),16));m.openPopup()}};
+    tb.append(tr);
+  }
+}
+const LG={map:null,layer:null,markers:{},loading:null};
+function loadLeaflet(){
+  if(window.L)return Promise.resolve();
+  if(LG.loading)return LG.loading;
+  LG.loading=new Promise((res,rej)=>{
+    const css=el('link',{rel:'stylesheet',href:'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css'});document.head.append(css);
+    const js=el('script',{src:'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js'});js.onload=res;js.onerror=rej;document.head.append(js);
+  });
+  return LG.loading;
+}
+async function renderLedgerMap(){
+  if(state.view!=='ledger')return;
+  try{await loadLeaflet()}catch{$('#lg-map').textContent='The map needs an internet connection (map tiles).';return}
+  if(!LG.map){
+    LG.map=L.map('lg-map',{scrollWheelZoom:false});
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,attribution:'Tiles © Esri — Esri, HERE, Garmin, © OpenStreetMap contributors'}).addTo(LG.map);
+  }
+  if(LG.layer)LG.layer.remove();
+  LG.layer=L.layerGroup().addTo(LG.map);LG.markers={};
+  for(const a of Object.values(D.areas||{}))L.geoJSON(a,{style:{color:'#6A2FE0',weight:1.5,fillColor:'#6A2FE0',fillOpacity:.05,dashArray:'4 4'},pointToLayer:()=>null}).addTo(LG.layer);
+  const pts=[];
+  for(const p of lgRows().filter(p=>p.lat!=null)){
+    const icon=L.divIcon({className:'',html:`<div class="lg-pin" style="background:${PIN[p.verdict]||'#8A93A3'}"></div>`,iconSize:[16,16],iconAnchor:[8,8]});
+    const m=L.marker([p.lat,p.lng],{icon,title:p.name}).addTo(LG.layer);
+    const pop=el('div',{style:'font-family:Manrope,system-ui;font-size:13px;max-width:260px'},el('b',{style:'font-size:14px',text:p.name}),el('div',{style:'margin:4px 0;color:'+(PIN[p.verdict]||'#555')+';font-weight:700',text:(VERDICT[p.verdict]||[p.verdict])[0]}),el('div',{style:'color:#4B5563',text:[p.google?`Google ★ ${fmt(p.google.rating)} (${p.google.reviews})`:null,p.presence!=null?`web presence ${p.presence}/5`:null].filter(Boolean).join(' · ')}));
+    m.bindPopup(pop);m.on('click',()=>{state.lgSel=p.slug;document.querySelectorAll('#lg-body tr.sel').forEach(x=>x.classList.remove('sel'));const tr=document.getElementById('lg-'+p.slug);if(tr){tr.classList.add('sel');tr.scrollIntoView({block:'nearest',behavior:reduced?'auto':'smooth'})}});
+    LG.markers[p.slug]=m;pts.push([p.lat,p.lng]);
+  }
+  if(pts.length)LG.map.fitBounds(pts,{padding:[40,40],maxZoom:15});
+  setTimeout(()=>LG.map.invalidateSize(),50);
+  $('#lg-mapnote').textContent=`${pts.length} businesses with a location · dashed outline: the search area of each run`;
+}
+
+function renderOverview(){renderOvSummary();renderMoney();renderTiles();renderPitchSites();renderAlsoWaiting()}
+
 function historyRow(b,cols){
   const fr=el('tr',{class:'frow'});const td=el('td',{colspan:String(cols)});
   const ol=el('ol',{class:'hist-list',id:'hist-'+b.slug,tabindex:'-1','aria-label':`History of ${b.name}`});
@@ -1129,14 +1454,15 @@ function pillFor(b){
   if(b.group==='pitched'||b.group==='outcome')return ['live',b.state];
   return ['grey',GROUP_LABEL[b.group]||b.group];
 }
+function pipeRows(){const seen=new Set();return state.run==='all'?D.businesses.filter(b=>b.state!=='void'&&!seen.has(b.slug)&&seen.add(b.slug)):D.businesses.filter(b=>b.run_id===state.run)}
 function renderPipeline(){
-  const rows=D.businesses.filter(b=>b.run_id===state.run);
+  const rows=pipeRows();
   const groups={};for(const b of rows)groups[b.group]=(groups[b.group]||0)+1;
   const filt=$('#pipe-filters');filt.innerHTML='';
-  const opts=[['all','All',rows.length],...GROUP_ORDER.filter(g=>groups[g]).map(g=>[g,GROUP_LABEL[g][0].toUpperCase()+GROUP_LABEL[g].slice(1),groups[g]])];
+  const opts=[...GROUP_ORDER.filter(g=>groups[g]).map(g=>[g,g==='delivered'?'Built':GROUP_LABEL[g][0].toUpperCase()+GROUP_LABEL[g].slice(1),groups[g]]),['all','All',rows.length]];
   if(state.filter==='gate'&&!groups.gate)state.filter=groups.delivered?'delivered':'all';
   if(!opts.find(o=>o[0]===state.filter))state.filter='all';
-  for(const [k,l,n] of opts){const b=el('button',{type:'button','aria-pressed':String(state.filter===k)});b.append(l,el('i',{text:n}));b.onclick=()=>{state.filter=k;renderPipeline()};filt.append(b)}
+  for(const [k,l,n] of opts){const b=el('button',{type:'button','aria-pressed':String(state.filter===k)});b.append(l,el('b',{text:String(n)}));b.onclick=()=>{state.filter=k;renderPipeline()};filt.append(b)}
   const shown=rows.filter(b=>state.filter==='all'||b.group===state.filter).sort((a,b)=>GROUP_ORDER.indexOf(a.group)-GROUP_ORDER.indexOf(b.group)||b.station-a.station||a.name.localeCompare(b.name));
   $('#pipe-sum').innerHTML='';
   $('#pipe-sum').append(el('span',{text:`${runShort(state.run)} · ${rows.length} businesses`}),el('span',{text:`${shown.length} shown`}),el('span',{text:`${rows.filter(b=>b.gate).length} waiting on you`}));
@@ -1191,48 +1517,40 @@ function renderPipeline(){
 /* ---------- Sites ---------- */
 function renderSites(){
   const box=$('#sites-grid');box.innerHTML='';
-  const sites=D.businesses.filter(b=>b.run_id===state.run&&(['delivered','pitched','outcome'].includes(b.group)||/^(packaged|pitched|outcome:)/.test(b.state)));
+  const sites=pitchSites();
   const head=$('#sites-head');head.innerHTML='';
-  head.append(el('span',{},el('b',{text:`${sites.length} built site${sites.length===1?'':'s'}`}),` · ${runShort(state.run)}`,sites.length?` · ${sites.filter(s=>s.gate).length} waiting for you to send the pitch`:''));
-  if(!sites.length){box.append(el('section',{class:'card'},el('h2',{class:'label',text:'No built site in this run'}),el('p',{class:'empty',style:'margin-top:8px;font-size:15px;color:var(--ink2)',text:`Fills when a business reaches packaged; ${runShort(state.run)} stopped at scoring.`})));return}
+  if(!sites.length){box.append(el('section',{class:'card'},el('h2',{class:'label',text:'No site has a preview yet'}),el('p',{class:'empty',style:'margin-top:8px;font-size:15px;color:var(--ink2)',text:'Fills when a business reaches previewed.'})));return}
   const compact=matchMedia('(max-width:1280px)').matches;
   const W=compact?(Math.min(1232,innerWidth)-72-48-24)/2-56:(1152-48)/3-56;
   for(const b of sites){
     const c=el('article',{class:'card site',id:'site-'+b.slug,tabindex:'-1','aria-label':b.name});
-    const shot=el('a',{class:'shot',href:b.preview_url||'#',target:'_blank',rel:'noopener','aria-label':`Open the live preview of ${b.name}`});
-    if(b.shots&&b.shots.first){shot.append(el('img',{src:`img/${b.slug}.jpg`,width:'672',height:'420',loading:'lazy',alt:`First desktop screen of ${b.name} (${b.shots.first.split('/shots/')[1].split('/')[0]})`}))}
-    shot.append(el('span',{text:b.shots&&b.shots.first?`first screen · ${b.shots.first.split('/shots/')[1].split('/')[0]}`:'no screenshot on disk'}));
-    c.append(shot);
+    c.append(thumb(b,'shot'));
     const body=el('div',{class:'body'});
     body.append(el('div',{class:'site-h'},el('h2',{text:b.name})));
-    const meta=el('div',{class:'site-meta'});meta.append(el('span',{class:'spill '+pillFor(b)[0],text:pillFor(b)[1]}),' ',[b.type?b.type.replace('_',' '):null,b.hosting_mode,b.deploy?.deployed_at?`deployed ${dShort(b.deploy.deployed_at)}`:null,b.cms_verified?'CMS verified':null].filter(Boolean).join(' · '));
+    const [pc,pt]=pitchStatus(b);
+    const meta=el('div',{class:'site-meta'});meta.append(el('span',{class:'spill '+pc,text:pt}),' ',[b.type?b.type.replace('_',' '):null,runShort(b.run_id),b.ran_by?`ran by ${b.ran_by.name}`:null,b.hosting_mode].filter(Boolean).join(' · '));
     body.append(meta);
-    const last=b.critic_series.at(-1);
+    const scored=b.critic_series.filter(x=>x.score!=null),last=scored.at(-1);
     const sc=el('div',{class:'site-score'});
     const num=el('div',{class:'num',text:'0'});sc.append(num);
     sc.append(el('div',{class:'v',html:last?`<b class="${last.verdict==='PASS'?'pass':'fail'}">${last.verdict}</b> · ${b.critic_score_kind} · ${dShort(last.ts)}<br>${b.critic_rounds} round${b.critic_rounds===1?'':'s'}, ${b.critic_series.filter(s=>s.kind==='verification').length} verification${b.critic_series.filter(s=>s.kind==='verification').length===1?'':'s'}`:'no critic score'}));
     body.append(sc);
-    if(b.critic_series.length)body.append(el('figure',{class:'scorechart'},scoreChart(b.critic_series,W,b.slug)));
-    const links=el('ul',{class:'links'});
-    const row=(k,...items)=>{const li=el('li');li.append(el('span',{class:'k',text:k}));for(const it of items)li.append(it);links.append(li)};
-    row('Preview',b.preview_url?el('a',{class:'lnk',href:b.preview_url,target:'_blank',rel:'noopener',text:b.preview_url.replace('https://','').replace('.os1.workers.dev',' ↗'),title:b.preview_url}):el('span',{class:'na',text:'none yet'}));
-    row('Proposal',b.pitch?.proposal_url?el('a',{class:'lnk2',href:b.pitch.proposal_url,target:'_blank',rel:'noopener',text:b.pitch.proposal_url.replace('https://','').replace('.os1.workers.dev',' ↗'),title:b.pitch.proposal_url}):el('span',{class:'na',text:'none yet'}));
-    const fvp=b.shots?.final_vs_picked||[];
-    row('Final vs picked',...(fvp.length?fvp.flatMap((p,i)=>[el('a',{class:'lnk2',href:fileURL(p),text:/mobile/.test(p)?'mobile sheet':'desktop sheet'}),i<fvp.length-1?' · ':'']):[el('span',{class:'na',text:'no sheet on disk for this site'})]));
-    const rep=b.shots?.critic_report||[];
-    row('Critic report',...(rep.length?rep.map(p=>el('a',{class:'lnk2',href:fileURL(p),text:p.split('/').pop()})):[el('span',{class:'na',text:'none'})]));
-    row('Pitch drafts',el('span',{text:b.pitch?.drafts?.length?b.pitch.drafts.join(' · '):'none'}));
-    body.append(links);
-    if(b.state==='packaged')body.append(el('div',{class:'label',style:'margin-top:18px',text:'Send the pitch'}),gateForm({key:`pitch-${b.run_id}-${b.slug}`,gate:'pitch',run_id:b.run_id,slug:b.slug,expected_state:b.state,radios:CHANNELS,radioLegend:'How you sent it',date:true,buttons:[['sent','I sent it',true]],placeholder:'note — who you spoke to, what they said',label:`Send the pitch: ${b.name}`}));
-    else if(/^(pitched|outcome:(reply|meeting|ignored))$/.test(b.state))body.append(el('div',{class:'label',style:'margin-top:18px',text:`Outcome · now ${b.state}`}),gateForm({key:`outcome-${b.run_id}-${b.slug}`,gate:'outcome',run_id:b.run_id,slug:b.slug,expected_state:b.state,buttons:OUTCOMES.map(([v,l])=>[v,l,false]),placeholder:'note — what happened',label:`Outcome: ${b.name}`}));
+    if(scored.length)body.append(el('figure',{class:'scorechart'},scoreChart(scored,W,b.slug)));
+    const acts=siteLinks(b);acts.classList.add('site-acts');
+    if(b.state==='packaged'||/^(pitched|outcome:(reply|meeting|ignored))$/.test(b.state)){const u=el('button',{type:'button',class:'btn p',text:'Update status'});u.onclick=()=>statusModal(b);acts.prepend(u)}
+    body.append(acts);
     c.append(body);box.append(c);
-    countUp(num,b.critic_score,'site-'+b.slug);
+    if(b.critic_score!=null)countUp(num,b.critic_score,'site-'+b.slug);else num.textContent='—';
   }
 }
 
 /* ---------- Agents ---------- */
-function renderAgents(){
-  const run=state.run;
+// Views kept in their own files (src/agents-view.html, src/decisions-view.html) register a render
+// function on window.OSViews and get this page's data and helpers through OSAPI.
+const OSAPI={get D(){return D},get LIVE(){return LIVE},state,el,sv,modal,openDoc,mdToHtml,copyText,fileURL,go,refresh:()=>refresh(),opName,bizName,dShort,tShort,runShort,live,thumbSrc};
+window.OSAPI=OSAPI;
+function renderAgents(){if(window.OSViews?.agents)return window.OSViews.agents(OSAPI);if(!$("#agg-chart"))return;
+  const run=agentRun();
   const A=Object.entries(D.agents).map(([name,a])=>({name,a,r:a.by_run[run]||{lines:0,passes:0,fails:0,rounds_per_pass:[],fails_by_slug:{},versions_seen:[]}}));
   const withFails=A.filter(x=>x.r.fails>0).sort((p,q)=>q.r.fails-p.r.fails);
   const totalFails=withFails.reduce((s,x)=>s+x.r.fails,0);
@@ -1292,50 +1610,129 @@ function renderAgents(){
 }
 
 /* ---------- Decisions ---------- */
-function renderDecisions(){
-  const start=rangeStart();
-  const all=D.decisions.filter(d=>d.run_id===state.run&&d.ts.slice(0,10)>=start);
-  const gates=all.filter(d=>d.gate).length,ovr=all.filter(d=>d.override).length;
-  const filt=$('#dec-filters');filt.innerHTML='';
-  for(const [k,l,n] of [['all','All',all.length],['gate','Gates',gates],['override','Overrides',ovr]]){const b=el('button',{type:'button','aria-pressed':String(state.decFilter===k)});b.append(l,el('i',{text:n}));b.onclick=()=>{state.decFilter=k;renderDecisions()};filt.append(b)}
-  const shown=all.filter(d=>state.decFilter==='all'||d[state.decFilter]);
-  $('#dec-sum').innerHTML='';$('#dec-sum').append(el('span',{text:`${runShort(state.run)} · ${all.length} in range · ${gates} gates · ${ovr} overrides`}));
-  const ol=$('#tl');ol.innerHTML='';
-  if(!shown.length)ol.append(el('li',{},el('span',{class:'dot','aria-hidden':'true'}),el('div',{class:'h'},el('b',{text:'No decision in this range'}))));
-  for(const d of shown){
-    const li=el('li',{class:(d.gate?'gate ':'')+(d.override?'ovr':'')});
-    li.append(el('span',{class:'dot','aria-hidden':'true'}));
-    const h=el('div',{class:'h'});
-    h.append(el('b',{text:bizName(d.slug)}),el('span',{class:'tr',text:`${d.from??'start'} → ${d.to}`}));
-    if(d.gate)h.append(el('span',{class:'tag g',text:D.gate_states[d.from]||'gate'}));
-    if(d.override)h.append(el('span',{class:'tag o',text:'override'}));
-    h.append(el('time',{datetime:d.ts,text:tShort(d.ts)}));
-    li.append(h);
-    const note=el('p',{class:'note',text:d.note});li.append(note);
-    if(d.note.length>220){const b=el('button',{class:'more',type:'button',text:'Show the full reason','aria-expanded':'false'});b.onclick=()=>{const o=li.classList.toggle('open');b.textContent=o?'Show less':'Show the full reason';b.setAttribute('aria-expanded',String(o))};li.append(b)}
+function decisionItem(d){
+  const li=el('li',{class:(d.gate?'gate ':'')+(d.override?'ovr':'')});
+  li.append(el('span',{class:'dot','aria-hidden':'true'}));
+  const h=el('div',{class:'h'});
+  h.append(el('span',{class:'tr',text:`${d.from??'start'} → ${d.to}`}));
+  if(d.gate)h.append(el('span',{class:'tag g',text:D.gate_states[d.from]||'gate'}));
+  if(d.override)h.append(el('span',{class:'tag o',text:'override'}));
+  h.append(el('span',{class:'tr',style:'color:var(--ink3)',text:`${runShort(d.run_id)}${d.operator?' · '+opName(d.operator):''}`}),el('time',{datetime:d.ts,text:tShort(d.ts)}));
+  li.append(h);
+  li.append(el('p',{class:'note',text:d.note}));
+  if((d.note||'').length>220){const b=el('button',{class:'more',type:'button',text:'Show the full reason','aria-expanded':'false'});b.onclick=()=>{const o=li.classList.toggle('open');b.textContent=o?'Show less':'Show the full reason';b.setAttribute('aria-expanded',String(o))};li.append(b)}
+  return li;
+}
+/* markdown → readable HTML (headings, lists, tables, code and diffs, quotes, links, emphasis) */
+function mdInline(t){
+  const esc=x=>x.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const codes=[];t=t.replace(/`([^`]+)`/g,(_,c)=>{codes.push(c);return `\u0000${codes.length-1}\u0000`});
+  t=esc(t).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/(^|[^*\w])\*([^*\n]+)\*(?!\w)/g,'$1<i>$2</i>').replace(/(^|\W)_([^_\n]+)_(?!\w)/g,'$1<i>$2</i>')
+    .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+  return t.replace(/\u0000(\d+)\u0000/g,(_,n)=>`<code>${esc(codes[n])}</code>`);
+}
+function mdToHtml(src){
+  const L=src.replace(/\r/g,'').split('\n'),out=[];let i=0;
+  const esc=x=>x.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  while(i<L.length){
+    const l=L[i];
+    if(/^```/.test(l)){const lang=l.slice(3).trim();const buf=[];i++;while(i<L.length&&!/^```/.test(L[i]))buf.push(L[i++]);i++;
+      out.push('<pre><code>'+buf.map(x=>lang==='diff'?`<span class="${/^\+(?!\+\+)/.test(x)?'add':/^-(?!--)/.test(x)?'del':/^@@/.test(x)?'hunk':''}">${esc(x)||' '}</span>`:esc(x)).join(lang==='diff'?'':'\n')+'</code></pre>');continue}
+    let m;
+    if((m=l.match(/^(#{1,4})\s+(.*)/))){const n=Math.min(3,m[1].length);out.push(`<h${n}>${mdInline(m[2])}</h${n}>`);i++;continue}
+    if(/^(-{3,}|\*{3,})\s*$/.test(l)){out.push('<hr>');i++;continue}
+    if(/^\|/.test(l)){const rows=[];while(i<L.length&&/^\|/.test(L[i]))rows.push(L[i++]);const cells=r=>r.replace(/^\||\|\s*$/g,'').split('|').map(c=>c.trim());
+      const body=rows.filter((r,k)=>!(k===1&&/^\|[\s:|-]+\|?\s*$/.test(r)));
+      out.push('<table><thead><tr>'+cells(body[0]).map(c=>`<th>${mdInline(c)}</th>`).join('')+'</tr></thead><tbody>'+body.slice(1).map(r=>'<tr>'+cells(r).map(c=>`<td>${mdInline(c)}</td>`).join('')+'</tr>').join('')+'</tbody></table>');continue}
+    if(/^>\s?/.test(l)){const buf=[];while(i<L.length&&/^>\s?/.test(L[i]))buf.push(L[i++].replace(/^>\s?/,''));out.push(`<blockquote>${mdToHtml(buf.join('\n'))}</blockquote>`);continue}
+    if(/^\s*([-*]|\d+[.)])\s+/.test(l)){const ord=/^\s*\d/.test(l);const items=[];
+      while(i<L.length&&(/^\s*([-*]|\d+[.)])\s+/.test(L[i])||(/^\s{2,}\S/.test(L[i])&&items.length))){if(/^\s*([-*]|\d+[.)])\s+/.test(L[i]))items.push(L[i].replace(/^\s*([-*]|\d+[.)])\s+/,''));else items[items.length-1]+=' '+L[i].trim();i++}
+      out.push(`<${ord?'ol':'ul'}>${items.map(x=>`<li>${mdInline(x)}</li>`).join('')}</${ord?'ol':'ul'}>`);continue}
+    if(!l.trim()){i++;continue}
+    const buf=[];while(i<L.length&&L[i].trim()&&!/^(#{1,4}\s|```|\||>|\s*([-*]|\d+[.)])\s+)/.test(L[i]))buf.push(L[i++].trim());
+    out.push(`<p>${mdInline(buf.join(' '))}</p>`);
+  }
+  return out.join('\n');
+}
+async function openDoc(path,title,sub){ // title: a string or {title, sub}, as modal()
+  const body=el('div',{class:'md',text:'loading…'});
+  const d=modal(title&&typeof title==='object'?title:sub?{title,sub}:title,body);d.classList.add('doc');
+  try{const r=await fetch(fileURL(path),{cache:'no-store'});if(!r.ok)throw new Error(r.status);body.innerHTML=mdToHtml(await r.text())}
+  catch(e){body.textContent=`Could not open ${path} (${e.message}).${LIVE?'':' Start dashboard/server.mjs to read files.'}`}
+}
+const TW_STATUS={applied:['ok','Already in use'],approved:['ok','Approved'],rejected:['no','Rejected'],superseded:['','Out of date'],info:['','Notes only']};
+function renderTweaks(){
+  const props=D.proposals.filter(p=>p.kind==='proposal');
+  const pending=props.filter(p=>p.status==='pending'),done=props.filter(p=>p.status!=='pending');
+  $('#props-meta').textContent=pending.length?`${pending.length} waiting for you`:'nothing waiting';
+  const ol=$('#props-list');ol.innerHTML='';
+  if(!pending.length)ol.append(el('li',{class:'empty',style:'border:0;padding:0',text:'No tweak is waiting for a decision.'}));
+  for(const p of pending){
+    const li=el('li',{id:'tw-'+p.file.replace(/\W+/g,'-')});
+    li.append(el('span',{class:'ag',text:p.agent||'Agent'}),el('h3',{text:p.title}));
+    if(p.what||p.why){const dl=el('dl',{class:'kv'});if(p.what)dl.append(el('dt',{text:'What changes'}),el('dd',{text:p.what}));if(p.why)dl.append(el('dt',{text:'Why'}),el('dd',{text:p.why}));li.append(dl)}
+    if(p.custom_md)li.append(el('p',{class:'own',text:'This is your own file (agents/designer/custom.md). Claude never edits it: approving means you paste the suggested text in yourself, or tell Claude explicitly to do it.'}));
+    const row=el('div',{class:'row'});
+    const res=el('div',{class:'res',role:'status','aria-live':'polite'});
+    const prev=state.results['tw-'+p.file];
+    for(const [choice,label,primary] of [['approved','Approve',true],['rejected','Reject',false]]){
+      const b=el('button',{type:'button',class:'btn '+(primary?'p':'s'),text:label});
+      if(!LIVE){b.disabled=true;b.title='start dashboard/server.mjs to decide'}
+      b.onclick=async()=>{
+        row.querySelectorAll('button').forEach(x=>x.disabled=true);res.className='res';res.textContent='saving…';posting++;let r,j;
+        try{r=await fetch('decide',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({gate:'proposal',run_id:p.run_id,file:p.file,choice,reason:''}),cache:'no-store'});j=await r.json().catch(()=>({error:'response was not JSON'}))}catch(e){r={status:0};j={error:String(e)}}
+        posting--;state.results['tw-'+p.file]={status:r.status,body:j};
+        if(r.status===201){res.textContent=choice==='approved'?'Approved. Claude applies it in its next session.':'Rejected.';setTimeout(()=>refresh(),800)}
+        else{res.className='res err';res.textContent=`${r.status||'network'}: ${j.error||'unknown error'}`;row.querySelectorAll('button').forEach(x=>x.disabled=!LIVE)}
+      };
+      row.append(b);
+    }
+    const rd=el('button',{type:'button',class:'cta',text:'Read the full suggestion'});rd.onclick=()=>openDoc(p.file,p.title);row.append(rd);
+    li.append(row,res);
+    if(prev&&prev.status!==201){res.className='res err';res.textContent=prev.body?.error||''}
     ol.append(li);
   }
-  const pl=$('#props-list');pl.innerHTML='';
-  const props=D.proposals;
-  $('#props-meta').textContent=`${props.filter(p=>/no merge record/.test(p.status||'')).length} without a merge record · ${props.filter(p=>/approved|rejected/.test(p.status||'')).length} decided`;
-  for(const p of props){
-    const li=el('li');
-    li.append(el('div',{class:'t'},el('a',{href:fileURL(p.file),text:p.title})));
-    const m=el('div',{class:'m'});
-    m.append(el('span',{text:runShort(p.run_id)}),el('span',{class:'tag'+(p.custom_md?' c':''),text:p.custom_md?'custom.md proposal':p.kind}));
-    if(p.status)m.append(el('span',{class:'tag'+(/approved/.test(p.status)?' ok':''),text:p.status}));
-    m.append(el('a',{href:fileURL(p.file),text:p.file.split('/').pop()}));
-    li.append(m);
-    if(/no merge record/.test(p.status||''))li.append(gateForm({key:`proposal-${p.file}`,gate:'proposal',run_id:p.run_id,file:p.file,compact:true,buttons:[['approved','Approve',true],['rejected','Reject',false]],label:`Proposal: ${p.title}`,placeholder:'reason — becomes the ledger note'}));
-    pl.append(li);
+  const det=$('#props-done');const wasOpen=det.open;det.innerHTML='';
+  det.append(el('summary',{text:`Done, approved or out of date (${done.length})`}));
+  const ul=el('ul');
+  for(const p of done.sort((a,b)=>(b.decided_at||'').localeCompare(a.decided_at||''))){
+    const [cls,txt]=TW_STATUS[p.status]||['',p.status];
+    const t=el('div');const a=el('a',{href:'#',class:'lnk',text:p.title});a.onclick=e=>{e.preventDefault();openDoc(p.file,p.title)};
+    t.append(a,el('span',{class:'s',text:[p.agent,p.status_note||(p.decided_at?`${txt} ${dShort(p.decided_at)}${p.decided_by?' by '+opName(p.decided_by):''}`:null)].filter(Boolean).join(' · ')}));
+    ul.append(el('li',{},t,el('span',{class:'stag '+cls,text:txt})));
   }
+  det.append(ul);det.open=wasOpen;
+}
+const builtSlugs=()=>new Set(D.businesses.filter(b=>(b.reached||[]).some(s=>['built','passed','previewed','packaged','pitched'].includes(s))).map(b=>b.slug));
+const builtDecisions=()=>{const s=builtSlugs();return D.decisions.filter(d=>s.has(d.slug))};
+function renderDecisions(){if(window.OSViews?.decisions){const lg=$('#dec-legacy');if(lg)lg.hidden=true;return window.OSViews.decisions(OSAPI)}
+  const bySlug=new Map();
+  for(const d of builtDecisions()){if(!bySlug.has(d.slug))bySlug.set(d.slug,[]);bySlug.get(d.slug).push(d)}
+  const groups=[...bySlug.entries()].sort((a,b)=>b[1][0].ts.localeCompare(a[1][0].ts));
+  $('#dec-sum').textContent=`${builtDecisions().length} decisions · ${groups.length} sites`;
+  const ul=$('#dsites');ul.innerHTML='';
+  if(!groups.length)ul.append(el('li',{class:'empty',text:'No decision yet.'}));
+  for(const [slug,ds] of groups){
+    const on=state.openDec===slug;
+    const li=el('li',{id:'dec-'+slug});
+    const runs=[...new Set(ds.map(d=>runShort(d.run_id)))].join(', ');
+    const btn=el('button',{type:'button',class:'dh','aria-expanded':String(on),'aria-controls':'dtl-'+slug});
+    btn.append(el('span',{},el('b',{text:bizName(slug)}),el('span',{class:'s',text:`${runs} · last ${dShort(ds[0].ts)}`})),
+      el('span',{class:'c',text:`${ds.length} decision${ds.length===1?'':'s'}${ds.some(d=>d.gate)?` · ${ds.filter(d=>d.gate).length} gate${ds.filter(d=>d.gate).length===1?'':'s'}`:''}`}),
+      sv('svg',{class:'chev',viewBox:'0 0 12 12',fill:'none',stroke:'currentColor','stroke-width':'1.6','aria-hidden':'true'},sv('path',{d:'M2.5 4.5 6 8l3.5-3.5'})));
+    btn.onclick=()=>{state.openDec=on?null:slug;renderDecisions()};
+    li.append(btn);
+    if(on){const ol=el('ol',{class:'tl',id:'dtl-'+slug});for(const d of ds)ol.append(decisionItem(d));li.append(ol)}
+    ul.append(li);
+  }
+  renderTweaks();
 }
 
 /* ---------- render ---------- */
 function render(){
   renderChrome();renderRunSel();
-  $('#title-sub').textContent=`${runShort(state.run)} · ${dShort(rangeStart())} – ${dShort(days.at(-1))}`;
-  renderKPIs();renderNeeds();renderFunnel();renderFeed();renderTeam();renderPipeline();renderSites();renderAgents();renderDecisions();
+  $('#title-sub').textContent=PER_RUN.includes(state.view)&&state.run!=='all'?runShort(state.run):state.view==='overview'?'':'all runs';$('#controls').hidden=!PER_RUN.includes(state.view);
+  renderOverview();renderNeedsView();renderLedger();if(state.view==='ledger')renderLedgerMap();renderPipeline();renderSites();renderAgents();renderDecisions();
   document.querySelectorAll('.view.on svg').forEach(sizeTips);
 }
 render();

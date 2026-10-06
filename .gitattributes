@@ -3,3 +3,5 @@
 ledger.jsonl   merge=union
 usage.jsonl    merge=union
 activity.jsonl merge=union
+expenses.jsonl merge=union
+revenues.jsonl merge=union

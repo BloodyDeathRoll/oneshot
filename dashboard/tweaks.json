@@ -1,0 +1,83 @@
+{
+  "_doc": "Plain-language summaries of proposals/ files for the dashboard's 'Suggested agent tweaks' (one entry per file). status: pending (needs a yes/no) | applied (already in use) | superseded (replaced by a later tweak or by what is in use) | info (notes, nothing to approve). A ledger line proposal:approved/rejected always wins over this status. Checked against the agent files on 2026-10-05.",
+  "proposals/2026-09-ahangama-02/004-designer-look-loop-flaws.md": {
+    "title": "Designer must fix the flaws it spots before handing mockups to you",
+    "agent": "Designer",
+    "what": "When the designer notices a problem in its own mockup (text hidden behind a button, a broken bar, overlapping parts), it either fixes it or tells you about it as a blocker before you pick. It may no longer note it as \"known, not fixed\" and hand the mockup over anyway.",
+    "why": "On Layday and KA the designer wrote down three visible flaws and passed the mockups on regardless. The critic caught them later, and your Layday pick had to carry one of them as a condition.",
+    "status": "pending"
+  },
+  "proposals/2026-09-ahangama-02/005-copyeditor-missed-claims.md": {
+    "title": "Copyeditor must check every sentence against the facts, one by one",
+    "agent": "Copyeditor",
+    "what": "The copyeditor checks each sentence of the site copy against the business's facts individually, instead of giving one overall count. Words like \"highest\", \"more than anything else\" or \"when the swell is up\" count as claims that need their own source. Dropping a qualifier (\"for advanced surfers\") counts as an error.",
+    "why": "On KA the copyeditor passed three invented or wrong claims. They cost an extra copy round, a failed critique and a rebuild.",
+    "status": "pending"
+  },
+  "proposals/2026-09-globalsurf-02/002-custom-md-designer-from-gate-feedback.md": {
+    "title": "Rewrite your designer taste notes to match your Global Surf feedback",
+    "agent": "Designer (your rules)",
+    "what": "Replaces the text of your own designer notes with your Sep 29 feedback: lead with the business's own video and photos, readable text plus one script font for titles, no decorative lines or borders, soft rounded cards are fine, booking inside the site.",
+    "why": "Your current notes still say \"thin black lines\", \"geometric sans only\" and \"minimal, extreme\". That pushed the designer toward the near-empty pages you rejected. Until this is pasted, the agents are told your gate feedback wins wherever the notes disagree.",
+    "custom_md": true,
+    "status": "pending"
+  },
+  "proposals/2026-09-ahangama-02/003-design-quality.md": {
+    "title": "Designer looks at its own screenshots and revises; no more generic cream-and-serif look",
+    "agent": "Designer, creative director, critic",
+    "what": "The designer screenshots and revises each mockup at least three times, colours are sampled from the business's own photos, and the default \"tasteful AI\" look is blocked.",
+    "why": "A spike on The Lavish Haven showed the pipeline itself produced the generic look.",
+    "status": "applied",
+    "status_note": "In use since 21–22 Sep (designer 0.3.0, creative director 0.2.0, critic 0.3.0)"
+  },
+  "proposals/2026-09-ahangama-02/003-custom-md-draft.md": {
+    "title": "Colour and type rules for your designer taste notes",
+    "agent": "Designer (your rules)",
+    "what": "Cool clean colours, one strong colour, geometric sans, thin black lines.",
+    "why": "Your notes said nothing about colour or type.",
+    "custom_md": true,
+    "status": "applied",
+    "status_note": "Pasted into your custom.md on 22 Sep; the Global Surf tweak above would replace it"
+  },
+  "proposals/2026-09-globalsurf-02/001-custom-md-designer-media-first.md": {
+    "title": "Designer taste notes: put the business's media first",
+    "agent": "Designer (your rules)",
+    "what": "Three lines of your notes rewritten so the designer leads with video and photos.",
+    "why": "Every Global Surf mockup was rejected on Sep 28 for ignoring the media.",
+    "custom_md": true,
+    "status": "superseded",
+    "status_note": "Replaced by the fuller rewrite from your Sep 29 feedback (above)"
+  },
+  "proposals/2026-09-mirissa-01/001-designer-custom-calm-variant.md": {
+    "title": "The calm mockup skips the animation layer",
+    "agent": "Designer (your rules)",
+    "what": "Mockup 1 (calm) is built without canvas/WebGL animation; it is added only if you pick it.",
+    "why": "Your decision of 18 Sep.",
+    "custom_md": true,
+    "status": "superseded",
+    "status_note": "Out of date: your notes now say the quiet mockup has almost no motion"
+  },
+  "proposals/2026-09-ahangama-02/002-pick-feedback.md": {
+    "title": "Notes from your Sep 20 mockup picks",
+    "agent": "—",
+    "what": "A record of what you picked on Layday, Lavish and KA and why. It asks for no change.",
+    "why": "Kept as evidence for later tweaks; its points went into the design-quality tweak.",
+    "status": "info",
+    "status_note": "Notes only, nothing to approve"
+  },
+  "proposals/2026-09-ahangama-02/003-APPLY.md": {
+    "hidden": true
+  },
+  "proposals/2026-09-ahangama-02/006-laya-classifier-pilot.md": {
+    "title": "Pilot a cheap classifier in front of the agents",
+    "agent": "Orchestrator"
+  },
+  "proposals/2026-09-ahangama-02/007-funnel-audit.md": {
+    "title": "Measure how many taps the old site needs to book, and build the new one to beat it",
+    "agent": "Auditor, copywriter, critic"
+  },
+  "proposals/dashboard-01/001-control-layer-gates.md": {
+    "title": "Answer the human gates from the dashboard",
+    "agent": "Dashboard"
+  }
+}

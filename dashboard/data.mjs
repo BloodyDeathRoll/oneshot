@@ -198,9 +198,12 @@ function readChangelogs() {
   return out;
 }
 
+// proposals/ = suggested agent tweaks. dashboard/tweaks.json carries a plain-language summary of each
+// and whether it is already applied or out of date; a ledger approve/reject line always wins.
 function readProposals(proposalDecisions = []) {
   const base = join(ROOT, 'proposals');
   if (!existsSync(base)) return [];
+  const plain = readJson('dashboard/tweaks.json') ?? {};
   const out = [];
   for (const run of readdirSync(base, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name)) {
     for (const f of readdirSync(join(base, run)).filter((f) => f.endsWith('.md'))) {
@@ -211,13 +214,33 @@ function readProposals(proposalDecisions = []) {
       const record = /-APPLY\.md$/.test(f);
       const file = `proposals/${run}/${f}`;
       const decision = [...proposalDecisions].reverse().find((l) => (l.note ?? '').startsWith(file));
-      out.push({ run_id: run, file, title, kind: record ? 'application record' : 'proposal',
-        status: record ? null : decision ? decision.to_state.replace('proposal:', '') : 'no merge record in the ledger',
-        decided_at: decision?.ts ?? null, decision_note: decision?.note ?? null,
-        custom_md: /custom\.md/i.test(title) || /custom-md/.test(f) });
+      const t = plain[file] ?? {};
+      if (t.hidden) continue;
+      out.push({ run_id: run, file, title: t.title ?? title, file_title: title, kind: record ? 'application record' : 'proposal',
+        agent: t.agent ?? null, what: t.what ?? null, why: t.why ?? null,
+        // pending | approved | rejected | applied | superseded | info
+        status: record ? null : decision ? decision.to_state.replace('proposal:', '') : (t.status ?? 'pending'),
+        status_note: decision ? null : t.status_note ?? null,
+        decided_at: decision?.ts ?? null, decision_note: decision?.note ?? null, decided_by: decision ? opOfLine(decision) : null,
+        custom_md: t.custom_md ?? (/custom\.md/i.test(title) || /custom-md/.test(f)) });
     }
   }
   return out;
+}
+
+// Scout output per run: reports/<run>/candidates.json (location, presence score + reason) and the
+// search area, reports/<run>/area.geojson. For the Ledger view's table and map.
+function readCandidates() {
+  const out = {}, areas = {};
+  const base = join(ROOT, 'reports');
+  if (!existsSync(base)) return { bySlug: out, areas };
+  for (const r of readdirSync(base)) {
+    const c = readJson(`reports/${r}/candidates.json`);
+    for (const x of c?.candidates ?? []) (out[x.slug] ??= {})[r] = x;
+    const a = readJson(`reports/${r}/area.geojson`);
+    if (a) areas[r] = a;
+  }
+  return { bySlug: out, areas };
 }
 
 // ---- build ------------------------------------------------------------------------------------
@@ -323,6 +346,10 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     const lastWorked = timeline.find((e) => e.operator && (e.kind !== 'ledger' || e.agent === 'human' || e.ts >= '2026-10-02')) ?? timeline.find((e) => e.operator) ?? null;
     const gate = (group === 'gate' || group === 'delivered' || group === 'outcome') ? (GATES[last.to_state] ?? null) : null;
     const overrides = hist.filter((h) => h.agent === 'human' && OVERRIDE_RE.test(h.note ?? '')).map((h) => ({ ts: h.ts, note: h.note }));
+    // Who ran the site: the run file's operator, else whoever wrote most of its ledger lines.
+    const lineOps = hist.map(opOfLine).filter(Boolean);
+    const ranBy = runFiles.find((r) => r.run_id === run_id)?.operator
+      ?? [...new Set(lineOps)].sort((a, b) => lineOps.filter((o) => o === b).length - lineOps.filter((o) => o === a).length)[0] ?? null;
 
     businesses.push({
       slug, run_id,
@@ -358,6 +385,9 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
       timeline: timeline.slice(0, 80),
       media: own ? media[slug] ?? null : null,
       pitched_at: pitchedLine?.ts ?? null,
+      // the server writes "sent by <name> via <channel>[ on <date>]. <note>" (dashboard/server.mjs, gate c)
+      pitch_sent: pitchedLine ? { ts: pitchedLine.ts, by: opOfLine(pitchedLine), channel: pitchedLine.note?.match(/\bvia (whatsapp|in person|email|phone)\b/i)?.[1] ?? null, note: pitchedLine.note ?? null } : null,
+      ran_by: ranBy ? { operator: ranBy, name: ops[ranBy]?.name ?? ranBy } : null,
       outcome: outcomeLine ? { state: outcomeLine.to_state.slice(8), ts: outcomeLine.ts, note: outcomeLine.note } : null,
       reached: [...reached],
       history: hist.map((h) => ({ ts: h.ts, from: h.from_state, to: h.to_state, agent: h.agent, v: h.agent_version, note: h.note, hosting_mode: h.hosting_mode })),
@@ -450,14 +480,24 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
   // ---- gates, decisions, activity, proposals, expenses ---------------------------------------------
   const proposals = readProposals(ledger.filter((l) => /^proposal:(approved|rejected)$/.test(l.to_state)));
   const gates = businesses.filter((b) => b.gate).map((b) => ({ kind: b.gate, slug: b.slug, name: b.name, run_id: b.run_id, since: b.last_change, days: b.days_since_change, target: b.gate_target }));
-  const unmerged = proposals.filter((p) => p.kind === 'proposal' && p.status === 'no merge record in the ledger');
-  if (unmerged.length) gates.push({ kind: 'review prompt diffs', slug: null, name: `${unmerged.length} proposals without a merge record`, run_id: unmerged.at(-1).run_id, since: null, days: null, target: { view: 'decisions', proposals: unmerged.map((p) => p.file) } });
-  const decisions = businessLines.filter((l) => l.agent === 'human').sort((a, b) => b.ts.localeCompare(a.ts)).map((l) => ({ ts: l.ts, slug: l.slug, run_id: l.run_id, from: l.from_state, to: l.to_state, note: l.note, gate: !!(GATES[l.from_state] && l.from_state !== l.to_state), override: OVERRIDE_RE.test(l.note ?? '') }));
+  const unmerged = proposals.filter((p) => p.kind === 'proposal' && p.status === 'pending');
+  if (unmerged.length) gates.push({ kind: 'approve or reject', slug: null, name: `${unmerged.length} suggested agent tweak${unmerged.length === 1 ? '' : 's'}`, run_id: null, since: null, days: null, target: { view: 'decisions', proposals: unmerged.map((p) => p.file) } });
+  const decisions = businessLines.filter((l) => l.agent === 'human').sort((a, b) => b.ts.localeCompare(a.ts)).map((l) => ({ ts: l.ts, slug: l.slug, run_id: l.run_id, operator: opOfLine(l), from: l.from_state, to: l.to_state, note: l.note, gate: !!(GATES[l.from_state] && l.from_state !== l.to_state), override: OVERRIDE_RE.test(l.note ?? '') }));
   const recent_activity = [...ledger].slice(-25).reverse().map((l) => ({ ts: l.ts, slug: l.slug, run_id: l.run_id, agent: l.agent, operator: opOfLine(l), from: l.from_state, to: l.to_state, note: l.note }));
   const leads = businesses.filter((b) => /^referral:/i.test(b.found_via ?? '')).map((b) => ({ slug: b.slug, name: b.name, referred_by: b.found_via.replace(/^referral:\s*/i, '').split(/[;\s]/)[0], state: b.state, group: b.group, first_seen: b.first_seen }));
 
-  const expenseLines = existsSync(join(ROOT, 'expenses.jsonl')) ? readJsonl('expenses.jsonl') : null;
+  // Money books, both operators' lines (tools/money.mjs, docs/expenses.md, docs/revenues.md).
+  const book = (rel) => { const l = origin ? readJsonlMerged(rel) : (existsSync(join(ROOT, rel)) ? readJsonl(rel) : []); return l.length ? l : null; };
+  const expenseLines = book('expenses.jsonl');
   const expenses = { tracked: !!expenseLines, entries: expenseLines ?? [], monthly: {}, accumulated: {}, per_client: {}, vendors: {} };
+  const revenueLines = book('revenues.jsonl');
+  const revenues = { tracked: !!revenueLines, entries: revenueLines ?? [], monthly: {}, accumulated: {}, per_client: {} };
+  for (const e of revenueLines ?? []) {
+    const cur = e.currency ?? 'USD', month = (e.period ?? e.ts).slice(0, 7);
+    ((revenues.monthly[month] ??= {})[cur] = (revenues.monthly[month][cur] ?? 0) + e.amount);
+    revenues.accumulated[cur] = (revenues.accumulated[cur] ?? 0) + e.amount;
+    ((revenues.per_client[e.slug] ??= {})[cur] = (revenues.per_client[e.slug][cur] ?? 0) + e.amount);
+  }
   for (const e of expenseLines ?? []) {
     const cur = e.currency ?? 'USD', month = (e.period ?? e.ts).slice(0, 7), who = e.slug ?? 'shared';
     ((expenses.monthly[month] ??= {})[cur] = (expenses.monthly[month][cur] ?? 0) + e.amount);
@@ -465,6 +505,37 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     ((expenses.per_client[who] ??= {})[cur] = (expenses.per_client[who][cur] ?? 0) + e.amount);
     ((expenses.vendors[e.vendor] ??= {})[cur] = (expenses.vendors[e.vendor][cur] ?? 0) + e.amount);
   }
+
+  // ---- ledger view: every business ever reviewed, once, in its newest run --------------------------
+  const cands = readCandidates();
+  const seenSlug = new Set();
+  const clean = (n) => (n ?? '').replace(/^gate a:\s*/i, '').replace(/^mode: test\s*[—-]?\s*/i, '').trim();
+  const prospects = businesses.filter((b) => !seenSlug.has(b.slug) && seenSlug.add(b.slug)).map((b) => {
+    const h = b.history;
+    const cand = cands.bySlug[b.slug]?.[b.run_id] ?? Object.values(cands.bySlug[b.slug] ?? {}).at(-1) ?? null;
+    const scored = h.find((x) => x.to === 'scored');
+    const approved = [...h].reverse().find((x) => x.to === 'approved');
+    const left = [...h].reverse().find((x) => rank(x.to) < rank(x.from) && rank(x.to) < rank('approved') && x.from);
+    const google = (scored?.note ?? cand?.presence?.reason ?? '').match(/Google[^()]*?\((\d(?:\.\d)?),\s*(\d+)\s+reviews?/i);
+    const reached = (s) => b.reached.includes(s);
+    let verdict, why;
+    if (b.state === 'void') { verdict = 'voided'; why = b.why; }
+    else if (reached('built') || reached('passed') || reached('previewed') || reached('packaged')) { verdict = 'built'; why = clean(approved?.note); }
+    else if (approved && left && left.ts > approved.ts) { verdict = 'dropped'; why = clean(left.note); }
+    else if (approved) { verdict = 'in progress'; why = clean(approved.note); }
+    else if (b.group === 'not_shortlisted') { verdict = 'not shortlisted'; why = `Already has a decent online presence (${b.presence}/5 is above the cut-off). ${cand?.presence?.reason ?? scored?.note?.replace(/^presence \d\/5:\s*/, '') ?? ''}`.trim(); }
+    else if (b.group === 'superseded') { verdict = 'not continued'; why = 'Found in a run that stopped before the shortlist.'; }
+    else if (b.state === 'shortlisted') { verdict = 'shortlisted, not picked'; why = left ? clean(left.note) : 'Made the shortlist; other businesses were picked for the run.'; }
+    else { verdict = 'in progress'; why = b.why; }
+    return {
+      slug: b.slug, name: cand?.name ?? b.name, type: cand?.type ?? b.type, run_id: b.run_id, state: b.state, verdict, why,
+      presence: b.presence, presence_reason: cand?.presence?.reason ?? scored?.note?.replace(/^presence \d\/5:\s*/, '') ?? null,
+      google: google ? { rating: Number(google[1]), reviews: Number(google[2]) } : null,
+      site_url: cand?.existing_site?.url ?? null,
+      lat: cand?.location?.lat ?? null, lng: cand?.location?.lng ?? null, address: cand?.location?.address ?? null,
+      first_seen: b.first_seen, ran_by: b.ran_by,
+    };
+  });
 
   // Runs with ledger lines, plus active runs that have none yet (a run file just created).
   const runIds = [...new Set([...runsSeen, ...activeRuns.map((r) => r.run_id)])].sort();
@@ -493,7 +564,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     },
     pipeline_order: ORDER, gate_states: GATES, stations: STATIONS, next_step: NEXT_STEP,
     run, runs, kpis: cur, kpis_by_run, deltas, funnel: cur.funnel, series,
-    gates, businesses, decisions, recent_activity, leads, corrections, proposals, agents, expenses,
+    gates, businesses, prospects, areas: cands.areas, decisions, recent_activity, leads, corrections, proposals, agents, expenses, revenues,
     non_business_runs: nonBusinessRuns.map((l) => ({ ts: l.ts, run_id: l.run_id, agent: l.agent, to: l.to_state, note: l.note })),
     empty_states: {
       pitched: { filled_by: 'a ledger line packaged → pitched (agent: human)', earliest: 'when Shahar sends the first pitch; three are ready', view: 'overview, pipeline' },
