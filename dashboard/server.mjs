@@ -10,7 +10,9 @@
 //   5. saves an agent's definition from the Agents view: POST /agent-rules writes the operator's own
 //      agents/<name>/custom.md; POST /agent-tweak turns an edit of Claude's base.md into a suggested
 //      tweak (proposals/<run>/NNN-<agent>-<title>.md + its plain summary in dashboard/tweaks.json) and
-//      never touches base.md itself. Both refuse a file that changed since the page read it.
+//      never touches base.md itself. Both refuse a file that changed since the page read it. After the
+//      local save, the same change is committed on its own branch off origin/main and opened as a PR
+//      (dashboard/publish.mjs); if that fails the local save stands and the page says why.
 //   4. accepts a handoff on POST /handoff and appends one assignment line to activity.jsonl
 //      (tools/team.mjs assign — never a ledger line), and serves /thumb/<slug>.jpg, the first screen
 //      of the site's live preview (dashboard/thumbs.mjs).
@@ -36,6 +38,7 @@ import { buildData } from './data.mjs';
 import { whoami, team, assign, ACTIVITY } from '../tools/team.mjs';
 import { currentRun } from '../tools/run.mjs';
 import { shootThumb, thumbFresh, markPitchLive } from './thumbs.mjs';
+import { openPr } from './publish.mjs';
 import { readJsonlMerged, fetch as fetchMain } from '../tools/origin.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -156,6 +159,7 @@ function handoff(body) {
 // base.md is Claude's: an edit from the dashboard only becomes a suggested tweak for gate d.
 const shaOf = (t) => createHash('sha256').update(t).digest('hex').slice(0, 16);
 const agentDir = (a) => (typeof a === 'string' && /^[a-z][a-z-]*$/.test(a) && existsSync(join(ROOT, 'agents', a, 'base.md')) ? join(ROOT, 'agents', a) : null);
+const stamp = () => new Date().toISOString().replace(/\D/g, '').slice(0, 14);
 const logWork = (slug, note, files) => appendFileSync(ACTIVITY, JSON.stringify({ ts: new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'), operator: OPERATOR, slug, kind: 'work', note, files }) + '\n');
 function saveRules(body) {
   const dir = agentDir(body.agent);
@@ -170,7 +174,16 @@ function saveRules(body) {
   const next = header + body.text.trim() + '\n';
   writeFileSync(path, next);
   logWork('-', `${body.agent}: ${HUMAN} saved their rules (custom.md) from the dashboard`, [`agents/${body.agent}/custom.md`]);
-  return { status: 201, sha: shaOf(next), file: `agents/${body.agent}/custom.md` };
+  const rel = `agents/${body.agent}/custom.md`;
+  const pr = {
+    root: ROOT,
+    branch: `${OPERATOR}/agent-rules-${body.agent}-${stamp()}`,
+    message: `agents/${body.agent}: ${HUMAN}'s rules (custom.md), saved from the dashboard`,
+    title: `${body.agent}: ${HUMAN}'s rules, saved from the dashboard`,
+    body: `${HUMAN} saved their rules for the ${body.agent} agent from the dashboard (Agents → Advanced → Your rules). Only \`${rel}\` changes.\n\nMerge it so the other operator's runs use these rules too.\n\nOpened by the dashboard on save.`,
+    files: [{ rel, before: cur, after: next }],
+  };
+  return { status: 201, sha: shaOf(next), file: rel, pr };
 }
 function suggestTweak(body) {
   const dir = agentDir(body.agent);
@@ -199,12 +212,23 @@ function suggestTweak(body) {
   const today = new Date().toISOString().slice(0, 10);
   writeFileSync(join(ROOT, rel), `# ${num} — ${body.agent}: ${title}\n\nFiled ${today} by ${HUMAN} from the dashboard (Agents → Edit as a suggested tweak). **Not applied.** Awaiting approval (gate d); on approval Claude applies the diff to \`agents/${body.agent}/base.md\`, bumps its version and adds a CHANGELOG line.\n\n**Target:** \`agents/${body.agent}/base.md\`\n\n## What changes\n\n${what}\n\n## Why\n\n${why}\n\n## Diff\n\n\`\`\`diff\n${diff.trimEnd()}\n\`\`\`\n`);
   const tw = join(ROOT, 'dashboard', 'tweaks.json');
-  const plain = existsSync(tw) ? JSON.parse(readFileSync(tw, 'utf8')) : {};
+  const twBefore = existsSync(tw) ? readFileSync(tw, 'utf8') : '';
+  const plain = twBefore ? JSON.parse(twBefore) : {};
   const name = body.agent.replace(/-/g, ' ').replace(/^./, (c) => c.toUpperCase());
   plain[rel] = { title, agent: name, what, why, status: 'pending' };
-  writeFileSync(tw, JSON.stringify(plain, null, 2) + '\n');
+  const twAfter = JSON.stringify(plain, null, 2) + '\n';
+  writeFileSync(tw, twAfter);
   logWork('-', `${body.agent}: ${HUMAN} suggested a tweak to Claude's instructions from the dashboard: ${title}`, [rel, 'dashboard/tweaks.json']);
-  return { status: 201, file: rel };
+  const pr = {
+    root: ROOT,
+    branch: `${OPERATOR}/agent-tweak-${body.agent}-${slug.slice(0, 32).replace(/-$/, '')}-${stamp()}`,
+    message: `proposals/${run}: suggested tweak to ${body.agent} — ${title} (from the dashboard)`,
+    title: `Suggested tweak to ${body.agent}: ${title}`,
+    body: `## What changes\n\n${what}\n\n## Why\n\n${why}\n\nFiled by ${HUMAN} from the dashboard as a suggested tweak to Claude's instructions for the ${body.agent} agent. This PR adds the suggestion only (\`${rel}\`); \`agents/${body.agent}/base.md\` is unchanged. Approve or reject it on the Decisions page; Claude applies it after approval.\n\nOpened by the dashboard on save.`,
+    // tweaks.json is the page's plain summary; skipped while main has none yet
+    files: [{ rel, before: '', after: readFileSync(join(ROOT, rel), 'utf8') }, { rel: 'dashboard/tweaks.json', before: twBefore, after: twAfter, optional: true }],
+  };
+  return { status: 201, file: rel, pr };
 }
 
 // ---- thumbnails -------------------------------------------------------------------------------------
@@ -282,8 +306,10 @@ function handle(req, res) {
       let body; try { body = JSON.parse(raw); } catch { return send(res, 400, { error: 'body must be JSON' }); }
       if (!body || typeof body !== 'object' || Array.isArray(body)) return send(res, 400, { error: 'body must be a JSON object' });
       let out; try { out = path === '/agent-rules' ? saveRules(body) : suggestTweak(body); } catch (e) { return send(res, 500, { error: String(e.message ?? e) }); }
-      if (out.status === 201) notify(path.slice(1));
-      return send(res, out.status, out);
+      if (out.status !== 201) return send(res, out.status, out);
+      notify(path.slice(1));
+      const { pr, ...saved } = out;
+      openPr(pr).then((r) => send(res, 201, { ...saved, pr: r.pr, branch: r.branch }), (e) => send(res, 201, { ...saved, pr_error: String(e.message ?? e) }));
     });
     return;
   }
