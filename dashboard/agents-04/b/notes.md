@@ -282,3 +282,5 @@ rules". `scrollWidth` = viewport at every width; no page errors.
 ## Blocking
 
 None.
+
+**Trimmed 2026-10-06 (PR #11 review):** after the pick was built into the live dashboard (`dashboard/mockups/soft-cards/src/`), only this mockup's built `index.html` and these notes are kept; `template.html`, `build.mjs`, the other variants and the comparison pages are in git history (commit 8d03802 and earlier).
