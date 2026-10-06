@@ -12,24 +12,26 @@
 //      tweak (proposals/<run>/NNN-<agent>-<title>.md + its plain summary in dashboard/tweaks.json) and
 //      never touches base.md itself. Both refuse a file that changed since the page read it. After the
 //      local save, the same change is committed on its own branch off origin/main and opened as a PR
-//      (dashboard/publish.mjs); if that fails the local save stands and the page says why.
+//      (dashboard/publish.mjs); if that fails the local save stands, the page says why and can retry
+//      the PR (POST /agent-pr).
 //   4. accepts a handoff on POST /handoff and appends one assignment line to activity.jsonl
 //      (tools/team.mjs assign — never a ledger line), and serves /thumb/<slug>.jpg, the first screen
 //      of the site's live preview (dashboard/thumbs.mjs).
 // It holds no Claude credentials, runs no agent, and can write only the ledger line shapes in DECISIONS
 // plus one activity.jsonl shape (an assignment, via /handoff).
 //
-//   node dashboard/server.mjs [--port 8970] [--host 127.0.0.1] [--root dashboard/mockups/soft-cards/dist] [--ledger ledger.jsonl] [--operator shahar] [--sync 60]
+//   node dashboard/server.mjs [--port 8970] [--host 127.0.0.1] [--allow-host a.example,b.example] [--root dashboard/mockups/soft-cards/dist] [--ledger ledger.jsonl] [--operator shahar] [--sync 60]
 //
 // The operator running the server (team.json; default `tools/team.mjs whoami`) is the one whose
 // decisions it records: every line it appends carries `operator` (docs/team.md).
 //
 // Local by default. For a phone: run it behind Caddy + basic auth on the CMS box, or a Cloudflare
-// Tunnel to this machine; never expose it bare.
+// Tunnel to this machine; never expose it bare, and name the tunnel's host with --allow-host.
+// Requests addressed to any other host are refused (a DNS-rebinding page could otherwise reach it).
 
 import { createServer } from 'node:http';
 import { readFileSync, existsSync, appendFileSync, writeFileSync, mkdirSync, readdirSync, mkdtempSync, rmSync, watch, statSync, createReadStream } from 'node:fs';
-import { createHash } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { join, dirname, resolve, extname, normalize, sep } from 'node:path';
@@ -39,7 +41,7 @@ import { whoami, team, assign, ACTIVITY } from '../tools/team.mjs';
 import { currentRun } from '../tools/run.mjs';
 import { shootThumb, thumbFresh, markPitchLive } from './thumbs.mjs';
 import { openPr } from './publish.mjs';
-import { readJsonlMerged, fetch as fetchMain } from '../tools/origin.mjs';
+import { readJsonlMerged, fetch as fetchMain, lsMain } from '../tools/origin.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const arg = (k, d) => { const i = process.argv.indexOf(`--${k}`); return i > 0 ? process.argv[i + 1] : d; };
@@ -48,6 +50,7 @@ const HOST = arg('host', '127.0.0.1');
 const DIST = resolve(ROOT, arg('root', 'dashboard/mockups/soft-cards/dist'));
 const LEDGER = resolve(ROOT, arg('ledger', 'ledger.jsonl'));
 const SYNC_S = Number(arg('sync', 60));
+const HOSTS = new Set(['localhost', '127.0.0.1', '[::1]', HOST, ...String(arg('allow-host', '')).split(',').map((h) => h.trim().toLowerCase()).filter(Boolean)]);
 let OPERATOR;
 try { OPERATOR = arg('operator', null) ?? whoami(); if (!team()[OPERATOR]) throw new Error(`${OPERATOR} is not in team.json`); }
 catch (e) { console.error(`dashboard server: ${e.message}`); process.exit(2); }
@@ -134,6 +137,8 @@ function decide(body) {
     slug = '-';
     const file = String(body.file ?? '');
     if (!/^proposals\/[\w.-]+\/[\w.-]+\.md$/.test(file) || !existsSync(join(ROOT, file))) return { status: 400, error: 'file must be an existing proposals/<run>/<name>.md' };
+    // the ledger line belongs to the run the proposal was filed under: proposals/<run_id>/
+    if (body.run_id !== file.split('/')[1]) return { status: 400, error: `run_id must be ${file.split('/')[1]}, the run this proposal was filed under` };
     const prior = [...readLedger()].reverse().find((l) => /^proposal:/.test(l.to_state) && (l.note ?? '').startsWith(file));
     if (prior) return { status: 409, error: `already decided: ${file} was ${prior.to_state.slice(9)} on ${prior.ts}; a change is a CLI decision, not a second click`, current: prior };
     body = { ...body, file };
@@ -167,7 +172,8 @@ function saveRules(body) {
   if (typeof body.text !== 'string' || body.text.length > 200_000) return { status: 400, error: 'text is required' };
   const path = join(dir, 'custom.md');
   const cur = existsSync(path) ? readFileSync(path, 'utf8') : '';
-  if (body.base_sha && body.base_sha !== shaOf(cur)) return { status: 409, error: 'This file changed since you opened it. Reload the page, then make your edit again.' };
+  if (typeof body.base_sha !== 'string') return { status: 400, error: 'base_sha is required' };
+  if (body.base_sha !== shaOf(cur)) return { status: 409, error: 'This file changed since you opened it. Reload the page, then make your edit again.' };
   // keep the file's own first line ("# <agent> / custom.md — written by …") and a --- rule if it has one
   const m = cur.match(/^(#\s[^\n]*)\n(?:[ \t]*\n)*(---[ \t]*(?:\n|$))?/);
   const header = m ? `${m[1]}\n${m[2] ? '---\n' : '\n'}` : '';
@@ -192,7 +198,8 @@ function suggestTweak(body) {
   if (title.length < 3 || what.length < 3 || why.length < 3) return { status: 400, error: 'Give the tweak a title, what it changes and why.' };
   if (typeof body.text !== 'string' || body.text.length > 400_000) return { status: 400, error: 'text is required' };
   const cur = readFileSync(join(dir, 'base.md'), 'utf8');
-  if (body.base_sha && body.base_sha !== shaOf(cur)) return { status: 409, error: "Claude's instructions changed since you opened them. Reload the page, then make your edit again." };
+  if (typeof body.base_sha !== 'string') return { status: 400, error: 'base_sha is required' };
+  if (body.base_sha !== shaOf(cur)) return { status: 409, error: "Claude's instructions changed since you opened them. Reload the page, then make your edit again." };
   const next = body.text.endsWith('\n') ? body.text : body.text + '\n';
   if (next === cur) return { status: 400, error: 'Nothing changed.' };
   const tmp = mkdtempSync(join(tmpdir(), 'tweak-'));
@@ -205,7 +212,8 @@ function suggestTweak(body) {
   let run; try { run = currentRun({ operator: OPERATOR }).run_id; } catch { run = 'dashboard'; }
   const pdir = join(ROOT, 'proposals', run);
   mkdirSync(pdir, { recursive: true });
-  const n = Math.max(0, ...readdirSync(pdir).map((f) => Number(f.match(/^(\d{3})-/)?.[1] ?? 0))) + 1;
+  // number after both this checkout's and origin/main's files, so the other operator's merged tweak keeps its number
+  const n = Math.max(0, ...[...readdirSync(pdir), ...lsMain(`proposals/${run}`)].map((f) => Number(f.match(/^(\d{3})-/)?.[1] ?? 0))) + 1;
   const num = String(n).padStart(3, '0');
   const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').replace(new RegExp(`^${body.agent}-`), '').slice(0, 48);
   const rel = `proposals/${run}/${num}-${body.agent}-${slug}.md`;
@@ -229,6 +237,14 @@ function suggestTweak(body) {
     files: [{ rel, before: '', after: readFileSync(join(ROOT, rel), 'utf8') }, { rel: 'dashboard/tweaks.json', before: twBefore, after: twAfter, optional: true }],
   };
   return { status: 201, file: rel, pr };
+}
+
+// A save's PR (dashboard/publish.mjs). A failed one is kept in memory so the page can offer
+// "Try the PR again" (POST /agent-pr {retry}); the local save stands either way.
+const failedPrs = new Map();
+async function tryPr(spec) {
+  try { const r = await openPr(spec); return { pr: r.pr, branch: r.branch }; }
+  catch (e) { const id = randomUUID(); failedPrs.set(id, { ...spec, pushed: Boolean(e.pushed) }); return { pr_error: String(e.message ?? e), retry: id }; }
 }
 
 // ---- thumbnails -------------------------------------------------------------------------------------
@@ -281,6 +297,8 @@ function serveFile(res, abs) {
 }
 
 function handle(req, res) {
+  const hostname = String(req.headers.host ?? '').toLowerCase().replace(/:\d+$/, '');
+  if (!HOSTS.has(hostname)) return send(res, 403, { error: `host "${hostname}" not allowed; start the server with --allow-host ${hostname || '<host>'}` });
   const url = new URL(req.url, `http://${req.headers.host}`);
   const path = decodeURIComponent(url.pathname);
   if (req.method === 'GET' && (path === '/' || path === '/index.html')) return serveFile(res, join(DIST, 'index.html'));
@@ -309,7 +327,20 @@ function handle(req, res) {
       if (out.status !== 201) return send(res, out.status, out);
       notify(path.slice(1));
       const { pr, ...saved } = out;
-      openPr(pr).then((r) => send(res, 201, { ...saved, pr: r.pr, branch: r.branch }), (e) => send(res, 201, { ...saved, pr_error: String(e.message ?? e) }));
+      tryPr(pr).then((r) => send(res, 201, { ...saved, ...r }));
+    });
+    return;
+  }
+  if (req.method === 'POST' && path === '/agent-pr') {
+    if (!/^application\/json\b/i.test(req.headers['content-type'] ?? '')) return send(res, 415, { error: 'content-type must be application/json' });
+    let raw = '';
+    req.on('data', (c) => { raw += c; if (raw.length > 4_000) req.destroy(); });
+    req.on('end', () => {
+      let body; try { body = JSON.parse(raw); } catch { return send(res, 400, { error: 'body must be JSON' }); }
+      const spec = failedPrs.get(String(body?.retry ?? ''));
+      if (!spec) return send(res, 404, { error: 'Nothing to retry (the server was restarted, or the PR was opened). Save again to open a PR.' });
+      failedPrs.delete(String(body.retry));
+      tryPr(spec).then((r) => send(res, 201, r));
     });
     return;
   }

@@ -171,6 +171,8 @@
 .agv-tabline p{font-size:15px;color:var(--ink2);line-height:1.45}
 .agv-tabline p a{color:#1F4BFF;font-weight:600}
 .agv-tabline p .agv-err{color:#B4232F;font-weight:600}
+.agv-retry{margin-left:6px;padding:4px 12px;border:1px solid #C3ACF3;border-radius:999px;background:#F3EEFD;color:#6A2FE0;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.agv-retry:hover{background:#E1D5F9}
 .agv-docbody{padding:30px 40px 44px}
 .agv-empty{font-size:15px;color:var(--ink3)}
 .agv-emptyrules{display:flex;gap:20px;align-items:flex-start;padding:26px;border-radius:16px;background:var(--ground);max-width:640px}
@@ -979,7 +981,7 @@ function renderDoc() {
   else if (tab === 'history') { const ch = parseChangelog(text); body = ch.length ? `<ol class="agv-hist">${ch.map((e) => `<li><time datetime="${e.date}">${day(e.date)} ${e.date.slice(0, 4)}</time><div><div class="agv-prose">${md(e.text)}</div><span class="agv-vt">${e.file ? `${esc((MORE[e.file] || [e.file])[0])} · ` : ''}version ${esc(e.v)}</span></div></li>`).join('')}</ol>` : `<div class="agv-prose">${md(text, { reading: true })}</div>`; }
   else body = `<div class="agv-prose">${md(text, { reading: true })}</div>`;
   host.innerHTML = `<div class="agv-tabs"><div class="agv-tablist" role="tablist" aria-label="${esc(a.name)}'s files">${tabs}</div></div>
-    <div class="agv-tabline"><p>${S.saved && S.saved.tab === tab && !editing ? S.saved.html : esc(tab === 'more' ? `${MORE[S.more][1]}. ${TABS.more.line}` : TABS[tab].line)}</p>${action}</div>
+    <div class="agv-tabline"><p>${S.saved && S.saved.tab === tab && !editing ? savedHtml() : esc(tab === 'more' ? `${MORE[S.more][1]}. ${TABS.more.line}` : TABS[tab].line)}</p>${action}</div>
     <div class="agv-docbody" id="agv-panel" role="tabpanel" aria-labelledby="agv-tab-${tab}">${body}</div>`;
   const tl = $('.agv-tablist', host);
   $$('[data-tab]', tl).forEach((b) => b.addEventListener('click', () => {
@@ -992,6 +994,7 @@ function renderDoc() {
   $('.agv-menu', host)?.addEventListener('keydown', (e) => { if (e.key === 'Escape') { e.stopPropagation(); S.menuOpen = false; renderDoc(); $('#agv-tab-more')?.focus(); } });
   const start = () => { S.saved = null; const orig = tab === 'base' ? fileText(path) : customBody(fileText(path) || ''); S.edit = { file: tab, orig, text: orig, mode: 'write' }; renderDoc(); $('#agv-ed')?.focus(); };
   $('#agv-act', host)?.addEventListener('click', start);
+  $('#agv-retry', host)?.addEventListener('click', retryPr);
   $('#agv-first', host)?.addEventListener('click', start);
   if (editing) wireEditor(host);
 }
@@ -1037,9 +1040,23 @@ async function saveEdit(host) {
   if (r.status !== 201) { btn.disabled = false; return say(`Not saved: ${j.error || r.status}`, true); }
   delete S.files[path]; S.edit = null;
   api.live(e.file === 'base' ? 'Saved as a suggested tweak' : 'Your rules are saved');
-  const pr = j.pr ? ` <a href="${esc(j.pr)}" target="_blank" rel="noopener">PR opened</a>: merge it to share this with the other operator.` : ` <span class="agv-err">The PR was not opened: ${esc(j.pr_error || 'unknown error')}</span>`;
-  S.saved = { tab: e.file, html: (e.file === 'base' ? '<b>Saved as a suggested tweak.</b> Approve it on the Decisions page; Claude applies it after that.' : '<b>Saved.</b> The agent reads your rules on its next run.') + pr };
+  S.saved = { tab: e.file, lead: e.file === 'base' ? '<b>Saved as a suggested tweak.</b> Approve it on the Decisions page; Claude applies it after that.' : '<b>Saved.</b> The agent reads your rules on its next run.', pr: j.pr, pr_error: j.pr_error, retry: j.retry };
   renderDoc(); api.refresh();
+}
+function savedHtml() {
+  const v = S.saved;
+  if (v.pr) return `${v.lead} <a href="${esc(v.pr)}" target="_blank" rel="noopener">PR opened</a>: merge it to share this with the other operator.`;
+  if (v.busy) return `${v.lead} Opening the PR…`;
+  return `${v.lead} <span class="agv-err">The PR was not opened: ${esc(v.pr_error || 'unknown error')}</span>${v.retry ? ' <button type="button" class="agv-retry" id="agv-retry">Try the PR again</button>' : ''}`;
+}
+async function retryPr() {
+  const v = S.saved; if (!v || !v.retry || v.busy) return;
+  v.busy = true; renderDoc();
+  let j;
+  try { const r = await fetch('agent-pr', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ retry: v.retry }), cache: 'no-store' }); j = await r.json().catch(() => ({ pr_error: 'response was not JSON' })); if (!r.ok) j = { pr_error: j.error || String(r.status) }; }
+  catch (err) { j = { pr_error: String(err), retry: v.retry }; }
+  Object.assign(v, { busy: false, pr: j.pr, pr_error: j.pr_error, retry: j.retry });
+  renderDoc();
 }
 
 // ------------------------------------------------------------------ draw: on every index render and on our own navigation

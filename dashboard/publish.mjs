@@ -21,6 +21,8 @@ const GH = process.env.ONESHOT_GH || 'gh';
 const env = { ...process.env, GIT_TERMINAL_PROMPT: '0' };
 const sh = (cmd, args, cwd) => run(cmd, args, { cwd, env, timeout: 90_000, maxBuffer: 64 * 1024 * 1024 }).then((r) => r.stdout.trim());
 
+const reason = (e) => [e.stderr, e.stdout].map((t) => String(t ?? '').trim()).find(Boolean)?.split('\n').pop() || String(e.message ?? e);
+
 // One PR at a time: two quick saves must not race over worktrees and branches.
 let queue = Promise.resolve();
 export function openPr(spec) {
@@ -29,7 +31,13 @@ export function openPr(spec) {
   return p;
 }
 
-async function publish({ root, branch, message, title, body, files }) {
+const createPr = async (cwd, { branch, title, body }) => (await sh(GH, ['pr', 'create', '--base', 'main', '--head', branch, '--title', title, '--body', body], cwd)).split('\n').pop();
+
+async function publish({ root, branch, message, title, body, files, pushed: already }) {
+  if (already) { // a retry after the branch was pushed: only the PR is missing
+    try { return { pr: await createPr(root, { branch, title, body }), branch }; }
+    catch (e) { throw Object.assign(new Error(`branch ${branch} was pushed, but the PR was not opened: ${reason(e)}`), { pushed: true }); }
+  }
   await sh('git', ['fetch', '-q', REMOTE, 'main'], root);
   const tmp = mkdtempSync(join(tmpdir(), 'oneshot-pr-'));
   let added = false, pushed = false;
@@ -56,11 +64,9 @@ async function publish({ root, branch, message, title, body, files }) {
     await sh('git', ['-c', 'core.hooksPath=/dev/null', 'commit', '-q', '-m', message], tmp);
     await sh('git', ['push', '-q', '-u', REMOTE, branch], tmp);
     pushed = true;
-    const url = (await sh(GH, ['pr', 'create', '--base', 'main', '--head', branch, '--title', title, '--body', body], tmp)).split('\n').pop();
-    return { pr: url, branch };
+    return { pr: await createPr(tmp, { branch, title, body }), branch };
   } catch (e) {
-    const why = [e.stderr, e.stdout].map((t) => String(t ?? '').trim()).find(Boolean)?.split('\n').pop() || String(e.message ?? e);
-    throw new Error(pushed ? `branch ${branch} was pushed, but the PR was not opened: ${why}` : why);
+    throw Object.assign(new Error(pushed ? `branch ${branch} was pushed, but the PR was not opened: ${reason(e)}` : reason(e)), { pushed });
   } finally {
     if (added) await sh('git', ['worktree', 'remove', '--force', tmp], root).catch(() => {});
     rmSync(tmp, { recursive: true, force: true });
