@@ -1,1 +1,355 @@
-<!-- Decisions view: markup, styles and script; registers window.OSViews.decisions(api). Built into the page by build.mjs. Empty = the legacy view in index.html is used. -->
+<!-- Decisions view (redesign 2026-10-06): markup, styles and script; registers window.OSViews.decisions(api). Built into the page by build.mjs.
+     Two pages inside the view, routed by the hash: #decisions (tweak cards + your decisions by site) and
+     #decisions/tweak-<id> (one suggestion as a standalone page; its file split by ## sections into a masonry of cards). -->
+<style>
+#view-decisions{--ln:#E6E8EE;--soft:#F7F8FA;--gbg:#EEF0F3;--mgap:24px}
+.dcv{display:block}
+.dcv-sec{margin-bottom:48px}
+.dcv-sec,.dcv-tw,.dcv-site,.dcv-fh,.dcv-page{scroll-margin-top:88px}
+.dcv-sec:focus{outline:0}
+.dcv-sec.flash .dcv-sh h2{color:var(--acc)}
+.dcv-sh{display:flex;align-items:center;flex-wrap:wrap;gap:10px 12px;margin:8px 0 6px}
+.dcv-sh h2{font-size:22px;line-height:30px;font-weight:700;letter-spacing:-.01em}
+.dcv-cnt{min-width:28px;height:28px;padding:0 10px;border-radius:8px;background:var(--t5);color:var(--acc);font-weight:700;font-size:15px;display:inline-grid;place-items:center}
+.dcv-cnt.z{background:var(--gbg);color:var(--ink2)}
+.dcv-intro{font-size:16px;line-height:26px;color:var(--ink2);margin:0 0 20px;max-width:78ch;text-wrap:pretty}
+.dcv-surf{background:var(--card);border:1px solid var(--ln);border-radius:12px}
+.dcv-empty{padding:24px;font-size:16px;color:var(--ink2)}
+
+/* masonry: JS places items absolutely in the shortest column; before layout they simply stack */
+.dcv-mas{position:relative}
+.dcv-mas>*{margin-bottom:var(--mgap)}
+.dcv-mas.on>*{position:absolute;margin:0;top:0;left:0}
+
+/* tweak card */
+.dcv-tw{padding:24px 28px;display:flex;flex-direction:column}
+.dcv-ag{align-self:flex-start;display:inline-block;font-size:14px;line-height:20px;font-weight:700;color:var(--acc);background:var(--t5);border-radius:999px;padding:4px 12px}
+.dcv-tw h3{font-size:22px;line-height:30px;font-weight:700;letter-spacing:-.01em;margin-top:14px;text-wrap:balance}
+.dcv-kv{margin:18px 0 0;display:grid;gap:16px}
+.dcv-kv dt{font-size:14px;line-height:20px;font-weight:700;color:var(--ink3)}
+.dcv-kv dd{margin:4px 0 0;font-size:17px;line-height:27px;color:var(--ink);text-wrap:pretty}
+.dcv-acts{display:flex;align-items:center;flex-wrap:wrap;gap:12px 12px;margin-top:22px;padding-top:20px;border-top:1px solid var(--ln)}
+.dcv-btn{font:inherit;font-size:15px;font-weight:700;line-height:20px;border-radius:999px;padding:11px 22px;cursor:pointer;border:1.5px solid transparent;white-space:nowrap}
+.dcv-btn.p{background:var(--acc);color:#fff}
+.dcv-btn.p:hover{background:#5A22C9}
+.dcv-btn.s{background:var(--card);color:var(--ink);border-color:#D5D9E2}
+.dcv-btn.s:hover{background:var(--soft)}
+.dcv-btn:disabled{opacity:.5;cursor:default}
+.dcv-read{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:700;color:var(--blue);text-decoration:none;border-radius:6px;padding:8px 0;white-space:nowrap}
+.dcv-read:hover{text-decoration:underline;text-underline-offset:3px}
+.dcv-read svg{width:16px;height:16px}
+.dcv-res{flex-basis:100%;font-size:15px;color:var(--ink2)}
+.dcv-res:empty{display:none}
+.dcv-res.ok{color:var(--green);font-weight:600}
+.dcv-res.err{color:var(--red);font-weight:600}
+
+/* already decided */
+.dcv-done{margin-top:4px}
+.dcv-done summary{cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-size:16px;font-weight:700;color:var(--ink2);padding:8px 0;list-style:none}
+.dcv-done summary::-webkit-details-marker{display:none}
+.dcv-done summary svg{width:14px;height:14px;transition:transform .2s}
+.dcv-done[open] summary svg{transform:rotate(90deg)}
+.dcv-done ul{margin-top:12px}
+.dcv-done li{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 24px;border-top:1px solid var(--ln)}
+.dcv-done li:first-child{border-top:0}
+.dcv-done li a{font-size:16px;font-weight:600;color:var(--ink);text-decoration:none}
+.dcv-done li a:hover{color:var(--acc);text-decoration:underline;text-underline-offset:3px}
+.dcv-done li .s{display:block;font-size:14px;color:var(--ink3);margin-top:2px}
+.dcv-st{flex:none;font-size:14px;line-height:20px;font-weight:700;border-radius:999px;padding:4px 12px;background:var(--gbg);color:var(--ink2);white-space:nowrap}
+.dcv-st.ok{background:var(--green-bg);color:var(--green)}
+.dcv-st.no{background:var(--red-bg);color:var(--red)}
+
+/* decisions by site */
+.dcv-site{padding:24px 28px 12px}
+.dcv-site-h h3{font-size:19px;line-height:26px;font-weight:700;letter-spacing:-.005em}
+.dcv-site-h p{font-size:15px;color:var(--ink3);margin-top:2px}
+.dcv-dl{margin-top:12px}
+.dcv-d{padding:16px 0;border-top:1px solid var(--ln)}
+.dcv-d-h{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;font-size:14px;line-height:20px}
+.dcv-tag{font-weight:700;border-radius:999px;padding:3px 10px;background:var(--gbg);color:var(--ink2)}
+.dcv-tag.g{background:var(--t5);color:var(--acc)}
+.dcv-tag.o{background:var(--red-bg);color:var(--red)}
+.dcv-d-h time{margin-left:auto;color:var(--ink3);font-weight:500;white-space:nowrap}
+.dcv-note{font-size:16px;line-height:26px;color:var(--ink);margin-top:8px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+.dcv-d.open .dcv-note{display:block;-webkit-line-clamp:unset}
+.dcv-more,.dcv-all{border:0;background:none;padding:0;cursor:pointer;font:inherit;font-size:15px;font-weight:600;color:var(--ink2);text-decoration:underline;text-underline-offset:3px;margin-top:6px}
+.dcv-more:hover,.dcv-all:hover{color:var(--ink)}
+.dcv-all{display:block;width:100%;text-align:left;text-decoration:none;color:var(--acc);font-weight:700;padding:14px 0;margin:0;border-top:1px solid var(--ln)}
+.dcv-all:hover{color:#5A22C9;text-decoration:underline}
+
+/* the standalone suggestion page */
+.dcv-back{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:700;color:var(--ink2);text-decoration:none;padding:6px 0;margin:4px 0 16px;border-radius:6px}
+.dcv-back:hover{color:var(--acc)}
+.dcv-back svg{width:16px;height:16px}
+.dcv-ph{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.dcv-page h2.dcv-t{font-size:34px;line-height:42px;font-weight:700;letter-spacing:-.02em;margin:14px 0 24px;max-width:36ch;text-wrap:balance}
+.dcv-page h2.dcv-t:focus{outline:0}
+.dcv-major{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.dcv-major>div{padding:28px 32px}
+.dcv-major>div+div{border-left:1px solid var(--ln)}
+.dcv-major .k{font-size:15px;line-height:20px;font-weight:700;color:var(--acc);letter-spacing:.01em}
+.dcv-major .v{font-size:20px;line-height:32px;color:var(--ink);margin-top:10px;text-wrap:pretty}
+.dcv-pfoot{display:flex;align-items:center;flex-wrap:wrap;gap:12px;padding:20px 32px;border-top:1px solid var(--ln);background:var(--soft);border-radius:0 0 12px 12px}
+.dcv-pfoot .h{font-size:15px;color:var(--ink2);margin-left:8px}
+.dcv-own{margin:0;padding:16px 32px;border-top:1px solid var(--ln);font-size:16px;line-height:25px;color:var(--ink2)}
+.dcv-own b{color:var(--ink)}
+.dcv-fh{font-size:22px;line-height:30px;font-weight:700;letter-spacing:-.01em;margin:48px 0 6px}
+.dcv-fs{font-size:16px;color:var(--ink2);margin:0 0 20px}
+.dcv-sc{padding:24px 28px;min-width:0}
+.dcv-sc .dcv-sct{font-size:19px;line-height:26px;font-weight:700;letter-spacing:-.005em;margin:0 0 12px}
+.dcv-sc .md{max-width:none;font-size:17px;line-height:1.65}
+.dcv-sc .md>:last-child{margin-bottom:0}
+.dcv-sc .md h1,.dcv-sc .md h2,.dcv-sc .md h3{font-size:17px;margin:20px 0 6px}
+.dcv-sc .md pre{font-size:14px;background:var(--soft);border:1px solid var(--ln)}
+.dcv-sc .md code{overflow-wrap:anywhere}
+.dcv-sc .md pre{white-space:pre-wrap;overflow-wrap:anywhere}
+.dcv-sc .md pre code span{display:block;min-height:1em}
+.dcv-sc .md blockquote{border-left-color:var(--t4)}
+.dcv-load{padding:24px 28px;font-size:16px;color:var(--ink2)}
+
+@media (max-width:1100px){
+  .dcv-major{grid-template-columns:minmax(0,1fr)}
+  .dcv-major>div+div{border-left:0;border-top:1px solid var(--ln)}
+}
+@media (max-width:640px){
+  #view-decisions{--mgap:16px}
+  .dcv-tw,.dcv-site,.dcv-sc{padding-left:20px;padding-right:20px}
+  .dcv-tw h3{font-size:20px;line-height:28px}
+  .dcv-read{margin-left:0;flex-basis:100%}
+  .dcv-page h2.dcv-t{font-size:26px;line-height:34px}
+  .dcv-major>div{padding:22px 20px}
+  .dcv-major .v{font-size:18px;line-height:29px}
+  .dcv-pfoot,.dcv-own{padding-left:20px;padding-right:20px}
+  .dcv-pfoot .h{margin-left:0;flex-basis:100%}
+  .dcv-done li{padding:14px 16px}
+}
+</style>
+<div class="dcv" id="dcv"></div>
+<script>
+(function(){
+'use strict';
+const S={results:{},openSites:new Set(),openNotes:new Set(),md:new Map(),lastId:null,page:null};
+const STATUS={applied:['ok','Already in use'],approved:['ok','Approved'],rejected:['no','Rejected'],superseded:['','Out of date'],info:['','Notes only'],pending:['','Waiting for you']};
+const STAGE={discovered:'Finding',scored:'Scoring',shortlisted:'Shortlist',approved:'Shortlist',harvested:'Research',audited:'Audit',copy_drafted:'Copy',copy_humanised:'Copy',copy_passed:'Copy check',copy_failed:'Copy check',concepted:'Concepts',mocked:'Mockups',picked:'Design pick',built:'Build',optimised:'Speed and search',ai_optimised:'AI search',critiqued:'Critic review',passed:'Finished site',failed:'Critic review',previewed:'Preview',packaged:'Pitch pack',pitched:'Pitch',void:'Run stopped'};
+const ARROW_R='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
+const ARROW_L='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4"/></svg>';
+const CHEV='<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4.5 2.5 8 6l-3.5 3.5"/></svg>';
+const tid=p=>p.file.replace(/^proposals\//,'').replace(/\.md$/,'').replace(/[^\w-]+/g,'--');
+const route=()=>{const h=location.hash.slice(1).split('/');return h[0]==='decisions'&&h[1]&&h[1].startsWith('tweak-')?h[1].slice(6):null};
+const cap=s=>s?s[0].toUpperCase()+s.slice(1):s;
+let API=null;
+
+/* ---------- masonry: each item goes to the shortest column; items marked data-wide span two ---------- */
+const MAS=new Set();
+function masonry(box,min){box.classList.add('dcv-mas');box._min=min;MAS.add(box);
+  if(!box._ro){box._ro=new ResizeObserver(()=>layout(box));box._ro.observe(box)}
+  for(const it of box.children)box._ro.observe(it);
+  layout(box)}
+function layout(box){
+  if(!box.isConnected){MAS.delete(box);box._ro&&box._ro.disconnect();return}
+  const W=box.clientWidth;if(!W)return;
+  const gap=parseFloat(getComputedStyle(box).getPropertyValue('--mgap'))||24;
+  const cols=Math.max(1,Math.floor((W+gap)/(box._min+gap)));
+  const cw=(W-gap*(cols-1))/cols;
+  const items=[...box.children];
+  if(cols===1){box.classList.remove('on');box.style.height='';for(const it of items){it.style.width='';it.style.transform=''}return}
+  box.classList.add('on');
+  const bottom=new Array(cols).fill(0);
+  for(const it of items){
+    const span=it.dataset.wide&&cols>=2?2:1;
+    let best=0,bestY=Infinity;
+    for(let c=0;c+span<=cols;c++){const y=Math.max(...bottom.slice(c,c+span));if(y<bestY-0.5){bestY=y;best=c}}
+    const w=cw*span+gap*(span-1);
+    it.style.width=w+'px';
+    it.style.transform=`translate(${Math.round(best*(cw+gap))}px,${Math.round(bestY)}px)`;
+    const h=it.offsetHeight;
+    for(let c=best;c<best+span;c++)bottom[c]=bestY+h+gap;
+  }
+  box.style.height=Math.max(0,Math.max(...bottom)-gap)+'px';
+}
+addEventListener('resize',()=>{for(const b of MAS)layout(b)});
+document.fonts&&document.fonts.ready.then(()=>{for(const b of MAS)layout(b)});
+
+/* ---------- approve / reject (same call and handling as the legacy renderTweaks) ---------- */
+function actions(p,{onPage}={}){
+  const {el,LIVE,refresh}=API;
+  const row=el('div',{class:onPage?'dcv-pfoot':'dcv-acts'});
+  const res=el('p',{class:'dcv-res',role:'status','aria-live':'polite'});
+  const btns=[];
+  for(const [choice,label,primary] of [['approved','Approve',true],['rejected','Reject',false]]){
+    const b=el('button',{type:'button',class:'dcv-btn '+(primary?'p':'s'),text:label},el('span',{class:'sr',text:': '+p.title}));
+    if(!LIVE){b.disabled=true;b.title='start dashboard/server.mjs to decide'}
+    b.onclick=async()=>{
+      btns.forEach(x=>x.disabled=true);res.className='dcv-res';res.textContent='Saving…';let r,j;
+      try{r=await fetch('decide',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({gate:'proposal',run_id:p.run_id,file:p.file,choice,reason:''}),cache:'no-store'});j=await r.json().catch(()=>({error:'response was not JSON'}))}catch(e){r={status:0};j={error:String(e)}}
+      S.results[p.file]={status:r.status,body:j,choice};
+      if(r.status===201){res.className='dcv-res ok';res.textContent=choice==='approved'?'Approved. Claude applies it in its next session.':'Rejected.';setTimeout(()=>refresh(),800)}
+      else{res.className='dcv-res err';res.textContent=`${r.status||'network'}: ${j.error||'unknown error'}`;btns.forEach(x=>x.disabled=!LIVE)}
+    };
+    btns.push(b);row.append(b);
+  }
+  if(onPage)row.append(el('span',{class:'h',text:'Approved tweaks are applied by Claude in its next session, as one pull request.'}));
+  else{const a=el('a',{class:'dcv-read',href:'#decisions/tweak-'+tid(p),html:'Read the full suggestion'+ARROW_R});a.append(el('span',{class:'sr',text:': '+p.title}));a.onclick=()=>{S.lastId=tid(p)};row.append(a)}
+  const prev=S.results[p.file];
+  if(prev){if(prev.status===201){res.className='dcv-res ok';res.textContent=prev.choice==='approved'?'Approved. Claude applies it in its next session.':'Rejected.';btns.forEach(x=>x.disabled=true)}else{res.className='dcv-res err';res.textContent=`${prev.status||'network'}: ${prev.body?.error||'unknown error'}`}}
+  row.append(res);
+  return row;
+}
+
+/* ---------- list page ---------- */
+function tweakCard(p){
+  const {el}=API;
+  const c=el('article',{class:'dcv-surf dcv-tw',id:'dcv-tw-'+tid(p),'aria-label':p.title});
+  c.append(el('span',{class:'dcv-ag',text:p.agent||'Agent'}),el('h3',{text:p.title}));
+  if(p.what||p.why){const dl=el('dl',{class:'dcv-kv'});
+    if(p.what)dl.append(el('div',{},el('dt',{text:'What changes'}),el('dd',{text:p.what})));
+    if(p.why)dl.append(el('div',{},el('dt',{text:'Why'}),el('dd',{text:p.why})));
+    c.append(dl)}
+  c.append(actions(p));
+  return c;
+}
+function decisionRow(d){
+  const {el,tShort,opName,D}=API;
+  const key=d.ts+d.slug+(d.note||'').length;
+  const li=el('li',{class:'dcv-d'+(S.openNotes.has(key)?' open':'')});
+  const h=el('div',{class:'dcv-d-h'});
+  const stage=STAGE[(d.to||'').replace(/\(.*/,'')]||cap(d.to||'');
+  if(d.to==='void')h.append(el('span',{class:'dcv-tag o',text:'Run stopped'}));
+  else if(d.gate)h.append(el('span',{class:'dcv-tag g',text:cap(D.gate_states[d.from]||'Gate')}));
+  else h.append(el('span',{class:'dcv-tag',text:stage}));
+  if(d.override)h.append(el('span',{class:'dcv-tag o',text:'Override'}));
+  h.append(el('time',{datetime:d.ts,text:`${tShort(d.ts)}${d.operator?' · '+opName(d.operator):''}`}));
+  li.append(h,el('p',{class:'dcv-note',text:d.note||''}));
+  if((d.note||'').length>200){const on=S.openNotes.has(key);const b=el('button',{class:'dcv-more',type:'button',text:on?'Show less':'Show the full reason','aria-expanded':String(on)});
+    b.onclick=()=>{const o=li.classList.toggle('open');o?S.openNotes.add(key):S.openNotes.delete(key);b.textContent=o?'Show less':'Show the full reason';b.setAttribute('aria-expanded',String(o))};li.append(b)}
+  return li;
+}
+function renderList(root){
+  const {el,D,dShort,opName,bizName}=API;
+  const props=D.proposals.filter(p=>p.kind==='proposal');
+  const pending=props.filter(p=>p.status==='pending'),done=props.filter(p=>p.status!=='pending');
+
+  const sec=el('section',{class:'dcv-sec',id:'props',tabindex:'-1','aria-labelledby':'dcv-tw-h'});
+  sec.append(el('div',{class:'dcv-sh'},el('h2',{id:'dcv-tw-h',text:'Suggested agent tweaks'}),el('span',{class:'dcv-cnt'+(pending.length?'':' z'),text:String(pending.length),title:pending.length?`${pending.length} waiting for you`:'nothing waiting'})));
+  sec.append(el('p',{class:'dcv-intro',text:'After each run the critic suggests changes to how an agent works. Approve the ones you want; Claude applies them in its next session.'}));
+  if(!pending.length)sec.append(el('div',{class:'dcv-surf dcv-empty',text:'No tweak is waiting for you.'}));
+  else{const g=el('div',{class:'dcv-grid'});for(const p of pending)g.append(tweakCard(p));sec.append(g);root.append(sec);masonry(g,460)}
+  if(done.length){
+    const det=el('details',{class:'dcv-done'});det.open=!!S.doneOpen;det.ontoggle=()=>{S.doneOpen=det.open};
+    det.append(el('summary',{html:CHEV+`Already decided (${done.length})`}));
+    const ul=el('ul',{class:'dcv-surf'});
+    for(const p of done.sort((a,b)=>(b.decided_at||'').localeCompare(a.decided_at||''))){
+      const [cls,txt]=STATUS[p.status]||['',cap(p.status)];
+      const a=el('a',{href:'#decisions/tweak-'+tid(p),text:p.title});a.onclick=()=>{S.lastId=tid(p)};
+      const sub=[p.agent,p.status_note||(p.decided_at?`${txt} ${dShort(p.decided_at)}${p.decided_by?' by '+opName(p.decided_by):''}`:null)].filter(Boolean).join(' · ');
+      ul.append(el('li',{id:'dcv-tw-'+tid(p)},el('div',{},a,el('span',{class:'s',text:sub})),el('span',{class:'dcv-st '+cls,text:txt})));
+    }
+    det.append(ul);sec.append(det);
+  }
+  if(!sec.isConnected)root.append(sec);
+
+  const built=new Set(D.businesses.filter(b=>(b.reached||[]).some(s=>['built','passed','previewed','packaged','pitched'].includes(s))).map(b=>b.slug));
+  const bySlug=new Map();
+  for(const d of D.decisions.filter(d=>built.has(d.slug)).sort((a,b)=>b.ts.localeCompare(a.ts))){if(!bySlug.has(d.slug))bySlug.set(d.slug,[]);bySlug.get(d.slug).push(d)}
+  const groups=[...bySlug.entries()].sort((a,b)=>b[1][0].ts.localeCompare(a[1][0].ts));
+  const total=groups.reduce((s,[,ds])=>s+ds.length,0);
+  const s2=el('section',{class:'dcv-sec','aria-labelledby':'dcv-ds-h'});
+  s2.append(el('div',{class:'dcv-sh'},el('h2',{id:'dcv-ds-h',text:'Your decisions, by site'}),el('span',{class:'dcv-cnt z',text:String(total)})));
+  s2.append(el('p',{class:'dcv-intro',text:'What you decided on each site we built, newest first.'}));
+  root.append(s2);
+  if(!groups.length){s2.append(el('div',{class:'dcv-surf dcv-empty',text:'No decision yet.'}));return}
+  const g2=el('div',{class:'dcv-grid'});
+  for(const [slug,ds] of groups){
+    const gates=ds.filter(d=>d.gate).length;
+    const c=el('article',{class:'dcv-surf dcv-site',id:'dec-'+slug,'aria-label':bizName(slug)});
+    c.append(el('div',{class:'dcv-site-h'},el('h3',{text:bizName(slug)}),el('p',{text:`${ds.length} decision${ds.length===1?'':'s'}${gates?` · ${gates} at a gate`:''} · last ${dShort(ds[0].ts)}`})));
+    const open=S.openSites.has(slug);const N=3;
+    const ol=el('ol',{class:'dcv-dl',id:'dcv-dl-'+slug});
+    for(const d of open?ds:ds.slice(0,N))ol.append(decisionRow(d));
+    c.append(ol);
+    if(ds.length>N){const b=el('button',{type:'button',class:'dcv-all','aria-expanded':String(open),'aria-controls':'dcv-dl-'+slug,text:open?'Show the latest 3 only':`Show all ${ds.length} decisions`});
+      b.onclick=()=>{open?S.openSites.delete(slug):S.openSites.add(slug);render(API);const nb=document.querySelector(`#dec-${CSS.escape(slug)} .dcv-all`);nb&&nb.focus({preventScroll:true})};c.append(b)}
+    g2.append(c);
+  }
+  s2.append(g2);masonry(g2,520);
+}
+
+/* ---------- standalone suggestion page ---------- */
+function sections(md){
+  const L=md.replace(/\r/g,'').split('\n');const out=[];let cur={title:'',lines:[]};let fence=false;
+  for(const l of L){
+    if(/^```/.test(l))fence=!fence;
+    if(!fence&&/^#\s+/.test(l)&&!out.length&&!cur.lines.some(x=>x.trim()))continue; // the file's own title: the page already has a plain one
+    if(!fence&&/^##\s+/.test(l)){if(cur.title||cur.lines.some(x=>x.trim()))out.push(cur);cur={title:l.replace(/^##\s+/,'').replace(/`/g,'').trim(),lines:[]};continue}
+    cur.lines.push(l);
+  }
+  if(cur.title||cur.lines.some(x=>x.trim()))out.push(cur);
+  return out.map((s,i)=>({title:s.title||(i===0?'Background':''),body:s.lines.join('\n').trim()}));
+}
+function fillDoc(box,text){
+  const {el,mdToHtml}=API;box.innerHTML='';
+  for(const s of sections(text)){
+    const c=el('section',{class:'dcv-surf dcv-sc'});
+    if(s.title)c.append(el('h4',{class:'dcv-sct',text:s.title}));
+    const body=el('div',{class:'md',html:mdToHtml(s.body)});c.append(body);
+    if(body.querySelector('pre,table')&&s.body.split('\n').some(l=>l.length>70))c.dataset.wide='1';
+    box.append(c);
+  }
+  masonry(box,440);
+}
+function renderPage(root,p){
+  const {el,LIVE,fileURL,dShort,opName}=API;
+  const pg=el('div',{class:'dcv-page'});
+  pg.append(el('a',{class:'dcv-back',href:'#decisions',html:ARROW_L+'All decisions'}));
+  const ph=el('div',{class:'dcv-ph'},el('span',{class:'dcv-ag',text:p.agent||'Agent'}));
+  if(p.status!=='pending'){const [cls,txt]=STATUS[p.status]||['',cap(p.status)];ph.append(el('span',{class:'dcv-st '+cls,text:txt+(p.decided_at?` · ${dShort(p.decided_at)}${p.decided_by?' by '+opName(p.decided_by):''}`:'')}))}
+  pg.append(ph,el('h2',{class:'dcv-t',id:'dcv-page-t',tabindex:'-1',text:p.title}));
+  const box=el('div',{class:'dcv-surf'});
+  const major=el('div',{class:'dcv-major'});
+  major.append(el('div',{},el('div',{class:'k',text:'What changes'}),el('p',{class:'v',text:p.what||'See the full suggestion below.'})));
+  major.append(el('div',{},el('div',{class:'k',text:'Why'}),el('p',{class:'v',text:p.why||'See the full suggestion below.'})));
+  box.append(major);
+  if(p.custom_md)box.append(el('p',{class:'dcv-own',html:'<b>These are your own rules for this agent.</b> Claude never edits them: approving means you paste the suggested text in yourself, or tell Claude to do it.'}));
+  if(p.status==='pending')box.append(actions(p,{onPage:true}));
+  else if(p.status_note)box.append(el('p',{class:'dcv-own',text:p.status_note}));
+  pg.append(box);
+  pg.append(el('h3',{class:'dcv-fh',text:'The full suggestion'}),el('p',{class:'dcv-fs',text:'As the critic wrote it, one card per part.'}));
+  const doc=el('div',{class:'dcv-grid'});pg.append(doc);root.append(pg);
+  const have=S.md.get(p.file);
+  if(have!=null){fillDoc(doc,have);return}
+  doc.append(el('div',{class:'dcv-surf dcv-load',text:'Loading the full suggestion…'}));
+  // On a deep link the first render runs before the page knows the server is live; give the probe a moment
+  // (a live re-render replaces this page) before reading the file from disk instead.
+  const load=()=>{if(!doc.isConnected)return;const live=API.LIVE;
+    fetch(fileURL(p.file),{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.text()}).then(t=>{S.md.set(p.file,t);if(doc.isConnected)fillDoc(doc,t)})
+      .catch(e=>{if(!doc.isConnected)return;doc.innerHTML='';doc.append(el('div',{class:'dcv-surf dcv-load',text:`Could not open the full suggestion (${e.message}).${live?'':' Start the dashboard server to read it.'}`}))})};
+  if(LIVE)load();else setTimeout(load,1500);
+}
+
+/* ---------- render + routing ---------- */
+function render(api){
+  API=api;
+  const legacy=document.getElementById('dec-legacy');if(legacy)legacy.remove();
+  const root=document.getElementById('dcv');if(!root)return;
+  root.innerHTML='';
+  const id=route();
+  const p=id&&api.D.proposals.find(x=>x.kind==='proposal'&&tid(x)===id);
+  if(id&&!p){root.append(api.el('a',{class:'dcv-back',href:'#decisions',html:ARROW_L+'All decisions'}),api.el('div',{class:'dcv-surf dcv-empty',text:'This suggestion is not in the data any more.'}));S.page=id;return}
+  if(p){renderPage(root,p);S.page=id;return}
+  renderList(root);S.page=null;
+}
+let lastRoute=route();
+addEventListener('hashchange',()=>{
+  const r=route();const was=lastRoute;lastRoute=r;
+  if(!API||!location.hash.startsWith('#decisions'))return;
+  if(r===was&&S.page===r&&document.getElementById('dcv').childElementCount)return;
+  render(API);
+  setTimeout(()=>{ // after index.html's go() (scroll to top, focus the page title)
+    if(r){const t=document.getElementById('dcv-page-t');t&&t.focus({preventScroll:true});scrollTo(0,0)}
+    else if(was&&S.lastId){const c=document.getElementById('dcv-tw-'+S.lastId);if(c){c.scrollIntoView({block:'center'});const a=c.querySelector('a,button');a&&a.focus({preventScroll:true})}}
+  },0);
+});
+window.OSViews=window.OSViews||{};
+window.OSViews.decisions=function(api){render(api)};
+})();
+</script>

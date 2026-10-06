@@ -1,1 +1,1045 @@
-<!-- Agents view (run dashboard-04, B "Board"): markup, styles and script; registers window.OSViews.agents(api). Built into the page by build.mjs. -->
+<!-- Agents view (run dashboard-04, B "Board", as picked 2026-10-06): markup, styles and script; registers window.OSViews.agents(api). Built into the page by build.mjs. Everything is computed in the browser from api.D (live data.json); agent files are read live through the server (files/agents/...). Class names carry the agv- prefix. -->
+<style>
+.agv{--agv-read:#1B1530;--agv-chip:#F3F4F8;--agv-rule2:#EEF0F5;--agv-hover:#F8F9FC;--agv-amber:#9A5B00;--agv-amber-bg:#FFF4E0;--agv-grey:#8A93A3;--agv-red-bg:#FDECEE;font-size:16px;line-height:1.5;padding-bottom:24px}
+.agv *,.agv-pop *{box-sizing:border-box}
+:where(.agv) :is(h1,h2,h3,p,ul,ol,dl,dd){margin:0}
+:where(.agv) button,:where(.agv) textarea{font:inherit;color:inherit}
+:where(.agv) button{cursor:pointer}
+.agv-card{background:var(--card);border-radius:20px;box-shadow:var(--shadow)}
+.agv-lede{font-size:17px;color:var(--ink2);margin:4px 0 20px}
+.agv-lede b{color:var(--ink);font-weight:700}
+/* summary */
+.agv-sum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:22px 0}
+.agv-cell{padding:0 28px;display:grid;grid-template-columns:auto 1fr;column-gap:16px;align-items:center}
+.agv-cell+.agv-cell{border-left:1px solid var(--rule)}
+.agv-cell .agv-ic{grid-row:1/3;width:46px;height:46px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center}
+.agv-cell .agv-ic svg{width:22px;height:22px}
+.agv-ic.r{background:var(--agv-red-bg);color:var(--red)}.agv-ic.p{background:var(--t5);color:var(--acc)}.agv-ic.g{background:var(--agv-chip);color:var(--ink2)}
+.agv-cell .agv-lb{font-size:15px;font-weight:600;color:var(--ink2)}
+.agv-cell .agv-r2{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.agv-num{font-size:40px;font-weight:300;letter-spacing:-.03em;line-height:1.1}
+.agv-num.r{color:var(--red)}.agv-num.p{color:var(--acc)}.agv-num.g{color:var(--ink3)}
+.agv-cell small{font-size:15px;color:var(--ink2)}
+.agv-golink{border:0;background:none;padding:6px 2px;color:var(--acc);font-size:15px;font-weight:700;display:inline-flex;align-items:center;gap:4px;border-radius:8px}
+.agv-golink:hover{text-decoration:underline;text-underline-offset:3px}
+.agv-golink svg{width:16px;height:16px}
+/* segmented control */
+.agv-segrow{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 16px;flex-wrap:wrap}
+.agv-seg{display:inline-flex;padding:4px;border-radius:999px;background:#fff;box-shadow:var(--shadow);gap:2px}
+.agv-seg button{height:40px;padding:0 18px;border:0;border-radius:999px;background:transparent;font-size:15px;font-weight:600;color:var(--ink2);white-space:nowrap}
+.agv-seg button:hover{color:var(--ink)}
+.agv-seg button[aria-checked="true"]{background:var(--t5);color:var(--acc);font-weight:700}
+.agv-segnote{font-size:15px;color:var(--ink2)}
+/* board */
+.agv-board{padding:6px 24px 0}
+.agv-bhead{padding:18px 0 12px}
+.agv-bhead h2{font-size:20px;font-weight:700;letter-spacing:-.01em}
+.agv-bhead p{font-size:15px;color:var(--ink2);margin-top:4px}
+.agv-row{display:grid;grid-template-columns:300px 160px minmax(0,1fr) 32px;align-items:center;position:relative}
+.agv-work{display:grid;grid-template-columns:minmax(0,1fr) 120px;row-gap:10px;align-items:center}
+.agv-thead{min-height:44px;border-top:1px solid var(--agv-rule2);border-bottom:1px solid var(--agv-rule2);font-size:14px;font-weight:600;color:var(--ink3)}
+.agv-thead .agv-r{text-align:right;padding-right:16px}
+.agv-brow{min-height:76px;padding:14px 0;border-bottom:1px solid var(--agv-rule2)}
+.agv-brow:last-child{border-bottom:0}
+.agv-brow:hover{background:var(--agv-hover);box-shadow:-24px 0 0 var(--agv-hover),24px 0 0 var(--agv-hover)}
+.agv-brow.two{min-height:96px}
+.agv-agent{min-width:0;padding-right:16px}
+.agv-nm{font-size:16px;font-weight:700;text-decoration:none;color:var(--ink);line-height:1.3}
+.agv-nm::after{content:"";position:absolute;inset:0;z-index:0}
+.agv-nm:focus-visible{outline:0}
+.agv-nm:focus-visible::after{outline:2px solid var(--acc);outline-offset:-2px;border-radius:12px}
+.agv-role{display:block;font-size:14px;font-weight:500;color:var(--ink3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.4}
+.agv-go{display:flex;justify-content:flex-end;color:var(--ink3)}
+.agv-go svg{width:20px;height:20px}
+.agv-frac{text-align:right;padding-right:16px;line-height:1.1}
+.agv-frac b{display:block;font-size:22px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+.agv-frac small{display:block;font-size:14px;color:var(--ink3);font-weight:500;margin-top:2px}
+.agv-frac .agv-none{font-size:15px;color:var(--ink3)}
+.agv-brow .agv-sq,.agv-brow .agv-tick{position:relative;z-index:1}
+/* states: light tint, coloured text */
+.agv-state{display:inline-flex;align-items:center;gap:7px;height:32px;padding:0 13px 0 10px;border-radius:999px;font-size:14px;font-weight:700;white-space:nowrap;line-height:1}
+.agv-state i{width:16px;height:16px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-style:normal;font-size:12px;font-weight:800;flex:none}
+.agv-state.red{background:var(--agv-red-bg);color:var(--red)}.agv-state.red i{background:var(--red);color:#fff}
+.agv-state.amber{background:var(--agv-amber-bg);color:#7A4600}.agv-state.amber i{background:var(--agv-amber);color:#fff}
+.agv-state.green{background:var(--green-bg);color:#14652C}.agv-state.green i{background:var(--green);color:#fff}
+.agv-state.early,.agv-state.none{background:#fff;color:var(--ink2);box-shadow:inset 0 0 0 1.5px var(--agv-grey)}
+.agv-state.early i{width:8px;height:8px;background:var(--agv-grey);margin:0 4px}
+.agv-state.none i{background:transparent;color:var(--ink2);font-size:15px}
+.agv-state.sm{height:26px;font-size:13px;padding:0 10px 0 8px;gap:5px}
+.agv-state.sm i{width:14px;height:14px;font-size:11px}
+/* marks: round = kept, square = sent back, hollow = not counted */
+.agv-strip{display:flex;align-items:center;gap:8px;min-width:0}
+.agv-strip .agv-kl{font-size:14px;color:var(--ink3);font-weight:600;width:64px;flex:none}
+.agv-sqs{display:flex;flex-wrap:wrap;align-items:center;gap:9px 3px}
+.agv-sq{width:12px;height:12px;border-radius:50%;background:var(--green);position:relative;flex:none}
+.agv-sq.bad{background:var(--red);border-radius:2px}
+.agv-sq.ex{background:#fff;border-radius:2px;box-shadow:inset 0 0 0 2px var(--agv-grey)}
+.agv-sq.step::before{content:"";position:absolute;left:4px;top:-7px;width:4px;height:4px;border-radius:50%;background:var(--acc)}
+.agv-sq:hover,.agv-sq:focus-visible{transform:scale(1.25)}
+.agv-sq:focus-visible,.agv-tick:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:4px}
+.agv-tick{width:2px;height:20px;margin-top:-4px;border-radius:2px;background:var(--acc);flex:none;position:relative}
+.agv-tick::after{content:"";position:absolute;inset:-4px -6px}
+.agv-snote{font-size:14px;color:var(--ink3);font-weight:500}
+.agv-big .agv-sqs{gap:8px 4px}
+.agv-big .agv-sq{width:16px;height:16px}
+.agv-big .agv-sq.bad,.agv-big .agv-sq.ex{border-radius:3px}
+.agv-big .agv-sq.step::before{left:5px;top:-8px;width:6px;height:6px}
+/* legend */
+.agv-legend{border-top:1px solid var(--agv-rule2);margin:0 -24px;padding:14px 24px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px;background:#FBFCFE;border-radius:0 0 20px 20px}
+.agv-k{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--ink2)}
+.agv-k .agv-sq:hover{transform:none}
+.agv-legend details{margin-left:auto;font-size:14px;color:var(--ink2)}
+.agv-legend summary{cursor:pointer;font-weight:700;border-radius:6px}
+.agv-legend details[open]{flex-basis:100%;margin-left:0}
+.agv-rules{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px 20px;margin-top:12px}
+.agv-rules>div{display:flex;flex-direction:column;align-items:flex-start;gap:8px;line-height:1.4}
+/* no-signal grid */
+.agv-nosig{margin-top:36px}
+.agv-nosig h2{font-size:20px;font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.agv-count{min-width:28px;height:26px;border-radius:999px;background:#E9ECF2;color:var(--ink2);font-size:14px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 9px}
+.agv-nosig>p{font-size:15px;color:var(--ink2);margin-top:6px}
+.agv-ngrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-top:16px}
+.agv-ncard{display:flex;flex-direction:column;gap:10px;min-height:120px;padding:18px;border-radius:16px;background:#fff;box-shadow:var(--shadow);text-decoration:none;color:inherit;position:relative}
+.agv-ncard:hover{box-shadow:0 1px 2px rgba(11,18,32,.05),0 12px 28px rgba(11,18,32,.08)}
+.agv-ncard b{display:block;font-size:16px;font-weight:700;line-height:1.3}
+.agv-ncard .agv-role{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.agv-ncard .agv-bdg{position:absolute;right:14px;top:14px}
+.agv-nf{font-size:14px;font-weight:600;color:var(--ink);line-height:1.4}
+.agv-nl{font-size:14px;color:var(--ink3);margin-top:auto}
+.agv-bdg{min-width:22px;height:22px;border-radius:999px;background:var(--acc);color:#fff;font-size:13px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 7px}
+/* agent page */
+.agv-back{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 12px 0 8px;margin:4px 0 0 -8px;border-radius:12px;font-size:15px;font-weight:700;color:var(--ink2);text-decoration:none}
+.agv-back:hover{background:#fff;color:var(--ink)}
+.agv-back svg{width:18px;height:18px}
+.agv-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:10px 0 22px;flex-wrap:wrap}
+.agv-dt{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.agv-dt h2{font-size:32px;font-weight:700;letter-spacing:-.02em;line-height:1.15}
+.agv-dt h2:focus{outline:none}
+.agv-drole{font-size:17px;color:var(--ink2);margin-top:6px}
+.agv-viewseg button{min-width:112px}
+.agv-simple{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:24px;align-items:stretch}
+.agv-block{padding:28px 32px 30px;display:flex;flex-direction:column}
+.agv-block h3{font-size:15px;font-weight:700;color:var(--ink3);margin-bottom:12px}
+.agv-block .agv-bigp{font-size:20px;line-height:1.55;color:var(--agv-read)}
+.agv-block .agv-bigp b{font-weight:700}
+.agv-cta{margin-top:auto;padding-top:24px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px}
+.agv-cta p{font-size:15px;color:var(--ink2);line-height:1.5;flex:1;min-width:240px}
+.agv-btnp{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 20px;border-radius:12px;border:0;background:var(--acc);color:#fff;font-size:15px;font-weight:700;white-space:nowrap}
+.agv-btnp:hover{background:#5A22CC}
+.agv-btnp svg{width:18px;height:18px}
+.agv-btnp.lg{height:52px;padding:0 24px;font-size:16px}
+.agv-btno{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:12px;border:1.5px solid var(--rule);background:#fff;font-size:15px;font-weight:700;color:var(--ink);white-space:nowrap}
+.agv-btno:hover{border-color:var(--t3);background:var(--t5)}
+.agv-btno svg{width:18px;height:18px;color:var(--acc)}
+.agv-btng{display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 14px;border-radius:12px;border:0;background:transparent;color:var(--ink);font-size:15px;font-weight:700;white-space:nowrap}
+.agv-btng:hover{background:var(--ground)}
+.agv-btng svg{width:16px;height:16px}
+.agv-s{height:38px;padding:0 14px;font-size:14px;border-radius:10px}
+.agv-btnp:disabled,.agv-btno:disabled{opacity:.55;cursor:not-allowed}
+.agv-linkbtn{border:0;background:none;padding:4px 2px;color:var(--acc);font-size:15px;font-weight:700;text-decoration:underline;text-underline-offset:3px;border-radius:6px}
+.agv-twlines{margin-top:24px;padding:18px 24px}
+.agv-twlines h3{font-size:15px;font-weight:700;color:var(--ink3);margin-bottom:6px}
+.agv-twl{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;padding:10px 0;flex-wrap:wrap}
+.agv-twl+.agv-twl{border-top:1px solid var(--agv-rule2)}
+.agv-twl .agv-tt{font-size:16px;font-weight:600;flex:1;min-width:240px}
+.agv-tag{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:999px;background:var(--t5);color:var(--acc);font-size:13px;font-weight:700;margin-right:8px;vertical-align:1px}
+.agv-tb{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.agv-res{font-size:15px;color:var(--ink2)}
+.agv-res b{color:var(--ink)}
+.agv-res.err{color:var(--red);font-weight:600}
+/* advanced */
+.agv-changed{font-size:15px;color:var(--ink2);line-height:1.5;margin:-8px 0 22px}
+.agv-changed b{color:var(--ink);font-weight:700}
+.agv-dgrid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:24px;align-items:start}
+.agv-doc{min-width:0}
+.agv-tabs{border-radius:20px 20px 0 0;padding:14px 24px 0;border-bottom:1px solid var(--agv-rule2);background:#fff}
+.agv-tablist{display:flex;gap:4px;flex-wrap:wrap}
+.agv-tab{position:relative;min-height:48px;padding:8px 16px;border:0;background:transparent;font-size:16px;font-weight:600;color:var(--ink2);border-radius:12px 12px 0 0;display:inline-flex;align-items:center;gap:6px;text-align:left}
+.agv-tab:hover{color:var(--ink);background:var(--ground)}
+.agv-tab[aria-selected="true"]{color:var(--acc);font-weight:700}
+.agv-tab[aria-selected="true"]::after{content:"";position:absolute;left:12px;right:12px;bottom:-1px;height:3px;border-radius:3px 3px 0 0;background:var(--acc)}
+.agv-tab svg{width:16px;height:16px}
+.agv-tl{display:flex;flex-direction:column;align-items:flex-start;line-height:1.2}
+.agv-tl small{font-size:13px;font-weight:500;color:var(--ink3);margin-top:3px}
+.agv-tab[aria-selected="true"] .agv-tl small{color:var(--acc)}
+.agv-morewrap{position:relative}
+.agv-menu{position:absolute;left:0;top:52px;min-width:240px;background:#fff;border-radius:14px;box-shadow:0 24px 64px rgba(11,18,32,.16),0 0 0 1px var(--rule);padding:6px;z-index:10}
+.agv-menu button{display:flex;flex-direction:column;align-items:flex-start;width:100%;border:0;background:none;text-align:left;padding:10px 12px;border-radius:10px;font-size:15px;font-weight:700}
+.agv-menu button small{font-size:14px;font-weight:500;color:var(--ink3)}
+.agv-menu button:hover,.agv-menu button:focus-visible{background:var(--ground)}
+.agv-tabline{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 40px;border-bottom:1px solid var(--agv-rule2);background:#FBFCFE}
+.agv-tabline p{font-size:15px;color:var(--ink2);line-height:1.45}
+.agv-docbody{padding:30px 40px 44px}
+.agv-empty{font-size:15px;color:var(--ink3)}
+.agv-emptyrules{display:flex;gap:20px;align-items:flex-start;padding:26px;border-radius:16px;background:var(--ground);max-width:640px}
+.agv-emptyrules h3{font-size:19px;font-weight:700}
+.agv-emptyrules p{font-size:16px;color:var(--ink2);margin-top:6px;line-height:1.6}
+.agv-emptyrules .agv-btnp{margin-top:16px}
+/* reading type */
+.agv-prose{font-size:18px;line-height:1.65;color:var(--agv-read);max-width:70ch}
+.agv-prose>*+*{margin-top:18px}
+.agv-prose h2,.agv-prose h3,.agv-prose h4,.agv-prose h5{color:var(--agv-read);font-weight:700;letter-spacing:-.015em;line-height:1.3}
+.agv-prose h2{font-size:28px;margin-top:44px}.agv-prose h3{font-size:22px;margin-top:34px}.agv-prose h4,.agv-prose h5{font-size:19px;margin-top:26px}
+.agv-prose>:first-child{margin-top:0}
+.agv-prose ul,.agv-prose ol{padding-left:26px}.agv-prose ul{list-style:disc}.agv-prose ol{list-style:decimal}
+.agv-prose li+li{margin-top:8px}.agv-prose li>ul,.agv-prose li>ol{margin-top:8px}
+.agv-prose strong{font-weight:700;color:var(--ink)}
+.agv-prose a{color:var(--blue);font-weight:600;overflow-wrap:anywhere}
+.agv-prose code{font-family:inherit;font-size:.86em;font-weight:600;background:var(--agv-chip);color:#2B2F3A;border-radius:6px;padding:2px 7px;overflow-wrap:break-word}
+.agv-prose .agv-fence{white-space:pre-wrap;background:var(--agv-chip);border-radius:12px;padding:16px 20px;font-size:15px;line-height:1.6;overflow-wrap:anywhere}
+.agv-prose blockquote{margin:0;padding:4px 0 4px 20px;border-left:3px solid var(--t3);color:var(--ink2)}
+.agv-prose hr{border:0;border-top:1px solid var(--rule);margin:32px 0}
+.agv-prose .agv-tw{overflow-x:auto}
+.agv-prose table{border-collapse:collapse;font-size:16px;line-height:1.5;width:100%;min-width:480px}
+.agv-prose th{text-align:left;font-weight:700;padding:10px 12px;border-bottom:1.5px solid var(--rule)}
+.agv-prose td{padding:10px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+.agv-prose details{border-radius:14px;background:var(--ground)}
+.agv-prose summary{cursor:pointer;padding:14px 18px;font-size:16px;font-weight:700;color:var(--ink)}
+.agv-prose details .agv-in{padding:0 18px 16px;font-size:16px;color:var(--ink2)}
+.agv-hist li{display:grid;grid-template-columns:108px minmax(0,1fr);gap:20px;padding:20px 0;border-bottom:1px solid var(--agv-rule2);list-style:none}
+.agv-hist{padding:0;max-width:72ch}
+.agv-hist time{font-size:15px;font-weight:700}
+.agv-hist .agv-prose{font-size:17px}
+.agv-vt{display:inline-block;margin-top:6px;font-size:14px;color:var(--ink3);font-weight:600}
+/* editor */
+.agv-edbanner{background:var(--t5);color:var(--acc);border-radius:14px;padding:14px 18px;font-size:15px;font-weight:600;line-height:1.5;margin-bottom:18px}
+.agv-edtop{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.agv-edtop .agv-seg{box-shadow:none;background:var(--ground)}
+.agv-edtop .agv-seg button{height:36px;font-size:14px}
+.agv-edtop .agv-seg button[aria-checked="true"]{background:#fff}
+.agv-ed{width:100%;min-height:360px;border:1.5px solid var(--rule);border-radius:14px;padding:18px 20px;font-size:17px;line-height:1.6;background:#fff;color:var(--agv-read);resize:vertical}
+.agv-ed:focus{outline:2px solid var(--acc);outline-offset:1px;border-color:var(--acc)}
+.agv-edprev{border:1.5px dashed var(--rule);border-radius:14px;padding:24px;min-height:200px}
+.agv-edfoot{position:sticky;bottom:0;z-index:4;margin:20px -40px -44px;padding:14px 40px;background:rgba(255,255,255,.96);border-top:1px solid var(--agv-rule2);border-radius:0 0 20px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.agv-edfoot .agv-hint{flex:1;min-width:260px;font-size:14px;color:var(--ink2);line-height:1.45}
+.agv-edfoot .agv-hint b{color:var(--ink)}
+.agv-diffpanel{border-radius:14px;border:1.5px solid var(--rule);margin-bottom:16px;overflow:hidden}
+.agv-diffpanel>p{font-size:14px;font-weight:700;color:var(--ink2);padding:10px 16px;background:var(--ground)}
+.agv-diff .agv-ln{padding:5px 14px 5px 36px;position:relative;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--ink2);font-size:15px;line-height:1.55}
+.agv-diff .agv-ln::before{position:absolute;left:14px;font-weight:800}
+.agv-diff .add{background:var(--green-bg);color:#14652C}.agv-diff .add::before{content:"+"}
+.agv-diff .del{background:var(--agv-red-bg);color:#A3142A;text-decoration:line-through}.agv-diff .del::before{content:"−"}
+.agv-diff .gap{color:var(--ink3);font-size:14px;padding:4px 14px 4px 36px;background:#FBFCFE}
+/* rail */
+.agv-rail{display:flex;flex-direction:column;gap:16px;min-width:0}
+.agv-rcard{padding:22px 22px 20px}
+.agv-rcard h3{font-size:17px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.agv-rcard h4{font-size:14px;font-weight:700;color:var(--ink3);margin:16px 0 6px}
+.agv-how p{font-size:15px;color:var(--ink2);line-height:1.55}
+.agv-how p+p{margin-top:8px}
+.agv-how b{color:var(--ink);font-weight:700}
+.agv-how .agv-bl{font-size:17px;color:var(--ink);line-height:1.45}
+.agv-how .agv-bl b.red{color:var(--red)}.agv-how .agv-bl b.amber{color:var(--agv-amber)}
+.agv-how .agv-reason{background:var(--ground);border-radius:12px;padding:10px 12px;margin-top:10px;color:var(--ink)}
+.agv-how .agv-strip{margin:12px 0 4px}
+.agv-part+.agv-part{margin-top:18px;padding-top:18px;border-top:1px solid var(--agv-rule2)}
+.agv-twc{border-radius:16px;border:1.5px solid var(--rule);padding:16px}
+.agv-twc+.agv-twc{margin-top:12px}
+.agv-twc h4{font-size:16px;font-weight:700;line-height:1.35;margin:0;color:var(--ink)}
+.agv-twc dt{font-size:14px;font-weight:700;color:var(--ink3);margin-top:8px}
+.agv-twc dd{font-size:15px;color:var(--ink2);line-height:1.5}
+.agv-twc .agv-tb{margin-top:12px}
+.agv-sb{padding:14px 0;border-top:1px solid var(--agv-rule2)}
+.agv-sb:first-of-type{border-top:0;padding-top:4px}
+.agv-sbh{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.agv-sbh b{font-size:16px;font-weight:700}
+.agv-sbh span{font-size:14px;color:var(--ink3);white-space:nowrap}
+.agv-sbn{font-size:15px;font-weight:600;margin-top:2px}
+.agv-sbn em{font-style:normal;color:var(--red)}
+.agv-sbq{font-size:15px;color:var(--ink2);line-height:1.5;margin-top:4px}
+.agv-sba{display:flex;flex-wrap:wrap;margin:6px 0 0 -8px}
+.agv-sba .agv-btng{height:40px;padding:0 8px;gap:2px}
+.agv-sba .agv-btng.rd{color:var(--acc)}
+.agv-kept{font-size:14px;color:var(--ink3);padding-top:12px;border-top:1px solid var(--agv-rule2);line-height:1.5}
+/* popups (api.modal) */
+.agv-pop{font-size:16px;line-height:1.55}
+.agv-pop .agv-steps{color:var(--ink2);margin:0 0 14px}
+.agv-pop .agv-steps b{color:var(--ink)}
+.agv-pbox{white-space:pre-wrap;background:var(--ground);border-radius:14px;padding:16px 18px;font-size:14px;line-height:1.6;color:#1B1530;max-height:52vh;overflow:auto;overflow-wrap:anywhere;margin:0;font-family:inherit}
+.agv-pfoot{display:flex;justify-content:flex-end;gap:10px;margin-top:16px;flex-wrap:wrap}
+.agv-msub{font-size:14px;color:var(--ink3);margin-top:2px}
+/* tooltip */
+.agv-tip{position:fixed;z-index:3000;max-width:340px;background:var(--ink);color:#fff;border-radius:12px;padding:10px 14px;font-size:14px;line-height:1.5;pointer-events:none;box-shadow:0 24px 64px rgba(11,18,32,.18);opacity:0;transition:opacity .12s}
+.agv-tip.on{opacity:1}
+.agv-tip .tm{color:#C9CFDB}.agv-tip .ts{margin-top:6px;padding-top:6px;border-top:1px solid rgba(255,255,255,.16);color:#E1D5F9}
+@media (min-width:1600px){
+  .agv-row{grid-template-columns:380px 180px minmax(0,1fr) 40px}
+  .agv-work{grid-template-columns:minmax(0,640px) 140px;justify-content:start}
+  .agv-dgrid{grid-template-columns:minmax(0,1fr) 440px}
+}
+@media (max-width:1279px){
+  .agv-row{grid-template-columns:232px 150px minmax(0,1fr) 32px}
+  .agv-dgrid{grid-template-columns:minmax(0,1fr) 320px}
+  .agv-tabline,.agv-docbody{padding-left:28px;padding-right:28px}
+  .agv-edfoot{margin:20px -28px -44px;padding:14px 28px}
+  .agv-rules{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .agv-cell{padding:0 20px}
+  .agv-simple{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}
+}
+@media (max-width:900px){
+  .agv-dgrid,.agv-simple{grid-template-columns:minmax(0,1fr)}
+  .agv-rail{order:-1}
+}
+@media (max-width:760px){
+  .agv-sum{grid-template-columns:minmax(0,1fr);padding:4px 0}
+  .agv-cell{padding:14px 18px;grid-template-columns:auto 1fr auto}
+  .agv-cell+.agv-cell{border-left:0;border-top:1px solid var(--rule)}
+  .agv-cell .agv-r2{display:contents}
+  .agv-cell .agv-num{grid-column:3;grid-row:1/3;font-size:32px}
+  .agv-cell .agv-lb{grid-column:2;grid-row:1}
+  .agv-cell .agv-r2>small,.agv-cell .agv-r2>.agv-golink{grid-column:2;grid-row:2;justify-self:start}
+  .agv-seg{display:grid;grid-template-columns:1fr 1fr;width:100%}
+  .agv-seg button{white-space:normal;height:auto;min-height:44px;padding:6px 10px;line-height:1.25;font-size:14px}
+  .agv-board{padding:0;background:transparent;box-shadow:none}
+  .agv-thead{display:none}
+  .agv-brow{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;background:#fff;border-radius:20px;box-shadow:var(--shadow);padding:18px 16px 16px;margin-bottom:12px;border:0}
+  .agv-brow:hover{box-shadow:var(--shadow)}
+  .agv-go{display:none}
+  .agv-agent{padding:0}
+  .agv-work{grid-template-columns:minmax(0,1fr) auto}
+  .agv-brow .agv-strip{flex-direction:column;align-items:flex-start;gap:4px}
+  .agv-legend{margin:12px 0 0;border-radius:20px;background:#fff;box-shadow:var(--shadow)}
+  .agv-rules{grid-template-columns:minmax(0,1fr)}
+  .agv-ngrid{grid-template-columns:minmax(0,1fr);gap:10px}
+  .agv-ncard{min-height:0;padding:14px 16px}
+  .agv-ncard .agv-nf{display:none}
+  .agv-head .agv-seg{width:100%}
+  .agv-block{padding:22px 20px}
+  .agv-block .agv-bigp{font-size:18px}
+  .agv-cta .agv-btnp{width:100%;white-space:normal;height:auto;min-height:52px;padding:10px 16px;text-align:left}
+  .agv-tabs{padding:8px 8px 0;overflow-x:auto}
+  .agv-tablist{flex-wrap:nowrap}
+  .agv-tab{padding:8px 10px;font-size:15px;white-space:nowrap}
+  .agv-tabline{flex-direction:column;align-items:stretch;padding:14px 18px}
+  .agv-docbody{padding:22px 18px 30px}
+  .agv-prose{font-size:17px}
+  .agv-edfoot{margin:20px -18px -30px;padding:12px 18px}
+  .agv-hist li{grid-template-columns:minmax(0,1fr);gap:6px}
+  .agv-dt h2{font-size:26px}
+}
+@media (prefers-reduced-motion:reduce){.agv *,.agv-tip{transition:none!important;animation:none!important}}
+</style>
+<div class="agv" id="agv-root"></div>
+<script>
+(() => {
+'use strict';
+// ------------------------------------------------------------------ fixed text (not measurements)
+const AGENTS = [
+  ['scout', 'Scout', 'Finds surf businesses and scores how weak their web presence is'],
+  ['harvester', 'Harvester', 'Collects facts, photos and video, each with its source'],
+  ['auditor', 'Auditor', "Measures the old site's taps to book and sets the target"],
+  ['copywriter', 'Copywriter', "Writes the site's words from the facts only"],
+  ['humanizer', 'Humanizer', 'Rewrites the copy so it reads as a person wrote it'],
+  ['copyeditor', 'Copyeditor', 'Checks every claim against the facts; passes or sends back'],
+  ['creative-director', 'Creative director', 'Decides what kind of page each business gets; writes three concepts'],
+  ['designer', 'Designer', 'Builds three mockups, then the site from your pick'],
+  ['seo', 'SEO', 'Makes the site findable on Google and maps'],
+  ['aiseo', 'AI SEO', 'Makes the site quotable by answer engines'],
+  ['critic', 'Critic', 'Scores the built site; passes or sends back'],
+  ['visual-critic', 'Visual critic', 'Judges the page as design, independently'],
+  ['experience-critic', 'Experience critic', 'Walks the page as a traveller, independently'],
+  ['deployer', 'Deployer', 'Puts the preview online; delivers after a sale'],
+  ['writer', 'Writer', 'Writes the pitch page and the message you send'],
+  ['orchestrator', 'Orchestrator', 'Moves each business along the line and stops at your decisions'],
+];
+// "What it does": restated from PLAN.md §5, file names and station codes left out.
+const DOES = {
+  scout: "Finds the surf businesses in a run's area and scores how weak each one's web presence is, from 0 to 5, with a reason. You approve the shortlist; it never approves, harvests or builds.",
+  harvester: "Collects each approved business's facts, photos and video from its site, listings, socials and reviews, each with where it came from. Gaps are flagged, never filled in.",
+  auditor: "Measures how many taps it takes to book on the business's current site, on a phone, with evidence for every finding. That sets the target the new site has to beat.",
+  copywriter: "Writes the site's words before the design starts, from the business's facts only. It may add atmosphere around a fact, never a new fact.",
+  humanizer: 'Rewrites the copy so it reads as a person wrote it. Facts arrive fixed and leave fixed.',
+  copyeditor: "Checks every claim in the copy against the business's facts, then the voice. One claim with no source sends the copy back; it never rewrites anything itself.",
+  'creative-director': 'Decides what kind of page each business gets, before any design exists, and writes three concepts for the designer. No two businesses in a run may get the same first screen.',
+  designer: 'Builds three mockups from the concepts for you to pick from, looking at each and revising it at least three times. Then it builds the full site from your pick.',
+  seo: "Makes the site findable on Google, Bing and maps: the business's details, page titles, the business's own name as a search, and fast loading.",
+  aiseo: 'Makes the site quotable by answer engines such as ChatGPT and Claude: direct answers to the questions travellers ask, readable even without scripts. Nothing is hidden from people.',
+  critic: 'Scores the built site on facts, speed, booking, brand fit, copy and accessibility. It passes the site or sends it back with a report.',
+  'visual-critic': "Judges each page as design, without reading the other critics. Below 8 of 10, or not better than the business's current site, sends it back.",
+  'experience-critic': 'Walks each page as a traveller would, on a phone and a laptop, without reading the other critics. Below 8 of 10, or not better than the current site, sends it back.',
+  deployer: 'Puts the finished site online as a preview before the pitch. After a sale, it delivers the site in the hosting option the client chose.',
+  writer: 'Writes the pitch page and the short message you send the owner, with the preview link. It lays out the hosting options for the owner to choose from.',
+  orchestrator: 'Moves each business in a run through the pipeline, one step at a time. It keeps to the budgets and always stops at your decisions.',
+};
+const JUDGED = {
+  scout: [{ kind: 'shortlist', label: 'Approved businesses', noun: 'dropped', shared: [] }],
+  copywriter: [{ kind: 'copy', label: 'Copy reviews', noun: 'sent back', shared: ['humanizer'] }],
+  humanizer: [{ kind: 'copy', label: 'Copy reviews', noun: 'sent back', shared: ['copywriter'] }],
+  'creative-director': [{ kind: 'mock', label: 'Mockups', noun: 'no pick', shared: ['designer'] }],
+  designer: [{ kind: 'mock', label: 'Mockups', noun: 'no pick', shared: ['creative-director'] }, { kind: 'build', label: 'Builds', noun: 'sent back', shared: [] }],
+};
+const CHECKER = { copyeditor: 'copy', critic: 'build' };
+const ORDER = AGENTS.map((a) => a[0]);
+
+// ------------------------------------------------------------------ helpers
+let api = null, D = null;
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const day = (iso) => { const d = new Date(iso.length === 10 ? iso + 'T12:00:00Z' : iso); return `${d.getUTCDate()} ${MON[d.getUTCMonth()]}`; };
+const WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen'];
+const word = (n, lower) => { const w = WORDS[n] ?? String(n); return lower ? w.toLowerCase() : w; };
+const times = (n) => (n === 1 ? 'once' : n === 2 ? 'twice' : `${n} times`);
+const runN = (id) => id.replace(/^\d{4}-\d{2}-/, '').split('-').map((w, i) => (i === 0 ? w[0].toUpperCase() + w.slice(1) : w)).join(' ');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const I = {
+  bang: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3.5 22 20.5H2z" stroke-linejoin="round"/><path d="M12 10v4.5M12 17.6v.1"/></svg>',
+  tweak: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>',
+  dash: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg>',
+  chev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>',
+  down: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
+  back: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg>',
+  doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>',
+  pen: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg>',
+  copy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="3"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>',
+};
+
+// ------------------------------------------------------------------ plain words from ledger notes
+const JARGON = /`|\b[\w<>-]+\/[\w.<>*-]+\/|\b(tools|agents|schemas|sites|reports|dossier|src|proposals|final|mockups)\/|\b[\w<>-]+\.(md|json|mjs|js|ya?ml|html|png|jpg)\b|\b\d+\.\d+\.\d+\b|\b4[a-g]\b|→|\b(CLS|LCP|JS|WebGL|API|axe|HF-\d|d1-7|HEAD)\b|\w+\[\d*\]|\b[a-z]+_[a-z_]+\b|\b(FAIL|PASS)\b|\bproposal \d+|\bstation\b|\bimg-\d+|\bstock-\d+|\bgate [a-e]\b/i;
+const isPlain = (t) => !JARGON.test(t);
+function safe(text, fallback) {
+  const m = text.match(JARGON); if (!m) return text;
+  const cut = text.slice(0, m.index).replace(/[\s,;:(—–-]+$/, '').replace(/\s+\w+$/, (w) => (/^(the|a|an|of|to|in|on|at|for|and|by|with)$/i.test(w.trim()) ? '' : w));
+  return cut.length >= 16 ? cut + '…' : fallback;
+}
+function sentence1(s) {
+  let tick = false, depth = 0, q = false;
+  for (let i = 0; i < s.length; i++) {
+    const ch = s[i];
+    if (ch === '`') tick = !tick;
+    else if (tick) continue;
+    else if (ch === '"') q = !q;
+    else if (ch === '(' || ch === '[') depth++;
+    else if (ch === ')' || ch === ']') depth = Math.max(0, depth - 1);
+    else if (ch === ';' && !q && !depth && i > 20) return s.slice(0, i);
+    else if (ch === '.' && !q && !depth && i > 20 && /\s/.test(s[i + 1] || ' ') && /[A-Z"(`]|$/.test(s.slice(i + 1).trimStart()[0] || '')) return s.slice(0, i + 1);
+  }
+  return s;
+}
+const firstSentence = (s) => sentence1(s).replace(/[;.]$/, '');
+function plain(note) {
+  if (!note) return '';
+  let s = note.replace(/^mode: test\s*[—-]\s*/i, '').replace(/\bFAIL\b/g, 'sent back').replace(/\bPASS\b/g, 'kept')
+    .replace(/^Shahar approves/, 'You approved').replace(/^Shahar, \d{4}-\d{2}-\d{2}, on /, 'Your notes on ').replace(/\bShahar allows\b/g, 'You allowed')
+    .replace(/^Shahar, standing rule/, 'Your standing rule').replace(/^Shahar on\b/, 'Your answer on').replace(/\bby Shahar\b/g, 'by you')
+    .replace(/Shahar( verbatim| at the gate)?:\s*/g, 'You said: ').replace(/\bShahar's\b/g, 'your').replace(/\bShahar\b/g, 'you')
+    .replace(/\b([a-z]+)([A-Z][a-z]+)?\[(\d+)\]/g, (m, a, b, n) => `${(a + (b ? ' ' + b.toLowerCase() : '')).replace(/ies$/, 'y').replace(/s$/, '')} ${+n + 1}`)
+    .replace(/`/g, '').trim();
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+function copyCats(note) {
+  const n = (re) => { const m = note.match(re); return m ? (/^one$/i.test(m[1]) ? 1 : +m[1]) : 0; };
+  return {
+    unsourced: n(/\b(\d+|One) unsourced/i), contradicted: n(/\b(\d+) contradicted/), voice: n(/\b(\d+) voice/),
+    repeat: /\d+ duplication|FAIL on (completeness|duplication)/.test(note) ? 1 : 0,
+    guest: /guest's words[^.]*in the business's voice/.test(note) ? 1 : 0,
+  };
+}
+const CAT = {
+  unsourced: (k) => plural(k, 'claim with no source', 'claims with no source'),
+  contradicted: (k) => plural(k, 'fact that contradicts the sources', 'facts that contradict the sources'),
+  voice: (k) => plural(k, 'line that reads machine-written', 'lines that read machine-written'),
+  repeat: () => 'a sentence that repeats another', guest: () => "one guest's words stated as fact",
+};
+const LBL = { unsourced: 'claims with no source', contradicted: 'facts that contradict the sources', voice: 'lines that read machine-written', repeat: 'repeated sentences', guest: "a guest's words stated as fact" };
+const catText = (c) => Object.keys(CAT).filter((k) => c[k]).map((k) => CAT[k](c[k])).join(', ');
+const DROP = [[/no owner-written copy/i, 'no text written by the owner anywhere'], [/no lesson prices/i, 'no prices published'], [/(not|isn't) taking reservations/i, 'not taking bookings'], [/allegations|complain/i, 'serious complaints in its reviews']];
+const dropCat = (note) => (DROP.find(([re]) => re.test(note)) || [null, 'other reasons'])[1];
+
+// ------------------------------------------------------------------ the model, from api.D (recomputed when the data changes)
+let M = null, MD = null;
+function model() {
+  if (M && MD === D) return M;
+  const bs = D.businesses || [];
+  const kinds = { shortlist: [], copy: [], mock: [], build: [] };
+  for (const b of bs) {
+    const H = b.history || [];
+    const ap = H.find((h) => h.to === 'approved');
+    if (ap) {
+      const last = H[H.length - 1];
+      const dropped = ['approved', 'harvested'].includes(last.from) && last.to === 'shortlisted';
+      const byYou = dropped && last.agent === 'human';
+      kinds.shortlist.push({ ts: ap.ts, slug: b.slug, run: b.run_id, name: b.name, bad: dropped && !byYou, excluded: byYou, steps: 0, cat: dropped && !byYou ? dropCat(last.note || '') : null, when: dropped ? last.ts : ap.ts,
+        text: dropped ? (byYou ? `Dropped by you, so not counted against the scout: ${safe(firstSentence(plain(last.note).replace(/^dropped by you:\s*/i, '').replace(/^gate a reversed by you:\s*/i, '')), 'your call')}` : `Dropped by the harvester: ${dropCat(last.note || '')}`) : 'Approved, and went on past the harvest' });
+    }
+    for (const h of H) {
+      if (h.agent === 'copyeditor' && (h.to === 'copy_passed' || h.to === 'copy_failed')) {
+        const bad = h.to === 'copy_failed'; const note = h.note || ''; const cats = bad ? copyCats(note) : null;
+        const ok = /\b0 unsourced/.test(note) && /\b0 contradicted/.test(note);
+        kinds.copy.push({ ts: h.ts, slug: b.slug, run: b.run_id, name: b.name, bad, cats, steps: 0, when: h.ts, stepNotes: [], text: bad ? `Sent back: ${catText(cats) || 'see the copy review'}` : ok ? 'Kept: no claim without a source, none contradicted' : 'Kept' });
+      }
+      if (h.agent === 'human' && h.from === 'mocked') {
+        const note = h.note || ''; const picked = h.to === 'picked';
+        const qm = note.match(/"([^"]{6,90}?)(?:\.|"| \.\.\.)/); const rej = note.match(/rejected as ([^:;.]+)/);
+        const quote = !rej && qm && isPlain(qm[1]) ? qm[1] : null;
+        let text;
+        if (picked) { const k = note.match(/picks (INTERACTIVE|UNIQUE|CALM)/); text = k ? `You picked the ${k[1].toLowerCase()} mockup` : /COMPOSITE/.test(note) ? 'You picked a mix of all three' : 'You picked one'; }
+        else if (rej) text = `Run voided: all three rejected as ${rej[1]}`;
+        else if (quote) text = `No pick. You said: “${quote}”`;
+        else if (/Sent back to station 4d/.test(note)) text = 'No pick: sent back for new concepts';
+        else { const t = safe(firstSentence(plain(note)), 'asked for changes'); text = 'No pick: ' + t.charAt(0).toLowerCase() + t.slice(1); }
+        kinds.mock.push({ ts: h.ts, slug: b.slug, run: b.run_id, name: b.name, bad: !picked, steps: 0, when: h.ts, text, quote: !picked && quote && /good|far|better|below|bad|worse/i.test(quote) ? quote : null });
+      }
+    }
+    for (const c of b.critic_series || []) {
+      if (c.kind !== 'round') continue;
+      let verdict = c.verdict;
+      const line = H.find((h) => h.ts === c.ts && h.to === c.to);
+      if (!verdict) { const nx = H.find((h) => h.ts >= c.ts && h.from === c.to); verdict = nx && nx.to === 'passed' ? 'PASS' : nx ? 'FAIL' : null; }
+      if (!verdict) continue;
+      const note = line?.note || ''; const bad = verdict === 'FAIL';
+      const copyCaused = bad && /Hard fail from (the passed copy|unchanged copy)/.test(note); // the critic's own words
+      const alt = note.match(/alt '([^']+)' - the photo shows ([^-]+?) ->/);
+      kinds.build.push({ ts: c.ts, slug: b.slug, run: b.run_id, name: b.name, bad: bad && !copyCaused, excluded: copyCaused, copyCaused, steps: 0, when: c.ts, stepNotes: [], why: alt ? 'an image description did not match its photo' : null,
+        text: !bad ? `Kept${c.score ? `, scored ${c.score} of 100` : ''}` : copyCaused ? `Sent back for copy that had passed copy review, so not counted against the designer${/New defect/.test(note) ? '. The critic also noted one new layout defect' : ''}` : alt ? `Sent back: an image description says “${alt[1]}”, but the photo shows ${alt[2].trim()}` : 'Sent back' });
+    }
+  }
+  const byTs = (a, z) => a.ts.localeCompare(z.ts);
+  for (const k of Object.keys(kinds)) kinds[k].sort(byTs);
+  for (const b of bs) for (const h of b.history || []) {
+    if (h.agent !== 'human' || !h.from) continue;
+    const list = h.from === 'copy_failed' ? kinds.copy : /^critiqued\(\d+\)$/.test(h.from) ? kinds.build : null; if (!list) continue;
+    const prev = list.filter((x) => x.slug === b.slug && x.run === b.run_id && x.ts <= h.ts).pop();
+    if (prev) { prev.steps++; prev.stepNotes.push(safe(firstSentence(plain(h.note)), 'You answered the send-back')); }
+  }
+  const agents = {};
+  for (const [id, name, role] of AGENTS) {
+    const ad = (D.agents || {})[id] || {};
+    let cut = null; for (const b of bs) for (const h of b.history || []) if (h.agent === id && h.v === ad.version_changelog && (!cut || h.ts < cut)) cut = h.ts;
+    agents[id] = { id, name, role, does: DOES[id], judged: JUDGED[id] || [], checker: CHECKER[id] || null, cut, version: ad.version_changelog || null, changedDate: ad.changelog_date || null };
+  }
+  const criticOnCopy = [];
+  for (const b of bs) for (const h of b.history || []) { if (h.agent !== 'critic' || !/^critiqued/.test(h.to)) continue; const m = (h.note || '').match(/Hard fail from (the passed copy|unchanged c[a-z]*)[^.:]*/); if (m) criticOnCopy.push({ ts: h.ts, name: b.name, slug: b.slug, run: b.run_id, text: m[0] }); }
+  const harv = []; for (const b of bs) for (const h of b.history || []) if (h.agent === 'harvester' && h.to === 'harvested') harv.push(b.slug + '|' + b.run_id);
+  const aud = []; for (const b of bs) for (const h of b.history || []) if (h.agent === 'auditor' && h.to === 'audited') aud.push(b.slug);
+  const pitched = bs.filter((b) => b.pitched_at).length;
+  const facts = {
+    harvester: `${harv.length} harvests of ${new Set(harv).size} businesses`, auditor: `Audited ${aud.length} old site${aud.length === 1 ? '' : 's'}`,
+    writer: pitched ? `${pitched} pitched so far` : 'Your pitch outcomes will judge it once there are some. None pitched yet',
+    'visual-critic': "Not in the ledger yet: its scores are written inside the critic's lines", 'experience-critic': "Not in the ledger yet: its scores are written inside the critic's lines",
+  };
+  const overrides = ((D.agents || {}).critic?.third_fail_overrides || []).length;
+  const latestRun = {}; for (const b of bs) if (!latestRun[b.slug] || b.run_id > latestRun[b.slug]) latestRun[b.slug] = b.run_id;
+  MD = D; M = { kinds, agents, criticOnCopy, facts, overrides, latestRun };
+  return M;
+}
+// pending tweaks, matched to agents (proposals[].agent is free text, e.g. "Designer (your custom.md)")
+function tweaks() {
+  return (D.proposals || []).filter((p) => p.kind === 'proposal' && p.status === 'pending').map((p) => {
+    const custom = /your custom\.md/i.test(p.agent || '') || !!p.custom_md;
+    const ids = (p.agent || '').replace(/\(your custom\.md\)/i, '').split(',').map((x) => x.trim().toLowerCase()).map((n) => AGENTS.find(([, nm]) => nm.toLowerCase() === n)?.[0]).filter(Boolean);
+    return { id: p.file, file: p.file, run: p.run_id, agents: ids, title: p.title, what: p.what, why: p.why, custom };
+  });
+}
+const tweaksFor = (id) => tweaks().filter((t) => t.agents.includes(id));
+
+// ------------------------------------------------------------------ health (concepts §1.2–§1.3)
+const MIN = 4;
+const RANK = { red: 4, amber: 3, green: 2, early: 1, none: 0 };
+const STATE = {
+  red: { word: 'Needs fixing', icon: '!', rule: 'Half or more of its checked work was sent back. At least 4 pieces checked.' },
+  amber: { word: 'Watch', icon: '~', rule: 'Some was sent back: at least 1 in 5, less than half.' },
+  green: { word: 'Doing fine', icon: '✓', rule: 'Less than 1 in 5 sent back. At least 4 pieces checked.' },
+  early: { word: 'Too early', icon: '', rule: 'Checked fewer than 4 times, too few to judge.' },
+  none: { word: 'No signal', icon: '–', rule: 'Nothing in the pipeline checks its work yet.' },
+};
+const stateOf = (bad, total) => (total < MIN ? 'early' : bad / total >= 0.5 ? 'red' : bad / total >= 0.2 ? 'amber' : 'green');
+const pill = (st, sm) => `<span class="agv-state ${st}${sm ? ' sm' : ''}"><i aria-hidden="true">${STATE[st].icon}</i>${STATE[st].word}</span>`;
+const S = { mode: 'all', adv: false, agent: null, tab: 'base', more: 'references', edit: null, files: {}, results: {}, focusTweak: false, menuOpen: false };
+function health(id, mode = S.mode) {
+  const m = model(); const a = m.agents[id];
+  if (!a.judged.length) return { id, state: 'none', parts: [], bad: 0, total: 0, steps: 0 };
+  const since = mode === 'since' ? a.cut || '9999' : '';
+  const parts = a.judged.map((j) => {
+    const all = m.kinds[j.kind]; const v = all.filter((x) => x.ts >= since); const c = v.filter((x) => !x.excluded);
+    const bad = c.filter((x) => x.bad).length;
+    return { j, all, v, c, bad, total: c.length, ex: v.length - c.length, state: stateOf(bad, c.length) };
+  });
+  const st = parts.reduce((s, p) => (RANK[p.state] > RANK[s] ? p.state : s), 'early');
+  const steps = parts.reduce((n, p) => n + (p.j.kind === 'copy' || p.j.kind === 'build' ? p.c.reduce((k, x) => k + x.steps, 0) : 0), 0);
+  return { id, state: st, parts, steps, bad: parts.reduce((n, p) => n + p.bad, 0), total: parts.reduce((n, p) => n + p.total, 0) };
+}
+
+// ------------------------------------------------------------------ marks (round = kept, square = sent back, hollow = not counted)
+function verdictWord(x, kind) { return x.excluded ? 'Not counted' : kind === 'shortlist' ? (x.bad ? 'Dropped' : 'Went on') : kind === 'mock' ? (x.bad ? 'No pick' : 'Picked') : (x.bad ? 'Sent back' : 'Kept'); }
+function strip(p, a, opts = {}) {
+  const v = opts.all ? p.all : p.v; let h = ''; let ticked = (!opts.all && S.mode === 'since') || !a.cut;
+  for (const x of v) {
+    if (!ticked && x.ts >= a.cut) { h += tick(a, false); ticked = true; }
+    const w = verdictWord(x, p.j.kind);
+    const label = `${x.name}, ${runN(x.run)}, ${day(x.when)}. ${x.text.startsWith(w) ? '' : w + '. '}${x.text}${x.steps && !x.excluded ? `. You stepped in ${times(x.steps)}` : ''}`;
+    h += `<span class="agv-sq agv-rv${x.bad ? ' bad' : ''}${x.excluded ? ' ex' : ''}${x.steps && !x.excluded ? ' step' : ''}" tabindex="-1" role="img" data-k="${p.j.kind}" data-i="${p.all.indexOf(x)}" aria-label="${esc(label)}"></span>`;
+  }
+  if (!ticked) h += tick(a, true);
+  const label = opts.label ? `<span class="agv-kl">${esc(p.j.label)}</span>` : '';
+  if (!v.length) return `<div class="agv-strip">${label}<span class="agv-snote">${a.cut ? `Nothing checked since its change on ${day(a.changedDate || a.cut)}` : 'Nothing checked yet'}</span></div>`;
+  return `<div class="agv-strip">${label}<div class="agv-sqs">${h}</div></div>`;
+}
+function tick(a, after) { const t = `Changed ${day(a.changedDate || a.cut)}${after ? '. Nothing checked since' : ''}`; return `<span class="agv-tick agv-rv" tabindex="-1" role="img" data-text="${esc(t)}" aria-label="${esc(t)}"></span>`; }
+const rvGroup = (el) => el.closest('.agv-brow') || el.closest('.agv-big') || el.closest('.agv-strip');
+function rovInit(root) { new Set($$('.agv-rv', root).map(rvGroup)).forEach((g) => $$('.agv-rv', g).forEach((it, k) => it.setAttribute('tabindex', k === 0 ? '0' : '-1'))); }
+
+// tooltip
+let tip = null;
+function showTip(el) {
+  if (!tip) { tip = document.createElement('div'); tip.className = 'agv-tip'; tip.setAttribute('aria-hidden', 'true'); document.body.append(tip); }
+  let h;
+  if (el.dataset.k) {
+    const x = model().kinds[el.dataset.k][+el.dataset.i]; if (!x) return;
+    h = `<b>${esc(x.name)}</b> <span class="tm">· ${esc(runN(x.run))} · ${day(x.when)}</span><br>${esc(x.text)}`;
+    if (x.steps && x.stepNotes?.length && !x.excluded) h += `<div class="ts">You stepped in ${times(x.steps)}: ${esc(x.stepNotes[0])}</div>`;
+  } else h = esc(el.dataset.text);
+  tip.innerHTML = h; tip.classList.add('on');
+  const r = el.getBoundingClientRect(); const tw = tip.offsetWidth, th = tip.offsetHeight;
+  tip.style.left = Math.max(12, Math.min(innerWidth - tw - 12, r.left + r.width / 2 - tw / 2)) + 'px';
+  tip.style.top = (r.top - th - 10 < 8 ? r.bottom + 10 : r.top - th - 10) + 'px';
+}
+const hideTip = () => tip?.classList.remove('on');
+
+// ------------------------------------------------------------------ markdown (readable, never terminal-like) and line diff
+function inline(s) {
+  const codes = [];
+  s = s.replace(/`([^`]+)`/g, (m, c) => { codes.push(c); return `\u0000${codes.length - 1}\u0000`; });
+  s = esc(s);
+  s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, t, u) => (/^https?:/.test(u) ? `<a href="${u}" target="_blank" rel="noopener">${t}</a>` : t));
+  s = s.replace(/\*\*([^*]+?)\*\*/g, '<strong>$1</strong>').replace(/(^|[^*\w])\*([^*\s][^*]*?)\*(?![*\w])/g, '$1<em>$2</em>');
+  s = s.replace(/(^|[\s(])(https?:\/\/[^\s<)]+[^\s<).,;:])/g, '$1<a href="$2" target="_blank" rel="noopener">$2</a>');
+  return s.replace(/\u0000(\d+)\u0000/g, (m, n) => `<code>${esc(codes[n])}</code>`);
+}
+const ITEM = /^(\s*)([-*+]|\d+[.)])\s+(.*)$/;
+function md(src, o = {}) {
+  const L = String(src || '').replace(/\r/g, '').split('\n'); const out = []; let i = 0;
+  const blockStart = (l) => !l.trim() || /^(#{1,6}\s|```|>|\s*\||(-{3,}|\*{3,})\s*$)/.test(l) || ITEM.test(l);
+  while (i < L.length) {
+    const l = L[i]; let m;
+    if (!l.trim()) { i++; continue; }
+    if (o.reading && i < 3 && /^version:\s*\S+/.test(l)) { i++; continue; }
+    if (/^```/.test(l)) { const b = []; i++; while (i < L.length && !/^```/.test(L[i])) b.push(L[i++]); i++; out.push(`<div class="agv-fence">${esc(b.join('\n'))}</div>`); continue; }
+    if ((m = l.match(/^(#{1,6})\s+(.*)$/))) { if (o.reading && m[1].length === 1 && /^\S+\s*\/\s*\S+\.md\b/.test(m[2])) { i++; continue; } const lv = Math.min(5, m[1].length + 1); out.push(`<h${lv}>${inline(m[2])}</h${lv}>`); i++; continue; }
+    if (/^(-{3,}|\*{3,})\s*$/.test(l)) { out.push('<hr>'); i++; continue; }
+    if (/^\s*\|/.test(l) && i + 1 < L.length && /^\s*\|?\s*:?-{2,}/.test(L[i + 1])) {
+      const cells = (r) => r.trim().replace(/^\|/, '').replace(/\|$/, '').split(/(?<!\\)\|/).map((c) => inline(c.trim()));
+      const head = cells(l); i += 2; const rows = []; while (i < L.length && /^\s*\|/.test(L[i])) rows.push(cells(L[i++]));
+      out.push(`<div class="agv-tw"><table><thead><tr>${head.map((c) => `<th>${c}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`); continue;
+    }
+    if (/^>/.test(l)) { const b = []; while (i < L.length && /^>/.test(L[i])) b.push(L[i++].replace(/^>\s?/, '')); out.push(`<blockquote>${md(b.join('\n'))}</blockquote>`); continue; }
+    if (ITEM.test(l)) {
+      const items = [];
+      while (i < L.length) {
+        const x = L[i]; const mm = x.match(ITEM);
+        if (mm) { items.push({ ind: mm[1].length, ord: /\d/.test(mm[2]), text: mm[3] }); i++; continue; }
+        if (x.trim() && /^\s+\S/.test(x) && items.length) { items[items.length - 1].text += ' ' + x.trim(); i++; continue; }
+        if (!x.trim()) { const n = L[i + 1]; if (n && (ITEM.test(n) || /^\s{2,}\S/.test(n))) { i++; continue; } }
+        break;
+      }
+      let h = ''; const st = [];
+      for (const it of items) {
+        while (st.length && it.ind < st[st.length - 1].ind) h += `</li></${st.pop().tag}>`;
+        const top = st[st.length - 1];
+        if (!top || it.ind > top.ind) { const tag = it.ord ? 'ol' : 'ul'; st.push({ ind: it.ind, tag }); h += `<${tag}><li>${inline(it.text)}`; } else h += `</li><li>${inline(it.text)}`;
+      }
+      while (st.length) h += `</li></${st.pop().tag}>`;
+      out.push(h); continue;
+    }
+    const p = []; while (i < L.length && L[i].trim() && !(p.length && blockStart(L[i]))) p.push(L[i++].trim());
+    const text = p.join(' ');
+    out.push(o.reading && /^Runtime prompt =/.test(text) ? `<details><summary>How Claude starts this agent</summary><div class="agv-in"><p>${inline(text)}</p></div></details>` : `<p>${inline(text)}</p>`);
+  }
+  return out.join('\n');
+}
+function diffLines(a, b) {
+  const A = a.split('\n'), B = b.split('\n'); const n = A.length, m = B.length;
+  const dp = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
+  for (let x = n - 1; x >= 0; x--) for (let y = m - 1; y >= 0; y--) dp[x][y] = A[x] === B[y] ? dp[x + 1][y + 1] + 1 : Math.max(dp[x + 1][y], dp[x][y + 1]);
+  const ops = []; let x = 0, y = 0;
+  while (x < n && y < m) { if (A[x] === B[y]) { ops.push(['=', A[x]]); x++; y++; } else if (dp[x + 1][y] >= dp[x][y + 1]) ops.push(['-', A[x++]]); else ops.push(['+', B[y++]]); }
+  while (x < n) ops.push(['-', A[x++]]); while (y < m) ops.push(['+', B[y++]]);
+  return ops;
+}
+function diffHtml(ops, ctx = 2) {
+  const keep = ops.map(() => false);
+  ops.forEach((o, k) => { if (o[0] !== '=') for (let j = Math.max(0, k - ctx); j <= Math.min(ops.length - 1, k + ctx); j++) keep[j] = true; });
+  let h = '', skip = 0;
+  ops.forEach((o, k) => {
+    if (!keep[k]) { skip++; return; }
+    if (skip) { h += `<div class="agv-ln gap">${skip} unchanged line${skip === 1 ? '' : 's'}</div>`; skip = 0; }
+    h += `<div class="agv-ln ${o[0] === '+' ? 'add' : o[0] === '-' ? 'del' : ''}">${o[0] === '-' ? '<span class="sr">Removed: </span>' : o[0] === '+' ? '<span class="sr">Added: </span>' : ''}${esc(o[1] || ' ')}</div>`;
+  });
+  if (skip) h += `<div class="agv-ln gap">${skip} unchanged line${skip === 1 ? '' : 's'}</div>`;
+  return `<div class="agv-diff">${h}</div>`;
+}
+
+// ------------------------------------------------------------------ live files (read through the server)
+function loadFile(path) {
+  if (S.files[path]) return S.files[path].p;
+  const rec = { p: null, text: null, err: null };
+  rec.p = fetch(api.fileURL(path), { cache: 'no-store' }).then(async (r) => { if (!r.ok) throw new Error(r.status === 404 ? 'not found' : String(r.status)); rec.text = await r.text(); return rec.text; })
+    .catch((e) => { rec.err = e.message; return null; });
+  S.files[path] = rec; return rec.p;
+}
+const fileText = (path) => S.files[path]?.text ?? null;
+const fileErr = (path) => S.files[path]?.err ?? null;
+function parseChangelog(src) {
+  const out = []; let cur = null;
+  for (const l of String(src || '').split('\n')) {
+    let m;
+    if ((m = l.match(/^##\s+(\d+\.\d+\.\d+)\s+[—-]\s+(\d{4}-\d{2}-\d{2})/))) { cur = { v: m[1], date: m[2], text: '' }; out.push(cur); continue; }
+    if ((m = l.match(/^-\s+\*\*(?:([a-z]+)\.md\s+)?(\d+\.\d+\.\d+)\*\*\s+[—-]\s+(\d{4}-\d{2}-\d{2})\s+[—-]\s+(.*)$/))) { cur = { v: m[2], file: m[1] || null, date: m[3], text: m[4] }; out.push(cur); continue; }
+    if (cur && l.trim() && !/^#\s/.test(l)) cur.text += (cur.text ? '\n' : '') + l.replace(/^-\s+/, '');
+  }
+  const vn = (v) => v.split('.').map((x) => x.padStart(4, '0')).join('.');
+  return out.sort((a, z) => z.date.localeCompare(a.date) || (a.file ? 1 : 0) - (z.file ? 1 : 0) || vn(z.v).localeCompare(vn(a.v)));
+}
+function lastChangedLine(text) {
+  const q = text.match(/^Approved by Shahar in session(?:\s*\([^)]*\))?:\s*"([^"]+)"\s*[—-]/);
+  if (q) return `You said: “${q[1]}”`;
+  const s = text.replace(/^Approved by Shahar in session(\s*\([^)]*\))?(:\s*"[^"]*"\.?|[.:])\s*/, '').replace(/^[—-]\s*/, '').replace(/^[\w/.-]+ \d+\.\d+\.\d+:\s*/i, '')
+    .replace(/^From proposal \d+ \([^)]*\)\.\s*/, '').replace(/^Same change:\s*/, '').replace(/^(4[a-g]|[1-9])\b:?\s*/, '').replace(/^Shahar, after /, 'After ');
+  return sentence1(s.charAt(0).toUpperCase() + s.slice(1)).trim();
+}
+
+// ------------------------------------------------------------------ popups through api.modal
+function pop(title, sub, ...nodes) {
+  const wrap = document.createElement('div'); wrap.className = 'agv-pop'; wrap.append(...nodes);
+  const d = api.modal({ title, sub }, wrap);
+  const h = d && $('.mh h2', d);
+  if (h && h.textContent === '[object Object]') { h.textContent = title; d.setAttribute('aria-label', title); if (sub) { const p = document.createElement('p'); p.className = 'agv-msub'; p.textContent = sub; h.after(p); } }
+  return d;
+}
+const node = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };
+
+// ------------------------------------------------------------------ board
+function board(root) {
+  const m = model(); const H = ORDER.map((id) => health(id));
+  const judged = H.filter((h) => h.state !== 'none'); const none = H.filter((h) => h.state === 'none');
+  const share = (h) => (h.total ? h.bad / h.total : 0);
+  judged.sort((x, y) => RANK[y.state] - RANK[x.state] || share(y) - share(x) || y.steps - x.steps || ORDER.indexOf(x.id) - ORDER.indexOf(y.id));
+  const red = H.filter((h) => h.state === 'red').length; const tw = tweaks().length; const since = S.mode === 'since';
+  const lede = since ? `Since each agent's last change, <b>${word(red, true)} agent${red === 1 ? '' : 's'} need${red === 1 ? 's' : ''} fixing</b>. Nothing checks ${word(none.length, true)} of them yet.`
+    : `<b>${word(red)} agent${red === 1 ? '' : 's'} need${red === 1 ? 's' : ''} fixing.</b> Nothing checks ${word(none.length, true)} of them yet.`;
+  const rows = judged.map((x) => {
+    const a = m.agents[x.id]; const two = x.parts.length > 1;
+    const works = x.parts.map((p) => `${strip(p, a, { label: two })}<div class="agv-frac">${p.total ? `<b>${p.bad} of ${p.total}</b><small>${p.j.noun}</small>` : '<span class="agv-none">–</span>'}</div>`).join('');
+    return `<div class="agv-row agv-brow${two ? ' two' : ''}" role="row"><div class="agv-agent" role="cell"><a class="agv-nm" href="#agents/${a.id}">${esc(a.name)}</a><span class="agv-role" title="${esc(a.role)}">${esc(a.role)}</span></div><div role="cell">${pill(x.state)}</div><div class="agv-work" role="cell">${works}</div><div class="agv-go" role="cell" aria-hidden="true">${I.chev}</div></div>`;
+  }).join('');
+  const ncards = none.map(({ id }) => {
+    const a = m.agents[id]; const n = tweaksFor(id).length; let fact = '';
+    if (a.checker) { const v = m.kinds[a.checker]; const bad = v.filter((y) => y.bad || y.copyCaused).length; fact = a.checker === 'copy' ? `Sent copy back ${bad} of ${v.length} times` : `Sent builds back ${bad} of ${v.length} times · you overruled it ${m.overrides} times`; }
+    else if (m.facts[id]) fact = m.facts[id];
+    return `<a class="agv-ncard" href="#agents/${id}"><div><b>${esc(a.name)}</b><span class="agv-role">${esc(a.role)}</span></div>${n ? `<span class="agv-bdg" aria-label="${n} tweak waiting">${n}</span>` : ''}${fact ? `<p class="agv-nf">${esc(fact)}</p>` : ''}${a.changedDate ? `<p class="agv-nl">Last changed ${day(a.changedDate)}</p>` : ''}</a>`;
+  }).join('');
+  root.innerHTML = `<p class="agv-lede">${lede}</p>
+  <section class="agv-card agv-sum" aria-label="Summary">
+    <div class="agv-cell"><span class="agv-ic r">${I.bang}</span><span class="agv-lb">Need fixing</span><span class="agv-r2"><span class="agv-num r">${red}</span><small>agents${since ? ', since their last change' : ''}</small></span></div>
+    <div class="agv-cell"><span class="agv-ic p">${I.tweak}</span><span class="agv-lb">Tweaks waiting</span><span class="agv-r2"><span class="agv-num p">${tw}</span>${tw ? `<button type="button" class="agv-golink" id="agv-review">Review them ${I.chev}</button>` : '<small>nothing to answer</small>'}</span></div>
+    <div class="agv-cell"><span class="agv-ic g">${I.dash}</span><span class="agv-lb">Nothing checks them</span><span class="agv-r2"><span class="agv-num g">${none.length}</span><small>listed below</small></span></div>
+  </section>
+  <div class="agv-segrow"><div class="agv-seg" role="radiogroup" aria-label="Which work to count" id="agv-mode">
+    <button type="button" role="radio" aria-checked="${!since}" data-mode="all">All work</button><button type="button" role="radio" aria-checked="${since}" data-mode="since">Since each agent's last change</button>
+  </div><p class="agv-segnote">${since ? 'Counts only work judged after each agent was last changed: did the last tweak help?' : 'Every run combined. The purple tick in a row marks when that agent last changed.'}</p></div>
+  <section class="agv-card agv-board" aria-labelledby="agv-board-h">
+    <div class="agv-bhead"><h2 id="agv-board-h">Agents whose work is checked</h2><p>Ranked worst first. Each mark is one piece of work that was checked, oldest on the left.</p></div>
+    <div role="table" aria-label="Agents whose work is checked, worst first">
+      <div class="agv-row agv-thead" role="row"><span role="columnheader">Agent</span><span role="columnheader">State</span><div class="agv-work"><span role="columnheader">Checked work</span><span class="agv-r" role="columnheader">Sent back</span></div><span role="columnheader"><span class="sr">Open</span></span></div>
+      ${rows}
+    </div>
+    <div class="agv-legend" aria-label="What the marks mean">
+      <span class="agv-k"><span class="agv-sq"></span>Round: kept, or picked</span><span class="agv-k"><span class="agv-sq bad"></span>Square: sent back, dropped, or no pick</span><span class="agv-k"><span class="agv-sq ex"></span>Hollow: not counted against this agent</span><span class="agv-k"><span class="agv-sq step"></span>You stepped in</span><span class="agv-k"><span class="agv-tick" style="height:16px;margin:0 4px"></span>Its last change</span>
+      <details><summary>How the state is decided</summary><div class="agv-rules">${Object.keys(STATE).map((s) => `<div>${pill(s, true)}<span>${STATE[s].rule}</span></div>`).join('')}</div><p style="margin-top:10px">Half, 1 in 5 and 4 pieces are design choices: copy review allows 2 rounds and critique 3.</p></details>
+    </div>
+  </section>
+  <section class="agv-nosig" aria-labelledby="agv-ns-h"><h2 id="agv-ns-h">Nothing checks these yet <span class="agv-count">${none.length}</span></h2><p>No checkpoint judges their work, so there is no score.</p><div class="agv-ngrid">${ncards}</div></section>`;
+  $$('#agv-mode [data-mode]', root).forEach((b) => b.addEventListener('click', () => { if (S.mode !== b.dataset.mode) { S.mode = b.dataset.mode; draw(); $(`#agv-mode [data-mode="${S.mode}"]`)?.focus(); } }));
+  $('#agv-mode', root).addEventListener('keydown', (e) => { if (['ArrowLeft', 'ArrowRight'].includes(e.key)) { e.preventDefault(); $$('[data-mode]', e.currentTarget).find((b) => b.getAttribute('aria-checked') !== 'true').click(); } });
+  $('#agv-review', root)?.addEventListener('click', () => { const t = tweaks()[0]; if (t) { S.focusTweak = true; location.hash = 'agents/' + t.agents[0]; } });
+  rovInit(root);
+}
+
+// ------------------------------------------------------------------ agent page
+function topCat(bad) { const cnt = {}; for (const x of bad) for (const k of Object.keys(x.cats || {})) if (x.cats[k]) cnt[k] = (cnt[k] || 0) + 1; const k = Object.keys(cnt).sort((a, z) => cnt[z] - cnt[a])[0]; return k ? { k, n: cnt[k], all: cnt } : null; }
+function wrongOf(id) {
+  const m = model(); const a = m.agents[id]; const x = health(id, 'all'); const out = [];
+  if (!x.parts.length) {
+    out.push('Nothing checks its work yet.');
+    if (id === 'copyeditor' && m.criticOnCopy.length) { const c = m.criticOnCopy; out.push(`But the critic sent <b>${c.length} build${c.length === 1 ? '' : 's'}</b> of ${esc(c[0].name)} back (${day(c[0].ts)}) for copy the copyeditor had passed: “${esc(c[0].text)}”.`); return { html: out.join(' '), fix: true }; }
+    return { html: out.join(' '), fix: false };
+  }
+  for (const p of x.parts) {
+    const bad = p.c.filter((y) => y.bad), n = p.c.length;
+    if (p.j.kind === 'copy') { const t = topCat(bad); out.push(`Copy review sent the copy back <b>${bad.length} of ${n} times</b>${t ? `, mostly for ${LBL[t.k]} (in ${t.n} of the ${bad.length})` : ''}.`); }
+    else if (p.j.kind === 'shortlist') { const cnt = {}; for (const y of bad) cnt[y.cat] = (cnt[y.cat] || 0) + 1; const k = Object.keys(cnt).sort((q, z) => cnt[z] - cnt[q])[0]; out.push(`The harvester dropped <b>${bad.length} of the ${n}</b> businesses you approved and kept${k ? `, most often for ${k} (${cnt[k]})` : ''}.${p.ex ? ` Your own ${p.ex} drops are not counted.` : ''}`); }
+    else if (p.j.kind === 'mock') { const q = bad.find((y) => y.quote); out.push(`<b>${bad.length} of your ${n}</b> mockup decisions ended without a pick${q ? `; you said “${esc(q.quote)}”` : ''}.`); }
+    else if (bad.length) { const w = [...new Set(bad.map((y) => y.why).filter(Boolean))]; out.push(`The critic sent back <b>${bad.length} of ${n}</b> builds for its own work${w.length ? `: ${esc(w.join('; '))}` : ''}.`); }
+  }
+  if (x.parts.length === 1 && (x.state === 'red' || x.state === 'amber')) {
+    const sv = a.cut ? x.parts[0].all.filter((y) => y.ts >= a.cut && !y.excluded) : [];
+    out.push(sv.length ? `Since its last change on ${day(a.changedDate || a.cut)}: ${sv.filter((y) => y.bad).length} of ${sv.length}.` : `Nothing has been judged since its last change on ${day(a.changedDate || a.cut)}.`);
+  }
+  if (x.state === 'early') out.push('Too few checks so far to judge.');
+  if (x.state === 'green') out.push('Less than 1 in 5 was sent back.');
+  return { html: out.slice(0, 3).join(' '), fix: x.state === 'red' || x.state === 'amber' };
+}
+function promptFor(id) {
+  const m = model(); const a = m.agents[id]; const x = health(id, 'all'); const nm = a.name.toLowerCase();
+  const L = [`The ${nm} agent in Oneshot is not performing. Please look into it.`, '', 'What is wrong (all runs, counted from ledger.jsonl):']; const ex = [];
+  if (!x.parts.length && id === 'copyeditor') {
+    const v = m.kinds.copy; L.push(`- It sent the copy back ${v.filter((y) => y.bad).length} of ${v.length} times, but nothing checks its own verdicts.`);
+    for (const c of m.criticOnCopy) L.push(`- The critic failed a build of ${c.name} (${c.slug}, run ${c.run}, ${day(c.ts)}) for copy the copyeditor had passed: "${c.text}".`);
+  }
+  for (const p of x.parts) {
+    const bad = p.c.filter((y) => y.bad), n = p.c.length; if (!bad.length) continue;
+    const label = { copy: 'Copy review sent the copy back', shortlist: 'The harvester dropped (of the businesses Shahar approved and kept)', mock: 'Mockup decisions that ended without a pick', build: 'Critique rounds sent back for its own work' }[p.j.kind];
+    let line = `- ${label}: ${bad.length} of ${n}.`;
+    if (p.j.kind === 'copy') { const t = topCat(bad); if (t) line += ` By kind: ${Object.entries(t.all).sort((q, z) => z[1] - q[1]).map(([k, c]) => `${LBL[k]} ${c}`).join(', ')}.`; }
+    L.push(line);
+    if (p.j.shared.length) L.push(`  This verdict is shared with the ${p.j.shared.map((o) => m.agents[o].name.toLowerCase()).join(' and ')} (the same work is judged once for both).`);
+    const sv = a.cut ? p.c.filter((y) => y.ts >= a.cut) : [];
+    L.push(`  Since its current version ${a.version || ''} (first used ${a.cut ? day(a.cut) : 'never'}): ${sv.length ? `${sv.filter((y) => y.bad).length} of ${sv.length}` : 'not judged yet'}.`);
+    if (p.ex) L.push(`  Not counted against it: ${p.ex} ${p.j.kind === 'shortlist' ? 'businesses Shahar dropped himself' : 'rounds the critic put on copy that had passed copy review'}.`);
+    ex.push(...bad.slice(-3).reverse().map((y) => `- ${y.name} (${y.slug}, run ${y.run}, ${day(y.when)}): ${y.text}`));
+  }
+  if (ex.length) L.push('', 'Most recent examples:', ...ex);
+  const tw = tweaksFor(id); if (tw.length) L.push('', `Suggested tweaks already waiting for this agent (read them first, do not duplicate them): ${tw.map((t) => `"${t.title}"`).join('; ')}.`);
+  L.push('', `Read agents/${id}/base.md (Claude's instructions for this agent) and agents/${id}/custom.md (Shahar's rules: read it, never edit it), then the ledger lines${id === 'copyeditor' || x.parts.some((p) => p.j.kind === 'copy') ? ' and copy reviews' : ''} for the examples above. Find what in the instructions lets this happen.`);
+  L.push(`Propose a change to agents/${id}/base.md to fix this and save it as a suggested tweak under proposals/, with the evidence. Do not apply the change, and do not change the counts above.`);
+  return L.join('\n');
+}
+function openFix(id) {
+  const text = promptFor(id);
+  const box = node(`<pre class="agv-pbox" tabindex="0" aria-label="The prompt"></pre>`); box.textContent = text;
+  const steps = node(`<p class="agv-steps"><b>Copy the prompt</b> and paste it into a Claude session. Claude looks into it and saves its proposed change as a suggested tweak. It shows up here with Approve and Reject; <b>nothing changes until you approve it</b>.</p>`);
+  const foot = node(`<div class="agv-pfoot"><button type="button" class="agv-btnp">${I.copy}Copy prompt</button></div>`);
+  const d = pop("Get Claude's suggested fix", model().agents[id].name, steps, box, foot);
+  const b = $('button', foot); b.onclick = () => api.copyText(text, b, true); b.focus();
+  return d;
+}
+// Approve / Reject through the server (the same call as the Decisions view)
+async function decide(t, choice, resEl, btns) {
+  btns.forEach((b) => (b.disabled = true)); resEl.className = 'agv-res'; resEl.textContent = 'saving…';
+  let r, j;
+  try { r = await fetch('decide', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ gate: 'proposal', run_id: t.run, file: t.file, choice, reason: '' }), cache: 'no-store' }); j = await r.json().catch(() => ({ error: 'response was not JSON' })); } catch (e) { r = { status: 0 }; j = { error: String(e) }; }
+  S.results[t.file] = { status: r.status, choice, error: j.error };
+  if (r.status === 201) { resEl.innerHTML = choice === 'approved' ? '<b>Approved.</b> Claude applies it in its next session.' : '<b>Rejected.</b>'; setTimeout(() => api.refresh(), 800); }
+  else { resEl.className = 'agv-res err'; resEl.textContent = `${r.status || 'network'}: ${j.error || 'unknown error'}`; btns.forEach((b) => (b.disabled = !api.LIVE)); }
+}
+function tweakButtons(t, host, resEl) {
+  const mk = (cls, txt, fn) => { const b = document.createElement('button'); b.type = 'button'; b.className = cls; b.textContent = txt; b.onclick = fn; return b; };
+  const btns = [];
+  if (t.custom) btns.push(mk('agv-btnp agv-s', 'Put it in my rules', () => putInRules(t)));
+  else btns.push(mk('agv-btnp agv-s', 'Approve', () => decide(t, 'approved', resEl, btns)));
+  btns.push(mk('agv-btno agv-s', 'Reject', () => decide(t, 'rejected', resEl, btns)));
+  const rd = mk('agv-btng agv-s', 'Read it', () => api.openDoc(t.file, t.title));
+  if (!api.LIVE) btns.forEach((b) => { if (b.textContent !== 'Put it in my rules') { b.disabled = true; b.title = 'Start dashboard/server.mjs to decide'; } });
+  host.append(...btns, rd);
+  const prev = S.results[t.file]; if (prev && prev.status !== 201) { resEl.className = 'agv-res err'; resEl.textContent = prev.error || ''; }
+}
+async function putInRules(t) {
+  const md0 = await loadFile(t.file); const sec = md0 ? md0.split(/^## Suggested replacement.*$/m)[1] : null;
+  const suggested = sec ? sec.split(/^## /m)[0].split('\n').filter((l) => l.startsWith('>')).map((l) => l.replace(/^>\s?/, '')).join('\n').replace(/([^\n])\n(?!\n)/g, '$1 ').trim() + '\n' : null;
+  S.adv = true; S.tab = 'custom'; await loadFile(`agents/${S.agent}/custom.md`);
+  const orig = customBody(fileText(`agents/${S.agent}/custom.md`) || '');
+  S.edit = { file: 'custom', orig, text: suggested ?? orig, mode: 'write', fromTweak: t.file, noSuggested: !suggested };
+  draw(); $('#agv-doc')?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+}
+const customBody = (src) => src.split('\n').filter((l, k) => !(k === 0 && /^#\s/.test(l))).join('\n').replace(/^\s*---\s*\n/, '').trim();
+
+function detail(root, id) {
+  const m = model(); const a = m.agents[id]; const x = health(id, 'all');
+  if (S.agent !== id) { S.agent = id; S.adv = false; S.tab = 'base'; S.more = 'references'; S.edit = null; }
+  const head = `<a class="agv-back" href="#agents">${I.back}All agents</a>
+  <header class="agv-head"><div><div class="agv-dt"><h2 id="agv-agent-h" tabindex="-1">${esc(a.name)}</h2>${pill(x.state)}</div>${S.adv ? `<p class="agv-drole">${esc(a.role)}</p>` : ''}</div>
+  <div class="agv-seg agv-viewseg" role="radiogroup" aria-label="How much to show" id="agv-view"><button type="button" role="radio" aria-checked="${!S.adv}" data-view="simple">Simple</button><button type="button" role="radio" aria-checked="${S.adv}" data-view="advanced">Advanced</button></div></header>`;
+  if (!S.adv) {
+    const w = wrongOf(id); const tw = tweaksFor(id);
+    root.innerHTML = `${head}<div class="agv-simple">
+      <section class="agv-card agv-block" aria-labelledby="agv-does-h"><h3 id="agv-does-h">What it does</h3><p class="agv-bigp">${esc(a.does)}</p></section>
+      <section class="agv-card agv-block" aria-labelledby="agv-wrong-h"><h3 id="agv-wrong-h">What is wrong</h3><p class="agv-bigp">${w.html}</p>
+      ${w.fix ? `<div class="agv-cta"><button type="button" class="agv-btnp lg" id="agv-fix">${I.doc}Get Claude's suggested fix</button><p>A ready prompt for a Claude session. Claude proposes a fix as a suggested tweak; nothing changes until you approve it.</p></div>` : `<div class="agv-cta"><p>Nothing to fix from the data. To read or change this agent anyway, open Advanced.</p></div>`}</section>
+    </div>${tw.length ? `<section class="agv-card agv-twlines" aria-labelledby="agv-tws-h"><h3 id="agv-tws-h">Waiting for your answer</h3>${tw.map((t) => `<div class="agv-twl" data-file="${esc(t.file)}"><span class="agv-tt">${t.custom ? '<span class="agv-tag">For your rules</span>' : ''}${esc(t.title)}</span><span class="agv-tb"></span><span class="agv-res" role="status" aria-live="polite"></span></div>`).join('')}</section>` : ''}`;
+    $$('.agv-twl', root).forEach((row) => { const t = tw.find((y) => y.file === row.dataset.file); tweakButtons(t, $('.agv-tb', row), $('.agv-res', row)); });
+    $('#agv-fix', root)?.addEventListener('click', () => openFix(id));
+  } else {
+    const ch = parseChangelog(fileText(`agents/${id}/CHANGELOG.md`));
+    const line = ch[0] ? lastChangedLine(ch[0].text) : null;
+    const date = ch[0]?.date || a.changedDate;
+    root.innerHTML = `${head}
+    <p class="agv-changed">${date ? `<b>Last changed ${day(date)}${line && isPlain(line) ? ':' : '.'}</b> ${line && isPlain(line) ? esc(line) : ''} ` : ''}<button type="button" class="agv-linkbtn" id="agv-hist">Read the history</button></p>
+    <div class="agv-dgrid"><section class="agv-card agv-doc" id="agv-doc" aria-label="${esc(a.name)}'s files"></section>
+      <aside class="agv-rail" aria-label="Full record and what is waiting">
+        <section class="agv-card agv-rcard agv-how" aria-labelledby="agv-how-h"><h3 id="agv-how-h">Full record</h3>${howHtml(id, x)}</section>
+        <section class="agv-card agv-rcard" aria-labelledby="agv-wait-h"><h3 id="agv-wait-h">Waiting for you</h3><div id="agv-twlist"></div></section>
+        ${sentBackHtml(id, x)}
+      </aside></div>`;
+    $('#agv-hist', root).addEventListener('click', () => { if (S.edit && S.edit.text !== S.edit.orig && !confirm('Leave the editor? Your edit is not saved anywhere.')) return; S.edit = null; S.tab = 'history'; draw(); $('#agv-doc')?.scrollIntoView({ behavior: 'auto' }); });
+    const list = $('#agv-twlist', root); const tw = tweaksFor(id);
+    list.innerHTML = tw.length ? '' : '<p class="agv-empty">Nothing waiting for this agent.</p>';
+    for (const t of tw) {
+      const c = node(`<article class="agv-twc">${t.custom ? '<span class="agv-tag">For your rules</span>' : ''}<h4>${esc(t.title)}</h4><dl>${t.what ? `<dt>What changes</dt><dd>${esc(t.what)}</dd>` : ''}${t.why ? `<dt>Why</dt><dd>${esc(t.why)}</dd>` : ''}</dl><div class="agv-tb"></div><p class="agv-res" role="status" aria-live="polite"></p></article>`);
+      tweakButtons(t, $('.agv-tb', c), $('.agv-res', c)); list.append(c);
+    }
+    $$('[data-read]', root).forEach((b) => b.addEventListener('click', () => api.openDoc(b.dataset.read, b.dataset.title)));
+    $$('[data-goto]', root).forEach((b) => b.addEventListener('click', () => api.go(b.dataset.goto.split(':')[0], b.dataset.goto.split(':')[1])));
+    renderDoc();
+    for (const f of ['base.md', 'custom.md', 'CHANGELOG.md']) if (!S.files[`agents/${id}/${f}`]) loadFile(`agents/${id}/${f}`).then(() => { if (S.agent === id && S.adv && !S.edit) draw(); });
+  }
+  $$('#agv-view [data-view]', root).forEach((b) => b.addEventListener('click', () => {
+    const adv = b.dataset.view === 'advanced'; if (adv === S.adv) return;
+    if (!adv && S.edit && S.edit.text !== S.edit.orig && !confirm('Leave the editor? Your edit is not saved anywhere.')) return;
+    S.adv = adv; S.edit = null; draw(); $(`#agv-view [data-view="${adv ? 'advanced' : 'simple'}"]`)?.focus();
+  }));
+  $('#agv-view', root).addEventListener('keydown', (e) => { if (['ArrowLeft', 'ArrowRight'].includes(e.key)) { e.preventDefault(); $$('[data-view]', e.currentTarget).find((b) => b.getAttribute('aria-checked') !== 'true').click(); } });
+  rovInit(root);
+}
+function howHtml(id, x) {
+  const m = model(); const a = m.agents[id]; const nm = a.name.toLowerCase();
+  if (!x.parts.length) {
+    let h = `<p>${pill('none', true)}</p><p style="margin-top:12px">Nothing checks the ${esc(nm)}'s work yet, so there is no score.</p>`;
+    if (a.checker) {
+      const v = m.kinds[a.checker]; const bad = v.filter((y) => y.bad || y.copyCaused).length;
+      h += a.checker === 'copy' ? `<p><b>Its verdicts on others:</b> it sent the copy back ${bad} of ${v.length} times.</p>` : `<p><b>Its verdicts on others:</b> it sent builds back ${bad} of ${v.length} times. You overruled it ${m.overrides} times.</p>`;
+      if (a.checker === 'copy' && m.criticOnCopy.length) h += `<p class="agv-reason"><b>What the critic wrote</b> about copy that had already passed review (${esc(m.criticOnCopy[0].name)}, ${day(m.criticOnCopy[0].ts)}):${m.criticOnCopy.map((c) => `<br>“${esc(c.text)}”`).join('')}</p>`;
+    } else if (m.facts[id]) h += `<p>${esc(m.facts[id])}.</p>`;
+    return h;
+  }
+  return x.parts.map((p) => {
+    const bad = p.bad, n = p.total, st = stateOf(bad, n), cls = st === 'red' || st === 'amber' ? st : '';
+    let s;
+    if (p.j.kind === 'shortlist') s = `<p class="agv-bl">The harvester dropped <b class="${cls}">${bad} of the ${n}</b> businesses you approved and kept.</p>${p.ex ? `<p>You dropped ${p.ex} more yourself; those are not counted against the scout.</p>` : ''}`;
+    else if (p.j.kind === 'copy') s = `<p class="agv-bl">Copy sent back <b class="${cls}">${bad} of ${n}</b> times.</p><p>The copyeditor judges the copy once, for the copywriter and the humanizer together, so both show the same marks.</p>`;
+    else if (p.j.kind === 'mock') s = `<p class="agv-bl">${x.parts.length > 1 ? '<b>Mockups.</b> ' : ''}<b class="${cls}">${bad} of ${n}</b> mockup decisions ended without a pick.</p><p>Your pick judges the concept and the mockup together, so the creative director and the designer show the same marks.</p>`;
+    else s = `<p class="agv-bl">${x.parts.length > 1 ? '<b>Builds.</b> ' : ''}The critic sent back <b class="${cls}">${bad} of ${n}</b> rounds for the designer's own work.</p>${p.ex ? `<p>${p.ex} more ${p.ex === 1 ? 'was' : 'were'} sent back for copy that had passed copy review (the critic's own words); they are not counted against the designer.</p>` : ''}`;
+    const steps = p.j.kind === 'copy' || p.j.kind === 'build' ? p.c.reduce((k, y) => k + y.steps, 0) : 0;
+    if (steps) s += `<p>You stepped in ${times(steps)}.</p>`;
+    const sv = a.cut ? p.all.filter((y) => y.ts >= a.cut && !y.excluded) : [];
+    s += sv.length ? `<p>Since its last change on ${day(a.changedDate || a.cut)}: <b>${sv.filter((y) => y.bad).length} of ${sv.length}</b> ${p.j.noun}.</p>` : `<p>Not judged since its last change${a.changedDate ? ` on ${day(a.changedDate)}` : ''}.</p>`;
+    return `<div class="agv-part">${s}<div class="agv-big">${strip(p, a, { all: true })}</div></div>`;
+  }).join('');
+}
+function sentBackHtml(id, x) {
+  if (!x.parts.length) return '';
+  const m = model(); let h = '';
+  for (const p of x.parts) {
+    const groups = {}; for (const y of p.all) { const k = y.slug + '|' + y.run; (groups[k] ||= { slug: y.slug, run: y.run, name: y.name, v: [] }).v.push(y); }
+    const G = Object.values(groups);
+    const back = G.filter((g) => g.v.some((y) => y.bad)).sort((g1, g2) => g2.v.filter((y) => y.bad).length - g1.v.filter((y) => y.bad).length);
+    const kept = G.filter((g) => !g.v.some((y) => y.bad) && g.v.some((y) => !y.excluded));
+    const notc = G.filter((g) => g.v.some((y) => y.excluded));
+    if (x.parts.length > 1) h += `<h4>${esc(p.j.label)}</h4>`;
+    for (const g of back) {
+      const b = g.v.filter((y) => y.bad); const last = b[b.length - 1]; const cn = g.v.filter((y) => !y.excluded).length;
+      const read = p.j.kind === 'copy' && m.latestRun[g.slug] === g.run ? `<button type="button" class="agv-btng rd" data-read="sites/${esc(g.slug)}/copy/review.md" data-title="Copy review: ${esc(g.name)}">Read the copy review</button>`
+        : p.j.kind === 'build' ? `<button type="button" class="agv-btng rd" data-read="reports/${esc(g.run)}/${esc(g.slug)}.md" data-title="Critic's report: ${esc(g.name)}">Read the critic's report</button>` : '';
+      const open = p.j.kind === 'shortlist' ? `<button type="button" class="agv-btng" data-goto="ledger">See it on the Ledger ${I.chev}</button>` : `<button type="button" class="agv-btng" data-goto="sites:${esc(g.slug)}">Open the site ${I.chev}</button>`;
+      const headTxt = p.j.kind === 'shortlist' ? `Dropped ${day(last.when)} by the harvester` : `${p.j.kind === 'mock' ? 'No pick' : 'Sent back'} <em>${b.length} of ${cn}</em> · last ${day(last.when)}`;
+      let q = last.text.replace(/^Dropped by the harvester: /, '').replace(/^(No pick|Sent back)[:.]\s*/, ''); q = q.charAt(0).toUpperCase() + q.slice(1);
+      h += `<div class="agv-sb"><div class="agv-sbh"><b>${esc(g.name)}</b><span>${esc(runN(g.run))}</span></div><p class="agv-sbn">${headTxt}</p><p class="agv-sbq">${esc(q)}</p><div class="agv-sba">${open}${read}</div></div>`;
+    }
+    if (kept.length) h += `<p class="agv-kept">${p.j.kind === 'shortlist' ? 'Went on' : p.j.kind === 'mock' ? 'Picked first time' : p.j.kind === 'build' ? 'Never sent back for its own work' : 'Kept first time'}: ${kept.map((g) => esc(g.name)).join(', ')}.</p>`;
+    if (notc.length) h += `<p class="agv-kept">Not counted against the ${esc(m.agents[id].name.toLowerCase())}: ${notc.map((g) => `${esc(g.name)} (${p.j.kind === 'shortlist' ? 'you dropped it' : `${g.v.filter((y) => y.excluded).length} rounds sent back for copy`})`).join(', ')}.</p>`;
+  }
+  return `<section class="agv-card agv-rcard" aria-labelledby="agv-sb-h"><h3 id="agv-sb-h">Where it was ${x.parts.every((p) => p.j.kind === 'shortlist') ? 'dropped' : 'sent back'}</h3>${h}</section>`;
+}
+// the files column: tabs, reading, editing (in-page only for now)
+const TABS = {
+  base: { label: "Claude's instructions", sub: 'an edit becomes a suggested tweak', line: 'Claude writes these. An edit you make becomes a suggested tweak for you to approve.', file: 'base.md' },
+  custom: { label: 'Your rules', sub: 'you write these; saves directly', line: 'You write these. A save takes effect directly; Claude never edits them.', file: 'custom.md' },
+  history: { label: 'History', line: 'One entry per approved change, newest first.', file: 'CHANGELOG.md' },
+  more: { label: 'More', line: 'Read-only here. Changes to these go through Claude.' },
+};
+const MORE = { references: ['References', 'Examples it is shown, and what we like in each', 'references.md'], tools: ['Tools', 'What it may run, and how', 'tools.md'], evals: ["How it's judged", 'How its work is measured', 'evals.md'] };
+function renderDoc() {
+  const host = $('#agv-doc'); if (!host) return;
+  const id = S.agent; const a = model().agents[id]; const tab = S.tab; const nm = a.name.toLowerCase();
+  const path = `agents/${id}/${tab === 'more' ? MORE[S.more][2] : TABS[tab].file}`;
+  const tabs = ['base', 'custom', 'history'].map((t) => `<button type="button" role="tab" class="agv-tab" id="agv-tab-${t}" aria-selected="${tab === t}" aria-controls="agv-panel" tabindex="${tab === t ? 0 : -1}" data-tab="${t}"><span class="agv-tl">${TABS[t].label}${TABS[t].sub ? `<small>${TABS[t].sub}</small>` : ''}</span></button>`).join('')
+    + `<span class="agv-morewrap"><button type="button" role="tab" class="agv-tab" id="agv-tab-more" aria-selected="${tab === 'more'}" aria-controls="agv-panel" tabindex="${tab === 'more' ? 0 : -1}" aria-haspopup="menu" aria-expanded="${S.menuOpen}" data-tab="more">${tab === 'more' ? MORE[S.more][0] : 'More'}${I.down}</button><div class="agv-menu" role="menu" ${S.menuOpen ? '' : 'hidden'}>${Object.entries(MORE).map(([k, [l, s]]) => `<button type="button" role="menuitem" data-more="${k}">${l}<small>${s}</small></button>`).join('')}</div></span>`;
+  const editing = !!S.edit;
+  const text = fileText(path); const err = fileErr(path);
+  let action = '';
+  if (!editing && text != null) {
+    if (tab === 'base') action = `<button type="button" class="agv-btno" id="agv-act">${I.pen}Edit as a suggested tweak</button>`;
+    if (tab === 'custom' && customBody(text)) action = `<button type="button" class="agv-btnp" id="agv-act">${I.pen}Edit your rules</button>`;
+  }
+  let body;
+  if (editing) body = editorHtml(nm);
+  else if (text == null) { body = err ? `<p class="agv-empty">Could not read this file (${esc(err)}).${api.LIVE ? '' : ' Start dashboard/server.mjs to read agent files.'}</p>` : '<p class="agv-empty">Loading…</p>'; if (!err) loadFile(path).then(() => { if (S.agent === id && S.tab === tab && !S.edit) renderDoc(); }); }
+  else if (tab === 'custom' && !customBody(text)) body = `<div class="agv-emptyrules"><div><h3>No rules of yours yet</h3><p>You haven't written any rules for the ${esc(nm)} yet. Your rules are your taste and house style. The ${esc(nm)} reads them on every run, right after Claude's instructions.</p><button type="button" class="agv-btnp" id="agv-first">Write your first rule</button></div></div>`;
+  else if (tab === 'custom') body = `<div class="agv-prose">${md(customBody(text), { reading: true })}</div>`;
+  else if (tab === 'history') { const ch = parseChangelog(text); body = ch.length ? `<ol class="agv-hist">${ch.map((e) => `<li><time datetime="${e.date}">${day(e.date)} ${e.date.slice(0, 4)}</time><div><div class="agv-prose">${md(e.text)}</div><span class="agv-vt">${e.file ? `${esc((MORE[e.file] || [e.file])[0])} · ` : ''}version ${esc(e.v)}</span></div></li>`).join('')}</ol>` : `<div class="agv-prose">${md(text, { reading: true })}</div>`; }
+  else body = `<div class="agv-prose">${md(text, { reading: true })}</div>`;
+  host.innerHTML = `<div class="agv-tabs"><div class="agv-tablist" role="tablist" aria-label="${esc(a.name)}'s files">${tabs}</div></div>
+    <div class="agv-tabline"><p>${esc(tab === 'more' ? `${MORE[S.more][1]}. ${TABS.more.line}` : TABS[tab].line)}</p>${action}</div>
+    <div class="agv-docbody" id="agv-panel" role="tabpanel" aria-labelledby="agv-tab-${tab}">${body}</div>`;
+  const tl = $('.agv-tablist', host);
+  $$('[data-tab]', tl).forEach((b) => b.addEventListener('click', () => {
+    if (b.dataset.tab === 'more') { S.menuOpen = !S.menuOpen; renderDoc(); if (S.menuOpen) $('.agv-menu button', host)?.focus(); return; }
+    if (S.edit && S.edit.text !== S.edit.orig && !confirm('Leave the editor? Your edit is not saved anywhere.')) return;
+    S.edit = null; S.tab = b.dataset.tab; S.menuOpen = false; renderDoc(); $(`#agv-tab-${S.tab}`)?.focus();
+  }));
+  tl.addEventListener('keydown', (e) => { const T = $$('[role="tab"]', tl); const k = T.indexOf(document.activeElement); if (k < 0) return; if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); T[(k + (e.key === 'ArrowRight' ? 1 : T.length - 1)) % T.length].focus(); } });
+  $$('[data-more]', host).forEach((b) => b.addEventListener('click', () => { if (S.edit && S.edit.text !== S.edit.orig && !confirm('Leave the editor? Your edit is not saved anywhere.')) return; S.edit = null; S.more = b.dataset.more; S.tab = 'more'; S.menuOpen = false; renderDoc(); $('#agv-tab-more')?.focus(); }));
+  $('.agv-menu', host)?.addEventListener('keydown', (e) => { if (e.key === 'Escape') { e.stopPropagation(); S.menuOpen = false; renderDoc(); $('#agv-tab-more')?.focus(); } });
+  const start = () => { const orig = tab === 'base' ? fileText(path) : customBody(fileText(path) || ''); S.edit = { file: tab, orig, text: orig, mode: 'write' }; renderDoc(); $('#agv-ed')?.focus(); };
+  $('#agv-act', host)?.addEventListener('click', start);
+  $('#agv-first', host)?.addEventListener('click', start);
+  if (editing) wireEditor(host);
+}
+function editPrompt() {
+  const e = S.edit; const id = S.agent;
+  if (e.file === 'custom') return e.text;
+  const ops = diffLines(e.orig, e.text);
+  return [`Here is my edit of agents/${id}/base.md (Claude's instructions for the ${model().agents[id].name.toLowerCase()} agent).`, 'Save it as a suggested tweak under proposals/ for me to approve, with a short "what changes" and "why". Do not apply it.', '', 'The changed lines (- removed, + added):', ...ops.filter((o) => o[0] !== '=').map((o) => `${o[0]} ${o[1]}`)].join('\n');
+}
+function editorHtml(nm) {
+  const e = S.edit;
+  const panel = e.fromTweak ? `<div class="agv-diffpanel"><p>${e.noSuggested ? 'The suggestion has no replacement text to paste; your rules are shown as they are.' : 'The suggested text is in place below. Changed lines, highlighted:'}</p>${e.noSuggested ? '' : diffHtml(diffLines(e.orig, e.text), 0)}</div>` : '';
+  return `<div>${e.file === 'base' ? `<p class="agv-edbanner">Claude writes this file. What you change becomes a suggested tweak for you to approve; nothing changes before that.</p>` : ''}${panel}
+    <div class="agv-edtop"><div class="agv-seg" role="radiogroup" aria-label="Editor view"><button type="button" role="radio" aria-checked="${e.mode === 'write'}" data-em="write">Write</button><button type="button" role="radio" aria-checked="${e.mode === 'preview'}" data-em="preview">Preview</button></div></div>
+    ${e.mode === 'write' ? `<label class="sr" for="agv-ed">${e.file === 'base' ? `The ${esc(nm)}'s instructions` : `Your rules for the ${esc(nm)}`}</label><textarea class="agv-ed" id="agv-ed" spellcheck="true"></textarea>` : `<div class="agv-edprev agv-prose">${e.text.trim() ? md(e.text, { reading: e.file === 'base' }) : '<p class="agv-empty">Nothing written yet.</p>'}</div>`}
+    <div class="agv-edfoot"><span class="agv-hint"><b>Saving from the dashboard is coming next;</b> copy your text into a Claude session for now.</span><button type="button" class="agv-btng" id="agv-cancel">Cancel</button><button type="button" class="agv-btnp" id="agv-copyedit">${I.copy}${e.file === 'base' ? 'Copy my edit as a prompt' : 'Copy my rules'}</button></div></div>`;
+}
+function wireEditor(host) {
+  const ta = $('#agv-ed', host);
+  if (ta) { ta.value = S.edit.text; const grow = () => { ta.style.height = 'auto'; ta.style.height = Math.max(360, ta.scrollHeight + 4) + 'px'; }; grow(); ta.addEventListener('input', () => { S.edit.text = ta.value; grow(); }); }
+  $$('[data-em]', host).forEach((b) => b.addEventListener('click', () => { S.edit.mode = b.dataset.em; renderDoc(); $(`[data-em="${S.edit.mode}"]`)?.focus(); }));
+  $('#agv-cancel', host).addEventListener('click', () => { if (S.edit.text !== S.edit.orig && !confirm('Discard your edit? It is not saved anywhere.')) return; S.edit = null; renderDoc(); $('#agv-act, #agv-first')?.focus(); });
+  const cp = $('#agv-copyedit', host); cp.addEventListener('click', () => api.copyText(editPrompt(), cp, true));
+}
+
+// ------------------------------------------------------------------ draw: on every index render and on our own navigation
+function draw() {
+  if (!api) return;
+  D = api.D; const root = document.getElementById('agv-root'); if (!root || !D) return;
+  const ae = document.activeElement;
+  if (S.edit && ae && ae.id === 'agv-ed') return; // never rebuild under someone typing; the next render catches up
+  hideTip();
+  const id = (location.hash.match(/^#agents\/([\w-]+)/) || [])[1];
+  if (id && model().agents[id]) detail(root, id); else { if (S.agent) { S.agent = null; S.edit = null; } board(root); }
+  if (S.focusTweak && id) { S.focusTweak = false; const b = $('.agv-twl button, .agv-twc button', root); if (b) { b.scrollIntoView({ block: 'center' }); b.focus({ preventScroll: true }); } }
+}
+let lastHashId = null;
+addEventListener('hashchange', () => {
+  if (!location.hash.startsWith('#agents')) return;
+  const id = (location.hash.match(/^#agents\/([\w-]+)/) || [])[1] || null;
+  if (id !== lastHashId && S.edit && S.edit.text !== S.edit.orig && !confirm('Leave the editor? Your edit is not saved anywhere.')) { history.replaceState(null, '', '#agents/' + lastHashId); return; }
+  lastHashId = id; draw();
+  if (id) $('#agv-agent-h')?.focus({ preventScroll: true });
+});
+const root0 = () => document.getElementById('agv-root');
+document.addEventListener('mouseover', (e) => { const el = e.target.closest?.('.agv-sq[data-k], .agv-tick[data-text]'); if (el && root0()?.contains(el)) showTip(el); else hideTip(); });
+document.addEventListener('focusin', (e) => { const el = e.target.closest?.('.agv-sq[data-k], .agv-tick[data-text]'); if (el && root0()?.contains(el)) showTip(el); else hideTip(); });
+document.addEventListener('scroll', hideTip, true);
+document.addEventListener('keydown', (e) => {
+  const el = e.target.closest?.('.agv-rv'); if (!el) return;
+  const items = $$('.agv-rv', rvGroup(el)); const k = items.indexOf(el); let n = -1;
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = Math.min(items.length - 1, k + 1);
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = Math.max(0, k - 1);
+  if (e.key === 'Home') n = 0; if (e.key === 'End') n = items.length - 1;
+  if (n < 0) return; e.preventDefault(); items.forEach((it) => it.setAttribute('tabindex', '-1')); items[n].setAttribute('tabindex', '0'); items[n].focus();
+});
+window.OSViews = window.OSViews || {};
+window.OSViews.agents = function (a) { api = a; lastHashId = (location.hash.match(/^#agents\/([\w-]+)/) || [])[1] || null; draw(); };
+})();
+</script>
