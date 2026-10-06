@@ -8,6 +8,7 @@ import { appendFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { whoami } from './team.mjs';
+import { readJsonlMerged } from './origin.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -22,6 +23,18 @@ const [kind, who, item, amountRaw] = args;
 const amount = Number(amountRaw);
 if (!['revenue', 'expense'].includes(kind) || !who || !item || !Number.isFinite(amount)) usage();
 if (!/^[A-Z]{3}$/.test(currency) || !/^\d{4}-\d{2}$/.test(period)) usage();
+
+// A business slug must be one the ledger knows (this checkout's or origin/main's), so a typo never
+// becomes a phantom business in Revenues.
+const slug = kind === 'revenue' ? who : slugFlag;
+if (slug) {
+  const known = new Set(readJsonlMerged('ledger.jsonl').map((l) => l.slug));
+  if (!known.has(slug)) {
+    const near = [...known].filter((s) => s && s !== '-' && (s.includes(slug) || slug.includes(s.split('-')[0]))).slice(0, 5);
+    console.error(`money: "${slug}" is not a business in ledger.jsonl${near.length ? `; did you mean: ${near.join(', ')}` : ''}`);
+    process.exit(2);
+  }
+}
 
 const line = kind === 'revenue'
   ? { ts: now, operator: whoami(), slug: who, item, amount, currency, period, note }
