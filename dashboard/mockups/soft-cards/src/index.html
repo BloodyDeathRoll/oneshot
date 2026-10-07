@@ -602,6 +602,8 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 }
 .prnote{display:block;margin-top:4px;font-size:14px}
 .prnote a{color:inherit;text-decoration:underline}
+#prtoast{position:fixed;right:16px;bottom:16px;z-index:1000;max-width:min(420px,calc(100vw - 32px));padding:12px 40px 12px 16px;background:#fff;border:1px solid #E4E0EE;border-radius:12px;box-shadow:0 8px 24px rgba(20,10,40,.14);font-size:14px}
+#prtoast .x{position:absolute;top:6px;right:8px;border:0;background:none;font-size:20px;line-height:1;cursor:pointer;color:inherit}
 </style>
 </head>
 <body class="anim">
@@ -763,6 +765,13 @@ const tShort=iso=>{const d=new Date(iso);return `${dShort(iso)} ${String(d.getUT
 const runShort=id=>id.replace(/^\d{4}-\d{2}-/,'');
 const el=(tag,attrs={},...kids)=>{const e=document.createElement(tag);for(const[k,v]of Object.entries(attrs)){if(k==='class')e.className=v;else if(k==='html')e.innerHTML=v;else if(k==='text')e.textContent=v;else if(v!=null)e.setAttribute(k,v)}for(const k of kids){if(k==null)continue;e.append(k.nodeType?k:document.createTextNode(k))}return e};
 // A decision's PR (dashboard/publish.mjs): a link, or why it was not opened and a retry (POST /agent-pr).
+// A site decision's card redraws once the state moves on, so its PR note stays here until closed.
+function prToast(text,j){
+  document.getElementById('prtoast')?.remove();
+  const x=el('button',{type:'button',class:'x','aria-label':'Close',text:'×'});
+  const t=el('div',{id:'prtoast',role:'status'},x,el('b',{text}),prNote(j));
+  x.onclick=()=>t.remove();document.body.append(t);
+}
 function prNote(j){
   const n=el('span',{class:'prnote'});
   if(j.pr){n.append(' ',el('a',{href:j.pr,target:'_blank',rel:'noopener',text:'PR opened'}),': merge it so the other operator sees it.');return n}
@@ -1021,7 +1030,7 @@ function gateForm(o){
     state.results[o.key]=result;
     controls().forEach(c=>c.disabled=false);
     showResult(stat,result,f);
-    if(res.status===201){reason.value='';setTimeout(()=>refresh(),800)}
+    if(res.status===201){reason.value='';if(json.pr||json.pr_error)prToast(`${o.label||o.gate}: ${choice}`,json);setTimeout(()=>refresh(),800)}
     else if(state.dirty)setTimeout(()=>rerender(),50);
   });
   return f;
