@@ -7,6 +7,7 @@
 //      origin/main moves (it fetches every --sync seconds, default 60, 0 = never; docs/team.md);
 //   3. accepts a human gate decision on POST /decide and appends exactly one ledger line for it,
 //      after checking the business is still in the state the page saw (a stale page is rejected);
+//      the same line then goes to its own branch and PR, like a save in 5 (dashboard/publish.mjs);
 //   5. saves an agent's definition from the Agents view: POST /agent-rules writes the operator's own
 //      agents/<name>/custom.md; POST /agent-tweak turns an edit of Claude's base.md into a suggested
 //      tweak (proposals/<run>/NNN-<agent>-<title>.md + its plain summary in dashboard/tweaks.json) and
@@ -146,7 +147,19 @@ function decide(body) {
   const { to_state, note, hosting_mode } = spec.line({ ...body, reason });
   const line = { ts: new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'), run_id: body.run_id, slug, agent: 'human', agent_version: null, from_state, to_state, note, operator: OPERATOR, ...(hosting_mode ? { hosting_mode } : {}) };
   appendFileSync(LEDGER, JSON.stringify(line) + '\n');
-  return { status: 201, line };
+  // A test ledger (--ledger) is not the repo's: it stays local.
+  if (LEDGER !== join(ROOT, 'ledger.jsonl')) return { status: 201, line };
+  const what = slug === '-' ? body.file.replace(/^proposals\//, '').replace(/\.md$/, '') : slug;
+  const title = slug === '-' ? `${body.file}: ${to_state.slice(9)}` : `${slug}: ${from_state} → ${to_state}`;
+  const pr = {
+    root: ROOT,
+    branch: `${OPERATOR}/decision-${body.gate}-${what.replace(/[^\w-]+/g, '-').slice(0, 48).replace(/-$/, '')}-${stamp()}`,
+    message: `ledger: ${title} (${HUMAN}, from the dashboard)`,
+    title: `Decision: ${title}`,
+    body: `${HUMAN} decided this on the dashboard. Only \`ledger.jsonl\` changes: one line.\n\n\`\`\`json\n${JSON.stringify(line)}\n\`\`\`\n\nMerge it so the other operator sees the decision.\n\nOpened by the dashboard on decision.`,
+    files: [{ rel: 'ledger.jsonl', append: JSON.stringify(line) + '\n' }],
+  };
+  return { status: 201, line, pr };
 }
 
 // ---- handoff: an assignment for the other operator (docs/team.md) ---------------------------------
@@ -366,8 +379,11 @@ function handle(req, res) {
       let body; try { body = JSON.parse(raw); } catch { return send(res, 400, { error: 'body must be JSON' }); }
       if (!body || typeof body !== 'object' || Array.isArray(body)) return send(res, 400, { error: 'body must be a JSON object' });
       let out; try { out = decide(body); } catch (e) { return send(res, 500, { error: String(e.message ?? e) }); }
-      if (out.status === 201) notify('decision');
-      return send(res, out.status, out);
+      if (out.status !== 201) return send(res, out.status, out);
+      notify('decision');
+      const { pr, ...saved } = out;
+      if (!pr) return send(res, 201, saved);
+      tryPr(pr).then((r) => send(res, 201, { ...saved, ...r }));
     });
     return;
   }
