@@ -172,7 +172,7 @@ document.fonts&&document.fonts.ready.then(()=>{for(const b of MAS)layout(b)});
 
 /* ---------- approve / reject (same call and handling as the legacy renderTweaks) ---------- */
 function actions(p,{onPage}={}){
-  const {el,LIVE,refresh}=API;
+  const {el,LIVE,refresh,prNote}=API;
   const row=el('div',{class:onPage?'dcv-pfoot':'dcv-acts'});
   const res=el('p',{class:'dcv-res',role:'status','aria-live':'polite'});
   const btns=[];
@@ -182,8 +182,8 @@ function actions(p,{onPage}={}){
     b.onclick=async()=>{
       btns.forEach(x=>x.disabled=true);res.className='dcv-res';res.textContent='Saving…';let r,j;
       try{r=await fetch('decide',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({gate:'proposal',run_id:p.run_id,file:p.file,choice,reason:''}),cache:'no-store'});j=await r.json().catch(()=>({error:'response was not JSON'}))}catch(e){r={status:0};j={error:String(e)}}
-      S.results[p.file]={status:r.status,body:j,choice};
-      if(r.status===201){res.className='dcv-res ok';res.textContent=choice==='approved'?'Approved. Claude applies it in its next session.':'Rejected.';setTimeout(()=>refresh(),800)}
+      S.results[p.file]={status:r.status,body:j,choice};if(r.status===201)S.doneOpen=true; // it moves to Already decided, with its PR
+      if(r.status===201){res.className='dcv-res ok';res.textContent=choice==='approved'?'Approved. Claude applies it in its next session.':'Rejected.';res.append(prNote(j));setTimeout(()=>refresh(),800)}
       else{res.className='dcv-res err';res.textContent=`${r.status||'network'}: ${j.error||'unknown error'}`;btns.forEach(x=>x.disabled=!LIVE)}
     };
     btns.push(b);row.append(b);
@@ -191,7 +191,7 @@ function actions(p,{onPage}={}){
   if(onPage)row.append(el('span',{class:'h',text:'Approved tweaks are applied by Claude in its next session, as one pull request.'}));
   else{const a=el('a',{class:'dcv-read',href:'#decisions/tweak-'+tid(p),html:'Read the full suggestion'+ARROW_R});a.append(el('span',{class:'sr',text:': '+p.title}));a.onclick=()=>{S.lastId=tid(p)};row.append(a)}
   const prev=S.results[p.file];
-  if(prev){if(prev.status===201){res.className='dcv-res ok';res.textContent=prev.choice==='approved'?'Approved. Claude applies it in its next session.':'Rejected.';btns.forEach(x=>x.disabled=true)}else{res.className='dcv-res err';res.textContent=`${prev.status||'network'}: ${prev.body?.error||'unknown error'}`}}
+  if(prev){if(prev.status===201){res.className='dcv-res ok';res.textContent=prev.choice==='approved'?'Approved. Claude applies it in its next session.':'Rejected.';res.append(prNote(prev.body));btns.forEach(x=>x.disabled=true)}else{res.className='dcv-res err';res.textContent=`${prev.status||'network'}: ${prev.body?.error||'unknown error'}`}}
   row.append(res);
   return row;
 }
@@ -225,7 +225,7 @@ function decisionRow(d){
   return li;
 }
 function renderList(root){
-  const {el,D,dShort,opName,bizName}=API;
+  const {el,D,dShort,opName,bizName,prNote}=API;
   const props=D.proposals.filter(p=>p.kind==='proposal');
   const pending=props.filter(p=>p.status==='pending'),done=props.filter(p=>p.status!=='pending');
 
@@ -242,7 +242,8 @@ function renderList(root){
       const [cls,txt]=STATUS[p.status]||['',cap(p.status)];
       const a=el('a',{href:'#decisions/tweak-'+tid(p),text:p.title});a.onclick=()=>{S.lastId=tid(p)};
       const sub=[p.agent,p.status_note||(p.decided_at?`${txt} ${dShort(p.decided_at)}${p.decided_by?' by '+opName(p.decided_by):''}`:null)].filter(Boolean).join(' · ');
-      ul.append(el('li',{id:'dcv-tw-'+tid(p)},el('div',{},a,el('span',{class:'s',text:sub})),el('span',{class:'dcv-st '+cls,text:txt})));
+      const pr=S.results[p.file]?.status===201?prNote(S.results[p.file].body):null; // this session's decision: its PR
+      ul.append(el('li',{id:'dcv-tw-'+tid(p)},el('div',{},a,el('span',{class:'s',text:sub}),pr),el('span',{class:'dcv-st '+cls,text:txt})));
     }
     det.append(ul);sec.append(det);
   }

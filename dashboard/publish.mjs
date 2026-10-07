@@ -6,6 +6,8 @@
 // text it wrote. The PR writes `after` only if main still has `before`; otherwise it stops and the
 // local save stays.
 // `optional` files are skipped when main's copy differs (or is missing).
+// An append-only file (ledger.jsonl) is given as {rel, append}: its new lines go at the end of main's copy,
+// whatever main holds above them (both operators append; docs/team.md).
 //
 // ONESHOT_SAVE_REMOTE (default origin) and ONESHOT_GH (default gh) exist for tests.
 
@@ -48,6 +50,12 @@ async function publish({ root, branch, message, title, body, files, pushed: alre
     for (const f of files) {
       const abs = join(tmp, f.rel);
       const onMain = existsSync(abs) ? readFileSync(abs, 'utf8') : null;
+      if (f.append != null) {
+        if ((onMain ?? '').includes(f.append)) continue;
+        writeFileSync(abs, (onMain ?? '') + (onMain && !onMain.endsWith('\n') ? '\n' : '') + f.append);
+        used.push(f.rel);
+        continue;
+      }
       if (f.optional && (onMain ?? '') !== (f.before ?? '')) continue;
       if (onMain === f.after) continue;
       // No automatic merge: a test showed git merge-file silently dropping a line. Main must still hold
@@ -59,7 +67,7 @@ async function publish({ root, branch, message, title, body, files, pushed: alre
     }
     if (!used.length) throw new Error('main already has this change');
     await sh('git', ['add', '--', ...used], tmp);
-    // Text files only (.md/.json), so the media pre-commit hook has nothing to check — and in a fresh
+    // Text files only (.md/.json/.jsonl), so the media pre-commit hook has nothing to check — and in a fresh
     // worktree without the media store it would rewrite media/*.tsv into this commit.
     await sh('git', ['-c', 'core.hooksPath=/dev/null', 'commit', '-q', '-m', message], tmp);
     await sh('git', ['push', '-q', '-u', REMOTE, branch], tmp);

@@ -600,6 +600,8 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
   .ag-grid{grid-template-columns:minmax(0,1fr)}
   .ag-mini{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+.prnote{display:block;margin-top:4px;font-size:14px}
+.prnote a{color:inherit;text-decoration:underline}
 </style>
 </head>
 <body class="anim">
@@ -760,6 +762,18 @@ const dShort=iso=>{const d=new Date(iso);return `${d.getUTCDate()} ${MON[d.getUT
 const tShort=iso=>{const d=new Date(iso);return `${dShort(iso)} ${String(d.getUTCHours()).padStart(2,'0')}:${String(d.getUTCMinutes()).padStart(2,'0')}`};
 const runShort=id=>id.replace(/^\d{4}-\d{2}-/,'');
 const el=(tag,attrs={},...kids)=>{const e=document.createElement(tag);for(const[k,v]of Object.entries(attrs)){if(k==='class')e.className=v;else if(k==='html')e.innerHTML=v;else if(k==='text')e.textContent=v;else if(v!=null)e.setAttribute(k,v)}for(const k of kids){if(k==null)continue;e.append(k.nodeType?k:document.createTextNode(k))}return e};
+// A decision's PR (dashboard/publish.mjs): a link, or why it was not opened and a retry (POST /agent-pr).
+function prNote(j){
+  const n=el('span',{class:'prnote'});
+  if(j.pr){n.append(' ',el('a',{href:j.pr,target:'_blank',rel:'noopener',text:'PR opened'}),': merge it so the other operator sees it.');return n}
+  if(!j.pr_error)return n;
+  n.append(' The PR was not opened: '+j.pr_error);
+  if(j.retry){const b=el('button',{type:'button',class:'btn s',text:'Try the PR again'});b.onclick=async()=>{b.disabled=true;b.textContent='Opening the PR…';let k;
+    try{const r=await fetch('agent-pr',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({retry:j.retry}),cache:'no-store'});k=await r.json().catch(()=>({pr_error:'response was not JSON'}));if(!r.ok)k={pr_error:k.error||String(r.status)}}
+    catch(e){k={pr_error:String(e),retry:j.retry}}
+    n.replaceWith(prNote(k))};n.append(' ',b)}
+  return n;
+}
 const sv=(tag,attrs={},...kids)=>{const e=document.createElementNS(SVGNS,tag);for(const[k,v]of Object.entries(attrs)){if(k==='text')e.textContent=v;else if(v!=null)e.setAttribute(k,v)}for(const k of kids)if(k)e.append(k);return e};
 const fmt=n=>Number.isInteger(n)?String(n):n.toFixed(1);
 const bizMap=new Map();
@@ -1014,7 +1028,7 @@ function gateForm(o){
 }
 function showResult(stat,r,f){
   stat.innerHTML='';
-  if(r.status===201){stat.className='gstat';stat.append('written to the ledger:',el('code',{text:JSON.stringify(r.body.line)}))}
+  if(r.status===201){stat.className='gstat';stat.append('written to the ledger:',el('code',{text:JSON.stringify(r.body.line)}),prNote(r.body))}
   else{stat.className='gstat err';stat.append(`${r.status||'network'}: ${r.body.error||'unknown error'}`);
     if(r.body.current)stat.append(el('code',{text:'ledger now: '+JSON.stringify(r.body.current)}));
     if(r.status===409){const b=el('button',{type:'button',class:'btn s',text:'Reload the page data'});b.onclick=()=>{delete state.results[f.dataset.fkey];refresh(true)};stat.append(b)}}
@@ -1547,7 +1561,7 @@ function renderSites(){
 /* ---------- Agents ---------- */
 // Views kept in their own files (src/agents-view.html, src/decisions-view.html) register a render
 // function on window.OSViews and get this page's data and helpers through OSAPI.
-const OSAPI={get D(){return D},get LIVE(){return LIVE},state,el,sv,modal,openDoc,mdToHtml,copyText,fileURL,go,refresh:()=>refresh(),opName,bizName,dShort,tShort,runShort,live,thumbSrc};
+const OSAPI={get D(){return D},get LIVE(){return LIVE},state,el,sv,modal,openDoc,mdToHtml,copyText,fileURL,go,refresh:()=>refresh(),opName,bizName,dShort,tShort,runShort,live,thumbSrc,prNote};
 window.OSAPI=OSAPI;
 function renderAgents(){if(window.OSViews?.agents)return window.OSViews.agents(OSAPI);if(!$("#agg-chart"))return;
   const run=agentRun();
@@ -1682,7 +1696,7 @@ function renderTweaks(){
         row.querySelectorAll('button').forEach(x=>x.disabled=true);res.className='res';res.textContent='saving…';posting++;let r,j;
         try{r=await fetch('decide',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({gate:'proposal',run_id:p.run_id,file:p.file,choice,reason:''}),cache:'no-store'});j=await r.json().catch(()=>({error:'response was not JSON'}))}catch(e){r={status:0};j={error:String(e)}}
         posting--;state.results['tw-'+p.file]={status:r.status,body:j};
-        if(r.status===201){res.textContent=choice==='approved'?'Approved. Claude applies it in its next session.':'Rejected.';setTimeout(()=>refresh(),800)}
+        if(r.status===201){res.textContent=choice==='approved'?'Approved. Claude applies it in its next session.':'Rejected.';res.append(prNote(j));setTimeout(()=>refresh(),800)}
         else{res.className='res err';res.textContent=`${r.status||'network'}: ${j.error||'unknown error'}`;row.querySelectorAll('button').forEach(x=>x.disabled=!LIVE)}
       };
       row.append(b);
@@ -1690,6 +1704,7 @@ function renderTweaks(){
     const rd=el('button',{type:'button',class:'cta',text:'Read the full suggestion'});rd.onclick=()=>openDoc(p.file,p.title);row.append(rd);
     li.append(row,res);
     if(prev&&prev.status!==201){res.className='res err';res.textContent=prev.body?.error||''}
+    else if(prev)res.append(prNote(prev.body))
     ol.append(li);
   }
   const det=$('#props-done');const wasOpen=det.open;det.innerHTML='';
@@ -1699,9 +1714,10 @@ function renderTweaks(){
     const [cls,txt]=TW_STATUS[p.status]||['',p.status];
     const t=el('div');const a=el('a',{href:'#',class:'lnk',text:p.title});a.onclick=e=>{e.preventDefault();openDoc(p.file,p.title)};
     t.append(a,el('span',{class:'s',text:[p.agent,p.status_note||(p.decided_at?`${txt} ${dShort(p.decided_at)}${p.decided_by?' by '+opName(p.decided_by):''}`:null)].filter(Boolean).join(' · ')}));
+    const prev=state.results['tw-'+p.file];if(prev?.status===201)t.append(prNote(prev.body)); // this session's decision: its PR
     ul.append(el('li',{},t,el('span',{class:'stag '+cls,text:txt})));
   }
-  det.append(ul);det.open=wasOpen;
+  det.append(ul);det.open=wasOpen||done.some(p=>state.results['tw-'+p.file]?.status===201);
 }
 const builtSlugs=()=>new Set(D.businesses.filter(b=>(b.reached||[]).some(s=>['built','passed','previewed','packaged','pitched'].includes(s))).map(b=>b.slug));
 const builtDecisions=()=>{const s=builtSlugs();return D.decisions.filter(d=>s.has(d.slug))};
