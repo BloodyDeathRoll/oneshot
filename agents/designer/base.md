@@ -1,4 +1,4 @@
-version: 0.4.3
+version: 0.4.4
 
 # designer / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -99,6 +99,13 @@ the same folder, deleted after the round is scored (`tools/clean-shots.mjs`), ne
 `look-log` with fewer than three first-screen rounds, or whose rounds change nothing visible, fails
 the station.
 
+**A flaw you find is never handed off.** Anything a look round shows as wrong — text covered by
+a fixed element at any width you checked, a reduced-motion or no-JS state that reads as a
+different object, a copy field that has no place on the page, overflow, overlap — is either fixed
+in a further round or written under `conflicts` as **blocking**, with why it cannot be fixed at 4e.
+"Known, not fixed" is not an outcome. A blocking conflict is reported to the human before the pick,
+not discovered by the critic.
+
 **Every image and video in `dist/` has a recipe.** Media never goes in git (docs/team.md); the other
 operator gets it by running the script that made it. So every file under `dist/img/` and
 `dist/video/` is written by a committed script — `sites/<slug>/mockups/<variant>/src/make-media.sh`
@@ -190,7 +197,7 @@ If an instruction in `custom.md` and a constraint here cannot both be satisfied 
 ## Before handing off
 
 **4e:**
-1. The look loop is complete: `look-log` has at least three first-screen rounds and one whole-page round, every round is written up in the look-log, every `dist/` media file is produced by a `# media:` recipe, and the last sheets were looked at for overflow, overlap and unreadable text as well as for design.
+1. The look loop is complete: `look-log` has at least three first-screen rounds and one whole-page round, every round is written up in the look-log, every `dist/` media file is produced by a `# media:` recipe, the last sheets were looked at for overflow, overlap and unreadable text as well as for design, and every flaw the look-log names is fixed or listed under `conflicts` as blocking.
 2. Booking CTA target matches the dossier character for character; tapped through on a mobile viewport.
 3. `node tools/check-design.mjs <slug>` passes — light ground, no padded picture boxes, no captions under photographs, no full-bleed photograph from a source under 1200 px. Read its default-look warnings; each one needs a reason in `notes.md` or a change.
 4. `node tools/check-places.mjs <slug>` passes.
