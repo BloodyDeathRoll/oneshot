@@ -178,7 +178,8 @@ function handoff(body) {
 const shaOf = (t) => createHash('sha256').update(t).digest('hex').slice(0, 16);
 const agentDir = (a) => (typeof a === 'string' && /^[a-z][a-z-]*$/.test(a) && existsSync(join(ROOT, 'agents', a, 'base.md')) ? join(ROOT, 'agents', a) : null);
 const stamp = () => new Date().toISOString().replace(/\D/g, '').slice(0, 14);
-const logWork = (slug, note, files) => appendFileSync(ACTIVITY, JSON.stringify({ ts: new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'), operator: OPERATOR, slug, kind: 'work', note, files }) + '\n');
+// Returns the line written, so the save's PR carries it too (an append to main's activity.jsonl).
+const logWork = (slug, note, files) => { const line = JSON.stringify({ ts: new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'), operator: OPERATOR, slug, kind: 'work', note, files }) + '\n'; appendFileSync(ACTIVITY, line); return line; };
 function saveRules(body) {
   const dir = agentDir(body.agent);
   if (!dir) return { status: 400, error: 'unknown agent' };
@@ -192,15 +193,15 @@ function saveRules(body) {
   const header = m ? `${m[1]}\n${m[2] ? '---\n' : '\n'}` : '';
   const next = header + body.text.trim() + '\n';
   writeFileSync(path, next);
-  logWork('-', `${body.agent}: ${HUMAN} saved their rules (custom.md) from the dashboard`, [`agents/${body.agent}/custom.md`]);
+  const logged = logWork('-', `${body.agent}: ${HUMAN} saved their rules (custom.md) from the dashboard`, [`agents/${body.agent}/custom.md`]);
   const rel = `agents/${body.agent}/custom.md`;
   const pr = {
     root: ROOT,
     branch: `${OPERATOR}/agent-rules-${body.agent}-${stamp()}`,
     message: `agents/${body.agent}: ${HUMAN}'s rules (custom.md), saved from the dashboard`,
     title: `${body.agent}: ${HUMAN}'s rules, saved from the dashboard`,
-    body: `${HUMAN} saved their rules for the ${body.agent} agent from the dashboard (Agents → Advanced → Your rules). Only \`${rel}\` changes.\n\nMerge it so the other operator's runs use these rules too.\n\nOpened by the dashboard on save.`,
-    files: [{ rel, before: cur, after: next }],
+    body: `${HUMAN} saved their rules for the ${body.agent} agent from the dashboard (Agents → Advanced → Your rules). Only \`${rel}\` changes, plus its line in \`activity.jsonl\`.\n\nMerge it so the other operator's runs use these rules too.\n\nOpened by the dashboard on save.`,
+    files: [{ rel, before: cur, after: next }, { rel: 'activity.jsonl', append: logged }],
   };
   return { status: 201, sha: shaOf(next), file: rel, pr };
 }
@@ -239,7 +240,7 @@ function suggestTweak(body) {
   plain[rel] = { title, agent: name, what, why, status: 'pending' };
   const twAfter = JSON.stringify(plain, null, 2) + '\n';
   writeFileSync(tw, twAfter);
-  logWork('-', `${body.agent}: ${HUMAN} suggested a tweak to Claude's instructions from the dashboard: ${title}`, [rel, 'dashboard/tweaks.json']);
+  const logged = logWork('-', `${body.agent}: ${HUMAN} suggested a tweak to Claude's instructions from the dashboard: ${title}`, [rel, 'dashboard/tweaks.json']);
   const pr = {
     root: ROOT,
     branch: `${OPERATOR}/agent-tweak-${body.agent}-${slug.slice(0, 32).replace(/-$/, '')}-${stamp()}`,
@@ -247,7 +248,7 @@ function suggestTweak(body) {
     title: `Suggested tweak to ${body.agent}: ${title}`,
     body: `## What changes\n\n${what}\n\n## Why\n\n${why}\n\nFiled by ${HUMAN} from the dashboard as a suggested tweak to Claude's instructions for the ${body.agent} agent. This PR adds the suggestion only (\`${rel}\`); \`agents/${body.agent}/base.md\` is unchanged. Approve or reject it on the Decisions page; Claude applies it after approval.\n\nOpened by the dashboard on save.`,
     // tweaks.json is the page's plain summary; left out when main's copy differs (it has none yet)
-    files: [{ rel, before: '', after: readFileSync(join(ROOT, rel), 'utf8') }, { rel: 'dashboard/tweaks.json', before: twBefore, after: twAfter, optional: true }],
+    files: [{ rel, before: '', after: readFileSync(join(ROOT, rel), 'utf8') }, { rel: 'dashboard/tweaks.json', before: twBefore, after: twAfter, optional: true }, { rel: 'activity.jsonl', append: logged }],
   };
   return { status: 201, file: rel, pr };
 }
