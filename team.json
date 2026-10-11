@@ -1,7 +1,7 @@
 {
-  "_doc": "Oneshot operators (docs/team.md). Identity, in order: ONESHOT_OPERATOR env var, git user.email, git user.name. Both operators may pass every human gate (decided 2026-10-02).",
+  "_doc": "Oneshot operators (docs/team.md). Identity, in order: ONESHOT_OPERATOR env var, git user.email, git user.name. Both operators may pass every human gate (decided 2026-10-02). access_emails: the e-mails an operator may log in with on the online dashboard (Cloudflare Access, infra/dashboard/); git_emails count too.",
   "operators": {
-    "shahar": { "name": "Shahar", "git_emails": ["shibumi1974@gmail.com"], "git_names": ["shahar", "Shahar Naor"] },
-    "alon":   { "name": "Alon",   "git_emails": ["lavi.alon@gmail.com"], "git_names": ["alon", "Alon"] }
+    "shahar": { "name": "Shahar", "git_emails": ["shibumi1974@gmail.com"], "git_names": ["shahar", "Shahar Naor"], "access_emails": ["shaharnaor@outlook.com"] },
+    "alon":   { "name": "Alon",   "git_emails": ["lavi.alon@gmail.com"],   "git_names": ["alon", "Alon"],          "access_emails": [] }
   }
 }

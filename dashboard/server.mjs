@@ -22,13 +22,15 @@
 // plus one activity.jsonl shape (an assignment, via /handoff).
 //
 //   node dashboard/server.mjs [--port 8970] [--host 127.0.0.1] [--allow-host a.example,b.example] [--root dashboard/mockups/soft-cards/dist] [--ledger ledger.jsonl] [--operator shahar] [--sync 60]
+//                             [--access-team <team> --access-aud <audience>]
 //
-// The operator running the server (team.json; default `tools/team.mjs whoami`) is the one whose
-// decisions it records: every line it appends carries `operator` (docs/team.md).
-//
-// Local by default. For a phone: run it behind Caddy + basic auth on the CMS box, or a Cloudflare
-// Tunnel to this machine; never expose it bare, and name the tunnel's host with --allow-host.
-// Requests addressed to any other host are refused (a DNS-rebinding page could otherwise reach it).
+// Who decides. Local (the default): the operator running the server (team.json; `--operator`, else
+// `tools/team.mjs whoami`), one per process. Online: with --access-team and --access-aud the server
+// sits behind Cloudflare Access (infra/dashboard/), which checks the login and signs who it is into
+// every request; the operator is then read from that token per request (dashboard/access.mjs), so one
+// server serves both operators and every line still carries the right `operator` (docs/team.md).
+// Requests addressed to a host not in --allow-host are refused (a DNS-rebinding page could otherwise
+// reach it); online, a request without a valid Access token is refused too.
 
 import { createServer } from 'node:http';
 import { readFileSync, existsSync, appendFileSync, writeFileSync, mkdirSync, readdirSync, mkdtempSync, rmSync, watch, statSync, createReadStream } from 'node:fs';
@@ -42,6 +44,7 @@ import { whoami, team, assign, ACTIVITY } from '../tools/team.mjs';
 import { currentRun } from '../tools/run.mjs';
 import { shootThumb, thumbFresh, markPitchLive } from './thumbs.mjs';
 import { openPr } from './publish.mjs';
+import { accessGate } from './access.mjs';
 import { readJsonlMerged, fetch as fetchMain, lsMain } from '../tools/origin.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -52,10 +55,13 @@ const DIST = resolve(ROOT, arg('root', 'dashboard/mockups/soft-cards/dist'));
 const LEDGER = resolve(ROOT, arg('ledger', 'ledger.jsonl'));
 const SYNC_S = Number(arg('sync', 60));
 const HOSTS = new Set(['localhost', '127.0.0.1', '[::1]', HOST, ...String(arg('allow-host', '')).split(',').map((h) => h.trim().toLowerCase()).filter(Boolean)]);
-let OPERATOR;
-try { OPERATOR = arg('operator', null) ?? whoami(); if (!team()[OPERATOR]) throw new Error(`${OPERATOR} is not in team.json`); }
-catch (e) { console.error(`dashboard server: ${e.message}`); process.exit(2); }
-const HUMAN = team()[OPERATOR].name;
+// An operator as the handlers see them: id, display name, and the git identity their PR commits carry.
+const identity = (op) => { const o = team()[op]; if (!o) throw new Error(`${op} is not in team.json`); return { operator: op, human: o.name, git: { name: o.git_names?.[0] ?? o.name, email: o.git_emails?.[0] ?? '' } }; };
+let ACCESS = null, FIXED = null; // online: ACCESS reads the operator from each request; local: FIXED is the one operator
+try {
+  if (arg('access-team', null) || arg('access-aud', null)) ACCESS = accessGate({ team: arg('access-team', null), aud: arg('access-aud', null) });
+  else FIXED = identity(arg('operator', null) ?? whoami());
+} catch (e) { console.error(`dashboard server: ${e.message}`); process.exit(2); }
 
 // Repo files the page may read (sheets to pick from, pitch drafts, proposals) — prefixes only, read-only.
 const FILE_PREFIXES = ['sites/', 'proposals/', 'reports/', 'agents/', 'dashboard/mockups/', 'dashboard/overview-03/', 'dashboard/agents-04/', 'agents/designer/gold/shots/'];
@@ -68,41 +74,41 @@ const DECISIONS = {
   shortlist: {
     from: ['shortlisted'],
     choices: ['approve', 'drop'],
-    line: ({ choice, reason }) => choice === 'approve'
-      ? { to_state: 'approved', note: `gate a: approved by ${HUMAN} via dashboard. Verbatim: "${reason}"` }
-      : { to_state: 'shortlisted', note: `dropped by ${HUMAN} via dashboard: ${reason}` },
+    line: ({ human, choice, reason }) => choice === 'approve'
+      ? { to_state: 'approved', note: `gate a: approved by ${human} via dashboard. Verbatim: "${reason}"` }
+      : { to_state: 'shortlisted', note: `dropped by ${human} via dashboard: ${reason}` },
   },
   // gate b — the mockup pick
   pick: {
     from: ['mocked'],
     choices: ['calm', 'interactive', 'unique'],
-    line: ({ choice, reason }) => ({ to_state: 'picked', note: `${HUMAN} picks ${choice.toUpperCase()} via dashboard. Verbatim: "${reason}"` }),
+    line: ({ human, choice, reason }) => ({ to_state: 'picked', note: `${human} picks ${choice.toUpperCase()} via dashboard. Verbatim: "${reason}"` }),
   },
   // gate c — the pitch was sent (by a human, outside this system)
   pitch: {
     from: ['packaged'],
     choices: ['whatsapp', 'in_person', 'email', 'phone'],
-    line: ({ choice, reason, date }) => ({ to_state: 'pitched', note: `sent by ${HUMAN} via ${choice.replace('_', ' ')}${date ? ` on ${date}` : ''}. ${reason}` }),
+    line: ({ human, choice, reason, date }) => ({ to_state: 'pitched', note: `sent by ${human} via ${choice.replace('_', ' ')}${date ? ` on ${date}` : ''}. ${reason}` }),
   },
   // after the pitch — outcomes, repeatable (reply → meeting → sale)
   outcome: {
     from: ['pitched', 'outcome:reply', 'outcome:meeting', 'outcome:ignored'],
     choices: ['reply', 'meeting', 'sale', 'ignored'],
-    line: ({ choice, reason }) => ({ to_state: `outcome:${choice}`, note: reason }),
+    line: ({ human, choice, reason }) => ({ to_state: `outcome:${choice}`, note: reason }),
   },
   // gate e — after a sale, the product the client chose (2026-10-05: the CMS comes only after this);
   // the line carries hosting_mode, which decides the deployer's station-8 adapter (docs/ledger.md)
   product: {
     from: ['outcome:sale'],
     choices: ['managed', 'self_hosted_docker', 'static_only'],
-    line: ({ choice, reason }) => ({ to_state: 'product_chosen', hosting_mode: choice, note: `gate e: the client chose ${choice}, recorded by ${HUMAN} via dashboard. Verbatim: "${reason}"` }),
+    line: ({ human, choice, reason }) => ({ to_state: 'product_chosen', hosting_mode: choice, note: `gate e: the client chose ${choice}, recorded by ${human} via dashboard. Verbatim: "${reason}"` }),
   },
   // gate d — a prompt diff under proposals/ (slug "-"); the merge itself stays a code change
   proposal: {
     from: null,
     choices: ['approved', 'rejected'],
     reasonOptional: true, // a yes/no on a suggested agent tweak needs no explanation
-    line: ({ choice, reason, file }) => ({ to_state: `proposal:${choice}`, note: `${file}: ${choice} by ${HUMAN} via dashboard${reason ? `. ${reason}` : ''}` }),
+    line: ({ human, choice, reason, file }) => ({ to_state: `proposal:${choice}`, note: `${file}: ${choice} by ${human} via dashboard${reason ? `. ${reason}` : ''}` }),
   },
 };
 
@@ -117,7 +123,7 @@ function currentState(run_id, slug) {
   return lines.at(-1) ?? null; // last line in file order (CLAUDE.md)
 }
 
-function decide(body) {
+function decide(body, who) {
   const spec = Object.hasOwn(DECISIONS, body.gate) ? DECISIONS[body.gate] : null;
   if (!spec) return { status: 400, error: `unknown gate "${body.gate}"; one of ${Object.keys(DECISIONS).join(', ')}` };
   if (!spec.choices.includes(body.choice)) return { status: 400, error: `choice must be one of ${spec.choices.join(', ')}` };
@@ -144,8 +150,8 @@ function decide(body) {
     if (prior) return { status: 409, error: `already decided: ${file} was ${prior.to_state.slice(9)} on ${prior.ts}; a change is a CLI decision, not a second click`, current: prior };
     body = { ...body, file };
   }
-  const { to_state, note, hosting_mode } = spec.line({ ...body, reason });
-  const line = { ts: new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'), run_id: body.run_id, slug, agent: 'human', agent_version: null, from_state, to_state, note, operator: OPERATOR, ...(hosting_mode ? { hosting_mode } : {}) };
+  const { to_state, note, hosting_mode } = spec.line({ ...body, reason, human: who.human });
+  const line = { ts: new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'), run_id: body.run_id, slug, agent: 'human', agent_version: null, from_state, to_state, note, operator: who.operator, ...(hosting_mode ? { hosting_mode } : {}) };
   appendFileSync(LEDGER, JSON.stringify(line) + '\n');
   // A test ledger (--ledger) is not the repo's: it stays local.
   if (LEDGER !== join(ROOT, 'ledger.jsonl')) return { status: 201, line };
@@ -153,10 +159,11 @@ function decide(body) {
   const title = slug === '-' ? `${body.file}: ${to_state.slice(9)}` : `${slug}: ${from_state} → ${to_state}`;
   const pr = {
     root: ROOT,
-    branch: `${OPERATOR}/decision-${body.gate}-${what.replace(/[^\w-]+/g, '-').slice(0, 48).replace(/-$/, '')}-${stamp()}`,
-    message: `ledger: ${title} (${HUMAN}, from the dashboard)`,
+    author: who.git,
+    branch: `${who.operator}/decision-${body.gate}-${what.replace(/[^\w-]+/g, '-').slice(0, 48).replace(/-$/, '')}-${stamp()}`,
+    message: `ledger: ${title} (${who.human}, from the dashboard)`,
     title: `Decision: ${title}`,
-    body: `${HUMAN} decided this on the dashboard. Only \`ledger.jsonl\` changes: one line.\n\n\`\`\`json\n${JSON.stringify(line)}\n\`\`\`\n\nMerge it so the other operator sees the decision.\n\nOpened by the dashboard on decision.`,
+    body: `${who.human} decided this on the dashboard. Only \`ledger.jsonl\` changes: one line.\n\n\`\`\`json\n${JSON.stringify(line)}\n\`\`\`\n\nMerge it so the other operator sees the decision.\n\nOpened by the dashboard on decision.`,
     files: [{ rel: 'ledger.jsonl', append: JSON.stringify(line) + '\n' }],
   };
   return { status: 201, line, pr };
@@ -164,12 +171,25 @@ function decide(body) {
 
 // ---- handoff: an assignment for the other operator (docs/team.md) ---------------------------------
 // Reaches them through activity.jsonl once merged to main; the page offers the prompt to copy and send.
-function handoff(body) {
+function handoff(body, who) {
   const slug = String(body.slug ?? ''), to = String(body.to ?? ''), task = String(body.task ?? '').trim();
   if (!team()[to]) return { status: 400, error: `to must be one of ${Object.keys(team()).join(', ')}` };
   if (task.length < 3) return { status: 400, error: 'a request is required (at least 3 characters)' };
   if (!readLedger().some((l) => l.slug === slug)) return { status: 400, error: `${slug} has no ledger line` };
-  return { status: 201, line: assign(slug, task, to, OPERATOR) };
+  const line = assign(slug, task, to, who.operator);
+  // Online nobody commits on the box, so the assignment goes to main as its own PR, like a decision.
+  if (!ACCESS) return { status: 201, line };
+  const toName = team()[to].name;
+  const pr = {
+    root: ROOT,
+    author: who.git,
+    branch: `${who.operator}/handoff-${slug.replace(/[^\w-]+/g, '-').slice(0, 40)}-${stamp()}`,
+    message: `activity: ${who.human} hands ${slug} to ${toName} (from the dashboard)`,
+    title: `Handoff: ${slug} → ${toName}`,
+    body: `${who.human} handed this to ${toName} on the dashboard. Only \`activity.jsonl\` changes: one assignment line.\n\n> ${task}\n\nMerge it so ${toName} sees the assignment.\n\nOpened by the dashboard on handoff.`,
+    files: [{ rel: 'activity.jsonl', append: JSON.stringify(line) + '\n' }],
+  };
+  return { status: 201, line, pr };
 }
 
 // ---- agent definitions (the Agents view) ----------------------------------------------------------
@@ -179,8 +199,8 @@ const shaOf = (t) => createHash('sha256').update(t).digest('hex').slice(0, 16);
 const agentDir = (a) => (typeof a === 'string' && /^[a-z][a-z-]*$/.test(a) && existsSync(join(ROOT, 'agents', a, 'base.md')) ? join(ROOT, 'agents', a) : null);
 const stamp = () => new Date().toISOString().replace(/\D/g, '').slice(0, 14);
 // Returns the line written, so the save's PR carries it too (an append to main's activity.jsonl).
-const logWork = (slug, note, files) => { const line = JSON.stringify({ ts: new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'), operator: OPERATOR, slug, kind: 'work', note, files }) + '\n'; appendFileSync(ACTIVITY, line); return line; };
-function saveRules(body) {
+const logWork = (who, slug, note, files) => { const line = JSON.stringify({ ts: new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'), operator: who.operator, slug, kind: 'work', note, files }) + '\n'; appendFileSync(ACTIVITY, line); return line; };
+function saveRules(body, who) {
   const dir = agentDir(body.agent);
   if (!dir) return { status: 400, error: 'unknown agent' };
   if (typeof body.text !== 'string' || body.text.length > 200_000) return { status: 400, error: 'text is required' };
@@ -193,19 +213,20 @@ function saveRules(body) {
   const header = m ? `${m[1]}\n${m[2] ? '---\n' : '\n'}` : '';
   const next = header + body.text.trim() + '\n';
   writeFileSync(path, next);
-  const logged = logWork('-', `${body.agent}: ${HUMAN} saved their rules (custom.md) from the dashboard`, [`agents/${body.agent}/custom.md`]);
+  const logged = logWork(who, '-', `${body.agent}: ${who.human} saved their rules (custom.md) from the dashboard`, [`agents/${body.agent}/custom.md`]);
   const rel = `agents/${body.agent}/custom.md`;
   const pr = {
     root: ROOT,
-    branch: `${OPERATOR}/agent-rules-${body.agent}-${stamp()}`,
-    message: `agents/${body.agent}: ${HUMAN}'s rules (custom.md), saved from the dashboard`,
-    title: `${body.agent}: ${HUMAN}'s rules, saved from the dashboard`,
-    body: `${HUMAN} saved their rules for the ${body.agent} agent from the dashboard (Agents → Advanced → Your rules). Only \`${rel}\` changes, plus its line in \`activity.jsonl\`.\n\nMerge it so the other operator's runs use these rules too.\n\nOpened by the dashboard on save.`,
+    author: who.git,
+    branch: `${who.operator}/agent-rules-${body.agent}-${stamp()}`,
+    message: `agents/${body.agent}: ${who.human}'s rules (custom.md), saved from the dashboard`,
+    title: `${body.agent}: ${who.human}'s rules, saved from the dashboard`,
+    body: `${who.human} saved their rules for the ${body.agent} agent from the dashboard (Agents → Advanced → Your rules). Only \`${rel}\` changes, plus its line in \`activity.jsonl\`.\n\nMerge it so the other operator's runs use these rules too.\n\nOpened by the dashboard on save.`,
     files: [{ rel, before: cur, after: next }, { rel: 'activity.jsonl', append: logged }],
   };
   return { status: 201, sha: shaOf(next), file: rel, pr };
 }
-function suggestTweak(body) {
+function suggestTweak(body, who) {
   const dir = agentDir(body.agent);
   if (!dir) return { status: 400, error: 'unknown agent' };
   const title = String(body.title ?? '').trim(), what = String(body.what ?? '').trim(), why = String(body.why ?? '').trim();
@@ -223,7 +244,7 @@ function suggestTweak(body) {
     try { execFileSync('diff', ['-u', '--label', `a/agents/${body.agent}/base.md`, '--label', `b/agents/${body.agent}/base.md`, join(tmp, 'a'), join(tmp, 'b')], { encoding: 'utf8' }); }
     catch (e) { diff = e.stdout ?? ''; }
   } finally { rmSync(tmp, { recursive: true, force: true }); }
-  let run; try { run = currentRun({ operator: OPERATOR }).run_id; } catch { run = 'dashboard'; }
+  let run; try { run = currentRun({ operator: who.operator }).run_id; } catch { run = 'dashboard'; }
   const pdir = join(ROOT, 'proposals', run);
   mkdirSync(pdir, { recursive: true });
   // number after both this checkout's and origin/main's files, so the other operator's merged tweak keeps its number
@@ -232,7 +253,7 @@ function suggestTweak(body) {
   const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').replace(new RegExp(`^${body.agent}-`), '').slice(0, 48);
   const rel = `proposals/${run}/${num}-${body.agent}-${slug}.md`;
   const today = new Date().toISOString().slice(0, 10);
-  writeFileSync(join(ROOT, rel), `# ${num} — ${body.agent}: ${title}\n\nFiled ${today} by ${HUMAN} from the dashboard (Agents → Edit as a suggested tweak). **Not applied.** Awaiting approval (gate d); on approval Claude applies the diff to \`agents/${body.agent}/base.md\`, bumps its version and adds a CHANGELOG line.\n\n**Target:** \`agents/${body.agent}/base.md\`\n\n## What changes\n\n${what}\n\n## Why\n\n${why}\n\n## Diff\n\n\`\`\`diff\n${diff.trimEnd()}\n\`\`\`\n`);
+  writeFileSync(join(ROOT, rel), `# ${num} — ${body.agent}: ${title}\n\nFiled ${today} by ${who.human} from the dashboard (Agents → Edit as a suggested tweak). **Not applied.** Awaiting approval (gate d); on approval Claude applies the diff to \`agents/${body.agent}/base.md\`, bumps its version and adds a CHANGELOG line.\n\n**Target:** \`agents/${body.agent}/base.md\`\n\n## What changes\n\n${what}\n\n## Why\n\n${why}\n\n## Diff\n\n\`\`\`diff\n${diff.trimEnd()}\n\`\`\`\n`);
   const tw = join(ROOT, 'dashboard', 'tweaks.json');
   const twBefore = existsSync(tw) ? readFileSync(tw, 'utf8') : '';
   const plain = twBefore ? JSON.parse(twBefore) : {};
@@ -240,13 +261,14 @@ function suggestTweak(body) {
   plain[rel] = { title, agent: name, what, why, status: 'pending' };
   const twAfter = JSON.stringify(plain, null, 2) + '\n';
   writeFileSync(tw, twAfter);
-  const logged = logWork('-', `${body.agent}: ${HUMAN} suggested a tweak to Claude's instructions from the dashboard: ${title}`, [rel, 'dashboard/tweaks.json']);
+  const logged = logWork(who, '-', `${body.agent}: ${who.human} suggested a tweak to Claude's instructions from the dashboard: ${title}`, [rel, 'dashboard/tweaks.json']);
   const pr = {
     root: ROOT,
-    branch: `${OPERATOR}/agent-tweak-${body.agent}-${slug.slice(0, 32).replace(/-$/, '')}-${stamp()}`,
+    author: who.git,
+    branch: `${who.operator}/agent-tweak-${body.agent}-${slug.slice(0, 32).replace(/-$/, '')}-${stamp()}`,
     message: `proposals/${run}: suggested tweak to ${body.agent} — ${title} (from the dashboard)`,
     title: `Suggested tweak to ${body.agent}: ${title}`,
-    body: `## What changes\n\n${what}\n\n## Why\n\n${why}\n\nFiled by ${HUMAN} from the dashboard as a suggested tweak to Claude's instructions for the ${body.agent} agent. This PR adds the suggestion only (\`${rel}\`); \`agents/${body.agent}/base.md\` is unchanged. Approve or reject it on the Decisions page; Claude applies it after approval.\n\nOpened by the dashboard on save.`,
+    body: `## What changes\n\n${what}\n\n## Why\n\n${why}\n\nFiled by ${who.human} from the dashboard as a suggested tweak to Claude's instructions for the ${body.agent} agent. This PR adds the suggestion only (\`${rel}\`); \`agents/${body.agent}/base.md\` is unchanged. Approve or reject it on the Decisions page; Claude applies it after approval.\n\nOpened by the dashboard on save.`,
     // tweaks.json is the page's plain summary; left out when main's copy differs (it has none yet)
     files: [{ rel, before: '', after: readFileSync(join(ROOT, rel), 'utf8') }, { rel: 'dashboard/tweaks.json', before: twBefore, after: twAfter, optional: true }, { rel: 'activity.jsonl', append: logged }],
   };
@@ -266,7 +288,7 @@ let previewCache = { at: 0, urls: {} };
 function previewUrl(slug) {
   if (Date.now() - previewCache.at > 60_000) {
     const urls = {};
-    for (const b of buildData({ ledgerPath: LEDGER, operator: OPERATOR }).businesses) if (b.preview_url) urls[b.slug] = b.preview_url;
+    for (const b of buildData({ ledgerPath: LEDGER, operator: FIXED?.operator ?? null }).businesses) if (b.preview_url) urls[b.slug] = b.preview_url;
     previewCache = { at: Date.now(), urls };
   }
   return previewCache.urls[slug] ?? null;
@@ -310,13 +332,13 @@ function serveFile(res, abs) {
   createReadStream(abs).pipe(res);
 }
 
-function handle(req, res) {
+function handle(req, res, who) {
   const hostname = String(req.headers.host ?? '').toLowerCase().replace(/:\d+$/, '');
   if (!HOSTS.has(hostname)) return send(res, 403, { error: `host "${hostname}" not allowed; start the server with --allow-host ${hostname || '<host>'}` });
   const url = new URL(req.url, `http://${req.headers.host}`);
   const path = decodeURIComponent(url.pathname);
   if (req.method === 'GET' && (path === '/' || path === '/index.html')) return serveFile(res, join(DIST, 'index.html'));
-  if (req.method === 'GET' && path === '/data.json') { markPitchLive(buildData({ ledgerPath: LEDGER, operator: OPERATOR })).then((d) => send(res, 200, d), (e) => send(res, 500, { error: String(e.message ?? e) })); return; }
+  if (req.method === 'GET' && path === '/data.json') { markPitchLive(buildData({ ledgerPath: LEDGER, operator: who.operator })).then((d) => send(res, 200, d), (e) => send(res, 500, { error: String(e.message ?? e) })); return; }
   if (req.method === 'GET' && path === '/events') {
     res.writeHead(200, { 'content-type': 'text/event-stream', 'cache-control': 'no-store', connection: 'keep-alive' });
     res.write(`event: hello\ndata: ${JSON.stringify({ at: new Date().toISOString() })}\n\n`);
@@ -329,7 +351,7 @@ function handle(req, res) {
     return serveFile(res, abs);
   }
   if (req.method === 'GET' && path.startsWith('/thumb/') && path.endsWith('.jpg')) { serveThumb(res, path.slice(7, -4)).catch((e) => { if (!res.headersSent) send(res, 500, { error: String(e.message ?? e) }); }); return; }
-  if (req.method === 'GET' && path === '/gates') return send(res, 200, { gates: buildData({ ledgerPath: LEDGER, operator: OPERATOR }).gates, decisions: Object.fromEntries(Object.entries(DECISIONS).map(([k, v]) => [k, { from: v.from, choices: v.choices }])) });
+  if (req.method === 'GET' && path === '/gates') return send(res, 200, { gates: buildData({ ledgerPath: LEDGER, operator: who.operator }).gates, decisions: Object.fromEntries(Object.entries(DECISIONS).map(([k, v]) => [k, { from: v.from, choices: v.choices }])) });
   if (req.method === 'POST' && (path === '/agent-rules' || path === '/agent-tweak')) {
     if (!/^application\/json\b/i.test(req.headers['content-type'] ?? '')) return send(res, 415, { error: 'content-type must be application/json' });
     let raw = '';
@@ -337,7 +359,7 @@ function handle(req, res) {
     req.on('end', () => {
       let body; try { body = JSON.parse(raw); } catch { return send(res, 400, { error: 'body must be JSON' }); }
       if (!body || typeof body !== 'object' || Array.isArray(body)) return send(res, 400, { error: 'body must be a JSON object' });
-      let out; try { out = path === '/agent-rules' ? saveRules(body) : suggestTweak(body); } catch (e) { return send(res, 500, { error: String(e.message ?? e) }); }
+      let out; try { out = path === '/agent-rules' ? saveRules(body, who) : suggestTweak(body, who); } catch (e) { return send(res, 500, { error: String(e.message ?? e) }); }
       if (out.status !== 201) return send(res, out.status, out);
       notify(path.slice(1));
       const { pr, ...saved } = out;
@@ -365,9 +387,12 @@ function handle(req, res) {
     req.on('end', () => {
       let body; try { body = JSON.parse(raw); } catch { return send(res, 400, { error: 'body must be JSON' }); }
       if (!body || typeof body !== 'object' || Array.isArray(body)) return send(res, 400, { error: 'body must be a JSON object' });
-      let out; try { out = handoff(body); } catch (e) { return send(res, 500, { error: String(e.message ?? e) }); }
-      if (out.status === 201) notify('handoff');
-      return send(res, out.status, out);
+      let out; try { out = handoff(body, who); } catch (e) { return send(res, 500, { error: String(e.message ?? e) }); }
+      if (out.status !== 201) return send(res, out.status, out);
+      notify('handoff');
+      const { pr, ...saved } = out;
+      if (!pr) return send(res, 201, saved);
+      tryPr(pr).then((r) => send(res, 201, { ...saved, ...r }));
     });
     return;
   }
@@ -379,7 +404,7 @@ function handle(req, res) {
     req.on('end', () => {
       let body; try { body = JSON.parse(raw); } catch { return send(res, 400, { error: 'body must be JSON' }); }
       if (!body || typeof body !== 'object' || Array.isArray(body)) return send(res, 400, { error: 'body must be a JSON object' });
-      let out; try { out = decide(body); } catch (e) { return send(res, 500, { error: String(e.message ?? e) }); }
+      let out; try { out = decide(body, who); } catch (e) { return send(res, 500, { error: String(e.message ?? e) }); }
       if (out.status !== 201) return send(res, out.status, out);
       notify('decision');
       const { pr, ...saved } = out;
@@ -392,8 +417,13 @@ function handle(req, res) {
   send(res, 405, { error: 'method not allowed' });
 }
 // One bad request must not take the control layer down: a throw in a handler is an uncaught exception.
-const server = createServer((req, res) => {
-  try { handle(req, res); } catch (e) {
+const server = createServer(async (req, res) => {
+  let who = FIXED;
+  if (ACCESS) {
+    try { who = identity((await ACCESS(req)).operator); }
+    catch (e) { return send(res, e.status ?? 502, { error: e.status ? e.message : `Access check failed: ${e.message}` }); }
+  }
+  try { handle(req, res, who); } catch (e) {
     if (res.headersSent) return res.end();
     send(res, e instanceof URIError || e.code === 'ERR_INVALID_URL' ? 400 : 500, { error: String(e.message ?? e) });
   }
