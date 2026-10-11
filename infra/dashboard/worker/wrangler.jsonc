@@ -1,0 +1,14 @@
+// The online dashboard's front door (infra/dashboard/README.md). Cloudflare Access on this workers.dev
+// address does the login; the Worker only forwards to the dashboard server on the CMS box.
+{
+  "name": "oneshot-dashboard",
+  "account_id": "e42421b29f42b84081a1e9be362397eb", // the Oneshot account only (PLAN.md §9)
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "preview_urls": false,
+  "vars": {
+    // dashboard/server.mjs behind the CMS box's Caddy (cms/caddy/Caddyfile, DASHBOARD_ADDRESS)
+    "ORIGIN": "https://dash.130-61-212-182.sslip.io"
+  }
+}

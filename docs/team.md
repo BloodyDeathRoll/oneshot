@@ -73,6 +73,10 @@ Decided 2026-10-04. Each operator can run their own run at the same time, on the
   Results reach the other operator only when merged: keep PRs small (one station or gate each).
 - Images and video stay per machine (below), so the other operator's sheets show only after
   `tools/media.mjs restore`.
+- **The dashboard online** (`infra/dashboard/README.md`): one address for both operators, behind a
+  Cloudflare Access e-mail login, running on the CMS box so no laptop needs to be on. The login
+  decides the operator per request (`team.json` `access_emails`, else `git_emails`); every decision,
+  save and handoff opens its own PR, as on a laptop.
 
 ## Git: branches and pull requests, never straight to `main`
 
