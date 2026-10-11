@@ -42,3 +42,10 @@ test('an alg other than RS256 is refused before any key is used', async () => {
   const head = b64({ alg: 'none', kid: 'k1' }), body = b64(good);
   await refused(`${head}.${body}.`, 401, /unsupported/);
 });
+test('a burst of first requests fetches the keys once and all pass', async () => {
+  let n = 0;
+  const g = accessGate({ team: 'oneshot', aud: 'aud1', operators: ops, fetchKeys: async () => { n++; await new Promise((r) => setTimeout(r, 20)); return { keys: [jwk] }; } });
+  const all = await Promise.all(Array.from({ length: 8 }, () => g(req(token(good)))));
+  assert.equal(n, 1);
+  assert.ok(all.every((w) => w.operator === 'shahar'));
+});
