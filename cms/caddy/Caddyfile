@@ -38,3 +38,14 @@
 	# the publisher is internal; nothing else is proxied
 	reverse_proxy cms:3000
 }
+
+# The operators' dashboard (infra/dashboard/README.md): dashboard/server.mjs runs on the host, port 8970,
+# and checks a Cloudflare Access token on every request itself. Reached only through its Worker on
+# workers.dev, where Access does the login. Unset DASHBOARD_ADDRESS = a .localhost name nobody can reach.
+{$DASHBOARD_ADDRESS:dashboard.localhost} {
+	encode zstd gzip
+	header -Server
+	reverse_proxy host.docker.internal:8970 {
+		flush_interval -1
+	}
+}

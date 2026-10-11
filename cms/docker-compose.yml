@@ -84,6 +84,9 @@ services:
         condition: service_healthy
     environment:
       CMS_ADDRESS: ${CMS_ADDRESS:?}
+      DASHBOARD_ADDRESS: ${DASHBOARD_ADDRESS:-dashboard.localhost}
+    extra_hosts:
+      - "host.docker.internal:host-gateway" # the dashboard server runs on the host (infra/dashboard/)
     ports:
       - "80:80"
       - "443:443"
