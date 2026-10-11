@@ -49,3 +49,11 @@ test('a burst of first requests fetches the keys once and all pass', async () =>
   assert.equal(n, 1);
   assert.ok(all.every((w) => w.operator === 'shahar'));
 });
+test('a failed key fetch is not retried on every request (one-minute cooldown)', async () => {
+  let n = 0;
+  const g = accessGate({ team: 'oneshot', aud: 'aud1', operators: ops, fetchKeys: async () => { n++; throw new Error('certs down'); } });
+  await assert.rejects(g(req(token(good))), /certs down/);
+  await assert.rejects(g(req(token(good, 'k9'))), (e) => e.status === 401);
+  await assert.rejects(g(req(token(good, 'k8'))), (e) => e.status === 401);
+  assert.equal(n, 1);
+});

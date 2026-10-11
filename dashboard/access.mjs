@@ -22,12 +22,15 @@ export function accessGate({ team: teamDomain, aud, fetchKeys = defaultFetchKeys
   let keys = new Map(), fetchedAt = 0, refreshing = null;
 
   // One refresh at a time; the new map replaces the old only once it is complete, so a page's burst of
-  // requests at start-up or after a key rotation never sees a half-filled map.
+  // requests at start-up or after a key rotation never sees a half-filled map. A failed fetch counts
+  // too, so while the certs endpoint is down an unknown kid cannot start a fetch per request.
   async function refresh() {
-    const jwks = await fetchKeys(certsUrl);
-    const next = new Map();
-    for (const k of jwks.keys ?? []) next.set(k.kid, await crypto.subtle.importKey('jwk', k, { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['verify']));
-    keys = next; fetchedAt = Date.now();
+    try {
+      const jwks = await fetchKeys(certsUrl);
+      const next = new Map();
+      for (const k of jwks.keys ?? []) next.set(k.kid, await crypto.subtle.importKey('jwk', k, { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['verify']));
+      keys = next;
+    } finally { fetchedAt = Date.now(); }
   }
   async function keyFor(kid) {
     if (!keys.has(kid) && (refreshing || Date.now() - fetchedAt > 60_000)) { // unknown key: refresh, at most once a minute
