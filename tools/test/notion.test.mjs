@@ -17,7 +17,6 @@ test('every property maps to a column in SCHEMA', () => {
 test('a business maps to its row', () => {
   const p = toProperties(b);
   assert.equal(keyOf(b), '2026-09-ahangama-01/example-surf-school');
-  assert.equal(p.Key.rich_text[0].text.content, '2026-09-ahangama-01/example-surf-school');
   assert.equal(p.Name.title[0].text.content, 'Example Surf School');
   assert.equal(p.State.select.name, 'packaged');
   assert.equal(p.Proposal.url, 'https://example-proposal.os1.workers.dev');

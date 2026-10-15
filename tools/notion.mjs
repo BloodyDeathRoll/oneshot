@@ -2,7 +2,7 @@
 // tools/notion.mjs — push one row per business to a Notion database (one-way: disk → Notion).
 //
 //   node tools/notion.mjs setup <parent-page-id>   # creates the database under that page, prints its id
-//   node tools/notion.mjs sync [--dry-run]         # upserts every business, keyed by <run_id>/<slug>
+//   node tools/notion.mjs sync [--dry-run]         # upserts every business, matched on Run + Slug
 //
 // The rows come from the dashboard's buildData() (dashboard/data.mjs), so Notion shows exactly what
 // the dashboard shows: `businesses` for the state, `prospects` (the ledger view) for the verdict and
@@ -30,7 +30,6 @@ const secret = (env, file) => process.env[env]?.trim() || (existsSync(file) ? re
 // Database columns: name → Notion property schema.
 export const SCHEMA = {
   Name: { title: {} },
-  Key: { rich_text: {} },
   Slug: { rich_text: {} },
   Run: { select: {} },
   State: { select: {} },
@@ -68,7 +67,6 @@ export function verdictOf(b, p) {
 export function toProperties(b, p = null) {
   return {
     Name: { title: [{ text: { content: b.name || b.slug } }] },
-    Key: text(keyOf(b)),
     Slug: text(b.slug),
     Run: select(b.run_id),
     State: select(b.state),
@@ -98,7 +96,7 @@ async function notion(token, method, path, body) {
   return json;
 }
 
-// Every page in the database, as Key → page id.
+// Every page in the database, as <run>/<slug> → page id.
 async function existingRows(token, db) {
   const rows = new Map();
   let cursor;
@@ -106,11 +104,8 @@ async function existingRows(token, db) {
     const r = await notion(token, 'POST', `/databases/${db}/query`, { page_size: 100, ...(cursor ? { start_cursor: cursor } : {}) });
     for (const p of r.results) {
       const plain = (prop) => prop?.rich_text?.map((t) => t.plain_text).join('') ?? '';
-      // An empty Key (the column was cleared or re-created in Notion) falls back to Run + Slug,
-      // so the row is updated instead of duplicated.
       const run = p.properties?.Run?.select?.name, slug = plain(p.properties?.Slug);
-      const key = plain(p.properties?.Key) || (run && slug ? `${run}/${slug}` : '');
-      if (key) rows.set(key, p.id);
+      if (run && slug) rows.set(`${run}/${slug}`, p.id);
     }
     cursor = r.has_more ? r.next_cursor : undefined;
   } while (cursor);
@@ -137,12 +132,16 @@ async function sync(token, db, dryRun) {
     console.log(`${businesses.length} businesses (dry run, nothing sent)`);
     return;
   }
-  // Columns added to SCHEMA after `setup` are created on the fly; existing ones are left alone.
-  await notion(token, 'PATCH', `/databases/${db}`, { properties: SCHEMA });
+  // Only the columns the database has are written: a column deleted in Notion stays deleted
+  // (Shahar, 2026-10-15). Run and Slug are how a row is found, so those two must exist.
+  const have = new Set(Object.keys((await notion(token, 'GET', `/databases/${db}`)).properties));
+  for (const c of ['Run', 'Slug']) if (!have.has(c)) throw new Error(`the database has no "${c}" column; rows are matched on Run + Slug`);
+  const skipped = Object.keys(SCHEMA).filter((c) => !have.has(c));
+  if (skipped.length) console.log(`notion: not in the database, skipped: ${skipped.join(', ')}`);
   const rows = await existingRows(token, db);
   let created = 0, updated = 0;
   for (const b of businesses) {
-    const properties = toProperties(b, prospectOf.get(keyOf(b)));
+    const properties = Object.fromEntries(Object.entries(toProperties(b, prospectOf.get(keyOf(b)))).filter(([c]) => have.has(c)));
     const id = rows.get(keyOf(b));
     if (id) { await notion(token, 'PATCH', `/pages/${id}`, { properties }); updated++; }
     else { await notion(token, 'POST', '/pages', { parent: { database_id: db }, properties }); created++; }
