@@ -6,7 +6,7 @@
 //
 // The rows come from the dashboard's buildData() (dashboard/data.mjs), so Notion shows exactly what
 // the dashboard shows: `businesses` for the state, `prospects` (the ledger view) for the verdict and
-// its reason. Rating is our presence score, 0-5 (lower = weaker web presence = better prospect). Notion is a read-only mirror: nothing is read back, the ledger stays the source
+// its reason. Rate is our presence score, 0-5 (lower = weaker web presence = better prospect). Notion is a read-only mirror: nothing is read back, the ledger stays the source
 // of truth, and a row edited in Notion is overwritten by the next sync.
 //
 // Secrets stay out of git (like ~/.oneshot/cf-token):
@@ -34,7 +34,7 @@ export const SCHEMA = {
   Run: { select: {} },
   State: { select: {} },
   Verdict: { select: {} },
-  Rating: { number: {} },
+  Rate: { number: {} },
   Reason: { rich_text: {} },
   'Next step': { rich_text: {} },
   Owner: { select: {} },
@@ -70,7 +70,7 @@ export function toProperties(b, p = null) {
     Run: select(b.run_id),
     State: select(b.state),
     Verdict: select(verdictOf(b, p)),
-    Rating: { number: Number.isFinite(b.presence) ? b.presence : null },
+    Rate: { number: Number.isFinite(b.presence) ? b.presence : null },
     Reason: text(p?.why ?? (b.group === 'superseded' ? 'Found in a run that stopped before the shortlist.' : b.why)),
     'Next step': text(b.next_step),
     Owner: select(b.owner),
