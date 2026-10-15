@@ -18,7 +18,7 @@ test('a business maps to its row', () => {
   const p = toProperties(b);
   assert.equal(keyOf(b), '2026-09-ahangama-01/example-surf-school');
   assert.equal(p.Name.title[0].text.content, 'Example Surf School');
-  assert.equal(p.State.select.name, 'packaged');
+  assert.equal(p.State.select.name, 'Ready');
   assert.equal(p.Proposal.url, 'https://example-proposal.os1.workers.dev');
   assert.equal(p['Last change'].date.start, '2026-10-05T11:58:26Z');
 });

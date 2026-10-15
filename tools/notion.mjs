@@ -50,6 +50,9 @@ const text = (s) => ({ rich_text: s ? [{ text: { content: String(s).slice(0, 200
 // Notion select options may not contain commas.
 const select = (s) => ({ select: s ? { name: String(s).replace(/,/g, ' ').slice(0, 100) } : null });
 
+// Ledger state → the word shown in Notion (Shahar, 2026-10-15). The ledger keeps its names.
+const STATE_LABEL = { packaged: 'Ready' };
+
 export const keyOf = (b) => `${b.run_id}/${b.slug}`;
 
 // The dashboard's prospect verdict, with "not shortlisted" called what it is (Shahar, 2026-10-15).
@@ -68,7 +71,7 @@ export function toProperties(b, p = null) {
     Name: { title: [{ text: { content: b.name || b.slug } }] },
     Slug: text(b.slug),
     Run: select(b.run_id),
-    State: select(b.state),
+    State: select(STATE_LABEL[b.state] ?? b.state),
     Verdict: select(verdictOf(b, p)),
     Rate: { number: Number.isFinite(b.presence) ? b.presence : null },
     Reason: text(p?.why ?? (b.group === 'superseded' ? 'Found in a run that stopped before the shortlist.' : b.why)),
