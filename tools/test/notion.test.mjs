@@ -53,3 +53,8 @@ test('other prospect verdicts pass through; no prospect falls back to the group'
 test('a presence of 0 is a rating, not a blank', () => {
   assert.equal(toProperties({ ...b, presence: 0 }).Rate.number, 0);
 });
+
+test('hosting mode stays empty until the client has chosen a product', () => {
+  assert.equal(toProperties({ ...b, reached: ['previewed', 'packaged'] })['Hosting mode'].select, null);
+  assert.equal(toProperties({ ...b, reached: ['outcome', 'product_chosen'] })['Hosting mode'].select.name, 'managed');
+});

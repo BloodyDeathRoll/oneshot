@@ -74,7 +74,9 @@ export function toProperties(b, p = null) {
     Reason: text(p?.why ?? (b.group === 'superseded' ? 'Found in a run that stopped before the shortlist.' : b.why)),
     'Next step': text(b.next_step),
     Owner: select(b.owner),
-    'Hosting mode': select(b.hosting_mode),
+    // The client picks the mode after a sale (ledger product_chosen); older lines carry a
+    // hosting_mode from the pre-2026-10-05 deploy flow, which is not a choice.
+    'Hosting mode': select(b.reached?.includes('product_chosen') ? b.hosting_mode : null),
     Preview: { url: b.preview_url || null },
     Proposal: { url: b.pitch?.proposal_url || null },
     'Last change': { date: b.last_change ? { start: b.last_change } : null },
