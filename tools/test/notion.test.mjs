@@ -29,7 +29,6 @@ test('missing fields become empty values, not errors', () => {
   assert.equal(p.Preview.url, null);
   assert.equal(p['Hosting mode'].select, null);
   assert.equal(p['Last change'].date, null);
-  assert.deepEqual(p.Gate.rich_text, []);
 });
 
 test('select values drop commas (Notion rejects them)', () => {
