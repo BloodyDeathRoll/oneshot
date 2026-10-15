@@ -5,7 +5,8 @@
 //   node tools/notion.mjs sync [--dry-run]         # upserts every business, keyed by <run_id>/<slug>
 //
 // The rows come from the dashboard's buildData() (dashboard/data.mjs), so Notion shows exactly what
-// the dashboard shows. Notion is a read-only mirror: nothing is read back, the ledger stays the source
+// the dashboard shows: `businesses` for the state, `prospects` (the ledger view) for the verdict and
+// its reason. Rating is our presence score, 0-5 (lower = weaker web presence = better prospect). Notion is a read-only mirror: nothing is read back, the ledger stays the source
 // of truth, and a row edited in Notion is overwritten by the next sync.
 //
 // Secrets stay out of git (like ~/.oneshot/cf-token):
@@ -33,6 +34,9 @@ export const SCHEMA = {
   Slug: { rich_text: {} },
   Run: { select: {} },
   State: { select: {} },
+  Verdict: { select: {} },
+  Rating: { number: {} },
+  Reason: { rich_text: {} },
   'Next step': { rich_text: {} },
   Gate: { rich_text: {} },
   Owner: { select: {} },
@@ -50,14 +54,27 @@ const select = (s) => ({ select: s ? { name: String(s).replace(/,/g, ' ').slice(
 
 export const keyOf = (b) => `${b.run_id}/${b.slug}`;
 
-// One business (dashboard buildData().businesses[i]) → Notion page properties.
-export function toProperties(b) {
+// The dashboard's prospect verdict, with "not shortlisted" called what it is (Shahar, 2026-10-15).
+// prospects keep one run per slug (the newest), so older runs fall back to the business's group.
+export function verdictOf(b, p) {
+  if (p) return p.verdict === 'not shortlisted' ? 'rejected' : p.verdict;
+  if (b.state === 'void') return 'voided';
+  if (b.group === 'superseded') return 'not continued';
+  if (b.group === 'not_shortlisted') return 'rejected';
+  return b.group ?? null;
+}
+
+// One business (dashboard buildData().businesses[i]) and its prospect, if any → Notion page properties.
+export function toProperties(b, p = null) {
   return {
     Name: { title: [{ text: { content: b.name || b.slug } }] },
     Key: text(keyOf(b)),
     Slug: text(b.slug),
     Run: select(b.run_id),
     State: select(b.state),
+    Verdict: select(verdictOf(b, p)),
+    Rating: { number: Number.isFinite(b.presence) ? b.presence : null },
+    Reason: text(p?.why ?? (b.group === 'superseded' ? 'Found in a run that stopped before the shortlist.' : b.why)),
     'Next step': text(b.next_step),
     Gate: text(b.gate),
     Owner: select(b.owner),
@@ -88,7 +105,11 @@ async function existingRows(token, db) {
   do {
     const r = await notion(token, 'POST', `/databases/${db}/query`, { page_size: 100, ...(cursor ? { start_cursor: cursor } : {}) });
     for (const p of r.results) {
-      const key = p.properties?.Key?.rich_text?.map((t) => t.plain_text).join('');
+      const plain = (prop) => prop?.rich_text?.map((t) => t.plain_text).join('') ?? '';
+      // An empty Key (the column was cleared or re-created in Notion) falls back to Run + Slug,
+      // so the row is updated instead of duplicated.
+      const run = p.properties?.Run?.select?.name, slug = plain(p.properties?.Slug);
+      const key = plain(p.properties?.Key) || (run && slug ? `${run}/${slug}` : '');
       if (key) rows.set(key, p.id);
     }
     cursor = r.has_more ? r.next_cursor : undefined;
@@ -109,9 +130,10 @@ async function setup(token, parent) {
 
 async function sync(token, db, dryRun) {
   const { buildData } = await import('../dashboard/data.mjs');
-  const businesses = buildData().businesses;
+  const { businesses, prospects } = buildData();
+  const prospectOf = new Map(prospects.map((p) => [keyOf(p), p]));
   if (dryRun) {
-    for (const b of businesses) console.log(`${keyOf(b)}\t${b.state}\t${b.next_step ?? ''}`);
+    for (const b of businesses) console.log(`${keyOf(b)}\t${b.state}\t${verdictOf(b, prospectOf.get(keyOf(b)))}\t${b.presence ?? ''}`);
     console.log(`${businesses.length} businesses (dry run, nothing sent)`);
     return;
   }
@@ -120,7 +142,7 @@ async function sync(token, db, dryRun) {
   const rows = await existingRows(token, db);
   let created = 0, updated = 0;
   for (const b of businesses) {
-    const properties = toProperties(b);
+    const properties = toProperties(b, prospectOf.get(keyOf(b)));
     const id = rows.get(keyOf(b));
     if (id) { await notion(token, 'PATCH', `/pages/${id}`, { properties }); updated++; }
     else { await notion(token, 'POST', '/pages', { parent: { database_id: db }, properties }); created++; }

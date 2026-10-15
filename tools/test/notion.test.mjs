@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { toProperties, keyOf, SCHEMA } from '../notion.mjs';
+import { toProperties, keyOf, verdictOf, SCHEMA } from '../notion.mjs';
 
 const b = {
   slug: 'example-surf-school', run_id: '2026-09-ahangama-01', name: 'Example Surf School',
@@ -35,4 +35,23 @@ test('missing fields become empty values, not errors', () => {
 
 test('select values drop commas (Notion rejects them)', () => {
   assert.equal(toProperties({ ...b, owner: 'A, B' }).Owner.select.name, 'A  B');
+});
+
+test('not shortlisted reads as rejected, with our rating and the cause', () => {
+  const p = toProperties({ ...b, state: 'scored', group: 'not_shortlisted', presence: 4 },
+    { verdict: 'not shortlisted', why: 'Already has a decent online presence (4/5 is above the cut-off).' });
+  assert.equal(p.Verdict.select.name, 'rejected');
+  assert.equal(p.Rating.number, 4);
+  assert.match(p.Reason.rich_text[0].text.content, /above the cut-off/);
+});
+
+test('other prospect verdicts pass through; no prospect falls back to the group', () => {
+  assert.equal(verdictOf(b, { verdict: 'dropped' }), 'dropped');
+  assert.equal(verdictOf({ group: 'superseded' }, undefined), 'not continued');
+  assert.equal(verdictOf({ state: 'void', group: 'pipeline' }, undefined), 'voided');
+  assert.equal(verdictOf({ group: 'not_shortlisted' }, undefined), 'rejected');
+});
+
+test('a presence of 0 is a rating, not a blank', () => {
+  assert.equal(toProperties({ ...b, presence: 0 }).Rating.number, 0);
 });
