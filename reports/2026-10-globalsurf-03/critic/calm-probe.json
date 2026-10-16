@@ -1,0 +1,330 @@
+{
+ "variant": "calm",
+ "mobile": {
+  "fcp_ms": 208,
+  "overflow_x_load": 0,
+  "overflow_x_max_scroll": 0,
+  "load_requests": 14,
+  "third_party_on_load": [
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "video_on_load": [
+   "294ms video/hero-m608.webm"
+  ],
+  "third_party_after_scroll": [
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "rosa-data-opal.vercel.app",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "third_party_urls_after_scroll": [
+   "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "https://rosa.surf/favicon.svg",
+   "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924"
+  ],
+  "video_after_scroll": [],
+  "errors": []
+ },
+ "desktop": {
+  "fcp_ms": 216,
+  "overflow_x_load": 0,
+  "overflow_x_max_scroll": 0,
+  "load_requests": 15,
+  "third_party_on_load": [
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "video_on_load": [
+   "301ms video/hero-d1728.webm"
+  ],
+  "third_party_after_scroll": [
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "rosa-data-opal.vercel.app",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "third_party_urls_after_scroll": [
+   "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "https://rosa.surf/favicon.svg",
+   "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924"
+  ],
+  "video_after_scroll": [],
+  "errors": []
+ },
+ "mobile_reduced": {
+  "fcp_ms": 176,
+  "overflow_x_load": 0,
+  "overflow_x_max_scroll": 0,
+  "load_requests": 13,
+  "third_party_on_load": [
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "video_on_load": [],
+  "third_party_after_scroll": [
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "rosa-data-opal.vercel.app",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "third_party_urls_after_scroll": [
+   "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "https://rosa.surf/favicon.svg",
+   "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924"
+  ],
+  "video_after_scroll": [],
+  "errors": []
+ },
+ "desktop_reduced": {
+  "fcp_ms": 188,
+  "overflow_x_load": 0,
+  "overflow_x_max_scroll": 0,
+  "load_requests": 14,
+  "third_party_on_load": [
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "video_on_load": [],
+  "third_party_after_scroll": [
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "rosa-data-opal.vercel.app",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "third_party_urls_after_scroll": [
+   "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "https://rosa.surf/favicon.svg",
+   "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924"
+  ],
+  "video_after_scroll": [],
+  "errors": []
+ },
+ "mobile_savedata": {
+  "fcp_ms": 180,
+  "overflow_x_load": 0,
+  "overflow_x_max_scroll": 0,
+  "load_requests": 13,
+  "third_party_on_load": [
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "video_on_load": [],
+  "third_party_after_scroll": [
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "rosa-data-opal.vercel.app",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "third_party_urls_after_scroll": [
+   "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+   "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "https://rosa.surf/favicon.svg",
+   "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924"
+  ],
+  "video_after_scroll": [],
+  "errors": []
+ },
+ "mobile_nojs": {
+  "fcp_ms": 176,
+  "overflow_x_load": 0,
+  "overflow_x_max_scroll": 0,
+  "load_requests": 40,
+  "third_party_on_load": [
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "video_on_load": [],
+  "third_party_after_scroll": [],
+  "third_party_urls_after_scroll": [],
+  "video_after_scroll": [],
+  "errors": [],
+  "nojs": {
+   "text_length": 6793,
+   "links": [
+    "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.",
+    "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20would%20like%20to%20ask%20about%20dates%20for%20the%20Freestylers%20%E2%80%93%20B%26B%20only%20package.",
+    "https://rosa.surf/spot/south-point",
+    "tel:+97299733943",
+    "mailto:info@globalsurf.com"
+   ],
+   "forms": [],
+   "rosa_lines": [
+    "Forecast for South Point by Rosa",
+    "See today's forecast for South Point on Rosa"
+   ]
+  }
+ },
+ "book_mobile": {
+  "fcp_ms": 224,
+  "overflow_x_load": 0,
+  "overflow_x_max_scroll": 0,
+  "load_requests": 7,
+  "third_party_on_load": [
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "video_on_load": [],
+  "third_party_after_scroll": [],
+  "third_party_urls_after_scroll": [],
+  "video_after_scroll": [],
+  "errors": []
+ },
+ "book_nojs": {
+  "fcp_ms": 176,
+  "overflow_x_load": 0,
+  "overflow_x_max_scroll": 0,
+  "load_requests": 10,
+  "third_party_on_load": [
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "video_on_load": [],
+  "third_party_after_scroll": [],
+  "third_party_urls_after_scroll": [],
+  "video_after_scroll": [],
+  "errors": [],
+  "nojs": {
+   "text_length": 2130,
+   "links": [
+    "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+   ],
+   "forms": [
+    {
+     "action": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+     "method": "get",
+     "submits": [
+      "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies :: Continue booking: Level 1",
+      "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers :: Continue booking: Level 2",
+      "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders :: Continue booking: Level 3"
+     ],
+     "inputs": [
+      "level:radio",
+      "level:radio",
+      "level:radio",
+      "room:radio",
+      "room:radio",
+      "room:radio",
+      "start:date",
+      "end:date",
+      "nights:radio",
+      "nights:radio",
+      "nights:radio",
+      "nights:radio",
+      "female:number",
+      "male:number",
+      "couple:number"
+     ]
+    }
+   ],
+   "rosa_lines": null
+  }
+ },
+ "hero": [
+  "A \"Skip to content\" -> #main [142x47 @8]",
+  "A \"\" -> ./ [120x24 @22]",
+  "BUTTON \"\" ->  [48x48 @10]",
+  "A \"Book package now\" -> book/ [193x52 @429]"
+ ],
+ "h1": [
+  "Next set is yours"
+ ],
+ "rosa": [
+  {
+   "src": "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "w": "100%",
+   "h": "500",
+   "box": "350x500",
+   "loading": "auto",
+   "style": "max-width: 420px; border: 0px; border-radius: 16px; display: block;"
+  }
+ ],
+ "rosa_text": [
+  "Swell 7 s from the S | Wind 4 km/h, onshore",
+  "Forecast for South Point by Rosa"
+ ],
+ "keyboard": {
+  "presses": 32,
+  "unique_stops": 30,
+  "without_ring": [],
+  "offscreen": [],
+  "first10": [
+   "A||#main",
+   "A||./",
+   "BUTTON||Menu",
+   "A||book/",
+   "BUTTON||Play the Level 1 – Fomies clip",
+   "A||book/?level=1",
+   "BUTTON||Play the Level 2 – Rollers clip",
+   "A||book/?level=2",
+   "BUTTON||Play the Level 3 – Riders clip",
+   "A||book/?level=3"
+  ]
+ },
+ "small_targets": [
+  "Global Surf Lodge Kabalana, ho 120x24",
+  "Book now 111x42",
+  "Level 1 of 3 28x28",
+  "Level 2 of 3 28x28",
+  "Level 3 of 3 28x28",
+  "Level 1 82x40",
+  "Level 2 85x40",
+  "Level 3 84x40",
+  "Photo 1 of 4 28x28",
+  "Photo 2 of 4 28x28",
+  "Photo 3 of 4 28x28",
+  "Photo 4 of 4 28x28",
+  "Photo 1 of 6 28x28",
+  "Photo 2 of 6 28x28",
+  "Photo 3 of 6 28x28",
+  "Photo 4 of 6 28x28",
+  "Photo 5 of 6 28x28",
+  "Photo 6 of 6 28x28",
+  "Photo 1 of 5 28x28",
+  "Photo 2 of 5 28x28",
+  "Photo 3 of 5 28x28",
+  "Photo 4 of 5 28x28",
+  "Photo 5 of 5 28x28",
+  "Photo 1 of 6 28x28",
+  "Photo 2 of 6 28x28",
+  "Photo 3 of 6 28x28",
+  "Photo 4 of 6 28x28",
+  "Photo 5 of 6 28x28",
+  "Photo 6 of 6 28x28",
+  "Review 1 of 9 28x28",
+  "Review 2 of 9 28x28",
+  "Review 3 of 9 28x28",
+  "Review 4 of 9 28x28",
+  "Review 5 of 9 28x28",
+  "Review 6 of 9 28x28",
+  "Review 7 of 9 28x28",
+  "Review 8 of 9 28x28",
+  "Review 9 of 9 28x28",
+  "Global Surf Lodge Kabalana, ho 170x34",
+  "Terms and conditions 134x22"
+ ]
+}

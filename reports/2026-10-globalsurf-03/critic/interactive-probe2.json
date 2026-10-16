@@ -1,0 +1,83 @@
+{
+ "variant": "interactive",
+ "mobile": {
+  "rosa_requests": [
+   "iframe document https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "iframe fetch https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "iframe image https://rosa.surf/favicon.svg"
+  ],
+  "cls_load": 0,
+  "cls_after_full_scroll": 0,
+  "big_shifts": []
+ },
+ "desktop": {
+  "rosa_requests": [
+   "iframe document https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "iframe fetch https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "iframe image https://rosa.surf/favicon.svg"
+  ],
+  "cls_load": 0.0010581327964248972,
+  "cls_after_full_scroll": 0.003055646513846022,
+  "big_shifts": []
+ },
+ "rosa_blocked": [
+  "Forecast for South Point by Rosa"
+ ],
+ "trap": "A||https://www.instagram.com/globalsurf_kab",
+ "tab": {
+  "presses": 62,
+  "wrapped_to_first": false,
+  "unique_stops": 44,
+  "no_ring": [
+   "DIV|reel|Surf levels, use the arrow keys to move "
+  ],
+  "hidden_focus": [
+   "INPUT||Move between the pool from above and the",
+   "IFRAME||"
+  ],
+  "iframe": true
+ },
+ "dialogs": [
+  {
+   "label": "mobile menu",
+   "afterOpen": "BUTTON|Menu",
+   "left_dialog": 19,
+   "sample": [
+    "IN A|Levels",
+    "IN A|What's included",
+    "IN A|Rooms",
+    "IN A|The waves",
+    "IN A|Guests",
+    "IN A|Book now",
+    "OUT A|Book package now",
+    "OUT DIV|Surf levels, use the arro",
+    "OUT A|Choose Level 1",
+    "OUT A|Choose Level 2",
+    "OUT A|Choose Level 3",
+    "OUT A|Ask about dates"
+   ],
+   "afterEsc": "BUTTON|Menu",
+   "url": "http://127.0.0.1:8995/"
+  },
+  {
+   "label": "room gallery",
+   "afterOpen": "BUTTON|Close photos",
+   "left_dialog": 2,
+   "sample": [
+    "IN DIV|Photos, use the arrow key",
+    "IN BUTTON|Next photo",
+    "IN A|Choose this room",
+    "IN BUTTON|Photo 1",
+    "IN BUTTON|Photo 2",
+    "IN BUTTON|Photo 3",
+    "IN BUTTON|Photo 4",
+    "IN BUTTON|Photo 5",
+    "IN BUTTON|Photo 6",
+    "OUT BODY|Levels Rooms The waves Gu",
+    "IN BUTTON|Close photos"
+   ],
+   "afterEsc": "BUTTON|See all 6 photos of the Mixed ",
+   "url": "http://127.0.0.1:8995/"
+  }
+ ]
+}
