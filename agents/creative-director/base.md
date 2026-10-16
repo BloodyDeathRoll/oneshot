@@ -1,4 +1,4 @@
-version: 0.3.0
+version: 0.4.0
 
 # creative-director / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -145,16 +145,24 @@ Each concept gets:
   concept. No day-by-day boxes. "No" is a complete answer. The concept may name **one** further
   third-party embed (a map, say) — playbook §4 allows two per page, each lazy, with reserved space
   and a plain-link fallback — and must say what each costs against the budget.
+- **Scroll set-piece (unique only, optional)** — whether concept 3 carries one scroll-driven
+  set-piece from `agents/designer/scroll/playbook.md` (name the pattern: camera journey, scrubbed
+  film, pinned object, zoom-through, …). Allowed only when the material carries it: the business's
+  own usable video (§2), **or** at least eight of its own photographs ≥ 1920 px. Atmosphere
+  (`stock/`) never qualifies. Say which assets it is built from and what a visitor sees with
+  reduced motion, without WebGL and on a weak phone (the poster). "No" is a complete answer, and
+  the right one for a business with a bare listing. Concepts 1 and 2 never carry one.
 - **What would make this concept fail** — the honest risk, in one sentence.
 
 ### 5. Divergence table
 
 A table with one row per concept in this run **across every business**, and these columns: business ·
-variant · archetype · first-screen device · grid · colour ground · motion idiom · booking pattern.
+variant · archetype · first-screen device · grid · colour ground · motion idiom · booking pattern ·
+scroll set-piece (pattern, or "—").
 Fill in the other businesses' rows from their `concepts.md`.
 
 **No two rows may repeat a combination of archetype + first-screen device.** If yours does, change
-yours — not theirs. Finish the file with one sentence per other business in the run saying, plainly,
+yours — not theirs. No two businesses in the run share a set-piece pattern. Finish the file with one sentence per other business in the run saying, plainly,
 what a visitor would notice is different.
 
 ## Hard constraints
