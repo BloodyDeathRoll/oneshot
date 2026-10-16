@@ -18,14 +18,21 @@ Old-site comparison: the dossier has no `old-site-*.png`, so the live globalsurf
 
 Booking flow tapped through at 390 and 1440 (engine calls blocked in the test): hero → level tile → room tile → Saturday chip → +couple → Next → Continue booking = 7 taps; hand-off URL `https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-02-13&couple=1&end=2027-02-20`; snapshot total for that pick $3,092.05 (matches `docs/bookinglayer.md`, couple + twin, 7 n).
 
+**Round 2.1 (after 4f round 1: critic 70.4/80 d1–7, visual 7, experience 7).** Worked the three reports' interactive fix lists. Changed: the phone hero now opens on the bright reef aerial (a phone shows only the middle ~500 px of the 3:4 cut, and the ~880 px tuk-tuk never fits it; its dark cab was the muddy first screen both visual critics flagged), then the pool, then the tuk-tuk framed on driver, windscreen and boards; the desktop loop is rotated to open on the whole tuk-tuk with its boards (4.62 s) so poster = first frame; a light contrast/saturation grade lifts the grey cast; posters re-encoded at q80; logo and nav get a soft local shadow (the only legibility aid). Level 1 clip replaced: sunlit pop-up practice on mint soft-tops plus a guide pushing a beginner into a wave (was the backlit, washed-out golden-hour shot). Pool wipe opens at 85/15 so the top-down palm dominates. The 18 boxed amenity chips became a borderless two-column icon list (one column on phones). Rooms: one per row, alternating sides, a large 3:2 lead photo plus a three-thumb strip, each opening the gallery at that photo. Closing: the line and buttons moved into a white card that overlaps the photo's lower edge, off the faces in img-023, and the phone title can no longer be cropped. Rosa: a designed fallback card (icon, script "South Point", the plain-link button) that stays until the frame really loads (never on `file:`, which Rosa's `frame-ancestors` refuses, and never when the request fails); the headline comes from a checked-in snapshot `src/rosa-south-point.json` with a 24 h gate and a lazy live redraw. Fonts self-hosted. Accessibility: skip link on both pages, phone menu is a modal sheet (focus held in menu button + sheet, rest `inert`, Esc returns focus), reel focus ring, level dots 44 px, review dots on phones are indicators (arrows/swipe are the controls), source/credit/rating links 44 px tall, logo 44 px, toggle buttons 44 px, icon-only WhatsApp link on `book/` named. No-JS: header scrolls away with the hero instead of overlapping white sections. Booking: footer shows "Per person $1,466" until a guest is chosen, totals in whole dollars, a status line under the steppers says what is missing, and Next from dates without a date or guest stays and focuses the missing control. Sheet showed: phone forecast line read "knee-highat" and "| Wind" wrapped to a new line; the room text column floats mid-height on desktop (accepted, it reads as a caption-free spread). Versus the old site (its first screen: dark bar, another country's reel, chat bubble): clearly better on both widths now, the phone included.
+
+**Round 2.2.** Fixed the merged "knee-high at" and the phone forecast rows (stacked, no leading " | "). Logo 128×44 on phones. Sheets: hero reads in sun at 390 (reef, surfers, title, button), the level reel shows a peek of the next card at 390, rooms read as rooms being sold, closing card clean. Versus the old site's lodge page (palm-sky still, breadcrumb, Kuula blur, no price): clearly better, first screen and whole page.
+
+**Round 2.3 (checks).** Tested over http (`tools/_serve.mjs` + Playwright): first Tab = skip link; with the menu open 10 Tabs cycle menu ↔ sheet only, Esc returns to the menu button; reel takes a visible ring; gallery opens at the tapped thumbnail (index 2) and returns focus; Rosa widget loads over http and the card hides; with rosa.surf blocked the card stays; no-JS header is `absolute`; overflow-x 0 at 390. Booking walk at 390 (engine intercepted): hero → Level 2 → Twin → Sat 24 Oct → (Next blocked, hint "Add at least one guest…") → +1 man → Next → Continue booking = 7 taps; hand-off `…/en/product/level-2-rollers?start=2026-10-24&male=1&end=2026-10-31`; ticket $1,466 + $140 = $1,606. `check-design`: 0 problems, 0 warnings. `check-places`: pass.
+
 ## images
 
 All business-owned (dossier `license: business-owned`), cropped/resized by `src/make-media.sh`.
 
 | file(s) | asset | use |
 |---|---|---|
-| video/ride-*, img/ride-poster-* | vid-003 (2.52–5.20, 24.92–27.12, 27.16–29.68 s), badge cropped | hero |
-| video/level-1, img/level-1 | vid-010 19.72–24.16 s, 4:5 centre | Level 1 card, booking tile |
+| video/ride-*, img/ride-poster-* | vid-003 (2.52–5.20, 24.92–27.12, 27.16–29.68 s), badge cropped, light grade; desktop loop opens at 4.62 s, phone loop opens on the reef | hero |
+| fonts/* | Plus Jakarta Sans, Sacramento (Google Fonts latin subsets, OFL) | self-hosted type |
+| video/level-1, img/level-1 | vid-010 12.28–13.52 + 32.92–35.00 s, 4:5 centre | Level 1 card, booking tile |
 | video/level-2, img/level-2 | vid-003 21.56–24.88 s | Level 2 |
 | video/level-3, img/level-3 | vid-002 8.86–12.50 s | Level 3 |
 | img/freestylers | img-001 | Freestylers card |
@@ -46,14 +53,17 @@ Full-bleed sources are all 2000 px wide (img-026, 060, 138, 023, poster from 192
 - No Instagram posts harvested: the row shows the lodge's own photographs as tiles linking to `@globalsurf_kabalana`.
 - No season (playbook §2): not shown.
 - WhatsApp is the Israeli HQ mobile; "Call us" is the HQ landline `contact.phone` (the copy's value).
-- Rosa: no checked-in fixture for `south-point` (only `rosa-kabalana.json`). The headline is inlined from Rosa's live `south-point.json` fetched 2026-10-16 (generated 14:26 UTC; current hour 20:30 local: 0.4–0.6 m knee-high, swell 0.85 m 6.9 s from 186°, wind 4.3 km/h onshore). It is a 4e fixture, stale by the time anyone views it; 4g fetches live with the 24 h fallback.
+- Rosa: no designer fixture for `south-point` (only `rosa-kabalana.json`), so this mockup checks in its own snapshot, `src/rosa-south-point.json` (Rosa's live file, generated 2026-10-16 14:26 UTC; 0.4–0.6 m knee-high at 20:30, swell 0.85 m 6.9 s from 186°, wind 4.3 km/h onshore). The build inlines it; the page hides it once it is over 24 h old and, when the block nears the viewport over http(s), makes one request to the live file and shows the hour that is now if that file is under 24 h old. JS off: headline hidden, plain link shown.
 - Prices for 14/21/28 nights are not in the snapshot: the ticket says "Shown on the booking page" until the live quote answers.
 - Saturdays: the 1-female snapshot from `docs/bookinglayer.md`, past dates dropped; live availability replaces it after interaction.
 - JS off: booking is a GET form with `start`, `duration` (days: 8/15/22/29, which the engine reads), guest counts, and one Continue button per level; with JS the form sends `end` instead of `duration`, as the doc requires.
 
 ## conflicts
 
-- None blocking.
+- None blocking. Every round-1 fix for interactive is done (look-log round 2.1).
+- Phone hero opens on the reef aerial, not the tuk-tuk the concept names as the hero's first shot: on a 390 px screen the whole tuk-tuk cannot be in frame and its close crop was judged muddy by both visual critics. The tuk-tuk stays in the phone loop (third shot), opens the desktop loop, and closes the booking page.
+- Fonts are self-hosted already at 4e (base.md allows Google Fonts here); this removes the only third-party request on load.
+- Review dots on phones are indicators, not buttons: nine 44 px buttons do not fit 390 px beside the arrows; the arrows and swipe are the controls.
 - Concept says the levels row starts with "three visible, centre larger": on desktop the reel opens centred on Level 2 (so all three show); on phones it opens on Level 1.
 - `copy/en.json` has no line for the wipe or the "Not sure" tile's sub-line. Wipe has only an accessible label (template-owned). The "Not sure? Ask us" tile uses the creative director's optional line only.
 - Two-script calibration: Sacramento is used at ≥ 54 px only (section titles); every title word looked at.

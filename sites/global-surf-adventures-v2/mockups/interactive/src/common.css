@@ -1,5 +1,5 @@
 :root{
-  --ground:#fff; --tint:#EDF1F4; --ink:#06200E; --ink2:#3F5246; --place:#00799E; --book:#BF4A0E; --book-d:#A13E0B;
+  --ground:#fff; --tint:#EDF1F4; --ink:#06200E; --ink2:#34463B; --place:#00799E; --book:#BF4A0E; --book-d:#A13E0B;
   --wa:#1FA855;
   --sans:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif; --script:"Sacramento",cursive;
   --max:1240px; --gut:clamp(20px,4vw,48px); --r:18px;
@@ -25,6 +25,9 @@ h1,h2,h3,p{margin:0}
 .btn .wa{color:var(--wa)}
 .btn:active{transform:scale(.98)}
 :focus-visible{outline:3px solid var(--place);outline-offset:3px}
+.skip{position:fixed;left:12px;top:12px;z-index:60;background:#fff;color:var(--ink);padding:14px 20px;border-radius:999px;font-weight:600;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.18);transform:translateY(-200%)}
+.skip:focus{transform:none}
+main:focus{outline:none}
 .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* header */
@@ -33,7 +36,8 @@ h1,h2,h3,p{margin:0}
 .hd .logo svg{width:100%;height:100%;fill:currentColor}
 .hd nav{margin-left:auto;display:flex;gap:30px}
 .hd nav a{font:600 15px/1 var(--sans);text-decoration:none;padding:14px 0;text-shadow:0 1px 12px rgba(0,0,0,.35)}
-.hd:not(.solid) .logo svg,.hd:not(.solid) .menu svg{filter:drop-shadow(0 1px 8px rgba(0,0,0,.3))}
+.hd:not(.solid) .logo svg,.hd:not(.solid) .menu svg{filter:drop-shadow(0 0 2px rgba(0,0,0,.35)) drop-shadow(0 0 16px rgba(0,0,0,.45))}
+.hd:not(.solid) nav a{text-shadow:0 0 2px rgba(0,0,0,.3),0 1px 14px rgba(0,0,0,.45)}
 .hd.solid nav a{text-shadow:none}
 .hd .hd-book{display:none}
 .hd.solid{background:#fff;color:var(--ink);box-shadow:0 6px 24px rgba(6,32,14,.07)}
@@ -41,11 +45,11 @@ h1,h2,h3,p{margin:0}
 .hd .menu{display:none}
 .sheet{position:fixed;inset:64px 0 auto 0;z-index:29;background:#fff;padding:12px var(--gut) 24px;box-shadow:0 18px 30px rgba(6,32,14,.12);display:none}
 .sheet.open{display:block}
-.sheet a:not(.btn){display:block;padding:14px 0;font-weight:600;font-size:18px;text-decoration:none}
+.sheet a:not(.btn){display:block;padding:12px 0;min-height:48px;font-weight:600;font-size:18px;text-decoration:none}
 .sheet .btn{margin-top:10px;width:100%}
 @media (max-width:860px){
   .hd{height:64px}
-  .hd .logo{width:120px;height:41px}
+  .hd .logo{width:128px;height:44px}
   .hd nav{display:none}
   .hd .menu{display:inline-flex;margin-left:auto;width:44px;height:44px;align-items:center;justify-content:center;background:none;border:0;color:inherit;cursor:pointer}
   .hd.solid .hd-book{display:none}
@@ -67,4 +71,7 @@ h1,h2,h3,p{margin:0}
 .ft .legal{grid-column:1/-1;margin-top:28px;font-size:13px;color:var(--ink2);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 @media (max-width:860px){ .ft{padding:64px 0 110px} .ft .wrap{grid-template-columns:1fr;gap:40px} }
 
+/* without JS the header cannot turn solid, so it scrolls away with the hero */
+.nojs .hd{position:absolute}
+.nojs .pbar{display:none!important}
 @media (prefers-reduced-motion:reduce){ *{transition:none!important;animation:none!important;scroll-behavior:auto!important} }

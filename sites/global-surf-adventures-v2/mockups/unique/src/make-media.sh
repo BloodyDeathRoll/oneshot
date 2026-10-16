@@ -32,8 +32,8 @@ PY
 }
 
 # the drop: three plates, uncropped (their pools are aligned in the page's JS by source pixels)
-img img-062 plate-img-062-d 0 2000 74; img img-062 plate-img-062-m 0 1400 72
-img img-026 plate-img-026-d 0 2000 74; img img-026 plate-img-026-m 0 1400 72
+img img-062 plate-img-062-d 0 2000 74; img img-062 plate-img-062-m 0 2000 60
+img img-026 plate-img-026-d 0 2000 74; img img-026 plate-img-026-m 0 2000 60
 img img-005 plate-img-005-d 0 1800 76; img img-005 plate-img-005-m 0 1100 74
 # reduced-motion two-up of the two aerials, 3:2
 img img-062 still-img-062 3:2 1000 74 0.42 0.58
@@ -77,13 +77,14 @@ ff -i "$V/vid-009-source.mp4" -i "$V/vid-010-source.mp4" -filter_complex "\
 ff -i "$T/hero-pmaster.mp4" -an -c:v libx264 -preset slow -b:v 1800k -maxrate 2100k -bufsize 4M -pix_fmt yuv420p -movflags +faststart "$H/hero-p668.mp4"
 SVT_LOG=1 ff -i "$T/hero-pmaster.mp4" -an -c:v libsvtav1 -preset 8 -b:v 1400k "$H/hero-p668.webm"
 rm -f "$H/hero-p600.mp4" "$H/hero-p600.webm"
-# posters: the lodge in its palms (2.6 s into the edit = vid-009 at ~4.2 s)
-ff -ss 2.6 -i "$T/hero-master.mp4" -frames:v 1 -q:v 2 "$T/hero-poster.png"
+# posters: the end of the rise, the sea over the lodge roofs (1.35 s into the edit = vid-009 at 3.05 s);
+# the page starts the loop at this same time, so poster and first frame match (round 2.1)
+ff -ss 1.35 -i "$T/hero-master.mp4" -frames:v 1 -q:v 2 "$T/hero-poster.png"
 python3 -c "
 from PIL import Image; im=Image.open('$T/hero-poster.png').convert('RGB')
 im.save('$D/img/hero-poster-d.webp','WEBP',quality=72,method=6)
 "
-ff -ss 2.6 -i "$T/hero-pmaster.mp4" -frames:v 1 -q:v 2 "$T/hero-pposter.png"
+ff -ss 1.35 -i "$T/hero-pmaster.mp4" -frames:v 1 -q:v 2 "$T/hero-pposter.png"
 python3 -c "
 from PIL import Image; Image.open('$T/hero-pposter.png').convert('RGB').save('$D/img/hero-poster-m.webp','WEBP',quality=72,method=6)"
 
@@ -94,7 +95,9 @@ clip() { # id src start end crop scale
   ff -ss 0.4 -i "$H/$1.mp4" -frames:v 1 "$T/$1.png"
   python3 -c "from PIL import Image; Image.open('$T/$1.png').convert('RGB').save('$D/img/$1-poster.webp','WEBP',quality=74,method=6)"
 }
-clip level1 vid-010-source.mp4 19.72 24.16 "crop=864:1080:528:0" 720:900     # golden-hour session, 4:5
+# level 1 (round 2.1): a guide pushing a beginner into the whitewater, then a first stand-up (32.88-36.44);
+# replaces the backlit 19.72-24.16 golden-hour frame the visual critic called washed out
+clip level1 vid-010-source.mp4 32.88 36.44 "crop=864:1080:528:0" 720:900     # 4:5
 clip level2 vid-003-source.mp4 21.56 24.88 "crop=1440:1080:240:0" 800:600    # woman on a reef wave, 4:3
 clip level3 vid-002-source.webm 8.86 12.50 "crop=1440:1080:240:0" 800:600    # the barrels, 4:3
 

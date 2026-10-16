@@ -17,7 +17,7 @@ var SNAP={base7:1466,supp:{dorm:function(){return 0},twin:function(g){return (g.
 var ROOMS={dorm:'Mixed dorm room – 4 beds',twin:'Shared Twin Room – 2 Beds',double:'Deluxe double room'};
 var live=null,liveFailed=false;
 
-function money(x){var r=Math.round(x*100)/100;return '$'+r.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}).replace(/\.00$/,'')}
+function money(x){return '$'+Math.round(x).toLocaleString('en-US')}
 function level(){return $('input[name=level]:checked').value}
 function room(){return $('input[name=room]:checked').value}
 function nights(){return +$('input[name=duration]:checked').dataset.n}
@@ -32,7 +32,10 @@ if(ROOMS[q.get('room')])$('input[name=room][value="'+q.get('room')+'"]').checked
 
 /* steps: one question per screen */
 var order=['level','room','dates','total'],cur='level',pills=$('.pills');pills.hidden=false;
+function missing(){return !sel.value?'Choose a Saturday to see your dates.':(!guests().n?'Add at least one guest to see your total.':'')}
 function show(s,focus){
+  if(s==='total'&&missing()){s='dates';var h=$('[data-hint]');h.classList.remove('flash');void h.offsetWidth;h.classList.add('flash');
+    if(cur==='dates'){(sel.value?$('#f-female'):($('.chip:not(:disabled)')||sel)).focus();return}}
   cur=s;$$('.step').forEach(function(x){x.classList.toggle('cur',x.dataset.step===s)});
   $$('button',pills).forEach(function(b){var i=order.indexOf(b.dataset.go);b.setAttribute('aria-current',b.dataset.go===s?'step':'false');b.classList.toggle('done',i<order.indexOf(s))});
   D.documentElement.classList.toggle('js-total',s==='total');
@@ -92,7 +95,9 @@ function render(){
   set('base',basePP==null?'Shown on the booking page':money(basePP));
   set('supp',suppPP==null?(L?'Not free on these dates':'Shown on the booking page'):(suppPP===0?'Included':'+'+money(suppPP)));
   var pp=(basePP!=null&&suppPP!=null)?basePP+suppPP:null;set('pp',pp==null?'—':money(pp));
-  var cnt=Math.max(g.n,1);set('alllabel','Total for '+cnt+' '+(cnt===1?'guest':'guests'));set('all',pp==null||!g.n?'—':money(pp*cnt));
+  if(g.n){set('alllabel','Total for '+g.n+' '+(g.n===1?'guest':'guests'));set('all',pp==null?'—':money(pp*g.n))}
+  else{set('alllabel','Per person');set('all',pp==null?'—':money(pp))}
+  $('[data-hint]').textContent=missing();
   set('note','Prices in USD | '+(L?'Live price from the booking engine':(liveFailed?"Live prices didn't load. These are the booking engine's prices from 29 Sep 2026.":'Prices from the booking engine, 29 Sep 2026')));
   $$('.rooms .tile').forEach(function(c){var k=$('input',c).value;c.classList.toggle('off',!!(L&&L.supp[k]==null))});
   var msg=WA_BASE+' '+LEVELS[lv].name+(st?', check-in '+fmt(st)+', '+n+' nights':'')+(parts.length?', '+parts.join(', '):'')+', '+ROOMS[rm]+'.';

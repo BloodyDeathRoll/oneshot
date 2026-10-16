@@ -116,3 +116,10 @@
 @media (max-width:760px){ .final{grid-template-columns:minmax(0,1fr)} .ticket.big{padding:24px 22px 20px} .ticket.big dl div{font-size:15px} .bk-grid{grid-template-columns:minmax(0,1fr)} }
 .nojs-go{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
 @media (max-width:600px){ .pills{flex-wrap:nowrap;gap:6px} .pills button{padding:0 12px;font-size:13px} }
+
+.hint{margin-top:18px;font-weight:600;color:var(--ink);min-height:1.6em}
+.hint:empty{display:none}
+.hint.flash{animation:flash .5s ease-out}
+@keyframes flash{0%{color:var(--book)}100%{color:var(--ink)}}
+.next{margin-top:18px}
+.pills button{min-height:44px}

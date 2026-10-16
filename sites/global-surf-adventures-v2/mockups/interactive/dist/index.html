@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Global Surf Lodge Kabalana | Surf weeks in Sri Lanka</title>
 <meta name="description" content="Surf weeks for all levels on Sri Lanka&#x27;s south coast, a few steps from the ocean.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&family=Sacramento&display=swap" rel="stylesheet">
+<style>@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/plus-jakarta-sans-latin.woff2) format("woff2")}@font-face{font-family:"Sacramento";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/sacramento-latin.woff2) format("woff2")}</style>
 <link rel="preload" as="image" href="img/ride-poster-p810.webp" media="(max-width: 700px)">
 <link rel="preload" as="image" href="img/ride-poster-1728.webp" media="(min-width: 701px)">
 <style>
 :root{
-  --ground:#fff; --tint:#EDF1F4; --ink:#06200E; --ink2:#3F5246; --place:#00799E; --book:#BF4A0E; --book-d:#A13E0B;
+  --ground:#fff; --tint:#EDF1F4; --ink:#06200E; --ink2:#34463B; --place:#00799E; --book:#BF4A0E; --book-d:#A13E0B;
   --wa:#1FA855;
   --sans:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif; --script:"Sacramento",cursive;
   --max:1240px; --gut:clamp(20px,4vw,48px); --r:18px;
@@ -36,6 +36,9 @@ h1,h2,h3,p{margin:0}
 .btn .wa{color:var(--wa)}
 .btn:active{transform:scale(.98)}
 :focus-visible{outline:3px solid var(--place);outline-offset:3px}
+.skip{position:fixed;left:12px;top:12px;z-index:60;background:#fff;color:var(--ink);padding:14px 20px;border-radius:999px;font-weight:600;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.18);transform:translateY(-200%)}
+.skip:focus{transform:none}
+main:focus{outline:none}
 .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* header */
@@ -44,7 +47,8 @@ h1,h2,h3,p{margin:0}
 .hd .logo svg{width:100%;height:100%;fill:currentColor}
 .hd nav{margin-left:auto;display:flex;gap:30px}
 .hd nav a{font:600 15px/1 var(--sans);text-decoration:none;padding:14px 0;text-shadow:0 1px 12px rgba(0,0,0,.35)}
-.hd:not(.solid) .logo svg,.hd:not(.solid) .menu svg{filter:drop-shadow(0 1px 8px rgba(0,0,0,.3))}
+.hd:not(.solid) .logo svg,.hd:not(.solid) .menu svg{filter:drop-shadow(0 0 2px rgba(0,0,0,.35)) drop-shadow(0 0 16px rgba(0,0,0,.45))}
+.hd:not(.solid) nav a{text-shadow:0 0 2px rgba(0,0,0,.3),0 1px 14px rgba(0,0,0,.45)}
 .hd.solid nav a{text-shadow:none}
 .hd .hd-book{display:none}
 .hd.solid{background:#fff;color:var(--ink);box-shadow:0 6px 24px rgba(6,32,14,.07)}
@@ -52,11 +56,11 @@ h1,h2,h3,p{margin:0}
 .hd .menu{display:none}
 .sheet{position:fixed;inset:64px 0 auto 0;z-index:29;background:#fff;padding:12px var(--gut) 24px;box-shadow:0 18px 30px rgba(6,32,14,.12);display:none}
 .sheet.open{display:block}
-.sheet a:not(.btn){display:block;padding:14px 0;font-weight:600;font-size:18px;text-decoration:none}
+.sheet a:not(.btn){display:block;padding:12px 0;min-height:48px;font-weight:600;font-size:18px;text-decoration:none}
 .sheet .btn{margin-top:10px;width:100%}
 @media (max-width:860px){
   .hd{height:64px}
-  .hd .logo{width:120px;height:41px}
+  .hd .logo{width:128px;height:44px}
   .hd nav{display:none}
   .hd .menu{display:inline-flex;margin-left:auto;width:44px;height:44px;align-items:center;justify-content:center;background:none;border:0;color:inherit;cursor:pointer}
   .hd.solid .hd-book{display:none}
@@ -78,6 +82,9 @@ h1,h2,h3,p{margin:0}
 .ft .legal{grid-column:1/-1;margin-top:28px;font-size:13px;color:var(--ink2);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 @media (max-width:860px){ .ft{padding:64px 0 110px} .ft .wrap{grid-template-columns:1fr;gap:40px} }
 
+/* without JS the header cannot turn solid, so it scrolls away with the hero */
+.nojs .hd{position:absolute}
+.nojs .pbar{display:none!important}
 @media (prefers-reduced-motion:reduce){ *{transition:none!important;animation:none!important;scroll-behavior:auto!important} }
 
 /* hero */
@@ -97,7 +104,10 @@ h1,h2,h3,p{margin:0}
 
 /* levels: the reel */
 .reel-wrap{position:relative}
-.reel{display:flex;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:24px calc(50% - var(--cw)/2) 12px;--cw:min(400px,80vw);overscroll-behavior-x:contain;outline:none}
+.reel{display:flex;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:24px calc(50% - var(--cw)/2) 12px;--cw:min(400px,80vw);overscroll-behavior-x:contain;outline:none;border-radius:var(--r)}
+.reel:focus-visible{box-shadow:inset 0 0 0 3px var(--place)}
+.reel:focus-visible .lv.cur .lv-media{outline:3px solid var(--place);outline-offset:5px}
+@media (max-width:600px){ .reel{--cw:72vw;gap:14px} .js .lv{transform:scale(.92)} }
 .reel::-webkit-scrollbar{display:none}
 .lv{flex:0 0 var(--cw);scroll-snap-align:center;display:flex;flex-direction:column;align-items:center;gap:22px;transition:transform .45s cubic-bezier(.2,.7,.2,1),opacity .45s}
 .js .lv{transform:scale(.86);opacity:.78}
@@ -117,11 +127,12 @@ h1,h2,h3,p{margin:0}
 .arr:hover{background:#dfe7ec}
 .arr[disabled]{opacity:.35;cursor:default}
 .dots{display:flex;gap:4px}
-.dots button{width:28px;height:44px;border:0;background:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0}
-.dots button::after{content:"";width:9px;height:9px;border-radius:50%;background:#c3ced5;transition:background .2s,width .25s}
-.dots button[aria-current="true"]::after{background:var(--place);width:24px;border-radius:5px}
+.dots button,.dots span{width:44px;height:44px;border:0;background:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0}
+.dots span{display:inline-flex;align-items:center;justify-content:center}
+.dots span::after,.dots button::after{content:"";width:9px;height:9px;border-radius:50%;background:#c3ced5;transition:background .2s,width .25s}
+.dots [aria-current="true"]::after{background:var(--place);width:24px;border-radius:5px}
 .trust{margin-top:34px;text-align:center;font-weight:600;font-size:16px}
-.trust a{text-decoration:none;display:inline-flex;align-items:center;gap:10px;padding:10px 4px}
+.trust a{text-decoration:none;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 4px}
 .trust .ic{color:var(--place);width:20px;height:20px}
 .nojs .reel-ctl{display:none}
 .offer-note{max-width:640px;margin:22px auto 0;text-align:center}
@@ -131,7 +142,7 @@ h1,h2,h3,p{margin:0}
 .inc .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:72px;align-items:center}
 .inc-head{display:flex;flex-direction:column;gap:16px;margin-bottom:30px}
 .toggle{display:inline-flex;flex-wrap:wrap;background:#fff;border-radius:999px;padding:5px;gap:4px;align-self:flex-start;box-shadow:0 4px 16px rgba(6,32,14,.06)}
-.toggle button{border:0;background:none;border-radius:999px;min-height:42px;padding:0 20px;font:600 15px/1 var(--sans);color:var(--ink2);cursor:pointer;transition:background .2s,color .2s}
+.toggle button{border:0;background:none;border-radius:999px;min-height:44px;padding:0 20px;font:600 15px/1 var(--sans);color:var(--ink2);cursor:pointer;transition:background .2s,color .2s}
 .toggle button[aria-pressed="true"]{background:var(--ink);color:#fff}
 .ilist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:16px 34px}
 .ilist li{display:flex;gap:14px;align-items:center;font-size:17px}
@@ -160,7 +171,7 @@ h1,h2,h3,p{margin:0}
 @media (max-width:600px){ .ilist{grid-template-columns:1fr;gap:12px} .cmp table{font-size:14px} .cmp td{padding:10px 6px} }
 
 /* midday: the pool, two ways */
-.wipe{position:relative;width:100%;aspect-ratio:16/9;max-height:100vh;overflow:hidden;--x:62%;touch-action:pan-y}
+.wipe{position:relative;width:100%;aspect-ratio:16/9;max-height:100vh;overflow:hidden;--x:85%;touch-action:pan-y}
 .wipe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .wipe .over{clip-path:inset(0 0 0 var(--x))}
 .wipe .edge{position:absolute;top:0;bottom:0;left:var(--x);width:2px;margin-left:-1px;background:#fff;box-shadow:0 0 18px rgba(0,0,0,.25);pointer-events:none}
@@ -179,29 +190,34 @@ h1,h2,h3,p{margin:0}
 .lodge .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:start}
 .lodge .copy{display:flex;flex-direction:column;gap:18px}
 .lodge .copy p{color:var(--ink2)}
-.chips{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.chips li{display:flex;align-items:center;gap:12px;background:var(--tint);border-radius:14px;padding:12px 14px;font-size:15px;line-height:1.3}
-.chips .ic{color:var(--place);width:20px;height:20px}
-.chips small{display:block;font-size:13px;color:var(--ink2)}
+.amen{list-style:none;margin:0;padding:0;columns:2;column-gap:44px}
+.amen li{display:flex;align-items:flex-start;gap:14px;break-inside:avoid;padding:9px 0;font-size:16px;line-height:1.35}
+.amen .ic{color:var(--place);width:22px;height:22px;margin-top:-1px}
+.amen small{display:block;font-size:14px;color:var(--ink2)}
 @media (max-width:960px){ .lodge .wrap{grid-template-columns:1fr;gap:40px} }
-@media (max-width:600px){ .chips{grid-template-columns:1fr 1fr} }
+@media (max-width:600px){ .amen{columns:1} .amen li{padding:7px 0;font-size:15px} }
 
 /* rooms */
-.rooms-row{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
-.room{display:flex;flex-direction:column}
-.mosaic{display:grid;grid-template-columns:1fr 1fr;gap:6px;border-radius:var(--r);overflow:hidden;position:relative;padding:0;border:0;background:none;cursor:pointer;width:100%}
-.mosaic img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;transition:transform .5s}
-.mosaic:hover img{transform:scale(1.03)}
-.mosaic .all{position:absolute;right:12px;bottom:12px;display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--ink);border-radius:999px;padding:10px 16px;font:600 14px/1 var(--sans);box-shadow:0 6px 18px rgba(0,0,0,.15)}
-.mosaic .all .ic{width:18px;height:18px}
-.room h3{font:600 22px/1.25 var(--sans);margin-top:24px}
-.room .line{margin-top:8px;color:var(--ink2)}
-.room .det{margin-top:12px;font-size:14px;color:var(--ink2)}
-.room .sup{margin-top:12px;font-weight:600}
-.room .btn{margin-top:20px;align-self:flex-start}
-.rooms-note{margin-top:40px;text-align:center}
-.every{margin-top:8px;text-align:center}
-@media (max-width:960px){ .rooms-row{grid-template-columns:1fr;gap:56px;max-width:560px;margin:0 auto} }
+.rooms-row{display:flex;flex-direction:column;gap:96px}
+.room{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:64px;align-items:center}
+.room:nth-child(even) .room-media{order:2}
+.room-media{display:flex;flex-direction:column;gap:10px}
+.room-media button{display:block;position:relative;padding:0;border:0;background:none;cursor:pointer;border-radius:var(--r);overflow:hidden}
+.room-media img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;transition:transform .5s}
+.room-media button:hover img{transform:scale(1.03)}
+.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.thumbs button{border-radius:12px}
+.lead .all{position:absolute;right:16px;bottom:16px;display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--ink);border-radius:999px;padding:12px 18px;font:600 14px/1 var(--sans);box-shadow:0 6px 18px rgba(0,0,0,.15)}
+.lead .all .ic{width:18px;height:18px}
+.room-txt{display:flex;flex-direction:column}
+.room h3{font:600 28px/1.2 var(--sans)}
+.room .line{margin-top:14px;color:var(--ink2)}
+.room .det{margin-top:14px;font-size:15px;color:var(--ink2)}
+.room .sup{margin-top:14px;font-weight:600}
+.room .btn{margin-top:26px;align-self:flex-start}
+.rooms-note{margin-top:64px;text-align:center}
+@media (max-width:960px){ .rooms-row{gap:72px;max-width:640px;margin:0 auto} .room{grid-template-columns:minmax(0,1fr);gap:26px} .room:nth-child(even) .room-media{order:0} .room h3{font-size:24px} }
+@media (max-width:600px){ .thumbs{gap:6px} .room-media{gap:6px} .thumbs button{border-radius:10px} }
 
 /* gallery dialog */
 dialog.gal{width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#fff;color:var(--ink)}
@@ -236,14 +252,23 @@ dialog.gal[open]{animation:gal-in .3s ease-out}
 .fc-big{font:600 clamp(48px,5vw,68px)/1 var(--sans);letter-spacing:-.02em}
 .fc-big small{font-size:.42em;font-weight:600;letter-spacing:0;margin-left:4px}
 .fc-when{font-size:15px;color:var(--ink2)}
+@media (max-width:600px){ .fc-h{grid-template-columns:1fr} .fc-when br{display:none} }
 .fc-rows{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px 0;font-size:16px;margin-top:10px}
 .fc-rows span+span::before{content:" | ";white-space:pre;color:var(--ink2)}
 .credit{font-size:14px;color:var(--ink2)}
-.credit a{font-weight:600;color:var(--place);text-decoration:none}
-.rosa{position:relative;width:100%;max-width:420px;height:500px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;justify-self:end}
+.credit a{font-weight:600;color:var(--place);text-decoration:none;display:inline-flex;align-items:center;min-height:44px;padding:0 6px}
+.rosa{position:relative;width:100%;max-width:420px;height:500px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;justify-self:end;box-shadow:0 18px 50px rgba(6,32,14,.10);overflow:hidden}
+.rosa-fb{display:flex;flex-direction:column;align-items:center;gap:10px}
+.rosa-ic{width:84px;height:84px;border-radius:50%;background:var(--tint);color:var(--place);display:inline-flex;align-items:center;justify-content:center;margin-bottom:10px}
+.rosa-ic .ic{width:40px;height:40px;stroke-width:1.5}
+.rosa-t{font:400 56px/1 var(--script);color:var(--place)}
+.rosa-s{color:var(--ink2);font-size:15px;margin-bottom:18px}
+.rosa iframe{position:absolute;inset:0}
 .rosa .btn{white-space:normal;text-align:center;line-height:1.3;padding:12px 24px}
 .rosa iframe{width:100%;height:500px;border:0;border-radius:16px;display:block;max-width:420px}
-.rosa.has{padding:0;background:none}
+.rosa.has{padding:0;background:none;box-shadow:none}
+.rosa.has .rosa-fb{visibility:hidden}
+.nojs .fc-h,.fc-h.stale{display:none}
 @media (max-width:960px){ .waves .wrap{grid-template-columns:minmax(0,1fr);gap:44px} .rosa{justify-self:center} }
 
 /* guests */
@@ -252,7 +277,7 @@ dialog.gal[open]{animation:gal-in .3s ease-out}
 .g-score{display:flex;align-items:center;gap:18px}
 .g-score b{font:600 64px/1 var(--sans);letter-spacing:-.02em;color:var(--ink)}
 .g-score span{text-align:left;font-size:16px;line-height:1.45}
-.g-score a{font-weight:600;text-decoration:none;color:var(--place)}
+.g-score a{font-weight:600;text-decoration:none;color:var(--place);display:inline-flex;align-items:center;min-height:44px;margin:-12px 0}
 .g-cat{font-size:15px;color:var(--ink2)}
 .g-stage{display:grid;grid-template-columns:4fr 8fr;align-items:center}
 .g-photo{grid-column:1/2;grid-row:1;aspect-ratio:4/5;border-radius:var(--r);overflow:hidden}
@@ -267,7 +292,7 @@ dialog.gal[open]{animation:gal-in .3s ease-out}
 .q .st .ic{width:16px;height:16px}
 .q footer{margin-top:auto;font-size:14px;color:var(--ink2)}
 .q footer b{display:block;color:var(--ink);font-size:15px}
-.q footer a{color:var(--place);text-decoration:none;font-weight:600}
+.q footer a{color:var(--place);text-decoration:none;font-weight:600;display:inline-flex;align-items:center;min-height:44px;margin:-10px 0}
 .guests .reel-ctl{margin-top:8px}
 @media (max-width:860px){
   .g-stage{grid-template-columns:1fr}
@@ -276,12 +301,13 @@ dialog.gal[open]{animation:gal-in .3s ease-out}
 }
 
 /* closing */
-.closing{position:relative;color:#fff;overflow:hidden}
-.closing img{width:100%;height:auto;aspect-ratio:21/9;object-fit:cover}
-.closing .in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:28px;padding:0 var(--gut);background:radial-gradient(ellipse 46% 52% at 50% 50%,rgba(4,18,10,.42),rgba(4,18,10,0))}
-.closing p{font:600 clamp(24px,2.5vw,36px)/1.3 var(--sans);max-width:24ch;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.closing{position:relative;padding-bottom:40px}
+.closing img{width:100%;height:auto;aspect-ratio:21/9;object-fit:cover;object-position:50% 40%}
+.closing .in{position:relative;margin:-110px auto 0;padding:0 var(--gut);max-width:820px}
+.closing .card{background:#fff;border-radius:24px;padding:44px 48px;text-align:center;box-shadow:0 24px 60px rgba(6,32,14,.16);display:flex;flex-direction:column;align-items:center;gap:26px}
+.closing p{font:600 clamp(24px,2.4vw,32px)/1.3 var(--sans);max-width:26ch;color:var(--ink)}
 .closing .acts{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
-@media (max-width:700px){ .closing img{aspect-ratio:4/5} .closing .in{background:radial-gradient(ellipse 80% 46% at 50% 50%,rgba(4,18,10,.45),rgba(4,18,10,0))} }
+@media (max-width:700px){ .closing img{aspect-ratio:4/5} .closing .in{margin-top:-80px} .closing .card{padding:32px 22px} .closing .acts{flex-direction:column;align-items:stretch;width:100%} }
 
 /* instagram */
 .ig .sec-head{margin-bottom:40px}
@@ -296,9 +322,10 @@ dialog.gal[open]{animation:gal-in .3s ease-out}
 .pbar{position:fixed;left:0;right:0;bottom:0;z-index:28;display:none;align-items:center;justify-content:space-between;gap:12px;padding:12px var(--gut) calc(12px + env(safe-area-inset-bottom));background:#fff;box-shadow:0 -8px 26px rgba(6,32,14,.1);font-weight:600;font-size:15px;transform:translateY(110%);transition:transform .3s}
 .pbar.on{transform:none}
 @media (max-width:860px){ .pbar{display:flex} }
-@media (max-width:600px){ .reel-ctl{gap:10px} .dots button{width:20px} }
+@media (max-width:600px){ .reel-ctl{gap:8px} .dots{gap:0} .guests .dots span{width:22px} }
 .wipe .feat{z-index:2}
 @media (max-width:600px){ .toggle{display:grid;grid-template-columns:repeat(3,1fr);align-self:stretch;border-radius:22px} .toggle button{white-space:nowrap;padding:0 8px} .toggle button[data-v=compare]{grid-column:1/-1} }
+@media (max-width:600px){ .fc-rows{flex-direction:column} .fc-rows span+span::before{content:none} }
 
 </style>
 <script>document.documentElement.className='js'</script>
@@ -343,9 +370,11 @@ dialog.gal[open]{animation:gal-in .3s ease-out}
 <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></symbol>
 <symbol id="i-drag" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></symbol>
 <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></symbol>
+<symbol id="i-wave" viewBox="0 0 24 24"><path d="M2.5 16.5c2 0 2.5-1.5 4.5-1.5s2.5 1.5 4.5 1.5 2.5-1.5 4.5-1.5 2.5 1.5 5 1.5M3 12c3.5-6 10-8 15-4.5-3.5-.5-5.5 1.5-5 4.5"/></symbol>
 </defs>
 </svg>
 
+<a class="skip" href="#main">Skip to content</a>
 <header class="hd" id="hd">
   <a class="logo" href="./" aria-label="Global Surf Lodge Kabalana, home"><svg viewBox="0 0 257.2 88.8" aria-hidden="true"><path d="M33.1,33v3.7h-4.5v-3.9c0-3.9-1.5-6.200-5-6.2c-3.4,0-5,2.3-5,6.2v22.7c0,3.9,1.6,6.2,5,6.2c3.5,0,5-2.3,5-6.2v-8.6h-4.4v-4.3h9v12.6c0,6.5-3.1,10.8-9.7,10.8c-6.6,0-9.6-4.3-9.6-10.8V33c0-6.5,3.1-10.8,9.6-10.8C30,22.2,33.1,26.5,33.1,33z"/><path d="M37.6,65.6V22.7h4.8v38.6h12.3v4.4H37.6z"/><path d="M57.9,33c0-6.6,3.3-10.8,9.8-10.8c6.6,0,9.9,4.2,9.9,10.8v22.2c0,6.5-3.3,10.8-9.900,10.8c-6.6,0-9.8-4.3-9.8-10.8V33z M62.6,55.5c0,3.9,1.7,6.2,5.1,6.2c3.5,0,5.1-2.3,5.1-6.2V32.8c0-3.9-1.6-6.2-5.1-6.2c-3.4,0-5.1,2.3-5.1,6.2V55.5z"/><path d="M91.8,22.7c6.7,0,9.3,3.2,9.3,9.5v2c0,4.5-1.3,7.4-5,8.5c4.2,1.2,5.8,4.5,5.8,9.2v3.6c0,6.4-3.1,10.1-9.8,10.1h-9.9V22.7H91.8z M90.6,40.9c3.8,0,5.8-1.2,5.8-5.7v-2.5c0-3.8-1.3-5.6-4.7-5.6h-4.7v13.9H90.6z M92,61.2c3.5,0,5.1-1.8,5.1-5.8v-3.8c0-4.8-1.9-6.4-6-6.4h-4.2v16H92z"/><path d="M111,56.9l-1.7,8.6H105l8.2-42.9h6.9l8.2,42.9h-4.8l-1.7-8.6H111z M111.6,52.8h9.6l-4.8-24.8L111.6,52.8z"/><path d="M132.1,65.6V22.7h4.8v38.6h12.3v4.4H132.1z"/><path d="M162.7,22.6c6.6,0,9.9,3.9,9.9,10.8v1.3h-6.4V33c0-3.1-1.2-4.2-3.4-4.2c-2.1,0-3.4,1.2-3.4,4.2c0,8.8,13.2,10.5,13.2,22.8c0,6.9-3.4,10.8-10.1,10.8s-10.1-3.9-10.1-10.8v-2.6h6.4v3.1c0,3.1,1.3,4.2,3.5,4.2s3.5-1.1,3.5-4.2c0-8.8-13.2-10.5-13.2-22.8C152.8,26.6,156.1,22.6,162.7,22.6z"/><path d="M183,23.1v33.1c0,3.1,1.3,4.2,3.5,4.2c2.1,0,3.5-1.1,3.5-4.2V23.1h6.4v32.7c0,6.9-3.4,10.8-10.1,10.8c-6.6,0-10.1-3.9-10.1-10.8V23.1H183z"/><path d="M215.1,66.1c-0.4-1.1-0.6-1.8-0.6-5.3V54c0-4-1.3-5.5-4.4-5.5h-2.3v17.5H201V23.1h10.2c7,0,10,3.3,10,9.9v3.4c0,4.4-1.4,7.3-4.4,8.7c3.4,1.4,4.5,4.7,4.5,9.1v6.6c0,2.100,0.1,3.6,0.7,5.2H215.1z M207.7,29.3v13.2h2.6c2.5,0,4-1.1,4-4.5v-4.2c0-3.1-1-4.4-3.4-4.4H207.7z"/><path d="M232.4,42.2h8.7v6.1h-8.7v17.7h-6.7V23.1h17.9v6.1h-11.1V42.2z"/></svg></a>
   <nav aria-label="Main">
@@ -354,12 +383,12 @@ dialog.gal[open]{animation:gal-in .3s ease-out}
   <a class="btn btn-book hd-book" href="book/">Book now</a>
   <button class="menu" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sheet"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
 </header>
-<div class="sheet" id="sheet">
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu">
   <a href="#levels">Levels</a><a href="#included">What's included</a><a href="#rooms">Rooms</a><a href="#waves">The waves</a><a href="#guests">Guests</a>
   <a class="btn btn-book" href="book/">Book now</a>
 </div>
 
-<main>
+<main id="main" tabindex="-1">
 <section class="hero" aria-label="Global Surf Lodge Kabalana">
   <picture>
     <source media="(max-width:700px)" srcset="img/ride-poster-p810.webp">
@@ -383,7 +412,7 @@ dialog.gal[open]{animation:gal-in .3s ease-out}
     <div class="reel" id="reel" tabindex="0" role="region" aria-label="Surf levels, use the arrow keys to move between them">
       <article class="lv" data-clip="level-1">
         <div class="lv-media">
-          <img src="img/level-1.webp" width="640" height="800" alt="Two beginners standing up on soft boards at golden hour" loading="lazy">
+          <img src="img/level-1.webp" width="640" height="800" alt="Beginners practising the pop-up on soft boards on the beach" loading="lazy">
           <video muted loop playsinline preload="none" aria-hidden="true"></video>
           <div class="lv-txt"><h3>Level 1 – Fomies</h3><p>Your first time on a board. No experience needed.</p><p class="price">From $1,466 pp | 7 nights</p></div>
         </div>
@@ -489,7 +518,7 @@ dialog.gal[open]{animation:gal-in .3s ease-out}
     </picture>
     <p class="feat"><span>Footwear is discouraged. Chilling out is inescapable.</span></p>
     <span class="edge" aria-hidden="true"></span>
-    <input type="range" min="0" max="100" value="62" step="1" aria-label="Move between the pool from above and the pool from the garden">
+    <input type="range" min="0" max="100" value="85" step="1" aria-label="Move between the pool from above and the pool from the garden">
     <span class="knob" aria-hidden="true"><svg class="ic"><use href="#i-drag"/></svg></span>
   </div>
   <div class="sec lodge">
@@ -499,7 +528,7 @@ dialog.gal[open]{animation:gal-in .3s ease-out}
         <p class="lead">There are just twelve rooms. That keeps a stay here personal, part of one big happy family.</p>
         <p>When you're not on the water, lie out on a sunbed by the pool under the palms, hang out in the common area, take an ice-cold drink from the bar, or eat Sri Lankan produce from the lodge kitchen.</p>
       </div>
-      <ul class="chips">
+      <ul class="amen">
         <li><svg class="ic"><use href="#i-pool"/></svg>Outdoor swimming pool</li>
         <li><svg class="ic"><use href="#i-yoga"/></svg>Yoga chalet</li>
         <li><svg class="ic"><use href="#i-yoga"/></svg>Yoga, meditation and sound healing sessions</li>
@@ -529,28 +558,34 @@ dialog.gal[open]{animation:gal-in .3s ease-out}
     </div>
     <div class="rooms-row">
       <article class="room" data-room="dorm" data-name="Mixed dorm room – 4 beds" data-line="Four single beds. The bathroom is outdoors, and it&#x27;s yours." data-det="Sleeps 4 | 4 single beds | Private outdoor bathroom | Shared" data-sup="Included in the package price" data-photos="063:Loft_dorm_room_with_twin_beds_and_a_ladder 078:Loft_dorm_with_twin_beds_and_ladder 095:Twin_beds_under_a_timber_roof 042:Twin_beds_under_a_timber_roof 050:Bungalow_with_a_hammock 064:Open-air_bathroom_with_a_palm_growing_through_it">
-        <button class="mosaic" type="button" aria-label="See all 6 photos of the Mixed dorm room – 4 beds"><img src="img/room-063-600.webp" width="600" height="400" alt="Loft dorm room with twin beds and a ladder" loading="lazy"><img src="img/room-078-600.webp" width="600" height="400" alt="Loft dorm with twin beds and ladder" loading="lazy"><img src="img/room-095-600.webp" width="600" height="400" alt="Twin beds under a timber roof" loading="lazy"><img src="img/room-042-600.webp" width="600" height="400" alt="Twin beds under a timber roof" loading="lazy"><span class="all"><svg class="ic"><use href="#i-grid"/></svg>6 photos</span></button>
-        <h3>Mixed dorm room – 4 beds</h3>
-        <p class="line">Our new gallery room sleeps four in comfortable single beds and has its own outdoor bathroom. It suits larger groups, and travellers on a budget.</p>
-        <p class="det">Sleeps 4 | 4 single beds | Private outdoor bathroom | Shared</p>
-        <p class="sup">Included in the package price</p>
-        <a class="btn btn-tint" href="book/?room=dorm">Choose this room</a>
+        <div class="room-media"><button class="lead" type="button" data-i="0" aria-label="See all 6 photos of the Mixed dorm room – 4 beds"><img src="img/room-063-1400.webp" srcset="img/room-063-600.webp 600w, img/room-063-1400.webp 1400w" sizes="(max-width:960px) 100vw, 760px" width="1400" height="933" alt="Loft dorm room with twin beds and a ladder" loading="lazy"><span class="all"><svg class="ic"><use href="#i-grid"/></svg>6 photos</span></button><div class="thumbs"><button type="button" data-i="1" aria-label="Photo 2 of 6, Mixed dorm room – 4 beds"><img src="img/room-078-600.webp" width="600" height="400" alt="" loading="lazy"></button><button type="button" data-i="2" aria-label="Photo 3 of 6, Mixed dorm room – 4 beds"><img src="img/room-095-600.webp" width="600" height="400" alt="" loading="lazy"></button><button type="button" data-i="3" aria-label="Photo 4 of 6, Mixed dorm room – 4 beds"><img src="img/room-042-600.webp" width="600" height="400" alt="" loading="lazy"></button></div></div>
+        <div class="room-txt">
+          <h3>Mixed dorm room – 4 beds</h3>
+          <p class="line">Our new gallery room sleeps four in comfortable single beds and has its own outdoor bathroom. It suits larger groups, and travellers on a budget.</p>
+          <p class="det">Sleeps 4 | 4 single beds | Private outdoor bathroom | Shared</p>
+          <p class="sup">Included in the package price</p>
+          <a class="btn btn-book" href="book/?room=dorm">Choose this room</a>
+        </div>
       </article>
       <article class="room" data-room="twin" data-name="Shared Twin Room – 2 Beds" data-line="Two beds and a private bathroom, with the beach in view all day." data-det="Sleeps 2 | 2 beds | Private bathroom | Shared, or book it privately" data-sup="+$140 pp for 7 nights, one guest | +$80 pp for 7 nights, two sharing" data-photos="080:Double_room_with_rattan_lamps 084:Room_with_rattan_pendant_lamp 083:Towels_and_plants_on_a_bench 069:Open-air_bathroom_with_glass_shower 079:Bathroom_with_glass_shower">
-        <button class="mosaic" type="button" aria-label="See all 5 photos of the Shared Twin Room – 2 Beds"><img src="img/room-080-600.webp" width="600" height="400" alt="Double room with rattan lamps" loading="lazy"><img src="img/room-084-600.webp" width="600" height="400" alt="Room with rattan pendant lamp" loading="lazy"><img src="img/room-083-600.webp" width="600" height="400" alt="Towels and plants on a bench" loading="lazy"><img src="img/room-069-600.webp" width="600" height="400" alt="Open-air bathroom with glass shower" loading="lazy"><span class="all"><svg class="ic"><use href="#i-grid"/></svg>5 photos</span></button>
-        <h3>Shared Twin Room – 2 Beds</h3>
-        <p class="line">The twin rooms look out on the beach all day, and each has a lovely private bathroom. There are two beds; the room is shared unless you choose private use on the booking page.</p>
-        <p class="det">Sleeps 2 | 2 beds | Private bathroom | Shared, or book it privately</p>
-        <p class="sup">+$140 pp for 7 nights, one guest | +$80 pp for 7 nights, two sharing</p>
-        <a class="btn btn-tint" href="book/?room=twin">Choose this room</a>
+        <div class="room-media"><button class="lead" type="button" data-i="0" aria-label="See all 5 photos of the Shared Twin Room – 2 Beds"><img src="img/room-080-1400.webp" srcset="img/room-080-600.webp 600w, img/room-080-1400.webp 1400w" sizes="(max-width:960px) 100vw, 760px" width="1400" height="933" alt="Double room with rattan lamps" loading="lazy"><span class="all"><svg class="ic"><use href="#i-grid"/></svg>5 photos</span></button><div class="thumbs"><button type="button" data-i="1" aria-label="Photo 2 of 5, Shared Twin Room – 2 Beds"><img src="img/room-084-600.webp" width="600" height="400" alt="" loading="lazy"></button><button type="button" data-i="2" aria-label="Photo 3 of 5, Shared Twin Room – 2 Beds"><img src="img/room-083-600.webp" width="600" height="400" alt="" loading="lazy"></button><button type="button" data-i="3" aria-label="Photo 4 of 5, Shared Twin Room – 2 Beds"><img src="img/room-069-600.webp" width="600" height="400" alt="" loading="lazy"></button></div></div>
+        <div class="room-txt">
+          <h3>Shared Twin Room – 2 Beds</h3>
+          <p class="line">The twin rooms look out on the beach all day, and each has a lovely private bathroom. There are two beds; the room is shared unless you choose private use on the booking page.</p>
+          <p class="det">Sleeps 2 | 2 beds | Private bathroom | Shared, or book it privately</p>
+          <p class="sup">+$140 pp for 7 nights, one guest | +$80 pp for 7 nights, two sharing</p>
+          <a class="btn btn-book" href="book/?room=twin">Choose this room</a>
+        </div>
       </article>
       <article class="room" data-room="double" data-name="Deluxe double room" data-line="A queen-size bed for two and a private bathroom of its own." data-det="Sleeps 2 | Queen-size bed | Private bathroom" data-sup="+$418 pp for 7 nights" data-photos="081:Double_room_with_hammock_door 082:Double_room,_glass_doors_to_the_garden 041:Double_room_with_a_painted_print 043:Double_room_with_rattan_stools 044:Sofa_and_wave_prints 071:Framed_wave_prints_on_a_white_wall">
-        <button class="mosaic" type="button" aria-label="See all 6 photos of the Deluxe double room"><img src="img/room-081-600.webp" width="600" height="400" alt="Double room with hammock door" loading="lazy"><img src="img/room-082-600.webp" width="600" height="400" alt="Double room, glass doors to the garden" loading="lazy"><img src="img/room-041-600.webp" width="600" height="400" alt="Double room with a painted print" loading="lazy"><img src="img/room-043-600.webp" width="600" height="400" alt="Double room with rattan stools" loading="lazy"><span class="all"><svg class="ic"><use href="#i-grid"/></svg>6 photos</span></button>
-        <h3>Deluxe double room</h3>
-        <p class="line">Our double rooms have one queen-size bed and a private bathroom. To keep it just for the two of you, choose private use when you check out on the booking page.</p>
-        <p class="det">Sleeps 2 | Queen-size bed | Private bathroom</p>
-        <p class="sup">+$418 pp for 7 nights</p>
-        <a class="btn btn-tint" href="book/?room=double">Choose this room</a>
+        <div class="room-media"><button class="lead" type="button" data-i="0" aria-label="See all 6 photos of the Deluxe double room"><img src="img/room-081-1400.webp" srcset="img/room-081-600.webp 600w, img/room-081-1400.webp 1400w" sizes="(max-width:960px) 100vw, 760px" width="1400" height="933" alt="Double room with hammock door" loading="lazy"><span class="all"><svg class="ic"><use href="#i-grid"/></svg>6 photos</span></button><div class="thumbs"><button type="button" data-i="1" aria-label="Photo 2 of 6, Deluxe double room"><img src="img/room-082-600.webp" width="600" height="400" alt="" loading="lazy"></button><button type="button" data-i="2" aria-label="Photo 3 of 6, Deluxe double room"><img src="img/room-041-600.webp" width="600" height="400" alt="" loading="lazy"></button><button type="button" data-i="3" aria-label="Photo 4 of 6, Deluxe double room"><img src="img/room-043-600.webp" width="600" height="400" alt="" loading="lazy"></button></div></div>
+        <div class="room-txt">
+          <h3>Deluxe double room</h3>
+          <p class="line">Our double rooms have one queen-size bed and a private bathroom. To keep it just for the two of you, choose private use when you check out on the booking page.</p>
+          <p class="det">Sleeps 2 | Queen-size bed | Private bathroom</p>
+          <p class="sup">+$418 pp for 7 nights</p>
+          <a class="btn btn-book" href="book/?room=double">Choose this room</a>
+        </div>
       </article>
     </div>
     <p class="small rooms-note">Room prices change with the dates. Sample for 20–27 Feb 2027; prices from the booking engine, 29 Sep 2026.</p>
@@ -568,15 +603,16 @@ dialog.gal[open]{animation:gal-in .3s ease-out}
       <div class="copy">
         <h2 class="script" id="t-waves">The waves</h2>
         <p class="lead">The lodge overlooks two spots, The Rock and South Point. More waves are a few minutes away by tuk-tuk.</p>
-        <div class="fc-h" data-fc>
-          <p class="fc-big">0.4–0.6<small>m</small></p>
-          <p class="fc-when">South Point, knee-high<br>at 20:30, 16 Oct</p>
-          <p class="fc-rows"><span>Swell 0.85 m at 6.9 s from the south</span><span>Wind 4 km/h, onshore</span></p>
-        </div>
+        <div class="fc-h" data-fc data-gen="2026-10-16T14:26:51+00:00"><p class="fc-big"><span data-fh>0.4–0.6</span><small>m</small></p><p class="fc-when" data-fw>South Point, knee-high <br>at 20:30, 16 Oct</p><p class="fc-rows" data-fr><span>Swell 0.85 m at 6.9 s from the south</span><span>Wind 4 km/h, onshore</span></p></div>
         <p class="credit">Forecast for South Point by <a href="https://rosa.surf/spot/south-point" target="_blank" rel="noopener">Rosa</a></p>
       </div>
       <div class="rosa" id="rosa" data-src="https://rosa.surf/widget/?spot=south-point&amp;theme=light&amp;units=metric">
-        <a class="btn btn-soft" href="https://rosa.surf/spot/south-point" target="_blank" rel="noopener">See today's forecast for South Point on Rosa</a>
+        <div class="rosa-fb">
+          <span class="rosa-ic"><svg class="ic"><use href="#i-wave"/></svg></span>
+          <p class="rosa-t">South Point</p>
+          <p class="rosa-s">The full forecast, day by day</p>
+          <a class="btn btn-book" href="https://rosa.surf/spot/south-point" target="_blank" rel="noopener">See today's forecast for South Point on Rosa</a>
+        </div>
       </div>
     </div>
   </div>
@@ -620,13 +656,13 @@ dialog.gal[open]{animation:gal-in .3s ease-out}
     <source media="(max-width:700px)" srcset="img/dinner-p.webp">
     <img src="img/dinner-1920.webp" srcset="img/dinner-960.webp 960w, img/dinner-1920.webp 1920w" sizes="100vw" width="1920" height="823" alt="Guests raising their glasses together at the lodge's dinner table" loading="lazy">
   </picture>
-  <div class="in">
+  <div class="in"><div class="card">
     <p>Book the week for your level. Not sure which one fits? Ask us on WhatsApp first.</p>
     <div class="acts">
       <a class="btn btn-book" href="book/">Book package now</a>
       <a class="btn btn-soft" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages." target="_blank" rel="noopener"><svg class="ic wa"><use href="#i-wa"/></svg>WhatsApp us</a>
     </div>
-  </div>
+  </div></div>
 </section>
 
 <!-- follow the lodge -->
@@ -712,9 +748,21 @@ var hd=$('#hd'),hero=$('.hero'),pbar=$('#pbar');
 function onScroll(){var past=scrollY>hero.offsetHeight-80;hd.classList.toggle('solid',past);pbar.classList.toggle('on',past);pbar.setAttribute('aria-hidden',past?'false':'true');$('a',pbar).tabIndex=past?0:-1}
 addEventListener('scroll',onScroll,{passive:true});onScroll();
 var menu=$('.menu',hd),sheet=$('#sheet');
-menu.addEventListener('click',function(){var o=!sheet.classList.contains('open');sheet.classList.toggle('open',o);menu.setAttribute('aria-expanded',o);if(o){hd.classList.add('solid')}else{onScroll()}});
-$$('a',sheet).forEach(function(a){a.addEventListener('click',function(){sheet.classList.remove('open');menu.setAttribute('aria-expanded','false')})});
-D.addEventListener('keydown',function(e){if(e.key==='Escape'&&sheet.classList.contains('open')){sheet.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.focus()}});
+/* phone menu: a modal sheet; focus stays in menu button + sheet while it is open, Esc closes and returns focus */
+var shut=[$('main'),$('.ft'),pbar,$('.logo',hd),$('.skip')];
+function setMenu(o){sheet.classList.toggle('open',o);menu.setAttribute('aria-expanded',o);menu.setAttribute('aria-label',o?'Close menu':'Menu');
+  shut.forEach(function(el){if(el){if(o)el.setAttribute('inert','');else el.removeAttribute('inert')}});
+  if(o){hd.classList.add('solid');$('a',sheet).focus()}else{onScroll()}}
+menu.addEventListener('click',function(){setMenu(!sheet.classList.contains('open'))});
+$$('a',sheet).forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
+D.addEventListener('keydown',function(e){
+  if(!sheet.classList.contains('open'))return;
+  if(e.key==='Escape'){setMenu(false);menu.focus();return}
+  if(e.key==='Tab'){var f=[menu].concat($$('a',sheet)),i=f.indexOf(D.activeElement);
+    if(e.shiftKey&&(i<=0)){e.preventDefault();f[f.length-1].focus()}
+    else if(!e.shiftKey&&(i===f.length-1||i<0)){e.preventDefault();f[0].focus()}}
+});
+addEventListener('resize',function(){if(sheet.classList.contains('open')&&!matchMedia('(max-width:860px)').matches)setMenu(false)});
 
 /* sources for a <video> from "a.webm|b.mp4" */
 function fill(v,list){list.split('|').forEach(function(u){var s=D.createElement('source');s.src=u;s.type='video/'+u.split('.').pop();v.appendChild(s)})}
@@ -730,8 +778,9 @@ if(!calm){addEventListener('load',function(){setTimeout(function(){
 /* a snap row with arrows and dots; onChange(index) */
 function row(sc,ctl,items,opt){
   var dots=$('.dots',ctl),prev=$('.prev',ctl),next=$('.next',ctl),cur=-1;
-  if(opt.makeDots){items.forEach(function(it,i){var b=D.createElement('button');b.type='button';b.setAttribute('aria-label',opt.label(i));dots.appendChild(b)})}
-  var db=$$('button',dots);
+  var ind=opt.makeDots&&matchMedia('(max-width:600px)').matches;
+  if(opt.makeDots){if(ind)dots.setAttribute('aria-hidden','true');items.forEach(function(it,i){var b=D.createElement(ind?'span':'button');if(!ind){b.type='button';b.setAttribute('aria-label',opt.label(i))}dots.appendChild(b)})}
+  var db=$$('button,span',dots);
   function idx(){
     if(opt.center){var c=sc.scrollLeft+sc.clientWidth/2,best=0,bd=1e9;items.forEach(function(it,i){var m=it.offsetLeft+it.offsetWidth/2,d=Math.abs(m-c);if(d<bd){bd=d;best=i}});return best}
     var l=sc.scrollLeft,best2=0;items.forEach(function(it,i){if(it.offsetLeft-sc.offsetLeft-8<=l)best2=i});if(sc.scrollLeft+sc.clientWidth>=sc.scrollWidth-4)best2=items.length-1;return best2;
@@ -740,7 +789,7 @@ function row(sc,ctl,items,opt){
   function upd(){var i=idx();if(i===cur)return;cur=i;db.forEach(function(b,j){b.setAttribute('aria-current',j===i?'true':'false')});prev.disabled=i===0;next.disabled=i===items.length-1;opt.onChange&&opt.onChange(i)}
   var t;sc.addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(upd,90)},{passive:true});
   prev.addEventListener('click',function(){go(cur-1)});next.addEventListener('click',function(){go(cur+1)});
-  db.forEach(function(b,j){b.addEventListener('click',function(){go(j)})});
+  db.forEach(function(b,j){if(b.tagName==='BUTTON')b.addEventListener('click',function(){go(j)})});
   sc.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();go(cur+1)}if(e.key==='ArrowLeft'){e.preventDefault();go(cur-1)}});
   return {go:go,upd:upd,jump:function(i){var it=items[i];sc.scrollLeft=opt.center?it.offsetLeft+it.offsetWidth/2-sc.clientWidth/2:0;upd()}};
 }
@@ -784,17 +833,16 @@ $('.gal-x',gal).addEventListener('click',function(){gal.close()});
 gal.addEventListener('close',function(){if(opener)opener.focus()});
 gal.addEventListener('click',function(e){if(e.target===gal)gal.close()});
 $$('.room').forEach(function(room){
-  var m=$('.mosaic',room);
-  m.addEventListener('click',function(){
-    opener=m;var d=room.dataset;
+  $$('.room-media button',room).forEach(function(m){m.addEventListener('click',function(){
+    opener=m;var d=room.dataset,at=+m.dataset.i||0;
     $('#gal-t').textContent=d.name;$('[data-g=line]',gal).textContent=d.line;$('[data-g=det]',gal).textContent=d.det;$('[data-g=sup]',gal).textContent=d.sup;$('[data-g=go]',gal).href='book/?room='+d.room;
     track.innerHTML='';gdots.innerHTML='';
     d.photos.split(' ').forEach(function(p,i){
       var f=D.createElement('figure');f.innerHTML='<img src="img/room-'+p.split(':')[0]+'-1400.webp" width="1400" height="933" alt="">';$('img',f).alt=p.split(':').slice(1).join(':').replace(/_/g,' ');track.appendChild(f);
       var b=D.createElement('button');b.type='button';b.setAttribute('aria-label','Photo '+(i+1));b.addEventListener('click',function(){gGo(i)});gdots.appendChild(b);
     });
-    gal.showModal();track.scrollLeft=0;gUpd();$('.gal-x',gal).focus();
-  });
+    gal.showModal();track.scrollLeft=at*track.clientWidth;gUpd();$('.gal-x',gal).focus();
+  })});
 });
 
 /* guests: draggable quote row */
@@ -806,13 +854,38 @@ addEventListener('pointermove',function(e){if(!dn)return;var dx=e.clientX-sx;if(
 addEventListener('pointerup',function(){if(!dn)return;dn=false;qrow.classList.remove('drag');var i=0,bd=1e9;qs.forEach(function(q,j){var d=Math.abs(q.offsetLeft-qs[0].offsetLeft-qrow.scrollLeft);if(d<bd){bd=d;i=j}});qrow.scrollTo({left:qs[i].offsetLeft-qs[0].offsetLeft,behavior:smooth})});
 qrow.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation()}},true);
 
-/* Rosa's widget, only when its block nears the viewport */
+/* the Rosa headline: the build's snapshot is shown only while it is under 24 h old; after that the block fetches
+   Rosa's live file once, when it nears the viewport, and shows the hour that is now, or nothing (the widget's link stays) */
+var fc=$('[data-fc]'),DAY=864e5;
+function fresh(iso){var t=Date.parse(iso);return t&&Date.now()-t<DAY}
+function compass(d){return ['north','north-east','east','south-east','south','south-west','west','north-west'][Math.round(d/45)%8]}
+function n(x){return String(+x.toFixed(2))}
+function drawFc(j){
+  var now=Date.now(),hs=j.hours||[],c=j.current;hs.forEach(function(h){if(Date.parse(h.t)<=now)c=h});
+  if(!c||now-Date.parse(c.t)>DAY/4){fc.classList.add('stale');return}
+  var sw=(c.swells||[]).filter(function(x){return x.in_window})[0],t=new Date(c.t),tz=(j.spot&&j.spot.timezone)||'Asia/Colombo';
+  $('[data-fh]',fc).textContent=n(c.h[0])+'–'+n(c.h[1]);
+  $('[data-fw]',fc).innerHTML='';$('[data-fw]',fc).append('South Point, '+c.phrase+' ',D.createElement('br'),'at '+t.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:tz})+', '+t.toLocaleDateString('en-GB',{day:'numeric',month:'short',timeZone:tz}));
+  var r=$('[data-fr]',fc);r.innerHTML='';
+  if(sw){var a=D.createElement('span');a.textContent='Swell '+n(sw.h)+' m at '+n(sw.period)+' s from the '+compass(sw.dir);r.appendChild(a)}
+  var w=D.createElement('span');w.textContent='Wind '+Math.round(c.wind.kph)+' km/h, '+c.wind['class'];r.appendChild(w);
+  fc.classList.remove('stale');
+}
+var fcLive=fc&&!fresh(fc.dataset.gen);if(fcLive)fc.classList.add('stale');
+
+/* Rosa's widget, only when its block nears the viewport. The designed card with the plain link stays until the frame
+   has really loaded: the widget cannot be framed from a file: page (Rosa's frame-ancestors), and a refused or failed
+   request leaves the card in place */
 var rosa=$('#rosa');
 new IntersectionObserver(function(es,o){es.forEach(function(e){if(!e.isIntersecting)return;o.disconnect();
-  var f=D.createElement('iframe');f.src=rosa.dataset.src;f.title='Rosa surf forecast - South Point';f.width='100%';f.height='500';f.loading='lazy';f.referrerPolicy='strict-origin-when-cross-origin';
-  f.setAttribute('sandbox','allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin');
-  f.addEventListener('load',function(){rosa.classList.add('has');var a=$('a',rosa);a&&a.remove()});
-  rosa.appendChild(f);f.style.position='absolute';f.style.opacity='0';f.addEventListener('load',function(){f.style.position='';f.style.opacity=''});
+  if(fcLive&&/^https?:$/.test(location.protocol))fetch('https://rosa-data-opal.vercel.app/data/spots/south-point.json').then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){if(fresh(j.generated_at))drawFc(j)}).catch(function(){});
+  if(!/^https?:$/.test(location.protocol))return;
+  fetch(rosa.dataset.src,{mode:'no-cors'}).then(function(){
+    var f=D.createElement('iframe');f.src=rosa.dataset.src;f.title='Rosa surf forecast - South Point';f.width='100%';f.height='500';f.loading='lazy';f.referrerPolicy='strict-origin-when-cross-origin';
+    f.setAttribute('sandbox','allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin');
+    f.style.opacity='0';f.addEventListener('load',function(){f.style.opacity='';rosa.classList.add('has')});
+    rosa.appendChild(f);
+  }).catch(function(){});
 })},{rootMargin:'400px 0px'}).observe(rosa);
 })();
 

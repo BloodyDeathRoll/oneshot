@@ -1,9 +1,10 @@
+<a class="skip" href="#bk-main">Skip to content</a>
 <header class="hd solid bk-hd">
   <a class="logo" href="./" aria-label="Global Surf Lodge Kabalana, home">{{LOGO}}</a>
-  <a class="btn btn-soft hd-wa" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages." target="_blank" rel="noopener" data-wa><svg class="ic wa"><use href="#i-wa"/></svg><span>Questions? Ask us</span></a>
+  <a class="btn btn-soft hd-wa" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages." target="_blank" rel="noopener" data-wa aria-label="Questions? Ask us on WhatsApp"><svg class="ic wa"><use href="#i-wa"/></svg><span>Questions? Ask us</span></a>
 </header>
 
-<main class="bk">
+<main class="bk" id="bk-main" tabindex="-1">
 <form id="bk" method="get" action="https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies">
   <div class="bk-grid">
   <div class="qs">
@@ -85,6 +86,7 @@
         <div class="stp"><label for="f-couple">Couples</label><button class="sb" type="button" data-d="-1" aria-label="One less, Couples">−</button><input id="f-couple" name="couple" type="number" min="0" max="3" value="0" inputmode="numeric"><button class="sb" type="button" data-d="1" aria-label="One more, Couples">+</button></div>
       </div>
       <p class="small help">Up to 6 guests per booking.</p>
+      <p class="hint js-only" data-hint role="status"></p>
       <button class="btn btn-book next js-only" type="button" data-go="total">Next</button>
     </section>
 
@@ -120,7 +122,7 @@
         <div><dt>Package, per person</dt><dd data-s="base">$1,466</dd></div>
         <div><dt>Room, per person</dt><dd data-s="supp">Included</dd></div>
         <div><dt>Total per person</dt><dd data-s="pp">$1,466</dd></div>
-        <div class="tot"><dt data-s="alllabel">Total for 1 guest</dt><dd data-s="all">—</dd></div>
+        <div class="tot"><dt data-s="alllabel">Per person</dt><dd data-s="all">$1,466</dd></div>
       </dl>
       <p class="small" data-s="note">Prices in USD | Prices from the booking engine, 29 Sep 2026</p>
     </div>
@@ -128,7 +130,7 @@
   </div>
 
   <div class="pnext js-only">
-    <span><small data-s="alllabel">Total</small><b data-s="all">—</b></span>
+    <span><small data-s="alllabel">Per person</small><b data-s="all">$1,466</b></span>
     <button class="btn btn-book" type="button" data-next>Next</button>
   </div>
 </form>

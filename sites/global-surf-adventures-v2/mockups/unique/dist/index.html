@@ -10,14 +10,16 @@
 <meta property="og:image" content="img/hero-poster-d.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&family=Parisienne&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,500;1,400&family=Parisienne&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/hero-poster-d.webp" media="(min-width: 701px), (orientation: landscape)" fetchpriority="high">
 <link rel="preload" as="image" href="img/hero-poster-m.webp" media="(max-width: 700px) and (orientation: portrait)" fetchpriority="high">
-<script>document.documentElement.classList.add('js')</script>
+<script>(function(){var h=document.documentElement,m=function(q){return matchMedia(q).matches},c=navigator.connection;h.classList.add('js');
+/* the drop's tier is decided before first paint, so the page never changes height above the reader (round 2.2) */
+if(!m('(prefers-reduced-motion: reduce)')&&!(c&&c.saveData)&&(navigator.hardwareConcurrency||4)>2&&(navigator.deviceMemory||4)>2)h.classList.add('drop-live')})()</script>
 <style>
 :root{
   --ground:#FFFFFF; --tint:#E3F0F4; --ink:#072B35; --ink-soft:rgba(7,43,53,.72);
-  --book:#0B6A8E; --book-dark:#08577A; --wa:#1FA855;
+  --book:#0B6A8E; --book-dark:#08577A; --book-deep:#084F6A; --wa:#1FA855;
   --text:'Literata', Georgia, 'Times New Roman', serif;
   --script:'Parisienne', 'Literata', cursive;
   --wrap:1200px; --gut:clamp(20px,4vw,48px);
@@ -25,7 +27,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--ground);color:var(--ink);font:400 18px/1.6 var(--text);font-optical-sizing:auto}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 18px/1.6 var(--text)}
 img,video{display:block;max-width:100%;height:auto}
 .lv-grid>*,.incl-grid>*,.lodge-grid>*,.room>*,.fc-grid>*,.g-grid>*,.ft-top>*{min-width:0}
 a{color:inherit}
@@ -57,14 +59,27 @@ button{font:inherit;color:inherit}
 .nav{display:flex;gap:26px;margin-left:auto;align-items:center}
 .nav a{text-decoration:none;font-size:16px;opacity:.95;padding:10px 2px}
 .nav a:hover{opacity:1}
-.hdr .btn{min-height:44px;padding:10px 20px;font-size:15.5px;opacity:0;pointer-events:none;transition:opacity .2s ease}
+.hdr .btn{min-height:44px;padding:10px 20px;font-size:15.5px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility 0s linear .2s}
 .hdr.solid{background:#fff;color:var(--ink);box-shadow:0 1px 0 rgba(7,43,53,.0),0 6px 20px rgba(7,43,53,.06)}
-.hdr.solid .btn{opacity:1;pointer-events:auto}
+.hdr.solid .btn{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .2s ease}
 .hdr:not(.solid){text-shadow:0 1px 3px rgba(0,25,35,.55),0 0 18px rgba(0,25,35,.45)}
 .hdr:not(.solid)::before{content:"";position:absolute;inset:0 0 -34px 0;z-index:-1;background:linear-gradient(rgba(4,30,38,.34),rgba(4,30,38,0));pointer-events:none}
 .hdr:not(.solid) .nav a{font-weight:500}
 .hdr:not(.solid) .logo svg{filter:drop-shadow(0 1px 2px rgba(0,25,35,.5)) drop-shadow(0 0 10px rgba(0,25,35,.35))}
-@media (max-width:860px){.nav a{display:none}.hdr .btn{display:none}}
+.menu-b{display:none;margin-left:auto;align-items:center;gap:8px;min-height:44px;padding:8px 4px 8px 12px;border:0;background:none;cursor:pointer;font:500 16px var(--text);color:inherit}
+.menu-b svg{width:24px;height:24px}
+@media (max-width:860px){.nav{display:none}.menu-b{display:inline-flex}}
+html:not(.js) .menu-b{display:none}
+.sheet{position:fixed;inset:0;z-index:70;background:#fff;display:flex;flex-direction:column;padding:16px var(--gut) calc(24px + env(safe-area-inset-bottom));visibility:hidden;opacity:0;transition:opacity .25s ease,visibility 0s linear .25s}
+.sheet.open{visibility:visible;opacity:1;transition:opacity .25s ease}
+.sheet-top{display:flex;align-items:center;justify-content:space-between;min-height:46px;color:var(--ink)}
+.sheet-top .logo svg{height:30px}
+.sheet .x2{width:46px;height:46px;border-radius:50%;border:0;background:var(--tint);display:grid;place-items:center;cursor:pointer;color:var(--ink)}
+.sheet .x2 svg{width:20px;height:20px}
+.sheet nav{display:grid;gap:2px;margin:40px 0 auto}
+.sheet nav a{font:400 30px/1.3 var(--text);text-decoration:none;padding:8px 0;color:var(--ink)}
+.sheet .acts2{display:grid;gap:12px;margin-top:32px}
+.sheet .acts2 .btn{width:100%}
 html:not(.js) .hdr{position:absolute}
 
 /* ---------- hero */
@@ -72,13 +87,17 @@ html:not(.js) .hdr{position:absolute}
 .hero picture,.hero img,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero video{opacity:0;transition:opacity .6s ease}
 .hero video.on{opacity:1}
-.hero-c{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;text-align:center;padding:0 24px;color:#fff}
+.hero-c{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;text-align:center;padding:0 24px;color:#fff;background:radial-gradient(ellipse 40% 26% at 50% 50%,rgba(3,28,36,.38),rgba(3,28,36,.16) 55%,rgba(3,28,36,0) 100%)}
+@media (max-width:700px){.hero-c{background:radial-gradient(ellipse 85% 24% at 50% 50%,rgba(3,28,36,.40),rgba(3,28,36,.15) 60%,rgba(3,28,36,0) 100%)}}
 .hero h1{font:500 clamp(36px,3.5vw,50px)/1.15 var(--text);margin:0 0 28px;text-shadow:0 2px 24px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.35);max-width:14em}
-.hero .btn{min-height:52px;padding:14px 30px;font-size:17px}
+.hero .btn{min-height:52px;padding:14px 30px;font-size:17px;background:var(--book-deep);box-shadow:0 8px 26px rgba(0,20,28,.35)}
+.hero .btn:hover{background:#063F55}
 
 /* ---------- levels */
 .levels{padding:clamp(80px,9vw,128px) 0 0}
-.lv-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:36px;flex-wrap:wrap}
+.lv-head{display:grid;grid-template-columns:7fr 5fr;align-items:end;gap:28px;margin-bottom:36px}
+.lv-head .proof{justify-self:start}
+@media (max-width:860px){.lv-head{grid-template-columns:1fr;gap:18px}}
 .lv-head .lede{margin:0;max-width:30em}
 .lv-grid{display:grid;grid-template-columns:7fr 5fr;gap:28px}
 .lv-side{display:grid;gap:28px}
@@ -98,8 +117,8 @@ html:not(.js) .hdr{position:absolute}
 .fs img{border-radius:var(--r);aspect-ratio:3/2;object-fit:cover;width:100%}
 .fs h3{font:500 22px/1.3 var(--text);margin:0 0 6px}
 .fs p{margin:0;color:var(--ink-soft)}
-.trust{text-align:center;margin:30px 0 0;font-size:15.5px;color:var(--ink-soft)}
-.trust strong{color:var(--ink);font-weight:500}
+.proof{display:flex;align-items:center;gap:16px;margin:0 0 6px;font-size:15.5px;line-height:1.45;color:var(--ink-soft)}
+.proof b{font:500 54px/1 var(--text);color:var(--ink);letter-spacing:-.01em}
 @media (max-width:860px){
   .lv-grid{grid-template-columns:1fr}
   .lv-side .lv-media{aspect-ratio:4/5}
@@ -120,28 +139,25 @@ html:not(.js) .hdr{position:absolute}
 .incl .extra{margin-top:24px;font-size:15.5px;color:var(--ink-soft)}
 @media (max-width:860px){.incl-grid{grid-template-columns:1fr}.incl-text{padding-top:0}.incl ul{grid-template-columns:1fr}}
 
-/* ---------- the drop */
+/* ---------- the drop: a sticky stage, no pin library, so nothing shifts and the page never changes height above the reader */
+:root{--pintop:76px;--pinh:calc(100svh - 76px)}
 .drop{position:relative;background:#fff}
-.drop-pin{position:relative}
-.drop-live-only{display:none}
-html.drop-live .drop-live-only{display:block}
+.drop-run{display:none}
+html.drop-live .drop-run{display:block;position:relative;height:calc(var(--pinh) + 250svh);margin-top:clamp(70px,8vw,110px)}
 html.drop-live .drop-static{display:none}
-.drop-pin{height:100svh;overflow:hidden;background:#fff}
-.drop-stage{position:absolute;inset:0;overflow:hidden;background:#0d4d5c}
-.pl{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform,opacity;max-width:none;user-select:none;pointer-events:none}
-.p2m{-webkit-mask-image:radial-gradient(ellipse 50% 50% at 42.3% 54.8%,#000 52%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 42.3% 54.8%,#000 52%,transparent 100%)}
-.drop-line{position:absolute;left:0;right:0;top:64%;text-align:center;margin:0;padding:0 24px;color:#fff;font:500 clamp(26px,3vw,42px)/1.25 var(--text);text-shadow:0 2px 22px rgba(0,30,40,.55),0 1px 3px rgba(0,30,40,.4);opacity:0}
+.drop-pin{position:sticky;top:var(--pintop);height:var(--pinh);overflow:hidden}
+.drop-stage{position:absolute;inset:0;overflow:hidden;background:#d6e7ec}
+.pl{position:absolute;left:0;top:0;transform-origin:0 0;max-width:none;user-select:none;pointer-events:none;opacity:0}
+.drop-stage.ready .pl{will-change:transform,opacity}
+.p2m{-webkit-mask-image:radial-gradient(ellipse 40% 42% at 42.3% 54.8%,#000 38%,transparent 100%);mask-image:radial-gradient(ellipse 40% 42% at 42.3% 54.8%,#000 38%,transparent 100%)}
+.drop-line{position:absolute;left:0;right:0;top:64%;text-align:center;margin:0;padding:0 24px;color:#fff;font:500 clamp(24px,3vw,42px)/1.25 var(--text);text-shadow:0 2px 22px rgba(0,30,40,.55),0 1px 3px rgba(0,30,40,.4);opacity:0}
 .drop-dots{position:absolute;right:26px;top:50%;transform:translateY(-50%);display:grid;gap:12px;margin:0;padding:0;list-style:none}
 .drop-dots li{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.5);box-shadow:0 0 0 1px rgba(0,0,0,.08);transition:background-color .2s ease, transform .2s ease}
 .drop-dots li.on{background:#fff;transform:scale(1.25)}
-.drop-title{display:none}
 @media (max-width:760px){
-  html.drop-live .drop-pin{display:flex;flex-direction:column;justify-content:center;background:#fff}
-  .drop-title{display:block;text-align:center;margin:0 0 18px}
-  .drop-stage{position:relative;inset:auto;width:100vw;height:125vw}
+  :root{--pinh:125vw;--pintop:max(84px,calc(76px + (100svh - 144px - 125vw) / 2))}
+  html.drop-live .drop-run{height:calc(125vw + 220svh);margin-top:64px}
   .drop-dots{top:auto;bottom:14px;right:0;left:0;transform:none;display:flex;justify-content:center}
-  html.drop-live .lodge h2.script{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-  html.drop-live .lodge{padding-top:40px}
 }
 .drop-static{padding:clamp(70px,8vw,110px) 0 0}
 .two-up{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
@@ -151,7 +167,17 @@ html.drop-live .drop-static{display:none}
 .water p{position:absolute;left:0;right:0;top:66%;margin:0;text-align:center;padding:0 20px;color:#fff;font:500 clamp(22px,3vw,40px)/1.25 var(--text);text-shadow:0 2px 22px rgba(0,30,40,.55),0 1px 3px rgba(0,30,40,.4)}
 @media (max-width:760px){.water{aspect-ratio:4/5}}
 
-.lodge{padding:clamp(70px,8vw,110px) 0 0}
+.lodge{padding-top:40px}
+}
+.drop-static{padding:clamp(70px,8vw,110px) 0 0}
+.two-up{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.two-up img{border-radius:var(--r);aspect-ratio:3/2;object-fit:cover;width:100%}
+.water{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:16/9}
+.water img{width:100%;height:100%;object-fit:cover}
+.water p{position:absolute;left:0;right:0;top:66%;margin:0;text-align:center;padding:0 20px;color:#fff;font:500 clamp(22px,3vw,40px)/1.25 var(--text);text-shadow:0 2px 22px rgba(0,30,40,.55),0 1px 3px rgba(0,30,40,.4)}
+@media (max-width:760px){.water{aspect-ratio:4/5}}
+
+.lodge{padding:clamp(56px,8vw,110px) 0 0}
 .lodge-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,5vw,72px);align-items:center}
 .lodge .amen{font-size:16px;color:var(--ink-soft);margin:18px 0 0;line-height:1.75}
 @media (max-width:860px){.lodge-grid{grid-template-columns:1fr}}
@@ -164,8 +190,8 @@ html.drop-live .drop-static{display:none}
 .track img{width:100%;height:100%;object-fit:cover}
 .r32 .track > *{aspect-ratio:3/2}
 .r1610 .track > *{aspect-ratio:16/10}
-.dots{display:flex;justify-content:center;gap:4px;margin-top:12px}
-.dots button{width:30px;height:30px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center}
+.dots{display:flex;justify-content:center;gap:0;margin-top:4px}
+.dots button{width:44px;height:44px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center}
 .dots button::after{content:"";width:8px;height:8px;border-radius:50%;background:rgba(7,43,53,.22);transition:background-color .2s ease, transform .2s ease}
 .dots button[aria-current="true"]::after{background:var(--ink);transform:scale(1.2)}
 .arr{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.92);box-shadow:var(--shadow);cursor:pointer;display:grid;place-items:center;transition:background-color .18s ease}
@@ -178,10 +204,14 @@ html:not(.js) .arr, html:not(.js) .dots{display:none}
 /* ---------- rooms */
 .rooms{padding:clamp(90px,10vw,140px) 0 0}
 .room-names{display:flex;gap:clamp(18px,3vw,44px);flex-wrap:wrap;margin:6px 0 30px;padding:0;list-style:none}
-.room-names button{border:0;background:none;padding:6px 0;cursor:pointer;font:400 clamp(22px,2.4vw,32px)/1.2 var(--text);color:rgba(7,43,53,.55);transition:color .2s ease;text-align:left}
+.room-names button{border:0;background:none;padding:6px 0;min-height:44px;cursor:pointer;font:400 clamp(22px,2.4vw,32px)/1.2 var(--text);color:rgba(7,43,53,.55);transition:color .2s ease;text-align:left}
 .room-names button[aria-selected="true"]{color:var(--ink)}
 .room-names button:hover{color:var(--ink)}
-.room{display:grid;grid-template-columns:8fr 4fr;gap:clamp(28px,4vw,52px);align-items:start;margin-bottom:56px}
+.room{display:grid;grid-template-columns:1fr;margin-bottom:40px}
+.room-txt{display:grid;grid-template-columns:7fr 5fr;grid-auto-flow:row dense;column-gap:clamp(28px,5vw,72px);align-items:start;margin-top:18px}
+.room-txt>h3,.room-txt>.line,.room-txt>.desc{grid-column:1}
+.room-txt>.details,.room-txt>.sup,.room-txt>.btn{grid-column:2;justify-self:start}
+.room-txt>.details{padding-top:6px;margin-bottom:8px}
 .room h3{font:500 24px/1.3 var(--text);margin:0 0 6px}
 .room .line{font-style:italic;margin:0 0 14px}
 .room .desc{color:var(--ink-soft);font-size:16.5px;margin:0 0 14px}
@@ -192,7 +222,7 @@ html.js .rooms .room.on{display:grid;animation:roomIn .35s cubic-bezier(.23,1,.3
 @keyframes roomIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
 html:not(.js) .room-names{display:none}
 .rooms-foot{color:var(--ink-soft);font-size:15px;margin:0}
-@media (max-width:860px){.room{grid-template-columns:1fr}}
+@media (max-width:860px){.room-txt{grid-template-columns:1fr}.room-txt>*{grid-column:1!important}}
 
 /* ---------- waves */
 .waves{padding:clamp(90px,10vw,140px) 0 0}
@@ -209,7 +239,15 @@ html:not(.js) .room-names{display:none}
 .fc-credit a{color:var(--book);font-weight:500;text-decoration:none}
 .widget{width:100%;max-width:420px;height:500px;border-radius:16px;background:#fff;position:relative;justify-self:end;overflow:hidden}
 .widget iframe{width:100%;height:500px;border:0;display:block;border-radius:16px}
-.widget .fallback{position:absolute;inset:0;display:grid;place-content:center;text-align:center;padding:24px;gap:16px}
+.widget{box-shadow:0 18px 50px rgba(7,43,53,.10)}
+.widget iframe{position:relative;z-index:1}
+.widget .fallback{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;text-align:center;padding:32px;gap:10px;background:linear-gradient(180deg,#fff 0%,#fff 55%,#EEF6F8 100%)}
+.fb-i{width:44px;height:44px;color:var(--book);stroke-width:1.3}
+.fb-t{margin:6px 0 0;font:400 46px/1.1 var(--script);color:var(--ink)}
+.fb-s{margin:0 0 14px;max-width:16em;color:var(--ink-soft);font-size:16.5px}
+.fc-link{margin:22px 0 14px}
+.fc-link .btn{white-space:normal;text-align:left}
+.fc-link svg{color:var(--book)}
 .widget.loaded .fallback{display:none}
 @media (max-width:860px){.fc-grid{grid-template-columns:1fr}.widget{justify-self:center}}
 
@@ -225,7 +263,7 @@ html:not(.js) .room-names{display:none}
 .quotes figure{margin:0;padding:0 2px}
 .quotes blockquote{margin:0 0 18px;font:italic 400 clamp(21px,2vw,26px)/1.5 var(--text)}
 .quotes figcaption{font-size:15.5px;color:var(--ink-soft)}
-.quotes .dots{justify-content:flex-start;margin-left:-11px}
+.quotes .dots{justify-content:flex-start;margin-left:-18px}
 @media (max-width:860px){.g-grid{grid-template-columns:1fr}}
 
 /* ---------- dinner */
@@ -338,7 +376,20 @@ html.js .book-foot .fine.keep{display:block;margin-top:6px}
 .handoff-note{font-size:14.5px;color:var(--ink-soft);margin:26px 0 0}
 html:not(.js) .handoff-note{display:none}
 html.js .book h2.script{margin-top:26px}
-@media (max-width:760px){html.js .book-panel{width:100vw}}
+@media (max-width:760px){
+  html.js .book-panel{width:100vw}
+  html.js .book-band{height:150px}
+  html.js .book-band.small{height:64px}
+  html.js .book-foot{display:flex;align-items:center;gap:14px}
+  html.js .book-foot .tot{flex:1;margin:0}
+  html.js .book-foot .tot div:not(.big){display:none}
+  html.js .book-foot .tot .big{display:grid;gap:0;margin:0;font-size:19px;line-height:1.25}
+  html.js .book-foot .tot .big span:first-child{font-size:13.5px;font-weight:400;color:var(--ink-soft)}
+  html.js .book-foot .btn{width:auto;flex:none;padding:12px 20px}
+  html.js .book-foot .fine.keep{display:none}
+  .usd{display:block}
+}
+.usd{display:none}
 body.locked{overflow:hidden}
 
 @media (prefers-reduced-motion:reduce){
@@ -372,6 +423,8 @@ body.locked{overflow:hidden}
     <symbol id="i-l" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
     <symbol id="i-r" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
     <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="M2.5 15.5c2 0 2.5-1.5 4.75-1.5s2.75 1.5 4.75 1.5 2.5-1.5 4.75-1.5 2.75 1.5 4.75 1.5M2.5 19.5c2 0 2.5-1.5 4.75-1.5S10 19.5 12 19.5s2.5-1.5 4.75-1.5 2.75 1.5 4.75 1.5M6 11c0-4 3-6.5 7-6.5 2.5 0 4.5 1.3 5 3-1.5-.8-4-.5-5 1.5"/></symbol>
   </defs>
 </svg>
 
@@ -385,8 +438,26 @@ body.locked{overflow:hidden}
       <a href="#waves">The waves</a>
       <a class="btn" href="#book" data-book>Book now</a>
     </nav>
+    <button class="menu-b" type="button" id="menub" aria-controls="sheet" aria-expanded="false"><svg class="icon"><use href="#i-menu"/></svg>Menu</button>
   </div>
 </header>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="sheet-top">
+    <a class="logo" href="#top" aria-label="Global Surf Lodge Kabalana, home"><svg viewBox="0 0 233 48" role="img" aria-label="Global Surf"><use href="#logo"/></svg></a>
+    <button class="x2" type="button" aria-label="Close menu" data-sclose><svg class="icon"><use href="#i-x"/></svg></button>
+  </div>
+  <nav aria-label="Menu">
+    <a href="#levels">Surf weeks</a>
+    <a href="#lodge">The lodge</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#waves">The waves</a>
+  </nav>
+  <div class="acts2">
+    <a class="btn" href="#book" data-book>Book package now</a>
+    <a class="btn light" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages." target="_blank" rel="noopener"><svg class="wa"><use href="#i-wa"/></svg>WhatsApp us</a>
+  </div>
+</div>
 
 <main id="top">
 <section class="hero" aria-label="Global Surf Lodge Kabalana from the air">
@@ -409,10 +480,11 @@ body.locked{overflow:hidden}
         <h2 class="script" id="lv-t">Choose your level</h2>
         <p class="lede">We are surfing obsessed, and we invite you to join us. The three surf weeks cost the same, per person for seven nights, from a Saturday.</p>
       </div>
+      <p class="proof"><b>8.6</b><span>on Booking.com<br>80 reviews | 28 Sep 2026</span></p>
     </div>
     <div class="lv-grid">
       <article class="lv lv-1">
-        <div class="lv-media"><video class="lvclip" muted loop playsinline preload="none" poster="img/level1-poster.webp" aria-label="A guest standing up on a soft-top at golden hour, guide nearby" data-webm="video/level1.webm" data-mp4="video/level1.mp4"></video></div>
+        <div class="lv-media"><video class="lvclip" muted loop playsinline preload="none" poster="img/level1-poster.webp" aria-label="A guide pushes a beginner into the whitewater, then a guest stands up on a soft-top" data-webm="video/level1.webm" data-mp4="video/level1.mp4"></video></div>
         <div class="lv-body">
           <div>
             <h3>Level 1 – Fomies</h3>
@@ -455,7 +527,6 @@ body.locked{overflow:hidden}
       </div>
       <a class="btn light" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%27d%20like%20to%20ask%20about%20dates%20for%20the%20Freestylers%20%E2%80%93%20B%26B%20only%20package." target="_blank" rel="noopener"><svg class="wa"><use href="#i-wa"/></svg>Ask about dates</a>
     </div>
-    <p class="trust"><strong>8.6 on Booking.com</strong> | 80 reviews | 28 Sep 2026</p>
   </div>
 </section>
 
@@ -485,8 +556,8 @@ body.locked{overflow:hidden}
 
 <!-- 4 · midday: the drop -->
 <section class="drop" id="lodge" aria-labelledby="lodge-t">
-  <div class="drop-pin drop-live-only" id="droppin">
-    <p class="script drop-title" aria-hidden="true">The lodge</p>
+  <div class="drop-run" id="droprun">
+   <div class="drop-pin" id="droppin">
     <div class="drop-stage" id="stage" aria-hidden="true">
       <img class="pl p1" data-d="img/plate-img-062-d.webp" data-m="img/plate-img-062-m.webp" alt="">
       <img class="pl p2m" data-d="img/plate-img-026-d.webp" data-m="img/plate-img-026-m.webp" alt="">
@@ -495,6 +566,7 @@ body.locked{overflow:hidden}
       <p class="drop-line">Footwear is discouraged. Chilling out is inescapable.</p>
       <ol class="drop-dots"><li class="on"></li><li></li><li></li></ol>
     </div>
+   </div>
   </div>
   <div class="drop-static">
     <div class="wrap">
@@ -517,7 +589,7 @@ body.locked{overflow:hidden}
         <p class="amen">Outdoor swimming pool | Yoga chalet | Yoga, meditation and sound healing sessions | Ice baths | Lookout terrace, ocean view | Restaurant, breakfast, lunch and dinner, daily | Bar | Gluten-free and vegan options | Co-working space, high-speed internet, coffee and fresh juices | Free WiFi | Airport shuttle | Free private parking on site | Garden | Sun terrace</p>
       </div>
       <div class="slides r32" data-slides aria-roledescription="carousel" aria-label="The lodge">
-        <div class="track" tabindex="0">
+        <div class="track" tabindex="0" role="group" aria-label="Photos of the lodge, use the arrow keys">
           <div><img src="img/lodge-img-036.webp" width="1400" height="933" alt="The lodge's lounge and pool deck" loading="lazy"></div>
           <div><img src="img/lodge-img-075.webp" width="1400" height="933" alt="The lodge garden and white bungalows" loading="lazy"></div>
           <div><img src="img/lodge-img-077.webp" width="1400" height="933" alt="The open-air lounge with cushions and hanging lamps" loading="lazy"></div>
@@ -542,7 +614,7 @@ body.locked{overflow:hidden}
 
     <article class="room on" id="room-dorm" role="tabpanel" aria-labelledby="tab-dorm">
       <div class="slides r1610" data-slides aria-roledescription="carousel" aria-label="Mixed dorm room photos">
-        <div class="track" tabindex="0">
+        <div class="track" tabindex="0" role="group" aria-label="Mixed dorm room photos, use the arrow keys">
           <div><img src="img/room-img-063.webp" width="1400" height="875" alt="The mixed dorm room with four single beds" loading="lazy"></div>
           <div><img src="img/room-img-078.webp" width="1400" height="875" alt="The dorm room's beds and lockers" loading="lazy"></div>
           <div><img src="img/room-img-095.webp" width="1400" height="875" alt="The dorm room from the door" loading="lazy"></div>
@@ -554,7 +626,7 @@ body.locked{overflow:hidden}
         <button class="arr next" type="button" aria-label="Next photo"><svg class="icon"><use href="#i-r"/></svg></button>
         <div class="dots"></div>
       </div>
-      <div>
+      <div class="room-txt">
         <h3>Mixed dorm room – 4 beds</h3>
         <p class="line">Four single beds. The bathroom is outdoors, and it's yours.</p>
         <p class="desc">Our new gallery room sleeps four in comfortable single beds and has its own outdoor bathroom. It suits larger groups, and travellers on a budget.</p>
@@ -566,7 +638,7 @@ body.locked{overflow:hidden}
 
     <article class="room" id="room-twin" role="tabpanel" aria-labelledby="tab-twin">
       <div class="slides r1610" data-slides aria-roledescription="carousel" aria-label="Shared twin room photos">
-        <div class="track" tabindex="0">
+        <div class="track" tabindex="0" role="group" aria-label="Shared twin room photos, use the arrow keys">
           <div><img src="img/room-img-080.webp" width="1400" height="875" alt="The twin room with two beds" loading="lazy"></div>
           <div><img src="img/room-img-084.webp" width="1400" height="875" alt="The twin room's private bathroom" loading="lazy"></div>
           <div><img src="img/room-img-083.webp" width="1400" height="875" alt="The twin room from the window side" loading="lazy"></div>
@@ -577,7 +649,7 @@ body.locked{overflow:hidden}
         <button class="arr next" type="button" aria-label="Next photo"><svg class="icon"><use href="#i-r"/></svg></button>
         <div class="dots"></div>
       </div>
-      <div>
+      <div class="room-txt">
         <h3>Shared Twin Room – 2 Beds</h3>
         <p class="line">Two beds and a private bathroom, with the beach in view all day.</p>
         <p class="desc">The twin rooms look out on the beach all day, and each has a lovely private bathroom. There are two beds; the room is shared unless you choose private use on the booking page.</p>
@@ -589,7 +661,7 @@ body.locked{overflow:hidden}
 
     <article class="room" id="room-double" role="tabpanel" aria-labelledby="tab-double">
       <div class="slides r1610" data-slides aria-roledescription="carousel" aria-label="Deluxe double room photos">
-        <div class="track" tabindex="0">
+        <div class="track" tabindex="0" role="group" aria-label="Deluxe double room photos, use the arrow keys">
           <div><img src="img/room-img-081.webp" width="1400" height="875" alt="The deluxe double room with its queen-size bed" loading="lazy"></div>
           <div><img src="img/room-img-082.webp" width="1400" height="875" alt="The deluxe double room seen from the bed" loading="lazy"></div>
           <div><img src="img/room-img-041.webp" width="1400" height="875" alt="The double room's private bathroom" loading="lazy"></div>
@@ -601,7 +673,7 @@ body.locked{overflow:hidden}
         <button class="arr next" type="button" aria-label="Next photo"><svg class="icon"><use href="#i-r"/></svg></button>
         <div class="dots"></div>
       </div>
-      <div>
+      <div class="room-txt">
         <h3>Deluxe double room</h3>
         <p class="line">A queen-size bed for two and a private bathroom of its own.</p>
         <p class="desc">Our double rooms have one queen-size bed and a private bathroom. To keep it just for the two of you, choose private use when you check out on the booking page.</p>
@@ -625,16 +697,24 @@ body.locked{overflow:hidden}
       <div>
         <h2 class="script" id="wv-t">The waves</h2>
         <p class="lede">The lodge overlooks two spots, The Rock and South Point. More waves are a few minutes away by tuk-tuk.</p>
-        <div class="fc-now">
-          <div><b>0.6–0.9 m</b><span>Waist-high</span></div>
-          <div><b>12 s</b><span>Swell from the SSW</span></div>
-          <div><b>8 km/h</b><span>Wind from the W, cross-shore</span></div>
+        <div id="fcnow" hidden>
+          <div class="fc-now">
+            <div><b data-k="h"></b><span data-k="phrase"></span></div>
+            <div><b data-k="per"></b><span data-k="swell"></span></div>
+            <div><b data-k="wind"></b><span data-k="wtxt"></span></div>
+          </div>
+          <p class="fc-time" data-k="time"></p>
         </div>
-        <p class="fc-time">South Point, Tue 29 Sep, 20:30</p>
+        <p class="fc-link" id="fclink"><a class="btn light" href="https://rosa.surf/spot/south-point" target="_blank" rel="noopener"><svg class="icon"><use href="#i-wave"/></svg>See today's forecast for South Point on Rosa</a></p>
         <p class="fc-credit"><a href="https://rosa.surf/spot/south-point" target="_blank" rel="noopener">Forecast for South Point by Rosa</a></p>
       </div>
       <div class="widget" id="rosa">
-        <div class="fallback"><p>See today's forecast for South Point on Rosa</p><a class="btn light" href="https://rosa.surf/spot/south-point" target="_blank" rel="noopener">Open Rosa</a></div>
+        <div class="fallback">
+          <svg class="icon fb-i" aria-hidden="true"><use href="#i-wave"/></svg>
+          <p class="fb-t">South Point</p>
+          <p class="fb-s">See today's forecast for South Point on Rosa</p>
+          <a class="btn" href="https://rosa.surf/spot/south-point" target="_blank" rel="noopener">Open Rosa</a>
+        </div>
       </div>
     </div>
   </div>
@@ -649,12 +729,12 @@ body.locked{overflow:hidden}
       <p class="g-rating"><strong>8.6 on Booking.com</strong> | 80 reviews | 28 Sep 2026</p>
       <p class="g-cats">Staff 9.5 | Facilities 9.2 | Cleanliness 9.2</p>
       <div class="slides quotes" data-slides aria-roledescription="carousel" aria-label="Guest reviews">
-        <div class="track" tabindex="0">
+        <div class="track" tabindex="0" role="group" aria-label="Guest reviews, use the arrow keys">
           <figure><blockquote>“We loved the cozy, bohoo-vibes at the lodge: starting from the open-air-bathroom, the relaxing pool area and especially the great breakfast bowls!”</blockquote><figcaption>Fanny, Germany | Booking.com</figcaption></figure>
-          <figure><blockquote>“A lovely hotel and a team of champions. Ariel, a professional surf guide, raised the level of surfing for us by several steps during the week we were there. This is our second time at the same hotel and with the same guide. We will return next year as well”</blockquote><figcaption>Seagallas</figcaption></figure>
+          <figure><blockquote>“A lovely hotel and a team of champions. Ariel, a professional surf guide, raised the level of surfing for us by several steps during the week we were there. This is our second time at the same hotel and with the same guide. We will return next year as well”</blockquote><figcaption>Seagallas | globalsurf.com</figcaption></figure>
           <figure><blockquote>“This place felt like something inbetween a hostel and a luxurious hotel. The styling was gorgeous, the beds very comfortable, the (bath)room very spacious with lockers and personal storage space.”</blockquote><figcaption>Myrthe, Netherlands | Booking.com</figcaption></figure>
           <figure><blockquote>“The room was modern, quiet and incredibly clean with daily servicing. The grounds were well kept with a gorgeous pool and dining area. There are hammocks, loungers and beanbags in social areas. It was a really really great place.”</blockquote><figcaption>Abigail, Myanmar | Booking.com</figcaption></figure>
-          <figure><blockquote>“We stayed at Global Kablana Sri Lanka as a couple and two girls and it was just fun and lovely. The atmosphere, the rooms, the stunning staff. Just everything.”</blockquote><figcaption>Dana Amsalem-Cohen</figcaption></figure>
+          <figure><blockquote>“We stayed at Global Kablana Sri Lanka as a couple and two girls and it was just fun and lovely. The atmosphere, the rooms, the stunning staff. Just everything.”</blockquote><figcaption>Dana Amsalem-Cohen | globalsurf.com</figcaption></figure>
           <figure><blockquote>“Super nice place, beautiful rooms, nice hangout area with pool and pillows and delicious breakfast!”</blockquote><figcaption>Sara, Austria | Booking.com</figcaption></figure>
         </div>
         <div class="dots"></div>
@@ -762,12 +842,13 @@ body.locked{overflow:hidden}
           </fieldset>
           <input type="hidden" name="end" id="end" disabled>
           <div class="steppers">
-            <div class="stp"><label for="g-f">Women</label><div class="row"><button type="button" data-step="-1" data-for="g-f" aria-label="One less">−</button><input id="g-f" name="female" type="number" min="0" max="6" value="1" inputmode="numeric"><button type="button" data-step="1" data-for="g-f" aria-label="One more">+</button></div></div>
-            <div class="stp"><label for="g-m">Men</label><div class="row"><button type="button" data-step="-1" data-for="g-m" aria-label="One less">−</button><input id="g-m" name="male" type="number" min="0" max="6" value="0" inputmode="numeric"><button type="button" data-step="1" data-for="g-m" aria-label="One more">+</button></div></div>
-            <div class="stp"><label for="g-c">Couples</label><div class="row"><button type="button" data-step="-1" data-for="g-c" aria-label="One less">−</button><input id="g-c" name="couple" type="number" min="0" max="3" value="0" inputmode="numeric"><button type="button" data-step="1" data-for="g-c" aria-label="One more">+</button></div></div>
+            <div class="stp"><label for="g-f">Women</label><div class="row"><button type="button" data-step="-1" data-for="g-f" aria-label="Remove a woman">−</button><input id="g-f" name="female" type="number" min="0" max="6" value="1" inputmode="numeric"><button type="button" data-step="1" data-for="g-f" aria-label="Add a woman">+</button></div></div>
+            <div class="stp"><label for="g-m">Men</label><div class="row"><button type="button" data-step="-1" data-for="g-m" aria-label="Remove a man">−</button><input id="g-m" name="male" type="number" min="0" max="6" value="0" inputmode="numeric"><button type="button" data-step="1" data-for="g-m" aria-label="Add a man">+</button></div></div>
+            <div class="stp"><label for="g-c">Couples</label><div class="row"><button type="button" data-step="-1" data-for="g-c" aria-label="Remove a couple">−</button><input id="g-c" name="couple" type="number" min="0" max="3" value="0" inputmode="numeric"><button type="button" data-step="1" data-for="g-c" aria-label="Add a couple">+</button></div></div>
           </div>
           <p class="help" style="margin-top:10px">Up to 6 guests per booking.</p>
         </div>
+        <p class="handoff-note usd">Package $1,466 pp for 7 nights; room supplements per person. Prices in USD. Prices from the booking engine, 28 Sep 2026 (rooms 29 Sep 2026).</p>
         <p class="handoff-note">Next, on our Bookinglayer booking page: confirm your room, add airport pickup if you want it, then enter your details and pay. Nothing is booked until you check out there.<br>40% deposit to book, the rest 45 days before arrival. Booking less than 45 days ahead? You pay in full.</p>
         <div class="book-foot" id="bookfoot">
           <div class="tot js-act" aria-live="polite">
@@ -854,6 +935,7 @@ body.locked{overflow:hidden}
     hv.innerHTML = `<source src="video/${n}.webm" type='video/webm; codecs="av01.0.08M.08"'><source src="video/${n}.mp4" type="video/mp4">`;
     hv.preload = 'auto';
     hv.addEventListener('playing', () => hv.classList.add('on'), { once: true });
+    hv.addEventListener('loadedmetadata', () => { try { hv.currentTime = 1.35; } catch (e) {} }, { once: true });
     hv.load(); hv.play().catch(() => {});
   }
   if (document.readyState === 'complete') requestAnimationFrame(() => setTimeout(startHero, 0));
@@ -895,99 +977,152 @@ body.locked{overflow:hidden}
   }
   tabs.forEach((t, i) => { t.onclick = () => showRoom(t); t.onkeydown = e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); showRoom(tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length], true); } }; });
 
-  /* Rosa widget: only when the block nears the viewport */
+  /* Rosa: headline drawn by the site, widget beside it. The checked-in fixture (src/rosa-south-point.json,
+     generated 16 Oct 2026 14:26 UTC) paints first; when the block nears, one request to Rosa's JSON refreshes it.
+     Older than 24 h: no numbers, only the plain link. Rosa's widget is framed only when that request succeeds,
+     so a refused Rosa leaves the designed card, never a failed frame. */
+  const FX = { g: '2026-10-16T14:26:51+00:00', t: '2026-10-16T20:30+05:30', h: [0.4, 0.6], phrase: 'knee-high', per: 6.9, sdir: 186.12, wk: 4.3, wdir: 228, wc: 'onshore' };
+  const PTS = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
+  const comp = d => PTS[Math.round(((d % 360) + 360) % 360 / 22.5) % 16];
+  const fcnow = $('#fcnow'), fclink = $('#fclink');
+  function parseRosa(d) { const c = d.current || {}, sw = (c.swells || []).find(x => x.in_window) || {}; const w = c.wind || {};
+    return { g: d.generated_at, t: c.t, h: c.h, phrase: c.phrase, per: sw.period, sdir: sw.dir, wk: w.kph, wdir: w.dir, wc: w.class }; }
+  function showFc(f) {
+    const fresh = f && f.h && f.t && (Date.now() - Date.parse(f.g)) < 864e5;
+    fcnow.hidden = !fresh; fclink.hidden = !!fresh;
+    if (!fresh) return;
+    const set = (k, v) => { $(`[data-k="${k}"]`, fcnow).textContent = v; };
+    set('h', `${f.h[0]}–${f.h[1]} m`); set('phrase', f.phrase ? f.phrase[0].toUpperCase() + f.phrase.slice(1) : '');
+    set('per', f.per ? `${Math.round(f.per)} s` : '–'); set('swell', f.sdir != null ? `Swell from the ${comp(f.sdir)}` : 'Swell');
+    set('wind', f.wk != null ? `${Math.round(f.wk)} km/h` : '–'); set('wtxt', f.wdir != null ? `Wind from the ${comp(f.wdir)}${f.wc ? ', ' + f.wc : ''}` : 'Wind');
+    const day = new Date(f.t.slice(0, 10) + 'T12:00:00Z');
+    set('time', `South Point, ${day.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' }).replace(',', '')}, ${f.t.slice(11, 16)}`);
+  }
+  showFc(FX);
   const rosa = $('#rosa');
   new IntersectionObserver(([e], o) => {
     if (!e.isIntersecting) return; o.disconnect();
-    const f = document.createElement('iframe');
-    f.title = 'Rosa surf forecast - South Point'; f.width = '100%'; f.height = '500'; f.loading = 'lazy';
-    f.referrerPolicy = 'strict-origin-when-cross-origin';
-    f.setAttribute('sandbox', 'allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin');
-    f.style.cssText = 'max-width:420px;border:0;border-radius:16px;display:block';
-    f.onload = () => rosa.classList.add('loaded');
-    f.src = 'https://rosa.surf/widget/?spot=south-point&theme=light&units=metric';
-    rosa.appendChild(f);
+    fetch('https://rosa-data-opal.vercel.app/data/spots/south-point.json').then(r => { if (!r.ok) throw 0; return r.json(); }).then(d => {
+      showFc(parseRosa(d));
+      if (location.protocol === 'file:') return; /* Rosa's frame-ancestors cannot match a file: page */
+      const f = document.createElement('iframe');
+      f.title = 'Rosa surf forecast - South Point'; f.width = '100%'; f.height = '500'; f.loading = 'lazy';
+      f.referrerPolicy = 'strict-origin-when-cross-origin';
+      f.setAttribute('sandbox', 'allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin');
+      f.style.cssText = 'max-width:420px;border:0;border-radius:16px;display:block';
+      f.onload = () => rosa.classList.add('loaded');
+      f.src = 'https://rosa.surf/widget/?spot=south-point&theme=light&units=metric';
+      rosa.appendChild(f);
+    }).catch(() => {});
   }, { rootMargin: '600px 0px' }).observe(rosa);
 
-  /* ---------------- the drop (scroll set-piece, pattern 9) ---------------- */
-  const weak = (navigator.hardwareConcurrency || 4) <= 2 || (navigator.deviceMemory || 4) <= 2;
-  const drop = $('#lodge');
-  if (!reduce && !weak) {
-    new IntersectionObserver(([e], o) => { if (!e.isIntersecting) return; o.disconnect(); bootDrop(); }, { rootMargin: '800px 0px' }).observe(drop);
-  }
-  function load(u) { return new Promise((ok, no) => { const s = document.createElement('script'); s.src = u; s.onload = ok; s.onerror = no; document.head.appendChild(s); }); }
-  async function bootDrop() {
-    const small = innerWidth < 760;
-    const imgs = $$('.pl', drop);
-    try {
-      await Promise.all([
-        load('https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js').then(() => load('https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js')),
-        ...imgs.map(im => new Promise((ok, no) => { im.onload = ok; im.onerror = no; im.src = small ? im.dataset.m : im.dataset.d; })),
-        document.fonts ? document.fonts.ready : 0
-      ]);
-    } catch (err) { return; } /* stays on the static composition */
-    document.documentElement.classList.add('drop-live');
-    initDrop();
-  }
-  function initDrop() {
-    gsap.registerPlugin(ScrollTrigger);
-    const stage = $('#stage'), [p1, p2m, p2, p3] = $$('.pl', stage), line = $('.drop-line', stage), dots = $$('.drop-dots li', stage);
+  /* ---------------- the drop (scroll set-piece, pattern 9) ----------------
+     Tier decided in <head> before first paint (html.drop-live). The stage is position:sticky, driven by our own
+     scroll progress with a small smoothing; no GSAP, no pin, no third-party script. The plates load early (first
+     scroll, the levels in view, or 2.5 s after load). If they are not ready by the time the section's top reaches
+     the bottom of the screen, this view keeps the static composition: the change happens below the reader. */
+  const H_ = document.documentElement;
+  if (H_.classList.contains('drop-live')) {
+    const run = $('#droprun'), pin = $('#droppin'), stage = $('#stage'), [p1, p2m, p2, p3] = $$('.pl', stage), line = $('.drop-line', stage), ddots = $$('.drop-dots li', stage);
+    let ready = false, started = false, off = false;
+    const toStatic = () => { off = true; H_.classList.remove('drop-live'); };
+    function fetchPlates() {
+      if (started) return; started = true;
+      const small = innerWidth < 760;
+      Promise.all([p1, p2m, p2, p3].map(im => new Promise((ok, no) => { im.onload = ok; im.onerror = no; im.src = small ? im.dataset.m : im.dataset.d; if (im.complete && im.naturalWidth) ok(); })))
+        .then(() => { if (off) return; ready = true; stage.classList.add('ready'); size(); kick(); })
+        .catch(() => { if (run.getBoundingClientRect().top > 0) toStatic(); });
+    }
+    addEventListener('scroll', fetchPlates, { once: true, passive: true });
+    new IntersectionObserver(([e], o) => { if (e.isIntersecting) { o.disconnect(); fetchPlates(); } }).observe($('#levels'));
+    if (document.readyState === 'complete') setTimeout(fetchPlates, 2500); else addEventListener('load', () => setTimeout(fetchPlates, 2500));
+    new IntersectionObserver(([e], o) => { if (!e.isIntersecting) return; o.disconnect(); if (!ready && e.boundingClientRect.top > 0) toStatic(); }).observe(run);
+
     /* source geometry (pixels of the 2000 px originals) */
     const A = { w: 2000, h: 1123 }, C = { w: 2000, h: 1333 };
     const POOL1 = { x: 787, y: 663 }, POOL2 = { x: 846, y: 615 }, R = 200 / 1510; /* the pool in img-062 vs img-026 */
     const WATER = { x: 700, y: 690 };
-    let W, H, c1, c3;
+    let W, Hh, c1, c3, pinTop, pinH, gut;
     function size() {
-      W = stage.clientWidth; H = stage.clientHeight;
-      c1 = Math.max(W / A.w, H / A.h); c3 = Math.max(W / C.w, H / C.h);
+      W = stage.clientWidth; Hh = stage.clientHeight;
+      c1 = Math.max(W / A.w, Hh / A.h); c3 = Math.max(W / C.w, Hh / C.h);
       [p1, p2m, p2].forEach(im => { im.style.width = A.w * c1 + 'px'; im.style.height = A.h * c1 + 'px'; });
       p3.style.width = C.w * c3 + 'px'; p3.style.height = C.h * c3 + 'px';
+      pinTop = parseFloat(getComputedStyle(pin).top) || 0; pinH = pin.offsetHeight;
+      gut = parseFloat(getComputedStyle($('.wrap')).paddingLeft) || 24;
     }
     const cl = (v, a, b) => Math.min(b, Math.max(a, v));
     const seg = (p, a, b) => cl((p - a) / (b - a), 0, 1);
     const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
     const lerp = (a, b, t) => a + (b - a) * t;
-    /* place: source point (fx,fy) at screen (X,Y) at scale s (css px per source px) */
+    /* place: source point (fx,fy) at stage point (X,Y), at scale s (css px per source px) */
     function place(el, base, src, s, fx, fy, X, Y, clamp, op) {
       let x = X - fx * s, y = Y - fy * s;
-      if (clamp) { x = cl(x, W - src.w * s, 0); y = cl(y, H - src.h * s, 0); }
+      if (clamp) { x = cl(x, W - src.w * s, 0); y = cl(y, Hh - src.h * s, 0); }
       el.style.transform = `translate3d(${x}px,${y}px,0) scale(${s / base})`;
       el.style.opacity = op;
       return { x, y };
     }
     function render(p) {
-      /* 062: z 1 -> 2.6 (0-.36), then -> 3 (.36-.46) */
-      const z1 = Math.exp(lerp(0, Math.log(2.6), ease(seg(p, 0, .36))) + lerp(0, Math.log(3 / 2.6), seg(p, .36, .46)));
-      const s1 = c1 * z1, tf = ease(seg(p, 0, .3));
-      const o1 = place(p1, c1, A, s1, lerp(A.w / 2, POOL1.x, tf), lerp(A.h / 2, POOL1.y, tf), W / 2, H / 2, true, p < .47 ? 1 : 0);
+      /* entry (desktop): the plate arrives framed in the page's margins and opens to full bleed */
+      if (W >= 760) { const e = 1 - ease(seg(p, 0, .07)); stage.style.clipPath = e > 0.001 ? `inset(0 ${(e * gut).toFixed(1)}px round ${(e * 14).toFixed(1)}px)` : 'none'; }
+      /* img-062: 1 -> 1.55x cover toward the pool (about 1.1 css px per source px at 1440: sharp while it is the picture) */
+      const z1 = Math.exp(lerp(0, Math.log(1.55), ease(seg(p, 0, .34))));
+      const s1 = c1 * z1, tf = ease(seg(p, 0, .32));
+      const o1 = place(p1, c1, A, s1, lerp(A.w / 2, POOL1.x, tf), lerp(A.h / 2, POOL1.y, tf), W / 2, Hh / 2, true, 1);
       const P = { x: o1.x + POOL1.x * s1, y: o1.y + POOL1.y * s1 };
-      /* 026: aligned on 062's pool, then grows to cover and recentres (.36-.46), holds, dives (.55-.80) */
-      const g = ease(seg(p, .36, .46));
-      const sAligned = s1 * R, sCover = c1;
-      let s2 = Math.exp(lerp(Math.log(sAligned), Math.log(sCover), g));
-      let fx = lerp(POOL2.x, A.w / 2, g), fy = lerp(POOL2.y, A.h / 2, g), X = lerp(P.x, W / 2, g), Y = lerp(P.y, H / 2, g);
-      const dive = ease(seg(p, .55, .8));
-      if (dive > 0) { s2 = c1 * lerp(1, 1.8, dive); fx = lerp(A.w / 2, WATER.x, dive); fy = lerp(A.h / 2, WATER.y, dive); X = W / 2; Y = H / 2; }
-      const om = seg(p, .27, .36), of = seg(p, .42, .46);
-      place(p2m, c1, A, s2, fx, fy, X, Y, g >= 1, om * (1 - of) );
+      /* img-026: appears exactly on 062's pool (feathered), grows to cover and recentres; 062 grows with it in lockstep,
+         so the two pools never drift apart, and blurs as it passes its native pixels (depth, never blockiness) */
+      const g = ease(seg(p, .34, .48));
+      let s2 = Math.exp(lerp(Math.log(s1 * R), Math.log(c1), g));
+      let fx = lerp(POOL2.x, A.w / 2, g), fy = lerp(POOL2.y, A.h / 2, g), X = lerp(P.x, W / 2, g), Y = lerp(P.y, Hh / 2, g);
+      if (g > 0) {
+        const sL = s2 / R, Q = { x: X + (POOL2.x - fx) * s2, y: Y + (POOL2.y - fy) * s2 };
+        place(p1, c1, A, sL, POOL1.x, POOL1.y, Q.x, Q.y, false, p < .5 ? 1 : 0);
+        p1.style.filter = `blur(${Math.min(5, 1.0 * (sL / s1 - 1)).toFixed(2)}px)`;
+      } else p1.style.filter = '';
+      const dive = ease(seg(p, .57, .8));
+      if (dive > 0) { s2 = c1 * lerp(1, 1.6, dive); fx = lerp(A.w / 2, WATER.x, dive); fy = lerp(A.h / 2, WATER.y, dive); X = W / 2; Y = Hh / 2; }
+      const om = seg(p, .24, .34), of = seg(p, .474, .494);
+      place(p2m, c1, A, s2, fx, fy, X, Y, g >= 1, p < .5 ? om : 0);
       place(p2, c1, A, s2, fx, fy, X, Y, g >= 1, of * (p < .9 ? 1 : 0));
-      /* 005: at the water's edge */
-      const f3 = seg(p, .79, .86);
-      place(p3, c3, C, c3 * lerp(1.12, 1, ease(f3)), C.w / 2, C.h / 2, W / 2, H / 2, true, f3);
+      /* img-005: at the water's edge */
+      const f3 = seg(p, .8, .87);
+      place(p3, c3, C, c3 * lerp(1.1, 1, ease(f3)), C.w / 2, C.h / 2, W / 2, Hh / 2, true, f3);
       const fl = seg(p, .88, .96);
-      line.style.opacity = fl; line.style.transform = `translateY(${(1 - fl) * 14}px)`;
-      const k = p < .4 ? 0 : p < .82 ? 1 : 2;
-      dots.forEach((d, i) => d.classList.toggle('on', i === k));
+      line.style.opacity = fl; line.style.transform = `translateY(${((1 - fl) * 14).toFixed(1)}px)`;
+      const k = p < .42 ? 0 : p < .82 ? 1 : 2;
+      ddots.forEach((d, i) => d.classList.toggle('on', i === k));
     }
-    size();
-    const st = { p: 0 };
-    gsap.timeline({
-      scrollTrigger: { trigger: '#droppin', start: 'top top', end: '+=250%', pin: true, scrub: .5, anticipatePin: 1, invalidateOnRefresh: true, onRefresh: () => { size(); render(st.p); } },
-      defaults: { ease: 'none' }
-    }).to(st, { p: 1, duration: 1, onUpdate: () => render(st.p) });
-    render(0);
-    ScrollTrigger.refresh();
+    let cur = -1, tgt = 0, raf = 0, last = 0;
+    function measure() { const r = run.getBoundingClientRect(); tgt = cl((pinTop - r.top) / (r.height - pinH), 0, 1); }
+    function tick(t) {
+      raf = 0; const dt = last ? Math.min(64, t - last) : 16; last = t;
+      cur = cur < 0 ? tgt : cur + (tgt - cur) * (1 - Math.exp(-dt / 90));
+      if (Math.abs(tgt - cur) < 1e-4) cur = tgt;
+      render(cur);
+      if (cur !== tgt) raf = requestAnimationFrame(tick); else last = 0;
+    }
+    function kick() { if (!ready || off) return; measure(); if (!raf) raf = requestAnimationFrame(tick); }
+    let near = false;
+    new IntersectionObserver(([e]) => { near = e.isIntersecting; if (near) kick(); }, { rootMargin: '200px 0px' }).observe(run);
+    addEventListener('scroll', () => { if (near) kick(); }, { passive: true });
+    addEventListener('resize', () => { if (ready && !off) { size(); cur = -1; kick(); } });
   }
+
+  /* ---------------- phone menu ---------------- */
+  const sheet = $('#sheet'), menub = $('#menub');
+  let mOpener = null;
+  const sFocus = () => $$('a[href],button', sheet);
+  function openMenu() { mOpener = menub; sheet.classList.add('open'); menub.setAttribute('aria-expanded', 'true'); document.body.classList.add('locked'); setTimeout(() => $('[data-sclose]', sheet).focus(), 30); }
+  function closeMenu(back = true) { if (!sheet.classList.contains('open')) return; sheet.classList.remove('open'); menub.setAttribute('aria-expanded', 'false'); document.body.classList.remove('locked'); if (back && mOpener) mOpener.focus(); }
+  menub.onclick = openMenu; $('[data-sclose]', sheet).onclick = () => closeMenu();
+  $$('nav a', sheet).forEach(a => a.addEventListener('click', () => closeMenu(false)));
+  $$('[data-book]', sheet).forEach(a => a.addEventListener('click', () => closeMenu(false)));
+  sheet.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { e.preventDefault(); closeMenu(); }
+    if (e.key === 'Tab') { const f = sFocus(), a = f[0], z = f[f.length - 1]; if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); } else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); } }
+  });
 
   /* ---------------- booking: the side desk ---------------- */
   const book = $('#book'), panel = $('#bookpanel'), form = $('#bookform'), scroller = $('#bookscroll'), band = $('#bookband'), bandv = $('#bandvid'), bandp = $('#bandposter');
@@ -1030,7 +1165,7 @@ body.locked{overflow:hidden}
   scroller.addEventListener('scroll', () => band.classList.toggle('small', scroller.scrollTop > 60), { passive: true });
   function focusables() { return $$('a[href],button:not([disabled]),input:not([type=hidden]):not([disabled]),select', panel).filter(e => e.offsetParent !== null); }
   function open(trigger) {
-    opener = trigger || document.activeElement;
+    opener = (trigger && sheet.contains(trigger)) ? menub : (trigger || document.activeElement);
     if (trigger && trigger.dataset.level) { const r = form.querySelector(`input[name=lvl][value="${trigger.dataset.level}"]`); if (r) r.checked = true; }
     if (trigger && trigger.dataset.room) { const r = form.querySelector(`input[name=room][value="${trigger.dataset.room}"]`); if (r) r.checked = true; }
     book.classList.add('open'); document.body.classList.add('locked');

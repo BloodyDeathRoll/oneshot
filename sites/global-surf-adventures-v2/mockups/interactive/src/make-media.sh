@@ -4,6 +4,7 @@
 # Usage: bash sites/global-surf-adventures-v2/mockups/interactive/src/make-media.sh
 # media: sites/global-surf-adventures-v2/mockups/interactive/dist/video/**
 # media: sites/global-surf-adventures-v2/mockups/interactive/dist/img/**
+# media: sites/global-surf-adventures-v2/mockups/interactive/dist/fonts/**
 set -euo pipefail
 cd "$(dirname "$0")/../../../../.."
 A=dossier/global-surf-adventures-v2/assets
@@ -15,29 +16,39 @@ ff() { ffmpeg -v error -y "$@"; }
 BADGE="crop=1728:972:192:108"   # removes the faint globe badge, top-left (0.9x of 1920, never upscaled)
 
 # ---- the hero: "the ride", vid-003, three real-speed shots, hard cuts, one direction
-#   2.52-5.20 tuk-tuk with boards on the coast road | 24.92-27.12 turquoise reef from the air | 27.16-29.68 pool with the palm, top-down
-SEG="[0:v]trim=2.52:5.20,setpts=PTS-STARTPTS[a];[0:v]trim=24.92:27.12,setpts=PTS-STARTPTS[b];[0:v]trim=27.16:29.68,setpts=PTS-STARTPTS[c]"
-ff -i "$V/vid-003-source.mp4" -filter_complex "$SEG;[a][b][c]concat=n=3:v=1:a=0,fps=25,format=yuv420p,$BADGE[o]" -map "[o]" -an -c:v libx264 -preset slow -crf 14 "$T/ride.mp4"
-# phone: 3:4 portrait, cropped per shot so the tuk-tuk and the palm stay in frame
-ff -i "$V/vid-003-source.mp4" -filter_complex "$SEG;[a]crop=810:1080:'245+t*130':0[a2];[b]crop=810:1080:555:0[b2];[c]crop=810:1080:520:0[c2];[a2][b2][c2]concat=n=3:v=1:a=0,fps=25,format=yuv420p[o]" -map "[o]" -an -c:v libx264 -preset slow -crf 14 "$T/ride-p.mp4"
+#   tuk-tuk with boards on the coast road (2.52-5.20) | turquoise reef from the air (24.92-27.12) | pool with the palm, top-down (27.16-29.68)
+#   The loop is rotated to start at 4.62 s, where the whole tuk-tuk and its boards are in frame: the edit ends on 2.52-4.62 and the
+#   loop joins it back to 4.62 without a jump, so the poster is the video's own first frame.
+#   A light grade (contrast/saturation) lifts the source's grey cast; nothing is added to the picture.
+GRADE="eq=contrast=1.06:saturation=1.15:brightness=0.015"
+SEG="[0:v]trim=4.62:5.20,setpts=PTS-STARTPTS[a];[0:v]trim=24.92:27.12,setpts=PTS-STARTPTS[b];[0:v]trim=27.16:29.68,setpts=PTS-STARTPTS[c];[0:v]trim=2.52:4.62,setpts=PTS-STARTPTS[d]"
+ff -i "$V/vid-003-source.mp4" -filter_complex "$SEG;[a][b][c][d]concat=n=4:v=1:a=0,fps=25,format=yuv420p,$BADGE,$GRADE[o]" -map "[o]" -an -c:v libx264 -preset slow -crf 14 "$T/ride.mp4"
+# phone: 3:4 portrait, and a phone screen shows only its middle ~500 px. The whole tuk-tuk (~880 px wide) never fits that,
+# and its dark cab made a muddy first screen, so the phone loop opens on the bright reef aerial (its breaking lines and surfers
+# in the middle), then the palm in the pool, then the tuk-tuk framed on its driver, windscreen and boards, and loops back.
+SEGP="[0:v]trim=24.92:27.12,setpts=PTS-STARTPTS[a];[0:v]trim=27.16:29.68,setpts=PTS-STARTPTS[b];[0:v]trim=2.52:5.20,setpts=PTS-STARTPTS[c]"
+ff -i "$V/vid-003-source.mp4" -filter_complex "$SEGP;[a]crop=810:1080:300:0[a2];[b]crop=810:1080:520:0[b2];[c]crop=810:1080:650:0[c2];[a2][b2][c2]concat=n=3:v=1:a=0,fps=25,format=yuv420p,$GRADE[o]" -map "[o]" -an -c:v libx264 -preset slow -crf 14 "$T/ride-p.mp4"
 ff -i "$T/ride.mp4" -an -c:v libx264 -preset slow -b:v 3400k -maxrate 3800k -bufsize 7M -pix_fmt yuv420p -movflags +faststart "$D/video/ride-d1728.mp4"
 ff -i "$T/ride.mp4" -an -c:v libvpx-vp9 -b:v 2800k -maxrate 3400k -row-mt 1 -deadline good -cpu-used 2 "$D/video/ride-d1728.webm"
 ff -i "$T/ride.mp4" -vf scale=1280:-2 -an -c:v libx264 -preset slow -b:v 1700k -maxrate 1900k -bufsize 4M -pix_fmt yuv420p -movflags +faststart "$D/video/ride-m1280.mp4"
 ff -i "$T/ride-p.mp4" -an -c:v libx264 -preset slow -b:v 1700k -maxrate 2000k -bufsize 4M -pix_fmt yuv420p -movflags +faststart "$D/video/ride-p810.mp4"
 ff -i "$T/ride-p.mp4" -an -c:v libvpx-vp9 -b:v 1500k -maxrate 1800k -row-mt 1 -deadline good -cpu-used 2 "$D/video/ride-p810.webm"
-# posters: the tuk-tuk with its boards, whole in frame, about 4.6 s into the source (2.1 s into the edit)
-ff -ss 2.1 -i "$T/ride.mp4" -frames:v 1 "$T/ride-poster.png"
-ff -ss 2.1 -i "$T/ride-p.mp4" -frames:v 1 "$T/ride-poster-p.png"
+# posters: the first frame of each edit
+ff -i "$T/ride.mp4" -frames:v 1 "$T/ride-poster.png"
+ff -i "$T/ride-p.mp4" -frames:v 1 "$T/ride-poster-p.png"
 
 # ---- the level reel: 4:5 centre crops (864x1080 of 1920x1080, no upscaling), shown at <= 640x800
-clip() { # id source start end
-  ff -ss "$3" -to "$4" -i "$V/$2" -vf "fps=25,crop=864:1080:528:0,scale=640:800" -an -c:v libx264 -preset slow -crf 25 -pix_fmt yuv420p -movflags +faststart "$D/video/$1.mp4"
-  ff -ss "$3" -to "$4" -i "$V/$2" -vf "fps=25,crop=864:1080:528:0,scale=640:800" -an -c:v libvpx-vp9 -crf 35 -b:v 0 -row-mt 1 -deadline good -cpu-used 2 "$D/video/$1.webm"
+clip() { # id source-path start end
+  ff -ss "$3" -to "$4" -i "$2" -vf "fps=25,crop=864:1080:528:0,scale=640:800" -an -c:v libx264 -preset slow -crf 25 -pix_fmt yuv420p -movflags +faststart "$D/video/$1.mp4"
+  ff -ss "$3" -to "$4" -i "$2" -vf "fps=25,crop=864:1080:528:0,scale=640:800" -an -c:v libvpx-vp9 -crf 35 -b:v 0 -row-mt 1 -deadline good -cpu-used 2 "$D/video/$1.webm"
   ff -i "$D/video/$1.mp4" -frames:v 1 "$T/$1-poster.png"
 }
-clip level-1 vid-010-source.mp4 19.72 24.16    # Level 1: golden-hour stand-ups on soft-tops
-clip level-2 vid-003-source.mp4 21.56 24.88    # Level 2: a woman riding a reef wave
-clip level-3 vid-002-source.webm 8.86 12.50    # Level 3: the barrel
+# Level 1: two sunlit beginner shots from vid-010, pop-up practice on mint soft-tops (12.28-13.52) and a guide pushing a
+# beginner into a wave (32.92-35.00); the golden-hour backlit shot used before read as washed out
+ff -i "$V/vid-010-source.mp4" -filter_complex "[0:v]trim=12.28:13.52,setpts=PTS-STARTPTS[a];[0:v]trim=32.92:35.00,setpts=PTS-STARTPTS[b];[a][b]concat=n=2:v=1:a=0,fps=25,format=yuv420p[o]" -map "[o]" -an -c:v libx264 -preset slow -crf 12 "$T/l1.mp4"
+clip level-1 "$T/l1.mp4" 0 3.32
+clip level-2 $V/vid-003-source.mp4 21.56 24.88    # Level 2: a woman riding a reef wave
+clip level-3 $V/vid-002-source.webm 8.86 12.50    # Level 3: the barrel
 
 # ---- photographs: crops and sizes, WebP
 python3 - "$A" "$D/img" "$T" <<'PY'
@@ -57,9 +68,9 @@ def out(im, name, width, q=74):
 def src(i): return Image.open(f'{A}/img-{i}.jpg').convert('RGB')
 def png(p): return Image.open(p).convert('RGB')
 # hero posters (the LCP image)
-out(png(f'{T}/ride-poster.png'), 'ride-poster-1728', 1728, 70)
-out(png(f'{T}/ride-poster.png'), 'ride-poster-960', 960, 70)
-out(png(f'{T}/ride-poster-p.png'), 'ride-poster-p810', 810, 70)
+out(png(f'{T}/ride-poster.png'), 'ride-poster-1728', 1728, 80)
+out(png(f'{T}/ride-poster.png'), 'ride-poster-960', 960, 78)
+out(png(f'{T}/ride-poster-p.png'), 'ride-poster-p810', 810, 80)
 for n in (1, 2, 3): out(png(f'{T}/level-{n}-poster.png'), f'level-{n}', 640, 72)
 # midday: the pool, two ways (same 16:9 frame so the wipe lines up)
 for i, name, cx in (('026', 'pool-top', 0.5), ('060', 'pool-garden', 0.5)):
@@ -81,4 +92,9 @@ for i in '063 078 095 042 050 064 080 084 083 069 079 081 082 041 043 044 071'.s
 for i in '024 090 055 087 118 016 104 168'.split():
     out(crop(src(i), 1), f'ig-{i}', 480, 72)
 PY
-du -sh "$D/video" "$D/img"
+
+# ---- fonts, self-hosted (latin subsets from Google Fonts; Plus Jakarta Sans is one variable file for 400 and 600)
+mkdir -p "$D/fonts"
+curl -sfL https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yw.woff2 -o "$D/fonts/plus-jakarta-sans-latin.woff2"
+curl -sfL https://fonts.gstatic.com/s/sacramento/v17/buEzpo6gcdjy0EiZMBUG4C0f_Q.woff2 -o "$D/fonts/sacramento-latin.woff2"
+du -sh "$D/video" "$D/img" "$D/fonts"

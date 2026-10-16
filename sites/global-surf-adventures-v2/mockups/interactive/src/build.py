@@ -18,8 +18,24 @@ e = html.escape
 
 def read(n): return (HERE / n).read_text()
 LOGO = '<svg viewBox="0 0 257.2 88.8" aria-hidden="true">' + read('logo-paths.txt').strip() + '</svg>'
-FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-         '<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&family=Sacramento&display=swap" rel="stylesheet">')
+# fonts are self-hosted (dist/fonts, made by make-media.sh); {{F}} is the page's path prefix
+FONTS = (''
+         '<style>@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:400 600;font-display:swap;src:url({{F}}fonts/plus-jakarta-sans-latin.woff2) format("woff2")}'
+         '@font-face{font-family:"Sacramento";font-style:normal;font-weight:400;font-display:swap;src:url({{F}}fonts/sacramento-latin.woff2) format("woff2")}</style>')
+
+# the Rosa headline, from the checked-in snapshot of Rosa's south-point.json (src/rosa-south-point.json);
+# home.js hides it once the snapshot is more than 24 h old and redraws it from the live file when that is fresh
+import datetime
+ROSA = json.loads((HERE / 'rosa-south-point.json').read_text())
+def compass(d): return ['north', 'north-east', 'east', 'south-east', 'south', 'south-west', 'west', 'north-west'][round(d / 45) % 8]
+def fc_html():
+    c = ROSA['current']; sw = next((x for x in c['swells'] if x['in_window']), None)
+    t = datetime.datetime.fromisoformat(c['t'])
+    rows = (f'<span>Swell {sw["h"]:g} m at {sw["period"]:g} s from the {compass(sw["dir"])}</span>' if sw else '') + f'<span>Wind {round(c["wind"]["kph"])} km/h, {c["wind"]["class"]}</span>'
+    return (f'<div class="fc-h" data-fc data-gen="{ROSA["generated_at"]}">'
+            f'<p class="fc-big"><span data-fh>{c["h"][0]:g}–{c["h"][1]:g}</span><small>m</small></p>'
+            f'<p class="fc-when" data-fw>South Point, {e(c["phrase"])} <br>at {t:%H:%M}, {t.day} {t:%b}</p>'
+            f'<p class="fc-rows" data-fr>{rows}</p></div>')
 
 def alt(i): d = desc.get(i, ''); return d[:1].upper() + d[1:]
 
@@ -32,16 +48,20 @@ def rooms():
     out = []
     for key, r in zip(ROOM_KEYS, X['rooms']):
         g = r['gallery']
-        tiles = ''.join(f'<img src="img/room-{i[4:]}-600.webp" width="600" height="400" alt="{e(alt(i))}" loading="lazy">' for i in g[:4])
-        photos = ' '.join(f'{i}:{alt(i)}'.replace(' ', ' ', 0) for i in g)
         photos = ' '.join(f'{i[4:]}:' + alt(i).replace(' ', '_') for i in g)
+        lead = (f'<button class="lead" type="button" data-i="0" aria-label="See all {len(g)} photos of the {e(r["label"])}">'
+                f'<img src="img/room-{g[0][4:]}-1400.webp" srcset="img/room-{g[0][4:]}-600.webp 600w, img/room-{g[0][4:]}-1400.webp 1400w" sizes="(max-width:960px) 100vw, 760px" width="1400" height="933" alt="{e(alt(g[0]))}" loading="lazy">'
+                f'<span class="all"><svg class="ic"><use href="#i-grid"/></svg>{len(g)} photos</span></button>')
+        thumbs = ''.join(f'<button type="button" data-i="{n}" aria-label="Photo {n + 1} of {len(g)}, {e(r["label"])}"><img src="img/room-{i[4:]}-600.webp" width="600" height="400" alt="" loading="lazy"></button>' for n, i in enumerate(g[1:4], 1))
         out.append(f'''      <article class="room" data-room="{key}" data-name="{e(r['label'])}" data-line="{e(r['line'])}" data-det="{e(r['details'])}" data-sup="{e(sup(r))}" data-photos="{e(photos)}">
-        <button class="mosaic" type="button" aria-label="See all {len(g)} photos of the {e(r['label'])}">{tiles}<span class="all"><svg class="ic"><use href="#i-grid"/></svg>{len(g)} photos</span></button>
-        <h3>{e(r['label'])}</h3>
-        <p class="line">{e(r['description'])}</p>
-        <p class="det">{e(r['details'])}</p>
-        <p class="sup">{e(sup(r))}</p>
-        <a class="btn btn-tint" href="book/?room={key}">{e(X['ctas']['room'])}</a>
+        <div class="room-media">{lead}<div class="thumbs">{thumbs}</div></div>
+        <div class="room-txt">
+          <h3>{e(r['label'])}</h3>
+          <p class="line">{e(r['description'])}</p>
+          <p class="det">{e(r['details'])}</p>
+          <p class="sup">{e(sup(r))}</p>
+          <a class="btn btn-book" href="book/?room={key}">{e(X['ctas']['room'])}</a>
+        </div>
       </article>''')
     return '\n'.join(out)
 
@@ -71,7 +91,7 @@ def gal_css():
     arr = [l for l in h.splitlines() if l.startswith('.arr') or l.startswith('.dots')]
     return '\n'.join(arr) + '\n' + h[h.index('/* gallery dialog */'):h.index('/* waves */')]
 
-def page(title, desc_, head_extra, css, body, js):
+def page(title, desc_, head_extra, css, body, js, fp=''):
     return f'''<!doctype html>
 <html lang="en" class="nojs">
 <head>
@@ -79,7 +99,7 @@ def page(title, desc_, head_extra, css, body, js):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc_)}">
-{FONTS}
+{FONTS.replace('{{F}}', fp)}
 {head_extra}
 <style>
 {read('common.css')}
@@ -98,7 +118,7 @@ def page(title, desc_, head_extra, css, body, js):
 '''
 
 home = read('home.html').replace('{{LOGO}}', LOGO).replace('{{ROOMS}}', rooms()).replace('{{QUOTES}}', quotes()).replace('{{IG}}', ig())
-home = home.replace('{{ROOMS_ALT}}', '')
+home = home.replace('{{ROOMS_ALT}}', '').replace('{{FC}}', fc_html())
 (DIST / 'index.html').write_text(page(
     'Global Surf Lodge Kabalana | Surf weeks in Sri Lanka', copy['tagline'],
     '<link rel="preload" as="image" href="img/ride-poster-p810.webp" media="(max-width: 700px)">\n<link rel="preload" as="image" href="img/ride-poster-1728.webp" media="(min-width: 701px)">',
@@ -109,5 +129,5 @@ if (HERE / 'book.html').exists():
     book = read('book.html').replace('{{LOGO}}', LOGO)
     book = book.replace('{{ROOM_TILES}}', room_tiles())
     (DIST / 'book' / 'index.html').write_text(page(
-        'Book your surf week | Global Surf Lodge Kabalana', copy['tagline'], '', read('book.css') + gal_css(), book, read('book.js')).replace('src="img/', 'src="../img/').replace('href="./"', 'href="../"'))
+        'Book your surf week | Global Surf Lodge Kabalana', copy['tagline'], '', read('book.css') + gal_css(), book, read('book.js'), '../').replace('src="img/', 'src="../img/').replace('href="./"', 'href="../"'))
 print('built', DIST)
