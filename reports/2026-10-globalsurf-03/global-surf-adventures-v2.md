@@ -208,3 +208,193 @@ top fixes (not failing; for 4g, smallest first):
 6. Vendor GSAP (the plan already says ≈ 45 KB gz at 4g).
 7. Make the pin stop logging layout shifts, and re-measure CLS across the scroll.
 8. Wire the Rosa headline live with the > 24 h fallback.
+
+---
+---
+
+# Round 2 — critic quick scorecard (station 4f)
+
+critic 0.4.2 · rubric 0.3.1 · 2026-10-17 · round 2, on the build in commit 23f7563 (4e round 2 rework). Dimensions 1–7 only. The visual-critic and experience-critic reports were not opened.
+
+The checks were the same as in round 1, in the same order, at the same viewports. All of them ran over http on a plain static server.
+1. Shots: the shared `shots/` sets in each mockup were made after the last `dist/` edit, and their page heights match a fresh http shoot (calm 10,455 / 11,701 px, interactive 11,143 / 13,170, unique 13,091 / 14,419). I reused them and read the sheets from the http re-shoot, because interactive's and unique's shared sets were shot over file://, where Rosa does not render.
+2. `tools/audit-mockup.mjs`, moved to `critic/<v>-audit-r2.json` so nothing was left under `sites/`.
+3. Probe 1 (`<v>-probe-r2.json`): FCP vs. hero-video request; overflow over the whole scroll; third parties on load and after scroll; reduced motion; Save-Data; JS-off home and `/book/`; rendered text (`<v>-text-r2.txt`).
+4. Probe 2 (`<v>-probe2-r2.json`): Rosa request origin; CLS across the full scroll; Rosa blocked; Tab pass; dialog focus tests.
+5. Full Tab pass at 1440 and 390 (`<v>-tab-r2.json`, `<v>-book-tab-r2.json`).
+6. Scripted 390 px booking walk with engine navigation intercepted (nothing booked).
+7. `ffprobe` on the hero renditions.
+8. `check-design --no-shots`.
+9. The quotes compared with `copy/en.json`.
+
+## The sentence the human needs (round 2)
+
+All three still clear the critic's gates (no hard fail; d1, d3 and d7 ≥ 6), and every round-1 defect that touched a gate is fixed. They now differ on these facts:
+- **unique** dropped GSAP. It has 1 embed and a scroll CLS of 0 / 0.006 (was ≈ 1.0). Its fonts are 83 KB (were 156 KB). But its first load doubled to 1.01 MB, because the drop's plates load eagerly.
+- **interactive** is the only one with self-hosted fonts and 0 third-party requests on load. Its booking walk is still the longest: 7 taps.
+- **calm** is the only one whose first screen still carries no rating.
+
+## Round-1 fixes re-checked
+
+| round-1 item | calm | interactive | unique |
+|---|---|---|---|
+| Source on the Seagallas / Dana credits | **fixed**: "Seagallas, globalsurf.com" (`calm-text-r2.txt` l.135, 141) | was fine | **fixed**: "Seagallas \| globalsurf.com" (l.110, 116) |
+| Rating proof on the first screen | **not done**: the rating first appears in `mobile-03` (4th viewport) | unchanged: under the reel (`mobile-02`) | **improved**: "8.6 on Booking.com · 80 reviews · 28 Sep 2026" directly under the hero (`mobile-01`). It is not on the 844 px first screen, which is all video |
+| Tap targets ≥ 44 px | partly: 39 → 25 under 44 (dots 36×44) | 32 → 3 ("Choose Level 2/3", "Ask about dates" at 41 px tall) | 19 → 1 ("Forecast for South Point" link, 234×23) |
+| Unnamed focusable DIVs / no-ring stops | **fixed**: 0 unnamed, 0 without a ring | reel ring **fixed**: 0 without a ring | **fixed**: 0 unnamed |
+| WhatsApp prefill names the visitor's choice | **fixed** on `book/`: the message is rebuilt from the level, room, start date, nights and guests | n/a | n/a |
+| Rosa refused → plain link, not a failed frame | **fixed**: designed plain-link card until the frame loads; blocked shows "See today's forecast for South Point on Rosa" | **fixed**: same, and the frame is inserted only after a no-cors probe succeeds | **fixed**: the frame is appended only after the JSON fetch succeeds; blocked shows the link + "Open Rosa" |
+| Skip link (interactive) | — | **fixed**: "Skip to content" is the first Tab stop on home and `book/` | — |
+| Phone menu traps focus (interactive) | 0/25 Tabs escape | **fixed**: focus cycles over the menu links and its Close button. The 3 "OUT" stops are the toggle, which sits outside `#sheet` but is the sheet's own Close; Esc → Menu | 0/25 escape; Esc → Menu |
+| Icon-only WhatsApp on `book/` (interactive) | — | **fixed**: `aria-label="Questions? Ask us on WhatsApp"` | — |
+| Dates "Next" stalls with no guest (interactive) | — | **fixed**: Next now focuses Women and shows "Add at least one guest to see your total." | — |
+| Self-hosted fonts | no (Google Fonts) | **yes**: 0 third-party on load | no (Google Fonts) |
+| GSAP from jsdelivr / 2 embeds (unique) | — | — | **fixed**: no GSAP; sticky stage on the page's own JS; 1 embed |
+| Scroll CLS ≈ 1.0 from the pin (unique) | — | — | **fixed**: 0 phone / 0.0055 desktop over the full scroll, no shift > 0.01 |
+| Fonts > 150 KB (unique) | — | — | **fixed**: 82.7 KB |
+| Invisible focusable header "Book now" (unique) | — | — | **fixed**: 0 hidden stops |
+| Stepper labels (unique) | — | — | **fixed**: "Add a woman / man / couple" |
+| No phone navigation (calm, unique) | **fixed**: Menu sheet, focus kept, Esc returns | — | **fixed**: Menu sheet, focus kept, Esc returns |
+| Rosa headline from the 29 Sep fixture (unique) | — | — | **fixed**: live JSON, made lazily from the main frame, hidden when > 24 h old. It shows "Fri 16 Oct, 20:30", inside 24 h at test time |
+
+## Measured (playbook §4, 390×844 throttled, no scroll — audit-r2 unless noted)
+
+| line | target | calm | interactive | unique |
+|---|---|---|---|---|
+| first-load transfer | ≤ 1.5 MB | 475 KB | 616 KB | **1,012 KB** (was 654) |
+| JS | ≤ 300 KB | inline (75 KB HTML) | inline (80 KB HTML) | inline (99 KB HTML), no external script at all |
+| fonts | ≤ 2 families, ≤ 150 KB | 2, 54 KB (Google) | 2, 51 KB, self-hosted | 2, 83 KB (Google) |
+| largest image | ≤ 300 KB | 72 KB | 159 KB | 212 KB (`plate-img-062-m.webp`, below the fold) |
+| LCP | ≤ 2.5 s | 484 ms | 348 ms | 484 ms |
+| CLS load / full scroll (probe2) | < 0.1 | 0.0038 / 0 phone, 0.005 desktop | 0.0008 / 0, 0.003 | 0.0061 / 0, 0.0055 |
+| third-party on load | 0 | 2 (Google Fonts, 4e allowance) | **0** | 2 (Google Fonts) |
+| overflow-x at 390, whole scroll | 0 | 0 (also `book/` JS-off) | 0 (also `book/`) | 0 |
+
+- **Unique first load.** Twelve images load with no scroll. The drop's plates `plate-img-062-m` (207 KB) and `plate-img-026-m` (188 KB) are swapped in by JS from `data-m` on load. `room-img-063` also loads through a duplicate `<img alt="">` that has no `loading="lazy"`. The drop starts below the fold. The total is inside budget, but playbook §4 says "lazy below the fold".
+- **Hero video** (poster first, video requested after FCP):
+
+  | | FCP → video request | renditions | length | reduced motion / Save-Data |
+  |---|---|---|---|---|
+  | calm | phone 276 → 368 ms; desktop 212 → 284 ms | phone 1.54 MB webm / 1.79 MB mp4; desktop 3.18 / **3.96 MB** | 7.24 s | 0 video requests, load or full scroll |
+  | interactive | phone 152 → 168 ms; desktop 68 → 162 ms | phone `ride-p810` 1.50 / 1.57 MB; desktop 2.76 / 3.08 MB | 7.4 s | same |
+  | unique | phone 284 → 367 ms; desktop 228 → 289 ms | phone 1.14 MB; desktop 2.04 / 2.18 MB | 7.0 s | same |
+
+  - calm's desktop mp4 is 3.96 MB, 40 KB under the 4 MB line.
+  - Every rendition is video-only and between 6 and 20 s.
+- **Rosa (hard constraint 9).**
+  - All three use `spot=south-point`, the `concepts.md` mapping, with `theme=light&units=metric`, unmodified.
+  - Nothing from Rosa is in the first load.
+  - After scroll, all three load the widget frame, and the frame makes its own JSON request.
+  - Main-frame requests, all lazy:
+    - unique: one JSON request for its own headline, as the playbook allows.
+    - interactive: one no-cors probe of the widget URL. It fetches the JSON only when its inlined reading is over 24 h old, which it was not.
+    - calm: none, because its inlined reading is under 24 h old.
+  - With JS off, all three show "See today's forecast for South Point on Rosa". Blocked: the same link.
+  - Headlines: South Point, knee-high, 0.4–0.6 m, 16 Oct 20:30, 7 s / S, 4 km/h onshore. They match the 16 Oct JSON; interactive adds the 0.85 m / 6.9 s swell line.
+  - Embed count is 1 for every variant.
+- **Booking walk** (390 touch; `booking_flow`: engine, clicks_to_flow ≤ 1, taps ≤ 8):
+
+  | | hero CTA at 390 | taps to engine | hand-off (intercepted) | JS off |
+  |---|---|---|---|---|
+  | calm | "Book package now" 429–481 px → `book/` | 5: hero · Next · Next · Sat 24 Oct · Continue booking | `…/level-1-fomies?start=2026-10-24&end=2026-10-31&female=1&male=0&couple=0` | `book/` GET form, check-in/out dates, 3 per-level submits |
+  | interactive | 449–503 px → `book/` | 7: hero · Next · Next · Sat 24 · +1 woman · Next · Continue booking | `…/level-1-fomies?start=2026-10-24&female=1&end=2026-10-31` | `book/` GET form, Saturday select + duration, 3 per-level submits |
+  | unique | 451–503 px → `#book` drawer | 2: hero · Continue booking | `…/level-1-fomies?start=2026-10-24&end=2026-10-31&female=1&male=0&couple=0` | in-page GET form, 3 per-level submits (`/book/` is 404 by design: drawer) |
+
+  - Engine product bases match the dossier character for character.
+  - interactive calls `api.bookinglayer.io` only after interaction on `book/`.
+  - WhatsApp is `wa.me/972523593240` and tel is `+97299733943` in all three.
+  - unique's desktop drawer opens on "Close booking", 0/25 Tabs escape it, and Esc returns focus to the opener.
+- **check-design** (home, and calm `book/`): 0 problems and 0 default-look warnings on every page.
+  - calm: h1 Figtree, h2 Birthstone
+  - interactive: Plus Jakarta Sans + Sacramento
+  - unique: Literata + Parisienne
+  - All: ground #FFFFFF, 0 all-caps labels
+- **Facts.** The facts table from round 1 was re-run against the round-2 text:
+  - 0 mismatches and 0 unsourced claims.
+  - Quotes: calm 9/9 verbatim, interactive 9/9, unique 6/6 (of en.json's 9).
+  - New on calm's first scroll: "12 rooms | Saturday check-in | ISA-certified surf guides". This is en.json `detail_lines.welcome`, sourced in `copy/sources.md` l.203 to `business.staying_with_us`, `duration_options` and `credentials[0]`.
+  - audit `facts` flags only the Rosa numbers, traced above.
+  - The same gaps are omitted as in round 1.
+
+## Summary (round 2)
+
+| variant | d1 (20) | d2 (15) | d3 (15) | d4 (5) | d5 (10) | d6 (8) | d7 (7) | total /80 | r1 | hard fails | critic gates |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| calm | 10 | 9 | 10 | 8 | 10 | 8 | 8 | **74.5** | 70.0 | none | pass (d8 pending) |
+| interactive | 10 | 10 | 9 | 8 | 9 | 9 | 9 | **75.0** | 70.4 | none | pass (d8 pending) |
+| unique | 10 | 8 | 9 | 9 | 9 | 9 | 8 | **71.8** | 64.0 | none | pass (d8 pending) |
+
+```
+mode: quick        round: 2        variant: calm
+total: 74.5 / 80 (d1–7)   result: pass (critic gates; d8 from the visual critics)   hard_fails: []
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | 0 mismatches; 9/9 quotes verbatim, each with a source (`calm-text-r2.txt` l.131–141); rating blocks carry count + date (l.36–37, 125–126); Rosa headline = 16 Oct JSON. |
+| 2 | mobile + perf | 9 | 475 KB, LCP 484 ms, CLS 0.0038 / 0 over the scroll, fonts 54 KB, largest image 72 KB, overflow 0. Hero after FCP (+92 / +72 ms), 0 video under reduced motion and Save-Data. Minus: Google Fonts; desktop mp4 at 3.96 MB is at the line. |
+| 3 | booking CTA | 10 | Hero CTA above the fold → `book/` (1 tap); engine in 5 taps; URL char-for-char; JS-off form; WhatsApp prefill on `book/` now carries level, room, date, nights, guests. |
+| 4 | brand fit | 8 | §3 order and phone bar present. Phone menu now present (`shots/mobile-00`). Minus: still no rating on the first screen; it first appears in `mobile-03`. |
+| 5 | copy | 10 | en.json verbatim plus interface labels; credits now sourced. |
+| 6 | accessibility | 8 | Skip link; 69 / 68 Tab stops, all ringed, 0 unnamed; carousel arrows appear on `:focus-visible`; menu sheet keeps focus and Esc returns; alt 36/36. Minus: 25 targets under 44 px (carousel dots 36×44, a 120×24 link). axe not run (quick). |
+| 7 | security + delivery | 8 | Static, relative, lowercase, no secrets. 1 embed, lazy, with its space reserved; plain-link card when the embed is refused or JS is off. Minus: Google Fonts on load (a hard fail in full mode). |
+
+what the designer prompt got wrong: The §3 first-screen proof point is still treated as optional when the hero is a full-bleed video. Calm fixed every other round-1 item, but not this one, and no self-check line asks for it.
+
+fixes (not failing; for 4g, smallest first):
+1. Put 8.6 / 80 / date on the first screen.
+2. Make the dots ≥ 44 px wide.
+3. Self-host the fonts.
+4. Trim the desktop mp4 below 3.9 MB for headroom.
+
+```
+mode: quick        round: 2        variant: interactive
+total: 75.0 / 80 (d1–7)   result: pass (critic gates; d8 from the visual critics)   hard_fails: []
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | 0 mismatches; 9/9 quotes verbatim with "on Booking.com / on globalsurf.com"; rating blocks with count + date (`interactive-text-r2.txt` l.37, 139–141); Rosa headline = 16 Oct JSON, hidden when > 24 h old. |
+| 2 | mobile + perf | 10 | 616 KB, LCP 348 ms, CLS 0.0008 / 0, fonts 51 KB **self-hosted**, largest image 159 KB, **0 third-party requests on load**, overflow 0. Hero after FCP; phone rendition ≤ 1.57 MB; 0 video under reduced motion and Save-Data. Every budget line is met. |
+| 3 | booking CTA | 9 | Hero CTA above the fold → `book/`. Engine in 7 taps (≤ 8). URL char-for-char. JS-off form. Engine API only on interaction. The dates step now says why Next waits. Minus: 7 taps, the closest of the three to the limit; no guest preselected. |
+| 4 | brand fit | 8 | §3 order present; rating under the reel (`mobile-02`), not on the first screen; interactive brief intact; phone bar. |
+| 5 | copy | 9 | en.json verbatim; labels plain. |
+| 6 | accessibility | 9 | Skip link; 81 / 69 Tab stops all ringed, 0 unnamed. Menu sheet keeps focus and Esc → Menu. Gallery opens on "Close photos" and Esc returns to its opener. WhatsApp icon on `book/` is named. Alt 31/31. Minus: 3 buttons at 41 px tall. The wipe's range input is opacity 0, and its focus is shown on the knob (`.wipe input:focus-visible ~ .knob`). |
+| 7 | security + delivery | 9 | Static, relative, lowercase, self-hosted fonts, no secrets; 1 embed, lazy, reserved, plain-link fallback. Minus: a no-cors probe of `rosa.surf/widget/` from the main frame before the iframe. It is lazy, and it is a second request to the same embed. |
+
+what the designer prompt got wrong: Nothing new. Every round-1 item is fixed. The one structural cost left is the stepped `book/` page's tap count (7 of 8), which no prompt line weighs against the other variants' 2–5.
+
+fixes (not failing, smallest first):
+1. Raise the three 41 px buttons to 44 px.
+2. Preselect 1 guest, or merge the dates and guests "Next" into one step.
+
+```
+mode: quick        round: 2        variant: unique
+total: 71.8 / 80 (d1–7)   result: pass (critic gates; d8 from the visual critics)   hard_fails: []
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | 0 mismatches; 6/6 quotes verbatim, credits now sourced (l.110, 116); rating blocks with count + date (l.9–11, 103); Rosa headline live, 16 Oct 20:30, hidden when > 24 h old. |
+| 2 | mobile + perf | 8 | LCP 484 ms; CLS 0.0061 at load, **0 / 0.0055 over the full scroll** (was 1.25 / 1.03); fonts 83 KB (was 156); no external script. Hero after FCP; 0 video under reduced motion and Save-Data. Minus: **first load 1,012 KB** (was 654). The below-fold plates (207 + 188 KB) load eagerly through JS, and so does a non-lazy duplicate `room-img-063`. Also Google Fonts. |
+| 3 | booking CTA | 9 | Hero CTA above the fold → drawer; engine in 2 taps; URL char-for-char; JS-off in-page form; drawer focus correct. Minus: the hand-off defaults to 1 woman and the first Saturday if nothing is changed. |
+| 4 | brand fit | 9 | §3 order present; the drop is intact. The phone now has a Menu (`shots/mobile-00`). Rating directly under the hero (`mobile-01`). |
+| 5 | copy | 9 | en.json content; two joined copy sentences, no new claim. |
+| 6 | accessibility | 9 | Skip link; 55 / 53 Tab stops all ringed, 0 hidden, 0 unnamed; menu sheet and drawer keep focus, Esc returns; steppers named "Add a woman / man / couple"; reduced motion → static plates, no video. Minus: 1 target under 44 ("Forecast for South Point" 234×23). |
+| 7 | security + delivery | 8 | Static, relative, lowercase, no secrets; **GSAP removed**, 1 embed (Rosa), lazy, the iframe only after a successful JSON fetch, plain link otherwise. Minus: Google Fonts on load. |
+
+what the designer prompt got wrong: The rework removed the CDN library, the pin CLS and the font weight. But the new sticky stage's images are assigned by script at load (`data-m` → `src`) and are not lazy, so a fix for one budget line moved 400 KB onto the first load. The self-check reads first-load bytes only as pass/fail against 1.5 MB, so the regression from 654 KB to 1,012 KB went unseen.
+
+fixes (not failing, smallest first):
+1. Enlarge the forecast credit link to ≥ 44 px.
+2. Lazy-load the duplicate `room-img-063`.
+3. Assign the plate sources only when the drop nears the viewport.
+4. Self-host the fonts.
+
+## Ranking (critic, d1–7 only; facts, not a pick)
+
+1. **interactive** 75.0: every budget line met, 0 third-party on load, every round-1 item fixed; the longest booking walk (7 taps).
+2. **calm** 74.5: CTA and copy now clean; no rating on the first screen, Google Fonts.
+3. **unique** 71.8: GSAP, CLS and font issues are gone; first load is up to 1.01 MB through eager below-fold plates; the shortest booking walk (2 taps).
+
+Look loop: each `notes.md` carries round 2.x first-screen and whole-page entries with named changes between sheets. No hollow round.

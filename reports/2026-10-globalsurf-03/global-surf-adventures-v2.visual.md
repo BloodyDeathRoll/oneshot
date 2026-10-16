@@ -197,3 +197,176 @@ The bar it sets: warm editorial sections with handwritten titles. Its weak spots
 3. **interactive: 7, fail.** The tuk-tuk is the most charming idea in the run. But the page dissolves into boxed widgets (amenity chips, mosaics, carousels), and its phone hero crop loses the tuk-tuk.
 
 All three are better than the current site, on the first screen and on the whole page. None is at 8 yet. All three go back to the designer for round 2 before any human sees them.
+
+---
+---
+
+# Round 2: visual-critic, station 4f
+
+visual-critic 0.1.1 · run `2026-10-globalsurf-03` · 2026-10-17 · mode quick
+
+**What I looked at**
+- Shared shot sets in `sites/global-surf-adventures-v2/mockups/<variant>/shots/`, all shot after the round-2 build (2026-10-16T21:5xZ; no `dist` file is newer than its `shoot.json`). Calm was shot over http. Interactive and unique were shot over `file://`, so in those sheets the forecast's right half shows the designed fallback card, not the widget.
+- My own http probe of the round-2 builds: served `mockups/` with `tools/_serve.mjs`, Playwright, 1440×900 and 390×844, 3 s after load, then scrolled to the forecast. The scratch shots are not kept. What it showed:
+  - All three hero videos play: calm `hero-d1728.webm` / `hero-m608.webm`, interactive `ride-d1728.webm` / `ride-p810.webm`, unique `hero-d1728.webm` / `hero-p668.webm`.
+  - Rosa's widget renders in all three, at 420×500 on desktop and 350×500 on the phone.
+- Also looked at both booking pages (`calm/dist/book/`, `interactive/dist/book/`) at 1440 and 390, and unique's booking drawer opened from the hero at 1440 and 390.
+- For the current site I reused `reports/2026-10-globalsurf-03/current-site/shots/` from round 1: the murky palm-sky hero, breadcrumb, Messenger bubble, brush-script sections on sand, the Kuula blur, no prices.
+- The other critics' round-2 reports were not opened.
+
+---
+
+## 1 · calm, round 2
+
+**Three-second test.**
+- Desktop (`calm desktop-00.png`, mid-loop): three guests walk at the camera with mint and blue soft-tops in warm sun. "Next set is yours" and the crimson button sit centred. It is warm, bright and social, and I'd scroll.
+  - The title still lands on the middle guest's board and torso at this point in the loop, but the halo makes it read cleanly.
+  - The hotel block and the crowd from round 1 are gone.
+- Phone (`calm mobile-00.png`): a drone frame over the whitewater, with a beginner riding below the button.
+  - The frame is visibly soft and blocky. It is the `m608` rendition stretched to a 780-device-px screen.
+  - The button sits on the surfer's head.
+  - The bottom ~35 % is flat dark water.
+  - A lighter band about 38 px tall runs across the very top above the logo, with a hard edge under it. It reads as a crop seam.
+
+**Round-1 fixes re-checked**
+1. Hero frame: **partly fixed.** Desktop is cleaner and warmer. The phone is now the weakest first screen of the three (soft, button over the surfer).
+2. Kalam in teal: **fixed.** The script is now in ink (`desktop-01.png`: "Choose your level"). It is elegant and readable, and it sits with the old site's handwritten character instead of below it.
+3. Centred monotony: **mostly fixed.**
+   - The levels intro is now an asymmetric split, with the title and " | " facts on the left and the copy on the right.
+   - The level photos are large and crisp (`desktop-01.png`: img-133 surf lesson on sand, the rider, the barrel).
+   - Rooms are now a split, with the photo bleeding left and the text on the right (`desktop-sheet` frame 7).
+   - What's included pairs text with a photo slideshow (frame 4).
+4. Guests band: **fixed.** It is now a split, with the sunset surfer left and the quote in ink on white right (frame 10). On the phone the quote sits under the photo.
+5. Forecast: **fixed.** The designed card shows where Rosa is refused. Over http the widget renders beside a big "0.4–0.6 m" headline (frame 9 and the probe).
+
+**Checklist**
+- **Media.** The business's video leads. img-005 is used for the featureLine on the pool, img-138 for the rider band, and img-099 for the barrel. The levels use the three strongest stills. Only the phone hero rendition is soft.
+- **Composition.** Better scale contrast than round 1.
+  - The empty tint band between the levels and "What's included" (frame 3 bottom) is dead space.
+  - The tail is weak: "Book the week for your level." sits beside a food photo that is cut by the screen edge (frame 11), then a food photo is half-visible above "Follow the lodge" (frame 12).
+- **Typography.** Figtree with an ink script. The script is tasteful. Body copy is still small and grey in the lodge paragraph (frame 6).
+- **Colour.** White, cool tint, ink and crimson. Clean, and the crimson is unmistakable. Still more "nice resort template" than south coast of Sri Lanka.
+- **Hierarchy and rhythm.** Image bands alternate with white splits. The rhythm is good through the rooms. The closing third loses pace.
+- **Polish.** Tidy buttons, icon list and footer, and a phone bar with the price. The issues are the phone hero seam and softness, and the cut-off closing images.
+- **Distinctiveness.** Medium-low. It is professional, but the layout could carry any surf camp. The photos carry the identity.
+
+**Booking page (`/book/`).** The pool-terrace band carries the script title, the level cards are 4:5 with ink checks, the included list sits on one tint card and the total card is clear. It feels like the same site. The script title over the string lights is a little busy.
+
+**Score: 8 / 10, pass (just).** It is clearly professional and beautiful in its photographs, and now has a type voice of its own. It is below the gold `the-sign` in distinctiveness and in the phone first screen, which is the one thing that could drop it back under the bar.
+
+**Better than the current site?**
+- First screen: **yes** (`calm desktop-00` vs `current-site desktop-00`): bright guests and one button against a murky palm still with a breadcrumb.
+- On the phone: **yes, narrowly** (`calm mobile-00` vs `current-site mobile-00`).
+- Whole page: **yes** (`calm desktop-sheet` vs `current-site desktop-sheet`). It now matches the old site's handwritten warmth and beats it on photography, rooms and the funnel.
+
+**Remaining fixes**
+1. **Phone hero.**
+   - Cut a phone master from the native source at ≥ 780 px wide instead of stretching `m608`.
+   - Remove the light seam at the top.
+   - Move the title and button up into the whitewater, or pick a frame where the surfer is below the button rather than under it.
+2. **Closing third.** Give "Book the week" a full, uncut photograph (or the dusk pool, full-bleed, with the title on it), and stop the food photo bleeding into "Follow the lodge".
+3. **Dead tint band.** Remove the empty tint band between the levels and "What's included".
+
+**Keep:** the ink script, the levels split, the split rooms with slideshows, the featureLine on the pool, the barrel band, the guests split, the forecast pairing and the footer.
+
+---
+
+## 2 · interactive, round 2
+
+**Three-second test.**
+- Desktop (`interactive desktop-00.png`): a bright reef aerial. Turquoise water, surfers waiting in the line-up, white sets on the left and the palm coast across the top. "Surf weeks in Sri Lanka" and a tangerine pill sit dead centre on calm water. It is the cleanest, most legible first screen of the run. The logo and nav read on the sky.
+- Phone (`interactive mobile-sheet` frame 1): the same reef, bright, with the title and button on water. In my 3 s http probe the loop has moved on to the palm over the pool, and the title still reads thanks to its shade.
+- Round 1's dark tuk-tuk crop is gone.
+
+**Round-1 fixes re-checked**
+1. Hero logo, phone crop and sharpness: **fixed.**
+2. Amenity chips: **fixed.** They are now a borderless two-column icon list (`desktop-sheet` frame 6; phone frame 7).
+3. Rooms: **fixed.** Each room is a large lead photo with a 3-thumb strip and a "6 photos" badge, alternating left and right (frames 7–8). They now sell.
+4. Closing band: **fixed.** The faces are clear above, and the white card with "Book the week for your level" sits low on the table (frame 12).
+5. Pool wipe and forecast: **forecast fixed.** The designed fallback card shows, and the widget renders over http. The wipe still reads as two photos side by side (frame 5), but it is acceptable.
+
+**Checklist**
+- **Media.** The business's aerial video leads. The level reel uses the footage. img-138 is a big rider band. The level 1 card (on the reel) is a darker, softer video frame than its neighbours.
+- **Composition.**
+  - The reel with peeking cards, the toggle, the wipe and the alternating rooms add up to a clear, lively sequence.
+  - The dead white area between the lodge amenities and "Our rooms" is about a third of a screen at 1440 (frame 6) and appears again on the phone (frame 7 bottom).
+- **Typography.** Plus Jakarta Sans with Sacramento in teal. Sacramento is graceful at its size ("Choose your level", "The waves"). At small sizes and in teal it is thin.
+  - The lodge featureLine on the pool wipe sits left-aligned and runs right up to the wipe handle on the phone (frame 6).
+- **Colour.** Reef blue, white, tint and tangerine with white text. Cohesive, and the booking colour is strong.
+- **Hierarchy and rhythm.** It is no longer a component library. Each interaction now earns its place, with image bands in between.
+- **Polish.** The issues are the dead space above the rooms and the tight featureLine on the phone wipe. The footer, phone bar and buttons are good.
+- **Distinctiveness.** Medium. The hero now says "this reef", but the tuk-tuk, the run's most specific idea, has moved deeper into the loop.
+
+**Booking page (`/book/`).** The step pills, the big Sacramento "Your level", the 4:5 level cards with video frames and the sticky summary card with a tangerine total are clean and consistent with home. The level 2 and 3 card frames are greyish next to the bright home page.
+
+**Score: 8 / 10, pass.** It has the strongest first screen of the run and a clean, lively body. It is held from 9 by the empty bands, the thin script, and a middle that is good rather than memorable. It is about level with `the-sign` on the hero and below it on composure.
+
+**Better than the current site?**
+- First screen: **yes** (`interactive desktop-00` / `mobile-00` vs `current-site desktop-00` / `mobile-00`). Bright reef and one button against a murky palm still, at both widths now.
+- Whole page: **yes** (`interactive desktop-sheet` vs `current-site desktop-sheet`).
+
+**Remaining fixes**
+1. **Dead white band.** Remove the band between the lodge amenities and "Our rooms" (1440 and 390).
+2. **Pool-wipe featureLine on the phone.** Centre it and keep it inside the left half with margin, or move it under the wipe.
+3. **Brighten the frames.** Lift the level 1 reel frame and the `/book/` level 2–3 frames, or swap them for brighter moments, so they match the hero's brightness.
+
+**Keep:** the reef hero, the level reel, the borderless amenity list, the alternating rooms with thumb strips, the img-138 band, the closing card, the forecast pairing, the booking page's summary card, and the tangerine.
+
+---
+
+## 3 · unique, round 2 (scroll set-piece)
+
+**Three-second test.**
+- Desktop (`unique desktop-00.png`): a high aerial of the coast. Reef and whitewater on the left, the beach curving into palms, the coast road on the right, distant hills. "Your surf week starts here" in Literata reads cleanly over the calm water and reef, and the deep pool-blue button stands clear.
+  - In my 3 s probe the rise has moved over the palms and houses. The title still reads thanks to the local shade.
+- Phone (`unique mobile-sheet` frame 1, and the probe at 3 s): the coast at the poster, then the lodge itself, with white roofs and the blue pool under the title. Legible and sharp. It is the most "this place" first screen in the run.
+
+**Round-1 fixes re-checked**
+1. Hero legibility: **fixed** at both widths, and the button no longer blends into the water.
+2. Level 1 lead: **improved, not solved.** The backlit glare is gone, and it is now a guide and a laughing beginner in the whitewater (`desktop-01.png`). It is properly exposed, but grey-green, soft and low in contrast. It is still the dullest image in the largest slot on the second screen.
+3. Set-piece resolution and entry:
+   - **Resolution fixed.** In `desktop-05.png` (the img-062 mid-zoom on the lodge: road, roofs, pool and palm) the image is clean, with only slight softness and no blockiness.
+   - **Entry fixed.** In `desktop-sheet` frame 5 the plate now starts as a framed card that grows.
+   - The pool-on-pool hand-off to img-026 (frame 7) and the featureLine on the water (frame 8) remain the best sequence of the run.
+4. Phone set-piece: **mostly fixed.** The repeated titles are gone and "The lodge" heads its own text (frame 10). A white gap still shows above the pinned plate (frames 8–9).
+5. Rooms, dead area and forecast: **fixed.**
+   - The room gallery is full container width with the names as tabs, and the text is in two columns below (frames 10–11).
+   - The 8.6 Booking.com proof fills the space beside the levels intro.
+   - The fallback card is designed, and over http the widget renders beside "0.4–0.6 m | 7 s | 4 km/h" (probe).
+
+**Checklist**
+- **Media.** The business's own aerials lead, then the drop through its own lodge. img-099 is a full-bleed barrel band, img-129 the yoga silhouettes, and the night lodge with string lights makes the close (frame 14). Two weak points:
+  - the Level 1 frame;
+  - the booking drawer's header, which is the same Level 1 video frame blown up to about 820 px wide. It is soft and smeared (unique drawer probe at 1440).
+- **Composition.** It is the most editorial page: the 7/5 levels grid, the overlapping breakfast card on the tint, the three-plate drop, the full-width room viewer, the barrel band, the forecast split, the guests split, the night close, and the Instagram strip edge to edge. The levels grid is uneven (frame 3): Level 3's button floats lower than Level 1's.
+- **Typography.** Literata with Parisienne is the most tasteful pairing in the run and the closest to the old site's readable face plus handwritten titles. The drawer stacks two script titles ("Book your week", then "Your level"), which is one too many.
+- **Colour.** White, pale pool tint, green-black ink and a deep pool-blue button. Coherent, and of the place.
+- **Hierarchy and rhythm.** This is the best pacing of the three. The drop gives the page a centre, and the sections vary in scale.
+- **Polish.** Nearly clean. The remaining issues:
+  - the white gap before the phone plate;
+  - on the phone, a white stretch between the forecast card and a cropped sunset photo (frame 15);
+  - the soft drawer header.
+- **Distinctiveness.** High. The descent from the coast road onto this lodge's own pool belongs to no other business.
+
+**Score: 8.5 / 10, pass.** It is above `the-sign` at the drop, the barrel band and the night close, and level with it on the hero. It is kept from 9 by the dull Level 1 lead and the soft drawer header, the two images a buyer sees right before choosing.
+
+**Better than the current site?**
+- First screen: **yes** (`unique desktop-00` / `mobile-00` vs `current-site desktop-00` / `mobile-00`). The coast and then the lodge itself, bright and legible, against a murky palm still.
+- Whole page: **yes, clearly** (`unique desktop-sheet` vs `current-site desktop-sheet`). It has the same serif-plus-script character, far better photography, a real explanation of the place, and prices and rooms the old site never shows.
+
+**Remaining fixes**
+1. **Level 1 lead** (7-column slot and drawer header). Use a bright, sharp beginner moment: img-104, img-118, or the calm page's img-133 lesson on the sand. Show the drawer header at no more than its native width, or use a still photograph there.
+2. **Drawer.** Drop the second script title: keep "Book your week" and set "Your level" as a plain step label.
+3. **Phone gaps.** Close the white gap above the pinned plate and the gap between the forecast card and the guests photo (frames 8, 9 and 15). Align the level buttons on the 7/5 grid.
+
+**Keep:** everything listed in the round-1 keep list, plus the new coast poster, the deeper button, the 8.6 proof beside the intro, the full-width room viewer and the forecast pairing.
+
+---
+
+## Visual ranking, round 2 (quick mode, visual quality only)
+
+1. **unique: 8.5, pass.** It is the one page with portfolio moments: the descent onto the lodge's own pool, the barrel band and the night close. Only a dull Level 1 image and a soft drawer header keep it from 9.
+2. **interactive: 8, pass.** It has the brightest, cleanest first screen of the run (the reef aerial) and a lively body that is no longer a widget catalogue. Some empty bands remain.
+3. **calm: 8, pass (just).** It is clean and warm now, with a fine ink script and split layouts. It is the least distinctive of the three, and its phone hero is soft and crowded.
+
+All three are better than the current site, on the first screen and on the whole page. From the visual side, all three can go to the human pick, with the remaining fixes listed above.

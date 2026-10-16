@@ -1,0 +1,73 @@
+{
+ "taps": 6,
+ "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2027-01-23&end=2027-01-30&female=1&male=1&couple=0",
+ "log": [
+  {
+   "n": 0,
+   "label": "start",
+   "f": "book-00.jpg",
+   "url": "http://localhost:9753/",
+   "foot": [
+    "Footwear is discouraged. Chilling out is inescapable.",
+    "From $1,466 pp | 7 nights Book now"
+   ]
+  },
+  {
+   "n": 1,
+   "label": "hero CTA",
+   "f": "book-01.jpg",
+   "url": "http://localhost:9753/#book",
+   "foot": [
+    "Footwear is discouraged. Chilling out is inescapable.",
+    "Total for 1 guest $1,466 Continue booking"
+   ]
+  },
+  {
+   "n": 2,
+   "label": "Level 2",
+   "f": "book-02.jpg",
+   "url": "http://localhost:9753/#book",
+   "foot": [
+    "Footwear is discouraged. Chilling out is inescapable.",
+    "Total for 1 guest $1,466 Continue booking"
+   ]
+  },
+  {
+   "n": 3,
+   "label": "Twin",
+   "f": "book-03.jpg",
+   "url": "http://localhost:9753/#book",
+   "foot": [
+    "Footwear is discouraged. Chilling out is inescapable.",
+    "Total for 1 guest $1,606.04 Continue booking"
+   ]
+  },
+  {
+   "n": 4,
+   "label": "date select idx3",
+   "f": "book-04.jpg",
+   "url": "http://localhost:9753/#book",
+   "foot": [
+    "Footwear is discouraged. Chilling out is inescapable.",
+    "Total for 1 guest $1,606.04 Continue booking"
+   ]
+  },
+  {
+   "n": 5,
+   "label": "+1 man",
+   "f": "book-05.jpg",
+   "url": "http://localhost:9753/#book",
+   "foot": [
+    "Footwear is discouraged. Chilling out is inescapable.",
+    "Total for 2 guests $3,212.08 Continue booking"
+   ]
+  },
+  {
+   "n": 6,
+   "label": "Continue booking",
+   "f": "book-06.jpg",
+   "url": "chrome-error://chromewebdata/",
+   "foot": []
+  }
+ ]
+}

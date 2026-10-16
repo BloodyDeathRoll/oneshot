@@ -1,0 +1,3134 @@
+{
+ "name": "interactive",
+ "url": "http://localhost:9732/",
+ "runs": {
+  "phone": {
+   "timeline": [
+    {
+     "at": 500,
+     "actual": 1293,
+     "f": "phone-cold-500ms.jpg",
+     "y": 0,
+     "H": 13170,
+     "vids": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar",
+       "top": 851,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Surf weeks in Sri Lanka"
+     ],
+     "ovx": 0
+    },
+    {
+     "at": 1500,
+     "actual": 1558,
+     "f": "phone-cold-1500ms.jpg",
+     "y": 0,
+     "H": 13170,
+     "vids": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar",
+       "top": 851,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Surf weeks in Sri Lanka"
+     ],
+     "ovx": 0
+    },
+    {
+     "at": 3000,
+     "actual": 3058,
+     "f": "phone-cold-3000ms.jpg",
+     "y": 0,
+     "H": 13170,
+     "vids": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar",
+       "top": 851,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Surf weeks in Sri Lanka"
+     ],
+     "ovx": 0
+    },
+    {
+     "at": 6000,
+     "actual": 6042,
+     "f": "phone-cold-6000ms.jpg",
+     "y": 0,
+     "H": 13170,
+     "vids": [
+      {
+       "cls": "on",
+       "src": "ride-p810.webm",
+       "t": 2.2,
+       "paused": false,
+       "ready": 2,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar",
+       "top": 851,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Surf weeks in Sri Lanka"
+     ],
+     "ovx": 0
+    }
+   ],
+   "walk": [
+    {
+     "f": "phone-walk-00.jpg",
+     "y": 0,
+     "H": 13170,
+     "vids": [
+      {
+       "cls": "on",
+       "src": "ride-p810.webm",
+       "t": 2.2,
+       "paused": false,
+       "ready": 2,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar",
+       "top": 851,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Surf weeks in Sri Lanka"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-01.jpg",
+     "y": 506,
+     "H": 13170,
+     "vids": [
+      {
+       "cls": "on",
+       "src": "ride-p810.webm",
+       "t": 2.37,
+       "paused": false,
+       "ready": 4,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "level-1.webm",
+       "t": 0,
+       "paused": false,
+       "ready": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar",
+       "top": 851,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Choose your level"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-02.jpg",
+     "y": 1013,
+     "H": 13170,
+     "vids": [
+      {
+       "cls": "on",
+       "src": "level-1.webm",
+       "t": 0.32,
+       "paused": false,
+       "ready": 3,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Level 1 – Fomies",
+      "Level 2 – Rollers",
+      "Level 3 – Riders",
+      "Freestylers – B&B only"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-03.jpg",
+     "y": 1519,
+     "H": 13170,
+     "vids": [
+      {
+       "cls": "on",
+       "src": "level-1.webm",
+       "t": 0.81,
+       "paused": false,
+       "ready": 3,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "What's included"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-04.jpg",
+     "y": 2026,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "What's included"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-05.jpg",
+     "y": 2532,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-06.jpg",
+     "y": 3038,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-07.jpg",
+     "y": 3545,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "The lodge"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-08.jpg",
+     "y": 4051,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "The lodge"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-09.jpg",
+     "y": 4558,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Our rooms"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-10.jpg",
+     "y": 5064,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Our rooms",
+      "Mixed dorm room – 4 beds"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-11.jpg",
+     "y": 5570,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Mixed dorm room – 4 beds"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-12.jpg",
+     "y": 6077,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Shared Twin Room – 2 Beds"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-13.jpg",
+     "y": 6583,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Shared Twin Room – 2 Beds"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-14.jpg",
+     "y": 7090,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Deluxe double room"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-15.jpg",
+     "y": 7596,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-16.jpg",
+     "y": 8102,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "The waves"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-17.jpg",
+     "y": 8609,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-18.jpg",
+     "y": 9115,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "What guests say"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-19.jpg",
+     "y": 9622,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "What guests say"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-20.jpg",
+     "y": 10128,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-21.jpg",
+     "y": 10634,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-22.jpg",
+     "y": 11141,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Follow the lodge"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-23.jpg",
+     "y": 11647,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Talk to us"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "phone-walk-24.jpg",
+     "y": 12154,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Talk to us",
+      "Getting here",
+      "Follow"
+     ],
+     "ovx": 0
+    }
+   ],
+   "hosts": [
+    "localhost:9732",
+    "rosa.surf",
+    "fonts.googleapis.com",
+    "rosa-data-opal.vercel.app",
+    "fonts.gstatic.com",
+    "server.arcgisonline.com"
+   ],
+   "bytes": 3708626
+  },
+  "laptop": {
+   "timeline": [
+    {
+     "at": 500,
+     "actual": 534,
+     "f": "laptop-cold-500ms.jpg",
+     "y": 0,
+     "H": 11143,
+     "vids": [
+      {
+       "cls": "on",
+       "src": "ride-d1728.webm",
+       "t": 0.36,
+       "paused": false,
+       "ready": 4,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "Surf weeks in Sri Lanka"
+     ],
+     "ovx": 0
+    },
+    {
+     "at": 1500,
+     "actual": 1528,
+     "f": "laptop-cold-1500ms.jpg",
+     "y": 0,
+     "H": 11143,
+     "vids": [
+      {
+       "cls": "on",
+       "src": "ride-d1728.webm",
+       "t": 1.35,
+       "paused": false,
+       "ready": 4,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "Surf weeks in Sri Lanka"
+     ],
+     "ovx": 0
+    },
+    {
+     "at": 3000,
+     "actual": 3031,
+     "f": "laptop-cold-3000ms.jpg",
+     "y": 0,
+     "H": 11143,
+     "vids": [
+      {
+       "cls": "on",
+       "src": "ride-d1728.webm",
+       "t": 2.85,
+       "paused": false,
+       "ready": 4,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "Surf weeks in Sri Lanka"
+     ],
+     "ovx": 0
+    },
+    {
+     "at": 6000,
+     "actual": 6027,
+     "f": "laptop-cold-6000ms.jpg",
+     "y": 0,
+     "H": 11143,
+     "vids": [
+      {
+       "cls": "on",
+       "src": "ride-d1728.webm",
+       "t": 5.85,
+       "paused": false,
+       "ready": 4,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "Surf weeks in Sri Lanka"
+     ],
+     "ovx": 0
+    }
+   ],
+   "walk": [
+    {
+     "f": "laptop-walk-00.jpg",
+     "y": 0,
+     "H": 11143,
+     "vids": [
+      {
+       "cls": "on",
+       "src": "ride-d1728.webm",
+       "t": 5.85,
+       "paused": false,
+       "ready": 4,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "Surf weeks in Sri Lanka"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "laptop-walk-01.jpg",
+     "y": 540,
+     "H": 11143,
+     "vids": [
+      {
+       "cls": "on",
+       "src": "ride-d1728.webm",
+       "t": 6.7,
+       "paused": false,
+       "ready": 4,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      },
+      {
+       "cls": "on",
+       "src": "level-2.webm",
+       "t": 0.79,
+       "paused": false,
+       "ready": 4,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "Choose your level"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "laptop-walk-02.jpg",
+     "y": 1080,
+     "H": 11143,
+     "vids": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      },
+      {
+       "cls": "on",
+       "src": "level-2.webm",
+       "t": 1.68,
+       "paused": false,
+       "ready": 4,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "Choose your level",
+      "Level 1 – Fomies",
+      "Level 2 – Rollers",
+      "Level 3 – Riders",
+      "Freestylers – B&B only"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "laptop-walk-03.jpg",
+     "y": 1620,
+     "H": 11143,
+     "vids": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      },
+      {
+       "cls": "on",
+       "src": "level-2.webm",
+       "t": 2.53,
+       "paused": false,
+       "ready": 4,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "Level 1 – Fomies",
+      "Level 2 – Rollers",
+      "Level 3 – Riders",
+      "Freestylers – B&B only",
+      "What's included"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "laptop-walk-04.jpg",
+     "y": 2160,
+     "H": 11143,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "What's included"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "laptop-walk-05.jpg",
+     "y": 2700,
+     "H": 11143,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "laptop-walk-06.jpg",
+     "y": 3240,
+     "H": 11143,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "The lodge"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "laptop-walk-07.jpg",
+     "y": 3780,
+     "H": 11143,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "The lodge",
+      "Our rooms"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "laptop-walk-08.jpg",
+     "y": 4320,
+     "H": 11143,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "Our rooms",
+      "Mixed dorm room – 4 beds"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "laptop-walk-09.jpg",
+     "y": 4860,
+     "H": 11143,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "Mixed dorm room – 4 beds",
+      "Shared Twin Room – 2 Beds"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "laptop-walk-10.jpg",
+     "y": 5400,
+     "H": 11143,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "Shared Twin Room – 2 Beds",
+      "Deluxe double room"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "laptop-walk-11.jpg",
+     "y": 5940,
+     "H": 11143,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "Deluxe double room"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "laptop-walk-12.jpg",
+     "y": 6480,
+     "H": 11143,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "laptop-walk-13.jpg",
+     "y": 7020,
+     "H": 11143,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "The waves"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "laptop-walk-14.jpg",
+     "y": 7560,
+     "H": 11143,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "The waves",
+      "What guests say"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "laptop-walk-15.jpg",
+     "y": 8100,
+     "H": 11143,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "What guests say"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "laptop-walk-16.jpg",
+     "y": 8640,
+     "H": 11143,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "laptop-walk-17.jpg",
+     "y": 9180,
+     "H": 11143,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "Follow the lodge"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "laptop-walk-18.jpg",
+     "y": 9720,
+     "H": 11143,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "Follow the lodge"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "laptop-walk-19.jpg",
+     "y": 10243,
+     "H": 11143,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 76
+      }
+     ],
+     "h": [
+      "Talk to us",
+      "Getting here",
+      "Follow"
+     ],
+     "ovx": 0
+    }
+   ],
+   "hosts": [
+    "localhost:9732",
+    "rosa.surf",
+    "fonts.googleapis.com",
+    "rosa-data-opal.vercel.app",
+    "fonts.gstatic.com",
+    "server.arcgisonline.com"
+   ],
+   "bytes": 5273086
+  },
+  "reduced": {
+   "timeline": [],
+   "walk": [
+    {
+     "f": "reduced-walk-00.jpg",
+     "y": 0,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar",
+       "top": 851,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Surf weeks in Sri Lanka"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-01.jpg",
+     "y": 506,
+     "H": 13170,
+     "vids": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar",
+       "top": 851,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Choose your level"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-02.jpg",
+     "y": 1013,
+     "H": 13170,
+     "vids": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Level 1 – Fomies",
+      "Level 2 – Rollers",
+      "Level 3 – Riders",
+      "Freestylers – B&B only"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-03.jpg",
+     "y": 1519,
+     "H": 13170,
+     "vids": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "What's included"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-04.jpg",
+     "y": 2026,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "What's included"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-05.jpg",
+     "y": 2532,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-06.jpg",
+     "y": 3038,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-07.jpg",
+     "y": 3545,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "The lodge"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-08.jpg",
+     "y": 4051,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "The lodge"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-09.jpg",
+     "y": 4558,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Our rooms"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-10.jpg",
+     "y": 5064,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Our rooms",
+      "Mixed dorm room – 4 beds"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-11.jpg",
+     "y": 5570,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Mixed dorm room – 4 beds"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-12.jpg",
+     "y": 6077,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Shared Twin Room – 2 Beds"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-13.jpg",
+     "y": 6583,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Shared Twin Room – 2 Beds"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-14.jpg",
+     "y": 7090,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Deluxe double room"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-15.jpg",
+     "y": 7596,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-16.jpg",
+     "y": 8102,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "The waves"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-17.jpg",
+     "y": 8609,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-18.jpg",
+     "y": 9115,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "What guests say"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-19.jpg",
+     "y": 9622,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "What guests say"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-20.jpg",
+     "y": 10128,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-21.jpg",
+     "y": 10634,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-22.jpg",
+     "y": 11141,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Follow the lodge"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-23.jpg",
+     "y": 11647,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Talk to us"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "reduced-walk-24.jpg",
+     "y": 12154,
+     "H": 13170,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      },
+      {
+       "tag": "HEADER",
+       "cls": "hd solid",
+       "top": 0,
+       "h": 64
+      },
+      {
+       "tag": "DIV",
+       "cls": "pbar on",
+       "top": 772,
+       "h": 72
+      }
+     ],
+     "h": [
+      "Talk to us",
+      "Getting here",
+      "Follow"
+     ],
+     "ovx": 0
+    }
+   ],
+   "hosts": [
+    "localhost:9732",
+    "rosa.surf",
+    "fonts.googleapis.com",
+    "rosa-data-opal.vercel.app",
+    "fonts.gstatic.com",
+    "server.arcgisonline.com"
+   ],
+   "bytes": 1572794
+  },
+  "nojs": {
+   "timeline": [],
+   "walk": [
+    {
+     "f": "nojs-walk-00.jpg",
+     "y": 0,
+     "H": 13034,
+     "vids": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [
+      "Surf weeks in Sri Lanka"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-01.jpg",
+     "y": 506,
+     "H": 13034,
+     "vids": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [
+      "Choose your level"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-02.jpg",
+     "y": 1013,
+     "H": 13034,
+     "vids": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [
+      "Level 1 – Fomies",
+      "Level 2 – Rollers",
+      "Level 3 – Riders",
+      "Freestylers – B&B only"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-03.jpg",
+     "y": 1519,
+     "H": 13034,
+     "vids": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      },
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      }
+     ],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [
+      "What's included"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-04.jpg",
+     "y": 2026,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [
+      "What's included"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-05.jpg",
+     "y": 2532,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-06.jpg",
+     "y": 3038,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-07.jpg",
+     "y": 3545,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [
+      "The lodge"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-08.jpg",
+     "y": 4051,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [
+      "The lodge"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-09.jpg",
+     "y": 4558,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-10.jpg",
+     "y": 5064,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [
+      "Our rooms"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-11.jpg",
+     "y": 5570,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [
+      "Mixed dorm room – 4 beds"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-12.jpg",
+     "y": 6077,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [
+      "Shared Twin Room – 2 Beds"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-13.jpg",
+     "y": 6583,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [
+      "Shared Twin Room – 2 Beds"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-14.jpg",
+     "y": 7090,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [
+      "Deluxe double room"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-15.jpg",
+     "y": 7596,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-16.jpg",
+     "y": 8102,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [
+      "The waves"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-17.jpg",
+     "y": 8609,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [
+      "The waves"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-18.jpg",
+     "y": 9115,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [
+      "What guests say"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-19.jpg",
+     "y": 9622,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-20.jpg",
+     "y": 10128,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-21.jpg",
+     "y": 10634,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [
+      "Follow the lodge"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-22.jpg",
+     "y": 11141,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [
+      "Follow the lodge"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-23.jpg",
+     "y": 11647,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [
+      "Talk to us",
+      "Getting here"
+     ],
+     "ovx": 0
+    },
+    {
+     "f": "nojs-walk-24.jpg",
+     "y": 12154,
+     "H": 13034,
+     "vids": [],
+     "fixed": [
+      {
+       "tag": "A",
+       "cls": "skip",
+       "top": -98,
+       "h": 55
+      }
+     ],
+     "h": [
+      "Getting here",
+      "Follow"
+     ],
+     "ovx": 0
+    }
+   ],
+   "hosts": [
+    "localhost:9732"
+   ],
+   "bytes": 1387995
+  }
+ }
+}
