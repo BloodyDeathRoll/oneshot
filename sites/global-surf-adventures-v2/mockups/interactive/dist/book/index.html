@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Book your surf week | Global Surf Lodge Kabalana</title>
+<meta name="description" content="Surf weeks for all levels on Sri Lanka&#x27;s south coast, a few steps from the ocean.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&family=Sacramento&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ground:#fff; --tint:#EDF1F4; --ink:#06200E; --ink2:#3F5246; --place:#00799E; --book:#BF4A0E; --book-d:#A13E0B;
+  --wa:#1FA855;
+  --sans:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif; --script:"Sacramento",cursive;
+  --max:1240px; --gut:clamp(20px,4vw,48px); --r:18px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:84px}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 17px/1.6 var(--sans)}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3,p{margin:0}
+.ic{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.script{font:400 clamp(54px,5.4vw,78px)/1 var(--script);color:var(--place);letter-spacing:0}
+.lead{font-size:18px;color:var(--ink2);max-width:60ch}
+.small{font-size:14px;color:var(--ink2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 26px;border-radius:999px;border:0;font:600 16px/1 var(--sans);text-decoration:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;white-space:nowrap}
+.btn-book{background:var(--book);color:#fff}
+.btn-book:hover{background:var(--book-d)}
+.btn-soft{background:#fff;color:var(--ink);box-shadow:0 4px 18px rgba(6,32,14,.09)}
+.btn-soft:hover{box-shadow:0 6px 22px rgba(6,32,14,.16)}
+.btn-tint{background:var(--tint);color:var(--ink)}
+.btn-tint:hover{background:#e1e8ed}
+.btn .wa{color:var(--wa)}
+.btn:active{transform:scale(.98)}
+:focus-visible{outline:3px solid var(--place);outline-offset:3px}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* header */
+.hd{position:fixed;inset:0 0 auto 0;z-index:30;display:flex;align-items:center;gap:32px;height:76px;padding:0 var(--gut);color:#fff;transition:background .25s,color .25s,box-shadow .25s}
+.hd .logo{display:block;width:146px;height:50px;color:inherit}
+.hd .logo svg{width:100%;height:100%;fill:currentColor}
+.hd nav{margin-left:auto;display:flex;gap:30px}
+.hd nav a{font:600 15px/1 var(--sans);text-decoration:none;padding:14px 0;text-shadow:0 1px 12px rgba(0,0,0,.35)}
+.hd:not(.solid) .logo svg,.hd:not(.solid) .menu svg{filter:drop-shadow(0 1px 8px rgba(0,0,0,.3))}
+.hd.solid nav a{text-shadow:none}
+.hd .hd-book{display:none}
+.hd.solid{background:#fff;color:var(--ink);box-shadow:0 6px 24px rgba(6,32,14,.07)}
+.hd.solid .hd-book{display:inline-flex;min-height:44px}
+.hd .menu{display:none}
+.sheet{position:fixed;inset:64px 0 auto 0;z-index:29;background:#fff;padding:12px var(--gut) 24px;box-shadow:0 18px 30px rgba(6,32,14,.12);display:none}
+.sheet.open{display:block}
+.sheet a:not(.btn){display:block;padding:14px 0;font-weight:600;font-size:18px;text-decoration:none}
+.sheet .btn{margin-top:10px;width:100%}
+@media (max-width:860px){
+  .hd{height:64px}
+  .hd .logo{width:120px;height:41px}
+  .hd nav{display:none}
+  .hd .menu{display:inline-flex;margin-left:auto;width:44px;height:44px;align-items:center;justify-content:center;background:none;border:0;color:inherit;cursor:pointer}
+  .hd.solid .hd-book{display:none}
+  html{scroll-padding-top:70px}
+}
+
+/* footer */
+.ft{background:var(--tint);padding:84px 0 28px}
+.ft .wrap{display:grid;grid-template-columns:1.1fr 1.2fr .8fr;gap:56px}
+.ft .logo{display:block;width:150px;height:52px;color:var(--ink);margin-bottom:22px}
+.ft .logo svg{width:100%;height:100%;fill:currentColor}
+.ft h2{font:600 15px/1.2 var(--sans);margin-bottom:16px}
+.ft .acts{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.ft address{font-style:normal}
+.ft .facts{margin-top:12px;font-size:15px;color:var(--ink2)}
+.ft .facts p+p{margin-top:8px}
+.ft .soc{display:flex;gap:10px}
+.ft .soc a{width:48px;height:48px;border-radius:50%;background:#fff;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(6,32,14,.07)}
+.ft .legal{grid-column:1/-1;margin-top:28px;font-size:13px;color:var(--ink2);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media (max-width:860px){ .ft{padding:64px 0 110px} .ft .wrap{grid-template-columns:1fr;gap:40px} }
+
+@media (prefers-reduced-motion:reduce){ *{transition:none!important;animation:none!important;scroll-behavior:auto!important} }
+
+.bk-hd{justify-content:space-between}
+.bk-hd .menu{display:none!important}
+.hd-wa{min-height:44px;padding:0 18px}
+@media (max-width:600px){ .hd-wa span{display:none} .hd-wa{padding:0;width:44px} }
+.bk{padding:116px var(--gut) 120px;max-width:1320px;margin:0 auto}
+.bk-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:64px;align-items:start}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:34px}
+.pills button{border:0;border-radius:999px;background:var(--tint);color:var(--ink2);font:600 14px/1 var(--sans);min-height:40px;padding:0 16px;cursor:pointer}
+.pills button[aria-current="step"]{background:var(--ink);color:#fff}
+.pills button.done{color:var(--ink)}
+.step+.step{margin-top:80px}
+.js .step{display:none;margin-top:0}
+.js .step.cur{display:block;animation:fade .2s ease-out}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.step-n{font-weight:600;font-size:14px;color:var(--ink2)}
+.step h1,.step h2.script{margin:6px 0 30px;outline:none}
+.tiles{display:grid;gap:20px}
+.t3{grid-template-columns:repeat(3,1fr)}
+.tile{position:relative;display:flex;flex-direction:column;border-radius:var(--r);background:#fff;box-shadow:0 10px 34px rgba(6,32,14,.10);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.tile:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(6,32,14,.15)}
+.tile input{position:absolute;opacity:0;pointer-events:none}
+.tile img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.rooms .tile img{aspect-ratio:3/2}
+.tile .tt{display:flex;flex-direction:column;gap:6px;padding:18px 20px 20px;font-size:15px;color:var(--ink2)}
+.tile .tt b{color:var(--ink);font-size:18px;line-height:1.25}
+.tile .tt em{font-style:normal;font-weight:600;color:var(--ink);margin-top:4px}
+.tile:has(input:checked){box-shadow:0 0 0 3px var(--place),0 16px 40px rgba(6,32,14,.15)}
+.tile:has(input:focus-visible){outline:3px solid var(--place);outline-offset:4px}
+.tile .sel{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.18)}
+.tile:has(input:checked) .sel{background:var(--place)}
+.tile .seep{align-self:flex-start;margin:0 20px 20px;min-height:44px;font-size:14px}
+.tile.off{opacity:.5}
+.notsure{display:flex;align-items:center;gap:16px;margin-top:20px;padding:18px 22px;border-radius:var(--r);background:var(--tint);text-decoration:none}
+.notsure .ic{width:30px;height:30px;color:var(--wa)}
+.notsure span span{display:block;font-size:14px;color:var(--ink2)}
+.inc-box{margin-top:40px}
+.inc-box h2{font:600 18px/1.2 var(--sans);margin-bottom:16px}
+.inc-box .ilist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;font-size:15px}
+.inc-box li{display:flex;gap:10px;align-items:center}
+.inc-box .ic{color:var(--place)}
+.lab{font-weight:600;margin:26px 0 12px}
+.chips{display:flex;flex-direction:column;gap:18px}
+.chips-m p{font-size:14px;color:var(--ink2);margin-bottom:8px}
+.chips-m div{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:44px;min-width:76px;padding:0 16px;border-radius:999px;border:0;background:var(--tint);color:var(--ink);font:600 15px/1 var(--sans);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--place);color:#fff}
+.chip:disabled{opacity:.4;cursor:default;text-decoration:line-through}
+.chips-on #w-start{display:none}
+.chips-on .chips+.fl+.help{margin-top:12px}
+.fl{position:relative;max-width:360px}
+.fl select{width:100%;min-height:58px;padding:24px 16px 8px;border:0;border-radius:14px;background:var(--tint);font:400 16px/1.2 var(--sans);color:var(--ink);appearance:none}
+.fl label{position:absolute;left:16px;top:9px;font-size:12px;font-weight:600;color:var(--ink2);pointer-events:none}
+.help{margin-top:8px}
+.seg{display:inline-flex;gap:6px;background:var(--tint);padding:5px;border-radius:999px}
+.seg label{position:relative}
+.seg input{position:absolute;opacity:0}
+.seg span{display:inline-flex;align-items:center;justify-content:center;min-width:64px;min-height:44px;border-radius:999px;font-weight:600;cursor:pointer}
+.seg input:checked+span{background:#fff;box-shadow:0 2px 10px rgba(6,32,14,.12)}
+.seg input:focus-visible+span{outline:3px solid var(--place)}
+.steppers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:620px}
+.stp{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;background:var(--tint);border-radius:16px;padding:30px 8px 10px;position:relative}
+.stp label{position:absolute;top:10px;left:0;right:0;text-align:center;font-size:13px;font-weight:600;color:var(--ink2)}
+.stp input{width:100%;border:0;background:none;text-align:center;font:600 20px/1 var(--sans);color:var(--ink);-moz-appearance:textfield}
+.stp input::-webkit-inner-spin-button{display:none}
+.sb{width:44px;height:44px;border-radius:50%;border:0;background:#fff;font:600 20px/1 var(--sans);color:var(--ink);cursor:pointer;box-shadow:0 2px 8px rgba(6,32,14,.08)}
+.next{margin-top:34px}
+.btn-lg{min-height:58px;padding:0 36px;font-size:17px}
+
+/* ticket */
+.side{position:sticky;top:100px}
+.ticket{background:#fff;border-radius:22px;padding:26px 26px 22px;box-shadow:0 18px 50px rgba(6,32,14,.13)}
+.ticket dl{margin:0;display:flex;flex-direction:column;gap:12px}
+.ticket dl div{display:flex;justify-content:space-between;gap:16px;font-size:15px}
+.ticket dt{color:var(--ink2)}
+.ticket dd{margin:0;font-weight:600;text-align:right}
+.ticket .tot{margin:8px -14px 0;padding:14px;background:var(--tint);border-radius:14px;font-size:18px;align-items:center}
+.ticket .tot dd{color:var(--book);font-size:22px}
+.ticket .small{margin-top:16px}
+.final{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center}
+.final-photo{grid-column:1/2;grid-row:1;border-radius:var(--r);overflow:hidden;aspect-ratio:4/5}
+.final-photo img{width:100%;height:100%;object-fit:cover}
+.ticket.big{grid-column:2/3;grid-row:1;margin-left:-70px;padding:34px 34px 28px}
+.ticket.big:empty{display:none}
+.ticket.big dl div{font-size:17px}
+.go{margin-top:34px;display:flex;flex-direction:column;align-items:flex-start;gap:12px;max-width:620px}
+
+.js-total .side{visibility:hidden}
+.pnext{display:none}
+.nojs .js-only{display:none!important}
+@media (max-width:1000px){
+  .bk-grid{grid-template-columns:1fr}
+  .side{display:none}
+  .js .pnext{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:20;align-items:center;justify-content:space-between;gap:12px;padding:12px var(--gut) calc(12px + env(safe-area-inset-bottom));background:#fff;box-shadow:0 -8px 26px rgba(6,32,14,.1)}
+  .pnext span{display:flex;flex-direction:column;line-height:1.2}
+  .pnext small{font-size:13px;color:var(--ink2)}
+  .pnext b{font-size:19px}
+  .bk{padding-bottom:140px}
+}
+@media (max-width:760px){
+  .bk{padding-top:96px}
+  .t3{grid-template-columns:1fr}
+  #s-level .tile{flex-direction:row}
+  #s-level .tile img{width:38%;aspect-ratio:4/5;flex:none}
+  .inc-box .ilist{grid-template-columns:1fr}
+  .steppers{grid-template-columns:1fr}
+  .final{grid-template-columns:1fr}
+  .final-photo{grid-row:1;width:70%;margin:0 auto}
+  .ticket.big{grid-column:1;grid-row:2;margin:-90px 0 0}
+}
+.js-total .bk-grid{grid-template-columns:minmax(0,1fr)}
+.js-total .side{display:none}
+.js-total .qs{max-width:980px;margin:0 auto;width:100%}
+.ticket dl div{min-width:0}
+.ticket dt{flex:none}
+.ticket dd{min-width:0;overflow-wrap:anywhere}
+@media (max-width:760px){ .final{grid-template-columns:minmax(0,1fr)} .ticket.big{padding:24px 22px 20px} .ticket.big dl div{font-size:15px} .bk-grid{grid-template-columns:minmax(0,1fr)} }
+.nojs-go{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+@media (max-width:600px){ .pills{flex-wrap:nowrap;gap:6px} .pills button{padding:0 12px;font-size:13px} }
+.arr{width:52px;height:52px;border-radius:50%;border:0;background:var(--tint);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s}
+.arr:hover{background:#dfe7ec}
+.arr[disabled]{opacity:.35;cursor:default}
+.dots{display:flex;gap:4px}
+.dots button{width:28px;height:44px;border:0;background:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0}
+.dots button::after{content:"";width:9px;height:9px;border-radius:50%;background:#c3ced5;transition:background .2s,width .25s}
+.dots button[aria-current="true"]::after{background:var(--place);width:24px;border-radius:5px}
+/* gallery dialog */
+dialog.gal{width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#fff;color:var(--ink)}
+dialog.gal::backdrop{background:rgba(6,32,14,.4)}
+.gal-in{display:grid;grid-template-rows:auto 1fr auto;height:100%}
+.gal-top{display:flex;justify-content:space-between;align-items:center;padding:12px var(--gut)}
+.gal-top h2{font:600 18px/1.2 var(--sans)}
+.gal-x{width:48px;height:48px;border-radius:50%;border:0;background:var(--tint);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.gal-stage{position:relative;min-height:0;display:flex;align-items:center}
+.gal-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;width:100%;height:100%}
+.gal-track::-webkit-scrollbar{display:none}
+.gal-track figure{flex:0 0 100%;scroll-snap-align:center;margin:0;display:flex;align-items:center;justify-content:center;padding:0 var(--gut)}
+.gal-track img{max-height:100%;width:auto;max-width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px}
+.gal-stage .arr{position:absolute;top:50%;margin-top:-26px;background:#fff;box-shadow:0 6px 20px rgba(0,0,0,.16)}
+.gal-stage .prev{left:calc(var(--gut) + 12px)}
+.gal-stage .next{right:calc(var(--gut) + 12px)}
+.gal-foot{display:grid;grid-template-columns:1fr auto;gap:10px 30px;align-items:center;padding:16px var(--gut) 22px;max-width:var(--max);width:100%;margin:0 auto}
+.gal-foot .dots{grid-column:1/-1;justify-content:center}
+.gal-foot p{color:var(--ink2);font-size:15px}
+.gal-foot .t{color:var(--ink);font-weight:600}
+dialog.gal[open]{animation:gal-in .3s ease-out}
+@keyframes gal-in{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+@media (max-width:700px){ .gal-foot{grid-template-columns:1fr} .gal-stage .arr{display:none} .gal-track figure{padding:0} .gal-track img{border-radius:0} }
+
+
+</style>
+<script>document.documentElement.className='js'</script>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<defs>
+<symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18V7M3 14h18v4M21 14v-2.5A2.5 2.5 0 0 0 18.5 9H11v5M6.5 11.5a1.5 1.5 0 1 0 0-.01"/></symbol>
+<symbol id="i-bowl" viewBox="0 0 24 24"><path d="M3 11h18a9 9 0 0 1-18 0zM9 7c0-1.5 1.5-1.5 1.5-3M13.5 7c0-1.5 1.5-1.5 1.5-3"/></symbol>
+<symbol id="i-plate" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="3.5"/><path d="M2.5 4v6M2.5 13v7M21.5 4c-1.5 1-1.5 5 0 7v9"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5C7 4 9.5 4 12 6c2.5-2 5-2 8-.5V19c-3-1.5-5.5-1.5-8 .5-2.5-2-5-2-8-.5zM12 6v13.5"/></symbol>
+<symbol id="i-board" viewBox="0 0 24 24"><path d="M17.5 3.5c2.5 2.5-1 10-5 14s-7.5 4.5-9 3 0-5 4-9 7.5-10.5 10-8zM9 15l4-4"/></symbol>
+<symbol id="i-van" viewBox="0 0 24 24"><path d="M3 16V8.5A2.5 2.5 0 0 1 5.5 6H14l4 4h1.5A1.5 1.5 0 0 1 21 11.5V16h-2M3 16h2.5M10.5 16h4"/><circle cx="8" cy="16.5" r="2"/><circle cx="17" cy="16.5" r="2"/><path d="M5 4.5h10"/></symbol>
+<symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4 3 6.5v13.5L9 17.5l6 2.5 6-2.5V4l-6 2.5zM9 4v13.5M15 6.5V20"/></symbol>
+<symbol id="i-water" viewBox="0 0 24 24"><path d="M12 3.5s-6 6.5-6 10.5a6 6 0 0 0 12 0c0-4-6-10.5-6-10.5z"/></symbol>
+<symbol id="i-cup" viewBox="0 0 24 24"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM17 10.5h1.5a2.5 2.5 0 0 1 0 5H17M8 3.5c0 1.5 1.5 1.5 1.5 3M12 3.5c0 1.5 1.5 1.5 1.5 3"/></symbol>
+<symbol id="i-pool" viewBox="0 0 24 24"><path d="M3 17c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 3-1 4.5 0M3 20.5c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 3-1 4.5 0M8 14V5a2 2 0 0 1 4 0M16 14V5a2 2 0 0 0-4 0M8 9h8"/></symbol>
+<symbol id="i-yoga" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 8v6M5 11l7-1 7 1M7 19.5c2-1.5 3-3 5-5.5 2 2.5 3 4 5 5.5M4 19.5h16"/></symbol>
+<symbol id="i-ice" viewBox="0 0 24 24"><path d="M12 2.5v19M4 7l16 10M20 7 4 17M9.5 4 12 6l2.5-2M9.5 20l2.5-2 2.5 2"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-glass" viewBox="0 0 24 24"><path d="M6 3.5h12l-5 7.5v8M9 20.5h8M8 7h8"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19C5 10 10 5 20 4c-1 10-6 15-15 15zM5 19l8-8"/></symbol>
+<symbol id="i-laptop" viewBox="0 0 24 24"><path d="M5 6h14v10H5zM3 19h18"/></symbol>
+<symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2.5 9a14 14 0 0 1 19 0M5.5 12.5a9.5 9.5 0 0 1 13 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r=".8"/></symbol>
+<symbol id="i-plane" viewBox="0 0 24 24"><path d="M2.5 13.5 21 7.5c.8 1.5-.2 3-1.8 3.4L6 15l-3.5-1.5zM9 9.5 6.5 5H9l5 3M7 20.5h10"/></symbol>
+<symbol id="i-park" viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17" rx="3"/><path d="M10 16.5V8h3a2.5 2.5 0 0 1 0 5h-3"/></symbol>
+<symbol id="i-nosmoke" viewBox="0 0 24 24"><path d="M3 13h13v3H3zM19 13v3M21.5 13v3M3.5 4l17 16"/></symbol>
+<symbol id="i-palm" viewBox="0 0 24 24"><path d="M12 21c0-5 .5-9 2-12M14 9c-2-3-6-3.5-8.5-1.5M14 9c1-3 4.5-4.5 7-3M14 9c3-.5 5.5 1.5 6 4M14 9c-2.5 0-5 2-5.5 5M7 21h10"/></symbol>
+<symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.4 4.8 4.9-1.3A9.8 9.8 0 1 0 12 2.2zm0 17.9a8.1 8.1 0 0 1-4.2-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.1 8.1 0 1 1 12 20.1zm4.5-6c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.3z"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16.5 16.5 0 0 1 4.5 5.5a2 2 0 0 1 2-2z"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m4 7 8 6 8-6"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+<symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".9" fill="currentColor"/></symbol>
+<symbol id="i-yt" viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="m10 9 5 3-5 3z" fill="currentColor"/></symbol>
+<symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 8.5h2.5V5H14a4 4 0 0 0-4 4v2H7.5v3.5H10V21h3.5v-6.5H16l.5-3.5h-3V9.5a1 1 0 0 1 1-1z"/></symbol>
+<symbol id="i-l" viewBox="0 0 24 24"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></symbol>
+<symbol id="i-r" viewBox="0 0 24 24"><path d="m9.5 5.5 6.5 6.5-6.5 6.5"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></symbol>
+<symbol id="i-drag" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></symbol>
+</defs>
+</svg>
+
+<header class="hd solid bk-hd">
+  <a class="logo" href="../" aria-label="Global Surf Lodge Kabalana, home"><svg viewBox="0 0 257.2 88.8" aria-hidden="true"><path d="M33.1,33v3.7h-4.5v-3.9c0-3.9-1.5-6.200-5-6.2c-3.4,0-5,2.3-5,6.2v22.7c0,3.9,1.6,6.2,5,6.2c3.5,0,5-2.3,5-6.2v-8.6h-4.4v-4.3h9v12.6c0,6.5-3.1,10.8-9.7,10.8c-6.6,0-9.6-4.3-9.6-10.8V33c0-6.5,3.1-10.8,9.6-10.8C30,22.2,33.1,26.5,33.1,33z"/><path d="M37.6,65.6V22.7h4.8v38.6h12.3v4.4H37.6z"/><path d="M57.9,33c0-6.6,3.3-10.8,9.8-10.8c6.6,0,9.9,4.2,9.9,10.8v22.2c0,6.5-3.3,10.8-9.900,10.8c-6.6,0-9.8-4.3-9.8-10.8V33z M62.6,55.5c0,3.9,1.7,6.2,5.1,6.2c3.5,0,5.1-2.3,5.1-6.2V32.8c0-3.9-1.6-6.2-5.1-6.2c-3.4,0-5.1,2.3-5.1,6.2V55.5z"/><path d="M91.8,22.7c6.7,0,9.3,3.2,9.3,9.5v2c0,4.5-1.3,7.4-5,8.5c4.2,1.2,5.8,4.5,5.8,9.2v3.6c0,6.4-3.1,10.1-9.8,10.1h-9.9V22.7H91.8z M90.6,40.9c3.8,0,5.8-1.2,5.8-5.7v-2.5c0-3.8-1.3-5.6-4.7-5.6h-4.7v13.9H90.6z M92,61.2c3.5,0,5.1-1.8,5.1-5.8v-3.8c0-4.8-1.9-6.4-6-6.4h-4.2v16H92z"/><path d="M111,56.9l-1.7,8.6H105l8.2-42.9h6.9l8.2,42.9h-4.8l-1.7-8.6H111z M111.6,52.8h9.6l-4.8-24.8L111.6,52.8z"/><path d="M132.1,65.6V22.7h4.8v38.6h12.3v4.4H132.1z"/><path d="M162.7,22.6c6.6,0,9.9,3.9,9.9,10.8v1.3h-6.4V33c0-3.1-1.2-4.2-3.4-4.2c-2.1,0-3.4,1.2-3.4,4.2c0,8.8,13.2,10.5,13.2,22.8c0,6.9-3.4,10.8-10.1,10.8s-10.1-3.9-10.1-10.8v-2.6h6.4v3.1c0,3.1,1.3,4.2,3.5,4.2s3.5-1.1,3.5-4.2c0-8.8-13.2-10.5-13.2-22.8C152.8,26.6,156.1,22.6,162.7,22.6z"/><path d="M183,23.1v33.1c0,3.1,1.3,4.2,3.5,4.2c2.1,0,3.5-1.1,3.5-4.2V23.1h6.4v32.7c0,6.9-3.4,10.8-10.1,10.8c-6.6,0-10.1-3.9-10.1-10.8V23.1H183z"/><path d="M215.1,66.1c-0.4-1.1-0.6-1.8-0.6-5.3V54c0-4-1.3-5.5-4.4-5.5h-2.3v17.5H201V23.1h10.2c7,0,10,3.3,10,9.9v3.4c0,4.4-1.4,7.3-4.4,8.7c3.4,1.4,4.5,4.7,4.5,9.1v6.6c0,2.100,0.1,3.6,0.7,5.2H215.1z M207.7,29.3v13.2h2.6c2.5,0,4-1.1,4-4.5v-4.2c0-3.1-1-4.4-3.4-4.4H207.7z"/><path d="M232.4,42.2h8.7v6.1h-8.7v17.7h-6.7V23.1h17.9v6.1h-11.1V42.2z"/></svg></a>
+  <a class="btn btn-soft hd-wa" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages." target="_blank" rel="noopener" data-wa><svg class="ic wa"><use href="#i-wa"/></svg><span>Questions? Ask us</span></a>
+</header>
+
+<main class="bk">
+<form id="bk" method="get" action="https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies">
+  <div class="bk-grid">
+  <div class="qs">
+    <nav class="pills" aria-label="Booking steps" hidden>
+      <button type="button" data-go="level">Level</button><button type="button" data-go="room">Room</button><button type="button" data-go="dates">Dates &amp; guests</button><button type="button" data-go="total">Total</button>
+    </nav>
+
+    <section class="step" id="s-level" data-step="level" aria-labelledby="t-level">
+      <p class="step-n">Step 1 of 4</p>
+      <h1 class="script" id="t-level" tabindex="-1">Your level</h1>
+      <div class="tiles t3">
+        <label class="tile"><input type="radio" name="level" value="level-1-fomies" checked><img src="../img/level-1.webp" width="640" height="800" alt=""><span class="tt"><b>Level 1 – Fomies</b><span>Your first time on a board. No experience needed.</span><em>From $1,466 pp | 7 nights</em></span></label>
+        <label class="tile"><input type="radio" name="level" value="level-2-rollers"><img src="../img/level-2.webp" width="640" height="800" alt=""><span class="tt"><b>Level 2 – Rollers</b><span>You can stand up. Now catch green waves.</span><em>From $1,466 pp | 7 nights</em></span></label>
+        <label class="tile"><input type="radio" name="level" value="level-3-riders"><img src="../img/level-3.webp" width="640" height="800" alt=""><span class="tt"><b>Level 3 – Riders</b><span>Already carving? Get sharper, on whichever spot is best that day.</span><em>From $1,466 pp | 7 nights</em></span></label>
+      </div>
+      <a class="notsure" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages." target="_blank" rel="noopener"><svg class="ic wa"><use href="#i-wa"/></svg><span><b>Not sure? Ask us</b></span></a>
+      <div class="inc-box">
+        <h2>What's included</h2>
+        <ul class="ilist" data-incl>
+          <li><svg class="ic"><use href="#i-bed"/></svg>7 nights' accommodation</li>
+          <li><svg class="ic"><use href="#i-bowl"/></svg>7 breakfasts</li>
+          <li><svg class="ic"><use href="#i-plate"/></svg>5 dinners</li>
+          <li><svg class="ic"><use href="#i-clock"/></svg><span data-sess>5 guided surf sessions of 2 hours</span></li>
+          <li><svg class="ic"><use href="#i-book"/></svg>5 surf theory lessons</li>
+          <li><svg class="ic"><use href="#i-board"/></svg>Unlimited surf equipment all week</li>
+          <li><svg class="ic"><use href="#i-van"/></svg>Walk or ride to the surf, depending on the spot</li>
+          <li><svg class="ic"><use href="#i-map"/></svg>A cultural or nature excursion</li>
+          <li><svg class="ic"><use href="#i-water"/></svg>Unlimited drinking water</li>
+          <li><svg class="ic"><use href="#i-cup"/></svg>Unlimited local coffee and tea</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="step" id="s-room" data-step="room" aria-labelledby="t-room">
+      <p class="step-n">Step 2 of 4</p>
+      <h2 class="script" id="t-room" tabindex="-1">Your room</h2>
+      <div class="tiles t3 rooms">
+        <label class="tile" data-engine-title="Mixed dorm room - 4 beds"><input type="radio" name="room" value="dorm" checked><img src="../img/room-063-600.webp" width="600" height="400" alt="Loft dorm room with twin beds and a ladder"><span class="sel"><svg class="ic"><use href="#i-check"/></svg></span><span class="tt"><b>Mixed dorm room – 4 beds</b><span>Four single beds. The bathroom is outdoors, and it&#x27;s yours.</span><em>Included in the package price</em></span><button class="btn btn-tint seep js-only" type="button" data-photos="063:Loft_dorm_room_with_twin_beds_and_a_ladder 078:Loft_dorm_with_twin_beds_and_ladder 095:Twin_beds_under_a_timber_roof 042:Twin_beds_under_a_timber_roof 050:Bungalow_with_a_hammock 064:Open-air_bathroom_with_a_palm_growing_through_it" data-name="Mixed dorm room – 4 beds"><svg class="ic"><use href="#i-grid"/></svg>See 6 photos</button></label>
+        <label class="tile" data-engine-title="Shared Twin Room - 2 Beds"><input type="radio" name="room" value="twin"><img src="../img/room-080-600.webp" width="600" height="400" alt="Double room with rattan lamps"><span class="sel"><svg class="ic"><use href="#i-check"/></svg></span><span class="tt"><b>Shared Twin Room – 2 Beds</b><span>Two beds and a private bathroom, with the beach in view all day.</span><em>+$140 pp for 7 nights, one guest | +$80 pp for 7 nights, two sharing</em></span><button class="btn btn-tint seep js-only" type="button" data-photos="080:Double_room_with_rattan_lamps 084:Room_with_rattan_pendant_lamp 083:Towels_and_plants_on_a_bench 069:Open-air_bathroom_with_glass_shower 079:Bathroom_with_glass_shower" data-name="Shared Twin Room – 2 Beds"><svg class="ic"><use href="#i-grid"/></svg>See 5 photos</button></label>
+        <label class="tile" data-engine-title="Deluxe double room"><input type="radio" name="room" value="double"><img src="../img/room-081-600.webp" width="600" height="400" alt="Double room with hammock door"><span class="sel"><svg class="ic"><use href="#i-check"/></svg></span><span class="tt"><b>Deluxe double room</b><span>A queen-size bed for two and a private bathroom of its own.</span><em>+$418 pp for 7 nights</em></span><button class="btn btn-tint seep js-only" type="button" data-photos="081:Double_room_with_hammock_door 082:Double_room,_glass_doors_to_the_garden 041:Double_room_with_a_painted_print 043:Double_room_with_rattan_stools 044:Sofa_and_wave_prints 071:Framed_wave_prints_on_a_white_wall" data-name="Deluxe double room"><svg class="ic"><use href="#i-grid"/></svg>See 6 photos</button></label>
+      </div>
+      <p class="small">Room prices change with the dates. Sample for 20–27 Feb 2027; prices from the booking engine, 29 Sep 2026.</p>
+    </section>
+
+    <section class="step" id="s-dates" data-step="dates" aria-labelledby="t-dates">
+      <p class="step-n">Step 3 of 4</p>
+      <h2 class="script" id="t-dates" tabindex="-1">Dates and guests</h2>
+      <p class="lab" id="l-chips">Check-in (Saturdays)</p>
+      <div class="chips" data-chips role="group" aria-labelledby="l-chips" hidden></div>
+      <div class="fl" id="w-start">
+        <select id="f-start" name="start">
+          <option value="">Choose a Saturday</option>
+          <option value="2026-10-24">Sat 24 Oct 2026</option>
+          <option value="2026-10-31">Sat 31 Oct 2026</option>
+          <option value="2026-12-19">Sat 19 Dec 2026</option>
+          <option value="2027-01-23">Sat 23 Jan 2027</option>
+          <option value="2027-01-30">Sat 30 Jan 2027</option>
+          <option value="2027-02-13">Sat 13 Feb 2027</option>
+          <option value="2027-02-20">Sat 20 Feb 2027</option>
+          <option value="2027-02-27">Sat 27 Feb 2027</option>
+          <option value="2027-03-06">Sat 6 Mar 2027</option>
+          <option value="2027-03-13">Sat 13 Mar 2027</option>
+          <option value="2027-03-20">Sat 20 Mar 2027</option>
+          <option value="2027-03-27">Sat 27 Mar 2027</option>
+          <option value="2027-04-03">Sat 3 Apr 2027</option>
+        </select>
+        <label for="f-start">Check-in (Saturdays)</label>
+      </div>
+      <p class="small help">Packages start on a Saturday.</p>
+      <p class="lab" id="l-n">Nights</p>
+      <div class="seg" role="radiogroup" aria-labelledby="l-n">
+        <label><input type="radio" name="duration" value="8" data-n="7" checked><span>7</span></label>
+        <label><input type="radio" name="duration" value="15" data-n="14"><span>14</span></label>
+        <label><input type="radio" name="duration" value="22" data-n="21"><span>21</span></label>
+        <label><input type="radio" name="duration" value="29" data-n="28"><span>28</span></label>
+      </div>
+      <p class="lab">Guests</p>
+      <div class="steppers">
+        <div class="stp"><label for="f-female">Women</label><button class="sb" type="button" data-d="-1" aria-label="One less, Women">−</button><input id="f-female" name="female" type="number" min="0" max="6" value="0" inputmode="numeric"><button class="sb" type="button" data-d="1" aria-label="One more, Women">+</button></div>
+        <div class="stp"><label for="f-male">Men</label><button class="sb" type="button" data-d="-1" aria-label="One less, Men">−</button><input id="f-male" name="male" type="number" min="0" max="6" value="0" inputmode="numeric"><button class="sb" type="button" data-d="1" aria-label="One more, Men">+</button></div>
+        <div class="stp"><label for="f-couple">Couples</label><button class="sb" type="button" data-d="-1" aria-label="One less, Couples">−</button><input id="f-couple" name="couple" type="number" min="0" max="3" value="0" inputmode="numeric"><button class="sb" type="button" data-d="1" aria-label="One more, Couples">+</button></div>
+      </div>
+      <p class="small help">Up to 6 guests per booking.</p>
+      <button class="btn btn-book next js-only" type="button" data-go="total">Next</button>
+    </section>
+
+    <section class="step" id="s-total" data-step="total" aria-labelledby="t-total">
+      <p class="step-n">Step 4 of 4</p>
+      <h2 class="script" id="t-total" tabindex="-1">Your total</h2>
+      <div class="final">
+        <div class="final-photo"><img src="../img/tuktuk.webp" width="640" height="800" alt="A green tuk-tuk parked by the lodge, palms behind"></div>
+        <div class="ticket big" data-ticket></div>
+      </div>
+      <div class="go">
+        <button class="btn btn-book btn-lg js-only" type="submit">Continue booking</button>
+        <noscript><div class="nojs-go">
+          <button class="btn btn-book btn-lg" type="submit" formaction="https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies">Continue with Level 1</button>
+          <button class="btn btn-book btn-lg" type="submit" formaction="https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers">Continue with Level 2</button>
+          <button class="btn btn-book btn-lg" type="submit" formaction="https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders">Continue with Level 3</button>
+        </div></noscript>
+        <p>Next, on our Bookinglayer booking page: confirm your room, add airport pickup if you want it, then enter your details and pay.</p>
+        <p class="small">Nothing is booked until you check out there.</p>
+        <p class="small">40% deposit to book, the rest 45 days before arrival. Booking less than 45 days ahead? You pay in full.</p>
+        <p class="small">Not included: airport pickup. From $220 pp, add it on the booking page.</p>
+      </div>
+    </section>
+  </div>
+
+  <aside class="side" aria-label="Your booking so far">
+    <div class="ticket" data-ticket>
+      <dl>
+        <div><dt>Level</dt><dd data-s="level">Level 1 – Fomies</dd></div>
+        <div><dt>Dates</dt><dd data-s="dates">Choose a Saturday</dd></div>
+        <div><dt>Guests</dt><dd data-s="guests">—</dd></div>
+        <div><dt>Room</dt><dd data-s="room">Mixed dorm room – 4 beds</dd></div>
+        <div><dt>Package, per person</dt><dd data-s="base">$1,466</dd></div>
+        <div><dt>Room, per person</dt><dd data-s="supp">Included</dd></div>
+        <div><dt>Total per person</dt><dd data-s="pp">$1,466</dd></div>
+        <div class="tot"><dt data-s="alllabel">Total for 1 guest</dt><dd data-s="all">—</dd></div>
+      </dl>
+      <p class="small" data-s="note">Prices in USD | Prices from the booking engine, 29 Sep 2026</p>
+    </div>
+  </aside>
+  </div>
+
+  <div class="pnext js-only">
+    <span><small data-s="alllabel">Total</small><b data-s="all">—</b></span>
+    <button class="btn btn-book" type="button" data-next>Next</button>
+  </div>
+</form>
+</main>
+
+<dialog class="gal" id="gal" aria-labelledby="gal-t">
+  <div class="gal-in">
+    <div class="gal-top"><h2 id="gal-t"></h2><button class="gal-x" type="button" aria-label="Close photos"><svg class="ic"><use href="#i-x"/></svg></button></div>
+    <div class="gal-stage">
+      <div class="gal-track" tabindex="0" aria-label="Photos, use the arrow keys"></div>
+      <button class="arr prev" type="button" aria-label="Previous photo"><svg class="ic"><use href="#i-l"/></svg></button>
+      <button class="arr next" type="button" aria-label="Next photo"><svg class="ic"><use href="#i-r"/></svg></button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+var D=document;
+function $(s,r){return (r||D).querySelector(s)}
+function $$(s,r){return Array.prototype.slice.call((r||D).querySelectorAll(s))}
+var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var F=$('#bk');
+var ENGINE='https://globalsurfadventures.bookinglayer.com/en/product/';
+var API='https://api.bookinglayer.io/public/',BD='business_domain=globalsurfadventures.bookinglayer.com';
+var WA='https://wa.me/972523593240?text=';
+var WA_BASE='Hi Global Surf Lodge Kabalana, I have a question about the surf packages.';
+var LEVELS={
+  'level-1-fomies':{name:'Level 1 – Fomies',id:'877aef3d-86ed-4b60-8932-03e49c613af8',n:1},
+  'level-2-rollers':{name:'Level 2 – Rollers',id:'4b58b491-24fc-4fb8-a40d-2705df961db4',n:2},
+  'level-3-riders':{name:'Level 3 – Riders',id:'54ec3447-2efb-4677-8685-f272e00d32e8',n:3}};
+/* build-time snapshot: offers[].price (7 nights, 28 Sep 2026), room supplements (29 Sep 2026) */
+var SNAP={base7:1466,supp:{dorm:function(){return 0},twin:function(g){return (g.n===2&&g.couple===1)?80.025:140.04},double:function(){return 418.46}}};
+var ROOMS={dorm:'Mixed dorm room – 4 beds',twin:'Shared Twin Room – 2 Beds',double:'Deluxe double room'};
+var live=null,liveFailed=false;
+
+function money(x){var r=Math.round(x*100)/100;return '$'+r.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}).replace(/\.00$/,'')}
+function level(){return $('input[name=level]:checked').value}
+function room(){return $('input[name=room]:checked').value}
+function nights(){return +$('input[name=duration]:checked').dataset.n}
+function guests(){var f=+$('#f-female').value||0,m=+$('#f-male').value||0,c=+$('#f-couple').value||0;return {female:f,male:m,couple:c,n:f+m+2*c}}
+function addDays(iso,d){var t=new Date(iso+'T12:00:00Z');t.setUTCDate(t.getUTCDate()+d);return t.toISOString().slice(0,10)}
+function fmt(iso){return new Date(iso+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'})}
+
+/* preselect from the URL */
+var q=new URLSearchParams(location.search);
+if(LEVELS[q.get('level')])$('input[name=level][value="'+q.get('level')+'"]').checked=true;
+if(ROOMS[q.get('room')])$('input[name=room][value="'+q.get('room')+'"]').checked=true;
+
+/* steps: one question per screen */
+var order=['level','room','dates','total'],cur='level',pills=$('.pills');pills.hidden=false;
+function show(s,focus){
+  cur=s;$$('.step').forEach(function(x){x.classList.toggle('cur',x.dataset.step===s)});
+  $$('button',pills).forEach(function(b){var i=order.indexOf(b.dataset.go);b.setAttribute('aria-current',b.dataset.go===s?'step':'false');b.classList.toggle('done',i<order.indexOf(s))});
+  D.documentElement.classList.toggle('js-total',s==='total');
+  $('[data-next]').textContent=s==='total'?'Continue booking':'Next';
+  if(focus!==false){scrollTo({top:0,behavior:calm?'auto':'smooth'});var h=$('#s-'+s+' .script');h&&h.focus({preventScroll:true})}
+}
+$$('[data-go]').forEach(function(b){b.addEventListener('click',function(){show(b.dataset.go)})});
+var start=q.get('room')?'room':'level';if(q.get('level')&&!q.get('room'))start='room';
+show(start,false);
+/* a tile tap answers and moves on */
+$$('input[name=level],input[name=room]').forEach(function(i){i.addEventListener('click',function(){setTimeout(function(){show(i.name==='level'?'room':'dates')},180)})});
+$('[data-next]').addEventListener('click',function(){var i=order.indexOf(cur);if(cur==='total'){F.requestSubmit();return}show(order[i+1])});
+
+/* Saturday chips, grouped by month, from the select */
+var sel=$('#f-start'),chips=$('[data-chips]');
+(function(){var months={};
+  $$('option',sel).forEach(function(o){if(!o.value)return;var k=o.value.slice(0,7);(months[k]=months[k]||[]).push(o)});
+  Object.keys(months).forEach(function(k){var m=D.createElement('div');m.className='chips-m';
+    m.innerHTML='<p>'+new Date(k+'-01T12:00:00Z').toLocaleDateString('en-GB',{month:'long',year:'numeric',timeZone:'UTC'})+'</p><div></div>';
+    months[k].forEach(function(o){var b=D.createElement('button');b.type='button';b.className='chip';b.dataset.v=o.value;b.textContent='Sat '+(+o.value.slice(8));b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',o.textContent);
+      b.addEventListener('click',function(){sel.value=o.value;sel.dispatchEvent(new Event('change',{bubbles:true}))});$('div',m).appendChild(b)});
+    chips.appendChild(m)});
+  chips.hidden=false;D.documentElement.classList.add('chips-on')})();
+function syncChips(){$$('.chip',chips).forEach(function(b){var o=$('option[value="'+b.dataset.v+'"]',sel);b.disabled=o.disabled;b.setAttribute('aria-pressed',sel.value===b.dataset.v?'true':'false')})}
+
+/* steppers: never more than 6 guests */
+$$('.stp').forEach(function(w){var inp=$('input',w);
+  $$('.sb',w).forEach(function(b){b.addEventListener('click',function(){
+    var d=+b.dataset.d;if(d>0&&guests().n+(inp.id==='f-couple'?2:1)>6)return;
+    inp.value=Math.max(+inp.min,Math.min(+inp.max,(+inp.value||0)+d));inp.dispatchEvent(new Event('input',{bubbles:true}))})})});
+
+/* gallery for a room tile */
+var gal=$('#gal');
+$$('[data-photos]').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();openGal(b)})});
+var opener=null;
+function openGal(b){opener=b;var tr=$('.gal-track',gal);tr.innerHTML='';$('#gal-t').textContent=b.dataset.name;
+  b.dataset.photos.split(' ').forEach(function(p){var f=D.createElement('figure');var im=D.createElement('img');im.src='../img/room-'+p.split(':')[0]+'-1400.webp';im.alt=p.split(':').slice(1).join(':').replace(/_/g,' ');im.width=1400;im.height=933;f.appendChild(im);tr.appendChild(f)});
+  gal.showModal();tr.scrollLeft=0;$('.gal-x',gal).focus()}
+$('.gal-x',gal).addEventListener('click',function(){gal.close()});
+gal.addEventListener('close',function(){opener&&opener.focus()});
+$('.prev',gal).addEventListener('click',function(){var t=$('.gal-track',gal);t.scrollBy({left:-t.clientWidth,behavior:calm?'auto':'smooth'})});
+$('.next',gal).addEventListener('click',function(){var t=$('.gal-track',gal);t.scrollBy({left:t.clientWidth,behavior:calm?'auto':'smooth'})});
+
+/* the ticket */
+var big=$('.ticket.big'),side=$('.side .ticket');
+function set(k,v){$$('[data-s="'+k+'"]').forEach(function(x){x.textContent=v})}
+function render(){
+  var lv=level(),g=guests(),rm=room(),st=sel.value,n=nights();
+  $('[data-sess]').textContent=LEVELS[lv].n===3?'5 coached surf sessions of 2 hours':'5 guided surf sessions of 2 hours';
+  syncChips();
+  set('level',LEVELS[lv].name);
+  set('dates',st?fmt(st)+' – '+fmt(addDays(st,n))+' | '+n+' nights':'Choose a Saturday');
+  var parts=[];if(g.female)parts.push(g.female+' '+(g.female===1?'woman':'women'));if(g.male)parts.push(g.male+' '+(g.male===1?'man':'men'));if(g.couple)parts.push(g.couple+' '+(g.couple===1?'couple':'couples'));
+  set('guests',parts.length?parts.join(', '):'—');set('room',ROOMS[rm]);
+  var lk=liveKey(),L=live&&live.key===lk?live:null;
+  var basePP=L?L.basePP:(n===7?SNAP.base7:null),suppPP=L?L.supp[rm]:(n===7?SNAP.supp[rm](g):null);
+  set('base',basePP==null?'Shown on the booking page':money(basePP));
+  set('supp',suppPP==null?(L?'Not free on these dates':'Shown on the booking page'):(suppPP===0?'Included':'+'+money(suppPP)));
+  var pp=(basePP!=null&&suppPP!=null)?basePP+suppPP:null;set('pp',pp==null?'—':money(pp));
+  var cnt=Math.max(g.n,1);set('alllabel','Total for '+cnt+' '+(cnt===1?'guest':'guests'));set('all',pp==null||!g.n?'—':money(pp*cnt));
+  set('note','Prices in USD | '+(L?'Live price from the booking engine':(liveFailed?"Live prices didn't load. These are the booking engine's prices from 29 Sep 2026.":'Prices from the booking engine, 29 Sep 2026')));
+  $$('.rooms .tile').forEach(function(c){var k=$('input',c).value;c.classList.toggle('off',!!(L&&L.supp[k]==null))});
+  var msg=WA_BASE+' '+LEVELS[lv].name+(st?', check-in '+fmt(st)+', '+n+' nights':'')+(parts.length?', '+parts.join(', '):'')+', '+ROOMS[rm]+'.';
+  $$('[data-wa]').forEach(function(a){a.href=WA+encodeURIComponent(msg)});
+  F.action=ENGINE+lv;
+  big.innerHTML=side.innerHTML;
+}
+
+/* live engine data, only after the visitor has touched the booking controls */
+var tmr,dateKey='';
+function liveKey(){var g=guests();return [level(),sel.value,nights(),g.female,g.male,g.couple].join('|')}
+function timeout(p,ms){return Promise.race([p,new Promise(function(_,rej){setTimeout(function(){rej(new Error('timeout'))},ms)})])}
+function getJSON(u,o){return timeout(fetch(u,o).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}),7000)}
+function refreshDates(){var g=guests();if(!g.n)return;var dk=level()+'|'+g.female+'|'+g.male+'|'+g.couple;if(dk===dateKey)return;dateKey=dk;
+  var today=new Date().toISOString().slice(0,10);
+  getJSON(API+'products/'+LEVELS[level()].id+'/availabilities?format=choosable&show_available_only=1&mode=checkin&start='+today+'&end='+addDays(today,300)+'&female='+g.female+'&male='+g.male+'&couple='+g.couple+'&'+BD).then(function(j){
+    var d=j&&j.data&&j.data.dates;if(!d)throw new Error('shape');
+    $$('option',sel).forEach(function(o){if(!o.value)return;o.disabled=!(d[o.value]&&d[o.value].choosable)});syncChips()}).catch(function(){dateKey=''})}
+function refreshQuote(){var g=guests(),st=sel.value;if(!g.n||!st)return;var lk=liveKey(),id=LEVELS[level()].id,end=addDays(st,nights());
+  var gs=[];for(var i=1;i<=g.n;i++)gs.push({id:'g'+i+'-'+Date.now(),index:i});
+  Promise.all([getJSON(API+'accommodations/availabilities?product='+id+'&start='+st+'&end='+end+'&currency=USD&female='+g.female+'&male='+g.male+'&couple='+g.couple+'&'+BD),
+    getJSON(API+'packages/'+id+'/items?'+BD,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({start:st,end:end,currency:'USD',guests:gs,items:[]})})]).then(function(r){
+    var list=r[0]&&r[0].data,tot=r[1]&&r[1].data&&r[1].data.totals;if(!Array.isArray(list)||!tot||typeof tot.base!=='number')throw new Error('shape');
+    var supp={dorm:null,twin:null,double:null};
+    list.forEach(function(a){var t=(a.translations&&a.translations.en&&a.translations.en.title)||'';$$('.rooms .tile').forEach(function(c){if(c.dataset.engineTitle===t)supp[$('input',c).value]=a.price&&typeof a.price.from==='number'?a.price.from:0})});
+    if(lk!==liveKey())return;live={key:lk,basePP:tot.base/g.n,supp:supp};liveFailed=false;
+    var free=Object.keys(supp).filter(function(k){return supp[k]!=null});if(free.length&&supp[room()]==null)$('input[name=room][value="'+free[0]+'"]').checked=true;
+    render()}).catch(function(){liveFailed=true;render()})}
+function touch(){clearTimeout(tmr);tmr=setTimeout(function(){refreshDates();refreshQuote()},500)}
+F.addEventListener('input',function(){render();touch()});
+F.addEventListener('change',function(){render();touch()});
+
+/* hand-off: GET to the engine's product with start, end (never duration) and the guest mix */
+F.addEventListener('submit',function(ev){
+  var st=sel.value;
+  if(!st||!guests().n){ev.preventDefault();show('dates');setTimeout(function(){(st?$('#f-female'):($('.chip:not(:disabled)')||sel)).focus()},50);return}
+  var e=D.createElement('input');e.type='hidden';e.name='end';e.value=addDays(st,nights());F.appendChild(e);
+  var off=$$('input[name=duration],input[name=level],input[name=room]');['#f-female','#f-male','#f-couple'].forEach(function(s){if(!(+$(s).value))off.push($(s))});
+  off.forEach(function(i){i.disabled=true});
+  setTimeout(function(){off.forEach(function(i){i.disabled=false});e.remove()},500);
+});
+render();
+})();
+
+</script>
+</body>
+</html>
