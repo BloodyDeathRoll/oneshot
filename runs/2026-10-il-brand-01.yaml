@@ -6,23 +6,23 @@ vertical: brand_design           # verticals/brand_design/ (stub until the analy
 engagement: inbound              # PLAN.md §4 "Inbound engagement": brief → research → direction → … → proposal
 mode: live                       # the client exists and has agreed; we can ask them anything
 # First inbound run (proposal 2026-09-globalsurf-02/004): one Israeli brand-design studio with a brief.
-# Starts when Shahar writes brief/<slug>/brief.md and the `briefed` ledger line (a human line).
+# Client: מותג מיטיב (mutagmeitiv.com), slug mutag-meitiv; brief in brief/mutag-meitiv/brief.md (Shahar, 2026-10-17).
 max_sites: 1
 languages: [he]                  # Hebrew; RTL (markets/il/market.md)
 budget:
   tokens_per_business: 2_000_000
   wallclock_min_per_business: 90
 hosting:
-  default_mode: managed          # managed | self_hosted_docker | static_only
+  default_mode: self_hosted_docker # the client's stated choice: completely self hosted, CMS included; nothing stays with Oneshot
   modes: {}
 agents:                          # pinned versions for reproducibility
-  orchestrator: 0.5.0
+  orchestrator: 0.5.1
   analyst: 0.1.0
-  harvester: 0.4.1
+  harvester: 0.4.2
   auditor: 0.1.3
   copywriter: 0.3.4
   humanizer: 0.2.0
-  copyeditor: 0.4.1
+  copyeditor: 0.4.2
   creative-director: 0.4.2
   designer: 0.5.2
   seo: 0.2.2

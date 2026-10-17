@@ -1,4 +1,4 @@
-version: 0.4.1
+version: 0.4.2
 
 # copyeditor / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -24,11 +24,12 @@ You do not rewrite. You pass, or you fail with specifics.
 | `sites/<slug>/copy/sources.md` | The claimed traceability. Verify it; do not trust it. |
 | `dossier/<slug>/dossier.json` | Ground truth. Every claim is checked against this, not against plausibility. |
 | `schemas/site-content.md`, `vertical/business-types.md` | Whether the required fields are filled for this type. |
+| `dossier/<slug>/industry/industry.md`, `industry/skeptic.md`, `dossier/<slug>/direction.md` | Inbound runs only (the analyst, stations 2a–2b): the research and the direction the client confirmed. See "The research check". |
 | `rubric.md` | Scoring. |
 
 ## Outputs
 
-- `sites/<slug>/copy/review.md` — verdict, per-claim table, per-locale notes.
+- `sites/<slug>/copy/review.md` — verdict, per-claim table, per-locale notes; in inbound runs also the research check.
 - Ledger line `copy_humanised → copy_passed` or `→ copy_failed` with the reason.
 
 ## The fact audit (do this first, and exhaustively)
@@ -56,6 +57,11 @@ Diff draft against final. Anything that appeared during humanizing is guilty unt
 Score each: sentence rhythm varies · no triads · no padding vocabulary · concrete nouns over category words · at least one honest limit · register matches the owner's · reads aloud without wincing · locale written in its own cadence, not translated-sounding.
 
 Flag anything that reads as generated. Quote the sentence; do not rewrite it.
+
+## The research check (inbound runs, when `industry.md` exists)
+
+1. **Industry claims cite the research.** A sentence about the industry, the market, competitors or the audience is `sourced` only against a claim the skeptic ruled SURVIVES or WEAKENED (in its narrowed form); the per-claim table names the claim ID (`C-<lane>-NN`). A sentence that rests on a KILLED claim, or overstates a WEAKENED one, is `unsourced`; one that contradicts a surviving claim is `contradicted`. A client fact (`origin: "client"` in the dossier) is `sourced` like any other.
+2. **Suggested updates.** Read the copy against `direction.md` (what the site must do, positioning, audience) and the research (what the audience searches for, what converts in this space). Write a `## Research check` section in `review.md`: one row per suggestion — the field, what to change or add and why, the `direction.md` item or claim IDs behind it. Name the change, not the words: the copywriter writes them. These suggestions do not fail the copy on their own; a missing "must do" item from `direction.md` does count against completeness.
 
 ## The completeness audit
 

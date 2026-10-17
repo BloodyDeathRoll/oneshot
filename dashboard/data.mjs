@@ -576,7 +576,10 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
   // One entry per workflow (market × vertical) with at least one run: its runs and summed KPIs.
   const workflows = [...new Set(runs.map((r) => r.workflow))].sort().map((id) => {
     const rs = runs.filter((r) => r.workflow === id);
-    return { id, market: rs[0].market, vertical: rs[0].vertical, engagements: [...new Set(rs.map((r) => r.engagement))], runs: rs.map((r) => r.run_id), active_runs: rs.filter((r) => r.active).map((r) => r.run_id), kpis: kpisOf(businesses.filter((b) => b.workflow === id)) };
+    // The pack files its runs load (tools/prompt.mjs); a stub has only its title comment.
+    const packFiles = (dir) => (existsSync(join(ROOT, dir)) ? readdirSync(join(ROOT, dir)).sort().map((f) => { const t = read(`${dir}/${f}`) ?? ''; return { file: `${dir}/${f}`, stub: f.endsWith('.md') && !t.split('\n').some((l) => l.trim() && !l.trim().startsWith('#')) }; }) : null);
+    const packs = { market: packFiles(`markets/${rs[0].market}`), vertical: packFiles(`verticals/${rs[0].vertical}`) };
+    return { id, market: rs[0].market, vertical: rs[0].vertical, packs, engagements: [...new Set(rs.map((r) => r.engagement))], runs: rs.map((r) => r.run_id), active_runs: rs.filter((r) => r.active).map((r) => r.run_id), kpis: kpisOf(businesses.filter((b) => b.workflow === id)) };
   });
 
   return {

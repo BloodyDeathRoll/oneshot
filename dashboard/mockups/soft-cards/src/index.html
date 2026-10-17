@@ -1045,10 +1045,12 @@ function gateForm(o){
   if(!LIVE){controls().forEach(c=>c.disabled=true);f.setAttribute('aria-disabled','true')}
   f.addEventListener('submit',async e=>{
     e.preventDefault();if(!LIVE)return;
-    const choice=radios?(f.querySelector('input[type=radio]:checked')||{}).value:(e.submitter&&e.submitter.value);
+    const checked=[...f.querySelectorAll('input[type=checkbox]:checked')].map(x=>x.value);
+    if(o.multi&&!checked.length){stat.className='gstat err';stat.textContent='keep at least one';return}
+    const choice=o.multi?checked.join('+'):radios?(f.querySelector('input[type=radio]:checked')||{}).value:(e.submitter&&e.submitter.value);
     const r=reason.value.trim();
     stat.className='gstat';stat.textContent='';
-    if(radios&&!f.querySelector('input[type=radio]:checked')){stat.className='gstat err';stat.textContent='choose one option first';f.querySelector('input[type=radio]').focus();return}
+    if(!o.multi&&radios&&!f.querySelector('input[type=radio]:checked')){stat.className='gstat err';stat.textContent='choose one option first';f.querySelector('input[type=radio]').focus();return}
     if(r.length<3&&!o.noReason){stat.className='gstat err';stat.textContent='a reason is required (at least 3 characters) — it becomes the ledger note verbatim';reason.focus();return}
     const body={gate:o.gate,run_id:o.run_id,choice,reason:r};
     if(o.slug)body.slug=o.slug;if(o.expected_state)body.expected_state=o.expected_state;if(o.file)body.file=o.file;if(date)body.date=date.value;
@@ -1076,12 +1078,12 @@ function showResult(stat,r,f){
 function pickPanel(b){
   const key=`pick-${b.run_id}-${b.slug}`;
   const wrap=el('div',{class:'pickpanel',tabindex:'-1',id:'pick-'+b.slug});
-  wrap.append(el('div',{class:'label',text:`Pick a mockup for ${b.name} — the three variants, ${LIVE?'sheets from /files':'links to the repo'}`}));
-  const form=gateForm({key,gate:'pick',run_id:b.run_id,slug:b.slug,expected_state:b.state,radios:[],buttons:[['pick','Pick this variant',true]],placeholder:'reason — Verbatim in the ledger, as every pick so far'});
-  const vs=el('div',{class:'variants',role:'radiogroup','aria-label':'Variants'});
+  wrap.append(el('div',{class:'label',text:`Keep one to three mockups for ${b.name} — each one kept becomes its own site and pitch; ${LIVE?'sheets from /files':'links to the repo'}`}));
+  const form=gateForm({key,gate:'pick',multi:true,run_id:b.run_id,slug:b.slug,expected_state:b.state,radios:[],buttons:[['pick','Keep the selected',true]],placeholder:'reason — Verbatim in the ledger, as every pick so far'});
+  const vs=el('div',{class:'variants',role:'group','aria-label':'Variants to keep'});
   for(const v of ['calm','interactive','unique']){
     const card=el('label',{class:'variant'});
-    card.append(el('input',{type:'radio',name:key+'-c',value:v}));
+    card.append(el('input',{type:'checkbox',name:key+'-c',value:v}));
     card.append(el('div',{class:'vh'},v[0].toUpperCase()+v.slice(1),el('span',{text:`mockups/${v}`})));
     const base=`sites/${b.slug}/mockups/${v}/`;
     const cands=[...Array.from({length:9},(_,i)=>`shots/round-${9-i}/desktop-sheet.png`),'shots/desktop-sheet.png','shots/desktop-1.png'];
