@@ -1,4 +1,4 @@
-version: 0.1.0
+version: 0.1.1
 
 # visual-critic / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
