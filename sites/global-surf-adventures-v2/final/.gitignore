@@ -1,0 +1,13 @@
+# symlink to spikes/payload/site/node_modules (no npm install per site)
+node_modules
+.astro/
+dist/
+# build products of scripts/make-media.sh, the publisher's video step and scripts/photos.mjs
+# (media never goes in git: docs/team.md; media/global-surf-adventures-v2.tsv lists them)
+public/photos/
+public/video/
+src/tenant/media/
+src/gaps/media/
+src/tenant/photos.generated.json
+src/tenant/videos.generated.json
+src/tenant/videos.portrait.json
