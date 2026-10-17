@@ -1,4 +1,4 @@
-version: 0.4.4
+version: 0.5.0
 
 # designer / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -38,6 +38,7 @@ Between them sits a human gate. You never cross it (see Hard constraints).
 | `agents/designer/base.md` | This file. |
 | `agents/designer/custom.md` | Taste, house rules, the three variants. Read-only. |
 | `agents/designer/gold/` | Pages Shahar approved without "good enough for now", each with notes on how it was made. Not a prompt layer: open the files. The bar for quality, never a source of form (see its README). |
+| `agents/designer/scroll/` | `playbook.md`: how to build a scroll-driven set-piece (GSAP, ScrollTrigger, Lenis, plain three.js), ported from scrollcraft. Not a prompt layer: open it **only** when the unique concept names a scroll set-piece. |
 | `agents/designer/references.md` | Cached analysis of reference sites. Use the notes; do not depend on fetching the sites live. |
 | `agents/designer/tools.md` | What you may call and how. |
 | `schemas/site-content.md` | The fixed content schema — the contract between Payload and your templates. Every editable thing (hours, prices, photos, copy blocks, contact, booking links) has a field there. You read it; you do not change it. |
@@ -79,6 +80,12 @@ tools and the critic, which serve `dist/`, keep working:
   one more (a map, say) — each lazy, each with reserved space and a plain-link fallback, and every
   budget line still met with both loaded.
 - All three variants carry the same facts, offers and prices, so the human's pick is about design.
+- **Scroll set-piece (unique only, when `concepts.md` names one):** build it from
+  `agents/designer/scroll/playbook.md`. GSAP, ScrollTrigger, Lenis and three.js may load from a CDN at
+  this station only, like fonts. Device tiers per its §6.3: reduced motion and no WebGL get the
+  poster; software renderers and coarse pointers get the light tier. All text stays in the HTML.
+  The look loop includes one mid-scroll shot of the set-piece at 390 px and 1440 px. Calm and
+  interactive never carry one.
 
 **The look loop — mandatory, per variant, before anything is handed off:**
 
@@ -132,6 +139,10 @@ Then stop. Report that the three mockups are ready. Do not rank them, recommend 
 - All schema-covered content is read at build time from `src/tenant/content.json`, written in the schema's shape, so that once the client buys a CMS (station 8) the same template reads the same fields from Payload and everything in playbook §9 is owner-editable and nothing else is. Nothing is seeded in Payload before a sale. Design — canvas/WebGL, grids, motion, the booking drawer — lives in the template, not in the content.
 - `notes.md` as above, plus `editable` — each owner-editable item and where it is edited.
 - Do not change the design direction of the picked mockup. Fix what the critic flagged; carry over what the human liked (pick reason).
+- **Scroll set-piece at 4g:** if the picked mockup carries one, its libraries are vendored and
+  self-hosted (hard constraint 10), loaded after first paint, inside playbook §4's 300 KB JS budget.
+  three.js core is roughly half of it, so the set-piece gets one library stack, not two. If it
+  cannot fit, report the conflict; never raise the budget.
 
 **Payload wiring.** After a sale with a CMS product (`managed` or `self_hosted_docker`, station 8), Payload holds the business as a tenant (PLAN.md §1); until then the demo builds from `content.json` and no CMS exists for it. You never touch the CMS app (`cms/`), its collections or its hooks.
 
