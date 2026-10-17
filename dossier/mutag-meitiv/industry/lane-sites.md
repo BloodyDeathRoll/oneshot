@@ -10,7 +10,7 @@ status: complete
 
 ## Summary
 
-Eleven brand-studio sites were opened and measured on 2026-10-17 (7 international: Koto, Wolff Olins, Mother Design, Forpeople, Studio Dumbar, Collins, Futerra; 4 Israeli: Butcher.studio (English), Imaginet, iDeez, NotFromHere (Hebrew RTL)). They recur on the same moves: a short one-sentence position on the first screen, work shown as image tiles with a one-line problem or outcome plus service tags, a small nav of 4–7 items, and a contact action that asks for little. The international studios keep that action out of the first screen. The Israeli studios put "בואו נדבר", phone or WhatsApp on the first screen and end the page with a long form. Motion is used heavily, but the readable sites keep it to reveals, sticky elements and small UI feedback. The heaviest motion (autoplay video reels, smooth-scroll hijacking) comes with mobile first loads of 20–42 MB.
+Eleven brand-studio sites (7 international, 4 Israeli) measured on 2026-10-17 share one short position sentence on the first screen, work as image tiles with a one-line problem or outcome and service tags, a 4–7 item nav, and a low-effort contact action, which the Israeli studios (phone, WhatsApp, "בואו נדבר", then a long form) put on the first screen and the international ones (email) do not. Motion is heavy, but the readable sites keep it to reveals, sticky elements and small UI feedback, and the video-reel and smooth-scroll sites load 20–42 MB on a first mobile visit. Reopen (2026-10-18): six small Hebrew practices the client's buyers compare with (DoGood, Tali Gilad, Shelly Sever, Reuta Yosef Tzvi, Galit Sharon, Rinat Hadar) lead with the founder's name, face or role rather than a position sentence, group several offers by offer type or audience in a hamburger menu, mostly keep contact at the page end, set mobile body at 18–20 px with 1.5–1.9 leading, and load 1.1–20 MB (C-sites-16 to C-sites-22).
 
 ## Claims
 
@@ -125,6 +125,67 @@ Eleven brand-studio sites were opened and measured on 2026-10-17 (7 internationa
 - **Confidence:** medium (fingerprints from string matches; a `_next` string can appear without Next.js)
 - **Changes my mind:** Response headers or build manifests showing a different stack.
 
+### C-sites-16 — Small Hebrew practices lead with the founder (name, face, role line) rather than a position sentence; two of six show no sentence at all on the first mobile screen
+- **Evidence:** First screen at 390 px (1440 where noted). Reuta: "רעותה יועצת עסקית / יעוץ עסקי לנשים" ("Reuta, business consultant / business consulting for women") over her photo. Galit Sharon: a photo slider with "גלית שרון / Power Skills לאנשים שמובילים אנשים" ("Galit Sharon / power skills for people who lead people"). DoGood: "מיתוג ודיגיטל לארגונים עם משמעות" ("branding and digital for organisations with meaning") and a 60-word paragraph. Rinat Hadar: "מעצבות לך מיתוג קונספטואלי לעסק" ("we design conceptual branding for your business"). Tali Gilad: at 1440, "סטודיו טלי גלעד. מיתוג אסטרטגי, מקיף, מעמיק וחכם, לארגונים, עמותות, חברות ועסקים." ("Tali Gilad studio. Strategic, comprehensive, deep and smart branding for organisations, nonprofits, companies and businesses."). At 390 that text is hidden (computed width 0), so the first screen is only the logo and her photo. Shelly Sever: the first screen at both widths is an intro animation of five star glyphs, "SHELLY SEVER", a "כאן מתחילים" ("start here") cue and a cookie banner. Her line "זה לא מקרה שהגעת אליי!" ("it's no accident you came to me!") comes on the second screen. Four of six show the founder's face on the first or second screen (Tali, Shelly, Reuta, Galit).
+- **Source:** https://www.reuta.co.il/ ; https://www.galit-sharon.co.il/ ; https://dogood.studio/ ; https://r-h.studio/ ; https://taligilad.co.il/ ; https://shellysever.com/ ; `tools/shoot.mjs` 1440 and 390, 2026-10-18 (scratch `shots/reopen/<site>/`)
+- **Date:** 2026-10
+- **Confidence:** high (what is on screen); medium for "rather than": DoGood and Rinat Hadar, the two design studios in the set, do lead with a position line
+- **Changes my mind:** Other Israeli personal-branding or coaching sites that lead with a position sentence and no founder.
+
+### C-sites-17 — Only two of six put a contact action on the first mobile screen; the rest put it one popup away or at the end of a 7–13k px page
+- **Evidence:** Read from the 390 px shots and `tools/funnel.mjs` (depth 1). The tool's Hebrew blind spot was corrected by hand: it found nothing on DoGood and missed Shelly's home footer.
+  - **Reuta:** 0 scrolls. A floating green "לשיחה עם רעות חייגו 050-200-0224" ("to talk to Reuta, call") pill stays on every screen, and a hero button "לפגישת זום ראשונית במתנה!" ("first Zoom meeting free!") opens a popup form. Her inner pages add a floating WhatsApp "צריכה עזרה? שלחי הודעה" ("need help? send a message").
+  - **Galit Sharon:** a top bar with a mailto email and the phone number, then a red 3-field form ("רוצים לקבל פרטים נוספים על הסדנאות?", "want more details about the workshops?") right under the hero. A WhatsApp button "שלחו לי הודעה ואחזור בהקדם" ("send me a message and I'll get back soon") sits mid-page.
+  - **DoGood:** "תיאום פגישת היכרות" ("book an intro meeting") is just below the first screen. It opens a popup, "בואו נעשה טוב ביחד!" ("let's do good together!"), with a WhatsApp icon and a 2-field form (name, email): 2 taps to WhatsApp.
+  - **Tali Gilad:** no CTA in the mobile hero. Contact is an icon row (email, WhatsApp, phone) and a 4-field form, "נדבר בקרוב :)" ("we'll talk soon :)"), at the end of a 7,214 px page.
+  - **Shelly Sever:** phone, WhatsApp and email in the footer of a 12,899 px page (17 mobile screens). Her mid-page "דברו איתי" ("talk to me") links to a service page (/brand-development), not to a contact action.
+  - **Rinat Hadar:** phone and email only in the footer of an 8,441 px work wall, plus "יצירת קשר" in the menu.
+- **Source:** funnel.json per site (scratch `shots/reopen/funnel/<site>/`); shots as in C-sites-16; raw home HTML of dogood.studio and shellysever.com (popup and footer links), 2026-10-18
+- **Date:** 2026-10
+- **Confidence:** medium (page lengths are one headless run; "just below the first screen" on DoGood depends on device height)
+- **Changes my mind:** A real-device check finding first-screen contact on Tali, Shelly or Rinat, for example a sticky bar that the headless run did not render.
+
+### C-sites-18 — A multi-offer solo practice splits its offers in a hamburger menu by offer type or by audience, and on the home page gives each offer its own block with its own CTA
+- **Evidence:** All six use a hamburger menu at 390 px.
+  - **Reuta:** five groups. "ליווי עסקי" (business mentoring) holds three 1:1 or premium tracks. "קורסים דיגיטליים" holds five named courses. "אודות" (about) holds testimonials, press and client interviews. "תכנים לעסק" (business content) holds the podcast, videos and blog categories. Then "דברו איתי" (talk to me). The home page follows the same order: H2 "מסלולי הליווי העסקי שלי" ("my mentoring tracks"), with three H3 tracks (monthly 1:1, annual package, annual club), then H2 "תוכן לעסקים" with H3s for the podcast, courses and blog.
+  - **Shelly Sever:** verb-labelled groups: "התעוררות / תכירו / הגשימו / תקראו / האזינו / המלצות / דברו איתי" ("awaken / meet / fulfil / read / listen / testimonials / talk to me"). "הגשימו" holds 1:1 consulting, personal-branding consulting, consulting for entrepreneurs, the course, the accelerator and two lectures. On the home page each offer is its own section with its own CTA: "קורס אונליין" (online course), "להזמנת הרצאה" (book a lecture), "יעוץ למיתוג אישי" (personal-branding consulting), "לפרטים נוספים על הקורס ולהרשמה" (course details and sign-up), and "למה לי פודקאסט?" (why do I need a podcast?) with "להזמנת הרצאה או סדנה" (book a lecture or workshop).
+  - **Galit Sharon:** about 30 menu items grouped by audience: "סדנאות למנהלים" (workshops for managers), "סדנאות לעובדים" (workshops for employees), "קורסים דיגיטליים" (digital courses), styling, about, blog, contact.
+  - **Tali Gilad:** a flat 7-item menu by audience: "בית / פרויקטים / מיתוג / ייעוץ לארגונים / ליווי למעצבים / קורסים למעצבים / אודות" ("home / projects / branding / org consulting / designer mentoring / courses for designers / about"). The home page has three service blocks, each ending in "לכל הפרטים על…" ("all the details on…").
+  - **Rinat Hadar:** 7 items by work type, with courses as one item ("קורסים"). The course itself lives on a separate subdomain (course.r-h.studio).
+  - **DoGood:** no navigation at all: one page and a portfolio PDF.
+- **Source:** menu links from raw HTML and the rendered DOM (header and nav anchors), H2/H3 lists of each home page, 2026-10-18; URLs as in C-sites-16
+- **Date:** 2026-10
+- **Confidence:** high (structure as published)
+- **Changes my mind:** n/a (descriptive). No evidence was found on which split converts better.
+
+### C-sites-19 — Podcast and content are a separate "content" group, never the lead; email capture is a free download or a footer field, not a newsletter pitch
+- **Evidence:** Reuta files the podcast ("הפודקאסט לעסקים") with courses and the blog under "תוכן לעסקים", after the paid tracks. Shelly files podcasts under "האזינו" (listen), and her home "למה לי פודקאסט?" is sold as a lecture. Email capture: Reuta uses a lead-magnet popup, "התוכנית העסקית שלך, מוכנה למילוי" ("your business plan, ready to fill in"), with name and email. From about the ninth mobile screen it covers most of every viewport. Galit Sharon shows a red "להורדת מדריך מיתוג עצמי מנצח לחצו כאן" ("click to download the winning self-branding guide"). Shelly has a footer "הרשמה לעדכונים" ("sign up for updates") email field. Tali Gilad, Rinat Hadar and DoGood show no newsletter or lead magnet. None of the six leads with the podcast or newsletter on the first screen.
+- **Source:** https://www.reuta.co.il/ ; https://shellysever.com/ ; https://www.galit-sharon.co.il/ (390 px shots, H2/H3 lists, raw HTML string search for ניוזלטר / newsletter / הרשמה), 2026-10-18
+- **Date:** 2026-10
+- **Confidence:** medium (popups and lead magnets can vary by visit; one headless run each)
+- **Changes my mind:** A small Israeli practice whose home page leads with its podcast or newsletter.
+
+### C-sites-20 — The small practices set mobile body text larger than the studios: 18–20 px with 1.45–1.9 leading in four of six
+- **Evidence:** Dominant body style at 390 px, weighted by characters of visible text blocks of 40 or more characters, outside header, nav and footer, after scrolling the page. Galit Sharon: Assistant 20 px / 1.90. Shelly Sever: Alef 18 px / 1.50. Reuta: Heebo 18 px / 1.50, plus 16 px / 1.45 for secondary text. Tali Gilad: Arbel 18 px / 1.28. DoGood: Ping 22 px / 1.55 for its intro paragraph (its only long text). Rinat Hadar: TheBasics 14 px / 1.10 on its only paragraph; the page is otherwise image tiles with captions. All six set `lang="he-IL"` and compute `direction: rtl`. Compare C-sites-10: Imaginet and NotFromHere at about 14 px.
+- **Source:** scratch computed-style run (`scratchpad/type.mjs`), 2026-10-18; URLs as in C-sites-16
+- **Date:** 2026-10
+- **Confidence:** medium (one run; the character weighting can over-count repeated testimonial or slider text)
+- **Changes my mind:** A real-device check showing smaller rendered sizes, for example from viewport-scaled type.
+
+### C-sites-21 — First mobile loads range 1.1–20 MB; the two lightest are a one-page studio and a coaching site with no video, and the heaviest is the one with autoplay video
+- **Evidence:** Playwright at 390×844, page load plus 4 s, no scroll, CDP encoded bytes. DoGood 1.09 MB (54 requests). Shelly Sever 1.81 MB (1.04 MB of it scripts, Lottie). Reuta 1.95 MB (1.21 MB scripts). Tali Gilad 5.41 MB (4.03 MB images). Galit Sharon 6.16 MB (5.57 MB images, 392 KB fonts). Rinat Hadar 9.94 MB in the first run and 20.16 MB in the second (8.9 and 19.1 MB of media from 5 videos, GSAP + ScrollTrigger). Only DoGood is under the 1.5 MB target in `playbook.md` §4. Five of the six are WordPress: Elementor on Tali, Shelly, Reuta and Rinat (from `elementor-action` links), Bricks on DoGood (`brxe-` classes). Galit Sharon's stack was not checked (curl returned an empty body).
+- **Source:** scratch `scratchpad/weigh.mjs` and `weigh2.mjs`/`weigh3.mjs`, 2026-10-18 (output in `shots/reopen/weigh*.out`); raw HTML
+- **Date:** 2026-10
+- **Confidence:** medium (one or two headless runs, no throttling; video streaming makes Rinat Hadar's number unstable). DoGood answered 403 to a spoofed Android user agent and was measured with the default headless user agent.
+- **Changes my mind:** A throttled Lighthouse or WebPageTest run giving a different order.
+
+### C-sites-22 — The small sites show friction a buyer meets at once: a dialled number that differs from the shown one, a lead popup over the content, an intro loader, and a hero text hidden on mobile
+- **Evidence:** Reuta's call pill reads "050-200-0224", but every `tel:` link on the home page dials `tel:0559851686`. Her WhatsApp link uses 972559851686. Her lead-magnet popup covers most of the viewport from about screen 9 on (C-sites-19). Shelly Sever's first screen at both widths is an intro animation plus a cookie banner covering about the bottom fifth at 390 px, with no text about her offer. Tali Gilad hides her hero sentence at 390 px (C-sites-16), and a reCAPTCHA badge stays over the bottom corner of every screen. Galit Sharon has a fixed accessibility button over the left edge of every screen.
+- **Source:** https://www.reuta.co.il/ (raw HTML `tel:` and WhatsApp links; funnel.json label vs href) ; https://shellysever.com/ ; https://taligilad.co.il/ ; https://www.galit-sharon.co.il/ ; 390 px shots, 2026-10-18
+- **Date:** 2026-10
+- **Confidence:** high (the Reuta mismatch is in the HTML); medium for the popup and banner (headless, one visit)
+- **Changes my mind:** 050-200-0224 forwarding to the dialled number (then the mismatch is cosmetic, not broken), or the popup and banner not appearing in a normal browser.
+
 ## Dead ends
 
 - **futerra.co** is a parked domain (123 Reg holding page), and **futerra.com** redirected to an unrelated company (profileproducts.com). The real site is **wearefuterra.com**, which was measured instead.
@@ -134,6 +195,8 @@ Eleven brand-studio sites were opened and measured on 2026-10-17 (7 internationa
 - **`tools/funnel.mjs` and Hebrew:** `BOOK_WORDS` has no Hebrew, so "בואו נדבר", "צרו קשר" and "לקביעת פגישה" links are not classed as CTAs. iDeez reads as having no action at all, which is wrong (its hero pill is visible in the shot). On Koto the tool reports a "whatsapp" action that is really a project page (`/projects/whatsapp`). Both were corrected by hand in C-sites-04.
 - **The reduced-motion check** (scanning stylesheets for `prefers-reduced-motion`) cannot read cross-origin sheets, so it was not used as a claim.
 - **Pentagram, Wednesday and Brand New lists** were not covered; 11 sites were enough for the success criteria.
+
+- **Reopen (2026-10-18):** dogood.studio answered **403 Forbidden** to Playwright with a spoofed Android Chrome user agent, while `tools/shoot.mjs` (default user agent) got the page; it was weighed again with the default user agent. `tools/funnel.mjs` again missed Hebrew CTAs: nothing found on DoGood (its CTA opens a popup), and Shelly's home-footer phone and WhatsApp were missed (the tool reported 2 taps via the accessibility page). Corrected by hand in C-sites-17. curl of galit-sharon.co.il returned an empty body, so its phone markup was read from funnel.json only. Rinat Hadar's weight differed 2× between two runs because of streamed video.
 
 ## Handoff notes
 
@@ -164,3 +227,17 @@ Eleven brand-studio sites were opened and measured on 2026-10-17 (7 internationa
 - The client's current Wix site (measured as a control, not one of the 11): 2.49 MB, `lang="he"`, but `<html>` computes `direction: ltr`, and the funnel found its "לקביעת פגישת הכרות" ("book an intro meeting") booking link 2 taps deep on /process. Handed to the `position` lane; not a claim here.
 
 Scratch: screenshots under `dossier/mutag-meitiv/industry/shots/<site>/`, funnel output under `dossier/mutag-meitiv/industry/shots/funnel/<site>/`. The `funnel/` path is not git-ignored, so everything was kept under `shots/`. Delete with `tools/clean-shots.mjs` after the merge.
+
+**Reopen: small Hebrew practices (2026-10-18; C-sites-16 to C-sites-22):**
+
+| Site | First screen (390) | First contact → taps | Offer split (nav / home) | Body (390) | First load |
+|---|---|---|---|---|---|
+| DoGood (dogood.studio) | "מיתוג ודיגיטל לארגונים עם משמעות" + paragraph | "תיאום פגישת היכרות" just below the first screen → popup → WhatsApp or 2-field form (2 taps) | No nav; one page + portfolio PDF | Ping 22/1.55 | 1.09 MB |
+| Tali Gilad (taligilad.co.il) | Logo + photo only (hero sentence hidden on mobile) | Footer icons (email, WhatsApp, phone) + 4-field form at the end of 7.2k px | 7 flat items by audience; 3 service blocks with "לכל הפרטים" | Arbel 18/1.28 | 5.41 MB |
+| Shelly Sever (shellysever.com) | Intro loader + cookie banner; "זה לא מקרה שהגעת אליי!" on screen 2 | Footer phone and WhatsApp at the end of 12.9k px | Verb-labelled groups; one section per offer with its own CTA (course, lecture, consulting, podcast talk) | Alef 18/1.5 | 1.81 MB |
+| Reuta Yosef Tzvi (reuta.co.il) | "רעותה יועצת עסקית / יעוץ עסקי לנשים" + free-Zoom CTA | Floating call pill on every screen (0 taps; dials a different number than shown) | 5 groups: mentoring tracks / courses / about / content / contact; home follows the same order | Heebo 18/1.5 | 1.95 MB |
+| Galit Sharon (galit-sharon.co.il) | Photo slider "גלית שרון / Power Skills לאנשים שמובילים אנשים"; email and phone top bar | 3-field form right under the hero; WhatsApp mid-page (1 tap) | ~30 items by audience (managers / employees / digital courses / styling) | Assistant 20/1.9 | 6.16 MB |
+| Rinat Hadar (r-h.studio) | "מעצבות לך מיתוג קונספטואלי לעסק" | Footer phone and email at the end of 8.4k px | 7 items by work type; courses as one item on a subdomain | TheBasics 14/1.1 (one paragraph) | 9.9–20.2 MB |
+
+**Speculation for the merger and creative-director (not claims):** the client is a one-founder, multi-offer practice like Reuta and Shelly. Their pattern (founder plus role on the first screen; offers grouped by type, each with its own block and CTA; content such as the podcast as a separate group) is the closest structural precedent for "smartly divided". Their weak points (contact only at the page end, a loader instead of a sentence, popups) are where a new site can visibly beat them. Reuta's always-visible call pill is the one first-screen contact pattern in the set, and it would need a WhatsApp variant to match C-sites-04/05.
+
