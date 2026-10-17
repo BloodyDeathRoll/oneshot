@@ -43,6 +43,13 @@ Spot-checks on 2026-10-18 (WebFetch, curl, pdftotext, Google suggest endpoint). 
 | C-sites-13 | SURVIVES | Already scoped to what headless Chromium was served. |
 | C-sites-14 | WEAKENED | Checked: Protocol (undated) says IS 5568 adopts WCAG 2.0, a prominent statement is required, and plugins are not enough. A search shows a 2023 edition of IS 5568 Part 1 and conflicting secondary claims about 2.0 vs 2.1, and the exemption table Protocol prints is inconsistent (two "full exemption" bands). Narrower claim: **Israeli accessibility regulations (Reg. 35) require covered sites to meet IS 5568, legally anchored to WCAG 2.0 AA (current edition 2023, exact WCAG alignment unverified), and to publish a prominent accessibility statement; an overlay plugin alone does not comply. Turnover exemptions exist, but their thresholds are unverified.** (The playbook's WCAG 2.1 AA floor covers this either way.) |
 | C-sites-15 | SURVIVES | Fingerprint-level and stated as such; for the Israeli sites it is 3 of 4 on WordPress or Webflow (iDeez on Next.js), which matches "mostly". |
+| C-sites-16 | WEAKENED | (Reopen.) Checked with curl: Tali Gilad's "מיתוג אסטרטגי, מקיף…" sentence is in the HTML; Galit Sharon's "Power Skills" and Shelly Sever's "זה לא מקרה" are present. The headline says the small practices lead with the founder "rather than a position sentence", but the lane's own evidence splits 2 / 2 / 2. Narrower claim: **of six small Hebrew practice sites, the two coaches Reuta and Galit Sharon lead with the founder's name and role line, the two design studios (DoGood, Rinat Hadar) lead with a position line, and two (Tali Gilad at 390 px, Shelly Sever) show no offer sentence on the first mobile screen; four of six show the founder's face on screen 1 or 2.** |
+| C-sites-17 | SURVIVES | (Reopen.) Checked: DoGood's "תיאום פגישת היכרות" is present; the Reuta call pill and its `tel:` links are in the HTML; Tali Gilad's "נדבר בקרוב" sits in the end form. Descriptive, scoped to six sites, and the device-height caveat is stated. |
+| C-sites-18 | SURVIVES | (Reopen.) Checked: Shelly Sever's verb labels ("התעוררות", "הגשימו", "האזינו") and Tali Gilad's "ליווי למעצבים" are in the HTML. Descriptive structure as published; it makes no conversion claim. |
+| C-sites-19 | SURVIVES | (Reopen.) Checked: Shelly Sever's "הרשמה לעדכונים" and "למה לי פודקאסט" and Galit Sharon's "להורדת מדריך" are present. Scoped to the six sites, and the popup-variance caveat is stated. |
+| C-sites-20 | SURVIVES | (Reopen.) The count is consistent: 18–20 px in four of six (Galit, Shelly, Reuta, Tali). One computed-style run whose script is not in the repo, and the caveat is stated. The comparison with the studios rests on C-sites-10's three sites, so read it as a sample contrast, not a rule. |
+| C-sites-21 | WEAKENED | (Reopen.) Same method as C-sites-09 (unthrottled, load + 4 s). Its own two runs on Rinat Hadar differ 2× (9.94 vs 20.16 MB), and DoGood was measured with a different user agent. Elementor's `elementor-action` and DoGood's `brxe-` classes are confirmed. Narrower claim: **in one or two unthrottled headless runs, DoGood was lightest (about 1.1 MB and the only one under 1.5 MB), Shelly Sever and Reuta were about 2 MB, and Rinat Hadar, the only site with autoplay video, was heaviest and unstable (10–20 MB); five of six run on WordPress (Elementor ×4, Bricks ×1).** |
+| C-sites-22 | WEAKENED | (Reopen.) Checked: Reuta's pill shows "050-200-0224", and all three `href="tel:…"` links on the home page are `tel:0559851686`. The WhatsApp number 972559851686 is not in the home HTML (it may be injected by a widget), so it is unverified. "Meets at once" overstates it: the popup appears from about screen 9. Whether the mismatch is broken or a forwarding number is unknown. Narrower claim: **Reuta's call pill shows 050-200-0224 but dials 055-985-1686; Shelly Sever's first screen is an intro loader plus a cookie banner with no offer text; Tali Gilad hides her hero sentence at 390 px; Reuta's lead popup covers most of the viewport later in the scroll; fixed reCAPTCHA and accessibility buttons sit over page edges (headless, one visit).** |
 | C-players-01 | SURVIVES | TikTek, Shepaz and Shiferon are described from their own pages plus Calcalist. Not refuted. |
 | C-players-02 | SURVIVES | Checked on s-lerman.com (nonprofit page; now "113+" Google reviews). Descriptive. |
 | C-players-03 | SURVIVES | Checked on dogood.studio: "מיתוג ודיגיטל לארגונים עם משמעות", "בואו נעשה טוב ביחד!". Already scoped to "only one found". |
@@ -85,7 +92,14 @@ Spot-checks on 2026-10-18 (WebFetch, curl, pdftotext, Google suggest endpoint). 
 | C-audience-13 | SURVIVES | Reproduced: "הרצאה על מיתוג" returns nothing. Scoped to completions; the price caveat is stated. |
 | C-audience-14 | SURVIVES | Reproduced the "esg" completions (now also "esge 2026", "esgo 2027", conference noise). Already scoped to completions only. |
 
-Totals: industry 7 / 8 / 0; sites 8 / 7 / 0; players 6 / 5 / 0; position 13 / 3 / 0; audience 4 / 9 / 1 (survives / weakened / killed). All 71 claims: 38 survive, 32 weakened, 1 killed.
+Totals (survives / weakened / killed):
+- industry 7 / 8 / 0
+- sites 12 / 10 / 0 (first pass 8 / 7 / 0, plus the reopen C-sites-16 to 22: 4 / 3 / 0)
+- players 6 / 5 / 0
+- position 13 / 3 / 0
+- audience 4 / 9 / 1
+
+All 78 claims: 42 survive, 35 weakened, 1 killed.
 
 ## Attack passes
 
@@ -98,6 +112,9 @@ Totals: industry 7 / 8 / 0; sites 8 / 7 / 0; players 6 / 5 / 0; position 13 / 3 
 - **C-audience-08, -11**: the headline reaches past its quote ("documented gap"; funders judging the brand).
 - **C-position-08**: miscounted (15 logo images, not 13).
 - **C-audience-12**: misnamed "Kibbutz Yona" (it is Kfar Yona). "Bartali" is correct (ברטלי – נוער בתנועה).
+- **Reopen:**
+  - **C-sites-16**: "lead with the founder rather than a position sentence" is contradicted by its own 2 / 2 / 2 split.
+  - **C-sites-22**: the WhatsApp number is not in the cited home HTML.
 
 ### Stale
 - **C-industry-12** (2021): the ISA's 2022 fund-manager directive is missed; narrowed to "as of 2023".
@@ -120,6 +137,8 @@ Totals: industry 7 / 8 / 0; sites 8 / 7 / 0; players 6 / 5 / 0; position 13 / 3 
 - **Brand the Change sells its own online courses** directly in English (C-players-10). An Israeli owner could take BTC's course instead of the client's Hebrew one. Not examined.
 - **Brand Academy runs both a course shop (C-industry-03) and the Israel Brand Award (C-players-08).** It is a competitor on courses and possibly the award's organiser (C-position-07). Not connected by any lane.
 
+- **The reopen (C-sites-16 to 22) closes the solo and coach-site gap above.** No conversion data comes with it: the descriptions are structural.
+
 ### Pain vs willingness to pay
 - **Strain is not demand.** C-industry-06/07/08 (closures, the self-employed down about 50 %, 71 % of nonprofits in difficulty) and C-audience-05 (career change) are pain or climate. None shows anyone buying branding.
 - **WTP evidence is only list prices and income caps:**
@@ -138,6 +157,7 @@ Totals: industry 7 / 8 / 0; sites 8 / 7 / 0; players 6 / 5 / 0; position 13 / 3 
 - **C-sites-09**: precise MB figures from one unthrottled run, a script that is not in the repo, and a 4 s window inflated by streaming video.
 - **C-sites-14**: stated as legal obligation from one undated secondary guide.
 - **C-players-05, -06**: "mostly" and "in Israel" from three or four pages.
+- **C-sites-21** (reopen): MB figures from runs that disagree 2× on the same site (Rinat Hadar), with DoGood on a different user agent. Narrowed to an order.
 - No claim that survives carries more confidence than its checked source supports.
 
 ## Self-check
@@ -146,9 +166,13 @@ The verdict I am least sure of is **C-audience-09 (KILLED)**. A narrower claim c
 
 Second, **C-players-10**. I did not find a primary statement that Fifty & Fifty (San Diego) is *not* a B Corp. I found only that its pages do not say so, and that the B Corp search hits are Fifty Fifty Post (UK). If B Lab's directory lists Fifty & Fifty, restore the detail.
 
+From the reopen, **C-sites-20 (SURVIVES)** is the one I would revisit first. The character-weighted computed-style script is not in the repo, and repeated testimonial or slider text could skew the dominant size. I kept it because four separate sites agree and the claim states the caveat.
+
 Third, **C-sites-14**: whether IS 5568's 2023 edition is legally tied to WCAG 2.0 or 2.1 is unresolved. It does not change the build, because the playbook floor is 2.1 AA.
 
 ## Reopen request
+
+Reopened once 2026-10-18; ruled on C-sites-16..22. No further reopen.
 
 - **Lane:** `sites`
 - **Brief:** Describe 5–6 Hebrew RTL sites of *solo or small* practices that the client's buyers actually compare with: DoGood Studio, Tali Gilad, Shelly Sever, Reuta Yosef Tzvi, Galit Sharon, and one more small purpose or personal-branding practice. For each, use `tools/shoot.mjs` at 1440 and 390 plus `tools/funnel.mjs` at depth 1, with the Hebrew CTA words added by hand. Report:
