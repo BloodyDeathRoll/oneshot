@@ -376,7 +376,8 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
       critic_score_kind: latestScored ? `${latestScored.kind}${latestScored.round ? ' ' + latestScored.round : ''}` : null,
       critic_series: critic,
       // The client chooses the mode after a sale (product_chosen carries it); before that, none is shown.
-      hosting_mode: hosting ?? (rank(last.to_state) >= rank('product_chosen') ? run.default_mode : null),
+      // Lines before 2026-10-05 carry a hosting_mode that was not the client's choice: ignored until product_chosen.
+      hosting_mode: reached.has('product_chosen') ? (hosting ?? run.default_mode) : null,
       preview_url: deploy?.url ?? previewFromLedger ?? null,
       deploy, cms_verified: deploy?.verified ?? false,
       pitch, shots,
