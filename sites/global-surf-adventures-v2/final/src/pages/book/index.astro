@@ -4,18 +4,31 @@
 import css from '../../styles/site.css?raw'
 import js from '../../scripts/site.js?raw'
 import { fontFaces, fontPreloads, TIER } from '../../lib/head.mjs'
-import { c, CT, SPRITE, header, footer, bookForm, pageData } from '../../lib/site.mjs'
+import { c, CT, SPRITE, header, footer, bookForm, pageData, SITE, LD_TYPE, ldJson, seoHead } from '../../lib/site.mjs'
 
 const pre = '../'
 const data = { ...pageData(pre), plates: null, rosa: null, page: 'book' }
+/* Head and structured data (station 4h). The title is the form's own title + the name. The description is
+   interface wording (the form's steps, from labels.json and the "Prices from the booking engine" note the form
+   prints), not a business fact; the home page carries the business description. JSON-LD: this page as a
+   WebPage about the business, which the home page describes in full (linked by @id when the build has
+   SITE_URL). */
+const title = `${CT.hero_c3} | ${c.businessName}`
+const desc = 'Choose your level, your room, your dates and guests. Prices from the booking engine.'
+const ld = {
+  '@context': 'https://schema.org', '@type': 'WebPage', name: title, description: desc,
+  ...(SITE ? { '@id': new URL('book/', SITE).href, url: new URL('book/', SITE).href } : {}),
+  about: SITE ? { '@id': `${SITE.href}#business` } : { '@type': LD_TYPE[c.businessType] ?? 'LocalBusiness', name: c.businessName },
+}
 ---
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{`${CT.hero_c3} | ${c.businessName}`}</title>
-<meta name="description" content={c.tagline}>
+<title>{title}</title>
+<meta name="description" content={desc}>
+<Fragment set:html={seoHead({ path: 'book/', title, description: desc })} />
 <Fragment set:html={fontPreloads(pre)} />
 <script is:inline set:html={TIER}></script>
 <style is:inline set:html={fontFaces(pre) + css}></style>
@@ -30,5 +43,6 @@ const data = { ...pageData(pre), plates: null, rosa: null, page: 'book' }
 <Fragment set:html={footer(pre)} />
 <script is:inline type="application/json" id="pagedata" set:html={JSON.stringify(data).replace(/</g, '\\u003c')}></script>
 <script is:inline set:html={js}></script>
+<script is:inline type="application/ld+json" set:html={ldJson(ld)}></script>
 </body>
 </html>

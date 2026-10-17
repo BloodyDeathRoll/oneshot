@@ -8,6 +8,7 @@ import {
   c, G, CT, ST, S, INSTAGRAM, e, paras, sentences, block, dayMonYear, money, PLATFORM, sourceOf, safeUrl, WA_GENERAL,
   LEVELS, levelPrice, FREE, ROOMS, roomTab, INCL, slotRow, shapeOf, srcset, top, img, gapImg, hero, clip, ic,
   SPRITE, header, footer, bookForm, pageData, R45, R32, R1610, SQ, R219, FULL,
+  metaDescription, businessLd, ldJson, seoHead, anyShape,
 } from '../lib/site.mjs'
 
 const pre = ''
@@ -51,6 +52,15 @@ const quotes = (c.testimonials ?? []).map((t) => `<figure><blockquote>“${e(t.q
 const ig = G.instagram
 const data = { ...pageData(pre), plates: plateData, rosa: fc ? { id: fc.rosaSpotId, name: fc.spotName } : null, page: 'home' }
 const title = `${c.businessName} | Surf weeks in Sri Lanka`
+/* Head and structured data (station 4h). The description: owner-written fields only (tagline, the welcome's
+   lodge sentence, the rooms block's first sentence), cut at a sentence to 155. og:image is the hero poster (a
+   frame of the hero video, 1280×720 JPEG), absolute only with SITE_URL. JSON-LD image: the poster + every
+   photos[] row, as the page serves them. */
+const desc = metaDescription([c.tagline, sentences(paras(intro?.body)[1])[0], sentences(lodgeP[0])[0]])
+const ogImage = H ? (() => { const s = H.poster.sources.find((x) => x.jpg); return s ? { src: s.jpg, width: s.w, height: s.h, alt: H.alt } : null })() : null
+const ldImages = [H ? top(H.poster).webp : null, ...(c.photos ?? []).map((_, n) => slotRow(n)).filter(Boolean)
+  .map((row) => { const sh = anyShape(row.filename); return sh ? top(sh).webp : null })].filter(Boolean)
+const ld = businessLd({ description: desc, images: ldImages })
 ---
 <!doctype html>
 <html lang="en">
@@ -58,10 +68,8 @@ const title = `${c.businessName} | Surf weeks in Sri Lanka`
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{title}</title>
-<meta name="description" content={c.tagline}>
-<meta property="og:title" content={c.businessName}>
-<meta property="og:description" content={c.tagline}>
-{H?.jpg && <meta property="og:image" content={H.jpg} />}
+{desc && <meta name="description" content={desc}>}
+<Fragment set:html={seoHead({ path: '', title, description: desc, image: ogImage })} />
 <Fragment set:html={fontPreloads(pre)} />
 {H && <link rel="preload" as="image" imagesrcset={srcset(H.poster, pre)} imagesizes="100vw" media="(min-width: 701px), (orientation: landscape)" fetchpriority="high" />}
 {H?.phonePoster && <link rel="preload" as="image" href={H.phonePoster.webp} media="(max-width: 700px) and (orientation: portrait)" fetchpriority="high" />}
@@ -325,5 +333,6 @@ const title = `${c.businessName} | Surf weeks in Sri Lanka`
 </div>
 <script is:inline type="application/json" id="pagedata" set:html={JSON.stringify(data).replace(/</g, '\\u003c')}></script>
 <script is:inline set:html={js}></script>
+<script is:inline type="application/ld+json" set:html={ldJson(ld)}></script>
 </body>
 </html>

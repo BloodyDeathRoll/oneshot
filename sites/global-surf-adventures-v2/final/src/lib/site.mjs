@@ -68,6 +68,8 @@ export const INCL = (G.inclusions[1] ?? []).map((it, i) => {
 /* ---------- photographs ---------- */
 export const slotRow = (n) => { const m = (c.photos ?? [])[n]?.image; return m?.filename ? m : null }
 export const shapeOf = (filename, key) => photosGen[filename]?.shapes?.[key] ?? null
+/* a photo's uncropped shape when it has one, else the first shape the page uses (JSON-LD image) */
+export const anyShape = (filename) => { const s = photosGen[filename]?.shapes; return s ? s[FULL] ?? Object.values(s)[0] ?? null : null }
 export const srcset = (shape, pre = '') => shape.sources.map((s) => `${pre}${s.webp} ${s.w}w`).join(', ')
 export const top = (shape) => shape.sources[shape.sources.length - 1]
 export const R45 = 'r1.25', R32 = 'r0.667', R1610 = 'r0.625', SQ = 'r1', R219 = 'r0.429', FULL = 'full'
@@ -176,17 +178,20 @@ export const bookForm = (pre, page) => {
   const step = (id, lab, sing) => `<div class="stp"><label for="${id}">${e(lab)}</label><div class="row"><button type="button" data-step="-1" data-for="${id}" aria-label="Remove ${sing}">−</button><input id="${id}" name="${{ 'g-f': 'female', 'g-m': 'male', 'g-c': 'couple' }[id]}" type="number" min="0" max="${id === 'g-c' ? 3 : 6}" value="${id === 'g-f' ? 1 : 0}" inputmode="numeric"><button type="button" data-step="1" data-for="${id}" aria-label="Add ${sing}">+</button></div></div>`
   const asOf = `Prices from the booking engine, ${G.snapshot.baseAsOf} (rooms ${G.snapshot.roomsAsOf}).`
   const handoff = `${e(B.handoff)} ${e(B.handoff_nothing_booked)}`
+  /* 4h: on book/ the form is the page, so its title is the page's one h1 and the steps are h2 (the drawer on
+     home keeps h2 / h3 under the home h1). CSS styles both levels the same. */
+  const h = page ? ['h1', 'h2'] : ['h2', 'h3']
   return `<section class="book ${page ? 'page' : 'drawer'}" id="book" aria-labelledby="bk-t">
 <div class="book-panel" id="bookpanel"><button class="x" type="button" aria-label="Close booking" data-close>${ic('x')}</button>
 <div class="book-scroll" id="bookscroll">
 ${page ? '' : `<div class="book-band" id="bookband" aria-hidden="true">${first ? `<img id="bandposter" src="${pre}${top(first.poster).webp}" alt=""><video id="bandvid" muted loop playsinline preload="none"></video>` : ''}</div>`}
-<h2 class="script" id="bk-t">${e(CT.hero_c3)}</h2>
+<${h[0]} class="script" id="bk-t">${e(CT.hero_c3)}</${h[0]}>
 <form id="bookform" method="get" action="${e(ENGINE + LEVELS[0].slug)}">
-<div class="step"><h3>${e(ST.book_level)}</h3><div class="opts">${lv}
+<div class="step"><${h[1]}>${e(ST.book_level)}</${h[1]}><div class="opts">${lv}
 <div class="opt fs-opt"><span><b>${e(FREE.name)}${FREE.detail ? ' | ' + e(FREE.detail) : ''}</b><small>${e(FREE.one)}</small></span>${FREE.wa ? `<a class="btn light" href="${e(FREE.wa)}" target="_blank" rel="noopener">${ic('wa', 'wa')}${e(CT.freestylers)}</a>` : ''}</div></div></div>
-<div class="step"><h3>${e(ST.book_included)}</h3><ul class="blist" id="blist">${incl}</ul></div>
-<div class="step"><h3>${e(ST.book_room)}</h3><div class="opts">${rooms}</div></div>
-<div class="step"><h3>${e(ST.book_dates)}</h3>
+<div class="step"><${h[1]}>${e(ST.book_included)}</${h[1]}><ul class="blist" id="blist">${incl}</ul></div>
+<div class="step"><${h[1]}>${e(ST.book_room)}</${h[1]}><div class="opts">${rooms}</div></div>
+<div class="step"><${h[1]}>${e(ST.book_dates)}</${h[1]}>
 <div class="field"><select id="start" name="start" required>${SATURDAYS.map((d) => `<option value="${d}">${satLabel(d)}</option>`).join('')}</select><label for="start">${e(B.field_checkin)}</label></div>
 <p class="help">${e(B.field_checkin_help)}</p>
 <fieldset class="seg" id="nights"><legend>${e(B.field_nights)}</legend>${nights}</fieldset>
@@ -214,4 +219,136 @@ export const pageData = (pre) => {
     sess: Object.fromEntries(LEVELS.map((l, k) => [l.slug, (G.inclusions[k + 1] ?? []).find((it) => it.icon === 'clock')?.text ?? ''])),
     totalAll: B.total_all, included: B.room_included,
   }
+}
+
+/* ---------- SEO plumbing (station 4h) ---------- */
+/* Preview or real domain? One place decides it (the rule KA's build set, Shahar 2026-09-22; same code as
+   sites/global-surf-adventures/final and this pipeline's other finals). PREVIEW = no SITE_URL, or a SITE_URL on
+   *.workers.dev / localhost. A preview is not indexed: robots.txt disallows everything, both pages carry
+   <meta name="robots" content="noindex, nofollow">, and there is no sitemap. SITE_URL must end in '/'. */
+export const isPreviewUrl = (url) => {
+  if (!url) return true
+  let host
+  try { host = new URL(url).hostname.toLowerCase().replace(/^\[|\]$/g, '') } catch { return true }
+  return host === 'workers.dev' || host.endsWith('.workers.dev')
+    || host === 'localhost' || host.endsWith('.localhost')
+    || host === '127.0.0.1' || host === '::1'
+}
+export const SITE = import.meta.env.SITE ? new URL(import.meta.env.SITE) : null
+export const IS_PREVIEW = isPreviewUrl(SITE)
+export const abs = (u) => (SITE ? new URL(u, SITE).href : null)
+/* the two routes, for the sitemap and the canonicals */
+export const ROUTES = ['', 'book/']
+
+/* the meta description: owner-written fields only, joined as sentences, cut at a sentence boundary to 155 */
+export const metaDescription = (parts, max = 155) => {
+  let out = ''
+  for (const p of parts.filter(Boolean).map((s) => s.trim().replace(/[.\s]+$/, ''))) {
+    const next = out ? `${out} ${p}.` : `${p}.`
+    if (next.length > max) break
+    out = next
+  }
+  return out
+}
+
+const COUNTRY = { 'sri lanka': 'LK' }
+/* contact.address (free text) → PostalAddress. Splits "street…, town [postcode], country" (playbook §6 order)
+   only when the last part is a country it knows; otherwise the whole address stays in streetAddress. Never
+   adds a part. */
+export const postalAddress = (text) => {
+  const parts = (text ?? '').split(/\s*(?:\n|,)\s*/).map((s) => s.trim()).filter(Boolean)
+  if (!parts.length) return null
+  const a = { '@type': 'PostalAddress' }
+  const iso = parts.length >= 3 ? COUNTRY[parts[parts.length - 1].toLowerCase()] : null
+  const town = iso ? /^(?:(\d{4,6})\s+)?(.+?)(?:\s+(\d{4,6}))?$/.exec(parts[parts.length - 2]) : null
+  if (town) {
+    a.streetAddress = parts.slice(0, -2).join(', ')
+    if (town[1] || town[3]) a.postalCode = town[1] || town[3]
+    a.addressLocality = town[2]
+    a.addressCountry = iso
+  } else a.streetAddress = parts.join(', ')
+  return a
+}
+
+/* geo from contact.mapUrl: a Google Maps *place* URL carries the listing's own pin as !3d<lat>!4d<lng> (the
+   @lat,lng part is only the viewport). The schema has no geo field, so the pin rides on the owner-editable map
+   link: change the link and the pin follows; a link without a pin gives no geo. */
+export const pinFromMapUrl = (u) => {
+  const m = /!3d(-?\d{1,2}\.\d+)!4d(-?\d{1,3}\.\d+)/.exec(u ?? '')
+  if (!m) return null
+  const lat = +m[1], lng = +m[2]
+  return Math.abs(lat) <= 90 && Math.abs(lng) <= 180 ? { lat, lng } : null
+}
+
+/* businessType → schema.org type. A surf camp sells the bed and the lessons, so it is typed as both (schema.org
+   allows a multi-typed entity): LodgingBusiness carries checkinTime / checkoutTime / amenityFeature,
+   SportsActivityLocation is seo base.md's type for a school or camp. */
+export const LD_TYPE = {
+  surf_camp: ['LodgingBusiness', 'SportsActivityLocation'], beach_lodging: 'LodgingBusiness',
+  surf_school: 'SportsActivityLocation', board_rental: 'SportsActivityLocation',
+  surf_shop: 'SportingGoodsStore', shaper: 'Store', other: 'LocalBusiness',
+}
+
+/* JSON-LD for the business: one block, every value from content.json (and, for sameAs, the SCHEMA GAP Instagram
+   link the page shows). No aggregateRating / review: Shahar's no-ratings-markup decision for KA, applied to every
+   site since. Absolute @id / url / image only with SITE_URL. */
+export const businessLd = ({ description, images = [] } = {}) => {
+  const k = c.contact ?? {}
+  const postal = postalAddress(k.address)
+  const pin = pinFromMapUrl(k.mapUrl)
+  const map = safeUrl(k.mapUrl)
+  const priced = (c.lessons ?? []).filter((l) => typeof l.price === 'number' && l.currency)
+  const low = priced.length ? priced.reduce((a, b) => (b.price < a.price ? b : a)) : null
+  const same = [safeUrl(G.instagram?.url), ...(c.ratings ?? []).map((r) => safeUrl(r.url))].filter(Boolean)
+  return {
+    '@context': 'https://schema.org',
+    '@type': LD_TYPE[c.businessType] ?? 'LocalBusiness',
+    ...(SITE ? { '@id': `${SITE.href}#business`, url: SITE.href } : {}),
+    name: c.businessName,
+    ...(description ? { description } : {}),
+    ...(SITE && images.length ? { image: images.map(abs) } : {}),
+    ...(tel(k.phone) ? { telephone: k.phone } : {}),
+    ...(k.email ? { email: k.email } : {}),
+    ...(postal ? { address: postal } : {}),
+    ...(pin ? { geo: { '@type': 'GeoCoordinates', latitude: pin.lat, longitude: pin.lng } } : {}),
+    ...(map ? { hasMap: map } : {}),
+    /* the lowest package price, as the page prints it ("From $1,466 pp | 7 nights": lessons[].price, per person, 7 nights) */
+    ...(low ? { priceRange: `From ${low.currency} ${low.price.toLocaleString('en-US')} per person, 7 nights` } : {}),
+    ...(stay.checkInFrom ? { checkinTime: stay.checkInFrom } : {}),
+    ...(stay.checkOutTo ? { checkoutTime: stay.checkOutTo } : {}),
+    ...((c.amenities ?? []).length ? {
+      amenityFeature: c.amenities.map((a) => ({ '@type': 'LocationFeatureSpecification', name: a.note ? `${a.label} (${a.note})` : a.label, value: true })),
+    } : {}),
+    ...((c.openingHours ?? []).length ? {
+      openingHoursSpecification: c.openingHours.map((h) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.days.map((d) => ({ mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday', sun: 'Sunday' })[d]), opens: h.opens, closes: h.closes })),
+    } : {}),
+    ...((c.languagesSpoken ?? []).length ? { knowsLanguage: c.languagesSpoken } : {}),
+    ...(same.length ? { sameAs: [...new Set(same)] } : {}),
+  }
+}
+/* JSON in a <script>: '<' escaped so no value can close the element */
+export const ldJson = (o) => JSON.stringify(o).replace(/</g, '\\u003c')
+
+/* head tags shared by both pages (after <title> and the description). Absolute URLs (canonical, hreflang,
+   og:url, og:image) only with SITE_URL: a relative og:image is not read by link previews. */
+export const seoHead = ({ path, title, description, image }) => {
+  const url = abs(path)
+  return [
+    IS_PREVIEW ? '<meta name="robots" content="noindex, nofollow">' : '',
+    url ? `<link rel="canonical" href="${e(url)}">` : '',
+    url ? `<link rel="alternate" hreflang="en" href="${e(url)}">` : '',
+    url ? `<link rel="alternate" hreflang="x-default" href="${e(url)}">` : '',
+    '<meta property="og:type" content="website">',
+    `<meta property="og:site_name" content="${e(c.businessName)}">`,
+    `<meta property="og:title" content="${e(title)}">`,
+    description ? `<meta property="og:description" content="${e(description)}">` : '',
+    url ? `<meta property="og:url" content="${e(url)}">` : '',
+    ...(SITE && image ? [
+      `<meta property="og:image" content="${e(abs(image.src))}">`,
+      `<meta property="og:image:width" content="${image.width}">`,
+      `<meta property="og:image:height" content="${image.height}">`,
+      image.alt ? `<meta property="og:image:alt" content="${e(image.alt)}">` : '',
+    ] : []),
+    `<meta name="twitter:card" content="${SITE && image ? 'summary_large_image' : 'summary'}">`,
+  ].filter(Boolean).join('\n')
 }
