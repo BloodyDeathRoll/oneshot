@@ -27,7 +27,19 @@ Relayed by Shahar in session, 2026-10-17. His words, verbatim:
 | 9 | Informative but not overwhelming; content smartly divided | "Informative but not overpowering with info, smartly divided" |
 | 10 | Professionally designed | "professionally designed" |
 
+## Answers (Shahar, 2026-10-17, at gate a′), verbatim
+
+> No English pages, leading services are personal branding and strategic planning. Prices in
+> shekels. Topics approved. Proposal IN HEBREW
+
+| # | Answer | plan.md question |
+|---|---|---|
+| 11 | Hebrew only; no English pages | 4 |
+| 12 | The leading services are personal branding and strategic planning | 5 |
+| 13 | Prices, where shown, are in ILS (₪) | 6 |
+| 14 | The proposal page is in Hebrew | market pack: pitch language |
+
 ## Not given
 
-Deadline, budget band, languages beyond Hebrew, references the client likes, dislikes. The analyst
-lists them as open questions in `plan.md`; none is blocking for research.
+Deadline, budget band, references the client likes, dislikes, the main CTA, the award details and
+collaborators, domain and server (`plan.md` 1–3, 7–9). None is blocking for research.
