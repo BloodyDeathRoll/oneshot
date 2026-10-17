@@ -26,9 +26,13 @@ import os from 'node:os'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-export const RECIPE = 'p1'
+export const RECIPE = 'p2'
 const CROP_X = 0.5
 const RATIO = 668 / 1080 // width / height: the unique mockup's phone master (hero-p668)
+/* p2 (visual critic, station 5 r1: "the phone hero is soft"): the 668 px crop was drawn across ~780 device px
+   by the browser's own scaler. The crop is now enlarged once, here, to OUT_W with lanczos and a light unsharp,
+   and encoded near the 2 MB phone cap, so a DPR-2 phone draws it at about 1:1. */
+const OUT_W = 1080
 const CAP = 2_000_000
 const MAX_SECONDS = 20
 const TYPE = { mp4: 'video/mp4; codecs="avc1.640028"', webm: 'video/webm; codecs="av01.0.08M.08"' }
@@ -65,8 +69,9 @@ if (!video || !poster) {
 
 const crop = ({ width, height }) => {
   const h = even(height), w = even(Math.min(width, h * RATIO))
-  return { w, h, x: even((width - w) * CROP_X), y: even((height - h) / 2) }
+  return { w, h, x: even((width - w) * CROP_X), y: even((height - h) / 2), ow: OUT_W, oh: even(OUT_W * h / w) }
 }
+const up = (c) => `crop=${c.w}:${c.h}:${c.x}:${c.y},scale=${c.ow}:${c.oh}:flags=lanczos,unsharp=5:5:0.5:5:5:0`
 
 /* the clip: cached by the original's sha256, like the publisher's encodes */
 const src = path.join(tenant, 'media', path.basename(video.filename))
@@ -79,8 +84,8 @@ if (!existsSync(path.join(cdir, 'done.json'))) {
   rmSync(tmp, { recursive: true, force: true })
   mkdirSync(tmp, { recursive: true })
   const length = Math.min(MAX_SECONDS, p.duration || MAX_SECONDS)
-  const vf = `crop=${c.w}:${c.h}:${c.x}:${c.y},format=yuv420p`
-  let crf = 24
+  const vf = `${up(c)},format=yuv420p`
+  let crf = 21
   for (let i = 0; i < 4; i++) {
     run('ffmpeg', ['-y', '-v', 'error', '-t', String(length), '-i', src, '-map', '0:v:0', '-an', '-sn', '-dn', '-map_metadata', '-1',
       '-vf', vf, '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-crf', String(crf), '-movflags', '+faststart', path.join(tmp, 'p.mp4')])
@@ -89,29 +94,29 @@ if (!existsSync(path.join(cdir, 'done.json'))) {
   }
   const kbps = Math.floor((CAP * 8 * 0.9) / length / 1000)
   run('ffmpeg', ['-y', '-v', 'error', '-t', String(length), '-i', src, '-map', '0:v:0', '-an', '-sn', '-dn', '-map_metadata', '-1',
-    '-vf', vf, '-c:v', 'libsvtav1', '-preset', '8', '-crf', '36', '-svtav1-params', `mbr=${kbps}`, path.join(tmp, 'p.webm')])
+    '-vf', vf, '-c:v', 'libsvtav1', '-preset', '6', '-crf', '30', '-svtav1-params', `mbr=${kbps}`, path.join(tmp, 'p.webm')])
   writeFileSync(path.join(tmp, 'done.json'), JSON.stringify({ crop: c }))
   rmSync(cdir, { recursive: true, force: true })
   renameSync(tmp, cdir)
 }
 mkdirSync(outDir, { recursive: true })
-const vstem = `${stemOf(video.filename)}.p${c.w}`
+const vstem = `${stemOf(video.filename)}.p${c.ow}`
 const out = {}
 for (const kind of ['webm', 'mp4']) {
   const name = `${vstem}.${kind}`
   copyFileSync(path.join(cdir, `p.${kind}`), path.join(outDir, name))
   const bytes = statSync(path.join(outDir, name)).size
   if (bytes > CAP) console.warn(`video-portrait: ${name} is over the ${CAP} byte phone cap`)
-  out[kind] = { src: `video/${name}`, type: TYPE[kind], width: c.w, height: c.h, bytes }
+  out[kind] = { src: `video/${name}`, type: TYPE[kind], width: c.ow, height: c.oh, bytes }
 }
 
 /* the poster: the same crop of the poster frame, WebP + JPEG, plus the inline low-quality copy */
 const psrc = path.join(tenant, 'media', path.basename(poster.filename))
 const pp = probe(psrc)
 const pc = crop(pp)
-const pstem = `${stemOf(poster.filename)}.p${pc.w}`
-const pvf = `crop=${pc.w}:${pc.h}:${pc.x}:${pc.y}`
-run('ffmpeg', ['-y', '-v', 'error', '-i', psrc, '-frames:v', '1', '-vf', pvf, '-c:v', 'libwebp', '-quality', '74', path.join(outDir, `${pstem}.webp`)])
+const pstem = `${stemOf(poster.filename)}.p${pc.ow}`
+const pvf = up(pc)
+run('ffmpeg', ['-y', '-v', 'error', '-i', psrc, '-frames:v', '1', '-vf', pvf, '-c:v', 'libwebp', '-quality', '72', path.join(outDir, `${pstem}.webp`)])
 run('ffmpeg', ['-y', '-v', 'error', '-i', psrc, '-frames:v', '1', '-vf', pvf, '-q:v', '3', path.join(outDir, `${pstem}.jpg`)])
 const lqFile = path.join(os.tmpdir(), `gs-lq-${process.pid}.webp`)
 run('ffmpeg', ['-y', '-v', 'error', '-i', psrc, '-frames:v', '1', '-vf', `${pvf},scale=270:-2`, '-c:v', 'libwebp', '-quality', '42', lqFile])
@@ -121,6 +126,6 @@ rmSync(lqFile, { force: true })
 writeFileSync(manifestPath, JSON.stringify({
   recipe: RECIPE,
   video: { [video.filename]: { crop: c, ...out } },
-  poster: { [poster.filename]: { webp: `video/${pstem}.webp`, jpg: `video/${pstem}.jpg`, width: pc.w, height: pc.h, lq } },
+  poster: { [poster.filename]: { webp: `video/${pstem}.webp`, jpg: `video/${pstem}.jpg`, width: pc.ow, height: pc.oh, lq } },
 }, null, 1) + '\n')
-console.log(`video-portrait: ${vstem} (${c.w}×${c.h} at x ${c.x}; webm ${out.webm.bytes} B, mp4 ${out.mp4.bytes} B) + poster → public/video/`)
+console.log(`video-portrait: ${vstem} (${c.w}×${c.h} at x ${c.x} → ${c.ow}×${c.oh}; webm ${out.webm.bytes} B, mp4 ${out.mp4.bytes} B) + poster → public/video/`)

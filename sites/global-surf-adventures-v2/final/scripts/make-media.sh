@@ -8,8 +8,9 @@
 #     cut lists (mockups/unique/src/make-media.sh):
 #       gs2-hero     the aerial edit at 1920×1080, rotated so it starts where the mockup's loop started
 #                    (vid-009 3.05 s, the poster frame): the loop point is now a continuous cut
-#       gs2-level-1  vid-010 11.8–16.4 s, 4:5 (beach pop-up lesson on soft-tops, boards carried to the water):
-#                    replaces the 32.88 s whitewater shot the visual critic found dull (4f round 2)
+#       gs2-level-1  vid-010 19.80–22.40 s, 4:5 (golden hour: a guest stands up on a soft-top into the sun, then
+#                    another paddles in smiling): the visual critic found the 11.8 s beach drill soft and dull
+#                    (station 5 round 1)
 #       gs2-level-2  vid-003 21.56–24.88 s, 4:3 · gs2-level-3  vid-002 8.86–12.50 s, 4:3 (as the mockup)
 #  2. scripts/seed-from-dossier.mjs: photos, content.json, src/gaps/, src/lib/labels.json.
 #  3. cms/publisher/src/video.mjs: the v0.9 renditions + src/tenant/videos.generated.json.
@@ -41,7 +42,7 @@ ff -i $M/gs2-hero.mp4 -frames:v 1 -q:v 2 $M/gs2-hero-poster.jpg
 
 # 1b. level clips, centre crops at native pixels (corner badges fall outside)
 clip() { master -ss "$2" -to "$3" -i "$A/$1" -vf "fps=25,$4,setsar=1" "$M/$5.mp4"; ff -ss "$6" -i "$M/$5.mp4" -frames:v 1 -q:v 2 "$M/$5-poster.jpg"; }
-clip vid-010-source.mp4 11.80 16.40 "crop=864:1080:528:0" gs2-level-1 0.8
+clip vid-010-source.mp4 19.80 22.40 "crop=864:1080:528:0" gs2-level-1 0.5
 clip vid-003-source.mp4 21.56 24.88 "crop=1440:1080:240:0" gs2-level-2 0.4
 clip vid-002-source.webm 8.86 12.50 "crop=1440:1080:240:0" gs2-level-3 0.4
 
