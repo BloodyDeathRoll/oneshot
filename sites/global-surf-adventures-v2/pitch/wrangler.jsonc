@@ -1,0 +1,13 @@
+{
+  // The v2 proposal page as a noindex Worker (writer 0.4.0 publishes it at station 7).
+  // Name differs from v1's `global-surf-lodge-kabalana-proposal`, whose page stays as it is.
+  "name": "global-surf-lodge-kabalana-v2-proposal",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": ".",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  },
+  "workers_dev": true,
+  "preview_urls": false
+}
