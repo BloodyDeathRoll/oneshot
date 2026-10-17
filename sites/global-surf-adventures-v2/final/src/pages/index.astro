@@ -1,0 +1,329 @@
+---
+/* Home: a port of mockups/unique/dist/index.html ("From the air", picked 2026-10-17), bound to the content
+   schema. Markup and class names are the mockup's; 4g changes are commented. */
+import css from '../styles/site.css?raw'
+import js from '../scripts/site.js?raw'
+import { fontFaces, fontPreloads, TIER } from '../lib/head.mjs'
+import {
+  c, G, CT, ST, S, INSTAGRAM, e, paras, sentences, block, dayMonYear, money, PLATFORM, sourceOf, safeUrl, WA_GENERAL,
+  LEVELS, levelPrice, FREE, ROOMS, roomTab, INCL, slotRow, shapeOf, srcset, top, img, gapImg, hero, clip, ic,
+  SPRITE, header, footer, bookForm, pageData, R45, R32, R1610, SQ, R219, FULL,
+} from '../lib/site.mjs'
+
+const pre = ''
+const H = hero()
+const r0 = (c.ratings ?? [])[0] ?? null
+const proofSrc = r0 ? `${PLATFORM[r0.platform] ?? ''}` : ''
+const intro = block('intro', 0), price = block('offer', 1), week = block('about', 0), lodgeB = block('about', 1)
+/* levels lede: the intro's first paragraph + the first sentence of "One price, three levels" (both verbatim) */
+const lvLede = [paras(intro?.body)[0], sentences(paras(price?.body)[0])[0]].filter(Boolean).join(' ')
+const lodgeP = paras(lodgeB?.body)
+const lodgeLede = sentences(lodgeP[0]).slice(0, 2).join(' ')
+const amen = (c.amenities ?? []).map((a) => a.label + (a.note ? ', ' + a.note : '')).join(' | ')
+const clips = [0, 1, 2].map(clip)
+
+/* the drop: plates = photos[0..2]. Where the pools sit in each plate (fractions of the plate) is design data
+   for these photographs; an owner's replacement plate is aligned on its centre instead. */
+const ALIGN = {
+  'img-062.jpg': { pool: [787 / 2000, 663 / 1123] },
+  'img-026.jpg': { pool: [846 / 2000, 615 / 1123], water: [700 / 2000, 690 / 1123], poolW: 1510 },
+  'img-062.jpg#poolW': 200,
+}
+const plates = S.plates.map((n) => slotRow(n))
+const plateData = plates.every(Boolean) ? {
+  a: { w: plates[0].width, h: plates[0].height, pool: ALIGN[plates[0].filename]?.pool ?? [0.5, 0.5] },
+  b: { w: plates[1].width, h: plates[1].height, pool: ALIGN[plates[1].filename]?.pool ?? [0.5, 0.5], water: ALIGN[plates[1].filename]?.water ?? [0.5, 0.5] },
+  c: { w: plates[2].width, h: plates[2].height },
+  /* img-062's pool is 200 source px wide, img-026's 1510 (mockup); unknown plates: 1/4 */
+  ratio: ALIGN[plates[0].filename] && ALIGN[plates[1].filename] ? ALIGN['img-062.jpg#poolW'] / ALIGN['img-026.jpg'].poolW : 0.25,
+  d: [plates[0], plates[1]].map((m) => top(shapeOf(m.filename, FULL)).webp).concat(top(shapeOf(plates[2].filename, FULL)).webp),
+  m: [plates[0], plates[1]].map((m) => top(shapeOf(m.filename, 'full-m')).webp).concat(shapeOf(plates[2].filename, FULL).sources[0].webp),
+} : null
+const posterTint = plates[0] && shapeOf(plates[0].filename, FULL)?.tint
+const featureLine = c.featureLine
+
+/* the waves band: 21:9, 4:5 on phones, over its inline placeholder */
+const wv = slotRow(S.waves), wvD = wv && shapeOf(wv.filename, R219), wvM = wv && shapeOf(wv.filename, R45)
+const fc = c.forecast?.enabled && c.forecast.rosaSpotId ? c.forecast : null
+const rosaHuman = fc ? `https://rosa.surf/spot/${fc.rosaSpotId}` : null
+
+const quotes = (c.testimonials ?? []).map((t) => `<figure><blockquote>“${e(t.quote)}”</blockquote><figcaption>${e(t.author)}${sourceOf(t) ? ' | ' + e(sourceOf(t)) : ''}</figcaption></figure>`).join('')
+const ig = G.instagram
+const data = { ...pageData(pre), plates: plateData, rosa: fc ? { id: fc.rosaSpotId, name: fc.spotName } : null, page: 'home' }
+const title = `${c.businessName} | Surf weeks in Sri Lanka`
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{title}</title>
+<meta name="description" content={c.tagline}>
+<meta property="og:title" content={c.businessName}>
+<meta property="og:description" content={c.tagline}>
+{H?.jpg && <meta property="og:image" content={H.jpg} />}
+<Fragment set:html={fontPreloads(pre)} />
+{H && <link rel="preload" as="image" imagesrcset={srcset(H.poster, pre)} imagesizes="100vw" media="(min-width: 701px), (orientation: landscape)" fetchpriority="high" />}
+{H?.phonePoster && <link rel="preload" as="image" href={H.phonePoster.webp} media="(max-width: 700px) and (orientation: portrait)" fetchpriority="high" />}
+<script is:inline set:html={TIER}></script>
+<style is:inline set:html={fontFaces(pre) + css}></style>
+</head>
+<body>
+<a class="skip" href="#levels">Skip to the surf weeks</a>
+<Fragment set:html={SPRITE} />
+<Fragment set:html={header(pre, true)} />
+
+<main id="top">
+<section class="hero" aria-label={`${c.businessName} from the air`}>
+  {H && (
+    <picture>
+      {H.phonePoster && <source media="(max-width: 700px) and (orientation: portrait)" srcset={H.phonePoster.webp} width={H.phonePoster.width} height={H.phonePoster.height} />}
+      <img src={top(H.poster).webp} srcset={srcset(H.poster, pre)} sizes="100vw" width={top(H.poster).w} height={top(H.poster).h} alt={H.alt} fetchpriority="high" />
+    </picture>
+  )}
+  {H && <video id="herovid" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-phone={JSON.stringify(H.phone.map((s) => [s.src, s.type]))} data-desk={JSON.stringify(H.desk.map((s) => [s.src, s.type]))}></video>}
+  <div class="hero-c">
+    <h1>{G.heroTitle}</h1>
+    <a class="btn" href="book/" data-book>{CT.hero_c1}</a>
+  </div>
+</section>
+
+<section class="levels" id="levels" aria-labelledby="lv-t">
+  <div class="wrap">
+    <div class="lv-head">
+      <div>
+        <h2 class="script" id="lv-t">{ST.levels}</h2>
+        <p class="lede">{lvLede}</p>
+      </div>
+      {r0 && <p class="proof"><b>{r0.score}</b><span>on {proofSrc}<br>{r0.count} reviews | {dayMonYear(r0.capturedAt)}</span></p>}
+    </div>
+    <div class="lv-grid">
+      {LEVELS.slice(0, 1).map((l, k) => (
+        <article class="lv lv-1">
+          <div class="lv-media">
+            {clips[k] && <img src={top(clips[k].poster).webp} srcset={srcset(clips[k].poster)} sizes="(max-width: 860px) 100vw, 680px" width={top(clips[k].poster).w} height={top(clips[k].poster).h} alt="" loading="lazy" />}
+            {clips[k] && <video class="lvclip" muted loop playsinline preload="none" aria-label={clips[k].label} data-webm={clips[k].webm} data-mp4={clips[k].mp4}></video>}
+          </div>
+          <div class="lv-body">
+            <div><h3>{l.name}</h3><p>{l.one}</p><p class="price">{levelPrice}</p></div>
+            <a class="btn" href={`book/?level=${l.slug}`} data-book data-level={l.slug}>{CT[`level_${l.n}`]}</a>
+          </div>
+        </article>
+      ))}
+      <div class="lv-side">
+        {LEVELS.slice(1).map((l, i) => { const k = i + 1; return (
+          <article class="lv">
+            <div class="lv-media">
+              {clips[k] && <img src={top(clips[k].poster).webp} srcset={srcset(clips[k].poster)} sizes="(max-width: 860px) 100vw, 480px" width={top(clips[k].poster).w} height={top(clips[k].poster).h} alt="" loading="lazy" />}
+              {clips[k] && <video class="lvclip" muted loop playsinline preload="none" aria-label={clips[k].label} data-webm={clips[k].webm} data-mp4={clips[k].mp4}></video>}
+            </div>
+            <div class="lv-body">
+              <div><h3>{l.name}</h3><p>{l.one}</p><p class="price">{levelPrice}</p></div>
+              <a class="btn" href={`book/?level=${l.slug}`} data-book data-level={l.slug}>{CT[`level_${l.n}`]}</a>
+            </div>
+          </article>
+        ) })}
+      </div>
+    </div>
+    <div class="fs">
+      <Fragment set:html={img(S.freestylers, SQ, '220px', pre)} />
+      <div><h3>{FREE.name}{FREE.detail && ` | ${FREE.detail}`}</h3><p>{FREE.one}</p></div>
+      {FREE.wa && <a class="btn light" href={FREE.wa} target="_blank" rel="noopener"><Fragment set:html={ic('wa', 'wa')} />{CT.freestylers}</a>}
+    </div>
+  </div>
+</section>
+
+<section class="incl" aria-labelledby="in-t">
+  <div class="wrap incl-grid">
+    <div class="incl-photo"><Fragment set:html={img(S.breakfast, R45, '(max-width: 860px) 100vw, 460px', pre)} /></div>
+    <div class="incl-text">
+      <h2 class="script" id="in-t">{ST.included}</h2>
+      <p class="lede">{[week?.heading && `${week.heading}.`, paras(week?.body)[0]].filter(Boolean).join(' ')}</p>
+      <ul>
+        {INCL.map((it) => <li><Fragment set:html={ic(it.icon)} />{it.l3 ? <span>{it.text}<em>Level 3: {it.l3.charAt(0).toLowerCase() + it.l3.slice(1)}</em></span> : it.text}</li>)}
+      </ul>
+      {G.inclusions.optionalExtra && <p class="extra">{G.inclusions.optionalExtra}</p>}
+    </div>
+  </div>
+</section>
+
+<section class="drop" id="lodge" aria-labelledby="lodge-t">
+  {plateData && (
+  <div class="drop-run" id="droprun">
+   <div class="drop-pin" id="droppin">
+    <div class="drop-stage" id="stage" aria-hidden="true">
+      {plateData && (
+        <picture>
+          <source media="(max-width: 759px)" srcset={plateData.m[0]} />
+          <img class="drop-poster" src={plateData.d[0]} width={plates[0].width} height={plates[0].height} alt="" loading="lazy" style={posterTint ? `background-color:${posterTint}` : undefined} />
+        </picture>
+      )}
+      <img class="pl p1" alt="" />
+      <img class="pl p2m" alt="" />
+      <img class="pl p2" alt="" />
+      <img class="pl p3" alt="" />
+      {featureLine && <p class="drop-line">{featureLine}</p>}
+      <ol class="drop-dots"><li class="on"></li><li></li><li></li></ol>
+      <span class="drop-load"></span>
+    </div>
+   </div>
+  </div>
+  )}
+  <div class="drop-static">
+    <div class="wrap">
+      <div class="two-up">
+        <Fragment set:html={img(S.plates[0], R32, '(max-width: 760px) 50vw, 580px', pre)} />
+        <Fragment set:html={img(S.plates[1], R32, '(max-width: 760px) 50vw, 580px', pre)} />
+      </div>
+      <div class="water">
+        <Fragment set:html={img(S.plates[2], FULL, '(max-width: 1200px) 100vw, 1200px', pre)} />
+        {featureLine && <p>{featureLine}</p>}
+      </div>
+    </div>
+  </div>
+  <div class="lodge">
+    <div class="wrap lodge-grid">
+      <div>
+        <h2 class="script" id="lodge-t">{ST.lodge}</h2>
+        <p class="lede">{lodgeLede}</p>
+        {lodgeP[1] && <p class="details">{lodgeP[1]}</p>}
+        {amen && <p class="amen">{amen}</p>}
+      </div>
+      <div class="slides r32" data-slides aria-roledescription="carousel" aria-label={ST.lodge}>
+        <div class="track" tabindex="0" role="group" aria-label={`Photos of ${ST.lodge.toLowerCase()}, use the arrow keys`}>
+          {S.lodge.map((n) => <div set:html={img(n, R32, '(max-width: 860px) 100vw, 680px', pre)} />)}
+        </div>
+        <button class="arr prev" type="button" aria-label="Previous photo"><Fragment set:html={ic('l')} /></button>
+        <button class="arr next" type="button" aria-label="Next photo"><Fragment set:html={ic('r')} /></button>
+        <div class="dots"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rooms" id="rooms" aria-labelledby="rm-t">
+  <div class="wrap">
+    <h2 class="script" id="rm-t">{ST.rooms}</h2>
+    <div class="room-names" role="tablist" aria-label="Room types">
+      {ROOMS.map((r, k) => <button role="tab" id={`tab-${r.key}`} aria-controls={`room-${r.key}`} aria-selected={k === 0 ? 'true' : 'false'} tabindex={k === 0 ? undefined : '-1'}>{roomTab(r)}</button>)}
+    </div>
+    {ROOMS.map((r, k) => (
+      <article class={`room${k === 0 ? ' on' : ''}`} id={`room-${r.key}`} role="tabpanel" aria-labelledby={`tab-${r.key}`}>
+        <div class="slides r1610" data-slides aria-roledescription="carousel" aria-label={`${roomTab(r)} photos`}>
+          <div class="track" tabindex="0" role="group" aria-label={`${roomTab(r)} photos, use the arrow keys`}>
+            {r.gallery.map((g) => <div set:html={gapImg(g.file, g.alt, R1610, '(max-width: 1200px) 100vw, 1200px', pre)} />)}
+          </div>
+          <button class="arr prev" type="button" aria-label="Previous photo"><Fragment set:html={ic('l')} /></button>
+          <button class="arr next" type="button" aria-label="Next photo"><Fragment set:html={ic('r')} /></button>
+          <div class="dots"></div>
+        </div>
+        <div class="room-txt">
+          <h3>{r.label}</h3>
+          <p class="line">{r.line}</p>
+          <p class="desc">{r.description}</p>
+          <p class="details">{r.details}</p>
+          {r.supplement.display
+            ? <p class="sup"><strong>{r.supplement.display}</strong></p>
+            : <p class="sup"><strong>{r.supplement.displayOneGuest}</strong> | {r.supplement.displayCouple}</p>}
+          <a class="btn" href={`book/?room=${r.key}`} data-book data-room={r.key}>{CT.room}</a>
+        </div>
+      </article>
+    ))}
+    <p class="rooms-foot">{G.details.everyRoom}<br>{G.roomsNote}</p>
+  </div>
+</section>
+
+<section class="waves" id="waves" aria-labelledby="wv-t">
+  {wvD && (
+    <picture class="band-w" style={wvD.tint ? `--tintd:${wvD.tint};--tintm:${wvM?.tint ?? wvD.tint}` : undefined}>
+      {wvM && <source media="(max-width: 760px)" srcset={srcset(wvM, pre)} sizes="100vw" width={top(wvM).w} height={top(wvM).h} />}
+      <img class="band" src={top(wvD).webp} srcset={srcset(wvD, pre)} sizes="100vw" width={top(wvD).w} height={top(wvD).h} alt={wv.alt} loading="lazy" />
+    </picture>
+  )}
+  <div class="fc">
+    <div class="wrap fc-grid">
+      <div>
+        <h2 class="script" id="wv-t">{ST.waves}</h2>
+        {c.spot && <p class="lede">{c.spot}</p>}
+        {fc && (
+          <div class="fc-swap">
+            {/* until Rosa answers, a hidden ghost with Rosa's widest wording holds the cell's final height */}
+            <div id="fcnow" class="off" aria-hidden="true">
+              <div class="fc-now">
+                <div><b data-k="h">0.8–1.2 m</b><span data-k="phrase">Head-high</span></div>
+                <div><b data-k="per">14 s</b><span data-k="swell">Swell from the WSW</span></div>
+                <div><b data-k="wind">24 km/h</b><span data-k="wtxt">Wind from the WSW, cross-shore</span></div>
+              </div>
+              <p class="fc-time" data-k="time">{fc.spotName}, Wed 28 Sep, 00:00</p>
+            </div>
+            <p class="fc-link" id="fclink"><a class="btn light" href={rosaHuman} target="_blank" rel="noopener"><Fragment set:html={ic('wave')} />See today's forecast for {fc.spotName} on Rosa</a></p>
+          </div>
+        )}
+        {fc && <p class="fc-credit"><a href={rosaHuman} target="_blank" rel="noopener">Forecast for {fc.spotName} by Rosa</a></p>}
+      </div>
+      {fc && (
+        <div class="widget" id="rosa">
+          <div class="fallback">
+            <svg class="icon fb-i" aria-hidden="true"><use href="#i-wave" /></svg>
+            <p class="fb-t">{fc.spotName}</p>
+            <p class="fb-s">See today's forecast for {fc.spotName} on Rosa</p>
+            <a class="btn" href={rosaHuman} target="_blank" rel="noopener">Open Rosa</a>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<section class="guests" aria-labelledby="gs-t">
+  <div class="wrap g-grid">
+    <div class="g-photo"><Fragment set:html={img(S.guests, R45, '(max-width: 860px) 100vw, 460px', pre)} /></div>
+    <div>
+      <h2 class="script" id="gs-t">{ST.guests}</h2>
+      {r0 && <p class="g-rating"><strong>{r0.score} on {proofSrc}</strong> | {r0.count} reviews | {dayMonYear(r0.capturedAt)}</p>}
+      {G.details.ratingCategories && <p class="g-cats">{G.details.ratingCategories}</p>}
+      <div class="slides quotes" data-slides aria-roledescription="carousel" aria-label="Guest reviews">
+        <div class="track" tabindex="0" role="group" aria-label="Guest reviews, use the arrow keys" set:html={quotes}></div>
+        <div class="dots"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dinner" aria-label={CT.hero_c3}>
+  <div class="ph"><Fragment set:html={img(S.dinner, FULL, '(max-width: 1536px) 100vw, 1536px', pre)} /></div>
+  <div class="wrap">
+    {c.closing && <p class="closing">{c.closing}</p>}
+    <div class="acts">
+      <a class="btn" href="book/" data-book>{CT.closing}</a>
+      {WA_GENERAL && <a class="btn light" href={WA_GENERAL} target="_blank" rel="noopener"><Fragment set:html={ic('wa', 'wa')} />{CT.whatsapp_footer}</a>}
+    </div>
+  </div>
+</section>
+
+{safeUrl(ig?.url) && (
+<section class="ig" aria-labelledby="ig-t">
+  <div class="wrap">
+    <h2 class="script" id="ig-t">{ST.instagram}</h2>
+    <p class="lede">{ig.line}</p>
+    <a class="btn light" href={ig.url} target="_blank" rel="noopener"><Fragment set:html={ic('ig')} />{CT.instagram}</a>
+  </div>
+  <div class="ig-tiles">
+    {INSTAGRAM.map((n) => slotRow(n) && <a href={ig.url} target="_blank" rel="noopener" aria-label={ig.tile_link_label} set:html={img(n, SQ, '(max-width: 760px) 34vw, 17vw', pre, { altText: '' })} />)}
+  </div>
+</section>
+)}
+
+<Fragment set:html={bookForm(pre, false)} />
+</main>
+
+<Fragment set:html={footer(pre)} />
+
+<div class="pbar" id="pbar" aria-hidden="true">
+  <p>{levelPrice}</p>
+  <a class="btn" href="book/" data-book tabindex="-1">{CT.header_and_bar}</a>
+</div>
+<script is:inline type="application/json" id="pagedata" set:html={JSON.stringify(data).replace(/</g, '\\u003c')}></script>
+<script is:inline set:html={js}></script>
+</body>
+</html>
