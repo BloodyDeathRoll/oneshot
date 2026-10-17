@@ -85,9 +85,10 @@ const putImage = async (id, dir) => {
   const m = await sharp(dst).metadata()
   return { filename, width: m.width, height: m.height, filesize: statSync(dst).size }
 }
-/* Focal points (schema v0.10, percent of the photo): the point the drop lines up on, the pool in each plate
-   (measured on the 2000 x 1123 originals at 4e). The owner moves it in the CMS when replacing a photo. */
-const FOCAL = { 'img-062.jpg': [39.35, 59.04], 'img-026.jpg': [42.3, 54.76] }
+/* Focal points (schema v0.10, percent of the photo): the point the drop lines up on and dives into. Both mark the
+   same spot of open pool water (station 5 r1: the dive ended on the palm), so the hand-off locks the water and
+   the descent ends in blue. The owner moves it in the CMS when replacing a photo. */
+const FOCAL = { 'img-062.jpg': [38.38, 59.92], 'img-026.jpg': [35.0, 61.44] }
 const mediaDoc = (f, altText, mimeType) => ({
   id: mediaId++, alt: altText, filename: f.filename, mimeType, filesize: f.filesize,
   width: f.width ?? null, height: f.height ?? null, url: `/api/media/file/${f.filename}`,
@@ -119,7 +120,7 @@ const hero = await vid('gs2-hero',
   'From the air: the sea and reef over the lodge roofs, the lodge in its palms, the turquoise reef coast, surfers from above',
   "The lodge's white roofs among the palms on Sri Lanka's south coast, seen from a drone")
 const CLIPS = [
-  ['gs2-level-1', 'A beach lesson on soft-tops: guests practise the pop-up on the sand, then carry their boards to the water'],
+  ['gs2-level-1', 'A golden-hour beginner session: a guest stands up on a soft-top into the sun, then another paddles in smiling'],
   ['gs2-level-2', 'A surfer riding a turquoise reef wave'],
   ['gs2-level-3', 'A surfer deep in a right-hand barrel'],
 ]
@@ -217,6 +218,8 @@ const logoSymbol = readFileSync(join(final, 'src', 'lib', 'logo.svg.txt'), 'utf8
 const gaps = {
   _about: 'SCHEMA GAP content: what the picked design shows and schemas/site-content.md v0.9 has no field for (copy/sources.md mockup_extras "Schema gaps"). Written by scripts/seed-from-dossier.mjs from copy/en.json, dossier.json and docs/bookinglayer.md; listed in notes.md "schema gaps". Edit there, not here.',
   heroTitle: X.hero.title_c3,
+  /* the first screen's what + where line (critic station 5 r1, playbook §3.1): the copy's own short subtitle */
+  heroSubtitle: X.hero.subtitle_alt,
   logo: { paths: logoSymbol, viewBox: '12 20 233 48', alt: X.logo.alt, homeLinkLabel: X.logo.home_link_label, source: 'dossier business.logo (assets/logo-001.svg), as drawn in the unique mockup' },
   levels: X.levels.slice(0, 3).map((l, k) => ({ lesson: l.lesson, oneLiner: l.one_liner, slug: LEVEL_SLUGS[k] })),
   freestylers: {
