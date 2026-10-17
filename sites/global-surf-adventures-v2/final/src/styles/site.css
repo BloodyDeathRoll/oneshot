@@ -34,7 +34,8 @@ button{font:inherit;color:inherit}
 .icon{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 
 /* ---------- header */
-.hdr{position:fixed;inset:0 0 auto 0;z-index:40;height:76px;display:flex;align-items:center;transition:background-color .25s ease, box-shadow .25s ease, color .25s ease;color:#fff}
+.hdr{position:fixed;inset:0 0 auto 0;z-index:40;height:76px;display:flex;align-items:center;color:#fff}
+/* station 5 r1: the header snaps from transparent to white (no half-way band) once half the hero has gone */
 .hdr .wrap{display:flex;align-items:center;gap:28px;width:100%;max-width:1360px}
 .logo{display:flex;align-items:center;text-decoration:none;flex:none;height:44px}
 .logo svg{height:30px;width:auto;fill:currentColor}
@@ -67,12 +68,15 @@ html:not(.js) .hdr{position:absolute}
 /* ---------- hero */
 .hero{position:relative;height:100svh;min-height:560px;overflow:hidden;background:var(--tint)}
 .hero picture,.hero img,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero video{opacity:0;transition:opacity .6s ease}
+.hero video{opacity:0}
+/* station 5 r1: no cross-fade from the poster to the video. The poster is the loop's first frame, so the video
+   simply replaces it and the edit's first change of shot is a hard cut (a fade ghosted the two shots) */
 .hero video.on{opacity:1}
 html:not(.js) .hero video{display:none}
 .hero-c{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;text-align:center;padding:0 24px;color:#fff;background:radial-gradient(ellipse 40% 26% at 50% 50%,rgba(3,28,36,.38),rgba(3,28,36,.16) 55%,rgba(3,28,36,0) 100%)}
 @media (max-width:700px){.hero-c{background:radial-gradient(ellipse 85% 24% at 50% 50%,rgba(3,28,36,.40),rgba(3,28,36,.15) 60%,rgba(3,28,36,0) 100%)}}
-.hero h1{font:500 clamp(36px,3.5vw,50px)/1.15 var(--text);margin:0 0 28px;text-shadow:0 2px 24px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.35);max-width:14em}
+.hero h1{font:500 clamp(36px,3.5vw,50px)/1.15 var(--text);margin:0 0 10px;text-shadow:0 2px 24px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.35);max-width:14em}
+.hero-sub{margin:0 0 26px;font-size:clamp(17px,1.4vw,19px);text-shadow:0 1px 14px rgba(0,0,0,.5),0 1px 3px rgba(0,0,0,.35)}
 .hero .btn{min-height:52px;padding:14px 30px;font-size:17px;background:var(--book-deep);box-shadow:0 8px 26px rgba(0,20,28,.35)}
 .hero .btn:hover{background:#063F55}
 
@@ -125,25 +129,35 @@ html:not(.js) .lv-media video{display:none}
 .incl li em{display:block;font-style:normal;color:var(--book);font-size:14.5px;margin-top:2px}
 .incl .extra{margin-top:24px;font-size:15.5px;color:var(--ink-soft)}
 @media (max-width:860px){.incl-grid{grid-template-columns:1fr}.incl-text{padding-top:0}.incl ul{grid-template-columns:1fr}}
+/* station 5 r1: on phones the list is two columns of short lines under a shorter photograph (layout only, same words) */
+@media (max-width:600px){
+  .incl-photo{aspect-ratio:16/10;margin-top:-56px}
+  .incl ul{grid-template-columns:1fr 1fr;gap:14px 16px;margin-top:20px}
+  .incl li{flex-direction:column;gap:6px;font-size:15px;line-height:1.4}
+  .incl li .icon{width:22px;height:22px}
+  .incl li em{font-size:13.5px}
+}
 
 /* ---------- the drop: a sticky stage, no pin library, so nothing shifts and the page never changes height above the reader */
 :root{--pintop:76px;--pinh:calc(100svh - 76px)}
 .drop{position:relative;background:#fff}
 .drop-run{display:none}
-html.drop-live .drop-run{display:block;position:relative;height:calc(var(--pinh) + 250svh);margin-top:clamp(70px,8vw,110px)}
+/* station 5 r1: the run starts straight under "What's included", on its tint, so no white seam opens before the plate */
+html.drop-live .drop-run{display:block;position:relative;height:calc(var(--pinh) + 250svh);background:var(--tint)}
 html.drop-live .drop-static{display:none}
 .drop-pin{position:sticky;top:var(--pintop);height:var(--pinh);overflow:hidden}
 .drop-stage{position:absolute;inset:0;overflow:hidden;background:#d6e7ec}
 .pl{position:absolute;left:0;top:0;transform-origin:0 0;max-width:none;user-select:none;pointer-events:none;opacity:0}
 .drop-stage.ready .pl{will-change:transform,opacity}
-.p2m{-webkit-mask-image:radial-gradient(ellipse 40% 42% at 42.3% 54.8%,#000 38%,transparent 100%);mask-image:radial-gradient(ellipse 40% 42% at 42.3% 54.8%,#000 38%,transparent 100%)}
+/* the mask's centre is plate 2's focal point (--fx / --fy, set from the content), never a coordinate of one photograph */
+.p2m{-webkit-mask-image:radial-gradient(ellipse 40% 42% at var(--fx,50%) var(--fy,50%),#000 38%,transparent 100%);mask-image:radial-gradient(ellipse 40% 42% at var(--fx,50%) var(--fy,50%),#000 38%,transparent 100%)}
 .drop-line{position:absolute;left:0;right:0;top:64%;text-align:center;margin:0;padding:0 24px;color:#fff;font:500 clamp(24px,3vw,42px)/1.25 var(--text);text-shadow:0 2px 22px rgba(0,30,40,.55),0 1px 3px rgba(0,30,40,.4);opacity:0}
 .drop-dots{position:absolute;right:26px;top:50%;transform:translateY(-50%);display:grid;gap:12px;margin:0;padding:0;list-style:none}
 .drop-dots li{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.5);box-shadow:0 0 0 1px rgba(0,0,0,.08);transition:background-color .2s ease, transform .2s ease}
 .drop-dots li.on{background:#fff;transform:scale(1.25)}
 @media (max-width:760px){
   :root{--pinh:calc(100svh - 142px);--pintop:76px}
-  html.drop-live .drop-run{height:calc(var(--pinh) + 220svh);margin-top:64px}
+  html.drop-live .drop-run{height:calc(var(--pinh) + 220svh)}
   .drop-dots{top:auto;bottom:14px;right:0;left:0;transform:none;display:flex;justify-content:center}
 }
 .drop-static{padding:clamp(70px,8vw,110px) 0 0}
@@ -181,7 +195,7 @@ html:not(.js) .arr, html:not(.js) .dots{display:none}
 /* ---------- rooms */
 .rooms{padding:clamp(90px,10vw,140px) 0 0}
 .room-names{display:flex;gap:clamp(18px,3vw,44px);flex-wrap:wrap;margin:6px 0 30px;padding:0;list-style:none}
-.room-names button{border:0;background:none;padding:6px 0;min-height:44px;cursor:pointer;font:400 clamp(22px,2.4vw,32px)/1.2 var(--text);color:rgba(7,43,53,.55);transition:color .2s ease;text-align:left}
+.room-names button{border:0;background:none;padding:6px 0;min-height:44px;cursor:pointer;font:400 clamp(22px,2.4vw,32px)/1.2 var(--text);color:var(--ink-soft);transition:color .2s ease;text-align:left}
 .room-names button[aria-selected="true"]{color:var(--ink)}
 .room-names button:hover{color:var(--ink)}
 .room{display:grid;grid-template-columns:1fr;margin-bottom:40px}
@@ -298,7 +312,7 @@ html:not(.js) .room-names{display:none}
 .opt input{position:absolute;opacity:0;pointer-events:none}
 .opt:has(input:checked){box-shadow:0 0 0 2px var(--book);background:#F2F8FA}
 .opt:has(input:focus-visible){outline:3px solid var(--book);outline-offset:3px}
-.opt img{width:84px;height:62px;border-radius:10px;object-fit:cover}
+.opt img{width:120px;height:88px;border-radius:10px;object-fit:cover}
 .opt b{display:block;font-weight:500;font-size:17px}
 .opt small{display:block;color:var(--ink-soft);font-size:14.5px;line-height:1.4}
 .opt .amt{font-size:15px;text-align:right;white-space:nowrap}
@@ -381,8 +395,11 @@ body.locked{overflow:hidden}
 /* the drop's loading state (designer 0.5.1): from first paint the stage holds the poster (plate 1 itself, on a
    ground of its own dominant colour) and a loading ring;
    the motion takes over only when every plate has loaded, with a cross-fade, never a jump */
-.drop-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none;background-color:#d6e7ec;transition:opacity .45s ease}
+.drop-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none;opacity:0;transition:opacity .45s ease}
+.drop-poster.in{opacity:1}
 .drop-stage.ready .drop-poster{opacity:0}
+/* until the motion starts, the desktop stage already has the inset frame it opens from */
+@media (min-width:760px){.drop-stage:not(.ready){clip-path:inset(0 var(--gut) round 14px)}}
 .drop-load{position:absolute;left:50%;bottom:28px;width:38px;height:38px;margin-left:-19px;border-radius:50%;background:rgba(255,255,255,.9);box-shadow:0 6px 18px rgba(7,43,53,.18);display:grid;place-items:center;transition:opacity .3s ease}
 .drop-load::after{content:"";width:18px;height:18px;border-radius:50%;border:2px solid rgba(11,106,142,.25);border-top-color:var(--book);animation:dropSpin .9s linear infinite}
 @keyframes dropSpin{to{transform:rotate(360deg)}}
@@ -399,3 +416,16 @@ html:not(.js) .drawer{display:none}
 .band-w{background-color:var(--tintd,#cfe3e8)}
 @media (max-width:760px){.band-w{background-color:var(--tintm,#cfe3e8)}}
 .dots button{flex:none}
+/* book/ (station 5 r1): the hand-off and deposit note once, in the summary card; at 390 the price sits under the
+   room's words so names keep their line; JS off: check-out is chosen, the engine gets start + end */
+html.js .book.page .handoff-note:not(.usd){display:none}
+@media (max-width:600px){
+  .opt{grid-template-columns:auto 1fr;row-gap:4px;column-gap:12px;padding:12px}
+  .opt img{width:112px;height:84px;grid-row:span 2}
+  .opt b{font-size:15.5px}
+  .opt .amt{grid-column:2;text-align:left}
+}
+html.js .nojs-only{display:none}
+html:not(.js) #nights{display:none}
+/* nine reviews: nine 44 px dots are wider than a phone; they wrap instead of widening the page (found at station 5 r1 fix) */
+.quotes .dots{flex-wrap:wrap}

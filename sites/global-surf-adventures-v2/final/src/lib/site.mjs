@@ -57,7 +57,9 @@ const freeLesson = lessons.find((x) => x.label === G.freestylers.lesson)
 const lc = (s) => (s ? s[0].toLowerCase() + s.slice(1) : '')
 export const FREE = { name: freeLesson?.label ?? G.freestylers.lesson, detail: freeLesson?.includes ? lc(freeLesson.includes) : '', one: G.freestylers.oneLiner, wa: waWith(G.freestylers.whatsappText) }
 export const ROOMS = G.rooms
-export const roomTab = (r) => r.label.split(' – ')[0].split(' ').map((w, i) => (i > 0 && /^[A-Z][a-z]+$/.test(w) ? w.toLowerCase() : w)).join(' ')
+/* one name per room everywhere (critic station 5 r1): the copy's label in sentence case; the tab is its part before " – " */
+export const roomName = (r) => r.label.split(' ').map((w, i) => (i > 0 && /^[A-Z][a-z]+$/.test(w) ? w.toLowerCase() : w)).join(' ')
+export const roomTab = (r) => roomName(r).split(' – ')[0]
 
 /* inclusions: Level 1's list; a line that differs for Level 3 carries Level 3's wording under it */
 export const INCL = (G.inclusions[1] ?? []).map((it, i) => {
@@ -83,6 +85,7 @@ export const anyShape = (filename) => { const s = photosGen[filename]?.shapes; r
 export const srcset = (shape, pre = '') => shape.sources.map((s) => `${pre}${s.webp} ${s.w}w`).join(', ')
 export const top = (shape) => shape.sources[shape.sources.length - 1]
 export const R45 = 'r1.25', R32 = 'r0.667', R1610 = 'r0.625', SQ = 'r1', R219 = 'r0.429', FULL = 'full'
+export const POSTER_M = 'r1.8-poster', POSTER_D = 'full-poster'
 /* an <img> for slot n in shape key; '' when the slot is empty */
 export const img = (n, key, sizes, pre, { lazy = true, cls = '', altText, extra = '' } = {}) => {
   const m = slotRow(n), sh = m && shapeOf(m.filename, key)
@@ -181,10 +184,15 @@ export const bookForm = (pre, page) => {
   const lv = LEVELS.map((l, k) => `<label class="opt"><input type="radio" name="lvl" value="${l.slug}"${k === 0 ? ' checked' : ''} form="noform">${clips[k] ? `<img src="${pre}${clips[k].thumb}" width="84" height="62" alt="" loading="lazy">` : ''}<span><b>${e(l.name)}</b><small>${e(l.one)}</small></span><span class="amt">${l.price != null ? money(l.price) + ' pp' : ''}</span></label>`).join('')
   const rooms = ROOMS.map((r, k) => {
     const g = r.gallery[0], th = g && shapeOf(g.file, 'full-thumb')
-    return `<label class="opt"><input type="radio" name="room" value="${r.key}"${k === 0 ? ' checked' : ''} form="noform">${th ? `<img src="${pre}${top(th).webp}" width="84" height="62" alt="" loading="lazy">` : ''}<span><b>${e(r.label)}</b><small>${e(r.line)}</small></span><span class="amt"${r.key === 'twin' ? ' id="twinamt"' : ''}>${e(amt(r))}</span></label>`
+    return `<label class="opt"><input type="radio" name="room" value="${r.key}"${k === 0 ? ' checked' : ''} form="noform">${th ? `<img src="${pre}${top(th).webp}" width="84" height="62" alt="" loading="lazy">` : ''}<span><b>${e(roomName(r))}</b><small>${e(r.line)}</small></span><span class="amt"${r.key === 'twin' ? ' id="twinamt"' : ''}>${e(amt(r))}</span></label>`
   }).join('')
   const incl = INCL.map((it) => `<li${it.l3 ? ' id="sessline"' : ''}>${ic(it.icon)}<span>${e(it.text)}</span></li>`).join('')
-  const nights = (B.nights_options ?? ['7']).map((n, k) => `<label><input type="radio" name="duration" value="${+n + 1}"${k === 0 ? ' checked' : ''}><span>${e(n)}</span></label>`).join('')
+  /* the nights never reach the engine as `duration` (docs/bookinglayer.md: "Use end, not duration"): with JS they
+     set #end, without JS the visitor picks the check-out Saturday (#endsel) */
+  const nights = (B.nights_options ?? ['7']).map((n, k) => `<label><input type="radio" name="duration" value="${+n + 1}"${k === 0 ? ' checked' : ''} form="noform"><span>${e(n)}</span></label>`).join('')
+  const plus = (iso, d) => { const x = new Date(iso + 'T12:00:00Z'); x.setUTCDate(x.getUTCDate() + d); return x.toISOString().slice(0, 10) }
+  const maxN = Math.max(...(B.nights_options ?? ['7']).map(Number))
+  const outs = SATURDAYS.length ? [...new Set(SATURDAYS.flatMap((d) => [7, 14, 21, 28].filter((n) => n <= maxN).map((n) => plus(d, n))))].sort() : []
   const step = (id, lab, sing) => `<div class="stp"><label for="${id}">${e(lab)}</label><div class="row"><button type="button" data-step="-1" data-for="${id}" aria-label="Remove ${sing}">−</button><input id="${id}" name="${{ 'g-f': 'female', 'g-m': 'male', 'g-c': 'couple' }[id]}" type="number" min="0" max="${id === 'g-c' ? 3 : 6}" value="${id === 'g-f' ? 1 : 0}" inputmode="numeric"><button type="button" data-step="1" data-for="${id}" aria-label="Add ${sing}">+</button></div></div>`
   const asOf = `Prices from the booking engine, ${G.snapshot.baseAsOf} (rooms ${G.snapshot.roomsAsOf}).`
   const handoff = `${e(B.handoff)} ${e(B.handoff_nothing_booked)}`
@@ -206,6 +214,7 @@ ${page ? '' : `<div class="book-band" id="bookband" aria-hidden="true">${first ?
 <p class="help">${e(B.field_checkin_help)}</p>
 <fieldset class="seg" id="nights"><legend>${e(B.field_nights)}</legend>${nights}</fieldset>
 <input type="hidden" name="end" id="end" disabled>
+${outs.length ? `<div class="field nojs-only"><select id="endsel" name="end">${outs.map((d) => `<option value="${d}">${satLabel(d)}</option>`).join('')}</select><label for="endsel">Check-out (Saturdays)</label></div>` : ''}
 <div class="steppers">${step('g-f', B.field_women, 'a woman')}${step('g-m', B.field_men, 'a man')}${step('g-c', B.field_couples, 'a couple')}</div>
 <p class="help" style="margin-top:10px">${e(B.guests_help)}</p></div>
 <p class="handoff-note usd">Package ${BASE != null ? money(BASE) : ''} pp for 7 nights; room supplements per person. ${e(B.currency_note)}. ${e(asOf)}</p>
