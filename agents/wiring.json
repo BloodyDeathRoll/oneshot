@@ -92,6 +92,11 @@
       "experience-critic": [
         "rubric.md",
         "schemas/site-content.md"
+      ],
+      "analyst": [
+        "vertical/taxonomy.md",
+        "vertical/business-types.md",
+        "market/market.md"
       ]
     }
   },
@@ -149,6 +154,10 @@
     "experience-critic": [
       "4f",
       "5"
+    ],
+    "analyst": [
+      "2a",
+      "2b"
     ]
   }
 }

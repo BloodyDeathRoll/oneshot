@@ -47,7 +47,7 @@ oneshot/
   verticals/<id>/             # vertical pack: taxonomy.md, business-types.md — surf today; a run names one of each (§3)
   server-hardening.md         # security baseline for the one CMS server (one server, one admin)
   agents/
-    orchestrator/  scout/  harvester/  auditor/  visual-critic/  experience-critic/  copywriter/  humanizer/  copyeditor/  creative-director/  designer/  seo/  aiseo/  critic/  deployer/  writer/
+    orchestrator/  analyst/  scout/  harvester/  auditor/  visual-critic/  experience-critic/  copywriter/  humanizer/  copyeditor/  creative-director/  designer/  seo/  aiseo/  critic/  deployer/  writer/
       base.md        # Claude writes: role, inputs, outputs, hard constraints
       custom.md      # Shahar writes: taste, rules, house style
       references.md  # curated examples (URLs + what we like about each), cached notes
