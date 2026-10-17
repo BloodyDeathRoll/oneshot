@@ -8,19 +8,16 @@ import {
   c, G, CT, ST, S, INSTAGRAM, e, paras, sentences, block, dayMonYear, money, PLATFORM, sourceOf, safeUrl, WA_GENERAL,
   LEVELS, levelPrice, FREE, ROOMS, roomTab, INCL, slotRow, shapeOf, srcset, top, img, gapImg, hero, clip, ic,
   SPRITE, header, footer, bookForm, pageData, R45, R32, R1610, SQ, R219, FULL,
-  metaDescription, businessLd, ldJson, seoHead, anyShape,
+  metaDescription, businessLd, ldJson, seoHead, anyShape, LV_LEDE, INCL_LEDE, LODGE_P, LODGE_LEDE, AMEN,
 } from '../lib/site.mjs'
 
 const pre = ''
 const H = hero()
 const r0 = (c.ratings ?? [])[0] ?? null
 const proofSrc = r0 ? `${PLATFORM[r0.platform] ?? ''}` : ''
-const intro = block('intro', 0), price = block('offer', 1), week = block('about', 0), lodgeB = block('about', 1)
-/* levels lede: the intro's first paragraph + the first sentence of "One price, three levels" (both verbatim) */
-const lvLede = [paras(intro?.body)[0], sentences(paras(price?.body)[0])[0]].filter(Boolean).join(' ')
-const lodgeP = paras(lodgeB?.body)
-const lodgeLede = sentences(lodgeP[0]).slice(0, 2).join(' ')
-const amen = (c.amenities ?? []).map((a) => a.label + (a.note ? ', ' + a.note : '')).join(' | ')
+/* the levels lede, the included lede, the lodge text and the amenities line: built in site.mjs (4i), shared with llms.txt */
+const intro = block('intro', 0)
+const lvLede = LV_LEDE, lodgeP = LODGE_P, lodgeLede = LODGE_LEDE, amen = AMEN
 const clips = [0, 1, 2].map(clip)
 
 /* the drop: plates = photos[0..2]. Where the pools sit in each plate (fractions of the plate) is design data
@@ -146,7 +143,7 @@ const ld = businessLd({ description: desc, images: ldImages })
     <div class="incl-photo"><Fragment set:html={img(S.breakfast, R45, '(max-width: 860px) 100vw, 460px', pre)} /></div>
     <div class="incl-text">
       <h2 class="script" id="in-t">{ST.included}</h2>
-      <p class="lede">{[week?.heading && `${week.heading}.`, paras(week?.body)[0]].filter(Boolean).join(' ')}</p>
+      <p class="lede">{INCL_LEDE}</p>
       <ul>
         {INCL.map((it) => <li><Fragment set:html={ic(it.icon)} />{it.l3 ? <span>{it.text}<em>Level 3: {it.l3.charAt(0).toLowerCase() + it.l3.slice(1)}</em></span> : it.text}</li>)}
       </ul>
