@@ -79,7 +79,7 @@ All made by `make-pitch-media.sh` (recipe, `# media:` headers; listed in `media/
 
 - **Offer, three options vs two.** The page lists managed, self-hosted and files-only, per the orchestrator's brief (Shahar, 2026-10-05: the client selects the product). Writer base.md hard constraint 2 says `static_only` is mentioned only if the owner says they never intend to edit. The messages name only the two. Drop the "Files only" sentence from the page if base.md should win.
 - **No fee amounts anywhere.** "How much?" has no number yet.
-- **The email has a placeholder**, `[LINK TO THE PROPOSAL PAGE]`. The page is not published; `wrangler.jsonc` is ready for a noindex Worker like the other pitches. Fill the link, or attach the page, before sending.
+- **Proposal page live** (2026-10-17, Oneshot account, version 6d50d5c2): https://global-surf-lodge-kabalana-proposal.os1.workers.dev — 200, images 200, live `index.html` byte-identical to this folder's, noindex + robots `Disallow`. The email carries the link.
 - **Who receives it.** WhatsApp +972523593240 is the HQ mobile the site publishes; email info@globalsurf.com. The +94 lodge phone (Google only) is not the target.
 - **Video editing depends on the CMS version.** The page promises the owner can replace the hero video and clips (SC v0.8/v0.9, ST `heroVideo`/`videos`). L says the shared CMS running today (0.7.0) has no video support; the managed option needs the video-capable CMS deployed first.
 - **Prices** were read 28–29 Sep 2026; the page asks the owner to confirm them before go-live.
