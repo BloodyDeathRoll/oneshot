@@ -302,7 +302,13 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
   // Critic lines → numbered rounds and post-pass verifications, each with its score when the note has one.
   function criticSeries(hist) {
     return hist.filter((h) => h.agent === 'critic').map((h) => {
-      const m = h.note?.match(/\b(PASS|FAIL)\b[^0-9]{0,20}(\d+(?:\.\d+)?)\s*\/\s*100/);
+      // Scores are always out of 100. Notes from 2026-10 that headline the critic's part (dimensions 1–7,
+      // out of 80) are totalled per rubric.md: + dimension 8 = the lower visual score (/10) × 2.5.
+      let m = h.note?.match(/\b(PASS|FAIL)\b[^0-9]{0,20}(\d+(?:\.\d+)?)\s*\/\s*100/);
+      const part = !m && h.note?.match(/\b(PASS|FAIL)\b[^0-9]{0,20}(\d+(?:\.\d+)?)\s*\/\s*80\b/);
+      const vis = h.note?.match(/visual-critic\s+(\d+(?:\.\d+)?)\s*\/\s*10/)?.[1];
+      const exp = h.note?.match(/experience-critic\s+(\d+(?:\.\d+)?)\s*\/\s*10/)?.[1];
+      if (part && vis && exp) m = [null, part[1], String(Math.round((Number(part[2]) + Math.min(vis, exp) * 2.5) * 10) / 10)];
       const round = h.to_state.match(/^critiqued\((\d+)\)$/)?.[1];
       const kind = round ? 'round' : /verification/i.test(h.note ?? '') ? 'verification' : /pre-score/i.test(h.note ?? '') ? 'pre-score' : 'other';
       return { ts: h.ts, kind, round: round ? Number(round) : null, verdict: m?.[1] ?? null, score: m ? Number(m[2]) : null, to: h.to_state };
@@ -376,7 +382,8 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
       critic_score_kind: latestScored ? `${latestScored.kind}${latestScored.round ? ' ' + latestScored.round : ''}` : null,
       critic_series: critic,
       // The client chooses the mode after a sale (product_chosen carries it); before that, none is shown.
-      hosting_mode: hosting ?? (rank(last.to_state) >= rank('product_chosen') ? run.default_mode : null),
+      // Lines before 2026-10-05 carry a hosting_mode that was not the client's choice: ignored until product_chosen.
+      hosting_mode: reached.has('product_chosen') ? (hosting ?? run.default_mode) : null,
       preview_url: deploy?.url ?? previewFromLedger ?? null,
       deploy, cms_verified: deploy?.verified ?? false,
       pitch, shots,
