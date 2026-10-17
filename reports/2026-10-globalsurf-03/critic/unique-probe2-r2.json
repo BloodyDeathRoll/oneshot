@@ -1,0 +1,79 @@
+{
+ "variant": "unique",
+ "mobile": {
+  "rosa_requests": [
+   "main fetch https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "iframe document https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "iframe fetch https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "iframe image https://rosa.surf/favicon.svg"
+  ],
+  "cls_load": 0,
+  "cls_after_full_scroll": 0,
+  "big_shifts": []
+ },
+ "desktop": {
+  "rosa_requests": [
+   "main fetch https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "iframe document https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "iframe fetch https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "iframe image https://rosa.surf/favicon.svg"
+  ],
+  "cls_load": 0.00535480900098594,
+  "cls_after_full_scroll": 0.0055452025195044585,
+  "big_shifts": []
+ },
+ "rosa_blocked": [
+  "Forecast for South Point by Rosa",
+  "See today's forecast for South Point on Rosa",
+  "Open Rosa"
+ ],
+ "trap": "A||https://www.instagram.com/globalsurf_kab",
+ "tab": {
+  "presses": 46,
+  "wrapped_to_first": false,
+  "unique_stops": 27,
+  "no_ring": [],
+  "hidden_focus": [],
+  "iframe": false
+ },
+ "dialogs": [
+  {
+   "label": "mobile menu",
+   "afterOpen": "BUTTON|Close menu",
+   "left_dialog": 0,
+   "sample": [
+    "IN A|Surf weeks",
+    "IN A|The lodge",
+    "IN A|Rooms",
+    "IN A|The waves",
+    "IN A|Book package now",
+    "IN A|WhatsApp us",
+    "IN A|Global Surf Lodge Kabalan",
+    "IN BUTTON|Close menu"
+   ],
+   "afterEsc": "BUTTON|Menu",
+   "url": "http://127.0.0.1:9833/"
+  },
+  {
+   "label": "booking drawer (Choose Level 2)",
+   "afterOpen": "BUTTON|Close booking",
+   "left_dialog": 0,
+   "sample": [
+    "IN INPUT|",
+    "IN A|Ask about dates",
+    "IN SELECT|Sat 24 Oct 2026 Sat 31 Oc",
+    "IN BUTTON|Add a woman",
+    "IN BUTTON|Add a man",
+    "IN BUTTON|Add a couple",
+    "IN BUTTON|Continue booking",
+    "IN BUTTON|Close booking"
+   ],
+   "afterEsc": "A|#book",
+   "url": "http://127.0.0.1:9833/"
+  },
+  {
+   "label": "booking drawer hero (mobile)",
+   "skipped": "not visible: a[data-book]"
+  }
+ ]
+}

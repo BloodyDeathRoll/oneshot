@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Global Surf Lodge Kabalana – surf weeks in Sri Lanka</title>
+<meta name="description" content="Surf weeks for all levels on Sri Lanka's south coast, a few steps from the ocean.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Birthstone&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-poster-m608.webp" media="(max-width: 700px) and (orientation: portrait)">
+<link rel="preload" as="image" href="img/hero-poster-1728.webp" media="(min-width: 701px), (orientation: landscape)">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{
+  --ground:#FFFFFF; --tint:#EEF1F4; --tint-2:#E3E8EC; --ink:#021D21; --ink-2:#34474A;
+  --book:#B02A3E; --book-hover:#951F32;
+  --text:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --script:'Birthstone','Figtree',cursive;
+  --gutter:clamp(20px,4vw,48px);
+  --wide:1360px;
+  --side:max(var(--gutter),calc((100vw - var(--wide))/2 + var(--gutter)));
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--ground);color:var(--ink);font:400 17px/1.6 var(--text);overflow-x:hidden}
+img,video{display:block;max-width:100%;height:auto}
+.btn svg{width:20px;height:20px;flex:none}
+a{color:inherit}
+ul{list-style:none;padding:0}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;padding:10px 14px;border-radius:10px;z-index:99}
+.skip:focus{left:8px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.js-only{display:none}
+.js .js-only{display:flex}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 26px;border-radius:999px;font:600 16px/1 var(--text);text-decoration:none;border:0;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;text-align:center}
+.btn-book{background:var(--book);color:#fff;box-shadow:0 6px 20px rgba(176,42,62,.26)}
+.btn-book:hover{background:var(--book-hover);transform:translateY(-1px)}
+.btn-soft{background:var(--tint);color:var(--ink)}
+.btn-soft:hover{background:var(--tint-2)}
+.btn-white{background:#fff;color:var(--ink);box-shadow:0 2px 12px rgba(2,29,33,.06)}
+.btn-white:hover{box-shadow:0 6px 18px rgba(2,29,33,.12)}
+
+/* header */
+.hdr{position:fixed;inset:0 0 auto 0;z-index:30;color:#fff;transition:background .25s,color .25s,box-shadow .25s}
+.hdr-in{max-width:var(--wide);margin:0 auto;padding:0 var(--gutter);height:84px;display:flex;align-items:center;gap:32px}
+.logo{display:block;color:inherit;width:150px}
+.logo svg{display:block;width:100%;height:auto;aspect-ratio:233/46;fill:currentColor;filter:drop-shadow(0 0 10px rgba(2,29,33,.35))}
+.nav{display:flex;gap:30px;margin-left:auto}
+.nav a{text-decoration:none;font:500 16px/1 var(--text);padding:14px 0;text-shadow:0 0 16px rgba(2,29,33,.6),0 1px 2px rgba(2,29,33,.35)}
+.hdr .btn-book{display:none}
+.hdr.solid{background:#fff;color:var(--ink);box-shadow:0 2px 24px rgba(2,29,33,.07)}
+.hdr.solid .logo svg{filter:none}
+.hdr.solid .nav a{text-shadow:none}
+.hdr.solid .btn-book{display:inline-flex;min-height:44px}
+.hdr.solid .hdr-in{height:72px}
+
+/* hero */
+.hero{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;color:#fff;background:#5f8c8f}
+.hero picture img,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero video{opacity:0;transition:opacity .6s}
+.hero video.on{opacity:1}
+.hero-txt{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 var(--gutter)}
+.hero h1{font:600 clamp(38px,4.4vw,60px)/1.08 var(--text);letter-spacing:-.015em;text-shadow:0 0 40px rgba(2,29,33,.5),0 0 14px rgba(2,29,33,.32),0 1px 2px rgba(2,29,33,.4)}
+.hero .btn{margin-top:28px;min-height:54px;padding:0 32px;font-size:17px}
+
+.menu-btn{display:none;margin-left:auto;width:48px;height:48px;border:0;background:transparent;color:inherit;border-radius:999px;cursor:pointer;align-items:center;justify-content:center}
+.menu-btn svg{width:26px;height:26px;filter:drop-shadow(0 0 8px rgba(2,29,33,.45))}
+.hdr.solid .menu-btn svg{filter:none}
+.sheet{position:fixed;inset:0;z-index:60;background:#fff;color:var(--ink);display:flex;flex-direction:column;padding:18px var(--gutter) 32px;transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .2s,transform .2s,visibility .2s}
+.sheet.open{opacity:1;transform:none;visibility:visible}
+.sheet-top{display:flex;align-items:center;justify-content:space-between;height:50px}
+.sheet .logo{color:var(--ink)}
+.sheet .logo svg{filter:none}
+.sheet-close{width:48px;height:48px;border:0;border-radius:999px;background:var(--tint);color:var(--ink);font-size:26px;line-height:1;cursor:pointer}
+.sheet nav{display:flex;flex-direction:column;gap:4px;margin:40px 0 auto}
+.sheet nav a{font:600 30px/1.25 var(--text);text-decoration:none;padding:8px 0}
+.sheet .btns{display:grid;gap:12px}
+.sheet .btns .btn{width:100%;min-height:54px}
+.bar{display:none}
+
+/* sections */
+.sec{padding:clamp(80px,9vw,136px) 0}
+.tint{background:var(--tint)}
+.wrap-w{max-width:var(--wide);margin:0 auto;padding:0 var(--gutter)}
+.script{font:400 clamp(58px,6vw,86px)/.95 var(--script);color:var(--ink);letter-spacing:0}
+.lead{font-size:clamp(17px,1.35vw,19px);color:var(--ink-2)}
+.lead p+p{margin-top:14px}
+.detail{font:500 16px/1.5 var(--text);color:var(--ink);margin-top:14px}
+.head{display:grid;grid-template-columns:5fr 6fr;gap:clamp(32px,6vw,96px);align-items:end}
+.head .lead{padding-bottom:6px;max-width:620px}
+
+/* levels */
+.levels{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.4vw,32px);margin-top:clamp(48px,5vw,72px)}
+.level{display:flex;flex-direction:column}
+.level-media{position:relative;aspect-ratio:3/4;border-radius:24px;overflow:hidden;background:var(--tint)}
+.level-media img,.level-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.play{position:absolute;right:16px;bottom:16px;width:52px;height:52px;border-radius:999px;border:0;background:rgba(255,255,255,.94);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(2,29,33,.18);transition:transform .2s}
+.play:hover{transform:scale(1.06)}
+.play svg{width:20px;height:20px}
+.play .i-pause{display:none}
+.playing .play .i-play{display:none}.playing .play .i-pause{display:block}
+.level h3{font:600 24px/1.25 var(--text);margin-top:24px}
+.level p{color:var(--ink-2);margin-top:6px;flex:1}
+.level .price{font:600 17px/1.4 var(--text);color:var(--ink);margin-top:14px}
+.level .btn{margin-top:18px;align-self:flex-start}
+.lv-foot{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;margin-top:clamp(48px,5vw,72px)}
+.free{display:grid;grid-template-columns:220px 1fr auto;align-items:center;gap:28px;background:var(--tint);border-radius:24px;padding:16px 28px 16px 16px}
+.free img{border-radius:16px;aspect-ratio:3/2;object-fit:cover;width:100%}
+.free h3{font:600 20px/1.3 var(--text)}
+.free p{color:var(--ink-2);margin-top:4px}
+.score-card{display:flex;flex-direction:column;justify-content:center;gap:6px;background:var(--tint);border-radius:24px;padding:22px 28px;text-decoration:none;font:500 15px/1.45 var(--text);color:var(--ink-2)}
+.score-card .big{font:600 44px/1 var(--text);color:var(--ink);letter-spacing:-.02em}
+
+/* included */
+.incl{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);align-items:start}
+.incl .lead{margin-top:24px;max-width:560px}
+.pills{display:inline-flex;gap:4px;background:#fff;padding:4px;border-radius:999px;margin-top:30px}
+.pills button{border:0;background:transparent;font:600 15px/1 var(--text);color:var(--ink-2);padding:0 20px;min-height:44px;border-radius:999px;cursor:pointer}
+.pills button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.icons{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:14px 28px}
+.icons li{display:flex;align-items:flex-start;gap:12px;font-size:16px;line-height:1.4}
+.icons svg{flex:none;width:24px;height:24px;color:var(--ink);margin-top:-1px}
+.icons li.hl{font-weight:600}
+.extra{margin-top:24px;font-size:15px;color:var(--ink-2)}
+.incl-r{display:grid;gap:22px}
+.price-box{background:#fff;border-radius:24px;padding:28px 30px;font-size:16px;color:var(--ink-2)}
+.price-box p+p{margin-top:10px}
+.pb-h{font:600 24px/1.25 var(--text)!important;color:var(--ink);margin-bottom:12px}
+
+/* slideshow */
+.slides{position:relative}
+.track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:24px}
+.track::-webkit-scrollbar{display:none}
+.track>*{flex:0 0 100%;scroll-snap-align:start}
+.track img{width:100%;object-fit:cover;aspect-ratio:3/2}
+.dots{display:flex;justify-content:center;margin-top:6px}
+.dots button{width:36px;height:44px;border:0;background:transparent;padding:0;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.dots button::after{content:"";width:8px;height:8px;border-radius:99px;background:#AFBBC2;transition:width .25s,background .25s}
+.dots button[aria-current="true"]::after{width:22px;background:var(--ink)}
+.arrows button{position:absolute;top:50%;transform:translateY(-70%);width:48px;height:48px;border-radius:999px;border:0;background:rgba(255,255,255,.94);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(2,29,33,.16);opacity:0;transition:opacity .2s}
+.slides:hover .arrows button,.arrows button:focus-visible{opacity:1}
+.arrows .prev{left:16px}.arrows .next{right:16px}
+.arrows svg{width:20px;height:20px}
+
+/* midday */
+.bleed{position:relative;overflow:hidden}
+.bleed img{width:100%;height:auto;display:block}
+.bleed-txt{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;text-align:center;padding:0 var(--gutter) 12%;color:#fff}
+.bleed-txt p{font:600 clamp(28px,3.4vw,46px)/1.2 var(--text);max-width:900px;text-shadow:0 0 36px rgba(2,29,33,.5),0 0 12px rgba(2,29,33,.3)}
+.lodge{display:grid;grid-template-columns:5fr 6fr;gap:clamp(40px,6vw,96px);align-items:start}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.chips li{display:inline-flex;align-items:center;gap:8px;background:var(--tint);border-radius:999px;padding:9px 16px 9px 12px;font:500 15px/1.3 var(--text)}
+.chips svg{width:16px;height:16px;flex:none}
+.more-btn{display:none}
+
+/* rooms */
+.rooms-head{align-items:end;grid-template-columns:minmax(0,1fr) auto}
+.tabs{gap:6px;background:var(--tint);padding:5px;border-radius:999px;justify-self:end;flex-wrap:nowrap}
+.tabs button{border:0;background:transparent;font:600 15px/1.2 var(--text);color:var(--ink-2);padding:0 20px;min-height:46px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.tabs button[aria-selected="true"]{background:#fff;color:var(--ink);box-shadow:0 2px 10px rgba(2,29,33,.10)}
+.room-panels{margin-top:clamp(40px,4vw,56px);display:grid;gap:96px}
+.room{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:clamp(36px,4.5vw,72px);align-items:center;padding-right:var(--side)}
+.room[hidden]{display:none}
+.room .track{border-radius:0 28px 28px 0}
+.room .track img{aspect-ratio:3/2}
+.room h3{font:600 28px/1.2 var(--text)}
+.room .line{color:var(--ink);font-weight:500;margin-top:8px}
+.room .desc{color:var(--ink-2);margin-top:14px;font-size:16px}
+.room .det{font:500 15px/1.6 var(--text);margin-top:18px}
+.room .sup{font:600 16px/1.45 var(--text);margin-top:8px}
+.room .btn{margin-top:22px}
+.rooms-note{margin-top:40px;color:var(--ink-2);font-size:15px}
+
+/* waves */
+.band img{width:100%;aspect-ratio:21/9;object-fit:cover}
+.waves{display:grid;grid-template-columns:1fr 420px;gap:clamp(40px,6vw,96px);align-items:center}
+.waves .lead{margin-top:22px;max-width:560px}
+.fc-now{margin-top:30px}
+.fc-h{font:600 clamp(48px,5vw,68px)/1 var(--text);letter-spacing:-.02em}
+.fc-h small{font-size:.42em;font-weight:500;letter-spacing:0;margin-left:6px}
+.fc-ph{font:600 18px/1.4 var(--text);margin-top:10px}
+.fc-l{margin-top:6px;font:500 16px/1.6 var(--text);color:var(--ink-2)}
+.fc-credit{margin-top:24px}
+.widget{position:relative;width:100%;max-width:420px;height:500px;border-radius:16px;background:#fff;justify-self:end;overflow:hidden}
+.wf{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:36px;gap:16px}
+.wf-i{width:72px;height:72px;border-radius:999px;background:var(--tint);display:flex;align-items:center;justify-content:center}
+.wf-i svg{width:36px;height:36px}
+.wf-t{font:600 22px/1.2 var(--text)}
+.wf .btn{line-height:1.25;padding:12px 24px;max-width:300px}
+.widget iframe{position:absolute;inset:0;display:block;width:100%;height:500px;border:0;border-radius:16px;opacity:0;transition:opacity .4s}
+.widget iframe.on{opacity:1}
+
+/* guests */
+.guests{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,104px);align-items:center;padding-right:var(--side)}
+.g-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:0 28px 28px 0;max-height:860px}
+.score-line{display:inline-flex;align-items:center;gap:12px;margin-top:26px;text-decoration:none;font:600 16px/1.4 var(--text)}
+.score{background:var(--ink);color:#fff;border-radius:10px;padding:4px 9px;font-size:16px}
+.cats{color:var(--ink-2);font:500 16px/1.4 var(--text);margin-top:8px}
+.quotes{margin-top:clamp(36px,4vw,56px)}
+.quotes .track{border-radius:0;align-items:flex-start}
+.quotes figure{margin:0}
+.quotes blockquote{font:500 clamp(22px,1.9vw,28px)/1.45 var(--text);color:var(--ink)}
+.quotes figcaption{margin-top:20px;font:600 16px/1.4 var(--text);color:var(--ink-2)}
+.quotes .dots{justify-content:flex-start;margin-top:20px;margin-left:-14px}
+.quotes .arrows{display:none}
+
+/* dinner */
+.guests{padding-bottom:clamp(40px,5vw,72px)}
+.close{padding-top:clamp(56px,6vw,96px)}
+.dinner{display:grid;grid-template-columns:6fr 5fr;gap:clamp(40px,7vw,110px);align-items:center}
+.dinner img{border-radius:28px;aspect-ratio:4/5;object-fit:cover;width:100%}
+.dinner .lead{font-size:20px;margin-top:20px}
+.dinner .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+
+/* instagram */
+.ig-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.ig-head .lead{margin-top:12px}
+.ig-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:44px}
+.ig-grid a{display:block;border-radius:18px;overflow:hidden}
+.ig-grid img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform .35s}
+.ig-grid a:hover img{transform:scale(1.04)}
+
+/* footer */
+.foot{background:var(--ground);padding:clamp(64px,7vw,96px) 0 32px}
+.foot>.wrap{max-width:var(--wide);margin:0 auto;padding:0 var(--gutter)}
+.foot-grid{display:grid;grid-template-columns:1.2fr 1fr 1.3fr .8fr;gap:48px}
+.foot h2{font:600 15px/1.4 var(--text);color:var(--ink);margin-bottom:16px}
+.foot .logo{color:var(--ink);width:170px}
+.foot .logo svg{filter:none}
+.foot .tag{margin-top:18px;color:var(--ink-2);font-size:16px;max-width:280px}
+.cbtns{display:grid;gap:10px;justify-items:start}
+.cbtns .btn{min-height:46px;padding:0 20px;font-size:15px;background:var(--tint);color:var(--ink)}
+.cbtns .btn:hover{background:var(--tint-2)}
+.cbtns svg{width:20px;height:20px}
+.foot address{font-style:normal;font-size:16px;line-height:1.6}
+.foot .small{font-size:15px;color:var(--ink-2);margin-top:10px}
+.social{display:flex;gap:10px}
+.social a{width:46px;height:46px;border-radius:999px;background:var(--tint);color:var(--ink);display:flex;align-items:center;justify-content:center}
+.social a:hover{background:var(--tint-2)}
+.social svg{width:20px;height:20px}
+.legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:64px;font-size:14px;color:var(--ink-2)}
+.legal a{text-decoration:none;font-weight:500}
+
+@media (max-width:1100px){
+  .free{grid-template-columns:180px 1fr}
+  .free .btn{grid-column:1/-1;justify-self:start}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .room{grid-template-columns:minmax(0,1fr) 320px}
+}
+@media (max-width:860px){
+  .nav{display:none}
+  .hdr-in{height:68px}
+  .logo{width:120px}
+  .hero .btn{min-height:52px;padding:0 28px;font-size:16px;margin-top:24px}
+  .menu-btn{display:inline-flex}
+  .hdr.solid .btn-book{margin-left:auto;min-height:44px;padding:0 20px}
+  .hdr.solid .menu-btn{margin-left:4px}
+  .bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:25;align-items:center;gap:12px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#fff;box-shadow:0 -4px 24px rgba(2,29,33,.10);transform:translateY(110%);transition:transform .25s}
+  .bar.show{transform:none}
+  .bar p{font:500 15px/1.3 var(--text);color:var(--ink);flex:1}
+  .bar p b{font-weight:600}
+  .bar .btn{min-height:48px;padding:0 22px}
+  .script{font-size:clamp(54px,15vw,64px)}
+  .head,.incl,.lodge,.waves,.dinner,.lv-foot{grid-template-columns:minmax(0,1fr)}
+  .head{gap:18px}
+  .levels{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:36px calc(-1*var(--gutter)) 0;padding:0 var(--gutter);scroll-padding:0 var(--gutter);scrollbar-width:none}
+  .levels::-webkit-scrollbar{display:none}
+  .level{flex:0 0 84%;scroll-snap-align:start}
+  .lv-dots{display:flex}
+  .free{grid-template-columns:1fr;padding:14px 14px 22px;gap:16px}
+  .score-card{flex-direction:row;align-items:center;gap:16px;padding:18px 22px}
+  .score-card .big{font-size:36px}
+  .icons{grid-template-columns:1fr}
+  .price-box{padding:24px 22px}
+  .chips{flex-wrap:nowrap;overflow-x:auto;display:grid;grid-auto-flow:column;grid-template-rows:auto auto;justify-content:start;margin:24px calc(-1*var(--gutter)) 0;padding:0 var(--gutter);scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .chips li{white-space:nowrap}
+  .js .more:not(.open) p+p{display:none}
+  .js .more-btn{display:inline-flex;margin-top:18px}
+  .tabs{justify-self:stretch;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;border-radius:999px}
+  .tabs::-webkit-scrollbar{display:none}
+  .tabs button{padding:0 16px;font-size:14px}
+  .room{grid-template-columns:minmax(0,1fr);padding-right:0;gap:22px}
+  .room .track{border-radius:0}
+  .room-txt{padding:0 var(--gutter)}
+  .room-panels{gap:72px}
+  .band img{aspect-ratio:4/3}
+  .widget{justify-self:center}
+  .guests{grid-template-columns:minmax(0,1fr);padding-right:0;gap:0}
+  .g-photo{order:2;margin-top:28px}
+  .g-photo img{border-radius:0;max-height:none}
+  .g-txt{display:contents}
+  .guests .script,.score-line,.cats{margin-left:var(--gutter);margin-right:var(--gutter)}
+  .guests .script{order:0}.score-line{order:1;display:flex}.cats{order:1}
+  .quotes{order:3;margin:28px var(--gutter) 0}
+  .dinner img{order:-1}
+  .ig-grid{grid-template-columns:repeat(3,1fr);gap:6px}
+  .ig-grid a{border-radius:12px}
+  .foot-grid{grid-template-columns:1fr;gap:40px}
+  .foot{padding-bottom:110px}
+  .arrows{display:none}
+}
+@media (min-width:861px){ .lv-dots{display:none} }
+@media (prefers-reduced-motion:reduce){ .hero video{display:none} *{transition:none!important} }.ap{margin:0 -.14em 0 -.1em}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="gs-logo" viewBox="12 21 233 46"><path d="M33.1,33v3.7h-4.5v-3.9c0-3.9-1.5-6.2-5-6.2c-3.4,0-5,2.3-5,6.2v22.7c0,3.9,1.6,6.2,5,6.2c3.5,0,5-2.3,5-6.2 v-8.6h-4.4v-4.3h9v12.6c0,6.5-3.1,10.8-9.7,10.8c-6.6,0-9.6-4.3-9.6-10.8V33c0-6.5,3.1-10.8,9.6-10.8C30,22.2,33.1,26.5,33.1,33z"/><path d="M37.6,65.6V22.7h4.8v38.6h12.3v4.4H37.6z"/><path d="M57.9,33c0-6.6,3.3-10.8,9.8-10.8c6.6,0,9.9,4.2,9.9,10.8v22.2c0,6.5-3.3,10.8-9.9,10.8 c-6.6,0-9.8-4.3-9.8-10.8V33z M62.6,55.5c0,3.9,1.7,6.2,5.1,6.2c3.5,0,5.1-2.3,5.1-6.2V32.8c0-3.9-1.6-6.2-5.1-6.2 c-3.4,0-5.1,2.3-5.1,6.2V55.5z"/><path d="M91.8,22.7c6.7,0,9.3,3.2,9.3,9.5v2c0,4.5-1.3,7.4-5,8.5c4.2,1.2,5.8,4.5,5.8,9.2v3.6 c0,6.4-3.1,10.1-9.8,10.1h-9.9V22.7H91.8z M90.6,40.9c3.8,0,5.8-1.2,5.8-5.7v-2.5c0-3.8-1.3-5.6-4.7-5.6h-4.7v13.9H90.6z M92,61.2 c3.5,0,5.1-1.8,5.1-5.8v-3.8c0-4.8-1.9-6.4-6-6.4h-4.2v16H92z"/><path d="M111,56.9l-1.7,8.6H105l8.2-42.9h6.9l8.2,42.9h-4.8l-1.7-8.6H111z M111.6,52.8h9.6l-4.8-24.8L111.6,52.8z"/><path d="M132.1,65.6V22.7h4.8v38.6h12.3v4.4H132.1z"/><path d="M162.7,22.6c6.6,0,9.9,3.9,9.9,10.8v1.3h-6.4V33c0-3.1-1.2-4.2-3.4-4.2c-2.1,0-3.4,1.2-3.4,4.2 c0,8.8,13.2,10.5,13.2,22.8c0,6.9-3.4,10.8-10.1,10.8s-10.1-3.9-10.1-10.8v-2.6h6.4v3.1c0,3.1,1.3,4.2,3.5,4.2s3.5-1.1,3.5-4.2 c0-8.8-13.2-10.5-13.2-22.8C152.8,26.6,156.1,22.6,162.7,22.6z"/><path d="M183,23.1v33.1c0,3.1,1.3,4.2,3.5,4.2c2.1,0,3.5-1.1,3.5-4.2V23.1h6.4v32.7c0,6.9-3.4,10.8-10.1,10.8 c-6.6,0-10.1-3.9-10.1-10.8V23.1H183z"/><path d="M215.1,66.1c-0.4-1.1-0.6-1.8-0.6-5.3V54c0-4-1.3-5.5-4.4-5.5h-2.3v17.5H201V23.1h10.2c7,0,10,3.3,10,9.9v3.4 c0,4.4-1.4,7.3-4.4,8.7c3.4,1.4,4.5,4.7,4.5,9.1v6.6c0,2.1,0.1,3.6,0.7,5.2H215.1z M207.7,29.3v13.2h2.6c2.5,0,4-1.1,4-4.5v-4.2 c0-3.1-1-4.4-3.4-4.4H207.7z"/><path d="M232.4,42.2h8.7v6.1h-8.7v17.7h-6.7V23.1h17.9v6.1h-11.1V42.2z"/></symbol></svg>
+
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a class="logo" href="./" aria-label="Global Surf Lodge Kabalana, home"><svg role="img" aria-label="Global Surf"><use href="#gs-logo"/></svg></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#levels">Levels</a><a href="#rooms">Rooms</a><a href="#lodge">The lodge</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-book" href="book/">Book now</a>
+    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sheet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="sheet-top"><a class="logo" href="./" aria-label="Global Surf Lodge Kabalana, home"><svg role="img" aria-label="Global Surf"><use href="#gs-logo"/></svg></a><button class="sheet-close" type="button" aria-label="Close menu">&times;</button></div>
+  <nav aria-label="Menu"><a href="#levels">Levels</a><a href="#rooms">Rooms</a><a href="#lodge">The lodge</a><a href="#contact">Contact</a></nav>
+  <div class="btns"><a class="btn btn-book" href="book/">Book package now</a><a class="btn btn-soft" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.">Questions? Ask us</a></div>
+</div>
+
+<main id="main">
+<section class="hero" aria-label="Global Surf Lodge Kabalana">
+  <picture>
+    <source media="(max-width: 700px) and (orientation: portrait)" srcset="img/hero-poster-m608.webp">
+    <img src="img/hero-poster-1728.webp" srcset="img/hero-poster-1000.webp 1000w, img/hero-poster-1728.webp 1728w" sizes="100vw" width="1728" height="972" alt="From the air: beginners on their boards in the whitewater, waiting for the next set, the beach behind them" fetchpriority="high">
+  </picture>
+  <video id="hero-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+  <div class="hero-txt">
+    <h1>Next set is yours</h1>
+    <a class="btn btn-book" href="book/">Book package now</a>
+  </div>
+</section>
+
+<section class="sec" id="levels" aria-labelledby="levels-t">
+ <div class="wrap-w">
+  <div class="head">
+   <div><h2 class="script" id="levels-t">Choose your level</h2><p class="detail">12 rooms | Saturday check-in | ISA-certified surf guides</p></div>
+   <div class="lead"><p>We are surfing obsessed, and we invite you to join us.</p><p>The lodge sits in the green of the jungle. We run surf weeks for three levels, from your first wave to carving, and a Freestylers package for independent travellers.</p></div>
+  </div>
+  <div class="levels" id="lv-row"><article class="level" data-clip="level-1">
+  <div class="level-media"><img src="img/level-1.webp" width="720" height="960" loading="lazy" alt="Surf theory on the sand: a group sits round a guide and a mint soft-top board">
+    <button class="play" type="button" aria-label="Play the Level 1 – Fomies clip"><svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg></button></div>
+  <h3>Level 1 – Fomies</h3><p>Your first time on a board. No experience needed.</p>
+  <div class="price">From $1,466 pp | 7 nights</div>
+  <a class="btn btn-book" href="book/?level=1">Choose Level 1</a>
+</article><article class="level" data-clip="level-2">
+  <div class="level-media"><img src="img/level-2.webp" width="720" height="960" loading="lazy" alt="Surfer on a turquoise wave">
+    <button class="play" type="button" aria-label="Play the Level 2 – Rollers clip"><svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg></button></div>
+  <h3>Level 2 – Rollers</h3><p>You can stand up. Now catch green waves.</p>
+  <div class="price">From $1,466 pp | 7 nights</div>
+  <a class="btn btn-book" href="book/?level=2">Choose Level 2</a>
+</article><article class="level" data-clip="level-3">
+  <div class="level-media"><img src="img/level-3.webp" width="720" height="960" loading="lazy" alt="Surfer deep in a clear turquoise barrel, water-level shot">
+    <button class="play" type="button" aria-label="Play the Level 3 – Riders clip"><svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg></button></div>
+  <h3>Level 3 – Riders</h3><p>Already carving? Get sharper, on whichever spot is best that day.</p>
+  <div class="price">From $1,466 pp | 7 nights</div>
+  <a class="btn btn-book" href="book/?level=3">Choose Level 3</a>
+</article></div>
+  <div class="dots lv-dots" id="lv-dots"></div>
+  <div class="lv-foot">
+   <div class="free"><img src="img/freestylers.webp" width="640" height="427" loading="lazy" alt="Woman on a daybed by the lodge pool, white bungalow behind">
+    <div><h3>Freestylers – B&amp;B only | from 4 nights</h3><p>For independent travellers who want the lodge&#x27;s vibe.</p></div>
+    <a class="btn btn-white" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20would%20like%20to%20ask%20about%20dates%20for%20the%20Freestylers%20%E2%80%93%20B%26B%20only%20package.">Ask about dates</a></div>
+   <a class="score-card" href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"><span class="big">8.6</span><span>on Booking.com | 80 reviews | 28 Sep 2026</span></a>
+  </div>
+ </div>
+</section>
+
+<section class="sec tint" id="included" aria-labelledby="inc-t">
+ <div class="wrap-w incl">
+  <div>
+   <h2 class="script" id="inc-t">What<span class="ap">’</span>s included</h2>
+   <div class="lead"><p>Head out with your group for a morning surf. Back at the lodge, a big, healthy breakfast is waiting.</p><p>After that the day is yours: relax at the lodge, or go out and explore before the afternoon surf. The evening ends with dinner, together with the other guests.</p></div>
+   <div class="pills" role="group" aria-label="Show what's included for"><button type="button" aria-pressed="true" data-l="1">Level 1</button><button type="button" aria-pressed="false" data-l="2">Level 2</button><button type="button" aria-pressed="false" data-l="3">Level 3</button></div>
+   <ul class="icons" id="incl-list"><li data-l1="7 nights&#x27; accommodation" data-l2="7 nights&#x27; accommodation" data-l3="7 nights&#x27; accommodation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 15h18M3 18v2M21 18v2M6 10V7a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg><span>7 nights&#x27; accommodation</span></li><li data-l1="7 breakfasts" data-l2="7 breakfasts" data-l3="7 breakfasts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18a9 9 0 0 1-18 0zM8 7c0-1.5 1-2 1-3.5M12 7c0-1.5 1-2 1-3.5"/></svg><span>7 breakfasts</span></li><li data-l1="5 dinners" data-l2="5 dinners" data-l3="5 dinners"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.5"/></svg><span>5 dinners</span></li><li data-l1="5 guided surf sessions of 2 hours" data-l2="5 guided surf sessions of 2 hours" data-l3="5 coached surf sessions of 2 hours"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>5 guided surf sessions of 2 hours</span></li><li data-l1="5 surf theory lessons" data-l2="5 surf theory lessons" data-l3="5 surf theory lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 21H20"/></svg><span>5 surf theory lessons</span></li><li data-l1="Unlimited surf equipment all week" data-l2="Unlimited surf equipment all week" data-l3="Unlimited surf equipment all week"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c3 3 4.5 7.5 4.5 12S14.5 22 12 22s-4.5-3.5-4.5-8S9 5 12 2zM12 15v4"/></svg><span>Unlimited surf equipment all week</span></li><li data-l1="Walk or ride to the surf, depending on the spot" data-l2="Walk or ride to the surf, depending on the spot" data-l3="Walk or ride to the surf, depending on the spot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16V8a2 2 0 0 1 2-2h9l4 4h1a2 2 0 0 1 2 2v4h-2M3 16h2m4 0h6"/><circle cx="7" cy="16.5" r="2"/><circle cx="17" cy="16.5" r="2"/></svg><span>Walk or ride to the surf, depending on the spot</span></li><li data-l1="A cultural or nature excursion" data-l2="A cultural or nature excursion" data-l3="A cultural or nature excursion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2zM9 4v14M15 6v14"/></svg><span>A cultural or nature excursion</span></li><li data-l1="Unlimited drinking water" data-l2="Unlimited drinking water" data-l3="Unlimited drinking water"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg><span>Unlimited drinking water</span></li><li data-l1="Unlimited local coffee and tea" data-l2="Unlimited local coffee and tea" data-l3="Unlimited local coffee and tea"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM17 10h1.5a2.5 2.5 0 0 1 0 5H17M8 3v3M12 3v3"/></svg><span>Unlimited local coffee and tea</span></li></ul>
+   <p class="extra">Not included: airport pickup. From $220 pp, add it on the booking page.</p>
+  </div>
+  <div class="incl-r">
+   <div class="slides " data-slides aria-roledescription="carousel" aria-label="Breakfast at the lodge"><div class="track" tabindex="0" aria-label="Breakfast photos, use the arrow keys"><div role="group" aria-roledescription="slide" aria-label="1 of 4"><img src="img/breakfast-011.webp" srcset="img/breakfast-011-720.webp 720w, img/breakfast-011.webp 1200w" sizes="(max-width: 860px) 92vw, 640px" width="1200" height="800" loading="lazy" alt="Fruit and granola bowl from above"></div><div role="group" aria-roledescription="slide" aria-label="2 of 4"><img src="img/breakfast-021.webp" srcset="img/breakfast-021-720.webp 720w, img/breakfast-021.webp 1200w" sizes="(max-width: 860px) 92vw, 640px" width="1200" height="800" loading="lazy" alt="Poke bowl from above"></div><div role="group" aria-roledescription="slide" aria-label="3 of 4"><img src="img/breakfast-033.webp" srcset="img/breakfast-033-720.webp 720w, img/breakfast-033.webp 1200w" sizes="(max-width: 860px) 92vw, 640px" width="1200" height="800" loading="lazy" alt="Breakfast of eggs and salad on a daybed"></div><div role="group" aria-roledescription="slide" aria-label="4 of 4"><img src="img/breakfast-057.webp" srcset="img/breakfast-057-720.webp 720w, img/breakfast-057.webp 1200w" sizes="(max-width: 860px) 92vw, 640px" width="1200" height="800" loading="lazy" alt="Pancakes with fruit"></div></div><div class="arrows"><button class="prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button class="next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div><div class="dots"></div></div>
+   <div class="price-box"><p class="pb-h">From $1,466 pp | 7 nights</p>
+    <p>The three surf weeks cost the same, per person for seven nights. That is the base price the booking engine showed on 28 September 2026. The room you choose can add to it; the engine shows any supplement once you pick your dates.</p>
+    <p>Packages start on a Saturday and run for 7, 14, 21 or 28 nights, for up to six guests per booking. Drinking water and local coffee and tea are unlimited.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="lodge" aria-labelledby="lodge-t">
+ <div class="bleed pool"><picture><source media="(max-width: 700px)" srcset="img/pool-m.webp"><img src="img/pool-2000.webp" width="2000" height="1125" loading="lazy" alt="Lodge pool at water level, open-sided lounge and bar behind"></picture>
+  <div class="bleed-txt"><p>Footwear is discouraged. Chilling out is inescapable.</p></div></div>
+ <div class="sec"><div class="wrap-w lodge">
+  <div><h2 class="script" id="lodge-t">The lodge</h2>
+   <ul class="chips" aria-label="At the lodge"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Outdoor swimming pool</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Yoga chalet</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Yoga, meditation and sound healing sessions</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Ice baths</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Lookout terrace (ocean view)</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Restaurant (breakfast, lunch and dinner, daily)</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Bar</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Gluten-free and vegan options</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Co-working space (high-speed internet, coffee and fresh juices)</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Free WiFi</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Airport shuttle</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Free private parking on site</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Non-smoking rooms</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Garden</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Sun terrace</li></ul></div>
+  <div class="lead more" id="lodge-more"><p>There are just twelve rooms. That keeps a stay here personal, part of one big happy family. Every room has air conditioning, a ceiling fan, a safe box, a private toilet and shower, a socket next to each bed and, of course, a board rack.</p><p>When you&#x27;re not on the water, lie out on a sunbed by the pool under the palms, hang out in the common area, take an ice-cold drink from the bar, or eat Sri Lankan produce from the lodge kitchen.</p>
+   <button type="button" class="btn btn-soft more-btn" aria-expanded="false" aria-controls="lodge-more">Read more</button></div>
+ </div></div>
+</section>
+
+<section class="sec rooms-sec" id="rooms" aria-labelledby="rooms-t">
+ <div class="wrap-w head rooms-head">
+  <div><h2 class="script" id="rooms-t">Our rooms</h2><p class="detail">Every room: air conditioning | ceiling fan | safe box | private toilet and shower | board rack</p></div>
+  <div class="tabs js-only" role="tablist" aria-label="Rooms"><button type="button" role="tab" id="rt-0" aria-controls="room-0" aria-selected="true" tabindex="0">Mixed dorm room – 4 beds</button><button type="button" role="tab" id="rt-1" aria-controls="room-1" aria-selected="false" tabindex="-1">Shared Twin Room – 2 Beds</button><button type="button" role="tab" id="rt-2" aria-controls="room-2" aria-selected="false" tabindex="-1">Deluxe double room</button></div>
+ </div>
+ <div class="room-panels"><article class="room" id="room-0" role="tabpanel" aria-labelledby="rn-0">
+  <div class="slides " data-slides aria-roledescription="carousel" aria-label="Mixed dorm room – 4 beds photos"><div class="track" tabindex="0" aria-label="Mixed dorm room – 4 beds photos, use the arrow keys"><div role="group" aria-roledescription="slide" aria-label="1 of 6"><img src="img/room-063.webp" srcset="img/room-063-720.webp 720w, img/room-063.webp 1200w" sizes="(max-width: 860px) 100vw, 66vw" width="1200" height="800" loading="lazy" alt="Loft dorm room with twin beds and a ladder"></div><div role="group" aria-roledescription="slide" aria-label="2 of 6"><img src="img/room-078.webp" srcset="img/room-078-720.webp 720w, img/room-078.webp 1200w" sizes="(max-width: 860px) 100vw, 66vw" width="1200" height="800" loading="lazy" alt="Loft dorm with twin beds and ladder"></div><div role="group" aria-roledescription="slide" aria-label="3 of 6"><img src="img/room-095.webp" srcset="img/room-095-720.webp 720w, img/room-095.webp 1200w" sizes="(max-width: 860px) 100vw, 66vw" width="1200" height="800" loading="lazy" alt="Twin beds under a timber roof"></div><div role="group" aria-roledescription="slide" aria-label="4 of 6"><img src="img/room-042.webp" srcset="img/room-042-720.webp 720w, img/room-042.webp 1200w" sizes="(max-width: 860px) 100vw, 66vw" width="1200" height="800" loading="lazy" alt="Twin beds under a timber roof"></div><div role="group" aria-roledescription="slide" aria-label="5 of 6"><img src="img/room-050.webp" srcset="img/room-050-720.webp 720w, img/room-050.webp 1200w" sizes="(max-width: 860px) 100vw, 66vw" width="1200" height="800" loading="lazy" alt="Bungalow with a hammock"></div><div role="group" aria-roledescription="slide" aria-label="6 of 6"><img src="img/room-064.webp" srcset="img/room-064-720.webp 720w, img/room-064.webp 1200w" sizes="(max-width: 860px) 100vw, 66vw" width="1200" height="800" loading="lazy" alt="Open-air bathroom with a palm growing through it"></div></div><div class="arrows"><button class="prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button class="next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div><div class="dots"></div></div>
+  <div class="room-txt"><h3 id="rn-0">Mixed dorm room – 4 beds</h3><p class="line">Four single beds. The bathroom is outdoors, and it&#x27;s yours.</p><p class="desc">Our new gallery room sleeps four in comfortable single beds and has its own outdoor bathroom. It suits larger groups, and travellers on a budget.</p>
+   <p class="det">Sleeps 4 | 4 single beds | Private outdoor bathroom | Shared</p><p class="sup">Included in the package price</p><a class="btn btn-book" href="book/?room=dorm">Choose this room</a></div>
+</article><article class="room" id="room-1" role="tabpanel" aria-labelledby="rn-1">
+  <div class="slides " data-slides aria-roledescription="carousel" aria-label="Shared Twin Room – 2 Beds photos"><div class="track" tabindex="0" aria-label="Shared Twin Room – 2 Beds photos, use the arrow keys"><div role="group" aria-roledescription="slide" aria-label="1 of 5"><img src="img/room-080.webp" srcset="img/room-080-720.webp 720w, img/room-080.webp 1200w" sizes="(max-width: 860px) 100vw, 66vw" width="1200" height="800" loading="lazy" alt="Double room with rattan lamps"></div><div role="group" aria-roledescription="slide" aria-label="2 of 5"><img src="img/room-084.webp" srcset="img/room-084-720.webp 720w, img/room-084.webp 1200w" sizes="(max-width: 860px) 100vw, 66vw" width="1200" height="800" loading="lazy" alt="Room with rattan pendant lamp"></div><div role="group" aria-roledescription="slide" aria-label="3 of 5"><img src="img/room-083.webp" srcset="img/room-083-720.webp 720w, img/room-083.webp 1200w" sizes="(max-width: 860px) 100vw, 66vw" width="1200" height="800" loading="lazy" alt="Towels and plants on a bench"></div><div role="group" aria-roledescription="slide" aria-label="4 of 5"><img src="img/room-069.webp" srcset="img/room-069-720.webp 720w, img/room-069.webp 1200w" sizes="(max-width: 860px) 100vw, 66vw" width="1200" height="800" loading="lazy" alt="Open-air bathroom with glass shower"></div><div role="group" aria-roledescription="slide" aria-label="5 of 5"><img src="img/room-079.webp" srcset="img/room-079-720.webp 720w, img/room-079.webp 1200w" sizes="(max-width: 860px) 100vw, 66vw" width="1200" height="800" loading="lazy" alt="Bathroom with glass shower"></div></div><div class="arrows"><button class="prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button class="next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div><div class="dots"></div></div>
+  <div class="room-txt"><h3 id="rn-1">Shared Twin Room – 2 Beds</h3><p class="line">Two beds and a private bathroom, with the beach in view all day.</p><p class="desc">The twin rooms look out on the beach all day, and each has a lovely private bathroom. There are two beds; the room is shared unless you choose private use on the booking page.</p>
+   <p class="det">Sleeps 2 | 2 beds | Private bathroom | Shared, or book it privately</p><p class="sup">+$140 pp for 7 nights, one guest | +$80 pp for 7 nights, two sharing</p><a class="btn btn-book" href="book/?room=twin">Choose this room</a></div>
+</article><article class="room" id="room-2" role="tabpanel" aria-labelledby="rn-2">
+  <div class="slides " data-slides aria-roledescription="carousel" aria-label="Deluxe double room photos"><div class="track" tabindex="0" aria-label="Deluxe double room photos, use the arrow keys"><div role="group" aria-roledescription="slide" aria-label="1 of 6"><img src="img/room-081.webp" srcset="img/room-081-720.webp 720w, img/room-081.webp 1200w" sizes="(max-width: 860px) 100vw, 66vw" width="1200" height="800" loading="lazy" alt="Double room with hammock door"></div><div role="group" aria-roledescription="slide" aria-label="2 of 6"><img src="img/room-082.webp" srcset="img/room-082-720.webp 720w, img/room-082.webp 1200w" sizes="(max-width: 860px) 100vw, 66vw" width="1200" height="800" loading="lazy" alt="Double room, glass doors to the garden"></div><div role="group" aria-roledescription="slide" aria-label="3 of 6"><img src="img/room-041.webp" srcset="img/room-041-720.webp 720w, img/room-041.webp 1200w" sizes="(max-width: 860px) 100vw, 66vw" width="1200" height="800" loading="lazy" alt="Double room with a painted print"></div><div role="group" aria-roledescription="slide" aria-label="4 of 6"><img src="img/room-043.webp" srcset="img/room-043-720.webp 720w, img/room-043.webp 1200w" sizes="(max-width: 860px) 100vw, 66vw" width="1200" height="800" loading="lazy" alt="Double room with rattan stools"></div><div role="group" aria-roledescription="slide" aria-label="5 of 6"><img src="img/room-044.webp" srcset="img/room-044-720.webp 720w, img/room-044.webp 1200w" sizes="(max-width: 860px) 100vw, 66vw" width="1200" height="800" loading="lazy" alt="Sofa and wave prints"></div><div role="group" aria-roledescription="slide" aria-label="6 of 6"><img src="img/room-071.webp" srcset="img/room-071-720.webp 720w, img/room-071.webp 1200w" sizes="(max-width: 860px) 100vw, 66vw" width="1200" height="800" loading="lazy" alt="Framed wave prints on a white wall"></div></div><div class="arrows"><button class="prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button class="next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div><div class="dots"></div></div>
+  <div class="room-txt"><h3 id="rn-2">Deluxe double room</h3><p class="line">A queen-size bed for two and a private bathroom of its own.</p><p class="desc">Our double rooms have one queen-size bed and a private bathroom. To keep it just for the two of you, choose private use when you check out on the booking page.</p>
+   <p class="det">Sleeps 2 | Queen-size bed | Private bathroom</p><p class="sup">+$418 pp for 7 nights</p><a class="btn btn-book" href="book/?room=double">Choose this room</a></div>
+</article></div>
+ <p class="rooms-note wrap-w">Room prices change with the dates. Sample for 20–27 Feb 2027; prices from the booking engine, 29 Sep 2026.</p>
+</section>
+
+<section aria-labelledby="waves-t">
+ <div class="band"><picture><source media="(max-width: 700px)" srcset="img/waves-m.webp"><img src="img/waves-2000.webp" width="2000" height="857" loading="lazy" alt="Surfers on a turquoise reef wave"></picture></div>
+ <div class="sec tint"><div class="wrap-w waves">
+  <div>
+   <h2 class="script" id="waves-t">The waves</h2>
+   <p class="lead">The lodge overlooks two spots, The Rock and South Point. More waves are a few minutes away by tuk-tuk.</p>
+   <div class="fc" id="fc" data-generated="2026-10-16T14:26:51+00:00" data-spot="south-point">
+    <div class="fc-now" id="fc-now">
+     <p class="fc-h"><span id="fc-h">0.4–0.6</span><small>m</small></p>
+     <p class="fc-ph">South Point, <span id="fc-ph">knee-high</span> | <span id="fc-when">Fri 16 Oct, 20:30</span></p>
+     <p class="fc-l"><span id="fc-swell">Swell 7 s from the S</span> | <span id="fc-wind">Wind 4 km/h, onshore</span></p>
+    </div>
+    <p class="fc-credit"><a class="btn btn-white" href="https://rosa.surf/spot/south-point">Forecast for South Point by Rosa</a></p>
+   </div>
+  </div>
+  <div class="widget" id="rosa-box" data-src="https://rosa.surf/widget/?spot=south-point&amp;theme=light&amp;units=metric">
+   <div class="wf"><span class="wf-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 15c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M2 19c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M7 9a5 5 0 0 1 9.6-2"/></svg></span><p class="wf-t">South Point</p><a class="btn btn-book" href="https://rosa.surf/spot/south-point">See today's forecast for South Point on Rosa</a></div>
+  </div>
+ </div></div>
+</section>
+
+<section class="sec guests" id="guests" aria-labelledby="guests-t">
+ <div class="g-photo"><picture><source media="(max-width: 860px)" srcset="img/sunset-m.webp"><img src="img/sunset-45.webp" width="1066" height="1333" loading="lazy" alt="Surfer on a longboard at sunset"></picture></div>
+ <div class="g-txt">
+  <h2 class="script" id="guests-t">What guests say</h2>
+  <a class="score-line" href="https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html"><span class="score">8.6</span><span>on Booking.com | 80 reviews | 28 Sep 2026</span></a>
+  <p class="cats">Staff 9.5 | Facilities 9.2 | Cleanliness 9.2</p>
+  <div class="quotes slides" data-slides data-auto="7000" aria-roledescription="carousel" aria-label="Guest reviews"><div class="track" tabindex="0" aria-label="Guest reviews, use the arrow keys"><div role="group" aria-roledescription="slide" aria-label="1 of 9"><figure><blockquote>“We loved the cozy, bohoo-vibes at the lodge: starting from the open-air-bathroom, the relaxing pool area and especially the great breakfast bowls!”</blockquote><figcaption>Fanny, Germany, Booking.com</figcaption></figure></div><div role="group" aria-roledescription="slide" aria-label="2 of 9"><figure><blockquote>“This place felt like something inbetween a hostel and a luxurious hotel. The styling was gorgeous, the beds very comfortable, the (bath)room very spacious with lockers and personal storage space.”</blockquote><figcaption>Myrthe, Netherlands, Booking.com</figcaption></figure></div><div role="group" aria-roledescription="slide" aria-label="3 of 9"><figure><blockquote>“A lovely hotel and a team of champions. Ariel, a professional surf guide, raised the level of surfing for us by several steps during the week we were there. This is our second time at the same hotel and with the same guide. We will return next year as well”</blockquote><figcaption>Seagallas, globalsurf.com</figcaption></figure></div><div role="group" aria-roledescription="slide" aria-label="4 of 9"><figure><blockquote>“The room was modern, quiet and incredibly clean with daily servicing. The grounds were well kept with a gorgeous pool and dining area. There are hammocks, loungers and beanbags in social areas. It was a really really great place.”</blockquote><figcaption>Abigail, Myanmar, Booking.com</figcaption></figure></div><div role="group" aria-roledescription="slide" aria-label="5 of 9"><figure><blockquote>“I had a wonderful stay at this hostel in Kabalana. The place was very clean, comfortable, and well maintained, and the staff were incredibly friendly and welcoming.”</blockquote><figcaption>Maryam, Netherlands, Booking.com</figcaption></figure></div><div role="group" aria-roledescription="slide" aria-label="6 of 9"><figure><blockquote>“We stayed at Global Kablana Sri Lanka as a couple and two girls and it was just fun and lovely. The atmosphere, the rooms, the stunning staff. Just everything.”</blockquote><figcaption>Dana Amsalem-Cohen, globalsurf.com</figcaption></figure></div><div role="group" aria-roledescription="slide" aria-label="7 of 9"><figure><blockquote>“The common areas and the rooms are really nice! Staff is very helpful and the breakfast options are awesome.”</blockquote><figcaption>Agustin, Chile, Booking.com</figcaption></figure></div><div role="group" aria-roledescription="slide" aria-label="8 of 9"><figure><blockquote>“Super nice place, beautiful rooms, nice hangout area with pool and pillows and delicious breakfast!”</blockquote><figcaption>Sara, Austria, Booking.com</figcaption></figure></div><div role="group" aria-roledescription="slide" aria-label="9 of 9"><figure><blockquote>“The staff were lovely and welcoming. The property itself was clean and comfortable.”</blockquote><figcaption>Hannah, Oman, Booking.com</figcaption></figure></div></div><div class="arrows"><button class="prev" type="button" aria-label="Previous review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button class="next" type="button" aria-label="Next review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div><div class="dots"></div></div>
+ </div>
+</section>
+
+<section class="sec close" aria-labelledby="close-t">
+ <div class="wrap-w dinner">
+  <div><h2 class="script" id="close-t">Book the week for your level.</h2><p class="lead">Not sure which one fits? Ask us on WhatsApp first.</p>
+   <div class="btns"><a class="btn btn-book" href="book/">Book package now</a><a class="btn btn-soft" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages.">WhatsApp us</a></div></div>
+  <img src="img/dinner.webp" width="900" height="1125" loading="lazy" alt="Shared dinner, close-up of dishes">
+ </div>
+</section>
+
+<section class="sec tint ig" aria-labelledby="ig-t">
+ <div class="wrap-w">
+  <div class="ig-head"><div><h2 class="script" id="ig-t">Follow the lodge</h2><p class="lead">The home for all ocean lovers.</p></div>
+   <a class="btn btn-book" href="https://www.instagram.com/globalsurf_kabalana/">Follow @globalsurf_kabalana</a></div>
+  <div class="ig-grid"><a href="https://www.instagram.com/globalsurf_kabalana/" aria-label="See @globalsurf_kabalana on Instagram"><img src="img/ig-024.webp" width="480" height="480" loading="lazy" alt="Pineapple held above the pool surface"></a><a href="https://www.instagram.com/globalsurf_kabalana/" aria-label="See @globalsurf_kabalana on Instagram"><img src="img/ig-090.webp" width="480" height="480" loading="lazy" alt="Smoothies on a wooden table"></a><a href="https://www.instagram.com/globalsurf_kabalana/" aria-label="See @globalsurf_kabalana on Instagram"><img src="img/ig-055.webp" width="480" height="480" loading="lazy" alt="Surfboard rack under a thatched roof"></a><a href="https://www.instagram.com/globalsurf_kabalana/" aria-label="See @globalsurf_kabalana on Instagram"><img src="img/ig-087.webp" width="480" height="480" loading="lazy" alt="Surfboard rack under a thatched roof"></a><a href="https://www.instagram.com/globalsurf_kabalana/" aria-label="See @globalsurf_kabalana on Instagram"><img src="img/ig-118.webp" width="480" height="480" loading="lazy" alt="Woman carrying a board over her head in the jungle"></a><a href="https://www.instagram.com/globalsurf_kabalana/" aria-label="See @globalsurf_kabalana on Instagram"><img src="img/ig-016.webp" width="480" height="480" loading="lazy" alt="Woman flipping her wet hair out of the lodge pool"></a></div>
+ </div>
+</section>
+</main>
+<footer class="foot" id="contact">
+ <div class="wrap">
+  <div class="foot-grid">
+   <div><a class="logo" href="./" aria-label="Global Surf Lodge Kabalana, home"><svg role="img" aria-label="Global Surf"><use href="#gs-logo"/></svg></a>
+    <p class="tag">Surf weeks for all levels on Sri Lanka&#x27;s south coast, a few steps from the ocean.</p></div>
+   <div><h2>Talk to us</h2><div class="cbtns">
+    <a class="btn" href="https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."><svg viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>WhatsApp us</a>
+    <a class="btn" href="tel:+97299733943"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a11 11 0 0 0 7 7L16 14l5 2v3a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>Call us</a>
+    <a class="btn" href="mailto:info@globalsurf.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email us</a></div></div>
+   <div><h2>Getting here</h2>
+    <address>Henewatta Addara Gederawata, Ahangama 80650, Sri Lanka</address>
+    <p class="small">Booking.com puts Kathaluwa West Beach 40 m from the lodge and Kabalana Beach 350 m. Kathaluwa station is 400 m away, Ahangama Beach 4 km and Koggala Airport 3.9 km.</p>
+    <p class="small">Check-in 14:00–20:00 | check-out by 11:00</p>
+    <p style="margin-top:16px"><a class="btn btn-soft" href="https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en" style="min-height:46px;padding:0 20px;font-size:15px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Open in Maps</a></p></div>
+   <div><h2>Follow</h2><div class="social">
+    <a href="https://www.instagram.com/globalsurf_kabalana/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a><a href="https://www.youtube.com/channel/UCh-GTj4Wu2FbdXpr-xNSGzQ" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4a2.5 2.5 0 0 0-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z"/></svg></a><a href="https://www.facebook.com/GlobalSURFltd/" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8V6.5c0-.7.5-1 1-1h2V2h-3c-3 0-4 2-4 4.5V8H8v3.5h2V22h4V11.5h2.7L17 8z"/></svg></a></div></div>
+  </div>
+  <div class="legal"><span>Global Surf Lodge Kabalana</span><a href="https://www.globalsurf.com/terms-conditions/">Terms and conditions</a></div>
+ </div>
+</footer>
+<div class="bar" id="bar" aria-hidden="true"><p><b>From $1,466 pp</b> | 7 nights</p><a class="btn btn-book" href="book/" tabindex="-1">Book now</a></div>
+
+<script>
+(function(){
+  var hdr=document.getElementById('hdr'), hero=document.querySelector('.hero');
+  var bar=document.getElementById('bar');
+  function onScroll(){ var past=window.scrollY > hero.offsetHeight - 90; hdr.classList.toggle('solid', past);
+    var b=window.scrollY > hero.offsetHeight*.8; bar.classList.toggle('show', b); bar.setAttribute('aria-hidden', b?'false':'true'); bar.querySelector('a').tabIndex=b?0:-1; }
+  // phone menu: focus moves in, Esc closes, focus returns
+  var sheet=document.getElementById('sheet'), mb=document.querySelector('.menu-btn');
+  function openMenu(o){ sheet.classList.toggle('open',o); mb.setAttribute('aria-expanded',o); document.body.style.overflow=o?'hidden':'';
+    if(o) sheet.querySelector('.sheet-close').focus(); else mb.focus(); }
+  mb.addEventListener('click',function(){openMenu(true)});
+  sheet.querySelector('.sheet-close').addEventListener('click',function(){openMenu(false)});
+  sheet.addEventListener('click',function(e){ if(e.target.closest('nav a')) openMenu(false); });
+  sheet.addEventListener('keydown',function(e){ if(e.key==='Escape') openMenu(false);
+    if(e.key==='Tab'){ var f=sheet.querySelectorAll('a,button'), a=f[0], z=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()} else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()} } });
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  // hero video: after first paint, never under reduced motion / Save-Data
+  var v=document.getElementById('hero-video');
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var save=navigator.connection && navigator.connection.saveData;
+  if(!calm && !save){
+    addEventListener('load', function(){ requestAnimationFrame(function(){ setTimeout(function(){
+      var phone=matchMedia('(max-width: 700px) and (orientation: portrait)').matches, n=phone?'m608':'d1728';
+      v.innerHTML='<source src="video/hero-'+n+'.webm" type="video/webm"><source src="video/hero-'+n+'.mp4" type="video/mp4">';
+      v.addEventListener('playing', function(){ v.classList.add('on'); }, {once:true});
+      v.load(); var p=v.play(); if(p && p.catch) p.catch(function(){});
+    }, 0); }); });
+  }
+})();
+
+(function(){
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var save=navigator.connection && navigator.connection.saveData;
+  // slideshows: a native scroll-snap row (works with JS off); JS adds dots + arrows
+  function dotsFor(track, dots, label){
+    var n=track.children.length, cur=0;
+    for(var i=0;i<n;i++){ var b=document.createElement('button'); b.type='button'; b.setAttribute('aria-label',(label||'Slide')+' '+(i+1)+' of '+n);
+      (function(i){ b.addEventListener('click',function(){ go(i); }); })(i); dots.appendChild(b); }
+    function go(i){ i=(i+n)%n; var el=track.children[i]; track.scrollTo({left:el.offsetLeft-track.children[0].offsetLeft, behavior:calm?'auto':'smooth'}); }
+    function mark(){ var w=track.children[0].getBoundingClientRect().width; if(!w) return; var gap=n>1?track.children[1].offsetLeft-track.children[0].offsetLeft:w; cur=Math.round(track.scrollLeft/gap);
+      [].forEach.call(dots.children,function(d,k){ d.setAttribute('aria-current',k===cur?'true':'false'); }); }
+    track.addEventListener('scroll',function(){ requestAnimationFrame(mark); },{passive:true});
+    [].forEach.call(dots.children,function(d,k){ d.setAttribute('aria-current',k===0?'true':'false'); });
+    return {go:go, cur:function(){return cur}, mark:mark};
+  }
+  [].forEach.call(document.querySelectorAll('[data-slides]'),function(s){
+    var t=s.querySelector('.track'), api=dotsFor(t, s.querySelector('.dots'), s.classList.contains('quotes')?'Review':'Photo');
+    var p=s.querySelector('.prev'), x=s.querySelector('.next');
+    if(p){ p.addEventListener('click',function(){ api.go(api.cur()-1); }); x.addEventListener('click',function(){ api.go(api.cur()+1); }); }
+    t.addEventListener('keydown',function(e){ if(e.key==='ArrowLeft'){e.preventDefault();api.go(api.cur()-1)} if(e.key==='ArrowRight'){e.preventDefault();api.go(api.cur()+1)} });
+  });
+  var row=document.getElementById('lv-row'); dotsFor(row, document.getElementById('lv-dots'), 'Level');
+
+  // level clips: only on Play, one at a time, muted
+  var playing=null;
+  [].forEach.call(document.querySelectorAll('.level'),function(card){
+    var btn=card.querySelector('.play'), media=card.querySelector('.level-media'), v=null;
+    if(calm||save){ btn.hidden=true; return; }
+    btn.addEventListener('click',function(){
+      if(!v){ v=document.createElement('video'); v.muted=true; v.loop=true; v.playsInline=true; v.setAttribute('playsinline',''); v.setAttribute('aria-hidden','true');
+        v.innerHTML='<source src="video/'+card.dataset.clip+'.webm" type="video/webm"><source src="video/'+card.dataset.clip+'.mp4" type="video/mp4">';
+        media.insertBefore(v, btn); }
+      if(card.classList.contains('playing')){ v.pause(); card.classList.remove('playing'); playing=null; btn.setAttribute('aria-label',btn.getAttribute('aria-label').replace('Pause','Play')); return; }
+      if(playing && playing!==card) playing.querySelector('.play').click();
+      v.play(); card.classList.add('playing'); playing=card; btn.setAttribute('aria-label',btn.getAttribute('aria-label').replace('Play','Pause'));
+    });
+  });
+
+  // what's included: the level switch changes only the line that differs
+  var pills=document.querySelectorAll('.pills button'), lis=document.querySelectorAll('#incl-list li');
+  [].forEach.call(lis,function(li){ li.classList.toggle('hl', li.getAttribute('data-l1')!==li.getAttribute('data-l3')); });
+  [].forEach.call(pills,function(b){ b.addEventListener('click',function(){
+    [].forEach.call(pills,function(o){ o.setAttribute('aria-pressed', o===b?'true':'false'); });
+    [].forEach.call(lis,function(li){ li.querySelector('span').textContent=li.getAttribute('data-l'+b.dataset.l); });
+  }); });
+
+  // lodge copy: the second paragraph waits behind "Read more" on phones
+  var more=document.getElementById('lodge-more'), mbtn=more.querySelector('.more-btn');
+  mbtn.addEventListener('click',function(){ more.classList.add('open'); mbtn.setAttribute('aria-expanded','true'); mbtn.hidden=true; more.querySelector('p+p').setAttribute('tabindex','-1'); more.querySelector('p+p').focus({preventScroll:true}); });
+
+  // rooms: one viewer, three tabs (JS off: all three rooms stacked)
+  var tabs=[].slice.call(document.querySelectorAll('[role=tab]')), panels=[].slice.call(document.querySelectorAll('.room'));
+  function pick(i, focus){ tabs.forEach(function(t,k){ var on=k===i; t.setAttribute('aria-selected',on); t.tabIndex=on?0:-1; panels[k].hidden=!on; });
+    if(focus) tabs[i].focus(); var tr=panels[i].querySelector('.track'); tr.scrollLeft=0; tr.dispatchEvent(new Event('scroll')); }
+  tabs.forEach(function(t,i){ t.addEventListener('click',function(){ pick(i); });
+    t.addEventListener('keydown',function(e){ if(e.key==='ArrowRight'){e.preventDefault();pick((i+1)%tabs.length,true)} if(e.key==='ArrowLeft'){e.preventDefault();pick((i+tabs.length-1)%tabs.length,true)} }); });
+  var want={dorm:0,twin:1,double:2}[(location.hash.match(/room=(\w+)/)||[])[1]];
+  pick(want||0);
+
+  // Rosa: the widget (only on a real web origin; Rosa refuses file://) and, if the inlined reading is
+  // stale, one JSON request, both only when the block nears the viewport. Until the widget has
+  // loaded, and whenever it is not loaded, the reserved box shows the designed plain-link card.
+  var box=document.getElementById('rosa-box'), fc=document.getElementById('fc');
+  function stale(iso){ return Date.now()-new Date(iso).getTime() > 864e5; }
+  if(stale(fc.dataset.generated)) document.getElementById('fc-now').hidden=true;
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){ if(!es[0].isIntersecting) return; io.disconnect();
+      if(/^https?:$/.test(location.protocol)){
+        var f=document.createElement('iframe'); f.title='Rosa surf forecast - South Point'; f.width='100%'; f.height='500';
+        f.setAttribute('referrerpolicy','strict-origin-when-cross-origin'); f.setAttribute('sandbox','allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin');
+        f.style.cssText='max-width:420px;border:0;border-radius:16px';
+        f.addEventListener('load',function(){ f.classList.add('on'); });
+        f.src=box.dataset.src; box.appendChild(f);
+      }
+      if(stale(fc.dataset.generated)){
+        fetch('https://rosa-data-opal.vercel.app/data/spots/south-point.json').then(function(r){return r.json()}).then(function(d){
+          if(stale(d.generated_at)) return; var c=d.current, s=(c.swells||[]).filter(function(x){return x.in_window})[0];
+          var C=['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'], t=new Date(c.t);
+          document.getElementById('fc-h').textContent=c.h[0]+'–'+c.h[1]; document.getElementById('fc-ph').textContent=c.phrase;
+          document.getElementById('fc-when').textContent=t.toLocaleString('en-GB',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',timeZone:'Asia/Colombo'});
+          if(s) document.getElementById('fc-swell').textContent='Swell '+Math.round(s.period)+' s from the '+C[Math.round(s.dir/22.5)%16];
+          document.getElementById('fc-wind').textContent='Wind '+Math.round(c.wind.kph)+' km/h, '+c.wind.class;
+          document.getElementById('fc-now').hidden=false;
+        }).catch(function(){});
+      }
+    },{rootMargin:'600px 0px'});
+    io.observe(box);
+  }
+})();
+</script>
+</body>
+</html>

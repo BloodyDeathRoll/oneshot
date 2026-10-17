@@ -1,0 +1,78 @@
+{
+ "variant": "interactive",
+ "mobile": {
+  "rosa_requests": [
+   "main fetch https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "iframe document https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "iframe fetch https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "iframe image https://rosa.surf/favicon.svg"
+  ],
+  "cls_load": 0,
+  "cls_after_full_scroll": 0,
+  "big_shifts": []
+ },
+ "desktop": {
+  "rosa_requests": [
+   "main fetch https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "iframe document https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "iframe fetch https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "iframe image https://rosa.surf/favicon.svg"
+  ],
+  "cls_load": 0.0010581327964248972,
+  "cls_after_full_scroll": 0.003252920176397462,
+  "big_shifts": []
+ },
+ "rosa_blocked": [
+  "Forecast for South Point by Rosa",
+  "See today's forecast for South Point on Rosa"
+ ],
+ "trap": "A||https://www.instagram.com/globalsurf_kab",
+ "tab": {
+  "presses": 70,
+  "wrapped_to_first": false,
+  "unique_stops": 52,
+  "no_ring": [],
+  "hidden_focus": [
+   "INPUT||Move between the pool from above and the"
+  ],
+  "iframe": false
+ },
+ "dialogs": [
+  {
+   "label": "mobile menu",
+   "afterOpen": "A|Levels",
+   "left_dialog": 3,
+   "sample": [
+    "IN A|What's included",
+    "IN A|Rooms",
+    "IN A|The waves",
+    "IN A|Guests",
+    "IN A|Book now",
+    "OUT BUTTON|Close menu",
+    "IN A|Levels"
+   ],
+   "afterEsc": "BUTTON|Menu",
+   "url": "http://127.0.0.1:9832/"
+  },
+  {
+   "label": "room gallery",
+   "afterOpen": "BUTTON|Close photos",
+   "left_dialog": 2,
+   "sample": [
+    "IN DIV|Photos, use the arrow key",
+    "IN BUTTON|Next photo",
+    "IN A|Choose this room",
+    "IN BUTTON|Photo 1",
+    "IN BUTTON|Photo 2",
+    "IN BUTTON|Photo 3",
+    "IN BUTTON|Photo 4",
+    "IN BUTTON|Photo 5",
+    "IN BUTTON|Photo 6",
+    "OUT BODY|Skip to content Levels Ro",
+    "IN BUTTON|Close photos"
+   ],
+   "afterEsc": "BUTTON|See all 6 photos of the Mixed ",
+   "url": "http://127.0.0.1:9832/"
+  }
+ ]
+}

@@ -1,0 +1,961 @@
+{
+ "phone": {
+  "load": [
+   "",
+   "fonts/literata-latin-wght-normal.woff2",
+   "fonts/parisienne-latin-400-normal.woff2",
+   "video/gs2-hero-poster.p1080.webp",
+   "photos/gs2-level-1-poster-full-864.webp",
+   "fonts/literata-latin-400-italic.woff2",
+   "photos/gs2-level-1-poster-full-800.webp",
+   "photos/gs2-level-2-poster-full-800.webp",
+   "photos/gs2-level-3-poster-full-800.webp",
+   "photos/img-016-r1-520.webp",
+   "photos/img-011-r1.25-800.webp",
+   "photos/gs2-level-1-poster-full-thumb-240.webp",
+   "photos/gs2-level-2-poster-full-thumb-240.webp",
+   "photos/gs2-level-3-poster-full-thumb-240.webp",
+   "photos/img-063-full-thumb-240.webp",
+   "photos/img-080-full-thumb-240.webp",
+   "photos/img-081-full-thumb-240.webp",
+   "video/gs2-hero.p1080.webm"
+  ],
+  "load_third_party": [],
+  "first_screen": {
+   "h1": {
+    "text": "Your surf week starts here",
+    "top": 323,
+    "bottom": 406,
+    "inView": true,
+    "color": "rgb(255, 255, 255)"
+   },
+   "sub": {
+    "text": "Sri Lanka's south coast, all levels",
+    "top": 416,
+    "bottom": 443,
+    "inView": true,
+    "color": "rgb(255, 255, 255)"
+   },
+   "btn": {
+    "text": "Book package now",
+    "top": 469,
+    "bottom": 521,
+    "inView": true,
+    "color": "rgb(255, 255, 255)"
+   },
+   "hdrBg": "rgba(0, 0, 0, 0)",
+   "ratingInView": false,
+   "herovid": {
+    "on": true,
+    "src": "http://localhost:8977/video/gs2-hero.p1080.webm"
+   }
+  },
+  "header": [
+   {
+    "at": "0.2 vh",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(255, 255, 255)",
+    "transition": "0s",
+    "cls": "hdr"
+   },
+   {
+    "at": "0.45 vh",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(255, 255, 255)",
+    "transition": "0s",
+    "cls": "hdr"
+   },
+   {
+    "at": "0.55 vh",
+    "bg": "rgb(255, 255, 255)",
+    "color": "rgb(7, 43, 53)",
+    "transition": "0s",
+    "cls": "hdr solid"
+   },
+   {
+    "at": "0.8 vh",
+    "bg": "rgb(255, 255, 255)",
+    "color": "rgb(7, 43, 53)",
+    "transition": "0s",
+    "cls": "hdr solid"
+   },
+   {
+    "at": "1.2 vh",
+    "bg": "rgb(255, 255, 255)",
+    "color": "rgb(7, 43, 53)",
+    "transition": "0s",
+    "cls": "hdr solid"
+   }
+  ],
+  "drop": [
+   {
+    "y": 4009,
+    "stageTop": 802,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 4220,
+    "stageTop": 591,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 4431,
+    "stageTop": 380,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 4642,
+    "stageTop": 169,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 4853,
+    "stageTop": 76,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 5064,
+    "stageTop": 76,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 5275,
+    "stageTop": 76,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 5486,
+    "stageTop": 76,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 5697,
+    "stageTop": 76,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 5908,
+    "stageTop": 76,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 6119,
+    "stageTop": 76,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 6330,
+    "stageTop": 76,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 6541,
+    "stageTop": 76,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 6752,
+    "stageTop": -84,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 6963,
+    "stageTop": -295,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 7174,
+    "stageTop": -506,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   }
+  ],
+  "page_height": 14419,
+  "first_plate_request": null,
+  "drop_requests": [
+   {
+    "url": "photos/img-062-r1.8-poster-624.avif",
+    "phase": "load",
+    "y": 0
+   },
+   {
+    "url": "photos/img-062-full-m-2000.webp",
+    "phase": "load",
+    "y": 0
+   },
+   {
+    "url": "photos/img-026-full-m-2000.webp",
+    "phase": "load",
+    "y": 0
+   }
+  ],
+  "scroll_third_party": [
+   {
+    "url": "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+    "frame": "main",
+    "type": "fetch"
+   },
+   {
+    "url": "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+    "frame": "sub",
+    "type": "document"
+   },
+   {
+    "url": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+    "frame": "sub",
+    "type": "stylesheet"
+   },
+   {
+    "url": "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+    "frame": "sub",
+    "type": "fetch"
+   },
+   {
+    "url": "https://rosa.surf/favicon.svg",
+    "frame": "sub",
+    "type": "image"
+   },
+   {
+    "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+    "frame": "sub",
+    "type": "font"
+   },
+   {
+    "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+    "frame": "sub",
+    "type": "image"
+   },
+   {
+    "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924",
+    "frame": "sub",
+    "type": "image"
+   }
+  ],
+  "videos": [
+   "video/gs2-hero.p1080.webm",
+   "video/gs2-level-1.d1920.webm",
+   "video/gs2-level-2.m1280.webm",
+   "video/gs2-level-3.m1280.webm"
+  ],
+  "shifts": [],
+  "cls_total": 0,
+  "overflow_x": 0,
+  "rosa": {
+   "iframe": "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "box": [
+    350,
+    500
+   ],
+   "nowVisible": true,
+   "nowText": "0.5–0.8 m | Waist-high | 7 s | Swell from the S | 12 km/h | Wind from the WSW, cross-shore | South Point, Sat 17 Oct, 14:30",
+   "linkVisible": true
+  },
+  "tabs": [
+   {
+    "id": "tab-dorm",
+    "text": "Mixed dorm room",
+    "sel": "true",
+    "color": "rgb(7, 43, 53)"
+   },
+   {
+    "id": "tab-twin",
+    "text": "Shared twin room",
+    "sel": "false",
+    "color": "rgba(7, 43, 53, 0.72)"
+   },
+   {
+    "id": "tab-double",
+    "text": "Deluxe double room",
+    "sel": "false",
+    "color": "rgba(7, 43, 53, 0.72)"
+   }
+  ],
+  "room_h3": [
+   "Mixed dorm room – 4 beds",
+   "Shared twin room – 2 beds",
+   "Deluxe double room"
+  ],
+  "drawer_rooms": [
+   "Mixed dorm room – 4 beds",
+   "Shared twin room – 2 beds",
+   "Deluxe double room"
+  ],
+  "axe_home": [],
+  "small_targets": [
+   "INPUT 13x13",
+   "INPUT 13x13",
+   "INPUT 13x13",
+   "INPUT 13x13",
+   "INPUT 13x13",
+   "INPUT 13x13",
+   "INPUT 13x13",
+   "INPUT 13x13",
+   "INPUT 13x13",
+   "INPUT 13x13",
+   "g-f 42x32",
+   "g-m 42x32",
+   "g-c 42x32"
+  ],
+  "axe_book": [],
+  "overflow_x_book": 0,
+  "book_notes": [
+   {
+    "cls": "handoff-note usd",
+    "visible": false,
+    "text": "Package $1,466 pp for 7 nights; room supplements per person. Prices in USD. Prices from th"
+   },
+   {
+    "cls": "handoff-note",
+    "visible": false,
+    "text": "Next, on our Bookinglayer booking page: confirm your room, add airport pickup if you want "
+   }
+  ],
+  "book_room_rows": [
+   {
+    "name": "Level 1 – Fomies",
+    "lines": 1,
+    "img": [
+     112,
+     84
+    ]
+   },
+   {
+    "name": "Level 2 – Rollers",
+    "lines": 1,
+    "img": [
+     112,
+     84
+    ]
+   },
+   {
+    "name": "Level 3 – Riders",
+    "lines": 1,
+    "img": [
+     112,
+     84
+    ]
+   },
+   {
+    "name": "Freestylers – B&B only | from 4 nights",
+    "lines": 1,
+    "img": null
+   },
+   {
+    "name": "Mixed dorm room – 4 beds",
+    "lines": 1,
+    "img": [
+     112,
+     84
+    ]
+   },
+   {
+    "name": "Shared twin room – 2 beds",
+    "lines": 1,
+    "img": [
+     112,
+     84
+    ]
+   },
+   {
+    "name": "Deluxe double room",
+    "lines": 1,
+    "img": [
+     112,
+     84
+    ]
+   }
+  ]
+ },
+ "desktop": {
+  "load": [
+   "",
+   "fonts/literata-latin-wght-normal.woff2",
+   "fonts/parisienne-latin-400-normal.woff2",
+   "photos/gs2-hero-poster-full-1920.webp",
+   "photos/gs2-level-1-poster-full-864.webp",
+   "fonts/literata-latin-400-italic.woff2",
+   "photos/gs2-level-1-poster-full-800.webp",
+   "photos/gs2-level-2-poster-full-800.webp",
+   "photos/gs2-level-3-poster-full-800.webp",
+   "photos/img-016-r1-520.webp",
+   "photos/img-011-r1.25-800.webp",
+   "photos/gs2-level-1-poster-full-thumb-240.webp",
+   "photos/gs2-level-2-poster-full-thumb-240.webp",
+   "photos/gs2-level-3-poster-full-thumb-240.webp",
+   "photos/img-063-full-thumb-240.webp",
+   "photos/img-080-full-thumb-240.webp",
+   "photos/img-081-full-thumb-240.webp",
+   "video/gs2-hero.d1920.webm"
+  ],
+  "load_third_party": [],
+  "first_screen": {
+   "h1": {
+    "text": "Your surf week starts here",
+    "top": 362,
+    "bottom": 420,
+    "inView": true,
+    "color": "rgb(255, 255, 255)"
+   },
+   "sub": {
+    "text": "Sri Lanka's south coast, all levels",
+    "top": 430,
+    "bottom": 460,
+    "inView": true,
+    "color": "rgb(255, 255, 255)"
+   },
+   "btn": {
+    "text": "Book package now",
+    "top": 486,
+    "bottom": 538,
+    "inView": true,
+    "color": "rgb(255, 255, 255)"
+   },
+   "hdrBg": "rgba(0, 0, 0, 0)",
+   "ratingInView": false,
+   "herovid": {
+    "on": true,
+    "src": "http://localhost:8977/video/gs2-hero.d1920.webm"
+   }
+  },
+  "header": [
+   {
+    "at": "0.2 vh",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(255, 255, 255)",
+    "transition": "0s",
+    "cls": "hdr"
+   },
+   {
+    "at": "0.45 vh",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(255, 255, 255)",
+    "transition": "0s",
+    "cls": "hdr"
+   },
+   {
+    "at": "0.55 vh",
+    "bg": "rgb(255, 255, 255)",
+    "color": "rgb(7, 43, 53)",
+    "transition": "0s",
+    "cls": "hdr solid"
+   },
+   {
+    "at": "0.8 vh",
+    "bg": "rgb(255, 255, 255)",
+    "color": "rgb(7, 43, 53)",
+    "transition": "0s",
+    "cls": "hdr solid"
+   },
+   {
+    "at": "1.2 vh",
+    "bg": "rgb(255, 255, 255)",
+    "color": "rgb(7, 43, 53)",
+    "transition": "0s",
+    "cls": "hdr solid"
+   }
+  ],
+  "drop": [
+   {
+    "y": 2700,
+    "stageTop": 714,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 2925,
+    "stageTop": 489,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 3150,
+    "stageTop": 264,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 3375,
+    "stageTop": 76,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 3600,
+    "stageTop": 76,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 3825,
+    "stageTop": 76,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 4050,
+    "stageTop": 76,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 4275,
+    "stageTop": 76,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 4500,
+    "stageTop": 76,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 4725,
+    "stageTop": 76,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 4950,
+    "stageTop": 76,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 5175,
+    "stageTop": 76,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 5400,
+    "stageTop": 76,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 5625,
+    "stageTop": 39,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 5850,
+    "stageTop": -186,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 6075,
+    "stageTop": -411,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   },
+   {
+    "y": 6300,
+    "stageTop": -636,
+    "inView": true,
+    "ready": true,
+    "failed": false,
+    "posterIn": true,
+    "bg": "url(\"data:image/webp;base64,Uk"
+   }
+  ],
+  "page_height": 12952,
+  "first_plate_request": null,
+  "drop_requests": [
+   {
+    "url": "photos/img-062-full-poster-1400.avif",
+    "phase": "load",
+    "y": 0
+   },
+   {
+    "url": "photos/img-062-full-2000.webp",
+    "phase": "load",
+    "y": 0
+   },
+   {
+    "url": "photos/img-026-full-2000.webp",
+    "phase": "load",
+    "y": 0
+   }
+  ],
+  "scroll_third_party": [
+   {
+    "url": "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+    "frame": "main",
+    "type": "fetch"
+   },
+   {
+    "url": "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+    "frame": "sub",
+    "type": "document"
+   },
+   {
+    "url": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+    "frame": "sub",
+    "type": "stylesheet"
+   },
+   {
+    "url": "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+    "frame": "sub",
+    "type": "fetch"
+   },
+   {
+    "url": "https://rosa.surf/favicon.svg",
+    "frame": "sub",
+    "type": "image"
+   },
+   {
+    "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+    "frame": "sub",
+    "type": "font"
+   },
+   {
+    "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+    "frame": "sub",
+    "type": "image"
+   },
+   {
+    "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924",
+    "frame": "sub",
+    "type": "image"
+   }
+  ],
+  "videos": [
+   "video/gs2-hero.d1920.webm",
+   "video/gs2-level-2.m1280.webm",
+   "video/gs2-level-3.m1280.webm"
+  ],
+  "shifts": [
+   {
+    "v": 0.00019,
+    "y": 495,
+    "src": [
+     "NAV.nav",
+     "A.",
+     "A.",
+     "A.",
+     "A."
+    ]
+   },
+   {
+    "v": 0.00029,
+    "y": 0,
+    "src": [
+     "NAV.nav",
+     "A.",
+     "A.",
+     "A.",
+     "A."
+    ]
+   },
+   {
+    "v": 0.00019,
+    "y": 675,
+    "src": [
+     "NAV.nav",
+     "A.",
+     "A.",
+     "A.",
+     "A."
+    ]
+   }
+  ],
+  "cls_total": 0.00067,
+  "overflow_x": 0,
+  "rosa": {
+   "iframe": "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "box": [
+    420,
+    500
+   ],
+   "nowVisible": true,
+   "nowText": "0.5–0.8 m | Waist-high | 7 s | Swell from the S | 12 km/h | Wind from the WSW, cross-shore | South Point, Sat 17 Oct, 14:30",
+   "linkVisible": true
+  },
+  "tabs": [
+   {
+    "id": "tab-dorm",
+    "text": "Mixed dorm room",
+    "sel": "true",
+    "color": "rgb(7, 43, 53)"
+   },
+   {
+    "id": "tab-twin",
+    "text": "Shared twin room",
+    "sel": "false",
+    "color": "rgba(7, 43, 53, 0.72)"
+   },
+   {
+    "id": "tab-double",
+    "text": "Deluxe double room",
+    "sel": "false",
+    "color": "rgba(7, 43, 53, 0.72)"
+   }
+  ],
+  "room_h3": [
+   "Mixed dorm room – 4 beds",
+   "Shared twin room – 2 beds",
+   "Deluxe double room"
+  ],
+  "drawer_rooms": [
+   "Mixed dorm room – 4 beds",
+   "Shared twin room – 2 beds",
+   "Deluxe double room"
+  ],
+  "axe_home": [],
+  "small_targets": [
+   "INPUT 13x13",
+   "INPUT 13x13",
+   "INPUT 13x13",
+   "INPUT 13x13",
+   "INPUT 13x13",
+   "INPUT 13x13",
+   "INPUT 13x13",
+   "INPUT 13x13",
+   "INPUT 13x13",
+   "INPUT 13x13",
+   "g-f 42x32",
+   "g-m 42x32",
+   "g-c 42x32"
+  ],
+  "axe_book": [],
+  "overflow_x_book": 0,
+  "book_notes": [
+   {
+    "cls": "handoff-note usd",
+    "visible": false,
+    "text": "Package $1,466 pp for 7 nights; room supplements per person. Prices in USD. Prices from th"
+   },
+   {
+    "cls": "handoff-note",
+    "visible": false,
+    "text": "Next, on our Bookinglayer booking page: confirm your room, add airport pickup if you want "
+   }
+  ],
+  "book_room_rows": [
+   {
+    "name": "Level 1 – Fomies",
+    "lines": 1,
+    "img": [
+     120,
+     88
+    ]
+   },
+   {
+    "name": "Level 2 – Rollers",
+    "lines": 1,
+    "img": [
+     120,
+     88
+    ]
+   },
+   {
+    "name": "Level 3 – Riders",
+    "lines": 1,
+    "img": [
+     120,
+     88
+    ]
+   },
+   {
+    "name": "Freestylers – B&B only | from 4 nights",
+    "lines": 1,
+    "img": null
+   },
+   {
+    "name": "Mixed dorm room – 4 beds",
+    "lines": 1,
+    "img": [
+     120,
+     88
+    ]
+   },
+   {
+    "name": "Shared twin room – 2 beds",
+    "lines": 1,
+    "img": [
+     120,
+     88
+    ]
+   },
+   {
+    "name": "Deluxe double room",
+    "lines": 1,
+    "img": [
+     120,
+     88
+    ]
+   }
+  ]
+ },
+ "walk_phone": {
+  "after_tap_url": "/book/",
+  "focus": "Close booking",
+  "open": true,
+  "total": "$1,466",
+  "trap_left": 0,
+  "continue_label": "Continue booking",
+  "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies?start=2026-10-24&end=2026-10-31&female=1&male=0&couple=0",
+  "esc": {
+   "url": "/",
+   "open": false,
+   "focus": "Book package now"
+  }
+ },
+ "js_off": {
+  "endsel_visible": true,
+  "nights_visible": false,
+  "submits": 4,
+  "level2_default": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2026-10-24&end=2026-10-31&female=1&male=0&couple=0",
+  "level1_chosen": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies?start=2026-10-31&end=2026-11-14&female=1&male=0&couple=0",
+  "home": {
+   "text": 6133,
+   "rosaLink": [
+    "Open Rosa -> https://rosa.surf/spot/south-point"
+   ],
+   "bookLinks": 11,
+   "heroSub": "Sri Lanka's south coast, all levels"
+  }
+ },
+ "reduced": {
+  "video_requests": [],
+  "playing": 0,
+  "photos_visible": 34
+ },
+ "savedata": {
+  "video_requests": [],
+  "playing": 0,
+  "photos_visible": 34
+ },
+ "rosa_blocked": {
+  "link": true,
+  "linkText": "See today's forecast for South Point on Rosa",
+  "now": true,
+  "iframe": false
+ },
+ "tab_desktop": {
+  "stops": 58,
+  "hidden": [],
+  "no_ring": [],
+  "unnamed": 0,
+  "first": "Skip to the surf weeks"
+ },
+ "level2": {
+  "checked": "level-2-rollers",
+  "url": "/book/",
+  "focus_back": "Choose Level 2"
+ }
+}

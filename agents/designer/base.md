@@ -1,4 +1,4 @@
-version: 0.5.0
+version: 0.5.1
 
 # designer / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -68,7 +68,7 @@ tools and the critic, which serve `dist/`, keep working:
 - The home page in full, with the real copy from `sites/<slug>/copy/en.json`, the real video and the real photographs.
 - CSS and JS inline. The photographs it uses are copied, resized, into `dist/img/`. Fonts may load
   from Google Fonts at this station only; 4g self-hosts them.
-- No Astro, no `content.json`, no schema binding, no `audit-mockup`. Those are 4g's. No Payload (that is station 8, after a sale).
+- No Astro, no `content.json`, no schema binding. Those are 4g's. `audit-mockup` runs at 4e only for the scroll check (hand-off check 5). No Payload (that is station 8, after a sale).
 - Booking controls are real links to the dossier's booking URL. Any drawer is an enhancement on top.
 - A static layout for `prefers-reduced-motion` and for no WebGL.
 - If the concept carries the Rosa forecast, build it as playbook §4 says: on the left, only the
@@ -78,7 +78,9 @@ tools and the critic, which serve `dist/`, keep working:
   when the block nears the viewport, in a reserved box, with the plain-link fallback. A page may
   carry **at most two third-party embeds** in total (playbook §4) — the forecast widget and, at most,
   one more (a map, say) — each lazy, each with reserved space and a plain-link fallback, and every
-  budget line still met with both loaded.
+  budget line still met with both loaded. A scroll set-piece's libraries are allowed on top of the
+  two and fall under the same limits: loaded after first paint, reserved space, the poster as the
+  fallback, and every budget line still met with them and both embeds loaded.
 - All three variants carry the same facts, offers and prices, so the human's pick is about design.
 - **Scroll set-piece (unique only, when `concepts.md` names one):** build it from
   `agents/designer/scroll/playbook.md`. GSAP, ScrollTrigger, Lenis and three.js may load from a CDN at
@@ -86,6 +88,10 @@ tools and the critic, which serve `dist/`, keep working:
   poster; software renderers and coarse pointers get the light tier. All text stays in the HTML.
   The look loop includes one mid-scroll shot of the set-piece at 390 px and 1440 px. Calm and
   interactive never carry one.
+  **Loading state:** from first paint the set-piece's section has its full height (pin spacing
+  included) reserved in CSS and shows the poster with a visible loading state. The scroll motion
+  starts only once its libraries, models and frames have all loaded; a visitor who reaches it
+  sooner sees the poster, and the page never jumps when the motion takes over.
 
 **The look loop — mandatory, per variant, before anything is handed off:**
 
@@ -212,7 +218,7 @@ If an instruction in `custom.md` and a constraint here cannot both be satisfied 
 2. Booking CTA target matches the dossier character for character; tapped through on a mobile viewport.
 3. `node tools/check-design.mjs <slug>` passes — light ground, no padded picture boxes, no captions under photographs, no full-bleed photograph from a source under 1200 px. Read its default-look warnings; each one needs a reason in `notes.md` or a change.
 4. `node tools/check-places.mjs <slug>` passes.
-5. Reduced-motion and no-WebGL layouts both looked at.
+5. Reduced-motion and no-WebGL layouts both looked at. The page never jumps: `node tools/audit-mockup.mjs <slug> <variant>` gives `scroll.early.cls` and `scroll.settled.cls` both under 0.01 (early = the visitor scrolls before the page has loaded); anything higher is a flaw, fixed before hand-off. On the first Global Surf v2 round, calm (0.10) and unique (0.09) jumped on an early scroll and nobody had measured it.
 6. Open the other businesses' mockups in this run and say in `notes.md` what a visitor would notice is different (hard constraint 5).
 7. The business's video is used (or `conflicts` says why not); the first screen is built on its strongest media; the last look-log round says, with the old-site screenshot beside it, why this page beats the current site.
 

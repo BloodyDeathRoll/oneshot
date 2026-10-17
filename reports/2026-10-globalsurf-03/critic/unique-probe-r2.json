@@ -1,0 +1,174 @@
+{
+ "variant": "unique",
+ "mobile": {
+  "fcp_ms": 284,
+  "load_requests": 18,
+  "third_party_on_load": [
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "video_on_load": [
+   "367ms video/hero-p668.webm"
+  ],
+  "overflow_x_load": 0,
+  "overflow_x_max_scroll": 0,
+  "third_party_after_scroll": [
+   "rosa-data-opal.vercel.app",
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "third_party_urls_after_scroll": [
+   "main https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "sub https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "sub https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+   "sub https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "sub https://rosa.surf/favicon.svg",
+   "sub https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+   "sub https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+   "sub https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924"
+  ],
+  "video_after_scroll": [
+   "2613ms video/level1.webm",
+   "2863ms video/level2.webm",
+   "3099ms video/level3.webm"
+  ],
+  "errors": []
+ },
+ "desktop": {
+  "fcp_ms": 228,
+  "load_requests": 18,
+  "third_party_on_load": [
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "video_on_load": [
+   "289ms video/hero-d1728.webm"
+  ],
+  "overflow_x_load": 0,
+  "overflow_x_max_scroll": 0,
+  "third_party_after_scroll": [
+   "rosa-data-opal.vercel.app",
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "third_party_urls_after_scroll": [
+   "main https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "sub https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "sub https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+   "sub https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "sub https://rosa.surf/favicon.svg",
+   "sub https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+   "sub https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+   "sub https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924"
+  ],
+  "video_after_scroll": [
+   "2530ms video/level2.webm",
+   "2666ms video/level1.webm",
+   "2783ms video/level3.webm"
+  ],
+  "errors": []
+ },
+ "mobile_rm": {
+  "fcp_ms": 204,
+  "load_requests": 14,
+  "third_party_on_load": [
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "video_on_load": [],
+  "overflow_x_load": 0,
+  "overflow_x_max_scroll": 0,
+  "third_party_after_scroll": [
+   "rosa-data-opal.vercel.app",
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "third_party_urls_after_scroll": [
+   "main https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "sub https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "sub https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+   "sub https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "sub https://rosa.surf/favicon.svg",
+   "sub https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+   "sub https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+   "sub https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924"
+  ],
+  "video_after_scroll": [],
+  "errors": []
+ },
+ "mobile_savedata": {
+  "fcp_ms": 196,
+  "load_requests": 14,
+  "third_party_on_load": [
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "video_on_load": [],
+  "overflow_x_load": 0,
+  "overflow_x_max_scroll": 0,
+  "third_party_after_scroll": [
+   "rosa-data-opal.vercel.app",
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "third_party_urls_after_scroll": [
+   "main https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "sub https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "sub https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+   "sub https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "sub https://rosa.surf/favicon.svg",
+   "sub https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+   "sub https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+   "sub https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924"
+  ],
+  "video_after_scroll": [],
+  "errors": []
+ },
+ "nojs_home": {
+  "text_len": 7371,
+  "overflow_x": 0,
+  "forms": [
+   {
+    "action": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+    "method": "get",
+    "fields": [
+     "lvl:radio",
+     "lvl:radio",
+     "lvl:radio",
+     "start:select-one",
+     "duration:radio",
+     "duration:radio",
+     "duration:radio",
+     "duration:radio",
+     "end:hidden",
+     "female:number",
+     "male:number",
+     "couple:number"
+    ],
+    "submits": [
+     "Continue booking: Level 1→https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+     "Continue booking: Level 2→https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers",
+     "Continue booking: Level 3→https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders"
+    ]
+   }
+  ],
+  "rosa": [
+   "See today's forecast for South Point on Rosa",
+   "Forecast for South Point by Rosa",
+   "See today's forecast for South Point on Rosa",
+   "Open Rosa"
+  ],
+  "wa": 5
+ },
+ "nojs_book/": {
+  "status": 404
+ }
+}

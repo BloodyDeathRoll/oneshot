@@ -1,0 +1,85 @@
+{
+ "which": "interactive",
+ "vp": "phone",
+ "steps": [
+  {
+   "label": "home",
+   "f": "interactive/book-phone-00.jpg",
+   "url": "/"
+  },
+  {
+   "tap": "hero: Book package now"
+  },
+  {
+   "label": "after hero tap",
+   "f": "interactive/book-phone-01.jpg",
+   "url": "/book/"
+  },
+  {
+   "tap": "Level 2"
+  },
+  {
+   "label": "level",
+   "f": "interactive/book-phone-02.jpg",
+   "url": "/book/"
+  },
+  {
+   "label": "room q",
+   "f": "interactive/book-phone-03.jpg",
+   "url": "/book/"
+  },
+  {
+   "tap": "Twin"
+  },
+  {
+   "label": "twin",
+   "f": "interactive/book-phone-04.jpg",
+   "url": "/book/"
+  },
+  {
+   "label": "dates q",
+   "f": "interactive/book-phone-05.jpg",
+   "url": "/book/"
+  },
+  {
+   "tap": "Saturday chip Sat 19"
+  },
+  {
+   "label": "saturday",
+   "f": "interactive/book-phone-06.jpg",
+   "url": "/book/"
+  },
+  {
+   "tap": "+1 man"
+  },
+  {
+   "label": "guest",
+   "f": "interactive/book-phone-07.jpg",
+   "url": "/book/"
+  },
+  {
+   "tap": "Next"
+  },
+  {
+   "label": "total",
+   "f": "interactive/book-phone-08.jpg",
+   "url": "/book/"
+  },
+  {
+   "tap": "Continue booking"
+  },
+  {
+   "label": "after continue",
+   "f": "interactive/book-phone-09.jpg",
+   "url": "chrome-error://chromewebdata/"
+  }
+ ],
+ "engine": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2026-12-19&male=1&end=2026-12-26",
+ "saturdays": [
+  "Choose a Saturday",
+  "Sat 24 Oct 2026",
+  "Sat 31 Oct 2026",
+  "Sat 19 Dec 2026"
+ ],
+ "taps": 7
+}

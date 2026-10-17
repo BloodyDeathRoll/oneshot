@@ -1,0 +1,55 @@
+{
+ "variant": "calm",
+ "mobile": {
+  "rosa_requests": [
+   "iframe document https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "iframe fetch https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "iframe image https://rosa.surf/favicon.svg"
+  ],
+  "cls_load": 0,
+  "cls_after_full_scroll": 0,
+  "big_shifts": []
+ },
+ "desktop": {
+  "rosa_requests": [
+   "iframe document https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "iframe fetch https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "iframe image https://rosa.surf/favicon.svg"
+  ],
+  "cls_load": 0.001715817968214163,
+  "cls_after_full_scroll": 0.004565590773426783,
+  "big_shifts": []
+ },
+ "rosa_blocked": [
+  "Forecast for South Point by Rosa",
+  "See today's forecast for South Point on Rosa"
+ ],
+ "trap": "A||https://www.instagram.com/globalsurf_kab",
+ "tab": {
+  "presses": 59,
+  "wrapped_to_first": false,
+  "unique_stops": 51,
+  "no_ring": [],
+  "hidden_focus": [],
+  "iframe": true
+ },
+ "dialogs": [
+  {
+   "label": "mobile menu",
+   "afterOpen": "BUTTON|Menu",
+   "left_dialog": 0,
+   "sample": [
+    "IN A|Global Surf Lodge Kabalan",
+    "IN BUTTON|Close menu",
+    "IN A|Levels",
+    "IN A|Rooms",
+    "IN A|The lodge",
+    "IN A|Contact",
+    "IN A|Book package now",
+    "IN A|Questions? Ask us"
+   ],
+   "afterEsc": "BUTTON|Menu",
+   "url": "http://127.0.0.1:9831/"
+  }
+ ]
+}

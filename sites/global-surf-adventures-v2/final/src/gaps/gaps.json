@@ -1,0 +1,361 @@
+{
+ "_about": "SCHEMA GAP content: what the picked design shows and schemas/site-content.md v0.9 has no field for (copy/sources.md mockup_extras \"Schema gaps\"). Written by scripts/seed-from-dossier.mjs from copy/en.json, dossier.json and docs/bookinglayer.md; listed in notes.md \"schema gaps\". Edit there, not here.",
+ "heroTitle": "Your surf week starts here",
+ "heroSubtitle": "Sri Lanka's south coast, all levels",
+ "logo": {
+  "paths": "<path d=\"M33.1,33v3.7h-4.5v-3.9c0-3.9-1.5-6.2-5-6.2c-3.4,0-5,2.3-5,6.2v22.7c0,3.9,1.6,6.2,5,6.2c3.5,0,5-2.3,5-6.2v-8.6h-4.4v-4.3h9v12.6c0,6.5-3.1,10.8-9.7,10.8c-6.6,0-9.6-4.3-9.6-10.8V33c0-6.5,3.1-10.8,9.6-10.8C30,22.2,33.1,26.5,33.1,33z\"/><path d=\"M37.6,65.6V22.7h4.8v38.6h12.3v4.4H37.6z\"/><path d=\"M57.9,33c0-6.6,3.3-10.8,9.8-10.8c6.6,0,9.9,4.2,9.9,10.8v22.2c0,6.5-3.3,10.8-9.9,10.8c-6.6,0-9.8-4.3-9.8-10.8V33z M62.6,55.5c0,3.9,1.7,6.2,5.1,6.2c3.5,0,5.1-2.300,5.1-6.2V32.8c0-3.9-1.6-6.2-5.1-6.2c-3.4,0-5.1,2.3-5.1,6.2V55.5z\"/><path d=\"M91.8,22.7c6.7,0,9.3,3.2,9.3,9.5v2c0,4.5-1.3,7.4-5,8.5c4.2,1.2,5.8,4.5,5.8,9.2v3.6c0,6.4-3.1,10.1-9.8,10.1h-9.9V22.7H91.8z M90.6,40.9c3.8,0,5.8-1.2,5.8-5.7v-2.5c0-3.8-1.3-5.6-4.7-5.6h-4.7v13.9H90.6z M92,61.2c3.5,0,5.1-1.8,5.1-5.8v-3.8c0-4.8-1.9-6.4-6-6.4h-4.2v16H92z\"/><path d=\"M111,56.9l-1.7,8.6H105l8.2-42.9h6.9l8.2,42.9h-4.8l-1.7-8.6H111z M111.6,52.8h9.6l-4.8-24.8L111.6,52.8z\"/><path d=\"M132.1,65.6V22.7h4.8v38.6h12.3v4.4H132.1z\"/><path d=\"M162.7,22.6c6.6,0,9.9,3.9,9.9,10.8v1.3h-6.4V33c0-3.1-1.2-4.2-3.4-4.2c-2.1,0-3.4,1.2-3.4,4.2c0,8.8,13.2,10.5,13.2,22.8c0,6.9-3.4,10.8-10.1,10.8s-10.1-3.9-10.1-10.8v-2.6h6.4v3.1c0,3.1,1.3,4.2,3.5,4.2s3.5-1.1,3.5-4.2c0-8.8-13.2-10.5-13.2-22.8C152.8,26.6,156.1,22.6,162.7,22.6z\"/><path d=\"M183,23.1v33.1c0,3.1,1.3,4.2,3.5,4.2c2.1,0,3.5-1.1,3.5-4.2V23.1h6.4v32.7c0,6.9-3.4,10.8-10.1,10.8c-6.6,0-10.1-3.9-10.1-10.8V23.1H183z\"/><path d=\"M215.1,66.1c-0.4-1.1-0.6-1.8-0.6-5.3V54c0-4-1.3-5.5-4.4-5.5h-2.3v17.5H201V23.1h10.2c7,0,10,3.3,10,9.9v3.4c0,4.4-1.4,7.3-4.4,8.7c3.4,1.4,4.5,4.7,4.5,9.1v6.6c0,2.1,0.1,3.6,0.7,5.2H215.1z M207.7,29.3v13.2h2.6c2.5,0,4-1.1,4-4.5v-4.2c0-3.1-1-4.4-3.4-4.4H207.7z\"/><path d=\"M232.4,42.2h8.7v6.1h-8.7v17.7h-6.7V23.1h17.9v6.1h-11.1V42.2z\"/>",
+  "viewBox": "12 20 233 48",
+  "alt": "Global Surf",
+  "homeLinkLabel": "Global Surf Lodge Kabalana, home",
+  "source": "dossier business.logo (assets/logo-001.svg), as drawn in the unique mockup"
+ },
+ "levels": [
+  {
+   "lesson": "Level 1 – Fomies",
+   "oneLiner": "Your first time on a board. No experience needed.",
+   "slug": "level-1-fomies"
+  },
+  {
+   "lesson": "Level 2 – Rollers",
+   "oneLiner": "You can stand up. Now catch green waves.",
+   "slug": "level-2-rollers"
+  },
+  {
+   "lesson": "Level 3 – Riders",
+   "oneLiner": "Already carving? Get sharper, on whichever spot is best that day.",
+   "slug": "level-3-riders"
+  }
+ ],
+ "freestylers": {
+  "lesson": "Freestylers – B&B only",
+  "oneLiner": "For independent travellers who want the lodge's vibe.",
+  "whatsappText": "Hi Global Surf Lodge Kabalana, I'd like to ask about dates for the Freestylers – B&B only package."
+ },
+ "inclusions": {
+  "1": [
+   {
+    "icon": "bed",
+    "text": "7 nights' accommodation"
+   },
+   {
+    "icon": "bowl",
+    "text": "7 breakfasts"
+   },
+   {
+    "icon": "plate",
+    "text": "5 dinners"
+   },
+   {
+    "icon": "clock",
+    "text": "5 guided surf sessions of 2 hours"
+   },
+   {
+    "icon": "book",
+    "text": "5 surf theory lessons"
+   },
+   {
+    "icon": "board",
+    "text": "Unlimited surf equipment all week"
+   },
+   {
+    "icon": "van",
+    "text": "Walk or ride to the surf, depending on the spot"
+   },
+   {
+    "icon": "map",
+    "text": "A cultural or nature excursion"
+   },
+   {
+    "icon": "water",
+    "text": "Unlimited drinking water"
+   },
+   {
+    "icon": "cup",
+    "text": "Unlimited local coffee and tea"
+   }
+  ],
+  "2": [
+   {
+    "icon": "bed",
+    "text": "7 nights' accommodation"
+   },
+   {
+    "icon": "bowl",
+    "text": "7 breakfasts"
+   },
+   {
+    "icon": "plate",
+    "text": "5 dinners"
+   },
+   {
+    "icon": "clock",
+    "text": "5 guided surf sessions of 2 hours"
+   },
+   {
+    "icon": "book",
+    "text": "5 surf theory lessons"
+   },
+   {
+    "icon": "board",
+    "text": "Unlimited surf equipment all week"
+   },
+   {
+    "icon": "van",
+    "text": "Walk or ride to the surf, depending on the spot"
+   },
+   {
+    "icon": "map",
+    "text": "A cultural or nature excursion"
+   },
+   {
+    "icon": "water",
+    "text": "Unlimited drinking water"
+   },
+   {
+    "icon": "cup",
+    "text": "Unlimited local coffee and tea"
+   }
+  ],
+  "3": [
+   {
+    "icon": "bed",
+    "text": "7 nights' accommodation"
+   },
+   {
+    "icon": "bowl",
+    "text": "7 breakfasts"
+   },
+   {
+    "icon": "plate",
+    "text": "5 dinners"
+   },
+   {
+    "icon": "clock",
+    "text": "5 coached surf sessions of 2 hours"
+   },
+   {
+    "icon": "book",
+    "text": "5 surf theory lessons"
+   },
+   {
+    "icon": "board",
+    "text": "Unlimited surf equipment all week"
+   },
+   {
+    "icon": "van",
+    "text": "Walk or ride to the surf, depending on the spot"
+   },
+   {
+    "icon": "map",
+    "text": "A cultural or nature excursion"
+   },
+   {
+    "icon": "water",
+    "text": "Unlimited drinking water"
+   },
+   {
+    "icon": "cup",
+    "text": "Unlimited local coffee and tea"
+   }
+  ],
+  "optionalExtra": "Not included: airport pickup. From $220 pp, add it on the booking page."
+ },
+ "rooms": [
+  {
+   "key": "dorm",
+   "label": "Mixed dorm room – 4 beds",
+   "line": "Four single beds. The bathroom is outdoors, and it's yours.",
+   "description": "Our new gallery room sleeps four in comfortable single beds and has its own outdoor bathroom. It suits larger groups, and travellers on a budget.",
+   "details": "Sleeps 4 | 4 single beds | Private outdoor bathroom | Shared",
+   "sleeps": 4,
+   "supplement": {
+    "display": "Included in the package price",
+    "displayOneGuest": null,
+    "displayCouple": null,
+    "onePP": 0,
+    "couplePP": 0
+   },
+   "gallery": [
+    {
+     "file": "img-063.jpg",
+     "width": 2000,
+     "height": 1333,
+     "alt": "The mixed dorm room with four single beds"
+    },
+    {
+     "file": "img-078.jpg",
+     "width": 2000,
+     "height": 1333,
+     "alt": "The dorm room's beds and lockers"
+    },
+    {
+     "file": "img-095.jpg",
+     "width": 1400,
+     "height": 933,
+     "alt": "The dorm room from the door"
+    },
+    {
+     "file": "img-042.jpg",
+     "width": 2000,
+     "height": 1333,
+     "alt": "The dorm's private outdoor bathroom"
+    },
+    {
+     "file": "img-050.jpg",
+     "width": 2000,
+     "height": 1333,
+     "alt": "The white bungalow wall in the sun"
+    },
+    {
+     "file": "img-064.jpg",
+     "width": 2000,
+     "height": 1333,
+     "alt": "A corner of the dorm room"
+    }
+   ]
+  },
+  {
+   "key": "twin",
+   "label": "Shared Twin Room – 2 Beds",
+   "line": "Two beds and a private bathroom, with the beach in view all day.",
+   "description": "The twin rooms look out on the beach all day, and each has a lovely private bathroom. There are two beds; the room is shared unless you choose private use on the booking page.",
+   "details": "Sleeps 2 | 2 beds | Private bathroom | Shared, or book it privately",
+   "sleeps": 2,
+   "supplement": {
+    "display": null,
+    "displayOneGuest": "+$140 pp for 7 nights, one guest",
+    "displayCouple": "+$80 pp for 7 nights, two sharing",
+    "onePP": 140.04,
+    "couplePP": 80.025
+   },
+   "gallery": [
+    {
+     "file": "img-080.jpg",
+     "width": 2000,
+     "height": 1333,
+     "alt": "The twin room with two beds"
+    },
+    {
+     "file": "img-084.jpg",
+     "width": 2000,
+     "height": 1333,
+     "alt": "The twin room's private bathroom"
+    },
+    {
+     "file": "img-083.jpg",
+     "width": 2000,
+     "height": 1333,
+     "alt": "The twin room from the window side"
+    },
+    {
+     "file": "img-069.jpg",
+     "width": 2000,
+     "height": 1333,
+     "alt": "The twin room's beds made up in white"
+    },
+    {
+     "file": "img-079.jpg",
+     "width": 2000,
+     "height": 1333,
+     "alt": "A detail of the twin room"
+    }
+   ]
+  },
+  {
+   "key": "double",
+   "label": "Deluxe double room",
+   "line": "A queen-size bed for two and a private bathroom of its own.",
+   "description": "Our double rooms have one queen-size bed and a private bathroom. To keep it just for the two of you, choose private use when you check out on the booking page.",
+   "details": "Sleeps 2 | Queen-size bed | Private bathroom",
+   "sleeps": 2,
+   "supplement": {
+    "display": "+$418 pp for 7 nights",
+    "displayOneGuest": null,
+    "displayCouple": null,
+    "onePP": 418.46,
+    "couplePP": 418.46
+   },
+   "gallery": [
+    {
+     "file": "img-081.jpg",
+     "width": 2000,
+     "height": 1333,
+     "alt": "The deluxe double room with its queen-size bed"
+    },
+    {
+     "file": "img-082.jpg",
+     "width": 2000,
+     "height": 1333,
+     "alt": "The deluxe double room seen from the bed"
+    },
+    {
+     "file": "img-041.jpg",
+     "width": 2000,
+     "height": 1333,
+     "alt": "The double room's private bathroom"
+    },
+    {
+     "file": "img-043.jpg",
+     "width": 2000,
+     "height": 1333,
+     "alt": "The double room's bed and side table"
+    },
+    {
+     "file": "img-044.jpg",
+     "width": 2000,
+     "height": 1333,
+     "alt": "A detail of the double room"
+    },
+    {
+     "file": "img-071.jpg",
+     "width": 2000,
+     "height": 1333,
+     "alt": "The double room in daylight"
+    }
+   ]
+  }
+ ],
+ "roomsNote": "Room prices change with the dates. Sample for 20–27 Feb 2027; prices from the booking engine, 29 Sep 2026.",
+ "details": {
+  "everyRoom": "Every room: air conditioning | ceiling fan | safe box | private toilet and shower | board rack",
+  "ratingCategories": "Staff 9.5 | Facilities 9.2 | Cleanliness 9.2"
+ },
+ "otherSources": {
+  "Seagallas": "globalsurf.com",
+  "Dana Amsalem-Cohen": "globalsurf.com"
+ },
+ "instagram": {
+  "handle": "@globalsurf_kabalana",
+  "url": "https://www.instagram.com/globalsurf_kabalana/",
+  "line": "The home for all ocean lovers.",
+  "tile_link_label": "See @globalsurf_kabalana on Instagram"
+ },
+ "socials": {
+  "instagram": "https://www.instagram.com/globalsurf_kabalana/",
+  "youtube": "https://www.youtube.com/channel/UCh-GTj4Wu2FbdXpr-xNSGzQ",
+  "facebook": "https://www.facebook.com/GlobalSURFltd/"
+ },
+ "engine": {
+  "product": "https://globalsurfadventures.bookinglayer.com/en/product/"
+ },
+ "snapshot": {
+  "baseAsOf": "28 Sep 2026",
+  "roomsAsOf": "29 Sep 2026",
+  "saturdays": [
+   "2026-10-03",
+   "2026-10-24",
+   "2026-10-31",
+   "2026-12-19",
+   "2027-01-23",
+   "2027-01-30",
+   "2027-02-13",
+   "2027-02-20",
+   "2027-02-27",
+   "2027-03-06",
+   "2027-03-13",
+   "2027-03-20",
+   "2027-03-27",
+   "2027-04-03"
+  ]
+ }
+}

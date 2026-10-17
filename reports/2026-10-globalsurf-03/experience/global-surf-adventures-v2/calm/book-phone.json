@@ -1,0 +1,77 @@
+{
+ "which": "calm",
+ "vp": "phone",
+ "steps": [
+  {
+   "label": "home",
+   "f": "calm/book-phone-00.jpg",
+   "url": "/"
+  },
+  {
+   "tap": "hero: Book package now"
+  },
+  {
+   "label": "after hero tap",
+   "f": "calm/book-phone-01.jpg",
+   "url": "/book/"
+  },
+  {
+   "tap": "Level 2"
+  },
+  {
+   "label": "level 2",
+   "f": "calm/book-phone-02.jpg",
+   "url": "/book/"
+  },
+  {
+   "tap": "Next"
+  },
+  {
+   "label": "room step",
+   "f": "calm/book-phone-03.jpg",
+   "url": "/book/"
+  },
+  {
+   "tap": "Twin"
+  },
+  {
+   "label": "twin",
+   "f": "calm/book-phone-04.jpg",
+   "url": "/book/"
+  },
+  {
+   "tap": "Next"
+  },
+  {
+   "label": "dates step",
+   "f": "calm/book-phone-05.jpg",
+   "url": "/book/"
+  },
+  {
+   "tap": "Saturday chip 3"
+  },
+  {
+   "label": "saturday",
+   "f": "calm/book-phone-06.jpg",
+   "url": "/book/"
+  },
+  {
+   "tap": "+1 man"
+  },
+  {
+   "label": "guest",
+   "f": "calm/book-phone-07.jpg",
+   "url": "/book/"
+  },
+  {
+   "tap": "Continue booking"
+  },
+  {
+   "label": "after continue",
+   "f": "calm/book-phone-08.jpg",
+   "url": "chrome-error://chromewebdata/"
+  }
+ ],
+ "engine": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2026-11-07&end=2026-11-14&female=1&male=1&couple=0",
+ "taps": 8
+}

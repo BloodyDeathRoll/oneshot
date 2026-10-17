@@ -85,6 +85,55 @@ async function auditOne(browser, slug, variant, port) {
     await ctx.close();
   }
 
+  // ---------- layout shift while scrolling (the page must never jump) ----------
+  /* "early": the visitor scrolls from DOMContentLoaded on, on the throttled phone, so
+     anything that sets itself up late (a pin spacer, a library-built section, a font
+     swap) is reached before it is ready. "settled": the same scroll after everything
+     has loaded. Scrolling here is programmatic, so no shift is excluded as input. */
+  out.scroll = {};
+  for (const pass of ['early', 'settled']) {
+    const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+    const page = await ctx.newPage();
+    const cdp = await ctx.newCDPSession(page);
+    await cdp.send('Network.enable');
+    await cdp.send('Network.emulateNetworkConditions', SLOW_4G);
+    await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+    await page.addInitScript(() => {
+      window.__shifts = [];
+      new PerformanceObserver((l) => {
+        for (const e of l.getEntries()) {
+          const src = (e.sources || []).map((s) => {
+            const n = s.node;
+            if (!n || n.nodeType !== 1) return '#text';
+            return n.tagName.toLowerCase() + (n.id ? '#' + n.id : '') + (n.classList.length ? '.' + [...n.classList].slice(0, 2).join('.') : '');
+          });
+          window.__shifts.push({ value: e.value, at_ms: Math.round(e.startTime), y: Math.round(scrollY), sources: src });
+        }
+      }).observe({ type: 'layout-shift', buffered: true });
+    });
+    await page.goto(url, { waitUntil: pass === 'early' ? 'domcontentloaded' : 'load' });
+    if (pass === 'settled') {
+      await page.waitForTimeout(3500);
+      await page.evaluate(() => { window.__shifts = []; });
+    }
+    for (let i = 0; i < 80; i++) {
+      const done = await page.evaluate(() => {
+        if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) return true;
+        scrollBy(0, Math.round(innerHeight * 0.8));
+        return false;
+      });
+      if (done) break;
+      await page.waitForTimeout(250);
+    }
+    await page.waitForTimeout(1500);
+    const shifts = await page.evaluate(() => window.__shifts);
+    out.scroll[pass] = {
+      cls: +shifts.reduce((n, s) => n + s.value, 0).toFixed(4),
+      shifts: shifts.filter((s) => s.value >= 0.001).slice(0, 12).map((s) => ({ ...s, value: +s.value.toFixed(4) })),
+    };
+    await ctx.close();
+  }
+
   // ---------- booking tap-through, keyboard, alt text, tap targets ----------
   {
     const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
@@ -231,6 +280,7 @@ for (const [slug, variant] of targets) {
     slug: slug.slice(0, 22), variant,
     'first KB': kb(o.first_load.bytes_total), 'JS KB': kb(o.first_load.bytes_js),
     'LCP ms': o.first_load.lcp_ms, CLS: o.first_load.cls,
+    'scroll CLS': Math.max(o.scroll.early.cls, o.scroll.settled.cls),
     '3rd party': o.first_load.third_party_hosts.length,
     'noJS links': o.no_js.booking_links_reachable,
     'kbd ok': o.keyboard.focus_returned ?? 'n/a',

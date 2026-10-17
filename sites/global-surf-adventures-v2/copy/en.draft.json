@@ -1,0 +1,592 @@
+{
+ "slug": "global-surf-adventures-v2",
+ "locale": "en",
+ "copywriter_version": "0.3.3",
+ "humanizer_version": "0.2.0",
+ "businessName": "Global Surf Lodge Kabalana",
+ "businessType": "surf_camp",
+ "tagline": "Surf weeks for all levels on Sri Lanka's south coast, a few steps from the ocean.",
+ "closing": "Book the week for your level. Not sure which one fits? Ask us on WhatsApp first.",
+ "featureLine": "Footwear is discouraged. Chilling out is inescapable.",
+ "copyBlocks": [
+  {
+   "slot": "intro",
+   "heading": "Next set is yours",
+   "body": "We are surfing obsessed, and we invite you to join us.\n\nThe lodge sits in the green of the jungle. We run surf weeks for three levels, from your first wave to carving, and a Freestylers package for independent travellers."
+  },
+  {
+   "slot": "about",
+   "heading": "Surf, breakfast, surf again",
+   "body": "Head out with your group for a morning surf. Back at the lodge, a big, healthy breakfast is waiting.\n\nAfter that the day is yours: relax at the lodge, or go out and explore before the afternoon surf. The evening ends with dinner, together with the other guests."
+  },
+  {
+   "slot": "offer",
+   "heading": "Pick your level",
+   "body": "Level 1 – Fomies is for your first time on a board, no surfing experience needed. You learn on soft boards, on easy reef breaks and the sandy beaches around the lodge.\n\nLevel 2 – Rollers is for when you can stand up, but paddling out to the line-up and catching green waves is still a struggle. You surf easy reefs and beach breaks with deep-water channels, on soft boards.\n\nLevel 3 – Riders: you're already carving, and you want to sharpen your skills. From Galle to Matara, you surf the best spot of the day for the conditions, the wind and the tide.\n\nFreestylers is the package for independent travellers who want to soak up the lodge's vibe."
+  },
+  {
+   "slot": "offer",
+   "heading": "One price, three levels",
+   "body": "The three surf weeks cost the same, per person for seven nights. That is the base price the booking engine showed on 28 September 2026. The room you choose can add to it; the engine shows any supplement once you pick your dates.\n\nPackages start on a Saturday and run for 7, 14, 21 or 28 nights, for up to six guests per booking. Drinking water and local coffee and tea are unlimited."
+  },
+  {
+   "slot": "about",
+   "heading": "Twelve rooms, one big family",
+   "body": "There are just twelve rooms. That keeps a stay here personal, part of one big happy family. Every room has air conditioning, a ceiling fan, a safe box, a private toilet and shower, a socket next to each bed and, of course, a board rack.\n\nWhen you're not on the water, lie out on a sunbed by the pool under the palms, hang out in the common area, take an ice-cold drink from the bar, or eat Sri Lankan produce from the lodge kitchen."
+  },
+  {
+   "slot": "about",
+   "heading": "What guests say",
+   "body": "Booking.com guests score the staff 9.5 out of 10, and the facilities and the cleanliness 9.2 each.\n\nIn their reviews they write about the pool area, the open-air bathroom and the breakfast bowls."
+  },
+  {
+   "slot": "info",
+   "heading": "Getting here",
+   "body": "Booking.com puts Kathaluwa West Beach 40 m from the lodge and Kabalana Beach 350 m. Kathaluwa station is 400 m away, Ahangama Beach 4 km and Koggala Airport 3.9 km."
+  }
+ ],
+ "spot": "The lodge overlooks two spots, The Rock and South Point. More waves are a few minutes away by tuk-tuk.",
+ "season": null,
+ "lessons": [
+  {
+   "label": "Level 1 – Fomies",
+   "level": [
+    "first_time",
+    "beginner"
+   ],
+   "includes": "7 nights, 7 breakfasts, 5 dinners, 5 guided 2-hour surf sessions, 5 theory lessons, all equipment, transport to the spots, an excursion",
+   "price": 1466,
+   "currency": "USD",
+   "unit": "per_person"
+  },
+  {
+   "label": "Level 2 – Rollers",
+   "level": [
+    "intermediate"
+   ],
+   "includes": "7 nights, 7 breakfasts, 5 dinners, 5 guided 2-hour surf sessions, 5 theory lessons, all equipment, transport to the spots, an excursion",
+   "price": 1466,
+   "currency": "USD",
+   "unit": "per_person"
+  },
+  {
+   "label": "Level 3 – Riders",
+   "level": [
+    "advanced"
+   ],
+   "includes": "7 nights, 7 breakfasts, 5 dinners, 5 coached 2-hour surf sessions, 5 theory lessons, all equipment, transport to the spots, an excursion",
+   "price": 1466,
+   "currency": "USD",
+   "unit": "per_person"
+  },
+  {
+   "label": "Freestylers – B&B only",
+   "includes": "From 4 nights"
+  }
+ ],
+ "priceList": [],
+ "credentials": [
+  {
+   "label": "ISA-certified surf guides"
+  }
+ ],
+ "rooms": [],
+ "stayInfo": {
+  "checkInFrom": "14:00",
+  "checkInTo": "20:00",
+  "checkOutTo": "11:00",
+  "note": "No pets and no extra beds; cots are free on request for children up to 5."
+ },
+ "amenities": [
+  {
+   "label": "Outdoor swimming pool"
+  },
+  {
+   "label": "Yoga chalet"
+  },
+  {
+   "label": "Yoga, meditation and sound healing sessions"
+  },
+  {
+   "label": "Ice baths"
+  },
+  {
+   "label": "Lookout terrace",
+   "note": "ocean view"
+  },
+  {
+   "label": "Restaurant",
+   "note": "breakfast, lunch and dinner, daily"
+  },
+  {
+   "label": "Bar"
+  },
+  {
+   "label": "Gluten-free and vegan options"
+  },
+  {
+   "label": "Co-working space",
+   "note": "high-speed internet, coffee and fresh juices"
+  },
+  {
+   "label": "Free WiFi"
+  },
+  {
+   "label": "Airport shuttle"
+  },
+  {
+   "label": "Free private parking on site"
+  },
+  {
+   "label": "Non-smoking rooms"
+  },
+  {
+   "label": "Garden"
+  },
+  {
+   "label": "Sun terrace"
+  }
+ ],
+ "ratings": [
+  {
+   "platform": "booking",
+   "score": 8.6,
+   "scale": "10",
+   "count": 80,
+   "url": "https://www.booking.com/hotel/lk/kabalana-by-ceilao-villas.en-gb.html",
+   "capturedAt": "2026-09-28"
+  }
+ ],
+ "testimonials": [
+  {
+   "quote": "We loved the cozy, bohoo-vibes at the lodge: starting from the open-air-bathroom, the relaxing pool area and especially the great breakfast bowls!",
+   "author": "Fanny, Germany",
+   "source": "booking"
+  },
+  {
+   "quote": "This place felt like something inbetween a hostel and a luxurious hotel. The styling was gorgeous, the beds very comfortable, the (bath)room very spacious with lockers and personal storage space.",
+   "author": "Myrthe, Netherlands",
+   "source": "booking"
+  },
+  {
+   "quote": "A lovely hotel and a team of champions. Ariel, a professional surf guide, raised the level of surfing for us by several steps during the week we were there. This is our second time at the same hotel and with the same guide. We will return next year as well",
+   "author": "Seagallas",
+   "source": "other"
+  },
+  {
+   "quote": "The room was modern, quiet and incredibly clean with daily servicing. The grounds were well kept with a gorgeous pool and dining area. There are hammocks, loungers and beanbags in social areas. It was a really really great place.",
+   "author": "Abigail, Myanmar",
+   "source": "booking"
+  },
+  {
+   "quote": "I had a wonderful stay at this hostel in Kabalana. The place was very clean, comfortable, and well maintained, and the staff were incredibly friendly and welcoming.",
+   "author": "Maryam, Netherlands",
+   "source": "booking"
+  },
+  {
+   "quote": "We stayed at Global Kablana Sri Lanka as a couple and two girls and it was just fun and lovely. The atmosphere, the rooms, the stunning staff. Just everything.",
+   "author": "Dana Amsalem-Cohen",
+   "source": "other"
+  },
+  {
+   "quote": "The common areas and the rooms are really nice! Staff is very helpful and the breakfast options are awesome.",
+   "author": "Agustin, Chile",
+   "source": "booking"
+  },
+  {
+   "quote": "Super nice place, beautiful rooms, nice hangout area with pool and pillows and delicious breakfast!",
+   "author": "Sara, Austria",
+   "source": "booking"
+  },
+  {
+   "quote": "The staff were lovely and welcoming. The property itself was clean and comfortable.",
+   "author": "Hannah, Oman",
+   "source": "booking"
+  }
+ ],
+ "contact": {
+  "phone": "+97299733943",
+  "whatsapp": "",
+  "email": "info@globalsurf.com",
+  "address": "Henewatta Addara Gederawata, Ahangama 80650, Sri Lanka",
+  "mapUrl": "https://www.google.com/maps/place/Global+Surf+Lodge/@5.9810484,80.3420635,17z/data=!4m9!3m8!1s0x3ae113351492cf43:0xff567ddd7a65d2a!5m2!4m1!1i2!8m2!3d5.9810484!4d80.3420635!16s%2Fg%2F11cn7j9d5n?hl=en"
+ },
+ "bookingLinks": [
+  {
+   "label": "Book package now",
+   "url": "https://globalsurfadventures.bookinglayer.com/en/category/sri-lanka"
+  },
+  {
+   "label": "Book Level 1",
+   "url": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies"
+  },
+  {
+   "label": "Book Level 2",
+   "url": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers"
+  },
+  {
+   "label": "Book Level 3",
+   "url": "https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders"
+  },
+  {
+   "label": "Book Freestylers",
+   "url": "https://globalsurfadventures.bookinglayer.com/en/product/freestylers-bb-only-package"
+  },
+  {
+   "label": "Ask on WhatsApp",
+   "url": "https://wa.me/972523593240?text=Hi%20Global%20Surf%20Lodge%20Kabalana%2C%20I%20have%20a%20question%20about%20the%20surf%20packages."
+  }
+ ],
+ "languagesSpoken": [],
+ "mockup_extras": {
+  "_about": "NOT schema fields. Lines the round-2 concepts (concepts.md §6) need for the mockups. Each key is listed in sources.md, 'mockup_extras', with its source and whether it is a schema gap or a template-owned label. Nothing here replaces a passed field above.",
+  "hero": {
+   "title_c1": "Surf weeks in Sri Lanka",
+   "title_c2": "Next set is yours",
+   "title_c3": "Your surf week starts here",
+   "subtitle": "All levels, steps from the beach",
+   "subtitle_alt": "Sri Lanka's south coast, all levels"
+  },
+  "ctas": {
+   "hero_c1": "Book package now",
+   "hero_c2": "Choose your level",
+   "hero_c3": "Book your week",
+   "header_and_bar": "Book now",
+   "closing": "Book package now",
+   "level_1": "Choose Level 1",
+   "level_2": "Choose Level 2",
+   "level_3": "Choose Level 3",
+   "room": "Choose this room",
+   "handoff": "Continue booking",
+   "step_next": "Next",
+   "bar_on_booking_page": "Continue",
+   "freestylers": "Ask about dates",
+   "whatsapp": "Questions? Ask us",
+   "whatsapp_footer": "WhatsApp us",
+   "call": "Call us",
+   "email": "Email us",
+   "map": "Open in Maps",
+   "instagram": "Follow @globalsurf_kabalana",
+   "inclusions_toggle": "What's included"
+  },
+  "section_titles": {
+   "welcome": "Next set is yours",
+   "levels": "Choose your level",
+   "included": "What's included",
+   "week": "Surf, breakfast, surf again",
+   "week_short": "Your day here",
+   "rooms": "Our rooms",
+   "lodge": "The lodge",
+   "guests": "What guests say",
+   "waves": "The waves",
+   "instagram": "Follow the lodge",
+   "getting_here": "Getting here",
+   "book_level": "Your level",
+   "book_included": "What's included",
+   "book_room": "Your room",
+   "book_dates": "Dates and guests",
+   "book_total": "Your total"
+  },
+  "levels": [
+   {
+    "lesson": "Level 1 – Fomies",
+    "one_liner": "Your first time on a board. No experience needed."
+   },
+   {
+    "lesson": "Level 2 – Rollers",
+    "one_liner": "You can stand up. Now catch green waves."
+   },
+   {
+    "lesson": "Level 3 – Riders",
+    "one_liner": "Already carving? Sharpen your skills on the day's best spot."
+   },
+   {
+    "lesson": "Freestylers – B&B only",
+    "one_liner": "For independent travellers who want the lodge's vibe."
+   }
+  ],
+  "detail_lines": {
+   "welcome": "12 rooms | Saturday check-in | ISA-certified surf guides",
+   "level_price": "From $1,466 pp | 7 nights",
+   "freestylers": "Freestylers – B&B only | from 4 nights",
+   "trust": "8.6 on Booking.com | 80 reviews | 28 Sep 2026",
+   "rating_categories": "Staff 9.5 | Facilities 9.2 | Cleanliness 9.2",
+   "every_room": "Every room: air conditioning | ceiling fan | safe box | private toilet and shower | board rack",
+   "stay": "Check-in 14:00–20:00 | check-out by 11:00"
+  },
+  "inclusions": {
+   "level_1": [
+    {
+     "icon": "bed",
+     "text": "7 nights' accommodation"
+    },
+    {
+     "icon": "bowl",
+     "text": "7 breakfasts"
+    },
+    {
+     "icon": "plate",
+     "text": "5 dinners"
+    },
+    {
+     "icon": "clock",
+     "text": "5 guided surf sessions of 2 hours"
+    },
+    {
+     "icon": "book",
+     "text": "5 surf theory lessons"
+    },
+    {
+     "icon": "board",
+     "text": "Surf equipment, unlimited all week"
+    },
+    {
+     "icon": "van",
+     "text": "Walk or ride to the surf, depending on the spot"
+    },
+    {
+     "icon": "map",
+     "text": "A cultural or nature excursion"
+    },
+    {
+     "icon": "water",
+     "text": "Unlimited drinking water"
+    },
+    {
+     "icon": "cup",
+     "text": "Unlimited local coffee and tea"
+    }
+   ],
+   "level_2": [
+    {
+     "icon": "bed",
+     "text": "7 nights' accommodation"
+    },
+    {
+     "icon": "bowl",
+     "text": "7 breakfasts"
+    },
+    {
+     "icon": "plate",
+     "text": "5 dinners"
+    },
+    {
+     "icon": "clock",
+     "text": "5 guided surf sessions of 2 hours"
+    },
+    {
+     "icon": "book",
+     "text": "5 surf theory lessons"
+    },
+    {
+     "icon": "board",
+     "text": "Surf equipment, unlimited all week"
+    },
+    {
+     "icon": "van",
+     "text": "Walk or ride to the surf, depending on the spot"
+    },
+    {
+     "icon": "map",
+     "text": "A cultural or nature excursion"
+    },
+    {
+     "icon": "water",
+     "text": "Unlimited drinking water"
+    },
+    {
+     "icon": "cup",
+     "text": "Unlimited local coffee and tea"
+    }
+   ],
+   "level_3": [
+    {
+     "icon": "bed",
+     "text": "7 nights' accommodation"
+    },
+    {
+     "icon": "bowl",
+     "text": "7 breakfasts"
+    },
+    {
+     "icon": "plate",
+     "text": "5 dinners"
+    },
+    {
+     "icon": "clock",
+     "text": "5 coached surf sessions of 2 hours"
+    },
+    {
+     "icon": "book",
+     "text": "5 surf theory lessons"
+    },
+    {
+     "icon": "board",
+     "text": "Surf equipment, unlimited all week"
+    },
+    {
+     "icon": "van",
+     "text": "Walk or ride to the surf, depending on the spot"
+    },
+    {
+     "icon": "map",
+     "text": "A cultural or nature excursion"
+    },
+    {
+     "icon": "water",
+     "text": "Unlimited drinking water"
+    },
+    {
+     "icon": "cup",
+     "text": "Unlimited local coffee and tea"
+    }
+   ],
+   "freestylers": [],
+   "optional_extra": "Airport pickup, from $220 pp: add it on the booking page"
+  },
+  "rooms": [
+   {
+    "engine_title": "Mixed dorm room - 4 beds",
+    "label": "Mixed dorm room – 4 beds",
+    "line": "Four single beds, a loft with a ladder, a private outdoor bathroom.",
+    "description": "Our new gallery room has four comfortable single beds and a private outdoor bathroom. It suits larger groups, and travellers on a budget.",
+    "details": "Sleeps 4 | 4 single beds | Private outdoor bathroom | Shared",
+    "sleeps": 4,
+    "supplement": {
+     "sample": "20–27 Feb 2027, 7 nights",
+     "per_person": 0,
+     "display": "Included in the package price",
+     "as_of": "29 Sep 2026"
+    },
+    "gallery": [
+     "img-063",
+     "img-078",
+     "img-095",
+     "img-042",
+     "img-068",
+     "img-050",
+     "img-064"
+    ]
+   },
+   {
+    "engine_title": "Shared Twin Room - 2 Beds",
+    "label": "Shared Twin Room – 2 Beds",
+    "line": "Two beds, a private bathroom and a beach view all day.",
+    "description": "Our twin rooms have two beds, a lovely private bathroom and a beach view all day. It is a shared room: to keep it to yourselves, choose private use when you check out on the booking page.",
+    "details": "Sleeps 2 | 2 beds | Private bathroom | Shared, or book it privately",
+    "sleeps": 2,
+    "supplement": {
+     "sample": "20–27 Feb 2027, 7 nights",
+     "one_guest_per_person": 140.04,
+     "couple_per_person": 80.025,
+     "couple_total": 160.05,
+     "display_one_guest": "+$140 pp for 7 nights, one guest",
+     "display_couple": "+$80 pp for 7 nights, two sharing",
+     "as_of": "29 Sep 2026"
+    },
+    "gallery": [
+     "img-080",
+     "img-013",
+     "img-084",
+     "img-083",
+     "img-069",
+     "img-079"
+    ]
+   },
+   {
+    "engine_title": "Deluxe double room",
+    "label": "Deluxe double room",
+    "line": "A queen-size bed for two, with its own private bathroom.",
+    "description": "Our double rooms have one queen-size bed and a private bathroom. To keep the room to yourselves, choose private use when you check out on the booking page.",
+    "details": "Sleeps 2 | Queen-size bed | Private bathroom",
+    "sleeps": 2,
+    "supplement": {
+     "sample": "20–27 Feb 2027, 7 nights",
+     "per_person": 418.46,
+     "display": "+$418 pp for 7 nights",
+     "as_of": "29 Sep 2026"
+    },
+    "gallery": [
+     "img-081",
+     "img-082",
+     "img-041",
+     "img-043",
+     "img-044",
+     "img-071",
+     "img-066"
+    ],
+    "gallery_portrait": [
+     "img-028",
+     "img-029",
+     "img-045",
+     "img-048"
+    ]
+   }
+  ],
+  "rooms_note": "Room prices change with the dates. Sample for 20–27 Feb 2027; prices from the booking engine, 29 Sep 2026.",
+  "booking": {
+   "step_counter": "Step {n} of {total}",
+   "step_pills": [
+    "Level",
+    "Room",
+    "Dates & guests",
+    "Total"
+   ],
+   "field_checkin": "Check-in (Saturdays)",
+   "field_checkin_nojs_placeholder": "Choose a Saturday",
+   "field_checkin_help": "Packages start on a Saturday.",
+   "field_nights": "Nights",
+   "nights_options": [
+    "7",
+    "14",
+    "21",
+    "28"
+   ],
+   "field_women": "Women",
+   "field_men": "Men",
+   "field_couples": "Couples",
+   "guests_help": "Up to 6 guests per booking.",
+   "stepper_less": "One less",
+   "stepper_more": "One more",
+   "summary_labels": {
+    "level": "Level",
+    "dates": "Dates",
+    "guests": "Guests",
+    "room": "Room",
+    "total": "Total"
+   },
+   "room_included": "Included",
+   "room_supplement": "+${amount} pp",
+   "room_not_free": "Not free on these dates",
+   "room_only_one_free": "Only the {room} is free on these dates",
+   "total_package": "Package, per person",
+   "total_room": "Room, per person",
+   "total_per_person": "Total per person",
+   "total_all": "Total for {n} guests",
+   "currency_note": "Prices in USD",
+   "prices_snapshot": "Prices from the booking engine, {date}",
+   "prices_live": "Live price from the booking engine",
+   "prices_fallback": "Live prices didn't load. These are the booking engine's prices from {date}.",
+   "deposit": "40% deposit to book, the rest 45 days before arrival. Booking less than 45 days ahead? You pay in full.",
+   "handoff": "Next, on our Bookinglayer booking page: confirm your room, add airport pickup if you want it, then enter your details and pay.",
+   "handoff_nothing_booked": "Nothing is booked until you check out there."
+  },
+  "logo": {
+   "file": "assets/logo-001.svg",
+   "file_white": "assets/logo-002.svg",
+   "alt": "Global Surf",
+   "home_link_label": "Global Surf Lodge Kabalana, home"
+  },
+  "instagram": {
+   "handle": "@globalsurf_kabalana",
+   "url": "https://www.instagram.com/globalsurf_kabalana/",
+   "line": "The home for all ocean lovers.",
+   "tile_link_label": "See @globalsurf_kabalana on Instagram"
+  },
+  "socials": {
+   "instagram": "https://www.instagram.com/globalsurf_kabalana/",
+   "youtube": "https://www.youtube.com/channel/UCh-GTj4Wu2FbdXpr-xNSGzQ",
+   "facebook": "https://www.facebook.com/GlobalSURFltd/"
+  }
+ }
+}

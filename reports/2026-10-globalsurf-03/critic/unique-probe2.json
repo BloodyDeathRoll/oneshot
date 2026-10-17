@@ -1,0 +1,90 @@
+{
+ "variant": "unique",
+ "mobile": {
+  "rosa_requests": [
+   "iframe document https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "iframe fetch https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "iframe image https://rosa.surf/favicon.svg"
+  ],
+  "cls_load": 0,
+  "cls_after_full_scroll": 1.2476303317535544,
+  "big_shifts": [
+   {
+    "v": 0.34,
+    "y": 5067,
+    "src": [
+     "lodge"
+    ]
+   },
+   {
+    "v": 0.908,
+    "y": 7174,
+    "src": [
+     "drop-pin drop-live-only"
+    ]
+   }
+  ]
+ },
+ "desktop": {
+  "rosa_requests": [
+   "iframe document https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "iframe fetch https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+   "iframe image https://rosa.surf/favicon.svg"
+  ],
+  "cls_load": 0.004976154242621528,
+  "cls_after_full_scroll": 1.034074204868479,
+  "big_shifts": [
+   {
+    "v": 0.139,
+    "y": 3838,
+    "src": [
+     "lodge"
+    ]
+   },
+   {
+    "v": 0.89,
+    "y": 5850,
+    "src": [
+     "drop-stage"
+    ]
+   }
+  ]
+ },
+ "rosa_blocked": [
+  "Forecast for South Point by Rosa"
+ ],
+ "trap": "A||https://www.instagram.com/globalsurf_kab",
+ "tab": {
+  "presses": 47,
+  "wrapped_to_first": false,
+  "unique_stops": 26,
+  "no_ring": [],
+  "hidden_focus": [],
+  "iframe": true
+ },
+ "dialogs": [
+  {
+   "label": "mobile menu",
+   "skipped": "not visible: button[aria-controls=sheet], button.menu, button.menu-btn"
+  },
+  {
+   "label": "booking drawer (Choose Level 2)",
+   "afterOpen": "BUTTON|Close booking",
+   "left_dialog": 0,
+   "sample": [
+    "IN INPUT|",
+    "IN A|Ask about dates",
+    "IN SELECT|Sat 24 Oct 2026 Sat 31 Oc",
+    "IN BUTTON|One more",
+    "IN BUTTON|Continue booking",
+    "IN BUTTON|Close booking"
+   ],
+   "afterEsc": "A|#book",
+   "url": "http://127.0.0.1:8996/"
+  },
+  {
+   "label": "booking drawer hero (mobile)",
+   "skipped": "not visible: a[data-book]"
+  }
+ ]
+}

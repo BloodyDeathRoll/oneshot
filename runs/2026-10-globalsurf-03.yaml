@@ -1,0 +1,48 @@
+run_id: 2026-10-globalsurf-03
+operator: shahar                 # who runs it (team.json); a session runs only its operator's runs
+status: active                   # active | closed
+mode: test                       # test | live
+# test: we are not on the ground and cannot contact anyone. A business qualifies only if
+#       its PUBLIC material alone is enough to build a complete site. Anything that would
+#       need the owner (prices they never published, photos they never posted, copy in
+#       their own voice) disqualifies the business — it does not become a question.
+# live: we are on site. Owner contact, our own photography and a briefing call are all
+#       available, so a thin public presence is a pitch opening rather than a blocker.
+area:
+  mode: business                 # town | stretch | business
+  # town:     one anchor (a town or beach) + shore_buffer_m along its coast
+  # stretch:  two anchors + shore_buffer_m along the coastline between them
+  # business: one anchor (a named business) + radius_m circle around it
+  anchors:
+    - "Global Surf Adventures (globalsurf.com)"   # pilot of proposal 003 (scroll set-piece), Shahar 2026-10-16
+  # Second version of Global Surf, slug global-surf-adventures-v2. Forked at copy_passed from run
+  # 2026-09-globalsurf-02 (same dossier, audit and passed copy); that run's mockups stay as they are.
+  radius_m: 0                    # business mode; 0 = the anchor business only
+  shore_buffer_m: 100            # town / stretch modes
+types: [surf_school, board_rental, surf_shop, surf_camp, beach_lodging, shaper]
+presence_threshold: 5            # shortlist businesses scoring <= this (0–5); 5 for this run: a business with a real site, chosen for the funnel audit
+max_sites: 1
+languages: [en]                  # English only for now; audience languages (de, es, pt, ru…) may come later
+budget:
+  tokens_per_business: 2_000_000
+  wallclock_min_per_business: 90
+hosting:
+  default_mode: managed          # managed | self_hosted_docker | static_only
+  modes: {}                      # slug → mode, when the client chooses something other than the default
+agents:                          # pinned versions for reproducibility
+  scout: 0.3.0
+  harvester: 0.4.0
+  auditor: 0.1.2
+  designer: 0.5.1
+  copywriter: 0.3.3
+  humanizer: 0.2.0
+  copyeditor: 0.4.0
+  creative-director: 0.4.0
+  seo: 0.2.1
+  aiseo: 0.2.1
+  critic: 0.4.3
+  visual-critic: 0.1.1
+  experience-critic: 0.1.0
+  deployer: 0.5.0
+  writer: 0.4.0
+  orchestrator: 0.4.0

@@ -1,0 +1,808 @@
+{
+ "phone-cold": {
+  "frames": [
+   {
+    "t": 500,
+    "y": 0,
+    "H": 14477,
+    "vid": {
+     "t": 0,
+     "paused": true,
+     "rs": 0,
+     "src": ""
+    },
+    "stage": {
+     "cls": "drop-stage",
+     "live": true,
+     "load": "1",
+     "poster": "1"
+    },
+    "drop": {
+     "top": 5044,
+     "h": 2559
+    },
+    "vis": [
+     "Your surf week starts here",
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "t": 1500,
+    "y": 0,
+    "H": 14477,
+    "vid": {
+     "t": 0,
+     "paused": true,
+     "rs": 0,
+     "src": ""
+    },
+    "stage": {
+     "cls": "drop-stage",
+     "live": true,
+     "load": "1",
+     "poster": "1"
+    },
+    "drop": {
+     "top": 5044,
+     "h": 2559
+    },
+    "vis": [
+     "Your surf week starts here",
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "t": 3000,
+    "y": 0,
+    "H": 14609,
+    "vid": {
+     "t": 0,
+     "paused": false,
+     "rs": 1,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage",
+     "live": true,
+     "load": "1",
+     "poster": "1"
+    },
+    "drop": {
+     "top": 5044,
+     "h": 2559
+    },
+    "vis": [
+     "Your surf week starts here",
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "t": 6000,
+    "y": 0,
+    "H": 14609,
+    "vid": {
+     "t": 2.21,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage",
+     "live": true,
+     "load": "1",
+     "poster": "1"
+    },
+    "drop": {
+     "top": 5044,
+     "h": 2559
+    },
+    "vis": [
+     "Your surf week starts here",
+     "Book your week"
+    ],
+    "overflowX": false
+   }
+  ],
+  "hosts": [
+   "localhost:9741"
+  ]
+ },
+ "phone-walk": {
+  "frames": [
+   {
+    "n": 1,
+    "y": 499,
+    "H": 14609,
+    "vid": {
+     "t": 6.04,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage",
+     "live": true,
+     "load": "1",
+     "poster": "1"
+    },
+    "drop": {
+     "top": 4545,
+     "h": 2559
+    },
+    "vis": [
+     "Choose your level",
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 2,
+    "y": 1016,
+    "H": 14609,
+    "vid": {
+     "t": 6.89,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage",
+     "live": true,
+     "load": "1",
+     "poster": "1"
+    },
+    "drop": {
+     "top": 4028,
+     "h": 2559
+    },
+    "vis": [
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 3,
+    "y": 1534,
+    "H": 14609,
+    "vid": {
+     "t": 0.71,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage",
+     "live": true,
+     "load": "1",
+     "poster": "1"
+    },
+    "drop": {
+     "top": 3510,
+     "h": 2559
+    },
+    "vis": [
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 4,
+    "y": 2051,
+    "H": 14609,
+    "vid": {
+     "t": 1.56,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage",
+     "live": true,
+     "load": "1",
+     "poster": "1"
+    },
+    "drop": {
+     "top": 2993,
+     "h": 2559
+    },
+    "vis": [
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 5,
+    "y": 2568,
+    "H": 14609,
+    "vid": {
+     "t": 2.41,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage",
+     "live": true,
+     "load": "1",
+     "poster": "1"
+    },
+    "drop": {
+     "top": 2476,
+     "h": 2559
+    },
+    "vis": [
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 6,
+    "y": 3085,
+    "H": 14609,
+    "vid": {
+     "t": 3.26,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage",
+     "live": true,
+     "load": "1",
+     "poster": "1"
+    },
+    "drop": {
+     "top": 1959,
+     "h": 2559
+    },
+    "vis": [
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 7,
+    "y": 3602,
+    "H": 14609,
+    "vid": {
+     "t": 4.11,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage",
+     "live": true,
+     "load": "1",
+     "poster": "1"
+    },
+    "drop": {
+     "top": 1442,
+     "h": 2559
+    },
+    "vis": [
+     "What's included",
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 8,
+    "y": 4120,
+    "H": 14609,
+    "vid": {
+     "t": 4.96,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage",
+     "live": true,
+     "load": "1",
+     "poster": "1"
+    },
+    "drop": {
+     "top": 924,
+     "h": 2559
+    },
+    "vis": [
+     "What's included",
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 9,
+    "y": 4637,
+    "H": 14609,
+    "vid": {
+     "t": 5.81,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage",
+     "live": true,
+     "load": "1",
+     "poster": "1"
+    },
+    "drop": {
+     "top": 407,
+     "h": 2559
+    },
+    "vis": [
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 10,
+    "y": 5154,
+    "H": 14609,
+    "vid": {
+     "t": 6.66,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage",
+     "live": true,
+     "load": "1",
+     "poster": "1"
+    },
+    "drop": {
+     "top": -110,
+     "h": 2559
+    },
+    "vis": [
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 11,
+    "y": 5671,
+    "H": 14609,
+    "vid": {
+     "t": 0.49,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage",
+     "live": true,
+     "load": "1",
+     "poster": "1"
+    },
+    "drop": {
+     "top": -627,
+     "h": 2559
+    },
+    "vis": [
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 12,
+    "y": 6188,
+    "H": 14609,
+    "vid": {
+     "t": 1.34,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage ready",
+     "live": true,
+     "load": "0",
+     "poster": "7.61169e-10"
+    },
+    "drop": {
+     "top": -1144,
+     "h": 2559
+    },
+    "vis": [
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 13,
+    "y": 6706,
+    "H": 14609,
+    "vid": {
+     "t": 2.24,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage ready",
+     "live": true,
+     "load": "0",
+     "poster": "0"
+    },
+    "drop": {
+     "top": -1662,
+     "h": 2559
+    },
+    "vis": [
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 14,
+    "y": 7223,
+    "H": 14609,
+    "vid": {
+     "t": 3.12,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage ready",
+     "live": true,
+     "load": "0",
+     "poster": "0"
+    },
+    "drop": {
+     "top": -2179,
+     "h": 2559
+    },
+    "vis": [
+     "The lodge",
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 15,
+    "y": 7740,
+    "H": 14609,
+    "vid": {
+     "t": 3.97,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage ready",
+     "live": true,
+     "load": "0",
+     "poster": "0"
+    },
+    "drop": {
+     "top": -2696,
+     "h": 2559
+    },
+    "vis": [
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 16,
+    "y": 8257,
+    "H": 14609,
+    "vid": {
+     "t": 4.82,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage ready",
+     "live": true,
+     "load": "0",
+     "poster": "0"
+    },
+    "drop": {
+     "top": -3213,
+     "h": 2559
+    },
+    "vis": [
+     "Our rooms",
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 17,
+    "y": 8774,
+    "H": 14609,
+    "vid": {
+     "t": 5.67,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage ready",
+     "live": true,
+     "load": "0",
+     "poster": "0"
+    },
+    "drop": {
+     "top": -3730,
+     "h": 2559
+    },
+    "vis": [
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 18,
+    "y": 9292,
+    "H": 14609,
+    "vid": {
+     "t": 6.52,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage ready",
+     "live": true,
+     "load": "0",
+     "poster": "0"
+    },
+    "drop": {
+     "top": -4248,
+     "h": 2559
+    },
+    "vis": [
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 19,
+    "y": 9809,
+    "H": 14609,
+    "vid": {
+     "t": 0.36,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage ready",
+     "live": true,
+     "load": "0",
+     "poster": "0"
+    },
+    "drop": {
+     "top": -4765,
+     "h": 2559
+    },
+    "vis": [
+     "The waves",
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 20,
+    "y": 10326,
+    "H": 14609,
+    "vid": {
+     "t": 1.21,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage ready",
+     "live": true,
+     "load": "0",
+     "poster": "0"
+    },
+    "drop": {
+     "top": -5282,
+     "h": 2559
+    },
+    "vis": [
+     "The waves",
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 21,
+    "y": 10843,
+    "H": 14609,
+    "vid": {
+     "t": 2.08,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage ready",
+     "live": true,
+     "load": "0",
+     "poster": "0"
+    },
+    "drop": {
+     "top": -5799,
+     "h": 2559
+    },
+    "vis": [
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 22,
+    "y": 11360,
+    "H": 14609,
+    "vid": {
+     "t": 2.92,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage ready",
+     "live": true,
+     "load": "0",
+     "poster": "0"
+    },
+    "drop": {
+     "top": -6316,
+     "h": 2559
+    },
+    "vis": [
+     "What guests say",
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 23,
+    "y": 11878,
+    "H": 14609,
+    "vid": {
+     "t": 3.78,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage ready",
+     "live": true,
+     "load": "0",
+     "poster": "0"
+    },
+    "drop": {
+     "top": -6834,
+     "h": 2559
+    },
+    "vis": [
+     "What guests say",
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 24,
+    "y": 12395,
+    "H": 14609,
+    "vid": {
+     "t": 4.62,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage ready",
+     "live": true,
+     "load": "0",
+     "poster": "0"
+    },
+    "drop": {
+     "top": -7351,
+     "h": 2559
+    },
+    "vis": [
+     "Follow the lodge",
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 25,
+    "y": 12912,
+    "H": 14609,
+    "vid": {
+     "t": 5.47,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage ready",
+     "live": true,
+     "load": "0",
+     "poster": "0"
+    },
+    "drop": {
+     "top": -7868,
+     "h": 2559
+    },
+    "vis": [
+     "Follow the lodge",
+     "Book your week"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 26,
+    "y": 13429,
+    "H": 14609,
+    "vid": {
+     "t": 6.32,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage ready",
+     "live": true,
+     "load": "0",
+     "poster": "0"
+    },
+    "drop": {
+     "top": -8385,
+     "h": 2559
+    },
+    "vis": [
+     "Book your week",
+     "Talk to us",
+     "Getting here"
+    ],
+    "overflowX": false
+   },
+   {
+    "n": 27,
+    "y": 13747,
+    "H": 14609,
+    "vid": {
+     "t": 0.16,
+     "paused": false,
+     "rs": 4,
+     "src": "gs2-hero.p668.webm"
+    },
+    "stage": {
+     "cls": "drop-stage ready",
+     "live": true,
+     "load": "0",
+     "poster": "0"
+    },
+    "drop": {
+     "top": -8703,
+     "h": 2559
+    },
+    "vis": [
+     "Book your week",
+     "Talk to us",
+     "Getting here"
+    ],
+    "overflowX": false
+   }
+  ],
+  "jumps": []
+ }
+}

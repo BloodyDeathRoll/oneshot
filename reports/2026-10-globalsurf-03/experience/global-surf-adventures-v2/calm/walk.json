@@ -1,0 +1,3684 @@
+{
+ "name": "calm",
+ "url": "http://localhost:9711/",
+ "runs": {
+  "phone": {
+   "timeline": [
+    {
+     "at": 500,
+     "actual": 499,
+     "f": "phone-cold-500ms.jpg",
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      }
+     ],
+     "info": {
+      "y": 0,
+      "H": 13098,
+      "fixed": [
+       {
+        "tag": "HEADER",
+        "cls": "hdr",
+        "top": 0,
+        "h": 68,
+        "txt": ""
+       }
+      ],
+      "headings": [
+       "Next set is yours"
+      ]
+     }
+    },
+    {
+     "at": 1500,
+     "actual": 1572,
+     "f": "phone-cold-1500ms.jpg",
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      }
+     ],
+     "info": {
+      "y": 0,
+      "H": 13098,
+      "fixed": [
+       {
+        "tag": "HEADER",
+        "cls": "hdr",
+        "top": 0,
+        "h": 68,
+        "txt": ""
+       }
+      ],
+      "headings": [
+       "Next set is yours"
+      ]
+     }
+    },
+    {
+     "at": 3000,
+     "actual": 3000,
+     "f": "phone-cold-3000ms.jpg",
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 0.1,
+       "paused": false,
+       "ready": 4,
+       "inView": true
+      }
+     ],
+     "info": {
+      "y": 0,
+      "H": 13098,
+      "fixed": [
+       {
+        "tag": "HEADER",
+        "cls": "hdr",
+        "top": 0,
+        "h": 68,
+        "txt": ""
+       }
+      ],
+      "headings": [
+       "Next set is yours"
+      ]
+     }
+    },
+    {
+     "at": 6000,
+     "actual": 6001,
+     "f": "phone-cold-6000ms.jpg",
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 3.1,
+       "paused": false,
+       "ready": 4,
+       "inView": true
+      }
+     ],
+     "info": {
+      "y": 0,
+      "H": 13098,
+      "fixed": [
+       {
+        "tag": "HEADER",
+        "cls": "hdr",
+        "top": 0,
+        "h": 68,
+        "txt": ""
+       }
+      ],
+      "headings": [
+       "Next set is yours"
+      ]
+     }
+    }
+   ],
+   "walk": [
+    {
+     "i": 0,
+     "y": 0,
+     "H": 13098,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "Next set is yours"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 7.65,
+       "paused": false,
+       "ready": 4,
+       "inView": true
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "f": "phone-walk-01.jpg",
+     "y": 506,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "Choose your level"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 0.77,
+       "paused": false,
+       "ready": 4,
+       "inView": true
+      }
+     ]
+    },
+    {
+     "i": 2,
+     "f": "phone-walk-02.jpg",
+     "y": 1012,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Level 1 – Fomies",
+      "Level 2 – Rollers",
+      "Level 3 – Riders"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 1.86,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 3,
+     "f": "phone-walk-03.jpg",
+     "y": 1518,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Level 1 – Fomies",
+      "Level 2 – Rollers",
+      "Level 3 – Riders",
+      "Freestylers – B&B only | from 4 nights"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 2.92,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 4,
+     "f": "phone-walk-04.jpg",
+     "y": 2024,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Freestylers – B&B only | from 4 nights"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 3.99,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 5,
+     "f": "phone-walk-05.jpg",
+     "y": 2530,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "What's included"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 5.05,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 6,
+     "f": "phone-walk-06.jpg",
+     "y": 3036,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 6.12,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 7,
+     "f": "phone-walk-07.jpg",
+     "y": 3542,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 7.2,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 8,
+     "f": "phone-walk-08.jpg",
+     "y": 4048,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "The lodge"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 0.1,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 9,
+     "f": "phone-walk-09.jpg",
+     "y": 4554,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "The lodge"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 1.18,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 10,
+     "f": "phone-walk-10.jpg",
+     "y": 5060,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Our rooms"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 2.25,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 11,
+     "f": "phone-walk-11.jpg",
+     "y": 5566,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Mixed dorm room – 4 beds"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 3.33,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 12,
+     "f": "phone-walk-12.jpg",
+     "y": 6072,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Shared Twin Room – 2 Beds"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 4.38,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 13,
+     "f": "phone-walk-13.jpg",
+     "y": 6578,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Shared Twin Room – 2 Beds"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 5.43,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 14,
+     "f": "phone-walk-14.jpg",
+     "y": 7084,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Deluxe double room"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 6.52,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 15,
+     "f": "phone-walk-15.jpg",
+     "y": 7590,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "The waves"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 7.58,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 16,
+     "f": "phone-walk-16.jpg",
+     "y": 8096,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "The waves"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 0.65,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 17,
+     "f": "phone-walk-17.jpg",
+     "y": 8602,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "What guests say"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 1.71,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 18,
+     "f": "phone-walk-18.jpg",
+     "y": 9108,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "What guests say"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 2.78,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 19,
+     "f": "phone-walk-19.jpg",
+     "y": 9614,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 3.84,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 20,
+     "f": "phone-walk-20.jpg",
+     "y": 10120,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 4.91,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 21,
+     "f": "phone-walk-21.jpg",
+     "y": 10626,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Book the week for your level."
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 5.98,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 22,
+     "f": "phone-walk-22.jpg",
+     "y": 11132,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Follow the lodge"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 7.06,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 23,
+     "f": "phone-walk-23.jpg",
+     "y": 11638,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 0.12,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 24,
+     "f": "phone-walk-24.jpg",
+     "y": 12144,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Talk to us",
+      "Getting here"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 1.2,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 25,
+     "f": "phone-walk-25.jpg",
+     "y": 12522,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Talk to us",
+      "Getting here",
+      "Follow"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-m608.webm",
+       "t": 2.26,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    }
+   ],
+   "errs": [],
+   "loadMs": 6049,
+   "afterLoadVideo": [
+    {
+     "cls": "on",
+     "src": "hero-m608.webm",
+     "t": 5.6,
+     "paused": false,
+     "ready": 4,
+     "inView": true
+    }
+   ],
+   "afterLoadVideo2": [
+    {
+     "cls": "on",
+     "src": "hero-m608.webm",
+     "t": 7.61,
+     "paused": false,
+     "ready": 4,
+     "inView": true
+    }
+   ],
+   "firstLoadReqs": [
+    "/",
+    "https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Kalam:wght@700&display=swap",
+    "/img/hero-poster-m608.webp",
+    "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DaRvzig.woff2",
+    "https://fonts.gstatic.com/s/kalam/v18/YA9Qr0Wd4kDdMtDqHTLMkiQqtbGs.woff2",
+    "/img/level-1.webp",
+    "/img/level-2.webp",
+    "/img/level-3.webp",
+    "/img/freestylers.webp",
+    "/img/breakfast-011-720.webp",
+    "/img/breakfast-021-720.webp",
+    "/img/breakfast-033-720.webp",
+    "/img/breakfast-057-720.webp",
+    "/video/hero-m608.webm"
+   ],
+   "startH": 13098,
+   "reqTotal": 48,
+   "thirdParty": [
+    "localhost:9711",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "rosa.surf",
+    "rosa-data-opal.vercel.app",
+    "server.arcgisonline.com"
+   ]
+  },
+  "laptop": {
+   "timeline": [
+    {
+     "at": 500,
+     "actual": 500,
+     "f": "laptop-cold-500ms.jpg",
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 0.24,
+       "paused": false,
+       "ready": 4,
+       "inView": true
+      }
+     ],
+     "info": {
+      "y": 0,
+      "H": 13200,
+      "fixed": [
+       {
+        "tag": "HEADER",
+        "cls": "hdr",
+        "top": 0,
+        "h": 84,
+        "txt": "Levels Rooms The lodge Contact"
+       }
+      ],
+      "headings": [
+       "Next set is yours"
+      ]
+     }
+    },
+    {
+     "at": 1500,
+     "actual": 1501,
+     "f": "laptop-cold-1500ms.jpg",
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 1.24,
+       "paused": false,
+       "ready": 4,
+       "inView": true
+      }
+     ],
+     "info": {
+      "y": 0,
+      "H": 13200,
+      "fixed": [
+       {
+        "tag": "HEADER",
+        "cls": "hdr",
+        "top": 0,
+        "h": 84,
+        "txt": "Levels Rooms The lodge Contact"
+       }
+      ],
+      "headings": [
+       "Next set is yours"
+      ]
+     }
+    },
+    {
+     "at": 3000,
+     "actual": 2999,
+     "f": "laptop-cold-3000ms.jpg",
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 2.72,
+       "paused": false,
+       "ready": 4,
+       "inView": true
+      }
+     ],
+     "info": {
+      "y": 0,
+      "H": 13200,
+      "fixed": [
+       {
+        "tag": "HEADER",
+        "cls": "hdr",
+        "top": 0,
+        "h": 84,
+        "txt": "Levels Rooms The lodge Contact"
+       }
+      ],
+      "headings": [
+       "Next set is yours"
+      ]
+     }
+    },
+    {
+     "at": 6000,
+     "actual": 6002,
+     "f": "laptop-cold-6000ms.jpg",
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 5.72,
+       "paused": false,
+       "ready": 4,
+       "inView": true
+      }
+     ],
+     "info": {
+      "y": 0,
+      "H": 13200,
+      "fixed": [
+       {
+        "tag": "HEADER",
+        "cls": "hdr",
+        "top": 0,
+        "h": 84,
+        "txt": "Levels Rooms The lodge Contact"
+       }
+      ],
+      "headings": [
+       "Next set is yours"
+      ]
+     }
+    }
+   ],
+   "walk": [
+    {
+     "i": 0,
+     "y": 0,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 84,
+       "txt": "Levels Rooms The lodge Contact"
+      }
+     ],
+     "headings": [
+      "Next set is yours"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 1.29,
+       "paused": false,
+       "ready": 4,
+       "inView": true
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "f": "laptop-walk-01.jpg",
+     "y": 540,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 84,
+       "txt": "Levels Rooms The lodge Contact"
+      }
+     ],
+     "headings": [
+      "Choose your level"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 2.11,
+       "paused": false,
+       "ready": 4,
+       "inView": true
+      }
+     ]
+    },
+    {
+     "i": 2,
+     "f": "laptop-walk-02.jpg",
+     "y": 1080,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [
+      "Level 1 – Fomies",
+      "Level 2 – Rollers",
+      "Level 3 – Riders"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 2.91,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 3,
+     "f": "laptop-walk-03.jpg",
+     "y": 1620,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [
+      "Level 1 – Fomies",
+      "Level 2 – Rollers",
+      "Level 3 – Riders",
+      "Freestylers – B&B only | from 4 nights"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 3.71,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 4,
+     "f": "laptop-walk-04.jpg",
+     "y": 2160,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [
+      "What's included"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 4.51,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 5,
+     "f": "laptop-walk-05.jpg",
+     "y": 2700,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [
+      "What's included"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 5.31,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 6,
+     "f": "laptop-walk-06.jpg",
+     "y": 3240,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 6.11,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 7,
+     "f": "laptop-walk-07.jpg",
+     "y": 3780,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [
+      "The lodge"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 6.91,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 8,
+     "f": "laptop-walk-08.jpg",
+     "y": 4320,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [
+      "The lodge",
+      "Our rooms"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 7.71,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 9,
+     "f": "laptop-walk-09.jpg",
+     "y": 4860,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [
+      "Our rooms"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 0.39,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 10,
+     "f": "laptop-walk-10.jpg",
+     "y": 5400,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [
+      "Mixed dorm room – 4 beds"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 1.19,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 11,
+     "f": "laptop-walk-11.jpg",
+     "y": 5940,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [
+      "Mixed dorm room – 4 beds"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 1.99,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 12,
+     "f": "laptop-walk-12.jpg",
+     "y": 6480,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [
+      "Shared Twin Room – 2 Beds"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 2.79,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 13,
+     "f": "laptop-walk-13.jpg",
+     "y": 7020,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 3.58,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 14,
+     "f": "laptop-walk-14.jpg",
+     "y": 7560,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [
+      "Deluxe double room"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 4.38,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 15,
+     "f": "laptop-walk-15.jpg",
+     "y": 8100,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 5.19,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 16,
+     "f": "laptop-walk-16.jpg",
+     "y": 8640,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [
+      "The waves"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 5.98,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 17,
+     "f": "laptop-walk-17.jpg",
+     "y": 9180,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [
+      "What guests say"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 6.79,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 18,
+     "f": "laptop-walk-18.jpg",
+     "y": 9720,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [
+      "What guests say"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 7.59,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 19,
+     "f": "laptop-walk-19.jpg",
+     "y": 10260,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [
+      "Book the week for your level."
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 0.38,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 20,
+     "f": "laptop-walk-20.jpg",
+     "y": 10800,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [
+      "Book the week for your level."
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 1.18,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 21,
+     "f": "laptop-walk-21.jpg",
+     "y": 11340,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [
+      "Follow the lodge"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 1.97,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 22,
+     "f": "laptop-walk-22.jpg",
+     "y": 11880,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [
+      "Talk to us",
+      "Getting here",
+      "Follow"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 2.78,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 23,
+     "f": "laptop-walk-23.jpg",
+     "y": 12300,
+     "H": 13200,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Levels Rooms The lodge Contact Book now"
+      }
+     ],
+     "headings": [
+      "Talk to us",
+      "Getting here",
+      "Follow"
+     ],
+     "video": [
+      {
+       "cls": "on",
+       "src": "hero-d1728.webm",
+       "t": 3.58,
+       "paused": false,
+       "ready": 4,
+       "inView": false
+      }
+     ]
+    }
+   ],
+   "errs": [],
+   "loadMs": 6025,
+   "afterLoadVideo": [
+    {
+     "cls": "on",
+     "src": "hero-d1728.webm",
+     "t": 7.23,
+     "paused": false,
+     "ready": 4,
+     "inView": true
+    }
+   ],
+   "afterLoadVideo2": [
+    {
+     "cls": "on",
+     "src": "hero-d1728.webm",
+     "t": 1.26,
+     "paused": false,
+     "ready": 4,
+     "inView": true
+    }
+   ],
+   "firstLoadReqs": [
+    "/",
+    "https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Kalam:wght@700&display=swap",
+    "/img/hero-poster-1728.webp",
+    "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DQ.woff2",
+    "https://fonts.gstatic.com/s/kalam/v18/YA9Qr0Wd4kDdMtDqHTLMkiQ.woff2",
+    "/img/level-1.webp",
+    "/img/level-2.webp",
+    "/img/level-3.webp",
+    "/img/freestylers.webp",
+    "/img/breakfast-011-720.webp",
+    "/img/breakfast-021-720.webp",
+    "/img/breakfast-033-720.webp",
+    "/img/breakfast-057-720.webp",
+    "/img/pool-2000.webp",
+    "/video/hero-d1728.webm"
+   ],
+   "startH": 13200,
+   "reqTotal": 40,
+   "thirdParty": [
+    "localhost:9711",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "rosa.surf",
+    "rosa-data-opal.vercel.app",
+    "server.arcgisonline.com"
+   ]
+  },
+  "reduced": {
+   "timeline": [],
+   "walk": [
+    {
+     "i": 0,
+     "y": 0,
+     "H": 13098,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "Next set is yours"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "f": "reduced-walk-01.jpg",
+     "y": 506,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "Choose your level"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 2,
+     "f": "reduced-walk-02.jpg",
+     "y": 1012,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Level 1 – Fomies",
+      "Level 2 – Rollers",
+      "Level 3 – Riders"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 3,
+     "f": "reduced-walk-03.jpg",
+     "y": 1518,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Level 1 – Fomies",
+      "Level 2 – Rollers",
+      "Level 3 – Riders",
+      "Freestylers – B&B only | from 4 nights"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 4,
+     "f": "reduced-walk-04.jpg",
+     "y": 2024,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Freestylers – B&B only | from 4 nights"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 5,
+     "f": "reduced-walk-05.jpg",
+     "y": 2530,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "What's included"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 6,
+     "f": "reduced-walk-06.jpg",
+     "y": 3036,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 7,
+     "f": "reduced-walk-07.jpg",
+     "y": 3542,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 8,
+     "f": "reduced-walk-08.jpg",
+     "y": 4048,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "The lodge"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 9,
+     "f": "reduced-walk-09.jpg",
+     "y": 4554,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "The lodge"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 10,
+     "f": "reduced-walk-10.jpg",
+     "y": 5060,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Our rooms"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 11,
+     "f": "reduced-walk-11.jpg",
+     "y": 5566,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Mixed dorm room – 4 beds"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 12,
+     "f": "reduced-walk-12.jpg",
+     "y": 6072,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Shared Twin Room – 2 Beds"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 13,
+     "f": "reduced-walk-13.jpg",
+     "y": 6578,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Shared Twin Room – 2 Beds"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 14,
+     "f": "reduced-walk-14.jpg",
+     "y": 7084,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Deluxe double room"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 15,
+     "f": "reduced-walk-15.jpg",
+     "y": 7590,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "The waves"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 16,
+     "f": "reduced-walk-16.jpg",
+     "y": 8096,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "The waves"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 17,
+     "f": "reduced-walk-17.jpg",
+     "y": 8602,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "What guests say"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 18,
+     "f": "reduced-walk-18.jpg",
+     "y": 9108,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "What guests say"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 19,
+     "f": "reduced-walk-19.jpg",
+     "y": 9614,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 20,
+     "f": "reduced-walk-20.jpg",
+     "y": 10120,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 21,
+     "f": "reduced-walk-21.jpg",
+     "y": 10626,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Book the week for your level."
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 22,
+     "f": "reduced-walk-22.jpg",
+     "y": 11132,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Follow the lodge"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 23,
+     "f": "reduced-walk-23.jpg",
+     "y": 11638,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 24,
+     "f": "reduced-walk-24.jpg",
+     "y": 12144,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Talk to us",
+      "Getting here"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 25,
+     "f": "reduced-walk-25.jpg",
+     "y": 12522,
+     "H": 13366,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr solid",
+       "top": 0,
+       "h": 72,
+       "txt": "Book now"
+      },
+      {
+       "tag": "DIV",
+       "cls": "bar show",
+       "top": 778,
+       "h": 66,
+       "txt": "From $1,466 pp | 7 nights Book now"
+      }
+     ],
+     "headings": [
+      "Talk to us",
+      "Getting here",
+      "Follow"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    }
+   ],
+   "errs": [],
+   "loadMs": 269,
+   "afterLoadVideo": [
+    {
+     "cls": "",
+     "src": "",
+     "t": 0,
+     "paused": true,
+     "ready": 0,
+     "inView": false
+    }
+   ],
+   "afterLoadVideo2": [
+    {
+     "cls": "",
+     "src": "",
+     "t": 0,
+     "paused": true,
+     "ready": 0,
+     "inView": false
+    }
+   ],
+   "firstLoadReqs": [
+    "/",
+    "https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Kalam:wght@700&display=swap",
+    "/img/hero-poster-m608.webp",
+    "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DaRvzig.woff2",
+    "https://fonts.gstatic.com/s/kalam/v18/YA9Qr0Wd4kDdMtDqHTLMkiQqtbGs.woff2",
+    "/img/level-1.webp",
+    "/img/level-2.webp",
+    "/img/level-3.webp",
+    "/img/freestylers.webp",
+    "/img/breakfast-011-720.webp",
+    "/img/breakfast-021-720.webp",
+    "/img/breakfast-033-720.webp",
+    "/img/breakfast-057-720.webp"
+   ],
+   "startH": 13098,
+   "reqTotal": 47,
+   "thirdParty": [
+    "localhost:9711",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "rosa.surf",
+    "rosa-data-opal.vercel.app",
+    "server.arcgisonline.com"
+   ]
+  },
+  "nojs": {
+   "timeline": [],
+   "walk": [
+    {
+     "i": 0,
+     "y": 0,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "Next set is yours"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "f": "nojs-walk-01.jpg",
+     "y": 506,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "Choose your level"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": true
+      }
+     ]
+    },
+    {
+     "i": 2,
+     "f": "nojs-walk-02.jpg",
+     "y": 1012,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "Level 1 – Fomies",
+      "Level 2 – Rollers",
+      "Level 3 – Riders"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 3,
+     "f": "nojs-walk-03.jpg",
+     "y": 1518,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "Level 1 – Fomies",
+      "Level 2 – Rollers",
+      "Level 3 – Riders",
+      "Freestylers – B&B only | from 4 nights"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 4,
+     "f": "nojs-walk-04.jpg",
+     "y": 2024,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "Freestylers – B&B only | from 4 nights",
+      "What's included"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 5,
+     "f": "nojs-walk-05.jpg",
+     "y": 2530,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "What's included"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 6,
+     "f": "nojs-walk-06.jpg",
+     "y": 3036,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 7,
+     "f": "nojs-walk-07.jpg",
+     "y": 3542,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 8,
+     "f": "nojs-walk-08.jpg",
+     "y": 4048,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "The lodge"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 9,
+     "f": "nojs-walk-09.jpg",
+     "y": 4554,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "The lodge"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 10,
+     "f": "nojs-walk-10.jpg",
+     "y": 5060,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "Our rooms",
+      "Mixed dorm room – 4 beds"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 11,
+     "f": "nojs-walk-11.jpg",
+     "y": 5566,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "Mixed dorm room – 4 beds"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 12,
+     "f": "nojs-walk-12.jpg",
+     "y": 6072,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "Shared Twin Room – 2 Beds"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 13,
+     "f": "nojs-walk-13.jpg",
+     "y": 6578,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "Shared Twin Room – 2 Beds",
+      "Deluxe double room"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 14,
+     "f": "nojs-walk-14.jpg",
+     "y": 7084,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "Deluxe double room"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 15,
+     "f": "nojs-walk-15.jpg",
+     "y": 7590,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "The waves"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 16,
+     "f": "nojs-walk-16.jpg",
+     "y": 8096,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "The waves"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 17,
+     "f": "nojs-walk-17.jpg",
+     "y": 8602,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "What guests say"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 18,
+     "f": "nojs-walk-18.jpg",
+     "y": 9108,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "What guests say"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 19,
+     "f": "nojs-walk-19.jpg",
+     "y": 9614,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 20,
+     "f": "nojs-walk-20.jpg",
+     "y": 10120,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "Book the week for your level."
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 21,
+     "f": "nojs-walk-21.jpg",
+     "y": 10626,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "Book the week for your level.",
+      "Follow the lodge"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 22,
+     "f": "nojs-walk-22.jpg",
+     "y": 11132,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "Follow the lodge"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 23,
+     "f": "nojs-walk-23.jpg",
+     "y": 11638,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "Talk to us"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 24,
+     "f": "nojs-walk-24.jpg",
+     "y": 12144,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "Talk to us",
+      "Getting here",
+      "Follow"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    },
+    {
+     "i": 25,
+     "f": "nojs-walk-25.jpg",
+     "y": 12354,
+     "H": 13198,
+     "fixed": [
+      {
+       "tag": "HEADER",
+       "cls": "hdr",
+       "top": 0,
+       "h": 68,
+       "txt": ""
+      }
+     ],
+     "headings": [
+      "Talk to us",
+      "Getting here",
+      "Follow"
+     ],
+     "video": [
+      {
+       "cls": "",
+       "src": "",
+       "t": 0,
+       "paused": true,
+       "ready": 0,
+       "inView": false
+      }
+     ]
+    }
+   ],
+   "errs": [],
+   "loadMs": 148,
+   "afterLoadVideo": [
+    {
+     "cls": "",
+     "src": "",
+     "t": 0,
+     "paused": true,
+     "ready": 0,
+     "inView": true
+    }
+   ],
+   "afterLoadVideo2": [
+    {
+     "cls": "",
+     "src": "",
+     "t": 0,
+     "paused": true,
+     "ready": 0,
+     "inView": true
+    }
+   ],
+   "firstLoadReqs": [
+    "/",
+    "https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Kalam:wght@700&display=swap",
+    "/img/hero-poster-m608.webp",
+    "/img/level-1.webp",
+    "/img/level-2.webp",
+    "/img/level-3.webp",
+    "/img/freestylers.webp",
+    "/img/breakfast-011-720.webp",
+    "/img/breakfast-021-720.webp",
+    "/img/breakfast-033-720.webp",
+    "/img/breakfast-057-720.webp",
+    "/img/pool-m.webp",
+    "/img/room-063-720.webp",
+    "/img/room-078-720.webp",
+    "/img/room-095-720.webp",
+    "/img/room-042-720.webp",
+    "/img/room-050-720.webp",
+    "/img/room-064-720.webp",
+    "/img/room-080-720.webp",
+    "/img/room-084-720.webp",
+    "/img/room-083-720.webp",
+    "/img/room-069-720.webp",
+    "/img/room-079-720.webp",
+    "/img/room-081-720.webp",
+    "/img/room-082-720.webp",
+    "/img/room-041-720.webp",
+    "/img/room-043-720.webp",
+    "/img/room-044-720.webp",
+    "/img/room-071-720.webp",
+    "/img/waves-m.webp",
+    "/img/sunset-m.webp",
+    "/img/dinner.webp",
+    "/img/ig-024.webp",
+    "/img/ig-090.webp",
+    "/img/ig-055.webp",
+    "/img/ig-087.webp",
+    "/img/ig-118.webp",
+    "/img/ig-016.webp"
+   ],
+   "startH": 13198,
+   "reqTotal": 40,
+   "thirdParty": [
+    "localhost:9711",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com"
+   ]
+  }
+ }
+}

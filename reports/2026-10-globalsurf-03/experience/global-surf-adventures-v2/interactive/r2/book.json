@@ -1,0 +1,76 @@
+{
+ "taps": 7,
+ "handoff": "https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers?start=2026-12-19&male=1&end=2026-12-26",
+ "log": [
+  {
+   "n": 0,
+   "label": "start",
+   "f": "book-00.jpg",
+   "url": "http://localhost:9752/",
+   "foot": [
+    "From $1,466 pp | 7 nights Book now"
+   ]
+  },
+  {
+   "n": 1,
+   "label": "hero CTA",
+   "f": "book-01.jpg",
+   "url": "http://localhost:9752/book/",
+   "foot": [
+    "Per person $1,466 Next"
+   ]
+  },
+  {
+   "n": 2,
+   "label": "Level 2",
+   "f": "book-02.jpg",
+   "url": "http://localhost:9752/book/",
+   "foot": [
+    "Per person $1,466 Next"
+   ]
+  },
+  {
+   "n": 3,
+   "label": "Twin",
+   "f": "book-03.jpg",
+   "url": "http://localhost:9752/book/",
+   "foot": [
+    "Per person $1,606 Next"
+   ]
+  },
+  {
+   "n": 4,
+   "label": "Sat 19 Dec chip",
+   "f": "book-04.jpg",
+   "url": "http://localhost:9752/book/",
+   "foot": [
+    "Per person $1,606 Next"
+   ]
+  },
+  {
+   "n": 5,
+   "label": "+1 man",
+   "f": "book-05.jpg",
+   "url": "http://localhost:9752/book/",
+   "foot": [
+    "Total for 1 guest $1,606 Next"
+   ]
+  },
+  {
+   "n": 6,
+   "label": "Next",
+   "f": "book-06.jpg",
+   "url": "http://localhost:9752/book/",
+   "foot": [
+    "Total for 1 guest $1,606 Continue booking"
+   ]
+  },
+  {
+   "n": 7,
+   "label": "Continue booking",
+   "f": "book-07.jpg",
+   "url": "chrome-error://chromewebdata/",
+   "foot": []
+  }
+ ]
+}

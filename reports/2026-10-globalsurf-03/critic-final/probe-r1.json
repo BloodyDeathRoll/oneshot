@@ -1,0 +1,296 @@
+{
+ "phone": {
+  "fcp_ms": 112,
+  "hero_video_request": {
+   "url": "video/gs2-hero.p668.webm",
+   "after_nav_ms": 117
+  },
+  "load_third_party": [],
+  "cls_load": 0,
+  "scroll_third_party": [
+   {
+    "host": "rosa-data-opal.vercel.app",
+    "path": "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+    "frame": "main",
+    "type": "fetch"
+   },
+   {
+    "host": "rosa.surf",
+    "path": "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+    "frame": "sub",
+    "type": "document"
+   },
+   {
+    "host": "fonts.googleapis.com",
+    "path": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+    "frame": "sub",
+    "type": "stylesheet"
+   },
+   {
+    "host": "rosa-data-opal.vercel.app",
+    "path": "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+    "frame": "sub",
+    "type": "fetch"
+   },
+   {
+    "host": "rosa.surf",
+    "path": "https://rosa.surf/favicon.svg",
+    "frame": "sub",
+    "type": "image"
+   },
+   {
+    "host": "fonts.gstatic.com",
+    "path": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+    "frame": "sub",
+    "type": "font"
+   },
+   {
+    "host": "server.arcgisonline.com",
+    "path": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+    "frame": "sub",
+    "type": "image"
+   },
+   {
+    "host": "server.arcgisonline.com",
+    "path": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924",
+    "frame": "sub",
+    "type": "image"
+   }
+  ],
+  "cls_after_full_scroll": 0,
+  "shifts": [],
+  "overflow_x": 0,
+  "page_height": 14609,
+  "video_requests_total": [
+   "video/gs2-hero.p668.webm",
+   "video/gs2-level-1.d1920.webm",
+   "video/gs2-level-2.m1280.webm",
+   "video/gs2-level-3.m1280.webm"
+  ],
+  "rosa": {
+   "iframe": "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "iframeBox": [
+    350,
+    500
+   ],
+   "fcnowVisible": true,
+   "fcnowText": "0.5–0.8 m\nWaist-high\n7 s\nSwell from the S\n12 km/h\nWind from the WSW, cross-shore\n\nSouth Point, Sat 17 Oct, 14:30",
+   "fclinkVisible": false
+  },
+  "small_targets": [],
+  "axe_home": [
+   {
+    "id": "color-contrast",
+    "impact": "serious",
+    "n": 2,
+    "nodes": [
+     "#tab-twin ::   Element has insufficient color contrast of 3.6 (foreground color: #778a90, background color: #ffffff, font size: 16.5pt (22px), font weight: normal). Expected contrast ratio of 4.5:1",
+     "#tab-double ::   Element has insufficient color contrast of 3.6 (foreground color: #778a90, background color: #ffffff, font size: 16.5pt (22px), font weight: normal). Expected contrast ratio of 4.5:1"
+    ]
+   }
+  ],
+  "axe_book": [],
+  "overflow_x_book": 0
+ },
+ "desktop": {
+  "fcp_ms": 100,
+  "hero_video_request": {
+   "url": "video/gs2-hero.d1920.webm",
+   "after_nav_ms": 60
+  },
+  "load_third_party": [],
+  "cls_load": 0,
+  "scroll_third_party": [
+   {
+    "host": "rosa-data-opal.vercel.app",
+    "path": "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+    "frame": "main",
+    "type": "fetch"
+   },
+   {
+    "host": "rosa.surf",
+    "path": "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+    "frame": "sub",
+    "type": "document"
+   },
+   {
+    "host": "fonts.googleapis.com",
+    "path": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+    "frame": "sub",
+    "type": "stylesheet"
+   },
+   {
+    "host": "rosa-data-opal.vercel.app",
+    "path": "https://rosa-data-opal.vercel.app/data/spots/south-point.json",
+    "frame": "sub",
+    "type": "fetch"
+   },
+   {
+    "host": "rosa.surf",
+    "path": "https://rosa.surf/favicon.svg",
+    "frame": "sub",
+    "type": "image"
+   },
+   {
+    "host": "fonts.gstatic.com",
+    "path": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+    "frame": "sub",
+    "type": "font"
+   },
+   {
+    "host": "server.arcgisonline.com",
+    "path": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+    "frame": "sub",
+    "type": "image"
+   },
+   {
+    "host": "server.arcgisonline.com",
+    "path": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924",
+    "frame": "sub",
+    "type": "image"
+   }
+  ],
+  "cls_after_full_scroll": 0.0001903935185185185,
+  "shifts": [
+   {
+    "v": 0.0002,
+    "y": 1260,
+    "src": [
+     "NAV.nav",
+     "A.",
+     "A.",
+     "A.",
+     "A."
+    ]
+   }
+  ],
+  "overflow_x": 0,
+  "page_height": 13062,
+  "video_requests_total": [
+   "video/gs2-hero.d1920.webm",
+   "video/gs2-level-2.m1280.webm",
+   "video/gs2-level-3.m1280.webm"
+  ],
+  "rosa": {
+   "iframe": "https://rosa.surf/widget/?spot=south-point&theme=light&units=metric",
+   "iframeBox": [
+    420,
+    500
+   ],
+   "fcnowVisible": true,
+   "fcnowText": "0.5–0.8 m\nWaist-high\n7 s\nSwell from the S\n12 km/h\nWind from the WSW, cross-shore\n\nSouth Point, Sat 17 Oct, 14:30",
+   "fclinkVisible": false
+  },
+  "small_targets": [],
+  "axe_home": [],
+  "axe_book": [],
+  "overflow_x_book": 0
+ },
+ "reduced_motion": {
+  "video_requests": 0,
+  "playing_videos": 0,
+  "drop_static": "drop",
+  "images_visible": 34
+ },
+ "save_data": {
+  "video_requests": 0,
+  "playing_videos": 0,
+  "drop_static": "drop",
+  "images_visible": 34
+ },
+ "js_off": {
+  "home": {
+   "text_len": 6095,
+   "hero_cta": [
+    "book/",
+    "Book now"
+   ],
+   "rosa_link_visible": true,
+   "rosa_text": "South Point\n\nSee today's forecast for South Point on Rosa\n\nOpen Rosa",
+   "visible_videos": 0,
+   "imgs_visible": 38,
+   "drawer_visible": false
+  },
+  "book": {
+   "action": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+   "method": "get",
+   "fields": [
+    "start=2026-10-24",
+    "duration=8*",
+    "duration=15",
+    "duration=22",
+    "duration=29",
+    "end=",
+    "female=1",
+    "male=0",
+    "couple=0"
+   ],
+   "submits": [
+    "Continue booking formaction=null",
+    "Continue booking: Level 1 formaction=https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies",
+    "Continue booking: Level 2 formaction=https://globalsurfadventures.bookinglayer.com/en/product/level-2-rollers",
+    "Continue booking: Level 3 formaction=https://globalsurfadventures.bookinglayer.com/en/product/level-3-riders"
+   ]
+  },
+  "submit_lands": null,
+  "third_party": []
+ },
+ "rosa_blocked": {
+  "fclink_visible": true,
+  "iframe": false,
+  "widget_text": "South Point\n\nSee today's forecast for South Point on Rosa\n\nOpen Rosa",
+  "widget_box": [
+   350,
+   500
+  ]
+ },
+ "walk": {
+  "taps_hero_to_engine": 2,
+  "steps": [
+   "hero CTA \"Book package now\" at y=451 h=52",
+   "after tap: {\"url\":\"/book/\",\"focus\":\"Close booking\",\"drawerOpen\":true,\"checked\":[\"lvl=level-1-fomies\",\"room=dorm\",\"duration=8\"],\"submit\":[\"Continue booking\"],\"stepper\":[\"Remove a woman\",\"Add a woman\",\"Remove a man\",\"Add a man\",\"Remove a couple\",\"Add a couple\"],\"totals\":[\"$1,466\",\"$1,466\",\"$1,466\",\"$140\",\"$418\",\"$1,466\"]}",
+   "submit tapped; engine hand-off https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies?start=2026-10-24&end=2026-10-31&female=1&male=0&couple=0"
+  ],
+  "landed": "https://globalsurfadventures.bookinglayer.com/en/product/level-1-fomies?start=2026-10-24&end=2026-10-31&female=1&male=0&couple=0"
+ },
+ "drawer_desktop": {
+  "open": {
+   "url": "/book/",
+   "focus": "Close booking",
+   "checked": [
+    "lvl=level-2-rollers",
+    "room=dorm",
+    "duration=8"
+   ]
+  },
+  "tabs_out_of_drawer_of_40": 0,
+  "distinct_stops": 13,
+  "closed": {
+   "url": "/",
+   "focus": "Choose Level 2",
+   "level": "level-2-rollers"
+  },
+  "afterBack": {
+   "url": "/",
+   "open": "js drop-live "
+  }
+ },
+ "menu_phone": {
+  "tabs_out_of_sheet_of_25": 0,
+  "focus_after_esc": "menub"
+ },
+ "kbd_desktop": {
+  "stops": 58,
+  "first": "A Skip to the surf weeks",
+  "hidden": [],
+  "no_ring": [],
+  "no_name": []
+ },
+ "kbd_phone": {
+  "stops": 56,
+  "first": "A Skip to the surf weeks",
+  "hidden": [],
+  "no_ring": [],
+  "no_name": []
+ }
+}

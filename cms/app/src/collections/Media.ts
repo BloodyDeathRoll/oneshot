@@ -50,6 +50,8 @@ export const Media: CollectionConfig = {
     mimeTypes: [...IMAGE_MIME_TYPES, ...VIDEO_MIME_TYPES],
     // keep one original; Astro produces the responsive variants at build time
     imageSizes: [],
+    // schema v0.10: the owner sets a photo's point of interest by clicking it; templates align motion on it
+    focalPoint: true,
     // a video has no image thumbnail; the admin falls back to its file icon
     adminThumbnail: ({ doc }) =>
       typeof doc?.mimeType === 'string' && doc.mimeType.startsWith('video/') ? null : (doc?.url as string) || null,
