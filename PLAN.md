@@ -84,6 +84,9 @@ oneshot/
 run_id: 2026-09-ahangama-02        # = the file name
 operator: shahar                   # team.json id; only this operator's sessions run it
 status: active                     # active | closed
+market: lk                         # markets/<id>/ pack (default lk)
+vertical: surf                     # verticals/<id>/ pack (default surf)
+engagement: outbound               # outbound (default) | inbound — §4 "Inbound engagement"
 area:
   mode: business                 # town | stretch | business
   # town:     one anchor (a town or beach) + shore_buffer_m along its coast
@@ -111,6 +114,8 @@ agents:                          # pinned versions for reproducibility
 ```
 
 Several runs may be active at once; one active run per operator is the norm, and an operator with two picks one per session with `ONESHOT_RUN=<run_id>`. `node tools/run.mjs` prints the session's run, `node tools/run.mjs list` all of them. Closing a run = `status: closed`; the file stays. In agent prompts, `playbook.md`, `rubric.md` and the schemas, "`run.yaml`" means the session's run file: `tools/prompt.mjs` loads it as the `run.yaml` layer and names the file.
+
+**Workflows and packs** (proposal 2026-09-globalsurf-02/004, approved 2026-10-17). A workflow is a *market* × a *vertical* × an *engagement*. The run file names one of each; a file without them is `lk` / `surf` / `outbound`, which every run before packs was. A pack is a folder: `markets/<id>/` (`market.md` language, script direction, currency, domains, pitch language; `sources.md` where the scout looks; `pricing.json` the price list) and `verticals/<id>/` (`taxonomy.md` what is in scope; `business-types.md` the type registry; later `references.md`, `playbook.md`, Shahar's `custom.md`). Agents load pack files as layers named `market/<file>` and `vertical/<file>` (`agents/wiring.json`), resolved through the run like `run.yaml`; `tools/check-wiring.mjs` fails a run whose pack does not exist. A one-off is a pack used by one run. Run file names for new runs: `runs/<yyyy-mm>-<market>-<vertical>-NN.yaml`.
 
 Scout geocodes the anchors and builds the area polygon: `town` = the anchor's coast buffered by `shore_buffer_m`; `stretch` = the OSM coastline between the two anchors buffered by `shore_buffer_m`; `business` = a circle of `radius_m` around the one anchor. Only businesses whose location falls inside the polygon are kept.
 
@@ -141,6 +146,25 @@ Each business moves through these stations. The orchestrator owns the order, ret
 | 8 | Deliver | deployer | `outcome:sale` + the client's product choice (`product_chosen` line with `hosting_mode`) | the adapter for that mode (§5): `managed` — CMS tenant + seed + publish + domain + owner login + verify; `self_hosted_docker` — install, verify, handoff, revoke; `static_only` — build + zip. Then `check`, the post-CMS acceptance suite (`node tools/site-check.mjs <slug> --full`, 2026-10-05): pages, assets, booking hand-off (never sent to the engine), forecast, video, playbook §4 budgets, SEO plumbing, and with a CMS its health, parity, the owner path and tenant isolation; report in `sites/<slug>/site-check.json`. The same suite runs for every tenant after any CMS server upgrade, and its smoke subset runs every 6 h on every live site (`.github/workflows/site-monitor.yml`; a failed run is the alert). The CMS, and any CMS server upgrade it needs, is implemented here and never earlier | **Before it: the client's product choice, recorded by a human** |
 | ∞ | Learn | critic | reports, mockup picks, pitch outcomes | `proposals/<run>/` diffs to prompts/tools/playbook/rubric | **Human approves diffs** → merge, bump, CHANGELOG |
 
+### Inbound engagement (`engagement: inbound`, proposal 2026-09-globalsurf-02/004)
+
+A known client who has agreed and says what they want. No Scout, no shortlist; `mode: live`. One business per run.
+
+| # | Station | Agent | Input | Output | Gate |
+|---|---|---|---|---|---|
+| 1 | Brief | human | the client's words | `brief/<slug>/brief.md`: goals, must-haves, dislikes, references they like, languages, deadline, budget band; ledger `briefed` | — |
+| 2a | Plan research | analyst (planner) | brief, run file, packs | `dossier/<slug>/industry/plan.md`: the research lanes; ledger `planned` | **a′. Human approves the lanes** (`planned → lanes_approved`) |
+| 2b | Research | analyst (researchers, skeptic, merger) | approved plan | `dossier/<slug>/industry/`: `lane-<x>.md` per lane, `skeptic.md`, `industry.md`; then `dossier/<slug>/direction.md` (the brief read back, positioning, audience, what the site must do, archetype hints, questions for the client); ledger `researched` | **b′. Human, with the client, confirms the direction** (`researched → aligned`) |
+| 3 | Harvest | harvester | brief, direction, client-supplied assets | `dossier/<slug>/dossier.json` as outbound; source kind `client` for what the owner handed us | — |
+| 3b–4f | Audit … pre-score | as outbound | plus `direction.md` and the vertical pack | as outbound; copy per language in the run file | **c. Shahar picks what the client sees** |
+| 4g–6 | Build … preview | as outbound | as outbound | as outbound | — |
+| 7 | Proposal | writer | brief, direction, preview, old vs new | proposal page on `<brand>-proposal.os1.workers.dev`: the brief, then each ask and where on the site it is answered; the three hosting modes, **no price**, managed recommended. **No outreach message** | **d. Human sends** |
+| 8 | Sale, product choice, deliver | as outbound | as outbound | as outbound | **e. Client chooses the mode** |
+
+Gate c, inbound (Shahar, 2026-10-17): Shahar picks what the client sees — one mockup, or two or three, or he asks for another series of three and picks from those. The `picked` note names the variant(s) kept. With more than one kept, the build waits: a second human `picked → picked` line names the one to build once the client has chosen. Another series is a human line `mocked → copy_passed` (note `new series: <why>`); 4d and 4e run again and the earlier series stays on disk.
+
+Ledger states, inbound: `briefed → planned → lanes_approved → researched → aligned → harvested → audited → …` identical to outbound from `harvested`. `briefed`, `lanes_approved` and `aligned` are human lines; `briefed` has `from_state: null`.
+
 ### Ledger states
 `discovered → scored → shortlisted → approved → harvested → audited → copy_drafted → copy_humanised → copy_passed | copy_failed → concepted → mocked → picked → built → optimised → ai_optimised → critiqued(n) → passed | failed → previewed → packaged → pitched → outcome:{reply,meeting,sale,ignored}`
 
@@ -159,8 +183,16 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 ### orchestrator
 - Reads the session's run file (`node tools/run.mjs`), walks each of that run's businesses through §4 in order, one at a time. Never touches another run's businesses.
 - Enforces budgets, retries (max 2 per station), stops at human gates, never runs past a gate unattended.
+- Reads `engagement`: an inbound run starts at `briefed`, skips Scout and gate a, runs the analyst for 2a–2b and stops at gates a′ and b′.
 - Writes ledger entries; resumable from any state after a crash.
 - Tools: Claude Code headless, `scripts/`.
+
+### analyst (stations 2a–2b, inbound only; proposal 2026-09-globalsurf-02/004)
+- One agent, four roles in `base.md`: **planner** (reads the brief, proposes lanes, stops at gate a′), **researchers** (one per lane, in parallel; each claim `C-<lane>-NN` carries evidence, source, date, confidence and what would change its mind), **skeptic** (rules SURVIVES / WEAKENED / KILLED on every claim with five attack passes; may reopen one lane once), **merger** (`industry.md` from survivors only, then `direction.md` for gate b′).
+- Default lanes: the industry and how it makes money; sites in this space and what converts; key players and their sites; the client's current position; the audience and what it searches for.
+- When the run's vertical has no content yet, the merger drafts `verticals/<id>/taxonomy.md`, `business-types.md` and `references.md` as a proposal under `proposals/<run-id>/`; Shahar approves.
+- The copyeditor may mark copy `sourced` against a surviving claim ID.
+- Never edits a lane file to fix a contract violation; sends it back to the lane.
 
 ### scout
 - Discovery sources: Google Places/Maps, OpenStreetMap, Instagram/Facebook pages, TripAdvisor, local directories.
@@ -287,6 +319,7 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 - The pitch presents the products **for the client to choose** and states the trade honestly: **managed** (recommended; monthly fee, we host it, they edit it, we keep it alive — hosting, updates, backups are ours) · **self-hosted on their own VPS** (one-time fee, fully theirs, ~$6–12/mo to their host, they carry updates and backups) · **static only** (the finished site as files, no CMS; edits need a developer). The choice comes back after a sale and is logged as `product_chosen` (gate e).
 - Preview URL from the ledger's `previewed` line (`deploy.json` exists only after station 8).
 - Outreach message in English (always, whatever the owner's language — Shahar, 2026-10-05), short, with the preview (`*.workers.dev`) link.
+- Inbound (`engagement: inbound`): input adds `brief.md` and `direction.md`; the page opens with the brief and shows each ask answered and where; hosting modes with **no price**; no outreach message.
 
 ---
 

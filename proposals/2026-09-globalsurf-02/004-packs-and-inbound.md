@@ -153,3 +153,9 @@ The two-layer prompt rule. The gates listed today, plus a′ and b′ for inboun
 - **Pack granularity:** one `brand_design` vertical, for the current one-off client. Widen it only if more clients fit this workflow.
 - **Mockup pick (gate c):** Shahar picks what the client sees, not the client. He keeps one mockup, or two or three, or asks for another series of three and picks from those. The gate line is `agent: "human"` as today.
 - **Price on the proposal page:** none for the inbound one-off; the writer leaves fees out. Outbound Sri Lanka prices are a suggestion in `docs/pricing.lk.json`, shown on the dashboard's Pricing tab, and stay out of pitches until decided.
+
+## 7. As applied (2026-10-17)
+
+- **Inbound states corrected.** §2 put gate a′ (approve the lanes) at `researched`, after the research it approves. Applied as `briefed → planned → lanes_approved → researched → aligned`: `planned` = the planner's lanes, waiting for a′; `researched` = `industry.md` + `direction.md`, waiting for b′.
+- **Gate c with more than one mockup kept:** a second human `picked → picked` line names the one to build; another series is a human `mocked → copy_passed` line.
+- **Pack layers** are named `market/<file>` and `vertical/<file>` in prompts and `wiring.json`, resolved through the run like `run.yaml`.
