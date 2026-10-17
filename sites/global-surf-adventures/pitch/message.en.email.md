@@ -14,7 +14,7 @@ What's in it:
 - WhatsApp on a large button, with a message already written for the guest with what they chose.
 - Your Booking.com rating and nine guest reviews, word for word.
 
-All the details, before and after, are on the proposal page: [LINK TO THE PROPOSAL PAGE]
+All the details, before and after, are on the proposal page: https://global-surf-lodge-kabalana-proposal.os1.workers.dev
 
 It can run in two ways, your choice. The one we recommend: we host the site and keep it running (hosting, updates and backups are on us), and you pay a monthly fee and update the texts, photos, prices and contact details yourselves. The second option: we install the same site and the same editor on a server of your own for a one-time fee. It is entirely yours; you pay the server company roughly $6–12 a month, and updates and backups are on you. We'll agree the prices together.
 
