@@ -57,6 +57,10 @@ main{min-width:0;padding:0 24px 48px}
 .top h1{font-size:28px;font-weight:700;letter-spacing:-.015em;line-height:1;outline-offset:6px}
 .top .sub{font-size:13px;color:var(--ink3);margin-left:14px;font-weight:500}
 .controls{display:flex;gap:12px;align-items:center}
+.wf-chips{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto;margin-right:12px}
+.wf-chips button{font:inherit;font-size:14px;font-weight:600;height:36px;padding:0 14px;border-radius:999px;border:0;background:var(--card);box-shadow:var(--shadow);color:var(--ink2);cursor:pointer}
+.wf-chips button[aria-pressed=true]{background:var(--acc);color:#fff}
+.wf-chips button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 .psel{position:relative;display:inline-flex;align-items:center;background:var(--card);border-radius:999px;box-shadow:var(--shadow);height:40px;padding:0 14px;gap:8px;font-size:14px;font-weight:500;color:var(--ink2)}
 .psel svg.ic{width:16px;height:16px;flex:none}
 .psel select{appearance:none;-webkit-appearance:none;border:0;background:transparent;padding:0 22px 0 0;height:40px;font-weight:600;color:var(--ink);cursor:pointer;max-width:260px}
@@ -652,6 +656,7 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 <main id="main">
   <header class="top">
     <div style="display:flex;align-items:baseline"><h1 id="title" tabindex="-1">Overview</h1><span class="sub" id="title-sub"></span></div>
+    <div class="wf-chips" id="wf-chips" role="group" aria-label="Workflow" hidden></div>
     <div class="controls" id="controls">
       <label class="psel"><span class="sr">Run</span>
         <svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4h12M2 8h8M2 12h10"/></svg>
@@ -794,7 +799,18 @@ function prNote(j){
 const sv=(tag,attrs={},...kids)=>{const e=document.createElementNS(SVGNS,tag);for(const[k,v]of Object.entries(attrs)){if(k==='text')e.textContent=v;else if(v!=null)e.setAttribute(k,v)}for(const k of kids)if(k)e.append(k);return e};
 const fmt=n=>Number.isInteger(n)?String(n):n.toFixed(1);
 const bizMap=new Map();
-function setData(d){D=d;bizMap.clear();for(const b of D.businesses)if(!bizMap.has(b.slug))bizMap.set(b.slug,b.name);/* newest run first */bizMap.set('dashboard','Dashboard');bizMap.set('-','Project')}
+// Workflow chips (proposal 004): RAW is the whole file; D is RAW scoped to the chosen workflow
+// (market × vertical). Needs you stays global (needsItems reads RAW). WF null = "All".
+let RAW,WF;
+const multiWf=()=>(RAW.workflows||[]).length>1;
+const wfLabel=id=>{const w=(RAW.workflows||[]).find(x=>x.id===id);return w?`${w.market.toUpperCase()} · ${w.vertical.replace(/_/g,' ')}`:id||''};
+function scoped(d){
+  if(!WF||!(d.workflows||[]).some(w=>w.id===WF))return d;
+  const runWf=new Map(d.runs.map(r=>[r.run_id,r.workflow])),inWf=x=>runWf.get(x.run_id)===WF;
+  const w=d.workflows.find(x=>x.id===WF);
+  return {...d,businesses:d.businesses.filter(b=>b.workflow===WF),prospects:(d.prospects||[]).filter(inWf),runs:d.runs.filter(r=>r.workflow===WF),decisions:(d.decisions||[]).filter(inWf),kpis:w.kpis,funnel:w.kpis.funnel};
+}
+function setData(d){RAW=d;if(WF===undefined)WF=multiWf()?(d.run.workflow||null):null;D=scoped(d);bizMap.clear();for(const b of RAW.businesses)if(!bizMap.has(b.slug))bizMap.set(b.slug,b.name);/* newest run first */bizMap.set('dashboard','Dashboard');bizMap.set('-','Project')}
 setData(D);
 const bizName=s=>bizMap.get(s)||s||'—';
 const shortName=s=>bizName(s).replace(' Surf Ahangama','').replace(' Surf Hostel','').replace('The ','');
@@ -849,13 +865,20 @@ const runSel=$('#run');
 function renderRunSel(){runSel.innerHTML='';runSel.append(el('option',{value:'all',text:'All runs'}));for(const r of D.runs)runSel.append(el('option',{value:r.run_id,text:`${runShort(r.run_id)}${r.active?` · active · ${r.operator?opName(r.operator):'no operator'}`:r.status==='closed'?' · closed':/^test-/.test(r.run_id)?' · test':' · superseded'}`}));if(state.run!=='all'&&!D.runs.find(r=>r.run_id===state.run))state.run='all';runSel.value=state.run}
 renderRunSel();runSel.onchange=()=>{state.run=runSel.value;render()};
 
+function renderChips(){
+  const box=$('#wf-chips');box.innerHTML='';box.hidden=!multiWf()||state.view==='needs';if(box.hidden)return;
+  for(const[id,txt]of[[null,'All'],...RAW.workflows.map(w=>[w.id,wfLabel(w.id)])]){
+    const b=el('button',{type:'button','aria-pressed':String(WF===id),text:txt});
+    b.onclick=()=>{WF=id;D=scoped(RAW);if(state.run!=='all'&&!D.runs.find(r=>r.run_id===state.run))state.run='all';render()};box.append(b);
+  }
+}
 function renderChrome(){
   const f=$('#side-foot');f.innerHTML='';
   f.append(
     el('div',{html:`<b>${runShort(D.run.run_id)}</b> · ${D.run.mode} mode${D.run.operator?` · ${opName(D.run.operator)}`:''}`}),
     el('div',{text:(D.run.anchors[0]??'').split(',').slice(0,2).join(',')}),
     el('div',{text:`Data ${tShort(D.generated_at)} UTC${LIVE?' · live':''}${D.sync?.origin_main?` · main ${D.sync.origin_main.slice(0,7)}`:''}`}),
-    D.runs.filter(r=>r.active).length>1?el('div',{text:`${D.runs.filter(r=>r.active).length} active runs: ${D.runs.filter(r=>r.active).map(r=>`${runShort(r.run_id)} (${opName(r.operator)})`).join(', ')}`}):'',
+    RAW.runs.filter(r=>r.active).length>1?el('div',{text:`${RAW.runs.filter(r=>r.active).length} active runs: ${RAW.runs.filter(r=>r.active).map(r=>`${runShort(r.run_id)} (${opName(r.operator)}${r.market?`, ${r.market} × ${r.vertical}${r.engagement==='inbound'?', inbound':''}`:''})`).join(', ')}`}):'',
     el('div',{text:`${D.totals.ledger_lines} ledger lines · ${D.totals.human_decisions} decisions`})
   );
   $('#badge-needs').textContent=needsItems().length;
@@ -872,7 +895,7 @@ let lastHash='';
 addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(h!==lastHash){const p=h.split('/');go(p[0]||'overview',p[1])}});
 function go(view,focus){
   if(!TITLES[view])view='overview';
-  state.view=view;
+  state.view=view;renderChips();
   lastHash=view+(focus?'/'+focus:'');
   if(location.hash.slice(1)!==lastHash)location.hash=lastHash;
   document.querySelectorAll('.nav button').forEach(b=>{const cur=b.dataset.view===view&&!b.dataset.focus;if(cur)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});
@@ -1332,12 +1355,13 @@ function statusModal(b){
 }
 /* ---------- Needs you: one flat list, the count is the list ---------- */
 const ICON_BELL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M3 6l1.5 1.5L7 5M3 12l1.5 1.5L7 11M3 18l1.5 1.5L7 17"/></svg>';
-function needsItems(){
-  const out=[];
-  for(const b of pitchSites().filter(b=>b.state==='packaged'))out.push({kind:'pitch',b,title:`Send ${b.name}'s pitch`,sub:`Send it yourself (WhatsApp, email or in person), then press Update status · ready since ${dShort(b.last_change)}`});
+function needsItems(){const keep=D;D=RAW;try{return needsAll()}finally{D=keep}}
+function needsAll(){
+  const out=[],wt=b=>multiWf()&&b&&b.workflow?wfLabel(b.workflow)+' · ':'';
+  for(const b of pitchSites().filter(b=>b.state==='packaged'))out.push({kind:'pitch',b,title:`Send ${b.name}'s pitch`,sub:`${wt(b)}Send it yourself (WhatsApp, email or in person), then press Update status · ready since ${dShort(b.last_change)}`});
   for(const b of pitchSites().filter(b=>/^(pitched|outcome:(reply|meeting))$/.test(b.state)))out.push({kind:'outcome',b,title:`Follow up with ${b.name}`,sub:`${pitchStatus(b)[1]} — record what the owner said`});
   for(const p of D.proposals.filter(p=>p.kind==='proposal'&&p.status==='pending'))out.push({kind:'tweak',p,title:p.title,sub:`Suggested agent tweak · ${p.agent||'agent'} — approve or reject`});
-  for(const g of D.gates.filter(g=>g.slug&&g.kind!=='send the pitch'))out.push({kind:'gate',g,title:`${g.name}: ${g.kind}`,sub:`${runShort(g.run_id)} · since ${dShort(g.since)}`});
+  for(const g of D.gates.filter(g=>g.slug&&g.kind!=='send the pitch'))out.push({kind:'gate',g,title:`${g.name}: ${g.kind}`,sub:`${wt(g)}${runShort(g.run_id)} · since ${dShort(g.since)}`});
   for(const a of (D.team?.open_assignments||[]).filter(a=>a.to===D.team?.viewer&&a.by!==a.to))out.push({kind:'handoff',a,title:`${a.by_name} asks: ${a.task}`,sub:`Handoff · ${a.business} · since ${dShort(a.ts)}`});
   return out;
 }
@@ -1501,7 +1525,7 @@ function renderPipeline(){
   const compact=matchMedia('(max-width:1280px)').matches,W=compact?200:288;
   for(const b of shown){
     const tr=el('tr');
-    const bz=el('td',{class:'biz'},el('b',{text:b.name}),el('span',{text:[b.type?b.type.replace('_',' '):null,`presence ${b.presence}/5`].filter(Boolean).join(' · ')}));
+    const bz=el('td',{class:'biz'},el('b',{text:b.name}),el('span',{text:[!WF&&multiWf()?wfLabel(b.workflow):null,b.type?b.type.replace('_',' '):null,b.presence!=null?`presence ${b.presence}/5`:null].filter(Boolean).join(' · ')}));
     for(const a of (b.assignments||[]).filter(a=>a.open))bz.append(el('div',{class:'asg'},el('span',{class:'who',text:`${opName(a.to)}:`}),` ${a.task}`));
     if(b.media&&b.media.missing)bz.append(el('div',{class:'media-note miss',text:`${b.media.missing} of ${b.media.files} media files missing here — node tools/media.mjs restore ${b.slug}`}));
     tr.append(bz);
@@ -1764,7 +1788,7 @@ function renderDecisions(){if(window.OSViews?.decisions){const lg=$('#dec-legacy
 
 /* ---------- render ---------- */
 function render(){
-  renderChrome();renderRunSel();
+  renderChrome();renderChips();renderRunSel();
   $('#title-sub').textContent=PER_RUN.includes(state.view)&&state.run!=='all'?runShort(state.run):state.view==='overview'?'':'all runs';$('#controls').hidden=!PER_RUN.includes(state.view);
   renderOverview();renderNeedsView();renderLedger();if(state.view==='ledger')renderLedgerMap();renderPipeline();renderSites();renderAgents();renderDecisions();renderPricing();
   document.querySelectorAll('.view.on svg').forEach(sizeTips);

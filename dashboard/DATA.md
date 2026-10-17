@@ -20,19 +20,20 @@ Sources added 2026-10-02: **A** = `activity.jsonl`, **G** = `git log`, **M** = `
 | `team` | team.json, A | `viewer`, `operators{id: name}`, `open_assignments[]`, `last_by_operator{id: newest non-ledger event}`, `media` for `_shared` |
 | `human` | K | `"Shahar"` |
 | `pipeline_order` | K | PLAN.md §4 state order |
-| `gate_states` | K | `shortlisted / mocked / packaged / outcome:sale` → gate text (`outcome:sale` = gate e, the client's product choice, from 2026-10-05) |
+| `gate_states` | K | `shortlisted / planned (a′, inbound) / researched (b′, inbound) / mocked / packaged / outcome:sale` → gate text (`outcome:sale` = gate e, the client's product choice, from 2026-10-05) |
 | `stations[]` | K | ten bar segments `{n, name, states[], gate?}` (concepts.md mapping of PLAN 1–8 + 4a–4i; from 2026-10-05: 8 Preview `previewed`, 9 Pitch `packaged/pitched/outcome`, 10 Deliver `product_chosen/delivered/handoff_verified/access_revoked`) |
 | `next_step` | K | state → `[next step, owner]`; owner is `"Shahar"` or an agent name |
-| `run` | R | the run the page opens on: the viewer's active run, else the newest active one. `run_id, mode, operator, status, area_mode, anchors[], max_sites, presence_threshold, tokens_per_business, default_mode, agent_pins{}` |
-| `runs[]` | L, R | per `run_id` (with ledger lines, or active with none yet): business count, group counts, first/last ts, `current` (= `run`), `active`, `operator`, `status`, `kpis` (see below) |
+| `run` | R | the run the page opens on: the viewer's active run, else the newest active one. `run_id, mode, operator, status, area_mode, anchors[], max_sites, presence_threshold, tokens_per_business, default_mode, agent_pins{}, market, vertical, engagement, workflow` (defaults `lk`, `surf`, `outbound`; workflow = `<market>-<vertical>`) |
+| `runs[]` | L, R | per `run_id` (with ledger lines, or active with none yet): business count, group counts, first/last ts, `current` (= `run`), `active`, `operator`, `status`, `market`, `vertical`, `engagement`, `workflow`, `kpis` (see below) |
+| `workflows[]` | R, L | one per workflow (market × vertical) with at least one run: `id, market, vertical, engagements[], runs[], active_runs[], kpis` (the KPI set over its businesses; inbound businesses count `briefed` as found and `aligned` as shortlisted). The page's workflow chips scope every view to one of them except Needs you |
 | `sync` | git | `origin_main`: the origin/main commit whose ledger and activity lines are merged in (`tools/origin.mjs`); null with `origin: false` |
 | `kpis` | L | the current run's KPI set |
 | `kpis_by_run{}` | L | per run: `researched` (rows), `live_sites` (group delivered/pitched/outcome), `needs_you` (rows with a gate), `pitched` (`pitched_at` set), `replies` (outcome reply or meeting), `meetings`, `clients` (outcome sale), `avg_critic` (mean of latest critic scores of live sites, 1 dp), `funnel[]` |
-| `deltas{}` | L | per KPI: `current`, `previous` (null when the previous run never reached the stage), `delta`, `note` |
+| `deltas{}` | L | per KPI against the previous run **of the same workflow**: `current`, `previous` (null when the previous run never reached the stage), `delta`, `note` |
 | `funnel[]` | L | researched → shortlisted → harvested → built → pitched → replied → client: businesses of the current run that ever reached the state |
 | `series` | L | per UTC day from the first ledger line to today: `ledger_lines`, `decisions` (human lines), `gates_open`, `live_sites` (reached previewed), `businesses_seen` — current run only for the last three |
-| `gates[]` | L, P | rows whose state is a gate (`kind, slug, name, run_id, since, days, target{view,slug}`) plus one `review prompt diffs` item when proposal files exist without a merge record |
-| `businesses[]` | L, D, S | see below |
+| `gates[]` | L, P | rows whose state is a gate (`kind, slug, name, run_id, workflow, since, days, target{view,slug}`) plus one `review prompt diffs` item when proposal files exist without a merge record |
+| `businesses[]` | L, D, S, R | see below; each row also carries `workflow` (its run's) |
 | `decisions[]` | L | every `agent: human` line, newest first: `ts, slug, run_id, from, to, note, gate` (a real gate transition), `override` (note matches the override pattern) |
 | `recent_activity[]` | L | the last 25 ledger lines, newest first |
 | `leads[]` | L | businesses whose `discovered` note starts `referral:<slug>` — none yet |
