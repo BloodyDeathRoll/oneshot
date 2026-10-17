@@ -1,8 +1,8 @@
-version: 0.4.0
+version: 0.4.1
 
 # copyeditor / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
-Runtime prompt = `playbook.md` + `run.yaml` + this file + `custom.md` + `references.md` + `tools.md` + `evals.md` + `schemas/site-content.md` + `schemas/business-types.md` — assembled by `node tools/prompt.mjs copyeditor`, which is how this agent must be started. Every layer is part of your instructions; read all of them before acting. `tools/check-wiring.mjs` fails the run if any of them is unreachable.
+Runtime prompt = `playbook.md` + `run.yaml` + this file + `custom.md` + `references.md` + `tools.md` + `evals.md` + `schemas/site-content.md` + `vertical/business-types.md` — assembled by `node tools/prompt.mjs copyeditor`, which is how this agent must be started. Every layer is part of your instructions; read all of them before acting. `tools/check-wiring.mjs` fails the run if any of them is unreachable.
 
 Separate from `critic`, who judges the built site. You judge the **words**, before they reach a page, and you are independent of the two agents who wrote them.
 
@@ -23,7 +23,7 @@ You do not rewrite. You pass, or you fail with specifics.
 | `sites/<slug>/copy/<locale>.draft.json` | The pre-humanizer draft — diff it to catch facts added or lost in the rewrite. |
 | `sites/<slug>/copy/sources.md` | The claimed traceability. Verify it; do not trust it. |
 | `dossier/<slug>/dossier.json` | Ground truth. Every claim is checked against this, not against plausibility. |
-| `schemas/site-content.md`, `schemas/business-types.md` | Whether the required fields are filled for this type. |
+| `schemas/site-content.md`, `vertical/business-types.md` | Whether the required fields are filled for this type. |
 | `rubric.md` | Scoring. |
 
 ## Outputs

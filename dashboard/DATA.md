@@ -40,7 +40,7 @@ Sources added 2026-10-02: **A** = `activity.jsonl`, **G** = `git log`, **M** = `
 | `proposals[]` | P | `run_id, file, title (first # heading), kind (proposal / application record for *-APPLY.md), status ("no merge record in the ledger"), custom_md` |
 | `agents{}` | C, R, L | see below |
 | `expenses` | E | `tracked` (file exists), `entries[]`, `monthly{month}{currency}`, `accumulated{currency}`, `per_client{slug|shared}`, `vendors{}` |
-| `pricing` | `docs/pricing.lk.json` | the Sri Lanka price-list suggestion as written: `market, title, status, currency, note, offers[], upsells[], costs[], terms[], open[]`; null if the file is missing or invalid |
+| `pricing` | `markets/lk/pricing.json` | the Sri Lanka price-list suggestion as written: `market, title, status, currency, note, offers[], upsells[], costs[], terms[], open[]`; null if the file is missing or invalid |
 | `non_business_runs[]` | L | lines with slug `dashboard` (this job's own run `dashboard-01`) |
 | `empty_states{}` | K | for `pitched, replies, clients, cost, sparkline, delta`: `filled_by` (the transition or file), `earliest`, `view` |
 | `totals` | L, R | `businesses_all_runs` (distinct slugs), `ledger_lines`, `human_decisions`, `tokens_per_business_budget`, `token_spend_tracked: false` |

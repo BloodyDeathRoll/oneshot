@@ -54,6 +54,17 @@ test('each operator gets their own active run', async () => {
   });
 });
 
+test('a run file without packs is lk / surf / outbound; one that names them keeps them', async () => {
+  const root = fixture({
+    old: runFile('old', 'shahar'),
+    il: runFile('il', 'alon') + 'market: il\nvertical: brand_design   # a comment\nengagement: inbound\n',
+  });
+  const { listRuns } = await load(root, 'run.mjs');
+  const [il, old] = listRuns();
+  assert.deepEqual([old.market, old.vertical, old.engagement], ['lk', 'surf', 'outbound']);
+  assert.deepEqual([il.market, il.vertical, il.engagement], ['il', 'brand_design', 'inbound']);
+});
+
 test('closed runs are ignored', async () => {
   const root = fixture({ old: runFile('old', 'shahar', 'closed'), now: runFile('now', 'shahar') });
   const { currentRun } = await load(root, 'run.mjs');

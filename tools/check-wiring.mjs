@@ -10,6 +10,7 @@
 //     allowed only when wiring.json lists it under nonPromptDirs and the agent's base.md names it
 //  3. every repo doc with real content is reachable by at least one agent
 //  3b. runs/*.yaml are well formed and this session resolves to exactly one run (tools/run.mjs)
+//  3c. every run names packs that exist, and every pack file with content is loaded by some agent
 //  4. each base.md's "Runtime prompt =" line matches the layers wiring.json gives it
 //  5. each agent's station ids in wiring.json exist in PLAN.md §4's pipeline table
 //  6. each agent listed in PLAN.md §2 has a folder, and vice versa
@@ -17,7 +18,7 @@
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { layersFor, isStub, RUN_LAYER } from './prompt.mjs';
+import { layersFor, isStub, RUN_LAYER, PACK_KINDS } from './prompt.mjs';
 import { listRuns, currentRun } from './run.mjs';
 import { team, whoami } from './team.mjs';
 
@@ -42,8 +43,8 @@ for (const a of AGENTS) {
 
 // 3 — repo docs with content must reach some agent
 const reachable = new Set(AGENTS.flatMap((a) => layersFor(a).map((l) => l.rel)));
-for (const rel of ['playbook.md', 'rubric.md', 'taxonomy.md', 'server-hardening.md', 'PLAN.md',
-                   'docs/ledger.md', 'schemas/site-content.md', 'schemas/business-types.md']) {
+for (const rel of ['playbook.md', 'rubric.md', 'server-hardening.md', 'PLAN.md',
+                   'docs/ledger.md', 'schemas/site-content.md']) {
   if (!existsSync(join(ROOT, rel))) { fail.push(`shared doc missing: ${rel}`); continue; }
   if (isStub(read(rel))) warn.push(`${rel} is a stub — no agent gets instructions from it yet`);
   else if (!reachable.has(rel)) fail.push(`${rel} has content but no agent loads it`);
@@ -59,6 +60,26 @@ try {
 let op = null;
 try { op = whoami(); } catch (e) { warn.push(`run: not resolved for this session (${e.message})`); }
 if (op) try { currentRun({ operator: op }); } catch (e) { fail.push(`run: ${e.message}`); }
+
+// 3c — packs (proposal 2026-09-globalsurf-02/004): each run's market and vertical exist, its
+// engagement is known, and every pack .md with content is a layer some agent loads (as market/<file>
+// or vertical/<file>, whatever the pack).
+try {
+  for (const r of listRuns()) {
+    for (const [kind, dir] of Object.entries(PACK_KINDS)) if (!existsSync(join(ROOT, dir, r[kind]))) fail.push(`${r.file}: ${kind} "${r[kind]}" has no pack (${dir}/${r[kind]}/)`);
+    if (!['outbound', 'inbound'].includes(r.engagement)) fail.push(`${r.file}: engagement "${r.engagement}" is not outbound or inbound`);
+  }
+} catch { /* listRuns errors are reported by 3b */ }
+for (const [kind, dir] of Object.entries(PACK_KINDS)) {
+  if (!existsSync(join(ROOT, dir))) continue;
+  for (const pack of readdirSync(join(ROOT, dir), { withFileTypes: true }).filter((d) => d.isDirectory())) {
+    for (const f of readdirSync(join(ROOT, dir, pack.name)).filter((x) => x.endsWith('.md'))) {
+      const rel = `${dir}/${pack.name}/${f}`;
+      if (isStub(read(rel))) warn.push(`${rel} is a stub — no agent gets instructions from it yet`);
+      else if (!reachable.has(`${kind}/${f}`)) fail.push(`${rel} has content but no agent loads ${kind}/${f}`);
+    }
+  }
+}
 
 // 4 — base.md's declared assembly must match reality
 for (const a of AGENTS) {

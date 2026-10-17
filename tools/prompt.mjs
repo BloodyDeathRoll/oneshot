@@ -28,6 +28,10 @@ export function isStub(text) {
 }
 
 export const RUN_LAYER = 'run.yaml';
+// `vertical/<file>` and `market/<file>` mean this session's run's pack: verticals/<vertical>/<file>,
+// markets/<market>/<file> (proposal 2026-09-globalsurf-02/004). The layer keeps the logical name.
+export const PACK_KINDS = { vertical: 'verticals', market: 'markets' };
+export const packOf = (rel) => { const m = rel.match(/^(vertical|market)\/(.+)$/); return m ? { kind: m[1], file: m[2] } : null; };
 
 export function layersFor(agent) {
   if (!AGENTS.includes(agent)) throw new Error(`unknown agent "${agent}" (have: ${AGENTS.join(', ')})`);
@@ -43,6 +47,15 @@ export function layersFor(agent) {
       let run;
       try { run = currentRun(); } catch (e) { return { rel, missing: true, why: e.message }; }
       return { rel, src: run.file, text: run.text, bytes: Buffer.byteLength(run.text), stub: isStub(run.text) };
+    }
+    const pack = packOf(rel);
+    if (pack) {
+      let run;
+      try { run = currentRun(); } catch (e) { return { rel, missing: true, why: e.message }; }
+      const src = `${PACK_KINDS[pack.kind]}/${run[pack.kind]}/${pack.file}`;
+      if (!existsSync(join(ROOT, src))) return { rel, missing: true, why: `${run.run_id} names ${pack.kind} "${run[pack.kind]}"; ${src} does not exist` };
+      const text = readFileSync(join(ROOT, src), 'utf8');
+      return { rel, src, text, bytes: Buffer.byteLength(text), stub: isStub(text) };
     }
     const abs = join(ROOT, rel);
     if (!existsSync(abs)) return { rel, missing: true };
@@ -77,7 +90,7 @@ function prompt(agent) {
     '',
   ].join('\n');
   const body = rows.map((l) =>
-    `\n\n${'='.repeat(78)}\n=== LAYER: ${l.rel}${l.src ? ` (this session's run: ${l.src})` : ''}${l.stub ? '   [stub — no instructions yet]' : ''}\n${'='.repeat(78)}\n\n${l.text.trimEnd()}\n`
+    `\n\n${'='.repeat(78)}\n=== LAYER: ${l.rel}${l.src ? (packOf(l.rel) ? ` (this run's pack: ${l.src})` : ` (this session's run: ${l.src})`) : ''}${l.stub ? '   [stub — no instructions yet]' : ''}\n${'='.repeat(78)}\n\n${l.text.trimEnd()}\n`
   ).join('');
   return head + body;
 }

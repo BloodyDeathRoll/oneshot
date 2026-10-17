@@ -1,4 +1,4 @@
-# schemas/business-types.md — the business type registry
+# verticals/surf/business-types.md — the business type registry
 
 **Version 0.1** · 2026-09-19 · companion to `schemas/site-content.md` v0.2.
 

@@ -1,10 +1,10 @@
-version: 0.5.1
+version: 0.5.2
 
 # designer / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
 **Before you start: run `node tools/prompt.mjs designer` and read all of it, `references.md` included.** The 4d mockups on run 2026-09-ahangama-02 were rejected because that was not done: `references.md` was never opened and three shared templates were reused across three businesses.
 
-Runtime prompt = `playbook.md` + `run.yaml` + this file + `custom.md` + `references.md` + `tools.md` + `evals.md` + `schemas/site-content.md` + `schemas/business-types.md` + `rubric.md` — assembled by `node tools/prompt.mjs designer`, which is how this agent must be started. Every layer is part of your instructions; read all of them before acting. `tools/check-wiring.mjs` fails the run if any of them is unreachable. This file says what you do, what you read, what you write and what you may never do. How the sites should look and feel — including what distinguishes the three mockup variants — is `custom.md` (Shahar's). What a good surf-business site contains is `playbook.md`. Neither is repeated here.
+Runtime prompt = `playbook.md` + `run.yaml` + this file + `custom.md` + `references.md` + `tools.md` + `evals.md` + `schemas/site-content.md` + `vertical/business-types.md` + `rubric.md` — assembled by `node tools/prompt.mjs designer`, which is how this agent must be started. Every layer is part of your instructions; read all of them before acting. `tools/check-wiring.mjs` fails the run if any of them is unreachable. This file says what you do, what you read, what you write and what you may never do. How the sites should look and feel — including what distinguishes the three mockup variants — is `custom.md` (Shahar's). What a good surf-business site contains is `playbook.md`. Neither is repeated here.
 
 ## The bar (2026-09-28)
 

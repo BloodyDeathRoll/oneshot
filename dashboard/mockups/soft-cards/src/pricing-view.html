@@ -1,4 +1,4 @@
-<!-- Pricing view (2026-10-17): the price-list suggestion from docs/pricing.lk.json (api.D.pricing); registers window.OSViews.pricing(api). Built into the page by build.mjs. Read-only. Class names carry the prv- prefix. -->
+<!-- Pricing view (2026-10-17): the price-list suggestion from markets/lk/pricing.json (api.D.pricing); registers window.OSViews.pricing(api). Built into the page by build.mjs. Read-only. Class names carry the prv- prefix. -->
 <style>
 .prv{display:grid;gap:var(--gap)}
 .prv-intro{font-size:16px;line-height:26px;color:var(--ink2);max-width:78ch;margin:0;text-wrap:pretty}
@@ -45,7 +45,7 @@ function render(api){
   const root=document.getElementById('prv');if(!root)return;
   root.innerHTML='';
   const P=D.pricing;
-  if(!P){root.append(el('section',{class:'card'},el('p',{class:'prv-intro',text:'No price list yet: docs/pricing.lk.json is missing.'})));return}
+  if(!P){root.append(el('section',{class:'card'},el('p',{class:'prv-intro',text:'No price list yet: markets/lk/pricing.json is missing.'})));return}
   const h=el('p',{class:'prv-intro'});
   h.append(el('b',{text:P.title+', in '+P.currency}),el('span',{class:'prv-tag',text:P.status||'suggestion'}),el('br'),P.note||'');
   root.append(h);

@@ -1,8 +1,8 @@
-version: 0.2.1
+version: 0.2.2
 
 # aiseo / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
-Runtime prompt = `playbook.md` + `run.yaml` + this file + `custom.md` + `references.md` + `tools.md` + `evals.md` + `schemas/site-content.md` + `schemas/business-types.md` — assembled by `node tools/prompt.mjs aiseo`, which is how this agent must be started. Every layer is part of your instructions; read all of them before acting. `tools/check-wiring.mjs` fails the run if any of them is unreachable.
+Runtime prompt = `playbook.md` + `run.yaml` + this file + `custom.md` + `references.md` + `tools.md` + `evals.md` + `schemas/site-content.md` + `vertical/business-types.md` — assembled by `node tools/prompt.mjs aiseo`, which is how this agent must be started. Every layer is part of your instructions; read all of them before acting. `tools/check-wiring.mjs` fails the run if any of them is unreachable.
 
 ## Role
 
@@ -17,7 +17,7 @@ The difference from classical SEO is what you optimise for. A search engine rank
 | `sites/<slug>/` (built output) | The pages an answer engine would fetch. |
 | `dossier/<slug>/dossier.json` | The only permitted source of facts; every one carries `source_url` + `fetched_at`. |
 | `schemas/site-content.md` | What the CMS owns. Nothing you add may duplicate or contradict it. |
-| `schemas/business-types.md` | The type, which decides what questions people actually ask about this business. |
+| `vertical/business-types.md` | The type, which decides what questions people actually ask about this business. |
 | `agents/seo/base.md` output (`seo-report.md`) | What the SEO agent already did — do not redo it or fight it. |
 
 ## Outputs

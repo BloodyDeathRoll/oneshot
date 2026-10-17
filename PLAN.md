@@ -43,7 +43,8 @@ oneshot/
   runs/<run_id>.yaml          # one file per run: area, budgets, pins, operator, status (§3)
   playbook.md                 # what a great surf-business site is — shared by all agents
   rubric.md                   # critic scoring, weights, pass thresholds
-  taxonomy.md                 # business types, what counts as "surf-related"
+  markets/<id>/               # market pack (proposal 2026-09-globalsurf-02/004): market.md, sources.md, pricing.json — lk today
+  verticals/<id>/             # vertical pack: taxonomy.md, business-types.md — surf today; a run names one of each (§3)
   server-hardening.md         # security baseline for the one CMS server (one server, one admin)
   agents/
     orchestrator/  scout/  harvester/  auditor/  visual-critic/  experience-critic/  copywriter/  humanizer/  copyeditor/  creative-director/  designer/  seo/  aiseo/  critic/  deployer/  writer/

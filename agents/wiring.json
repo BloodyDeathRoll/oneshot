@@ -1,5 +1,6 @@
 {
   "_comment": "Single source of truth for what each agent's runtime prompt contains. tools/prompt.mjs assembles exactly this; tools/check-wiring.mjs fails if any file with real content is not reachable from here. Never let an agent read a file that is not listed for it.",
+  "_packs": "A layer named vertical/<file> or market/<file> is this session's run's pack file: verticals/<run.vertical>/<file> or markets/<run.market>/<file> (tools/run.mjs; defaults surf / lk). Like run.yaml, the prompts use the logical name.",
   "agentFiles": [
     "base.md",
     "custom.md",
@@ -26,39 +27,41 @@
         "PLAN.md",
         "docs/ledger.md",
         "rubric.md",
-        "schemas/business-types.md"
+        "vertical/business-types.md"
       ],
       "scout": [
-        "taxonomy.md"
+        "vertical/taxonomy.md",
+        "market/market.md",
+        "market/sources.md"
       ],
       "harvester": [
-        "taxonomy.md",
+        "vertical/taxonomy.md",
         "schemas/site-content.md",
-        "schemas/business-types.md"
+        "vertical/business-types.md"
       ],
       "copywriter": [
         "schemas/site-content.md",
-        "schemas/business-types.md"
+        "vertical/business-types.md"
       ],
       "humanizer": [
         "schemas/site-content.md"
       ],
       "copyeditor": [
         "schemas/site-content.md",
-        "schemas/business-types.md"
+        "vertical/business-types.md"
       ],
       "designer": [
         "schemas/site-content.md",
-        "schemas/business-types.md",
+        "vertical/business-types.md",
         "rubric.md"
       ],
       "seo": [
         "schemas/site-content.md",
-        "schemas/business-types.md"
+        "vertical/business-types.md"
       ],
       "aiseo": [
         "schemas/site-content.md",
-        "schemas/business-types.md"
+        "vertical/business-types.md"
       ],
       "critic": [
         "rubric.md",
@@ -69,16 +72,17 @@
         "schemas/site-content.md"
       ],
       "writer": [
-        "schemas/business-types.md"
+        "vertical/business-types.md",
+        "market/market.md"
       ],
       "creative-director": [
         "schemas/site-content.md",
-        "schemas/business-types.md",
+        "vertical/business-types.md",
         "rubric.md"
       ],
       "auditor": [
         "schemas/site-content.md",
-        "schemas/business-types.md",
+        "vertical/business-types.md",
         "schemas/audit.md"
       ],
       "visual-critic": [

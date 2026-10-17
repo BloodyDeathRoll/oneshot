@@ -141,7 +141,7 @@ One schema for every business. `businessType` says which kind of business the do
 | No duplication | A fact lives in exactly one field. A room rate goes in `rooms[]`/`priceList[]`, not in a `copyBlocks[]` paragraph as well. |
 | `deployer`-edited rows are evidence | `ratings[]` and `testimonials[]` are seeded from the dossier, where every one of them carries a `source_url`. The owner may **delete** a row they dislike; neither the owner nor a template may add or reword one. |
 | Live prices are not content | Nightly rates that live on an OTA are dated inventory, not a published price. They belong in `bookingLinks[]` as a link, never copied into `rooms[]` as a number. |
-| A new type is a document change, not a code change | See `schemas/business-types.md`. |
+| A new type is a document change, not a code change | See the vertical pack's `business-types.md` (`verticals/surf/business-types.md`). |
 
 
 ## v0.3 — `forecast` (optional)

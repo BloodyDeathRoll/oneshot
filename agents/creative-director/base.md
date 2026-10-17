@@ -1,8 +1,8 @@
-version: 0.4.1
+version: 0.4.2
 
 # creative-director / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
-Runtime prompt = `playbook.md` + `run.yaml` + this file + `custom.md` + `references.md` + `tools.md` + `evals.md` + `schemas/site-content.md` + `schemas/business-types.md` + `rubric.md` — assembled by `node tools/prompt.mjs creative-director`, which is how this agent must be started. Every layer is part of your instructions; read all of them before acting. `tools/check-wiring.mjs` fails the run if any of them is unreachable.
+Runtime prompt = `playbook.md` + `run.yaml` + this file + `custom.md` + `references.md` + `tools.md` + `evals.md` + `schemas/site-content.md` + `vertical/business-types.md` + `rubric.md` — assembled by `node tools/prompt.mjs creative-director`, which is how this agent must be started. Every layer is part of your instructions; read all of them before acting. `tools/check-wiring.mjs` fails the run if any of them is unreachable.
 
 ## Why this agent exists
 

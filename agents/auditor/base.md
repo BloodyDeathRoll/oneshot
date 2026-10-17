@@ -1,8 +1,8 @@
-version: 0.1.2
+version: 0.1.3
 
 # auditor / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
-Runtime prompt = `playbook.md` + `run.yaml` + this file + `custom.md` + `references.md` + `tools.md` + `evals.md` + `schemas/site-content.md` + `schemas/business-types.md` + `schemas/audit.md` — assembled by `node tools/prompt.mjs auditor`, which is how this agent must be started. Every layer is part of your instructions; read all of them before acting. `tools/check-wiring.mjs` fails the run if any of them is unreachable.
+Runtime prompt = `playbook.md` + `run.yaml` + this file + `custom.md` + `references.md` + `tools.md` + `evals.md` + `schemas/site-content.md` + `vertical/business-types.md` + `schemas/audit.md` — assembled by `node tools/prompt.mjs auditor`, which is how this agent must be started. Every layer is part of your instructions; read all of them before acting. `tools/check-wiring.mjs` fails the run if any of them is unreachable.
 
 ## Why this agent exists
 
@@ -23,7 +23,7 @@ The scope is the whole path to a booking, not only the site: the Google listing,
 | `tools/funnel.mjs` (see `tools.md`) | The measurement. Run it yourself on the old site; copy its numbers, never type them. |
 | `playbook.md` §2, §5, §6 | What a visitor needs to decide, the booking path rules, the trust signals — the bar every finding is measured against. |
 | `schemas/site-content.md` | What the new site can hold. Every `fix_in_new_site` and the whole `recommended` block are written in these fields. |
-| `schemas/business-types.md` | What leads for this type (playbook §2 "By business type"): the above-fold order you recommend follows it. |
+| `vertical/business-types.md` | What leads for this type (playbook §2 "By business type"): the above-fold order you recommend follows it. |
 | `schemas/audit.md` | Your output shape. |
 | `run.yaml` | `mode`, `languages`, budget. |
 

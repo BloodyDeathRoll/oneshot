@@ -21,13 +21,19 @@ export const RUNS_DIR = 'runs';
 
 const scalar = (y, k) => (y.match(new RegExp(`^${k}:\\s*([^#\\n]+)`, 'm'))?.[1] ?? '').trim().replace(/^["']|["']$/g, '');
 
-// Every run file: { run_id, operator, status, file, text }. The file name is the run_id.
+// The packs and engagement a run file names (proposal 2026-09-globalsurf-02/004); a file without
+// them is the Sri Lanka surf outbound run every file before packs was.
+export const RUN_DEFAULTS = { market: 'lk', vertical: 'surf', engagement: 'outbound' };
+
+// Every run file: { run_id, operator, status, market, vertical, engagement, file, text }. The file name is the run_id.
 export function listRuns() {
   const dir = join(ROOT, RUNS_DIR);
   if (!existsSync(dir)) return [];
   return readdirSync(dir).filter((f) => f.endsWith('.yaml')).sort().map((f) => {
     const text = readFileSync(join(dir, f), 'utf8');
-    const run = { run_id: scalar(text, 'run_id'), operator: scalar(text, 'operator') || null, status: scalar(text, 'status') || 'active', file: `${RUNS_DIR}/${f}`, text };
+    const run = { run_id: scalar(text, 'run_id'), operator: scalar(text, 'operator') || null, status: scalar(text, 'status') || 'active',
+      market: scalar(text, 'market') || RUN_DEFAULTS.market, vertical: scalar(text, 'vertical') || RUN_DEFAULTS.vertical,
+      engagement: scalar(text, 'engagement') || RUN_DEFAULTS.engagement, file: `${RUNS_DIR}/${f}`, text };
     if (run.run_id !== f.slice(0, -5)) throw new Error(`${run.file}: run_id "${run.run_id}" must match the file name`);
     return run;
   });

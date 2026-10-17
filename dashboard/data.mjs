@@ -515,7 +515,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
 
   // Price list suggestion per market (docs/pricing.md); null when the file is missing or not JSON.
   let pricing = null;
-  try { pricing = JSON.parse(read('docs/pricing.lk.json') ?? 'null'); } catch { pricing = null; }
+  try { pricing = JSON.parse(read('markets/lk/pricing.json') ?? 'null'); } catch { pricing = null; }
 
   // ---- ledger view: every business ever reviewed, once, in its newest run --------------------------
   const cands = readCandidates();
