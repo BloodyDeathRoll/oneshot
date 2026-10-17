@@ -17,7 +17,7 @@
     pbar.classList.toggle('on', past);
     pbar.setAttribute('aria-hidden', String(!past));
     pbar.querySelector('a').tabIndex = past ? 0 : -1;
-  }, { rootMargin: '-76px 0px 0px 0px' }).observe(hero);
+  }, { rootMargin: '-50% 0px -49% 0px' }).observe(hero); /* station 5 r1: solid once the hero's lower half is gone */
 
   /* hero video: after first paint, never under reduced motion or Save-Data. 4g: the sources are the build's
      renditions (schema v0.9); the upload starts on the poster frame, so there is no seek */
@@ -110,22 +110,36 @@
 
   /* ---------------- the drop (scroll set-piece, pattern 9) ----------------
      4g (designer 0.5.1): the tier is decided in <head> and never changes, so the section's height (pin spacing
-     included) is fixed from first paint. Until every plate has loaded the stage shows the poster and a loading
-     ring; the motion then takes over with a cross-fade. The plates are requested only when the drop nears
-     (critic 4f r2: no plate on first load). A plate that fails leaves the poster with the feature line. */
+     included) is fixed from first paint. Station 5 r1 (experience must-fix 1–2, Shahar: "loading state until
+     everything is loaded, then the motion — never skip ahead"):
+     - the stage's ground is a blurred inline still of plate 1 from first paint, so the box is never empty;
+     - a small sharp poster (the stage's own crop of plate 1) is requested as soon as the levels come into
+       view, then the plates; it fades in only once decoded, so it is never seen half-painted;
+     - the motion starts when every plate is decoded. If the reader is already inside the run by then, the whole
+       sequence is mapped onto the scroll that remains (from p 0 at the ready point), never jumped to the
+       current progress; the remap is dropped when the reader is back above the block.
+     A plate that fails leaves the poster with the feature line. */
   const H_ = document.documentElement, P = D.plates;
   if (H_.classList.contains('drop-live') && P && $('#droprun')) {
-    const run = $('#droprun'), pin = $('#droppin'), stage = $('#stage'), [p1, p2m, p2, p3] = $$('.pl', stage), line = $('.drop-line', stage), ddots = $$('.drop-dots li', stage);
-    let ready = false, started = false;
+    const run = $('#droprun'), pin = $('#droppin'), stage = $('#stage'), [p1, p2m, p2, p3] = $$('.pl', stage), line = $('.drop-line', stage), ddots = $$('.drop-dots li', stage), poster = $('.drop-poster', stage);
+    let ready = false, started = false, p0 = 0;
+    const phoneSet = () => innerWidth < 760;
+    const loadImg = (im, src) => new Promise((ok, no) => { im.onload = ok; im.onerror = no; im.decoding = 'async'; im.src = src; if (im.complete && im.naturalWidth) ok(); });
     function fetchPlates() {
       if (started) return; started = true;
-      const set = innerWidth < 760 ? P.m : P.d, files = [set[0], set[1], set[1], set[2]];
-      Promise.all([p1, p2m, p2, p3].map((im, i) => new Promise((ok, no) => { im.onload = ok; im.onerror = no; im.decoding = 'async'; im.src = files[i]; if (im.complete && im.naturalWidth) ok(); })))
+      const set = phoneSet() ? P.m : P.d, files = [set[0], set[1], set[1], set[2]];
+      const plates = () => Promise.all([p1, p2m, p2, p3].map((im, i) => loadImg(im, files[i])))
         .then(() => Promise.all([p1, p2, p3].map(im => (im.decode ? im.decode().catch(() => {}) : 0))))
-        .then(() => { ready = true; size(); measure(); cur = tgt; render(cur); stage.classList.add('ready'); kick(); })
+        .then(() => { ready = true; size(); const raw = rawP(); p0 = raw > 0 && raw < 1 ? raw : 0; measure(); cur = tgt; render(cur); stage.classList.add('ready'); kick(); })
         .catch(() => stage.classList.add('failed'));
+      /* the poster first (about 30 KB on a phone), the plates as soon as it is in */
+      const ps = poster && (phoneSet() ? P.poster.m : P.poster.d);
+      if (!ps) { plates(); return; }
+      loadImg(poster, ps).then(() => (poster.decode ? poster.decode().catch(() => {}) : 0)).then(() => poster.classList.add('in'), () => {}).finally(plates);
     }
-    new IntersectionObserver(([e], o) => { if (e.isIntersecting) { o.disconnect(); fetchPlates(); } }, { rootMargin: '1400px 0px' }).observe(run);
+    /* requested as soon as the reader leaves the first screen (the levels come into view), never on first load */
+    const nearIO = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { nearIO.disconnect(); fetchPlates(); } }, { rootMargin: '0px 0px -10% 0px' });
+    [$('#levels'), $('.incl'), run].forEach(el => el && nearIO.observe(el));
 
     /* source geometry: each plate's focal point, in fractions of the plate (src/pages/index.astro, schema v0.10) */
     const A = { w: 2000, h: 2000 * P.a.h / P.a.w }, C = { w: 2000, h: 2000 * P.c.h / P.c.w };
@@ -179,7 +193,8 @@
       ddots.forEach((d, i) => d.classList.toggle('on', i === k));
     }
     let cur = -1, tgt = 0, raf = 0, last = 0;
-    function measure() { const r = run.getBoundingClientRect(); tgt = cl((pinTop - r.top) / (r.height - pinH), 0, 1); }
+    function rawP() { const r = run.getBoundingClientRect(); return cl((pinTop - r.top) / (r.height - pinH), 0, 1); }
+    function measure() { const raw = rawP(); if (raw <= 0) p0 = 0; tgt = p0 > 0 ? cl((raw - p0) / (1 - p0), 0, 1) : raw; }
     function tick(t) {
       raf = 0; const dt = last ? Math.min(64, t - last) : 16; last = t;
       cur = cur < 0 ? tgt : cur + (tgt - cur) * (1 - Math.exp(-dt / 90));
@@ -213,6 +228,8 @@
   const today = new Date().toISOString().slice(0, 10);
   $$('#start option').forEach(o => { if (o.value < today) o.remove(); });
   $('#end').disabled = false;
+  /* JS off sends the chosen check-out (#endsel); with JS the end follows from the nights chosen */
+  if ($('#endsel')) $('#endsel').disabled = true;
   $$('#nights input').forEach(i => i.setAttribute('form', 'noform'));
   $$('input[name=lvl]').forEach(i => i.setAttribute('form', 'noform'));
   const nights = () => +(($('#nights input:checked') || { value: 8 }).value) - 1;

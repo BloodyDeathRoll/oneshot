@@ -9,13 +9,19 @@
  *   q      WebP quality (default 76)          fx, fy  crop centre, 0..1 (default .5)
  *   tag    a second rendition of the same ratio at another quality (the phone plates)
  *   tint   also record the crop's dominant colour (the ground shown while it loads)
+ *   lq     also record a blurred 1200 px still of the crop as a data: URI (the drop stage's ground from first paint)
+ *   avif   write AVIF only (no WebP)
+ *   focal  centre the crop on the photo's focal point (schema v0.10 media focalX / focalY), not on fixed numbers
  * Ratios, widths and qualities are the picked mockup's renditions (mockups/unique/src/make-media.sh).
  */
 export const P45 = 5 / 4, P32 = 2 / 3, P1610 = 10 / 16, SQ = 1, P219 = 9 / 21, P43 = 3 / 4
 
 export const SLOTS = [
-  /* 0  */ { use: 'the drop, plate 1 (aerial of the lodge); reduced-motion two-up; also the drop\'s loading poster',
-    shapes: [[null, [2000], { q: 74, tint: true }], [null, [2000], { q: 60, tag: 'm' }], [P32, [1000], { q: 74, fx: 0.42, fy: 0.58 }]] },
+  /* 0  */ { use: 'the drop, plate 1 (aerial of the lodge); reduced-motion two-up; the drop\'s loading ground and poster',
+    shapes: [[null, [2000], { q: 74, tint: true, lq: true }], [null, [2000], { q: 60, tag: 'm' }], [P32, [1000], { q: 74, focal: true }],
+      /* the loading poster, cut as the stage frames plate 1 at p 0 (centred): a phone stage (h/w about 1.8), native
+         pixels, and the desktop stage at 1400 */
+      [1.8, [624], { q: 35, tag: 'poster', avif: true }], [null, [1400], { q: 35, tag: 'poster', avif: true }]] },
   /* 1  */ { use: 'the drop, plate 2 (the pool from above); reduced-motion two-up',
     shapes: [[null, [2000], { q: 74 }], [null, [2000], { q: 60, tag: 'm' }], [P32, [1000], { q: 74 }]] },
   /* 2  */ { use: 'the drop, plate 3 (the pool at water level) under featureLine; reduced-motion water',

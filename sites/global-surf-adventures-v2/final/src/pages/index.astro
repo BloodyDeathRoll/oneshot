@@ -6,8 +6,8 @@ import js from '../scripts/site.js?raw'
 import { fontFaces, fontPreloads, TIER } from '../lib/head.mjs'
 import {
   c, G, CT, ST, S, INSTAGRAM, e, paras, sentences, block, dayMonYear, money, PLATFORM, sourceOf, safeUrl, WA_GENERAL,
-  LEVELS, levelPrice, FREE, ROOMS, roomTab, INCL, slotRow, shapeOf, srcset, top, img, gapImg, hero, clip, ic,
-  SPRITE, header, footer, bookForm, pageData, R45, R32, R1610, SQ, R219, FULL,
+  LEVELS, levelPrice, FREE, ROOMS, roomTab, roomName, INCL, slotRow, shapeOf, srcset, top, img, gapImg, hero, clip, ic,
+  SPRITE, header, footer, bookForm, pageData, R45, R32, R1610, SQ, R219, FULL, POSTER_M, POSTER_D,
   metaDescription, businessLd, ldJson, seoHead, anyShape, LV_LEDE, INCL_LEDE, LODGE_P, LODGE_LEDE, AMEN,
 } from '../lib/site.mjs'
 
@@ -35,8 +35,15 @@ const plateData = plates.every(Boolean) ? {
   ratio: ZOOM_RATIO,
   d: [plates[0], plates[1]].map((m) => top(shapeOf(m.filename, FULL)).webp).concat(top(shapeOf(plates[2].filename, FULL)).webp),
   m: [plates[0], plates[1]].map((m) => top(shapeOf(m.filename, 'full-m')).webp).concat(shapeOf(plates[2].filename, FULL).sources[0].webp),
+  /* the loading poster: plate 1 as the stage frames it at p 0 (src/lib/slots.mjs), small and sharp */
+  poster: { m: top(shapeOf(plates[0].filename, POSTER_M)).avif, d: top(shapeOf(plates[0].filename, POSTER_D)).avif },
 } : null
-const posterTint = plates[0] && shapeOf(plates[0].filename, FULL)?.tint
+const plate1 = plates[0] && shapeOf(plates[0].filename, FULL)
+const posterTint = plate1?.tint
+/* the stage's ground from first paint: plate 1's own blurred still, inline (about 6 KB), never an empty box */
+const stageGround = plate1 ? `background:${posterTint ?? '#d6e7ec'}${plate1.lq ? ` url(${plate1.lq}) center/cover no-repeat` : ''}` : undefined
+/* the soft mask that lets plate 2 grow out of plate 1 sits on plate 2's focal point */
+const p2Mask = plates[1] ? `--fx:${plates[1].focalX ?? 50}%;--fy:${plates[1].focalY ?? 50}%` : undefined
 const featureLine = c.featureLine
 
 /* the waves band: 21:9, 4:5 on phones, over its inline placeholder */
@@ -88,6 +95,7 @@ const ld = businessLd({ description: desc, images: ldImages })
   {H && <video id="herovid" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-phone={JSON.stringify(H.phone.map((s) => [s.src, s.type]))} data-desk={JSON.stringify(H.desk.map((s) => [s.src, s.type]))}></video>}
   <div class="hero-c">
     <h1>{G.heroTitle}</h1>
+    {G.heroSubtitle && <p class="hero-sub">{G.heroSubtitle}</p>}
     <a class="btn" href="book/" data-book>{CT.hero_c1}</a>
   </div>
 </section>
@@ -155,15 +163,10 @@ const ld = businessLd({ description: desc, images: ldImages })
   {plateData && (
   <div class="drop-run" id="droprun">
    <div class="drop-pin" id="droppin">
-    <div class="drop-stage" id="stage" aria-hidden="true">
-      {plateData && (
-        <picture>
-          <source media="(max-width: 759px)" srcset={plateData.m[0]} />
-          <img class="drop-poster" src={plateData.d[0]} width={plates[0].width} height={plates[0].height} alt="" loading="lazy" style={posterTint ? `background-color:${posterTint}` : undefined} />
-        </picture>
-      )}
+    <div class="drop-stage" id="stage" aria-hidden="true" style={stageGround}>
+      <img class="drop-poster" alt="" />
       <img class="pl p1" alt="" />
-      <img class="pl p2m" alt="" />
+      <img class="pl p2m" alt="" style={p2Mask} />
       <img class="pl p2" alt="" />
       <img class="pl p3" alt="" />
       {featureLine && <p class="drop-line">{featureLine}</p>}
@@ -222,7 +225,7 @@ const ld = businessLd({ description: desc, images: ldImages })
           <div class="dots"></div>
         </div>
         <div class="room-txt">
-          <h3>{r.label}</h3>
+          <h3>{roomName(r)}</h3>
           <p class="line">{r.line}</p>
           <p class="desc">{r.description}</p>
           <p class="details">{r.details}</p>
