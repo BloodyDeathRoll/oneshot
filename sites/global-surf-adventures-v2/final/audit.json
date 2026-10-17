@@ -1,45 +1,37 @@
 {
  "slug": "global-surf-adventures-v2",
  "variant": "final",
- "measured_at": "2026-10-17T11:51:39.285Z",
+ "measured_at": "2026-10-17T12:29:11.943Z",
  "first_load": {
-  "requests": 18,
+  "requests": 17,
   "hosts": [
    "localhost:8980"
   ],
   "third_party_hosts": [],
-  "bytes_total": 1200298,
-  "bytes_html": 103080,
+  "bytes_total": 477650,
+  "bytes_html": 114328,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 82744,
-  "bytes_images": 295358,
+  "bytes_images": 280578,
   "largest_image_bytes": 88458,
-  "lcp_ms": 448,
-  "cls": 0.0061,
-  "dcl_ms": 1777
+  "lcp_ms": 468,
+  "cls": 0.0069,
+  "dcl_ms": 2014
  },
  "scroll": {
   "early": {
-   "cls": 0.0072,
+   "cls": 0.0069,
    "shifts": [
     {
-     "value": 0.0061,
-     "at_ms": 1269,
+     "value": 0.0069,
+     "at_ms": 1259,
      "y": 0,
      "sources": [
       "a.btn",
       "#text",
+      "p.hero-sub",
       "#text",
-      "button#menub.menu-b"
-     ]
-    },
-    {
-     "value": 0.0011,
-     "at_ms": 1729,
-     "y": 0,
-     "sources": [
-      "div#pbar.pbar",
       "button#menub.menu-b"
      ]
     }
@@ -109,7 +101,7 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 6095,
+  "text_length": 6133,
   "booking_links_reachable": 1,
   "visible_images": 38
  },

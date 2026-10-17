@@ -54,14 +54,14 @@ levels lede uses the copy's sentence verbatim (the mockup appended ", from a Sat
 
 | Item | Target | Measured |
 |---|---|---|
-| First-load transfer, video excluded | ≤ 1.5 MB | 476 KB (HTML 98 KB, fonts 83 KB, images 295 KB); 1,195 KB with the phone hero video the audit's 3.5 s wait catches |
-| Hero video after first paint | ≤ 2 MB phone · ≤ 4 MB desktop | phone 668×1080: 0.72 MB webm / 1.20 MB mp4 · desktop 1920: 1.63 MB webm / 2.93 MB mp4 · 7.0 s |
+| First-load transfer, video excluded | ≤ 1.5 MB | 466 KB (HTML 114 KB, fonts 83 KB, images 281 KB), station 5 r1 fix pass |
+| Hero video after first paint | ≤ 2 MB phone · ≤ 4 MB desktop | phone 1080×1746 (from the 668×1080 crop): 1.40 MB webm / 1.90 MB mp4 · desktop 1920: 1.63 MB webm / 2.93 MB mp4 · 7.0 s |
 | JS, compressed | ≤ 300 KB | 7.7 KB gzip (21 KB raw), inline, no library (the drop needs none) |
-| Largest above-the-fold image | ≤ 300 KB | phone poster 34 KB; desktop poster 87 KB (largest image on load 88 KB) |
+| Largest above-the-fold image | ≤ 300 KB | phone poster 62 KB (1080 w); desktop poster 87 KB (largest image on load 88 KB) |
 | Fonts | ≤ 2 families, ≤ 150 KB | Literata + Parisienne, 83 KB, self-hosted |
-| LCP | ≤ 2.5 s | 452 ms |
-| CLS (load) | < 0.1 | 0.0061 (hero title on font swap) |
-| Scroll CLS early / settled | < 0.01 | 0.0072 / 0 |
+| LCP | ≤ 2.5 s | 468 ms |
+| CLS (load) | < 0.1 | 0.0069 (hero title and subtitle on font swap) |
+| Scroll CLS early / settled | < 0.01 | 0.0069 / 0 |
 | Third-party requests on load | 0 | 0 |
 
 Embeds: one (Rosa), lazy. Forecast block height unchanged when the reading arrives (1452 → 1452 px at 1440, 1673 →
@@ -84,6 +84,29 @@ Embeds: one (Rosa), lazy. Forecast block height unchanged when the reading arriv
   and return it (mockup code, re-checked above for the drawer).
 - `tools/funnel.mjs`: hero action engine, 1 tap to the flow (`book/`), 8 pages, 0 broken; audit tap targets < 44 px: 0.
 - Facts: audit finds 29 numbers, 0 not in the passed copy.
+
+## Fix pass after station 5 round 1 (2026-10-17; critic 72.9/80, visual 8.5, experience 8 — passed 92.9/100)
+
+Design direction unchanged. Each must-fix, what was done, and how it was checked (local static server, playwright).
+
+| Report | Item | Done |
+|---|---|---|
+| experience 1, Shahar's rule | the drop must always play in full | plates (with a small poster first) are requested as soon as the levels come into view (`#levels` 10 % inside the viewport), not at 1,400 px; never on first load (audit: 17 requests, no plate). When the plates become ready with the reader already inside the run, the whole sequence is mapped onto the remaining scroll from p 0 (`p0` remap); the remap is dropped when the reader is back above the block. Checked: plates held back until the reader is at raw 0.40 → state at ready is p 0 (plate 1 untransformed), plate 3 in by raw 0.9, the full sequence plays by raw 1.0; back above → no remap. Slow phone (1.6 Mbps / 150 ms / 4× CPU), 0.3 screen every 0.4 s from the hero: poster requested at 3.7 s, plates at 4.2 s, all ready before the run enters the screen (10.1 s), so the descent plays from p 0 (before: ready 5.7 s after arrival, already on the palm) |
+| experience 2 | loading still | the stage's ground from first paint is plate 1's own blurred still, inline (1200 px wide, blur 30, 4.7 KB WebP; 1200 px so check-design's full-bleed rule holds for it as for any image); a sharp poster cut as the stage frames plate 1 at p 0 (phone 624×1123 AVIF 31 KB, desktop 1400 AVIF 56 KB) fades in only once decoded, so it is never seen half-painted; the old lazy 2000 px poster is gone. Desktop's inset frame is set in CSS before the motion starts, so nothing jumps at the hand-over |
+| experience 3, brief | the dive ends on open water | both focal points now mark the same spot of open pool water (img-062 38.38 / 59.92, img-026 35.0 / 61.44; `seed-from-dossier.mjs` FOCAL and `content.json`). The plate-2 mask was the last per-photo coordinate in code (`42.3% 54.8%` in CSS): it now reads `--fx / --fy` from plate 2's focal point. The two-up crop of plate 1 uses its focal point (`focal: true`) instead of fixed `fx/fy`. Hand-off measured over 41 steps: focal points on the same screen point, error ≤ 0.01 px at 390 and ≤ 0.03 px at 1440; the dive (p 0.57–0.80) ends on blue water with the swimmers and boards, the palm at the edge |
+| visual 1 | phone hero soft | `video-portrait.mjs` recipe p2: the 668×1080 crop is enlarged once with lanczos + light unsharp to 1080×1746 and encoded near the cap (webm AV1 1.40 MB, mp4 1.90 MB; was 0.72 / 1.20 MB), poster 1080 w WebP 62 KB. Source is 1080 px tall, so no more native pixels exist |
+| visual 2 | Level 1 lead dull | `videos[0]` is now vid-010 19.80–22.40 s (golden hour: a guest stands up on a soft-top into the sun, then another paddles in smiling), poster at 0.5 s |
+| visual 3 | hero dissolve | the ghosting was the poster's 0.6 s CSS fade over the video while the edit cut at 0.12 s; the fade is gone (the poster is frame 0, so the video replaces it invisibly) and the edit's first change is a hard cut. Opacity measured 0 → 1 in one step |
+| visual 4, critic d5 | /book/ | the hand-off/deposit note once (in the summary card); one name per room everywhere — the copy's label in sentence case ("Shared twin room – 2 beds"), the tab its part before " – "; at 390 every level and room name is on one line (price under the words) |
+| visual 5 | header band; seam | the header is solid white once half the hero is gone, no colour transition, so no half-way band; the drop run sits straight on "What's included"'s tint (no 110 px white margin) |
+| critic d6 | room-tab contrast | inactive tabs `--ink-soft` (≈ 5.9:1); axe after a full scroll: 0 violations at 390 and 1440 |
+| critic d3 | JS-off sends `end` | without JS the nights choice is hidden and the visitor picks a check-out Saturday; the GET form sends `start` + `end` (no `duration`): `…/level-2-rollers?start=2026-10-24&end=2026-11-07&female=1&male=0&couple=0`. With JS unchanged (`…/level-1-fomies?start=2026-10-24&end=2026-10-31&female=1&male=1&couple=0`, total $3,212) |
+| critic d4 | what + where on the first screen | the copy's own short subtitle (`mockup_extras.hero.subtitle_alt`, "Sri Lanka's south coast, all levels") under the title. **Rating not added:** Shahar's hero bar (references.md calibration: "No rating in the hero. No tagline + rating + button stack over the video"; custom.md: only header, one short title, one short CTA). The 8.6 proof stays one scroll down |
+| experience 5 | drawer thumbnails | 120×88 on desktop, 112×84 on phones (were 84×62) |
+| experience 4 | "What's included" on phones | layout only, same words: two columns of short lines under a 16:10 photograph |
+| found in this pass | phone page 8 px too wide | the nine review dots (9 × 44 px) were wider than a 390 phone (layout viewport 398); they now wrap. scrollWidth 390 |
+
+Measured after the pass (`audit.json`, throttled phone, no scroll): first load 466 KB (HTML 114 KB with the inline still, fonts 83 KB, images 281 KB), largest image 88 KB, LCP 468 ms, CLS 0.0069, **scroll CLS early 0.0069 / settled 0**, 0 third-party, tap targets < 44 px 0, JS 0 files (inline). check-design home + book/: 0 problems, 0 warnings. check-places: ok. Reduced motion and JS off: 0 video and 0 plate requests over a full scroll, static drop shown.
 
 ## Facts (every checkable claim → field → dossier)
 
@@ -132,7 +155,8 @@ tiles); Saturdays are the 29 Sep 2026 snapshot, past ones dropped at build and a
 
 1. **Drop alignment — resolved 2026-10-17 (Shahar: "it cannot rely on absolute pixels").** The plates line up on each
    photo's focal point (schema v0.10: media `focalX` / `focalY`, set in the CMS by clicking the photo; seeded for
-   img-062 39.35 / 59.04 and img-026 42.3 / 54.76). The descent dives into plate 2's focal point. The zoom between
+   img-062 38.38 / 59.92 and img-026 35.0 / 61.44, the same spot of open pool water, since station 5 r1). The descent
+   dives into plate 2's focal point; the plate-2 mask is centred on it too. The zoom between
    plates (200 / 1510) stays a design constant. The trigger was never pixel-based: progress is measured on the block
    (`getBoundingClientRect`) on every scroll, starting when the block fills the screen (kept, Shahar).
 2. **No vendored library.** The brief says vendored libraries; the picked mockup has none since its round 2.2 (sticky
