@@ -20,20 +20,19 @@ const intro = block('intro', 0)
 const lvLede = LV_LEDE, lodgeP = LODGE_P, lodgeLede = LODGE_LEDE, amen = AMEN
 const clips = [0, 1, 2].map(clip)
 
-/* the drop: plates = photos[0..2]. Where the pools sit in each plate (fractions of the plate) is design data
-   for these photographs; an owner's replacement plate is aligned on its centre instead. */
-const ALIGN = {
-  'img-062.jpg': { pool: [787 / 2000, 663 / 1123] },
-  'img-026.jpg': { pool: [846 / 2000, 615 / 1123], water: [700 / 2000, 690 / 1123], poolW: 1510 },
-  'img-062.jpg#poolW': 200,
-}
+/* the drop: plates = photos[0..2]. The two plates line up on each photo's focal point (schema v0.10: media
+   focalX / focalY, percent, set in the CMS by whoever uploads the photo; 50 / 50 = the centre). Nothing here
+   depends on which photographs they are; the descent also dives into plate 2's focal point. */
+const focal = (m) => [(m.focalX ?? 50) / 100, (m.focalY ?? 50) / 100]
+/* how much smaller the pool is in plate 1 than in plate 2: a design constant of the motion (200 / 1510 on the
+   seeded aerial and terrace shots), not photo data */
+const ZOOM_RATIO = 200 / 1510
 const plates = S.plates.map((n) => slotRow(n))
 const plateData = plates.every(Boolean) ? {
-  a: { w: plates[0].width, h: plates[0].height, pool: ALIGN[plates[0].filename]?.pool ?? [0.5, 0.5] },
-  b: { w: plates[1].width, h: plates[1].height, pool: ALIGN[plates[1].filename]?.pool ?? [0.5, 0.5], water: ALIGN[plates[1].filename]?.water ?? [0.5, 0.5] },
+  a: { w: plates[0].width, h: plates[0].height, pool: focal(plates[0]) },
+  b: { w: plates[1].width, h: plates[1].height, pool: focal(plates[1]), water: focal(plates[1]) },
   c: { w: plates[2].width, h: plates[2].height },
-  /* img-062's pool is 200 source px wide, img-026's 1510 (mockup); unknown plates: 1/4 */
-  ratio: ALIGN[plates[0].filename] && ALIGN[plates[1].filename] ? ALIGN['img-062.jpg#poolW'] / ALIGN['img-026.jpg'].poolW : 0.25,
+  ratio: ZOOM_RATIO,
   d: [plates[0], plates[1]].map((m) => top(shapeOf(m.filename, FULL)).webp).concat(top(shapeOf(plates[2].filename, FULL)).webp),
   m: [plates[0], plates[1]].map((m) => top(shapeOf(m.filename, 'full-m')).webp).concat(shapeOf(plates[2].filename, FULL).sources[0].webp),
 } : null

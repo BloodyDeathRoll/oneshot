@@ -85,9 +85,13 @@ const putImage = async (id, dir) => {
   const m = await sharp(dst).metadata()
   return { filename, width: m.width, height: m.height, filesize: statSync(dst).size }
 }
+/* Focal points (schema v0.10, percent of the photo): the point the drop lines up on, the pool in each plate
+   (measured on the 2000 x 1123 originals at 4e). The owner moves it in the CMS when replacing a photo. */
+const FOCAL = { 'img-062.jpg': [39.35, 59.04], 'img-026.jpg': [42.3, 54.76] }
 const mediaDoc = (f, altText, mimeType) => ({
   id: mediaId++, alt: altText, filename: f.filename, mimeType, filesize: f.filesize,
-  width: f.width ?? null, height: f.height ?? null, url: `/api/media/file/${f.filename}`, focalX: 50, focalY: 50, sizes: {},
+  width: f.width ?? null, height: f.height ?? null, url: `/api/media/file/${f.filename}`,
+  focalX: FOCAL[f.filename]?.[0] ?? 50, focalY: FOCAL[f.filename]?.[1] ?? 50, sizes: {},
 })
 
 const photos = []

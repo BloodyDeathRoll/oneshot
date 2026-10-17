@@ -1,23 +1,23 @@
 {
  "slug": "global-surf-adventures-v2",
- "variant": "../final",
- "measured_at": "2026-10-17T11:47:02.509Z",
+ "variant": "final",
+ "measured_at": "2026-10-17T11:51:39.285Z",
  "first_load": {
   "requests": 18,
   "hosts": [
    "localhost:8980"
   ],
   "third_party_hosts": [],
-  "bytes_total": 1200300,
-  "bytes_html": 103082,
+  "bytes_total": 1200298,
+  "bytes_html": 103080,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 82744,
   "bytes_images": 295358,
   "largest_image_bytes": 88458,
-  "lcp_ms": 452,
+  "lcp_ms": 448,
   "cls": 0.0061,
-  "dcl_ms": 1720
+  "dcl_ms": 1777
  },
  "scroll": {
   "early": {
@@ -25,7 +25,7 @@
    "shifts": [
     {
      "value": 0.0061,
-     "at_ms": 1271,
+     "at_ms": 1269,
      "y": 0,
      "sources": [
       "a.btn",
@@ -36,7 +36,7 @@
     },
     {
      "value": 0.0011,
-     "at_ms": 1728,
+     "at_ms": 1729,
      "y": 0,
      "sources": [
       "div#pbar.pbar",

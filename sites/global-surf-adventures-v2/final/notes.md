@@ -130,9 +130,11 @@ tiles); Saturdays are the 29 Sep 2026 snapshot, past ones dropped at build and a
 
 ## conflicts
 
-1. **Drop alignment vs owner-editable plates.** The descent aligns the pools of img-062 and img-026 by source pixels
-   (`ALIGN` in `index.astro`). An owner who replaces a plate keeps the motion, aligned on the centre instead. The
-   alternative (a schema field for a focal point) does not exist; `media.focalX/Y` is "unused in v0.1".
+1. **Drop alignment — resolved 2026-10-17 (Shahar: "it cannot rely on absolute pixels").** The plates line up on each
+   photo's focal point (schema v0.10: media `focalX` / `focalY`, set in the CMS by clicking the photo; seeded for
+   img-062 39.35 / 59.04 and img-026 42.3 / 54.76). The descent dives into plate 2's focal point. The zoom between
+   plates (200 / 1510) stays a design constant. The trigger was never pixel-based: progress is measured on the block
+   (`getBoundingClientRect`) on every scroll, starting when the block fills the screen (kept, Shahar).
 2. **No vendored library.** The brief says vendored libraries; the picked mockup has none since its round 2.2 (sticky
    stage, own JS), so 4g ships none: 7.7 KB gzip of JS in total.
 3. **Hero master rotated.** The mockup seeked the loop to 1.35 s; an owner's upload cannot carry a seek, so the master

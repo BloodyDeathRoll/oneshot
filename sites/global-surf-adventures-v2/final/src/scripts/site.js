@@ -127,7 +127,7 @@
     }
     new IntersectionObserver(([e], o) => { if (e.isIntersecting) { o.disconnect(); fetchPlates(); } }, { rootMargin: '1400px 0px' }).observe(run);
 
-    /* source geometry, in fractions of each plate (src/pages/index.astro ALIGN) */
+    /* source geometry: each plate's focal point, in fractions of the plate (src/pages/index.astro, schema v0.10) */
     const A = { w: 2000, h: 2000 * P.a.h / P.a.w }, C = { w: 2000, h: 2000 * P.c.h / P.c.w };
     const POOL1 = { x: P.a.pool[0] * A.w, y: P.a.pool[1] * A.h }, POOL2 = { x: P.b.pool[0] * A.w, y: P.b.pool[1] * A.h }, R = P.ratio;
     const WATER = { x: P.b.water[0] * A.w, y: P.b.water[1] * A.h };
