@@ -1,0 +1,1 @@
+# verticals/brand_design/business-types.md — the type registry for brand-design studios: modules of schemas/site-content.md per type. Drafted by the analyst on the first inbound run (proposal 004), approved by Shahar.

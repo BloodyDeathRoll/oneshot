@@ -1,0 +1,34 @@
+run_id: 2026-10-il-brand-01
+operator: shahar                 # who runs it (team.json); a session runs only its operator's runs
+status: active                   # active | closed
+market: il                       # markets/il/
+vertical: brand_design           # verticals/brand_design/ (stub until the analyst's pack proposal is approved)
+engagement: inbound              # PLAN.md §4 "Inbound engagement": brief → research → direction → … → proposal
+mode: live                       # the client exists and has agreed; we can ask them anything
+# First inbound run (proposal 2026-09-globalsurf-02/004): one Israeli brand-design studio with a brief.
+# Starts when Shahar writes brief/<slug>/brief.md and the `briefed` ledger line (a human line).
+max_sites: 1
+languages: [he]                  # Hebrew; RTL (markets/il/market.md)
+budget:
+  tokens_per_business: 2_000_000
+  wallclock_min_per_business: 90
+hosting:
+  default_mode: managed          # managed | self_hosted_docker | static_only
+  modes: {}
+agents:                          # pinned versions for reproducibility
+  orchestrator: 0.5.0
+  analyst: 0.1.0
+  harvester: 0.4.1
+  auditor: 0.1.3
+  copywriter: 0.3.4
+  humanizer: 0.2.0
+  copyeditor: 0.4.1
+  creative-director: 0.4.2
+  designer: 0.5.2
+  seo: 0.2.2
+  aiseo: 0.2.2
+  critic: 0.4.3
+  visual-critic: 0.1.1
+  experience-critic: 0.1.0
+  deployer: 0.5.0
+  writer: 0.5.0
