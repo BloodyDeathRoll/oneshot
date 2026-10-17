@@ -513,6 +513,10 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     ((expenses.vendors[e.vendor] ??= {})[cur] = (expenses.vendors[e.vendor][cur] ?? 0) + e.amount);
   }
 
+  // Price list suggestion per market (docs/pricing.md); null when the file is missing or not JSON.
+  let pricing = null;
+  try { pricing = JSON.parse(read('docs/pricing.lk.json') ?? 'null'); } catch { pricing = null; }
+
   // ---- ledger view: every business ever reviewed, once, in its newest run --------------------------
   const cands = readCandidates();
   const seenSlug = new Set();
@@ -571,7 +575,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     },
     pipeline_order: ORDER, gate_states: GATES, stations: STATIONS, next_step: NEXT_STEP,
     run, runs, kpis: cur, kpis_by_run, deltas, funnel: cur.funnel, series,
-    gates, businesses, prospects, areas: cands.areas, decisions, recent_activity, leads, corrections, proposals, agents, expenses, revenues,
+    gates, businesses, prospects, areas: cands.areas, decisions, recent_activity, leads, corrections, proposals, agents, expenses, revenues, pricing,
     non_business_runs: nonBusinessRuns.map((l) => ({ ts: l.ts, run_id: l.run_id, agent: l.agent, to: l.to_state, note: l.note })),
     empty_states: {
       pitched: { filled_by: 'a ledger line packaged → pitched (agent: human)', earliest: 'when Shahar sends the first pitch; three are ready', view: 'overview, pipeline' },

@@ -1,0 +1,47 @@
+{
+  "market": "lk",
+  "title": "Sri Lanka sites",
+  "status": "suggestion",
+  "drafted": "2026-09-27",
+  "updated": "2026-10-17",
+  "currency": "USD",
+  "note": "Claude's first guess, for Shahar to correct. No pitch carries an amount until the numbers are decided; then they go into the writer's custom.md via a proposal. Inbound one-off clients get no price on the pitch.",
+  "offers": [
+    { "name": "Managed", "default": true, "one_time": "190 setup", "recurring": "29 / month, or 290 / year (2 months free)", "buys": "We host it, they edit it: Cloudflare Worker, SSL, CMS login for their site only, nightly backups (30 days), rebuild on every save, uptime and updates ours. Up to 30 min of our edits a month. Static zip on exit, no lock-in." },
+    { "name": "Self-hosted Docker", "one_time": "590 site + 90 install", "recurring": "0 to us; ~6–12 / month to their VPS host", "buys": "Payload + Postgres + builder + Caddy on their own server; we install, verify, hand over the credentials and revoke our access. Support after handoff: 40 / hour." },
+    { "name": "Static only", "one_time": "390", "recurring": "0", "buys": "Static build + source zip, runs on any host. Only if the owner will never edit." },
+    { "name": "Domain", "one_time": "—", "recurring": "15 / year flat", "buys": "Cloudflare Registrar at cost (~10–11 / year for .com) plus renewal handling and DNS. .lk is not on Cloudflare Registrar: check before pitching one." }
+  ],
+  "upsells": [
+    { "name": "Second language", "price": "120 per language", "note": "Full copy pipeline in that language, reviewed like English" },
+    { "name": "Email on their domain", "price": "included with Managed", "note": "Cloudflare Email Routing to their Gmail; a real mailbox is pass-through" },
+    { "name": "Google Business Profile tune-up", "price": "60", "note": "Hours, categories, photos, link to the new site, reply templates" },
+    { "name": "Review QR cards", "price": "40", "note": "Print-ready PDF that opens their Google review form" },
+    { "name": "Photo shoot", "price": "150 half-day", "note": "Only when we are on site (live mode)" },
+    { "name": "We do the edits", "price": "+15 / month", "note": "Up to 4 content changes a month, same day" },
+    { "name": "SEO + AI SEO refresh", "price": "60 per quarter, or 200 / year", "note": "Stations 4h–4i re-run on the live content, with a report" },
+    { "name": "Seasonal / campaign page", "price": "80", "note": "One extra page on the same template" },
+    { "name": "Rosa surf forecast", "price": "included", "note": "Already in the template" }
+  ],
+  "costs": [
+    { "line": "Hosting (Cloudflare Workers)", "cost": "0 on the free plan", "note": "Check the free-plan request limit against real traffic before promising it" },
+    { "line": "CMS server (Oracle A1, shared)", "cost": "0 inside the Always Free quota", "note": "Pay-as-you-go above it" },
+    { "line": "Domain", "cost": "~10–11 / year", "note": "Recharged at 15" },
+    { "line": "Build tokens", "cost": "~16–32 per business", "note": "2 M-token budget at API list rates; not tracked; flat if on a subscription" },
+    { "line": "Our time", "cost": "~20–40 h per site so far", "note": "The real cost; not tracked" }
+  ],
+  "terms": [
+    "Month to month, cancel any time; on exit they get the static zip and the domain transfer free.",
+    "Setup fee before we attach the domain; monthly in advance, by card or bank transfer.",
+    "Managed price fixed for 12 months from signing.",
+    "Pass-through charges (domain, mailbox) itemised at cost plus the flat handling above."
+  ],
+  "open": [
+    "The numbers: keep, raise or lower?",
+    "USD or LKR for the monthly fee?",
+    "How they pay: Stripe, Wise, bank transfer, cash on site?",
+    "A setup fee at all, or 0 setup and a higher monthly (e.g. 39)?",
+    "Self-hosted and static prices in the first message, or only when asked?",
+    "Offer .lk domains at all?"
+  ]
+}

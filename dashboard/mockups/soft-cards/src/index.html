@@ -641,6 +641,10 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M3 6l1.5 1.5L7 5M3 12l1.5 1.5L7 11M3 18l1.5 1.5L7 17"/></svg>
       <span>Decisions</span><span class="n" id="n-dec"></span>
     </button>
+    <button type="button" data-view="pricing">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 13.5l-7 7a2 2 0 0 1-2.8 0L3 12.8V3h9.8l7.7 7.7a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>
+      <span>Pricing</span>
+    </button>
   </nav>
   <div class="side-foot" id="side-foot"></div>
 </aside>
@@ -719,6 +723,10 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 
   <section class="view" id="view-agents" aria-label="Agents">
 <!--include:agents-view.html-->
+  </section>
+
+  <section class="view" id="view-pricing" aria-label="Pricing">
+<!--include:pricing-view.html-->
   </section>
 
   <section class="view" id="view-decisions" aria-label="Decisions">
@@ -859,7 +867,7 @@ function renderChrome(){
 
 /* nav */
 document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view,b.dataset.focus)));
-const TITLES={overview:'Overview',needs:'Needs you',pipeline:'Pipeline',sites:'Sites',agents:'Agents',decisions:'Decisions',ledger:'Ledger'};
+const TITLES={overview:'Overview',needs:'Needs you',pipeline:'Pipeline',sites:'Sites',agents:'Agents',decisions:'Decisions',pricing:'Pricing suggestion',ledger:'Ledger'};
 let lastHash='';
 addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(h!==lastHash){const p=h.split('/');go(p[0]||'overview',p[1])}});
 function go(view,focus){
@@ -1572,6 +1580,7 @@ function renderSites(){
 // function on window.OSViews and get this page's data and helpers through OSAPI.
 const OSAPI={get D(){return D},get LIVE(){return LIVE},state,el,sv,modal,openDoc,mdToHtml,copyText,fileURL,go,refresh:()=>refresh(),opName,bizName,dShort,tShort,runShort,live,thumbSrc,prNote};
 window.OSAPI=OSAPI;
+function renderPricing(){if(window.OSViews?.pricing)window.OSViews.pricing(OSAPI)}
 function renderAgents(){if(window.OSViews?.agents)return window.OSViews.agents(OSAPI);if(!$("#agg-chart"))return;
   const run=agentRun();
   const A=Object.entries(D.agents).map(([name,a])=>({name,a,r:a.by_run[run]||{lines:0,passes:0,fails:0,rounds_per_pass:[],fails_by_slug:{},versions_seen:[]}}));
@@ -1757,7 +1766,7 @@ function renderDecisions(){if(window.OSViews?.decisions){const lg=$('#dec-legacy
 function render(){
   renderChrome();renderRunSel();
   $('#title-sub').textContent=PER_RUN.includes(state.view)&&state.run!=='all'?runShort(state.run):state.view==='overview'?'':'all runs';$('#controls').hidden=!PER_RUN.includes(state.view);
-  renderOverview();renderNeedsView();renderLedger();if(state.view==='ledger')renderLedgerMap();renderPipeline();renderSites();renderAgents();renderDecisions();
+  renderOverview();renderNeedsView();renderLedger();if(state.view==='ledger')renderLedgerMap();renderPipeline();renderSites();renderAgents();renderDecisions();renderPricing();
   document.querySelectorAll('.view.on svg').forEach(sizeTips);
 }
 render();
