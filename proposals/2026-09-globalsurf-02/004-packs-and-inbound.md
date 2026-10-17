@@ -63,9 +63,9 @@ Inbound: the client exists, has agreed, and says what they want. No Scout, no sh
 | 4 | Harvest | harvester | brief, direction, client-supplied assets | `dossier/<slug>/dossier.json` as today; new source kind `client` for anything the owner handed us | — |
 | 5 | Audit | auditor | as today | as today | — |
 | 6 | Copy, humanize, copy review | as today, per language in `run.yaml` | as today; RTL languages flagged in `copy/<locale>.json` | — |
-| 7 | Concept, mockups, pre-score | as today, with `direction.md` and the vertical's references as inputs | as today | **c. Client picks (human logs it)** |
+| 7 | Concept, mockups, pre-score | as today, with `direction.md` and the vertical's references as inputs | as today | **c. Shahar picks what the client sees: one, two or three mockups, or another series of three** |
 | 8 | Build, SEO, AI SEO, critique, preview | as today | as today | — |
-| 9 | Proposal | writer | brief, direction, preview, old vs new | proposal page on `<brand>-proposal.os1.workers.dev`: brief → what was delivered, item by item; the three hosting modes and the price. **No cold outreach message.** | **d. Human sends** |
+| 9 | Proposal | writer | brief, direction, preview, old vs new | proposal page on `<brand>-proposal.os1.workers.dev`: brief → what was delivered, item by item; the three hosting modes, no price. **No cold outreach message.** | **d. Human sends** |
 | 10 | Sale, product choice, deliver | as today | as today | **e. Client chooses the mode** |
 
 Ledger states for inbound: `briefed → researched → aligned → harvested → audited → …` identical to
@@ -104,7 +104,7 @@ copy, direction accepted at b′ without rewrite), `CHANGELOG.md`. Version 0.1.0
 
 - Input adds `brief.md` and `direction.md`; output drops the outreach message.
 - The page opens with the brief, then shows each ask answered with where on the site it lives.
-- Hosting-mode options and price stay; "we host it, you edit it" stays the recommendation.
+- Hosting-mode options stay, with no price; "we host it, you edit it" stays the recommendation.
 - Outbound behaviour unchanged. `engagement` in `run.yaml` selects the shape. Bump to 0.5.0.
 
 ### Orchestrator changes
@@ -148,8 +148,8 @@ The two-layer prompt rule. The gates listed today, plus a′ and b′ for inboun
 5. `markets/il`, `verticals/brand_design` (drafted by the analyst on the first inbound run),
    `runs/2026-10-il-brand-01.yaml`, first `briefed` line.
 
-## 6. Open questions for Shahar
+## 6. Shahar's answers (2026-10-17)
 
-- Pack granularity: one `brand_design` vertical, or an `agency` family it sits in.
-- Does the client pick the mockup directly (gate c log says "client"), or do you pick with them.
-- Price band on the proposal page: fixed per vertical in `market.md`, or per run.
+- **Pack granularity:** one `brand_design` vertical, for the current one-off client. Widen it only if more clients fit this workflow.
+- **Mockup pick (gate c):** Shahar picks what the client sees, not the client. He keeps one mockup, or two or three, or asks for another series of three and picks from those. The gate line is `agent: "human"` as today.
+- **Price on the proposal page:** none for the inbound one-off; the writer leaves fees out. Outbound Sri Lanka prices are a suggestion in `docs/pricing.lk.json`, shown on the dashboard's Pricing tab, and stay out of pitches until decided.
