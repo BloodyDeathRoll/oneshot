@@ -6,7 +6,7 @@ The visual critics passed all three Global Surf mockups at 8/10; Shahar judged a
 
 **Hero**
 - Title + one short CTA only. "See the weekly surf packages and dates" is far too long; "Book package now" is right. Any subtitle is very short ("All levels, steps from the beach").
-- No rating in the hero. No tagline + rating + button stack over the video.
+- A rating in the hero is a per-business choice, not a rule (Shahar, 2026-10-17: it works for KA Surf, not for Global Surf, whose Booking.com rating belongs with the visitor testimonials). Never a tagline + rating + button stack over the video.
 - Clear video with only the header on top, and at most a title centred horizontally and vertically — much smaller than a giant display word. A giant word over the video ("Kabalana") looks really bad.
 - No decorative overlays on video (the WebGL "waterline"/reflection read as a mistake and added nothing).
 - No title "breath"/reveal animations.

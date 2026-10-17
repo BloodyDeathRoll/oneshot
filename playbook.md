@@ -1,4 +1,4 @@
-version: 0.6.5
+version: 0.6.6
 
 # playbook.md — what a great surf-business site is; shared by all agents.
 
@@ -67,7 +67,7 @@ By business type (`run.yaml` `types`), what leads:
 
 Order on the home page, mobile first. One page can carry all of it for a small business; split into pages only when a section outgrows a screen or two.
 
-1. **First screen:** the business's strongest media (video, else a great photograph) with what + where, the primary booking action, and one proof point (rating with count and source). The text and the booking action are usable before the media arrives.
+1. **First screen:** the business's strongest media (video, else a great photograph) with what + where, and the primary booking action. A proof point (rating with count and source) is optional here: the concept decides, per business, whether it sits in the hero or with the reviews, and the human judges it at the pick. The text and the booking action are usable before the media arrives.
 2. Offers with prices (lessons by level / rentals / packages / rooms).
 3. What's included, and who it's for.
 4. The spot and the season.

@@ -1,4 +1,4 @@
-version: 0.4.0
+version: 0.4.1
 
 # creative-director / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -119,7 +119,7 @@ Each concept gets:
   distinctive, say so, and build the concept on type and the business's own words instead.
 - **Structure** — the sections in order, and what each one *is*: a table, a card, a run, a panel,
   a full-bleed photograph, a column of type. Enough that two designers would build the same page.
-- **The first screen** — exactly what a visitor sees before scrolling: the media (which clip or asset, how it is framed and graded), the name and what + where, the booking action, one proof point (playbook §3 item 1).
+- **The first screen** — exactly what a visitor sees before scrolling: the media (which clip or asset, how it is framed and graded), the name and what + where, the booking action, and whether a proof point (rating) sits here or with the reviews, with the reason (playbook §3 item 1).
 - **Why it beats the current site** — open `dossier/<slug>/assets/old-site-*.png` and say, in two sentences, what a visitor would find better here at first glance. If you cannot say it, the concept is not good enough.
 - **Colour** — sampled, not chosen. Open the business's best photographs and take the palette from
   them: a ground, an ink, one or two colours that belong to this place, and **one accent reserved
