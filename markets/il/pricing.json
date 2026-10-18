@@ -1,0 +1,64 @@
+{
+  "market": "il",
+  "title": "Israel custom sites",
+  "status": "suggestion",
+  "drafted": "2026-10-18",
+  "updated": "2026-10-18",
+  "currency": "ILS",
+  "vat": { "rate": 0.18, "since": "2025-01-01", "convention": "All prices are before VAT and are written \"+ מע״מ\" on any quote. Business clients reclaim it." },
+  "note": "Claude's estimate, for Shahar to correct. It prices one standalone custom site in Hebrew (RTL), sized like mutag-meitiv: 10–15 pages, the blog moved over from Wix, a CMS with team / services / case studies, motion and interaction. The market ranges come from the sources below. Our numbers are a judgement placed inside those ranges, not a fact. All amounts are before VAT (18% since 2025-01-01). Inbound one-off pitches carry no price (market.md); this list is for Shahar's own quotes.",
+  "offers": [
+    { "name": "Self-hosted with CMS", "default": true, "one_time": "18,000 site + 2,500 install and handover, + מע״מ", "recurring": "0 to us; ~€6–12 / month (+ their VAT) to their VPS host", "buys": "The designed site plus Payload + Postgres + the Astro builder + Caddy in one Docker Compose stack on the client's own VPS. We install it, verify publishing end to end, hand over every credential and a short runbook, then revoke our access. Nothing stays with Oneshot. 30 days of fixes after handover are included; after that, support is by the hour (300 / hour + מע״מ). Placed inside the 15,000–30,000 market range for a complex custom site and the 15,000–25,000 small-studio range for a business site." },
+    { "name": "Managed", "one_time": "14,000 setup + מע״מ", "recurring": "390 / month or 3,900 / year (2 months free), + מע״מ", "buys": "We host it and they edit it: Cloudflare Worker, SSL, a CMS login for their site only, nightly backups, a rebuild on every save, uptime and updates handled by us, up to 1 hour of our edits a month. They get the static zip on exit, no lock-in. Lower setup fee than self-hosted because there is no install or handover. The monthly fee sits just above the market's all-in subscriptions (349 / month) and WordPress care plans (300 / month)." },
+    { "name": "Static only", "one_time": "12,000 + מע״מ", "recurring": "0", "buys": "The static build plus a source zip that runs on any host (GoDaddy included). No CMS, so every content change is billed by the hour. Only for an owner who will never edit." },
+    { "name": "Domain (.co.il)", "one_time": "—", "recurring": "at cost, ~125 / year to an ISOC-IL accredited registrar", "buys": "Cloudflare Registrar does not sell .il or .co.il. The client registers or keeps the domain with an Israeli registrar in their own name, and we point its DNS at Cloudflare (managed) or at their VPS (self-hosted). With Managed, renewal handling is +30 / year. A .com can go through Cloudflare Registrar at cost." }
+  ],
+  "upsells": [
+    { "name": "English version", "price": "4,500 + מע״מ", "note": "A second locale on the same template (LTR mirror, hreflang, language switcher), with copy run through the full copy pipeline. Translation by the client, or quoted separately." },
+    { "name": "Arabic version", "price": "5,500 + מע״מ", "note": "RTL like Hebrew, but needs its own fonts and a native reviewer. Translation is a pass-through cost." },
+    { "name": "Accessibility (IS 5568, AA)", "price": "included in the build", "note": "The site is built to WCAG AA and ships with an accessibility statement page. Not an overlay plugin." },
+    { "name": "Independent accessibility audit", "price": "~3,000–6,000, pass-through", "note": "Manual review by an outside accessibility consultant, charged per unique template (the market quotes 800–2,000 per template; we expect ~4 templates). We fix whatever it finds in our template at no charge." },
+    { "name": "Blog migration from Wix", "price": "included up to 30 posts; then 40 / post + מע״מ", "note": "Posts, images, dates and old-URL 301 redirects so search rankings carry over. Claude's estimate; no source found." },
+    { "name": "Copywriting", "price": "3,500 + מע״מ", "note": "New Hebrew copy for the main pages through our copy pipeline (the market quotes 2,000–5,000). Not needed when we only refresh existing text." },
+    { "name": "Photography", "price": "pass-through, ~1,500–4,000", "note": "Booked with an Israeli photographer; we brief the shoot and do the art direction." },
+    { "name": "SEO + AI SEO refresh", "price": "1,200 per quarter, or 4,000 / year, + מע״מ", "note": "Stations 4h–4i re-run on the live content, with a report. Claude's estimate." },
+    { "name": "Support hours (self-hosted / static)", "price": "300 / hour, or 10 hours for 2,700, + מע״מ", "note": "Content changes, new sections, Payload and Docker updates. Sits at the experienced-freelancer rate (the market quotes 250–400 / hour)." },
+    { "name": "Extra page or campaign page", "price": "1,200 + מע״מ", "note": "One more page on the same template. Claude's estimate." }
+  ],
+  "costs": [
+    { "line": "Client VPS (self-hosted)", "cost": "€5.99 / month and up, paid by the client", "note": "Hetzner CAX11 after the 2026-06-15 price change; Payload + Postgres + builder may need the next plan up. Size the server before quoting." },
+    { "line": "Hosting (managed, Cloudflare Workers)", "cost": "0 on the free plan", "note": "Check the free-plan request limit against real traffic before promising it" },
+    { "line": "CMS server (managed, Oracle A1, shared)", "cost": "0 inside the Always Free quota", "note": "Pay-as-you-go above it" },
+    { "line": "Domain .co.il", "cost": "~125 / year", "note": "The client pays it directly; not resold" },
+    { "line": "Build tokens", "cost": "not tracked", "note": "A custom multi-page site runs more rounds than an outbound one-pager" },
+    { "line": "Our time", "cost": "~60–100 h per custom site (guess)", "note": "The real cost; not tracked. At 18,000 that is 180–300 / hour" }
+  ],
+  "terms": [
+    "All prices before VAT; every quote and invoice says \"+ מע״מ\" (18%).",
+    "Payment in three parts: 30% on signing, 40% on design approval, 30% at launch or handover. This is the standard market split.",
+    "Prices are in shekels, paid by bank transfer or Bit. A tax invoice is issued for every payment.",
+    "Self-hosted: handover is complete once the client confirms they can log in and publish, and we confirm our access is removed.",
+    "Managed: month to month, cancel any time; on exit the client gets the static zip and their domain stays theirs. The managed price is fixed for 12 months.",
+    "The quote includes two rounds of design revisions; further rounds are billed by the hour."
+  ],
+  "open": [
+    "The numbers: keep, raise or lower? Market ranges are 15,000–30,000 for a complex custom site and 8,000–25,000 for a 5–7 page site.",
+    "Is Shahar an עוסק מורשה (charges 18% VAT) or an עוסק פטור (charges no VAT)? This changes every quote.",
+    "Should the install and handover fee be separate, or folded into the site price?",
+    "How many days of included fixes after handover: 30, or more?",
+    "Should we resell .co.il domains through an accredited registrar, or always have the client register in their own name?",
+    "Payment: is bank transfer plus Bit enough, or do we also need a card link (e.g. through an Israeli invoicing service)?"
+  ],
+  "sources": [
+    { "name": "Itay Ost, website pricing guide (Hebrew)", "url": "https://www.itayost.com/blog/website-pricing-guide-2025", "date": "2025-01-11, updated 2026-07-11", "says": "Before VAT. 5–7 page branding site: 8,000–15,000 (freelancer), 15,000–25,000 (small studio), 30,000–50,000 (large studio). Advanced business site: 15,000–25,000 / 25,000–40,000. Maintenance 500–3,000 / month; content 2,000–5,000; photography 1,500–4,000; domain 50–120 / year. Hourly: 250–400 (experienced), 300–700 (studio). Payment 30/40/30." },
+    { "name": "The Boss, small-business website cost 2026", "url": "https://theboss.co.il/small-business-website-cost-2026/", "date": "2026-07-29", "says": "Multi-page branding site 4,000–6,000; custom complex site 15,000–30,000; ongoing cost 200–600 / month; one market example sells an all-in subscription at 349 / month and migration at 1,500." },
+    { "name": "Edens Design, website cost 2026", "url": "https://www.edensdesign.com/blog/website-cost-2026", "date": "2026-10", "says": "Freelancer template site 1,500–6,000; custom-code site 7,000–15,000; complex content site 15,000+; most quotes are before VAT." },
+    { "name": "Midrag, website building prices", "url": "https://www.midrag.co.il/Content/Price/23030", "date": "undated (looks like ~2024)", "says": "Template branding site 3,500–5,000; landing page 1,000–3,500; Wix hosting 63–133 / month; extra changes ~150 / hour. This is the low, template end of the market." },
+    { "name": "Savvy, WordPress maintenance", "url": "https://savvy.co.il/wordpress-maintenance", "date": "fetched 2026-10-18", "says": "Monthly WordPress maintenance from 300 + VAT, month to month." },
+    { "name": "Tabnav, cost of accessibility to IS 5568", "url": "https://tabnav.com/he/info-center/cost-of-website-accessibility-israel-5568", "date": "2025-10-10", "says": "Plugin plus scans 600–1,200 / year; manual adjustments or reviews 800–2,000 per unique template; cost scales with templates, not page count." },
+    { "name": "Green Invoice, VAT rise", "url": "https://www.greeninvoice.co.il/magazine/העלאת-מעמ/", "date": "2024-10-20 (effective 2025-01-01)", "says": "VAT rose from 17% to 18% on 2025-01-01." },
+    { "name": "Cloudflare TLD policies", "url": "https://www.cloudflare.com/tld-policies/", "date": "fetched 2026-10-18", "says": "No .il or .co.il in Cloudflare Registrar's supported list." },
+    { "name": "Domain The Net (ISOC-IL accredited registrar), .co.il", "url": "https://www.domainthenet.com/en/tld/co.il.aspx", "date": "fetched 2026-10-18", "says": ".co.il registration 125 / year (the page does not say whether VAT is included)." },
+    { "name": "PrivateDevOps, Hetzner June 2026 repricing", "url": "https://privatedevops.com/news/hetzner-june-2026-cloud-price-increase-what-to-do", "date": "2026-06-15", "says": "For new orders: CAX11 went from €4.49 to €5.99 / month, CX23 from €3.99 to €5.49." }
+  ]
+}

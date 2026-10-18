@@ -57,7 +57,8 @@ main{min-width:0;padding:0 24px 48px}
 .top h1{font-size:28px;font-weight:700;letter-spacing:-.015em;line-height:1;outline-offset:6px}
 .top .sub{font-size:13px;color:var(--ink3);margin-left:14px;font-weight:500}
 .controls{display:flex;gap:12px;align-items:center}
-.wf-chips{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto;margin-right:12px}
+.wf-chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 var(--gap)}
+.wf-side{display:grid;gap:6px;margin:0 8px 20px;font-size:13px;font-weight:600;color:var(--ink3)}.wf-side select{font:inherit;font-size:15px;font-weight:700;color:var(--ink);background:var(--t5);border:0;border-radius:var(--r2);padding:10px 12px;cursor:pointer}.wf-side select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 .wf-chips button{font:inherit;font-size:14px;font-weight:600;height:36px;padding:0 14px;border-radius:999px;border:0;background:var(--card);box-shadow:var(--shadow);color:var(--ink2);cursor:pointer}
 .wf-chips button[aria-pressed=true]{background:var(--acc);color:#fff}
 .wf-chips button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
@@ -114,7 +115,7 @@ main{min-width:0;padding:0 24px 48px}
 .ov-rows{display:grid;grid-template-columns:calc(var(--tw) + var(--rp)) minmax(0,1fr) auto;grid-auto-rows:1fr;column-gap:24px}
 .ov-row{grid-column:1/-1;display:grid;grid-template-columns:subgrid;grid-template-rows:auto auto auto;align-content:center;align-items:center;row-gap:8px;padding:16px var(--rp);border-top:1px solid var(--ln)}
 .ov-row:first-child{border-top:0}
-.ov-row.empty{display:block;color:var(--ink3)}
+.ov-rows>.ov-row.empty{display:block;color:var(--ink3);padding:20px var(--rp)}
 .ov-thumb{grid-column:1;grid-row:1/4;align-self:center;display:block;width:var(--tw);height:var(--th);border-radius:8px;overflow:hidden;border:1px solid var(--ln);background:var(--soft);position:relative}
 .ov-thumb img{width:100%;height:100%;object-fit:cover;object-position:top}
 .ov-thumb .noshot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;color:var(--ink3)}
@@ -617,6 +618,7 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 
 <aside class="side" aria-label="Views">
   <div class="logo"><i aria-hidden="true"></i><span>OneShot</span></div>
+  <label class="wf-side" id="wf-side-wrap" hidden><span>Workflow</span><select id="wf-side"></select></label>
   <nav class="nav" aria-label="Main">
     <button type="button" data-view="overview" aria-current="page">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2.5"/><rect x="13" y="3" width="8" height="8" rx="2.5"/><rect x="3" y="13" width="8" height="8" rx="2.5"/><rect x="13" y="13" width="8" height="8" rx="2.5"/></svg>
@@ -661,7 +663,6 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 <main id="main">
   <header class="top">
     <div style="display:flex;align-items:baseline"><h1 id="title" tabindex="-1">Overview</h1><span class="sub" id="title-sub"></span></div>
-    <div class="wf-chips" id="wf-chips" role="group" aria-label="Workflow" hidden></div>
     <div class="controls" id="controls">
       <label class="psel"><span class="sr">Run</span>
         <svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4h12M2 8h8M2 12h10"/></svg>
@@ -670,6 +671,7 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
       </label>
     </div>
   </header>
+  <div class="wf-chips" id="wf-chips" role="group" aria-label="Workflow" hidden></div>
 
 
   <section class="view on" id="view-overview" aria-label="Overview">
@@ -821,9 +823,9 @@ function scoped(d){
   if(!WF||!(d.workflows||[]).some(w=>w.id===WF))return d;
   const runWf=new Map(d.runs.map(r=>[r.run_id,r.workflow])),inWf=x=>runWf.get(x.run_id)===WF;
   const w=d.workflows.find(x=>x.id===WF);
-  return {...d,businesses:d.businesses.filter(b=>b.workflow===WF),prospects:(d.prospects||[]).filter(inWf),runs:d.runs.filter(r=>r.workflow===WF),decisions:(d.decisions||[]).filter(inWf),kpis:w.kpis,funnel:w.kpis.funnel};
+  return {...d,pricing:w.pricing??null,businesses:d.businesses.filter(b=>b.workflow===WF),prospects:(d.prospects||[]).filter(inWf),runs:d.runs.filter(r=>r.workflow===WF),decisions:(d.decisions||[]).filter(inWf),kpis:w.kpis,funnel:w.kpis.funnel};
 }
-function setData(d){RAW=d;if(WF===undefined||(WF&&!(d.workflows||[]).some(w=>w.id===WF)))WF=multiWf()?(d.run.workflow||d.workflows[0].id):null;D=scoped(d);bizMap.clear();for(const b of RAW.businesses)if(!bizMap.has(b.slug))bizMap.set(b.slug,b.name);/* newest run first */bizMap.set('dashboard','Dashboard');bizMap.set('-','Project')}
+function setData(d){RAW=d;if(WF===undefined||(WF&&!(d.workflows||[]).some(w=>w.id===WF)))WF=multiWf()?((d.workflows.find(w=>w.id==='lk-surf')||d.workflows[0]).id):null;D=scoped(d);bizMap.clear();for(const b of RAW.businesses)if(!bizMap.has(b.slug))bizMap.set(b.slug,b.name);/* newest run first */bizMap.set('dashboard','Dashboard');bizMap.set('-','Project')}
 setData(D);
 const bizName=s=>bizMap.get(s)||s||'—';
 const shortName=s=>bizName(s).replace(' Surf Ahangama','').replace(' Surf Hostel','').replace('The ','');
@@ -878,13 +880,18 @@ const runSel=$('#run');
 function renderRunSel(){runSel.innerHTML='';runSel.append(el('option',{value:'all',text:'All runs'}));for(const r of D.runs)runSel.append(el('option',{value:r.run_id,text:`${runShort(r.run_id)}${r.active?` · active · ${r.operator?opName(r.operator):'no operator'}`:r.status==='closed'?' · closed':/^test-/.test(r.run_id)?' · test':' · superseded'}`}));if(state.run!=='all'&&!D.runs.find(r=>r.run_id===state.run))state.run='all';runSel.value=state.run}
 renderRunSel();runSel.onchange=()=>{state.run=runSel.value;render()};
 
+// The workflow selector, twice so it is not missed (Shahar, 2026-10-18): chips under the section title
+// and a drop-down in the side menu; both set WF. Needs you and Agents are the same for every workflow.
+const NO_WF=['needs','agents'];
+function setWf(id){WF=id;D=scoped(RAW);if(state.run!=='all'&&!D.runs.find(r=>r.run_id===state.run))state.run='all';render()}
 function renderChips(){
-  const box=$('#wf-chips');box.innerHTML='';box.hidden=!multiWf()||state.view==='needs';if(box.hidden)return;
-  // one chip per workflow and no "All": every view belongs to one workflow (Shahar, 2026-10-18)
-  for(const[id,txt]of RAW.workflows.map(w=>[w.id,wfLabel(w.id)])){
-    const b=el('button',{type:'button','aria-pressed':String(WF===id),text:txt});
-    b.onclick=()=>{WF=id;D=scoped(RAW);if(state.run!=='all'&&!D.runs.find(r=>r.run_id===state.run))state.run='all';render()};box.append(b);
+  const box=$('#wf-chips'),side=$('#wf-side'),wrap=$('#wf-side-wrap');box.innerHTML='';side.innerHTML='';
+  const off=!multiWf()||NO_WF.includes(state.view);box.hidden=off;wrap.hidden=!multiWf();
+  for(const w of RAW.workflows){
+    side.append(el('option',{value:w.id,text:wfLabel(w.id)}));
+    const b=el('button',{type:'button','aria-pressed':String(WF===w.id),text:wfLabel(w.id)});b.onclick=()=>setWf(w.id);box.append(b);
   }
+  side.value=WF||'';side.disabled=NO_WF.includes(state.view);side.onchange=()=>setWf(side.value);
 }
 function renderChrome(){
   const f=$('#side-foot');f.innerHTML='';
@@ -1657,7 +1664,7 @@ function renderSites(){
 /* ---------- Agents ---------- */
 // Views kept in their own files (src/agents-view.html, src/decisions-view.html) register a render
 // function on window.OSViews and get this page's data and helpers through OSAPI.
-const OSAPI={get D(){return D},get LIVE(){return LIVE},state,el,sv,modal,openDoc,mdToHtml,copyText,fileURL,go,refresh:()=>refresh(),opName,bizName,dShort,tShort,runShort,live,thumbSrc,prNote};
+const OSAPI={get D(){return D},get RAW(){return RAW},get LIVE(){return LIVE},state,el,sv,modal,openDoc,mdToHtml,copyText,fileURL,go,refresh:()=>refresh(),opName,bizName,dShort,tShort,runShort,live,thumbSrc,prNote};
 window.OSAPI=OSAPI;
 function renderPricing(){if(window.OSViews?.pricing)window.OSViews.pricing(OSAPI)}
 function renderAgents(){if(window.OSViews?.agents)return window.OSViews.agents(OSAPI);if(!$("#agg-chart"))return;

@@ -131,7 +131,7 @@ function readDossier(slug) {
   for (const [platform, r] of Object.entries(d.reviews ?? {})) {
     if (r && typeof r === 'object' && typeof r.rating === 'number') ratings[platform] = { rating: r.rating, count: r.count ?? null, fetched_at: r.fetched_at ?? null };
   }
-  return { name: val(d.business?.name) ?? null, type: d.businessType ?? null, harvested_at: d.harvested_at ?? null, ratings, gaps: Array.isArray(d.gaps) ? d.gaps.length : null };
+  return { name: val(d.business?.name) ?? null, type: val(d.businessType) ?? null, harvested_at: d.harvested_at ?? null, ratings, gaps: Array.isArray(d.gaps) ? d.gaps.length : null };
 }
 
 function readDeploy(slug) {
@@ -533,9 +533,9 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     ((expenses.vendors[e.vendor] ??= {})[cur] = (expenses.vendors[e.vendor][cur] ?? 0) + e.amount);
   }
 
-  // Price list suggestion per market (docs/pricing.md); null when the file is missing or not JSON.
-  let pricing = null;
-  try { pricing = JSON.parse(read('markets/lk/pricing.json') ?? 'null'); } catch { pricing = null; }
+  // Price list suggestion per market (markets/<id>/pricing.json); null when the file is missing or not JSON.
+  const pricingOf = (market) => { try { return JSON.parse(read(`markets/${market}/pricing.json`) ?? 'null'); } catch { return null; } };
+  const pricing = pricingOf('lk');
 
   // ---- ledger view: every business ever reviewed, once, in its newest run --------------------------
   const cands = readCandidates();
@@ -579,12 +579,13 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     return { run_id: r, businesses: bs.length, groups, first_ts: ts[0], last_ts: ts.at(-1), current: r === run.run_id, active: isActive(r), operator: file?.operator ?? null, status: file ? file.status : null, market: w.market, vertical: w.vertical, engagement: w.engagement, workflow: w.workflow, kpis: kpis_by_run[r] ?? kpisFor(r) };
   });
   // One entry per workflow (market × vertical) with at least one run: its runs and summed KPIs.
-  const workflows = [...new Set(runs.map((r) => r.workflow))].sort().map((id) => {
+  // Surf | Sri-Lanka first: it is the default workflow (Shahar, 2026-10-18).
+  const workflows = [...new Set(runs.map((r) => r.workflow))].sort((a, b) => (a === 'lk-surf' ? -1 : b === 'lk-surf' ? 1 : a.localeCompare(b))).map((id) => {
     const rs = runs.filter((r) => r.workflow === id);
     // The pack files its runs load (tools/prompt.mjs); a stub has only its title comment.
     const packFiles = (dir) => (existsSync(join(ROOT, dir)) ? readdirSync(join(ROOT, dir)).sort().map((f) => { const t = read(`${dir}/${f}`) ?? ''; return { file: `${dir}/${f}`, stub: f.endsWith('.md') && !t.split('\n').some((l) => l.trim() && !l.trim().startsWith('#')) }; }) : null);
     const packs = { market: packFiles(`markets/${rs[0].market}`), vertical: packFiles(`verticals/${rs[0].vertical}`) };
-    return { id, label: workflowLabel(id), market: rs[0].market, vertical: rs[0].vertical, packs, engagements: [...new Set(rs.map((r) => r.engagement))], runs: rs.map((r) => r.run_id), active_runs: rs.filter((r) => r.active).map((r) => r.run_id), kpis: kpisOf(businesses.filter((b) => b.workflow === id)) };
+    return { id, label: workflowLabel(id), pricing: pricingOf(rs[0].market), market: rs[0].market, vertical: rs[0].vertical, packs, engagements: [...new Set(rs.map((r) => r.engagement))], runs: rs.map((r) => r.run_id), active_runs: rs.filter((r) => r.active).map((r) => r.run_id), kpis: kpisOf(businesses.filter((b) => b.workflow === id)) };
   });
 
   return {

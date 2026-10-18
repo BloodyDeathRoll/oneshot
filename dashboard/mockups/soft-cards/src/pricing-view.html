@@ -1,4 +1,4 @@
-<!-- Pricing view (2026-10-17): the price-list suggestion from markets/lk/pricing.json (api.D.pricing); registers window.OSViews.pricing(api). Built into the page by build.mjs. Read-only. Class names carry the prv- prefix. -->
+<!-- Pricing view (2026-10-17): the price-list suggestion from markets/<market>/pricing.json of the selected workflow (api.D.pricing); registers window.OSViews.pricing(api). Built into the page by build.mjs. Read-only. Class names carry the prv- prefix. -->
 <style>
 .prv{display:grid;gap:var(--gap)}
 .prv-intro{font-size:16px;line-height:26px;color:var(--ink2);max-width:78ch;margin:0;text-wrap:pretty}
@@ -45,9 +45,10 @@ function render(api){
   const root=document.getElementById('prv');if(!root)return;
   root.innerHTML='';
   const P=D.pricing;
-  if(!P){root.append(el('section',{class:'card'},el('p',{class:'prv-intro',text:'No price list yet: markets/lk/pricing.json is missing.'})));return}
+  if(!P){root.append(el('section',{class:'card'},el('p',{class:'prv-intro',text:'No price list yet for this workflow: markets/<market>/pricing.json is missing.'})));return}
   const h=el('p',{class:'prv-intro'});
   h.append(el('b',{text:P.title+', in '+P.currency}),el('span',{class:'prv-tag',text:P.status||'suggestion'}),el('br'),P.note||'');
+  if(P.vat)h.append(el('br'),`VAT ${Math.round(P.vat.rate*100)}% since ${P.vat.since}. ${P.vat.convention||''}`);
   root.append(h);
   const offers=el('div',{class:'prv-offers'});
   for(const o of P.offers||[]){
@@ -60,6 +61,7 @@ function render(api){
   root.append(card(api,'What it costs us, per client',table(api,['Line','Cost','Note'],(P.costs||[]).map(c=>[c.line,c.cost,c.note]))));
   root.append(card(api,'Terms',el('ul',{},...(P.terms||[]).map(t=>el('li',{text:t})))));
   root.append(card(api,'Open for you to decide',el('ul',{},...(P.open||[]).map(t=>el('li',{text:t})))));
+  if((P.sources||[]).length)root.append(card(api,'Sources',el('ul',{},...P.sources.map(s=>el('li',{},el('a',{href:s.url,target:'_blank',rel:'noopener',text:s.name}),` (${s.date||'undated'}): ${s.says||''}`)))));
 }
 window.OSViews=window.OSViews||{};
 window.OSViews.pricing=function(api){render(api)};

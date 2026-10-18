@@ -12,20 +12,22 @@
 //
 // Secrets stay out of git (like ~/.oneshot/cf-token):
 //   token        NOTION_TOKEN, else ~/.oneshot/notion-token (an internal integration secret)
-//   database id  NOTION_DATABASE_ID, else ~/.oneshot/notion-db (written by `setup`)
+//   database id  one database per workflow (Shahar, 2026-10-18): Surf | Sri-Lanka (lk-surf) in
+//                NOTION_DATABASE_ID, else ~/.oneshot/notion-db (written by `setup`); any other workflow in
+//                ~/.oneshot/notion-db-<workflow> (Custom: notion-db-custom). A workflow without one is skipped.
 // The integration must be shared with the parent page (Notion: page ⋯ → Connections).
 
 import { readFileSync, writeFileSync, existsSync, realpathSync } from 'node:fs';
 import { join } from 'node:path';
 import { homedir } from 'node:os';
 import { fileURLToPath } from 'node:url';
-import { workflowLabel } from '../dashboard/data.mjs';
 
 const API = 'https://api.notion.com/v1';
 const VERSION = '2022-06-28';
 const HOME = join(homedir(), '.oneshot');
 const TOKEN_FILE = join(HOME, 'notion-token');
 const DB_FILE = join(HOME, 'notion-db');
+export const dbFileOf = (workflow) => (workflow === 'lk-surf' ? DB_FILE : join(HOME, `notion-db-${workflow}`));
 
 const secret = (env, file) => process.env[env]?.trim() || (existsSync(file) ? readFileSync(file, 'utf8').trim() : '');
 
@@ -34,8 +36,6 @@ export const SCHEMA = {
   Name: { title: {} },
   Slug: { rich_text: {} },
   Run: { select: {} },
-  // the workflow's name, as the dashboard's workflow chips: "Surf | Sri-Lanka" or "Custom"
-  Workflow: { select: {} },
   State: { select: {} },
   Verdict: { select: {} },
   Rate: { number: {} },
@@ -75,7 +75,6 @@ export function toProperties(b, p = null) {
     Name: { title: [{ text: { content: b.name || b.slug } }] },
     Slug: text(b.slug),
     Run: select(b.run_id),
-    Workflow: select(workflowLabel(b.workflow)),
     State: select(STATE_LABEL[b.state] ?? b.state),
     Verdict: select(verdictOf(b, p)),
     Rate: { number: Number.isFinite(b.presence) ? b.presence : null },
@@ -139,30 +138,34 @@ async function addColumn(token, db, name) {
   console.log(`notion: column "${name}" added`);
 }
 
-async function sync(token, db, dryRun) {
+async function sync(token, dryRun) {
   const { buildData } = await import('../dashboard/data.mjs');
   const { businesses, prospects } = buildData();
   const prospectOf = new Map(prospects.map((p) => [keyOf(p), p]));
   if (dryRun) {
-    for (const b of businesses) console.log(`${keyOf(b)}\t${b.state}\t${verdictOf(b, prospectOf.get(keyOf(b)))}\t${b.presence ?? ''}`);
+    for (const b of businesses) console.log(`${b.workflow}\t${keyOf(b)}\t${b.state}\t${verdictOf(b, prospectOf.get(keyOf(b)))}\t${b.presence ?? ''}`);
     console.log(`${businesses.length} businesses (dry run, nothing sent)`);
     return;
   }
-  // Only the columns the database has are written: a column deleted in Notion stays deleted
-  // (Shahar, 2026-10-15). Run and Slug are how a row is found, so those two must exist.
-  const have = new Set(Object.keys((await notion(token, 'GET', `/databases/${db}`)).properties));
-  for (const c of ['Run', 'Slug']) if (!have.has(c)) throw new Error(`the database has no "${c}" column; rows are matched on Run + Slug`);
-  const skipped = Object.keys(SCHEMA).filter((c) => !have.has(c));
-  if (skipped.length) console.log(`notion: not in the database, skipped: ${skipped.join(', ')}`);
-  const rows = await existingRows(token, db);
-  let created = 0, updated = 0;
-  for (const b of businesses) {
-    const properties = Object.fromEntries(Object.entries(toProperties(b, prospectOf.get(keyOf(b)))).filter(([c]) => have.has(c)));
-    const id = rows.get(keyOf(b));
-    if (id) { await notion(token, 'PATCH', `/pages/${id}`, { properties }); updated++; }
-    else { await notion(token, 'POST', '/pages', { parent: { database_id: db }, properties }); created++; }
+  for (const wf of [...new Set(businesses.map((b) => b.workflow))].sort()) {
+    const db = wf === 'lk-surf' ? secret('NOTION_DATABASE_ID', DB_FILE) : secret('', dbFileOf(wf));
+    if (!db) { console.log(`notion: ${wf}: no database (${dbFileOf(wf)}), skipped`); continue; }
+    // Only the columns the database has are written: a column deleted in Notion stays deleted
+    // (Shahar, 2026-10-15). Run and Slug are how a row is found, so those two must exist.
+    const have = new Set(Object.keys((await notion(token, 'GET', `/databases/${db}`)).properties));
+    for (const c of ['Run', 'Slug']) if (!have.has(c)) throw new Error(`${wf}: the database has no "${c}" column; rows are matched on Run + Slug`);
+    const skipped = Object.keys(SCHEMA).filter((c) => !have.has(c));
+    if (skipped.length) console.log(`notion: ${wf}: not in the database, skipped: ${skipped.join(', ')}`);
+    const rows = await existingRows(token, db);
+    let created = 0, updated = 0;
+    for (const b of businesses.filter((x) => x.workflow === wf)) {
+      const properties = Object.fromEntries(Object.entries(toProperties(b, prospectOf.get(keyOf(b)))).filter(([c]) => have.has(c)));
+      const id = rows.get(keyOf(b));
+      if (id) { await notion(token, 'PATCH', `/pages/${id}`, { properties }); updated++; }
+      else { await notion(token, 'POST', '/pages', { parent: { database_id: db }, properties }); created++; }
+    }
+    console.log(`notion: ${wf}: ${created} created, ${updated} updated`);
   }
-  console.log(`notion: ${created} created, ${updated} updated`);
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === realpathSync(process.argv[1])) {
@@ -170,14 +173,16 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === realpathSync(process.a
   const dryRun = process.argv.includes('--dry-run');
   try {
     const token = secret('NOTION_TOKEN', TOKEN_FILE);
-    if (cmd === 'sync' && dryRun) await sync(null, null, true);
+    if (cmd === 'sync' && dryRun) await sync(null, true);
     else if (!token) throw new Error(`no token: set NOTION_TOKEN or write it to ${TOKEN_FILE}`);
     else if (cmd === 'setup') await setup(token, arg);
     else if (cmd === 'sync' || cmd === 'add-column') {
-      const db = secret('NOTION_DATABASE_ID', DB_FILE);
-      if (!db) throw new Error(`no database: run \`node tools/notion.mjs setup <parent-page-id>\` or set NOTION_DATABASE_ID`);
-      if (cmd === 'sync') await sync(token, db, false);
-      else await addColumn(token, db, arg);
+      if (cmd === 'sync') await sync(token, false);
+      else {
+        const db = secret('NOTION_DATABASE_ID', DB_FILE);
+        if (!db) throw new Error(`no database: run \`node tools/notion.mjs setup <parent-page-id>\` or set NOTION_DATABASE_ID`);
+        await addColumn(token, db, arg);
+      }
     } else throw new Error('usage: node tools/notion.mjs setup <parent-page-id> | sync [--dry-run] | add-column <name>');
   } catch (e) { console.error(`notion: ${e.message}`); process.exit(1); }
 }

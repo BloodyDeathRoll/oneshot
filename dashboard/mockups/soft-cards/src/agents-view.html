@@ -1074,7 +1074,7 @@ function packsSection() {
 }
 function draw() {
   if (!api) return;
-  D = api.D; const root = document.getElementById('agv-root'); if (!root || !D) return;
+  /* agents are shared by every workflow (Shahar, 2026-10-18) */ D = api.RAW || api.D; const root = document.getElementById('agv-root'); if (!root || !D) return;
   const ae = document.activeElement;
   if (S.edit && ae && ae.id === 'agv-ed') return; // never rebuild under someone typing; the next render catches up
   hideTip();
