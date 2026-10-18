@@ -226,6 +226,34 @@ Prices: `/סדנאות-והרצאות` values (instruction); Brand & Breakfast i
 
 Media values `dossier:<id>` (team photos, award badge, logos, Instagram tiles) are `dossier.images[]` ids for the deployer to upload; no other media is chosen here (the designer picks photos).
 
+## Round 4 — series 2, organisations as the target (`mockup_extras.series2_organisations`)
+
+Brief 29 (Shahar, 2026-10-18: "make the organisations stand out as the target market"). **Additions only**: every series-1 field is unchanged; the lines below are alternatives the series-2 mockups may use instead of `tagline` / `copyBlocks[0]` and as extra blocks. Hadas's voice (first person singular, plural address). Client facts only. Search words from industry research, used as phrasing, not as facts: "מיתוג לעמותות" (C-audience-11), "הרצאות לארגונים", "סדנה לצוות" (C-audience-13). No line claims service to public bodies: their logos are "worked with" only (C-audience-12, C-position-08: paid work unknown).
+
+| Key | Copy | Rests on |
+|---|---|---|
+| `tagline_options[0]` | מיתוג לעמותות ולארגונים שרוצים להטיב עם העולם. | **written**. "עמותות": `award.value` (nonprofits gold, ברטלי, credited to מותג מיטיב), `team[3].role` "מיתוג עמותות ואירגונים חברתיים"; "ארגונים… מיטיב עם העולם": `services[1].card_text` "לבנות אירגון מצליח שגם מיטיב עם העולם". Phrase per C-audience-11 |
+| `tagline_options[1]` | אסטרטגיית מותג, הרצאות לארגונים וסדנה לצוות, למי שהמשמעות חשובה לו מעבר לשורת הרווח. | **written**. `business.tagline` "אסטרטגיות מותג"; home card "הדרכות צוות והרצאות…"; `offers[0]` "הרצאה בהזמנה"; `services[1].audience` "…המשמעות מעבר לשורת הרוות". Phrases per C-audience-13 |
+| `intro.heading` | לעמותות, לארגונים ולצוותים | **written**; same facts as above |
+| `intro` p1 | אני מלווה אנשי שינוי וארגונים שחשובה להם המשמעות מעבר לשורת הרווח, בין אם להשפעה סביבתית, חברתית או פנים-ארגונית. | `services[1].audience` (/process), her words, in her first person with "מלווה" from `team[0].bio` ("מלווה ומפתחת אסטרטגיה…"); "הרוות" written correctly here, as new copy |
+| `intro` p2 | מיתוג חדש או ריברנד לעמותה ולארגון, הרצאות לארגונים וסדנה לצוות: הכל במקום אחד. | **written**. `services[1].card_text` "מיתוג חדש או ריברנד"; "לעמותה": `award`, `team[3]`; talks and team workshops: home card, `offers[0]`, `offers[1].subtitle`. The one-method fact is not restated (stays in `method.intro`) |
+| `path.heading` | מה ארגונים מזמינים | **written**; groups 4 existing `services[]` rows (`path.services`) |
+| `path` p1 | תכנון אסטרטגי למותג: מיתוג חדש או ריברנד, כדי לבנות אירגון מצליח שגם מיטיב עם העולם. | `services[1].title` + `card_text`, near-verbatim |
+| `path` p2 | הרצאת הדגל BRANDS OF CHANGE: הרצאה בהזמנה על מותגים חברתיים וסביבתיים, עם ניתוחי מקרה מהעולם ומהארץ. | `offers[0].label`, `.format`, `.text` ("מותגים חברתיים וסביבתיים", "ניתוחי מקרה… בעולם ובארץ") |
+| `path` p3 | הדרכות צוות: סדנה לצוות על איך חושב מותג, למשל ריטריט יום לאנשי.ות צוות בתחום הטיפול. | home card "הדרכות צוות"; `offers[1].text` "בסדנת המיתוג תחשפו לאיך חושב מותג", `.subtitle`. No other team workshop is named in the dossier |
+| `path` p4 | השתלמות מקצועית לאנשי מקצוע מתחום הקריאייטיב, שיווק, מוצר ואסטרטגיה, בשיטת Brand the Change. | `offers[6].label`, `.audience`, `.includes` ("קנבס המותג של BTC") |
+| `path.ctaText` | היי הדס, אני פונה בשם ארגון. אשמח לשמוע על הרצאה, סדנה לצוות או תכנון אסטרטגי למותג. | **EDIT (e), written**: `contact.whatsapp`; names the three things organisations book |
+| `proof.heading` | מודה על הזכות להטיב ב: | `client_logos.heading`, verbatim (her own "worked with" framing) |
+| `proof.award` | פרס המיתוג הישראלי 2022 של Brand Academy: זהב בקטגוריית עמותות, על המיתוג של ברטלי — נוער בתנועה. | `award.value` (name, organiser, year, category, place, project, credited_to), `award.source_url`; brief 23. Same fact as `awards[0]`: use one of the two per page |
+| `proof.judgesQuote` + attribution | the judges' text, verbatim | `award.value.judges_text` (brandawards.co.il winners 2022); attribution "מנימוקי השופטים, פרס המיתוג הישראלי 2022" written |
+| `proof.worked_with` | עיריית חיפה, איגוד ערים אזור מפרץ חיפה, מועצה אזורית חוף הכרמל, כפר יונה, אוניברסיטת רייכמן, מכון מנדל למנהיגות, עמותת ברטלי — נוער בתנועה ועוד. | `clientLogos[]` names (img-044, 056, 050, 051, 053, 045, 049), public and academic bodies first (C-audience-12 list). A list under her heading only: no "projects", "clients" or "paid" wording |
+| `proof.talks[0]` | ב-2024 הוזמנתי לדבר בכנס המיתוג הישראלי על מותגים חברתיים שהוקמו מתוך דרייב לעשות שינוי מיטיב בעולם. | `instagram.posts[C5ynxOXNEJF].caption` (2024-04-15), her words, "בשבוע שעבר" → "ב-2024" |
+| `proof.talks[1]` | ב-2025, בכפר בלום, קיימתי סדנה לבניית מפת החזון של המרחב הצפוני, לקבוצת מנהיגים ומנהיגות ממגזרים שונים, בהקמה ובהפקה של קרן מנדל למנהיגות. | `instagram.posts[DMLlsaXNo1u].caption` (2025-07-16): "זכיתי לקיים סדנת לבניית מפת החזון של המרחב הצפוני", "בכפר בלום", "מנהיגים ומנהיגות ממגזרים…", "תודה ל #קרןמנדל למנהיגות על ההקמה וההפקה". Year = post date |
+| `proof.talks[2]` | בתוכנית פסטיבל קיימות ואנשים 3 (2025): הרצאה שלי על תהליך האסטרטגיה של איזור התעשיה המתחדש במעיין צבי. | `instagram.posts[DILN8yiNoV3].caption` (2025-04-07), an announcement ("חמישי הקרוב… אספר"), so the line states the programme, not that the talk took place. Ties to the "המעיין — א.ת מתחדש מעיין צבי" logo (img-046). Owner may confirm |
+| `proof.instagramLinks` | the three posts | `instagram.posts[].url`, for the template to link each line to its source |
+
+Not written (no client fact): any service *for public bodies* (municipal branding, tenders), any team-workshop title beyond the therapists' retreat, client counts, and any claim that a logo was a paid project. Owner items: which public and academic logos were paid strategy or branding work (C-audience-12); a real Bartali case study (gap 9).
+
 ## Client typos kept verbatim (owner / copyeditor to decide)
 
 - strategic-planning `audience` and body p4: "שורת הרוות" (→ הרווח).
