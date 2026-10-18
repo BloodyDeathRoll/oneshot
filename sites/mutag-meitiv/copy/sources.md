@@ -84,7 +84,7 @@ Cap re-check (F2): no paragraph is now left out for the `copyBlocks` cap. Still 
 | · p15 | "ניתן לקבוע איתי שיחת הכרות בzoom (ללא תשלום)." — **EDIT (e)**: "בלחיצה על הכפתור" dropped (the button is the template's) |
 | · p16 | `quotes_on_site[0]` (Kate Raworth), verbatim. Not used: "markus-spiske unsplash" (photo credit of a stock image) |
 | strategic-planning · `title` "תכנון אסטרטגי למותג" | **EDIT (b)**: `services[1].name` "תכנון אסטרטגי" qualified |
-| · `summary` | **EDIT (b), research R2**: prefix "בניית אסטרטגיה עסקית ומיתוגית: " (a business qualifier beside "תכנון אסטרטגי"; direction audience bullet 4, C-audience-03 — the search term "בניית אסטרטגיה עסקית"), then `services[1].card_text` line 2, verbatim (line 1 "BRAND THE CHANGE" is the card's label). Page `<title>`/meta: `mockup_extras.seoHeadHint` for the SEO station |
+| · `summary` | **EDIT (b), research R2**: `services[1].card_text` line 2 verbatim, then the closing fragment "בניית אסטרטגיה עסקית ומיתוג, יחד." (humanizer round 2, V1: was a colon prefix; a business qualifier beside "תכנון אסטרטגי"; direction audience bullet 4, C-audience-03 — the search term "בניית אסטרטגיה עסקית"). Card line 1 "BRAND THE CHANGE" is the card's label. Page `<title>`/meta: `mockup_extras.seoHeadHint` for the SEO station |
 | · `audience` | `services[1].audience`, verbatim (typo "הרוות" kept — list below) |
 | · `ctaText` | **EDIT (e), written** |
 | · `bookingUrl` | `services[1].cta` (calendly.com/hadas) |

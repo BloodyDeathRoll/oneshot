@@ -59,3 +59,13 @@ published date, `gaps[]`).
 - btc-professionals title "השתלמות מקצועית לאנשי מקצוע" repeats "מקצוע"; it is her label split at the dash. A shorter title is her call.
 - `method.intro` p2 "מתודולוגית" (→ "מתודולוגיית" in full spelling) is her wording, kept.
 - The client-typo list in `sources.md` stands; none was fixed here.
+
+## Round 2 (copyeditor review.md round 2, V1) — 2026-10-18
+
+Draft for this round kept as `he.draft.json` (it now holds the copywriter's round-2 file).
+
+| Field | Draft | Now | Why |
+|---|---|---|---|
+| strategic-planning `summary` | בניית אסטרטגיה עסקית ומיתוגית: מיתוג חדש או ריברנד - לבנות אירגון מצליח שגם מיטיב עם העולם דרך תכנון אסטרטגיית מותג מיטיב. | מיתוג חדש או ריברנד - לבנות אירגון מצליח שגם מיטיב עם העולם דרך תכנון אסטרטגיית מותג מיטיב. בניית אסטרטגיה עסקית ומיתוג, יחד. | V1: a keyword label and colon glued before her card line, with "מיתוגית" next to "מיתוג". Her sentence now leads, verbatim; the business qualifier ("בניית אסטרטגיה עסקית", C-audience-03) follows as a short closing fragment. 125 chars ≤ 200. No fact added: strategy and branding are both what `/process` sells (R2). |
+
+Glanced, unchanged: R3 `credentials[0].label` (plain and concrete) and R5 `copyBlocks[4]` p2 "רוצים להתחיל בצעד קטן? …" (her plural address; "ההכרות" twice is the two offers' own names). Neither is clearly unnatural.
