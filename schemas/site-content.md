@@ -272,7 +272,7 @@ easily"). Owner tabs added after "Text": Services · Method · Team · Case stud
 | Field | Type | Required | Localized | Edited by | Constraints | Example |
 |---|---|---|---|---|---|---|
 | `services[]` | array (≤ 20 rows) | no | – | owner | every offer: the leading services and the secondary ones; order within a group is the owner's | |
-| `services[].slug` | text | **yes** | no | owner | `^[a-z0-9-]{2,40}$`, unique in the array; the page URL when `page` is set | `"personal-branding"` |
+| `services[].slug` | text | **yes** | no | owner | `^[a-z0-9-]{2,40}$`, unique in the array; never a reserved top-level path (`blog`, `work`, `accessibility`, `podcast`, `contact`, `about`, `team`, `services`, `courses`, `talks`, `en`, `he`, `api`, `media`, `_astro`, and any name the template uses for a page of its own); the page URL when `page` is set | `"personal-branding"` |
 | `services[].group` | select: `lead` \| `talks_workshops` \| `courses` \| `other` | **yes** | no | owner | where the template lists it; `lead` services get their own page and a home block | `"lead"` |
 | `services[].title` | text | **yes** | **yes** | owner | ≤ 80 | `"מיתוג אישי לעסק"` |
 | `services[].summary` | text | **yes** | **yes** | owner | ≤ 200; the card line | |
@@ -305,7 +305,7 @@ easily"). Owner tabs added after "Text": Services · Method · Team · Case stud
 | `team[].url` | text, `https://` URL | no | no | owner | a portfolio or LinkedIn page | |
 | `team[].founder` | checkbox | no | no | owner | at most one row; the template may give it the larger place | `true` |
 | `caseStudies[]` | array (≤ 24 rows) | no | – | owner | one project each; `/work/<slug>` | |
-| `caseStudies[].slug` | text | **yes** | no | owner | as `services[].slug` | `"bartali"` |
+| `caseStudies[].slug` | text | **yes** | no | owner | `^[a-z0-9-]{2,40}$`, unique in the array; never `template` (the case-study template page is `/work/template`) | `"bartali"` |
 | `caseStudies[].published` | checkbox | no (default false) | no | owner | false = kept in the admin, not rendered | |
 | `caseStudies[].demo` | checkbox | no (default false) | no | owner (deployer seeds it) | true = an invented example, not a real project: the template marks it "דוגמה" / "Example" on the card and the page, sets `noindex`, and leaves it out of structured data, llms.txt and every count of projects. The owner replaces it with a real project or deletes the row | `true` |
 | `caseStudies[].client` | text | **yes** | **yes** | owner | ≤ 80 | `"ברטלי נוער בתנועה"` |
@@ -320,8 +320,9 @@ easily"). Owner tabs added after "Text": Services · Method · Team · Case stud
 | `caseStudies[].beforeCount` | number | no | no | owner | how many of the first `images[]` show the brand before | `2` |
 | `caseStudies[].quote` / `.quoteAuthor` | textarea ≤ 600 / text ≤ 80 | no | no | owner | the client's own words, not localized | |
 | `caseStudies[].credits` | text | no | **yes** | owner | ≤ 200; collaborators on the project | |
-| `caseStudies[].award` | text | no | no | owner | an `awards[]` row's `label`, when the project won one | |
+| `caseStudies[].award` | text | no | no | owner | an `awards[]` row's `id`, when the project won one (not its `label`, which is translated) | `"brand-award-2022"` |
 | `awards[]` | array (≤ 12 rows) | no | – | owner (deployer seeds it with its source) | | |
+| `awards[].id` | text | **yes** | no | owner (deployer seeds it) | `^[a-z0-9-]{2,40}$`, unique in the array; what `caseStudies[].award` points at | `"brand-award-2022"` |
 | `awards[].label` | text | **yes** | **yes** | owner | ≤ 120 | `"פרס המותג הישראלי 2022 — זהב, קטגוריית עמותות"` |
 | `awards[].issuer` | text | **yes** | **yes** | owner | ≤ 80 | `"Brand Academy"` |
 | `awards[].year` | number | **yes** | no | owner | | `2022` |
