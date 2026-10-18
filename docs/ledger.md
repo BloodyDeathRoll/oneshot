@@ -9,9 +9,9 @@
 | `ts` | string | UTC timestamp, ISO 8601 (`2026-09-17T14:05:00Z`), when the transition completed |
 | `run_id` | string | `run_id` of the session's run (`runs/<run_id>.yaml`, `node tools/run.mjs`) |
 | `slug` | string | Business slug; matches `dossier/<slug>/` and `sites/<slug>/` |
-| `from_state` | string \| null | Previous state; `null` only for the first line of a business (`discovered`) |
+| `from_state` | string \| null | Previous state; `null` only for a business's first line — `discovered` (outbound), `briefed` (inbound, a human line) or a mockup-pick (gate b) fork's `picked` — and for gate (d) proposal decisions (`slug: "-"`) |
 | `to_state` | string | New state |
-| `agent` | string | Who made the transition: `orchestrator`, `scout`, `harvester`, `auditor`, `visual-critic`, `experience-critic`, `copywriter`, `humanizer`, `copyeditor`, `creative-director`, `designer`, `seo`, `aiseo`, `critic`, `deployer`, `writer`, or `human` for gates |
+| `agent` | string | Who made the transition: `orchestrator`, `analyst`, `scout`, `harvester`, `auditor`, `visual-critic`, `experience-critic`, `copywriter`, `humanizer`, `copyeditor`, `creative-director`, `designer`, `seo`, `aiseo`, `critic`, `deployer`, `writer`, or `human` for gates |
 | `agent_version` | string \| null | Semver pinned in the run file (`runs/<run_id>.yaml`); `null` when `agent` is `human` |
 | `note` | string | Short free text: reason, score, pick reason, error, outcome detail |
 | `operator` | string | Who ran the session that wrote the line, an id from `team.json` (`node tools/team.mjs whoami`). For `agent: "human"` lines it is the person who decided. Required from 2026-10-02 (docs/team.md); lines before that have none and are Shahar's |
@@ -25,6 +25,13 @@ The first eight fields are present on every line, and `operator` on every line f
 
 After `outcome:sale`: `→ product_chosen → delivered` (and for `self_hosted_docker` `→ handoff_verified → access_revoked`).
 
+Inbound runs (`engagement: inbound`, PLAN.md §4 "Inbound engagement", from 2026-10-17): `briefed → planned → lanes_approved → researched → aligned → harvested → …`, the same as above from `harvested`.
+
+- `briefed`: `agent: "human"`, `from_state: null`, note `client brief: brief/<slug>/brief.md`. The first line of an inbound business; no `discovered`, `scored`, `shortlisted` or `approved`.
+- `planned` (analyst, planner) is written when `dossier/<slug>/industry/plan.md` exists. Gate a′: a human approves the lanes, `planned → lanes_approved` (`agent: "human"`, note = changes to the lanes, if any).
+- `researched` (analyst, merger) is written when `industry.md` and `dossier/<slug>/direction.md` exist and every claim in `industry.md` is a skeptic survivor. Gate b′: a human, with the client, confirms the direction, `researched → aligned` (`agent: "human"`, note = what the client changed).
+- The mockup pick (gate b), every run (2026-10-17): the `picked` note names every variant Shahar keeps; each becomes its own site. The orchestrator forks each variant after the first as `<slug>-<variant>`: its first line is `null → picked`, note `forked from <slug> at picked: <variant>`, and it continues alone. Another series of three is a human `mocked → copy_passed` line, note `new series: <why>`; a later `picked` may name mockups from any series (`series-<n>/<variant>`).
+
 - `audited` (auditor, station 3b, proposal 007) is written when `dossier/<slug>/audit.json` exists and validates against `schemas/audit.md`; a business with no old site is still `audited` (`scope: no_site`). Businesses already past `harvested` before 007 are not sent back.
 - `copy_drafted` (copywriter) → `copy_humanised` (humanizer) → `copy_passed` or `copy_failed` (copyeditor) all run before `concepted`, so the copy exists before anyone designs. `concepted` (creative-director) is written when `sites/<slug>/concepts.md` exists: the page archetype for the business and its three concepts. The designer builds those, and `mocked` follows. A `copy_failed` line names the round; after two failures the business leaves the run in `mode: test`.
 - `optimised` is written by the `seo` agent, `ai_optimised` by the `aiseo` agent; both run after `built` and before the first `critiqued(n)`. A rebuild after a failed critique re-runs both, appending the pair again.
@@ -36,7 +43,7 @@ After `outcome:sale`: `→ product_chosen → delivered` (and for `self_hosted_d
 - `self_hosted_docker` only, once the client has chosen it: `… → delivered → handoff_verified → access_revoked`. `handoff_verified` = the adapter's `verify` passed on the client's box and the handoff kit is complete. `access_revoked` = our keys, users and tokens are removed from the client's box and checked to no longer work.
 - `void` (2026-09-28): a human voids a run's business; its files are deleted, its earlier lines stay (append-only), and the dashboard shows it as voided.
 - Outcomes are written as `outcome:reply`, `outcome:meeting`, `outcome:sale`, `outcome:ignored`.
-- Human-gate transitions (`shortlisted → approved`, `mocked → picked`, `packaged → pitched`, `outcome:sale → product_chosen`) always have `agent: "human"`. Either operator may pass any gate; `operator` says which one did.
+- Human-gate transitions (`shortlisted → approved`, `mocked → picked`, `packaged → pitched`, `outcome:sale → product_chosen`, and for inbound `briefed`, `planned → lanes_approved`, `researched → aligned`) always have `agent: "human"`. Either operator may pass any gate; `operator` says which one did.
 - Work that is not a state change (a fix, a tweak, a re-cut) is not a ledger line: it goes to `activity.jsonl` (docs/team.md).
 - Gate (d), prompt diffs (approved 2026-09-27, proposals/dashboard-01/001): a decision on a file under `proposals/` is a line with `slug: "-"`, `agent: "human"`, `from_state: null`, `to_state: "proposal:approved"` or `"proposal:rejected"`, `note: "<file>: <reason>"`. The merge itself (version bump, CHANGELOG) is a later code change, recorded by its commit, not by the ledger.
 

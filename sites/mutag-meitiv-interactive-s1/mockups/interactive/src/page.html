@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<script>document.documentElement.className+=" js"</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>מותג מיטיב · הדס דרכלי — מיתוג אישי לעסק ותכנון אסטרטגי למותג</title>
+<meta name="description" content="כאן מפתחים אסטרטגיות מותג עם משמעות.">
+<link rel="preload" href="fonts/assistant-hebrew.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/playpen-hebrew.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Assistant';font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/assistant-hebrew.woff2) format('woff2');unicode-range:U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F}
+@font-face{font-family:'Assistant';font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/assistant-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Playpen Sans Hebrew';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/playpen-hebrew.woff2) format('woff2');unicode-range:U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F}
+@font-face{font-family:'Playpen Sans Hebrew';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/playpen-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+:root{
+  --ground:#EEF4F2; --white:#fff; --ink:#2F2F2E; --muted:#56605d; --head:#0A5150;
+  --lit:#35C68B; --book:#00574C; --book-h:#00463d; --deep:#173B34;
+  --hand:'Playpen Sans Hebrew','Assistant',system-ui,sans-serif;
+  --text:'Assistant',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+  --r:18px; --wrap:1240px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--text);font-size:18px;line-height:1.65;font-weight:400}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.skip{position:absolute;inset-inline-start:-999px;top:8px;background:var(--book);color:#fff;padding:10px 16px;border-radius:999px;z-index:99}
+.skip:focus{inset-inline-start:12px}
+:focus-visible{outline:3px solid var(--lit);outline-offset:3px;border-radius:6px}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font:600 18px/1 var(--text);text-decoration:none;white-space:nowrap;transition:transform .12s ease, background-color .12s ease, box-shadow .12s ease;cursor:pointer;border:0}
+.btn svg{width:22px;height:22px;flex:none}
+.btn-wa{background:var(--book);color:#fff;box-shadow:0 6px 18px -8px rgba(0,87,76,.6)}
+.btn-wa:hover{background:var(--book-h);transform:translateY(-1px)}
+.btn-wa:active{transform:translateY(1px)}
+.btn-soft{background:#fff;color:var(--head);box-shadow:0 2px 10px -4px rgba(10,81,80,.25)}
+.btn-soft:hover{transform:translateY(-1px);box-shadow:0 6px 16px -6px rgba(10,81,80,.3)}
+.btn-sm{min-height:44px;padding:0 18px;font-size:16px}
+
+/* ---------- header ---------- */
+.hdr{position:sticky;top:0;z-index:40;padding:14px 0;background:var(--ground);transition:padding .25s ease}
+.hdr-in{display:flex;align-items:center;gap:28px;max-width:var(--wrap);margin:0 auto;padding:0 24px;transition:all .25s ease}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:none;min-height:48px}
+.brand .icon{width:auto;height:42px}
+.brand .word{width:auto;height:50px}
+.nav{display:flex;gap:4px;margin-inline-start:auto}
+.nav a{display:inline-block;white-space:nowrap;min-width:44px;text-align:center;font-size:16.5px;font-weight:600;color:var(--head);text-decoration:none;padding:10px 12px;border-radius:999px;transition:background-color .15s}
+.nav a:hover{background:rgba(53,198,139,.16)}
+.menu-btn{display:none}
+.hdr.float{padding:10px 0;background:transparent}
+.hdr.float .hdr-in{max-width:1180px;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:999px;padding:8px 10px 8px 22px;padding-inline-start:22px;padding-inline-end:10px;box-shadow:0 10px 30px -14px rgba(23,59,52,.35)}
+
+/* ---------- hero ---------- */
+.hero{background:var(--ground);overflow:hidden}
+.hero-in{display:grid;grid-template-areas:'txt rings';grid-template-columns:.9fr 1.1fr;align-items:center;gap:48px;max-width:1240px;min-height:calc(100vh - 76px);padding-top:8px;padding-bottom:40px}
+.hero h1{font-family:var(--hand);font-weight:600;color:var(--head);font-size:clamp(34px,4.2vw,58px);line-height:1.2;margin:0 0 18px;letter-spacing:-.005em;height:2.4em}
+.hero-cta{width:300px;justify-content:center}
+.hero-svcs{display:flex;flex-wrap:wrap;gap:10px;margin:-14px 0 30px}
+.hero-svcs a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;background:#fff;color:var(--head);font-weight:600;font-size:16.5px;text-decoration:none;box-shadow:0 2px 10px -5px rgba(10,81,80,.3);transition:transform .12s, box-shadow .12s}
+.hero-svcs a::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--lit)}
+.hero-svcs a:hover{transform:translateY(-1px);box-shadow:0 6px 16px -6px rgba(10,81,80,.35)}
+.hero .eyebrow{font-weight:600;font-size:17px;color:var(--book);margin:0 0 14px;display:flex;align-items:center;gap:10px}
+.hero .eyebrow::before{content:'';width:10px;height:10px;border-radius:50%;background:var(--lit)}
+.hero .sub{font-size:clamp(19px,1.6vw,23px);line-height:1.6;color:var(--ink);margin:0 0 34px;max-width:34ch;text-wrap:balance}
+.hero-txt{grid-area:txt}
+.rings{grid-area:rings;position:relative;width:min(100%,620px,calc(100vh - 150px));min-width:min(100%,520px);aspect-ratio:1;margin-inline-end:auto;--sat:180px}
+.rings svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.fill{fill:#DDEBE6}.fill2{fill:#CFE3DC}
+.ring{fill:none;stroke:var(--head);stroke-width:1.4;opacity:.32}
+.ring.lit{stroke:var(--lit);opacity:1;stroke-width:2}
+.orbit.intro,.sat-in.intro{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.orbit-lbl{font:700 13.5px var(--text);letter-spacing:.26em;fill:var(--head)}
+.dot{fill:var(--lit)}
+.disc{position:absolute;left:25%;top:25%;width:50%;height:50%;border-radius:50%;overflow:hidden;box-shadow:0 24px 50px -24px rgba(23,59,52,.5)}
+.disc img{width:100%;height:100%;object-fit:cover}
+.sat-orbit{position:absolute;inset:0;pointer-events:none}
+/* the clip sits on the lit ring at about 7 o'clock and orbits with the labels */
+.sat{position:absolute;width:var(--sat);height:var(--sat);left:calc(50% - 45% * .7071 - var(--sat) / 2);top:calc(50% + 45% * .7071 - var(--sat) / 2)}
+.sat-in{width:100%;height:100%;border-radius:50%;overflow:hidden;box-shadow:0 18px 40px -18px rgba(23,59,52,.55);background:#cfdcd8;border:6px solid var(--ground)}
+.sat video{width:100%;height:100%;object-fit:cover}
+
+@media (max-width:900px){
+  body{font-size:18px}
+  .nav,.hdr .btn-wa .lbl-long{display:none}
+  .hdr{padding:10px 0}
+  .hdr-in{gap:10px;padding:0 16px}
+  .brand .icon{height:34px}.brand .word{height:40px}
+  .hdr .btn-wa{margin-inline-start:auto}
+  .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;border:0;background:#fff;color:var(--head);box-shadow:0 2px 10px -4px rgba(10,81,80,.25)}
+  .hero-in{grid-template-columns:1fr;gap:18px;min-height:0;padding-top:4px;padding-bottom:40px;text-align:center}
+  .hero-in{grid-template-areas:'rings' 'txt'}
+  .hero .sub{text-wrap:balance}
+  .rings{width:min(88vw,360px);min-width:0;margin:0 auto;--sat:150px}
+  .sat{left:calc(50% - 45% * .7071 - var(--sat) / 2 + 14px);top:calc(50% + 45% * .7071 - var(--sat) / 2 - 6px)}
+  .hero .sub{margin:0 auto 24px}
+  .hero-cta{width:300px;justify-content:center}
+.hero-svcs{display:flex;flex-wrap:wrap;gap:10px;margin:-14px 0 30px}
+.hero-svcs a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;background:#fff;color:var(--head);font-weight:600;font-size:16.5px;text-decoration:none;box-shadow:0 2px 10px -5px rgba(10,81,80,.3);transition:transform .12s, box-shadow .12s}
+.hero-svcs a::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--lit)}
+.hero-svcs a:hover{transform:translateY(-1px);box-shadow:0 6px 16px -6px rgba(10,81,80,.35)}
+.hero .eyebrow{justify-content:center;font-size:16px;margin-bottom:8px}
+  .hdr .btn-wa{min-height:44px;padding:0 16px;font-size:16px}
+  .orbit.intro,.sat-in.intro{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.orbit-lbl{font-size:19px}
+}
+/*MORECSS*/
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">דילוג לתוכן</a>
+
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="#top" aria-label="מותג מיטיב — דף הבית">
+      <img class="icon" src="IMG64:icon-green.webp" width="400" height="310" alt="">
+      <img class="word" src="IMG64:wordmark-green.webp" width="600" height="230" alt="">
+    </a>
+    <nav class="nav" aria-label="ראשי">
+      <a href="#services">מיתוג אישי לעסק</a>
+      <a href="#services">תכנון אסטרטגי למותג</a>
+      <a href="#offers">הרצאות וסדנאות</a>
+      <a href="#offers">קורסים</a>
+      <a href="#team">אודות</a>
+      <a href="#content">תוכן</a>
+    </nav>
+    <a class="btn btn-wa btn-sm" href="{{WA}}">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg><span>כתבו להדס<span class="lbl-long"> בוואטסאפ</span></span>
+    </a>
+    <button class="menu-btn" aria-label="תפריט" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+  <div class="wrap hero-in">
+    <div class="rings">
+      <svg viewBox="0 0 600 600" aria-hidden="true">
+        <defs><path id="orbitPath" d="M300,300 m-292,0 a292,292 0 1,1 584,0 a292,292 0 1,1 -584,0"/></defs>
+        <circle class="fill" cx="300" cy="300" r="238"/>
+        <circle class="fill2" cx="300" cy="300" r="174"/>
+        <circle class="ring" cx="300" cy="300" r="174"/>
+        <circle class="ring" cx="300" cy="300" r="206"/>
+        <circle class="ring" cx="300" cy="300" r="238"/>
+        <circle class="ring lit" cx="300" cy="300" r="270"/>
+        <g class="orbit" style="transform-origin:300px 300px">
+          <text class="orbit-lbl" direction="ltr"><textPath href="#orbitPath" startOffset="40.5%">SENSING</textPath></text>
+          <text class="orbit-lbl" direction="ltr"><textPath href="#orbitPath" startOffset="27.5%">THINKING</textPath></text>
+          <text class="orbit-lbl" direction="ltr"><textPath href="#orbitPath" startOffset="15%">MAKING</textPath></text>
+          <text class="orbit-lbl" direction="ltr"><textPath href="#orbitPath" startOffset="0%">INFLUENCING</textPath></text>
+          <circle class="dot" cx="300" cy="30" r="5" transform="rotate(51 300 300)"/>
+          <circle class="dot" cx="300" cy="30" r="5" transform="rotate(5 300 300)"/>
+          <circle class="dot" cx="300" cy="30" r="5" transform="rotate(-40 300 300)"/>
+          <circle class="dot" cx="300" cy="30" r="5" transform="rotate(-94 300 300)"/>
+        </g>
+      </svg>
+      <div class="disc"><img src="img/hadas-disc.webp" width="540" height="540" alt="הדס דרכלי, מחייכת בידיים שלובות, לפני קנבס של Brand the Change" fetchpriority="high"></div>
+      <div class="orbit sat-orbit">
+        <div class="sat"><div class="sat-in">
+          <video id="satVid" muted loop playsinline preload="none" poster="img/table-poster.webp" aria-label="שולחן סדנה מלמעלה: קולאז׳ים, גזרי מגזינים, מספריים וטושים, ידיים בעבודה">
+            <source data-src="video/table-464.webm" type="video/webm">
+            <source data-src="video/table-464.mp4" type="video/mp4">
+          </video>
+        </div></div>
+      </div>
+    </div>
+    <div class="hero-txt">
+      <p class="eyebrow">הדס דרכלי · מותג מיטיב</p>
+      <h1>הי, הגעת <br>למקום מיטיב!</h1>
+      <p class="sub">כאן מפתחים אסטרטגיות מותג עם משמעות.</p>
+      {{HEROSVCS}}
+      <a class="btn btn-wa hero-cta" id="heroCta" href="{{WA}}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg>כתבו להדס בוואטסאפ
+      </a>
+    </div>
+  </div>
+</section>
+<!--SECTIONS-->
+</main>
+<!--FOOTER-->
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.86 9.86 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.2 8.2 0 0 1 8.24 8.25c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.46-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.25 3.75.59.26 1.05.41 1.41.52.6.19 1.14.16 1.57.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.29Z"/></symbol>
+<!--ICONS-->
+</svg>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var saveData = navigator.connection && navigator.connection.saveData;
+  // header becomes a floating pill once the hero is scrolled
+  var hdr = document.getElementById('hdr');
+  var orbits = document.querySelectorAll('.orbit'); var satIn = document.querySelector('.sat-in');
+  var ticking = false;
+  function onScroll(){
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(function(){
+      var y = window.scrollY;
+      hdr.classList.toggle('float', y > 40);
+      if (!reduce && y < window.innerHeight * 1.5){
+        // ~30 degrees per screen; RTL: forward turns counter-clockwise
+        var a = -y / window.innerHeight * 30;
+        orbits.forEach(function(o){ o.style.transform = 'rotate(' + a + 'deg)'; });
+        if (satIn) satIn.style.transform = 'rotate(' + (-a) + 'deg)';
+      }
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  // a short load-in turn of the orbit (400 ms, counter-clockwise = forward in RTL), then the slow scroll turn
+  if (!reduce && orbits.length){
+    var parts = Array.prototype.slice.call(orbits).concat(satIn ? [satIn] : []);
+    orbits.forEach(function(o){ o.style.transform = 'rotate(36deg)'; }); if (satIn) satIn.style.transform = 'rotate(-36deg)';
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      parts.forEach(function(o){ o.classList.add('intro'); }); onScroll();
+      setTimeout(function(){ parts.forEach(function(o){ o.classList.remove('intro'); }); }, 600);
+    }); });
+  } else onScroll();
+  // the satellite clip: attached after first paint, poster only under reduced motion / Save-Data
+  function startVideo(v){
+    if (!v || reduce || saveData) return;
+    v.querySelectorAll('source[data-src]').forEach(function(s){ s.src = s.dataset.src; });
+    v.load(); var p = v.play(); if (p && p.catch) p.catch(function(){});
+  }
+  window.addEventListener('load', function(){ setTimeout(function(){ startVideo(document.getElementById('satVid')); }, 300); });
+  //MOREJS
+})();
+</script>
+</body>
+</html>

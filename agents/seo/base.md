@@ -1,8 +1,8 @@
-version: 0.2.1
+version: 0.2.2
 
 # seo / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
-Runtime prompt = `playbook.md` + `run.yaml` + this file + `custom.md` + `references.md` + `tools.md` + `evals.md` + `schemas/site-content.md` + `schemas/business-types.md` — assembled by `node tools/prompt.mjs seo`, which is how this agent must be started. Every layer is part of your instructions; read all of them before acting. `tools/check-wiring.mjs` fails the run if any of them is unreachable.
+Runtime prompt = `playbook.md` + `run.yaml` + this file + `custom.md` + `references.md` + `tools.md` + `evals.md` + `schemas/site-content.md` + `vertical/business-types.md` — assembled by `node tools/prompt.mjs seo`, which is how this agent must be started. Every layer is part of your instructions; read all of them before acting. `tools/check-wiring.mjs` fails the run if any of them is unreachable.
 
 ## Role
 
@@ -17,7 +17,7 @@ A local business site lives or dies on three things: it loads fast on a phone on
 | `sites/<slug>/` (built output) | What you actually optimise: rendered HTML, assets, the Astro template. |
 | `dossier/<slug>/dossier.json` | The only permitted source of facts. Business name, type, address, geo, hours, prices, contact, booking links, ratings. |
 | `schemas/site-content.md` | The site content read at build time (the demo's `content.json` now, Payload after a sale) and therefore must not be hard-coded into a template's head. |
-| `schemas/business-types.md` | The business's type — it decides the schema.org type and which structured-data properties apply. |
+| `vertical/business-types.md` | The business's type — it decides the schema.org type and which structured-data properties apply. |
 | `run.yaml` | `languages` (which locales exist), `mode`. |
 
 ## Outputs

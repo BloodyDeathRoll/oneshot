@@ -1,0 +1,484 @@
+{
+  "slug": "mutag-meitiv",
+  "run_id": "2026-10-il-brand-01",
+  "auditor_version": "0.1.3",
+  "audited_at": "2026-10-18T09:55:00Z",
+  "scope": "site",
+  "measured": {
+    "url": "https://www.mutagmeitiv.com/",
+    "status": 200,
+    "clicks_to_book": 2,
+    "primary_action": {
+      "class": "engine",
+      "label": "לקביעת פגישת הכרות",
+      "href": "https://calendly.com/hadas"
+    },
+    "cta_above_fold": false,
+    "terminal_above_fold": false,
+    "pages_crawled": 30,
+    "broken_pages": [
+      "https://www.mutagmeitiv.com/blog",
+      "https://www.mutagmeitiv.com/blog/categories/%D7%9E%D7%95%D7%AA%D7%92-%D7%9E%D7%99%D7%98%D7%99%D7%91",
+      "https://www.mutagmeitiv.com/blog/categories/%D7%A1%D7%91%D7%99%D7%91%D7%94",
+      "https://www.mutagmeitiv.com/blog/categories/%D7%97%D7%91%D7%A8%D7%94",
+      "https://www.mutagmeitiv.com/blog/categories/%D7%A7%D7%95%D7%A8%D7%95%D7%A0%D7%94",
+      "https://www.mutagmeitiv.com/blog/categories/%D7%A1%D7%97%D7%A8-%D7%94%D7%95%D7%92%D7%9F",
+      "https://www.mutagmeitiv.com/blog/categories/sdg",
+      "https://www.mutagmeitiv.com/blog/tags/%D7%97%D7%91%D7%A8%D7%94",
+      "https://www.mutagmeitiv.com/post/%D7%9E%D7%99%D7%AA%D7%95%D7%92-%D7%A2%D7%A6%D7%9E%D7%99-%D7%97%D7%99%D7%95%D7%91%D7%99-%D7%90%D7%99%D7%9A-%D7%9C%D7%94%D7%A9%D7%AA%D7%9E%D7%A9-%D7%91%D7%A1%D7%95%D7%93%D7%95%D7%AA-%D7%94%D7%9E%D7%99%D7%AA%D7%95%D7%92-%D7%9C%D7%A7%D7%99%D7%93%D7%95%D7%9D-%D7%A8%D7%95%D7%95%D7%97%D7%94-%D7%A0%D7%A4%D7%A9%D7%99%D7%AA-%D7%95%D7%97%D7%A9%D7%99%D7%91%D7%94-%D7%9E%D7%95%D7%93%D7%A2%D7%AA"
+    ],
+    "funnel_json": "funnel/funnel.json"
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "area": "cta",
+      "severity": "medium",
+      "title": "On a phone, WhatsApp is only an unlabelled icon in a bottom bar; nothing in the page itself offers it",
+      "what_a_visitor_meets": "The first phone screen shows the greeting, four badges and Hadas's photo; the only labelled action is 'פה יוצרים קשר' in the top corner, which opens a contact form, and WhatsApp is a small unlabelled black icon in a bar at the bottom shared with an email icon.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/01-home-fold.png"
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "/",
+            "פה יוצרים קשר",
+            "/contact (form: שם, אימייל, טלפון, נושא הפניה)"
+          ]
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/05-contact-fold.png"
+        }
+      ],
+      "playbook_ref": "§5 booking path; §3 first screen",
+      "fix_in_new_site": "contact.whatsapp = +972546686808 drives the one labelled primary action on the first screen and in the persistent mobile bar (playbook §3); the header contact button becomes that same WhatsApp link",
+      "pitch_point": true,
+      "notes": "tools/funnel.mjs 0.2.0 browses with Chromium's own user agent, so Wix serves it the 980 px desktop page, which has no WhatsApp or tel link; a phone (iPhone UA, funnel/walk.mjs) gets Wix's mobile layout with a fixed WhatsApp + email bar on every page. The tool's numbers are copied unchanged in `measured`; the hand walk corrects them only where stated. Hand walk: the bar is position:fixed at the bottom of every page (walk-raw.json, 'WhatsApp' → https://api.whatsapp.com/send?phone=972546686808); funnel.json landing_actions list only the footer email and the newsletter form, both below the fold."
+    },
+    {
+      "id": "F2",
+      "area": "cta",
+      "severity": "medium",
+      "title": "A desktop visitor has no WhatsApp and no tappable phone link anywhere",
+      "what_a_visitor_meets": "On a computer the home page offers 'פה יוצרים קשר' (a form) and Spotify in the header; the WhatsApp the business answers first does not exist, and the phone number in the footer is plain text.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/desktop-home-fold.png"
+        },
+        {
+          "type": "url",
+          "value": "https://www.mutagmeitiv.com/"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#existing_site.notes"
+        }
+      ],
+      "playbook_ref": "§5 booking path",
+      "fix_in_new_site": "contact.whatsapp builds the same wa.me link at every width (it is a real link and works on WhatsApp Web, playbook §5); contact.phone as tel: beside it",
+      "pitch_point": true,
+      "notes": "funnel/walk/clicks.json: desktop 1440 page, whatsapp_links 0, tel_links 0 in the rendered HTML."
+    },
+    {
+      "id": "F3",
+      "area": "funnel",
+      "severity": "medium",
+      "title": "The two leading service pages end in a Calendly button several screens down and never offer WhatsApp",
+      "what_a_visitor_meets": "A visitor reading 'פיתוח עסק עם משמעות' (personal branding) reaches its only action, 'לקביעת פגישה' (Calendly), after about six phone screens; on 'תהליך המיתוג' (strategic planning) 'לקביעת פגישת הכרות' is about four screens down; neither page has a WhatsApp or phone action in its body.",
+      "evidence": [
+        {
+          "type": "click_path",
+          "value": [
+            "/",
+            "מיתוג אישי",
+            "/personal101",
+            "לקביעת פגישה → https://calendly.com/hadas/30min"
+          ]
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "/",
+            "תכנון אסטרטגי",
+            "/process",
+            "לקביעת פגישת הכרות → https://calendly.com/hadas"
+          ]
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/page-05.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/02-personal101-full.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/03-process-full.png"
+        }
+      ],
+      "playbook_ref": "§5 booking path; §3 content hierarchy",
+      "fix_in_new_site": "each services[] row with group lead gets its own CTA built from services[].ctaText (prefilled wa.me message naming the service); bookingUrl = the Calendly intro call shown beside it, never instead of it",
+      "pitch_point": true,
+      "notes": "funnel.json: clicks_to_book 2, primary engine 'לקביעת פגישת הכרות' on /process (top 1937 of the desktop page). Hand walk (phone layout, 692 px screens): /personal101 CTA at 4421 of 6532 px, /process at 2791 of 3542 px (walk-raw.json)."
+    },
+    {
+      "id": "F4",
+      "area": "funnel",
+      "severity": "medium",
+      "title": "'Update me about the next course' leads to the payment page of a past 2025 workshop",
+      "what_a_visitor_meets": "On the course page 'מעסק למותג מיטיב' the visitor reads 'ההרשמה נסגרה'; its button 'עדכני אותי על הקורס הבא' opens 'MAP YOUR VISION 2025 … תודה שנרשמת! אפשרויות התשלום' with Bit, PayBox and card payment — a different, finished workshop.",
+      "evidence": [
+        {
+          "type": "click_path",
+          "value": [
+            "/newcourse",
+            "עדכני אותי על הקורס הבא",
+            "/register"
+          ]
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/07-newcourse-full.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/12-register-full.png"
+        }
+      ],
+      "playbook_ref": "§5 booking path; §7 honesty of facts",
+      "fix_in_new_site": "services[] row for the course with status 'full' or 'ended' (ended is hidden, not left stale) and its ctaText asking on WhatsApp about the next run; /register and the duplicate pages become redirects (posts/services old URLs rule)",
+      "pitch_point": true
+    },
+    {
+      "id": "F5",
+      "area": "funnel",
+      "severity": "medium",
+      "title": "Brand & Breakfast still takes sign-ups for Friday 15.5.26, a date that has passed",
+      "what_a_visitor_meets": "The page invites the visitor to 'יום שישי 15.5.26' and ends in a sign-up form ('אני רוצה להבין יותר'); nothing says the date is over or when the next one is.",
+      "evidence": [
+        {
+          "type": "url",
+          "value": "https://www.mutagmeitiv.com/brandandbreakfast"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/09-brandandbreakfast-full.png"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#offers[3].status"
+        }
+      ],
+      "playbook_ref": "§7 honesty of facts",
+      "fix_in_new_site": "services[].dates[] (past dates are not rendered) and services[].status; with no future date the card shows the offer and its WhatsApp ctaText instead of a dated sign-up",
+      "pitch_point": true
+    },
+    {
+      "id": "F6",
+      "area": "funnel",
+      "severity": "low",
+      "title": "Workshop 'הרשמה' buttons open a generic registration lightbox, not a dated booking",
+      "what_a_visitor_meets": "Tapping 'הרשמה' or 'ספרי לי עוד' on the lectures and workshops page opens a 'הרשמה' pop-up form (workshop dropdown, name, email, phone, reCAPTCHA); none of the offers carries a date, so the visitor registers interest and waits.",
+      "evidence": [
+        {
+          "type": "click_path",
+          "value": [
+            "/סדנאות-והרצאות",
+            "הרשמה",
+            "lightbox form"
+          ]
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/click-workshops-register.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/click-workshops-tellmemore.png"
+        }
+      ],
+      "playbook_ref": "§5 booking path",
+      "fix_in_new_site": "each secondary services[] row (group talks_workshops / courses) ends in its own WhatsApp action from services[].ctaText; bookingUrl only where an external registration page exists",
+      "pitch_point": false,
+      "notes": "Correction to the dossier with evidence: dossier.json#offers_note says the 'הרשמה' buttons have no link target. They have no href, but on the phone layout they open a Wix lightbox form (clicks.json: dialogs 1, no navigation). The form was opened, never filled or sent."
+    },
+    {
+      "id": "F7",
+      "area": "offer",
+      "severity": "medium",
+      "title": "The same offer shows two different prices on two pages",
+      "what_a_visitor_meets": "A visitor comparing pages sees the professional Brand the Change course at 5200 ש\"ח + מע\"מ on the workshops page and 2,850 ₪ on its Wix booking page, and THE BETTER 4 at 480 ש\"ח + מע\"מ versus 350 ש״ח on /smst.",
+      "evidence": [
+        {
+          "type": "url",
+          "value": "https://www.mutagmeitiv.com/%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA-%D7%95%D7%94%D7%A8%D7%A6%D7%90%D7%95%D7%AA"
+        },
+        {
+          "type": "url",
+          "value": "https://www.mutagmeitiv.com/smst"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/04-סדנאות-והרצאות-full.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/08-smst-full.png"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#gaps"
+        }
+      ],
+      "playbook_ref": "§2 what does it cost; site-content 'Offers are one list'",
+      "fix_in_new_site": "one services[] row per offer with price / currency ILS / unit / vat — a price lives in one place; the duplicate pages redirect",
+      "pitch_point": true,
+      "notes": "Which price is current is a dossier gap (dossier.json#gaps offers.btc-professionals.price, offers.the-better-4.price) for the owner to confirm; the audit does not choose."
+    },
+    {
+      "id": "F8",
+      "area": "content",
+      "severity": "low",
+      "title": "The menu names neither leading service",
+      "what_a_visitor_meets": "A visitor looking for personal branding or strategic planning finds menu items 'פיתוח עסק עם משמעות' and 'תהליך המיתוג'; the words 'מיתוג אישי' and 'תכנון אסטרטגי' appear only on the home cards. The phone menu has no contact item.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/click-home-menu.png"
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "/",
+            "☰ menu"
+          ]
+        }
+      ],
+      "playbook_ref": "§3 content hierarchy",
+      "fix_in_new_site": "the menu lists services[] rows of group lead by services[].title, each at /<slug>; the persistent WhatsApp bar replaces the missing contact item",
+      "pitch_point": false
+    },
+    {
+      "id": "F9",
+      "area": "content",
+      "severity": "medium",
+      "title": "The blog and its category pages returned server errors during the crawl",
+      "what_a_visitor_meets": "Tapping 'בלוג' in the menu showed a white 'ERROR: INTERNAL SERVER ERROR 500 … try again in a few minutes' page; 9 of the 30 crawled pages answered 503 (the blog, 6 category pages, a tag page, a post). The same blog loaded on a later visit.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/page-03.png"
+        },
+        {
+          "type": "url",
+          "value": "https://www.mutagmeitiv.com/blog"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#existing_site.notes"
+        }
+      ],
+      "playbook_ref": "§4 mobile on bad connections",
+      "fix_in_new_site": "posts collection rendered at /blog/<slug> as static pages (playbook §11); posts[].oldUrl redirects keep the old addresses",
+      "pitch_point": true,
+      "notes": "Intermittent: funnel.json pages_with_errors (2026-10-18T09:38Z); the walk at ~09:45Z got /blog 200. The harvester saw the same random 500s (dossier existing_site.notes)."
+    },
+    {
+      "id": "F10",
+      "area": "mobile",
+      "severity": "medium",
+      "title": "The phone home page loads about 5.9 MB and paints its largest element after about 3.3 s on an unthrottled connection",
+      "what_a_visitor_meets": "On a phone the home page downloads ~5.9 MB before it settles — four times the playbook's first-load budget — and that was measured without throttling.",
+      "evidence": [
+        {
+          "type": "dossier",
+          "value": "dossier.json#existing_site.measured.mobile"
+        },
+        {
+          "type": "screenshot",
+          "value": "assets/old-site-mobile.png"
+        }
+      ],
+      "playbook_ref": "§4 performance budget",
+      "fix_in_new_site": "static build within playbook §4's budget (≤ 1.5 MB first load, LCP ≤ 2.5 s); the Vee overlay and analytics iframes are not carried over (§4 no third parties)",
+      "pitch_point": false,
+      "notes": "Numbers are the harvester's single headless run (make-old-site.sh), not re-measured by the auditor."
+    },
+    {
+      "id": "F11",
+      "area": "mobile",
+      "severity": "low",
+      "title": "A third-party accessibility widget and its button sit over every page",
+      "what_a_visitor_meets": "A round accessibility button floats over the content on every page and its panel of 21 controls (Vee) loads with it.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/01-home-fold.png"
+        },
+        {
+          "type": "url",
+          "value": "https://vee.co.il/"
+        }
+      ],
+      "playbook_ref": "§4 no third parties; §10 accessibility",
+      "fix_in_new_site": "accessibility built into the template (WCAG 2.1 AA, playbook §10) and the statement kept as legal.accessibilityStatement + legal.accessibilityContact at /accessibility",
+      "pitch_point": false
+    },
+    {
+      "id": "F12",
+      "area": "funnel",
+      "severity": "low",
+      "title": "A graphic on the desktop course page links to a Wix 404 page",
+      "what_a_visitor_meets": "On a computer, the yellow chevron on 'מעסק למותג מיטיב' opens /blank-2, titled '404 Error Page'.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/desktop-newcourse-blank2-link.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/10-blank-2-fold.png"
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "/newcourse (desktop)",
+            "chevron graphic",
+            "/blank-2"
+          ]
+        }
+      ],
+      "playbook_ref": "§7",
+      "fix_in_new_site": "not carried over: the template's links come from services[] / posts slugs only",
+      "pitch_point": false
+    },
+    {
+      "id": "F13",
+      "area": "trust",
+      "severity": "low",
+      "title": "The award badge does not say what it is, and the award text sits in a collaborator's bio",
+      "what_a_visitor_meets": "The home hero shows an 'ISRAEL BRAND AWARD 2022' seal with '1st PLACE Branding for non profit organizations' (desktop) and no link; further down the 2022 nonprofit-branding award appears in Dana Russo's team bio, not as the practice's own.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/desktop-home-fold.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/01-home-full.png"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#award"
+        }
+      ],
+      "playbook_ref": "§6 trust signals",
+      "fix_in_new_site": "awards[] row (label, issuer Brand Academy, year 2022, project ברטלי, url = brandawards.co.il winners page) next to the services; caseStudies[].award links it to a project",
+      "pitch_point": false
+    },
+    {
+      "id": "F14",
+      "area": "trust",
+      "severity": "low",
+      "title": "The contact email is on another business's domain and the footer says 2019",
+      "what_a_visitor_meets": "The footer of every page gives Hadas@kapara.com and '@2019 This blog was created to be shared'.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/01-home-full.png"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#contact.email"
+        }
+      ],
+      "playbook_ref": "§6 trust signals",
+      "fix_in_new_site": "contact.email (the owner may change it to a brand-domain address — owner decision, a pitch point only); the footer year is the template's",
+      "pitch_point": false
+    },
+    {
+      "id": "F15",
+      "area": "content",
+      "severity": "low",
+      "title": "The home page has no main heading",
+      "what_a_visitor_meets": "Screen readers and search engines find no <h1> on the phone home page; the desktop page marks footer labels as <h1>.",
+      "evidence": [
+        {
+          "type": "url",
+          "value": "https://www.mutagmeitiv.com/"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#existing_site.notes"
+        }
+      ],
+      "playbook_ref": "§10 accessibility and findability",
+      "fix_in_new_site": "the template sets one <h1> from businessName/tagline per page (playbook §10)",
+      "pitch_point": false,
+      "notes": "walk-raw.json: home h1 = [] (phone layout); raw desktop HTML has 3 <h1> elements."
+    },
+    {
+      "id": "F16",
+      "area": "offsite",
+      "severity": "medium",
+      "title": "From Instagram, the visitor passes through a Linktree that offers no WhatsApp",
+      "what_a_visitor_meets": "Instagram's bio link opens a Linktree with the site, Instagram and LinkedIn; to message Hadas the visitor must open the site and find the bottom-bar icon.",
+      "evidence": [
+        {
+          "type": "url",
+          "value": "https://linktr.ee/hadasdrachli_mutagmeitiv"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#contact.socials.linktree"
+        }
+      ],
+      "playbook_ref": "§5 booking path",
+      "fix_in_new_site": "the site's first screen carries the labelled WhatsApp action, so the one Linktree tap lands next to it",
+      "pitch_point": false,
+      "notes": "Linktree rendered 2026-10-18 (phone UA): links https://www.mutagmeitiv.com/ (twice), instagram.com/mutagmeitiv, linkedin.com/in/hadasdrachli. The dossier also lists Spotify there; not seen in this render."
+    }
+  ],
+  "recommended": {
+    "primary_action": "whatsapp",
+    "primary_label": "כתבו להדס בוואטסאפ",
+    "secondary_actions": [
+      "engine",
+      "tel",
+      "email"
+    ],
+    "clicks_to_book": 1,
+    "above_fold": [
+      "what_where",
+      "included",
+      "price",
+      "trust",
+      "primary_action"
+    ],
+    "offer_framing": "services[] in three groups: the two lead rows (personal branding, strategic planning) each with title, summary, format, audience, the 4 method.stages[] and its own WhatsApp ctaText, Calendly intro call as bookingUrl; then talks_workshops and courses rows with price/currency ILS/unit/vat only where published, status and dates[] so past runs are hidden; proof (testimonials[] in their own language, awards[], credentials[], clientLogos[]) beside the lead services",
+    "closing_intent": "invite the purpose-driven owner to a first conversation on WhatsApp and name the free Zoom intro call as the alternative",
+    "off_site": [
+      {
+        "channel": "linktree",
+        "finding": "F16",
+        "advice": "add a WhatsApp link to the Linktree, or point the Instagram bio straight at the new site"
+      }
+    ]
+  },
+  "built_site_gaps": [],
+  "not_measurable": [
+    "reply time on WhatsApp, Calendly or the forms — no contact with the owner from the audit (constraint 10)",
+    "whether the contact, Brand & Breakfast and lightbox registration forms deliver — forms are never submitted",
+    "Calendly's own pages beyond the hand-off (both links answer HTTP 200; dates not opened)",
+    "Google Business Profile — none found by the harvester, Maps not queryable from here (dossier.json#reviews.google)",
+    "Instagram bio link and DM path — logged-out view only; the bio-link target is taken from the dossier",
+    "conversion, traffic or sources — no analytics access",
+    "tools/funnel.mjs on the phone layout — the tool has no user-agent option, so its numbers describe Wix's desktop page at 390 px; the phone layout was measured by hand (funnel/walk.mjs)"
+  ]
+}

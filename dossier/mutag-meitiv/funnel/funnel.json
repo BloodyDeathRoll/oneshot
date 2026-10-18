@@ -1,0 +1,1078 @@
+{
+  "tool": "funnel.mjs",
+  "version": "0.2.0",
+  "measured_at": "2026-10-18T09:38:45.391Z",
+  "start_url": "https://www.mutagmeitiv.com/",
+  "whitelabel_engine": false,
+  "final_landing_url": "https://www.mutagmeitiv.com/",
+  "landing_status": 200,
+  "landing_error": null,
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "viewport_meta": true,
+  "landing_text_chars": 5033,
+  "clicks_to_book": 2,
+  "primary_action": {
+    "class": "engine",
+    "href": "https://calendly.com/hadas",
+    "label": "לקביעת פגישת הכרות",
+    "page": "https://www.mutagmeitiv.com/process"
+  },
+  "hero_action": null,
+  "cta_above_fold": false,
+  "terminal_above_fold": false,
+  "any_action_above_fold": false,
+  "landing_actions": [
+    {
+      "class": "email",
+      "terminal": false,
+      "href": "mailto:Hadas@kapara.com",
+      "label": "Hadas@kapara.com",
+      "tag": "a",
+      "top": 5392,
+      "height": 17,
+      "width": 120,
+      "above_fold": false,
+      "tap_target_ok": false
+    },
+    {
+      "class": "form",
+      "terminal": false,
+      "flow": false,
+      "href": null,
+      "label": "form (1 fields)",
+      "tag": "form",
+      "top": 4876,
+      "above_fold": false
+    }
+  ],
+  "action_classes_seen": [
+    "email",
+    "form",
+    "engine"
+  ],
+  "pages_crawled": 30,
+  "pages_with_errors": [
+    {
+      "url": "https://www.mutagmeitiv.com/blog",
+      "status": 503,
+      "error": null
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/blog/categories/%D7%9E%D7%95%D7%AA%D7%92-%D7%9E%D7%99%D7%98%D7%99%D7%91",
+      "status": 503,
+      "error": null
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/blog/categories/%D7%A1%D7%91%D7%99%D7%91%D7%94",
+      "status": 503,
+      "error": null
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/blog/categories/%D7%97%D7%91%D7%A8%D7%94",
+      "status": 503,
+      "error": null
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/blog/categories/%D7%A7%D7%95%D7%A8%D7%95%D7%A0%D7%94",
+      "status": 503,
+      "error": null
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/blog/categories/%D7%A1%D7%97%D7%A8-%D7%94%D7%95%D7%92%D7%9F",
+      "status": 503,
+      "error": null
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/blog/categories/sdg",
+      "status": 503,
+      "error": null
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/blog/tags/%D7%97%D7%91%D7%A8%D7%94",
+      "status": 503,
+      "error": null
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/post/%D7%9E%D7%99%D7%AA%D7%95%D7%92-%D7%A2%D7%A6%D7%9E%D7%99-%D7%97%D7%99%D7%95%D7%91%D7%99-%D7%90%D7%99%D7%9A-%D7%9C%D7%94%D7%A9%D7%AA%D7%9E%D7%A9-%D7%91%D7%A1%D7%95%D7%93%D7%95%D7%AA-%D7%94%D7%9E%D7%99%D7%AA%D7%95%D7%92-%D7%9C%D7%A7%D7%99%D7%93%D7%95%D7%9D-%D7%A8%D7%95%D7%95%D7%97%D7%94-%D7%A0%D7%A4%D7%A9%D7%99%D7%AA-%D7%95%D7%97%D7%A9%D7%99%D7%91%D7%94-%D7%9E%D7%95%D7%93%D7%A2%D7%AA",
+      "status": 503,
+      "error": null
+    }
+  ],
+  "console_errors": [
+    "Failed to load resource: net::ERR_HTTP2_PROTOCOL_ERROR",
+    "Permissions policy violation: encrypted-media is not allowed in this document.",
+    "Permissions policy violation: encrypted-media is not allowed in this document.",
+    "Permissions policy violation: encrypted-media is not allowed in this document.",
+    "Permissions policy violation: encrypted-media is not allowed in this document.",
+    "Permissions policy violation: encrypted-media is not allowed in this document.",
+    "Permissions policy violation: encrypted-media is not allowed in this document.",
+    "Permissions policy violation: encrypted-media is not allowed in this document.",
+    "Permissions policy violation: encrypted-media is not allowed in this document.",
+    "Permissions policy violation: encrypted-media is not allowed in this document.",
+    "Permissions policy violation: encrypted-media is not allowed in this document.",
+    "Permissions policy violation: encrypted-media is not allowed in this document.",
+    "Permissions policy violation: encrypted-media is not allowed in this document.",
+    "Permissions policy violation: encrypted-media is not allowed in this document.",
+    "Permissions policy violation: encrypted-media is not allowed in this document.",
+    "Permissions policy violation: encrypted-media is not allowed in this document.",
+    "Permissions policy violation: encrypted-media is not allowed in this document.",
+    "Permissions policy violation: encrypted-media is not allowed in this document.",
+    "Permissions policy violation: encrypted-media is not allowed in this document.",
+    "Permissions policy violation: encrypted-media is not allowed in this document."
+  ],
+  "pages": [
+    {
+      "url": "https://www.mutagmeitiv.com/",
+      "depth": 0,
+      "via": null,
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/",
+      "title": "Brand development for purpose driven brands | מותג מיטיב - ליווי ופיתוח אסטרטגי לעסקים עם משמעות",
+      "viewport_meta": true,
+      "text_chars": 5033,
+      "actions": [
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 5392,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 4876,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 11,
+      "error": null,
+      "screenshot": "landing-mobile.png",
+      "fold_screenshot": "landing-fold.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/%D7%94%D7%A6%D7%94%D7%A8%D7%AA-%D7%A0%D7%92%D7%99%D7%A9%D7%95%D7%AA",
+      "depth": 1,
+      "via": "https://www.mutagmeitiv.com/",
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/%D7%94%D7%A6%D7%94%D7%A8%D7%AA-%D7%A0%D7%92%D7%99%D7%A9%D7%95%D7%AA",
+      "title": "הצהרת נגישות | brandforthebetter",
+      "viewport_meta": true,
+      "text_chars": 4726,
+      "actions": [
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:hadas@kapara.com",
+          "label": "hadas@kapara.com",
+          "tag": "a",
+          "top": 1889,
+          "height": 25,
+          "width": 152,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 3702,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 3186,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 8,
+      "error": null,
+      "screenshot": "page-01.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/about",
+      "depth": 1,
+      "via": "https://www.mutagmeitiv.com/",
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/about",
+      "title": "אודות | מותג מיטיב",
+      "viewport_meta": true,
+      "text_chars": 3108,
+      "actions": [
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 2494,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 1978,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 8,
+      "error": null,
+      "screenshot": "page-02.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/blog",
+      "depth": 1,
+      "via": "https://www.mutagmeitiv.com/",
+      "status": 503,
+      "final_url": "https://www.mutagmeitiv.com/blog",
+      "title": "500 Error: Internal Server Error",
+      "viewport_meta": true,
+      "text_chars": 145,
+      "actions": [],
+      "internal_links": 0,
+      "error": null,
+      "screenshot": "page-03.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/process",
+      "depth": 1,
+      "via": "https://www.mutagmeitiv.com/",
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/process",
+      "title": "תהליך המיתוג | מותג מיטיב",
+      "viewport_meta": true,
+      "text_chars": 3119,
+      "actions": [
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://calendly.com/hadas",
+          "label": "לקביעת פגישת הכרות",
+          "tag": "a",
+          "top": 1937,
+          "height": 55,
+          "width": 408,
+          "above_fold": false,
+          "tap_target_ok": true
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 2589,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 2073,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 8,
+      "error": null,
+      "screenshot": "page-04.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/personal101",
+      "depth": 1,
+      "via": "https://www.mutagmeitiv.com/",
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/personal101",
+      "title": "פיתוח עסק עם משמעות | brandforthebetter",
+      "viewport_meta": true,
+      "text_chars": 5371,
+      "actions": [
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://calendly.com/hadas/30min",
+          "label": "לקביעת פגישה",
+          "tag": "a",
+          "top": 2832,
+          "height": 42,
+          "width": 179,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 4159,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 3643,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 8,
+      "error": null,
+      "screenshot": "page-05.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA-%D7%95%D7%94%D7%A8%D7%A6%D7%90%D7%95%D7%AA",
+      "depth": 1,
+      "via": "https://www.mutagmeitiv.com/",
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA-%D7%95%D7%94%D7%A8%D7%A6%D7%90%D7%95%D7%AA",
+      "title": "הדרכות והרצאות | brandforthebetter",
+      "viewport_meta": true,
+      "text_chars": 4903,
+      "actions": [
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 5247,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 4730,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 8,
+      "error": null,
+      "screenshot": "page-06.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/contact",
+      "depth": 1,
+      "via": "https://www.mutagmeitiv.com/",
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/contact",
+      "title": "דברו איתי | מותג מיטיב",
+      "viewport_meta": true,
+      "text_chars": 1473,
+      "actions": [
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 1281,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (4 fields)",
+          "tag": "form",
+          "top": 247,
+          "above_fold": true
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 765,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 8,
+      "error": null,
+      "screenshot": "page-07.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/post/%D7%9E%D7%9B%D7%90%D7%95%D7%A1-%D7%9C%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA-%D7%94%D7%A7%D7%A9%D7%A8-%D7%94%D7%9E%D7%A4%D7%AA%D7%99%D7%A2-%D7%91%D7%99%D7%9F-%D7%9E%D7%A8%D7%99%D7%A0%D7%94-%D7%90%D7%91%D7%A8%D7%9E%D7%95%D7%91%D7%99%D7%A5-%D7%90%D7%A8%D7%A0%D7%95%D7%9C%D7%93-%D7%A9%D7%95%D7%95%D7%A8%D7%A6%D7%A0%D7%92%D7%A8-%D7%95%D7%99%D7%A2%D7%93%D7%99-%D7%94%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%91%D7%A8-%D7%A7%D7%99%D7%99%D7%9E%D7%90-%D7%94%D7%91%D7%99%D7%A0%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%99%D7%9D-%D7%95",
+      "depth": 1,
+      "via": "https://www.mutagmeitiv.com/",
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/post/%D7%9E%D7%9B%D7%90%D7%95%D7%A1-%D7%9C%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA-%D7%94%D7%A7%D7%A9%D7%A8-%D7%94%D7%9E%D7%A4%D7%AA%D7%99%D7%A2-%D7%91%D7%99%D7%9F-%D7%9E%D7%A8%D7%99%D7%A0%D7%94-%D7%90%D7%91%D7%A8%D7%9E%D7%95%D7%91%D7%99%D7%A5-%D7%90%D7%A8%D7%A0%D7%95%D7%9C%D7%93-%D7%A9%D7%95%D7%95%D7%A8%D7%A6%D7%A0%D7%92%D7%A8-%D7%95%D7%99%D7%A2%D7%93%D7%99-%D7%94%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%91%D7%A8-%D7%A7%D7%99%D7%99%D7%9E%D7%90-%D7%94%D7%91%D7%99%D7%A0%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%99%D7%9D-%D7%95",
+      "title": "מכאוס לאחריות: הקשר המפתיע בין מרינה אברמוביץ', ארנולד שוורצנגר ויעדי הפיתוח בר קיימא הבינלאומיים (ואיך זה קשור למותג של",
+      "viewport_meta": true,
+      "text_chars": 6175,
+      "actions": [
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 4651,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 4134,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 21,
+      "error": null,
+      "screenshot": "page-08.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/post/socialai",
+      "depth": 1,
+      "via": "https://www.mutagmeitiv.com/",
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/post/socialai",
+      "title": "ממהפכת האש למהפכת הבינה - האם הבינה המלאכותית תעמיק את הניכור, או ההפך?",
+      "viewport_meta": true,
+      "text_chars": 7222,
+      "actions": [
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 5727,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 5211,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 25,
+      "error": null,
+      "screenshot": "page-09.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/post/strategy",
+      "depth": 1,
+      "via": "https://www.mutagmeitiv.com/",
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/post/strategy",
+      "title": "אסטרטגיה ומיתוג בזמן שכל מה שבא לך זה לישון: מדריך הישרדות (מצחיק-עצוב)לצמיחה",
+      "viewport_meta": true,
+      "text_chars": 6601,
+      "actions": [
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 5752,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 5235,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 21,
+      "error": null,
+      "screenshot": "page-10.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/blog/categories/%D7%99%D7%93%D7%A2-%D7%95%D7%94%D7%A2%D7%A9%D7%A8%D7%94",
+      "depth": 2,
+      "via": "https://www.mutagmeitiv.com/post/%D7%9E%D7%9B%D7%90%D7%95%D7%A1-%D7%9C%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA-%D7%94%D7%A7%D7%A9%D7%A8-%D7%94%D7%9E%D7%A4%D7%AA%D7%99%D7%A2-%D7%91%D7%99%D7%9F-%D7%9E%D7%A8%D7%99%D7%A0%D7%94-%D7%90%D7%91%D7%A8%D7%9E%D7%95%D7%91%D7%99%D7%A5-%D7%90%D7%A8%D7%A0%D7%95%D7%9C%D7%93-%D7%A9%D7%95%D7%95%D7%A8%D7%A6%D7%A0%D7%92%D7%A8-%D7%95%D7%99%D7%A2%D7%93%D7%99-%D7%94%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%91%D7%A8-%D7%A7%D7%99%D7%99%D7%9E%D7%90-%D7%94%D7%91%D7%99%D7%A0%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%99%D7%9D-%D7%95",
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/blog/categories/%D7%99%D7%93%D7%A2-%D7%95%D7%94%D7%A2%D7%A9%D7%A8%D7%94",
+      "title": "כלי המיתוג",
+      "viewport_meta": true,
+      "text_chars": 2779,
+      "actions": [
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 2322,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 1806,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 21,
+      "error": null,
+      "screenshot": "page-11.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/blog/categories/%D7%9E%D7%95%D7%AA%D7%92-%D7%9E%D7%99%D7%98%D7%99%D7%91",
+      "depth": 2,
+      "via": "https://www.mutagmeitiv.com/post/%D7%9E%D7%9B%D7%90%D7%95%D7%A1-%D7%9C%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA-%D7%94%D7%A7%D7%A9%D7%A8-%D7%94%D7%9E%D7%A4%D7%AA%D7%99%D7%A2-%D7%91%D7%99%D7%9F-%D7%9E%D7%A8%D7%99%D7%A0%D7%94-%D7%90%D7%91%D7%A8%D7%9E%D7%95%D7%91%D7%99%D7%A5-%D7%90%D7%A8%D7%A0%D7%95%D7%9C%D7%93-%D7%A9%D7%95%D7%95%D7%A8%D7%A6%D7%A0%D7%92%D7%A8-%D7%95%D7%99%D7%A2%D7%93%D7%99-%D7%94%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%91%D7%A8-%D7%A7%D7%99%D7%99%D7%9E%D7%90-%D7%94%D7%91%D7%99%D7%A0%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%99%D7%9D-%D7%95",
+      "status": 503,
+      "final_url": "https://www.mutagmeitiv.com/blog/categories/%D7%9E%D7%95%D7%AA%D7%92-%D7%9E%D7%99%D7%98%D7%99%D7%91",
+      "title": "500 Error: Internal Server Error",
+      "viewport_meta": true,
+      "text_chars": 146,
+      "actions": [],
+      "internal_links": 0,
+      "error": null,
+      "screenshot": "page-12.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/blog/categories/%D7%A1%D7%91%D7%99%D7%91%D7%94",
+      "depth": 2,
+      "via": "https://www.mutagmeitiv.com/post/%D7%9E%D7%9B%D7%90%D7%95%D7%A1-%D7%9C%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA-%D7%94%D7%A7%D7%A9%D7%A8-%D7%94%D7%9E%D7%A4%D7%AA%D7%99%D7%A2-%D7%91%D7%99%D7%9F-%D7%9E%D7%A8%D7%99%D7%A0%D7%94-%D7%90%D7%91%D7%A8%D7%9E%D7%95%D7%91%D7%99%D7%A5-%D7%90%D7%A8%D7%A0%D7%95%D7%9C%D7%93-%D7%A9%D7%95%D7%95%D7%A8%D7%A6%D7%A0%D7%92%D7%A8-%D7%95%D7%99%D7%A2%D7%93%D7%99-%D7%94%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%91%D7%A8-%D7%A7%D7%99%D7%99%D7%9E%D7%90-%D7%94%D7%91%D7%99%D7%A0%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%99%D7%9D-%D7%95",
+      "status": 503,
+      "final_url": "https://www.mutagmeitiv.com/blog/categories/%D7%A1%D7%91%D7%99%D7%91%D7%94",
+      "title": "500 Error: Internal Server Error",
+      "viewport_meta": true,
+      "text_chars": 146,
+      "actions": [],
+      "internal_links": 0,
+      "error": null,
+      "screenshot": "page-13.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/blog/categories/%D7%97%D7%91%D7%A8%D7%94",
+      "depth": 2,
+      "via": "https://www.mutagmeitiv.com/post/%D7%9E%D7%9B%D7%90%D7%95%D7%A1-%D7%9C%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA-%D7%94%D7%A7%D7%A9%D7%A8-%D7%94%D7%9E%D7%A4%D7%AA%D7%99%D7%A2-%D7%91%D7%99%D7%9F-%D7%9E%D7%A8%D7%99%D7%A0%D7%94-%D7%90%D7%91%D7%A8%D7%9E%D7%95%D7%91%D7%99%D7%A5-%D7%90%D7%A8%D7%A0%D7%95%D7%9C%D7%93-%D7%A9%D7%95%D7%95%D7%A8%D7%A6%D7%A0%D7%92%D7%A8-%D7%95%D7%99%D7%A2%D7%93%D7%99-%D7%94%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%91%D7%A8-%D7%A7%D7%99%D7%99%D7%9E%D7%90-%D7%94%D7%91%D7%99%D7%A0%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%99%D7%9D-%D7%95",
+      "status": 503,
+      "final_url": "https://www.mutagmeitiv.com/blog/categories/%D7%97%D7%91%D7%A8%D7%94",
+      "title": "500 Error: Internal Server Error",
+      "viewport_meta": true,
+      "text_chars": 146,
+      "actions": [],
+      "internal_links": 0,
+      "error": null,
+      "screenshot": "page-14.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/blog/categories/%D7%A7%D7%95%D7%A8%D7%95%D7%A0%D7%94",
+      "depth": 2,
+      "via": "https://www.mutagmeitiv.com/post/%D7%9E%D7%9B%D7%90%D7%95%D7%A1-%D7%9C%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA-%D7%94%D7%A7%D7%A9%D7%A8-%D7%94%D7%9E%D7%A4%D7%AA%D7%99%D7%A2-%D7%91%D7%99%D7%9F-%D7%9E%D7%A8%D7%99%D7%A0%D7%94-%D7%90%D7%91%D7%A8%D7%9E%D7%95%D7%91%D7%99%D7%A5-%D7%90%D7%A8%D7%A0%D7%95%D7%9C%D7%93-%D7%A9%D7%95%D7%95%D7%A8%D7%A6%D7%A0%D7%92%D7%A8-%D7%95%D7%99%D7%A2%D7%93%D7%99-%D7%94%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%91%D7%A8-%D7%A7%D7%99%D7%99%D7%9E%D7%90-%D7%94%D7%91%D7%99%D7%A0%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%99%D7%9D-%D7%95",
+      "status": 503,
+      "final_url": "https://www.mutagmeitiv.com/blog/categories/%D7%A7%D7%95%D7%A8%D7%95%D7%A0%D7%94",
+      "title": "500 Error: Internal Server Error",
+      "viewport_meta": true,
+      "text_chars": 147,
+      "actions": [],
+      "internal_links": 0,
+      "error": null,
+      "screenshot": "page-15.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/blog/categories/%D7%A1%D7%97%D7%A8-%D7%94%D7%95%D7%92%D7%9F",
+      "depth": 2,
+      "via": "https://www.mutagmeitiv.com/post/%D7%9E%D7%9B%D7%90%D7%95%D7%A1-%D7%9C%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA-%D7%94%D7%A7%D7%A9%D7%A8-%D7%94%D7%9E%D7%A4%D7%AA%D7%99%D7%A2-%D7%91%D7%99%D7%9F-%D7%9E%D7%A8%D7%99%D7%A0%D7%94-%D7%90%D7%91%D7%A8%D7%9E%D7%95%D7%91%D7%99%D7%A5-%D7%90%D7%A8%D7%A0%D7%95%D7%9C%D7%93-%D7%A9%D7%95%D7%95%D7%A8%D7%A6%D7%A0%D7%92%D7%A8-%D7%95%D7%99%D7%A2%D7%93%D7%99-%D7%94%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%91%D7%A8-%D7%A7%D7%99%D7%99%D7%9E%D7%90-%D7%94%D7%91%D7%99%D7%A0%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%99%D7%9D-%D7%95",
+      "status": 503,
+      "final_url": "https://www.mutagmeitiv.com/blog/categories/%D7%A1%D7%97%D7%A8-%D7%94%D7%95%D7%92%D7%9F",
+      "title": "500 Error: Internal Server Error",
+      "viewport_meta": true,
+      "text_chars": 147,
+      "actions": [],
+      "internal_links": 0,
+      "error": null,
+      "screenshot": "page-16.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/blog/categories/%D7%98%D7%A8%D7%A0%D7%93%D7%99%D7%A0%D7%92",
+      "depth": 2,
+      "via": "https://www.mutagmeitiv.com/post/%D7%9E%D7%9B%D7%90%D7%95%D7%A1-%D7%9C%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA-%D7%94%D7%A7%D7%A9%D7%A8-%D7%94%D7%9E%D7%A4%D7%AA%D7%99%D7%A2-%D7%91%D7%99%D7%9F-%D7%9E%D7%A8%D7%99%D7%A0%D7%94-%D7%90%D7%91%D7%A8%D7%9E%D7%95%D7%91%D7%99%D7%A5-%D7%90%D7%A8%D7%A0%D7%95%D7%9C%D7%93-%D7%A9%D7%95%D7%95%D7%A8%D7%A6%D7%A0%D7%92%D7%A8-%D7%95%D7%99%D7%A2%D7%93%D7%99-%D7%94%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%91%D7%A8-%D7%A7%D7%99%D7%99%D7%9E%D7%90-%D7%94%D7%91%D7%99%D7%A0%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%99%D7%9D-%D7%95",
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/blog/categories/%D7%98%D7%A8%D7%A0%D7%93%D7%99%D7%A0%D7%92",
+      "title": "טרנדינג",
+      "viewport_meta": true,
+      "text_chars": 2779,
+      "actions": [
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 2009,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 1493,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 20,
+      "error": null,
+      "screenshot": "page-17.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/blog/categories/sdg",
+      "depth": 2,
+      "via": "https://www.mutagmeitiv.com/post/%D7%9E%D7%9B%D7%90%D7%95%D7%A1-%D7%9C%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA-%D7%94%D7%A7%D7%A9%D7%A8-%D7%94%D7%9E%D7%A4%D7%AA%D7%99%D7%A2-%D7%91%D7%99%D7%9F-%D7%9E%D7%A8%D7%99%D7%A0%D7%94-%D7%90%D7%91%D7%A8%D7%9E%D7%95%D7%91%D7%99%D7%A5-%D7%90%D7%A8%D7%A0%D7%95%D7%9C%D7%93-%D7%A9%D7%95%D7%95%D7%A8%D7%A6%D7%A0%D7%92%D7%A8-%D7%95%D7%99%D7%A2%D7%93%D7%99-%D7%94%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%91%D7%A8-%D7%A7%D7%99%D7%99%D7%9E%D7%90-%D7%94%D7%91%D7%99%D7%A0%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%99%D7%9D-%D7%95",
+      "status": 503,
+      "final_url": "https://www.mutagmeitiv.com/blog/categories/sdg",
+      "title": "500 Error: Internal Server Error",
+      "viewport_meta": true,
+      "text_chars": 147,
+      "actions": [],
+      "internal_links": 0,
+      "error": null,
+      "screenshot": "page-18.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/members-area/hadas/profile",
+      "depth": 2,
+      "via": "https://www.mutagmeitiv.com/post/%D7%9E%D7%9B%D7%90%D7%95%D7%A1-%D7%9C%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA-%D7%94%D7%A7%D7%A9%D7%A8-%D7%94%D7%9E%D7%A4%D7%AA%D7%99%D7%A2-%D7%91%D7%99%D7%9F-%D7%9E%D7%A8%D7%99%D7%A0%D7%94-%D7%90%D7%91%D7%A8%D7%9E%D7%95%D7%91%D7%99%D7%A5-%D7%90%D7%A8%D7%A0%D7%95%D7%9C%D7%93-%D7%A9%D7%95%D7%95%D7%A8%D7%A6%D7%A0%D7%92%D7%A8-%D7%95%D7%99%D7%A2%D7%93%D7%99-%D7%94%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%91%D7%A8-%D7%A7%D7%99%D7%99%D7%9E%D7%90-%D7%94%D7%91%D7%99%D7%A0%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%99%D7%9D-%D7%95",
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/members-area/hadas/profile",
+      "title": "Member Page | brandforthebetter",
+      "viewport_meta": true,
+      "text_chars": 2552,
+      "actions": [
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 1775,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 1259,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 14,
+      "error": null,
+      "screenshot": "page-19.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/post/2026trendsforthbetter",
+      "depth": 2,
+      "via": "https://www.mutagmeitiv.com/post/%D7%9E%D7%9B%D7%90%D7%95%D7%A1-%D7%9C%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA-%D7%94%D7%A7%D7%A9%D7%A8-%D7%94%D7%9E%D7%A4%D7%AA%D7%99%D7%A2-%D7%91%D7%99%D7%9F-%D7%9E%D7%A8%D7%99%D7%A0%D7%94-%D7%90%D7%91%D7%A8%D7%9E%D7%95%D7%91%D7%99%D7%A5-%D7%90%D7%A8%D7%A0%D7%95%D7%9C%D7%93-%D7%A9%D7%95%D7%95%D7%A8%D7%A6%D7%A0%D7%92%D7%A8-%D7%95%D7%99%D7%A2%D7%93%D7%99-%D7%94%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%91%D7%A8-%D7%A7%D7%99%D7%99%D7%9E%D7%90-%D7%94%D7%91%D7%99%D7%A0%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%99%D7%9D-%D7%95",
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/post/2026trendsforthbetter",
+      "title": "מי הם מבשרי השחר של 2026? הסיכום השנתי של מותג מיטיב על טרנדים ומותגים מיטיבים!",
+      "viewport_meta": true,
+      "text_chars": 10996,
+      "actions": [
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 11497,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 10981,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 26,
+      "error": null,
+      "screenshot": "page-20.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/post/%D7%9E%D7%94-%D7%96%D7%94-%D7%90%D7%99%D7%9E%D7%A4%D7%A7%D7%98-%D7%A2%D7%95%D7%A9%D7%99%D7%9D-%D7%A1%D7%93%D7%A8-%D7%91%D7%97%D7%93%D7%A8",
+      "depth": 2,
+      "via": "https://www.mutagmeitiv.com/post/%D7%9E%D7%9B%D7%90%D7%95%D7%A1-%D7%9C%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA-%D7%94%D7%A7%D7%A9%D7%A8-%D7%94%D7%9E%D7%A4%D7%AA%D7%99%D7%A2-%D7%91%D7%99%D7%9F-%D7%9E%D7%A8%D7%99%D7%A0%D7%94-%D7%90%D7%91%D7%A8%D7%9E%D7%95%D7%91%D7%99%D7%A5-%D7%90%D7%A8%D7%A0%D7%95%D7%9C%D7%93-%D7%A9%D7%95%D7%95%D7%A8%D7%A6%D7%A0%D7%92%D7%A8-%D7%95%D7%99%D7%A2%D7%93%D7%99-%D7%94%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%91%D7%A8-%D7%A7%D7%99%D7%99%D7%9E%D7%90-%D7%94%D7%91%D7%99%D7%A0%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%99%D7%9D-%D7%95",
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/post/%D7%9E%D7%94-%D7%96%D7%94-%D7%90%D7%99%D7%9E%D7%A4%D7%A7%D7%98-%D7%A2%D7%95%D7%A9%D7%99%D7%9D-%D7%A1%D7%93%D7%A8-%D7%91%D7%97%D7%93%D7%A8",
+      "title": "מה זה אימפקט? עושים סדר בחדר",
+      "viewport_meta": true,
+      "text_chars": 8789,
+      "actions": [
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 6400,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 5884,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 24,
+      "error": null,
+      "screenshot": "page-21.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/post/%D7%9E%D7%90%D7%95%D7%9E%D7%AA-%D7%94%D7%A1%D7%98%D7%90%D7%A8%D7%98-%D7%90%D7%A4-%D7%9C%D7%90%D7%95%D7%9E%D7%AA-%D7%94%D7%90%D7%99%D7%9E%D7%A4%D7%A7%D7%98-%D7%95%D7%9C%D7%90-%D7%90%D7%99%D7%9F-%D7%96%D7%95-%D7%90%D7%92%D7%93%D7%94-%D7%A1%D7%99%D7%9B%D7%95%D7%9D-%D7%91%D7%99%D7%A7%D7%95%D7%A8-%D7%A4%D7%95%D7%A8%D7%95%D7%9D-%D7%94%D7%A8%D7%A6%D7%9C-%D7%9C%D7%99%D7%96%D7%9E%D7%95%D7%AA-%D7%97%D7%91%D7%A8%D7%AA%D7%99%D7%AA-%D7%9B%D7%9C%D7%9B%D7%9C%D7%99%D7%AA",
+      "depth": 2,
+      "via": "https://www.mutagmeitiv.com/post/%D7%9E%D7%9B%D7%90%D7%95%D7%A1-%D7%9C%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA-%D7%94%D7%A7%D7%A9%D7%A8-%D7%94%D7%9E%D7%A4%D7%AA%D7%99%D7%A2-%D7%91%D7%99%D7%9F-%D7%9E%D7%A8%D7%99%D7%A0%D7%94-%D7%90%D7%91%D7%A8%D7%9E%D7%95%D7%91%D7%99%D7%A5-%D7%90%D7%A8%D7%A0%D7%95%D7%9C%D7%93-%D7%A9%D7%95%D7%95%D7%A8%D7%A6%D7%A0%D7%92%D7%A8-%D7%95%D7%99%D7%A2%D7%93%D7%99-%D7%94%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%91%D7%A8-%D7%A7%D7%99%D7%99%D7%9E%D7%90-%D7%94%D7%91%D7%99%D7%A0%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%99%D7%9D-%D7%95",
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/post/%D7%9E%D7%90%D7%95%D7%9E%D7%AA-%D7%94%D7%A1%D7%98%D7%90%D7%A8%D7%98-%D7%90%D7%A4-%D7%9C%D7%90%D7%95%D7%9E%D7%AA-%D7%94%D7%90%D7%99%D7%9E%D7%A4%D7%A7%D7%98-%D7%95%D7%9C%D7%90-%D7%90%D7%99%D7%9F-%D7%96%D7%95-%D7%90%D7%92%D7%93%D7%94-%D7%A1%D7%99%D7%9B%D7%95%D7%9D-%D7%91%D7%99%D7%A7%D7%95%D7%A8-%D7%A4%D7%95%D7%A8%D7%95%D7%9D-%D7%94%D7%A8%D7%A6%D7%9C-%D7%9C%D7%99%D7%96%D7%9E%D7%95%D7%AA-%D7%97%D7%91%D7%A8%D7%AA%D7%99%D7%AA-%D7%9B%D7%9C%D7%9B%D7%9C%D7%99%D7%AA",
+      "title": "מאומת הסטארט אפ לאומת האימפקט - ולא, אין זו אגדה. סיכום ביקור - פורום הרצל ליזמות חברתית - כלכלית.",
+      "viewport_meta": true,
+      "text_chars": 7166,
+      "actions": [
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 4905,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 4388,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 33,
+      "error": null,
+      "screenshot": "page-22.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/blog/tags/%D7%97%D7%91%D7%A8%D7%94",
+      "depth": 2,
+      "via": "https://www.mutagmeitiv.com/post/socialai",
+      "status": 503,
+      "final_url": "https://www.mutagmeitiv.com/blog/tags/%D7%97%D7%91%D7%A8%D7%94",
+      "title": "500 Error: Internal Server Error",
+      "viewport_meta": true,
+      "text_chars": 146,
+      "actions": [],
+      "internal_links": 0,
+      "error": null,
+      "screenshot": "page-23.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/blog/tags/%D7%90%D7%9E%D7%A4%D7%98%D7%99%D7%94",
+      "depth": 2,
+      "via": "https://www.mutagmeitiv.com/post/socialai",
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/blog/tags/%D7%90%D7%9E%D7%A4%D7%98%D7%99%D7%94",
+      "title": "אמפטיה | brandforthebetter",
+      "viewport_meta": true,
+      "text_chars": 1852,
+      "actions": [
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 1384,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 868,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 19,
+      "error": null,
+      "screenshot": "page-24.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/blog/tags/%D7%94%D7%A9%D7%A4%D7%A2%D7%94-%D7%97%D7%99%D7%95%D7%91%D7%99%D7%AA",
+      "depth": 2,
+      "via": "https://www.mutagmeitiv.com/post/socialai",
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/blog/tags/%D7%94%D7%A9%D7%A4%D7%A2%D7%94-%D7%97%D7%99%D7%95%D7%91%D7%99%D7%AA",
+      "title": "השפעה חיובית | brandforthebetter",
+      "viewport_meta": true,
+      "text_chars": 1790,
+      "actions": [
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 1384,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 868,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 19,
+      "error": null,
+      "screenshot": "page-25.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/blog/tags/%D7%91%D7%99%D7%A0%D7%94-%D7%9E%D7%9C%D7%90%D7%9B%D7%95%D7%AA%D7%99%D7%AA",
+      "depth": 2,
+      "via": "https://www.mutagmeitiv.com/post/socialai",
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/blog/tags/%D7%91%D7%99%D7%A0%D7%94-%D7%9E%D7%9C%D7%90%D7%9B%D7%95%D7%AA%D7%99%D7%AA",
+      "title": "בינה מלאכותית | brandforthebetter",
+      "viewport_meta": true,
+      "text_chars": 1637,
+      "actions": [
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 1072,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 556,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 18,
+      "error": null,
+      "screenshot": "page-26.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/post/%D7%91%D7%9E%D7%99%D7%95%D7%97%D7%93-%D7%9C%D7%99%D7%95%D7%9D-%D7%94%D7%90%D7%A9%D7%94-%D7%A0%D7%A9%D7%99%D7%9D-%D7%A9%D7%9E%D7%A9%D7%A0%D7%95%D7%AA-%D7%90%D7%AA-%D7%94%D7%A2%D7%AA%D7%99%D7%93-%D7%9B%D7%90%D7%9F-%D7%95%D7%A2%D7%9B%D7%A9%D7%99%D7%95",
+      "depth": 2,
+      "via": "https://www.mutagmeitiv.com/post/socialai",
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/post/%D7%91%D7%9E%D7%99%D7%95%D7%97%D7%93-%D7%9C%D7%99%D7%95%D7%9D-%D7%94%D7%90%D7%A9%D7%94-%D7%A0%D7%A9%D7%99%D7%9D-%D7%A9%D7%9E%D7%A9%D7%A0%D7%95%D7%AA-%D7%90%D7%AA-%D7%94%D7%A2%D7%AA%D7%99%D7%93-%D7%9B%D7%90%D7%9F-%D7%95%D7%A2%D7%9B%D7%A9%D7%99%D7%95",
+      "title": "במיוחד ליום האשה - נשים שמשנות את העתיד כאן, עכשיו וביחד.",
+      "viewport_meta": true,
+      "text_chars": 5086,
+      "actions": [
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 5845,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 5329,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 21,
+      "error": null,
+      "screenshot": "page-27.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/post/10-%D7%9E%D7%95%D7%AA%D7%92%D7%99%D7%9D-%D7%9E%D7%99%D7%98%D7%99%D7%91%D7%99%D7%9D-%D7%9E%D7%91%D7%A9%D7%A8%D7%99-%D7%94%D7%A9%D7%97%D7%A8-%D7%A9%D7%9C-2025",
+      "depth": 2,
+      "via": "https://www.mutagmeitiv.com/post/socialai",
+      "status": 200,
+      "final_url": "https://www.mutagmeitiv.com/post/10-%D7%9E%D7%95%D7%AA%D7%92%D7%99%D7%9D-%D7%9E%D7%99%D7%98%D7%99%D7%91%D7%99%D7%9D-%D7%9E%D7%91%D7%A9%D7%A8%D7%99-%D7%94%D7%A9%D7%97%D7%A8-%D7%A9%D7%9C-2025",
+      "title": "עשרה מותגים מיטיבים המבשרים על בואה של 2025",
+      "viewport_meta": true,
+      "text_chars": 12163,
+      "actions": [
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:Hadas@kapara.com",
+          "label": "Hadas@kapara.com",
+          "tag": "a",
+          "top": 10715,
+          "height": 17,
+          "width": 120,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (1 fields)",
+          "tag": "form",
+          "top": 10199,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 25,
+      "error": null,
+      "screenshot": "page-28.png"
+    },
+    {
+      "url": "https://www.mutagmeitiv.com/post/%D7%9E%D7%99%D7%AA%D7%95%D7%92-%D7%A2%D7%A6%D7%9E%D7%99-%D7%97%D7%99%D7%95%D7%91%D7%99-%D7%90%D7%99%D7%9A-%D7%9C%D7%94%D7%A9%D7%AA%D7%9E%D7%A9-%D7%91%D7%A1%D7%95%D7%93%D7%95%D7%AA-%D7%94%D7%9E%D7%99%D7%AA%D7%95%D7%92-%D7%9C%D7%A7%D7%99%D7%93%D7%95%D7%9D-%D7%A8%D7%95%D7%95%D7%97%D7%94-%D7%A0%D7%A4%D7%A9%D7%99%D7%AA-%D7%95%D7%97%D7%A9%D7%99%D7%91%D7%94-%D7%9E%D7%95%D7%93%D7%A2%D7%AA",
+      "depth": 2,
+      "via": "https://www.mutagmeitiv.com/post/strategy",
+      "status": 503,
+      "final_url": "https://www.mutagmeitiv.com/post/%D7%9E%D7%99%D7%AA%D7%95%D7%92-%D7%A2%D7%A6%D7%9E%D7%99-%D7%97%D7%99%D7%95%D7%91%D7%99-%D7%90%D7%99%D7%9A-%D7%9C%D7%94%D7%A9%D7%AA%D7%9E%D7%A9-%D7%91%D7%A1%D7%95%D7%93%D7%95%D7%AA-%D7%94%D7%9E%D7%99%D7%AA%D7%95%D7%92-%D7%9C%D7%A7%D7%99%D7%93%D7%95%D7%9D-%D7%A8%D7%95%D7%95%D7%97%D7%94-%D7%A0%D7%A4%D7%A9%D7%99%D7%AA-%D7%95%D7%97%D7%A9%D7%99%D7%91%D7%94-%D7%9E%D7%95%D7%93%D7%A2%D7%AA",
+      "title": "500 Error: Internal Server Error",
+      "viewport_meta": true,
+      "text_chars": 146,
+      "actions": [],
+      "internal_links": 0,
+      "error": null,
+      "screenshot": "page-29.png"
+    }
+  ]
+}

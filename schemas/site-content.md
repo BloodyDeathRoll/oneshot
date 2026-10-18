@@ -1,12 +1,12 @@
 # schemas/site-content.md — the fixed content schema: the contract between Payload and the Astro templates.
 
-**Version 0.10** · 2026-10-17 (v0.10 adds no field: media `focalX` / `focalY` become owner-set — the point of interest a template may align motion on, set by clicking the photo in the admin; Shahar, 2026-10-17: a set-piece must always line up when the owner replaces a photo, never on coordinates written for one photograph) · **v0.9** · 2026-09-28 (v0.9 adds no field: the build now makes an owner's video upload into web renditions — desktop + mobile, MP4 + WebM, no audio — and writes `src/tenant/videos.generated.json`; the fetch step downloads videos and posters; see "v0.9 — video renditions". Chosen over a separate `heroVideoMobile` upload field. DB migrations for the v0.8 fields: `cms/app/src/migrations/*/20260928_*_video.ts`) · **v0.8** · 2026-09-28 (v0.8 adds owner-editable video — `heroVideo` + `heroVideoPoster` and `videos[]` — and lets `media` hold MP4/WebM; Shahar, 2026-09-28: "Videos are much more engaging than images and whenever you find one you should use it!"; the admin tab "Photos" is now "Photos & video"; `cms/app/src/collections/Sites.ts` + `Media.ts` implement this version) · **v0.7** · 2026-09-25 (v0.7 makes `contact.whatsapp` optional — Shahar, none of run 2026-09-ahangama-02's three businesses publishes a WhatsApp number; production Payload collection `cms/src/collections/Sites.ts` now implements this version) · **v0.6** · 2026-09-23 (v0.6 adds the optional `featureLine`, a generic short line over a site's feature image — Shahar, first used for The Lavish Haven's night-pool line) · **v0.5** · 2026-09-23 (v0.5 adds the optional `closing` line, Shahar's decision for The Lavish Haven's closing headline) · **v0.4** · 2026-09-22 (v0.4 adds `ratings[].capturedAt`, required by playbook §6; existing documents need the date filled in by the deployer) · **v0.3** · 2026-09-21 (v0.1 came out of the Payload spike; v0.2 adds `businessType` and the per-type modules below; v0.3 adds the optional `forecast` block; all additive — every v0.1 document is a valid v0.3 document) · source of truth in code: `spikes/payload/cms/src/collections/Sites.ts` + `Media.ts` · reference consumer: `spikes/payload/site/` · proven by `spikes/payload/test/` (both suites green).
+**Version 0.11** · 2026-10-18 (v0.11 is additive, for the `brand_design` vertical's first site, run 2026-10-il-brand-01 — Shahar, 2026-10-18: "definitely create a content schema that fits your needs": `he` and RTL, `ILS` and VAT, `brand_practice` / `brand_studio`, and the brand modules — services, method, team, case studies, awards, client logos, social links, Instagram tiles, podcast, newsletter, downloads, accessibility statement — plus a `posts` collection for the blog and PDF uploads in `media`; see "v0.11 — brand modules". Not yet in code: the deployer implements it in `cms/app/src/collections/` at station 8, the first station that builds a CMS for this client; every v0.10 document stays valid) · **v0.10** · 2026-10-17 (v0.10 adds no field: media `focalX` / `focalY` become owner-set — the point of interest a template may align motion on, set by clicking the photo in the admin; Shahar, 2026-10-17: a set-piece must always line up when the owner replaces a photo, never on coordinates written for one photograph) · **v0.9** · 2026-09-28 (v0.9 adds no field: the build now makes an owner's video upload into web renditions — desktop + mobile, MP4 + WebM, no audio — and writes `src/tenant/videos.generated.json`; the fetch step downloads videos and posters; see "v0.9 — video renditions". Chosen over a separate `heroVideoMobile` upload field. DB migrations for the v0.8 fields: `cms/app/src/migrations/*/20260928_*_video.ts`) · **v0.8** · 2026-09-28 (v0.8 adds owner-editable video — `heroVideo` + `heroVideoPoster` and `videos[]` — and lets `media` hold MP4/WebM; Shahar, 2026-09-28: "Videos are much more engaging than images and whenever you find one you should use it!"; the admin tab "Photos" is now "Photos & video"; `cms/app/src/collections/Sites.ts` + `Media.ts` implement this version) · **v0.7** · 2026-09-25 (v0.7 makes `contact.whatsapp` optional — Shahar, none of run 2026-09-ahangama-02's three businesses publishes a WhatsApp number; production Payload collection `cms/src/collections/Sites.ts` now implements this version) · **v0.6** · 2026-09-23 (v0.6 adds the optional `featureLine`, a generic short line over a site's feature image — Shahar, first used for The Lavish Haven's night-pool line) · **v0.5** · 2026-09-23 (v0.5 adds the optional `closing` line, Shahar's decision for The Lavish Haven's closing headline) · **v0.4** · 2026-09-22 (v0.4 adds `ratings[].capturedAt`, required by playbook §6; existing documents need the date filled in by the deployer) · **v0.3** · 2026-09-21 (v0.1 came out of the Payload spike; v0.2 adds `businessType` and the per-type modules below; v0.3 adds the optional `forecast` block; all additive — every v0.1 document is a valid v0.3 document) · source of truth in code: `spikes/payload/cms/src/collections/Sites.ts` + `Media.ts` · reference consumer: `spikes/payload/site/` · proven by `spikes/payload/test/` (both suites green).
 
 Rules of the contract
 
 - Everything in this file comes from Payload at build time and is **never hard-coded** in a template. Everything *not* in this file (layout, motion, interface labels such as "Opening hours" / "Book on WhatsApp", day and unit names) belongs to the template.
 - One business = one `sites` document (+ its `media` documents). The schema is identical in both hosting profiles (`ONESHOT_PROFILE=multi-tenant | single-tenant`); see "Profiles" at the end for the one difference.
-- Locales: `en` (default, always published) and `si`. Localized fields hold one value per locale; a missing `si` value falls back to `en` when the template asks with `fallback-locale=en`.
+- Locales: `en` and `si`; v0.11 adds `he` (RTL). Each site publishes the locales in its own `languages`; the **site's** default locale is the first of them. `en` sites are unchanged (`en` first, always published). The Payload config has one `defaultLocale` for every site (`cms/app/src/payload.config.ts`), and it stays `en`; the build never relies on it and fetches each of the site's locales explicitly (see "What the template receives"). Localized fields hold one value per locale; a site that publishes `en` lets a missing `si` value fall back to `en` (`fallback-locale=en`); a site without `en` (a `he`-only site) asks with `fallback-locale=none`, so an empty field stays empty instead of showing English (v0.11, 2026-10-18).
 - Plain text only. No rich text, no HTML, no Markdown in v0.1. Paragraphs in `body` fields are separated by a blank line.
 - Links the owner can type are validated server-side to be `https://` URLs. Templates must still never put an unvalidated value in an `href` (the reference template re-checks).
 
@@ -22,8 +22,8 @@ Who edits: **owner** = the business owner in the Payload admin ("My site" form, 
 | `tagline` | text | no | **yes** | owner | ≤ 140 | `"Your first wave, guaranteed wobbly."` |
 | `closing` | text | no | **yes** | owner | ≤ 140; the one line the design sets beside the page's last booking action; empty = the template shows no line there | `"Rates move with the dates. The listings show what is free."` |
 | `featureLine` | text | no | **yes** | owner | ≤ 140; a short line the design sets over the site's feature image; empty = the template shows no line there | `"The outdoor pool is in the middle of the hotel and open all year."` |
-| `languages` | select, many: `en` (list grows later: de, es, pt, ru…) | **yes** | no | owner | must contain `en`; English only for now (decided 2026-09-18); the spike still carries `si` fixtures | `["en"]` |
-| `copyBlocks[]` | array (≤ 8 rows) | no | – | owner | | |
+| `languages` | select, many: `en` \| `he` (v0.11) (list grows later: de, es, pt, ru…) | **yes** | no | owner | at least one; the first is the site's default locale (Payload's config-wide `defaultLocale` stays `en`; see "Locales"). `en` sites as before (decided 2026-09-18). v0.11: `he` may stand alone (a Hebrew-only site, `market: il`, fetched with `fallback-locale=none`); a `he` page is rendered `lang="he" dir="rtl"`. The spike still carries `si` fixtures | `["en"]` / `["he"]` |
+| `copyBlocks[]` | array (≤ 8 rows; v0.11: ≤ 16 for `brand_practice` / `brand_studio`) | no | – | owner | the type-dependent cap is a custom `validate` that reads the document's `businessType` (a fixed `maxRows` cannot depend on it): `maxRows: 16`, and the validator rejects more than 8 for any other type | |
 | `copyBlocks[].slot` | select: `intro` \| `about` \| `offer` \| `info` | **yes** | no | owner | where the design places the block; several rows may share a slot | `"intro"` |
 | `copyBlocks[].heading` | text | no | **yes** | owner | ≤ 120 | `"Learn to surf"` |
 | `copyBlocks[].body` | textarea | **yes** | **yes** | owner | ≤ 1500; blank line = new paragraph | `"Small groups, soft boards…"` |
@@ -35,7 +35,8 @@ Who edits: **owner** = the business owner in the Payload admin ("My site" form, 
 | `priceList[]` | array (≤ 30 rows) | no | – | owner | repeatable rows | |
 | `priceList[].label` | text | **yes** | **yes** | owner | ≤ 80 | `"Beginner lesson (90 min)"` |
 | `priceList[].price` | number | **yes** | no | owner | ≥ 0; template formats it | `9500` |
-| `priceList[].currency` | select: `LKR` \| `USD` \| `EUR` | **yes** (default `LKR`) | no | owner | ISO 4217 | `"LKR"` |
+| `priceList[].currency` | select: `LKR` \| `USD` \| `EUR` \| `ILS` (v0.11) | **yes** (default `LKR`; `ILS` for `market: il`) | no | owner | ISO 4217 | `"LKR"` |
+| `priceList[].vat` | select: `included` \| `excluded` (v0.11) | no | no | owner | empty = the price is shown with no VAT wording; the template owns the words (`+ מע"מ`) | `"excluded"` |
 | `priceList[].unit` | select: `per_hour` \| `per_lesson` \| `per_day` \| `per_week` \| `per_person` \| `flat` | **yes** (default `per_lesson`) | no | owner | template owns the wording per locale | `"per_person"` |
 | `priceList[].note` | text | no | **yes** | owner | ≤ 140 | `"Board and rash vest included"` |
 | `photos[]` | array (≤ 24 rows) | no | – | owner | **first row is the hero photo**; order is the owner's order | |
@@ -65,7 +66,7 @@ One schema for every business. `businessType` says which kind of business the do
 
 | Field | Type | Required | Localized | Edited by | Constraints | Example |
 |---|---|---|---|---|---|---|
-| `businessType` | select: `surf_school` \| `surf_camp` \| `beach_lodging` \| `board_rental` \| `surf_shop` \| `shaper` \| `other` | **yes** (default `surf_school`) | no | deployer (seeds it from the dossier); owner may correct it | must match a row in `schemas/business-types.md` | `"beach_lodging"` |
+| `businessType` | select: `surf_school` \| `surf_camp` \| `beach_lodging` \| `board_rental` \| `surf_shop` \| `shaper` \| `brand_practice` \| `brand_studio` (v0.11) \| `other` | **yes** (default `surf_school`) | no | deployer (seeds it from the dossier); owner may correct it | must match a row in the run's vertical pack (`verticals/<id>/business-types.md`). The `brand_practice` / `brand_studio` rows arrive with proposal `proposals/2026-10-il-brand-01/001` (pending, a human gate); until it is approved those two values are valid by this schema's enum only | `"beach_lodging"` |
 
 ### Shared modules (any type may use them)
 
@@ -82,13 +83,15 @@ One schema for every business. `businessType` says which kind of business the do
 | `ratings[].url` | text, `https://` URL | no | no | deployer | the listing the score comes from | |
 | `ratings[].capturedAt` | date (YYYY-MM-DD) | **yes** | no | deployer | when the score was read from the platform (the harvester's `fetched_at`); playbook §6 requires a rating to be shown with its count, source and capture date | `"2026-09-19"` |
 | `testimonials[]` | array (≤ 12 rows) | no | – | deployer (owner may delete a row) | **verbatim guest words only**; never paraphrased, never invented, never trimmed into a different meaning | |
-| `testimonials[].quote` | textarea | **yes** | no | deployer | ≤ 600; **not localized** — a guest's words are not translated | `"The most amazing family running the business…"` |
+| `testimonials[].quote` | textarea | **yes** | no | deployer | ≤ 600 (v0.11: ≤ 1000 for `brand_practice` / `brand_studio`, whose clients write longer — a quote is never trimmed to fit; the type-dependent limit is a custom `validate` reading the document's `businessType`, over a fixed `maxLength: 1000`); **not localized** — a guest's words are not translated | `"The most amazing family running the business…"` |
 | `testimonials[].author` | text | **yes** | no | deployer | as published, e.g. first name + country | `"Clara, United Kingdom"` |
-| `testimonials[].source` | select: same list as `ratings[].platform` | **yes** | no | deployer | | `"booking"` |
+| `testimonials[].source` | select: same list as `ratings[].platform`, plus `site` \| `linkedin` \| `client` (v0.11) | **yes** | no | deployer | `site` = published on the business's own site; `client` = handed over by the business (dossier `origin: client`) | `"booking"` |
+| `testimonials[].lang` | select: `en` \| `he` (v0.11) | no | no | deployer | the language the words were given in; the template sets `lang`/`dir` on the quote. Empty = the site's default locale. Never translated (Shahar, 2026-10-18) | `"en"` |
+| `testimonials[].role` | text | no | no | deployer | ≤ 80; as published (title, business) | `"מייסדת, AMBARTIQUE"` |
 | `testimonials[].date` | text `YYYY-MM` | no | no | deployer | omit rather than guess | `"2026-03"` |
 | `spot` | text | no | **yes** | owner | ≤ 200; the wave this business sits on, in the owner's words | `"Kabalana beach break, 2 minutes from the door"` |
 | `season` | text | no | **yes** | owner | ≤ 200 | `"November to April is the clean season"` |
-| `languagesSpoken[]` | select, many: `en` `si` `ta` `ru` `de` `fr` `es` `it` `sv` `other` | no | no | owner | who you can be served in — separate from `languages`, which is what the **site** is published in | `["en","ru"]` |
+| `languagesSpoken[]` | select, many: `en` `si` `ta` `ru` `de` `fr` `es` `it` `sv` `he` (v0.11) `other` | no | no | owner | who you can be served in — separate from `languages`, which is what the **site** is published in | `["en","ru"]` |
 
 ### Lodging modules — `beach_lodging`, `surf_camp`
 
@@ -141,7 +144,7 @@ One schema for every business. `businessType` says which kind of business the do
 | No duplication | A fact lives in exactly one field. A room rate goes in `rooms[]`/`priceList[]`, not in a `copyBlocks[]` paragraph as well. |
 | `deployer`-edited rows are evidence | `ratings[]` and `testimonials[]` are seeded from the dossier, where every one of them carries a `source_url`. The owner may **delete** a row they dislike; neither the owner nor a template may add or reword one. |
 | Live prices are not content | Nightly rates that live on an OTA are dated inventory, not a published price. They belong in `bookingLinks[]` as a link, never copied into `rooms[]` as a number. |
-| A new type is a document change, not a code change | See `schemas/business-types.md`. |
+| A new type is a document change, not a code change | See the vertical pack's `business-types.md` (`verticals/surf/business-types.md`). |
 
 
 ## v0.3 — `forecast` (optional)
@@ -255,6 +258,132 @@ const sources = v
 
 The `m720` tier is in the manifest for designs that show a clip small (a card, a strip); `videos[]` rows use the same pattern, with the row's `description` as the element's `aria-label` instead of `aria-hidden`.
 
+## v0.11 — brand modules (`brand_practice`, `brand_studio`)
+
+For a practice that sells services, talks and courses rather than rooms or lessons: a multi-page site
+(a page per leading service, an offers page per group, case studies, a blog, a podcast). All optional,
+same rules as the other modules. The owner edits every row; Payload's array UI adds, removes and
+reorders rows, so the team is changed with **Add row / Remove** and the order on the site is the
+order in the admin (Shahar, 2026-10-18: "the team section … will allow adding and removing people
+easily"). Owner tabs added after "Text": Services · Method · Team · Case studies · Proof · Content.
+
+### Services and the method
+
+| Field | Type | Required | Localized | Edited by | Constraints | Example |
+|---|---|---|---|---|---|---|
+| `services[]` | array (≤ 20 rows) | no | – | owner | every offer: the leading services and the secondary ones; order within a group is the owner's | |
+| `services[].slug` | text | **yes** | no | owner | `^[a-z0-9-]{2,40}$`, unique in the array; never a reserved top-level path (`blog`, `work`, `accessibility`, `podcast`, `contact`, `about`, `team`, `services`, `courses`, `talks`, `en`, `he`, `api`, `media`, `_astro`, and any name the template uses for a page of its own); the page URL when `page` is set | `"personal-branding"` |
+| `services[].group` | select: `lead` \| `talks_workshops` \| `courses` \| `other` | **yes** | no | owner | where the template lists it; `lead` services get their own page and a home block | `"lead"` |
+| `services[].title` | text | **yes** | **yes** | owner | ≤ 80 | `"מיתוג אישי לעסק"` |
+| `services[].summary` | text | **yes** | **yes** | owner | ≤ 200; the card line | |
+| `services[].body` | textarea | no | **yes** | owner | ≤ 4000; blank line = new paragraph | |
+| `services[].format` | text | no | **yes** | owner | ≤ 100, as the owner says it | `"8 מפגשים, בזום או פרונטלי"` |
+| `services[].audience` | text | no | **yes** | owner | ≤ 140; who it is for | `"לעמותות ולארגונים"` |
+| `services[].price` / `.currency` / `.unit` / `.vat` | same types as `priceList[]` | no | no | owner | omit when the price is not published | `5200` / `"ILS"` / `"flat"` / `"excluded"` |
+| `services[].status` | select: `ongoing` \| `open` \| `full` \| `ended` | no (default `ongoing`) | no | owner | `ended` = kept in the admin, **not rendered** (so a finished workshop is hidden, not left stale) | `"open"` |
+| `services[].dates[]` | array of date (YYYY-MM-DD), ≤ 12 | no | no | owner | next sessions; past dates are not rendered | `["2026-11-12"]` |
+| `services[].ctaText` | text | no | **yes** | owner | ≤ 200; the prefilled WhatsApp message for this offer (`wa.me/<contact.whatsapp>?text=`); empty = the template's default line | `"היי, אשמח לשמוע על הקורס"` |
+| `services[].bookingUrl` | text, `https://` URL | no | no | owner | an external registration or payment page; shown beside WhatsApp, never instead of it when `contact.whatsapp` is set | |
+| `services[].image` | upload → `media` | no | no | owner | image only | |
+| `services[].page` | checkbox | no (true for `lead` when left empty) | no | owner | true = the offer has its own page at `/<slug>`. Not a Payload `defaultValue` (it cannot read the row's `group`): a `beforeChange` hook on `sites` sets it to true for a `lead` row whose `page` is empty, and never overrides a value the owner set | `true` |
+| `method.name` | text | no | **yes** | owner | ≤ 80 | `"Brand the Change"` |
+| `method.intro` | textarea | no | **yes** | owner | ≤ 600 | |
+| `method.stages[]` | array (≤ 6 rows) | no | – | owner | one method, described once; templates show it wherever the method appears | |
+| `method.stages[].label` | text | **yes** | no | owner | ≤ 30; the stage's name as the owner brands it (Latin allowed) | `"SENSING"` |
+| `method.stages[].title` | text | **yes** | **yes** | owner | ≤ 80 | |
+| `method.stages[].body` | textarea | no | **yes** | owner | ≤ 600 | |
+
+### People and proof
+
+| Field | Type | Required | Localized | Edited by | Constraints | Example |
+|---|---|---|---|---|---|---|
+| `team[]` | array (≤ 20 rows) | no | – | owner | the founder first; **add / remove / reorder rows** in the admin; a removed person disappears from the site at the next publish | |
+| `team[].name` | text | **yes** | **yes** | owner | ≤ 80 | `"הדס דרכלי"` |
+| `team[].role` | text | **yes** | **yes** | owner | ≤ 80 | `"מייסדת, אסטרטגיית מותג"` |
+| `team[].bio` | textarea | no | **yes** | owner | ≤ 600 | |
+| `team[].photo` | upload → `media` | no | no | owner | image only; the template crops to its frame around `focalX`/`focalY` | |
+| `team[].url` | text, `https://` URL | no | no | owner | a portfolio or LinkedIn page | |
+| `team[].founder` | checkbox | no | no | owner | at most one row; the template may give it the larger place | `true` |
+| `caseStudies[]` | array (≤ 24 rows) | no | – | owner | one project each; `/work/<slug>` | |
+| `caseStudies[].slug` | text | **yes** | no | owner | `^[a-z0-9-]{2,40}$`, unique in the array; never `template` (the case-study template page is `/work/template`) | `"bartali"` |
+| `caseStudies[].published` | checkbox | no (default false) | no | owner | false = kept in the admin, not rendered | |
+| `caseStudies[].demo` | checkbox | no (default false) | no | owner (deployer seeds it) | true = an invented example, not a real project: the template marks it "דוגמה" / "Example" on the card and the page, sets `noindex`, and leaves it out of structured data, llms.txt and every count of projects. The owner replaces it with a real project or deletes the row | `true` |
+| `caseStudies[].client` | text | **yes** | **yes** | owner | ≤ 80 | `"ברטלי נוער בתנועה"` |
+| `caseStudies[].sector` | text | no | **yes** | owner | ≤ 60 | `"עמותה"` |
+| `caseStudies[].title` | text | **yes** | **yes** | owner | ≤ 120 | |
+| `caseStudies[].challenge` | textarea | **yes** | **yes** | owner | ≤ 800 | |
+| `caseStudies[].process[]` | array (≤ 6 rows) | no | – | owner | what was done at each stage; `stage` is a `method.stages[].label` | |
+| `caseStudies[].process[].stage` | text | **yes** | no | owner | must equal a `method.stages[].label` | `"SENSING"` |
+| `caseStudies[].process[].body` | textarea | **yes** | **yes** | owner | ≤ 600 | |
+| `caseStudies[].outcome` | textarea | **yes** | **yes** | owner | ≤ 800; what changed, in facts the client can stand behind | |
+| `caseStudies[].images[]` | array (≤ 12) of upload → `media` | no | no | owner | image only; first = the cover; "before" images first when `beforeCount` is set | |
+| `caseStudies[].beforeCount` | number | no | no | owner | how many of the first `images[]` show the brand before | `2` |
+| `caseStudies[].quote` / `.quoteAuthor` | textarea ≤ 600 / text ≤ 80 | no | no | owner | the client's own words, not localized | |
+| `caseStudies[].credits` | text | no | **yes** | owner | ≤ 200; collaborators on the project | |
+| `caseStudies[].award` | text | no | no | owner | an `awards[]` row's `id`, when the project won one (not its `label`, which is translated) | `"brand-award-2022"` |
+| `awards[]` | array (≤ 12 rows) | no | – | owner (deployer seeds it with its source) | | |
+| `awards[].id` | text | **yes** | no | owner (deployer seeds it) | `^[a-z0-9-]{2,40}$`, unique in the array; what `caseStudies[].award` points at | `"brand-award-2022"` |
+| `awards[].label` | text | **yes** | **yes** | owner | ≤ 120 | `"פרס המותג הישראלי 2022 — זהב, קטגוריית עמותות"` |
+| `awards[].issuer` | text | **yes** | **yes** | owner | ≤ 80 | `"Brand Academy"` |
+| `awards[].year` | number | **yes** | no | owner | | `2022` |
+| `awards[].project` | text | no | **yes** | owner | ≤ 80 | `"ברטלי"` |
+| `awards[].url` | text, `https://` URL | no | no | owner | where it can be checked | |
+| `awards[].image` | upload → `media` | no | no | owner | the badge, image or svg | |
+| `credentials[]` | v0.11: a **shared** module (was teaching only); `label` as before, plus `issuer` (text ≤ 80, localized) and `url` (`https://`) | no | | owner | | `"מאמנת מוסמכת Brand the Change"` |
+| `clientLogos[]` | array (≤ 40 rows) | no | – | owner | the logo strip; order is the owner's | |
+| `clientLogos[].name` | text | **yes** | **yes** | owner | ≤ 80; the logo's accessible name | `"עיריית חיפה"` |
+| `clientLogos[].logo` | upload → `media` | **yes** | no | owner | image or svg | |
+| `clientLogos[].url` | text, `https://` URL | no | no | owner | | |
+
+### Content, channels and legal
+
+| Field | Type | Required | Localized | Edited by | Constraints | Example |
+|---|---|---|---|---|---|---|
+| `socialLinks[]` | array (≤ 10 rows) | no | – | owner | | |
+| `socialLinks[].platform` | select: `instagram` \| `facebook` \| `linkedin` \| `youtube` \| `spotify` \| `apple_podcasts` \| `tiktok` \| `other` | **yes** | no | owner | the template draws the icon | `"instagram"` |
+| `socialLinks[].url` | text, `https://` URL | **yes** | no | owner | | `"https://www.instagram.com/mutagmeitiv/"` |
+| `instagramTiles[]` | array (≤ 12 rows) | no | – | owner (deployer seeds it) | the Instagram strip: the business's own posts, each tile linking to its post; the build never calls Instagram | |
+| `instagramTiles[].image` | upload → `media` | **yes** | no | owner | image only, the post's own image | |
+| `instagramTiles[].postUrl` | text, `https://www.instagram.com/…` | **yes** | no | owner | | |
+| `podcast.title` | text | no | **yes** | owner | ≤ 80 | |
+| `podcast.feedUrl` | text, `https://` URL | no | no | owner | the RSS feed; **the build** reads the episodes from it (title, date, audio link, description) at every publish, so a new episode appears without an edit. Nothing per episode is stored | |
+| `podcast.links[]` | array (≤ 6) of { `platform`: select `spotify` \| `apple_podcasts` \| `youtube` \| `other`, `url`: `https://` URL } | no | – | owner | listen-on buttons | |
+| `newsletter.label` | text | no | **yes** | owner | ≤ 120 | |
+| `newsletter.url` | text, `https://` URL | no | no | owner | the provider's sign-up page or form action; empty = no newsletter block | |
+| `downloads[]` | array (≤ 6 rows) | no | – | owner | free guides | |
+| `downloads[].label` | text | **yes** | **yes** | owner | ≤ 100 | `"מדריך הכנה למיתוג"` |
+| `downloads[].file` | upload → `media` | **yes** | no | owner | `application/pdf` only | |
+| `legal.accessibilityStatement` | textarea | no | **yes** | owner | ≤ 6000; rendered at `/accessibility`; required in practice for `market: il` (IS 5568) | |
+| `legal.accessibilityContact` | text | no | **yes** | owner | ≤ 200; the named contact for accessibility requests | |
+
+### Collection `posts` — the blog (v0.11)
+
+One document per post; same tenant rule as `media`. Rendered at `/blog/<slug>`, newest first.
+
+| Field | Type | Required | Localized | Edited by | Constraints |
+|---|---|---|---|---|---|
+| `tenant` | relationship → `tenants` | multi-tenant only | – | system | as `media` |
+| `title` | text | **yes** | **yes** | owner | ≤ 160 |
+| `slug` | text | **yes** | no | owner | unique per tenant; `^(?!-)[a-z0-9\u05D0-\u05EA_-]{1,120}$` — a–z, 0–9, `_`, `-` and the Hebrew letters א–ת (U+05D0–U+05EA; no niqqud, no punctuation), never starting with `-`, ≤ 120 characters, stored decoded (not percent-encoded). Hebrew slugs and underscores are allowed so old URLs map 1:1 (checked 2026-10-18 against all 66 old Wix post slugs of `mutag-meitiv`: longest 96, six with `_`) |
+| `date` | date | **yes** | no | owner | publication date |
+| `excerpt` | text | no | **yes** | owner | ≤ 300 |
+| `body` | textarea | **yes** | **yes** | owner | ≤ 30000; plain text, blank line = new paragraph; a line starting `## ` is a subheading, `![alt](media:<id>)` an image (the only markup, parsed by the template) |
+| `cover` | upload → `media` | no | no | owner | image only |
+| `categories` | select, many, owner-defined list (≤ 20) | no | no | owner | |
+| `oldUrl` | text | no | no | deployer | the post's URL on the previous site; the build writes a redirect from it |
+
+### Rules for the brand modules
+
+| Rule | |
+|---|---|
+| Offers are one list | Every offer is a `services[]` row, its price included; `priceList[]` stays for businesses that only need price rows. A price lives in one place. |
+| The method is described once | `method.stages[]`; service pages and case studies refer to it, never restate it with a different count. |
+| Hidden, not deleted | `services[].status = ended` and `caseStudies[].published = false` keep the row in the admin and off the site. |
+| Demo rows say so | A `demo: true` case study is never presented as real work anywhere on the site (Shahar, 2026-10-18: "add a generated demo case study for now as an example"). |
+| The case-study template is the template's | With no published `caseStudies[]`, the template renders a case-study layout of labelled placeholders at `/work/template` (`noindex`, not in the menu) showing the owner what to collect; placeholders are never stored in the CMS ("Optional everywhere"). |
+| Old URLs | `posts[].oldUrl` and each `services[].slug`'s previous page (seeded by the deployer) become redirects in the build, so search results keep working after the move. |
+
+
 ## Collection `media` — photos and videos
 
 | Field | Type | Required | Localized | Edited by | Notes |
@@ -264,7 +393,7 @@ The `m720` tier is in the manifest for designs that show a clip small (a card, a
 | `alt` | text | **yes** | **yes** | owner | describe the photo or video; used as `<img alt>` (for a video in `videos[]`, the row's `description` is what the template uses) |
 | `filename` | text | system | – | system | unique per CMS instance — Payload appends `-1`, `-2`… on a name collision |
 | `url` | text | system | – | system | **absolute** URL built from the CMS's public `SERVER_URL`; needs auth (nothing is public). Build tools should use only its path against their own CMS origin |
-| `mimeType`, `filesize`, `width`, `height` | system | | – | system | accepted: `image/jpeg` `image/png` `image/webp` (≤ 8 MB) and, since v0.8, `video/mp4` `video/webm` (≤ 20 MB; request limit 20 MB, the 8 MB image cap is enforced by a hook on `media`). `width`/`height` are null for video. Only the original is stored (`sizes: {}`); responsive variants (avif/webp/jpeg at several widths) are produced by the Astro build |
+| `mimeType`, `filesize`, `width`, `height` | system | | – | system | accepted: `image/jpeg` `image/png` `image/webp` (≤ 8 MB), `image/svg+xml` for logos only (v0.11; sanitised on upload), `application/pdf` for `downloads[]` only (v0.11; ≤ 10 MB) and, since v0.8, `video/mp4` `video/webm` (≤ 20 MB; request limit 20 MB, the 8 MB image cap is enforced by a hook on `media`). `width`/`height` are null for video. Only the original is stored (`sizes: {}`); responsive variants (avif/webp/jpeg at several widths) are produced by the Astro build |
 | `focalX`, `focalY` | number (percent, 0–100) | no | – | owner (deployer seeds it) | v0.10: the photo's point of interest, set by clicking it in the admin's image editor (Payload `upload.focalPoint`); default 50 / 50 = the centre. A template that aligns motion on a spot in a photo (a scroll set-piece) reads it here, never from coordinates written for one photograph. |
 | `thumbnailURL` | system | | – | system | unused |
 
@@ -272,13 +401,15 @@ The `m720` tier is in the manifest for designs that show a clip small (a card, a
 
 The build authenticates with a **read-only builder API key** (`Authorization: builders API-Key <key>`; collection `builders`; read access to `sites`, `media`, `tenants`, nothing else, no writes). Nothing in the CMS is publicly readable — anonymous requests to every collection and to media files get 403.
 
-One request per locale, relationships populated one level:
+One request per locale in the site's `languages`, relationships populated one level:
 
 ```
-GET /api/sites?where[tenant][equals]=<tenantId>&locale=<en|si>&fallback-locale=en&depth=1&limit=1      (multi-tenant)
-GET /api/sites?locale=<en|si>&fallback-locale=en&depth=1&limit=1                                        (single-tenant)
+GET /api/sites?where[tenant][equals]=<tenantId>&locale=<en|si|he>&fallback-locale=<en|none>&depth=1&limit=1      (multi-tenant)
+GET /api/sites?locale=<en|si|he>&fallback-locale=<en|none>&depth=1&limit=1                                        (single-tenant)
 → { "docs": [ <site> ], "totalDocs": 1, … }
 ```
+
+`fallback-locale`: `en` when the site's `languages` include `en`; `none` when they do not (a `he`-only site), so Payload returns an empty localized field as `null` rather than its `en` value (Payload 3 reads `none` / `false` / `null` as no fallback; in the Local API, `fallbackLocale: false`). The request for the `en` locale itself needs no fallback.
 
 `<site>` for `locale=si` (real response from the spike, arrays shortened to one row):
 

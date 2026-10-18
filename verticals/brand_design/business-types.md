@@ -1,0 +1,1 @@
+# verticals/brand_design/business-types.md — the type registry for brand-design studios: modules of schemas/site-content.md per type. Drafted by the analyst on the first inbound run (proposal 004). A stub until proposal `proposals/2026-10-il-brand-01/001` is approved (pending, a human gate); its rows arrive with it.

@@ -13,7 +13,8 @@
 // <variant>/shots/check-design/, or a temp folder for a single page. --no-shots skips them.
 //
 // Checks, per built mockup, at 1440 and 390:
-//   1. LIGHT GROUND. Every surf business here gets a light theme. The page
+//   1. LIGHT GROUND, surf vertical only (designer house rule 1; other verticals have no theme
+//      rule, so the check is skipped for a business whose run is not `vertical: surf`). The page
 //      background luminance must be >= 0.55, and no element taller than a third
 //      of the viewport may be a dark ground (luminance < 0.35) behind body text.
 //      A container filled by a photograph is not a dark theme, so one that is
@@ -47,6 +48,7 @@ import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 import { serve } from './_serve.mjs';
+import { listRuns } from './run.mjs';
 
 const root = process.cwd();
 const only = process.argv.slice(2).filter((a) => !a.startsWith('-'));
@@ -156,13 +158,19 @@ const PROBE = `(async () => {
   return out;
 })()`;
 
+/* The vertical of a business: its latest ledger line's run → runs/<run_id>.yaml (default surf). */
+const RUN_VERTICAL = new Map(listRuns().map((r) => [r.run_id, r.vertical]));
+const LAST_RUN = new Map();
+for (const l of fs.readFileSync(path.join(root, 'ledger.jsonl'), 'utf8').split('\n')) { try { const j = JSON.parse(l); if (j.slug) LAST_RUN.set(j.slug, j.run_id); } catch {} }
+const verticalOf = (slug) => RUN_VERTICAL.get(LAST_RUN.get(slug)) ?? 'surf';
+
 /* What to check: every built mockup under sites/ (optionally filtered by slug or variant), or a
    single page given by path. */
 const targets = [];
 const asPath = only.filter((a) => fs.existsSync(a) && (a.endsWith('.html') || fs.statSync(a).isDirectory() && fs.existsSync(path.join(a, 'index.html'))));
 for (const a of asPath) {
   const abs = path.resolve(a), isDir = fs.statSync(abs).isDirectory();
-  targets.push({ label: path.relative(root, abs), dir: isDir ? abs : path.dirname(abs), file: isDir ? '' : path.basename(abs), slug: null,
+  targets.push({ label: path.relative(root, abs), dir: isDir ? abs : path.dirname(abs), file: isDir ? '' : path.basename(abs), slug: path.relative(root, abs).match(/^sites\/([^/]+)\//)?.[1] ?? null,
     shots: path.join(os.tmpdir(), 'check-design-' + path.basename(abs).replace(/\W+/g, '-')) });
 }
 if (!asPath.length) for (const slug of fs.readdirSync(path.join(root, 'sites'))) {
@@ -207,8 +215,10 @@ for (const t of targets) {
     });
     await page.waitForTimeout(500);
     const r = await page.evaluate(PROBE);
-    if (r.bg < MIN_LUM) problems.push(`${w}px: page ground is dark (luminance ${r.bg.toFixed(2)} < ${MIN_LUM})`);
-    for (const d of new Set(r.darkBlocks)) problems.push(`${w}px: dark ground behind text — ${d}`);
+    if (verticalOf(t.slug) === 'surf') {
+      if (r.bg < MIN_LUM) problems.push(`${w}px: page ground is dark (luminance ${r.bg.toFixed(2)} < ${MIN_LUM})`);
+      for (const d of new Set(r.darkBlocks)) problems.push(`${w}px: dark ground behind text — ${d}`);
+    }
     for (const c of new Set(r.captions)) problems.push(`${w}px: caption under a photograph — "${c}"`);
     for (const p of new Set(r.padded)) problems.push(`${w}px: picture box padded out — ${p}`);
     if (w === 1440) {

@@ -27,22 +27,24 @@ const OUT = join(ROOT, 'dashboard');
 // carries hosting_mode) → 8 Deliver (delivered; self-hosted then handoff_verified → access_revoked).
 // A `packaged` line dated before 2026-10-05 meant "full deploy done" (docs/ledger.md, History).
 export const ORDER = [
-  'discovered', 'scored', 'shortlisted', 'approved', 'harvested', 'audited',
+  'discovered', 'scored', 'shortlisted', 'approved',
+  'briefed', 'planned', 'lanes_approved', 'researched', 'aligned', // inbound runs (PLAN.md §4, proposal 004)
+  'harvested', 'audited',
   'copy_drafted', 'copy_humanised', 'copy_failed', 'copy_passed',
   'concepted', 'mocked', 'picked', 'built', 'optimised', 'ai_optimised',
   'critiqued', 'failed', 'passed', 'previewed', 'packaged', 'pitched', 'outcome',
   'product_chosen', 'delivered', 'handoff_verified', 'access_revoked', 'void',
 ];
 const PRODUCT_GATE = "record the client's product choice";
-export const GATES = { shortlisted: 'approve the shortlist', mocked: 'pick a mockup', packaged: 'send the pitch', 'outcome:sale': PRODUCT_GATE };
+export const GATES = { shortlisted: 'approve the shortlist', planned: 'approve the research lanes', researched: 'confirm the direction with the client', mocked: 'pick a mockup', packaged: 'send the pitch', 'outcome:sale': PRODUCT_GATE };
 const PACKAGED_MEANING_CHANGED = '2026-10-05'; // docs/ledger.md, "History: packaged before 2026-10-05"
 const HUMAN = 'Shahar';
 
 // Ten station segments for the Pipeline bar (concepts.md: PLAN's 1–8 + 4a–4i collapsed; Preview and
 // Deliver split on 2026-10-05).
 export const STATIONS = [
-  { n: 1, name: 'Scout', states: ['discovered', 'scored'] },
-  { n: 2, name: 'Shortlist', states: ['shortlisted', 'approved'], gate: 'approve the shortlist' },
+  { n: 1, name: 'Scout / brief', states: ['discovered', 'scored', 'briefed'] },
+  { n: 2, name: 'Shortlist / research', states: ['shortlisted', 'approved', 'planned', 'lanes_approved', 'researched', 'aligned'], gate: 'approve the shortlist (inbound: lanes, direction)' },
   { n: 3, name: 'Harvest', states: ['harvested', 'audited'] },
   { n: 4, name: 'Copy', states: ['copy_drafted', 'copy_humanised', 'copy_failed', 'copy_passed'] },
   { n: 5, name: 'Concept + mockups', states: ['concepted', 'mocked', 'picked'], gate: 'pick a mockup' },
@@ -57,6 +59,9 @@ export const STATIONS = [
 export const NEXT_STEP = {
   discovered: ['score', 'scout'], scored: ['shortlist', 'scout'],
   shortlisted: ['approve the shortlist', HUMAN], approved: ['harvest', 'harvester'],
+  briefed: ['plan the research', 'analyst'], planned: ['approve the research lanes', HUMAN],
+  lanes_approved: ['research the industry', 'analyst'], researched: ['confirm the direction with the client', HUMAN],
+  aligned: ['harvest', 'harvester'],
   harvested: ['audit the funnel', 'auditor'], audited: ['draft copy', 'copywriter'], copy_drafted: ['humanise copy', 'humanizer'],
   copy_humanised: ['review copy', 'copyeditor'], copy_failed: ['redraft copy', 'copywriter'],
   copy_passed: ['write concepts', 'creative-director'], concepted: ['build mockups', 'designer'],
@@ -108,8 +113,16 @@ function parseRun(y) {
     tokens_per_business: Number((y.match(/tokens_per_business:\s*([\d_]+)/)?.[1] ?? '').replace(/_/g, '')) || null,
     default_mode: (y.match(/default_mode:\s*(\w+)/)?.[1] ?? null),
     agent_pins: pins,
+    // packs and engagement (proposal 2026-09-globalsurf-02/004). A workflow is market × vertical for
+    // outbound runs; every inbound run is one workflow, "custom" (Shahar, 2026-10-18: "Surf | Sri-Lanka ** Custom").
+    market: scalar('market') || 'lk', vertical: scalar('vertical') || 'surf', engagement: scalar('engagement') || 'outbound',
+    get workflow() { return this.engagement === 'inbound' ? 'custom' : `${this.market}-${this.vertical}`; },
   };
 }
+
+// The name a workflow is shown under, on the dashboard and in Notion (Shahar, 2026-10-18).
+const WORKFLOW_LABELS = { custom: 'Custom', 'lk-surf': 'Surf | Sri-Lanka' };
+export const workflowLabel = (id) => WORKFLOW_LABELS[id] ?? id;
 
 function readDossier(slug) {
   const d = readJson(`dossier/${slug}/dossier.json`);
@@ -118,7 +131,7 @@ function readDossier(slug) {
   for (const [platform, r] of Object.entries(d.reviews ?? {})) {
     if (r && typeof r === 'object' && typeof r.rating === 'number') ratings[platform] = { rating: r.rating, count: r.count ?? null, fetched_at: r.fetched_at ?? null };
   }
-  return { name: val(d.business?.name) ?? null, type: d.businessType ?? null, harvested_at: d.harvested_at ?? null, ratings, gaps: Array.isArray(d.gaps) ? d.gaps.length : null };
+  return { name: val(d.business?.name) ?? null, type: val(d.businessType) ?? null, harvested_at: d.harvested_at ?? null, ratings, gaps: Array.isArray(d.gaps) ? d.gaps.length : null };
 }
 
 function readDeploy(slug) {
@@ -126,6 +139,11 @@ function readDeploy(slug) {
   if (!d) return null;
   const last = (d.steps ?? []).filter((s) => s.step === 'deploy' && s.ok).at(-1);
   return { adapter: d.adapter ?? null, cms: d.cms ?? null, url: last?.evidence?.url ?? null, version: last?.evidence?.version ?? null, deployed_at: last?.started ?? null, verified: (d.steps ?? []).some((s) => s.step === 'verify' && s.ok) };
+}
+
+// A picked mockup put online for the client before the full build (mockup pick, gate b): sites/<slug>/mockup-preview.json.
+function readMockupPreview(slug) {
+  return readJson(`sites/${slug}/mockup-preview.json`) ?? null;
 }
 
 function readPitch(slug) {
@@ -260,6 +278,8 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
   // Several runs can be active at once, one per operator (docs/team.md). `run` is the one the page
   // opens on: the viewer's active run, else the newest active one, else the newest file.
   const runFiles = readRuns();
+  const wfRun = (id) => runFiles.find((r) => r.run_id === id) ?? parseRun('');
+  const wfOf = (id) => wfRun(id).workflow;
   const activeRuns = runFiles.filter((r) => r.status === 'active');
   const run = activeRuns.find((r) => r.operator === viewer) ?? activeRuns.at(-1) ?? runFiles.at(-1) ?? parseRun('');
   const isActive = (r) => activeRuns.some((x) => x.run_id === r);
@@ -322,6 +342,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     const own = latestRunOf[slug] === run_id;
     const dossier = own ? readDossier(slug) : null;
     const deploy = own ? readDeploy(slug) : null;
+    const mockup = own ? readMockupPreview(slug) : null;
     const pitch = own ? readPitch(slug) : null;
     const shots = own ? readShots(slug) : null;
     const { group, label } = classify(hist, approvalsByRun[run_id], isActive(run_id));
@@ -358,7 +379,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
       ?? [...new Set(lineOps)].sort((a, b) => lineOps.filter((o) => o === b).length - lineOps.filter((o) => o === a).length)[0] ?? null;
 
     businesses.push({
-      slug, run_id,
+      slug, run_id, workflow: wfOf(run_id),
       name: dossier?.name ?? slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
       type: dossier?.type ?? null,
       presence: presence != null ? Number(presence) : null,
@@ -384,7 +405,9 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
       // The client chooses the mode after a sale (product_chosen carries it); before that, none is shown.
       // Lines before 2026-10-05 carry a hosting_mode that was not the client's choice: ignored until product_chosen.
       hosting_mode: reached.has('product_chosen') ? (hosting ?? run.default_mode) : null,
-      preview_url: deploy?.url ?? previewFromLedger ?? null,
+      preview_url: deploy?.url ?? previewFromLedger ?? mockup?.url ?? null,
+      preview_kind: deploy?.url || previewFromLedger ? 'site' : mockup?.url ? 'mockup' : null,
+      mockup_variant: mockup?.variant ?? null,
       deploy, cms_verified: deploy?.verified ?? false,
       pitch, shots,
       last_worked: lastWorked ? { operator: lastWorked.operator, name: ops[lastWorked.operator]?.name ?? lastWorked.operator, ts: lastWorked.ts, kind: lastWorked.kind, note: lastWorked.note } : null,
@@ -405,11 +428,14 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
   // ---- KPIs per run and deltas -----------------------------------------------------------------
   const FUNNEL = ['discovered', 'shortlisted', 'harvested', 'built', 'pitched', 'outcome:reply', 'outcome:sale'];
   const FUNNEL_LABELS = ['researched', 'shortlisted', 'harvested', 'built', 'pitched', 'replied', 'client'];
-  function kpisFor(runId) {
-    const bs = businesses.filter((b) => b.run_id === runId);
+  // Inbound businesses enter at `briefed` and pass gate b′ at `aligned`: they count as found and shortlisted.
+  const ALIAS = { discovered: 'briefed', shortlisted: 'aligned' };
+  function kpisFor(runId) { return kpisOf(businesses.filter((b) => b.run_id === runId)); }
+  function kpisOf(bs) {
     const live = bs.filter((b) => ['delivered', 'pitched', 'outcome'].includes(b.group));
     const scored = live.filter((b) => b.critic_score != null);
-    const reachedCount = (s) => bs.filter((b) => b.reached.includes(baseState(s)) && (!s.startsWith('outcome:') || b.history.some((h) => h.to === s))).length;
+    const reachedCount = (s) => bs.filter((b) => (b.reached.includes(baseState(s)) || (ALIAS[s] && b.reached.includes(ALIAS[s]))) && (!s.startsWith('outcome:') || b.history.some((h) => h.to === s))).length;
+    const inbound = bs.length > 0 && bs.every((b) => wfRun(b.run_id).engagement === 'inbound');
     return {
       researched: bs.length,
       live_sites: live.length,
@@ -419,13 +445,15 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
       meetings: bs.filter((b) => b.history.some((h) => h.to === 'outcome:meeting')).length,
       clients: bs.filter((b) => b.outcome?.state === 'sale').length,
       avg_critic: scored.length ? Math.round((scored.reduce((s, b) => s + b.critic_score, 0) / scored.length) * 10) / 10 : null,
-      funnel: FUNNEL.map((s, i) => ({ state: s, label: FUNNEL_LABELS[i], count: reachedCount(s) })),
+      funnel: FUNNEL.map((s, i) => ({ state: inbound && ALIAS[s] ? ALIAS[s] : s, label: inbound && ALIAS[s] ? ALIAS[s] : FUNNEL_LABELS[i], count: reachedCount(s) })),
     };
   }
   const kpis_by_run = Object.fromEntries(runsSeen.map((r) => [r, kpisFor(r)]));
   // A run with no ledger line yet (a run file just created, or an empty ledger) is not in runsSeen.
-  const runIdx = runsSeen.indexOf(run.run_id);
-  const prevRun = (runIdx === -1 ? runsSeen.filter((r) => r < run.run_id).at(-1) : runsSeen[runIdx - 1]) ?? null;
+  // Deltas compare runs of the same workflow only (proposal 004).
+  const sameWf = runsSeen.filter((r) => wfOf(r) === wfOf(run.run_id));
+  const runIdx = sameWf.indexOf(run.run_id);
+  const prevRun = (runIdx === -1 ? sameWf.filter((r) => r < run.run_id).at(-1) : sameWf[runIdx - 1]) ?? null;
   const cur = kpis_by_run[run.run_id] ?? kpisFor(run.run_id), prev = prevRun ? kpis_by_run[prevRun] : null;
   const deltas = {};
   for (const k of ['researched', 'live_sites', 'needs_you', 'pitched', 'replies', 'clients', 'avg_critic']) {
@@ -486,7 +514,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
 
   // ---- gates, decisions, activity, proposals, expenses ---------------------------------------------
   const proposals = readProposals(ledger.filter((l) => /^proposal:(approved|rejected)$/.test(l.to_state)));
-  const gates = businesses.filter((b) => b.gate).map((b) => ({ kind: b.gate, slug: b.slug, name: b.name, run_id: b.run_id, since: b.last_change, days: b.days_since_change, target: b.gate_target }));
+  const gates = businesses.filter((b) => b.gate).map((b) => ({ kind: b.gate, slug: b.slug, name: b.name, run_id: b.run_id, workflow: b.workflow, since: b.last_change, days: b.days_since_change, target: b.gate_target }));
   const unmerged = proposals.filter((p) => p.kind === 'proposal' && p.status === 'pending');
   if (unmerged.length) gates.push({ kind: 'approve or reject', slug: null, name: `${unmerged.length} suggested agent tweak${unmerged.length === 1 ? '' : 's'}`, run_id: null, since: null, days: null, target: { view: 'decisions', proposals: unmerged.map((p) => p.file) } });
   const decisions = businessLines.filter((l) => l.agent === 'human').sort((a, b) => b.ts.localeCompare(a.ts)).map((l) => ({ ts: l.ts, slug: l.slug, run_id: l.run_id, operator: opOfLine(l), from: l.from_state, to: l.to_state, note: l.note, gate: !!(GATES[l.from_state] && l.from_state !== l.to_state), override: OVERRIDE_RE.test(l.note ?? '') }));
@@ -513,9 +541,9 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     ((expenses.vendors[e.vendor] ??= {})[cur] = (expenses.vendors[e.vendor][cur] ?? 0) + e.amount);
   }
 
-  // Price list suggestion per market (docs/pricing.md); null when the file is missing or not JSON.
-  let pricing = null;
-  try { pricing = JSON.parse(read('docs/pricing.lk.json') ?? 'null'); } catch { pricing = null; }
+  // Price list suggestion per market (markets/<id>/pricing.json); null when the file is missing or not JSON.
+  const pricingOf = (market) => { try { return JSON.parse(read(`markets/${market}/pricing.json`) ?? 'null'); } catch { return null; } };
+  const pricing = pricingOf('lk');
 
   // ---- ledger view: every business ever reviewed, once, in its newest run --------------------------
   const cands = readCandidates();
@@ -550,12 +578,25 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
 
   // Runs with ledger lines, plus active runs that have none yet (a run file just created).
   const runIds = [...new Set([...runsSeen, ...activeRuns.map((r) => r.run_id)])].sort();
+  // The pack files a run loads (tools/prompt.mjs); a stub has only its title comment.
+  const packFiles = (dir) => (existsSync(join(ROOT, dir)) ? readdirSync(join(ROOT, dir), { withFileTypes: true }).filter((d) => d.isFile()).map((d) => d.name).sort().map((f) => { const t = read(`${dir}/${f}`) ?? ''; return { file: `${dir}/${f}`, stub: f.endsWith('.md') && !t.split('\n').some((l) => l.trim() && !l.trim().startsWith('#')) }; }) : null);
   const runs = [...runIds].reverse().map((r) => {
     const file = runFiles.find((x) => x.run_id === r);
     const bs = businesses.filter((b) => b.run_id === r); const groups = {};
     for (const b of bs) groups[b.group] = (groups[b.group] ?? 0) + 1;
     const ts = businessLines.filter((l) => l.run_id === r).map((l) => l.ts).sort();
-    return { run_id: r, businesses: bs.length, groups, first_ts: ts[0], last_ts: ts.at(-1), current: r === run.run_id, active: isActive(r), operator: file?.operator ?? null, status: file ? file.status : null, kpis: kpis_by_run[r] ?? kpisFor(r) };
+    const w = wfRun(r);
+    return { run_id: r, businesses: bs.length, groups, first_ts: ts[0], last_ts: ts.at(-1), current: r === run.run_id, active: isActive(r), operator: file?.operator ?? null, status: file ? file.status : null, market: w.market, vertical: w.vertical, engagement: w.engagement, workflow: w.workflow, packs: { market: packFiles(`markets/${w.market}`), vertical: packFiles(`verticals/${w.vertical}`) }, kpis: kpis_by_run[r] ?? kpisFor(r) };
+  });
+  // One entry per workflow (market × vertical) with at least one run: its runs and KPIs.
+  // businesses[] has one row per (run, slug): a workflow counts each slug once, by its newest run's row.
+  const latestPerSlug = (bs) => [...bs.reduce((m, b) => (m.get(b.slug)?.run_id >= b.run_id ? m : m.set(b.slug, b)), new Map()).values()];
+  // Surf | Sri-Lanka first: it is the default workflow (Shahar, 2026-10-18).
+  const workflows = [...new Set(runs.map((r) => r.workflow))].sort((a, b) => (a === 'lk-surf' ? -1 : b === 'lk-surf' ? 1 : a.localeCompare(b))).map((id) => {
+    const rs = runs.filter((r) => r.workflow === id);
+    // Custom holds every inbound run, whatever its market: price it by the newest active run's market.
+    const lead = rs.find((r) => r.active) ?? rs[0]; // runs[] is newest first
+    return { id, label: workflowLabel(id), pricing: pricingOf(lead.market), market: lead.market, markets: [...new Set(rs.map((r) => r.market))], verticals: [...new Set(rs.map((r) => r.vertical))], engagements: [...new Set(rs.map((r) => r.engagement))], runs: rs.map((r) => r.run_id), active_runs: rs.filter((r) => r.active).map((r) => r.run_id), kpis: kpisOf(latestPerSlug(businesses.filter((b) => b.workflow === id))) };
   });
 
   return {
@@ -574,7 +615,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
       media: Object.fromEntries(Object.entries(media).filter(([g]) => g === '_shared')),
     },
     pipeline_order: ORDER, gate_states: GATES, stations: STATIONS, next_step: NEXT_STEP,
-    run, runs, kpis: cur, kpis_by_run, deltas, funnel: cur.funnel, series,
+    run: { ...run } /* the spread copies the workflow getter's value */, runs, workflows, kpis: cur, kpis_by_run, deltas, funnel: cur.funnel, series,
     gates, businesses, prospects, areas: cands.areas, decisions, recent_activity, leads, corrections, proposals, agents, expenses, revenues, pricing,
     non_business_runs: nonBusinessRuns.map((l) => ({ ts: l.ts, run_id: l.run_id, agent: l.agent, to: l.to_state, note: l.note })),
     empty_states: {

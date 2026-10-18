@@ -1,4 +1,4 @@
-version: 0.2.0
+version: 0.3.0
 
 # schemas/dossier.md — `dossier/<slug>/dossier.json`, the harvester's output (PLAN.md §4 station 3)
 
@@ -93,6 +93,7 @@ v0.2 (2026-09-28) adds `videos[]`: Shahar rejected a run because video the busin
 | Rule | |
 |---|---|
 | Fact envelope | every leaf fact is `{ value, source_url, fetched_at }`; `value: null` + `gap` when not found. No fact without a source. |
+| Client sources (0.3.0, 2026-10-17) | Anything the client handed us — the brief, files, answers to our questions, photos — carries `"origin": "client"` and `source_url: "client:<where>"` (`client:brief/<slug>/brief.md`, `client:<file under dossier/<slug>/client/>`, `client:message <date>`); its `fetched_at` is when we received it. Images and videos the client handed over are `license: "business-owned"` with `license_note: "handed over by the client"`. No `origin` = found on the public web. Client files are kept under `dossier/<slug>/client/` (git-ignored like `assets/`). |
 | Images | files under `dossier/<slug>/assets/` (git-ignored), deduped by `sha256`, resized to ≤ 2000 px on the long edge; `license` ∈ `business-owned` \| `review-photo` \| `stock` \| `unknown`. Only `business-owned` is usable until the image policy is decided (PLAN.md §9). |
 | Videos | **Harvested whenever the business publishes any** — its own site (a `<video>` file or a YouTube/Vimeo embed), its YouTube/Vimeo channel, and Instagram/Facebook reels reachable without login. Fetched with `tools/fetch-video.mjs`, which writes `assets/video/` and records every file (source, renditions, poster, contact sheet) in `assets/index.json` with `kind: "video"`. Same `license` values and the same rule as images: only `business-owned` is usable, and only when the site/channel/account is the business's own. `shows` is written after looking at the contact sheet, never from the title. Every video found goes in `videos[]` (usable or not); the best 1–3 for a hero/loop carry `hero_candidate` and a cut with renditions and a poster. A business that publishes video and has an empty `videos[]` is an incomplete harvest. No audio is kept in any rendition. |
 | Reviews | quotes verbatim, with source; never paraphrased into claims. |

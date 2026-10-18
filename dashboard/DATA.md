@@ -20,19 +20,20 @@ Sources added 2026-10-02: **A** = `activity.jsonl`, **G** = `git log`, **M** = `
 | `team` | team.json, A | `viewer`, `operators{id: name}`, `open_assignments[]`, `last_by_operator{id: newest non-ledger event}`, `media` for `_shared` |
 | `human` | K | `"Shahar"` |
 | `pipeline_order` | K | PLAN.md §4 state order |
-| `gate_states` | K | `shortlisted / mocked / packaged / outcome:sale` → gate text (`outcome:sale` = gate e, the client's product choice, from 2026-10-05) |
+| `gate_states` | K | `shortlisted / planned (a′, inbound) / researched (b′, inbound) / mocked / packaged / outcome:sale` → gate text (`outcome:sale` = gate e, the client's product choice, from 2026-10-05) |
 | `stations[]` | K | ten bar segments `{n, name, states[], gate?}` (concepts.md mapping of PLAN 1–8 + 4a–4i; from 2026-10-05: 8 Preview `previewed`, 9 Pitch `packaged/pitched/outcome`, 10 Deliver `product_chosen/delivered/handoff_verified/access_revoked`) |
 | `next_step` | K | state → `[next step, owner]`; owner is `"Shahar"` or an agent name |
-| `run` | R | the run the page opens on: the viewer's active run, else the newest active one. `run_id, mode, operator, status, area_mode, anchors[], max_sites, presence_threshold, tokens_per_business, default_mode, agent_pins{}` |
-| `runs[]` | L, R | per `run_id` (with ledger lines, or active with none yet): business count, group counts, first/last ts, `current` (= `run`), `active`, `operator`, `status`, `kpis` (see below) |
+| `run` | R | the run the page opens on: the viewer's active run, else the newest active one. `run_id, mode, operator, status, area_mode, anchors[], max_sites, presence_threshold, tokens_per_business, default_mode, agent_pins{}, market, vertical, engagement, workflow` (defaults `lk`, `surf`, `outbound`; workflow = `<market>-<vertical>`, or `custom` for every inbound run) |
+| `runs[]` | L, R | per `run_id` (with ledger lines, or active with none yet): business count, group counts, first/last ts, `current` (= `run`), `active`, `operator`, `status`, `market`, `vertical`, `engagement`, `workflow`, `packs{market,vertical}` (each a list of `{file, stub}` from `markets/<market>/`, `verticals/<vertical>/`; null when the folder is missing; the Agents page lists them per active run), `kpis` (see below) |
+| `workflows[]` | R, L | one per workflow (market × vertical; all inbound runs are `custom`) with at least one run: `id, label` ("Surf | Sri-Lanka", "Custom"; Surf | Sri-Lanka first, the default), `pricing` (`markets/<market>/pricing.json`, or null; the Pricing tab shows the selected workflow's), `market` (the newest active run's, else the newest run's: it picks `pricing`), `markets[], verticals[]` (every run's), `engagements[], runs[], active_runs[], kpis` (the KPI set over its businesses, each slug once by its newest run's row; inbound businesses count `briefed` as found and `aligned` as shortlisted). The workflow selector (chips under the section title, and the same choice as a drop-down in the side menu) scopes every view to one of them except Needs you and Agents, which show every workflow |
 | `sync` | git | `origin_main`: the origin/main commit whose ledger and activity lines are merged in (`tools/origin.mjs`); null with `origin: false` |
 | `kpis` | L | the current run's KPI set |
 | `kpis_by_run{}` | L | per run: `researched` (rows), `live_sites` (group delivered/pitched/outcome), `needs_you` (rows with a gate), `pitched` (`pitched_at` set), `replies` (outcome reply or meeting), `meetings`, `clients` (outcome sale), `avg_critic` (mean of latest critic scores of live sites, 1 dp), `funnel[]` |
-| `deltas{}` | L | per KPI: `current`, `previous` (null when the previous run never reached the stage), `delta`, `note` |
-| `funnel[]` | L | researched → shortlisted → harvested → built → pitched → replied → client: businesses of the current run that ever reached the state |
+| `deltas{}` | L | per KPI against the previous run **of the same workflow**: `current`, `previous` (null when the previous run never reached the stage), `delta`, `note` |
+| `funnel[]` | L | researched → shortlisted → harvested → built → pitched → replied → client: businesses of the current run that ever reached the state. The researched step counts `discovered` or `briefed`, the shortlisted step `shortlisted` or `aligned`. When every business in the set is inbound, those two steps carry `state` and `label` `briefed` and `aligned` (else `discovered`/`researched` and `shortlisted`/`shortlisted`); an empty set is not inbound |
 | `series` | L | per UTC day from the first ledger line to today: `ledger_lines`, `decisions` (human lines), `gates_open`, `live_sites` (reached previewed), `businesses_seen` — current run only for the last three |
-| `gates[]` | L, P | rows whose state is a gate (`kind, slug, name, run_id, since, days, target{view,slug}`) plus one `review prompt diffs` item when proposal files exist without a merge record |
-| `businesses[]` | L, D, S | see below |
+| `gates[]` | L, P | rows whose state is a gate (`kind, slug, name, run_id, workflow, since, days, target{view,slug}`) plus one `review prompt diffs` item when proposal files exist without a merge record |
+| `businesses[]` | L, D, S, R | see below; each row also carries `workflow` (its run's) |
 | `decisions[]` | L | every `agent: human` line, newest first: `ts, slug, run_id, from, to, note, gate` (a real gate transition), `override` (note matches the override pattern) |
 | `recent_activity[]` | L | the last 25 ledger lines, newest first |
 | `leads[]` | L | businesses whose `discovered` note starts `referral:<slug>` — none yet |
@@ -40,7 +41,7 @@ Sources added 2026-10-02: **A** = `activity.jsonl`, **G** = `git log`, **M** = `
 | `proposals[]` | P | `run_id, file, title (first # heading), kind (proposal / application record for *-APPLY.md), status ("no merge record in the ledger"), custom_md` |
 | `agents{}` | C, R, L | see below |
 | `expenses` | E | `tracked` (file exists), `entries[]`, `monthly{month}{currency}`, `accumulated{currency}`, `per_client{slug|shared}`, `vendors{}` |
-| `pricing` | `docs/pricing.lk.json` | the Sri Lanka price-list suggestion as written: `market, title, status, currency, note, offers[], upsells[], costs[], terms[], open[]`; null if the file is missing or invalid |
+| `pricing` | `markets/lk/pricing.json` | the Sri Lanka price-list suggestion as written: `market, title, status, currency, note, offers[], upsells[], costs[], terms[], open[]`; null if the file is missing or invalid |
 | `non_business_runs[]` | L | lines with slug `dashboard` (this job's own run `dashboard-01`) |
 | `empty_states{}` | K | for `pitched, replies, clients, cost, sparkline, delta`: `filled_by` (the transition or file), `earliest`, `view` |
 | `totals` | L, R | `businesses_all_runs` (distinct slugs), `ledger_lines`, `human_decisions`, `tokens_per_business_budget`, `token_spend_tracked: false` |
@@ -69,7 +70,9 @@ Sources added 2026-10-02: **A** = `activity.jsonl`, **G** = `git log`, **M** = `
 | `critic_score, critic_score_kind` | L | the critic's latest line carrying `PASS|FAIL … N/100`; kind = `round n` or `verification` |
 | `critic_series[]` | L | every critic line with a score: `{ts, kind (round / verification / pre-score), round, verdict, score, to}` |
 | `hosting_mode` | L, R | last line carrying `hosting_mode` (the client's `product_chosen` line from 2026-10-05), else `run.default_mode` once `product_chosen` is reached; null before |
-| `preview_url` | S, L | `deploy.json` last ok deploy step `evidence.url`, else a `*.workers.dev` URL in a ledger note |
+| `preview_url` | S, L | `deploy.json` last ok deploy step `evidence.url`, else a `*.workers.dev` URL in a ledger note, else `sites/<slug>/mockup-preview.json` `url` (a picked home-page mockup online) |
+| `preview_kind` | S, L | `site` (the built preview) or `mockup` (from `mockup-preview.json`); null without a preview |
+| `mockup_variant` | S, L | `mockup-preview.json` `variant` (calm, interactive, unique) |
 | `deploy` | S | `adapter, cms, url, version, deployed_at, verified` |
 | `cms_verified` | S | a `verify` step with `ok: true` |
 | `pitch` | S | `drafts[]` in `pitch/`, `proposal_url` from `pitch/wrangler.jsonc` name |

@@ -1,0 +1,34 @@
+t=500 video [{"src":"","t":"0.0","paused":true}]
+t=1500 video [{"src":"","t":"0.0","paused":true},{"src":"","t":"0.0","paused":true}]
+t=3000 video [{"src":"","t":"0.0","paused":true},{"src":"","t":"0.0","paused":true}]
+t=6000 video [{"src":"table-464.webm","t":"1.8","paused":false},{"src":"","t":"0.0","paused":true}]
+requests 19, bytes 1474604, third-party 0
+LCP 2508 IMG CLS(load) 0.000
+height 16057 scrollWidth 390
+scroll 0 y=0 visibleWA=2
+scroll 1 y=640 visibleWA=2
+scroll 2 y=1280 visibleWA=2
+scroll 3 y=1920 visibleWA=1
+scroll 4 y=2560 visibleWA=1
+scroll 5 y=3200 visibleWA=1
+scroll 6 y=3840 visibleWA=1
+scroll 7 y=4480 visibleWA=1
+scroll 8 y=5120 visibleWA=1
+scroll 9 y=5760 visibleWA=1
+scroll 10 y=6400 visibleWA=3
+scroll 11 y=7040 visibleWA=5
+scroll 12 y=7680 visibleWA=3
+scroll 13 y=8320 visibleWA=1
+scroll 14 y=8960 visibleWA=1
+scroll 15 y=9600 visibleWA=1
+scroll 16 y=10240 visibleWA=1
+scroll 17 y=10880 visibleWA=1
+scroll 18 y=11520 visibleWA=1
+scroll 19 y=12160 visibleWA=1
+scroll 20 y=12800 visibleWA=1
+scroll 21 y=13440 visibleWA=1
+scroll 22 y=14080 visibleWA=2
+scroll 23 y=14720 visibleWA=3
+scroll 24 y=15360 visibleWA=2
+scroll 25 y=16000 visibleWA=2
+CLS after scroll 0.000

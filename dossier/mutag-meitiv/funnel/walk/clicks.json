@@ -1,0 +1,164 @@
+[
+ {
+  "page": "/%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA-%D7%95%D7%94%D7%A8%D7%A6%D7%90%D7%95%D7%AA",
+  "target": "הרשמה",
+  "found": true,
+  "url_after": "https://www.mutagmeitiv.com/%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA-%D7%95%D7%94%D7%A8%D7%A6%D7%90%D7%95%D7%AA",
+  "navigated": false,
+  "dialogs": 1,
+  "screenshot": "walk/click-workshops-register.png"
+ },
+ {
+  "page": "/%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA-%D7%95%D7%94%D7%A8%D7%A6%D7%90%D7%95%D7%AA",
+  "target": "ספרי לי עוד",
+  "found": true,
+  "url_after": "https://www.mutagmeitiv.com/%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA-%D7%95%D7%94%D7%A8%D7%A6%D7%90%D7%95%D7%AA",
+  "navigated": false,
+  "dialogs": 1,
+  "screenshot": "walk/click-workshops-tellmemore.png"
+ },
+ {
+  "page": "/",
+  "target": "menu",
+  "found": true,
+  "url_after": "https://www.mutagmeitiv.com/",
+  "navigated": false,
+  "dialogs": 1,
+  "menu_links": [
+   [
+    "לָחֲצוּ עַל מַקָּשׁ ESCAPE לִפְתִיחַת כְּלֵי נְגִישׁוּת",
+    "#vplugin"
+   ],
+   [
+    "דִּילּוּג אֶל הַתֹּוכֶן",
+    "#content"
+   ],
+   [
+    "בית",
+    "https://www.mutagmeitiv.com"
+   ],
+   [
+    "אודות",
+    "https://www.mutagmeitiv.com/about"
+   ],
+   [
+    "בלוג",
+    "https://www.mutagmeitiv.com/blog"
+   ],
+   [
+    "תהליך המיתוג",
+    "https://www.mutagmeitiv.com/process"
+   ],
+   [
+    "פיתוח עסק עם משמעות",
+    "https://www.mutagmeitiv.com/personal101"
+   ],
+   [
+    "הדרכות והרצאות",
+    "https://www.mutagmeitiv.com/סדנאות-והרצאות"
+   ],
+   [
+    "הצהרת נגישות",
+    "https://www.mutagmeitiv.com/הצהרת-נגישות"
+   ]
+  ],
+  "screenshot": "walk/click-home-menu.png"
+ },
+ {
+  "page": "/newcourse (desktop 1440)",
+  "links_to_blank_2": 1,
+  "screenshot": "walk/desktop-newcourse-blank2-link.png"
+ },
+ {
+  "page": "/ (desktop 1440, desktop UA)",
+  "whatsapp_links": 0,
+  "tel_links": 0,
+  "screenshot": "walk/desktop-home-fold.png",
+  "header_actions": [
+   [
+    "לָחֲצוּ עַל מַקָּשׁ ESCAPE לִפְתִיחַת כְ",
+    "#vplugin"
+   ],
+   [
+    "דִּילּוּג אֶל הַתֹּוכֶן",
+    "#content"
+   ],
+   [
+    "סְגִירָה",
+    "#"
+   ],
+   [
+    "",
+    "https://open.spotify.com/show/3CO8m8PUlGHePnl3BbcNSb?si=610b9dd8fb684a9a&nd=1"
+   ],
+   [
+    "בית",
+    "https://www.mutagmeitiv.com"
+   ],
+   [
+    "אודות",
+    "https://www.mutagmeitiv.com/about"
+   ],
+   [
+    "בלוג",
+    "https://www.mutagmeitiv.com/blog"
+   ],
+   [
+    "תהליך המיתוג",
+    "https://www.mutagmeitiv.com/process"
+   ],
+   [
+    "פיתוח עסק עם משמעות",
+    "https://www.mutagmeitiv.com/personal101"
+   ],
+   [
+    "הדרכות והרצאות",
+    "https://www.mutagmeitiv.com/סדנאות-והרצאות"
+   ],
+   [
+    "פה יוצרים קשר",
+    "https://www.mutagmeitiv.com/contact"
+   ],
+   [
+    "אסטרטגיות",
+    "https://www.mutagmeitiv.com/process"
+   ],
+   [
+    "",
+    "https://www.mutagmeitiv.com/about"
+   ],
+   [
+    "מיתוג אישי",
+    "https://www.mutagmeitiv.com/personal101"
+   ],
+   [
+    "",
+    "https://www.mutagmeitiv.com/personal101"
+   ],
+   [
+    "תכנון אסטרטגי",
+    "https://www.mutagmeitiv.com/process"
+   ],
+   [
+    "",
+    "https://www.mutagmeitiv.com/process"
+   ],
+   [
+    "הדרכות והרצאות",
+    "https://www.mutagmeitiv.com/סדנאות-והרצאות"
+   ],
+   [
+    "",
+    "https://www.mutagmeitiv.com/סדנאות-והרצאות"
+   ],
+   [
+    "קורסים וסדנאות",
+    "https://www.mutagmeitiv.com/סדנאות-והרצאות"
+   ],
+   [
+    "",
+    "https://www.mutagmeitiv.com/סדנאות-והרצאות"
+   ]
+  ]
+ }
+]

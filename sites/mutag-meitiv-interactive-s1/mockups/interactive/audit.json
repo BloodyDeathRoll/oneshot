@@ -1,0 +1,144 @@
+{
+ "slug": "mutag-meitiv",
+ "variant": "interactive",
+ "measured_at": "2026-10-18T11:35:07.686Z",
+ "first_load": {
+  "requests": 19,
+  "hosts": [
+   "localhost:8993"
+  ],
+  "third_party_hosts": [],
+  "bytes_total": 1471015,
+  "bytes_html": 167375,
+  "bytes_js": 0,
+  "bytes_css": 0,
+  "bytes_fonts": 135292,
+  "bytes_images": 365618,
+  "largest_image_bytes": 104306,
+  "lcp_ms": 2376,
+  "cls": 0,
+  "dcl_ms": 2371
+ },
+ "scroll": {
+  "early": {
+   "cls": 0.0025,
+   "shifts": [
+    {
+     "value": 0.0022,
+     "at_ms": 2440,
+     "y": 684,
+     "sources": [
+      "div.wrap.hero-in"
+     ]
+    }
+   ]
+  },
+  "settled": {
+   "cls": 0,
+   "shifts": []
+  }
+ },
+ "booking": {
+  "external_booking_hrefs": [
+   "https://wa.me/972546686808?text=%D7%94%D7%99%D7%99%20%D7%94%D7%93%D7%A1%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%20%D7%9E%D7%95%D7%AA%D7%92%20%D7%9E%D7%99%D7%98%D7%99%D7%91%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93.",
+   "https://wa.me/972546686808?text=%D7%94%D7%99%D7%99%20%D7%94%D7%93%D7%A1%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8.%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%90%D7%99%D7%9A%20%D7%A2%D7%95%D7%91%D7%93%20%D7%90%D7%A6%D7%9C%D7%9A%20%D7%AA%D7%94%D7%9C%D7%99%D7%9A%20%D7%9E%D7%99%D7%AA%D7%95%D7%92%20%D7%90%D7%99%D7%A9%D7%99%20%D7%9C%D7%A2%D7%A1%D7%A7.",
+   "https://wa.me/972546686808?text=%D7%94%D7%99%D7%99%20%D7%94%D7%93%D7%A1%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8.%20%D7%9E%D7%A2%D7%A0%D7%99%D7%99%D7%9F%20%D7%90%D7%95%D7%AA%D7%99%20%D7%AA%D7%9B%D7%A0%D7%95%D7%9F%20%D7%90%D7%A1%D7%98%D7%A8%D7%98%D7%92%D7%99%20%D7%9C%D7%9E%D7%95%D7%AA%D7%92%2C%20%D7%90%D7%A4%D7%A9%D7%A8%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%3F",
+   "https://www.brandawards.co.il/%d7%96%d7%95%d7%9b%d7%99%d7%9d-2022/",
+   "https://brandthechange.org/blog/presenting-certified-brand-the-change-trainers",
+   "https://wa.me/972546686808?text=%D7%94%D7%99%D7%99%20%D7%94%D7%93%D7%A1%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%96%D7%9E%D7%A0%D7%AA%20%D7%94%D7%94%D7%A8%D7%A6%D7%90%D7%94%20BRANDS%20OF%20CHANGE.",
+   "https://wa.me/972546686808?text=%D7%94%D7%99%D7%99%20%D7%94%D7%93%D7%A1%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%91%D7%90%D7%AA%D7%A8%20%D7%90%D7%AA%20%D7%A8%D7%99%D7%98%D7%A8%D7%99%D7%98%20%D7%94%D7%99%D7%95%D7%9D%20%D7%B4%D7%9C%D7%97%D7%A9%D7%95%D7%91%20%D7%9B%D7%9E%D7%95%20%D7%9E%D7%95%D7%AA%D7%92%20%28%D7%9E%D7%99%D7%98%D7%99%D7%91%29%D7%B4%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93.",
+   "https://wa.me/972546686808?text=%D7%94%D7%99%D7%99%20%D7%94%D7%93%D7%A1%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%A1%D7%93%D7%A0%D7%AA%20%D7%94%D7%97%D7%96%D7%95%D7%9F%20THE%20BETTER%204.%20%D7%9E%D7%AA%D7%99%20%D7%94%D7%99%D7%90%20%D7%9E%D7%AA%D7%A7%D7%99%D7%99%D7%9E%D7%AA%3F",
+   "https://wa.me/972546686808?text=%D7%94%D7%99%D7%99%20%D7%94%D7%93%D7%A1%2C%20%D7%9E%D7%AA%D7%99%20%D7%A1%D7%93%D7%A0%D7%AA%20%D7%94-Brand%20%26%20Breakfast%20%D7%94%D7%91%D7%90%D7%94%3F%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D.",
+   "https://wa.me/972546686808?text=%D7%94%D7%99%D7%99%20%D7%94%D7%93%D7%A1%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%94%D7%99%D7%A8%D7%A9%D7%9D%20%D7%9C%D7%A1%D7%93%D7%A0%D7%AA%20%D7%94%D7%94%D7%9B%D7%A8%D7%95%D7%AA.%20%D7%9E%D7%AA%D7%99%20%D7%94%D7%A1%D7%93%D7%A0%D7%94%20%D7%94%D7%91%D7%90%D7%94%3F",
+   "https://wa.me/972546686808?text=%D7%94%D7%99%D7%99%20%D7%94%D7%93%D7%A1%2C%20%D7%A1%D7%A4%D7%A8%D7%99%20%D7%9C%D7%99%20%D7%A2%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%9E%D7%A4%D7%92%D7%A9%D7%99%20%D7%94%D7%A7%D7%94%D7%99%D7%9C%D7%94%20%D7%B4%D7%A2%D7%A1%D7%A7%D7%99%D7%9D%20%D7%95%D7%9E%D7%99%D7%98%D7%99%D7%91%D7%99%D7%9D%D7%B4.",
+   "https://wa.me/972546686808?text=%D7%94%D7%99%D7%99%20%D7%94%D7%93%D7%A1%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%94%D7%A9%D7%AA%D7%9C%D7%9E%D7%95%D7%AA%20%D7%91%D7%A9%D7%99%D7%98%D7%AA%20Brand%20the%20Change.%20%D7%9E%D7%AA%D7%99%20%D7%A0%D7%A4%D7%AA%D7%97%20%D7%94%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%94%D7%91%D7%90%3F",
+   "https://wa.me/972546686808?text=%D7%94%D7%99%D7%99%20%D7%94%D7%93%D7%A1%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1%20%D7%9C%D7%9E%D7%95%D7%91%D7%99%D7%9C%D7%99%20%D7%A9%D7%99%D7%A0%D7%95%D7%99.%20%D7%99%D7%A9%20%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%A7%D7%A8%D7%95%D7%91%3F",
+   "https://wa.me/972546686808?text=%D7%94%D7%99%D7%99%20%D7%94%D7%93%D7%A1%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%A9%D7%94%D7%94%D7%A8%D7%A9%D7%9E%D7%94%20%D7%9C%D7%B4%D7%9E%D7%A2%D7%A1%D7%A7%20%D7%9C%D7%9E%D7%95%D7%AA%D7%92%20%D7%9E%D7%99%D7%98%D7%99%D7%91%D7%B4%20%D7%A0%D7%A1%D7%92%D7%A8%D7%94.%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A2%D7%93%D7%9B%D7%95%D7%9F%20%D7%9B%D7%A9%D7%99%D7%99%D7%A4%D7%AA%D7%97%20%D7%94%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%94%D7%91%D7%90.",
+   "https://open.spotify.com/show/3CO8m8PUlGHePnl3BbcNSb",
+   "https://podcasts.apple.com/il/podcast/id1644532520",
+   "https://www.mutagmeitiv.com/blog",
+   "https://www.mutagmeitiv.com/post/%D7%9E%D7%9B%D7%90%D7%95%D7%A1-%D7%9C%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA-%D7%94%D7%A7%D7%A9%D7%A8-%D7%94%D7%9E%D7%A4%D7%AA%D7%99%D7%A2-%D7%91%D7%99%D7%9F-%D7%9E%D7%A8%D7%99%D7%A0%D7%94-%D7%90%D7%91%D7%A8%D7%9E%D7%95%D7%91%D7%99%D7%A5-%D7%90%D7%A8%D7%A0%D7%95%D7%9C%D7%93-%D7%A9%D7%95%D7%95%D7%A8%D7%A6%D7%A0%D7%92%D7%A8-%D7%95%D7%99%D7%A2%D7%93%D7%99-%D7%94%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%91%D7%A8-%D7%A7%D7%99%D7%99%D7%9E%D7%90-%D7%94%D7%91%D7%99%D7%A0%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%99%D7%9D-%D7%95",
+   "https://www.mutagmeitiv.com/post/socialai",
+   "https://www.mutagmeitiv.com/post/strategy",
+   "https://www.instagram.com/mutagmeitiv/",
+   "https://www.instagram.com/p/DU6Vs32jEnO/",
+   "https://www.instagram.com/p/C5ynxOXNEJF/",
+   "https://www.instagram.com/p/Cv4x3a4tmQP/",
+   "https://www.instagram.com/reel/C6OIqnGNoYc/",
+   "https://www.instagram.com/p/C74lZKMt5DB/",
+   "https://www.instagram.com/reel/C1ZADx8tvPk/",
+   "https://calendly.com/hadas/30min",
+   "https://www.linkedin.com/in/hadasdrachli/",
+   "https://www.mutagmeitiv.com/_files/ugd/5b80b1_a6a31b83784f4cd7a54ab4552e6b8868.pdf"
+  ],
+  "tel_hrefs": [
+   "tel:+972546686808"
+  ],
+  "drawer_triggers": 0,
+  "triggers_are_links": true,
+  "primary_above_fold": true,
+  "tapped": "https://wa.me/972546686808?text=%D7%94%D7%99%D7%99%20%D7%94%D7%93%D7%A1%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%20%D7%9E%D7%95%D7%AA%D7%92%20%D7%9E%D7%99%D7%98%D7%99%D7%91%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93."
+ },
+ "keyboard": {
+  "drawer_opens": null,
+  "closed": null,
+  "focus_returned": null,
+  "note": "no drawer; every action is a plain link"
+ },
+ "a11y": {
+  "images": 63,
+  "images_without_alt": 0,
+  "images_alt_empty_decorative": 21,
+  "tapables": 77,
+  "tapables_under_44px": 0,
+  "tapables_under_44px_examples": [],
+  "headings": [
+   "H1",
+   "H2",
+   "H3",
+   "H3",
+   "H2",
+   "H2",
+   "H2",
+   "H3",
+   "H3",
+   "H3",
+   "H3",
+   "H2",
+   "H2",
+   "H3",
+   "H2",
+   "H3",
+   "H2",
+   "H3",
+   "H2",
+   "H3",
+   "H3",
+   "H3",
+   "H2",
+   "H2",
+   "H2"
+  ],
+  "has_skip_link": true,
+  "lang": "he"
+ },
+ "no_js": {
+  "text_length": 12225,
+  "booking_links_reachable": 2,
+  "visible_images": 59
+ },
+ "reduced_motion": {
+  "canvases": 0,
+  "canvases_hidden": 0,
+  "photograph_visible": true
+ },
+ "facts": {
+  "numbers_on_page": 19,
+  "numbers_not_in_passed_copy": [
+   "22.08.2026",
+   "28.05.2026",
+   "22.04.2026"
+  ],
+  "note": "copy/en.json passed station 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps each paragraph to its dossier fields. A number here that is not in the copy is either an interface label (01, 02…) or a claim to chase."
+ }
+}

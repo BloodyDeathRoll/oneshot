@@ -1,0 +1,31 @@
+phone t=500ms video: [{"src":"","t":"0.00","paused":true,"rs":0}]
+phone t=1500ms video: [{"src":"","t":"0.00","paused":true,"rs":0},{"src":"","t":"0.00","paused":true,"rs":0}]
+phone t=3000ms video: [{"src":"","t":"0.00","paused":true,"rs":0},{"src":"","t":"0.00","paused":true,"rs":0}]
+phone t=6000ms video: [{"src":"http://localhost:8743/video/table-464.webm","t":"2.01","paused":false,"rs":4},{"src":"","t":"0.00","paused":true,"rs":0}]
+phone requests: 16, bytes 1428314, third-party: 0 
+phone LCP 2664 IMG
+phone page height 15179, scrollWidth 390
+phone scroll 0 y=0 visibleWA=2 section=top
+phone scroll 1 y=640 visibleWA=2 section=sec-head
+phone scroll 2 y=1280 visibleWA=3 section=services
+phone scroll 3 y=1920 visibleWA=2 section=quotes
+phone scroll 4 y=2560 visibleWA=2 section=proof
+phone scroll 5 y=3200 visibleWA=2 section=sec-head
+phone scroll 6 y=3840 visibleWA=2 section=method
+phone scroll 7 y=4480 visibleWA=2 section=method
+phone scroll 8 y=5120 visibleWA=2 section=method
+phone scroll 9 y=5760 visibleWA=2 section=offers
+phone scroll 10 y=6400 visibleWA=5 section=offers
+phone scroll 11 y=7040 visibleWA=6 section=offers
+phone scroll 12 y=7680 visibleWA=3 section=work
+phone scroll 13 y=8320 visibleWA=2 section=sec motto
+phone scroll 14 y=8960 visibleWA=2 section=team
+phone scroll 15 y=9600 visibleWA=2 section=team
+phone scroll 16 y=10240 visibleWA=2 section=team
+phone scroll 17 y=10880 visibleWA=2 section=content
+phone scroll 18 y=11520 visibleWA=2 section=sec blog
+phone scroll 19 y=12160 visibleWA=2 section=sec blog
+phone scroll 20 y=12800 visibleWA=2 section=sec insta
+phone scroll 21 y=13440 visibleWA=3 section=book
+phone scroll 22 y=14080 visibleWA=3 section=ftr
+phone scroll 23 y=14720 visibleWA=2 section=ftr

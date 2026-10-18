@@ -33,6 +33,7 @@
 /* board */
 .agv-board{padding:6px 24px 0}
 .agv-bhead{padding:18px 0 12px}
+.agv-pack{padding:18px 20px;display:block}.agv-pack ul{margin:4px 0 0;padding-left:18px;font-size:14px;line-height:22px;overflow-wrap:anywhere}.agv-pack .agv-role{display:block;margin-top:2px}.agv-pack .agv-nf{margin-top:10px;font-weight:600}
 .agv-bhead h2{font-size:20px;font-weight:700;letter-spacing:-.01em}
 .agv-bhead p{font-size:15px;color:var(--ink2);margin-top:4px}
 .agv-row{display:grid;grid-template-columns:300px 160px minmax(0,1fr) 32px;align-items:center;position:relative}
@@ -761,7 +762,7 @@ function board(root) {
       <details><summary>How the state is decided</summary><div class="agv-rules">${Object.keys(STATE).map((s) => `<div>${pill(s, true)}<span>${STATE[s].rule}</span></div>`).join('')}</div><p style="margin-top:10px">Half, 1 in 5 and 4 pieces are design choices: copy review allows 2 rounds and critique 3.</p></details>
     </div>
   </section>
-  <section class="agv-nosig" aria-labelledby="agv-ns-h"><h2 id="agv-ns-h">Nothing checks these yet <span class="agv-count">${none.length}</span></h2><p>No checkpoint judges their work, so there is no score.</p><div class="agv-ngrid">${ncards}</div></section>`;
+  <section class="agv-nosig" aria-labelledby="agv-ns-h"><h2 id="agv-ns-h">Nothing checks these yet <span class="agv-count">${none.length}</span></h2><p>No checkpoint judges their work, so there is no score.</p><div class="agv-ngrid">${ncards}</div></section>${packsSection()}`;
   $$('#agv-mode [data-mode]', root).forEach((b) => b.addEventListener('click', () => { if (S.mode !== b.dataset.mode) { S.mode = b.dataset.mode; draw(); $(`#agv-mode [data-mode="${S.mode}"]`)?.focus(); } }));
   $('#agv-mode', root).addEventListener('keydown', (e) => { if (['ArrowLeft', 'ArrowRight'].includes(e.key)) { e.preventDefault(); $$('[data-mode]', e.currentTarget).find((b) => b.getAttribute('aria-checked') !== 'true').click(); } });
   $('#agv-review', root)?.addEventListener('click', () => { const t = tweaks()[0]; if (t) { S.focusTweak = true; location.hash = 'agents/' + t.agents[0]; } });
@@ -1060,9 +1061,20 @@ async function retryPr() {
 }
 
 // ------------------------------------------------------------------ draw: on every index render and on our own navigation
+// Packs (proposal 004): what each active run loads besides the agents' own files.
+function packsSection() {
+  const act = (D.runs || []).filter((r) => r.active && r.workflow);
+  if (!act.length) return '';
+  const li = (f) => `<li title="${esc(f.file)}"><code>${esc(f.file.split('/').pop())}</code>${f.stub ? ' <span class="agv-none">empty — the analyst drafts it</span>' : ''}</li>`;
+  const cards = act.map((r) => { const p = r.packs || {};
+    return `<div class="agv-card agv-pack"><b>${esc(r.run_id)}</b><span class="agv-role">${esc(r.market)} × ${esc(String(r.vertical).replace(/_/g, ' '))} · ${esc(r.engagement)}</span>`
+      + `<p class="agv-nf">Market pack · markets/${esc(r.market)}/</p><ul>${(p.market || []).map(li).join('') || '<li class="agv-none">missing</li>'}</ul>`
+      + `<p class="agv-nf">Vertical pack · verticals/${esc(r.vertical)}/</p><ul>${(p.vertical || []).map(li).join('') || '<li class="agv-none">missing</li>'}</ul></div>`; }).join('');
+  return `<section class="agv-nosig" aria-labelledby="agv-pk-h"><h2 id="agv-pk-h">Packs the active runs load <span class="agv-count">${act.length}</span></h2><p>Every agent in a run also reads its market and vertical pack.</p><div class="agv-ngrid">${cards}</div></section>`;
+}
 function draw() {
   if (!api) return;
-  D = api.D; const root = document.getElementById('agv-root'); if (!root || !D) return;
+  /* agents are shared by every workflow (Shahar, 2026-10-18) */ D = api.RAW || api.D; const root = document.getElementById('agv-root'); if (!root || !D) return;
   const ae = document.activeElement;
   if (S.edit && ae && ae.id === 'agv-ed') return; // never rebuild under someone typing; the next render catches up
   hideTip();

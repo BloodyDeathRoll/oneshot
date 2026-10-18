@@ -27,7 +27,7 @@ Workflow graph: Figma → Workflows file → `workflows` page → frame `oneshot
 | Self-improvement | Critic writes diffs to prompts/tools/playbook/rubric with evidence; human approves each; merged → version bump → CHANGELOG |
 | Agent prompts | Two layers per agent: `base.md` (Claude: role, I/O, constraints) + `custom.md` (Shahar: taste, rules, references). Runtime prompt = playbook + base + custom + references |
 | Preview | The site's `*.workers.dev` address is the before/after link: station 6 deploys the static build there (noindex, no CMS) for the pitch; production is the same Worker on the client's domain after Deliver |
-| Human gates | (a) shortlist approval (b) mockup pick (c) send pitch (d) approve prompt diffs (e) the client's product choice after a sale (added 2026-10-05) |
+| Human gates | (a) shortlist approval (b) mockup pick (c) send pitch (d) approve prompt diffs (e) the client's product choice after a sale (added 2026-10-05); inbound runs replace (a) with (a′) approve the research lanes and (b′) confirm the direction with the client (added 2026-10-17) |
 | Operators | Decided 2026-10-02: two operators, Shahar and Alon (`team.json`), each on their own machine and Claude Code sessions, one repo. Work goes on branches and reaches `main` only through pull requests that a human merges; nobody pushes to `main`. Either may pass any gate. Every ledger line carries `operator`; work between states and assignments go to `activity.jsonl`; `notes/<slug>.md` is the per-business handoff; the dashboard shows who worked on what last and who has an open assignment. `docs/team.md` |
 | Parallel runs | Decided 2026-10-04: several runs can be active at once, one per operator and machine. Each run is one file, `runs/<run_id>.yaml`, with an `operator` and a `status` (`active` \| `closed`); a session works on exactly one run (`ONESHOT_RUN`, else its operator's one active run; `node tools/run.mjs`). All runs share one `ledger.jsonl` (lines carry `run_id`; `merge=union`). The dashboard shows every run, with the ledger and activity of this checkout merged with `origin/main`, fetched every minute, so each operator sees what the other has merged. A business belongs to one active run at a time. `docs/team.md` |
 | Media | Decided 2026-10-02: no image or video in git, ever, and none hosted online. Each operator keeps media on disk and in a local store (`~/.oneshot/assets`); `media/<slug>.tsv` lists every file with its sha256 and source, and every new file must be made by a committed recipe, so the other operator rebuilds it (`tools/media.mjs restore`). Screenshots are scratch: one shared set per page, deleted after each scored round. The 3.5 GB of images already in git history are removed by a one-time history rewrite. `docs/team.md` |
@@ -43,10 +43,11 @@ oneshot/
   runs/<run_id>.yaml          # one file per run: area, budgets, pins, operator, status (§3)
   playbook.md                 # what a great surf-business site is — shared by all agents
   rubric.md                   # critic scoring, weights, pass thresholds
-  taxonomy.md                 # business types, what counts as "surf-related"
+  markets/<id>/               # market pack (proposal 2026-09-globalsurf-02/004): market.md, sources.md, pricing.json — lk today
+  verticals/<id>/             # vertical pack: taxonomy.md, business-types.md — surf today; a run names one of each (§3)
   server-hardening.md         # security baseline for the one CMS server (one server, one admin)
   agents/
-    orchestrator/  scout/  harvester/  auditor/  visual-critic/  experience-critic/  copywriter/  humanizer/  copyeditor/  creative-director/  designer/  seo/  aiseo/  critic/  deployer/  writer/
+    orchestrator/  analyst/  scout/  harvester/  auditor/  visual-critic/  experience-critic/  copywriter/  humanizer/  copyeditor/  creative-director/  designer/  seo/  aiseo/  critic/  deployer/  writer/
       base.md        # Claude writes: role, inputs, outputs, hard constraints
       custom.md      # Shahar writes: taste, rules, house style
       references.md  # curated examples (URLs + what we like about each), cached notes
@@ -83,6 +84,9 @@ oneshot/
 run_id: 2026-09-ahangama-02        # = the file name
 operator: shahar                   # team.json id; only this operator's sessions run it
 status: active                     # active | closed
+market: lk                         # markets/<id>/ pack (default lk)
+vertical: surf                     # verticals/<id>/ pack (default surf)
+engagement: outbound               # outbound (default) | inbound — §4 "Inbound engagement"
 area:
   mode: business                 # town | stretch | business
   # town:     one anchor (a town or beach) + shore_buffer_m along its coast
@@ -111,6 +115,8 @@ agents:                          # pinned versions for reproducibility
 
 Several runs may be active at once; one active run per operator is the norm, and an operator with two picks one per session with `ONESHOT_RUN=<run_id>`. `node tools/run.mjs` prints the session's run, `node tools/run.mjs list` all of them. Closing a run = `status: closed`; the file stays. In agent prompts, `playbook.md`, `rubric.md` and the schemas, "`run.yaml`" means the session's run file: `tools/prompt.mjs` loads it as the `run.yaml` layer and names the file.
 
+**Workflows and packs** (proposal 2026-09-globalsurf-02/004, approved 2026-10-17). A workflow is a *market* × a *vertical* × an *engagement*. The run file names one of each; a file without them is `lk` / `surf` / `outbound`, which every run before packs was. A pack is a folder: `markets/<id>/` (`market.md` language, script direction, currency, domains, pitch language; `sources.md` where the scout looks; `pricing.json` the price list) and `verticals/<id>/` (`taxonomy.md` what is in scope; `business-types.md` the type registry; later `references.md`, `playbook.md`, Shahar's `custom.md`). Agents load pack files as layers named `market/<file>` and `vertical/<file>` (`agents/wiring.json`), resolved through the run like `run.yaml`; `tools/check-wiring.mjs` fails a run whose pack does not exist. A one-off is a pack used by one run. Run file names for new runs: `runs/<yyyy-mm>-<market>-<vertical>-NN.yaml`.
+
 Scout geocodes the anchors and builds the area polygon: `town` = the anchor's coast buffered by `shore_buffer_m`; `stretch` = the OSM coastline between the two anchors buffered by `shore_buffer_m`; `business` = a circle of `radius_m` around the one anchor. Only businesses whose location falls inside the polygon are kept.
 
 ---
@@ -136,9 +142,28 @@ Each business moves through these stations. The orchestrator owns the order, ret
 | 4i | AI SEO | aiseo | built site, dossier, `seo-report.md` | answer-engine pass: self-contained answers to the questions people actually ask, `FAQPage` data, `/llms.txt`, AI-crawler policy, no-JS check; `sites/<slug>/aiseo-report.md` | — |
 | 5 | Critique | critic + visual-critic + experience-critic (independent) | final site, dossier, both SEO reports, `audit.json`, the current site | scorecard, including `tools/funnel.mjs` on the built site against `audit.json.recommended`; fail → back to 4f, max 3 rounds | — |
 | 6 | Preview | deployer | passing site | the static build of `sites/<slug>/final/` deployed with Wrangler to `<brand>.os1.workers.dev` (noindex, robots `Disallow`, no sitemap) and verified: 200s, live HTML byte-identical to the local build. **No CMS, no tenant, no owner login, no domain.** URL + evidence in the `previewed` ledger line | — |
-| 7 | Pitch | writer | dossier, `audit.md`, old vs new, preview URL from the `previewed` ledger line | proposal page **published** to `<brand>-proposal.os1.workers.dev` (a step of the chain, not a gate) + outreach message carrying its link, always in English; presents the product options (`managed` recommended — we host, you edit, monthly fee; `self_hosted_docker`; `static_only`) **for the client to choose**, and claims no CMS or login that does not exist yet | **Human sends; outcome logged** |
+| 7 | Pitch | writer | dossier, `audit.md`, old vs new, preview URL from the `previewed` ledger line | proposal page **published** to `<brand>-proposal.os1.workers.dev` (a step of the chain, not a gate) + outreach message carrying its link, both in the market's pitch language (`market/market.md`; `lk`: always English, `il`: Hebrew); presents the product options (`managed` recommended — we host, you edit, monthly fee; `self_hosted_docker`; `static_only`) **for the client to choose**, and claims no CMS or login that does not exist yet | **Human sends; outcome logged** |
 | 8 | Deliver | deployer | `outcome:sale` + the client's product choice (`product_chosen` line with `hosting_mode`) | the adapter for that mode (§5): `managed` — CMS tenant + seed + publish + domain + owner login + verify; `self_hosted_docker` — install, verify, handoff, revoke; `static_only` — build + zip. Then `check`, the post-CMS acceptance suite (`node tools/site-check.mjs <slug> --full`, 2026-10-05): pages, assets, booking hand-off (never sent to the engine), forecast, video, playbook §4 budgets, SEO plumbing, and with a CMS its health, parity, the owner path and tenant isolation; report in `sites/<slug>/site-check.json`. The same suite runs for every tenant after any CMS server upgrade, and its smoke subset runs every 6 h on every live site (`.github/workflows/site-monitor.yml`; a failed run is the alert). The CMS, and any CMS server upgrade it needs, is implemented here and never earlier | **Before it: the client's product choice, recorded by a human** |
 | ∞ | Learn | critic | reports, mockup picks, pitch outcomes | `proposals/<run>/` diffs to prompts/tools/playbook/rubric | **Human approves diffs** → merge, bump, CHANGELOG |
+
+### Inbound engagement (`engagement: inbound`, proposal 2026-09-globalsurf-02/004)
+
+A known client who has agreed and says what they want. No Scout, no shortlist; `mode: live`. One business per run.
+
+| # | Station | Agent | Input | Output | Gate |
+|---|---|---|---|---|---|
+| 1 | Brief | human | the client's words | `brief/<slug>/brief.md`: goals, must-haves, dislikes, references they like, languages, deadline, budget band; ledger `briefed` | — |
+| 2a | Plan research | analyst (planner) | brief, run file, packs | `dossier/<slug>/industry/plan.md`: the research lanes; ledger `planned` | **a′. Human approves the lanes** (`planned → lanes_approved`) |
+| 2b | Research | analyst (researchers, skeptic, merger) | approved plan | `dossier/<slug>/industry/`: `lane-<x>.md` per lane, `skeptic.md`, `industry.md`; then `dossier/<slug>/direction.md` (the brief read back, positioning, audience, what the site must do, archetype hints, questions for the client); ledger `researched` | **b′. Human, with the client, confirms the direction** (`researched → aligned`) |
+| 3 | Harvest | harvester | brief, direction, client-supplied assets | `dossier/<slug>/dossier.json` as outbound; source kind `client` for what the owner handed us | — |
+| 3b–4f | Audit … pre-score | as outbound | plus `direction.md` and the vertical pack | as outbound; copy per language in the run file | **b. Mockup pick: Shahar keeps 1–3 mockups; each becomes a site** |
+| 4g–6 | Build … preview | as outbound | as outbound | as outbound | — |
+| 7 | Proposal | writer | brief, direction, preview, old vs new | proposal page on `<brand>-proposal.os1.workers.dev`: the brief, then each ask and where on the site it is answered; the three hosting modes, **no price**, managed recommended. **No outreach message** | **c. Send pitch: human sends** |
+| 8 | Sale, product choice, deliver | as outbound | as outbound | as outbound | **e. Product choice: the client chooses the mode** |
+
+Gate b (mockup pick), every run (Shahar, 2026-10-17): Shahar keeps one, two or three mockups, and **each one kept becomes its own full site, preview and pitch**; nothing waits for the client. The `picked` note names every variant kept. The first builds under `<slug>`; the orchestrator forks each other one as `<slug>-<variant>` (first line `null → picked`, note `forked from <slug> at picked: <variant>`) with a copy of `dossier/<slug>/` and `sites/<slug>/copy/` and its mockup, and it goes through 4g–7 on its own: its own preview and proposal page. Another series of three is a human `mocked → copy_passed` line (note `new series: <why>`): the earlier mockups move to `sites/<slug>/mockups/series-<n>/` and stay pickable, and at the next `mocked` Shahar may keep any mockups from any series (`series-<n>/<variant>`; a fork from an earlier series is `<slug>-<variant>-s<n>`). The client comes in only after that: they see the sites and choose the final path.
+
+Ledger states, inbound: `briefed → planned → lanes_approved → researched → aligned → harvested → audited → …` identical to outbound from `harvested`. `briefed`, `lanes_approved` and `aligned` are human lines; `briefed` has `from_state: null`.
 
 ### Ledger states
 `discovered → scored → shortlisted → approved → harvested → audited → copy_drafted → copy_humanised → copy_passed | copy_failed → concepted → mocked → picked → built → optimised → ai_optimised → critiqued(n) → passed | failed → previewed → packaged → pitched → outcome:{reply,meeting,sale,ignored}`
@@ -158,8 +183,16 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 ### orchestrator
 - Reads the session's run file (`node tools/run.mjs`), walks each of that run's businesses through §4 in order, one at a time. Never touches another run's businesses.
 - Enforces budgets, retries (max 2 per station), stops at human gates, never runs past a gate unattended.
+- Reads `engagement`: an inbound run starts at `briefed`, skips Scout and gate a, runs the analyst for 2a–2b and stops at gates a′ and b′.
 - Writes ledger entries; resumable from any state after a crash.
 - Tools: Claude Code headless, `scripts/`.
+
+### analyst (stations 2a–2b, inbound only; proposal 2026-09-globalsurf-02/004)
+- One agent, four roles in `base.md`: **planner** (reads the brief, proposes lanes, stops at gate a′), **researchers** (one per lane, in parallel; each claim `C-<lane>-NN` carries evidence, source, date, confidence and what would change its mind), **skeptic** (rules SURVIVES / WEAKENED / KILLED on every claim with five attack passes; may reopen one lane once), **merger** (`industry.md` from survivors only, then `direction.md` for gate b′).
+- Default lanes: the industry and how it makes money; sites in this space and what converts; key players and their sites; the client's current position; the audience and what it searches for.
+- When the run's vertical has no content yet, the merger drafts `verticals/<id>/taxonomy.md`, `business-types.md` and `references.md` as a proposal under `proposals/<run-id>/`; Shahar approves.
+- The copyeditor may mark copy `sourced` against a surviving claim ID.
+- Never edits a lane file to fix a contract violation; sends it back to the lane.
 
 ### scout
 - Discovery sources: Google Places/Maps, OpenStreetMap, Instagram/Facebook pages, TripAdvisor, local directories.
@@ -285,7 +318,8 @@ Each agent folder has the same six files (§2). Below: what `base.md` must cover
 - Proposal page: before vs after, what was fixed, and what the owner would be able to edit alone once they choose a product with the CMS. The preview is a finished static build: the pitch never claims a CMS, login or domain exists yet.
 - The pitch presents the products **for the client to choose** and states the trade honestly: **managed** (recommended; monthly fee, we host it, they edit it, we keep it alive — hosting, updates, backups are ours) · **self-hosted on their own VPS** (one-time fee, fully theirs, ~$6–12/mo to their host, they carry updates and backups) · **static only** (the finished site as files, no CMS; edits need a developer). The choice comes back after a sale and is logged as `product_chosen` (gate e).
 - Preview URL from the ledger's `previewed` line (`deploy.json` exists only after station 8).
-- Outreach message in English (always, whatever the owner's language — Shahar, 2026-10-05), short, with the preview (`*.workers.dev`) link.
+- Outreach message in the market's pitch language (`market/market.md`; for `lk` always English, whatever the owner's language — Shahar, 2026-10-05), short, with the preview (`*.workers.dev`) link.
+- Inbound (`engagement: inbound`): input adds `brief.md` and `direction.md`; the page opens with the brief and shows each ask answered and where; hosting modes with **no price**; no outreach message.
 
 ---
 
