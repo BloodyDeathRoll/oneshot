@@ -116,6 +116,14 @@ Relayed by Shahar in session, 2026-10-17. His words, verbatim:
 |---|---|
 | 29 | Series 1: calm and interactive kept (pickable, `mockups/series-1/`); unique dropped. Series 2: three new mockups in which organisations (nonprofits/amutot, public bodies, companies booking talks and team workshops) stand out as the target market |
 
+## Gate c, series 2 (Shahar, 2026-10-18), verbatim
+
+> Dont like the second run at all. Keep the 2 choices from the first run, create online versions I can send the client
+
+| # | Answer |
+|---|---|
+| 30 | Picked: series-1 calm and series-1 interactive, each its own site (interactive forked as `mutag-meitiv-interactive-s1`); series 2 rejected; online versions to send the client |
+
 ## Not given
 
 Deadline, budget band, references the client likes, dislikes, the main CTA, the award details and
