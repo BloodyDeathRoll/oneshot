@@ -39,6 +39,16 @@ Relayed by Shahar in session, 2026-10-17. His words, verbatim:
 | 13 | Prices, where shown, are in ILS (₪) | 6 |
 | 14 | The proposal page is in Hebrew | market pack: pitch language |
 
+## Answers (Shahar, 2026-10-18, at gate b′), verbatim
+
+> 1. main action whatsapp
+> 7. Keep testimonials in the language in which they are given
+
+| # | Answer | direction.md question |
+|---|---|---|
+| 15 | The main call to action is WhatsApp | 4 |
+| 16 | Testimonials stay in the language they were given in (not translated) | 11 |
+
 ## Not given
 
 Deadline, budget band, references the client likes, dislikes, the main CTA, the award details and
