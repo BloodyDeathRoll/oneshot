@@ -15,7 +15,7 @@ Copywriter 0.3.4 · run 2026-10-il-brand-01 (inbound, live) · 2026-10-18 · sch
 | `languages` | `["he"]` | `languages.site` (brief 11) |
 | `tagline` | כאן מפתחים אסטרטגיות מותג עם משמעות. | `business.tagline` (home hero), verbatim |
 | `featureLine` | ״להתנהל מתוך משמעות, לפעול ליצירת רווחה לעסק, ללקוחותיי, לסביבה ולחברה״ | `business.motto`, verbatim; the layout line break removed. Its home heading "כלים לבניית עסק מיטיב" is in `mockup_extras.homeToolsHeading` |
-| `closing` | רוצה להתחיל? כתבו להדס בוואטסאפ, או קבעו שיחת הכרות בזום, ללא תשלום. | **EDIT (e), written**: `audit.recommended.closing_intent` (task). Facts: `contact.whatsapp`, `contact.scheduler` "שיחת הכרות בzoom (ללא תשלום)" |
+| `closing` | רוצה להתחיל? הכי זמינה בוואטסאפ. אפשר גם לקבוע איתי שיחת הכרות בזום, ללא תשלום. | **EDIT (e), written**: `audit.recommended.closing_intent` (task); humanizer: in the owner’s first person, "הכי זמינה בוואטסאפ" is her own phrase (`pages[/brandandbreakfast]`). Facts: `contact.whatsapp`, `contact.scheduler` "שיחת הכרות בzoom (ללא תשלום)" |
 | `contact.phone` / `.whatsapp` | +972546686808 | `contact.phone`, `contact.whatsapp`, `contact.whatsapp_client` (brief 18) |
 | `contact.email` | hadas@kapara.com | `contact.email` (on the former studio's domain — `gaps[]` contact.email_domain, owner item) |
 | `contact.address` / `.mapUrl` | null | `contact.address` gap: no address published (online + venues). No Google listing in the dossier (`reviews.google` gap) — nothing to apply the address rule to |
@@ -32,7 +32,7 @@ Copywriter 0.3.4 · run 2026-10-il-brand-01 (inbound, live) · 2026-10-18 · sch
 |---|---|
 | [0] intro · heading "הי, הגעת למקום מיטיב!" | `pages[/].text` line 1, verbatim |
 | [0] p1 "ליווי ופיתוח אסטרטגי לעסקים עם משמעות." | `business.tagline_alt[1]` (home `<title>`), verbatim + full stop |
-| [0] p2 "שני תהליכים מובילים, בשיטה אחת: מיתוג אישי לעסק ותכנון אסטרטגי למותג." | **EDIT (b)(c), written**: `services[].client_leading` (brief 12), `method.client` (brief 20) |
+| [0] p2 "שני התהליכים המרכזיים כאן הם מיתוג אישי לעסק ותכנון אסטרטגי למותג, ושניהם נשענים על אותה שיטה." | **EDIT (b)(c), written**: `services[].client_leading` (brief 12), `method.client` (brief 20) |
 | [1] about · heading "כל סיפור טוב מתחיל מקונפליקט... אז הנה הסיפור שלי" | `pages[/about].text` line 1 |
 | [1] p1–p5 | `pages[/about].text` lines 2–7, *split*; p5 joins the two short lines "את הפתגם…" + "משם החל…" |
 | [2] about · heading "רגע של אגו בריא" | **EDIT (a)**: a phrase from `pages[/about]` ("אני קוראת לזה - רגע של אגו בריא.") promoted to a heading for the split second half |
@@ -71,7 +71,7 @@ Copywriter 0.3.4 · run 2026-10-il-brand-01 (inbound, live) · 2026-10-18 · sch
 | · — | **EDIT (d), dropped**: line 13 "מותג מיטיב היא הנציגה הישראלית של האירגון שכיום מתורגל ב 36 מדינות…, תורגם עד כה ל 6 שפות" — contradicts `/process` (40+ countries, 5 languages; `btc_reach_claims`, `gaps[]`), and the representative claim is kept once, in strategic-planning p13. Owner to give one figure |
 | · p9–p10 | page subheading "איך למצוא משמעות…" + "רגע לפני ה״איך״…" |
 | · p11–p13 | lines "אין ספק…" + "מאז תחילת המלחמה…" (joined), "דעתי האישית…", "שאלות כמו…" |
-| · p14 | **EDIT (c)**: first sentence written (the 4 stage names, `method.value.stages[].name`, brief 20); rest = `method.value.duration` / `services[0].duration`, verbatim. The stage texts themselves live in `method.stages[]` (described once) |
+| · p14 | **EDIT (c)**: first sentence written ("התהליך עובר דרך ארבעת שלבי השיטה: …") (the 4 stage names, `method.value.stages[].name`, brief 20); rest = `method.value.duration` / `services[0].duration`, verbatim. The stage texts themselves live in `method.stages[]` (described once) |
 | · p15 | "ניתן לקבוע איתי שיחת הכרות בzoom (ללא תשלום)." — **EDIT (e)**: "בלחיצה על הכפתור" dropped (the button is the template's) |
 | · p16 | `quotes_on_site[0]` (Kate Raworth), verbatim. Not used: "markus-spiske unsplash" (photo credit of a stock image) |
 | strategic-planning · `title` "תכנון אסטרטגי למותג" | **EDIT (b)**: `services[1].name` "תכנון אסטרטגי" qualified |
@@ -115,7 +115,7 @@ Prices: `/סדנאות-והרצאות` values (instruction); Brand & Breakfast i
 | · audience | `/brandandbreakfast` "למי זה מיועד?" first item; items 2–3 not used (140 cap) — owner may prefer another |
 | · price | 350 ILS per_person (`offers[3].price`; unit is the harvester's reading — confirm). No VAT wording (the page has none) |
 | · — | **EDIT (d), dropped**: "יום שישי 15.5.26 10:00-13:00" (past) and "ותתקיים בזכרון יעקב" (that run's venue); "לשאלות נוספות, הכי זמינה בוואטסאפ - 0546686808" (replaced by the WhatsApp CTA, e). The sign-up form is not copy. Next date/venue: owner item |
-| intro-workshop · summary | **EDIT (a)**: `offers[4].includes` three lines joined into one sentence |
+| intro-workshop · summary | **EDIT (a)**: `offers[4].includes` three lines joined into one sentence (humanizer: as "נכיר… נעבור… ונסתכל…", same three items) |
 | · audience / price | `offers[4].audience`; 0 ILS (`price_text` "חינם") |
 | community-meetups · summary | `offers[5].text` line 1 |
 | · body p1–p3 | `offers[5].text` lines 2–5, *split* ("אז רגע על הרעיון" joined to its sentence) |
@@ -136,7 +136,7 @@ Prices: `/סדנאות-והרצאות` values (instruction); Brand & Breakfast i
 | · p7–p16 | "הסילבוס" + the 9 sessions (`offers[8].syllabus` with each session's text), verbatim |
 | · p17–p18 | "מה מיוחד בקורס?" list; "כדי לעמוד בסערות…" + "הקורס ישפוך אור…" |
 | · p19 | `offers[8].terms`, verbatim (spacing normalised) |
-| · p20 "ההרשמה נסגרה. אפשר לכתוב להדס בוואטסאפ ולקבל עדכון על הקורס הבא." | **EDIT (d)(e)**: `offers[8].status` "ההרשמה נסגרה — עדכני אותי על הקורס הבא"; the button led to a finished 2025 workshop's payment page (audit F4), so WhatsApp replaces it |
+| · p20 "ההרשמה נסגרה. רוצים לשמוע על הקורס הבא? כתבו לי בוואטסאפ." | **EDIT (d)(e)**: `offers[8].status` "ההרשמה נסגרה — עדכני אותי על הקורס הבא"; the button led to a finished 2025 workshop's payment page (audit F4), so WhatsApp replaces it |
 | · price | omitted: none on the live page; 2650 ₪ only on the stale duplicate (`price_conflict`) |
 | · — | not used: the award sentence and founder bio on `/newcourse` (→ `awards[]`, `team[0]`), its testimonials (→ `testimonials[]`), "פה נרשמים / פה לכל שאלה" (buttons) |
 
@@ -145,7 +145,7 @@ Prices: `/סדנאות-והרצאות` values (instruction); Brand & Breakfast i
 | Field | Rests on |
 |---|---|
 | `name` "מתודת ״מותג מיטיב״" | `/brandandbreakfast` "כך פותחה מתודת ״מותג מיטיב״"; `method.value.name` |
-| `intro` p1 | **EDIT (b)(c), written**: `method.client` (brief 20), the two lead services |
+| `intro` p1 "מיתוג אישי לעסק ותכנון אסטרטגי למותג עוברים באותה שיטה, בארבעה שלבים." | **EDIT (b)(c), written**: `method.client` (brief 20), the two lead services |
 | `intro` p2 | `/process` "בתהליך המיתוג אנו נשתמש במתודולוגית הקנבסים של BRAND THE CHANGE, מתורגמים לעברית", reworded to present tense (**EDIT c**) |
 | `stages[].label` | `method.value.stages[].name` |
 | `stages[0–2].title` | `method.value.stages[].text_process` (the `/process` one-liners), verbatim minus the "Sensing –" prefix |
