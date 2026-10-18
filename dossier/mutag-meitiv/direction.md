@@ -47,6 +47,7 @@ Mutag Meitiv is Hadas Drachli's brand-development practice for purpose-driven bu
 | 12 | Professional basics: a Hebrew `<title>` and meta description per page, one real `<h1>`, a current footer year, an accessibility statement page (WCAG 2.1 AA). | 10 | C-position-14, C-sites-14 |
 | 13 | Hebrew only, `lang="he"` `dir="rtl"`, no English pages. Testimonials stay in the language they were given in. | 11, 16 | C-position-09 |
 | 14 | The proposal page is in Hebrew (writer, station 9). | 14 | — |
+| 15 | A case study template page: the full case-study layout filled with labelled placeholders (client and sector, the challenge, the 4 stages as applied, the outcome, before/after visuals, a client quote, credits), each saying what to collect and in what form. The owner fills it in the CMS; until then it is not linked from the menu. | 26 | C-sites-02, C-position-08 |
 
 Delivery note for the deployer, not a site feature: the content schema today only allows `LKR | USD | EUR` and requires `en` in `languages`. ILS and Hebrew-only need a schema proposal before the build (see `proposals/2026-10-il-brand-01/001-vertical-brand_design.md`).
 
@@ -57,6 +58,7 @@ For the creative-director (station 4d). Hints, not a sitemap; the current site's
 - **Home:** first screen with Hadas's face, the greens and the icon, and WhatsApp. Then the two leading services as two large blocks, the method as short named stages with scroll-lit motion, proof, the two offer groups, and the latest podcast and blog. (C-sites-12, C-sites-16)
 - **Personal branding** and **Strategic planning**, one page each, from the current `/personal101` and `/process`, renamed in the menu. (C-position-02, C-position-03)
 - **Lectures and workshops**, **Courses**: the current offers, grouped.
+- **Case study (template):** one project page built around the 4 stages, every slot a visible placeholder naming the material it needs (text length, image count and size, quote, permission). (C-sites-02)
 - **Content:** podcast, blog, newsletter. **About**, **Contact**, **Accessibility statement**.
 - **Do not:** cover the first screen with a cookie banner, a loader or a pop-up; use a full-width video reel. (C-sites-09, C-sites-13, C-sites-22)
 

@@ -87,6 +87,15 @@ Relayed by Shahar in session, 2026-10-17. His words, verbatim:
 | 24 | Standalone site with its own CMS; the team section must let the owner add and remove people easily |
 | 25 | Gate b′ approved: "Go ahead" |
 
+## Addition (Shahar, 2026-10-18), verbatim
+
+> Also, lets add a case study template page, so its easier for the client to understand what
+> materials they need to collect
+
+| # | Answer |
+|---|---|
+| 26 | A case study template page: one complete case-study layout with labelled placeholders, so the client sees what materials to collect for each project |
+
 ## Not given
 
 Deadline, budget band, references the client likes, dislikes, the main CTA, the award details and
