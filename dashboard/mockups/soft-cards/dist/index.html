@@ -2661,12 +2661,13 @@ const baseOf=s=>s.startsWith('outcome:')?'outcome':s;
 // every site with a live preview, newest run first; a slug that reappears in a later run shows once
 function pitchSites(){
   const seen=new Set();
-  return D.businesses.filter(b=>PITCH_FROM.includes(baseOf(b.state))).filter(b=>!seen.has(b.slug)&&seen.add(b.slug))
+  return D.businesses.filter(b=>PITCH_FROM.includes(baseOf(b.state))||b.preview_kind==='mockup').filter(b=>!seen.has(b.slug)&&seen.add(b.slug))
     .sort((a,b)=>PITCH_FROM.indexOf(baseOf(a.state))-PITCH_FROM.indexOf(baseOf(b.state))||a.name.localeCompare(b.name));
 }
 const CH={whatsapp:'WhatsApp',email:'email',phone:'phone','in person':'in person'};
 function pitchStatus(b){
   const s=b.state;
+  if(b.preview_kind==='mockup'&&!PITCH_FROM.includes(baseOf(s)))return ['grey',`Mockup online${b.mockup_variant?' · '+b.mockup_variant:''} · home page only`];
   if(s==='previewed')return ['grey','Preview live · pitch not written'];
   if(s==='packaged')return ['gate','Ready to send'];
   const sent=b.pitch_sent?`Pitched ${dShort(b.pitch_sent.ts)}${b.pitch_sent.channel?' · '+(CH[b.pitch_sent.channel.toLowerCase()]||b.pitch_sent.channel):''}${b.pitch_sent.by?' · by '+opName(b.pitch_sent.by):''}`:'Pitched';

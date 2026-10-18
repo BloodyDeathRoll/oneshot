@@ -141,6 +141,11 @@ function readDeploy(slug) {
   return { adapter: d.adapter ?? null, cms: d.cms ?? null, url: last?.evidence?.url ?? null, version: last?.evidence?.version ?? null, deployed_at: last?.started ?? null, verified: (d.steps ?? []).some((s) => s.step === 'verify' && s.ok) };
 }
 
+// A picked mockup put online for the client before the full build (gate c): sites/<slug>/mockup-preview.json.
+function readMockupPreview(slug) {
+  return readJson(`sites/${slug}/mockup-preview.json`) ?? null;
+}
+
 function readPitch(slug) {
   const dir = join(ROOT, 'sites', slug, 'pitch');
   if (!existsSync(dir)) return null;
@@ -337,6 +342,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     const own = latestRunOf[slug] === run_id;
     const dossier = own ? readDossier(slug) : null;
     const deploy = own ? readDeploy(slug) : null;
+    const mockup = own ? readMockupPreview(slug) : null;
     const pitch = own ? readPitch(slug) : null;
     const shots = own ? readShots(slug) : null;
     const { group, label } = classify(hist, approvalsByRun[run_id], isActive(run_id));
@@ -399,7 +405,9 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
       // The client chooses the mode after a sale (product_chosen carries it); before that, none is shown.
       // Lines before 2026-10-05 carry a hosting_mode that was not the client's choice: ignored until product_chosen.
       hosting_mode: reached.has('product_chosen') ? (hosting ?? run.default_mode) : null,
-      preview_url: deploy?.url ?? previewFromLedger ?? null,
+      preview_url: deploy?.url ?? previewFromLedger ?? mockup?.url ?? null,
+      preview_kind: deploy?.url || previewFromLedger ? 'site' : mockup?.url ? 'mockup' : null,
+      mockup_variant: mockup?.variant ?? null,
       deploy, cms_verified: deploy?.verified ?? false,
       pitch, shots,
       last_worked: lastWorked ? { operator: lastWorked.operator, name: ops[lastWorked.operator]?.name ?? lastWorked.operator, ts: lastWorked.ts, kind: lastWorked.kind, note: lastWorked.note } : null,
