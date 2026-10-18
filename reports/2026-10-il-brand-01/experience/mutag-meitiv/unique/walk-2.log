@@ -1,0 +1,17 @@
+hero CTA box {"x":65.90625,"y":538.796875,"width":258.1875,"height":56}
+BLOCKED nav to https://wa.me/972546686808?text=היי הדס, הגעתי מהאתר של מותג מיטיב.
+tap 1 ->  none
+burger 
+menu aria-expanded true
+voices buttons 8
+desk height 13252
+method {"top":2754,"h":2573}
+method 0.05 [{"paused":true,"t":"0.0"},{"paused":true,"t":"0.5"}]
+method 0.25 [{"paused":true,"t":"0.0"},{"paused":true,"t":"0.5"}]
+method 0.45 [{"paused":true,"t":"0.0"},{"paused":false,"t":"1.4"}]
+method 0.65 [{"paused":true,"t":"0.0"},{"paused":true,"t":"1.4"}]
+method 0.85 [{"paused":true,"t":"0.0"},{"paused":true,"t":"1.4"}]
+nav ["→#top","מיתוג אישי לעסק→#personal-branding","תכנון אסטרטגי למותג→#strategic-planning","הרצאות וסדנאות→#talks","קורסים→#courses","אודות→#team","תוכן→#content","כתבו להדס בוואטסאפ→https://wa.me/972546686808?text=%D7%94%D7%99%D7%99%20%D7%94%D7%93%D7%A1%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%20%D7%9E%D7%95%D7%AA%D7%92%20%D7%9E%D7%99%D7%98%D7%99%D7%91.","מיתוג אישי לעסק→#personal-branding","תכנון אסטרטגי למותג→#strategic-planning","הרצאות וסדנאות→#talks","קורסים→#courses","אודות→#team","תוכן→#content"]
+rm videos paused [true,true,true] method h 2573
+nojs videos paused [true,true,true] method h 2573
+phone nojs height 21278
