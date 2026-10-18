@@ -10,15 +10,16 @@
 //     allowed only when wiring.json lists it under nonPromptDirs and the agent's base.md names it
 //  3. every repo doc with real content is reachable by at least one agent
 //  3b. runs/*.yaml are well formed and this session resolves to exactly one run (tools/run.mjs)
-//  3c. every run names packs that exist, and every pack file with content is loaded by some agent
+//  3c. every run names packs that exist, holding every pack layer its agents load, and every pack file
+//      with content is loaded by some agent
 //  4. each base.md's "Runtime prompt =" line matches the layers wiring.json gives it
 //  5. each agent's station ids in wiring.json exist in PLAN.md §4's pipeline table
 //  6. each agent listed in PLAN.md §2 has a folder, and vice versa
 
-import { readFileSync, existsSync, readdirSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync, realpathSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { layersFor, isStub, RUN_LAYER, PACK_KINDS } from './prompt.mjs';
+import { layersFor, isStub, RUN_LAYER, PACK_KINDS, packOf } from './prompt.mjs';
 import { listRuns, currentRun } from './run.mjs';
 import { team, whoami } from './team.mjs';
 
@@ -61,12 +62,30 @@ let op = null;
 try { op = whoami(); } catch (e) { warn.push(`run: not resolved for this session (${e.message})`); }
 if (op) try { currentRun({ operator: op }); } catch (e) { fail.push(`run: ${e.message}`); }
 
+// The pack files a run's agents load (market/<file>, vertical/<file>) that its packs lack. Read from
+// wiring.json, not layersFor(): layersFor resolves this session's run only. An inbound run never runs
+// the scout (PLAN.md §4), so the scout's layers do not bind it.
+export function missingPackLayers(run, agents = AGENTS) {
+  const out = [];
+  for (const a of agents) {
+    if (a === 'scout' && run.engagement === 'inbound') continue;
+    for (const rel of [...wiring.shared.always, ...(wiring.shared.byAgent[a] ?? [])]) {
+      const pack = packOf(rel);
+      if (!pack) continue;
+      const src = `${PACK_KINDS[pack.kind]}/${run[pack.kind]}/${pack.file}`;
+      if (!existsSync(join(ROOT, src))) out.push({ agent: a, rel, src });
+    }
+  }
+  return out;
+}
+
 // 3c — packs (proposal 2026-09-globalsurf-02/004): each run's market and vertical exist, its
 // engagement is known, and every pack .md with content is a layer some agent loads (as market/<file>
 // or vertical/<file>, whatever the pack).
 try {
   for (const r of listRuns()) {
     for (const [kind, dir] of Object.entries(PACK_KINDS)) if (!existsSync(join(ROOT, dir, r[kind]))) fail.push(`${r.file}: ${kind} "${r[kind]}" has no pack (${dir}/${r[kind]}/)`);
+    for (const m of missingPackLayers(r)) fail.push(`${r.file}: ${m.agent} loads ${m.rel}, but ${m.src} does not exist`);
     if (!['outbound', 'inbound'].includes(r.engagement)) fail.push(`${r.file}: engagement "${r.engagement}" is not outbound or inbound`);
   }
 } catch { /* listRuns errors are reported by 3b */ }
@@ -126,7 +145,10 @@ else {
   for (const a of AGENTS) if (!planAgents.includes(a)) fail.push(`agents/${a}/ is not listed in PLAN.md §2`);
 }
 
-for (const w of warn) console.log(`WARN  ${w}`);
-for (const f of fail) console.log(`FAIL  ${f}`);
-console.log(`\n${AGENTS.length} agents · ${fail.length} failure(s) · ${warn.length} warning(s)`);
-process.exit(fail.length ? 1 : 0);
+// Report only when run, so a test can import missingPackLayers.
+if (process.argv[1] && fileURLToPath(import.meta.url) === realpathSync(process.argv[1])) {
+  for (const w of warn) console.log(`WARN  ${w}`);
+  for (const f of fail) console.log(`FAIL  ${f}`);
+  console.log(`\n${AGENTS.length} agents · ${fail.length} failure(s) · ${warn.length} warning(s)`);
+  process.exit(fail.length ? 1 : 0);
+}

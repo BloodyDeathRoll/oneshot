@@ -1,1 +1,1 @@
-# verticals/brand_design/taxonomy.md — what counts as in scope for brand-design studios. Drafted by the analyst on the first inbound run (proposal 004), approved by Shahar.
+# verticals/brand_design/taxonomy.md — what counts as in scope for brand-design studios. Drafted by the analyst on the first inbound run (proposal 004). A stub until proposal `proposals/2026-10-il-brand-01/001` is approved (pending, a human gate); its rows arrive with it.

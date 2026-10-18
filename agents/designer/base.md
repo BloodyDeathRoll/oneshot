@@ -1,4 +1,4 @@
-version: 0.5.2
+version: 0.6.0
 
 # designer / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -43,6 +43,7 @@ Between them sits a human gate. You never cross it (see Hard constraints).
 | `agents/designer/tools.md` | What you may call and how. |
 | `schemas/site-content.md` | The fixed content schema — the contract between Payload and your templates. Every editable thing (hours, prices, photos, copy blocks, contact, booking links) has a field there. You read it; you do not change it. |
 | — | There is no shared template to start from. **One Astro template per site** (CLAUDE.md, Architecture): every business gets its own Astro project, laid out from its own dossier, copy and imagery. A layout, component or stylesheet is never carried across businesses; `templates/{calm,interactive,unique}/` were deleted on 2026-09-20 for exactly that reason. |
+| `dossier/<slug>/direction.md` + `brief/<slug>/brief.md` (inbound only) | The client's brief and our reading of it (gate b′): what the site must do, audience, the references they like and the dislikes. `concepts.md` already answers them; build so every "must do" item is visible on the page, and record any concept choice that breaks one under `conflicts`. Not a fact source. |
 | `dossier/<slug>/dossier.json` | The only source of facts about the business. Every fact carries `source_url` + `fetched_at`; gaps are flagged by the harvester. |
 | `dossier/<slug>/assets/` | The only source of imagery of the business. Every image carries a license/ownership note: business-owned, review photo, stock, unknown. |
 | `dossier/<slug>/assets/video/` + `dossier.videos[]` | The business's own video with web renditions and posters (`tools/fetch-video.mjs`). **Use it.** A hero loop is `<video muted loop playsinline autoplay preload="none" poster=…>` started after first paint, with the poster as the LCP image; poster only under reduced motion, Save-Data or a failed load (playbook §1a). |
@@ -65,7 +66,7 @@ was thrown away for two of the three, and none of it into looking at the page.)
 Per variant, ONE self-contained HTML file at `mockups/<variant>/dist/index.html`, so the existing
 tools and the critic, which serve `dist/`, keep working:
 
-- The home page in full, with the real copy from `sites/<slug>/copy/en.json`, the real video and the real photographs.
+- The home page in full, with the real copy from `sites/<slug>/copy/<locale>.json` (the run's first language: `en.json`, `he.json`), the real video and the real photographs.
 - CSS and JS inline. The photographs it uses are copied, resized, into `dist/img/`. Fonts may load
   from Google Fonts at this station only; 4g self-hosts them.
 - No Astro, no `content.json`, no schema binding. Those are 4g's. `audit-mockup` runs at 4e only for the scroll check (hand-off check 5). No Payload (that is station 8, after a sale).
@@ -168,7 +169,7 @@ Then stop. Report that the three mockups are ready. Do not rank them, recommend 
 4. **Performance.** Meet the playbook §4 budget. `node tools/audit-mockup.mjs <slug> <variant>` is run on every mockup and on the final site; the measured numbers go in `notes.md`. Pass thresholds are `rubric.md`'s.
 5. **No two businesses in the run get the same page.** Media, first-screen composition, type, colour, motion and section order differ visibly from every other business in **this** run; `concepts.md` says how. Two sites may both open on full-bleed video; they may not look interchangeable. Before handing off, open the other businesses' mockups in this run and say in `notes.md` what a visitor would notice is different.
 
-6. **The house rules below are hard constraints too** — light themes, no padded picture
+6. **The house rules below are hard constraints too** — light themes (surf vertical), no padded picture
    boxes, no captions under photographs. `tools/check-design.mjs` must pass.
 
 7. **Full-bleed needs the pixels, and when they exist, use them.** No photograph under 1200 px wide is used full-bleed, and never above the fold. It is measured, not declared: at 4e `tools/check-design.mjs` fails any image or CSS background drawn 1200 px wide or more at 1440 px from a source under 1200 px (the dossier's recorded width counts, so a copy enlarged into `dist/img/` does not get past it); at 4g `tools/build-mockup.mjs` refuses a `role: "bleed"` photograph under 1200 px. An upscaled phone photograph across a 1440 px hero makes a site look worthless — and so does a type-only page for a business that has great footage. When the business has video or photographs ≥ 1920 px, a full-bleed first screen is the default. references.md #8, #9 and #10 are the fallbacks only when the material is genuinely small.
@@ -189,7 +190,7 @@ These three are not taste, they are settled. Each was said, then broken by a lat
 rebuild, then said again in capitals. `tools/check-design.mjs` measures all three on the
 built page at 1440 px and 390 px and fails the station; run it before handing off.
 
-1. **Light themes. Every surf business, every variant, no exceptions.** The ground comes
+1. **Light themes, in the surf vertical** (`run.yaml` `vertical: surf`). **Every surf business, every variant, no exceptions**; other verticals have no theme rule here. The ground comes
    from the business's own photographs, as `concepts.md` gives it; a cool white is as light
    as a warm one, and cream is not the default. Never a dark page and never a large dark panel behind body text.
    A photograph or video filling a container — a full-bleed hero included — is a picture, not a dark theme, and is fine.

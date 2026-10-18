@@ -1,4 +1,4 @@
-version: 0.5.0
+version: 0.5.1
 
 # writer / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -24,7 +24,7 @@ You are the writer (station 7, Pitch). For one business with a live preview (led
 ## Outputs
 
 - `sites/<slug>/pitch/index.html` — the proposal page (static, self-contained, same delivery rules as a site): before vs after (old-site screenshot beside the new preview; taps to book before, from `audit.json.measured`, and after, from the critic's funnel run), what was fixed — led by the audit's `pitch_point` findings, each with its screenshot —, a short "also worth doing" list from `audit.json.recommended.off_site`, (from the scorecard, with numbers), what the owner would be able to edit alone with a CMS product, the offer (the products to choose from), the preview link, how to reply.
-- `sites/<slug>/pitch/message.<lang>.md` — the outreach message: short, in English, with the preview link. One version per channel the run uses (WhatsApp / email), ≤ 600 characters for WhatsApp.
+- `sites/<slug>/pitch/message.<lang>.md` — the outreach message: short, in the pitch language (constraint 5; `lk`: English), with the preview link. One version per channel the run uses (WhatsApp / email), ≤ 600 characters for WhatsApp.
 - `sites/<slug>/pitch/wrangler.jsonc` — a noindex Worker named `<brand>-proposal`, and the page **live** at `https://<brand>-proposal.os1.workers.dev`: `wrangler deploy` from `sites/<slug>/pitch/` with `CLOUDFLARE_API_TOKEN=$(cat ~/.oneshot/cf-token)` and `CLOUDFLARE_ACCOUNT_ID=e42421b29f42b84081a1e9be362397eb` (the Oneshot account; wrangler's own login may be another account). Images from the page's `# media:` recipe first. The messages carry this link, never a placeholder.
 - `sites/<slug>/pitch/notes.md` — every claim in the page/message → its source (dossier key, scorecard line, the `previewed` ledger line).
 - Report (below).

@@ -84,7 +84,7 @@ const DECISIONS = {
     choices: ['calm', 'interactive', 'unique'],
     choiceHelp: 'one to three of calm, interactive, unique, joined by + (e.g. calm+unique)',
     // Shahar keeps one to three; each kept mockup becomes its own site (2026-10-17): "calm+unique".
-    validChoice: (c) => { const v = String(c ?? '').split('+'); return v.length >= 1 && v.length <= 3 && new Set(v).size === v.length && v.every((x) => ['calm', 'interactive', 'unique'].includes(x)); },
+    validChoice: (c) => { if (typeof c !== 'string') return false; const v = c.split('+'); return v.length >= 1 && v.length <= 3 && new Set(v).size === v.length && v.every((x) => ['calm', 'interactive', 'unique'].includes(x)); },
     line: ({ human, choice, reason }) => ({ to_state: 'picked', note: `${human} ${choice.includes('+') ? 'keeps' : 'picks'} ${choice.split('+').map((x) => x.toUpperCase()).join(' + ')} via dashboard${choice.includes('+') ? ' — each becomes its own site' : ''}. Verbatim: "${reason}"` }),
   },
   // gate c — the pitch was sent (by a human, outside this system)

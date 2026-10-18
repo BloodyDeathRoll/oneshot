@@ -6,7 +6,7 @@ Rules of the contract
 
 - Everything in this file comes from Payload at build time and is **never hard-coded** in a template. Everything *not* in this file (layout, motion, interface labels such as "Opening hours" / "Book on WhatsApp", day and unit names) belongs to the template.
 - One business = one `sites` document (+ its `media` documents). The schema is identical in both hosting profiles (`ONESHOT_PROFILE=multi-tenant | single-tenant`); see "Profiles" at the end for the one difference.
-- Locales: `en` (default, always published) and `si`; v0.11 adds `he` (RTL), which a site may publish alone — the default locale is the first of `languages`. Localized fields hold one value per locale; a missing `si` value falls back to `en` when the template asks with `fallback-locale=en`.
+- Locales: `en` and `si`; v0.11 adds `he` (RTL). Each site publishes the locales in its own `languages`; the **site's** default locale is the first of them. `en` sites are unchanged (`en` first, always published). The Payload config has one `defaultLocale` for every site (`cms/app/src/payload.config.ts`), and it stays `en`; the build never relies on it and fetches each of the site's locales explicitly (see "What the template receives"). Localized fields hold one value per locale; a site that publishes `en` lets a missing `si` value fall back to `en` (`fallback-locale=en`); a site without `en` (a `he`-only site) asks with `fallback-locale=none`, so an empty field stays empty instead of showing English (v0.11, 2026-10-18).
 - Plain text only. No rich text, no HTML, no Markdown in v0.1. Paragraphs in `body` fields are separated by a blank line.
 - Links the owner can type are validated server-side to be `https://` URLs. Templates must still never put an unvalidated value in an `href` (the reference template re-checks).
 
@@ -22,8 +22,8 @@ Who edits: **owner** = the business owner in the Payload admin ("My site" form, 
 | `tagline` | text | no | **yes** | owner | ≤ 140 | `"Your first wave, guaranteed wobbly."` |
 | `closing` | text | no | **yes** | owner | ≤ 140; the one line the design sets beside the page's last booking action; empty = the template shows no line there | `"Rates move with the dates. The listings show what is free."` |
 | `featureLine` | text | no | **yes** | owner | ≤ 140; a short line the design sets over the site's feature image; empty = the template shows no line there | `"The outdoor pool is in the middle of the hotel and open all year."` |
-| `languages` | select, many: `en` \| `he` (v0.11) (list grows later: de, es, pt, ru…) | **yes** | no | owner | at least one; the first is the default locale. `en` sites as before (decided 2026-09-18). v0.11: `he` may stand alone (a Hebrew-only site, `market: il`); a `he` page is rendered `lang="he" dir="rtl"`. The spike still carries `si` fixtures | `["en"]` / `["he"]` |
-| `copyBlocks[]` | array (≤ 8 rows; v0.11: ≤ 16 for `brand_practice` / `brand_studio`) | no | – | owner | | |
+| `languages` | select, many: `en` \| `he` (v0.11) (list grows later: de, es, pt, ru…) | **yes** | no | owner | at least one; the first is the site's default locale (Payload's config-wide `defaultLocale` stays `en`; see "Locales"). `en` sites as before (decided 2026-09-18). v0.11: `he` may stand alone (a Hebrew-only site, `market: il`, fetched with `fallback-locale=none`); a `he` page is rendered `lang="he" dir="rtl"`. The spike still carries `si` fixtures | `["en"]` / `["he"]` |
+| `copyBlocks[]` | array (≤ 8 rows; v0.11: ≤ 16 for `brand_practice` / `brand_studio`) | no | – | owner | the type-dependent cap is a custom `validate` that reads the document's `businessType` (a fixed `maxRows` cannot depend on it): `maxRows: 16`, and the validator rejects more than 8 for any other type | |
 | `copyBlocks[].slot` | select: `intro` \| `about` \| `offer` \| `info` | **yes** | no | owner | where the design places the block; several rows may share a slot | `"intro"` |
 | `copyBlocks[].heading` | text | no | **yes** | owner | ≤ 120 | `"Learn to surf"` |
 | `copyBlocks[].body` | textarea | **yes** | **yes** | owner | ≤ 1500; blank line = new paragraph | `"Small groups, soft boards…"` |
@@ -66,7 +66,7 @@ One schema for every business. `businessType` says which kind of business the do
 
 | Field | Type | Required | Localized | Edited by | Constraints | Example |
 |---|---|---|---|---|---|---|
-| `businessType` | select: `surf_school` \| `surf_camp` \| `beach_lodging` \| `board_rental` \| `surf_shop` \| `shaper` \| `brand_practice` \| `brand_studio` (v0.11) \| `other` | **yes** (default `surf_school`) | no | deployer (seeds it from the dossier); owner may correct it | must match a row in the run's vertical pack (`verticals/<id>/business-types.md`) | `"beach_lodging"` |
+| `businessType` | select: `surf_school` \| `surf_camp` \| `beach_lodging` \| `board_rental` \| `surf_shop` \| `shaper` \| `brand_practice` \| `brand_studio` (v0.11) \| `other` | **yes** (default `surf_school`) | no | deployer (seeds it from the dossier); owner may correct it | must match a row in the run's vertical pack (`verticals/<id>/business-types.md`). The `brand_practice` / `brand_studio` rows arrive with proposal `proposals/2026-10-il-brand-01/001` (pending, a human gate); until it is approved those two values are valid by this schema's enum only | `"beach_lodging"` |
 
 ### Shared modules (any type may use them)
 
@@ -83,7 +83,7 @@ One schema for every business. `businessType` says which kind of business the do
 | `ratings[].url` | text, `https://` URL | no | no | deployer | the listing the score comes from | |
 | `ratings[].capturedAt` | date (YYYY-MM-DD) | **yes** | no | deployer | when the score was read from the platform (the harvester's `fetched_at`); playbook §6 requires a rating to be shown with its count, source and capture date | `"2026-09-19"` |
 | `testimonials[]` | array (≤ 12 rows) | no | – | deployer (owner may delete a row) | **verbatim guest words only**; never paraphrased, never invented, never trimmed into a different meaning | |
-| `testimonials[].quote` | textarea | **yes** | no | deployer | ≤ 600 (v0.11: ≤ 1000 for `brand_practice` / `brand_studio`, whose clients write longer — a quote is never trimmed to fit); **not localized** — a guest's words are not translated | `"The most amazing family running the business…"` |
+| `testimonials[].quote` | textarea | **yes** | no | deployer | ≤ 600 (v0.11: ≤ 1000 for `brand_practice` / `brand_studio`, whose clients write longer — a quote is never trimmed to fit; the type-dependent limit is a custom `validate` reading the document's `businessType`, over a fixed `maxLength: 1000`); **not localized** — a guest's words are not translated | `"The most amazing family running the business…"` |
 | `testimonials[].author` | text | **yes** | no | deployer | as published, e.g. first name + country | `"Clara, United Kingdom"` |
 | `testimonials[].source` | select: same list as `ratings[].platform`, plus `site` \| `linkedin` \| `client` (v0.11) | **yes** | no | deployer | `site` = published on the business's own site; `client` = handed over by the business (dossier `origin: client`) | `"booking"` |
 | `testimonials[].lang` | select: `en` \| `he` (v0.11) | no | no | deployer | the language the words were given in; the template sets `lang`/`dir` on the quote. Empty = the site's default locale. Never translated (Shahar, 2026-10-18) | `"en"` |
@@ -285,7 +285,7 @@ easily"). Owner tabs added after "Text": Services · Method · Team · Case stud
 | `services[].ctaText` | text | no | **yes** | owner | ≤ 200; the prefilled WhatsApp message for this offer (`wa.me/<contact.whatsapp>?text=`); empty = the template's default line | `"היי, אשמח לשמוע על הקורס"` |
 | `services[].bookingUrl` | text, `https://` URL | no | no | owner | an external registration or payment page; shown beside WhatsApp, never instead of it when `contact.whatsapp` is set | |
 | `services[].image` | upload → `media` | no | no | owner | image only | |
-| `services[].page` | checkbox | no (default: true for `lead`) | no | owner | true = the offer has its own page at `/<slug>` | `true` |
+| `services[].page` | checkbox | no (true for `lead` when left empty) | no | owner | true = the offer has its own page at `/<slug>`. Not a Payload `defaultValue` (it cannot read the row's `group`): a `beforeChange` hook on `sites` sets it to true for a `lead` row whose `page` is empty, and never overrides a value the owner set | `true` |
 | `method.name` | text | no | **yes** | owner | ≤ 80 | `"Brand the Change"` |
 | `method.intro` | textarea | no | **yes** | owner | ≤ 600 | |
 | `method.stages[]` | array (≤ 6 rows) | no | – | owner | one method, described once; templates show it wherever the method appears | |
@@ -364,7 +364,7 @@ One document per post; same tenant rule as `media`. Rendered at `/blog/<slug>`, 
 |---|---|---|---|---|---|
 | `tenant` | relationship → `tenants` | multi-tenant only | – | system | as `media` |
 | `title` | text | **yes** | **yes** | owner | ≤ 160 |
-| `slug` | text | **yes** | no | owner | unique per tenant; `^[a-z0-9֐-׿-]{1,80}$` (Hebrew slugs allowed, so old URLs map 1:1) |
+| `slug` | text | **yes** | no | owner | unique per tenant; `^(?!-)[a-z0-9\u05D0-\u05EA_-]{1,120}$` — a–z, 0–9, `_`, `-` and the Hebrew letters א–ת (U+05D0–U+05EA; no niqqud, no punctuation), never starting with `-`, ≤ 120 characters, stored decoded (not percent-encoded). Hebrew slugs and underscores are allowed so old URLs map 1:1 (checked 2026-10-18 against all 66 old Wix post slugs of `mutag-meitiv`: longest 96, six with `_`) |
 | `date` | date | **yes** | no | owner | publication date |
 | `excerpt` | text | no | **yes** | owner | ≤ 300 |
 | `body` | textarea | **yes** | **yes** | owner | ≤ 30000; plain text, blank line = new paragraph; a line starting `## ` is a subheading, `![alt](media:<id>)` an image (the only markup, parsed by the template) |
@@ -401,13 +401,15 @@ One document per post; same tenant rule as `media`. Rendered at `/blog/<slug>`, 
 
 The build authenticates with a **read-only builder API key** (`Authorization: builders API-Key <key>`; collection `builders`; read access to `sites`, `media`, `tenants`, nothing else, no writes). Nothing in the CMS is publicly readable — anonymous requests to every collection and to media files get 403.
 
-One request per locale, relationships populated one level:
+One request per locale in the site's `languages`, relationships populated one level:
 
 ```
-GET /api/sites?where[tenant][equals]=<tenantId>&locale=<en|si>&fallback-locale=en&depth=1&limit=1      (multi-tenant)
-GET /api/sites?locale=<en|si>&fallback-locale=en&depth=1&limit=1                                        (single-tenant)
+GET /api/sites?where[tenant][equals]=<tenantId>&locale=<en|si|he>&fallback-locale=<en|none>&depth=1&limit=1      (multi-tenant)
+GET /api/sites?locale=<en|si|he>&fallback-locale=<en|none>&depth=1&limit=1                                        (single-tenant)
 → { "docs": [ <site> ], "totalDocs": 1, … }
 ```
+
+`fallback-locale`: `en` when the site's `languages` include `en`; `none` when they do not (a `he`-only site), so Payload returns an empty localized field as `null` rather than its `en` value (Payload 3 reads `none` / `false` / `null` as no fallback; in the Local API, `fallbackLocale: false`). The request for the `en` locale itself needs no fallback.
 
 `<site>` for `locale=si` (real response from the spike, arrays shortened to one row):
 

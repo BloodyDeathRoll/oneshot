@@ -16,19 +16,19 @@ hosting:
   default_mode: self_hosted_docker # the client's stated preference (completely self hosted, CMS included), not the choice: that is the human's product_chosen line after a sale (gate e)
   modes: {}
 agents:                          # pinned versions for reproducibility
-  orchestrator: 0.5.2
+  orchestrator: 0.5.3
   analyst: 0.1.0
-  harvester: 0.4.3
+  harvester: 0.5.0
   auditor: 0.1.3
-  copywriter: 0.3.4
+  copywriter: 0.4.0
   humanizer: 0.2.0
   copyeditor: 0.4.2
-  creative-director: 0.4.2
-  designer: 0.5.2
+  creative-director: 0.5.0
+  designer: 0.6.0
   seo: 0.2.2
   aiseo: 0.2.2
   critic: 0.4.3
   visual-critic: 0.1.1
   experience-critic: 0.1.0
   deployer: 0.5.0
-  writer: 0.5.0
+  writer: 0.5.1

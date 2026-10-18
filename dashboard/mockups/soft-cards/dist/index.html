@@ -590,6 +590,7 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
   .nav .badge{position:absolute;top:2px;right:2px;margin:0;min-width:18px;height:18px;font-size:11px;padding:0 5px}
   .nav .n{display:none}
   .side-foot{display:none}
+  .wf-side{display:none} /* the 72px rail has no room for it: the chips under the title switch workflow */
   .dec2{grid-template-columns:minmax(0,1fr)}
   .hist-list li{grid-template-columns:96px 80px minmax(0,1fr)}.hist-list li .k{display:none}
   .top .sub{display:none}
@@ -2418,11 +2419,11 @@ renderRunSel();runSel.onchange=()=>{state.run=runSel.value;render()};
 const NO_WF=['needs','agents'];
 function setWf(id){WF=id;D=scoped(RAW);if(state.run!=='all'&&!D.runs.find(r=>r.run_id===state.run))state.run='all';render()}
 function renderChips(){
-  const box=$('#wf-chips'),side=$('#wf-side'),wrap=$('#wf-side-wrap');box.innerHTML='';side.innerHTML='';
+  const box=$('#wf-chips'),side=$('#wf-side'),wrap=$('#wf-side-wrap'),had=box.contains(document.activeElement);box.innerHTML='';side.innerHTML='';
   const off=!multiWf()||NO_WF.includes(state.view);box.hidden=off;wrap.hidden=!multiWf();
   for(const w of RAW.workflows){
     side.append(el('option',{value:w.id,text:wfLabel(w.id)}));
-    const b=el('button',{type:'button','aria-pressed':String(WF===w.id),text:wfLabel(w.id)});b.onclick=()=>setWf(w.id);box.append(b);
+    const b=el('button',{type:'button','aria-pressed':String(WF===w.id),text:wfLabel(w.id)});b.onclick=()=>setWf(w.id);box.append(b);if(had&&WF===w.id&&!off)b.focus();
   }
   side.value=WF||'';side.disabled=NO_WF.includes(state.view);side.onchange=()=>setWf(side.value);
 }
@@ -2667,7 +2668,7 @@ function pitchSites(){
 const CH={whatsapp:'WhatsApp',email:'email',phone:'phone','in person':'in person'};
 function pitchStatus(b){
   const s=b.state;
-  if(b.preview_kind==='mockup'&&!PITCH_FROM.includes(baseOf(s)))return ['grey',`Mockup online${b.mockup_variant?' · '+b.mockup_variant:''} · home page only`];
+  if(b.preview_kind==='mockup'&&!PITCH_FROM.includes(baseOf(s)))return ['grey',`Mockup${b.mockup_variant?' · '+b.mockup_variant:' online'}`,'Mockup online · home page only'];
   if(s==='previewed')return ['grey','Preview live · pitch not written'];
   if(s==='packaged')return ['gate','Ready to send'];
   const sent=b.pitch_sent?`Pitched ${dShort(b.pitch_sent.ts)}${b.pitch_sent.channel?' · '+(CH[b.pitch_sent.channel.toLowerCase()]||b.pitch_sent.channel):''}${b.pitch_sent.by?' · by '+opName(b.pitch_sent.by):''}`:'Pitched';
@@ -2825,7 +2826,7 @@ function renderOvSummary(){
     .filter(([c])=>c).map(([c,one,many])=>`${c} ${c===1?one:many}`);
   const p=$('#ov-sum');p.innerHTML='';
   if(!items.length){p.textContent='Nothing is waiting on you.';return}
-  p.append(el('b',{text:`${items.length===1?'1 thing is':items.length+' things are'} waiting on you`}),`: ${bits.length>1?bits.slice(0,-1).join(', ')+' and '+bits.at(-1):bits[0]}.`);
+  p.append(el('b',{text:`${items.length===1?'1 thing is':items.length+' things are'} waiting on you`}),`: ${bits.length>1?bits.slice(0,-1).join(', ')+' and '+bits.at(-1):bits[0]}${otherWf(items)?', across all workflows':''}.`);
 }
 function renderMoney(){
   const month=new Date().toISOString().slice(0,7);
@@ -2870,8 +2871,8 @@ function renderPitchSites(){
     if(pitchLive(b))links.append(el('a',{class:'ov-lk',href:b.pitch.proposal_url,target:'_blank',rel:'noopener'},'Pitch',el('span',{class:'sr',text:` page for ${b.name} (opens a new tab)`}),el('span',{html:OVI.ext})));
     else{const why=b.pitch?.proposal_url?`The pitch page for ${b.name} is written but not online yet.`:`${b.name} has no pitch page yet.`;
       links.append(el('span',{class:'ov-off',role:'link','aria-disabled':'true',tabindex:'0',title:why,'aria-label':`Pitch, not online yet. ${why}`},el('span',{html:OVI.clock}),'Pitch · not online yet'))}
-    const [cls,txt]=pitchStatus(b),age=ovDays(b.last_change);
-    const meta=el('div',{class:'ov-meta'},el('span',{class:'ov-badge '+(BADGE[cls]||'sent'),text:txt}));
+    const [cls,txt,tip]=pitchStatus(b),age=ovDays(b.last_change);
+    const meta=el('div',{class:'ov-meta'},el('span',{class:'ov-badge '+(BADGE[cls]||'sent'),text:txt,...tip&&{title:tip}}));
     if(b.state==='packaged')meta.append(el('span',{text:age?`for ${ovPlural(age,'day')}`:'since today',title:`Ready to send since ${dShort(b.last_change)}`}));
     for(const a of (b.assignments||[]).filter(a=>a.open))meta.append(el('span',{class:'ov-ho',title:a.task},el('span',{html:OVI.handoff}),a.by===a.to?`${opName(a.to)} is on it`:a.to===D.team?.viewer?`${opName(a.by)} asks you`:`Handed off to ${opName(a.to)}`));
     li.append(el('div',{class:'ov-nm'},el('h3',{text:b.name}),b.ran_by?.name?el('span',{class:'by',text:`by ${b.ran_by.name}`}):null));
@@ -2887,6 +2888,7 @@ function renderPitchSites(){
 function renderAlsoWaiting(){
   const ul=$('#ov-wait');ul.innerHTML='';
   const items=needsItems().filter(i=>i.kind==='tweak'||i.kind==='gate'||i.kind==='handoff');
+  $('#ow-h').textContent='Also waiting on you'+(otherWf(items)?' · all workflows':'');
   const n=$('#ow-n');n.textContent=String(items.length);n.className='ov-cnt'+(items.length?'':' z');n.setAttribute('aria-label',ovPlural(items.length,'item'));
   if(!items.length){ul.append(el('li',{class:'empty',text:'Nothing else is waiting on you.'}));return}
   for(const it of items){
@@ -2913,6 +2915,8 @@ function statusModal(b){
 /* ---------- Needs you: one flat list, the count is the list ---------- */
 const ICON_BELL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M3 6l1.5 1.5L7 5M3 12l1.5 1.5L7 11M3 18l1.5 1.5L7 17"/></svg>';
 function needsItems(){const keep=D;D=RAW;try{return needsAll()}finally{D=keep}}
+// Needs you is global: with a workflow selected, say so when some items belong to another workflow (the tiles are scoped)
+const otherWf=items=>!!WF&&items.some(i=>{const w=(i.b||i.g)?.workflow??(i.a&&RAW.businesses.find(x=>x.slug===i.a.slug)?.workflow);return w&&w!==WF});
 function needsAll(){
   const out=[],wt=b=>multiWf()&&b&&b.workflow?wfLabel(b.workflow)+' · ':'';
   for(const b of pitchSites().filter(b=>b.state==='packaged'))out.push({kind:'pitch',b,title:`Send ${b.name}'s pitch`,sub:`${wt(b)}Send it yourself (WhatsApp, email or in person), then press Update status · ready since ${dShort(b.last_change)}`});
@@ -2961,10 +2965,10 @@ function bzVerdict(b){
 function renderBiz(){
   if(!state.bzTab)state.bzTab='all';
   const all=[...D.businesses].sort((x,y)=>(y.last_change||'').localeCompare(x.last_change||''));
-  const tabs=$('#bz-tabs');tabs.innerHTML='';
+  const tabs=$('#bz-tabs'),had=tabs.contains(document.activeElement);tabs.innerHTML='';
   for(const[k,label,f]of BZ_TABS){
     const b=el('button',{type:'button','aria-pressed':String(state.bzTab===k)},label,el('b',{text:String(all.filter(f).length)}));
-    b.onclick=()=>{state.bzTab=k;renderBiz()};tabs.append(b);
+    b.onclick=()=>{state.bzTab=k;renderBiz()};tabs.append(b);if(had&&state.bzTab===k)b.focus();
   }
   const [,label,f]=BZ_TABS.find(t=>t[0]===state.bzTab);
   let rows=all.filter(f);if(state.bzTab==='scored')rows.sort((x,y)=>(y.presence??-1)-(x.presence??-1));
@@ -3178,8 +3182,8 @@ function renderSites(){
     c.append(thumb(b,'shot'));
     const body=el('div',{class:'body'});
     body.append(el('div',{class:'site-h'},el('h2',{text:b.name})));
-    const [pc,pt]=pitchStatus(b);
-    const meta=el('div',{class:'site-meta'});meta.append(el('span',{class:'spill '+pc,text:pt}),' ',[b.type?b.type.replace('_',' '):null,runShort(b.run_id),b.ran_by?`ran by ${b.ran_by.name}`:null,b.hosting_mode].filter(Boolean).join(' · '));
+    const [pc,pt,ptip]=pitchStatus(b);
+    const meta=el('div',{class:'site-meta'});meta.append(el('span',{class:'spill '+pc,text:pt,...ptip&&{title:ptip}}),' ',[b.type?b.type.replace('_',' '):null,runShort(b.run_id),b.ran_by?`ran by ${b.ran_by.name}`:null,b.hosting_mode].filter(Boolean).join(' · '));
     body.append(meta);
     const scored=b.critic_series.filter(x=>x.score!=null),last=scored.at(-1);
     const sc=el('div',{class:'site-score'});

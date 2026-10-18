@@ -141,7 +141,7 @@ function readDeploy(slug) {
   return { adapter: d.adapter ?? null, cms: d.cms ?? null, url: last?.evidence?.url ?? null, version: last?.evidence?.version ?? null, deployed_at: last?.started ?? null, verified: (d.steps ?? []).some((s) => s.step === 'verify' && s.ok) };
 }
 
-// A picked mockup put online for the client before the full build (gate c): sites/<slug>/mockup-preview.json.
+// A picked mockup put online for the client before the full build (mockup pick, gate b): sites/<slug>/mockup-preview.json.
 function readMockupPreview(slug) {
   return readJson(`sites/${slug}/mockup-preview.json`) ?? null;
 }
@@ -579,7 +579,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
   // Runs with ledger lines, plus active runs that have none yet (a run file just created).
   const runIds = [...new Set([...runsSeen, ...activeRuns.map((r) => r.run_id)])].sort();
   // The pack files a run loads (tools/prompt.mjs); a stub has only its title comment.
-  const packFiles = (dir) => (existsSync(join(ROOT, dir)) ? readdirSync(join(ROOT, dir)).sort().map((f) => { const t = read(`${dir}/${f}`) ?? ''; return { file: `${dir}/${f}`, stub: f.endsWith('.md') && !t.split('\n').some((l) => l.trim() && !l.trim().startsWith('#')) }; }) : null);
+  const packFiles = (dir) => (existsSync(join(ROOT, dir)) ? readdirSync(join(ROOT, dir), { withFileTypes: true }).filter((d) => d.isFile()).map((d) => d.name).sort().map((f) => { const t = read(`${dir}/${f}`) ?? ''; return { file: `${dir}/${f}`, stub: f.endsWith('.md') && !t.split('\n').some((l) => l.trim() && !l.trim().startsWith('#')) }; }) : null);
   const runs = [...runIds].reverse().map((r) => {
     const file = runFiles.find((x) => x.run_id === r);
     const bs = businesses.filter((b) => b.run_id === r); const groups = {};
@@ -588,13 +588,15 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     const w = wfRun(r);
     return { run_id: r, businesses: bs.length, groups, first_ts: ts[0], last_ts: ts.at(-1), current: r === run.run_id, active: isActive(r), operator: file?.operator ?? null, status: file ? file.status : null, market: w.market, vertical: w.vertical, engagement: w.engagement, workflow: w.workflow, packs: { market: packFiles(`markets/${w.market}`), vertical: packFiles(`verticals/${w.vertical}`) }, kpis: kpis_by_run[r] ?? kpisFor(r) };
   });
-  // One entry per workflow (market × vertical) with at least one run: its runs and summed KPIs.
+  // One entry per workflow (market × vertical) with at least one run: its runs and KPIs.
+  // businesses[] has one row per (run, slug): a workflow counts each slug once, by its newest run's row.
+  const latestPerSlug = (bs) => [...bs.reduce((m, b) => (m.get(b.slug)?.run_id >= b.run_id ? m : m.set(b.slug, b)), new Map()).values()];
   // Surf | Sri-Lanka first: it is the default workflow (Shahar, 2026-10-18).
   const workflows = [...new Set(runs.map((r) => r.workflow))].sort((a, b) => (a === 'lk-surf' ? -1 : b === 'lk-surf' ? 1 : a.localeCompare(b))).map((id) => {
     const rs = runs.filter((r) => r.workflow === id);
     // Custom holds every inbound run, whatever its market: price it by the newest active run's market.
     const lead = rs.find((r) => r.active) ?? rs[0]; // runs[] is newest first
-    return { id, label: workflowLabel(id), pricing: pricingOf(lead.market), market: lead.market, markets: [...new Set(rs.map((r) => r.market))], verticals: [...new Set(rs.map((r) => r.vertical))], engagements: [...new Set(rs.map((r) => r.engagement))], runs: rs.map((r) => r.run_id), active_runs: rs.filter((r) => r.active).map((r) => r.run_id), kpis: kpisOf(businesses.filter((b) => b.workflow === id)) };
+    return { id, label: workflowLabel(id), pricing: pricingOf(lead.market), market: lead.market, markets: [...new Set(rs.map((r) => r.market))], verticals: [...new Set(rs.map((r) => r.vertical))], engagements: [...new Set(rs.map((r) => r.engagement))], runs: rs.map((r) => r.run_id), active_runs: rs.filter((r) => r.active).map((r) => r.run_id), kpis: kpisOf(latestPerSlug(businesses.filter((b) => b.workflow === id))) };
   });
 
   return {
@@ -613,7 +615,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
       media: Object.fromEntries(Object.entries(media).filter(([g]) => g === '_shared')),
     },
     pipeline_order: ORDER, gate_states: GATES, stations: STATIONS, next_step: NEXT_STEP,
-    run: { ...run, workflow: run.workflow }, runs, workflows, kpis: cur, kpis_by_run, deltas, funnel: cur.funnel, series,
+    run: { ...run } /* the spread copies the workflow getter's value */, runs, workflows, kpis: cur, kpis_by_run, deltas, funnel: cur.funnel, series,
     gates, businesses, prospects, areas: cands.areas, decisions, recent_activity, leads, corrections, proposals, agents, expenses, revenues, pricing,
     non_business_runs: nonBusinessRuns.map((l) => ({ ts: l.ts, run_id: l.run_id, agent: l.agent, to: l.to_state, note: l.note })),
     empty_states: {

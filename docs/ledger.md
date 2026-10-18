@@ -9,7 +9,7 @@
 | `ts` | string | UTC timestamp, ISO 8601 (`2026-09-17T14:05:00Z`), when the transition completed |
 | `run_id` | string | `run_id` of the session's run (`runs/<run_id>.yaml`, `node tools/run.mjs`) |
 | `slug` | string | Business slug; matches `dossier/<slug>/` and `sites/<slug>/` |
-| `from_state` | string \| null | Previous state; `null` only for the first line of a business (`discovered`) |
+| `from_state` | string \| null | Previous state; `null` only for a business's first line — `discovered` (outbound), `briefed` (inbound, a human line) or a mockup-pick (gate b) fork's `picked` — and for gate (d) proposal decisions (`slug: "-"`) |
 | `to_state` | string | New state |
 | `agent` | string | Who made the transition: `orchestrator`, `analyst`, `scout`, `harvester`, `auditor`, `visual-critic`, `experience-critic`, `copywriter`, `humanizer`, `copyeditor`, `creative-director`, `designer`, `seo`, `aiseo`, `critic`, `deployer`, `writer`, or `human` for gates |
 | `agent_version` | string \| null | Semver pinned in the run file (`runs/<run_id>.yaml`); `null` when `agent` is `human` |
@@ -30,7 +30,7 @@ Inbound runs (`engagement: inbound`, PLAN.md §4 "Inbound engagement", from 2026
 - `briefed`: `agent: "human"`, `from_state: null`, note `client brief: brief/<slug>/brief.md`. The first line of an inbound business; no `discovered`, `scored`, `shortlisted` or `approved`.
 - `planned` (analyst, planner) is written when `dossier/<slug>/industry/plan.md` exists. Gate a′: a human approves the lanes, `planned → lanes_approved` (`agent: "human"`, note = changes to the lanes, if any).
 - `researched` (analyst, merger) is written when `industry.md` and `dossier/<slug>/direction.md` exist and every claim in `industry.md` is a skeptic survivor. Gate b′: a human, with the client, confirms the direction, `researched → aligned` (`agent: "human"`, note = what the client changed).
-- Gate c, every run (2026-10-17): the `picked` note names every variant Shahar keeps; each becomes its own site. The orchestrator forks each variant after the first as `<slug>-<variant>`: its first line is `null → picked`, note `forked from <slug> at picked: <variant>`, and it continues alone. Another series of three is a human `mocked → copy_passed` line, note `new series: <why>`; a later `picked` may name mockups from any series (`series-<n>/<variant>`).
+- The mockup pick (gate b), every run (2026-10-17): the `picked` note names every variant Shahar keeps; each becomes its own site. The orchestrator forks each variant after the first as `<slug>-<variant>`: its first line is `null → picked`, note `forked from <slug> at picked: <variant>`, and it continues alone. Another series of three is a human `mocked → copy_passed` line, note `new series: <why>`; a later `picked` may name mockups from any series (`series-<n>/<variant>`).
 
 - `audited` (auditor, station 3b, proposal 007) is written when `dossier/<slug>/audit.json` exists and validates against `schemas/audit.md`; a business with no old site is still `audited` (`scope: no_site`). Businesses already past `harvested` before 007 are not sent back.
 - `copy_drafted` (copywriter) → `copy_humanised` (humanizer) → `copy_passed` or `copy_failed` (copyeditor) all run before `concepted`, so the copy exists before anyone designs. `concepted` (creative-director) is written when `sites/<slug>/concepts.md` exists: the page archetype for the business and its three concepts. The designer builds those, and `mocked` follows. A `copy_failed` line names the round; after two failures the business leaves the run in `mode: test`.

@@ -1,4 +1,4 @@
-version: 0.4.2
+version: 0.5.0
 
 # creative-director / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -55,7 +55,8 @@ concept wins; the human does that at the 4f gate, after the designer has built a
 | `dossier/<slug>/dossier.json` | The only source of facts. Read the gaps and the contradictions as carefully as the facts: they usually contain the idea. |
 | `dossier/<slug>/audit.json` (`recommended`) | The auditor's funnel for this business (the auditor, 3b, `schemas/audit.md`): primary action, its label, what must sit above the fold and in what order, the taps-to-book target. A constraint on every concept, not a suggestion. Not a fact source. |
 | `dossier/<slug>/assets/` + the images themselves | **Look at every photograph.** Not the filenames — the pictures. Their subject, their quality and their pixel dimensions decide what kind of page is possible. |
-| `sites/<slug>/copy/en.json` | The words that already passed 4c. The page is built around these, not around placeholder shapes. |
+| `sites/<slug>/copy/<locale>.json` (the run's first language: `en.json`, `he.json`) | The words that already passed 4c. The page is built around these, not around placeholder shapes. |
+| `dossier/<slug>/direction.md` + `brief/<slug>/brief.md` (inbound only) | The client's brief and our reading of it (the analyst, 2b, confirmed at gate b′): positioning, audience, what the site must do, **page-archetype hints**, the references they like and the dislikes. Hints, not the archetype: you still name it (§3), and say how each concept answers every "must do" item. A concept that breaks a must-do or a stated dislike is a conflict to report, not a choice. Not a fact source. |
 | `sites/<slug>/../*/concepts.md` | **Every concept already written for every other business in this run.** You must diverge from all of them. |
 | `schemas/site-content.md` | What can be editable. A concept that needs a field the schema lacks is a schema gap to report, not a field to invent. |
 
@@ -178,7 +179,7 @@ what a visitor would notice is different.
    then licensed atmosphere can carry the big moments while the business's own photographs do the
    close ones, and references.md #8, #9 and #10 are the type-led fallbacks. A type-only first
    screen for a business with strong media is a hard fail (rubric).
-4. **Light grounds only.** Every surf business in this run gets a light theme. The ground
+4. **Light grounds only, in the surf vertical** (`run.yaml` `vertical: surf`). Every surf business gets a light theme; other verticals have no theme rule here. The ground
    comes from the business's own photographs (§4 Colour); a cool white is as light as a warm
    one. Never a dark page, and never a large dark panel behind body
    text. A photograph filling a container is a picture, not a theme. Shahar has had to

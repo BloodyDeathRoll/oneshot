@@ -15,7 +15,9 @@
 //   database id  one database per workflow (Shahar, 2026-10-18): Surf | Sri-Lanka (lk-surf) in
 //                NOTION_DATABASE_ID, else ~/.oneshot/notion-db (written by `setup`); any other workflow in
 //                ~/.oneshot/notion-db-<workflow> (Custom: notion-db-custom), written by `setup <page> <workflow>`.
-//                lk-surf without a database is an error; any other workflow without one is skipped.
+//                lk-surf without a database is an error; any other workflow without one is skipped. `setup`
+//                refuses lk-surf while NOTION_DATABASE_ID is set: sync reads the env first, so the new
+//                database would never be written to.
 // The integration must be shared with the parent page (Notion: page ⋯ → Connections).
 
 import { readFileSync, writeFileSync, existsSync, realpathSync } from 'node:fs';
@@ -29,7 +31,8 @@ const HOME = join(homedir(), '.oneshot');
 const TOKEN_FILE = join(HOME, 'notion-token');
 const DB_FILE = join(HOME, 'notion-db');
 export const dbFileOf = (workflow) => {
-  if (!/^[a-z0-9-]+$/.test(workflow)) throw new Error(`bad workflow name "${workflow}"`);
+  // `_` too: an outbound workflow is <market>-<vertical>, and verticals use it (brand_design).
+  if (!/^[a-z0-9_-]+$/.test(workflow)) throw new Error(`bad workflow name "${workflow}"`);
   return workflow === 'lk-surf' ? DB_FILE : join(HOME, `notion-db-${workflow}`);
 };
 
@@ -129,6 +132,7 @@ async function setup(token, parent, workflow = 'lk-surf') {
   if (!parent) throw new Error('usage: node tools/notion.mjs setup <parent-page-id> [workflow]');
   const file = dbFileOf(workflow);
   if (existsSync(file)) throw new Error(`${workflow} already has a database (${file}); delete that file first to replace it`);
+  if (workflow === 'lk-surf' && process.env.NOTION_DATABASE_ID?.trim()) throw new Error('lk-surf already has a database (NOTION_DATABASE_ID); unset it first to replace it');
   const { workflowLabel } = await import('../dashboard/data.mjs');
   const db = await notion(token, 'POST', '/databases', {
     parent: { type: 'page_id', page_id: parent },
@@ -156,9 +160,11 @@ async function sync(token, dryRun) {
     console.log(`${businesses.length} businesses (dry run, nothing sent)`);
     return;
   }
-  for (const wf of [...new Set(businesses.map((b) => b.workflow))].sort()) {
-    const db = dbOf(wf);
-    if (!db && wf === 'lk-surf') throw new Error(`lk-surf: no database: run \`node tools/notion.mjs setup <parent-page-id>\` or set NOTION_DATABASE_ID`);
+  // Every database id first: a missing lk-surf database must fail before any workflow is written,
+  // not halfway through the sync.
+  const dbs = [...new Set(businesses.map((b) => b.workflow))].sort().map((wf) => [wf, dbOf(wf)]);
+  if (dbs.some(([wf, db]) => wf === 'lk-surf' && !db)) throw new Error(`lk-surf: no database: run \`node tools/notion.mjs setup <parent-page-id>\` or set NOTION_DATABASE_ID`);
+  for (const [wf, db] of dbs) {
     if (!db) { console.log(`notion: ${wf}: no database (${dbFileOf(wf)}), skipped`); continue; }
     // Only the columns the database has are written: a column deleted in Notion stays deleted
     // (Shahar, 2026-10-15). Run and Slug are how a row is found, so those two must exist.
