@@ -28,7 +28,10 @@ const VERSION = '2022-06-28';
 const HOME = join(homedir(), '.oneshot');
 const TOKEN_FILE = join(HOME, 'notion-token');
 const DB_FILE = join(HOME, 'notion-db');
-export const dbFileOf = (workflow) => (workflow === 'lk-surf' ? DB_FILE : join(HOME, `notion-db-${workflow}`));
+export const dbFileOf = (workflow) => {
+  if (!/^[a-z0-9-]+$/.test(workflow)) throw new Error(`bad workflow name "${workflow}"`);
+  return workflow === 'lk-surf' ? DB_FILE : join(HOME, `notion-db-${workflow}`);
+};
 
 const secret = (env, file) => process.env[env]?.trim() || (existsSync(file) ? readFileSync(file, 'utf8').trim() : '');
 const dbOf = (workflow) => (workflow === 'lk-surf' ? secret('NOTION_DATABASE_ID', DB_FILE) : secret('', dbFileOf(workflow)));

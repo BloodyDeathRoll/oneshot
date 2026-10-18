@@ -13,7 +13,7 @@ budget:
   tokens_per_business: 2_000_000
   wallclock_min_per_business: 90
 hosting:
-  default_mode: self_hosted_docker # the client's stated choice: completely self hosted, CMS included; nothing stays with Oneshot
+  default_mode: self_hosted_docker # the client's stated preference (completely self hosted, CMS included), not the choice: that is the human's product_chosen line after a sale (gate e)
   modes: {}
 agents:                          # pinned versions for reproducibility
   orchestrator: 0.5.2
