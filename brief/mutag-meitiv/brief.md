@@ -49,6 +49,16 @@ Relayed by Shahar in session, 2026-10-17. His words, verbatim:
 | 15 | The main call to action is WhatsApp | 4 |
 | 16 | Testimonials stay in the language they were given in (not translated) | 11 |
 
+## Scope (Shahar, 2026-10-18, at gate b′), verbatim
+
+> This is way too demanding. We want to make the current site look better, and a bit more focused if
+> you find something critical. Not a complete gutting. I did not ask for pricing, time, hosting, etc.
+> Keep to the target.
+
+| # | Answer |
+|---|---|
+| 17 | Scope: the current site, redesigned to look better; refocus only where critical; not a gutting. Pricing, timing and hosting are out of the client conversation. Questions for the client: `client-questions.he.md` (only what a mockup needs). |
+
 ## Not given
 
 Deadline, budget band, references the client likes, dislikes, the main CTA, the award details and
