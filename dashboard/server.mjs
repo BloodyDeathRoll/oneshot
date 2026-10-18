@@ -82,6 +82,7 @@ const DECISIONS = {
   pick: {
     from: ['mocked'],
     choices: ['calm', 'interactive', 'unique'],
+    choiceHelp: 'one to three of calm, interactive, unique, joined by + (e.g. calm+unique)',
     // Shahar keeps one to three; each kept mockup becomes its own site (2026-10-17): "calm+unique".
     validChoice: (c) => { const v = String(c ?? '').split('+'); return v.length >= 1 && v.length <= 3 && new Set(v).size === v.length && v.every((x) => ['calm', 'interactive', 'unique'].includes(x)); },
     line: ({ human, choice, reason }) => ({ to_state: 'picked', note: `${human} ${choice.includes('+') ? 'keeps' : 'picks'} ${choice.split('+').map((x) => x.toUpperCase()).join(' + ')} via dashboard${choice.includes('+') ? ' — each becomes its own site' : ''}. Verbatim: "${reason}"` }),
@@ -128,7 +129,7 @@ function currentState(run_id, slug) {
 function decide(body, who) {
   const spec = Object.hasOwn(DECISIONS, body.gate) ? DECISIONS[body.gate] : null;
   if (!spec) return { status: 400, error: `unknown gate "${body.gate}"; one of ${Object.keys(DECISIONS).join(', ')}` };
-  if (spec.validChoice ? !spec.validChoice(body.choice) : !spec.choices.includes(body.choice)) return { status: 400, error: `choice must be one of ${spec.choices.join(', ')}` };
+  if (spec.validChoice ? !spec.validChoice(body.choice) : !spec.choices.includes(body.choice)) return { status: 400, error: `choice must be ${spec.choiceHelp ?? `one of ${spec.choices.join(', ')}`}` };
   const reason = String(body.reason ?? '').trim();
   if (reason.length < 3 && !spec.reasonOptional) return { status: 400, error: 'a reason is required; it becomes the ledger note verbatim' };
   if (!body.run_id) return { status: 400, error: 'run_id is required' };
@@ -353,7 +354,7 @@ function handle(req, res, who) {
     return serveFile(res, abs);
   }
   if (req.method === 'GET' && path.startsWith('/thumb/') && path.endsWith('.jpg')) { serveThumb(res, path.slice(7, -4)).catch((e) => { if (!res.headersSent) send(res, 500, { error: String(e.message ?? e) }); }); return; }
-  if (req.method === 'GET' && path === '/gates') return send(res, 200, { gates: buildData({ ledgerPath: LEDGER, operator: who.operator }).gates, decisions: Object.fromEntries(Object.entries(DECISIONS).map(([k, v]) => [k, { from: v.from, choices: v.choices }])) });
+  if (req.method === 'GET' && path === '/gates') return send(res, 200, { gates: buildData({ ledgerPath: LEDGER, operator: who.operator }).gates, decisions: Object.fromEntries(Object.entries(DECISIONS).map(([k, v]) => [k, { from: v.from, choices: v.choices, ...(v.choiceHelp && { help: v.choiceHelp }) }])) });
   if (req.method === 'POST' && (path === '/agent-rules' || path === '/agent-tweak')) {
     if (!/^application\/json\b/i.test(req.headers['content-type'] ?? '')) return send(res, 415, { error: 'content-type must be application/json' });
     let raw = '';

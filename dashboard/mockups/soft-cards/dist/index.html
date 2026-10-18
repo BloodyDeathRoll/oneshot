@@ -1810,7 +1810,7 @@ function packsSection() {
   const act = (D.runs || []).filter((r) => r.active && r.workflow);
   if (!act.length) return '';
   const li = (f) => `<li title="${esc(f.file)}"><code>${esc(f.file.split('/').pop())}</code>${f.stub ? ' <span class="agv-none">empty — the analyst drafts it</span>' : ''}</li>`;
-  const cards = act.map((r) => { const w = (D.workflows || []).find((x) => x.id === r.workflow) || {}; const p = w.packs || {};
+  const cards = act.map((r) => { const p = r.packs || {};
     return `<div class="agv-card agv-pack"><b>${esc(r.run_id)}</b><span class="agv-role">${esc(r.market)} × ${esc(String(r.vertical).replace(/_/g, ' '))} · ${esc(r.engagement)}</span>`
       + `<p class="agv-nf">Market pack · markets/${esc(r.market)}/</p><ul>${(p.market || []).map(li).join('') || '<li class="agv-none">missing</li>'}</ul>`
       + `<p class="agv-nf">Vertical pack · verticals/${esc(r.vertical)}/</p><ul>${(p.vertical || []).map(li).join('') || '<li class="agv-none">missing</li>'}</ul></div>`; }).join('');

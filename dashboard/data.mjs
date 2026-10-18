@@ -578,22 +578,23 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
 
   // Runs with ledger lines, plus active runs that have none yet (a run file just created).
   const runIds = [...new Set([...runsSeen, ...activeRuns.map((r) => r.run_id)])].sort();
+  // The pack files a run loads (tools/prompt.mjs); a stub has only its title comment.
+  const packFiles = (dir) => (existsSync(join(ROOT, dir)) ? readdirSync(join(ROOT, dir)).sort().map((f) => { const t = read(`${dir}/${f}`) ?? ''; return { file: `${dir}/${f}`, stub: f.endsWith('.md') && !t.split('\n').some((l) => l.trim() && !l.trim().startsWith('#')) }; }) : null);
   const runs = [...runIds].reverse().map((r) => {
     const file = runFiles.find((x) => x.run_id === r);
     const bs = businesses.filter((b) => b.run_id === r); const groups = {};
     for (const b of bs) groups[b.group] = (groups[b.group] ?? 0) + 1;
     const ts = businessLines.filter((l) => l.run_id === r).map((l) => l.ts).sort();
     const w = wfRun(r);
-    return { run_id: r, businesses: bs.length, groups, first_ts: ts[0], last_ts: ts.at(-1), current: r === run.run_id, active: isActive(r), operator: file?.operator ?? null, status: file ? file.status : null, market: w.market, vertical: w.vertical, engagement: w.engagement, workflow: w.workflow, kpis: kpis_by_run[r] ?? kpisFor(r) };
+    return { run_id: r, businesses: bs.length, groups, first_ts: ts[0], last_ts: ts.at(-1), current: r === run.run_id, active: isActive(r), operator: file?.operator ?? null, status: file ? file.status : null, market: w.market, vertical: w.vertical, engagement: w.engagement, workflow: w.workflow, packs: { market: packFiles(`markets/${w.market}`), vertical: packFiles(`verticals/${w.vertical}`) }, kpis: kpis_by_run[r] ?? kpisFor(r) };
   });
   // One entry per workflow (market × vertical) with at least one run: its runs and summed KPIs.
   // Surf | Sri-Lanka first: it is the default workflow (Shahar, 2026-10-18).
   const workflows = [...new Set(runs.map((r) => r.workflow))].sort((a, b) => (a === 'lk-surf' ? -1 : b === 'lk-surf' ? 1 : a.localeCompare(b))).map((id) => {
     const rs = runs.filter((r) => r.workflow === id);
-    // The pack files its runs load (tools/prompt.mjs); a stub has only its title comment.
-    const packFiles = (dir) => (existsSync(join(ROOT, dir)) ? readdirSync(join(ROOT, dir)).sort().map((f) => { const t = read(`${dir}/${f}`) ?? ''; return { file: `${dir}/${f}`, stub: f.endsWith('.md') && !t.split('\n').some((l) => l.trim() && !l.trim().startsWith('#')) }; }) : null);
-    const packs = { market: packFiles(`markets/${rs[0].market}`), vertical: packFiles(`verticals/${rs[0].vertical}`) };
-    return { id, label: workflowLabel(id), pricing: pricingOf(rs[0].market), market: rs[0].market, vertical: rs[0].vertical, packs, engagements: [...new Set(rs.map((r) => r.engagement))], runs: rs.map((r) => r.run_id), active_runs: rs.filter((r) => r.active).map((r) => r.run_id), kpis: kpisOf(businesses.filter((b) => b.workflow === id)) };
+    // Custom holds every inbound run, whatever its market: price it by the newest active run's market.
+    const lead = rs.find((r) => r.active) ?? rs[0]; // runs[] is newest first
+    return { id, label: workflowLabel(id), pricing: pricingOf(lead.market), market: lead.market, markets: [...new Set(rs.map((r) => r.market))], verticals: [...new Set(rs.map((r) => r.vertical))], engagements: [...new Set(rs.map((r) => r.engagement))], runs: rs.map((r) => r.run_id), active_runs: rs.filter((r) => r.active).map((r) => r.run_id), kpis: kpisOf(businesses.filter((b) => b.workflow === id)) };
   });
 
   return {
