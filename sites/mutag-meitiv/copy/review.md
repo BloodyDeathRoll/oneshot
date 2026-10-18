@@ -1,10 +1,36 @@
 # copy review — mutag-meitiv · he
 
-Copyeditor 0.4.2 · station 4c · run 2026-10-il-brand-01 (inbound, live) · 2026-10-18 · **round 4** (rounds 3, 2 and 1 kept below).
-Round 4 reviews only the new `mockup_extras.series2_organisations` lines (commit bd99351, brief 29: organisations as the target market for mockup series 2), with `sources.md` "Round 4".
-I checked that series 1 is unchanged: every field of `he.json` outside `mockup_extras.series2_organisations` is identical to the round-3 file (69f9eb3), so the round-3 pass and its table still hold for series 1.
+Copyeditor 0.4.2 · station 4c · run 2026-10-il-brand-01 (inbound, live) · 2026-10-18 · **round 5** (rounds 4–1 kept below).
+Round 5 re-checks all of `mockup_extras.series2_organisations` (commit 4ba925a, the humanizer's H1–H3 fixes): every sentence, not only the four that changed.
+Series 1 is unchanged: every field outside `series2_organisations` is identical to bd99351, and so to the round-3 pass.
 
-## Round 4 — verdict: `copy_failed` (series-2 lines only; series 1 stays `copy_passed`)
+## Round 5 — verdict: `copy_passed` (series-2 lines; series 1 stays `copy_passed`)
+
+**0 `unsourced`, 0 `contradicted`.** Voice is clean and all caps hold.
+
+| # | Field | Now | Sourcing | Voice |
+|---|---|---|---|---|
+| H2 | `tagline_options[1]` | כאן מפתחים אסטרטגיות מותג עם משמעות, גם לארגונים. | `business.tagline` verbatim + "גם לארגונים" (`services[1].card_text` "לבנות אירגון מצליח…") · `sourced` | ✓ her own line, no keyword list · 49 / 140 |
+| H1, H2 | `intro.body` p2 | אפשר להתחיל ממיתוג חדש או מריברנד, ואפשר גם להזמין אותי להרצאה בארגון או לסדנה לצוות. | `services[1].card_text`, `offers[0].format` "הרצאה בהזמנה", home card "הדרכות צוות", `offers[1].subtitle` · `sourced` | ✓ spoken, first person; no colon, no "הכל במקום אחד" · body 200 / 1500 |
+| H2 | `path.ctaText` | היי הדס, אני פונה בשם ארגון. אשמח לדבר על מה שיכול להתאים לנו. | `contact.whatsapp`; asserts nothing · `framing` | ✓ the list is gone · 62 / 200 |
+| H3 | `proof.talks[2]` | ב-2025 נכללה בתוכנית פסטיבל קיימות ואנשים 3 הרצאה שלי על תהליך האסטרטגיה של איזור התעשיה המתחדש במעיין צבי. | `instagram.posts[DILN8yiNoV3].caption` (2025-04-07). It still says only that the talk was **on the programme**, not that it took place or that she did the zone's strategy, so the limit is kept · `sourced` | ✓ a sentence now, like talks[0] and talks[1] · 107 chars |
+
+**Lines unchanged since round 4, re-checked:** `tagline_options[0]`, `intro.heading`, `intro.body` p1, `path.heading`, `path.body` p1–p4, `proof.heading`, `proof.award`, `proof.judgesQuote` (still byte-identical to `award.value.judges_text`) and its attribution, `proof.worked_with`, `proof.talks[0]`, `proof.talks[1]` and `instagramLinks`. Each has the same source and verdict as in the round-4 table.
+
+**The label-colon openers the humanizer left, judged:**
+- **`intro.heading`** "לעמותות, לארגונים ולצוותים" is a section heading naming the three audiences, not prose. ✓
+- **`path.body`** p1–p4 ("תכנון אסטרטגי למותג: …", "הרצאת הדגל BRANDS OF CHANGE: …", "הדרכות צוות: …") are four separate paragraphs under "מה ארגונים מזמינים". Each opens with the offer's own name followed by its description, the way a menu entry reads. They are not slogans, so they pass. The designer should set them as a list (offer name, then its description) and not run them together as one block of prose.
+
+**Still open (designer, from round 4, not copy faults):**
+- D1: one award line per page, and Dana's bio kept in a different section from the award block.
+- D2: the logos always under her heading "מודה על הזכות להטיב ב:", never "עבדנו עם", "לקוחות" or "Worked with".
+- D3: the judges' quote linked to brandawards.co.il.
+
+---
+
+# Round 4 (for the record)
+
+### Round 4 — verdict: `copy_failed` (series-2 lines only; series 1 stays `copy_passed`)
 
 Facts: **0 `unsourced`, 0 `contradicted`** in the 23 new sentences. All caps hold. The fail is on **voice**, and both blocking fixes go to the **humanizer**.
 
