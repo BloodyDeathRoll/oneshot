@@ -113,11 +113,16 @@ function parseRun(y) {
     tokens_per_business: Number((y.match(/tokens_per_business:\s*([\d_]+)/)?.[1] ?? '').replace(/_/g, '')) || null,
     default_mode: (y.match(/default_mode:\s*(\w+)/)?.[1] ?? null),
     agent_pins: pins,
-    // packs and engagement (proposal 2026-09-globalsurf-02/004); a workflow is market × vertical
+    // packs and engagement (proposal 2026-09-globalsurf-02/004). A workflow is market × vertical for
+    // outbound runs; every inbound run is one workflow, "custom" (Shahar, 2026-10-18: "Surf | Sri-Lanka ** Custom").
     market: scalar('market') || 'lk', vertical: scalar('vertical') || 'surf', engagement: scalar('engagement') || 'outbound',
-    get workflow() { return `${this.market}-${this.vertical}`; },
+    get workflow() { return this.engagement === 'inbound' ? 'custom' : `${this.market}-${this.vertical}`; },
   };
 }
+
+// The name a workflow is shown under, on the dashboard and in Notion (Shahar, 2026-10-18).
+const WORKFLOW_LABELS = { custom: 'Custom', 'lk-surf': 'Surf | Sri-Lanka' };
+export const workflowLabel = (id) => WORKFLOW_LABELS[id] ?? id;
 
 function readDossier(slug) {
   const d = readJson(`dossier/${slug}/dossier.json`);
@@ -579,7 +584,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     // The pack files its runs load (tools/prompt.mjs); a stub has only its title comment.
     const packFiles = (dir) => (existsSync(join(ROOT, dir)) ? readdirSync(join(ROOT, dir)).sort().map((f) => { const t = read(`${dir}/${f}`) ?? ''; return { file: `${dir}/${f}`, stub: f.endsWith('.md') && !t.split('\n').some((l) => l.trim() && !l.trim().startsWith('#')) }; }) : null);
     const packs = { market: packFiles(`markets/${rs[0].market}`), vertical: packFiles(`verticals/${rs[0].vertical}`) };
-    return { id, market: rs[0].market, vertical: rs[0].vertical, packs, engagements: [...new Set(rs.map((r) => r.engagement))], runs: rs.map((r) => r.run_id), active_runs: rs.filter((r) => r.active).map((r) => r.run_id), kpis: kpisOf(businesses.filter((b) => b.workflow === id)) };
+    return { id, label: workflowLabel(id), market: rs[0].market, vertical: rs[0].vertical, packs, engagements: [...new Set(rs.map((r) => r.engagement))], runs: rs.map((r) => r.run_id), active_runs: rs.filter((r) => r.active).map((r) => r.run_id), kpis: kpisOf(businesses.filter((b) => b.workflow === id)) };
   });
 
   return {

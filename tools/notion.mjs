@@ -19,6 +19,7 @@ import { readFileSync, writeFileSync, existsSync, realpathSync } from 'node:fs';
 import { join } from 'node:path';
 import { homedir } from 'node:os';
 import { fileURLToPath } from 'node:url';
+import { workflowLabel } from '../dashboard/data.mjs';
 
 const API = 'https://api.notion.com/v1';
 const VERSION = '2022-06-28';
@@ -33,7 +34,7 @@ export const SCHEMA = {
   Name: { title: {} },
   Slug: { rich_text: {} },
   Run: { select: {} },
-  // market-vertical, as the dashboard's workflow chips (proposal 004); one select option per workflow
+  // the workflow's name, as the dashboard's workflow chips: "Surf | Sri-Lanka" or "Custom"
   Workflow: { select: {} },
   State: { select: {} },
   Verdict: { select: {} },
@@ -74,7 +75,7 @@ export function toProperties(b, p = null) {
     Name: { title: [{ text: { content: b.name || b.slug } }] },
     Slug: text(b.slug),
     Run: select(b.run_id),
-    Workflow: select(b.workflow),
+    Workflow: select(workflowLabel(b.workflow)),
     State: select(STATE_LABEL[b.state] ?? b.state),
     Verdict: select(verdictOf(b, p)),
     Rate: { number: Number.isFinite(b.presence) ? b.presence : null },

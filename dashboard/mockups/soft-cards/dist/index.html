@@ -352,6 +352,7 @@ table.lg th{font-size:13px;font-weight:700;color:var(--ink3);text-align:left;pad
 table.lg td{padding:14px 16px 14px 0;border-bottom:1px solid var(--rule);vertical-align:top;font-size:14px}
 table.lg tr:last-child td{border-bottom:0}
 table.lg tbody tr{cursor:pointer}
+#bz-table td.w{min-width:200px;max-width:420px}#bz-table td.w>span{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}#bz-table tbody tr{cursor:default}
 table.lg tbody tr:hover td,table.lg tbody tr.sel td{background:#FAFAFE}
 table.lg td.n b{display:block;font-size:15px;font-weight:700}
 table.lg td.n span{display:block;font-size:13px;color:var(--ink3);margin-top:2px}
@@ -621,6 +622,10 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2.5"/><rect x="13" y="3" width="8" height="8" rx="2.5"/><rect x="3" y="13" width="8" height="8" rx="2.5"/><rect x="13" y="13" width="8" height="8" rx="2.5"/></svg>
       <span>Overview</span>
     </button>
+    <button type="button" data-view="biz">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 10h18M9 10v10"/></svg>
+      <span>Businesses</span><span class="n" id="n-biz"></span>
+    </button>
     <button type="button" data-view="needs" id="nav-needs">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 10.5V7a6 6 0 0 1 12 0v3.5l1.5 3.5h-15z"/><path d="M10 18a2 2 0 0 0 4 0"/></svg>
       <span>Needs you</span><span class="badge" id="badge-needs" aria-label="things waiting on you"></span>
@@ -694,6 +699,14 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
     <section class="card" aria-labelledby="nda-h" style="margin-top:var(--gap)">
       <div class="card-h"><h2 id="nda-h">Agents</h2><span class="meta" id="nd-ameta"></span></div>
       <ol class="nd-list" id="nd-alist"></ol>
+    </section>
+  </section>
+
+  <section class="view" id="view-biz" aria-label="Businesses">
+    <div class="lg-sum" id="bz-tabs" role="group" aria-label="Table view" style="margin-top:0"></div>
+    <section class="card">
+      <div class="card-h"><h2 id="bz-h">All</h2><span class="meta" id="bz-meta"></span></div>
+      <div style="overflow-x:auto"><table class="lg" id="bz-table"><thead><tr><th scope="col">Business</th><th scope="col">State</th><th scope="col">Verdict</th><th scope="col">Rate</th><th scope="col">Reason</th><th scope="col">Next step</th><th scope="col">Links</th><th scope="col">Last change</th></tr></thead><tbody id="bz-body"></tbody></table></div>
     </section>
   </section>
 
@@ -2331,17 +2344,17 @@ const sv=(tag,attrs={},...kids)=>{const e=document.createElementNS(SVGNS,tag);fo
 const fmt=n=>Number.isInteger(n)?String(n):n.toFixed(1);
 const bizMap=new Map();
 // Workflow chips (proposal 004): RAW is the whole file; D is RAW scoped to the chosen workflow
-// (market × vertical). Needs you stays global (needsItems reads RAW). WF null = "All".
+// (market × vertical). Needs you stays global (needsItems reads RAW). WF null only with a single workflow (there is no "All" chip).
 let RAW,WF;
 const multiWf=()=>(RAW.workflows||[]).length>1;
-const wfLabel=id=>{const w=(RAW.workflows||[]).find(x=>x.id===id);return w?`${w.market.toUpperCase()} · ${w.vertical.replace(/_/g,' ')}`:id||''};
+const wfLabel=id=>{const w=(RAW.workflows||[]).find(x=>x.id===id);return w?(w.label||w.id):id||''};
 function scoped(d){
   if(!WF||!(d.workflows||[]).some(w=>w.id===WF))return d;
   const runWf=new Map(d.runs.map(r=>[r.run_id,r.workflow])),inWf=x=>runWf.get(x.run_id)===WF;
   const w=d.workflows.find(x=>x.id===WF);
   return {...d,businesses:d.businesses.filter(b=>b.workflow===WF),prospects:(d.prospects||[]).filter(inWf),runs:d.runs.filter(r=>r.workflow===WF),decisions:(d.decisions||[]).filter(inWf),kpis:w.kpis,funnel:w.kpis.funnel};
 }
-function setData(d){RAW=d;if(WF===undefined)WF=multiWf()?(d.run.workflow||null):null;D=scoped(d);bizMap.clear();for(const b of RAW.businesses)if(!bizMap.has(b.slug))bizMap.set(b.slug,b.name);/* newest run first */bizMap.set('dashboard','Dashboard');bizMap.set('-','Project')}
+function setData(d){RAW=d;if(WF===undefined||(WF&&!(d.workflows||[]).some(w=>w.id===WF)))WF=multiWf()?(d.run.workflow||d.workflows[0].id):null;D=scoped(d);bizMap.clear();for(const b of RAW.businesses)if(!bizMap.has(b.slug))bizMap.set(b.slug,b.name);/* newest run first */bizMap.set('dashboard','Dashboard');bizMap.set('-','Project')}
 setData(D);
 const bizName=s=>bizMap.get(s)||s||'—';
 const shortName=s=>bizName(s).replace(' Surf Ahangama','').replace(' Surf Hostel','').replace('The ','');
@@ -2398,7 +2411,8 @@ renderRunSel();runSel.onchange=()=>{state.run=runSel.value;render()};
 
 function renderChips(){
   const box=$('#wf-chips');box.innerHTML='';box.hidden=!multiWf()||state.view==='needs';if(box.hidden)return;
-  for(const[id,txt]of[[null,'All'],...RAW.workflows.map(w=>[w.id,wfLabel(w.id)])]){
+  // one chip per workflow and no "All": every view belongs to one workflow (Shahar, 2026-10-18)
+  for(const[id,txt]of RAW.workflows.map(w=>[w.id,wfLabel(w.id)])){
     const b=el('button',{type:'button','aria-pressed':String(WF===id),text:txt});
     b.onclick=()=>{WF=id;D=scoped(RAW);if(state.run!=='all'&&!D.runs.find(r=>r.run_id===state.run))state.run='all';render()};box.append(b);
   }
@@ -2421,7 +2435,7 @@ function renderChrome(){
 
 /* nav */
 document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view,b.dataset.focus)));
-const TITLES={overview:'Overview',needs:'Needs you',pipeline:'Pipeline',sites:'Sites',agents:'Agents',decisions:'Decisions',pricing:'Pricing suggestion',ledger:'Ledger'};
+const TITLES={overview:'Overview',biz:'Businesses',needs:'Needs you',pipeline:'Pipeline',sites:'Sites',agents:'Agents',decisions:'Decisions',pricing:'Pricing suggestion',ledger:'Ledger'};
 let lastHash='';
 addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(h!==lastHash){const p=h.split('/');go(p[0]||'overview',p[1])}});
 function go(view,focus){
@@ -2925,6 +2939,45 @@ const PIN={built:'#1A7F37','in progress':'#6A2FE0',dropped:'#C0182B','shortliste
 state.lgFilter='all';state.lgSel=null;
 const lgRows=()=>(D.prospects||[]).filter(p=>state.lgFilter==='all'||p.verdict===state.lgFilter).sort((a,b)=>VORDER.indexOf(a.verdict)-VORDER.indexOf(b.verdict)||(b.google?.rating||0)-(a.google?.rating||0)||a.name.localeCompare(b.name));
 function presenceBar(n){const w=el('span',{class:'pbar','aria-hidden':'true'});for(let i=1;i<=5;i++)w.append(el('i',{class:i<=n?'on':''}));return w}
+/* Businesses: the Notion table, per workflow, with the views All / Ready / Scored (Shahar, 2026-10-18) */
+const BZ_TABS=[['all','All',()=>true],['ready','Ready',b=>b.state==='packaged'],['scored','Scored',b=>b.state==='scored']];
+const BZ_STATE={packaged:'Ready'};
+function bzVerdict(b){
+  const p=(D.prospects||[]).find(x=>x.run_id===b.run_id&&x.slug===b.slug);
+  if(p)return p.verdict==='not shortlisted'?'rejected':p.verdict;
+  if(b.state==='void')return 'voided';if(b.group==='superseded')return 'not continued';if(b.group==='not_shortlisted')return 'rejected';
+  return b.group||'';
+}
+function renderBiz(){
+  if(!state.bzTab)state.bzTab='all';
+  const all=[...D.businesses].sort((x,y)=>(y.last_change||'').localeCompare(x.last_change||''));
+  const tabs=$('#bz-tabs');tabs.innerHTML='';
+  for(const[k,label,f]of BZ_TABS){
+    const b=el('button',{type:'button','aria-pressed':String(state.bzTab===k)},label,el('b',{text:String(all.filter(f).length)}));
+    b.onclick=()=>{state.bzTab=k;renderBiz()};tabs.append(b);
+  }
+  const [,label,f]=BZ_TABS.find(t=>t[0]===state.bzTab);
+  let rows=all.filter(f);if(state.bzTab==='scored')rows.sort((x,y)=>(y.presence??-1)-(x.presence??-1));
+  $('#bz-h').textContent=label;$('#bz-meta').textContent=`${rows.length} businesses · ${WF?wfLabel(WF):'all workflows'}`;
+  const tb=$('#bz-body');tb.innerHTML='';
+  for(const b of rows){
+    const p=(D.prospects||[]).find(x=>x.run_id===b.run_id&&x.slug===b.slug);
+    const tr=el('tr',{});
+    tr.append(el('td',{class:'n'},el('b',{text:b.name||b.slug}),el('span',{text:[runShort(b.run_id),b.owner?opName(b.owner):null].filter(Boolean).join(' · ')})));
+    tr.append(el('td',{text:BZ_STATE[b.state]||b.state||''}));
+    tr.append(el('td',{text:bzVerdict(b)}));
+    tr.append(el('td',{class:'r',text:b.presence!=null?`${b.presence}/5`:'—'}));
+    tr.append(el('td',{class:'w',title:p?.why||b.why||''},el('span',{text:p?.why||b.why||''})));
+    tr.append(el('td',{class:'w',text:b.next_step||''}));
+    const links=el('td',{});
+    if(b.preview_url)links.append(el('a',{href:b.preview_url,target:'_blank',rel:'noopener',text:'Preview'}));
+    if(b.pitch?.proposal_url){if(links.childNodes.length)links.append(' · ');links.append(el('a',{href:b.pitch.proposal_url,target:'_blank',rel:'noopener',text:'Proposal'}))}
+    tr.append(links);
+    tr.append(el('td',{text:b.last_change?tShort(b.last_change):''}));
+    tb.append(tr);
+  }
+  $('#n-biz').textContent=D.businesses.length;
+}
 function renderLedger(){
   const P=D.prospects||[];
   const sum=$('#lg-sum');sum.innerHTML='';
@@ -3323,7 +3376,7 @@ function renderDecisions(){if(window.OSViews?.decisions){const lg=$('#dec-legacy
 function render(){
   renderChrome();renderChips();renderRunSel();
   $('#title-sub').textContent=PER_RUN.includes(state.view)&&state.run!=='all'?runShort(state.run):state.view==='overview'?'':'all runs';$('#controls').hidden=!PER_RUN.includes(state.view);
-  renderOverview();renderNeedsView();renderLedger();if(state.view==='ledger')renderLedgerMap();renderPipeline();renderSites();renderAgents();renderDecisions();renderPricing();
+  renderOverview();renderBiz();renderNeedsView();renderLedger();if(state.view==='ledger')renderLedgerMap();renderPipeline();renderSites();renderAgents();renderDecisions();renderPricing();
   document.querySelectorAll('.view.on svg').forEach(sizeTips);
 }
 render();
