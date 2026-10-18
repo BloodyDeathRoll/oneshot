@@ -96,6 +96,17 @@ Relayed by Shahar in session, 2026-10-17. His words, verbatim:
 |---|---|
 | 26 | A case study template page: one complete case-study layout with labelled placeholders, so the client sees what materials to collect for each project |
 
+## Additions (Shahar, 2026-10-18), verbatim
+
+> And definitely create a content schema that fits your needs
+>
+> Fill out and add a generated demo case study for now as an example
+
+| # | Answer |
+|---|---|
+| 27 | `schemas/site-content.md` v0.11: the brand modules this site needs (Hebrew, ILS, services, method, team, case studies, awards, logos, social, Instagram tiles, podcast, blog) |
+| 28 | One generated demo case study, filled in, shown as an example (`caseStudies[].demo`, labelled "דוגמה"): `brief/mutag-meitiv/demo-case-study.he.md` |
+
 ## Not given
 
 Deadline, budget band, references the client likes, dislikes, the main CTA, the award details and
