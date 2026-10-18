@@ -23,7 +23,7 @@ Who edits: **owner** = the business owner in the Payload admin ("My site" form, 
 | `closing` | text | no | **yes** | owner | ≤ 140; the one line the design sets beside the page's last booking action; empty = the template shows no line there | `"Rates move with the dates. The listings show what is free."` |
 | `featureLine` | text | no | **yes** | owner | ≤ 140; a short line the design sets over the site's feature image; empty = the template shows no line there | `"The outdoor pool is in the middle of the hotel and open all year."` |
 | `languages` | select, many: `en` \| `he` (v0.11) (list grows later: de, es, pt, ru…) | **yes** | no | owner | at least one; the first is the default locale. `en` sites as before (decided 2026-09-18). v0.11: `he` may stand alone (a Hebrew-only site, `market: il`); a `he` page is rendered `lang="he" dir="rtl"`. The spike still carries `si` fixtures | `["en"]` / `["he"]` |
-| `copyBlocks[]` | array (≤ 8 rows) | no | – | owner | | |
+| `copyBlocks[]` | array (≤ 8 rows; v0.11: ≤ 16 for `brand_practice` / `brand_studio`) | no | – | owner | | |
 | `copyBlocks[].slot` | select: `intro` \| `about` \| `offer` \| `info` | **yes** | no | owner | where the design places the block; several rows may share a slot | `"intro"` |
 | `copyBlocks[].heading` | text | no | **yes** | owner | ≤ 120 | `"Learn to surf"` |
 | `copyBlocks[].body` | textarea | **yes** | **yes** | owner | ≤ 1500; blank line = new paragraph | `"Small groups, soft boards…"` |
@@ -83,7 +83,7 @@ One schema for every business. `businessType` says which kind of business the do
 | `ratings[].url` | text, `https://` URL | no | no | deployer | the listing the score comes from | |
 | `ratings[].capturedAt` | date (YYYY-MM-DD) | **yes** | no | deployer | when the score was read from the platform (the harvester's `fetched_at`); playbook §6 requires a rating to be shown with its count, source and capture date | `"2026-09-19"` |
 | `testimonials[]` | array (≤ 12 rows) | no | – | deployer (owner may delete a row) | **verbatim guest words only**; never paraphrased, never invented, never trimmed into a different meaning | |
-| `testimonials[].quote` | textarea | **yes** | no | deployer | ≤ 600; **not localized** — a guest's words are not translated | `"The most amazing family running the business…"` |
+| `testimonials[].quote` | textarea | **yes** | no | deployer | ≤ 600 (v0.11: ≤ 1000 for `brand_practice` / `brand_studio`, whose clients write longer — a quote is never trimmed to fit); **not localized** — a guest's words are not translated | `"The most amazing family running the business…"` |
 | `testimonials[].author` | text | **yes** | no | deployer | as published, e.g. first name + country | `"Clara, United Kingdom"` |
 | `testimonials[].source` | select: same list as `ratings[].platform`, plus `site` \| `linkedin` \| `client` (v0.11) | **yes** | no | deployer | `site` = published on the business's own site; `client` = handed over by the business (dossier `origin: client`) | `"booking"` |
 | `testimonials[].lang` | select: `en` \| `he` (v0.11) | no | no | deployer | the language the words were given in; the template sets `lang`/`dir` on the quote. Empty = the site's default locale. Never translated (Shahar, 2026-10-18) | `"en"` |
@@ -91,7 +91,7 @@ One schema for every business. `businessType` says which kind of business the do
 | `testimonials[].date` | text `YYYY-MM` | no | no | deployer | omit rather than guess | `"2026-03"` |
 | `spot` | text | no | **yes** | owner | ≤ 200; the wave this business sits on, in the owner's words | `"Kabalana beach break, 2 minutes from the door"` |
 | `season` | text | no | **yes** | owner | ≤ 200 | `"November to April is the clean season"` |
-| `languagesSpoken[]` | select, many: `en` `si` `ta` `ru` `de` `fr` `es` `it` `sv` `other` | no | no | owner | who you can be served in — separate from `languages`, which is what the **site** is published in | `["en","ru"]` |
+| `languagesSpoken[]` | select, many: `en` `si` `ta` `ru` `de` `fr` `es` `it` `sv` `he` (v0.11) `other` | no | no | owner | who you can be served in — separate from `languages`, which is what the **site** is published in | `["en","ru"]` |
 
 ### Lodging modules — `beach_lodging`, `surf_camp`
 
