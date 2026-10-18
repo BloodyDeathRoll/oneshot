@@ -59,6 +59,16 @@ Relayed by Shahar in session, 2026-10-17. His words, verbatim:
 |---|---|
 | 17 | Scope: the current site, redesigned to look better; refocus only where critical; not a gutting. Pricing, timing and hosting are out of the client conversation. Questions for the client: `client-questions.he.md` (only what a mockup needs). |
 
+## Answers (Shahar, 2026-10-18), verbatim
+
+> (1) the phone is correct, (2) your suggestion is the correct one and you should not have asked
+> this question at all. Removing the leftovers and duplicants should also be a given for you.
+
+| # | Answer |
+|---|---|
+| 18 | WhatsApp number 054-668-6808 is correct |
+| 19 | Keep all 9 secondary offers, grouped (lectures and workshops; courses); remove the Wix leftovers and duplicates |
+
 ## Not given
 
 Deadline, budget band, references the client likes, dislikes, the main CTA, the award details and
