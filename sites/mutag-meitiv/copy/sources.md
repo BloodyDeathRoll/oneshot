@@ -115,7 +115,7 @@ Prices: `/סדנאות-והרצאות` values (instruction); Brand & Breakfast i
 | · p6 | Round 2 (F2): `/smst` "למי מיועדת הסדנה?" list, verbatim (leading "- " removed) |
 | · p7 | `offers[2].includes` under "מה תקבלו מהסדנה:" (page said "מהקורס") |
 | · p8 | `/smst` "עם מה אצא מהסדנה?" list, verbatim (stray rafe in "מנטליֿ" removed) |
-| · audience / price | `offers[2].audience`; 480 ILS flat + VAT (`offers[2].price_text`). **EDIT (d)**: the 350 ש״ח of `/smst` (`price_conflict`), its 11:00–14:00 time and Noor-centre venue are dropped — undated, likely a past run. Owner to confirm. (Round 2: the `/smst` audience list is now body p6.) `/smst`'s "למי מיועדת הסדנה?" list not used (overlaps `audience`) |
+| · audience / price | `offers[2].audience`; 480 ILS flat + VAT (`offers[2].price_text`). **EDIT (d)**: the 350 ש״ח of `/smst` (`price_conflict`), its 11:00–14:00 time and Noor-centre venue are dropped — undated, likely a past run. Owner to confirm. (Round 2: the `/smst` audience list is now body p6.) |
 | brand-and-breakfast · summary | `pages[/brandandbreakfast]` line 2 (= "אודות" line), verbatim |
 | · body p1–p2 | "המצב שינה את כולנו…", *split* |
 | · p3–p5 | `offers[3].text` + "הסדנה מחולקת…", "חלק א'…", "חלק ב'…" (layout line breaks joined) |
