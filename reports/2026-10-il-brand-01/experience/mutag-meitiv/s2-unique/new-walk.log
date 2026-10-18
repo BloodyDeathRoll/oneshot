@@ -1,0 +1,67 @@
+phone first-load bytes 556920 hosts 127.0.0.1:9860
+phone perf {"lcp":928,"h":12901,"sw":390}
+wa links 18
+   {"t":"","href":"https://wa.me/972546686808?text=היי הדס, אני פונה בשם ארגון. אשמח לדבר על מה שיכול להתאים לנו.","top":16,"vis":true}
+   {"t":"","href":"https://wa.me/972546686808?text=היי הדס, אני פונה בשם ארגון. אשמח לדבר על מה שיכול להתאים לנו.","top":432,"vis":true}
+   {"t":"כתבו להדס בוואטסאפ","href":"https://wa.me/972546686808?text=היי הדס, אני פונה בשם ארגון. אשמח לדבר על מה שיכול להתאים לנו.","top":848,"vis":false}
+   {"t":"כתבו להדס בוואטסאפ","href":"https://wa.me/972546686808?text=היי הדס, אני פונה בשם ארגון. אשמח לדבר על מה שיכול להתאים לנו.","top":586,"vis":true}
+   {"t":"כתבו להדס","href":"https://wa.me/972546686808?text=היי הדס, הגעתי מהאתר. מעניין אותי תכנון אסטרטגי למותג, אפשר לשמוע פרטים?","top":2866,"vis":false}
+   {"t":"כתבו להדס","href":"https://wa.me/972546686808?text=היי הדס, אשמח לפרטים על הזמנת ההרצאה BRANDS OF CHANGE.","top":3151,"vis":false}
+   {"t":"כתבו להדס","href":"https://wa.me/972546686808?text=היי הדס, ראיתי באתר את ריטריט היום ״לחשוב כמו מותג (מיטיב)״ ואשמח לשמוע עוד.","top":3468,"vis":false}
+   {"t":"כתבו להדס","href":"https://wa.me/972546686808?text=היי הדס, אשמח לפרטים על ההשתלמות בשיטת Brand the Change. מתי נפתח המחזור הבא?","top":3760,"vis":false}
+   {"t":"כתבו להדס בוואטסאפ","href":"https://wa.me/972546686808?text=היי הדס, אני פונה בשם ארגון. אשמח לדבר על מה שיכול להתאים לנו.","top":3848,"vis":false}
+   {"t":"","href":"https://wa.me/972546686808?text=היי הדס, הגעתי מהאתר. אשמח לשמוע איך עובד אצלך תהליך מיתוג אישי לעסק.","top":8414,"vis":false}
+   {"t":"","href":"https://wa.me/972546686808?text=היי הדס, אשמח להירשם לסדנת ההכרות. מתי הסדנה הבאה?","top":8708,"vis":false}
+   {"t":"","href":"https://wa.me/972546686808?text=היי הדס, אשמח לשמוע על סדנת החזון THE BETTER 4. מתי היא מתקיימת?","top":8950,"vis":false}
+   {"t":"","href":"https://wa.me/972546686808?text=היי הדס, מתי סדנת ה-Brand & Breakfast הבאה? אשמח לפרטים.","top":9235,"vis":false}
+   {"t":"","href":"https://wa.me/972546686808?text=היי הדס, ספרי לי עוד על מפגשי הקהילה ״עסקים ומיטיבים״.","top":9477,"vis":false}
+   {"t":"","href":"https://wa.me/972546686808?text=היי הדס, אני רוצה לשמוע על הקורס למובילי שינוי. יש מחזור קרוב?","top":8831,"vis":false}
+   {"t":"","href":"https://wa.me/972546686808?text=היי הדס, ראיתי שההרשמה ל״מעסק למותג מיטיב״ נסגרה. אשמח לעדכון כשייפתח המחזור הבא.","top":9052,"vis":false}
+   {"t":"כתבו להדס בוואטסאפ","href":"https://wa.me/972546686808?text=היי הדס, אני פונה בשם ארגון. אשמח לדבר על מה שיכול להתאים לנו.","top":11786,"vis":false}
+   {"t":"וואטסאפ","href":"https://wa.me/972546686808?text=היי הדס, אני פונה בשם ארגון. אשמח לדבר על מה שיכול להתאים לנו.","top":12208,"vis":false}
+phone s0 y=0 {"v":[{"src":"","paused":true,"t":0,"rs":0},{"src":"","paused":true,"t":0,"rs":0}],"bar":["bar:visible/0/matrix(1, 0, 0, 1, 0, 70.2)"]}
+phone s1 y=700 {"v":[{"src":"","paused":true,"t":0,"rs":0},{"src":"","paused":true,"t":0,"rs":0}],"bar":["js scrolled bar-on:visible/1/none","bar:visible/1/none"]}
+phone s2 y=1400 {"v":[{"src":"s2u-table-464.webm","paused":false,"t":0.34,"rs":4},{"src":"","paused":true,"t":0,"rs":0}],"bar":["js scrolled bar-on:visible/1/none","bar:visible/1/none"]}
+phone s3 y=2100 {"v":[{"src":"s2u-table-464.webm","paused":false,"t":1.33,"rs":4},{"src":"","paused":true,"t":0,"rs":0}],"bar":["js scrolled bar-on:visible/1/none","bar:visible/1/none"]}
+phone s4 y=2800 {"v":[{"src":"s2u-table-464.webm","paused":true,"t":1.4,"rs":4},{"src":"","paused":true,"t":0,"rs":0}],"bar":["js scrolled bar-on:visible/1/none","bar:visible/1/none"]}
+phone s5 y=3500 {"v":[{"src":"s2u-table-464.webm","paused":true,"t":1.4,"rs":4},{"src":"","paused":true,"t":0,"rs":0}],"bar":["js scrolled bar-on:visible/1/none","bar:visible/1/none"]}
+phone s6 y=4200 {"v":[{"src":"s2u-table-464.webm","paused":true,"t":1.4,"rs":4},{"src":"","paused":true,"t":0,"rs":0}],"bar":["js scrolled bar-on:visible/1/none","bar:visible/1/none"]}
+phone s7 y=4900 {"v":[{"src":"s2u-table-464.webm","paused":true,"t":1.4,"rs":4},{"src":"","paused":true,"t":0,"rs":0}],"bar":["js scrolled bar-on:visible/1/none","bar:visible/1/none"]}
+phone s8 y=5600 {"v":[{"src":"s2u-table-464.webm","paused":true,"t":1.4,"rs":4},{"src":"","paused":true,"t":0,"rs":0}],"bar":["js scrolled bar-on:visible/1/none","bar:visible/1/none"]}
+phone s9 y=6300 {"v":[{"src":"s2u-table-464.webm","paused":true,"t":1.4,"rs":4},{"src":"","paused":true,"t":0,"rs":0}],"bar":["js scrolled bar-on:visible/1/none","bar:visible/1/none"]}
+phone s10 y=7000 {"v":[{"src":"s2u-table-464.webm","paused":true,"t":1.4,"rs":4},{"src":"","paused":true,"t":0,"rs":0}],"bar":["js scrolled bar-on:visible/1/none","bar:visible/1/none"]}
+phone s11 y=7700 {"v":[{"src":"s2u-table-464.webm","paused":true,"t":1.4,"rs":4},{"src":"s2u-leaves-560.webm","paused":false,"t":0,"rs":0}],"bar":["js scrolled bar-on:visible/1/none","bar:visible/1/none"]}
+phone s12 y=8400 {"v":[{"src":"s2u-table-464.webm","paused":true,"t":1.4,"rs":4},{"src":"s2u-leaves-560.webm","paused":false,"t":0.6,"rs":4}],"bar":["js scrolled bar-on:visible/1/none","bar:visible/1/none"]}
+phone s13 y=9100 {"v":[{"src":"s2u-table-464.webm","paused":true,"t":1.4,"rs":4},{"src":"s2u-leaves-560.webm","paused":false,"t":1.6,"rs":4}],"bar":["js scrolled bar-on:visible/1/none","bar:visible/1/none"]}
+phone s14 y=9800 {"v":[{"src":"s2u-table-464.webm","paused":true,"t":1.4,"rs":4},{"src":"s2u-leaves-560.webm","paused":true,"t":1.7,"rs":4}],"bar":["js scrolled bar-on:visible/1/none","bar:visible/1/none"]}
+phone s15 y=10500 {"v":[{"src":"s2u-table-464.webm","paused":true,"t":1.4,"rs":4},{"src":"s2u-leaves-560.webm","paused":true,"t":1.7,"rs":4}],"bar":["js scrolled bar-on:visible/1/none","bar:visible/1/none"]}
+phone s16 y=11200 {"v":[{"src":"s2u-table-464.webm","paused":true,"t":1.4,"rs":4},{"src":"s2u-leaves-560.webm","paused":true,"t":1.7,"rs":4}],"bar":["js scrolled bar-on:visible/1/none","bar:visible/1/none"]}
+phone s17 y=11900 {"v":[{"src":"s2u-table-464.webm","paused":true,"t":1.4,"rs":4},{"src":"s2u-leaves-560.webm","paused":true,"t":1.7,"rs":4}],"bar":["js scrolled bar-on:visible/1/none","bar:visible/1/none"]}
+phone s18 y=12600 {"v":[{"src":"s2u-table-464.webm","paused":true,"t":1.4,"rs":4},{"src":"s2u-leaves-560.webm","paused":true,"t":1.7,"rs":4}],"bar":["js scrolled bar-on:visible/1/none","bar:visible/1/none"]}
+hero cta text  href https://wa.me/972546686808?text=היי הדס, אני פונה בשם ארגון. אשמח לדבר על מה שיכול להתאים לנו.
+INTERCEPTED https://wa.me/972546686808?text=%D7%94%D7%99%D7%99%20%D7%94%D7%93%D7%A1%2C%20%D7%90%D7%A0%D7%99%20%D7%A4%D7%95%D7%A0%D7%94%20%D7%91%D7%A9%D7%9D%20%D7%90%D7%A8%D7%92%D7%95%D7%9F.%20%D7%90%D7%A9%D7%9E%D
+hero tap -> https://wa.me/972546686808?text=היי הדס, אני פונה בשם ארגון. אשמח לדבר על מה שיכול להתאים לנו.
+laptop {"cls":"js pinned armed","h":13615}
+laptop sp0 {"y":0,"v":[":p:0.0",":p:0.0"]}
+laptop sp1 {"y":225,"v":[":p:0.0",":p:0.0"]}
+laptop sp2 {"y":450,"v":[":p:0.0",":p:0.0"]}
+laptop sp3 {"y":675,"v":[":p:0.0",":p:0.0"]}
+laptop sp4 {"y":900,"v":[":p:0.0",":p:0.0"]}
+laptop sp5 {"y":1125,"v":[":p:0.0",":p:0.0"]}
+laptop sp6 {"y":1350,"v":[":p:0.0",":p:0.0"]}
+laptop sp7 {"y":1575,"v":[":p:0.0",":p:0.0"]}
+laptop sp8 {"y":1800,"v":[":p:0.0",":p:0.0"]}
+laptop sp9 {"y":2025,"v":[":p:0.0",":p:0.0"]}
+laptop sp10 {"y":2250,"v":["s2u-table-464.webm:PLAY:0.4",":p:0.0"]}
+laptop sp11 {"y":2475,"v":["s2u-table-464.webm:PLAY:1.0",":p:0.0"]}
+laptop sp12 {"y":2700,"v":["s2u-table-464.webm:p:1.0",":p:0.0"]}
+laptop sp13 {"y":2925,"v":["s2u-table-464.webm:p:1.0",":p:0.0"]}
+laptop sp14 {"y":3150,"v":["s2u-table-464.webm:p:1.0",":p:0.0"]}
+laptop sp15 {"y":3375,"v":["s2u-table-464.webm:p:1.0",":p:0.0"]}
+laptop sp16 {"y":3600,"v":["s2u-table-464.webm:p:1.0",":p:0.0"]}
+laptop sp17 {"y":3825,"v":["s2u-table-464.webm:p:1.0",":p:0.0"]}
+laptop sp18 {"y":4050,"v":["s2u-table-464.webm:p:1.0",":p:0.0"]}
+laptop sp19 {"y":4275,"v":["s2u-table-464.webm:p:1.0",":p:0.0"]}
+laptop sp20 {"y":4500,"v":["s2u-table-464.webm:p:1.0",":p:0.0"]}
+reduced laptop js h=13198
+nojs phone h 13531 wa links 18

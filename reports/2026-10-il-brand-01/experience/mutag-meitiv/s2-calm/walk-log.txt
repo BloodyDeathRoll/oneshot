@@ -1,0 +1,33 @@
+phone LCP ms 1112 CLS 0.0007 hosts 127.0.0.1:9640 bytes~ 380757
+phone height 12493 scrollWidth 390
+scroll 0 y=0 visibleWA=3 video=[{"paused":true,"t":"0.0","src":""}]
+scroll 1 y=700 visibleWA=2 video=[{"paused":true,"t":"0.0","src":""}]
+scroll 2 y=1400 visibleWA=4 video=[{"paused":true,"t":"0.0","src":""}]
+scroll 3 y=2100 visibleWA=6 video=[{"paused":true,"t":"0.0","src":""}]
+scroll 4 y=2800 visibleWA=4 video=[{"paused":true,"t":"0.0","src":""}]
+scroll 5 y=3500 visibleWA=2 video=[{"paused":true,"t":"0.0","src":""}]
+scroll 6 y=4200 visibleWA=2 video=[{"paused":true,"t":"0.0","src":""}]
+scroll 7 y=4900 visibleWA=2 video=[{"paused":true,"t":"0.0","src":""}]
+scroll 8 y=5600 visibleWA=2 video=[{"paused":true,"t":"0.0","src":""}]
+scroll 9 y=6300 visibleWA=3 video=[{"paused":true,"t":"0.0","src":""}]
+scroll 10 y=7000 visibleWA=9 video=[{"paused":true,"t":"0.0","src":""}]
+scroll 11 y=7700 visibleWA=3 video=[{"paused":true,"t":"0.0","src":""}]
+scroll 12 y=8400 visibleWA=2 video=[{"paused":true,"t":"0.0","src":""}]
+scroll 13 y=9100 visibleWA=2 video=[{"paused":true,"t":"0.0","src":""}]
+scroll 14 y=9800 visibleWA=2 video=[{"paused":true,"t":"0.0","src":""}]
+scroll 15 y=10500 visibleWA=2 video=[{"paused":true,"t":"0.0","src":""}]
+scroll 16 y=11200 visibleWA=4 video=[{"paused":true,"t":"0.0","src":""}]
+scroll 17 y=11900 visibleWA=3 video=[{"paused":true,"t":"0.0","src":""}]
+method scroller panels
+testi buttons 4
+HERO CTA https://wa.me/972546686808?text=היי הדס, אני פונה בשם ארגון. אשמח לדבר על מה שיכול להתאים לנו.
+hero cta box {"x":24,"y":640.265625,"width":342,"height":56} text כתבו להדס בוואטסאפ
+INTERCEPT https://wa.me/972546686808?text=%D7%94%D7%99%D7%99%20%D7%94%D7%93%D7%A1%2C%20%D7%90%D7%A0%
+after tap url http://127.0.0.1:9640/index.html
+orgs WA [{"t":"וואטסאפ להדס: תכנון אסטרטגי למותג","h":"ext=היי הדס, הגעתי מהאתר. מעניין אותי תכנון אסטרטגי למותג, אפשר לשמוע פרטים?","w":48,"hh":48},{"t":"וואטסאפ להדס: הרצאת הדגל BRANDS OF CHANG","h":"ext=היי הדס, אשמח לפרטים על הזמנת ההרצאה BRANDS OF CHANGE.","w":48,"hh":48},{"t":"וואטסאפ להדס: הדרכות צוות","h":"ext=היי הדס, ראיתי באתר את ריטריט היום ״לחשוב כמו מותג (מיטיב)״ ואשמח לשמוע עוד.","w":48,"hh":48},{"t":"וואטסאפ להדס: השתלמות מקצועית לאנשי מקצו","h":"ext=היי הדס, אשמח לפרטים על ההשתלמות בשיטת Brand the Change. מתי נפתח המחזור הבא?","w":48,"hh":48},{"t":"כתבו להדס בוואטסאפ","h":"ext=היי הדס, אני פונה בשם ארגון. אשמח לדבר על מה שיכול להתאים לנו.","w":342,"hh":56}]
+bar at y3000 כתבו להדס בוואטסאפ|56
+rm videos true:0 height 12493
+nojs videos true:0 height 12893
+laptop height 10645
+laptop panels 4
+laptop video false:2.9
