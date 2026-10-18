@@ -3,6 +3,7 @@
 //
 //   node tools/notion.mjs setup <parent-page-id>   # creates the database under that page, prints its id
 //   node tools/notion.mjs sync [--dry-run]         # upserts every business, matched on Run + Slug
+//   node tools/notion.mjs add-column <name>        # adds that one SCHEMA column to the database (nothing else)
 //
 // The rows come from the dashboard's buildData() (dashboard/data.mjs), so Notion shows exactly what
 // the dashboard shows: `businesses` for the state, `prospects` (the ledger view) for the verdict and
@@ -32,6 +33,8 @@ export const SCHEMA = {
   Name: { title: {} },
   Slug: { rich_text: {} },
   Run: { select: {} },
+  // market-vertical, as the dashboard's workflow chips (proposal 004); one select option per workflow
+  Workflow: { select: {} },
   State: { select: {} },
   Verdict: { select: {} },
   Rate: { number: {} },
@@ -71,6 +74,7 @@ export function toProperties(b, p = null) {
     Name: { title: [{ text: { content: b.name || b.slug } }] },
     Slug: text(b.slug),
     Run: select(b.run_id),
+    Workflow: select(b.workflow),
     State: select(STATE_LABEL[b.state] ?? b.state),
     Verdict: select(verdictOf(b, p)),
     Rate: { number: Number.isFinite(b.presence) ? b.presence : null },
@@ -126,6 +130,14 @@ async function setup(token, parent) {
   console.log(`created ${db.url}\nid ${db.id} → ${DB_FILE}`);
 }
 
+// Adds one column, never the whole SCHEMA: a schema PATCH with every column re-creates the ones
+// Shahar deleted in Notion (2026-10-15).
+async function addColumn(token, db, name) {
+  if (!SCHEMA[name]) throw new Error(`no column "${name}" in SCHEMA: ${Object.keys(SCHEMA).join(', ')}`);
+  await notion(token, 'PATCH', `/databases/${db}`, { properties: { [name]: SCHEMA[name] } });
+  console.log(`notion: column "${name}" added`);
+}
+
 async function sync(token, db, dryRun) {
   const { buildData } = await import('../dashboard/data.mjs');
   const { businesses, prospects } = buildData();
@@ -160,10 +172,11 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === realpathSync(process.a
     if (cmd === 'sync' && dryRun) await sync(null, null, true);
     else if (!token) throw new Error(`no token: set NOTION_TOKEN or write it to ${TOKEN_FILE}`);
     else if (cmd === 'setup') await setup(token, arg);
-    else if (cmd === 'sync') {
+    else if (cmd === 'sync' || cmd === 'add-column') {
       const db = secret('NOTION_DATABASE_ID', DB_FILE);
       if (!db) throw new Error(`no database: run \`node tools/notion.mjs setup <parent-page-id>\` or set NOTION_DATABASE_ID`);
-      await sync(token, db, false);
-    } else throw new Error('usage: node tools/notion.mjs setup <parent-page-id> | sync [--dry-run]');
+      if (cmd === 'sync') await sync(token, db, false);
+      else await addColumn(token, db, arg);
+    } else throw new Error('usage: node tools/notion.mjs setup <parent-page-id> | sync [--dry-run] | add-column <name>');
   } catch (e) { console.error(`notion: ${e.message}`); process.exit(1); }
 }
