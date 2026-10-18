@@ -3,14 +3,14 @@
 # business-owned sources in dossier/mutag-meitiv/assets and dossier/mutag-meitiv/client/2026-10-18
 # (tools/link-assets.sh / dossier/mutag-meitiv/make-media.sh + make-client-media.sh first).
 # Run from anywhere; rerun after changing a cut or a crop.
-# media: sites/mutag-meitiv/mockups/unique/dist/img/**
-# media: sites/mutag-meitiv/mockups/unique/dist/video/**
+# media: sites/mutag-meitiv/mockups/series-1/unique/dist/img/**
+# media: sites/mutag-meitiv/mockups/series-1/unique/dist/video/**
 set -euo pipefail
 cd "$(dirname "$0")/../../../../.."
 A=dossier/mutag-meitiv/assets
 C=dossier/mutag-meitiv/client/2026-10-18
 V=$A/video
-D=sites/mutag-meitiv/mockups/unique/dist
+D=sites/mutag-meitiv/mockups/series-1/unique/dist
 mkdir -p "$D/img" "$D/video"
 T=$(mktemp -d); trap 'rm -rf "$T"' EXIT
 ff() { ffmpeg -v error -y "$@"; }

@@ -107,6 +107,15 @@ Relayed by Shahar in session, 2026-10-17. His words, verbatim:
 | 27 | `schemas/site-content.md` v0.11: the brand modules this site needs (Hebrew, ILS, services, method, team, case studies, awards, logos, social, Instagram tiles, podcast, blog) |
 | 28 | One generated demo case study, filled in, shown as an example (`caseStudies[].demo`, labelled "דוגמה"): `brief/mutag-meitiv/demo-case-study.he.md` |
 
+## Gate c, series 1 (Shahar, 2026-10-18), verbatim
+
+> Keep the calm and interactive, and generate 3 more mockups. This time around make the
+> organozations stand out as the target market
+
+| # | Answer |
+|---|---|
+| 29 | Series 1: calm and interactive kept (pickable, `mockups/series-1/`); unique dropped. Series 2: three new mockups in which organisations (nonprofits/amutot, public bodies, companies booking talks and team workshops) stand out as the target market |
+
 ## Not given
 
 Deadline, budget band, references the client likes, dislikes, the main CTA, the award details and

@@ -2,7 +2,7 @@
 """Builds dist/index.html of the interactive mockup ("ארבע הטבעות") from src/page.html and the
 audited copy in sites/mutag-meitiv/copy/he.json. Every visible word of the business comes from
 he.json verbatim; the few interface labels (tab names, button words) live here.
-Usage: python3 sites/mutag-meitiv/mockups/interactive/src/build.py"""
+Usage: python3 sites/mutag-meitiv/mockups/series-1/interactive/src/build.py"""
 import json, os, html, urllib.parse
 
 HERE = os.path.dirname(os.path.abspath(__file__))

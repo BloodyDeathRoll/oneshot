@@ -2,14 +2,14 @@
 # Every image and video of the calm mockup ("ירוק בית") of mutag-meitiv, from the business's own
 # files in dossier/mutag-meitiv/{assets,client} (tools/link-assets.sh / tools/setup.sh first).
 # Run from anywhere; rerun after changing a crop or a cut.
-# media: sites/mutag-meitiv/mockups/calm/dist/img/**
-# media: sites/mutag-meitiv/mockups/calm/dist/video/**
-# media: sites/mutag-meitiv/mockups/calm/dist/fonts/**
+# media: sites/mutag-meitiv/mockups/series-1/calm/dist/img/**
+# media: sites/mutag-meitiv/mockups/series-1/calm/dist/video/**
+# media: sites/mutag-meitiv/mockups/series-1/calm/dist/fonts/**
 set -euo pipefail
 cd "$(dirname "$0")/../../../../.."
 A=dossier/mutag-meitiv/assets
 C=dossier/mutag-meitiv/client/2026-10-18
-D=sites/mutag-meitiv/mockups/calm/dist
+D=sites/mutag-meitiv/mockups/series-1/calm/dist
 mkdir -p "$D/img" "$D/video" "$D/fonts"
 rm -f "$D"/img/*.webp
 T=$(mktemp -d); trap 'rm -rf "$T"' EXIT

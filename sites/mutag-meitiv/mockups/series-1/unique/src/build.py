@@ -4,7 +4,7 @@
 Every visible word of business copy is read from sites/mutag-meitiv/copy/he.json, never retyped;
 the WhatsApp number and Calendly URL come from the same file (contact / bookingLinks / services).
 Interface labels (button words, section labels the schema has no field for) live here.
-CSS and JS are inlined from style.css and app.js. Run: python3 sites/mutag-meitiv/mockups/unique/src/build.py
+CSS and JS are inlined from style.css and app.js. Run: python3 sites/mutag-meitiv/mockups/series-1/unique/src/build.py
 """
 import json, html, pathlib, urllib.parse, datetime
 

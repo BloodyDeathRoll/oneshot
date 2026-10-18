@@ -2,14 +2,14 @@
 # Every image and video of the interactive mockup ("ארבע הטבעות", Four rings), made from the
 # business-owned dossier assets. Nothing is upscaled; every run of pictures is one ratio.
 # Before it: tools/link-assets.sh mutag-meitiv (dist/video then lives in ~/.oneshot/assets).
-# Usage: bash sites/mutag-meitiv/mockups/interactive/src/make-media.sh
-# media: sites/mutag-meitiv/mockups/interactive/dist/img/**
-# media: sites/mutag-meitiv/mockups/interactive/dist/video/**
-# media: sites/mutag-meitiv/mockups/interactive/dist/fonts/**
+# Usage: bash sites/mutag-meitiv/mockups/series-1/interactive/src/make-media.sh
+# media: sites/mutag-meitiv/mockups/series-1/interactive/dist/img/**
+# media: sites/mutag-meitiv/mockups/series-1/interactive/dist/video/**
+# media: sites/mutag-meitiv/mockups/series-1/interactive/dist/fonts/**
 set -euo pipefail
 cd "$(dirname "$0")/../../../../.."
 A=dossier/mutag-meitiv/assets
-D=sites/mutag-meitiv/mockups/interactive/dist
+D=sites/mutag-meitiv/mockups/series-1/interactive/dist
 mkdir -p "$D/img" "$D/video"
 ff() { ffmpeg -v error -y "$@"; }
 
