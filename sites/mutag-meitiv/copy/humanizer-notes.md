@@ -69,3 +69,17 @@ Draft for this round kept as `he.draft.json` (it now holds the copywriter's roun
 | strategic-planning `summary` | בניית אסטרטגיה עסקית ומיתוגית: מיתוג חדש או ריברנד - לבנות אירגון מצליח שגם מיטיב עם העולם דרך תכנון אסטרטגיית מותג מיטיב. | מיתוג חדש או ריברנד - לבנות אירגון מצליח שגם מיטיב עם העולם דרך תכנון אסטרטגיית מותג מיטיב. בניית אסטרטגיה עסקית ומיתוג, יחד. | V1: a keyword label and colon glued before her card line, with "מיתוגית" next to "מיתוג". Her sentence now leads, verbatim; the business qualifier ("בניית אסטרטגיה עסקית", C-audience-03) follows as a short closing fragment. 125 chars ≤ 200. No fact added: strategy and branding are both what `/process` sells (R2). |
 
 Glanced, unchanged: R3 `credentials[0].label` (plain and concrete) and R5 `copyBlocks[4]` p2 "רוצים להתחיל בצעד קטן? …" (her plural address; "ההכרות" twice is the two offers' own names). Neither is clearly unnatural.
+
+## Round 4 (copyeditor review.md round 4, H1–H3; `mockup_extras.series2_organisations` only) — 2026-10-18
+
+Draft for this round kept as `he.draft.json`. Series-1 fields untouched. First screen = tagline option + intro block, so each search phrase is said once there: "מיתוג לעמותות" (tagline[0]) / "אסטרטגיות מותג" (tagline[1]), "מעבר לשורת הרווח" (intro p1 only), "הרצאה בארגון" and "סדנה לצוות" (intro p2 only). The `path` block below names the offers again on its own screen.
+
+| Field | Draft | Now | Fix |
+|---|---|---|---|
+| `tagline_options[1]` | אסטרטגיית מותג, הרצאות לארגונים וסדנה לצוות, למי שהמשמעות חשובה לו מעבר לשורת הרווח. | כאן מפתחים אסטרטגיות מותג עם משמעות, גם לארגונים. | H2: no three-item list; her own tagline plus "גם לארגונים". "מעבר לשורת הרווח" was also in intro p1 on the same screen. |
+| `intro.body` p2 | מיתוג חדש או ריברנד לעמותה ולארגון, הרצאות לארגונים וסדנה לצוות: הכל במקום אחד. | אפשר להתחיל ממיתוג חדש או מריברנד, ואפשר גם להזמין אותי להרצאה בארגון או לסדנה לצוות. | H1/H2: no list-colon, no "הכל במקום אחד", no singular form-label "לעמותה ולארגון"; first person. |
+| `path.ctaText` | היי הדס, אני פונה בשם ארגון. אשמח לשמוע על הרצאה, סדנה לצוות או תכנון אסטרטגי למותג. | היי הדס, אני פונה בשם ארגון. אשמח לדבר על מה שיכול להתאים לנו. | H2: the list was the third repeat; the path block already names the offers. Asserts nothing. |
+| `proof.talks[2]` | בתוכנית פסטיבל קיימות ואנשים 3 (2025): הרצאה שלי על תהליך האסטרטגיה של איזור התעשיה המתחדש במעיין צבי. | ב-2025 נכללה בתוכנית פסטיבל קיימות ואנשים 3 הרצאה שלי על תהליך האסטרטגיה של איזור התעשיה המתחדש במעיין צבי. | H3: same year-first sentence form as talks[0–1]; still only "on the programme", not that it took place. |
+
+No new facts (the dropped list items stay in intro p2 and `path`); caps: tagline 49/140, intro body 200/1500, ctaText 62/200.
+Not changed (not in H1–H3): `intro.heading` "לעמותות, לארגונים ולצוותים" and the label-colon rows in `path.body` p1–p3, which read as list rows in an offers block. Copyeditor may flag them if the design runs them as prose.
