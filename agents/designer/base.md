@@ -190,7 +190,7 @@ These three are not taste, they are settled. Each was said, then broken by a lat
 rebuild, then said again in capitals. `tools/check-design.mjs` measures all three on the
 built page at 1440 px and 390 px and fails the station; run it before handing off.
 
-1. **Light themes, in the surf vertical** (`run.yaml` `vertical: surf`). **Every surf business, every variant, no exceptions**; other verticals have no theme rule here. The ground comes
+1. **Light themes, in the surf vertical** (`run.yaml` `vertical: surf`, the default when the key is absent). **Every surf business, every variant, no exceptions**; other verticals have no theme rule here. The ground comes
    from the business's own photographs, as `concepts.md` gives it; a cool white is as light
    as a warm one, and cream is not the default. Never a dark page and never a large dark panel behind body text.
    A photograph or video filling a container — a full-bleed hero included — is a picture, not a dark theme, and is fine.

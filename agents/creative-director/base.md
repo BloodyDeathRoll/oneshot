@@ -179,7 +179,7 @@ what a visitor would notice is different.
    then licensed atmosphere can carry the big moments while the business's own photographs do the
    close ones, and references.md #8, #9 and #10 are the type-led fallbacks. A type-only first
    screen for a business with strong media is a hard fail (rubric).
-4. **Light grounds only, in the surf vertical** (`run.yaml` `vertical: surf`). Every surf business gets a light theme; other verticals have no theme rule here. The ground
+4. **Light grounds only, in the surf vertical** (`run.yaml` `vertical: surf`, the default when the key is absent). Every surf business gets a light theme; other verticals have no theme rule here. The ground
    comes from the business's own photographs (§4 Colour); a cool white is as light as a warm
    one. Never a dark page, and never a large dark panel behind body
    text. A photograph filling a container is a picture, not a theme. Shahar has had to

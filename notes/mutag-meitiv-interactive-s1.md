@@ -1,6 +1,6 @@
 # mutag-meitiv-interactive-s1 — run 2026-10-il-brand-01 (fork of mutag-meitiv)
 
-State: **picked** (2026-10-18, forked at gate c). Waiting for the client's response.
+State: **picked** (2026-10-18, forked at the mockup pick). Waiting for the client's response.
 
 - Series-1 interactive mockup: sites/mutag-meitiv-interactive-s1/mockups/interactive/dist.
 - Online, home page only, noindex: https://mutag-meitiv-interactive.os1.workers.dev/ (sites/mutag-meitiv-interactive-s1/mockup-preview.json).
