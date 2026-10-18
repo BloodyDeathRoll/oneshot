@@ -69,6 +69,24 @@ Relayed by Shahar in session, 2026-10-17. His words, verbatim:
 | 18 | WhatsApp number 054-668-6808 is correct |
 | 19 | Keep all 9 secondary offers, grouped (lectures and workshops; courses); remove the Wix leftovers and duplicates |
 
+## Answers (Shahar, 2026-10-18, gate b′), verbatim
+
+> 1. Same method, 4 stages.
+> 2. Use waht you have. Also, may be useful: Instagram: https://www.instagram.com/mutagmeitiv/ - maybe you generate a stylized bar like you did in the bottom sections of https://global-surf-lodge-kabalana-v2.os1.workers.dev/ or https://global-surf-lodge-kabalana.os1.workers.dev/ ? You have a scraping method set up in our Burgundy project that may be useful.
+> Award: Israel brand award from the brand academy. Link: https://www.brandawards.co.il/%d7%96%d7%95%d7%9b%d7%99%d7%9d-2022/
+> This is intended to be a standalone site with its own CMS - just making sure that the team section specifically will allow adding and removing people easily.
+>
+> Go ahead
+
+| # | Answer |
+|---|---|
+| 20 | One method, 4 stages (SENSING, THINKING, MAKING, INFLUENCING) on both service pages |
+| 21 | Photos: use what the current site and Instagram have |
+| 22 | An Instagram strip like the bottom sections of the Global Surf sites, fed from https://www.instagram.com/mutagmeitiv/ (Burgundy's Instagram reader, `~/Projects/burgundy/services/instagram`, as the method) |
+| 23 | Award: Israel Brand Award 2022, Brand Academy (https://www.brandawards.co.il/זוכים-2022/). Verified 2026-10-18: category "עמותות" (nonprofits), gold, ברטלי (Bartali), by מותג מיטיב |
+| 24 | Standalone site with its own CMS; the team section must let the owner add and remove people easily |
+| 25 | Gate b′ approved: "Go ahead" |
+
 ## Not given
 
 Deadline, budget band, references the client likes, dislikes, the main CTA, the award details and
