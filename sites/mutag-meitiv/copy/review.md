@@ -1,10 +1,61 @@
 # copy review — mutag-meitiv · he
 
-Copyeditor 0.4.2 · station 4c · run 2026-10-il-brand-01 (inbound, live) · 2026-10-18 · **round 3** (rounds 2 and 1 kept below).
-Round 3 reviews `he.json` and `sources.md` at commit 69f9eb3 (the humanizer's V1 fix). It is a full re-check (hard constraint 6):
-every sentence was checked again against `dossier.json`. The per-claim table at the end is the round-3 table.
+Copyeditor 0.4.2 · station 4c · run 2026-10-il-brand-01 (inbound, live) · 2026-10-18 · **round 4** (rounds 3, 2 and 1 kept below).
+Round 4 reviews only the new `mockup_extras.series2_organisations` lines (commit bd99351, brief 29: organisations as the target market for mockup series 2), with `sources.md` "Round 4".
+I checked that series 1 is unchanged: every field of `he.json` outside `mockup_extras.series2_organisations` is identical to the round-3 file (69f9eb3), so the round-3 pass and its table still hold for series 1.
 
-## Round 3 — verdict: `copy_passed`
+## Round 4 — verdict: `copy_failed` (series-2 lines only; series 1 stays `copy_passed`)
+
+Facts: **0 `unsourced`, 0 `contradicted`** in the 23 new sentences. All caps hold. The fail is on **voice**, and both blocking fixes go to the **humanizer**.
+
+### Fixes
+
+| # | Owner | Field | What is wrong |
+|---|---|---|---|
+| H1 | humanizer | `series2_organisations.intro.body` p2 | "מיתוג חדש או ריברנד לעמותה ולארגון, הרצאות לארגונים וסדנה לצוות: הכל במקום אחד." This is the list-then-colon slogan V1 removed, closed with the stock phrase "הכל במקום אחד" (padding, sales register, not hers). "לעמותה ולארגון" in the singular reads as a form label. The facts are fine; only the form fails. |
+| H2 | humanizer | `tagline_options[1]`, `intro.body` p2, `path.ctaText` | The same three search phrases ("הרצאות לארגונים", "סדנה לצוות", plus strategy or branding) appear as a list in all three lines. Tagline and intro sit on the same first screen, so the keywords show through. Keep the search words, but say them once per screen, and not as the same list each time. |
+| H3 | humanizer (not blocking) | `proof.talks[2]` | "בתוכנית פסטיבל קיימות ואנשים 3 (2025): הרצאה שלי על…" is a label with a colon, next to two first-person sentences in her voice (talks[0], talks[1]). Keep its limit (it was an announcement, so it must not say the talk happened), and match the other two in form if that fits. |
+
+### Notes for the designer (not copy faults, but they must hold on the series-2 pages)
+
+- **D1, the award once per page.** `proof.award` and `awards[0]` state the same fact. Render only one of them per page. Dana Russo's bio (`team[3]`, verbatim) also mentions the 2022 award, so a page with the team section and an award block shows it twice. That is acceptable, but put them in different sections, never side by side.
+- **D2, logo framing.** The logos sit under her own heading "מודה על הזכות להטיב ב:" (`client_logos.heading`, verbatim), with no "clients", "projects" or paid-work wording. That holds C-audience-12 / C-position-08 (WEAKENED: logos do not prove paid work). "worked_with" is an internal key, and `_about` says "worked with". The page must never print "עבדנו עם", "לקוחות" or "Worked with" as the heading.
+- **D3, the judges' text** is verbatim (byte-identical to `award.value.judges_text`). Link it to `award.source_url` (brandawards.co.il), the way `instagramLinks` link the talk lines.
+
+### Per-sentence audit (new lines)
+
+| # | Sentence | Field | Dossier key | Verdict |
+|---|---|---|---|---|
+| 1 | מיתוג לעמותות ולארגונים שרוצים להטיב עם העולם. | `tagline_options[0]` | `award.value` (nonprofits, gold, ברטלי, credited to מותג מיטיב), `services[1].card_text` ("אירגון מצליח שגם מיטיב עם העולם"); phrase C-audience-11 | sourced |
+| 2 | אסטרטגיית מותג, הרצאות לארגונים וסדנה לצוות, למי שהמשמעות חשובה לו מעבר לשורת הרווח. | `tagline_options[1]` | `business.tagline`, home card "הדרכות צוות והרצאות", `offers[0].format` "הרצאה בהזמנה", `services[1].audience`; phrases C-audience-13 | sourced (voice: H2) |
+| 3 | לעמותות, לארגונים ולצוותים | `intro.heading` | as 1–2 | framing |
+| 4 | אני מלווה אנשי שינוי וארגונים שחשובה להם המשמעות מעבר לשורת הרווח, בין אם להשפעה סביבתית, חברתית או פנים-ארגונית. | `intro.body` p1 | `services[1].audience` (/process), "מלווה" from `team[0].bio`; her typo "הרוות" corrected in this new line, which is fine | sourced |
+| 5 | מיתוג חדש או ריברנד לעמותה ולארגון, הרצאות לארגונים וסדנה לצוות: הכל במקום אחד. | `intro.body` p2 | `services[1].card_text`, `award`, home card, `offers[0]`, `offers[1].subtitle`; "הכל במקום אחד" asserts only that one practice offers all three | sourced (voice: H1, H2) |
+| 6 | מה ארגונים מזמינים | `path.heading` | groups `services[]` rows; asserts what is on offer, not who has booked | framing |
+| 7 | תכנון אסטרטגי למותג: מיתוג חדש או ריברנד, כדי לבנות אירגון מצליח שגם מיטיב עם העולם. | `path.body` p1 | `services[1].title`, `services[1].card_text` | sourced |
+| 8 | הרצאת הדגל BRANDS OF CHANGE: הרצאה בהזמנה על מותגים חברתיים וסביבתיים, עם ניתוחי מקרה מהעולם ומהארץ. | `path.body` p2 | `offers[0].label`, `.format`, `.text` ("ניתוחי מקרה ודוגמאות… בעולם ובארץ") | sourced |
+| 9 | הדרכות צוות: סדנה לצוות על איך חושב מותג, למשל ריטריט יום לאנשי.ות צוות בתחום הטיפול. | `path.body` p3 | home card "הדרכות צוות"; `offers[1].subtitle` "הדרכה ייעודית לאנשי.ות צוות בתחום הטיפול", `offers[1].text` "תחשפו לאיך חושב מותג" | sourced |
+| 10 | השתלמות מקצועית לאנשי מקצוע מתחום הקריאייטיב, שיווק, מוצר ואסטרטגיה, בשיטת Brand the Change. | `path.body` p4 | `offers[6].label`, `.audience`, `.includes` | sourced |
+| 11 | היי הדס, אני פונה בשם ארגון. | `path.ctaText` | `contact.whatsapp`; asserts nothing | framing |
+| 12 | אשמח לשמוע על הרצאה, סדנה לצוות או תכנון אסטרטגי למותג. | `path.ctaText` | the three offers above | framing (H2) |
+| 13 | מודה על הזכות להטיב ב: | `proof.heading` | `client_logos.heading`, verbatim | sourced |
+| 14 | פרס המיתוג הישראלי 2022 של Brand Academy: זהב בקטגוריית עמותות, על המיתוג של ברטלי — נוער בתנועה. | `proof.award` | `award.value` (name, organiser, year, category, place, project, credited_to), verified on brandawards.co.il; brief 23 | sourced (D1) |
+| 15–17 | the judges' text (3 sentences) | `proof.judgesQuote` | `award.value.judges_text`, byte-identical | sourced |
+| 18 | מנימוקי השופטים, פרס המיתוג הישראלי 2022 | `proof.judgesQuoteAttribution` | `award.value.name`, `award.source_url` | sourced |
+| 19 | עיריית חיפה, איגוד ערים אזור מפרץ חיפה, מועצה אזורית חוף הכרמל, כפר יונה, אוניברסיטת רייכמן, מכון מנדל למנהיגות, עמותת ברטלי — נוער בתנועה ועוד. | `proof.worked_with` | `clientLogos[]` names (איגוד ערים shortened from "…— הגנת הסביבה"); "ועוד" is true, there are 15 logos; no paid-work wording (C-audience-12, C-position-08) | sourced (D2) |
+| 20 | ב-2024 הוזמנתי לדבר בכנס המיתוג הישראלי על מותגים חברתיים שהוקמו מתוך דרייב לעשות שינוי מיטיב בעולם. | `proof.talks[0]` | `instagram.posts[C5ynxOXNEJF].caption` (2024-04-15): "הוזמנתי לדבר בכנס המיתוג הישראלי 2024 על מותגים חברתיים שהוקמו מתוך דרייב…", her words | sourced |
+| 21 | ב-2025, בכפר בלום, קיימתי סדנה לבניית מפת החזון של המרחב הצפוני, לקבוצת מנהיגים ומנהיגות ממגזרים שונים, בהקמה ובהפקה של קרן מנדל למנהיגות. | `proof.talks[1]` | `instagram.posts[DMLlsaXNo1u].caption` (2025-07-16): "זכיתי לקיים סדנת לבניית מפת החזון של המרחב הצפוני", "בכפר בלום", "מנהיגים ומנהיגות ממגזרים… שונים", "תודה ל #קרןמנדל למנהיגות על ההקמה וההפקה של הכנס". The year comes from the post date; Mandel produced the event she ran the workshop in | sourced |
+| 22 | בתוכנית פסטיבל קיימות ואנשים 3 (2025): הרצאה שלי על תהליך האסטרטגיה של איזור התעשיה המתחדש במעיין צבי. | `proof.talks[2]` | `instagram.posts[DILN8yiNoV3].caption` (2025-04-07, an announcement): it states the programme, not that the talk happened, and it does not claim she did the zone's strategy. That limit is kept | sourced (voice: H3) |
+| 23 | `instagramLinks` ×3 | `proof.instagramLinks` | `instagram.posts[].url` | sourced |
+
+**Caps** (as if each line were used in the field it stands in for): taglines 46 / 84 (limit 140); intro heading 26 (limit 120); intro body 194 and path body 367 (limit 1500); `ctaText` 84 (limit 200). The award line is 97 chars, under the 120 limit of `awards[].label`.
+**Research:** this resolves R1 from round 1, the organisations line (C-audience-11, -12, -13). No line rests on a KILLED claim. The search phrases are used as wording, not as claims.
+
+---
+
+# Round 3 (for the record)
+
+### Round 3 — verdict: `copy_passed`
 
 **0 `unsourced`, 0 `contradicted`** across 588 sentences. The voice audit is clean, and every required field is filled or has a stated reason.
 
