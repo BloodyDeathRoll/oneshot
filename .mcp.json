@@ -1,0 +1,13 @@
+{
+  "_comment": "MCP servers every Claude Code session in this repo gets (project scope). playwright: a live browser the designer and critics drive by tool call to look at the page (hover, drawer, mid-animation states tools/shoot.mjs cannot catch); pinned, headless. figma: Figma's official remote server (OAuth on first use) for client frames in the brief and the Workflows file (PLAN.md).",
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@0.0.83", "--headless", "--viewport-size", "1440x900"]
+    },
+    "figma": {
+      "type": "http",
+      "url": "https://mcp.figma.com/mcp"
+    }
+  }
+}
