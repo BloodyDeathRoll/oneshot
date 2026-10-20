@@ -4,9 +4,17 @@
       {
         "matcher": "startup|clear",
         "hooks": [
-          { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/tools/session-start.sh", "timeout": 60 }
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/tools/session-start.sh",
+            "timeout": 60
+          }
         ]
       }
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "playwright",
+    "figma"
+  ]
 }
