@@ -253,7 +253,7 @@ const ld = businessLd({ description: desc, images: ldImages })
         <h2 class="script" id="wv-t">{ST.waves}</h2>
         {c.spot && <p class="lede">{c.spot}</p>}
         {fc && (
-          <div class="fc-swap">
+          <div class="fc-swap" data-json={`https://rosa-data-opal.vercel.app/data/spots/${fc.rosaSpotId}.json`}>
             {/* until Rosa answers, a hidden ghost with Rosa's widest wording holds the cell's final height */}
             <div id="fcnow" class="off" aria-hidden="true">
               <div class="fc-now">
