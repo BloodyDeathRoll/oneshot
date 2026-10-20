@@ -5,13 +5,13 @@
 
 ## Why
 
-After the design-skills round (PR #33) Shahar: "our first run created more interesting designs and animations … I want more micro animations and WebGL as the main items." The designer's `base.md` 0.7.0 and the creative director's 0.6.0 now ask for a WebGL main item in interactive and unique, and micro-animations on every interactive element in all three.
+After the design-skills round (PR #33) Shahar: "our first run created more interesting designs and animations … I want more micro animations and WebGL as the main items." The designer's `base.md` 0.7.0 and the creative director's 0.6.0 now ask for a hero that is interesting, clean and slick with one clear CTA, never cookie-cutter, built in interactive and unique around a main item from the business's own media: a WebGL piece, a scroll-driven video, or a great video cut. Every variant gets micro-animations on every interactive element.
 
 `agents/designer/custom.md` still says:
 
 > Motion: the video carries the movement. Small, useful microinteractions; no reveal animations on headings, no effects laid over the footage.
 
-Two parts of that line can be read against the new direction: "the video carries the movement" (WebGL is now the main item), and "no effects laid over the footage" (a shader on the hero footage is one way to build the WebGL item). When the two conflict, `custom.md` wins, so the designer would drop the WebGL item on any business with video.
+A video cut or a scroll-driven video fits that line. Only one option conflicts: a WebGL piece built on the footage (a shader over the video) is an "effect laid over the footage". `custom.md` wins on a conflict, so on a business with video the designer could not choose that option. The line also says nothing about the hero needing a clear CTA and not being cookie-cutter.
 
 ## Proposed line (replaces the Motion line)
 
