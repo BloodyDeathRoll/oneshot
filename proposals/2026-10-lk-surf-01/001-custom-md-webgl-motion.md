@@ -1,6 +1,6 @@
 # 001 — custom.md proposal: a hero with a main item (video cut, scroll-driven video or WebGL), micro-animations everywhere
 
-**Status:** approved by Shahar 2026-10-20 ("DO NOT BLOCK webgl"); Shahar pastes the line into custom.md · **custom.md proposal** (Shahar writes `agents/designer/custom.md`; Claude never edits it)
+**Status:** approved by Shahar 2026-10-20 ("DO NOT BLOCK webgl"); the line is in agents/designer/custom.md (pasted by Shahar, committed on his instruction "add it to the PR") · **custom.md proposal** (Shahar writes `agents/designer/custom.md`; Claude never edits it)
 **Run:** 2026-10-lk-surf-01 · **Raised:** 2026-10-20
 
 ## Why
