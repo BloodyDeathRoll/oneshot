@@ -1,6 +1,6 @@
 run_id: 2026-10-lk-surf-01
 operator: shahar                 # who runs it (team.json); a session runs only its operator's runs
-status: active                   # active | closed
+status: closed                   # active | closed — closed 2026-10-20: mockups dropped by Shahar, no redo for now
 mode: test                       # test | live — public material only, no owner contact
 market: lk
 vertical: surf
