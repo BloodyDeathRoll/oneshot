@@ -19,7 +19,7 @@
 # Not vendored: Emil's animate-expo, write-swift, ask-sonner, pick-ui-library, prototype (React Native,
 # Swift, React libraries — the sites are static Astro); impeccable's edit hooks (.claude/settings.json
 # upstream: they run a downloaded binary on every Edit/Write; here the skill is invoked explicitly).
-# Licences: MIT (emilkowalski, Leonxlnx, kylezantos), Apache 2.0 (impeccable); each LICENSE is copied.
+# Licences: MIT (emilkowalski, Leonxlnx, kylezantos), Apache 2.0 (impeccable); each LICENSE is copied, impeccable's NOTICE.md too.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -62,6 +62,7 @@ cp "$work/taste-skill/LICENSE" "$dest/skills/design-taste-frontend/LICENSE"
 # impeccable — the Claude-built skill folder and its sub-agents, no hooks
 cp -r "$work/impeccable/.claude/skills/impeccable" "$dest/skills/impeccable"
 cp "$work/impeccable/LICENSE" "$dest/skills/impeccable/LICENSE"
+cp "$work/impeccable/NOTICE.md" "$dest/skills/impeccable/NOTICE.md"   # Apache 2.0 §4(d)
 cp "$work/impeccable"/.claude/agents/impeccable-*.md "$dest/agents/"
 # design-motion-principles
 cp -r "$work/design-motion-principles/skills/design-motion-principles" "$dest/skills/design-motion-principles"
