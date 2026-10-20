@@ -36,12 +36,12 @@ agents:                          # pinned versions for reproducibility
   copywriter: 0.4.0
   humanizer: 0.2.0
   copyeditor: 0.4.2
-  creative-director: 0.6.0
-  designer: 0.7.0
+  creative-director: 0.5.1
+  designer: 0.6.1
   seo: 0.2.2
   aiseo: 0.2.2
   critic: 0.4.3
-  visual-critic: 0.2.0
-  experience-critic: 0.2.0
+  visual-critic: 0.1.2
+  experience-critic: 0.1.1
   deployer: 0.5.0
   writer: 0.5.1

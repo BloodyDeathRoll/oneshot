@@ -1,4 +1,4 @@
-version: 0.5.0
+version: 0.6.0
 
 # creative-director / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
