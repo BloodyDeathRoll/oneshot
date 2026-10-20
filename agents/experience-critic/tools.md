@@ -9,6 +9,6 @@
 | `/impeccable critique` (`--target <page>`), `/emil-design-eng` | The design critique and the polish bar, read before the checklist so the fix list is concrete. |
 | `/design-motion-principles` (audit mode), `/review-animations` | The anti-slop motion audit and the motion review: default to flagging, approval is earned. Findings are evidence lines, not a second report; the HTML report it emits is scratch, deleted with the shots. |
 | playwright MCP (`.mcp.json`) | A live browser by tool call for the states the sheets cannot show: `browser_hover`, `browser_click` the booking CTA and the drawer, `browser_resize` to 390×844, mid-animation `browser_take_screenshot`. Evidence stays in words and shoot sheets. |
-| figma MCP (`.mcp.json`) | `get_screenshot` of the frames an inbound client's brief points at, when the brief is part of what the page must answer. |
+| figma MCP (`.mcp.json`) | `get_screenshot` of the frames an inbound client's brief points at, when the brief is part of what the page must answer, and of any design study in the OneShot file's `Playground` page (PLAN.md). |
 
 Skills are vendored by `tools/vendor-skills.sh` (`.claude/skills/VENDORED.txt`) and invoked with the Skill tool (`/name`). They give you vocabulary and measured evidence; the rubric and this agent's method decide the score.

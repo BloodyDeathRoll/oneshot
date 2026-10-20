@@ -2,7 +2,7 @@
 
 Find surf businesses along a defined stretch of coast that have no or weak websites, harvest everything public about them, one-shot a new site from a tuned prompt, and pitch it as a demo on a static preview. The CMS comes only after a sale, once the client has chosen the product (Shahar, 2026-10-05: "We build a demo to sell to a client. If we succeed and the client wants a CMS, THEN you implement a CMS. NOT BEFORE."). Every agent is a versioned prompt that improves after each run: the critic proposes diffs, a human approves.
 
-Workflow graph: Figma → Workflows file → `workflows` page → frame `oneshot-workflow`.
+Figma: the **OneShot file**, https://www.figma.com/design/HFSrYRH04WkJglYCRuhUC4/OneShot (key `HFSrYRH04WkJglYCRuhUC4`; Shahar, 2026-10-20). Designs go on its `Playground` page (node `1-9`), in the `Playground` frame (`1-10`, 1920 × 1080); when a design needs its own space, add a frame on that page named for what it shows (`<slug>/<variant>`, `<topic>`), never a new file. `Cover` is the cover. Workflow graph: Workflows file → `workflows` page → frame `oneshot-workflow`.
 
 ---
 
