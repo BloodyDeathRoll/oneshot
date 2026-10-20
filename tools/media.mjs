@@ -39,7 +39,9 @@ export const SCRATCH_RE = /^(?!agents\/designer\/gold\/).*(^|\/)shots\//;   // t
 // Folders that hold build output or installs, not media anyone made; dossier/<slug>/assets/mockups/
 // is where the mockups' dist/video links point (tools/link-assets.sh), so those files count once, there.
 const SKIP_DIRS = new Set(['.git', 'node_modules', '.astro', '.next', '.wrangler', '.venv', 'venv', '__pycache__']);
-const SKIP_RE = /^sites\/[^/]+\/final\/dist\/|^sites\/[^/]+\/mockups[^/]*\/[^/]+\/public\/photos\/|^dossier\/[^/]+\/assets\/mockups\/|^dashboard\/mockups\/[^/]+\/dist\/img\//;
+// (dist/photos/: an Astro mockup's build copy of public/photos/, made by tools/build-mockup.mjs)
+// the vendored design skills' scratch (tools/vendor-skills.sh; git-ignored): inspector shots, impeccable state, motion audits
+const SKIP_RE = /^\.taste-skill\/|^\.impeccable\/|^motion-audits\/|^sites\/[^/]+\/final\/dist\/|^sites\/[^/]+\/mockups[^/]*\/[^/]+\/(public|dist)\/photos\/|^dossier\/[^/]+\/assets\/mockups\/|^dashboard\/mockups\/[^/]+\/dist\/img\//;
 
 const sha = (f) => createHash('sha256').update(readFileSync(f)).digest('hex');
 export const groupOf = (p) => p.match(/^(?:sites|dossier)\/([^/]+)\//)?.[1] ?? '_shared';

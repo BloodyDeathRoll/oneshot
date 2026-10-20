@@ -2,11 +2,11 @@
 
 ## Design skills
 
-Vendored into `.claude/skills/` (`tools/vendor-skills.sh`, pinned in `.claude/skills/VENDORED.txt`), invoked with the Skill tool (`/name`). You write words, not code, so you use them for direction:
+Vendored into `.claude/skills/` (`tools/vendor-skills.sh`, pinned in `.claude/skills/VENDORED.txt`), invoked with the Skill tool (`/name`). You write words, not code. They are vocabulary and checks, not the source of the concept: the skills-led round of 2026-10-20 came out safer and duller than the first runs (Shahar), so no skill decides a direction, and no skill's restraint removes a concept's hero main item or its motion.
 
 | Skill | Use at 4d |
 |---|---|
-| `/design-taste-frontend` | `node .claude/skills/design-taste-frontend/scripts/draw.mjs --sector <sector>` deals three researched directions (idea, composition, type, palette, photographs, section blueprints) from 247 curated sites. Deal once per business and name a direction per concept in §4: three concepts that share a direction are one concept. Its `references/layout.md`, `imagery.md`, `motion.md` are the vocabulary for §2 and §4. |
+| `/design-taste-frontend` | Its `references/layout.md`, `imagery.md`, `motion.md` are vocabulary for §2 and §4. Do not deal directions with `draw.mjs`. |
 | `/impeccable` | Its Modes (Persuade, Operate, Read, Experience) name what the visitor's success looks like; §3's archetype says which mode this business is and why. `reference/new-work.md` is how a replacement visual world is chosen from the material rather than from category habit. |
 | `/design-motion-principles`, `/animation-vocabulary` | Name each concept's motion signature in the right words (one or two moves per concept, with the designer's `/animate` in mind), so the designer builds what you meant. |
 

@@ -1,0 +1,121 @@
+{
+ "int": {
+  "before": {
+   "done": 0,
+   "cur": "img/img-006.webp",
+   "bar": "matrix(0.704135, 0, 0, 1, 0, 0)"
+  },
+  "after4s": {
+   "done": 1,
+   "cur": "http://127.0.0.1:8792/img/img-001.webp",
+   "bar": "matrix(0.779133, 0, 0, 1, 0, 0)"
+  },
+  "afterTap": {
+   "done": 2,
+   "cur": "http://127.0.0.1:8792/img/img-004.webp",
+   "bar": "matrix(0.13749, 0, 0, 1, 0, 0)"
+  },
+  "tapFrames": {
+   "n": 37,
+   "over34": 0,
+   "max": 17
+  },
+  "chapRes": {
+   "after": {
+    "done": 0,
+    "cur": "img/img-003.webp",
+    "bar": "matrix(0.074992, 0, 0, 1, 0, 0)"
+   },
+   "scrollY": 77,
+   "frames": {
+    "n": 46,
+    "over34": 0,
+    "max": 17
+   }
+  },
+  "offscreen4s": {
+   "done": 1,
+   "cur": "http://127.0.0.1:8792/img/img-013.webp",
+   "bar": "matrix(0.433315, 0, 0, 1, 0, 0)"
+  },
+  "press": "matrix(0.97, 0, 0, 0.97, 0, 0) rgb(48, 101, 136)"
+ },
+ "uni": {
+  "swapsIn12s": 0,
+  "idleFrames": {
+   "n": 720,
+   "over34": 0,
+   "max": 17
+  },
+  "anims": [
+   "shutter",
+   "shutter",
+   "shutter",
+   "shutter",
+   "shutter",
+   "shutter",
+   "shutter",
+   "shutter"
+  ],
+  "hoverImgTransform": "matrix(1.03451, 0, 0, 1.03451, 0, 0)",
+  "viewerOpen": true,
+  "viewerFrames": {
+   "n": 40,
+   "over34": 0,
+   "max": 17
+  },
+  "escCloses": true,
+  "focusBack": "roll"
+ },
+ "uniPhone": {
+  "viewerFrames": {
+   "n": 77,
+   "over34": 0,
+   "max": 17
+  },
+  "open": true,
+  "press": "none rgb(210, 60, 6)"
+ },
+ "calm": {
+  "sticky": [
+   "900 234:img-004.webp",
+   "1200 234:img-004.webp",
+   "1500 234:img-004.webp",
+   "1800 234:img-004.webp",
+   "2100 234:img-004.webp",
+   "2400 -46:img-004.webp,854:img-002.webp",
+   "2700 -346:img-004.webp,554:img-002.webp",
+   "3000 254:img-002.webp",
+   "3300 234:img-002.webp",
+   "3600 187:img-002.webp",
+   "3900 -113:img-002.webp,739:img-003-sq.webp",
+   "4200 -413:img-002.webp,437:img-003-sq.webp",
+   "4500 137:img-003-sq.webp"
+  ],
+  "press": "none rgb(210, 60, 6)"
+ },
+ "r3calm": {
+  "press": "none rgba(0, 0, 0, 0)",
+  "scrollFrames": {
+   "n": 39,
+   "over34": 0,
+   "max": 17
+  }
+ },
+ "r3int": {
+  "press": "none rgb(240, 86, 84)",
+  "scrollFrames": {
+   "n": 41,
+   "over34": 0,
+   "max": 17
+  }
+ },
+ "r3uni": {
+  "press": "none rgb(6, 5, 4)",
+  "scrollFrames": {
+   "n": 50,
+   "over34": 0,
+   "max": 17
+  }
+ }
+}

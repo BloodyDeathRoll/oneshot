@@ -1,0 +1,112 @@
+{
+ "int": {
+  "start": {
+   "done": 0,
+   "cur": "img/img-006.webp",
+   "slivers": 0
+  },
+  "after4s": {
+   "done": 1,
+   "cur": "http://127.0.0.1:8852/img/img-001.webp",
+   "slivers": 0
+  },
+  "offscreenStart": {
+   "done": 1,
+   "cur": "http://127.0.0.1:8852/img/img-001.webp",
+   "slivers": 0
+  },
+  "offscreenAfter4_5s": {
+   "done": 1,
+   "cur": "http://127.0.0.1:8852/img/img-001.webp",
+   "slivers": 0
+  },
+  "afterTap": {
+   "done": 3,
+   "cur": "http://127.0.0.1:8852/img/img-005.webp",
+   "slivers": 0
+  },
+  "tapFrames": {
+   "n": 21,
+   "over34": 0,
+   "max": 17
+  },
+  "fiveSecAfterTap": {
+   "done": 3,
+   "cur": "http://127.0.0.1:8852/img/img-005.webp",
+   "slivers": 0
+  },
+  "chapter": {
+   "after": {
+    "done": 0,
+    "cur": "img/img-020.webp",
+    "slivers": 0
+   },
+   "frames": {
+    "n": 342,
+    "over34": 0,
+    "max": 17
+   }
+  },
+  "press": "none"
+ },
+ "uni": {
+  "overlaySecondsSeenIn12s": 3,
+  "idleFrames": {
+   "n": 721,
+   "over34": 0,
+   "max": 17
+  },
+  "viewerOpen": true,
+  "viewerFrames": {
+   "n": 37,
+   "over34": 0,
+   "max": 17
+  },
+  "closed": true
+ },
+ "uniPhone": {
+  "staffOverlapHitsPerStop": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "press": "matrix(0.97, 0, 0, 0.97, 0, 0)",
+  "viewer": {
+   "open": true,
+   "frames": {
+    "n": 36,
+    "over34": 0,
+    "max": 17
+   }
+  }
+ },
+ "calm": {
+  "phoneStickyPositions": [
+   "93:img-004-m.webp,786:img-007.webp,786:img-001.webp",
+   "93:img-004-m.webp,486:img-007.webp,486:img-001.webp",
+   "93:img-004-m.webp,186:img-007.webp,186:img-001.webp",
+   "93:img-004-m.webp,-114:img-007.webp,-114:img-001.webp",
+   "93:img-004-m.webp",
+   "81:img-004-m.webp,570:img-021.webp",
+   "-219:img-004-m.webp,270:img-021.webp",
+   "93:img-021.webp,637:img-020.webp,637:img-016.webp",
+   "93:img-021.webp,337:img-020.webp,337:img-016.webp"
+  ],
+  "scrollFrames": {
+   "n": 59,
+   "over34": 0,
+   "max": 17
+  },
+  "press": "matrix(0.97, 0, 0, 0.97, 0, 0)"
+ }
+}

@@ -1,0 +1,107 @@
+{
+ "calm": {
+  "rating_first_screen_390": [
+   "9.3 / 10 on Booking.com, 34 reviews|5.0 / 5 on Google, 21 reviews Both read 25 September 2"
+  ],
+  "rating_first_screen_1440": [
+   "9.3 / 10 on Booking.com, 34 reviews|5.0 / 5 on Google, 21 reviews Both read 25 September 2"
+  ],
+  "rosa_reqs": [
+   "scrolled https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "rosa": "Kabalana Kabalana: a sandy beach break for beginners and intermediates, with The Rock reef A-frame for advanced surfers. The beach is two minutes from the hotel, on foot. 0.7–1.1 mchest-high Kabalana, Mon 21 Sep, 20:30 Swell 1.3 m | 12.6 s | from the S Wind 6.5 km/h | cross-shore Forecast for Kabalana by Rosa See today's forecast for Kabalana on Rosa",
+  "iframe_focus": {
+   "active": "IFRAME",
+   "out": [
+    "IFRAME.on outline=none 3px shadow=false",
+    "DIV.rosa-w outline=none 3px shadow=false",
+    "SECTION.sec kab wrap g outline=none 3px shadow=false"
+   ]
+  }
+ },
+ "interactive": {
+  "rating_first_screen_390": [
+   "9.3/ 10 on Booking.com, 34 reviews 5.0/ 5 on Google, 21 reviews Both read 25 September 202"
+  ],
+  "rating_first_screen_1440": [
+   "9.3/ 10 on Booking.com, 34 reviews 5.0/ 5 on Google, 21 reviews Both read 25 September 202"
+  ],
+  "rosa_reqs": [
+   "scrolled https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "rosa": "Kabalana Kabalana: a sandy beach break for beginners and intermediates, with The Rock reef A-frame for advanced surfers. The beach is two minutes from the hotel, on foot. 0.7–1.1 m chest-high Kabalana, Mon 21 Sep, 20:30 Swell 1.3 m | 12.6 s | from the S Wind 6.5 km/h | cross-shore Forecast for Kabalana by Rosa See today's forecast for Kabalana on Rosa",
+  "iframe_focus": {
+   "active": "IFRAME",
+   "out": [
+    "IFRAME.on outline=none 3px shadow=false",
+    "DIV.rosa-w rise in outline=solid 2px shadow=false",
+    "DIV.wx outline=none 3px shadow=false"
+   ]
+  },
+  "live_initial": "5 of 12 kinds of room with “Pool” in the name",
+  "counts": {
+   "Pool": "5 of 12 kinds of room with “Pool” in the name",
+   "Garden": "6 of 12 kinds of room with “Garden” in the name",
+   "Pool & garden": "3 of 12 kinds of room with both pool and garden in the name",
+   "Own kitchen": "3 of 12 kinds of room with a kitchen or kitchenette",
+   "Sleeps 4+": "5 of 12 kinds of room sleeping four or more",
+   "All twelve": "All twelve kinds of room"
+  },
+  "submit": [
+   "https://www.booking.com/hotel/lk/the-lavish-haven.html?checkin=2026-11-12&checkout=2026-11-15&group_adults=2&no_rooms=1&group_children=0"
+  ]
+ },
+ "unique": {
+  "rating_first_screen_390": [
+   "9.3 / 10 on Booking.com, 34 reviews 5.0 / 5 on Google, 21 reviews Both read 25 September 2"
+  ],
+  "rating_first_screen_1440": [
+   "9.3 / 10 on Booking.com, 34 reviews 5.0 / 5 on Google, 21 reviews Both read 25 September 2"
+  ],
+  "rosa_reqs": [],
+  "tag_390": {
+   "before": {
+    "inert": true,
+    "aria": "true",
+    "focus": "BODY The Lavish Haven\nThe Lavish Ha",
+    "y": 0
+   },
+   "flipped": {
+    "inert": false,
+    "aria": "false",
+    "focus": "INPUT checkin",
+    "y": 110
+   },
+   "esc": {
+    "inert": true,
+    "aria": "true",
+    "focus": "BUTTON Choose dates first",
+    "y": 110
+   },
+   "submit": [
+    "https://www.booking.com/hotel/lk/the-lavish-haven.html?checkin=2026-11-12&checkout=2026-11-15&group_adults=2&no_rooms=1&group_children=0"
+   ],
+   "overflowX": 0
+  },
+  "tag_1440": {
+   "before": {
+    "inert": true,
+    "aria": "true",
+    "focus": "BODY The Lavish Haven\nRooms\nPool\nKa",
+    "y": 0
+   },
+   "flipped": {
+    "inert": false,
+    "aria": "false",
+    "focus": "INPUT checkin",
+    "y": 0
+   },
+   "esc": {
+    "inert": true,
+    "aria": "true",
+    "focus": "BUTTON Choose dates first",
+    "y": 0
+   }
+  }
+ }
+}

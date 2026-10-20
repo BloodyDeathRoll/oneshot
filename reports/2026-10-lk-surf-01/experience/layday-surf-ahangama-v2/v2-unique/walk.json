@@ -1,0 +1,336 @@
+{
+ "url": "http://127.0.0.1:8817/sites/layday-surf-ahangama-v2/mockups/unique/dist/index.html",
+ "phone": {
+  "loadBytes": 699704,
+  "lcp": 2400,
+  "probe": {
+   "title": "Layday Surf Ahangama · a two-minute walk from Kabalana",
+   "keyframes": 0,
+   "transitions": 23,
+   "viewTimeline": 0,
+   "reducedMotion": 3,
+   "willChange": 1,
+   "scripts": [
+    "inline:44",
+    "inline:6009"
+   ],
+   "ctas": [
+    {
+     "t": "Check dates",
+     "href": "#book",
+     "tag": "A",
+     "vis": false
+    },
+    {
+     "t": "Check dates on Booking.com",
+     "href": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "Check dates on Hostelworld",
+     "href": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "Check dates on Agoda",
+     "href": "https://www.agoda.com/layday-surf-ahangama/hotel/piyadigama-lk.html",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "Call +94 77 855 3343",
+     "href": "tel:+94778553343",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "Hostelworld",
+     "href": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "Check dates",
+     "href": "#book",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "Hostelworld",
+     "href": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "10/10 Hostelworld, 10 reviews",
+     "href": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "10/10 Booking.com, 6 reviews",
+     "href": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "Hostelworld",
+     "href": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "Hostelworld",
+     "href": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+     "tag": "A",
+     "vis": true
+    }
+   ],
+   "fonts": [
+    "Boska 400",
+    "Boska 500",
+    "General Sans 400",
+    "General Sans 500",
+    "General Sans 600",
+    "Boska Fallback normal"
+   ],
+   "cls": 0.0001,
+   "longtasks": []
+  },
+  "scroll": {
+   "H": 8918,
+   "steps": [
+    {
+     "i": 0,
+     "y": 591,
+     "anims": [
+      "opacity",
+      "transform"
+     ]
+    },
+    {
+     "i": 1,
+     "y": 1182,
+     "anims": [
+      "opacity",
+      "transform"
+     ]
+    },
+    {
+     "i": 2,
+     "y": 1772,
+     "anims": []
+    },
+    {
+     "i": 3,
+     "y": 2363,
+     "anims": [
+      "opacity",
+      "transform",
+      "opacity",
+      "transform"
+     ]
+    },
+    {
+     "i": 4,
+     "y": 2954,
+     "anims": [
+      "opacity",
+      "transform"
+     ]
+    },
+    {
+     "i": 5,
+     "y": 3545,
+     "anims": []
+    },
+    {
+     "i": 6,
+     "y": 4136,
+     "anims": [
+      "opacity",
+      "transform"
+     ]
+    },
+    {
+     "i": 7,
+     "y": 4726,
+     "anims": [
+      "opacity",
+      "transform"
+     ]
+    },
+    {
+     "i": 8,
+     "y": 5317,
+     "anims": []
+    },
+    {
+     "i": 9,
+     "y": 5908,
+     "anims": [
+      "opacity",
+      "transform"
+     ]
+    },
+    {
+     "i": 10,
+     "y": 6499,
+     "anims": [
+      "opacity",
+      "transform"
+     ]
+    },
+    {
+     "i": 11,
+     "y": 7090,
+     "anims": []
+    },
+    {
+     "i": 12,
+     "y": 7680,
+     "anims": []
+    },
+    {
+     "i": 13,
+     "y": 8074,
+     "anims": []
+    }
+   ],
+   "frames": {
+    "n": 828,
+    "avgMs": 16.9,
+    "maxMs": 117,
+    "janky": 2
+   }
+  },
+  "clsAfterScroll": 0.0001,
+  "fixedBottom": [
+   "Check dates Call"
+  ],
+  "booking": [
+   {
+    "tap": 1,
+    "text": "Check dates on Booking.com",
+    "href": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html"
+   },
+   {
+    "note": "external link, not followed"
+   }
+  ]
+ },
+ "laptop": {
+  "scroll": {
+   "H": 7578,
+   "steps": [
+    {
+     "i": 0,
+     "y": 630,
+     "anims": []
+    },
+    {
+     "i": 1,
+     "y": 1260,
+     "anims": [
+      "opacity",
+      "transform",
+      "opacity",
+      "transform",
+      "opacity",
+      "transform"
+     ]
+    },
+    {
+     "i": 2,
+     "y": 1890,
+     "anims": []
+    },
+    {
+     "i": 3,
+     "y": 2520,
+     "anims": [
+      "opacity",
+      "transform"
+     ]
+    },
+    {
+     "i": 4,
+     "y": 3150,
+     "anims": [
+      "opacity",
+      "transform",
+      "opacity",
+      "transform"
+     ]
+    },
+    {
+     "i": 5,
+     "y": 3780,
+     "anims": [
+      "opacity",
+      "transform",
+      "opacity",
+      "transform"
+     ]
+    },
+    {
+     "i": 6,
+     "y": 4410,
+     "anims": []
+    },
+    {
+     "i": 7,
+     "y": 5040,
+     "anims": []
+    },
+    {
+     "i": 8,
+     "y": 5670,
+     "anims": [
+      "opacity",
+      "transform"
+     ]
+    },
+    {
+     "i": 9,
+     "y": 6300,
+     "anims": []
+    },
+    {
+     "i": 10,
+     "y": 6678,
+     "anims": []
+    }
+   ],
+   "frames": {
+    "n": 611,
+    "avgMs": 16.7,
+    "maxMs": 33,
+    "janky": 0
+   }
+  },
+  "cls": 0.0041,
+  "hover": {
+   "text": "Check dates",
+   "before": {
+    "bg": "rgb(134, 15, 71)",
+    "tr": "none",
+    "tn": "transform 0.14s cubic-bezier(0.23, 1, 0.32, 1), background-color 0.16s"
+   },
+   "mid": "rgb(121, 13, 64) none",
+   "after": "rgb(110, 11, 58) none"
+  }
+ },
+ "rm": {
+  "H": 8918,
+  "hiddenText": 0,
+  "imgsBroken": 0
+ },
+ "nojs": {
+  "H": 9470,
+  "hiddenText": 0,
+  "imgsBroken": 0
+ }
+}

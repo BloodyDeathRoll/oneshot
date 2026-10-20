@@ -1,0 +1,109 @@
+{
+ "slug": "ka-surf-hostel-and-restaurant",
+ "variant": "calm",
+ "measured_at": "2026-10-20T11:13:37.693Z",
+ "first_load": {
+  "requests": 9,
+  "hosts": [
+   "localhost:8980",
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "third_party_hosts": [
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "bytes_total": 519549,
+  "bytes_html": 29610,
+  "bytes_js": 0,
+  "bytes_css": 0,
+  "bytes_fonts": 32292,
+  "bytes_images": 457647,
+  "largest_image_bytes": 130414,
+  "lcp_ms": 2752,
+  "cls": 0.005,
+  "dcl_ms": 281
+ },
+ "scroll": {
+  "early": {
+   "cls": 0.2232,
+   "shifts": [
+    {
+     "value": 0.2232,
+     "at_ms": 1971,
+     "y": 4597,
+     "sources": [
+      "section#here.sec.here",
+      "section#family.sec.family"
+     ]
+    }
+   ]
+  },
+  "settled": {
+   "cls": 0,
+   "shifts": []
+  }
+ },
+ "booking": {
+  "external_booking_hrefs": [
+   "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+   "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "https://www.agoda.com/en-in/ka-surf-hostel-h61738910/hotel/ahangama-lk.html",
+   "https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en",
+   "https://www.instagram.com/kasurfhostel/"
+  ],
+  "tel_hrefs": [
+   "tel:+94773746053"
+  ],
+  "drawer_triggers": 0,
+  "triggers_are_links": true,
+  "primary_above_fold": true,
+  "tapped": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/"
+ },
+ "keyboard": {
+  "drawer_opens": null,
+  "closed": null,
+  "focus_returned": null,
+  "note": "no drawer; every action is a plain link"
+ },
+ "a11y": {
+  "images": 14,
+  "images_without_alt": 0,
+  "images_alt_empty_decorative": 0,
+  "tapables": 24,
+  "tapables_under_44px": 17,
+  "tapables_under_44px_examples": [
+   "KA Surf Hostel 123x30",
+   "9.8/10 on Hostelworld 166x22",
+   "check dates 85x25",
+   "check dates 85x25",
+   "check dates 85x25",
+   "check dates 85x25"
+  ],
+  "headings": [
+   "H1",
+   "H2",
+   "H2",
+   "H2",
+   "H2",
+   "H2"
+  ],
+  "has_skip_link": true,
+  "lang": "en"
+ },
+ "no_js": {
+  "text_length": 4218,
+  "booking_links_reachable": 5,
+  "visible_images": 14
+ },
+ "reduced_motion": {
+  "canvases": 0,
+  "canvases_hidden": 0,
+  "photograph_visible": true
+ },
+ "facts": {
+  "numbers_on_page": 24,
+  "numbers_not_in_passed_copy": [],
+  "note": "copy/en.json passed station 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps each paragraph to its dossier fields. A number here that is not in the copy is either an interface label (01, 02…) or a claim to chase."
+ }
+}

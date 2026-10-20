@@ -1,4 +1,4 @@
-version: 0.1.0
+version: 0.2.0
 
 # experience-critic / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -24,7 +24,7 @@ Use playwright yourself, not only still screenshots. Record what you do.
 2. **The story:** after one scroll, can you say what this is, where, why this place, and what it costs? Is it told through the media or through tables?
 3. **Wanting to go:** does the page make you want to be there? Which moment does that, and which moments deflate it?
 4. **Booking:** tap through to booking as a traveller would (stop before personal data). How many taps, how clear the choice, whether the price and the level are understood before the tap, whether it feels trustworthy. Compare with the audit's target and with the current site.
-5. **Motion and interaction:** capture frames during scroll-linked motion, hover and tap states. Smooth and purposeful, or janky, gratuitous, or absent where it would help? Reduced-motion and JavaScript-off: still a good page?
+5. **Motion and interaction:** capture frames during scroll-linked motion, hover and tap states. Smooth and purposeful, or janky, gratuitous, or absent where it would help? Reduced-motion and JavaScript-off: still a good page? The score is capped at 7 when the first screen does not pull you in (clean, slick, one clear booking CTA, not a cookie-cutter section), in any variant, and when interactive or unique lack a main item from the business's media (WebGL, a scroll-driven video, or a great video cut) or micro-animations on every interactive element (Shahar, 2026-10-20: "the hero needs to be interesting, clean, slick and with a clear CTA, and not a plain cookie cutter section").
 6. **Laptop (1440 × 900):** the same walk, shorter.
 7. **Against the current site:** do the same walk on the current site. Where is it better than the new page? Be honest.
 8. **Score 0–10**, same calibration as `visual-critic`: 10 unforgettable · 8 engaging, clearly better than the current site, easy to book · 6 fine but forgettable · 4 flat or confusing · ≤ 3 worse than the current site. **Better than the current site?** yes / no. **Fix list:** five changes that would most improve the experience, biggest effect first; then what must be kept.

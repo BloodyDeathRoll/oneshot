@@ -1,0 +1,131 @@
+{
+ "slug": "ka-surf-hostel-and-restaurant-v2",
+ "variant": "unique",
+ "measured_at": "2026-10-20T11:13:03.170Z",
+ "first_load": {
+  "requests": 28,
+  "hosts": [
+   "localhost:8980",
+   "fonts.gstatic.com",
+   "cdn.fontshare.com"
+  ],
+  "third_party_hosts": [
+   "fonts.gstatic.com",
+   "cdn.fontshare.com"
+  ],
+  "bytes_total": 852543,
+  "bytes_html": 56095,
+  "bytes_js": 0,
+  "bytes_css": 0,
+  "bytes_fonts": 51264,
+  "bytes_images": 745184,
+  "largest_image_bytes": 71664,
+  "lcp_ms": 1564,
+  "cls": 0.0009,
+  "dcl_ms": 427
+ },
+ "scroll": {
+  "early": {
+   "cls": 0,
+   "shifts": []
+  },
+  "settled": {
+   "cls": 0,
+   "shifts": []
+  }
+ },
+ "booking": {
+  "external_booking_hrefs": [
+   "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+   "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   "https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en",
+   "https://www.instagram.com/kasurfhostel/reel/DUDRxbRD153/",
+   "https://rosa.surf/spot/kabalana",
+   "https://www.instagram.com/kasurfhostel/",
+   "https://www.instagram.com/kasurfhostel/p/DCGDL-aiN-t/",
+   "https://www.instagram.com/kasurfhostel/p/DDIzgFRItN5/",
+   "https://www.instagram.com/kasurfhostel/p/DCGDKyRCw9Q/",
+   "https://www.instagram.com/kasurfhostel/p/DCGDO2rC8p9/",
+   "https://www.instagram.com/kasurfhostel/p/DCGDJdoCPy7/",
+   "https://www.instagram.com/kasurfhostel/p/DCGDNcDiNsr/",
+   "https://www.instagram.com/kasurfhostel/p/DCGDGztCo4-/",
+   "https://www.instagram.com/kasurfhostel/p/DCGDGYViwU4/",
+   "https://www.agoda.com/en-in/ka-surf-hostel-h61738910/hotel/ahangama-lk.html"
+  ],
+  "tel_hrefs": [
+   "tel:+94773746053"
+  ],
+  "drawer_triggers": 0,
+  "triggers_are_links": true,
+  "primary_above_fold": true,
+  "tapped": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/"
+ },
+ "keyboard": {
+  "drawer_opens": null,
+  "closed": null,
+  "focus_returned": null,
+  "note": "no drawer; every action is a plain link"
+ },
+ "a11y": {
+  "images": 46,
+  "images_without_alt": 0,
+  "images_alt_empty_decorative": 0,
+  "tapables": 43,
+  "tapables_under_44px": 0,
+  "tapables_under_44px_examples": [],
+  "headings": [
+   "H1",
+   "H2",
+   "H3",
+   "H3",
+   "H2",
+   "H2",
+   "H2",
+   "H3",
+   "H3",
+   "H3",
+   "H2",
+   "H2",
+   "H2",
+   "H3",
+   "H3",
+   "H3",
+   "H3",
+   "H3",
+   "H2",
+   "H3",
+   "H3",
+   "H2"
+  ],
+  "has_skip_link": true,
+  "lang": "en"
+ },
+ "no_js": {
+  "text_length": 4860,
+  "booking_links_reachable": 4,
+  "visible_images": 25
+ },
+ "reduced_motion": {
+  "canvases": 0,
+  "canvases_hidden": 0,
+  "photograph_visible": true
+ },
+ "facts": {
+  "numbers_on_page": 35,
+  "numbers_not_in_passed_copy": [
+   "9.4",
+   "39",
+   "25",
+   "2026.",
+   "0.7",
+   "1.1",
+   "21",
+   "20:30",
+   "1.3",
+   "12.6",
+   "184",
+   "6.5"
+  ],
+  "note": "copy/en.json passed station 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps each paragraph to its dossier fields. A number here that is not in the copy is either an interface label (01, 02…) or a claim to chase."
+ }
+}

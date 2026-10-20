@@ -8,7 +8,7 @@ Structure: distinct sections, each designed as a moment: rooms sold with galleri
 
 Surface: no decorative lines, rules or borders; separate with space, colour and imagery. Soft is fine when it is tasteful: rounded corners on cards and buttons, gentle shadows where they help.
 
-Motion: the video carries the movement. Small, useful microinteractions; no reveal animations on headings, no effects laid over the footage.
+Motion: the hero is interesting, clean and slick with one clear call to action, never a cookie-cutter section. Its main item comes from the place's own media: a great cut of the video, a scroll-driven video, or WebGL (water, light, depth); calm has no canvas. Micro-animations on everything you touch: buttons, chips, galleries, drawers, booking. No reveal animations on headings. Effects on footage only when they make the footage better, never to hide it.
 
 Booking lives inside the site and looks like it: choose the level, see what is included, see the rooms, pick dates, then hand off for guest details and payment.
 

@@ -1,0 +1,325 @@
+{
+ "url": "http://127.0.0.1:8817/sites/layday-surf-ahangama/mockups/unique/dist/index.html",
+ "phone": {
+  "loadBytes": 335815,
+  "lcp": 556,
+  "probe": {
+   "title": "Layday Surf Ahangama",
+   "keyframes": 0,
+   "transitions": 4,
+   "viewTimeline": 0,
+   "reducedMotion": 0,
+   "willChange": 1,
+   "scripts": [
+    "inline:13666"
+   ],
+   "ctas": [
+    {
+     "t": "9.8/10 on Hostelworld, 10 reviews",
+     "href": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "Check dates",
+     "href": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "or call +94 77 855 3343",
+     "href": "tel:+94778553343",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "check dates",
+     "href": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "Hostelworld",
+     "href": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "Hostelworld",
+     "href": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "Hostelworld",
+     "href": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "Booking.com",
+     "href": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "Hostelworld",
+     "href": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "Booking.com",
+     "href": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "Booking.com",
+     "href": "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+     "tag": "A",
+     "vis": true
+    },
+    {
+     "t": "Check dates on Hostelworld",
+     "href": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+     "tag": "A",
+     "vis": true
+    }
+   ],
+   "fonts": [
+    "Urbanist 200",
+    "Urbanist 300",
+    "Urbanist 400",
+    "Urbanist 500"
+   ],
+   "cls": 0.0007,
+   "longtasks": []
+  },
+  "scroll": {
+   "H": 11075,
+   "steps": [
+    {
+     "i": 0,
+     "y": 591,
+     "anims": []
+    },
+    {
+     "i": 1,
+     "y": 1182,
+     "anims": []
+    },
+    {
+     "i": 2,
+     "y": 1772,
+     "anims": []
+    },
+    {
+     "i": 3,
+     "y": 2363,
+     "anims": []
+    },
+    {
+     "i": 4,
+     "y": 2954,
+     "anims": []
+    },
+    {
+     "i": 5,
+     "y": 3545,
+     "anims": []
+    },
+    {
+     "i": 6,
+     "y": 4136,
+     "anims": []
+    },
+    {
+     "i": 7,
+     "y": 4726,
+     "anims": []
+    },
+    {
+     "i": 8,
+     "y": 5317,
+     "anims": []
+    },
+    {
+     "i": 9,
+     "y": 5908,
+     "anims": []
+    },
+    {
+     "i": 10,
+     "y": 6499,
+     "anims": []
+    },
+    {
+     "i": 11,
+     "y": 7090,
+     "anims": []
+    },
+    {
+     "i": 12,
+     "y": 7680,
+     "anims": []
+    },
+    {
+     "i": 13,
+     "y": 8271,
+     "anims": []
+    },
+    {
+     "i": 14,
+     "y": 8862,
+     "anims": []
+    },
+    {
+     "i": 15,
+     "y": 9453,
+     "anims": []
+    },
+    {
+     "i": 16,
+     "y": 10044,
+     "anims": []
+    },
+    {
+     "i": 17,
+     "y": 10231,
+     "anims": []
+    }
+   ],
+   "frames": {
+    "n": 1051,
+    "avgMs": 16.8,
+    "maxMs": 117,
+    "janky": 2
+   }
+  },
+  "clsAfterScroll": 0.0007,
+  "fixedBottom": [
+   "",
+   "Check dates Check dates on Hostelworld Check dates on Booking.com Check dates on"
+  ],
+  "booking": [
+   {
+    "tap": 1,
+    "text": "Check dates",
+    "href": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/"
+   },
+   {
+    "note": "external link, not followed"
+   }
+  ]
+ },
+ "laptop": {
+  "scroll": {
+   "H": 9767,
+   "steps": [
+    {
+     "i": 0,
+     "y": 630,
+     "anims": []
+    },
+    {
+     "i": 1,
+     "y": 1260,
+     "anims": []
+    },
+    {
+     "i": 2,
+     "y": 1890,
+     "anims": []
+    },
+    {
+     "i": 3,
+     "y": 2520,
+     "anims": []
+    },
+    {
+     "i": 4,
+     "y": 3150,
+     "anims": []
+    },
+    {
+     "i": 5,
+     "y": 3780,
+     "anims": []
+    },
+    {
+     "i": 6,
+     "y": 4410,
+     "anims": []
+    },
+    {
+     "i": 7,
+     "y": 5040,
+     "anims": []
+    },
+    {
+     "i": 8,
+     "y": 5670,
+     "anims": []
+    },
+    {
+     "i": 9,
+     "y": 6300,
+     "anims": []
+    },
+    {
+     "i": 10,
+     "y": 6930,
+     "anims": []
+    },
+    {
+     "i": 11,
+     "y": 7560,
+     "anims": []
+    },
+    {
+     "i": 12,
+     "y": 8190,
+     "anims": []
+    },
+    {
+     "i": 13,
+     "y": 8820,
+     "anims": []
+    },
+    {
+     "i": 14,
+     "y": 8867,
+     "anims": []
+    }
+   ],
+   "frames": {
+    "n": 819,
+    "avgMs": 16.7,
+    "maxMs": 17,
+    "janky": 0
+   }
+  },
+  "cls": 0.0019,
+  "hover": {
+   "text": "Check dates",
+   "before": {
+    "bg": "rgb(60, 29, 81)",
+    "tr": "none",
+    "tn": "all"
+   },
+   "mid": "rgb(44, 20, 61) none",
+   "after": "rgb(44, 20, 61) none"
+  }
+ },
+ "rm": {
+  "H": 10336,
+  "hiddenText": 0,
+  "imgsBroken": 0
+ },
+ "nojs": {
+  "H": 10336,
+  "hiddenText": 0,
+  "imgsBroken": 0
+ }
+}

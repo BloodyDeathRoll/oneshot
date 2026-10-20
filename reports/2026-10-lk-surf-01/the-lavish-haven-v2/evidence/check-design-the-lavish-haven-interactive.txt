@@ -1,0 +1,17 @@
+
+FAIL  sites/the-lavish-haven/mockups/interactive/dist/index.html
+      1440px: img-002-1024.webp is drawn 1440px wide from a 1024px source (img-002) — nothing under 1200px goes full-bleed (hard constraint 7)
+      1440px: img-001-1024.webp is drawn 1440px wide from a 1024px source (img-001) — nothing under 1200px goes full-bleed (hard constraint 7)
+      look: fonts h1 "Fraunces" · h2 "Fraunces" · body "Inter Tight"   ground rgb(242, 236, 224) = hsl(40 41% 91%)   all-caps labels 36   labelled headings 4/10
+      WARN default look — h1 is set in Fraunces — a default-look display face
+      WARN default look — h2 is set in Fraunces — a default-look display face
+      WARN default look — body is set in Inter Tight — a default-look body face
+      WARN default look — 36 tracked all-caps label(s)
+      WARN default look — 4 of 10 headings directly preceded by an all-caps label
+┌─────────┬──────────────────────────────────────────────────────────────┬──────────┬──────────┐
+│ (index) │ page                                                         │ problems │ warnings │
+├─────────┼──────────────────────────────────────────────────────────────┼──────────┼──────────┤
+│ 0       │ 'sites/the-lavish-haven/mockups/interactive/dist/index.html' │ 2        │ 5        │
+└─────────┴──────────────────────────────────────────────────────────────┴──────────┴──────────┘
+
+1 page(s) · 1 failing · default-look warnings never fail

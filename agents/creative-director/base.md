@@ -1,4 +1,4 @@
-version: 0.5.0
+version: 0.6.0
 
 # creative-director / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -109,6 +109,8 @@ One per designer variant, mapped onto `agents/designer/custom.md`'s brief:
 | 1 · calm | conformist, moderate, standard. No canvas (PLAN.md §9). |
 | 2 · interactive | some bells and whistles. |
 | 3 · unique | full blown. |
+
+Every concept's first screen is interesting, clean and slick, with one clear booking CTA, never a cookie-cutter hero (Shahar, 2026-10-20: "the hero needs to be interesting, clean, slick and with a clear CTA, and not a plain cookie cutter section"). Interactive and unique each name a **main item** from the business's own media: a WebGL piece (water, light, depth, a shader on the photograph or footage), a scroll-driven video, or a great cut of the footage, whichever the material carries best; and the micro-animations that run through the page. Calm names its hero media and micro-animations (no canvas).
 
 Each concept gets:
 

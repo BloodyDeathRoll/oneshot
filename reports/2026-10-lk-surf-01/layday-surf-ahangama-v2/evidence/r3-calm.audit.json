@@ -1,0 +1,94 @@
+{
+ "slug": "layday-surf-ahangama-v2",
+ "variant": "calm",
+ "measured_at": "2026-10-20T15:09:13.209Z",
+ "first_load": {
+  "requests": 21,
+  "hosts": [
+   "localhost:8980"
+  ],
+  "third_party_hosts": [],
+  "bytes_total": 730984,
+  "bytes_html": 48746,
+  "bytes_js": 0,
+  "bytes_css": 0,
+  "bytes_fonts": 83492,
+  "bytes_images": 598746,
+  "largest_image_bytes": 74022,
+  "lcp_ms": 1368,
+  "cls": 0,
+  "dcl_ms": 672
+ },
+ "scroll": {
+  "early": {
+   "cls": 0,
+   "shifts": []
+  },
+  "settled": {
+   "cls": 0,
+   "shifts": []
+  }
+ },
+ "booking": {
+  "external_booking_hrefs": [
+   "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/",
+   "https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+   "https://www.agoda.com/layday-surf-ahangama/hotel/piyadigama-lk.html"
+  ],
+  "tel_hrefs": [
+   "tel:+94778553343"
+  ],
+  "drawer_triggers": 0,
+  "triggers_are_links": true,
+  "primary_above_fold": false,
+  "tapped": "https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/"
+ },
+ "keyboard": {
+  "drawer_opens": null,
+  "closed": null,
+  "focus_returned": null,
+  "note": "no drawer; every action is a plain link"
+ },
+ "a11y": {
+  "images": 42,
+  "images_without_alt": 0,
+  "images_alt_empty_decorative": 23,
+  "tapables": 38,
+  "tapables_under_44px": 0,
+  "tapables_under_44px_examples": [],
+  "headings": [
+   "H1",
+   "H2",
+   "H2",
+   "H2",
+   "H2",
+   "H2",
+   "H2",
+   "H2",
+   "H2",
+   "H2"
+  ],
+  "has_skip_link": true,
+  "lang": "en"
+ },
+ "no_js": {
+  "text_length": 4831,
+  "booking_links_reachable": 5,
+  "visible_images": 39
+ },
+ "reduced_motion": {
+  "canvases": 0,
+  "canvases_hidden": 0,
+  "photograph_visible": true
+ },
+ "facts": {
+  "numbers_on_page": 25,
+  "numbers_not_in_passed_copy": [
+   "25",
+   "5.0",
+   "2026."
+  ],
+  "note": "copy/en.json passed station 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps each paragraph to its dossier fields. A number here that is not in the copy is either an interface label (01, 02…) or a claim to chase."
+ }
+}

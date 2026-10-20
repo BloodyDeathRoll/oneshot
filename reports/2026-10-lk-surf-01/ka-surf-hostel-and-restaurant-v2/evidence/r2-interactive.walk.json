@@ -1,0 +1,233 @@
+{
+ "slug": "ka-surf-hostel-and-restaurant-v2",
+ "variant": "interactive",
+ "url": "http://127.0.0.1:9422/",
+ "load_thirdparty": [],
+ "first_screen_actions": [
+  [
+   "KA Surf Hostel",
+   "#top",
+   124,
+   44
+  ],
+  [
+   "Pause the story",
+   null,
+   44,
+   44
+  ],
+  [
+   "Previous photograph",
+   null,
+   102,
+   400
+  ],
+  [
+   "Next photograph",
+   null,
+   198,
+   400
+  ],
+  [
+   "Check dates",
+   "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   358,
+   52
+  ],
+  [
+   "The stay",
+   null,
+   67,
+   82
+  ],
+  [
+   "Rooms",
+   null,
+   67,
+   82
+  ],
+  [
+   "Breakfast",
+   null,
+   67,
+   82
+  ],
+  [
+   "The beach",
+   null,
+   67,
+   82
+  ],
+  [
+   "Evenings",
+   null,
+   67,
+   82
+  ]
+ ],
+ "tap": {
+  "trigger": {
+   "t": "Check dates",
+   "href": "https://www.booking.com/hotel/lk/ka-surf-hostel.html"
+  },
+  "after": {
+   "url": "http://127.0.0.1:9422/",
+   "sheet_open": true,
+   "tag": "DIALOG",
+   "links": [
+    [
+     "Check dates on Booking.com →",
+     "https://www.booking.com/hotel/lk/ka-surf-hostel.html"
+    ],
+    [
+     "Check dates on Hostelworld →",
+     "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/"
+    ],
+    [
+     "Check dates on Agoda →",
+     "https://www.agoda.com/en-in/ka-surf-hostel-h61738910/hotel/ahangama-lk.html"
+    ],
+    [
+     "Call +94 77 374 6053 →",
+     "tel:+94773746053"
+    ]
+   ],
+   "focus_in": true
+  },
+  "navigations_before_sheet_link": [],
+  "navigations": [
+   "https://www.booking.com/hotel/lk/ka-surf-hostel.html"
+  ]
+ },
+ "overflow": [],
+ "scroll_thirdparty": [
+  "7200\tdocument\thttps://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "7200\tstylesheet\thttps://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+  "7200\tfetch\thttps://rosa-data-opal.vercel.app/data/spots/kabalana.json",
+  "7600\timage\thttps://rosa.surf/favicon.svg",
+  "7600\tfont\thttps://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+  "7600\timage\thttps://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923",
+  "7600\timage\thttps://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924",
+  "7600\timage\thttps://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5925",
+  "10400\tdocument\thttps://maps.google.com/maps?q=5.9818405,80.3520113&z=15&output=embed",
+  "10400\tdocument\thttps://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s5.9818405,80.3520113!6i15",
+  "10800\tscript\thttps://maps.gstatic.com/maps-api-v3/embed/js/66/9d/init_embed.js",
+  "10800\tscript\thttps://maps.googleapis.com/maps/api/js?key=AIzaSyCmL18misQw9KdwqGaw3zHkitj8vG6QF2Y&paint_origin=&libraries=geometry,search&v=week",
+  "10800\tscript\thttps://maps.googleapis.com/maps-api-v3/api/js/66/9d/search.js",
+  "10800\tscript\thttps://maps.googleapis.com/maps-api-v3/api/js/66/9d/geometry.js",
+  "10800\tscript\thttps://maps.googleapis.com/maps-api-v3/api/js/66/9d/main.js",
+  "10800\txhr\thttps://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+  "10800\tscript\thttps://maps.googleapis.com/maps-api-v3/api/js/66/9d/common.js",
+  "10800\tscript\thttps://maps.googleapis.com/maps-api-v3/api/js/66/9d/util.js",
+  "10800\tscript\thttps://maps.googleapis.com/maps-api-v3/api/js/66/9d/map.js",
+  "10800\tscript\thttps://maps.googleapis.com/maps-api-v3/api/js/66/9d/controls.js",
+  "10800\tscript\thttps://maps.googleapis.com/maps-api-v3/api/js/66/9d/places_impl.js",
+  "10800\tscript\thttps://maps.googleapis.com/maps-api-v3/api/js/66/9d/places.js",
+  "10800\timage\thttps://maps.googleapis.com/maps/api/js/StaticMapService.GetMapImage?1m2&1i6066463&2i4054529&2e1&3u15&4m2&1u358&2u269&5m6&1e0&5sen",
+  "10800\tscript\thttps://maps.googleapis.com/maps-api-v3/api/js/66/9d/onion.js",
+  "10800\tscript\thttps://maps.googleapis.com/maps-api-v3/api/js/66/9d/search_impl.js",
+  "10800\timage\thttps://maps.gstatic.com/mapfiles/openhand_8_8.cur",
+  "10800\tscript\thttps://maps.googleapis.com/maps-api-v3/api/js/66/9d/log.js",
+  "10800\txhr\thttps://maps.googleapis.com/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo",
+  "10800\timage\thttps://www.google.com/maps/vt?pb=!1m5!1m4!1i15!2i23698!3i15839!4i256!2m3!1e0!2sm!3i800566138!2m3!1e2!2sspotlit!5i1!3m13!2sen-US!3",
+  "10800\timage\thttps://www.google.com/maps/vt?pb=!1m5!1m4!1i15!2i23697!3i15839!4i256!2m3!1e0!2sm!3i800566066!2m3!1e2!2sspotlit!5i1!3m13!2sen-US!3",
+  "10800\timage\thttps://www.google.com/maps/vt?pb=!1m5!1m4!1i15!2i23697!3i15838!4i256!2m3!1e0!2sm!3i800566066!2m3!1e2!2sspotlit!5i1!3m13!2sen-US!3",
+  "10800\timage\thttps://www.google.com/maps/vt?pb=!1m5!1m4!1i15!2i23698!3i15838!4i256!2m3!1e0!2sm!3i800566138!2m3!1e2!2sspotlit!5i1!3m13!2sen-US!3",
+  "10800\txhr\thttps://www.google.com/maps/vt?pb=!1m4!1m3!1i15!2i23697!3i15838!1m4!1m3!1i15!2i23697!3i15839!1m4!1m3!1i15!2i23698!3i15838!1m4!1m3!",
+  "10800\tstylesheet\thttps://fonts.googleapis.com/css?family=Google+Sans+Text:400&text=%E2%86%90%E2%86%92%E2%86%91%E2%86%93&lang=en",
+  "10800\tstylesheet\thttps://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Google+Sans:400,500,700|Google+Sans+Text:400,500,700&lang=en",
+  "11200\txhr\thttps://maps.googleapis.com/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo",
+  "11200\timage\thttps://www.google.com/maps/vt?pb=!1m5!1m4!1i12!2i2962!3i1979!4i256!2m1!1e1!3m12!2sen-US!3sUS!5e289!12m3!1e37!2m1!1ssmartmaps!12m4",
+  "11200\tfont\thttps://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2"
+ ],
+ "iframes": [
+  {
+   "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+   "hidden": false,
+   "opacity": "1",
+   "w": 358,
+   "h": 500,
+   "boxH": 500,
+   "loading": null,
+   "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+  },
+  {
+   "src": "https://maps.google.com/maps?q=5.9818405,80.3520113&z=15&output=embed",
+   "hidden": false,
+   "opacity": "1",
+   "w": 358,
+   "h": 269,
+   "boxH": 269,
+   "loading": null,
+   "sandbox": null
+  }
+ ],
+ "bar_mid": 1,
+ "blocked": {
+  "iframes_shown": 2,
+  "rosa_links": [
+   "Forecast for Kabalana by Rosa",
+   "Open Rosa"
+  ],
+  "fallback_text": [
+   "See today's forecast for Kabalana on Rosa Open Rosa",
+   "KA Surf Hostel on the map Open in Google Maps"
+  ],
+  "book_links": 16,
+  "first_check_dates_href": "https://www.booking.com/hotel/lk/ka-surf-hostel.html"
+ },
+ "nojs": {
+  "iframes_shown": 0,
+  "rosa_links": [
+   "Forecast for Kabalana by Rosa",
+   "Open Rosa"
+  ],
+  "fallback_text": [
+   "See today's forecast for Kabalana on Rosa Open Rosa",
+   "KA Surf Hostel on the map Open in Google Maps"
+  ],
+  "book_links": 16,
+  "first_check_dates_href": "https://www.booking.com/hotel/lk/ka-surf-hostel.html"
+ },
+ "tabs": [
+  [
+   "KA Surf Hostel",
+   "solid 2px"
+  ],
+  [
+   "Rooms",
+   "solid 2px"
+  ],
+  [
+   "Breakfast",
+   "solid 2px"
+  ],
+  [
+   "The beach",
+   "solid 2px"
+  ],
+  [
+   "Getting here",
+   "solid 2px"
+  ],
+  [
+   "Check dates",
+   "solid 2px"
+  ]
+ ],
+ "kbd": {
+  "trigger": "Check dates",
+  "open": {
+   "open": true,
+   "focus_in": true
+  },
+  "after12tabs_in": true,
+  "esc": {
+   "still_open": false,
+   "focus": "Check dates"
+  }
+ },
+ "text": "KA Surf Hostel\nRooms\nBreakfast\nThe beach\nGetting here\nCheck dates\nCheck dates\nFive minutes\nfrom Kabalana Beach\n\nSurf, chill and feel at home in Ahangama\n\nCheck dates\n\n9.8/10 on Hostelworld | 66 reviews | Sep 2026\n\nThe stay\nRooms\nBreakfast\nThe beach\nEvenings\nDorms and private rooms\n\nA family runs this place, and they set out to make you feel at home from the moment you arrive. Kabalana Beach is a five-minute walk.\n\nDorms if you want the company, private rooms if you don't.\n\nMixed, female and male dormitories with bunk beds, plus double rooms and deluxe doubles. Every room has air conditioning and a fan, private lockers and a personal fridge. The bathrooms are modern and the showers are hot.\n\nRates change with the dates, and the booking links below show what is actually available.\n\nCheck dates\nDorms\nBunk bed in mixed dormitory\n1 bunk bed\nBunk bed in female dormitory\n1 bunk bed\nBunk bed in male dormitory\n1 bunk bed\nPrivate rooms\nDouble room\n1 extra-large double bed\nDeluxe double room\n1 extra-large double bed\nDeluxe double room\n1 single bed\nThe bathrooms\n\nThe bathrooms are modern and the showers are hot.\n\nWhat guests say about the staff\n\n\"Family\" is the word guests keep using. One of them caught dengue in Kandy and wrote that the staff helped nurse her back to health with Ayurvedic medicines, on top of what the hospital was already giving her.\n\nOn Booking.com the staff get 9.9 out of 10, the hostel's highest score there. Hostelworld guests give them the same 9.9, and only value for money and security do better, both at a full 10.\n\n“I got dengue in Kandy and the staff at KA helped nurse me back to health with Ayurvedic medicines (on top of what the hospital was already giving me) They are the kindest people and they attract good vibes. I met some of the best people here :)”\n\nMia, USA | Hostelworld, Feb 2026\n\n“Lovely location away from the main road. So close to the beach! The most amazing family who look after you like you're one of their own. Thank you KA!”\n\nClara, United Kingdom | Booking.com\n\n“It's a calm and quiet place, a wonderful staff, caring owners and clean. I had a really good time even i havnt spent much time there. beds are compfy and it has aircon and warm water.”\n\nWolfgang, Austria | Booking.com\n9.8/10\nHostelworld | 66 reviews\n9.4/10\nBooking.com | 39 reviews\n4.8/5\nGoogle | 42 reviews\n\nScores read on 25 Sep 2026.\n\nBreakfast, every day\n\nRotis, fruit, pancakes and eggs, with vegan options.\n\n“Great family owned hostel :-) they are really friendly and helpful! The breakfast always consists of a typical Sri Lankan dish (roti, hoppers,…) which changes every day and additionally a great fruit platter!! Dorms are big, bathrooms are nice with the whole outdoor thing :-)”\n\nElena, Germany | Hostelworld, Mar 2026\nWhat is here\n\nThere's a green garden and a chill zone, and free filtered water you can refill any time. Laundry service is available, and there's a minimarket on site. You can rent a scooter, and it can come with a surf rack. Luggage storage and lockers, too. Reception is open 24 hours.\n\nPets are welcome on request at no charge. Children are not accommodated.\n\nIn your room\nAir conditioning and a fan in every room\nPrivate lockers and personal fridge in every room\nHot showers\nFree WiFi\nAround the house\nFree breakfast\nGarden and chill zone\nFree filtered water\nMinimarket on site\nBicycle parking\nPets allowed on request\nno extra charge\nServices\n24-hour reception\n24-hour security\nLaundry service\nLuggage storage\nTour desk\nAirport transfers\nScooter rental\nsurf rack available\nThe beach\n\nKabalana: a sandy beach break for beginners and intermediates, and The Rock, a reef A-frame for advanced surfers.\n\n0.7–1.1m\n\nChest-high at Kabalana | Mon 21 Sep 2026, 20:30\n\nSwell\n1.3 m at 12.6 s from the south (184°)\nWind\n6.5 km/h from the west, cross-shore\n\nForecast for Kabalana by Rosa\n\nSee today's forecast for Kabalana on Rosa\n\nOpen Rosa\n\n“Owners very hospitable, breakfast in the morning was great, close to kabalana beach so great for surfing”\n\nSaketh, England | Hostelworld, Feb 2026\nOn Instagram\nFollow @kasurfhostel\nGetting here\n\nAhangama, a five-minute walk from Kabalana Beach. Koggala Airport is about 5 km away; Ahangama railway station is a little over 2 km. The property arranges a shuttle.\n\n13:00–23:00\nCheck-in\nby 13:00\nCheck-out\n207/A Welahangoda, Ahangama 80650, Sri Lanka\n\nReception is open 24 hours. Children are not accommodated, and cots and extra beds are not available.\n\nOpen in Google Maps\n+94 77 374 6053\n\nKA Surf Hostel on the map\n\nOpen in Google Maps\n\nKA Surf Hostel\n\nCheck dates\nCheck dates on Booking.com\n→\nCheck dates on Hostelworld\n→\nCheck dates on Agoda\n→\nCall or follow\n+94 77 374 6053\n@kasurfhostel\nFind us\n207/A Welahangoda\nAhangama 80650\nSri Lanka\n\nCheck-in 13:00–23:00 | Check-out by 13:00\n\nKA Surf Hostel, Ahangama | run by a local family\nRatings read on 25 Sep 2026",
+ "axe_1440": [],
+ "axe_390": []
+}

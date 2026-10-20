@@ -1,0 +1,164 @@
+{
+ "slug": "ka-surf-hostel-and-restaurant",
+ "variant": "interactive",
+ "url": "http://127.0.0.1:9315/",
+ "mobile_load_thirdparty": [
+  "fonts.googleapis.com",
+  "fonts.gstatic.com"
+ ],
+ "mobile_load_nonfont_thirdparty": [],
+ "first_screen_actions": [
+  {
+   "t": "Skip to content",
+   "href": "#main",
+   "w": 1,
+   "h": 1,
+   "fixed": "absolute"
+  },
+  {
+   "t": "KA Surf Hostel",
+   "href": "#top",
+   "w": 120,
+   "h": 28,
+   "fixed": "static"
+  },
+  {
+   "t": "Check dates",
+   "href": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/",
+   "w": 272,
+   "h": 48,
+   "fixed": "relative"
+  },
+  {
+   "t": "Call",
+   "href": "tel:+94773746053",
+   "w": 66,
+   "h": 48,
+   "fixed": "static"
+  }
+ ],
+ "overflow": [],
+ "tap": {
+  "trigger": {
+   "t": "Check dates",
+   "href": "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/"
+  },
+  "after": {
+   "url": "http://127.0.0.1:9315/",
+   "sheet_open": false,
+   "links": [],
+   "focus_in": false,
+   "focus": "<button class=\"x\" type=\"button\" id=\"close\">Close</button>"
+  },
+  "navigations": []
+ },
+ "scroll_thirdparty": [],
+ "iframes": [],
+ "rosa_headline": "Forecast for Kabalana by Rosa 0.7–1.1 m Chest-high, swell 13 s from the S, wind 7 km/h cross-shore from the W. Mon 21 0.8–1.1 m Firing Tue 22 0.7–1.1 m Firing Wed 23 0.7–1.0 m Firing Thu 24 0.5–0.7 m Good Fri 25 0.6–0.9 m Good Rosa data from 21 Sep 2026, 19:55, Sri Lanka time.",
+ "blocked": {
+  "iframes_visible": 0,
+  "rosa_links": [
+   "Forecast for Kabalana by Rosa"
+  ],
+  "map_links": 1,
+  "book_links": 17,
+  "forecast_text": "Forecast for Kabalana by Rosa 0.7–1.1 m Chest-high, swell 13 s from the S, wind 7 km/h cross-shore from the W. Mon 21 0.8–1.1 m Firing Tue 22 0.7–1.1 m Firing Wed 23 0.7–1.0 m Firing Thu 24 0.5–0.7 m Good Fri 25 0.6–0.9 m Good Rosa data from 21 Sep 2026, 19:55, Sri Lanka time."
+ },
+ "nojs": {
+  "iframes_visible": 0,
+  "rosa_links": [
+   "See today's forecast for Kabalana on Rosa"
+  ],
+  "map_links": 1,
+  "book_links": 17,
+  "forecast_text": "See today's forecast for Kabalana on Rosa"
+ },
+ "tabs": [
+  {
+   "t": "Skip to content",
+   "outline": "solid 2px rgb(6, 5, 4)",
+   "shadow": "none",
+   "book": false
+  },
+  {
+   "t": "KA Surf Hostel",
+   "outline": "solid 2px rgb(6, 5, 4)",
+   "shadow": "none",
+   "book": false
+  },
+  {
+   "t": "+94 77 374 6053",
+   "outline": "solid 2px rgb(6, 5, 4)",
+   "shadow": "none",
+   "book": false
+  },
+  {
+   "t": "Check dates",
+   "outline": "solid 2px rgb(6, 5, 4)",
+   "shadow": "none",
+   "book": true
+  },
+  {
+   "t": "+94 77 374 6053",
+   "outline": "solid 2px rgb(6, 5, 4)",
+   "shadow": "none",
+   "book": false
+  },
+  {
+   "t": "Photographs of the hostel, scr",
+   "outline": "solid 2px rgb(6, 5, 4)",
+   "shadow": "none",
+   "book": false
+  },
+  {
+   "t": "Check dates\nfor Bunk bed in mi",
+   "outline": "solid 2px rgb(6, 5, 4)",
+   "shadow": "none",
+   "book": true
+  },
+  {
+   "t": "Check dates\nfor Bunk bed in fe",
+   "outline": "solid 2px rgb(6, 5, 4)",
+   "shadow": "none",
+   "book": true
+  }
+ ],
+ "kbd": {
+  "trigger": "Check dates",
+  "open": {
+   "open": false,
+   "focus_in": false,
+   "url": "http://127.0.0.1:9315/"
+  }
+ },
+ "text": "Skip to content\nKA Surf Hostel\n+94 77 374 6053\nCheck dates\nFive minutes from\nKabalana Beach\n\nSurf, chill and feel at home in Ahangama\n\nCheck dates\nor call +94 77 374 6053\n\n9.8\n/10 on Hostelworld, 66 reviews\n9.5/10 on Booking.com, 38 reviews\n4.8/5 on Google, 42 reviews\n\nWhat guests say about the staff\n\n“I got dengue in Kandy and the staff at KA helped nurse me back to health with Ayurvedic medicines (on top of what the hospital was already giving me) They are the kindest people and they attract good vibes. I met some of the best people here :)”\n\nMia, USA, on Hostelworld, February 2026\n\n“Family” is the word guests keep using. One of them caught dengue in Kandy and wrote that the staff helped nurse her back to health with Ayurvedic medicines, on top of what the hospital was already giving her.\n\nOn Booking.com the staff get 9.9 out of 10, the hostel's highest score there. Hostelworld guests give them the same 9.9, and only value for money and security do better, both at a full 10.\n\n“Lovely location away from the main road. So close to the beach! The most amazing family who look after you like you're one of their own. Thank you KA!”\n\nClara, United Kingdom, on Booking.com\n\nDorms and private rooms\n\nMixed, female and male dormitories with bunk beds, plus double rooms and deluxe doubles. Every room has air conditioning and a fan, a private locker and a personal fridge. The bathrooms are modern, some of them open to the sky, and the showers are hot.\n\n“It's a calm and quiet place, a wonderful staff, caring owners and clean. I had a really good time even i havnt spent much time there. beds are compfy and it has aircon and warm water.”\n\nWolfgang, Austria, on Booking.com\n\nBunk bed in mixed dormitory\n1 bunk bed\nCheck dates\nfor Bunk bed in mixed dormitory, 1 bunk bed\nBunk bed in female dormitory\n1 bunk bed\nCheck dates\nfor Bunk bed in female dormitory, 1 bunk bed\nBunk bed in male dormitory\n1 bunk bed\nCheck dates\nfor Bunk bed in male dormitory, 1 bunk bed\nDouble room\n1 extra-large double bed\nCheck dates\nfor Double room, 1 extra-large double bed\nDeluxe double room\n1 extra-large double bed\nCheck dates\nfor Deluxe double room, 1 extra-large double bed\nDeluxe double room\n1 single bed\nCheck dates\nfor Deluxe double room, 1 single bed\nBreakfast changes every morning\n\nBreakfast is included and it is Sri Lankan: rotis, hoppers, pancakes, eggs, a fruit platter, and a vegan option if you need one. It changes daily, which guests mention more often than anything else on the property.\n\n“Great family owned hostel :-) they are really friendly and helpful! The breakfast always consists of a typical Sri Lankan dish (roti, hoppers,…) which changes every day and additionally a great fruit platter!! Dorms are big, bathrooms are nice with the whole outdoor thing :-)”\n\nElena, Germany, on Hostelworld, March 2026\n\nWhat is here\n\nA green garden and a chill zone. Free filtered water you can refill any time. Laundry. A minimarket on site. Scooter rental, with a surf rack if you ask. Luggage storage, lockers, and a 24-hour reception.\n\nPets are welcome on request at no charge. Children are not accommodated.\n\nFree breakfast, Sri Lankan, changes daily\nFree WiFi\nAir conditioning and a fan in every room\nPrivate locker and personal fridge in every room\nHot showers\nGarden and chill zone\nFree filtered water\nScooter rental\nsurf rack available\nLaundry service\nMinimarket on site\nLuggage storage\nTour desk\n24-hour reception\n24-hour security\nAirport transfers\nBicycle parking\nPets allowed on request\nno extra charge\n\nKabalana: a sandy beach break that suits beginners and improvers, with The Rock reef alongside it when the swell is up.\n\n“Owners very hospitable, breakfast in the morning was great, close to kabalana beach so great for surfing”\n\nSaketh, England, on Hostelworld, February 2026\n\nForecast for Kabalana by Rosa\n\n0.7–1.1 m\n\nChest-high, swell 13 s from the S, wind 7 km/h cross-shore from the W.\n\nMon 21\n0.8–1.1 m\nFiring\nTue 22\n0.7–1.1 m\nFiring\nWed 23\n0.7–1.0 m\nFiring\nThu 24\n0.5–0.7 m\nGood\nFri 25\n0.6–0.9 m\nGood\n\nRosa data from 21 Sep 2026, 19:55, Sri Lanka time.\n\nGetting here\n\nAhangama, a five-minute walk from Kabalana Beach. Koggala Airport is about 5 km away; Ahangama railway station is a little over 2 km. The property arranges a shuttle.\n\nNo 207/A, Welhengoda, 80650 Ahangama, Sri Lanka\nOpen in Google Maps\n\nCheck-in from\n13:00\nuntil\n23:00\nCheck-out by\n13:00\n\nReception is open 24 hours. Children are not accommodated, and cots and extra beds are not available.\n\nKA Surf Hostel\n\nCheck dates\n\n+94 77 374 6053\nNo 207/A, Welhengoda,\n80650 Ahangama, Sri Lanka\n\nCheck dates on Hostelworld\nCheck dates on Booking.com\nCheck dates on Agoda\n\nRatings as published on Hostelworld, Booking.com and Google in September 2026.\n\nPhotographs by KA Surf Hostel.",
+ "axe_1440": [
+  {
+   "id": "color-contrast",
+   "impact": "serious",
+   "n": 1,
+   "ex": [
+    ".saketh > .by :: Element has insufficient color contrast of 4.11 (foreground color: #5b5e57, background color: #afcff7, font size: 11.3pt"
+   ]
+  }
+ ],
+ "axe_390": [
+  {
+   "id": "color-contrast",
+   "impact": "serious",
+   "n": 1,
+   "ex": [
+    ".saketh > .by :: Element has insufficient color contrast of 4.11 (foreground color: #5b5e57, background color: #afcff7, font size: 11.3pt"
+   ]
+  },
+  {
+   "id": "scrollable-region-focusable",
+   "impact": "serious",
+   "n": 2,
+   "ex": [
+    "ol :: Element should have focusable content",
+    ".beach :: Element should have focusable content"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,77 @@
+{
+ "url": "http://127.0.0.1:8817/sites/layday-surf-ahangama-v2/mockups/interactive/dist/index.html",
+ "phone": {
+  "loadBytes": 110141,
+  "lcp": 1312,
+  "clsLoad": 0,
+  "scroll": {
+   "H": 10522,
+   "steps": 17,
+   "frames": {
+    "n": 1016,
+    "avgMs": 17.1,
+    "maxMs": 100,
+    "janky": 6
+   }
+  },
+  "clsAfterScroll": 0,
+  "overflowX": 0,
+  "booking": [
+   {
+    "tap": 1,
+    "text": "Check dates",
+    "href": "#book"
+   },
+   {
+    "after": {
+     "scrolled": 2906,
+     "dialogs": 1,
+     "links": [
+      "Check dates on Booking.com -> https://www.booking.com/hotel/lk/layday-surf-ahangama.html [rgb(134, 15, 71)]",
+      "Check dates on Hostelworld -> https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/ [rgb(134, 15, 71)]",
+      "Check dates on Agoda -> https://www.agoda.com/layday-surf-ahangama/hotel/piyadigama-lk.html [rgb(134, 15, 71)]"
+     ],
+     "inputs": [
+      "date:arrival"
+     ]
+    }
+   },
+   {
+    "dated": [
+     "https://www.booking.com/hotel/lk/layday-surf-ahangama.html?checkin=2026-12-01&checkout=2026-12-04&group_adults=1&no_rooms=1&group_children=0",
+     "https://www.booking.com/hotel/lk/layday-surf-ahangama.html?checkin=2026-12-01&checkout=2026-12-04&group_adults=1&no_rooms=1&group_children=0"
+    ]
+   },
+   {
+    "afterEsc": 0
+   }
+  ]
+ },
+ "laptop": {
+  "scroll": {
+   "H": 9161,
+   "steps": 14,
+   "frames": {
+    "n": 801,
+    "avgMs": 16.7,
+    "maxMs": 50,
+    "janky": 1
+   }
+  },
+  "cls": 0,
+  "hover": {
+   "mid": "rgb(117, 12, 62)",
+   "after": "rgb(110, 11, 58) transform 0.14s cubic-bezier(0.23, 1, 0.32, 1), background-color 0.16s"
+  }
+ },
+ "rm": {
+  "H": 10942,
+  "hiddenText": 0,
+  "imgsBroken": 0
+ },
+ "nojs": {
+  "H": 10898,
+  "hiddenText": 0,
+  "imgsBroken": 0
+ }
+}
