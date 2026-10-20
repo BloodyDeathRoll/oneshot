@@ -40,6 +40,8 @@ Workflow graph: Figma → Workflows file → `workflows` page → frame `oneshot
 oneshot/
   PLAN.md                     # this file
   CLAUDE.md                   # instructions for Claude Code sessions in this repo
+  .mcp.json                   # MCP servers every session gets: playwright (a headless browser to look at the page by tool call), figma (Figma's remote server)
+  .claude/skills/             # vendored design skills (tools/vendor-skills.sh, pinned in VENDORED.txt) the designer, creative director and visual critics invoke; .claude/agents/ holds impeccable's sub-agents
   runs/<run_id>.yaml          # one file per run: area, budgets, pins, operator, status (§3)
   playbook.md                 # what a great surf-business site is — shared by all agents
   rubric.md                   # critic scoring, weights, pass thresholds
