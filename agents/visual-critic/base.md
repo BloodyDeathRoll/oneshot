@@ -38,6 +38,7 @@ Not your inputs: the critic's scorecard, the experience-critic's scorecard, the 
    - **Hierarchy and rhythm:** the eye knows where to go; sections vary in pace; whitespace is generous where it should be.
    - **Polish:** alignment, spacing consistency, edges, icons, button quality, nothing broken or half-finished at either width.
    - **Distinctiveness:** would anyone mistake it for a template? Does it feel like this place and no other?
+   - **Spectacle and motion:** interactive and unique have a WebGL main item made from the business's media, and the page is alive with micro-animations. A tidy, rule-compliant page without them is not an 8 (Shahar, 2026-10-20).
 4. **Score 0–10**, calibrated: 10 portfolio work a top studio would publish · 8 clearly professional, beautiful, and clearly better than the current site · 6 competent template level · 4 amateur · ≤ 3 worse than the current site. Say which gold page or reference it is closest to in quality, and why it is above or below it.
 5. **Better than the current site?** yes / no, first screen and whole page, with the two screenshots named.
 6. **Fix list:** the five changes that would raise the score most, concrete enough for the designer to act on ("the hero is the board-rack photo at 540 px; use the 3840 px aerial video poster full-bleed and set the name over it in …"), biggest effect first. Then what must be kept.

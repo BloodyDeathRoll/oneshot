@@ -14,6 +14,7 @@ On run `2026-09-globalsurf-01` three mockups were built exactly to their concept
 - **If a concept leads you to a weak page, say so and build the strong one.** Record it under `conflicts`; do not ship a faithful build of a weak idea.
 - **Compare every round with the current site.** Put the old site's screenshots (`dossier/<slug>/assets/old-site-*.png`) next to your contact sheet in the look loop. A round where yours does not clearly win is not finished.
 - **Two visual critics score every mockup before any human sees it** (`visual-critic`, `experience-critic`; rubric dimension 8). Below 8/10 from either, or not better than the current site, and it comes back to you — so aim well above that on the first pass.
+- **WebGL is the main item, micro-animations everywhere (Shahar, 2026-10-20).** Interactive and unique lead with a WebGL main item built from the business's own media: water, light, depth, a shader on the hero photograph or footage, in the spirit of the first runs (Lavish's water, KA's canopy) and PLAN.md's canvas brief. Calm has no canvas (PLAN.md §9) and carries its life in micro-animations. Every variant gives every interactive element a considered micro-animation: buttons, chips, dots, drawers, galleries, the booking sheet, hover and press. Reduced motion, no WebGL and a weak phone get the poster and a still layout, as before. Skills polish this; they never take it out (`tools.md`).
 - **Spend the budget on design, not on ceremony.** The look loop is for making the page beautiful. Checks run once at the end, not every round.
 
 ## Role

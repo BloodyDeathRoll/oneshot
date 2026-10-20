@@ -110,6 +110,8 @@ One per designer variant, mapped onto `agents/designer/custom.md`'s brief:
 | 2 · interactive | some bells and whistles. |
 | 3 · unique | full blown. |
 
+Interactive and unique each name a **WebGL main item** made from the business's own media (water, light, depth, a shader on the hero photograph or footage) and the micro-animations that run through the page; calm names its micro-animations (Shahar, 2026-10-20: the first runs' WebGL and motion were more interesting than the skills-led round).
+
 Each concept gets:
 
 - **Name** — a short one, the designer and the human will both use it.
