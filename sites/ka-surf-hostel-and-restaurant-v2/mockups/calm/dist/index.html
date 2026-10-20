@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KA Surf Hostel | Five minutes from Kabalana Beach, Ahangama</title>
+<meta name="description" content="A family-run surf hostel in a garden in Ahangama, a five-minute walk from Kabalana Beach. Dorms and private rooms, breakfast every day.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#CCE3D6">
+<link rel="preload" href="fonts/albert-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/kalam.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="img/img-006.webp" imagesrcset="img/img-006-m.webp 456w, img/img-006.webp 576w" imagesizes="(max-width:1000px) 196px, 300px" fetchpriority="high">
+<style>
+/* self-hosted faces (subset latin), preloaded ahead of every photograph, font-display: swap; the fallbacks are Arial size-adjusted per weight to each face's measured width, so the swap barely reflows */
+@font-face{font-family:"Albert fb";src:local("Arial"),local("Liberation Sans"),local("Helvetica");font-weight:400 500;size-adjust:103.7%}
+@font-face{font-family:"Kalam fb";src:local("Arial"),local("Liberation Sans"),local("Helvetica");size-adjust:98.3%}
+@font-face{font-family:"Albert Sans";src:url(fonts/albert-sans.woff2) format("woff2");font-weight:400 500;font-display:swap}
+@font-face{font-family:"Kalam";src:url(fonts/kalam.woff2) format("woff2");font-weight:400;font-display:swap}
+:root{
+  --ground:#F1F2FB; --sheet:#FFFFFF; --mint:#CCE3D6; --mint2:#BFDACB; --mint3:#DCEBE3; --ink:#060504; --ink2:#5A5A69;
+  --papaya:#D23C06; --papaya-press:#B83403;
+  --text:"Albert Sans","Albert fb",system-ui,sans-serif; --hand:"Kalam","Kalam fb",cursive;
+  --r:8px; --ease-out:cubic-bezier(.23,1,.32,1); --ease-in-out:cubic-bezier(.77,0,.175,1); --ease-drawer:cubic-bezier(.32,.72,0,1);
+  --m:clamp(20px,6vw,88px); --pad:clamp(24px,5vw,80px);
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:88px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--ground);color:var(--ink);font:400 18px/1.6 var(--text);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+::selection{background:var(--mint);color:var(--ink)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+p{text-wrap:pretty}
+h1,h2,h3{text-wrap:balance}
+ul{list-style:none;padding:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:var(--r);
+  background:var(--papaya);color:#fff;font:500 17px/1 var(--text);text-decoration:none;border:0;cursor:pointer;white-space:nowrap;
+  transition:transform 140ms var(--ease-out),background-color 160ms ease;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn:active{transform:scale(.97)}
+.btn.soft{background:var(--mint);color:var(--ink)}
+.btn.sheetish{background:var(--sheet);color:var(--ink)}
+@media (hover:hover) and (pointer:fine){.btn:hover{background:var(--papaya-press)}.btn.soft:hover{background:var(--mint2)}.btn.sheetish:hover{background:var(--mint3)}}
+.btn svg{width:20px;height:20px;flex:none}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+button,[role="button"],.dots a{touch-action:manipulation;-webkit-user-select:none;user-select:none}
+img{-webkit-touch-callout:none}
+blockquote footer a{display:inline-block;padding-block:12px;margin-block:-12px}
+.note{font-size:16px;color:var(--ink2)}
+
+/* header: fixed on a laptop; once scrolled only the booking button stays */
+.top{position:fixed;inset:0 0 auto 0;z-index:20;display:grid;grid-template-columns:45fr 55fr;align-items:center;height:80px;pointer-events:none}
+.top > *{pointer-events:auto}
+.top .l{display:flex;align-items:center;padding-left:var(--m)}
+.top .r{display:flex;align-items:center;justify-content:flex-end;gap:28px;padding-right:var(--m)}
+.top .mark{display:inline-flex;align-items:center;min-height:44px;font:500 19px/1 var(--text);text-decoration:none;letter-spacing:-.01em}
+.top .r a:not(.btn){display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font-size:16px}
+.top .btn{min-height:44px;padding:0 20px;font-size:16px}
+.top .l,.top .r a:not(.btn){transition:opacity 200ms ease}
+.top.stuck .l,.top.stuck .r a:not(.btn){opacity:0;pointer-events:none}
+
+/* first screen: three of KA's prints standing in the patio mint, the sentence beside them */
+.hero{display:grid;grid-template-columns:45fr 55fr;min-height:100svh}
+.field{background:var(--mint);display:grid;place-items:center;padding:96px 24px 40px;overflow:hidden}
+.trio{position:relative;width:300px;height:400px;margin-left:8px}
+.trio img{position:absolute;border-radius:var(--r);object-fit:cover;background:var(--mint2) center/cover}
+.trio .a{inset:0;width:300px;height:400px;z-index:1;background-image:url(img/img-006-q.webp)}
+.trio .b{width:176px;height:235px;left:-116px;top:-44px;z-index:0}
+.trio .c{width:208px;height:277px;right:-108px;bottom:-44px;z-index:2;outline:8px solid var(--mint)}
+.say{display:grid;place-content:center;justify-items:start;padding:112px var(--pad) 48px}
+.say h1{font:500 clamp(40px,4.5vw,66px)/1.04 var(--text);letter-spacing:-.032em;max-width:13ch}
+.say .sub{margin-top:22px;font-size:21px;color:var(--ink2);max-width:30ch}
+.say .btn{margin-top:36px;min-height:56px;padding:0 32px;font-size:18px}
+.proof{margin-top:20px;font-size:15px;color:var(--ink2)}
+.proof b{color:var(--ink);font-weight:500}
+
+/* split chapters: one sticky stage whose print quietly changes with the section beside it */
+.split{display:grid;grid-template-columns:45fr 55fr}
+.split > *{min-width:0}
+.stage{grid-column:1;grid-row:1 / span 9;position:sticky;top:0;height:100svh;background:var(--mint);align-self:start}
+.stage .print{position:absolute;left:50%;top:50%;width:384px;height:512px;margin:-216px 0 0 -192px;object-fit:cover;border-radius:var(--r);
+  opacity:0;transform:scale(.985);transition:opacity 600ms var(--ease-in-out),transform 800ms var(--ease-out);background:var(--mint2)}
+.stage .print.on{opacity:1;transform:none}
+.stage .ig{position:absolute;left:50%;top:50%;width:384px;height:512px;margin:-216px 0 0 -192px;border-radius:var(--r);overflow:hidden;opacity:0;transition:opacity 600ms var(--ease-in-out)}
+.stage .ig.on{opacity:1}
+.stage .ig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 900ms var(--ease-in-out)}
+.stage .ig img.on{opacity:1}
+.chap{grid-column:2}
+.band{display:none}
+.read{padding:96px var(--pad) 88px}
+.read > *{max-width:46ch}
+.read > .slides,.read > .dots{max-width:none}
+h2{font:400 clamp(42px,3.8vw,56px)/1.1 var(--hand);letter-spacing:-.01em}
+h3{font:500 20px/1.3 var(--text);letter-spacing:-.01em}
+.read > p{margin-top:22px}
+.read > h2 + p{margin-top:28px}
+
+/* rooms */
+.slides{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:44px;width:min(100%,620px);scrollbar-width:none;overscroll-behavior-x:contain;border-radius:var(--r)}
+.slides::-webkit-scrollbar{display:none}
+.slides img{flex:none;width:432px;height:576px;object-fit:cover;border-radius:var(--r);scroll-snap-align:start;background:var(--mint3)}
+.dots{display:flex;margin-top:8px;margin-left:-18px}
+.dots a{display:grid;place-items:center;width:44px;height:44px}
+.dots a::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--ink);opacity:.2;transition:opacity 200ms ease,transform 200ms var(--ease-out)}
+.dots a[aria-current="true"]::after{opacity:1;transform:scale(1.15)}
+.beds{margin-top:36px;display:grid;gap:18px}
+.beds p{margin-top:4px}
+.read .btn{margin-top:32px}
+blockquote{margin-top:56px}
+blockquote p{font-size:24px;line-height:1.45;letter-spacing:-.01em}
+blockquote footer{margin-top:14px;font-size:15px;color:var(--ink2)}
+blockquote footer a{text-decoration:none}
+
+/* beach */
+.spot{margin-top:28px;font-size:24px;line-height:1.45}
+.pair{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:600px !important}
+.pair img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r);background:var(--mint3)}
+
+/* breakfast: the one moment that breaks the split */
+.plate{background:var(--mint);padding:140px var(--m)}
+.plate .in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:clamp(40px,6vw,96px);align-items:center}
+.plate .in > *{min-width:0}
+.plate .pics{display:flex;align-items:flex-end;gap:16px}
+.plate .sq{width:432px;height:432px;object-fit:cover;border-radius:var(--r)}
+.plate .reel{width:168px;height:224px;object-fit:cover;border-radius:var(--r)}
+.plate .txt{max-width:40ch}
+.plate .txt > p{margin-top:24px;font-size:24px;line-height:1.45}
+.plate blockquote{margin-top:40px}
+.plate blockquote p{font-size:20px}
+
+/* guests: the second full-width moment */
+.guests{padding:120px var(--m)}
+.guests .in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:432px 1fr;gap:clamp(40px,6vw,96px);align-items:start}
+.guests .in > *{min-width:0}
+.guests .long{width:432px;height:576px;object-fit:cover;border-radius:var(--r);position:sticky;top:100px;background:var(--mint3)}
+.guests .mia{margin-top:32px}
+.guests .mia p{font-size:28px;line-height:1.4;letter-spacing:-.015em;max-width:30ch}
+.guests .more{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:24px 48px}
+.guests .more > p{max-width:46ch}
+.guests .more blockquote{margin-top:0;grid-column:1/-1;max-width:40ch}
+.guests .more .scores,.guests .more .note{grid-column:1/-1}
+.guests .more .scores{margin-top:8px}
+/* amenities: short grouped lines */
+.groups{margin-top:40px;display:grid;gap:24px}
+.groups p{margin-top:6px;line-height:1.55}
+.groups p span{color:var(--ink2);padding:0 .35em}
+
+/* guests */
+.scores{margin-top:40px;display:flex;flex-wrap:wrap;gap:8px;max-width:none !important}
+.scores a{display:flex;flex-direction:column;gap:2px;padding:14px 18px;border-radius:var(--r);background:var(--sheet);text-decoration:none;transition:background-color 160ms ease}
+@media (hover:hover) and (pointer:fine){.scores a:hover{background:var(--mint3)}}
+.scores b{font:500 24px/1.1 var(--text);font-variant-numeric:tabular-nums}
+.scores span{font-size:15px;color:var(--ink2)}
+
+/* instagram */
+.thumbs{margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:480px}
+.thumbs a{display:block;border-radius:var(--r);overflow:hidden;background:var(--mint3)}
+.thumbs img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform 300ms var(--ease-out)}
+@media (hover:hover) and (pointer:fine){.thumbs a:hover img{transform:scale(1.04)}}
+
+/* getting here: address in display rows */
+.here{padding:140px var(--m);display:grid;grid-template-columns:45fr 55fr}
+.here > *{min-width:0}
+.here .copy{padding-right:var(--pad);max-width:calc(40ch + var(--pad))}
+.here .copy p{margin-top:22px}
+.here .rows{display:grid;gap:8px;align-content:start}
+.here .rows > *{display:block;border-radius:var(--r);padding:22px 30px;font:500 clamp(21px,1.8vw,27px)/1.3 var(--text);letter-spacing:-.015em;text-decoration:none}
+.here .rows > :nth-child(1){background:var(--mint)}
+.here .rows > :nth-child(2){background:var(--mint3)}
+.here .rows > :nth-child(3){background:var(--mint)}
+.here .rows small{display:block;margin-top:6px;font:400 15px/1.3 var(--text);color:var(--ink2);letter-spacing:0}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+
+/* footer */
+.foot{background:var(--mint);padding:72px var(--m) 40px}
+.foot .in{max-width:1200px;margin:0 auto}
+.foot .name{font:400 clamp(52px,6vw,88px)/1 var(--hand);letter-spacing:-.01em}
+.foot .grid{margin-top:36px;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:48px}
+.foot .grid h3{margin-bottom:16px}
+.foot .stack{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.foot .stack .btn{min-width:270px;justify-content:space-between}
+.foot .stack .btn:has(svg){justify-content:flex-start}
+.foot address{font-style:normal}
+.foot .small{margin-top:44px;font-size:15px;color:var(--ink2);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+
+/* booking: a modal dialog (keeps focus), dropping from the header on a laptop, rising from the foot on a phone */
+dialog.sheet{border:0;padding:0;margin:88px var(--m) auto auto;width:min(520px,calc(100vw - 2*var(--m)));max-height:calc(100svh - 104px);border-radius:var(--r);background:var(--sheet);color:var(--ink);
+  box-shadow:0 24px 48px -12px rgba(6,5,4,.22),0 2px 6px rgba(6,5,4,.08);overscroll-behavior:contain;transform-origin:top right;
+  transition:opacity 220ms var(--ease-out),transform 260ms var(--ease-out),overlay 260ms allow-discrete,display 260ms allow-discrete}
+dialog.sheet:not([open]){opacity:0;transform:translateY(-12px);transition-duration:160ms}
+@starting-style{dialog.sheet[open]{opacity:0;transform:translateY(-12px)}}
+dialog.sheet::backdrop{background:rgba(6,5,4,.28);transition:opacity 260ms ease,overlay 260ms allow-discrete,display 260ms allow-discrete}
+dialog.sheet:not([open])::backdrop{opacity:0}
+@starting-style{dialog.sheet[open]::backdrop{opacity:0}}
+.sheet .in{padding:30px 30px 26px}
+.sheet .hd{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.sheet h2{font-size:40px}
+.x{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:0;background:var(--ground);cursor:pointer;color:var(--ink);transition:transform 140ms var(--ease-out)}
+.x:active{transform:scale(.94)}
+.x svg{width:18px;height:18px}
+.kind{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.kind label{position:relative;display:block;cursor:pointer}
+.kind input{position:absolute;opacity:0}
+.kind .opt{display:flex;gap:12px;align-items:center;padding:10px;border-radius:var(--r);background:var(--ground);transition:background-color 160ms ease,box-shadow 160ms ease}
+.kind .opt img{width:48px;height:64px;object-fit:cover;border-radius:6px}
+.kind .opt b{display:block;font-weight:500}
+.kind .opt span{font-size:14px;color:var(--ink2);line-height:1.35}
+.kind input:checked + .opt{background:var(--mint3);box-shadow:inset 0 0 0 2px var(--ink)}
+.kind input:focus-visible + .opt{outline:2px solid var(--ink);outline-offset:2px}
+.bedsel{margin-top:14px;min-height:64px}
+.bedsel p{font-size:16px;line-height:1.45}
+.bedsel.swap{animation:bedsin 220ms var(--ease-out)}
+@keyframes bedsin{from{opacity:0;transform:translateY(4px)}}
+.sheet .rates{margin-top:18px;font-size:15px;color:var(--ink2)}
+.sheet .go{margin-top:18px;display:grid;gap:8px}
+.sheet .go .btn{justify-content:space-between;width:100%}
+.sheet .go .btn.soft{background:var(--ground)}
+@media (hover:hover) and (pointer:fine){.sheet .go .btn.soft:hover{background:var(--mint3)}}
+
+/* pictures rise once (desktop, script-only) */
+.rise{opacity:0;transform:translateY(24px)}
+.rise.in{opacity:1;transform:none;transition:opacity 600ms var(--ease-out),transform 700ms var(--ease-out);transition-delay:var(--d,0ms)}
+
+.bar{display:none}
+
+@media (max-width:1100px){.top .r a:not(.btn){display:none}}
+@media (max-width:1000px){
+  html{scroll-padding-top:16px;scroll-padding-bottom:84px}
+  body{padding-bottom:76px}
+  .top{position:absolute;grid-template-columns:1fr auto;height:64px}
+  .top .r{padding-right:16px}.top .l{padding-left:16px}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .field{padding:72px 16px 36px;min-height:0}
+  .trio{width:196px;height:261px;margin-left:-96px}
+  .trio .a{width:196px;height:261px}
+  .trio .b{display:none}
+  .trio .c{width:136px;height:181px;right:-96px;bottom:-20px;outline:6px solid var(--mint)}
+  .say{padding:30px 16px 40px;justify-items:stretch;width:100%;max-width:680px;margin:0 auto}
+  .say h1{font-size:clamp(36px,9.6vw,48px);max-width:none}
+  .say .sub{font-size:18px;margin-top:14px}
+  .say .btn{width:100%;margin-top:26px}
+  .split{display:block}
+  .stage{display:none}
+  /* the phone's hold-still: the print stays put while its text slides up over it */
+  .chap{position:relative}
+  .band{display:grid;place-items:center;position:sticky;top:0;height:58svh;background:var(--mint);z-index:0}
+  .band img{width:228px;height:304px;object-fit:cover;border-radius:var(--r);background:var(--mint2)}
+  .read{position:relative;z-index:1;background:var(--ground);padding:48px 16px 72px;min-height:0;border-radius:16px 16px 0 0;margin-top:-16px;max-width:none}
+  .read > *{max-width:640px}
+  h2{font-size:40px}
+  .slides{width:100%}
+  .slides img{width:282px;height:376px}
+  blockquote p{font-size:21px}
+  .guests{padding:64px 16px}
+  .guests .in{grid-template-columns:1fr;gap:28px;max-width:680px}
+  .guests .long{position:static;width:min(100%,360px);height:auto;aspect-ratio:3/4}
+  .guests .mia p{font-size:22px}
+  .guests .more{grid-template-columns:1fr}
+  .plate{padding:72px 16px}
+  .plate .in{grid-template-columns:1fr;gap:32px}
+  .plate .sq{width:calc(100% - 120px - 12px);height:auto;aspect-ratio:1}
+  .plate .reel{width:120px;height:160px}
+  .plate .pics{gap:12px}
+  .plate .txt > p{font-size:21px}
+  .spot{font-size:21px}
+  .here{grid-template-columns:1fr;padding:72px 16px;gap:36px;max-width:680px;margin:0 auto}
+  .here .copy{padding-right:0}
+  .here .rows > *{padding:20px;font-size:20px}
+  .foot{padding:72px 16px 48px}
+  .foot .grid{grid-template-columns:1fr;gap:40px}
+  .foot .stack .btn{width:100%;min-width:0}
+  dialog.sheet{margin:auto 0 0 0;width:100%;max-width:100%;max-height:90svh;border-radius:16px 16px 0 0;
+    transition:transform 420ms var(--ease-drawer),overlay 420ms allow-discrete,display 420ms allow-discrete}
+  dialog.sheet:not([open]){opacity:1;transform:translateY(100%);transition-duration:240ms}
+  @starting-style{dialog.sheet[open]{opacity:1;transform:translateY(100%)}}
+  .sheet .in{padding:24px 16px calc(24px + env(safe-area-inset-bottom))}
+  .kind{grid-template-columns:1fr}
+  .bar{display:flex;gap:8px;position:fixed;inset:auto 0 0 0;z-index:15;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--ground);
+    box-shadow:0 -8px 24px -12px rgba(6,5,4,.18);transition:transform 260ms var(--ease-drawer)}
+  .bar.waiting{transform:translateY(110%)}
+  .bar .btn{flex:1;min-height:52px}
+  .bar .call{flex:none;width:52px;padding:0;background:var(--mint);color:var(--ink)}
+}
+@media (max-width:600px){.top .r .btn{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .stage .print,.stage .ig,.stage .ig img,.thumbs img{transition:none}
+  dialog.sheet,dialog.sheet::backdrop{transition-property:opacity,overlay,display}
+  dialog.sheet:not([open]),dialog.sheet[open]{transform:none}
+  @starting-style{dialog.sheet[open]{transform:none;opacity:0}}
+}
+/* tablet: header and footer on the content's centred column */
+@media (min-width:601px) and (max-width:1000px){.top .l{padding-left:calc((100vw - 680px)/2 + 16px)}.top .r{padding-right:calc((100vw - 680px)/2 + 16px)}.foot .in,.plate .in{max-width:648px}.read{padding-left:calc((100vw - 680px)/2 + 16px);padding-right:calc((100vw - 680px)/2 + 16px)}}
+</style>
+</head>
+<body>
+<header class="top" id="top-bar">
+  <div class="l"><a class="mark" href="#top">KA Surf Hostel</a></div>
+  <nav class="r" aria-label="Sections">
+    <a href="#rooms">Rooms</a><a href="#beach">Kabalana</a><a href="#breakfast">Breakfast</a><a href="#family">Guests</a><a href="#getting-here">Getting here</a>
+    <a class="btn" href="https://www.booking.com/hotel/lk/ka-surf-hostel.html" data-book>Check dates</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="field">
+      <div class="trio">
+        <img class="b" src="img/img-003-s.webp" width="360" height="480" alt="A hand holding a fruit plate of papaya, watermelon, passion fruit, pineapple and banana">
+        <img class="a" src="img/img-006.webp" srcset="img/img-006-m.webp 456w, img/img-006.webp 576w" sizes="(max-width:1000px) 196px, 300px" width="576" height="768" alt="Two small cottages under coconut palms and banana trees, on grass, under a blue sky" fetchpriority="high">
+        <img class="c" src="img/img-001-s.webp" width="360" height="480" alt="A private room with whitewashed plank walls and a double bed with a blue runner, the door open to the garden">
+      </div>
+    </div>
+    <div class="say">
+      <h1>Five minutes from Kabalana Beach</h1>
+      <p class="sub">Surf, chill and feel at home in Ahangama</p>
+      <a class="btn" href="https://www.booking.com/hotel/lk/ka-surf-hostel.html" data-book>Check dates</a>
+      <p class="proof"><b>9.8/10 on Hostelworld</b> | 66 reviews | Sep 2026</p>
+    </div>
+  </section>
+
+  <div class="split">
+    <div class="stage" aria-hidden="true">
+      <img class="print on" data-for="rooms" src="img/img-004.webp" width="576" height="768" alt="">
+      <img class="print" data-for="beach" src="img/img-021.webp" width="480" height="640" loading="lazy" alt="">
+    </div>
+
+    <section class="chap" id="rooms" aria-labelledby="h-rooms">
+      <div class="band"><img src="img/img-004-m.webp" width="456" height="608" alt="The dorm: grey-green timber bunks with white linen and blue runners, a corrugated ceiling and a fan"></div>
+      <div class="read">
+        <h2 id="h-rooms">Dorms and private rooms</h2>
+        <p>A family runs this place, and they set out to make you feel at home from the moment you arrive. Kabalana Beach is a five-minute walk.</p>
+        <p>Dorms if you want the company, private rooms if you don't.</p>
+        <p>Mixed, female and male dormitories with bunk beds, plus double rooms and deluxe doubles. Every room has air conditioning and a fan, private lockers and a personal fridge. The bathrooms are modern and the showers are hot.</p>
+        <div class="slides" id="room-slides" tabindex="0" aria-label="Private rooms and bathrooms, four photographs">
+          <img id="rs-1" src="img/img-007.webp" width="576" height="768" loading="lazy" alt="A cottage with its door open on a bed, two pale-mint chairs on the patio">
+          <img id="rs-2" src="img/img-001.webp" width="576" height="768" loading="lazy" alt="A private room with whitewashed plank walls, a double bed with a blue runner, the door open to the garden">
+          <img id="rs-3" src="img/img-005.webp" width="576" height="768" loading="lazy" alt="The open-air bathroom: glass roof on a steel frame, black shower wall, round basin and plants">
+          <img id="rs-4" src="img/img-008.webp" width="576" height="768" loading="lazy" alt="A bathroom with a round basin, a window full of banana leaves and a black shower wall">
+        </div>
+        <nav class="dots" aria-label="Choose a photograph">
+          <a href="#rs-1" aria-current="true" aria-label="Photograph 1 of 4, a cottage door open on a bed"></a>
+          <a href="#rs-2" aria-label="Photograph 2 of 4, a private room"></a>
+          <a href="#rs-3" aria-label="Photograph 3 of 4, the open-air bathroom"></a>
+          <a href="#rs-4" aria-label="Photograph 4 of 4, a bathroom"></a>
+        </nav>
+        <div class="beds">
+          <div><h3>Dorms</h3><p>Bunk bed in a mixed, female or male dormitory | 1 bunk bed</p></div>
+          <div><h3>Private rooms</h3><p>Double room | 1 extra-large double bed</p><p>Deluxe double room | 1 extra-large double bed, or 1 single bed</p></div>
+        </div>
+        <p class="note">Rates change with the dates, and the booking links below show what is actually available.</p>
+        <a class="btn" href="https://www.booking.com/hotel/lk/ka-surf-hostel.html" data-book>Check dates</a>
+        <blockquote>
+          <p>“It's a calm and quiet place, a wonderful staff, caring owners and clean. I had a really good time even i havnt spent much time there. beds are compfy and it has aircon and warm water.”</p>
+          <footer>Wolfgang, Austria | <a href="https://www.booking.com/hotel/lk/ka-surf-hostel.html">Booking.com</a></footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="chap" id="beach" aria-labelledby="h-beach">
+      <div class="band"><img src="img/img-021.webp" width="480" height="640" loading="lazy" alt="Blue and white surfboards standing in a rack on the sand"></div>
+      <div class="read">
+        <h2 id="h-beach">Kabalana</h2>
+        <p class="spot">Kabalana: a sandy beach break for beginners and intermediates, and The Rock, a reef A-frame for advanced surfers.</p>
+        <div class="pair" data-rise="img">
+          <img src="img/img-020.webp" width="480" height="640" loading="lazy" alt="A man with cyan and white soft-top surfboards on the beach">
+          <img src="img/img-016.webp" width="480" height="640" loading="lazy" alt="Low sun on the sea through palm fronds">
+        </div>
+        <blockquote>
+          <p>“Owners very hospitable, breakfast in the morning was great, close to kabalana beach so great for surfing”</p>
+          <footer>Saketh, England | <a href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/">Hostelworld</a>, Feb 2026</footer>
+        </blockquote>
+      </div>
+    </section>
+  </div>
+
+  <section class="plate" id="breakfast" aria-labelledby="h-breakfast">
+    <div class="in">
+      <div class="pics" data-rise="img">
+        <img class="sq" src="img/img-003-sq.webp" width="576" height="576" loading="lazy" alt="A hand holding a fruit plate of papaya, watermelon, passion fruit, pineapple and banana">
+        <a href="https://www.instagram.com/kasurfhostel/reel/DUDRxbRD153/" aria-label="KA's reel of a rice-and-curry table, on Instagram"><img class="reel" src="img/img-013.webp" width="361" height="481" loading="lazy" alt="Rice and curry dishes on a table, seen from above"></a>
+      </div>
+      <div class="txt">
+        <h2 id="h-breakfast">Breakfast, every day</h2>
+        <p>Rotis, fruit, pancakes and eggs, with vegan options.</p>
+        <blockquote>
+          <p>“Great family owned hostel :-) they are really friendly and helpful! The breakfast always consists of a typical Sri Lankan dish (roti, hoppers,…) which changes every day and additionally a great fruit platter!! Dorms are big, bathrooms are nice with the whole outdoor thing :-)”</p>
+          <footer>Elena, Germany | <a href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/">Hostelworld</a>, Mar 2026</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="guests" id="family" aria-labelledby="h-family">
+    <div class="in">
+      <img class="long" src="img/img-002.webp" width="576" height="768" loading="lazy" alt="About ten guests around the long table at night under the columned veranda, on a terracotta floor">
+      <div class="g">
+        <h2 id="h-family">What guests say about the staff</h2>
+        <blockquote class="mia">
+          <p>“I got dengue in Kandy and the staff at KA helped nurse me back to health with Ayurvedic medicines (on top of what the hospital was already giving me) They are the kindest people and they attract good vibes. I met some of the best people here :)”</p>
+          <footer>Mia, USA | <a href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/">Hostelworld</a>, Feb 2026</footer>
+        </blockquote>
+        <div class="more"><p>"Family" is the word guests keep using. One of them caught dengue in Kandy and wrote that the staff helped nurse her back to health with Ayurvedic medicines, on top of what the hospital was already giving her.</p>
+        <p>On Booking.com the staff get 9.9 out of 10, the hostel's highest score there. Hostelworld guests give them the same 9.9, and only value for money and security do better, both at a full 10.</p>
+        <blockquote>
+          <p>“Lovely location away from the main road. So close to the beach! The most amazing family who look after you like you're one of their own. Thank you KA!”</p>
+          <footer>Clara, United Kingdom | <a href="https://www.booking.com/hotel/lk/ka-surf-hostel.html">Booking.com</a></footer>
+        </blockquote>
+        <div class="scores" aria-label="Ratings, read 25 Sep 2026">
+          <a href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/"><b>9.8/10</b><span>Hostelworld | 66 reviews</span></a>
+          <a href="https://www.booking.com/hotel/lk/ka-surf-hostel.html"><b>9.4/10</b><span>Booking.com | 39 reviews</span></a>
+          <a href="https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en"><b>4.8/5</b><span>Google | 42 reviews</span></a>
+        </div>
+        <p class="note" style="margin-top:12px">Scores read on 25 Sep 2026.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="split">
+    <div class="stage" aria-hidden="true">
+      <img class="print on" data-for="here-is" src="img/img-005.webp" width="576" height="768" loading="lazy" alt="">
+      <a class="ig" data-for="instagram" href="https://www.instagram.com/kasurfhostel/" tabindex="-1">
+        <img class="on" src="img/img-020.webp" width="480" height="640" loading="lazy" alt="">
+        <img src="img/img-016.webp" width="480" height="640" loading="lazy" alt="">
+        <img src="img/img-021.webp" width="480" height="640" loading="lazy" alt="">
+        <img src="img/img-018.webp" width="480" height="640" loading="lazy" alt="">
+        <img src="img/img-022.webp" width="480" height="640" loading="lazy" alt="">
+      </a>
+    </div>
+
+    <section class="chap" id="here-is" aria-labelledby="h-here">
+      <div class="band"><img src="img/img-005-m.webp" width="456" height="608" loading="lazy" alt="The open-air bathroom: glass roof on a steel frame, black shower wall, round basin and plants"></div>
+      <div class="read">
+        <h2 id="h-here">What is here</h2>
+        <p>There's a green garden and a chill zone, and free filtered water you can refill any time. Laundry service is available, and there's a minimarket on site. You can rent a scooter, and it can come with a surf rack. Luggage storage and lockers, too. Reception is open 24 hours.</p>
+        <p>Pets are welcome on request at no charge. Children are not accommodated.</p>
+        <div class="groups">
+          <div><h3>In your room</h3><p>Air conditioning and a fan in every room<span>|</span>Private lockers and personal fridge in every room<span>|</span>Hot showers<span>|</span>Free WiFi</p></div>
+          <div><h3>Around the house</h3><p>Free breakfast<span>|</span>Garden and chill zone<span>|</span>Free filtered water<span>|</span>Minimarket on site<span>|</span>Bicycle parking<span>|</span>Pets allowed on request, no extra charge</p></div>
+          <div><h3>Services</h3><p>24-hour reception<span>|</span>24-hour security<span>|</span>Laundry service<span>|</span>Luggage storage<span>|</span>Tour desk<span>|</span>Airport transfers<span>|</span>Scooter rental, surf rack available</p></div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="chap" id="instagram" aria-labelledby="h-ig">
+      <div class="read">
+        <h2 id="h-ig">On Instagram</h2>
+        <p>The boards, the beach and the table, as KA posts them.</p>
+        <div class="thumbs" data-rise="a">
+          <a href="https://www.instagram.com/kasurfhostel/p/DCGDL-aiN-t/"><img src="img/img-020-s.webp" width="360" height="480" loading="lazy" alt="Instagram post: a man with cyan and white soft-top boards on the beach"></a>
+          <a href="https://www.instagram.com/kasurfhostel/p/DDIzgFRItN5/"><img src="img/img-016-s.webp" width="360" height="480" loading="lazy" alt="Instagram post: low sun on the sea through palm fronds"></a>
+          <a href="https://www.instagram.com/kasurfhostel/p/DCGDKyRCw9Q/"><img src="img/img-021-s.webp" width="360" height="480" loading="lazy" alt="Instagram post: surfboards in a rack on the sand"></a>
+          <a href="https://www.instagram.com/kasurfhostel/reel/DUDRxbRD153/"><img src="img/img-013-s.webp" width="360" height="480" loading="lazy" alt="Instagram reel: rice and curry dishes on a table, from above"></a>
+          <a href="https://www.instagram.com/kasurfhostel/p/DCGDO2rC8p9/"><img src="img/img-018-s.webp" width="360" height="480" loading="lazy" alt="Instagram post: the beach with thatched shades and surfers in the water"></a>
+          <a href="https://www.instagram.com/kasurfhostel/p/DCGDJdoCPy7/"><img src="img/img-022-s.webp" width="360" height="480" loading="lazy" alt="Instagram post: surfers carrying boards on the beach"></a>
+          <a href="https://www.instagram.com/kasurfhostel/p/DCGDNcDiNsr/"><img src="img/img-019-s.webp" width="360" height="480" loading="lazy" alt="Instagram post: people on the beach by the thatched shades"></a>
+          <a href="https://www.instagram.com/kasurfhostel/p/DCGDGztCo4-/"><img src="img/img-023-s.webp" width="360" height="480" loading="lazy" alt="Instagram post: a quiet stretch of beach and sea"></a>
+          <a href="https://www.instagram.com/kasurfhostel/p/DCGDGYViwU4/"><img src="img/img-024-s.webp" width="360" height="480" loading="lazy" alt="Instagram post: a surfer with a board on the rocks"></a>
+        </div>
+        <a class="btn soft" href="https://www.instagram.com/kasurfhostel/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Follow @kasurfhostel</a>
+      </div>
+    </section>
+  </div>
+
+  <section class="here" id="getting-here" aria-labelledby="h-get">
+    <div class="copy">
+      <h2 id="h-get">Getting here</h2>
+      <p>Ahangama, a five-minute walk from Kabalana Beach. Koggala Airport is about 5 km away; Ahangama railway station is a little over 2 km. The property arranges a shuttle.</p>
+      <p class="note">Reception is open 24 hours. Children are not accommodated, and cots and extra beds are not available.</p>
+    </div>
+    <div>
+      <div class="rows">
+        <p>207/A Welahangoda, Ahangama 80650, Sri Lanka<small>The address on Google Maps</small></p>
+        <p>Check-in 13:00–23:00 | Check-out by 13:00<small>Reception is open 24 hours</small></p>
+        <a href="tel:+94773746053">+94 77 374 6053<small>Call the family</small></a>
+      </div>
+      <div class="acts">
+        <a class="btn soft" href="https://www.google.com/maps/search/KA%20surf%20hostel%20and%20restaurant/@5.9794134,80.350836,17z?hl=en"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Open in Google Maps</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="in">
+    <p class="name">KA Surf Hostel</p>
+    <div class="grid">
+      <div>
+        <h3>Check dates</h3>
+        <div class="stack">
+          <a class="btn" href="https://www.booking.com/hotel/lk/ka-surf-hostel.html">Check dates on Booking.com <span aria-hidden="true">→</span></a>
+          <a class="btn sheetish" href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/">Check dates on Hostelworld <span aria-hidden="true">→</span></a>
+          <a class="btn sheetish" href="https://www.agoda.com/en-in/ka-surf-hostel-h61738910/hotel/ahangama-lk.html">Check dates on Agoda <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div>
+        <h3>Call or follow</h3>
+        <div class="stack">
+          <a class="btn sheetish" href="tel:+94773746053"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2L20 15.5V19a1.5 1.5 0 0 1-1.6 1.5A16.5 16.5 0 0 1 3.5 5.6 1.5 1.5 0 0 1 5 4z"/></svg>+94 77 374 6053</a>
+          <a class="btn sheetish" href="https://www.instagram.com/kasurfhostel/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@kasurfhostel</a>
+        </div>
+      </div>
+      <div>
+        <h3>Find us</h3>
+        <address>207/A Welahangoda<br>Ahangama 80650<br>Sri Lanka</address>
+        <p style="margin-top:16px">Check-in 13:00–23:00 | Check-out by 13:00</p>
+      </div>
+    </div>
+    <div class="small"><span>KA Surf Hostel, Ahangama | run by a local family</span><span>Ratings read on 25 Sep 2026</span></div>
+  </div>
+</footer>
+
+<div class="bar">
+  <a class="btn" href="https://www.booking.com/hotel/lk/ka-surf-hostel.html" data-book>Check dates</a>
+  <a class="btn call" href="tel:+94773746053" aria-label="Call +94 77 374 6053"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2L20 15.5V19a1.5 1.5 0 0 1-1.6 1.5A16.5 16.5 0 0 1 3.5 5.6 1.5 1.5 0 0 1 5 4z"/></svg></a>
+</div>
+
+<dialog class="sheet" id="book" aria-labelledby="h-book">
+  <div class="in">
+    <div class="hd">
+      <h2 id="h-book">Check dates</h2>
+      <button class="x" type="button" data-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="kind" role="radiogroup" aria-label="Which kind of bed">
+      <label><input type="radio" name="kind" value="dorm" checked><span class="opt"><img src="img/img-004-s.webp" alt=""><span><b>A dorm bed</b><span>Mixed, female or male dormitory</span></span></span></label>
+      <label><input type="radio" name="kind" value="private"><span class="opt"><img src="img/img-001-s.webp" alt=""><span><b>A private room</b><span>Double or deluxe double</span></span></span></label>
+    </div>
+    <div class="bedsel" data-kind="dorm"><p>Bunk bed in a mixed, female or male dormitory | 1 bunk bed</p></div>
+    <div class="bedsel" data-kind="private" hidden><p>Double room | 1 extra-large double bed</p><p>Deluxe double room | 1 extra-large double bed, or 1 single bed</p></div>
+    <p class="rates">Rates change with the dates, and the booking links below show what is actually available.</p>
+    <div class="go">
+      <a class="btn" href="https://www.booking.com/hotel/lk/ka-surf-hostel.html">Check dates on Booking.com <span aria-hidden="true">→</span></a>
+      <a class="btn soft" href="https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/">Check dates on Hostelworld <span aria-hidden="true">→</span></a>
+      <a class="btn soft" href="https://www.agoda.com/en-in/ka-surf-hostel-h61738910/hotel/ahangama-lk.html">Check dates on Agoda <span aria-hidden="true">→</span></a>
+      <a class="btn soft" href="tel:+94773746053">Call +94 77 374 6053 <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</dialog>
+
+<script>
+/* About 2.5 KB. Every "Check dates" is a real link to Booking.com (the dossier's booking engine); with
+   <dialog> it opens the sheet instead. The rest: the stage's print follows the section, the dots follow
+   the slideshow, the phone bar waits for the hero's own button to leave, pictures rise once on a laptop. */
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,wide=matchMedia('(min-width: 1001px)');
+  var dlg=document.getElementById('book'),opener=null;
+  if(dlg&&dlg.showModal){
+    document.querySelectorAll('[data-book]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();opener=a;dlg.showModal();});});
+    dlg.querySelector('[data-close]').addEventListener('click',function(){dlg.close();});
+    dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
+    dlg.addEventListener('close',function(){if(opener)opener.focus();});
+    dlg.querySelectorAll('input[name=kind]').forEach(function(r){r.addEventListener('change',function(){
+      dlg.querySelectorAll('.bedsel').forEach(function(u){u.hidden=u.dataset.kind!==r.value;u.classList.remove('swap');if(!u.hidden&&!reduce){void u.offsetWidth;u.classList.add('swap');}});});});
+  }
+  if(!('IntersectionObserver' in window))return;
+  /* the stage: the print of the section in the middle of the screen */
+  document.querySelectorAll('.split').forEach(function(sp){
+    var items=sp.querySelectorAll('.stage [data-for]'),igt=null;
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;
+      var id=en.target.id;items.forEach(function(p){p.classList.toggle('on',p.dataset.for===id);});
+      var ig=sp.querySelector('.stage .ig');
+      if(ig){clearInterval(igt);if(id==='instagram'&&!reduce){var ims=ig.querySelectorAll('img'),k=0,n=0;
+        igt=setInterval(function(){if(++n>8){clearInterval(igt);return;}ims[k].classList.remove('on');k=(k+1)%ims.length;ims[k].classList.add('on');},3000);}}
+    });},{rootMargin:'-45% 0px -45% 0px'});
+    sp.querySelectorAll('.chap').forEach(function(c){io.observe(c);});
+  });
+  var box=document.getElementById('room-slides'),dots=document.querySelectorAll('.dots a');
+  var dio=new IntersectionObserver(function(es){es.forEach(function(en){if(en.intersectionRatio>.6){
+    dots.forEach(function(d){d.setAttribute('aria-current',d.getAttribute('href')==='#'+en.target.id?'true':'false');});}});},{root:box,threshold:[.6]});
+  box.querySelectorAll('img').forEach(function(i){dio.observe(i);});
+  dots.forEach(function(d){d.addEventListener('click',function(e){e.preventDefault();
+    var t=document.querySelector(d.getAttribute('href'));box.scrollTo({left:t.offsetLeft-box.offsetLeft,behavior:reduce?'auto':'smooth'});});});
+  var pbar=document.querySelector('.bar'),heroBtn=document.querySelector('.say [data-book]');
+  pbar.classList.add('waiting');
+  new IntersectionObserver(function(es){pbar.classList.toggle('waiting',es[0].isIntersecting);},{threshold:0}).observe(heroBtn);
+  if(!reduce&&wide.matches){
+    var rio=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');rio.unobserve(en.target);}});},{rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('[data-rise]').forEach(function(g){[].slice.call(g.querySelectorAll(g.dataset.rise)).forEach(function(el,k){
+      if(el.getBoundingClientRect().top<innerHeight)return;el.style.setProperty('--d',(k*70)+'ms');el.classList.add('rise');rio.observe(el);});});
+  }
+  var bar=document.getElementById('top-bar');
+  addEventListener('scroll',function(){bar.classList.toggle('stuck',scrollY>40);},{passive:true});
+})();
+</script>
+</body>
+</html>

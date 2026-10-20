@@ -57,7 +57,8 @@ for (const slug of fs.readdirSync(path.join(root, 'sites')).sort()) {
   const stockFile = path.join(root, 'dossier', slug, 'stock', 'index.json');
   if (!fs.existsSync(stockFile)) continue;
   const stock = new Map(JSON.parse(fs.readFileSync(stockFile, 'utf8')).map((s) => [s.id, s]));
-  const loc = LOCALITY[slug];
+  // a fork (<slug>-v2, <slug>-<variant>) is the same business in the same place
+  const loc = LOCALITY[slug] ?? LOCALITY[Object.keys(LOCALITY).find((k) => slug.startsWith(k + '-'))];
   if (!loc) { console.log(`FAIL  ${slug}: no locality recorded in tools/check-places.mjs`); fails++; continue; }
 
   for (const v of fs.readdirSync(mdir)) {

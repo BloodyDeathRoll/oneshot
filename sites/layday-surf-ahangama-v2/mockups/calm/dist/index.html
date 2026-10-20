@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<title>Layday Surf Ahangama · a two-minute walk from Kabalana</title>
+<meta name="description" content="Layday Surf Ahangama: one air-conditioned dormitory, a two-minute walk from Kabalana. Check dates on Hostelworld, Booking.com or Agoda.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preload" href="fonts/pilcrow-rounded-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/pilcrow-rounded-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/caveat-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/img-002-34.webp" as="image" media="(min-width: 901px)">
+<link rel="preload" href="img/img-002-45h.webp" as="image" media="(max-width: 900px)">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* self-hosted, subset faces (../make-fonts.sh) */
+@font-face{font-family:"Pilcrow Rounded";font-weight:400;font-display:swap;src:url(fonts/pilcrow-rounded-400.woff2) format("woff2")}
+@font-face{font-family:"Pilcrow Rounded";font-weight:500;font-display:swap;src:url(fonts/pilcrow-rounded-500.woff2) format("woff2")}
+@font-face{font-family:"Pilcrow Rounded";font-weight:700;font-display:swap;src:url(fonts/pilcrow-rounded-700.woff2) format("woff2")}
+@font-face{font-family:"Caveat";font-weight:600;font-display:swap;src:url(fonts/caveat-600.woff2) format("woff2")}
+@font-face{font-family:"Caveat Fallback";src:local("Georgia Italic"),local("Georgia-Italic"),local("Liberation Serif Italic"),local("Times New Roman Italic");size-adjust:84.8%;ascent-override:113%;descent-override:35.4%;line-gap-override:0%}
+/* metric-matched fallbacks, so nothing moves when a face arrives (measured against Arial / Liberation Sans) */
+@font-face{font-family:"Pilcrow Fallback";font-weight:400;src:local("Arial"),local("Liberation Sans"),local("Helvetica");size-adjust:87.06%;ascent-override:101.1%;descent-override:25.3%;line-gap-override:0%}
+@font-face{font-family:"Pilcrow Fallback";font-weight:500;src:local("Arial"),local("Liberation Sans"),local("Helvetica");size-adjust:88.7%;ascent-override:99.2%;descent-override:24.8%;line-gap-override:0%}
+@font-face{font-family:"Pilcrow Fallback";font-weight:700;src:local("Arial Bold"),local("Arial-BoldMT"),local("Liberation Sans Bold"),local("Helvetica Bold");size-adjust:85.66%;ascent-override:102.7%;descent-override:25.7%;line-gap-override:0%}
+:root{
+  --ground:#FFFFFF; --sheet:#F0F0F1; --plaster:#E2B827; --cane:#B58D5B; --concrete:#C4CBD1;
+  --ink:#0B0F10; --soft:#3A3F42;
+  --accent:#75421B; --accent-press:#5C3314; --on-accent:#FFFFFF;   /* teak, the dormitory's end door (img-005) */
+  --m:clamp(20px,2.4vw,40px); --gap:12px; --r:999px;
+  --ease-out:cubic-bezier(0.23,1,0.32,1); --ease-io:cubic-bezier(0.77,0,0.175,1); --ease-drawer:cubic-bezier(0.32,0.72,0,1);
+  --f:"Pilcrow Rounded","Pilcrow Fallback",sans-serif; --script:"Caveat","Caveat Fallback",cursive;
+  --s-small:16px; --s-body:clamp(17px,1rem + .1vw,18px); --s-lead:clamp(20px,1.1rem + .6vw,26px);
+  --s-state:clamp(24px,1rem + 1.4vw,36px); --s-head:clamp(44px,1.6rem + 2.6vw,64px); --s-display:clamp(40px,6.1vw,96px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;scroll-padding-bottom:96px}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f);font-size:var(--s-body);line-height:1.55;-webkit-font-smoothing:antialiased}
+::selection{background:var(--plaster);color:var(--ink)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:6px}
+h1,h2,h3,p,blockquote,figure,ul,dl,dd{margin:0}
+h1{font-weight:700;letter-spacing:-.04em;line-height:1;text-wrap:balance}
+.h2{font-family:var(--script);font-weight:600;font-size:var(--s-head);line-height:1;letter-spacing:0;margin-bottom:clamp(24px,2.6vw,40px);text-wrap:balance}
+p{text-wrap:pretty}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:var(--r);
+  font:500 var(--s-body)/1 var(--f);text-decoration:none;border:0;cursor:pointer;transition:transform 140ms var(--ease-out),background-color 160ms ease}
+.btn:active{transform:scale(.97)}
+.btn-book{background:var(--accent);color:var(--on-accent)}
+.btn-plain{background:var(--sheet);color:var(--ink)}
+.btn-white{background:var(--ground);color:var(--ink)}
+@media (hover:hover) and (pointer:fine){.btn-book:hover{background:var(--accent-press)}.btn-plain:hover{background:#E4E4E6}.btn-white:hover{background:#F4F4F5}}
+.src{display:inline-flex;align-items:center;min-height:44px}
+cite{font-style:normal}
+
+/* ---------- first screen: the statement beside the berth ---------- */
+.top{display:flex;justify-content:space-between;align-items:center;padding:12px var(--m);max-width:1440px;margin:0 auto}
+.mark{display:inline-flex;align-items:center;min-height:44px;font-weight:700;font-size:var(--s-body);letter-spacing:-.02em;text-decoration:none}
+.nav{display:flex;gap:4px}
+.nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:var(--r);text-decoration:none;font-weight:500;transition:background-color 160ms ease}
+@media (hover:hover) and (pointer:fine){.nav a:hover{background:var(--sheet)}}
+.hero{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,4vw,72px);align-items:center;padding:clamp(16px,3vh,40px) var(--m) clamp(40px,7vh,72px);max-width:1440px;margin:0 auto;min-height:calc(100svh - 68px)}
+.hero h1{font-size:var(--s-display);max-width:9.5em}
+.tagline{font-size:clamp(22px,1rem + 1vw,32px);line-height:1.3;font-weight:500;margin-top:28px;max-width:24ch;text-wrap:balance}
+.proof{margin-top:32px;font-size:var(--s-body);color:var(--soft)}
+.proof b{color:var(--ink)}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.prints{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);align-items:end}
+.prints figure{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:6px;max-width:576px}
+.prints figure:nth-child(2){margin-bottom:-48px}
+.prints img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.xf img{opacity:0;transition:opacity 1600ms var(--ease-io)}
+.xf img.on{opacity:1}
+.hero-phone{display:none}
+
+/* ---------- sections ---------- */
+.sec{padding:clamp(80px,9vw,140px) var(--m) 0;max-width:1440px;margin:0 auto}
+.door{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(40px,6vw,120px);align-items:start}
+.door-text>p{max-width:50ch;font-size:var(--s-lead);line-height:1.45}
+.q-s{margin-top:40px;max-width:52ch}
+blockquote footer{margin-top:8px;font-size:var(--s-small);color:var(--soft)}
+.door-fact{background:var(--sheet);border-radius:20px;padding:clamp(28px,3vw,44px);display:grid;gap:16px;justify-items:start}
+.plus{font-size:var(--s-state);font-weight:700;letter-spacing:-.03em;line-height:1.1}
+.dorm{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,120px);align-items:center}
+.dorm>*{min-width:0}
+.dorm-text p{max-width:46ch}
+.dorm-text p+p{margin-top:1em}
+.card{margin-top:32px;display:flex;gap:20px;align-items:center;flex-wrap:wrap;background:var(--sheet);border-radius:20px;padding:18px 18px 18px 24px}
+.card p{flex:1;min-width:14ch}
+.gal-ctl{display:flex;align-items:center;justify-content:space-between;margin-top:12px;max-width:576px}
+.gal-btn{flex:none;width:48px;height:48px;border-radius:50%;border:0;background:var(--sheet);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:transform 140ms var(--ease-out)}
+.gal-btn:active{transform:scale(.94)}
+.dots{display:flex}
+.dots button{width:44px;height:44px;border:0;background:none;cursor:pointer;display:grid;place-items:center;padding:0}
+.dots button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--concrete);transition:transform 220ms var(--ease-out),background-color 220ms ease}
+.dots button[aria-selected="true"]::before{background:var(--ink);transform:scale(1.35)}
+.built{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,96px);align-items:center}
+.built>*{min-width:0}
+.built-l>p{max-width:44ch;margin-bottom:28px}
+.items{list-style:none;padding:0;display:grid}
+.items button{min-height:52px;font:400 var(--s-state)/1.2 var(--f);letter-spacing:-.025em;color:var(--soft);background:none;border:0;padding:4px 0;cursor:pointer;text-align:left;transition:color 200ms ease}
+.items button[aria-pressed="true"]{color:var(--ink);font-weight:700}
+@media (hover:hover) and (pointer:fine){.items button:hover{color:var(--ink)}}
+.specimen{position:relative;aspect-ratio:1;max-width:576px;width:100%;justify-self:center;border-radius:6px;overflow:hidden}
+.specimen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 300ms var(--ease-io)}
+.specimen img.on{opacity:1}
+.wave-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,4vw,80px);align-items:start}
+.wave-head p{font-size:var(--s-state);font-weight:500;letter-spacing:-.02em;line-height:1.3;max-width:42ch}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:clamp(36px,4vw,64px)}
+.pair img{width:100%;border-radius:6px;aspect-ratio:4/3;object-fit:cover}
+.ratings{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,max-content));gap:8px clamp(24px,4vw,64px);align-items:start}
+.ratings a{display:grid;gap:2px;min-height:44px;text-decoration:none}
+.score{font-size:var(--s-head);font-weight:700;letter-spacing:-.04em;line-height:1}
+.score small{font-size:var(--s-lead);letter-spacing:0}
+.read{font-size:var(--s-small);color:var(--soft);margin-top:4px}
+.lead-q{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(32px,5vw,96px);align-items:center;margin-top:clamp(48px,5vw,80px)}
+.lead-q img{border-radius:6px;width:100%;max-width:440px}
+.lead-q p{font-size:var(--s-lead);line-height:1.42;font-weight:500;max-width:44ch}
+.more-q{display:grid;grid-template-columns:2fr 1fr 1fr;gap:clamp(28px,4vw,72px);margin-top:clamp(48px,5vw,80px)}
+.prac{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,120px);align-items:start}
+.prac p{max-width:48ch}
+.prac p+p{margin-top:1em}
+.times{display:flex;flex-wrap:wrap;gap:8px 36px;margin-bottom:24px;font-size:var(--s-lead);align-items:baseline}
+.times b{font-size:var(--s-state);letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin-right:6px}
+.soft{color:var(--soft)}
+.amen{font-size:var(--s-lead);line-height:1.7;margin-top:4px}
+@media (min-width:901px){.amen span{white-space:nowrap}}
+.prac>*{min-width:0}
+.amen i{font-style:normal;color:var(--soft)}
+.amen .sep{color:var(--concrete);margin:0 .3em 0 .2em}
+.book{background:var(--concrete);margin-top:clamp(80px,9vw,140px);padding:44px 0 clamp(48px,5vw,72px);overflow:hidden}
+.strip{overflow:hidden}
+.strip-run{display:flex;gap:8px;width:max-content;animation:drift 80s linear infinite}
+.strip:hover .strip-run{animation-play-state:paused}
+.strip img{height:150px;width:auto;border-radius:4px}
+@keyframes drift{to{transform:translateX(-50%)}}
+.book-in{max-width:1440px;margin:0 auto;padding:56px var(--m) 0}
+.book-in .h2{margin-bottom:24px}
+.stay{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.cell{position:relative;display:flex;flex-direction:column;justify-content:center;background:#D8DDE1;border-radius:20px;min-height:92px;padding:14px 22px;transition:background-color 160ms ease}
+.sheet .cell{background:var(--sheet)}
+.cell:focus-within{background:#EEF0F2}
+.lab{font-size:var(--s-small);color:#2E3438}
+.cell input{font:500 var(--s-lead)/1.2 var(--f);color:var(--ink);background:none;border:0;padding:4px 0 0;width:100%;min-height:44px;-webkit-appearance:none;appearance:none}
+.cell input:focus{outline:none}
+.cell:has(input:focus-visible){outline:3px solid var(--ink);outline-offset:2px}
+.stepper{display:flex;align-items:center;gap:12px}
+.stepper button{width:44px;height:44px;border-radius:50%;border:0;background:var(--ground);color:var(--ink);font:500 var(--s-lead)/1 var(--f);cursor:pointer;transition:transform 120ms var(--ease-out)}
+.stepper button:active{transform:scale(.92)}
+.stepper button:disabled{opacity:.4;cursor:default}
+.n{font:700 var(--s-lead)/1 var(--f);min-width:2ch;text-align:center;font-variant-numeric:tabular-nums;display:inline-block;overflow:hidden}
+.n span,.leave{display:inline-block}
+.leave{font:500 var(--s-lead)/1.2 var(--f);padding-top:4px}
+.lists{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.book-q p{font-size:var(--s-lead);line-height:1.35;font-weight:500}
+.book-q footer{color:#2E3438}
+.foot{padding:clamp(56px,6vw,96px) var(--m) calc(40px + env(safe-area-inset-bottom));max-width:1440px;margin:0 auto}
+.blocks{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;height:clamp(110px,12vw,170px);margin:0}
+.blocks span{background:var(--c);color:var(--ink);display:grid;place-items:end center;font-weight:700;font-size:clamp(56px,9vw,132px);line-height:1;padding-bottom:.08em;letter-spacing:-.04em;border-radius:6px;overflow:hidden}
+.foot-row{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;margin-top:40px}
+.foot-name{font-weight:700}
+.foot-acts{display:flex;flex-wrap:wrap;gap:10px;align-content:start}
+.footbar{display:none}
+
+/* the booking sheet (all widths): rises from the bottom on a phone, centred on a laptop */
+.sheet{border:0;padding:0;margin:auto;width:min(620px,calc(100% - 32px));max-height:calc(100svh - 32px);border-radius:24px;background:var(--ground);color:var(--ink);overscroll-behavior:contain;box-shadow:0 24px 64px rgba(11,15,16,.22)}
+.sheet::backdrop{background:rgba(11,15,16,.4)}
+.sheet[open]{animation:grow 260ms var(--ease-out)}
+.sheet[open]::backdrop{animation:fade 260ms var(--ease-out)}
+.sheet.closing{animation:shrink 180ms var(--ease-out) forwards}
+.sheet.closing::backdrop{animation:fade 180ms var(--ease-out) reverse forwards}
+@keyframes grow{from{opacity:0;transform:scale(.96)}}
+@keyframes shrink{to{opacity:0;transform:scale(.98)}}
+@keyframes fade{from{opacity:0}}
+.sheet-in{padding:clamp(22px,3vw,34px);display:grid;gap:16px}
+.sheet-top{display:flex;justify-content:space-between;align-items:center}
+.sheet-top .h2{margin:0;font-size:clamp(40px,1.4rem + 2vw,52px)}
+.x{width:44px;height:44px;border-radius:50%;border:0;background:var(--sheet);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.sheet .stay{grid-template-columns:1fr 1fr}
+.sheet .lists{margin-top:0;display:grid}
+.sheet .lists .btn{width:100%}
+.sheet .lists .btn:nth-child(n+2):not(.btn-plain){background:var(--sheet);color:var(--ink)}
+.sheet[open] .lists .btn{animation:rise 240ms var(--ease-out) backwards;animation-delay:calc(100ms + var(--i,0) * 40ms)}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}}
+.note{font-size:var(--s-small);color:var(--soft)}
+
+/* reveals: text and pictures, never headings (custom.md) */
+.js .rv{opacity:0;transform:translateY(20px);transition:opacity 560ms var(--ease-out),transform 560ms var(--ease-out);transition-delay:calc(var(--d,0) * 70ms)}
+.js .rv.in{opacity:1;transform:none}
+html:not(.js) .stay,html:not(.js) .leaving{display:none}
+
+@media (max-width:900px){
+  .nav{display:none}
+  .hero{grid-template-columns:1fr;min-height:0;padding-top:4px;gap:0}
+  .prints{display:none}
+  .hero-phone{display:block;order:9;margin-top:22px;border-radius:6px;overflow:hidden;aspect-ratio:4/5}
+  .hero-text{display:flex;flex-direction:column}
+  .hero-phone img{width:100%;height:100%;object-fit:cover}
+  .hero h1{font-size:clamp(36px,9.6vw,48px)}
+  .tagline{margin-top:14px}
+  .proof{margin-top:16px}
+  .acts{margin-top:14px}
+  .acts .btn{flex:1}
+  .acts .num{display:none}
+  .door,.dorm,.built,.prac,.lead-q,.wave-head{grid-template-columns:1fr}
+  .more-q{grid-template-columns:1fr}
+  .lead-q img{max-width:72%}
+  .items{display:flex;overflow-x:auto;gap:24px;scrollbar-width:none;margin:0 calc(-1 * var(--m));padding:0 var(--m)}
+  .items button{white-space:nowrap}
+  .pair{grid-template-columns:1fr}
+  .strip img{height:110px}
+  .stay{grid-template-columns:1fr}
+  .lists .btn{flex:1 1 100%}
+  .blocks span{font-size:15vw}
+  .footbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:20;gap:8px;padding:10px var(--m) calc(10px + env(safe-area-inset-bottom));background:var(--ground);box-shadow:0 -6px 18px rgba(11,15,16,.08)}
+  .footbar .btn{flex:1}
+  .footbar .btn-plain{flex:0 0 auto;padding:0 22px}
+  body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+  .sheet{width:100%;max-width:none;margin:auto 0 0;border-radius:24px 24px 0 0;max-height:92svh;overflow:auto;padding-bottom:env(safe-area-inset-bottom)}
+  .sheet[open]{animation:up 320ms var(--ease-drawer)}
+  .sheet.closing{animation:down 200ms var(--ease-out) forwards}
+  @keyframes up{from{transform:translateY(100%)}}
+  @keyframes down{to{transform:translateY(100%)}}
+  .sheet .stay{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .xf img,.specimen img,.dots button::before{transition:none}
+  .js .rv{opacity:1;transform:none;transition:none}
+  .strip-run{animation:none}
+  .sheet[open],.sheet.closing,.sheet[open]::backdrop,.sheet.closing::backdrop,.sheet[open] .lists .btn{animation-duration:1ms!important}
+}
+/* ---------- round 3 ---------- */
+/* the room: the one moment that pulls you in — the room's three landscape views, crossfading, at native 1024 */
+.room-grid{display:grid;grid-template-columns:minmax(0,880px) minmax(0,1fr);gap:clamp(32px,4vw,64px);align-items:end}
+.stage{position:relative;aspect-ratio:4/3;margin:0;border-radius:6px;overflow:hidden;background:var(--sheet)}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1400ms var(--ease-io)}
+.stage img.on{opacity:1}
+.room-text .lead{font-size:var(--s-state);font-weight:700;letter-spacing:-.025em;line-height:1.25;margin-bottom:20px;text-wrap:balance}
+.room-text p:not(.lead){font-size:var(--s-body);max-width:38ch}
+.room-text p+p{margin-top:.8em}
+.stage-dots{margin:16px 0 0 -12px}
+/* just one dorm: the gallery at native size, the text pulled close */
+.dorm{grid-template-columns:minmax(0,576px) minmax(0,520px);justify-content:start;gap:clamp(40px,5vw,80px)}
+.gal-stack{position:relative;aspect-ratio:4/5;border-radius:6px;overflow:hidden;max-width:576px;touch-action:pan-y}
+.gal-stack img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 320ms var(--ease-io)}
+.gal-stack img.on{opacity:1}
+.dorm-text p{font-size:var(--s-lead);line-height:1.45;max-width:none}
+/* newly built: the chooser beside its photograph, pulled close */
+.built{grid-template-columns:minmax(0,480px) minmax(0,576px);justify-content:start;gap:clamp(40px,5vw,80px)}
+.built-l>p{font-size:var(--s-lead);line-height:1.45}
+/* booking: on plaster yellow, the strip inside the grid, one chooser (the sheet) */
+.book{background:var(--plaster);padding:clamp(48px,5vw,72px) 0 clamp(40px,4vw,56px)}
+.book-in{padding:0 var(--m)}
+.strip{border-radius:6px;overflow:hidden}
+.book-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(32px,4vw,80px);align-items:end;margin-top:clamp(36px,4vw,56px)}
+.pill{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;width:min(100%,520px);min-height:84px;padding:14px 26px;border:0;border-radius:24px;background:var(--ground);color:var(--ink);font:500 var(--s-lead)/1.2 var(--f);text-align:left;cursor:pointer;transition:transform 140ms var(--ease-out),background-color 160ms ease}
+.pill::before{content:"Arrival and nights";font-size:var(--s-small);font-weight:400;color:var(--soft);margin-bottom:4px}
+.pill:active{transform:scale(.98)}
+@media (hover:hover) and (pointer:fine){.pill:hover{background:#FBF6E4}}
+.book .lists{margin-top:16px}
+.book-note{margin-top:20px;max-width:60ch}
+.book-q p{font-size:var(--s-lead);line-height:1.35;font-weight:500}
+.book-q footer{color:#2E2A1C}
+/* the date pill: a styled field over the native picker */
+.date{cursor:pointer}
+.date .val{font:500 var(--s-lead)/1.2 var(--f);padding-top:4px}
+.date input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;min-height:0;padding:0;border:0}
+.date:focus-within{outline:3px solid var(--ink);outline-offset:2px}
+.foot{padding-top:clamp(40px,4vw,56px)}
+@media (max-width:900px){
+  .room-grid,.dorm,.built,.book-grid{grid-template-columns:1fr}
+  .dorm-text p,.built-l>p{font-size:var(--s-body)}
+  .room-text .lead{font-size:24px}
+}
+@media (prefers-reduced-motion:reduce){.stage img,.gal-stack img{transition:none}}
+/* phone baseline (mobile-native) */
+button,a.btn,.dots button{touch-action:manipulation;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+@media (max-width:600px){.gal-btn{display:none}.gal-ctl{justify-content:center}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="mark" href="#main-top">Layday Surf Ahangama</a>
+  <nav class="nav" aria-label="Sections"><a href="#room">The room</a><a href="#door">Finding the door</a><a href="#wave">The wave</a><a href="#guests">Guests</a></nav>
+</header>
+<div class="hero" id="main-top">
+  <div class="hero-text">
+    <h1>A two&#8209;minute walk from Kabalana</h1>
+    <p class="tagline">Surf, chill and feel&nbsp;at&nbsp;home in Ahangama</p>
+    <figure class="hero-phone"><img src="img/img-002-45h.webp" width="576" height="720" alt="A lower berth in yellow plaster with its curtain tied back, a black wall lamp, a square niche, white bedding and black locking drawers"></figure>
+    <p class="proof"><b>10/10</b> on Hostelworld, 10 reviews, read 25 September 2026</p>
+    <div class="acts">
+      <a class="btn btn-book" href="#book" data-book>Check dates</a>
+      <a class="btn btn-plain" href="tel:+94778553343" aria-label="Call +94 77 855 3343">Call<span class="num">&nbsp;+94 77 855 3343</span></a>
+    </div>
+  </div>
+  <div class="prints" aria-label="The dormitory">
+    <figure class="xf" data-xf>
+      <img class="on" src="img/img-002-34.webp" width="576" height="768" alt="A lower berth in yellow plaster with its curtain tied back, a black wall lamp, a square niche, white bedding and black locking drawers" fetchpriority="high">
+      <img src="img/img-008-34.webp" width="576" height="768" alt="" loading="lazy">
+    </figure>
+    <figure><img src="img/img-018-34.webp" width="576" height="768" alt="Inside a lower berth: yellow plaster, a square niche, a black lamp and a white pillow"></figure>
+  </div>
+</div>
+
+<main id="main">
+  <section class="sec room" id="room" aria-labelledby="h-room">
+    <div class="room-grid">
+      <figure class="stage" data-stage aria-label="The dormitory">
+        <img class="on" src="img/img-012-43.webp" width="1024" height="768" alt="The dormitory through its open timber-and-glass door: yellow berths on both sides, a teak door at the end and a bench with coloured cushions" loading="lazy">
+        <img src="img/img-018-43.webp" width="1024" height="768" alt="Inside a lower berth: yellow plaster, a square niche, a black lamp and a white pillow" loading="lazy">
+        <img src="img/img-017-43.webp" width="1024" height="768" alt="The bench with cushions under an abstract painting, by the dormitory wall" loading="lazy">
+      </figure>
+      <div class="room-text">
+        <h2 id="h-room" class="h2">The room</h2>
+        <p class="lead rv">The dormitory is air-conditioned, with lockers and luggage storage.</p>
+        <p class="rv" style="--d:1">Layday is small and new. There is a shared kitchen, plus a garden and terrace.</p>
+        <p class="rv" style="--d:1">It is quiet, too. One guest called it "very quiet which was amazing".</p>
+        <p class="rv" style="--d:2">The shared kitchen has a kettle, a dishwasher and kitchenware, and there is a dining area. The showers are hot.</p>
+        <div class="stage-dots dots" role="tablist" aria-label="Choose a view of the room" data-stage-dots></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec dorm" id="dorm" aria-labelledby="h-dorm">
+    <div class="gal" data-gal>
+      <div class="gal-stack" tabindex="0" role="group" aria-label="Photographs of the dormitory, use the arrow keys">
+        <img class="on" src="img/img-005-45.webp" width="576" height="720" alt="Down the room between the berths to the teak door, under a ceiling fan" loading="lazy">
+        <img src="img/img-011-45.webp" width="576" height="720" alt="The room toward the glass doors and the garden, with the painting and the bench" loading="lazy">
+        <img src="img/img-002-45.webp" width="576" height="720" alt="A lower berth with its curtain tied back, a lamp, a niche and locking drawers" loading="lazy">
+        <img src="img/img-008-45.webp" width="576" height="720" alt="A berth's end with its black steel ladder, a palm in a white pot and a timber stool" loading="lazy">
+        <img src="img/img-012-45.webp" width="576" height="720" alt="The dormitory through its open timber-and-glass door" loading="lazy">
+      </div>
+      <div class="gal-ctl">
+        <button class="gal-btn" type="button" data-prev aria-label="Previous photograph"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 4 6.5 10l6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="dots" role="tablist" aria-label="Choose a photograph"></div>
+        <button class="gal-btn" type="button" data-next aria-label="Next photograph"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="m7.5 4 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+    <div class="dorm-text">
+      <h2 id="h-dorm" class="h2">Just one dorm</h2>
+      <p class="rv">There is only the one dormitory. One guest wrote "super clean" and another "very clean". Someone else went as far as "absolutely spotless".</p>
+      <p class="rv" style="--d:1">On Hostelworld it scores 10 out of 10 in every category (value for money, security, atmosphere, cleanliness, staff, location and facilities), though that is from ten reviews.</p>
+      <div class="card rv" style="--d:2">
+        <p><b>Bed in the dormitory</b><br>The only room: one air-conditioned dormitory</p>
+        <a class="btn btn-book" href="#book" data-book>Check dates</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec built" id="built" aria-labelledby="h-built">
+    <div class="built-l">
+      <h2 id="h-built" class="h2">Newly built, and kept that way</h2>
+      <p class="rv">There is housekeeping every day. One guest called the beds "super comfy" and the showers "amazing". Two wrote that they stayed on longer than they had planned, and one was only supposed to stay a night and "ended up here a week".</p>
+      <ul class="items" role="list" data-items>
+        <li><button type="button" aria-pressed="true" data-i="0">The berth</button></li>
+        <li><button type="button" aria-pressed="false" data-i="1">The lockers</button></li>
+        <li><button type="button" aria-pressed="false" data-i="2">The basin</button></li>
+        <li><button type="button" aria-pressed="false" data-i="3">The bench</button></li>
+        <li><button type="button" aria-pressed="false" data-i="4">The porch</button></li>
+      </ul>
+    </div>
+    <div class="specimen" data-specimen>
+      <img class="on" src="img/img-002-disc.webp" width="576" height="576" alt="The berth: yellow plaster, a curtain, a lamp and locking drawers" loading="lazy">
+      <img src="img/img-013-disc.webp" width="576" height="576" alt="The lockers: cane doors beside concrete shelving" loading="lazy">
+      <img src="img/img-003-disc.webp" width="576" height="576" alt="The basin: white, on concrete, under a round cane mirror" loading="lazy">
+      <img src="img/img-017-disc.webp" width="576" height="576" alt="The bench: timber, with cushions" loading="lazy">
+      <img src="img/img-001-disc.webp" width="576" height="576" alt="The porch: tall timber-framed glass doors and a bench" loading="lazy">
+    </div>
+  </section>
+
+  <section class="sec door" id="door" aria-labelledby="h-door">
+    <div class="door-text">
+      <h2 id="h-door" class="h2">Finding the door</h2>
+      <p class="rv">One guest found it "a little bit difficult to find", so here is the way in. Follow Google Maps. You will come to a large black gate; open it. Through the gate there is a wooden platform with a door through to the Layday area, to the right of the house.</p>
+      <blockquote class="q-s rv" style="--d:1">
+        <p>"Well located, very clean, good air conditioning and a great host! Layday Surf is just one dorm room with 4 bunk beds so it is very quiet which was amazing. A little bit difficult to find but the host was very responsive and promises a sign will be put up ASAP."</p>
+        <footer>Catherine, Australia, on <a class="src" href="https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/">Hostelworld</a>, April 2026</footer>
+      </blockquote>
+    </div>
+    <div class="door-fact rv" style="--d:2">
+      <p class="plus">X9H3+93 Ahangama</p>
+      <p>Warnagiri Welhengoda, Ahangama 80650, Sri Lanka</p>
+      <a class="btn btn-plain" style="background:var(--ink);color:#fff" href="https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en">Open in Google Maps</a>
+    </div>
+  </section>
+
+  <section class="sec wave" id="wave" aria-labelledby="h-wave">
+    <div class="wave-head">
+      <h2 id="h-wave" class="h2">The wave</h2>
+      <p class="rv">Kabalana: a sandy beach break for beginners and intermediates, with The Rock, a reef A&#8209;frame for advanced surfers.</p>
+    </div>
+    <div class="pair">
+      <img class="rv" src="img/img-019.webp" width="1024" height="768" alt="Surfers waiting in the line-up beyond the whitewater, seen from the sand" loading="lazy">
+      <img class="rv" style="--d:1" src="img/img-021.webp" width="1024" height="768" alt="A surfer carries a blue board along the wet sand by the shorebreak" loading="lazy">
+    </div>
+  </section>
+
+  <section class="sec guests" id="guests" aria-labelledby="h-guests">
+    <h2 id="h-guests" class="h2">Guests</h2>
+    <ul class="ratings" role="list">
+      <li><a href="https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/"><span class="score">10<small>/10</small></span><span>Hostelworld, 10 reviews</span></a></li>
+      <li><a href="https://www.booking.com/hotel/lk/layday-surf-ahangama.html"><span class="score">10<small>/10</small></span><span>Booking.com, 6 reviews</span></a></li>
+      <li><a href="https://www.google.com/maps/search/Layday%20Surf%20Ahangama/@5.9794134,80.350836,17z?hl=en"><span class="score">5.0<small>/5</small></span><span>Google, 15 reviews</span></a></li>
+    </ul>
+    <p class="read">Each read 25 September 2026.</p>
+    <div class="lead-q">
+      <img class="rv" src="img/img-017-34.webp" width="576" height="768" alt="The bench and cushions under the abstract painting" loading="lazy">
+      <blockquote class="rv" style="--d:1">
+        <p>"LayDay is so wonderful! Newly built and so well designed, Rukshan has thought of everything. As a solo female traveller I felt totally safe - it's a peaceful little sanctuary in Ahangama, just a 2-min walk to Kabalana Beach and great food spots. Super comfy beds, loads of luggage space, amazing showers, and absolutely spotless. Rukshan and his family are so kind and he keeps it immaculate daily. I extended my stay way longer than expected and didn't want to leave - will 100% be back!"</p>
+        <footer>Beth, England, on <a class="src" href="https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/">Hostelworld</a>, April 2026</footer>
+      </blockquote>
+    </div>
+    <div class="more-q">
+      <blockquote class="rv"><p>"Seriously the best hostel I've stayed in throughout my 7 months travelling. I'm so sad I wasn't there for long because it was just so so nice. Super clean, nice style, the showers are great, it's cosy, there's a nice inside place to sit &amp; hang out. The lovely family who own this make such an effort to be present and helpful. HIGHLY recommend!"</p><footer>Jennine, England, on <a class="src" href="https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/">Hostelworld</a>, April 2026</footer></blockquote>
+      <blockquote class="rv" style="--d:1"><p>"New and clean, walking distance straight to the beach"</p><footer>Akshay, Sri Lanka, on <a class="src" href="https://www.booking.com/hotel/lk/layday-surf-ahangama.html">Booking.com</a></footer></blockquote>
+      <blockquote class="rv" style="--d:2"><p>"Place is really it's quite small but absolutely great, very clean lots of room, beds are nice"</p><footer>Taiya, Australia, on <a class="src" href="https://www.booking.com/hotel/lk/layday-surf-ahangama.html">Booking.com</a></footer></blockquote>
+    </div>
+  </section>
+
+  <section class="sec prac" id="practicalities" aria-labelledby="h-prac">
+    <div>
+      <h2 id="h-prac" class="h2">Practicalities</h2>
+      <p class="times rv"><span><b>14:00–19:00</b> check-in</span><span><b>by 14:00</b> check-out</span></p>
+      <p class="rv">Check-in is between 14:00 and 19:00, and check-out is by 14:00. Credit cards are not accepted. Taxes are included, and it is non-smoking.</p>
+      <p class="rv">WiFi is free, and so is the private parking. There is laundry, daily housekeeping, bicycles to rent and an airport shuttle, and pets can come at no extra charge.</p>
+      <p class="rv soft">Reception has limited hours.</p>
+    </div>
+    <p class="amen rv" style="--d:1"><span>Free WiFi&nbsp;<span class="sep" aria-hidden="true">|</span></span> <span>Free private parking <i>(no reservation needed)</i>&nbsp;<span class="sep" aria-hidden="true">|</span></span> <span>Air conditioning&nbsp;<span class="sep" aria-hidden="true">|</span></span> <span>Shared kitchen with dishwasher, kettle and kitchenware&nbsp;<span class="sep" aria-hidden="true">|</span></span> <span>Dining area and seating area&nbsp;<span class="sep" aria-hidden="true">|</span></span> <span>Garden and terrace with outdoor dining&nbsp;<span class="sep" aria-hidden="true">|</span></span> <span>Hot showers&nbsp;<span class="sep" aria-hidden="true">|</span></span> <span>Free security lockers&nbsp;<span class="sep" aria-hidden="true">|</span></span> <span>Luggage storage&nbsp;<span class="sep" aria-hidden="true">|</span></span> <span>Daily housekeeping&nbsp;<span class="sep" aria-hidden="true">|</span></span> <span>Washing machine&nbsp;<span class="sep" aria-hidden="true">|</span></span> <span>Laundry, dry cleaning and ironing <i>(additional charge)</i>&nbsp;<span class="sep" aria-hidden="true">|</span></span> <span>Bicycle rental <i>(additional charge)</i>&nbsp;<span class="sep" aria-hidden="true">|</span></span> <span>Airport shuttle&nbsp;<span class="sep" aria-hidden="true">|</span></span> <span>Concierge&nbsp;<span class="sep" aria-hidden="true">|</span></span> <span>Free city maps&nbsp;<span class="sep" aria-hidden="true">|</span></span> <span>24-hour security, CCTV and key access&nbsp;<span class="sep" aria-hidden="true">|</span></span> <span>Safety deposit box&nbsp;<span class="sep" aria-hidden="true">|</span></span> <span>Pets allowed <i>(no extra charge)</i></span></p>
+  </section>
+
+  <section class="book" id="book" aria-labelledby="h-book">
+    <div class="book-in">
+      <div class="strip" aria-hidden="true"><div class="strip-run"><img src="img/img-002-strip.webp" width="225" height="300" alt="" loading="lazy"><img src="img/img-012-strip.webp" width="300" height="300" alt="" loading="lazy"><img src="img/img-013-strip.webp" width="225" height="300" alt="" loading="lazy"><img src="img/img-017-strip.webp" width="450" height="300" alt="" loading="lazy"><img src="img/img-003-strip.webp" width="225" height="300" alt="" loading="lazy"><img src="img/img-005-strip.webp" width="300" height="300" alt="" loading="lazy"><img src="img/img-008-strip.webp" width="225" height="300" alt="" loading="lazy"><img src="img/img-001-strip.webp" width="225" height="300" alt="" loading="lazy"><img src="img/img-018-strip.webp" width="450" height="300" alt="" loading="lazy"><img src="img/img-011-strip.webp" width="300" height="300" alt="" loading="lazy"><img src="img/img-007-strip.webp" width="225" height="300" alt="" loading="lazy"><img src="img/img-002-strip.webp" width="225" height="300" alt="" loading="lazy"><img src="img/img-012-strip.webp" width="300" height="300" alt="" loading="lazy"><img src="img/img-013-strip.webp" width="225" height="300" alt="" loading="lazy"><img src="img/img-017-strip.webp" width="450" height="300" alt="" loading="lazy"><img src="img/img-003-strip.webp" width="225" height="300" alt="" loading="lazy"><img src="img/img-005-strip.webp" width="300" height="300" alt="" loading="lazy"><img src="img/img-008-strip.webp" width="225" height="300" alt="" loading="lazy"><img src="img/img-001-strip.webp" width="225" height="300" alt="" loading="lazy"><img src="img/img-018-strip.webp" width="450" height="300" alt="" loading="lazy"><img src="img/img-011-strip.webp" width="300" height="300" alt="" loading="lazy"><img src="img/img-007-strip.webp" width="225" height="300" alt="" loading="lazy"></div></div>
+      <div class="book-grid">
+        <div>
+          <h2 id="h-book" class="h2">Check dates</h2>
+          <button class="pill" type="button" data-book data-summary>Choose your dates</button>
+          <div class="lists">
+            <a class="btn btn-book" data-ota="booking" href="https://www.booking.com/hotel/lk/layday-surf-ahangama.html">Check dates on Booking.com</a>
+            <a class="btn btn-white" href="https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/">Check dates on Hostelworld</a>
+            <a class="btn btn-white" href="https://www.agoda.com/layday-surf-ahangama/hotel/piyadigama-lk.html">Check dates on Agoda</a>
+            <a class="btn btn-white" href="tel:+94778553343">Call +94 77 855 3343</a>
+          </div>
+          <p class="book-note">Rates change with the dates. The booking links show what is available. Booking.com opens with your dates; on Hostelworld and Agoda, choose them again.</p>
+        </div>
+        <blockquote class="book-q"><p>"I was only supposed to stay a night and just kept expecting and ended up here a week."</p><footer>Taiya, Australia, on <a class="src" href="https://www.booking.com/hotel/lk/layday-surf-ahangama.html">Booking.com</a></footer></blockquote>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p class="blocks" aria-label="Layday"><span style="--c:var(--plaster)">L</span><span style="--c:var(--cane)">a</span><span style="--c:var(--concrete)">y</span><span style="--c:var(--plaster)">d</span><span style="--c:var(--cane)">a</span><span style="--c:var(--concrete)">y</span></p>
+  <div class="foot-row">
+    <div>
+      <p class="foot-name">Layday Surf Ahangama</p>
+      <p>Warnagiri Welhengoda, Ahangama 80650, Sri Lanka</p>
+      <p>Check-in 14:00–19:00, check-out by 14:00</p>
+    </div>
+    <div class="foot-acts">
+      <a class="btn btn-plain" style="background:var(--ink);color:#fff" href="tel:+94778553343">Call +94 77 855 3343</a>
+      <a class="btn btn-plain" href="https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/">Hostelworld</a>
+      <a class="btn btn-plain" href="https://www.booking.com/hotel/lk/layday-surf-ahangama.html">Booking.com</a>
+      <a class="btn btn-plain" href="https://www.agoda.com/layday-surf-ahangama/hotel/piyadigama-lk.html">Agoda</a>
+    </div>
+  </div>
+</footer>
+
+<div class="footbar">
+  <a class="btn btn-book" href="#book" data-book>Check dates</a>
+  <a class="btn btn-plain" href="tel:+94778553343">Call</a>
+</div>
+
+<dialog class="sheet" id="sheet" aria-labelledby="sheet-h">
+  <div class="sheet-in" data-stay>
+    <div class="sheet-top"><h2 class="h2" id="sheet-h">Check dates</h2><button class="x" type="button" data-close aria-label="Close"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5 5 15" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button></div>
+    <div class="stay">
+      <div class="cell date"><span class="lab" id="arr-lab">Arrival</span><span class="val" data-val>Choose a date</span><input type="date" data-arr aria-labelledby="arr-lab"></div>
+      <div class="cell" role="group" aria-label="Nights"><span class="lab">Nights</span>
+        <div class="stepper"><button type="button" data-n="-1" aria-label="One night fewer">−</button><output class="n" aria-live="polite"><span>3</span></output><button type="button" data-n="1" aria-label="One night more">+</button></div>
+      </div>
+    </div>
+    <p class="leaving"><span class="lab">Leaving</span> <output class="leave">after you choose an arrival date</output></p>
+    <div class="lists">
+      <a class="btn btn-book" data-ota="booking" href="https://www.booking.com/hotel/lk/layday-surf-ahangama.html">Check dates on Booking.com</a>
+      <a class="btn btn-book" href="https://www.hostelworld.com/hostels/p/337893/layday-surf-ahangama/">Check dates on Hostelworld</a>
+      <a class="btn btn-book" href="https://www.agoda.com/layday-surf-ahangama/hotel/piyadigama-lk.html">Check dates on Agoda</a>
+      <a class="btn btn-plain" href="tel:+94778553343">Call +94 77 855 3343</a>
+    </div>
+    <p class="note">Rates change with the dates. The booking links show what is available. Booking.com opens with your dates; on Hostelworld and Agoda, choose them again.</p>
+  </div>
+</dialog>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const ease = 'cubic-bezier(0.23, 1, 0.32, 1)';
+  const loop = (imgs, ms, onStep) => { if (reduce || imgs.length < 2) return { go() {} }; let i = 0, t;
+    const show = (k) => { imgs[i].classList.remove('on'); i = (k + imgs.length) % imgs.length; imgs[i].classList.add('on'); onStep && onStep(i); };
+    const run = () => { clearInterval(t); if (!document.hidden) t = setInterval(() => show(i + 1), ms); };
+    document.addEventListener('visibilitychange', run); document.readyState === 'complete' ? run() : addEventListener('load', run, { once: true });
+    return { go(k) { show(k); run(); } }; };
+  // the hero print crossfades to its neighbour; the room stage walks through the three views of the room
+  const xf = $('[data-xf]'); if (xf) loop($$('img', xf), 6200);
+  const stage = $('[data-stage]'), sImgs = $$('img', stage), sDots = $('[data-stage-dots]');
+  const mark = (i) => $$('button', sDots).forEach((b, k) => b.setAttribute('aria-selected', k === i ? 'true' : 'false'));
+  const st = loop(sImgs, 5200, mark);
+  sImgs.forEach((im, i) => { const b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-label', `View ${i + 1} of ${sImgs.length}`); b.setAttribute('aria-selected', i ? 'false' : 'true');
+    b.onclick = () => { if (reduce) { sImgs.forEach((x, k) => x.classList.toggle('on', k === i)); mark(i); } else st.go(i); }; sDots.append(b); });
+  // reveals: text and pictures rise once (never headings)
+  const rv = $$('.rv');
+  if (!reduce && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    rv.forEach((el) => io.observe(el));
+  } else rv.forEach((el) => el.classList.add('in'));
+  // the dorm gallery: a crossfading stack with dots, arrows, keys and swipe (nothing waits off-screen)
+  $$('[data-gal]').forEach((g) => {
+    const box = $('.gal-stack', g), imgs = $$('img', box), dots = $('.dots', g); let c = 0;
+    const pick = (i) => { c = (i + imgs.length) % imgs.length; imgs.forEach((im, k) => im.classList.toggle('on', k === c)); $$('button', dots).forEach((b, k) => b.setAttribute('aria-selected', k === c ? 'true' : 'false')); };
+    imgs.forEach((im, i) => { const b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-label', `Photograph ${i + 1} of ${imgs.length}`); b.onclick = () => pick(i); dots.append(b); });
+    $('[data-prev]', g).onclick = () => pick(c - 1); $('[data-next]', g).onclick = () => pick(c + 1);
+    box.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') { e.preventDefault(); pick(c + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); pick(c - 1); } });
+    let sx = null; box.addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; }, { passive: true });
+    box.addEventListener('touchend', (e) => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(dx) > 40) pick(c + (dx < 0 ? 1 : -1)); });
+    pick(0);
+  });
+  // the specimen: choose a thing, its photograph crossfades in
+  const spec = $('[data-specimen]');
+  $$('[data-items] button').forEach((b) => b.addEventListener('click', () => {
+    $$('[data-items] button').forEach((x) => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+    $$('img', spec).forEach((im, k) => im.classList.toggle('on', k === +b.dataset.i));
+  }));
+  // one stay chooser (in the sheet); every Booking.com link on the page and the booking pill follow it
+  // (Booking.com's checkin/checkout parameters checked live 2026-10-20; the other listings take none)
+  const box = $('[data-stay]'), arr = $('[data-arr]', box), val = $('[data-val]', box), out = $('.n', box), leave = $('.leave', box);
+  const bks = $$('[data-ota="booking"]'), base = bks[0].getAttribute('href'), summary = $('[data-summary]');
+  const pad = (x) => String(x).padStart(2, '0'), iso = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  const long = new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long' }), short = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short' });
+  let n = 3; arr.min = iso(new Date()); const emptyLeave = leave.textContent;
+  const sync = (anim) => { $('[data-n="-1"]', box).disabled = n <= 1; $('[data-n="1"]', box).disabled = n >= 14;
+    if (!arr.value) { val.textContent = 'Choose a date'; leave.textContent = emptyLeave; summary.textContent = 'Choose your dates'; bks.forEach((b) => b.href = base); return; }
+    const a = new Date(arr.value + 'T12:00:00'), d = new Date(a); d.setDate(a.getDate() + n);
+    val.textContent = long.format(a); leave.textContent = long.format(d);
+    summary.textContent = `${short.format(a)} – ${short.format(d)}, ${n} night${n > 1 ? 's' : ''}`;
+    if (anim && !reduce) leave.animate([{ opacity: 0, transform: 'translateY(4px)' }, { opacity: 1, transform: 'none' }], { duration: 180, easing: ease });
+    bks.forEach((b) => b.href = `${base}?checkin=${arr.value}&checkout=${iso(d)}&group_adults=1&no_rooms=1&group_children=0`); };
+  $$('[data-n]', box).forEach((b) => b.addEventListener('click', () => { const dir = +b.dataset.n, next = Math.min(14, Math.max(1, n + dir)); if (next === n) return; n = next;
+    const sp = document.createElement('span'); sp.textContent = n; out.replaceChildren(sp);
+    if (!reduce) sp.animate([{ opacity: 0, transform: `translateY(${dir > 0 ? 8 : -8}px)` }, { opacity: 1, transform: 'none' }], { duration: 180, easing: ease });
+    sync(true); }));
+  arr.addEventListener('change', () => sync(true));
+  arr.addEventListener('click', () => { try { arr.showPicker(); } catch (e) { /* the native control handles it */ } });
+  sync(false);
+  // "Check dates" opens the sheet (a bottom sheet on a phone); Esc closes; focus returns
+  const sheet = $('#sheet'); let opener = null;
+  $$('.sheet .lists .btn').forEach((b, i) => b.style.setProperty('--i', i));
+  const close = () => { if (!sheet.open || sheet.classList.contains('closing')) return; sheet.classList.add('closing');
+    const done = () => { sheet.classList.remove('closing'); sheet.close(); opener && opener.focus(); }; reduce ? done() : setTimeout(done, 200); };
+  $$('[data-book]').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); opener = a; sheet.showModal(); arr.focus(); }));
+  $('[data-close]', sheet).addEventListener('click', close);
+  sheet.addEventListener('cancel', (e) => { e.preventDefault(); close(); });
+  sheet.addEventListener('click', (e) => { if (e.target === sheet) close(); });
+})();
+</script>
+</body>
+</html>

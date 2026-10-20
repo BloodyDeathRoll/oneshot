@@ -1,0 +1,82 @@
+{
+ "url": "http://127.0.0.1:8819/sites/layday-surf-ahangama-v2/mockups/calm/dist/index.html",
+ "phone": {
+  "bytes": 201972,
+  "lcp": 1428,
+  "fonts": {
+   "h1": "\"Pilcrow Rounded\"",
+   "h2": [
+    "Caveat"
+   ],
+   "used": [
+    "Pilcrow Rounded400",
+    "Pilcrow Rounded500",
+    "Pilcrow Rounded700",
+    "Caveat600",
+    "Caveat Fallbacknormal",
+    "Pilcrow Fallback400",
+    "Pilcrow Fallback500",
+    "Pilcrow Fallback700"
+   ]
+  },
+  "clsLoad": 0,
+  "scroll": {
+   "H": 9280,
+   "frames": {
+    "n": 885,
+    "max": 183,
+    "janky": 4
+   }
+  },
+  "clsScroll": 0,
+  "overflowX": 0,
+  "booking": {
+   "y0": 1200,
+   "y1": 1200,
+   "sheet": [
+    "Check dates on Booking.com [rgb(117, 66, 27)]",
+    "Check dates on Hostelworld [rgb(240, 240, 241)]",
+    "Check dates on Agoda [rgb(240, 240, 241)]"
+   ],
+   "dated": [
+    "https://www.booking.com/hotel/lk/layday-surf-ahangama.html",
+    "https://www.booking.com/hotel/lk/layday-surf-ahangama.html?checkin=2026-12-01&checkout=2026-12-04&group_adults=1&no_rooms=1&group_children=0"
+   ],
+   "pill": [
+    "1 Dec – 4 Dec, 3 nights"
+   ],
+   "afterEsc": {
+    "y": 1200,
+    "focus": "Check dates"
+   }
+  }
+ },
+ "laptop": {
+  "scroll": {
+   "H": 8010,
+   "frames": {
+    "n": 675,
+    "max": 33,
+    "janky": 0
+   }
+  },
+  "cls": 0.0001,
+  "stageFrames": {
+   "n": 485,
+   "max": 17,
+   "janky": 0
+  }
+ },
+ "rm": {
+  "H": 9280,
+  "hidden": [],
+  "broken": 0,
+  "anims": 0
+ },
+ "nojs": {
+  "H": 9192,
+  "hidden": [],
+  "broken": 0,
+  "anims": 1
+ }
+}

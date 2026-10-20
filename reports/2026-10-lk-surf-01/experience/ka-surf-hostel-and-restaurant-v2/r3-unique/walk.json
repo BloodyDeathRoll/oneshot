@@ -1,0 +1,714 @@
+{
+ "phone": {
+  "name": "unique",
+  "url": "http://127.0.0.1:8853/",
+  "mode": "phone",
+  "steps": [
+   {
+    "at": 500,
+    "text": [
+     "h1:Five minutes from Kabalana Beach",
+     "a:Check dates"
+    ]
+   },
+   {
+    "at": 1500,
+    "text": [
+     "h1:Five minutes from Kabalana Beach",
+     "a:Check dates"
+    ]
+   },
+   {
+    "at": 3000,
+    "text": [
+     "h1:Five minutes from Kabalana Beach",
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 1,
+    "y": 591,
+    "anims": [],
+    "text": [
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 2,
+    "y": 1182,
+    "anims": [],
+    "text": [
+     "h2:Dorms and private rooms",
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 3,
+    "y": 1772,
+    "anims": [],
+    "text": [
+     "h2:Dorms and private rooms",
+     "h3:Dorms",
+     "h3:Private rooms",
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 4,
+    "y": 2363,
+    "anims": [],
+    "text": [
+     "h3:Dorms",
+     "h3:Private rooms",
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 5,
+    "y": 2954,
+    "anims": [],
+    "text": [
+     "h2:The beach",
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 6,
+    "y": 3545,
+    "anims": [],
+    "text": [
+     "a:Forecast for Kabalana by Rosa",
+     "a:Open Rosa",
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 7,
+    "y": 4136,
+    "anims": [],
+    "text": [
+     "a:Open Rosa",
+     "a:Hostelworld",
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 8,
+    "y": 4726,
+    "anims": [],
+    "text": [
+     "h2:What guests say about the staff",
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 9,
+    "y": 5317,
+    "anims": [],
+    "text": [
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 10,
+    "y": 5908,
+    "anims": [],
+    "text": [
+     "a:Hostelworld",
+     "a:Booking.com",
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 11,
+    "y": 6499,
+    "anims": [],
+    "text": [
+     "a:Booking.com",
+     "a:9.8/10Hostelworld | 66 reviews",
+     "a:9.4/10Booking.com | 39 reviews",
+     "a:4.8/5Google | 42 reviews",
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 12,
+    "y": 7090,
+    "anims": [],
+    "text": [
+     "h2:Breakfast, every day",
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 13,
+    "y": 7680,
+    "anims": [],
+    "text": [
+     "a:Hostelworld",
+     "h2:What is here",
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 14,
+    "y": 8271,
+    "anims": [],
+    "text": [
+     "h2:What is here",
+     "h3:In your room",
+     "h3:Around the house",
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 15,
+    "y": 8862,
+    "anims": [],
+    "text": [
+     "h3:Around the house",
+     "h3:Services",
+     "h2:On Instagram",
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 16,
+    "y": 9453,
+    "anims": [],
+    "text": [
+     "h2:On Instagram",
+     "a:Follow @kasurfhostel",
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 17,
+    "y": 10044,
+    "anims": [],
+    "text": [
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 18,
+    "y": 10634,
+    "anims": [],
+    "text": [
+     "h2:Getting here",
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 19,
+    "y": 11225,
+    "anims": [],
+    "text": [
+     "a:Open in Google Maps",
+     "a:Open in Google Maps \u2192\u00a9 OpenStreetMap contributors",
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 20,
+    "y": 11816,
+    "anims": [],
+    "text": [
+     "a:Open in Google Maps \u2192\u00a9 OpenStreetMap contributors",
+     "h3:Check dates",
+     "a:Check dates on Booking.com \u2192",
+     "a:Check dates on Hostelworld \u2192",
+     "a:Check dates on Agoda \u2192",
+     "h3:Call or follow",
+     "a:+94 77 374 6053",
+     "a:@kasurfhostel",
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 21,
+    "y": 12324,
+    "anims": [],
+    "text": [
+     "a:Check dates on Hostelworld \u2192",
+     "a:Check dates on Agoda \u2192",
+     "h3:Call or follow",
+     "a:+94 77 374 6053",
+     "a:@kasurfhostel",
+     "h3:Find us",
+     "h3:Ratings",
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 22,
+    "y": 12324,
+    "anims": [],
+    "text": [
+     "a:Check dates on Hostelworld \u2192",
+     "a:Check dates on Agoda \u2192",
+     "h3:Call or follow",
+     "a:+94 77 374 6053",
+     "a:@kasurfhostel",
+     "h3:Find us",
+     "h3:Ratings",
+     "a:Check dates"
+    ]
+   }
+  ],
+  "phone": {
+   "loadBytes": 839683,
+   "extOnLoad": 0,
+   "lcp": 1244,
+   "cls": 0,
+   "H": 13168,
+   "fonts": [
+    "Switzer fb 400",
+    "Switzer fb 500",
+    "Nanum fb normal",
+    "Switzer 400",
+    "Switzer 500",
+    "Nanum Pen Script 400"
+   ],
+   "idle": {
+    "n": 340,
+    "over34": 0,
+    "max": 17
+   },
+   "scrollFrames": {
+    "n": 1188,
+    "over34": 0,
+    "max": 17
+   },
+   "clsAfterScroll": 0,
+   "extAfterScroll": [
+    "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+   ],
+   "booking": {
+    "cta": {
+     "href": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+     "x": 165,
+     "y": 808,
+     "w": 306,
+     "h": 52,
+     "bg": "rgb(210, 60, 6)",
+     "color": "rgb(255, 255, 255)"
+    },
+    "navigatedOut": [],
+    "after": {
+     "dialog": "DIALOG.sheet",
+     "items": [
+      "button:",
+      "a:Check dates on Booking.com \u2192 -> www.booking.com",
+      "a:Check dates on Hostelworld \u2192 -> www.hostelworld.com",
+      "a:Check dates on Agoda \u2192 -> www.agoda.com",
+      "a:Call +94 77 374 6053 \u2192 -> "
+     ],
+     "focusInside": true
+    },
+    "frames": {
+     "n": 72,
+     "over34": 0,
+     "max": 17
+    },
+    "escClosed": true,
+    "focusBack": true
+   },
+   "fontCdn": 0
+  }
+ },
+ "laptop": {
+  "name": "unique",
+  "url": "http://127.0.0.1:8853/",
+  "mode": "laptop",
+  "steps": [
+   {
+    "at": 300,
+    "text": [
+     "h1:Five minutes from Kabalana Beach",
+     "a:Check dates"
+    ]
+   },
+   {
+    "at": 1000,
+    "text": [
+     "h1:Five minutes from Kabalana Beach",
+     "a:Check dates"
+    ]
+   },
+   {
+    "at": 2500,
+    "text": [
+     "h1:Five minutes from Kabalana Beach",
+     "a:Check dates"
+    ]
+   },
+   {
+    "stop": 1,
+    "y": 630,
+    "anims": [],
+    "text": [
+     "h2:Dorms and private rooms",
+     "h3:Dorms",
+     "h3:Private rooms"
+    ]
+   },
+   {
+    "stop": 2,
+    "y": 1260,
+    "anims": [
+     "transform",
+     "opacity",
+     "opacity",
+     "transform",
+     "opacity",
+     "opacity",
+     "transform"
+    ],
+    "text": [
+     "a:KA Surf Hostel",
+     "a:Rooms",
+     "a:The beach",
+     "a:Breakfast",
+     "a:Getting here",
+     "a:Check dates",
+     "h3:Dorms",
+     "h3:Private rooms"
+    ]
+   },
+   {
+    "stop": 3,
+    "y": 1890,
+    "anims": [],
+    "text": [
+     "a:KA Surf Hostel",
+     "a:Rooms",
+     "a:The beach",
+     "a:Breakfast",
+     "a:Getting here",
+     "a:Check dates",
+     "h2:The beach",
+     "a:Forecast for Kabalana by Rosa",
+     "a:Open Rosa"
+    ]
+   },
+   {
+    "stop": 4,
+    "y": 2520,
+    "anims": [],
+    "text": [
+     "a:KA Surf Hostel",
+     "a:Rooms",
+     "a:The beach",
+     "a:Breakfast",
+     "a:Getting here",
+     "a:Check dates",
+     "a:Forecast for Kabalana by Rosa",
+     "a:Open Rosa",
+     "a:Hostelworld"
+    ]
+   },
+   {
+    "stop": 5,
+    "y": 3150,
+    "anims": [],
+    "text": [
+     "a:KA Surf Hostel",
+     "a:Rooms",
+     "a:The beach",
+     "a:Breakfast",
+     "a:Getting here",
+     "a:Check dates",
+     "h2:What guests say about the staff"
+    ]
+   },
+   {
+    "stop": 6,
+    "y": 3780,
+    "anims": [],
+    "text": [
+     "a:KA Surf Hostel",
+     "a:Rooms",
+     "a:The beach",
+     "a:Breakfast",
+     "a:Getting here",
+     "a:Check dates",
+     "h2:What guests say about the staff"
+    ]
+   },
+   {
+    "stop": 7,
+    "y": 4410,
+    "anims": [],
+    "text": [
+     "a:KA Surf Hostel",
+     "a:Rooms",
+     "a:The beach",
+     "a:Breakfast",
+     "a:Getting here",
+     "a:Check dates",
+     "a:Hostelworld",
+     "a:Booking.com"
+    ]
+   },
+   {
+    "stop": 8,
+    "y": 5040,
+    "anims": [
+     "opacity",
+     "transform"
+    ],
+    "text": [
+     "a:KA Surf Hostel",
+     "a:Rooms",
+     "a:The beach",
+     "a:Breakfast",
+     "a:Getting here",
+     "a:Check dates",
+     "a:Booking.com",
+     "a:9.8/10Hostelworld | 66 reviews",
+     "a:9.4/10Booking.com | 39 reviews",
+     "a:4.8/5Google | 42 reviews",
+     "h2:Breakfast, every day"
+    ]
+   },
+   {
+    "stop": 9,
+    "y": 5670,
+    "anims": [
+     "opacity",
+     "transform",
+     "opacity",
+     "transform"
+    ],
+    "text": [
+     "a:KA Surf Hostel",
+     "a:Rooms",
+     "a:The beach",
+     "a:Breakfast",
+     "a:Getting here",
+     "a:Check dates",
+     "h2:Breakfast, every day",
+     "a:Hostelworld"
+    ]
+   },
+   {
+    "stop": 10,
+    "y": 6300,
+    "anims": [],
+    "text": [
+     "a:KA Surf Hostel",
+     "a:Rooms",
+     "a:The beach",
+     "a:Breakfast",
+     "a:Getting here",
+     "a:Check dates",
+     "h2:What is here"
+    ]
+   },
+   {
+    "stop": 11,
+    "y": 6930,
+    "anims": [],
+    "text": [
+     "a:KA Surf Hostel",
+     "a:Rooms",
+     "a:The beach",
+     "a:Breakfast",
+     "a:Getting here",
+     "a:Check dates",
+     "h2:What is here",
+     "h3:In your room",
+     "h3:Around the house",
+     "h3:Services",
+     "h2:On Instagram",
+     "a:Follow @kasurfhostel"
+    ]
+   },
+   {
+    "stop": 12,
+    "y": 7560,
+    "anims": [
+     "transform",
+     "transform",
+     "opacity",
+     "transform",
+     "opacity",
+     "transform",
+     "opacity",
+     "transform",
+     "opacity",
+     "transform"
+    ],
+    "text": [
+     "a:KA Surf Hostel",
+     "a:Rooms",
+     "a:The beach",
+     "a:Breakfast",
+     "a:Getting here",
+     "a:Check dates",
+     "h2:On Instagram",
+     "a:Follow @kasurfhostel"
+    ]
+   },
+   {
+    "stop": 13,
+    "y": 8190,
+    "anims": [],
+    "text": [
+     "a:KA Surf Hostel",
+     "a:Rooms",
+     "a:The beach",
+     "a:Breakfast",
+     "a:Getting here",
+     "a:Check dates",
+     "h2:Getting here",
+     "a:Open in Google Maps \u2192\u00a9 OpenStreetMap contributors"
+    ]
+   },
+   {
+    "stop": 14,
+    "y": 8820,
+    "anims": [],
+    "text": [
+     "a:KA Surf Hostel",
+     "a:Rooms",
+     "a:The beach",
+     "a:Breakfast",
+     "a:Getting here",
+     "a:Check dates",
+     "h2:Getting here",
+     "a:Open in Google Maps",
+     "a:Open in Google Maps \u2192\u00a9 OpenStreetMap contributors",
+     "h3:Check dates",
+     "a:Check dates on Booking.com \u2192",
+     "a:Check dates on Hostelworld \u2192",
+     "a:Check dates on Agoda \u2192",
+     "h3:Call or follow"
+    ]
+   },
+   {
+    "stop": 15,
+    "y": 9141,
+    "anims": [],
+    "text": [
+     "a:KA Surf Hostel",
+     "a:Rooms",
+     "a:The beach",
+     "a:Breakfast",
+     "a:Getting here",
+     "a:Check dates",
+     "a:Open in Google Maps",
+     "a:Open in Google Maps \u2192\u00a9 OpenStreetMap contributors",
+     "h3:Check dates",
+     "a:Check dates on Booking.com \u2192",
+     "a:Check dates on Hostelworld \u2192",
+     "a:Check dates on Agoda \u2192",
+     "h3:Call or follow",
+     "a:+94 77 374 6053"
+    ]
+   },
+   {
+    "stop": 16,
+    "y": 9141,
+    "anims": [],
+    "text": [
+     "a:KA Surf Hostel",
+     "a:Rooms",
+     "a:The beach",
+     "a:Breakfast",
+     "a:Getting here",
+     "a:Check dates",
+     "a:Open in Google Maps",
+     "a:Open in Google Maps \u2192\u00a9 OpenStreetMap contributors",
+     "h3:Check dates",
+     "a:Check dates on Booking.com \u2192",
+     "a:Check dates on Hostelworld \u2192",
+     "a:Check dates on Agoda \u2192",
+     "h3:Call or follow",
+     "a:+94 77 374 6053"
+    ]
+   }
+  ],
+  "laptop": {
+   "loadBytes": 512365,
+   "extOnLoad": 0,
+   "lcp": 120,
+   "cls": 0,
+   "H": 10041,
+   "fonts": [
+    "Switzer fb 400",
+    "Switzer fb 500",
+    "Nanum fb normal",
+    "Switzer 400",
+    "Switzer 500",
+    "Nanum Pen Script 400"
+   ],
+   "idle": {
+    "n": 235,
+    "over34": 0,
+    "max": 17
+   },
+   "scrollFrames": {
+    "n": 856,
+    "over34": 0,
+    "max": 33
+   },
+   "clsAfterScroll": 0,
+   "extAfterScroll": [
+    "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+   ],
+   "booking": {
+    "cta": {
+     "href": "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+     "x": 719.984375,
+     "y": 537.265625,
+     "w": 160,
+     "h": 52,
+     "bg": "rgb(210, 60, 6)",
+     "color": "rgb(255, 255, 255)"
+    },
+    "hover60": "rgb(192, 54, 4)",
+    "hover400": "rgb(184, 52, 3)",
+    "navigatedOut": [],
+    "after": {
+     "dialog": "DIALOG.sheet",
+     "items": [
+      "button:",
+      "a:Check dates on Booking.com \u2192 -> www.booking.com",
+      "a:Check dates on Hostelworld \u2192 -> www.hostelworld.com",
+      "a:Check dates on Agoda \u2192 -> www.agoda.com",
+      "a:Call +94 77 374 6053 \u2192 -> "
+     ],
+     "focusInside": true
+    },
+    "frames": {
+     "n": 67,
+     "over34": 0,
+     "max": 17
+    },
+    "escClosed": true,
+    "focusBack": true
+   },
+   "fontCdn": 0
+  }
+ },
+ "extra": {
+  "name": "unique",
+  "url": "http://127.0.0.1:8853/",
+  "mode": "extra",
+  "steps": [],
+  "reduced": {
+   "hidden": 0,
+   "hid": [],
+   "broken": 0,
+   "running": 0
+  },
+  "nojs": {
+   "hidden": 0,
+   "hid": [],
+   "broken": 0,
+   "running": 0
+  }
+ }
+}

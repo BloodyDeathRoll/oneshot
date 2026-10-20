@@ -1,0 +1,167 @@
+{
+ ".widget": {
+  "boxH_before": 500,
+  "boxH_after": 500,
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "hidden": false,
+  "frameRect": [
+   358,
+   500
+  ],
+  "loading": "false",
+  "fallbackVisible": true
+ },
+ "#map": {
+  "boxH_before": 269,
+  "boxH_after": 269,
+  "src": "https://maps.google.com/maps?q=5.9818405,80.3520113&z=15&output=embed",
+  "hidden": false,
+  "frameRect": [
+   358,
+   269
+  ],
+  "loading": "false",
+  "fallbackVisible": true
+ },
+ "requests": [
+  [
+   1792495962941,
+   "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  [
+   1792495963362,
+   "https://rosa-data-opal.vercel.app/data/spots/kabalana.json"
+  ],
+  [
+   1792495963652,
+   "https://rosa.surf/favicon.svg"
+  ],
+  [
+   1792495963652,
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5923"
+  ],
+  [
+   1792495963652,
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924"
+  ],
+  [
+   1792495963652,
+   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5925"
+  ],
+  [
+   1792495970523,
+   "https://maps.google.com/maps?q=5.9818405,80.3520113&z=15&output=embed"
+  ],
+  [
+   1792495970874,
+   "https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s5.9818405,80.3520113!6i15"
+  ],
+  [
+   1792495971445,
+   "https://maps.gstatic.com/maps-api-v3/embed/js/66/9d/init_embed.js"
+  ],
+  [
+   1792495971445,
+   "https://maps.googleapis.com/maps/api/js?key=AIzaSyCmL18misQw9KdwqGaw3zHkitj8vG6QF2Y&paint_origin=&libraries=geometry,sea"
+  ],
+  [
+   1792495971715,
+   "https://maps.googleapis.com/maps-api-v3/api/js/66/9d/geometry.js"
+  ],
+  [
+   1792495971715,
+   "https://maps.googleapis.com/maps-api-v3/api/js/66/9d/search.js"
+  ],
+  [
+   1792495971715,
+   "https://maps.googleapis.com/maps-api-v3/api/js/66/9d/main.js"
+  ],
+  [
+   1792495971916,
+   "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true"
+  ],
+  [
+   1792495971934,
+   "https://maps.googleapis.com/maps-api-v3/api/js/66/9d/common.js"
+  ],
+  [
+   1792495971934,
+   "https://maps.googleapis.com/maps-api-v3/api/js/66/9d/util.js"
+  ],
+  [
+   1792495971934,
+   "https://maps.googleapis.com/maps-api-v3/api/js/66/9d/map.js"
+  ],
+  [
+   1792495971934,
+   "https://maps.googleapis.com/maps-api-v3/api/js/66/9d/controls.js"
+  ],
+  [
+   1792495971934,
+   "https://maps.googleapis.com/maps-api-v3/api/js/66/9d/places_impl.js"
+  ],
+  [
+   1792495971935,
+   "https://maps.googleapis.com/maps-api-v3/api/js/66/9d/places.js"
+  ],
+  [
+   1792495971935,
+   "https://maps.googleapis.com/maps/api/js/StaticMapService.GetMapImage?1m2&1i6066463&2i4054529&2e1&3u15&4m2&1u358&2u269&5m"
+  ],
+  [
+   1792495971936,
+   "https://maps.googleapis.com/maps-api-v3/api/js/66/9d/onion.js"
+  ],
+  [
+   1792495971936,
+   "https://maps.googleapis.com/maps-api-v3/api/js/66/9d/search_impl.js"
+  ],
+  [
+   1792495972059,
+   "https://maps.gstatic.com/mapfiles/openhand_8_8.cur"
+  ],
+  [
+   1792495972065,
+   "https://maps.googleapis.com/maps-api-v3/api/js/66/9d/log.js"
+  ],
+  [
+   1792495972128,
+   "https://maps.googleapis.com/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo"
+  ],
+  [
+   1792495972284,
+   "https://www.google.com/maps/vt?pb=!1m5!1m4!1i15!2i23698!3i15839!4i256!2m3!1e0!2sm!3i800566138!2m3!1e2!2sspotlit!5i1!3m13"
+  ],
+  [
+   1792495972285,
+   "https://www.google.com/maps/vt?pb=!1m5!1m4!1i15!2i23697!3i15839!4i256!2m3!1e0!2sm!3i800566066!2m3!1e2!2sspotlit!5i1!3m13"
+  ],
+  [
+   1792495972285,
+   "https://www.google.com/maps/vt?pb=!1m5!1m4!1i15!2i23697!3i15838!4i256!2m3!1e0!2sm!3i800566066!2m3!1e2!2sspotlit!5i1!3m13"
+  ],
+  [
+   1792495972285,
+   "https://www.google.com/maps/vt?pb=!1m5!1m4!1i15!2i23698!3i15838!4i256!2m3!1e0!2sm!3i800566138!2m3!1e2!2sspotlit!5i1!3m13"
+  ],
+  [
+   1792495972287,
+   "https://www.google.com/maps/vt?pb=!1m4!1m3!1i15!2i23697!3i15838!1m4!1m3!1i15!2i23697!3i15839!1m4!1m3!1i15!2i23698!3i1583"
+  ],
+  [
+   1792495973816,
+   "https://maps.googleapis.com/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo"
+  ],
+  [
+   1792495973825,
+   "https://www.google.com/maps/vt?pb=!1m5!1m4!1i12!2i2962!3i1979!4i256!2m1!1e1!3m12!2sen-US!3sUS!5e289!12m3!1e37!2m1!1ssmar"
+  ]
+ ],
+ "frames": [
+  "http://127.0.0.1:9341/",
+  "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s5.9818405,80.3520113!6i15",
+  "about:blank",
+  "about:blank"
+ ]
+}

@@ -1,0 +1,108 @@
+{
+ "slug": "the-lavish-haven",
+ "variant": "interactive",
+ "measured_at": "2026-10-20T10:55:08.010Z",
+ "first_load": {
+  "requests": 7,
+  "hosts": [
+   "localhost:8980"
+  ],
+  "third_party_hosts": [],
+  "bytes_total": 416875,
+  "bytes_html": 28504,
+  "bytes_js": 6493,
+  "bytes_css": 0,
+  "bytes_fonts": 112176,
+  "bytes_images": 269702,
+  "largest_image_bytes": 162440,
+  "lcp_ms": 356,
+  "cls": 0.0005,
+  "dcl_ms": 583
+ },
+ "scroll": {
+  "early": {
+   "cls": 0.0005,
+   "shifts": []
+  },
+  "settled": {
+   "cls": 0,
+   "shifts": []
+  }
+ },
+ "booking": {
+  "external_booking_hrefs": [
+   "https://www.google.com/maps/search/The%20Lavish%20Haven%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+   "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+   "https://www.agoda.com/the-lavish-haven-h82617698/hotel/piyadigama-lk.html"
+  ],
+  "tel_hrefs": [
+   "tel:+94764832988"
+  ],
+  "drawer_triggers": 14,
+  "triggers_are_links": true,
+  "primary_above_fold": true,
+  "tapped": "#book"
+ },
+ "keyboard": {
+  "drawer_opens": true,
+  "closed": true,
+  "focus_returned": true
+ },
+ "a11y": {
+  "images": 13,
+  "images_without_alt": 0,
+  "images_alt_empty_decorative": 0,
+  "tapables": 23,
+  "tapables_under_44px": 16,
+  "tapables_under_44px_examples": [
+   "Check this room 126x24",
+   "Check this room 126x24",
+   "Check this room 126x24",
+   "Check this room 126x24",
+   "Check this room 126x24",
+   "Check this room 126x24"
+  ],
+  "headings": [
+   "H1",
+   "H2",
+   "H2",
+   "H2",
+   "H2",
+   "H2",
+   "H3",
+   "H3",
+   "H3",
+   "H2"
+  ],
+  "has_skip_link": true,
+  "lang": "en"
+ },
+ "no_js": {
+  "text_length": 6025,
+  "booking_links_reachable": 4,
+  "visible_images": 13
+ },
+ "reduced_motion": {
+  "canvases": 1,
+  "canvases_hidden": 1,
+  "photograph_visible": true
+ },
+ "facts": {
+  "numbers_on_page": 31,
+  "numbers_not_in_passed_copy": [
+   "12",
+   "01",
+   "02",
+   "03",
+   "04",
+   "05",
+   "07",
+   "08",
+   "09",
+   "11",
+   "19",
+   "2026"
+  ],
+  "note": "copy/en.json passed station 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps each paragraph to its dossier fields. A number here that is not in the copy is either an interface label (01, 02…) or a claim to chase."
+ }
+}

@@ -1,0 +1,178 @@
+{
+ "v2-calm": {
+  "rosa_requests": [
+   "scrolled https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "rosa_block": {
+   "iframe_src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+   "loading": "lazy",
+   "size": [
+    350,
+    500
+   ],
+   "block_text": "Kabalana Kabalana: a sandy beach break for beginners and intermediates, with The Rock reef A-frame for advanced surfers. The beach is two minutes from the hotel, on foot. 0.7–1.1 mchest-high Kabalana, Sun 21 Sep, 20:30 Swell 1.3 m | 12.6 s | from the S Wind 6.5 km/h | cross-shore Forecast for Kabalana by Rosa See today's forecast for Kabalana on Rosa"
+  },
+  "nojs_rosa_link": [
+   "Forecast for Kabalana by Rosa -> https://rosa.surf/spot/kabalana",
+   "See today's forecast for Kabalana on Rosa -> https://rosa.surf/spot/kabalana"
+  ],
+  "tapped_text": "Check dates",
+  "tapped_href": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+  "tap_nav": [
+   "https://www.booking.com/hotel/lk/the-lavish-haven.html"
+  ],
+  "after": {
+   "dialog": false,
+   "focus": "BODY ",
+   "links": []
+  },
+  "taps_to_engine": 1,
+  "focus_no_indicator": [
+   "IFRAME  @6967 420x500",
+   "IFRAME  @6965 420x500"
+  ]
+ },
+ "v2-interactive": {
+  "rosa_requests": [
+   "scrolled https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "rosa_block": {
+   "iframe_src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+   "loading": "lazy",
+   "size": [
+    350,
+    500
+   ],
+   "block_text": "Kabalana Kabalana: a sandy beach break for beginners and intermediates, with The Rock reef A-frame for advanced surfers. The beach is two minutes from the hotel, on foot. 0.7–1.1 m chest-high Kabalana, Sun 21 Sep, 20:30 Swell 1.3 m | 12.6 s | from the S Wind 6.5 km/h | cross-shore Forecast for Kabalana by Rosa See today's forecast for Kabalana on Rosa"
+  },
+  "nojs_rosa_link": [
+   "Forecast for Kabalana by Rosa -> https://rosa.surf/spot/kabalana",
+   "See today's forecast for Kabalana on Rosa -> https://rosa.surf/spot/kabalana"
+  ],
+  "tapped_text": "Check dates",
+  "tapped_href": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+  "tap_nav": [
+   "https://www.booking.com/hotel/lk/the-lavish-haven.html"
+  ],
+  "after": {
+   "dialog": false,
+   "focus": "BODY ",
+   "links": []
+  },
+  "taps_to_engine": 1,
+  "focus_no_indicator": [
+   "IFRAME  @5841 420x500"
+  ]
+ },
+ "v2-unique": {
+  "rosa_requests": [],
+  "rosa_block": null,
+  "nojs_rosa_link": [],
+  "tapped_text": "Check dates",
+  "tapped_href": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+  "tap_nav": [
+   "https://www.booking.com/hotel/lk/the-lavish-haven.html"
+  ],
+  "after": {
+   "dialog": false,
+   "focus": "BODY ",
+   "links": []
+  },
+  "taps_to_engine": 1,
+  "focus_no_indicator": []
+ },
+ "old-calm": {
+  "rosa_requests": [
+   "scrolled https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "rosa_block": {
+   "iframe_src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+   "loading": "lazy",
+   "size": [
+    350,
+    500
+   ],
+   "block_text": "THE WAVE Kabalana: a sandy beach break for beginners and intermediates, with The Rock reef A-frame for advanced surfers. The beach is two minutes from the hotel, on foot. Live forecast for Kabalana from rosa.surf."
+  },
+  "nojs_rosa_link": [],
+  "tapped_text": "CHECK DATES",
+  "tapped_href": "#book",
+  "tap_nav": [],
+  "after": {
+   "dialog": false,
+   "focus": "BODY SKIP TO BOOKING\nThe Lavish Hav",
+   "links": [
+    "CHECK DATES ON BOOKING.COM -> https://www.booking.com/hotel/lk/the-lavish-haven.html",
+    "CHECK DATES ON AGODA -> https://www.agoda.com/the-lavish-haven-h82617698/hotel/piyadigama-lk.html",
+    "CALL THE FRONT DESK -> tel:+94764832988",
+    "CHECK DATES -> https://www.booking.com/hotel/lk/the-lavish-haven.html",
+    "CALL -> tel:+94764832988"
+   ]
+  },
+  "second_tap": [
+   "https://www.booking.com/hotel/lk/the-lavish-haven.html"
+  ],
+  "taps_to_engine": 2,
+  "focus_no_indicator": [
+   "IFRAME  @7373 420x500"
+  ]
+ },
+ "old-interactive": {
+  "rosa_requests": [],
+  "rosa_block": null,
+  "nojs_rosa_link": [],
+  "tapped_text": "BOOK",
+  "tapped_href": "#book",
+  "tap_nav": [],
+  "after": {
+   "dialog": false,
+   "focus": "A CHECK DATES ON BOOKING.COM",
+   "links": [
+    "CHECK DATES ON BOOKING.COM -> https://www.booking.com/hotel/lk/the-lavish-haven.html",
+    "CHECK DATES ON AGODA -> https://www.agoda.com/the-lavish-haven-h82617698/hotel/piyadigama-lk.html",
+    "CALL +94764832988 -> tel:+94764832988",
+    "CALL -> tel:+94764832988"
+   ]
+  },
+  "second_tap": [
+   "https://www.booking.com/hotel/lk/the-lavish-haven.html"
+  ],
+  "taps_to_engine": 2,
+  "focus_no_indicator": []
+ },
+ "old-unique": {
+  "rosa_requests": [
+   "scrolled https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric"
+  ],
+  "rosa_block": {
+   "iframe_src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+   "loading": "lazy",
+   "size": [
+    350,
+    500
+   ],
+   "block_text": "THE WAVE Kabalana: a sandy beach break for beginners and intermediates, with The Rock reef A-frame for advanced surfers. The beach is two minutes from the hotel, on foot. BEFORE YOU ARRIVE The front desk is staffed 24 hours, with private and express check-in. You can check in from 14:00 until midnight and check out at any hour. Payment at the hotel is cash only. Parking is free and private, but yo"
+  },
+  "nojs_rosa_link": [],
+  "tapped_text": "CHECK DATES",
+  "tapped_href": "#book",
+  "tap_nav": [],
+  "after": {
+   "dialog": false,
+   "focus": "A CHECK DATES ON BOOKING.COM",
+   "links": [
+    "CHECK DATES ON BOOKING.COM -> https://www.booking.com/hotel/lk/the-lavish-haven.html",
+    "CHECK DATES ON AGODA -> https://www.agoda.com/the-lavish-haven-h82617698/hotel/piyadigama-lk.html",
+    "CALL +94764832988 -> tel:+94764832988",
+    "CALL -> tel:+94764832988"
+   ]
+  },
+  "second_tap": [
+   "https://www.booking.com/hotel/lk/the-lavish-haven.html"
+  ],
+  "taps_to_engine": 2,
+  "focus_no_indicator": [
+   "IFRAME  @3187 420x500"
+  ]
+ }
+}

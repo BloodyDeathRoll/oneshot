@@ -1,0 +1,22 @@
+
+FAIL  sites/the-lavish-haven/mockups/calm/dist/index.html
+      1440px: img-002-1024.webp is drawn 1440px wide from a 1024px source (img-002) — nothing under 1200px goes full-bleed (hard constraint 7)
+      1440px: img-001-1024.webp is drawn 1440px wide from a 1024px source (img-001) — nothing under 1200px goes full-bleed (hard constraint 7)
+      1440px: img-073-1024.webp is drawn 1440px wide from a 1024px source (img-073) — nothing under 1200px goes full-bleed (hard constraint 7)
+      1440px: img-067-1024.webp is drawn 1440px wide from a 1024px source (img-067) — nothing under 1200px goes full-bleed (hard constraint 7)
+      1440px: img-077-1024.webp is drawn 1440px wide from a 1024px source (img-077) — nothing under 1200px goes full-bleed (hard constraint 7)
+      1440px: img-068-1024.webp is drawn 1440px wide from a 1024px source (img-068) — nothing under 1200px goes full-bleed (hard constraint 7)
+      look: fonts h1 "Instrument Serif" · h2 "Instrument Serif" · body "Inter"   ground rgb(244, 240, 232) = hsl(40 35% 93%)   all-caps labels 23   labelled headings 1/10
+      WARN default look — h1 is set in Instrument Serif — a default-look display face
+      WARN default look — h2 is set in Instrument Serif — a default-look display face
+      WARN default look — body is set in Inter — a default-look body face
+      WARN default look — page ground rgb(244, 240, 232) is hsl(40 35% 93%) — in the cream range
+      WARN default look — 23 tracked all-caps label(s)
+      WARN default look — 1 of 10 headings directly preceded by an all-caps label
+┌─────────┬───────────────────────────────────────────────────────┬──────────┬──────────┐
+│ (index) │ page                                                  │ problems │ warnings │
+├─────────┼───────────────────────────────────────────────────────┼──────────┼──────────┤
+│ 0       │ 'sites/the-lavish-haven/mockups/calm/dist/index.html' │ 6        │ 6        │
+└─────────┴───────────────────────────────────────────────────────┴──────────┴──────────┘
+
+1 page(s) · 1 failing · default-look warnings never fail

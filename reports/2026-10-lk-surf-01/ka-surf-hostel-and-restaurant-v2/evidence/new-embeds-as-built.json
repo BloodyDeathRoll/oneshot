@@ -1,0 +1,32 @@
+{
+ ".widget": {
+  "boxH_before": 500,
+  "boxH_after": 500,
+  "src": "https://rosa.surf/widget/?spot=kabalana&theme=light&units=metric",
+  "hidden": true,
+  "frameRect": [
+   0,
+   0
+  ],
+  "loading": "true",
+  "fallbackVisible": true
+ },
+ "#map": {
+  "boxH_before": 269,
+  "boxH_after": 269,
+  "src": "https://maps.google.com/maps?q=5.9818405,80.3520113&z=15&output=embed",
+  "hidden": true,
+  "frameRect": [
+   0,
+   0
+  ],
+  "loading": "true",
+  "fallbackVisible": true
+ },
+ "requests": [],
+ "frames": [
+  "http://127.0.0.1:9340/",
+  "about:blank",
+  "about:blank"
+ ]
+}

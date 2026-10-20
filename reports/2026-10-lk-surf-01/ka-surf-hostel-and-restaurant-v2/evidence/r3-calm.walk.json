@@ -1,0 +1,113 @@
+{
+ "slug": "ka-surf-hostel-and-restaurant-v2",
+ "variant": "calm",
+ "url": "http://127.0.0.1:9461/",
+ "load_thirdparty": [],
+ "first_screen_actions": [
+  [
+   "KA Surf Hostel",
+   "#top",
+   123,
+   44
+  ],
+  [
+   "Check dates",
+   "https://www.booking.com/hotel/lk/ka-surf-hostel.html",
+   358,
+   56
+  ]
+ ],
+ "tap": {
+  "trigger": {
+   "t": "Check dates",
+   "href": "https://www.booking.com/hotel/lk/ka-surf-hostel.html"
+  },
+  "after": {
+   "url": "http://127.0.0.1:9461/",
+   "sheet_open": true,
+   "tag": "DIALOG",
+   "links": [
+    [
+     "Check dates on Booking.com →",
+     "https://www.booking.com/hotel/lk/ka-surf-hostel.html"
+    ],
+    [
+     "Check dates on Hostelworld →",
+     "https://www.hostelworld.com/hostels/p/331096/k-a-surf-hostel/"
+    ],
+    [
+     "Check dates on Agoda →",
+     "https://www.agoda.com/en-in/ka-surf-hostel-h61738910/hotel/ahangama-lk.html"
+    ],
+    [
+     "Call +94 77 374 6053 →",
+     "tel:+94773746053"
+    ]
+   ],
+   "focus_in": true
+  },
+  "navigations_before_sheet_link": [],
+  "navigations": [
+   "https://www.booking.com/hotel/lk/ka-surf-hostel.html"
+  ]
+ },
+ "overflow": [],
+ "scroll_thirdparty": [],
+ "iframes": [],
+ "bar_mid": 1,
+ "blocked": {
+  "iframes_shown": 0,
+  "rosa_links": [],
+  "fallback_text": [],
+  "book_links": 16,
+  "first_check_dates_href": "https://www.booking.com/hotel/lk/ka-surf-hostel.html"
+ },
+ "nojs": {
+  "iframes_shown": 0,
+  "rosa_links": [],
+  "fallback_text": [],
+  "book_links": 16,
+  "first_check_dates_href": "https://www.booking.com/hotel/lk/ka-surf-hostel.html"
+ },
+ "tabs": [
+  [
+   "KA Surf Hostel",
+   "solid 2px"
+  ],
+  [
+   "Rooms",
+   "solid 2px"
+  ],
+  [
+   "Kabalana",
+   "solid 2px"
+  ],
+  [
+   "Breakfast",
+   "solid 2px"
+  ],
+  [
+   "Guests",
+   "solid 2px"
+  ],
+  [
+   "Getting here",
+   "solid 2px"
+  ]
+ ],
+ "kbd": {
+  "trigger": "Check dates",
+  "open": {
+   "open": true,
+   "focus_in": true
+  },
+  "after12tabs_in": true,
+  "esc": {
+   "still_open": false,
+   "focus": "Check dates"
+  }
+ },
+ "text": "KA Surf Hostel\nRooms\nKabalana\nBreakfast\nGuests\nGetting here\nCheck dates\nFive minutes from Kabalana Beach\n\nSurf, chill and feel at home in Ahangama\n\nCheck dates\n\n9.8/10 on Hostelworld | 66 reviews | Sep 2026\n\nDorms and private rooms\n\nA family runs this place, and they set out to make you feel at home from the moment you arrive. Kabalana Beach is a five-minute walk.\n\nDorms if you want the company, private rooms if you don't.\n\nMixed, female and male dormitories with bunk beds, plus double rooms and deluxe doubles. Every room has air conditioning and a fan, private lockers and a personal fridge. The bathrooms are modern and the showers are hot.\n\nDorms\n\nBunk bed in a mixed, female or male dormitory | 1 bunk bed\n\nPrivate rooms\n\nDouble room | 1 extra-large double bed\n\nDeluxe double room | 1 extra-large double bed, or 1 single bed\n\nRates change with the dates, and the booking links below show what is actually available.\n\nCheck dates\n\n“It's a calm and quiet place, a wonderful staff, caring owners and clean. I had a really good time even i havnt spent much time there. beds are compfy and it has aircon and warm water.”\n\nWolfgang, Austria | Booking.com\nKabalana\n\nKabalana: a sandy beach break for beginners and intermediates, and The Rock, a reef A-frame for advanced surfers.\n\n“Owners very hospitable, breakfast in the morning was great, close to kabalana beach so great for surfing”\n\nSaketh, England | Hostelworld, Feb 2026\nBreakfast, every day\n\nRotis, fruit, pancakes and eggs, with vegan options.\n\n“Great family owned hostel :-) they are really friendly and helpful! The breakfast always consists of a typical Sri Lankan dish (roti, hoppers,…) which changes every day and additionally a great fruit platter!! Dorms are big, bathrooms are nice with the whole outdoor thing :-)”\n\nElena, Germany | Hostelworld, Mar 2026\nWhat guests say about the staff\n\n“I got dengue in Kandy and the staff at KA helped nurse me back to health with Ayurvedic medicines (on top of what the hospital was already giving me) They are the kindest people and they attract good vibes. I met some of the best people here :)”\n\nMia, USA | Hostelworld, Feb 2026\n\n\"Family\" is the word guests keep using. One of them caught dengue in Kandy and wrote that the staff helped nurse her back to health with Ayurvedic medicines, on top of what the hospital was already giving her.\n\nOn Booking.com the staff get 9.9 out of 10, the hostel's highest score there. Hostelworld guests give them the same 9.9, and only value for money and security do better, both at a full 10.\n\n“Lovely location away from the main road. So close to the beach! The most amazing family who look after you like you're one of their own. Thank you KA!”\n\nClara, United Kingdom | Booking.com\n9.8/10\nHostelworld | 66 reviews\n9.4/10\nBooking.com | 39 reviews\n4.8/5\nGoogle | 42 reviews\n\nScores read on 25 Sep 2026.\n\nWhat is here\n\nThere's a green garden and a chill zone, and free filtered water you can refill any time. Laundry service is available, and there's a minimarket on site. You can rent a scooter, and it can come with a surf rack. Luggage storage and lockers, too. Reception is open 24 hours.\n\nPets are welcome on request at no charge. Children are not accommodated.\n\nIn your room\n\nAir conditioning and a fan in every room|Private lockers and personal fridge in every room|Hot showers|Free WiFi\n\nAround the house\n\nFree breakfast|Garden and chill zone|Free filtered water|Minimarket on site|Bicycle parking|Pets allowed on request, no extra charge\n\nServices\n\n24-hour reception|24-hour security|Laundry service|Luggage storage|Tour desk|Airport transfers|Scooter rental, surf rack available\n\nOn Instagram\n\nThe boards, the beach and the table, as KA posts them.\n\nFollow @kasurfhostel\nGetting here\n\nAhangama, a five-minute walk from Kabalana Beach. Koggala Airport is about 5 km away; Ahangama railway station is a little over 2 km. The property arranges a shuttle.\n\nReception is open 24 hours. Children are not accommodated, and cots and extra beds are not available.\n\n207/A Welahangoda, Ahangama 80650, Sri Lanka\nThe address on Google Maps\n\nCheck-in 13:00–23:00 | Check-out by 13:00\nReception is open 24 hours\n\n+94 77 374 6053\nCall the family\nOpen in Google Maps\n\nKA Surf Hostel\n\nCheck dates\nCheck dates on Booking.com\n→\nCheck dates on Hostelworld\n→\nCheck dates on Agoda\n→\nCall or follow\n+94 77 374 6053\n@kasurfhostel\nFind us\n207/A Welahangoda\nAhangama 80650\nSri Lanka\n\nCheck-in 13:00–23:00 | Check-out by 13:00\n\nKA Surf Hostel, Ahangama | run by a local family\nRatings read on 25 Sep 2026",
+ "axe_1440": [],
+ "axe_390": []
+}
