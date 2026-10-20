@@ -1,0 +1,244 @@
+{
+ "slug": "the-lavish-haven",
+ "locale": "en",
+ "copywriter_version": "0.3.1",
+ "humanizer_version": "0.2.0",
+ "businessName": "The Lavish Haven",
+ "tagline": "A new hotel, two minutes from Kabalana",
+ "copyBlocks": [
+  {
+   "slot": "intro",
+   "heading": "Among cafés and restaurants",
+   "body": "Cafés and restaurants surround the hotel, and there is a fruit stand nearby. Guests score the location 9.6 out of 10 on Booking.com.\n\nKoggala Airport is about 5 km away."
+  },
+  {
+   "slot": "about",
+   "heading": "New, and it shows",
+   "body": "The hotel is new. On Booking.com one guest calls it “brand new”, another “a new facility”.\n\nBooking.com guests score it 9.7 out of 10 for cleanliness and the same for comfort, and 9.4 for staff, across 34 reviews. On Google it has 5.0 out of 5 from 21 reviews."
+  },
+  {
+   "slot": "about",
+   "heading": "Staying longer",
+   "body": "One guest wrote that they moved around many hotels before finding this one, then stayed over a month. Another extended their stay rather than go on to a different hotel."
+  },
+  {
+   "slot": "offer",
+   "heading": "Twelve kinds of room",
+   "body": "There are six king rooms. Three are on the ground floor, two with a private patio and one with a private kitchen. The other three have a private balcony, over the garden, the pool or both. The family rooms are four suites and a studio; the studio and three of the suites sleep four. The two-bedroom suite sleeps five.\n\nEach room has a work desk, soundproofing and free WiFi. The family rooms have air conditioning and private bathrooms.\n\nThere is no published price list. Rates go by date, and the booking links show what is available."
+  },
+  {
+   "slot": "offer",
+   "heading": "Pool, restaurant, spa",
+   "body": "The outdoor pool is in the middle of the hotel and open all year. The restaurant serves breakfast with local specialities and fresh pastries, plus Chinese, Indian and Italian dishes. There’s a coffee house on site too, and a spa and wellness centre.\n\nFor families there are the family rooms and an outdoor play area. Kids’ meals and babysitting cost extra."
+  },
+  {
+   "slot": "info",
+   "heading": "Practicalities",
+   "body": "The front desk is staffed 24 hours, with private and express check-in. You can check in from 14:00 until midnight and check out at any hour. Payment at the hotel is cash only. Parking is free and private, but you need to reserve it. There’s an airport shuttle as well.\n\nHousekeeping is daily. There is laundry, dry cleaning and ironing, bicycles to rent, non-smoking rooms, and facilities for guests with disabilities."
+  }
+ ],
+ "spot": "Kabalana: a sandy beach break for beginners and intermediates, with The Rock reef A-frame for advanced surfers. The beach is two minutes from the hotel, on foot.",
+ "season": null,
+ "closing": "Rates move with the dates. Booking.com and Agoda show what is available.",
+ "featureLine": "A year-round outdoor pool, at the centre of the hotel.",
+ "rooms": [
+  {
+   "label": "Deluxe King Room with Private Patio & Pool View - Ground Floor",
+   "beds": "1 extra-large double bed"
+  },
+  {
+   "label": "Superior King Room with Private Balcony, Garden & Pool View",
+   "beds": "1 extra-large double bed"
+  },
+  {
+   "label": "Deluxe King Room with Private Kitchen - Ground Floor",
+   "beds": "1 extra-large double bed"
+  },
+  {
+   "label": "Family Suite with Patio",
+   "beds": "1 extra-large double bed and 1 large double bed",
+   "sleeps": 4
+  },
+  {
+   "label": "Deluxe King Room with Private Patio & Garden View - Ground Floor",
+   "beds": "1 extra-large double bed"
+  },
+  {
+   "label": "Deluxe King Room with Private Balcony & Garden View",
+   "beds": "1 extra-large double bed"
+  },
+  {
+   "label": "Deluxe Family Studio with 2 Private Balconies, Pool & Garden Views",
+   "beds": "1 double bed and 1 extra-large double bed",
+   "sleeps": 4
+  },
+  {
+   "label": "Family Junior Suite with Private Patio and Kitchenette",
+   "beds": "1 double bed and 1 extra-large double bed",
+   "sleeps": 4
+  },
+  {
+   "label": "Two-Bedroom Suite",
+   "beds": "2 extra-large double beds and 1 sofa bed",
+   "sleeps": 5
+  },
+  {
+   "label": "Deluxe King Room with Private Balcony & Pool View - First Floor",
+   "beds": "1 extra-large double bed"
+  },
+  {
+   "label": "Family Suite with Private Balcony, Pool & Garden Views - First Floor",
+   "beds": "1 extra-large double bed and 1 large double bed",
+   "sleeps": 4
+  },
+  {
+   "label": "Family Suite with Private Kitchen, Balcony & Garden View",
+   "beds": "1 single bed and 1 extra-large double bed"
+  }
+ ],
+ "stayInfo": {
+  "checkInFrom": "14:00",
+  "note": "Check-in from 14:00 until midnight; check-out at any hour. The front desk is staffed 24 hours, with private and express check-in and check-out. Payment at the hotel is cash only."
+ },
+ "amenities": [
+  {
+   "label": "Outdoor swimming pool",
+   "note": "open all year"
+  },
+  {
+   "label": "Restaurant"
+  },
+  {
+   "label": "Coffee house on site"
+  },
+  {
+   "label": "Spa and wellness centre"
+  },
+  {
+   "label": "Free WiFi in all areas"
+  },
+  {
+   "label": "Family rooms"
+  },
+  {
+   "label": "Airport shuttle"
+  },
+  {
+   "label": "Room service"
+  },
+  {
+   "label": "24-hour front desk"
+  },
+  {
+   "label": "Private and express check-in / check-out"
+  },
+  {
+   "label": "Free private parking",
+   "note": "reservation needed"
+  },
+  {
+   "label": "Facilities for disabled guests"
+  },
+  {
+   "label": "Non-smoking rooms"
+  },
+  {
+   "label": "Sun deck, terrace, balcony and garden"
+  },
+  {
+   "label": "Outdoor dining area"
+  },
+  {
+   "label": "BBQ facilities",
+   "note": "additional charge"
+  },
+  {
+   "label": "Shared kitchen with kettle and refrigerator"
+  },
+  {
+   "label": "Outdoor play equipment for kids"
+  },
+  {
+   "label": "Babysitting and child services",
+   "note": "additional charge"
+  },
+  {
+   "label": "Kids' meals",
+   "note": "additional charge"
+  },
+  {
+   "label": "Bicycle rental",
+   "note": "additional charge"
+  },
+  {
+   "label": "Daily housekeeping"
+  },
+  {
+   "label": "Laundry, dry cleaning and ironing",
+   "note": "additional charge"
+  },
+  {
+   "label": "Baggage storage"
+  },
+  {
+   "label": "Extra-long beds"
+  }
+ ],
+ "ratings": [
+  {
+   "platform": "booking",
+   "score": 9.2,
+   "scale": "10",
+   "count": 34,
+   "url": "https://www.booking.com/hotel/lk/the-lavish-haven.html"
+  },
+  {
+   "platform": "google",
+   "score": 5,
+   "scale": "5",
+   "count": 21
+  }
+ ],
+ "testimonials": [
+  {
+   "quote": "Everything was excellent! Best value for money there is! We moved around many hotels until we found the lavish and stayed over a month! Super...",
+   "author": "Mya, Sri Lanka",
+   "source": "booking"
+  },
+  {
+   "quote": "It's a brand new hotel located in the best part of Ahangama, next to the Kabalana Beach.",
+   "author": "Dariusz, Poland",
+   "source": "booking"
+  },
+  {
+   "quote": "The staff are calm, respectful and nice. The facilities are amazing, the swimming pool at the center creates a good vibe where people can meet up...",
+   "author": "António, Portugal",
+   "source": "booking"
+  },
+  {
+   "quote": "Very kind staff, we loved the hotel so much that we extended our stay in it instead of going to another one, nice rooms and nice pool we will...",
+   "author": "Roie, Israel",
+   "source": "booking"
+  },
+  {
+   "quote": "Hier war alles schön, und die Mitarbeiter so süss, lieb, nett und freundlich. Wir wollten gar nicht wieder weg.",
+   "author": "Benjamin, Switzerland",
+   "source": "booking"
+  }
+ ],
+ "contact": {
+  "phone": "+94764832988",
+  "address": "No166/1 Walhengoda Road, Ahangama 80650, Sri Lanka"
+ },
+ "bookingLinks": [
+  {
+   "label": "Check dates on Booking.com",
+   "url": "https://www.booking.com/hotel/lk/the-lavish-haven.html"
+  },
+  {
+   "label": "Check dates on Agoda",
+   "url": "https://www.agoda.com/the-lavish-haven-h82617698/hotel/piyadigama-lk.html"
+  }
+ ],
+ "languagesSpoken": []
+}

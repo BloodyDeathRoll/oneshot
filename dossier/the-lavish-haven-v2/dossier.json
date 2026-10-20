@@ -1,0 +1,1663 @@
+{
+  "slug": "the-lavish-haven-v2",
+  "run_id": "2026-09-ahangama-02",
+  "harvester_version": "0.2.0",
+  "harvested_at": "2026-09-19T18:55:00Z",
+  "businessType": "beach_lodging",
+  "business": {
+    "businessType_note": "a 17-room hotel with a restaurant and pool; sells beds, no lessons of its own. It is also this run's anchor business.",
+    "name": {
+      "value": "The Lavish Haven",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z",
+      "note": "Booking: 'The Lavish Haven - Ahangama'; Google: 'The Lavish Haven Hotel And Resort'"
+    },
+    "type": {
+      "value": "beach_lodging",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z",
+      "note": "Booking category 'Hotel'"
+    },
+    "tagline": {
+      "value": null,
+      "gap": "none published"
+    },
+    "description": {
+      "value": "Comfortable Accommodations: family rooms with air-conditioning, balconies and private bathrooms; each room has a work desk, soundproofing and free WiFi. Exceptional Facilities: a sun terrace, lush garden and a year-round outdoor swimming pool, plus a lounge, coffee shop and outdoor play area. Dining: a modern, family-friendly restaurant serving breakfast with local specialities, fresh pastries and Chinese, Indian and Italian dishes. Location: Kabalana Beach is a 2-minute walk; Koggala Airport is 3.1 mi away.",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z",
+      "language": "en",
+      "note": "Booking.com's own generated summary, NOT the owner's copy — do not present it as the business's voice"
+    },
+    "since": {
+      "value": null,
+      "gap": "not published; guests repeatedly call it 'brand new' and one says they were the first customer, so it opened recently"
+    },
+    "staff": {
+      "value": "Amal and his daughters; receptionist Pramodee",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z",
+      "note": "named by guest reviews, not by the business; unconfirmed"
+    }
+  },
+  "location": {
+    "address": {
+      "value": "No166/1 walhengoda road, Ahangama 80650, Sri Lanka",
+      "source_url": "https://www.google.com/maps/place/The+Lavish+Haven+Hotel+And+Resort/@5.9794565,80.3508299,17z/data=!4m9!3m8!1s0x3ae113bbadfe5595:0x8d858b9ae5001097!5m2!4m1!1i2!8m2!3d5.9794565!4d80.3508299!16s%2Fg%2F11ypgcrxg6?hl=en",
+      "fetched_at": "2026-09-23T08:15:20Z",
+      "note": "Google Maps listing address, character for character as the listing shows it (data-item-id=address), postcode included. Authoritative per playbook 0.5.0 §6; other platforms' versions are kept in address_other_platforms and are not to be used on the site. Google's spelling 'No166/1 walhengoda road' (no space, lowercase, 'walhengoda') is kept as shown."
+    },
+    "address_other_platforms": [
+      {
+        "value": "Ahangama, Sri Lanka",
+        "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+        "fetched_at": "2026-09-19T18:55:00Z",
+        "note": "Booking.com visible page, as harvested 2026-09-19: town only. Superseded by the Google listing address."
+      },
+      {
+        "value": "166/2 Welhengoda Road , 80650 Ahangama, Sri Lanka",
+        "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+        "fetched_at": "2026-09-23T08:16:03Z",
+        "note": "Booking.com JSON-LD PostalAddress.streetAddress (postalCode 80650), not shown in the visible page. House number 166/2 differs from Google's 166/1 — see contradictions. Superseded by the Google listing address."
+      }
+    ],
+    "plus_code": {
+      "value": "X9H2+Q8 Ahangama, Sri Lanka",
+      "source_url": "https://www.google.com/maps/place/The+Lavish+Haven+Hotel+And+Resort/@5.9794565,80.3508299,17z/data=!4m9!3m8!1s0x3ae113bbadfe5595:0x8d858b9ae5001097!5m2!4m1!1i2!8m2!3d5.9794565!4d80.3508299!16s%2Fg%2F11ypgcrxg6?hl=en",
+      "fetched_at": "2026-09-23T08:15:20Z",
+      "note": "shown on the Google listing (data-item-id=oloc)"
+    },
+    "lat_lng": {
+      "value": [
+        5.9794565,
+        80.3508299
+      ],
+      "source_url": "https://www.google.com/maps/place/The+Lavish+Haven+Hotel+And+Resort/@5.9794565,80.3508299,17z/data=!4m9!3m8!1s0x3ae113bbadfe5595:0x8d858b9ae5001097!5m2!4m1!1i2!8m2!3d5.9794565!4d80.3508299!16s%2Fg%2F11ypgcrxg6?hl=en",
+      "fetched_at": "2026-09-23T08:15:20Z",
+      "note": "the listing's pin, from the place URL's !3d/!4d parameters. Booking pin 5.97941339533991,80.3508360317383 (scout, 2026-09-19) agrees to within a few metres."
+    },
+    "map_url": {
+      "value": "https://www.google.com/maps/search/The%20Lavish%20Haven%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+      "source_url": "https://www.google.com/maps/search/The%20Lavish%20Haven%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    "distance_to_beach": {
+      "value": "Kabalana Beach is a 2-minute walk",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z",
+      "note": "guests say 2 to 3 minutes; one notes it is off the main road"
+    },
+    "setting": {
+      "value": "Off the main road, over the Kabalana surf spot, surrounded by cafes and restaurants",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z",
+      "note": "from guest reviews"
+    },
+    "spot": {
+      "value": "Kabalana beach break — sandy beach break for beginners and intermediates, with The Rock reef A-frame for advanced surfers",
+      "source_url": "https://thesurfatlas.com/sri-lanka-surf/kabalana-beach/",
+      "fetched_at": "2026-09-19T18:55:00Z",
+      "note": "third-party surf guide"
+    }
+  },
+  "contact": {
+    "phone": {
+      "value": "+94764832988",
+      "source_url": "https://www.google.com/maps/search/The%20Lavish%20Haven%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    "whatsapp": {
+      "value": null,
+      "gap": "not published"
+    },
+    "email": {
+      "value": null,
+      "gap": "not published; bookings run through the OTAs"
+    },
+    "socials": {
+      "instagram": null,
+      "facebook": null,
+      "tripadvisor": "https://www.tripadvisor.com/Hotel_Review-g674590-d34333972-Reviews-The_Lavish_Haven-Ahangama_Galle_District_Southern_Province.html",
+      "google_maps": "https://www.google.com/maps/search/The%20Lavish%20Haven%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+      "booking": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "agoda": "https://www.agoda.com/the-lavish-haven-h82617698/hotel/piyadigama-lk.html"
+    }
+  },
+  "booking": {
+    "path": {
+      "value": "engine",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z",
+      "note": "live inventory on Booking.com and Agoda; a TripAdvisor listing exists"
+    },
+    "engine_url": {
+      "value": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    "other_engines": {
+      "value": [
+        "https://www.agoda.com/the-lavish-haven-h82617698/hotel/piyadigama-lk.html",
+        "https://www.tripadvisor.com/Hotel_Review-g674590-d34333972-Reviews-The_Lavish_Haven-Ahangama_Galle_District_Southern_Province.html"
+      ],
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    "reply_time_hint": {
+      "value": null,
+      "gap": "not published"
+    }
+  },
+  "hours": [],
+  "hours_note": {
+    "value": "24-hour front desk; private and express check-in/out available",
+    "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+    "fetched_at": "2026-09-19T18:55:00Z",
+    "note": "Check-in/check-out window: see stayInfo (Booking house rules, re-fetched 2026-09-28)"
+  },
+  "stayInfo": {
+    "checkInFrom": {
+      "value": "14:00",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+      "fetched_at": "2026-09-28T09:12:44Z",
+      "note": "House rules, verbatim: 'Check-in — From 14:00 to 00:00' (en-gb). The en-US page renders the same window as 'From 2:00 PM to 12:00 AM'."
+    },
+    "checkInTo": {
+      "value": "00:00",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+      "fetched_at": "2026-09-28T09:12:44Z",
+      "note": "End of the check-in window: 00:00 = midnight at the end of the arrival day (en-US '12:00 AM')."
+    },
+    "checkOut": {
+      "value": "Available 24 hours",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+      "fetched_at": "2026-09-28T09:12:44Z",
+      "note": "House rules, verbatim: 'Check-out — Available 24 hours'. Not a time range: no checkOutFrom/checkOutTo exists to record."
+    },
+    "paymentMethods": {
+      "value": [
+        "Cash"
+      ],
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+      "fetched_at": "2026-09-28T09:12:44Z",
+      "note": "House rules, verbatim: 'Accepted payment methods — Cash'. Cash is the only method listed (payment at the property; online prepayment terms 'vary according to accommodation type')."
+    },
+    "note": {
+      "value": null,
+      "gap": "no owner-written house-rules note; the facts above are Booking.com house rules"
+    }
+  },
+  "offers": [],
+  "room_types": [
+    {
+      "value": "Deluxe King Room with Private Patio & Pool View - Ground Floor (1 extra-large double bed)",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+      "fetched_at": "2026-09-28T09:12:44Z",
+      "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
+    },
+    {
+      "value": "Superior King Room with Private Balcony, Garden & Pool View (1 extra-large double bed)",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+      "fetched_at": "2026-09-28T09:12:44Z",
+      "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
+    },
+    {
+      "value": "Deluxe King Room with Private Kitchen - Ground Floor (1 extra-large double bed)",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+      "fetched_at": "2026-09-28T09:12:44Z",
+      "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
+    },
+    {
+      "value": "Family Suite with Patio (1 extra-large double bed and 1 large double bed, sleeps 4)",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+      "fetched_at": "2026-09-28T09:12:44Z",
+      "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
+    },
+    {
+      "value": "Deluxe King Room with Private Patio & Garden View - Ground Floor (1 extra-large double bed)",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+      "fetched_at": "2026-09-28T09:12:44Z",
+      "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
+    },
+    {
+      "value": "Deluxe King Room with Private Balcony & Garden View (1 extra-large double bed)",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+      "fetched_at": "2026-09-28T09:12:44Z",
+      "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
+    },
+    {
+      "value": "Deluxe Family Studio with 2 Private Balconies, Pool & Garden Views (1 double bed and 1 extra-large double bed, sleeps 4)",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+      "fetched_at": "2026-09-28T09:12:44Z",
+      "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
+    },
+    {
+      "value": "Family Junior Suite with Private Patio and Kitchenette (1 double bed and 1 extra-large double bed, sleeps 4)",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+      "fetched_at": "2026-09-28T09:12:44Z",
+      "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
+    },
+    {
+      "value": "Two-Bedroom Suite (1 extra-large double bed, 1 extra-large double bed, 1 sofa bed, sleeps 5)",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+      "fetched_at": "2026-09-28T09:12:44Z",
+      "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
+    },
+    {
+      "value": "Deluxe King Room with Private Balcony & Pool View - First Floor (1 extra-large double bed)",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+      "fetched_at": "2026-09-28T09:12:44Z",
+      "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
+    },
+    {
+      "value": "Family Suite with Private Balcony, Pool & Garden Views - First Floor (1 extra-large double bed and 1 large double bed, sleeps 4)",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+      "fetched_at": "2026-09-28T09:12:44Z",
+      "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
+    },
+    {
+      "value": "Family Suite with Private Kitchen, Balcony & Garden View (1 single bed and 1 extra-large double bed)",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+      "fetched_at": "2026-09-28T09:12:44Z",
+      "note": "name and beds verbatim from the 'Room type' table; 'sleeps' only where the table shows a guest count (× n)"
+    }
+  ],
+  "facilities": [
+    {
+      "value": "year-round outdoor swimming pool",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "restaurant (Chinese, Indian, Italian; local breakfast and fresh pastries)",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "coffee house on site",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "spa and wellness centre",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "free WiFi in all areas",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "family rooms",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "airport shuttle",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "room service",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "24-hour front desk",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "private and express check-in/out",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "free private parking (reservation needed)",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "facilities for disabled guests",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "non-smoking rooms",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "sun deck, terrace, balcony and garden",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "outdoor dining area and outdoor furniture",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "BBQ facilities (additional charge)",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "shared kitchen with kettle and refrigerator",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "outdoor play equipment for kids",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "babysitting / child services (additional charge)",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "kids' meals (additional charge)",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "bicycle rental (additional charge)",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "daily housekeeping",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "laundry, dry cleaning and ironing (additional charge)",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "baggage storage",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "extra-long beds",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    },
+    {
+      "value": "CCTV, key access, fire extinguishers",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T18:55:00Z"
+    }
+  ],
+  "levels": [],
+  "season": {
+    "value": null,
+    "gap": "not published by the business"
+  },
+  "reviews": {
+    "google": {
+      "rating": 5.0,
+      "count": 21,
+      "source_url": "https://www.google.com/maps/search/The%20Lavish%20Haven%20Ahangama/@5.9794134,80.350836,17z?hl=en",
+      "fetched_at": "2026-09-25T07:40:00Z",
+      "breakdown": {
+        "5": 21,
+        "4": 0,
+        "3": 0,
+        "2": 0,
+        "1": 0
+      },
+      "refreshed": [
+        {
+          "at": "2026-09-25T07:40:00Z",
+          "by": "orchestrator (Shahar: fix the stale numbers)",
+          "was": {
+            "rating": 5.0,
+            "count": 21,
+            "fetched_at": "2026-09-19T18:55:00Z"
+          },
+          "note": "score and count re-read; category scores/breakdown not re-read and still date from the harvest"
+        }
+      ]
+    },
+    "booking": {
+      "rating": 9.3,
+      "scale": 10,
+      "count": 34,
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-25T07:40:00Z",
+      "categories": {
+        "Staff": 9.4,
+        "Facilities": 9.5,
+        "Cleanliness": 9.7,
+        "Comfort": 9.7,
+        "Value for money": 9.1,
+        "Location": 9.6
+      },
+      "refreshed": [
+        {
+          "at": "2026-09-25T07:40:00Z",
+          "by": "orchestrator (Shahar: fix the stale numbers)",
+          "was": {
+            "rating": 9.2,
+            "count": 34,
+            "fetched_at": "2026-09-19T18:55:00Z"
+          },
+          "note": "score and count re-read; category scores/breakdown not re-read and still date from the harvest"
+        }
+      ]
+    },
+    "tripadvisor": {
+      "rating": null,
+      "count": null,
+      "source_url": "https://www.tripadvisor.com/Hotel_Review-g674590-d34333972-Reviews-The_Lavish_Haven-Ahangama_Galle_District_Southern_Province.html",
+      "gap": "listing exists; not fetched (TripAdvisor 403s this harvester)"
+    },
+    "quotes": [
+      {
+        "text": "Everything was excellent! Best value for money there is! We moved around many hotels until we found the lavish and stayed over a month! Super...",
+        "author": "Mya, Sri Lanka",
+        "date": null,
+        "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+        "fetched_at": "2026-09-19T18:55:00Z",
+        "note": "TRUNCATED by 'Read more'"
+      },
+      {
+        "text": "The best place to stay in Ahangama, Sri Lanka. A new high end hotel, over the top large rooms, perfect location - not on the main road but a 2 min...",
+        "author": "Shahar, Israel",
+        "date": null,
+        "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+        "fetched_at": "2026-09-19T18:55:00Z",
+        "note": "TRUNCATED. NOTE: the author name matches the operator of this pipeline — check before quoting this one on a site or in a pitch."
+      },
+      {
+        "text": "The Lavish Haven is a wonderful place to stay. It's a new facility and is clean and well maintained. The a/c worked great. The bed was...",
+        "author": "Diane, United States",
+        "date": null,
+        "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+        "fetched_at": "2026-09-19T18:55:00Z",
+        "note": "TRUNCATED"
+      },
+      {
+        "text": "The staff are calm, respectful and nice. The facilities are amazing, the swimming pool at the center creates a good vibe where people can meet up...",
+        "author": "António, Portugal",
+        "date": null,
+        "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+        "fetched_at": "2026-09-19T18:55:00Z",
+        "note": "TRUNCATED"
+      },
+      {
+        "text": "It's a brand new hotel located in the best part of Ahangama, next to the Kabalana Beach.",
+        "author": "Dariusz, Poland",
+        "date": null,
+        "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+        "fetched_at": "2026-09-19T18:55:00Z"
+      },
+      {
+        "text": "Great location, the hotel is 3 minutes from the beautiful beach. There are many cafes and a fruit stand nearby. The hotel is new, the room and...",
+        "author": "Aleksandra, Russia",
+        "date": null,
+        "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+        "fetched_at": "2026-09-19T18:55:00Z",
+        "note": "TRUNCATED"
+      },
+      {
+        "text": "Very kind staff, we loved the hotel so much that we extended our stay in it instead of going to another one, nice rooms and nice pool we will...",
+        "author": "Roie, Israel",
+        "date": null,
+        "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+        "fetched_at": "2026-09-19T18:55:00Z",
+        "note": "TRUNCATED"
+      },
+      {
+        "text": "Hier war alles schön, und die Mitarbeiter so süss, lieb, nett und freundlich. Wir wollten gar nicht wieder weg.",
+        "author": "Benjamin, Switzerland",
+        "date": null,
+        "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+        "fetched_at": "2026-09-19T18:55:00Z",
+        "note": "German, quoted verbatim and untranslated"
+      }
+    ]
+  },
+  "images": [
+    {
+      "id": "img-001",
+      "file": "assets/img-001.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "bde90d2becb535c41aea7d5be298c9ce01989347041f80c97da7a8bec919c155",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-002",
+      "file": "assets/img-002.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "03ccbbcff2640c5e8e0784332a139b8e504b1bb7c9ee546efd8ce76d42e30049",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-003",
+      "file": "assets/img-003.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "22b898f0f468a0c08162ba03c597ea671877dc57797ba30374d9c842b12b2692",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-004",
+      "file": "assets/img-004.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "9bd6e69885838f7a0076ccaee6da7d775ed013e60f8fc8ce37b2a9e4dc23ae38",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-005",
+      "file": "assets/img-005.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "a3936dabf283d74f7e85e91231b478c8552c3b6d571ada5f3f89bc5c1d7f63f1",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-006",
+      "file": "assets/img-006.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "43595fad062d83c93f45babe425682d2f0b2c3598ff1e03e81ed17638419a3c5",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-007",
+      "file": "assets/img-007.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "af9ae1adb7fe0abed03d040d9ed71fef38abc08cc28d0d881722f691572eb77b",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-008",
+      "file": "assets/img-008.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "bea7aa6a476d464c7c004ed5efe2451741141b79055701215bd970e47027826f",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-009",
+      "file": "assets/img-009.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "b5ff761bfb9d3a60693dbbbc6fd24670c77471d7d0b2508f922e7bb54669bd5f",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-010",
+      "file": "assets/img-010.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "6eb2806eea050cf86e5974e8c9628e680887a87ceeb22c02c2181ea2b6d00cc4",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-011",
+      "file": "assets/img-011.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "3d9f5794b1e84b3e60141c3e32fb0d4a7246d0e491a3104f4a6836252f663957",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-012",
+      "file": "assets/img-012.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "ee8784bf9aa7f13d7624a6ec77e6de6f29bc3896c2b8939a173b20ed3d5581f3",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-013",
+      "file": "assets/img-013.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "3a606249d66a27a05f79dd8fd241041cfbfa3ecb99feebc99375480aaa3a2f47",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-014",
+      "file": "assets/img-014.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "45b654042d662b26d947e8624d25d5c9bbde6c1325f3a27126c654c593b07333",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-015",
+      "file": "assets/img-015.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "e2f4547b9efaa97f83e98f5115427c28953d86ff4aa050c5db426533404b6781",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-016",
+      "file": "assets/img-016.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "8367ff65f578b2af848380a7f7c0f893d1b64c963516ac5cda24a14b848eadf6",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-017",
+      "file": "assets/img-017.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "fcab3f66bb002a7c82fafbf09c0156c177aecfe34dd650f7df5d2a47b9fc1472",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-018",
+      "file": "assets/img-018.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "a7f16bcaa813de93b0585cca889cf6e60bbcce69468d1377e5fef8f356f8d84b",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-019",
+      "file": "assets/img-019.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "1d4df5902a7c4908fb4f680518b6e334bb8ff88c20e470c142dc7f3a2752d665",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-020",
+      "file": "assets/img-020.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "ed7d98771a363837eeb293f6c4688383b6345b760644477e619fb4b6b3dae683",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-021",
+      "file": "assets/img-021.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "c6852d4e02b1570e51a470ea535e39093ccb27bc639f72128fbebe29bd01e7b3",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-022",
+      "file": "assets/img-022.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "f9db2c2a5a2e63ce2436ae253ce0e3d1194b9d97e25e46a9939fbc45bb856d29",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-023",
+      "file": "assets/img-023.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "81573b8dfea1de98e0d6a9462e8ef8e3ef4eacd5217cf8af3d3c15ce26062c43",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-024",
+      "file": "assets/img-024.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "8cd6f7f55cb05b0dcd23e110982b05aa08846f301ead7dfbf44fa3eb4d6471c4",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-025",
+      "file": "assets/img-025.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "263c3284e8603c1ad0e9955613705914ef5175edde2362099af547037b0a4d1f",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-026",
+      "file": "assets/img-026.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "8bf822c1e6897723bd806fb085c314207699206e3c8f8b2a7dd00404ea8a81d2",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-027",
+      "file": "assets/img-027.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "470870eb0237b3d12b47c7fa10316aa5b792b8919a8c1d04ad60634742c8735c",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-028",
+      "file": "assets/img-028.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "157431f3a066358c7f9ca9bd7c08452236a7682f5cdfd930e480ca08fb4b86cf",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-029",
+      "file": "assets/img-029.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "f493ca456c5eb7d24c972af90ac387ad053e1823f0f7676417cc0fdb10c1c08a",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-030",
+      "file": "assets/img-030.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "fe6f45b733ade5f8d6c8cd4093c8f2f2f1608b4971c55408e6fa9a5491422379",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-031",
+      "file": "assets/img-031.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "819c0664c09f83b4655f7d20618c6a47805e7998ae861698b3cc5a4784c2f3cc",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-032",
+      "file": "assets/img-032.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "6933cdc118dea75480fbae25109ab87838536de541b1fcfd5bf0be6e3d6f7483",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-033",
+      "file": "assets/img-033.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "541ed22dccec133a0ec3e2409ff8324befb52b0e2e31e13f4df8f5e9d365a6d0",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-034",
+      "file": "assets/img-034.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "eb9745dcd492eaa90c3d10040702edda108a4e8422237ff47e2796ad1404f637",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-035",
+      "file": "assets/img-035.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "bef1178f146654ad52aca5342f7d4e0a09fac6f42c2769db9f3414a9ae2ef315",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-036",
+      "file": "assets/img-036.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "6a81122e1a0016ee39f27a5a3620a411af8ac99f18a351a9bf69d48fdd4bb337",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-037",
+      "file": "assets/img-037.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "4b7bbf6b94ab0bd57e057b05d4768b7853ad7c469145ece17ec4ca4fc2f88397",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-038",
+      "file": "assets/img-038.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "54ccd08e5fc302e6245441d4f6456c63cd1c78069321c2e1113ca5810b689744",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-039",
+      "file": "assets/img-039.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "740bf0d8f811a86ba1d1471cbeaf2b30d537aeb81f17b8a2d1ee6b726952d33d",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-040",
+      "file": "assets/img-040.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "9d210786c41729156e1a69690380b3c080f17db6febff380e3248f8f18675583",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-041",
+      "file": "assets/img-041.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "e58e9b42c487ad94a1fb2e7a761b4bf5d7dd543d7ff2b35eaa48c8442c0f1a0c",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-042",
+      "file": "assets/img-042.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "e08370ed123ee6bc7b313196468c4fe9cb1bedb3dcd26a48853240b8650a84fe",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-043",
+      "file": "assets/img-043.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "cccaa43f6791313a65d34aa3ec0ad81f99c82d4fe2a83ff1287f912825987633",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-044",
+      "file": "assets/img-044.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "eb856cc9de6e5a2852836db95f658d5084067a94434048875c3fee26bdc73f0e",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-045",
+      "file": "assets/img-045.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "eb34ec568258244caddb144a4976173ed593459b8f673afcd6792b15333d32d1",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-046",
+      "file": "assets/img-046.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "228bf903166cd77b4fd651de46a73cbebd3170599e466ae6800d80eb9cb1bc99",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-047",
+      "file": "assets/img-047.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "6866e1507f82bfeb0f4a10ee9474258b291e8346e8c299ec1b45f5dc4302a175",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-048",
+      "file": "assets/img-048.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "c3299045e59a99e63fb95239d3835f605b913f51d632ea54225489d0df758a62",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-049",
+      "file": "assets/img-049.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "73ccc1705c801c0470c9446cc2be96a66e757bfe245aacd545103117f04355fc",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-050",
+      "file": "assets/img-050.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "ed0810e6531391df688df499008afb65c5dc94ca0f1f9c03074a467c214e2f3e",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-051",
+      "file": "assets/img-051.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "be76bd0bc74ab2588eeee119ebdb8e4f007dd011031a6e53df46a2f084b8c76f",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-052",
+      "file": "assets/img-052.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "9e8e4cdc60c774d02d3c8245a5a35add1ed6329fa41954cd8902f66199ab74a6",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-053",
+      "file": "assets/img-053.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "d0ec502ea048d7b5f6cada62b9f48a6782a55c4a08e70c899929b46515a65d59",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-054",
+      "file": "assets/img-054.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "73a9def1b4a723be5513a417e71613c1be464f7ee80dd77b546a0040f7d62c66",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-055",
+      "file": "assets/img-055.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "a14a5a7d009597ddbb9dc5c98ee3c43bbdb9962b19a15cce2832cf3f4360b66a",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-056",
+      "file": "assets/img-056.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "373e842cfea31d8de211189f24ae100de0d1c557d6248bb24bbbabbb84edc66e",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-057",
+      "file": "assets/img-057.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "ee4396ba12ae619bbd7f84c37bd1ec29ad56fe55a7a0b6fc2fc725f7f5378564",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-058",
+      "file": "assets/img-058.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "f8250d7b665c17904ed14d954c35250128a50adce7176d422d95d69bd4ca6950",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-059",
+      "file": "assets/img-059.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "a9ea64673b92dc3f4e73717d6344a948f8b2cd61ebf244b60cbd3ae02b250834",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-060",
+      "file": "assets/img-060.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "a91b756b2c1132feecc19f9e5c26c315e68e08a9b47f893df69bd082683aa6c4",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-061",
+      "file": "assets/img-061.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "4db24144fb7a10a89ee17730617f4b9f13812202f2ac4aed9fef8db29c3d0f0e",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-062",
+      "file": "assets/img-062.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "951ad6e7d3e8a4ca91a14c955369a0b94fee0054a19a21c621b0c9d902e6c08b",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-063",
+      "file": "assets/img-063.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "0380314cacef99007452575e69743a1abe51669726836919115df7be1d22ae0e",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-064",
+      "file": "assets/img-064.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "1754b7e91e45866ba4dbd96fa7103420d7c1a4765dd7752e8ec420292ae3cdb0",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-065",
+      "file": "assets/img-065.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "da1c3534508d271462f3b9f3c016ae349d5aebad2cab24a727915f47f1429957",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-066",
+      "file": "assets/img-066.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "978e252b3bc3c55f683da32b899c3c8d951ba35cb68c94dfd57cb58f616bdeb3",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-067",
+      "file": "assets/img-067.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "da960836d6418504151a4cf28d6e073d6e21ea0ddaa3d3f445df098da4c9f8c2",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-068",
+      "file": "assets/img-068.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "8292f90e17cb357bd298e774741da72f42d18e3cfd26105072f315e7dc32b1a7",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-069",
+      "file": "assets/img-069.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "f8bd124ec9c9f4e730c04698f9b3874a169eca79ae9fb6ec87af26f9960a62e0",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-070",
+      "file": "assets/img-070.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 576,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "0da69739df5dff11eefbd09b8e392fbcb65ba83f43747a72913b51c5c4035b4d",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-071",
+      "file": "assets/img-071.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "d494e9b1098f2a9d77ef433a51e9494413db9aa8fac0bf9d40d3c4050f1d4c2b",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-072",
+      "file": "assets/img-072.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "18e28eb452ad174676331a83a921f3165a6af8c83a069017687dab0a4f7d4c46",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-073",
+      "file": "assets/img-073.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "881c65725b40abd3d8aff7f416d5c28ee88e2d1ceab52be181bb0a18111b0a91",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-074",
+      "file": "assets/img-074.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "af9c18295b7780456585cdcaa56f3993eae0380c08fc1d890af15d51b3ffd77e",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-075",
+      "file": "assets/img-075.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "a4686cefe4cccac3d0e9faa5789e663dc5792861810365243ffa2fbfb123cde4",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-076",
+      "file": "assets/img-076.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "6781b4265ac88c65e3d67ed142398624d046f57e7982afebd09d8589a1fe7b13",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-077",
+      "file": "assets/img-077.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "80d7bd82083d6358c74e760b0ac951efa50d86175ab5fda19abb15164b0dfa3b",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-078",
+      "file": "assets/img-078.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "d0469938b954a27d896e6e13435d7f31cacf84ead1970d11fe650b4a0f9e7a6e",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    },
+    {
+      "id": "img-079",
+      "file": "assets/img-079.jpg",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+      "fetched_at": "2026-09-19T19:37:38Z",
+      "license": "business-owned",
+      "license_note": "property-uploaded photo on the business's own Booking.com listing; Shahar approved OTA listing photos as usable 2026-09-19",
+      "width": 1024,
+      "height": 768,
+      "description": "Booking.com listing photo",
+      "sha256": "aaf4ab44839f9e5d3f61e1321563246affa855dba10d2f5f4e449c05dedaa557",
+      "note": "selected by photo-id cluster: the id range that the property page's own hero image belongs to, to exclude neighbouring hotels' thumbnails"
+    }
+  ],
+  "existing_site": {
+    "url": null,
+    "status": null,
+    "notes": "No website and no social account found. A 17-room hotel with a restaurant, spa and pool whose entire web presence is OTA listings plus a Google pin — the largest business in this run and the one paying the most commission.",
+    "screenshot": null
+  },
+  "languages": {
+    "seen": [
+      "en",
+      "de"
+    ],
+    "owner_language_hint": "si"
+  },
+  "gaps": [
+    {
+      "field": "business.description",
+      "why": "no owner-written prose anywhere; Booking's summary is generated. The copy must be written from the facts in this dossier",
+      "pitch_point": true
+    },
+    {
+      "field": "offers",
+      "why": "nightly rates are live dated OTA inventory, not a published price list",
+      "pitch_point": true
+    },
+    {
+      "field": "existing_site.url",
+      "why": "no site, no social account — every booking pays an OTA commission",
+      "pitch_point": true
+    },
+    {
+      "field": "contact.email",
+      "why": "not published",
+      "pitch_point": true
+    },
+    {
+      "field": "contact.whatsapp",
+      "why": "not published",
+      "pitch_point": true
+    },
+    {
+      "field": "business.tagline",
+      "why": "none published",
+      "pitch_point": true
+    },
+    {
+      "field": "business.since",
+      "why": "not published, though reviews establish it is new",
+      "pitch_point": false
+    },
+    {
+      "field": "reviews.quotes",
+      "why": "six of eight quotes are truncated by Booking's 'Read more'",
+      "pitch_point": false
+    },
+    {
+      "field": "reviews.tripadvisor",
+      "why": "listing exists but TripAdvisor 403s this harvester",
+      "pitch_point": false
+    },
+    {
+      "field": "season",
+      "why": "not published",
+      "pitch_point": false
+    }
+  ],
+  "contradictions": [
+    {
+      "what": "Distance to the beach: Booking says a 2-minute walk, one guest says 3 minutes.",
+      "resolution": "Minor. Use Booking's figure or say 'a few minutes'."
+    },
+    {
+      "what": "Room count: a review summary mentions 17 bedrooms; Booking lists 12 distinct room types (re-fetched 2026-09-28; the first pass recorded 9).",
+      "resolution": "Unresolved — do not publish a room count."
+    },
+    {
+      "what": "Parking: Booking lists free private parking; a guest review calls the parking area very small and hard with a car.",
+      "resolution": "Unresolved — do not promise easy parking."
+    },
+    {
+      "what": "House number: Google listing 'No166/1 walhengoda road, Ahangama 80650'; Booking.com JSON-LD '166/2 Welhengoda Road , 80650 Ahangama'.",
+      "resolution": "Site uses the Google listing address verbatim (playbook 0.5.0 §6). Which number is right is a question for the owner in a live run."
+    }
+  ],
+  "room_types_previous": {
+    "value": [
+      "Deluxe King Room with Private Patio & Pool View, ground floor (1 king bed)",
+      "Superior King Room (1 king bed)",
+      "King Room with Garden View (1 king bed)",
+      "King Room with Balcony (1 king bed)",
+      "Deluxe Family Suite (1 king + 1 queen bed, sleeps 4)",
+      "Family Studio (1 full + 1 king bed, sleeps 4)",
+      "Family Junior Suite (1 full + 1 king bed, sleeps 4)",
+      "Family Suite (1 king + 1 queen bed, sleeps 4)",
+      "Two-Bedroom Suite (2 king beds + 1 sofa bed, sleeps 5)"
+    ],
+    "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.html",
+    "fetched_at": "2026-09-19T18:55:00Z",
+    "note": "Superseded 2026-09-28: the 2026-09-19 pass collapsed Booking's room table into 9 shortened names. Re-fetched, the table lists 12 distinct room types (12 rows under 'Room type', each its own name and beds; no dates entered, so these are not rate plans)."
+  },
+  "corrections": [
+    {
+      "at": "2026-09-28T09:12:44Z",
+      "by": "harvester 0.3.0 (field-scoped re-fetch, Shahar 2026-09-28)",
+      "source_url": "https://www.booking.com/hotel/lk/the-lavish-haven.en-gb.html",
+      "what": "stayInfo check-in 14:00 to 00:00 and check-out 'Available 24 hours' added; payment method Cash added; room_types 9 -> 12; gap 'stayInfo' closed. Prompted by the auditor trial (funnel/booking-policies.png) and verified on a fresh fetch."
+    }
+  ]
+}
