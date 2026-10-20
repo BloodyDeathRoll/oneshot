@@ -1,4 +1,4 @@
-# 001 — custom.md proposal: WebGL as the main item, micro-animations everywhere
+# 001 — custom.md proposal: a hero with a main item (video cut, scroll-driven video or WebGL), micro-animations everywhere
 
 **Status:** proposed · **custom.md proposal** (Shahar writes `agents/designer/custom.md`; Claude never edits it)
 **Run:** 2026-10-lk-surf-01 · **Raised:** 2026-10-20
@@ -15,7 +15,7 @@ Two parts of that line can be read against the new direction: "the video carries
 
 ## Proposed line (replaces the Motion line)
 
-> Motion: interactive and unique lead with a WebGL main item made from the place's own media (water, light, depth); calm has no canvas. Micro-animations on everything you touch: buttons, chips, galleries, drawers, booking. No reveal animations on headings. Effects on footage only when they make the footage better, never to hide it.
+> Motion: the hero is interesting, clean and slick with one clear call to action, never a cookie-cutter section. Its main item comes from the place's own media: a great cut of the video, a scroll-driven video, or WebGL (water, light, depth); calm has no canvas. Micro-animations on everything you touch: buttons, chips, galleries, drawers, booking. No reveal animations on headings. Effects on footage only when they make the footage better, never to hide it.
 
 ## Decision
 

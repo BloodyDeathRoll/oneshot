@@ -2,7 +2,7 @@
 
 ## Design skills
 
-Vendored into `.claude/skills/` (`tools/vendor-skills.sh`, pinned in `.claude/skills/VENDORED.txt`), invoked with the Skill tool (`/name`). You write words, not code. They are vocabulary and checks, not the source of the concept: the skills-led round of 2026-10-20 came out safer and duller than the first runs (Shahar), so no skill decides a direction, and no skill's restraint removes a concept's WebGL main item or its motion.
+Vendored into `.claude/skills/` (`tools/vendor-skills.sh`, pinned in `.claude/skills/VENDORED.txt`), invoked with the Skill tool (`/name`). You write words, not code. They are vocabulary and checks, not the source of the concept: the skills-led round of 2026-10-20 came out safer and duller than the first runs (Shahar), so no skill decides a direction, and no skill's restraint removes a concept's hero main item or its motion.
 
 | Skill | Use at 4d |
 |---|---|
