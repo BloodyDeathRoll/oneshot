@@ -143,7 +143,7 @@ main{min-width:0;padding:0 24px 48px}
 .ov-ho{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);font-weight:600}
 .ov-ho svg{width:14px;height:14px;flex:none}
 .ov-ho.done{color:var(--ink3);font-weight:500}
-.live{margin:0 0 20px;padding:14px var(--rp,20px);border:1px solid var(--ln);border-radius:12px;background:#fff}
+.live-strip{margin:0 0 20px;padding:14px var(--rp,20px);border:1px solid var(--ln);border-radius:12px;background:#fff}
 .live-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin-bottom:8px}.live-h h2{font-size:15px;margin:0}
 .live-ops{list-style:none;margin:0;padding:0;display:grid;gap:6px}
 .live-op{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;min-height:28px}
@@ -691,7 +691,7 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 
   <section class="view on" id="view-overview" aria-label="Overview">
     <p class="ov-sum" id="ov-sum"></p>
-    <section class="live" id="live" aria-label="Live: who is running what" hidden></section>
+    <section class="live-strip" id="live-strip" aria-label="Live: who is running what" hidden></section>
     <section class="ov-band ov-surf" aria-label="Money and where every site stands">
       <div class="ov-m" id="ov-rev"></div>
       <div class="ov-m" id="ov-exp"></div>
@@ -2770,6 +2770,10 @@ const HO_STATUS={requested:(h,me)=>h.from===me?`${h.to_name} asks you for it`:h.
 const hoText=h=>HO_STATUS[h.status]?HO_STATUS[h.status](h,D.team?.viewer):h.status;
 const isMine=b=>b.owned_by?.operator===D.team?.viewer;
 function hoChip(b){const h=b.handoff;if(!h)return null;return el('span',{class:'ov-ho'+(h.open?'':' done'),title:h.note||''},el('span',{html:OVI.handoff}),hoText(h))}
+async function copyText(t,btn,icon){
+  try{await navigator.clipboard.writeText(t)}catch{const ta=el('textarea',{style:'position:fixed;opacity:0'});ta.value=t;(btn.closest('dialog')||document.body).append(ta);ta.select();document.execCommand('copy');ta.remove()}
+  const was=btn.innerHTML;if(icon)btn.append(' Copied');else btn.textContent='Copied';setTimeout(()=>{btn.innerHTML=was},1600);live('copied');
+}
 async function hoPost(path,body){let res,json;posting++;try{res=await fetch(path,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body),cache:'no-store'});json=await res.json().catch(()=>({error:'response was not JSON'}))}catch(err){res={status:0};json={error:String(err)}}posting--;return{res,json}}
 function hoDecideForm(h,b){
   const name=b?b.name:h.slug;
@@ -2818,7 +2822,7 @@ function handoffModal(b){
 const ago=iso=>{const m=Math.max(0,Math.round((Date.now()-new Date(iso))/60000));return m<1?'just now':m<60?`${m} min ago`:m<1440?`${Math.round(m/60)} h ago`:`${Math.round(m/1440)} d ago`};
 const dur=iso=>{const m=Math.max(0,Math.round((Date.now()-new Date(iso))/60000));return m<60?`${m} min`:`${Math.floor(m/60)} h ${m%60} min`};
 function renderLive(){
-  const s=$('#live');if(!s)return;const L=RAW.live;s.innerHTML='';
+  const s=$('#live-strip');if(!s)return;const L=RAW.live;s.innerHTML='';
   const ops=Object.keys(RAW.team?.operators||{});
   if(!L||!L.operators||!ops.length){s.hidden=true;return}
   s.hidden=false;
