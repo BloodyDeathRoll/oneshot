@@ -29,6 +29,9 @@ DASHBOARD_ADDRESS=dash.130-61-212-182.sslip.io
 ACCESS_TEAM=
 ACCESS_AUD=
 DASH_REF=origin/main
+# The Live strip (docs/heartbeat.md): the bearer key operators' sessions post heartbeats with.
+# Generate once (openssl rand -hex 24) and put the same value in each laptop's ~/.oneshot/box.json.
+ONESHOT_BOX_KEY=
 ENV
 sudo chmod 640 "$ENV_FILE"; sudo chown root:ubuntu "$ENV_FILE"
 set -a; . "$ENV_FILE"; set +a

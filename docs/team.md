@@ -18,6 +18,8 @@ adds their git email to `team.json` once.
 | A business changes state (the pipeline, the gates) | `ledger.jsonl`, with `operator` on every line (`docs/ledger.md`) | the session that made the change |
 | Work between states — a font swap, a hero rework, a re-cut clip, a fix after a critic round | `activity.jsonl`, `kind: "work"` | `node tools/team.mjs log <slug> "<what changed>" [--files a,b]` |
 | An assignment — "Alon: tune the picked mockup's booking steps" | `activity.jsonl`, `kind: "assign"`, closed by `kind: "done"` | `tools/team.mjs assign <slug> "<task>" [--to alon]` / `done <id>` |
+| A handoff — the business itself changes hands (`docs/handoff.md`) | `activity.jsonl`, `kind: "handoff"`, steps `requested → approved \| rejected → shipped → received` | the dashboard (ask / approve / reject); the machines (`tools/handoff.mjs auto`, from the session-start hook) |
+| What each session is running right now (`docs/heartbeat.md`) | the dashboard box, outside git (`dashboard-state/live.json`) | the hooks in `.claude/settings.json` (`tools/heartbeat.mjs`) |
 | Where a business stands, for the next person | `notes/<slug>.md` | the session, before it ends |
 | The code, copy, mockup HTML, scripts | git commits (author = operator) | as always |
 | Images and video | the operator's disk + local store; `media/<slug>.tsv` lists them | `tools/media.mjs` (the pre-commit hook runs it) |
@@ -35,11 +37,12 @@ Append-only, like the ledger. One JSON object per line.
 | `ts` | UTC, ISO 8601 |
 | `operator` | id from `team.json` |
 | `slug` | business slug, or `-` for project-wide work |
-| `kind` | `work` · `assign` · `done` |
+| `kind` | `work` · `assign` · `done` · `handoff` |
 | `note` | `work`: what changed, in one sentence a colleague can act on. `done`: how it ended |
 | `files` | optional, `work` only: the main files touched |
 | `id` | `assign` and `done`: the assignment id (`tools/team.mjs` makes it) |
 | `to`, `task` | `assign` only: who it is for, what to do |
+| `step`, `from`, `to`, `key`, `bytes`, `sha256`, `files` | `handoff` only (`docs/handoff.md`): the step, the owner and the receiver (`requested`), the R2 object (`shipped`) |
 
 An assignment is open until a `done` line carries its id. Claim work before starting it
 (`assign` to yourself) so the other operator sees it on the dashboard and does not start the same
@@ -110,7 +113,7 @@ source — how the other operator gets it without asking:
 | `stock` | re-downloaded from Wikimedia Commons (`stock/index.json`) |
 | `video` | `tools/fetch-video.mjs` with the source URL in `dossier.videos[]` (restore prints them) |
 | `recipe:<script>` | the committed script that made it; its header declares it with `# media: <glob>` |
-| `local` | nothing in git can make it. Only the operator who has it: `tools/media.mjs pack <slug>` → a zip, sent by hand |
+| `local` | nothing in git can make it. A handoff ships it (`docs/handoff.md`); otherwise the operator who has it: `tools/media.mjs pack <slug>` → a zip |
 
 `node tools/media.mjs restore <slug>` tries the store, then every recipe, then reports what is
 still missing and why. The pre-commit hook (`tools/hooks/pre-commit`) refuses a staged image or
