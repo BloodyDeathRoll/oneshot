@@ -15,14 +15,19 @@
 //      local save, the same change is committed on its own branch off origin/main and opened as a PR
 //      (dashboard/publish.mjs); if that fails the local save stands, the page says why and can retry
 //      the PR (POST /agent-pr).
-//   4. accepts a handoff on POST /handoff and appends one assignment line to activity.jsonl
-//      (tools/team.mjs assign — never a ledger line), and serves /thumb/<slug>.jpg, the first screen
-//      of the site's live preview (dashboard/thumbs.mjs).
+//   4. handoffs (docs/handoff.md, tools/handoff.mjs): POST /handoff asks the owner for a business
+//      (a `requested` line in activity.jsonl), POST /handoff-decide is the owner's approve / reject;
+//      the zip, the R2 upload and the take happen on the operators' machines, never here. Also serves
+//      /thumb/<slug>.jpg, the first screen of the site's live preview (dashboard/thumbs.mjs).
+//   6. the Live strip (docs/heartbeat.md, dashboard/live.mjs): POST /status takes one heartbeat line
+//      from an operator's session (tools/heartbeat.mjs, bearer ONESHOT_BOX_KEY, no Access login), GET
+//      /live returns the picture, and data.json carries it. A local dashboard with ~/.oneshot/box.json
+//      pulls the box's picture instead, so both operators see the same strip.
 // It holds no Claude credentials, runs no agent, and can write only the ledger line shapes in DECISIONS
-// plus one activity.jsonl shape (an assignment, via /handoff).
+// plus the activity.jsonl handoff shapes (request, approve, reject) and the live file outside the repo.
 //
 //   node dashboard/server.mjs [--port 8970] [--host 127.0.0.1] [--allow-host a.example,b.example] [--root dashboard/mockups/soft-cards/dist] [--ledger ledger.jsonl] [--operator shahar] [--sync 60]
-//                             [--access-team <team> --access-aud <audience>]
+//                             [--access-team <team> --access-aud <audience>] [--state <dir>]   (ONESHOT_BOX_KEY: the heartbeat bearer key)
 //
 // Who decides. Local (the default): the operator running the server (team.json; `--operator`, else
 // `tools/team.mjs whoami`), one per process. Online: with --access-team and --access-aud the server
@@ -40,8 +45,12 @@ import { tmpdir } from 'node:os';
 import { join, dirname, resolve, extname, normalize, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildData } from './data.mjs';
-import { whoami, team, assign, ACTIVITY } from '../tools/team.mjs';
+import { whoami, team, ACTIVITY } from '../tools/team.mjs';
 import { currentRun } from '../tools/run.mjs';
+import { request as handoffRequest, decide as handoffDecide, handoffs as readHandoffs } from '../tools/handoff.mjs';
+import { LiveStore, validate as validateLive, bearerOk, pull as pullLive } from './live.mjs';
+import { loadConfig as boxConfig } from '../tools/heartbeat.mjs';
+import { homedir } from 'node:os';
 import { shootThumb, thumbFresh, markPitchLive } from './thumbs.mjs';
 import { openPr } from './publish.mjs';
 import { accessGate } from './access.mjs';
@@ -55,6 +64,11 @@ const DIST = resolve(ROOT, arg('root', 'dashboard/mockups/soft-cards/dist'));
 const LEDGER = resolve(ROOT, arg('ledger', 'ledger.jsonl'));
 const SYNC_S = Number(arg('sync', 60));
 const HOSTS = new Set(['localhost', '127.0.0.1', '[::1]', HOST, ...String(arg('allow-host', '')).split(',').map((h) => h.trim().toLowerCase()).filter(Boolean)]);
+// The Live strip: heartbeats land here with the box key (online), or are pulled from the box (local).
+const BOX_KEY = process.env.ONESHOT_BOX_KEY || null;
+const STATE_DIR = resolve(ROOT, arg('state', process.env.DASH_STATE_DIR ?? (BOX_KEY ? join(ROOT, '..', 'dashboard-state') : join(homedir(), '.oneshot', 'dashboard-state'))));
+const LIVE = new LiveStore(join(STATE_DIR, 'live.json'));
+const BOX = BOX_KEY ? null : boxConfig(); // a laptop with ~/.oneshot/box.json shows the box's picture
 // An operator as the handlers see them: id, display name, and the git identity their PR commits carry.
 const identity = (op) => { const o = team()[op]; if (!o) throw new Error(`${op} is not in team.json`); return { operator: op, human: o.name, git: { name: o.git_names?.[0] ?? o.name, email: o.git_emails?.[0] ?? '' } }; };
 let ACCESS = null, FIXED = null; // online: ACCESS reads the operator from each request; local: FIXED is the one operator
@@ -172,27 +186,33 @@ function decide(body, who) {
   return { status: 201, line, pr };
 }
 
-// ---- handoff: an assignment for the other operator (docs/team.md) ---------------------------------
-// Reaches them through activity.jsonl once merged to main; the page offers the prompt to copy and send.
-function handoff(body, who) {
-  const slug = String(body.slug ?? ''), to = String(body.to ?? ''), task = String(body.task ?? '').trim();
-  if (!team()[to]) return { status: 400, error: `to must be one of ${Object.keys(team()).join(', ')}` };
-  if (task.length < 3) return { status: 400, error: 'a request is required (at least 3 characters)' };
-  if (!readLedger().some((l) => l.slug === slug)) return { status: 400, error: `${slug} has no ledger line` };
-  const line = assign(slug, task, to, who.operator);
-  // Online nobody commits on the box, so the assignment goes to main as its own PR, like a decision.
-  if (!ACCESS) return { status: 201, line };
-  const toName = team()[to].name;
-  const pr = {
-    root: ROOT,
-    author: who.git,
-    branch: `${who.operator}/handoff-${slug.replace(/[^\w-]+/g, '-').slice(0, 40)}-${stamp()}`,
-    message: `activity: ${who.human} hands ${slug} to ${toName} (from the dashboard)`,
-    title: `Handoff: ${slug} → ${toName}`,
-    body: `${who.human} handed this to ${toName} on the dashboard. Only \`activity.jsonl\` changes: one assignment line.\n\n> ${task}\n\nMerge it so ${toName} sees the assignment.\n\nOpened by the dashboard on handoff.`,
+// ---- handoff: ask for a business, answer a request (docs/handoff.md, tools/handoff.mjs) ------------
+// Both write one activity.jsonl line locally and open it as its own PR, like a decision. The owner's
+// machine ships the media and the receiver's machine takes it (tools/handoff.mjs auto, from the
+// session-start hook); nothing heavy runs here.
+function handoffPr(line, who, { title, message, body }) {
+  return {
+    root: ROOT, author: who.git,
+    branch: `${who.operator}/handoff-${line.step}-${line.slug.replace(/[^\w-]+/g, '-').slice(0, 40)}-${stamp()}`,
+    message, title, body: `${body}\n\nOnly \`activity.jsonl\` changes: one \`handoff\` line (${line.step}).\n\n\`\`\`json\n${JSON.stringify(line)}\n\`\`\`\n\nOpened by the dashboard.`,
     files: [{ rel: 'activity.jsonl', append: JSON.stringify(line) + '\n' }],
   };
-  return { status: 201, line, pr };
+}
+function handoff(body, who) {
+  const slug = String(body.slug ?? ''), note = String(body.task ?? body.note ?? '').trim();
+  if (note.length < 3) return { status: 400, error: 'say why you want it (at least 3 characters)' };
+  let line;
+  try { line = handoffRequest(slug, note, who.operator); } catch (e) { return { status: /already|yours|no ledger/.test(e.message) ? 409 : 400, error: e.message }; }
+  const owner = team()[line.from]?.name ?? line.from;
+  return { status: 201, line, pr: handoffPr(line, who, { title: `Handoff request: ${slug} (${who.human} asks ${owner})`, message: `handoff: ${who.human} asks ${owner} for ${slug} (from the dashboard)`, body: `${who.human} asked ${owner} for **${slug}** on the dashboard:\n\n> ${note}\n\n${owner} approves or rejects it on the dashboard; on approval ${owner}'s machine ships the media and ${who.human}'s takes it (docs/handoff.md).` }) };
+}
+function handoffDecision(body, who) {
+  const id = String(body.id ?? ''), choice = String(body.choice ?? ''), note = String(body.reason ?? body.note ?? '').trim();
+  let line;
+  try { line = handoffDecide(id, choice, note, who.operator); } catch (e) { return { status: /already/.test(e.message) ? 409 : /only .* decides/.test(e.message) ? 403 : 400, error: e.message }; }
+  const h = readHandoffs().find((x) => x.id === id);
+  const other = team()[h?.to]?.name ?? h?.to ?? 'the other operator';
+  return { status: 201, line, pr: handoffPr(line, who, { title: `Handoff ${choice}: ${line.slug} → ${other}`, message: `handoff: ${line.slug} ${choice} by ${who.human} (from the dashboard)`, body: `${who.human} ${choice} ${other}'s request for **${line.slug}** on the dashboard${note ? `:\n\n> ${note}` : '.'}\n\n${choice === 'approved' ? `Next: ${who.human}'s machine ships the media to R2 and ${other}'s takes it (tools/handoff.mjs auto, from the session-start hook).` : 'The business stays where it is.'}` }) };
 }
 
 // ---- agent definitions (the Agents view) ----------------------------------------------------------
@@ -341,7 +361,8 @@ function handle(req, res, who) {
   const url = new URL(req.url, `http://${req.headers.host}`);
   const path = decodeURIComponent(url.pathname);
   if (req.method === 'GET' && (path === '/' || path === '/index.html')) return serveFile(res, join(DIST, 'index.html'));
-  if (req.method === 'GET' && path === '/data.json') { markPitchLive(buildData({ ledgerPath: LEDGER, operator: who.operator })).then((d) => send(res, 200, d), (e) => send(res, 500, { error: String(e.message ?? e) })); return; }
+  if (req.method === 'GET' && path === '/data.json') { markPitchLive(buildData({ ledgerPath: LEDGER, operator: who.operator })).then((d) => send(res, 200, { ...d, live: LIVE.current() }), (e) => send(res, 500, { error: String(e.message ?? e) })); return; }
+  if (req.method === 'GET' && path === '/live') return send(res, 200, LIVE.current());
   if (req.method === 'GET' && path === '/events') {
     res.writeHead(200, { 'content-type': 'text/event-stream', 'cache-control': 'no-store', connection: 'keep-alive' });
     res.write(`event: hello\ndata: ${JSON.stringify({ at: new Date().toISOString() })}\n\n`);
@@ -383,18 +404,19 @@ function handle(req, res, who) {
     });
     return;
   }
-  if (req.method === 'POST' && path === '/handoff') {
+  if (req.method === 'POST' && (path === '/handoff' || path === '/handoff-decide')) {
     if (!/^application\/json\b/i.test(req.headers['content-type'] ?? '')) return send(res, 415, { error: 'content-type must be application/json' });
     let raw = '';
     req.on('data', (c) => { raw += c; if (raw.length > 64_000) req.destroy(); });
     req.on('end', () => {
       let body; try { body = JSON.parse(raw); } catch { return send(res, 400, { error: 'body must be JSON' }); }
       if (!body || typeof body !== 'object' || Array.isArray(body)) return send(res, 400, { error: 'body must be a JSON object' });
-      let out; try { out = handoff(body, who); } catch (e) { return send(res, 500, { error: String(e.message ?? e) }); }
+      let out; try { out = path === '/handoff' ? handoff(body, who) : handoffDecision(body, who); } catch (e) { return send(res, 500, { error: String(e.message ?? e) }); }
       if (out.status !== 201) return send(res, out.status, out);
       notify('handoff');
       const { pr, ...saved } = out;
-      if (!pr) return send(res, 201, saved);
+      // A test ledger (--ledger) marks a test server: the line stays local.
+      if (!pr || LEDGER !== join(ROOT, 'ledger.jsonl')) return send(res, 201, saved);
       tryPr(pr).then((r) => send(res, 201, { ...saved, ...r }));
     });
     return;
@@ -420,7 +442,30 @@ function handle(req, res, who) {
   send(res, 405, { error: 'method not allowed' });
 }
 // One bad request must not take the control layer down: a throw in a handler is an uncaught exception.
+// A heartbeat from an operator's machine: bearer box key, no Access login (tools/heartbeat.mjs).
+function status(req, res) {
+  if (!bearerOk(req.headers.authorization, BOX_KEY)) return send(res, 401, { error: 'bearer key required' });
+  if (req.method === 'GET') return send(res, 200, LIVE.snapshot());
+  let raw = '';
+  req.on('data', (c) => { raw += c; if (raw.length > 8_000) req.destroy(); });
+  req.on('end', () => {
+    let body; try { body = JSON.parse(raw); } catch { return send(res, 400, { error: 'body must be JSON' }); }
+    let line; try { line = validateLive(body, team()); } catch (e) { return send(res, e.status ?? 400, { error: e.message }); }
+    const cur = LIVE.add(line);
+    notify('live');
+    send(res, 201, { ok: true, operator: line.operator, state: cur.station ? 'running' : line.kind });
+  });
+}
+if (BOX) { // a laptop: the strip is the box's picture
+  const pullBox = async () => { const s = await pullLive(BOX); if (s) { LIVE.replace(s); notify('live'); } };
+  pullBox(); setInterval(pullBox, 30_000).unref();
+}
+
 const server = createServer(async (req, res) => {
+  const path = (() => { try { return decodeURIComponent(new URL(req.url, 'http://x').pathname); } catch { return ''; } })();
+  if (BOX_KEY && (path === '/status' || (path === '/live' && req.headers.authorization)) && (req.method === 'POST' || req.method === 'GET')) {
+    try { return status(req, res); } catch (e) { return send(res, 500, { error: String(e.message ?? e) }); }
+  }
   let who = FIXED;
   if (ACCESS) {
     try { who = identity((await ACCESS(req)).operator); }

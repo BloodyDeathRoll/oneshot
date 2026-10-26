@@ -23,4 +23,8 @@ node tools/team.mjs whoami 2>&1
 node tools/run.mjs 2>&1 | sed 's/^\(run: \)\{0,1\}/run: /'
 node tools/run.mjs list 2>&1 | awk -F'\t' '$3=="active"{print "  active: "$1" ("$2")"}'
 node tools/team.mjs status 2>&1
+# Handoffs (docs/handoff.md): answer requests on the dashboard; ship / take what is waiting for this
+# machine in the background so the session is not held up (zip, R2, PR). The log says what happened.
+node tools/handoff.mjs status 2>/dev/null | grep -E '^(waiting for your answer|to ship|to take)' | sed 's/^/handoff: /'
+mkdir -p "$HOME/.oneshot" && (nohup node tools/handoff.mjs auto >"$HOME/.oneshot/handoff-auto.log" 2>&1 &)
 exit 0

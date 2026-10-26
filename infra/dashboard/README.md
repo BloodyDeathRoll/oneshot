@@ -38,6 +38,10 @@ phone / laptop ──> oneshot-dashboard.os1.workers.dev ──> dash.130-61-212
    - `bash infra/dashboard/install.sh` (from a copy of this folder, or the clone it makes), fill
      `ACCESS_TEAM` (the team name) and `ACCESS_AUD` in `/etc/oneshot/dashboard.env`, run it again.
 5. Add each operator's login e-mail to `team.json` `access_emails` if it is not one of their `git_emails`.
+6. **The Live strip** (docs/heartbeat.md): `ONESHOT_BOX_KEY=$(openssl rand -hex 24)` in `/etc/oneshot/dashboard.env`
+   on the box, `sudo systemctl restart oneshot-dashboard`, and the same key in each laptop's
+   `~/.oneshot/box.json` (`{"url":"https://dash.130-61-212-182.sslip.io","key":"…"}`). Sessions then post
+   heartbeats to `POST /status` on the box's own address, with the key instead of an Access login.
 
 ## Run
 
