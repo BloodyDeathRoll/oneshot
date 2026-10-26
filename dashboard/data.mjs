@@ -17,6 +17,7 @@ import { readActivity, assignments as toAssignments, team as readTeam, operatorF
 import { status as mediaStatus } from '../tools/media.mjs';
 import { readJsonlMerged, showMain, lsMain, mainSha, MAIN } from '../tools/origin.mjs';
 import { RUNS_DIR } from '../tools/run.mjs';
+import { handoffs as readHandoffs, ownerOf } from '../tools/handoff.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'dashboard');
@@ -273,6 +274,8 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
   const viewerName = ops[viewer]?.name ?? viewer;
   const activity = origin ? readJsonlMerged('activity.jsonl') : readActivity();
   const allAssignments = toAssignments(activity);
+  const allHandoffs = readHandoffs(activity); // docs/handoff.md: requested → approved | rejected → shipped → received
+  const handoffView = (h) => ({ id: h.id, slug: h.slug, from: h.from, to: h.to, from_name: ops[h.from]?.name ?? h.from, to_name: ops[h.to]?.name ?? h.to, status: h.status, open: h.open, note: h.note, ts: h.ts, last_ts: h.last_ts, shipped: h.shipped ?? null, steps: Object.fromEntries(Object.entries(h.steps).map(([k, l]) => [k, { ts: l.ts, operator: l.operator, note: l.note ?? null }])) });
   const commitsBySlug = readCommits(ops);
   const media = mediaStatus();
   // Several runs can be active at once, one per operator (docs/team.md). `run` is the one the page
@@ -367,7 +370,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     // One timeline per business: ledger transitions, operators' work and assignments, commits.
     const timeline = [
       ...hist.map((h) => ({ ts: h.ts, operator: opOfLine(h), kind: 'ledger', agent: h.agent, note: `${h.from_state ?? '—'} → ${h.to_state}${h.note ? ': ' + h.note : ''}` })),
-      ...(own ? activity.filter((a) => a.slug === slug).map((a) => ({ ts: a.ts, operator: a.operator, kind: a.kind, note: a.kind === 'assign' ? `assigned to ${ops[a.to]?.name ?? a.to}: ${a.task}` : a.note, files: a.files ?? null, id: a.id ?? null })) : []),
+      ...(own ? activity.filter((a) => a.slug === slug).map((a) => ({ ts: a.ts, operator: a.operator, kind: a.kind, note: a.kind === 'assign' ? `assigned to ${ops[a.to]?.name ?? a.to}: ${a.task}` : a.kind === 'handoff' ? `handoff ${a.step}${a.step === 'requested' ? ` by ${ops[a.to]?.name ?? a.to} from ${ops[a.from]?.name ?? a.from}` : ''}${a.note ? `: ${a.note}` : a.step === 'shipped' ? `: ${a.files} files, ${(a.bytes / 1e6).toFixed(1)} MB in R2` : ''}` : a.note, files: a.files ?? null, id: a.id ?? null })) : []),
       ...(own ? commitsBySlug[slug] ?? [] : []),
     ].sort((x, y) => y.ts.localeCompare(x.ts));
     const lastWorked = timeline.find((e) => e.operator && (e.kind !== 'ledger' || e.agent === 'human' || e.ts >= '2026-10-02')) ?? timeline.find((e) => e.operator) ?? null;
@@ -418,6 +421,9 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
       // the server writes "sent by <name> via <channel>[ on <date>]. <note>" (dashboard/server.mjs, gate c)
       pitch_sent: pitchedLine ? { ts: pitchedLine.ts, by: opOfLine(pitchedLine), channel: pitchedLine.note?.match(/\bvia (whatsapp|in person|email|phone)\b/i)?.[1] ?? null, note: pitchedLine.note ?? null } : null,
       ran_by: ranBy ? { operator: ranBy, name: ops[ranBy]?.name ?? ranBy } : null,
+      // Who owns it now: the receiver of its last completed handoff, else the run's operator (docs/handoff.md).
+      owned_by: (() => { const o = ownerOf(slug, ranBy, activity); return o ? { operator: o, name: ops[o]?.name ?? o } : null; })(),
+      handoff: (() => { const h = allHandoffs.filter((x) => x.slug === slug).sort((x, y) => y.last_ts.localeCompare(x.last_ts))[0]; return h && (h.open || Date.now() - Date.parse(h.last_ts) < 3 * 86400000) ? handoffView(h) : null; })(),
       outcome: outcomeLine ? { state: outcomeLine.to_state.slice(8), ts: outcomeLine.ts, note: outcomeLine.note } : null,
       reached: [...reached],
       history: hist.map((h) => ({ ts: h.ts, from: h.from_state, to: h.to_state, agent: h.agent, v: h.agent_version, note: h.note, hosting_mode: h.hosting_mode })),
@@ -605,6 +611,8 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     team: {
       viewer, operators: Object.fromEntries(Object.entries(ops).map(([id, o]) => [id, o.name])),
       open_assignments: allAssignments.filter((a) => a.open).map((a) => ({ ...a, to_name: ops[a.to]?.name ?? a.to, by_name: ops[a.by]?.name ?? a.by, business: businesses.find((b) => b.slug === a.slug)?.name ?? a.slug })),
+      // Handoffs (docs/handoff.md): every open one plus the last three days of closed ones, newest first.
+      handoffs: allHandoffs.filter((h) => h.open || Date.now() - Date.parse(h.last_ts) < 3 * 86400000).sort((x, y) => y.last_ts.localeCompare(x.last_ts)).map((h) => ({ ...handoffView(h), business: businesses.find((b) => b.slug === h.slug)?.name ?? h.slug })),
       // per operator: their latest piece of work, on which business
       last_by_operator: Object.fromEntries(Object.keys(ops).map((id) => {
         const e = businesses.flatMap((b) => b.timeline.filter((t) => t.operator === id && t.kind !== 'ledger').map((t) => ({ ...t, slug: b.slug, business: b.name })))
