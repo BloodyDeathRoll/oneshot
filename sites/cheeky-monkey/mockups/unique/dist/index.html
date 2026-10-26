@@ -21,7 +21,14 @@ h.className=c;})();
 <link rel="preload" as="image" href="img/board-poster-720.webp" fetchpriority="high">
 <style>
 :root{
-  --ground:#FFFFFF; --tint:#FDF1F2; --ink:#143746; --ink-2:#3d5865; --place:#D3AAAE;
+  --ground:#FFFFFF; --tint:#FDE6EE;
+  /* the beach, sampled (hex, asset): sky #CADFFA img-013 · clear sky #85BAFA img-120 · sea aqua #7DD2F4 img-108 (the painted fin shelf;
+     the business's own sea photographs are overcast, img-100 #7299AC) · far sea #36A4EC img-108 blue fin · sand #F2E8D7 img-120 (#D7C9B7 lifted) ·
+     wet sand #E4D0AE img-089 (#C0A17B lifted) · aqua ground #E4F6FD (img-108 shelf lifted) · sky ground #EAF3FE (img-013 lifted) · sunset #FDE6EE img-134 (#FAC7D6 lifted) ·
+     fins img-108: red #E53034, yellow #DBB912, green #25833D, blue #36A4EC */
+  --sky:#CADFFA; --sky-2:#85BAFA; --sea:#7DD2F4; --sea-far:#36A4EC; --sand:#F2E8D7; --sand-wet:#E4D0AE;
+  --aqua:#E4F6FD; --skyg:#EAF3FE; --fin-r:#E53034; --fin-y:#DBB912; --fin-g:#25833D; --fin-b:#36A4EC;
+  --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 40' preserveAspectRatio='none'%3E%3Cpath d='M0 22C60 8 110 6 170 16S270 34 330 26 430 4 500 12 570 30 600 22V40H0Z'/%3E%3C/svg%3E"); --ink:#143746; --ink-2:#3d5865; --place:#D3AAAE;
   --book:#0B72C4; --book-deep:#095EA2;
   --body:'Rethink Sans',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
   --hand:'Permanent Marker','Marker Felt','Comic Sans MS',cursive;
@@ -80,19 +87,30 @@ p{margin:0 0 1em}
 .pick{position:relative;height:100svh}
 html.motion .pick{height:calc(100svh + 180vh)}
 @media (max-width:860px){html.motion .pick{height:calc(100svh + 110vh)}}
-.stage{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--ground)}
+.stage{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--sky);--hz:33%;--shore:57%}
+.beach{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.beach i{position:absolute;left:0;bottom:0;width:calc(100% + 600px);display:block;
+  -webkit-mask:var(--wave) 0 0/600px 34px repeat-x,linear-gradient(#000 0 0) 0 33px/100% 100% no-repeat;
+          mask:var(--wave) 0 0/600px 34px repeat-x,linear-gradient(#000 0 0) 0 33px/100% 100% no-repeat}
+.beach .far{top:var(--hz);background:var(--sea-far);-webkit-mask:none;mask:none;width:100%}
+.beach .sea{top:calc(var(--hz) + 3.2%);background:var(--sea);animation:drift 40s linear infinite}
+.beach .foam{top:calc(var(--shore) - 26px);background:#fff;animation:drift 22s linear infinite}
+.beach .wet{top:calc(var(--shore) - 12px);background:var(--sand-wet);animation:drift 30s linear infinite reverse}
+.beach .sand{top:calc(var(--shore) - 3px);background:var(--sand);transform:translateX(-210px)}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(-600px)}}
+@media (max-width:860px){.stage{--hz:27%;--shore:66%}}
 .hero{position:absolute;inset:0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;column-gap:clamp(28px,4vw,64px);
   padding:92px var(--gut) 4svh;z-index:3;pointer-events:none}
 .hero > *{pointer-events:auto}
 .hero-line{font:400 clamp(34px,3.6vw,54px)/1.08 var(--hand);color:var(--ink);margin:0;max-width:7.2em;text-wrap:balance}
-.hero-line.a{justify-self:end;text-align:right}
-.hero-b{justify-self:start;display:flex;flex-direction:column;align-items:flex-start;gap:30px}
+.hero-line.a{justify-self:end;text-align:right;align-self:end;margin-bottom:13svh}
+.hero-b{justify-self:start;align-self:end;margin-bottom:9svh;display:flex;flex-direction:column;align-items:flex-start;gap:26px}
 .slot{position:relative;height:min(86svh,calc(100svh - 128px));aspect-ratio:100/320;flex:none;pointer-events:none}
 .slot .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 320' preserveAspectRatio='none'%3E%3Cpath d='M50 0C59 0 79 26 90 76C98 116 100 158 99 196C97 248 87 290 70 310C63 318 56 320 50 320C44 320 37 318 30 310C13 290 3 248 1 196C0 158 2 116 10 76C21 26 41 0 50 0Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
           mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 320' preserveAspectRatio='none'%3E%3Cpath d='M50 0C59 0 79 26 90 76C98 116 100 158 99 196C97 248 87 290 70 310C63 318 56 320 50 320C44 320 37 318 30 310C13 290 3 248 1 196C0 158 2 116 10 76C21 26 41 0 50 0Z'/%3E%3C/svg%3E") center/100% 100% no-repeat}
 .shadow{position:absolute;left:-30%;right:-30%;bottom:-16px;height:34px;border-radius:50%;
-  background:radial-gradient(closest-side,rgba(20,55,70,.30),rgba(20,55,70,.10) 55%,transparent);z-index:-1}
+  background:radial-gradient(closest-side,rgba(92,70,40,.34),rgba(92,70,40,.12) 55%,transparent);z-index:-1}
 .hero-cta{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
 .hero-cta small{font-size:14px;color:var(--ink-2)}
 html.motion .slot .poster{visibility:hidden}
@@ -136,11 +154,12 @@ svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-l
 .head .lede{margin-top:14px}
 section{scroll-margin-top:80px}
 
+
 /* ---------- intro ---------- */
 .intro{padding:clamp(72px,10vw,128px) var(--gut) clamp(40px,6vw,72px);max-width:880px;text-align:center}
 .intro-b{font-size:19px;line-height:1.65;margin-top:22px}
 .facts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:36px 0 0;text-align:left}
-.facts div{background:var(--tint);border-radius:var(--r);padding:20px 22px}
+.facts div{background:#fff;border-radius:var(--r);padding:20px 22px}
 .facts dt{display:flex;align-items:center;gap:10px;font-weight:600;margin-bottom:6px}
 .facts dt svg{width:22px;height:22px;color:var(--book)}
 .facts dd{margin:0;font-size:16px;color:var(--ink-2)}
@@ -150,7 +169,8 @@ section{scroll-margin-top:80px}
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .card{display:flex;flex-direction:column;gap:12px;background:#fff;border-radius:22px;padding:22px 20px 22px;
   box-shadow:0 1px 2px rgba(20,55,70,.06),0 18px 40px -26px rgba(20,55,70,.35);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
-.card-board{height:300px;display:flex;justify-content:center;perspective:700px;margin-bottom:6px}
+.card-board{height:330px;display:flex;align-items:center;justify-content:center;perspective:700px;margin:-6px -4px 6px;border-radius:16px;background:var(--fin,var(--fin-b))}
+.card:nth-child(1){--fin:var(--fin-b)}.card:nth-child(2){--fin:var(--fin-y)}.card:nth-child(3){--fin:var(--fin-r)}.card:nth-child(4){--fin:var(--fin-g)}
 .card-board img{height:300px;width:94px;max-width:none;aspect-ratio:auto;object-fit:cover;
   -webkit-mask:var(--board-mask) center/100% 100% no-repeat;mask:var(--board-mask) center/100% 100% no-repeat;
   transition:transform .5s var(--ease);transform:rotateY(var(--ry,0deg)) rotateX(var(--rx,0deg)) rotate(var(--rz,0deg))}
@@ -165,14 +185,15 @@ section{scroll-margin-top:80px}
 .ic-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px 28px}
 .ic-grid li,.ic-list li{display:flex;align-items:flex-start;gap:12px;font-size:16px;line-height:1.4}
 .ic-grid svg,.ic-list svg{width:24px;height:24px;flex:none;color:var(--book);margin-top:-1px}
+.ic-grid li:nth-child(3n+2) svg{color:var(--fin-r)}.ic-grid li:nth-child(3n) svg{color:var(--fin-g)}
 .ic-grid em{display:block;font-style:normal;font-size:13.5px;color:var(--ink-2);margin-top:3px}
 .lessons{margin-top:clamp(56px,7vw,88px);display:grid;grid-template-columns:1.1fr 1fr;gap:28px 56px;align-items:center}
 .lessons .t-hand-s{margin-bottom:14px}
-.lesson-card{background:var(--tint);border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.lesson-card{background:#fff;border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
 .lesson-card .det{margin:0}
 
 /* ---------- rooms ---------- */
-.rooms{background:var(--tint);padding:clamp(72px,9vw,120px) 0}
+.rooms{padding:clamp(72px,9vw,120px) 0}
 .room-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,4vw,56px) 28px}
 .room{display:flex;flex-direction:column;gap:16px;min-width:0}
 .show{position:relative;border-radius:20px;overflow:hidden;background:#e9dfe0}
@@ -212,7 +233,7 @@ section{scroll-margin-top:80px}
 html.motion .m.pre img{transform:scale(.98)}
 
 /* ---------- roof ---------- */
-.roof{background:var(--tint);padding:0 0 clamp(72px,9vw,120px)}
+.roof{padding:0 0 clamp(72px,9vw,120px)}
 .roof-band{display:block;max-width:1500px;margin:0 auto}
 .roof-band img{width:100%;aspect-ratio:16/9;object-fit:cover}
 .roof-g{display:grid;grid-template-columns:7fr 5fr;gap:56px;align-items:center;margin-top:clamp(48px,6vw,80px)}
@@ -230,7 +251,7 @@ html.motion .m.pre img{transform:scale(.98)}
 .print{width:min(320px,70%);margin-top:28px;border-radius:6px;background:#fff;padding:10px;box-shadow:0 1px 2px rgba(20,55,70,.08),0 16px 30px -18px rgba(20,55,70,.35);transform:rotate(-2deg)}
 
 /* ---------- guests ---------- */
-.guests{background:var(--tint);padding:clamp(72px,9vw,120px) 0}
+.guests{padding:clamp(72px,9vw,120px) 0}
 .guests-g{display:grid;grid-template-columns:7fr 5fr;gap:56px;align-items:center}
 .quotes{position:relative;min-width:0}
 .quotes .t-hand{margin-bottom:22px}
@@ -265,14 +286,14 @@ html.motion .m.pre img{transform:scale(.98)}
 .know-h{margin:36px 0 12px}
 
 /* ---------- closing ---------- */
-.closing{text-align:center;padding:clamp(56px,7vw,96px) var(--gut) clamp(72px,9vw,112px);background:var(--ground)}
+.closing{text-align:center;padding:clamp(56px,7vw,96px) var(--gut) clamp(72px,9vw,112px)}
 .close-board{width:96px;height:307px;margin:0 auto 32px;filter:drop-shadow(0 18px 18px rgba(20,55,70,.18))}
 .close-board img{width:100%;height:100%;object-fit:cover;-webkit-mask:var(--board-mask) center/100% 100% no-repeat;mask:var(--board-mask) center/100% 100% no-repeat}
 .close-line{font:400 clamp(24px,2.4vw,32px)/1.3 var(--hand);max-width:24em;margin:0 auto;text-wrap:balance}
 .close-act{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:32px}
 
 /* ---------- instagram ---------- */
-.ig{background:var(--tint);padding:0 0 clamp(56px,7vw,88px)}
+.ig{padding:0 0 clamp(56px,7vw,88px)}
 .ig-g{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}
 .ig-t{border-radius:16px;overflow:hidden;display:block}
 .ig-t img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform .5s var(--ease)}
@@ -284,7 +305,7 @@ html.motion .m.pre img{transform:scale(.98)}
 @media (hover:hover){.ig-follow:hover .ig-board{transform:scale(1.04);background:var(--book-deep)}}
 
 /* ---------- footer ---------- */
-.foot{background:#fff;padding:56px 0 calc(48px + env(safe-area-inset-bottom))}
+.foot{padding:56px 0 calc(48px + env(safe-area-inset-bottom))}
 .foot-g{display:grid;grid-template-columns:1.3fr 1.2fr 1fr auto;gap:28px;align-items:start}
 .foot p{margin:0;font-size:15px;color:var(--ink-2)}
 .mark-f{font:400 24px/1 var(--hand)!important;color:var(--ink)!important;margin-bottom:10px!important}
@@ -359,7 +380,7 @@ html.js .plain-only{display:none}
   .cards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1 * var(--gut));padding:6px var(--gut) 24px;scroll-padding:0 var(--gut);scrollbar-width:none}
   .cards::-webkit-scrollbar{display:none}
   .card{flex:0 0 78%;scroll-snap-align:start}
-  .card-board,.card-board img{height:260px}.card-board img{width:81px}
+  .card-board{height:280px}.card-board img{height:250px;width:78px}
   .incl,.lessons,.room-grid,.shop-g,.roof-g,.baba-g,.guests-g,.road-g{grid-template-columns:1fr}
   .ic-grid{grid-template-columns:1fr 1fr;gap:16px}
   .shop-t{position:static}
@@ -378,12 +399,21 @@ html.js .plain-only{display:none}
 @media (max-width:860px){
   .hero{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:76px 16px 20px;text-align:center}
   .hero-line{font-size:25px;max-width:none}
-  .hero-line.a{margin-bottom:12px;text-align:center}
+  .hero-line.a{margin-bottom:12px;text-align:center;align-self:auto}
+  .hero-b{align-self:auto;margin-bottom:0}
   .hero-line.b{margin-top:14px}
   .slot{height:calc(100svh - 252px)}
   .hero-b{display:flex;align-items:center;gap:16px}
   .hero-cta{align-items:center}
 }
+.edge{position:relative}
+.edge::before{content:"";position:absolute;left:0;right:0;top:-39px;height:40px;background:var(--bg);pointer-events:none;
+  -webkit-mask:var(--wave) 0 100%/900px 40px repeat-x;mask:var(--wave) 0 100%/900px 40px repeat-x}
+.sandg{--bg:var(--sand);background:var(--sand)}
+.aquag{--bg:var(--aqua);background:var(--aqua)}
+.skyg{--bg:var(--skyg);background:var(--skyg)}
+.pinkg{--bg:var(--tint);background:var(--tint)}
+.whiteg{--bg:#fff;background:#fff}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -435,6 +465,7 @@ html.js .plain-only{display:none}
 <main>
 <section class="pick" id="pick" aria-label="Cheeky Monkey Surf Camp">
   <div class="stage" id="stage">
+    <div class="beach" aria-hidden="true"><i class="far"></i><i class="sea"></i><i class="foam"></i><i class="wet"></i><i class="sand"></i></div>
     <div class="zm" id="zm" aria-hidden="true">
       <img src="img/board-poster-720.webp" alt="" width="720" height="1280" decoding="async">
     </div>
@@ -455,16 +486,16 @@ html.js .plain-only{display:none}
   </div>
 </section>
 
-<section class="intro wrap" aria-labelledby="intro-h">
+<section class="intro-s sandg" aria-labelledby="intro-h"><div class="intro wrap">
   <h2 class="t-hand" id="intro-h">Catch waves, not worries</h2>
   <div class="intro-b"><p>Cheeky Monkey is a surf and yoga camp on the main road through Midigama, close to the main point breaks.</p><p>Right alongside the guesthouse is Baba&#x27;s Surf Shop. Rent a board there or buy one, and bring yours in if it needs a repair.</p></div>
   <dl class="facts">
     <div><dt><svg aria-hidden="true"><use href="#i-wave"/></svg>The spot</dt><dd>Close to the main point breaks, with many more surf breaks a short walk away.</dd></div>
     <div><dt><svg aria-hidden="true"><use href="#i-sun"/></svg>The season</dt><dd>The best time is from October till March or April. The waves are nice and the beach is clean.</dd></div>
   </dl>
-</section>
+</div></section>
 
-<section class="counter" id="counter" aria-labelledby="week-h">
+<section class="counter sandg" id="counter" aria-labelledby="week-h">
   <div class="wrap">
     <div class="head">
       <h2 class="t-hand" id="week-h">A week of surf</h2>
@@ -538,7 +569,7 @@ html.js .plain-only{display:none}
   </div>
 </section>
 
-<section class="rooms" id="rooms" aria-labelledby="rooms-h">
+<section class="rooms aquag edge" id="rooms" aria-labelledby="rooms-h">
   <div class="wrap">
     <div class="head"><h2 class="t-hand" id="rooms-h">The rooms</h2></div>
     <div class="room-grid">
@@ -615,7 +646,7 @@ html.js .plain-only{display:none}
   </div>
 </section>
 
-<section class="shop" id="shop" aria-labelledby="shop-h">
+<section class="shop whiteg edge" id="shop" aria-labelledby="shop-h">
   <div class="wrap shop-g">
     <div class="shop-t">
       <h2 class="t-hand" id="shop-h">Baba's Surf Shop</h2>
@@ -632,7 +663,7 @@ html.js .plain-only{display:none}
   </div>
 </section>
 
-<section class="roof" id="roof" aria-labelledby="roof-h">
+<section class="roof pinkg edge" id="roof" aria-labelledby="roof-h">
   <picture class="roof-band">
     <source media="(max-width:860px)" srcset="img/roof-img-134-m.webp" width="900" height="1125">
     <img src="img/roof-img-134-d.webp" width="1500" height="844" loading="lazy" decoding="async" alt="Cheeky Monkey surfer on the beach with his surfboard">
@@ -647,7 +678,7 @@ html.js .plain-only{display:none}
   </div>
 </section>
 
-<section class="baba" id="baba" aria-labelledby="baba-h">
+<section class="baba sandg edge" id="baba" aria-labelledby="baba-h">
   <div class="wrap baba-g">
     <img class="baba-p" src="img/baba-img-141.webp" width="900" height="1125" loading="lazy" decoding="async" alt="Baba, who founded Cheeky Monkey, among the boards in his shop">
     <div class="baba-t">
@@ -658,7 +689,7 @@ html.js .plain-only{display:none}
   </div>
 </section>
 
-<section class="guests" id="guests" aria-labelledby="guests-h">
+<section class="guests skyg edge" id="guests" aria-labelledby="guests-h">
   <div class="wrap guests-g">
     <div class="quotes" data-show>
       <h2 class="t-hand" id="guests-h">What guests say</h2>
@@ -674,7 +705,7 @@ html.js .plain-only{display:none}
   </div>
 </section>
 
-<section class="road" id="road" aria-labelledby="road-h">
+<section class="road whiteg edge" id="road" aria-labelledby="road-h">
   <div class="wrap road-g">
     <img class="road-p" src="img/road-img-082.webp" width="900" height="1125" loading="lazy" decoding="async" alt="The building from the road: BABA&#x27;S SURF SHOP &amp; SURF SCHOOL front, signpost and a red tuk-tuk">
     <div class="road-t">
@@ -689,7 +720,7 @@ html.js .plain-only{display:none}
   </div>
 </section>
 
-<section class="closing" aria-labelledby="close-h">
+<section class="closing aquag edge" aria-labelledby="close-h">
   <div class="close-board" aria-hidden="true"><img src="img/board-rail.webp" width="600" height="1066" loading="lazy" decoding="async" alt=""></div>
   <h2 class="sr" id="close-h">Book</h2>
   <p class="close-line">See the rooms and live dates on Booking.com. For lessons and surf weeks, call us first.</p>
@@ -700,7 +731,7 @@ html.js .plain-only{display:none}
   </div>
 </section>
 
-<section class="ig" aria-labelledby="ig-h">
+<section class="ig aquag" aria-labelledby="ig-h">
   <div class="wrap">
     <h2 class="sr" id="ig-h">Instagram</h2>
     <div class="ig-g"><a class="ig-t" href="https://www.instagram.com/cheekymonkeysrilanka/"><img src="img/ig-img-105.webp" width="480" height="480" loading="lazy" decoding="async" alt="Busy night at restaurant near Cheeky Monkey"></a><a class="ig-t" href="https://www.instagram.com/cheekymonkeysrilanka/"><img src="img/ig-img-085.webp" width="480" height="480" loading="lazy" decoding="async" alt="Group selfie of smiling guests and an instructor on the beach, soft boards behind"></a><a class="ig-t" href="https://www.instagram.com/cheekymonkeysrilanka/"><img src="img/ig-img-099.webp" width="480" height="480" loading="lazy" decoding="async" alt="Thatched rooftop terrace with wooden bar and sea view at dusk"></a><a class="ig-t" href="https://www.instagram.com/cheekymonkeysrilanka/"><img src="img/ig-img-089.webp" width="480" height="480" loading="lazy" decoding="async" alt="Smiling guests and staff on the beach with boards"></a><a class="ig-t" href="https://www.instagram.com/cheekymonkeysrilanka/"><img src="img/ig-img-013.webp" width="480" height="480" loading="lazy" decoding="async" alt="Rooftop view over the wall to the sea"></a>
@@ -710,7 +741,7 @@ html.js .plain-only{display:none}
 </section>
 </main>
 
-<footer class="foot">
+<footer class="foot sandg edge">
   <div class="wrap foot-g">
     <div><p class="mark-f">Cheeky Monkey</p><p>Galle - Matara Main Road, Midigama East Midigama, Ahangama 80650, Sri Lanka</p></div>
     <div class="foot-c">

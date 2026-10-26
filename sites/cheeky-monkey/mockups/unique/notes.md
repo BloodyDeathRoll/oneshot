@@ -34,6 +34,22 @@ Old site for comparison: `dossier/cheeky-monkey/assets/old-site-desktop.png`, `o
 - Booking tapped through at 390 and 1440: the hero button lands on `https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html` (1 tap). "Plan a stay" opens the drawer with focus on Close. A surf week → Yoga and Surf → Shared double shows USD 280, and the Email link's subject becomes "Cheeky Monkey: Yoga and Surf Lesson Package, shared double room". A room → Classic Triple → the Booking.com hand-off link. Esc closes, and focus returns to "Plan a stay". `audit-mockup`: drawer opens / closes / focus returned = true.
 - **Against the old site, the whole page, side by side:** clearly better on every screen. The old first screen has PHP warnings, a stock-looking surfer and a "rooms not bookable" banner, there is no booking link anywhere, and on the phone it runs 470 px wide. This page opens on their own reel in a board window and gives live dates in one tap. It shows four priced surf weeks one scroll down (the old site has no prices), five rooms each sold with 4–6 photos, the shop as a masonry of their boards, Baba, guests' words with dated ratings, and directions.
 
+**Round 4: colour rework (Alon's feedback)** — "i like the unique one, but lets work on the background a bit to make it more colorful with surf and beach vibes." Direction, layout, copy and set-piece kept. First pass, first screen at 1440 + 390: the plain white stage becomes a beach the board stands on. Sky `#CADFFA` top third, a far-sea band `#36A4EC`, the aqua sea `#7DD2F4`, a white foam line and sand `#F2E8D7`. The board's contact shadow is warmed to a sand shadow. The line and the button were moved down onto the sand, so the blue button sits on its strongest ground (4.10:1 against sand; on the aqua it would be only 2.94:1). Seen: it reads at once as a board standing on a beach, it is colourful, and the button stands out at both widths. Wrong: it looked like flat clip-art. The far sea was a hard ruled stripe, and the foam was a white slab with a straight bottom edge.
+
+**Round 5: colour rework (Alon's feedback)** — first screen again. The shore is rebuilt as layered wave shapes, each a flat colour field with a wave-crest top (no gradients): far sea; aqua sea with a crest, drifting 40 s; a foam ribbon, drifting 22 s; wet sand `#E4D0AE`, drifting the other way 30 s; dry sand. Transform-only motion, stopped under reduced motion. Seen at 1440 and 390: the sea has depth, the foam moves like a shorebreak behind the board, and nothing is ruled. Remaining flaw: the wet sand read as a thick even tan stripe, so it was thinned to a narrow wet edge.
+
+**Round 6: colour rework (Alon's feedback)** — whole page (shoot.mjs both widths) plus mid-scroll stills at p = 0.15 / 0.35 / 0.6 at 390 and 1440, then reduced motion and no-WebGL.
+- Grounds through the page, sampled, joined by the same shoreline crest (a colour-field edge, not a rule):
+  - sand under the intro and the surf weeks (continuing from the hero's beach);
+  - aqua `#E4F6FD` under the rooms; white (the shop's walls) under the shop;
+  - sunset `#FDE6EE` under the roof; sand under Baba;
+  - sky `#EAF3FE` under the guests; white under "Getting here";
+  - aqua under the closing and Instagram; sand under the footer.
+- The four surf-week cards each put their board crop on a fin colour from the fin wall, img-108: blue `#36A4EC`, yellow `#DBB912`, red `#E53034`, green `#25833D`. The inclusion icons take the blue, red and green fins.
+- Fixed this round: the intro fact boxes and the lesson card still used the old pink tint on the new sand, so they are now white.
+- Set-piece: the board opens against the beach at both widths, and the beach shows either side of the 1080-px column at the end on desktop. Reduced motion: the poster board stands on a static beach, with no pin and no drift. No WebGL: the same opening over the beach. Overflow, overlap, unreadable text: none.
+- Against the old site: still clearly better at a glance, and now as colourful as a beach day rather than a white page.
+
 ## images
 
 All business-owned (`dossier/cheeky-monkey/assets/index.json`: Booking.com property uploads, the owner's site, the business's Instagram). No stock, no `stock/` folder, no image of unknown licence.
@@ -57,6 +73,29 @@ All business-owned (`dossier/cheeky-monkey/assets/index.json`: Booking.com prope
 
 Video (`dist/video`, store): `board-720` (VP9 1.60 MB / H.264 1.81 MB, phones and the board at rest) and `board-1080` (VP9 2.65 MB / H.264 3.45 MB, desktop ≥ 861 px, for the full-column end of the zoom). Both come from vid-009 3.0–13.0 s, the dossier's cut: no audio, 30 fps, never upscaled (1080 source px at ≤ 1080 CSS px). They are attached after the load event plus idle, and never under reduced motion or Save-Data.
 
+## palette after the colour rework (round 4–6)
+
+| role | hex | asset | why |
+|---|---|---|---|
+| sky (hero) | `#CADFFA` | img-013 sky, area average | the clear sky over the roof; pale enough for the header ink (9.3:1) |
+| far sea | `#36A4EC` | img-108 blue fin | the depth band at the horizon |
+| sea (hero only) | `#7DD2F4` | img-108 painted fin shelf | the business's own sea photographs are overcast (img-100 `#7299AC`, img-013 `#65787D`); this is the clearest aqua in its own material |
+| foam | `#FFFFFF` | — | the shorebreak ribbon |
+| wet sand | `#E4D0AE` | img-089 sand (`#C0A17B`) lifted | the narrow wet edge |
+| sand | `#F2E8D7` | img-120 sand (`#D7C9B7`) lifted | where the board stands; the ground of the intro, surf weeks, Baba, footer |
+| aqua ground | `#E4F6FD` | img-108 shelf lifted | rooms, closing, Instagram |
+| sky ground | `#EAF3FE` | img-013 sky lifted | guests |
+| sunset ground | `#FDE6EE` | img-134 pink sky (`#FAC7D6`) lifted | the roof |
+| fins (card fields, icons) | `#36A4EC` `#DBB912` `#E53034` `#25833D` | img-108 fin wall | the colour of the shop |
+| ink / booking | `#143746` / `#0B72C4` | unchanged (img-141 / img-108) | |
+
+Contrast, measured (WCAG relative luminance):
+- White on the booking blue: 4.98:1.
+- Ink `#143746` on sky 9.28, sand 10.39, aqua ground 11.35, sky ground 11.26, sunset 10.65, white 12.62. On the aqua sea 7.45: only the hero line can sit on it, and on desktop both halves sit on the sand.
+- Secondary ink `#3d5865`: ≥ 5.55 on every page ground.
+- The booking button against its surroundings: 4.10:1 on sand, 4.48 on aqua ground, 4.44 on sky ground, 4.20 on sunset, 4.98 on white. Buttons are never placed on the aqua sea, where it would be 2.94.
+- Every ground's luminance is ≥ 0.72 except the hero's sea band (0.57), which is a picture field behind the board. `check-design`'s light-ground check passes.
+
 ## gaps
 
 - No WhatsApp: rooms go to Booking.com (the hero, every room, the bar); weeks, lessons and boards go to `tel:` / prefilled `mailto:` / Instagram. No invented channel.
@@ -69,6 +108,8 @@ Video (`dist/video`, store): `board-720` (VP9 1.60 MB / H.264 1.81 MB, phones an
 ## conflicts
 
 None blocking.
+
+0. **custom.md "Grounds are clean whites and light neutrals" vs the operator's request for "more colorful with surf and beach vibes" (round 4).** I followed Alon. The grounds stay light (house rule 1 holds: page grounds have luminance ≥ 0.72, `check-design` passes), but they are tinted from the photographs, not neutral, and the hero carries a drawn beach. The alternative, white with colour only in accents, is what he asked to change.
 
 1. **No GSAP / ScrollTrigger (concept: "GSAP + ScrollTrigger ~45 KB").** The same zoom runs on a `position: sticky` stage with the page's own scroll progress, and the section height is fixed in `<head>` from the tier, before first paint. This follows the Global Surf v2 precedent, where the critic counted a CDN GSAP as a third-party script and measured CLS ≈ 1 from the pin. The means differ; the motion is the concept's (same mask, same 180 vh / 110 vh, same order).
 2. **No cross-fade to white at the end of the zoom.** The concept fades the full footage to white and hides it. A fade leaves a blank white screen before section 2, the "empty screen after the hero" the gold notes warn about. So the opened footage holds and then scrolls away with the page as the next section arrives. Nothing is left as a slab: the stage is in the flow, not fixed.
@@ -85,11 +126,11 @@ None blocking.
 
 ## other businesses in the run (hard constraint 5)
 
-This run has one business. Against its other two variants (looked at, not touched): calm opens on img-147 full-bleed (the main road through board noses), with "Catch waves, not worries" in a white script and a red button. Interactive opens on a dark-edged triptych of the reel, with the business name in a fat white brush script and a magenta button. This one opens on white with one board standing on a mat, the reel inside it, a felt-marker line wrapped around it and a blue button. It is the only one of the three where scrolling opens the board into the shop. Different face pair (Rethink Sans + Permanent Marker), different booking colour (blue fin `#0B72C4`), a pink-white tint ground, a right-hand drawer.
+This run has one business. Against its other two variants (looked at, not touched): calm opens on img-147 full-bleed (the main road through board noses), with "Catch waves, not worries" in a white script and a red button. Interactive opens on a dark-edged triptych of the reel, with the business name in a fat white brush script and a magenta button. This one opens on white with one board standing on a mat, the reel inside it, a felt-marker line wrapped around it and a blue button. It is the only one of the three where scrolling opens the board into the shop. Different face pair (Rethink Sans + Permanent Marker), different booking colour (blue fin `#0B72C4`), a drawn beach and sampled sand / aqua / sky / sunset grounds (since round 4), a right-hand drawer.
 
 ## check results
 
-- `tools/check-design.mjs` (single-page form, final file): **ok**, 0 problems, 0 warnings. h1 Rethink Sans (the wordmark), h2 Permanent Marker, body Rethink Sans, ground `#FFFFFF`, 0 all-caps labels, 0/25 labelled headings.
+- `tools/check-design.mjs` (single-page form, final file, after the colour rework): **ok**, 0 problems, 0 warnings. h1 Rethink Sans (the wordmark), h2 Permanent Marker, body Rethink Sans, ground `#FFFFFF`, 0 all-caps labels, 0/25 labelled headings.
 - `tools/check-places.mjs cheeky-monkey`: ok (0 borrowed images).
-- `tools/audit-mockup.mjs cheeky-monkey unique`: **scroll.early.cls 0, scroll.settled.cls 0**. First load (phone, slow 4G): 379 KB, of which images 221 KB, fonts 65 KB and the inline HTML/CSS/JS 93 KB; largest image 89 KB; LCP 1.1 s; CLS 0. Third-party on load: Google Fonts only (allowed at 4e). Tap targets under 44 px: 0. No JS: 6 booking links reachable in `#book`. Reduced motion: canvas hidden, photograph visible. Drawer: opens, Esc closes, focus returns.
+- `tools/audit-mockup.mjs cheeky-monkey unique` (after the colour rework): **scroll.early.cls 0, scroll.settled.cls 0**. First load (phone, slow 4G), re-measured after the colour rework: 382 KB (images 221 KB, fonts 65 KB, the inline HTML/CSS/JS the rest); largest image 89 KB; LCP 1.44 s; CLS 0. The beach is CSS with no image files, and its drift is transform-only. Third-party on load: Google Fonts only (allowed at 4e). Tap targets under 44 px: 0. No JS: 6 booking links reachable in `#book`. Reduced motion: canvas hidden, photograph visible. Drawer: opens, Esc closes, focus returns.
 - Booking targets copied from the dossier: `https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html`, `tel:+94719248686`, `mailto:cheekymonkeymidi@gmail.com`, `https://www.instagram.com/cheekymonkeysrilanka/`.

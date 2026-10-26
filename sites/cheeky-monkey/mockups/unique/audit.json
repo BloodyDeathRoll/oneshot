@@ -1,7 +1,7 @@
 {
  "slug": "cheeky-monkey",
  "variant": "unique",
- "measured_at": "2026-10-26T22:07:29.399Z",
+ "measured_at": "2026-10-26T23:36:03.441Z",
  "first_load": {
   "requests": 9,
   "hosts": [
@@ -13,16 +13,16 @@
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 379299,
-  "bytes_html": 93727,
+  "bytes_total": 382359,
+  "bytes_html": 96787,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 64900,
   "bytes_images": 220672,
   "largest_image_bytes": 88932,
-  "lcp_ms": 1112,
+  "lcp_ms": 1440,
   "cls": 0,
-  "dcl_ms": 1281
+  "dcl_ms": 1609
  },
  "scroll": {
   "early": {
