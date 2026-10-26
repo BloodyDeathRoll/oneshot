@@ -143,19 +143,22 @@ main{min-width:0;padding:0 24px 48px}
 .ov-ho{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);font-weight:600}
 .ov-ho svg{width:14px;height:14px;flex:none}
 .ov-ho.done{color:var(--ink3);font-weight:500}
-.live-strip{margin:0 0 20px;padding:14px var(--rp,20px);border:1px solid var(--ln);border-radius:12px;background:#fff}
-.live-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin-bottom:8px}.live-h h2{font-size:15px;margin:0}
-.live-ops{list-style:none;margin:0;padding:0;display:grid;gap:6px}
-.live-op{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;min-height:28px}
-.live-op .dot{width:10px;height:10px;border-radius:50%;background:var(--t3);flex:none}
-.live-op.running .dot{background:var(--green);box-shadow:0 0 0 4px var(--green-bg)}
-.live-op.active .dot{background:var(--acc)}
-.live-op.idle .dot{background:#D99A00}
-.live-op.stale,.live-op.offline,.live-op.never{color:var(--ink3)}
-.live-bits{color:var(--ink2)}
-.live-last{flex-basis:100%;color:var(--ink3);font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.live-ev{list-style:none;margin:10px 0 0;padding:8px 0 0;border-top:1px solid var(--ln);display:grid;gap:4px;font-size:14px;color:var(--ink3)}
-.live-ev li{display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:10px}.live-ev .n{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.live-strip{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 0 auto;padding:0;list-style:none;min-width:0}
+.lp{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 12px 0 10px;border-radius:999px;background:var(--card);box-shadow:var(--shadow);font-size:13px;font-weight:600;color:var(--ink2);white-space:nowrap;cursor:default}
+.lp b{color:var(--ink)}
+.lp .dot{width:8px;height:8px;border-radius:50%;background:var(--t3);flex:none}
+.lp.running .dot{background:var(--green);animation:lp-pulse 1.6s ease-out infinite}
+.lp.active .dot{background:var(--acc)}
+.lp.idle .dot{background:#D99A00}
+.lp.stale,.lp.offline,.lp.never{color:var(--ink3)}
+.lp .eq{display:inline-flex;align-items:flex-end;gap:2px;height:12px;width:14px}
+.lp .eq i{display:block;width:3px;height:40%;border-radius:1px;background:var(--green);animation:lp-eq 1s ease-in-out infinite}
+.lp .eq i:nth-child(2){animation-delay:.15s}.lp .eq i:nth-child(3){animation-delay:.3s}
+.lp .st{font-weight:500}
+@keyframes lp-pulse{0%{box-shadow:0 0 0 0 rgba(26,127,55,.45)}70%{box-shadow:0 0 0 7px rgba(26,127,55,0)}100%{box-shadow:0 0 0 0 rgba(26,127,55,0)}}
+@keyframes lp-eq{0%,100%{height:35%}50%{height:100%}}
+@media (prefers-reduced-motion:reduce){.lp.running .dot,.lp .eq i{animation:none}.lp .eq i{height:70%}}
+@media (max-width:900px){.lp .st{display:none}}
 .sugs{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
 .sugs-l{color:var(--ink3);font-weight:600;font-size:14px;margin-right:4px}
 .sug-ib{width:36px;height:36px;border:1px solid var(--ctl,#D5D9E2);border-radius:8px;background:#fff;color:var(--ink2);display:inline-grid;place-items:center;cursor:pointer;padding:0}
@@ -678,6 +681,7 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 <main id="main">
   <header class="top">
     <div style="display:flex;align-items:baseline"><h1 id="title" tabindex="-1">Overview</h1><span class="sub" id="title-sub"></span></div>
+    <ul class="live-strip" id="live-strip" aria-label="Live: who is running what" hidden></ul>
     <div class="controls" id="controls">
       <label class="psel"><span class="sr">Run</span>
         <svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4h12M2 8h8M2 12h10"/></svg>
@@ -691,7 +695,6 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 
   <section class="view on" id="view-overview" aria-label="Overview">
     <p class="ov-sum" id="ov-sum"></p>
-    <section class="live-strip" id="live-strip" aria-label="Live: who is running what" hidden></section>
     <section class="ov-band ov-surf" aria-label="Money and where every site stands">
       <div class="ov-m" id="ov-rev"></div>
       <div class="ov-m" id="ov-exp"></div>
@@ -1293,23 +1296,19 @@ function renderLive(){
   const ops=Object.keys(RAW.team?.operators||{});
   if(!L||!L.operators||!ops.length){s.hidden=true;return}
   s.hidden=false;
-  const list=el('ul',{class:'live-ops'});
-  for(const op of ops){const o=L.operators[op];const li=el('li',{class:'live-op '+(o?o.state:'never')});
+  for(const op of ops){const o=L.operators[op];const st=o?.state||'never';
+    const li=el('li',{class:'lp '+st,role:'status'});
     li.append(el('span',{class:'dot','aria-hidden':'true'}),el('b',{text:opName(op)}));
-    if(!o){li.append(el('span',{class:'live-bits',text:'no session seen yet'}));list.append(li);continue}
-    const bits=[];
-    if(o.run_id)bits.push(runShort(o.run_id)+(o.run_on_main===false?' (pending PR)':''));
-    if(o.state==='running'&&o.station){const st=o.station;bits.push(`${st.agent||'agent'}${st.version?' '+st.version:''}${st.station?` · station ${st.station}`:''}${st.slug?` · ${st.slug}`:''}`,`running ${dur(st.started)}`)}
-    else if(o.state==='active')bits.push(`working · seen ${ago(o.last_seen)}`);
-    else if(o.state==='idle')bits.push(`idle since ${tShort(o.last_seen)}`);
-    else if(o.state==='stale')bits.push(`no heartbeat for ${dur(o.last_seen)} · probably stopped`);
-    else if(o.state==='offline')bits.push(`session ended ${ago(o.last_seen)}`);
-    li.append(el('span',{class:'live-bits',text:bits.join(' · ')}));
-    if(o.last_station?.note&&o.state!=='running')li.append(el('span',{class:'live-last',title:o.last_station.note,text:`${o.last_station.agent||'agent'} returned: ${o.last_station.note}`}));
-    list.append(li)}
-  s.append(el('div',{class:'live-h'},el('h2',{text:'Live'}),el('span',{class:'meta',text:`what each session reports · grey after ${L.stale_after_min} min without a heartbeat`})),list);
-  const ev=(L.events||[]).filter(e=>e.kind==='station_end').slice(0,5);
-  if(ev.length){const ul=el('ul',{class:'live-ev'});for(const e of ev)ul.append(el('li',{},el('time',{datetime:e.ts,text:tShort(e.ts)}),el('span',{text:`${opName(e.operator)} · ${e.agent||'agent'}${e.station?' '+e.station:''}${e.slug?' · '+e.slug:''}`}),el('span',{class:'n',title:e.note||'',text:e.note||''})));s.append(ul)}
+    let txt='',tip='';
+    if(!o){txt='no session yet';tip=`${opName(op)}: no heartbeat seen yet`}
+    else if(st==='running'&&o.station){const a=o.station;li.append(el('span',{class:'eq','aria-hidden':'true'},el('i'),el('i'),el('i')));
+      txt=`${a.agent||'agent'}${a.version?' '+a.version:''} · ${dur(a.started)}`;
+      tip=`${opName(op)} · ${o.run_id?runShort(o.run_id)+(o.run_on_main===false?' (pending PR)':'')+' · ':''}${a.agent||'agent'}${a.version?' '+a.version:''}${a.station?` · station ${a.station}`:''}${a.slug?` · ${a.slug}`:''} · running ${dur(a.started)}${a.note?`\n${a.note}`:''}`}
+    else{const run=o.run_id?runShort(o.run_id)+(o.run_on_main===false?' (pending PR)':''):'';
+      txt=st==='active'?`working${run?' · '+run:''}`:st==='idle'?`idle since ${tShort(o.last_seen).split(' ').pop()}`:st==='stale'?`quiet ${dur(o.last_seen)}`:`offline`;
+      tip=`${opName(op)}${run?' · '+run:''} · ${st==='active'?`working, seen ${ago(o.last_seen)}`:st==='idle'?`idle since ${tShort(o.last_seen)} UTC`:st==='stale'?`no heartbeat for ${dur(o.last_seen)}, probably stopped`:`session ended ${ago(o.last_seen)}`}${o.last_station?.note?`\nlast: ${o.last_station.agent||'agent'} returned: ${o.last_station.note}`:''}`}
+    li.append(el('span',{class:'st',text:txt}));li.title=tip;li.setAttribute('aria-label',tip.replace(/\n/g,'. '));
+    s.append(li)}
 }
 const money=(amt)=>{const e=Object.entries(amt||{}).filter(([,v])=>v);if(!e.length)return '$0';return e.map(([c,v])=>new Intl.NumberFormat('en-US',{style:'currency',currency:c,maximumFractionDigits:v%1?2:0}).format(v)).join(' + ')};
 /* ---------- Overview (dashboard-03 round 3, option B) ---------- */
@@ -1560,7 +1559,7 @@ async function renderLedgerMap(){
   $('#lg-mapnote').textContent=`${pts.length} businesses with a location · dashed outline: the search area of each run`;
 }
 
-function renderOverview(){renderOvSummary();renderLive();renderMoney();renderTiles();renderPitchSites();renderAlsoWaiting()}
+function renderOverview(){renderOvSummary();renderMoney();renderTiles();renderPitchSites();renderAlsoWaiting()}
 
 function historyRow(b,cols){
   const fr=el('tr',{class:'frow'});const td=el('td',{colspan:String(cols)});
@@ -1898,7 +1897,7 @@ function renderDecisions(){if(window.OSViews?.decisions){const lg=$('#dec-legacy
 
 /* ---------- render ---------- */
 function render(){
-  renderChrome();renderChips();renderRunSel();
+  renderChrome();renderLive();renderChips();renderRunSel();
   $('#title-sub').textContent=PER_RUN.includes(state.view)&&state.run!=='all'?runShort(state.run):state.view==='overview'?'':'all runs';$('#controls').hidden=!PER_RUN.includes(state.view);
   renderOverview();renderBiz();renderNeedsView();renderLedger();if(state.view==='ledger')renderLedgerMap();renderPipeline();renderSites();renderAgents();renderDecisions();renderPricing();
   document.querySelectorAll('.view.on svg').forEach(sizeTips);
