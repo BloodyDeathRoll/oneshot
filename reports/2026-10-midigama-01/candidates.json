@@ -1,0 +1,3832 @@
+{
+ "run_id": "2026-10-midigama-01",
+ "generated_at": "2026-10-26T13:04:04Z",
+ "scout_version": "0.3.2",
+ "area": {
+  "mode": "town",
+  "anchors": [
+   {
+    "query": "Midigama, Sri Lanka",
+    "lat": 5.965221599999999,
+    "lng": 80.3909468,
+    "geocoder": "nominatim",
+    "fetched_at": "2026-10-26T11:48:34Z"
+   }
+  ],
+  "radius_m": null,
+  "shore_buffer_m": 200,
+  "polygon": "reports/2026-10-midigama-01/area.geojson"
+ },
+ "candidates": [
+  {
+   "slug": "lagoon-surfhouse",
+   "name": "Lagoon Surfhouse",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9667948,
+    "lng": 80.3813007,
+    "address": "Galketiya Rd, Goviyapana, Ahangama, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 165
+   },
+   "contact": {
+    "phone": "+94779387956",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Lagoon+Surfhouse/data=!4m10!3m9!1s0x3ae1150031b4c9f3:0x95d60094f2d32ecd!5m2!4m1!1i2!8m2!3d5.9667948!4d80.3813007!16s%2Fg%2F11yt0gyx16!19sChIJ88m0MQAV4ToRzS7T8pQA1pU"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Lagoon+Surfhouse/data=!4m10!3m9!1s0x3ae1150031b4c9f3:0x95d60094f2d32ecd!5m2!4m1!1i2!8m2!3d5.9667948!4d80.3813007!16s%2Fg%2F11yt0gyx16!19sChIJ88m0MQAV4ToRzS7T8pQA1pU",
+     "fetched_at": "2026-10-26T12:36:01.539Z",
+     "note": "Google Maps place page: Lagoon Surfhouse"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Hotel",
+    "rating": "5.0",
+    "listings_merged": [
+     "Lagoon Surfhouse"
+    ]
+   }
+  },
+  {
+   "slug": "milano-surf-inn",
+   "name": "MILANO SURF INN",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9654642,
+    "lng": 80.3845556,
+    "address": "X98M+5RM, MIDIGAMA, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 70
+   },
+   "contact": {
+    "phone": "+94764522695",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/MILANO+SURF+INN/data=!4m10!3m9!1s0x3ae1151322d6a871:0x874d62e97bde30ab!5m2!4m1!1i2!8m2!3d5.9654642!4d80.3845556!16s%2Fg%2F11j20g1rsm!19sChIJcajWIhMV4ToRqzDee-liTYc"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/MILANO+SURF+INN/data=!4m10!3m9!1s0x3ae1151322d6a871:0x874d62e97bde30ab!5m2!4m1!1i2!8m2!3d5.9654642!4d80.3845556!16s%2Fg%2F11j20g1rsm!19sChIJcajWIhMV4ToRqzDee-liTYc",
+     "fetched_at": "2026-10-26T12:35:04.131Z",
+     "note": "Google Maps place page: MILANO SURF INN"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Hotel",
+    "rating": "5.0",
+    "listings_merged": [
+     "MILANO SURF INN"
+    ]
+   }
+  },
+  {
+   "slug": "bay-surf-hostel-midigama",
+   "name": "Bay Surf Hostel Midigama",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.966488,
+    "lng": 80.3881283,
+    "address": "Denuwala, No.36 Ulugadarawaththa, Ahangama, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 178
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Bay+Surf+Hostel+Midigama/data=!4m7!3m6!1s0x3ae11500398be89b:0x31dbb57e8df17c9!8m2!3d5.966488!4d80.3881283!16s%2Fg%2F11wbvjh7n9!19sChIJm-iLOQAV4ToRyRff6Fe7HQM"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Bay+Surf+Hostel+Midigama/data=!4m7!3m6!1s0x3ae11500398be89b:0x31dbb57e8df17c9!8m2!3d5.966488!4d80.3881283!16s%2Fg%2F11wbvjh7n9!19sChIJm-iLOQAV4ToRyRff6Fe7HQM",
+     "fetched_at": "2026-10-26T12:44:30.850Z",
+     "note": "Google Maps place page: Bay Surf Hostel Midigama"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Hostel",
+    "rating": "",
+    "listings_merged": [
+     "Bay Surf Hostel Midigama"
+    ]
+   }
+  },
+  {
+   "slug": "iron-feather-surfboard",
+   "name": "Iron feather surfboard - sri Lanka",
+   "type": "surf_shop",
+   "location": {
+    "lat": 5.9654266,
+    "lng": 80.3893004,
+    "address": "Midigama Beach, Midigama, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 44
+   },
+   "contact": {
+    "phone": "+94776604006",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Iron+feather+surfboard+-+sri+Lanka/data=!4m7!3m6!1s0x3ae115c185c765fb:0x7d88e88127299428!8m2!3d5.9654266!4d80.3893004!16s%2Fg%2F11vwdl1r9v!19sChIJ-2XHhcEV4ToRKJQpJ4HoiH0"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Iron+feather+surfboard+-+sri+Lanka/data=!4m7!3m6!1s0x3ae115c185c765fb:0x7d88e88127299428!8m2!3d5.9654266!4d80.3893004!16s%2Fg%2F11vwdl1r9v!19sChIJ-2XHhcEV4ToRKJQpJ4HoiH0",
+     "fetched_at": "2026-10-26T12:47:48.301Z",
+     "note": "Google Maps place page: Iron feather surfboard - sri Lanka"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Surf shop",
+    "rating": "5.0",
+    "listings_merged": [
+     "Iron feather surfboard - sri Lanka"
+    ]
+   }
+  },
+  {
+   "slug": "surf-point",
+   "name": "Surf Point",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9647262,
+    "lng": 80.3908611,
+    "address": "X97R+V8X, Midigama Beach, Ahangama, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 9
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Surf+Point/data=!4m10!3m9!1s0x3ae1153dd8b01e99:0xcf4e99c6b4240308!5m2!4m1!1i2!8m2!3d5.9647262!4d80.3908611!16s%2Fg%2F11fkph9fd8!19sChIJmR6w2D0V4ToRCAMktMaZTs8"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Surf+Point/data=!4m10!3m9!1s0x3ae1153dd8b01e99:0xcf4e99c6b4240308!5m2!4m1!1i2!8m2!3d5.9647262!4d80.3908611!16s%2Fg%2F11fkph9fd8!19sChIJmR6w2D0V4ToRCAMktMaZTs8",
+     "fetched_at": "2026-10-26T12:31:27.971Z",
+     "note": "Google Maps place page: Surf Point"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Lodging",
+    "rating": "3.0",
+    "listings_merged": [
+     "Surf Point"
+    ]
+   }
+  },
+  {
+   "slug": "excellent-surf-club",
+   "name": "Excellent surf club",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9650601,
+    "lng": 80.3910533,
+    "address": "Midigama Clock Tower, A2, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 51
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Excellent+surf+club/data=!4m7!3m6!1s0x3ae11500317e7349:0xe264cfb13093370a!8m2!3d5.9650601!4d80.3910533!16s%2Fg%2F11y9bj04vt!19sChIJSXN-MQAV4ToRCjeTMLHPZOI"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Excellent+surf+club/data=!4m7!3m6!1s0x3ae11500317e7349:0xe264cfb13093370a!8m2!3d5.9650601!4d80.3910533!16s%2Fg%2F11y9bj04vt!19sChIJSXN-MQAV4ToRCjeTMLHPZOI",
+     "fetched_at": "2026-10-26T12:39:54.759Z",
+     "note": "Google Maps place page: Excellent surf club"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Surf school",
+    "rating": "2.0",
+    "listings_merged": [
+     "Excellent surf club"
+    ]
+   }
+  },
+  {
+   "slug": "surf-house-gunasewana",
+   "name": "Surf House Gunasewana",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9656601,
+    "lng": 80.3916168,
+    "address": "Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 140
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Surf+House+Gunasewana/data=!4m11!3m10!1s0x3ae114c10f876d87:0x7f45f5f585b9c4ca!5m2!4m1!1i2!8m2!3d5.9656601!4d80.3916168!16s%2Fg%2F11nvmk7sc5!17BQ0FF!19sChIJh22HD8EU4ToRysS5hfX1RX8"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Surf+House+Gunasewana/data=!4m11!3m10!1s0x3ae114c10f876d87:0x7f45f5f585b9c4ca!5m2!4m1!1i2!8m2!3d5.9656601!4d80.3916168!16s%2Fg%2F11nvmk7sc5!17BQ0FF!19sChIJh22HD8EU4ToRysS5hfX1RX8",
+     "fetched_at": "2026-10-26T12:42:15.967Z",
+     "note": "Google Maps place page: Surf House Gunasewana"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": " Sleeps 10",
+    "rating": "0.5",
+    "listings_merged": [
+     "Surf House Gunasewana",
+     "Surf House Gunasewana - Single Room with Bathroom",
+     "Surf House Gunasewana - Standard Single Room with Shared Bathroom"
+    ]
+   }
+  },
+  {
+   "slug": "surf-club-midigama",
+   "name": "Surf Club Midigama",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9639107,
+    "lng": 80.3920061,
+    "address": "139 KM Post, Galle, Midigama, Matara Rd, Weligama 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 51
+   },
+   "contact": {
+    "phone": "+94744133999",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Surf+Club+Midigama/data=!4m7!3m6!1s0x3ae11500299b5f13:0xbe7b11cc915bd7ab!8m2!3d5.9639107!4d80.3920061!16s%2Fg%2F11z1_tqzxl!19sChIJE1-bKQAV4ToRq9dbkcwRe74"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Surf+Club+Midigama/data=!4m7!3m6!1s0x3ae11500299b5f13:0xbe7b11cc915bd7ab!8m2!3d5.9639107!4d80.3920061!16s%2Fg%2F11z1_tqzxl!19sChIJE1-bKQAV4ToRq9dbkcwRe74",
+     "fetched_at": "2026-10-26T12:38:48.802Z",
+     "note": "Google Maps place page: Surf Club Midigama"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Beach club",
+    "rating": "4.9",
+    "listings_merged": [
+     "Surf Club Midigama"
+    ]
+   }
+  },
+  {
+   "slug": "ritz-surf-resort",
+   "name": "Ritz Surf Resort",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9650257,
+    "lng": 80.3922227,
+    "address": "X98R+2V9, Dehiguswatta, Indhana Road, Midigama., Midigama East 08650, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 133
+   },
+   "contact": {
+    "phone": "+94777706747",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Ritz+Surf+Resort/data=!4m10!3m9!1s0x3ae114c1a037dd8d:0xbaa4be6c6b8df9a9!5m2!4m1!1i2!8m2!3d5.9650257!4d80.3922227!16s%2Fg%2F11c5cjnfz2!19sChIJjd03oMEU4ToRqfmNa2y-pLo"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Ritz+Surf+Resort/data=!4m10!3m9!1s0x3ae114c1a037dd8d:0xbaa4be6c6b8df9a9!5m2!4m1!1i2!8m2!3d5.9650257!4d80.3922227!16s%2Fg%2F11c5cjnfz2!19sChIJjd03oMEU4ToRqfmNa2y-pLo",
+     "fetched_at": "2026-10-26T12:36:11.979Z",
+     "note": "Google Maps place page: Ritz Surf Resort"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Bed & breakfast",
+    "rating": "5.0",
+    "listings_merged": [
+     "Ritz Surf Resort"
+    ]
+   }
+  },
+  {
+   "slug": "ulu-ana",
+   "name": "Ulu Ana - Hawaiian cafe/skate-surf store",
+   "type": "surf_shop",
+   "location": {
+    "lat": 5.9638455,
+    "lng": 80.3926551,
+    "address": "X97V+G3P, Matara Rd, Midigama, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 67
+   },
+   "contact": {
+    "phone": "+94764031054",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Ulu+Ana+-+Hawaiian+cafe%2Fskate-surf+store/data=!4m7!3m6!1s0x3ae115b2cdfb1fe1:0xf364115587dad288!8m2!3d5.9638455!4d80.3926551!16s%2Fg%2F11vjwbdkjv!19sChIJ4R_7zbIV4ToRiNLah1URZPM"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Ulu+Ana+-+Hawaiian+cafe%2Fskate-surf+store/data=!4m7!3m6!1s0x3ae115b2cdfb1fe1:0xf364115587dad288!8m2!3d5.9638455!4d80.3926551!16s%2Fg%2F11vjwbdkjv!19sChIJ4R_7zbIV4ToRiNLah1URZPM",
+     "fetched_at": "2026-10-26T12:49:10.773Z",
+     "note": "Google Maps place page: Ulu Ana - Hawaiian cafe/skate-surf store"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Surf shop",
+    "rating": "",
+    "listings_merged": [
+     "Ulu Ana - Hawaiian cafe/skate-surf store"
+    ]
+   }
+  },
+  {
+   "slug": "dewanma-surf-inn",
+   "name": "Dewanma Surf Inn",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.962792,
+    "lng": 80.3953844,
+    "address": "Midigama A2, Weligama 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 63
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Dewanma+Surf+Inn/data=!4m10!3m9!1s0x3ae114c2743ee0f9:0x75c2a1b5d12e99df!5m2!4m1!1i2!8m2!3d5.962792!4d80.3953844!16s%2Fg%2F11bxdyvb5k!19sChIJ-eA-dMIU4ToR35ku0bWhwnU"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Dewanma+Surf+Inn/data=!4m10!3m9!1s0x3ae114c2743ee0f9:0x75c2a1b5d12e99df!5m2!4m1!1i2!8m2!3d5.962792!4d80.3953844!16s%2Fg%2F11bxdyvb5k!19sChIJ-eA-dMIU4ToR35ku0bWhwnU",
+     "fetched_at": "2026-10-26T12:36:33.737Z",
+     "note": "Google Maps place page: Dewanma Surf Inn"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Homestay",
+    "rating": "3.9",
+    "listings_merged": [
+     "Dewanma Surf Inn"
+    ]
+   }
+  },
+  {
+   "slug": "deze-s-place",
+   "name": "Deze's place",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9621941,
+    "lng": 80.3976268,
+    "address": "Weliwaththa Rd, 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 106
+   },
+   "contact": {
+    "phone": "+94774894387",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Deze%27s+place/data=!4m7!3m6!1s0x3ae115623d74eca9:0x58282b6ce11baafd!8m2!3d5.9621941!4d80.3976268!16s%2Fg%2F11w25lykvz!19sChIJqex0PWIV4ToR_aob4WwrKFg"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Deze%27s+place/data=!4m7!3m6!1s0x3ae115623d74eca9:0x58282b6ce11baafd!8m2!3d5.9621941!4d80.3976268!16s%2Fg%2F11w25lykvz!19sChIJqex0PWIV4ToR_aob4WwrKFg",
+     "fetched_at": "2026-10-26T12:33:23.957Z",
+     "note": "Google Maps place page: Deze's place"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Surf school",
+    "rating": "",
+    "listings_merged": [
+     "Deze's place"
+    ]
+   }
+  },
+  {
+   "slug": "surf-sick",
+   "name": "Surf sick",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9622133,
+    "lng": 80.397628,
+    "address": "151 Weliwaththa Rd, Weligama, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 108
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Surf+sick/data=!4m10!3m9!1s0x3ae1150075bb216b:0x655114d49a4447c!5m2!4m1!1i2!8m2!3d5.9622133!4d80.397628!16s%2Fg%2F11nvwwlwvz!19sChIJayG7dQAV4ToRfESkSU0RVQY"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Surf+sick/data=!4m10!3m9!1s0x3ae1150075bb216b:0x655114d49a4447c!5m2!4m1!1i2!8m2!3d5.9622133!4d80.397628!16s%2Fg%2F11nvwwlwvz!19sChIJayG7dQAV4ToRfESkSU0RVQY",
+     "fetched_at": "2026-10-26T12:31:13.562Z",
+     "note": "Google Maps place page: Surf sick"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Bed & breakfast",
+    "rating": "",
+    "listings_merged": [
+     "Surf sick"
+    ]
+   },
+   "note": "same street address as Sea You Surfers Nest (151 Weliwaththa Rd, 26 m) under a different name: kept apart"
+  },
+  {
+   "slug": "lankasurfing-surf-camp",
+   "name": "Lankasurfing Surf Camp",
+   "type": "surf_camp",
+   "location": {
+    "lat": 5.9615232,
+    "lng": 80.399338,
+    "address": "X96X+JP4, Matara, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 107
+   },
+   "contact": {
+    "phone": "+94769824875",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Lankasurfing+Surf+Camp/data=!4m7!3m6!1s0x3ae114e7e034cfa5:0x64444a879c9a0d83!8m2!3d5.9615232!4d80.399338!16s%2Fg%2F11cjkqlsfs!19sChIJpc804OcU4ToRgw2anIdKRGQ"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Lankasurfing+Surf+Camp/data=!4m7!3m6!1s0x3ae114e7e034cfa5:0x64444a879c9a0d83!8m2!3d5.9615232!4d80.399338!16s%2Fg%2F11cjkqlsfs!19sChIJpc804OcU4ToRgw2anIdKRGQ",
+     "fetched_at": "2026-10-26T12:43:37.450Z",
+     "note": "Google Maps place page: Lankasurfing Surf Camp"
+    },
+    {
+     "source_url": "https://lankasurfing.com",
+     "fetched_at": "2026-10-26T12:58:03Z",
+     "note": "web search: Nothing found; lankasurfing.com does not resolve (no DNS)."
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Lodging",
+    "rating": "4.0",
+    "listings_merged": [
+     "Lankasurfing Surf Camp"
+    ]
+   }
+  },
+  {
+   "slug": "sujee-surf-lessons-bord-repairing-midigama",
+   "name": "Sujee Surf lessons & Bord repairing Midigama",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9610869,
+    "lng": 80.3997058,
+    "address": "midigama, Midigama, 25 Iwilla wattha, Weligama 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 66
+   },
+   "contact": {
+    "phone": "+94778110704",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Sujee+Surf+lessons+%26+Bord+repairing+Midigama/data=!4m7!3m6!1s0x3ae1154f1ceece7d:0xa1fde058ffafcf5f!8m2!3d5.9610869!4d80.3997058!16s%2Fg%2F11lylc0hg3!19sChIJfc7uHE8V4ToRX8-v_1jg_aE"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Sujee+Surf+lessons+%26+Bord+repairing+Midigama/data=!4m7!3m6!1s0x3ae1154f1ceece7d:0xa1fde058ffafcf5f!8m2!3d5.9610869!4d80.3997058!16s%2Fg%2F11lylc0hg3!19sChIJfc7uHE8V4ToRX8-v_1jg_aE",
+     "fetched_at": "2026-10-26T12:49:42.459Z",
+     "note": "Google Maps place page: Sujee Surf lessons & Bord repairing Midigama"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Surf school",
+    "rating": "4.9",
+    "listings_merged": [
+     "Sujee Surf lessons & Bord repairing Midigama"
+    ]
+   }
+  },
+  {
+   "slug": "the-wave-surf-inn",
+   "name": "The wave surf inn",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.961181,
+    "lng": 80.3998431,
+    "address": "midigama east Midigama, 81702, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 79
+   },
+   "contact": {
+    "phone": "+94766323228",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/The+wave+surf+inn/data=!4m7!3m6!1s0x3ae114e7c4d66a01:0xd7a4202aed9fa3c4!8m2!3d5.961181!4d80.3998431!16s%2Fg%2F11bxg0pd2r!19sChIJAWrWxOcU4ToRxKOf7SogpNc"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/The+wave+surf+inn/data=!4m7!3m6!1s0x3ae114e7c4d66a01:0xd7a4202aed9fa3c4!8m2!3d5.961181!4d80.3998431!16s%2Fg%2F11bxg0pd2r!19sChIJAWrWxOcU4ToRxKOf7SogpNc",
+     "fetched_at": "2026-10-26T12:38:04.697Z",
+     "note": "Google Maps place page: The wave surf inn"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "3-star hotel",
+    "rating": "4.6",
+    "listings_merged": [
+     "The wave surf inn"
+    ]
+   }
+  },
+  {
+   "slug": "summer-house-surf-inn",
+   "name": "Summer House Surf Inn",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.961178,
+    "lng": 80.3999197,
+    "address": "Ivilla waththa, Weligama 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 81
+   },
+   "contact": {
+    "phone": "+94783355686",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Summer+House+Surf+INN/data=!4m10!3m9!1s0x3ae1158903d55f37:0xf17cc79b84611f13!5m2!4m1!1i2!8m2!3d5.961178!4d80.3999197!16s%2Fg%2F11y8lhv53r!19sChIJN1_VA4kV4ToREx9hhJvHfPE"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Summer+House+Surf+INN/data=!4m10!3m9!1s0x3ae1158903d55f37:0xf17cc79b84611f13!5m2!4m1!1i2!8m2!3d5.961178!4d80.3999197!16s%2Fg%2F11y8lhv53r!19sChIJN1_VA4kV4ToREx9hhJvHfPE",
+     "fetched_at": "2026-10-26T12:42:49.376Z",
+     "note": "Google Maps place page: Summer House Surf INN"
+    },
+    {
+     "source_url": "https://www.google.com/maps/place/Suumer+House+-+Surf+Inn/data=!4m7!3m6!1s0x3ae115bcffa67d43:0x594323e7e5a7b67d!8m2!3d5.9612505!4d80.4000795!16s%2Fg%2F11rp59rtrk!19sChIJQ32m_7wV4ToRfban5ecjQ1k",
+     "fetched_at": "2026-10-26T12:44:20.498Z",
+     "note": "Google Maps place page: Suumer House - Surf Inn"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Guest house",
+    "rating": "5.0",
+    "listings_merged": [
+     "Summer House Surf INN",
+     "Suumer House - Surf Inn",
+     "Summer House - Surf Inn - One-Bedroom House"
+    ]
+   }
+  },
+  {
+   "slug": "surfmicheal",
+   "name": "Surfmicheal",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9620777,
+    "lng": 80.4007717,
+    "address": "Dammala, Weligama dammala ,Middigama, Weligama 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 199
+   },
+   "contact": {
+    "phone": "+94742773914",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Surfmicheal/data=!4m7!3m6!1s0x3ae1151e21345347:0x41c405941d1b25b1!8m2!3d5.9620777!4d80.4007717!16s%2Fg%2F11vqmbtgpt!19sChIJR1M0IR4V4ToRsSUbHZQFxEE"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Surfmicheal/data=!4m7!3m6!1s0x3ae1151e21345347:0x41c405941d1b25b1!8m2!3d5.9620777!4d80.4007717!16s%2Fg%2F11vqmbtgpt!19sChIJR1M0IR4V4ToRsSUbHZQFxEE",
+     "fetched_at": "2026-10-26T12:32:33.611Z",
+     "note": "Google Maps place page: Surfmicheal"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Surf school",
+    "rating": "",
+    "listings_merged": [
+     "Surfmicheal"
+    ]
+   }
+  },
+  {
+   "slug": "freddy-s-house-and-surf-shop",
+   "name": "Freddy’s house and surf shop",
+   "type": "surf_shop",
+   "location": {
+    "lat": 5.9606068,
+    "lng": 80.4021552,
+    "address": "XC62+6RW, Weligama, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 70
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Freddy%E2%80%99s+house+and+surf+shop/data=!4m7!3m6!1s0x3ae1150022e22963:0xd446e81599b018bd!8m2!3d5.9606068!4d80.4021552!16s%2Fg%2F11mt92n9rs!19sChIJYyniIgAV4ToRvRiwmRXoRtQ"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Freddy%E2%80%99s+house+and+surf+shop/data=!4m7!3m6!1s0x3ae1150022e22963:0xd446e81599b018bd!8m2!3d5.9606068!4d80.4021552!16s%2Fg%2F11mt92n9rs!19sChIJYyniIgAV4ToRvRiwmRXoRtQ",
+     "fetched_at": "2026-10-26T12:46:14.771Z",
+     "note": "Google Maps place page: Freddy’s house and surf shop"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Holiday apartment rental",
+    "rating": "4.0",
+    "listings_merged": [
+     "Freddy’s house and surf shop"
+    ]
+   }
+  },
+  {
+   "slug": "higheight-surf-lodge",
+   "name": "Higheight Surf Lodge",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9612363,
+    "lng": 80.4023257,
+    "address": "16 Kadabeddagama Rd, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 142
+   },
+   "contact": {
+    "phone": "+94777220080",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Higheight+Surf+Lodge/data=!4m10!3m9!1s0x3ae114e72180c633:0x17ef92cac9bcc6e7!5m2!4m1!1i2!8m2!3d5.9612363!4d80.4023257!16s%2Fg%2F11hcfng3dc!19sChIJM8aAIecU4ToR58a8ycqS7xc"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Higheight+Surf+Lodge/data=!4m10!3m9!1s0x3ae114e72180c633:0x17ef92cac9bcc6e7!5m2!4m1!1i2!8m2!3d5.9612363!4d80.4023257!16s%2Fg%2F11hcfng3dc!19sChIJM8aAIecU4ToR58a8ycqS7xc",
+     "fetched_at": "2026-10-26T12:41:52.908Z",
+     "note": "Google Maps place page: Higheight Surf Lodge"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Guest house",
+    "rating": "4.3",
+    "listings_merged": [
+     "Higheight Surf Lodge"
+    ]
+   }
+  },
+  {
+   "slug": "funky-sol-society-surf-hostel",
+   "name": "Funky Sol Society, Surf Hostel",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.960461,
+    "lng": 80.4031457,
+    "address": "54 Kadabeddagama Rd, Weligama 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 88
+   },
+   "contact": {
+    "phone": "+94776303358",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Funky+Sol+Society,+Surf+Hostel/data=!4m10!3m9!1s0x3ae1158488c411bb:0x1824ef48ebb83444!5m2!4m1!1i2!8m2!3d5.960461!4d80.4031457!16s%2Fg%2F11s21jntw5!19sChIJuxHEiIQV4ToRRDS460jvJBg"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Funky+Sol+Society,+Surf+Hostel/data=!4m10!3m9!1s0x3ae1158488c411bb:0x1824ef48ebb83444!5m2!4m1!1i2!8m2!3d5.960461!4d80.4031457!16s%2Fg%2F11s21jntw5!19sChIJuxHEiIQV4ToRRDS460jvJBg",
+     "fetched_at": "2026-10-26T12:46:41.211Z",
+     "note": "Google Maps place page: Funky Sol Society, Surf Hostel"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Hotel",
+    "rating": "4.5",
+    "listings_merged": [
+     "Funky Sol Society, Surf Hostel"
+    ]
+   }
+  },
+  {
+   "slug": "asan-surf",
+   "name": "Asan Surf",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9597205,
+    "lng": 80.4034398,
+    "address": "No 57, Weligama, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 30
+   },
+   "contact": {
+    "phone": "+94773152708",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Asan+Surf/data=!4m7!3m6!1s0x3ae1150d15259b65:0xbda22e29e290dc5a!8m2!3d5.9597205!4d80.4034398!16s%2Fg%2F11yxp0lpnx!19sChIJZZslFQ0V4ToRWtyQ4ikuor0"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Asan+Surf/data=!4m7!3m6!1s0x3ae1150d15259b65:0xbda22e29e290dc5a!8m2!3d5.9597205!4d80.4034398!16s%2Fg%2F11yxp0lpnx!19sChIJZZslFQ0V4ToRWtyQ4ikuor0",
+     "fetched_at": "2026-10-26T12:31:03.988Z",
+     "note": "Google Maps place page: Asan Surf"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Surf school",
+    "rating": "3.2",
+    "listings_merged": [
+     "Asan Surf"
+    ]
+   }
+  },
+  {
+   "slug": "awee-coco-surf-school-gurubebila-beach",
+   "name": "Awee Coco Surf School Gurubebila Beach",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9597767,
+    "lng": 80.4046829,
+    "address": "52 Kadabeddagama Rd, Gurubebila 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 52
+   },
+   "contact": {
+    "phone": "+94761672259",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Awee+Coco+Surf+School+Gurubebila+Beach/data=!4m7!3m6!1s0x3ae115ffd71b8e69:0x7da50c563016ec8d!8m2!3d5.9597767!4d80.4046829!16s%2Fg%2F11sjgqmjth!19sChIJaY4b1_8V4ToRjewWMFYMpX0"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 0,
+    "reason": "Only a Google Maps listing: no website, social profile or OTA page found by web search.",
+    "criteria": [
+     "none"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Awee+Coco+Surf+School+Gurubebila+Beach/data=!4m7!3m6!1s0x3ae115ffd71b8e69:0x7da50c563016ec8d!8m2!3d5.9597767!4d80.4046829!16s%2Fg%2F11sjgqmjth!19sChIJaY4b1_8V4ToRjewWMFYMpX0",
+     "fetched_at": "2026-10-26T12:48:50.235Z",
+     "note": "Google Maps place page: Awee Coco Surf School Gurubebila Beach"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Surf school",
+    "rating": "4.9",
+    "listings_merged": [
+     "Awee Coco Surf School Gurubebila Beach"
+    ]
+   }
+  },
+  {
+   "slug": "surf-shadow-midigama",
+   "name": "Surf Shadow Midigama",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.96666,
+    "lng": 80.3833923,
+    "address": "Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 142
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Surf+Shadow+Midigama+-+Double+Room/data=!4m11!3m10!1s0x3ae114bebb64d457:0xdc7c4753bf4cfa4e!5m2!4m1!1i2!8m2!3d5.96666!4d80.3833923!16s%2Fg%2F11nw123xry!17BQ0FF!19sChIJV9Rku74U4ToRTvpMv1NHfNw"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (bluepillow).",
+    "criteria": [
+     "ota_listings_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Surf+Shadow+Midigama+-+Double+Room/data=!4m11!3m10!1s0x3ae114bebb64d457:0xdc7c4753bf4cfa4e!5m2!4m1!1i2!8m2!3d5.96666!4d80.3833923!16s%2Fg%2F11nw123xry!17BQ0FF!19sChIJV9Rku74U4ToRTvpMv1NHfNw",
+     "fetched_at": "2026-10-26T12:47:43.155Z",
+     "note": "Google Maps place page: Surf Shadow Midigama - Double Room"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": " Sleeps 4 1 bedroom 1 bathroom Min. 1 night",
+    "rating": "",
+    "listings_merged": [
+     "Surf Shadow Midigama - Double Room"
+    ]
+   }
+  },
+  {
+   "slug": "surf-mount-plant-inn-midigama",
+   "name": "Surf Mount Plant Inn Midigama",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.965324,
+    "lng": 80.384457,
+    "address": null,
+    "inside_buffer": true,
+    "distance_to_shore_m": 51
+   },
+   "contact": {
+    "phone": "+94774173714",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": null
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No Google listing, website or social profile found; only an OSM guest_house entry and a Kayak hotel page (8.5, 31 reviews).",
+    "criteria": [
+     "ota_listings_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.openstreetmap.org/way/426921489",
+     "fetched_at": "2026-10-26T11:55:23Z",
+     "note": "OSM tourism=guest_house, phone 077 417 3714 (Overpass)"
+    },
+    {
+     "source_url": "https://www.es.kayak.com/Midigama-East-Hoteles-Surf-Mount-Plant-Inn-Midigama.2569295.ksp",
+     "fetched_at": "2026-10-26T13:04:04Z",
+     "note": "web search result: Kayak hotel page, Dammala, Midigama East"
+    }
+   ],
+   "surf_related_confidence": 0.5,
+   "languages_seen": [
+    "en"
+   ],
+   "note": "OSM only; web search also surfaces Plantation Surf Inn (1.5 km east) for this name, so the human should check it is a separate property"
+  },
+  {
+   "slug": "leari",
+   "name": "Leari - surf & social guest house",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9656306,
+    "lng": 80.3845972,
+    "address": "X98M+7R5, Ahangama, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 89
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Leari+-+surf+%26+social+guest+house/data=!4m10!3m9!1s0x3ae11500132559b7:0x6d101d413a8719ef!5m2!4m1!1i2!8m2!3d5.9656306!4d80.3845972!16s%2Fg%2F11ynd76l3n!19sChIJt1klEwAV4ToR7xmHOkEdEG0"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (booking.com).",
+    "criteria": [
+     "ota_listings_only",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Leari+-+surf+%26+social+guest+house/data=!4m10!3m9!1s0x3ae11500132559b7:0x6d101d413a8719ef!5m2!4m1!1i2!8m2!3d5.9656306!4d80.3845972!16s%2Fg%2F11ynd76l3n!19sChIJt1klEwAV4ToR7xmHOkEdEG0",
+     "fetched_at": "2026-10-26T12:47:22.667Z",
+     "note": "Google Maps place page: Leari - surf & social guest house"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Bed & breakfast",
+    "rating": "4.9",
+    "listings_merged": [
+     "Leari - surf & social guest house"
+    ]
+   }
+  },
+  {
+   "slug": "colonial-surfing-villa",
+   "name": "Colonial Surfing Villa",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9652493,
+    "lng": 80.3853074,
+    "address": "Denuwala, midigama, 94 A, Midigama 82000, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 72
+   },
+   "contact": {
+    "phone": "+94776557199",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Colonial+Surfing+Villa/data=!4m10!3m9!1s0x3ae114bf064c072b:0xd7682195f41b16a7!5m2!4m1!1i2!8m2!3d5.9652493!4d80.3853074!16s%2Fg%2F11f50sy4vp!19sChIJKwdMBr8U4ToRpxYb9JUhaNc"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (agoda.com, airbnb, hostelworld).",
+    "criteria": [
+     "ota_listings_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Colonial+Surfing+Villa/data=!4m10!3m9!1s0x3ae114bf064c072b:0xd7682195f41b16a7!5m2!4m1!1i2!8m2!3d5.9652493!4d80.3853074!16s%2Fg%2F11f50sy4vp!19sChIJKwdMBr8U4ToRpxYb9JUhaNc",
+     "fetched_at": "2026-10-26T12:43:05.714Z",
+     "note": "Google Maps place page: Colonial Surfing Villa"
+    },
+    {
+     "source_url": "https://www.airbnb.co.uk/rooms/5572593",
+     "fetched_at": "2026-10-26T12:56:25Z",
+     "note": "web search: OTA listings only (Airbnb, host Renuk, Superhost; Hostelworld - 150-year-old Dutch house on Midigama main road); no own site or social found."
+    },
+    {
+     "source_url": "https://www.hostelworld.com/pt/albergues/p/323941/colonial-surfing-villa/",
+     "fetched_at": "2026-10-26T12:56:25Z",
+     "note": "web search: OTA listings only (Airbnb, host Renuk, Superhost; Hostelworld - 150-year-old Dutch house on Midigama main road); no own site or social found."
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "3-star hotel",
+    "rating": "4.9",
+    "listings_merged": [
+     "Colonial Surfing Villa"
+    ]
+   }
+  },
+  {
+   "slug": "surf-dom-hotel-restaurant",
+   "name": "Surf Dom Hotel & Restaurant",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9647281,
+    "lng": 80.3855534,
+    "address": "X97P+W67, Ahangama, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 19
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Surf+dom+hotel+%26+restaurant/data=!4m10!3m9!1s0x3ae115003eab2fcf:0x713bbe97ac132eeb!5m2!4m1!1i2!8m2!3d5.9647281!4d80.3855534!16s%2Fg%2F11z5d3ph79!19sChIJzy-rPgAV4ToR6y4TrJe-O3E"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (agoda.com, bluepillow, booking.com).",
+    "criteria": [
+     "ota_listings_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Surf+dom+hotel+%26+restaurant/data=!4m10!3m9!1s0x3ae115003eab2fcf:0x713bbe97ac132eeb!5m2!4m1!1i2!8m2!3d5.9647281!4d80.3855534!16s%2Fg%2F11z5d3ph79!19sChIJzy-rPgAV4ToR6y4TrJe-O3E",
+     "fetched_at": "2026-10-26T12:45:42.816Z",
+     "note": "Google Maps place page: Surf dom hotel & restaurant"
+    },
+    {
+     "source_url": "https://www.google.com/maps/place/Surf+Dom+hotel+and+restaurant+Ahangama/data=!4m11!3m10!1s0x3ae114bfaa8817df:0x44c6943246834ad4!5m2!4m1!1i2!8m2!3d5.9649901!4d80.3855209!16s%2Fg%2F11n3m221tw!17BQ0FF!19sChIJ3xeIqr8U4ToR1EqDRjKUxkQ",
+     "fetched_at": "2026-10-26T12:48:44.986Z",
+     "note": "Google Maps place page: Surf Dom hotel and restaurant Ahangama"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Hotel",
+    "rating": "5.0",
+    "listings_merged": [
+     "Surf dom hotel & restaurant",
+     "Surf Dom hotel and restaurant Ahangama"
+    ]
+   }
+  },
+  {
+   "slug": "chanro-surf-dream-the-beach-resort",
+   "name": "Chanro Surf Dream The Beach Resort",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9649014,
+    "lng": 80.3855819,
+    "address": "X97P+X68 Denuwala, Ahangama, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 38
+   },
+   "contact": {
+    "phone": "+94777957239",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Chanro+Surf+Dream+The+Beach+Resort/data=!4m10!3m9!1s0x3ae11593f44862cf:0x93e84450c08a2880!5m2!4m1!1i2!8m2!3d5.9649014!4d80.3855819!16s%2Fg%2F11sh0xnwv9!19sChIJz2JI9JMV4ToRgCiKwFBE6JM"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (agoda.com, bedsandhotels).",
+    "criteria": [
+     "ota_listings_only",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Chanro+Surf+Dream+The+Beach+Resort/data=!4m10!3m9!1s0x3ae11593f44862cf:0x93e84450c08a2880!5m2!4m1!1i2!8m2!3d5.9649014!4d80.3855819!16s%2Fg%2F11sh0xnwv9!19sChIJz2JI9JMV4ToRgCiKwFBE6JM",
+     "fetched_at": "2026-10-26T12:47:37.941Z",
+     "note": "Google Maps place page: Chanro Surf Dream The Beach Resort"
+    },
+    {
+     "source_url": "https://chanro-surf.bedsandhotels.com/",
+     "fetched_at": "2026-10-26T12:58:49Z",
+     "note": "web search: Nothing found by search; Google's 'website' is a bedsandhotels.com subdomain - an aggregator-generated booking page, not an own site (returns 403 to fetch)."
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Hotel",
+    "rating": "4.5",
+    "listings_merged": [
+     "Chanro Surf Dream The Beach Resort"
+    ]
+   }
+  },
+  {
+   "slug": "surfers-paradise",
+   "name": "Surfers Paradise",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9652055,
+    "lng": 80.3885657,
+    "address": "Surfers paradise, midigama, weligama 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 29
+   },
+   "contact": {
+    "phone": "+94771700107",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Surfers+Paradise/data=!4m10!3m9!1s0x3ae114c0873e6dd1:0x6ee02806d5766f46!5m2!4m1!1i2!8m2!3d5.9652055!4d80.3885657!16s%2Fg%2F1q67gb0k2!19sChIJ0W0-h8AU4ToRRm921QYo4G4"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (agoda.com, booking.com).",
+    "criteria": [
+     "ota_listings_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Surfers+Paradise/data=!4m10!3m9!1s0x3ae114c0873e6dd1:0x6ee02806d5766f46!5m2!4m1!1i2!8m2!3d5.9652055!4d80.3885657!16s%2Fg%2F1q67gb0k2!19sChIJ0W0-h8AU4ToRRm921QYo4G4",
+     "fetched_at": "2026-10-26T12:36:17.903Z",
+     "note": "Google Maps place page: Surfers Paradise"
+    },
+    {
+     "source_url": "https://www.google.com/maps/place/Lazy+Right+Surf+Base/data=!4m7!3m6!1s0x3ae11500676abf03:0x7028a6ba840d225!8m2!3d5.9651184!4d80.3893447!16s%2Fg%2F11yx__9vp6!19sChIJA79qZwAV4ToRJdJAqGuKAgc",
+     "fetched_at": "2026-10-26T12:41:01.115Z",
+     "note": "Google Maps place page: Lazy Right Surf Base (same business)"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "2-star hotel",
+    "rating": "4.1",
+    "listings_merged": [
+     "Surfers Paradise"
+    ]
+   }
+  },
+  {
+   "slug": "dolce-vita-surf-rest-point",
+   "name": "Dolce Vita Surf Rest Point",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9651589,
+    "lng": 80.3886414,
+    "address": "Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 22
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Dolce+Vita+Surf+Rest+Point/data=!4m8!3m7!1s0x3ae114c08774457b:0x57a93ba0c7308305!8m2!3d5.9651589!4d80.3886414!16s%2Fg%2F11z_sxqzcf!17BQ0FF!19sChIJe0V0h8AU4ToRBYMwx6A7qVc"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (vio.com).",
+    "criteria": [
+     "ota_listings_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Dolce+Vita+Surf+Rest+Point/data=!4m8!3m7!1s0x3ae114c08774457b:0x57a93ba0c7308305!8m2!3d5.9651589!4d80.3886414!16s%2Fg%2F11z_sxqzcf!17BQ0FF!19sChIJe0V0h8AU4ToRBYMwx6A7qVc",
+     "fetched_at": "2026-10-26T12:45:22.184Z",
+     "note": "Google Maps place page: Dolce Vita Surf Rest Point"
+    },
+    {
+     "source_url": "https://www.lakpura.com/stays/sri-lanka/weligama/la-dolce-vita-weligama",
+     "fetched_at": "2026-10-26T12:59:35Z",
+     "note": "web search: Only the vio.com aggregator link Google lists; search found nothing under this name. A 'La Dolce Vita Weligama' boutique hotel (lakpura.com, opened Dec 2024, by"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Lodging",
+    "rating": "",
+    "listings_merged": [
+     "Dolce Vita Surf Rest Point",
+     "Dolce Vita Surf Rest Point"
+    ]
+   },
+   "note": "pin 10 m from Surfers Paradise, different name: kept apart"
+  },
+  {
+   "slug": "surferce-dream-guest-house",
+   "name": "Surferce dream guest house",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9659243,
+    "lng": 80.3886736,
+    "address": "Matara Rd, Ahangama 80650, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 104
+   },
+   "contact": {
+    "phone": "+94763583910",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Surferce+dream+guest+house/data=!4m10!3m9!1s0x3ae11544190baca1:0x464395cc67021237!5m2!4m1!1i2!8m2!3d5.9659243!4d80.3886736!16s%2Fg%2F11rmpzxqpt!19sChIJoawLGUQV4ToRNxICZ8yVQ0Y"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (agoda.com).",
+    "criteria": [
+     "ota_listings_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Surferce+dream+guest+house/data=!4m10!3m9!1s0x3ae11544190baca1:0x464395cc67021237!5m2!4m1!1i2!8m2!3d5.9659243!4d80.3886736!16s%2Fg%2F11rmpzxqpt!19sChIJoawLGUQV4ToRNxICZ8yVQ0Y",
+     "fetched_at": "2026-10-26T12:45:27.142Z",
+     "note": "Google Maps place page: Surferce dream guest house"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Guest house",
+    "rating": "2.8",
+    "listings_merged": [
+     "Surferce dream guest house"
+    ]
+   }
+  },
+  {
+   "slug": "midigama-viraj-surfing-vila",
+   "name": "Midigama Viraj Surfing Villa",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9654103,
+    "lng": 80.3892288,
+    "address": "Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 45
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Midigama+viraj+surfing+vila+-+Villa/data=!4m11!3m10!1s0x3ae114c08bf724b9:0x3d3dbfee1862a71!5m2!4m1!1i2!8m2!3d5.9654103!4d80.3892288!16s%2Fg%2F11mkynff9_!17BQ0FF!19sChIJuST3i8AU4ToRcSqG4f7b0wM"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (bluepillow).",
+    "criteria": [
+     "ota_listings_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Midigama+viraj+surfing+vila+-+Villa/data=!4m11!3m10!1s0x3ae114c08bf724b9:0x3d3dbfee1862a71!5m2!4m1!1i2!8m2!3d5.9654103!4d80.3892288!16s%2Fg%2F11mkynff9_!17BQ0FF!19sChIJuST3i8AU4ToRcSqG4f7b0wM",
+     "fetched_at": "2026-10-26T12:48:03.856Z",
+     "note": "Google Maps place page: Midigama viraj surfing vila - Villa"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": " Sleeps 12 6 bedrooms 4 bathrooms Min. 1 night",
+    "rating": "",
+    "listings_merged": [
+     "Midigama viraj surfing vila - Villa"
+    ]
+   }
+  },
+  {
+   "slug": "laguna-surfing-stay",
+   "name": "Laguna Surfing Stay",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9655425,
+    "lng": 80.3902254,
+    "address": "Laguna, Ahangama Midigama, 80650, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 68
+   },
+   "contact": {
+    "phone": "+94707414331",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Laguna+Surfing+Stay/data=!4m10!3m9!1s0x3ae1154d62213b05:0xafe3168f998cfe97!5m2!4m1!1i2!8m2!3d5.9655425!4d80.3902254!16s%2Fg%2F11gsbcg1td!19sChIJBTshYk0V4ToRl_6MmY8W468"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (booking.com).",
+    "criteria": [
+     "ota_listings_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Laguna+Surfing+Stay/data=!4m10!3m9!1s0x3ae1154d62213b05:0xafe3168f998cfe97!5m2!4m1!1i2!8m2!3d5.9655425!4d80.3902254!16s%2Fg%2F11gsbcg1td!19sChIJBTshYk0V4ToRl_6MmY8W468",
+     "fetched_at": "2026-10-26T12:39:59.612Z",
+     "note": "Google Maps place page: Laguna Surfing Stay"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Guest house",
+    "rating": "4.6",
+    "listings_merged": [
+     "Laguna Surfing Stay",
+     "Laguna Surfing Stay - Deluxe Villa",
+     "Laguna Surfing Stay - Deluxe Double Room with Shower"
+    ]
+   }
+  },
+  {
+   "slug": "lazies-midigama",
+   "name": "Lazies Midigama",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9652842,
+    "lng": 80.3908805,
+    "address": "Midigama Junction, Midigama, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 66
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Lazies+Midigama/data=!4m10!3m9!1s0x3ae114c0ffe71b11:0x1dad263efb20e03b!5m2!4m1!1i2!8m2!3d5.9652842!4d80.3908805!16s%2Fg%2F11gfhyp8tr!19sChIJERvn_8AU4ToRO-Ag-z4mrR0"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (agoda.com, booking.com).",
+    "criteria": [
+     "ota_listings_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Lazies+Midigama/data=!4m10!3m9!1s0x3ae114c0ffe71b11:0x1dad263efb20e03b!5m2!4m1!1i2!8m2!3d5.9652842!4d80.3908805!16s%2Fg%2F11gfhyp8tr!19sChIJERvn_8AU4ToRO-Ag-z4mrR0",
+     "fetched_at": "2026-10-26T12:35:40.341Z",
+     "note": "Google Maps place page: Lazies Midigama"
+    }
+   ],
+   "surf_related_confidence": 0.5,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "3-star hotel",
+    "rating": "3.2",
+    "listings_merged": [
+     "Lazies Midigama"
+    ]
+   }
+  },
+  {
+   "slug": "midigama-5-bed-room-surfing-villa",
+   "name": "Midigama 5 Bed Room Surfing villa",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9663172,
+    "lng": 80.3911133,
+    "address": "Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 180
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Midigama+5+Bed+Room+Surfing+villa/data=!4m8!3m7!1s0x3ae114c11f0f55d1:0x20a1b77702b342e2!8m2!3d5.9663172!4d80.3911133!16s%2Fg%2F11zx73c7zj!17BQ0FF!19sChIJ0VUPH8EU4ToR4kKzAne3oSA"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (expedia, vio.com).",
+    "criteria": [
+     "ota_listings_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Midigama+5+Bed+Room+Surfing+villa/data=!4m8!3m7!1s0x3ae114c11f0f55d1:0x20a1b77702b342e2!8m2!3d5.9663172!4d80.3911133!16s%2Fg%2F11zx73c7zj!17BQ0FF!19sChIJ0VUPH8EU4ToR4kKzAne3oSA",
+     "fetched_at": "2026-10-26T12:47:27.721Z",
+     "note": "Google Maps place page: Midigama 5 Bed Room Surfing villa"
+    },
+    {
+     "source_url": "https://www.expedia.com/es/Weligama-Hoteles-5-Star-Villa-With-First-Class-Amenities.h91333983.Informacion-Hotel",
+     "fetched_at": "2026-10-26T12:59:35Z",
+     "note": "web search: Search snippet ties an Airbnb listing titled 'Midigama 5 Bed Room Surfing villa' to 'Maali Residence' (sleeps 10, 5 min to beach); also an Expedia 5-bedroom vil"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": " Sleeps 10 5 bedrooms 4 bathrooms",
+    "rating": "5.0",
+    "listings_merged": [
+     "Midigama 5 Bed Room Surfing villa"
+    ]
+   }
+  },
+  {
+   "slug": "lotus-surf-house",
+   "name": "Lotus Surf House",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9652192,
+    "lng": 80.3922802,
+    "address": "5.965106, 80.392243, Indhana Rd, Midigama 80650, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 151
+   },
+   "contact": {
+    "phone": "+94774647541",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (agoda.com, booking.com, kayak).",
+    "criteria": [
+     "ota_listings_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0",
+     "fetched_at": "2026-10-26T12:36:06.755Z",
+     "note": "Google Maps place page: Lotus Surf House"
+    },
+    {
+     "source_url": "https://www.google.com/maps/place/Yelum+Guest+House/data=!4m10!3m9!1s0x3ae114c1a01189c7:0x43e62c20fba3efe5!5m2!4m1!1i2!8m2!3d5.9651521!4d80.3922717!16s%2Fg%2F11cjgd948_!19sChIJx4kRoMEU4ToR5e-j-yAs5kM",
+     "fetched_at": "2026-10-26T12:38:16.561Z",
+     "note": "Google Maps place page: Yelum Guest House (same business)"
+    },
+    {
+     "source_url": "https://www.priceline.com/hotel-deals/en-us/P5000497909/H73226805/lotus-surf-house.ssp",
+     "fetched_at": "2026-10-26T12:54:34Z",
+     "note": "web search: OTA listings only (Indhana Road, Midigama East, ~9.3 rating); no own site or social found. Kayak id 3733075 also appears titled 'Yelum Guest House' - possible r"
+    },
+    {
+     "source_url": "https://www.es.kayak.com/Midigama-East-Hoteles-Lotus-Surf-House.3733075.ksp",
+     "fetched_at": "2026-10-26T12:54:34Z",
+     "note": "web search: OTA listings only (Indhana Road, Midigama East, ~9.3 rating); no own site or social found. Kayak id 3733075 also appears titled 'Yelum Guest House' - possible r"
+    },
+    {
+     "source_url": "https://www.kayak.com/Midigama-East-Hotels-Yelum-Guest-House.3733075.ksp",
+     "fetched_at": "2026-10-26T12:54:34Z",
+     "note": "web search: OTA listings only (Indhana Road, Midigama East, ~9.3 rating); no own site or social found. Kayak id 3733075 also appears titled 'Yelum Guest House' - possible r"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "3-star hotel",
+    "rating": "4.9",
+    "listings_merged": [
+     "Lotus Surf House"
+    ]
+   }
+  },
+  {
+   "slug": "asanka-surf-house-restaurant-with-pool",
+   "name": "Asanka Surf House",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.96489,
+    "lng": 80.3932571,
+    "address": "Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 199
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Asanka+Surf+House+Restaurant+with+pool+-+Double+Room+with+Pool+View/data=!4m11!3m10!1s0x3ae114c183929235:0xa95cac6031da0e5a!5m2!4m1!1i2!8m2!3d5.96489!4d80.3932571!16s%2Fg%2F11zxrl1hz3!17BQ0FF!19sChIJNZKSg8EU4ToRWg7aMWCsXKk"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (bluepillow, hostelworld).",
+    "criteria": [
+     "ota_listings_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Asanka+Surf+House+Restaurant+with+pool+-+Double+Room+with+Pool+View/data=!4m11!3m10!1s0x3ae114c183929235:0xa95cac6031da0e5a!5m2!4m1!1i2!8m2!3d5.96489!4d80.3932571!16s%2Fg%2F11zxrl1hz3!17BQ0FF!19sChIJNZKSg8EU4ToRWg7aMWCsXKk",
+     "fetched_at": "2026-10-26T12:50:19.504Z",
+     "note": "Google Maps place page: Asanka Surf House Restaurant with pool - Double Room with Pool View"
+    },
+    {
+     "source_url": "https://www.hostelworld.com/hostels/p/325402/asanka-surf-house-and-resturant/",
+     "fetched_at": "2026-10-26T12:58:49Z",
+     "note": "web search: OTA listings only (Hostelworld, Expedia group, Bluepillow; Indhana Rd near Midigama station, mixed cleanliness reviews); no own site or social found. Two Expedi"
+    },
+    {
+     "source_url": "https://www.orbitz.com/Ahangama-Hotels-Asanka-Surf-House.h16083714.Hotel-Information",
+     "fetched_at": "2026-10-26T12:58:49Z",
+     "note": "web search: OTA listings only (Hostelworld, Expedia group, Bluepillow; Indhana Rd near Midigama station, mixed cleanliness reviews); no own site or social found. Two Expedi"
+    },
+    {
+     "source_url": "https://www.travelocity.com/es/Ahangama-Hoteles-Asanka-Surf-House-Restaurant-With-Pool.h124329491.Opiniones-Hotel",
+     "fetched_at": "2026-10-26T12:58:49Z",
+     "note": "web search: OTA listings only (Hostelworld, Expedia group, Bluepillow; Indhana Rd near Midigama station, mixed cleanliness reviews); no own site or social found. Two Expedi"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": " Sleeps 4 1 bedroom 4 beds 1 bathroom",
+    "rating": "5.0",
+    "listings_merged": [
+     "Asanka Surf House Restaurant with pool - Double Room with Pool View",
+     "Asanka Surf House Restaurant with pool - 4-Bed Female Dormitory Room",
+     "Asanka Surf House Restaurant with pool - Deluxe Double Room with Sea View"
+    ]
+   }
+  },
+  {
+   "slug": "jayanthi-surf-dreams",
+   "name": "Jayanthi Surf Dreams",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9628328,
+    "lng": 80.3944836,
+    "address": "Midigama, Ahangama 80650, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 40
+   },
+   "contact": {
+    "phone": "+94777239955",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Jayanthi+Surf+Dreams/data=!4m10!3m9!1s0x3ae114c208c52e1f:0x9e16dceb284a0d6!5m2!4m1!1i2!8m2!3d5.9628328!4d80.3944836!16s%2Fg%2F11f3s_sttb!19sChIJHy7FCMIU4ToR1qCEss5t4Qk"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (agoda.com, booking.com, kayak, trip.com).",
+    "criteria": [
+     "ota_listings_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Jayanthi+Surf+Dreams/data=!4m10!3m9!1s0x3ae114c208c52e1f:0x9e16dceb284a0d6!5m2!4m1!1i2!8m2!3d5.9628328!4d80.3944836!16s%2Fg%2F11f3s_sttb!19sChIJHy7FCMIU4ToR1qCEss5t4Qk",
+     "fetched_at": "2026-10-26T12:41:26.940Z",
+     "note": "Google Maps place page: Jayanthi Surf Dreams"
+    },
+    {
+     "source_url": "https://wanderlog.com/place/details/3613175/jayanthi-surf-dreams",
+     "fetched_at": "2026-10-26T12:55:40Z",
+     "note": "web search: OTA listings only (Booking, Kayak, Trip.com, Wanderlog reviews - mixed, one questions Booking rating authenticity); no own site or social found."
+    },
+    {
+     "source_url": "https://www.es.kayak.com/Midigama-East-Hoteles-Jayanthi-Surf-Dreams.3362157.ksp",
+     "fetched_at": "2026-10-26T12:55:40Z",
+     "note": "web search: OTA listings only (Booking, Kayak, Trip.com, Wanderlog reviews - mixed, one questions Booking rating authenticity); no own site or social found."
+    },
+    {
+     "source_url": "https://ae.trip.com/hotels/matara-hotel-detail-10578364/jayanthi-surf-dreams",
+     "fetched_at": "2026-10-26T12:55:40Z",
+     "note": "web search: OTA listings only (Booking, Kayak, Trip.com, Wanderlog reviews - mixed, one questions Booking rating authenticity); no own site or social found."
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Hotel",
+    "rating": "3.6",
+    "listings_merged": [
+     "Jayanthi Surf Dreams"
+    ]
+   }
+  },
+  {
+   "slug": "indika-surf-shop-board-repair",
+   "name": "Indika Surf Shop & Board Repair",
+   "type": "surf_shop",
+   "location": {
+    "lat": 5.9631375,
+    "lng": 80.3946227,
+    "address": "Indika Surf Shop Galle-Matara Road Wellawattha Midigama, Ahangama 80650, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 77
+   },
+   "contact": {
+    "phone": "+94767766172",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Indika+Surf+Shop+%26+Board+Repair/data=!4m7!3m6!1s0x3ae1155b2e2f9edd:0x155fe7057c2dd498!8m2!3d5.9631375!4d80.3946227!16s%2Fg%2F11h35p5ry1!19sChIJ3Z4vLlsV4ToRmNQtfAXnXxU"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website; only a YouTube video (https://youtu.be/DkilDqjBM0A) beside the Google listing.",
+    "criteria": [
+     "youtube_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Indika+Surf+Shop+%26+Board+Repair/data=!4m7!3m6!1s0x3ae1155b2e2f9edd:0x155fe7057c2dd498!8m2!3d5.9631375!4d80.3946227!16s%2Fg%2F11h35p5ry1!19sChIJ3Z4vLlsV4ToRmNQtfAXnXxU",
+     "fetched_at": "2026-10-26T12:46:51.380Z",
+     "note": "Google Maps place page: Indika Surf Shop & Board Repair"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Surf shop",
+    "rating": "4.5",
+    "listings_merged": [
+     "Indika Surf Shop & Board Repair"
+    ]
+   }
+  },
+  {
+   "slug": "surf-forever",
+   "name": "Surf forever",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9620838,
+    "lng": 80.3963871,
+    "address": "Surf forever, Midigama 80650, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 47
+   },
+   "contact": {
+    "phone": "+94706816547",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Surf+forever/data=!4m10!3m9!1s0x3ae115ea9f5fec19:0x4567eadf4ee64547!5m2!4m1!1i2!8m2!3d5.9620838!4d80.3963871!16s%2Fg%2F11k54ttrxw!19sChIJGexfn-oV4ToRR0XmTt_qZ0U"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (agoda.com).",
+    "criteria": [
+     "ota_listings_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Surf+forever/data=!4m10!3m9!1s0x3ae115ea9f5fec19:0x4567eadf4ee64547!5m2!4m1!1i2!8m2!3d5.9620838!4d80.3963871!16s%2Fg%2F11k54ttrxw!19sChIJGexfn-oV4ToRR0XmTt_qZ0U",
+     "fetched_at": "2026-10-26T12:32:48.344Z",
+     "note": "Google Maps place page: Surf forever"
+    },
+    {
+     "source_url": "https://destinia.com/ca/hotels/asia/sri-lanka/sur/ahangama/surf-forever/ho-3856684",
+     "fetched_at": "2026-10-26T12:54:00Z",
+     "note": "web search: Only an OTA listing (Destinia, 'Hotel Surf Forever', Matara Road, Midigama); no own site or social found."
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Guest house",
+    "rating": "5.0",
+    "listings_merged": [
+     "Surf forever"
+    ]
+   }
+  },
+  {
+   "slug": "shehara-sun-surf-lodge",
+   "name": "Shehara sun surf lodge",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9621548,
+    "lng": 80.3964655,
+    "address": "Walikanda, Midigama, Ahangama 80650, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 59
+   },
+   "contact": {
+    "phone": "+94761699486",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Shehara+sun+surf+lodge/data=!4m10!3m9!1s0x3ae11552673265d1:0x59eda02d1c4d5600!5m2!4m1!1i2!8m2!3d5.9621548!4d80.3964655!16s%2Fg%2F11y_v9vnsp!19sChIJ0WUyZ1IV4ToRAFZNHC2g7Vk"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (agoda.com, booking.com).",
+    "criteria": [
+     "ota_listings_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Shehara+sun+surf+lodge/data=!4m10!3m9!1s0x3ae11552673265d1:0x59eda02d1c4d5600!5m2!4m1!1i2!8m2!3d5.9621548!4d80.3964655!16s%2Fg%2F11y_v9vnsp!19sChIJ0WUyZ1IV4ToRAFZNHC2g7Vk",
+     "fetched_at": "2026-10-26T12:43:21.762Z",
+     "note": "Google Maps place page: Shehara sun surf lodge"
+    },
+    {
+     "source_url": "https://www.aubergesdejeunesse.com/Auberge-jeunesse-Hostel/Shehara-Sun-Surf-Lodge/BK1566545",
+     "fetched_at": "2026-10-26T12:56:25Z",
+     "note": "web search: OTA listings only (Booking-powered, ~9.2-9.3 rating; Booking slug 'shehara-surf-view' suggests an alternate name); no own site or social found."
+    },
+    {
+     "source_url": "https://hotels.edreams.co.uk/hotel/lk/shehara-surf-view.en-gb.html?aid=304142",
+     "fetched_at": "2026-10-26T12:56:25Z",
+     "note": "web search: OTA listings only (Booking-powered, ~9.2-9.3 rating; Booking slug 'shehara-surf-view' suggests an alternate name); no own site or social found."
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "4-star hotel",
+    "rating": "4.3",
+    "listings_merged": [
+     "Shehara sun surf lodge",
+     "Shehara Sun Surf Lodge - Deluxe Double Room With Side Sea View"
+    ]
+   }
+  },
+  {
+   "slug": "cheeky-monkey",
+   "name": "Cheeky Monkey Surf Camp",
+   "type": "surf_camp",
+   "location": {
+    "lat": 5.9617986,
+    "lng": 80.3967609,
+    "address": "Cheeky Monkey, Galle - Matara Main Road, Midigama East Midigama, Ahangama 80650, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 48
+   },
+   "contact": {
+    "phone": "+94719248686",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Cheeky+Monkey/data=!4m10!3m9!1s0x3ae114c1f7d9fc01:0xb59451ca09648650!5m2!4m1!1i2!8m2!3d5.9617986!4d80.3967609!16s%2Fg%2F11b6scl3ts!19sChIJAfzZ98EU4ToRUIZkCcpRlLU"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (agoda.com, booking.com).",
+    "criteria": [
+     "ota_listings_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Cheeky+Monkey/data=!4m10!3m9!1s0x3ae114c1f7d9fc01:0xb59451ca09648650!5m2!4m1!1i2!8m2!3d5.9617986!4d80.3967609!16s%2Fg%2F11b6scl3ts!19sChIJAfzZ98EU4ToRUIZkCcpRlLU",
+     "fetched_at": "2026-10-26T12:33:44.634Z",
+     "note": "Google Maps place page: Cheeky Monkey"
+    },
+    {
+     "source_url": "https://www.google.com/maps/place/Baba%27s+surfshop%2FCheeky+monky+midigama+guesthouse/data=!4m7!3m6!1s0x3ae114e83215af2f:0x5e7df1a573ccacda!8m2!3d5.9618292!4d80.3968473!16s%2Fg%2F11gd0fngjp!19sChIJL68VMugU4ToR2qzMc6XxfV4",
+     "fetched_at": "2026-10-26T12:49:53.410Z",
+     "note": "Google Maps place page: Baba's surfshop/Cheeky monky midigama guesthouse"
+    },
+    {
+     "source_url": "https://www.dailymirror.lk/press-releases/The-Cheeky-Monkey-Midigama-ready-to-catch-the-new-wave-of-surf-tourism/335-206161",
+     "fetched_at": "2026-10-26T12:54:34Z",
+     "note": "web search: Well-known Midigama guesthouse/surf shop/surf school run by Pasindu 'Baba' Delgodage (Daily Mirror press release); only OTA listings surfaced, no own site or so"
+    },
+    {
+     "source_url": "https://h.priceline.com/hotel/lk/cheeky-monkey.en-gb.html",
+     "fetched_at": "2026-10-26T12:54:34Z",
+     "note": "web search: Well-known Midigama guesthouse/surf shop/surf school run by Pasindu 'Baba' Delgodage (Daily Mirror press release); only OTA listings surfaced, no own site or so"
+    },
+    {
+     "source_url": "https://www.casai.com/property/cheeky-monkey-surf-camp/BC-1229648",
+     "fetched_at": "2026-10-26T12:54:34Z",
+     "note": "web search: Well-known Midigama guesthouse/surf shop/surf school run by Pasindu 'Baba' Delgodage (Daily Mirror press release); only OTA listings surfaced, no own site or so"
+    },
+    {
+     "source_url": "https://www.dailymirror.lk/press-releases/The-Cheeky-Monkey-Midigama-ready-to-catch-the-new-wave-of-surf-tourism/335-206161",
+     "fetched_at": "2026-10-26T12:59:35Z",
+     "note": "web search: Same business as cheeky-monkey (owner Pasindu 'Baba' Delgodage per Daily Mirror); only OTA listings found, no own site or social."
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "3-star hotel",
+    "rating": "4.5",
+    "listings_merged": [
+     "Cheeky Monkey",
+     "Baba's surfshop/Cheeky monky midigama guesthouse",
+     "Cheeky Monkey Surf Spot - Midigama",
+     "Cheeky Monkey Surf Camp - Double Room",
+     "Cheeky Monkey Surf Camp - Small Double Room",
+     "Cheeky Monkey Surf Camp - Small Double Room",
+     "Cheeky Monkey Surf Camp - Small Double Room",
+     "Cheeky Monkey Surf Camp - Classic Triple Room",
+     "Cheeky Monkey Surf Camp - Superior Double Room"
+    ]
+   },
+   "note": "shares phone +94719248686 with Surf Swell Hostel (350 m apart, different names): kept apart, possibly one owner"
+  },
+  {
+   "slug": "sea-you-surfers-nest",
+   "name": "Sea You Surfers Nest",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9621402,
+    "lng": 80.3974064,
+    "address": "151 Weliwaththa Rd, Midigama 80650, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 91
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (agoda.com, booking.com).",
+    "criteria": [
+     "ota_listings_only",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Sea+You+Surfers+Nest/data=!4m10!3m9!1s0x3ae11500586794a3:0xed458ea29dd833eb!5m2!4m1!1i2!8m2!3d5.9621402!4d80.3974064!16s%2Fg%2F11mlt9v7jb!19sChIJo5RnWAAV4ToR6zPYnaKORe0",
+     "fetched_at": "2026-10-26T12:41:32.213Z",
+     "note": "Google Maps place page: Sea You Surfers Nest"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Bed & breakfast",
+    "rating": "4.9",
+    "listings_merged": [
+     "Sea You Surfers Nest"
+    ]
+   }
+  },
+  {
+   "slug": "surfing-pinthaliya",
+   "name": "Surfing Pinthaliya",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9625134,
+    "lng": 80.3980035,
+    "address": "X97X+262, Weliwaththa Rd, Weligama, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 156
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Surfing+Pinthaliya/data=!4m10!3m9!1s0x3ae1150076ae355f:0x46b9e8cc6c0dfb99!5m2!4m1!1i2!8m2!3d5.9625134!4d80.3980035!16s%2Fg%2F11m6bf1529!19sChIJXzWudgAV4ToRmfsNbMzouUY"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (agoda.com, booking.com).",
+    "criteria": [
+     "ota_listings_only",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Surfing+Pinthaliya/data=!4m10!3m9!1s0x3ae1150076ae355f:0x46b9e8cc6c0dfb99!5m2!4m1!1i2!8m2!3d5.9625134!4d80.3980035!16s%2Fg%2F11m6bf1529!19sChIJXzWudgAV4ToRmfsNbMzouUY",
+     "fetched_at": "2026-10-26T12:39:24.257Z",
+     "note": "Google Maps place page: Surfing Pinthaliya"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Hotel",
+    "rating": "4.6",
+    "listings_merged": [
+     "Surfing Pinthaliya"
+    ]
+   }
+  },
+  {
+   "slug": "the-surflanka-resort",
+   "name": "The Surflanka Resort",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9611906,
+    "lng": 80.3982349,
+    "address": "87, Mile Post, Midigama, Ahangama, AH 43, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 36
+   },
+   "contact": {
+    "phone": "+94764975482",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/The+Surflanka+Resort/data=!4m10!3m9!1s0x3ae114e86c810321:0x7fbb0e5d0e426944!5m2!4m1!1i2!8m2!3d5.9611906!4d80.3982349!16s%2Fg%2F11bywknsyt!19sChIJIQOBbOgU4ToRRGlCDl0Ou38"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (hotels.com, trip.com, vio.com).",
+    "criteria": [
+     "ota_listings_only",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/The+Surflanka+Resort/data=!4m10!3m9!1s0x3ae114e86c810321:0x7fbb0e5d0e426944!5m2!4m1!1i2!8m2!3d5.9611906!4d80.3982349!16s%2Fg%2F11bywknsyt!19sChIJIQOBbOgU4ToRRGlCDl0Ou38",
+     "fetched_at": "2026-10-26T12:41:37.466Z",
+     "note": "Google Maps place page: The Surflanka Resort"
+    },
+    {
+     "source_url": "https://www.google.com/maps/place/OYO+578+The+Surf+Lanka+Resort/data=!4m8!3m7!1s0x3ae114e8276adc99:0x82d2389b2e79c98a!8m2!3d5.9625564!4d80.3974304!16s%2Fg%2F11zy0ts8y5!17BQ0FF!19sChIJmdxqJ-gU4ToRisl5Lps40oI",
+     "fetched_at": "2026-10-26T12:46:36.259Z",
+     "note": "Google Maps place page: OYO 578 The Surf Lanka Resort"
+    },
+    {
+     "source_url": "https://www.google.com/maps/place/Beachfront+Hotel+Cozy+Cocos/data=!4m10!3m9!1s0x3ae115a146667599:0xd7b81b773a93423c!5m2!4m1!1i2!8m2!3d5.9612012!4d80.3981925!16s%2Fg%2F11ysr0c2w0!19sChIJmXVmRqEV4ToRPEKTOncbuNc",
+     "fetched_at": "2026-10-26T12:45:58.424Z",
+     "note": "Google Maps place page: Beachfront Hotel Cozy Cocos (same business)"
+    },
+    {
+     "source_url": "https://zh.hotels.com/en/ho952873728/the-surf-lanka-resort-ahangama-sri-lanka",
+     "fetched_at": "2026-10-26T12:56:25Z",
+     "note": "web search: OTA listings only (87 Mile Post, Matara Rd, 22 rooms, 7.4 on Hotels.com); no own site or social found. Same property as oyo-578-the-surf-lanka-resort (OYO-brand"
+    },
+    {
+     "source_url": "https://www.travelocity.com/Ahangama-Hotels-The-Surf-Lanka-Resort.h29746054.Hotel-Reviews",
+     "fetched_at": "2026-10-26T12:56:25Z",
+     "note": "web search: OTA listings only (87 Mile Post, Matara Rd, 22 rooms, 7.4 on Hotels.com); no own site or social found. Same property as oyo-578-the-surf-lanka-resort (OYO-brand"
+    },
+    {
+     "source_url": "https://nz.trip.com/hotels/weligama-hotel-detail-24308149/the-surflanaka-resort",
+     "fetched_at": "2026-10-26T12:56:25Z",
+     "note": "web search: OTA listings only (87 Mile Post, Matara Rd, 22 rooms, 7.4 on Hotels.com); no own site or social found. Same property as oyo-578-the-surf-lanka-resort (OYO-brand"
+    },
+    {
+     "source_url": "https://tw.hotels.com/en/ho952873728/the-surf-lanka-resort-ahangama-sri-lanka",
+     "fetched_at": "2026-10-26T12:59:35Z",
+     "note": "web search: Duplicate of the-surflanka-resort (old OYO-branded listing name); no OYO 578 page found, no own site or social."
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "3-star hotel",
+    "rating": "4.1",
+    "listings_merged": [
+     "The Surflanka Resort",
+     "OYO 578 The Surf Lanka Resort"
+    ]
+   }
+  },
+  {
+   "slug": "v5-surfing",
+   "name": "V5 Surfing",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9612598,
+    "lng": 80.3996429,
+    "address": "Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 84
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/V5+Surfing+-+Large+Twin+Room/data=!4m11!3m10!1s0x3ae114e7dddbbcd5:0xd4d0833f8da6ab53!5m2!4m1!1i2!8m2!3d5.9612598!4d80.3996429!16s%2Fg%2F11nw53lw8z!17BQ0FF!19sChIJ1bzb3ecU4ToRU6umjT-D0NQ"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (bluepillow).",
+    "criteria": [
+     "ota_listings_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/V5+Surfing+-+Large+Twin+Room/data=!4m11!3m10!1s0x3ae114e7dddbbcd5:0xd4d0833f8da6ab53!5m2!4m1!1i2!8m2!3d5.9612598!4d80.3996429!16s%2Fg%2F11nw53lw8z!17BQ0FF!19sChIJ1bzb3ecU4ToRU6umjT-D0NQ",
+     "fetched_at": "2026-10-26T12:46:20.593Z",
+     "note": "Google Maps place page: V5 Surfing - Large Twin Room"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": " Sleeps 1 1 bedroom 1 bathroom Min. 1 night",
+    "rating": "",
+    "listings_merged": [
+     "V5 Surfing - Large Twin Room"
+    ]
+   }
+  },
+  {
+   "slug": "sandaru-surfing-inn",
+   "name": "Sandaru Surfing Inn",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.961616,
+    "lng": 80.3997833,
+    "address": "X96X+JWV, Babis Watta, Midigama beach, Weligama 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 125
+   },
+   "contact": {
+    "phone": "+94769388669",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Sandaru+Surfing+Inn/data=!4m10!3m9!1s0x3ae114e873a34009:0x5fb3f26c1b28999c!5m2!4m1!1i2!8m2!3d5.961616!4d80.3997833!16s%2Fg%2F11g8bwr1jt!19sChIJCUCjc-gU4ToRnJkoG2zys18"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (agoda.com).",
+    "criteria": [
+     "ota_listings_only",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Sandaru+Surfing+Inn/data=!4m10!3m9!1s0x3ae114e873a34009:0x5fb3f26c1b28999c!5m2!4m1!1i2!8m2!3d5.961616!4d80.3997833!16s%2Fg%2F11g8bwr1jt!19sChIJCUCjc-gU4ToRnJkoG2zys18",
+     "fetched_at": "2026-10-26T12:40:40.274Z",
+     "note": "Google Maps place page: Sandaru Surfing Inn"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "2-star hotel",
+    "rating": "4.2",
+    "listings_merged": [
+     "Sandaru Surfing Inn"
+    ]
+   }
+  },
+  {
+   "slug": "freddy-s-surf-school",
+   "name": "Freddy's Surf School",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9601672,
+    "lng": 80.4027222,
+    "address": "Kadabeddagama Rd, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 38
+   },
+   "contact": {
+    "phone": "+94775729569",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": "https://instagram.com/cocoreefsurf?igshid=q200qkcpn6jz",
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Freddy%27s+Surf+School/data=!4m7!3m6!1s0x3ae1155131f3bb4f:0xb2b660502317d3e2!8m2!3d5.9601672!4d80.4027222!16s%2Fg%2F11j19g069l!19sChIJT7vzMVEV4ToR4tMXI1BgtrI"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website; only Instagram https://instagram.com/cocoreefsurf?igshid=q200qkcpn6jz beside the Google listing.",
+    "criteria": [
+     "instagram_only",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Freddy%27s+Surf+School/data=!4m7!3m6!1s0x3ae1155131f3bb4f:0xb2b660502317d3e2!8m2!3d5.9601672!4d80.4027222!16s%2Fg%2F11j19g069l!19sChIJT7vzMVEV4ToR4tMXI1BgtrI",
+     "fetched_at": "2026-10-26T12:41:06.365Z",
+     "note": "Google Maps place page: Freddy's Surf School"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Surf school",
+    "rating": "4.8",
+    "listings_merged": [
+     "Freddy's Surf School"
+    ]
+   }
+  },
+  {
+   "slug": "janu-surf-school",
+   "name": "Janu Surf School",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9598339,
+    "lng": 80.4027294,
+    "address": "Matara Rd, Kadabadda gama 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 6
+   },
+   "contact": {
+    "phone": "+94740368002",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": "https://www.instagram.com/tpraweera?igsh=MWRpdWNibG9ybW1hNw==",
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Janu+Surf+School/data=!4m7!3m6!1s0x3ae1152bcbe2f8af:0xa72e519ad1e16ba2!8m2!3d5.9598339!4d80.4027294!16s%2Fg%2F11zgm9zh31!19sChIJr_jiyysV4ToRomvh0ZpRLqc"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website; only Instagram https://www.instagram.com/tpraweera?igsh=MWRpdWNibG9ybW1hNw== beside the Google listing.",
+    "criteria": [
+     "instagram_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Janu+Surf+School/data=!4m7!3m6!1s0x3ae1152bcbe2f8af:0xa72e519ad1e16ba2!8m2!3d5.9598339!4d80.4027294!16s%2Fg%2F11zgm9zh31!19sChIJr_jiyysV4ToRomvh0ZpRLqc",
+     "fetched_at": "2026-10-26T12:36:39.121Z",
+     "note": "Google Maps place page: Janu Surf School"
+    },
+    {
+     "source_url": "https://www.instagram.com/tpraweera/",
+     "fetched_at": "2026-10-26T12:55:08Z",
+     "note": "web search: Only presence is the personal Instagram handle Google lists (tpraweera); profile content could not be read to confirm, and search found nothing else."
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Surf school",
+    "rating": "",
+    "listings_merged": [
+     "Janu Surf School"
+    ]
+   }
+  },
+  {
+   "slug": "easy-stay",
+   "name": "Easy Stay - Surfer's Lodge",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.961458,
+    "lng": 80.402782,
+    "address": "#38 Kadabeddagama Rd, Weligama 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 177
+   },
+   "contact": {
+    "phone": "+94775402257",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Easy+Stay+-+Surfer%27s+Lodge/data=!4m7!3m6!1s0x3ae114e76d503fe1:0xcb15a15db2cb3a8a!8m2!3d5.961458!4d80.402782!16s%2Fg%2F11f4wv0xvp!19sChIJ4T9QbecU4ToRijrLsl2hFcs"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (abnb.me).",
+    "criteria": [
+     "ota_listings_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Easy+Stay+-+Surfer%27s+Lodge/data=!4m7!3m6!1s0x3ae114e76d503fe1:0xcb15a15db2cb3a8a!8m2!3d5.961458!4d80.402782!16s%2Fg%2F11f4wv0xvp!19sChIJ4T9QbecU4ToRijrLsl2hFcs",
+     "fetched_at": "2026-10-26T12:45:37.563Z",
+     "note": "Google Maps place page: Easy Stay - Surfer's Lodge"
+    },
+    {
+     "source_url": "https://www.google.com/maps/place/Domicio+Surf+Resort/data=!4m10!3m9!1s0x3ae1150062746b81:0x4762170d76d7931a!5m2!4m1!1i2!8m2!3d5.9613197!4d80.4027359!16s%2Fg%2F11x1zp0cnp!19sChIJgWt0YgAV4ToRGpPXdg0XYkc",
+     "fetched_at": "2026-10-26T12:40:14.609Z",
+     "note": "Google Maps place page: Domicio Surf Resort"
+    },
+    {
+     "source_url": "https://www.google.com/maps/place/Easy+Rental-Scooter+and+Taxi+services/data=!4m7!3m6!1s0x2c8a094a1e48ed81:0x3495fa1b58be638a!8m2!3d5.961373!4d80.4027166!16s%2Fg%2F11y1j9_cvf!19sChIJge1IHkoJiiwRimO-WBv6lTQ",
+     "fetched_at": "2026-10-26T12:48:34.756Z",
+     "note": "Google Maps place page: Easy Rental-Scooter and Taxi services (same business)"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "3-star hotel",
+    "rating": "4.9",
+    "listings_merged": [
+     "Easy Stay - Surfer's Lodge",
+     "Domicio Surf Resort"
+    ]
+   }
+  },
+  {
+   "slug": "coconut-surf-inn-guest-house-and-restaurant",
+   "name": "Coconut Surf Inn Guest House and Restaurant",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9606427,
+    "lng": 80.4028521,
+    "address": "Kadabeddagama Road Gurubebila, Weligama 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 92
+   },
+   "contact": {
+    "phone": "+94778921396",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Coconut+Surf+Inn+Guest+House+and+Restaurant/data=!4m10!3m9!1s0x3ae114e71b426f23:0xe26a608b9e3c1b42!5m2!4m1!1i2!8m2!3d5.9606427!4d80.4028521!16s%2Fg%2F11c0q0glzw!19sChIJI29CG-cU4ToRQhs8notgauI"
+   },
+   "existing_site": null,
+   "presence": {
+    "score": 1,
+    "reason": "No website or social profile found; only the Google listing and OTA/aggregator pages (agoda.com, airbnb, booking.com, kayak).",
+    "criteria": [
+     "ota_listings_only"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Coconut+Surf+Inn+Guest+House+and+Restaurant/data=!4m10!3m9!1s0x3ae114e71b426f23:0xe26a608b9e3c1b42!5m2!4m1!1i2!8m2!3d5.9606427!4d80.4028521!16s%2Fg%2F11c0q0glzw!19sChIJI29CG-cU4ToRQhs8notgauI",
+     "fetched_at": "2026-10-26T12:49:36.799Z",
+     "note": "Google Maps place page: Coconut Surf Inn Guest House and Restaurant"
+    },
+    {
+     "source_url": "https://www.google.com/maps/place/Coconut+Beach/data=!4m7!3m6!1s0x3ae114e1474f1fef:0x76380a35b311bcfe!8m2!3d5.9588096!4d80.4058413!16s%2Fg%2F11c5hxgc0t!19sChIJ7x9PR-EU4ToR_rwRszUKOHY",
+     "fetched_at": "2026-10-26T12:34:11.266Z",
+     "note": "Google Maps place page: Coconut Beach (same business)"
+    },
+    {
+     "source_url": "https://www.kayak.com/Weligama-Hotels-Coconut-Surf-Inn.2771966.ksp",
+     "fetched_at": "2026-10-26T12:58:49Z",
+     "note": "web search: OTA listings only (No. 49 Kadabeddagama, Gurubebila, 9 rooms, in front of Coconuts break; Kayak 8.9, Airbnb 4.44); no own site or social found."
+    },
+    {
+     "source_url": "https://www.airbnb.com.sg/rooms/2402254",
+     "fetched_at": "2026-10-26T12:58:49Z",
+     "note": "web search: OTA listings only (No. 49 Kadabeddagama, Gurubebila, 9 rooms, in front of Coconuts break; Kayak 8.9, Airbnb 4.44); no own site or social found."
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "3-star hotel",
+    "rating": "4.8",
+    "listings_merged": [
+     "Coconut Surf Inn Guest House and Restaurant"
+    ]
+   }
+  },
+  {
+   "slug": "shanon-lake-villa-surf-lodge",
+   "name": "Shanon Lake Villa Surf Lodge",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9664958,
+    "lng": 80.3834137,
+    "address": "Denuwala, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 126
+   },
+   "contact": {
+    "phone": "+94719761797",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Shanon+Lake+Villa+Surf+Lodge/data=!4m10!3m9!1s0x3ae1150051bfa213:0xb4e29a2c80d35ec7!5m2!4m1!1i2!8m2!3d5.9664958!4d80.3834137!16s%2Fg%2F11vpllqtk9!19sChIJE6K_UQAV4ToRx17TgCya4rQ"
+   },
+   "existing_site": {
+    "url": "http://www.shanonlakevilla.site/",
+    "status": 200,
+    "mobile_friendly": null,
+    "last_updated_hint": null,
+    "has_booking": null,
+    "funnel": null
+   },
+   "presence": {
+    "score": 2,
+    "reason": "The listed site http://www.shanonlakevilla.site/ is not theirs: it bot-checks, then redirects through an affiliate link (rogotravel.com) to a Booking.com page.",
+    "criteria": [
+     "dead_link",
+     "site_redirects_to_ota",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Shanon+Lake+Villa+Surf+Lodge/data=!4m10!3m9!1s0x3ae1150051bfa213:0xb4e29a2c80d35ec7!5m2!4m1!1i2!8m2!3d5.9664958!4d80.3834137!16s%2Fg%2F11vpllqtk9!19sChIJE6K_UQAV4ToRx17TgCya4rQ",
+     "fetched_at": "2026-10-26T12:46:09.545Z",
+     "note": "Google Maps place page: Shanon Lake Villa Surf Lodge"
+    },
+    {
+     "source_url": "http://www.shanonlakevilla.site/",
+     "fetched_at": "2026-10-26T12:52:05.937Z",
+     "note": "own site, headless mobile test: status 200, doc width 412px"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Villa",
+    "rating": "4.2",
+    "listings_merged": [
+     "Shanon Lake Villa Surf Lodge"
+    ]
+   },
+   "note": "pin 18 m from Surf Shadow Midigama, different name: kept apart"
+  },
+  {
+   "slug": "surf-swell-hostel-midigama",
+   "name": "Surf Swell Hostel & Surf Shop",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9610812,
+    "lng": 80.3996371,
+    "address": "Midigama, Henahuru Watta, Dammala, Weligama 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 64
+   },
+   "contact": {
+    "phone": "+94719248686",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Surf+Swell+Hostel+Midigama/data=!4m10!3m9!1s0x3ae115bf91be8189:0x56baf0594d6f4481!5m2!4m1!1i2!8m2!3d5.9610812!4d80.3996371!16s%2Fg%2F11h7vhz486!19sChIJiYG-kb8V4ToRgURvTVnwulY"
+   },
+   "existing_site": {
+    "url": "https://surfswellhostel.com/",
+    "status": 200,
+    "mobile_friendly": false,
+    "last_updated_hint": null,
+    "has_booking": false,
+    "funnel": {
+     "clicks_to_book": null,
+     "primary_action": null,
+     "cta_above_fold": false,
+     "measured_at": "2026-10-26T12:58:21.859Z"
+    }
+   },
+   "presence": {
+    "score": 2,
+    "reason": "Own site https://surfswellhostel.com/ is 531px wide in a 412px phone viewport (scrolls sideways); no booking action within one tap.",
+    "criteria": [
+     "not_mobile",
+     "no_cta_above_fold"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Surf+Swell+Hostel+Midigama/data=!4m10!3m9!1s0x3ae115bf91be8189:0x56baf0594d6f4481!5m2!4m1!1i2!8m2!3d5.9610812!4d80.3996371!16s%2Fg%2F11h7vhz486!19sChIJiYG-kb8V4ToRgURvTVnwulY",
+     "fetched_at": "2026-10-26T12:45:32.433Z",
+     "note": "Google Maps place page: Surf Swell Hostel Midigama"
+    },
+    {
+     "source_url": "https://www.google.com/maps/place/Surf+Swell+Shop/data=!4m7!3m6!1s0x3ae115642c85fb89:0x42dd6ff17311ea4d!8m2!3d5.9610812!4d80.3996129!16s%2Fg%2F11fnyz9mf_!19sChIJifuFLGQV4ToRTeoRc_Fv3UI",
+     "fetched_at": "2026-10-26T12:35:09.328Z",
+     "note": "Google Maps place page: Surf Swell Shop"
+    },
+    {
+     "source_url": "https://surfswellhostel.com/",
+     "fetched_at": "2026-10-26T12:51:59.539Z",
+     "note": "own site, headless mobile test: status 200, doc width 531px"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "1-star hotel",
+    "rating": "4.5",
+    "listings_merged": [
+     "Surf Swell Hostel Midigama",
+     "Surf Swell Shop"
+    ]
+   }
+  },
+  {
+   "slug": "sanjee-surf-school",
+   "name": "Sanjee Surf School",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9603113,
+    "lng": 80.4039507,
+    "address": "Kadabaddagama, Weligama 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 105
+   },
+   "contact": {
+    "phone": "+94774004422",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4"
+   },
+   "existing_site": {
+    "url": "https://sanjee-surf.com/",
+    "status": 200,
+    "mobile_friendly": false,
+    "last_updated_hint": "2026",
+    "has_booking": true,
+    "funnel": {
+     "clicks_to_book": 1,
+     "primary_action": "dated_form",
+     "cta_above_fold": true,
+     "measured_at": "2026-10-26T12:56:11.283Z"
+    }
+   },
+   "presence": {
+    "score": 2,
+    "reason": "Own site https://sanjee-surf.com/ is 438px wide in a 412px phone viewport (scrolls sideways); funnel: 1 tap(s) to book.",
+    "criteria": [
+     "not_mobile"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4",
+     "fetched_at": "2026-10-26T12:39:14.241Z",
+     "note": "Google Maps place page: Sanjee Surf School"
+    },
+    {
+     "source_url": "https://sanjee-surf.com/",
+     "fetched_at": "2026-10-26T12:51:45.729Z",
+     "note": "own site, headless mobile test: status 200, doc width 438px"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Surf school",
+    "rating": "5.0",
+    "listings_merged": [
+     "Sanjee Surf School"
+    ]
+   }
+  },
+  {
+   "slug": "surftunnel-beach-resort",
+   "name": "Surftunnel Beach Resort",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9613125,
+    "lng": 80.3978125,
+    "address": "Weligama 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 27
+   },
+   "contact": {
+    "phone": "+94765268382",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Surftunnel+Beach+Resort/data=!4m10!3m9!1s0x3ae115002d5dd871:0xc2d4635281435414!5m2!4m1!1i2!8m2!3d5.9613125!4d80.3978125!16s%2Fg%2F11wmtwyb6h!19sChIJcdhdLQAV4ToRFFRDgVJj1MI"
+   },
+   "existing_site": {
+    "url": "http://www.surftunnel.lk/",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": null,
+    "has_booking": false,
+    "funnel": {
+     "clicks_to_book": null,
+     "primary_action": null,
+     "cta_above_fold": true,
+     "measured_at": "2026-10-26T12:57:55.073Z"
+    }
+   },
+   "presence": {
+    "score": 3,
+    "reason": "Own site http://www.surftunnel.lk/ works on a phone, but the funnel probe found no WhatsApp, phone, engine or dated form within one tap.",
+    "criteria": [
+     "no_booking"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Surftunnel+Beach+Resort/data=!4m10!3m9!1s0x3ae115002d5dd871:0xc2d4635281435414!5m2!4m1!1i2!8m2!3d5.9613125!4d80.3978125!16s%2Fg%2F11wmtwyb6h!19sChIJcdhdLQAV4ToRFFRDgVJj1MI",
+     "fetched_at": "2026-10-26T12:44:09.579Z",
+     "note": "Google Maps place page: Surftunnel Beach Resort"
+    },
+    {
+     "source_url": "http://www.surftunnel.lk/",
+     "fetched_at": "2026-10-26T12:51:56.253Z",
+     "note": "own site, headless mobile test: status 200, doc width 412px"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Hotel",
+    "rating": "5.0",
+    "listings_merged": [
+     "Surftunnel Beach Resort"
+    ]
+   }
+  },
+  {
+   "slug": "dihein-surf-hostel",
+   "name": "Dihein Surf Hostel",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9664036,
+    "lng": 80.3883931,
+    "address": "X98Q+H9R, Ahangama, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 163
+   },
+   "contact": {
+    "phone": "+94702700893",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Dihein+Surf+Hostel/data=!4m10!3m9!1s0x3ae115d04ef5cf9d:0x11d36c73a06e459!5m2!4m1!1i2!8m2!3d5.9664036!4d80.3883931!16s%2Fg%2F11pythwp3p!19sChIJnc_1TtAV4ToRWeQGOsc2HQE"
+   },
+   "existing_site": {
+    "url": "https://diheinvilla.hotelonia.com/",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": "2026",
+    "has_booking": true,
+    "funnel": {
+     "clicks_to_book": 2,
+     "primary_action": "engine",
+     "cta_above_fold": true,
+     "measured_at": "2026-10-26T12:54:37.874Z"
+    }
+   },
+   "presence": {
+    "score": 4,
+    "reason": "Own site https://diheinvilla.hotelonia.com/ is a 340-character template page with a booking engine (2 tap(s) to book) and little else.",
+    "criteria": [
+     "thin_content"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Dihein+Surf+Hostel/data=!4m10!3m9!1s0x3ae115d04ef5cf9d:0x11d36c73a06e459!5m2!4m1!1i2!8m2!3d5.9664036!4d80.3883931!16s%2Fg%2F11pythwp3p!19sChIJnc_1TtAV4ToRWeQGOsc2HQE",
+     "fetched_at": "2026-10-26T12:38:53.617Z",
+     "note": "Google Maps place page: Dihein Surf Hostel"
+    },
+    {
+     "source_url": "https://diheinvilla.hotelonia.com/",
+     "fetched_at": "2026-10-26T12:51:39.137Z",
+     "note": "own site, headless mobile test: status 200, doc width 412px"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Hostel",
+    "rating": "5.0",
+    "listings_merged": [
+     "Dihein Surf Hostel"
+    ]
+   }
+  },
+  {
+   "slug": "kusuma-s-lazyleft",
+   "name": "Kusuma's lazyleft",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9632891,
+    "lng": 80.3931791,
+    "address": "X97V+877, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 31
+   },
+   "contact": {
+    "phone": "+94763985851",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Kusuma%27s+lazyleft/data=!4m10!3m9!1s0x3ae114c1f08b09c9:0xf230c0dfd4a554e9!5m2!4m1!1i2!8m2!3d5.9632891!4d80.3931791!16s%2Fg%2F11f15c7vd7!19sChIJyQmL8MEU4ToR6VSl1N_AMPI"
+   },
+   "existing_site": {
+    "url": "https://kusumaslazyleft.hotelonia.com/",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": "2026",
+    "has_booking": true,
+    "funnel": {
+     "clicks_to_book": 2,
+     "primary_action": "engine",
+     "cta_above_fold": true,
+     "measured_at": "2026-10-26T12:54:16.033Z"
+    }
+   },
+   "presence": {
+    "score": 4,
+    "reason": "Own site https://kusumaslazyleft.hotelonia.com/ is a 386-character template page with a booking engine (2 tap(s) to book) and little else.",
+    "criteria": [
+     "thin_content",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Kusuma%27s+lazyleft/data=!4m10!3m9!1s0x3ae114c1f08b09c9:0xf230c0dfd4a554e9!5m2!4m1!1i2!8m2!3d5.9632891!4d80.3931791!16s%2Fg%2F11f15c7vd7!19sChIJyQmL8MEU4ToR6VSl1N_AMPI",
+     "fetched_at": "2026-10-26T12:37:57.992Z",
+     "note": "Google Maps place page: Kusuma's lazyleft"
+    },
+    {
+     "source_url": "https://kusumaslazyleft.hotelonia.com/",
+     "fetched_at": "2026-10-26T12:51:35.837Z",
+     "note": "own site, headless mobile test: status 200, doc width 412px"
+    }
+   ],
+   "surf_related_confidence": 0.5,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "3-star hotel",
+    "rating": "4.1",
+    "listings_merged": [
+     "Kusuma's lazyleft"
+    ]
+   }
+  },
+  {
+   "slug": "sundance-surf-camp",
+   "name": "Sundance Surf Camp",
+   "type": "surf_camp",
+   "location": {
+    "lat": 5.9618243,
+    "lng": 80.402093,
+    "address": "No 3, Kadabeddagama Gurubebila, Weligama 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 200
+   },
+   "contact": {
+    "phone": "+94719516021",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Sundance+Surf+Camp/data=!4m10!3m9!1s0x3ae114e70d6e60ab:0xabe6c85a59fa875a!5m2!4m1!1i2!8m2!3d5.9618243!4d80.402093!16s%2Fg%2F11dfgszrr9!19sChIJq2BuDecU4ToRWof6WVrI5qs"
+   },
+   "existing_site": {
+    "url": "https://sundancesurfcamp.hotelonia.com/",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": "2026",
+    "has_booking": true,
+    "funnel": {
+     "clicks_to_book": 2,
+     "primary_action": "engine",
+     "cta_above_fold": true,
+     "measured_at": "2026-10-26T12:54:59.482Z"
+    }
+   },
+   "presence": {
+    "score": 4,
+    "reason": "Own site https://sundancesurfcamp.hotelonia.com/ is a 298-character template page with a booking engine (2 tap(s) to book) and little else.",
+    "criteria": [
+     "thin_content",
+     "unclaimed_google_listing"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Sundance+Surf+Camp/data=!4m10!3m9!1s0x3ae114e70d6e60ab:0xabe6c85a59fa875a!5m2!4m1!1i2!8m2!3d5.9618243!4d80.402093!16s%2Fg%2F11dfgszrr9!19sChIJq2BuDecU4ToRWof6WVrI5qs",
+     "fetched_at": "2026-10-26T12:38:58.434Z",
+     "note": "Google Maps place page: Sundance Surf Camp"
+    },
+    {
+     "source_url": "https://sundancesurfcamp.hotelonia.com/",
+     "fetched_at": "2026-10-26T12:51:42.399Z",
+     "note": "own site, headless mobile test: status 200, doc width 412px"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Boarding house",
+    "rating": "4.8",
+    "listings_merged": [
+     "Sundance Surf Camp",
+     "SUNDANCE SURF - Double Room with Private Bathroom"
+    ]
+   }
+  },
+  {
+   "slug": "ohana-waves-surf-camp-sri-lanka",
+   "name": "Ohana WAVES Surf Camp Sri Lanka",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9648231,
+    "lng": 80.3863059,
+    "address": "denuwala, Matara Rd, Midigama 80650, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 33
+   },
+   "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Ohana+WAVES+Surf+Camp+Sri+Lanka/data=!4m7!3m6!1s0x3ae115679d7cf4f7:0x8ba9bc59c8ff471!8m2!3d5.9648231!4d80.3863059!16s%2Fg%2F11ytg69mgs!19sChIJ9_R8nWcV4ToRcfSPnMWbugg"
+   },
+   "existing_site": {
+    "url": "https://ohanasurfing.com/",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": "2026",
+    "has_booking": true,
+    "funnel": {
+     "clicks_to_book": 1,
+     "primary_action": "whatsapp",
+     "cta_above_fold": true,
+     "measured_at": "2026-10-26T12:59:46.799Z"
+    }
+   },
+   "presence": {
+    "score": 5,
+    "reason": "Own mobile site https://ohanasurfing.com/ with a booking path 1 tap(s) from the landing page (whatsapp).",
+    "criteria": []
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Ohana+WAVES+Surf+Camp+Sri+Lanka/data=!4m7!3m6!1s0x3ae115679d7cf4f7:0x8ba9bc59c8ff471!8m2!3d5.9648231!4d80.3863059!16s%2Fg%2F11ytg69mgs!19sChIJ9_R8nWcV4ToRcfSPnMWbugg",
+     "fetched_at": "2026-10-26T12:46:46.221Z",
+     "note": "Google Maps place page: Ohana WAVES Surf Camp Sri Lanka"
+    },
+    {
+     "source_url": "https://ohanasurfing.com/",
+     "fetched_at": "2026-10-26T12:52:08.864Z",
+     "note": "own site, headless mobile test: status 200, doc width 412px"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Surf school",
+    "rating": "5.0",
+    "listings_merged": [
+     "Ohana WAVES Surf Camp Sri Lanka"
+    ]
+   }
+  },
+  {
+   "slug": "island-surf-school-weligama",
+   "name": "Island Surf School",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9644114,
+    "lng": 80.3914032,
+    "address": "1, Weligama 80650, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 20
+   },
+   "contact": {
+    "phone": "+94724665987",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/ISLAND+SURF+SCHOOL+WELIGAMA+%5B+Near+Taprobane+Island/data=!4m7!3m6!1s0x8669ffad3e74d3cb:0x469142cdc6e581d0!8m2!3d5.9644114!4d80.3914032!16s%2Fg%2F11nj9nqyhn!19sChIJy9N0Pq3_aYYR0IHlxs1CkUY"
+   },
+   "existing_site": {
+    "url": "https://islandsurfschool.elrqweb.com/",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": "2026",
+    "has_booking": true,
+    "funnel": {
+     "clicks_to_book": 1,
+     "primary_action": "whatsapp",
+     "cta_above_fold": true,
+     "measured_at": "2026-10-26T13:02:43.189Z"
+    }
+   },
+   "presence": {
+    "score": 5,
+    "reason": "Own mobile site https://islandsurfschool.elrqweb.com/ with a booking path 1 tap(s) from the landing page (whatsapp).",
+    "criteria": []
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/ISLAND+SURF+SCHOOL+WELIGAMA+%5B+Near+Taprobane+Island/data=!4m7!3m6!1s0x8669ffad3e74d3cb:0x469142cdc6e581d0!8m2!3d5.9644114!4d80.3914032!16s%2Fg%2F11nj9nqyhn!19sChIJy9N0Pq3_aYYR0IHlxs1CkUY",
+     "fetched_at": "2026-10-26T12:50:03.935Z",
+     "note": "Google Maps place page: ISLAND SURF SCHOOL WELIGAMA [ Near Taprobane Island"
+    },
+    {
+     "source_url": "https://www.google.com/maps/place/Island+surf+school+coconut+beach/data=!4m7!3m6!1s0x3ae1151c012eedf3:0xa79f6538437392c8!8m2!3d5.9600394!4d80.4034063!16s%2Fg%2F11zxhb72v0!19sChIJ8-0uARwV4ToRyJJzQzhln6c",
+     "fetched_at": "2026-10-26T12:47:07.459Z",
+     "note": "Google Maps place page: Island surf school coconut beach"
+    },
+    {
+     "source_url": "https://islandsurfschool.elrqweb.com/",
+     "fetched_at": "2026-10-26T12:52:34.951Z",
+     "note": "own site, headless mobile test: status 200, doc width 412px"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Surf school",
+    "rating": "5.0",
+    "listings_merged": [
+     "ISLAND SURF SCHOOL WELIGAMA [ Near Taprobane Island",
+     "Island surf school coconut beach"
+    ]
+   }
+  },
+  {
+   "slug": "surfescape-sri-lanka",
+   "name": "Surfescape Sri Lanka (Ram's Surfing Beach)",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9628953,
+    "lng": 80.3940289,
+    "address": "Ram's Surfing Beach, Midigama 80650, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 36
+   },
+   "contact": {
+    "phone": "+94704433777",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": "https://www.instagram.com/thesurfescape/",
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Surfescape+Sri+Lanka/data=!4m10!3m9!1s0x3ae115d72723d583:0x2cc123b18a6f2b1a!5m2!4m1!1i2!8m2!3d5.9628953!4d80.3940289!16s%2Fg%2F11c3vrqz0f!19sChIJg9UjJ9cV4ToRGitvirEjwSw"
+   },
+   "existing_site": {
+    "url": "https://www.surfescape.com/destination/sri-lanka",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": "2026",
+    "has_booking": true,
+    "funnel": {
+     "clicks_to_book": 1,
+     "primary_action": "engine",
+     "cta_above_fold": true,
+     "measured_at": "2026-10-26T12:57:10.577Z"
+    }
+   },
+   "presence": {
+    "score": 5,
+    "reason": "Own mobile site https://www.surfescape.com/destinations/sri-lanka with a booking path 1 tap(s) from the landing page (engine).",
+    "criteria": []
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Surfescape+Sri+Lanka/data=!4m10!3m9!1s0x3ae115d72723d583:0x2cc123b18a6f2b1a!5m2!4m1!1i2!8m2!3d5.9628953!4d80.3940289!16s%2Fg%2F11c3vrqz0f!19sChIJg9UjJ9cV4ToRGitvirEjwSw",
+     "fetched_at": "2026-10-26T12:41:11.538Z",
+     "note": "Google Maps place page: Surfescape Sri Lanka"
+    },
+    {
+     "source_url": "https://www.google.com/maps/place/Ram%27s+Surfing+Beach/data=!4m10!3m9!1s0x3ae114c20155c3a9:0x2de1ad251065e828!5m2!4m1!1i2!8m2!3d5.962895!4d80.394029!16s%2Fg%2F11ytt81bp9!19sChIJqcNVAcIU4ToRKOhlECWt4S0",
+     "fetched_at": "2026-10-26T12:40:09.353Z",
+     "note": "Google Maps place page: Ram's Surfing Beach"
+    },
+    {
+     "source_url": "https://ie.hotels.com/ho3969886336",
+     "fetched_at": "2026-10-26T12:58:03Z",
+     "note": "web search: Property appears to now operate as 'Surfescape Sri Lanka': the same Hotels.com id (ho3969886336) shows as 'Ram's Surfing Beach' in some locales and 'Surfescape "
+    },
+    {
+     "source_url": "https://www.travelocity.com/es/Ahangama-Hoteles-Rams-Surfing-Beach.h124027698.Informacion-Hotel",
+     "fetched_at": "2026-10-26T12:58:03Z",
+     "note": "web search: Property appears to now operate as 'Surfescape Sri Lanka': the same Hotels.com id (ho3969886336) shows as 'Ram's Surfing Beach' in some locales and 'Surfescape "
+    },
+    {
+     "source_url": "https://hotels.cloudbeds.com/en/reservation/wh5zbS?currency=lkr",
+     "fetched_at": "2026-10-26T12:58:03Z",
+     "note": "web search: Property appears to now operate as 'Surfescape Sri Lanka': the same Hotels.com id (ho3969886336) shows as 'Ram's Surfing Beach' in some locales and 'Surfescape "
+    },
+    {
+     "source_url": "http://www.surfescape.com",
+     "fetched_at": "2026-10-26T12:58:03Z",
+     "note": "web search: Property appears to now operate as 'Surfescape Sri Lanka': the same Hotels.com id (ho3969886336) shows as 'Ram's Surfing Beach' in some locales and 'Surfescape "
+    },
+    {
+     "source_url": "https://www.surfescape.com/destination/sri-lanka",
+     "fetched_at": "2026-10-26T12:51:49.414Z",
+     "note": "own site, headless mobile test: status 200, doc width 412px"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Hotel",
+    "rating": "4.3",
+    "listings_merged": [
+     "Surfescape Sri Lanka",
+     "Ram's Surfing Beach"
+    ]
+   }
+  },
+  {
+   "slug": "tiger-villa-and-shaggy-s-surf-school",
+   "name": "Tiger Villa and Shaggy´s Surf School",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.9629853,
+    "lng": 80.3957051,
+    "address": "Maha Badu Watta Midigama, 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 97
+   },
+   "contact": {
+    "phone": "+94764892773",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Tiger+Villa+and+Shaggy%C2%B4s+Surf+School/data=!4m10!3m9!1s0x3ae114c270bf73cb:0xb60c1b4310fa228c!5m2!4m1!1i2!8m2!3d5.9629853!4d80.3957051!16s%2Fg%2F11gg942td1!19sChIJy3O_cMIU4ToRjCL6EEMbDLY"
+   },
+   "existing_site": {
+    "url": "https://tigervilla.wixsite.com/tigervilla",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": null,
+    "has_booking": true,
+    "funnel": {
+     "clicks_to_book": 2,
+     "primary_action": "engine",
+     "cta_above_fold": false,
+     "measured_at": "2026-10-26T13:01:57.353Z"
+    }
+   },
+   "presence": {
+    "score": 5,
+    "reason": "Own mobile site https://tigervilla.wixsite.com/tigervilla with a booking path 2 tap(s) from the landing page (engine).",
+    "criteria": [
+     "no_cta_above_fold"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Tiger+Villa+and+Shaggy%C2%B4s+Surf+School/data=!4m10!3m9!1s0x3ae114c270bf73cb:0xb60c1b4310fa228c!5m2!4m1!1i2!8m2!3d5.9629853!4d80.3957051!16s%2Fg%2F11gg942td1!19sChIJy3O_cMIU4ToRjCL6EEMbDLY",
+     "fetched_at": "2026-10-26T12:48:19.359Z",
+     "note": "Google Maps place page: Tiger Villa and Shaggy´s Surf School"
+    },
+    {
+     "source_url": "https://tigervilla.wixsite.com/tigervilla",
+     "fetched_at": "2026-10-26T12:52:21.176Z",
+     "note": "own site, headless mobile test: status 200, doc width 320px"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Hotel",
+    "rating": "4.6",
+    "listings_merged": [
+     "Tiger Villa and Shaggy´s Surf School",
+     "Tiger Villa - Standard Double Room With Fan"
+    ]
+   }
+  },
+  {
+   "slug": "plantation-surf-inn-restaurant",
+   "name": "Plantation Surf Inn & Restaurant - Midigama",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9618866,
+    "lng": 80.3979232,
+    "address": "87 Miles Post, Midigama 80650, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 90
+   },
+   "contact": {
+    "phone": "+94776438912",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Plantation+Surf+Inn+%26+Restaurant+-+Midigama/data=!4m10!3m9!1s0x3ae114c26e97c451:0x86e7719915ffed3f!5m2!4m1!1i2!8m2!3d5.9618866!4d80.3979232!16s%2Fg%2F1ptzn40x4!19sChIJUcSXbsIU4ToRP-3_FZlx54Y"
+   },
+   "existing_site": {
+    "url": "https://www.midigamaplantationsurfinn.com/",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": null,
+    "has_booking": true,
+    "funnel": {
+     "clicks_to_book": 1,
+     "primary_action": "engine",
+     "cta_above_fold": true,
+     "measured_at": "2026-10-26T13:02:31.581Z"
+    }
+   },
+   "presence": {
+    "score": 5,
+    "reason": "Own mobile site https://www.midigamaplantationsurfinn.com/ with a booking path 1 tap(s) from the landing page (engine).",
+    "criteria": []
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Plantation+Surf+Inn+%26+Restaurant+-+Midigama/data=!4m10!3m9!1s0x3ae114c26e97c451:0x86e7719915ffed3f!5m2!4m1!1i2!8m2!3d5.9618866!4d80.3979232!16s%2Fg%2F1ptzn40x4!19sChIJUcSXbsIU4ToRP-3_FZlx54Y",
+     "fetched_at": "2026-10-26T12:49:26.464Z",
+     "note": "Google Maps place page: Plantation Surf Inn & Restaurant - Midigama"
+    },
+    {
+     "source_url": "https://www.midigamaplantationsurfinn.com/",
+     "fetched_at": "2026-10-26T12:52:28.465Z",
+     "note": "own site, headless mobile test: status 200, doc width 412px"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "1-star hotel",
+    "rating": "4.8",
+    "listings_merged": [
+     "Plantation Surf Inn & Restaurant - Midigama"
+    ]
+   }
+  },
+  {
+   "slug": "cocoplant-surf-inn-surf-camp-sri-lanka",
+   "name": "Cocoplant Surf Inn & Surf Camp",
+   "type": "surf_camp",
+   "location": {
+    "lat": 5.9612024,
+    "lng": 80.4000417,
+    "address": "A2 Road IVILLA WATHTHA, MIDIGAMA 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 87
+   },
+   "contact": {
+    "phone": "+94713205597",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Cocoplant+Surf+Inn+%26+Surf+Camp+Sri+Lanka/data=!4m10!3m9!1s0x3ae114e7c35efca1:0xf48dc3192be24a6d!5m2!4m1!1i2!8m2!3d5.9612024!4d80.4000417!16s%2Fg%2F11bx9p886k!19sChIJofxew-cU4ToRbUriKxnDjfQ"
+   },
+   "existing_site": {
+    "url": "https://cocoplantsurfinn.com/",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": null,
+    "has_booking": true,
+    "funnel": {
+     "clicks_to_book": 1,
+     "primary_action": "engine",
+     "cta_above_fold": false,
+     "measured_at": "2026-10-26T12:57:39.401Z"
+    }
+   },
+   "presence": {
+    "score": 5,
+    "reason": "Own mobile site https://www.cocoplantsurfinn.com/ with a booking path 1 tap(s) from the landing page (engine).",
+    "criteria": [
+     "no_cta_above_fold"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Cocoplant+Surf+Inn+%26+Surf+Camp+Sri+Lanka/data=!4m10!3m9!1s0x3ae114e7c35efca1:0xf48dc3192be24a6d!5m2!4m1!1i2!8m2!3d5.9612024!4d80.4000417!16s%2Fg%2F11bx9p886k!19sChIJofxew-cU4ToRbUriKxnDjfQ",
+     "fetched_at": "2026-10-26T12:49:16.008Z",
+     "note": "Google Maps place page: Cocoplant Surf Inn & Surf Camp Sri Lanka"
+    },
+    {
+     "source_url": "https://www.google.com/maps/place/Cocoplant+Surf+School/data=!4m7!3m6!1s0x3ae11512a9400d89:0xf8ec8775a20d97de!8m2!3d5.961141!4d80.4000237!16s%2Fg%2F11zy6dy0rl!19sChIJiQ1AqRIV4ToR3pcNonWH7Pg",
+     "fetched_at": "2026-10-26T12:42:24.956Z",
+     "note": "Google Maps place page: Cocoplant Surf School"
+    },
+    {
+     "source_url": "https://cocoplantsurfinn.com/",
+     "fetched_at": "2026-10-26T12:52:25.001Z",
+     "note": "own site, headless mobile test: status 200, doc width 412px"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "3-star hotel",
+    "rating": "4.2",
+    "listings_merged": [
+     "Cocoplant Surf Inn & Surf Camp Sri Lanka",
+     "Cocoplant Surf School"
+    ]
+   }
+  },
+  {
+   "slug": "jamu-surf-lodge",
+   "name": "Jamu Surf Lodge",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9609181,
+    "lng": 80.402902,
+    "address": "No 44, Kadebeddagama Gurubebila, Weligama 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 123
+   },
+   "contact": {
+    "phone": "+94764871812",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Jamu+Surf+Lodge/data=!4m10!3m9!1s0x3ae114e711b2068b:0x9314b8e24919ed16!5m2!4m1!1i2!8m2!3d5.9609181!4d80.402902!16s%2Fg%2F11g8v2g3rg!19sChIJiwayEecU4ToRFu0ZSeK4FJM"
+   },
+   "existing_site": {
+    "url": "http://www.jamusurflodge.com/",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": null,
+    "has_booking": true,
+    "funnel": {
+     "clicks_to_book": 1,
+     "primary_action": "engine",
+     "cta_above_fold": true,
+     "measured_at": "2026-10-26T12:53:51.174Z"
+    }
+   },
+   "presence": {
+    "score": 5,
+    "reason": "Own mobile site https://www.jamusurflodge.com/ with a booking path 1 tap(s) from the landing page (engine).",
+    "criteria": []
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Jamu+Surf+Lodge/data=!4m10!3m9!1s0x3ae114e711b2068b:0x9314b8e24919ed16!5m2!4m1!1i2!8m2!3d5.9609181!4d80.402902!16s%2Fg%2F11g8v2g3rg!19sChIJiwayEecU4ToRFu0ZSeK4FJM",
+     "fetched_at": "2026-10-26T12:35:29.871Z",
+     "note": "Google Maps place page: Jamu Surf Lodge"
+    },
+    {
+     "source_url": "http://www.jamusurflodge.com/",
+     "fetched_at": "2026-10-26T12:51:31.382Z",
+     "note": "own site, headless mobile test: status 200, doc width 412px"
+    }
+   ],
+   "surf_related_confidence": 0.7,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "2-star hotel",
+    "rating": "4.8",
+    "listings_merged": [
+     "Jamu Surf Lodge"
+    ]
+   }
+  },
+  {
+   "slug": "lion-s-rest-hotel-surf-school",
+   "name": "Lion's Rest Hotel & Surf School",
+   "type": "surf_school",
+   "location": {
+    "lat": 5.960422,
+    "lng": 80.4035305,
+    "address": "5a Kadabeddegama, Weligama 81700, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 104
+   },
+   "contact": {
+    "phone": "+94769117730",
+    "whatsapp": null,
+    "email": null
+   },
+   "socials": {
+    "instagram": null,
+    "facebook": null,
+    "tripadvisor": null,
+    "google_maps": "https://www.google.com/maps/place/Lion%27s+Rest+Hotel+%26+Surf+School/data=!4m10!3m9!1s0x3ae114e71f120dc7:0x71fdb43c91c7ea0a!5m2!4m1!1i2!8m2!3d5.960422!4d80.4035305!16s%2Fg%2F1pp2vj0zc!19sChIJxw0SH-cU4ToRCurHkTy0_XE"
+   },
+   "existing_site": {
+    "url": "https://lions-rest.com/",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": "2026",
+    "has_booking": true,
+    "funnel": {
+     "clicks_to_book": 1,
+     "primary_action": "engine",
+     "cta_above_fold": true,
+     "measured_at": "2026-10-26T13:00:49.309Z"
+    }
+   },
+   "presence": {
+    "score": 5,
+    "reason": "Own mobile site https://lions-rest.com/ with a booking path 1 tap(s) from the landing page (engine).",
+    "criteria": []
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Lion%27s+Rest+Hotel+%26+Surf+School/data=!4m10!3m9!1s0x3ae114e71f120dc7:0x71fdb43c91c7ea0a!5m2!4m1!1i2!8m2!3d5.960422!4d80.4035305!16s%2Fg%2F1pp2vj0zc!19sChIJxw0SH-cU4ToRCurHkTy0_XE",
+     "fetched_at": "2026-10-26T12:46:56.609Z",
+     "note": "Google Maps place page: Lion's Rest Hotel & Surf School"
+    },
+    {
+     "source_url": "https://lions-rest.com/",
+     "fetched_at": "2026-10-26T12:52:12.401Z",
+     "note": "own site, headless mobile test: status 200, doc width 412px"
+    }
+   ],
+   "surf_related_confidence": 0.9,
+   "languages_seen": [
+    "en"
+   ],
+   "google": {
+    "category": "Hotel",
+    "rating": "4.8",
+    "listings_merged": [
+     "Lion's Rest Hotel & Surf School"
+    ]
+   }
+  }
+ ]
+}

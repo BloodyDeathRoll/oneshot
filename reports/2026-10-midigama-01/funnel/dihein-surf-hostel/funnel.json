@@ -1,0 +1,296 @@
+{
+  "tool": "funnel.mjs",
+  "version": "0.2.0",
+  "measured_at": "2026-10-26T12:54:37.874Z",
+  "start_url": "https://diheinvilla.hotelonia.com/",
+  "whitelabel_engine": true,
+  "final_landing_url": "https://diheinvilla.hotelonia.com/",
+  "landing_status": 200,
+  "landing_error": null,
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "viewport_meta": true,
+  "landing_text_chars": 340,
+  "clicks_to_book": 2,
+  "primary_action": {
+    "class": "engine",
+    "href": "https://www.booking.com/hotel/lk/dihein-villa.html",
+    "label": "redirect from https://diheinvilla.hotelonia.com/book",
+    "page": "https://diheinvilla.hotelonia.com/book"
+  },
+  "hero_action": {
+    "label": "BOOK NOW",
+    "class": "engine",
+    "href": "https://www.booking.com/hotel/lk/dihein-villa.html",
+    "flow_page": "https://diheinvilla.hotelonia.com/book",
+    "clicks_to_flow": 1
+  },
+  "cta_above_fold": true,
+  "terminal_above_fold": false,
+  "any_action_above_fold": true,
+  "landing_actions": [
+    {
+      "class": "book_link",
+      "terminal": false,
+      "href": "https://diheinvilla.hotelonia.com/book",
+      "label": "BOOK NOW",
+      "tag": "a",
+      "top": 352,
+      "height": 44,
+      "width": 200,
+      "above_fold": true,
+      "tap_target_ok": true
+    },
+    {
+      "class": "book_link",
+      "terminal": false,
+      "href": "https://diheinvilla.hotelonia.com/book",
+      "label": "BOOK NOW",
+      "tag": "a",
+      "top": 386,
+      "height": 28,
+      "width": 142,
+      "above_fold": true,
+      "tap_target_ok": false
+    },
+    {
+      "class": "contact_link",
+      "terminal": false,
+      "href": "https://diheinvilla.hotelonia.com/contact/index.html",
+      "label": "Contact",
+      "tag": "a",
+      "top": 4041,
+      "height": 17,
+      "width": 51,
+      "above_fold": false,
+      "tap_target_ok": false
+    }
+  ],
+  "action_classes_seen": [
+    "book_link",
+    "contact_link",
+    "engine",
+    "form"
+  ],
+  "pages_crawled": 5,
+  "pages_with_errors": [],
+  "console_errors": [
+    "Provider's accounts list is empty."
+  ],
+  "pages": [
+    {
+      "url": "https://diheinvilla.hotelonia.com/",
+      "depth": 0,
+      "via": null,
+      "status": 200,
+      "final_url": "https://diheinvilla.hotelonia.com/",
+      "title": "Dihein Villa in Ahangama - Welcome",
+      "viewport_meta": true,
+      "text_chars": 340,
+      "actions": [
+        {
+          "class": "book_link",
+          "terminal": false,
+          "href": "https://diheinvilla.hotelonia.com/book",
+          "label": "BOOK NOW",
+          "tag": "a",
+          "top": 352,
+          "height": 44,
+          "width": 200,
+          "above_fold": true,
+          "tap_target_ok": true
+        },
+        {
+          "class": "book_link",
+          "terminal": false,
+          "href": "https://diheinvilla.hotelonia.com/book",
+          "label": "BOOK NOW",
+          "tag": "a",
+          "top": 386,
+          "height": 28,
+          "width": 142,
+          "above_fold": true,
+          "tap_target_ok": false
+        },
+        {
+          "class": "contact_link",
+          "terminal": false,
+          "href": "https://diheinvilla.hotelonia.com/contact/index.html",
+          "label": "Contact",
+          "tag": "a",
+          "top": 4041,
+          "height": 17,
+          "width": 51,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 5,
+      "error": null,
+      "screenshot": "landing-mobile.png",
+      "fold_screenshot": "landing-fold.png"
+    },
+    {
+      "url": "https://diheinvilla.hotelonia.com/index.php",
+      "depth": 1,
+      "via": "https://diheinvilla.hotelonia.com/",
+      "status": 200,
+      "final_url": "https://diheinvilla.hotelonia.com/index.php",
+      "title": "Dihein Villa in Ahangama - Welcome",
+      "viewport_meta": true,
+      "text_chars": 340,
+      "actions": [
+        {
+          "class": "book_link",
+          "terminal": false,
+          "href": "https://diheinvilla.hotelonia.com/book",
+          "label": "BOOK NOW",
+          "tag": "a",
+          "top": 352,
+          "height": 44,
+          "width": 200,
+          "above_fold": true,
+          "tap_target_ok": true
+        },
+        {
+          "class": "book_link",
+          "terminal": false,
+          "href": "https://diheinvilla.hotelonia.com/book",
+          "label": "BOOK NOW",
+          "tag": "a",
+          "top": 386,
+          "height": 28,
+          "width": 142,
+          "above_fold": true,
+          "tap_target_ok": false
+        },
+        {
+          "class": "contact_link",
+          "terminal": false,
+          "href": "https://diheinvilla.hotelonia.com/contact/index.html",
+          "label": "Contact",
+          "tag": "a",
+          "top": 4041,
+          "height": 17,
+          "width": 51,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 4,
+      "error": null
+    },
+    {
+      "url": "https://diheinvilla.hotelonia.com/book",
+      "depth": 1,
+      "via": "https://diheinvilla.hotelonia.com/",
+      "status": 202,
+      "final_url": "https://www.booking.com/hotel/lk/dihein-villa.html",
+      "title": null,
+      "viewport_meta": false,
+      "text_chars": 0,
+      "actions": [
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://www.booking.com/hotel/lk/dihein-villa.html",
+          "label": "redirect from https://diheinvilla.hotelonia.com/book",
+          "tag": "redirect",
+          "top": 0,
+          "above_fold": true
+        }
+      ],
+      "internal_links": 0,
+      "error": null,
+      "handoff": "https://www.booking.com/hotel/lk/dihein-villa.html"
+    },
+    {
+      "url": "https://diheinvilla.hotelonia.com/contact/index.html",
+      "depth": 1,
+      "via": "https://diheinvilla.hotelonia.com/",
+      "status": 200,
+      "final_url": "https://diheinvilla.hotelonia.com/contact/index.html",
+      "title": "Contact",
+      "viewport_meta": true,
+      "text_chars": 629,
+      "actions": [
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://secure.booking.com/help",
+          "label": "https://secure.booking.com/help",
+          "tag": "a",
+          "top": 381,
+          "height": 17,
+          "width": 209,
+          "above_fold": true,
+          "tap_target_ok": false
+        },
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://hotelonia.com/join/",
+          "label": "create your partner account here.",
+          "tag": "a",
+          "top": 581,
+          "height": 17,
+          "width": 216,
+          "above_fold": true,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 1,
+      "error": null
+    },
+    {
+      "url": "https://diheinvilla.hotelonia.com/login/index.html",
+      "depth": 1,
+      "via": "https://diheinvilla.hotelonia.com/",
+      "status": 200,
+      "final_url": "https://diheinvilla.hotelonia.com/login/index.html",
+      "title": "Login",
+      "viewport_meta": true,
+      "text_chars": 194,
+      "actions": [
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://hotelonia.com/join/",
+          "label": "Create One",
+          "tag": "a",
+          "top": 498,
+          "height": 17,
+          "width": 73,
+          "above_fold": true,
+          "tap_target_ok": false
+        },
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://hotelonia.com/cancellation/",
+          "label": "Mark as closed, non-existent, or duplicate",
+          "tag": "a",
+          "top": 564,
+          "height": 17,
+          "width": 271,
+          "above_fold": true,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (3 fields)",
+          "tag": "form",
+          "top": 216,
+          "above_fold": true
+        }
+      ],
+      "internal_links": 1,
+      "error": null
+    }
+  ]
+}
