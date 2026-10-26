@@ -14,4 +14,4 @@ Open (human decisions):
 - Owner name conflicts: "Baba" Pasindu Delgodage (2021 press) vs the Dodangoda family (own site).
 
 Audit (`dossier/cheeky-monkey/audit.json` + `audit.md`): scope `site`, 14 findings (3 high, 10 medium, 1 low), 10 pitch points. Lead with: no booking action on any of the 8 menu pages (F1); a "rooms aren't bookable" banner while Booking.com sells them (F3); prices hidden on unlinked pages (F2). Recommended primary action `engine` (Booking.com), 1 tap; secondary tel + email.
-- For the harvester (not yet in the dossier): "Reservation Enquiry" is a raw shortcode, not a Booking.com link; the packages page has 19 PayHere "Book Now" payment links; an "ADD A/C" row (USD 50/week) and extra-room B&B rates of 22/25/27; Facebook also shows "Always open".
+- Harvester follow-up (same day) added the auditor's facts to the dossier: enquiry shortcode is not a link, 16 PayHere links, A/C add-on and extra-room rates (US$ 20 vs 22$ conflict on the non-A/C double), Facebook "Always open".
