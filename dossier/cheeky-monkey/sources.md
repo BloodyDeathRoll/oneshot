@@ -10,7 +10,7 @@ Fetched 2026-10-26 (UTC, 19:00–19:40), headless Chromium (playwright) at 1440�
 | https://cheekymonkeymidigama.com/aboutus/ | About text: founded by Baba, run by the Dodangoda family, Baba's Surf Shop alongside; 12 images | Names of staff/instructors |
 | https://cheekymonkeymidigama.com/surf-shop-facilities/ | Shop (sale, rental, clothes, accessories), "400 boards for rent", own-brand boards shaped in Bali, repairs, scooter and taxi, events, café, gym and yoga; 19 images | Prices |
 | https://cheekymonkeymidigama.com/contact/ | Address "Thanahena waththa, Midigama East, Midigama / Ahangama", phone, email | A form: it prints raw shortcodes `[contact-form-7 id=”117″]` |
-| https://cheekymonkeymidigama.com/our-services/ (orphan page, modified 2021-01-05) | Lesson prices (USD 20 per person for 1.5 h; group max 6 USD 100), 7-day program, "ISA certified" claim, rooftop yoga, shop stock, sister shop at Surf Swell Hostel, Wednesday parties, Booking.com "Reservation Enquiry" link | Current prices |
+| https://cheekymonkeymidigama.com/our-services/ (orphan page, modified 2021-01-05) | Lesson prices (USD 20 per person for 1.5 h; group max 6 USD 100), 7-day program, "ISA certified" claim, rooftop yoga, shop stock, sister shop at Surf Swell Hostel, Wednesday parties. "Reservation Enquiry!!" is an unrendered `[button2 … linkbox=”url:…booking.com…”]` shortcode printed as text: **not a link** (corrected in the follow-up pass) | Current prices, a working enquiry button |
 | https://cheekymonkeymidigama.com/surf-camp-packages-sri-lanka/ (orphan, modified 2021-02-12) | 4 weekly packages with contents and 12 prices (USD 250–400 per person per week), 2021 room descriptions, airport transfer USD 65 / 130, lake tour USD 5 | — |
 | https://cheekymonkeymidigama.com/booking-surf-camp/ (orphan, modified 2021-10-17) | B&B rates USD 20 / 25 / 27 (unit not stated) | A form: raw `[ninja_form id=”2″]` |
 | https://cheekymonkeymidigama.com/about-us/ (older About, modified 2025-05-02) | "close to the main point breaks", "180° sea view" | — |
@@ -65,6 +65,15 @@ Contact sheets for every video: `assets/video/vid-00N-sheet.jpg`. All looked at;
 
 ## Web searches (WebSearch)
 "Cheeky Monkey" Midigama surf instagram · "Cheeky Monkey" Midigama surf camp booking.com OR agoda OR airbnb OR tripadvisor · "Baba's surf shop" OR "Baba surf shop" Midigama · cheekymonkeymidigama OR "cheeky monkey midigama" instagram OR facebook · tripadvisor "Cheeky Monkey" Midigama · site:instagram.com cheeky monkey midigama · site:facebook.com "Cheeky Monkey" Midigama · "Cheeky Monkey" Midigama surf lessons price board rental · agoda "Cheeky Monkey" Midigama OR Weligama hotel. None surfaced the own site or socials; they were found through the TRAVSOME YouTube description (Instagram) → Facebook page → website.
+
+## Follow-up pass (2026-10-26 20:41 UTC, on the auditor's findings; each one re-checked live)
+
+| URL | Yielded | Did not yield |
+|---|---|---|
+| https://cheekymonkeymidigama.com/our-services/ (curl, raw HTML) | Confirmed: the "Reservation Enquiry!!" button is the raw shortcode `[button2 class=”btn-line btn-big mt10″ linkbox=”url:https%3A%2F%2Fwww.booking.com%2Fhotel%2Flk%2Fcheeky-monkey.en-gb.html\|title:Request%20Now\|target:%20_blank\|”]`; 0 `<a href>` to booking.com on the page. Dossier corrected (`booking.path.note`, new `booking.site_reservation_enquiry`) | — |
+| https://cheekymonkeymidigama.com/surf-camp-packages-sri-lanka/ (curl, raw HTML) | 19 "Book Now" buttons → 16 distinct `https://www.payhere.lk/pay/…` links, mapped to their rows and columns (`booking.payhere_links`). They are JS-only `<button onclick=window.location.href=…>`. "ADD A/C (1 Person) USD 50 Per Week" in all 4 package columns (one shared link). "Book an extra room for friends and family without package": Double Room 22$, Double Room with A/C 25$, Tripple Room with A/C 27$ | — |
+| https://www.payhere.lk/pay/… (16 links) | **Not opened.** The auditor reports a Cloudflare 403; not retried, by rule | Whether the links work; what they charge |
+| https://www.facebook.com/cheekymonkeysrilanka/about_contact_and_basic_info | Logged-out details: Hours "Always open", address with postcode "…Ahangama, Sri Lanka, 80650", phone, email, website, $$ (`facebook_hours`, added to the status / hours contradictions) | — |
 
 ## Not attempted / blocked
 - Google review texts: sign-in wall in the limited view. Not bypassed.

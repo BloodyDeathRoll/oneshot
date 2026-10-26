@@ -8,7 +8,7 @@
   "value": "seasonal: Midigama shop, rooms and restaurant closed for low season; team currently in Arugam Bay",
   "source_url": "https://www.facebook.com/cheekymonkeysrilanka/",
   "fetched_at": "2026-10-26T19:10:53Z",
-  "note": "verbatim Facebook intro: \"Midigama shop, rooms & restaurant closed for low season. Catch us now in Arugam Bay – surf shop open daily and surf lessons available!\" (intro text is undated). The site's banner (front page modified 2025-05-14) still says the rooms are being renovated and are not bookable. Yet Booking.com is live with 45 reviews from stays Sept 2025 – Sept 2026 and room photos uploaded 2026-09-15, and the Instagram/Facebook posted from the shop on 7, 9, 13 and 18 Oct 2026. Not blocking; the writer should not state current opening status as fact."
+  "note": "verbatim Facebook intro: \"Midigama shop, rooms & restaurant closed for low season. Catch us now in Arugam Bay – surf shop open daily and surf lessons available!\" (intro text is undated). The site's banner (front page modified 2025-05-14) still says the rooms are being renovated and are not bookable. Yet Booking.com is live with 45 reviews from stays Sept 2025 – Sept 2026 and room photos uploaded 2026-09-15, and the Instagram/Facebook posted from the shop on 7, 9, 13 and 18 Oct 2026. Not blocking; the writer should not state current opening status as fact. Facebook's own details also say 'Always open' (Hours), contradicting its intro (see facebook_hours)."
  },
  "business": {
   "name": {
@@ -261,7 +261,7 @@
    "value": "engine",
    "source_url": "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html",
    "fetched_at": "2026-10-26T19:03:37Z",
-   "note": "rooms are sold on Booking.com (live, 45 reviews in the last 13 months); the owner's 'Reservation Enquiry' button links to the same Booking.com page (our-services). Lessons, rentals and the shop: walk-in or contact — the site says \"Feel free to just pop by and book your surf lesson, surf camp or just for hanging out!\" and \"Just come over and have a look or write as a message in Instagram or via Mail.\" Phone and email are published; no WhatsApp."
+   "note": "rooms are sold on Booking.com (live, 45 reviews in the last 13 months), which is a booking path in its own right. The owner's 'Reservation Enquiry' on /our-services/ is NOT a working link: it is a raw WPBakery shortcode printed as text ([button2 … linkbox=”url:https%3A%2F%2Fwww.booking.com%2Fhotel%2Flk%2Fcheeky-monkey.en-gb.html|title:Request%20Now|…”]) and the page has no <a href> to Booking.com (see booking.site_reservation_enquiry). Lessons, rentals and the shop: walk-in or contact — the site says \"Feel free to just pop by and book your surf lesson, surf camp or just for hanging out!\" and \"Just come over and have a look or write as a message in Instagram or via Mail.\" Phone and email are published; no WhatsApp. The packages page also has PayHere 'Book Now' payment buttons (booking.payhere_links)."
   },
   "engine_url": {
    "value": "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html",
@@ -294,19 +294,188 @@
   "reply_time_hint": {
    "value": null,
    "gap": "not published"
-  }
+  },
+  "site_reservation_enquiry": {
+   "value": "broken: unrendered [button2] shortcode, not a link",
+   "source_url": "https://cheekymonkeymidigama.com/our-services/",
+   "fetched_at": "2026-10-26T20:41:09Z",
+   "raw": "[button2 class=”btn-line btn-big mt10″ linkbox=”url:https%3A%2F%2Fwww.booking.com%2Fhotel%2Flk%2Fcheeky-monkey.en-gb.html|title:Request%20Now|target:%20_blank|”]",
+   "note": "verified in the page HTML: the shortcode is printed as text under 'Reservation Enquiry!!'; 0 anchors to booking.com on the page. Its intended target was the Booking.com listing."
+  },
+  "payhere_links": {
+   "value": [
+    {
+     "label": "Full Surf Lesson Package — PRIVATE ROOM (1 Person)",
+     "price_shown": 400,
+     "currency": "USD",
+     "unit": "per week",
+     "button": "Book Now",
+     "url": "https://www.payhere.lk/pay/o6fad45"
+    },
+    {
+     "label": "Moderate Surf lesson Or Surf spots guiding Package — PRIVATE ROOM (1 Person)",
+     "price_shown": 350,
+     "currency": "USD",
+     "unit": "per week",
+     "button": "Book Now",
+     "url": "https://www.payhere.lk/pay/o90d0b0d4"
+    },
+    {
+     "label": "Yoga and Surf Lesson Package — PRIVATE ROOM (1 Person)",
+     "price_shown": 300,
+     "currency": "USD",
+     "unit": "per week",
+     "button": "Book Now",
+     "url": "https://www.payhere.lk/pay/oe7d78042"
+    },
+    {
+     "label": "Surf Board Rental Package — PRIVATE ROOM (1 Person)",
+     "price_shown": 290,
+     "currency": "USD",
+     "unit": "per week",
+     "button": "Book Now",
+     "url": "https://www.payhere.lk/pay/o4e0be998"
+    },
+    {
+     "label": "Full Surf Lesson Package — DOUBLE ROOM SHARED (1 Person)",
+     "price_shown": 300,
+     "currency": "USD",
+     "unit": "per week",
+     "button": "Book Now",
+     "url": "https://www.payhere.lk/pay/o390cd90e"
+    },
+    {
+     "label": "Moderate Surf lesson Or Surf spots guiding Package — DOUBLE ROOM SHARED (1 Person)",
+     "price_shown": 295,
+     "currency": "USD",
+     "unit": "per week",
+     "button": "Book Now",
+     "url": "https://www.payhere.lk/pay/oa00588b4"
+    },
+    {
+     "label": "Yoga and Surf Lesson Package — DOUBLE ROOM SHARED (1 Person)",
+     "price_shown": 280,
+     "currency": "USD",
+     "unit": "per week",
+     "button": "Book Now",
+     "url": "https://www.payhere.lk/pay/od702b822"
+    },
+    {
+     "label": "Surf Board Rental Package — DOUBLE ROOM SHARED (1 Person)",
+     "price_shown": 250,
+     "currency": "USD",
+     "unit": "per week",
+     "button": "Book Now",
+     "url": "https://www.payhere.lk/pay/o3e611d17"
+    },
+    {
+     "label": "Full Surf Lesson Package — TRIPPLE ROOM SHARED (1 Person)",
+     "price_shown": 300,
+     "currency": "USD",
+     "unit": "per week",
+     "button": "Book Now",
+     "url": "https://www.payhere.lk/pay/oa7684cad"
+    },
+    {
+     "label": "Moderate Surf lesson Or Surf spots guiding Package — TRIPPLE ROOM SHARED (1 Person)",
+     "price_shown": 280,
+     "currency": "USD",
+     "unit": "per week",
+     "button": "Book Now",
+     "url": "https://www.payhere.lk/pay/od06f7c3b"
+    },
+    {
+     "label": "Yoga and Surf Lesson Package — TRIPPLE ROOM SHARED (1 Person)",
+     "price_shown": 280,
+     "currency": "USD",
+     "unit": "per week",
+     "button": "Book Now",
+     "url": "https://www.payhere.lk/pay/o40d061aa"
+    },
+    {
+     "label": "Surf Board Rental Package — TRIPPLE ROOM SHARED (1 Person)",
+     "price_shown": 250,
+     "currency": "USD",
+     "unit": "per week",
+     "button": "Book Now",
+     "url": "https://www.payhere.lk/pay/o37d7513c"
+    },
+    {
+     "label": "Full Surf Lesson Package — ADD A/C (1 Person)",
+     "price_shown": 50,
+     "currency": "USD",
+     "unit": "per week",
+     "button": "Book Now",
+     "url": "https://www.payhere.lk/pay/o5710d8d9"
+    },
+    {
+     "label": "Moderate Surf lesson Or Surf spots guiding Package — ADD A/C (1 Person)",
+     "price_shown": 50,
+     "currency": "USD",
+     "unit": "per week",
+     "button": "Book Now",
+     "url": "https://www.payhere.lk/pay/o5710d8d9"
+    },
+    {
+     "label": "Yoga and Surf Lesson Package — ADD A/C (1 Person)",
+     "price_shown": 50,
+     "currency": "USD",
+     "unit": "per week",
+     "button": "Book Now",
+     "url": "https://www.payhere.lk/pay/o5710d8d9"
+    },
+    {
+     "label": "Surf Board Rental Package — ADD A/C (1 Person)",
+     "price_shown": 50,
+     "currency": "USD",
+     "unit": "per week",
+     "button": "Book Now",
+     "url": "https://www.payhere.lk/pay/o5710d8d9"
+    },
+    {
+     "label": "Extra room — Double Room",
+     "price_shown": 22,
+     "currency": "USD",
+     "unit": null,
+     "button": "Book Now",
+     "url": "https://www.payhere.lk/pay/o2017e84f"
+    },
+    {
+     "label": "Extra room — Double Room with A/C",
+     "price_shown": 25,
+     "currency": "USD",
+     "unit": null,
+     "button": "Book Now",
+     "url": "https://www.payhere.lk/pay/ob91eb9f5"
+    },
+    {
+     "label": "Extra room — Tripple Room with A/C",
+     "price_shown": 27,
+     "currency": "USD",
+     "unit": null,
+     "button": "Book Now",
+     "url": "https://www.payhere.lk/pay/oce198963"
+    }
+   ],
+   "source_url": "https://cheekymonkeymidigama.com/surf-camp-packages-sri-lanka/",
+   "fetched_at": "2026-10-26T20:41:09Z",
+   "note": "19 'Book Now' buttons on the packages page, 16 distinct PayHere (payhere.lk) payment links; the four ADD A/C buttons share one link (o5710d8d9). They are <button onclick=window.location.href='…'> elements, not <a> links, so they do nothing without JavaScript. The page loads the WordPress plugin payhere-payment-gateway 2.4.5. The PayHere pages themselves were NOT opened (the auditor got a Cloudflare 403 there; not retried): whether the links still work, and what amount/currency they charge, is unverified. The buttons sit on a page of the owner's site that the menu no longer links to (WordPress last modified 2021-02-12); published before the 2025 room renovation — the owner must confirm before go-live"
+  },
+  "direct_channels_note": "PayHere payment links published by the business on its packages page are a fourth channel (booking.payhere_links)."
  },
  "hours": [],
  "hours_note": {
   "value": null,
-  "gap": "surf-shop hours conflict: Instagram bio 'Surf shop 7am-6pm' (no days given); the shop's Google listing shows only 'Monday 8 am–7 pm' (no other day listed). Not recorded as opening hours until the owner confirms.",
+  "gap": "surf-shop hours conflict: Instagram bio 'Surf shop 7am-6pm' (no days given); the shop's Google listing shows only 'Monday 8 am–7 pm' (no other day listed). Facebook's details add 'Always open'. Not recorded as opening hours until the owner confirms.",
   "raw": [
    "Surf shop 7am-6pm (Instagram bio)",
-   "Monday 8 am–7 pm (Google, Baba's surfshop listing; no other days shown)"
+   "Monday 8 am–7 pm (Google, Baba's surfshop listing; no other days shown)",
+   "Always open (Facebook page details, Hours)"
   ],
   "sources": [
    "https://www.instagram.com/cheekymonkeysrilanka/",
-   "https://www.google.com/maps/place/Baba%27s+surfshop%2FCheeky+monky+midigama+guesthouse/data=!4m7!3m6!1s0x3ae114e83215af2f:0x5e7df1a573ccacda!8m2!3d5.9618292!4d80.3968473!16s%2Fg%2F11gd0fngjp!19sChIJL68VMugU4ToR2qzMc6XxfV4?hl=en"
+   "https://www.google.com/maps/place/Baba%27s+surfshop%2FCheeky+monky+midigama+guesthouse/data=!4m7!3m6!1s0x3ae114e83215af2f:0x5e7df1a573ccacda!8m2!3d5.9618292!4d80.3968473!16s%2Fg%2F11gd0fngjp!19sChIJL68VMugU4ToR2qzMc6XxfV4?hl=en",
+   "https://www.facebook.com/cheekymonkeysrilanka/about_contact_and_basic_info"
   ]
  },
  "stay_info": {
@@ -660,13 +829,79 @@
    "fetched_at": "2026-10-26T19:13:06Z"
   },
   {
+   "label": "Full Surf Lesson Package — ADD A/C (1 Person)",
+   "price": 50,
+   "currency": "USD",
+   "unit": "per week",
+   "note": "on a page of the owner's site that the menu no longer links to (WordPress last modified 2021-02-12); published before the 2025 room renovation — the owner must confirm before go-live",
+   "source_url": "https://cheekymonkeymidigama.com/surf-camp-packages-sri-lanka/",
+   "fetched_at": "2026-10-26T20:41:09Z"
+  },
+  {
+   "label": "Moderate Surf lesson Or Surf spots guiding Package — ADD A/C (1 Person)",
+   "price": 50,
+   "currency": "USD",
+   "unit": "per week",
+   "note": "on a page of the owner's site that the menu no longer links to (WordPress last modified 2021-02-12); published before the 2025 room renovation — the owner must confirm before go-live",
+   "source_url": "https://cheekymonkeymidigama.com/surf-camp-packages-sri-lanka/",
+   "fetched_at": "2026-10-26T20:41:09Z"
+  },
+  {
+   "label": "Yoga and Surf Lesson Package — ADD A/C (1 Person)",
+   "price": 50,
+   "currency": "USD",
+   "unit": "per week",
+   "note": "on a page of the owner's site that the menu no longer links to (WordPress last modified 2021-02-12); published before the 2025 room renovation — the owner must confirm before go-live",
+   "source_url": "https://cheekymonkeymidigama.com/surf-camp-packages-sri-lanka/",
+   "fetched_at": "2026-10-26T20:41:09Z"
+  },
+  {
+   "label": "Surf Board Rental Package — ADD A/C (1 Person)",
+   "price": 50,
+   "currency": "USD",
+   "unit": "per week",
+   "note": "on a page of the owner's site that the menu no longer links to (WordPress last modified 2021-02-12); published before the 2025 room renovation — the owner must confirm before go-live",
+   "source_url": "https://cheekymonkeymidigama.com/surf-camp-packages-sri-lanka/",
+   "fetched_at": "2026-10-26T20:41:09Z"
+  },
+  {
+   "label": "Extra room without package — Double Room",
+   "price": 22,
+   "currency": "USD",
+   "unit": null,
+   "raw": "with privat bathroom and breakfast, towels included 22$",
+   "note": "on a page of the owner's site that the menu no longer links to (WordPress last modified 2021-02-12); published before the 2025 room renovation — the owner must confirm before go-live; heading 'Book an extra room for friends and family without package'; the unit (per night?) is not stated",
+   "source_url": "https://cheekymonkeymidigama.com/surf-camp-packages-sri-lanka/",
+   "fetched_at": "2026-10-26T20:41:09Z"
+  },
+  {
+   "label": "Extra room without package — Double Room with A/C",
+   "price": 25,
+   "currency": "USD",
+   "unit": null,
+   "raw": "with privat bathroom and breakfast,towels included 25$",
+   "note": "on a page of the owner's site that the menu no longer links to (WordPress last modified 2021-02-12); published before the 2025 room renovation — the owner must confirm before go-live; heading 'Book an extra room for friends and family without package'; the unit (per night?) is not stated",
+   "source_url": "https://cheekymonkeymidigama.com/surf-camp-packages-sri-lanka/",
+   "fetched_at": "2026-10-26T20:41:09Z"
+  },
+  {
+   "label": "Extra room without package — Tripple Room with A/C",
+   "price": 27,
+   "currency": "USD",
+   "unit": null,
+   "raw": "One Kingsize bed, one single bed with privat bathroom and breakfast, towels included 27$",
+   "note": "on a page of the owner's site that the menu no longer links to (WordPress last modified 2021-02-12); published before the 2025 room renovation — the owner must confirm before go-live; heading 'Book an extra room for friends and family without package'; the unit (per night?) is not stated",
+   "source_url": "https://cheekymonkeymidigama.com/surf-camp-packages-sri-lanka/",
+   "fetched_at": "2026-10-26T20:41:09Z"
+  },
+  {
    "label": "Lake Tour (add-on to a package)",
    "price": 5,
    "currency": "USD",
    "unit": null,
    "note": "on a page of the owner's site that the menu no longer links to (WordPress last modified 2021-02-12); published before the 2025 room renovation — the owner must confirm before go-live",
    "source_url": "https://cheekymonkeymidigama.com/surf-camp-packages-sri-lanka/",
-   "fetched_at": "2026-10-26T19:13:06Z"
+   "fetched_at": "2026-10-26T20:41:09Z"
   }
  ],
  "rentals": [
@@ -4464,7 +4699,9 @@
    "desktop hero: the left half of the first screen is empty (no image renders)",
    "prices (lessons, weekly packages, B&B rates, airport transfer) only on pages the menu no longer links to, last edited 2021",
    "theme demo leftovers are public: lorem-ipsum service pages (/service/surf-lesson/, /service/rent-and-repairer/), portfolio items 'Restaurant in Texas', 'Luxury living room' with 'Client Four Seasons, Value $35,000', a WooCommerce test product 'Surf pakage' (£16, description 'dfsfgf')",
-   "20 blog posts from 2020–21 with generic graphics; no video anywhere on the site"
+   "20 blog posts from 2020–21 with generic graphics; no video anywhere on the site",
+   "'Reservation Enquiry!!' on /our-services/ is an unrendered [button2] shortcode printed as text; the intended Booking.com link does not exist on the page",
+   "the packages page's 19 'Book Now' buttons are JavaScript-only <button onclick> redirects to PayHere payment links (no <a>, nothing works with JS off)"
   ]
  },
  "languages": {
@@ -4473,7 +4710,7 @@
   ],
   "owner_language_hint": "si"
  },
- "offers_note": "every published price is on an orphan page edited in 2021, before the renovation and the 2025 site rewrite; the lesson prices are in dossier.lessons. Treat all as 'published, possibly outdated' — the owner confirms before go-live. A third page ('why-cheeky-monkey-surf-camp' blog post, 2020) says 'Cheeky Monkey surf packages expand from USD 50-USD 300'.",
+ "offers_note": "every published price is on an orphan page edited in 2021, before the renovation and the 2025 site rewrite; the lesson prices are in dossier.lessons. Treat all as 'published, possibly outdated' — the owner confirms before go-live. A third page ('why-cheeky-monkey-surf-camp' blog post, 2020) says 'Cheeky Monkey surf packages expand from USD 50-USD 300'. Two published B&B rate sets disagree on the non-A/C double room: /booking-surf-camp/ (modified 2021-10-17) says 'Double Room Non A/C B&B US$ 20', the packages page (modified 2021-02-12) says 'Double Room ... 22$'; the A/C double (25) and A/C triple (27) agree. Both are recorded; see contradictions.",
  "gaps": [
   {
    "field": "hours",
@@ -4497,7 +4734,7 @@
   },
   {
    "field": "booking (lessons, rentals)",
-   "why": "no way to book a lesson or reserve a board online; the site's forms are broken shortcodes",
+   "why": "no working way to book a lesson or reserve a board on the site's linked pages: the forms are broken shortcodes and 'Reservation Enquiry' is an unrendered shortcode; the only buttons that act are the JS-only PayHere 'Book Now' buttons on an orphan 2021 packages page (unverified whether they still work)",
    "pitch_point": true
   },
   {
@@ -4550,6 +4787,11 @@
    "field": "events (current)",
    "why": "party/live-music evidence is 2019–2022; nothing dated 2025–26",
    "pitch_point": false
+  },
+  {
+   "field": "offers (B&B double room rate)",
+   "why": "two published rates for the same non-A/C double room (US$ 20 vs 22$), both from 2021 orphan pages; unit not stated on either",
+   "pitch_point": true
   }
  ],
  "contradictions": [
@@ -4585,23 +4827,27 @@
    "values": [
     "site banner: rooms being renovated, 'aren’t bookable right now' (May 2025)",
     "Booking.com live, stays through Sept 2026, room photos uploaded 2026-09-15",
-    "Facebook: 'Midigama shop, rooms & restaurant closed for low season'"
+    "Facebook: 'Midigama shop, rooms & restaurant closed for low season'",
+    "Facebook details: 'Always open' (Hours) — same page as the 'closed for low season' intro"
    ],
    "sources": [
     "https://cheekymonkeymidigama.com/",
     "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html",
-    "https://www.facebook.com/cheekymonkeysrilanka/"
+    "https://www.facebook.com/cheekymonkeysrilanka/",
+    "https://www.facebook.com/cheekymonkeysrilanka/about_contact_and_basic_info"
    ]
   },
   {
    "what": "shop hours",
    "values": [
     "'Surf shop 7am-6pm' (Instagram)",
-    "'Monday 8 am–7 pm' (Google shop listing)"
+    "'Monday 8 am–7 pm' (Google shop listing)",
+    "'Always open' (Facebook details, Hours)"
    ],
    "sources": [
     "https://www.instagram.com/cheekymonkeysrilanka/",
-    "https://www.google.com/maps/place/Baba%27s+surfshop%2FCheeky+monky+midigama+guesthouse/data=!4m7!3m6!1s0x3ae114e83215af2f:0x5e7df1a573ccacda!8m2!3d5.9618292!4d80.3968473!16s%2Fg%2F11gd0fngjp!19sChIJL68VMugU4ToR2qzMc6XxfV4?hl=en"
+    "https://www.google.com/maps/place/Baba%27s+surfshop%2FCheeky+monky+midigama+guesthouse/data=!4m7!3m6!1s0x3ae114e83215af2f:0x5e7df1a573ccacda!8m2!3d5.9618292!4d80.3968473!16s%2Fg%2F11gd0fngjp!19sChIJL68VMugU4ToR2qzMc6XxfV4?hl=en",
+    "https://www.facebook.com/cheekymonkeysrilanka/about_contact_and_basic_info"
    ]
   },
   {
@@ -4650,6 +4896,18 @@
     "https://cheekymonkeymidigama.com/"
    ],
    "resolution": "the site is not mobile-ready (470 px layout) and has no booking action within one tap, so the business would still score about 2 — still inside the run's presence_threshold of 2. For the human to note."
+  },
+  {
+   "what": "B&B rate, double room without A/C",
+   "values": [
+    "US$ 20 — 'Double Room Non A/C B&B' (/booking-surf-camp/, modified 2021-10-17)",
+    "22$ — 'Double Room with privat bathroom and breakfast, towels included' (packages page, 'extra room ... without package', modified 2021-02-12)"
+   ],
+   "sources": [
+    "https://cheekymonkeymidigama.com/booking-surf-camp/",
+    "https://cheekymonkeymidigama.com/surf-camp-packages-sri-lanka/"
+   ],
+   "resolution": "unresolved; both stale (2021). Double with A/C 25 and triple with A/C 27 agree on both pages"
   }
  ],
  "must_have_check": {
@@ -4659,5 +4917,12 @@
   "photos_min_3": "met (156 business-owned images)",
   "rooms_min_1": "met (5 Booking.com room types)",
   "verdict": "buildable in test mode"
- }
+ },
+ "facebook_hours": {
+  "value": "Always open",
+  "source_url": "https://www.facebook.com/cheekymonkeysrilanka/about_contact_and_basic_info",
+  "fetched_at": "2026-10-26T20:41:57Z",
+  "note": "Facebook 'Contact and basic info' → Basic info → Hours. Conflicts with the same page's intro 'Midigama shop, rooms & restaurant closed for low season'."
+ },
+ "harvested_at_followup": "2026-10-26T20:45:00Z"
 }
