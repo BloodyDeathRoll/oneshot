@@ -87,8 +87,7 @@ Index keys: `reviews.quotes[n]`: 0 Tomas (excluded) · 1 Sofie (excluded) · 2 J
 | [3–5] | Moderate Surf Lesson or Surf Spot Guiding Package: 350 / 295 / 280 | `offers[3–5]`; `payhere_links[1,5,9]` agree |
 | [6–8] | Yoga and Surf Lesson Package: 300 / 280 / 280 | `offers[6–8]`; `payhere_links[2,6,10]` agree |
 | [9–11] | Surf Board Rental Package: 290 / 250 / 250 | `offers[9–11]`; `payhere_links[3,7,11]` agree |
-| [12] | "Air conditioning, added to any package" 50 `per_week`, "Per person" | `offers[18–21]`, all four 50 per week, 1 person (`payhere_links[12–15]`, one shared link). **Tension for the owner:** Booking.com (2026) says every room has A/C (`room_types_note`), so this 2021 add-on may no longer apply. Both are dossier facts. I kept the row dated and did not repeat it in prose. |
-| [13–15] | Airport drop 65, pick-up 65, drop and pick-up 130, `flat` | `offers[15–17]` (unit "flat"). Also fits `facilities[8]` "airport shuttle (additional charge)". |
+| [12–14] | Airport drop 65, pick-up 65, drop and pick-up 130, `flat` | `offers[15–17]` (unit "flat"). Also fits `facilities[8]` "airport shuttle (additional charge)". |
 | not rows | Single lesson USD 20 | in `lessons[0]` (no duplication) |
 | not rows | B&B / extra-room rates 20, 22, 25, 27; group lesson 100; lake tour 5 | See contradictions table, `lessons[2]` and block [4] ¶5 S3 |
 

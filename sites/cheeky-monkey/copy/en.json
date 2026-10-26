@@ -2,6 +2,7 @@
  "slug": "cheeky-monkey",
  "locale": "en",
  "copywriter_version": "0.4.0",
+ "humanizer_version": "0.2.0",
  "businessName": "Cheeky Monkey Surf Camp",
  "businessType": "surf_camp",
  "tagline": "Surf shop, rooms and lessons on the main road in Midigama, with 400 boards to rent.",
@@ -11,27 +12,27 @@
   {
    "slot": "intro",
    "heading": "Catch waves, not worries",
-   "body": "Cheeky Monkey is a surf and yoga camp on the main road through Midigama, close to the main point breaks.\n\nRight alongside the guesthouse is Baba's Surf Shop, where you can rent a board, buy one, or bring yours in for a repair."
+   "body": "Cheeky Monkey is a surf and yoga camp on the main road through Midigama, close to the main point breaks.\n\nRight alongside the guesthouse is Baba's Surf Shop. Rent a board there or buy one, and bring yours in if it needs a repair."
   },
   {
    "slot": "about",
    "heading": "Three rooms in 2009",
-   "body": "Cheeky Monkey opened in late 2009 as a small guesthouse with three rooms, a tiny surf shop and a restaurant. By 2021 it had ten rooms.\n\nIt was founded by Baba, who taught himself to surf at twelve, like most kids in the area, and worked as a surf instructor. The shop carries his name."
+   "body": "Cheeky Monkey opened in late 2009 as a small guesthouse with three rooms, a tiny surf shop and a restaurant. By 2021 it had ten rooms.\n\nBaba founded it. Like most kids in the area, he taught himself to surf at twelve. He worked as a surf instructor too, and the shop carries his name."
   },
   {
    "slot": "about",
    "heading": "Baba's Surf Shop",
-   "body": "There are 400 boards for rent, in different sizes, tails and colours.\n\nIf your own board gets damaged, the shaper here can fix it fast.\n\nThe shelves hold the rest: wax, straps, bags and beachwear. The shop is run by surfers, for surfers."
+   "body": "There are 400 boards for rent, in different sizes, tails and colours.\n\nIf your own board gets damaged, the shaper here can fix it fast.\n\nOn the shelves there's beachwear, straps, bags and, of course, wax. It's a shop run by surfers, for surfers."
   },
   {
    "slot": "offer",
    "heading": "Lessons for your level",
-   "body": "Whether you are a total beginner or chasing your next big ride, lessons are tailored to your skill level, your pace and your style.\n\nThe lesson price on this page was published in 2021. Call before you come to check the price, and that lessons are running when you are here."
+   "body": "Lessons are fitted to your level and your pace, and to your style. That goes for a total beginner and for someone chasing their next big ride.\n\nThe lesson price on this page was published in 2021. Call before you come, to check it and to make sure lessons are running while you're here."
   },
   {
    "slot": "offer",
    "heading": "A week of surf",
-   "body": "The Full Surf Lesson Package is two surf lessons a day for six days, with one rest day.\n\nThe Moderate package is one surf lesson a day for six days, or one guided session at a surf spot instead.\n\nThe Yoga and Surf package is one yoga lesson and one surf lesson a day for six days.\n\nThe Surf Board Rental package is any board for seven days, and a tuk-tuk driving lesson if you want one.\n\nEvery package has seven nights, seven breakfasts, five dinners, two or three yoga classes, a party night, the weekly BBQ night and free use of the gym. The three lesson packages include your board during lessons and transport to the surf spot. The week includes one lake tour, for an extra USD 5.\n\nThe price is per person for the week and depends on the room: a private room, a shared double or a shared triple. These packages and prices were published in 2021, so call to confirm them before you book."
+   "body": "The Full Surf Lesson Package is two surf lessons a day for six days, with one rest day.\n\nThe Moderate package halves that, to one surf lesson a day for six days (or one guided session at a surf spot instead).\n\nYoga and Surf gives you one of each a day for six days, a yoga lesson and a surf lesson.\n\nAnd the Surf Board Rental package gets you any board for seven days, plus a tuk-tuk driving lesson if you fancy one.\n\nAll four come with seven nights, seven breakfasts, five dinners, two or three yoga classes, a party night, the weekly BBQ night and free use of the gym. With the three lesson packages, your board for the lessons and the ride to the surf spot are included too. There's one lake tour in the week as well, at USD 5 extra.\n\nYou pay per person for the week, and the price depends on whether you take a private room, a shared double or a shared triple. These packages and prices were published in 2021, so call to confirm them before you book."
   },
   {
    "slot": "about",
@@ -41,12 +42,12 @@
   {
    "slot": "info",
    "heading": "Getting here",
-   "body": "Cheeky Monkey is on the Galle–Matara main road. Booking.com puts Midigama Beach 350 m away and Midigama train station 800 m. Ahangama Beach is 2 km, Weligama Beach 3.3 km and Koggala Airport 10 km."
+   "body": "Cheeky Monkey is on the Galle–Matara main road. Booking.com puts Midigama Beach 350 m away and Midigama train station 800 m, then Ahangama Beach at 2 km, Weligama Beach at 3.3 km and Koggala Airport at 10 km."
   },
   {
    "slot": "info",
    "heading": "Good to know",
-   "body": "There is no generator for power cuts.\n\nThe team can book you a taxi and organise a safari or a cooking class."
+   "body": "There's no generator for power cuts.\n\nThe team can book you a taxi, and set up a safari or a cooking class."
   }
  ],
  "spot": "Close to the main point breaks, with many more surf breaks a short walk away.",
@@ -164,13 +165,6 @@
    "currency": "USD",
    "unit": "per_week",
    "note": "Per person, 7 nights. Price published in 2021"
-  },
-  {
-   "label": "Air conditioning, added to any package",
-   "price": 50,
-   "currency": "USD",
-   "unit": "per_week",
-   "note": "Per person. Price published in 2021"
   },
   {
    "label": "Airport drop",
