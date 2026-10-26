@@ -1,0 +1,429 @@
+{
+  "slug": "cheeky-monkey",
+  "run_id": "2026-10-midigama-01",
+  "auditor_version": "0.1.3",
+  "audited_at": "2026-10-26T19:53:51Z",
+  "scope": "site",
+  "measured": {
+    "url": "https://cheekymonkeymidigama.com/",
+    "status": 200,
+    "clicks_to_book": null,
+    "primary_action": null,
+    "cta_above_fold": false,
+    "terminal_above_fold": false,
+    "pages_crawled": 8,
+    "broken_pages": [],
+    "funnel_json": "funnel/funnel.json"
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "area": "cta",
+      "severity": "high",
+      "title": "No way to book a room, a lesson or a package from any page the menu reaches",
+      "what_a_visitor_meets": "On a phone the first screen is a PHP notice, the logo and the tagline, with no button. Across the 8 pages the menu reaches, the only actions are an email link 5,360 px down the home page and \"Contact\" links. Nothing leads to Booking.com, where the rooms are sold.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/landing-fold.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/01-home-menu-open.png"
+        },
+        {
+          "type": "url",
+          "value": "https://cheekymonkeymidigama.com/"
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "/",
+            "Menu",
+            "Home | About us | Surf Shop & Activities | Contact us"
+          ]
+        }
+      ],
+      "playbook_ref": "§5 booking path, §3 first screen",
+      "fix_in_new_site": "bookingLinks[0].url = the Booking.com listing as the primary action on the first screen and in the persistent mobile bar; contact.phone as tel: beside it",
+      "pitch_point": true,
+      "notes": "funnel.json: clicks_to_book null, cta_above_fold false, action_classes_seen [email, contact_link]."
+    },
+    {
+      "id": "F2",
+      "area": "offer",
+      "severity": "high",
+      "title": "The published prices sit only on pages the menu does not link to",
+      "what_a_visitor_meets": "The owner's site does publish prices for single lessons, four weekly packages and B&B rooms. They are on /our-services/ and /surf-camp-packages-sri-lanka/, and no menu item or page in the crawl leads there. On the packages page the table is also inside a closed \"Prices\" accordion. A visitor using the menu never sees a price.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/03-our-services-lesson-price.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/04-packages-price-table.png"
+        },
+        {
+          "type": "url",
+          "value": "https://cheekymonkeymidigama.com/surf-camp-packages-sri-lanka/"
+        },
+        {
+          "type": "url",
+          "value": "https://cheekymonkeymidigama.com/our-services/"
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "/",
+            "Menu",
+            "no item leads to /our-services/ or /surf-camp-packages-sri-lanka/"
+          ]
+        }
+      ],
+      "playbook_ref": "§2 what does it cost",
+      "fix_in_new_site": "lessons[] (price, durationMin, groupSize, includes) and priceList[] (unit \"per week\", note with the 2021 capture date), shown in the booking section, one scroll from the first screen; the owner confirms before go-live",
+      "pitch_point": true,
+      "notes": "Every price is from 2021 (dossier offers_note). The new site shows them only with their capture date, after the owner confirms them."
+    },
+    {
+      "id": "F3",
+      "area": "content",
+      "severity": "high",
+      "title": "The home page tells visitors the rooms cannot be booked",
+      "what_a_visitor_meets": "Right under the hero, a black banner says the rooms \"aren’t bookable right now\" while they get a \"glow-up\". The same rooms are live on Booking.com, with 45 reviews of stays from Sept 2025 to Sept 2026. A visitor who came for a room reads that they cannot have one, and leaves.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/01-home-renovation-banner.png"
+        },
+        {
+          "type": "url",
+          "value": "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#status_flag"
+        }
+      ],
+      "playbook_ref": "§7 honesty of facts, §9 \"closed / away until\" notice",
+      "fix_in_new_site": "an owner-editable status line (hoursNote, or a copyBlocks[] row in slot \"info\") that the owner changes or removes in the CMS, next to bookingLinks[0]",
+      "pitch_point": true,
+      "notes": "The current status is unclear (Facebook: Midigama closed for low season). The pitch says the banner contradicts the live listing. It does not say whether the rooms are open now."
+    },
+    {
+      "id": "F4",
+      "area": "contact",
+      "severity": "medium",
+      "title": "Phone is plain text far down the page, with no tap-to-call and no WhatsApp",
+      "what_a_visitor_meets": "The number (+94) 71 924 8686 appears as plain text 5,410 px down the home page and on the contact page. A tap does nothing, so the visitor has to copy it by hand. There is no WhatsApp link on any page (walk: 0 tel: and 0 WhatsApp links on all 8 site pages walked).",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/01-home-phone-text.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/02-contact-shortcode.png"
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "/",
+            "scroll 5,410 px",
+            "\"Phone: (+94) 71 924 8686\" (not a link)"
+          ]
+        }
+      ],
+      "playbook_ref": "§4 tap-to-act, §5",
+      "fix_in_new_site": "contact.phone rendered as a tel: link (≥ 44 px) in the booking section, the persistent bar and the footer; contact.whatsapp stays empty until the owner confirms a WhatsApp number",
+      "pitch_point": true
+    },
+    {
+      "id": "F5",
+      "area": "contact",
+      "severity": "medium",
+      "title": "The contact page and the booking page show raw code where the forms should be",
+      "what_a_visitor_meets": "Under the map, the contact page shows \"[heading text=”Send Us Message” tag=”h3″] [contact-form-7 id=”117″]\" as text, not a form. /booking-surf-camp/ shows \"[ninja_form id=”2″]\". A visitor who wants to write a message has nothing to fill in, and the page looks broken.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/02-contact-shortcode.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/05-booking-surf-camp-shortcode.png"
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "/",
+            "Menu",
+            "Contact us"
+          ]
+        }
+      ],
+      "playbook_ref": "§5 no form that posts nowhere",
+      "fix_in_new_site": "no form: contact.email (mailto) and contact.phone (tel) as plain working links (playbook §5)",
+      "pitch_point": true
+    },
+    {
+      "id": "F6",
+      "area": "funnel",
+      "severity": "medium",
+      "title": "\"Reservation Enquiry!!\" is raw code, not a button",
+      "what_a_visitor_meets": "On /our-services/, under the heading \"Reservation Enquiry!!\", the visitor sees the text \"[button2 class=”btn-line btn-big mt10” linkbox=”url:https%3A%2F%2Fwww.booking.com…|title:Request%20Now…”]\". The button to Booking.com never renders.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/03-our-services-reservation-enquiry.png"
+        },
+        {
+          "type": "url",
+          "value": "https://cheekymonkeymidigama.com/our-services/"
+        }
+      ],
+      "playbook_ref": "§5",
+      "fix_in_new_site": "bookingLinks[0] with a working label such as \"See rooms and live dates\", repeated at the end of the offer section",
+      "pitch_point": true,
+      "notes": "The dossier (booking.path note) records this as a Reservation Enquiry link to Booking.com. It is not clickable."
+    },
+    {
+      "id": "F7",
+      "area": "funnel",
+      "severity": "medium",
+      "title": "The package \"Book Now\" buttons go straight to payment links",
+      "what_a_visitor_meets": "After the visitor opens the hidden \"Prices\" accordion on the packages page, each of the 19 red \"Book Now\" buttons sends them to a PayHere payment URL (payhere.lk/pay/…). Nothing on the page lets them ask about dates or levels first. In our walk the first link stopped at a Cloudflare security check, so we did not see the payment screen.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/04-packages-price-table.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/04b-packages-book-now-target-fold.png"
+        },
+        {
+          "type": "url",
+          "value": "https://www.payhere.lk/pay/o6fad45"
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "/surf-camp-packages-sri-lanka/",
+            "Prices",
+            "Book Now"
+          ]
+        }
+      ],
+      "playbook_ref": "§5 no payment capture on the site; use the path the owner answers",
+      "fix_in_new_site": "no payment link: bookingLinks[0] (Booking.com) for rooms, and contact.phone / contact.email to ask about a package",
+      "pitch_point": false,
+      "notes": "The button targets are listed in funnel/walk-hand.json, step 04-packages. Whether the links still take payment is unknown."
+    },
+    {
+      "id": "F8",
+      "area": "mobile",
+      "severity": "medium",
+      "title": "The pages are wider than the phone, so text and tables are cut off",
+      "what_a_visitor_meets": "On a 390 px phone the home page lays out 470 px wide (other pages 445–577 px). The email address runs off the right edge of the contact box, and the price table loses its last columns.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/01-home-phone-text.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/04-packages-price-table.png"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#existing_site.mobile.layout_width_px"
+        }
+      ],
+      "playbook_ref": "§4 mobile",
+      "fix_in_new_site": "single-column template at 390 px with no horizontal overflow (critic measures)",
+      "pitch_point": true,
+      "notes": "Widths per page: funnel/walk-hand.json doc_width."
+    },
+    {
+      "id": "F9",
+      "area": "mobile",
+      "severity": "medium",
+      "title": "A PHP error message fills the top of every page",
+      "what_a_visitor_meets": "Every page opens with nine lines of \"Notice: Function _load_textdomain_just_in_time was called incorrectly … /home/cheekymo/public_html/wp-includes/functions.php on line 6260\". On a phone it fills the top half of the first screen, above the logo.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/landing-fold.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/04-packages-fold.png"
+        }
+      ],
+      "playbook_ref": "§3 first screen",
+      "fix_in_new_site": "static build with no server code (playbook §11): the first screen is heroVideo / photos[0] with what + where and the primary action",
+      "pitch_point": true
+    },
+    {
+      "id": "F10",
+      "area": "trust",
+      "severity": "medium",
+      "title": "The site shows no rating and no guest review",
+      "what_a_visitor_meets": "The home page has no rating and no review. Google shows 4.5 from 467 reviews and Booking.com 8.3 from 45. A visitor comparing camps sees none of it on the owner's own page.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/landing-mobile.png"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#reviews"
+        }
+      ],
+      "playbook_ref": "§6 trust signals",
+      "fix_in_new_site": "ratings[] (google 4.5/5 · 467, booking 8.3/10 · 45, with capturedAt) and testimonials[] verbatim from dossier.reviews.quotes",
+      "pitch_point": true
+    },
+    {
+      "id": "F11",
+      "area": "mobile",
+      "severity": "medium",
+      "title": "The mobile first load is 3.07 MB, double the budget",
+      "what_a_visitor_meets": "A phone on a local SIM downloads 3.07 MB in 54 requests before scrolling. The budget is 1.5 MB.",
+      "evidence": [
+        {
+          "type": "dossier",
+          "value": "dossier.json#existing_site.mobile.first_load_bytes"
+        },
+        {
+          "type": "screenshot",
+          "value": "assets/old-site-mobile.png"
+        }
+      ],
+      "playbook_ref": "§4 performance budget",
+      "fix_in_new_site": "playbook §4 budget, measured by the critic",
+      "pitch_point": false,
+      "notes": "Single headless run by the harvester. No screenshot shows bytes, so this is not a pitch point."
+    },
+    {
+      "id": "F12",
+      "area": "content",
+      "severity": "low",
+      "title": "Theme demo pages are public",
+      "what_a_visitor_meets": "Search engines and curious visitors can reach a lorem-ipsum \"Surf Lesson\" page and a shop product \"Surf pakage\" (description \"dfsfgf\") with an \"Add to cart\" button.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/06-service-surf-lesson-fold.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/07-product-surf-pakage-fold.png"
+        },
+        {
+          "type": "url",
+          "value": "https://cheekymonkeymidigama.com/product/surf-pakage/"
+        }
+      ],
+      "playbook_ref": "§7 placeholder content is never shipped",
+      "fix_in_new_site": "only schema content is rendered; no demo or placeholder pages exist in the build",
+      "pitch_point": false
+    },
+    {
+      "id": "F13",
+      "area": "offsite",
+      "severity": "medium",
+      "title": "The Google listing has no website",
+      "what_a_visitor_meets": "On Google Maps, where most travellers find the place, the listing shows the address, the phone and a Call button. Where the website should be, it says \"Add website\" under \"Add missing information\". A visitor there can call but cannot reach the site, the prices or the packages.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/13-google-listing-desktop-add-website.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/09-google-listing-fold.png"
+        },
+        {
+          "type": "url",
+          "value": "https://www.google.com/maps/place/Cheeky+Monkey/data=!4m10!3m9!1s0x3ae114c1f7d9fc01:0xb59451ca09648650!5m2!4m1!1i2!8m2!3d5.9617986!4d80.3967609!16s%2Fg%2F11b6scl3ts!19sChIJAfzZ98EU4ToRUIZkCcpRlLU?hl=en"
+        }
+      ],
+      "playbook_ref": "§1 the customer finds them on Google Maps",
+      "fix_in_new_site": null,
+      "pitch_point": true
+    },
+    {
+      "id": "F14",
+      "area": "offsite",
+      "severity": "medium",
+      "title": "Each channel gives a different answer to \"are you open?\"",
+      "what_a_visitor_meets": "The Instagram bio opens with \"OPEN … Rooms\". Facebook's details say \"Always open\", but its intro says \"Midigama shop, rooms & restaurant closed for low season. Catch us now in Arugam Bay\". The site says the rooms are not bookable, and Booking.com sells them. A visitor cannot tell what is open.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/11-instagram-fold.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/12-facebook-fold.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/walk/01-home-renovation-banner.png"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#status_flag"
+        }
+      ],
+      "playbook_ref": "§2 when is it good (closed months stated)",
+      "fix_in_new_site": "one owner-editable status line (hoursNote or a copyBlocks[] row in slot \"info\") that the site shows beside the booking action; the owner changes it in the CMS",
+      "pitch_point": true,
+      "notes": "The Facebook intro sits behind \"See more\" in the screenshot; its full text is in dossier.json#contact.facebook_profile."
+    }
+  ],
+  "recommended": {
+    "primary_action": "engine",
+    "primary_label": "See rooms and live dates on Booking.com",
+    "secondary_actions": [
+      "tel",
+      "email"
+    ],
+    "clicks_to_book": 1,
+    "above_fold": [
+      "what_where",
+      "included",
+      "price",
+      "level",
+      "trust",
+      "primary_action"
+    ],
+    "offer_framing": "the weekly surf packages first (what each includes, then the per-week price with its 2021 capture date for the owner to confirm), then single lessons (length, group size and price as published). Then rooms[] from the five Booking.com room types with no nightly rate, linked to live dates. Then the shop: rentals[] (400 boards, repairs) and brands[]. Prices sit in the booking section, never on the first screen.",
+    "closing_intent": "send the reader to live dates on Booking.com, and give the phone as the way to ask about lessons and packages first",
+    "off_site": [
+      {
+        "channel": "google_business_profile",
+        "finding": "F13",
+        "advice": "add the site URL to the Cheeky Monkey listing (and to the Baba's surf shop listing)"
+      },
+      {
+        "channel": "facebook",
+        "finding": "F14",
+        "advice": "make the intro, the hours and the Instagram bio say the same thing as the site's status line, and update them when the season changes"
+      }
+    ]
+  },
+  "built_site_gaps": [],
+  "not_measurable": [
+    "PayHere payment pages behind the package \"Book Now\" buttons: Cloudflare security check (403) in headless Chromium; not bypassed",
+    "Booking.com past the listing page: no dates entered, no booking started, so no live prices or availability",
+    "Whether the owner answers the phone, email or Instagram DMs, and how fast: no contact in test mode",
+    "Whether the rooms, lessons and restaurant are open now: the channels disagree (F14) and nobody may be contacted",
+    "Instagram beyond the bio and the 12 latest posts, and Facebook posts and reels: login walls",
+    "Tripadvisor listing: 403 to headless browsers (harvester)",
+    "Conversion rate and traffic: no analytics access"
+  ]
+}
