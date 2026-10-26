@@ -102,7 +102,7 @@ sites/*/mockups-rejected-*/*/dist/video
 shots/
 !agents/designer/gold/shots/
 # session handoff is local, per machine
-handoff.md
+/handoff.md
 dossier/*/client
 dossier/*/industry/shots
 dossier/*/industry/funnel
