@@ -1,0 +1,253 @@
+{
+  "tool": "funnel.mjs",
+  "version": "0.2.0",
+  "measured_at": "2026-10-26T12:58:21.859Z",
+  "start_url": "https://surfswellhostel.com/",
+  "whitelabel_engine": false,
+  "final_landing_url": "https://surfswellhostel.com/",
+  "landing_status": 200,
+  "landing_error": null,
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "viewport_meta": true,
+  "landing_text_chars": 13948,
+  "clicks_to_book": null,
+  "primary_action": null,
+  "hero_action": null,
+  "cta_above_fold": false,
+  "terminal_above_fold": false,
+  "any_action_above_fold": true,
+  "landing_actions": [
+    {
+      "class": "contact_link",
+      "terminal": false,
+      "href": "https://surfswellhostel.com/contact/",
+      "label": "Contact",
+      "tag": "a",
+      "top": 352,
+      "height": 47,
+      "width": 75,
+      "above_fold": true,
+      "tap_target_ok": true
+    },
+    {
+      "class": "book_link",
+      "terminal": false,
+      "href": "https://surfswellhostel.com/budget-surf-hostel-accommodation/",
+      "label": "BOOK NOW",
+      "tag": "a",
+      "top": 1277,
+      "height": 57,
+      "width": 141,
+      "above_fold": false,
+      "tap_target_ok": true
+    }
+  ],
+  "action_classes_seen": [
+    "contact_link",
+    "book_link"
+  ],
+  "pages_crawled": 7,
+  "pages_with_errors": [],
+  "console_errors": [],
+  "pages": [
+    {
+      "url": "https://surfswellhostel.com/",
+      "depth": 0,
+      "via": null,
+      "status": 200,
+      "final_url": "https://surfswellhostel.com/",
+      "title": "The Best Surf Camp & Hostel in Midigama - Surfswellhostel",
+      "viewport_meta": true,
+      "text_chars": 13948,
+      "actions": [
+        {
+          "class": "contact_link",
+          "terminal": false,
+          "href": "https://surfswellhostel.com/contact/",
+          "label": "Contact",
+          "tag": "a",
+          "top": 352,
+          "height": 47,
+          "width": 75,
+          "above_fold": true,
+          "tap_target_ok": true
+        },
+        {
+          "class": "book_link",
+          "terminal": false,
+          "href": "https://surfswellhostel.com/budget-surf-hostel-accommodation/",
+          "label": "BOOK NOW",
+          "tag": "a",
+          "top": 1277,
+          "height": 57,
+          "width": 141,
+          "above_fold": false,
+          "tap_target_ok": true
+        }
+      ],
+      "internal_links": 7,
+      "error": null,
+      "screenshot": "landing-mobile.png",
+      "fold_screenshot": "landing-fold.png"
+    },
+    {
+      "url": "https://surfswellhostel.com/about-us",
+      "depth": 1,
+      "via": "https://surfswellhostel.com/",
+      "status": 200,
+      "final_url": "https://surfswellhostel.com/about-us/",
+      "title": "About Surf Swell Hostel - About Us - Surfswellhostel",
+      "viewport_meta": true,
+      "text_chars": 6255,
+      "actions": [
+        {
+          "class": "contact_link",
+          "terminal": false,
+          "href": "https://surfswellhostel.com/contact/",
+          "label": "Contact",
+          "tag": "a",
+          "top": 352,
+          "height": 47,
+          "width": 76,
+          "above_fold": true,
+          "tap_target_ok": true
+        }
+      ],
+      "internal_links": 7,
+      "error": null
+    },
+    {
+      "url": "https://surfswellhostel.com/surf-rates-packages",
+      "depth": 1,
+      "via": "https://surfswellhostel.com/",
+      "status": 200,
+      "final_url": "https://surfswellhostel.com/surf-rates-packages/",
+      "title": "Surf Packages - Budget Surf Camp & Hostel Packages - Surfswellhostel",
+      "viewport_meta": true,
+      "text_chars": 1824,
+      "actions": [
+        {
+          "class": "contact_link",
+          "terminal": false,
+          "href": "https://surfswellhostel.com/contact/",
+          "label": "Contact",
+          "tag": "a",
+          "top": 352,
+          "height": 47,
+          "width": 76,
+          "above_fold": true,
+          "tap_target_ok": true
+        }
+      ],
+      "internal_links": 7,
+      "error": null
+    },
+    {
+      "url": "https://surfswellhostel.com/budget-surf-hostel-accommodation",
+      "depth": 1,
+      "via": "https://surfswellhostel.com/",
+      "status": 200,
+      "final_url": "https://surfswellhostel.com/budget-surf-hostel-accommodation/",
+      "title": "Budget Surf Hostel in Midigama - Surf Accommodation - Surfswellhostel",
+      "viewport_meta": true,
+      "text_chars": 3383,
+      "actions": [
+        {
+          "class": "contact_link",
+          "terminal": false,
+          "href": "https://surfswellhostel.com/contact/",
+          "label": "Contact",
+          "tag": "a",
+          "top": 352,
+          "height": 47,
+          "width": 76,
+          "above_fold": true,
+          "tap_target_ok": true
+        }
+      ],
+      "internal_links": 7,
+      "error": null
+    },
+    {
+      "url": "https://surfswellhostel.com/surf-shop-activities",
+      "depth": 1,
+      "via": "https://surfswellhostel.com/",
+      "status": 200,
+      "final_url": "https://surfswellhostel.com/surf-shop-activities/",
+      "title": "Surf Hostel with Surf Shop, Gym & Restaurant - Surfswellhostel",
+      "viewport_meta": true,
+      "text_chars": 3325,
+      "actions": [
+        {
+          "class": "contact_link",
+          "terminal": false,
+          "href": "https://surfswellhostel.com/contact/",
+          "label": "Contact",
+          "tag": "a",
+          "top": 352,
+          "height": 47,
+          "width": 76,
+          "above_fold": true,
+          "tap_target_ok": true
+        }
+      ],
+      "internal_links": 7,
+      "error": null
+    },
+    {
+      "url": "https://surfswellhostel.com/contact",
+      "depth": 1,
+      "via": "https://surfswellhostel.com/",
+      "status": 200,
+      "final_url": "https://surfswellhostel.com/contact/",
+      "title": "Contact - Surfswellhostel",
+      "viewport_meta": true,
+      "text_chars": 1946,
+      "actions": [
+        {
+          "class": "contact_link",
+          "terminal": false,
+          "href": "https://surfswellhostel.com/contact/",
+          "label": "Contact",
+          "tag": "a",
+          "top": 352,
+          "height": 47,
+          "width": 76,
+          "above_fold": true,
+          "tap_target_ok": true
+        }
+      ],
+      "internal_links": 7,
+      "error": null
+    },
+    {
+      "url": "https://surfswellhostel.com/surf-guides",
+      "depth": 1,
+      "via": "https://surfswellhostel.com/",
+      "status": 200,
+      "final_url": "https://surfswellhostel.com/surf-guides/",
+      "title": "Surf Guides - Surfswellhostel",
+      "viewport_meta": true,
+      "text_chars": 4593,
+      "actions": [
+        {
+          "class": "contact_link",
+          "terminal": false,
+          "href": "https://surfswellhostel.com/contact/",
+          "label": "Contact",
+          "tag": "a",
+          "top": 352,
+          "height": 47,
+          "width": 76,
+          "above_fold": true,
+          "tap_target_ok": true
+        }
+      ],
+      "internal_links": 19,
+      "error": null
+    }
+  ]
+}

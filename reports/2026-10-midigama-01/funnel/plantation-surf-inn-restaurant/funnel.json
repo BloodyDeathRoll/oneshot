@@ -1,0 +1,677 @@
+{
+  "tool": "funnel.mjs",
+  "version": "0.2.0",
+  "measured_at": "2026-10-26T13:02:31.581Z",
+  "start_url": "https://www.midigamaplantationsurfinn.com/",
+  "whitelabel_engine": false,
+  "final_landing_url": "https://www.midigamaplantationsurfinn.com/",
+  "landing_status": 200,
+  "landing_error": null,
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "viewport_meta": true,
+  "landing_text_chars": 2188,
+  "clicks_to_book": 1,
+  "primary_action": {
+    "class": "engine",
+    "href": "https://www.airbnb.com.au/rooms/334022?source_impression_id=p3_1592529464_NSGcjSAy6KWAmQ3%2B&guests=1&adults=1",
+    "label": "",
+    "page": "https://www.midigamaplantationsurfinn.com/"
+  },
+  "hero_action": {
+    "label": "BOOK NOW",
+    "class": "engine",
+    "href": "https://www.airbnb.com.au/rooms/334022?source_impression_id=p3_1592529464_NSGcjSAy6KWAmQ3%2B&guests=1&adults=1",
+    "flow_page": "https://www.midigamaplantationsurfinn.com/contact",
+    "clicks_to_flow": 1
+  },
+  "cta_above_fold": true,
+  "terminal_above_fold": false,
+  "any_action_above_fold": true,
+  "landing_actions": [
+    {
+      "class": "book_link",
+      "terminal": false,
+      "href": "https://www.midigamaplantationsurfinn.com/contact",
+      "label": "BOOK NOW",
+      "tag": "a",
+      "top": 582,
+      "height": 51,
+      "width": 155,
+      "above_fold": true,
+      "tap_target_ok": true
+    },
+    {
+      "class": "engine",
+      "terminal": true,
+      "href": "https://www.airbnb.com.au/rooms/334022?source_impression_id=p3_1592529464_NSGcjSAy6KWAmQ3%2B&guests=1&adults=1",
+      "label": "",
+      "tag": "a",
+      "top": 5839,
+      "height": 19,
+      "width": 180,
+      "above_fold": false,
+      "tap_target_ok": false
+    },
+    {
+      "class": "engine",
+      "terminal": true,
+      "href": "https://www.booking.com/hotel/lk/plantation-surf-inn-amp-restaurant.html?aid=318615&label=English_Australia_EN_AU_29561939065-Z4sntSEom2MAT1DmyYipJgS113415591745%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi70399579280%3Atidsa-331215073644%3Alp9056927%3Ali%3Adec%3Adm&sid=dd206af7f8ad4e9b72c37d09fdbd3c74&dest_id=-2228683&dest_type=city&from_beach_non_key_ufi_sr=1&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&sr_order=popularity&srepoch=1592529793&srpvid=6e1509c061d40099&ucfs=1&from=searchresults;highlight_room=#hotelTmpl",
+      "label": "",
+      "tag": "a",
+      "top": 5914,
+      "height": 19,
+      "width": 220,
+      "above_fold": false,
+      "tap_target_ok": false
+    },
+    {
+      "class": "email",
+      "terminal": false,
+      "href": "mailto:chathuplantationsurf@gmail.com",
+      "label": "chathuplantationsurf@gmail.com",
+      "tag": "a",
+      "top": 6034,
+      "height": 19,
+      "width": 231,
+      "above_fold": false,
+      "tap_target_ok": false
+    },
+    {
+      "class": "tel",
+      "terminal": true,
+      "href": "tel:+94776438 912",
+      "label": "+94 776 438 912",
+      "tag": "a",
+      "top": 6060,
+      "height": 19,
+      "width": 121,
+      "above_fold": false,
+      "tap_target_ok": false
+    }
+  ],
+  "action_classes_seen": [
+    "book_link",
+    "engine",
+    "email",
+    "tel",
+    "form"
+  ],
+  "pages_crawled": 8,
+  "pages_with_errors": [],
+  "console_errors": [
+    "Failed to load resource: the server responded with a status of 404 ()"
+  ],
+  "pages": [
+    {
+      "url": "https://www.midigamaplantationsurfinn.com/",
+      "depth": 0,
+      "via": null,
+      "status": 200,
+      "final_url": "https://www.midigamaplantationsurfinn.com/",
+      "title": "Plantation Surf Inn – Midigama Surf Accommodation, Sri Lanka",
+      "viewport_meta": true,
+      "text_chars": 2188,
+      "actions": [
+        {
+          "class": "book_link",
+          "terminal": false,
+          "href": "https://www.midigamaplantationsurfinn.com/contact",
+          "label": "BOOK NOW",
+          "tag": "a",
+          "top": 582,
+          "height": 51,
+          "width": 155,
+          "above_fold": true,
+          "tap_target_ok": true
+        },
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://www.airbnb.com.au/rooms/334022?source_impression_id=p3_1592529464_NSGcjSAy6KWAmQ3%2B&guests=1&adults=1",
+          "label": "",
+          "tag": "a",
+          "top": 5839,
+          "height": 19,
+          "width": 180,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://www.booking.com/hotel/lk/plantation-surf-inn-amp-restaurant.html?aid=318615&label=English_Australia_EN_AU_29561939065-Z4sntSEom2MAT1DmyYipJgS113415591745%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi70399579280%3Atidsa-331215073644%3Alp9056927%3Ali%3Adec%3Adm&sid=dd206af7f8ad4e9b72c37d09fdbd3c74&dest_id=-2228683&dest_type=city&from_beach_non_key_ufi_sr=1&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&sr_order=popularity&srepoch=1592529793&srpvid=6e1509c061d40099&ucfs=1&from=searchresults;highlight_room=#hotelTmpl",
+          "label": "",
+          "tag": "a",
+          "top": 5914,
+          "height": 19,
+          "width": 220,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:chathuplantationsurf@gmail.com",
+          "label": "chathuplantationsurf@gmail.com",
+          "tag": "a",
+          "top": 6034,
+          "height": 19,
+          "width": 231,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "tel",
+          "terminal": true,
+          "href": "tel:+94776438 912",
+          "label": "+94 776 438 912",
+          "tag": "a",
+          "top": 6060,
+          "height": 19,
+          "width": 121,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 8,
+      "error": null,
+      "screenshot": "landing-mobile.png",
+      "fold_screenshot": "landing-fold.png"
+    },
+    {
+      "url": "https://www.midigamaplantationsurfinn.com/accommodation",
+      "depth": 1,
+      "via": "https://www.midigamaplantationsurfinn.com/",
+      "status": 200,
+      "final_url": "https://www.midigamaplantationsurfinn.com/accommodation",
+      "title": "Accommodation – Plantation Surf Inn – Midigama Surf Accommodation, Sri Lanka",
+      "viewport_meta": true,
+      "text_chars": 1056,
+      "actions": [
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://www.airbnb.com.au/rooms/334022?source_impression_id=p3_1592529464_NSGcjSAy6KWAmQ3%2B&guests=1&adults=1",
+          "label": "",
+          "tag": "a",
+          "top": 2493,
+          "height": 19,
+          "width": 180,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://www.booking.com/hotel/lk/plantation-surf-inn-amp-restaurant.html?aid=318615&label=English_Australia_EN_AU_29561939065-Z4sntSEom2MAT1DmyYipJgS113415591745%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi70399579280%3Atidsa-331215073644%3Alp9056927%3Ali%3Adec%3Adm&sid=dd206af7f8ad4e9b72c37d09fdbd3c74&dest_id=-2228683&dest_type=city&from_beach_non_key_ufi_sr=1&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&sr_order=popularity&srepoch=1592529793&srpvid=6e1509c061d40099&ucfs=1&from=searchresults;highlight_room=#hotelTmpl",
+          "label": "",
+          "tag": "a",
+          "top": 2568,
+          "height": 19,
+          "width": 220,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:chathuplantationsurf@gmail.com",
+          "label": "chathuplantationsurf@gmail.com",
+          "tag": "a",
+          "top": 2688,
+          "height": 19,
+          "width": 231,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "tel",
+          "terminal": true,
+          "href": "tel:+94776438 912",
+          "label": "+94 776 438 912",
+          "tag": "a",
+          "top": 2714,
+          "height": 19,
+          "width": 121,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 8,
+      "error": null
+    },
+    {
+      "url": "https://www.midigamaplantationsurfinn.com/accommodation/surf-inn",
+      "depth": 1,
+      "via": "https://www.midigamaplantationsurfinn.com/",
+      "status": 200,
+      "final_url": "https://www.midigamaplantationsurfinn.com/accommodation/surf-inn",
+      "title": "Plantation Surf Inn – Plantation Surf Inn – Midigama Surf Accommodation, Sri Lanka",
+      "viewport_meta": true,
+      "text_chars": 2505,
+      "actions": [
+        {
+          "class": "book_link",
+          "terminal": false,
+          "href": "https://www.midigamaplantationsurfinn.com/contact",
+          "label": "BOOK NOW",
+          "tag": "a",
+          "top": 6991,
+          "height": 49,
+          "width": 151,
+          "above_fold": false,
+          "tap_target_ok": true
+        },
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://www.airbnb.com.au/rooms/334022?source_impression_id=p3_1592529464_NSGcjSAy6KWAmQ3%2B&guests=1&adults=1",
+          "label": "",
+          "tag": "a",
+          "top": 7220,
+          "height": 19,
+          "width": 180,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://www.booking.com/hotel/lk/plantation-surf-inn-amp-restaurant.html?aid=318615&label=English_Australia_EN_AU_29561939065-Z4sntSEom2MAT1DmyYipJgS113415591745%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi70399579280%3Atidsa-331215073644%3Alp9056927%3Ali%3Adec%3Adm&sid=dd206af7f8ad4e9b72c37d09fdbd3c74&dest_id=-2228683&dest_type=city&from_beach_non_key_ufi_sr=1&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&sr_order=popularity&srepoch=1592529793&srpvid=6e1509c061d40099&ucfs=1&from=searchresults;highlight_room=#hotelTmpl",
+          "label": "",
+          "tag": "a",
+          "top": 7294,
+          "height": 19,
+          "width": 220,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:chathuplantationsurf@gmail.com",
+          "label": "chathuplantationsurf@gmail.com",
+          "tag": "a",
+          "top": 7414,
+          "height": 19,
+          "width": 231,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "tel",
+          "terminal": true,
+          "href": "tel:+94776438 912",
+          "label": "+94 776 438 912",
+          "tag": "a",
+          "top": 7440,
+          "height": 19,
+          "width": 121,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 8,
+      "error": null
+    },
+    {
+      "url": "https://www.midigamaplantationsurfinn.com/accommodation/nature-trail-villa",
+      "depth": 1,
+      "via": "https://www.midigamaplantationsurfinn.com/",
+      "status": 200,
+      "final_url": "https://www.midigamaplantationsurfinn.com/accommodation/nature-trail-villa",
+      "title": "Tree Trail Villa – Plantation Surf Inn – Midigama Surf Accommodation, Sri Lanka",
+      "viewport_meta": true,
+      "text_chars": 1649,
+      "actions": [
+        {
+          "class": "book_link",
+          "terminal": false,
+          "href": "https://www.midigamaplantationsurfinn.com/contact",
+          "label": "BOOK NOW",
+          "tag": "a",
+          "top": 709,
+          "height": 49,
+          "width": 151,
+          "above_fold": true,
+          "tap_target_ok": true
+        },
+        {
+          "class": "book_link",
+          "terminal": false,
+          "href": "https://www.midigamaplantationsurfinn.com/contact",
+          "label": "BOOK NOW",
+          "tag": "a",
+          "top": 9289,
+          "height": 49,
+          "width": 151,
+          "above_fold": false,
+          "tap_target_ok": true
+        },
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://www.airbnb.com.au/rooms/334022?source_impression_id=p3_1592529464_NSGcjSAy6KWAmQ3%2B&guests=1&adults=1",
+          "label": "",
+          "tag": "a",
+          "top": 9518,
+          "height": 19,
+          "width": 180,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://www.booking.com/hotel/lk/plantation-surf-inn-amp-restaurant.html?aid=318615&label=English_Australia_EN_AU_29561939065-Z4sntSEom2MAT1DmyYipJgS113415591745%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi70399579280%3Atidsa-331215073644%3Alp9056927%3Ali%3Adec%3Adm&sid=dd206af7f8ad4e9b72c37d09fdbd3c74&dest_id=-2228683&dest_type=city&from_beach_non_key_ufi_sr=1&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&sr_order=popularity&srepoch=1592529793&srpvid=6e1509c061d40099&ucfs=1&from=searchresults;highlight_room=#hotelTmpl",
+          "label": "",
+          "tag": "a",
+          "top": 9592,
+          "height": 19,
+          "width": 220,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:chathuplantationsurf@gmail.com",
+          "label": "chathuplantationsurf@gmail.com",
+          "tag": "a",
+          "top": 9712,
+          "height": 19,
+          "width": 231,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "tel",
+          "terminal": true,
+          "href": "tel:+94776438 912",
+          "label": "+94 776 438 912",
+          "tag": "a",
+          "top": 9739,
+          "height": 19,
+          "width": 121,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 8,
+      "error": null
+    },
+    {
+      "url": "https://www.midigamaplantationsurfinn.com/restaurant",
+      "depth": 1,
+      "via": "https://www.midigamaplantationsurfinn.com/",
+      "status": 200,
+      "final_url": "https://www.midigamaplantationsurfinn.com/restaurant",
+      "title": "Restaurant – Plantation Surf Inn – Midigama Surf Accommodation, Sri Lanka",
+      "viewport_meta": true,
+      "text_chars": 658,
+      "actions": [
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://www.airbnb.com.au/rooms/334022?source_impression_id=p3_1592529464_NSGcjSAy6KWAmQ3%2B&guests=1&adults=1",
+          "label": "",
+          "tag": "a",
+          "top": 5935,
+          "height": 19,
+          "width": 180,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://www.booking.com/hotel/lk/plantation-surf-inn-amp-restaurant.html?aid=318615&label=English_Australia_EN_AU_29561939065-Z4sntSEom2MAT1DmyYipJgS113415591745%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi70399579280%3Atidsa-331215073644%3Alp9056927%3Ali%3Adec%3Adm&sid=dd206af7f8ad4e9b72c37d09fdbd3c74&dest_id=-2228683&dest_type=city&from_beach_non_key_ufi_sr=1&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&sr_order=popularity&srepoch=1592529793&srpvid=6e1509c061d40099&ucfs=1&from=searchresults;highlight_room=#hotelTmpl",
+          "label": "",
+          "tag": "a",
+          "top": 6010,
+          "height": 19,
+          "width": 220,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:chathuplantationsurf@gmail.com",
+          "label": "chathuplantationsurf@gmail.com",
+          "tag": "a",
+          "top": 6130,
+          "height": 19,
+          "width": 231,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "tel",
+          "terminal": true,
+          "href": "tel:+94776438 912",
+          "label": "+94 776 438 912",
+          "tag": "a",
+          "top": 6156,
+          "height": 19,
+          "width": 121,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 8,
+      "error": null
+    },
+    {
+      "url": "https://www.midigamaplantationsurfinn.com/activities-and-services",
+      "depth": 1,
+      "via": "https://www.midigamaplantationsurfinn.com/",
+      "status": 200,
+      "final_url": "https://www.midigamaplantationsurfinn.com/activities-and-services",
+      "title": "Activities and Services – Plantation Surf Inn – Midigama Surf Accommodation, Sri Lanka",
+      "viewport_meta": true,
+      "text_chars": 1078,
+      "actions": [
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://www.airbnb.com.au/rooms/334022?source_impression_id=p3_1592529464_NSGcjSAy6KWAmQ3%2B&guests=1&adults=1",
+          "label": "",
+          "tag": "a",
+          "top": 4509,
+          "height": 19,
+          "width": 180,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://www.booking.com/hotel/lk/plantation-surf-inn-amp-restaurant.html?aid=318615&label=English_Australia_EN_AU_29561939065-Z4sntSEom2MAT1DmyYipJgS113415591745%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi70399579280%3Atidsa-331215073644%3Alp9056927%3Ali%3Adec%3Adm&sid=dd206af7f8ad4e9b72c37d09fdbd3c74&dest_id=-2228683&dest_type=city&from_beach_non_key_ufi_sr=1&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&sr_order=popularity&srepoch=1592529793&srpvid=6e1509c061d40099&ucfs=1&from=searchresults;highlight_room=#hotelTmpl",
+          "label": "",
+          "tag": "a",
+          "top": 4583,
+          "height": 19,
+          "width": 220,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:chathuplantationsurf@gmail.com",
+          "label": "chathuplantationsurf@gmail.com",
+          "tag": "a",
+          "top": 4703,
+          "height": 19,
+          "width": 231,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "tel",
+          "terminal": true,
+          "href": "tel:+94776438 912",
+          "label": "+94 776 438 912",
+          "tag": "a",
+          "top": 4730,
+          "height": 19,
+          "width": 121,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 8,
+      "error": null
+    },
+    {
+      "url": "https://www.midigamaplantationsurfinn.com/surf-spots-midigama",
+      "depth": 1,
+      "via": "https://www.midigamaplantationsurfinn.com/",
+      "status": 200,
+      "final_url": "https://www.midigamaplantationsurfinn.com/surf-spots-midigama",
+      "title": "Surf Spots – Plantation Surf Inn – Midigama Surf Accommodation, Sri Lanka",
+      "viewport_meta": true,
+      "text_chars": 1701,
+      "actions": [
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://www.airbnb.com.au/rooms/334022?source_impression_id=p3_1592529464_NSGcjSAy6KWAmQ3%2B&guests=1&adults=1",
+          "label": "",
+          "tag": "a",
+          "top": 4428,
+          "height": 19,
+          "width": 180,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://www.booking.com/hotel/lk/plantation-surf-inn-amp-restaurant.html?aid=318615&label=English_Australia_EN_AU_29561939065-Z4sntSEom2MAT1DmyYipJgS113415591745%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi70399579280%3Atidsa-331215073644%3Alp9056927%3Ali%3Adec%3Adm&sid=dd206af7f8ad4e9b72c37d09fdbd3c74&dest_id=-2228683&dest_type=city&from_beach_non_key_ufi_sr=1&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&sr_order=popularity&srepoch=1592529793&srpvid=6e1509c061d40099&ucfs=1&from=searchresults;highlight_room=#hotelTmpl",
+          "label": "",
+          "tag": "a",
+          "top": 4502,
+          "height": 19,
+          "width": 220,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:chathuplantationsurf@gmail.com",
+          "label": "chathuplantationsurf@gmail.com",
+          "tag": "a",
+          "top": 4622,
+          "height": 19,
+          "width": 231,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "tel",
+          "terminal": true,
+          "href": "tel:+94776438 912",
+          "label": "+94 776 438 912",
+          "tag": "a",
+          "top": 4649,
+          "height": 19,
+          "width": 121,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 8,
+      "error": null
+    },
+    {
+      "url": "https://www.midigamaplantationsurfinn.com/contact",
+      "depth": 1,
+      "via": "https://www.midigamaplantationsurfinn.com/",
+      "status": 200,
+      "final_url": "https://www.midigamaplantationsurfinn.com/contact",
+      "title": "Contact Us – Plantation Surf Inn – Midigama Surf Accommodation, Sri Lanka",
+      "viewport_meta": true,
+      "text_chars": 349,
+      "actions": [
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:chathuplantationsurf@gmail.com",
+          "label": "chathuplantationsurf@gmail.com",
+          "tag": "a",
+          "top": 646,
+          "height": 19,
+          "width": 231,
+          "above_fold": true,
+          "tap_target_ok": false
+        },
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://www.airbnb.com.au/rooms/334022?source_impression_id=p3_1592529464_NSGcjSAy6KWAmQ3%2B&guests=1&adults=1",
+          "label": "",
+          "tag": "a",
+          "top": 1787,
+          "height": 19,
+          "width": 180,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://www.booking.com/hotel/lk/plantation-surf-inn-amp-restaurant.html?aid=318615&label=English_Australia_EN_AU_29561939065-Z4sntSEom2MAT1DmyYipJgS113415591745%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi70399579280%3Atidsa-331215073644%3Alp9056927%3Ali%3Adec%3Adm&sid=dd206af7f8ad4e9b72c37d09fdbd3c74&dest_id=-2228683&dest_type=city&from_beach_non_key_ufi_sr=1&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&sr_order=popularity&srepoch=1592529793&srpvid=6e1509c061d40099&ucfs=1&from=searchresults;highlight_room=#hotelTmpl",
+          "label": "",
+          "tag": "a",
+          "top": 1862,
+          "height": 19,
+          "width": 220,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:chathuplantationsurf@gmail.com",
+          "label": "chathuplantationsurf@gmail.com",
+          "tag": "a",
+          "top": 1982,
+          "height": 19,
+          "width": 231,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "tel",
+          "terminal": true,
+          "href": "tel:+94776438 912",
+          "label": "+94 776 438 912",
+          "tag": "a",
+          "top": 2008,
+          "height": 19,
+          "width": 121,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": "https://www.midigamaplantationsurfinn.com/contact",
+          "label": "form (8 fields)",
+          "tag": "form",
+          "top": 840,
+          "above_fold": false
+        }
+      ],
+      "internal_links": 8,
+      "error": null
+    }
+  ]
+}
