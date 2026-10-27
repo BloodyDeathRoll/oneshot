@@ -594,7 +594,9 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 
 .site-acts>.btn.p{margin-right:auto}
 .site .spill.gate{background:var(--green-bg);color:var(--green)}
-.site-drafts{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px 10px;margin-top:10px;font-size:13px}
+.site-drafts{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 10px;margin-top:10px;font-size:13px}
+.site-drafts .sd-l{font-weight:600;color:var(--ink)}
+.site-drafts .sd-b{display:flex;flex-wrap:wrap;gap:8px 10px;justify-content:flex-end}
 .site-drafts .dic{display:inline-grid;place-items:center;color:var(--ink2)}
 .site-drafts .dic svg{width:16px;height:16px}
 .site-drafts .dic.wa{color:#25D366}
@@ -1706,8 +1708,6 @@ function renderSites(){
   const sites=pitchSites();
   const head=$('#sites-head');head.innerHTML='';
   if(!sites.length){box.append(el('section',{class:'card'},el('h2',{class:'label',text:'No site has a preview yet'}),el('p',{class:'empty',style:'margin-top:8px;font-size:15px;color:var(--ink2)',text:'Fills when a business reaches previewed.'})));return}
-  const compact=matchMedia('(max-width:1280px)').matches;
-  const W=compact?(Math.min(1232,innerWidth)-72-48-24)/2-56:(1152-48)/3-56;
   for(const b of sites){
     const c=el('article',{class:'card site',id:'site-'+b.slug,tabindex:'-1','aria-label':b.name});
     c.append(thumb(b,'shot'));
@@ -1721,14 +1721,19 @@ function renderSites(){
     const num=el('div',{class:'num',text:'0'});sc.append(num);
     sc.append(el('div',{class:'v',html:last?`<b class="${last.verdict==='PASS'?'pass':'fail'}">${last.verdict}</b> · ${b.critic_score_kind} · ${dShort(last.ts)}<br>${b.critic_rounds} round${b.critic_rounds===1?'':'s'}, ${b.critic_series.filter(s=>s.kind==='verification').length} verification${b.critic_series.filter(s=>s.kind==='verification').length===1?'':'s'}`:'no critic score'}));
     body.append(sc);
-    if(scored.length)body.append(el('figure',{class:'scorechart'},scoreChart(scored,W,b.slug)));
+    // The chart is drawn once the card is on the page, at the figure's real width (Figma: full card width)
+    const fig=scored.length?el('figure',{class:'scorechart'}):null;if(fig)body.append(fig);
     // Figma 2026-10-27: Update status left, the two links right; the drafts on a second row, right, with their icons
     const acts=siteLinks(b);acts.classList.add('site-acts');
-    const drafts=[...acts.querySelectorAll('button.cta')];const r2=el('div',{class:'site-drafts'});
-    for(const d of drafts){const ic=/WhatsApp/.test(d.textContent)?ICON_WA:/email/.test(d.textContent)?ICON_MAIL:ICON_PERSON;d.append(el('span',{class:'dic'+(ic===ICON_WA?' wa':''),html:ic}));r2.append(d)}
+    // Figma 2026-10-28: "Suggested approach:" left, short draft buttons right (WhatsApp, in-person script, email)
+    const SHORT={'Suggested WhatsApp':'WhatsApp','Suggested in-person script':'in-person script','Suggested email':'Email'},ORD=['WhatsApp','in-person script','Email'];
+    const drafts=[...acts.querySelectorAll('button.cta')].sort((x,y)=>ORD.indexOf(SHORT[x.textContent])-ORD.indexOf(SHORT[y.textContent]));
+    const r2=el('div',{class:'site-drafts'},el('span',{class:'sd-l',text:'Suggested approach:'}));const r2b=el('div',{class:'sd-b'});r2.append(r2b);
+    for(const d of drafts){const full=d.textContent,ic=/WhatsApp/.test(full)?ICON_WA:/email/.test(full)?ICON_MAIL:ICON_PERSON;d.textContent=SHORT[full]||full;d.setAttribute('aria-label',`${full} for ${b.name}`);d.append(el('span',{class:'dic'+(ic===ICON_WA?' wa':''),html:ic}));r2b.append(d)}
     if(b.state==='packaged'||/^(pitched|outcome:(reply|meeting|ignored))$/.test(b.state)){const u=el('button',{type:'button',class:'btn p',text:'Update status'});u.onclick=()=>statusModal(b);acts.prepend(u)}
     body.append(acts);if(drafts.length)body.append(r2);
     c.append(body);box.append(c);
+    if(fig){let w0=0;const draw=()=>{const w=fig.clientWidth;if(!w||Math.abs(w-w0)<2)return;w0=w;fig.replaceChildren(scoreChart(scored,w,b.slug))};draw();new ResizeObserver(draw).observe(fig)} // hidden view: drawn when it shows
     if(b.critic_score!=null)countUp(num,b.critic_score,'site-'+b.slug);else num.textContent='—';
   }
 }
