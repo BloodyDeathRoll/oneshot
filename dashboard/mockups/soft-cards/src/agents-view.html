@@ -273,7 +273,7 @@
 .agv-pop .agv-steps{color:var(--ink2);margin:0 0 14px}
 .agv-pop .agv-steps b{color:var(--ink)}
 .agv-pbox{white-space:pre-wrap;background:var(--ground);border-radius:14px;padding:16px 18px;font-size:14px;line-height:1.6;color:#1B1530;max-height:52vh;overflow:auto;overflow-wrap:anywhere;margin:0;font-family:inherit}
-.agv-pfoot{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap}.agv-pfoot>.agv-res{margin:0 auto 0 0}
+.agv-pfoot{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap}.agv-pfoot:has(>.agv-res){gap:16px}.agv-pfoot>.agv-res{margin:0;text-align:right}
 .agv-msub{font-size:14px;color:var(--ink3);margin-top:2px}
 /* tooltip */
 .agv-tip{position:fixed;z-index:3000;max-width:340px;background:var(--ink);color:#fff;border-radius:12px;padding:10px 14px;font-size:14px;line-height:1.5;pointer-events:none;box-shadow:0 24px 64px rgba(11,18,32,.18);opacity:0;transition:opacity .12s}
@@ -830,7 +830,7 @@ function openFix(id) {
   const box = node(`<pre class="agv-pbox" tabindex="0" aria-label="What is wrong"></pre>`); box.textContent = brief;
   const res = node(`<p class="agv-res" role="status"></p>`);
   const foot = node(`<div class="agv-pfoot"><button type="button" class="agv-btnp">Apply fix</button></div>`);
-  foot.prepend(res); // status sits across from the button, left, centred on it
+  foot.prepend(res); // status sits right next to the button (16px), centred on it
   const d = pop('View fix', model().agents[id].name, box, foot);
   const b = $('button', foot); b.onclick = () => startFix(id, brief, res, b); b.focus();
   return d;
