@@ -311,16 +311,19 @@ async function tryPr(spec) {
 // Shahar, 2026-10-27: pressing the button is the approval; no prompt to paste, no second approval.
 const fixes = new Map(); // branch -> { agent, state: running|pr|failed, pr?, error?, at }
 const sh = (cmd, args) => new Promise((ok, no) => execFile(cmd, args, { cwd: ROOT, timeout: 120_000 }, (e, out, err) => (e ? no(new Error(String(err || e.message).trim().split('\n').pop())) : ok(String(out).trim()))));
-function startFix({ agent, brief }, who) {
+async function startFix({ agent, brief }, who) {
   if (!/^[a-z0-9-]+$/.test(String(agent ?? '')) || !existsSync(join(ROOT, 'agents', agent, 'base.md'))) return { status: 400, error: 'unknown agent' };
   if (typeof brief !== 'string' || !brief.trim() || brief.length > 20_000) return { status: 400, error: 'brief must be text' };
   const running = [...fixes.entries()].find(([, f]) => f.agent === agent && f.state === 'running');
   if (running) return { status: 409, error: 'a fix for this agent is already running', branch: running[0] };
   const branch = `agent-fix/${agent}-${new Date().toISOString().replace(/\D/g, '').slice(0, 14)}`;
-  const f = { agent, state: 'running', at: new Date().toISOString() };
-  fixes.set(branch, f);
-  sh('gh', ['workflow', 'run', 'agent-fix.yml', '--ref', 'main', '-f', `agent=${agent}`, '-f', `operator=${who.operator ?? 'shahar'}`, '-f', `branch=${branch}`, '-f', `brief=${brief}`])
-    .catch((e) => { f.state = 'failed'; f.error = String(e.message ?? e); notify('agent-fix'); });
+  // repository_dispatch: the box's token has contents: write but not actions: write (workflow_dispatch was a 403)
+  const tmp = mkdtempSync(join(tmpdir(), 'agent-fix-')); const payload = join(tmp, 'payload.json');
+  writeFileSync(payload, JSON.stringify({ event_type: 'agent-fix', client_payload: { agent, operator: who.operator ?? 'shahar', branch, brief } }));
+  try { await sh('gh', ['api', 'repos/{owner}/{repo}/dispatches', '--input', payload]); }
+  catch (e) { return { status: 502, error: `GitHub refused to start the fix: ${e.message ?? e}` }; }
+  finally { rmSync(tmp, { recursive: true, force: true }); }
+  fixes.set(branch, { agent, state: 'running', at: new Date().toISOString() });
   return { status: 201, branch };
 }
 
@@ -437,8 +440,7 @@ function handle(req, res, who) {
     req.on('data', (c) => { raw += c; if (raw.length > 40_000) req.destroy(); });
     req.on('end', () => {
       let body; try { body = JSON.parse(raw); } catch { return send(res, 400, { error: 'body must be JSON' }); }
-      const out = startFix(body ?? {}, who);
-      send(res, out.status, out);
+      startFix(body ?? {}, who).then((out) => send(res, out.status, out), (e) => send(res, 500, { error: String(e.message ?? e) }));
     });
     return;
   }
