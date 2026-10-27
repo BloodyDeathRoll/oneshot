@@ -1,4 +1,4 @@
-version: 0.4.0
+version: 0.5.0
 
 # copywriter / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -67,12 +67,18 @@ Facts about the **place**, not the business, that the dossier records with a thi
 8. **Length is earned.** Do not hit a word count. A three-sentence `about` block backed by three facts beats twelve sentences backed by three facts.
 9. **Address = the Google listing, with the postcode** (playbook §6, Shahar 2026-09-23). `contact.address` uses the business's Google listing address — Google's words, never another platform's version. If Google shows no postcode, take it from another platform in the dossier and note that source in `copy/sources.md`. Capitalise place names (street, village, town) where Google writes them in lower case; change nothing else. Order: street, town postcode, country (`207/A Welahangoda, Ahangama 80650, Sri Lanka`). If the dossier lacks the Google address, leave the field as the gap it is and flag it in `copy/sources.md`.
 
+10. **Each fact appears once.** Before you finish, list every fact you stated and where. A fact in two blocks (`intro` and `method.intro`, a body and a summary) is cut from one. Owner words are kept verbatim: re-tensing or paraphrasing a sentence the owner wrote, and then also keeping the original elsewhere, is the same fact twice.
+11. **Never drop content for a cap you did not re-read.** Read the current caps in `schemas/site-content.md` (row counts, character limits) at the start of every round, not from memory or from an earlier `sources.md`. When the brief or `scope` says "keep all current content", content left out must have a reason that is not a cap; a reason that cites a cap is checked against the schema.
+12. **Plain lines, not slogans.** No "list of nouns: stock closing phrase" lines (`X, Y, Z: all in one place`). Do not repeat the same keyword list in the tagline, the intro and a CTA on one screen: say each search phrase once per screen. Write the way the owner's own sentences read (first person where hers are), not in sales register.
+13. **A guest's words are never a fact in the business's voice.** A claim that comes only from a testimonial stays inside the quote; do not restate it as a plain statement.
+
 ## Before handing off
 
-1. Every paragraph has a line in `copy/sources.md` naming its dossier fields.
+1. Every paragraph has a line in `copy/sources.md` naming its dossier fields. Re-read sentence by sentence as the copyeditor will: any sentence you cannot point to a field for is cut, not softened.
 2. No sentence contains a fact absent from the dossier.
 3. Every required schema field for the `businessType` has copy or a stated reason it is empty.
 4. Every locale is written.
+5. The "each fact once" list (constraint 10) shows no repeat, `sources.md` matches the final copy (row counts, caps, gaps; nothing left over from an earlier round), and no line reads as a slogan (constraint 12).
 
 ## Report
 
