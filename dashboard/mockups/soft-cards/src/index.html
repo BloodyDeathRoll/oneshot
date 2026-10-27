@@ -1434,10 +1434,12 @@ function needsItems(){const keep=D;D=RAW;try{return needsAll()}finally{D=keep}}
 const otherWf=items=>!!WF&&items.some(i=>{const w=(i.b||i.g)?.workflow??((i.a||i.h)&&RAW.businesses.find(x=>x.slug===(i.a||i.h).slug)?.workflow);return w&&w!==WF});
 function needsAll(){
   const out=[],wt=b=>multiWf()&&b&&b.workflow?wfLabel(b.workflow)+' · ':'';
-  for(const b of pitchSites().filter(b=>b.state==='packaged'))out.push({kind:'pitch',b,title:`Send ${b.name}'s pitch`,sub:`${wt(b)}Send it yourself (WhatsApp, email or in person), then press Update status · ready since ${dShort(b.last_change)}`});
-  for(const b of pitchSites().filter(b=>/^(pitched|outcome:(reply|meeting))$/.test(b.state)))out.push({kind:'outcome',b,title:`Follow up with ${b.name}`,sub:`${pitchStatus(b)[1]} — record what the owner said`});
+  // each operator sees only their own businesses: the owner (last handoff receiver, else the run's operator)
+  const mine=b=>!b?.owned_by||isMine(b),biz=g=>D.businesses.find(b=>b.slug===g.slug&&b.run_id===g.run_id);
+  for(const b of pitchSites().filter(b=>b.state==='packaged'&&mine(b)))out.push({kind:'pitch',b,title:`Send ${b.name}'s pitch`,sub:`${wt(b)}Send it yourself (WhatsApp, email or in person), then press Update status · ready since ${dShort(b.last_change)}`});
+  for(const b of pitchSites().filter(b=>/^(pitched|outcome:(reply|meeting))$/.test(b.state)&&mine(b)))out.push({kind:'outcome',b,title:`Follow up with ${b.name}`,sub:`${pitchStatus(b)[1]} — record what the owner said`});
   for(const p of D.proposals.filter(p=>p.kind==='proposal'&&p.status==='pending'))out.push({kind:'tweak',p,title:p.title,sub:`Suggested agent tweak · ${p.agent||'agent'} — approve or reject`});
-  for(const g of D.gates.filter(g=>g.slug&&g.kind!=='send the pitch'))out.push({kind:'gate',g,title:`${g.name}: ${g.kind}`,sub:`${wt(g)}${runShort(g.run_id)} · since ${dShort(g.since)}`});
+  for(const g of D.gates.filter(g=>g.slug&&g.kind!=='send the pitch'&&mine(biz(g))))out.push({kind:'gate',g,title:`${g.name}: ${g.kind}`,sub:`${wt(g)}${runShort(g.run_id)} · since ${dShort(g.since)}`});
   for(const h of (D.team?.handoffs||[]).filter(h=>h.status==='requested'&&h.from===D.team?.viewer))out.push({kind:'handoff',h,title:`${h.to_name} asks for ${h.business}`,sub:`Handoff · "${h.note}" · since ${dShort(h.ts)} — approve or reject`});
   return out;
 }
