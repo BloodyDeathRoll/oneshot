@@ -787,7 +787,7 @@ function wrongOf(id) {
   if (x.state === 'green') out.push('Less than 1 in 5 was sent back.');
   return { html: out.slice(0, 3).join(' '), fix: x.state === 'red' || x.state === 'amber' };
 }
-function promptFor(id) {
+function promptFor(id, brief) {
   const m = model(); const a = m.agents[id]; const x = health(id, 'all'); const nm = a.name.toLowerCase();
   const L = [`The ${nm} agent in Oneshot is not performing. Please look into it.`, '', 'What is wrong (all runs, counted from ledger.jsonl):']; const ex = [];
   if (!x.parts.length && id === 'copyeditor') {
@@ -809,25 +809,51 @@ function promptFor(id) {
   if (ex.length) L.push('', 'Most recent examples:', ...ex);
   const tw = tweaksFor(id); if (tw.length) L.push('', `Suggested tweaks already waiting for this agent (read them first, do not duplicate them): ${tw.map((t) => `"${t.title}"`).join('; ')}.`);
   L.push('', `Read agents/${id}/base.md (Claude's instructions for this agent) and agents/${id}/custom.md (Shahar's rules: read it, never edit it), then the ledger lines${id === 'copyeditor' || x.parts.some((p) => p.j.kind === 'copy') ? ' and copy reviews' : ''} for the examples above. Find what in the instructions lets this happen.`);
-  L.push(`Propose a change to agents/${id}/base.md to fix this and save it as a suggested tweak under proposals/, with the evidence. Do not apply the change, and do not change the counts above.`);
+  if (!brief) L.push(`Pasting this prompt is Shahar's approval: do not ask for another one. Fix agents/${id}/base.md: bump its version, add a CHANGELOG entry, and save the evidence as proposals/<run-id>/<nnn>-${id}-<topic>.md marked applied. Append one ledger line proposal:approved for that file. Pin the new version in your active run file. Never edit any custom.md (a needed change there is a separate custom.md proposal). Do not change the counts above.`, `Then, in one PR: wait for the GitHub agent review, audit it, fix and repeat until clean, merge, and delete the branch. The dashboard shows the fix once it is on main.`);
   return L.join('\n');
 }
 function openFix(id) {
   const text = promptFor(id);
-  const box = node(`<pre class="agv-pbox" tabindex="0" aria-label="The prompt"></pre>`); box.textContent = text;
-  const steps = node(`<p class="agv-steps"><b>Copy the prompt</b> and paste it into a Claude session. Claude looks into it and saves its proposed change as a suggested tweak. It shows up here with Approve and Reject; <b>nothing changes until you approve it</b>.</p>`);
-  const foot = node(`<div class="agv-pfoot"><button type="button" class="agv-btnp">${I.copy}Copy prompt</button></div>`);
-  const d = pop("Get Claude's suggested fix", model().agents[id].name, steps, box, foot);
-  const b = $('button', foot); b.onclick = () => api.copyText(text, b, true); b.focus();
+  if (!api.LIVE) { // static copy: no server to start the fix, so the prompt is the way
+    const box = node(`<pre class="agv-pbox" tabindex="0" aria-label="The prompt"></pre>`); box.textContent = text;
+    const steps = node(`<p class="agv-steps"><b>Copy the prompt</b> and paste it into a Claude session. Pasting it is your approval: Claude fixes the agent and merges the change. <b>Nothing else to approve.</b></p>`);
+    const foot = node(`<div class="agv-pfoot"><button type="button" class="agv-btnp">${I.copy}Copy prompt</button></div>`);
+    const d = pop("Get Claude's fix", model().agents[id].name, steps, box, foot);
+    const b = $('button', foot); b.onclick = () => api.copyText(text, b, true); b.focus();
+    return d;
+  }
+  const steps = node(`<p class="agv-steps">Claude finds what in this agent's instructions lets this happen, fixes it, and <b>opens a PR</b> with the change. Pressing the button is your approval. It takes about 5 to 15 minutes; you can close this.</p>`);
+  const res = node(`<p class="agv-res" role="status"></p>`);
+  const foot = node(`<div class="agv-pfoot"><button type="button" class="agv-btnp">Fix it</button></div>`);
+  const d = pop('Fix this agent', model().agents[id].name, steps, res, foot);
+  const b = $('button', foot); b.onclick = () => startFix(id, promptFor(id, true), res, b); b.focus();
   return d;
+}
+// POST agent-fix, then follow it until the PR is open (dashboard/server.mjs startFix)
+async function startFix(agent, brief, resEl, btn) {
+  if (btn) btn.disabled = true; resEl.className = 'agv-res'; resEl.textContent = 'starting…';
+  let r, j;
+  try { r = await fetch('agent-fix', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ agent, brief }), cache: 'no-store' }); j = await r.json().catch(() => ({ error: 'response was not JSON' })); } catch (e) { r = { status: 0 }; j = { error: String(e) }; }
+  if (r.status !== 201 && !j.branch) { resEl.className = 'agv-res err'; resEl.textContent = `${r.status || 'network'}: ${j.error || 'unknown error'}`; if (btn) btn.disabled = false; return; }
+  const branch = j.branch; resEl.textContent = 'Claude is working on it. The PR link appears here.';
+  const tick = async () => {
+    let all = {}; try { all = await (await fetch('agent-fix', { cache: 'no-store' })).json(); } catch {}
+    const f = all[branch];
+    if (f?.state === 'pr') { resEl.innerHTML = ''; resEl.append('PR open: '); const a = document.createElement('a'); a.href = f.pr; a.target = '_blank'; a.rel = 'noopener'; a.textContent = f.pr; resEl.append(a); return; }
+    if (f?.state === 'failed') { resEl.className = 'agv-res err'; resEl.textContent = f.error; if (btn) btn.disabled = false; return; }
+    setTimeout(tick, 15_000);
+  };
+  setTimeout(tick, 15_000);
 }
 // Approve / Reject through the server (the same call as the Decisions view)
 async function decide(t, choice, resEl, btns) {
+  // Approve on a base.md tweak: one PR that applies it and carries the approval line (agent-fix.yml), not a decision PR plus a fix PR
+  if (choice === 'approved' && t.agents?.length === 1 && !t.custom) { btns.forEach((b) => (b.disabled = true)); return startFix(t.agents[0], `Apply ${t.file} as written: it was approved on the dashboard.`, resEl); }
   btns.forEach((b) => (b.disabled = true)); resEl.className = 'agv-res'; resEl.textContent = 'saving…';
   let r, j;
   try { r = await fetch('decide', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ gate: 'proposal', run_id: t.run, file: t.file, choice, reason: '' }), cache: 'no-store' }); j = await r.json().catch(() => ({ error: 'response was not JSON' })); } catch (e) { r = { status: 0 }; j = { error: String(e) }; }
   S.results[t.file] = { status: r.status, choice, error: j.error };
-  if (r.status === 201) { resEl.innerHTML = choice === 'approved' ? '<b>Approved.</b> Claude applies it in its next session.' : '<b>Rejected.</b>'; setTimeout(() => api.refresh(), 800); }
+  if (r.status === 201) { resEl.innerHTML = choice === 'approved' ? '<b>Approved.</b>' : '<b>Rejected.</b>'; setTimeout(() => api.refresh(), 800); }
   else { resEl.className = 'agv-res err'; resEl.textContent = `${r.status || 'network'}: ${j.error || 'unknown error'}`; btns.forEach((b) => (b.disabled = !api.LIVE)); }
 }
 function tweakButtons(t, host, resEl) {
@@ -862,7 +888,7 @@ function detail(root, id) {
     root.innerHTML = `${head}<div class="agv-simple">
       <section class="agv-card agv-block" aria-labelledby="agv-does-h"><h3 id="agv-does-h">What it does</h3><p class="agv-bigp">${esc(a.does)}</p></section>
       <section class="agv-card agv-block" aria-labelledby="agv-wrong-h"><h3 id="agv-wrong-h">What is wrong</h3><p class="agv-bigp">${w.html}</p>
-      ${w.fix ? `<div class="agv-cta"><button type="button" class="agv-btnp lg" id="agv-fix">${I.doc}Get Claude's suggested fix</button><p>A ready prompt for a Claude session. Claude proposes a fix as a suggested tweak; nothing changes until you approve it.</p></div>` : `<div class="agv-cta"><p>Nothing to fix from the data. To read or change this agent anyway, open Advanced.</p></div>`}</section>
+      ${w.fix ? `<div class="agv-cta"><button type="button" class="agv-btnp lg" id="agv-fix">${I.doc}Fix it</button><p>${api.LIVE ? 'Claude fixes this agent and opens a PR with the change. Pressing it is your approval.' : 'A ready prompt for a Claude session; pasting it is your approval.'}</p></div>` : `<div class="agv-cta"><p>Nothing to fix from the data. To read or change this agent anyway, open Advanced.</p></div>`}</section>
     </div>${tw.length ? `<section class="agv-card agv-twlines" aria-labelledby="agv-tws-h"><h3 id="agv-tws-h">Waiting for your answer</h3>${tw.map((t) => `<div class="agv-twl" data-file="${esc(t.file)}"><span class="agv-tt">${t.custom ? '<span class="agv-tag">For your rules</span>' : ''}${esc(t.title)}</span><span class="agv-tb"></span><span class="agv-res" role="status" aria-live="polite"></span></div>`).join('')}</section>` : ''}`;
     $$('.agv-twl', root).forEach((row) => { const t = tw.find((y) => y.file === row.dataset.file); tweakButtons(t, $('.agv-tb', row), $('.agv-res', row)); });
     $('#agv-fix', root)?.addEventListener('click', () => openFix(id));

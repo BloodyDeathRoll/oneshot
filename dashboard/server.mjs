@@ -40,7 +40,7 @@
 import { createServer } from 'node:http';
 import { readFileSync, existsSync, appendFileSync, writeFileSync, mkdirSync, readdirSync, mkdtempSync, rmSync, watch, statSync, createReadStream } from 'node:fs';
 import { createHash, randomUUID } from 'node:crypto';
-import { execFileSync } from 'node:child_process';
+import { execFileSync, execFile } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { join, dirname, resolve, extname, normalize, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -306,6 +306,45 @@ async function tryPr(spec) {
   catch (e) { const id = randomUUID(); failedPrs.set(id, { ...spec, pushed: Boolean(e.pushed) }); return { pr_error: String(e.message ?? e), retry: id }; }
 }
 
+// ---- agent fix: the dashboard button starts .github/workflows/agent-fix.yml (Claude in Actions applies the
+// fix and pushes a branch); this server then opens the PR with its own gh login, so the review runs on it.
+// Shahar, 2026-10-27: pressing the button is the approval; no prompt to paste, no second approval.
+const fixes = new Map(); // branch -> { agent, state: running|pr|failed, pr?, error?, at }
+const sh = (cmd, args) => new Promise((ok, no) => execFile(cmd, args, { cwd: ROOT, timeout: 120_000 }, (e, out, err) => (e ? no(new Error(String(err || e.message).trim().split('\n').pop())) : ok(String(out).trim()))));
+function startFix({ agent, brief }, who) {
+  if (!/^[a-z0-9-]+$/.test(String(agent ?? '')) || !existsSync(join(ROOT, 'agents', agent, 'base.md'))) return { status: 400, error: 'unknown agent' };
+  if (typeof brief !== 'string' || !brief.trim() || brief.length > 20_000) return { status: 400, error: 'brief must be text' };
+  const running = [...fixes.entries()].find(([, f]) => f.agent === agent && f.state === 'running');
+  if (running) return { status: 409, error: 'a fix for this agent is already running', branch: running[0] };
+  const branch = `agent-fix/${agent}-${new Date().toISOString().replace(/\D/g, '').slice(0, 14)}`;
+  const f = { agent, state: 'running', at: new Date().toISOString() };
+  fixes.set(branch, f);
+  sh('gh', ['workflow', 'run', 'agent-fix.yml', '--ref', 'main', '-f', `agent=${agent}`, '-f', `operator=${who.operator ?? 'shahar'}`, '-f', `branch=${branch}`, '-f', `brief=${brief}`])
+    .catch((e) => { f.state = 'failed'; f.error = String(e.message ?? e); notify('agent-fix'); });
+  return { status: 201, branch };
+}
+
+// Every pushed agent-fix branch gets its PR, also one pushed while this server was restarting (a merge
+// to main restarts it). The sweep is the only place PRs are opened, so a branch never gets two.
+let sweeping = false;
+async function sweepFixes() {
+  if (sweeping) return; sweeping = true;
+  try {
+    const heads = (await sh('git', ['ls-remote', '--heads', 'origin', 'agent-fix/*'])).split('\n').map((l) => l.split('refs/heads/')[1]).filter(Boolean);
+    for (const branch of heads) {
+      const f = fixes.get(branch);
+      if (f?.state === 'pr') continue;
+      const open = await sh('gh', ['pr', 'list', '--head', branch, '--state', 'all', '--json', 'url', '-q', '.[0].url']);
+      const pr = open || await sh('gh', ['pr', 'create', '--base', 'main', '--head', branch, '--fill']);
+      fixes.set(branch, { ...(f ?? { agent: branch.replace(/^agent-fix\/|-\d{14}$/g, ''), at: null }), state: 'pr', pr });
+      if (!open) notify('agent-fix');
+    }
+    for (const [, f] of fixes) if (f.state === 'running' && Date.now() - Date.parse(f.at) > 45 * 60_000) { f.state = 'failed'; f.error = 'no branch after 45 minutes; see the Agent fix workflow in GitHub Actions'; notify('agent-fix'); }
+  } catch (e) { console.error(`agent-fix sweep: ${e.message ?? e}`); }
+  finally { sweeping = false; }
+}
+setInterval(sweepFixes, 30_000).unref(); setTimeout(sweepFixes, 5_000).unref();
+
 // ---- thumbnails -------------------------------------------------------------------------------------
 let previewCache = { at: 0, urls: {} };
 function previewUrl(slug) {
@@ -388,6 +427,18 @@ function handle(req, res, who) {
       notify(path.slice(1));
       const { pr, ...saved } = out;
       tryPr(pr).then((r) => send(res, 201, { ...saved, ...r }));
+    });
+    return;
+  }
+  if (req.method === 'GET' && path === '/agent-fix') return send(res, 200, Object.fromEntries(fixes));
+  if (req.method === 'POST' && path === '/agent-fix') {
+    if (!/^application\/json\b/i.test(req.headers['content-type'] ?? '')) return send(res, 415, { error: 'content-type must be application/json' });
+    let raw = '';
+    req.on('data', (c) => { raw += c; if (raw.length > 40_000) req.destroy(); });
+    req.on('end', () => {
+      let body; try { body = JSON.parse(raw); } catch { return send(res, 400, { error: 'body must be JSON' }); }
+      const out = startFix(body ?? {}, who);
+      send(res, out.status, out);
     });
     return;
   }
