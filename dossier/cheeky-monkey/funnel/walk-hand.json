@@ -1,0 +1,1103 @@
+{
+ "walked_at": "2026-10-26T19:51:12.716Z",
+ "viewport": "390x844 DPR2 mobile, iPhone Safari UA, en-US, logged out",
+ "rules": "read-only; menu opened, cookie dialogs declined; no form submitted, no dates or personal data entered, no login, no contact",
+ "recipe": "dossier/cheeky-monkey/funnel/walk.mjs",
+ "steps": [
+  {
+   "step": "01-home",
+   "requested": "https://cheekymonkeymidigama.com/",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "final_url": "https://cheekymonkeymidigama.com/",
+   "screenshot": "funnel/walk/01-home-fold.png",
+   "screenshot_full": "funnel/walk/01-home-full.png",
+   "title": "cheekymonkeymidigama – The Best Surf Camp in Sri Lanka",
+   "doc_width": 470,
+   "body_width": 470,
+   "page_height": 5947,
+   "text_chars": 3057,
+   "tel_links": 0,
+   "whatsapp_links": 0,
+   "booking_com_links": [],
+   "shortcodes": [],
+   "php_notices": 1,
+   "lorem": false,
+   "site_links": [
+    {
+     "label": "cheekymonkeymidigama",
+     "href": "https://cheekymonkeymidigama.com/"
+    },
+    {
+     "label": "",
+     "href": "https://www.cheekymonkeymidigama.com/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/aboutus/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/surf-shop-facilities/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/contact/"
+    },
+    {
+     "label": "Terms & Conditions",
+     "href": "https://cheekymonkeymidigama.com/terms-conditions/"
+    },
+    {
+     "label": "Contact",
+     "href": "https://cheekymonkeymidigama.com/contact/"
+    },
+    {
+     "label": "Privacy Policy",
+     "href": "https://cheekymonkeymidigama.com/privacy-policy/"
+    }
+   ],
+   "reservation_links": [],
+   "phone_in_text": true,
+   "price_mentions": [],
+   "text_head": "\nNotice: Function _load_textdomain_just_in_time was called incorrectly. Translation loading for the js_composer domain was triggered too early. This is usually an indicator for some code in the plugin or theme running too early. Translations should be loaded at the init action or later. Please see Debugging in WordPress for more information. (This message was added in version 6.7.0.) in /home/cheekymo/public_html/wp-includes/functions.php on line 6260\nSkip to main content\nMenu\nWelcome to Cheeky Monkey\nYour Surf and Yoga Camp in Midigama\nGOOD TO KNOW: We’re renovating our rooms to make your next stay is even cheekier and comfier! \nWhile the rooms are getting their glow-up and aren’t bookable right now, our surf store is still open and ready for you!\nCatch waves, not worries – welcome to Cheeky Monkey Surf Camp in Midigama, Sri Lanka.\nJust a few barefoot steps from the best breaks on the south coast, we’re your laid-back base for surf, sun, and island vibes. Whether you’re a total beginner or chasing your next big ride, our experienced instructors will guide you through every step – with surf lessons tailored to your skill level, your pace, and your style.\nWe’re not just about riding waves — we’re about living the surf lifestyle. Wake up to salty air, chase tropical swells, chill with new friends, and soak up the local island culture. Our surf packages are flexible, affordable, and designed to give you the most epic experience, no matter your budget.\nAlready dreaming of your ne",
+   "at": [
+    {
+     "needle": "GOOD TO KNOW",
+     "y": 817,
+     "screenshot": "funnel/walk/01-home-renovation-banner.png"
+    },
+    {
+     "needle": "71 924 8686",
+     "y": 5410,
+     "screenshot": "funnel/walk/01-home-phone-text.png"
+    },
+    {
+     "needle": "cheekymonkeymidi@gmail.com",
+     "y": 5360,
+     "screenshot": "funnel/walk/01-home-email-text.png"
+    }
+   ],
+   "scroll_x_max": 0,
+   "screenshot_scrolled_right": "funnel/walk/01-home-scrolled-right.png",
+   "menu_items": [
+    [
+     "Home",
+     "https://www.cheekymonkeymidigama.com/"
+    ],
+    [
+     "About us",
+     "https://cheekymonkeymidigama.com/aboutus/"
+    ],
+    [
+     "Surf Shop & Activities",
+     "https://cheekymonkeymidigama.com/surf-shop-facilities/"
+    ],
+    [
+     "Contact us",
+     "https://cheekymonkeymidigama.com/contact/"
+    ]
+   ],
+   "screenshot_menu": "funnel/walk/01-home-menu-open.png"
+  },
+  {
+   "step": "02-contact",
+   "requested": "https://cheekymonkeymidigama.com/contact/",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "final_url": "https://cheekymonkeymidigama.com/contact/",
+   "screenshot": "funnel/walk/02-contact-fold.png",
+   "screenshot_full": "funnel/walk/02-contact-full.png",
+   "title": "Contact Us – cheekymonkeymidigama",
+   "doc_width": 445,
+   "body_width": 445,
+   "page_height": 1801,
+   "text_chars": 929,
+   "tel_links": 0,
+   "whatsapp_links": 0,
+   "booking_com_links": [],
+   "shortcodes": [
+    "[heading text=”Send Us Message” tag=”h3″]",
+    "[contact-form-7 id=”117″]",
+    "[heading text=”Contact Info” tag=”h3″]"
+   ],
+   "php_notices": 1,
+   "lorem": false,
+   "site_links": [
+    {
+     "label": "cheekymonkeymidigama",
+     "href": "https://cheekymonkeymidigama.com/"
+    },
+    {
+     "label": "",
+     "href": "https://www.cheekymonkeymidigama.com/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/aboutus/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/surf-shop-facilities/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/contact/"
+    },
+    {
+     "label": "http://cheekymonkeymidigama.com/",
+     "href": "http://cheekymonkeymidigama.com/"
+    },
+    {
+     "label": "Terms & Conditions",
+     "href": "https://cheekymonkeymidigama.com/terms-conditions/"
+    },
+    {
+     "label": "Contact",
+     "href": "https://cheekymonkeymidigama.com/contact/"
+    },
+    {
+     "label": "Privacy Policy",
+     "href": "https://cheekymonkeymidigama.com/privacy-policy/"
+    }
+   ],
+   "reservation_links": [],
+   "phone_in_text": true,
+   "price_mentions": [],
+   "text_head": "\nNotice: Function _load_textdomain_just_in_time was called incorrectly. Translation loading for the js_composer domain was triggered too early. This is usually an indicator for some code in the plugin or theme running too early. Translations should be loaded at the init action or later. Please see Debugging in WordPress for more information. (This message was added in version 6.7.0.) in /home/cheekymo/public_html/wp-includes/functions.php on line 6260\nSkip to main content\nMenu\n[heading text=”Send Us Message” tag=”h3″]\n[contact-form-7 id=”117″]\n[heading text=”Contact Info” tag=”h3″]\nThanahena waththa, Midigama East, Midigama\nAhangama\nPhone:(+94) 71 924 8686\nEmail:cheekymonkeymidi@gmail.com\nWeb:http://cheekymonkeymidigama.com/\nTerms & Conditions\nContact\nPrivacy Policy\nNotice: ob_end_flush(): Failed to send buffer of zlib output compression (0) in /home/cheekymo/public_html/wp-includes/functions.php on line 5581\n",
+   "at": [
+    {
+     "needle": "contact-form-7",
+     "y": 1111,
+     "screenshot": "funnel/walk/02-contact-shortcode.png"
+    }
+   ]
+  },
+  {
+   "step": "03-our-services",
+   "requested": "https://cheekymonkeymidigama.com/our-services/",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "final_url": "https://cheekymonkeymidigama.com/our-services/",
+   "screenshot": "funnel/walk/03-our-services-fold.png",
+   "screenshot_full": "funnel/walk/03-our-services-full.png",
+   "title": "Our Services – cheekymonkeymidigama",
+   "doc_width": 577,
+   "body_width": 577,
+   "page_height": 4701,
+   "text_chars": 3629,
+   "tel_links": 0,
+   "whatsapp_links": 0,
+   "booking_com_links": [],
+   "shortcodes": [],
+   "php_notices": 1,
+   "lorem": false,
+   "site_links": [
+    {
+     "label": "cheekymonkeymidigama",
+     "href": "https://cheekymonkeymidigama.com/"
+    },
+    {
+     "label": "",
+     "href": "https://www.cheekymonkeymidigama.com/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/aboutus/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/surf-shop-facilities/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/contact/"
+    },
+    {
+     "label": "Check our surf shop",
+     "href": "http://cheekymonkeymidigama.com/surf-shop-facilities/"
+    },
+    {
+     "label": "Terms & Conditions",
+     "href": "https://cheekymonkeymidigama.com/terms-conditions/"
+    },
+    {
+     "label": "Contact",
+     "href": "https://cheekymonkeymidigama.com/contact/"
+    },
+    {
+     "label": "Privacy Policy",
+     "href": "https://cheekymonkeymidigama.com/privacy-policy/"
+    }
+   ],
+   "reservation_links": [],
+   "phone_in_text": false,
+   "price_mentions": [
+    "USD 20",
+    "USD100"
+   ],
+   "text_head": "\nNotice: Function _load_textdomain_just_in_time was called incorrectly. Translation loading for the js_composer domain was triggered too early. This is usually an indicator for some code in the plugin or theme running too early. Translations should be loaded at the init action or later. Please see Debugging in WordPress for more information. (This message was added in version 6.7.0.) in /home/cheekymo/public_html/wp-includes/functions.php on line 6260\nSkip to main content\nMenu\nSurf School & Camp ( Lessons)\nWe have made it our business to share and pass on this fun with others.\nUnder professional guidance and in a group you can make fast progress and immerse yourself playfully in the art of surfing.\nExperience, enthusiasm and an almost unconditional love for surfing – that&#39;s what distinguishes us at Cheeky Monkey Surf Camp.\nWe recommend you join our 7-day Learn-to-Surf program. During the five days we will teach you all you need to know to become a surfer. Or book a private lesson with one of our instructors and boost you surfing.If you have already enough experience to surf independently you can join us without having lessons with free access to all our equipment from our Surf Shop in the property. Providing Professional Surf lessons by ISA certified surf instructors & Yoga lessons by certified professional yoga instructors\nPrice Per Person – USD 20 (1 and Half Hours)\nGroup – Maximum 6 –  USD100\n Check our surf shop\nYoga\nBliss yourself out with yoga every morning during y",
+   "at": [
+    {
+     "needle": "USD 20",
+     "y": 1138,
+     "screenshot": "funnel/walk/03-our-services-lesson-price.png"
+    },
+    {
+     "needle": "Reservation",
+     "y": 4150,
+     "screenshot": "funnel/walk/03-our-services-reservation-enquiry.png"
+    }
+   ]
+  },
+  {
+   "step": "04-packages",
+   "requested": "https://cheekymonkeymidigama.com/surf-camp-packages-sri-lanka/",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "final_url": "https://cheekymonkeymidigama.com/surf-camp-packages-sri-lanka/",
+   "screenshot": "funnel/walk/04-packages-fold.png",
+   "screenshot_full": "funnel/walk/04-packages-full.png",
+   "title": "Surf Packages and Accommodation – cheekymonkeymidigama",
+   "doc_width": 445,
+   "body_width": 445,
+   "page_height": 3368,
+   "text_chars": 2265,
+   "tel_links": 0,
+   "whatsapp_links": 0,
+   "booking_com_links": [],
+   "shortcodes": [],
+   "php_notices": 1,
+   "lorem": false,
+   "site_links": [
+    {
+     "label": "cheekymonkeymidigama",
+     "href": "https://cheekymonkeymidigama.com/"
+    },
+    {
+     "label": "",
+     "href": "https://www.cheekymonkeymidigama.com/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/aboutus/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/surf-shop-facilities/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/contact/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/wp-content/uploads/2020/01/83006393.jpg"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/wp-content/uploads/2020/01/117587194.jpg"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/wp-content/uploads/2020/01/117585258.jpg"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/wp-content/uploads/2020/01/117586484.jpg"
+    },
+    {
+     "label": "Terms & Conditions",
+     "href": "https://cheekymonkeymidigama.com/terms-conditions/"
+    },
+    {
+     "label": "Contact",
+     "href": "https://cheekymonkeymidigama.com/contact/"
+    },
+    {
+     "label": "Privacy Policy",
+     "href": "https://cheekymonkeymidigama.com/privacy-policy/"
+    }
+   ],
+   "reservation_links": [],
+   "phone_in_text": false,
+   "price_mentions": [
+    "US$ 65",
+    "US$ 65",
+    "US$ 130"
+   ],
+   "text_head": "\nNotice: Function _load_textdomain_just_in_time was called incorrectly. Translation loading for the js_composer domain was triggered too early. This is usually an indicator for some code in the plugin or theme running too early. Translations should be loaded at the init action or later. Please see Debugging in WordPress for more information. (This message was added in version 6.7.0.) in /home/cheekymo/public_html/wp-includes/functions.php on line 6260\nSkip to main content\nMenu\nAll-inclusive Surf Camp Packages with Accommodation\nCheeky Monkey offers a range of surf packages in Sri Lanka to enjoy during your surf tour. Check out our rates and values that have added to every package. Cheeky Monkey surf camp packages cover it all. We believe we totally deserve to add a value with a remarkable experience for your surf tour in Sri Lanka\nDedicated Surf School Packages\nSelecting Sri Lanka as your surf destination would be a perfect deal as a fresher. Cheeky Monkey surf school in Sri Lanka purposely offer well-guided surf lessons for surfers who initiate the sport in Sri Lanka. Our surf school packages are beginner-friendly and you will inspect by the most experienced instructors. We perfectly realized what are the facilities that every kind of surfer actually seek from surf packages in Sri Lanka.\nDescription\nTaste the real Sri Lankan in this amazing surf camp hosted by Cheeky Monkey Surf Camp in Midigama, Sri Lanka. Whether this will be your first time or not, you will surely enjoy W",
+   "at": [],
+   "prices_tab_opened": true,
+   "prices_visible_after_tap": true,
+   "screenshot_price_table": "funnel/walk/04-packages-price-table.png",
+   "book_now_buttons": [
+    {
+     "label": "Book Now",
+     "target": "https://www.payhere.lk/pay/o6fad45",
+     "cell": "USD 400 Per Week Book Now"
+    },
+    {
+     "label": "Book Now",
+     "target": "https://www.payhere.lk/pay/o90d0b0d4",
+     "cell": "USD 350 Per Week Book Now"
+    },
+    {
+     "label": "Book Now",
+     "target": "https://www.payhere.lk/pay/oe7d78042",
+     "cell": "USD 300 Per Week Book Now"
+    },
+    {
+     "label": "Book Now",
+     "target": "https://www.payhere.lk/pay/o4e0be998",
+     "cell": "USD 290 Per Week Book Now"
+    },
+    {
+     "label": "Book Now",
+     "target": "https://www.payhere.lk/pay/o390cd90e",
+     "cell": "USD 300 Per Week Book Now"
+    },
+    {
+     "label": "Book Now",
+     "target": "https://www.payhere.lk/pay/oa00588b4",
+     "cell": "USD 295 Per Week Book Now"
+    },
+    {
+     "label": "Book Now",
+     "target": "https://www.payhere.lk/pay/od702b822",
+     "cell": "USD 280 Per Week Book Now"
+    },
+    {
+     "label": "Book Now",
+     "target": "https://www.payhere.lk/pay/o3e611d17",
+     "cell": "USD 250 Per Week Book Now"
+    },
+    {
+     "label": "Book Now",
+     "target": "https://www.payhere.lk/pay/oa7684cad",
+     "cell": "USD 300 Per Week Book Now"
+    },
+    {
+     "label": "Book Now",
+     "target": "https://www.payhere.lk/pay/od06f7c3b",
+     "cell": "USD 280 Per Week Book Now"
+    },
+    {
+     "label": "Book Now",
+     "target": "https://www.payhere.lk/pay/o40d061aa",
+     "cell": "USD 280 Per Week Book Now"
+    },
+    {
+     "label": "Book Now",
+     "target": "https://www.payhere.lk/pay/o37d7513c",
+     "cell": "USD 250 Per Week Book Now"
+    },
+    {
+     "label": "Book Now",
+     "target": "https://www.payhere.lk/pay/o5710d8d9",
+     "cell": "USD 50 Per Week Book Now"
+    },
+    {
+     "label": "Book Now",
+     "target": "https://www.payhere.lk/pay/o5710d8d9",
+     "cell": "USD 50 Per Week Book Now"
+    },
+    {
+     "label": "Book Now",
+     "target": "https://www.payhere.lk/pay/o5710d8d9",
+     "cell": "USD 50 Per Week Book Now"
+    },
+    {
+     "label": "Book Now",
+     "target": "https://www.payhere.lk/pay/o5710d8d9",
+     "cell": "USD 50 Per Week Book Now"
+    },
+    {
+     "label": "Book Now",
+     "target": "https://www.payhere.lk/pay/o2017e84f",
+     "cell": "Book an extra room for friends and family without package Do"
+    },
+    {
+     "label": "Book Now",
+     "target": "https://www.payhere.lk/pay/ob91eb9f5",
+     "cell": "Book an extra room for friends and family without package Do"
+    },
+    {
+     "label": "Book Now",
+     "target": "https://www.payhere.lk/pay/oce198963",
+     "cell": "Book an extra room for friends and family without package Do"
+    }
+   ]
+  },
+  {
+   "step": "04b-packages-book-now-target",
+   "requested": "https://www.payhere.lk/pay/o6fad45",
+   "status": 403,
+   "error": null,
+   "cookie_declined": null,
+   "final_url": "https://www.payhere.lk/pay/o6fad45",
+   "screenshot": "funnel/walk/04b-packages-book-now-target-fold.png",
+   "title": "Just a moment...",
+   "doc_width": 390,
+   "body_width": 390,
+   "page_height": 844,
+   "text_chars": 262,
+   "tel_links": 0,
+   "whatsapp_links": 0,
+   "booking_com_links": [],
+   "shortcodes": [],
+   "php_notices": 0,
+   "lorem": false,
+   "site_links": [],
+   "reservation_links": [],
+   "phone_in_text": false,
+   "price_mentions": [],
+   "text_head": "www.payhere.lk\nPerforming security verification\nThis website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.\nRay ID: a50bfce8be4fe301\nPerformance and Security by Cloudflare\nPrivacy",
+   "at": []
+  },
+  {
+   "step": "05-booking-surf-camp",
+   "requested": "https://cheekymonkeymidigama.com/booking-surf-camp/",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "final_url": "https://cheekymonkeymidigama.com/booking-surf-camp/",
+   "screenshot": "funnel/walk/05-booking-surf-camp-fold.png",
+   "screenshot_full": "funnel/walk/05-booking-surf-camp-full.png",
+   "title": "Booking – cheekymonkeymidigama",
+   "doc_width": 445,
+   "body_width": 445,
+   "page_height": 2145,
+   "text_chars": 781,
+   "tel_links": 0,
+   "whatsapp_links": 0,
+   "booking_com_links": [
+    {
+     "label": "",
+     "href": "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html#RD122964804"
+    },
+    {
+     "label": "",
+     "href": "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html#RD122964803"
+    },
+    {
+     "label": "",
+     "href": "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html#RD122964801"
+    }
+   ],
+   "shortcodes": [
+    "[ninja_form id=”2″]"
+   ],
+   "php_notices": 1,
+   "lorem": false,
+   "site_links": [
+    {
+     "label": "cheekymonkeymidigama",
+     "href": "https://cheekymonkeymidigama.com/"
+    },
+    {
+     "label": "",
+     "href": "https://www.cheekymonkeymidigama.com/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/aboutus/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/surf-shop-facilities/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/contact/"
+    },
+    {
+     "label": "Terms & Conditions",
+     "href": "https://cheekymonkeymidigama.com/terms-conditions/"
+    },
+    {
+     "label": "Contact",
+     "href": "https://cheekymonkeymidigama.com/contact/"
+    },
+    {
+     "label": "Privacy Policy",
+     "href": "https://cheekymonkeymidigama.com/privacy-policy/"
+    }
+   ],
+   "reservation_links": [],
+   "phone_in_text": false,
+   "price_mentions": [
+    "US$ 25",
+    "US$ 20",
+    "US$ 27"
+   ],
+   "text_head": "\nNotice: Function _load_textdomain_just_in_time was called incorrectly. Translation loading for the js_composer domain was triggered too early. This is usually an indicator for some code in the plugin or theme running too early. Translations should be loaded at the init action or later. Please see Debugging in WordPress for more information. (This message was added in version 6.7.0.) in /home/cheekymo/public_html/wp-includes/functions.php on line 6260\nSkip to main content\nMenu\n[ninja_form id=”2″]\nDouble Room A/C B&B\nUS$ 25\nDouble Room Non A/C B&B\nUS$ 20\nTriple Room A/C B&B\nUS$ 27\nTerms & Conditions\nContact\nPrivacy Policy\nNotice: ob_end_flush(): Failed to send buffer of zlib output compression (0) in /home/cheekymo/public_html/wp-includes/functions.php on line 5581\n",
+   "at": [
+    {
+     "needle": "ninja_form",
+     "y": 536,
+     "screenshot": "funnel/walk/05-booking-surf-camp-shortcode.png"
+    }
+   ]
+  },
+  {
+   "step": "06-service-surf-lesson",
+   "requested": "https://cheekymonkeymidigama.com/service/surf-lesson/",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "final_url": "https://cheekymonkeymidigama.com/service/surf-lesson/",
+   "screenshot": "funnel/walk/06-service-surf-lesson-fold.png",
+   "title": "Surf Lesson – cheekymonkeymidigama",
+   "doc_width": 445,
+   "body_width": 445,
+   "page_height": 2392,
+   "text_chars": 1876,
+   "tel_links": 0,
+   "whatsapp_links": 0,
+   "booking_com_links": [],
+   "shortcodes": [],
+   "php_notices": 1,
+   "lorem": true,
+   "site_links": [
+    {
+     "label": "cheekymonkeymidigama",
+     "href": "https://cheekymonkeymidigama.com/"
+    },
+    {
+     "label": "",
+     "href": "https://www.cheekymonkeymidigama.com/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/aboutus/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/surf-shop-facilities/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/contact/"
+    },
+    {
+     "label": "Terms & Conditions",
+     "href": "https://cheekymonkeymidigama.com/terms-conditions/"
+    },
+    {
+     "label": "Contact",
+     "href": "https://cheekymonkeymidigama.com/contact/"
+    },
+    {
+     "label": "Privacy Policy",
+     "href": "https://cheekymonkeymidigama.com/privacy-policy/"
+    }
+   ],
+   "reservation_links": [],
+   "phone_in_text": false,
+   "price_mentions": [],
+   "text_head": "\nNotice: Function _load_textdomain_just_in_time was called incorrectly. Translation loading for the js_composer domain was triggered too early. This is usually an indicator for some code in the plugin or theme running too early. Translations should be loaded at the init action or later. Please see Debugging in WordPress for more information. (This message was added in version 6.7.0.) in /home/cheekymo/public_html/wp-includes/functions.php on line 6260\nSkip to main content\nMenu\nNeque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.\nNeque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.\nLeave a Reply\nYour email add",
+   "at": [
+    {
+     "needle": "Lorem",
+     "found": false
+    }
+   ]
+  },
+  {
+   "step": "07-product-surf-pakage",
+   "requested": "https://cheekymonkeymidigama.com/product/surf-pakage/",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "final_url": "https://cheekymonkeymidigama.com/product/surf-pakage/",
+   "screenshot": "funnel/walk/07-product-surf-pakage-fold.png",
+   "title": "Surf pakage – cheekymonkeymidigama",
+   "doc_width": 445,
+   "body_width": 445,
+   "page_height": 1544,
+   "text_chars": 909,
+   "tel_links": 0,
+   "whatsapp_links": 0,
+   "booking_com_links": [],
+   "shortcodes": [],
+   "php_notices": 1,
+   "lorem": false,
+   "site_links": [
+    {
+     "label": "cheekymonkeymidigama",
+     "href": "https://cheekymonkeymidigama.com/"
+    },
+    {
+     "label": "",
+     "href": "https://www.cheekymonkeymidigama.com/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/aboutus/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/surf-shop-facilities/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/contact/"
+    },
+    {
+     "label": "Home",
+     "href": "https://cheekymonkeymidigama.com"
+    },
+    {
+     "label": "Uncategorized",
+     "href": "https://cheekymonkeymidigama.com/product-category/uncategorized/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/wp-content/uploads/2021/04/why-surfing-in-midigama_.png"
+    },
+    {
+     "label": "Uncategorized",
+     "href": "https://cheekymonkeymidigama.com/product-category/uncategorized/"
+    },
+    {
+     "label": "Terms & Conditions",
+     "href": "https://cheekymonkeymidigama.com/terms-conditions/"
+    },
+    {
+     "label": "Contact",
+     "href": "https://cheekymonkeymidigama.com/contact/"
+    },
+    {
+     "label": "Privacy Policy",
+     "href": "https://cheekymonkeymidigama.com/privacy-policy/"
+    }
+   ],
+   "reservation_links": [],
+   "phone_in_text": false,
+   "price_mentions": [
+    "£21.00",
+    "£21.00.",
+    "£16.00",
+    "£16.00."
+   ],
+   "text_head": "\nNotice: Function _load_textdomain_just_in_time was called incorrectly. Translation loading for the js_composer domain was triggered too early. This is usually an indicator for some code in the plugin or theme running too early. Translations should be loaded at the init action or later. Please see Debugging in WordPress for more information. (This message was added in version 6.7.0.) in /home/cheekymo/public_html/wp-includes/functions.php on line 6260\nSkip to main content\nMenu\nHome / Uncategorized / Surf pakage\nSale!\nSurf pakage\n£21.00 \nOriginal price was: £21.00.\n£16.00\nCurrent price is: £16.00.\ndfsfgf\nSurf pakage quantity\nAdd to cart\nCategory: Uncategorized\nDescription Reviews (0)\nDescription\ndssfsd\nTerms & Conditions\nContact\nPrivacy Policy\nNotice: ob_end_flush(): Failed to send buffer of zlib output compression (0) in /home/cheekymo/public_html/wp-includes/functions.php on line 5581\n",
+   "at": []
+  },
+  {
+   "step": "08-aboutus",
+   "requested": "https://cheekymonkeymidigama.com/aboutus/",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "final_url": "https://cheekymonkeymidigama.com/aboutus/",
+   "screenshot": "funnel/walk/08-aboutus-fold.png",
+   "title": "About us – cheekymonkeymidigama",
+   "doc_width": 445,
+   "body_width": 445,
+   "page_height": 9616,
+   "text_chars": 1694,
+   "tel_links": 0,
+   "whatsapp_links": 0,
+   "booking_com_links": [],
+   "shortcodes": [],
+   "php_notices": 1,
+   "lorem": false,
+   "site_links": [
+    {
+     "label": "cheekymonkeymidigama",
+     "href": "https://cheekymonkeymidigama.com/"
+    },
+    {
+     "label": "",
+     "href": "https://www.cheekymonkeymidigama.com/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/aboutus/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/surf-shop-facilities/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/contact/"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/wp-content/uploads/2020/05/IMG_0435-scaled.jpg"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/wp-content/uploads/2025/05/20241207_210844-scaled.jpg"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/wp-content/uploads/2025/05/20241123_114538-scaled.jpg"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/wp-content/uploads/2025/05/20250401_100540-1-scaled.jpg"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/wp-content/uploads/2020/06/surf-school.jpg"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/wp-content/uploads/2025/05/20241217_165742-scaled.jpg"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/wp-content/uploads/2020/05/surf-lesson-midigama.jpg"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/wp-content/uploads/2025/05/20241006_173707-scaled.jpg"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/wp-content/uploads/2025/05/20250207_162346-scaled.jpg"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/wp-content/uploads/2020/05/IMG_2092-scaled.jpg"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/wp-content/uploads/2025/05/20241123_121234-scaled.jpg"
+    },
+    {
+     "label": "",
+     "href": "https://cheekymonkeymidigama.com/wp-content/uploads/2025/05/20250401_095452-scaled.jpg"
+    },
+    {
+     "label": "Terms & Conditions",
+     "href": "https://cheekymonkeymidigama.com/terms-conditions/"
+    },
+    {
+     "label": "Contact",
+     "href": "https://cheekymonkeymidigama.com/contact/"
+    },
+    {
+     "label": "Privacy Policy",
+     "href": "https://cheekymonkeymidigama.com/privacy-policy/"
+    }
+   ],
+   "reservation_links": [],
+   "phone_in_text": false,
+   "price_mentions": [],
+   "text_head": "\nNotice: Function _load_textdomain_just_in_time was called incorrectly. Translation loading for the js_composer domain was triggered too early. This is usually an indicator for some code in the plugin or theme running too early. Translations should be loaded at the init action or later. Please see Debugging in WordPress for more information. (This message was added in version 6.7.0.) in /home/cheekymo/public_html/wp-includes/functions.php on line 6260\nSkip to main content\nMenu\nAbout us\nWelcome to Cheeky Monkey Guesthouse, founded by Baba and proudly run by the Dodangoda family. Named after Baba, our Baba’s Surf Shop sits right alongside the guesthouse – together creating a space that’s all about surf, community, and the authentic spirit of Sri Lanka.\nAs one of the oldest guesthouses with a surf shop in Midigama, we’ve been sharing the stoke with travelers from all over the world for years. Staying with us means you’re not just a guest – you’re part of the family. Our tropical haven offers a laid-back, welcoming vibe where you can truly experience our beautiful country.\nWhether you’re here to catch your first wave, improve your surf skills, or simply soak up the island vibes, we’ve got you covered. Join us for surf sessions, unwind with yoga, or just kick back with good company in our café.\nAt Cheeky Monkey, we love nothing more than welcoming new faces into our ever-growing family. Come as a stranger, leave as a friend – and take a piece of Sri Lanka’s surf culture with you.\n",
+   "at": []
+  },
+  {
+   "step": "09-google-listing",
+   "requested": "https://www.google.com/maps/place/Cheeky+Monkey/data=!4m10!3m9!1s0x3ae114c1f7d9fc01:0xb59451ca09648650!5m2!4m1!1i2!8m2!3d5.9617986!4d80.3967609!16s%2Fg%2F11b6scl3ts!19sChIJAfzZ98EU4ToRUIZkCcpRlLU?hl=en",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "dismissed": [
+    "Go back to web"
+   ],
+   "final_url": "https://www.google.com/maps/place/Cheeky+Monkey,+Cheeky+Monkey,+Galle+-+Matara+Main+Road,+Midigama+East+Midigama,+Ahangama+80650,+Sri+Lanka/@5.9617986,80.3967609,15z/data=!4m6!3m5!1s0x3ae114c1f7d9fc01:0xb59451ca09648650!8m2!3d5.9617986!4d80.3967609!16s%2Fg%2F11b6scl3ts?hl=en&g_ep=Eg1tbF8yMDI2MTAyMF8wIJvbDyoASAJQAg%3D%3D",
+   "screenshot": "funnel/walk/09-google-listing-fold.png",
+   "title": "Cheeky Monkey, Ahangama - Explore in Google Maps",
+   "doc_width": 390,
+   "body_width": 390,
+   "page_height": 844,
+   "text_chars": 443,
+   "tel_links": 1,
+   "whatsapp_links": 0,
+   "booking_com_links": [],
+   "shortcodes": [],
+   "php_notices": 0,
+   "lorem": false,
+   "site_links": [],
+   "reservation_links": [],
+   "phone_in_text": false,
+   "price_mentions": [],
+   "text_head": "\n\nCheeky Monkey\n\nOpen in the app\nYour location\n\n\nStreet View\nCheeky Monkey\n4.5\n(467)·3-star hotel\n\nDirections\n\nStart\n\nCall\n\nSave\n\nShare\nSee all 210 photos in the app\nContinue\n\nTraffic\n\nTransit\n\nBicycling\n\nSatellite\n\nTerrain\n\nWildfires\n\nAir Quality\n\nMap movement controls\n\nReal-time location sharing\n\nYour contributions\n\nYour places\nSettings\nLanguage\nHelp\nMy Maps\nSend Product Feedback\n\tIsrael\tEDIT\n\tUse the Google Maps app",
+   "at": [
+    {
+     "needle": "Add website",
+     "found": false
+    },
+    {
+     "needle": "71 924 8686",
+     "found": false
+    }
+   ]
+  },
+  {
+   "step": "10-booking-com",
+   "requested": "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html",
+   "status": 202,
+   "error": null,
+   "cookie_declined": null,
+   "dismissed": [
+    "Close"
+   ],
+   "final_url": "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html?chal_t=1793044239284&force_referer=",
+   "screenshot": "funnel/walk/10-booking-com-fold.png",
+   "title": "Cheeky Monkey Surf Camp, Weligama (updated prices 2027)",
+   "doc_width": 390,
+   "body_width": 390,
+   "page_height": 7845,
+   "text_chars": 5718,
+   "tel_links": 0,
+   "whatsapp_links": 0,
+   "booking_com_links": [
+    {
+     "label": "",
+     "href": "https://www.booking.com/searchresults.en-gb.html?label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB&sid=e0be5ba38a64f25677958fc56ba56761&city=-2240150;checkin=;checkout=;highlighted_hotels=1229648;"
+    },
+    {
+     "label": "",
+     "href": "https://www.booking.com/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB&sid=908ce701931a264c219aa9d352feb623"
+    },
+    {
+     "label": "",
+     "href": "https://account.booking.com/auth/oauth2?client_id=vO1Kblk7xX9tUn2cpZLS&redirect_uri=https%3A%2F%2Fsecure.booking.com%2Flogin.html%3Fop%3Doauth_return&response_type=code&lang=en-gb&aid=304142&bkng_action=hotel&prompt=signin&state=UvgBfiSS2MTS_5qHLjHUTVaK434dgElTXDRs9ik1W8MdIM49cIVTuimCKDaTcOYoJHWAoLzkVCkZaw_3IYR8Be4xu3DNfrIYe_WM5II0LtaaqbMiEUeUv_wwlwwTui18S4tBcDDxEb0jFhiDWn3ENjrVGbPg5e7Et2KJLnUKSP-zqz5nCRTTFLkGiavF_GIfk-yitytyWk5BzDNk0UcEQNsjI4c4BGodNfjdW-MG9CT5hS0uD4QWlDaVQ2pjtXNLW_p6ezjvZ6voVTBqbVFrEebPC1iAqylwpuYe-4qNwSP33c2Urn4pW1Fic5NVTR1np9A9dBbHr4Hegc4%3D*eyJpZCI6InRyYXZlbGxlcl9oZWFkZXIifQ%3D%3D"
+    },
+    {
+     "label": "Weligama",
+     "href": "https://www.booking.com/city/lk/weligama.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB"
+    },
+    {
+     "label": "Mirissa",
+     "href": "https://www.booking.com/city/lk/mirissa-south.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB"
+    },
+    {
+     "label": "Ahangama",
+     "href": "https://www.booking.com/city/lk/ahangama.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB"
+    },
+    {
+     "label": "Imaduwa",
+     "href": "https://www.booking.com/city/lk/imaduwa.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB"
+    },
+    {
+     "label": "Home",
+     "href": "https://www.booking.com/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB"
+    },
+    {
+     "label": "Hotels",
+     "href": "https://www.booking.com/hotel/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB"
+    },
+    {
+     "label": "All guest houses",
+     "href": "https://www.booking.com/guest-house/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB"
+    },
+    {
+     "label": "Sri Lanka",
+     "href": "https://www.booking.com/country/lk.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB"
+    },
+    {
+     "label": "Matara District",
+     "href": "https://www.booking.com/region/lk/matara.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB"
+    },
+    {
+     "label": "Weligama",
+     "href": "https://www.booking.com/city/lk/weligama.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB"
+    },
+    {
+     "label": "Get the free app\nSearch, book & manage your trips in the app",
+     "href": "https://booking.com/apps.en-gb.html?sid=908ce701931a264c219aa9d352feb623&app_install=1&lang=en-gb&stid=2&site=mdot&is_iphone=1&page=hotel&source=hotel&placement=GeneralFooterIphone&device=direct&hotel_id=1229648&aid=304142"
+    },
+    {
+     "label": "Countries",
+     "href": "https://www.booking.com/country.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB&sid=908ce701931a264c219aa9d352feb623"
+    },
+    {
+     "label": "Regions",
+     "href": "https://www.booking.com/region.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB&sid=908ce701931a264c219aa9d352feb623"
+    },
+    {
+     "label": "Cities",
+     "href": "https://www.booking.com/city.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB&sid=908ce701931a264c219aa9d352feb623"
+    },
+    {
+     "label": "Districts",
+     "href": "https://www.booking.com/district.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB&sid=908ce701931a264c219aa9d352feb623"
+    },
+    {
+     "label": "Airports",
+     "href": "https://www.booking.com/airport.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB&sid=908ce701931a264c219aa9d352feb623"
+    },
+    {
+     "label": "Hotels",
+     "href": "https://www.booking.com/hotel/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB&sid=908ce701931a264c219aa9d352feb623"
+    },
+    {
+     "label": "Places of interest",
+     "href": "https://www.booking.com/landmark.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB&sid=908ce701931a264c219aa9d352feb623"
+    },
+    {
+     "label": "Holiday Homes",
+     "href": "https://www.booking.com/booking-home/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB&sid=908ce701931a264c219aa9d352feb623"
+    },
+    {
+     "label": "Apartments",
+     "href": "https://www.booking.com/apartments/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB&sid=908ce701931a264c219aa9d352feb623"
+    },
+    {
+     "label": "Resorts",
+     "href": "https://www.booking.com/resorts/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB&sid=908ce701931a264c219aa9d352feb623"
+    },
+    {
+     "label": "Villas",
+     "href": "https://www.booking.com/villas/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB&sid=908ce701931a264c219aa9d352feb623"
+    },
+    {
+     "label": "Hostels",
+     "href": "https://www.booking.com/hostels/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB&sid=908ce701931a264c219aa9d352feb623"
+    },
+    {
+     "label": "B&Bs",
+     "href": "https://www.booking.com/bed-and-breakfast/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB&sid=908ce701931a264c219aa9d352feb623"
+    },
+    {
+     "label": "Guest Houses",
+     "href": "https://www.booking.com/guest-house/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB&sid=908ce701931a264c219aa9d352feb623"
+    },
+    {
+     "label": "Unique places to stay",
+     "href": "https://www.booking.com/accommodations.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB&sid=908ce701931a264c219aa9d352feb623"
+    },
+    {
+     "label": "Discover monthly stays",
+     "href": "https://www.booking.com/extended-stays/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB&sid=908ce701931a264c219aa9d352feb623"
+    }
+   ],
+   "shortcodes": [],
+   "php_notices": 0,
+   "lorem": false,
+   "site_links": [],
+   "reservation_links": [
+    {
+     "label": "Get the free app\nSearch, book & manage your trips in the app",
+     "href": "https://booking.com/apps.en-gb.html?sid=908ce701931a264c219aa9d352feb623&app_install=1&lang=en-gb&stid=2&site=mdot&is_iphone=1&page=hotel&source=hotel&placement=GeneralFooterIphone&device=direct&hotel"
+    },
+    {
+     "label": "Booking.com for Business",
+     "href": "https://business.booking.com/?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4A"
+    },
+    {
+     "label": "Restaurant reservations",
+     "href": "https://www.opentable.com/?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzMzYzkzZjM5Nzlm2AIB4AIB&"
+    },
+    {
+     "label": "Booking.com for Travel Agents",
+     "href": "https://www.booking.com/affiliate-program/v2/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zj"
+    },
+    {
+     "label": "About Booking.com",
+     "href": "https://www.booking.com/content/about.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCDWNoZWVreS1tb25rZXlICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ao_e_tYGwAIB0gIkZDZlY2UwYjAtNzNmOS00Zjg3LWEyNGMtYzM"
+    }
+   ],
+   "phone_in_text": false,
+   "price_mentions": [],
+   "text_head": "Weligama\nSelect dates\n \nCheeky Monkey Surf Camp\nAccessibility links\nSkip to description\nSkip to facilities\nSkip to rooms\nSkip to policies\nDanushka Thanahena Watta, Main Road, Weligama—Great location—Show on map\n8.3\nRated: Very good 8.3, based on 45 reviews Expand ratings and reviews section\nVery good · 45 reviews\n1/45\nFree on-site parking\nAirport shuttle\nFree WiFi\nPrivate bathroom\nChoose dates to see prices\nCheck-in date\nTue 27 Oct 2026\nCheck-out date\nWed 28 Oct 2026\nAdults\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\nChildren\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\nRooms\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\nAre you travelling for work?\nYes\nNo\nCheck availability\nUnlock members-only prices\nSave instantly at this Genius property — just sign in or join for free\nSign in\nCreate a free account\nManaged by Cheeky Monkey Midigama\nCompany review score: 9\nBased on 43 reviews from 1 property\nFacilities\nFast free WiFi (57 Mbps)\nAirport shuttle\nFree parking\nFitness centre\nShow all facilities and services\nReviews\n8.3\nRated: Very good 8.3, based on 45 reviews\nVery good · 45 reviews\nCleanliness, 8.5, Average rating out of 10\nCleanliness\n8.5\nComfort, 8.7, Average rating out of 10\nComfort\n8.7\nFacilities, 8.3, Average rating out of 10\nFacilities\n8.3\nShow more\nGuests who stayed here loved:\nSerkan\nTurkey\n“Best place to stay in Midigama, right next to best surfing spots and has a billards table. Guys are extremely helpful and friendly, ",
+   "at": [
+    {
+     "needle": "Reserve",
+     "found": false
+    },
+    {
+     "needle": "Questions",
+     "found": false
+    },
+    {
+     "needle": "Property information",
+     "found": false
+    }
+   ]
+  },
+  {
+   "step": "11-instagram",
+   "requested": "https://www.instagram.com/cheekymonkeysrilanka/",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "dismissed": [
+    "Close"
+   ],
+   "final_url": "https://www.instagram.com/cheekymonkeysrilanka/",
+   "screenshot": "funnel/walk/11-instagram-fold.png",
+   "title": "Instagram",
+   "doc_width": 390,
+   "body_width": 390,
+   "page_height": 1025,
+   "text_chars": 219,
+   "tel_links": 0,
+   "whatsapp_links": 0,
+   "booking_com_links": [],
+   "shortcodes": [],
+   "php_notices": 0,
+   "lorem": false,
+   "site_links": [],
+   "reservation_links": [],
+   "phone_in_text": false,
+   "price_mentions": [],
+   "text_head": "Log in\nOpen app\ncheekymonkeysrilanka\nCheeky Monkey Midigama\n15.3K followers\n1,467 following\nOPEN\n🏄‍♂️Surf shop 7am-6pm | Lessons | Board Repair\n🛏Rooms\n🎱🍻Bar\n✉️ ... \nmore\nGet the full experience\nSign up for Instagram",
+   "at": []
+  },
+  {
+   "step": "12-facebook",
+   "requested": "https://www.facebook.com/cheekymonkeysrilanka/",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "final_url": "https://www.facebook.com/cheekymonkeysrilanka/?hpir=1",
+   "screenshot": "funnel/walk/12-facebook-fold.png",
+   "title": "Cheeky Monkey - Midigama | Ahangama",
+   "doc_width": 390,
+   "body_width": 390,
+   "page_height": 7179,
+   "text_chars": 2692,
+   "tel_links": 0,
+   "whatsapp_links": 0,
+   "booking_com_links": [],
+   "shortcodes": [],
+   "php_notices": 0,
+   "lorem": false,
+   "site_links": [],
+   "reservation_links": [],
+   "phone_in_text": true,
+   "price_mentions": [],
+   "text_head": "Facebook\nLog in\nOpen app\nCheeky Monkey - Midigama\n7K followers · 34 following · 704 posts\n... See more\nCheeky Monkey is your go-to surf shop in Sri Lanka! Wide range of boards for rent & sale + all things surf.\nMidigama shop, rooms & restaurant closed for low season. Catch us now in Arugam Bay – surf shop open daily and surf lessons available!\n Hotel resort · $$ · \n +94 71 924 8686\nFollow\nMessage\nAll\nAll\nAll\nAll\nPhotos\nPhotos\nPhotos\nPhotos\nReels\nReels\nReels\nReels\nMentions\nMentions\nMentions\nMentions\nDetails\n$$\nAlways open\nThanahena waththa, Midigama East, Midigama, Ahangama, Sri Lanka, 80650\nLinks\ncheekymonkeymidigama.com\nContact info\n+94 71 924 8686\ncheekymonkeymidi@gmail.com\nPhotos\nSee all\nPosts\nCheeky Monkey - Midigama\n9h\nCheeky Monkey - Midigama is at Cheeky Monkey - Midigama.\nOct 9 · \nNew board, happy surfer, good times ahead🤙 Nothing beats that feeling of finding your next ride! \nEnjoy the waves and see you out there 🏄‍♀️✨\n4\n1\nCheeky Monkey - Midigama is at Cheeky Monkey - Midigama.\nSep 22 · \nBoards are ready. Just waiting for the waves👀\n3\n1\nCheeky Monkey - Midigama is at Cheeky Monkey - Midigama.\nSep 15 · \nWake up to this view, grab a board and see where the day takes you🐒\nOur rooms are open again and ready for a new season of salty mornings, sunset skies and easy days by the sea.\nBook your stay... See more\n5\n1\n1\nIshan Madushanka\nReply\nCheeky Monkey - Midigama is at Cheeky Monkey - Midigama.\nSep 10 · \nWe’re back! Took a little break for the usual off season fix ups,",
+   "at": [
+    {
+     "needle": "closed for low season",
+     "y": 275,
+     "screenshot": "funnel/walk/12-facebook-intro.png"
+    }
+   ]
+  },
+  {
+   "step": "13-google-listing-desktop",
+   "requested": "https://www.google.com/maps/place/Cheeky+Monkey/data=!4m10!3m9!1s0x3ae114c1f7d9fc01:0xb59451ca09648650!5m2!4m1!1i2!8m2!3d5.9617986!4d80.3967609!16s%2Fg%2F11b6scl3ts!19sChIJAfzZ98EU4ToRUIZkCcpRlLU?hl=en",
+   "viewport": "1440x1000",
+   "status": 200,
+   "final_url": "https://www.google.com/maps/place/Cheeky+Monkey/@5.9617986,80.3967609,17z/data=!3m1!4b1!4m9!3m8!1s0x3ae114c1f7d9fc01:0xb59451ca09648650!5m2!4m1!1i2!8m2!3d5.9617986!4d80.3967609!16s%2Fg%2F11b6scl3ts?hl=en&entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D",
+   "screenshot": "funnel/walk/13-google-listing-desktop.png",
+   "panel": [
+    "Address: Cheeky Monkey, Galle - Matara Main Road, Midigama East Midigama, Ahangama 80650, Sri Lanka",
+    "Copy address",
+    "Phone: +94 71 924 8686",
+    "Copy phone number",
+    "Call phone number",
+    "Plus code: X96W+PP Ahangama, Sri Lanka",
+    "Copy plus code",
+    "Learn more about plus codes"
+   ],
+   "has_add_website": 1,
+   "website_links": [],
+   "screenshot_add_website": "funnel/walk/13-google-listing-desktop-add-website.png"
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+node_modules
+.astro/
+dist/
+# build products of scripts/make-media.sh, the publisher's video step and scripts/photos.mjs
+# (media never goes in git: docs/team.md; media/cheeky-monkey.tsv lists them)
+public/photos/
+public/video/
+public/atmo/
+src/tenant/media/
+src/gaps/media/
+src/tenant/photos.generated.json
+src/tenant/videos.generated.json

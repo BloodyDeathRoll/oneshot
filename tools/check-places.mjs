@@ -42,6 +42,7 @@ const LOCALITY = {
   'ka-surf-hostel-and-restaurant': { town: 'Ahangama', near: ['ahangama', 'kabalana', 'welhengoda', 'goviyapana'] },
   'layday-surf-ahangama':          { town: 'Ahangama', near: ['ahangama', 'kabalana', 'welhengoda', 'warnagiri'] },
   'the-lavish-haven':              { town: 'Ahangama', near: ['ahangama', 'kabalana', 'piyadigama'] },
+  'cheeky-monkey':                 { town: 'Midigama', near: ['midigama', 'kumbalgama'] },
 };
 /* Named places on this coast that are NOT the locality. Seen in a title or a
    credit on a page about somewhere else, each one is a false claim. */
