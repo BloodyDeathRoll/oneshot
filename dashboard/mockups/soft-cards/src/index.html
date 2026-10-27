@@ -38,7 +38,7 @@ img{display:block;max-width:100%}
 
 /* ---------- sidebar ---------- */
 .side{position:sticky;top:0;height:100vh;background:var(--card);box-shadow:var(--shadow);display:flex;flex-direction:column;padding:28px 20px 24px;z-index:2}
-.logo{display:flex;align-items:center;gap:10px;padding:4px 8px 28px;font-weight:700;font-size:18px;letter-spacing:-.01em}
+.logo{display:flex;align-items:center;gap:10px;padding:0 0 24px;font-weight:700;font-size:18px;letter-spacing:-.01em}
 .logo i{width:24px;height:24px;border-radius:8px;background:var(--acc);display:inline-block;position:relative;flex:none}
 .logo i::after{content:"";position:absolute;left:7px;top:7px;width:10px;height:10px;border-radius:3px;background:#fff}
 .nav{display:flex;flex-direction:column;gap:4px}
@@ -48,7 +48,8 @@ img{display:block;max-width:100%}
 .nav button svg{width:22px;height:22px;flex:none}
 .nav .badge{margin-left:auto;background:var(--acc);color:#fff;font-size:13px;font-weight:700;min-width:24px;height:24px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;padding:0 8px}
 .nav .n{margin-left:auto;font-size:13px;color:var(--ink2);font-weight:600}
-.side-foot{margin-top:auto;padding:16px 12px 0;border-top:1px solid var(--rule);font-size:13px;color:var(--ink3);display:grid;gap:4px}
+.side-foot{margin-top:auto;display:flex;align-items:center;gap:12px;padding:12px;font-size:15px;line-height:22px;font-weight:500;color:var(--ink2);cursor:default}
+.side-foot i{width:20px;height:20px;margin:2px;border-radius:50%;background:var(--acc);flex:none}
 .side-foot b{color:var(--ink2);font-weight:700}
 
 /* ---------- main ---------- */
@@ -58,7 +59,7 @@ main{min-width:0;padding:0 24px 48px}
 .top .sub{font-size:13px;color:var(--ink3);margin-left:14px;font-weight:500}
 .controls{display:flex;gap:12px;align-items:center}
 .wf-chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 var(--gap)}
-.wf-side{display:grid;gap:6px;margin:0 0 20px;font-size:13px;font-weight:600;color:var(--ink3)}.wf-side>span{padding:0 12px}.wf-side select{box-sizing:border-box;width:100%;height:46px;margin:0;appearance:none;-webkit-appearance:none;font:inherit;font-size:15px;line-height:22px;font-weight:700;color:var(--ink);background:var(--t5) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center/18px;border:0;border-radius:var(--r2);padding:12px 42px 12px 12px;cursor:pointer;text-overflow:ellipsis}.wf-side select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.wf-side{display:grid;margin:0 0 24px;padding-bottom:24px;border-bottom:1px solid var(--rule)}.wf-side>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.wf-side select{box-sizing:border-box;width:100%;height:48px;margin:0;appearance:none;-webkit-appearance:none;font:inherit;font-size:15px;line-height:22px;font-weight:700;color:var(--ink);background:var(--t5) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center/24px;border:0;border-radius:12px;padding:13px 44px 13px 16px;cursor:pointer;text-overflow:ellipsis}.wf-side select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 .wf-chips button{font:inherit;font-size:14px;font-weight:600;height:36px;padding:0 14px;border-radius:999px;border:0;background:var(--card);box-shadow:var(--shadow);color:var(--ink2);cursor:pointer}
 .wf-chips button[aria-pressed=true]{background:var(--acc);color:#fff}
 .wf-chips button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
@@ -84,10 +85,9 @@ main{min-width:0;padding:0 24px 48px}
 .ov-sum{margin:0 0 20px;font-size:16px;line-height:24px;color:var(--ink2);text-wrap:pretty}
 .ov-sum b{color:var(--ink);font-weight:700}
 .ov-surf{background:var(--card);border:1px solid var(--ln);border-radius:12px}
-.ov-band{display:grid;grid-template-columns:auto auto minmax(0,1fr);margin-bottom:24px}
-.ov-m{padding:16px 24px;display:flex;flex-direction:column;justify-content:center;min-width:0}
-.ov-m+.ov-m{border-left:1px solid var(--ln)}
-.ov-m .lab{display:inline-flex;align-items:center;gap:4px;color:var(--ink2)}
+.ov-band{display:flex;align-items:center;padding:16px 0;margin-bottom:24px}
+.ov-m{flex:1 1 0;padding:16px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-width:0}
+.ov-m .lab{display:inline-flex;align-items:center;gap:4px;color:var(--ink2);font-size:14px;line-height:20px;font-weight:500}
 .ov-i{position:relative;display:inline-flex}
 .ov-i button{all:unset;display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;color:var(--ink3);cursor:help}
 .ov-i button:hover,.ov-i button:focus-visible{color:var(--acc)}
@@ -97,23 +97,23 @@ main{min-width:0;padding:0 24px 48px}
 .ov-tip q{quotes:"\201C" "\201D";font-weight:700}
 .ov-i:hover .ov-tip,.ov-i button:focus-visible+.ov-tip{display:block}
 .ov-m .fig{font-size:44px;line-height:52px;font-weight:600;letter-spacing:-.02em;color:var(--ink);white-space:nowrap}
-.ov-m .fig small{font-size:15px;line-height:20px;font-weight:600;color:var(--ink3);letter-spacing:0;margin-left:6px}
+.ov-m .fig small{display:none;font-size:15px;line-height:20px;font-weight:600;color:var(--ink3);letter-spacing:0;margin-left:6px}
 .ov-m .month{font-size:13px;line-height:18px;color:var(--ink3)}
 .ov-m .month b{color:var(--ink);font-weight:600}
-.ov-counts{margin:0;border-left:1px solid var(--ln);padding:16px 20px;display:grid;grid-template-columns:repeat(5,auto);justify-content:space-between;column-gap:16px;align-items:center}
-.ov-counts .r{display:grid;grid-template-columns:36px minmax(0,1fr);grid-template-rows:auto auto;column-gap:12px;align-items:center;min-width:0}
-.ov-counts .r+.r{border-left:1px solid var(--ln);padding-left:16px}
-.ov-counts .ic{grid-row:1/3;width:36px;height:36px;border-radius:10px;background:var(--t5);color:var(--acc);display:grid;place-items:center}
-.ov-counts .ic svg{width:20px;height:20px}
-.ov-counts .r.zr .ic{background:var(--gbg);color:var(--ink3)}
-.ov-counts dt{color:var(--ink2);white-space:nowrap}
-.ov-counts dd{margin:0;font-size:20px;line-height:28px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+.ov-m .month b{color:var(--ink);font-weight:600}
+.ov-counts{flex:0 0 auto;width:600px;max-width:60%;margin:0;border-left:1px solid var(--ln);padding:24px 20px;display:flex;gap:16px;align-items:center}
+.ov-counts .r{flex:1 0 auto;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0;text-align:center}
+.ov-counts .ic{width:40px;height:40px;border-radius:999px;background:rgba(106,47,224,.1);color:var(--acc);display:grid;place-items:center}
+.ov-counts .ic svg{width:24px;height:24px}
+.ov-counts .r.zr .ic{background:rgba(107,114,128,.1);color:var(--ink2)}
+.ov-counts dt{color:var(--ink2);font-size:14px;line-height:20px;font-weight:500;white-space:nowrap;margin-top:-8px}
+.ov-counts dd{margin:0;font-size:24px;line-height:28px;font-weight:600;letter-spacing:-.2px;color:var(--ink)}
 .ov-counts dd.z{color:var(--ink3)}
 .ov-counts button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:4px;border-radius:6px}
 .ov-counts button:hover{color:var(--acc)}
 .ov-counts button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 .ov-counts button svg{width:18px;height:18px;color:var(--ink3)}
-.ov-body{display:grid;grid-template-columns:minmax(0,1fr) 33.3333%;gap:24px;align-items:start}
+.ov-body{display:grid;grid-template-columns:minmax(0,1fr) 362px;gap:24px;align-items:start}
 .ov-lh{display:flex;align-items:center;gap:10px;height:64px;padding:0 var(--rp);border-bottom:1px solid var(--ln)}
 .ov-lh h2{font-size:18px;line-height:28px;font-weight:700}
 .ov-lh h2:focus{outline:0}
@@ -121,7 +121,7 @@ main{min-width:0;padding:0 24px 48px}
 .ov-cnt{min-width:24px;height:24px;padding:0 8px;border-radius:6px;background:var(--t5);color:var(--acc);font-weight:700;display:inline-grid;place-items:center}
 .ov-cnt.z{background:var(--gbg);color:var(--ink2)}
 /* one card per site: thumbnail on top, actions stacked under the details */
-.ov-rows{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;padding:var(--rp)}
+.ov-rows{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;padding:var(--rp)}
 .ov-row{display:flex;flex-direction:column;gap:8px;min-width:0;padding:12px;border:1px solid var(--ln);border-radius:12px}
 .ov-rows>.ov-row.empty{grid-column:1/-1;border:0;padding:0;color:var(--ink3)}
 .ov-thumb{display:block;width:100%;aspect-ratio:16/10;border-radius:8px;overflow:hidden;border:1px solid var(--ln);background:var(--soft);position:relative;margin-bottom:4px}
@@ -558,26 +558,25 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 @media (prefers-reduced-motion:reduce){.anim .draw,.anim .grow,.anim .fadein{transition:none}}
 
 /* ---------- overview widths ---------- */
+/* wide screens: the Figma frame (OneShot Overview, 1920): 288 sidebar, 40 gutters */
+@media (min-width:1600px){body{grid-template-columns:288px minmax(0,1fr)}main{padding:0 40px 48px}.top{height:96px}}
 /* below 1600 the rows need the full width: Also waiting on you moves under the list */
 @media (max-width:1599px){.ov-body{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:1280px){
   #view-overview{--rp:20px}
   .ov-m,.ov-counts{padding-left:14px;padding-right:14px}
   .ov-m .fig{font-size:36px;line-height:44px}
-  .ov-counts dd{font-size:18px;line-height:24px}
-  .ov-counts{column-gap:12px}
-  .ov-counts .r{grid-template-columns:minmax(0,1fr)}
-  .ov-counts .r+.r{padding-left:12px}
-  .ov-counts .ic{display:none}
+  .ov-counts{gap:8px}
+  .ov-counts dd{font-size:20px;line-height:26px}
 }
 @media (max-width:720px){
   #view-overview{--rp:16px}
   .ov-sum{font-size:15px;line-height:22px}
-  .ov-band{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .ov-m{padding:16px}
-  .ov-counts{grid-column:1/-1;border-left:0;border-top:1px solid var(--ln);padding:12px 16px;grid-template-columns:repeat(3,minmax(0,1fr));row-gap:12px;column-gap:12px}
-  .ov-counts .r+.r{border-left:0;padding-left:0}
-  .ov-counts dt{white-space:normal}
+  .ov-band{flex-wrap:wrap;padding:0}
+  .ov-m{padding:16px;flex-basis:50%}
+  .ov-counts{flex-basis:100%;width:auto;max-width:none;border-left:0;border-top:1px solid var(--ln);padding:16px 8px;gap:4px;align-items:flex-start}
+  .ov-counts .ic{width:32px;height:32px}.ov-counts .ic svg{width:18px;height:18px}
+  .ov-counts dt{white-space:normal;font-size:12px;line-height:16px;margin-top:-4px}
   .ov-tip{max-width:220px}
   #ov-exp .ov-tip{left:auto;right:-8px;transform:none}
   .ov-body{gap:16px}
@@ -693,7 +692,6 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 
 
   <section class="view on" id="view-overview" aria-label="Overview">
-    <p class="ov-sum" id="ov-sum"></p>
     <section class="ov-band ov-surf" aria-label="Money and where every site stands">
       <div class="ov-m" id="ov-rev"></div>
       <div class="ov-m" id="ov-exp"></div>
@@ -912,14 +910,14 @@ function renderChips(){
   side.value=WF||'';side.disabled=NO_WF.includes(state.view);side.onchange=()=>setWf(side.value);
 }
 function renderChrome(){
+  // who is looking (Figma 5:134); the run and data details stay in its tooltip
   const f=$('#side-foot');f.innerHTML='';
-  f.append(
-    el('div',{html:`<b>${runShort(D.run.run_id)}</b> · ${D.run.mode} mode${D.run.operator?` · ${opName(D.run.operator)}`:''}`}),
-    el('div',{text:(D.run.anchors[0]??'').split(',').slice(0,2).join(',')}),
-    el('div',{text:`Data ${tShort(D.generated_at)} UTC${LIVE?' · live':''}${D.sync?.origin_main?` · main ${D.sync.origin_main.slice(0,7)}`:''}`}),
-    RAW.runs.filter(r=>r.active).length>1?el('div',{text:`${RAW.runs.filter(r=>r.active).length} active runs: ${RAW.runs.filter(r=>r.active).map(r=>`${runShort(r.run_id)} (${opName(r.operator)}${r.market?`, ${r.market} × ${r.vertical}${r.engagement==='inbound'?', inbound':''}`:''})`).join(', ')}`}):'',
-    el('div',{text:`${D.totals.ledger_lines} ledger lines · ${D.totals.human_decisions} decisions`})
-  );
+  const act=RAW.runs.filter(r=>r.active);
+  f.title=[`${runShort(D.run.run_id)} · ${D.run.mode} mode${D.run.operator?` · ${opName(D.run.operator)}`:''}`,
+    `Data ${tShort(D.generated_at)} UTC${LIVE?' · live':''}${D.sync?.origin_main?` · main ${D.sync.origin_main.slice(0,7)}`:''}`,
+    act.length>1?`${act.length} active runs: ${act.map(r=>`${runShort(r.run_id)} (${opName(r.operator)})`).join(', ')}`:'',
+    `${D.totals.ledger_lines} ledger lines · ${D.totals.human_decisions} decisions`].filter(Boolean).join('\n');
+  f.append(el('i',{'aria-hidden':'true'}),el('span',{text:opName(D.team?.viewer)||D.human||''}));
   $('#badge-needs').textContent=needsItems().length;
   $('#n-pipe').textContent=pipeRows().length;$('#n-ledger').textContent=(D.prospects||[]).length;
   $('#n-sites').textContent=pitchSites().length;
@@ -1325,7 +1323,7 @@ const OVI={
   built:ovSvg('<path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L4 16.7V20h3.3l5.3-5.3a4 4 0 0 0 5.1-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/>'),
   send:ovSvg('<path d="M21 3 10 14"/><path d="m21 3-7 18-4-7-7-4z"/>'),
   reply:ovSvg('<path d="M4 5h16v11H9l-5 4z"/>'),
-  client:ovSvg('<circle cx="9" cy="8" r="3.5"/><path d="M3 20c.7-3.4 3-5.2 6-5.2s5.3 1.8 6 5.2"/><path d="m16 11 2 2 4-4"/>'),
+  client:ovSvg('<circle cx="9" cy="8" r="3.5"/><path d="M3 20c.7-3.4 3-5.2 6-5.2s5.3 1.8 6 5.2"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c1.7.6 2.7 2.4 3 5.2"/>'),
 };
 const ovPlural=(n,w,ws)=>`${n} ${n===1?w:(ws||w+'s')}`;
 const ovDays=iso=>Math.max(0,Math.floor((Date.now()-new Date(iso))/864e5)); // elapsed days, as days_since_change
@@ -1335,7 +1333,7 @@ function renderOvSummary(){
   const items=needsItems(),n=k=>items.filter(i=>i.kind===k).length;
   const bits=[[n('pitch'),'pitch to send','pitches to send'],[n('outcome'),'site to follow up','sites to follow up'],[n('tweak'),'suggested agent tweak','suggested agent tweaks'],[n('gate'),'other decision','other decisions'],[n('handoff'),'handoff request','handoff requests']]
     .filter(([c])=>c).map(([c,one,many])=>`${c} ${c===1?one:many}`);
-  const p=$('#ov-sum');p.innerHTML='';
+  const p=$('#ov-sum');if(!p)return;p.innerHTML='';
   if(!items.length){p.textContent='Nothing is waiting on you.';return}
   p.append(el('b',{text:`${items.length===1?'1 thing is':items.length+' things are'} waiting on you`}),`: ${bits.length>1?bits.slice(0,-1).join(', ')+' and '+bits.at(-1):bits[0]}${otherWf(items)?', across all workflows':''}.`);
 }
@@ -1360,8 +1358,7 @@ function renderTiles(){
     ['Clients',bs.filter(b=>b.outcome?.state==='sale'||['product_chosen','delivered','handoff_verified','access_revoked'].includes(b.state)).length,()=>go('sites'),'client']];
   for(const [l,v,act,ic] of T){
     const dd=el('dd',{class:v?'':'z'});
-    if(v){const bt=el('button',{type:'button','aria-label':`${l}: ${v}. ${l==='Ready to send'?'Go to the list':l==='Being built'?'Open Pipeline':'Open Sites'}`},String(v),el('span',{html:OVI.chev}));bt.onclick=act;dd.append(bt)}
-    else dd.append(String(v));
+    {const bt=el('button',{type:'button','aria-label':`${l}: ${v}. ${l==='Ready to send'?'Go to the list':l==='Being built'?'Open Pipeline':'Open Sites'}`},String(v),el('span',{html:OVI.chev}));bt.onclick=act;dd.append(bt)}
     box.append(el('div',{class:'r'+(v?'':' zr')},el('span',{class:'ic',html:OVI[ic]}),el('dt',{text:l}),dd));
   }
 }
