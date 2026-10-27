@@ -1602,15 +1602,17 @@ function openFix(id) {
     const box = node(`<pre class="agv-pbox" tabindex="0" aria-label="The prompt"></pre>`); box.textContent = text;
     const steps = node(`<p class="agv-steps"><b>Copy the prompt</b> and paste it into a Claude session. Pasting it is your approval: Claude fixes the agent and merges the change. <b>Nothing else to approve.</b></p>`);
     const foot = node(`<div class="agv-pfoot"><button type="button" class="agv-btnp">${I.copy}Copy prompt</button></div>`);
-    const d = pop("Get Claude's fix", model().agents[id].name, steps, box, foot);
+    const d = pop('View fix', model().agents[id].name, steps, box, foot);
     const b = $('button', foot); b.onclick = () => api.copyText(text, b, true); b.focus();
     return d;
   }
-  const steps = node(`<p class="agv-steps">Claude finds what in this agent's instructions lets this happen, fixes it, and <b>opens a PR</b> with the change. Pressing the button is your approval. It takes about 5 to 15 minutes; you can close this.</p>`);
+  const brief = promptFor(id, true);
+  const box = node(`<pre class="agv-pbox" tabindex="0" aria-label="What is wrong"></pre>`); box.textContent = brief;
+  const steps = node(`<p class="agv-steps">Apply fix opens one PR. Merge it and the fix is live.</p>`);
   const res = node(`<p class="agv-res" role="status"></p>`);
-  const foot = node(`<div class="agv-pfoot"><button type="button" class="agv-btnp">Fix it</button></div>`);
-  const d = pop('Fix this agent', model().agents[id].name, steps, res, foot);
-  const b = $('button', foot); b.onclick = () => startFix(id, promptFor(id, true), res, b); b.focus();
+  const foot = node(`<div class="agv-pfoot"><button type="button" class="agv-btnp">Apply fix</button></div>`);
+  const d = pop('View fix', model().agents[id].name, box, steps, res, foot);
+  const b = $('button', foot); b.onclick = () => startFix(id, brief, res, b); b.focus();
   return d;
 }
 // POST agent-fix, then follow it until the PR is open (dashboard/server.mjs startFix)
@@ -1672,7 +1674,7 @@ function detail(root, id) {
     root.innerHTML = `${head}<div class="agv-simple">
       <section class="agv-card agv-block" aria-labelledby="agv-does-h"><h3 id="agv-does-h">What it does</h3><p class="agv-bigp">${esc(a.does)}</p></section>
       <section class="agv-card agv-block" aria-labelledby="agv-wrong-h"><h3 id="agv-wrong-h">What is wrong</h3><p class="agv-bigp">${w.html}</p>
-      ${w.fix ? `<div class="agv-cta"><button type="button" class="agv-btnp lg" id="agv-fix">${I.doc}Fix it</button><p>${api.LIVE ? 'Claude fixes this agent and opens a PR with the change. Pressing it is your approval.' : 'A ready prompt for a Claude session; pasting it is your approval.'}</p></div>` : `<div class="agv-cta"><p>Nothing to fix from the data. To read or change this agent anyway, open Advanced.</p></div>`}</section>
+      ${w.fix ? `<div class="agv-cta"><button type="button" class="agv-btnp lg" id="agv-fix">${I.doc}View fix</button></div>` : `<div class="agv-cta"><p>Nothing to fix from the data. To read or change this agent anyway, open Advanced.</p></div>`}</section>
     </div>${tw.length ? `<section class="agv-card agv-twlines" aria-labelledby="agv-tws-h"><h3 id="agv-tws-h">Waiting for your answer</h3>${tw.map((t) => `<div class="agv-twl" data-file="${esc(t.file)}"><span class="agv-tt">${t.custom ? '<span class="agv-tag">For your rules</span>' : ''}${esc(t.title)}</span><span class="agv-tb"></span><span class="agv-res" role="status" aria-live="polite"></span></div>`).join('')}</section>` : ''}`;
     $$('.agv-twl', root).forEach((row) => { const t = tw.find((y) => y.file === row.dataset.file); tweakButtons(t, $('.agv-tb', row), $('.agv-res', row)); });
     $('#agv-fix', root)?.addEventListener('click', () => openFix(id));
