@@ -1,6 +1,6 @@
 # cheeky-monkey — run 2026-10-midigama-01 (test)
 
-State: **mocked** (2026-10-27; designer 0.7.0, three mockups). Waiting at gate b: a human keeps 1–3 mockups (each kept one becomes its own site).
+State: **built** (2026-10-27; designer 0.7.0 4g). Picked at gate b by Alon: unique "Pick your board", with a colourful surf/beach background and the Midigama beach photos. Next: SEO (4h), AI SEO (4i), Critique (5). 4f pre-score did not run before the pick.
 
 - Cheeky Monkey Surf Camp, Midigama East, +94719248686. Type `surf_camp` (own site sells lessons and weekly packages; also 5 room types on Booking.com and a big board shop).
 - Dossier: `dossier/cheeky-monkey/dossier.json` + `sources.md`; 136 sourced facts, 163 images (156 business-owned), 9 videos, 15 gaps, none blocking. Media (492 MB) is local: `media/cheeky-monkey.tsv`.
@@ -19,3 +19,5 @@ Audit (`dossier/cheeky-monkey/audit.json` + `audit.md`): scope `site`, 14 findin
 Copy (`sites/cheeky-monkey/copy/`): en.json, sources.md, humanizer-notes.md, review.md. Left out on purpose: open/closed status, room rates without a unit, the 20-vs-22 double, PayHere links, contradicted owner names, "biggest"/"oldest". All prices labelled 2021. The 2021 A/C add-on row was dropped (Alon delegated the call; it conflicts with Booking.com's "A/C in every room"). Reviewer notes for the build: keep "published in 2021" next to the lesson prices; `contact.whatsapp` is "" and should be null.
 
 Concepts + mockups: archetype "walk in off the main road" (`sites/cheeky-monkey/concepts.md`). calm "The signboard" (img-147 main-road photo, red fin button), interactive "The wall of boards" (vid-009 as three columns, Plan-your-stay panel, magenta button), unique "Pick your board" (vid-009 in a WebGL board-shaped window, zoom-through, blue button). All pass check-design, check-places and scroll CLS. View the unique one over http (`node tools/serve-mockups.mjs`), not from disk, or WebGL loses the video. Run pins for creative-director, designer and the two critics were bumped to current before they ran (2026-10-26).
+
+Build (`sites/cheeky-monkey/final/`): first load 388 KB, LCP 1.47 s, CLS 0. Schema gaps (not owner-editable today) in `src/gaps/gaps.json`: hero where-line, room galleries, announcement line, package groups, the lesson price date, stock credit, socials, SEO title. Atmosphere: stock-003 (Maaike Hage, CC BY-SA 3.0) shown whole with credit; a proposal to widen atmosphere sources and allow atmosphere video is PR #44 (Shahar).
