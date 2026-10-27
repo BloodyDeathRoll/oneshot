@@ -224,16 +224,16 @@ function decisionRow(d){
     b.onclick=()=>{const o=li.classList.toggle('open');o?S.openNotes.add(key):S.openNotes.delete(key);b.textContent=o?'Show less':'Show the full reason';b.setAttribute('aria-expanded',String(o))};li.append(b)}
   return li;
 }
-function renderList(root){
-  const {el,D,dShort,opName,bizName,prNote}=API;
+// The tweak list; it sits on the Agents page under the board (Figma 2026-10-27)
+function renderTweakList(host){
+  const {el,D,dShort,opName,prNote}=API;
   const props=D.proposals.filter(p=>p.kind==='proposal');
   const pending=props.filter(p=>p.status==='pending'),done=props.filter(p=>p.status!=='pending');
-
-  const sec=el('section',{class:'dcv-sec',id:'props',tabindex:'-1','aria-labelledby':'dcv-tw-h'});
-  sec.append(el('div',{class:'dcv-sh'},el('h2',{id:'dcv-tw-h',text:'Suggested agent tweaks'}),el('span',{class:'dcv-cnt'+(pending.length?'':' z'),text:String(pending.length),title:pending.length?`${pending.length} waiting for you`:'nothing waiting'})));
-  sec.append(el('p',{class:'dcv-intro',text:'After each run the critic suggests changes to how an agent works. Approve the ones you want; Claude applies them in its next session.'}));
-  if(!pending.length)sec.append(el('div',{class:'dcv-surf dcv-empty',text:'No tweak is waiting for you.'}));
-  else{const g=el('div',{class:'dcv-grid'});for(const p of pending)g.append(tweakCard(p));sec.append(g);root.append(sec);masonry(g,460)}
+  host.innerHTML='';host.id='props';host.tabIndex=-1;host.setAttribute('aria-labelledby','dcv-tw-h');
+  host.append(el('div',{class:'dcv-sh'},el('h2',{id:'dcv-tw-h',text:'Suggested agent tweaks'}),el('span',{class:'dcv-cnt'+(pending.length?'':' z'),text:String(pending.length),title:pending.length?`${pending.length} waiting for you`:'nothing waiting'})));
+  host.append(el('p',{class:'dcv-intro',text:'After each run the critic suggests changes to how an agent works. Approve the ones you want; Claude applies them in its next session.'}));
+  if(!pending.length)host.append(el('div',{class:'dcv-surf dcv-empty',text:'No tweak is waiting for you.'}));
+  else{const g=el('div',{class:'dcv-grid'});for(const p of pending)g.append(tweakCard(p));host.append(g);if(host.isConnected)masonry(g,460)}
   if(done.length){
     const det=el('details',{class:'dcv-done'});det.open=!!S.doneOpen;det.ontoggle=()=>{S.doneOpen=det.open};
     det.append(el('summary',{html:CHEV+`Already decided (${done.length})`}));
@@ -245,10 +245,11 @@ function renderList(root){
       const pr=S.results[p.file]?.status===201?prNote(S.results[p.file].body):null; // this session's decision: its PR
       ul.append(el('li',{id:'dcv-tw-'+tid(p)},el('div',{},a,el('span',{class:'s',text:sub}),pr),el('span',{class:'dcv-st '+cls,text:txt})));
     }
-    det.append(ul);sec.append(det);
+    det.append(ul);host.append(det);
   }
-  if(!sec.isConnected)root.append(sec);
-
+}
+function renderList(root){
+  const {el,D,dShort,opName,bizName,prNote}=API;
   const built=new Set(D.businesses.filter(b=>(b.reached||[]).some(s=>['built','passed','previewed','packaged','pitched'].includes(s))).map(b=>b.slug));
   const bySlug=new Map();
   for(const d of D.decisions.filter(d=>built.has(d.slug)).sort((a,b)=>b.ts.localeCompare(a.ts))){if(!bySlug.has(d.slug))bySlug.set(d.slug,[]);bySlug.get(d.slug).push(d)}
@@ -301,7 +302,7 @@ function fillDoc(box,text){
 function renderPage(root,p){
   const {el,LIVE,fileURL,dShort,opName}=API;
   const pg=el('div',{class:'dcv-page'});
-  pg.append(el('a',{class:'dcv-back',href:'#decisions',html:ARROW_L+'All decisions'}));
+  pg.append(el('a',{class:'dcv-back',href:'#agents',html:ARROW_L+'Agents'}));
   const ph=el('div',{class:'dcv-ph'},el('span',{class:'dcv-ag',text:p.agent||'Agent'}));
   if(p.status!=='pending'){const [cls,txt]=STATUS[p.status]||['',cap(p.status)];ph.append(el('span',{class:'dcv-st '+cls,text:txt+(p.decided_at?` · ${dShort(p.decided_at)}${p.decided_by?' by '+opName(p.decided_by):''}`:'')}))}
   pg.append(ph,el('h2',{class:'dcv-t',id:'dcv-page-t',tabindex:'-1',text:p.title}));
@@ -335,7 +336,7 @@ function render(api){
   root.innerHTML='';
   const id=route();
   const p=id&&api.D.proposals.find(x=>x.kind==='proposal'&&tid(x)===id);
-  if(id&&!p){root.append(api.el('a',{class:'dcv-back',href:'#decisions',html:ARROW_L+'All decisions'}),api.el('div',{class:'dcv-surf dcv-empty',text:'This suggestion is not in the data any more.'}));S.page=id;return}
+  if(id&&!p){root.append(api.el('a',{class:'dcv-back',href:'#agents',html:ARROW_L+'Agents'}),api.el('div',{class:'dcv-surf dcv-empty',text:'This suggestion is not in the data any more.'}));S.page=id;return}
   if(p){renderPage(root,p);S.page=id;return}
   renderList(root);S.page=null;
 }
@@ -352,5 +353,6 @@ addEventListener('hashchange',()=>{
 });
 window.OSViews=window.OSViews||{};
 window.OSViews.decisions=function(api){render(api)};
+window.OSViews.tweaks=function(api,host){API=api;if(host)renderTweakList(host)};
 })();
 </script>
