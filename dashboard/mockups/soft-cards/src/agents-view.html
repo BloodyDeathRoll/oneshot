@@ -273,7 +273,7 @@
 .agv-pop .agv-steps{color:var(--ink2);margin:0 0 14px}
 .agv-pop .agv-steps b{color:var(--ink)}
 .agv-pbox{white-space:pre-wrap;background:var(--ground);border-radius:14px;padding:16px 18px;font-size:14px;line-height:1.6;color:#1B1530;max-height:52vh;overflow:auto;overflow-wrap:anywhere;margin:0;font-family:inherit}
-.agv-pfoot{display:flex;justify-content:flex-end;gap:10px;margin-top:16px;flex-wrap:wrap}
+.agv-pfoot{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap}.agv-pfoot:has(>.agv-res){gap:16px}.agv-pfoot>.agv-res{margin:0;text-align:right}
 .agv-msub{font-size:14px;color:var(--ink3);margin-top:2px}
 /* tooltip */
 .agv-tip{position:fixed;z-index:3000;max-width:340px;background:var(--ink);color:#fff;border-radius:12px;padding:10px 14px;font-size:14px;line-height:1.5;pointer-events:none;box-shadow:0 24px 64px rgba(11,18,32,.18);opacity:0;transition:opacity .12s}
@@ -565,6 +565,9 @@ const STATE = {
   none: { word: 'No signal', icon: '–', rule: 'Nothing in the pipeline checks its work yet.' },
 };
 const stateOf = (bad, total) => (total < MIN ? 'early' : bad / total >= 0.5 ? 'red' : bad / total >= 0.2 ? 'amber' : 'green');
+// A fix started from View fix, running or waiting in its PR (dashboard/server.mjs startFix)
+const applying = (id) => Object.values(D?.fixes || {}).some((f) => f.agent === id && (f.state === 'running' || f.state === 'pr'));
+const pillFor = (id, st) => (applying(id) ? `<span class="agv-state fixed"><span class="agv-spin" aria-hidden="true"></span>Applying</span>` : pill(st));
 const pill = (st, sm) => `<span class="agv-state ${st}${sm ? ' sm' : ''}"><i aria-hidden="true">${STATE[st].icon}</i>${STATE[st].word}</span>`;
 const S = { mode: 'all', adv: false, agent: null, tab: 'base', more: 'references', edit: null, files: {}, results: {}, focusTweak: false, menuOpen: false };
 function health(id, mode = S.mode) {
@@ -740,7 +743,7 @@ function board(root) {
   const rows = judged.map((x) => {
     const a = m.agents[x.id]; const two = x.parts.length > 1;
     const works = x.parts.map((p) => `${strip(p, a, { label: two })}<div class="agv-frac">${p.total ? `<b>${p.bad} of ${p.total}</b><small>${p.j.noun}</small>` : '<span class="agv-none">–</span>'}</div>`).join('');
-    return `<div class="agv-row agv-brow${two ? ' two' : ''}" role="row"><div class="agv-agent" role="cell"><a class="agv-nm" href="#agents/${a.id}">${esc(a.name)}</a><span class="agv-role" title="${esc(a.role)}">${esc(a.role)}</span></div><div role="cell">${pill(x.state)}</div><div class="agv-work" role="cell">${works}</div><div class="agv-go" role="cell" aria-hidden="true">${I.chev}</div></div>`;
+    return `<div class="agv-row agv-brow${two ? ' two' : ''}" role="row"><div class="agv-agent" role="cell"><a class="agv-nm" href="#agents/${a.id}">${esc(a.name)}</a><span class="agv-role" title="${esc(a.role)}">${esc(a.role)}</span></div><div role="cell">${pillFor(a.id, x.state)}</div><div class="agv-work" role="cell">${works}</div><div class="agv-go" role="cell" aria-hidden="true">${I.chev}</div></div>`;
   }).join('');
   root.innerHTML = `<div class="agv-segrow"><div class="agv-seg" role="radiogroup" aria-label="Which work to count" id="agv-mode">
     <button type="button" role="radio" aria-checked="${!since}" data-mode="all">All work</button><button type="button" role="radio" aria-checked="${since}" data-mode="since">Since last change</button>
@@ -825,21 +828,21 @@ function openFix(id) {
   }
   const brief = promptFor(id, true);
   const box = node(`<pre class="agv-pbox" tabindex="0" aria-label="What is wrong"></pre>`); box.textContent = brief;
-  const steps = node(`<p class="agv-steps">Apply fix opens one PR. Merge it and the fix is live.</p>`);
   const res = node(`<p class="agv-res" role="status"></p>`);
   const foot = node(`<div class="agv-pfoot"><button type="button" class="agv-btnp">Apply fix</button></div>`);
-  const d = pop('View fix', model().agents[id].name, box, steps, res, foot);
+  foot.prepend(res); // status sits right next to the button (16px), centred on it
+  const d = pop('View fix', model().agents[id].name, box, foot);
   const b = $('button', foot); b.onclick = () => startFix(id, brief, res, b); b.focus();
   return d;
 }
 // POST agent-fix, then follow it until the PR is open (dashboard/server.mjs startFix)
 async function startFix(agent, brief, resEl, btn) {
   const busy = (t) => { resEl.className = 'agv-res'; resEl.innerHTML = `<span class="agv-spin" aria-hidden="true"></span>${t}`; };
-  if (btn) { btn.disabled = true; btn.textContent = 'Applying…'; } busy('Starting the fix…');
+  if (btn) { btn.disabled = true; btn.textContent = 'Applying…'; } busy('Applying…');
   let r, j;
   try { r = await fetch('agent-fix', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ agent, brief }), cache: 'no-store' }); j = await r.json().catch(() => ({ error: 'response was not JSON' })); } catch (e) { r = { status: 0 }; j = { error: String(e) }; }
   if (r.status !== 201 && !j.branch) { resEl.className = 'agv-res err'; resEl.textContent = `${r.status || 'network'}: ${j.error || 'unknown error'}`; if (btn) { btn.disabled = false; btn.textContent = 'Apply fix'; } return; }
-  const branch = j.branch; busy('Applying the fix. The PR link appears here in about 5 to 15 minutes; you can close this.');
+  const branch = j.branch; busy('Applying the fix. Safe to close.'); api.refresh();
   const tick = async () => {
     let all = {}; try { all = await (await fetch('agent-fix', { cache: 'no-store' })).json(); } catch {}
     const f = all[branch];
@@ -885,14 +888,14 @@ function detail(root, id) {
   const m = model(); const a = m.agents[id]; const x = health(id, 'all');
   if (S.agent !== id) { S.agent = id; S.adv = false; S.tab = 'base'; S.more = 'references'; S.edit = null; }
   const head = `<a class="agv-back" href="#agents">${I.back}All agents</a>
-  <header class="agv-head"><div><div class="agv-dt"><h2 id="agv-agent-h" tabindex="-1">${esc(a.name)}</h2>${pill(x.state)}</div>${S.adv ? `<p class="agv-drole">${esc(a.role)}</p>` : ''}</div>
+  <header class="agv-head"><div><div class="agv-dt"><h2 id="agv-agent-h" tabindex="-1">${esc(a.name)}</h2>${pillFor(id, x.state)}</div>${S.adv ? `<p class="agv-drole">${esc(a.role)}</p>` : ''}</div>
   <div class="agv-seg agv-viewseg" role="radiogroup" aria-label="How much to show" id="agv-view"><button type="button" role="radio" aria-checked="${!S.adv}" data-view="simple">Simple</button><button type="button" role="radio" aria-checked="${S.adv}" data-view="advanced">Advanced</button></div></header>`;
   if (!S.adv) {
     const w = wrongOf(id); const tw = tweaksFor(id);
     root.innerHTML = `${head}<div class="agv-simple">
       <section class="agv-card agv-block" aria-labelledby="agv-does-h"><h3 id="agv-does-h">What it does</h3><p class="agv-bigp">${esc(a.does)}</p></section>
       <section class="agv-card agv-block" aria-labelledby="agv-wrong-h"><h3 id="agv-wrong-h">What is wrong</h3><p class="agv-bigp">${w.html}</p>
-      ${w.fix ? `<div class="agv-cta"><button type="button" class="agv-btnp lg" id="agv-fix">${I.doc}View fix</button></div>` : `<div class="agv-cta"><p>Nothing to fix from the data. To read or change this agent anyway, open Advanced.</p></div>`}</section>
+      ${w.fix && applying(id) ? `<div class="agv-cta"><p class="agv-res" role="status"><span class="agv-spin" aria-hidden="true"></span>Applying</p></div>` : w.fix ? `<div class="agv-cta"><button type="button" class="agv-btnp lg" id="agv-fix">${I.doc}View fix</button></div>` : `<div class="agv-cta"><p>Nothing to fix from the data. To read or change this agent anyway, open Advanced.</p></div>`}</section>
     </div>${tw.length ? `<section class="agv-card agv-twlines" aria-labelledby="agv-tws-h"><h3 id="agv-tws-h">Waiting for your answer</h3>${tw.map((t) => `<div class="agv-twl" data-file="${esc(t.file)}"><span class="agv-tt">${t.custom ? '<span class="agv-tag">For your rules</span>' : ''}${esc(t.title)}</span><span class="agv-tb"></span><span class="agv-res" role="status" aria-live="polite"></span></div>`).join('')}</section>` : ''}`;
     $$('.agv-twl', root).forEach((row) => { const t = tw.find((y) => y.file === row.dataset.file); tweakButtons(t, $('.agv-tb', row), $('.agv-res', row)); });
     $('#agv-fix', root)?.addEventListener('click', () => openFix(id));

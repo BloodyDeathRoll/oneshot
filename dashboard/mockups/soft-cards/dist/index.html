@@ -574,12 +574,13 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 .wf-top select:disabled{opacity:.55;cursor:default}
 .wf-top select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 .wf-top select option{color:var(--ink);background:#fff}
-.ov-hd{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.ov-ttl{font-size:15px;line-height:22px;font-weight:700;letter-spacing:-.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.ov-hd{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .ov-hd .ov-nm{flex-direction:column;align-items:flex-start;min-width:0}
 .ov-hd .ov-nm .by{font-size:13px;line-height:18px}
 .ov-hd h3{font-size:15px;line-height:22px}
 .ov-hd .ov-badge{height:22px;font-size:12px}
-.ov-hd .ov-badge{flex:none;margin-top:2px;border-radius:999px;gap:6px;font-size:13px}
+.ov-hd .ov-badge{flex:none;border-radius:999px;gap:6px;font-size:13px}
 .ov-hd .ov-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 .ov-links .sugs{margin-left:auto;gap:2px}
 .ov-links .sug-ib{border:0;background:transparent;width:32px;height:32px}
@@ -593,7 +594,9 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 
 .site-acts>.btn.p{margin-right:auto}
 .site .spill.gate{background:var(--green-bg);color:var(--green)}
-.site-drafts{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px 10px;margin-top:10px;font-size:13px}
+.site-drafts{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 10px;margin-top:10px;font-size:13px}
+.site-drafts .sd-l{font-weight:600;color:var(--ink)}
+.site-drafts .sd-b{display:flex;flex-wrap:wrap;gap:8px 10px;justify-content:flex-end}
 .site-drafts .dic{display:inline-grid;place-items:center;color:var(--ink2)}
 .site-drafts .dic svg{width:16px;height:16px}
 .site-drafts .dic.wa{color:#25D366}
@@ -1057,7 +1060,7 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 .agv-pop .agv-steps{color:var(--ink2);margin:0 0 14px}
 .agv-pop .agv-steps b{color:var(--ink)}
 .agv-pbox{white-space:pre-wrap;background:var(--ground);border-radius:14px;padding:16px 18px;font-size:14px;line-height:1.6;color:#1B1530;max-height:52vh;overflow:auto;overflow-wrap:anywhere;margin:0;font-family:inherit}
-.agv-pfoot{display:flex;justify-content:flex-end;gap:10px;margin-top:16px;flex-wrap:wrap}
+.agv-pfoot{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap}.agv-pfoot:has(>.agv-res){gap:16px}.agv-pfoot>.agv-res{margin:0;text-align:right}
 .agv-msub{font-size:14px;color:var(--ink3);margin-top:2px}
 /* tooltip */
 .agv-tip{position:fixed;z-index:3000;max-width:340px;background:var(--ink);color:#fff;border-radius:12px;padding:10px 14px;font-size:14px;line-height:1.5;pointer-events:none;box-shadow:0 24px 64px rgba(11,18,32,.18);opacity:0;transition:opacity .12s}
@@ -1349,6 +1352,9 @@ const STATE = {
   none: { word: 'No signal', icon: '–', rule: 'Nothing in the pipeline checks its work yet.' },
 };
 const stateOf = (bad, total) => (total < MIN ? 'early' : bad / total >= 0.5 ? 'red' : bad / total >= 0.2 ? 'amber' : 'green');
+// A fix started from View fix, running or waiting in its PR (dashboard/server.mjs startFix)
+const applying = (id) => Object.values(D?.fixes || {}).some((f) => f.agent === id && (f.state === 'running' || f.state === 'pr'));
+const pillFor = (id, st) => (applying(id) ? `<span class="agv-state fixed"><span class="agv-spin" aria-hidden="true"></span>Applying</span>` : pill(st));
 const pill = (st, sm) => `<span class="agv-state ${st}${sm ? ' sm' : ''}"><i aria-hidden="true">${STATE[st].icon}</i>${STATE[st].word}</span>`;
 const S = { mode: 'all', adv: false, agent: null, tab: 'base', more: 'references', edit: null, files: {}, results: {}, focusTweak: false, menuOpen: false };
 function health(id, mode = S.mode) {
@@ -1524,7 +1530,7 @@ function board(root) {
   const rows = judged.map((x) => {
     const a = m.agents[x.id]; const two = x.parts.length > 1;
     const works = x.parts.map((p) => `${strip(p, a, { label: two })}<div class="agv-frac">${p.total ? `<b>${p.bad} of ${p.total}</b><small>${p.j.noun}</small>` : '<span class="agv-none">–</span>'}</div>`).join('');
-    return `<div class="agv-row agv-brow${two ? ' two' : ''}" role="row"><div class="agv-agent" role="cell"><a class="agv-nm" href="#agents/${a.id}">${esc(a.name)}</a><span class="agv-role" title="${esc(a.role)}">${esc(a.role)}</span></div><div role="cell">${pill(x.state)}</div><div class="agv-work" role="cell">${works}</div><div class="agv-go" role="cell" aria-hidden="true">${I.chev}</div></div>`;
+    return `<div class="agv-row agv-brow${two ? ' two' : ''}" role="row"><div class="agv-agent" role="cell"><a class="agv-nm" href="#agents/${a.id}">${esc(a.name)}</a><span class="agv-role" title="${esc(a.role)}">${esc(a.role)}</span></div><div role="cell">${pillFor(a.id, x.state)}</div><div class="agv-work" role="cell">${works}</div><div class="agv-go" role="cell" aria-hidden="true">${I.chev}</div></div>`;
   }).join('');
   root.innerHTML = `<div class="agv-segrow"><div class="agv-seg" role="radiogroup" aria-label="Which work to count" id="agv-mode">
     <button type="button" role="radio" aria-checked="${!since}" data-mode="all">All work</button><button type="button" role="radio" aria-checked="${since}" data-mode="since">Since last change</button>
@@ -1609,21 +1615,21 @@ function openFix(id) {
   }
   const brief = promptFor(id, true);
   const box = node(`<pre class="agv-pbox" tabindex="0" aria-label="What is wrong"></pre>`); box.textContent = brief;
-  const steps = node(`<p class="agv-steps">Apply fix opens one PR. Merge it and the fix is live.</p>`);
   const res = node(`<p class="agv-res" role="status"></p>`);
   const foot = node(`<div class="agv-pfoot"><button type="button" class="agv-btnp">Apply fix</button></div>`);
-  const d = pop('View fix', model().agents[id].name, box, steps, res, foot);
+  foot.prepend(res); // status sits right next to the button (16px), centred on it
+  const d = pop('View fix', model().agents[id].name, box, foot);
   const b = $('button', foot); b.onclick = () => startFix(id, brief, res, b); b.focus();
   return d;
 }
 // POST agent-fix, then follow it until the PR is open (dashboard/server.mjs startFix)
 async function startFix(agent, brief, resEl, btn) {
   const busy = (t) => { resEl.className = 'agv-res'; resEl.innerHTML = `<span class="agv-spin" aria-hidden="true"></span>${t}`; };
-  if (btn) { btn.disabled = true; btn.textContent = 'Applying…'; } busy('Starting the fix…');
+  if (btn) { btn.disabled = true; btn.textContent = 'Applying…'; } busy('Applying…');
   let r, j;
   try { r = await fetch('agent-fix', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ agent, brief }), cache: 'no-store' }); j = await r.json().catch(() => ({ error: 'response was not JSON' })); } catch (e) { r = { status: 0 }; j = { error: String(e) }; }
   if (r.status !== 201 && !j.branch) { resEl.className = 'agv-res err'; resEl.textContent = `${r.status || 'network'}: ${j.error || 'unknown error'}`; if (btn) { btn.disabled = false; btn.textContent = 'Apply fix'; } return; }
-  const branch = j.branch; busy('Applying the fix. The PR link appears here in about 5 to 15 minutes; you can close this.');
+  const branch = j.branch; busy('Applying the fix. Safe to close.'); api.refresh();
   const tick = async () => {
     let all = {}; try { all = await (await fetch('agent-fix', { cache: 'no-store' })).json(); } catch {}
     const f = all[branch];
@@ -1669,14 +1675,14 @@ function detail(root, id) {
   const m = model(); const a = m.agents[id]; const x = health(id, 'all');
   if (S.agent !== id) { S.agent = id; S.adv = false; S.tab = 'base'; S.more = 'references'; S.edit = null; }
   const head = `<a class="agv-back" href="#agents">${I.back}All agents</a>
-  <header class="agv-head"><div><div class="agv-dt"><h2 id="agv-agent-h" tabindex="-1">${esc(a.name)}</h2>${pill(x.state)}</div>${S.adv ? `<p class="agv-drole">${esc(a.role)}</p>` : ''}</div>
+  <header class="agv-head"><div><div class="agv-dt"><h2 id="agv-agent-h" tabindex="-1">${esc(a.name)}</h2>${pillFor(id, x.state)}</div>${S.adv ? `<p class="agv-drole">${esc(a.role)}</p>` : ''}</div>
   <div class="agv-seg agv-viewseg" role="radiogroup" aria-label="How much to show" id="agv-view"><button type="button" role="radio" aria-checked="${!S.adv}" data-view="simple">Simple</button><button type="button" role="radio" aria-checked="${S.adv}" data-view="advanced">Advanced</button></div></header>`;
   if (!S.adv) {
     const w = wrongOf(id); const tw = tweaksFor(id);
     root.innerHTML = `${head}<div class="agv-simple">
       <section class="agv-card agv-block" aria-labelledby="agv-does-h"><h3 id="agv-does-h">What it does</h3><p class="agv-bigp">${esc(a.does)}</p></section>
       <section class="agv-card agv-block" aria-labelledby="agv-wrong-h"><h3 id="agv-wrong-h">What is wrong</h3><p class="agv-bigp">${w.html}</p>
-      ${w.fix ? `<div class="agv-cta"><button type="button" class="agv-btnp lg" id="agv-fix">${I.doc}View fix</button></div>` : `<div class="agv-cta"><p>Nothing to fix from the data. To read or change this agent anyway, open Advanced.</p></div>`}</section>
+      ${w.fix && applying(id) ? `<div class="agv-cta"><p class="agv-res" role="status"><span class="agv-spin" aria-hidden="true"></span>Applying</p></div>` : w.fix ? `<div class="agv-cta"><button type="button" class="agv-btnp lg" id="agv-fix">${I.doc}View fix</button></div>` : `<div class="agv-cta"><p>Nothing to fix from the data. To read or change this agent anyway, open Advanced.</p></div>`}</section>
     </div>${tw.length ? `<section class="agv-card agv-twlines" aria-labelledby="agv-tws-h"><h3 id="agv-tws-h">Waiting for your answer</h3>${tw.map((t) => `<div class="agv-twl" data-file="${esc(t.file)}"><span class="agv-tt">${t.custom ? '<span class="agv-tag">For your rules</span>' : ''}${esc(t.title)}</span><span class="agv-tb"></span><span class="agv-res" role="status" aria-live="polite"></span></div>`).join('')}</section>` : ''}`;
     $$('.agv-twl', root).forEach((row) => { const t = tw.find((y) => y.file === row.dataset.file); tweakButtons(t, $('.agv-tb', row), $('.agv-res', row)); });
     $('#agv-fix', root)?.addEventListener('click', () => openFix(id));
@@ -2968,10 +2974,11 @@ function renderPitchSites(){
     const meta=el('div',{class:'ov-meta'});
     for(const a of (b.assignments||[]).filter(a=>a.open))meta.append(el('span',{class:'ov-ho',title:a.task},el('span',{html:OVI.handoff}),a.by===a.to?`${opName(a.to)} is on it`:a.to===D.team?.viewer?`${opName(a.by)} asks you`:`Handed off to ${opName(a.to)}`));
     const hc=hoChip(b);if(hc)meta.append(hc);
-    const who=el('div',{class:'ov-nm'},el('h3',{text:b.name}));
+    const who=el('div',{class:'ov-nm'});
     if(b.owned_by?.name)who.append(el('span',{class:'by',text:b.owned_by.name,title:`Owner: ${b.owned_by.name}`}));
     if(b.state==='packaged')who.append(el('span',{class:'by',text:age?`for ${ovPlural(age,'day')}`:'since today',title:`Ready to send since ${dShort(b.last_change)}`}));
-    li.append(el('div',{class:'ov-hd'},who,el('span',{class:'ov-badge '+(BADGE[cls]||'sent'),text:txt,...tip&&{title:tip}})));
+    // Title on its own line (one line, ellipsis) so cards keep one height; the tag sits across the name/time block
+    li.append(el('h3',{class:'ov-ttl',text:b.name,title:b.name}),el('div',{class:'ov-hd'},who,el('span',{class:'ov-badge '+(BADGE[cls]||'sent'),text:txt,...tip&&{title:tip}})));
     const hoOpen=b.handoff&&b.handoff.open,hoLabel=hoOpen?(b.handoff.status==='requested'&&b.handoff.from===D.team?.viewer?'Approve / Reject':'Handoff'):'Ask for handoff';
     let hob=null;
     if(hoOpen||!isMine(b)){const ho=el('button',{type:'button',class:'ovb ho sm ov-hob'+(hoOpen&&hoLabel==='Approve / Reject'?' p':'')},el('span',{html:OVI.handoff}),hoLabel,el('span',{class:'sr',text:` ${b.name}`}));ho.onclick=()=>handoffModal(b);hob=ho}
@@ -3263,8 +3270,6 @@ function renderSites(){
   const sites=pitchSites();
   const head=$('#sites-head');head.innerHTML='';
   if(!sites.length){box.append(el('section',{class:'card'},el('h2',{class:'label',text:'No site has a preview yet'}),el('p',{class:'empty',style:'margin-top:8px;font-size:15px;color:var(--ink2)',text:'Fills when a business reaches previewed.'})));return}
-  const compact=matchMedia('(max-width:1280px)').matches;
-  const W=compact?(Math.min(1232,innerWidth)-72-48-24)/2-56:(1152-48)/3-56;
   for(const b of sites){
     const c=el('article',{class:'card site',id:'site-'+b.slug,tabindex:'-1','aria-label':b.name});
     c.append(thumb(b,'shot'));
@@ -3278,14 +3283,19 @@ function renderSites(){
     const num=el('div',{class:'num',text:'0'});sc.append(num);
     sc.append(el('div',{class:'v',html:last?`<b class="${last.verdict==='PASS'?'pass':'fail'}">${last.verdict}</b> · ${b.critic_score_kind} · ${dShort(last.ts)}<br>${b.critic_rounds} round${b.critic_rounds===1?'':'s'}, ${b.critic_series.filter(s=>s.kind==='verification').length} verification${b.critic_series.filter(s=>s.kind==='verification').length===1?'':'s'}`:'no critic score'}));
     body.append(sc);
-    if(scored.length)body.append(el('figure',{class:'scorechart'},scoreChart(scored,W,b.slug)));
+    // The chart is drawn once the card is on the page, at the figure's real width (Figma: full card width)
+    const fig=scored.length?el('figure',{class:'scorechart'}):null;if(fig)body.append(fig);
     // Figma 2026-10-27: Update status left, the two links right; the drafts on a second row, right, with their icons
     const acts=siteLinks(b);acts.classList.add('site-acts');
-    const drafts=[...acts.querySelectorAll('button.cta')];const r2=el('div',{class:'site-drafts'});
-    for(const d of drafts){const ic=/WhatsApp/.test(d.textContent)?ICON_WA:/email/.test(d.textContent)?ICON_MAIL:ICON_PERSON;d.append(el('span',{class:'dic'+(ic===ICON_WA?' wa':''),html:ic}));r2.append(d)}
+    // Figma 2026-10-28: "Suggested approach:" left, short draft buttons right (WhatsApp, in-person script, email)
+    const SHORT={'Suggested WhatsApp':'WhatsApp','Suggested in-person script':'in-person script','Suggested email':'Email'},ORD=['WhatsApp','in-person script','Email'];
+    const drafts=[...acts.querySelectorAll('button.cta')].sort((x,y)=>ORD.indexOf(SHORT[x.textContent])-ORD.indexOf(SHORT[y.textContent]));
+    const r2=el('div',{class:'site-drafts'},el('span',{class:'sd-l',text:'Suggested approach:'}));const r2b=el('div',{class:'sd-b'});r2.append(r2b);
+    for(const d of drafts){const full=d.textContent,ic=/WhatsApp/.test(full)?ICON_WA:/email/.test(full)?ICON_MAIL:ICON_PERSON;d.textContent=SHORT[full]||full;d.setAttribute('aria-label',`${full} for ${b.name}`);d.append(el('span',{class:'dic'+(ic===ICON_WA?' wa':''),html:ic}));r2b.append(d)}
     if(b.state==='packaged'||/^(pitched|outcome:(reply|meeting|ignored))$/.test(b.state)){const u=el('button',{type:'button',class:'btn p',text:'Update status'});u.onclick=()=>statusModal(b);acts.prepend(u)}
     body.append(acts);if(drafts.length)body.append(r2);
     c.append(body);box.append(c);
+    if(fig){let w0=0;const draw=()=>{const w=fig.clientWidth;if(!w||Math.abs(w-w0)<2)return;w0=w;fig.replaceChildren(scoreChart(scored,w,b.slug))};draw();new ResizeObserver(draw).observe(fig)} // hidden view: drawn when it shows
     if(b.critic_score!=null)countUp(num,b.critic_score,'site-'+b.slug);else num.textContent='—';
   }
 }
@@ -3498,7 +3508,9 @@ function rerender(force){
   if(!back&&fkey){const f=document.querySelector(`[data-fkey="${CSS.escape(fkey)}"]`);back=f&&(fname?f.querySelector(`[name="${fname}"]`):f.querySelector('input,button'))}
   if(back)back.focus({preventScroll:true});
 }
-async function refresh(force){const my=++seq;try{const r=await fetch('data.json',{cache:'no-store'});if(!r.ok)return;const d=await r.json();if(my!==seq)return;setData(d);rerender(force)}catch{}}
+// A deploy changes dist/index.html: an open tab reloads itself instead of running the old page (Shahar, 2026-10-27)
+let BUILD=null;
+async function refresh(force){const my=++seq;try{const r=await fetch('data.json',{cache:'no-store'});if(!r.ok)return;const d=await r.json();if(my!==seq)return;if(d.build){if(BUILD&&d.build!==BUILD){location.reload();return}BUILD=d.build}setData(d);rerender(force)}catch{}}
 document.addEventListener('focusout',e=>{if(state.dirty&&e.target.closest('form.gate'))setTimeout(()=>{if(state.dirty&&!(document.activeElement&&document.activeElement.closest('form.gate')))rerender()},50)});
 (async()=>{
   LIVE=await probe();
@@ -3506,6 +3518,7 @@ document.addEventListener('focusout',e=>{if(state.dirty&&e.target.closest('form.
   await refresh(true);
   const es=new EventSource('events');
   es.addEventListener('data',()=>refresh());
+  let hellos=0;es.addEventListener('hello',()=>{if(hellos++)refresh()}); // a reconnect follows a server restart, which follows a deploy
   es.onerror=()=>{/* the browser reconnects; nothing to render */};
 })();
 let rw=innerWidth;addEventListener('resize',()=>{if(Math.abs(innerWidth-rw)>40){rw=innerWidth;render()}});

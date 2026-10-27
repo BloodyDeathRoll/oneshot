@@ -309,7 +309,11 @@ async function tryPr(spec) {
 // ---- agent fix: the dashboard button starts .github/workflows/agent-fix.yml (Claude in Actions applies the
 // fix and pushes a branch); this server then opens the PR with its own gh login, so the review runs on it.
 // Shahar, 2026-10-27: pressing the button is the approval; no prompt to paste, no second approval.
-const fixes = new Map(); // branch -> { agent, state: running|pr|failed, pr?, error?, at }
+// branch -> { agent, state: running|pr|done|failed, pr?, error?, at }; kept on disk, so a restart (every merge to
+// main) does not forget a fix that is still running
+const FIXES_FILE = join(homedir(), '.oneshot', 'agent-fixes.json');
+const fixes = new Map((() => { try { return Object.entries(JSON.parse(readFileSync(FIXES_FILE, 'utf8'))); } catch { return []; } })());
+const saveFixes = () => { try { mkdirSync(dirname(FIXES_FILE), { recursive: true }); writeFileSync(FIXES_FILE, JSON.stringify(Object.fromEntries(fixes))); } catch {} };
 const sh = (cmd, args) => new Promise((ok, no) => execFile(cmd, args, { cwd: ROOT, timeout: 120_000 }, (e, out, err) => (e ? no(new Error(String(err || e.message).trim().split('\n').pop())) : ok(String(out).trim()))));
 async function startFix({ agent, brief }, who) {
   if (!/^[a-z0-9-]+$/.test(String(agent ?? '')) || !existsSync(join(ROOT, 'agents', agent, 'base.md'))) return { status: 400, error: 'unknown agent' };
@@ -323,7 +327,7 @@ async function startFix({ agent, brief }, who) {
   try { await sh('gh', ['api', 'repos/{owner}/{repo}/dispatches', '--input', payload]); }
   catch (e) { return { status: 502, error: `GitHub refused to start the fix: ${e.message ?? e}` }; }
   finally { rmSync(tmp, { recursive: true, force: true }); }
-  fixes.set(branch, { agent, state: 'running', at: new Date().toISOString() });
+  fixes.set(branch, { agent, state: 'running', at: new Date().toISOString() }); saveFixes(); notify('agent-fix');
   return { status: 201, branch };
 }
 
@@ -336,15 +340,19 @@ async function sweepFixes() {
     const heads = (await sh('git', ['ls-remote', '--heads', 'origin', 'agent-fix/*'])).split('\n').map((l) => l.split('refs/heads/')[1]).filter(Boolean);
     for (const branch of heads) {
       const f = fixes.get(branch);
-      if (f?.state === 'pr') continue;
+      if (f?.state === 'pr' || f?.state === 'done') continue;
       const open = await sh('gh', ['pr', 'list', '--head', branch, '--state', 'all', '--json', 'url', '-q', '.[0].url']);
-      const pr = open || await sh('gh', ['pr', 'create', '--base', 'main', '--head', branch, '--fill']);
+      // --fill reads the local branch, which this checkout does not have: title and body come from the commit
+      const msg = open ? '' : await sh('gh', ['api', `repos/{owner}/{repo}/commits/${branch}`, '-q', '.commit.message']);
+      const pr = open || await sh('gh', ['pr', 'create', '--base', 'main', '--head', branch, '--title', msg.split('\n')[0], '--body', msg.split('\n').slice(2).join('\n') || msg.split('\n')[0]]);
       fixes.set(branch, { ...(f ?? { agent: branch.replace(/^agent-fix\/|-\d{14}$/g, ''), at: null }), state: 'pr', pr });
       if (!open) notify('agent-fix');
     }
+    // An open PR means the fix is still applying; merged or closed, it is done (the agent's state takes over)
+    for (const [, f] of fixes) if (f.state === 'pr') { const st = await sh('gh', ['pr', 'view', f.pr, '--json', 'state', '-q', '.state']).catch(() => 'OPEN'); if (st !== 'OPEN') { f.state = 'done'; notify('agent-fix'); } }
     for (const [, f] of fixes) if (f.state === 'running' && Date.now() - Date.parse(f.at) > 45 * 60_000) { f.state = 'failed'; f.error = 'no branch after 45 minutes; see the Agent fix workflow in GitHub Actions'; notify('agent-fix'); }
   } catch (e) { console.error(`agent-fix sweep: ${e.message ?? e}`); }
-  finally { sweeping = false; }
+  finally { saveFixes(); sweeping = false; }
 }
 setInterval(sweepFixes, 30_000).unref(); setTimeout(sweepFixes, 5_000).unref();
 
@@ -376,6 +384,7 @@ function notify(what) {
   clearTimeout(timer);
   timer = setTimeout(() => { for (const res of clients) res.write(`event: data\ndata: ${JSON.stringify({ changed: what, at: new Date().toISOString() })}\n\n`); }, 300);
 }
+try { watch(DIST, () => notify('build')); } catch { /* the page then reloads on the next data change */ }
 for (const rel of ['ledger.jsonl', 'activity.jsonl', 'runs', 'proposals', 'sites', 'expenses.jsonl', 'revenues.jsonl', 'media', 'agents', 'dashboard/tweaks.json']) {
   const abs = join(ROOT, rel);
   if (!existsSync(abs)) continue;
@@ -391,6 +400,11 @@ if (SYNC_S > 0) {
 // ---- http -----------------------------------------------------------------------------------------
 const send = (res, status, body, type = 'application/json') => { res.writeHead(status, { 'content-type': type, 'cache-control': 'no-store' }); res.end(typeof body === 'string' ? body : JSON.stringify(body)); };
 const safeUnder = (base, rel) => { const p = normalize(join(base, rel)); return p.startsWith(base + sep) || p === base ? p : null; };
+// The page's build: changes with every deploy of dist/index.html, so open tabs know to reload
+let buildCache = { mtime: 0, id: null };
+function buildId() {
+  try { const m = statSync(join(DIST, 'index.html')).mtimeMs; if (m !== buildCache.mtime) buildCache = { mtime: m, id: createHash('sha1').update(readFileSync(join(DIST, 'index.html'))).digest('hex').slice(0, 12) }; return buildCache.id; } catch { return null; }
+}
 function serveFile(res, abs) {
   if (!abs || !existsSync(abs) || statSync(abs).isDirectory()) return send(res, 404, { error: 'not found' });
   res.writeHead(200, { 'content-type': MIME[extname(abs).toLowerCase()] ?? 'application/octet-stream', 'cache-control': 'no-store' });
@@ -403,7 +417,7 @@ function handle(req, res, who) {
   const url = new URL(req.url, `http://${req.headers.host}`);
   const path = decodeURIComponent(url.pathname);
   if (req.method === 'GET' && (path === '/' || path === '/index.html')) return serveFile(res, join(DIST, 'index.html'));
-  if (req.method === 'GET' && path === '/data.json') { markPitchLive(buildData({ ledgerPath: LEDGER, operator: who.operator })).then((d) => send(res, 200, { ...d, live: LIVE.current() }), (e) => send(res, 500, { error: String(e.message ?? e) })); return; }
+  if (req.method === 'GET' && path === '/data.json') { markPitchLive(buildData({ ledgerPath: LEDGER, operator: who.operator })).then((d) => send(res, 200, { ...d, live: LIVE.current(), fixes: Object.fromEntries(fixes), build: buildId() }), (e) => send(res, 500, { error: String(e.message ?? e) })); return; }
   if (req.method === 'GET' && path === '/live') return send(res, 200, LIVE.current());
   if (req.method === 'GET' && path === '/events') {
     res.writeHead(200, { 'content-type': 'text/event-stream', 'cache-control': 'no-store', connection: 'keep-alive' });
