@@ -50,9 +50,23 @@ Old site for comparison: `dossier/cheeky-monkey/assets/old-site-desktop.png`, `o
 - Set-piece: the board opens against the beach at both widths, and the beach shows either side of the 1080-px column at the end on desktop. Reduced motion: the poster board stands on a static beach, with no pin and no drift. No WebGL: the same opening over the beach. Overflow, overlap, unreadable text: none.
 - Against the old site: still clearly better at a glance, and now as colourful as a beach day rather than a white page.
 
+**Round 7: Midigama beach and surf photos (Alon)** — after the pick (gate b, unique kept): "big photos of the beach and surf in midigama", as video if possible. vid-009 is still the only usable clip, so this round is photographs. The first screen is unchanged. New section "Down at the water" (`#water`, aqua ground) between the intro and the surf weeks, so the page goes road → shop reel → the sea → the weeks of surf.
+- **The atmosphere band:** stock-003 (the one verified Midigama photograph, CC BY-SA 3.0, `modify: false`). It is shown whole, full-width at its own 2560:1712 ratio (963 px tall at 1440, 261 at 390), with no crop, recolour or shader. It is served as the original JPEG, copied byte for byte by `src/make-media.sh` and checked with `cmp`. The credit string from `index.json` sits directly under it, linked to the Commons page and the licence. Its alt text says only what it shows ("The shore at Midigama…"); no break is named and nothing ties it to the business.
+- **The business's own water photographs**, a 1200-px mosaic under the section text:
+  - img-100 (a surfer walking into the sea), tall, at 5:8;
+  - img-103 (a surfer in a Cheeky Monkey vest with the yellow fish, facing the waves), 3:2;
+  - img-155 (surfers wading in; the owner's alt says "on the midigama beach"), uncropped at 1600 × 702.
+- The copy's `spot` and `season` lines moved from the intro into this section, beside the photographs they describe. img-100 and img-103 were the tiny board crops on two surf-week cards; those cards now use img-149 (a surf lesson on the sand) and img-135 (surfers heading out with their boards), so no photograph appears twice.
+- Wrong in the first shoot, and fixed:
+  - The own photos sat in a cramped mosaic beside the text, about 400 px across. The text now sits above, and the mosaic takes the full column.
+  - `check-design` failed the credit as a caption under a photograph. It was a `figcaption`; it is now a plain paragraph beside the band, the same text, still visible.
+  - The first load jumped from 0.38 to 2.65 MB, because Chromium's native lazy-load margin reached the band two screens below the pinned hero. The band's `src` is now set by an IntersectionObserver 600 px out, its 2560:1712 box is reserved from first paint, and `<noscript>` serves it with JS off. First load is back to 0.40 MB.
+  - Rethink Sans drew "(1)" in the credit as a circled ①. Ligatures are off on the credit, so it now reads exactly as in `index.json`.
+- Seen at 1440 and 390: the band is the biggest picture on the page after the hero, whole and sharp (2560 source px). The mosaic reads as the business's own surf, big. Overflow, overlap, unreadable text: none. The phone credit wraps to two lines with 44-px link targets, so its line gap is wide but readable. Against the old site (one generic surfer): this page now shows Midigama's water three times over, as the town, the guests and the surf.
+
 ## images
 
-All business-owned (`dossier/cheeky-monkey/assets/index.json`: Booking.com property uploads, the owner's site, the business's Instagram). No stock, no `stock/` folder, no image of unknown licence.
+All business-owned (`dossier/cheeky-monkey/assets/index.json`: Booking.com property uploads, the owner's site, the business's Instagram), except one atmosphere photograph since round 7: stock-003, CC BY-SA 3.0, from `dossier/cheeky-monkey/stock/`, shown whole with its credit. No image of unknown licence.
 
 | file in dist/img | dossier asset | licence |
 |---|---|---|
@@ -70,6 +84,9 @@ All business-owned (`dossier/cheeky-monkey/assets/index.json`: Booking.com prope
 | baba-img-141, baba-img-121 | img-141 (Baba); img-121 (an earlier shop front, shown as a small print, alt says "earlier") | business-owned |
 | road-img-082 | img-082 (today's front, red tuk-tuk) | business-owned |
 | ig-img-105 085 099 089 013 | same ids | business-owned |
+| beach-img-100 (5:8), beach-img-103 (3:2), beach-img-155 (whole) | img-100, img-103, img-155 — round 7, "Down at the water" | business-owned |
+| card-img-149, card-img-135 | img-149, img-135 — round 7, replacing img-100 / img-103 on the Full Surf and Moderate cards | business-owned |
+| stock-003.jpg (the original file, unchanged) | `dossier/cheeky-monkey/stock/stock-003.jpg`, "Indische Oceaan - panoramio (1)" — Maaike Hage, CC BY-SA 3.0, via Wikimedia Commons; `place_ok: local` (Midigama shore) | **stock-cc, atmosphere only, shown whole with its credit, never as the business, no break named** |
 
 Video (`dist/video`, store): `board-720` (VP9 1.60 MB / H.264 1.81 MB, phones and the board at rest) and `board-1080` (VP9 2.65 MB / H.264 3.45 MB, desktop ≥ 861 px, for the full-column end of the zoom). Both come from vid-009 3.0–13.0 s, the dossier's cut: no audio, 30 fps, never upscaled (1080 source px at ≤ 1080 CSS px). They are attached after the load event plus idle, and never under reduced motion or Save-Data.
 
@@ -109,6 +126,8 @@ Contrast, measured (WCAG relative luminance):
 
 None blocking.
 
+R7. **Round 7 departures.** (a) The licence credit is a `<p>` beside the band, not a `figcaption`. The house rule exempts licence credits, but `check-design` flags any `figcaption` under an image. (b) The Full Surf and Moderate cards changed photographs (img-149, img-135), so img-100 and img-103 could be shown big. (c) The `spot` / `season` lines moved from the intro into the new section.
+
 0. **custom.md "Grounds are clean whites and light neutrals" vs the operator's request for "more colorful with surf and beach vibes" (round 4).** I followed Alon. The grounds stay light (house rule 1 holds: page grounds have luminance ≥ 0.72, `check-design` passes), but they are tinted from the photographs, not neutral, and the hero carries a drawn beach. The alternative, white with colour only in accents, is what he asked to change.
 
 1. **No GSAP / ScrollTrigger (concept: "GSAP + ScrollTrigger ~45 KB").** The same zoom runs on a `position: sticky` stage with the page's own scroll progress, and the section height is fixed in `<head>` from the tier, before first paint. This follows the Global Surf v2 precedent, where the critic counted a CDN GSAP as a third-party script and measured CLS ≈ 1 from the pin. The means differ; the motion is the concept's (same mask, same 180 vh / 110 vh, same order).
@@ -131,6 +150,6 @@ This run has one business. Against its other two variants (looked at, not touche
 ## check results
 
 - `tools/check-design.mjs` (single-page form, final file, after the colour rework): **ok**, 0 problems, 0 warnings. h1 Rethink Sans (the wordmark), h2 Permanent Marker, body Rethink Sans, ground `#FFFFFF`, 0 all-caps labels, 0/25 labelled headings.
-- `tools/check-places.mjs cheeky-monkey`: ok (0 borrowed images).
-- `tools/audit-mockup.mjs cheeky-monkey unique` (after the colour rework): **scroll.early.cls 0, scroll.settled.cls 0**. First load (phone, slow 4G), re-measured after the colour rework: 382 KB (images 221 KB, fonts 65 KB, the inline HTML/CSS/JS the rest); largest image 89 KB; LCP 1.44 s; CLS 0. The beach is CSS with no image files, and its drift is transform-only. Third-party on load: Google Fonts only (allowed at 4e). Tap targets under 44 px: 0. No JS: 6 booking links reachable in `#book`. Reduced motion: canvas hidden, photograph visible. Drawer: opens, Esc closes, focus returns.
+- `tools/check-places.mjs cheeky-monkey` (round 7): ok, **1 borrowed image use checked** (stock-003, `place_ok: local`), 0 failing.
+- `tools/audit-mockup.mjs cheeky-monkey unique` (after the colour rework): **scroll.early.cls 0, scroll.settled.cls 0**. First load (phone, slow 4G), re-measured in round 7: 403 KB, LCP 1.46 s, CLS 0, scroll CLS early 0 / settled 0 (the 2.2 MB Midigama band is fetched only as it nears the screen). After the colour rework it was 382 KB (images 221 KB, fonts 65 KB, the inline HTML/CSS/JS the rest); largest image 89 KB; LCP 1.44 s; CLS 0. The beach is CSS with no image files, and its drift is transform-only. Third-party on load: Google Fonts only (allowed at 4e). Tap targets under 44 px: 0. No JS: 6 booking links reachable in `#book`. Reduced motion: canvas hidden, photograph visible. Drawer: opens, Esc closes, focus returns.
 - Booking targets copied from the dossier: `https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html`, `tel:+94719248686`, `mailto:cheekymonkeymidi@gmail.com`, `https://www.instagram.com/cheekymonkeysrilanka/`.

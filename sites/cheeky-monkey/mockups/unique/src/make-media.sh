@@ -5,6 +5,7 @@
 # Needs ffmpeg (libvpx-vp9, libx264), cwebp, python3 (arithmetic only).
 # media: sites/cheeky-monkey/mockups/unique/dist/img/**
 # media: sites/cheeky-monkey/mockups/unique/dist/video/**
+# stock-003 (dist/img/stock-003.jpg) is the CC BY-SA original, copied unchanged from dossier/cheeky-monkey/stock/
 set -euo pipefail
 cd "$(dirname "$0")/../../../../.."
 SLUG=cheeky-monkey
@@ -58,8 +59,8 @@ cut() { # <width> <vp9 kbps> <h264 kbps>
 [ -s "$D/video/board-1080.mp4" ] && [ -z "${REDO_VIDEO:-}" ] || { cut 720 1300 1450; cut 1080 2300 2800; }
 
 # ---------- surf-week cards: board-shaped crops (mask in CSS), 3:5
-img img-100 card-img-100 3:5 560 76 0.5 0.55   # surfer walking into the water
-img img-103 card-img-103 3:5 560 76 0.6 0.5    # surfer with the yellow fish
+img img-149 card-img-149 3:5 560 76 0.5 0.5    # surf lesson on the sand (round 7: img-100/103 moved to the beach section)
+img img-135 card-img-135 3:5 560 76 0.5 0.5    # surfers heading out with their boards
 img img-137 card-img-137 3:5 560 76 0.55 0.5   # rooftop yoga at sunset
 img img-096 card-img-096 3:5 560 76 0.5 0.5    # lilac and mint fish on the stand
 
@@ -67,6 +68,14 @@ img img-096 card-img-096 3:5 560 76 0.5 0.5    # lilac and mint fish on the stan
 for i in 030 014 021 016 033 026 058 041 045 050 053 002 004 009 013 035 034 036 037 064 063 065 070; do
   img img-$i room-img-$i 3:2 1100 72 0.5 0.55
 done
+
+# ---------- round 7, the beach and surf section: the business's own water photographs
+img img-100 beach-img-100 5:8 1000 76 0.47 0.6   # a surfer walking into the sea with his board
+img img-103 beach-img-103 3:2 1400 76 0.55 0.5   # surfer with the yellow fish, facing the waves
+img img-155 beach-img-155 0 1600 76              # surfers wading in, owner's alt "on the midigama beach" (kept whole, 1920x844)
+# ---------- round 7, Midigama atmosphere: stock-003, CC BY-SA 3.0, modify:false. Copied byte for byte: no crop, no resize, no re-encode.
+cp "dossier/$SLUG/stock/stock-003.jpg" "$D/img/stock-003.jpg"
+cmp "dossier/$SLUG/stock/stock-003.jpg" "$D/img/stock-003.jpg"
 
 # ---------- the shop: masonry, each picture keeps its own shape
 img img-109 shop-img-109 0 900 74

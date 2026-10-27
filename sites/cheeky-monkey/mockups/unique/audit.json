@@ -1,9 +1,9 @@
 {
  "slug": "cheeky-monkey",
  "variant": "unique",
- "measured_at": "2026-10-26T23:36:03.441Z",
+ "measured_at": "2026-10-27T00:03:54.019Z",
  "first_load": {
-  "requests": 9,
+  "requests": 8,
   "hosts": [
    "fonts.googleapis.com",
    "localhost:8980",
@@ -13,16 +13,16 @@
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 382359,
-  "bytes_html": 96787,
+  "bytes_total": 402988,
+  "bytes_html": 100598,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 64900,
-  "bytes_images": 220672,
-  "largest_image_bytes": 88932,
-  "lcp_ms": 1440,
+  "bytes_images": 237490,
+  "largest_image_bytes": 77102,
+  "lcp_ms": 1460,
   "cls": 0,
-  "dcl_ms": 1609
+  "dcl_ms": 1565
  },
  "scroll": {
   "early": {
@@ -37,6 +37,8 @@
  "booking": {
   "external_booking_hrefs": [
    "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html",
+   "https://commons.wikimedia.org/wiki/File:Indische_Oceaan_-_panoramio_(1).jpg",
+   "https://creativecommons.org/licenses/by-sa/3.0",
    "https://www.instagram.com/cheekymonkeysrilanka/",
    "https://cheekymonkeymidigama.com/",
    "https://www.google.com/maps/place/Cheeky+Monkey/@5.9617986,80.3967609,17z/data=!4m9!3m8!1s0x3ae114c1f7d9fc01:0xb59451ca09648650!5m2!4m1!1i2!8m2!3d5.9617986!4d80.3967609!16s%2Fg%2F11b6scl3ts?hl=en",
@@ -56,14 +58,15 @@
   "focus_returned": true
  },
  "a11y": {
-  "images": 52,
+  "images": 56,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 7,
-  "tapables": 80,
+  "tapables": 83,
   "tapables_under_44px": 0,
   "tapables_under_44px_examples": [],
   "headings": [
    "H1",
+   "H2",
    "H2",
    "H2",
    "H3",
@@ -93,9 +96,9 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 10044,
+  "text_length": 10165,
   "booking_links_reachable": 6,
-  "visible_images": 51
+  "visible_images": 56
  },
  "reduced_motion": {
   "canvases": 1,
@@ -103,8 +106,10 @@
   "photograph_visible": true
  },
  "facts": {
-  "numbers_on_page": 47,
-  "numbers_not_in_passed_copy": [],
+  "numbers_on_page": 48,
+  "numbers_not_in_passed_copy": [
+   "3.0,"
+  ],
   "note": "copy/en.json passed station 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps each paragraph to its dossier fields. A number here that is not in the copy is either an interface label (01, 02…) or a claim to chase."
  }
 }

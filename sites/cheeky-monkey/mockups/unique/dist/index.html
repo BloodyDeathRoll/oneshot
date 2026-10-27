@@ -374,6 +374,35 @@ html.js .step.on{display:block;animation:stepIn .32s var(--ease)}
 html.js .plain-only{display:none}
 @media (max-width:860px){html.js .plan-panel{width:100%;padding:14px 18px 32px;border-radius:0}}
 
+
+/* ---------- round 7: the water ---------- */
+.water{padding:0 0 clamp(72px,9vw,120px)}
+.atmo{margin:0 auto;max-width:1600px}
+.atmo-box{position:relative;aspect-ratio:2560/1712;background:var(--aqua)}
+.atmo img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.atmo img[data-src]{opacity:0}
+.atmo img{transition:opacity .6s ease}
+.credit{font-size:13px;line-height:1.6;color:var(--ink-2);text-align:right;padding:8px var(--gut) 0;margin:0;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0,"dlig" 0,"ccmp" 0}
+.credit a{color:var(--ink-2);text-decoration:none;font-weight:600;padding:13px 0;display:inline-block;min-width:44px}
+.water-g{display:flex;flex-direction:column;gap:clamp(28px,3vw,40px);margin-top:clamp(36px,5vw,64px)}
+.water-t{display:grid;grid-template-columns:4fr 8fr;gap:16px 48px;align-items:start}
+.water-t .btn{grid-column:2;justify-self:start}
+.water-t .t-hand{margin-bottom:22px}
+.facts-w{grid-template-columns:1fr 1fr;margin:0}
+.water-m{display:grid;grid-template-columns:5fr 7fr;grid-template-rows:auto auto;gap:16px}
+.water-m img{width:100%;height:100%;object-fit:cover;border-radius:20px;display:block}
+.w1{grid-row:1 / span 2;min-height:0}
+.w2{aspect-ratio:3/2}
+.w3{aspect-ratio:1600/702}
+@media (max-width:860px){
+  .water-g{gap:28px}
+  .water-t{grid-template-columns:1fr}.water-t .btn{grid-column:1}.facts-w{grid-template-columns:1fr}
+  .water-m{grid-template-columns:1fr 1fr;gap:10px}
+  .w1{grid-row:auto;grid-column:1 / span 2;aspect-ratio:4/5;height:auto}
+  .w3{grid-column:1 / span 2}
+  .w2{grid-column:1 / span 2}
+  .credit{text-align:left}
+}
 /* ---------- phone ---------- */
 @media (max-width:860px){
   .facts{grid-template-columns:1fr}
@@ -489,13 +518,32 @@ html.js .plain-only{display:none}
 <section class="intro-s sandg" aria-labelledby="intro-h"><div class="intro wrap">
   <h2 class="t-hand" id="intro-h">Catch waves, not worries</h2>
   <div class="intro-b"><p>Cheeky Monkey is a surf and yoga camp on the main road through Midigama, close to the main point breaks.</p><p>Right alongside the guesthouse is Baba&#x27;s Surf Shop. Rent a board there or buy one, and bring yours in if it needs a repair.</p></div>
-  <dl class="facts">
+</div></section>
+
+<section class="water aquag edge" id="water" aria-labelledby="water-h">
+  <div class="atmo">
+    <div class="atmo-box"><img data-src="img/stock-003.jpg" width="2560" height="1712" decoding="async" alt="The shore at Midigama under an overhanging tree: turquoise water, small waves breaking along the beach, dark rocks in the foreground, fishing boats far off">
+    <noscript><img src="img/stock-003.jpg" width="2560" height="1712" alt="The shore at Midigama under an overhanging tree: turquoise water, small waves breaking along the beach, dark rocks in the foreground, fishing boats far off"></noscript></div>
+    <p class="credit"><a href="https://commons.wikimedia.org/wiki/File:Indische_Oceaan_-_panoramio_(1).jpg">Indische Oceaan - panoramio (1)</a> — Maaike Hage, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons</p>
+  </div>
+  <div class="wrap water-g">
+    <div class="water-t">
+      <h2 class="t-hand" id="water-h">Down at the water</h2>
+  <dl class="facts facts-w">
     <div><dt><svg aria-hidden="true"><use href="#i-wave"/></svg>The spot</dt><dd>Close to the main point breaks, with many more surf breaks a short walk away.</dd></div>
     <div><dt><svg aria-hidden="true"><use href="#i-sun"/></svg>The season</dt><dd>The best time is from October till March or April. The waves are nice and the beach is clean.</dd></div>
   </dl>
-</div></section>
+      <a class="btn btn-ghost btn-sm" href="#counter"><svg aria-hidden="true"><use href="#i-wave"/></svg>See the surf weeks</a>
+    </div>
+    <div class="water-m">
+      <img class="w1" src="img/beach-img-100.webp" width="1000" height="1600" loading="lazy" decoding="async" alt="A surfer walking into the sea with his board">
+      <img class="w2" src="img/beach-img-103.webp" width="1400" height="932" loading="lazy" decoding="async" alt="A surfer in a Cheeky Monkey vest holding a yellow fish board, looking at the waves">
+      <img class="w3" src="img/beach-img-155.webp" width="1600" height="702" loading="lazy" decoding="async" alt="Surfers wading into the sea on Midigama beach">
+    </div>
+  </div>
+</section>
 
-<section class="counter sandg" id="counter" aria-labelledby="week-h">
+<section class="counter sandg edge" id="counter" aria-labelledby="week-h">
   <div class="wrap">
     <div class="head">
       <h2 class="t-hand" id="week-h">A week of surf</h2>
@@ -503,7 +551,7 @@ html.js .plain-only{display:none}
     </div>
     <div class="cards" tabindex="0" role="group" aria-label="The four surf weeks">
 <article class="card" data-tilt>
-  <div class="card-board"><img src="img/card-img-100.webp" width="560" height="933" loading="lazy" decoding="async" alt="A surfer walking into the sea with his board"></div>
+  <div class="card-board"><img src="img/card-img-149.webp" width="450" height="750" loading="lazy" decoding="async" alt="Surf lessons at Cheeky Monkey surf camp in Sri Lanka"></div>
   <h3>Full Surf Lesson Package</h3>
   <p class="price"><b>USD 300–400</b> <span>per person, 7 nights</span></p>
   <p class="rows">Private room USD 400 | shared double USD 300 | shared triple USD 300</p>
@@ -512,7 +560,7 @@ html.js .plain-only{display:none}
   <div class="card-act"><a class="btn btn-sm" href="tel:+94719248686"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call to book</a><a class="icon-btn" href="mailto:cheekymonkeymidi@gmail.com?subject=Cheeky%20Monkey%3A%20Full%20Surf%20Lesson%20Package%20week" aria-label="Email about the Full Surf Lesson Package week"><svg aria-hidden="true"><use href="#i-mail"/></svg></a></div>
 </article>
 <article class="card" data-tilt>
-  <div class="card-board"><img src="img/card-img-103.webp" width="560" height="933" loading="lazy" decoding="async" alt="Surfer in a Cheeky Monkey vest holding a yellow fish board, looking at the waves"></div>
+  <div class="card-board"><img src="img/card-img-135.webp" width="560" height="933" loading="lazy" decoding="async" alt="Surfers off to surf from the Cheeky Monkey surf camp"></div>
   <h3>Moderate</h3>
   <p class="price"><b>USD 280–350</b> <span>per person, 7 nights</span></p>
   <p class="rows">Private room USD 350 | shared double USD 295 | shared triple USD 280</p>
@@ -1084,6 +1132,12 @@ rm.forEach(function(b){b.addEventListener('click',function(){pick(rm,b);price()}
   var d=e.key==='ArrowRight'||e.key==='ArrowDown'?1:e.key==='ArrowLeft'||e.key==='ArrowUp'?-1:0;if(!d)return;e.preventDefault();
   var nb=list[(i+d+list.length)%list.length];nb.focus();nb.click();})})});
 })();
+
+/* the Midigama band (2.2 MB, served as published, never re-encoded): fetched only as it nears the screen */
+(function(){var im=document.querySelector('.atmo img[data-src]');if(!im)return;
+  function go(){im.onload=function(){im.removeAttribute('data-src')};im.src=im.getAttribute('data-src');}
+  if(!('IntersectionObserver' in window)){go();return}
+  var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();go()}},{rootMargin:'600px 0px'});io.observe(im);})();
 </script>
 </body>
 </html>
