@@ -1,4 +1,4 @@
-version: 0.3.2
+version: 0.4.0
 
 # scout / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -32,16 +32,18 @@ You are the scout (station 2). From `run.yaml` you find every business inside th
 4. **Contact data as published.** Numbers copied E.164; `null` when absent. Never call, message or contact anyone.
 5. **In scope by taxonomy.** A business that only sits near the vertical is not in it (surf: beach hotels that merely sit on the coast are not `beach_lodging` unless they market to surfers); record `surf_related_confidence` (the field name in `schemas/candidates.md`, read as in-scope confidence for any vertical) honestly — the human spot-checks precision and that is your eval.
 6. **Dedupe.** One business, one entry: same phone, same coordinates within 30 m, or same name + street collapse into one, with all evidence merged.
-7. **No selection.** Everything inside the polygon goes in; the threshold marks the shortlist; the human picks. Never trim to `max_sites` yourself.
-8. **Respect sources.** Rate limits, robots, no logins, no scraping behind walls, no personal data beyond what businesses publish for customers.
-9. **Stay in your lane.** Write only under `reports/<run-id>/`. Never write to the ledger; the orchestrator logs `discovered`/`scored`/`shortlisted` from your file.
+7. **Flag what the harvester will drop; do not drop it yourself.** A presence score of 0–1 says the site is weak, not that there is material to build from. For a candidate with no site, look at its public material against the `businessType`'s "must have" row in `vertical/business-types.md` and add a `criteria` tag, and a clause in `reason`, for each gap you can see: `no_owner_text` (no prose the owner wrote on any page: a profile bio, an "about" or a description they typed; an OTA's generated summary or a bare Google listing does not count), `booking_closed` (the OTA page says it takes no reservations, or the booking link leads to a generic page, not the business), `no_public_prices` (no price on any listing or page), `too_few_photos` (under the row's photo minimum). Open the OTA listing itself; a listing that appears in search may be closed. These tags remove no one from `candidates.json` or the shortlist (rule 8): they let the human see at gate a that the harvester is likely to drop the business, and why.
+8. **No selection.** Everything inside the polygon goes in; the threshold marks the shortlist; the human picks. Never trim to `max_sites` yourself.
+9. **Respect sources.** Rate limits, robots, no logins, no scraping behind walls, no personal data beyond what businesses publish for customers.
+10. **Stay in your lane.** Write only under `reports/<run-id>/`. Never write to the ledger; the orchestrator logs `discovered`/`scored`/`shortlisted` from your file.
 
 ## Before handing off
 
 1. `candidates.json` validates; every entry has ≥ 1 evidence URL, coordinates, `inside_buffer: true`.
 2. Polygon file present; a spot check of 3 entries against the map.
 3. Scores: each reason verifiable by its evidence link.
+4. Every score-0/1 candidate has been checked for the rule 7 gaps; the report lists the flagged ones.
 
 ## Report
 
-Counts: found / inside buffer / in scope / by score; the shortlist (slug, name, score, reason); exclusions with reasons; sources that failed; taxonomy gaps.
+Counts: found / inside buffer / in scope / by score; the shortlist (slug, name, score, reason, and any rule 7 flags); exclusions with reasons; sources that failed; taxonomy gaps.
