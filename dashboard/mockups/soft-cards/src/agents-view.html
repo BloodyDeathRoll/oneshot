@@ -96,6 +96,9 @@
 .agv-rules>div{display:flex;flex-direction:column;align-items:flex-start;gap:8px;line-height:1.4}
 /* no-signal grid */
 .agv-nosig{margin-top:36px}
+.agv-tweaks{margin-top:24px;padding:24px 28px}
+.agv-tweaks .dcv-sh{margin-top:0}
+.agv-tweaks .dcv-surf.dcv-empty{background:var(--ground);border-radius:12px;box-shadow:none}
 .agv-nosig h2{font-size:20px;font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
 .agv-count{min-width:28px;height:26px;border-radius:999px;background:#E9ECF2;color:var(--ink2);font-size:14px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 9px}
 .agv-nosig>p{font-size:15px;color:var(--ink2);margin-top:6px}
@@ -728,28 +731,14 @@ function board(root) {
   const judged = H.filter((h) => h.state !== 'none'); const none = H.filter((h) => h.state === 'none');
   const share = (h) => (h.total ? h.bad / h.total : 0);
   judged.sort((x, y) => RANK[y.state] - RANK[x.state] || share(y) - share(x) || y.steps - x.steps || ORDER.indexOf(x.id) - ORDER.indexOf(y.id));
-  const red = H.filter((h) => h.state === 'red').length; const tw = tweaks().length; const since = S.mode === 'since';
-  const lede = since ? `Since each agent's last change, <b>${word(red, true)} agent${red === 1 ? '' : 's'} need${red === 1 ? 's' : ''} fixing</b>. Nothing checks ${word(none.length, true)} of them yet.`
-    : `<b>${word(red)} agent${red === 1 ? '' : 's'} need${red === 1 ? 's' : ''} fixing.</b> Nothing checks ${word(none.length, true)} of them yet.`;
+  const since = S.mode === 'since';
   const rows = judged.map((x) => {
     const a = m.agents[x.id]; const two = x.parts.length > 1;
     const works = x.parts.map((p) => `${strip(p, a, { label: two })}<div class="agv-frac">${p.total ? `<b>${p.bad} of ${p.total}</b><small>${p.j.noun}</small>` : '<span class="agv-none">–</span>'}</div>`).join('');
     return `<div class="agv-row agv-brow${two ? ' two' : ''}" role="row"><div class="agv-agent" role="cell"><a class="agv-nm" href="#agents/${a.id}">${esc(a.name)}</a><span class="agv-role" title="${esc(a.role)}">${esc(a.role)}</span></div><div role="cell">${pill(x.state)}</div><div class="agv-work" role="cell">${works}</div><div class="agv-go" role="cell" aria-hidden="true">${I.chev}</div></div>`;
   }).join('');
-  const ncards = none.map(({ id }) => {
-    const a = m.agents[id]; const n = tweaksFor(id).length; let fact = '';
-    if (a.checker) { const v = m.kinds[a.checker]; const bad = v.filter((y) => y.bad || y.copyCaused).length; fact = a.checker === 'copy' ? `Sent copy back ${bad} of ${v.length} times` : `Sent builds back ${bad} of ${v.length} times · you overruled it ${m.overrides} times`; }
-    else if (m.facts[id]) fact = m.facts[id];
-    return `<a class="agv-ncard" href="#agents/${id}"><div><b>${esc(a.name)}</b><span class="agv-role">${esc(a.role)}</span></div>${n ? `<span class="agv-bdg" aria-label="${n} tweak waiting">${n}</span>` : ''}${fact ? `<p class="agv-nf">${esc(fact)}</p>` : ''}${a.changedDate ? `<p class="agv-nl">Last changed ${day(a.changedDate)}</p>` : ''}</a>`;
-  }).join('');
-  root.innerHTML = `<p class="agv-lede">${lede}</p>
-  <section class="agv-card agv-sum" aria-label="Summary">
-    <div class="agv-cell"><span class="agv-ic r">${I.bang}</span><span class="agv-lb">Need fixing</span><span class="agv-r2"><span class="agv-num r">${red}</span><small>agents${since ? ', since their last change' : ''}</small></span></div>
-    <div class="agv-cell"><span class="agv-ic p">${I.tweak}</span><span class="agv-lb">Tweaks waiting</span><span class="agv-r2"><span class="agv-num p">${tw}</span>${tw ? `<button type="button" class="agv-golink" id="agv-review">Review them ${I.chev}</button>` : '<small>nothing to answer</small>'}</span></div>
-    <div class="agv-cell"><span class="agv-ic g">${I.dash}</span><span class="agv-lb">Nothing checks them</span><span class="agv-r2"><span class="agv-num g">${none.length}</span><small>listed below</small></span></div>
-  </section>
-  <div class="agv-segrow"><div class="agv-seg" role="radiogroup" aria-label="Which work to count" id="agv-mode">
-    <button type="button" role="radio" aria-checked="${!since}" data-mode="all">All work</button><button type="button" role="radio" aria-checked="${since}" data-mode="since">Since each agent's last change</button>
+  root.innerHTML = `<div class="agv-segrow"><div class="agv-seg" role="radiogroup" aria-label="Which work to count" id="agv-mode">
+    <button type="button" role="radio" aria-checked="${!since}" data-mode="all">All work</button><button type="button" role="radio" aria-checked="${since}" data-mode="since">Since last change</button>
   </div><p class="agv-segnote">${since ? 'Counts only work judged after each agent was last changed: did the last tweak help?' : 'Every run combined. The purple tick in a row marks when that agent last changed.'}</p></div>
   <section class="agv-card agv-board" aria-labelledby="agv-board-h">
     <div class="agv-bhead"><h2 id="agv-board-h">Agents whose work is checked</h2><p>Ranked worst first. Each mark is one piece of work that was checked, oldest on the left.</p></div>
@@ -762,10 +751,10 @@ function board(root) {
       <details><summary>How the state is decided</summary><div class="agv-rules">${Object.keys(STATE).map((s) => `<div>${pill(s, true)}<span>${STATE[s].rule}</span></div>`).join('')}</div><p style="margin-top:10px">Half, 1 in 5 and 4 pieces are design choices: copy review allows 2 rounds and critique 3.</p></details>
     </div>
   </section>
-  <section class="agv-nosig" aria-labelledby="agv-ns-h"><h2 id="agv-ns-h">Nothing checks these yet <span class="agv-count">${none.length}</span></h2><p>No checkpoint judges their work, so there is no score.</p><div class="agv-ngrid">${ncards}</div></section>${packsSection()}`;
+  <section class="agv-card agv-tweaks" id="agv-tweaks"></section>`;
+  window.OSViews.tweaks?.(api, $('#agv-tweaks', root));
   $$('#agv-mode [data-mode]', root).forEach((b) => b.addEventListener('click', () => { if (S.mode !== b.dataset.mode) { S.mode = b.dataset.mode; draw(); $(`#agv-mode [data-mode="${S.mode}"]`)?.focus(); } }));
   $('#agv-mode', root).addEventListener('keydown', (e) => { if (['ArrowLeft', 'ArrowRight'].includes(e.key)) { e.preventDefault(); $$('[data-mode]', e.currentTarget).find((b) => b.getAttribute('aria-checked') !== 'true').click(); } });
-  $('#agv-review', root)?.addEventListener('click', () => { const t = tweaks()[0]; if (t) { S.focusTweak = true; location.hash = 'agents/' + t.agents[0]; } });
   rovInit(root);
 }
 
