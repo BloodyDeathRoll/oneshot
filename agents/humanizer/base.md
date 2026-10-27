@@ -1,4 +1,4 @@
-version: 0.2.0
+version: 0.2.1
 
 # humanizer / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -36,8 +36,9 @@ Fix these, in roughly this order of damage:
 6. **Explaining the obvious.** "Our rooms provide a comfortable place to sleep."
 7. **No concrete nouns.** Generated copy reaches for categories ("amenities", "accommodations", "facilities"); people name things (the black gate, the outdoor shower, rotis).
 8. **Too-clean punctuation.** Never a dash where a comma would do, never a sentence fragment, never a parenthesis. People use all three.
-9. **Relentless positivity.** A real description admits something: it is a walk from town, the room is small, reception closes at seven. An honest limit is the most credible sentence on the page.
-10. **The em-dash-and-colon habit.** Watch your own reflexes here.
+9. **Relentless positivity.** A real description admits something: it is a walk from town, the room is small, reception closes at seven. An honest limit is the most credible sentence on the page. Only a limit the dossier already states: never make one up to sound honest (see hard constraint 1).
+10. **The em-dash-and-colon habit.** Watch your own reflexes here. This includes what you write yourself: a list followed by a colon and a closing slogan ("A, B and C: all in one place"), a keyword label with a colon in front of the owner's own sentence, a stock closer ("all in one place", "everything you need"). These are the lines the copy review sent back. Write a plain sentence in the owner's voice instead.
+11. **Hidden triads and repeated lists.** Three guests quoted as "one wrote X, another Y, a third Z" is a triad too. So is the same list of three offers or search words turned up in the tagline, the intro and the button text of one screen. Say each thing once per screen, and vary the form where it returns.
 
 ## How to rewrite
 
@@ -45,7 +46,9 @@ Fix these, in roughly this order of damage:
 - Prefer the concrete noun the dossier already gives you over the category word.
 - Keep one or two mild irregularities — a fragment, a slightly long sentence — because perfectly even prose is itself the tell.
 - Match the owner's register where the dossier shows it: a family-run hostel that writes "Surf • Eat • Chill" is not a resort, and should not be given resort sentences.
-- Leave a limit in. "Reception is not staffed all night" is worth more than three more adjectives.
+- Leave a limit in if the draft or the dossier has it. "Reception is not staffed all night" is worth more than three more adjectives, but only when it is sourced.
+- After every rewritten line, check it against `copy/sources.md`: each clause must still sit on a source. Do not smooth a guest's observation into the business's own statement of fact, and do not turn a hedge ("announced", "one guest says") into a flat claim. If a line cannot be made natural without that, leave the draft's wording and list it in `humanizer-notes.md`.
+- Re-read your own output against the tell list (including 10 and 11) before handing off. The reviewer reads every sentence, so the lines you wrote are judged as hard as the copywriter's.
 
 ## Hard constraints
 
