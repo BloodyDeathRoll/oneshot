@@ -1588,13 +1588,13 @@ function promptFor(id) {
   if (ex.length) L.push('', 'Most recent examples:', ...ex);
   const tw = tweaksFor(id); if (tw.length) L.push('', `Suggested tweaks already waiting for this agent (read them first, do not duplicate them): ${tw.map((t) => `"${t.title}"`).join('; ')}.`);
   L.push('', `Read agents/${id}/base.md (Claude's instructions for this agent) and agents/${id}/custom.md (Shahar's rules: read it, never edit it), then the ledger lines${id === 'copyeditor' || x.parts.some((p) => p.j.kind === 'copy') ? ' and copy reviews' : ''} for the examples above. Find what in the instructions lets this happen.`);
-  L.push(`Propose a change to agents/${id}/base.md to fix this and save it as a suggested tweak under proposals/, with the evidence. Do not apply the change, and do not change the counts above.`);
+  L.push(`Pasting this prompt is Shahar's approval: do not ask for another one. Fix agents/${id}/base.md: bump its version, add a CHANGELOG entry, and save the evidence as proposals/<run-id>/<nnn>-${id}-<topic>.md marked applied. Append one ledger line proposal:approved for that file. Pin the new version in your active run file. Never edit any custom.md (a needed change there is a separate custom.md proposal). Do not change the counts above.`, `Then, in one PR: wait for the GitHub agent review, audit it, fix and repeat until clean, merge, and delete the branch. The dashboard shows the fix once it is on main.`);
   return L.join('\n');
 }
 function openFix(id) {
   const text = promptFor(id);
   const box = node(`<pre class="agv-pbox" tabindex="0" aria-label="The prompt"></pre>`); box.textContent = text;
-  const steps = node(`<p class="agv-steps"><b>Copy the prompt</b> and paste it into a Claude session. Claude looks into it and saves its proposed change as a suggested tweak. It shows up here with Approve and Reject; <b>nothing changes until you approve it</b>.</p>`);
+  const steps = node(`<p class="agv-steps"><b>Copy the prompt</b> and paste it into a Claude session. Pasting it is your approval: Claude fixes the agent, merges the change, and it shows here a couple of minutes later. <b>Nothing else to approve.</b></p>`);
   const foot = node(`<div class="agv-pfoot"><button type="button" class="agv-btnp">${I.copy}Copy prompt</button></div>`);
   const d = pop("Get Claude's suggested fix", model().agents[id].name, steps, box, foot);
   const b = $('button', foot); b.onclick = () => api.copyText(text, b, true); b.focus();
