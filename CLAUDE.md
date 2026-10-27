@@ -4,7 +4,7 @@ Read `PLAN.md` fully before doing anything. It is the source of truth for decisi
 
 ## Rules (every session)
 
-1. **Gates.** Never pass a human gate unattended: shortlist approval, inbound research lanes and direction, mockup pick, send pitch, the client's product choice after a sale, approve prompt diffs. Stop, present what the human needs, and wait. Exception: a dashboard "fix this agent" prompt that Shahar pastes is the approval of that fix: apply it, PR, review, merge, no second approval (Shahar, 2026-10-27).
+1. **Gates.** Never pass a human gate unattended: shortlist approval, inbound research lanes and direction, mockup pick, send pitch, the client's product choice after a sale, approve prompt diffs. Stop, present what the human needs, and wait. Exception: the dashboard's "Fix it" button (and Approve on a suggested tweak) is the approval of that fix: `.github/workflows/agent-fix.yml` applies it and the dashboard opens the PR, no second approval (Shahar, 2026-10-27).
 2. **Ledger.** Every business state change is appended to `ledger.jsonl` (schema: `docs/ledger.md`). Append only — never rewrite or delete lines.
 3. **Two-layer prompts.** Each agent's prompt is `base.md` (Claude writes) + `custom.md` (Shahar writes). Never edit any `custom.md`; propose changes to it as a separate proposal under `proposals/<run-id>/`, flagged as a custom.md proposal. Runtime prompt = `playbook.md` + `base.md` + `custom.md` + `references.md`.
 4. **Small commits.** One commit per step, with a clear message.
