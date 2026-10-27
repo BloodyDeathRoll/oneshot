@@ -1626,11 +1626,13 @@ async function startFix(agent, brief, resEl, btn) {
 }
 // Approve / Reject through the server (the same call as the Decisions view)
 async function decide(t, choice, resEl, btns) {
+  // Approve on a base.md tweak: one PR that applies it and carries the approval line (agent-fix.yml), not a decision PR plus a fix PR
+  if (choice === 'approved' && t.agents?.length === 1 && !t.custom) { btns.forEach((b) => (b.disabled = true)); return startFix(t.agents[0], `Apply ${t.file} as written: it was approved on the dashboard.`, resEl); }
   btns.forEach((b) => (b.disabled = true)); resEl.className = 'agv-res'; resEl.textContent = 'saving…';
   let r, j;
   try { r = await fetch('decide', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ gate: 'proposal', run_id: t.run, file: t.file, choice, reason: '' }), cache: 'no-store' }); j = await r.json().catch(() => ({ error: 'response was not JSON' })); } catch (e) { r = { status: 0 }; j = { error: String(e) }; }
   S.results[t.file] = { status: r.status, choice, error: j.error };
-  if (r.status === 201) { if (choice === 'approved' && t.agents?.length === 1 && !t.custom) { startFix(t.agents[0], `Apply ${t.file} as written; it was approved on the dashboard (its proposal:approved line is already on main or in its own PR, so do not add another).`, resEl); } else resEl.innerHTML = choice === 'approved' ? '<b>Approved.</b>' : '<b>Rejected.</b>'; setTimeout(() => api.refresh(), 800); }
+  if (r.status === 201) { resEl.innerHTML = choice === 'approved' ? '<b>Approved.</b>' : '<b>Rejected.</b>'; setTimeout(() => api.refresh(), 800); }
   else { resEl.className = 'agv-res err'; resEl.textContent = `${r.status || 'network'}: ${j.error || 'unknown error'}`; btns.forEach((b) => (b.disabled = !api.LIVE)); }
 }
 function tweakButtons(t, host, resEl) {
@@ -1665,7 +1667,7 @@ function detail(root, id) {
     root.innerHTML = `${head}<div class="agv-simple">
       <section class="agv-card agv-block" aria-labelledby="agv-does-h"><h3 id="agv-does-h">What it does</h3><p class="agv-bigp">${esc(a.does)}</p></section>
       <section class="agv-card agv-block" aria-labelledby="agv-wrong-h"><h3 id="agv-wrong-h">What is wrong</h3><p class="agv-bigp">${w.html}</p>
-      ${w.fix ? `<div class="agv-cta"><button type="button" class="agv-btnp lg" id="agv-fix">${I.doc}Get Claude's suggested fix</button><p>A ready prompt for a Claude session. Claude proposes a fix as a suggested tweak; nothing changes until you approve it.</p></div>` : `<div class="agv-cta"><p>Nothing to fix from the data. To read or change this agent anyway, open Advanced.</p></div>`}</section>
+      ${w.fix ? `<div class="agv-cta"><button type="button" class="agv-btnp lg" id="agv-fix">${I.doc}Fix it</button><p>${api.LIVE ? 'Claude fixes this agent and opens a PR with the change. Pressing it is your approval.' : 'A ready prompt for a Claude session; pasting it is your approval.'}</p></div>` : `<div class="agv-cta"><p>Nothing to fix from the data. To read or change this agent anyway, open Advanced.</p></div>`}</section>
     </div>${tw.length ? `<section class="agv-card agv-twlines" aria-labelledby="agv-tws-h"><h3 id="agv-tws-h">Waiting for your answer</h3>${tw.map((t) => `<div class="agv-twl" data-file="${esc(t.file)}"><span class="agv-tt">${t.custom ? '<span class="agv-tag">For your rules</span>' : ''}${esc(t.title)}</span><span class="agv-tb"></span><span class="agv-res" role="status" aria-live="polite"></span></div>`).join('')}</section>` : ''}`;
     $$('.agv-twl', root).forEach((row) => { const t = tw.find((y) => y.file === row.dataset.file); tweakButtons(t, $('.agv-tb', row), $('.agv-res', row)); });
     $('#agv-fix', root)?.addEventListener('click', () => openFix(id));
