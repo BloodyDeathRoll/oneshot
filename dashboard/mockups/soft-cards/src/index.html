@@ -84,21 +84,30 @@ main{min-width:0;padding:0 24px 48px}
 .ov-sum{margin:0 0 20px;font-size:16px;line-height:24px;color:var(--ink2);text-wrap:pretty}
 .ov-sum b{color:var(--ink);font-weight:700}
 .ov-surf{background:var(--card);border:1px solid var(--ln);border-radius:12px}
-.ov-band{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:24px}
+.ov-band{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:24px}
 .ov-m{padding:24px;display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0}
 .ov-m+.ov-m{border-left:1px solid var(--ln)}
-.ov-m .lab{color:var(--ink2)}
+.ov-m .lab{display:inline-flex;align-items:center;gap:4px;color:var(--ink2)}
+.ov-i{position:relative;display:inline-flex}
+.ov-i button{all:unset;display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;color:var(--ink3);cursor:help}
+.ov-i button:hover,.ov-i button:focus-visible{color:var(--acc)}
+.ov-i button:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
+.ov-i svg{width:16px;height:16px}
+.ov-tip{position:absolute;z-index:20;left:50%;top:calc(100% + 6px);transform:translateX(-50%);width:max-content;max-width:280px;padding:8px 12px;border-radius:8px;background:var(--ink);color:#fff;font-size:13px;line-height:18px;font-weight:500;text-align:left;text-wrap:pretty;display:none;pointer-events:none}
+.ov-tip q{quotes:"\201C" "\201D";font-weight:700}
+.ov-i:hover .ov-tip,.ov-i button:focus-visible+.ov-tip{display:block}
 .ov-m .fig{font-size:48px;line-height:56px;font-weight:600;letter-spacing:-.02em;margin-top:8px;color:var(--ink)}
 .ov-m .fig small{font-size:16px;line-height:24px;font-weight:600;color:var(--ink3);letter-spacing:0;margin-left:8px}
 .ov-m .month{margin-top:4px;color:var(--ink2)}
 .ov-m .month b{color:var(--ink);font-weight:600}
-.ov-m .hint{margin-top:16px;max-width:44ch;color:var(--ink3);text-wrap:pretty}
-.ov-m .hint q{quotes:"\201C" "\201D";color:var(--ink2);font-weight:600}
-.ov-counts{margin:0;border-left:1px solid var(--ln);padding:8px 24px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px;align-content:center}
-.ov-counts .r{display:flex;flex-direction:column;justify-content:center;gap:2px;min-height:76px;padding:10px 0;border-top:1px solid var(--ln);min-width:0}
-.ov-counts .r:nth-child(-n+2){border-top:0}
+.ov-counts{grid-column:1/-1;margin:0;border-top:1px solid var(--ln);padding:16px 24px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));column-gap:24px}
+.ov-counts .r{display:grid;grid-template-columns:40px minmax(0,1fr);grid-template-rows:auto auto;column-gap:12px;align-items:center;min-width:0}
+.ov-counts .r+.r{border-left:1px solid var(--ln);padding-left:24px}
+.ov-counts .ic{grid-row:1/3;width:40px;height:40px;border-radius:10px;background:var(--t5);color:var(--acc);display:grid;place-items:center}
+.ov-counts .ic svg{width:20px;height:20px}
+.ov-counts .r.zr .ic{background:var(--gbg);color:var(--ink3)}
 .ov-counts dt{color:var(--ink2)}
-.ov-counts dd{margin:0;font-size:28px;line-height:36px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+.ov-counts dd{margin:0;font-size:24px;line-height:32px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
 .ov-counts dd.z{color:var(--ink3)}
 .ov-counts button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:4px;border-radius:6px}
 .ov-counts button:hover{color:var(--acc)}
@@ -111,20 +120,16 @@ main{min-width:0;padding:0 24px 48px}
 .ov-lh .meta{margin-left:auto;color:var(--ink3)}
 .ov-cnt{min-width:24px;height:24px;padding:0 8px;border-radius:6px;background:var(--t5);color:var(--acc);font-weight:700;display:inline-grid;place-items:center}
 .ov-cnt.z{background:var(--gbg);color:var(--ink2)}
-/* one row per site; rows share columns (subgrid), and the thumb track carries the row padding */
-.ov-rows{display:grid;grid-template-columns:calc(var(--tw) + var(--rp)) minmax(0,1fr) auto;grid-auto-rows:1fr;column-gap:24px}
-.ov-row{grid-column:1/-1;display:grid;grid-template-columns:subgrid;grid-template-rows:auto auto auto;align-content:center;align-items:center;row-gap:8px;padding:16px var(--rp);border-top:1px solid var(--ln)}
-.ov-row:first-child{border-top:0}
-.ov-rows>.ov-row.empty{display:block;color:var(--ink3);padding:20px var(--rp)}
-.ov-thumb{grid-column:1;grid-row:1/4;align-self:center;display:block;width:var(--tw);height:var(--th);border-radius:8px;overflow:hidden;border:1px solid var(--ln);background:var(--soft);position:relative}
+/* one card per site: thumbnail on top, actions stacked under the details */
+.ov-rows{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;padding:var(--rp)}
+.ov-row{display:flex;flex-direction:column;gap:8px;min-width:0;padding:12px;border:1px solid var(--ln);border-radius:12px}
+.ov-rows>.ov-row.empty{grid-column:1/-1;border:0;padding:0;color:var(--ink3)}
+.ov-thumb{display:block;width:100%;aspect-ratio:16/10;border-radius:8px;overflow:hidden;border:1px solid var(--ln);background:var(--soft);position:relative;margin-bottom:4px}
 .ov-thumb img{width:100%;height:100%;object-fit:cover;object-position:top}
 .ov-thumb .noshot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;color:var(--ink3)}
-.ov-nm{grid-column:2;grid-row:1}
-.ov-links{grid-column:2;grid-row:2}
-.ov-meta{grid-column:2;grid-row:3}
-.ov-hob{grid-column:3;grid-row:1;justify-self:end}
-.ov-row .sugs{grid-column:3;grid-row:2;justify-self:end}
-.ov-upd{grid-column:3;grid-row:3;justify-self:stretch}
+.ov-row .sugs{margin-top:auto;padding-top:4px}
+.ov-upd{align-self:stretch}
+.ov-hob{align-self:flex-start}
 .ov-nm{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:8px}
 .ov-nm h3{font-size:16px;line-height:24px;font-weight:700;letter-spacing:-.005em;overflow-wrap:anywhere}
 .ov-nm .by{color:var(--ink3);white-space:nowrap}
@@ -554,38 +559,35 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 
 /* ---------- overview widths ---------- */
 /* below 1600 the rows need the full width: Also waiting on you moves under the list */
-@media (max-width:1599px){#view-overview{--tw:160px;--th:100px}.ov-body{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:1599px){.ov-body{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:1280px){
-  #view-overview{--tw:120px;--th:75px;--rp:20px}
+  #view-overview{--rp:20px}
   .ov-m,.ov-counts{padding-left:20px;padding-right:20px}
   .ov-m .fig{font-size:40px;line-height:48px}
-  .ov-counts{column-gap:20px}
-  .ov-counts dd{font-size:24px;line-height:32px}
-  .ov-counts .r{min-height:68px}
-  .ov-rows{column-gap:16px}
+  .ov-counts{column-gap:16px}
+  .ov-counts .r{grid-template-columns:32px minmax(0,1fr);column-gap:10px}
+  .ov-counts .r+.r{padding-left:16px}
+  .ov-counts .ic{width:32px;height:32px;border-radius:8px}
+  .ov-counts .ic svg{width:16px;height:16px}
+  .ov-counts dd{font-size:22px;line-height:28px}
 }
 @media (max-width:720px){
-  #view-overview{--tw:96px;--th:60px;--rp:16px}
+  #view-overview{--rp:16px}
   .ov-sum{font-size:15px;line-height:22px}
-  .ov-band{grid-template-columns:minmax(0,1fr)}
+  .ov-band{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ov-m{padding:16px}
-  .ov-m+.ov-m{border-left:0;border-top:1px solid var(--ln)}
   .ov-m .fig{font-size:32px;line-height:40px;margin-top:4px}
-  .ov-counts{border-left:0;border-top:1px solid var(--ln);padding:4px 16px;column-gap:16px}
-  .ov-counts .r{min-height:60px;padding:8px 0}
-  .ov-counts dd{font-size:22px;line-height:28px}
+  .ov-counts{padding:12px 16px;grid-template-columns:repeat(3,minmax(0,1fr));row-gap:12px;column-gap:12px}
+  .ov-counts .r+.r{border-left:0;padding-left:0}
+  .ov-counts .r{grid-template-columns:minmax(0,1fr)}
+  .ov-counts .ic{display:none}
+  .ov-tip{max-width:220px}
+  #ov-exp .ov-tip{left:auto;right:-8px;transform:none}
   .ov-body{gap:16px}
   .ov-lh,.ov-wh{height:56px}
   .ov-lh .meta{display:none}
-  .ov-rows{display:block}
-  .ov-row{display:grid;grid-template-columns:var(--tw) minmax(0,1fr);grid-template-rows:none;column-gap:12px;row-gap:8px;align-items:start}
-  .ov-thumb{grid-row:1;align-self:start}
-  .ov-nm{grid-row:1;align-self:center}
-  .ov-links{grid-column:1/-1;grid-row:2}
-  .ov-meta{grid-column:1/-1;grid-row:3}
-  .ov-row .sugs{grid-column:1/-1;grid-row:4;justify-self:start;margin-top:6px}
-  .ov-upd{grid-column:1/-1;grid-row:5;height:44px}
-  .ov-hob{grid-column:1/-1;grid-row:6;justify-self:start;height:36px}
+  .ov-rows{grid-template-columns:minmax(0,1fr);gap:12px}
+  .ov-upd{height:44px}
   .ov-off{white-space:normal}
   .sug-ib{width:44px;height:44px}
   .ov-lk,.ov-off{min-height:32px}
@@ -1322,6 +1324,11 @@ const OVI={
   ext:ovSvg('<path d="M7 17 17 7M9 7h8v8"/>',2.4),
   clock:ovSvg('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'),
   chev:ovSvg('<path d="m9 6 6 6-6 6"/>',2),
+  info:ovSvg('<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',2),
+  built:ovSvg('<path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L4 16.7V20h3.3l5.3-5.3a4 4 0 0 0 5.1-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/>'),
+  send:ovSvg('<path d="M21 3 10 14"/><path d="m21 3-7 18-4-7-7-4z"/>'),
+  reply:ovSvg('<path d="M4 5h16v11H9l-5 4z"/>'),
+  client:ovSvg('<circle cx="9" cy="8" r="3.5"/><path d="M3 20c.7-3.4 3-5.2 6-5.2s5.3 1.8 6 5.2"/><path d="m16 11 2 2 4-4"/>'),
 };
 const ovPlural=(n,w,ws)=>`${n} ${n===1?w:(ws||w+'s')}`;
 const ovDays=iso=>Math.max(0,Math.floor((Date.now()-new Date(iso))/864e5)); // elapsed days, as days_since_change
@@ -1340,24 +1347,25 @@ function renderMoney(){
   for(const [id,label,book,empty] of [['#ov-rev','Revenues',D.revenues,'No payments recorded yet. Tell Claude <q>record a payment</q> when a client pays.'],['#ov-exp','Expenses',D.expenses,'No expenses recorded yet. Tell Claude <q>record an expense</q> when you pay for something.']]){
     const total=money(book?.accumulated),m=money(book?.monthly?.[month]),n=book?.entries?.length||0,box=$(id);
     box.innerHTML='';box.setAttribute('role','group');box.setAttribute('aria-label',`${label}: ${total} in total, ${m} this month`);
-    box.append(el('div',{class:'lab',text:label}),el('div',{class:'fig'},total,el('small',{text:'in total'})),el('div',{class:'month'},'This month ',el('b',{text:m})),
-      el('p',{class:'hint',html:n?`${ovPlural(n,label==='Revenues'?'payment':'expense')} recorded.`:empty}));
+    const tid=id.slice(1)+'-tip',ib=el('button',{type:'button','aria-label':`About ${label.toLowerCase()}`,'aria-describedby':tid,html:OVI.info});
+    box.append(el('div',{class:'lab'},label,el('span',{class:'ov-i'},ib,el('span',{class:'ov-tip',role:'tooltip',id:tid,html:n?`${ovPlural(n,label==='Revenues'?'payment':'expense')} recorded.`:empty}))),
+      el('div',{class:'fig'},total,el('small',{text:'in total'})),el('div',{class:'month'},'This month ',el('b',{text:m})));
   }
 }
 function renderTiles(){
   const box=$('#ov-counts');box.innerHTML='';
   const ps=pitchSites(),bs=D.businesses;
   const building=bs.filter(b=>D.runs.find(r=>r.run_id===b.run_id)?.active&&['pipeline','gate'].includes(b.group)&&!PITCH_FROM.includes(baseOf(b.state))).length;
-  const T=[['Being built',building,()=>go('pipeline')],
-    ['Ready to send',ps.filter(b=>b.state==='packaged').length,()=>{const h=$('#ps-h');h.scrollIntoView({block:'start',behavior:reduced?'auto':'smooth'});h.focus({preventScroll:true})}],
-    ['Pitched',bs.filter(b=>b.pitched_at).length,()=>go('sites')],
-    ['Replies',bs.filter(b=>(b.history||[]).some(h=>h.to==='outcome:reply'||h.to==='outcome:meeting')).length,()=>go('sites')],
-    ['Clients',bs.filter(b=>b.outcome?.state==='sale'||['product_chosen','delivered','handoff_verified','access_revoked'].includes(b.state)).length,()=>go('sites')]];
-  for(const [l,v,act] of T){
+  const T=[['Being built',building,()=>go('pipeline'),'built'],
+    ['Ready to send',ps.filter(b=>b.state==='packaged').length,()=>{const h=$('#ps-h');h.scrollIntoView({block:'start',behavior:reduced?'auto':'smooth'});h.focus({preventScroll:true})},'send'],
+    ['Pitched',bs.filter(b=>b.pitched_at).length,()=>go('sites'),'email'],
+    ['Replies',bs.filter(b=>(b.history||[]).some(h=>h.to==='outcome:reply'||h.to==='outcome:meeting')).length,()=>go('sites'),'reply'],
+    ['Clients',bs.filter(b=>b.outcome?.state==='sale'||['product_chosen','delivered','handoff_verified','access_revoked'].includes(b.state)).length,()=>go('sites'),'client']];
+  for(const [l,v,act,ic] of T){
     const dd=el('dd',{class:v?'':'z'});
     if(v){const bt=el('button',{type:'button','aria-label':`${l}: ${v}. ${l==='Ready to send'?'Go to the list':l==='Being built'?'Open Pipeline':'Open Sites'}`},String(v),el('span',{html:OVI.chev}));bt.onclick=act;dd.append(bt)}
     else dd.append(String(v));
-    box.append(el('div',{class:'r'},el('dt',{text:l}),dd));
+    box.append(el('div',{class:'r'+(v?'':' zr')},el('span',{class:'ic',html:OVI[ic]}),el('dt',{text:l}),dd));
   }
 }
 function renderPitchSites(){
@@ -1385,11 +1393,12 @@ function renderPitchSites(){
     const hc=hoChip(b);if(hc)meta.append(hc);
     li.append(el('div',{class:'ov-nm'},el('h3',{text:b.name}),b.owned_by?.name?el('span',{class:'by',text:`${isMine(b)?'yours':b.owned_by.name+"'s"}`,title:`Owner: ${b.owned_by.name}`}):null));
     const hoOpen=b.handoff&&b.handoff.open,hoLabel=hoOpen?(b.handoff.status==='requested'&&b.handoff.from===D.team?.viewer?'Approve / Reject':'Handoff'):'Ask for handoff';
-    if(hoOpen||!isMine(b)){const ho=el('button',{type:'button',class:'ovb ho sm ov-hob'+(hoOpen&&hoLabel==='Approve / Reject'?' p':'')},el('span',{html:OVI.handoff}),hoLabel,el('span',{class:'sr',text:` ${b.name}`}));ho.onclick=()=>handoffModal(b);li.append(ho)}else li.append(el('span'));
-    li.append(links);
-    const sg=suggestions(b);li.append(sg||el('span'));
-    li.append(meta);
+    let hob=null;
+    if(hoOpen||!isMine(b)){const ho=el('button',{type:'button',class:'ovb ho sm ov-hob'+(hoOpen&&hoLabel==='Approve / Reject'?' p':'')},el('span',{html:OVI.handoff}),hoLabel,el('span',{class:'sr',text:` ${b.name}`}));ho.onclick=()=>handoffModal(b);hob=ho}
+    li.append(links,meta);
+    const sg=suggestions(b);if(sg)li.append(sg);
     if(canUpdate(b)){const u=el('button',{type:'button',class:'ovb p ov-upd'},el('span',{html:OVI.status}),'Update status',el('span',{class:'sr',text:` of ${b.name}`}));u.onclick=()=>statusModal(b);li.append(u)}
+    if(hob)li.append(hob);
     ol.append(li);
   }
 }
