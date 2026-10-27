@@ -2476,6 +2476,8 @@ const MERGED={ledger:'biz',needs:'overview'};
 function go(view,focus){
   if(MERGED[view]){view=MERGED[view];focus=undefined}
   if(view==='decisions'&&!(focus||'').startsWith('tweak-')){view='agents';focus=undefined}
+  // the tweak list sits on Agents: scroll to it without putting it in the hash (#agents/<id> is an agent page)
+  const toTweaks=view==='agents'&&focus==='proposals';if(toTweaks)focus=undefined;
   if(!TITLES[view])view='overview';
   state.view=view;renderChips();
   lastHash=view+(focus?'/'+focus:'');
@@ -2490,7 +2492,8 @@ function go(view,focus){
   let target=null;
 
   if(view==='sites'&&focus)target=document.getElementById('site-'+focus);
-  if(view==='agents'&&focus==='proposals'){target=$('#props');lastHash='agents';history.replaceState(null,'','#agents')}
+  // the Agents view redraws on the hash change that follows: find the list after it
+  if(toTweaks){setTimeout(()=>{const t=$('#props');if(!t)return;t.focus({preventScroll:true});t.scrollIntoView({block:'start',behavior:reduced?'auto':'smooth'})},120);return}
   if(view==='pipeline'&&focus&&focus.startsWith('pick:'))target=document.getElementById('pick-'+focus.slice(5));
   if(target){target.focus({preventScroll:false});target.scrollIntoView({block:'start',behavior:reduced?'auto':'smooth'});target.classList.add('flash');setTimeout(()=>target.classList.remove('flash'),2400)}
   else if(!document.activeElement||!document.activeElement.closest('.nav')){$('#title').focus({preventScroll:true})}
