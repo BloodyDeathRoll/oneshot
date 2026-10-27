@@ -574,12 +574,13 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 .wf-top select:disabled{opacity:.55;cursor:default}
 .wf-top select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 .wf-top select option{color:var(--ink);background:#fff}
-.ov-hd{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.ov-ttl{font-size:15px;line-height:22px;font-weight:700;letter-spacing:-.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.ov-hd{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .ov-hd .ov-nm{flex-direction:column;align-items:flex-start;min-width:0}
 .ov-hd .ov-nm .by{font-size:13px;line-height:18px}
 .ov-hd h3{font-size:15px;line-height:22px}
 .ov-hd .ov-badge{height:22px;font-size:12px}
-.ov-hd .ov-badge{flex:none;margin-top:2px;border-radius:999px;gap:6px;font-size:13px}
+.ov-hd .ov-badge{flex:none;border-radius:999px;gap:6px;font-size:13px}
 .ov-hd .ov-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 .ov-links .sugs{margin-left:auto;gap:2px}
 .ov-links .sug-ib{border:0;background:transparent;width:32px;height:32px}
@@ -2971,10 +2972,11 @@ function renderPitchSites(){
     const meta=el('div',{class:'ov-meta'});
     for(const a of (b.assignments||[]).filter(a=>a.open))meta.append(el('span',{class:'ov-ho',title:a.task},el('span',{html:OVI.handoff}),a.by===a.to?`${opName(a.to)} is on it`:a.to===D.team?.viewer?`${opName(a.by)} asks you`:`Handed off to ${opName(a.to)}`));
     const hc=hoChip(b);if(hc)meta.append(hc);
-    const who=el('div',{class:'ov-nm'},el('h3',{text:b.name}));
+    const who=el('div',{class:'ov-nm'});
     if(b.owned_by?.name)who.append(el('span',{class:'by',text:b.owned_by.name,title:`Owner: ${b.owned_by.name}`}));
     if(b.state==='packaged')who.append(el('span',{class:'by',text:age?`for ${ovPlural(age,'day')}`:'since today',title:`Ready to send since ${dShort(b.last_change)}`}));
-    li.append(el('div',{class:'ov-hd'},who,el('span',{class:'ov-badge '+(BADGE[cls]||'sent'),text:txt,...tip&&{title:tip}})));
+    // Title on its own line (one line, ellipsis) so cards keep one height; the tag sits across the name/time block
+    li.append(el('h3',{class:'ov-ttl',text:b.name,title:b.name}),el('div',{class:'ov-hd'},who,el('span',{class:'ov-badge '+(BADGE[cls]||'sent'),text:txt,...tip&&{title:tip}})));
     const hoOpen=b.handoff&&b.handoff.open,hoLabel=hoOpen?(b.handoff.status==='requested'&&b.handoff.from===D.team?.viewer?'Approve / Reject':'Handoff'):'Ask for handoff';
     let hob=null;
     if(hoOpen||!isMine(b)){const ho=el('button',{type:'button',class:'ovb ho sm ov-hob'+(hoOpen&&hoLabel==='Approve / Reject'?' p':'')},el('span',{html:OVI.handoff}),hoLabel,el('span',{class:'sr',text:` ${b.name}`}));ho.onclick=()=>handoffModal(b);hob=ho}
