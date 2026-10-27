@@ -384,6 +384,7 @@ function notify(what) {
   clearTimeout(timer);
   timer = setTimeout(() => { for (const res of clients) res.write(`event: data\ndata: ${JSON.stringify({ changed: what, at: new Date().toISOString() })}\n\n`); }, 300);
 }
+try { watch(DIST, () => notify('build')); } catch { /* the page then reloads on the next data change */ }
 for (const rel of ['ledger.jsonl', 'activity.jsonl', 'runs', 'proposals', 'sites', 'expenses.jsonl', 'revenues.jsonl', 'media', 'agents', 'dashboard/tweaks.json']) {
   const abs = join(ROOT, rel);
   if (!existsSync(abs)) continue;
@@ -399,6 +400,11 @@ if (SYNC_S > 0) {
 // ---- http -----------------------------------------------------------------------------------------
 const send = (res, status, body, type = 'application/json') => { res.writeHead(status, { 'content-type': type, 'cache-control': 'no-store' }); res.end(typeof body === 'string' ? body : JSON.stringify(body)); };
 const safeUnder = (base, rel) => { const p = normalize(join(base, rel)); return p.startsWith(base + sep) || p === base ? p : null; };
+// The page's build: changes with every deploy of dist/index.html, so open tabs know to reload
+let buildCache = { mtime: 0, id: null };
+function buildId() {
+  try { const m = statSync(join(DIST, 'index.html')).mtimeMs; if (m !== buildCache.mtime) buildCache = { mtime: m, id: createHash('sha1').update(readFileSync(join(DIST, 'index.html'))).digest('hex').slice(0, 12) }; return buildCache.id; } catch { return null; }
+}
 function serveFile(res, abs) {
   if (!abs || !existsSync(abs) || statSync(abs).isDirectory()) return send(res, 404, { error: 'not found' });
   res.writeHead(200, { 'content-type': MIME[extname(abs).toLowerCase()] ?? 'application/octet-stream', 'cache-control': 'no-store' });
@@ -411,7 +417,7 @@ function handle(req, res, who) {
   const url = new URL(req.url, `http://${req.headers.host}`);
   const path = decodeURIComponent(url.pathname);
   if (req.method === 'GET' && (path === '/' || path === '/index.html')) return serveFile(res, join(DIST, 'index.html'));
-  if (req.method === 'GET' && path === '/data.json') { markPitchLive(buildData({ ledgerPath: LEDGER, operator: who.operator })).then((d) => send(res, 200, { ...d, live: LIVE.current(), fixes: Object.fromEntries(fixes) }), (e) => send(res, 500, { error: String(e.message ?? e) })); return; }
+  if (req.method === 'GET' && path === '/data.json') { markPitchLive(buildData({ ledgerPath: LEDGER, operator: who.operator })).then((d) => send(res, 200, { ...d, live: LIVE.current(), fixes: Object.fromEntries(fixes), build: buildId() }), (e) => send(res, 500, { error: String(e.message ?? e) })); return; }
   if (req.method === 'GET' && path === '/live') return send(res, 200, LIVE.current());
   if (req.method === 'GET' && path === '/events') {
     res.writeHead(200, { 'content-type': 'text/event-stream', 'cache-control': 'no-store', connection: 'keep-alive' });

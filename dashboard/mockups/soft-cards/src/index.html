@@ -1941,7 +1941,9 @@ function rerender(force){
   if(!back&&fkey){const f=document.querySelector(`[data-fkey="${CSS.escape(fkey)}"]`);back=f&&(fname?f.querySelector(`[name="${fname}"]`):f.querySelector('input,button'))}
   if(back)back.focus({preventScroll:true});
 }
-async function refresh(force){const my=++seq;try{const r=await fetch('data.json',{cache:'no-store'});if(!r.ok)return;const d=await r.json();if(my!==seq)return;setData(d);rerender(force)}catch{}}
+// A deploy changes dist/index.html: an open tab reloads itself instead of running the old page (Shahar, 2026-10-27)
+let BUILD=null;
+async function refresh(force){const my=++seq;try{const r=await fetch('data.json',{cache:'no-store'});if(!r.ok)return;const d=await r.json();if(my!==seq)return;if(d.build){if(BUILD&&d.build!==BUILD){location.reload();return}BUILD=d.build}setData(d);rerender(force)}catch{}}
 document.addEventListener('focusout',e=>{if(state.dirty&&e.target.closest('form.gate'))setTimeout(()=>{if(state.dirty&&!(document.activeElement&&document.activeElement.closest('form.gate')))rerender()},50)});
 (async()=>{
   LIVE=await probe();
@@ -1949,6 +1951,7 @@ document.addEventListener('focusout',e=>{if(state.dirty&&e.target.closest('form.
   await refresh(true);
   const es=new EventSource('events');
   es.addEventListener('data',()=>refresh());
+  let hellos=0;es.addEventListener('hello',()=>{if(hellos++)refresh()}); // a reconnect follows a server restart, which follows a deploy
   es.onerror=()=>{/* the browser reconnects; nothing to render */};
 })();
 let rw=innerWidth;addEventListener('resize',()=>{if(Math.abs(innerWidth-rw)>40){rw=innerWidth;render()}});
