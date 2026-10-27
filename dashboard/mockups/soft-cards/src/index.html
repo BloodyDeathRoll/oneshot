@@ -593,6 +593,20 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 .ov-counts .r dt{grid-area:dt;margin-top:0}
 
 .site-acts>.btn.p{margin-right:auto}
+/* Figma 2026-10-28 (node 5:165): money 64px, This month 16px; counts: 64px icon circles, 32px numbers, 40px apart */
+.ov-money{flex:1 1 0;display:flex;align-items:center;justify-content:center;padding:24px 20px 24px 0;min-width:0}
+@media (min-width:721px){
+.ov-band .ov-m{flex:0 0 auto;padding:0 80px;gap:12px}
+.ov-band .ov-m .lab{height:24px;margin-bottom:-4px}
+.ov-band .ov-m .fig{font-size:64px;line-height:1;letter-spacing:-.88px}
+.ov-band .ov-m .month{font-size:16px;line-height:18px}
+.ov-band .ov-counts{gap:40px;padding:24px 80px}
+.ov-band .ov-counts .ic{width:64px;height:64px}
+.ov-band .ov-counts .ic svg{width:32px;height:32px}
+.ov-band .ov-counts .r{row-gap:4px}
+.ov-band .ov-counts dd{font-size:32px;line-height:28px;letter-spacing:-.2px}}
+@media (max-width:720px){.ov-money{flex-basis:100%;padding:0}}
+@media (min-width:721px) and (max-width:1599px){.ov-band .ov-m{padding:0 32px}.ov-band .ov-counts{gap:20px;padding:24px 32px}.ov-band .ov-counts .ic{width:48px;height:48px}.ov-band .ov-counts .ic svg{width:24px;height:24px}}
 .site .spill.gate{background:var(--green-bg);color:var(--green)}
 .site-drafts{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 10px;margin-top:10px;font-size:13px}
 .site-drafts .sd-l{font-weight:600;color:var(--ink)}
@@ -728,8 +742,7 @@ tr.frow td{padding:0 0 20px 0;background:#FAFAFE}
 
   <section class="view on" id="view-overview" aria-label="Overview">
     <section class="ov-band ov-surf" aria-label="Money and where every site stands">
-      <div class="ov-m" id="ov-rev"></div>
-      <div class="ov-m" id="ov-exp"></div>
+      <div class="ov-money"><div class="ov-m" id="ov-rev"></div><div class="ov-m" id="ov-exp"></div></div>
       <dl class="ov-counts" id="ov-counts" aria-label="Where every site stands"></dl>
     </section>
     <div class="ov-body">
@@ -1380,13 +1393,13 @@ function renderTiles(){
   const ps=pitchSites(),bs=D.businesses;
   const building=bs.filter(b=>D.runs.find(r=>r.run_id===b.run_id)?.active&&['pipeline','gate'].includes(b.group)&&!PITCH_FROM.includes(baseOf(b.state))).length;
   const T=[['Being built',building,()=>go('pipeline'),'built'],
-    ['Ready to send',ps.filter(b=>b.state==='packaged').length,()=>{const h=$('#ps-h');h.scrollIntoView({block:'start',behavior:reduced?'auto':'smooth'});h.focus({preventScroll:true})},'send'],
+    ['Ready',ps.filter(b=>b.state==='packaged').length,()=>{const h=$('#ps-h');h.scrollIntoView({block:'start',behavior:reduced?'auto':'smooth'});h.focus({preventScroll:true})},'send'],
     ['Pitched',bs.filter(b=>b.pitched_at).length,()=>go('sites'),'email'],
     ['Replies',bs.filter(b=>(b.history||[]).some(h=>h.to==='outcome:reply'||h.to==='outcome:meeting')).length,()=>go('sites'),'reply'],
     ['Clients',bs.filter(b=>b.outcome?.state==='sale'||['product_chosen','delivered','handoff_verified','access_revoked'].includes(b.state)).length,()=>go('sites'),'client']];
   for(const [l,v,act,ic] of T){
     const dd=el('dd',{class:v?'':'z'});
-    {const bt=el('button',{type:'button','aria-label':`${l}: ${v}. ${l==='Ready to send'?'Go to the list':l==='Being built'?'Open Pipeline':'Open Sites'}`},String(v),el('span',{html:OVI.chev}));bt.onclick=act;dd.append(bt)}
+    {const bt=el('button',{type:'button','aria-label':`${l==='Ready'?'Ready to send':l}: ${v}. ${l==='Ready'?'Go to the list':l==='Being built'?'Open Pipeline':'Open Sites'}`},String(v));bt.onclick=act;dd.append(bt)}
     box.append(el('div',{class:'r'+(v?'':' zr')},el('span',{class:'ic',html:OVI[ic]}),el('dt',{text:l}),dd));
   }
 }
