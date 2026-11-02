@@ -253,3 +253,16 @@ Removed in drafting to keep one place per fact: "weekly" from the Partnership bo
 - Shahar's Hebrew name spelling and portrait: to confirm / shoot.
 - Consent wording, privacy policy, accessibility statement details: to write under Israeli law.
 - English name of the free intake: "Spotlight Check" (A13 `term.check`) vs "Focused Check" (brief body, dossier `offers[0].label_en`).
+
+## Round 2 (2026-11-02): fixes for review.md round 1
+
+| ID | Change | Rests on |
+|---|---|---|
+| F2 | `case_what_we_did.doron-shefer` s2: the site, panels, BD and product shelf are now the wider process the work "fed into", not work the studio claims | `d.old_case_studies[doron-shefer].text` "באינטגרציה מלאה עם תהליך של בניית אתר, פאנלים שיווקיים ופיתוח עסקי ומדף המוצרים" |
+| F3 | en AMT outcome: "another branch" (no count) | "סניף נוסף" |
+| F4 | `voices_intro` s2 removed; s1 stands alone, general | `d.confirmed_cases[4]` + note |
+| F5 | vid-041 label trimmed to "Mercedes vip club" (title's "1 of 300 videos" is a figure beyond the brief's) | `d.videos[vid-041].title`, `d.do_not_claim[3]` |
+| F6 | "In Their Words" line no longer gives a length (existing testimonials run 17–125 s; the 20–30 s cuts are not made yet) | `d.testimonials.video` (videos exist); brief series line describes future cuts |
+| K1 | pain lines added: `extras.pages.work.pain`, `.watch.pain`, `.course.pain` (each shown before the page's solution) | work: **framing** (opinion about logo walls, no claim); watch: `d.pains[4]` (AI everywhere) + framing; course: `d.pains[3]` (nobody else sees the whole picture / loneliness) |
+
+H1, V1, V2 go to the humanizer.
