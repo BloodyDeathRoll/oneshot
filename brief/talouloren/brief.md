@@ -14,6 +14,17 @@ verbatim.
 | A3 | Photos before the shoot: harvest from the old talouloren.com, shaharnaor.com and Behance; replaced after the shoot |
 | A4 | Proof wall: logos are fine; permissions are in hand |
 
+## Answers (Shahar, 2026-11-02, at gate a′), verbatim in substance
+
+| # | Answer | plan.md question |
+|---|---|---|
+| A5 | Copy is written from scratch, in Hebrew (English written after, to match); the working copy files are not used | 1 |
+| A6 | Look: "The look of both current sites is nice" (talouloren.com, shaharnaor.com). Dark, heavily black and white, touches of a single leading colour, super high end | 2 |
+| A7 | References: igloo.inc (animated scroll, frost, colour effects); ritzcarlton.com (clean structure, like current talouloren.com); porsche.com/international (clean, highly visual, light to dark on scroll); brionycroft.com.au (parallax + video, immersive); niniaazzopardi.com (simplified version of the aim: simple, clear, interactive, a little video scrolling); ashcroftlawfirm.com (luxury, clear, palette); steelwavellc.com/portfolio (flowing, unique, high end); amuse-bouche.pt (clean, immersive, tells a story, animated) | 2 |
+| A8 | Videos are arranged on talouloren.com: list every video link by its list there (case studies, testimonials, vlog, …); Shahar gets the files or says how to access them | 3 |
+| A9 | Socials: Instagram @talou_loren, YouTube @taloulorensuccess, LinkedIn talouloren (also in the talouloren.com footer); Shahar's links are on shaharnaor.com | 4 |
+| A10 | Booking, payment, forms and the Check backend: mocked up only. First a few concepts, then the partners decide and the build is completed | 5 |
+
 Note: A4 overrides the brief's "No client logo or case without written permission" for the logo wall.
 
 ---
