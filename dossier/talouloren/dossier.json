@@ -280,10 +280,10 @@
  },
  "booking": {
   "path": {
-   "value": "phone",
+   "value": "whatsapp",
    "source_url": "https://talouloren.com/winning-personal-brand/",
    "fetched_at": "2026-11-02T15:30:00Z",
-   "note": "public evidence on the current site: the session page's \"הזמן שיחה עם טל\" buttons open a popup (Popup Maker pum-75355 desktop / pum-75377 mobile) with the phone 050.463.5536 and a contact form (name, email, phone); \"או התקשרו לתיאום: 050.4635536\" under it; WhatsApp click-to-chat in the header/footer. Their no-JS href is /SuccessfulPersonalBrandDesktop|Mobile, which returns 404 (checked 2026-11-02). No scheduler or payment for the session. (Popup content per the coordinator's correction of C-position-04, 2026-11-02; the auditor walks it.)"
+   "note": "WhatsApp click-to-chat (api.whatsapp.com/send?phone=+972504635536) is published by the business in the site menu/footer on every page and inside the session popup (\"השאירו הודעה בוואטסאפ\"); playbook §5 puts WhatsApp first where it exists. Phone 050.463.5536 and a contact form sit beside it. public evidence on the current site: the session page's \"הזמן שיחה עם טל\" buttons open a popup (Popup Maker pum-75355 desktop / pum-75377 mobile) with the phone 050.463.5536 and a contact form (name, email, phone); \"או התקשרו לתיאום: 050.4635536\" under it; WhatsApp click-to-chat in the header/footer. Their no-JS href is /SuccessfulPersonalBrandDesktop|Mobile, which returns 404 (checked 2026-11-02). No scheduler or payment for the session. (Popup content per the coordinator's correction of C-position-04, 2026-11-02; the auditor walks it.)"
   },
   "new_site": {
    "value": "The site's one job: get a qualified visitor into the free Focused Check or a booked, paid Clarity Session; every page ends in one of the two. Booking, payment, forms and the Check backend are mocked up only for now",
@@ -4305,7 +4305,7 @@
   {
    "source_url": "https://www.youtube.com/watch?v=Wvxq6-_mDxM",
    "found_on": "https://talouloren.com/winning-personal-brand/",
-   "note": "\"CLIENT EXPERIENCE\", embedded 3 times on the session page; yt-dlp 2026-11-02: \"This video is not available\""
+   "note": "\"CLIENT EXPERIENCE\", embedded 3 times on the session page; YouTube oEmbed answers 200 but yt-dlp 2026-11-02: \"This video is not available\" (likely restricted): not downloaded, not necessarily dead for a visitor"
   },
   {
    "source_url": "https://www.youtube.com/watch?v=3W8rtunSG1o",
