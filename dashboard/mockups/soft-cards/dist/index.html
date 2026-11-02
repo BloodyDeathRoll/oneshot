@@ -2542,7 +2542,7 @@ function go(view,focus){
   $('#title').textContent=TITLES[view];document.title=`OneShot — ${TITLES[view]}`;
   $('#run-wrap').hidden=!PER_RUN.includes(view);$('#title-sub').textContent=PER_RUN.includes(view)&&state.run!=='all'?runShort(state.run):view==='overview'?'':'all runs';if(view==='biz')renderLedgerMap();
   window.scrollTo(0,0);
-  if(view==='pipeline'&&focus){if(focus.startsWith('pick:')){state.openPick=focus.slice(5);state.filter='all'}else state.filter=focus;renderPipeline()}
+  if(view==='pipeline'){if(!focus)state.filter='delivered';else if(focus.startsWith('pick:')){state.openPick=focus.slice(5);state.filter='all'}else state.filter=focus;renderPipeline()}
   let target=null;
 
   if(view==='sites'&&focus)target=document.getElementById('site-'+focus);
