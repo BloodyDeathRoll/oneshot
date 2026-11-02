@@ -29,6 +29,18 @@ verbatim.
 | A12 | Hebrew term change: "פגישת בהירות" → "פגישת ייעוץ" (English stays "Clarity Session" until Shahar says otherwise) | at gate b′ |
 | A13 | Hebrew terms: `brief/talouloren/copy-terms.json` (Shahar's file, prototype strings + saved edits, he + en), with A12 applied. Its `term.*` keys are the fixed names; the rest is reference — copy is still written from scratch in Hebrew (A5) | at gate b′ |
 
+| A14 | Domain: undecided; temp name `talouloren-studio` (preview `talouloren-studio.os1.workers.dev`) | at gate b′ |
+| A15 | English keeps "Clarity Session"; only the Hebrew changes (A12) | at gate b′ |
+| A16 | Accent: keep the old gold (#f3b614, metallic gradient) as the one leading colour | direction Q1 |
+| A17 | Motion: light techniques are fine (small shader or video loop, CSS scroll effects), not a full 3D scene | direction Q2 |
+| A18 | Sarit Hadad and Didi Harari: leave out. Assumed: the old written quotes (Olman, Rita, Naftali, Raziel, Yadlin) are also left out until Shahar says otherwise | direction Q3 |
+| A19 | Old case studies (Wella, Eugene Perma, CK, Visa Cal, Rita, Doron Shefer, AMT): use them on /work (stories only; no figures beyond the brief's) | direction Q4 |
+| A20 | Channel films (Maccabi, Amdocs, Taboola, Kornit, Bezeq, Clalit, SEAT, Philip Morris): all may go live; placement is ours | direction Q5 |
+| A21 | No vlog series; existing videos may be used wherever useful | direction Q6 |
+| A22 | Name spelling in logo and titles: "Talou L'oren" | direction Q7 |
+| A23 | Contact: tal@talouloren.com and 050-463-5536 are correct; no street address on the site | direction Q8 |
+| A24 | Old WordPress stays up; Shahar wants help removing the 2022 hack (spam posts, categories, author niso, /temp/) — outside this run's site work | direction Q9 |
+
 Note: A4 overrides the brief's "No client logo or case without written permission" for the logo wall.
 
 ---

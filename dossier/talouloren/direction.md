@@ -80,3 +80,8 @@ Only what the mockups and copy need; Shahar answers.
 7. **The name's spelling.** The name appears as "TalouLoren", "TALOU L'OREN", "Talou Loren" and, in Hebrew, "טאלו לורן". Which one goes in the Hebrew titles and the logo? (C-position-18)
 8. **Contact details.** Are Bat Ami 3 (Noga compound, Tel Aviv), tal@talouloren.com and 050-463-5536 still right for the footer and WhatsApp? (C-position-24)
 9. ~~**The old WordPress.**~~ Answered by A11: talouloren.com stays; the new site runs beside it. (Its 2022 spam pages and 404 booking button remain the old site's issue; flagged to Shahar.)
+
+
+## Answers (Shahar, 2026-11-02, gate b′)
+
+All nine questions answered: `brief/talouloren/brief.md` A14–A24. In short: gold accent; light motion; Hadad/Harari out (old quotes out, assumed); old cases on /work; all channel films allowed; no vlog series; name "Talou L'oren"; email + phone, no address; WordPress stays.
