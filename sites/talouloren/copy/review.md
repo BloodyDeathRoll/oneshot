@@ -1,52 +1,51 @@
 # copy review — talouloren · he + en
 
-Copyeditor 0.4.2 · station 4c · **round 1** · run 2026-11-il-brand-02 (inbound, live) · 2026-11-02 · reviewed `he.json` + `en.json` (copywriter 0.5.0, humanizer 0.2.1) against `dossier/talouloren/dossier.json`, `brief/talouloren/brief.md` (A1–A24 over the body), `copy-terms.json`, `direction.md`, `industry/industry.md` + `skeptic.md`, `schemas/site-content.md` v0.11, `rubric.md`.
+Copyeditor 0.4.2 · station 4c · **round 2 of 2** · run 2026-11-il-brand-02 (inbound, live) · 2026-11-02 · reviewed `he.json` + `en.json` (copywriter 0.5.0 round-2 fixes, commit 0171ef3; humanizer 0.2.1 round 2, commit 043275c) against `dossier/talouloren/dossier.json`, `brief/talouloren/brief.md` (A1–A24 over the body), `copy-terms.json`, `direction.md`, `industry/industry.md` + `skeptic.md`, `schemas/site-content.md` v0.11. Full re-check (hard constraint 6): every asserting sentence in both locales re-read against the dossier, not only the fields changed since round 1.
 
-## Verdict: FAIL (round 1 of 2)
+## Verdict: PASS (round 2)
 
-- Fact audit: **7 unsourced** and **4 contradicted** sentence-instances (6 distinct items, both locales counted separately), out of 706 audited (353 he + 353 en).
-- Voice: 2 blocking items. Completeness: 1 blocking item (3 pages).
-- Everything else is clean: no `!`, no em dash, no masculine-singular address, no promised returns or multiples, no Alvaro / Teddy Sagi / Sarit Hadad / Didi Harari, no old written quotes, no team or provider names, NBC worded as Shahar's *Pale Force* animation (Emmy not claimed), name "Talou L'oren" throughout, no street address, every undecided value a visible `{placeholder}` (70 per locale, identical sets).
+- Fact audit: **0 unsourced, 0 contradicted** out of **711** sentence-instances (356 he + 355 en).
+- Voice: clean in both locales (V1 and V2 fixed). Completeness: clean (K1 fixed: every pitch page now names its pain).
+- All nine round-1 blocking items are resolved (table below). Since round 1, `git diff 4b3c29d` shows 9 he strings and 11 en strings changed or added. Every one maps to a round-1 item and to a row in `sources.md` "Round 2" or `humanizer-notes.md` "Round 2". Nothing else changed.
+- Mechanical checks, run again on the whole files: 840 keys in each locale, identical sets, no field empty in one locale only. 0 `!` and 0 em dashes in either file. 44 distinct `{placeholders}`, the same set in both. No masculine- or feminine-singular reader address in he, and the three new pain lines use plural address too. None of these appear: Alvaro, Teddy Sagi, Sarit Hadad, Didi Harari, Kravtchik, "Yifat" as a caption, the Emmy, 650, 28%, 80%, return multiples, "1 of 300", "second branch", "Focused Check", "פגישת בהירות", "שסטוביץ", Gal Naor, the street address.
 
-### What must change to pass (blocking)
+## Round-1 items: status
 
-| ID | Field (locale) | Sentence | Verdict | Owner |
+| ID | Field | Round 1 | Round 2 text (he / en) | Status |
 |---|---|---|---|---|
-| H1 | `caseStudies[6].challenge` (he + en) | "קלווין קליין רצו להעצים את הדימוי של יועצות היופי שלהם בישראל." / "Calvin Klein wanted to lift how its beauty advisors in Israel are seen." | unsourced: the old case text gives the goal, not who wanted it, and its page names the Israeli client "שסטוביץ", not Calvin Klein. Added in the humanizer rewrite; the draft named no one who wanted it | humanizer |
-| F2 | `extras.pages.work.case_what_we_did.doron-shefer` s2 (he + en) | "במקביל עבדנו על בניית האתר, על פאנלים שיווקיים, על הפיתוח העסקי ועל מדף המוצרים." / "At the same time we worked on building the website…" | unsourced: the source says the work was done "באינטגרציה מלאה עם תהליך של" site-building, panels, BD and shelf. It does not say the studio did those | copywriter |
-| F3 | `caseStudies[10].outcome` (en only) | "…until the decision was made to open a second branch." | unsourced: source "סניף נוסף" = an additional branch. "Second" adds a count (do_not_claim: no figures beyond the brief's). The he sentence is sourced | copywriter |
-| F4 | `extras.pages.work.voices_intro` s2 (he + en) | "חלקם סיפרו על זה מול המצלמה." / "Some of them talked about it on camera." | unsourced: no dossier entry says which videos mention a sales rise. Above the named captions (Amos/AMT, Ronen, Joya Cosmetics, Natali, Ella), it ties "hundreds of percent" to named clients by implication, against `confirmed_cases[4].note` / `do_not_claim[3]`. s1 on its own is sourced | copywriter |
-| F5 | `extras.video_library.proof[26].label` (he + en) | "Mercedes vip club 1 of 300 videos" | contradicted: the title is verbatim, but "1 of 300 videos" is a figure beyond the brief's three stats (`do_not_claim[3]`). A verbatim title still counts once it is on a page | copywriter |
-| F6 | `extras.pages.watch.series[5].line` (he + en) | "לקוחות מספרים, בעשרים עד שלושים שניות." / "Clients talking, in twenty to thirty seconds." | contradicted: every video placed in "In Their Words" (`video_library.voices`) runs 17–125 s (`videos[].duration_s`). The brief's "cut to 20–30 seconds" describes cuts nobody has made yet | copywriter |
-| V1 | `/partnership`: `extras.pages.partnership.headline`, `.pain_heading`, `services[4].body` p1 (he + en) | "לא עוד חודש שנראה כמו הקודם." · "העסק עובד. ותקוע." · "העסק עובד, ובכל זאת כל חודש דומה לקודם. יש תקרה, ואתם היחידים שרואים את כל התמונה." | voice: the page says one pain three times in a row (headline, pain heading, first sentence), and the body sentence repeats the Home mirror's lines almost word for word. Reads as padding when read aloud | humanizer |
-| V2 | `copyBlocks[1].heading` (en) | "Does any of this sound familiar" | voice: a question with no question mark. The he heading is a statement ("אולי זה נשמע מוכר"), so this is a defect in the en cadence | humanizer |
-| K1 | `/work`, `/watch`, `/course` (he + en) | no pain line on these pages (`pages.work.intro`, `pages.watch.intro`, `pages.course` + `services[5]`) | completeness: brief "Copy direction › Rules" says "Every page names its pain before its solution". `direction.md` must-do 15 (voice per the brief's rules) and 17. `/about` passes through `copyBlocks[3]` (slot `about`) p1. The flow pages (`/check`, `/thanks`, `/snapshot`, `/book`, `/booked`, legal, 404) are steps, not pitch pages, and are exempt | copywriter |
+| H1 | `caseStudies[6].challenge` | unsourced: gave Calvin Klein a wish | "יועצות היופי של קלווין קליין בישראל, והעצמת הדימוי שלהן." / "Calvin Klein's beauty advisors in Israel, and lifting how they are seen." | **resolved**: states the goal only. The source says "העצמה תדמיתית של … יועצות היופי של המותג קלווין קליין בישראל"; "650" stays out |
+| F2 | `case_what_we_did.doron-shefer` | unsourced: "we worked on the website…" | "…והעבודה התחברה לתהליך רחב יותר: בניית אתר, פאנלים שיווקיים, פיתוח עסקי ומדף המוצרים." / "…and the work fed into a wider process: building a website, marketing panels, business development and the product shelf." | **resolved**: matches "באינטגרציה מלאה עם תהליך של". The studio no longer claims the site, panels, BD or shelf |
+| F3 | `caseStudies[10].outcome` (en) | unsourced: "second branch" | "…open another branch." | **resolved** ("סניף נוסף") |
+| F4 | `pages.work.voices_intro` | unsourced: s2 tied "hundreds of percent" to named videos | s2 removed. s1 stands alone | **resolved**: `confirmed_cases[4].note` is respected |
+| F5 | `video_library.proof[26].label` | contradicted: "1 of 300 videos" | "Mercedes vip club" | **resolved** |
+| F6 | `pages.watch.series[5].line` | contradicted: 20–30 s vs 17–125 s videos | "לקוחות מדברים מול המצלמה על העבודה איתנו." / "Clients on camera, talking about working with us." | **resolved**: no length stated. Every video placed there is a client testimonial (`testimonials.video[]`) |
+| V1 | `/partnership` | voice: one pain said three times, p1 near-verbatim of the Home mirror | p1: "מעל העסק יש תקרה, ואתם עומדים מתחתיה לבד. רק אתם רואים את כל התמונה." / "There's a ceiling over the business, and you're under it on your own, the only one holding the whole picture." | **resolved**: the headline (the loop), the pain heading (works but stuck) and p1 (ceiling and being alone) now each carry their own pain. p1 also sets up Tal's "אתם לא לבד. נשימה." The mirror's pains recur, as they must on the flagship page, but the wording no longer echoes the mirror |
+| V2 | `copyBlocks[1].heading` (en) | voice: question without "?" | "Does any of this sound familiar?" | **resolved** |
+| K1 | `/work`, `/watch`, `/course` | completeness: no pain line | new `extras.pages.work.pain`, `.watch.pain`, `.course.pain` | **resolved**: each page now names a pain before its solution. Each still ends in the brief's action: Clarity Session, Check, Buy. Notes N2 and N3 below are not blocking |
 
-No replacement wording is given here, on purpose.
+## Rulings (carried from round 1, re-applied)
 
-## Rulings
+1. **Brief sections incorporated by reference.** A brief section named in the `source_url` of an `origin: client` dossier entry (`site_spec`, `audience`, `pains`) counts as part of the dossier. One extension is limited to how the site's own flows work: the "Tech" rows "Check backend" and "Messaging". The harvester to-do from round 1 is still open: copy those two rows into the dossier.
+2. **Free intake, English name.** A13 makes the `copy-terms.json` `term.*` keys fixed. "Spotlight Check" is `sourced`. Still open for Shahar: confirm the name, then the harvester updates `offers[0].label_en` ("Focused Check").
+3. **Funnel.** Each page's last action matches the brief's sitemap. Nothing changed in round 2.
+4. **Old case texts (A19).** These are `sourced` for stories, with every figure removed. The round-2 re-check confirms this for all seven, including the trimmed video titles (vid-020 without the architect's name, vid-041 without "1 of 300").
+5. **Calvin Klein as `caseStudies[6].client`.** The old case page's heading reads "שסטוביץ", but its text is about "יועצות היופי של המותג קלווין קליין בישראל" and the CK global communications office. The old site's own home logo wall shows CK (`proof.client_logos.note`: "Castro and CK repeat"). The brand name stands; the company name is correctly left out.
 
-1. **Brief sections incorporated by reference.** `dossier.site_spec` (origin client) points to the brief's "Site spec" and "Funnel and video hooks" sections ("as written in the brief; not repeated here"). `dossier.audience` and `dossier.pains` point to "Audience and pains". Ruling: a brief section named in the `source_url` of an `origin: client` dossier entry counts as part of the dossier. A sentence resting only on that section is `sourced`, marked "sourced (brief spec by ref.)" in the table (20 instances). One extension, limited to how the site's own flows work and never to business facts: the brief's "Tech" table rows "Check backend" and "Messaging" (snapshot delivery by WhatsApp and email, the public-presence scan). These describe the mocked flow we are building, the brief calls itself the "single source for the run", and the Site spec's own Snapshot paragraph already names the "automated scan". Business facts (history, results, people, prices, figures) count only when a dossier field carries them. **Harvester to-do (not blocking):** copy the Tech rows "Check backend" and "Messaging" into the dossier, so the next round needs no extension.
-2. **Free intake, English name.** A13 (later than the brief body) makes the `copy-terms.json` `term.*` keys the fixed names. `en.term.check` = "Spotlight Check", and `dossier.business.fixed_terms` points to those keys, so "Spotlight Check" counts as `sourced`. The brief body ("Focused Check") and `dossier.offers[0].label_en` ("Focused Check") still conflict with it. **Flag for Shahar:** confirm "Spotlight Check". Harvester to update `offers[0].label_en` once confirmed. Not blocking. he "בדיקה ממוקדת" and "פגישת ייעוץ" (A12) / en "Clarity Session" (A15) are correct everywhere. Neither "פגישת בהירות" nor "Focused Check" appears in either file.
-3. **Funnel.** The brief governs over `audit.json`. Each page's last action matches the brief's sitemap: Home, `/story`, `/launch`, `/watch` → the Check. `/partnership`, `/work`, `/about`, `/snapshot` → a Clarity Session. `/brands` → its form. `/course` → Buy (the brief's own exception). `/thanks` → videos. `/booked` and 404 → Home. WhatsApp is the global secondary (`cta.whatsapp`, `closing`, `msg.whatsapp_prefill`). Correct.
-4. **Old case texts (A19).** `old_case_studies[].text` (verbatim from talouloren.com, with source URLs) counts as `sourced` for stories. Every figure in it was removed correctly (Wella 80%→20%, 28%, three-year, the CEO's name and award; Eugene Perma doubled, 1000+, four years, 10%; CK 650, 5 cities; AMT registration blocked). F3 and F5 are the only figures that got through.
+## Draft vs final
 
-## Draft vs final (humanizer 0.2.1)
+The drafts (`*.draft.json`) were not overwritten in round 2, so the diff from draft to final now holds both rounds. Keys: 837 in each draft, 840 in each final. The three added keys are the K1 pain lines. No key was lost. Changed or added strings: **20 he, 21 en**.
 
-Diffed `he.draft.json` → `he.json` and `en.draft.json` → `en.json` key by key: both have the same 837 keys. 12 he strings and 11 en strings changed, matching `humanizer-notes.md`. Nothing was added or lost except where noted.
-
-| Field | Finding |
-|---|---|
-| `caseStudies[6].challenge` | **H1 (blocking):** the rewrite gives the goal to Calvin Klein as its wish. The draft named no one |
-| `extras.pages.work.case_what_we_did.amt` (he) | "לפלטפורמות השיווק" → "לכל פלטפורמת שיווק" ("each"; en already had "each"). Source "התאמתם לפלטפורמות השיווקיות": same scope, framing. Not blocking |
-| `extras.pages.work.case_what_we_did.eugene-perma` (en) | "we set up a training programme", "a community grew": the source lists both under the studio's solution. No fact added |
-| `copyBlocks[3].body` p1 | the opinion line changed ("says nothing" → "is mostly just beautiful"). Framing; `sources.md` updated |
-| `extras.pages.work.intro` | "what we did" dropped from the intro. The three parts stay in `case_sections`. No fact lost |
-| `services[4].summary`, `services[5].summary`, `newsletter.label`, `extras.home.faq.items[3].a`, `extras.pages.work.case_what_we_did.wella` / `.visa-cal`, `extras.pages.watch.series[3].line` | changed shape only: same facts, nothing added or dropped |
+- The 12 he / 11 en strings from round 1's humanizer pass are unchanged since round 1 apart from `caseStudies[6].challenge` (H1). The round-1 findings stand.
+- Round 2 adds 8 he strings (`services[4].body`, `doron-shefer`, `voices_intro`, `watch.series[5].line`, `proof[26].label`, three `pain` keys). It adds 10 en strings: the same 8 plus `copyBlocks[1].heading` and `caseStudies[10].outcome`. Each one traces to an item above, and nothing else entered.
+- Checked for facts that crept in: none. The new pain lines name the reader's situation (`pains[3]`, `pains[4]`, the solo-owner segment) and assert nothing about the business or its clients. The partnership p1 moved "the business works" and "every month alike" out of the body; both stay on the page in the pain heading and the headline, so no fact left the page.
 
 ## Fact audit — one row per sentence
 
-Every sentence that asserts anything, he and en paired by field and sentence index. Where the two locales split into different sentences, or the verdicts differ, they get separate rows marked (he) / (en). Dossier keys are paths in `dossier.json`. `site_spec → X` = the brief section X, incorporated by `dossier.site_spec` (ruling 1). Rows 1–2 group lists (17 logo names, 9 people), each one claim with one source. Not listed, because they assert nothing: interface labels and buttons (`nav`, `cta`, `footer`, `form`, Check and snapshot labels, `book.*` steps), the Check questions and answer options, the snapshot dimension questions, page names used as headings, `services[].ctaText` and `msg.whatsapp_prefill` (the visitor's own words), the 70 `{placeholders}`, ids, slugs, URLs other than socials, and the confirmed cases' placeholder stories. That is 378 strings per locale, all read. None asserts a fact.
+Every sentence that asserts anything, with he and en paired by field and sentence index. Where the locales split into different sentences, they get separate rows marked (he) / (en). Dossier keys are paths in `dossier.json`; `site_spec → X` is brief section X, incorporated by `dossier.site_spec` (ruling 1). Rows 1–2 group lists (17 logo names, 9 people), each one claim with one source.
+
+Not listed, because they assert nothing: interface labels and buttons (`nav`, `cta`, `footer`, `form`, Check and snapshot labels, `book.*` steps), the Check questions and answer options, the snapshot dimension questions, page names used as headings, `services[].ctaText` and `msg.whatsapp_prefill` (the visitor's own words), the `{placeholders}`, ids, slugs, select values, media refs, URLs other than socials, and the confirmed cases' placeholder stories. In round 2 these were re-listed by script from the full key set and read one by one. None asserts a fact.
+
+Rows marked "round 2" are new or changed since round 1. Every other row was re-checked against the dossier: its he and en text is unchanged, verified by exact string match against the current files, and its source still says what the row claims.
 
 | # | Field · sentence | he | en | Dossier key | Verdict | Note |
 |---|---|---|---|---|---|---|
@@ -60,7 +59,7 @@ Every sentence that asserts anything, he and en paired by field and sentence ind
 | 8 | `copyBlocks[0].heading s1` | אתם טובים במה שאתם עושים. | You're good at what you do. | `business.approved_lines.hero_headline (verbatim)` | sourced |  |
 | 9 | `copyBlocks[0].heading s2` | הגיע הזמן שיראו אתכם. | It's time people saw it. | `business.approved_lines.hero_headline (verbatim)` | sourced |  |
 | 10 | `copyBlocks[0].body` | אנחנו מוצאים את הסיפור שרק אתם יכולים לספר, בונים את מה שהופך אותו לנראה וממגנט לקוחות, ונשארים לצדכם עד שזה עובד. | We find the story only you can tell, build what makes it visible and draws clients in, and stay beside you until it works. | `business.approved_lines.hero_subtitle (verbatim)` | sourced |  |
-| 11 | `copyBlocks[1].heading` | אולי זה נשמע מוכר | Does any of this sound familiar | `brief Home 2 (mirror) via site_spec` | framing |  |
+| 11 | `copyBlocks[1].heading` | אולי זה נשמע מוכר | Does any of this sound familiar? | `brief Home 2 (mirror) via site_spec` | framing | round 2: "?" added (V2) |
 | 12 | `copyBlocks[1].body s1` | כל חודש נראה כמו החודש שלפניו. | Every month looks like the one before. | `pains[0..4] (in order)` | sourced |  |
 | 13 | `copyBlocks[1].body s2` | יש תקרה. | There's a ceiling. | `pains[0..4] (in order)` | sourced |  |
 | 14 | `copyBlocks[1].body s3` | מרגישים אותה, ולא יודעים לקרוא לה בשם. | You can feel it, and you can't quite name it. | `pains[0..4] (in order)` | sourced |  |
@@ -117,8 +116,8 @@ Every sentence that asserts anything, he and en paired by field and sentence ind
 | 65 | `services[4].title` | שותפות | Partnership | `business.fixed_terms (copy-terms term.*, A12/A13/A15); offers[]; offers_note` | sourced |  |
 | 66 | `services[4].summary s1` | המסלול המרכזי שלנו. | Our flagship. | `offers[4] (flagship; tailored system)` | sourced |  |
 | 67 | `services[4].summary s2` | בונים מערכת לשיווק, למכירות ולתפעול, לפי העסק שלכם. | We build a system for marketing, sales and operations around your business. | `offers[4] (flagship; tailored system)` | sourced |  |
-| 68 | `services[4].body s1` | העסק עובד, ובכל זאת כל חודש דומה לקודם. | The business works, and still every month looks like the last. | `pains[0],[1],[3]; tone_old_site[0]; offers[4]` | sourced |  |
-| 69 | `services[4].body s2` | יש תקרה, ואתם היחידים שרואים את כל התמונה. | There's a ceiling, and you're the only one who sees the whole picture. | `pains[0],[1],[3]; tone_old_site[0]; offers[4]` | sourced |  |
+| 68 | `services[4].body s1` | מעל העסק יש תקרה, ואתם עומדים מתחתיה לבד. | There's a ceiling over the business, and you're under it on your own, the only one holding the whole picture. | `pains[1],[3]` | sourced | round 2 (V1). en is one sentence for he s1 + s2 |
+| 69 | `services[4].body s2 (he)` | רק אתם רואים את כל התמונה. |  | `pains[3]` | sourced | round 2 (V1) |
 | 70 | `services[4].body s3` | אתם לא לבד. | You are not alone. | `pains[0],[1],[3]; tone_old_site[0]; offers[4]` | sourced |  |
 | 71 | `services[4].body s4` | נשימה. | Breathe. | `pains[0],[1],[3]; tone_old_site[0]; offers[4]` | sourced |  |
 | 72 | `services[4].body s5` | בשותפות אנחנו לצדכם, ובונים יחד את המערכת שמזיזה את העסק מהמקום הזה. | In a Partnership we're beside you, building the system that moves the business off that spot. | `pains[0],[1],[3]; tone_old_site[0]; offers[4]` | framing | framing of offers[4] |
@@ -177,7 +176,7 @@ Every sentence that asserts anything, he and en paired by field and sentence ind
 | 125 | `caseStudies[6].client` | Calvin Klein | Calvin Klein | `old_case_studies[].text (client named in the text; A19)` | sourced |  |
 | 126 | `caseStudies[6].sector` | ארגונים | Organisations | `old_case_studies[].tab` | sourced |  |
 | 127 | `caseStudies[6].title` | OBSESSED: יועצות היופי במרכז | OBSESSED: the beauty advisors at the centre | `old_case_studies[obsessed-ck].text; videos[vid-042].title (A19)` | sourced |  |
-| 128 | `caseStudies[6].challenge` | קלווין קליין רצו להעצים את הדימוי של יועצות היופי שלהם בישראל. | Calvin Klein wanted to lift how its beauty advisors in Israel are seen. | `old_case_studies[obsessed-ck].text; videos[vid-042].title (A19)` | **unsourced** | old_case_studies[obsessed-ck].text names no commissioning wish; page title is "שסטוביץ" (the Israeli client). "Calvin Klein wanted" is new in the humanizer rewrite (draft: "…and the wish to lift how they are seen", no subject). **H1 · humanizer** |
+| 128 | `caseStudies[6].challenge` | יועצות היופי של קלווין קליין בישראל, והעצמת הדימוי שלהן. | Calvin Klein's beauty advisors in Israel, and lifting how they are seen. | `old_case_studies[obsessed-ck].text` ("העצמה תדמיתית של … יועצות היופי של המותג קלווין קליין בישראל") | sourced | round 2 (H1): goal only, no one given a wish; "650" stays out |
 | 129 | `caseStudies[6].outcome` | היועצות הפיצו את התוצרים בעצמן, והמהלך תפס מקום משמעותי ברשתות החברתיות בלי עלות נוספת. | The advisors shared the results themselves, and the campaign took real space on social media at no extra cost. | `old_case_studies[obsessed-ck].text; videos[vid-042].title (A19)` | sourced |  |
 | 130 | `caseStudies[7].client` | כאל | Cal | `old_case_studies[].text (client named in the text; A19)` | sourced |  |
 | 131 | `caseStudies[7].sector` | ארגונים | Organisations | `old_case_studies[].tab` | sourced |  |
@@ -192,14 +191,14 @@ Every sentence that asserts anything, he and en paired by field and sentence ind
 | 140 | `caseStudies[9].client` | ריטה | Rita | `old_case_studies[].text (client named in the text; A19)` | sourced |  |
 | 141 | `caseStudies[9].sector` | יזמים | Entrepreneurs | `old_case_studies[].tab` | sourced |  |
 | 142 | `caseStudies[9].title` | קליפ לתקליט החדש | A music video for the new album | `old_case_studies[rita].text (A19)` | sourced |  |
-| 143 | `caseStudies[9].challenge` | ריטה רצתה קליפ לתקליט החדש שלה. | Rita wanted a music video for her new album. | `old_case_studies[rita].text (A19)` | sourced |  |
+| 143 | `caseStudies[9].challenge` | ריטה רצתה קליפ לתקליט החדש שלה. | Rita wanted a music video for her new album. | `old_case_studies[rita].text (A19)` | sourced | "המטרה: צילומי קליפ לתקליט החדש" on Rita's own case page: her project's goal. Unlike H1, the page names no other client |
 | 144 | `caseStudies[9].outcome` | קליפ יוצא דופן, וחשיפה גדולה. | An unusual video, and wide exposure. | `old_case_studies[rita].text (A19)` | sourced |  |
 | 145 | `caseStudies[10].client` | AMT | AMT | `old_case_studies[].text (client named in the text; A19)` | sourced |  |
 | 146 | `caseStudies[10].sector` | יזמים | Entrepreneurs | `old_case_studies[].tab` | sourced |  |
 | 147 | `caseStudies[10].title` | אסטרטגיה ומיתוג ליזם בתחום הספורט | Strategy and branding for a sports entrepreneur | `old_case_studies[amt-case-study].text (A19)` | sourced |  |
 | 148 | `caseStudies[10].challenge` | יזם בתחום הספורט, שהיה צריך אסטרטגיה, מיתוג ומיתוג ויזואלי. | An entrepreneur in sport who needed strategy, branding and visual branding. | `old_case_studies[amt-case-study].text (A19)` | sourced |  |
 | 149 | `caseStudies[10].outcome s1 (he)` | העסק צמח מהר מאוד, עד שהוחלט לפתוח סניף נוסף. |  | `old_case_studies[amt-case-study].text (A19)` | sourced |  |
-| 150 | `caseStudies[10].outcome s1 (en)` |  | The business grew very fast, until the decision was made to open a second branch. | `old_case_studies[amt-case-study].text (A19)` | **unsourced** | source "סניף נוסף" (an additional branch); "a second branch" adds a count the dossier lacks (do_not_claim: no figures beyond the brief's). he "סניף נוסף" is sourced. **F3 · copywriter** |
+| 150 | `caseStudies[10].outcome s1 (en)` |  | The business grew very fast, until the decision was made to open another branch. | `old_case_studies[amt-case-study].text` ("סניף נוסף") | sourced | round 2 (F3): no count |
 | 151 | `socialLinks[0].url` | https://www.instagram.com/talou_loren/ | https://www.instagram.com/talou_loren/ | `contact.socials.client_confirmed (A9)` | sourced |  |
 | 152 | `socialLinks[1].url` | https://www.youtube.com/@taloulorensuccess | https://www.youtube.com/@taloulorensuccess | `contact.socials.client_confirmed (A9)` | sourced |  |
 | 153 | `socialLinks[2].url` | https://www.linkedin.com/in/talouloren/ | https://www.linkedin.com/in/talouloren/ | `contact.socials.client_confirmed (A9)` | sourced |  |
@@ -254,28 +253,28 @@ Every sentence that asserts anything, he and en paired by field and sentence ind
 | 202 | `extras.pages.partnership.end_heading` | הדרך לשותפות מתחילה בפגישת ייעוץ | The way into a Partnership starts with a Clarity Session | `site_spec → Sitemap (/partnership ends with a Clarity Session)` | framing |  |
 | 203 | `extras.pages.work.intro s1` | ארגונים, יזמים ומותגים. | Organisations, entrepreneurs, brands. | `site_spec → case pages in three parts; old_case_studies[].tab` | framing |  |
 | 204 | `extras.pages.work.intro s2` | כל סיפור מתחיל איפה שהם היו, ונגמר במה שהשתנה. | Each story starts where they were and ends with what changed. | `site_spec → case pages in three parts; old_case_studies[].tab` | framing |  |
-| 205 | `extras.pages.work.case_what_we_did.wella s1` | ליווי אסטרטגי שוטף של המנכ"ל ושל צוות השיווק, בחיבור לצוות המכירות. | Ongoing strategic support for the CEO and the marketing team, working hand in hand with sales. | `old_case_studies[wella].text` | sourced |  |
-| 206 | `extras.pages.work.case_what_we_did.wella s2` | אסטרטגיה תחת הקונספט BACK TO WELLA, וניהול תקציב השיווק והמדיה. | A strategy under the concept BACK TO WELLA, and management of the marketing and media budget. | `old_case_studies[wella].text` | sourced |  |
-| 207 | `extras.pages.work.case_what_we_did.wella s3` | השקה חווייתית של סדרת מוצרים, שהחזירה הביתה לקוחות שהתרחקו. | A product line launched as an experience, which brought lapsed customers back home. | `old_case_studies[wella].text` | sourced |  |
-| 208 | `extras.pages.work.case_what_we_did.wella s4` | פורמטים חדשים למערך ההדרכה, ועיצוב מחדש של מארזי החג של הסדרה המובילה. | New formats for the training programme, and a redesign of the holiday packs for the leading line. | `old_case_studies[wella].text` | sourced |  |
-| 209 | `extras.pages.work.case_what_we_did.wella s5` | נסיעה ליוון חיברה את הקהילה המקומית לקהילה הבינלאומית, ושירות צבע חדש יצא עם מהלך מכירות ארצי וקמפיין דיגיטלי. | A trip to Greece connected the local community with the international one, and a new colour service went out with a national sales push and a digital campaign. | `old_case_studies[wella].text` | sourced |  |
-| 210 | `extras.pages.work.case_what_we_did.wella s6` | ובתוך החברה, הצוות התחבר לערכים המחודשים של המותג. | And inside the company, the team connected with the brand's renewed values. | `old_case_studies[wella].text` | sourced |  |
-| 211 | `extras.pages.work.case_what_we_did.eugene-perma s1` | מחקר ואפיון אסטרטגי, ופיצוח קריאטיבי. | Strategic research and positioning, then the creative idea. | `old_case_studies[eugene-perma].text` | sourced |  |
-| 212 | `extras.pages.work.case_what_we_did.eugene-perma s2` | משם יצא הקמפיין BLONDE MASTER, שקרא למעצבי שיער מכל הארץ לבוא ולהיות מומחי הבלונד של ישראל. | Out of it came the BLONDE MASTER campaign, which called hairdressers from across the country to become Israel's blonde experts. | `old_case_studies[eugene-perma].text` | sourced |  |
-| 213 | `extras.pages.work.case_what_we_did.eugene-perma s3` | לצד הקמפיין נבנה מערך הדרכות שמלמד טכניקות מקצועיות חדשות, וקמה קהילה של מעצבי שיער שרוצים להיות חלק ממנה. | Alongside it we set up a training programme teaching new professional techniques, and a community grew of hairdressers who wanted to be part of it. | `old_case_studies[eugene-perma].text` | sourced |  |
-| 214 | `extras.pages.work.case_what_we_did.eugene-perma s4` | גם המותג והצוות שלו קיבלו מיצוב מחדש. | The brand and its team got a new position too. | `old_case_studies[eugene-perma].text` | sourced |  |
-| 215 | `extras.pages.work.case_what_we_did.calvin-klein s1` | קונספט שגיבשנו כאן, בדיונים מול מטה התקשורת העולמי של קלווין קליין. | A concept we shaped locally, in discussions with Calvin Klein's global communications office. | `old_case_studies[obsessed-ck].text` | sourced |  |
-| 216 | `extras.pages.work.case_what_we_did.calvin-klein s2` | ההפקה עברה בין ערים ברחבי הארץ, עם עמדת צילום חווייתית, והכניסה אנרגיה לכל מערך יועצות היופי. | The production travelled between cities across the country, with an experiential photo booth, and brought energy to the whole team of beauty advisors. | `old_case_studies[obsessed-ck].text` | sourced |  |
-| 217 | `extras.pages.work.case_what_we_did.visa-cal` | בסדנה למצליחנות היו הרצאה, עמדת צילום מעצימה לעובדים וגם סדנת תנועה עם כוריאוגרפית. | The success workshop had a talk, an empowering photo booth for the employees and a movement session with a choreographer. | `old_case_studies[visa-cal].text` | sourced |  |
-| 218 | `extras.pages.work.case_what_we_did.doron-shefer s1` | נתנו לדורון כלים תקשורתיים. | We gave Doron communication tools. | `old_case_studies[doron-shefer].text` | sourced |  |
-| 219 | `extras.pages.work.case_what_we_did.doron-shefer s2` | במקביל עבדנו על בניית האתר, על פאנלים שיווקיים, על הפיתוח העסקי ועל מדף המוצרים. | At the same time we worked on building the website, the marketing panels, the business development and the product shelf. | `old_case_studies[doron-shefer].text` | **unsourced** | source: "העשייה נעשתה באינטגרציה מלאה עם תהליך של בניית אתר, פאנלים שיווקיים ופיתוח עסקי ומדף המוצרים" — the work was integrated with that process; it does not say the studio built the site, panels, BD or shelf. **F2 · copywriter** |
-| 220 | `extras.pages.work.case_what_we_did.rita s1` | בנינו קונספט של "ג'אם" ויזואלי ששומר על התדמית ועל האופי של ריטה. | We built a concept of a visual "jam" that keeps Rita's image and character. | `old_case_studies[rita].text` | sourced |  |
-| 221 | `extras.pages.work.case_what_we_did.rita s2` | אמנית רב־תחומית הפכה את ריטה למכחול אנושי, ויחד עם רקדן נוצר חיבור בין צבע, מילים ותנועה. | A multidisciplinary artist turned Rita into a human paintbrush, and with a dancer it became one piece of colour, words and movement. | `old_case_studies[rita].text` | sourced |  |
-| 222 | `extras.pages.work.case_what_we_did.amt s1` | עשינו מחקר ואפיון, וליווינו את היזם באופן אישי. | We did the research and positioning, and mentored the entrepreneur one to one. | `old_case_studies[amt-case-study].text` | sourced |  |
-| 223 | `extras.pages.work.case_what_we_did.amt s2` | סרטוני התדמית הותאמו לכל פלטפורמת שיווק. | The brand films were adapted to each marketing platform. | `old_case_studies[amt-case-study].text` | sourced |  |
-| 224 | `extras.pages.work.case_what_we_did.amt s3` | ולאורך הדרך השתנה גם האופן שבו העסק חושב ומתנהל. | And somewhere along the way, how the business thinks and runs changed too. | `old_case_studies[amt-case-study].text` | sourced |  |
-| 225 | `extras.pages.work.voices_intro s1` | עשרות עסקים שמנוהלים בידי הבעלים שלהם ראו את המכירות עולות במאות אחוזים. | Dozens of owner-led businesses have seen sales rise by hundreds of percent. | `confirmed_cases[4]` | sourced |  |
-| 226 | `extras.pages.work.voices_intro s2` | חלקם סיפרו על זה מול המצלמה. | Some of them talked about it on camera. | `confirmed_cases[4]` | **unsourced** | no dossier entry says which videos state a sales rise; placed above named testimonial captions (Amos/AMT, Ronen, Joya Cosmetics, Natali, Ella) it attributes "hundreds of percent" to named clients by implication, against confirmed_cases[4].note / do_not_claim. **F4 · copywriter** |
+| 205 | `extras.pages.work.pain s1` | שם גדול על קיר לוגואים לא מספר הרבה. | A big name on a logo wall doesn't tell you much. | none needed (opinion) | framing | round 2 (K1): new; asserts nothing about any client. See non-blocking note N2 |
+| 206 | `extras.pages.work.pain s2` | מה שמעניין הוא מה השתנה. | What matters is what changed. | `site_spec → case pages in three parts` | framing | round 2 (K1): new |
+| 207 | `extras.pages.work.case_what_we_did.wella s1` | ליווי אסטרטגי שוטף של המנכ"ל ושל צוות השיווק, בחיבור לצוות המכירות. | Ongoing strategic support for the CEO and the marketing team, working hand in hand with sales. | `old_case_studies[wella].text` | sourced |  |
+| 208 | `extras.pages.work.case_what_we_did.wella s2` | אסטרטגיה תחת הקונספט BACK TO WELLA, וניהול תקציב השיווק והמדיה. | A strategy under the concept BACK TO WELLA, and management of the marketing and media budget. | `old_case_studies[wella].text` | sourced |  |
+| 209 | `extras.pages.work.case_what_we_did.wella s3` | השקה חווייתית של סדרת מוצרים, שהחזירה הביתה לקוחות שהתרחקו. | A product line launched as an experience, which brought lapsed customers back home. | `old_case_studies[wella].text` | sourced |  |
+| 210 | `extras.pages.work.case_what_we_did.wella s4` | פורמטים חדשים למערך ההדרכה, ועיצוב מחדש של מארזי החג של הסדרה המובילה. | New formats for the training programme, and a redesign of the holiday packs for the leading line. | `old_case_studies[wella].text` | sourced |  |
+| 211 | `extras.pages.work.case_what_we_did.wella s5` | נסיעה ליוון חיברה את הקהילה המקומית לקהילה הבינלאומית, ושירות צבע חדש יצא עם מהלך מכירות ארצי וקמפיין דיגיטלי. | A trip to Greece connected the local community with the international one, and a new colour service went out with a national sales push and a digital campaign. | `old_case_studies[wella].text` | sourced |  |
+| 212 | `extras.pages.work.case_what_we_did.wella s6` | ובתוך החברה, הצוות התחבר לערכים המחודשים של המותג. | And inside the company, the team connected with the brand's renewed values. | `old_case_studies[wella].text` | sourced |  |
+| 213 | `extras.pages.work.case_what_we_did.eugene-perma s1` | מחקר ואפיון אסטרטגי, ופיצוח קריאטיבי. | Strategic research and positioning, then the creative idea. | `old_case_studies[eugene-perma].text` | sourced |  |
+| 214 | `extras.pages.work.case_what_we_did.eugene-perma s2` | משם יצא הקמפיין BLONDE MASTER, שקרא למעצבי שיער מכל הארץ לבוא ולהיות מומחי הבלונד של ישראל. | Out of it came the BLONDE MASTER campaign, which called hairdressers from across the country to become Israel's blonde experts. | `old_case_studies[eugene-perma].text` | sourced |  |
+| 215 | `extras.pages.work.case_what_we_did.eugene-perma s3` | לצד הקמפיין נבנה מערך הדרכות שמלמד טכניקות מקצועיות חדשות, וקמה קהילה של מעצבי שיער שרוצים להיות חלק ממנה. | Alongside it we set up a training programme teaching new professional techniques, and a community grew of hairdressers who wanted to be part of it. | `old_case_studies[eugene-perma].text` | sourced |  |
+| 216 | `extras.pages.work.case_what_we_did.eugene-perma s4` | גם המותג והצוות שלו קיבלו מיצוב מחדש. | The brand and its team got a new position too. | `old_case_studies[eugene-perma].text` | sourced |  |
+| 217 | `extras.pages.work.case_what_we_did.calvin-klein s1` | קונספט שגיבשנו כאן, בדיונים מול מטה התקשורת העולמי של קלווין קליין. | A concept we shaped locally, in discussions with Calvin Klein's global communications office. | `old_case_studies[obsessed-ck].text` | sourced |  |
+| 218 | `extras.pages.work.case_what_we_did.calvin-klein s2` | ההפקה עברה בין ערים ברחבי הארץ, עם עמדת צילום חווייתית, והכניסה אנרגיה לכל מערך יועצות היופי. | The production travelled between cities across the country, with an experiential photo booth, and brought energy to the whole team of beauty advisors. | `old_case_studies[obsessed-ck].text` | sourced |  |
+| 219 | `extras.pages.work.case_what_we_did.visa-cal` | בסדנה למצליחנות היו הרצאה, עמדת צילום מעצימה לעובדים וגם סדנת תנועה עם כוריאוגרפית. | The success workshop had a talk, an empowering photo booth for the employees and a movement session with a choreographer. | `old_case_studies[visa-cal].text` | sourced |  |
+| 220 | `extras.pages.work.case_what_we_did.doron-shefer` | נתנו לדורון כלים תקשורתיים, והעבודה התחברה לתהליך רחב יותר: בניית אתר, פאנלים שיווקיים, פיתוח עסקי ומדף המוצרים. | We gave Doron communication tools, and the work fed into a wider process: building a website, marketing panels, business development and the product shelf. | `old_case_studies[doron-shefer].text` ("באינטגרציה מלאה עם תהליך של בניית אתר, פאנלים שיווקיים ופיתוח עסקי ומדף המוצרים") | sourced | round 2 (F2): site, panels, BD and shelf are the process the work joined, not work the studio claims. s1+s2 now one sentence |
+| 221 | `extras.pages.work.case_what_we_did.rita s1` | בנינו קונספט של "ג'אם" ויזואלי ששומר על התדמית ועל האופי של ריטה. | We built a concept of a visual "jam" that keeps Rita's image and character. | `old_case_studies[rita].text` | sourced |  |
+| 222 | `extras.pages.work.case_what_we_did.rita s2` | אמנית רב־תחומית הפכה את ריטה למכחול אנושי, ויחד עם רקדן נוצר חיבור בין צבע, מילים ותנועה. | A multidisciplinary artist turned Rita into a human paintbrush, and with a dancer it became one piece of colour, words and movement. | `old_case_studies[rita].text` | sourced |  |
+| 223 | `extras.pages.work.case_what_we_did.amt s1` | עשינו מחקר ואפיון, וליווינו את היזם באופן אישי. | We did the research and positioning, and mentored the entrepreneur one to one. | `old_case_studies[amt-case-study].text` | sourced |  |
+| 224 | `extras.pages.work.case_what_we_did.amt s2` | סרטוני התדמית הותאמו לכל פלטפורמת שיווק. | The brand films were adapted to each marketing platform. | `old_case_studies[amt-case-study].text` | sourced |  |
+| 225 | `extras.pages.work.case_what_we_did.amt s3` | ולאורך הדרך השתנה גם האופן שבו העסק חושב ומתנהל. | And somewhere along the way, how the business thinks and runs changed too. | `old_case_studies[amt-case-study].text` | sourced |  |
+| 226 | `extras.pages.work.voices_intro s1` | עשרות עסקים שמנוהלים בידי הבעלים שלהם ראו את המכירות עולות במאות אחוזים. | Dozens of owner-led businesses have seen sales rise by hundreds of percent. | `confirmed_cases[4]` | sourced | round 2 (F4): s2 removed; the line stands alone above the voices and names no client |
 | 227 | `extras.pages.work.end_heading` | הצעד הבא: פגישת ייעוץ עם שנינו | Next step: a Clarity Session with both of us | `offers[1] (both partners); site_spec → Sitemap` | framing |  |
 | 228 | `extras.pages.about.end_heading s1` | רוצים להכיר? | Want to meet us? | `site_spec → Sitemap (/about ends with a Clarity Session)` | framing |  |
 | 229 | `extras.pages.about.end_heading s2` | מתחילים בפגישת ייעוץ. | It starts with a Clarity Session. | `site_spec → Sitemap (/about ends with a Clarity Session)` | framing |  |
@@ -290,186 +289,209 @@ Every sentence that asserts anything, he and en paired by field and sentence ind
 | 238 | `extras.pages.watch.series[2].line` | פגישות אמיתיות, ועבודה באמצע התהליך. | Real sessions, and work in the middle of it. | `video_series; site_spec → Funnel "Six video series" (Shows)` | sourced |  |
 | 239 | `extras.pages.watch.series[3].line` | לקוח, ומה השתנה אצלו. | A client, and what changed for them. | `video_series; site_spec → Funnel "Six video series" (Shows)` | sourced |  |
 | 240 | `extras.pages.watch.series[4].line` | AI לבעלי עסקים, בלי הפאניקה. | AI for owners, without the panic. | `video_series; site_spec → Funnel "Six video series" (Shows)` | sourced |  |
-| 241 | `extras.pages.watch.series[5].line` | לקוחות מספרים, בעשרים עד שלושים שניות. | Clients talking, in twenty to thirty seconds. | `video_series; site_spec → Funnel "Six video series" (Shows)` | **contradicted** | states the series runs 20–30 s; every video placed in it (video_library.voices) is 17–125 s per videos[].duration_s (vid-007 17 s, vid-004 54 s, vid-011 56 s, vid-012 41 s, vid-048 60 s, vid-059 96 s, vid-010 54 s, vid-040 125 s, vid-009 80 s, vid-030 63 s). The brief's "cut to 20–30 s" describes cuts not yet made. **F6 · copywriter** |
-| 242 | `extras.pages.watch.empty_series` | הפרקים הראשונים בדרך. | The first episodes are on their way. | `video_series.note (A21)` | framing |  |
-| 243 | `extras.pages.course.lessons_heading` | עשרה שיעורים, עשרה צעדים | Ten lessons, ten steps | `method.note; offers[5].format` | sourced |  |
-| 244 | `extras.pages.course.voices_heading` | מי שכבר עשו את הקורס | People who've done the course | `confirmed_cases[5].videos (vid-048, vid-059)` | sourced |  |
-| 245 | `extras.pages.check.intro.meta` | 10 שאלות · {check_minutes} דקות · בלי תשלום · תמונת מצב אישית | 10 questions · {check_minutes} minutes · free · a personal snapshot | `offers[0]; placeholder {check_minutes}` | sourced |  |
-| 246 | `extras.pages.check.questions[5].hint s1` | לא חובה. | Optional. | `site_spec → Check Q6 optional` | framing |  |
-| 247 | `extras.pages.check.questions[5].hint s2` | אם קשה לענות, גם זה אומר משהו. | If it's hard to answer, that tells us something too. | `site_spec → Check Q6 optional` | framing |  |
-| 248 | `extras.pages.thanks.body` | תמונת המצב תגיע אליכם בוואטסאפ ובמייל, תוך {turnaround}. | Your snapshot will reach you on WhatsApp and by email within {turnaround}. | `brief Tech "Messaging" (snapshot delivery by WhatsApp + email); placeholder {turnaround}` | sourced (brief spec by ref.) |  |
-| 249 | `extras.pages.snapshot.intro` | מה שראינו, מהתשובות שלכם וממה שיש עליכם ברשת. | What we saw, from your answers and from what's out there about you online. | `site_spec → Snapshot (automated scan + answers)` | sourced (brief spec by ref.) |  |
-| 250 | `extras.pages.snapshot.cta_line` | בפגישת הייעוץ נעבור על תמונת המצב יחד. | In the Clarity Session we'll go through your snapshot together. | `direction must-do 7; offers[1]` | framing |  |
-| 251 | `extras.pages.booked.body s1` | אישור יגיע אליכם במייל ובוואטסאפ. | A confirmation is on its way by email and WhatsApp. | `site_spec → Booking (confirmation by email and WhatsApp); runtime vars` | sourced (brief spec by ref.) |  |
-| 252 | `extras.pages.booked.body s2` | נתראה ב־{date}, בשעה {time}. | See you on {date} at {time}. | `site_spec → Booking (confirmation by email and WhatsApp); runtime vars` | sourced (brief spec by ref.) |  |
-| 253 | `extras.pages.not_found.title` | העמוד הזה לא כאן. | This page isn't here. | `site_spec → 404` | framing |  |
-| 254 | `extras.pages.not_found.body` | אולי הקישור השתנה, אולי נפלה בו טעות. | Maybe the link changed, maybe it has a typo in it. | `site_spec → 404` | framing |  |
-| 255 | `extras.method_steps[0].title` | אני, המותג, היזמות | Me, the brand, the entrepreneur | `method.value[n]` | sourced |  |
-| 256 | `extras.method_steps[1].title` | מדף המוצרים | The product shelf | `method.value[n]` | sourced |  |
-| 257 | `extras.method_steps[2].title` | ה־DNA שלי | My DNA | `method.value[n]` | sourced |  |
-| 258 | `extras.method_steps[3].title` | ה־DNA של הלקוחות הכי טובים | The DNA of my best clients | `method.value[n]` | sourced |  |
-| 259 | `extras.method_steps[4].title` | Know, Like, Trust: מסע הלקוח | Know, like, trust: the client journey | `method.value[n]` | sourced |  |
-| 260 | `extras.method_steps[5].title` | חמשת ערכי המותג | The five brand values | `method.value[n]` | sourced |  |
-| 261 | `extras.method_steps[6].title` | מיתוג ומיתוג ויזואלי | Branding and visual branding | `method.value[n]` | sourced |  |
-| 262 | `extras.method_steps[7].title` | משפך ואסטרטגיה דיגיטלית | Funnel and digital strategy | `method.value[n]` | sourced |  |
-| 263 | `extras.method_steps[8].title` | המודל הפיננסי | The financial model | `method.value[n]` | sourced |  |
-| 264 | `extras.method_steps[9].title` | מיינדסט | Mindset | `method.value[n]` | sourced |  |
-| 265 | `extras.video_library.proof[0].label` | AMDOCS INNOVATION PROJECT | AMDOCS INNOVATION PROJECT | `videos[id].title (verbatim)` | sourced |  |
-| 266 | `extras.video_library.proof[1].label` | AMDOCS PURPOSE | AMDOCS PURPOSE | `videos[id].title (verbatim)` | sourced |  |
-| 267 | `extras.video_library.proof[2].label` | AMDOCS DARE TO INNOVATE | AMDOCS DARE TO INNOVATE | `videos[id].title (verbatim)` | sourced |  |
-| 268 | `extras.video_library.proof[3].label` | מכבי יזמות אנשי האור | מכבי יזמות אנשי האור | `videos[id].title (verbatim)` | sourced |  |
-| 269 | `extras.video_library.proof[4].label` | מכבי יזמות- לוחמי אור | מכבי יזמות- לוחמי אור | `videos[id].title (verbatim)` | sourced |  |
-| 270 | `extras.video_library.proof[5].label` | Maccabi בתי הרופאים 2023 | Maccabi בתי הרופאים 2023 | `videos[id].title (verbatim)` | sourced |  |
-| 271 | `extras.video_library.proof[6].label` | מכבי דנט מודעות סרטן הפה | מכבי דנט מודעות סרטן הפה | `videos[id].title (verbatim)` | sourced |  |
-| 272 | `extras.video_library.proof[7].label` | SEAT TV COMMERCIAL | SEAT TV COMMERCIAL | `videos[id].title (verbatim)` | sourced |  |
-| 273 | `extras.video_library.proof[8].label` | פארק בבלי נדלן | פארק בבלי נדלן | `videos[id].title (verbatim)` | sourced |  |
-| 274 | `extras.video_library.proof[9].label` | קמפיין פארק בבלי | קמפיין פארק בבלי | `videos[id].title (verbatim)` | sourced |  |
-| 275 | `extras.video_library.proof[10].label` | WELLA CASE STUDY | WELLA CASE STUDY | `videos[id].title (verbatim)` | sourced |  |
-| 276 | `extras.video_library.proof[11].label` | artistic seminar for Wella | artistic seminar for Wella | `videos[id].title (verbatim)` | sourced |  |
-| 277 | `extras.video_library.proof[12].label` | EUGENE PERMA BLONDE MASTER STUDY CASE | EUGENE PERMA BLONDE MASTER STUDY CASE | `videos[id].title (verbatim)` | sourced |  |
-| 278 | `extras.video_library.proof[13].label` | OBSESSED- CK TEAM BOOSTER CASE STUDY | OBSESSED- CK TEAM BOOSTER CASE STUDY | `videos[id].title (verbatim)` | sourced |  |
-| 279 | `extras.video_library.proof[14].label` | VISA CAL MANAGMENT TEAM BOOSTER | VISA CAL MANAGMENT TEAM BOOSTER | `videos[id].title (verbatim)` | sourced |  |
-| 280 | `extras.video_library.proof[15].label` | DORON SHEFER CASE STUDY | DORON SHEFER CASE STUDY | `videos[id].title (verbatim)` | sourced |  |
-| 281 | `extras.video_library.proof[16].label` | דורון שפר מיתוג | דורון שפר מיתוג | `videos[id].title (verbatim)` | sourced |  |
-| 282 | `extras.video_library.proof[17].label` | CASE STUDY RITA | CASE STUDY RITA | `videos[id].title (verbatim)` | sourced |  |
-| 283 | `extras.video_library.proof[18].label` | AMT CASE STUDY | AMT CASE STUDY | `videos[id].title (verbatim)` | sourced |  |
-| 284 | `extras.video_library.proof[19].label` | מיתוג מעסיק TABOOLA | מיתוג מעסיק TABOOLA | `videos[id].title (verbatim)` | sourced |  |
-| 285 | `extras.video_library.proof[20].label` | TABOOLA AT HILTON | TABOOLA AT HILTON | `videos[id].title (verbatim)` | sourced |  |
-| 286 | `extras.video_library.proof[21].label` | kornit make better | kornit make better | `videos[id].title (verbatim)` | sourced |  |
-| 287 | `extras.video_library.proof[22].label` | KORNIT RECAP EXTERNAL | KORNIT RECAP EXTERNAL | `videos[id].title (verbatim)` | sourced |  |
-| 288 | `extras.video_library.proof[23].label` | בזק אנשים | בזק אנשים | `videos[id].title (verbatim)` | sourced |  |
-| 289 | `extras.video_library.proof[24].label` | פרויקט פנים ארגוני לשירותי בריאות כללית | פרויקט פנים ארגוני לשירותי בריאות כללית | `videos[id].title (verbatim)` | sourced |  |
-| 290 | `extras.video_library.proof[25].label` | מיתוג מעסיק וגיוס עובדים פיליפ מוריס | מיתוג מעסיק וגיוס עובדים פיליפ מוריס | `videos[id].title (verbatim)` | sourced |  |
-| 291 | `extras.video_library.proof[26].label` | Mercedes vip club 1 of 300 videos | Mercedes vip club 1 of 300 videos | `videos[id].title (verbatim)` | **contradicted** | videos[vid-041].title verbatim, but "1 of 300 videos" is a figure beyond the brief's three stats (do_not_claim[3]); a verbatim title is not an exemption on a page. **F5 · copywriter** |
-| 292 | `extras.video_library.proof[27].label` | SUCCESS IS A DRIVE | SUCCESS IS A DRIVE | `videos[id].title (verbatim)` | sourced |  |
-| 293 | `extras.video_library.proof[28].label` | CASTRO DPPL | CASTRO DPPL | `videos[id].title (verbatim)` | sourced |  |
-| 294 | `extras.video_library.voices[0].label` | AMOS TESTIMONIALS | AMOS TESTIMONIALS | `videos[id].title (verbatim)` | sourced |  |
-| 295 | `extras.video_library.voices[0].caption` | עמוס, AMT | Amos, AMT | `testimonials.video[].person` | sourced |  |
-| 296 | `extras.video_library.voices[1].label` | AMOS TESTIMONIALS | AMOS TESTIMONIALS | `videos[id].title (verbatim)` | sourced |  |
-| 297 | `extras.video_library.voices[1].caption` | עמוס, AMT | Amos, AMT | `testimonials.video[].person` | sourced |  |
-| 298 | `extras.video_library.voices[2].label` | TESTIMONIALS RONEN | TESTIMONIALS RONEN | `videos[id].title (verbatim)` | sourced |  |
-| 299 | `extras.video_library.voices[2].caption` | רונן | Ronen | `testimonials.video[].person` | sourced |  |
-| 300 | `extras.video_library.voices[3].label` | TESTIMONIALS JOYA COSMETICS | TESTIMONIALS JOYA COSMETICS | `videos[id].title (verbatim)` | sourced |  |
-| 301 | `extras.video_library.voices[3].caption` | Joya Cosmetics | Joya Cosmetics | `testimonials.video[].person` | sourced |  |
-| 302 | `extras.video_library.voices[4].label` | Brand Yourself - Testimonials - Natali | Brand Yourself - Testimonials - Natali | `videos[id].title (verbatim)` | sourced |  |
-| 303 | `extras.video_library.voices[4].caption` | נטלי, BRAND YOURSELF | Natali, BRAND YOURSELF | `testimonials.video[].person` | sourced |  |
-| 304 | `extras.video_library.voices[5].label` | Brand Yourself - Testimonials - ELLA | Brand Yourself - Testimonials - ELLA | `videos[id].title (verbatim)` | sourced |  |
-| 305 | `extras.video_library.voices[5].caption` | אלה, BRAND YOURSELF | Ella, BRAND YOURSELF | `testimonials.video[].person` | sourced |  |
-| 306 | `extras.video_library.voices[6].label` | TESTIMONIALS MAGIC TALOU | TESTIMONIALS MAGIC TALOU | `videos[id].title (verbatim)` | sourced |  |
-| 307 | `extras.video_library.voices[6].caption` | {name_to_confirm} | {name_to_confirm} | `testimonials.video[].person` | sourced |  |
-| 308 | `extras.video_library.voices[7].label` | Talou Testimonial Film 1 HQ | Talou Testimonial Film 1 HQ | `videos[id].title (verbatim)` | sourced |  |
-| 309 | `extras.video_library.voices[7].caption` | {name_to_confirm} | {name_to_confirm} | `testimonials.video[].person` | sourced |  |
-| 310 | `extras.video_library.voices[8].label` | Talou Testimonial Film 2 HQ | Talou Testimonial Film 2 HQ | `videos[id].title (verbatim)` | sourced |  |
-| 311 | `extras.video_library.voices[8].caption` | {name_to_confirm} | {name_to_confirm} | `testimonials.video[].person` | sourced |  |
-| 312 | `extras.video_library.voices[9].label` | Talou Testimonial Film 3 HQ | Talou Testimonial Film 3 HQ | `videos[id].title (verbatim)` | sourced |  |
-| 313 | `extras.video_library.voices[9].caption` | {name_to_confirm} | {name_to_confirm} | `testimonials.video[].person` | sourced |  |
-| 314 | `extras.video_library.boots[0].label` | סדנה למיתוג אישי מנצח ליזמים בשיתוף עם בנק פועלים | סדנה למיתוג אישי מנצח ליזמים בשיתוף עם בנק פועלים | `videos[id].title (verbatim)` | sourced |  |
-| 315 | `extras.video_library.course_trailer.label` | BRAND YOURSELF INTO THE PROCESS | BRAND YOURSELF INTO THE PROCESS | `videos[vid-036].title` | sourced |  |
-| 316 | `extras.msg.snapshot s1` | היי {first_name}, כאן {partner_name} מ־Talou L'oren. | Hi {first_name}, it's {partner_name} from Talou L'oren. | `site_spec → Funnel / Booking; runtime vars` | framing |  |
-| 317 | `extras.msg.snapshot s2` | תמונת המצב של {business_name} מוכנה: {link} | The snapshot for {business_name} is ready: {link} | `site_spec → Funnel / Booking; runtime vars` | framing |  |
-| 318 | `extras.msg.snapshot s3` | אם משהו שם מפתיע אתכם, אפשר לענות כאן. | If anything in it surprises you, just reply here. | `site_spec → Funnel / Booking; runtime vars` | framing |  |
-| 319 | `extras.msg.email_subject_snapshot` | תמונת המצב של {business_name} מוכנה | The snapshot for {business_name} is ready | `site_spec → Funnel / Booking; runtime vars` | framing |  |
-| 320 | `extras.msg.follow1 s1` | {first_name}, דבר אחד מתמונת המצב נשאר איתנו: {observation}. | {first_name}, one thing from your snapshot stayed with us: {observation}. | `site_spec → Funnel / Booking; runtime vars` | framing |  |
-| 321 | `extras.msg.follow1 s2` | רוצים לדבר על זה? | Want to talk it through? | `site_spec → Funnel / Booking; runtime vars` | framing |  |
-| 322 | `extras.msg.follow1 s3` | {booking_link} | {booking_link} | `site_spec → Funnel / Booking; runtime vars` | framing |  |
-| 323 | `extras.msg.follow2 s1` | סיפור של עסק שהיה במקום דומה לשלכם: {case_title}. | The story of a business that was somewhere close to where you are: {case_title}. | `site_spec → Funnel / Booking; runtime vars` | framing |  |
-| 324 | `extras.msg.follow2 s2` | {case_link} | {case_link} | `site_spec → Funnel / Booking; runtime vars` | framing |  |
-| 325 | `extras.msg.follow3` | משהו קטן שאפשר לעשות כבר השבוע: {tip} | A small thing you could do this week: {tip} | `site_spec → Funnel / Booking; runtime vars` | framing |  |
-| 326 | `extras.msg.follow4` | סרטון קצר, קשור למה שראינו אצלכם: {video_link} | A short video, about what we saw in your business: {video_link} | `site_spec → Funnel / Booking; runtime vars` | framing |  |
-| 327 | `extras.msg.follow5 s1` | זו ההודעה האחרונה מאיתנו בינתיים. | This is our last note for now. | `site_spec → Funnel / Booking; runtime vars` | framing |  |
-| 328 | `extras.msg.follow5 s2` | כשתרצו תוכנית פעולה כתובה, מתחילים בפגישת ייעוץ: {booking_link} | Whenever you want a written action plan, it starts with a Clarity Session: {booking_link} | `site_spec → Funnel / Booking; runtime vars` | framing |  |
-| 329 | `extras.msg.email_subject_follow` | עוד מחשבה על {business_name} | One more thought about {business_name} | `site_spec → Funnel / Booking; runtime vars` | framing |  |
-| 330 | `extras.msg.booking_confirm s1` | פגישת הייעוץ נקבעה: {date}, בשעה {time}. | Your Clarity Session is booked: {date} at {time}. | `site_spec → Funnel / Booking; runtime vars` | framing |  |
-| 331 | `extras.msg.booking_confirm s2` | {location_or_link} | {location_or_link} | `site_spec → Funnel / Booking; runtime vars` | framing |  |
-| 332 | `extras.msg.booking_confirm s3` | טל ושחר | Tal and Shahar | `site_spec → Funnel / Booking; runtime vars` | framing |  |
-| 333 | `extras.msg.booking_reminder s1` | תזכורת: נפגשים מחר בשעה {time}. | Reminder: we're meeting tomorrow at {time}. | `site_spec → Funnel / Booking; runtime vars` | framing |  |
-| 334 | `extras.msg.booking_reminder s2` | {location_or_link} | {location_or_link} | `site_spec → Funnel / Booking; runtime vars` | framing |  |
-| 335 | `extras.msg.unsubscribe` | כדי להפסיק לקבל הודעות, השיבו "הסר". | To stop these messages, reply STOP. | `none (opt-out mechanism; consent wording undecided, gaps[legal.privacy])` | framing |  |
-| 336 | `extras.seo.home.title` | Talou L'oren · מיתוג אישי לעסק ובניית מותג אישי | Talou L'oren · Personal branding for business owners | `business.name; offers[0..4]; team[].name; C-position-21 (SURVIVES)` | sourced |  |
-| 337 | `extras.seo.home.description` | טל אורן ושחר נאור: בדיקה ממוקדת בלי תשלום, פגישת ייעוץ עם שנינו, ודרך לעסק שלכם, מסיפור ועד שותפות. | Tal Oren and Shahar Naor: a free Spotlight Check, a Clarity Session with both of us, and a path for your business, from Story to Partnership. | `business.name; offers[0..4]; team[].name; C-position-21 (SURVIVES)` | sourced |  |
-| 338 | `extras.seo.story.title` | סיפור · מיתוג לעסקים קטנים · Talou L'oren | Story · Branding for small businesses · Talou L'oren | `offers[2]; doors.value[0].delivers; C-position-22 (WEAKENED, used as keyword only)` | sourced |  |
-| 339 | `extras.seo.story.description` | ספרינט סיפור של 2–4 שבועות: ה־DNA של המותג, חמשת הערכים, סיפור הליבה, המסרים והשפה הוויזואלית. | A 2–4 week Story Sprint: brand DNA, five values, core story, messaging and visual language. | `offers[2]; doors.value[0].delivers; C-position-22 (WEAKENED, used as keyword only)` | sourced |  |
-| 340 | `extras.seo.launch.title` | השקה · מיתוג לעסק חדש והקמת עסק חדש · Talou L'oren | Launch · Branding a new business · Talou L'oren | `offers[3]; doors.value[1].delivers; C-position-22 (keyword only)` | sourced |  |
-| 341 | `extras.seo.launch.description` | בניית השקה של 6–10 שבועות לעסקים חדשים: אסטרטגיה, זהות, אתר, משפך, תוכן להשקה וקמפיין ראשון. | A 6–10 week Launch Build for new businesses: strategy, identity, website, funnel, launch content and a first campaign. | `offers[3]; doors.value[1].delivers; C-position-22 (keyword only)` | sourced |  |
-| 342 | `extras.seo.partnership.title` | שותפות · מנטור עסקי ואסטרטגיה שיווקית לעסק · Talou L'oren | Partnership · Business mentoring and marketing strategy · Talou L'oren | `offers[4].format; C-position-22 (keyword only)` | sourced |  |
-| 343 | `extras.seo.partnership.description` | 3–6 חודשים, פגישה שבועית עם טל ושחר, ומערכת לשיווק, למכירות ולתפעול. | 3–6 months, a weekly meeting with Tal and Shahar, and a system for marketing, sales and operations. | `offers[4].format; C-position-22 (keyword only)` | sourced |  |
-| 344 | `extras.seo.work.title` | עבודות · Amdocs, מכבי, SEAT, פארק בבלי · Talou L'oren | Work · Amdocs, Maccabi, SEAT, Park Bavli · Talou L'oren | `confirmed_cases[0..3]; old_case_studies; testimonials.video` | sourced |  |
-| 345 | `extras.seo.work.description` | סיפורים מהעבודה עם ארגונים, יזמים ומותגים, וסרטונים של לקוחות. | Stories from our work with organisations, entrepreneurs and brands, and client videos. | `confirmed_cases[0..3]; old_case_studies; testimonials.video` | sourced |  |
-| 346 | `extras.seo.about.title` | טל אורן ושחר נאור · Talou L'oren | Tal Oren and Shahar Naor · Talou L'oren | `team[].name/.role` | sourced |  |
-| 347 | `extras.seo.about.description` | אסטרטג מותג ומנטור עסקי, ומעצב, מפתח ואסטרטג מוצר. | A brand strategist and business mentor, and a designer, developer and product strategist. | `team[].name/.role` | sourced |  |
-| 348 | `extras.seo.brands.title` | לחברות ולצוותים · Talou L'oren | For brands and teams · Talou L'oren | `audience (scoped project); offers_note` | sourced |  |
-| 349 | `extras.seo.brands.description` | פרויקטים בהיקף מוגדר לחברות ולצוותים: מיתוג, תוכן, הפקה ואסטרטגיה. | Scoped projects for companies and teams: branding, content, production and strategy. | `audience (scoped project); offers_note` | sourced |  |
-| 350 | `extras.seo.watch.title` | לצפייה · Talou L'oren | Watch · Talou L'oren | `video_series` | sourced |  |
-| 351 | `extras.seo.watch.description` | שש סדרות סרטונים קצרים לבעלי עסקים. | Six series of short videos for business owners. | `video_series` | sourced |  |
-| 352 | `extras.seo.course.title` | BRAND YOURSELF · קורס מיתוג אישי לעסק | BRAND YOURSELF · Personal branding course | `offers[5]; method.note; C-position-21` | sourced |  |
-| 353 | `extras.seo.course.description` | עשרה שיעורים מוקלטים, בקצב שלכם, לפי שיטת עשרת הצעדים. | Ten recorded lessons, at your own pace, following the ten-step method. | `offers[5]; method.note; C-position-21` | sourced |  |
-| 354 | `extras.seo.check.title` | בדיקה ממוקדת · ייעוץ עסקי לעסקים קטנים בחינם · Talou L'oren | Spotlight Check · Free business review for small businesses · Talou L'oren | `offers[0]; direction must-do 14; C-position-22 (keyword only)` | sourced |  |
-| 355 | `extras.seo.check.description` | 10 שאלות, ותמונת מצב אישית של העסק שלכם. | 10 questions, and a personal snapshot of your business. | `offers[0]; direction must-do 14; C-position-22 (keyword only)` | sourced |  |
+| 241 | `extras.pages.watch.series[5].line` | לקוחות מדברים מול המצלמה על העבודה איתנו. | Clients on camera, talking about working with us. | `video_series[5]`; `testimonials.video[]`; `site_spec → Six video series` ("Existing testimonials") | sourced | round 2 (F6): no length stated |
+| 242 | `extras.pages.watch.pain s1` | AI בכל מקום, ועצות מכל כיוון. | AI everywhere, advice from every side. | `pains[4]` + framing | framing | round 2 (K1): new. "advice from every side" is the reader's feeling, not a fact about anyone |
+| 243 | `extras.pages.watch.pain s2` | קשה לדעת למי להקשיב. | It's hard to know who to listen to. | `pains[4]` + framing | framing | round 2 (K1): new |
+| 244 | `extras.pages.watch.empty_series` | הפרקים הראשונים בדרך. | The first episodes are on their way. | `video_series.note (A21)` | framing |  |
+| 245 | `extras.pages.course.lessons_heading` | עשרה שיעורים, עשרה צעדים | Ten lessons, ten steps | `method.note; offers[5].format` | sourced |  |
+| 246 | `extras.pages.course.pain` | עובדים לבד, ואין לידכם מישהו שיעבור איתכם על הדרך צעד אחר צעד. | You work alone, and there's nobody beside you to go through it step by step. | `pains[3]`; `audience` (solo owner → course); `offers[5]` (10 lessons = 10 steps) | sourced | round 2 (K1): new. See non-blocking note N3 |
+| 247 | `extras.pages.course.voices_heading` | מי שכבר עשו את הקורס | People who've done the course | `confirmed_cases[5].videos (vid-048, vid-059)` | sourced |  |
+| 248 | `extras.pages.check.intro.meta` | 10 שאלות · {check_minutes} דקות · בלי תשלום · תמונת מצב אישית | 10 questions · {check_minutes} minutes · free · a personal snapshot | `offers[0]; placeholder {check_minutes}` | sourced |  |
+| 249 | `extras.pages.check.questions[5].hint s1` | לא חובה. | Optional. | `site_spec → Check Q6 optional` | framing |  |
+| 250 | `extras.pages.check.questions[5].hint s2` | אם קשה לענות, גם זה אומר משהו. | If it's hard to answer, that tells us something too. | `site_spec → Check Q6 optional` | framing |  |
+| 251 | `extras.pages.thanks.body` | תמונת המצב תגיע אליכם בוואטסאפ ובמייל, תוך {turnaround}. | Your snapshot will reach you on WhatsApp and by email within {turnaround}. | `brief Tech "Messaging" (snapshot delivery by WhatsApp + email); placeholder {turnaround}` | sourced (brief spec by ref.) |  |
+| 252 | `extras.pages.snapshot.intro` | מה שראינו, מהתשובות שלכם וממה שיש עליכם ברשת. | What we saw, from your answers and from what's out there about you online. | `site_spec → Snapshot (automated scan + answers)` | sourced (brief spec by ref.) |  |
+| 253 | `extras.pages.snapshot.cta_line` | בפגישת הייעוץ נעבור על תמונת המצב יחד. | In the Clarity Session we'll go through your snapshot together. | `direction must-do 7; offers[1]` | framing |  |
+| 254 | `extras.pages.booked.body s1` | אישור יגיע אליכם במייל ובוואטסאפ. | A confirmation is on its way by email and WhatsApp. | `site_spec → Booking (confirmation by email and WhatsApp); runtime vars` | sourced (brief spec by ref.) |  |
+| 255 | `extras.pages.booked.body s2` | נתראה ב־{date}, בשעה {time}. | See you on {date} at {time}. | `site_spec → Booking (confirmation by email and WhatsApp); runtime vars` | sourced (brief spec by ref.) |  |
+| 256 | `extras.pages.not_found.title` | העמוד הזה לא כאן. | This page isn't here. | `site_spec → 404` | framing |  |
+| 257 | `extras.pages.not_found.body` | אולי הקישור השתנה, אולי נפלה בו טעות. | Maybe the link changed, maybe it has a typo in it. | `site_spec → 404` | framing |  |
+| 258 | `extras.method_steps[0].title` | אני, המותג, היזמות | Me, the brand, the entrepreneur | `method.value[n]` | sourced |  |
+| 259 | `extras.method_steps[1].title` | מדף המוצרים | The product shelf | `method.value[n]` | sourced |  |
+| 260 | `extras.method_steps[2].title` | ה־DNA שלי | My DNA | `method.value[n]` | sourced |  |
+| 261 | `extras.method_steps[3].title` | ה־DNA של הלקוחות הכי טובים | The DNA of my best clients | `method.value[n]` | sourced |  |
+| 262 | `extras.method_steps[4].title` | Know, Like, Trust: מסע הלקוח | Know, like, trust: the client journey | `method.value[n]` | sourced |  |
+| 263 | `extras.method_steps[5].title` | חמשת ערכי המותג | The five brand values | `method.value[n]` | sourced |  |
+| 264 | `extras.method_steps[6].title` | מיתוג ומיתוג ויזואלי | Branding and visual branding | `method.value[n]` | sourced |  |
+| 265 | `extras.method_steps[7].title` | משפך ואסטרטגיה דיגיטלית | Funnel and digital strategy | `method.value[n]` | sourced |  |
+| 266 | `extras.method_steps[8].title` | המודל הפיננסי | The financial model | `method.value[n]` | sourced |  |
+| 267 | `extras.method_steps[9].title` | מיינדסט | Mindset | `method.value[n]` | sourced |  |
+| 268 | `extras.video_library.proof[0].label` | AMDOCS INNOVATION PROJECT | AMDOCS INNOVATION PROJECT | `videos[id].title (verbatim)` | sourced |  |
+| 269 | `extras.video_library.proof[1].label` | AMDOCS PURPOSE | AMDOCS PURPOSE | `videos[id].title (verbatim)` | sourced |  |
+| 270 | `extras.video_library.proof[2].label` | AMDOCS DARE TO INNOVATE | AMDOCS DARE TO INNOVATE | `videos[id].title (verbatim)` | sourced |  |
+| 271 | `extras.video_library.proof[3].label` | מכבי יזמות אנשי האור | מכבי יזמות אנשי האור | `videos[id].title (verbatim)` | sourced |  |
+| 272 | `extras.video_library.proof[4].label` | מכבי יזמות- לוחמי אור | מכבי יזמות- לוחמי אור | `videos[id].title (verbatim)` | sourced |  |
+| 273 | `extras.video_library.proof[5].label` | Maccabi בתי הרופאים 2023 | Maccabi בתי הרופאים 2023 | `videos[id].title (verbatim)` | sourced |  |
+| 274 | `extras.video_library.proof[6].label` | מכבי דנט מודעות סרטן הפה | מכבי דנט מודעות סרטן הפה | `videos[id].title (verbatim)` | sourced |  |
+| 275 | `extras.video_library.proof[7].label` | SEAT TV COMMERCIAL | SEAT TV COMMERCIAL | `videos[id].title (verbatim)` | sourced |  |
+| 276 | `extras.video_library.proof[8].label` | פארק בבלי נדלן | פארק בבלי נדלן | `videos[id].title (verbatim)` | sourced |  |
+| 277 | `extras.video_library.proof[9].label` | קמפיין פארק בבלי | קמפיין פארק בבלי | `videos[id].title (verbatim)` | sourced | title trimmed: dossier title is "יצחק תשובה, אדריכלית גל נאור - קמפיין פארק בבלי"; the architect's name (not on the brief's list) is correctly left out |
+| 278 | `extras.video_library.proof[10].label` | WELLA CASE STUDY | WELLA CASE STUDY | `videos[id].title (verbatim)` | sourced |  |
+| 279 | `extras.video_library.proof[11].label` | artistic seminar for Wella | artistic seminar for Wella | `videos[id].title (verbatim)` | sourced |  |
+| 280 | `extras.video_library.proof[12].label` | EUGENE PERMA BLONDE MASTER STUDY CASE | EUGENE PERMA BLONDE MASTER STUDY CASE | `videos[id].title (verbatim)` | sourced |  |
+| 281 | `extras.video_library.proof[13].label` | OBSESSED- CK TEAM BOOSTER CASE STUDY | OBSESSED- CK TEAM BOOSTER CASE STUDY | `videos[id].title (verbatim)` | sourced |  |
+| 282 | `extras.video_library.proof[14].label` | VISA CAL MANAGMENT TEAM BOOSTER | VISA CAL MANAGMENT TEAM BOOSTER | `videos[id].title (verbatim)` | sourced |  |
+| 283 | `extras.video_library.proof[15].label` | DORON SHEFER CASE STUDY | DORON SHEFER CASE STUDY | `videos[id].title (verbatim)` | sourced |  |
+| 284 | `extras.video_library.proof[16].label` | דורון שפר מיתוג | דורון שפר מיתוג | `videos[id].title (verbatim)` | sourced |  |
+| 285 | `extras.video_library.proof[17].label` | CASE STUDY RITA | CASE STUDY RITA | `videos[id].title (verbatim)` | sourced |  |
+| 286 | `extras.video_library.proof[18].label` | AMT CASE STUDY | AMT CASE STUDY | `videos[id].title (verbatim)` | sourced |  |
+| 287 | `extras.video_library.proof[19].label` | מיתוג מעסיק TABOOLA | מיתוג מעסיק TABOOLA | `videos[id].title (verbatim)` | sourced |  |
+| 288 | `extras.video_library.proof[20].label` | TABOOLA AT HILTON | TABOOLA AT HILTON | `videos[id].title (verbatim)` | sourced |  |
+| 289 | `extras.video_library.proof[21].label` | kornit make better | kornit make better | `videos[id].title (verbatim)` | sourced | title with repeated spaces collapsed |
+| 290 | `extras.video_library.proof[22].label` | KORNIT RECAP EXTERNAL | KORNIT RECAP EXTERNAL | `videos[id].title (verbatim)` | sourced | title with repeated spaces collapsed |
+| 291 | `extras.video_library.proof[23].label` | בזק אנשים | בזק אנשים | `videos[id].title (verbatim)` | sourced |  |
+| 292 | `extras.video_library.proof[24].label` | פרויקט פנים ארגוני לשירותי בריאות כללית | פרויקט פנים ארגוני לשירותי בריאות כללית | `videos[id].title (verbatim)` | sourced |  |
+| 293 | `extras.video_library.proof[25].label` | מיתוג מעסיק וגיוס עובדים פיליפ מוריס | מיתוג מעסיק וגיוס עובדים פיליפ מוריס | `videos[id].title (verbatim)` | sourced |  |
+| 294 | `extras.video_library.proof[26].label` | Mercedes vip club | Mercedes vip club | `videos[vid-041].title` (trimmed); `do_not_claim[3]` | sourced | round 2 (F5): "1 of 300 videos" removed |
+| 295 | `extras.video_library.proof[27].label` | SUCCESS IS A DRIVE | SUCCESS IS A DRIVE | `videos[id].title (verbatim)` | sourced |  |
+| 296 | `extras.video_library.proof[28].label` | CASTRO DPPL | CASTRO DPPL | `videos[id].title (verbatim)` | sourced |  |
+| 297 | `extras.video_library.voices[0].label` | AMOS TESTIMONIALS | AMOS TESTIMONIALS | `videos[id].title (verbatim)` | sourced |  |
+| 298 | `extras.video_library.voices[0].caption` | עמוס, AMT | Amos, AMT | `testimonials.video[].person` | sourced |  |
+| 299 | `extras.video_library.voices[1].label` | AMOS TESTIMONIALS | AMOS TESTIMONIALS | `videos[id].title (verbatim)` | sourced |  |
+| 300 | `extras.video_library.voices[1].caption` | עמוס, AMT | Amos, AMT | `testimonials.video[].person` | sourced |  |
+| 301 | `extras.video_library.voices[2].label` | TESTIMONIALS RONEN | TESTIMONIALS RONEN | `videos[id].title (verbatim)` | sourced |  |
+| 302 | `extras.video_library.voices[2].caption` | רונן | Ronen | `testimonials.video[].person` | sourced |  |
+| 303 | `extras.video_library.voices[3].label` | TESTIMONIALS JOYA COSMETICS | TESTIMONIALS JOYA COSMETICS | `videos[id].title (verbatim)` | sourced |  |
+| 304 | `extras.video_library.voices[3].caption` | Joya Cosmetics | Joya Cosmetics | `testimonials.video[].person` | sourced |  |
+| 305 | `extras.video_library.voices[4].label` | Brand Yourself - Testimonials - Natali | Brand Yourself - Testimonials - Natali | `videos[id].title (verbatim)` | sourced |  |
+| 306 | `extras.video_library.voices[4].caption` | נטלי, BRAND YOURSELF | Natali, BRAND YOURSELF | `testimonials.video[].person` | sourced |  |
+| 307 | `extras.video_library.voices[5].label` | Brand Yourself - Testimonials - ELLA | Brand Yourself - Testimonials - ELLA | `videos[id].title (verbatim)` | sourced |  |
+| 308 | `extras.video_library.voices[5].caption` | אלה, BRAND YOURSELF | Ella, BRAND YOURSELF | `testimonials.video[].person` | sourced |  |
+| 309 | `extras.video_library.voices[6].label` | TESTIMONIALS MAGIC TALOU | TESTIMONIALS MAGIC TALOU | `videos[id].title (verbatim)` | sourced |  |
+| 310 | `extras.video_library.voices[6].caption` | {name_to_confirm} | {name_to_confirm} | `testimonials.video[].person` | sourced |  |
+| 311 | `extras.video_library.voices[7].label` | Talou Testimonial Film 1 HQ | Talou Testimonial Film 1 HQ | `videos[id].title (verbatim)` | sourced |  |
+| 312 | `extras.video_library.voices[7].caption` | {name_to_confirm} | {name_to_confirm} | `testimonials.video[].person` | sourced |  |
+| 313 | `extras.video_library.voices[8].label` | Talou Testimonial Film 2 HQ | Talou Testimonial Film 2 HQ | `videos[id].title (verbatim)` | sourced |  |
+| 314 | `extras.video_library.voices[8].caption` | {name_to_confirm} | {name_to_confirm} | `testimonials.video[].person` | sourced |  |
+| 315 | `extras.video_library.voices[9].label` | Talou Testimonial Film 3 HQ | Talou Testimonial Film 3 HQ | `videos[id].title (verbatim)` | sourced |  |
+| 316 | `extras.video_library.voices[9].caption` | {name_to_confirm} | {name_to_confirm} | `testimonials.video[].person` | sourced |  |
+| 317 | `extras.video_library.boots[0].label` | סדנה למיתוג אישי מנצח ליזמים בשיתוף עם בנק פועלים | סדנה למיתוג אישי מנצח ליזמים בשיתוף עם בנק פועלים | `videos[id].title (verbatim)` | sourced |  |
+| 318 | `extras.video_library.course_trailer.label` | BRAND YOURSELF INTO THE PROCESS | BRAND YOURSELF INTO THE PROCESS | `videos[vid-036].title` | sourced |  |
+| 319 | `extras.msg.snapshot s1` | היי {first_name}, כאן {partner_name} מ־Talou L'oren. | Hi {first_name}, it's {partner_name} from Talou L'oren. | `site_spec → Funnel / Booking; runtime vars` | framing |  |
+| 320 | `extras.msg.snapshot s2` | תמונת המצב של {business_name} מוכנה: {link} | The snapshot for {business_name} is ready: {link} | `site_spec → Funnel / Booking; runtime vars` | framing |  |
+| 321 | `extras.msg.snapshot s3` | אם משהו שם מפתיע אתכם, אפשר לענות כאן. | If anything in it surprises you, just reply here. | `site_spec → Funnel / Booking; runtime vars` | framing |  |
+| 322 | `extras.msg.email_subject_snapshot` | תמונת המצב של {business_name} מוכנה | The snapshot for {business_name} is ready | `site_spec → Funnel / Booking; runtime vars` | framing |  |
+| 323 | `extras.msg.follow1 s1` | {first_name}, דבר אחד מתמונת המצב נשאר איתנו: {observation}. | {first_name}, one thing from your snapshot stayed with us: {observation}. | `site_spec → Funnel / Booking; runtime vars` | framing |  |
+| 324 | `extras.msg.follow1 s2` | רוצים לדבר על זה? | Want to talk it through? | `site_spec → Funnel / Booking; runtime vars` | framing |  |
+| 325 | `extras.msg.follow1 s3` | {booking_link} | {booking_link} | `site_spec → Funnel / Booking; runtime vars` | framing |  |
+| 326 | `extras.msg.follow2 s1` | סיפור של עסק שהיה במקום דומה לשלכם: {case_title}. | The story of a business that was somewhere close to where you are: {case_title}. | `site_spec → Funnel / Booking; runtime vars` | framing |  |
+| 327 | `extras.msg.follow2 s2` | {case_link} | {case_link} | `site_spec → Funnel / Booking; runtime vars` | framing |  |
+| 328 | `extras.msg.follow3` | משהו קטן שאפשר לעשות כבר השבוע: {tip} | A small thing you could do this week: {tip} | `site_spec → Funnel / Booking; runtime vars` | framing |  |
+| 329 | `extras.msg.follow4` | סרטון קצר, קשור למה שראינו אצלכם: {video_link} | A short video, about what we saw in your business: {video_link} | `site_spec → Funnel / Booking; runtime vars` | framing |  |
+| 330 | `extras.msg.follow5 s1` | זו ההודעה האחרונה מאיתנו בינתיים. | This is our last note for now. | `site_spec → Funnel / Booking; runtime vars` | framing |  |
+| 331 | `extras.msg.follow5 s2` | כשתרצו תוכנית פעולה כתובה, מתחילים בפגישת ייעוץ: {booking_link} | Whenever you want a written action plan, it starts with a Clarity Session: {booking_link} | `site_spec → Funnel / Booking; runtime vars` | framing |  |
+| 332 | `extras.msg.email_subject_follow` | עוד מחשבה על {business_name} | One more thought about {business_name} | `site_spec → Funnel / Booking; runtime vars` | framing |  |
+| 333 | `extras.msg.booking_confirm s1` | פגישת הייעוץ נקבעה: {date}, בשעה {time}. | Your Clarity Session is booked: {date} at {time}. | `site_spec → Funnel / Booking; runtime vars` | framing |  |
+| 334 | `extras.msg.booking_confirm s2` | {location_or_link} | {location_or_link} | `site_spec → Funnel / Booking; runtime vars` | framing |  |
+| 335 | `extras.msg.booking_confirm s3` | טל ושחר | Tal and Shahar | `site_spec → Funnel / Booking; runtime vars` | framing |  |
+| 336 | `extras.msg.booking_reminder s1` | תזכורת: נפגשים מחר בשעה {time}. | Reminder: we're meeting tomorrow at {time}. | `site_spec → Funnel / Booking; runtime vars` | framing |  |
+| 337 | `extras.msg.booking_reminder s2` | {location_or_link} | {location_or_link} | `site_spec → Funnel / Booking; runtime vars` | framing |  |
+| 338 | `extras.msg.unsubscribe` | כדי להפסיק לקבל הודעות, השיבו "הסר". | To stop these messages, reply STOP. | `none (opt-out mechanism; consent wording undecided, gaps[legal.privacy])` | framing |  |
+| 339 | `extras.seo.home.title` | Talou L'oren · מיתוג אישי לעסק ובניית מותג אישי | Talou L'oren · Personal branding for business owners | `business.name; offers[0..4]; team[].name; C-position-21 (SURVIVES)` | sourced |  |
+| 340 | `extras.seo.home.description` | טל אורן ושחר נאור: בדיקה ממוקדת בלי תשלום, פגישת ייעוץ עם שנינו, ודרך לעסק שלכם, מסיפור ועד שותפות. | Tal Oren and Shahar Naor: a free Spotlight Check, a Clarity Session with both of us, and a path for your business, from Story to Partnership. | `business.name; offers[0..4]; team[].name; C-position-21 (SURVIVES)` | sourced |  |
+| 341 | `extras.seo.story.title` | סיפור · מיתוג לעסקים קטנים · Talou L'oren | Story · Branding for small businesses · Talou L'oren | `offers[2]; doors.value[0].delivers; C-position-22 (WEAKENED, used as keyword only)` | sourced |  |
+| 342 | `extras.seo.story.description` | ספרינט סיפור של 2–4 שבועות: ה־DNA של המותג, חמשת הערכים, סיפור הליבה, המסרים והשפה הוויזואלית. | A 2–4 week Story Sprint: brand DNA, five values, core story, messaging and visual language. | `offers[2]; doors.value[0].delivers; C-position-22 (WEAKENED, used as keyword only)` | sourced |  |
+| 343 | `extras.seo.launch.title` | השקה · מיתוג לעסק חדש והקמת עסק חדש · Talou L'oren | Launch · Branding a new business · Talou L'oren | `offers[3]; doors.value[1].delivers; C-position-22 (keyword only)` | sourced |  |
+| 344 | `extras.seo.launch.description` | בניית השקה של 6–10 שבועות לעסקים חדשים: אסטרטגיה, זהות, אתר, משפך, תוכן להשקה וקמפיין ראשון. | A 6–10 week Launch Build for new businesses: strategy, identity, website, funnel, launch content and a first campaign. | `offers[3]; doors.value[1].delivers; C-position-22 (keyword only)` | sourced |  |
+| 345 | `extras.seo.partnership.title` | שותפות · מנטור עסקי ואסטרטגיה שיווקית לעסק · Talou L'oren | Partnership · Business mentoring and marketing strategy · Talou L'oren | `offers[4].format; C-position-22 (keyword only)` | sourced |  |
+| 346 | `extras.seo.partnership.description` | 3–6 חודשים, פגישה שבועית עם טל ושחר, ומערכת לשיווק, למכירות ולתפעול. | 3–6 months, a weekly meeting with Tal and Shahar, and a system for marketing, sales and operations. | `offers[4].format; C-position-22 (keyword only)` | sourced |  |
+| 347 | `extras.seo.work.title` | עבודות · Amdocs, מכבי, SEAT, פארק בבלי · Talou L'oren | Work · Amdocs, Maccabi, SEAT, Park Bavli · Talou L'oren | `confirmed_cases[0..3]; old_case_studies; testimonials.video` | sourced |  |
+| 348 | `extras.seo.work.description` | סיפורים מהעבודה עם ארגונים, יזמים ומותגים, וסרטונים של לקוחות. | Stories from our work with organisations, entrepreneurs and brands, and client videos. | `confirmed_cases[0..3]; old_case_studies; testimonials.video` | sourced |  |
+| 349 | `extras.seo.about.title` | טל אורן ושחר נאור · Talou L'oren | Tal Oren and Shahar Naor · Talou L'oren | `team[].name/.role` | sourced |  |
+| 350 | `extras.seo.about.description` | אסטרטג מותג ומנטור עסקי, ומעצב, מפתח ואסטרטג מוצר. | A brand strategist and business mentor, and a designer, developer and product strategist. | `team[].name/.role` | sourced |  |
+| 351 | `extras.seo.brands.title` | לחברות ולצוותים · Talou L'oren | For brands and teams · Talou L'oren | `audience (scoped project); offers_note` | sourced |  |
+| 352 | `extras.seo.brands.description` | פרויקטים בהיקף מוגדר לחברות ולצוותים: מיתוג, תוכן, הפקה ואסטרטגיה. | Scoped projects for companies and teams: branding, content, production and strategy. | `audience (scoped project); offers_note` | sourced |  |
+| 353 | `extras.seo.watch.title` | לצפייה · Talou L'oren | Watch · Talou L'oren | `video_series` | sourced |  |
+| 354 | `extras.seo.watch.description` | שש סדרות סרטונים קצרים לבעלי עסקים. | Six series of short videos for business owners. | `video_series` | sourced |  |
+| 355 | `extras.seo.course.title` | BRAND YOURSELF · קורס מיתוג אישי לעסק | BRAND YOURSELF · Personal branding course | `offers[5]; method.note; C-position-21` | sourced |  |
+| 356 | `extras.seo.course.description` | עשרה שיעורים מוקלטים, בקצב שלכם, לפי שיטת עשרת הצעדים. | Ten recorded lessons, at your own pace, following the ten-step method. | `offers[5]; method.note; C-position-21` | sourced |  |
+| 357 | `extras.seo.check.title` | בדיקה ממוקדת · ייעוץ עסקי לעסקים קטנים בחינם · Talou L'oren | Spotlight Check · Free business review for small businesses · Talou L'oren | `offers[0]; direction must-do 14; C-position-22 (keyword only)` | sourced |  |
+| 358 | `extras.seo.check.description` | 10 שאלות, ותמונת מצב אישית של העסק שלכם. | 10 questions, and a personal snapshot of your business. | `offers[0]; direction must-do 14; C-position-22 (keyword only)` | sourced |  |
 
 ## Voice audit
 
-Criteria: R rhythm varies · T no triads · P no padding vocabulary · N concrete nouns · L at least one honest limit · G register matches the owner's (warm, calm, direct, plural address) · A reads aloud without wincing · C written in the locale's own cadence. ✓ = clean, ✗ = flagged (blocking items in the table above, notes below).
+Criteria: R rhythm varies · T no triads · P no padding vocabulary · N concrete nouns · L at least one honest limit · G register matches the owner's (warm, calm, direct, plural address) · A reads aloud without wincing · C written in the locale's own cadence. ✓ = clean. Notes are not blocking.
 
 | Section | he | en | Notes |
 |---|---|---|---|
-| Home hero + closing | ✓ all | ✓ all | approved lines verbatim (triad in the subtitle is the client's line, exempt) |
-| Mirror (`copyBlocks[1]`) | ✓ all | ✗ A | en heading missing "?" (**V2**). The even rhythm is deliberate (one pain per line) |
+| Home hero + closing | ✓ all | ✓ all | approved lines verbatim (the triad in the subtitle is the client's line, exempt) |
+| Mirror (`copyBlocks[1]`) | ✓ all | ✓ all | V2 fixed. The even rhythm is deliberate (one pain per line) |
 | Flip (`copyBlocks[2]`) | ✓ all | ✓ all | |
-| Partners (`copyBlocks[3]`, `team[]`) | ✓ all | ✓ all | "ביחד נדייק את החזון שלכם" / "Together we sharpen your vision" is the kept old-site line |
+| Partners (`copyBlocks[3]`, `team[]`) | ✓ all | ✓ all | |
 | Doors, offers (`services[]`) | ✓ all | ✓ all | honest limits present (free Check, fee credited, `{placeholders}`) |
-| How it works, proof, FAQ | ✓ all | ✓ all | 3 of 6 FAQ answers open "כן." / "Yes.": fine |
+| How it works, proof, FAQ | ✓ all | ✓ all | |
 | `/story`, `/launch` | ✓ all | ✓ all | |
-| `/partnership` | ✗ R, A | ✗ R, A | **V1** |
-| `/work` case stories | ✓ all | ✗ C (note) | en reads translated in places: "took real space on social media", "brought lapsed customers back home", "wide exposure", "Nobody wanted the brand". Not blocking. Wella p1 and Visa Cal keep list fragments; the items are the facts |
-| `/brands` | ✓ all | ✓ all | the three-beat pain line works when spoken |
-| `/watch` | ✓ all | ✓ all | (F6 is a fact item, not voice) |
-| `/course` | ✓ all | ✓ all | |
-| Check, snapshot, booking | ✓ all | ✓ all | "אם קשה לענות, גם זה אומר משהו" is a good honest line. No fear bands, no countdowns |
+| `/partnership` | ✓ all | ✓ all | V1 fixed. "לבד" in p1, then "אתם לא לבד" in p2, is a deliberate turn and reads well aloud |
+| `/work` case stories | ✓ all | ✓ (note) | en still reads translated in places ("took real space on social media", "brought lapsed customers back home", "wide exposure", "Nobody wanted the brand"). Carried from round 1. The new CK challenge is a noun phrase, like Visa Cal's; fine as a card line. New pain line: see N2 |
+| `/brands` | ✓ all | ✓ all | |
+| `/watch` | ✓ all | ✓ all | the new pain line is short, concrete and plural-neutral |
+| `/course` | ✓ all | ✓ all | new pain line: see N3 |
+| Check, snapshot, booking | ✓ all | ✓ all | no fear bands, no countdowns |
 | `msg.*` | ✓ all | ✓ all | plural address, signed by first names |
-| Newsletter, legal, 404 | ✓ all | ✗ C (note) | en newsletter "each one carrying a single idea" is stiff. Not blocking |
+| Newsletter, legal, 404 | ✓ all | ✓ (note) | en newsletter "each one carrying a single idea" is still stiff (round-1 note) |
 | `seo.*` | ✓ | ✓ | keyword-led by design (direction must-do 14) |
-
-Brief rules checked on every string: plural or neutral Hebrew address (a grep for masculine and feminine singular forms finds none in reader address; "מי ש…" + singular appears only for third parties), no `!` (0 / 0), no hype, no promised returns. `/partnership` "לא עוד חודש שנראה כמו הקודם" is an emotional promise, not a return, so framing.
 
 ## Completeness audit
 
-- **Schema (v0.11, `brand_practice`; the vertical pack is still a stub):** every required field is filled or empty with a stated reason in `sources.md`. `clientLogos[].logo` is null for 10 of 17 rows (no file: gap `client_logos (resolution)`). `method.stages[]` is empty because the cap is 6 and the method has 10 steps; the steps live in `extras.method_steps` (a schema gap for the owner). The confirmed cases' `challenge` / what-we-did are visible placeholders. Doron Shefer's outcome is a placeholder (the source states none).
-- **Sitemap:** all 16 routes plus 404 have copy in both locales (`/privacy` and `/accessibility` hold placeholders and the IS 5568 statement frame). Home has all 11 sections in order, with six FAQ items.
-- **Check flow:** 10 questions, one per screen, with progress `{n} / 10`, Back and Next, "pick an answer to continue", Q2 "none yet", Q6 optional, Q10 placeholder ranges + start time, then name, email, phone and `{consent_text}`. Matches the brief.
-- **Snapshot:** business name as the title, five dimensions on a 1–5 scale, three observations, first move, five path options, "Reviewed by {partner_name}", and the booking line. Matches the brief.
-- **Booking:** time → details → pay, confirmation page, `msg.booking_confirm` + `booking_reminder`. Length, price and credit come from `services[clarity-session]` and `{price_session}`.
-- **`msg.*`:** snapshot delivery (WhatsApp + email subject), five follow-ups + email subject, booking confirm and reminder, unsubscribe. Complete for the brief's three uses.
-- **Both languages:** identical key sets (837). No field is empty in one locale and filled in the other. The `{placeholder}` sets are identical.
-- **Duplicates:** the four deliberate repeats in `sources.md` are justified. V1 is the one repeat that is not.
-- **Must-do items (`direction.md`):** 1, 5–12, 14–17 are covered in copy (2–4, 13, 18 are design or dropped). The exception is the brief rule behind 15 and 17 (pain before solution on every page): **K1**.
-
-Not blocking:
-- No email subject for the booking confirmation (the brief asks for email and WhatsApp confirmation; `msg.booking_confirm` can serve both bodies).
-- `seo.course.title` is the only title without "· Talou L'oren".
-- Testimonial captions name Amos (AMT), Ronen, Joya Cosmetics, Natali and Ella, but hold Dr. Oded Kravtchik and "Yifat" as `{name_to_confirm}`. None of the five named is on the brief's people list, and `direction.md` must-do 10 says "no names outside the brief's list". The talouloren.com testimonial pages publish all five, A20 clears every channel film, and the harvester's gap covers only Kravtchik and Yifat. **Shahar to confirm** that published testimonial names may be captioned.
-- `extras.msg.unsubscribe` ("reply הסר / STOP") and FAQ a5 s2 ("you can stop them whenever you like") describe an opt-out the brief does not specify. Consent wording is still undecided. Owner to confirm with the consent text.
-- `newsletter.label` describes a letter that does not exist yet (no provider). Framing; owner to confirm.
+- **Schema (v0.11, `brand_practice`; the vertical pack is still a stub):** every required field is filled, or empty with a stated reason in `sources.md`. Unchanged since round 1: `clientLogos[].logo` is null for 10 of 17 rows (gap `client_logos (resolution)`). `method.stages[]` is empty (the cap is 6, the method has 10 steps; the steps live in `extras.method_steps`). The confirmed cases' stories are visible placeholders.
+- **Sitemap:** all 16 routes plus 404 have copy in both locales.
+- **Pain before solution (brief "Rules"; direction must-dos 15, 17):** Home → mirror (`copyBlocks[1]`). `/story` → `pain_heading`. `/launch` → `pain_heading`. `/partnership` → headline + `pain_heading` + p1. `/work` → `pages.work.pain` (new). `/about` → `copyBlocks[3]` p1. `/brands` → `pages.brands.pain`. `/watch` → `pages.watch.pain` (new). `/course` → `pages.course.pain` (new). The flow pages (`/check`, `/thanks`, `/snapshot`, `/book`, `/booked`, legal, 404) are steps, not pitch pages, and are exempt (round-1 ruling). The new `pain` keys sit after the page's other keys in the JSON. The template must render each one before the page's solution, as it does for `/brands` (key order does not matter in content; this is for the designer).
+- **Endings:** Home, `/story`, `/launch`, `/watch` → the Check. `/partnership`, `/work`, `/about`, `/snapshot` → a Clarity Session. `/brands` → its form. `/course` → Buy. `/thanks` → videos. Matches the brief's sitemap.
+- **Check flow:** 10 questions, one per screen, with progress `{n} / 10`, Back and Next, "pick an answer to continue". Q2 has "none yet", Q6 is optional, Q10 has placeholder ranges and a start time. Then contact and `{consent_text}`. Matches the brief.
+- **Snapshot:** business name, five dimensions on a 1–5 scale, three observations, first move, five path options, "Reviewed by {partner_name}", the booking line.
+- **Booking:** time → details → pay, the confirmation page, `msg.booking_confirm` + `booking_reminder`.
+- **`msg.*`:** snapshot delivery (WhatsApp + email subject), five follow-ups + email subject, booking confirm and reminder, unsubscribe.
+- **Both languages:** identical key sets (840), identical placeholder sets, no field empty in one locale only.
+- **Duplicates:** the four deliberate repeats in `sources.md` are justified. V1's repeat is gone. The new pain lines repeat no fact from another block on the same page.
+- **Must-do items (`direction.md`):** 1, 5–12, 14–17 are covered in copy. 2–4, 13 and 18 are design items or dropped.
 
 ## Research check
 
-The copy makes no claim about the industry, the market or competitors, so no sentence rests on a research claim except the SEO keywords. Those use C-position-21 (SURVIVES) and C-position-22 (WEAKENED: "typed in Israel; who types them is not known"). They are used only as title words, with no claim about the audience, so that is within the narrowed form. No KILLED claim exists (skeptic: 39 / 13 / 0).
+The copy makes no claim about the industry, the market or competitors, so no sentence rests on a research claim except the SEO keywords. Those use C-position-21 (SURVIVES) and C-position-22 (WEAKENED, used as title words only). Neither the new pain lines nor any other round-2 string makes an audience or market claim. No KILLED claim exists (skeptic: 39 / 13 / 0).
 
-Suggested updates (not blocking; the copywriter writes the words):
+Suggested updates. None of these block the pass, and the copywriter writes the words:
 
 | Field | Change and why | Behind it |
 |---|---|---|
-| `extras.pages.check.intro.meta` | Fill `{check_minutes}` once the mock is timed. In the set, free diagnostics sell themselves by stating the time cost next to "free" and the payoff | must-do 6; C-references-13 (narrowed) |
-| `extras.pages.book.*` | Show the fee-credit line on the booking step itself, not only on the offer card. No site in the set credits a session fee, so the line has to carry its own weight | must-do 8; C-references-15 (narrowed) |
-| `extras.seo.course.title` | Add the brand name like the other titles, using the one spelling chosen | must-do 14; C-position-18 (narrowed) |
-| `extras.video_library.voices[6..9].caption` | Resolve the four `{name_to_confirm}` captions with Shahar: testimonials show a name first | must-do 11 |
-| `extras.home.proof.people[8]` | Confirm "Rotem Yadlin" (brief) against the old site's "Yaldin" | C-position-12 |
-| Home proof / partnership band | Keep the "big names, and they sit with you" bridge visible beside the logo wall. It now lives in the hero subtitle and the Partnership body only | Positioning "Big-name proof, owner-led promise"; C-position-08, C-position-17 (narrowed), C-position-20 |
-| `services[spotlight-check]`, `seo.check` | No change: "free" is stated in both, which answers the free-diagnostic gap in Hebrew branding | C-references-11, C-references-18 |
+| `extras.pages.work.pain` | Check that the line doesn't undercut Home's proof band. Home leads with a 17-name logo wall; /work now opens by saying a big name on a logo wall doesn't tell you much. As a bridge ("names, then what changed") it fits the positioning. As a page opener it may read as the studio doubting its own wall | Positioning "Big-name proof, owner-led promise"; C-position-08, C-position-17 (narrowed), C-position-20 |
+| `extras.pages.course.pain` | The pain is "nobody beside you, step by step". The offer is ten recorded, self-paced lessons (`offers[5]`). Make sure the page doesn't suggest personal accompaniment the course doesn't include. The step-by-step half holds; the "beside you" half is answered only by Tal's recorded voice | `offers[5].format`; must-do 15 |
+| `extras.pages.check.intro.meta` | Fill `{check_minutes}` once the mock is timed (carried) | must-do 6; C-references-13 (narrowed) |
+| `extras.pages.book.*` | Show the fee-credit line on the booking step itself (carried) | must-do 8; C-references-15 (narrowed) |
+| `extras.seo.course.title` | Add the brand name like the other titles (carried; still the only title without "· Talou L'oren") | must-do 14; C-position-18 (narrowed) |
+| `extras.video_library.voices[6..9].caption` | Resolve the four `{name_to_confirm}` captions with Shahar (carried) | must-do 11 |
+| `extras.home.proof.people[8]` | Confirm "Rotem Yadlin" (brief) against the old site's "Yaldin" (carried) | C-position-12 |
 
 ## Counts
 
-- Sentences audited: **706** (353 he + 353 en) in 355 table rows. Plus 378 non-asserting strings per locale, read and listed by group above.
-- Sentence-instances by verdict: sourced **546** · sourced (brief spec by ref.) **20** · framing **129** · shared-context **0** · **unsourced 7** · **contradicted 4**.
-- Blocking items: 6 fact (H1, F2–F6: humanizer 1, copywriter 5) · 2 voice (V1, V2: humanizer) · 1 completeness (K1: copywriter).
+- Sentences audited: **711** sentence-instances (356 he + 355 en) in 358 table rows. The change from round 1's 706: round 2 removed 17 instances (V1 p1 rewritten, Doron's two sentences merged into one, `voices_intro` s2 deleted, and H1/F3/F5/F6 replaced in place) and added 22 (the replacements plus the 5 new pain sentences per locale). Every other string in both files was read and is listed by group above.
+- By verdict: sourced **554** · sourced (brief spec by ref.) **20** · framing **137** · shared-context **0** · unsourced **0** · contradicted **0**.
+- Claims by verdict (one claim per sentence-instance; the two list rows count as one claim each): the same as above.
+- Blocking items: **0**. Round-1 items: 9 of 9 resolved (H1, F2–F6, V1, V2, K1).
 
-Other notes, outside the copy: the run file pins copywriter 0.5.1, which does not exist (`agents/copywriter/base.md` is 0.5.0, as `sources.md` notes). The fact audit was not affected.
+## Non-blocking, for Shahar
+
+- **N1 · Spotlight vs Focused Check.** The en intake name follows A13 `term.check` ("Spotlight Check"). The brief body and `dossier.offers[0].label_en` say "Focused Check". Confirm the name, then the harvester updates the dossier.
+- **N2 · /work pain line.** See the research check. The wording is the copywriter's call.
+- **N3 · /course pain line.** See the research check.
+- **N4 · Testimonial captions.** Amos (AMT), Ronen, Joya Cosmetics, Natali and Ella are named in captions. They are published on talouloren.com but are not on the brief's people list (must-do 10). Confirm they may be captioned. Kravtchik and "Yifat" stay `{name_to_confirm}`.
+- **N5 · Opt-out wording.** `msg.unsubscribe` ("reply הסר / STOP") and FAQ a5 s2 describe an opt-out the brief does not specify. Confirm with the consent text.
+- **N6 · Newsletter.** `newsletter.label` describes a letter that does not exist yet (no provider).
+- **N7 · Booking confirmation email.** It has no email subject (`msg.booking_confirm` serves both bodies).
+- **N8 · Harvester to-dos.** Copy the brief's Tech rows "Check backend" and "Messaging" into the dossier (ruling 1). Update `offers[0].label_en` after N1.
+- **N9 · Run file.** It pins copywriter 0.5.1, which does not exist; `agents/copywriter/base.md` is 0.5.0. The audit is not affected.
+
+## Round-1 history
+
+Round 1 (2026-11-02, commit 4b3c29d) failed with **7 unsourced and 4 contradicted** sentence-instances out of 706 (546 sourced, 20 by brief reference, 129 framing), 2 voice items and 1 completeness item:
+
+- H1: CK challenge gave Calvin Klein a wish (humanizer).
+- F2: Doron Shefer "we worked on the website…" (copywriter).
+- F3: AMT en "second branch" (copywriter).
+- F4: `voices_intro` s2 tied "hundreds of percent" to named videos (copywriter).
+- F5: "Mercedes vip club 1 of 300 videos" (copywriter).
+- F6: In Their Words "20–30 seconds" (copywriter).
+- V1: `/partnership` said one pain three times (humanizer).
+- V2: en mirror heading lacked "?" (humanizer).
+- K1: `/work`, `/watch` and `/course` named no pain (copywriter).
+
+The copywriter fixed the F items and K1 (ledger 15:57:41Z). The humanizer fixed H1, V1 and V2 (ledger 15:59:24Z). This round re-checked every sentence and found all nine resolved and nothing new.
