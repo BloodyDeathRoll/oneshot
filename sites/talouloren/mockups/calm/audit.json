@@ -1,11 +1,11 @@
 {
  "slug": "talouloren",
  "variant": "calm",
- "measured_at": "2026-11-02T18:00:32.314Z",
+ "measured_at": "2026-11-02T18:06:29.389Z",
  "first_load": {
   "requests": 7,
   "hosts": [
-   "localhost:8987"
+   "localhost:8980"
   ],
   "third_party_hosts": [],
   "bytes_total": 559708,
@@ -15,9 +15,9 @@
   "bytes_fonts": 0,
   "bytes_images": 91321,
   "largest_image_bytes": 24586,
-  "lcp_ms": 1096,
+  "lcp_ms": 1088,
   "cls": 0,
-  "dcl_ms": 2913
+  "dcl_ms": 2985
  },
  "scroll": {
   "early": {

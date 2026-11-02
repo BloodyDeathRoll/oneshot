@@ -152,3 +152,33 @@ Measured (phone, 1.6 Mbps / 150 ms / 4× CPU):
 3. **Interactive**: the best booking drawer and the Home Q3 hand-off, but its leftover placeholders are the most visible of the three.
 
 All three pass dimension 8 at 8 from this critic and beat talouloren.com on the first screen and on the whole walk.
+
+## Round 3 · station 4f (quick, final) · 2026-11-02 · after commit 54c5a97
+
+Same walk as rounds 1–2, re-run on the round-3 builds. The critic's and visual-critic's reports were not read. Frames: `sites/talouloren/mockups/<variant>/shots/xc-r3/` (`sheet-phone*.png`, `sheet-laptop.png`, `sheet-flows.png`, `phone-cold2-*.png`, `phone-nojs-hero.png`, `walk.log`, `flow-phone.log`; unique also has `phone-booked-manual.png`). The current-site frames are those of round 1.
+
+Checks:
+- All three complete Check → `/thanks` → `/snapshot` → book → `/booked`. For unique, my script's "next" matcher picked the bottom bar, so the pay step was redone by hand and reached `#/booked`.
+- No third-party requests and no page errors.
+- No overflow at 390 px on any of the 18 routes, other than intended carousels and marquees.
+- `3 מיליון` reads correctly in all three.
+- JS off renders the Home: calm 16.8 k chars, interactive 15.4 k, unique 4.7 k with the h1, Check and WhatsApp links.
+- Reduced motion attaches no video.
+- After 6 s, the hero videos play in calm and interactive (phone and laptop). Unique's beam is drawn by its shader; there is no hero video by design.
+- Copy A25: the rendered name is "בדיקה ללא תשלום" / "Free Check" everywhere. The only "Focused Check" left is a code comment in interactive's script, not visible text.
+
+### Calm: 8 / 10 · better than current: yes · pass
+The round-2 notes are closed: the laptop footer spans the width with a two-column nav, and the bottom bar switches to booking after the Check (`sheet-laptop.png`, `sheet-flows.png`). It is still the quietest of the three: trustworthy and easy to book, with less pull past the hero and the white flip band. Laptop body type is still on the small side.
+
+### Interactive: 8 / 10 · better than current: yes · pass
+Placeholders are now gold pills ("שם העסק", "מחיר בקרוב"), not code. The bar switches to "לקביעת פגישת ייעוץ" after the Check. English is set in a proper Latin face, and the booking drawer is still the clearest of the three (`sheet-flows.png`). It still has a few sparse laptop bands (the logo marquee area and the partner bios, `sheet-laptop.png`).
+
+### Unique: 9 / 10 · better than current: yes · pass
+The beam set-piece (pains → light swings onto the studio → partners lit, Tal now img-001 → the Free Check) remains the run's defining moment, and it is now fast and whole without JS. The bar switches to booking after the Check, and `/book` is clean on the phone. Small notes only: laptop body type under the set-piece is small, and the case carousel's crossfade briefly ghosts the outgoing title (`sheet-laptop.png`, row 3).
+
+### Experience ranking, round 3 (final)
+1. **Unique**: the most memorable; the brand idea is the walk.
+2. **Calm**: the most trustworthy and the simplest.
+3. **Interactive**: the best booking drawer and the Home Q3 hand-off; the busiest of the three.
+
+All three clear dimension 8 (≥ 8) from this critic and beat talouloren.com on the first screen and on the whole walk.

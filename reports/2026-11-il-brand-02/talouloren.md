@@ -210,3 +210,95 @@ fix list: n/a. Remaining: swap `tal-033` for img-001 or get Shahar's confirmatio
 ### The one sentence the human needs
 
 All three pass the critic's gates this round (calm 71.2, interactive 68.7, unique 64.5 of 75), all within budget with 0 third-party requests. unique is the only one that still names a vid-033 frame as Tal. interactive's English mode shows Hebrew film titles on three routes.
+
+## Round 3 — station 4f, quick mode (2026-11-02, builds 54c5a97, copy 2bbbf0f; brief A25–A28)
+
+Same method, viewports, scripts and order as rounds 1–2, re-run in a browser against the revised `dist/`. Visual/experience reports and designer self-assessments not read. `audit.json` re-measured for all three. Screenshots are in `shots/critic-r3/`.
+
+### Measured (audit.json, 390 px throttled, no scroll)
+
+| Line | calm | interactive | unique |
+|---|---|---|---|
+| First-load transfer | 560 KB | 671 KB (hero webm no longer in the no-scroll window; was 1,205 KB) | 399 KB |
+| Largest image | 24.6 KB | 104.2 KB | 29.1 KB |
+| LCP | 1,088 ms | 816 ms | 836 ms |
+| CLS / scroll early / settled | 0 / 0.008 / 0 | 0 / 0 / 0 | 0 / 0.0001 / 0 |
+| Third-party on load | 0 | 0 | 0 |
+| Tap targets < 44 px / alt missing | 0 / 0 | 0 / 0 | 0 / 0 |
+| JS off | 16,788 chars, Check bar + WhatsApp in first screen | 15,376 chars, same | 4,748 chars, h1 + doors + Check bar + WhatsApp in first screen |
+
+### Copy against `copy/he.json` / `copy/en.json`
+
+Method: I rendered all 28 routes (Home, 4 offer pages, /work and 11 case pages, about, brands, watch, course, check, thanks, snapshot, book, booked, privacy, accessibility, 404) at 1440 px in he and en, scrolling each page fully. I compared every copy leaf string, split at paragraphs and `{placeholders}` and keeping segments of 12+ characters, against the rendered text. Strings not seen on a page were then searched in the built HTML.
+
+| | he: rendered / checked | en: rendered / checked | Not in the build at all |
+|---|---|---|---|
+| calm | 231 / 309 | 268 / 354 | 53 he / 56 en |
+| interactive | 225 / 309 | 271 / 354 | 84 he / 83 en |
+| unique | 307 / 309 | 353 / 354 | 0 |
+
+- What calm and interactive leave out is not on-page copy that was rewritten. It is `extras.msg.*` (WhatsApp/email templates the backend sends), `extras.seo.*` per-route titles and descriptions (single-file mockups set no per-route `<title>`), `videos[].description` (alt/metadata), each service's own `ctaText` (both use one generic WhatsApp prefill per route instead), `services[*].audience` lines, and `services[6].title` "שירותים בכל שלב" / "Services at any step" (the craft-services heading). calm also turns the flip paragraph's list ("…בהירות, תנועה, תשומת לב, משיכה, מודעות.") into the ladder words set as type, and leaves out the English `snapshot.paths` labels.
+- Both calm and interactive show `{check_minutes}` as the words "כמה דקות" / "a few minutes" rather than a placeholder. A26 does not list check minutes, and no number is invented.
+- A25: "בדיקה ללא תשלום" / "Free Check" is used everywhere: buttons, the /check h1, WhatsApp prefill ("היי, יש לי שאלה על הבדיקה ללא תשלום"). "בדיקה ממוקדת", "Spotlight Check" and "Focused Check" occur 0 times in rendered text (interactive has "Focused" in a CSS comment only).
+- A26: undecided values are visible on all three. unique shows them as `{session_length}`, `{price_session}` and so on. calm uses marked words ("משך בקרוב", "מחיר בקרוב", class `ph`). interactive shows "משך הפגישה יפורסם" / "המחיר יפורסם בקרוב". No invented numbers anywhere.
+- A27: the logo/names wall is on Home on all three, unchanged and matching `proof.names_wall_*`.
+- A28: unconfirmed testimonials read "ישראל ישראלי" / "Israel Israeli" (calm 20, interactive 15, unique 14 occurrences across routes); `{name_to_confirm}` 0.
+- English mode: no Hebrew film titles remain on interactive or unique (round 2 issue fixed); calm /about still shows "צילום בדרך" beside "Portrait coming".
+
+### Re-checked
+
+- 18 core routes × he/en: no horizontal overflow, `lang`/`dir` correct, no exclamation marks.
+- Check flow: all three are 10 gated screens, then contact + consent, then thanks. Booking: day → slot → details → mock pay → booked with the chosen time on all three. unique no longer offers Saturday.
+- WhatsApp: `wa.me/972504635536` with the prefill above; Check bar + WhatsApp chip fixed mid-page on all three.
+- Keyboard: all three menus trap focus and return it on Esc; skip link visible on focus. Reduced motion: static frames.
+- Facts: numbers on Home unchanged (27,000 / 3 million / 1,000+, 12 years, contact); `audit.json.facts` only "2026". Identity: Tal's partner card is img-001 on interactive and unique (unique's `tal-001-p.webp`); calm uses frames of vid-036/vid-027 (in `team[0].video_appearances`). interactive's hero film (vid-033) is not named. Shahar is a marked placeholder on all three.
+- check-design: calm Frank Ruhl Libre/Assistant #0f0f0f; interactive Karantina/Heebo #060606, WARN 4 all-caps labels; unique Bellefair/Plex #060606; 0 problems.
+
+---
+
+mode: quick        round: 3        variant: calm
+total: 71.2 / 75 (dims 1–7)        result: pass on 1–7; final result waits on dimension 8        hard_fails: []
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 9 | all claims match; A25–A28 applied; Tal from vid-036/027 frames (traced, not img-001) |
+| 2 | mobile + performance | 10 | 560 KB, LCP 1,088 ms, CLS 0, scroll 0.008, 0 small targets, no overflow |
+| 3 | booking CTA | 9 | number identical, prefill names the Free Check, works with JS off, flows complete |
+| 4 | brand fit | 8 | 11 Home sections in order, all routes |
+| 5 | copy | 8 | on-page copy matches the files; craft-services heading and per-offer WhatsApp lines not used; "צילום בדרך" in English mode |
+| 6 | accessibility | 8 | menu focus trap/return, skip link, alt complete, reduced motion |
+| 7 | security + delivery | 9 | static, relative, 0 third-party on load |
+
+---
+
+mode: quick        round: 3        variant: interactive
+total: 71.2 / 75 (dims 1–7)        result: pass on 1–7; final result waits on dimension 8        hard_fails: []
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 9 | all claims match; partner card img-001; hero film not named |
+| 2 | mobile + performance | 10 | 671 KB (video now deferred), LCP 816 ms, CLS 0, 0 small targets |
+| 3 | booking CTA | 9 | as round 2 |
+| 4 | brand fit | 8 | 11 sections + Check question on Home |
+| 5 | copy | 8 | on-page copy matches; Hebrew titles in English mode fixed; craft-services heading and per-offer WhatsApp lines not used |
+| 6 | accessibility | 8 | unchanged from round 2 |
+| 7 | security + delivery | 9 | unchanged |
+
+---
+
+mode: quick        round: 3        variant: unique
+total: 68.5 / 75 (dims 1–7)        result: pass on 1–7; final result waits on dimension 8        hard_fails: []
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 9 | all claims match; Tal's partner card now img-001 (vid-033 caveat closed) |
+| 2 | mobile + performance | 9 | 399 KB, LCP 836 ms, CLS 0, 0 small targets |
+| 3 | booking CTA | 8 | JS on correct; JS off shows the hero, Check bar and WhatsApp, but only 4,748 chars of Home |
+| 4 | brand fit | 8 | 11 sections, set-piece |
+| 5 | copy | 9 | renders the copy files almost 1:1 (307/309 he, 353/354 en strings seen on pages); placeholders in `{key}` form per A26 |
+| 6 | accessibility | 8 | unchanged from round 2 |
+| 7 | security + delivery | 8 | static; most routes built at runtime by script |
+
+### The one sentence the human needs
+
+All three pass the critic's gates (calm 71.2, interactive 71.2, unique 68.5 of 75) inside budget with 0 third-party requests. unique is the only one whose pages carry the copy files nearly word for word, but it shows the least content with JavaScript off. calm is the only one that shows Tal from video frames rather than his confirmed photograph.

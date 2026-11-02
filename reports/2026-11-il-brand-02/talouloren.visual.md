@@ -104,3 +104,37 @@ Shots: re-shot after the rebuild into each mockup's `shots/` (desktop 1440, mobi
 3. **interactive**: the spotlight now works, held back by the door crops and raw price chips.
 
 **Result:** calm 8 pass, unique 8 pass, interactive 7 fail.
+
+## Round 3 — 2026-11-02 · visual-critic 0.2.0 (after 4e round 3, commit 54c5a97; copy A25–A28)
+
+Shots: re-shot into each mockup's `shots/` at 1440 and 390. Live checks used Playwright on a local server, with pointer moves, wheel scrolls and DOM reads; the live frames are scratch in the session scratchpad. The critic's and experience-critic's reports were not opened. Copy check: the header and bar CTA read "לבדיקה ללא תשלום" in all three (A25).
+
+### calm
+- The Partnership band is now Tal mid-gesture in the workshop, with face and hand readable (`calm/shots/desktop-sheet.png`, row 5, frame 1). That was the last muddy image, and it is fixed. Doors, ladder, price pills and the close are unchanged from round 2 and good.
+- **Score 8/10.** Pass. It beats the current site: yes.
+- **Notes (non-blocking):** the body stays quiet by design.
+
+### interactive
+- The doors are fixed (`desktop-03`): Launch shows the walker full-length with his head in frame, and Story shows the group shot with faces. Prices are now the designed pill "• המחיר יפורסם בקרוב". The live DOM read found no visible `{…}` token on the page.
+- **Live check:** the pointer at x≈450 lifts Tal's face, and the hero video plays (not paused).
+- Story's screaming group is still the loudest image on a "super high end" page, but it is on-concept (energy) and well cropped.
+- **Score 8/10.** Pass. It beats the current site: yes.
+- **Notes:** Karantina 700 stats remain the one loud moment, which is acceptable.
+
+### unique
+- **Phone hero, live at 390×844:** Tal's lit profile is now visible behind the headline in the first second. Fixed.
+- The duplicate partners section is gone: the set-piece frame 04 carries the partners, and the later section is bios only. Live frame 04 at 1440 shows Shahar's placeholder card at the same 4:5 size as Tal's photo.
+- **Live check, beam:** four 700 px wheel steps move the set-piece 01→04, with the cone swinging and dust drifting.
+- **New defect:** Tal's frame is now img-001 cut out of its white ground. The matte leaves a jagged white halo of chunks around the curls (live frame 04). It reads as a bad background removal on the one confirmed photo of Tal.
+- Placeholders still show as raw braced tokens in Plex (live DOM: `{check_minutes}`, `{price_story_sprint}`, `{price_launch_build}`, `{session_length}`, `{case_story_*_before}`), where calm and interactive now use the designed pill.
+- **Score 8/10.** Pass, with two polish fixes before build. It beats the current site: yes.
+- **Notes:**
+  1. Use img-001 un-matted: crop the head inside its own white-seamless rectangle, or grade the white to the card. Never a cut-out.
+  2. Replace the braced tokens with the pill used by the other two.
+
+### Round 3 ranking (visual only)
+1. **unique**: the signature beam on every width; the img-001 matte and the tokens are polish, not structure.
+2. **calm**: the most refined and Ritz-like.
+3. **interactive**: the live spotlight now carries it; the loudest of the three.
+
+**Result:** calm 8, interactive 8, unique 8. All pass dimension 8 and all beat talouloren.com.
