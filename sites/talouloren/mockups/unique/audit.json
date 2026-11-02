@@ -1,23 +1,23 @@
 {
  "slug": "talouloren",
  "variant": "unique",
- "measured_at": "2026-11-02T16:53:25.757Z",
+ "measured_at": "2026-11-02T17:09:57.827Z",
  "first_load": {
   "requests": 6,
   "hosts": [
    "localhost:8980"
   ],
   "third_party_hosts": [],
-  "bytes_total": 368719,
-  "bytes_html": 290654,
+  "bytes_total": 368766,
+  "bytes_html": 290701,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 0,
   "bytes_images": 78065,
   "largest_image_bytes": 29052,
-  "lcp_ms": 1792,
+  "lcp_ms": 1812,
   "cls": 0,
-  "dcl_ms": 1638
+  "dcl_ms": 1606
  },
  "scroll": {
   "early": {

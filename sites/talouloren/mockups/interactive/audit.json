@@ -1,7 +1,7 @@
 {
  "slug": "talouloren",
  "variant": "interactive",
- "measured_at": "2026-11-02T17:04:11.808Z",
+ "measured_at": "2026-11-02T17:11:45.600Z",
  "first_load": {
   "requests": 17,
   "hosts": [
@@ -15,7 +15,7 @@
   "bytes_fonts": 33292,
   "bytes_images": 264397,
   "largest_image_bytes": 75476,
-  "lcp_ms": 808,
+  "lcp_ms": 800,
   "cls": 0,
   "dcl_ms": 3202
  },

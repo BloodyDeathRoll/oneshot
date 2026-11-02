@@ -1,36 +1,35 @@
 {
  "slug": "talouloren",
  "variant": "calm",
- "measured_at": "2026-11-02T16:46:11.319Z",
+ "measured_at": "2026-11-02T17:11:13.379Z",
  "first_load": {
   "requests": 7,
   "hosts": [
-   "localhost:8987"
+   "localhost:8980"
   ],
   "third_party_hosts": [],
-  "bytes_total": 567516,
-  "bytes_html": 485601,
+  "bytes_total": 567517,
+  "bytes_html": 485602,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 0,
   "bytes_images": 81915,
   "largest_image_bytes": 24580,
-  "lcp_ms": 1256,
+  "lcp_ms": 1224,
   "cls": 0,
-  "dcl_ms": 3014
+  "dcl_ms": 2999
  },
  "scroll": {
   "early": {
-   "cls": 0.0082,
+   "cls": 0.008,
    "shifts": [
     {
-     "value": 0.0082,
-     "at_ms": 1218,
+     "value": 0.008,
+     "at_ms": 1186,
      "y": 0,
      "sources": [
       "div.hero-c",
-      "nav.seg",
-      "span.ring"
+      "nav.seg"
      ]
     }
    ]
