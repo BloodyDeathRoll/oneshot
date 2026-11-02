@@ -10,7 +10,7 @@
     "en"
   ],
   "tagline": "Success is Beautiful",
-  "closing": "מתחילים בבדיקה הממוקדת. שאלה לפני? כתבו לנו בוואטסאפ.",
+  "closing": "מתחילים בבדיקה ללא תשלום. שאלה לפני? כתבו לנו בוואטסאפ.",
   "featureLine": null,
   "copyBlocks": [
     {
@@ -95,7 +95,7 @@
     {
       "slug": "spotlight-check",
       "group": "lead",
-      "title": "בדיקה ממוקדת",
+      "title": "בדיקה ללא תשלום",
       "summary": "תמונת מצב אישית של העסק, בלי תשלום.",
       "body": "עונים על השאלות, ואנחנו מסתכלים גם על מה שכבר יש לכם ברשת. מזה יוצאת תמונת המצב: ציון מ־1 עד 5 בחמישה תחומים, שלושה דברים ששמנו לב אליהם, צעד ראשון, ודרך שאנחנו ממליצים עליה.",
       "format": "10 שאלות, שאלה אחת בכל מסך",
@@ -106,7 +106,7 @@
       "vat": null,
       "status": "ongoing",
       "dates": [],
-      "ctaText": "היי, יש לי שאלה על הבדיקה הממוקדת",
+      "ctaText": "היי, יש לי שאלה על הבדיקה ללא תשלום",
       "bookingUrl": null,
       "image": null,
       "page": false
@@ -565,10 +565,10 @@
       "menu": "תפריט",
       "close": "סגירה",
       "lang_switch": "English",
-      "header_button": "לבדיקה הממוקדת"
+      "header_button": "לבדיקה ללא תשלום"
     },
     "cta": {
-      "check": "מתחילים את הבדיקה הממוקדת",
+      "check": "מתחילים את הבדיקה ללא תשלום",
       "book": "לקביעת פגישת ייעוץ",
       "whatsapp": "כתבו לנו בוואטסאפ",
       "watch": "לצפייה",
@@ -607,7 +607,7 @@
       "doors_title": "שתי דלתות",
       "how": {
         "title": "איך מתחילים",
-        "step1": "בדיקה ממוקדת",
+        "step1": "בדיקה ללא תשלום",
         "step2": "פגישת ייעוץ",
         "step3_title": "הדרך שלכם",
         "step3_body": "תוכנית הפעולה מהפגישה מראה לאן ממשיכים: סיפור, השקה או שותפות."
@@ -747,7 +747,7 @@
         "voices_heading": "במילים שלהם",
         "voices_intro": "עשרות עסקים שמנוהלים בידי הבעלים שלהם ראו את המכירות עולות במאות אחוזים.",
         "end_heading": "הצעד הבא: פגישת ייעוץ עם שנינו",
-        "pain": "שם גדול על קיר לוגואים לא מספר הרבה. מה שמעניין הוא מה השתנה."
+        "pain": "השמות מוכרים. מה שמעניין הוא מה השתנה אצלם."
       },
       "about": {
         "headline": "טל ושחר",
@@ -774,7 +774,7 @@
       },
       "watch": {
         "headline": "לצפייה",
-        "intro": "שש סדרות קצרות. אחרי כל סרטון אפשר לעבור לבדיקה הממוקדת.",
+        "intro": "שש סדרות קצרות. אחרי כל סרטון אפשר לעבור לבדיקה ללא תשלום.",
         "series": [
           {
             "key": "flip",
@@ -808,7 +808,7 @@
           }
         ],
         "empty_series": "הפרקים הראשונים בדרך.",
-        "after_video": "מתחילים את הבדיקה הממוקדת",
+        "after_video": "מתחילים את הבדיקה ללא תשלום",
         "pain": "AI בכל מקום, ועצות מכל כיוון. קשה לדעת למי להקשיב."
       },
       "course": {
@@ -821,7 +821,7 @@
       },
       "check": {
         "intro": {
-          "title": "בדיקה ממוקדת",
+          "title": "בדיקה ללא תשלום",
           "meta": "10 שאלות · {check_minutes} דקות · בלי תשלום · תמונת מצב אישית",
           "start": "מתחילים"
         },
@@ -1030,7 +1030,7 @@
       }
     ],
     "video_library": {
-      "_note": "Video slots take an embed URL + poster (brief). Ids are dossier.videos[]; label = the video's own title, verbatim, plus a caption where the dossier names the person. Captions marked {name_to_confirm} wait for Shahar (dossier gaps 'testimonials.video (names)').",
+      "_note": "Video slots take an embed URL + poster (brief). Ids are dossier.videos[]; label = the video's own title, verbatim, plus a caption where the dossier names the person. Captions without a confirmed name read 'ישראל ישראלי' / 'Israel Israeli' until the partners edit them (brief A28).",
       "proof": [
         {
           "id": "vid-038",
@@ -1214,22 +1214,22 @@
         {
           "id": "vid-010",
           "label": "TESTIMONIALS MAGIC TALOU",
-          "caption": "{name_to_confirm}"
+          "caption": "ישראל ישראלי"
         },
         {
           "id": "vid-040",
           "label": "Talou Testimonial Film 1 HQ",
-          "caption": "{name_to_confirm}"
+          "caption": "ישראל ישראלי"
         },
         {
           "id": "vid-009",
           "label": "Talou Testimonial Film 2 HQ",
-          "caption": "{name_to_confirm}"
+          "caption": "ישראל ישראלי"
         },
         {
           "id": "vid-030",
           "label": "Talou Testimonial Film 3 HQ",
-          "caption": "{name_to_confirm}"
+          "caption": "ישראל ישראלי"
         }
       ],
       "boots": [
@@ -1264,7 +1264,7 @@
     "seo": {
       "home": {
         "title": "Talou L'oren · מיתוג אישי לעסק ובניית מותג אישי",
-        "description": "טל אורן ושחר נאור: בדיקה ממוקדת בלי תשלום, פגישת ייעוץ עם שנינו, ודרך לעסק שלכם, מסיפור ועד שותפות."
+        "description": "טל אורן ושחר נאור: בדיקה ללא תשלום, פגישת ייעוץ עם שנינו, ודרך לעסק שלכם, מסיפור ועד שותפות."
       },
       "story": {
         "title": "סיפור · מיתוג לעסקים קטנים · Talou L'oren",
@@ -1299,7 +1299,7 @@
         "description": "עשרה שיעורים מוקלטים, בקצב שלכם, לפי שיטת עשרת הצעדים."
       },
       "check": {
-        "title": "בדיקה ממוקדת · ייעוץ עסקי לעסקים קטנים בחינם · Talou L'oren",
+        "title": "בדיקה ללא תשלום · ייעוץ עסקי לעסקים קטנים · Talou L'oren",
         "description": "10 שאלות, ותמונת מצב אישית של העסק שלכם."
       }
     }

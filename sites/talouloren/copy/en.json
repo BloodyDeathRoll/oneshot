@@ -10,7 +10,7 @@
     "en"
   ],
   "tagline": "Success is Beautiful",
-  "closing": "Start with the Spotlight Check. A question first? Message us on WhatsApp.",
+  "closing": "Start with the Free Check. A question first? Message us on WhatsApp.",
   "featureLine": null,
   "copyBlocks": [
     {
@@ -95,7 +95,7 @@
     {
       "slug": "spotlight-check",
       "group": "lead",
-      "title": "Spotlight Check",
+      "title": "Free Check",
       "summary": "A personal snapshot of your business, free of charge.",
       "body": "You answer the questions, and we also look at what's already out there about you online. That becomes your snapshot: a score from 1 to 5 in five areas, three things we noticed, a first move, and the path we'd recommend.",
       "format": "10 questions, one per screen",
@@ -106,7 +106,7 @@
       "vat": null,
       "status": "ongoing",
       "dates": [],
-      "ctaText": "Hi, I have a question about the Spotlight Check",
+      "ctaText": "Hi, I have a question about the Free Check",
       "bookingUrl": null,
       "image": null,
       "page": false
@@ -565,10 +565,10 @@
       "menu": "Menu",
       "close": "Close",
       "lang_switch": "עברית",
-      "header_button": "Take the Spotlight Check"
+      "header_button": "Take the Free Check"
     },
     "cta": {
-      "check": "Start the Spotlight Check",
+      "check": "Start the Free Check",
       "book": "Book a Clarity Session",
       "whatsapp": "Message us on WhatsApp",
       "watch": "Watch",
@@ -607,7 +607,7 @@
       "doors_title": "Two doors",
       "how": {
         "title": "How it starts",
-        "step1": "Spotlight Check",
+        "step1": "Free Check",
         "step2": "Clarity Session",
         "step3_title": "Your path",
         "step3_body": "The action plan from the session shows where you go next: Story, Launch or Partnership."
@@ -747,7 +747,7 @@
         "voices_heading": "In their words",
         "voices_intro": "Dozens of owner-led businesses have seen sales rise by hundreds of percent.",
         "end_heading": "Next step: a Clarity Session with both of us",
-        "pain": "A big name on a logo wall doesn't tell you much. What matters is what changed."
+        "pain": "The names are familiar. What matters is what changed for them."
       },
       "about": {
         "headline": "Tal and Shahar",
@@ -774,7 +774,7 @@
       },
       "watch": {
         "headline": "Watch",
-        "intro": "Six short series. After every video you can go on to the Spotlight Check.",
+        "intro": "Six short series. After every video you can go on to the Free Check.",
         "series": [
           {
             "key": "flip",
@@ -808,7 +808,7 @@
           }
         ],
         "empty_series": "The first episodes are on their way.",
-        "after_video": "Start the Spotlight Check",
+        "after_video": "Start the Free Check",
         "pain": "AI everywhere, advice from every side. It's hard to know who to listen to."
       },
       "course": {
@@ -821,7 +821,7 @@
       },
       "check": {
         "intro": {
-          "title": "Spotlight Check",
+          "title": "Free Check",
           "meta": "10 questions · {check_minutes} minutes · free · a personal snapshot",
           "start": "Let's start"
         },
@@ -1030,7 +1030,7 @@
       }
     ],
     "video_library": {
-      "_note": "Video slots take an embed URL + poster (brief). Ids are dossier.videos[]; label = the video's own title, verbatim, plus a caption where the dossier names the person. Captions marked {name_to_confirm} wait for Shahar (dossier gaps 'testimonials.video (names)').",
+      "_note": "Video slots take an embed URL + poster (brief). Ids are dossier.videos[]; label = the video's own title, verbatim, plus a caption where the dossier names the person. Captions without a confirmed name read 'ישראל ישראלי' / 'Israel Israeli' until the partners edit them (brief A28).",
       "proof": [
         {
           "id": "vid-038",
@@ -1214,22 +1214,22 @@
         {
           "id": "vid-010",
           "label": "TESTIMONIALS MAGIC TALOU",
-          "caption": "{name_to_confirm}"
+          "caption": "Israel Israeli"
         },
         {
           "id": "vid-040",
           "label": "Talou Testimonial Film 1 HQ",
-          "caption": "{name_to_confirm}"
+          "caption": "Israel Israeli"
         },
         {
           "id": "vid-009",
           "label": "Talou Testimonial Film 2 HQ",
-          "caption": "{name_to_confirm}"
+          "caption": "Israel Israeli"
         },
         {
           "id": "vid-030",
           "label": "Talou Testimonial Film 3 HQ",
-          "caption": "{name_to_confirm}"
+          "caption": "Israel Israeli"
         }
       ],
       "boots": [
@@ -1264,7 +1264,7 @@
     "seo": {
       "home": {
         "title": "Talou L'oren · Personal branding for business owners",
-        "description": "Tal Oren and Shahar Naor: a free Spotlight Check, a Clarity Session with both of us, and a path for your business, from Story to Partnership."
+        "description": "Tal Oren and Shahar Naor: a Free Check, a Clarity Session with both of us, and a path for your business, from Story to Partnership."
       },
       "story": {
         "title": "Story · Branding for small businesses · Talou L'oren",
@@ -1299,7 +1299,7 @@
         "description": "Ten recorded lessons, at your own pace, following the ten-step method."
       },
       "check": {
-        "title": "Spotlight Check · Free business review for small businesses · Talou L'oren",
+        "title": "Free Check · Business review for small businesses · Talou L'oren",
         "description": "10 questions, and a personal snapshot of your business."
       }
     }
