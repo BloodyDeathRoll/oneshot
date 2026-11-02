@@ -57,7 +57,7 @@ Notation: `d.` = `dossier.json`. `p[n]` = paragraph n of a `body`. he and en car
 | [2] info · heading "ואז האור מסתובב" / "Then the light turns" | `d.business.brand_idea` ("the light turns to land on them") |
 | [2] p1 | `d.business.brand_idea` + `d.business.promise_ladder` (fixed words, in order) |
 | [3] about · heading | framing of `d.business.description` (find the story / build what makes it visible) |
-| [3] p1 "סיפור בלי מי שיבנה אותו…" | **framing**: an opinion line introducing why two partners; asserts no fact about anyone |
+| [3] p1 "סיפור שאף אחד לא בונה…" (humanizer 0.2.1; was "סיפור בלי מי שיבנה אותו…") | **framing**: an opinion line introducing why two partners; asserts no fact about anyone |
 | [3] p2 s1–s2 | `d.team[0].brings`, `d.team[1].brings` |
 | [3] p2 s3 "ביחד נדייק את החזון שלכם" / "Together we sharpen your vision" | `d.tone_old_site[1]` ("ביחד נדייק את החזון שלך", keep), in plural |
 
