@@ -156,3 +156,30 @@ Captured 2026-10-17/18 by the analyst's `sites` and `players` lanes. Home pages,
 - No `custom.md`, no agent `base.md`, no schema file. The schema gaps in draft B need their own proposal before the mutag-meitiv build (station 8).
 - `verticals/surf/` is untouched.
 - Screenshots behind these references are scratch and are deleted after the merge (`tools/clean-shots.mjs`).
+
+---
+
+## Addendum: run 2026-11-il-brand-02 (talouloren), 2026-11-02
+
+Added by the analyst (merger, station 2b) because `verticals/brand_design/` is still a stub and base.md asks the merger for a pack draft in that case. This proposal is still pending, so the second inbound run adds to it rather than opening a second pack proposal (`dossier/talouloren/industry/plan.md`, missing information 5). Claim IDs below point to `dossier/talouloren/industry/skeptic.md`. Nothing above this line changes.
+
+### To draft B (business types)
+
+- TalouLoren is a `brand_practice` with a studio's craft attached: two named partners, a free diagnostic (the Focused Check) leading to a paid first session, a course, a video library. No new type is proposed. The "Should have" column for `brand_practice` gains, as a hint for the harvester: **a diagnostic or intake flow** and **a video library** (the client's YouTube channel, testimonials, case films). (C-references-11, C-position-16, C-position-17)
+- Schema gaps to add to the separate schema proposal (no field added here): a multi-step intake (questions, options, progress) and its result page; testimonials with a video URL and poster; video series. The brief's CMS list names them (`brief/talouloren/brief.md`, "Tech").
+
+### To draft C (references): personal-brand, consultancy and partner-led sites
+
+| Site | What we like | Watch out | Claims |
+|---|---|---|---|
+| ashcroftlawfirm.com | Named partners as the product: a "LED BY" strip of portraits and titles in the hero; near-black #131313 with one gold; 4.4 MB | Section-snap scrolling fights long pages | C-references-06 |
+| brionycroft.com.au | Personal brand, dark, one copper accent, thin display serif, parallax cut-outs, scroll-progress line | 10.9 MB, a 48 s background video | C-references-04, C-references-10 |
+| niniaazzopardi.com | Person first ("Hi, I'm Ninia" + portrait), cycling hero line, logo wall second, numbered services | 32.5 MB of images | C-references-05 |
+| steelwavellc.com | Outline/fill display type, marquee, custom cursor, Motion reveals at 1.5–2.9 MB | — | C-references-07 |
+| porsche.com/international | Light/dark section steps at section edges, no animation library | 10–13 MB of HLS media | C-references-03 |
+| rnd.org.il business health check, he RTL | The working model for a Hebrew diagnostic: one question per screen, "1 / 8" counter, gate at the end, score page, one free next step, 1.09 MB | Fear-labelled score band ("מצב קריטי", critical state); the main site's stale countdowns | C-references-11, C-references-27 |
+| Porto Rocha, Order | Two-partner studios carrying big names as named project rows with one line each | Founders only in the news feed | C-references-23 |
+
+**Do not copy:** canvas-only text and 17 MB 3D scenes (igloo.inc); preloaders and 30 MB story sites (amuse-bouche.pt); countdowns, outcome percentages and "8-figure" claims (RND home, BBG). (C-references-01, C-references-08, C-references-27)
+
+**Rules these add:** Hebrew diagnostics state cost and payoff on the start screen (C-references-13); forward arrows point left and carousels inherit `rtl` (C-references-20); Hebrew sites in the set publish no `hreflang` and do not isolate Latin words, which a bilingual site must do (C-references-21).
