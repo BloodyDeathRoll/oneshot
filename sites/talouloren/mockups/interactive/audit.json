@@ -1,23 +1,23 @@
 {
  "slug": "talouloren",
  "variant": "interactive",
- "measured_at": "2026-11-02T17:44:27.435Z",
+ "measured_at": "2026-11-02T17:58:14.116Z",
  "first_load": {
-  "requests": 17,
+  "requests": 16,
   "hosts": [
    "localhost:8980"
   ],
   "third_party_hosts": [],
-  "bytes_total": 1205435,
-  "bytes_html": 330437,
+  "bytes_total": 670976,
+  "bytes_html": 333909,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 29504,
-  "bytes_images": 264397,
-  "largest_image_bytes": 75476,
-  "lcp_ms": 816,
+  "bytes_images": 307563,
+  "largest_image_bytes": 104172,
+  "lcp_ms": 808,
   "cls": 0,
-  "dcl_ms": 3198
+  "dcl_ms": 3429
  },
  "scroll": {
   "early": {
@@ -200,7 +200,7 @@
   "lang": "he"
  },
  "no_js": {
-  "text_length": 15788,
+  "text_length": 15376,
   "booking_links_reachable": 2,
   "visible_images": 61
  },

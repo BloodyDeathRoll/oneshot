@@ -250,7 +250,7 @@ function render(L) {
   </section>
 
   <section class="pband people-band" aria-labelledby="pband-h">
-    <div class="bg" data-px>${img('workshop-1920', L === 'he' ? 'טל אורן עומד מול חדר מלא אנשים בסדנה, ידיו פתוחות, בשחור־לבן' : 'Tal Oren in front of a full workshop room, arms open, black and white', 1920, 1080, ' srcset="img/workshop-phone.webp 864w, img/workshop-1920.webp 1920w" sizes="100vw"')}</div>
+    <div class="bg" data-px>${img('workshop-1920', L === 'he' ? 'טל אורן מדבר מול קהל בסדנה, ליד רול־אפ של המרכז לליווי עסקים, בשחור־לבן' : 'Tal Oren talking to a workshop audience beside a business-centre roll-up banner, black and white', 1920, 1080, ' srcset="img/workshop-phone.webp 864w, img/workshop-1920.webp 1920w" sizes="100vw"')}</div>
     <div class="wrap"><div class="txt">
       <h2 id="pband-h">${T(X.home.partnership_band.heading)}</h2>
       <p class="sum">${T(S.partnership.summary)}</p>
@@ -293,7 +293,7 @@ function render(L) {
   const pp = X.pages.partnership, pb = paras(S.partnership.body)
   const partnership = `
   <section class="pband people-band page-top" style="padding-top:var(--header)" aria-labelledby="pp-h">
-    <div class="bg" data-px>${img('workshop-1920', L === 'he' ? 'טל אורן עומד מול חדר מלא אנשים בסדנה, ידיו פתוחות, בשחור־לבן' : 'Tal Oren in front of a full workshop room, arms open, black and white', 1920, 1080, ' srcset="img/workshop-phone.webp 864w, img/workshop-1920.webp 1920w" sizes="100vw"')}</div>
+    <div class="bg" data-px>${img('workshop-1920', L === 'he' ? 'טל אורן מדבר מול קהל בסדנה, ליד רול־אפ של המרכז לליווי עסקים, בשחור־לבן' : 'Tal Oren talking to a workshop audience beside a business-centre roll-up banner, black and white', 1920, 1080, ' srcset="img/workshop-phone.webp 864w, img/workshop-1920.webp 1920w" sizes="100vw"')}</div>
     <div class="wrap"><div class="txt"><p class="kicker">${T(S.partnership.title)}</p><h1 id="pp-h" class="display" style="font-size:clamp(40px,4.6vw,66px);line-height:1.1">${T(pp.headline)}</h1>
       <p class="sum">${T(S.partnership.summary)}</p>${btnBook()}</div></div>
   </section>
@@ -566,6 +566,8 @@ const html = `<!doctype html>
 <meta name="description" content="${esc(he.extras.seo.home.description)}">
 <meta name="theme-color" content="#0f0f0f">
 <style>${css}</style>
+<script>/* hold the hero text until the inlined fonts are decoded, so the headline never reflows (scroll CLS) */
+(function(r){r.classList.add('fonts-wait');var go=function(){r.classList.remove('fonts-wait')};if(document.fonts&&document.fonts.ready)document.fonts.ready.then(go);setTimeout(go,1200)})(document.documentElement)</script>
 </head>
 <body>
 <div id="app">${render('he')}</div>

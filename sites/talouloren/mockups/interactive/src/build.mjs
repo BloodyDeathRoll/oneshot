@@ -60,7 +60,7 @@ const shaharFrame = (big = false) => `
   <div class="partner partner-sn${big ? ' big' : ''}" data-partner>
     <div class="frame ph-frame" role="img" aria-label="Shahar Naor, portrait coming">
       <span class="sq" aria-hidden="true"></span>
-      <span class="ph-label"><span lang="he">צילום בדרך</span> · <span lang="en" dir="ltr">Portrait coming</span></span>
+      <span class="ph-label"><span lang="he">צילום בדרך</span><span class="sep"> · </span><span lang="en" dir="ltr">Portrait coming</span></span>
     </div>
     <div class="p-cap">${T('team.1.name', 'h3', 'class="p-name"')}${T('team.1.role', 'p', 'class="p-role"')}</div>
   </div>`;
@@ -160,7 +160,7 @@ const home = `
     <div class="wrap">
       ${T('x.home.doors_title', 'h2', 'class="h-sec" id="h-doors"')}
       <div class="door-grid">
-        ${[[2, 'story', 'door-story', 800, 1000, 'A group shoot in black and white: four people pulling faces at the camera, one laughing with his mouth wide open'], [3, 'launch', 'door-launch', 796, 995, 'A man in a long coat walking past a street mural, black and white']].map(([i, slug, img, w, h, alt]) => `
+        ${[[2, 'story', 'door-story', 1250, 1000, 'A group shoot in black and white: four people pulling faces at the camera, one laughing with his mouth wide open'], [3, 'launch', 'door-launch', 1244, 995, 'A man in a long coat walking past a street mural, black and white']].map(([i, slug, img, w, h, alt]) => `
         <article class="door" data-spot-card>
           <div class="door-img"><img src="img/${img}.webp" width="${w}" height="${h}" loading="lazy" decoding="async" alt="${alt}"></div>
           <div class="door-txt">
@@ -181,7 +181,7 @@ const home = `
       <ol class="steps" role="list">
         <li class="step step-1"><span class="n">1</span>${T('x.home.how.step1', 'h3')}${T('services.0.summary', 'p')}
           <div class="q3">
-            <p class="q3-n">${T('x.pages.check.progress', 'span', 'data-n-fill="3"').replace('<mark class="ph">{n}</mark>', '3')}</p>
+            <p class="q3-n"><span data-t="x.pages.check.progress" data-n-fill="3">${trHtml(val('x.pages.check.progress').replace('{n}', '3'))}</span></p>
             ${T('x.pages.check.questions.2.q', 'p', 'class="q3-q"')}
             <div class="opts">${q3opts}</div>
           </div>
@@ -365,6 +365,10 @@ const about = `
 
 // ---------- BRANDS
 const brandFilms = he.extras.video_library.proof.map((v, i) => ({ ...v, i })).filter((v) => v.page === 'brands');
+// /brands film tiles: the film's own title, but in English never a Hebrew title: a mixed title keeps its Latin
+// words (suffix ~), an all-Hebrew title falls back to the client's name from the logo wall
+const brandIdx = { 'vid-021': 9, 'vid-006': 5, 'vid-002': 12 };
+const brandFilmKey = (v) => brandIdx[v.id] != null ? `clientLogos.${brandIdx[v.id]}.name` : `x.video_library.proof.${v.i}.label~`;
 const brandsF = (k) => `<label class="fl"><input name="${k}" ${k === 'email' ? 'type="email"' : k === 'phone' ? 'type="tel"' : 'type="text"'} placeholder=" " required>${T(`x.pages.brands.form.${k}`)}</label>`;
 const brands = `
 <section class="view" id="brands" aria-labelledby="h-brands">
@@ -374,7 +378,7 @@ const brands = `
   </section>
   <section class="wrap">
     ${T('x.pages.brands.films_heading', 'h2', 'class="h-sec"')}
-    <ul class="film-row" role="list">${brandFilms.map((v) => `<li><button class="film-tile" type="button" data-video="${yt[v.id]}" data-vid="${v.id}"><span class="play">${I.play}</span>${T(`x.video_library.proof.${v.i}.label`, 'span', 'lang="en" dir="auto"')}</button></li>`).join('')}</ul>
+    <ul class="film-row" role="list">${brandFilms.map((v) => `<li><button class="film-tile" type="button" data-video="${yt[v.id]}" data-vid="${v.id}"><span class="play">${I.play}</span>${T(brandFilmKey(v), 'span', 'dir="auto"')}</button></li>`).join('')}</ul>
   </section>
   <section class="wrap two">
     <div>${T('x.pages.brands.services_heading', 'h2', 'class="h-sec"')}${T('services.6.summary', 'p', 'class="lead"')}${T('services.6.body', 'p', 'class="note"')}</div>
@@ -393,7 +397,7 @@ const series = he.extras.pages.watch.series;
 const proofLib = he.extras.video_library.proof;
 const pIdx = (id) => proofLib.findIndex((v) => v.id === id);
 const seriesCards = {
-  proof: [['amdocs', 'vid-038'], ['maccabi', 'vid-022'], ['seat', 'vid-055'], ['park-bavli', 'vid-020'], ['wella', 'vid-029'], ['calvin-klein', 'vid-042']].map(([k, id]) => vCard(`watch-${k}`, id, `x.video_library.proof.${pIdx(id)}.label`)).join(''),
+  proof: [['amdocs', 'vid-038'], ['maccabi', 'vid-022'], ['seat', 'vid-055'], ['park-bavli', 'vid-020'], ['wella', 'vid-029'], ['calvin-klein', 'vid-042']].map(([k, id]) => vCard(`watch-${k}`, id, `caseStudies.${cases.findIndex((c) => c.slug === k)}.client`)).join(''),  // the client's name, localized (the film titles are verbatim Hebrew/English)
   voices: voiceRow,
 };
 const watch = `
@@ -499,8 +503,8 @@ const snapshot = `
       </li>`).join('')}</ul>
   </section>
   <section class="wrap two">
-    <div>${T('x.pages.snapshot.noticed_title', 'h2', 'class="h-sec"')}<ol class="obs" role="list"><li>${trHtml('{observation_1}')}</li><li>${trHtml('{observation_2}')}</li><li>${trHtml('{observation_3}')}</li></ol></div>
-    <div>${T('x.pages.snapshot.first_move_title', 'h2', 'class="h-sec"')}<p class="lead">${trHtml('{first_move}')}</p></div>
+    <div>${T('x.pages.snapshot.noticed_title', 'h2', 'class="h-sec"')}<ol class="obs" role="list"><li data-raw="{observation_1}">${trHtml('{observation_1}')}</li><li data-raw="{observation_2}">${trHtml('{observation_2}')}</li><li data-raw="{observation_3}">${trHtml('{observation_3}')}</li></ol></div>
+    <div>${T('x.pages.snapshot.first_move_title', 'h2', 'class="h-sec"')}<p class="lead" data-raw="{first_move}">${trHtml('{first_move}')}</p></div>
   </section>
   <section class="wrap">
     ${T('x.pages.snapshot.path_title', 'h2', 'class="h-sec"')}
@@ -595,10 +599,11 @@ const footer = `
       <ul class="socials" role="list">${he.socialLinks.map((s) => `<li><a class="ic" href="${s.url}" target="_blank" rel="noopener" aria-label="${s.platform}">${social[s.platform]}</a></li>`).join('')}</ul>
     </div>
   </div>
-  <div class="wrap ftr-legal"><a href="#privacy">${T('x.footer.privacy')}</a><a href="#accessibility">${T('x.footer.accessibility')}</a><p data-year>${trHtml(val('x.footer.rights')).replace('<mark class="ph">{year}</mark>', String(new Date().getFullYear()))}</p></div>
+  <div class="wrap ftr-legal"><a href="#privacy">${T('x.footer.privacy')}</a><a href="#accessibility">${T('x.footer.accessibility')}</a><p data-year>${trHtml(val('x.footer.rights').replace('{year}', String(new Date().getFullYear())))}</p></div>
 </footer>
 <div class="bar" aria-label="Talou L'oren">
-  <a class="btn btn-gold" href="#check">${T('x.nav.header_button')}</a>
+  <a class="btn btn-gold bar-check" href="#check">${T('x.nav.header_button')}</a>
+  <a class="btn btn-gold bar-book" href="#book" data-book hidden>${T('x.cta.book')}</a>
   <a class="bar-wa" ${WA('x.msg.whatsapp_prefill')} target="_blank" rel="noopener" ${A('aria-label', 'x.cta.whatsapp')}>${I.wa}</a>
 </div>
 <a class="wa-chip" ${WA('x.msg.whatsapp_prefill')} target="_blank" rel="noopener" ${A('aria-label', 'x.cta.whatsapp')}>${I.wa}</a>

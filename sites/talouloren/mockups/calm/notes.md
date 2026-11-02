@@ -104,6 +104,22 @@ Measured after: first load 547 KB, LCP 1.06 s, CLS 0, early-scroll CLS 0.008, se
 `check-design` ok. Kept, as both critics asked: the hero, the type pair, the single light band, the "led by" strip, the white
 snapshot print, the bar hidden inside the Check.
 
+**Round 6 — copy A25–A28 and the 4f round-2 notes** (`shots/round-6`). Rebuilt from the copy of commit 2bbbf0f: "בדיקה ללא תשלום" /
+"Free Check" everywhere (header and bar buttons, CTAs, How step 1, Check intro, closing line, watch intro, titles), the new /work
+pain line, testimonial captions "ישראל ישראלי" / "Israel Israeli". Grepped the built page in both languages on every route: no
+"ממוקדת", "Spotlight Check" or `{name_to_confirm}` left. Round-2 notes:
+- **Partnership band**: recut from vid-027 at 20 s, Tal facing the room mid-sentence, face sharp; desktop anchors the frame top-left
+  so his face sits clear of the header and the copy sits on a solid dark field on the far (right) side; phone uses its own 4:5 crop
+  centred on him with the copy below the picture (the desktop gradient no longer leaks onto the phone).
+- **Laptop text**: body 20/34 from 1100 px, card and bio text 20 px, notes, meta, footer 18 px, labels 16 px; content width up to
+  1400 px.
+- **Footer**: the "Success is Beautiful" line is full width and centred at display size (a later footer rule had shrunk it to
+  18 px); three columns spread across the full width, the menu in two columns, contact buttons stacked.
+- Scroll CLS: the hero text now waits for the inlined fonts before it shows (≤ 1.2 s, visibility only), early CLS 0.008, settled 0.
+Checked: 16 routes × 2 languages × 1440 / 1280 / 390, no overflow; first load 546 KB, LCP ≈ 1.1 s, 0 tap targets under 44 px,
+`check-design` ok. Nothing that passed was changed: hero, type pair, light band, doors, placeholders as marks, Wella work band,
+menu focus contract, skip link, phone-bar switch after the Check.
+
 ## images
 
 All `business-owned` (dossier `assets/index.json`); none drawn wider than its source.
@@ -116,7 +132,7 @@ All `business-owned` (dossier `assets/index.json`); none drawn wider than its so
 | tal-portrait | vid-036 frame at 41 s, 4:5 | partners, about |
 | door-story / door-launch | img-025 / img-029, 4:5 crops 800×1000 (native) | doors, /story, /launch |
 | band-1920 / band-phone | img-019 (2000 px) | Wella work band before Proof (round 5) |
-| workshop-1920 / workshop-phone | vid-027 frame at 27 s (1920) | partnership band, /partnership hero (round 5) |
+| workshop-1920 / workshop-phone | vid-027 frame at 20 s (1920) | partnership band, /partnership hero (rounds 5–6) |
 | sn-pale-force / sn-coca-cola / sn-privex | img-107 / img-110 / img-104 (Shahar's Behance covers) | Shahar's work strip |
 | case-amdocs / -maccabi / -seat / -park-bavli | frames of vid-038 / 022 / 055 / 020 | case cards, case pages |
 | w-* | frames of vid-029, 060, 042, 013, 058, 024, 023 | /work rows, case pages |
@@ -138,9 +154,9 @@ concept says). No stock.
 - **Course purchase** — no checkout page in the copy or the dossier; "לרכישת הקורס" opens WhatsApp with the course's own
   `ctaText` (Cardcom is the brief's tool, mocked nowhere).
 - **Booking slots and the week** are interface mock-ups (times are not facts); payment is labelled "תשלום לדוגמה" and posts nowhere.
-- **Video testimonial names** for vid-010/040/009/030 — `{name_to_confirm}` chips (copy).
+- **Video testimonial names** for vid-010/040/009/030 — the copy's stand-in "ישראל ישראלי" / "Israel Israeli" (A27).
 - **Brand logos** — set as type (white-ground 200 px JPEGs would look pasted on black).
-- **English "Focused Check" vs "Spotlight Check"** (review N1) — the English copy as passed says "Spotlight Check".
+- **Check name** — settled by A25: "בדיקה ללא תשלום" / "Free Check" (round 6).
 
 ## conflicts
 

@@ -1,23 +1,23 @@
 {
  "slug": "talouloren",
  "variant": "unique",
- "measured_at": "2026-11-02T17:45:06.125Z",
+ "measured_at": "2026-11-02T17:57:31.305Z",
  "first_load": {
   "requests": 6,
   "hosts": [
    "localhost:8980"
   ],
   "third_party_hosts": [],
-  "bytes_total": 382461,
-  "bytes_html": 297450,
+  "bytes_total": 399091,
+  "bytes_html": 298308,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 0,
-  "bytes_images": 85011,
+  "bytes_images": 100783,
   "largest_image_bytes": 29052,
-  "lcp_ms": 832,
+  "lcp_ms": 844,
   "cls": 0,
-  "dcl_ms": 2066
+  "dcl_ms": 2140
  },
  "scroll": {
   "early": {
@@ -31,7 +31,7 @@
  },
  "booking": {
   "external_booking_hrefs": [
-   "https://wa.me/972504635536?text=%D7%94%D7%99%D7%99%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%94%D7%91%D7%93%D7%99%D7%A7%D7%94%20%D7%94%D7%9E%D7%9E%D7%95%D7%A7%D7%93%D7%AA",
+   "https://wa.me/972504635536?text=%D7%94%D7%99%D7%99%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%94%D7%91%D7%93%D7%99%D7%A7%D7%94%20%D7%9C%D7%9C%D7%90%20%D7%AA%D7%A9%D7%9C%D7%95%D7%9D",
    "https://shaharnaor.com/",
    "https://wa.me/972504635536?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%20Talou%20L%27oren%20%D7%95%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94",
    "https://www.instagram.com/talou_loren/",
@@ -44,7 +44,7 @@
   "drawer_triggers": 0,
   "triggers_are_links": true,
   "primary_above_fold": true,
-  "tapped": "https://wa.me/972504635536?text=%D7%94%D7%99%D7%99%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%94%D7%91%D7%93%D7%99%D7%A7%D7%94%20%D7%94%D7%9E%D7%9E%D7%95%D7%A7%D7%93%D7%AA"
+  "tapped": "https://wa.me/972504635536?text=%D7%94%D7%99%D7%99%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%94%D7%91%D7%93%D7%99%D7%A7%D7%94%20%D7%9C%D7%9C%D7%90%20%D7%AA%D7%A9%D7%9C%D7%95%D7%9D"
  },
  "keyboard": {
   "drawer_opens": null,
@@ -53,7 +53,7 @@
   "note": "no drawer; every action is a plain link"
  },
  "a11y": {
-  "images": 15,
+  "images": 14,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 1,
   "tapables": 53,
@@ -88,9 +88,9 @@
   "lang": "he"
  },
  "no_js": {
-  "text_length": 4774,
+  "text_length": 4748,
   "booking_links_reachable": 1,
-  "visible_images": 14
+  "visible_images": 13
  },
  "reduced_motion": {
   "canvases": 1,

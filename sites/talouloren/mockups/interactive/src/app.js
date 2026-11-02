@@ -8,13 +8,15 @@
   var store = { get: function (k) { try { return JSON.parse(sessionStorage.getItem(k)); } catch (e) { return null; } },
     set: function (k, v) { try { sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
   var lang = 'he';
+  var th = function (s) { return trHtml(s, lang); };
   var t = function (k) { var v = COPY[lang][k]; return v == null ? '' : v; }; // COPY holds resolved values per key (built by build.mjs)
 
   /* ---------- language toggle (he <-> en), every visible string from copy/<locale>.json */
   function setLang(l) {
     lang = l; root.lang = l; root.dir = l === 'he' ? 'rtl' : 'ltr';
-    $$('[data-t]').forEach(function (e) { var v = t(e.dataset.t); if (e.dataset.nFill) v = v.replace('{n}', e.dataset.nFill); e.innerHTML = trHtml(v); });
-    $$('[data-tp]').forEach(function (e) { e.innerHTML = t(e.dataset.tp).split(/\n\s*\n/).map(function (p) { return '<p>' + trHtml(p) + '</p>'; }).join(''); });
+    $$('[data-t]').forEach(function (e) { var v = t(e.dataset.t); if (e.dataset.nFill) v = v.replace('{n}', e.dataset.nFill); e.innerHTML = th(v); });
+    $$('[data-tp]').forEach(function (e) { e.innerHTML = t(e.dataset.tp).split(/\n\s*\n/).map(function (p) { return '<p>' + th(p) + '</p>'; }).join(''); });
+    $$('[data-raw]').forEach(function (e) { e.innerHTML = th(e.dataset.raw); });
     $$('[data-ta]').forEach(function (e) { var p = e.dataset.ta.split(':'); e.setAttribute(p[0], t(p[1])); });
     $$('[data-wa]').forEach(function (e) { e.href = e.href.split('?')[0] + '?text=' + encodeURIComponent(t(e.dataset.wa)); });
     $('[data-lang]').lang = l === 'he' ? 'en' : 'he';
@@ -33,6 +35,9 @@
     views.forEach(function (x) { x.classList.toggle('on', x === v); });
     var changed = current !== v; current = v;
     d.body.classList.toggle('check-on', v.id === 'check');
+    // after the Check the next step is the session: the phone bar switches from the Check to booking
+    var after = v.id === 'thanks' || v.id === 'snapshot' || v.id === 'booked';
+    $('.bar-check').hidden = after; $('.bar-book').hidden = !after;
     $$('.nav a').forEach(function (a) { a.toggleAttribute('aria-current', a.getAttribute('href') === '#' + v.id || (v.id.indexOf('work-') === 0 && a.getAttribute('href') === '#work')); });
     var seo = { home: 'home', story: 'story', launch: 'launch', partnership: 'partnership', work: 'work', about: 'about', brands: 'brands', watch: 'watch', course: 'course', check: 'check' }[v.id];
     d.title = seo ? t('x.seo.' + seo + '.title') : ((($('h1', v) || {}).textContent || '') + ' · Talou L\'oren');
@@ -99,14 +104,18 @@
   var hv = $('#hero-video');
   var saveData = navigator.connection && navigator.connection.saveData;
   if (hv && !RM && !saveData) {
-    addEventListener('load', function () {
-      setTimeout(function () {
+    var started = false, startVideo = function () {
+      if (started) return; started = true;
+      ['pointermove', 'pointerdown', 'scroll', 'keydown', 'touchstart'].forEach(function (ev) { removeEventListener(ev, startVideo); });
+      (function () {
         var m = matchMedia('(max-width: 860px)').matches ? hv.dataset.srcM : hv.dataset.srcD;
         hv.innerHTML = '<source src="' + m + '.webm" type="video/webm"><source src="' + m + '.mp4" type="video/mp4">';
         hv.load(); hv.play().then(function () { hv.classList.add('playing'); }).catch(function () {});
         hv.addEventListener('playing', function () { hv.classList.add('playing'); });
-      }, 300);
-    });
+      })();
+    };
+    ['pointermove', 'pointerdown', 'scroll', 'keydown', 'touchstart'].forEach(function (ev) { addEventListener(ev, startVideo, { passive: true }); });
+    addEventListener('load', function () { if (matchMedia('(min-width: 861px)').matches) setTimeout(startVideo, 8000); });
   }
 
   /* ---------- per-card light: doors and case cards follow the pointer */
@@ -285,10 +294,11 @@
   /* ---------- values the visitor typed, shown back on thanks / snapshot / booked */
   function fillDynamic() {
     var biz = (ans.q1 || '').split(/[,،]/)[0].trim(), first = (ans.name || '').trim().split(/\s+/)[0];
-    var h = $('[data-bizname]'); h.innerHTML = biz ? trHtml(biz) : trHtml(t('x.pages.snapshot.title'));
-    var th = $('#thanks h1'); th.innerHTML = trHtml(first ? t('x.pages.thanks.title').replace('{first_name}', first) : t('x.pages.thanks.title'));
+    var h = $('[data-bizname]'); h.innerHTML = biz ? th(biz) : th(t('x.pages.snapshot.title'));
+    var thh = $('#thanks h1'); thh.innerHTML = th(first ? t('x.pages.thanks.title').replace('{first_name}', first) : t('x.pages.thanks.title'));
     var b = store.get('tl-booked'), bk = $('[data-booked]');
-    if (b) { var dt = new Date(b.date); bk.innerHTML = trHtml(t('x.pages.booked.body').replace('{date}', dt.toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB', { day: 'numeric', month: 'long' })).replace('{time}', b.time)); }
+    if (!b) bk.innerHTML = th(t('x.pages.booked.body'));
+    if (b) { var dt = new Date(b.date); bk.innerHTML = th(t('x.pages.booked.body').replace('{date}', dt.toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB', { day: 'numeric', month: 'long' })).replace('{time}', b.time)); }
     $$('[data-bookform]').forEach(function (f) { if (f.redraw) f.redraw(); });
   }
 

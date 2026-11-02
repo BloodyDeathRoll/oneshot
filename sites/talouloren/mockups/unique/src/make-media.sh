@@ -33,7 +33,6 @@ ff -ss 43.05 -t 4.3 -i "$S36" -vf "setpts=1.4*PTS,$CROP,fps=25,format=yuv420p" -
 ff -ss 43.05 -t 4.3 -i "$S36" -vf "setpts=1.4*PTS,$CROP,fps=25,format=yuv420p" -an -c:v libx264 -preset slow -b:v 1100k -maxrate 1300k -bufsize 2M -movflags +faststart "$D/video/stage-m.mp4"
 ff -ss 45 -i "$S36" -frames:v 1 "$T/stage.png"
 ff -ss 63 -i "$S36" -frames:v 1 "$T/profile.png"      # Tal in profile, half his face lit
-ff -ss 14 -i "$(src 033)" -frames:v 1 "$T/tal033.png"  # vid-033: Tal close on pure black
 ff -ss 28 -i "$(src 027)" -frames:v 1 "$T/band.png"     # vid-027: Tal at the workshop, arms open to the room
 
 # ---- posters of the films used in slots (embed URL + poster). Frame times picked from the sheets.
@@ -71,10 +70,9 @@ def out(im, name, width, q=78):
     print(name, im.size, os.path.getsize(f'{O}/{name}.webp') // 1024, 'KB')
 # stage: the loop's poster and the profile still (first screen, in the beam's pool)
 st = load(f'{T}/stage.png'); out(st, 'stage-d', 1920, 72); out(crop(st, 4/5, .56), 'stage-m', 720, 74)
-pr = load(f'{T}/profile.png'); out(pr, 'profile-d', 1920, 72); out(crop(pr, 4/5, .66), 'profile-m', 720, 74)
+pr = load(f'{T}/profile.png'); out(pr, 'profile-d', 1920, 72); out(ImageEnhance.Brightness(crop(pr, 4/5, .87)).enhance(1.35), 'profile-m', 720, 76)   # round 8: whole face in frame, lifted for the phone
 # partners: Tal = vid-033 still 4:5 (864x1080 around his face); img-001 head crop for /about
-out(crop(load(f'{T}/tal033.png'), 4/5, .62), 'tal-033', 800, 80)
-out(load(f'{A}/img-001.jpg').crop((0, 0, 1080, 560)), 'tal-001', 1080, 80)
+out(load(f'{A}/img-001.jpg').crop((376, 12, 784, 522)), 'tal-001-p', 408, 84)   # round 8: 4:5 head crop above the baked signature, the only confirmed photo of Tal
 # Shahar's work strip, one ratio (4:3), kept in colour, small
 for i in ('107', '110', '105'): out(crop(load(f'{A}/img-{i}.jpg'), 4/3), f'work-{i}', 640, 78)
 # full-bleed and route heroes, never past native width

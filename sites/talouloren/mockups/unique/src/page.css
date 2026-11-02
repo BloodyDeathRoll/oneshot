@@ -520,3 +520,12 @@ main:empty{min-height:100vh}
 .ph-hero{z-index:0}
 h1.hero-t{min-height:2.24em;display:flex;align-items:center;justify-content:center}
 @media (max-width:760px){h1.hero-t{min-height:3.36em}}
+
+/* round 8 */
+@media (min-width:1100px){body{font-size:18.5px}.lead{font-size:22px}.cell p{font-size:17px}.bio p{font-size:18px}.facts{font-size:18px}.door-btn .s{font-size:19px}}
+.ph-partners .duo .frame{height:auto;width:min(100%,calc(46vh * .8));max-height:none;aspect-ratio:4/5}
+.ph-partners .duo>div{display:flex;flex-direction:column;align-items:center}
+.case-t .item{transition:opacity .22s var(--ease),transform .22s var(--ease),visibility 0s .22s}
+.case-t .item.on{transition:opacity .45s var(--ease) .24s,transform .45s var(--ease) .24s,visibility 0s .24s}
+@media (max-width:760px){.m-profile{--px:62%;--py:36%;object-position:60% 30%}}
+.pair .bio h3{margin-top:0}

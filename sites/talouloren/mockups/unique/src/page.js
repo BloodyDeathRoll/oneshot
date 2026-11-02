@@ -169,7 +169,7 @@ function home() {
     <div class="ph ph-partners" data-ph="3"><div class="inner">
       <h2>${t(cb[3].heading)}</h2>
       <div class="duo">
-        <div><div class="frame">${img('tal-033', A.tal033, '', 800, 1000)}</div><div class="who"><b>${t(tal.name)}</b><span>${t(tal.role)}</span></div></div>
+        <div><div class="frame">${img('tal-001-p', A.tal001, '', 408, 510)}</div><div class="who"><b>${t(tal.name)}</b><span>${t(tal.role)}</span></div></div>
         <div>${shFrame()}<div class="who"><b>${t(sh.name)}</b><span>${t(sh.role)}</span></div></div>
       </div></div></div>
     <div class="ph ph-check" data-ph="4"><div class="inner">
@@ -228,8 +228,8 @@ function home() {
   <h2 class="sec-t" id="partners-t">${t(H.partners_title)}</h2>
   <div class="split" style="margin-top:10px"><p class="lead" style="margin:0">${t(cb[3].body.split(/\n\n/)[0])}</p><p class="muted" style="margin:0">${t(cb[3].body.split(/\n\n/)[1] || '')}</p></div>
   <div class="pair">
-    <div class="bio"><div class="frame">${img('tal-033', A.tal033, '', 800, 1000)}</div><h3>${t(tal.name)}</h3><p class="role">${t(tal.role)}</p><p>${t(tal.bio)}</p></div>
-    <div class="bio">${shFrame(true)}<h3>${t(sh.name)}</h3><p class="role">${t(sh.role)}</p><p>${t(sh.bio)}</p>
+    <div class="bio"><h3>${t(tal.name)}</h3><p class="role">${t(tal.role)}</p><p>${t(tal.bio)}</p></div>
+    <div class="bio"><h3>${t(sh.name)}</h3><p class="role">${t(sh.role)}</p><p>${t(sh.bio)}</p>
       <div class="strip">${img('work-107', A.w107, '', 640, 480)}${img('work-110', A.w110, '', 640, 480)}${img('work-105', A.w105, '', 640, 480)}</div>
       <p class="strip-n">${t(H.proof.nbc_note)}</p>
       <a class="link-out btn btn-ghost btn-sm" href="${esc(sh.url)}" target="_blank" rel="noopener"><span lang="en" dir="ltr">shaharnaor.com</span></a></div>
@@ -327,7 +327,7 @@ function initFlip() {
     pains.forEach((li, i) => { li.classList.toggle('lit', step >= i && step < i + 1.6); li.classList.toggle('done', step >= i + 1.6); });
     words.forEach((w, i) => { const q = ease(ramp(p, .42 + i * .02, .45 + i * .022)); w.style.transform = `translateY(${((1 - q) * 105).toFixed(1)}%)`; });
     const turn = ease(ramp(p, .22, .44));
-    prof.style.opacity = (((phone() ? .7 : .62) + (phone() ? .3 : .38) * turn) * (1 - ramp(p, .38, .47))).toFixed(3);
+    prof.style.opacity = (((phone() ? .86 : .62) + (phone() ? .14 : .38) * turn) * (1 - ramp(p, .38, .47))).toFixed(3);
     if (p > .2) loadVideo();
     stage.style.setProperty('--glare', (1 - ease(ramp(p, .24, .42))).toFixed(3)); stage.style.setProperty('--turn', turn.toFixed(3));
     stage.style.setProperty('--part', band(p, .62, .68, .82, .86).toFixed(3)); stage.style.setProperty('--chk', ramp(p, .84, .9).toFixed(3));
@@ -398,9 +398,16 @@ function openVid(id, vert) {
 // ---------- route pages ----------
 const rhero = (title, lead, pic_, alt, short) => `<header class="rhero${short ? ' short' : ''}">${pic_ ? pic(pic_, pic_ + '-m', alt, 'pic', false) : ''}<div class="wrap"><h1>${t(title)}</h1>${lead ? `<p class="lead">${t(lead)}</p>` : ''}</div></header>`;
 const endcall = (heading, kind) => `<section class="endcall"><div class="wrap"><h2>${t(heading)}</h2><div class="acts">${kind === 'book' ? bookBtn() : goldCheck(X.cta.check)}${waBtn(kind === 'book' ? svc('clarity-session').ctaText : X.msg.whatsapp_prefill)}</div></div></section>`;
+const HEB = /[\u0590-\u05FF]/;
 const vlabel = v => { const c = v.case && T.caseStudies.find(x => x.slug === v.case); if (c) return c.client + ' · ' + c.title;
-  const d = T.videos.find(x => x.video === 'dossier:' + v.id); return d ? d.description : v.label; };
-const vcard = v => VIDS[v.id] ? `<button class="vcard" type="button" data-vid="${v.id}" ${VIDS[v.id].vert ? 'data-vert="1"' : ''}>${img('v-' + v.id.slice(4), v.caption || v.label)}<span class="pi">${ICON.play}</span><span class="cap">${v.caption && !/^\{/.test(v.caption) ? t(v.caption) : `${t(X.pages.work.voices_heading)} · <span class="tbd">${esc(v.caption || '{name_to_confirm}')}</span>`}</span></button>` : '';
+  const d = T.videos.find(x => x.video === 'dossier:' + v.id); if (d) return d.description;
+  if (L !== 'en' || !HEB.test(v.label)) return v.label;
+  // English page, Hebrew-only film title: the client's English name from the copy, else the Latin words of the title
+  const ALIAS = { 'פיליפ מוריס': 'Philip Morris' };   // a Hebrew spelling of a client whose copy name is Latin
+  const al = Object.keys(ALIAS).find(k => v.label.includes(k)); if (al) return ALIAS[al];
+  const i = COPY.he.clientLogos.findIndex(l => v.label.includes(l.name)); if (i > -1) return T.clientLogos[i].name;
+  return v.label.replace(/[\u0590-\u05FF\-]+/g, ' ').trim() || T.businessName; };
+const vcard = v => VIDS[v.id] ? `<button class="vcard" type="button" data-vid="${v.id}" ${VIDS[v.id].vert ? 'data-vert="1"' : ''}>${img('v-' + v.id.slice(4), v.caption || v.label)}<span class="pi">${ICON.play}</span><span class="cap">${t(v.caption || vlabel(v))}</span></button>` : '';
 const FILM_IMG = { ...Object.fromEntries(['043', '046', '067', '052', '049', '018', '016', '035', '019', '053', '021', '006', '002', '041', '039', '045'].map(i => ['vid-' + i, 'film-' + i])), 'vid-038': 'case-038', 'vid-022': 'case-022', 'vid-055': 'case-055', 'vid-020': 'case-020', 'vid-060': 'film-060', 'vid-042': 'film-042', 'vid-013': 'film-013', 'vid-058': 'film-058', 'vid-024': 'film-024', 'vid-027': 'film-027', 'vid-036': 'stage-d' };
 const fcard = v => `<button class="fcard${FILM_IMG[v.id] ? '' : ' noposter'}" type="button" data-vid="${v.id}">${FILM_IMG[v.id] ? img(FILM_IMG[v.id], vlabel(v)) : ''}<span class="cap"${FILM_IMG[v.id] ? '' : ' style="position:static;background:none;padding:0"'}>${t(vlabel(v))}</span></button>`;
 
@@ -459,8 +466,7 @@ function aboutPage() {
   return rhero(P.headline, T.copyBlocks[3].heading, null, '', true) + `<section class="sec" style="padding-top:20px"><div class="wrap">
     <p class="lead">${t(cb[0])}</p>
     <div class="pair">
-      <div class="bio"><div class="frame">${img('tal-033', A.tal033, '', 800, 1000)}</div><h3>${t(tal.name)}</h3><p class="role">${t(tal.role)}</p><p>${t(tal.bio)}</p>
-        ${img('tal-001', A.tal001, '', 1080, 560)}</div>
+      <div class="bio"><div class="frame">${img('tal-001-p', A.tal001, '', 408, 510)}</div><h3>${t(tal.name)}</h3><p class="role">${t(tal.role)}</p><p>${t(tal.bio)}</p></div>
       <div class="bio"><div class="frame coming"><div class="lbl"><span class="ini">${L === 'he' ? 'ש״נ' : 'SN'}</span>${t(sh.name)}<span>${esc(U.portrait)}</span></div></div>
         <h3>${t(sh.name)}</h3><p class="role">${t(sh.role)}</p><p>${t(sh.bio)}</p>
         <div class="strip">${img('work-107', A.w107)}${img('work-110', A.w110)}${img('work-105', A.w105)}</div><p class="strip-n">${t(X.home.proof.nbc_note)}</p></div></div>
@@ -634,6 +640,8 @@ function route(e, render = true) {
     privacy: () => legalPage('privacy'), accessibility: () => legalPage('accessibility') };
   if (render) main.innerHTML = (pages[r] || notFound)();
   root.classList.toggle('route-check', r === 'check');
+  const bb = document.querySelector('#bar .btn-gold'); if (bb) { const bk = r === 'thanks' || r === 'snapshot';
+    bb.setAttribute('href', href(bk ? 'book' : 'check')); bb.innerHTML = t(bk ? X.cta.book : X.nav.header_button); }
   document.title = seo.title; document.querySelector('meta[name=description]').content = seo.description;
   document.querySelectorAll('.nav a').forEach(a => a.toggleAttribute('aria-current', a.dataset.r === r) || a.removeAttribute('aria-current'));
   document.querySelectorAll('.nav a').forEach(a => a.dataset.r === r ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));

@@ -631,3 +631,25 @@ html[dir=rtl] .ftr-line{text-align:right}
 .done>div{width:100%;min-width:0}
 @media (max-width:767px){.pair strong{white-space:normal}.pair{gap:10px;min-width:0}.ledby{gap:12px}}
 .ftr ul a{min-width:44px}
+
+/* ---------- round 6 ---------- */
+.people-band .bg img{object-position:22% 35%}
+@media (min-width:768px){.people-band::after{background:linear-gradient(to left,#0a0a0a 0,#0a0a0a 36%,rgba(10,10,10,.8) 46%,rgba(10,10,10,0) 62%)}}
+.people-band .wrap{justify-content:flex-end}
+@media (max-width:767px){.people-band .bg img{object-position:50% 30%}}
+@media (min-width:1100px){
+  body{font-size:20px;line-height:34px}
+  .door .sum,.case .out,.partner .bio,.steps p,.partners-intro .body,.faq .ans,.prose p,.flip p{font-size:20px;line-height:34px}
+  .meta,.case .before,.names .note,.strip-note,.pair p,.ftr,.ftr p,.ftr ul a{font-size:18px}
+  .kicker,.names h3,.ftr h4{font-size:16px}
+  .stat span{font-size:18px}
+  .wrap{max-width:1400px}
+}
+.ftr-line{text-align:center!important}
+.ftr-g{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr);gap:48px clamp(32px,6vw,96px)}
+.ftr ul{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px}
+.contact-b{flex-direction:column;align-items:flex-start}
+@media (max-width:899px){.ftr-g{grid-template-columns:minmax(0,1fr)}}
+@media (min-width:768px){.people-band .bg img{object-position:22% 0%}}
+.ftr p.ftr-line{font:300 clamp(40px,7vw,104px)/1 var(--display);max-width:none}
+.fonts-wait .hero-c,.fonts-wait .ledby{visibility:hidden}

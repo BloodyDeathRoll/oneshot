@@ -33,7 +33,10 @@ h1,h2,h3,p{margin:0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:fixed;top:-60px;inset-inline-start:16px;z-index:100;background:var(--gold);color:var(--gold-ink);padding:10px 16px;border-radius:999px;font-weight:500}
 .skip:focus{top:12px}
-mark.ph{background:none;color:#d9b866;border:1px dashed rgba(243,182,20,.55);border-radius:6px;padding:0 .3em;font-family:var(--body);font-size:.9em;overflow-wrap:anywhere;direction:ltr;unicode-bidi:isolate}
+mark.ph{display:inline-flex;align-items:center;gap:.45em;background:rgba(243,182,20,.07);color:#e9cf86;border-radius:999px;padding:.12em .75em .14em;font:inherit;font-size:.8em;line-height:1.35;letter-spacing:0;box-shadow:inset 0 0 0 1px rgba(243,182,20,.26);vertical-align:.08em;overflow-wrap:anywhere;cursor:help}
+mark.ph::before{content:"";flex:none;width:.42em;height:.42em;border-radius:50%;background:var(--gold);opacity:.8}
+.h-snap mark.ph,.h-page mark.ph,#thanks h1 mark.ph{display:inline;background:none;box-shadow:none;color:#fff;padding:0;font-size:1em;vertical-align:baseline}
+.h-snap mark.ph::before,.h-page mark.ph::before,#thanks h1 mark.ph::before{display:none}
 .wrap{width:100%;max-width:1440px;margin-inline:auto;padding-inline:var(--gut)}
 .narrow{max-width:820px}
 .center{text-align:center;justify-content:center}
@@ -528,3 +531,5 @@ html[dir=ltr] .drawer-panel{transform:translateX(100%)}
 html[lang=en] .h-hero{font:300 clamp(42px,4.4vw,70px)/1.06 var(--body);letter-spacing:-.025em;max-width:15ch}
 html[lang=en] .ladder{font:300 clamp(48px,6.4vw,104px)/1.02 var(--body);letter-spacing:-.03em}
 html[lang=en] .stat-v{font-family:var(--body);font-weight:300;letter-spacing:-.04em}
+
+html[lang=en] .ph-label [lang=he],html[lang=en] .ph-label .sep{display:none}

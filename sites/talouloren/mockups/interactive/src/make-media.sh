@@ -66,9 +66,11 @@ out(h, 'hero-d', 960, 82); out(h, 'hero-m', 720, 78)
 # Tal's partner frame: img-001, the one confirmed photograph of Tal (dossier team[0].photos), cropped
 # square to head and shoulders above the baked-in signature and "LE TEMPS DU SUCCÈS" (520x520, native)
 out(load(f'{A}/img-001.jpg').crop((230, 10, 750, 530)), 'tal', 520, 86)
-# doors, 4:5: Story = img-024 group shoot, Launch = img-020 man walking past the mural
-out(crop(load(f'{A}/img-024.jpg'), 4/5, .62), 'door-story', 800)
-out(crop(load(f'{A}/img-020.jpg'), 4/5, .62), 'door-launch', 796)
+# doors: Story = img-024 group shoot, Launch = img-020 man walking past the mural
+# 5:4, framed on the faces: img-024 keeps all four faces (they sit in the top half, so crop from the top);
+# img-020 keeps the walking man whole, head to boots, with the mural behind him
+out(crop(load(f'{A}/img-024.jpg'), 5/4, .5, 0), 'door-story', 1250)
+out(crop(load(f'{A}/img-020.jpg'), 5/4, .44, 0), 'door-launch', 1244)
 # partnership band: img-014, the Mercedes driver (2000 px)
 b = load(f'{A}/img-014.jpg'); out(b, 'band-d', 2000, 78); out(crop(b, 4/5, .62), 'band-m', 900, 78)
 # case posters, 16:9 (the Amdocs film is letterboxed: crop inside the bars first)

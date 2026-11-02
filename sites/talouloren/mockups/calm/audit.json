@@ -1,23 +1,23 @@
 {
  "slug": "talouloren",
  "variant": "calm",
- "measured_at": "2026-11-02T17:43:49.186Z",
+ "measured_at": "2026-11-02T18:00:32.314Z",
  "first_load": {
   "requests": 7,
   "hosts": [
-   "localhost:8980"
+   "localhost:8987"
   ],
   "third_party_hosts": [],
-  "bytes_total": 559751,
-  "bytes_html": 468430,
+  "bytes_total": 559708,
+  "bytes_html": 468387,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 0,
   "bytes_images": 91321,
   "largest_image_bytes": 24586,
-  "lcp_ms": 1060,
+  "lcp_ms": 1096,
   "cls": 0,
-  "dcl_ms": 2965
+  "dcl_ms": 2913
  },
  "scroll": {
   "early": {
@@ -25,7 +25,7 @@
    "shifts": [
     {
      "value": 0.008,
-     "at_ms": 1039,
+     "at_ms": 1044,
      "y": 0,
      "sources": [
       "div.hero-c",
@@ -47,7 +47,7 @@
    "https://www.youtube.com/watch?v=X1U4tMQ0WTc",
    "https://www.youtube.com/watch?v=gCu6UgP9TXQ",
    "https://shaharnaor.com/",
-   "https://wa.me/972504635536?text=%D7%94%D7%99%D7%99%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%94%D7%91%D7%93%D7%99%D7%A7%D7%94%20%D7%94%D7%9E%D7%9E%D7%95%D7%A7%D7%93%D7%AA",
+   "https://wa.me/972504635536?text=%D7%94%D7%99%D7%99%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%94%D7%91%D7%93%D7%99%D7%A7%D7%94%20%D7%9C%D7%9C%D7%90%20%D7%AA%D7%A9%D7%9C%D7%95%D7%9D",
    "https://wa.me/972504635536?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%20Talou%20L%27oren%20%D7%95%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94",
    "https://www.youtube.com/watch?v=ATWRaeFv2Fk",
    "https://www.youtube.com/watch?v=3RocZwVhmUA",
@@ -256,7 +256,7 @@
   "lang": "he"
  },
  "no_js": {
-  "text_length": 16744,
+  "text_length": 16788,
   "booking_links_reachable": 1,
   "visible_images": 96
  },

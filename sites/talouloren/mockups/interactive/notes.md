@@ -104,6 +104,30 @@ he and en (Check end to end, drawer booking, 404), no console errors.
 Skill overrides as in round 4 still apply (eyebrow, gradient text on the metallic gold, the glare
 on the lit pain line, the pinned case run, peeking rows).
 
+**Round 6 (after 4f round 2: visual 7, experience 8, critic 68.7), `shots/round-6` +
+`shots/round-6/routes`.** Copy rebuilt from commit 2bbbf0f (A25–A28): "בדיקה ללא תשלום" / "Free
+Check" everywhere, the new /work pain line, "ישראל ישראלי" / "Israel Israeli" captions; the built HTML
+has no "ממוקדת", "Spotlight" or `{name_to_confirm}` left. Changes:
+- Doors re-cropped 5:4 on the faces: img-024 from the top keeps all four faces; img-020 keeps the
+  walking man whole, head to boots, with the mural (recipe updated).
+- Undecided values (A26) are designed marks, not code: a small gold-dotted pill that says what will go
+  there ("המחיר יפורסם בקרוב" / "Price to be announced", "הסיפור המלא בקרוב", "שם העסק שלכם" …), with
+  the field name in the tooltip for the owner; inside headlines they read as plain text. The /thanks
+  link to the snapshot shows the business name (or "שם העסק שלכם"), never `{business_name}`.
+- Phone bar: on /thanks, /snapshot and /booked the gold button becomes "לקביעת פגישת ייעוץ" and opens
+  the booking drawer.
+- English never shows a Hebrew film title: /watch and /thanks label the case films with the client's
+  name from the copy; /brands keeps a mixed title's Latin words ("TABOOLA") and an all-Hebrew title
+  falls back to the logo wall's name (Bezeq, Clalit, Philip Morris). Snapshot and booked placeholder
+  lines re-render in English too.
+- The hero video is never part of the first load: it attaches on the first pointer, scroll, key or
+  touch (or after 8 s idle on a wide screen); the poster carries the first screen. First load is now
+  655 KB, 16 requests (was 1,178 KB).
+Kept: the spot, the ladder, the pinned case run, Q3 on Home, the drawer, type system of round 5.
+Checks: audit-mockup LCP 808 ms, CLS 0, scroll CLS 0 / 0, 0 third-party, no-JS 15,376 chars;
+every route walked in he and en at 390 and 1440 with no page errors, no visible `{token}` on any
+route, no horizontal overflow at 390.
+
 Skill rules overridden (tools.md: skills polish, never direction), one line each:
 - tasteskill `eyebrow`: "Success is Beautiful" over the hero is the approved eyebrow (brief); the grey
   labels over the pains and the ladder are concept §4.2 section labels. Kept.
@@ -126,8 +150,8 @@ wider than its source.
 | video/hero-{d,m}.{mp4,webm} | vid-033 10–22 s, crop 960x1080 (x 620) | hero loop (1.29 MB / 0.87 MB mp4; 0.89 / 0.58 MB webm) |
 | img/hero-{d,m}.webp | vid-033 frame 10.6 s, same crop | hero poster / LCP (no-motion state); not labelled as Tal (round 5) |
 | img/tal.webp | img-001 (1080), square head-and-shoulders crop 520x520 above the baked signature | Tal's partner frame (round 5: the one confirmed photograph) |
-| img/door-story.webp | img-024 (1500), 4:5 | Story door |
-| img/door-launch.webp | img-020 (1920x995), 4:5 | Launch door |
+| img/door-story.webp | img-024 (1500), 5:4 from the top (faces) | Story door |
+| img/door-launch.webp | img-020 (1920x995), 5:4 around the man | Launch door |
 | img/band-{d,m}.webp | img-014 (2000) | Partnership band, /partnership hero |
 | img/case-*.webp | frames of vid-038, vid-022, vid-055, vid-020, vid-029, vid-042 | case posters (B&W at rest, colour when lit) |
 | img/route-story.webp | vid-015 frame 8 s | /story film slot |
