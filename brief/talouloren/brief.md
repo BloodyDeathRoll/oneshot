@@ -25,6 +25,10 @@ verbatim.
 | A9 | Socials: Instagram @talou_loren, YouTube @taloulorensuccess, LinkedIn talouloren (also in the talouloren.com footer); Shahar's links are on shaharnaor.com | 4 |
 | A10 | Booking, payment, forms and the Check backend: mocked up only. First a few concepts, then the partners decide and the build is completed | 5 |
 
+| A11 | The new site does NOT replace talouloren.com: it is a parallel venue. No redirects from the old site; the old site stays up. Domain for the new site: not decided | at gate b′ |
+| A12 | Hebrew term change: "פגישת בהירות" → "פגישת ייעוץ" (English stays "Clarity Session" until Shahar says otherwise) | at gate b′ |
+| A13 | Hebrew terms: `brief/talouloren/copy-terms.json` (Shahar's file, prototype strings + saved edits, he + en), with A12 applied. Its `term.*` keys are the fixed names; the rest is reference — copy is still written from scratch in Hebrew (A5) | at gate b′ |
+
 Note: A4 overrides the brief's "No client logo or case without written permission" for the logo wall.
 
 ---
