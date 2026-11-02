@@ -1695,8 +1695,9 @@ function renderPipeline(){
     const nx=el('td',{},el('span',{class:'spill '+cls,text:txt}));
     tr.append(nx);
     const ow=el('td');
-    if(b.owner===D.human)ow.append(el('span',{class:'owner you',title:'You'},el('i',{text:D.human[0]})));
-    else if(b.owner)ow.append(el('span',{class:'owner',title:b.owner},el('i',{text:initial(b.owner)})));
+    // the operator the business belongs to (docs/handoff.md), not the agent of the next step
+    const o=b.owned_by;
+    if(o)ow.append(el('span',{class:'owner'+(o.operator===D.team?.viewer?' you':''),title:o.operator===D.team?.viewer?'You':o.name},opDisc(o.operator,true)));
     else ow.append(el('span',{class:'owner none',text:'no one'}));
     tr.append(ow);
     const lw=el('td');
