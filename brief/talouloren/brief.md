@@ -40,6 +40,10 @@ verbatim.
 | A22 | Name spelling in logo and titles: "Talou L'oren" | direction Q7 |
 | A23 | Contact: tal@talouloren.com and 050-463-5536 are correct; no street address on the site | direction Q8 |
 | A24 | Old WordPress stays up; Shahar wants help removing the 2022 hack (spam posts, categories, author niso, /temp/) — outside this run's site work | direction Q9 |
+| A25 | Free intake name in Hebrew: "בדיקה ללא תשלום" (replaces "בדיקה ממוקדת"); English name assumed "Free Check" until Shahar says otherwise | copy Q1, 2026-11-02 |
+| A26 | Undecided values (prices, session length, Partnership capacity, budget ranges, snapshot turnaround) stay visible placeholders | copy Q2 |
+| A27 | Keep the Home logo wall (track record across huge and small companies and individuals) and keep the /course pain line; the /work opening must not undercut the logo wall | copy Q3 |
+| A28 | Testimonials without a confirmed name are captioned "ישראל ישראלי" (partners edit later); partners are "טל אורן" and "שחר נאור" | copy Q4 |
 
 Note: A4 overrides the brief's "No client logo or case without written permission" for the logo wall.
 
