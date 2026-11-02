@@ -66,6 +66,44 @@ left. Against old-site-desktop.png and shaharnaor.com side by side this page win
 owner's own film at full height under a light the visitor moves, the brand's black-and-gold signature
 kept, and the Check, the session and WhatsApp one tap from every screen.
 
+**Round 5 (after 4f round 1: visual 6, experience 7, critic 65.1), `shots/round-5` +
+`shots/round-5/routes`.** Read `reports/2026-11-il-brand-02/talouloren.{visual,experience}.md` and
+`talouloren.md` (interactive). Their verdict on the sheets is right: condensed Karantina at every level
+read loud and sporty, not high end; the spot was invisible in stills; whole viewports of black; a raw
+`{hero_film_caption}` on the first screen. Changes:
+- Type: Karantina now only for the Hebrew hero line, the ladder and the stats. Section titles, pains,
+  doors, questions, FAQ, partner names, case lines, method numbers, work rows, snapshot title and
+  the menu are Heebo 300/400 (new 300 weight in the recipe). English sets the hero, ladder and stats
+  in Heebo light too (Karantina's Latin was crude).
+- First screen: the film chip is "▶ הפעלה / Play" (`x.cta.play`), no raw key. The spot is a warm
+  gold-white pool (stronger core) plus a soft-light glow on the film; at rest it lands on the face in
+  the film (desktop after 2.5 s idle; on touch it drifts face → headline → face from the first frame,
+  resting on the face after 3 s); the film is dimmed to 50 % outside the pool, never to mud.
+- Header: a blurred black backdrop once the page scrolls (or on any route below its top).
+- Rhythm: section paddings cut by a third to a half; the Mirror is a two-column block (sticky label,
+  pains in light type) instead of a near-empty viewport; partners are two 440 px square frames plus
+  the text column beside them; doors are lighter photographs (5:4) over a solid text panel.
+- Stats never show a wrong number: no count-up; the final value is in the HTML and fills from outline
+  to white when in view.
+- JavaScript off: every route now renders as one long page (15,788 chars, 61 images, the booking
+  links), instead of Home only. (Home's 11 sections were already visible without JS in round 4: its
+  text is only ~3.2 k characters because the FAQ answers sit in closed `<details>`.)
+- Identity: dossier `team[0].video_appearances` lists vid-033, but the brief rule is "only img-001 is
+  confirmed Tal" and the critic saw no visible match. So Tal's partner frame is now img-001 (also
+  sharper: the video still was upscaled), and the hero loop is no longer labelled as Tal (alt text
+  names the film, not the person). The hero film stays vid-033 per concept; Shahar to confirm it is Tal.
+- Smaller: Shahar's placeholder is a raised frame with a clear gold square and the label centred
+  (name once, in the caption); placeholders wrap on phones (snapshot title, partnership price
+  block); booked line reads "נתראה ב־4 בנובמבר" (no "ב־יום"); /thanks shows the case films instead
+  of `{name_to_confirm}` testimonials; mobile menu traps focus and returns it to "תפריט" on Esc.
+Against old-site-desktop.png and shaharnaor.com: the first screen is now calmer and more expensive
+(one display line, everything else light) while keeping the film and the light; it wins on both
+counts. Checks: check-design ok; audit-mockup LCP 808 ms, CLS 0, scroll CLS 0 / 0, 0 third-party,
+0 taps under 44 px, no-JS 15,788 chars with booking links; all routes walked at 1440 and 390 in
+he and en (Check end to end, drawer booking, 404), no console errors.
+Skill overrides as in round 4 still apply (eyebrow, gradient text on the metallic gold, the glare
+on the lit pain line, the pinned case run, peeking rows).
+
 Skill rules overridden (tools.md: skills polish, never direction), one line each:
 - tasteskill `eyebrow`: "Success is Beautiful" over the hero is the approved eyebrow (brief); the grey
   labels over the pains and the ladder are concept §4.2 section labels. Kept.
@@ -86,8 +124,8 @@ wider than its source.
 | dist file | source | use |
 |---|---|---|
 | video/hero-{d,m}.{mp4,webm} | vid-033 10–22 s, crop 960x1080 (x 620) | hero loop (1.29 MB / 0.87 MB mp4; 0.89 / 0.58 MB webm) |
-| img/hero-{d,m}.webp | vid-033 frame 10.6 s, same crop | hero poster / LCP (no-motion state) |
-| img/tal.webp | vid-033 frame 26 s, 4:5 | Tal's partner frame (dossier `team[0].video_appearances`) |
+| img/hero-{d,m}.webp | vid-033 frame 10.6 s, same crop | hero poster / LCP (no-motion state); not labelled as Tal (round 5) |
+| img/tal.webp | img-001 (1080), square head-and-shoulders crop 520x520 above the baked signature | Tal's partner frame (round 5: the one confirmed photograph) |
 | img/door-story.webp | img-024 (1500), 4:5 | Story door |
 | img/door-launch.webp | img-020 (1920x995), 4:5 | Launch door |
 | img/band-{d,m}.webp | img-014 (2000) | Partnership band, /partnership hero |
@@ -100,7 +138,7 @@ wider than its source.
 | img/sn-*.webp | img-107, img-110, img-105 (Behance covers) | Shahar's work strip |
 | img/logo-*.webp | logo-030, 027, 034, 001, 032, 002, turned white on transparent | proof marquee (A4: logos allowed) |
 | img/sig-gold.svg, sig-white.svg | dossier signature files | header, footer draw-on, snapshot, booked |
-| fonts/* | Karantina 400/700, Heebo 400/500 (OFL, Fontsource), Hebrew + Latin subsets, self-hosted | 4 first-screen faces inlined |
+| fonts/* | Karantina 400/700, Heebo 300/400/500 (OFL, Fontsource), Hebrew + Latin subsets, self-hosted | 4 first-screen faces inlined |
 
 Video slots play on tap in a lightbox from `youtube-nocookie.com/embed/<id>` (ids from
 `dossier.videos[].source_url`); no third-party request before a tap.

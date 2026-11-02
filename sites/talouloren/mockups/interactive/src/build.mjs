@@ -59,15 +59,15 @@ const film = (vid, img, alt, w, h, cls = '') => `
 const shaharFrame = (big = false) => `
   <div class="partner partner-sn${big ? ' big' : ''}" data-partner>
     <div class="frame ph-frame" role="img" aria-label="Shahar Naor, portrait coming">
-      <span class="sq" aria-hidden="true"></span>${T('team.1.name', 'span', 'class="ph-name" aria-hidden="true"')}
+      <span class="sq" aria-hidden="true"></span>
       <span class="ph-label"><span lang="he">צילום בדרך</span> · <span lang="en" dir="ltr">Portrait coming</span></span>
     </div>
     <div class="p-cap">${T('team.1.name', 'h3', 'class="p-name"')}${T('team.1.role', 'p', 'class="p-role"')}</div>
   </div>`;
 const talFrame = (big = false) => `
   <div class="partner partner-tal${big ? ' big' : ''}" data-partner>
-    <div class="frame"><img src="img/tal.webp" width="864" height="1080" loading="lazy" decoding="async"
-      alt="Tal Oren, black and white, laughing, in a dark V-neck shirt on a pure black ground"></div>
+    <div class="frame"><img src="img/tal.webp" width="520" height="520" loading="lazy" decoding="async"
+      alt="Tal Oren smiling, curly hair, dark knit sweater, in front of a bright window, black and white"></div>
     <div class="p-cap">${T('team.0.name', 'h3', 'class="p-name"')}${T('team.0.role', 'p', 'class="p-role"')}</div>
   </div>`;
 const snStrip = `
@@ -124,9 +124,9 @@ const home = `
       <video id="hero-video" muted loop playsinline preload="none" poster="img/hero-d.webp" aria-hidden="true"
         data-src-d="video/hero-d" data-src-m="video/hero-m"></video>
       <img class="hero-poster" src="img/hero-d.webp" width="960" height="1080" fetchpriority="high"
-        alt="Tal Oren, black and white, talking to camera on a pure black ground">
-      <div class="dim" aria-hidden="true"></div>
-      <button class="film-btn" type="button" data-video="${yt['vid-036']}" data-vid="vid-036">${I.play}${T('x.home.hero.film_label')}</button>
+        alt="A man talking to camera in black and white on a pure black ground, from the Talou L'oren film SUCCESS IS BALANCE">
+      <div class="dim" aria-hidden="true"></div><div class="glow" aria-hidden="true"></div>
+      <button class="film-btn" type="button" data-video="${yt['vid-036']}" data-vid="vid-036">${I.play}${T('x.cta.play')}</button>
     </div>
     <div class="hero-txt">
       <p class="eyebrow" lang="en" dir="ltr">${T('tagline')}</p>
@@ -477,7 +477,7 @@ const check = `
 const thanks = `
 <section class="view" id="thanks" aria-labelledby="h-thanks">
   <div class="wrap narrow page-head">${T('x.pages.thanks.title', 'h1', 'class="h-page" id="h-thanks"')}${T('x.pages.thanks.body', 'p', 'class="lead"')}${T('x.pages.thanks.meanwhile', 'p', 'class="note"')}</div>
-  <div class="wrap"><ul class="v-row" role="list">${voiceRow}</ul></div>
+  <div class="wrap"><ul class="v-row" role="list">${seriesCards.proof}</ul></div>
   <div class="wrap row-btns"><a class="btn btn-line" href="#snapshot">${T('x.pages.snapshot.title')}${I.arrow}</a></div>
 </section>`;
 const dims = he.extras.pages.snapshot.dimensions;

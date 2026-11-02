@@ -74,6 +74,36 @@ after first paint: m1280 VP9 0.99 MB / H.264 0.90 MB (used up to 1100 px wide), 
 Save-Data: poster only, no parallax (looked at, 390). No WebGL/canvas anywhere (calm). Film slots are YouTube links that open a
 `youtube-nocookie` embed in a `<dialog>` only on tap (Esc closes, focus returns).
 
+**Round 5 — 4f round-1 fixes** (`shots/round-5`; earlier rounds' shots were cleaned after scoring). Read the calm sections of
+`reports/2026-11-il-brand-02/talouloren.visual.md` (7/10), `.experience.md` (8/10) and `talouloren.md` (68.1/75). Changed:
+- **Doors** (visual 1): the 4:5 crops are re-cut around the subjects (img-025 centred on the laughing face, img-029 the whole jump,
+  head to feet), and the desktop parallax no longer stretches the box taller than the crop (it moves a 1.1× copy ±32 px), so desktop
+  shows the same framing as the phone: faces, not wall and torso.
+- **Ladder** (visual 2): the five words on the light band are full black at rest (the rise is position only), "מודעות" in dark gold.
+- **Placeholders** (visual 3, experience 4): no more code chips. Every `{key}` renders as a gold-outlined pill in the body face that
+  says what is coming ("מחיר בקרוב", "הסיפור המלא בקרוב", "משך בקרוב"…; English "Price coming"…), the key kept in its `title`
+  for the owner; runtime values (`first_name`, `business_name`, `date`, `time`) are filled by `data-key`.
+- **Bands** (visual 4–5, experience 3): Partnership now sits on a vid-027 frame (27 s, Tal with arms open to the workshop room,
+  1920 px, B&W) with its text on a solid dark field on the far side from him — no text on a product. The Wella box moves to a new
+  full-bleed **work band** before Proof ("BACK TO WELLA", its outcome, "לסיפור המלא" → `/work/wella`), text on a solid dark field
+  on the empty side, so it reads as a case still, not an ad. That is the one more full-bleed moment the body asked for.
+- **Laptop density** (experience 2, visual rhythm): body 19/32 and nav 17 px from 1100 px up, larger section titles and lead;
+  section padding cut to 72–128 px, the gaps under the subtitle, under the light band and between cases and partners tightened;
+  the three steps are now raised panels; the footer opens with a full-width "Success is Beautiful" line in the gold gradient and
+  its three columns are re-proportioned.
+- **390 px overflows** (experience 1): `/book` (grid `minmax(0,1fr)`, the week strip fits 7 × 40 px), `/thanks` (the content box
+  no longer shrinks to the video row's width), `/partnership` (price rows wrap); English hero foot wraps instead of widening the
+  page. Checked every route × 2 languages × 1440 / 1280 / 390: no overflow.
+- **Phone bar** (experience 5): on `/snapshot` and `/thanks` the gold bar button is "לקביעת פגישת ייעוץ".
+- **Accessibility** (critic 6): the mobile menu now moves focus to its first link, traps Tab between its links and the menu button,
+  makes the page behind `inert`, and Esc (or the button) closes it and returns focus to the button; the skip link is the first Tab
+  stop and shows at the top (the first load no longer focuses `#main`); nav and footer links are ≥ 44 × 44.
+- **Copy in English** (critic 5): films whose title is Hebrew show the English case title (or the English video description) in
+  English mode; no Hebrew label left in English (checked on all routes).
+Measured after: first load 547 KB, LCP 1.06 s, CLS 0, early-scroll CLS 0.008, settled 0, third-party on load 0, alt missing 0;
+`check-design` ok. Kept, as both critics asked: the hero, the type pair, the single light band, the "led by" strip, the white
+snapshot print, the bar hidden inside the Check.
+
 ## images
 
 All `business-owned` (dossier `assets/index.json`); none drawn wider than its source.
@@ -85,7 +115,8 @@ All `business-owned` (dossier `assets/index.json`); none drawn wider than its so
 | tal-avatar | img-001 (head crop above the baked text) | hero "led by" circle |
 | tal-portrait | vid-036 frame at 41 s, 4:5 | partners, about |
 | door-story / door-launch | img-025 / img-029, 4:5 crops 800×1000 (native) | doors, /story, /launch |
-| band-1920 / band-phone | img-019 (2000 px) | partnership band, /partnership hero |
+| band-1920 / band-phone | img-019 (2000 px) | Wella work band before Proof (round 5) |
+| workshop-1920 / workshop-phone | vid-027 frame at 27 s (1920) | partnership band, /partnership hero (round 5) |
 | sn-pale-force / sn-coca-cola / sn-privex | img-107 / img-110 / img-104 (Shahar's Behance covers) | Shahar's work strip |
 | case-amdocs / -maccabi / -seat / -park-bavli | frames of vid-038 / 022 / 055 / 020 | case cards, case pages |
 | w-* | frames of vid-029, 060, 042, 013, 058, 024, 023 | /work rows, case pages |

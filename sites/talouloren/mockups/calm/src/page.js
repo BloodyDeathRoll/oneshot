@@ -32,9 +32,10 @@
     d.body.classList.toggle('is-check', key === 'check')
     d.body.classList.toggle('is-book', key === 'book')
     d.body.classList.toggle('is-home', key === '')
+    d.body.classList.toggle('is-after', key === 'snapshot' || key === 'thanks')
     $$('[data-nav]', app).forEach(a => a.dataset.nav === key.split('/')[0] ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'))
     closeMenu()
-    if (current !== key) { scrollTo(0, 0); current = key; if (h) $('#main', app)?.focus({ preventScroll: true }) }
+    if (current !== key) { scrollTo(0, 0); if (h && current !== null) $('#main', app)?.focus({ preventScroll: true }); current = key }
     onRoute[key.split('/')[0]]?.(view)
     header(); parallax()
   }
@@ -45,11 +46,29 @@
     booked: v => { const b = store.get('booking'); if (b) { fill(v, 'date', b.date); fill(v, 'time', b.time) } },
     check: () => showQ(store.get('q') || 0),
   }
-  const fill = (el, key, val) => $$('.ph', el).forEach(p => { if (p.textContent === '{' + key + '}') { p.textContent = val; p.className = '' } })
+  const fill = (el, key, val) => $$('.ph[data-key="' + key + '"]', el).forEach(p => { p.textContent = val; p.className = ''; p.removeAttribute('title') })
 
   // ---------- header / menu ----------
   function header() { $('[data-hdr]', app)?.classList.toggle('solid', scrollY > 40 || current !== '') }
-  function closeMenu() { d.body.classList.remove('menu-open'); $('[data-menu]', app)?.setAttribute('aria-expanded', 'false') }
+  function closeMenu(back) {
+    if (!d.body.classList.contains('menu-open')) return
+    d.body.classList.remove('menu-open'); const b = $('[data-menu]', app); b?.setAttribute('aria-expanded', 'false')
+    $('#main', app)?.removeAttribute('inert'); $('.ftr', app)?.removeAttribute('inert')
+    if (back) b?.focus()
+  }
+  function openMenu() {
+    d.body.classList.add('menu-open'); $('[data-menu]', app).setAttribute('aria-expanded', 'true')
+    $('#main', app)?.setAttribute('inert', ''); $('.ftr', app)?.setAttribute('inert', '')
+    setTimeout(() => $('[data-sheet] a', app)?.focus(), 30)
+  }
+  // focus stays inside the open menu: the sheet's links and the menu button
+  function trapMenu(e) {
+    const items = [$('[data-menu]', app), ...$$('[data-sheet] a', app)]
+    const i = items.indexOf(d.activeElement)
+    if (i === -1) { e.preventDefault(); items[1].focus(); return }
+    if (e.shiftKey && i === 0) { e.preventDefault(); items.at(-1).focus() }
+    else if (!e.shiftKey && i === items.length - 1) { e.preventDefault(); items[0].focus() }
+  }
 
   // ---------- hero video: poster first, sources after first paint, never under reduced motion / Save-Data ----------
   function heroVideo() {
@@ -191,7 +210,7 @@
   d.addEventListener('click', e => {
     const t = e.target.closest('a,button,label'); if (!t) return
     if (t.matches('[data-lang]')) return setLang(lang === 'he' ? 'en' : 'he', true)
-    if (t.matches('[data-menu]')) { const open = d.body.classList.toggle('menu-open'); t.setAttribute('aria-expanded', open); return }
+    if (t.matches('[data-menu]')) { d.body.classList.contains('menu-open') ? closeMenu(true) : openMenu(); return }
     if (t.matches('[data-film]') && openFilm(t)) return e.preventDefault()
     if (t.matches('[data-close]')) return closeFilm()
     if (t.closest('[data-check]')) {
@@ -210,7 +229,8 @@
   d.addEventListener('input', e => { if (e.target.closest('[data-check]')) saveCheck(e); e.target.closest('.fl')?.classList.remove('bad') })
   d.addEventListener('change', e => { if (e.target.closest('[data-check]')) saveCheck(e) })
   d.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { closeFilm(); closeMenu() }
+    if (e.key === 'Escape') { closeFilm(); closeMenu(true) }
+    if (e.key === 'Tab' && d.body.classList.contains('menu-open')) trapMenu(e)
     if (e.key === 'Enter' && e.target.matches('[data-check] input[type=text], [data-check] input[type=email], [data-check] input[type=tel]')) { e.preventDefault(); if (answered($('.q.on', app))) $('.q.on', app).dataset.q === '11' ? $('[data-submit]', app).click() : showQ(qi + 1) }
   })
   d.addEventListener('submit', e => {

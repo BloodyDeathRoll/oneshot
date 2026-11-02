@@ -71,6 +71,7 @@ done <<'L'
 048 20 v-natali
 059 20 v-ella
 027 25 boots-027
+027 27 workshop
 015 12 flip-015
 L
 
@@ -106,11 +107,13 @@ t = load(f'{A}/img-001.jpg'); out(t.crop((300, 0, 760, 460)), 'tal-avatar', 240,
 # Tal: vid-036 at 41 s, seated to camera under the top light, 4:5 for the partners section (864 x 1080)
 out(crop(load(f'{T}/tal-036.png'), 4/5, .47, .5), 'tal-portrait', 864, 82)
 # doors, 4:5: Story = img-025 (man laughing in smoke), Launch = img-029 (LOVE letters)
-out(crop(load(f'{A}/img-025.jpg'), 4/5, .62, .5), 'door-story', 800, 80)
-out(crop(load(f'{A}/img-029.jpg'), 4/5, .52, .5), 'door-launch', 800, 80)
+out(crop(load(f'{A}/img-025.jpg'), 4/5, .86, .5), 'door-story', 800, 80)   # centred on his laughing face
+out(crop(load(f'{A}/img-029.jpg'), 4/5, .62, .5), 'door-launch', 800, 80)   # the whole jump, head to feet
 # partnership band: img-019 (Wella box, gold on black), native 2000
 b = load(f'{A}/img-019.jpg'); out(b, 'band-1920', 1920, 78); out(crop(b, 4/5, .6, .5), 'band-phone', 1000, 78)
 # route heroes in the same 4:5 as the doors; partnership hero reuses the band
+# partnership band: vid-027 at 27 s, Tal with arms open to the workshop room (1920, B&W as filmed)
+w = load(f'{T}/workshop.png'); out(w, 'workshop-1920', 1920, 76); out(crop(w, 4/5, .74, .5), 'workshop-phone', 864, 78)
 # Shahar's work strip (his Behance covers), 4:3 crop
 for n, f in (('sn-pale-force', 'img-107'), ('sn-coca-cola', 'img-110'), ('sn-privex', 'img-104')):
     out(crop(load(f'{A}/{f}.jpg'), 4/3), n, 700, 80)

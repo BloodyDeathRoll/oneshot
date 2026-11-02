@@ -1,23 +1,23 @@
 {
  "slug": "talouloren",
  "variant": "unique",
- "measured_at": "2026-11-02T17:09:57.827Z",
+ "measured_at": "2026-11-02T17:36:42.856Z",
  "first_load": {
   "requests": 6,
   "hosts": [
    "localhost:8980"
   ],
   "third_party_hosts": [],
-  "bytes_total": 368766,
-  "bytes_html": 290701,
+  "bytes_total": 382461,
+  "bytes_html": 297450,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 0,
-  "bytes_images": 78065,
+  "bytes_images": 85011,
   "largest_image_bytes": 29052,
-  "lcp_ms": 1812,
+  "lcp_ms": 840,
   "cls": 0,
-  "dcl_ms": 1606
+  "dcl_ms": 2105
  },
  "scroll": {
   "early": {
@@ -56,16 +56,9 @@
   "images": 15,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 1,
-  "tapables": 50,
-  "tapables_under_44px": 15,
-  "tapables_under_44px_examples": [
-   " 146x24",
-   "לסיפור המלא ← 143x42",
-   "shaharnaor.com 145x42",
-   "050-463-5536 102x19",
-   "tal@talouloren.com 132x19",
-   "סיפור 350x40"
-  ],
+  "tapables": 53,
+  "tapables_under_44px": 0,
+  "tapables_under_44px_examples": [],
   "headings": [
    "H1",
    "H2",
@@ -95,9 +88,9 @@
   "lang": "he"
  },
  "no_js": {
-  "text_length": 57,
-  "booking_links_reachable": 0,
-  "visible_images": 0
+  "text_length": 4774,
+  "booking_links_reachable": 1,
+  "visible_images": 14
  },
  "reduced_motion": {
   "canvases": 1,

@@ -1,23 +1,23 @@
 {
  "slug": "talouloren",
  "variant": "interactive",
- "measured_at": "2026-11-02T17:11:45.600Z",
+ "measured_at": "2026-11-02T17:36:01.406Z",
  "first_load": {
   "requests": 17,
   "hosts": [
    "localhost:8980"
   ],
   "third_party_hosts": [],
-  "bytes_total": 1206469,
-  "bytes_html": 327683,
+  "bytes_total": 1205428,
+  "bytes_html": 330430,
   "bytes_js": 0,
   "bytes_css": 0,
-  "bytes_fonts": 33292,
+  "bytes_fonts": 29504,
   "bytes_images": 264397,
   "largest_image_bytes": 75476,
-  "lcp_ms": 800,
+  "lcp_ms": 808,
   "cls": 0,
-  "dcl_ms": 3202
+  "dcl_ms": 3153
  },
  "scroll": {
   "early": {
@@ -53,9 +53,9 @@
   "note": "no drawer; every action is a plain link"
  },
  "a11y": {
-  "images": 66,
+  "images": 67,
   "images_without_alt": 0,
-  "images_alt_empty_decorative": 31,
+  "images_alt_empty_decorative": 32,
   "tapables": 31,
   "tapables_under_44px": 0,
   "tapables_under_44px_examples": [],
@@ -200,9 +200,9 @@
   "lang": "he"
  },
  "no_js": {
-  "text_length": 3474,
+  "text_length": 15788,
   "booking_links_reachable": 2,
-  "visible_images": 20
+  "visible_images": 61
  },
  "reduced_motion": {
   "canvases": 0,

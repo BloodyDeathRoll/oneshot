@@ -31,7 +31,6 @@ ff -ss 10 -t 12 -i "$V/vid-033-source.mp4" -an -vf "$HV,scale=720:810" -c:v libv
 # ---- stills from the business's own films (frame times read off the dossier sheets)
 grab() { ff -ss "$2" -i "$1" -frames:v 1 "$T/$3.png"; }
 grab "$V/vid-033-source.mp4" 10.6 hero      # hero poster = the loop's first lit frame
-grab "$V/vid-033-source.mp4" 26   tal       # Tal laughing, the partner still
 grab "$V/vid-038-source.mp4" 230  c-amdocs  # Amdocs workshop table, B&W (letterboxed)
 grab "$V/vid-022-source.mp4" 20   c-maccabi # Maccabi clinic, white coat
 grab "$V/vid-055-source.webm" 33  c-seat    # SEAT, the man in the yellow chair (1080 square)
@@ -64,7 +63,9 @@ def out(im, name, width, q=80):
 
 h = load(f'{T}/hero.png').crop((620, 0, 1580, 1080))          # same window as the loop
 out(h, 'hero-d', 960, 82); out(h, 'hero-m', 720, 78)
-out(crop(load(f'{T}/tal.png'), 4/5, .62, .5), 'tal', 864, 82)  # 864x1080, his face right of centre
+# Tal's partner frame: img-001, the one confirmed photograph of Tal (dossier team[0].photos), cropped
+# square to head and shoulders above the baked-in signature and "LE TEMPS DU SUCCÈS" (520x520, native)
+out(load(f'{A}/img-001.jpg').crop((230, 10, 750, 530)), 'tal', 520, 86)
 # doors, 4:5: Story = img-024 group shoot, Launch = img-020 man walking past the mural
 out(crop(load(f'{A}/img-024.jpg'), 4/5, .62), 'door-story', 800)
 out(crop(load(f'{A}/img-020.jpg'), 4/5, .62), 'door-launch', 796)
@@ -103,7 +104,7 @@ cp "$A/sig-gold.svg" "$D/img/sig-gold.svg"
 cp "$A/sig-white.svg" "$D/img/sig-white.svg"
 
 # ---- fonts (OFL): Karantina display, Heebo body; Hebrew + Latin subsets from Fontsource
-for f in karantina:400 karantina:700 heebo:400 heebo:500; do
+for f in karantina:400 karantina:700 heebo:300 heebo:400 heebo:500; do
   fam=${f%%:*}; w=${f##*:}
   for s in hebrew latin; do
     curl -fsSL -o "$D/fonts/$fam-$s-$w.woff2" "https://cdn.jsdelivr.net/fontsource/fonts/$fam@latest/$s-$w-normal.woff2"

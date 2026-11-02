@@ -55,9 +55,21 @@ const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').re
 // visible placeholders for undecided values; Latin runs isolated inside Hebrew text
 const t = (s, L) => String(s ?? '').split(/(\{[a-z0-9_]+\}|[A-Za-z][A-Za-z0-9'’&.\- ]*[A-Za-z0-9.])/i).map((seg, i) => {
   if (i % 2 === 0) return esc(seg)
-  if (seg[0] === '{') return `<span class="ph">${esc(seg)}</span>`
+  if (seg[0] === '{') { const k = seg.slice(1, -1); return `<span class="ph" data-key="${k}" title="${esc(seg)}">${esc(phLabel(k, L))}</span>` }
   return L === 'he' ? `<bdi dir="ltr" lang="en">${esc(seg)}</bdi>` : esc(seg)
 }).join('')
+// placeholder marks: what is coming, in words, with the key in the title for the owner
+const PH = {
+  he: { price: 'מחיר בקרוב', case_story: 'הסיפור המלא בקרוב', session_length: 'משך בקרוב', check_minutes: 'כמה', partnership_capacity: 'מספר', budget_ranges: 'טווחי תקציב בקרוב',
+    turnaround: 'זמן קצר', consent_text: 'נוסח ההסכמה בקרוב', privacy_policy: 'מדיניות הפרטיות בקרוב', accessibility: 'בקרוב', name_to_confirm: 'שם בבדיקה',
+    first_name: 'שם', business_name: 'שם העסק', date: 'תאריך', time: 'שעה', partner_name: 'טל או שחר', observation: 'מה שראינו אצלכם', first_move: 'הצעד הראשון שלכם',
+    service_name: 'שירות', hero_film_caption: 'הסרט', _: 'בקרוב' },
+  en: { price: 'Price coming', case_story: 'Full story coming', session_length: 'Length coming', check_minutes: 'A few', partnership_capacity: 'A few', budget_ranges: 'Budget ranges coming',
+    turnaround: 'a short time', consent_text: 'Consent wording coming', privacy_policy: 'Privacy policy coming', accessibility: 'Coming', name_to_confirm: 'Name to confirm',
+    first_name: 'friend', business_name: 'Your business', date: 'date', time: 'time', partner_name: 'Tal or Shahar', observation: 'What we saw', first_move: 'Your first move',
+    service_name: 'a service', hero_film_caption: 'The film', _: 'Coming' },
+}
+const phLabel = (k, L) => { const m = PH[L]; if (m[k]) return m[k]; for (const p of ['price', 'case_story', 'accessibility', 'observation']) if (k.startsWith(p) || k.endsWith('_' + p) || k.includes(p)) return m[p]; return m._ }
 const paras = s => String(s ?? '').split(/\n\s*\n/).map(x => x.trim()).filter(Boolean)
 const P = (s, L) => paras(s).map(p => `<p>${t(p, L)}</p>`).join('')
 const wa = text => `https://wa.me/${WA}?text=${encodeURIComponent(text)}`
@@ -87,7 +99,10 @@ function render(L) {
     const yt = YT[id], p = POSTER[id]
     return `<a class="${cls}" href="https://www.youtube.com/watch?v=${yt}" data-film="${yt}" data-label="${esc(label)}" aria-label="${esc(U.play + ': ' + label)}" target="_blank" rel="noopener">${p ? img(p, '', 1280, 720) : ''}<span class="play">${ICON.play}</span></a>`
   }
-  const tcard = (v, cap) => `<a class="tcard" href="https://www.youtube.com/watch?v=${YT[v.id]}" data-film="${YT[v.id]}" data-tall="${['vid-009', 'vid-030', 'vid-040'].includes(v.id) ? 1 : ''}" data-label="${esc(v.label)}" aria-label="${esc(U.play + ': ' + (cap || v.label))}" target="_blank" rel="noopener"><span class="im">${img(TALL[v.id] || POSTER[v.id], '', 405, 720)}<span class="play">${ICON.play}</span><span class="lab">${T(cap || v.label)}</span></span></a>`
+  const enCase = Object.fromEntries(en.caseStudies.map(c => [c.slug, c.title]))
+  const enBrand = { 'vid-021': 'Bezeq', 'vid-006': 'Clalit', 'vid-002': 'Philip Morris', 'vid-016': 'Taboola', 'vid-027': en.videos[4].description }
+  const lab = v => L === 'he' || !/[\u0590-\u05FF]/.test(v.label) ? v.label : (v.case ? enCase[v.case] : enBrand[v.id] || v.label)
+  const tcard = (v, cap) => `<a class="tcard" href="https://www.youtube.com/watch?v=${YT[v.id]}" data-film="${YT[v.id]}" data-tall="${['vid-009', 'vid-030', 'vid-040'].includes(v.id) ? 1 : ''}" data-label="${esc(lab(v))}" aria-label="${esc(U.play + ': ' + (cap && cap[0] !== '{' ? cap : lab(v)))}" target="_blank" rel="noopener"><span class="im">${img(TALL[v.id] || POSTER[v.id], '', 405, 720)}<span class="play">${ICON.play}</span><span class="lab">${T(cap && cap !== v.label ? cap : lab(v))}</span></span></a>`
   const endcard = `<div class="tcard endcard"><div class="im"><div><p>${T(X.home.final.heading)}</p>${btnCheck('btn btn-gold')}</div></div></div>`
   const nav = ['story', 'launch', 'partnership', 'work', 'about', 'brands', 'watch', 'course']
   const navLinks = nav.map(k => `<a href="#/${k}" data-nav="${k}">${T(X.nav[k])}</a>`).join('')
@@ -192,6 +207,16 @@ function render(L) {
     </div>
   </section>
 
+  <section class="pband work-band" aria-labelledby="wella-h">
+    <div class="bg" data-px>${img('band-1920', altBand, 1920, 1280, ' srcset="img/band-phone.webp 1000w, img/band-1920.webp 1920w" sizes="100vw"')}</div>
+    <div class="wrap"><div class="txt">
+      <p class="kicker">${T(cs.wella.client)} · ${T(cs.wella.sector)}</p>
+      <h2 id="wella-h" lang="en" dir="ltr">${esc(cs.wella.title)}</h2>
+      <p class="sum">${T(cs.wella.outcome)}</p>
+      <a class="btn btn-line" href="#/work/wella">${T(X.cta.read_case)} ${ARR}</a>
+    </div></div>
+  </section>
+
   <section class="sec proof" aria-labelledby="proof-h">
     <div class="wrap">
       <h2 id="proof-h" class="sec-h">${T(X.home.proof.title)}</h2>
@@ -224,8 +249,8 @@ function render(L) {
     </div>
   </section>
 
-  <section class="pband" aria-labelledby="pband-h">
-    <div class="bg" data-px>${img('band-1920', altBand, 1920, 1280, ' srcset="img/band-phone.webp 1000w, img/band-1920.webp 1920w" sizes="(max-width: 767px) 100vw, 100vw"')}</div>
+  <section class="pband people-band" aria-labelledby="pband-h">
+    <div class="bg" data-px>${img('workshop-1920', L === 'he' ? 'טל אורן עומד מול חדר מלא אנשים בסדנה, ידיו פתוחות, בשחור־לבן' : 'Tal Oren in front of a full workshop room, arms open, black and white', 1920, 1080, ' srcset="img/workshop-phone.webp 864w, img/workshop-1920.webp 1920w" sizes="100vw"')}</div>
     <div class="wrap"><div class="txt">
       <h2 id="pband-h">${T(X.home.partnership_band.heading)}</h2>
       <p class="sum">${T(S.partnership.summary)}</p>
@@ -267,8 +292,8 @@ function render(L) {
   // ---------- partnership ----------
   const pp = X.pages.partnership, pb = paras(S.partnership.body)
   const partnership = `
-  <section class="pband page-top" style="padding-top:var(--header)" aria-labelledby="pp-h">
-    <div class="bg" data-px>${img('band-1920', altBand, 1920, 1280, ' srcset="img/band-phone.webp 1000w, img/band-1920.webp 1920w" sizes="100vw"')}</div>
+  <section class="pband people-band page-top" style="padding-top:var(--header)" aria-labelledby="pp-h">
+    <div class="bg" data-px>${img('workshop-1920', L === 'he' ? 'טל אורן עומד מול חדר מלא אנשים בסדנה, ידיו פתוחות, בשחור־לבן' : 'Tal Oren in front of a full workshop room, arms open, black and white', 1920, 1080, ' srcset="img/workshop-phone.webp 864w, img/workshop-1920.webp 1920w" sizes="100vw"')}</div>
     <div class="wrap"><div class="txt"><p class="kicker">${T(S.partnership.title)}</p><h1 id="pp-h" class="display" style="font-size:clamp(40px,4.6vw,66px);line-height:1.1">${T(pp.headline)}</h1>
       <p class="sum">${T(S.partnership.summary)}</p>${btnBook()}</div></div>
   </section>
@@ -333,7 +358,7 @@ function render(L) {
     <p class="lead" style="margin-top:24px">${T(pr.pain)}</p><p class="big-line mute" style="margin-top:20px">${T(pr.solution)}</p>
   </div></section>
   <section class="sec" style="padding-top:0"><div class="wrap"><h2 class="sec-h">${T(pr.films_heading)}</h2>
-    <div class="films-g" style="margin-top:40px">${brandFilms.map(v => `<div>${video(v.id, v.label)}<p class="lab">${T(v.label)}</p></div>`).join('')}</div></div></section>
+    <div class="films-g" style="margin-top:40px">${brandFilms.map(v => `<div>${video(v.id, lab(v))}<p class="lab">${T(lab(v))}</p></div>`).join('')}</div></div></section>
   <section class="sec band"><div class="wrap two"><h2 class="sec-h">${T(pr.services_heading)}</h2><div><p class="big-line" style="color:#222">${T(S.craft.summary)}</p><p style="margin-top:16px;color:#444">${T(S.craft.body)}</p></div></div></section>
   <section class="sec"><div class="wrap two"><h2 class="sec-h">${T(F.heading)}</h2>
     <form class="form-g" data-mock novalidate>
@@ -352,7 +377,7 @@ function render(L) {
   </div></section>
   <section style="padding-bottom:80px"><div class="wrap">
     ${pwa.series.map(s => `<div class="series"><div class="series-h"><h2>${T(s.name)}</h2><p>${T(s.line)}</p></div>
-      ${seriesItems[s.key].length ? `<div class="tall-row">${seriesItems[s.key].map(v => tcard(v, v.caption || v.label)).join('')}${endcard}</div>` : `<p class="empty">${T(pwa.empty_series)}</p>`}</div>`).join('')}
+      ${seriesItems[s.key].length ? `<div class="tall-row">${seriesItems[s.key].map(v => tcard(v, v.caption)).join('')}${endcard}</div>` : `<p class="empty">${T(pwa.empty_series)}</p>`}</div>`).join('')}
   </div></section>
   ${endSec(X.home.final.heading, btnCheck())}`
 
@@ -421,7 +446,7 @@ function render(L) {
   const thanks = `<section class="done"><div>
     <h1 data-firstname>${T(th.title)}</h1><p>${T(th.body)}</p>
     <p style="margin-top:56px" class="kicker">${T(th.meanwhile)}</p>
-    <div class="tall-row" style="justify-content:center;margin-top:12px">${[lib.voices[0], lib.boots[0], lib.voices[4]].map(v => tcard(v, v.caption || v.label)).join('')}</div>
+    <div class="tall-row thanks-row" style="margin-top:12px">${[lib.voices[0], lib.boots[0], lib.voices[4]].map(v => tcard(v, v.caption)).join('')}</div>
     <a class="btn btn-line" href="#/">${T(X.cta.home)}</a></div></section>`
   const sn = X.pages.snapshot, demoScores = [3, 2, 4, 2, 1]
   const snapshot = `<section class="print-wrap sec" style="padding-bottom:120px"><div class="wrap">
@@ -486,9 +511,10 @@ function render(L) {
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="sheet" aria-label="${esc(U.openMenu)}" data-menu><i></i></button>
     </div>
   </div></header>
-  <nav class="sheet" id="sheet" aria-label="${esc(X.nav.menu)}"><a href="#/" data-nav="">${T(X.nav.home)}</a>${navLinks}<a class="btn btn-gold" href="#/check" style="margin-top:24px;align-self:flex-start;font:600 17px/1 var(--text)">${T(X.nav.header_button)}</a></nav>`
+  <nav class="sheet" id="sheet" aria-label="${esc(X.nav.menu)}" data-sheet><a href="#/" data-nav="">${T(X.nav.home)}</a>${navLinks}<a class="btn btn-gold" href="#/check" style="margin-top:24px;align-self:flex-start;font:600 17px/1 var(--text)">${T(X.nav.header_button)}</a></nav>`
   const footer = `
   <footer class="ftr"><div class="wrap">
+    <p class="ftr-line" lang="en" dir="ltr">${esc(C.tagline)}</p>
     <div class="ftr-g">
       <div><a class="logo" href="#/"><img src="img/sig-gold.svg" alt="${esc(C.businessName)}" width="207" height="34" loading="lazy"></a>
         <p style="margin-top:20px">${T(C.newsletter.label)}</p>
@@ -502,7 +528,7 @@ function render(L) {
     </div>
     <div class="ftr-b"><span>${T(X.footer.rights.replace('{year}', '2026'))}</span><span><a href="#/privacy">${T(X.footer.privacy)}</a> · <a href="#/accessibility">${T(X.footer.accessibility)}</a></span></div>
   </div></footer>
-  <div class="bar"><a class="btn btn-gold" href="#/check">${T(X.nav.header_button)}</a><a class="wa" href="${wa(X.msg.whatsapp_prefill)}" target="_blank" rel="noopener" aria-label="${esc(X.cta.whatsapp)}">${ICON.wa}</a></div>
+  <div class="bar"><a class="btn btn-gold bar-check" href="#/check">${T(X.nav.header_button)}</a><a class="btn btn-gold bar-book" href="#/book">${T(X.cta.book)}</a><a class="wa" href="${wa(X.msg.whatsapp_prefill)}" target="_blank" rel="noopener" aria-label="${esc(X.cta.whatsapp)}">${ICON.wa}</a></div>
   <a class="wa-chip" href="${wa(X.msg.whatsapp_prefill)}" target="_blank" rel="noopener" aria-label="${esc(X.cta.whatsapp)}">${ICON.wa}<span>${T(X.cta.whatsapp)}</span></a>
   <dialog class="film" data-dialog aria-label="${esc(U.film)}"><button class="x" type="button" data-close aria-label="${esc(U.closeFilm)}">${ICON.x}</button><div class="box"></div><p class="cap"></p></dialog>`
 

@@ -5,8 +5,9 @@ const COPY = window.COPY, VIDS = window.VIDS;
 const root = document.documentElement;
 const mqRM = matchMedia('(prefers-reduced-motion: reduce)');
 const conn = navigator.connection || {};
-const STATIC = mqRM.matches || conn.saveData === true || (navigator.deviceMemory && navigator.deviceMemory <= 2) || /[?&]static\b/.test(location.search);
-if (STATIC) root.classList.add('static');
+// the head script decides the tier before first paint (html starts as .static, so JS-off is the stacked page)
+const STATIC = root.classList.contains('static');
+const PRERENDER = /[?&]prerender\b/.test(location.search);
 const phone = () => innerWidth <= 760;
 
 let L = 'he';
@@ -76,8 +77,9 @@ const CASE_IMG = { amdocs: 'case-038', maccabi: 'case-022', seat: 'case-055', 'p
 const CASE_FILM = slug => (X.video_library.proof.find(v => v.case === slug) || {}).id;
 
 // ---------- chrome ----------
-function chrome() {
+function chrome(render = true) {
   root.lang = L; root.dir = L === 'he' ? 'rtl' : 'ltr';
+  if (render) {
   const navKeys = ['story', 'launch', 'partnership', 'work', 'about', 'brands', 'watch', 'course'];
   const links = navKeys.map(k => `<a href="${href(k)}" data-r="${k}">${t(X.nav[k])}</a>`).join('');
   document.getElementById('hdr').innerHTML = `
@@ -95,6 +97,7 @@ function chrome() {
     <a class="wa" href="${wa()}" target="_blank" rel="noopener" aria-label="${esc(X.cta.whatsapp)}">${ICON.wa}</a>`;
   document.getElementById('chip').outerHTML = `<a id="chip" class="chip" href="${wa()}" target="_blank" rel="noopener"><i>${ICON.wa}</i>${t(X.cta.whatsapp)}</a>`;
   document.getElementById('ftr').innerHTML = footer();
+  }
   document.getElementById('lang').onclick = () => { L = L === 'he' ? 'en' : 'he'; try { localStorage.setItem('tl-lang', L); } catch (e) {} boot(); };
   const mb = document.querySelector('.menu-btn'), menu = document.getElementById('menu');
   const openMenu = o => { menu.classList.toggle('open', o); mb.setAttribute('aria-expanded', o); document.body.style.overflow = o ? 'hidden' : '';
@@ -120,7 +123,7 @@ function footer() {
         <a href="${wa()}" target="_blank" rel="noopener" aria-label="${esc(X.cta.whatsapp)}">${ICON.wa}</a>
         <a href="tel:${esc(tel)}" aria-label="${esc(X.form.phone)}">${ICON.phone}</a>
         <a href="mailto:${esc(T.contact.email)}" aria-label="${esc(X.form.email)}">${ICON.mail}</a></div>
-      <p class="muted" style="margin:16px 0 0;font-size:15px"><a href="tel:${esc(tel)}" style="text-decoration:none" dir="ltr">${esc(telLocal)}</a> · <a href="mailto:${esc(T.contact.email)}" style="text-decoration:none">${esc(T.contact.email)}</a></p></div>
+      <p class="muted contact-line" style="margin:16px 0 0;font-size:15px"><a href="tel:${esc(tel)}" style="text-decoration:none" dir="ltr">${esc(telLocal)}</a> · <a href="mailto:${esc(T.contact.email)}" style="text-decoration:none">${esc(T.contact.email)}</a></p></div>
     <div><h4>${t(X.nav.menu)}</h4><div class="links">${['story', 'launch', 'partnership', 'work', 'about', 'brands', 'watch', 'course'].map(k => `<a href="${href(k)}">${t(X.nav[k])}</a>`).join('')}</div></div>
     <div><h4>${t(T.newsletter.label)}</h4>
       <form class="nl" onsubmit="event.preventDefault();this.querySelector('.err').textContent=${esc(JSON.stringify(X.form.success))}">
@@ -193,9 +196,9 @@ function home() {
 <section class="sec" aria-labelledby="how-t" style="padding-top:0"><div class="wrap">
   <h2 class="sec-t" id="how-t">${t(H.how.title)}</h2>
   <div class="sheet">
-    <a class="cell" href="${href('check')}" style="text-decoration:none"><span class="fn">1 / 3</span><h3>${t(H.how.step1)}</h3><p>${t(check.summary)}</p></a>
-    <a class="cell" href="${href('book')}" style="text-decoration:none"><span class="fn">2 / 3</span><h3>${t(H.how.step2)}</h3><p>${t(svc('clarity-session').summary)}</p></a>
-    <div class="cell"><span class="fn">3 / 3</span><h3>${t(H.how.step3_title)}</h3><p>${t(H.how.step3_body)}</p></div>
+    <a class="cell lit" href="${href('check')}" style="text-decoration:none"><span class="big" aria-hidden="true">1</span><div><h3>${t(H.how.step1)}</h3><p>${t(check.summary)}</p><p class="muted" style="font-size:14px;margin-top:8px">${t(check.format)}</p><span class="go">${t(X.cta.check)} ${arr}</span></div></a>
+    <a class="cell" href="${href('book')}" style="text-decoration:none"><span class="big" aria-hidden="true">2</span><div><h3>${t(H.how.step2)}</h3><p>${t(svc('clarity-session').summary)}</p><p class="muted" style="font-size:14px;margin-top:8px">${t(svc('clarity-session').format)}</p><span class="go">${t(X.cta.book)} ${arr}</span></div></a>
+    <div class="cell"><span class="big" aria-hidden="true">3</span><div><h3>${t(H.how.step3_title)}</h3><p>${t(H.how.step3_body)}</p><p style="display:flex;gap:6px;flex-wrap:wrap;margin-top:14px">${['story', 'launch', 'partnership'].map(k => `<a class="btn btn-ghost btn-sm" href="${href(k)}">${t(svc(k).title)}</a>`).join('')}</p></div></div>
   </div></div></section>
 
 <section class="sec" aria-labelledby="proof-t" style="padding-top:0"><div class="wrap">
@@ -245,7 +248,7 @@ function home() {
   <div class="faq">${H.faq.items.map((f, i) => `<div class="qa"><button type="button" aria-expanded="false" aria-controls="qa${i}"><span>${t(f.q)}</span><span class="pl" aria-hidden="true"></span></button><div class="a" id="qa${i}" role="region"><div><p>${t(f.a)}</p></div></div></div>`).join('')}</div>
 </div></section>
 
-<section class="final" aria-labelledby="final-t">
+<section class="final" id="book" aria-labelledby="final-t">
   <h2 class="sr" id="final-t">${t(H.final.heading)}</h2>
   <div aria-hidden="true" style="overflow:hidden"><div class="mq">${Array(8).fill(`<span>${t(H.final.heading)}</span>`).join('')}</div></div>
   <div class="acts">${goldCheck(X.cta.check)}${waBtn(X.msg.whatsapp_prefill, X.cta.whatsapp)}</div>
@@ -260,17 +263,18 @@ float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h
 void main(){
  vec2 uv=gl_FragCoord.xy/uRes;float a=uRes.x/uRes.y;vec2 p=vec2(uv.x*a,uv.y);
  float sx=uSide>0.?.9:.1;vec2 src=vec2(sx*a,1.1);vec2 tgt=vec2(uPool.x*a,uPool.y);
- vec2 gc=vec2(mix(.5,sx,.55)*a,a<1.?.97:.9);vec2 dg=(p-gc)/vec2(1.25,1.);float d2=dot(dg,dg);
- float glare=exp(-d2*2.2)*.42+exp(-d2*9.)*.38+exp(-d2*60.)*.35+exp(-abs(p.y-gc.y)*26.)*exp(-abs(p.x-gc.x)*1.1)*.28;
+ vec2 gc=vec2(mix(.5,sx,.8)*a,a<1.?1.:.98);vec2 dg=(p-gc)/vec2(1.25,1.);float d2=dot(dg,dg);
+ float glare=exp(-d2*3.)*.3+exp(-d2*14.)*.34+exp(-d2*70.)*.4+exp(-abs(p.y-gc.y)*30.)*exp(-abs(p.x-gc.x)*2.2)*.14;
  glare*=uGlare*(.92+.08*sin(uTime*.7));
- vec2 ax=normalize(tgt-src);vec2 v=p-src;float Lv=length(v);float ang=acos(clamp(dot(v/Lv,ax),-1.,1.));
- float cone=smoothstep(uWidth,uWidth*.3,ang);float along=dot(v,ax)/length(tgt-src);
- cone*=smoothstep(0.,.2,along)*(1.-smoothstep(1.,1.5,along))*(1.-.35*along);
- float fringe=max(smoothstep(uWidth*1.35,uWidth*.95,ang)-smoothstep(uWidth*.95,uWidth*.55,ang),0.);
+ vec2 at=mix(vec2(.5*a,.42),tgt,uTurn);float wd=mix(.36,uWidth,uTurn);
+ vec2 ax=normalize(at-src);vec2 v=p-src;float Lv=length(v);float ang=acos(clamp(dot(v/Lv,ax),-1.,1.));
+ float cone=smoothstep(wd,wd*.3,ang);float along=dot(v,ax)/length(at-src);
+ cone*=smoothstep(0.,.2,along)*(1.-smoothstep(1.,1.6,along))*(1.-.35*along);
+ float fringe=max(smoothstep(wd*1.35,wd*.95,ang)-smoothstep(wd*.95,wd*.55,ang),0.);
  vec2 q=(p-tgt)/vec2(.34*uPow,.08*uPow);float pool=exp(-dot(q,q));
  mat2 R=mat2(.8,-.6,.6,.8);float sp=n(R*p*84.+vec2(uTime*.35,-uTime*.7));float sp2=n(R*R*p*47.-vec2(uTime*.2,uTime*.45));
  float dust=smoothstep(.78,.97,sp)*.9+smoothstep(.8,.98,sp2)*.6+n(p*5.+vec2(0.,-uTime*.06))*.35;
- float beam=(cone*(.22+.55*dust)+pool*.42)*uTurn;
+ float beam=cone*(.22+.55*dust)*mix(.75,1.,uTurn)+pool*.42*uTurn;
  vec2 tc=clamp(uv,uText.xy,uText.zw);float td=length((uv-tc)*vec2(a,1.));float tf=mix(.55,1.,smoothstep(0.,.32,td));
  vec3 gold=mix(vec3(.87,.69,.31),vec3(.99,.97,.69),clamp(cone*1.3+pool*.6,0.,1.));
  vec3 col=(gold*beam+vec3(1.,.96,.86)*glare)*tf+vec3(.24,.28,.38)*fringe*.12*uTurn;
@@ -315,15 +319,15 @@ function initFlip() {
   const io = new IntersectionObserver(es => { inView = es[0].isIntersecting; if (inView) loop(); }, { rootMargin: '100px' }); io.observe(flip);
   function update() {
     const r = flip.getBoundingClientRect(); p = cl(-r.top / (flip.offsetHeight - innerHeight));
-    let act = 0;
+    let act = 0, best = -1;
     phs.forEach((el, i) => { const [a, b, c, d] = W[i]; const o = i === 0 ? 1 - ramp(p, c, d) : band(p, a, b, c, d);
-      el.style.opacity = o.toFixed(3); el.classList.toggle('on', o > .02); el.style.transform = `translateY(${((1 - o) * (i === 0 ? -16 : 16)).toFixed(1)}px)`; if (o > .5) act = i; });
+      el.style.opacity = o.toFixed(3); el.classList.toggle('on', o > .02); el.style.transform = `translateY(${((1 - o) * (i === 0 ? -16 : 16)).toFixed(1)}px)`; if (o > best) { best = o; act = i; } });
     ctr.textContent = '0' + (act + 1);
     const step = (p - .14) / .04;
     pains.forEach((li, i) => { li.classList.toggle('lit', step >= i && step < i + 1.6); li.classList.toggle('done', step >= i + 1.6); });
     words.forEach((w, i) => { const q = ease(ramp(p, .42 + i * .02, .45 + i * .022)); w.style.transform = `translateY(${((1 - q) * 105).toFixed(1)}%)`; });
     const turn = ease(ramp(p, .22, .44));
-    prof.style.opacity = (((phone() ? .58 : .4) + (phone() ? .42 : .6) * turn) * (1 - ramp(p, .38, .47))).toFixed(3);
+    prof.style.opacity = (((phone() ? .7 : .62) + (phone() ? .3 : .38) * turn) * (1 - ramp(p, .38, .47))).toFixed(3);
     if (p > .2) loadVideo();
     stage.style.setProperty('--glare', (1 - ease(ramp(p, .24, .42))).toFixed(3)); stage.style.setProperty('--turn', turn.toFixed(3));
     stage.style.setProperty('--part', band(p, .62, .68, .82, .86).toFixed(3)); stage.style.setProperty('--chk', ramp(p, .84, .9).toFixed(3));
@@ -394,9 +398,11 @@ function openVid(id, vert) {
 // ---------- route pages ----------
 const rhero = (title, lead, pic_, alt, short) => `<header class="rhero${short ? ' short' : ''}">${pic_ ? pic(pic_, pic_ + '-m', alt, 'pic', false) : ''}<div class="wrap"><h1>${t(title)}</h1>${lead ? `<p class="lead">${t(lead)}</p>` : ''}</div></header>`;
 const endcall = (heading, kind) => `<section class="endcall"><div class="wrap"><h2>${t(heading)}</h2><div class="acts">${kind === 'book' ? bookBtn() : goldCheck(X.cta.check)}${waBtn(kind === 'book' ? svc('clarity-session').ctaText : X.msg.whatsapp_prefill)}</div></div></section>`;
-const vcard = v => VIDS[v.id] ? `<button class="vcard" type="button" data-vid="${v.id}" ${VIDS[v.id].vert ? 'data-vert="1"' : ''}>${img('v-' + v.id.slice(4), v.caption || v.label)}<span class="pi">${ICON.play}</span><span class="cap">${t(v.caption && !/^\{/.test(v.caption) ? v.caption : v.label)}${/^\{/.test(v.caption || '') ? ` <span class="tbd">${esc(v.caption)}</span>` : ''}</span></button>` : '';
+const vlabel = v => { const c = v.case && T.caseStudies.find(x => x.slug === v.case); if (c) return c.client + ' · ' + c.title;
+  const d = T.videos.find(x => x.video === 'dossier:' + v.id); return d ? d.description : v.label; };
+const vcard = v => VIDS[v.id] ? `<button class="vcard" type="button" data-vid="${v.id}" ${VIDS[v.id].vert ? 'data-vert="1"' : ''}>${img('v-' + v.id.slice(4), v.caption || v.label)}<span class="pi">${ICON.play}</span><span class="cap">${v.caption && !/^\{/.test(v.caption) ? t(v.caption) : `${t(X.pages.work.voices_heading)} · <span class="tbd">${esc(v.caption || '{name_to_confirm}')}</span>`}</span></button>` : '';
 const FILM_IMG = { ...Object.fromEntries(['043', '046', '067', '052', '049', '018', '016', '035', '019', '053', '021', '006', '002', '041', '039', '045'].map(i => ['vid-' + i, 'film-' + i])), 'vid-038': 'case-038', 'vid-022': 'case-022', 'vid-055': 'case-055', 'vid-020': 'case-020', 'vid-060': 'film-060', 'vid-042': 'film-042', 'vid-013': 'film-013', 'vid-058': 'film-058', 'vid-024': 'film-024', 'vid-027': 'film-027', 'vid-036': 'stage-d' };
-const fcard = v => `<button class="fcard${FILM_IMG[v.id] ? '' : ' noposter'}" type="button" data-vid="${v.id}">${FILM_IMG[v.id] ? img(FILM_IMG[v.id], v.label) : ''}<span class="cap"${FILM_IMG[v.id] ? '' : ' style="position:static;background:none;padding:0"'}>${t(v.label)}</span></button>`;
+const fcard = v => `<button class="fcard${FILM_IMG[v.id] ? '' : ' noposter'}" type="button" data-vid="${v.id}">${FILM_IMG[v.id] ? img(FILM_IMG[v.id], vlabel(v)) : ''}<span class="cap"${FILM_IMG[v.id] ? '' : ' style="position:static;background:none;padding:0"'}>${t(vlabel(v))}</span></button>`;
 
 function trackPage(k) {
   const s = svc(k), P = X.pages[k], parts = s.body.split(/\n\n+/);
@@ -482,7 +488,7 @@ function watchPage() {
     <div class="series"><div class="tabs" role="tablist">${P.series.map((s, i) => `<button type="button" role="tab" id="tab-${s.key}" aria-selected="${s.key === first}" aria-controls="pan-${s.key}" tabindex="${s.key === first ? 0 : -1}">${t(s.name)}</button>`).join('')}</div>
     <div>${P.series.map((s, i) => { const v = items[s.key] || [];
       return `<div role="tabpanel" id="pan-${s.key}" aria-labelledby="tab-${s.key}" ${s.key !== first ? 'hidden' : ''}><p class="lead" style="margin-top:0">${t(s.line)}</p>
-        ${v.length ? `<div class="voices">${v.map(x => VIDS[x.id] && ['vid-007', 'vid-004', 'vid-011', 'vid-012', 'vid-048', 'vid-059', 'vid-010', 'vid-040', 'vid-009', 'vid-030'].includes(x.id) ? vcard(x) : `<button class="vcard" type="button" data-vid="${x.id}">${FILM_IMG[x.id] ? `<img src="img/${FILM_IMG[x.id]}.webp" alt="${esc(x.label)}" loading="lazy" style="object-position:50% 50%">` : ''}<span class="pi">${ICON.play}</span><span class="cap">${t(x.label)}</span></button>`).join('')}</div>` : `<div class="empty">${t(P.empty_series)}</div>`}
+        ${v.length ? `<div class="voices">${v.map(x => VIDS[x.id] && ['vid-007', 'vid-004', 'vid-011', 'vid-012', 'vid-048', 'vid-059', 'vid-010', 'vid-040', 'vid-009', 'vid-030'].includes(x.id) ? vcard(x) : `<button class="vcard" type="button" data-vid="${x.id}">${FILM_IMG[x.id] ? `<img src="img/${FILM_IMG[x.id]}.webp" alt="${esc(vlabel(x))}" loading="lazy" style="object-position:50% 50%">` : ''}<span class="pi">${ICON.play}</span><span class="cap">${t(vlabel(x))}</span></button>`).join('')}</div>` : `<div class="empty">${t(P.empty_series)}</div>`}
         <div style="margin-top:28px">${goldCheck(P.after_video)}</div></div>`; }).join('')}</div></div></div></section>${endcall(X.home.final.heading, 'check')}`;
 }
 function coursePage() {
@@ -556,7 +562,7 @@ function thanksPage() {
   const P = X.pages.thanks, fn = firstName(), lib = X.video_library;
   return `<div class="sit"><div class="card" style="text-align:center;max-width:980px">
     <h1 class="develop">${fn ? t(P.title.replace('{first_name}', fn)) : t(P.title)}</h1><p class="lead" style="margin:0 auto 50px">${t(P.body)}</p>
-    <p class="k">${t(P.meanwhile)}</p><div class="voices" style="text-align:start">${[lib.boots[0], ...lib.voices.slice(0, 3)].map(v => VIDS[v.id] && FILM_IMG[v.id] ? `<button class="vcard" type="button" data-vid="${v.id}">${img(FILM_IMG[v.id], v.label)}<span class="pi">${ICON.play}</span><span class="cap">${t(v.label)}</span></button>` : vcard(v)).join('')}</div>
+    <p class="k">${t(P.meanwhile)}</p><div class="voices" style="text-align:start">${[lib.boots[0], ...lib.voices.slice(0, 3)].map(v => VIDS[v.id] && FILM_IMG[v.id] ? `<button class="vcard" type="button" data-vid="${v.id}">${img(FILM_IMG[v.id], vlabel(v))}<span class="pi">${ICON.play}</span><span class="cap">${t(vlabel(v))}</span></button>` : vcard(v)).join('')}</div>
     <p style="margin-top:40px"><a class="btn btn-ghost" href="#/snapshot">${esc(U.sample)} ${arr}</a></p></div></div>`;
 }
 function snapshotPage() {
@@ -575,7 +581,7 @@ function snapshotPage() {
 }
 function bookPage() {
   const P = X.pages.book, s = svc('clarity-session'), ph = X.placeholders;
-  const days = [...Array(7)].map((_, i) => { const d = new Date(); d.setDate(d.getDate() + i + 1); return d; });
+  const days = []; for (let d = new Date(), i = 0; days.length < 5 && i < 14; i++) { d = new Date(d); d.setDate(d.getDate() + 1); if (d.getDay() < 5) days.push(d); }
   const fmtD = d => new Intl.DateTimeFormat(L === 'he' ? 'he-IL' : 'en-GB', { weekday: 'short' }).format(d);
   const slots = ['09:30', '11:00', '13:00', '15:30', '17:00', '19:00'];
   const fld = (id, l, ty = 'text', ac = '', extra = '') => `<label class="fld"><input id="k-${id}" type="${ty}" placeholder=" " ${ac ? `autocomplete="${ac}"` : ''} ${extra} required><label for="k-${id}">${t(l)}</label><span class="err"></span></label>`;
@@ -618,7 +624,7 @@ function notFound() {
 }
 
 // ---------- router ----------
-function route() {
+function route(e, render = true) {
   flipState && flipState.stop(); flipState = null;
   const h = location.hash.replace(/^#\/?/, ''), [r, sub] = h.split('/');
   const main = document.getElementById('main');
@@ -626,12 +632,14 @@ function route() {
   const pages = { '': home, story: () => trackPage('story'), launch: () => trackPage('launch'), partnership: partnershipPage, work: () => workPage(sub), about: aboutPage,
     brands: brandsPage, watch: watchPage, course: coursePage, check: () => checkPage(sub), thanks: thanksPage, snapshot: snapshotPage, book: bookPage, booked: bookedPage,
     privacy: () => legalPage('privacy'), accessibility: () => legalPage('accessibility') };
-  main.innerHTML = (pages[r] || notFound)();
+  if (render) main.innerHTML = (pages[r] || notFound)();
+  root.classList.toggle('route-check', r === 'check');
   document.title = seo.title; document.querySelector('meta[name=description]').content = seo.description;
   document.querySelectorAll('.nav a').forEach(a => a.toggleAttribute('aria-current', a.dataset.r === r) || a.removeAttribute('aria-current'));
   document.querySelectorAll('.nav a').forEach(a => a.dataset.r === r ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
   document.getElementById('chip').style.display = r === 'check' ? 'none' : '';
-  window.scrollTo(0, 0);
+  if (render) window.scrollTo(0, 0);
+  if (PRERENDER) return;
   if (!r) initFlip();
   wire(); wireCheck(); wireBook(); wireTabs(); wireFilter();
   if (r && r !== 'check') main.querySelector('h1')?.setAttribute('tabindex', '-1');
@@ -651,9 +659,12 @@ function wireFilter() {
 }
 function onScroll() { document.getElementById('hdr').classList.toggle('solid', scrollY > 40 && !(location.hash.replace(/^#\/?/, '') === '' && scrollY < (document.getElementById('flip')?.offsetHeight || 0) - innerHeight)); }
 addEventListener('scroll', onScroll, { passive: true });
-function boot() { T = COPY[L]; X = T.extras; U = UI[L]; A = ALT[L]; chrome(); route(); }
-addEventListener('hashchange', route);
+function boot() { T = COPY[L]; X = T.extras; U = UI[L]; A = ALT[L];
+  // the Hebrew Home is already in the HTML (prerendered by build): enhance it in place on first boot
+  const pre = !boot.done && !PRERENDER && L === 'he' && document.getElementById('main').dataset.pre === 'he' && !location.hash.replace(/^#\/?/, '');
+  boot.done = true; chrome(!pre); route(null, !pre); root.classList.remove('wait-en'); }
+addEventListener('hashchange', () => route());
 addEventListener('keydown', e => { if (e.key === 'Escape') { const m = document.getElementById('menu'); if (m.classList.contains('open')) m.querySelector('.close').click(); } });
 // fonts are inlined; wait for them (at most 700 ms) so the first layout is the final one (no shift)
-Promise.race([Promise.all(['400 1em Bellefair', '400 1em Plex', '500 1em Plex'].map(f => document.fonts.load(f, 'אבג abc'))), new Promise(r => setTimeout(r, 700))]).then(boot, boot);
+Promise.race([Promise.all(['400 1em Bellefair', '400 1em Plex', '500 1em Plex'].map(f => document.fonts.load(f, 'אבג abc'))), new Promise(r => setTimeout(r, 400))]).then(boot, boot);
 })();

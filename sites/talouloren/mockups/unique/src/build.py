@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Assemble dist/index.html from page.html + page.css + page.js and the passed copy (he.json, en.json).
 The copy is inlined verbatim; video embed ids come from dossier.json (source_url) for every video the page links.
+Then prerender.mjs writes the Hebrew Home into the HTML (round 7: whole without JavaScript).
 Usage: python3 sites/talouloren/mockups/unique/src/build.py"""
 import json, os, re
 H = os.path.dirname(os.path.abspath(__file__))
@@ -26,3 +27,5 @@ page = page.replace('/*COPY*/', dump(copy)).replace('/*VIDS*/', dump(vids))
 os.makedirs(f'{H}/../dist', exist_ok=True)
 open(f'{H}/../dist/index.html', 'w').write(page)
 print('dist/index.html', len(page.encode()) // 1024, 'KB,', len(vids), 'videos')
+import subprocess
+subprocess.run(['node', f'{H}/prerender.mjs'], check=True, cwd=R)

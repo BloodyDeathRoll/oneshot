@@ -34,6 +34,7 @@ ff -ss 43.05 -t 4.3 -i "$S36" -vf "setpts=1.4*PTS,$CROP,fps=25,format=yuv420p" -
 ff -ss 45 -i "$S36" -frames:v 1 "$T/stage.png"
 ff -ss 63 -i "$S36" -frames:v 1 "$T/profile.png"      # Tal in profile, half his face lit
 ff -ss 14 -i "$(src 033)" -frames:v 1 "$T/tal033.png"  # vid-033: Tal close on pure black
+ff -ss 28 -i "$(src 027)" -frames:v 1 "$T/band.png"     # vid-027: Tal at the workshop, arms open to the room
 
 # ---- posters of the films used in slots (embed URL + poster). Frame times picked from the sheets.
 pf() { ff -ss "$2" -i "$(src "$1")" -frames:v 1 "$T/p$1.png"; }
@@ -54,7 +55,15 @@ def crop(im, ratio, fx=.5, fy=.5):
     nh = round(w / ratio); y = round((h - nh) * fy); return im.crop((0, y, w, y + nh))
 def unbox(im):
     g = ImageOps.grayscale(im).point(lambda v: 255 if v < 235 else 0); bb = g.getbbox()
-    return im.crop(bb) if bb and (bb[2]-bb[0])*(bb[3]-bb[1]) > im.width*im.height*0.3 else im
+    im = im.crop(bb) if bb and (bb[2]-bb[0])*(bb[3]-bb[1]) > im.width*im.height*0.3 else im
+    # trim black letterbox bars: rows whose brightest pixel stays under 24
+    g = ImageOps.grayscale(im); w, h = g.size; px = g.load()
+    dark = lambda y: max(px[x, y] for x in range(0, w, 4)) < 24
+    t = 0
+    while t < h // 4 and dark(t): t += 1
+    b = h
+    while b > h * 3 // 4 and dark(b - 1): b -= 1
+    return im.crop((0, t, w, b)) if (t or b < h) else im
 def mono(im, c=1.08): return ImageEnhance.Contrast(ImageOps.grayscale(im).convert('RGB')).enhance(c)
 def out(im, name, width, q=78):
     if im.width > width: im = im.resize((width, round(im.height * width / im.width)), Image.LANCZOS)
@@ -69,8 +78,7 @@ out(load(f'{A}/img-001.jpg').crop((0, 0, 1080, 560)), 'tal-001', 1080, 80)
 # Shahar's work strip, one ratio (4:3), kept in colour, small
 for i in ('107', '110', '105'): out(crop(load(f'{A}/img-{i}.jpg'), 4/3), f'work-{i}', 640, 78)
 # full-bleed and route heroes, never past native width
-out(load(f'{A}/img-021.jpg').crop((0, 360, 2000, 1334)), 'band-d', 2000, 74);   # below the L'Oréal sign: the band must not read as a partnership with L'Oréal
-b21 = load(f'{A}/img-021.jpg'); out(crop(b21.crop((0, 534, 2000, 1334)), 4/5, .42), 'band-m', 640, 78)   # phone: the doorway and the people, below the sign
+bd = mono(load(f'{T}/band.png'), 1.12); out(bd, 'band-d', 1920, 74); out(crop(bd, 4/5, .3), 'band-m', 720, 76)   # partnership band (round 7: img-021 crop was unreadable)
 for i, w in (('025', 1500), ('029', 1500), ('014', 2000), ('019', 2000), ('022', 1500)):
     im = load(f'{A}/img-{i}.jpg'); out(im, f'img-{i}', w, 76); out(crop(im, 4/5, .62 if i == '025' else .5), f'img-{i}-m', 800, 76)
 # case and film posters, graded to black and white like the archive (the page has one hue: gold)
@@ -82,13 +90,20 @@ for i in ('007', '004', '011', '012', '048', '059', '010', '040', '009', '030'):
 PY
 for c in gold white black; do cp "$A/sig-$c.svg" "$D/img/sig-$c.svg"; done
 
-# ---- fonts (OFL, Google Fonts), Hebrew + Latin subsets
+# ---- fonts (OFL, Google Fonts), subset with text= to the characters of the passed copy + the page's own
+# labels (round 7: cuts the inlined fonts from ~88 KB to a few KB each, so the first paint is not held up)
 UA='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36'
-curl -fsS -A "$UA" 'https://fonts.googleapis.com/css2?family=Bellefair&family=IBM+Plex+Sans+Hebrew:wght@400;500&display=swap' > "$T/f.css"
-pick() { awk -v fam="'$1';" -v w="$2" -v s="/* $3 */" '$0==s{f=1;next} /^\/\*/{f=0} f&&$0~fam{a=1} f&&a&&$0~"font-weight: "w{b=1} f&&a&&b&&/src: url/{match($0,/https:[^)]*/);print substr($0,RSTART,RLENGTH);exit}' "$T/f.css"; }
-for sub in hebrew latin; do
-  curl -fsS -o "$D/fonts/bellefair-$sub.woff2" "$(pick Bellefair 400 $sub)"
-  curl -fsS -o "$D/fonts/plex-400-$sub.woff2" "$(pick 'IBM Plex Sans Hebrew' 400 $sub)"
-  curl -fsS -o "$D/fonts/plex-500-$sub.woff2" "$(pick 'IBM Plex Sans Hebrew' 500 $sub)"
-done
+rm -f "$D"/fonts/*.woff2
+TXT=$(python3 - <<'PY'
+import json, urllib.parse
+s = set(chr(c) for c in range(32, 127)) | set('׳״־–—·…’‘“”€₪©✓←→×')
+for l in ('he', 'en'): s |= set(open(f'sites/talouloren/copy/{l}.json', encoding='utf-8').read())
+s |= set(open('sites/talouloren/mockups/unique/src/page.js', encoding='utf-8').read())
+print(urllib.parse.quote(''.join(sorted(c for c in s if c.isprintable()))))
+PY
+)
+sub() { curl -fsS -A "$UA" "https://fonts.googleapis.com/css2?family=$1&text=$TXT&display=block" | grep -o 'https://[^)]*' | head -1; }
+curl -fsS -o "$D/fonts/bellefair.woff2" "$(sub Bellefair)"
+curl -fsS -o "$D/fonts/plex-400.woff2" "$(sub 'IBM+Plex+Sans+Hebrew:wght@400')"
+curl -fsS -o "$D/fonts/plex-500.woff2" "$(sub 'IBM+Plex+Sans+Hebrew:wght@500')"
 ls -la "$D/img" "$D/video/" "$D/fonts"

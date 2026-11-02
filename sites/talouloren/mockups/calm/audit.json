@@ -1,23 +1,23 @@
 {
  "slug": "talouloren",
  "variant": "calm",
- "measured_at": "2026-11-02T17:11:13.379Z",
+ "measured_at": "2026-11-02T17:33:01.921Z",
  "first_load": {
   "requests": 7,
   "hosts": [
-   "localhost:8980"
+   "localhost:8987"
   ],
   "third_party_hosts": [],
-  "bytes_total": 567517,
-  "bytes_html": 485602,
+  "bytes_total": 559725,
+  "bytes_html": 468404,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 0,
-  "bytes_images": 81915,
-  "largest_image_bytes": 24580,
-  "lcp_ms": 1224,
+  "bytes_images": 91321,
+  "largest_image_bytes": 24586,
+  "lcp_ms": 1056,
   "cls": 0,
-  "dcl_ms": 2999
+  "dcl_ms": 2970
  },
  "scroll": {
   "early": {
@@ -25,7 +25,7 @@
    "shifts": [
     {
      "value": 0.008,
-     "at_ms": 1186,
+     "at_ms": 1031,
      "y": 0,
      "sources": [
       "div.hero-c",
@@ -97,10 +97,10 @@
   "note": "no drawer; every action is a plain link"
  },
  "a11y": {
-  "images": 95,
+  "images": 96,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 78,
-  "tapables": 49,
+  "tapables": 50,
   "tapables_under_44px": 5,
   "tapables_under_44px_examples": [
    "סיפור 34x44",
@@ -120,6 +120,7 @@
    "H3",
    "H3",
    "H3",
+   "H2",
    "H2",
    "H3",
    "H3",
@@ -261,9 +262,9 @@
   "lang": "he"
  },
  "no_js": {
-  "text_length": 17033,
+  "text_length": 16744,
   "booking_links_reachable": 1,
-  "visible_images": 95
+  "visible_images": 96
  },
  "reduced_motion": {
   "canvases": 0,

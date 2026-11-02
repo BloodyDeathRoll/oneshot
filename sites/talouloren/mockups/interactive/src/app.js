@@ -45,11 +45,11 @@
     requestAnimationFrame(onScroll);
     setTimeout(layoutPin, 50);
   }
-  addEventListener('hashchange', function () { route(false); closeMenu(); });
+  addEventListener('hashchange', function () { route(false); closeMenu(true); });
 
   /* ---------- menu */
   var menu = $('#menu'), menuBtn = $('[data-menu]');
-  function closeMenu() { if (menu.hidden) return; menu.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); setTimeout(function () { menu.hidden = true; }, 200); }
+  function closeMenu(keep) { if (menu.hidden) return; menu.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); setTimeout(function () { menu.hidden = true; }, 200); if (!keep) menuBtn.focus(); }
   menuBtn.addEventListener('click', function () {
     if (!menu.hidden) return closeMenu();
     menu.hidden = false; menuBtn.setAttribute('aria-expanded', 'true');
@@ -57,12 +57,17 @@
     requestAnimationFrame(function () { menu.classList.add('open'); $('a', menu).focus(); });
   });
   addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeMenu(); closeDrawer(); closeLb(); } });
+  menu.addEventListener('keydown', function (e) { if (e.key !== 'Tab') return; var f = $$('a', menu), i = f.indexOf(d.activeElement); if (e.shiftKey && i === 0) { e.preventDefault(); menuBtn.focus(); } else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); menuBtn.focus(); } });
+  menuBtn.addEventListener('keydown', function (e) { if (e.key === 'Tab' && !menu.hidden) { e.preventDefault(); var f = $$('a', menu); (e.shiftKey ? f[f.length - 1] : f[0]).focus(); } });
 
   /* ---------- the spot: pointer (fine) or a slow drift (touch), lerp 0.12 */
   var sp = { x: innerWidth * .62, y: innerHeight * .42, tx: 0, ty: 0, active: false, last: 0 };
   sp.tx = sp.x; sp.ty = sp.y;
   var heroFilm = $('.hero-film');
+  if (heroFilm) { var r0 = heroFilm.getBoundingClientRect(); sp.x = sp.tx = r0.left + r0.width * .55; sp.y = sp.ty = r0.top + r0.height * .36; }
   function restOn(el) { var r = el.getBoundingClientRect(); sp.tx = r.left + r.width * .5; sp.ty = r.top + r.height * .5; }
+  // the light lands on the person: rest point is the face in the film (vid-033 crop: x 55 %, y 36 %)
+  function restFace() { var r = heroFilm.getBoundingClientRect(); sp.tx = r.left + r.width * .55; sp.ty = r.top + r.height * (matchMedia('(max-width: 860px)').matches ? .42 : .36); }
   if (!RM) {
     addEventListener('pointermove', function (e) { if (e.pointerType === 'mouse' || e.pointerType === 'pen') { sp.tx = e.clientX; sp.ty = e.clientY; sp.last = performance.now(); } }, { passive: true });
     if (!FINE) {
@@ -71,16 +76,16 @@
       setInterval(function () {
         if (current && current.id !== 'home') return;
         var k = (performance.now() - t0) / 1000, hd = $('#h-hero');
-        if (k > 4 || !heroFilm) { restOn(hd); return; }
+        if (k > 3.2) { restFace(); return; }
         var r = heroFilm.getBoundingClientRect(), h = hd.getBoundingClientRect();
-        var a = (Math.sin(k * 1.4) + 1) / 2;
+        var a = (Math.sin(k * 2 - 1.57) + 1) / 2;
         sp.tx = (r.left + r.width * .58) * (1 - a) + (h.left + h.width * .5) * a;
         sp.ty = (r.top + r.height * .4) * (1 - a) + (h.top + h.height * .5) * a;
       }, 60);
     }
     (function tick() {
       // nothing moves while the visitor is idle on a fine pointer: rest on the headline after 4 s
-      if (FINE && performance.now() - sp.last > 4000 && current && current.id === 'home' && scrollY < innerHeight * .6) restOn($('#h-hero'));
+      if (FINE && performance.now() - sp.last > 2500 && current && current.id === 'home' && scrollY < innerHeight * .6) restFace();
       sp.x += (sp.tx - sp.x) * .12; sp.y += (sp.ty - sp.y) * .12;
       root.style.setProperty('--sx', sp.x.toFixed(1) + 'px');
       root.style.setProperty('--sy', sp.y.toFixed(1) + 'px');
@@ -120,6 +125,7 @@
   });
 
   /* ---------- scroll: the mirror's lines light at the centre, ladder words fill, method numbers fill, the pin */
+  var hdr = $('.hdr');
   var pains = $$('.pains li'), words = $$('.fw'), cases = $('.cases'), track = $('.cases-track');
   var pinOn = false;
   function layoutPin() {
@@ -143,27 +149,12 @@
       var over = track.scrollWidth - innerWidth;
       track.style.transform = 'translateX(' + ((root.dir === 'rtl' ? 1 : -1) * p * over).toFixed(1) + 'px)';
     }
+    $$('.stat-v').forEach(function (e) { if (e.getBoundingClientRect().top < vh * .85) e.classList.add('fill'); });
+    hdr.classList.toggle('scrolled', scrollY > 24 || (current && current.id !== 'home' && scrollY > 0));
     $$('.sig-draw').forEach(function (s) { if (s.getBoundingClientRect().top < vh * .95 && s.offsetParent) s.classList.add('drawn'); });
   }
   addEventListener('scroll', function () { requestAnimationFrame(onScroll); }, { passive: true });
   addEventListener('resize', function () { layoutPin(); onScroll(); });
-
-  /* ---------- stats count up once (final value is in the HTML) */
-  if (!RM && 'IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        if (!e.isIntersecting) return; io.unobserve(e.target);
-        var el = e.target, fin = el.textContent, m = fin.match(/[\d,]+/); if (!m) return;
-        var n = +m[0].replace(/,/g, ''), t0 = performance.now();
-        (function f(now) {
-          var k = Math.min(1, (now - t0) / 1200), v = Math.round(n * (1 - Math.pow(1 - k, 3)));
-          el.textContent = fin.replace(m[0], v.toLocaleString('en-US'));
-          if (k < 1) requestAnimationFrame(f); else el.textContent = fin;
-        })(t0);
-      });
-    }, { threshold: .6 });
-    $$('[data-count]').forEach(function (e) { io.observe(e); });
-  }
 
   /* ---------- marquees: duplicate once for a seamless loop */
   $$('[data-marquee] ul').forEach(function (u) { $$('li', u).forEach(function (li) { var c = li.cloneNode(true); c.setAttribute('aria-hidden', 'true'); $$('img', c).forEach(function (i) { i.alt = ''; }); u.appendChild(c); }); });
@@ -297,7 +288,7 @@
     var h = $('[data-bizname]'); h.innerHTML = biz ? trHtml(biz) : trHtml(t('x.pages.snapshot.title'));
     var th = $('#thanks h1'); th.innerHTML = trHtml(first ? t('x.pages.thanks.title').replace('{first_name}', first) : t('x.pages.thanks.title'));
     var b = store.get('tl-booked'), bk = $('[data-booked]');
-    if (b) { var dt = new Date(b.date); bk.innerHTML = trHtml(t('x.pages.booked.body').replace('{date}', dt.toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB', { weekday: 'long', day: 'numeric', month: 'long' })).replace('{time}', b.time)); }
+    if (b) { var dt = new Date(b.date); bk.innerHTML = trHtml(t('x.pages.booked.body').replace('{date}', dt.toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB', { day: 'numeric', month: 'long' })).replace('{time}', b.time)); }
     $$('[data-bookform]').forEach(function (f) { if (f.redraw) f.redraw(); });
   }
 
