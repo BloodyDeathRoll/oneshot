@@ -161,3 +161,28 @@ Remaining colons are left on purpose: content lists after a colon (snapshot cont
 - caseStudies[9] Rita outcome "קליפ יוצא דופן, וחשיפה גדולה" is vague: no view count or channel is sourced.
 - newsletter.label: topics and "one idea each" are framing; frequency unknown.
 - Same placeholders as the copywriter left: four confirmed case stories, Doron Shefer's outcome, prices, session length, capacity, turnaround, Check minutes.
+
+## Round 2 (2026-11-02): H1, V1, V2 from review.md round 1
+
+Only these three items. The copywriter's round-2 strings (F2-F6, K1) and everything else are untouched. Drafts not overwritten.
+
+**H1 · `caseStudies[6].challenge`** · Round 1 gave the goal to Calvin Klein as its wish; the source (`d.old_case_studies[obsessed-ck].text`) states the goal only, as the studio's move, and names no one who wanted it. Back to a subject-less goal, as in the draft, in a lighter shape. "650" stays out (as in the draft).
+
+- he old: קלווין קליין רצו להעצים את הדימוי של יועצות היופי שלהם בישראל.
+- he new: יועצות היופי של קלווין קליין בישראל, והעצמת הדימוי שלהן.
+- en old: Calvin Klein wanted to lift how its beauty advisors in Israel are seen.
+- en new: Calvin Klein's beauty advisors in Israel, and lifting how they are seen.
+
+**V1 · `services[4].body` p1 (/partnership)** · The headline (`d.pains[0]`, months alike) and the pain heading (segment "working but plateaued") already say the plateau; p1 said it a third time and nearly repeated the Home mirror lines. p1 now carries only the ceiling and being alone with the whole picture, in a new form, and sets up Tal's "אתם לא לבד. נשימה." Headline and pain heading kept: each carries its own source. No fact leaves the page: "the business works" and "every month alike" stay in the pain heading and headline. Being alone = `d.pains[3]` (nobody else sees the whole picture), already the source of "only you see the whole picture". `sources.md` unchanged (no fact moved between fields it maps).
+
+- he old: העסק עובד, ובכל זאת כל חודש דומה לקודם. יש תקרה, ואתם היחידים שרואים את כל התמונה.
+- he new: מעל העסק יש תקרה, ואתם עומדים מתחתיה לבד. רק אתם רואים את כל התמונה.
+- en old: The business works, and still every month looks like the last. There's a ceiling, and you're the only one who sees the whole picture.
+- en new: There's a ceiling over the business, and you're under it on your own, the only one holding the whole picture.
+
+**V2 · `copyBlocks[1].heading` (en)** · A question needs its question mark. he stays a statement.
+
+- en old: Does any of this sound familiar
+- en new: Does any of this sound familiar?
+
+Check: both JSON files parse; no `!` added; plural address kept.
