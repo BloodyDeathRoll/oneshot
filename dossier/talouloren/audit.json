@@ -1,0 +1,350 @@
+{
+ "slug": "talouloren",
+ "run_id": "2026-11-il-brand-02",
+ "auditor_version": "0.1.3",
+ "audited_at": "2026-11-02T16:30:00Z",
+ "scope": "site",
+ "measured": {
+  "url": "https://talouloren.com/",
+  "status": 200,
+  "clicks_to_book": 1,
+  "primary_action": {
+   "class": "whatsapp",
+   "label": "",
+   "href": "https://api.whatsapp.com/send?phone=+972504635536"
+  },
+  "cta_above_fold": true,
+  "terminal_above_fold": true,
+  "pages_crawled": 30,
+  "broken_pages": [],
+  "funnel_json": "funnel/funnel.json"
+ },
+ "findings": [
+  {
+   "id": "F1",
+   "area": "offer",
+   "severity": "high",
+   "title": "The paid session and the course are not linked from the home page, the menu or the pages a visitor reaches from them",
+   "what_a_visitor_meets": "A visitor who starts at talouloren.com finds no way to the one bookable offer (the 60-minute session at 1000 ₪) or to the BRAND YOURSELF course: the menu lists HOMEPAGE, SERVICES, VLOG OF SUCCESS, CASE STUDY and MEET TAL, and none of the eight pages walked links to /winning-personal-brand/ or /course/; they are reached from Linktree.",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/01-home-menu.png"
+    },
+    {
+     "type": "click_path",
+     "value": [
+      "/",
+      "☰ menu",
+      "HOMEPAGE · SERVICES · VLOG OF SUCCESS · CASE STUDY · MEET TAL"
+     ]
+    },
+    {
+     "type": "url",
+     "value": "funnel/walk.json (links_to_session: 0, links_to_course: 0 on every page)"
+    },
+    {
+     "type": "url",
+     "value": "https://linktr.ee/TALOULOREN"
+    }
+   ],
+   "playbook_ref": "§2 what does it cost; §5 booking path",
+   "fix_in_new_site": "services[] rows for the Focused Check, the Clarity Session, the sprints, Partnership and the course, each with its own page (services[].page) and ctaText, all in the main menu and on the home page",
+   "pitch_point": true,
+   "notes": "tools/funnel.mjs (30 pages, depth 3) never reached either page, which agrees with the walk"
+  },
+  {
+   "id": "F2",
+   "area": "cta",
+   "severity": "medium",
+   "title": "The home button \"קבעו עכשיו\" (book now) opens a page of three quizzes, not a booking",
+   "what_a_visitor_meets": "Tapping the gold \"קבעו עכשיו\" on the first screen opens /meet-tal/ (\"SUCCESS MEETING\"), which asks the visitor to pick ארגון / יזם\\יזמית / מותג and go to a quiz; nothing on that page books a meeting.",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/landing-fold.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/04-meettal-fold.png"
+    },
+    {
+     "type": "click_path",
+     "value": [
+      "/",
+      "קבעו עכשיו",
+      "/meet-tal/",
+      "ארגון | יזם\\יזמית | מותג"
+     ]
+    }
+   ],
+   "playbook_ref": "§5 booking path",
+   "fix_in_new_site": "the first-screen action is contact.whatsapp (wa.me with a prefilled line) and the persistent mobile bar carries the same action; the Focused Check is a services[] row with its own page, never behind a \"book\" label",
+   "pitch_point": true
+  },
+  {
+   "id": "F3",
+   "area": "funnel",
+   "severity": "medium",
+   "title": "Each quiz opens on an empty step with only a \"הבא\" (next) button",
+   "what_a_visitor_meets": "On /entrepreneur-quiz/, /organization-quiz/ and /brand-quiz/ the first screen shows the quiz name, a phone link and a \"הבא\" button, but no question; a visitor has to tap on without knowing what is asked or how long it is.",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/06-entrepreneurquiz-fold.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/07-organizationquiz-fold.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/08-brandquiz-fold.png"
+    },
+    {
+     "type": "click_path",
+     "value": [
+      "/meet-tal/",
+      "יזם\\יזמית",
+      "/entrepreneur-quiz/"
+     ]
+    }
+   ],
+   "playbook_ref": "§5 booking path",
+   "fix_in_new_site": "the Focused Check (services[] row, group lead) states its length and that it is free before the first question (direction must-do 6); built and mocked by the template per A10",
+   "pitch_point": false,
+   "notes": "not tapped past the first step: no form is filled or submitted (auditor constraint 10)"
+  },
+  {
+   "id": "F4",
+   "area": "mobile",
+   "severity": "medium",
+   "title": "On a phone, WhatsApp and the phone number are not on the first screen and the phone is not tappable",
+   "what_a_visitor_meets": "The first phone screen offers only \"קבעו עכשיו\"; the WhatsApp icon sits inside the hamburger menu, and the number +972 50 4635536 appears near the bottom of the page as plain text in a \"PARTNERSHIPS & BARTERSHIPS\" box, so a tap does not dial.",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/landing-fold.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/01-home-menu.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/01-home-full.png"
+    },
+    {
+     "type": "url",
+     "value": "funnel/funnel.json (landing_actions: no tel; the whatsapp link is 37×42 px, tap_target_ok false)"
+    }
+   ],
+   "playbook_ref": "§3 first screen; §5 booking path",
+   "fix_in_new_site": "contact.whatsapp and contact.phone drive a labelled first-screen action and the persistent mobile bar; the footer shows both as links",
+   "pitch_point": true,
+   "notes": "tools/funnel.mjs reports the WhatsApp link as above the fold (top 332) because it reads the menu markup; the screenshots show it only after opening the menu"
+  },
+  {
+   "id": "F5",
+   "area": "funnel",
+   "severity": "low",
+   "title": "The session page's booking buttons work only with JavaScript",
+   "what_a_visitor_meets": "On /winning-personal-brand/ \"הזמן שיחה עם טל\" opens a popup with the phone, a WhatsApp button and a three-field form (name, email, phone) — two taps to a message; with JavaScript off or blocked, the same buttons go to /SuccessfulPersonalBrandMobile, a 404.",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/02-winningpersonalbrand-fold.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/02-winningpersonalbrand-popup.png"
+    },
+    {
+     "type": "click_path",
+     "value": [
+      "/winning-personal-brand/",
+      "הזמן שיחה עם טל",
+      "popup pum-75377"
+     ]
+    },
+    {
+     "type": "url",
+     "value": "https://talouloren.com/SuccessfulPersonalBrandMobile"
+    }
+   ],
+   "playbook_ref": "§5 booking path",
+   "fix_in_new_site": "plain links: the WhatsApp action is an <a href=\"https://wa.me/…\">, never a script-only trigger",
+   "pitch_point": false
+  },
+  {
+   "id": "F6",
+   "area": "offer",
+   "severity": "medium",
+   "title": "The course page counts down to a 2020 deadline",
+   "what_a_visitor_meets": "The course price block says the special price of 990 ₪ holds \"עד התאריך 10/10/2020\" and then rises to 1755 ₪, with a days/hours/minutes countdown beside it: six years after the date, a visitor cannot tell what the course costs today.",
+   "evidence": [
+    {
+     "type": "url",
+     "value": "https://talouloren.com/course/"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/03-course-full.png"
+    },
+    {
+     "type": "dossier",
+     "value": "dossier.json#old_prices"
+    }
+   ],
+   "playbook_ref": "§2 what does it cost; §7 honesty of facts",
+   "fix_in_new_site": "services[].price with a fixed unit and no deadline; brief: no countdowns; new prices are placeholders until decided",
+   "pitch_point": true
+  },
+  {
+   "id": "F7",
+   "area": "trust",
+   "severity": "low",
+   "title": "The Instagram strip above every footer is broken",
+   "what_a_visitor_meets": "Above the footer every page shows \"השראות להצלחה עסקית @TALOU_LOREN\" over a row of empty tiles with play icons and no pictures; the page source carries the plugin's message \"There has been a problem with your Instagram Feed\".",
+   "evidence": [
+    {
+     "type": "url",
+     "value": "https://talouloren.com/"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/01-home-full.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/06-entrepreneurquiz-full.png"
+    }
+   ],
+   "playbook_ref": "§6 trust signals",
+   "fix_in_new_site": "socialLinks[] (instagram) as a link; instagramTiles[] only when seeded with the account's own posts — the build never calls Instagram",
+   "pitch_point": false
+  },
+  {
+   "id": "F8",
+   "area": "content",
+   "severity": "medium",
+   "title": "Two of the proof videos do not play",
+   "what_a_visitor_meets": "The AMT case study embeds a removed YouTube video, and the vlog post \"הצלחה היא פנים ארגונית\" embeds a mistyped id, so a visitor gets a YouTube error where the story should play.",
+   "evidence": [
+    {
+     "type": "url",
+     "value": "https://talouloren.com/entrepreneurs/amt-case-study/"
+    },
+    {
+     "type": "url",
+     "value": "https://talouloren.com/blog/success-is-inside-your-organization/"
+    },
+    {
+     "type": "dossier",
+     "value": "dossier.json#videos_dead"
+    }
+   ],
+   "playbook_ref": "§6 trust signals; §1a media",
+   "fix_in_new_site": "videos[] seeded from the dossier's fetched files (vid-024 AMT, vid-026), each with a poster; caseStudies[] link their video",
+   "pitch_point": true
+  },
+  {
+   "id": "F9",
+   "area": "trust",
+   "severity": "low",
+   "title": "The session and course pages promise returns of 10x to 1000x",
+   "what_a_visitor_meets": "The pages say an investment \"תחזיר את עצמה פי 10, פי 100... ואפילו פי 1000!\" and name celebrities as past clients; the brief drops both.",
+   "evidence": [
+    {
+     "type": "url",
+     "value": "https://talouloren.com/winning-personal-brand/"
+    },
+    {
+     "type": "url",
+     "value": "https://talouloren.com/course/"
+    },
+    {
+     "type": "dossier",
+     "value": "dossier.json#do_not_claim"
+    }
+   ],
+   "playbook_ref": "§7 honesty of facts",
+   "fix_in_new_site": "copy from the dossier's client facts only; proof as clientLogos[] and caseStudies[] (A4, A19)",
+   "pitch_point": false
+  },
+  {
+   "id": "F10",
+   "area": "mobile",
+   "severity": "low",
+   "title": "The home page weighs 2.5 MB on a phone and its main image paints at about 2.7 s",
+   "what_a_visitor_meets": "On a 390 px phone the home page transfers 2,529,447 bytes before load and its largest paint lands at 2,684 ms.",
+   "evidence": [
+    {
+     "type": "dossier",
+     "value": "assets/old-site.json#mobile"
+    },
+    {
+     "type": "screenshot",
+     "value": "assets/old-site-mobile.png"
+    }
+   ],
+   "playbook_ref": "§4 mobile on bad connections",
+   "fix_in_new_site": "poster-first hero (heroVideo + heroVideoPoster, renditions ≤ 2 MB mobile) and responsive images from the build",
+   "pitch_point": false,
+   "notes": "measured by dossier/talouloren/make-old-site.sh (harvest), not by tools/funnel.mjs"
+  },
+  {
+   "id": "F11",
+   "area": "content",
+   "severity": "low",
+   "title": "The footer still shows an office address and a \"CAREERS\" box from 2021",
+   "what_a_visitor_meets": "Every page ends with \"CAREERS WITH TALOU LOREN … בת עמי 3, מתחם נגה, תל אביב\" and \"© 2021\"; the partners do not want an address shown (A23).",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/01-home-full.png"
+    },
+    {
+     "type": "dossier",
+     "value": "dossier.json#contact.address"
+    }
+   ],
+   "playbook_ref": "§6 trust signals",
+   "fix_in_new_site": "no address field filled (contact.address empty by client choice); footer carries contact.email, contact.phone, contact.whatsapp, socialLinks[]",
+   "pitch_point": false
+  }
+ ],
+ "recommended": {
+  "primary_action": "whatsapp",
+  "primary_label": "Message us on WhatsApp",
+  "secondary_actions": [
+   "tel",
+   "email"
+  ],
+  "clicks_to_book": 1,
+  "above_fold": [
+   "what_where",
+   "primary_action",
+   "trust",
+   "price"
+  ],
+  "offer_framing": "two doors (Story, Launch) and the ladder as services[] rows: the free Focused Check first, then the Clarity Session (fee credited), sprints, Partnership, the course; each row ends in its own ctaText; prices as visible placeholders until decided",
+  "closing_intent": "send the reader to one of the two actions the brief names (start the Focused Check or book a Clarity Session), with WhatsApp beside them for a question",
+  "off_site": [
+   {
+    "channel": "linktree",
+    "finding": "F1",
+    "advice": "point the Instagram bio and Linktree at the new site's Check and Clarity Session pages once it is live"
+   }
+  ]
+ },
+ "built_site_gaps": [],
+ "not_measurable": [
+  "conversion or enquiry volume — no analytics access",
+  "reply time on WhatsApp, phone and the forms — no contact made (constraint 10)",
+  "the quizzes past their first step and the session popup form — never filled or submitted",
+  "Cardcom checkout — curl got HTTP 525 from cardcom.solutions/e/x1lV; the page links secure.cardcom.solutions/e/x1lV, not opened (no purchase started)",
+  "LinkedIn — bot wall (HTTP 999)"
+ ],
+ "notes": "A11: the new site is a parallel venue, not a replacement; talouloren.com stays up and this audit describes it as the current presence. The brief's own funnel (Focused Check → Clarity Session) is mocked only (A10), so primary_action follows the channel the business publishes today (dossier booking.path = whatsapp), and the Check and Session are services[] rows with their own ctaText."
+}
