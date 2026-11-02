@@ -63,7 +63,7 @@ Not researched as a market (plan.md). The sites that matter as references are in
 - talouloren.com is WordPress (Uncode, Elementor on 2020 pages), footer "© 2021", 162 sitemap URLs; every page prints a PHP notice under the footer. (C-position-01)
 - It was compromised in 2022: 8 injected spam posts in 6 junk categories are still live. (C-position-02)
 - The 162 sitemap URLs and 29 Wayback-only paths each have a status and a redirect target or 410 (table in `lane-position.md`, Handoff A). Google's index itself was not checked. (C-position-03)
-- The session page's booking button goes to a 404; only phone and WhatsApp work. (C-position-04)
+- ~~The session page's booking button goes to a 404~~ CORRECTED 2026-11-02 (checked in a logged-in browser): the button is a Popup Maker trigger; with JavaScript it opens popup pum-75355 / pum-75377 (phone 050.463.5536 + a CF7 contact form). The 404 is only the no-JS fallback href. (C-position-04)
 - The old `/partnership/` meant co-marketing with agencies; the new `/partnership` reuses the path for the flagship offer. (C-position-23)
 - Footer contact: Bat Ami 3, Noga compound, Tel Aviv · tal@talouloren.com · 050-463-5536; currency unknown. (C-position-24)
 

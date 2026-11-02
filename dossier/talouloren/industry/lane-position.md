@@ -35,7 +35,8 @@ talouloren.com is a WordPress/Uncode site, frozen at "© 2021", with 162 sitemap
 - **Confidence:** high for statuses; medium for targets (they follow the brief's route list)
 - **Changes my mind:** Google Search Console data showing other indexed URLs; the partners keeping a blog route.
 
-### C-position-04 — The main conversion button on the session page is broken: "הזמן שיחה עם טל" goes to a 404
+### C-position-04 — ~~The main conversion button on the session page is broken~~ CORRECTED: it opens a contact popup
+- **Correction (2026-11-02):** CORRECTED 2026-11-02 (checked in a logged-in browser): the button is a Popup Maker trigger; with JavaScript it opens popup pum-75355 / pum-75377 (phone 050.463.5536 + a CF7 contact form). The 404 is only the no-JS fallback href.
 - **Evidence:** On `/winning-personal-brand/` the CTA "הזמן שיחה עם טל (לחץ כאן כדי להתחיל)" ("Book a call with Tal (click here to start)") links to `/SuccessfulPersonalBrandDesktop` and `/SuccessfulPersonalBrandMobile`. Both return 404 today. The only working routes to booking are the phone number 050.4635536 and WhatsApp.
 - **Source:** https://talouloren.com/winning-personal-brand/ (HTML hrefs); curl status
 - **Date:** 2026-11
