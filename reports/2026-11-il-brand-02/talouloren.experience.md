@@ -117,3 +117,38 @@ talouloren.com (`current-site/sheet-tal-phone.png`, `sheet-tal-laptop.png`) is a
 3. **Interactive**: a good booking drawer and good Home Q3, but the header collisions, the raw caption on the first screen and dead black spans hold it at 7.
 
 What the designer prompt got wrong: it did not require the page to stay whole without JavaScript and before the shader (unique), or a scrolled-header backdrop and no raw placeholder on the first screen (interactive), and no layout was checked at 390 px on the secondary routes (`/book`, `/thanks`, `/partnership`) (calm).
+
+## Round 2 · station 4f (quick) · 2026-11-02 · after commit 23f9cef
+
+Same method and walk as round 1 (phone 390×844 throttled cold load, scroll, Check 10 + contact → `/thanks` → `/snapshot` → book → `/booked`, English toggle, 18 routes at 390 px, reduced motion, JavaScript off, laptop 1440×900). The visual-critic and critic reports were not read. Frames: `sites/talouloren/mockups/<variant>/shots/xc-r2/` (`sheet-phone-a/b.png`, `sheet-laptop.png`, `sheet-flows.png`, `phone-cold2-*.png`, `phone-nojs-hero.png`, `walk.log`, `flow-phone.log`). The current-site frames are those of round 1 (`calm/shots/xc-r1/current-site/`).
+
+Measured (phone, 1.6 Mbps / 150 ms / 4× CPU):
+
+| | FCP | JS-off Home text | overflow at 390 px (excluding carousels and marquees) | stat bidi | flow end to end |
+|---|---|---|---|---|---|
+| calm | 1.10 s | 16.7 k chars | none | correct | yes (`#/booked`) |
+| interactive | 0.82 s | 15.8 k chars (was 3.5 k) | none | correct | yes (`#booked`) |
+| unique | 0.83 s (was 1.82) | 4.8 k chars, h1 + 6 Check links + WhatsApp (was blank) | none | correct (was "מיליון 3") | yes (`#/booked`) |
+
+### Calm: 8 / 10 · better than current: yes · pass
+
+- **Fixed:** `/book`, `/thanks` and `/partnership` now fit at 390 px (`sheet-flows.png`). Placeholders are now quiet gold pills ("מחיר בקרוב"). The bottom bar switches to "לקביעת פגישת ייעוץ" on `/thanks` and `/snapshot`. The Partnership band now carries a portrait with its copy on the dark side, and the Wella box became a case feature band ("BACK TO WELLA"), which reads well (`sheet-phone-a.png`, `sheet-laptop.png`).
+- **Remaining:** on laptop the nav and body type are still small and the footer still sits in the right half (`sheet-laptop.png`, last two frames). Calm stays calm: correct for the variant, and the least memorable of the three.
+
+### Interactive: 8 / 10 · better than current: yes · pass
+
+- **Fixed:** the header has a dark backdrop once scrolled, so nothing passes under the logo or menu. The hero caption is a designed "▶ הצגה" chip. The pains and the FAQ are set in the body face. The English display uses a proper Latin face ("You're good at what you do…", `sheet-flows.png`). The dead black spans are shorter, the door photos are brighter, and the Tal partner frame is img-001.
+- **Remaining:** raw `{price_story_sprint}` / `{case_story_*}` / `{business_name}` tags still appear as code-style chips, including a button on `/thanks` labelled `{business_name}`. The bar does not switch to booking after the Check. Some laptop bands are still sparse (the logo marquee, the partner bios).
+
+### Unique: 8 / 10 · better than current: yes · pass
+
+- **Fixed:** Home is in the HTML. With JS off it renders the headline, doors, pains and Check links, and first paint dropped from 1.82 s to 0.83 s, so the black wait is gone. "3 מיליון" reads correctly. The set-piece counter is right (04 / 05 on the partners chapter, `sheet-laptop.png`). The bottom bar is hidden inside `/check`. `/book` on the phone uses a 5-day strip with single-line labels, and the slots are clear of the bar (`sheet-flows.png`).
+- **Remaining:** laptop body type is small under the set-piece. The case carousel's crossfade briefly stacks two titles. The bar stays "לבדיקה הממוקדת" on `/thanks` and `/snapshot`. It is still the strongest experience: the beam landing on the studio.
+
+### Experience ranking, round 2
+
+1. **Unique**: the brand idea made into the walk, and now fast and whole without JS.
+2. **Calm**: the most trustworthy and the cleanest booking.
+3. **Interactive**: the best booking drawer and the Home Q3 hand-off, but its leftover placeholders are the most visible of the three.
+
+All three pass dimension 8 at 8 from this critic and beat talouloren.com on the first screen and on the whole walk.

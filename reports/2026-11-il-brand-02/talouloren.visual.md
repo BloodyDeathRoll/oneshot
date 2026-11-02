@@ -67,3 +67,40 @@ Shots: the shared sets in `sites/talouloren/mockups/{calm,interactive,unique}/sh
 3. **interactive**: strong split hero and ladder, but one heavy condensed face everywhere makes it loud, not high-end.
 
 **Result:** all three are below 8, so all three are a hard fail at 4f and go back to 4e (round 1 of max 3). All three beat talouloren.com.
+
+## Round 2 — 2026-11-02 · visual-critic 0.2.0 (after 4e fixes, commit 23f9cef)
+
+Shots: re-shot after the rebuild into each mockup's `shots/` (desktop 1440, mobile 390). Live checks used Playwright on a local server (`tools/_serve.mjs`), with pointer moves, wheel scrolls and element positions read from the page. Those live frames are scratch in the session scratchpad and are described in words below. The current-site set from round 1 is unchanged. The critic's and experience-critic's reports were not opened.
+
+### calm
+- **Fixed since round 1:** desktop door crops now show faces and the full jump (`calm/shots/desktop-sheet.png`, row 2: img-029 jump and img-025 laughing). The ladder words on the light band are now black with "מודעות" in dark gold (row 1, frame 3). Placeholders are a designed gold pill, "• מחיר בקרוב" (`desktop-04`). The white-strip and black-gap dead zones are closed. Wella now reads as a work band titled "BACK TO WELLA" (row 2, frame 6). The footer has a large "Success is Beautiful" serif sign-off.
+- **Still weak:** the Partnership band (`desktop-12`) is a soft, grainy video still. The right half is the back of a head beside a wall microphone, and no face reads. It is the one muddy image on an otherwise clean page. The body below the hero is still quiet, but that suits a calm concept.
+- **Motion:** the hero vid-036 loop, stepped grounds and button fills are proportionate for calm.
+- **Score 8/10.** Pass. It beats the current site: yes (`desktop-00` vs `current-site/desktop-00`). Closest reference: Ashcroft/Ritz. It is at their level at the hero and close to it in the body.
+- **Must-fix:** recut the Partnership band to a frame where Tal's face and gesture read (vid-027 ~24–28 s "arms open"), or use img-014.
+
+### interactive
+- **Fixed:** the hero token is gone and replaced by a "▶ הפעלה" chip. Section titles, FAQ and the subtitle are now Heebo (`desktop-sheet`), so the page is calmer. The partners frame uses img-001, smiling and sharp (row 4, frame 1).
+- **Live check, spotlight:** at 1440, moving the pointer from the text column to x≈450 lifts Tal's face from dim to clearly lit, with a soft warm pool. The edge never crosses the text. The effect is visible and tasteful, and it is now the "one thing". The hero video plays (`hero-d.webm`, not paused). Phone (390, live): the face is lit at the top and the headline and doors fit above the bar.
+- **Still weak:** both door photos are cropped badly (`desktop-03`). Launch shows a coat and legs with no head. Story is a close crop of a screaming mouth and a T-shirt, the most chaotic image on the site and off the "super high end" tone. Prices are still raw `{price_launch_build}` / `{price_story_sprint}` code chips in a dashed gold box (`desktop-03`). Stats stay in Karantina 700, which is acceptable as the one loud moment.
+- **Score 7/10.** Fail. It beats the current site: yes.
+- **Must-fix:**
+  1. Re-crop the doors to faces (img-020 with the walker's head; for Story, swap img-024 for img-025 or img-003).
+  2. Replace the code chips with the calm-style "מחיר בקרוב" pill.
+
+### unique
+- **Fixed:** the first frame (`desktop-00`) now shows Tal's profile clearly at the right, lit by a top-right gold cone with drifting dust. It reads as "a light aimed at you" in the first second. The Partnership band is now a readable workshop frame with Tal's arms open (`desktop-sheet`, row 5). The partners photo is a proper 4:5 head crop: measured live as 340×425 with object-position 50 % 22 %, eyes in frame. Round 1's chin crop was a scroll-cut, and the frame is now correct.
+- **Live check, beam:** wheel-scrolling 700 px at a time moves the set-piece from 01/05 to 02/05. The cone swings and the dust drifts in the shader, and the pains list lights line by line (scratch frame 02: lines 1–4 dim, line 5 bright). Frame 03 still lands the beam on Tal in the studio. The door list rests at about 60 % grey and lights with a narrow CSS beam under "השקה" (`desktop-06`).
+- **Still weak:** on the phone first screen (live 390×844) the profile is not visible, only dust and the headline, so the business's own picture arrives one scroll later. The partners appear twice: the set-piece frame 04 and the full section. Shahar's placeholder box (244 px inner frame) is smaller than Tal's 340 px photo beside it, so the pair looks uneven.
+- **Score 8/10.** Pass. It beats the current site: yes. Closest reference: Briony Croft / igloo at light-motion cost. It is at that level on frames 01–03.
+- **Must-fix:**
+  1. Phone hero: move the profile still's focal point into the 390 crop so Tal is visible in the first second.
+  2. Drop the duplicate partners section, or keep it as bios only under the set-piece frame.
+  3. Size Shahar's placeholder to the same 4:5 frame as Tal's photo.
+
+### Round 2 ranking (visual only)
+1. **unique**: the signature beam now works from the first frame and is alive on scroll.
+2. **calm**: the cleanest and most Ritz-like page, with one muddy band.
+3. **interactive**: the spotlight now works, held back by the door crops and raw price chips.
+
+**Result:** calm 8 pass, unique 8 pass, interactive 7 fail.

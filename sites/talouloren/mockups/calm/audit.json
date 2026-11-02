@@ -1,23 +1,23 @@
 {
  "slug": "talouloren",
  "variant": "calm",
- "measured_at": "2026-11-02T17:33:01.921Z",
+ "measured_at": "2026-11-02T17:43:49.186Z",
  "first_load": {
   "requests": 7,
   "hosts": [
-   "localhost:8987"
+   "localhost:8980"
   ],
   "third_party_hosts": [],
-  "bytes_total": 559725,
-  "bytes_html": 468404,
+  "bytes_total": 559751,
+  "bytes_html": 468430,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 0,
   "bytes_images": 91321,
   "largest_image_bytes": 24586,
-  "lcp_ms": 1056,
+  "lcp_ms": 1060,
   "cls": 0,
-  "dcl_ms": 2970
+  "dcl_ms": 2965
  },
  "scroll": {
   "early": {
@@ -25,7 +25,7 @@
    "shifts": [
     {
      "value": 0.008,
-     "at_ms": 1031,
+     "at_ms": 1039,
      "y": 0,
      "sources": [
       "div.hero-c",
@@ -101,14 +101,8 @@
   "images_without_alt": 0,
   "images_alt_empty_decorative": 78,
   "tapables": 50,
-  "tapables_under_44px": 5,
-  "tapables_under_44px_examples": [
-   "סיפור 34x44",
-   "השקה 37x44",
-   "עלינו 31x44",
-   "לצפייה 42x44",
-   "הקורס 39x44"
-  ],
+  "tapables_under_44px": 0,
+  "tapables_under_44px_examples": [],
   "headings": [
    "H1",
    "H2",

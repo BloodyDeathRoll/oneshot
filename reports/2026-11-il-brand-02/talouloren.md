@@ -127,3 +127,86 @@ fix list (smallest first): (1) render Home's markup (hero h1, doors, Check bar, 
 calm and interactive pass the critic's gates (68.1 and 65.1 of 75); unique fails dimension 3 because with JavaScript off it is a blank page with no booking link; interactive and unique show Tal from vid-033, which Shahar should confirm is Tal; all three are measured well inside the performance budget and all three beat talouloren.com on booking path (the old page has none inside the page).
 
 Evidence: `sites/talouloren/mockups/<variant>/audit.json` (re-measured this round), `sites/talouloren/mockups/<variant>/shots/critic-r1/` (`desktop-sheet.png`, `mobile-sheet.png`, `route-*.png`, `flow-check-*.png`, `book*.png`, `nojs-390.png`). Screenshots are deleted after the round by the orchestrator; their content is described above.
+
+## Round 2 — station 4f, quick mode (2026-11-02, build 23f9cef)
+
+Same method, viewports, order and scripts as round 1. Every check below was re-run in a browser against the revised `dist/` builds. The visual/experience reports and the designers' self-assessments were not read as evidence. `audit.json` re-measured for all three. Screenshots are in `shots/critic-r2/` (sheets, `route-*.png`, `flow-check-*.png`, `book*.png`, `nojs-390.png`).
+
+### Measured (audit.json, 390 px throttled, no scroll)
+
+| Line | calm | interactive | unique |
+|---|---|---|---|
+| First-load transfer | 560 KB | 1,205 KB (≈ 581 KB of it the mobile hero webm) | 382 KB |
+| Largest image | 24.6 KB | 75.5 KB | 29.1 KB |
+| LCP | 1,060 ms | 816 ms | 832 ms |
+| CLS / scroll early / settled | 0 / 0.008 / 0 | 0 / 0 / 0 | 0 / 0.0001 / 0 |
+| Third-party on load | 0 | 0 | 0 |
+| Tap targets < 44 px | 0 (was 5) | 0 | 0 (was 15) |
+| Images without alt | 0 | 0 | 0 |
+| JS off: text / booking links | 16,744 chars / Check bar + WhatsApp in first screen | 15,788 chars (was 3,474) / same | 4,774 chars (was 57), h1, Check bar + WhatsApp in first screen, 2 `tel:` |
+
+### Re-checked
+
+- Routes: 18 routes × he/en, no horizontal overflow, `lang`/`dir` correct, no exclamation marks. calm now renders undecided values as marked words ("מחיר בקרוב", "הסיפור המלא בקרוב", class `ph`) instead of `{keys}`. No invented values were found in their place: no number on any page outside `proof.stats`, method counts, `team[1].bio` and the contact.
+- Check flow: all three are 10 screens with gated Next, then contact + consent, then thanks. Booking: all three go day → slot → details → mock pay → booked with the chosen time. interactive's "ב־יום רביעי" is fixed (now "ב־4 בנובמבר").
+- WhatsApp tap: `wa.me/972504635536` with a Hebrew/English prefill on all three, and the Check bar plus WhatsApp chip stay fixed mid-page (unchanged).
+- Keyboard: all three mobile menus now take focus, trap Tab (×30 stays inside) and return focus to the toggle on Esc. The skip link is visible on focus. Reduced motion: frames static on all three.
+- Facts: numbers on Home (he + en) are unchanged from round 1 and all match. Banned-claim grep: none. Identity: calm Tal = vid-036 / vid-027 frames (both in `team[0].video_appearances`). interactive partner card is now **img-001**, and the hero film (vid-033) is alt-labelled "A man talking to camera", not named. unique partner card is still the vid-033 frame (`tal-033.webp`, alt "טל אורן"), so Shahar's confirmation is still needed there.
+- English mode still shows Hebrew film titles on interactive /watch, /thanks and /brands (e.g. "מכבי יזמות אנשי האור", "מיתוג מעסיק TABOOLA") and on unique /brands; calm only "צילום בדרך" beside "Portrait coming" on /about.
+- check-design: unchanged looks (calm Frank Ruhl Libre/Assistant #0f0f0f; interactive Karantina/Heebo #060606, WARN 4 all-caps labels; unique Bellefair/Plex #060606); 0 problems.
+
+---
+
+mode: quick        round: 2        variant: calm
+total: 71.2 / 75 (dims 1–7)        result: pass on 1–7; final result waits on dimension 8        hard_fails: []
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 9 | all claims match; placeholders now marked in words; Tal from vid-036/vid-027 (traced), Shahar marked placeholder |
+| 2 | mobile + performance | 10 | 560 KB, LCP 1,060 ms, CLS 0, scroll 0.008/0, 0 small targets, no overflow on 36 route/language pairs |
+| 3 | booking CTA | 9 | number identical, prefill names the Check, fixed bar, works with JS off, both flows complete |
+| 4 | brand fit | 8 | 11 Home sections in order, all routes |
+| 5 | copy | 8 | passed copy; "צילום בדרך" left in English mode on /about |
+| 6 | accessibility | 8 | menu focus trap/return fixed, skip link visible, 0 small targets, alt complete, reduced motion static |
+| 7 | security + delivery | 9 | static, relative, 0 third-party on load |
+
+what the designer prompt got wrong: nothing new this round; the round-1 drawer/skip-link gap is fixed.
+fix list: n/a.
+
+---
+
+mode: quick        round: 2        variant: interactive
+total: 68.7 / 75 (dims 1–7)        result: pass on 1–7; final result waits on dimension 8        hard_fails: []
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 9 | all claims match; partner card now img-001; hero vid-033 not named |
+| 2 | mobile + performance | 9 | LCP 816 ms, CLS 0, 0 small targets; the mobile hero webm (581 KB) still loads inside the no-scroll window |
+| 3 | booking CTA | 9 | as round 1; works with JS off |
+| 4 | brand fit | 8 | 11 sections + Check question on Home |
+| 5 | copy | 7 | `{hero_film_caption}` fixed ("הפעלה" / "Play"); English mode shows Hebrew film titles on /watch, /thanks, /brands |
+| 6 | accessibility | 8 | menu focus fixed; JS-off text 15,788 chars (sections no longer hidden) |
+| 7 | security + delivery | 9 | unchanged |
+
+fix list: n/a. Remaining: English titles for films in English mode; defer the hero webm until after first paint.
+
+---
+
+mode: quick        round: 2        variant: unique
+total: 64.5 / 75 (dims 1–7)        result: pass on 1–7 (dimension 3 now 8); final result waits on dimension 8        hard_fails: []
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 8 | all claims match; Tal's partner card still the vid-033 frame, which needs Shahar's confirmation |
+| 2 | mobile + performance | 9 | 382 KB, LCP 832 ms, CLS 0, 0 small targets (was 15) |
+| 3 | booking CTA | 8 | JS off now shows h1, doors, Check bar and WhatsApp in the first screen (`nojs-390.png`); JS on unchanged and correct; the rest of Home without JS is partial (4,774 chars) |
+| 4 | brand fit | 8 | 11 sections, set-piece |
+| 5 | copy | 7 | English mode shows Hebrew film titles on /brands; one raw YouTube title string still in the build |
+| 6 | accessibility | 8 | menu trap/return, skip link, 0 small targets, reduced motion static |
+| 7 | security + delivery | 8 | static; most routes still built at runtime by script |
+
+fix list: n/a. Remaining: swap `tal-033` for img-001 or get Shahar's confirmation; more of Home in the HTML; English film titles.
+
+### The one sentence the human needs
+
+All three pass the critic's gates this round (calm 71.2, interactive 68.7, unique 64.5 of 75), all within budget with 0 third-party requests. unique is the only one that still names a vid-033 frame as Tal. interactive's English mode shows Hebrew film titles on three routes.
