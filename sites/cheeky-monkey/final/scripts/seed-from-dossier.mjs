@@ -211,7 +211,7 @@ const gaps = {
   _about: 'SCHEMA GAP content: what the picked design shows and schemas/site-content.md v0.11 has no field for. Written by scripts/seed-from-dossier.mjs from copy/en.json, dossier.json and stock/index.json; listed in notes.md "schema gaps". Edit there, not here.',
   wordmark: { mark, rest: rest.join(' '), _source: 'businessName, split for the two-line header mark' },
   place: { value: 'Midigama, Sri Lanka', _source: 'the town in contact.address (Midigama East Midigama) + country; concepts.md §6 "hero subtitle" gap' },
-  seo: { title: 'Cheeky Monkey Surf Camp, Midigama | Rooms, surf weeks and 400 boards', _source: 'the mockup\'s <title>; businessName + place + tagline facts (400 boards: dossier rentals[0])' },
+  seo: { title: 'Cheeky Monkey Surf Camp, Midigama | Rooms, lessons, boards', _source: 'seo 4h: the mockup\'s <title> cut to 58 chars (base.md: <= 60); businessName + the town + the tagline\'s rooms, lessons and boards (dossier room_types, lessons, rentals)' },
   weeks: [
     { group: 'Full Surf Lesson Package', title: 'Full Surf Lesson Package', short: 'Full Surf Lesson' },
     { group: 'Moderate Surf Lesson or Surf Spot Guiding Package', title: 'Moderate', short: 'Moderate' },

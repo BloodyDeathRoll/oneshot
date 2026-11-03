@@ -169,3 +169,167 @@ export const splitLine = (s) => {
   const w = s.split(' '), h = Math.ceil(w.length / 2)
   return [w.slice(0, h).join(' '), w.slice(h).join(' ')]
 }
+
+/* ---------- SEO plumbing (station 4h) ----------
+   Every value below is read from content.json (and, where the schema has no field, the SCHEMA GAP file the page
+   already shows); nothing is written here as a fact. Absolute URLs (canonical, hreflang, og:url, og:image,
+   JSON-LD @id / url / image, the sitemap) exist only when the build has SITE_URL (astro.config.mjs `site`; it
+   must end in '/'). */
+/* Preview or real domain? (Shahar's decision, 2026-09-22; the same rule as the other finals.) One place decides
+   it, and every file that needs it imports IS_PREVIEW from here. A build is a PREVIEW when it has no production
+   domain of its own: no SITE_URL at all, or one on *.workers.dev or localhost / 127.0.0.1. A preview carries
+   <meta name="robots" content="noindex, nofollow">, a robots.txt that disallows everything and no sitemap. */
+export const isPreviewUrl = (url) => {
+  if (!url) return true
+  let host
+  try { host = new URL(url).hostname.toLowerCase().replace(/^\[|\]$/g, '') } catch { return true }
+  return host === 'workers.dev' || host.endsWith('.workers.dev')
+    || host === 'localhost' || host.endsWith('.localhost')
+    || host === '127.0.0.1' || host === '::1'
+}
+export const SITE = import.meta.env.SITE ? new URL(import.meta.env.SITE) : null
+export const IS_PREVIEW = isPreviewUrl(SITE)
+export const abs = (u) => (SITE ? new URL(u, SITE).href : null)
+/* the one route (the plan drawer is the in-page #book section, not a page), for the sitemap and the canonical */
+export const ROUTES = ['']
+
+/* the meta description: owner-written fields only, joined as sentences, cut at a sentence boundary to 155 */
+export const metaDescription = (parts, max = 155) => {
+  let out = ''
+  for (const p of parts.filter(Boolean).map((s) => s.trim().replace(/[.\s]+$/, ''))) {
+    const next = out ? `${out} ${p}.` : `${p}.`
+    if (next.length > max) break
+    out = next
+  }
+  return out
+}
+
+const COUNTRY = { 'sri lanka': 'LK' }
+/* contact.address (free text) → PostalAddress. Splits "street…, town [postcode], country" (playbook §6 order) only
+   when the last part is a country it knows; otherwise the whole address stays in streetAddress. Never adds a part. */
+export const postalAddress = (text) => {
+  const parts = (text ?? '').split(/\s*(?:\n|,)\s*/).map((s) => s.trim()).filter(Boolean)
+  if (!parts.length) return null
+  const a = { '@type': 'PostalAddress' }
+  const iso = parts.length >= 3 ? COUNTRY[parts[parts.length - 1].toLowerCase()] : null
+  const town = iso ? /^(?:(\d{4,6})\s+)?(.+?)(?:\s+(\d{4,6}))?$/.exec(parts[parts.length - 2]) : null
+  if (town) {
+    a.streetAddress = parts.slice(0, -2).join(', ')
+    if (town[1] || town[3]) a.postalCode = town[1] || town[3]
+    a.addressLocality = town[2]
+    a.addressCountry = iso
+  } else a.streetAddress = parts.join(', ')
+  return a
+}
+
+/* geo from contact.mapUrl: a Google Maps *place* URL carries the listing's own pin as !3d<lat>!4d<lng> (the @lat,lng
+   part is only the viewport). The schema has no geo field, so the pin rides on the owner-editable map link: change
+   the link and the pin follows; a link without a pin gives no geo. */
+export const pinFromMapUrl = (u) => {
+  const m = /!3d(-?\d{1,2}\.\d+)!4d(-?\d{1,3}\.\d+)/.exec(u ?? '')
+  if (!m) return null
+  const lat = +m[1], lng = +m[2]
+  return Math.abs(lat) <= 90 && Math.abs(lng) <= 180 ? { lat, lng } : null
+}
+
+/* businessType → schema.org type. A surf camp sells the bed and the lessons, so it is typed as both (schema.org allows
+   a multi-typed entity): LodgingBusiness carries checkinTime / checkoutTime / amenityFeature, SportsActivityLocation
+   is seo base.md's type for a school or camp. Same table as the pipeline's other finals. */
+export const LD_TYPE = {
+  surf_camp: ['LodgingBusiness', 'SportsActivityLocation'], beach_lodging: 'LodgingBusiness',
+  surf_school: 'SportsActivityLocation', board_rental: 'SportsActivityLocation',
+  surf_shop: 'SportingGoodsStore', shaper: 'Store', other: 'LocalBusiness',
+}
+
+/* the published price span, as the page prints its rows: every priced priceList[] and lessons[] row in one currency
+   ("USD 20–400"), with the year the page dates them by when every row carries the same one */
+const priceRange = () => {
+  const rows = [...(c.priceList ?? []), ...lessons].filter((r) => typeof r.price === 'number' && r.currency)
+  const curs = [...new Set(rows.map((r) => r.currency))]
+  if (!rows.length || curs.length !== 1) return null
+  const ps = rows.map((r) => r.price), lo = Math.min(...ps), hi = Math.max(...ps)
+  const years = [...new Set([...(c.priceList ?? []).map((r) => (/(\d{4})/.exec(r.note ?? '') ?? [])[1] ?? ''), ...(LESSON ? [LESSON_YEAR] : [])])]
+  const span = lo === hi ? money(lo, curs[0]) : `${money(lo, curs[0])}–${hi.toLocaleString('en-US')}`
+  return years.length === 1 && years[0] ? `${span} (prices published ${years[0]})` : span
+}
+
+/* the link-preview image: the first photos[] row the page shows in a landscape shape at least 1200 px wide
+   (a WhatsApp / Instagram preview is ~1.91:1; the hero poster is a 9:16 portrait and would be cropped to a sliver) */
+export const ogImage = () => {
+  for (let n = 0; n < (c.photos ?? []).length; n++) {
+    const m = slotRow(n), sh = m && shapeOf(m.filename, keyOf(n))
+    const s = sh && top(sh)
+    if (s && s.w >= 1200 && s.w > s.h) return { src: s.webp, width: s.w, height: s.h, alt: m.alt }
+  }
+  return null
+}
+/* the photographs the page serves (the reel's poster, then photos[] in the owner's order), for JSON-LD `image` */
+export const pageImages = () => {
+  const out = []
+  const p = c.heroVideoPoster?.filename && shapeOf(c.heroVideoPoster.filename, 'full')
+  if (p) out.push(top(p).webp)
+  ;(c.photos ?? []).forEach((_, n) => { const s = slotSrc(n); if (s) out.push(s.webp) })
+  return [...new Set(out)]
+}
+
+/* JSON-LD for the business: one block, every value from content.json, plus the SCHEMA GAP socials the footer links
+   (gaps.socials). No aggregateRating / review: Shahar's no-ratings-markup decision (KA), applied to every site since. */
+const DAY = { mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday', sun: 'Sunday' }
+export const businessLd = ({ description } = {}) => {
+  const k = c.contact ?? {}
+  const postal = postalAddress(k.address)
+  const pin = pinFromMapUrl(k.mapUrl)
+  const pr = priceRange()
+  const images = pageImages()
+  const same = [SOC.website, SOC.instagram, SOC.facebook, ...(c.ratings ?? []).map((r) => safeUrl(r.url))].filter(Boolean)
+  return {
+    '@context': 'https://schema.org',
+    '@type': LD_TYPE[c.businessType] ?? 'LocalBusiness',
+    ...(SITE ? { '@id': `${SITE.href}#business`, url: SITE.href } : {}),
+    name: c.businessName,
+    ...(description ? { description } : {}),
+    ...(SITE && images.length ? { image: images.map(abs) } : {}),
+    ...(TEL ? { telephone: k.phone } : {}),
+    ...(EMAIL ? { email: EMAIL } : {}),
+    ...(postal ? { address: postal } : {}),
+    ...(pin ? { geo: { '@type': 'GeoCoordinates', latitude: pin.lat, longitude: pin.lng } } : {}),
+    ...(MAP ? { hasMap: MAP } : {}),
+    ...(pr ? { priceRange: pr } : {}),
+    ...(st.checkInFrom ? { checkinTime: st.checkInFrom } : {}),
+    ...(st.checkOutTo ? { checkoutTime: st.checkOutTo } : {}),
+    ...((c.amenities ?? []).length ? {
+      amenityFeature: c.amenities.map((a) => ({ '@type': 'LocationFeatureSpecification', name: a.note ? `${a.label} (${a.note})` : a.label, value: true })),
+    } : {}),
+    ...((c.openingHours ?? []).length ? {
+      openingHoursSpecification: c.openingHours.map((h) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.days.map((d) => DAY[d]), opens: h.opens, closes: h.closes })),
+    } : {}),
+    ...((c.languagesSpoken ?? []).length ? { knowsLanguage: c.languagesSpoken } : {}),
+    ...(same.length ? { sameAs: [...new Set(same)] } : {}),
+  }
+}
+/* JSON in a <script>: '<' escaped so no value can close the element */
+export const ldJson = (o) => JSON.stringify(o).replace(/</g, '\\u003c')
+
+/* head tags after <title> and the description. Absolute URLs only with SITE_URL: a relative og:image or canonical
+   is not read by link previews and is ambiguous across the preview and the real domain. */
+export const seoHead = ({ path, title, description, image }) => {
+  const url = abs(path)
+  return [
+    url ? `<link rel="canonical" href="${e(url)}">` : '',
+    url ? `<link rel="alternate" hreflang="en" href="${e(url)}">` : '',
+    url ? `<link rel="alternate" hreflang="x-default" href="${e(url)}">` : '',
+    '<meta property="og:type" content="website">',
+    `<meta property="og:site_name" content="${e(c.businessName)}">`,
+    `<meta property="og:title" content="${e(title)}">`,
+    description ? `<meta property="og:description" content="${e(description)}">` : '',
+    url ? `<meta property="og:url" content="${e(url)}">` : '',
+    ...(SITE && image ? [
+      `<meta property="og:image" content="${e(abs(image.src))}">`,
+      `<meta property="og:image:type" content="image/webp">`,
+      `<meta property="og:image:width" content="${image.width}">`,
+      `<meta property="og:image:height" content="${image.height}">`,
+      image.alt ? `<meta property="og:image:alt" content="${e(image.alt)}">` : '',
+    ] : []),
+    `<meta name="twitter:card" content="${SITE && image ? 'summary_large_image' : 'summary'}">`,
+  ].filter(Boolean).join('\n')
+}
