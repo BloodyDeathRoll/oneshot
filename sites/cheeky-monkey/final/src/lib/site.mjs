@@ -189,6 +189,25 @@ export const isPreviewUrl = (url) => {
 }
 export const SITE = import.meta.env.SITE ? new URL(import.meta.env.SITE) : null
 export const IS_PREVIEW = isPreviewUrl(SITE)
+
+/* AI-crawler policy (station 4i), read by src/pages/robots.txt.js. Default for a client site is allow: being quotable
+   by answer engines is the point. It is the owner's decision (aiseo-report.md): set a bot to 'disallow' to block it.
+   Training crawlers and live/search fetchers are listed separately so the owner can, for example, keep search answers
+   and refuse training. On a PREVIEW build every one of them is refused anyway (robots.txt.js). Same list as the other
+   finals (sites/ka-surf-hostel-and-restaurant/final). */
+export const AI_CRAWLERS = {
+  // OpenAI: training, search index, user-triggered fetch
+  GPTBot: 'allow', 'OAI-SearchBot': 'allow', 'ChatGPT-User': 'allow',
+  // Anthropic
+  ClaudeBot: 'allow', 'Claude-SearchBot': 'allow', 'Claude-User': 'allow',
+  // Perplexity
+  PerplexityBot: 'allow', 'Perplexity-User': 'allow',
+  // Google (Gemini / AI training control token), Apple (Apple Intelligence control token)
+  'Google-Extended': 'allow', 'Applebot-Extended': 'allow',
+  // Others
+  CCBot: 'allow', 'Meta-ExternalAgent': 'allow', Amazonbot: 'allow', DuckAssistBot: 'allow',
+  'MistralAI-User': 'allow',
+}
 export const abs = (u) => (SITE ? new URL(u, SITE).href : null)
 /* the one route (the plan drawer is the in-page #book section, not a page), for the sitemap and the canonical */
 export const ROUTES = ['']
@@ -274,6 +293,16 @@ export const pageImages = () => {
 
 /* JSON-LD for the business: one block, every value from content.json, plus the SCHEMA GAP socials the footer links
    (gaps.socials). No aggregateRating / review: Shahar's no-ratings-markup decision (KA), applied to every site since. */
+const roomsLd = () => (c.rooms ?? []).map((r) => {
+  const m2 = /^(\d+(?:\.\d+)?) m²/.exec(r.note ?? '')
+  return {
+    '@type': 'HotelRoom',
+    name: r.label,
+    ...(r.beds ? { bed: r.beds } : {}),
+    ...(r.sleeps ? { occupancy: { '@type': 'QuantitativeValue', maxValue: r.sleeps } } : {}),
+    ...(m2 ? { floorSize: { '@type': 'QuantitativeValue', value: +m2[1], unitCode: 'MTK' } } : {}),
+  }
+})
 const DAY = { mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday', sun: 'Sunday' }
 export const businessLd = ({ description } = {}) => {
   const k = c.contact ?? {}
@@ -304,6 +333,9 @@ export const businessLd = ({ description } = {}) => {
       openingHoursSpecification: c.openingHours.map((h) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.days.map((d) => DAY[d]), opens: h.opens, closes: h.closes })),
     } : {}),
     ...((c.languagesSpoken ?? []).length ? { knowsLanguage: c.languagesSpoken } : {}),
+    /* 4i: the rooms the page lists, as HotelRoom (rooms[] only: label, beds, sleeps, and the floor size the row's note
+       begins with). No price: room rates are live Booking.com inventory, not content. */
+    ...(roomsLd().length ? { containsPlace: roomsLd() } : {}),
     ...(same.length ? { sameAs: [...new Set(same)] } : {}),
   }
 }
