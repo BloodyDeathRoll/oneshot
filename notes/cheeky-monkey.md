@@ -1,6 +1,10 @@
 # cheeky-monkey — run 2026-10-midigama-01 (test)
 
-State: **built** (2026-10-27; designer 0.7.0 4g). Picked at gate b by Alon: unique "Pick your board", with a colourful surf/beach background and the Midigama beach photos. Next: SEO (4h), AI SEO (4i), Critique (5). 4f pre-score did not run before the pick.
+State: **critiqued(1), FAIL** (2026-11-03). 4h SEO and 4i AI SEO done (look unchanged; preview noindex rule added). Station 5 round 1: critic 65.1/75 with a hard fail (funnel.mjs reads the header phone icon as the primary action; Booking.com must come first), visual-critic 7/10 (hard fail <8), experience-critic 8/10; all three: clearly better than the current site. Reports: `reports/2026-10-midigama-01/cheeky-monkey{,.visual,.experience}.md`. Next: designer fix round (back to 4f/4g per PLAN), then critique round 2.
+
+**Waiting on Alon:** both visual reviewers want the drawn cartoon beach on the first screen toned down or replaced by a real photo; Alon asked for that background at gate b. Options put to him: keep as is / keep but blend in the camp's own surf photos / replace with a muted real photo. Do not change the hero until he answers. All other must-fixes (video zoom end frame, own surf photo leading 'Down at the water', package cards, font-display swap, a11y role=group + 4.44 contrast, JS-off header, Booking.com first in the header) can go to the designer.
+
+Open for Shahar: CC BY-SA stock-003 is allowed by PLAN §9 but excluded by rubric.md — the critic flagged the conflict. Online preview still needs Cloudflare auth (~/.oneshot/cf-token or wrangler login).
 
 - Cheeky Monkey Surf Camp, Midigama East, +94719248686. Type `surf_camp` (own site sells lessons and weekly packages; also 5 room types on Booking.com and a big board shop).
 - Dossier: `dossier/cheeky-monkey/dossier.json` + `sources.md`; 136 sourced facts, 163 images (156 business-owned), 9 videos, 15 gaps, none blocking. Media (492 MB) is local: `media/cheeky-monkey.tsv`.

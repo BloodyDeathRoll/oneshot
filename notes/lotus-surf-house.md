@@ -1,6 +1,6 @@
 # lotus-surf-house — run 2026-10-midigama-01 (test)
 
-State: **harvested** (2026-11-03, harvester 0.5.0); the ledger line is the orchestrator's to append. Next station: Audit (auditor 0.1.3), then copy. No gate before mockups.
+State: **concepted** (2026-11-03). Done: harvest, audit (3b), copy 4a/4b/4c (PASS r1), concepts 4d (`sites/lotus-surf-house/concepts.md`: calm 'The gate', interactive 'Dappled', unique 'Under the net'). Next: **4e mockups** (designer 0.7.1) — a 4e run was started and stopped when the session closed: `sites/lotus-surf-house/mockups/` is partial and uncommitted; redo 4e from scratch. Then **4f pre-score (critics) before gate b** — do not skip it this time. Copy owner items: breakfast on every rate, one King unit's balcony, breaks/season, prices, WhatsApp, check-in conflict.
 
 - Lotus Surf House (formerly Yelum Guest House), Indhana Rd, Midigama 80650, +94774647541. Type `beach_lodging`: 8 rooms in 4 Booking room types (older ground-floor fan rooms, new upstairs King rooms with A/C and balcony), breakfast included, garden, roof terrace. Owner Yelum and his family.
 - Dossier: `dossier/lotus-surf-house/dossier.json` + `sources.md`; 44 business-owned Booking.com photos (≤ 1600 px), 3 third-party videos (unusable), 125 Booking reviews (85 with text, 70 owner replies). Google 4.9 (78), Booking 9.0 (125). 14 gaps, none blocking.
