@@ -39,22 +39,26 @@ img img-019 gate-800  - 800  70 "$LIFT"
 img img-020 garden-1600 "$(rc 1600 1200 16 9 .5 .62)" 1600 72
 img img-020 garden-960  "$(rc 1600 1200 16 9 .5 .62)" 960 70
 
-# ---- garden rooms: 4:5 centre crops (#26), never above native
+# ---- garden rooms: one shared 4:5 slideshow, centre crops (#26), never above native
 p45() { img "$1" "r45-$1" "$(rc "$2" "$3" 4 5 "${4:-.5}" .5)" 960 72; }
-p45 img-029 1440 1434; p45 img-032 1600 1388 .55; p45 img-030 1080 804; p45 img-009 1024 768 .45
+p45 img-029 1440 1434; p45 img-030 1080 804; p45 img-009 1024 768 .45
 p45 img-043 1600 1200; p45 img-028 1049 1000; p45 img-044 816 738
 
 # ---- the porch print: img-032 at 4:5 (the red-cement floor)
 img img-032 porch-840 "1040:1300:470:88" 840 74   # 4:5 below the ceiling line
 
-# ---- the King Rooms: 3:2, six photos
-p32() { local c; c=$(rc "$2" "$3" 3 2 .5 "${4:-.5}"); img "$1" "k32-$1-1600" "$c" 1600 72; img "$1" "k32-$1-960" "$c" 960 70; }
-p32 img-002 1600 1200; p32 img-010 1600 1200; p32 img-015 1280 960; p32 img-025 1200 1600 .62
-p32 img-034 1600 1200; p32 img-008 1600 1200
+# ---- the King Rooms (Alon's pick, gate b: "show the king room first, its the nicest")
+# img-002 whole frame for the full-bleed band (1600 native, drawn at most 1440 wide), img-025 at 4:5 beside it,
+# then four 3:2 crops for the strip.
+img img-002 king-002-1600 - 1600 72
+img img-002 king-002-960  - 960 70
+img img-025 king-025-840 "$(rc 1200 1600 4 5 .5 .62)" 840 70
+p32() { local c; c=$(rc "$2" "$3" 3 2 .5 "${4:-.5}"); img "$1" "k32-$1-640" "$c" 640 70; }
+p32 img-010 1600 1200; p32 img-015 1280 960; p32 img-034 1600 1200; p32 img-008 1600 1200
 
 # ---- the roof: three 4:5 crops
-img img-021 roof-021 "$(rc 1200 1600 4 5 .5 .45)" 760 74
-img img-022 roof-022 "$(rc 1199 1600 4 5 .5 .55)" 760 74
-img img-004 roof-004 "$(rc 1199 1600 4 5 .5 .5)" 760 74
+img img-021 roof-021 "$(rc 1200 1600 4 5 .5 .5)" 840 66
+img img-022 roof-022 "$(rc 1199 1600 4 5 .5 .55)" 560 70
+img img-004 roof-004 "$(rc 1199 1600 4 5 .5 .5)" 560 70
 
 ls -la "$D/img" | awk '{s+=$5} END {print "total bytes", s}'

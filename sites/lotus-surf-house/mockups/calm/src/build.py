@@ -46,139 +46,137 @@ def show(sid, names, alts_from, ratio, label, sizes):
 def rating(r, big=False):
     return (f'<a class="rating{" big" if big else ""}" href="{E(r["url"])}" rel="noopener">'
             f'<span class="score">{r["shown"]}<small>/{r["scale"]}</small></span>'
-            f'<span class="rmeta">{pipe([E(r["name"]), f"{r["count"]} reviews", E(r["day"])])}</span></a>')
+            f'<span class="rmeta">{E(r["name"])}, {r["count"]} reviews</span><span class="rday">{E(r["day"])}</span></a>')
 
 # ---------------------------------------------------------------- sections
-hero = f'''
+# Order after gate b (Alon, 2026-11-03): the gate first, then his three photographs at the top of the page:
+# the King Room (img-002 full-bleed, img-025 beside it) and the roof (img-021). Garden rooms after, in one block.
+hero = f"""
 <header class="top" id="top">
   <a class="mark" href="#top">{E(NAME)}</a>
-  <nav class="nav" aria-label="Sections"><a href="#garden">Rooms</a><a href="#getting-here">Getting here</a></nav>
+  <nav class="nav" aria-label="Sections"><a href="#upstairs">Rooms</a><a href="#guests">Guests</a><a href="#getting-here">Getting here</a></nav>
   {book('btn-sm', 'Check dates')}
 </header>
 <section class="hero" aria-label="{E(NAME)}">
   <div class="hero-text">
     <h1 class="script">{E(NAME)}</h1>
-    <p class="where">{E(TOWN)}</p>
-    {book('btn-hero')}
+    <p class="where">{E(TAGLINE)}</p>
+    <div class="hero-act">{book('btn-hero')}{call('btn-hero-call')}</div>
   </div>
   <div class="hero-media">
-    <img src="{src('gate-1200')}" srcset="{srcset(['gate-800', 'gate-1200'])}" sizes="(max-width: 767px) 76vh, 50vw"
+    <img src="{src('gate-1200')}" srcset="{srcset(['gate-800', 'gate-1200'])}" sizes="(max-width: 899px) 76vh, 50vw"
       width="1200" height="1600" alt="{E(ALT['img-019'])}" fetchpriority="high" class="gate">
   </div>
-</section>'''
+</section>"""
+
+strip = ''.join(picture(f'k32-{a}-640', ALT[a]) for a in ['img-010', 'img-015', 'img-034', 'img-008'])
+king = f"""
+<section class="king" id="upstairs" aria-labelledby="h-king">
+  <div class="king-bleed">
+    <img src="{src('king-002-1600')}" srcset="{srcset(['king-002-960', 'king-002-1600'])}" sizes="100vw"
+      width="1600" height="1200" alt="{E(ALT['img-002'])}" loading="lazy" decoding="async">
+    <div class="king-over wrap">
+      <p class="floor-tag">{svg('stairs')}Upstairs</p>
+      <h2 class="script" id="h-king">The King Rooms</h2>
+      <p class="king-lede">{E(BLOCKS['Old rooms and new'][1])}</p>
+    </div>
+  </div>
+  <div class="wrap king-grid">
+    <div class="king-pic">{picture('king-025-840', ALT['img-025'])}</div>
+    <div class="king-text">
+      <h3>{E(KING['label'])}</h3>
+      <p class="beds">{svg('bed')}{E(beds(KING))}</p>
+      <p class="note">{E(KING['note'])}</p>
+      <div class="actions">{book()}{call()}</div>
+      <p class="stay">{pipe([f"Check-out {STAY['checkOutFrom']}–{STAY['checkOutTo']}", 'Check-in at any hour', 'Cash only'])}</p>
+    </div>
+  </div>
+  <div class="wrap"><div class="strip">{strip}</div></div>
+</section>"""
+
+roof = f"""
+<section class="roof" aria-labelledby="h-roof">
+  <div class="wrap roof-grid">
+    <div class="roof-big">{picture('roof-021', ALT['img-021'])}</div>
+    <div class="roof-text">
+      <h2 class="script" id="h-roof">Up on the roof</h2>
+      <div class="lede">{paras('Up on the roof')}</div>
+      <div class="roof-two">{picture('roof-022', ALT['img-022'])}{picture('roof-004', ALT['img-004'])}</div>
+    </div>
+  </div>
+</section>"""
 
 glance_line = pipe([E(SPOT.replace('Booking.com puts Midigama Beach 250 m from the house.', 'Midigama Beach 250 m (Booking.com)')),
                     'Breakfast included, 8–10', 'Check-in any hour'])
-glance = f'''
+glance = f"""
 <section class="glance" aria-label="The house at a glance">
   <div class="col">
-    <p class="tag">{E(TAGLINE)}</p>
-    <p class="details">{glance_line}</p>
     <div class="ratings">{''.join(rating(r) for r in RATINGS)}</div>
-    <div class="actions">{book()}{call()}</div>
+    <p class="details">{glance_line}</p>
   </div>
-</section>'''
+</section>"""
 
-def room_row(r, sid, quote=''):
-    names = [f'r45-{a}' for a in GALLERIES[r['label']]]
-    return f'''
-  <article class="room">
-    {show(sid, names, GALLERIES[r['label']], '45', r['label'] + ', photos', '(max-width: 767px) 100vw, 480px')}
-    <div class="room-text">
-      <h3>{E(r['label'])}</h3>
-      <p class="beds">{svg('bed')}{E(beds(r))}</p>
-      <p class="note">{E(r['note'])}</p>
-      {book()}
-    </div>
-  </article>{quote}'''
-
-yelum_quote = f'''
-  <figure class="owner-quote">
-    <h3 class="script small">Old rooms and new</h3>
-    <blockquote><p>{E(BLOCKS['Old rooms and new'][0])}</p></blockquote>
-  </figure>'''
-
-garden = f'''
+GARDEN_SHOW = ['img-029', 'img-043', 'img-030', 'img-009', 'img-028', 'img-044']
+def room_item(r):
+    return (f'<li class="gr"><h3>{E(r["label"])}</h3><p class="beds">{svg("bed")}{E(beds(r))}</p>'
+            f'<p class="gnote">{svg("fan")}<span>{E(r["note"])}</span></p></li>')
+garden = f"""
 <section class="floor tint" id="garden" aria-labelledby="h-garden">
   <div class="wrap">
-    <h2 class="script" id="h-garden">In the garden</h2>
-    <div class="lede">{paras('In the garden')}</div>
+    <div class="garden-head">
+      <div><h2 class="script" id="h-garden">In the garden</h2><div class="lede">{paras('In the garden')}</div></div>
+      <blockquote class="owner"><p>{E(BLOCKS['Old rooms and new'][0])}</p></blockquote>
+    </div>
     <div class="wide">{picture('garden-1600', ALT['img-020'])}</div>
-    <p class="floor-label">{svg('leaf')}Ground floor, three room types</p>
-    {room_row(GARDEN_ROOMS[0], 'g1', yelum_quote)}
-    {room_row(GARDEN_ROOMS[1], 'g2')}
-    {room_row(GARDEN_ROOMS[2], 'g3')}
+    <div class="garden-rooms">
+      {show('g', [f'r45-{a}' for a in GARDEN_SHOW], GARDEN_SHOW, '45', 'Garden rooms, photos', '(max-width: 899px) 100vw, 440px')}
+      <div class="gr-side">
+        <p class="floor-tag">{svg('leaf')}Ground floor, three room types</p>
+        <ul class="gr-list">{''.join(room_item(r) for r in GARDEN_ROOMS)}</ul>
+        <div class="actions">{book()}</div>
+      </div>
+    </div>
   </div>
-</section>'''
+</section>"""
 
-fiona = next(r for r in REVIEWS if r['first'] == 'Fiona')
-porch = f'''
+porch = f"""
 <section class="porch" aria-labelledby="h-yelum">
   <div class="wrap porch-grid">
-    <div class="print">{picture('porch-840', ALT['img-032'])}</div>
+    <div class="porch-pic">{picture('porch-840', ALT['img-032'])}</div>
     <div class="porch-text">
       <h2 class="script" id="h-yelum">Yelum</h2>
       {paras('Yelum')}
       <h2 class="script">Breakfast</h2>
       {paras('Breakfast')}
-      <figure class="fiona"><blockquote><p>{E(fiona['quote'])}</p></blockquote>
-        <figcaption>{pipe([E(fiona['author']), 'Booking.com', E(fiona['month'])])}</figcaption></figure>
     </div>
   </div>
-</section>'''
-
-kn = [f'k32-{a}-1600' for a in GALLERIES[KING['label']]]
-stay_line = pipe([f"Check-out {STAY['checkOutFrom']}–{STAY['checkOutTo']}", 'Check-in at any hour', 'Cash only'])
-king = f'''
-<section class="floor tint" id="upstairs" aria-labelledby="h-king">
-  <div class="wrap">
-    <h2 class="script" id="h-king">The King Rooms</h2>
-    <div class="lede">{paras('Old rooms and new', slice(1, 2))}</div>
-    {show('k', kn, GALLERIES[KING['label']], '32', 'King Room with Balcony, photos', '(max-width: 1240px) 100vw, 1200px')}
-    <div class="king-row">
-      <div><h3>{E(KING['label'])}</h3><p class="beds">{svg('bed')}{E(beds(KING))}</p></div>
-      <p class="note">{E(KING['note'])}</p>
-      {book()}
-    </div>
-    <p class="stay">{stay_line}</p>
-  </div>
-</section>'''
-
-roof = f'''
-<section class="roof" aria-labelledby="h-roof">
-  <div class="wrap">
-    <h2 class="script" id="h-roof">Up on the roof</h2>
-    <div class="lede">{paras('Up on the roof')}</div>
-    <div class="three">{picture('roof-021', ALT['img-021'])}{picture('roof-022', ALT['img-022'])}{picture('roof-004', ALT['img-004'])}</div>
-    <p class="amen">{pipe([E(a) for a in AMENITIES])}</p>
-  </div>
-</section>'''
+</section>"""
 
 quotes = ''.join(
     f'<li class="q" aria-roledescription="slide" aria-label="{i+1} of {len(REVIEWS)}"><blockquote><p>{E(r["quote"])}</p></blockquote>'
     f'<p class="who">{pipe([E(r["author"]), E(r["src"]), E(r["month"])])}</p></li>' for i, r in enumerate(REVIEWS))
-guests = f'''
+guests = f"""
 <section class="guests tint" id="guests" aria-labelledby="h-guests">
   <div class="wrap">
     <h2 class="script" id="h-guests">Guests</h2>
-    <div class="ratings big">{''.join(rating(r, True) for r in RATINGS)}</div>
     <div class="quotes" data-quotes role="region" aria-roledescription="carousel" aria-label="Guest reviews">
-      <ul class="qtrack" tabindex="0">{quotes}</ul>
+      <ul class="qtrack" tabindex="0" aria-label="Guest reviews, scroll sideways">{quotes}</ul>
       <div class="ctrl" hidden><button class="arw prev" type="button" aria-label="Previous review">{svg("prev")}</button>
         <div class="dots" role="group" aria-label="Choose a review">{''.join(f'<button type="button" class="dot" aria-label="Review {i+1}"></button>' for i in range(len(REVIEWS)))}</div>
         <button class="arw next" type="button" aria-label="Next review">{svg("next")}</button></div>
     </div>
     <p class="more"><a class="btn btn-quiet" href="{E(REVIEW_URL)}" rel="noopener">Read all {RATINGS[0]["count"]} reviews on Booking.com</a></p>
   </div>
-</section>'''
+</section>"""
 
-getting = f'''
+getting = f"""
 <section class="out" id="getting-here" aria-labelledby="h-out">
   <div class="wrap out-grid">
     <div>
       <h2 class="script" id="h-out">Getting here</h2>
       {paras('Getting here')}
       <p class="addr">{svg('pin')}<span>{E(ADDRESS)}</span></p>
+      <p class="amen">{pipe([E(a) for a in AMENITIES])}</p>
     </div>
     <div class="out-side">
       <div class="actions col">
@@ -189,16 +187,16 @@ getting = f'''
       <p>{E(STAY['note'])}</p>
     </div>
   </div>
-</section>'''
+</section>"""
 
-closing = f'''
+closing = f"""
 <section class="closing tint" id="book" aria-label="Book">
   <div class="wrap center">
     <p class="script close-line">{E(CLOSING)}</p>
     <div class="actions">{book()}{call()}</div>
   </div>
-</section>'''
-foot = f'''<footer class="foot">
+</section>"""
+foot = f"""<footer class="foot">
   <div class="wrap foot-grid">
     <div><p class="foot-name script">{E(NAME)}</p><p>{E(ADDRESS)}</p></div>
     <div class="actions">
@@ -209,7 +207,7 @@ foot = f'''<footer class="foot">
   </div>
   <p class="wrap fine">Ratings and reviews as published on Booking.com and Google, read 3 Nov 2026.</p>
 </footer>
-<div class="bar" id="bar">{book('bar-book')}<a class="btn bar-call" href="{TEL}" aria-label="Call {E(PHONE_SHOWN)}">{svg('phone')}</a></div>'''
+<nav class="bar" id="bar" aria-label="Book or call">{book("bar-book")}<a class="btn bar-call" href="{TEL}" aria-label="Call {E(PHONE_SHOWN)}">{svg("phone")}</a></nav>"""
 
 css = (HERE / 'page.css').read_text()
 js = (HERE / 'page.js').read_text()
@@ -218,19 +216,19 @@ page = f'''<!doctype html>
 <head>
 {head('calm')}
 {font_link('family=Hanken+Grotesk:wght@400;600&family=Parisienne')}
-<link rel="preload" as="image" href="{src('gate-1200')}" imagesrcset="{srcset(['gate-800', 'gate-1200'])}" imagesizes="(max-width: 767px) 76vh, 50vw" fetchpriority="high">
+<link rel="preload" as="image" href="{src('gate-1200')}" imagesrcset="{srcset(['gate-800', 'gate-1200'])}" imagesizes="(max-width: 899px) 76vh, 50vw" fetchpriority="high">
 <script>document.documentElement.classList.replace('no-js','js')</script>
 <style>{css}</style>
 </head>
 <body>
-<a class="skip" href="#garden">Skip to the rooms</a>
+<a class="skip" href="#upstairs">Skip to the rooms</a>
 <main>
 {hero}
+{king}
+{roof}
 {glance}
 {garden}
 {porch}
-{king}
-{roof}
 {guests}
 {getting}
 {closing}

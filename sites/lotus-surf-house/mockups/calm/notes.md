@@ -40,6 +40,30 @@ Skill notes (tools.md: notes, never gates). The `design-taste-frontend` inspecto
 
 `/animate` set the motion system: ease-out `cubic-bezier(.23,1,.32,1)` for entrances and presses, the drawer curve for the phone bar, 120 ms press at 0.97, 220 ms dots, 240 ms bar, 300 ms quote cross-fade.
 
+### Revision after gate b (Alon's pick, 2026-11-03), before 4g
+
+Alon picked calm: "the first photo is great, but use the attached photos in the top areas, show the king room first, its the nicest". His photos are img-021, img-025 and img-002, and his words win over the critics. I also worked through the calm fixes from the three 4f reports.
+
+**Round 7, whole page.** New order: gate → King Rooms → roof → ratings and details → garden (all three fan rooms) → Yelum and breakfast → guests → getting here → closing → footer.
+- The King Rooms are now the page's big moment. img-002 runs full-bleed and is never upscaled: up to 1440 px wide from a 1600 px source. The script title "The King Rooms" sits over it, white, on a bottom shade. This is the dark full-bleed change of pace the visual critic asked for. Because it is a picture filling its container, check-design passes it.
+- Below that, img-025 sits large at 4:5 beside the King Room facts, Book and Call. A four-photo 3:2 strip follows (010, 015, 034, 008).
+- The roof follows. img-021 is large at 4:5, with img-022 and img-004 small beside the text. There is no scroll row any more, which fixes the axe `scrollable-region-focusable` on `.three`.
+- The garden rooms are one block: img-020 at 21:9, Yelum's "Old rooms and new" quote beside the lede, one shared 4:5 slideshow (029, 043, 030, 009, 028, 044), and the three room types as a compact list. Each keeps its own fan / no A/C / no hot water note word for word, followed by one button. On the phone this went from about four screens to about two.
+- Hero: the passed tagline "A guesthouse in Midigama, on the south coast of Sri Lanka." replaces "Midigama, Sri Lanka", so "guesthouse" is on the first phone screen. "Call +94 77 464 7541" (`tel:`) sits under the Booking.com button, which stays first and primary.
+- Phone hero: the title is on one line (40–52 px) on a bottom shade over the doorway, with the text block anchored low. A top shade sits behind the white wordmark.
+- Fiona's quote is gone from the porch, so it appears only once, in Guests. The porch print lost its mat and drop shadow.
+- The ratings appear once, in the glance band. The duplicate big cards in Guests are gone.
+
+The sheet showed the phone rating cards still wrapped "Booking.com, 125 / reviews". The weight was 1,197 KB, up from 617, because the lazy images in the top sections now sit within the browser's lazy-load distance.
+
+**Round 8.**
+- Phone ratings are now full-width rows: the score on the left, and two lines on the right ("Booking.com, 125 reviews" / "3 Nov 2026"), with the score column aligned.
+- Derived images were re-cut to their drawn sizes: the strip at 640, roof-021 at 840 q66, roof-022/004 at 560, king-025 at 840, and the King band at `sizes="100vw"`. First load went from 1,197 to 889 KB.
+- The phone bar is now `<nav aria-label="Book or call">`, which clears axe `region`.
+- The header wordmark is 44 px tall.
+
+**Round 9, final sheets (`shots/`).** No overflow at 390 or 1440 (scrollWidth = viewport). axe-core 4.10 found 0 violations at 390 and at 1440. The page now opens on the gate, then lands straight on the house's best room in its own light, then the roof. The pale, uniform middle the visual critic scored down is broken by the King band. The fan rooms take a third of their old height. Against the Booking.com fold (ping-pong table, search bar), this is clearly better on the first and second screens.
+
 ## images
 
 All are Booking.com property uploads, `business-owned` (`dossier/lotus-surf-house/assets/index.json`). None is upscaled; crops only. The largest drawn width at 1440 is the King slideshow (1152 CSS px) from a 1600 px source.
@@ -47,11 +71,13 @@ All are Booking.com property uploads, `business-owned` (`dossier/lotus-surf-hous
 | use | asset | crop |
 |---|---|---|
 | first screen (desktop right half / phone full-bleed) | img-019 | whole frame, object-position 28–30% |
-| ground floor 16:9 | img-020 | 1600×900 |
-| garden room slideshows 4:5 | img-029, 032, 030, 009 · 029, 032, 009, 030 · 043, 028, 044 | centre 4:5 (#26) |
-| porch print 4:5 | img-032 | below the ceiling line |
-| King Room slideshow 3:2 | img-002, 010, 015, 025, 034, 008 | centre 3:2 |
-| roof row 4:5 | img-021, 022, 004 | centre 4:5 |
+| King Rooms full-bleed band | img-002 | whole frame, 1600 / 960 (drawn ≤ 1440) |
+| King Room beside the facts, 4:5 | img-025 | centre 4:5, 840 |
+| King strip 3:2 | img-010, 015, 034, 008 | centre 3:2, 640 |
+| roof, large 4:5 + two small | img-021 · img-022, img-004 | centre 4:5 |
+| ground floor 21:9 / 4:3 | img-020 | 1600×900 |
+| garden rooms, one 4:5 slideshow | img-029, 043, 030, 009, 028, 044 | centre 4:5 (#26) |
+| porch 4:5 | img-032 | below the ceiling line |
 
 Alt texts were written from each photograph opened at full size (`lotus_data.py` `ALT`).
 
@@ -84,11 +110,12 @@ Cheeky Monkey (`sites/cheeky-monkey/mockups/`) opens on a roadside street photo 
 6. Other businesses compared above. **pass**
 7. No usable video (concepts §2, all three clips third-party with unknown licence). The first screen is the strongest own photograph. **pass**
 
-audit-mockup (phone, slow 4G):
-- first load 617 KB (images 500 KB, fonts 57 KB, Google Fonts only as third party, allowed at 4e);
+audit-mockup (phone, slow 4G), after the gate-b revision:
+- first load 889 KB (fonts 57 KB; Google Fonts are the only third party, allowed at 4e);
 - inline JS ≈ 3 KB;
 - largest image 232 KB (gate-1200.webp);
-- LCP 644–1,016 ms over the last two runs, first-load CLS 0.020;
-- scroll CLS 0.0008 / 0.
+- LCP 808 ms, first-load CLS 0.0025;
+- scroll CLS 0.0003 / 0.
+- axe-core 4.10: 0 violations at 390 and 1440. check-design: 0 problems, 0 warnings. check-places: 0 borrowed images.
 
 Tap targets under 44 px are the slideshow dots' width (24 px wide, 44 px tall); each slideshow also has 44 px arrows.

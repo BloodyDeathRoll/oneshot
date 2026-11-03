@@ -1,32 +1,32 @@
 {
  "slug": "lotus-surf-house",
  "variant": "calm",
- "measured_at": "2026-11-03T19:21:30.836Z",
+ "measured_at": "2026-11-03T20:26:20.658Z",
  "first_load": {
-  "requests": 7,
+  "requests": 14,
   "hosts": [
-   "localhost:8980",
    "fonts.googleapis.com",
+   "localhost:8980",
    "fonts.gstatic.com"
   ],
   "third_party_hosts": [
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 617300,
-  "bytes_html": 59936,
+  "bytes_total": 910431,
+  "bytes_html": 56695,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 56996,
-  "bytes_images": 500368,
+  "bytes_images": 796740,
   "largest_image_bytes": 232156,
-  "lcp_ms": 1016,
-  "cls": 0.02,
-  "dcl_ms": 1000
+  "lcp_ms": 808,
+  "cls": 0.0025,
+  "dcl_ms": 809
  },
  "scroll": {
   "early": {
-   "cls": 0.0008,
+   "cls": 0.0003,
    "shifts": []
   },
   "settled": {
@@ -54,30 +54,29 @@
   "note": "no drawer; every action is a plain link"
  },
  "a11y": {
-  "images": 23,
+  "images": 18,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 0,
-  "tapables": 62,
-  "tapables_under_44px": 32,
+  "tapables": 41,
+  "tapables_under_44px": 21,
   "tapables_under_44px_examples": [
    "Lotus Surf House 134x43",
    " 36x44",
    " 24x44",
    " 24x44",
    " 24x44",
-   " 36x44"
+   " 24x44"
   ],
   "headings": [
    "H1",
    "H2",
    "H3",
+   "H2",
+   "H2",
    "H3",
    "H3",
    "H3",
    "H2",
-   "H2",
-   "H2",
-   "H3",
    "H2",
    "H2",
    "H2",
@@ -87,9 +86,9 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 8318,
+  "text_length": 7624,
   "booking_links_reachable": 2,
-  "visible_images": 23
+  "visible_images": 18
  },
  "reduced_motion": {
   "canvases": 0,
