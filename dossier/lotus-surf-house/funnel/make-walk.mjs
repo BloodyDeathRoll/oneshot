@@ -166,6 +166,13 @@ await visit('04-booking-com', BOOKING, {
     // the AI summary at the top of the description (what a visitor reads about the rooms)
     e.summary_text = await p.evaluate(() => { const t = document.body.innerText; const i = t.indexOf('Comfortable Accommodations'); return i < 0 ? null : t.slice(i, i + 700); });
     const r = await shotAt(p, 'Comfortable Accommodations', '04-booking-com-summary.png'); e.at.push(r || { needle: 'Comfortable Accommodations', found: false });
+    // "Ask a question": the one pre-booking channel on the listing. Tap it to see what it asks for; nothing is typed or sent.
+    const ask = p.getByText('Ask a question', { exact: true }).first();
+    if (await ask.count()) {
+      await ask.scrollIntoViewIfNeeded(); await ask.click({ timeout: 5000 }).catch(() => {}); await p.waitForTimeout(4000);
+      e.ask_question = { url_after_tap: p.url().slice(0, 200), text: (await p.evaluate(() => { const d = document.querySelector('[role="dialog"], [aria-modal="true"]'); return (d ? d.innerText : document.body.innerText.slice(0, 600)).replace(/\n{2,}/g, '\n').slice(0, 800); })) };
+      await p.screenshot({ path: `${OUT}/04-booking-com-ask-tapped.png` }); e.ask_question.screenshot = rel('04-booking-com-ask-tapped.png');
+    }
   },
 });
 await visit('05-booking-old-url', BOOKING_OLD, { wait: 4000 });
