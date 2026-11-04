@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<title>A website for Lotus Surf House</title>
+<meta name="description" content="A proposal for Lotus Surf House, Midigama: the website preview we built, what it changes for a guest on a phone, what you will be able to edit yourself, and the ways it can run.">
+<style>
+:root{
+  --bg:#f7f7f4; --paper:#ffffff; --ink:#1f2418; --muted:#575d4f; --line:#dcdfd5;
+  --accent:#b8441e; --accent-ink:#ffffff; --link:#8a3214; --soft:#f1ece4; --warn:#fff6e0; --warn-line:#d9a02a;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#141611; --paper:#1d2019; --ink:#e9ebe4; --muted:#b0b5a7; --line:#30352a; --link:#f0a27f; --soft:#262219; --warn:#2a2416; --warn-line:#b8862a; }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+a{color:var(--link)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header.top{padding:40px 16px 24px}
+.kicker{color:var(--muted);font-size:15px;margin:0 0 8px}
+h1{font-size:clamp(30px,6vw,48px);line-height:1.1;font-weight:600;margin:0 0 16px;letter-spacing:-.01em}
+h2{font-size:clamp(23px,4vw,30px);line-height:1.2;font-weight:600;margin:0 0 14px}
+h3{font-size:18px;margin:0 0 6px}
+p{margin:0 0 14px}
+.lede{font-size:19px;max-width:44em}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:12px 20px;background:var(--accent);color:var(--accent-ink);font-weight:600;text-decoration:none;border-radius:4px;word-break:break-all}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--link);outline-offset:2px}
+.note{color:var(--muted);font-size:15px}
+section{padding:36px 16px;border-top:1px solid var(--line)}
+.grid2{display:grid;gap:24px;grid-template-columns:1fr}
+.shots{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+figure{margin:0}
+figure img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+figcaption{font-size:14px;color:var(--muted);margin-top:6px}
+.wide{margin-top:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:18px}
+.fix{display:grid;gap:18px;grid-template-columns:1fr;margin-top:20px}
+.fix .card h3{margin-bottom:10px}
+.fix .label{display:block;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:10px 0 2px}
+.fix figure{max-width:300px}
+.fix figure.land{max-width:420px}
+.fix figure+figure{margin-top:14px}
+table{border-collapse:collapse;width:100%;background:var(--paper);border:1px solid var(--line);border-radius:8px;font-size:16px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-top:1px solid var(--line)}
+thead th{border-top:0;font-size:14px;color:var(--muted);font-weight:600}
+tbody th{font-weight:600;width:22%}
+.tablewrap{overflow-x:auto}
+.tabs{list-style:none;padding:0;margin:0;display:grid;gap:8px;grid-template-columns:1fr}
+.tabs li{padding:10px 14px;background:var(--paper);border:1px solid var(--line);border-radius:6px}
+.tabs li>strong:first-child{display:block}
+.offer{background:var(--soft);border-left:4px solid var(--accent);padding:18px 20px;border-radius:4px;max-width:46em}
+.offer p:last-child{margin-bottom:0}
+ol.confirm{padding-left:22px;margin:0;max-width:46em}
+ol.confirm li{margin-bottom:10px}
+.offsite figure{max-width:420px}
+footer{padding:28px 16px 48px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (min-width:720px){
+  .grid2{grid-template-columns:1fr 1fr}
+  .fix{grid-template-columns:1fr 1fr}
+  .tabs{grid-template-columns:1fr 1fr}
+  .offsite{display:grid;gap:24px;grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  table,thead,tbody,tr,th,td{display:block}
+  thead{display:none}
+  tbody tr{border-top:1px solid var(--line);padding:10px 12px}
+  tbody tr:first-child{border-top:0}
+  tbody th,tbody td{border:0;padding:2px 0;width:auto}
+  tbody td::before{content:attr(data-h);display:block;font-size:13px;font-weight:600;color:var(--muted)}
+}
+@media (max-width:420px){ .shots{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<header class="top wrap">
+  <p class="kicker">A proposal for Lotus Surf House, Midigama, Sri Lanka</p>
+  <h1>We built Lotus Surf House a website</h1>
+  <p class="lede">Your guests rate Lotus Surf House 9.0 out of 10 on Booking.com, from 125 reviews, and 4.9 out of 5 on Google, from 78 (read 3 November 2026). On Booking.com they give the staff 9.9. Today the house has no website of its own: a traveller finds you on Google Maps or Booking.com, and on Booking.com they can't reach you before they book. We built a site that shows the house, the new King Rooms and the garden rooms as they are, with Booking.com and your phone one tap away. It is made from your Booking.com photos and listing, your Google listing and your guests' reviews. You can open it now:</p>
+  <p><a class="btn" href="https://lotus-surf-house.os1.workers.dev/">lotus-surf-house.os1.workers.dev</a></p>
+  <p class="note">This is a private preview. Search engines are told not to list it, so it is not on Google. Your Booking.com and Google listings stay exactly as they are. Nothing goes public until you decide.</p>
+</header>
+
+<main>
+<section class="wrap" aria-labelledby="h-first">
+  <h2 id="h-first">The first screen on a phone</h2>
+  <div class="shots">
+    <figure>
+      <img src="before-booking-fold.jpg" width="780" height="1688" loading="lazy" alt="Our screenshot of the Lotus Surf House listing on Booking.com on a phone, 3 November 2026: the blue Booking.com bar and search box, the name, Indhana Road, Midigama, 9.0 Superb, 125 reviews, a photo of the ping-pong table in the garden marked 1/42, four feature buttons and a yellow box saying Choose dates to see prices.">
+      <figcaption>Today: your Booking.com listing on a phone. Our screenshot, 3 November 2026.</figcaption>
+    </figure>
+    <figure>
+      <img src="after-390-top.jpg" width="780" height="1688" loading="lazy" alt="The preview on a phone: the carved wooden garden gate under green leaves, the name Lotus Surf House in script, the line A guesthouse in Midigama, on the south coast of Sri Lanka, a red button Check dates on Booking.com and a button Call +94 77 464 7541.">
+      <figcaption>The preview on a phone, 4 November 2026: your gate, your name, Booking.com and Call.</figcaption>
+    </figure>
+  </div>
+  <div class="grid2 wide">
+    <figure>
+      <img src="after-1440-top.jpg" width="1440" height="900" loading="lazy" alt="The preview on a laptop: on the left the name Lotus Surf House in script, the guesthouse line, Check dates on Booking.com and Call; on the right the garden gate.">
+      <figcaption>The preview on a laptop, 4 November 2026.</figcaption>
+    </figure>
+    <figure>
+      <img src="after-1440-king.jpg" width="1440" height="900" loading="lazy" alt="The preview on a laptop, one scroll down: a King Room across the full width, the bed under its mosquito net, the balcony with two rattan chairs and the trees outside, with the words Upstairs, The King Rooms, The King Rooms upstairs are new, and their balconies look out into the trees.">
+      <figcaption>One scroll down: the King Rooms, as you asked us to show first.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-numbers">
+  <h2 id="h-numbers">Booking from a phone, before and after</h2>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th scope="col"></th><th scope="col">Today (Google and Booking.com)</th><th scope="col">The preview</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Your own page</th>
+        <td data-h="Today (Google and Booking.com)">None. The Google listing says "Add website" where the website should be.</td>
+        <td data-h="The preview">One page that is only about Lotus Surf House, in your photos and your guests' words.</td></tr>
+      <tr><th scope="row">Booking</th>
+        <td data-h="Today (Google and Booking.com)">On Booking.com, after choosing dates. On Google Maps on a laptop, the first button is a sponsored Booking.com advert.</td>
+        <td data-h="The preview">"Check dates on Booking.com" on the first screen: one tap to your listing. As the guest scrolls, it stays in a bar at the bottom of the phone screen, with a call button.</td></tr>
+      <tr><th scope="row">Asking you first</th>
+        <td data-h="Today (Google and Booking.com)">Booking.com shows no phone, WhatsApp or email. "Ask a question" opens a sign-in page. Your phone number is only on Google.</td>
+        <td data-h="The preview">"Call +94 77 464 7541" on the first screen, beside the King Room, in the bar and at the end of the page.</td></tr>
+      <tr><th scope="row">Which room is which</th>
+        <td data-h="Today (Google and Booking.com)">Booking.com's description says every room has air-conditioning and a balcony. Its own room list gives them only to the three King Rooms.</td>
+        <td data-h="The preview">Each room type says it plainly: King Room upstairs with air conditioning and hot water; the three garden room types with a fan and mosquito net, no air conditioning and no hot water.</td></tr>
+      <tr><th scope="row">Guest reviews</th>
+        <td data-h="Today (Google and Booking.com)">On Booking.com, below the listing. On Google, behind a sign-in.</td>
+        <td data-h="The preview">Booking.com 9.0/10 from 125 and Google 4.9/5 from 78, with the date we read them, and 12 guest reviews quoted word for word.</td></tr>
+      <tr><th scope="row">Cash only</th>
+        <td data-h="Today (Google and Booking.com)">On Booking.com, only inside the closed "Hotel policies" section near the bottom.</td>
+        <td data-h="The preview">Right under the King Room buttons, and again in "Good to know".</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note wide">On a slowed-down phone test (4 November 2026) the preview opened with 883 KB and 0 requests to outside servers, and the main content showed in under half a second. The page fits a 390-pixel phone screen without sideways scrolling, and the Booking.com and Call links work with JavaScript switched off.</p>
+</section>
+
+<section class="wrap" aria-labelledby="h-fixed">
+  <h2 id="h-fixed">What a guest meets today, and what the preview does instead</h2>
+  <p>We walked your Google and Booking.com listings on a phone on 3 November 2026, as a guest would, without booking anything. These screenshots are from that walk.</p>
+  <div class="fix">
+    <div class="card">
+      <h3>On Booking.com, a guest can't ask you anything before booking</h3>
+      <span class="label">Today</span>
+      <p>Booking.com is the only place that sells your rooms, and it shows no phone, no WhatsApp and no email. Under "Contacting the property" it says: "Once you book, we'll provide details so you can contact the property directly." Tapping "Ask a question" opens a sign-in page. A guest who wants to ask whether a room has A/C, or where to keep a surfboard, has to book or make an account first.</p>
+      <span class="label">On the preview</span>
+      <p>"Call +94 77 464 7541" sits beside "Check dates on Booking.com" on the first screen, under the King Room, in the bar at the bottom of the phone and at the end of the page. The closing line says: "Live dates and prices are on Booking.com. If you'd rather ask us something first, call."</p>
+      <figure><img src="before-booking-contact.jpg" width="780" height="262" loading="lazy" alt="Our screenshot of the Booking.com listing on a phone, 3 November 2026: Contacting the property. If you want to request something specific, you can do that after you choose your rate. Once you book, we'll provide details so you can contact the property directly."><figcaption>"Contacting the property" on Booking.com, 3 November 2026.</figcaption></figure>
+      <figure><img src="before-booking-signin.jpg" width="780" height="620" loading="lazy" alt="Our screenshot of the page that opens after tapping Ask a question on Booking.com: Sign in or create an account, with an email field and Google, Apple and Facebook buttons."><figcaption>After tapping "Ask a question", 3 November 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>The rooms are told apart plainly</h3>
+      <span class="label">Today</span>
+      <p>The first lines of Booking.com's description say the house "offers family rooms with private bathrooms, air-conditioning, and garden views. Each room includes a shower, balcony, and tiled floors." Booking.com writes that summary, not you, and its own room list gives air-conditioning and a balcony only to the three King Rooms upstairs. Some guests have written that their room was not the one in the photos, or that the fan rooms were hot.</p>
+      <span class="label">On the preview</span>
+      <p>The new King Rooms come first, with their own photos: "Upstairs, 25 m². Air conditioning, fan, mosquito net and hot water." The garden rooms follow under "Ground floor, three room types", with their own photos, each with its beds, size and "Fan and mosquito net; no air conditioning and no hot water". A guest knows what they are booking before they tap.</p>
+      <figure class="land"><img src="before-booking-summary.jpg" width="780" height="252" loading="lazy" alt="Our screenshot of Booking.com's property description on a phone, 3 November 2026: Comfortable Accommodations: Lotus Surf House in Midigama offers family rooms with private bathrooms, air-conditioning, and garden views. Each room includes a shower, balcony, and tiled floors."><figcaption>Booking.com's description, 3 November 2026.</figcaption></figure>
+      <figure><img src="after-390-king.jpg" width="780" height="1688" loading="lazy" alt="The preview's King Room on a phone: King Room with Balcony, 1 extra-large double bed, sleeps 2, Upstairs, 25 m², air conditioning, fan, mosquito net and hot water, the buttons Check dates on Booking.com and Call +94 77 464 7541, the line Check-out 11:00–12:00, Check-in at any hour, Cash only, and four photos of the room and its bathroom."><figcaption>The King Room on the preview, 4 November 2026.</figcaption></figure>
+      <figure><img src="after-390-garden.jpg" width="780" height="1688" loading="lazy" alt="The preview's garden rooms on a phone: Ground floor, three room types. Standard Double or Twin Room with Garden View, Double or Twin Room with Garden View and Deluxe Queen Room, each with its beds, size, and Fan and mosquito net; no air conditioning and no hot water. Then Check dates on Booking.com."><figcaption>The garden rooms on the preview, 4 November 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>Google has no website to send people to</h3>
+      <span class="label">Today</span>
+      <p>On Google Maps the Lotus Surf House listing shows 4.9 from 78 reviews and, where the website should be, "Add website" under "Add missing information". On a phone it offers Directions, Start and Call, and the photos sit behind "See all 150 photos in the app". Nowhere does the house say anything in its own words.</p>
+      <span class="label">On the preview</span>
+      <p>A page that tells the house's story: the gate, the King Rooms, the roof terrace with its Buddha, the shady garden with the hammock and the ping-pong table, you and breakfast from 8 to 10, the guests, and how to get here by train. Once it is live, it is the address that goes into "Add website".</p>
+      <figure><img src="before-google-phone.jpg" width="780" height="538" loading="lazy" alt="Our screenshot of the Lotus Surf House listing on Google Maps on a phone, 3 November 2026: 4.9 stars, 78 reviews, 3-star hotel, the buttons Directions, Start and Call, and two photos of the house."><figcaption>Your Google listing on a phone, 3 November 2026.</figcaption></figure>
+      <figure class="land"><img src="before-google-website.jpg" width="416" height="372" loading="lazy" alt="Our screenshot of the Lotus Surf House listing on Google Maps on a laptop, 3 November 2026: the address on Indhana Rd, Midigama 80650, +94 77 464 7541, the plus code, Suggest an edit, and under Add missing information, Add website and Add a photo."><figcaption>The same listing on a laptop: "Add website", 3 November 2026.</figcaption></figure>
+    </div>
+    <div class="card">
+      <h3>Trust, next to the rooms</h3>
+      <span class="label">Today</span>
+      <p>Your ratings are high, but a guest reads them on Booking.com, between sign-in prompts, or on Google, where the review texts sit behind a sign-in.</p>
+      <span class="label">On the preview</span>
+      <p>Both ratings, with the review count and the date we read them, next to "Midigama Beach 250 m (Booking.com) | Breakfast included, 8–10 | Check-in any hour". Under "Guests", 12 reviews quoted word for word with the guest's name, country and month, and a link to all 125 on Booking.com.</p>
+      <figure><img src="after-390-glance.jpg" width="780" height="1688" loading="lazy" alt="The preview on a phone: two cards, 9.0/10 Booking.com, 125 reviews, 3 Nov 2026 and 4.9/5 Google, 78 reviews, 3 Nov 2026; the line Midigama Beach 250 m (Booking.com), Breakfast included, 8–10, Check-in any hour; then In the garden. At the bottom, the bar Check dates on Booking.com with a call button."><figcaption>Ratings and the house at a glance on the preview, 4 November 2026.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-also">
+  <h2 id="h-also">Also on the preview</h2>
+  <ul>
+    <li>Only your own photographs: all 18 on the page are the ones you uploaded to Booking.com.</li>
+    <li>"Up on the roof", "In the garden", "Yelum" with your own words to a guest, "Breakfast", and "Getting here": the railway station 50 m away, and the beaches and Koggala Airport by the distances Booking.com gives.</li>
+    <li>"Good to know": check-in at any hour, cash only, children welcome with no cots or extra beds, pets on request at no charge, no parking.</li>
+    <li>"On Google you may also find the house under its old name, Yelum Guest House."</li>
+    <li>No chat widget, no pop-up, no tracker.</li>
+    <li>Every fact on the preview comes from your Booking.com and Google listings or your guests' reviews. Our reviewer checked each one against those sources: 0 mismatches.</li>
+  </ul>
+</section>
+
+<section class="wrap" aria-labelledby="h-off">
+  <h2 id="h-off">Also worth doing, outside the website</h2>
+  <ul>
+    <li><strong>Add the website to your Google listing.</strong> Once the site is live, its address goes into "Add website" on the Lotus Surf House listing.</li>
+    <li><strong>Tidy up the old Yelum Guest House listing.</strong> Google still shows "Yelum Guest House" at the same spot, with its own 4.7 rating and "Claim this business". Its website link opens the Facebook page "Midigama guesthouse YELUM", whose newest visible post is from November 2018. That page gives +94 71 258 5804 as the phone, where both Google listings give +94 77 464 7541, and its address ends in "123456789". You could claim the old listing and point it at the new site, or ask Google to merge it into Lotus Surf House, and bring the Facebook page's name, phone and address up to date. On Booking.com this is already done: the old Yelum web address leads to your Lotus Surf House listing.</li>
+    <li><strong>Check the room facilities on Booking.com.</strong> In the Booking.com extranet, each room type's facilities can be checked, so the garden rooms are not shown with air-conditioning or a balcony.</li>
+  </ul>
+  <div class="offsite wide">
+    <figure>
+      <img src="before-yelum.jpg" width="416" height="280" loading="lazy" alt="Our screenshot of the older Yelum Guest House listing on Google Maps on a laptop, 3 November 2026: 4.7 stars, Guest house, the address on Indhana Rd, the website facebook.com, +94 77 464 7541, the plus code and Claim this business.">
+      <figcaption>The old Yelum Guest House listing on Google, 3 November 2026.</figcaption>
+    </figure>
+    <figure>
+      <img src="before-facebook.jpg" width="780" height="360" loading="lazy" alt="Our screenshot of the Facebook page Midigama guesthouse YELUM on a phone, 3 November 2026: Details, Midigama ahangama, Matara, Sri Lanka, 123456789; Contact info, +94 71 258 5804.">
+      <figcaption>The Facebook page that listing links to, 3 November 2026.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-edit">
+  <h2 id="h-edit">What you will be able to change yourself</h2>
+  <p>Today the preview is a finished build, with no login yet. With the managed or the self-hosted option below, you get your own login to a simple admin page that shows only Lotus Surf House. You fill in fields, not code, so an edit can't break the design. Press Publish, and the site rebuilds itself.</p>
+  <ul class="tabs">
+    <li><strong>Basics</strong> the name, the line on the first screen and the closing line</li>
+    <li><strong>Text</strong> the garden, the King Rooms line, Yelum, breakfast, the roof and getting here</li>
+    <li><strong>Photos</strong> the gate, the King Rooms, the roof, the garden and the garden rooms. Upload from your phone; the site makes the sizes itself. A video for the first screen can be added when you have one.</li>
+    <li><strong>Rooms and stay</strong> each room's name, beds, how many it sleeps and its details; check-out times and the house rules</li>
+    <li><strong>Amenities</strong> the list under the address</li>
+    <li><strong>Reviews</strong> remove any rating or quote; we add new ones with their source</li>
+    <li><strong>Contact and booking</strong> phone, address, map link and the Booking.com link</li>
+  </ul>
+  <p class="wide">The layout, colours and fonts stay fixed. Some parts of this design have no field yet: which room is shown upstairs as "The King Rooms", the short line at a glance (beach, breakfast, check-in) and the short line under the King Room buttons. We change those for you when you ask.</p>
+</section>
+
+<section class="wrap" aria-labelledby="h-offer">
+  <h2 id="h-offer">How it can run: you choose</h2>
+  <div class="offer">
+    <p>Nothing is set up yet: no hosting, no login, no domain. We set it up once you choose. <strong>Managed</strong> is the one we recommend: we host the site and keep it running, and hosting, updates and backups are our job. You pay a monthly fee that we agree with you, and you edit your content whenever you like. <strong>Self-hosted</strong>: we install the same site and editor on a server of your own for a one-time fee that we agree with you. It is then fully yours. You pay your server company roughly $6–12 a month, and you take care of updates and backups yourself. <strong>Files only</strong>: if you never want to edit it yourself, we hand you the finished site as files that run on any web host; every change then needs a developer.</p>
+    <p class="note">The preview runs on a temporary address. Which address the live site gets is something we decide with you once you have chosen.</p>
+  </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-confirm">
+  <h2 id="h-confirm">Before it goes live, we need you to confirm</h2>
+  <ol class="confirm">
+    <li><strong>WhatsApp and email.</strong> If +94 77 464 7541 is on WhatsApp, we add a WhatsApp button with a message already started. If guests can write to you by email, send us the address and we add it.</li>
+    <li><strong>Your phone numbers.</strong> The preview uses only +94 77 464 7541, the number on both Google listings. Is +94 71 258 5804, the one on Facebook, still yours?</li>
+    <li><strong>Prices.</strong> We found your rates only on Booking.com, where they change with the dates, so the preview shows no price and links to live dates. If you want a price on the site, tell us which one.</li>
+    <li><strong>Hot tub, pool, restaurant.</strong> Booking.com lists a private hot tub in the King Rooms, and Google lists a pool and a restaurant. No photo or guest review shows any of them, so the preview says nothing. Tell us if any of them is there.</li>
+    <li><strong>Video.</strong> A 2023 YouTube video by the channel Travel With Sandhya shows your roof terrace, the garden and surfing nearby. Is that footage yours, or do you have videos of your own? A video could open the site.</li>
+    <li><strong>More photos.</strong> We found no photos of the beach, the waves, breakfast or the people who run the house, and none larger than 1600 pixels. If you send some, we add them.</li>
+    <li><strong>The surf and the season.</strong> Your guests write about Lazy Left and Lazy Right, but the house names no break and no season anywhere, so the preview says nothing about either. Tell us what you want said.</li>
+    <li><strong>AI assistants.</strong> Once live, assistants such as ChatGPT can read the site and quote it to travellers. Keep that, or block the ones that train on it?</li>
+  </ol>
+</section>
+
+<section class="wrap" aria-labelledby="h-reply">
+  <h2 id="h-reply">How to reply</h2>
+  <p>Open the preview first: <a href="https://lotus-surf-house.os1.workers.dev/">lotus-surf-house.os1.workers.dev</a>. If you have questions, or want to go ahead, reply to the message this page came with. There is no obligation, and the preview stays private until you decide.</p>
+</section>
+</main>
+
+<footer class="wrap">
+  <p>Prepared 4 November 2026. Screenshots of the Booking.com listing, the two Google listings and the Facebook page are ours, taken on 3 November 2026, and show only Lotus Surf House. Screenshots of the preview were taken on 4 November 2026. The photographs on the preview are Lotus Surf House's own Booking.com uploads.</p>
+</footer>
+</body>
+</html>
