@@ -130,3 +130,138 @@ All three pass dimensions 1–7 with no hard fail, the same facts, the same Book
 3. **Interactive, dim 2/5:** make the hero-card rating link read "Google, 78 reviews" and at least 44 px tall.
 4. **All, dim 4:** put the type in the first phone screen (for example the tagline's "A guesthouse in Midigama" as the hero line), a template label rather than new copy.
 5. **All, dim 7 (at build):** self-host the two font families.
+
+## Round 1 — full (station 5)
+
+critic 0.4.3 · rubric 0.3.1 · 2026-11-04 · build `sites/lotus-surf-house/final/dist/` (index.html 58,212 B, built 2026-11-04 15:29, designer 0.7.1, after SEO 4h and AI search 4i). I served it with a plain static server (`tools/_serve.mjs` on :8961) and stopped that server afterwards. I did not touch the user's `astro preview` on :8960. The page served on :8960 and the one on :8961 are both byte-identical to `dist/index.html` (`cmp`). I scored fresh against the rubric and the dossier, and I did not read any visual-critic or experience-critic report.
+
+```
+mode: full        round: 1        variant: calm ("The gate", revised to Alon's pick: his photos up top, the King Room first)
+total (dims 1–7): 74.2 / 80      result: pass (critic's part)      hard_fails: []
+dimension 8 (weight 25): not scored here; it belongs to visual-critic + experience-critic
+```
+
+Weights 1–7 sum to 80 (20 + 15 + 15 + 5 + 10 + 8 + 7), as noted at 4f, so the total is out of 80. Cheeky-monkey's scorecards write "/ 75" for the same sum.
+
+| # | dimension | weight | score | weighted | evidence |
+|---|---|---|---|---|---|
+| 1 | facts | 20 | 10 | 20.0 | The facts table is below: **0 mismatches and 0 unsourced claims**. The 12 guest blockquotes each equal a `reviews.quotes[].text` (script, `critic-lotus-surf-house-r1/quotes.json.txt`). Eleven match exactly. Giada's matches once whitespace is collapsed: the dossier's `\r\n` line breaks render as spaces, and no word changes. All 12 have the right author, country, source (booking) and month. Yelum's two quotes are verbatim owner replies in the dossier. The ratings are 9.0/10 · 125 (Booking.com) and 4.9/5 · 78 (Google), both dated "3 Nov 2026" = `fetched_at` 2026-11-03. The rooms match `room_units[].facilities`, including the King's "Air conditioning, fan, mosquito net". The JSON-LD (4h/4i) also matches the dossier: geo = `location.lat_lng`, the four rooms with beds and m², `checkoutTime` 12:00 (the end of 11:00–12:00), `knowsLanguage` en = `languages_spoken`, and no `aggregateRating`. llms.txt matches the page. `audit.json.facts`: 27 numbers on the page, and the 2 not in the copy are "9.0" (the rating) and "2026." (the read date). Gaps are omitted, not filled: price (live Booking inventory), WhatsApp, email and the hot tub. |
+| 2 | mobile + performance | 15 | 9 | 13.5 | `critic-lotus-surf-house-r1/audit.json` (throttled 390×844, 1.6 Mbps / 150 ms / 4× CPU, no scroll). **First load 883 KB** (903,716 B) in 13 requests: HTML 58.2 KB with CSS and JS inline, fonts 57.0 KB, images 788.5 KB. **0 external JS.** The largest image is **228 KB** (img-019, the gate). **LCP 484 ms, CLS 0.** Scroll CLS is **early 0.0018 / settled 0**: one shift from `h1.script` at 840 ms, under 0.01. There is no horizontal overflow at 320, 360, 390 or 1440 (`a11y.json`: scrollWidth = clientWidth). From mobile-02 on, the phone bar shows "Check dates on Booking.com" plus a call button. −1, two small issues: (a) 20 of 41 tap targets are under 44 px (the slideshow dots are 24×44, and each slideshow also has 44 px arrows); (b) mobile-01: the header wordmark, white and transparent, is fixed, and while the hero scrolls under it the wordmark sits over the hero's "Call +94 77 464 7541" pill. The two texts overlap for that stretch of scroll. |
+| 3 | booking CTA | 15 | 9 | 13.5 | **`funnel/lotus-surf-house-r1/funnel.json`:** `primary_action` and `hero_action` are both **engine** ("Check dates on Booking.com", top 696 of 844, 350×54), with `clicks_to_flow` 0. `clicks_to_book` is **1**, which equals `recommended.clicks_to_book` 1, and the class equals `recommended.primary_action` engine. The CTA is above the fold, on 1 page, with 0 broken links. Tap-through at 390 with touch: `audit.json.booking.tapped` = `https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html`, which is `booking.engine_url` character for character. All 9 Booking links are that URL. All 6 `tel:` links are `tel:+94774647541` = `contact.phone`. With JS off (`a11y.json`), the 9 booking links and 6 tel links are all present, and the first booking link is at the top of the page at both widths. −1: the action lands on the top of the listing, without room, dates or guests. The dossier records no deep-link parameters, so this is a documented gap. |
+| 4 | brand fit | 5 | 8 | 4.0 | The 4f deduction is fixed. **mobile-00** now shows the gate, "Lotus Surf House", "A guesthouse in Midigama, on the south coast of Sri Lanka.", "Check dates on Booking.com" and "Call", so type, place and CTA are above the fold. The order follows Alon's revision: gate → King Rooms (img-002 full-bleed, then img-025 with facts and Book / Call, then the 4-photo strip) → roof (img-021) → ratings and glance → garden → three garden rooms (fan / no A/C / no hot water, stated plainly per `recommended.offer_framing`) → Yelum and breakfast → guests → getting here and good to know → closing → footer. Calm brief: no canvas, no video, one CTA in the hero. −2: `recommended.above_fold` also lists spot, included and trust. "Midigama Beach 250 m", "Breakfast included" and the two ratings first appear on mobile-05 (desktop-04), after the King band and the roof. This is the human-approved order, reported as a fact. |
+| 5 | copy | 10 | 9 | 9.0 | Every sentence comes from `copy/en.json` (passed 4c) or is a short restatement of a dossier fact. English is complete. The copy is plain and specific: m², beds, fan / A/C / hot water per room, cash only, and distances with their source. The 4f duplicate is gone: Fiona's review now appears once (Guests). −1: check-in is said three times within a few screens. "Check-in at any hour" is under the King buttons (mobile-03), "Check-in any hour" is in the glance line (mobile-05), and "Check-in at any hour, day or night" is in Good to know. |
+| 6 | accessibility | 8 | 9 | 7.2 | axe-core 4.x (WCAG 2.0/2.1 A + AA), run after a full scroll with third-party requests blocked: **0 violations at 390 and at 1440**, 24 rule sets pass. The 4f `scrollable-region-focusable` on the roof row is gone. The only incomplete item is `color-contrast` over photos (7 / 3 nodes). I sampled those by hiding the text and measuring the photo behind each box (`contrast.json`). The median background contrast is ≥ 6.88:1 for every white text over a photo: hero name 9.4, hero line 11.5, King title 6.88 (large), King line 9.25. Keyboard: the first stop is "Skip to the rooms" at both widths. There are 42 tab stops at 390 and 44 at 1440, and all show a 2 px solid outline. At 390, 0 are invisible. At 1440, the header nav and "Check dates" reach full opacity on focus within 500 ms. There is no drawer, so there is no trap. 0 of 18 images lack alt. Headings run H1 → H2/H3 in order, and `lang="en"` is set. Reduced motion: 0 running animations, 0 video, 0 canvas. −1: the slideshow dots are 24×44 px. That meets WCAG 2.5.8 but not playbook §4's 44 px. |
+| 7 | security + delivery | 7 | 10 | 7.0 | Static output only: `dist/` holds `index.html`, `llms.txt`, `robots.txt`, 21 WebP files and 2 self-hosted woff2 fonts with their OFL texts. There is no `.js`, `.php` or worker file. **0 third-party requests on first load** (`third_party_hosts` []) and **0 attempted over a full scroll** at 390 and 1440 (`a11y.json` `external_attempted` []). There are 0 iframes, so 0 of the 2 allowed embeds. There is no CMS call. No `src`, `href` or `srcset` starts with `/`, and every filename is lowercase. I found 0 hits for localhost, key, token, secret or password in `index.html` and `llms.txt`. As a preview build it carries `noindex, nofollow`, and robots.txt says `Disallow: /` for `*` and for the named AI crawlers. `check-design`: 0 problems and 0 warnings. |
+| | **total 1–7** | 80 | | **74.2** | |
+
+**Hard fails: 0.** None of these applies:
+- facts: 0 mismatches.
+- CTA landing: the URL and phone are exact.
+- primary-action class: engine, as recommended.
+- third-party requests: 0 on load and 0 over a scroll.
+- CMS dependency: none.
+- keyboard trap: none.
+- content only in canvas or video: none.
+- budgets: every line is met.
+- secrets: none.
+- borrowed or stock images: none. All 18 drawn photos are `business-owned` Booking.com uploads.
+- the two visual-media lines: no video has a usable licence (vid-001/002/003 are `license: unknown`), and no photo is ≥ 1920 px (the maximum is 1600).
+
+**Pass thresholds (full), critic's part:**
+- No hard fail ✓
+- Dimensions 1–7 each ≥ 6 ✓ (the lowest is 8)
+- Every playbook §4 budget line is met ✓
+- The total of ≥ 85 depends on dimension 8. The rule that both visual critics must give ≥ 8 is pending; I have not read their reports.
+
+### Facts table (claim → dossier key → result)
+
+| Claim on the page | Dossier key | Result |
+|---|---|---|
+| "Lotus Surf House"; "A guesthouse in Midigama, on the south coast of Sri Lanka." | `business.name`, `business.type` (guesthouse per the old Google listing and guests), `location.address` | match |
+| King Room with Balcony: 1 extra-large double bed, sleeps 2, upstairs, 25 m², A/C, fan, mosquito net, hot water; "new, balconies into the trees" | `room_types[3]`, `room_units[]` King facilities, `business.recent_works` | match (the unverified hot tub is omitted) |
+| Standard Double or Twin: 2 single beds, sleeps 2, 20–25 m², garden view, fan + mosquito net, no A/C, no hot water | `room_types[0]`, `room_units[]`, `room_types_note` | match |
+| Double or Twin: 25 m²; Deluxe Queen: 1 large double, 25 m², tiled floor, walk-in shower | `room_types[2]`, `room_types[1]` | match |
+| Check-out 11:00–12:00; check-in at any hour; cash only; children welcome, no cots or extra beds; pets on request, no charge; no parking | `stay_info.check_out`, `.check_in`, `.house_rules`, `.parking` | match |
+| Breakfast included, 8–10 | `facilities[0]`, `stay_info.breakfast_hours` (owner reply) | match |
+| Booking.com 9.0/10, 125 reviews, 3 Nov 2026 · Google 4.9/5, 78 reviews, 3 Nov 2026 | `reviews.booking`, `reviews.google` | match |
+| Midigama Beach 250 m (Booking.com); station 50 m; Ahangama Beach 1.4 km, Weligama Beach 4.2 km, Koggala Airport 9 km ("Booking.com lists") | `location.distance_to_beach`, `.distance_to_station`, `.nearby` (Booking surroundings) | match (Booking's description says 10 km for the airport. The page cites the surroundings list, which says 9 km) |
+| Garden, hammock, ping-pong under a thatched roof; terraces downstairs; roof terrace, table and chairs, Buddha with offerings | `facilities[1–2]`, `room_types[*].description`, img-005/020/021/022 | match |
+| Yelum's two quotes | owner replies in `reviews` | match (verbatim) |
+| Old name Yelum Guest House | `business.former_names` | match |
+| Indhana Rd, Midigama 80650, Sri Lanka | `location.address_site_form` (Google) | match |
+| +94 77 464 7541 / `tel:+94774647541` | `contact.phone` | match |
+| Booking URL (9×) | `booking.engine_url` | match, character for character |
+| Google Maps `place_id:ChIJBR_cQfoV4ToRQhXcrYmPyU0` | `contact.socials.google_maps` (`19sChIJBR_…`) | match |
+| 12 amenities (4 marked "additional charge") | `facilities[]`, `business.description` | match |
+| 12 testimonials | `reviews.quotes[]` | 12/12 verbatim, 12/12 attribution |
+| JSON-LD geo 5.9652192, 80.3922802; rooms; checkoutTime 12:00; knowsLanguage en | `location.lat_lng`, `room_types[]`, `stay_info.check_out`, `languages_spoken` | match |
+| 18 photos, alts | `images[]` (all `business-owned`); alts written from each photograph and consistent with the dossier descriptions | match (img-008 "A new bathroom" sits in the King strip. The dossier says "new bathroom" with no room tag, and the alt does not claim the King) |
+
+### Playbook §4 budget, measured
+
+| Item | Target | Measured | |
+|---|---|---|---|
+| First-load transfer (no video) | ≤ 1.5 MB | 883 KB (903,716 B, 13 requests) | ✓ |
+| Hero video | ≤ 2 / 4 MB | none (no licensed video) | n/a |
+| JS, compressed | ≤ 300 KB | 0 external; ≈ 1 KB inline | ✓ |
+| Largest above-the-fold image | ≤ 300 KB | 228 KB | ✓ |
+| Fonts | ≤ 2 families, ≤ 150 KB | 2 families (Parisienne, Hanken Grotesk), 57.0 KB, self-hosted | ✓ |
+| LCP | ≤ 2.5 s | 484 ms | ✓ |
+| CLS | < 0.1 | 0 (scroll early 0.0018, settled 0) | ✓ |
+| Third-party requests on load | 0 | 0 (0 over a full scroll at both widths) | ✓ |
+
+### Network log, first load (390, throttled)
+
+All 13 requests go to the local host:
+- HTML: 58,212 B
+- 2 woff2 fonts: 56,996 B
+- images: 788,508 B. That is the gate at 228 KB, plus the King band, strip and roof photos that sit inside Chromium's lazy-load margin.
+
+`third_party_hosts: []`.
+
+### Screenshots (`tools/shoot.mjs` into a scratch folder, deleted after the round; 1440 × 900 ×11 and 390 × 844 ×13, page 8,558 / 9,818 px)
+
+- `mobile-00`: the carved gate under leaves, full height. The script "Lotus Surf House", the white line "A guesthouse in Midigama, on the south coast of Sri Lanka.", a brick-red "Check dates on Booking.com" and an outlined "Call +94 77 464 7541" sit in the lower third. There is no bottom bar.
+- `mobile-01`: img-002, the King bed under its net, with "Upstairs / The King Rooms" and the line. At the top, the fixed white wordmark overlaps the hero's Call pill as it scrolls under (fix 1).
+- `mobile-02–03`: img-025, the balcony, then the King facts, Book / Call, "Check-out 11:00–12:00 | Check-in at any hour | Cash only", and the 2×2 strip. The phone bar is visible from here on.
+- `mobile-04`: the roof, with img-021 (the Buddha), "Up on the roof", img-022 and img-004.
+- `mobile-05`: the 9.0/10 and 4.9/5 cards, then the glance line and "In the garden".
+- `mobile-06–08`: the garden photo, Yelum's quote, the garden-room slideshow and the three rooms with fan / no A/C.
+- `mobile-08–09`: img-032, the veranda, with Yelum and Breakfast.
+- `mobile-09–10`: Guests 1/12 (Fiona), the dots and "Read all 125 reviews on Booking.com".
+- `mobile-10–12`: Getting here, the amenities, Maps / Call, Good to know, the closing script line with Book / Call, and the footer.
+- `desktop-00`: a split. The name, line and buttons are on white at the left, and the gate is at the right.
+- `desktop-01`: img-002 full-bleed with "The King Rooms".
+- `desktop-02–03`: img-025 with the facts, then the strip.
+- `desktop-04`: the roof and ratings.
+- `desktop-05–06`: the garden and the rooms.
+- `desktop-07`: Yelum.
+- `desktop-08`: Guests.
+- `desktop-09–10`: Getting here, the closing and the footer.
+
+**what the designer prompt got wrong:** Little. Every 4f item for calm was fixed and measured:
+- the type line is in the first phone screen;
+- the roof row no longer fails axe;
+- the duplicate review is gone;
+- the fonts are self-hosted.
+
+Two things remain, and both are general. (1) The designer's hand-off check has no item for a **fixed transparent header passing over hero content while it scrolls**. The white wordmark sits on top of the hero's own Call button between first and second screen. A "shoot at the hero's bottom edge" capture would catch it. (2) `recommended.above_fold` (spot, included, trust) and a human-reordered page can conflict. Here the human's King-first order pushes the beach distance, breakfast and ratings to screen 5 on a phone. Nothing in the prompt tells the designer to carry the auditor's above-the-fold facts into the hero band when the order changes. One short line under the hero buttons would do it, for example the existing glance line.
+
+**fix list (not gating; smallest first):**
+1. **Dim 2:** stop the fixed header's wordmark from overlapping the hero's Call pill while it scrolls under it (mobile-01). Options: give the header its solid ground earlier, or hide the wordmark until the hero name has left the screen.
+2. **Dim 5:** say "check-in at any hour" once or twice, not three times (the King stay line, the glance line, Good to know).
+3. **Dim 6 / 2:** make the slideshow dots 44 px wide, or take them out of the tab order (the arrows already move the slides).
+4. **Dim 4:** move the glance line (Midigama Beach 250 m · Breakfast included, 8–10) and/or the ratings into or just under the hero band, inside Alon's order.
+5. **Dim 3 (documented gap):** the Booking.com hand-off carries no room, dates or guests.
+
+### Evidence files
+
+- `reports/2026-10-midigama-01/critic-lotus-surf-house-r1/audit.json`: `tools/audit-mockup.mjs lotus-surf-house ../final`, moved here. The designer's `final/audit.json` was restored byte-identical (`cmp`).
+- `reports/2026-10-midigama-01/critic-lotus-surf-house-r1/a11y.json`: holds four passes:
+  - axe at 390 and 1440, with the Tab stops, overflow, external requests attempted over a full scroll and page errors;
+  - overflow at 320 and 360;
+  - JS off at 390 and 1440;
+  - reduced motion.
+- `reports/2026-10-midigama-01/critic-lotus-surf-house-r1/contrast.json`: white text over photos, with the background sampled with the text hidden. It also holds the first six Tab stops after a fresh load.
+- `reports/2026-10-midigama-01/critic-lotus-surf-house-r1/quotes.json.txt`: the verbatim and attribution check of the 13 blockquotes.
+- `reports/2026-10-midigama-01/funnel/lotus-surf-house-r1/funnel.json`: `tools/funnel.mjs http://localhost:8961/ --depth 3`.

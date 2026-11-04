@@ -195,3 +195,99 @@ It is better than a Booking.com fold. But the first impression is a small photo 
 
 ## What the designer prompt got wrong (one paragraph, quotable)
 With no footage and no 1920 px photographs, both WebGL main items were tuned so subtly that they fail the visitor's test, even though they pass the concepts' "not an overlay" test. The light drift is invisible within 3 s (whole-frame PSNR 30.7 dB, identical to the eye in crop), and the net barely parts under the pointer (PSNR 40 dB). A main item a traveller cannot see does not lift the first screen, and here it also cost the photograph its size (unique) or chose a weaker photograph to carry it (interactive, img-020's dirt ground). For a business whose material is photographs of rooms and a garden, the designer should be told to put the strongest photograph (gate, balcony, King room) large first and make any effect visibly serve it. On the phone, it should also collapse runs of weak, near-identical room blocks into one compact block.
+
+---
+
+## Round 1 — full (station 5)
+
+experience-critic 0.2.0 · station 5 (full), round 1 · run `2026-10-midigama-01` · 2026-11-04
+Page: `sites/lotus-surf-house/final/dist/index.html`, served at http://localhost:8960/ (Alon's `astro preview`; not restarted).
+Compared with: the business's current presence, re-walked today on a phone (Booking.com listing, `r1-current-booking-fold/s1/s2/s3.png`; it has no website), and with the gold bar.
+Written without reading the critic's or the visual-critic's report.
+
+Frames and logs are in `reports/2026-10-midigama-01/experience/lotus-surf-house/`, all prefixed `r1-`:
+- `r1-walk.log` + `r1-phone-t*/s*`: the cold throttled phone load (1.6 Mbps / 150 ms / 4× CPU).
+- `r1-phone-w00…w15.png`, `r1-laptop-w00…w11.png`: the human-pace walk (60 px steps, a frame every 0.75 screen). The `r1-phone-s*` smooth-scroll frames are unreliable: several caught the page back at the hero. Use the `w` frames.
+- `r1-states.log` + `r1-phone-header-y600/y700`, `r1-phone-guests-*`, `r1-phone-garden-show`, `r1-phone-bar`, `r1-laptop-hover-*`: the states and the tap-through.
+- `r1-phone-reduced-*`, `r1-phone-nojs-*`: reduced motion and JavaScript off.
+
+Scratch recipes (not committed): `walk.mjs`, `scroll.mjs`, `states.mjs` and `cur.mjs` in the session scratchpad.
+
+### Summary
+| | |
+|---|---|
+| **Dimension 8 (experience)** | **8 / 10** |
+| Better than the current presence | **yes** |
+| Pass / fail (this critic) | **pass** |
+| Taps to book | **1**: the hero "Check dates on Booking.com" goes to `https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html`, and so does the phone bar (`r1-states.log`). Audit target: engine, 1 |
+| Hard fails (dimension-8 side) | none. There is no usable own video (all three clips are third-party, licence unknown) and no photo is ≥ 1920 px. The first screen is the business's best photograph, and I accept that |
+
+### Timeline (phone, cold, throttled)
+| t | On screen | Frame |
+|---|---|---|
+| 0.5 s → 6 s | The gate (img-019) full-bleed. "Lotus Surf House" in Parisienne, then the tagline, then the brick-red "Check dates on Booking.com" (350×54 at y 696) and an outlined "Call +94 77 464 7541" under it. Wordmark top left. Fonts are already loaded at the first frame. Only the gate settle (1.4 s) moves | `r1-phone-t500…t6000.png` |
+
+Load finished at 6.35 s. Every request went to `localhost:8960` and nothing else (`r1-walk.log`). As at 4f, I can't claim the first frame is a true 0.5 s paint. I can only say nothing changes on screen after it.
+
+Feeling: it is still the best first screen of the run. It is an open garden gate with light behind it, one action, and now Call right there too. That closes the gap with Google's first-screen Call that I noted at 4f.
+
+### Walk (phone, `r1-phone-w00…w15`, about 11.5 screens; it was about 13 at 4f)
+- **w01, the first scroll: a defect.** The fixed wordmark is transparent and white. It overprints the hero's tagline as the hero scrolls under it: "Lotus Surf House" sits on "A guesthouse in Midigama" (`r1-phone-header-y600.png`; `r1-states.log` shows the header `rgba(0,0,0,0)` at y 300–700 and hidden only from y 900). Every visitor sees it on the first flick, so it is the one moment that looks unfinished.
+- **w01–w02, the King Rooms:** img-002 full-bleed with "Upstairs / The King Rooms" and the line about the balconies. This is the strongest second screen the page could have. Then img-025, the balcony, large.
+  - This is Alon's order, and it works: the best product arrives at screen 2, where at 4f it came at screen 8.
+- **w03, the King facts:** "1 extra-large double bed, sleeps 2 · Upstairs, 25 m². Air conditioning, fan, mosquito net and hot water", then Book + Call and "Check-out 11:00–12:00 | Check-in at any hour | Cash only". The details are compact, separated by " | ", which is right.
+  - Then a 2×2 grid of four 169 px thumbnails. **They are dead ends:** no link, no lightbox, no hover, `cursor:auto` (`r1-states.log`, "small images"). A traveller who wants a closer look at the bathroom or the second bed tries to tap and nothing happens.
+- **w04–w05, the roof:** a tall img-021 Buddha, "Up on the roof", and two smaller photos. It is a lift, as at 4f.
+- **w05, at a glance:** the two dated rating cards now sit on two lines each (fixed since 4f), then "Midigama Beach 250 m | Breakfast included, 8–10 | Check-in any hour".
+  - **The trust proof has moved later:** it is at screen ~5 (y ≈ 3,160) where at 4f it was within one scroll. Booking.com puts "9.0 Superb · 125 reviews" on its first screen (`r1-current-booking-fold.png`).
+- **w06–w09, the garden:** the garden text, Yelum's "Old rooms and new" quote and img-020's hammock. Then **one** slideshow beside three compact room rows (beds | ground floor, m² | fan, no A/C, no hot water) and one button (`r1-phone-garden-show.png`).
+  - This is 4f fix 1, done well: the sag of four look-alike rooms is gone. The fisheye 2021 photos still lead the slideshow, but there is only one of them on screen now.
+- **w09–w10, the porch:** the red porch photo, "Yelum" with his own quote, "Breakfast". Fiona is no longer here, so she is quoted once on the page (`r1-states.log`: Fiona 1, "oasis" 1). That is 4f fix 3, done.
+- **w11, Guests:** Fiona's review (13 centred lines at 390) is still slide 1. Slide 2 is Benjamin's (`r1-phone-guests-next.png`).
+  - **The surf only exists in slides 3+.** "4 surfspots, suitable for everyone from beginner/intermediates to highly advanced", "surf at lazy left and right" and "breakfasts every day after surfing" are all in the slideshow. But a scroller who doesn't tap ›, as most won't, never meets the word "surf" outside the name (`r1-states.log`: "surf" appears in visible text only as "Lotus Surf House").
+- **w12–w15:** Getting here (station 50 m, beaches by distance, the address, amenities joined with " | "), Open in Google Maps + Call, Good to know, the closing line in script, then a designed footer with buttons. This is the bar's "real footer".
+- **The phone bar** (Check dates + a round phone button) shows from w02 to the end and never covers content (`r1-walk.log`: bar from y 1182).
+
+### The story after one scroll
+What, where and the best room: yes, by screen 2, told through photographs and not tables. **Cost:** "live dates on Booking.com" is honest, but the price is still one tap away (inherent in the material). **Why this place:** the house, the garden, the roof. **The surf**, the word in the name, never appears as a picture or above the guests slideshow. Trust arrives at screen 5.
+
+### Wanting to go
+- Lifts: the gate; the King band (img-002); the balcony (img-025); the roof Buddha; the hammock.
+- Deflates: the overprinted wordmark on the first scroll; the dead thumbnails; a 13-line centred review as the first thing in Guests.
+
+### Booking
+1 tap from the hero, the King block, the garden block, the bar, the closing and the footer. All 9 links are the dossier's engine URL; the one `tel:` is `+94774647541` (`r1-walk.log`). The traveller knows the floor, the A/C / fan truth and the beds before tapping. That beats the Booking.com fold, where room facts are three screens down behind "Show prices" (`r1-current-booking-s3.png`).
+
+### Motion and states
+- On the laptop, 43 of 45 links and buttons transition; the exceptions are the skip link and the wordmark (`r1-walk.log`).
+- The hero CTA hover darkens to `#9E3816` with a deeper shadow. The hero Call fills to a 6 % tint (`r1-laptop-hover-call.png`).
+- The nav "Guests" smooth-scrolls to the section (scrollY 6,435).
+- The review › cross-fades (`r1-phone-guests-mid/next.png`). The slideshows have arrows and dots.
+- The only CSS animation is the gate settle (`r1-states.log`). There are no scroll reveals, which is right for calm.
+- The King thumbnails have no state at all, the only interactive-looking images on the page that do nothing.
+- Reduced motion gives the same page without the settle (`r1-phone-reduced-*`).
+- JS off is a good page, with the wordmark absolute (no overprint). But the static bar sits over the hero's Call button on the first screen (`r1-phone-nojs-hero.png`). That is minor, since the bar carries its own phone button.
+
+### Laptop (1440 × 900, `r1-laptop-w00…w11`)
+- The 6/6 split hero is composed. The King band is full-bleed and gorgeous at 1440 (w01).
+- **The King block (w02–w03) is the weak spread:** img-025 at about 480 px on the left, a short facts column floating mid-height on the right with wide empty space, then four ~270 px thumbs on their own row. The best room gets less presence on the laptop than on the phone.
+- Roof, glance (two centred cards), garden (the wide hammock photo, then the slideshow + room list), porch, Guests, Getting here and the closing all read as distinct, well-spaced sections.
+
+### Against the current presence (Booking.com, walked today, `r1-current-booking-*`)
+Booking.com is better at two things: the score on screen 1, and live prices in the same place after the dates (the yellow "Choose dates to see prices" panel). Everything else favours the new page:
+- the house in its own best pictures, where Booking.com leads with the ping-pong table (1/42);
+- no "Sign in, save money / Genius" interruptions (they appear twice in four screens);
+- the A/C and floor truth up front;
+- a Call button. Booking.com has none (audit F1).
+
+### Score: 8 · better than the current presence: yes · pass
+Since 4f it is clearly better: the King Rooms are second, the garden run is compact, Fiona appears once, Call is in the hero, and the rating cards are tidy. It stays at 8, not 9, because of the wordmark collision on every first scroll, dead King thumbnails, trust late and surf invisible.
+
+**Fix list (biggest effect first)**
+1. **Phone header over the hero:** hide the wordmark (or make the header solid) once the hero text reaches it, at about y 250. Or fade the wordmark out over y 200–300, as it already hides from y 900. Today it overprints the tagline on the first flick (`r1-phone-header-y600.png`).
+2. **Make the King thumbnails tappable:** open them in the King slideshow or a simple lightbox with arrows and swipe, with a hover/press state. On the laptop, let img-025 and the facts share the height (a 7/5 split, facts vertically centred on the photo), so the best room's spread has no empty half (`r1-laptop-w02/w03`).
+3. **Bring the surf in, from the reviews:** start Guests on a short review that names the surf. "…a few minutes walking distance to 4 surfspots, suitable for everyone from beginner/intermediates to highly advanced surfers" and "…to go and surf at lazy left and right" are verbatim and dated. Or add one sourced "| walk to the surf spots (guests)" item to the glance line. Today "surf" is visible only in the name.
+4. **Trust earlier:** put a one-line "9.0 Booking.com · 4.9 Google" (dated, small) under the King facts or at the foot of the King band. Or move the glance block above the roof. The proof now arrives at screen 5, where Booking.com shows it on screen 1.
+5. **JS off:** don't let the static bar cover the hero's Call button (bottom padding on `.hero` under `.no-js`, or hide the bar inside the hero) (`r1-phone-nojs-hero.png`).
+
+**Keep:** the gate first screen with Book + Call; Alon's order (King band, then balcony, then roof); the full-bleed King band; the merged garden block with its plain fan / A/C lines; Yelum's own quotes; Parisienne + Hanken Grotesk; brick red used only for booking; the " | " detail lines; the footer; JS-off and reduced-motion pages that are whole.
