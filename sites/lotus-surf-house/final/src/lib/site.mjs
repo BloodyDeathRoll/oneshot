@@ -195,7 +195,8 @@ const pageImages = () => [...new Set((c.photos ?? []).map((_, n) => slot(n)?.top
 export const businessLd = ({ description } = {}) => {
   const k = c.contact ?? {}
   const postal = postalAddress(k.address)
-  const pin = pinFromMapUrl(k.mapUrl)
+  /* 4h: the pin in contact.mapUrl when there is one, else the SCHEMA GAP pair the seed copies from the dossier */
+  const gp = G.geo, pin = pinFromMapUrl(k.mapUrl) ?? (gp && Math.abs(gp.lat) <= 90 && Math.abs(gp.lng) <= 180 ? { lat: gp.lat, lng: gp.lng } : null)
   const images = pageImages()
   const same = [...new Set((c.ratings ?? []).map((r) => safeUrl(r.url)).filter(Boolean))]
   const roomsLd = rooms.map((r) => ({

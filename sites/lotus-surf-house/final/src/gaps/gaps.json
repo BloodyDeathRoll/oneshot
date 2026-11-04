@@ -35,5 +35,10 @@
    "_source": "stayInfo.note, sentence 2"
   }
  ],
- "_stayShort": "the line under the King Room's buttons, after \"Check-out <checkOutFrom>–<checkOutTo>\" (which comes from stayInfo)"
+ "_stayShort": "the line under the King Room's buttons, after \"Check-out <checkOutFrom>–<checkOutTo>\" (which comes from stayInfo)",
+ "geo": {
+  "lat": 5.9652192,
+  "lng": 80.3922802,
+  "_source": "dossier location.lat_lng (the Google pin, https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0?hl=en, fetched 2026-11-03T17:37:54Z)"
+ }
 }

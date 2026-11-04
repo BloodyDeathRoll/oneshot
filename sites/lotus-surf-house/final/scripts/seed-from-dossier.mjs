@@ -126,6 +126,13 @@ writeFileSync(join(final, 'src', 'tenant', 'content.json'),
   JSON.stringify({ tenant: { id: null, slug, name: copy.businessName }, locales: { en: site } }, null, 1) + '\n')
 
 /* ---------- SCHEMA GAP content ---------- */
+/* 4h: the Google pin, from dossier location.lat_lng; the seed fails on anything but a [lat, lng] pair in range */
+function pin() {
+  const ll = dossier.location?.lat_lng
+  const [lat, lng] = Array.isArray(ll?.value) ? ll.value : []
+  if (!(Math.abs(lat) <= 90 && Math.abs(lng) <= 180)) fail('dossier location.lat_lng is not a [lat, lng] pair')
+  return { lat, lng, _source: `dossier location.lat_lng (the Google pin, ${ll.source_url}, fetched ${ll.fetched_at})` }
+}
 const king = copy.rooms.find((r) => r.note.startsWith('Upstairs')) ?? fail('no upstairs room in the copy')
 const gaps = {
   _about: 'SCHEMA GAP content: what the picked design shows and schemas/site-content.md v0.11 has no field for. Written by scripts/seed-from-dossier.mjs from copy/en.json and dossier.json; listed in notes.md "schema gaps". Edit there, not here.',
@@ -150,6 +157,9 @@ const gaps = {
     { text: 'Cash only', _source: 'stayInfo.note, sentence 2' },
   ],
   _stayShort: 'the line under the King Room\'s buttons, after "Check-out <checkOutFrom>–<checkOutTo>" (which comes from stayInfo)',
+  /* 4h (seo): the JSON-LD geo pair. contact.mapUrl is a place_id URL with no pin, and the schema has no geo
+     field (site-content.md "Not in v0.1": geo coordinates; proposal D in seo-report.md). Copied from the dossier. */
+  geo: pin(),
 }
 mkdirSync(join(final, 'src', 'gaps'), { recursive: true })
 writeFileSync(join(final, 'src', 'gaps', 'gaps.json'), JSON.stringify(gaps, null, 1) + '\n')

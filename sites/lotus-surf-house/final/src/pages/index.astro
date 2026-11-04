@@ -214,7 +214,8 @@ const foot = `<footer class="foot">
 const mainHtml = `<main>\n${hero}\n${king}\n${roof}\n${glance}\n${gardenSec}\n${porch}\n${guests}\n${getting}\n${closing}\n</main>\n${foot}`
 
 /* 4h-style head: title = businessName + the town of contact.address; description = owner fields only */
-const title = TOWN ? `${NAME}, ${TOWN}` : NAME
+/* 4h: the other finals' rule, "<businessName>, <town>", falling back to the name alone above 60 characters */
+const title = TOWN && `${NAME}, ${TOWN}`.length <= 60 ? `${NAME}, ${TOWN}` : NAME
 const description = metaDescription([c.tagline, paras(breakfast?.body)[0]])
 const head = seoHead({ path: '', title, description, image: ogImage() })
 const ld = ldJson(businessLd({ description }))
@@ -242,11 +243,12 @@ const later=()=>requestAnimationFrame(()=>setTimeout(go,0));document.readyState=
 {lcp && <link rel="preload" as="image" href={lcp.top.webp} imagesrcset={srcset(lcp)} imagesizes="(max-width: 899px) 76vh, 50vw" fetchpriority="high">}
 <script is:inline>document.documentElement.classList.replace('no-js','js')</script>
 <style is:inline set:html={fontFaces + css}></style>
-<script type="application/ld+json" is:inline set:html={ld}></script>
 </head>
 <body>
 <a class="skip" href={KING ? '#upstairs' : '#garden'}>{L.skip}</a>
 <Fragment set:html={mainHtml} />
 <script is:inline set:html={js + (V ? '\n' + videoJs : '')}></script>
+{/* 4h: the JSON-LD at the end of <body>, out of the critical path (as sites/the-lavish-haven/final) */}
+<script type="application/ld+json" is:inline set:html={ld}></script>
 </body>
 </html>
