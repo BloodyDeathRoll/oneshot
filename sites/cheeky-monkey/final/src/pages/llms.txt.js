@@ -90,8 +90,11 @@ export function GET({ site }) {
     address && `- Address: ${address}`,
     safeUrl(c.contact?.mapUrl) && `- [Map](${c.contact.mapUrl})`,
   ])
+  /* the Rosa forecast link, as the Ahangama sites list it (2026-11-04: Rams, the Rosa spot nearest the guesthouse) */
+  const spotId = c.forecast?.enabled && /^[a-z0-9-]+$/.test(c.forecast?.rosaSpotId ?? '') ? c.forecast.rosaSpotId : null
   section('Pages', [
     `- [${[name, PLACE].filter(Boolean).join(', ')}](${site ? new URL('./', site).href : './'}): the website, one page`,
+    spotId && `- [Forecast for ${c.forecast.spotName || spotId} by Rosa](https://rosa.surf/spot/${spotId})`,
   ])
   if (c.updatedAt && !Number.isNaN(Date.parse(c.updatedAt))) out.push('', `Last updated: ${new Date(c.updatedAt).toISOString().slice(0, 10)}`)
 

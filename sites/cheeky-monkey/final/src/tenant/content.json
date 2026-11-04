@@ -1043,7 +1043,11 @@
     }
    ],
    "shaping": null,
-   "forecast": null,
+   "forecast": {
+    "enabled": true,
+    "rosaSpotId": "rams",
+    "spotName": "Rams"
+   },
    "createdAt": null,
    "updatedAt": null
   }

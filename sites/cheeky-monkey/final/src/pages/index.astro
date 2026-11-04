@@ -50,6 +50,9 @@ const tierJs = `(function(){var h=document.documentElement,c='js';
 try{var rm=matchMedia('(prefers-reduced-motion: reduce)').matches,sd=navigator.connection&&navigator.connection.saveData;
 c+=(rm||sd)?' still':' motion';}catch(e){c+=' still'}
 h.className=c;})();`
+/* schema v0.3: the block renders only when the owner's switch is on and the deployer's Rosa id is set */
+const fcOn = c.forecast?.enabled && /^[a-z0-9-]+$/.test(c.forecast?.rosaSpotId ?? '')
+const spotId = c.forecast?.rosaSpotId, spotName = c.forecast?.spotName || spotId
 const weekRooms = [L.drawer.room_private, L.drawer.room_double, L.drawer.room_triple]
 const w0 = WEEKS[0]
 ---
@@ -144,6 +147,35 @@ const w0 = WEEKS[0]
     </div>
     <Fragment set:html={img(S.water[0], { cls: 'w1' }) + img(S.water[2], { cls: 'w3' })} />
   </div>
+  {/* 2026-11-04 (Alon): the Rosa forecast (schema v0.3, playbook §4 exception), ported from
+      sites/layday-surf-ahangama/final. Rams is the Rosa spot nearest the guesthouse, not the business's own break: the
+      block only ever says "Forecast for Rams by Rosa". Both halves have fixed boxes; nothing is requested until the
+      block nears the screen (src/scripts/site.js). With JS off, the plain link fills the widget's box. */}
+  {fcOn && <div class="wrap">
+    <div class="fc" data-json={`https://rosa-data-opal.vercel.app/data/spots/${spotId}.json`} data-spot={spotName}>
+      <div class="fc-now" aria-live="polite">
+        <p class="credit-rosa"><Fragment set:html={icon('wave')} /><a href={`https://rosa.surf/spot/${spotId}`}>Forecast for {spotName} by Rosa</a></p>
+        <div class="live">
+          <p class="now"><span class="nh">{' '}<small> m</small></span></p>
+          <p class="nd"><span data-f="t"></span><span data-f="swell"></span><span data-f="wind"></span></p>
+          <p class="dated upd"><Fragment set:html={icon('clock')} /><span data-f="upd"></span></p>
+        </div>
+      </div>
+      <div class="fc-rosa">
+        <a class="fc-link" href={`https://rosa.surf/spot/${spotId}`}><span>See today's forecast for {spotName} on Rosa</span></a>
+        <iframe
+          data-src={`https://rosa.surf/widget/?spot=${spotId}&theme=light&units=metric`}
+          title={`Rosa surf forecast - ${spotName}`}
+          width="100%"
+          height="500"
+          style="max-width:420px;border:0;border-radius:16px;display:block"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+        ></iframe>
+      </div>
+    </div>
+  </div>}
 </section>
 
 <section class="counter sandg edge" id="counter" aria-labelledby="week-h">

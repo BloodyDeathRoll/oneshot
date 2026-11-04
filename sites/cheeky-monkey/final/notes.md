@@ -377,3 +377,28 @@ Copyeditor N1 (the rooftop quote fragment, with Mihrican's full quote in the sli
 - SEO, JSON-LD, robots, sitemap and llms.txt (stations 4h / 4i).
 - Deploy (station 6).
 - `shots/` holds round 3's sheets (`tools/shoot.mjs` over http, desktop 17 + phone 22 captures), left for the critics.
+
+## 2026-11-04 — the Rosa forecast (Rams), added after critique
+
+**Human decision (Alon, operator, 2026-11-04):** the site carries Rosa's forecast for spot `rams` ("Rams"). The business
+never names its break, which is why concepts.md §3 and "Not shown" above said no forecast. Rams is the Rosa spot nearest the
+guesthouse pin: Rosa's spot (5.962565, 80.393597) against the dossier's `location.lat_lng` (5.9617986, 80.3967609) is
+about 360 m. This overrides schema v0.3's "the nearest other spot is never used" on Alon's say. So the block never calls
+Rams "our break" or the business's own break. It is only "Forecast for Rams by Rosa". No walking time is stated
+because none is sourced. No wave fact is content: the numbers come only from Rosa's live JSON.
+
+| What | Where |
+|---|---|
+| `forecast: {enabled: true, rosaSpotId: "rams", spotName: "Rams"}` | `src/tenant/content.json`, and `scripts/seed-from-dossier.mjs` carries the same value with the decision in a comment, so a reseed keeps it |
+| The block | `src/pages/index.astro`, at the end of "Down at the water" (`#water`), under its photo grid and above "The surf weeks". It renders nothing unless `enabled` and a valid `rosaSpotId` |
+| Logic | `src/scripts/site.js`, ported from `sites/layday-surf-ahangama/final` (the same as KA / Lavish). One JSON request when the block is within 400 px of the screen. The headline is drawn only from data under 24 h old. After that the widget gets its `src`, but only after a HEAD 200 and the frame's `load`, within 10 s. Otherwise the plain link stays. New: if it fails while the block is still below the screen (`.solo`), the empty headline box is dropped (no visible shift). If the block is in view, the box stays reserved |
+| Look | `src/styles/site.css`. The headline is a white 22 px-radius card like the lesson card, on the aqua ground. It has the blue wave icon and the credit link, the height range in Rethink Sans 600 (92 px desktop, 64 px phone), the time in ink 600 with swell and wind in ink-2, and Rosa's update time in the site's pink `.dated` pill. The two boxes are 420 × 500 side by side, centred, at desktop widths. On a phone they stack: card 340 px high, widget box 500 px. Rosa's widget is `theme=light`, embedded exactly as Rosa ships it |
+| llms.txt | "Pages" lists `Forecast for Rams by Rosa` → rosa.surf/spot/rams, as the Ahangama sites do |
+
+Checks (local preview, `astro preview` on :8950): `node tools/site-check.mjs cheeky-monkey --url http://localhost:8950/`
+gave **PASS** on all 10 checks. forecast-block at 390 / 1440: section height 2614→2614 / 2289→2289, shift 0, headline drawn,
+iframe set, JSON 200. Performance: 0 third-party requests on load, CLS 0, 451,591 B first load in 10 requests. A separate
+Playwright check found no rosa.surf or rosa-data request on first load, no console errors and no horizontal overflow. JS off:
+only the link, in the 420 × 500 box. JSON blocked and stale data (30 h): link shown, no numbers, no widget request.
+Cost: about 3.5 KB gzip of inline HTML (CSS + JS + markup), no new requests. The embed count is 1 of 2 (the page has no map
+iframe).

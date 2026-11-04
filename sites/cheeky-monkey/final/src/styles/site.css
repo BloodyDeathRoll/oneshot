@@ -397,6 +397,45 @@ html.js .plain-only{display:none}
   .facts-w{grid-template-columns:1fr}
   .w1{aspect-ratio:4/5}
 }
+/* ---------- the Rosa forecast (2026-11-04; playbook §4 exception, port of sites/layday-surf-ahangama/final) ----------
+   Left: the site's headline as a white card like the lesson card; right: Rosa's widget exactly as Rosa ships it
+   (theme=light, never restyled). Both boxes have fixed sizes (420 × 500 at desktop widths; the column × 340 for the
+   headline on a phone), so nothing shifts when the data arrives, fails or goes stale; only the headline's contents
+   are hidden until fresh data is drawn. */
+.fc{display:grid;grid-template-columns:minmax(0,420px) minmax(0,420px);justify-content:center;gap:clamp(24px,4vw,56px);margin-top:clamp(48px,6vw,80px)}
+.fc-now{background:#fff;border-radius:22px;padding:30px 30px 28px;height:500px;display:flex;flex-direction:column;overflow:hidden}
+.credit-rosa{display:flex;align-items:center;gap:10px;margin:0;font-weight:600;font-size:16px}
+.credit-rosa svg{width:22px;height:22px;flex:none;color:var(--book)}
+.credit-rosa a{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;text-decoration-color:rgba(20,55,70,.3)}
+.credit-rosa a:hover{text-decoration-color:var(--book)}
+.fc-now .live{display:flex;flex-direction:column;flex:1;min-width:0;visibility:hidden}
+.fc.live .fc-now .live{visibility:visible}
+.now{margin:auto 0 0}
+.nh{display:inline-block;white-space:nowrap;font-weight:600;font-size:clamp(64px,7vw,92px);line-height:.95;letter-spacing:-.035em;color:var(--ink)}
+.nh small{font-size:.32em;letter-spacing:0;font-weight:500;color:var(--ink-2)}
+.nd{display:flex;flex-direction:column;gap:2px;margin:18px 0 0;font-size:16px;line-height:1.5;color:var(--ink-2)}
+.nd span:first-child{color:var(--ink);font-weight:600}
+.nd span[hidden],.upd [hidden]{display:none}
+.fc-now .upd{align-self:flex-start;margin-top:auto}
+.fc-rosa{position:relative;width:420px;max-width:100%;height:500px}
+.fc-link{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:32px;background:#fff;border-radius:22px;
+  text-align:center;font-weight:600;font-size:18px;line-height:1.45;color:var(--ink);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px}
+.fc-rosa iframe{position:relative;visibility:hidden}
+.fc-rosa.on iframe{visibility:visible}
+.fc-rosa.on .fc-link{visibility:hidden}
+/* fallback: with JS off the link stands alone; after a failure the headline's box stays (hidden) unless the block
+   was still below the screen (.solo, set by the script), so a failure never moves what the visitor sees */
+html:not(.js) .fc,.fc.solo{grid-template-columns:minmax(0,420px)}
+html:not(.js) .fc-now,.fc.solo .fc-now{display:none}
+.fc.off .fc-now{visibility:hidden}
+@media (max-width:860px){
+  .fc{grid-template-columns:minmax(0,1fr);justify-items:center;gap:20px}
+  .fc-now{width:100%;max-width:420px;height:340px;padding:24px 22px 22px}
+  .nh{font-size:64px}
+  .nd{font-size:15px;margin-top:14px}
+  .credit-rosa a{padding:11px 0}
+  .fc-now{padding-top:14px}
+}
 /* ---------- phone ---------- */
 @media (max-width:860px){
   .facts{grid-template-columns:1fr}

@@ -199,7 +199,11 @@ const doc = {
   rentals: rowIds(copy.rentals, 'rental'),
   brands: rowIds(copy.brands, 'brand'),
   shaping: null,
-  forecast: null,
+  /* schema v0.3 forecast. Human decision (Alon, operator, 2026-11-04): the dossier names no break (concepts.md §3 said
+     "no forecast" for that reason), and Alon chose Rosa's `rams`, the Rosa spot closest to the guesthouse pin
+     (Rosa's spot lat/lon vs dossier location.lat_lng, about 360 m). It is shown as the forecast for Rams, never as the
+     business's own break. Carried here so a reseed keeps it. */
+  forecast: { enabled: true, rosaSpotId: 'rams', spotName: 'Rams' },
   createdAt: null,
   updatedAt: null,
 }

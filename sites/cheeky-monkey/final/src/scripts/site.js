@@ -121,4 +121,89 @@ rm.forEach(function(b){b.addEventListener('click',function(){pick(rm,b);price()}
 [pk,rm].forEach(function(list){[].forEach.call(list,function(b,i){b.addEventListener('keydown',function(e){
   var d=e.key==='ArrowRight'||e.key==='ArrowDown'?1:e.key==='ArrowLeft'||e.key==='ArrowUp'?-1:0;if(!d)return;e.preventDefault();
   var nb=list[(i+d+list.length)%list.length];nb.focus();nb.click();})})});
+
+/* ---------- the Rosa forecast (playbook §4 exception; 2026-11-04, Alon: Rosa's `rams`) ----------
+   Port of sites/layday-surf-ahangama/final (same mechanics as KA and The Lavish Haven). One request to Rosa's
+   per-spot JSON, made only when the block nears the viewport. With fresh data (under 24 h) the site draws the
+   headline, and only then is Rosa's widget iframe given its src. On failure, stale data, a 10 s timeout or no JS:
+   the plain link in the widget's reserved box. The headline's box stays reserved (hidden) when the block is on or
+   above the screen, so nothing shifts; when it fails while still below the screen, the empty box is dropped. */
+var fc=document.querySelector('.fc');
+if(fc){
+  var fNow=fc.querySelector('.fc-now'), fRosa=fc.querySelector('.fc-rosa'), fFrame=fRosa.querySelector('iframe');
+  var fSet=function(k,v){var el=fNow.querySelector('[data-f="'+k+'"]');if(el){el.textContent=v;el.hidden=!v;}};
+  var fFail=function(){delete fNow.dataset.loading;fc.classList.add('off');
+    if(fc.getBoundingClientRect().top>innerHeight) fc.classList.add('solo');};
+  var WORDS=['north','north-east','east','south-east','south','south-west','west','north-west'];
+  var from=function(deg){return WORDS[Math.round((((+deg%360)+360)%360)/45)%8];};
+  var parts=function(iso,tz,o){var d=new Date(iso);if(isNaN(d))throw new Error('bad time');var r={};
+    new Intl.DateTimeFormat('en-GB',Object.assign({timeZone:tz,hourCycle:'h23'},o)).formatToParts(d).forEach(function(x){r[x.type]=x.value});return r;};
+  var f1=function(x){return (+x).toFixed(1);}, n1=function(x){return String(+(+x).toFixed(1));};
+  var fit=function(){ /* the height range never wraps: it shrinks to the card's width if it must */
+    var nh=fNow.querySelector('.nh');nh.style.fontSize='';
+    var avail=fNow.querySelector('.live').clientWidth, w=nh.getBoundingClientRect().width;
+    if(!avail||w<=avail)return;
+    var fs=parseFloat(getComputedStyle(nh).fontSize)*avail/w;
+    for(var i=0;i<12;i++){nh.style.fontSize=Math.floor(fs)+'px';if(nh.getBoundingClientRect().width<=avail)break;fs-=2;}
+  };
+  var draw=function(d){
+    var c=d.current, tz=(d.spot&&d.spot.timezone)||'Asia/Colombo';
+    if(!c||!Array.isArray(c.h)||!isFinite(c.h[0])||!isFinite(c.h[1]))throw new Error('no current');
+    var nh=fNow.querySelector('.nh');
+    if(!nh.firstChild||nh.firstChild.nodeType!==3)nh.insertBefore(document.createTextNode(''),nh.firstChild);
+    nh.firstChild.textContent=f1(c.h[0])+'–'+f1(c.h[1]);
+    var t=parts(c.t,tz,{weekday:'long',day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'});
+    fSet('t',t.weekday+' '+t.day+' '+t.month+', '+t.hour+':'+t.minute);
+    var sw=(c.swells||[]).filter(function(x){return x.in_window})[0];
+    fSet('swell',sw&&isFinite(sw.period)?'Swell '+f1(sw.period)+' s from the '+from(sw.dir):'');
+    var w=c.wind;
+    fSet('wind',w&&isFinite(w.kph)?'Wind '+n1(w.kph)+' km/h from the '+from(w.dir)+(w.class?', '+w.class:''):'');
+    var u=parts(d.generated_at,tz,{day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'});
+    fSet('upd','Rosa, updated '+u.day+' '+u.month+' '+u.year+', '+u.hour+':'+u.minute);
+    fc.classList.add('live');
+    fit();
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+    var lastW=fNow.clientWidth;
+    if('ResizeObserver' in window)new ResizeObserver(function(){if(fNow.clientWidth!==lastW){lastW=fNow.clientWidth;fit();}}).observe(fNow);
+  };
+  /* a cross-origin iframe fires `load` even when its request failed (it loads the browser's error page), so the
+     widget is shown only when a HEAD request to the same URL answered OK (rosa.surf/widget/ answers HEAD 200 with
+     access-control-allow-origin *, checked 2026-11-04) AND the frame has loaded, within 10 s. Otherwise the frame
+     loses its src and the plain link, visible all along in the same reserved box, stays. */
+  var widget=function(){
+    var src=fFrame.dataset.src, done=false, to;
+    fRosa.dataset.loading='true';
+    var end=function(show){if(done)return;done=true;clearTimeout(to);delete fRosa.dataset.loading;
+      if(show)fRosa.classList.add('on');else{fRosa.classList.remove('on');fFrame.removeAttribute('src');}};
+    to=setTimeout(function(){end(false)},10000);
+    fetch(src,{method:'HEAD',credentials:'omit'}).then(function(r){
+      if(!r.ok)throw new Error(r.status);
+      fFrame.addEventListener('load',function(){end(true)},{once:true});
+      fFrame.src=src;
+    }).catch(function(){end(false)});
+  };
+  /* rosa.surf sends frame-ancestors *, which does not match a file:// page: there, the link */
+  if(!('IntersectionObserver' in window)||!window.fetch||!window.Intl||location.protocol==='file:')fFail();
+  else{
+    var fio=new IntersectionObserver(function(es){
+      if(!es.some(function(e){return e.isIntersecting}))return;
+      fio.disconnect();
+      fNow.dataset.loading='true';
+      var ac='AbortController' in window?new AbortController():null;
+      var to=setTimeout(function(){if(ac)ac.abort()},10000);
+      fetch(fc.dataset.json,{credentials:'omit',signal:ac&&ac.signal})
+        .then(function(r){return r.ok?r.json():Promise.reject(new Error(r.status))})
+        .then(function(d){
+          var age=Date.now()-Date.parse(d.generated_at);
+          if(!(age>=-36e5&&age<864e5))throw new Error('stale');
+          draw(d);
+          delete fNow.dataset.loading;
+          widget();
+        })
+        .catch(fFail)
+        .then(function(){clearTimeout(to)});
+    },{rootMargin:'400px 0px'});
+    fio.observe(fc);
+  }
+}
 })();
