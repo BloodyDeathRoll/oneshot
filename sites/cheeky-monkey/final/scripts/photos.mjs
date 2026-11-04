@@ -5,7 +5,7 @@
  *
  * Owners upload whatever their phone gives them; the site crops, resizes and compresses (playbook §9).
  * photos[n] fills slot n (src/lib/slots.mjs); rooms[].photo and the room slides (SCHEMA GAP) get ROOM_SHAPES;
- * heroVideoPoster gets the board window's stills. Each shape is a crop at the largest size the source allows,
+ * heroVideoPoster gets the hero's stills, videos[].poster the board window's. Each shape is a crop at the largest size the source allows,
  * written at the widths that fit inside it — never enlarged — as WebP. Lowercase names.
  * The atmosphere band (stock-003, CC BY-SA, `modify: false`) is copied byte for byte, never re-encoded.
  *
@@ -18,7 +18,7 @@ import { join, dirname, basename, extname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createRequire } from 'node:module'
 import { execFileSync } from 'node:child_process'
-import { SLOTS, ROOM_SHAPES, HERO_POSTER_SHAPES } from '../src/lib/slots.mjs'
+import { SLOTS, ROOM_SHAPES, HERO_POSTER_SHAPES, REEL_POSTER_SHAPES } from '../src/lib/slots.mjs'
 
 const final = join(dirname(fileURLToPath(import.meta.url)), '..')
 const sharp = createRequire(join(final, 'node_modules', 'sharp', 'package.json'))('sharp')
@@ -55,6 +55,7 @@ for (const room of site.rooms ?? []) {
   for (const g of gaps.roomGalleries?.[room.label] ?? []) want(g.file, gapMedia(g.file), ROOM_SHAPES)
 }
 if (site.heroVideoPoster?.filename) want(site.heroVideoPoster.filename, media(site.heroVideoPoster.filename), HERO_POSTER_SHAPES)
+for (const row of site.videos ?? []) if (row?.poster?.filename) want(row.poster.filename, media(row.poster.filename), REEL_POSTER_SHAPES)
 
 const manifest = {}
 let files = 0

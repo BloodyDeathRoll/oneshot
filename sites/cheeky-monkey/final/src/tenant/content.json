@@ -623,31 +623,62 @@
    ],
    "heroVideo": {
     "id": 49,
-    "alt": "New boards on the rack in Baba's Surf Shop, filmed close along their rails",
-    "filename": "cm-board.mp4",
+    "alt": "Drone footage of the Midigama coast: the reef and the coast road, the village under the palms, a surfer on a green wave",
+    "filename": "cm-drone.mp4",
     "mimeType": "video/mp4",
-    "filesize": 12280907,
+    "filesize": 15137326,
     "width": null,
     "height": null,
-    "url": "/api/media/file/cm-board.mp4",
+    "url": "/api/media/file/cm-drone.mp4",
     "focalX": 50,
     "focalY": 50,
     "sizes": {}
    },
    "heroVideoPoster": {
     "id": 50,
-    "alt": "New boards on the rack in Baba's Surf Shop: a white Rockwell shortboard beside a magenta speckled board",
-    "filename": "cm-board-poster.jpg",
+    "alt": "Drone view of the Midigama coast: turquoise reef water, the rock wall along the coast road, houses and palms behind",
+    "filename": "cm-drone-poster.jpg",
     "mimeType": "image/jpeg",
-    "filesize": 144408,
-    "width": 1080,
-    "height": 1920,
-    "url": "/api/media/file/cm-board-poster.jpg",
+    "filesize": 456659,
+    "width": 1920,
+    "height": 1080,
+    "url": "/api/media/file/cm-drone-poster.jpg",
     "focalX": 50,
     "focalY": 50,
     "sizes": {}
    },
-   "videos": [],
+   "videos": [
+    {
+     "id": "seed-video-1",
+     "video": {
+      "id": 51,
+      "alt": "New boards on the rack in Baba's Surf Shop, filmed close along their rails",
+      "filename": "cm-board.mp4",
+      "mimeType": "video/mp4",
+      "filesize": 12280907,
+      "width": null,
+      "height": null,
+      "url": "/api/media/file/cm-board.mp4",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "poster": {
+      "id": 52,
+      "alt": "New boards on the rack in Baba's Surf Shop: a white Rockwell shortboard beside a magenta speckled board",
+      "filename": "cm-board-poster.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 144408,
+      "width": 1080,
+      "height": 1920,
+      "url": "/api/media/file/cm-board-poster.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "description": "New boards on the rack in Baba's Surf Shop, filmed close along their rails"
+    }
+   ],
    "contact": {
     "phone": "+94719248686",
     "whatsapp": null,

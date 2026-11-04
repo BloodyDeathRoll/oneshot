@@ -134,6 +134,8 @@ export const img = (n, { i = 0, cls = '', lazy = true, altText, decorative = fal
   const s = top(sh)
   return `<img${cls ? ` class="${cls}"` : ''} src="${s.webp}" width="${s.w}" height="${s.h}"${lazy ? ' loading="lazy"' : ''} decoding="async" alt="${decorative ? '' : e(altText ?? m.alt)}"${extra}>`
 }
+/* every width of slot n's i-th shape, for a srcset */
+export const slotSet = (n, i = 0) => { const m = slotRow(n), sh = m && shapeOf(m.filename, keyOf(n, i)); return sh ? sh.sources : [] }
 export const slotSrc = (n, i = 0) => { const m = slotRow(n), sh = m && shapeOf(m.filename, keyOf(n, i)); return sh ? top(sh) : null }
 export const ROOM_KEY = 'r0.667'
 /* a room's slides: rooms[].photo first, then its SCHEMA GAP slides */
@@ -144,22 +146,35 @@ export const roomSlides = (r) => {
   return out
 }
 
-/* ---------- the reel (schema v0.8/0.9) ---------- */
+/* ---------- the hero video (schema v0.8/0.9, the snippet's pattern) ----------
+   Round 2: heroVideo is the drone cut. Sources: the phone tier first by media query, WebM before MP4 in each tier
+   (schemas/site-content.md "How a template uses the hero video"); the poster is the LCP image. */
+export const PHONE_MQ = '(max-width: 860px)'
+const srcOf = (s) => s && { src: s.src, type: s.type }
 export const hero = () => {
   const v = c.heroVideo, p = c.heroVideoPoster
-  if (!v?.filename || !p?.filename) return null
-  const gen = videosGen?.videos?.[v.filename]
-  const p720 = shapeOf(p.filename, 'full'), p1080 = shapeOf(p.filename, 'full-d')
-  if (!p720) return null
-  const tiers = gen?.tiers ?? {}
-  const pick = (tier) => [tier?.webm, tier?.mp4].filter(Boolean).map((s) => ({ src: s.src, type: s.type }))
-  return {
-    alt: p.alt,
-    poster: top(p720), posterD: p1080 ? top(p1080) : top(p720),
-    desk: pick(tiers.d1920),           // 1080 wide here (a 1080x1920 upload is never upscaled)
-    phone: pick(tiers.m720).length ? pick(tiers.m720) : pick(tiers.m1280),
-  }
+  if (!p?.filename) return null
+  const full = shapeOf(p.filename, 'full'), port = shapeOf(p.filename, shapeKey(16 / 9, 'm'))
+  if (!full) return null
+  const gen = v?.filename && videosGen?.videos?.[v.filename]
+  const t = gen?.tiers ?? {}
+  const sources = [[srcOf(t.m1280?.webm), PHONE_MQ], [srcOf(t.m1280?.mp4), PHONE_MQ], [srcOf(t.d1920?.webm)], [srcOf(t.d1920?.mp4)]]
+    .filter(([s]) => s).map(([s, media]) => ({ ...s, media }))
+  return { alt: p.alt, land: full.sources, port: port ? top(port) : null, sources, first: full.sources[0] }
 }
+/* videos[0]: the shop reel in the intro's board window. Shown at most ~360 CSS px wide, so the m720 tier
+   (720 wide) is sharp at 2x and the reel is never blown up (round 1's macroblocked zoom is gone) */
+export const reel = () => {
+  const row = (c.videos ?? [])[0]
+  if (!row?.video?.filename || !row?.poster?.filename) return null
+  const gen = videosGen?.videos?.[row.video.filename], ps = shapeOf(row.poster.filename, 'full')
+  if (!ps) return null
+  const t = gen?.tiers ?? {}
+  const src = [srcOf(t.m720?.mp4), srcOf(t.m1280?.webm), srcOf(t.m1280?.mp4)].filter(Boolean)
+  return { label: row.description ?? row.video.alt, poster: top(ps), sources: src }
+}
+/* the hero footage's credit (SCHEMA GAP: media has no credit field) */
+export const HERO_CREDIT = G.heroCredit ?? null
 
 /* the featureLine split around the board: "Come as a stranger," | "leave as a friend." */
 export const splitLine = (s) => {
@@ -282,11 +297,10 @@ export const ogImage = () => {
   }
   return null
 }
-/* the photographs the page serves (the reel's poster, then photos[] in the owner's order), for JSON-LD `image` */
+/* the photographs the page serves (photos[] in the owner's order), for JSON-LD `image`. Round 2: the hero poster
+   is a frame of third-party footage (vid-001, licence to be confirmed), so it is not offered as the business's image */
 export const pageImages = () => {
   const out = []
-  const p = c.heroVideoPoster?.filename && shapeOf(c.heroVideoPoster.filename, 'full')
-  if (p) out.push(top(p).webp)
   ;(c.photos ?? []).forEach((_, n) => { const s = slotSrc(n); if (s) out.push(s.webp) })
   return [...new Set(out)]
 }

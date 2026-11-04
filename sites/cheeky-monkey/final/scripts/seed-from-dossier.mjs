@@ -7,8 +7,7 @@
  *   src/tenant/content.json + src/tenant/media/   the shape scripts/fetch-tenant.mjs writes from Payload
  *       (schemas/site-content.md v0.9/v0.10). No Payload tenant exists before a sale (station 8).
  *   src/gaps/gaps.json + src/gaps/media/          SCHEMA GAP content: what the design shows that the schema has
- *       no field for (notes.md "schema gaps"). Every value is copied from copy/en.json, the dossier or
- *       dossier/cheeky-monkey/stock/index.json, never invented.
+ *       no field for (notes.md "schema gaps"). Every value is copied from copy/en.json or the dossier, never invented.
  *
  *   node scripts/seed-from-dossier.mjs
  */
@@ -16,7 +15,6 @@ import { readFileSync, writeFileSync, mkdirSync, rmSync, copyFileSync, existsSyn
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createRequire } from 'node:module'
-import { execFileSync } from 'node:child_process'
 
 const final = join(dirname(fileURLToPath(import.meta.url)), '..')
 const siteDir = join(final, '..')
@@ -27,7 +25,6 @@ const fail = (m) => { throw new Error('seed: ' + m) }
 
 const copy = JSON.parse(readFileSync(join(siteDir, 'copy', 'en.json'), 'utf8'))
 const dossier = JSON.parse(readFileSync(join(repo, 'dossier', slug, 'dossier.json'), 'utf8'))
-const stock = JSON.parse(readFileSync(join(repo, 'dossier', slug, 'stock', 'index.json'), 'utf8'))
 const images = new Map(dossier.images.filter((i) => i && i.id).map((i) => [i.id, i]))
 const assets = join(repo, 'dossier', slug)
 
@@ -142,20 +139,22 @@ for (const [label, ids] of ROOMS) {
   for (const id of ids.slice(1)) { await putImage(id, gapDir); galleries[label].push({ file: `${id}.jpg`, alt: alt(id) }) }
 }
 
-/* the atmosphere band (stock-003, CC BY-SA 3.0, modify: false): copied byte for byte; credit from index.json */
-const st = stock.find((s) => s.id === 'stock-003') ?? fail('stock-003 not in stock/index.json')
-if (st.place_ok !== 'local') fail('stock-003 place_ok is not local')
-copyFileSync(join(assets, st.file), join(gapDir, 'stock-003.jpg'))
-execFileSync('cmp', [join(assets, st.file), join(gapDir, 'stock-003.jpg')])
-const creditTitle = st.title.replace(/\.jpg$/i, '')
-const credit = { title: creditTitle, titleUrl: st.source_url, author: st.author, license: st.license_name, licenseUrl: st.license_url, via: st.source }
-if (`${credit.title} — ${credit.author}, ${credit.license}, via ${credit.via}` !== st.credit) fail('credit parts do not rebuild the index.json credit string')
-
-/* video (schema v0.8/0.9): the upload is the master scripts/make-media.sh cut from dossier.videos[] vid-009 */
+/* video (schema v0.8/0.9). Round 2 (Alon, 2026-11-04, in session: "i dont like the cartoon" / "yes, use the promo
+   drone shots"): heroVideo is the drone cut scripts/make-media.sh makes from dossier.videos[] vid-001 (Lorenzo
+   Marzocca's 2018 promo film for the guesthouse, licence unknown: to be confirmed with the owner at pitch); the
+   business-owned shop reel (vid-009) moves to videos[0], shown in the intro's board window. */
+const vid001 = dossier.videos.find((v) => v.id === 'vid-001') ?? fail('vid-001 missing')
 const vid009 = dossier.videos.find((v) => v.id === 'vid-009') ?? fail('vid-009 missing')
 if (vid009.license !== 'business-owned') fail('vid-009 is not business-owned')
-const heroVideo = await local('cm-board.mp4', 'New boards on the rack in Baba\'s Surf Shop, filmed close along their rails', 'video/mp4')
-const heroVideoPoster = await local('cm-board-poster.jpg', 'New boards on the rack in Baba\'s Surf Shop: a white Rockwell shortboard beside a magenta speckled board', 'image/jpeg')
+for (const f of ['cm-drone.mp4', 'cm-drone-poster.jpg']) if (!existsSync(join(mediaDir, f))) fail(`${f} missing: run scripts/make-media.sh`)
+const heroVideo = await local('cm-drone.mp4', 'Drone footage of the Midigama coast: the reef and the coast road, the village under the palms, a surfer on a green wave', 'video/mp4')
+const heroVideoPoster = await local('cm-drone-poster.jpg', 'Drone view of the Midigama coast: turquoise reef water, the rock wall along the coast road, houses and palms behind', 'image/jpeg')
+const videos = [{
+  id: 'seed-video-1',
+  video: await local('cm-board.mp4', 'New boards on the rack in Baba\'s Surf Shop, filmed close along their rails', 'video/mp4'),
+  poster: await local('cm-board-poster.jpg', 'New boards on the rack in Baba\'s Surf Shop: a white Rockwell shortboard beside a magenta speckled board', 'image/jpeg'),
+  description: 'New boards on the rack in Baba\'s Surf Shop, filmed close along their rails',
+}]
 
 const rowIds = (arr, k) => (arr ?? []).map((r, i) => ({ id: `seed-${k}-${i + 1}`, ...r }))
 for (const r of copy.ratings) {
@@ -182,7 +181,7 @@ const doc = {
   photos,
   heroVideo,
   heroVideoPoster,
-  videos: [],
+  videos,
   contact: { ...copy.contact, whatsapp: copy.contact.whatsapp || null }, // copyeditor N6: "" → null
   bookingLinks: rowIds(copy.bookingLinks, 'link'),
   amenities: rowIds(copy.amenities, 'amenity'),
@@ -208,7 +207,7 @@ writeFileSync(join(final, 'src', 'tenant', 'content.json'), JSON.stringify({ ten
 const [mark, ...rest] = ['Cheeky Monkey', 'Surf Camp']
 if (`${mark} ${rest.join(' ')}` !== copy.businessName) fail('wordmark split does not rebuild businessName')
 const gaps = {
-  _about: 'SCHEMA GAP content: what the picked design shows and schemas/site-content.md v0.11 has no field for. Written by scripts/seed-from-dossier.mjs from copy/en.json, dossier.json and stock/index.json; listed in notes.md "schema gaps". Edit there, not here.',
+  _about: 'SCHEMA GAP content: what the picked design shows and schemas/site-content.md v0.11 has no field for. Written by scripts/seed-from-dossier.mjs from copy/en.json and dossier.json; listed in notes.md "schema gaps". Edit there, not here.',
   wordmark: { mark, rest: rest.join(' '), _source: 'businessName, split for the two-line header mark' },
   place: { value: 'Midigama, Sri Lanka', _source: 'the town in contact.address (Midigama East Midigama) + country; concepts.md §6 "hero subtitle" gap' },
   seo: { title: 'Cheeky Monkey Surf Camp, Midigama | Rooms, lessons, boards', _source: 'seo 4h: the mockup\'s <title> cut to 58 chars (base.md: <= 60); businessName + the town + the tagline\'s rooms, lessons and boards (dossier room_types, lessons, rentals)' },
@@ -231,8 +230,7 @@ const gaps = {
   stayRoomLine: { value: 'Air conditioning, a private bathroom and a private entrance in every room', _source: 'amenities[0–2] as one line (dossier room_types_note)' },
   roomGalleries: galleries,
   _roomGalleries: 'rooms[].photo holds one photo (the first slide); the other slides have no field (concepts.md §6). Files in src/gaps/media/',
-  atmosphere: { file: 'stock-003.jpg', width: st.width, height: st.height, bytes: st.bytes, id: st.id, alt: 'The shore at Midigama under an overhanging tree: turquoise water, small waves breaking along the beach, dark rocks in the foreground, fishing boats far off', credit, licence: st.license_name, modify: st.modify },
-  _atmosphere: 'a credited atmosphere photograph (stock/index.json) has no field: media has no credit/licence. Shown whole, never re-encoded',
+  heroCredit: { person: 'Lorenzo Marzocca', what: '2018 promo film for Cheeky Monkey', url: vid001.source_url, licence: vid001.license, _source: 'dossier.videos[] vid-001 found_on ("Promotional video for Cheeky Monkey Guesthouse", uploaded 2018-02-06 by Lorenzo Marzocca) and source_url; media has no credit field. Licence unknown: to be confirmed with the owner at pitch' },
   socials: { website: dossier.contact.socials.website, instagram: dossier.contact.socials.instagram, facebook: dossier.contact.socials.facebook },
   _socials: 'socialLinks[] exists only among the v0.11 brand modules; a surf_camp has no field for its site, Instagram and Facebook',
   drawer: {
@@ -242,4 +240,4 @@ const gaps = {
   },
 }
 writeFileSync(join(final, 'src', 'gaps', 'gaps.json'), JSON.stringify(gaps, null, 1) + '\n')
-console.log(`seed: ${photos.length} photos, ${rooms.length} rooms (${Object.values(galleries).flat().length} gallery slides), video + poster, stock-003 → content.json, gaps.json`)
+console.log(`seed: ${photos.length} photos, ${rooms.length} rooms (${Object.values(galleries).flat().length} gallery slides), hero drone cut + poster, shop reel → content.json, gaps.json`)
