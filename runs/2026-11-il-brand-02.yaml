@@ -1,6 +1,6 @@
 run_id: 2026-11-il-brand-02
 operator: shahar                 # who runs it (team.json); a session runs only its operator's runs
-status: active                   # active | closed
+status: closed                   # active | closed — closed 2026-11-04: mockups dropped by Shahar ("too far off")
 market: il                       # markets/il/
 vertical: brand_design           # verticals/brand_design/
 engagement: inbound              # PLAN.md §4 "Inbound engagement": brief → research → direction → … → proposal
