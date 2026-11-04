@@ -1,0 +1,72 @@
+{
+ "normal": {
+  "first_load_third_party": [
+   "fonts.gstatic.com"
+  ],
+  "first_load_rosa": 0,
+  "block_y": 10062.15625,
+  "scroll_requests": [
+   "fetch https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "document https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+   "stylesheet https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+   "fetch https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "image https://rosa.surf/favicon.svg",
+   "font https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+   "image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924",
+   "image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5924",
+   "image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5925",
+   "image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5925",
+   "image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5926",
+   "image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5926"
+  ],
+  "cls_during_scroll": 0,
+  "iframes": [
+   {
+    "src": "https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+    "w": 358,
+    "h": 500,
+    "filter": "none",
+    "opacity": "1",
+    "transform": "none",
+    "title": "Rosa surf forecast - Coconuts",
+    "covered": "IFRAME."
+   }
+  ],
+  "rosa_links": [
+   "See today's forecast for Coconuts on Rosa -> https://rosa.surf/spot/weligama-west vis=false",
+   "Forecast for Coconuts by Rosa -> https://rosa.surf/spot/weligama-west vis=true"
+  ],
+  "forecast_text": "Today on Coconuts 0.4–0.6m Wave height now, knee-high Thu 5 Nov, 02:30 Swell 9.2 s from the S Wind 4 km/h, cross-shore Forecast for Coconuts by Rosa At the house Free WiFi | 24-hour front desk | 24-hour security and CCTV | Room service | Packed lunches | Swimwear and snacks for sale at the entrance | Bicycle hire (additional charge) | Car hire | Tour desk | Laundry (additional charge)",
+  "errors": []
+ },
+ "blocked": {
+  "first_load_third_party": [
+   "fonts.gstatic.com"
+  ],
+  "first_load_rosa": 0,
+  "block_y": 10062.15625,
+  "scroll_requests": [
+   "fetch https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "document https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric"
+  ],
+  "cls_during_scroll": 0,
+  "iframes": [
+   {
+    "src": "https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+    "w": 358,
+    "h": 500,
+    "filter": "none",
+    "opacity": "1",
+    "transform": "none",
+    "title": "Rosa surf forecast - Coconuts",
+    "covered": "IFRAME."
+   }
+  ],
+  "rosa_links": [
+   "See today's forecast for Coconuts on Rosa -> https://rosa.surf/spot/weligama-west vis=false",
+   "Forecast for Coconuts by Rosa -> https://rosa.surf/spot/weligama-west vis=true"
+  ],
+  "forecast_text": "Today on Coconuts 0.4–0.6m Wave height now, knee-high Thu 5 Nov, 02:30 Swell 9.2 s from the S Wind 4 km/h, cross-shore Forecast for Coconuts by Rosa At the house Free WiFi | 24-hour front desk | 24-hour security and CCTV | Room service | Packed lunches | Swimwear and snacks for sale at the entrance | Bicycle hire (additional charge) | Car hire | Tour desk | Laundry (additional charge)",
+  "errors": []
+ }
+}

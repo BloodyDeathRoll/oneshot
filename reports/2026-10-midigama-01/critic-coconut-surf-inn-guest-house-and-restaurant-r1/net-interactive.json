@@ -1,0 +1,72 @@
+{
+ "normal": {
+  "first_load_third_party": [
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "first_load_rosa": 0,
+  "block_y": 8939.75,
+  "scroll_requests": [
+   "document https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+   "stylesheet https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+   "fetch https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "image https://rosa.surf/favicon.svg",
+   "font https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+   "image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924",
+   "image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5924",
+   "image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5925",
+   "image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5925",
+   "image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5926",
+   "image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5926"
+  ],
+  "cls_during_scroll": 0,
+  "iframes": [
+   {
+    "src": "https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+    "w": 342,
+    "h": 500,
+    "filter": "none",
+    "opacity": "1",
+    "transform": "none",
+    "title": "Rosa surf forecast - Coconuts",
+    "covered": "IFRAME."
+   }
+  ],
+  "rosa_links": [
+   "Forecast for Coconuts by Rosa -> https://rosa.surf/spot/weligama-west vis=true",
+   " -> https://rosa.surf/spot/weligama-west vis=true"
+  ],
+  "forecast_text": "From 7:30, the break Coconuts, a consistent A-frame reef break, is in front of the guesthouse. Plantations is a more mellow wave, a 100 m walk up the beach. According to the Sri Lanka Travel Pages surf guide, the season at Coconut Point runs from November to April. 0.4–0.6m Knee-high at Coconuts | Thu 5 Nov, 02:30 Swell 1.0 m 9 s from the S Wind 4 km/h cross-shore Forecast for Coconuts by Rosa Free WiFi | 24-hour front desk | 24-hour security and CCTV | Room service | Packed lunches | Swimwear a",
+  "errors": []
+ },
+ "blocked": {
+  "first_load_third_party": [
+   "fonts.googleapis.com",
+   "fonts.gstatic.com"
+  ],
+  "first_load_rosa": 0,
+  "block_y": 8939.75,
+  "scroll_requests": [
+   "document https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric"
+  ],
+  "cls_during_scroll": 0,
+  "iframes": [
+   {
+    "src": "https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+    "w": 342,
+    "h": 500,
+    "filter": "none",
+    "opacity": "1",
+    "transform": "none",
+    "title": "Rosa surf forecast - Coconuts",
+    "covered": "IFRAME."
+   }
+  ],
+  "rosa_links": [
+   "Forecast for Coconuts by Rosa -> https://rosa.surf/spot/weligama-west vis=true",
+   " -> https://rosa.surf/spot/weligama-west vis=true"
+  ],
+  "forecast_text": "From 7:30, the break Coconuts, a consistent A-frame reef break, is in front of the guesthouse. Plantations is a more mellow wave, a 100 m walk up the beach. According to the Sri Lanka Travel Pages surf guide, the season at Coconut Point runs from November to April. 0.4–0.6m Knee-high at Coconuts | Thu 5 Nov, 02:30 Swell 1.0 m 9 s from the S Wind 4 km/h cross-shore Forecast for Coconuts by Rosa Free WiFi | 24-hour front desk | 24-hour security and CCTV | Room service | Packed lunches | Swimwear a",
+  "errors": []
+ }
+}
