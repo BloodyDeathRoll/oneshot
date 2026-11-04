@@ -190,6 +190,14 @@ export const ogImage = () => {
   return null
 }
 const pageImages = () => [...new Set((c.photos ?? []).map((_, n) => slot(n)?.top.webp).filter(Boolean))]
+/* 4i: the room's size, read from the m² figure its rooms[].note prints ("Ground floor, 20–25 m², …" → min 20, max 25;
+   "Upstairs, 25 m²." → 25). The page shows the same note, so this adds no fact; no figure in the note, no floorSize. */
+export const floorSize = (note) => {
+  const m = /(\d+(?:\.\d+)?)(?:\s*[–-]\s*(\d+(?:\.\d+)?))?\s*m²/.exec(note ?? '')
+  if (!m) return null
+  const q = { '@type': 'QuantitativeValue', unitCode: 'MTK' }
+  return m[2] ? { ...q, minValue: +m[1], maxValue: +m[2] } : { ...q, value: +m[1] }
+}
 /* JSON-LD for the business: one block, every value from content.json. No aggregateRating / review (Shahar's
    no-ratings-markup decision, applied to every site). No priceRange: room rates are live Booking.com inventory. */
 export const businessLd = ({ description } = {}) => {
@@ -199,11 +207,15 @@ export const businessLd = ({ description } = {}) => {
   const gp = G.geo, pin = pinFromMapUrl(k.mapUrl) ?? (gp && Math.abs(gp.lat) <= 90 && Math.abs(gp.lng) <= 180 ? { lat: gp.lat, lng: gp.lng } : null)
   const images = pageImages()
   const same = [...new Set((c.ratings ?? []).map((r) => safeUrl(r.url)).filter(Boolean))]
-  const roomsLd = rooms.map((r) => ({
-    '@type': 'HotelRoom', name: r.label,
-    ...(r.beds ? { bed: r.beds } : {}),
-    ...(r.sleeps ? { occupancy: { '@type': 'QuantitativeValue', maxValue: r.sleeps } } : {}),
-  }))
+  const roomsLd = rooms.map((r) => {
+    const m2 = floorSize(r.note)
+    return {
+      '@type': 'HotelRoom', name: r.label,
+      ...(r.beds ? { bed: r.beds } : {}),
+      ...(r.sleeps ? { occupancy: { '@type': 'QuantitativeValue', maxValue: r.sleeps } } : {}),
+      ...(m2 ? { floorSize: m2 } : {}),
+    }
+  })
   return {
     '@context': 'https://schema.org',
     '@type': LD_TYPE[c.businessType] ?? 'LocalBusiness',

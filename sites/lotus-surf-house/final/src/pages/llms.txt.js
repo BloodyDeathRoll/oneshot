@@ -32,10 +32,11 @@ export function GET({ site }) {
   ])
   section('Amenities', (c.amenities ?? []).map((a) => `- ${a.label}${a.note ? ` (${a.note})` : ''}`))
   section('The beach', [c.spot && `- ${c.spot}`, c.season && `- The season: ${c.season}`])
+  /* 4i: the score to one decimal, as the page prints it (RATINGS.shown: "9.0", not "9") */
   section('Ratings', (c.ratings ?? []).filter((r) => r.score != null).map((r) => {
     const p = PLATFORM[r.platform] || r.platform
     const when = dayMonYear(r.capturedAt)
-    return `- ${safeUrl(r.url) ? `[${p}](${r.url})` : p}: ${r.score}/${r.scale}, ${r.count} reviews${when ? ` (read ${when})` : ''}`
+    return `- ${safeUrl(r.url) ? `[${p}](${r.url})` : p}: ${Number(r.score).toFixed(1)}/${r.scale}, ${r.count} reviews${when ? ` (read ${when})` : ''}`
   }))
   section('What guests wrote', (c.testimonials ?? []).map((q) =>
     `- "${q.quote.replace(/\s*\r?\n\s*/g, ' ').trim()}" (${[q.author, PLATFORM[q.source], monYear(q.date)].filter(Boolean).join(', ')})`))
