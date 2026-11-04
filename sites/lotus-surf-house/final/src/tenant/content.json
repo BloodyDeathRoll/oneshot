@@ -520,7 +520,11 @@
    "credentials": [],
    "rentals": [],
    "brands": [],
-   "forecast": null,
+   "forecast": {
+    "enabled": true,
+    "rosaSpotId": "lazy-left",
+    "spotName": "Lazy Left"
+   },
    "updatedAt": null,
    "createdAt": null
   }

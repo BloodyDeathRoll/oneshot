@@ -203,3 +203,32 @@ Cheeky Monkey (`sites/cheeky-monkey/final`, unique "Pick your board") opens on i
 ## ledger note (`picked → built`, for the orchestrator)
 
 Calm "The gate" ported to Astro (`sites/lotus-surf-house/final`). It matches the mockup pixel for pixel apart from the rating-card, keyboard-focus and narrow-phone fixes, and keeps Alon's order (gate → King Room img-002/img-025 → roof img-021 → garden rooms). First load 882 KB, JS ≈ 1 KB, LCP 516 ms, CLS 0, scroll CLS 0.0016. check-design, check-places and axe are clean, and booking is 1 tap to the dossier's Booking.com URL.
+
+## 2026-11-04 — the Rosa forecast (Lazy Left), added after critique
+
+**Human decision (Alon, operator, 2026-11-04):** the site carries Rosa's forecast for spot `lazy-left` ("Lazy Left").
+The business names no break, which is why the 4e gaps above said "no forecast (no named break)". Lazy Left is the Rosa
+spot nearest the Google pin: Rosa's spot (5.963067, 80.390755, `data/index.json`) against `src/gaps/gaps.json` geo
+(5.9652192, 80.3922802) is about 290 m. This overrides schema v0.3's "the nearest other spot is never used" on Alon's
+say, as on Cheeky Monkey (Rams). So the block never calls Lazy Left the business's own break. It only says "Forecast for
+Lazy Left by Rosa". No walking time is stated (none is sourced), and no wave fact is content: the numbers come only from
+Rosa's live JSON.
+
+| What | Where |
+|---|---|
+| `forecast: {enabled: true, rosaSpotId: "lazy-left", spotName: "Lazy Left"}` | `src/tenant/content.json`; `scripts/seed-from-dossier.mjs` carries the same value with the decision in a comment, so a reseed keeps it |
+| The block | `src/pages/index.astro`, at the end of "Getting here" (`#getting-here`), under the address / map / good-to-know grid and above the closing. A hairline (`--line`) separates it from the section's text. It renders nothing unless `enabled` and a valid `rosaSpotId`. Words in `src/lib/labels.json` (`fc_credit`, `fc_link`, `fc_title`) |
+| Logic | `src/scripts/site.js`, ported from `sites/cheeky-monkey/final` (itself from `sites/layday-surf-ahangama/final`). One JSON request when the block is within 400 px of the screen. The headline is drawn only from data under 24 h old. Then the widget gets its `src`, only after a HEAD 200 and the frame's `load`, within 10 s. Otherwise the plain link stays. A failure while the block is still below the screen (`.solo`) drops the empty headline box. In view, the box stays reserved |
+| Look | `src/styles/site.css`, in this page's calm language. The headline is a `--tint` card with a 22 px radius, like the rating cards. The credit has the leaf-green wave icon (`wave` and `clock` added to `src/lib/icons.mjs`). The height range is Hanken Grotesk 600 in ink (88 px desktop, 64 px phone), with "m" in muted 400. The time is ink 600, swell and wind are muted, and Rosa's update time is a muted 13.5 px line with the wood clock icon, like `.rday`. Two 420 × 500 boxes sit side by side, centred, at desktop widths. On a phone (≤ 899 px) they stack: card 340 px high, widget box 500 px. The JS-off / failed link sits on the same tint card. Rosa's widget is `theme=light` (white page), embedded exactly as Rosa ships it |
+| llms.txt | "Pages" lists `Forecast for Lazy Left by Rosa` → rosa.surf/spot/lazy-left, as on Cheeky Monkey |
+
+Embeds: 1 of 2 (the page has no map iframe; "Open in Google Maps" is a link).
+
+Checks (local preview, `astro preview` on :8960, built with `SITE_URL` unset): `node tools/site-check.mjs lotus-surf-house
+--url http://localhost:8960/` gave **PASS** on all checks (video skipped: none). forecast-data: JSON 200, 3.9 h old,
+widget 200. forecast-block at 390 / 1440: section height 1984→1984 / 1349→1349, shift 0, headline drawn, iframe set.
+Performance: 0 third-party requests on load, CLS 0.0018, LCP 348 ms, 867,428 B first load in 13 requests. A separate
+Playwright check at 390 and 1440 found no rosa.surf or rosa-data request on first load, no console errors and no
+horizontal overflow. JS off: only the link, in the 420 × 500 box (350 × 500 at 390), no Rosa request. JSON blocked and
+stale data (30 h): link shown, no numbers, no widget request, section height unchanged.
+Cost: about 3.7 KB gzip of inline HTML (CSS + JS + markup), no new requests on load.

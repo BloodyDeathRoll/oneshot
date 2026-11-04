@@ -52,7 +52,12 @@ export function GET({ site }) {
     address && `- Address: ${address}`,
     safeUrl(c.contact?.mapUrl) && `- [Map](${c.contact.mapUrl})`,
   ])
-  section('Pages', [`- [${[name, TOWN].filter(Boolean).join(', ')}](${site ? new URL('./', site).href : './'}): the website, one page`])
+  /* the Rosa forecast link, as on Cheeky Monkey and the Ahangama sites (2026-11-04: Lazy Left, the Rosa spot nearest the pin) */
+  const spotId = c.forecast?.enabled && /^[a-z0-9-]+$/.test(c.forecast?.rosaSpotId ?? '') ? c.forecast.rosaSpotId : null
+  section('Pages', [
+    `- [${[name, TOWN].filter(Boolean).join(', ')}](${site ? new URL('./', site).href : './'}): the website, one page`,
+    spotId && `- [Forecast for ${c.forecast.spotName || spotId} by Rosa](https://rosa.surf/spot/${spotId})`,
+  ])
   if (c.updatedAt && !Number.isNaN(Date.parse(c.updatedAt))) out.push('', `Last updated: ${new Date(c.updatedAt).toISOString().slice(0, 10)}`)
 
   return new Response(out.join('\n').replace(/\n{3,}/g, '\n\n') + '\n', { headers: { 'Content-Type': 'text/plain; charset=utf-8' } })

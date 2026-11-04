@@ -118,7 +118,11 @@ const site = {
   rooms: copy.rooms.map((r) => ({ ...pick(r, ['label', 'beds', 'sleeps', 'note']), photo: null })),
   stayInfo: pick(copy.stayInfo, ['checkInFrom', 'checkInTo', 'checkOutFrom', 'checkOutTo', 'minNights', 'note']),
   lessons: [], credentials: [], rentals: [], brands: [],
-  forecast: null,
+  /* schema v0.3 forecast. Human decision (Alon, operator, 2026-11-04): the dossier names no break (the 4e gaps said
+     "no forecast (no named break)"), and Alon chose Rosa's `lazy-left`, the Rosa spot closest to the Google pin
+     (Rosa's spot lat/lon in data/index.json vs dossier location.lat_lng, about 290 m). It is shown only as the
+     forecast for Lazy Left, never as the business's own break. Carried here so a reseed keeps it. */
+  forecast: { enabled: true, rosaSpotId: 'lazy-left', spotName: 'Lazy Left' },
   updatedAt: null,
   createdAt: null,
 }

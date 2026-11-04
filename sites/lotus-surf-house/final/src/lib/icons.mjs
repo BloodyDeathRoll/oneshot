@@ -10,4 +10,7 @@ export const ICON = {
  "prev": "<path d=\"m15 18-6-6 6-6\"/>",
  "next": "<path d=\"m9 18 6-6-6-6\"/>",
  "bed": "<path d=\"M3 19v-9M21 19v-5a3 3 0 0 0-3-3H8v8M3 15h18\"/><circle cx=\"6\" cy=\"12\" r=\"1.6\"/>",
+ /* 2026-11-04: the Rosa forecast block's two icons (the same strokes as sites/cheeky-monkey/final) */
+ "wave": "<path d=\"M2 15c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M2 19c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M7 10c0-3 2.5-5.5 6-5.5 1.5 0 2.8.5 3.8 1.3-2.8 0-4.8 1.8-4.8 4.2\"/>",
+ "clock": "<circle cx=\"12\" cy=\"12\" r=\"8.5\"/><path d=\"M12 7.5V12l3 2\"/>",
 }

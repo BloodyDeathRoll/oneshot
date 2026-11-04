@@ -169,6 +169,40 @@ const guests = REVIEWS.length ? `
   </div>
 </section>` : ''
 
+/* ---------- the Rosa forecast (2026-11-04, Alon) ----------
+   Schema v0.3, playbook §4's exception, ported from sites/cheeky-monkey/final (itself from sites/layday-surf-ahangama/
+   final). Lazy Left is the Rosa spot nearest the Google pin (about 290 m), not the business's own break: the block only
+   ever says "Forecast for Lazy Left by Rosa". Both halves have fixed boxes; nothing is requested until the block nears
+   the screen (src/scripts/site.js). With JS off, the plain link fills the widget's box. No wave fact is content. */
+const fcOn = c.forecast?.enabled && /^[a-z0-9-]+$/.test(c.forecast?.rosaSpotId ?? '')
+const spotId = c.forecast?.rosaSpotId, spotName = c.forecast?.spotName || spotId
+const forecast = fcOn ? `
+  <div class="wrap">
+    <div class="fc" data-json="https://rosa-data-opal.vercel.app/data/spots/${e(spotId)}.json" data-spot="${e(spotName)}">
+      <div class="fc-now" aria-live="polite">
+        <p class="credit-rosa">${svg('wave')}<a href="https://rosa.surf/spot/${e(spotId)}">${e(t(L.fc_credit, { spot: spotName }))}</a></p>
+        <div class="live">
+          <p class="now"><span class="nh"> <small> m</small></span></p>
+          <p class="nd"><span data-f="t"></span><span data-f="swell"></span><span data-f="wind"></span></p>
+          <p class="upd">${svg('clock')}<span data-f="upd"></span></p>
+        </div>
+      </div>
+      <div class="fc-rosa">
+        <a class="fc-link" href="https://rosa.surf/spot/${e(spotId)}"><span>${e(t(L.fc_link, { spot: spotName }))}</span></a>
+        <iframe
+          data-src="https://rosa.surf/widget/?spot=${e(spotId)}&amp;theme=light&amp;units=metric"
+          title="${e(t(L.fc_title, { spot: spotName }))}"
+          width="100%"
+          height="500"
+          style="max-width:420px;border:0;border-radius:16px;display:block"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+        ></iframe>
+      </div>
+    </div>
+  </div>` : ''
+
 /* ---------- getting here ---------- */
 const getting = `
 <section class="out" id="getting-here" aria-labelledby="h-out">
@@ -187,6 +221,7 @@ const getting = `
       ${STAY_NOTE ? `<h3>${e(L.good_to_know)}</h3><p>${e(STAY_NOTE)}</p>` : ''}
     </div>
   </div>
+${forecast}
 </section>`
 
 const closing = `
