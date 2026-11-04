@@ -1,10 +1,10 @@
 # cheeky-monkey — run 2026-10-midigama-01 (test)
 
-State: **critiqued(1), FAIL** (2026-11-03). 4h SEO and 4i AI SEO done (look unchanged; preview noindex rule added). Station 5 round 1: critic 65.1/75 with a hard fail (funnel.mjs reads the header phone icon as the primary action; Booking.com must come first), visual-critic 7/10 (hard fail <8), experience-critic 8/10; all three: clearly better than the current site. Reports: `reports/2026-10-midigama-01/cheeky-monkey{,.visual,.experience}.md`. Next: designer fix round (back to 4f/4g per PLAN), then critique round 2.
+State: **passed** (2026-11-04), round 3: 92.7 (critic 72.7 on dims 1-7, visual-critic 8/10, experience-critic 8/10; rubric weights sum to 105 although rubric.md says 100, so the critics' "/75" was really /80). Next: station 6 Preview (deployer), blocked on Cloudflare: wrangler is logged in to Alon's personal account, but PLAN says previews go only on the Oneshot account (shaharnaor@outlook.com, subdomain os1). Shahar to invite lavi.alon@gmail.com to that account or put an API token in ~/.oneshot/cf-token. Do NOT deploy to the personal account.
 
-**Waiting on Alon:** both visual reviewers want the drawn cartoon beach on the first screen toned down or replaced by a real photo; Alon asked for that background at gate b. Options put to him: keep as is / keep but blend in the camp's own surf photos / replace with a muted real photo. Do not change the hero until he answers. All other must-fixes (video zoom end frame, own surf photo leading 'Down at the water', package cards, font-display swap, a11y role=group + 4.44 contrast, JS-off header, Booking.com first in the header) can go to the designer.
+Hero (Alon, 2026-11-04): the cartoon beach is gone; the first screen is a 6.2 s drone loop over Midigama cut from vid-001 (Lorenzo Marzocca's 2018 promo film for the guesthouse), credited in the footer. Its licence is unknown: **Alon waived the PLAN §9 hard fail for the workers.dev preview only** ("i accept it as an exception for the preview. and make the last fixes."). The owner must confirm the rights at pitch, or the hero switches to business-owned media before go-live. Shahar to be told (his policy). stock-003 is no longer used.
 
-Open for Shahar: CC BY-SA stock-003 is allowed by PLAN §9 but excluded by rubric.md — the critic flagged the conflict. Online preview still needs Cloudflare auth (~/.oneshot/cf-token or wrangler login).
+Optional polish (reported in round 3, none blocking): pause control for the videos (WCAG 2.2.2), the board-reel load race in site.js, rating cards shift with the review slider, img-100 sky crop, one lead package card, closing board size. Reports: `reports/2026-10-midigama-01/cheeky-monkey{,.visual,.experience}.md`.
 
 - Cheeky Monkey Surf Camp, Midigama East, +94719248686. Type `surf_camp` (own site sells lessons and weekly packages; also 5 room types on Booking.com and a big board shop).
 - Dossier: `dossier/cheeky-monkey/dossier.json` + `sources.md`; 136 sourced facts, 163 images (156 business-owned), 9 videos, 15 gaps, none blocking. Media (492 MB) is local: `media/cheeky-monkey.tsv`.
@@ -14,7 +14,7 @@ Open for Shahar: CC BY-SA stock-003 is allowed by PLAN §9 but excluded by rubri
 Open (human decisions):
 - Status: Facebook says the Midigama shop, rooms and restaurant are closed for low season (owner in Arugam Bay); the site banner (May 2025) says rooms are not bookable. Booking.com reviews run to Sept 2026, Instagram posted from the shop Oct 2026.
 - All prices are from 2021 pages; no rental prices anywhere.
-- Hero video is weak (vertical, in-shop reel vid-009). The best footage, a 2018 drone film (vid-001), is on a friend's channel: licence unknown, ask the owner.
+- vid-001 drone footage (licence unknown) is now the hero under Alon's preview waiver: ask the owner at pitch.
 - Owner name conflicts: "Baba" Pasindu Delgodage (2021 press) vs the Dodangoda family (own site).
 
 Audit (`dossier/cheeky-monkey/audit.json` + `audit.md`): scope `site`, 14 findings (3 high, 10 medium, 1 low), 10 pitch points. Lead with: no booking action on any of the 8 menu pages (F1); a "rooms aren't bookable" banner while Booking.com sells them (F3); prices hidden on unlinked pages (F2). Recommended primary action `engine` (Booking.com), 1 tap; secondary tel + email.
