@@ -17,7 +17,7 @@ Used by three independent reviewers in both modes (PLAN.md §5): the **critic** 
 | 7 | Security + delivery baseline | 7 | Static output only: no server code, no runtime calls to the CMS, no third-party scripts/trackers/embeds on load, assets self-hosted and pinned, relative URLs, lowercase filenames; nothing weakens `server-hardening.md`. | build output, network log |
 | 8 | **Visual quality** | 25 | The page as a finished piece of design and experience, judged independently by visual-critic and experience-critic (each 0–10; the dimension score is the **lower** of the two). Composition, typography, use of the business's strongest media (video first), colour, hierarchy, rhythm, polish, motion, first impression on a phone, emotional pull, how the booking flow feels. Compared side by side with the business's current site and with `agents/designer/references.md` + `gold/`. | both visual critics' scorecards, their screenshots, the old-site screenshots |
 
-Total 100. Dimension 8 is scored only by the two visual critics; the critic scores 1–7.
+Weights sum to 105 (dimensions 1–7: 80, dimension 8: 25). **Total = the weighted sum × 100 ÷ 105**, one decimal, so it is out of 100 (rubric 0.3.2, Shahar 2026-11-04). Dimension 8 is scored only by the two visual critics; the critic scores 1–7 and reports them as NN / 80.
 
 ## Scoring
 
