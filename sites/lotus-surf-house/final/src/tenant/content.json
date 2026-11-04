@@ -1,0 +1,528 @@
+{
+ "tenant": {
+  "id": null,
+  "slug": "lotus-surf-house",
+  "name": "Lotus Surf House"
+ },
+ "locales": {
+  "en": {
+   "businessName": "Lotus Surf House",
+   "businessType": "beach_lodging",
+   "tagline": "A guesthouse in Midigama, on the south coast of Sri Lanka.",
+   "closing": "Live dates and prices are on Booking.com. If you'd rather ask us something first, call.",
+   "featureLine": null,
+   "languages": [
+    "en"
+   ],
+   "copyBlocks": [
+    {
+     "slot": "intro",
+     "heading": "In the garden",
+     "body": "The house is in a shady garden on Indhana Road. There's a hammock under the trees, and the ping-pong table has a thatched roof over it.\n\nEvery room downstairs opens onto the garden through its own terrace, with chairs outside and a table to eat at."
+    },
+    {
+     "slot": "about",
+     "heading": "Yelum",
+     "body": "Yelum owns the house. As he once wrote to a guest, “I strive every day to make my customers' holidays as wonderful as possible.”"
+    },
+    {
+     "slot": "about",
+     "heading": "Breakfast",
+     "body": "Breakfast is included, and you can have it any time from 8 to 10 in the morning."
+    },
+    {
+     "slot": "offer",
+     "heading": "Old rooms and new",
+     "body": "The garden rooms are downstairs. “The standard rooms may not be the newest,” Yelum says, “but they are popular with many vacationers due to their charm.”\n\nThe King Rooms upstairs are new, and their balconies look out into the trees."
+    },
+    {
+     "slot": "about",
+     "heading": "Up on the roof",
+     "body": "There's a roof terrace as well, with a wooden table and chairs and the trees behind it. In one corner a Buddha sits on a pedestal, with offerings of flowers and fruit."
+    },
+    {
+     "slot": "info",
+     "heading": "Getting here",
+     "body": "Midigama railway station is 50 m from the house, so you can come by train.\n\nFurther out, Booking.com lists Ahangama Beach at 1.4 km, Weligama Beach at 4.2 km and Koggala Airport at 9 km.\n\nOn Google you may also find the house under its old name, Yelum Guest House."
+    }
+   ],
+   "openingHours": [],
+   "hoursNote": null,
+   "priceList": [],
+   "photos": [
+    {
+     "image": {
+      "id": 1,
+      "alt": "The carved wooden garden gate standing open in a slate wall under a canopy of leaves, the sunlit garden through the doorway",
+      "filename": "img-019.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 364375,
+      "width": 1200,
+      "height": 1600,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 2,
+      "alt": "An upstairs King Room: a bed under a white mosquito net with a blush trim, glass doors open onto a balcony with rattan chairs and trees",
+      "filename": "img-002.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 239820,
+      "width": 1600,
+      "height": 1200,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 3,
+      "alt": "From inside a King Room: glass doors open onto the balcony, two rattan chairs and a small table, palms and sky",
+      "filename": "img-025.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 290354,
+      "width": 1200,
+      "height": 1600,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 4,
+      "alt": "A King Room bed under a mosquito net, tall glass doors open to the trees",
+      "filename": "img-010.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 220452,
+      "width": 1600,
+      "height": 1200,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 5,
+      "alt": "A King Room with the bed under its net, an air-conditioning unit and a wooden wall shelf",
+      "filename": "img-015.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 121162,
+      "width": 1280,
+      "height": 960,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 6,
+      "alt": "A King Room bedside: the bed under its net, an air-conditioning remote on a wooden side table",
+      "filename": "img-034.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 136653,
+      "width": 1600,
+      "height": 1200,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 7,
+      "alt": "A new bathroom with a poured-concrete basin, a round lit mirror and a walk-in shower",
+      "filename": "img-008.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 226468,
+      "width": 1600,
+      "height": 1200,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 8,
+      "alt": "A corner of the roof terrace: a Buddha on a carved pedestal, yoga mats and cushions on the floor, palms beyond",
+      "filename": "img-021.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 451942,
+      "width": 1200,
+      "height": 1600,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 9,
+      "alt": "A bronze Buddha on its pedestal with offerings of fruit and flowers, among them a violet blossom",
+      "filename": "img-022.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 229419,
+      "width": 1199,
+      "height": 1600,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 10,
+      "alt": "A long wooden table and chairs on the roof terrace, green treetops behind",
+      "filename": "img-004.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 382529,
+      "width": 1199,
+      "height": 1600,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 11,
+      "alt": "The garden under a big shade tree: a hammock by the wall, the lawn in dappled sun, a ping-pong table further back",
+      "filename": "img-020.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 399757,
+      "width": 1600,
+      "height": 1200,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 12,
+      "alt": "A garden twin room with two single beds, striped covers, wooden wall shelves and a round woven rug",
+      "filename": "img-029.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 197063,
+      "width": 1440,
+      "height": 1434,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 13,
+      "alt": "The Deluxe Queen Room, wide-angle: a double bed under a mosquito net, rattan chairs and a rattan sofa, wooden shelves and a surfboard",
+      "filename": "img-043.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 138025,
+      "width": 1600,
+      "height": 1200,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 14,
+      "alt": "A ground-floor bathroom with sage-green walls, a shower, a toilet and a small basin",
+      "filename": "img-030.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 104253,
+      "width": 1080,
+      "height": 804,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 15,
+      "alt": "The garden lawn with a stone birdbath in front of the tiled-roof garden wing and its veranda",
+      "filename": "img-009.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 210549,
+      "width": 1024,
+      "height": 768,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 16,
+      "alt": "A ground-floor bathroom with grey flower-patterned wall tiles, black floor tiles, a pebble shower floor, a toilet and a basin",
+      "filename": "img-028.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 110975,
+      "width": 1049,
+      "height": 1000,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 17,
+      "alt": "The wooden deck of a garden room, with rattan chairs and a glass table",
+      "filename": "img-044.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 83119,
+      "width": 816,
+      "height": 738,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 18,
+      "alt": "The veranda of the garden rooms: rattan chairs and a glass table on a red cement floor",
+      "filename": "img-032.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 225730,
+      "width": 1600,
+      "height": 1388,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    }
+   ],
+   "heroVideo": null,
+   "heroVideoPoster": null,
+   "videos": [],
+   "contact": {
+    "phone": "+94774647541",
+    "whatsapp": null,
+    "email": null,
+    "address": "Indhana Rd, Midigama 80650, Sri Lanka",
+    "mapUrl": "https://www.google.com/maps/place/?q=place_id:ChIJBR_cQfoV4ToRQhXcrYmPyU0"
+   },
+   "bookingLinks": [
+    {
+     "label": "Check dates on Booking.com",
+     "url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html"
+    }
+   ],
+   "amenities": [
+    {
+     "label": "Private bathroom in every room",
+     "note": null
+    },
+    {
+     "label": "Free WiFi",
+     "note": "in all areas"
+    },
+    {
+     "label": "Outdoor shower",
+     "note": null
+    },
+    {
+     "label": "Shared kitchen",
+     "note": null
+    },
+    {
+     "label": "Shared lounge with TV",
+     "note": null
+    },
+    {
+     "label": "Room service",
+     "note": null
+    },
+    {
+     "label": "Airport shuttle",
+     "note": "additional charge"
+    },
+    {
+     "label": "Bicycle rental",
+     "note": "additional charge"
+    },
+    {
+     "label": "Walking tours",
+     "note": "additional charge"
+    },
+    {
+     "label": "Laundry",
+     "note": "additional charge"
+    },
+    {
+     "label": "Luggage storage",
+     "note": null
+    },
+    {
+     "label": "CCTV outside and in common areas",
+     "note": null
+    }
+   ],
+   "ratings": [
+    {
+     "platform": "booking",
+     "score": 9,
+     "scale": "10",
+     "count": 125,
+     "url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+     "capturedAt": "2026-11-03"
+    },
+    {
+     "platform": "google",
+     "score": 4.9,
+     "scale": "5",
+     "count": 78,
+     "url": "https://www.google.com/maps/place/?q=place_id:ChIJBR_cQfoV4ToRQhXcrYmPyU0",
+     "capturedAt": "2026-11-03"
+    }
+   ],
+   "testimonials": [
+    {
+     "quote": "Yelum and his family provide such a welcoming and comfortable stay. The garden is like an oasis away from hustle of main road. Rooms are clean and comfortable and sitting on the porch breakfast is served with a range of options made by Yelum mother, the coconut roti and dhal a highlight for me and granola yogurt and fresh fruit and banana pancakes for my family. Yelum organised an airport pickup at midnight for us and welcomed us at 3 am. Would definitely stay again",
+     "author": "Fiona, Australia",
+     "source": "booking",
+     "lang": "en",
+     "date": "2024-12"
+    },
+    {
+     "quote": "The room was spacious and functional. The AC is really helping when it’s hot outsider. The highlight was truly the host, Yelum. He is always there to help, recommend things to do, plan trips (we went to a snake farm, batik factory and safari with him, which were all great experiences). The breakfast prepared by him and his mom for the traditional Sri Lankan dishes were also very good. You can go there with your eyes closed.",
+     "author": "Benjamin, Switzerland",
+     "source": "booking",
+     "lang": "en",
+     "date": "2025-10"
+    },
+    {
+     "quote": "Very sweet Accommodation! A nice garden with a ping pong table and a great rooftop terrace, partly with a roof to get some shade. Had lots of yoga sessions up there with a wonderful view over the jungle. Location is great, lots of Restaurants around and just a few minutes walking distance to 4 surfspots, suitable for everyone from beginner/intermediates to highly advanced surfers. Yelum and his Father are super friendly and will help you with whatever Question comes up. I will be back :)",
+     "author": "Svenja, Germany",
+     "source": "booking",
+     "lang": "en",
+     "date": "2024-02"
+    },
+    {
+     "quote": "I enjoyed my stay here, and extended one more night. \r\nThe location is perfect to go and surf at lazy left and right . \r\nthe host is very welcoming and kind . breakfast is very nice. \r\nthe room is ok , it gets very dusty pretty easily I think . Bed was comfortable enough .",
+     "author": "Giada, Italy",
+     "source": "booking",
+     "lang": "en",
+     "date": "2025-12"
+    },
+    {
+     "quote": "We had an amazing stay at Lotus House. The family are so kind and welcoming. The breakfasts every day after surfing are amazing. Great location, only a 2 minute walk from the beach and the local surf spots. A very calm and relaxing vibe - lots of fun on the ping pong table in the garden. Our favourite stay in Sri Lanka, we would highly recommend, and we can’t wait to come back next year!",
+     "author": "Henry, United Kingdom",
+     "source": "booking",
+     "lang": "en",
+     "date": "2024-03"
+    },
+    {
+     "quote": "I thoroughly enjoyed my stay at the Lotus Surf House. The property was clean and tidy, and it’s located in a quiet area that’s ideal for accessing surf spots suited to all skill levels. The owner and his wife were very personable and extremely helpful with anything I needed during my stay. I would definitely stay there again.",
+     "author": "Dimitrios, United Kingdom",
+     "source": "booking",
+     "lang": "en",
+     "date": "2025-11"
+    },
+    {
+     "quote": "Yelum was an incredible host who helped us out with not only planning our days in Mitigama, but also with planning our entire Sri Lanka trip! He was very kind and generous with his time and cooked a delicious breakfast. The room we stayed in was recently renovated and was beautiful and spacious. Yelum had a scooter that we could hire for a very decent price to get around during our stay. It is walking distance to the beach and a few lovely cafes. Thank Yelum for the awesome stay!",
+     "author": "Talia, Australia",
+     "source": "booking",
+     "lang": "en",
+     "date": "2025-11"
+    },
+    {
+     "quote": "Beautiful garden, the owners are so friendly and accomodating and the location is really close to all the cafes and restaurants in Midigama and walking distance to the two best surf spots around. I felt right at home here as a solo fem traveller!",
+     "author": "Nicole, Australia",
+     "source": "booking",
+     "lang": "en",
+     "date": "2024-12"
+    },
+    {
+     "quote": "Very friendly and lovely owner - always helpful, easy going. Yelum can also help you with getting around Sri Lanka. Beautiful garden and 5 min walk to the beach. Close to the train tracks but the train doesn't run very often. We were here 5 years ago and decided to come back this year and will do it again:)",
+     "author": "Holtmann, Switzerland",
+     "source": "booking",
+     "lang": "en",
+     "date": "2025-09"
+    },
+    {
+     "quote": "Super close to the beaches and waves. Super cool and friendly staff/owners. Super comfy rooms with working AC and hot water.",
+     "author": "Colin, Canada",
+     "source": "booking",
+     "lang": "en",
+     "date": "2026-01"
+    },
+    {
+     "quote": "For the price, my room was amazing. It felt like I was in the jungle. Hot water, AC, free breakfast, I’d stay again.",
+     "author": "ジョナ, Japan",
+     "source": "booking",
+     "lang": "en",
+     "date": "2026-02"
+    },
+    {
+     "quote": "I had a room without ac and it was fine but for a long period stay won’t recommend (since the humidity is high and my staff couldn’t get dry)",
+     "author": "Katsiaryna, Poland",
+     "source": "booking",
+     "lang": "en",
+     "date": "2026-02"
+    }
+   ],
+   "spot": "Booking.com puts Midigama Beach 250 m from the house.",
+   "season": null,
+   "languagesSpoken": [
+    "en"
+   ],
+   "rooms": [
+    {
+     "label": "Standard Double or Twin Room with Garden View",
+     "beds": "2 single beds",
+     "sleeps": 2,
+     "note": "Ground floor, 20–25 m², garden view. Fan and mosquito net; no air conditioning and no hot water.",
+     "photo": null
+    },
+    {
+     "label": "Double or Twin Room with Garden View",
+     "beds": "2 single beds",
+     "sleeps": 2,
+     "note": "Ground floor, 25 m², garden view. Fan and mosquito net; no air conditioning and no hot water.",
+     "photo": null
+    },
+    {
+     "label": "Deluxe Queen Room",
+     "beds": "1 large double bed",
+     "sleeps": 2,
+     "note": "Ground floor, 25 m², garden view, tiled floor and a walk-in shower. Fan and mosquito net; no air conditioning and no hot water.",
+     "photo": null
+    },
+    {
+     "label": "King Room with Balcony",
+     "beds": "1 extra-large double bed",
+     "sleeps": 2,
+     "note": "Upstairs, 25 m². Air conditioning, fan, mosquito net and hot water.",
+     "photo": null
+    }
+   ],
+   "stayInfo": {
+    "checkInFrom": null,
+    "checkInTo": null,
+    "checkOutFrom": "11:00",
+    "checkOutTo": "12:00",
+    "minNights": null,
+    "note": "Check-in at any hour, day or night. Cash only. Children welcome; no cots or extra beds. Pets on request, at no charge. No parking."
+   },
+   "lessons": [],
+   "credentials": [],
+   "rentals": [],
+   "brands": [],
+   "forecast": null,
+   "updatedAt": null,
+   "createdAt": null
+  }
+ }
+}

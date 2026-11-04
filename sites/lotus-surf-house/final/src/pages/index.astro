@@ -1,0 +1,252 @@
+---
+/* Home: a port of mockups/calm/dist/index.html ("The gate"), picked by Alon at gate b and revised to his words
+   ("use the attached photos in the top areas, show the king room first, its the nicest"; approved 2026-11-04).
+   Markup, class names, CSS and JS are the mockup's (mockups/calm/src/build.py, page.css, page.js), bound to the
+   content schema: every word, photo, link and number comes from src/tenant/content.json, the SCHEMA GAP file
+   (src/gaps/gaps.json) or the template's labels (src/lib/labels.json). Section order is the mockup's: the gate →
+   the King Rooms (img-002 full-bleed, img-025 with the facts, the strip) → the roof → at a glance → the garden
+   rooms → the porch → guests → getting here → closing → footer. 4g changes are commented. */
+import css from '../styles/site.css?raw'
+import js from '../scripts/site.js?raw'
+import {
+  c, G, L, S, e, t, paras, block, svg, pipe, word,
+  NAME, PRIMARY, BOOK_HOST, TEL, PHONE, MAP, ADDRESS, TOWN,
+  KING, GARDEN_ROOMS, beds, checkOut, STAY_NOTE, AMENITIES,
+  RATINGS, REVIEWS, REVIEW_LINK, FINE,
+  slot, srcset, img, heroVideo,
+  metaDescription, seoHead, businessLd, ldJson, ogImage, IS_PREVIEW,
+} from '../lib/site.mjs'
+
+const P = (body, cls = '') => paras(body).map((p) => `<p${cls ? ` class="${cls}"` : ''}>${e(p)}</p>`).join('')
+const garden = block('intro', 0), old = block('offer', 0), yelum = block('about', 0), breakfast = block('about', 1), roofB = block('about', 2), here = block('info', 0)
+const oldP = paras(old?.body)
+
+/* ---------- buttons: real links, work with JS off ---------- */
+const book = (cls = '', label = PRIMARY?.label, icon = true) =>
+  PRIMARY ? `<a class="btn btn-book ${cls}" href="${e(PRIMARY.url)}">${icon ? svg('cal') : ''}<span>${e(label)}</span></a>` : ''
+const call = (cls = '') => (TEL ? `<a class="btn btn-call ${cls}" href="${TEL}">${svg('phone')}<span>${e(t(L.call, { phone: PHONE }))}</span></a>` : '')
+
+/* a dot slideshow: a scroll-snap row (works with JS off), dots and arrows switched on by site.js */
+const show = (sid, slots, label) => {
+  const ss = slots.filter((n) => slot(n))
+  if (!ss.length) return ''
+  const slides = ss.map((n, i) => `<li class="slide" aria-roledescription="slide" aria-label="${e(t(L.slide, { i: i + 1, n: ss.length }))}">${img(n, { sizes: '(max-width: 899px) 100vw, 440px' })}</li>`).join('')
+  return `<div class="show r45" data-show id="${sid}" role="region" aria-roledescription="carousel" aria-label="${e(label)}">`
+    + `<ul class="track" tabindex="0">${slides}</ul>`
+    + `<div class="ctrl" hidden><button class="arw prev" type="button" aria-label="${e(L.photo_prev)}">${svg('prev')}</button>`
+    + `<div class="dots" role="group" aria-label="${e(L.photo_pick)}">`
+    + ss.map((_, i) => `<button type="button" class="dot" aria-label="${e(t(L.photo_n, { n: i + 1 }))}"></button>`).join('')
+    + `</div><button class="arw next" type="button" aria-label="${e(L.photo_next)}">${svg('next')}</button></div></div>`
+}
+const rating = (r) => {
+  const tag = r.url ? 'a' : 'div'
+  return `<${tag} class="rating"${r.url ? ` href="${e(r.url)}" rel="noopener"` : ''}><span class="score">${e(r.shown)}<small>/${e(r.scale)}</small></span>`
+    + `<span class="rmeta">${e(t(L.ratings_reviews, { p: r.name, n: r.count }))}</span><span class="rday">${e(r.day)}</span></${tag}>`
+}
+
+/* ---------- first screen ---------- */
+const V = heroVideo()                     // 4g: the schema's hero video, when the owner uploads one (none today)
+const gate = slot(S.hero)
+const heroSizes = '(max-width: 899px) 76vh, 50vw'
+const heroMedia = V
+  ? `<img src="${V.poster.top.webp}" srcset="${srcset(V.poster)}" sizes="${heroSizes}" width="${V.poster.top.w}" height="${V.poster.top.h}" alt="${e(V.alt)}" fetchpriority="high" class="gate">`
+    + `<video class="gate hero-video" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" poster="${V.poster.top.webp}" data-hero-video>`
+    + V.sources.map((s) => `<source data-src="${s.src}" type="${e(s.type)}"${s.media ? ` media="${s.media}"` : ''}>`).join('') + '</video>'
+  : gate ? `<img src="${gate.top.webp}" srcset="${srcset(gate)}" sizes="${heroSizes}" width="${gate.top.w}" height="${gate.top.h}" alt="${e(gate.alt)}" fetchpriority="high" class="gate">` : ''
+const lcp = V ? V.poster : gate
+
+const hero = `
+<header class="top" id="top">
+  <a class="mark" href="#top">${e(NAME)}</a>
+  <nav class="nav" aria-label="${e(L.nav_aria)}"><a href="#upstairs">${e(L.nav.rooms)}</a><a href="#guests">${e(L.nav.guests)}</a><a href="#getting-here">${e(L.nav.here)}</a></nav>
+  ${book('btn-sm', L.header_book)}
+</header>
+<section class="hero" aria-label="${e(NAME)}">
+  <div class="hero-text">
+    <h1 class="script">${e(NAME)}</h1>
+    ${c.tagline ? `<p class="where">${e(c.tagline)}</p>` : ''}
+    <div class="hero-act">${book('btn-hero')}${call('btn-hero-call')}</div>
+  </div>
+  <div class="hero-media">${heroMedia}</div>
+</section>`
+
+/* ---------- the King Rooms: the page's big moment (gate b) ---------- */
+const FR = G.featuredRoom ?? {}
+const strip = S.strip.map((n) => img(n)).join('')
+const king = KING ? `
+<section class="king" id="upstairs" aria-labelledby="h-king">
+  <div class="king-bleed">
+    ${img(S.kingBand, { sizes: '100vw' })}
+    <div class="king-over wrap">
+      ${FR.tag ? `<p class="floor-tag">${svg('stairs')}${e(FR.tag)}</p>` : ''}
+      <h2 class="script" id="h-king">${e(FR.title || KING.label)}</h2>
+      ${oldP[1] ? `<p class="king-lede">${e(oldP[1])}</p>` : ''}
+    </div>
+  </div>
+  <div class="wrap king-grid">
+    <div class="king-pic">${img(S.kingPic)}</div>
+    <div class="king-text">
+      <h3>${e(KING.label)}</h3>
+      <p class="beds">${svg('bed')}${e(beds(KING))}</p>
+      ${KING.note ? `<p class="note">${e(KING.note)}</p>` : ''}
+      <div class="actions">${book()}${call()}</div>
+      <p class="stay">${pipe([e(checkOut), ...(G.stayShort ?? []).map((s) => e(s.text))])}</p>
+    </div>
+  </div>
+  ${strip ? `<div class="wrap"><div class="strip">${strip}</div></div>` : ''}
+</section>` : ''
+
+/* ---------- the roof ---------- */
+const roof = roofB ? `
+<section class="roof" aria-labelledby="h-roof">
+  <div class="wrap roof-grid">
+    <div class="roof-big">${img(S.roofBig)}</div>
+    <div class="roof-text">
+      <h2 class="script" id="h-roof">${e(roofB.heading)}</h2>
+      <div class="lede">${P(roofB.body)}</div>
+      <div class="roof-two">${S.roofTwo.map((n) => img(n)).join('')}</div>
+    </div>
+  </div>
+</section>` : ''
+
+/* ---------- at a glance: the two dated ratings + the short facts ---------- */
+const glance = `
+<section class="glance" aria-label="${e(L.glance_aria)}">
+  <div class="col">
+    <div class="ratings">${RATINGS.map(rating).join('')}</div>
+    <p class="details">${pipe((G.glance ?? []).map((g) => e(g.text)))}</p>
+  </div>
+</section>`
+
+/* ---------- the garden: one block for the ground-floor rooms ---------- */
+const roomItem = (r) => `<li class="gr"><h3>${e(r.label)}</h3><p class="beds">${svg('bed')}${e(beds(r))}</p>`
+  + (r.note ? `<p class="gnote">${svg('fan')}<span>${e(r.note)}</span></p>` : '') + '</li>'
+const gardenSec = garden || GARDEN_ROOMS.length ? `
+<section class="floor tint" id="garden" aria-labelledby="h-garden">
+  <div class="wrap">
+    <div class="garden-head">
+      <div><h2 class="script" id="h-garden">${e(garden?.heading ?? '')}</h2><div class="lede">${P(garden?.body)}</div></div>
+      ${oldP[0] ? `<blockquote class="owner"><p>${e(oldP[0])}</p></blockquote>` : ''}
+    </div>
+    <div class="wide">${img(S.gardenWide, { sizes: '(max-width: 899px) 100vw, 1152px' })}</div>
+    <div class="garden-rooms">
+      ${show('g', S.gardenShow, L.garden_show)}
+      <div class="gr-side">
+        ${G.gardenTag?.value ? `<p class="floor-tag">${svg('leaf')}${e(t(L.room_types, { tag: G.gardenTag.value, n: word(GARDEN_ROOMS.length) }))}</p>` : ''}
+        <ul class="gr-list">${GARDEN_ROOMS.map(roomItem).join('')}</ul>
+        <div class="actions">${book()}</div>
+      </div>
+    </div>
+  </div>
+</section>` : ''
+
+/* ---------- the porch: Yelum and breakfast ---------- */
+const porch = yelum || breakfast ? `
+<section class="porch" aria-labelledby="h-yelum">
+  <div class="wrap porch-grid">
+    <div class="porch-pic">${img(S.porch)}</div>
+    <div class="porch-text">
+      ${yelum ? `<h2 class="script" id="h-yelum">${e(yelum.heading)}</h2>${P(yelum.body)}` : ''}
+      ${breakfast ? `<h2 class="script"${yelum ? '' : ' id="h-yelum"'}>${e(breakfast.heading)}</h2>${P(breakfast.body)}` : ''}
+    </div>
+  </div>
+</section>` : ''
+
+/* ---------- guests ---------- */
+const quotes = REVIEWS.map((r, i) => `<li class="q" aria-roledescription="slide" aria-label="${e(t(L.slide, { i: i + 1, n: REVIEWS.length }))}"><blockquote><p>${e(r.text)}</p></blockquote>`
+  + `<p class="who">${pipe([e(r.author), e(r.src), e(r.month)])}</p></li>`).join('')
+const guests = REVIEWS.length ? `
+<section class="guests tint" id="guests" aria-labelledby="h-guests">
+  <div class="wrap">
+    <h2 class="script" id="h-guests">${e(L.guests)}</h2>
+    <div class="quotes" data-quotes role="region" aria-roledescription="carousel" aria-label="${e(L.reviews_aria)}">
+      <ul class="qtrack" tabindex="0" aria-label="${e(L.reviews_track)}">${quotes}</ul>
+      <div class="ctrl" hidden><button class="arw prev" type="button" aria-label="${e(L.review_prev)}">${svg('prev')}</button>
+        <div class="dots" role="group" aria-label="${e(L.review_pick)}">${REVIEWS.map((_, i) => `<button type="button" class="dot" aria-label="${e(t(L.review_n, { n: i + 1 }))}"></button>`).join('')}</div>
+        <button class="arw next" type="button" aria-label="${e(L.review_next)}">${svg('next')}</button></div>
+    </div>
+    ${REVIEW_LINK ? `<p class="more"><a class="btn btn-quiet" href="${e(REVIEW_LINK.url)}" rel="noopener">${e(REVIEW_LINK.label)}</a></p>` : ''}
+  </div>
+</section>` : ''
+
+/* ---------- getting here ---------- */
+const getting = `
+<section class="out" id="getting-here" aria-labelledby="h-out">
+  <div class="wrap out-grid">
+    <div>
+      <h2 class="script" id="h-out">${e(here?.heading ?? L.nav.here)}</h2>
+      ${P(here?.body)}
+      ${ADDRESS ? `<p class="addr">${svg('pin')}<span>${e(ADDRESS)}</span></p>` : ''}
+      ${AMENITIES.length ? `<p class="amen">${pipe(AMENITIES.map(e))}</p>` : ''}
+    </div>
+    <div class="out-side">
+      <div class="actions col">
+        ${MAP ? `<a class="btn btn-ink" href="${e(MAP)}" rel="noopener">${svg('map')}<span>${e(L.map_open)}</span></a>` : ''}
+        ${call('btn-ink')}
+      </div>
+      ${STAY_NOTE ? `<h3>${e(L.good_to_know)}</h3><p>${e(STAY_NOTE)}</p>` : ''}
+    </div>
+  </div>
+</section>`
+
+const closing = `
+<section class="closing tint" id="book" aria-label="${e(L.closing_aria)}">
+  <div class="wrap center">
+    ${c.closing ? `<p class="script close-line">${e(c.closing)}</p>` : ''}
+    <div class="actions">${book()}${call()}</div>
+  </div>
+</section>`
+
+const foot = `<footer class="foot">
+  <div class="wrap foot-grid">
+    <div><p class="foot-name script">${e(NAME)}</p>${ADDRESS ? `<p>${e(ADDRESS)}</p>` : ''}</div>
+    <div class="actions">
+      ${TEL ? `<a class="btn btn-ink btn-sm" href="${TEL}">${svg('phone')}<span>${e(PHONE)}</span></a>` : ''}
+      ${PRIMARY ? `<a class="btn btn-ink btn-sm" href="${e(PRIMARY.url)}">${svg('cal')}<span>${e(BOOK_HOST)}</span></a>` : ''}
+      ${MAP ? `<a class="btn btn-ink btn-sm" href="${e(MAP)}" rel="noopener">${svg('map')}<span>${e(L.map_short)}</span></a>` : ''}
+    </div>
+  </div>
+  ${FINE ? `<p class="wrap fine">${e(FINE)}</p>` : ''}
+</footer>
+<nav class="bar" id="bar" aria-label="${e(L.bar_aria)}">${book('bar-book')}${TEL ? `<a class="btn bar-call" href="${TEL}" aria-label="${e(t(L.call, { phone: PHONE }))}">${svg('phone')}</a>` : ''}</nav>`
+
+/* the header and the hero sit inside <main>, as in the mockup */
+const mainHtml = `<main>\n${hero}\n${king}\n${roof}\n${glance}\n${gardenSec}\n${porch}\n${guests}\n${getting}\n${closing}\n</main>\n${foot}`
+
+/* 4h-style head: title = businessName + the town of contact.address; description = owner fields only */
+const title = TOWN ? `${NAME}, ${TOWN}` : NAME
+const description = metaDescription([c.tagline, paras(breakfast?.body)[0]])
+const head = seoHead({ path: '', title, description, image: ogImage() })
+const ld = ldJson(businessLd({ description }))
+/* 4g: fonts self-hosted (the mockup loaded them from Google Fonts): the same latin files, same display: swap */
+const fontFaces = `@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/hanken-grotesk-latin-wght-normal.woff2) format('woff2')}
+@font-face{font-family:'Parisienne';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/parisienne-latin-400-normal.woff2) format('woff2')}
+`
+/* 4g: the schema's hero-video attach (v0.9 snippet): after first paint, never under reduced motion or Save-Data */
+const videoJs = `(()=>{const v=document.querySelector('video[data-hero-video]');if(!v)return;
+const calm=matchMedia('(prefers-reduced-motion: reduce)').matches,sd=navigator.connection&&navigator.connection.saveData===true;if(calm||sd)return;
+const go=()=>{for(const s of v.querySelectorAll('source[data-src]')){if(s.media&&!matchMedia(s.media).matches)s.remove();else s.src=s.dataset.src}v.load();v.play().catch(()=>{})};
+const later=()=>requestAnimationFrame(()=>setTimeout(go,0));document.readyState==='complete'?later():addEventListener('load',later,{once:true})})();`
+---
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{title}</title>
+{IS_PREVIEW && <meta name="robots" content="noindex, nofollow">}
+{description && <meta name="description" content={description}>}
+<Fragment set:html={head} />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/hanken-grotesk-latin-wght-normal.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/parisienne-latin-400-normal.woff2">
+{lcp && <link rel="preload" as="image" href={lcp.top.webp} imagesrcset={srcset(lcp)} imagesizes="(max-width: 899px) 76vh, 50vw" fetchpriority="high">}
+<script is:inline>document.documentElement.classList.replace('no-js','js')</script>
+<style is:inline set:html={fontFaces + css}></style>
+<script type="application/ld+json" is:inline set:html={ld}></script>
+</head>
+<body>
+<a class="skip" href={KING ? '#upstairs' : '#garden'}>{L.skip}</a>
+<Fragment set:html={mainHtml} />
+<script is:inline set:html={js + (V ? '\n' + videoJs : '')}></script>
+</body>
+</html>
