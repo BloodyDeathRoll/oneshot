@@ -1,0 +1,6 @@
+{
+ "method": "critic r2: 7 screenshots of each header/hero text box, 950 ms apart across the 6.72 s drone loop (JS on, motion on), served from dist/ on :8961. Background luminance = 90th percentile of the darker 70% of the box's pixels (the white glyphs excluded); ratio = white vs that background. Approximate: glyph antialiasing and the text-shadow are not modelled, and the subtitle is drawn at rgba(255,255,255,.88), so its real ratio is a little lower than shown.",
+ "required": {"subtitle (12-13 px, 400)": 4.5, "nav links (15 px, 600)": 4.5, "wordmark (20-22 px Permanent Marker, 400)": 4.5, "hero line (26-58 px)": 3.0},
+ "390": {"subtitle": [3.67,3.64,3.88,3.58,3.24,3.24,4.3], "wordmark": [4.09,4.05,4.33,3.92,3.49,4.66,4.66], "line": [4.07,3.07,3.28,3.04,5.63,8.39,8.37]},
+ "1440": {"subtitle": [3.18,3.1,3.36,3.33,3.7,3.85,3.18], "wordmark": [3.56,3.47,3.8,3.68,3.97,4.12,3.56], "line": [4.66,3.49,3.53,3.5,5.47,7.62,4.74], "navlink": [3.66,3.78,4.14,3.63,3.02,4.84,3.66]}
+}

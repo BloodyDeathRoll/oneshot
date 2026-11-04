@@ -116,3 +116,76 @@ What, where, why and what it costs: "Cheeky Monkey … surf and yoga camp on the
 - The "Plan a stay" drawer: chips, live price per room type, the honest "Published 2021" note, prefilled call and email.
 - The five room slideshows with their murals; the shop masonry; Baba's section; the guests slider with dated rating cards.
 - Rethink Sans + Permanent Marker, the blue booking colour, and the shoreline section edges, consistent all the way through the drawer and footer.
+
+---
+
+## Round 2
+
+experience-critic 0.2.0 · station 5 (full), round 2 · run `2026-10-midigama-01` (test, operator alon) · 2026-11-04
+Page: `sites/cheeky-monkey/final/dist/` (designer 0.7.1), served by `astro preview` on `localhost:8950`. Compared with https://cheekymonkeymidigama.com/, walked live again today.
+I wrote this without reading the critic's or the visual-critic's round-2 report. The first screen is now Alon's drone loop. I judge how it is delivered, not whether it should be there.
+
+Frames are under `reports/2026-10-midigama-01/experience/cheeky-monkey/r2-*.png`. The step log is `r2-walk.log`, and the recipe is `r2-walk.mjs.txt`: Playwright on Chromium with autoplay allowed. The phone profile is 390 × 844, DPR 3, touch, an iPhone UA, ~1.6 Mbps / 150 ms RTT and 4× CPU. The laptop is 1440 × 900.
+
+| | |
+|---|---|
+| **Score (dimension 8)** | **8 / 10** |
+| **Better than the current site** | **yes**, and now on the first screen too |
+| **Pass / fail (this critic)** | **pass**, with no experience-side hard fail |
+| **Taps to book** | **1**. The first screen has the header "Book", the hero's "Check dates on Booking.com" and a `tel:` icon (`r2-walk.log` "booking links"). Both booking links go to `https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html`. After the first scroll the phone bar holds "Check dates on Booking.com" and "Plan a stay" (`r2-phone-bar.png`). This matches the audit target (engine, 1). |
+
+### 1. Phone, cold and throttled: the drone loop's delivery (`r2-phone-t*.png`, `r2-walk.log` "phone-cold")
+
+| t | On screen | Video state |
+|---|---|---|
+| 0.5 s | The header, the two-line marker title in **Permanent Marker** (both families are already `loaded`), and the blue button on the flat sea-blue ground. The page is usable. The legibility scrim's radial shade shows as a dark smudge on the empty blue (`r2-phone-t500.png`). | hero: no source yet. The board reel has **already started downloading** (request at 440 ms). |
+| 1.5 s | The phone poster (608 × 1080 crop) is half painted: palms and village on top, flat blue below (`r2-phone-t1500.png`). | still none |
+| 3 s | The whole poster is up: reef, the rock wall, the village under the palms. It is a good, real frame, and it carries the first screen alone. The poster finished at 2.4 s. | hero sources attached after `load` (request at 3.7 s) |
+| 6 s | Same poster | hero `m1280.webm`, readyState 1, not yet faded in |
+| 10 s | The loop is running. The fade-in is soft, and the cut reaches the surfer on the green wall (`r2-phone-t10000.png`). | hero `on`, t = 3.2 s |
+
+- **Poster-first is right.** The text and the CTA come first, then a real poster, then the loop fades in over the poster's matching frame. The handoff does not jump: `r2-phone-handoff-poster.png` and `-video0.png` share the same crop at `object-position 55% 50%`.
+- **The board reel slows the hero down.** The intro board sits just under a 100svh hero. Its observer uses a `300px` margin, so on a 390 × 844 phone the board counts as near the screen on page load. Its 1.86 MB `cm-board.m720.mp4` therefore starts at **440 ms**. That is before `load` and before the hero loop, and it runs alongside the poster (182 → 2395 ms). Its download takes until 16.9 s. The hero's 0.88 MB WebM, which starts at 3.7 s, does not finish until 12.6 s. On the playbook's phone, the visitor watches a still poster for about 9 s, partly because of a 124 px board they have not scrolled to. With no scroll at all, the video bytes on that first visit come to **2.74 MB** (`phone total video bytes`).
+- **The phone tier is soft.** A 390 × 844 screen covers the 1280 × 720 tier at 844 CSS px tall. That is under one source pixel per CSS pixel, so ~2.5 device px per source px on DPR 3. The frame at 100 % is soft but clean, with no blocking (`r2-phone-handoff-video0.png`). The surf shot is the softest part (`r2-phone-loop-3_5.png`, `-5.png`). The interpolated slow motion holds up, and I saw no tearing in the frames I sampled. The poster is drawn from the 1080 px source, so it is a little sharper than the video that replaces it.
+- **Off screen it pauses, and it resumes at the top.** At 1.5 screens down: hero `paused: true`, the board still playing. Back at the top: hero `paused: false` (`phone scrolled 1.5 screens` / `phone back at top`). In the slow scroll, the hero pauses from s03 and the board from s05 (`phone s1…s33`).
+- **Laptop:** `d1920.webm` (1.58 MB) is playing by 0.5 s on a fast line (`r2-laptop-t500.png`). The wide 16:9 frame reads as the coast, the sea and the village at once (`r2-laptop-t1500.png`). It is the strongest first screen this business has had.
+
+### 2. Reduced motion, Save-Data, JS off (`r2-phone-rm-*.png`, `-savedata-*`, `-nojs-*`)
+- **Reduced motion:** the `js still` class is set, and **0 media requests over a full scroll**. The poster, line and button are identical to the motion first screen, so it is still a good page.
+- **Save-Data** (`navigator.connection.saveData = true`, injected): `js still`, **0 media requests**, poster only.
+- **JS off:** the header has its white ground (round 1's overlap is fixed), with the poster, the line and a plain-link CTA. 0 media requests. The board shows its reel's poster (`r2-phone-nojs-2.png`).
+- The tier is read once, before first paint. A visitor who switches on reduced motion mid-visit keeps the loop until they reload. This is minor.
+
+### 3. The story and wanting to go (`r2-phone-s01…s33.png`)
+- **After one scroll** (s02–s04) you know what this is and where: the real coast and surf, then "Catch waves, not worries" with the board, then img-103 full-bleed. That is a real Cheeky Monkey surfer with the yellow board in the shorebreak. Then "Down at the water" has The spot, The season and the business's own beach photos. **There is no borrowed photo and no caption-like credit.** Round-1 fix 2 is done, and attention no longer dips there.
+- **What makes you want to go:** the drone pass over the reef and the surfer on the green wave, then img-103. In round 1 the only real footage was a strip of shop interior; now the place does the selling.
+- **Prices:** "A week of surf" (s07–s08) leads each card with a whole photo on a white card, then "USD 300–400 per person, 7 nights", with the room fine print under it. That is clearly calmer than round 1's colour swatches. The fine print is still small grey type. The lesson card (USD 20, 90 min, levels) and the "Published 2021, call to confirm" notes remain honest.
+- **Rooms, shop, roof, Baba, guests, getting here and the closing** all hold as in round 1 (s11–s30). The guests slide on the phone leaves a tall empty gap under a short review (`r2-phone-s26.png`).
+
+### 4. Motion and interaction
+- **Hero:** a calm drone loop with an 0.8 s fade-in and no overlays, title animation or WebGL. Only the header, one centred two-line title and one button sit on the footage. That is the calibration bar exactly. The loop counts as the unique variant's main item (a great video cut), so the method-5 cap does not apply.
+- **Board:** a 3° tilt at rest, a hover that stands it up, and a resin sheen (`r2-laptop-board-hover.png`). The **zoom-through set-piece is gone** with the cartoon hero. That was the page's best moment in round 1, and the board is now a small ornament. On the laptop it is ~172 px wide in a wide sand band, with the shop reel often showing a dark frame (`r2-laptop-s02.png`), so its idea ("pick your board") reads weakly there.
+- **Cards** lift on hover and the photo eases in (`r2-laptop-card-hover.png`). The buttons, chips and drawer are as in round 1.
+
+### 5. Against the current site (`r2-current-phone-1.png`)
+The current site still has the PHP notice at the top, still runs 470 px wide in a 390 px phone, and has **0** booking, WhatsApp or `tel:` links. Round 1's one honest point in its favour was that its first screen was a real photograph of the water. That point is gone: the new first screen is the real coast in motion, with one action. **Better: yes, clearly, on the first screen and over the whole page.**
+
+### 6. Score: 8 / 10
+- **Earns it:** the real place now carries the first screen, delivered correctly: poster first, reduced motion, Save-Data and JS off all still, pause off screen, a phone tier, 1 tap to book, and the fonts now arrive on the slow phone. The water section is all the business's own, and the cards are photo-led.
+- **Keeps it from 9:** on the target phone the loop waits ~9 s behind an eagerly loaded board reel; the phone video is soft; and with the zoom-through gone, the page's signature "pick your board" moment is a small ornament.
+
+### Fix list (biggest effect first)
+1. **Do not load the board reel during first load.** Gate the board's `watch()` behind the same `load` + frame as the hero, and attach it only after the hero's `playing` event or on the first scroll. On a 390 × 844 phone its 300 px margin already covers the board at load: the request goes out at 440 ms, competes with the poster, and pushes the loop's start to about 9–10 s (`r2-walk.log` "phone-cold requests").
+2. **Give the board reel a phone-sized rendition.** The board is 124 CSS px wide on phones (`.board` `min(124px,34vw)`) but loads the 720 × 1280 H.264 MP4 at 1.86 MB. A 360 × 640 WebM plus MP4 (well under 0.5 MB) would look the same at that size and cut the phone's video total from 2.74 MB to about 1.3 MB.
+3. **Sharpen the phone hero.** Portrait phones show a 9:16 slice of a 16:9 tier, so most of the 1280 px is never seen while the visible part is upscaled. Cut a portrait rendition: the poster's own 608 × 1080 crop, as WebM + MP4, chosen by `(max-aspect-ratio: 3/4)` like the poster. It would be sharper on the surf shot, smaller than `m1280`, and match the poster's sharpness at the handoff. Delete the unused `cm-drone.m720.mp4` from the build.
+4. **Give the empty pre-poster frame a ground.** At 0.5 s on the slow phone, the radial scrim draws a dark blob on flat `--sea` (`r2-phone-t500.png`). Either show the scrim only once the poster has decoded, or inline a ~1 KB blurred LQIP of the poster as the hero's background.
+5. **Give "pick your board" its moment back on the laptop.** Make the intro board larger at ≥ 1024 px (or the intro band shorter), and start the shop reel on a bright frame of the boards, not a dark one (`r2-laptop-s02.png`). Also trim the empty height of the phone review slide (`r2-phone-s26.png`).
+
+### Keep
+- The drone loop exactly as cut: the reef, the village, the surfer. Keep the poster-first delivery, the 0.8 s fade, the 55 % crop, the pause off screen, and the posters only under reduced motion, Save-Data and JS off.
+- One centred two-line title and one button on the footage, the header Book, and the phone bar.
+- img-103 leading "Down at the water", with no borrowed photo. The photo-led white package cards.
+- `font-display: swap` with the metric-matched fallbacks: Permanent Marker is loaded at 0.5 s on the throttled phone.
+- The rooms, the shop masonry, Baba, the guests and the drawer, as in round 1.
+
+**Report (round 2):** 8/10 · pass · better than current: yes · taps to book: 1 · top three fixes: defer the board reel off first load; a phone-sized board reel; a portrait phone rendition of the drone loop.
