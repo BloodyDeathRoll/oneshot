@@ -189,3 +189,100 @@ The current site still has the PHP notice at the top, still runs 470 px wide in 
 - The rooms, the shop masonry, Baba, the guests and the drawer, as in round 1.
 
 **Report (round 2):** 8/10 · pass · better than current: yes · taps to book: 1 · top three fixes: defer the board reel off first load; a phone-sized board reel; a portrait phone rendition of the drone loop.
+
+---
+
+## Round 3
+
+experience-critic 0.2.0 · station 5 (full), round 3 (the last) · run `2026-10-midigama-01` (test, operator alon) · 2026-11-04
+Page: `sites/cheeky-monkey/final/dist/` (designer 0.7.1, round 3), served by `astro preview` on `localhost:8950`. Compared with https://cheekymonkeymidigama.com/, walked again this round.
+I wrote this without reading the critic's or the visual-critic's round-3 report. The drone hero is Alon's choice; I judge how it is delivered.
+
+Evidence is under `reports/2026-10-midigama-01/experience/cheeky-monkey/r3-*`:
+- `r3-walk.mjs.txt` (recipe) with `r3-walk-run1.log` and `r3-walk.log` (two full walks);
+- `r3-arm.mjs.txt` / `r3-arm.log` (five extra cold phone loads, logging what arms the board reel);
+- `r3-current.mjs.txt` / `r3-current.log` (the current site).
+
+The phone profile is the same as round 2: 390 × 844, DPR 3, touch, an iPhone UA, ~1.6 Mbps / 150 ms RTT and 4× CPU. The laptop is 1440 × 900.
+
+| | |
+|---|---|
+| **Score (dimension 8)** | **8 / 10** |
+| **Better than the current site** | **yes**, clearly, on the first screen and over the whole page |
+| **Pass / fail (this critic)** | **pass**, with no experience-side hard fail |
+| **Taps to book** | **1**. The first screen shows the header "Book", a `tel:` icon and "Check dates on Booking.com", all 46–56 px tall. Both booking links go to `https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html`. After the first scroll the phone bar holds "Check dates on Booking.com" and "Plan a stay" (`r3-phone-bar.png`). This matches the audit target (engine, 1). |
+
+### 1. Phone, cold and throttled: when the loop starts
+
+I made seven cold loads: two full walks and five arm runs.
+
+| Load | Poster done | `load` | Hero `playing` | Board reel requested |
+|---|---|---|---|---|
+| walk 1 | 3.44 s | 3.43 s | **5.35 s** | 5.58 s (after the hero) |
+| arm 2–5 | — | 3.43–3.45 s | **5.28–5.29 s** | 5.29–5.31 s (after the hero) |
+| walk 2 | 2.92 s | 3.85 s | **7.27 s** | **1.02 s** (before `load`) |
+| arm 1 | — | 3.83 s | **7.24 s** | **0.66 s** (before `load`) |
+
+- **In 5 of 7 loads the loop plays at ~5.3 s**, down from ~9–10 s in round 2. The reel waits for the hero, and the phone video total is **1.42 MB**: `p1080.webm` 0.999 MB + `p640.webm` 0.419 MB, down from 2.74 MB.
+- **In 2 of 7 loads the round-2 problem comes back.** The board reel is requested at 0.66–1.02 s, before `load`, and the hero only plays at ~7.3 s.
+  - The cause shows in `r3-arm.log`. The `<source>` elements carry only `data-src`, so each one fires an `error` event while the page parses: 9 of them, at 226–239 ms in runs 2–5 and at 616–621 ms in run 1.
+  - `site.js` arms the reel on `hv.addEventListener('error',arm,true)`, a capturing listener. When those empty-source errors fire after the script has run (run 1), they arm the reel at once. It is a race, and on a slow real phone it can go either way.
+- **The poster competes with the images below the fold.**
+  - `cm-drone-poster-r1.778-m-608.webp` (116 KB) is requested at ~200 ms. It finishes at 2.9–3.4 s, together with eight lazy images that Chrome's lazy margin pulls in at ~470–860 ms (img-103, 100, 151, 149, 135, 137, 096 and the board poster, ~430 KB).
+  - The hero attaches only after window `load`, so it waits for all of them too. On its own the poster would land in about 1 s.
+- **The first frames are fixed.** At 0.5 s and 1.5 s the text and button sit on the poster's tonal gradient, with the poster painting in from the top and no dark blob (`r3-phone-t500.png`, `-t1500.png`).
+  - The scrim switches on (`.hero.lit`) at 2.9–3.3 s, with the poster.
+  - CLS is 0, and both fonts are loaded at 0.5 s.
+- **Off screen** the hero pauses at 1.5 screens down and plays again back at the top (`phone scrolled 1.5 screens` / `back at top`).
+
+### 2. The loop on the phone and the laptop
+- **Portrait tier:** the phone gets `p1080` (608 × 1080) and the poster/video handoff shares the crop (`r3-phone-handoff-*.png`). The surf shot is clearly crisper than round 2's m1280 at the same size. You can read the rider's face and the board's rails (`r3-phone-heroframe-4/5.png`).
+- **Rider vs. type:** I sampled the loop at 0.5, 2, 3, 4, 5, 5.5 and 6 s on the phone and at 2, 3, 4 and 5.5 s on the laptop. The rider is never under the line or the button. The line sits at y 655–719 and the button at 737–793 of 844. The board's nose touches the left edge at 5.5 s on the phone, which is acceptable for a fast pass (`r3-phone-heroframe-5_5.png`).
+- **Grade:** the surf water is now turquoise-green and matches the poster's sea. It no longer drops to milky grey.
+- **Seam:** at 6.0 s the dissolve shows the surfer as a ghost over the village (`r3-phone-heroframe-6.png`). In motion it reads as a 0.4 s breath, not a cut.
+- **Text placement:** the line in the lower band on clear water reads calmer than a centred block would over the rider.
+- **Laptop:** `d1920.webm` is playing by 0.5 s. The board reel now opens on bright red, green and yellow rails (`r3-laptop-s02.png`, `r3-laptop-board-hover.png`), and the 224 px board holds the intro better than round 2's 172 px. It is still a supporting moment, not a set-piece.
+
+### 3. Reduced motion, Save-Data, JS off
+All three load **0 media requests over a full scroll**:
+- reduced motion: `js still`, posters only;
+- Save-Data: `js still`;
+- JS off: white header, the poster, the line and the plain CTA, with the scrim on (`r3-phone-rm-*`, `-savedata-*`, `-nojs-*`).
+
+### 4. Story, wanting to go, booking (`r3-phone-s01…s33.png`)
+- **After one scroll** you know what this is and where. You see the real coast and the surf, then the bright board with "Catch waves, not worries", then img-103 full-bleed, then "Down at the water" with img-100 and img-151 (s02–s06). img-151 (the surfers with their soft boards on the sand) is a warmer, crisper image than round 2's hazy wide shot.
+- **Prices** come at s07–s08 (USD 300–400 per person, 7 nights, dated 2021). The rooms, shop, roof, Baba, guests, getting here and the closing all hold.
+- **Review slideshow:** the box now sizes to the quote. On the phone the `.quotes` block measures 380 / 352 / 523 / 409 px for slides 1–4, and the empty gap from round 2 is gone (`r3-phone-review-1…4.png`). The side effect is that the rating cards below move up and down by up to ~170 px on each slide change. The move is animated and caused by the visitor, so it is not CLS, but the cards visibly jump.
+- **Booking:** 1 tap to Booking.com. The drawer opens from the bar's "Plan a stay" (`r3-phone-drawer.png`). Across the page there are 43 booking, call and email links in 9 unique targets, and every engine link is the dossier URL.
+
+### 5. Against the current site (`r3-current-phone-1.png`, `r3-current.log`)
+The current site still shows a PHP notice above the logo. It runs 470 px wide in a 390 px phone, and its only contact link is a `mailto:`, with no booking and no phone link. **Better: yes, clearly.**
+
+### 6. Score: 8 / 10
+- **Earns it:**
+  - A real, moving first screen of the place, delivered properly: tonal ground, then the poster, then the loop, with crisp portrait footage.
+  - The type is clear of the surfer, and the water is graded to match the poster.
+  - The loop starts ~4 s sooner in most loads, and the phone video weight is halved.
+  - The posters stand in under every "still" condition.
+  - Booking takes 1 tap, and the water section uses only the business's own photos.
+- **Keeps it from 9:**
+  - The reel-arming race still lets the board steal the first load in 2 of 7 cold loads, which puts the loop back at ~7.3 s.
+  - The poster waits ~3 s behind images below the fold.
+  - "Pick your board" is a supporting moment rather than a signature.
+  - The rating cards jump when the review changes.
+
+### Fix list (biggest effect first; none blocks this pass)
+1. **Close the reel-arming race.** Ignore the parse-time `error` events from empty `<source data-src>` elements: arm only on an error whose `target.src` is set, or add the `error` listener inside `attach(hv)`. Evidence: `r3-arm.log` run 1, and `r3-walk.log`, where the reel is requested at 0.66 / 1.02 s and the hero plays at ~7.3 s.
+2. **Let the poster have the line on the phone.** Attach the hero on the poster's `load` (it already sets `.hero.lit`) plus a frame, not on window `load`. Keep the lazy images below the hero out of the first second: `fetchpriority="low"`, or a JS-gated `loading` for the "Down at the water" and shop images. Today the 116 KB poster takes 2.9–3.4 s because eight images are downloading with it.
+3. **Hold the guests block still on a slide change.** Size the track to the tallest quote at that width once, and centre shorter quotes in it. Alternatively, keep the per-quote height but place the rating cards beside or above the slider on phones so they do not jump (`r3-phone-review-1…4.png`).
+4. **Smooth the poster's first paint.** At 0.5–1.5 s the progressive WebP draws a hard horizontal edge over the tonal gradient (`r3-phone-t500/t1500.png`). Give the poster a short opacity fade-in on load, as the video already has.
+5. **Give "pick your board" more weight if a later round allows.** On the phone the reel board is 124 px wide beside a large intro. A tap that opens the reel larger, or a short scroll-linked rise, would bring back some of round 1's "into the shop" moment without touching the hero.
+
+### Keep
+- The drone loop as recut: the graded surf shot, the 0.4 s dissolve, the type in the lower band, the `p1080` portrait tier at focalX 52, and the `d1920` tier on desktop.
+- The tonal pre-poster ground and the scrim shown only after the poster loads.
+- The reel kept off first load (when the race does not fire), its `p640` phone tier, and its bright-rail opening.
+- One line and one button on the footage, the header "Book", the phone bar, and the drawer.
+- img-103, img-100 and img-151 in "Down at the water"; the photo-led cards; the rooms, shop, Baba and guests.
+
+**Report (round 3):** 8/10 · pass · better than current: yes · taps to book: 1 · loop starts at ~5.3 s on the throttled phone (5 of 7 loads; ~7.3 s when the arming race fires) · top three fixes: close the reel-arming race on empty-source `error` events; attach the hero on poster load and keep the images below the fold out of the first second; stop the rating cards jumping on a review change.

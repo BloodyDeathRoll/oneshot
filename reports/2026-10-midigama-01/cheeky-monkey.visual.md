@@ -214,3 +214,94 @@ None. The video rule is met: vid-001 leads and vid-009 is in the intro board. Th
 ### Report
 
 Score **8/10**: **pass** (at the bar). Better than the current site: **yes**. Top three fixes: (1) keep the surfer out from under the headline and button during the surf shot, (2) grade the surf segment to the poster's turquoise or shorten it, (3) crossfade the 6.7 s loop point and sharpen the phone renditions.
+
+---
+
+## Round 3
+
+Run `2026-10-midigama-01` · station 5 (full, final site) · **round 3 (last)** · visual-critic 0.2.0 · 2026-11-04.
+Page: `sites/cheeky-monkey/final/dist/` (built 13:31), served by the user's `astro preview` at `localhost:8950`. The shared set `sites/cheeky-monkey/final/shots/` (13:35, newer than `dist/`) was reused. Designer changes: `final/notes.md` "Round 3". The drone hero is Alon's decision. I judge only how well it is executed.
+
+Shot set:
+- final: `sites/cheeky-monkey/final/shots/` desktop-00…16 and mobile-00…21, plus both sheets.
+- current site: `reports/2026-10-midigama-01/current-site/shots/` sheets (unchanged since round 1).
+- My own Playwright walk, kept in `reports/2026-10-midigama-01/visual-r3/`:
+  - `hero-1440-t*.png` and `hero-390-t*.png`: the loop paused at t = 0.2, 0.6, 1.2, 1.8, 2.6, 3.4, 4.2, 5.0, 5.5, 5.8, 5.95 and 6.1 s. Sheets: `hero-loop-1440.png` (4×3) and `hero-loop-390.png` (6×2), at 390×844 DPR 3.
+  - `hero-seam-1440.png` and `hero-seam-390.png`: playing across the loop point. Measured currentTime: 1440 = 5.75 → 6.11 → 0.30 → 0.71 → 1.11 → 1.50; 390 = 5.74 → 0.06 → 0.75 → 1.44 → 2.15 → 2.72.
+  - `poster-1440.png` and `poster-390.png`: the reduced-motion poster.
+- Playback: 1440 plays `cm-drone.d1920.webm` (1920×1080, 6.2 s). The 390 portrait phone plays `cm-drone.p1080.webm` (608×1080). Both are playing.
+
+Independence: I did not open the critic's or the experience-critic's reports, or their folders.
+
+### Three-second test
+
+- **1440 (`hero-loop-1440.png`, `hero-1440-t5.00.png`):** the reef and the village, then the surfer on a green wave. The line and the single blue button sit in the lower band, and **the rider is clear of the type in every frame**. At 5.0 s he is in the middle of the frame with open sky above him and about 100 px of water between his board and the line. The water is now green-turquoise, not milky grey, so the loop holds the poster's colour from start to end. **I'd keep scrolling, and I'd watch it come round again.**
+- **390 (`hero-loop-390.png`, `poster-390.png`):** the portrait tier is a real 9:16 cut. The poster is crisp at DPR 3: Cheeky Monkey's green-roofed house, the rock wall and the reef water read clearly, where round 2 showed palm mush. In the surf shot the rider fills the upper two thirds and the type sits in clean water below him. At 5.5–5.95 s the close pass puts him against the left edge, with his arm and the board's nose cut off (`hero-390-t5.50.png`). That moment is tight, but it isn't broken.
+- **Current site (sheets):** a PHP notice above the logo, a clipped title over a face and no booking action. **I'd leave.**
+
+### Hero execution (the round 2 fixes, checked)
+
+- **Surfer and type, fixed.** At 1440 the line sits at y ≈ 650–760 and the button at y ≈ 785–840. Across 2.6–5.95 s the rider stays between y ≈ 330 and 560 (`hero-1440-t2.60` … `t5.95`). At 390 he never touches the line or the button. The type is still centred, still small, and still a two-line marker setting with one CTA, which fits the calibration notes.
+- **Grade, fixed.** The surf shot now matches the poster's turquoise (`hero-loop-1440.png`, rows 2–3). Round 2's grey second half is gone. The grade looks natural, with no clipped highlights in the spray and no neon water.
+- **Seam, fixed.** The 0.4 s dissolve from the surfer to the coast plays as a breath (`hero-seam-1440.png`: 5.75 s surfer, 6.11 s coast with the rider ghosted over it, 0.30 s the clean coast). No frame jumps. The opening still is now short, and the village shot drifts gently (SSIM 0.74 over one second, so it isn't frozen).
+- **Phone sharpness, fixed.** The p1080 tier and the sharpened portrait poster hold up at DPR 3 (`poster-390.png`, `hero-390-t5.50.png`). The surf frames are still a little soft from the 1080p YouTube source, but at phone scale it reads as footage softness, not an upscale.
+- **Header:** the deeper top shade keeps the white wordmark and nav readable over the bright surf sky (`hero-1440-t5.00.png`). The shade is visible as a darker band, but it is soft and doesn't read as a bar.
+- **Remaining nits:**
+  - On the phone the close pass (5.5–5.95 s) clips the rider at the left edge.
+  - The coast-to-village change at about 0.6 s is a straight cut. That is acceptable as a shot change.
+
+### Checklist (whole page)
+
+- **Media:**
+  - The drone loop leads.
+  - img-103 is full-bleed (desktop-02).
+  - **img-151 replaces the hazy img-155** (desktop-03 bottom right): guests with coconuts in front of the colourful boards. It is bright and crisp, and a clear gain.
+  - The board reel now opens on the colourful rails (desktop-01: red, yellow and black rails against the shop's shirts and the checkerboard), so the intro has a subject, not an abstract smear. At 224 px wide the board fills its side better, though the sand ground around it is still generous.
+  - Weak spot: img-100, the tall photo beside "The spot" (desktop-03, mobile-03), is about 45% flat grey sky above the horizon. On the phone the frame shows sky first and the surfer only at the bottom edge.
+- **Composition and grid:**
+  - Full-bleed and contained sections alternate.
+  - The band above "What guests say" is now normal section spacing (desktop-13/14, mobile-16/17).
+  - At 1440 there is about 120 px of empty ground between "See the surf weeks" and img-151 (desktop-03).
+  - The package row is still four equal white cards (desktop-04), tidy but template-level.
+- **Typography:** marker titles over Rethink Sans, consistent through booking. The many small grey 13–14 px detail lines remain (packages, room meta, the amenities run).
+- **Colour:** the turquoise hero, sand, sky and pink grounds now belong to one palette. Booking blue is the only button fill. ✔
+- **Hierarchy and rhythm:** hero line → button → intro board → img-103 → water → weeks → rooms → shop → img-134 sunset band → roof → Baba → guests → getting here → close. Pace varies, with the img-134 band as the emotional peak.
+- **Polish:**
+  - Lazy room slides load on tonal placeholders (no pink-grey boxes seen in desktop-07/08, mobile-08/09).
+  - The guest card fits its quote.
+  - The closing board is still a small sliver in a large field (desktop-15, mobile-19).
+  - Nothing is broken at either width.
+- **Distinctiveness:** the real Midigama coast, the board-shaped reel, the marker titles and the wave edges make the page Cheeky Monkey's own.
+- **Hero and motion:** the main item is a well-cut, graded, seamless video loop with one CTA. It is interesting, clean and now slick. The micro-motion is the reel sheen and tilt, the card lift and the slideshows.
+
+### Score
+
+**8/10: pass, now firmly at the bar rather than just on it.** The three hero defects behind round 2's "at the bar" are all fixed: the type is clear of the surfer, the grade holds, and the seam dissolves. The phone hero is now sharp too. It is not a 9 because the middle of the page is still competent rather than remarkable: the four equal package cards, the 17-step type scale with many small grey detail lines, img-100's sky-heavy crop, the small closing board and some leftover empty ground.
+
+**Closest reference:** `gold/global-surf-notes.md` (a video-led first screen, then photo-led sections). The hero is now close to that gold's craft: real footage, type clear of the subject, one CTA. The sections below are a step under its "each section a designed moment".
+
+### Better than the current site?
+
+**Yes, clearly.** First screen: `poster-1440.png` / `poster-390.png` against the current sheet's first frames (a PHP notice, no booking action, a clipped title over a face). Whole page: the final desktop and mobile sheets against the current sheets (rooms with galleries, dated prices, the shop, reviews and a real footer, against thin sections and no prices).
+
+### Hard fails (visual)
+
+None. vid-001 leads (licence waived by Alon for the preview, per `notes.md`, not a visual call) and vid-009 is in the intro board. The first screen carries the business's media.
+
+### Remaining fix list (polish, none blocking)
+
+1. **Recrop img-100** beside "The spot" so the surfer and shoreline fill the frame: start the crop near the horizon and drop the top 40% of sky (desktop-03, mobile-03).
+2. **Give the package row one lead.** Make the most-booked week (or Full Surf Lesson) a wider card with a bigger photo, so the row isn't four equal tiles (desktop-04, mobile-05).
+3. **Make the closing board count, or cut it.** Make it at least 260 px tall beside the closing line, or remove it and tighten the field (desktop-15, mobile-19).
+4. **Trim the type scale and the grey detail lines.** Cut to about 5 sizes and lift the 13 px meta lines to 14–15 px at full text colour (packages, room meta, amenities).
+5. **Phone close pass:** nudge the p1080 crop's focal point a few percent left for 5.5–5.95 s, or end the surf shot about 0.3 s earlier, so the rider isn't clipped at the left edge (`hero-390-t5.50.png`). Also close the roughly 120 px gap above img-151 at 1440 (desktop-03).
+
+### Keep
+
+- The drone loop as cut and graded, the 0.4 s dissolve, the lower-band line and button, the portrait p1080 tier and its poster, and the header shade.
+- img-103 full-bleed, img-151, the rail-first board reel, the room slideshows on tonal placeholders, the shop masonry, the img-134 band, Baba, and the sized guest card.
+- The phone bar on every screen, the header Book button, and the footer with real buttons.
+
+### Report
+
+Score **8/10**: **pass**. Better than the current site: **yes**. Top three remaining fixes (polish only): (1) recrop img-100 off the sky, (2) give the package row a lead card, (3) enlarge or drop the closing board.

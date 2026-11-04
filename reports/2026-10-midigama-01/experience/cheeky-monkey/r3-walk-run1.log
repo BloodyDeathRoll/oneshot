@@ -1,0 +1,53 @@
+phone-cold t=500 {"cls":"js motion","v":[{"hero":true,"src":"","rs":0,"paused":true,"t":0,"on":false},{"hero":false,"src":"","rs":0,"paused":true,"t":0,"on":false}],"fonts":["Rethink Sans","Permanent Marker","Rethink Fallback","Marker Fallback"],"lcp":[]}
+phone-cold t=1000 {"cls":"js motion","v":[{"hero":true,"src":"","rs":0,"paused":true,"t":0,"on":false},{"hero":false,"src":"","rs":0,"paused":true,"t":0,"on":false}],"fonts":["Rethink Sans","Permanent Marker","Rethink Fallback","Marker Fallback"],"lcp":[]}
+phone-cold t=1500 {"cls":"js motion","v":[{"hero":true,"src":"","rs":0,"paused":true,"t":0,"on":false},{"hero":false,"src":"","rs":0,"paused":true,"t":0,"on":false}],"fonts":["Rethink Sans","Permanent Marker","Rethink Fallback","Marker Fallback"],"lcp":[]}
+phone-cold t=2500 {"cls":"js motion","v":[{"hero":true,"src":"","rs":0,"paused":true,"t":0,"on":false},{"hero":false,"src":"","rs":0,"paused":true,"t":0,"on":false}],"fonts":["Rethink Sans","Permanent Marker","Rethink Fallback","Marker Fallback"],"lcp":[]}
+phone-cold t=3000 {"cls":"js motion","v":[{"hero":true,"src":"","rs":0,"paused":true,"t":0,"on":false},{"hero":false,"src":"","rs":0,"paused":true,"t":0,"on":false}],"fonts":["Rethink Sans","Permanent Marker","Rethink Fallback","Marker Fallback"],"lcp":[]}
+phone-cold t=4000 {"cls":"js motion","v":[{"hero":true,"src":"cm-drone.p1080.webm","rs":1,"paused":false,"t":0,"on":false},{"hero":false,"src":"","rs":0,"paused":true,"t":0,"on":false}],"fonts":["Rethink Sans","Permanent Marker","Rethink Fallback","Marker Fallback"],"lcp":[]}
+phone-cold t=5000 {"cls":"js motion","v":[{"hero":true,"src":"cm-drone.p1080.webm","rs":4,"paused":false,"t":0.25,"on":true},{"hero":false,"src":"cm-board.p640.webm","rs":0,"paused":false,"t":0,"on":false}],"fonts":["Rethink Sans","Permanent Marker","Rethink Fallback","Marker Fallback"],"lcp":[]}
+phone-cold t=6000 {"cls":"js motion","v":[{"hero":true,"src":"cm-drone.p1080.webm","rs":4,"paused":false,"t":1.26,"on":true},{"hero":false,"src":"cm-board.p640.webm","rs":4,"paused":false,"t":0.42,"on":true}],"fonts":["Rethink Sans","Permanent Marker","Rethink Fallback","Marker Fallback"],"lcp":[]}
+phone-cold t=8000 {"cls":"js motion","v":[{"hero":true,"src":"cm-drone.p1080.webm","rs":4,"paused":false,"t":3.1,"on":true},{"hero":false,"src":"cm-board.p640.webm","rs":4,"paused":false,"t":2.26,"on":true}],"fonts":["Rethink Sans","Permanent Marker","Rethink Fallback","Marker Fallback"],"lcp":[]}
+phone-cold t=10000 {"cls":"js motion","v":[{"hero":true,"src":"cm-drone.p1080.webm","rs":4,"paused":false,"t":5.05,"on":true},{"hero":false,"src":"cm-board.p640.webm","rs":4,"paused":false,"t":4.2,"on":true}],"fonts":["Rethink Sans","Permanent Marker","Rethink Fallback","Marker Fallback"],"lcp":[]}
+phone-cold t=15000 {"cls":"js motion","v":[{"hero":true,"src":"cm-drone.p1080.webm","rs":4,"paused":false,"t":3.81,"on":true},{"hero":false,"src":"cm-board.p640.webm","rs":4,"paused":false,"t":1.41,"on":true}],"fonts":["Rethink Sans","Permanent Marker","Rethink Fallback","Marker Fallback"],"lcp":[]}
+phone-cold LCP [980,"",""]
+phone-cold events (ms from nav) [["lit",3285],["load",3433],["playing","hero",5353],["playing","board",6198],["playing","hero",11586],["playing","board",13984]]
+phone-cold CLS 0
+phone-cold requests ["6-289ms document  24273","196-1093ms font fonts/rethink-sans-latin-wght-normal.woff2 35604","202-948ms font fonts/permanent-marker-latin-400-normal.woff2 29296","202-3441ms image photos/cm-drone-poster-r1.778-m-608.webp 119050","467-1392ms image photos/cm-board-poster-full-720.webp 27760","467-2117ms image photos/img-103-r1.25-m-900.webp 49480","467-3006ms image photos/img-100-r1.6-1000.webp 75614","467-3441ms image photos/img-151-full-1600.webp 84926","467-2347ms image photos/img-149-r0.8-500.webp 38254","467-3011ms image photos/img-135-r0.8-640.webp 51434","467-3442ms image photos/img-137-r0.8-640.webp 71544","467-3440ms image photos/img-096-r0.8-640.webp 28064","3511-10783ms media video/cm-drone.p1080.webm 998896","5576-9726ms media video/cm-board.p640.webm 418668"]
+phone scrolled 1.5 screens [{"hero":true,"src":"cm-drone.p1080.webm","rs":4,"paused":true,"t":4.14,"on":true,"op":"1","w":608,"h":1080},{"hero":false,"src":"cm-board.p640.webm","rs":4,"paused":false,"t":3.24,"on":true,"op":"1","w":360,"h":640}]
+phone back at top [{"hero":true,"src":"cm-drone.p1080.webm","rs":4,"paused":false,"t":5.64,"on":true,"op":"1","w":608,"h":1080},{"hero":false,"src":"cm-board.p640.webm","rs":4,"paused":false,"t":4.75,"on":true,"op":"1","w":360,"h":640}]
+phone fast state [{"hero":true,"src":"cm-drone.p1080.webm","rs":4,"paused":false,"t":1.03,"on":true,"op":"1","w":608,"h":1080},{"hero":false,"src":"cm-board.p640.webm","rs":4,"paused":false,"t":1.06,"on":true,"op":"1","w":360,"h":640}]
+phone hero boxes [["P",655,719,53,337],["A",737,793,33,357]]
+phone page height 16257
+phone s1 {"y":0,"hs":["Plan a stay"],"vids":"hero:playing board:playing","bar":"visible/bar"}
+phone s2 {"y":506,"hs":["Plan a stay"],"vids":"hero:playing board:playing","bar":"visible/bar on"}
+phone s3 {"y":1012,"hs":["Catch waves, not worries","Plan a stay"],"vids":"hero:paused board:playing","bar":"visible/bar on"}
+phone s4 {"y":1518,"hs":["Down at the water","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s5 {"y":2024,"hs":["Down at the water","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s6 {"y":2530,"hs":["Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s7 {"y":3036,"hs":["A week of surf","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s8 {"y":3542,"hs":["A week of surf","Full Surf Lesson Package","Moderate","Yoga and Surf","Surf Board Rental","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s9 {"y":4048,"hs":["Every week comes with","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s10 {"y":4554,"hs":["Lessons for your level","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s11 {"y":5060,"hs":["The rooms","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s12 {"y":5566,"hs":["The rooms","Superior Double Room","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s13 {"y":6072,"hs":["Superior Double Room","Classic Triple Room","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s14 {"y":6578,"hs":["Double Room","Small Double Room","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s15 {"y":7084,"hs":["Small Double Room","Small Twin Room","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s16 {"y":7590,"hs":["Small Twin Room","Staying here","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s17 {"y":8096,"hs":["Baba's Surf Shop","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s18 {"y":8602,"hs":["Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s19 {"y":9108,"hs":["Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s20 {"y":9614,"hs":["Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s21 {"y":10120,"hs":["Up on the roof","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s22 {"y":10626,"hs":["Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s23 {"y":11132,"hs":["Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s24 {"y":11638,"hs":["Three rooms in 2009","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s25 {"y":12144,"hs":["What guests say","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s26 {"y":12650,"hs":["What guests say","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s27 {"y":13156,"hs":["Getting here","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s28 {"y":13662,"hs":["Getting here","Good to know","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s29 {"y":14168,"hs":["Good to know","Book","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s30 {"y":14674,"hs":["Book","Instagram","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s31 {"y":15180,"hs":["Instagram","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s32 {"y":15413,"hs":["Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s33 {"y":15413,"hs":["Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}

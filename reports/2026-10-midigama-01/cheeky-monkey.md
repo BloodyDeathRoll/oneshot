@@ -203,3 +203,105 @@ The 12 requests are all to the local host: HTML 91,991 B, 2 woff2 (64,900 B), an
 - `reports/2026-10-midigama-01/critic-cheeky-monkey-r2/contrast-hero.json`: the header and hero text sampled over the loop.
 - `reports/2026-10-midigama-01/critic-cheeky-monkey-r2/room-slides.json`: the lazy-slide re-check.
 - `reports/2026-10-midigama-01/funnel/cheeky-monkey-r2/funnel.json`: `tools/funnel.mjs http://localhost:8961/ --depth 3`.
+
+## Round 3 — full (station 5, last round)
+
+critic 0.4.3 · rubric 0.3.1 · 2026-11-04 · build `sites/cheeky-monkey/final/dist/` (index.html 96,992 B, built 2026-11-04 13:31, designer 0.7.1 round 3). It was served by a plain static server (`tools/_serve.mjs` on :8961), which was stopped afterwards. The user's `astro preview` on :8950 was not touched. Scored fresh against the rubric and the dossier. I did not read any visual-critic or experience-critic report.
+
+```
+mode: full        round: 3        variant: unique ("Pick your board", drone-loop first screen on Alon's decision)
+total (dims 1–7): 72.7 / 75      result: pass (critic's part)      hard_fails: []   (vid-001 licence: human-waived exception, see below)
+dimension 8 (weight 25): not scored here, it belongs to visual-critic + experience-critic
+```
+
+**The vid-001 licence: a human-waived exception, not a hard fail.** Round 2 failed on the rubric line "an image is used against the run's image policy (PLAN.md §9)". The first screen is a cut of vid-001, Lorenzo Marzocca's 2018 promo film, whose dossier `license` is **"unknown"** (re-checked this round: unchanged). The human waived it in session. Alon, operator, 2026-11-04, verbatim: *"i accept it as an exception for the preview. and make the last fixes."* The waiver is logged in `activity.jsonl` (`tools/team.mjs log`) and in `sites/cheeky-monkey/final/notes.md` conflicts 6. **Scope: the `*.workers.dev` preview only, until the owner confirms the rights at pitch.** So it is reported here and not counted. **It stays flagged for the pitch.** Before any go-live the owner must confirm the rights (or supply the raw footage). Otherwise the hero falls back to business-owned media: an owner clip as `heroVideo`, or `heroVideo` emptied and a business-owned photograph ≥ 1920 px as `heroVideoPoster`. The template already renders both. The footer credit stays, and the footage is still kept out of JSON-LD and the link preview.
+
+| # | dimension | weight | score | weighted | evidence |
+|---|---|---|---|---|---|
+| 1 | facts | 20 | 9 | 18.0 | The round-1/2 facts table was re-checked against this build, and the new items were added (table below). **0 mismatches, 0 unsourced claims.** The 11 blockquotes are verbatim `reviews.quotes[].text`, checked by script (`critic-cheeky-monkey-r3/quotes.json.txt`): 10 match exactly. In the 11th the dossier's `\n` is rendered as `<br>` ("wifi was great!<br>There"), so 11/11 match. Google 4.5/5 · 467 and Booking.com 8.3/10 · 45 each appear once, with "26 Oct 2026" = `fetched_at`. "Published 2021" appears 7 times beside the prices. `audit.json.facts`: 48 numbers, 1 not in the copy: "2018", in the footer credit = vid-001 `found_on`. New this round: img-151 (`license: business-owned`, the business's own site, 1920×900) replaces img-155. Its alt "Cheeky Monkey surfers on the sand with coconuts…" agrees with the owner's own alt "Group of Cheeky Monkey surfers". The board reel's new alt "New boards on the rack in Baba's Surf Shop, filmed close along their rails" = vid-009 `shows` (business-owned). −1, unchanged: present-tense lines rest on 2021 sources (rooftop yoga, five dinners), and open status is the agreed gap. Note, not scored, as in round 2: "Midigama" in the hero alt is inferred from the promo's subject. |
+| 2 | mobile + performance | 15 | 10 | 15.0 | `critic-cheeky-monkey-r3/audit.json` (throttled 390×844, 1.6 Mbps / 150 ms / 4× CPU): first load **691 KB** (708,018 B) in 12 requests: HTML 97.0 KB with CSS and JS inline, fonts 64.9 KB, images 546 KB. **0 external JS.** Largest image **119 KB** (the 608×1080 portrait poster). **LCP 508 ms. CLS 0.** Scroll CLS early 0 / settled 0 (the 3 px font-swap shift the designer found is gone). Video after first paint (`a11y.json` videoRequests): a 390 phone plays `cm-drone.p1080.webm` (designer 1.00 MB, MP4 1.87 MB ≤ 2 MB) and 1440 plays `cm-drone.d1920.webm` (1.64 MB, MP4 3.82 MB ≤ 4 MB). The video is muted, looped, `playsinline`, has no controls and is `aria-hidden`. The board reel is no longer early (`timing.json`, throttled DPR-3 phone, cold): `load` 3.77 s → hero `p1080.webm` requested 3.80 s, **playing 5.63 s** → reel `p640.webm` requested **5.64 s, after the hero plays** (round 2: 440 ms). Round-2 issue fixed: the review slideshow now takes the height of the quote on show. At 390, track = slide = content for quotes 1–3: 259 / 231 / 402 px (round 2: always 402, about 240 px of empty card). Layout: `scrollWidth` = `clientWidth` at 390 and 1440. There are no overlaps in the 22 phone or 17 desktop captures, and the hero line and button sit in the lower band clear of the surfer (`mobile-00`). Fonts: 2 families, 65 KB, `swap`. |
+| 3 | booking CTA | 15 | 9 | 13.5 | **`funnel/cheeky-monkey-r3/funnel.json`:** `primary_action` = **engine** ("Book", header, top 9), `hero_action` = **engine** (0 taps to flow), `clicks_to_book` **1** ≤ `recommended.clicks_to_book` 1, CTA above the fold, 1 page, 0 broken. `recommended.primary_action` is **engine**, so the classes match. Tap-through (390): `audit.json.booking.tapped` = `https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html`, the same as `booking.engine_url` character for character. The hero "Check dates on Booking.com" is at top 737 of 844. Every `tel:` is `+94719248686` = `contact.phone`. JS off at 390 and 1440: the first booking link is the header "Book" to the engine, and `#book` is visible with 12 links. Reduced motion is the same. The `mailto:` subjects name the business and the offer. −1, unchanged: the engine link carries none of the visitor's choices. That is the documented gap (Booking.com date parameters cannot be tap-tested in a test run). |
+| 4 | brand fit | 5 | 8 | 4.0 | First screen (`mobile-00`, `desktop-00`): full-bleed drone footage (the surfer on the green reef wave), the wordmark with "Surf Camp \| Midigama, Sri Lanka", the featureLine and one "Check dates on Booking.com" button, with header Book + phone. Video leads (playbook §1a). The page order is unchanged from round 2: intro + board reel → "Down at the water" (img-103, spot, season, img-100, img-151) → four surf weeks with prices → inclusions → lessons → 5 rooms → staying here → shop → roof → Baba → reviews + ratings → getting here → good to know → closing → footer. The persistent phone bar shows in captures 01–21 and not on 00. −2, unchanged: spot and season come before the offers (§3 puts offers 2nd), and the `recommended.above_fold` items "included, price, level, trust" first appear at about capture 05 on the phone. That is the concept's choice. |
+| 5 | copy | 10 | 8 | 8.0 | English is complete. The copy is plain and specific, with no claim beyond the dossier, and it is unchanged this round (notes: "The copy is unchanged"). −2, unchanged: "Catch waves, not worries" (intro heading) and "Come as a stranger, leave as a friend." (the hero line) are generic hospitality slogans, although both are the owner's own words. Changing them is a copy-station decision. |
+| 6 | accessibility | 8 | 9 | 7.2 | axe-core (WCAG 2.0/2.1 A + AA, after a full wheel scroll, third-party blocked): **0 violations at 390 and 1440**, 27 rule sets pass. Incomplete: `color-contrast` 172 / 170 nodes (text over footage and photos). **Round-2 issue fixed: header contrast over the footage** (`contrast-hero.json`, 7 samples across the loop, same method as round 2, text shadows not modelled). The worst samples are: 1440 subtitle **5.80:1**, wordmark 6.32:1, nav links 6.54:1; 390 subtitle **6.30:1**, wordmark 6.82:1. All are ≥ 4.5:1 (round 2: 3.0–4.8). The hero line is large text, and its minimum is 4.27:1 at 390 and 4.61:1 at 1440 (≥ 3:1). Keyboard: the skip link "Skip to surf weeks and prices" comes first, then the wordmark, (1440: Surf weeks, Rooms, Shop, Plan a stay), Book, Call, the hero button and See the surf weeks. Every stop has a 3 px solid outline. Drawer: it opens, Esc closes it and focus returns (`audit.json.keyboard` true/true/true). 0 of 84 tap targets are under 44 px, 0 images lack alt (6 decorative `alt=""`), H1 then H2/H3 in order, `lang="en"`. Reduced motion and JS off: 0 video requests, the poster only. 0 page errors. −1 (a new finding this round, also true in round 2): the two looping videos (the hero, and the board reel) start on their own and loop without end, but no control pauses them (WCAG 2.2.2 Pause, Stop, Hide, level A). This is mitigated, not met: they stop under `prefers-reduced-motion`, and they pause off screen. |
+| 7 | security + delivery | 7 | 10 | 7.0 | Static output only: `dist/` holds 71 files, 16 MB, with no server code (no `.js`, `.php` or worker files). **0 third-party requests on first load** (`third_party_hosts` []) and **0 attempted over a full scroll at 390 and 1440** (`a11y.json` externalAttempted []). Video, fonts and photos are self-hosted. There is no CMS call. No `src`/`href` starts with `/`. Every filename is lowercase `[a-z0-9._/-]`. 0 hits for localhost/key/token/secret/password in `index.html` and `llms.txt`. `noindex, nofollow` is on. 0 iframes, so 0 embeds. `check-design`: 0 failing, 0 warnings. |
+| | **total 1–7** | 75 | | **72.7** | |
+
+**Hard fails: 0.** The vid-001 licence line is a **human-waived exception** for the preview, as quoted above, and is not counted. It stays flagged for the pitch. Not hard fails:
+- facts (0 mismatches)
+- CTA landing (the URL and phone are exact)
+- primary-action class (engine = recommended)
+- third-party requests (0 on load and over a scroll)
+- CMS dependency (none)
+- keyboard trap (none)
+- content only in video (none: the hero video is `aria-hidden`, and its line and button are DOM text)
+- budgets (every line met, below)
+- secrets (none)
+- borrowed atmosphere (none)
+
+**Pass thresholds (full), critic's part:**
+- No hard fail ✓ (with the waiver).
+- Dimensions 1–7 each ≥ 6 ✓ (lowest 8).
+- Every playbook §4 budget line is met ✓.
+- Total ≥ 85 needs dimension 8 ≥ 12.3 / 25. The rule that both visual critics must be ≥ 8 is stricter, and their verdicts are pending (not read).
+
+**what the designer prompt got wrong:** Little this round: every round-2 item in my report was fixed and measured. The designer even reported its own scroll-CLS find. One gap is left. The designer's hand-off check has no item for WCAG 2.2.2: an autoplaying loop longer than 5 s needs a visible pause control, and honouring `prefers-reduced-motion` does not satisfy it. The schema's hero-video snippet (`schemas/site-content.md` v0.9) shows none either, so every site built from it will repeat this. Proposal material, not a designer defect: (1) add a small pause/play toggle to the reference `HeroVideo.astro` snippet; (2) add a rubric or designer line saying how an operator-waived asset exception is recorded and carried to the pitch. This round needed a waiver quoted from an in-session message.
+
+**remaining fix list (not gating; smallest first):**
+1. **Dim 6:** add a visible pause control (≥ 44 px, labelled) for the hero loop and the board reel, to meet WCAG 2.2.2.
+2. **Pitch (waiver condition):** confirm the vid-001 rights with the owner (or get the raw footage). If not confirmed, switch the hero to business-owned media before go-live. The template supports this already.
+3. **Dim 5 (copy station):** "Catch waves, not worries" and the hero slogan are the owner's clichés, and they are unchanged.
+4. **Dim 4 (concept choice):** spot and season come before the offers, and price, level and inclusions first appear at about capture 05 on the phone.
+5. **Dim 3 (documented gap):** Booking.com date and guest parameters are not carried. Revisit with a live run.
+
+### Facts table, round 3 (changes against round 2; every other row re-checked and unchanged)
+
+| Claim on the page | Dossier key | Result |
+|---|---|---|
+| img-151 in "Down at the water", alt "Cheeky Monkey surfers on the sand with coconuts, lined up in front of their colourful soft boards, palms behind" | `images[]` img-151 (business-owned, cheekymonkeymidigama.com, 2020; owner alt "Group of Cheeky Monkey surfers") | match (alt written from the photograph) |
+| img-155 | — | removed |
+| Board reel alt "New boards on the rack in Baba's Surf Shop, filmed close along their rails" | `videos[]` vid-009 `shows` (business-owned) | match |
+| Hero alt "Drone view of the Midigama coast…", the footer credit "Drone footage: Lorenzo Marzocca (2018 promo film for Cheeky Monkey)" | vid-001 `shows`, `found_on`, `source_url` | match (as round 2; licence: waived exception) |
+| 11 testimonials | `reviews.quotes[]` | 11/11 verbatim (script; one `\n` rendered as `<br>`) |
+| Ratings, prices, lessons, rooms, stay rules, distances, contact, address, JSON-LD | as rounds 1–2 | match (unchanged) |
+
+### Playbook §4 budget, measured (round 3)
+
+| Item | Target | Measured | |
+|---|---|---|---|
+| First-load transfer (video excluded) | ≤ 1.5 MB | 691 KB (708,018 B, 12 requests) | ✓ |
+| Hero video after first paint | ≤ 2 MB phone · ≤ 4 MB desktop | `p1080.webm` 1.00 MB (MP4 1.87 MB) · `d1920.webm` 1.64 MB (MP4 3.82 MB) | ✓ |
+| JS, compressed | ≤ 300 KB | 0 external; inline about 3.2 KB gzip (designer's figure) | ✓ |
+| Largest above-the-fold image | ≤ 300 KB | 119 KB | ✓ |
+| Fonts | ≤ 2 families, ≤ 150 KB | 2 families, 64.9 KB, `swap` | ✓ |
+| LCP | ≤ 2.5 s | 508 ms | ✓ |
+| CLS | < 0.1 | 0 (scroll early 0, settled 0) | ✓ |
+| Third-party requests on load | 0 | 0 (and 0 over a full scroll at both widths) | ✓ |
+
+### Network log, first load (390, throttled)
+
+The 12 requests are all to the local host: HTML 96,992 B, 2 woff2 (64,900 B), and images 546,126 B (the portrait poster, 119,050 B, plus the images just below the fold that the lazy margin pulls in). `third_party_hosts: []`, and no video is in first load. Over a full scroll the only video requests are:
+- 390: `cm-drone.p1080.webm` + `cm-board.p640.webm`
+- 1440: `cm-drone.d1920.webm` + `cm-board.m720.mp4`
+- reduced motion or JS off: none
+
+### Screenshots (`tools/shoot.mjs` into a scratch folder, deleted after the round; 1440 × 900 ×17 and 390 × 844 ×22, page 13,626 / 16,257 px)
+
+- `mobile-00`: the portrait drone frame of a surfer on a turquoise reef wave in the upper middle. The clear header holds the wordmark, "Surf Camp | Midigama, Sri Lanka", a blue "Book" and a ringed phone icon, all legible on the darker top shade. "Come as a stranger, / leave as a friend." and the blue "Check dates on Booking.com →" sit in the lower band over open water, clear of the rider. No bottom bar.
+- `desktop-00`: the wide surf shot, graded green-turquoise. The rider is above the line. The header shows Surf weeks · Rooms · Shop · Plan a stay · Book · phone.
+- `mobile-01–02` / `desktop-01–02`: "Catch waves, not worries" with the board window and the bright rail reel, then img-103 full-bleed.
+- `mobile-03–04` / `desktop-03`: "Down at the water", the spot and season cards, img-100, and img-151 (surfers lined up in front of colourful soft boards).
+- `mobile-04–08`: "A week of surf" photo cards with prices and the "Published 2021, call to confirm" pill, the inclusions, and the lessons at USD 20.
+- `mobile-08–11` / `desktop-06–08`: the five room slideshows with Booking.com buttons, and "Staying here".
+- `mobile-11–16`: the shop masonry, "Up on the roof", and "Three rooms in 2009" with Baba.
+- `mobile-16–17` / `desktop-13`: "What guests say" 1/11. Christina's card is as tall as her quote, then the 4.5/5 and 8.3/10 cards with no hole.
+- `mobile-18–21`: Getting here, Good to know, the closing board and line, the actions, the Instagram tiles, and the footer with the drone credit.
+
+### Evidence files
+
+- `reports/2026-10-midigama-01/critic-cheeky-monkey-r3/audit.json`: `tools/audit-mockup.mjs cheeky-monkey ../final`, moved here. The designer's own `final/audit.json` was restored byte-identical (`cmp`).
+- `reports/2026-10-midigama-01/critic-cheeky-monkey-r3/a11y.json`: axe at 390 and 1440, the first 12 Tab stops, external requests attempted over a full scroll, video requests, hero video state, overflow, page errors, and the reduced-motion and JS-off passes.
+- `reports/2026-10-midigama-01/critic-cheeky-monkey-r3/contrast-hero.json`: the header and hero text sampled over the loop (7 samples per width).
+- `reports/2026-10-midigama-01/critic-cheeky-monkey-r3/timing.json`: video request order on a throttled cold phone, and the review slideshow heights.
+- `reports/2026-10-midigama-01/critic-cheeky-monkey-r3/quotes.json.txt`: the verbatim testimonial check and the counts of key facts.
+- `reports/2026-10-midigama-01/funnel/cheeky-monkey-r3/funnel.json`: `tools/funnel.mjs http://localhost:8961/ --depth 3`.
