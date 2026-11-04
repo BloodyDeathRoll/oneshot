@@ -33,7 +33,7 @@ const assets = join(repo, 'dossier', slug)
 const ALT = {
   'img-100': 'A surfer walking into the sea with his board',
   'img-103': 'A surfer in a Cheeky Monkey vest holding a yellow fish board, looking at the waves',
-  'img-155': 'Surfers wading into the sea on Midigama beach',
+  'img-151': 'Cheeky Monkey surfers on the sand with coconuts, lined up in front of their colourful soft boards, palms behind',
   'img-149': 'Surf lessons at Cheeky Monkey surf camp in Sri Lanka',
   'img-135': 'Surfers off to surf from the Cheeky Monkey surf camp',
   'img-137': 'Rooftop yoga sessions at Cheeky Monkey with Sea View',
@@ -82,7 +82,7 @@ const alt = (id) => ALT[id] ?? fail(`no alt for ${id}`)
 
 /* photos[] in the design's slot order (src/lib/slots.mjs). 'rail' is the closing board's still, a frame of
    vid-009 cut by scripts/make-media.sh. */
-const PHOTOS = ['img-100', 'img-103', 'img-155', 'img-149', 'img-135', 'img-137', 'img-096',
+const PHOTOS = ['img-100', 'img-103', 'img-151', 'img-149', 'img-135', 'img-137', 'img-096',
   'img-109', 'img-146', 'img-112', 'img-108', 'img-131', 'img-116', 'img-087',
   'img-134', 'img-078', 'img-141', 'img-121', 'img-082', 'rail',
   'img-105', 'img-085', 'img-099', 'img-089', 'img-013']
@@ -148,11 +148,13 @@ const vid009 = dossier.videos.find((v) => v.id === 'vid-009') ?? fail('vid-009 m
 if (vid009.license !== 'business-owned') fail('vid-009 is not business-owned')
 for (const f of ['cm-drone.mp4', 'cm-drone-poster.jpg']) if (!existsSync(join(mediaDir, f))) fail(`${f} missing: run scripts/make-media.sh`)
 const heroVideo = await local('cm-drone.mp4', 'Drone footage of the Midigama coast: the reef and the coast road, the village under the palms, a surfer on a green wave', 'video/mp4')
+/* round 3: focalX 52 = where the phone's 9:16 poster crop and p1080 video tier are centred (the surfer of the
+   loop's surf shot rides between 41% and 64% of the frame's width; a 390x844 screen shows 26% of it; checked every 0.25 s, notes.md) */
 const heroVideoPoster = await local('cm-drone-poster.jpg', 'Drone view of the Midigama coast: turquoise reef water, the rock wall along the coast road, houses and palms behind', 'image/jpeg')
 const videos = [{
   id: 'seed-video-1',
   video: await local('cm-board.mp4', 'New boards on the rack in Baba\'s Surf Shop, filmed close along their rails', 'video/mp4'),
-  poster: await local('cm-board-poster.jpg', 'New boards on the rack in Baba\'s Surf Shop: a white Rockwell shortboard beside a magenta speckled board', 'image/jpeg'),
+  poster: await local('cm-board-poster.jpg', 'New boards on the rack in Baba\'s Surf Shop: the rails of a red, a green, a yellow splattered and a sand-coloured board side by side', 'image/jpeg'),
   description: 'New boards on the rack in Baba\'s Surf Shop, filmed close along their rails',
 }]
 
@@ -180,7 +182,7 @@ const doc = {
   priceList: rowIds(copy.priceList, 'price'),
   photos,
   heroVideo,
-  heroVideoPoster,
+  heroVideoPoster: { ...heroVideoPoster, focalX: 52 },
   videos,
   contact: { ...copy.contact, whatsapp: copy.contact.whatsapp || null }, // copyeditor N6: "" → null
   bookingLinks: rowIds(copy.bookingLinks, 'link'),

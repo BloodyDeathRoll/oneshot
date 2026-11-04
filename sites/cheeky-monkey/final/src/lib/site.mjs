@@ -132,7 +132,9 @@ export const img = (n, { i = 0, cls = '', lazy = true, altText, decorative = fal
   const m = slotRow(n), sh = m && shapeOf(m.filename, keyOf(n, i))
   if (!sh) return ''
   const s = top(sh)
-  return `<img${cls ? ` class="${cls}"` : ''} src="${s.webp}" width="${s.w}" height="${s.h}"${lazy ? ' loading="lazy"' : ''} decoding="async" alt="${decorative ? '' : e(altText ?? m.alt)}"${extra}>`
+  /* round 3: the crop's own mean colour under a lazy photo while it loads (was the page's pink-grey) */
+  const bg = sh.bg ? ` style="background-color:${sh.bg}"` : ''
+  return `<img${cls ? ` class="${cls}"` : ''} src="${s.webp}" width="${s.w}" height="${s.h}"${lazy ? ' loading="lazy"' : ''} decoding="async"${bg} alt="${decorative ? '' : e(altText ?? m.alt)}"${extra}>`
 }
 /* every width of slot n's i-th shape, for a srcset */
 export const slotSet = (n, i = 0) => { const m = slotRow(n), sh = m && shapeOf(m.filename, keyOf(n, i)); return sh ? sh.sources : [] }
@@ -141,8 +143,8 @@ export const ROOM_KEY = 'r0.667'
 /* a room's slides: rooms[].photo first, then its SCHEMA GAP slides */
 export const roomSlides = (r) => {
   const out = []
-  if (r.photo?.filename) { const sh = shapeOf(r.photo.filename, ROOM_KEY); if (sh) out.push({ ...top(sh), alt: r.photo.alt }) }
-  for (const g of G.roomGalleries?.[r.label] ?? []) { const sh = shapeOf(g.file, ROOM_KEY); if (sh) out.push({ ...top(sh), alt: g.alt }) }
+  if (r.photo?.filename) { const sh = shapeOf(r.photo.filename, ROOM_KEY); if (sh) out.push({ ...top(sh), bg: sh.bg, alt: r.photo.alt }) }
+  for (const g of G.roomGalleries?.[r.label] ?? []) { const sh = shapeOf(g.file, ROOM_KEY); if (sh) out.push({ ...top(sh), bg: sh.bg, alt: g.alt }) }
   return out
 }
 
@@ -150,6 +152,8 @@ export const roomSlides = (r) => {
    Round 2: heroVideo is the drone cut. Sources: the phone tier first by media query, WebM before MP4 in each tier
    (schemas/site-content.md "How a template uses the hero video"); the poster is the LCP image. */
 export const PHONE_MQ = '(max-width: 860px)'
+/* round 3: portrait screens (phones held upright) get the p1080 portrait tier and the portrait poster */
+export const PORTRAIT_MQ = '(max-aspect-ratio: 3/4)'
 const srcOf = (s) => s && { src: s.src, type: s.type }
 export const hero = () => {
   const v = c.heroVideo, p = c.heroVideoPoster
@@ -158,9 +162,10 @@ export const hero = () => {
   if (!full) return null
   const gen = v?.filename && videosGen?.videos?.[v.filename]
   const t = gen?.tiers ?? {}
-  const sources = [[srcOf(t.m1280?.webm), PHONE_MQ], [srcOf(t.m1280?.mp4), PHONE_MQ], [srcOf(t.d1920?.webm)], [srcOf(t.d1920?.mp4)]]
+  /* round 3: the portrait tier (scripts/video-site.mjs) first for upright phones, then the schema's phone and desktop tiers */
+  const sources = [[srcOf(t.p1080?.webm), PORTRAIT_MQ], [srcOf(t.p1080?.mp4), PORTRAIT_MQ], [srcOf(t.m1280?.webm), PHONE_MQ], [srcOf(t.m1280?.mp4), PHONE_MQ], [srcOf(t.d1920?.webm)], [srcOf(t.d1920?.mp4)]]
     .filter(([s]) => s).map(([s, media]) => ({ ...s, media }))
-  return { alt: p.alt, land: full.sources, port: port ? top(port) : null, sources, first: full.sources[0] }
+  return { alt: p.alt, land: full.sources, port: port ? top(port) : null, sources, first: full.sources[0], bandsLand: full.bands ?? null, bandsPort: port?.bands ?? null }
 }
 /* videos[0]: the shop reel in the intro's board window. Shown at most ~360 CSS px wide, so the m720 tier
    (720 wide) is sharp at 2x and the reel is never blown up (round 1's macroblocked zoom is gone) */
@@ -170,7 +175,9 @@ export const reel = () => {
   const gen = videosGen?.videos?.[row.video.filename], ps = shapeOf(row.poster.filename, 'full')
   if (!ps) return null
   const t = gen?.tiers ?? {}
-  const src = [srcOf(t.m720?.mp4), srcOf(t.m1280?.webm), srcOf(t.m1280?.mp4)].filter(Boolean)
+  /* round 3: phones get the 360x640 p640 tier (scripts/video-site.mjs, < 0.5 MB), other screens m720 */
+  const src = [[srcOf(t.p640?.webm), PHONE_MQ], [srcOf(t.p640?.mp4), PHONE_MQ], [srcOf(t.m720?.mp4)], [srcOf(t.m1280?.webm)], [srcOf(t.m1280?.mp4)]]
+    .filter(([s]) => s).map(([s, media]) => ({ ...s, media }))
   return { label: row.description ?? row.video.alt, poster: top(ps), sources: src }
 }
 /* the hero footage's credit (SCHEMA GAP: media has no credit field) */

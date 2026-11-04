@@ -56,12 +56,13 @@ p{margin:0 0 1em}
 /* round 2 (experience r1): with JS off the header keeps its white ground (above); with JS it is clear over the
    footage, in white, until the page scrolls */
 html.js .top:not(.solid){background:rgba(255,255,255,0);color:#fff}
-html.js .top:not(.solid) .mark span{color:rgba(255,255,255,.88)}
+html.js .top:not(.solid) .mark span{color:#fff}
 html.js .top:not(.solid) .icon-btn{background:rgba(255,255,255,.16);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5)}
 html.js .top:not(.solid) .btn-ghost{background:rgba(255,255,255,.16);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5)}
 html.js .top:not(.solid) .btn-ghost svg{color:#fff}
-html.js .top:not(.solid) .nav a.l{text-shadow:0 1px 8px rgba(10,32,44,.35)}
-html.js .top:not(.solid) .mark{text-shadow:0 1px 10px rgba(10,32,44,.35)}
+/* round 3 (critic r2 dim 6): full-white subtitle and a firmer shadow; the hero's top shade (below) is deeper too */
+html.js .top:not(.solid) .nav a.l{text-shadow:0 1px 2px rgba(10,32,44,.5),0 1px 10px rgba(10,32,44,.45)}
+html.js .top:not(.solid) .mark{text-shadow:0 1px 2px rgba(10,32,44,.5),0 1px 12px rgba(10,32,44,.45)}
 .top.solid{background:rgba(255,255,255,.94);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);box-shadow:0 1px 0 rgba(20,55,70,.06)}
 .mark-h{margin:0 auto 0 0;font:inherit}
 .mark{display:flex;flex-direction:column;justify-content:center;min-height:46px;text-decoration:none;line-height:1.1}
@@ -80,21 +81,36 @@ html.js .top:not(.solid) .mark{text-shadow:0 1px 10px rgba(10,32,44,.35)}
    Alon, 2026-11-04: "i dont like the cartoon" -> the drawn beach and the board zoom-through are gone. Only the header,
    one centred line and the one booking button sit on the footage (custom.md; references.md calibration). */
 .hero{position:relative;isolation:isolate;height:100svh;min-height:560px;max-height:1200px;overflow:hidden;background:var(--sea);color:#fff;
-  display:grid;place-items:center;text-align:center}
-.hero-media{position:absolute;inset:0;z-index:0}
+  display:grid;place-items:end center;text-align:center}
+/* round 3 (visual r2 fix 1): the line and the button sit in the lower band of the frame, centred, below the surfer:
+   across the loop's surf shot he rides between 33% and 62% of the frame's height (checked every 0.25 s at 1440 and 390,
+   notes.md); the sky above and the water below him are clear */
+.hero-media{position:absolute;inset:0;z-index:0;background:var(--ph-l,none)}
+@media (max-aspect-ratio:3/4){.hero-media{background:var(--ph-p,var(--ph-l,none))}}
 .hero-media picture,.hero-poster,.hero-video{position:absolute;inset:0;width:100%;height:100%}
 .hero-poster,.hero-video{object-fit:cover;object-position:55% 50%}
+@media (max-aspect-ratio:3/4){.hero-poster,.hero-video{object-position:50% 50%}}
 .hero-video{opacity:0;transition:opacity .8s ease}
 .hero-video.on{opacity:1}
 /* legibility only: a soft shade under the header and behind the line, never a tint over the whole picture */
-.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(rgba(10,32,44,.42),rgba(10,32,44,0) 150px),radial-gradient(ellipse 64% 38% at 50% 52%,rgba(10,32,44,.4),rgba(10,32,44,0) 100%)}
+/* round 3 (critic r2 dim 6): a deeper top shade, so the header's white text is >= 4.5:1 across the loop (and on the
+   placeholder before the poster arrives) */
+.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(rgba(8,26,36,.66),rgba(8,26,36,.5) 72px,rgba(8,26,36,0) 180px)}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;transition:opacity .5s ease;
+  background:radial-gradient(ellipse 66% 30% at 50% 84%,rgba(10,32,44,.42),rgba(10,32,44,0) 100%)}
+/* round 3 (experience r2 fix 4): with JS, the line's scrim appears with the poster, never as a dark blob on the
+   empty ground */
+html.js .hero:not(.lit)::after{opacity:0}
 .hero-line span{display:block}
-.hero-in{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:28px;padding:96px var(--gut) 64px}
-.hero-line{font:400 clamp(32px,4vw,58px)/1.14 var(--hand);margin:0;max-width:none;
+.hero-in{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:24px;padding:96px var(--gut) clamp(36px,6.5vh,72px)}
+.hero-line{font:400 clamp(32px,3.6vw,52px)/1.12 var(--hand);margin:0;max-width:none;
   text-shadow:0 1px 2px rgba(10,32,44,.45),0 2px 24px rgba(10,32,44,.4)}
-.btn-hero{--bh:56px;min-height:56px;padding:0 28px;font-size:17px}
-@media (max-width:860px){.hero-in{gap:22px;padding:88px 20px 56px}.hero-line{font-size:clamp(26px,7.4vw,36px)}}
+.btn-hero{--bh:56px;min-height:56px;padding:0 28px;font-size:17px;min-width:min(324px,100%)}
+/* round 3: the block spans the hero and the button has a min-width that holds the label in either font, so the font
+   swap (Rethink Sans is 6 px narrower than its fallback here) moves nothing (scroll CLS early 0) */
+.hero-in{width:100%}
+@media (max-width:860px){.hero-in{gap:18px;padding:88px 20px clamp(32px,6vh,56px)}.hero-line{font-size:clamp(26px,7.4vw,34px)}}
 
 /* ---------- shared ---------- */
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
@@ -139,6 +155,8 @@ section{scroll-margin-top:80px}
 .board .shadow{position:absolute;left:-36%;right:-36%;bottom:-18px;height:34px;border-radius:50%;
   background:radial-gradient(closest-side,rgba(92,70,40,.30),rgba(92,70,40,.10) 55%,transparent);z-index:-1}
 @media (max-width:860px){.intro.has-board{grid-template-columns:1fr;text-align:center;gap:48px}.board{width:min(124px,34vw)}}
+/* round 3 (experience r2 fix 5): the board gets its moment back on a laptop */
+@media (min-width:1024px){.board{width:224px}}
 .facts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:36px 0 0;text-align:left}
 .facts div{background:#fff;border-radius:var(--r);padding:20px 22px}
 .facts dt{display:flex;align-items:center;gap:10px;font-weight:600;margin-bottom:6px}
@@ -176,7 +194,7 @@ section{scroll-margin-top:80px}
 .rooms{padding:clamp(72px,9vw,120px) 0}
 .room-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,4vw,56px) 28px}
 .room{display:flex;flex-direction:column;gap:16px;min-width:0}
-.show{position:relative;border-radius:20px;overflow:hidden;background:#e9dfe0}
+.show{position:relative;border-radius:20px;overflow:hidden;background:#d9dcd8}
 .track{display:flex;list-style:none;margin:0;padding:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
 .track::-webkit-scrollbar{display:none}
 .track > li{flex:0 0 100%;scroll-snap-align:start}
@@ -223,7 +241,8 @@ html.motion .m.pre img{transform:scale(.98)}
 .roof-side{width:100%;border-radius:22px;aspect-ratio:4/5;object-fit:cover}
 
 /* ---------- Baba ---------- */
-.baba{padding:clamp(72px,9vw,120px) 0}
+/* round 3 (visual r2 fix 5): Baba's bottom and the guests' top padding stacked into a ~250 px empty band; halved */
+.baba{padding:clamp(72px,9vw,120px) 0 clamp(36px,4.5vw,64px)}
 .baba-g{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:center}
 .baba-p{width:100%;border-radius:22px;aspect-ratio:4/5;object-fit:cover}
 .baba-t .t-hand{margin-bottom:18px}
@@ -231,10 +250,12 @@ html.motion .m.pre img{transform:scale(.98)}
 .print{width:min(320px,70%);margin-top:28px;border-radius:6px;background:#fff;padding:10px;box-shadow:0 1px 2px rgba(20,55,70,.08),0 16px 30px -18px rgba(20,55,70,.35);transform:rotate(-2deg)}
 
 /* ---------- guests ---------- */
-.guests{padding:clamp(72px,9vw,120px) 0}
+.guests{padding:clamp(36px,4vw,56px) 0 clamp(72px,9vw,120px)}
 .guests-g{display:grid;grid-template-columns:7fr 5fr;gap:56px;align-items:center}
 .quotes{position:relative;min-width:0}
 .quotes .t-hand{margin-bottom:22px}
+/* round 3 (critic r2 dim 2, visual r2): the slideshow is as tall as the quote on show, not the longest one */
+.q-track{align-items:flex-start;overflow-y:hidden;transition:height .35s var(--ease)}
 .q-track > li{padding-right:8px}
 .q-track blockquote{margin:0}
 .q-track p{font-size:clamp(19px,1.7vw,23px);line-height:1.5;margin:0 0 18px;text-wrap:pretty}
@@ -369,7 +390,7 @@ html.js .plain-only{display:none}
 .facts-w{grid-template-columns:1fr 1fr;margin:0;width:100%}
 .water-g img{width:100%;object-fit:cover;border-radius:20px;display:block}
 .w1{grid-area:w1;aspect-ratio:5/8}
-.w3{grid-area:w3;aspect-ratio:1600/702;align-self:end}
+.w3{grid-area:w3;align-self:end}
 @media (max-width:860px){
   .water-band img{aspect-ratio:4/5}
   .water-g{grid-template-columns:1fr;grid-template-areas:"t" "w1" "w3";gap:28px}

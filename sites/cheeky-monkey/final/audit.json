@@ -1,23 +1,23 @@
 {
  "slug": "cheeky-monkey",
  "variant": "../final",
- "measured_at": "2026-11-04T10:38:14.096Z",
+ "measured_at": "2026-11-04T11:32:19.825Z",
  "first_load": {
   "requests": 12,
   "hosts": [
    "localhost:8980"
   ],
   "third_party_hosts": [],
-  "bytes_total": 646325,
-  "bytes_html": 91991,
+  "bytes_total": 708018,
+  "bytes_html": 96992,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 64900,
-  "bytes_images": 489434,
-  "largest_image_bytes": 79236,
-  "lcp_ms": 572,
+  "bytes_images": 546126,
+  "largest_image_bytes": 119050,
+  "lcp_ms": 480,
   "cls": 0,
-  "dcl_ms": 1553
+  "dcl_ms": 1806
  },
  "scroll": {
   "early": {

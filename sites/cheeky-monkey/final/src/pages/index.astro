@@ -90,11 +90,13 @@ const w0 = WEEKS[0]
 
 <main>
 <section class="hero" id="hero" aria-label={c.businessName}>
-  {H && <div class="hero-media">
+  {H && <div class="hero-media" style={[H.bandsLand && `--ph-l:linear-gradient(${H.bandsLand.join(',')})`, H.bandsPort && `--ph-p:linear-gradient(${H.bandsPort.join(',')})`].filter(Boolean).join(';') || undefined}>
+    {/* round 3 (experience r2 fix 4): the poster's own tones as a gradient placeholder; the legibility shade waits for
+        the poster (html.js .hero.lit), so a slow phone never sees a dark blob on flat blue */}
     <picture>
       {H.port && <source media="(max-aspect-ratio: 3/4)" srcset={H.port.webp} width={H.port.w} height={H.port.h}>}
       <img class="hero-poster" src={H.first.webp} srcset={H.land.map((s) => `${s.webp} ${s.w}w`).join(', ')} sizes="(max-aspect-ratio: 16/9) 178vh, 100vw"
-        width={H.first.w} height={H.first.h} fetchpriority="high" alt={H.alt}>
+        width={H.first.w} height={H.first.h} fetchpriority="high" alt={H.alt} onload="this.closest('.hero').classList.add('lit')">
     </picture>
     {H.sources.length > 0 && <video class="hero-video" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1" data-hero-video>
       {H.sources.map((s) => <source data-src={s.src} type={s.type} media={s.media} />)}
@@ -114,7 +116,7 @@ const w0 = WEEKS[0]
     <div class="board-in">
       <img src={R.poster.webp} width={R.poster.w} height={R.poster.h} loading="lazy" decoding="async" alt={R.label}>
       {R.sources.length > 0 && <video muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1">
-        {R.sources.map((s) => <source data-src={s.src} type={s.type} />)}
+        {R.sources.map((s) => <source data-src={s.src} type={s.type} media={s.media} />)}
       </video>}
     </div>
     <span class="shadow" aria-hidden="true"></span>
@@ -192,7 +194,7 @@ const w0 = WEEKS[0]
 {rooms.map((r) => (
 <article class="room" aria-labelledby={`room-${r.k}-n`}>
   {r.slides.length > 0 && <div class="show" data-show>
-    <ul class="track" tabindex="0" aria-label={t(L.rooms.photos_aria, { room: r.label })} set:html={r.slides.map((s) => `<li><img src="${s.webp}" width="${s.w}" height="${s.h}" loading="lazy" decoding="async" alt="${e(s.alt)}"></li>`).join('')}></ul>
+    <ul class="track" tabindex="0" aria-label={t(L.rooms.photos_aria, { room: r.label })} set:html={r.slides.map((s) => `<li${s.bg ? ` style="background-color:${s.bg}"` : ''}><img src="${s.webp}" width="${s.w}" height="${s.h}" loading="lazy" decoding="async" alt="${e(s.alt)}"></li>`).join('')}></ul>
     <button type="button" class="arw prev" aria-label={L.rooms.prev}><Fragment set:html={icon('chev-l')} /></button><button type="button" class="arw next" aria-label={L.rooms.next}><Fragment set:html={icon('chev-r')} /></button>
     <div class="dots">{r.slides.map((_, i) => <button type="button" class="dot" aria-label={t(L.rooms.dot, { i: i + 1, n: r.slides.length })} aria-current={i === 0 ? 'true' : undefined}></button>)}</div>
   </div>}

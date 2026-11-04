@@ -33,10 +33,18 @@ if(!still){
     },0)})};
     document.readyState==='complete'?later():addEventListener('load',later,{once:true});
   }
+  /* round 3 (experience r2 fix 1): the board's reel is never part of the first load. It is armed only once the hero
+     loop is playing, or at the visitor's first scroll, whichever comes first (or after load when there is no hero
+     loop, or it fails), and then attaches as the board nears the screen */
   var board=document.querySelector('[data-reel]'), rv=board&&board.querySelector('video');
   if(rv){
-    rv.addEventListener('playing',function(){board.classList.remove('loading');},{once:true});
-    watch(board,rv,'300px 0px',function(){board.classList.add('loading');attach(rv);});
+    var armed=false;
+    var arm=function(){if(armed)return;armed=true;removeEventListener('scroll',arm);
+      rv.addEventListener('playing',function(){board.classList.remove('loading');},{once:true});
+      watch(board,rv,'200px 0px',function(){board.classList.add('loading');attach(rv);});};
+    addEventListener('scroll',arm,{passive:true});
+    if(hv){hv.addEventListener('playing',arm,{once:true});hv.addEventListener('error',arm,true);}
+    else document.readyState==='complete'?arm():addEventListener('load',arm,{once:true});
   }
 }
 })();
@@ -54,8 +62,11 @@ addEventListener('scroll',onBar,{passive:true});onBar();
 document.querySelectorAll('[data-show]').forEach(function(show){
   var track=show.querySelector('.track'), dots=[].slice.call(show.querySelectorAll('.dot')), n=dots.length, cur=0;
   function go(i,smooth){i=(i+n)%n;track.scrollTo({left:i*track.clientWidth,behavior:(smooth&&!still)?'smooth':'auto'});}
-  var cnt=show.querySelector('.q-count');
-  function sync(){var i=Math.round(track.scrollLeft/Math.max(1,track.clientWidth));if(i!==cur){cur=i;dots.forEach(function(d,j){d.setAttribute('aria-current',j===i?'true':'false')});if(cnt)cnt.textContent=(i+1)+' / '+n;}}
+  var cnt=show.querySelector('.q-count'), fit=track.classList.contains('q-track');
+  /* round 3: the quote slideshow takes the height of the quote on show (no empty card under a short one) */
+  function size(){if(fit){var li=track.children[cur];if(li)track.style.height=li.offsetHeight+'px';}}
+  function sync(){var i=Math.round(track.scrollLeft/Math.max(1,track.clientWidth));if(i!==cur){cur=i;dots.forEach(function(d,j){d.setAttribute('aria-current',j===i?'true':'false')});if(cnt)cnt.textContent=(i+1)+' / '+n;size();}}
+  if(fit){size();addEventListener('resize',size);if(document.fonts)document.fonts.ready.then(size);}
   track.addEventListener('scroll',function(){requestAnimationFrame(sync)},{passive:true});
   dots.forEach(function(d,j){d.addEventListener('click',function(){go(j,true)})});
   var p=show.querySelector('.prev'),nx=show.querySelector('.next');
