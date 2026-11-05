@@ -27,8 +27,22 @@ img img-002.jpg hero-2000 "crop=1960:1225:0:275" 76
 img img-002.jpg hero-1400 "crop=1960:1225:0:275,scale=1400:-2:flags=lanczos" 76
 img img-002.jpg hero-m    "crop=693:1500:1000:0" 78
 
+# ---- link preview: the same bay, 1200x630, JPEG because not every app previews WebP.
+ff -i "$A/img-002.jpg" -vf "crop=1960:1029:0:471,scale=1200:-2:flags=lanczos" -q:v 4 "$D/img/og.jpg"
+
 # ---- the shallows: img-005, the only picture of a lesson (832x464). 4:3 around the two stances, at native size.
 img img-005.jpg lesson "crop=618:464:150:0" 80
+
+# ---- the mosaic in the outside section, every picture its own shape, 860 wide for a column of about 430 css px.
+img img-018.webp m-sunset "scale=860:-2:flags=lanczos" 76
+img img-019.webp m-poles  "crop=1440:1080:0:200,scale=860:-2:flags=lanczos" 76
+img img-013.webp m-beach  "scale=860:-2:flags=lanczos" 76
+img img-017.webp m-dogs   "scale=860:-2:flags=lanczos" 76
+img img-020.webp m-silver "scale=860:-2:flags=lanczos" 76
+img img-014.webp m-thatch "scale=860:-2:flags=lanczos" 76
+
+# ---- the print between the three surf tours and the nine outings: img-012 (750x558), at native size.
+img img-012.webp coast - 80
 
 # ---- feature band: img-009, the paddler (1600x1067). Phone: a tall window around the paddler.
 img img-009.webp band-1600 - 72
@@ -38,12 +52,13 @@ img img-009.webp band-m "crop=740:1067:410:0" 74
 # 4:5 that the rotation leaves whole. 676x845, drawn at 460 css px at most.
 img img-008.webp sanjee "rotate=-19*PI/180:c=white,crop=676:845:160:90" 80
 
-# ---- outside: img-013, Coco Beach by the old site's own account (1280x960); img-006, the wave (848x480).
-img img-013.webp beach "scale=1120:-2:flags=lanczos" 74
-img img-006.jpg  wave - 80
+# ---- the surfer who overlaps the first screen: img-006 (848x480), native size. The grey band of haze above the
+# horizon is cropped off, and a little of the left, so the surfer sits nearer the middle of the print.
+img img-006.jpg  wave "crop=780:440:68:40" 82
 
-# ---- back on the sand: img-019, the poles and the footprints (1440x1920).
-img img-019.webp sand-d "scale=1200:-2:flags=lanczos" 74
-img img-019.webp sand-m "scale=900:-2:flags=lanczos" 74
+# ---- back on the sand: img-019 taken down to foam and footprints (the sky and poles are in the mosaic), starting
+# under the feet of the poles so no cut-off stump shows at the top edge.
+img img-019.webp sand-d "crop=1240:755:60:1165" 76
+img img-019.webp sand-m "crop=1240:755:60:1165,scale=900:-2:flags=lanczos" 76
 
 ls -l "$D/img"

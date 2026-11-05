@@ -1,13 +1,13 @@
 # Sanjee Surf School: calm mockup, "The sand" (concept 1)
 
 Station 4e · designer 0.7.1 · run `2026-10-midigama-01` (mode `test`, operator alon) · 2026-11-05.
-Page: `dist/index.html`, one file, with CSS and JS inlined from `src/page.css` and `src/page.js` by `src/build.py`. Words, prices, ratings, reviews and contact are read from `copy/en.json`, not retyped. Fonts come from Google Fonts at 4e (Source Sans 3 400/600, Mr Dafoe).
+Page: `dist/index.html`, one file, with CSS and JS inlined from `src/page.css` and `src/page.js` by `src/build.py`. Words, prices, ratings, reviews and contact are read from `copy/en.json`, not retyped. Fonts come from Google Fonts at 4e (Source Sans 3 400/600, Mr Dafoe), loaded so they do not hold the first paint.
 Media: `src/make-media.sh` (`# media: sites/sanjee-surf-school/mockups/calm/dist/img/**`). Wash line: `src/trace-wash.py` writes `src/wash.json`, text only.
 To rebuild: `bash src/make-media.sh && python3 src/build.py`. `--hero` builds the first screen only, which is how rounds 1 to 4 were made.
 
 ## look-log
 
-**The bar.** The business has its own site. Compared with `dossier/sanjee-surf-school/funnel/walk/01-home-fold-settled.png` (phone first screen) and `assets/old-site-desktop.png` (whole page). Shots are in `shots/round-N`. `shots/round-9` is the last.
+**The bar.** The business has its own site. Compared with `dossier/sanjee-surf-school/funnel/walk/01-home-fold-settled.png` (phone first screen) and `assets/old-site-desktop.png` (whole page). Shots are in `shots/round-N`. `shots/round-13` is the last, of the last build. Round 9 was the build the critics scored; rounds 10 to 13 are the rework after their round 1.
 
 **Round 1, first screen.**
 - **Wrong as design:** the wash line reads as a snowy mountain range: pointed white peaks, rounded valleys, far too tall on desktop, and it has eaten the sand it is meant to lap over. I had traced the foam edge correctly but kept the photograph's orientation, where foam tongues point down at the sand, so on the page the tongues were inside out. The button nearly touches the palm tops, and the header nav stops 200 px short of the right edge because of the hidden header button. A utility pole stands at the right edge of the frame.
@@ -48,8 +48,26 @@ To rebuild: `bash src/make-media.sh && python3 src/build.py`. `--hero` builds th
 **Round 9, whole page, last.** Sheets at 1440 and 390 looked at for overflow, overlap and unreadable text, and none found. On this build, by probe: no horizontal overflow and no control under 44 px at ten widths from 320 to 1920; all 22 `wa.me` links go to the number and carry the one label; a phone menu tap lands with the heading clear of the header; dots land on their slide at both widths; no page errors. Reduced-motion and no-JS first screens looked at, at both widths: the wash is static with the rim at 50%, and with no JS the phone bar is always shown. Below the first screen those two states were not looked at: with JS off the dots are hidden and the slideshow is native scroll by the CSS, not by a shot. "Coco Beach is our home spot, a beach break." went from three lines to two on a phone (34 px, the only exception to the size scale).
 - **Against the old site, why this beats it:** first screen as above. Whole page: the old page is 30,387 px, with 3,000 px of scroll before a price on a phone and no WhatsApp or phone link on it. This one is 9,102 px on desktop and 12,739 px on a phone, with a price one screen down, a WhatsApp action per lesson, per rental block and per tour, and a bar always in reach. Clearly better on clarity and on the first screen. Beauty below the fold is a closer call: the old site has more pictures of surfing in sequence, and this page has seven pictures, some soft.
 
+**Pre-score round 1 (visual 6, experience 7, critic 70.2 of 80).** Both critics: it reads as a resort, no surfer until far down, tiled roofs the loudest thing. On desktop the wash is a stock SVG divider. The old site's mosaic has more pull than my white runs and small prints. They were right; the sheets show it. Rounds below answer them.
+
+**Round 10, whole page.**
+- **Changed:** img-006 (the surfer) as a print overlapping the foot of the hero, half on the first screen and half on the page, hero shortened to 90 svh (phone 80 svh, the whole print above the fold). Wash retraced with a blur about seven times wider and 12 points instead of 40, kept to the sand strip, film fading to nothing, 1.4 s. Real masonry of six pictures, 1320 wide. Sanjee and the guests moved up to straight after the band. Tours as 3 surf rows beside a print, then 9 outings in two columns, price on the title line, icon buttons a tint at rest. Closing cropped to foam and footprints. All of the critic's list.
+- **Sheet showed:** first screen is transformed: a person on a wave, then the bay. Better on phone than anything so far. But a grey band of haze runs across the top of the print. Cut pole stumps at the top of the closing picture look accidental. A wrapped tour price starts its line with "|".
+- **Against the old site:** first screen far ahead. The mosaic now answers its Coco Beach block with the same kind of pictures, and I think it holds up. That is my read, not a critic's.
+
+**Round 11, whole page.**
+- **Wrong:** the closing crop lost the foam to one corner, leaving a big plain brown field. On a short phone (360×640) the header was white at rest, because the title starts under it.
+- **Changed:** print cropped (no haze, surfer nearer the middle). Tour price wraps without a separator, using the same clipping as the details lines. Closing crop moved right so the foam comes in. The bay settles once, 3.5% over 14 s, with the wash, so the first screen is not dead after a second.
+
+**Round 12, whole page.**
+- **Wrong:** a hairline of photograph under the footer's tide and a faint vertical line at the right edge: the blur on the shape was fading its own edges.
+- **Changed:** both wash shapes run 10 px past each side, the tide overlaps the footer by 8 px.
+
+**Round 13, whole page, last.** Sheets at 1440 and 390 and full-size frames looked at for overflow, overlap and unreadable text; none found. Hairline gone (`desktop-11`). Header stays clear at rest on a short phone (mark 6.06:1 on the sky at 360×640).
+- **Against the old site:** first screen clearly better at both widths, on subject now. Whole page: more coherent, and for the first time not clearly poorer in pictures. Still fewer action pictures than the old page has, because I may not use img-007 here.
+
 **Skills, in full:**
-- `node .claude/skills/design-taste-frontend/scripts/inspect.mjs` ran at round 3 and three times from round 7 on, not every round. Last result: **3 FAIL, 4 WARN.** Every line is answered below in "Inspector".
+- `node .claude/skills/design-taste-frontend/scripts/inspect.mjs` ran at round 3, three times from round 7 on, and twice in the rework, not every round. Last result: **5 FAIL, 3 WARN.** Every line is answered below in "Inspector".
 - `/animate`, `/design-motion-principles`: loaded before motion. I used `/animate`'s tables. I did not open the workflow file `/design-motion-principles` points to.
 - `/find-animation-opportunities`: its gate was applied by me, below. No separate report.
 - `/mobile-native`: applied: `svh`, tap highlight, `touch-action`, `user-select` on controls, safe areas, 44 px targets, hover gated. **Nothing was tried on real hardware.**
@@ -60,27 +78,30 @@ To rebuild: `bash src/make-media.sh && python3 src/build.py`. `--hero` builds th
 **Motion as built** (gate: frequency, purpose):
 | What | Values | Why it passes |
 |---|---|---|
-| Wash line runs up once | CSS keyframes, transform, 900 ms; rim 1200 ms with opacity | rare, once a visit: delight budget; over the 300 ms UI cap on purpose |
+| Wash comes in once | CSS keyframes, transform, 1400 ms; film of water ahead of it fades to 0 | rare, once a visit: delight budget; over the 300 ms UI cap on purpose |
+| The bay settles once | scale 1.035 to 1, 14 s, `--ease-out`, then still | rare; so the first screen is not dead after a second. Off under reduced motion |
 | Button press | scale 0.97, 120 ms in, 160 ms out, `--ease-out` | feedback, on every button |
-| Slideshow | 350 ms, cancellable, native swipe; dot widens by `clip-path` | state; the concept's value, over 300 ms |
+| Slideshow | 350 ms, cancellable, native swipe; dot widens by `clip-path`; track height follows the quote, 240 ms | state; the concept's value, over 300 ms. Height is a layout animation, tolerated: only on a chosen slide |
 | Print settle | 8 px, transform, 480 ms, once | rare, prevents a flat arrival; no fade; headings never move |
 | Phone bar | 240 ms `--ease-drawer` | spatial |
 | Header | white over 200 ms; nav slides 214 px over 240 ms as the button arrives | state |
 | Menu | 200 ms from the top right, icon morphs to a cross; closes instantly | origin at its trigger |
-| Row hover | tint over 160 ms, gated to fine pointers | feedback |
+| Row hover | tint over 160 ms, gated to fine pointers; a tour's icon goes red with it | feedback |
 
 Rejected: reveal on headings (custom.md); stagger on tour rows (data being read); parallax (not in the concept, and the prints are small).
 
-**Not seen moving.** All motion was judged from stills and one mid-animation frame of the wash. Nobody has watched it at speed.
+**Not seen moving.** All motion was judged from stills and a few mid-animation frames of the wash. Nobody has watched it at speed.
 
 ### Inspector, last run, line by line
-- `FAIL icon-cards` (3 lesson rows): each row's only icon is in its WhatsApp button. They are the concept's stacked rows with prices. Kept.
-- `FAIL eyebrow` ("5 November 2026" above "Before you book", phone): that is the rating's capture date ending the block above. It labels nothing. Kept.
-- `FAIL covered-text` ("Week Intensive" under a fixed bar, phone): text scrolling under the header and bar at some scroll stop. It never rests there, and anchor jumps clear the header. Kept.
+`RESULT: 5 FAIL, 3 WARN — not done.` Sizes in use: 16, 18, 20, 24, 28, 32, 40, 60, 64.
+- `FAIL gradient` (`section.hero`): the placeholder under the hero photo, seen only until the picture arrives, so a slow phone gets the bay's colours and not a flat box. Kept.
+- `FAIL shadow` (`.hero-print`): the one resting shadow, lifting the print off the photograph. Kept.
+- `FAIL icon-cards` (3 lesson rows): each row's only icon is in its WhatsApp button. Kept.
+- `FAIL off-centre`: the hero print starts 60 px from the left at 1440, off the grid on purpose, to leave the headland clear. Kept.
+- `FAIL eyebrow` ("as of 5 November 2026" above "Before you book"; "All prices are as of 5 November 2026." above "Finding us", phone): the end of the block above, labelling nothing. Kept.
 - `WARN no-footage`: settled, no video.
-- `WARN side-scroll`: the quote slideshow, by concept. Dots are there, and it is native swipe.
-- `WARN empty-middle` ("5/5"): I could not find this on the sheets. Rating and quote sit together and centred. I read it as a measuring artefact of the slideshow track, but I have not proved that.
-- `WARN still-page`: calm, no canvas, by rule. It is also a fair warning: see weak list.
+- `WARN side-scroll`: the quote slideshow, by concept.
+- `WARN empty-middle` ("5/5"): not visible on the sheets. I read it as a measuring artefact of the slideshow track, not proved.
 
 ## images
 
@@ -90,14 +111,17 @@ All are `business-owned` in `dossier.images[]`, uploaded to the business's Googl
 |---|---|---|---|
 | first screen, desktop | img-002 | 2000×1500 | 1960×1225 from x 0, y 275; files at 1960 and 1400 |
 | first screen, phone | img-002 | | 693×1500 window at x 1000 |
+| surfer print over the hero | img-006 | 848×480 | 780×440 from x 68, y 40; drawn 480 css px (342 on a phone) |
 | shallows print | img-005 | 832×464 | 4:3, 618×464, drawn about 423 css px. Faces visible: owner to confirm consent |
 | feature band | img-009 | 1600×1067 | whole; drawn 1440 wide. Phone window 740×1067 |
-| Sanjee print | img-008 | 997×1024 | rotated upright by 19°, 676×845 from the part the rotation leaves whole, drawn about 423 css px |
-| outside print | img-013 | 1280×960 | scaled to 1120, drawn about 423 css px |
-| wave print | img-006 | 848×480 | native, drawn about 423 css px |
-| closing, half-bleed | img-019 | 1440×1920 | scaled to 1200 (desktop) and 900 (phone); bottom of frame kept |
+| Sanjee print | img-008 | 997×1024 | rotated upright by 19°, 676×845, drawn about 423 css px |
+| mosaic | img-018, img-013, img-017, img-020, img-014 | 1440×1920, 1280×960, 1200×1600, 1440×1920, 1280×960 | whole, scaled to 860, drawn about 432 css px, each keeping its own shape |
+| mosaic | img-019 | 1440×1920 | 1440×1080 from y 200 (sky and poles), scaled to 860 |
+| print beside the surf tours | img-012 | 750×558 | whole, native, drawn about 423 css px |
+| closing, half-bleed | img-019 | 1440×1920 | 1240×755 from x 60, y 1165 (foam and footprints). Different part of the frame from the mosaic's crop, with 115 rows of overlap at most |
+| link preview | img-002 | | 1960×1029, 1200×630 JPEG (`img/og.jpg`) |
 
-Not used: img-036, everything `usable: false`, the images concepts §2 rejects.
+Not used: img-007 (rights flag open), img-036, everything `usable: false`, the images concepts §2 rejects.
 
 ## gaps
 
@@ -112,35 +136,48 @@ Not used: img-036, everything `usable: false`, the images concepts §2 rejects.
 
 ## conflicts
 
-**Blocking, for you before the pick:**
-1. **"5 private sessions | 2 hours" can read as two hours in total for USD 160.** The dossier says `5 days × 2 hours`, and concepts §2 reads it as 2 hours each. Concepts §3 asks for those two items together, and `en.json` has no "each". The obvious fix, "2 hours each", is a word I may not add (hard constraint 1, and the copy condition). It needs a line from the copywriter or an instruction. ¶2 beside it helps a little ("After 2 hours of surfing"). Left as the concept says.
+**Blocking:** none now. "5 private sessions | 2 hours each" is built, with "each" as the one word the coordinator allowed outside `en.json`.
+
+**Where the critics or the coordinator conflicted with the concept or each other. I put what looked best on the screen:**
+1. **Which picture overlaps the hero.** Experience critic: img-005 at the wash line on a phone. Visual critic: img-006 up to 520 px. Built: img-006 at both widths, because a person on a wave says surfing faster, and its blues and greens sit in the bay. img-005 follows a screen later, where it answers "Who we teach". 480 px, not 520, so it does not bury the tip of the headland.
+2. **The first screen is no longer "only header, title, CTA".** custom.md and the calibration ask for that, with the picture unobstructed. The print covers the lower left of the sea and part of the sand. The sky, title and button are still clear. Both critics asked for it. For the human to judge.
+3. **The wash line.** Concept: the page's one shape, a visible line. Critics: stock divider. Built: a long soft edge on the sand only, much quieter. On a phone the print covers most of it, so it is close to invisible there. The concept's idea has become a detail rather than the first-screen device.
+4. **Masonry list.** Coordinator named img-012, 013, 014, 017, 018, 020, and a print between the tours. Using img-012 in both would repeat it within two screens. Built: img-012 beside the surf tours (it has the swell, and colour), and a crop of img-019's sky and poles takes its place in the mosaic, the poles I had to cut from the closing.
+5. **"A print between the 3 surf tours and the 9 outings".** On a phone it is literally between them. On desktop it sits beside the 3, with the 9 below, because a print alone in that gap brought back the empty middle. In reading order it still comes between.
+6. **img-006 left the waves section**, so "Other waves" has no picture; it runs as three columns, in the copy's own order, under the mosaic.
+7. **`spot` in the text face.** Concept: spot and season have no script title. I had made its first sentence one; the critics found it slow. Now its first sentence is a 32 px heading in Source Sans 3, the rest beside it. `spot` still reads in order, unchanged.
 
 **Departures from the concept, each one a choice made on sight:**
-1. **The second wash line is not inverted and not white.** Concept: inverted, white, leading into the closing split. Over the top of img-019 that sits on sky and read as a mountain ridge in two rounds. Built: the same line in the tint, coming up from the footer over the wet sand at the foot of the picture, across the full width. Still two uses of the one shape. Phone order changed to text, picture, footer so it does the same there; the concept had the picture first.
-2. **Widths.** Concept: 720 for reading, 960 for tables. Built: one left edge at 1080 with text held to a measure, because three left edges looked unplanned. Quotes keep the 720 column. So prints are about 423 css px, not 480, 460, 560 and 480. All are under their limits.
-3. **Tagline** sits in the left column above "Who we teach", not centred above the split. Left alone, it was a stranded line.
-4. **Rating and last button** sit beside "Before you book" on desktop, not stacked above and below it. Phone order is the concept's: rating, then words, then button.
-5. **Hero crop** is 1960×1225, not 2000×1250, to lose a utility pole at the frame's edge. Title and button sit above the visual centre at most windows, centred in the open sky so they clear the palms: at 1440×900 the block's middle is at 40% of the height. Calibration says centred vertically; concepts §4 says "in the sky".
-6. **Header text** is `#1C2C52` over the sky, not the ink `#253864`, for AA at the zenith.
-7. **Focus ring** is an ink outline with a sky halo. Sky alone on white is 2.24:1. Active slideshow dot stays sky as the concept says: also 2.24:1, with state also carried by its width and `aria-current`. Inactive dots 3.42:1. For 4g to judge.
-8. **Wash line** was traced by script from the foam edge in img-019 (flipped, deepest notches compressed), not by hand. Same source, as the concept wanted.
-9. **Rim on the wash** (a second, 50% copy of the line) is my addition, to make the edge soft. Concept: "one soft wash line".
-10. **Desktop gets a bar too:** a white header with the button once the hero has gone. The concept names only the phone bar; playbook §3 asks for the action to be reachable from every screen.
-11. **Sanjee's words are 24 px on desktop, not 22**, and details lines 16 px, to bring the page to nine sizes.
-12. **Tuk-tuk paragraphs** are two columns on desktop, not one. All four remain directly above the rows.
+1. **Order changed:** band, Sanjee, guests, boards, waves, tuk-tuk. Concept: boards before Sanjee. The experience critic found the best moment nine screens down and attention dropping at boards. The audit's lessons, rentals, tours order still holds, with people between. The "paddle out" order loses "board under your arm" before the line-up.
+2. **The second wash line** is not white and inverted over the picture's top. It is the tint, rising from the footer over the wet sand at the picture's foot.
+3. **Widths.** One left edge at 1080, not 720 and 960, because three left edges looked unplanned. Quotes keep the 720 column, the mosaic 1320. Prints about 423 css px, under their limits.
+4. **Tagline** in the left column above "Who we teach", not centred above the split.
+5. **Rating and a button** beside "Before you book" on desktop.
+6. **Hero** is 90 svh (phone 80), not a full screen. Crop 1960×1225, to lose a utility pole. Title and button sit above true centre, 34 px over the palms; at 1440×900 the block's middle is at 30% of the screen height. Calibration says centred vertically; concepts §4 says "in the sky". On a short window (1280×720) the title comes close under the header.
+7. **Header text** is `#1C2C52` over the sky, not the ink, for AA.
+8. **Focus ring** is an ink outline with a sky halo. Active slideshow dot stays sky as the concept says, 2.24:1 on white, with state also carried by its width and `aria-current`. For 4g to judge.
+9. **Wash line** was traced by script from the foam edge in img-019, then blurred heavily, so little of that foam's shape survives. No longer "traced by hand" in any useful sense.
+10. **The bay's slow settle** is my addition; the visual critic noted the screen stopped dead after a second. Not in the concept.
+11. **Desktop gets a bar too:** a header button once the hero's button has gone.
+12. **Sanjee's words are 24 px on desktop, not 22**, for nine font sizes.
+13. **Tuk-tuk paragraphs** are two columns on desktop. All four remain directly above the rows.
+14. **Icon buttons on tours are a tint at rest**, red on hover, focus or press. Concept: "small WhatsApp icon button". The accent still means booking, but a tour's action is quieter than a lesson's.
+15. **Words the template adds this round:** "each", "as of", "Languages:", "Skip to lessons", and the spaces in "+94 77 400 4422". "All prices are as of 5 November 2026." is repeated from [5] after the rate table and the tour list, as the critic asked; schema v0.11's "a fact lives in one field" is for 4g to solve (`pricesAsOf`, concepts §6).
 
 **custom.md against the concept, for the human:** custom.md says "Booking lives inside the site … choose the level, see what is included … pick dates, then hand off". Concept 1 is one tap to WhatsApp on every offer, with no panel, under the audit's `clicks_to_book: 1`. I built the concept. The cost: no date or level is carried, except the offer's name in the prefill. Concepts 2 and 3 cover the other side. custom.md's "slideshows" exist only for quotes: the material has no gallery to show.
 
 **What is weak, my own read (single context, no detector, so `/impeccable critique` did not really run):**
-- The first screen has no surfer, and its most eye-catching things are red-roofed buildings on a headland. Nothing says they are the school's, but a stranger could assume it. It may read as a resort.
-- Below the hero the page is calm to the point of plain: white, tint rows, type, a table, a long list. The band and the closing picture carry it, with nothing between the band and the closing at full width. It has no gallery, because the material has none.
-- The prints are small because the sources are soft. img-005 and img-006 are video stills, img-013 has a tilted horizon and a dull beach, img-008 is visibly smoothed.
-- The tour list is long, 12 rows, and on a phone that is about three screens.
-- One button label appears 22 times. It is correct, and it is a lot of red.
-- Source Sans 3 at 600 on the title is honest but not memorable. The wash line is the only idea on the screen, and it is small.
+- The print is a soft video still. At 480 css px on a 2x screen it is about 1.6 source px per css px, and it looks it. It is honest, but a sharp image of a lesson is what this page needs.
+- The surfer is not identified as Sanjee or as a student, and nothing says it is this school's lesson. It is an own upload, a still of vid-002.
+- Tiled roofs are still the second-loudest thing on the first screen.
+- The lesson rows and tour lists are still plain, and most of the page's life is in the pictures. The lesson section is the part most like a template.
+- The mosaic has one gloomy picture (img-020) and one dull one (img-014). I kept them because the asked-for six were the material, and the contrast helps. img-012 is overprocessed.
+- Between the print and the wash, the hero's foot is the least resolved thing on a phone: the wash is barely visible there.
+- The page is still 12,672 px on a phone, about 15 screens. The tours came down but boards are long.
+- Booking is still a question on WhatsApp to a number nobody has seen answered, against the old site's calendar.
 
 **Tools:**
-- `tools/check-design.mjs` hardcodes port 8960, which another worktree's `astro preview` (PID 82235) holds, and its browser would read that server. I did not stop it. I ran a copy in my scratchpad that differs in the port (9311) and in absolute import paths only, with `--no-shots`, in path mode so it touches no sibling folder. The repo's tool is unchanged.
+- `tools/check-design.mjs` and `tools/audit-mockup.mjs` hardcode ports 8960 and 8980; 8960 is held by another worktree's `astro preview`, which I did not stop. I ran scratchpad copies (`calm-sanjee/`) that differ in port (9311, 9313) and absolute import paths only, `check-design` with `--no-shots` in path mode so it touches no sibling folder. The repo's tools are unchanged.
 
 ## other businesses in this run
 
@@ -152,17 +189,19 @@ First screens opened at 1440: Coconut Surf Inn calm, Lotus Surf House calm (pick
 
 ## measured
 
-`tools/audit-mockup.mjs` on the last build: phone 390×844 at 2x, 1.6 Mbps, 150 ms latency, 4x CPU, one run on localhost, no scroll.
+The audit copy on the last build: phone 390×844 at 2x, 1.6 Mbps, 150 ms latency, 4x CPU, one run on localhost, no scroll.
 | Line | Budget | Measured |
 |---|---|---|
-| First-load transfer | 1.5 MB | 277 KB uncompressed (HTML 72, fonts 46, images 166) |
-| JS as a file | 300 KB | 0 (3.5 KB inline) |
+| First-load transfer | 1.5 MB | 299 KB uncompressed (HTML 75, fonts 46, images 185) |
+| JS as a file | 300 KB | 0 (4.2 KB inline) |
 | Largest first-screen image | 300 KB | 105 KB phone (desktop 1400 w 104 KB, 1960 w 194 KB) |
 | Fonts | 2 families, 150 KB | 2 families, 46 KB |
-| LCP | 2.5 s | tool: **784 ms, the H1, not the picture** (three other runs 544 to 684 ms) |
+| LCP | 2.5 s | 1,652 ms. It tracks `hero-m.webp` arriving at about 1.6 s. Now the hero is under a full screen, Chromium reports a picture and not the H1 (round 9's 784 ms was the H1). I did not log the element on this run |
 | CLS | 0.1 | 0.0005 |
-| `scroll.early.cls` / `scroll.settled.cls` | 0.01 | 0.001 / 0 |
+| `scroll.early.cls` / `scroll.settled.cls` | 0.01 | 0.0003 / 0 |
 | Third-party on load | 0 | 2 hosts, Google Fonts, allowed at 4e only |
 
-**LCP caveat:** Chromium never reports the full-viewport hero photograph as an LCP candidate, in any of my runs. My own timing (temporary server on 9312, same throttle) has `hero-m.webp` arriving at about **1.5 s**. Read that as the real moment the picture appears; the 784 ms is the words. Under budget either way.
-Whole page, all images: about 340 KB phone, about 496 KB desktop at 2x. Not measured: anything on a real phone or network, or gzip.
+**Cost of Google Fonts at first paint.** The critic measured 1,476 ms with the font stylesheet blocking. It now loads as `media="print"` and flips on load (`<noscript>` fallback). Three throttled runs each on the previous build, one more on this one: first paint 304 to 332 ms with the fonts, 308 to 312 ms with them blocked, so about nothing. What remains: text shows in the sized fallback faces until the swap at about 1.43 to 1.48 s, and the hero photo arrives about 230 ms later than with the fonts blocked (1,617 against 1,385 ms). Mr Dafoe's fallback is Brush Script on a Mac, and only a generic cursive on a phone, so section titles visibly change at the swap there. 4g self-hosts.
+
+**Hero text contrast, from the pixels, seven windows 360×640 to 1920×1080:** title min 5.20:1, name min 5.21:1, nav min 5.27:1.
+Whole page, all images: about 736 KB phone, about 908 KB desktop at 2x. Not measured: real phone or network, gzip, motion at speed.

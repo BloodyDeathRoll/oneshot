@@ -51,19 +51,22 @@ level = [b - (my + slope * (a - mx)) for a, b in zip(xs, ys)]
 
 # a median, then a small box blur: keeps the lobes, drops single-pixel noise
 med = [sorted(level[max(0, i - 3):i + 4])[len(level[max(0, i - 3):i + 4]) // 2] for i in range(n)]
-smooth = [sum(med[max(0, i - 3):i + 4]) / len(med[max(0, i - 3):i + 4]) for i in range(n)]
+# Round 10 (critics: "a stock SVG wave divider"): much heavier blur, so the small regular lobes go and what is
+# left is the long, slow line of the water's edge. W = half-width of the blur in samples (2 source px each).
+W = 22
+smooth = [sum(med[max(0, i - W):i + W + 1]) / len(med[max(0, i - W):i + W + 1]) for i in range(n)]
 lo, hi = min(smooth), max(smooth)
 
 # resample to the viewBox. In the photograph the foam is above the edge and its tongues point down at the sand.
-# On the page the white is the foam and it comes from below, so the shape is flipped: tongues up, notches down.
-STEPS = 40
+# On the page the white is the foam and it comes from below, so the shape is flipped: tongues up.
+# y runs 38..92 of a box where 100 is the foot of the hero, and it climbs gently to the right, where the bay's
+# strip of sand is deeper, so the white stays on the sand.
+STEPS = 12
 pts = []
 for k in range(STEPS + 1):
     i = round(k / STEPS * (n - 1))
     f = (hi - smooth[i]) / (hi - lo)
-    if f > .55:   # the deepest notches are compressed: at this scale one reads as a tear in the page, not as foam
-        f = .55 + (f - .55) * .3
-    pts.append((k / STEPS * 1440, 8 + f * 120))
+    pts.append((k / STEPS * 1440, 44 + f * 48 - 10 * (k / STEPS)))
 
 
 def fmt(v):

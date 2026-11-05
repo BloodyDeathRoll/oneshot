@@ -10,15 +10,19 @@
   else if (heroImg.complete) requestAnimationFrame(go);
   else { heroImg.addEventListener('load', go, { once: true }); heroImg.addEventListener('error', go, { once: true }); setTimeout(go, 4000); }
 
-  // Header turns white and the phone bar slides up once the hero's button has left the screen.
+  // The header turns white as soon as the title reaches it, so nothing ever runs through the name.
+  // The header's button and the phone bar arrive once the hero's button has gone.
   const top = document.querySelector('.top');
   const bar = document.getElementById('bar');
   const heroBook = document.querySelector('.hero-book');
+  const title = document.querySelector('h1');
   let queued = false;
   const place = () => {
     queued = false;
-    const past = heroBook.getBoundingClientRect().bottom < 64;
-    top.classList.toggle('solid', past);
+    const h = top.offsetHeight;
+    const past = heroBook.getBoundingClientRect().bottom < h;
+    top.classList.toggle('solid', scrollY > 4 && title.getBoundingClientRect().top < h + 6);
+    top.classList.toggle('armed', past);
     bar.classList.toggle('on', past);
   };
   addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(place); } }, { passive: true });
@@ -67,10 +71,18 @@
     dotsBox.append(b);
     return b;
   });
+  // The track takes the height of the quote on show, so a short quote leaves no hole.
+  let shown = -1;
+  const fit = () => { track.style.height = `${slides[Math.max(0, shown)].offsetHeight}px`; };
   const mark = () => {
     const i = Math.round(track.scrollLeft / Math.max(1, track.clientWidth));
+    if (i === shown) return;
+    shown = i;
     dots.forEach((d, n) => d.setAttribute('aria-current', n === i ? 'true' : 'false'));
+    fit();
   };
   track.addEventListener('scroll', mark, { passive: true });
+  addEventListener('resize', fit, { passive: true });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   mark();
 })();

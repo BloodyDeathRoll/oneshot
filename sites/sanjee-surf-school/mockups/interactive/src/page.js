@@ -3,13 +3,20 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var calm = matchMedia('(prefers-reduced-motion: reduce)');
+  var smooth = function () { return calm.matches ? 'auto' : 'smooth'; };
 
-  /* header and persistent bar come in when the hero's own button leaves the screen */
-  var hdr = $('.hdr'), bar = $('.bar'), heroBtn = $('.hero-btn'), hdrCta = $('.hdr-cta');
+  /* header: solid as soon as the title reaches it, so the title never prints through the wordmark.
+     The header's button and the phone bar come in when the hero's own button has gone. */
+  var hdr = $('.hdr'), bar = $('.bar'), heroBtn = $('.hero-btn'), hdrCta = $('.hdr-cta'), h1 = $('h1');
   function ctaRoom() { hdr.style.setProperty('--cta', (hdrCta.offsetWidth ? hdrCta.offsetWidth + 24 : 0) + 'px'); }
   ctaRoom();
   addEventListener('resize', ctaRoom);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(ctaRoom);
+  var solidIO = function () {
+    new IntersectionObserver(function (es) { hdr.classList.toggle('solid', es[0].intersectionRatio < 1); },
+      { rootMargin: -(hdr.offsetHeight + 4) + 'px 0px 0px 0px', threshold: 1 }).observe(h1);
+  };
+  solidIO();
   new IntersectionObserver(function (es) {
     var gone = !es[0].isIntersecting;
     hdr.classList.toggle('on', gone);
@@ -25,7 +32,7 @@
 
   /* ---- the state: what the visitor is about to send ---- */
   var state = { level: null, lesson: null, date: null, people: null };
-  var bubble = $('#bubble'), send = $('#send');
+  var bubble = $('#bubble'), barText = $('#bar-text'), barMsg = $('.bar-msg'), fits = $('#fits');
   var shown = [];
 
   function fmtDate(v) {
@@ -34,10 +41,8 @@
     return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
   }
   /* the visitor's words only: nothing here states a fact about the school */
-  function words() {
-    var w = 'Hello ' + SITE.biz + ", I'd like to ask about ";
-    if (state.lesson && state.lesson !== 'unsure') w += 'the ' + state.lesson + '.';
-    else w += state.lesson === 'unsure' ? "a surf lesson, I'm not sure which one." : 'a surf lesson.';
+  function tail() {
+    var w = '';
     if (state.level) w += ' ' + SITE.levels[state.level];
     if (state.date === 'unsure') w += " I'm not sure of the date yet.";
     else if (state.date) w += ' The date I have in mind is ' + fmtDate(state.date) + '.';
@@ -47,6 +52,24 @@
     else if (state.people === '3') w += ' There are 3 or more of us.';
     return w;
   }
+  var hello = function () { return 'Hello ' + SITE.biz + ", I'd like to ask about "; };
+  function lessonWords() {
+    if (state.lesson && state.lesson !== 'unsure') return SITE.lessonAsk[state.lesson] + '.';
+    return state.lesson === 'unsure' ? "a surf lesson, I'm not sure which one." : SITE.generic + '.';
+  }
+  function words() { return hello() + lessonWords() + tail(); }
+  function waHref(text) { return 'https://wa.me/' + SITE.wa + '?text=' + encodeURIComponent(text); }
+
+  /* every WhatsApp link on the page carries the same message. A button about its own thing (a lesson card,
+     a tour, renting a board) keeps its subject and adds the visitor's level, date and people. */
+  var links = $$('a[data-ask]');
+  function syncLinks(text) {
+    var t = tail();
+    links.forEach(function (a) {
+      a.href = a.hasAttribute('data-own') ? waHref(hello() + a.getAttribute('data-ask') + '.' + t) : waHref(text);
+    });
+  }
+
   /* new words fade in, in order; words that stay do not move */
   function render() {
     var text = words();
@@ -66,21 +89,52 @@
     bubble.textContent = '';
     bubble.appendChild(frag);
     shown = next;
-    send.href = 'https://wa.me/' + SITE.wa + '?text=' + encodeURIComponent(text);
+    syncLinks(text);
+    /* the phone bar shows what it will send, the moment there is something to send */
+    var built = state.level || state.lesson || state.date || state.people;
+    barText.textContent = text.replace(hello(), '').replace(SITE.generic + '. ', '');
+    barMsg.classList.toggle('on', !!built);
+    barMsg.tabIndex = built ? 0 : -1;
   }
 
-  /* ---- tiles: a pill slides to the choice; matching cards take a dot; nothing is ever dimmed ---- */
-  var tilesBox = $('.tiles'), pill = $('.tile-pill'), tiles = $$('.tile'), cards = $$('.card');
-  function movePill(t, instant) {
+  /* ---- tiles: a ring slides to the choice; matching cards take a dot; nothing is ever dimmed ---- */
+  var tilesBox = $('.tiles'), ring = $('.tile-ring'), tiles = $$('.tile'), cards = $$('.card');
+  function moveRing(t, instant) {
     if (!t) { tilesBox.classList.remove('on'); return; }
-    if (instant) pill.style.transition = 'none';
     var was = tilesBox.classList.contains('on');
-    pill.style.height = t.offsetHeight + 'px';
-    if (!was) { pill.style.transition = 'none'; }
-    pill.style.width = t.offsetWidth + 'px';
-    pill.style.transform = 'translate(' + t.offsetLeft + 'px,' + t.offsetTop + 'px)';
+    if (!was || instant) ring.style.transition = 'none';
+    ring.style.width = t.offsetWidth + 'px';
+    ring.style.height = t.offsetHeight + 'px';
+    ring.style.transform = 'translate(' + t.offsetLeft + 'px,' + t.offsetTop + 'px)';
     tilesBox.classList.add('on');
-    if (!was || instant) { void pill.offsetWidth; pill.style.transition = ''; }
+    if (!was || instant) { void ring.offsetWidth; ring.style.transition = ''; }
+  }
+  /* what the tile did, right under it: the lessons that fit, and a way to the message */
+  function drawFits(matched) {
+    fits.textContent = '';
+    if (!state.level) { fits.classList.remove('on'); return; }
+    matched.forEach(function (c) {
+      var a = document.createElement('a');
+      a.className = 'fit-chip';
+      a.href = '#' + c.id;
+      a.innerHTML = '<i></i>';
+      a.appendChild(document.createTextNode(c.getAttribute('data-lesson') + ' | ' + c.getAttribute('data-price')));
+      a.addEventListener('click', function (e) { e.preventDefault(); showCard(c, true); });
+      fits.appendChild(a);
+    });
+    var m = document.createElement('a');
+    m.className = 'fit-chip fit-msg';
+    m.href = '#message';
+    m.textContent = 'Your message';
+    fits.appendChild(m);
+    fits.classList.add('on');
+  }
+  var cardRow = $('.cards');
+  function showCard(c, page) {
+    if (cardRow.scrollWidth > cardRow.clientWidth + 4) {
+      cardRow.scrollTo({ left: c.offsetLeft - cardRow.offsetLeft - parseFloat(getComputedStyle(cardRow).paddingLeft), behavior: smooth() });
+    }
+    if (page) c.scrollIntoView({ block: 'center', behavior: smooth() });
   }
   function setLevel(k) {
     state.level = state.level === k ? null : k;
@@ -90,19 +144,16 @@
       t.setAttribute('aria-pressed', on);
       if (on) cur = t;
     });
-    movePill(cur);
-    var first = null;
+    moveRing(cur);
+    var matched = [];
     cards.forEach(function (c) {
       var fit = !!state.level && (c.getAttribute('data-levels') || '').split(' ').indexOf(state.level) > -1;
       c.classList.toggle('fit', fit);
       $('.foryou', c).setAttribute('aria-hidden', !fit);
-      if (fit && !first) first = c;
+      if (fit) matched.push(c);
     });
-    /* on a phone the matching card may be off to the side: bring it into the row's view */
-    var row = $('.cards');
-    if (first && row.scrollWidth > row.clientWidth + 4) {
-      row.scrollTo({ left: first.offsetLeft - row.offsetLeft - parseFloat(getComputedStyle(row).paddingLeft), behavior: calm.matches ? 'auto' : 'smooth' });
-    }
+    drawFits(matched);
+    if (matched[0]) showCard(matched[0], false);
     $$('.wave').forEach(function (p) {
       p.classList.toggle('lit', !!state.level && p.getAttribute('data-for').split(' ').indexOf(state.level) > -1);
     });
@@ -111,7 +162,7 @@
   tiles.forEach(function (t) { t.addEventListener('click', function () { setLevel(t.getAttribute('data-level')); }); });
   addEventListener('resize', function () {
     var cur = $('.tile[aria-pressed=true]');
-    if (cur) movePill(cur, true);
+    if (cur) moveRing(cur, true);
   });
 
   /* ---- lesson from a card, or from the chips ---- */
@@ -183,26 +234,25 @@
   function markDot() { var n = nearest(); dots.forEach(function (b, i) { b.setAttribute('aria-current', i === n); }); }
   function goTo(i) {
     var pad = parseFloat(getComputedStyle(row).paddingLeft);
-    row.scrollTo({ left: qs[i].offsetLeft - row.offsetLeft - pad, behavior: calm.matches ? 'auto' : 'smooth' });
+    row.scrollTo({ left: qs[i].offsetLeft - row.offsetLeft - pad, behavior: smooth() });
   }
   dots.forEach(function (b, i) { b.addEventListener('click', function () { goTo(i); }); });
   row.addEventListener('scroll', markDot, { passive: true });
   markDot();
   if (matchMedia('(pointer: fine)').matches) {
-    var down = false, sx = 0, sl = 0, vx = 0, lx = 0, lt = 0, moved = 0;
+    var down = false, sx = 0, sl = 0, vx = 0, lx = 0, lt = 0;
     row.addEventListener('pointerdown', function (e) {
       if (e.button) return;
-      down = true; moved = 0; sx = lx = e.clientX; sl = row.scrollLeft; vx = 0; lt = e.timeStamp;
+      down = true; sx = lx = e.clientX; sl = row.scrollLeft; vx = 0; lt = e.timeStamp;
       row.setPointerCapture(e.pointerId); row.classList.add('drag');
     });
     row.addEventListener('pointermove', function (e) {
       if (!down) return;
       row.scrollLeft = sl - (e.clientX - sx);
-      moved = Math.max(moved, Math.abs(e.clientX - sx));
       var dt = e.timeStamp - lt; if (dt > 0) vx = (lx - e.clientX) / dt;
       lx = e.clientX; lt = e.timeStamp;
     });
-    function up() {
+    var up = function () {
       if (!down) return; down = false;
       var v = calm.matches ? 0 : vx * 16;
       (function coast() {
@@ -210,16 +260,15 @@
         goTo(nearest());
         setTimeout(function () { row.classList.remove('drag'); }, 320);
       })();
-    }
+    };
     row.addEventListener('pointerup', up);
     row.addEventListener('pointercancel', up);
   }
 
   /* ---- the boards stand up once, the first time the chart is seen ---- */
   var chart = $('.chart');
-  if (chart && !calm.matches && 'IntersectionObserver' in window) {
-    var r0 = chart.getBoundingClientRect();
-    if (r0.top > innerHeight) {
+  if (chart && !calm.matches) {
+    if (chart.getBoundingClientRect().top > innerHeight) {
       chart.classList.add('wait');
       var io = new IntersectionObserver(function (es) {
         if (!es[0].isIntersecting) return;

@@ -1,86 +1,98 @@
 # Sanjee Surf School, interactive: "Where you start"
 
-Station 4e, designer 0.7.1, run `2026-10-midigama-01`, concept 2 in `concepts.md`.
+Station 4e, designer 0.7.1, run `2026-10-midigama-01`, concept 2 in `concepts.md`, reworked after pre-score round 1 (visual 5 with a hard fail, experience 7, critic 68.2 of 80; reports in `reports/2026-10-midigama-01/sanjee-surf-school*.md`).
 Built by `src/make-media.sh` then `src/build.py` (words read from `copy/en.json`; `src/page.css`, `src/page.js`, `src/swell.js`).
 
 ## look-log
 
 Compared with: `dossier/sanjee-surf-school/assets/old-site-desktop.png` and `old-site-mobile.png`. Gold notes read: Global Surf, The Lavish Haven, KA, Layday.
 
-Rounds 1 and 2 were shot with a scratch Playwright harness at the same 1440x900 and 390x844 sizes, not `tools/shoot.mjs`, because I needed frames over time and frame differences. From round 3 on it is `tools/shoot.mjs`. Only `shots/round-6` is kept.
+Rounds 1 to 6 are the first build (img-009 hero); committed in a2854d6. Rounds 1, 2, 7 and 8 were shot with a scratch Playwright harness at 1440x900 and 390x844, not `tools/shoot.mjs`, because I needed frames over time. Rounds 9 to 11 are `tools/shoot.mjs` over http on my own server. Only `shots/round-11` is kept.
 
-**Round 1, first screen.** The composition already holds, a paddler alone on a big aqua band with the title in the calm lower water, but the picture is flat and hazy and the sky reads grey. I will take the haze off with a mild grade baked into the file, so the still and the shader stay one picture. Beside the old site (an empty hotel pool behind tree trunks, a cookie box, no name and no place) it is clearly better at a glance, on plainness and honesty rather than on richness.
+**Round 1, first screen.** A paddler alone on an aqua band, flat and hazy. Mild grade baked in. Clearly better than the old pool on plainness, not on richness.
 
-**Round 2, first screen.** The grade worked, the wave now reads aqua and the sky clean, but a slit-scan over 13 s showed the water only wobbling in place, and at 1x the phone canvas was softer than the still underneath. I added two layers of surface sliding towards the camera and raised the phone canvas to 1.3x. Still clearly better than the old site, which has no water on its first screen that a visitor could read as the school's.
+**Round 2, first screen.** Slit-scan showed the water wobbling in place, phone canvas softer than the still. Added sliding surface layers, phone canvas 1.3x. Still better than the old site.
 
-**Round 3, first screen.** On the phone the sliding layers smeared the lens droplets at the foot of the frame into vertical streaks, and the phone had no menu, and the button's shadow looked heavy over the water. I locked the droplet zone out of the motion, added the phone menu and made the button flat. Clearly better than the old site's phone screen: name, what and where and one action, with no toast and no cookie box.
+**Round 3, first screen.** Layers smeared the lens droplets, no phone menu, heavy button shadow. Droplet zone locked, menu added, button flat. Better than the old phone screen.
 
-**Round 4, whole page.** Below the hero the concept's `#D6DAE0` read as a grey admin panel at this size, the board chart was grey blobs on grey stripes, card prices did not line up, the sticky header showed text through it, and the message panel left a hole beside it. I lightened the large panels to `#E6E9ED`, redrew the boards in `#91B0C8` with a stringer, and aligned the prices. I also made the header and bar opaque and centred "Before you book" against the panel. Clearly better than the old 30,387 px page, which has no menu on a phone and its first price at 2,522 px.
+**Round 4, whole page.** Grey admin panel, grey chart, misaligned prices, see-through header. Lightened panels, recoloured boards, aligned prices, opaque header.
 
-**Round 5, whole page.** The interaction shots found the phone's rolling digits showing halves of two numbers, the nav floating short of the right edge on the hero (held off it by the hidden button), and tablet boards drawn huge. The first-screen frame also showed the surface layers at 16 px per cycle fogging the lower water, which is the "effect hiding the photograph" the concept warned about. I fixed the digit window, slid the nav with a transform, capped the chart scale and halved the travel to 8 px per cycle, after which the frame is as crisp as the still; I also fixed the two tap targets under 44 px and added a skip link. The fog is the one I would have missed without comparing frames against the still.
+**Round 5, whole page.** Broken rolling digits, nav short of the edge, oversized tablet boards, surface layers fogging the water. All fixed, travel halved.
 
-**Round 6, whole page, last.** Sheets checked at both widths for overflow, overlap and unreadable text: none at rest; the fixed header and bar pass over text while scrolling, as any sticky bar does, and nothing rests under them. Reduced motion and no WebGL show the same picture with the canvas hidden and the tiles still working; no JS hides tiles and message panel, keeps every word and link, and on a phone drops the hero button because the bar carries the action. **Why this beats the old site:** it opens on the sea and a person going out rather than a hotel pool, names the school and the town, reaches a price one scroll down rather than 2,500 px, and replaces five taps, three typed fields and a card with one tap.
+**Round 6, whole page.** Final check of the first build. It then failed pre-score: flat, soft hero, shimmer nobody notices, dashboard middle. The critics were right: I had logged the anchored ripples and the soft phone hero as blocking and still built everything else around them.
+
+**Round 7, first screen, new hero.** img-018 full-bleed with the shader on its water only, title in the sky. This is a different class of first screen: sun, swell lines, surfers and a breaking wave in one frame, sharp on a phone. What is wrong: the glints near the shore are soft pale blobs and smudge the reflection, because the noise stretches with perspective. I will drive the glints from photograph coordinates. Beside the old pool it is clearly better at a glance, and for the first time richer as a picture as well as clearer.
+
+**Round 8, first screen.** The finer glints then sprinkled an orange speckle all over the blue-grey foam and looked like noise, and a phone crop made it obvious. I gated glints and the specular pass to pixels already reflecting warm light, and made them sparse and stretched along the water. Frames are now clean; the slit-scan shows the bands sloping as a front passes, the sky difference is black, and frame-to-frame PSNR is about 20 dB against the first build's 35.8. Clearly better than the old site.
+
+**Round 9, whole page.** White ground, photo tiles, Courgette and coloured boards replace the dashboard and read as a surf school. Still wrong: the title ran under the wordmark at scroll 80 to 120 because the header only turned solid when the whole title had left; fins stuck out through the rails on the round tails; "2 / hours" broke across a line in the Private card. All three fixed; the header check below now shows solid from y=80 at both widths. Clearly better than the old 30,387 px page, and it now has a picture wall of its own to set against the old mosaic.
+
+**Round 10, whole page.** On a phone the Week paragraph inside its card made the swipe row 507 px tall, leaving 125 to 150 px of white under the two shorter cards, the same hole the critics marked, moved outside the card. I moved the paragraph directly under the row at every width. It names the Week Intensive itself, so it still reads with it.
+
+**Round 11, whole page, last.** Sheets checked at both widths for overflow, overlap and unreadable text: none at rest; fixed header and bar pass over text while scrolling and nothing rests under them. Reduced motion, no WebGL and `file://` show the same still with the canvas hidden; tiles work without WebGL. No JS hides tiles and message panel and keeps every word and link. **Why this beats the old site:** a real sunset on this coast with moving water, surfers and the school's name in place of a hotel pool; the level question answered with the school's own pictures; a price one scroll further on instead of 2,500 px; one tap instead of five taps, three fields and a card.
 
 ### Skills, one line each
-- `/animate`, `/design-motion-principles` (create mode, marketing weighting): tokens `--ease-out` `cubic-bezier(.23,1,.32,1)`, press 120 ms, state 240 ms, travel 300 ms; the spring is a sampled damped spring with about 1.05 overshoot. Hover gated.
-- `/find-animation-opportunities`: taken: boards stand up once with a 50 ms stagger the first time the chart is seen; the pill fades in on first choice. Rejected: section entrances (custom.md: no reveals on headings), print hover.
-- `/review-animations`, read and applied by hand: the pill's `width` no longer transitions. Left in: the rolling digits and pill at 300 ms, at the top of the budget, deliberate. Menu closes without an exit animation.
-- `/emil-design-eng`: first 90 lines read only, as the decision framework; I did not work through the whole checklist.
-- `/mobile-native`: tap highlight on `html`, no overscroll override (this is a document), controls unselectable, `overscroll-behavior-x: contain` on swipe rows, safe areas, 16 px date input. Nothing tried on real hardware.
-- `/impeccable`: `craft-floor.md` read and applied (selection colour, caret, tabular numerals). **Its scripts were not run**: the launcher downloads and runs a binary into `~/.impeccable/`, outside this worktree. So no `detect --json` and no `/impeccable critique` by its engine.
-- `inspect.mjs`, last run, 5 FAIL and 7 WARN, all kept on purpose or false:
-  - `shadow`: the cards' soft shadow; custom.md allows it and it lifts them off the panel.
-  - `icon-cards` and `eyebrow`: the "for you" dot, not an icon or a kicker.
-  - `palette-terracotta`: `#d7a98b` is the loading colour behind the sunset, covered by the photograph.
-  - `covered-text`: sticky bars passing over text in transit.
-  - `edge-text` at 768: not traced; I believe it is the next card in the swipe row.
-  - `statement-length`: the `spot` sentence set large, copy unchanged.
-  - `size-count`: 19 sizes, partly from clamps. A real, small untidiness, not fixed.
-  - `no-footage`: no usable video (Alon, concepts §2).
-  - `side-scroll`: the concept's peek rows.
-  - `lopsided` and `empty-middle`: not seen in the render, the print fills that side.
-  - `still-page`: it counts DOM movement; the moving thing is a canvas.
+- `/animate`, `/design-motion-principles` (first build): tokens kept. `--ease-out`, press 120 ms, state 240 ms, travel 300 ms, sampled spring.
+- `/find-animation-opportunities`: boards stand up once with a 50 ms stagger; new this round: the ring slides to the chosen tile, fit chips rise 5 px on appearing, bar preview slides up.
+- `/review-animations`, read and applied by hand: the ring moves on transform only; its width and height change instantly. Fit chips use a keyframe entrance because they are redrawn, not toggled: a minor finding I accept.
+- `/mobile-native`: as before; bar and header safe areas; 16 px date input. Nothing on real hardware.
+- `/emil-design-eng`: first 90 lines only. `/impeccable`: `craft-floor.md` only; its scripts download a binary outside this worktree, so `detect` and `critique` did not run.
+- `inspect.mjs`, last run over http, 4 FAIL and 6 WARN, all false or kept:
+  - `icon-cards`, `eyebrow`: the "for you" dot, and "All prices are as of" sitting above the next section's line. Neither is a kicker.
+  - `edge-text` at 768: not traced; I believe the next card or board in a swipe row.
+  - `covered-text`: the sticky header in transit.
+  - `size-count`: 18 sizes, partly clamps. Real, small, not fixed.
+  - `no-footage`: no usable video. `side-scroll`: the peek rows. `still-page`: it counts DOM movement, the moving thing is a canvas.
+  - `lopsided`, `empty-middle`: not seen in the render.
 
 ## images
 
-| File in `dist/img/` | Asset | Licence note | Use |
-|---|---|---|---|
-| `hero-img-009-1600.webp` (inlined in the HTML, see conflicts) | img-009, 1600x1067 | business-owned, sanjee-surf.com | hero, full-bleed, mild grade |
-| `feature-img-018-wide-1440`, `-tall-900` | img-018, 1440x1920 | business-owned, sanjee-surf.com | feature band |
-| `print-img-007-962`, `-640` | img-007, 962x938 | business-owned, sanjee-surf.com. **Concept's rights flag: may be a beach photographer's** | Sanjee print |
-| `print-img-006-848` | img-006, 848x480 | business-owned, Google listing | print at 500 css px |
-| `print-img-014-1000` | img-014, 1280x960 | business-owned, sanjee-surf.com | print at 500 css px |
-| `back-img-002-wide-2000`, `-tall-900` | img-002, 2000x1500 | business-owned, Google listing | closing band |
+| File in `dist/img/` | Asset | Measured | Licence note | Use |
+|---|---|---|---|---|
+| `hero-img-018-wide-1440`, `-tall-1000` | img-018 | 1440x1920 | business-owned, sanjee-surf.com | hero, full-bleed |
+| `og-img-018-1200.jpg` | img-018 | | as above | OG image |
+| `tile-img-005-380` | img-005 | 832x464 | business-owned, Google listing. Identifiable, consent is an owner item | Total beginner |
+| `tile-img-006-384`, `print-img-006-848` | img-006 | 848x480 | business-owned, Google listing | I can stand up; print |
+| `tile-img-009-520`, `feature-img-009-wide-1600`, `-near-1040` | img-009 | 1600x1067 | business-owned, sanjee-surf.com | Intermediate; feature band |
+| `tile-img-010-520` | img-010 | 1600x1067 | business-owned. **Open rights flag** (concepts §6) | Advanced |
+| `tile-img-012-750` | img-012 | 750x558 | business-owned, sanjee-surf.com | Not sure |
+| `print-img-007-962`, `-640` | img-007 | 962x938 | business-owned. **Open rights flag, may be a beach photographer's** | Sanjee print |
+| `print-img-014-1000` | img-014 | 1280x960 | business-owned | print |
+| `back-img-002-wide-2000`, `-tall-900` | img-002 | 2000x1500 | business-owned, Google listing | closing band |
 
-No review photo and no atmosphere image is used, so no credit line is needed. img-036, `usable: false` images and the concept's rejected images are not used. No generated imagery.
+No review photo and no atmosphere image, so no credit line is needed. img-036, `usable: false` images and the concept's rejected images are not used. No generated imagery.
 
-Hard constraint 5, from the other businesses' mockups opened in this run (Cheeky Monkey unique, Lotus calm and interactive, Coconut interactive and calm): those first screens show a drawn board window on a beach, a carved gate, a shaded garden and a thatched roof, each with land or a building and a name as title. This one is open sea with no land and no building, a dark what-and-where title low on the water, a cobalt button and no Booking.com. Below the fold it has level tiles, a message that writes itself and boards drawn to scale, none of which they have.
+**Hard constraint 5.** Other businesses' first screens in this run: a drawn board window on a beach, a carved gate, a shaded garden, a thatched roof. This is an open sunset sea with moving water and no building. Within this business, unique also carries img-018, small, as one print among five; calm leads on img-002. I did not open the sibling mockups.
 
 ## gaps
 
-- Video: none usable (concepts §2). The swell stands in for it.
+- Video: none usable. The swell stands in for it.
 - Hours, cancellation, reply time, rental deposit amount: not on the page, by instruction.
-- Instagram: omitted, all socials dead (F11). No social icons.
+- Instagram: omitted, all socials dead (F11).
 - Beginner Lesson private or group: no row, by instruction.
-- Schema gaps the mockup hard-wires are those in concepts §6: hero line, rental kind and duration (labels are split on ", "), board sizes, wave paragraph order, tour groups by position, plus message wording, tile labels and board outlines in the template.
+- Schema gaps as in concepts §6, plus level-tile pictures (no field ties a picture to a level) and the tiles' labels. Board colours, widths and shapes live in the template.
 
 ## conflicts
 
-**Blocking under the rule "a flaw is fixed or listed", for the human before the pick:**
-1. **The ripple pattern does not travel.** A slit-scan over 25 s on a real GPU shows the photograph's ripples staying at fixed rows with a small wobble, and only faint light bands moving down through them. It is shimmer and passing light on a still, not a swell moving through the water. Larger travel fogged the photograph (round 5), so this is the limit of one still; footage would fix it. **I have never watched it play**: I judged stills, 8x frame differences and slit-scans.
-2. **The hero is soft on a phone,** 1.26 source px per css px, as the concept predicted. Not fixable at 4e with this material. A 3000 px frame would fix it.
+**The hard-fail rule, measured.** Rubric: "has photographs ≥ 1920 px and the first screen carries none of them". Measured with `sips`: img-018 is 1440x1920, img-002 is 2000x1500. **img-018 clears the rule only by its long edge**, the reading in concepts §2 and the one the visual critic proposed. Its width is 1440, so a critic reading the rule by width would still call this a hard fail. img-002 is the only own landscape at 1920 px wide. I kept img-002 as the closing reward (the experience critic asked to keep it) because it is calm's lead and using it as this hero would cost divergence. Above 1440 wide the hero is upscaled: 1.33x at 1920, then capped at a 1920 px stage.
 
-**Departures, each with its reason:**
-3. Concept says amplitude at most 3 css px. The swell lift is at most 3, but ripple refraction adds roughly 1 to 2 and the surface travel is up to 4 either way near the camera (8 per cycle). At 3 alone the slit-scan showed only a wobble.
-4. Concept says canvas at most 1x DPR. Phones run 1.3x, because at 1x the moving water was visibly softer than the still.
-5. Hero is graded (contrast 1.1, saturation 1.18, gamma 0.98) and re-encoded at q84, 71 KB. The haze made the first screen flat.
-6. Tint: large panels use `#E6E9ED`, not `#D6DAE0`, and the boards use `#91B0C8` and `#C9D8E4`, not the tint. At full size the concept's value read as a grey admin panel, and tint boards were barely visible.
-7. Boards lie down on a phone, in rows with one edge as baseline, instead of standing: six labels do not fit in 350 px. Length is still to one scale. **Lengths are from the copy; outline widths and shapes are illustrative and no width is printed.**
-8. Tile code is not lazy-booted (Kube): CSS and JS are inline at 4e, about 22 KB of JS uncompressed, so nothing is gained until 4g.
-9. Hero image inlined as a data URI at 4e only, about 95 KB of the HTML: a `file://` page may not hand a `file://` image to WebGL, and the look loop and critics shoot from `file://`. Gold pages inline images too. 4g serves a normal file.
-10. Title sits in the lower third, not centred (the concept's own departure, for the human).
-11. Date field has its label beside it, not floating, to match the chip rows; the calibration asks for floating labels on forms.
+**Departures from concepts.md, each because it looks better on screen or a critic asked:**
+1. **Hero moved from img-009 to img-018.** The concept's "one person paddles at one wave" is gone from the first screen; the paddler moves to the feature band and the Intermediate tile. Concept's hero is calibrated to a person; this one has small figures only. The experience critic judged a person going out to be what a learner imagines, so this trades that for picture quality and clear motion.
+2. **Title in the sky**, high on the screen, not centred vertically (calibration) and not low on the water (concept). On desktop it sits on the clouds: contrast worst cell 6.2:1, but the cloud texture sits behind it.
+3. **Swell amplitude up to 8 css px** at the near water, against the concept's 3, as the coordinator asked. Refraction adds an estimated 2 or so more. Flat-water glitter added on the sun's path.
+4. **Figures are not masked** in this picture. They are small and ride the water; the horizon, sun and tower are locked. First-brief condition ("paddler stays masked") relaxed by the coordinator's later brief.
+5. **Phone canvas up to 2x, water only**, against the concept's 1x, so the moving water is as sharp as the still.
+6. **Section-title face is Courgette**, not Covered By Your Grace, chosen from six rendered candidates on "Sanjee, head instructor" and "Other waves, as we rate them". Not used elsewhere in the run or gold.
+7. **Colour:** grey panels removed. White ground plus a pale water tint `#E6F2F4`, a lightened value I chose from img-009's water rather than a direct sample; `#D6DAE0` is gone. Sand strip `#EFE3CF` under the boards.
+8. **Boards** coloured per type from the school's photographs (soft-top red and blue from img-005, wave aqua and lower water from img-009, deck and rail from img-007, sunset orange from img-018, by eye from those samples). Lengths are from the copy; widths, shapes and fins are illustrative and no width is printed. Red and blue suggest the soft-tops but the chart does not claim those colours are what is rented. On a phone they stand in a swipe row at one scale.
+9. **Tile pictures added** (visual critic, custom.md). The ring slides instead of the concept's pill. A picture beside a level is illustration, not a claim about who is in it. img-005 shows identifiable people and img-010 has an open rights flag.
+10. **Week paragraph** is off its card (concept: "¶2 on the Week card"), directly under the Week column on wide screens and directly under the swipe row on phones, as the visual critic proposed. On a phone it is therefore not next to the Week card while another card is in view; its first words name the Week Intensive.
+11. **Prefill "the Galle Fort tour", "Private Coaching"**: "tour" is from [4]. Message links: every WhatsApp button carries the built message. A card, tour or board button keeps its own subject and adds level, date and people, so it matches `#send` except for its subject, by design: a card about the Beginner Lesson should not send "Private Coaching".
+12. **Hero is a normal file**, so `file://` shows the still (WebGL refuses a `file://` image). Over http it runs. Moved out of base64 at the critic's suggestion: cacheable, and first load is now 402 KB uncompressed instead of 232.
+13. Tile code not lazy-booted: inline at 4e. Date field label beside it, not floating.
 
-**Wording to check, interface words of mine:** "5 private sessions | 2 hours each" (`lessons[2].duration_as_written` "5 days x 2 hours" and `.note`; en.json has `durationMin` 120 only), "per lesson", "per day", "for you", "Your message", "Add to my message", "In my message", "Languages:", the tile labels, and the visitor's message sentences, built from [0]'s level words.
+**Wording of mine to check:** "2 hours each" (coordinator's exception), "as of 5 November 2026" on the rating (capture date), "per lesson", "per day", "for you", "Your message", "Add to my message", "In my message", "Languages:", tile labels, and the message sentences.
 
-**Check-design scope:** run on this page's path, not `<slug>`, because the slug form writes into the sibling variants' `shots/`.
+**Check scope:** `check-design` run on this page's path, not `<slug>`, because the slug form writes into sibling `shots/`. `check-design` and `audit-mockup` were scratch copies differing only in port (9323, 9324).
+
+**Blocking:** none that I know of. The previous two are addressed: the water now visibly changes and the phone hero is 2.2 source px per css px. **I have still not watched it play** (stills, differences, slit-scans), and nothing has run on a real phone.

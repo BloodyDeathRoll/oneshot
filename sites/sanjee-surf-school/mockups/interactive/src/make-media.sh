@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 # Every image of the Sanjee Surf School interactive mockup ("Where you start", designer 0.7.1, station 4e),
 # made from the business's own photographs in dossier/sanjee-surf-school/assets
-# (tools/setup.sh / tools/link-assets.sh first). All six sources are license: business-owned; no credit
-# line is required. No video (none on disk), no generated imagery, no stock.
-# Needs ffmpeg and cwebp. Run from anywhere.
-# Crops only, scaled down never up.
+# (tools/setup.sh / tools/link-assets.sh first). All sources are license: business-owned; no credit line is
+# required. img-007 and img-010 carry the concept's open rights flag. No video (none on disk), no generated
+# imagery, no stock. Needs ffmpeg and cwebp. Run from anywhere. Crops only, scaled down never up.
 # media: sites/sanjee-surf-school/mockups/interactive/dist/img/**
 set -euo pipefail
 cd "$(dirname "$0")/../../../../.."
@@ -13,23 +12,31 @@ D=sites/sanjee-surf-school/mockups/interactive/dist/img
 mkdir -p "$D"; rm -f "$D"/*
 T=$(mktemp -d); trap 'rm -rf "$T"' EXIT
 
-# img <source file> <out-name> <crop w:h:x:y or -> <max width> [quality]
+# img <source file> <out-name> <crop w:h:x:y or -> <max width> [quality] [extra filter]
 img() {
-  local src="$A/$1" out="$D/$2.webp" crop="$3" w="$4" q="${5:-74}" vf=""
+  local src="$A/$1" out="$D/$2.webp" crop="$3" w="$4" q="${5:-74}" extra="${6:-}" vf=""
   [ "$crop" != "-" ] && vf="crop=$crop,"
   vf="${vf}scale='min($w,iw)':-2:flags=lanczos"
+  [ -n "$extra" ] && vf="$vf,$extra"
   ffmpeg -v error -y -i "$src" -vf "$vf" "$T/x.png"
   cwebp -quiet -q "$q" -m 6 -sharp_yuv "$T/x.png" -o "$out"
 }
 
-# Hero: img-009, 1600x1067, whole frame. A mild grade only (the haze off the sky and the water, no hue
-# shift). The WebGL swell samples the same file, so the still and the moving water are one picture.
-ffmpeg -v error -y -i "$A/img-009.webp" -vf "eq=contrast=1.1:saturation=1.18:gamma=0.98" "$T/x.png"
-cwebp -quiet -q 84 -m 6 -sharp_yuv "$T/x.png" -o "$D/hero-img-009-1600.webp"
+# Hero: img-018, 1440x1920 measured. The shader's crop numbers in build.py must match these two crops.
+img img-018.webp hero-img-018-wide-1440 1440:1100:0:400 1440 76
+img img-018.webp hero-img-018-tall-1000 1040:1920:110:0 1000 74
+ffmpeg -v error -y -i "$A/img-018.webp" -vf "crop=1440:756:0:500,scale=1200:-2" -q:v 4 "$D/og-img-018-1200.jpg"
 
-# Feature band: img-018 (1440x1920). Landscape crop for wide screens, taller crop for phones.
-img img-018.webp feature-img-018-wide-1440 1440:720:0:300 1440 72
-img img-018.webp feature-img-018-tall-900  1440:1560:0:120 900 72
+# Level tiles, 4:5, each at or under its source size.
+img img-005.jpg  tile-img-005-380 380:464:230:0 380 80
+img img-006.jpg  tile-img-006-384 384:480:280:0 384 80
+img img-009.webp tile-img-009-520 640:800:450:160 520 76 "eq=contrast=1.1:saturation=1.18:gamma=0.98"
+img img-010.webp tile-img-010-520 640:800:400:180 520 76
+img img-012.webp tile-img-012-750 - 750 76
+
+# Feature band: img-009, graded, the haze off. Wide for screens, a closer crop for phones.
+img img-009.webp feature-img-009-wide-1600 1600:860:0:0 1600 80 "eq=contrast=1.1:saturation=1.18:gamma=0.98"
+img img-009.webp feature-img-009-near-1040 1040:800:250:130 1040 80 "eq=contrast=1.1:saturation=1.18:gamma=0.98"
 
 # Sanjee: img-007 (962x938), whole frame, a print never drawn wider than its source.
 img img-007.webp print-img-007-962 - 962 76

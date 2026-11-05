@@ -36,8 +36,14 @@ ALT = {
     'band': 'One surfer paddling towards a low aqua wave, seen from behind, with a pale sky above the horizon',
     'sanjee': 'Sanjee smiling as he walks out of the shallows with a surfboard under his arm, a rust-coloured cliff behind him',
     'beach': 'An empty sand beach with wooden posts in the foreground, white water breaking on the left and palms running down the coast under a deep blue sky',
+    'sunset': 'An orange sunset over a breaking shore wave, with surfers small and dark in the water further out',
+    'poles': 'Bare stilt poles standing in the shallows under a blue sky with thin cloud, seabirds perched on two of them',
+    'dogs': 'Four beach dogs in silhouette on the sand, looking out to sea at a red sun on the horizon',
+    'silver': 'Sun high behind thin cloud, silver light on the shore waves and on the wet sand',
+    'thatch': 'Three thatched parasols on the sand with lines of surf breaking behind them under a grey sky',
+    'coast': 'Tall palms on a grassy headland with a path and beach stalls, clean lines of swell coming in behind',
     'wave': 'A surfer turning across a green wave with white water breaking behind',
-    'sand': 'Footprints on wet gold sand beside a line of foam, with bare stilt poles standing in the shallows and birds perched on them',
+    'sand': "Footprints on wet gold sand beside a lacy line of foam at the water's edge",
 }
 
 
@@ -82,6 +88,7 @@ def book(about=None, cls='', label=None):
     return f'<a class="btn btn-wa {cls}" href="{E(wa(about))}"{aria}>{ICON["wa"]}<span>{E(label or CTA)}</span></a>'
 
 
+skip = '<a class="skip" href="#lessons">Skip to lessons</a>'
 NAV = [('lessons', 'Lessons'), ('boards', 'Boards'), ('sanjee', 'Sanjee'), ('waves', 'Waves'), ('tuktuk', 'Tuk-tuk'), ('finding', 'Finding us')]
 nav_links = ''.join(f'<a href="#{i}">{E(t)}</a>' for i, t in NAV)
 
@@ -130,9 +137,16 @@ def page(main):
 <title>{E(NAME)} | {E(HERO_TITLE)}</title>
 <meta name="description" content="{E(C['tagline'])}">
 <meta name="theme-color" content="#FFFFFF">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{E(NAME)} | {E(HERO_TITLE)}">
+<meta property="og:description" content="{E(C['tagline'])}">
+<meta property="og:image" content="img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{fonts}">
+<link rel="stylesheet" href="{fonts}" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="{fonts}"></noscript>
 <link rel="preload" as="image" href="{src('hero-m')}" media="(max-width: 767px)">
 <link rel="preload" as="image" imagesrcset="{srcset(['hero-1400', 'hero-2000'])}" imagesizes="100vw" media="(min-width: 768px)">
 <script>document.documentElement.classList.add('js')</script>
@@ -159,9 +173,10 @@ def pipe(items):
     return '<p class="pl">' + ''.join(f'<span class="pi">{E(i)}</span>' for i in items) + '</p>'
 
 
-def print_img(name, alt, cls=''):
+def print_img(name, alt, cls='', eager=False):
     w, h = wh(name)
-    return f'<div class="print {cls}"><img src="{src(name)}" width="{w}" height="{h}" alt="{E(alt)}" loading="lazy" decoding="async"></div>'
+    load = 'decoding="async"' if eager else 'loading="lazy" decoding="async"'
+    return f'<div class="print {cls}"><img src="{src(name)}" width="{w}" height="{h}" alt="{E(alt)}" {load}></div>'
 
 
 def usd(n): return f'USD {n}'
@@ -186,7 +201,7 @@ def lesson_row(L):
     details = []
     if L['label'] == 'Week Intensive':      # level is null, so no level words; sessions and length together (concepts §3)
         assert L['level'] is None
-        details = [L['groupSize'], hours(L['durationMin'])]
+        details = [L['groupSize'], hours(L['durationMin']) + ' each']   # "each": dossier lessons[2].note, "5 private 2-hour sessions"; the coordinator's one exception
         extra = paras('Lessons', [1])
     else:
         details = [level_words(L['level']), hours(L['durationMin'])]
@@ -213,7 +228,7 @@ def lesson_row(L):
 def rating(tag='p', cls=''):
     date = '5 November 2026'
     assert RATING['capturedAt'] == '2026-11-05' and RATING['platform'] == 'google'
-    return f"""<{tag} class="rate {cls}"><a href="{E(RATING['url'])}" rel="noopener"><span class="rate-score">{RATING['score']}/{RATING['scale']}</span> <span class="rate-words"><span>{RATING['count']} Google reviews</span> <span class="rate-date">{date}</span></span></a></{tag}>"""
+    return f"""<{tag} class="rate {cls}"><a href="{E(RATING['url'])}" rel="noopener"><span class="rate-score">{RATING['score']}/{RATING['scale']}</span> <span class="rate-words"><span>{RATING['count']} Google reviews</span> <span class="rate-date">as of {date}</span></span></a></{tag}>"""
 
 
 # ---- rentals: the copy keeps kind and duration in one label; split here for the table (concepts §6, schema gap)
@@ -242,9 +257,8 @@ def tour_row(t):
     name = t['label'].split(' (')[0]
     return f"""
     <li class="tour">
-      <div class="tour-text"><h3>{E(t['label'])}</h3><p>{E(t['note'])}</p></div>
-      <p class="tour-price">{usd(t['price'])}</p>
-      <a class="btn btn-wa btn-round" href="{E(wa('the ' + name + ' tour'))}" aria-label="{E(CTA)} about the {E(name)} tour">{ICON['wa']}</a>
+      <div class="tour-text"><h3><span class="tour-name">{E(t['label'])}</span> <span class="tour-price">{usd(t['price'])}</span></h3><p>{E(t['note'])}</p></div>
+      <a class="btn btn-round" href="{E(wa('the ' + name + ' tour'))}" aria-label="{E(CTA)} about the {E(name)} tour">{ICON['wa']}</a>
     </li>"""
 
 
@@ -255,14 +269,23 @@ quotes = ''.join(f"""
       </figure>""" for i, t in enumerate(C['testimonials']))
 assert all(t['source'] == 'google' for t in C['testimonials'])
 
-creds = [f"{c['label']}, {c['issuer']}" for c in C['credentials']] + [LANG[x] for x in C['languagesSpoken']]
+creds = [f"{c['label']}, {c['issuer']}" for c in C['credentials']]
+langs = [LANG[x] for x in C['languagesSpoken']]
+langs[0] = 'Languages: ' + langs[0]
+PRICE_DATE = 'All prices are as of 5 November 2026.'
+assert PRICE_DATE in BLOCKS['Before you book']['body']
+
+
+def spaced_phone(n):
+    assert n == '+94774004422'   # copied from contact.phone; only spaces added
+    return '+94 77 400 4422'
 spot_first, spot_rest = C['spot'].split('. ', 1)
 waves = BLOCKS['Other waves, as we rate them']['body'].split('\n\n')
 assert len(waves) == 3
 
 
 def contact_buttons(long=False):
-    call = f"Call {C['contact']['phone']}" if long else 'Call'
+    call = f"Call {spaced_phone(C['contact']['phone'])}" if long else 'Call'
     mail = f"Email {C['contact']['email']}" if long else 'Email'
     return f"""{book()}
       <a class="btn btn-soft" href="{TEL}">{ICON['phone']}<span>{E(call)}</span></a>
@@ -309,23 +332,6 @@ body = f"""
   <p class="feature">{E(C['featureLine'])}</p>
 </section>
 
-<section class="sec boards" id="boards">
-  <div class="split s57 wrap-wide">
-    <div class="split-text">
-      <h2>Board rental</h2>
-      {paras('Board rental')}
-    </div>
-    <div class="rates">
-      <table role="table">
-        <thead><tr role="row"><th role="columnheader" scope="col">Duration</th><th role="columnheader" scope="col">Soft-top</th><th role="columnheader" scope="col">Hardboard</th><th role="columnheader" scope="col" class="note"><span class="vh">Note</span></th></tr></thead>
-        <tbody>{rate_rows}</tbody>
-      </table>
-      <ul class="extras">{extra_rows}</ul>
-      {book(about='board rental', cls='block-book')}
-    </div>
-  </div>
-</section>
-
 <section class="sec sanjee" id="sanjee">
   <div class="split s57 wrap-wide">
     {print_img('sanjee', ALT['sanjee'], 'print-sanjee')}
@@ -333,6 +339,7 @@ body = f"""
       <h2>{E(C['copyBlocks'][1]['heading'])}</h2>
       <div class="said">{paras('Sanjee, head instructor')}</div>
       {pipe(creds)}
+      {pipe(langs)}
     </div>
   </div>
 </section>
@@ -346,21 +353,45 @@ body = f"""
   </div>
 </section>
 
-<section class="sec outside" id="waves">
-  <div class="split s75 wrap-wide">
+<section class="sec boards" id="boards">
+  <div class="split s57 wrap-wide">
     <div class="split-text">
-      <h2>{E(spot_first)}.</h2>
+      <h2>Board rental</h2>
+      {paras('Board rental')}
+    </div>
+    <div class="rates">
+      <table role="table">
+        <thead><tr role="row"><th role="columnheader" scope="col">Duration</th><th role="columnheader" scope="col">Soft-top</th><th role="columnheader" scope="col">Hardboard</th><th role="columnheader" scope="col" class="note"><span class="vh">Note</span></th></tr></thead>
+        <tbody>{rate_rows}</tbody>
+      </table>
+      <ul class="extras">{extra_rows}</ul>
+      <p class="pricedate">{PRICE_DATE}</p>
+      {book(about='board rental', cls='block-book')}
+    </div>
+  </div>
+</section>
+
+<section class="sec outside" id="waves">
+  <div class="spot wrap-wide">
+    <h2 class="h-text">{E(spot_first)}.</h2>
+    <div>
       <p>{E(spot_rest)}</p>
       <p>{E(C['season'])}</p>
     </div>
-    {print_img('beach', ALT['beach'])}
+  </div>
+  <div class="mosaic">
+    {print_img('m-sunset', ALT['sunset'])}
+    {print_img('m-poles', ALT['poles'])}
+    {print_img('m-beach', ALT['beach'])}
+    {print_img('m-dogs', ALT['dogs'])}
+    {print_img('m-silver', ALT['silver'])}
+    {print_img('m-thatch', ALT['thatch'])}
   </div>
   <div class="ladder wrap-wide">
     <h2>{E(C['copyBlocks'][6]['heading'])}</h2>
-    <p class="w1">{E(waves[0])}</p>
-    <p class="w2">{E(waves[1])}</p>
-    {print_img('wave', ALT['wave'], 'w-print')}
-    <p class="w3">{E(waves[2])}</p>
+    <p>{E(waves[0])}</p>
+    <p>{E(waves[1])}</p>
+    <p>{E(waves[2])}</p>
   </div>
 </section>
 
@@ -369,8 +400,14 @@ body = f"""
     <h2>By tuk-tuk</h2>
     {paras('By tuk-tuk')}
   </div>
-  <ul class="tours wrap-wide">{''.join(tour_row(t) for t in tours)}
+  <div class="surf-tours wrap-wide">
+    <ul class="tours">{''.join(tour_row(t) for t in tours[:3])}
+    </ul>
+    {print_img('coast', ALT['coast'])}
+  </div>
+  <ul class="tours tours-9 wrap-wide">{''.join(tour_row(t) for t in tours[3:])}
   </ul>
+  <p class="pricedate wrap-wide">{PRICE_DATE}</p>
 </section>
 
 <section class="closing" id="finding">
@@ -392,7 +429,6 @@ body = f"""
 </main>
 
 <footer class="foot">
-  <svg class="tide film" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true"><path d="{WASH['line']}V140H0Z"/></svg>
   <svg class="tide" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true"><path d="{WASH['line']}V140H0Z"/></svg>
   <p class="foot-name">{E(NAME)}</p>
   <div class="actions">{contact_buttons(long=True)}</div>
@@ -400,9 +436,9 @@ body = f"""
 </footer>"""
 
 if FIRST_SCREEN_ONLY:
-    out = page(header + '<main>' + hero + '</main>' + bar)
+    out = page(skip + header + '<main id="main">' + hero + print_img('wave', ALT['wave'], 'hero-print', eager=True) + '</main>' + bar)
 else:
-    out = page(header + '<main>' + hero + body + bar)
+    out = page(skip + header + '<main id="main">' + hero + print_img('wave', ALT['wave'], 'hero-print', eager=True) + body + bar)
 
 (DIST / 'index.html').write_text(out)
 print('wrote', DIST / 'index.html', len(out.encode()), 'bytes')
