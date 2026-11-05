@@ -68,6 +68,7 @@ input{caret-color:var(--book)}
 .js .hdr{position:fixed;transition:color var(--state) ease,background-color var(--state) ease,box-shadow var(--state) ease,padding var(--state) var(--ease-out)}
 .hdr.solid{background:#fff;padding-block:8px;box-shadow:0 8px 28px -22px rgba(24,29,16,.5)}
 .brand{font-weight:800;font-size:19px;letter-spacing:-.01em;min-height:44px;display:inline-flex;align-items:center;margin-right:auto}
+.brand h1{font:inherit;letter-spacing:inherit}
 .nav{display:flex;align-items:center;gap:2px;transition:transform var(--travel) var(--ease-out)}
 .js .nav{transform:translateX(var(--cta,0px))}
 .js .hdr.on .nav{transform:none}
@@ -92,14 +93,14 @@ input{caret-color:var(--book)}
 .stage canvas{position:absolute;left:0;top:0;width:100%;opacity:0;transition:opacity .25s ease}
 @media (min-width:701px){
   .stage::after{content:"";position:absolute;inset:0 0 auto;height:46%;pointer-events:none;mix-blend-mode:multiply;background:linear-gradient(to bottom,rgb(146,120,126) 0,rgb(152,126,132) 46%,rgb(208,192,196) 74%,#fff 100%)}
-  h1{color:#fff!important}
+  .hero-title{color:#fff!important}
   .hdr{color:#fff}
   .hdr.solid{color:var(--ink)}
   .menu{color:var(--ink)}
   .hdr:not(.solid) a:focus-visible,.hero a:focus-visible{outline-color:#fff}
 }
 .hero-copy{position:absolute;inset:clamp(96px,14.5vh,150px) 0 auto;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 var(--gut);gap:clamp(16px,2.4vh,24px)}
-h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spacing:-.025em;color:var(--ink);max-width:16em}
+.hero-title{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spacing:-.025em;color:var(--ink);max-width:16em}
 
 /* where you start: on white, with the school's own pictures */
 .where{padding:clamp(48px,6vw,88px) var(--gut) 0;max-width:calc(var(--max) + 2*var(--gut));margin-inline:auto}

@@ -7,7 +7,7 @@
 
   /* header: solid as soon as the title reaches it, so the title never prints through the wordmark.
      The header's button and the phone bar come in when the hero's own button has gone. */
-  var hdr = $('.hdr'), bar = $('.bar'), heroBtn = $('.hero-btn'), hdrCta = $('.hdr-cta'), h1 = $('h1');
+  var hdr = $('.hdr'), bar = $('.bar'), heroBtn = $('.hero-btn'), hdrCta = $('.hdr-cta'), h1 = $('.hero-title');
   function ctaRoom() { hdr.style.setProperty('--cta', (hdrCta && hdrCta.offsetWidth ? hdrCta.offsetWidth + 24 : 0) + 'px'); }
   ctaRoom();
   addEventListener('resize', ctaRoom);

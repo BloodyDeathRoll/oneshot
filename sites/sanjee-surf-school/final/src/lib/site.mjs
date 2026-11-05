@@ -99,6 +99,159 @@ export function outline(L0, W, nose, tail) {
   return `${right} ${mid} ${left}`
 }
 
+/* ---------- SEO plumbing (station 4h; the rules of sites/lotus-surf-house/final). Every value is read from content.json
+   or labels.json; nothing here is written as a fact. ---------- */
+/* Preview or real domain? (Shahar's decision, 2026-09-22; the same rule as the other finals.) A build is a PREVIEW when it
+   has no production domain of its own: no SITE_URL, or one on *.workers.dev or localhost. A preview carries noindex, a
+   robots.txt that disallows everything and no sitemap. Its one absolute URL is og:image, so the pitch link has a picture;
+   whatever names the page's own address (canonical, hreflang, og:url, JSON-LD @id / url / image) waits for a real domain. */
+export const isPreviewUrl = (url) => {
+  if (!url) return true
+  let host
+  try { host = new URL(url).hostname.toLowerCase().replace(/^\[|\]$/g, '') } catch { return true }
+  return host === 'workers.dev' || host.endsWith('.workers.dev')
+    || host === 'localhost' || host.endsWith('.localhost')
+    || host === '127.0.0.1' || host === '::1'
+}
+export const SITE_URL = import.meta.env.SITE ? new URL(import.meta.env.SITE) : null
+export const IS_PREVIEW = isPreviewUrl(SITE_URL)
+const abs = (u) => (SITE_URL ? new URL(u, SITE_URL).href : null)
+const PROD_URL = IS_PREVIEW ? null : SITE_URL?.href ?? null
+
+/* the meta description: owner-written fields only, joined as sentences, cut at a sentence boundary to 155 */
+export const metaDescription = (parts, max = 155) => {
+  let out = ''
+  for (const p of parts.filter(Boolean).map((x) => x.trim().replace(/[.\s]+$/, ''))) {
+    const next = out ? `${out} ${p}.` : `${p}.`
+    if (next.length > max) break
+    out = next
+  }
+  return out
+}
+
+/* head tags after <title> and the description */
+export const seoHead = ({ title, description, image }) => {
+  const ogImg = image && abs(image.src)
+  return [
+    PROD_URL ? `<link rel="canonical" href="${e(PROD_URL)}">` : '',
+    PROD_URL ? `<link rel="alternate" hreflang="en" href="${e(PROD_URL)}">` : '',
+    PROD_URL ? `<link rel="alternate" hreflang="x-default" href="${e(PROD_URL)}">` : '',
+    '<meta property="og:type" content="website">',
+    `<meta property="og:site_name" content="${e(BIZ)}">`,
+    `<meta property="og:title" content="${e(title)}">`,
+    description ? `<meta property="og:description" content="${e(description)}">` : '',
+    PROD_URL ? `<meta property="og:url" content="${e(PROD_URL)}">` : '',
+    ...(ogImg ? [
+      `<meta property="og:image" content="${e(ogImg)}">`,
+      '<meta property="og:image:type" content="image/jpeg">',
+      `<meta property="og:image:width" content="${image.w}">`,
+      `<meta property="og:image:height" content="${image.h}">`,
+      image.alt ? `<meta property="og:image:alt" content="${e(image.alt)}">` : '',
+    ] : []),
+    `<meta name="twitter:card" content="${ogImg ? 'summary_large_image' : 'summary'}">`,
+  ].filter(Boolean).join('\n')
+}
+
+const COUNTRY = { 'sri lanka': 'LK' }
+/* contact.address (free text) -> PostalAddress, "street…, town [postcode], country" (playbook §6). Never adds a part. */
+const postalAddress = (text) => {
+  const parts = (text ?? '').split(/\s*(?:\n|,)\s*/).map((x) => x.trim()).filter(Boolean)
+  if (!parts.length) return null
+  const a = { '@type': 'PostalAddress' }
+  const iso = parts.length >= 3 ? COUNTRY[parts[parts.length - 1].toLowerCase()] : null
+  const town = iso ? /^(?:(\d{4,6})\s+)?(.+?)(?:\s+(\d{4,6}))?$/.exec(parts[parts.length - 2]) : null
+  if (town) {
+    a.streetAddress = parts.slice(0, -2).join(', ')
+    if (town[1] || town[3]) a.postalCode = town[1] || town[3]
+    a.addressLocality = town[2]
+    a.addressCountry = iso
+  } else a.streetAddress = parts.join(', ')
+  return a
+}
+/* geo from contact.mapUrl when it is a Google Maps place URL with its pin (!3d<lat>!4d<lng>); else none */
+const pinFromMapUrl = (u) => {
+  const m = /!3d(-?\d{1,2}\.\d+)!4d(-?\d{1,3}\.\d+)/.exec(u ?? '')
+  if (!m) return null
+  const lat = +m[1], lng = +m[2]
+  return Math.abs(lat) <= 90 && Math.abs(lng) <= 180 ? { lat, lng } : null
+}
+const LD_TYPE = {
+  surf_camp: ['LodgingBusiness', 'SportsActivityLocation'], beach_lodging: 'LodgingBusiness',
+  surf_school: 'SportsActivityLocation', board_rental: 'SportsActivityLocation',
+  surf_shop: 'SportingGoodsStore', shaper: 'Store', other: 'LocalBusiness',
+}
+const PLATFORM = { google: 'Google', booking: 'Booking.com', hostelworld: 'Hostelworld', agoda: 'Agoda', tripadvisor: 'Tripadvisor', airbnb: 'Airbnb' }
+
+/* SCHEMA GAP alternateNames[]: the other name is the one "Finding us" prints; other wording, no property */
+const altName = () => (paras(block('info', 2)).join(' ').match(/You may also see us as ([^.]+)\./) ?? [])[1] ?? null
+/* SCHEMA GAP team[] (a brand module, not for this type): the person the "about" heading names, with that heading's role and
+   nothing else. Languages sit on the person because the page lists them in that person's section. Credentials stay out:
+   self-reported, no certificate found (dossier credentials[].status). */
+const headPerson = () => {
+  const m = /^([^,]+),\s*(.+)$/.exec(block('about', 0)?.heading ?? '')
+  if (!m) return null
+  return { '@type': 'Person', name: m[1], jobTitle: m[2], ...((S.languagesSpoken ?? []).length ? { knowsLanguage: S.languagesSpoken } : {}) }
+}
+/* The one rating row the page shows, attributed to its platform, with the count and date the page prints beside it. */
+const ratingLd = () => {
+  const r = S.ratings?.[0]
+  if (!r || r.score == null || !r.count || !r.capturedAt || !PLATFORM[r.platform]) return null
+  return {
+    '@type': 'AggregateRating', ratingValue: r.score, bestRating: +r.scale, reviewCount: r.count,
+    author: { '@type': 'Organization', name: PLATFORM[r.platform] },
+    ...(httpsOnly(r.url) ? { url: r.url } : {}),
+    description: `${t(L.reviews, { n: r.count })}, ${t(L.as_of, { date: date(r.capturedAt) })}`,
+  }
+}
+/* Lesson prices as the cards print them. An undated price is not published here (playbook §7), so with no "as of" sentence
+   on the page there is neither priceRange nor makesOffer. */
+const lessonsPriced = () => (S.lessons ?? []).filter((l) => l.price != null && l.currency)
+const priceRange = () => {
+  const ls = lessonsPriced(), day = PRICE_DATE?.match(/as of ([^.]+)\./)?.[1]
+  if (!ls.length || !day || new Set(ls.map((l) => l.currency)).size > 1) return null
+  const ps = ls.map((l) => l.price), lo = Math.min(...ps), hi = Math.max(...ps)
+  return `${block('offer', 0)?.heading ?? ''} ${ls[0].currency} ${lo === hi ? lo : `${lo}–${hi}`}, as of ${day}`.trim()
+}
+const offersLd = () => (PRICE_DATE ? lessonsPriced().map((l) => ({
+  '@type': 'Offer', name: l.label, price: l.price, priceCurrency: l.currency,
+  itemOffered: { '@type': 'Service', name: l.label },
+  description: `${l.currency} ${l.price}${l.unit === 'per_lesson' ? ` ${L.per_lesson}` : ''}. ${PRICE_DATE}`,
+})) : [])
+/* the photographs the page shows, for a real domain only: the link-preview crop first */
+const pageImages = () => ['og', 'hero-wide', 'feature-wide', 'print-wave', 'sanjee-2', 'print-beach', 'back-wide'].map((id) => P(id)?.src).filter(Boolean).map(abs)
+
+/* JSON-LD for the business: one block, every value from content.json and on the page. Left out on purpose: opening hours (the
+   sources conflict, openingHours is empty), founder, owner and legal operator, deposit, ReserveAction (no booking engine on
+   this page), testimonials as review. The action is the page's own: a message on WhatsApp. */
+export const businessLd = ({ description } = {}) => {
+  const k = S.contact ?? {}
+  const postal = postalAddress(k.address), pin = pinFromMapUrl(k.mapUrl), images = PROD_URL ? pageImages() : []
+  const alt = altName(), person = headPerson(), rating = ratingLd(), range = priceRange(), offers = offersLd()
+  const same = [...new Set((S.ratings ?? []).map((r) => httpsOnly(r.url)).filter(Boolean))]
+  return {
+    '@context': 'https://schema.org',
+    '@type': LD_TYPE[S.businessType] ?? 'LocalBusiness',
+    ...(PROD_URL ? { '@id': `${PROD_URL}#business`, url: PROD_URL } : {}),
+    name: BIZ,
+    ...(alt ? { alternateName: alt } : {}),
+    ...(description ? { description } : {}),
+    ...(images.length ? { image: images } : {}),
+    ...(PHONE ? { telephone: PHONE } : {}),
+    ...(EMAIL ? { email: EMAIL } : {}),
+    ...(postal ? { address: postal } : {}),
+    ...(pin ? { geo: { '@type': 'GeoCoordinates', latitude: pin.lat, longitude: pin.lng } } : {}),
+    ...(MAP ? { hasMap: MAP } : {}),
+    ...(same.length ? { sameAs: same } : {}),
+    ...(person ? { member: person } : {}),
+    // No aggregateRating: Shahar's ratings-markup decision (KA, 2026-09-22) holds for every site. The page still shows the rating.
+    ...(range ? { priceRange: range } : {}),
+    ...(offers.length ? { makesOffer: offers } : {}),
+    ...(WA_DIGITS ? { potentialAction: { '@type': 'CommunicateAction', name: L.primary, target: wa(M.generic) } } : {}),
+  }
+}
+/* JSON in a <script>: '<' escaped so no value can close the element */
+export const ldJson = (o) => JSON.stringify(o).replace(/</g, '\\u003c')
+
 export const ICON = {
   wa: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 .9.4 1.9 1 2.6 1.2 1.7 2.7 3 4.6 3.8.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.2Z"/></svg>',
   phone: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.4 9 3c.5-.1 1 .2 1.2.7l1.1 2.8c.2.4 0 .9-.3 1.2L9.5 9.1a12.6 12.6 0 0 0 5.4 5.4l1.4-1.5c.3-.3.8-.5 1.2-.3l2.8 1.1c.5.2.8.7.7 1.2l-.4 2.4c-.1.9-.9 1.6-1.8 1.6C10.7 19 5 13.300 5 5.200c0-.9.7-1.700 1.600-1.800Z"/></svg>',

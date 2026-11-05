@@ -10,6 +10,7 @@ import { SWELL } from '../lib/slots.mjs'
 import {
   S, L, M, P, e, t, paras, ps, block, wa, lessonAsk, date, ICON, BIZ, WA_DIGITS, PHONE, PHONE_PRINT, EMAIL, ADDRESS, MAP,
   HERO_LINE, PRICE_DATE, rentalTable, SHOP, TOURS, boards, outline,
+  IS_PREVIEW, metaDescription, seoHead, businessLd, ldJson,
 } from '../lib/site.mjs'
 
 const PRIMARY = L.primary
@@ -31,7 +32,7 @@ const contactButtons = (withMap = true) =>
 
 const navLinks = L.nav.map(([n, i]) => `<a href="#${i}">${e(n)}</a>`).join('')
 const header = `<header class="hdr" id="top">
-  <a class="brand" href="#top">${e(BIZ)}</a>
+  <a class="brand" href="#top"><h1>${e(BIZ)}</h1></a>
   <nav class="nav" aria-label="${e(L.nav_aria)}">${navLinks}</nav>
   ${btn(GENERIC, PRIMARY, 'btn-s hdr-cta needs-js')}
   <details class="menu">
@@ -54,7 +55,7 @@ const stage = heroW ? `<div class="stage"${swellOn ? ` data-swell data-crop-wide
   </div>` : '<div class="stage"></div>'
 const hero = `<section class="hero" aria-label="${e(BIZ)}">
   <div class="hero-copy">
-    <h1>${e(HERO_LINE)}</h1>
+    <p class="hero-title">${e(HERO_LINE)}</p>
     ${btn(GENERIC, PRIMARY, 'hero-btn')}
   </div>
   ${stage}
@@ -308,7 +309,10 @@ const bar = `<div class="bar">
   ${PHONE ? `<a class="ico ico-l" href="tel:${e(PHONE)}" aria-label="${e(t(L.call_aria, { phone: PHONE_PRINT }))}">${ICON.phone}</a>` : ''}
 </div>`
 
-const title = `${BIZ} | ${HERO_LINE}`
+/* 4h: name first for the brand query (base.md 6), then what and where; the name alone if that passes 60 characters */
+const title = `${BIZ} | ${HERO_LINE}`.length <= 60 ? `${BIZ} | ${HERO_LINE}` : BIZ
+/* 4h: owner fields only, cut at a sentence to 155: the tagline, the first sentence of spot, the language line */
+const description = metaDescription([S.tagline, (S.spot ?? '').split(/(?<=\.)\s/)[0], paras(who)[1]])
 const SITE = {
   wa: WA_DIGITS, msg: M, yourMessage: L.your_message, soft: L.soft, hard: L.hard,
   levels: Object.fromEntries(L.tiles.map((x) => [x.key, x.say])),
@@ -316,7 +320,8 @@ const SITE = {
 }
 /* 4g: og:image's host is the build's SITE_URL (astro.config.mjs); no site, no tags */
 const og = P('og')
-const ogUrl = og && Astro.site ? new URL(og.src, Astro.site).href : null
+const head = seoHead({ title, description, image: og && { ...og, alt: heroPhoto?.alt } })
+const ld = ldJson(businessLd({ description }))
 const body = [hero, where, message, boardsSec, feature, sanjee, quotes, waves, tours, back, finding].join('\n')
 ---
 <!DOCTYPE html>
@@ -325,13 +330,9 @@ const body = [hero, where, message, boardsSec, feature, sanjee, quotes, waves, t
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{title}</title>
-<meta name="description" content={S.tagline}>
-<meta property="og:title" content={title}>
-<meta property="og:description" content={S.tagline}>
-<meta property="og:type" content="website">
-{ogUrl && <meta property="og:image" content={ogUrl}>}
-{ogUrl && <meta property="og:image:width" content={String(og.w)}>}
-{ogUrl && <meta property="og:image:height" content={String(og.h)}>}
+{IS_PREVIEW && <meta name="robots" content="noindex, nofollow">}
+<meta name="description" content={description}>
+<Fragment set:html={head} />
 <meta name="theme-color" content="#c9b9a8">
 <meta name="color-scheme" content="light">
 <script is:inline>document.documentElement.className='js'</script>
@@ -349,5 +350,7 @@ const body = [hero, where, message, boardsSec, feature, sanjee, quotes, waves, t
 <Fragment set:html={footer} />
 <Fragment set:html={bar} />
 <script is:inline set:html={`var SITE=${JSON.stringify(SITE).replace(/</g, '\\u003c')};${swellJs}${pageJs}`}></script>
+{/* 4h: the JSON-LD at the end of <body>, out of the critical path (as the other finals) */}
+<script type="application/ld+json" is:inline set:html={ld}></script>
 </body>
 </html>

@@ -1,23 +1,23 @@
 {
  "slug": "sanjee-surf-school",
  "variant": "../final",
- "measured_at": "2026-11-05T20:03:10.942Z",
+ "measured_at": "2026-11-05T20:22:57.089Z",
  "first_load": {
   "requests": 9,
   "hosts": [
-   "localhost:9402"
+   "localhost:9414"
   ],
   "third_party_hosts": [],
-  "bytes_total": 378944,
-  "bytes_html": 106378,
+  "bytes_total": 382028,
+  "bytes_html": 109462,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 49800,
   "bytes_images": 222766,
   "largest_image_bytes": 136174,
-  "lcp_ms": 480,
+  "lcp_ms": 504,
   "cls": 0,
-  "dcl_ms": 1700
+  "dcl_ms": 1702
  },
  "scroll": {
   "early": {
@@ -101,7 +101,7 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 7734,
+  "text_length": 7735,
   "booking_links_reachable": 2,
   "visible_images": 6
  },
