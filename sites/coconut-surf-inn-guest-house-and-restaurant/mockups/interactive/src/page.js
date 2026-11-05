@@ -14,6 +14,9 @@
 
   /* ---------- header sticks (desktop) and the phone bar slides up once the hero has gone */
   const hero = $('.hero'), top = $('.top'), bar = $('#bar');
+  /* the blurred placeholder under the hero photo is a loading state only: dropped once the photo is in */
+  const himg = $('.hero-img');
+  if (himg) { const ok = () => himg.classList.add('loaded'); himg.complete && himg.naturalWidth ? ok() : himg.addEventListener('load', ok, { once: true }); }
   new IntersectionObserver(([e]) => {
     top.classList.toggle('stuck', !e.isIntersecting);
     bar.classList.toggle('up', !e.isIntersecting);
@@ -94,37 +97,49 @@
     track.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => set(Math.round(track.scrollLeft / track.clientWidth))); }, { passive: true });
   });
 
-  /* ---------- drag rows: momentum, and a rubber band at both ends (mouse; touch scrolls natively) */
-  $$('[data-drag]').forEach((row) => {
-    if (!fine) return;
-    let down = false, x0 = 0, s0 = 0, lastX = 0, lastT = 0, v = 0, moved = false, raf = 0;
-    const max = () => row.scrollWidth - row.clientWidth;
-    const band = (o) => { row.style.transform = o ? `translateX(${o}px)` : ''; };
-    row.addEventListener('pointerdown', (e) => {
-      if (e.pointerType !== 'mouse' || e.button !== 0) return;
-      cancelAnimationFrame(raf); down = true; moved = false; x0 = lastX = e.clientX; s0 = row.scrollLeft; lastT = e.timeStamp; v = 0;
-      row.style.transition = '';
+  /* ---------- the reviews: a paged carousel (round 3). One dot per page of what fits (3 / 2 / 1),
+     arrows that stop at the ends, swipe and trackpad scroll natively; every control is 44 px or more. */
+  $$('[data-revs]').forEach((rv) => {
+    const track = $('.cards', rv), cards = [...track.children], ctrl = $('.rev-ctrl', rv), dotsBox = $('.dots', rv);
+    const prev = $('.prev', rv), next = $('.next', rv), count = $('.rev-count', rv);
+    let per = 1, pages = 1, page = 0, dots = [];
+    const x = (k) => cards[k].offsetLeft - cards[0].offsetLeft;
+    const mark = (n) => {
+      page = n; dots.forEach((d, k) => d.setAttribute('aria-current', k === n ? 'true' : 'false'));
+      count.textContent = `${n + 1} of ${pages}`;
+      prev.disabled = n === 0; next.disabled = n >= pages - 1;
+    };
+    const go = (n) => { n = Math.max(0, Math.min(pages - 1, n)); track.scrollTo({ left: x(Math.min(n * per, cards.length - 1)), behavior: calm ? 'auto' : 'smooth' }); mark(n); };
+    const build = () => {
+      per = Math.max(1, Math.round(track.clientWidth / (cards[0].offsetWidth || 1)));
+      pages = Math.ceil(cards.length / per);
+      dotsBox.textContent = '';
+      dots = Array.from({ length: pages }, (_, k) => {
+        const d = document.createElement('button'); d.type = 'button'; d.className = 'dot';
+        d.setAttribute('aria-label', `Reviews ${k * per + 1} to ${Math.min(cards.length, (k + 1) * per)}`);
+        d.addEventListener('click', () => go(k)); dotsBox.append(d); return d;
+      });
+      ctrl.hidden = pages < 2;
+      // more pages than fit as 44 px dots (a phone, one review a page): a counter between the arrows
+      const many = pages > 6; dotsBox.hidden = many; count.hidden = !many;
+      mark(Math.min(page, pages - 1));
+    };
+    prev.addEventListener('click', () => go(page - 1));
+    next.addEventListener('click', () => go(page + 1));
+    let raf = 0;
+    track.addEventListener('scroll', () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const end = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+        mark(end ? pages - 1 : Math.round(track.scrollLeft / Math.max(1, x(Math.min(per, cards.length - 1)))));
+      });
+    }, { passive: true });
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(page + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(page - 1); }
     });
-    addEventListener('pointermove', (e) => {
-      if (!down) return;
-      const dx = e.clientX - x0;
-      if (!moved && Math.abs(dx) > 4) { moved = true; row.classList.add('drag'); row.setPointerCapture?.(e.pointerId); }
-      if (!moved) return;
-      const want = s0 - dx, m = max();
-      row.scrollLeft = want;
-      band(want < 0 ? -want * -.35 : want > m ? -(want - m) * .35 : 0);
-      const dt = Math.max(1, e.timeStamp - lastT); v = (e.clientX - lastX) / dt; lastX = e.clientX; lastT = e.timeStamp;
-    });
-    addEventListener('pointerup', () => {
-      if (!down) return; down = false;
-      row.style.transition = 'transform .45s cubic-bezier(.32,.72,0,1)'; band(0);
-      setTimeout(() => row.classList.remove('drag'), 0);
-      if (!moved || calm) return;
-      let vel = -v * 16;
-      const glide = () => { row.scrollLeft += vel; vel *= .94; if (Math.abs(vel) > .4) raf = requestAnimationFrame(glide); };
-      raf = requestAnimationFrame(glide);
-    });
-    row.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+    build();
+    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(build, 120); });
   });
 
   /* ---------- How do you like to sleep? tiles -> rooms that match -> one room on the stage */

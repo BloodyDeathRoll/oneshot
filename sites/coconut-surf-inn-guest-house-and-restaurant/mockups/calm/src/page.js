@@ -11,13 +11,28 @@
     img.complete ? go() : img.addEventListener('load', go, { once: true });
   }
 
+  // every dot is a 44 x 44 target. What fits the box decides the controls: dots and arrows, dots only, or arrows with
+  // passive pips (4f round 2: no tap target under 44 px)
+  const fits = [];
+  const fit = (box, n) => {
+    const f = () => {
+      const w = box.clientWidth - 8;
+      box.classList.toggle('dotsonly', n * 44 <= w && n * 44 + 88 > w);
+      box.classList.toggle('tight', n * 44 > w);
+    };
+    fits.push(f); f();
+  };
+  addEventListener('resize', () => requestAnimationFrame(() => fits.forEach(f => f())));
+  const pip = (box, i) => box.querySelectorAll('.pips i').forEach((p, j) => p.classList.toggle('on', j === i));
+
   // dot slideshows over a scroll-snap row (350 ms slide; the active dot stretches into a short sky-blue bar)
   for (const show of document.querySelectorAll('[data-show]')) {
     const track = show.querySelector('.track'), slides = [...track.children];
     const ctrl = show.querySelector('.ctrl'), dots = [...show.querySelectorAll('.dot')];
     ctrl.hidden = false;
     let cur = 0;
-    const mark = i => { cur = i; dots.forEach((d, j) => d.setAttribute('aria-current', j === i ? 'true' : 'false')); };
+    const mark = i => { cur = i; dots.forEach((d, j) => d.setAttribute('aria-current', j === i ? 'true' : 'false')); pip(show, i); };
+    fit(show, slides.length);
     const go = i => {
       i = (i + slides.length) % slides.length;
       track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft, behavior: reduce ? 'auto' : 'smooth' });
@@ -44,7 +59,9 @@
       cur = (i + qs.length) % qs.length;
       qs.forEach((q, j) => { q.classList.toggle('on', j === cur); q.setAttribute('aria-hidden', j === cur ? 'false' : 'true'); });
       dots.forEach((d, j) => d.setAttribute('aria-current', j === cur ? 'true' : 'false'));
+      pip(box, cur);
     };
+    fit(box, qs.length);
     dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
     box.querySelector('.prev').addEventListener('click', () => go(cur - 1));
     box.querySelector('.next').addEventListener('click', () => go(cur + 1));
@@ -85,6 +102,16 @@
     const past = !e.isIntersecting;
     top.classList.toggle('solid', past); if (bar) bar.classList.toggle('on', past);
   }, { rootMargin: '-80px 0px 0px 0px' }).observe(hero);
+  const ends = [document.getElementById('book'), document.querySelector('.foot')].filter(Boolean);
+  if (bar && ends.length && 'IntersectionObserver' in window) { const seen = new Set();
+    const eo = new IntersectionObserver(es => { es.forEach(e => e.isIntersecting ? seen.add(e.target) : seen.delete(e.target)); bar.classList.toggle('done', seen.size > 0); });
+    ends.forEach(el => eo.observe(el)); }
+  // under 900 px the phone bar carries booking, so the header steps aside while reading down and returns on the way up;
+  // it never sits over a section title mid-scroll (4f round 2, covered text at 768)
+  if (top) { let y0 = scrollY, raf = 0; const narrow = matchMedia('(max-width: 899px)');
+    addEventListener('scroll', () => { if (raf) return; raf = requestAnimationFrame(() => { raf = 0;
+      const y = scrollY, d = y - y0; if (Math.abs(d) < 6) return;
+      top.classList.toggle('away', narrow.matches && d > 0 && y > innerHeight * .8); y0 = y; }); }, { passive: true }); }
 
   /* Rosa (playbook §4): nothing on first load. When the block nears the viewport, Rosa's widget is framed
      in its reserved box, and the headline is shown from the inlined values if they are under 24 h old, else
@@ -96,7 +123,17 @@
     const compass = d => pts[Math.round(((d % 360) + 360) % 360 / 22.5) % 16];
     const $ = id => document.getElementById(id);
     const plain = () => { now.hidden = true; $('rosa-plain').classList.add('on'); };
+    const off = () => { box.classList.add('off'); box.removeAttribute('data-loading'); box.querySelector('iframe')?.remove(); };
     const widget = () => {
+      // a cross-origin frame that fails still fires 'load', so reachability is checked first (one no-cors request);
+      // nothing is framed until it answers, and without an answer in 8 s the plain link stays, tappable
+      box.setAttribute('data-loading', 'true');
+      const ac = new AbortController(), t = setTimeout(() => { ac.abort(); off(); }, 8000);
+      fetch(box.dataset.rosa, { mode: 'no-cors', signal: ac.signal, credentials: 'omit' })
+        .then(() => { clearTimeout(t); frame(); }, () => { clearTimeout(t); off(); });
+    };
+    const frame = () => {
+      if (box.classList.contains('off')) return;
       const f = document.createElement('iframe');
       f.src = box.dataset.rosa; f.title = box.dataset.title; f.loading = 'lazy';
       f.referrerPolicy = 'strict-origin-when-cross-origin';
@@ -104,7 +141,7 @@
       box.setAttribute('data-loading', 'true');
       const done = () => box.removeAttribute('data-loading');
       f.addEventListener('load', done); setTimeout(done, 4000);
-      f.addEventListener('error', () => { box.classList.add('off'); f.remove(); });
+      f.addEventListener('error', off);
       box.appendChild(f);
     };
     const draw = j => {

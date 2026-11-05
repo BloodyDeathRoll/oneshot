@@ -6,7 +6,7 @@ retyped. Strings written here are interface labels the template owns ("How do yo
 tile, chip and clock labels). Media: src/make-media.sh. CSS and JS: page.css / page.js, inlined.
 Run: python3 sites/coconut-surf-inn-guest-house-and-restaurant/mockups/interactive/src/build.py
 """
-import pathlib, sys
+import base64, pathlib, sys
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from coconut_data import *   # noqa
@@ -14,6 +14,7 @@ from coconut_data import *   # noqa
 DIST = HERE.parent / 'dist'
 def src(name): return f'img/{name}.webp'
 def wh(name): return webp_size(DIST / src(name))
+def b64(name): return 'data:image/webp;base64,' + base64.b64encode((DIST / src(name)).read_bytes()).decode()
 def img(name, alt_id, lazy=True, cls='', sizes=None, set_=None):
     w, h = wh(name)
     extra = ' loading="lazy" decoding="async"' if lazy else ' fetchpriority="high"'
@@ -79,7 +80,7 @@ hero = f'''
   <div class="hero-text">
     <h1 class="hand">{E(NAME)}</h1>
     <p class="where">{E(WHERE)}</p>
-    {book('btn-hero')}
+    <div class="hero-act">{book('btn-hero')}<a class="btn btn-ghost" href="{TEL}" aria-label="Call {E(PHONE_SHOWN)}">{svg('phone')}<span>Call</span></a></div>
   </div>
 </section>'''
 
@@ -136,7 +137,7 @@ listing = ''.join(f'<button class="pick" type="button" data-pick="{r["slug"]}" d
                   for r in order)
 off = BLOCKS['Six kinds of room'][0]
 sleep = f'''
-<section class="sleep tint" id="sleep" aria-labelledby="h-sleep">
+<section class="sleep" id="sleep" aria-labelledby="h-sleep">
   <div class="wrap">
     <div class="sleep-head">
       <h2 class="hand" id="h-sleep">How do you like to sleep?</h2>
@@ -146,7 +147,7 @@ sleep = f'''
       {''.join(tile(g, l, rs, i) for i, (g, l, rs) in enumerate(GROUPS))}
     </div>
     <div class="viewer" id="viewer" role="tabpanel" aria-labelledby="tab-ac">
-      <div class="picks" aria-label="Rooms"><span class="pill" aria-hidden="true"></span>{listing}</div>
+      <div class="picks" role="group" aria-label="Rooms"><span class="pill" aria-hidden="true"></span>{listing}</div>
       <div class="rooms">
         <h3 class="grp" id="grp-ac">{svg('snow')}Rooms with air conditioning and hot water</h3>
         <span class="anchor" id="grp-big" aria-hidden="true"></span>
@@ -170,7 +171,7 @@ inside = f'''
       {paras('Inside the house')}
     </div>
   </div>
-  <ul class="row" data-drag tabindex="0" aria-label="The verandas, photos">
+  <ul class="wrap verandas" aria-label="The verandas, photos">
     {''.join(f'<li>{img(f"r45-{a}-720", a)}</li>' for a in veranda)}
   </ul>
 </section>'''
@@ -221,7 +222,7 @@ janno = next(r for r in REVIEWS if r['first'] == 'Janno')
 food = f'''
 <section class="food" id="restaurant" aria-labelledby="h-food">
   <div class="wrap food-split">
-    {pic('r45', 'img-106', [720, 1152], '(max-width: 899px) 100vw, 50vw', cls='food-img')}
+    {pic('r45', 'img-106', [720, 1152], '(max-width: 899px) 100vw, 440px', cls='food-img')}
     <div class="food-text">
       {clock('moon', 'Until 22:00')}
       <h2 class="hand" id="h-food">The restaurant upstairs</h2>
@@ -231,7 +232,7 @@ food = f'''
         <figcaption>{pipe([f"<b>{E(janno['first'])}</b>, {E(janno['country'])}", janno['src'], E(janno['month'])])}</figcaption></figure>
     </div>
   </div>
-  <div class="wrap">{pic('r219', 'img-099', [1280, 1920], '(max-width: 899px) 100vw, 1600px', cls='night')}</div>
+  <div class="night-band">{pic('r219', 'img-099', [1280, 1920], '(max-width: 899px) 100vw, 1920px', cls='night')}</div>
   <div class="wrap family">
     <h3 class="hand" id="h-family">The Eranga family home</h3>
     <div>{paras('The Eranga family home')}</div>
@@ -271,15 +272,23 @@ def card(r):
     body = ''.join(f'<p>{E(p)}</p>' for p in r['paras'])
     return (f'<li class="card"><blockquote>{body}</blockquote><p class="who"><b>{E(r["first"])}</b>, {E(r["country"])}'
             f'<br>{E(r["src"])} · {E(r["month"])}</p></li>')
-def rl(r, scale):
-    return f'<a class="rl" href="{E(r["url"])}" rel="noopener"><b>{r["shown"]}/{scale}</b> {E(r["name"])}, {r["count"]} reviews, {E(r["day"])}</a>'
 guests = f'''
 <section class="guests" id="guests" aria-labelledby="h-guests">
   <div class="wrap">
-    <h2 class="hand" id="h-guests">11:00, check-out</h2>
-    <p class="rates-line">{''.join(rl(r, sc) for r, sc in ((bk, '10'), (gg, '5'), (ab, '5')))}</p>
+    <div class="g-head">
+      <h2 class="hand" id="h-guests">11:00, check-out</h2>
+      <div class="rates rates-3">{rate(bk, '10')}{rate(gg, '5')}{rate(ab, '5')}</div>
+    </div>
+    <div class="revs" data-revs role="region" aria-roledescription="carousel" aria-label="Guest reviews">
+      <ul class="cards" tabindex="0">{''.join(card(r) for r in REVIEWS if r['first'] not in ('Erin', 'Janno'))}</ul>
+      <div class="rev-ctrl" hidden>
+        <button class="rarw prev" type="button" aria-label="Previous reviews">{svg("prev")}</button>
+        <div class="dots" role="group" aria-label="Choose a page of reviews"></div>
+        <p class="rev-count" aria-live="polite" hidden></p>
+        <button class="rarw next" type="button" aria-label="Next reviews">{svg("next")}</button>
+      </div>
+    </div>
   </div>
-  <ul class="row cards" data-drag tabindex="0" aria-label="Guest reviews">{''.join(card(r) for r in REVIEWS if r['first'] not in ('Erin', 'Janno'))}</ul>
 </section>'''
 
 # ---------------------------------------------------------------------------------- getting here
@@ -346,7 +355,10 @@ page = f'''<!doctype html>
 <link rel="preload" as="image" href="{src('hero-wide-1920')}" imagesrcset="{src('hero-wide-1440')} 1440w, {src('hero-wide-1920')} 1920w" imagesizes="100vw" media="(min-width: 768px)" fetchpriority="high">
 <link rel="preload" as="image" href="{src('hero-tall-600')}" imagesrcset="{src('hero-tall-450')} 450w, {src('hero-tall-600')} 600w" imagesizes="110vw" media="(max-width: 767px)" fetchpriority="high">
 <script>document.documentElement.classList.replace('no-js','js')</script>
-<style>{css}</style>
+<style>{css}
+.hero-img{{background:#b9b8ae url({b64('hero-wide-lq')}) 50% 50%/cover no-repeat}}
+@media (max-width:767px){{.hero-img{{background-image:url({b64('hero-tall-lq')});background-position:30% 50%}}}}
+.hero-img.loaded{{background-image:none}}</style>
 </head>
 <body>
 <a class="skip" href="#sleep">Skip to the rooms</a>

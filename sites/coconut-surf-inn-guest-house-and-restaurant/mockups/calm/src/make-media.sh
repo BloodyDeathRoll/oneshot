@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Every image of the Coconut Surf Inn calm mockup ("The view from the roof", designer 0.7.1, station 4e, round 2),
+# Every image of the Coconut Surf Inn calm mockup ("The view from the roof", designer 0.7.1, station 4e, round 3),
 # made from the business's own Booking.com / Airbnb uploads in
 # dossier/coconut-surf-inn-guest-house-and-restaurant/assets (tools/setup.sh / tools/link-assets.sh first).
 # Needs ffmpeg and cwebp. Run from anywhere. Crops only, scaled down never up: nothing is drawn wider
@@ -31,19 +31,19 @@ w-=w%2; h-=h%2
 print(f"{int(w)}:{int(h)}:{int((W-w)*fx)}:{int((H-h)*fy)}")' "$@"
 }
 
-# ---- first screen: img-009, the view from the roof (1920x1440). Round 2 (4f round 1):
-# Desktop is the SKY composition: 1810x1018 from the very top, so the bottom edge sits on the sea and the reef
-# whitewater, above the blue tarp, the tin roof, the wires and the poles (all below y 1025). The open blue sky
-# carries the title; this is what makes calm's first screen differ from unique's (white top, palms-to-green).
-# Phone: 1400x1090 from the top-left, the same cut line, wide enough for the one-time pan that ends on the reef.
-# A light shadow lift and +6% contrast / +10% saturation on the flat sky (a grade, not a tint).
+# ---- first screen: img-009, the view from the roof (1920x1440). Round 3 (4f round 2: "85% generic sky, the place is gone"):
+# Desktop 1440x810 from (380, 290): the bottom edge stops at y 1100, on the beach under the reef, above the wires
+# (y 1110+ on the left), the tin roofs and the tarp roof (y 1200+). The horizon now sits at ~80% and the sea, the reef
+# whitewater, the beach shack and the green fill the bottom fifth; the big palm moves to the left third, clear of the title.
+# Phone 800x850 from (700, 250): blue sky over the two centre palms; the one-time pan runs 180 px and ends on the reef
+# whitewater at x 1160, left of the poles in the dark trees (x 1373+). +6% contrast / +10% saturation (a grade, not a tint).
 GRADE="eq=contrast=1.06:saturation=1.10,curves=all='0/0.02 0.35/0.37 1/1'"
-img img-009 hero-d    "1810:1018:40:0" 1810 72 "$GRADE"
-img img-009 hero-1280 "1810:1018:40:0" 1280 70 "$GRADE"
-img img-009 hero-m    "1400:1090:0:0"  1400 70 "$GRADE"
+img img-009 hero-d    "1440:810:380:290" 1440 74 "$GRADE"
+img img-009 hero-1280 "1440:810:380:290" 1280 72 "$GRADE"
+img img-009 hero-m    "800:850:700:250"  800 74 "$GRADE"
 # tiny placeholders of the same crops, inlined by build.py as the hero's own background (never a flat box on a slow load)
-img img-009 hero-d-lq "1810:1018:40:0" 40 40 "$GRADE,gblur=sigma=1"
-img img-009 hero-m-lq "1400:1090:0:0"  40 40 "$GRADE,gblur=sigma=1"
+img img-009 hero-d-lq "1440:810:380:290" 40 40 "$GRADE,gblur=sigma=1"
+img img-009 hero-m-lq "800:850:700:250"  40 40 "$GRADE,gblur=sigma=1"
 
 # ---- rooms: each photo scaled so its short side is <= 720 (never up); CSS crops 4:5 (desktop, fan rooms) or 3:2
 # (A/C rooms on the phone). The lead of each room is its best wide frame, not a bed close-up (4f round 1).

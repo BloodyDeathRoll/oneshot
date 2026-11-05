@@ -225,3 +225,71 @@ None blocking.
 - 0 images without alt; skip link present;
 - 45 taps under 44 px **wide**. All are 44 px tall: the slideshow dots (24×44) and the active dot (36×44). They are listed for 4g.
 - The numbers not in the copy are Rosa's (0.4, 0.6, 02:30) and the year.
+
+## look-log, round 3 (from the 4f round-2 reports; the last allowed round)
+
+Inputs: the round-2 sections of `reports/2026-10-midigama-01/coconut-surf-inn-guest-house-and-restaurant{,.visual,.experience}.md` (visual 7, experience 8, critic 73.5/80). Kept as they passed: the 4-up A/C row, the sunset and night full-width bands, the whole-hammock roof band, flat buttons, Booking.com as the one primary action, ink Satisfy on the sky, the banana-leaf green, the blurred hero placeholder. Same method: `tools/shoot.mjs` on :8921 (sheets opened at 1440 and 390), plus scratch Playwright captures: the phone pan start and end, reduced motion, no JS, a throttled cold load, Rosa blocked and live, a pixel-contrast probe and a layout-shift trace.
+
+**Round 15, first screen (fixes 1, 2 and the doubled name).**
+- What was wrong: the round-2 desktop crop stopped at the horizon, so about 85% of the first screen was generic sky and the sea was a strip at the foot. The name was on the first screen twice (wordmark + title). There was no Call on the first screen.
+- I measured img-009 on a 100 px grid at full size. The horizon is at y 950, the reef whitewater at y 1010–1050 and the beach at y 1060–1100. The first wire on the left crosses at about y 1110, the tin and tarp roofs start at y 1200, and the poles sit in the dark trees right of x 1373. So the clean bottom edge is y 1100, the same line as unique's crop. No other own frame shows the sea and the reef at ≥ 1200 px without a date stamp or power lines (img-087, img-088 and img-111 carry both), so img-009 stays.
+- Desktop: 1440×810 from (380, 290). The horizon now sits at about 80%. The bottom fifth is the sea, the reef breaking white, the beach shack under its blue roof, the sand and the green. The big palm moves to the left third, clear of the title. Shown at 1440×900 it is drawn at 1.0–1.1× its source.
+- Phone: 800×850 from (700, 250). The pan is now 180 source px over 12 s. It starts on the two centre palms over the sea and ends on the reef whitewater and the beach shelter at x 1160, left of the poles. Reduced motion rests on that end frame.
+- Hero actions: the Booking.com button, then a labelled, secondary **Call** (ink outline on a faint sky-white). It comes after the booking button in the DOM, wraps under it on the phone, and is visually quieter.
+- The header wordmark is hidden while the hero is in view, and fades in with the white header, so the first screen says the name once. With JS off the header never turns solid, so the wordmark never shows; the h1 carries the name.
+- Ink contrast behind the lines (p10 / min): desktop title 6.7 / 6.5, line 6.8 / 6.5; phone pan start 6.1 / 5.2 and 6.1 / 5.8; phone pan end 7.2 / 6.8 and 6.9 / 6.7.
+- `node tools/funnel.mjs http://localhost:8921/ --depth 3`: **primary engine, hero engine** ("Check dates on Booking.com", 0 taps to flow), clicks_to_book 1, CTA above the fold.
+- Against the bar: the Booking.com fold is an empty entrance hall under a search bar. This opens on the house's own view to Coconuts: palms, the sea and the reef breaking, with the name once, what it is, and Book + Call. The round-2 sky-only version lost this; it is back.
+
+**Round 16, whole page (fixes 3–8).**
+- Fix 3, Rosa fallback: a failed cross-origin frame still fires `load`, so the frame could not tell it had failed. Now the page sends one `no-cors` probe to the widget URL when the block nears the viewport, and frames Rosa only after the probe answers. If it fails, or nothing answers in 8 s, no frame is added. The box gets `.off` and the plain link "See today's forecast for Coconuts on Rosa" sits on top. Tested with every `rosa*` host aborted, at 390 and 1440: 0 iframes, `elementFromPoint` at the link's centre is the link, and a real tap / click requests `https://rosa.surf/spot/weligama-west`. With Rosa live the frame loads (1 iframe). 0 Rosa requests on first load. This costs one request more than "the JSON plus the frame" (the critic noted the same on interactive). It is a fact for 4g.
+- Fix 4, fan rooms: the row is now a header line (the fan label on the left; check-in/out and the house note on the right), then two wide cards with the photo and the text side by side, text centred. There is no column of empty tint. At 1440 the fan row is about 480 px tall, down from about 640. On the phone the two fan rooms stay side by side.
+- Fix 5, spacing:
+  - Section padding is down from clamp(72, 9vw, 128) to clamp(56, 6.5vw, 96).
+  - The ratings and quote margins are tighter. The footer bottom padding is 48 px on desktop (110 px only where the phone bar exists).
+  - Margins: the off-centre was the footer's fine print, which had lost its auto margins and sat at x 0. It is centred again, and the inspector no longer flags off-centre.
+  - Below 900 px the header steps aside while you scroll down and returns on the way up. The phone bar carries booking there, so the header never sits over a section title. `h2, h3, h4` get `scroll-margin-top: 96px` for the nav links. The inspector's `covered-text` at 768 (the header over titles) is gone.
+- Fix 6, type: **7 sizes** (14 / 16 / 18 / 22 / 32 / 48 / 64 px, inspector-measured), down from 14. Body is 16, titles are 48 on desktop (32 at the smallest), and the family title is 32.
+- Fix 7, dots: every dot button is 44×44, with the visual dot unchanged (7–8 px, the active one a short bar). `page.js` fits the controls to each box: dots and arrows where both fit; dots only where only the dots fit (the 6-photo A/C cards at 1440 and 390); otherwise 44 px arrows with passive pips, `aria-hidden` and not focusable (the phone fan cards, the phone review carousel). The A/C grid goes to 2 columns from 900 to 1199 px so the dots fit there too. Measured: **0 tap targets under 44 px** at 390 and at 1440 (audit-mockup: 0 of 64).
+- Fix 8, family and reviews: the copy is audited, so I shortened the stretch with type, not words. Meagan's quote is 18 px on the phone (was 19) beside the two short family paragraphs, with tighter spacing. The reviews are 18 px on desktop and 16 px on the phone (were 22 / 19), so the longest (Chloe, 467 characters) holds the stack at about half a phone screen, not a whole one. The phone family + quote run is now about one screen.
+- New flaw found and fixed: the phone h1 at 48 px wrapped to two lines in the fallback face and snapped to one when Satisfy arrived, a 0.0225 load shift. Now it is `nowrap` with its height locked at 1.15em, and the phone size is min(48px, 12vw). Load CLS went to 0.0014. The phone bar is `visibility:hidden` while it is off screen, so it no longer registers a shift either.
+- New: the phone bar steps aside over the closing section and the footer, which carry their own Book and Call.
+- Inspector: 3 FAIL / 3 WARN (round 2: 4 / 7). Kept, each against the concept:
+  - `eyebrow`: the clock labels (concept §3).
+  - `text-shadow`: the white header wordmark and nav over the photo.
+  - `covered-text` at 390: the persistent phone booking bar (playbook §3/§5) over a title at one screen boundary. Probed: `elementFromPoint` there is `nav.bar`.
+  - `no-footage`: no usable video.
+  - `side-scroll`: the slideshows.
+  - `empty-middle` at 768: the two-column room grid's gutter.
+- States:
+  - Reduced motion: still, on the reef end frame.
+  - No JS: the header scrolls away with no wordmark, the slideshows are swipeable rows, the Rosa block is one plain link, and the page is 390 wide.
+  - Cold load (1.6 Mbps / 150 ms / 4× CPU): the blurred placeholder, then the photograph.
+  - Last sheets checked for overflow, overlap and unreadable text: none found.
+
+## hand-off checks (4e), round 3
+
+1. Look loop: rounds 15 (first screen) and 16 (whole page + states) written up above. Every `dist/img` file comes from `src/make-media.sh`, re-run this round. Every flaw named is fixed or listed under conflicts. **pass**
+2. The Booking CTA and `tel:` are asserted against the dossier in `data.py`. The audit tap-through lands on the Booking.com URL. Funnel: primary engine, hero engine, 1 click. **pass**
+3. `node tools/check-design.mjs sites/coconut-surf-inn-guest-house-and-restaurant/mockups/calm/dist/index.html`: 0 problems, 0 warnings. **pass**
+4. `node tools/check-places.mjs coconut-surf-inn-guest-house-and-restaurant`: 0 borrowed images. **pass**
+5. Reduced motion looked at. `audit-mockup`: `scroll.early.cls` 0.0005, `scroll.settled.cls` 0. **pass**
+6. Other businesses: unchanged from round 2. Calm's crop now shares unique's bottom line (y 1100) but not its frame: x 380–1820 against unique's full width, a blue sky against unique's white-lifted top, and a 16:9 at 1440 against unique's palms-to-the-green. **pass**
+7. No usable video. The first screen is img-009 at ≥ 1200 px source, now showing the sea and the reef. Compared with the Booking.com fold above. **pass**
+
+`audit-mockup` (phone, slow 4G, round 3):
+- first load 893 KB (914,413 B; budget 1.5 MB);
+- JS inline only;
+- fonts 56 KB;
+- largest image 79 KB;
+- **LCP 596 ms**; CLS 0.0014; scroll CLS 0.0005 / 0;
+- 0 images without alt; 0 of 64 taps under 44 px;
+- third party: Google Fonts only (allowed at 4e).
+
+## conflicts, round 3
+
+None blocking. The rest of the round-2 list stands, with these changes:
+- **"Desktop hero is mostly sky"** is resolved (round 15). The sky is still the larger part of the frame: about 80% to the horizon. The material sets that limit: below y 1100 come the wires and roofs, and every other sea frame is under 1200 px or date-stamped.
+- **The phone hero** is drawn at about 2× its source on a 2× phone (an 850 px tall crop). It is a little soft. A taller crop brings back the wires.
+- **The Rosa probe** is one extra request when the block nears the viewport. It is the only way to know a cross-origin frame failed. For 4g.
+- **Dots on the phone fan cards and the phone review carousel** are passive pips beside 44 px arrows. 44 px dot buttons do not fit there; swipe and the arrows work.

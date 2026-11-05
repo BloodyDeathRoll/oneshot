@@ -63,7 +63,7 @@ hero = f"""
   <div class="hero-text">
     <h1 class="script">{E(NAME)}</h1>
     <p class="where">{E(HERO_LINE)}</p>
-    {book('btn-hero')}
+    <div class="hero-actions">{book('btn-hero')}{call('btn-hero-call', 'Call')}</div>
   </div>
 </section>"""
 
@@ -75,7 +75,8 @@ def show_html(sid, slides, n, ratio, label):
             f'<div class="ctrl" hidden><button class="arw prev" type="button" aria-label="Previous photo">{svg("prev")}</button>'
             f'<div class="dots" role="group" aria-label="Choose a photo">'
             + ''.join(f'<button type="button" class="dot" aria-label="Photo {i+1}"></button>' for i in range(n))
-            + f'</div><button class="arw next" type="button" aria-label="Next photo">{svg("next")}</button></div></div>')
+            + f'</div><span class="pips" aria-hidden="true">' + '<i></i>' * n
+            + f'</span><button class="arw next" type="button" aria-label="Next photo">{svg("next")}</button></div></div>')
 
 def show(sid, names, ratio, label, sizes, prefix):
     slides = ''.join(
@@ -141,7 +142,7 @@ rooms = f"""
           <p>{E(STAY['note'])}</p>
         </div>
       </div>
-      {fan_cards}
+      <div class="fan-cards">{fan_cards}</div>
     </div>
   </div>
 </section>"""
@@ -199,7 +200,7 @@ eat = f"""
         <p class="hours">{svg('clock')}<span>{E(HOURS_NOTE)}</span></p></div>
     </div>
     <div class="family">
-      <div><h2 class="script title sm" id="h-family">The Eranga family home</h2>{paras('The Eranga family home')}</div>
+      <div class="fam-txt"><h2 class="script title sm" id="h-family">The Eranga family home</h2>{paras('The Eranga family home')}</div>
       <figure class="pull">{quote_html(MEAGAN)}</figure>
     </div>
   </div>
@@ -251,7 +252,7 @@ guests = f"""
     <div class="quotes" data-quotes role="region" aria-roledescription="carousel" aria-label="What guests wrote">
       <ul class="qtrack" tabindex="0">{qs}</ul>
       <div class="ctrl" hidden><button class="arw prev" type="button" aria-label="Previous review">{svg("prev")}</button>
-        <div class="dots" role="group" aria-label="Choose a review">{''.join(f'<button type="button" class="dot" aria-label="Review {i+1}"></button>' for i in range(len(QUOTES)))}</div>
+        <div class="dots" role="group" aria-label="Choose a review">{''.join(f'<button type="button" class="dot" aria-label="Review {i+1}"></button>' for i in range(len(QUOTES)))}</div><span class="pips" aria-hidden="true">{'<i></i>' * len(QUOTES)}</span>
         <button class="arw next" type="button" aria-label="Next review">{svg("next")}</button></div>
     </div>
   </div>
