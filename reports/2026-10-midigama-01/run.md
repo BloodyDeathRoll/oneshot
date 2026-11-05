@@ -15,3 +15,4 @@ Started here on 2026-11-05 for sanjee-surf-school. Earlier businesses in this ru
 - **Pre-score round 3, 2026-11-05, interactive only:** visual 8 (narrow, two conditions), experience 8 (narrow), critic 65.9 of 80 with dimension 3 at the floor of 6 because of a typed-date regression; no hard fail. Must-fix patches follow, without a full re-score.
 - **Must-fix patch, 2026-11-05:** typed date, feature band above 2000 px, foam, hover pill and alt fixed on interactive by a scoped designer agent that did not load the full designer prompt. Not re-scored by the critics, to stay inside the 10M cap: the round 3 scores predate the patch. Typed date re-tested by the session with real key presses. Waiting at gate b.
 - **Gate b, 2026-11-05:** Alon picked interactive. Budget for stations 4g onward not yet decided: 9.58M of the 10M cap recorded at the pick.
+- **Critique, 2026-11-05:** station 5 round 1 passed, 91.2 of 100 (86.9 normalised).

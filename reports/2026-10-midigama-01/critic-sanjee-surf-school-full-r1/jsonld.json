@@ -1,0 +1,77 @@
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "name": "Sanjee Surf School",
+  "alternateName": "Sanjee Surf",
+  "description": "Surf lessons in Weligama, on the south coast of Sri Lanka. Coco Beach is our home spot, a beach break. Lessons are in English as standard.",
+  "telephone": "+94774004422",
+  "email": "sanjee@sanjee-surf.com",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Kadabaddagama",
+   "postalCode": "81700",
+   "addressLocality": "Weligama",
+   "addressCountry": "LK"
+  },
+  "geo": {
+   "@type": "GeoCoordinates",
+   "latitude": 5.9603113,
+   "longitude": 80.4039507
+  },
+  "hasMap": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+  "sameAs": [
+   "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en"
+  ],
+  "member": {
+   "@type": "Person",
+   "name": "Sanjee",
+   "jobTitle": "head instructor",
+   "knowsLanguage": [
+    "en",
+    "si"
+   ]
+  },
+  "priceRange": "Lessons USD 40–160, as of 5 November 2026",
+  "makesOffer": [
+   {
+    "@type": "Offer",
+    "name": "Beginner Lesson",
+    "price": 40,
+    "priceCurrency": "USD",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "Beginner Lesson"
+    },
+    "description": "USD 40 per lesson. All prices are as of 5 November 2026."
+   },
+   {
+    "@type": "Offer",
+    "name": "Private Coaching",
+    "price": 50,
+    "priceCurrency": "USD",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "Private Coaching"
+    },
+    "description": "USD 50 per lesson. All prices are as of 5 November 2026."
+   },
+   {
+    "@type": "Offer",
+    "name": "Week Intensive",
+    "price": 160,
+    "priceCurrency": "USD",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "Week Intensive"
+    },
+    "description": "USD 160. All prices are as of 5 November 2026."
+   }
+  ],
+  "potentialAction": {
+   "@type": "CommunicateAction",
+   "name": "Ask on WhatsApp",
+   "target": "https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20a%20surf%20lesson."
+  }
+ }
+]

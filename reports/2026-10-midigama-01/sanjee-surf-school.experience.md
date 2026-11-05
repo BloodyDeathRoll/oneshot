@@ -657,3 +657,202 @@ A guard added to fix an edge case has to be walked in the ordinary case too: the
 - **The live current site.** Captures only, as instructed.
 - **Calm and unique.** Not re-walked, so the ranking is across rounds.
 - **The gold pages and skills.** I did not re-render the gold pages, or run `/impeccable`, `/emil-design-eng`, the motion audit or the inspector. The bar was the calibration in `references.md`.
+
+
+---
+
+# Station 5, full mode, round 1 (the built site, `final/dist/`)
+
+experience-critic 0.2.0 · station 5 (full), round 1 · run `2026-10-midigama-01` (test, operator alon) · 2026-11-05
+Built by designer 0.7.1, then SEO and AI SEO. Served over http from my own static server on :9460 (plus a gzip server on :9461 inside one script); both stopped afterwards. Written without opening the critic's or the visual-critic's report. I read the designer's `notes.md` before walking, because the brief named its claims to check, and my round 3 section only after walking the page and forming a first impression.
+
+Frames: `reports/2026-10-midigama-01/experience/sanjee-surf-school-full-r1/`. Phone: 390×844 touch through CDP, also 375×667 and 360×640. Laptop: 1440×900, also 1366×768 and 1280×720. Cold loads: CDP 1.6 Mbps / 150 ms RTT, 4× CPU, cache off. WebGL on SwiftShader and on this Mac's M1 through ANGLE Metal.
+
+## Summary
+
+| | "Where you start", final |
+|---|---|
+| **Dimension 8 (experience)** | **8 / 10** |
+| Better than the current site | **yes** |
+| Pass / fail (this critic) | **pass** |
+| Date bug from round 3 | **fixed**, confirmed with real key presses |
+| Late font swap | a real visitor would not notice it |
+| Items left as they were in the port | none worth holding the score for |
+| Taps to WhatsApp | 1 from hero, bar, card, board button or tour; a built message in 2 to 4 taps |
+| A correction to my round 3 | rotating a phone does not delay the swell, it **ends it until the page is reloaded** (below) |
+
+## First seconds
+
+**Timeline, phone, cold** (`montage-phone-cold.jpg`, `phone-sc-*.jpg`, screencast, so real time):
+
+| Time | On screen |
+|---|---|
+| about 0.1 s | White |
+| 0.5–0.6 s | First paint: flat sand colour, wordmark, Menu, title, button. All usable |
+| 0.7 s | The same, still in the fallback face (`phone-sc-0_8s.jpg`) |
+| 0.8–1.0 s | Manrope in. Same line break, same positions, no visible jump |
+| 1.3 s | Still flat sand below the button (`phone-sc-1_5s.jpg`). About a second of this |
+| 1.75 s | The sunset painting down from the top, sand below it (`phone-sc-2s.jpg`) |
+| 2.2–2.3 s | Whole picture, water starting |
+| 2.9 s | Swell at full strength (2.5 s with the HTML gzipped) |
+
+**Measured** (ms from navigation). My plain server sends the HTML uncompressed, as the designer's did. A real host gzips it, so I ran both:
+
+| | Loads | First paint | Hero paint (Element Timing) | Swell first draw | Full strength (draw + 700 ms ramp) |
+|---|---|---|---|---|---|
+| Phone, uncompressed | 6 | 516–616 | 2,140–2,332 | 2,181–2,197 | **2,881–2,897** |
+| Laptop, uncompressed | 2 clean | 568–600 | 2,352–2,484 | 2,324–2,343 | **3,024–3,043** |
+| Phone, gzipped HTML | 5 | 452–532 | 1,768–1,864 | 1,812–1,832 | **2,512–2,532** |
+| Laptop, gzipped HTML | 3 | 432–436 | 1,900–2,000 | 1,942–1,965 | **2,642–2,665** |
+
+The first phone and laptop runs were stalled by my screenshots and are left out (one phone first paint at 1,348, one laptop draw at 2,726). Frame differences in the water agree: phone at its steady level from about 3.2 s uncompressed, and the Metal run's first draw (2,183 phone, 2,324 laptop) matches SwiftShader's.
+
+- **Does the swell make 3 s?** Yes. Uncompressed the phone margin is still about 0.1 s and the laptop is about 0.03 s late. Gzipped, which is what a visitor gets, the margin is 0.35–0.5 s. Nobody will feel the laptop's 30 ms, because the ramp has been visibly moving since 2.3 s.
+- **Why the numbers disagreed:** hero *paint* by Element Timing lands up to 150 ms after the swell's first draw, in the same load (2,316 against 2,181). The shader waits on `img.decode()`, not on the paint entry, so the two aren't comparable, and the compression setting moves everything by about 0.37 s.
+- **Does anything jump?** No. Layout shift over the load was 0 on all phone runs and at most 0.00005 on the laptop. The fallback frame holds the title's line break exactly.
+
+**First seconds communicate:** the name, "Surf lessons in Weligama", one blue button, then a sunset and a breaking wave close to you that begins to move by itself. It's a surf school by the words at once. The picture says this coast at dusk, not a lesson, unchanged from round 3. The flat sand second before the picture is the weakest part, and it holds readable words and a working button, so I don't count it against the page.
+
+**The swell, frames** (`sheet-swell-phone.jpg`): near water lifts and falls, glitter runs in the sun's path, sky and figures stay locked, no jelly. The foam holds its shape as a wave that lifts but never breaks. That's the limit of a cinemagraph of one still, and it reads as water. Judged from frames, not by eye at speed.
+
+## The walk
+
+Phone `sheet-phone-a.jpg`, `sheet-phone-b.jpg` (12,985 px); laptop `sheet-laptop.jpg` (9,508 px). No console errors and no off-site requests in either full scroll.
+
+- **Pulls you on:** the picture tiles, right after the hero, where you pick yourself; prices on the next thumb; the boards standing to scale on sand; Sanjee on the wave with the quotes; the closing bay.
+- **Attention drops:** the tuk-tuk stretch, 2,557 of 12,985 px on a phone (20 % of the page) for twelve rows with long notes, nine of them outings that aren't surfing. Also Board rental's paragraphs before the chart on a phone, which is a lot of reading, though the traveller does need it.
+- **The story after one scroll:** what, where, and who it's for, yes. Cost one scroll further. Told by tiles and photographs, not tables, until the rate table, which is where a rate table belongs.
+- **Wanting to go:** the hero and the closing bay do it. The photographs in between are honest and small, and the page's own colour carries them.
+
+## The message builder (phone, 390×844, hrefs read, nothing opened)
+
+| Tile | Chips | Strip above the bar | Waves paragraph lit |
+|---|---|---|---|
+| Total beginner | Beginner Lesson, USD 40 | "I'm a total beginner." | beginner waves |
+| I can stand up | Beginner Lesson, USD 40; Private Coaching, USD 50 | "I'm a beginner who can already stand up." | beginner waves |
+| Intermediate | Private Coaching, USD 50 | "I'm an intermediate surfer." | intermediate |
+| Advanced | Private Coaching, USD 50 | "I'm an advanced surfer." | advanced |
+| Not sure | Your message | "I'm not sure of my level yet." | none |
+
+`sheet-phone-builder.jpg`. Lesson chip lands the card with its dot, in view (top 225). "Your message" lands the panel at 84.
+
+All chips operated: four lesson values, date Not sure, four people values, each rewrites the bubble and the strip. With everything set, the bubble reads "Hello Sanjee Surf School, I'd like to ask about the Beginner Lesson. I'm a total beginner. The date I have in mind is 10 December 2026. There are 2 of us."
+
+**All 22 links go to `wa.me/94774004422`**, the same in every state read:
+
+| Control | Message after building |
+|---|---|
+| Hero, header, bar, `#send`, closing, footer | The same text as the bubble |
+| Three cards | Own subject, then level, date, people |
+| Board button | "…about renting a board. I'm a total beginner. The date… There are 2 of us." |
+| Surf Spot Safari, Full Coast Adventure, Sunrise Session | Tour, then level, date, people |
+| Nine outings | Tour, date, people. Level dropped |
+
+## Typed dates, real key presses at 1440 (Chromium, field shows dd/mm/yyyy)
+
+| Typed | While typing | Links with a date | After leaving the field |
+|---|---|---|---|
+| 10 12 2026 | 0002, 0020, 0202, then 2026 | 22 of 22, "10 December 2026" | kept |
+| today (via fill, on the phone context) | | 22 of 22 | kept |
+| yesterday | | 0 | cleared |
+| 01 01 2020 | | 0 | cleared |
+| 20 02 61210 | year restarts, ends 1210 | 0 | cleared |
+| 20 02 612100 | ends 2100 | 0 | not separately blurred; same rule (2100 is past the limit) |
+| 20 02 2612 | | 0 | not separately blurred; same rule |
+| 10 12 26, 10 12 0026 | | 0 | not separately blurred; same rule |
+| Backspace on a good date, then retype 2027 | | 0, then 22 of 22, "10 December 2027" | kept |
+| Good date, then the Not sure chip, then off again | | field and message clear together | |
+
+**The round 3 bug is gone.** A wrong year never reached the message at any digit: the date appeared only when the whole value was good. Mousedown on the send button with a past date unblurred clears the field, and the link at that moment had no date.
+
+Two small leftovers, neither reaches the message:
+- A rejected date just vanishes on blur with no word why (`date-blur-past.png`).
+- **30 02 2027 stays visible in the field after blur** while the message has no date (`date-blur-feb30.png`), and so does a part-typed date. `dateIn.value` is empty in those cases, so the blur rule at `site.js` line 196 doesn't see them. The bubble is right beside it and tells the truth.
+
+## Late font swap on a phone
+
+**Deliberately bad, fonts held, parked there** (Arial fallback, Chromium):
+
+| Position, hold | CLS | The paragraph under the eye | Page |
+|---|---|---|---|
+| 1400, 1.8 s | 0.0103 | top unchanged; it grew a line, cards below moved 27 px | |
+| 3200, 1.8 s and 6 s | 0.0334 | 282.2 → 282.4 px | scroll corrected 3200 → 3227 |
+| 4200, 1.8 s and 6 s | **0.0966** | 326.5 → 326.1 px | scroll corrected 4200 → 4282 |
+| 10500, 1.8 s | 0.0780 | not read across the swap | |
+
+So the designer's 0.097 reproduces exactly, and in Chromium **the reading position doesn't move**: scroll anchoring takes the 82 px. Before and after at 4200 look the same to me (`sheet-swap-4200.jpg`). Safari has no scroll anchoring, so an iPhone parked there would jump 82 px once. My own stand-in with anchoring off didn't change the result (see below), so that figure is the designer's arithmetic, not my run.
+
+**A visitor at human pace** (flick 500 px, pause 900 ms, starting at first paint):
+
+| Profile | Where the fonts landed | CLS |
+|---|---|---|
+| 1.6 Mbps, 150 ms | y about 500–1000 | 0.0000 |
+| 0.4 Mbps, 400 ms, twice | y about 950–1450 | 0.0239, 0.0354 |
+
+The slow profile's shift comes at 7.3 s, after both fonts had landed (by 4.9 s), so it isn't the swap. It looks like the rest of the uncompressed HTML and its script arriving, which I did not chase. The only way to be at 4200 before the fonts is the menu: Menu, then Boards, with fonts held 4.5 s. The heading stays at 84 and the paragraph below it moves 55 px, once (CLS 0.0656).
+
+**Would a real visitor notice? No.** To see 0.097 you must be 5 screens down before a 25 KB file arrives. Keep the preload. Inlining Manrope isn't worth doing for this.
+
+## Items left as they were in the port
+
+| Item | What I measured | Worth holding the score? |
+|---|---|---|
+| **Chips off screen on a laptop after a tile click** | Row's bottom near the fold: chips 896–940 on a 900 screen, 764–808 on 768, 716–760 on 720. Tiles centred: all visible. Space is reserved, so nothing moves. The ring and the label do answer (`laptop-tile-900-tiles-just-whole.jpg`). | **No.** A narrow scroll band, and you see them on the next scroll. |
+| **The swell after rotation** | **Worse than I reported in round 3, when I wrote that it starts as you scroll.** At the resize `img.naturalWidth` is 0 while the other crop is chosen, so `size()` makes `res` NaN (`swell.js` lines 123–131) and the canvas goes to 0×0. `Math.min(NaN, …)` then keeps it there. Water difference over 1.5 s: 9.5 before, **0.00 after, 0.00 after scrolling, 0.00 after rotating back**. Same with both crops cached. Not across the crop switch (768→1024 wide), it survives (9.87). The photograph is correct and has no seam (`sheet-rot-land.jpg`, `rot-*`). | **No.** The picture stays right, and most people don't rotate on a landing page. It's still the page's main item dying for a whole visit, and a small fix. |
+| **"Not sure" offering only "Your message"** | One chip, no card dot, no wave lit (`phone-notsure.jpg`). The strip already says "I'm not sure of my level yet." and the bar sends it. | **No.** Asking is the right next step for that person, and nothing is invented. |
+| **228 px of chips and bar after a two-lesson tile** | 228 px at every phone size: 27 % of 844, 34 % of 667, 36 % of 640 (`phone-dock-667.jpg`). Next row of tiles behind it, tapped tile clear. It lets go after 120–240 px of scroll. | **No.** It's the answer to the tap and leaves on the next scroll. |
+
+## Keyboard, reduced motion, JS off
+
+- **Keyboard:** 62 stops at 1440, 61 at 390, all in view once smooth scroll settles, none covered by the bar or header, all at least 44 px. Tile by Enter and Space, chip by Enter, dots move the row, menu opens, Esc closes and returns focus. One flag, as the designer said: the date input reports no outline itself, Chromium marking the segment instead.
+- **Reduced motion, both widths:** still photograph, canvas opacity 0 and untouched (300×150), no smooth scroll, chart settled, 0 running animations after a tile or a chip. A good page.
+- **JS off, both widths:** 22 `wa.me`, 3 `tel:`, 2 `mailto:` in the raw HTML. Phone: title and bar, tiles hidden, cards in their row (not swiped with JS off). Laptop: hero button, cards. Still a good page and bookable (`nojs-*`). At 1440 "Before you book" sits alone off to the right once the message panel is gone, which is plain but harmless.
+
+## Motion and small things
+
+- **Micro-animations:** 56 of 58 visible controls at 1440 carry a transition on themselves or an inner part; the two without are the skip link and wordmark. On a phone the six menu links and the two Soft-top / Hardboard buttons have none on themselves, and the pill and digits move instead. Press 0.97 on tile, card button, add, chip and hero button, 0.94 on tour buttons, none on the nav links. A board lifts 4 px, chip and button hovers shade. Method 5 is met.
+- **Soft-top / Hardboard:** digits roll, prices correct (USD 7, 12, 18). **Swipes:** cards and quotes follow touch, dots follow. **Menu:** all six links land clear of the header (84–85). **Bar:** comes in as the hero button leaves, at about y=260.
+- **Inspector (evidence only):** 4 FAIL, 8 WARN. None is a defect I'd act on: `icon-cards` (no icon-topped cards in my frames), `eyebrow` ("for you"), `edge-text` (an "Ask on WhatsApp" 15 px from the edge, not pinned down further), `covered-text` (a heading under the header at one scroll position), and `still-page` and `no-footage` go against a concept whose main item is the shader on a still. Its `small-title` points at something for the critic: the h1 is the 19 px wordmark and the visible title is a `<p>`.
+
+## Against the current site (captures: `old-site-*.png`, `funnel/walk/`, `sheet-old-site.jpg`)
+
+**First contact:** this page wins clearly. The old one has palm trunks across the wave, a hotel pool, teal words over branches, a cookie box over the lower screen, and no town.
+
+**On the way to deciding:** this page wins too. Level, price and message are reached in a few taps. The old one has prices further down, a cookie box over the lower screen until it's dismissed, and its own FAQ stating a different price and a group lesson (`22-faq-lesson-price.png`, "around 25 USD", against "all sessions are private").
+
+**Booking, weighed both ways:** the old path ends firmer. After 5 taps, 3 typed fields and a card the traveller holds 8:00 on the 11th with $8 paid and $32 on site (`11-wizard-5-slot.png`). It also shows times: 6:00, 8:00, 10:00, 2:00, 4:00. This page ends in a question to a number nobody has seen answered, with no reply time, **and it never says when a lesson can happen**. The word "morning" is on it only in Sanjee's story and a review. The message asks for a date and has nowhere to say a time, so the first reply will have to ask.
+
+This is the page's real weakness and it is structural. It doesn't overturn the verdict: the playbook's traveller compares schools in minutes and messages the one that answers fastest, so being one tap from a good first message suits them, and the audit asks for exactly this. Someone already sold, who wants certainty, is better served by the old path. A walk can't say which converts better, and it can't say whether anyone answers. If nobody answers that number quickly, this page is worse than the old one for every visitor it convinces, so that is the human's item below, and it's the biggest risk here.
+
+## Score: 8, better than the current site: yes
+
+The first screen pulls you in on both widths with one clear button. The main item comes from the business's own photograph and is on time. The tiles answer at once, the message follows every button with a sensible subject, and the date bug that hurt round 3 is really gone. Self-hosted fonts cost nothing a visitor can see, and the port kept what the mockup earned. Neither cap in method 5 applies and no calibration bar is breached.
+
+It is 8 and not 9 because the page ends in an unconfirmed question with no time of day, because of the long tuk-tuk stretch on a phone, and because the hero shows the place rather than a lesson. I did not hold it for any of the port's leftovers, and I did not raise it for the fixes: they removed a fault, they didn't add pull.
+
+**Fix list (biggest effect first). None blocks.**
+1. **Let the message say a time of day.** Add a row "Time: Morning / Afternoon / Not sure" to `.msg-controls` (`src/pages/index.astro` lines 129–136), `state.time` and a sentence in `tail()` (`src/scripts/site.js` lines 34 and 45–51), sentences in `src/lib/labels.json` beside `date_unsure` (line 58). These are the visitor's own words, so no new fact. It saves the first round trip and closes some of the gap with the old slots. Whether to also print the published slots (`dossier.booking.engine_url.flow`) is a fact call, because the hours contradict each other.
+2. **Shorten the phone's tuk-tuk stretch.** In `src/pages/index.astro` lines 257–262, put the nine outings (`r.outing`) inside a `<details>` under the three surf tours at 900 px and under: about 1,500 px less on the page, links and text still in the HTML, and it works with JS off. Desktop as it is.
+3. **Keep the swell alive after a rotation.** `src/scripts/swell.js`: at line 122 return when `img.naturalWidth` is 0, so `res` is never poisoned. On the image's `load`, re-read `tall` and `k` (lines 108–110), re-upload the texture (line 101), then `size()`. Then look at it on a real phone.
+4. **One row of chips on a phone.** `src/styles/site.css` line 312: `flex-wrap:nowrap;overflow-x:auto` on `.fits.on`. The dock goes from 228 to 176 px, the one-chip height. Most useful on the small phones (36 % of 640).
+5. **Reveal the chips on a laptop.** In `setLevel` (`src/scripts/site.js` line 139) above 900 px, if `#fits` ends below the fold, scroll by just that much, or make `.fits.on` sticky at all widths (`src/styles/site.css` line 312 is inside `max-width:900px`).
+
+Smaller: clear the field on blur when `dateIn.validity.badInput` too (`site.js` line 196), and say "Pick today or later" instead of a silent clear.
+
+**Keep:** the sunset and swell at this strength and timing; the fallback faces, which do hold the title; the font preload as it is, no inlining; tiles, sticky chips on the phone, the strip; the message following every button; outings without the level; no card ever dimmed; the board chart; Sanjee on the wave; the bay as the last picture.
+
+**For the human:** before this goes in front of an owner as better, someone has to know that `+94 77 400 4422` is answered and how fast. If the owner confirms a reply time, it goes beside the bar and the closing button. img-007 and the identifiable img-005 still need clearing with the owner.
+
+## What the designer prompt got wrong (one paragraph, quotable)
+A port was the right brief and it was done carefully: the date fix was walked in the ordinary case this time and held, and the fallback faces hold the first screen. What no brief asked is whether the message can carry what the traveller would otherwise pick on the old site. The old wizard asks for a time, the new message can't say one, and that gap went through every round because the concept's message was defined as level, lesson, date and people. A concept that replaces a working booking step should list every field that step collected and say where each one went.
+
+## What I could not test
+- **A real phone.** WebGL ran on SwiftShader and an M1 under 4× CPU, which throttles the main thread and not the GPU. A mid-range Android GPU, the frame guard stepping down or stopping, battery, heat and iOS Safari are untested. Touch was through CDP, not a finger.
+- **Watching in real time.** The swell is judged from frames, a screencast and frame differences, not by eye at speed.
+- **Safari's font swap.** My `overflow-anchor:none` override gave the same result as anchoring on in the menu case, so I can't vouch that it took effect, and I did not run it in the parked case. The 82 px jump is inferred. The fallback ran on Arial only: this Mac has no Roboto, so the Android face is untested.
+- **Native date pickers.** The calendar popup and the iOS and Android pickers can't be driven headless, so on the phone context I set dates with `fill`. An mm/dd field: `--lang=en-US` still gave dd/mm here. Safari and Firefox typing untested. Some typed rows above were only read before blur, as marked. I confirmed the blur clear by a real blur for past and impossible dates.
+- **Real rotation.** Viewport resizes only. It's Chromium's behaviour with `naturalWidth` at that moment that kills the swell, so another engine may differ.
+- **WhatsApp.** No link opened, nothing sent. Whether the number answers, and how fast, is unknown. No contact with the business.
+- **The live current site.** Captures only, as instructed.
+- **The hero's timing on the slow 3G profile.** I ran that profile for the font swap, not for the swell. Tiles before the end of the HTML arrives on that link: not operated.
+- **The gold pages and skills.** Not re-rendered. `/impeccable`, `/emil-design-eng` and the motion audit not run; the inspector was. The bar was the calibration in `references.md`.

@@ -544,3 +544,140 @@ All paths are under `reports/2026-10-midigama-01/visual-sanjee-r3/`. Screenshots
 - A clamp on height with `object-fit: cover` on a band whose subject sits low in the file breaks at widths nobody shoots. The hero got a 2560 check after round 2; the same check belongs on every full-bleed. Add 2200×1240 and 2560×1080 to the look loop.
 - "Reduce the breathing" was checked by displacement. The shared light moved the same way, and only brightness over time showed it. Motion review should measure both.
 - I gave the scrim as a colour and a rough contrast. A critic note on a scrim should give the contrast to aim for (large text 3:1), or a safe build will overshoot.
+
+---
+
+## Round 1 — full (station 5, the built site)
+
+Run `2026-10-midigama-01` · station 5 (full) · **round 1** · visual-critic 0.2.0 · 2026-11-05.
+Page: `sites/sanjee-surf-school/final/dist/`, served over http from my own server on 9450; the picked mockup `mockups/interactive/dist/` on 9451. Both stopped afterwards. Nothing else in the worktree was touched.
+
+Independence: I did not open the critic's or experience-critic's report or folder. I shot and looked at the site before opening the earlier rounds above.
+
+### How I looked
+
+All paths are under `reports/2026-10-midigama-01/visual-sanjee-full-r1/`. Screenshots are scratch, so each line says in words what its file shows.
+
+- **GPU:** every capture of mine ran in headless Chromium reporting "ANGLE Metal Renderer: Apple M1". `shots/` is the exception: `tools/shoot.mjs` over http, software GL, read for layout only.
+- **First screens, built and mockup:** `fs-final-*.png`, `fs-mock-*.png` at 390, 600, 650, 700, 701, 768, 1280, 1440, 1920, 2560. Also `hero-1440-2x.png`.
+- **Mockup comparison:** every viewport-height slice of both builds with motion off, at 390 (1× and 2×), 768, 1280, 1440, 1920, 2560, compared pixel by pixel. Paired shots and amplified differences: `pair-*.png`. Side-by-side crops: `q-hero-2x.png`, `crop-768-tile.png`. File sizes, dimensions and PSNR for the images.
+- **Fonts:** font files held back at the network, shot, then released: `fout-*-before.png`, `fout-*-after.png`, `fout-*-script-*.png`, at 390, 768, 1440, 1920, with every heading, paragraph and section box measured before and after. CDP named the real font drawn for each element.
+- **Cold load:** 1.6 Mbps, 150 ms RTT, 4× CPU: `cold-390.png`, `cold-1440.png`.
+- **Motion:** eight frames 1.2 s apart at 390 at 2×, 1440 and 2560, both builds (`mo-*.png`), mean change per tenth of the screen, filmstrips `strip-final-390.png`, `strip-mock-390.png`, `strip-final-1440.png`, rAF rate over 3 s.
+- **Contrast:** words made transparent, background sampled under them, at 14 sizes.
+- **States:** tile, card, message, phone menu, chosen wave paragraph: `ix2-*.png`.
+- **Runtime trials, nothing on disk changed:** `trial-scrim-*.png`, `trial-tours-*.png`, `t3-*.png`.
+- **Gold:** rendered Lavish, Layday and KA at 1440. I opened Layday's whole page (`g2.png`) and not the other two. Global Surf's footage is not in this worktree, so that bar is known to me from its notes.
+- **Inspector:** 4 FAIL, 8 WARN, listed at the end of the checklist.
+
+**Limits, stated plainly:**
+- **I did not watch it live, and nothing ran on a phone.** "Reads as" comes from frames and measurements. rAF held 60.3 fps at all three sizes on an M1, which says nothing about a mid-range Android. **Phone frame rate is still unknown.** Alon's real-phone viewing of the mockup is the only human evidence for the motion, and it carries over here because the shader is unchanged.
+- **Roboto could not be tested.** This Mac has Arial, so the fallback I saw is Arial. Android, the customer's phone, gets the Roboto fallback, and I have not seen it.
+- The current site is judged from captures only, as instructed: `old-site-desktop.png`, `old-site-mobile.png`, `funnel/walk/01-home-fold-settled.png`. I did not reshoot it.
+- I did not film the mockup's cold load, so I cannot say the loading sequence is the same as the port's.
+- `/impeccable critique`, `/emil-design-eng` and the motion-audit skills were not run.
+- Unexplained: `scrollHeight` at 768 read 12525 after a scroll and return, against 12604 on load, with no section moved. `tools/shoot.mjs` at 390 similarly reports 12906 against 12985. It is below the footer's content or in its padding. I did not chase it and saw nothing wrong on screen.
+
+### Three-second test (before reading earlier rounds)
+
+- **390 (`fs-final-390.png`):** pale sky, a gold band of cloud, the sun sitting on the horizon, one real wave landing on wet sand. Immediately beautiful, and I would keep going. It is the best thing on the page.
+- **1440 (`fs-final-1440.png`):** dusk sea with people in it, a white title and one blue button. I would stop and scroll. The sky is rusty rather than glowing, and the water is brighter than the sky above it. It looks a touch filtered, and I notice that before I notice anything else wrong.
+- **Current site (`01-home-fold-settled.png`, `old-site-desktop.png`):** a hotel pool under trunks, a teal "of Your Life" lost in them, an illegible teal eyebrow and a cookie box. This beats it at a glance, at both widths.
+
+### 1 · Did anything change from the mockup? Nothing a visitor would see, apart from the two changes that were meant.
+
+- **Layout:** page height is identical at all six widths (12985, 12604, 9280, 9508, 10122, 11063). Canvas size is identical at all ten widths tested.
+- **Date field (`pair-390-date-final.png` vs `-mock.png`):** 19 css px narrower, and "Not sure" sits 19 px further left. The dead space beside the calendar icon has gone. **Slightly better than the mockup.**
+- **Photos, 1× and 2×:** same dimensions, except three tile files that differ by one pixel of height. File sizes are within about 3 %. PSNR against the mockup's files is 41–44 dB on the five I measured (both hero files, band, close, waves print). Side by side at 2× I cannot tell them apart (`q-hero-2x.png`: the swimmer, foam and reflection; `crop-768-tile.png`: the palms and beach). I opened only those two crops at that scale, not every photo. **Not worse, not better, as far as I looked.**
+- **Pixel comparison, whole page:** mean difference 0.5–1.5 grey levels per slice. The one cluster I can name with a cause is the date field and chip (390 and 768). The 768 "Not sure" tile also shows a cluster, and side by side it looks identical. The 1440 run showed larger scattered clusters across most slices; re-shooting one of them (y=6300) gave only low-level noise on the photo and pure black on all the type (`pair-1440-tours-diff.png`), so I take them as that run's timing. I did not re-shoot the others.
+- **Markup:** the hero line is now a `p.hero-title` and the header's name is the `h1` (station 4h). It looks the same, because the title's style moved with it. The inspector's `small-title` and `name-only-title` come from this. That is an SEO decision and not a visual fault: "Surf lessons in Weligama" is still what the first screen says.
+- **Fonts arriving: no jump on the first screen, and a visible change of letter style lower down.**
+  - **Title, 1440 and 1920:** moves 1.2 px left and grows 2.2 px wider. Same line, same height. **390:** box unchanged, same two lines. **768:** 0.7 px. Arial Bold to Manrope Bold at this size is a change of letterforms, not a jump. I would not expect anyone to notice it (`fout-1440-before.png`, `cold-1440.png`).
+  - **Section titles:** they do not move, but they change character. Plain Arial becomes the Courgette script (`fout-1440-script-before.png` vs `-after.png`, "Sanjee, head instructor"). This is the biggest visible change, and only someone already scrolled that far on a slow connection sees it. On the throttled run Courgette was in by about 1.5 s, while the visitor was still on the hero.
+  - **Body text set at weight 600** (leads, nav, chips, table cells, quotes) draws in Arial Bold until Manrope lands, and it visibly lightens at that moment (`fout-1440-script-before.png`). It does not move.
+  - **Phone only:** in the fallback, two paragraphs ("Surf lessons in Weligama, on…" and "Every lesson includes…") are one line shorter, so everything below shifts by 27 then 54 px when Manrope arrives. Page 12928 → 12984 px. Layout shift 0.0043 with the page scrolled, and 0 on a cold load with no scroll (budget < 0.1). Harmless, and off the first screen.
+  - **Roboto not seen**, see limits.
+- **Cold load (`cold-390.png`, `cold-1440.png`):** title and button are up at once on the tan ground. The picture paints from the top down at about 1.6–2.2 s, with a hard horizontal edge across the screen in the middle of that, and is whole by about 3 s. The canvas then fades in. The tan matches the picture well, and it reads as loading, not as a fault.
+
+### 2 · The first screen at each width
+
+| Width | Title | Measured title contrast (mean / p5 / min) | Verdict |
+|---|---|---|---|
+| **390** (`fs-final-390.png`) | ink, 2 lines | 9.71 / 9.62 / 9.50, on `rgb(208,193,172)`, sand | **Above 8.** Clean, balanced, the wave lands in the lower half. Do not touch |
+| **768** (`fs-final-768.png`) | white | 6.58 / 5.52 / 4.69 | **Passes, the weakest width.** Top of the sky grey-brown. The landscape file is cropped hard, so the foam fills the lower third at about 1.9× and is the softest on the page |
+| **1280** (`fs-final-1280.png`) | white | 6.70 / 5.36 / 4.40 | **Passes.** Tight but composed; button foot at y=249, sun at about y=315 |
+| **1440** (`fs-final-1440.png`) | white | 6.71 / 5.37 / 4.40 | **Passes.** Strong, a bit rusty. On a 2× laptop soft at the foam but handsome (`hero-1440-2x.png`) |
+| **1920** (`fs-final-1920.png`) | white | 6.46 / 5.34 / 4.43 | **Passes.** The best-balanced desktop |
+| **2560** (`fs-final-2560.png`) | white | 6.86 / 5.57 / 4.61 | **Passes.** No pillarbox. Soft at 1:1, fine from viewing distance. Title and button look small on the frame; the calibration wants that |
+
+**Ruling on ink near yellow cloud at 600–700: not a fault. Leave it, and withdraw my round 3 fix 3.**
+- I looked at 600, 650, 680 and 700. At 600 the title sits on clear sand (`fs-final-600.png`). As the window widens, yellow flecks come up to the "S" and the cloud reaches under the baseline, most at 700 (`fs-final-700.png`).
+- Measured under the words: mean contrast 9.6–9.7 at every step. Minimum falls from 9.26 at 600 to 6.28 at 700, far above the 3:1 large text needs.
+- The ground is peach-sand, mean `rgb(222,189,148)` at 700, not orange. The calibration's bar is about text on orange, and this is not that.
+- It is also prettier than what happens at 701 (`fs-final-701.png`). The visible problem around that width is the jump from a lit sky to a rust one. Moving the switch would only move the jump and put a white title on a lighter sky at a width nobody has checked. Lightening the scrim (fix 1) shrinks the jump directly.
+
+**The scrim.** My earlier trial value is still what the page needs. Re-tried this round on the built site: `trial-scrim-1440.png` and `trial-scrim-768.png` show burnt orange and a real sunset with the title still strong, and they are simply better pictures than `fs-final-1440.png` and `fs-final-768.png`. Measured with it: title mean 5.08–5.74, p5 4.00–4.52, min 3.21–3.66 across 768–2560 (large text needs 3:1). Wordmark mean 5.96–6.76. Nav mean 6.00–6.73, but p5 is 4.77–4.89 and min 4.32–4.38 at 1280 and 1440, so a few pixels of 15 px nav dip below 4.5:1 where cloud crosses it.
+
+**Hard-fail checks:** video: no file exists, and the earlier ruling stands. Photographs ≥ 1920: img-018 on the long edge, and round 2's Ruling 1 stands. Calibration: title plus one short CTA, no decorative overlay, no reveal animation, white on a darker orange from 701 up. Met at every width.
+
+### 3 · Motion: the same as the mockup. Metal, not software GL.
+
+- **Same code:** `final/src/scripts/swell.js` and `mockups/interactive/src/swell.js` are byte-identical (`cmp`, 9930 bytes). The inline script's differences from the mockup are all in `site.js` matters (message strings, date checks), none in the shader.
+- **Same behaviour:** mean change per tenth of the screen, frames 1.2 s apart, at 390: final 0, 0, 0, 0, 1.72, 25.26, 21.60, 12.73, 4.94, 4.31; mockup 0, 0, 0, 0, 1.74, 25.64, 21.84, 12.60, 4.95, 4.33. 1440 and 2560 follow the same pattern, with gaps per band of up to about 8 % at 1.2 s and about 11 % at 8.4 s. The two builds were not on a shared clock, so that is what sampling a moving surface at different moments would give; it is not proof of identity, and the byte comparison is. Sky, sun and upright board do not move at any size.
+- **What the frames show:** on the phone the breaker heaves and the spray and foam change, and the sand and shoreline hold (`strip-final-390.png`, same in `strip-mock-390.png`). At 1440 the reflection brightens and dims along the water while the wavelets keep their shape, and swimmers and breaking lines hold (`strip-final-1440.png`). No tearing in any frame. Reads as water in stills.
+- **Conclusion:** Alon's viewing of the mockup's foam on a real phone applies to the port. I did not re-judge it, and I did not watch it myself.
+- **Reduced motion:** still photograph, and I used that state for all the comparisons.
+
+### 4 · The whole page
+
+**Checklist**
+- **Media:** the strongest picture leads, full-bleed. The five photo tiles come next, and they are the page's second-best moment (`shots/desktop-01.png`). img-007 with Sanjee's words is the third (`fout-1440-script-after.png`). The bay close is big and happy (`shots/desktop-10.png`). Fewer photographs than the old site's mosaic, better used, and nothing upscaled badly apart from the 2× hero. The paddler band now holds at every wide size: whole at 2560×1080 and 2560×1440 (`band-2560x1080.png`, `band-2560x1440.png`), so round 3's condition 1 is met.
+- **Composition and grid:** tidy, with real scale contrast from the tiles, chart and full-bleed bands. Pale rounded panels make the lessons-to-message run feel a little like a product, though a good one (`shots/desktop-02.png`, `-03.png`).
+- **Typography:** Manrope plus Courgette is readable and consistent, and it meets the calibration's "readable face + script". The script is a little wedding-invitation on short words like "Lessons". **One fault I had not called before: Manrope's `|` looks like a capital I.** "Languages: English I Sinhala", "13 Google reviews I as of 5 November 2026", "Bodyboard I per day", "Total beginner, beginner I 2 hours" (`fout-1440-script-after.png`, `shots/desktop-02.png`, `-04.png`). The mockup has it too. It is on every details line, and once seen it can't be unseen. The separator is the calibration's own device, so it has to work.
+- **Colour:** dusk, white, pale water, cobalt. The booking colour is unmistakable. The warm hero mood does not come back, and the page runs cool from the tiles down. The chart brings the only colour to the middle (`shots/desktop-03.png`).
+- **Hierarchy and rhythm:** the eye always knows where to go. Good pace from hero to Sanjee: picture, tiles, prices, tool, chart, band, man, quotes. It then slackens, as below.
+- **Polish:** clean at every width I opened. The row under the lesson cards still sits loosely (`shots/desktop-02.png`). The band's line is parked about 22 px from the band's top edge (`shots/desktop-05.png`, `band-2560x1440.png`).
+- **Distinctiveness:** the to-scale board chart, the photo tiles and the tile-built message make it this school's page. Nobody would take it for a template above the tours. The tour list and the footer could be anyone's.
+- **Hero and motion:** interesting, clean, one CTA, main item from the business's own media. Meets Shahar's 2026-10-20 bar. Tile select, "for you" dot, the chip row and the highlighted wave paragraph work and look designed (`ix2-final-1440-tile.png`, `ix2-final-1440-waves.png`). I saw these as end states, not as transitions.
+
+**The earlier complaints, looked at again:**
+- **Tours: still the dullest stretch, and it is the page's weakest moment.** On a phone it is 2557 css px, about three full screens of 844, and about three and a half of the window left between header and bar (`shots/mobile-12.png`, `-13.png`, `-14.png`). Every row is the same: name, duration, grey lines, price, one cobalt circle. At 1440 it is about 1.3 screens beside a sticky column with a large empty area under it (`shots/desktop-09.png`). Twelve filled cobalt circles are the loudest thing there. With a tint at rest the column goes quiet and the words lead, and it looks considerably calmer on both widths (`trial-tours-1440.png`, `trial-tours-390.png`). That does not make it exciting. It stops it shouting.
+- **The Other waves print: half grey sky, still true.** About 40 % of it, by eye, is a flat grey band directly under the coloured Coco Beach print (`ix2-final-1440-waves.png`). Cropped to 3:2 at runtime it improves but is still a third sky (`t3-waves-1440.png`). 16:9 is the target by arithmetic; I have not looked at that exact crop.
+- **Is it a page a real business would be proud of? Yes, without hesitation.** A small Weligama school would be delighted, and the page is plainly a different class from what they have. **Against the gold bar it is close, not equal.** Layday (`g2.png`) has a stronger single idea on its first screen and more art direction in its type. This page is more emotional on the first screen, because it is a real place at a real hour, and has a better booking tool. Would a top studio publish it? The phone hero and the tiles, yes. The whole page, not until the tours and the sky are dealt with.
+
+**Inspector, as evidence lines.** FAIL `icon-cards` (three cards; the lesson cards in `shots/desktop-02.png` carry no icon on top, so I do not count it, though I did not trace which row it means), FAIL `eyebrow` (false: "for you" and the price date are not eyebrows), FAIL `edge-text` (768, an "Ask on WhatsApp" 15 px from the edge, 1 px under its line, not visible as a fault), FAIL `covered-text` ("Before you book" passes under the fixed phone bar while scrolling; expected). WARN `size-count` (18 sizes, real but not visible as a fault), `no-footage` (no file exists), `side-scroll` (the quotes' deliberate peek), `lopsided` (false: the print sits beside the text), `small-title` and `name-only-title` (the h1 decision above), `still-page` (contradicted by the shader), `empty-middle` (768, quotes row). None lowers my score.
+
+### Score: 8 / 10
+
+- **Why it holds:** the port changed nothing visible, and the mockup's two round 3 conditions are now met: the band holds at every width, and Alon has watched the foam. The first screen is the real thing at all six widths and above 8 on the phone. Below it the page is professional throughout and beautiful for most of its length. That is my calibration's 8.
+- **I checked whether that was inertia.** Taken cold, the page earns an 8 on what is on the screen. It does not earn a 9: the sky is duller than it should be on every desktop, the tours are a long plain list, and the separator is a small typographic error repeated all over the page.
+- **Closest reference:** Global Surf in spirit (own water, title and button only), below it because a still with a shader is not footage. Below Layday for art direction, above it for feeling on the first screen.
+
+**Better than the current site: YES, first screen and whole page.**
+- First screen: `fs-final-1440.png` vs the top of `old-site-desktop.png`, `fs-final-390.png` vs `01-home-fold-settled.png`. Surf at sunset against a hotel pool, readable against illegible, what and where stated, nothing covering it.
+- Whole page: `shots/desktop-sheet.png` vs `old-site-desktop.png`. The old page is 16785 px of teal template cards. Its one advantage remains the Coco Beach mosaic, and the tiles and full-bleed bands use the same kind of material better.
+
+### Fix list, biggest effect first
+
+None of these blocks a pass. All are in `sites/sanjee-surf-school/final/src/`.
+
+1. **Lighten and warm the scrim.** `styles/site.css` line 95, the gradient in `.stage::after`: `linear-gradient(to bottom,rgb(150,116,104) 0,rgb(182,140,116) 34%,rgb(196,160,140) 60%,rgb(226,208,200) 80%,#fff 100%)`. The largest single gain on every desktop and tablet, and it softens the jump at 701. Tried at runtime; I opened 1440 and 768; measured as above. Check the nav at 1280 and 1440, where a few pixels dip below 4.5:1, and the wordmark and nav at 1024.
+2. **Make the separator read as a separator.** `pages/index.astro` lines 81, 92, 210, 219, 226, wherever ` | ` is joined: wrap it in `<span class="sep">|</span>`, with `.sep{font-family:Arial,sans-serif;font-weight:400;opacity:.45;padding-inline:.1em}`. Tried at runtime on all 13 text runs in `main`; `t3-creds-1440.png` shows a real thin pipe. The bare ` | ` in the rating's `<i>` and in `details` should go through the same wrapper. Screen-reader text and the `.r-t i` phone rule at `styles/site.css` line 323 should be checked after.
+3. **Quiet the tour column and shorten it on phones.**
+   - `styles/site.css`, after line 58: `.tour .ico{background:var(--water);color:var(--book)}` and, inside the hover query, `.tour:hover .ico,.tour .ico:hover{background:var(--book);color:#fff}`. Tried and looked at both widths (`trial-tours-*.png`). Icon contrast on the tint not measured.
+   - Phone, line 362 onward: put the price on the name's row or beside the duration so it stops taking its own line. About 45 px × 12 rows, so roughly a fifth of the section. Not tried.
+4. **Fill the empty column beside the tours on desktop.** `.tours-copy` is sticky with about 400 px of nothing under it at 1440 (`shots/desktop-09.png`). Add one own print under its text, at no more than 500 css px, desktop only. img-019 (stilt poles and footprints, 1440 px, on the page nowhere) is the candidate from concepts §2. **I did not open that picture this round and did not try this.** Copy rule R2-N2 stays met, because the text and rows are untouched.
+5. **Crop the grey sky off the waves print.** `lib/slots.mjs` line 46: `crop: null` to about `[1280, 720, 0, 240]`, then rebuild the file. It is the same crop form as `back-wide`. 3:2 tried at runtime and not enough (`t3-waves-1440.png`). 16:9 by arithmetic, not looked at.
+
+**Smaller, in order:**
+- Give the band's line more air: `styles/site.css` line 224, the first value in `inset` to `clamp(18px,2vw,32px)`. Shot in the trial (`t3-band-1440.png`), but I did not open that shot, so check it stays on the sky.
+- Phone board chart: `styles/site.css` lines 327–332. Six boards at 104 px scroll sideways, so the shortest and longest are never on screen together and the "to scale" idea is lost at the width that matters most (`shots/mobile-05.png`). Worth trying six narrower boards that fit, with shorter labels below. Not tried, and the labels may not fit.
+- Re-encode `hero-img-018-wide-1440.webp` at a higher quality (176 KB against the 300 KB limit, `lib/slots.mjs`) and compare at 2×. The source is 1440 px, so expect a modest gain. Round 3's fix 4, still not tried.
+- Tablet portrait could use the tall file. At 768×1024 the wide file is drawn at about 1.9×, and the 1000 px tall file would be about 1.5×. It would need the switch and the title colour looked at together. Not tried.
+
+**Keep:** the hero picture and both crops; the phone first screen exactly as it is; ink up to 700; the swell; the five photo tiles; the board chart; img-007 with Sanjee's words; the tile-built message; the bay as the close; the narrower date field.
+
+**What the designer prompt got wrong (for the learn step):**
+- A separator was specified as a character (" | ") and nobody checked how the chosen face draws it. Picking a typeface should include looking at the punctuation the page relies on.
+- The fallback faces were tuned for line breaks, and they work, but only Arial could be checked here. The phone fallback, Roboto, is untested on this machine. Station 4g needs a way to look at it, or a stated limit in its notes.
+- My own fix list has no owner between rounds: the scrim, the tours and the grey print were called in round 3 as optional and came through the port untouched. That is correct, because a port must not redesign, but a full-mode round then scores the same open items again.

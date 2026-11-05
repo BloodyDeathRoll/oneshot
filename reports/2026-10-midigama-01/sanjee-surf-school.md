@@ -542,3 +542,153 @@ So on this machine the new fallback is no better than the stack it replaced in t
 - Old-site comparison belongs to dimension 8, so the old-site captures were not opened.
 - Image rights and consent are owner items, not verifiable here.
 - `shots/` in my r3 folder holds gitignored PNGs and has not been cleaned, because the other critics are running in the same round. `tools/clean-shots.mjs` remains to be run afterwards.
+
+
+## Round 1, full (station 5), the built site
+
+critic 0.4.3 · rubric 0.3.1 · 2026-11-05 · built site at commit 5fac985, `sites/sanjee-surf-school/final/dist/`, the "interactive" port. Served on :9447 from a plain static server (`tools/_serve.mjs`) and on :9446 with the HTML gzipped as a host would send it; both stopped afterwards. I did not read a visual-critic or experience-critic report.
+
+Evidence is in `reports/2026-10-midigama-01/critic-sanjee-surf-school-full-r1/`: `audit-final.json`, `text-1440.txt`, `jsonld.json`, `shoot.json`, and gitignored captures (12 at 1440, 17 at 390). Funnel output is in `reports/2026-10-midigama-01/funnel/sanjee-surf-school-r1/`. `tools/audit-mockup.mjs` and `tools/check-design.mjs` ran as **scratch copies:** port (8980 → 9448, 8960 → 9449) and imports changed, and the audit's output moved so `final/audit.json` stays untouched. Nothing else changed. My other measurements are scratch harnesses, and their numbers are below.
+
+```
+mode: full    round: 1    variant: interactive
+total: 71.2 / 80 (dimensions 1–7; dimension 8 pending)    result: passes critic gates; overall pending dimension 8
+hard_fails: [] in dimensions 1–7
+```
+
+| # | dimension | score | weighted | evidence |
+|---|---|---|---|---|
+| 1 | facts | 10 | 20.0 | 0 mismatches and 0 unsourced claims across the page, JSON-LD and llms.txt (table below). Mechanical: 16 rental cells, 12 tours, 3 lessons, 3 extras, 4 quotes byte-identical to the dossier; `tel:`, `wa.me`, `mailto:` and the map URL exact |
+| 2 | mobile + performance | 8 | 12.0 | Every budget line met. Hero paints 2,020–2,208 ms uncompressed, 1,684–1,696 ms with HTML gzipped. CLS 0, scroll 0 / 0. Not higher: a late font swap reaches 0.0966 mid-page in the deliberately bad case, and after a two-lesson tile the bottom 228 px of an 844 px phone is chips and bar |
+| 3 | booking CTA | 9 | 13.5 | Funnel `clicks_to_book` 1 (target 1), class whatsapp (target whatsapp), CTA above fold, 0 broken. 22 `wa.me` links, all to `94774004422`; 3 `tel:`; works with JS off. Date, lesson, level and people reach the message. Not 10: landing in a real chat is unverified, because hrefs only were read as instructed |
+| 4 | brand fit | 8 | 4.0 | First screen is media, what + where, action. People and reviews sit before spot and season (playbook §3 order). No hours, for a recorded reason. No FAQ block. Only 2 of the 6 `recommended.above_fold` items are on the phone's first screen, though the audit's own `offer_framing` keeps price off it |
+| 5 | copy quality | 9 | 9.0 | Copy whole and in English; by script, 72 of 72 `copy/en.json` strings are on the rendered page. "Surf lessons in Weligama" appears twice in a row (title, then the lead line). Contact buttons repeat at once in Finding us and the footer on a phone |
+| 6 | accessibility | 8 | 6.4 | axe 4.14 at 1440: 0 violations, default and with choices made. At 390: `region` (moderate, best practice), and **`label-content-name-mismatch` (serious, WCAG 2.5.3 A) on `.bar-msg` once a choice is made**. 62 / 61 Tab stops, 0 off screen, 0 covered. Menu Esc returns focus. 0 targets under 44 px. Reduced motion: canvas opacity 0 |
+| 7 | delivery | 9 | 6.3 | Static only. 0 off-site requests on load, after a full scroll and after every control. Fonts self-hosted with OFL files. Relative URLs, lowercase names, pinned versions, no secret or internal URL. Clean rebuild byte-identical. Not 10: `og:image` points at an assumed host until station 6 names the Worker |
+
+**Gating, full mode, the part that is mine:** no hard fail in dimensions 1–7; every dimension ≥ 6; budget met on every line. With dimension 8 at its 8/10 minimum the total is 71.2 + 20 = 91.2, over the 85 line. Dimension 8 and both visual hard fails belong to the two visual critics.
+
+### Budget, playbook §4
+
+Throttled phone 390×844, 1.6 Mbps, 150 ms, 4× CPU, no scroll; 5 phone runs and 2 desktop runs.
+
+| Line | Target | Measured | Pass |
+|---|---|---|---|
+| First-load transfer | ≤ 1,500 KB | 373 KB (`audit-final.json`); 295 KB with HTML gzipped; desktop 400 KB | yes |
+| Hero video | ≤ 2 / 4 MB | no video (Alon's decision) | n/a |
+| JS, compressed | ≤ 300 KB | 9.7 KB gzip, 26.7 KB raw, inline. The tool's 0 counts files only | yes |
+| Largest image | ≤ 300 KB | 136 KB phone, 176 KB desktop | yes |
+| Fonts | ≤ 2 families, ≤ 150 KB | 2 families, 49 KB | yes |
+| LCP | ≤ 2,500 ms | Hero, Element Timing: phone 2,020–2,208, desktop 2,164. Gzipped: phone 1,684–1,696, desktop 1,816–1,832. The tool's LCP is 476–504 and names `P.hero-title`, so don't quote it as the photo | yes |
+| CLS | < 0.1 | 0 on load in all 7 runs | yes |
+| Third-party requests on load | 0 | 0 | yes |
+| Scroll CLS, early / settled (base.md) | < 0.01 | 0 / 0 | yes |
+
+**Late font swap, phone, fresh load, jump to position, fonts held.** One run per cell, Chromium with scroll anchoring on.
+
+| Fonts held | 1400 | 3200 | 4200 | 7600 | 10500 |
+|---|---|---|---|---|---|
+| 1.8 s | 0.0103 | 0.0334 | **0.0966** | 0.0000 | 0.0780 |
+| 4.0 s | 0.0103 | 0.0334 | **0.0966** | 0.0000 | 0.0780 |
+
+Desktop 0.0001. Natural case, throttled phone, scrolling from load with no fonts held: 0.0000 in 3 of 3 runs.
+
+**Judgment:** it passes. The rubric's CLS line is measured with no scroll, and base.md names `scroll.early` and `scroll.settled`; all are 0. The bad case is outside both definitions and still under 0.1, by 0.0034. It is not closed: on a connection slow enough that a visitor is 4,000 px down before Manrope lands, the page jumps visibly (`SECTION.boards-sec`, `SECTION.tours`). The designer's Safari stand-in (anchoring off, up to 0.0966) and Roboto figures were not re-run. It costs a point in dimension 2 and no more.
+
+### Facts table
+
+| On the site | Dossier key | Result |
+|---|---|---|
+| Name, other name | `business.name`, `business.site_brand` | match |
+| Weligama, address, plus code, map URL, geo | `location.address`, `.plus_code`, `.map_url`, `.lat_lng` | match |
+| "south coast of Sri Lanka" | `location.lat_lng`; words not in the dossier | shared context, as copy review row 4 ruled; true of those coordinates |
+| Phone, WhatsApp, email | `contact.phone`, `.whatsapp`, `.email` | match |
+| Levels, English as standard | `levels`, `languages_spoken[1].note` | match |
+| Inclusions, group-bookings line | `includes[0]`, `lessons[].note` | match |
+| 3 lessons: price, length, levels, features | `lessons[0–2]` | match |
+| Week Intensive: 5 sessions, 10 days, USD 160 | `lessons[2]` | match |
+| Swim 50 m, age 6, under 18, cash currencies | `requirements[0–2]`, `booking.payment_on_the_day` | match |
+| Shop, storage, 6 board sizes, leash, fins, wax, ID, deposit with no amount | `location.shop`, `facilities[0]`, `rental_terms` | match; board chart lengths match the sentence |
+| 16 rental prices with notes, table and llms.txt | `rentals[0–15]` | match by script, column against header. Phone toggle both ways: soft 5, 8, 12, 15, 36, 70, 120, 220; hard 7, 12, 18, 20, 50, 95, 170, 310 |
+| Bodyboard, rashguard, booties | `offers` | match |
+| 12 tours: price, length, notes | `offers` (`tuk_tuk`) | match on page and llms.txt; three script flags were my script finding the name in the intro paragraph first, re-read by eye |
+| Feature line | `business.tagline` | match |
+| Head instructor, story | `team[0]`, `business.owner_voice` | match; "Founder" and years dropped. Authorship flag stands (`flags_for_operator[0]`) |
+| Credentials | `credentials[0–1]` | match; self-reported, in Sanjee's section only, absent from JSON-LD and llms.txt |
+| Languages English, Sinhala | `languages_spoken` | match; "basic Tamil" left out, not contradicted |
+| 5/5, 13 Google reviews, 5 November 2026 | `reviews.google`, `harvested_at` | match |
+| 4 quotes | `reviews.quotes` | byte-identical; `do_not_use` quote absent |
+| Spot, season, 10 other waves | `location.spot`, `season`, `surf_spots` | match |
+| Tile-to-card and tile-to-wave mapping | `lessons[].level`, `surf_spots` | no conflict. Fact: Intermediate lights one paragraph, so Mirissa is not lit; Advanced does not light Lazy Right |
+| JSON-LD: type, address, geo, member, 3 offers, priceRange, action | as above | match; no `aggregateRating`, `review` or `FAQPage` |
+| llms.txt | as above | match; preview line present |
+
+The string `150` in the HTML is CSS and an image width, not the site's false review count. No Marcel, Panzer, founder, Supabase, Stripe, Instagram or localhost string.
+
+### Other measurements
+
+**Funnel:** `clicks_to_book` 1, primary `whatsapp` ("Ask on WhatsApp"), hero `whatsapp`, 0 taps to flow, CTA above fold, 1 page, 0 broken. Target: whatsapp, 1. **Meets `audit.json.recommended`.**
+
+**Tap log, hrefs read, nothing opened:** hero, phone bar, 3 cards, board button, 12 tours, closing and footer all resolve to `https://wa.me/94774004422?text=…`. Sample with choices made: "Hello Sanjee Surf School, I'd like to ask about the Beginner Lesson. I'm a total beginner. The date I have in mind is 10 December 2026." The nine outings drop the level as designed. The 450-state sweep from 4g and the pre-score was not repeated, since the message code passed on 22 links here.
+
+**Network:** 14 requests on a phone and on a laptop, after load, full scroll, 5 tiles, 3 lesson buttons, 9 chips, rental switch (phone), 4 dots and the menu. 0 off-site, 0 failed, 0 images left unloaded, 0 iframes, 0 external scripts or stylesheets, 0 page errors. Fonts all from `fonts/`. One headless WebGL driver notice on the phone, the software GL ("GPU stall due to ReadPixels"), not a page fault.
+
+**Typed date, real key presses, 1440, field dd/mm/yyyy.** Leaving by Tab takes two presses, because the first lands on the calendar button.
+
+| Typed | While still in the field | After leaving |
+|---|---|---|
+| 10 12 2026 | 22 of 22 links, "10 December 2026" | kept, same |
+| today | 22 of 22, "5 November 2026" | kept |
+| yesterday | 0 links | field cleared, 0 links |
+| 01 01 2020 | 0 links | field cleared, 0 links |
+| 20 02 61210 | year stops at 4 digits, ends 1210, 0 links | field cleared, 0 links |
+| 20 02 612100 | ends 2100, 0 links | field cleared, 0 links |
+| 20 02 2612 | 0 links | field cleared, 0 links |
+| 31 02 2027 | value empty, 0 links | empty, 0 links |
+| Leaving by mouse: yesterday, 61210, a future date | as above | cleared, cleared, kept |
+
+0 hrefs to another number, 0 with `undefined`, `null`, `NaN` or a partial year. A date then the Not sure chip clears the field and says "I'm not sure of the date yet." The round 3 fault is fixed.
+
+**Preview rules:** default build has `noindex, nofollow`; `robots.txt` has `Disallow: /` for `*` and for all 15 named bots, read one by one; no Sitemap line, no `sitemap.xml`, no canonical, hreflang or `og:url`. `SITE_URL=https://example.test/` flips all of it: no robots meta, canonical, hreflang en + x-default, `og:url`, `Allow`, `Sitemap:`, `sitemap.xml`, JSON-LD `@id` + `url`, no preview line in llms.txt.
+
+**Images:** `img-010` absent from the HTML, llms.txt and files. All 8 used are business-owned; 0 stock, review-photo or unknown. Flags remaining: **img-007** (`provenance_flag`, Sanjee's print) and **img-005** (`people_identifiable`, Total beginner tile). Owner items.
+
+**Rebuild:** tracked files copied to a scratch tree so the dist the other critics were viewing stayed put; `npm ci` with a scratch cache, `bash scripts/make-media.sh && npm run build`. **All 29 files byte-identical to `final/dist/`,** `content.json` unchanged. `final/dist/` hashes the same before and after this round. `media/sanjee-surf-school.tsv` has 30 `final/` entries, so the "no entry yet" in `final/notes.md` is stale.
+
+**Other:** overflow 0 at 320, 360, 390, 768, 1024, 1440, 1920, JS on and off. JS off: 22 `wa.me` and 3 `tel:` in the HTML, 19 visible, bar on the first screen, no dead controls. `check-design`: `ok`, 0 problems, 0 warnings; h1 and body Manrope, h2 Courgette, ground white, 0 all-caps labels, 0 of 24 labelled headings. Hard constraint 9: 0 embeds and no forecast, so not applicable.
+
+**Contrast over photographs, ink against pixels with the text hidden, lowest / 5th percentile, two stills identical:** 1440: wordmark 4.26 / 6.39, nav worst 4.47 / 5.05, title 4.42 / 5.42, feature line 8.14 / 8.53, closing 6.89 / 7.15. 390: wordmark 8.38 / 8.58, title 9.21 / 9.40, Menu 8.31 / 8.60, closing 5.61 / 6.35. Nav hover pill, round 3's 3.92 median: now median 5.12–5.26, lowest 3.69. The hero button's box reading includes its rounded corners, so it says nothing about the text; white on `#05368A` was 11.05 in round 3, and the button is not among axe's incomplete results on the phone. Lowest values are isolated pixels.
+
+**Round 3 fix list:** typed date landed. Hover pill landed. Feature alt landed. Fonts self-hosted landed. Tile `srcset` not changed, as `final/notes.md` says (2× phones fetch the larger tile). img-007 still with the owner.
+
+**Fix list, priority order. None blocks this round; dimension 8 decides the result.**
+1. Dimension 6: `final/src/pages/index.astro:303`, `.bar-msg` has `aria-label="Your message"` while its visible text is the message, so a voice-control user can't name it by what they see. Remove the `aria-label` and put a visually hidden "Your message: " before `#bar-text`.
+2. Dimension 6: `final/src/pages/index.astro:302`, `.bar` is outside every landmark. Make it an `<aside>` with a label, or move it inside the footer's landmark. Best practice, not WCAG.
+3. Dimension 7, station 6: set `SITE_URL` at deploy (`final/astro.config.mjs:12` falls back to an assumed host). Otherwise `og:image` points at a Worker that may not exist.
+4. Dimension 2, optional: the font swap. Inline Manrope per `final/notes.md`, or accept it. The designer's estimate is about 8 KB net; not built or measured by anyone.
+5. Dimension 2, optional: `.fits.on` at `final/src/styles/site.css:312`, 228 px of chips and bar at 844 (616–844), 27 % of the screen.
+6. Dimension 4, human decision: `final/src/pages/index.astro:226`, quotes show name and source but no date or link, while playbook §6 asks for both. Google gives relative dates only and `testimonials[]` holds none, so this needs a copy and schema call.
+7. Report only: `sites/sanjee-surf-school/aiseo-report.md:60` says reply time has "No source". The dossier has `booking.reply_time_hint`, "within a few hours"; copy review held it back on purpose. The reason should be stated, and playbook §5 wants it beside the action when known.
+
+**Rubric wording, for a later proposal, nothing changed here:**
+- **Video:** the hard fail reads "has video (`dossier.videos[]` with a usable licence) and the page does not use it, unless the concept gives a reason both visual critics accept". `vid-001` and `vid-002` are `business-owned` with no file on disk, so read literally the line depends on the visual critics accepting the reason, although Alon decided. `concepts.md:38` records it. The rule should say "with a file on disk", or name a human decision as a reason. Playbook §1a has the same gap.
+- **Ratings:** the rubric asks for nothing here, so no conflict with Shahar's decision. The conflict is in `agents/seo/base.md`, per `seo-report.md`.
+- **Weights:** the eight weights add up to 105, while the rubric says "Total 100". Scores here keep the /80 used in earlier rounds. Normalised to 100, this page at dimension 8 = 8 is 86.9, so the result does not turn on it today, but with a margin of only 1.9.
+- **Above the fold:** dimension 4 and `recommended.above_fold` ask for price on the first screen, while playbook §0 and `recommended.offer_framing` keep it off.
+- **Contrast:** dimension 6 says a flat 4.5:1; WCAG AA allows 3:1 for large text, which covers the title and wordmark.
+
+**What the designer prompt got wrong:** nothing that reached the facts or the funnel. One gap: nothing asks for a control's visible text to be inside its accessible name when that text changes with state, and the fix is one line. My round 3 axe pass reported 0 violations with choices made, on the same `aria-label`. I don't know why it differs (axe version, or the state I ran it in); the rule fires now on axe 4.14. Run axe at the phone width after a choice.
+
+**The sentence the human needs:** the built site scores 71.2 of 80 on dimensions 1–7 with no hard fail, every budget line met and the funnel on target, so station 5 now rests on the two visual critics; the one new defect is a mislabelled phone message link, a small fix.
+
+**Not checked or not measured:**
+- No `wa.me` page opened and no message sent; whether the number answers is untested.
+- No real phone, iPhone, Android or Safari, and no real GPU, so hero paint on software GL only. Firefox not run.
+- Native phone date picker, the calendar popup and year-first date formats not run.
+- No screen reader; axe and DOM only. 21–31 axe contrast results are "incomplete", over images or pseudo-content; I measured the text over photographs, not each of those.
+- JSON-LD not re-submitted to a validator; read and compared only.
+- An explicit `SITE_URL` on `*.workers.dev` was not built; the default (unset) preview and `example.test` were. `IS_PREVIEW` was read in source.
+- Anchoring-off and Roboto font-swap cases, and the 450-state message sweep, are the designer's and earlier rounds', not re-run here.
+- `agents/designer/custom.md` has no line naming "interactive", so variant fit rests on `concepts.md` and the human's pick.
+- Image rights and consent are owner items. Old-site comparison belongs to dimension 8.
+- `critic-sanjee-surf-school-full-r1/` holds gitignored PNGs, not cleaned because other critics are running in this round. `tools/clean-shots.mjs` remains to be run afterwards.
