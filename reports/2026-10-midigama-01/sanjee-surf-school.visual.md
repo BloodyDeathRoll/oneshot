@@ -420,3 +420,127 @@ All paths are under `reports/2026-10-midigama-01/visual-sanjee-r2/`. Screenshots
 - "≥ 1920 px" has no axis in the rubric or playbook, which is why this round needed a ruling. Name it. My suggestion: width for a landscape full-bleed, long edge for a portrait full-bleed on a phone.
 - A full-bleed picture wider than its file has no rule above 1920: nothing tests 2560, and the tan pillarbox passed every check. Add a 2560 shot to the look loop.
 - "Never black or blue text on orange" came from buttons, and it collides with sunset skies, where white alone fails contrast. Worth a line saying what to do: grade the sky.
+
+---
+
+## Round 3 — quick (station 4f), interactive only
+
+Run `2026-10-midigama-01` · station 4f · **round 3** · visual-critic 0.2.0 · 2026-11-05. Limited to `interactive` by Alon, so calm and unique were not re-scored and there is no ranking this round.
+Page: `sites/sanjee-surf-school/mockups/interactive/dist/`, served over http from my own server on 9353, stopped afterwards.
+
+Independence: I did not open the critic's or experience-critic's report or folder, or the designer's `notes.md`. I looked at the page and wrote my first impressions before opening rounds 1 and 2.
+
+**Two biases to declare.** The scrim was my own round 2 suggestion, and round 2 predicted an 8. I tried to judge against both: I rate the scrim darker than it needs to be, and the 8 below is narrow and carries conditions.
+
+### How I looked
+
+All paths are under `reports/2026-10-midigama-01/visual-sanjee-r3/`. Screenshots are scratch, so each line says in words what its file shows.
+
+- **Renderer:** headless Chromium reporting "ANGLE Metal Renderer: Apple M1" for everything except `shots/`.
+- **Shot set:** `shots/`, from `tools/shoot.mjs` over http at 1440 and 390, which uses software GL. I read these for layout only, not motion. 12 desktop and 17 phone captures.
+- **First screens on Metal:** `hero-390.png` (2×), `hero-768`, `hero-1280`, `hero-1440`, `hero-1920`, `hero-2560`, `hero-1440-2x.png`, plus `hero-360x640`, `375x667`, `600x900`, `700x900`, `701x900`, `1024x768`, `1366x768`.
+- **Contrast:** sampled from the render with the words made transparent, at 14 sizes. `noscrim-compare-with.png` and `-without.png` give the sky row by row, with and without the scrim.
+- **Motion:** the page's own shader on Metal, stepped by a virtual clock to exact times and shot at 12 fps: 18 s at 1440×900 and 10 s at 390×844 at 2×. From those: `slice-*.png` (time-slices), `energy-d1440.png` (mean frame difference ×10), `foam-*-seq.png`, `crop-*.png`, block-matched displacement and mean brightness per region. Real-time rAF measured separately.
+- **Runtime trials, nothing on disk changed:** `trial-lighter-scrim-1440.png`, `trial-band-*.png`, and a patched shader in memory.
+- **Band:** `band-1920`, `band-2560`, `bandcheck-*`.
+- **Other:** `tiles-2x.png`, `state-tile-advanced.png`, gold pages rendered (`gold-the-lavish-haven`, `gold-ka-surf-hostel`, `gold-layday-surf`). I opened Lavish and Layday; KA was rendered and not opened.
+- **Inspector:** 4 FAIL (`icon-cards`, `eyebrow`, `edge-text`, `covered-text`), 6 WARN. I read only the tail of its output and did not examine each FAIL, so I do not rely on them. Its `[lopsided]` on "Sanjee, head instructor" does not match `band-1920.png` or `shots/desktop-sheet.png`, where the print sits beside the text.
+
+**Limits, stated plainly:**
+- **I did not watch it live.** "Reads as" is inference from frames and measurements. **A human should watch the foam for 20 seconds on a real screen before this goes further.**
+- **Nothing ran on a phone.** rAF held 60 fps at 1440, 1440 at 2×, 2560 and 390 at 2×, with p95 about 18 ms, on an M1. That is pacing on an M1, not a mid-range Android: **phone frame rate is unknown.**
+- The virtual clock drove the rAF timestamp and `performance.now`, in steps of 41.7 ms. My first capture stepped at 83 ms and tripped the page's own slow-device guard, which stopped the shader, so I threw it away. That guard is doing its job; it says nothing about real speed.
+- Block matching is unreliable where the water has little texture. I ignore the outliers: `mid-C` on desktop (dx 22 px) and `low` on the phone (dx 35 px).
+- The current site is judged from captures only (`old-site-desktop.png`, `funnel/walk/01-home-fold-settled.png`). I did not reshoot it.
+- `/impeccable critique`, `/emil-design-eng` and the motion-audit skills were not run.
+- Global Surf's footage is not in this worktree, so that bar is known to me from its notes.
+
+### Three-second test (before reading earlier rounds)
+
+- **1440 (`hero-1440.png`):** a dusk sea with people in it, a burning sky, a white title and one blue button. I would stop and scroll. Then a doubt: the sky is browner and heavier than a sunset should be, and the water is brighter than the sky it reflects.
+- **390 (`hero-390.png`):** lovely. Pale sky, ink title, gold cloud, sun on the horizon, a real wave landing on wet sand. The best thing this business has ever had on a screen.
+- **Current site (`funnel/walk/01-home-fold-settled.png`):** an atmospheric pool under trunks, with illegible words over it and a cookie box. This beats it at a glance, at both widths.
+
+### The five things asked
+
+**1 · Hero title and sky: legal and good, but darker than it needs to be.**
+- **Rule met.** White at every size from 701 up. Title contrast: mean 6.4–6.9, p5 5.2–5.7, min 4.2–4.7. Wordmark mean 6.1–7.0. Nav mean 6.7–7.1 at 1024 and up. The background behind the title is about `rgb(134,77,53)`, hsl 18/43/37: a darker orange, which is what the calibration asks for.
+- **Dark band: no.** The scrim tails off at y≈414 at 1440, under the far water, and the horizon is naturally dark, so no edge shows at any width (`hero-1280`, `hero-1920`, `hero-2560`).
+- **Still a sunset: yes, a late and rusty one.** It has lost the glow. Row by row at 1440 (`noscrim-compare-*.png`): y=40 goes from `223,186,141` to `128,88,70`; y=160 from `217,154,108` to `128,75,55`; y=220 from `225,159,97` to `147,89,56`. Lightness falls from 63–71 % to 36–40 % and saturation from 43–68 % to 26–45 %.
+- **Where it costs most:** the top 15 % of the frame is brown rather than sky, most of all at 768 (`hero-768.png`, grey-brown). The water's peach reflection is now brighter than the sky that makes it. The eye reads this as a filter, though few would name it.
+- **There is headroom.** The title is large text and needs 3:1; it has 6+. Tried at runtime with warmer, lighter stops (fix 2): burnt orange and visibly a sunset (`trial-lighter-scrim-1440.png`), with title mean 5.0–5.75, min 3.1–3.6, and nav mean at least 5.6, p5 at least 4.8.
+- **390 and small phones:** ink on pale sand, background hsl 34–35 / 27–37 / 73–74, contrast above 9. Not orange. I do not count it. `hero-375x667.png` holds too.
+- **One breach-in-waiting between 600 and 700 wide.** At 700×900 (`hero-700x900.png`) the ink title sits across peach-orange cloud, mean `rgb(220,187,146)`, hsl 33/52/72, close to what I called "close to it" on unique in round 2. At 700 the picture is lovely and at 701 it is rust, an abrupt jump for anyone resizing. Few visitors are at this width (a foldable, a tablet in split view). I do not hold the score on it, and it is fix 3.
+- **Tight at 1280×720** (`hero-1280.png`): the button's foot is at y=236 and the sun at about y=270. It holds.
+
+**2 · Above 1440: acceptable, soft.**
+- 1920 at 1.33× holds at a glance (`hero-1920.png`). At 2560 at 1.78× it still reads as a beautiful picture from viewing distance (`hero-2560.png`), and no pillarbox remains, which was the round 2 fault.
+- At 1:1 it is plainly soft (`crop-2560-horizon.png`, `crop-2560-foam.png`): figures become dark blobs, foam goes waxy and painterly, and there are faint compression blocks in the sky by the sun. Beside razor-sharp type the difference is visible if you look. Water and cloud forgive it; figures do not, but they are small.
+- **A 1440 laptop at 2× is the same or worse, at 2.0×** (`hero-1440-2x.png`): foam smeary at device pixels, and this is the commonest screen in the building. Soft, not ugly.
+- No seam where the canvas meets the photograph at the horizon (`crop-2560-horizon.png`).
+- `hero-img-018-wide-1440.webp` is 177 KB against a 300 KB limit, so some of the wax is compression and can be bought back (fix 4).
+
+**3 · Motion: reads as water, with one thing still breathing.** Confidence: high that it is visible and that it is not jelly in stills; medium that the mid-water reads right; **low to medium on the foam until someone watches it.**
+- **Felt immediately.** The canvas is on at about 295 ms on localhost, first paint 268 ms. The rate of change in the water is highest in the first half second (4.27 grey levels per step, against a typical 2.4; phone 4.64 against 2.9), then cycles between about 1.4 and 3.3 and never stops.
+- **A front does walk in.** Lag on the vertical movement from mid-water (y≈560–610) to the near water (y≈740–830) is about 3.3–3.6 s, correlation 0.89–0.98 (desktop). Foam at y≈740 leads foam at y≈820 by about 0.8 s. Time-slices show bands bending in sequence (`slice-d1440-x720.png`, `slice-m390-x400.png`). Bright glints cross the reflection rows diagonally, toward the shore.
+- **Size:** vertical travel through about 8–10 px in near water and foam on desktop (`foam-*`, `low-*`), about 4 px at `mid-L`; on the phone about 9–14 device px, so 5–7 css px. Sky, sun and upright board do not move at all (`energy-d1440.png`).
+- **Not jelly in stills.** No tearing, stretching or rubber edges in 100 % crops half a cycle apart (`crop-d1440-mid-halfcycle.png`, `foam-d1440-seq.png`, `crop-m390-foam-t3-t7.png`). Foam churn landed: horizontal travel of about 5–7 px and clumps no longer holding exact shape. It looks like water that has been lightly liquefied, which at this speed I expect to pass as water.
+- **What still breathes is the light, not the geometry.** Mean brightness of the foam over time, three patches across about 440 px of it: **17–19 % swing on desktop, peaking at the same moment, correlation 0.99–1.00.** Phone: 12–18 %, correlation 0.93–1.00. Displacement across six neighbouring patches is also in phase, r≈0.8–0.9. Near the shore the front has almost no slant, so the whole band lifts and glows as one on a 9 s clock. `crop-m390-foam-t3-t7.png` shows it: bright and lifted in one frame, dim and blue in the other. **This is round 2's slow breathing, reduced in shape and still present in light.** A 9 s period is right for swell and wrong for foam.
+- **Tried in memory** (fix 1): a front slanted across the frame, plus less shared light in the shore band. Swing drops to **6–7 %**, and patches across the foam decorrelate to r=0.25 at the far ends. Mid-water is nearly unchanged at 16 %. I measured this and did not look at it in motion.
+- **Limits of a still that remain, and are acceptable:** the two breaking lines in the far water barely move (0.5–0.8 px), so they read as held, and the shoreline never runs up the sand (0.5–1 px). On the phone the near breaker is a large frozen form whose top heaves, with droplets frozen in the air. It is a cinemagraph, and it will not look like footage.
+- **Hard-fail check:** the business has video but no file exists, and the round 1 ruling on that stands. The first screen carries img-018 (long edge 1920), and round 2's Ruling 1 stands.
+
+**4 · Level tiles: the row holds, and the Advanced tile is not filler.**
+- `tiles-2x.png`, `shots/desktop-01.png`: a lip of white water breaking on a green face is a stronger picture than Intermediate beside it, and an empty wave suits "Advanced" better than a person would. Crisp enough at 2×.
+- It does sit two tiles from its own source. Same grey-blue sky, same green water, a matching white shoulder. An attentive eye sees the same wave, but I expect most will not care.
+- The bigger issue is that the same frame now appears three times, since the Coco Beach print (`shots/desktop-07.png`) shows it whole. Not a blocker. Replace it if the owner sends anything.
+- Tapping works and looks designed (`state-tile-advanced.png`): dark outline, tinted label, a chip for the matching lesson and "for you" on its card.
+
+**5 · The middle of the page: better, one new defect at wide screens, tours still the flattest stretch.**
+- **The band is right at laptop sizes and has a new fault on big monitors.** At 1440 and 1728 (`shots/desktop-05.png`, `bandcheck-1728x1117.png`) it is a calm, well-proportioned pause, the head is gone from the left edge, and the paddler sits whole on the green face. At 1920×1080 he is whole, just above the edge (`band-1920.png`).
+- **Above about 2000 wide it loses him**, because the height is capped while the width grows. 2200×1240: the board is cut at the bottom edge (`bandcheck-2200x1240.png`). 2560×1440: only an arm and the top of a head (`band-2560.png`). **2560×1080: he is gone, leaving one far head alone on the water** (`bandcheck-2560x1080.png`). Tried a fix at runtime (fix 1a): whole and well placed at all five sizes tested (`trial-band-2560x1440.png`, `trial-band-1440x900.png`).
+- **The band's line is tight to the top edge**, about 22 px at 1440, and looks parked there.
+- **Tours: still the dullest stretch, though cleanly set.** About 1.5 screens of plain rows at 1440 (`shots/desktop-08.png`, `-09.png`) and about 3.5 at 390 (`shots/mobile-sheet.png`), no picture, and a column of twelve identical round cobalt buttons as the loudest thing. The sticky text column does its job. In its favour, it comes just before the page's biggest picture, so the close pays off.
+- **Weakest print on the page:** `shots/desktop-07.png`, lower left, under "Other waves": the top half is flat grey sky.
+- **The rest holds.** Lesson cards are tight, with big prices (`shots/desktop-02.png`). The row beneath now shares one baseline, though the Week paragraph (x≈961) aligns with neither its card's edge (953) nor its text (983). Message panel and "Before you book" are tidy (`shots/desktop-03.png`). Board chart is charming and original (`shots/desktop-03.png`, `-04`). Sanjee with his words is strong (`band-1920.png`). The bay close is big and happy, an abrupt jump from dusk to postcard blue but a real payoff (`shots/desktop-10.png`).
+
+### Checklist
+
+- **Media:** the strongest picture leads, full-bleed, on both widths. The surfer and the bay are held for later and land well. Less photographic wealth than the old site's mosaic, better used.
+- **Composition and grid:** a tidy 12-column grid. Tiles, chart and full-bleed moments give scale contrast; the rest is pale rounded panels. Still some product feel from the lessons to the message.
+- **Typography:** Manrope and the script are consistent and readable. No awkward breaks in the hero at any width tested. The script is a little wedding-invitation on short words. Two lines are at the top of a band with little air.
+- **Colour:** dusk, white, pale water, cobalt. The booking colour is unmistakable and consistent. The warm hero mood is not echoed lower down, where the page runs cool.
+- **Hierarchy and rhythm:** the eye always knows where to go, and sections vary in pace until the tours.
+- **Polish:** clean at both widths, with the band crop above 2000 as the exception.
+- **Distinctiveness:** the to-scale board chart, the tile-built message and this water make it this school's page. The cards alone could be anyone's.
+- **Hero and motion:** interesting, clean, slick, one CTA, a main item from the business's own media. Meets Shahar's 2026-10-20 bar. Micro-animations seen as end states; transitions not seen.
+
+### Score: 8 / 10, narrowly
+
+- **Why it clears:** the first screen is the real thing on both widths, and on a phone it is above 8. All three things that held round 2 at 7 are dealt with on the screens most people use: the title is white on a darker orange, the pillarbox is gone, and the band is a pause instead of a screen and a half of flat teal. The motion is a visible main item that makes the picture better. Below the hero the page is professional throughout and beautiful for most of its length: tiles, chart, Sanjee, close. That is my calibration's 8 and no more.
+- **Why only just:** the tours are dull, the sky gives away more glow than it must, the photograph is soft on Retina, and the foam's shared pulse is unresolved.
+- **Conditions, stated plainly:**
+  1. **The 8 stands for widths up to about 2000.** At 2200 and up the band loses its subject. Had that been the screen I judged, I would give 7. Fix 1a is one CSS line and must ship before a human sees this.
+  2. **The motion half of the 8 rests on inference.** If someone watches the foam and sees it breathing, that takes this back to 7 until fix 1b is in. Fix 1b is small and measured; I would apply it without waiting to find out.
+- **Closest reference:** Global Surf in spirit (own water, title and button only), below it because a still with a shader is not footage. Against Lavish and Layday (`gold-the-lavish-haven.png`, `gold-layday-surf.png`): more emotional on the first screen, because it is a real place at a real hour, but less art-directed, with plainer type and fewer sections that are moments of their own. Would a top studio put it in its portfolio? The hero, yes. The whole page, not quite yet.
+
+**Better than the current site: YES.**
+- First screen yes (`hero-1440.png` vs top of `dossier/.../assets/old-site-desktop.png`; `hero-390.png` vs `funnel/walk/01-home-fold-settled.png`): surf at sunset against a hotel pool, readable against illegible, what and where stated, nothing covering it.
+- Whole page yes (`shots/desktop-sheet.png` vs `old-site-desktop.png`): the old page's only advantage is its nine-photo mosaic, and this page is more beautiful, more engaging and far clearer to book from.
+
+### Fix list, biggest effect first
+
+1. **Two must-fixes.**
+   - **a. Band crop**, `src/page.css` line 209: `.feature img{height:max(clamp(300px,52vh,640px),29vw);object-position:50% 60%}`. Tested at runtime at 1440×900, 1920×1080, 2200×1240, 2560×1080 and 2560×1440; I opened 1440 and 2560×1440, the paddler is whole in both, and the other three rest on the arithmetic. Phone rule at line 339 is unaffected.
+   - **b. Foam, so it stops pulsing as one**, `src/swell.js`: line 40 add `+v.x*3.4` to `ph`; line 59 `c*=1.+m*near*(1.-.6*sb)*(.10*sl+.05*h);`; line 68 end with `*h*m*near*.09*(1.-.5*sb);`. Measured in memory at 1440 only, over 11 s against the build's 18 s: swing from 17–19 % to 6–7 %, patches decorrelated. Not looked at in motion, so watch it.
+2. **Lighten and warm the scrim**, `src/page.css` line 81: `linear-gradient(to bottom,rgb(150,116,104) 0,rgb(182,140,116) 34%,rgb(196,160,140) 60%,rgb(226,208,200) 80%,#fff 100%)`. Keeps the white, gives back the orange. Measured at 768, 1280, 1440, 1920, 2560: title mean 5.0–5.75, min 3.1–3.6 (large text, needs 3:1); nav mean at least 5.6.
+3. **Move the ink/white switch from 700/701 to 600/601,** in the same `@media` at `src/page.css` line 80, the picture's `<source media>` and the preload `media` in the build. Removes ink on cloud at 601–700. Check the title and scrim at 601 afterwards; not tried.
+4. **Buy back foam detail.** Re-encode `hero-img-018-wide-1440.webp` (`src/make-media.sh`) at a higher quality, up to about 280 KB against the 300 KB limit. Check the figures and the foam at 2× afterwards. Not tried.
+5. **Lift the tours and the grey print.** Give the rows' buttons the quiet tint at rest, cobalt on hover or tap, so the column stops being the loudest thing (`#tuktuk`, `shots/desktop-08.png`). Crop the grey sky out of the `img-014` print under "Other waves" (`shots/desktop-07.png`). Give the band's line more air: raise the top of the `inset` in `.feature p`, `src/page.css` line 210, to about `clamp(18px,2vw,32px)`, and check it stays on the sky.
+
+**Keep:** the hero picture and both crops; the phone first screen exactly as it is; the walking front, the masks and the figures' stillness; the churn; the five photo tiles including Advanced; the board chart; Sanjee with his words; tile-to-message; img-002 as the close.
+
+**What the designer prompt got wrong (for the learn step):**
+- A clamp on height with `object-fit: cover` on a band whose subject sits low in the file breaks at widths nobody shoots. The hero got a 2560 check after round 2; the same check belongs on every full-bleed. Add 2200×1240 and 2560×1080 to the look loop.
+- "Reduce the breathing" was checked by displacement. The shared light moved the same way, and only brightness over time showed it. Motion review should measure both.
+- I gave the scrim as a colour and a rough contrast. A critic note on a scrim should give the contrast to aim for (large text 3:1), or a safe build will overshoot.

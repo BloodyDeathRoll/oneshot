@@ -1,0 +1,379 @@
+{
+ "date": {
+  "page_us_future": {
+   "changes": [
+    "0002-10-12"
+   ],
+   "value": "",
+   "bubble": "Hello Sanjee Surf School, I'd like to ask about a surf lesson."
+  },
+  "control_us_future": {
+   "changes": [
+    "0002-10-12",
+    "0020-10-12",
+    "0202-10-12",
+    "2026-10-12"
+   ],
+   "value": "2026-10-12",
+   "bubble": "Hello Sanjee Surf School, I'd like to ask about a surf lesson. The date I have in mind is 12 October 2026."
+  },
+  "page_gb_future": {
+   "changes": [
+    "0002-12-10"
+   ],
+   "value": "",
+   "bubble": "Hello Sanjee Surf School, I'd like to ask about a surf lesson."
+  },
+  "control_gb_future": {
+   "changes": [
+    "0002-12-10",
+    "0020-12-10",
+    "0202-12-10",
+    "2026-12-10"
+   ],
+   "value": "2026-12-10",
+   "bubble": "Hello Sanjee Surf School, I'd like to ask about a surf lesson. The date I have in mind is 10 December 2026."
+  },
+  "page_gb_slow": {
+   "changes": [
+    "0002-12-10"
+   ],
+   "value": "",
+   "bubble": "Hello Sanjee Surf School, I'd like to ask about a surf lesson."
+  },
+  "page_sv_yearfirst": {
+   "changes": [
+    "0006-02-20"
+   ],
+   "value": "",
+   "bubble": "Hello Sanjee Surf School, I'd like to ask about a surf lesson."
+  }
+ },
+ "dateTabs": [
+  "date",
+  "date",
+  "date",
+  "chip",
+  "chip"
+ ],
+ "robotoUrl": "https://fonts.gstatic.com/s/roboto/v51/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWubEbVmUiAr0klQmz24.woff2",
+ "android": {
+  "roboto_102_late3s": {
+   "cls": 0.00076,
+   "shifts": [
+    {
+     "t": 3315,
+     "v": 0.00076,
+     "i": false,
+     "src": [
+      "#text. 120->117 h83->83"
+     ]
+    }
+   ],
+   "heightBefore": 12985,
+   "heightAfter": 12906,
+   "fonts": [
+    "Courgette 400",
+    "Manrope 400",
+    "Manrope 600",
+    "Manrope 700",
+    "Manrope 800",
+    "Manrope-fb-r normal"
+   ]
+  },
+  "roboto_102_late3s_2": {
+   "cls": 0.00076,
+   "shifts": [
+    {
+     "t": 3305,
+     "v": 0.00076,
+     "i": false,
+     "src": [
+      "#text. 120->117 h83->83"
+     ]
+    }
+   ],
+   "heightBefore": 12985,
+   "heightAfter": 12906,
+   "fonts": [
+    "Courgette 400",
+    "Manrope 400",
+    "Manrope 600",
+    "Manrope 700",
+    "Manrope 800",
+    "Manrope-fb-r normal"
+   ]
+  },
+  "roboto_100_late3s": {
+   "cls": 0.0014,
+   "shifts": [
+    {
+     "t": 3306,
+     "v": 0.0014,
+     "i": false,
+     "src": [
+      "#text. 120->117 h83->83",
+      "A.btn hero-btn 216->216 h56->56"
+     ]
+    }
+   ],
+   "heightBefore": 12985,
+   "heightAfter": 12906,
+   "fonts": [
+    "Courgette 400",
+    "Manrope 400",
+    "Manrope 600",
+    "Manrope 700",
+    "Manrope 800",
+    "Manrope-fb-r normal"
+   ]
+  }
+ },
+ "tabSettled": {
+  "count": 62,
+  "offscreen": [],
+  "underHeader": [],
+  "noOutline": [
+   "INPUT:Date"
+  ]
+ },
+ "hoverPill": {
+  "boards": {
+   "min": 3.29,
+   "p5": 3.35,
+   "med": 3.92
+  },
+  "lessons": {
+   "min": 3.4,
+   "p5": 3.56,
+   "med": 4.22
+  },
+  "finding-us": {
+   "min": 4.12,
+   "p5": 4.22,
+   "med": 4.38
+  }
+ },
+ "hosts_390": [
+  "localhost:9347",
+  "fonts.googleapis.com",
+  "fonts.gstatic.com"
+ ],
+ "imgs_390": [
+  "hero-img-018-tall-1000.webp",
+  "tile-img-005-380.webp",
+  "tile-img-006-384.webp",
+  "tile-img-009-520.webp",
+  "tile-img-006-wave-384.webp",
+  "tile-img-012-wide-700.webp",
+  "feature-img-009-near-1040.webp",
+  "print-img-007-962.webp",
+  "print-img-006-848.webp",
+  "print-img-014-1000.webp",
+  "back-img-002-tall-900.webp"
+ ],
+ "hosts_1440": [
+  "localhost:9347",
+  "fonts.googleapis.com",
+  "fonts.gstatic.com"
+ ],
+ "imgs_1440": [
+  "hero-img-018-wide-1440.webp",
+  "tile-img-005-380.webp",
+  "tile-img-006-384.webp",
+  "tile-img-009-520.webp",
+  "tile-img-006-wave-384.webp",
+  "tile-img-012-tall-300.webp",
+  "feature-img-009-wide-1500.webp",
+  "print-img-007-640.webp",
+  "print-img-006-848.webp",
+  "print-img-014-1000.webp",
+  "back-img-002-wide-2000.webp"
+ ],
+ "tileTap_390": {
+  "fitsTop": 616,
+  "fitsH": 112,
+  "tilesBottom": 773,
+  "bottomFootprint": 228,
+  "vh": 844,
+  "share": 0.27
+ },
+ "tileTap_320": {
+  "fitsTop": 340,
+  "fitsH": 112,
+  "tilesBottom": 580,
+  "bottomFootprint": 228,
+  "vh": 568,
+  "share": 0.401
+ },
+ "facts": {
+  "problems": [],
+  "rental": 8,
+  "tours": 12,
+  "lessons": [
+   {
+    "n": "Beginner Lesson",
+    "d": "Total beginner, beginner | 2 hours",
+    "p": "USD 40 per lesson"
+   },
+   {
+    "n": "Private Coaching",
+    "d": "One-on-one | Beginner, intermediate, advanced | 2 hours",
+    "p": "USD 50 per lesson"
+   },
+   {
+    "n": "Week Intensive",
+    "d": "5 private sessions | 2 hours each",
+    "p": "USD 160"
+   }
+  ],
+  "quotes": 4,
+  "extras": [
+   "Bodyboard | per day USD 5",
+   "Rashguard (UV long-sleeve), to buy USD 12",
+   "Reef booties, to buy, per pair USD 15"
+  ],
+  "addr": "Kadabaddagama, Weligama 81700, Sri Lanka",
+  "addrDossier": {
+   "value": "Kadabaddagama, Weligama 81700, Sri Lanka",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "fetched_at": "2026-11-05T08:34:45Z",
+   "note": "Google listing wording, with postcode 81700, per playbook §6. Other wordings on the site are in contradictions."
+  },
+  "tel": [
+   "tel:+94774004422",
+   "tel:+94774004422",
+   "tel:+94774004422"
+  ],
+  "mail": [
+   "mailto:sanjee@sanjee-surf.com",
+   "mailto:sanjee@sanjee-surf.com"
+  ],
+  "maps": [
+   "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en"
+  ],
+  "ld": [],
+  "meta": [
+   "=",
+   "viewport=width=device-width,initial-scale=1,viewport-fit=cover",
+   "description=Surf lessons in Weligama, on the south coast of Sri Lanka.",
+   "og:title=Sanjee Surf School | Surf lessons in Weligama",
+   "og:description=Surf lessons in Weligama, on the south coast of Sri Lanka.",
+   "og:type=website",
+   "og:image=https://sanjee-surf-school.os1.workers.dev/img/og-img-018-1200.jpg",
+   "og:image:width=1200",
+   "og:image:height=630",
+   "theme-color=#c9b9a8",
+   "color-scheme=light"
+  ],
+  "title": "Sanjee Surf School | Surf lessons in Weligama",
+  "contact": {
+   "phone": {
+    "value": "+94774004422",
+    "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+    "fetched_at": "2026-11-05T08:34:45Z",
+    "verified": "same number on the Google listing (tel: link), the site's schema and /faq, and in the site's wa.me link"
+   },
+   "whatsapp": {
+    "value": "+94774004422",
+    "source_url": "https://sanjee-surf.com/faq",
+    "fetched_at": "2026-11-05T08:30:24Z",
+    "verified": "wa.me link on 32 of the 67 pages crawled, not on the home page; \"WhatsApp +94 77 400 4422\" printed on /surfboard-rental-weligama and /faq. The public wa.me page reads \"Chat on WhatsApp with +94 77 400 4422\". No message was sent (test mode), so whether it is answered is unverified."
+   },
+   "email": {
+    "value": "sanjee@sanjee-surf.com",
+    "source_url": "https://sanjee-surf.com/faq",
+    "fetched_at": "2026-11-05T08:30:24Z",
+    "verified": "on /faq, the mailto link, the schema and the booking dialog. sanjee-surf.com has an MX record (checked 2026-11-05). The home page contact block prints a different address: see contradictions."
+   },
+   "socials": {
+    "instagram": {
+     "value": null,
+     "url_on_site": "https://instagram.com/sanjeesurf",
+     "status": "Instagram answers \"Profile isn't available\"",
+     "gap": "linked from the site's footer and schema, but Instagram answers \"Profile isn't available\"",
+     "source_url": "https://sanjee-surf.com/",
+     "fetched_at": "2026-11-05T08:29:39Z"
+    },
+    "facebook": {
+     "value": null,
+     "url_on_site": "https://facebook.com/sanjeesurf",
+     "status": "Facebook answers \"This content isn't available\" to a logged-out visitor",
+     "gap": "linked from the site's footer and schema, but Facebook answers \"This content isn't available\" to a logged-out visitor",
+     "source_url": "https://sanjee-surf.com/",
+     "fetched_at": "2026-11-05T08:29:39Z"
+    },
+    "youtube": {
+     "value": null,
+     "url_on_site": "https://youtube.com/@sanjeesurf",
+     "status": "YouTube answers 404",
+     "gap": "linked from the site's footer and schema, but YouTube answers 404",
+     "source_url": "https://sanjee-surf.com/",
+     "fetched_at": "2026-11-05T08:29:39Z"
+    },
+    "twitter": {
+     "value": null,
+     "gap": "the page head names @SanjeeSurf; not checked (X requires login) and not linked anywhere visible"
+    },
+    "tiktok": {
+     "value": null,
+     "gap": "tiktok.com/@sanjeesurf: \"Couldn't find this account\""
+    },
+    "tripadvisor": {
+     "value": null,
+     "gap": "no listing found: web searches found none and tripadvisor.com answered 403 to its own search, so absence is not proven"
+    },
+    "google_maps": {
+     "value": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+     "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+     "fetched_at": "2026-11-05T08:34:45Z"
+    }
+   }
+  },
+  "google": {
+   "rating": 5,
+   "count": 13,
+   "scale": 5,
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "fetched_at": "2026-11-05T08:34:45Z",
+   "note": "read 2026-11-05. One of the 13 is by a reviewer who has the name of the site's legal operator: see flags_for_operator."
+  },
+  "lang": [
+   {
+    "value": "si",
+    "source_url": "https://sanjee-surf.com/about",
+    "fetched_at": "2026-11-05T08:30:18Z",
+    "note": "\"Sinhala, English, basic Tamil\""
+   },
+   {
+    "value": "en",
+    "source_url": "https://sanjee-surf.com/about",
+    "fetched_at": "2026-11-05T08:30:18Z",
+    "note": "\"Lessons in English as standard\""
+   },
+   {
+    "value": "ta",
+    "source_url": "https://sanjee-surf.com/about",
+    "fetched_at": "2026-11-05T08:30:18Z",
+    "note": "\"basic Tamil\""
+   }
+  ],
+  "offerExtras": [
+   [
+    "Bodyboard rental",
+    5,
+    "per day"
+   ],
+   [
+    "Rashguard (UV long-sleeve), to buy",
+    12,
+    "each"
+   ],
+   [
+    "Reef booties, to buy",
+    15,
+    "per pair"
+   ]
+  ]
+ }
+}

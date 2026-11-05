@@ -1,0 +1,1280 @@
+{
+ "messages": {
+  "states": 450,
+  "links": 22,
+  "cats": [
+   {
+    "ask": "a surf lesson",
+    "own": false,
+    "outing": false,
+    "cls": "btn btn-s hdr-cta needs-js"
+   },
+   {
+    "ask": "a surf lesson",
+    "own": false,
+    "outing": false,
+    "cls": "btn hero-btn"
+   },
+   {
+    "ask": "the Beginner Lesson",
+    "own": true,
+    "outing": false,
+    "cls": "btn"
+   },
+   {
+    "ask": "Private Coaching",
+    "own": true,
+    "outing": false,
+    "cls": "btn"
+   },
+   {
+    "ask": "the Week Intensive",
+    "own": true,
+    "outing": false,
+    "cls": "btn"
+   },
+   {
+    "ask": "a surf lesson",
+    "own": false,
+    "outing": false,
+    "cls": "btn msg-send"
+   },
+   {
+    "ask": "renting a board",
+    "own": true,
+    "outing": false,
+    "cls": "btn"
+   },
+   {
+    "ask": "the Surf Spot Safari tour",
+    "own": true,
+    "outing": false,
+    "cls": "ico"
+   },
+   {
+    "ask": "the Full Coast Adventure tour",
+    "own": true,
+    "outing": false,
+    "cls": "ico"
+   },
+   {
+    "ask": "the Sunrise Session tour",
+    "own": true,
+    "outing": false,
+    "cls": "ico"
+   },
+   {
+    "ask": "the Weligama Bay & Taprobane Island tour",
+    "own": true,
+    "outing": true,
+    "cls": "ico"
+   },
+   {
+    "ask": "the Midigama Reef Breaks tour",
+    "own": true,
+    "outing": true,
+    "cls": "ico"
+   },
+   {
+    "ask": "the Mirissa Beach & Coconut Tree Hill tour",
+    "own": true,
+    "outing": true,
+    "cls": "ico"
+   },
+   {
+    "ask": "the Ahangama & Kabalana tour",
+    "own": true,
+    "outing": true,
+    "cls": "ico"
+   },
+   {
+    "ask": "the Secret Beach Mirissa tour",
+    "own": true,
+    "outing": true,
+    "cls": "ico"
+   },
+   {
+    "ask": "the Turtle Bay & Snake Farm tour",
+    "own": true,
+    "outing": true,
+    "cls": "ico"
+   },
+   {
+    "ask": "the Handunugoda Tea Estate tour",
+    "own": true,
+    "outing": true,
+    "cls": "ico"
+   },
+   {
+    "ask": "the Galle Fort tour",
+    "own": true,
+    "outing": true,
+    "cls": "ico"
+   },
+   {
+    "ask": "the Hiriketiya Bay tour",
+    "own": true,
+    "outing": true,
+    "cls": "ico"
+   },
+   {
+    "ask": "a surf lesson",
+    "own": false,
+    "outing": false,
+    "cls": "btn"
+   },
+   {
+    "ask": "a surf lesson",
+    "own": false,
+    "outing": false,
+    "cls": "btn btn-s"
+   },
+   {
+    "ask": "a surf lesson",
+    "own": false,
+    "outing": false,
+    "cls": "btn"
+   }
+  ],
+  "sentences": [
+   "I'm not sure of the date yet.",
+   "The date I have in mind is <date>.",
+   "It's just me.",
+   "There are 2 of us.",
+   "There are 3 or more of us.",
+   "I'm not sure how many of us there will be.",
+   "I'd like to ask about the Beginner Lesson.",
+   "I'd like to ask about Private Coaching.",
+   "I'd like to ask about the Week Intensive.",
+   "I'm a total beginner.",
+   "I'm a beginner who can already stand up.",
+   "I'm an intermediate surfer.",
+   "I'm an advanced surfer.",
+   "I'm not sure of my level yet.",
+   "I'd like to ask about a surf lesson.",
+   "I'd like to ask about a surf lesson, I'm not sure which one.",
+   "I'd like to ask about renting a board.",
+   "I'd like to ask about the Surf Spot Safari tour.",
+   "I'd like to ask about the Full Coast Adventure tour.",
+   "I'd like to ask about the Sunrise Session tour.",
+   "I'd like to ask about the Weligama Bay & Taprobane Island tour.",
+   "I'd like to ask about the Midigama Reef Breaks tour.",
+   "I'd like to ask about the Mirissa Beach & Coconut Tree Hill tour.",
+   "I'd like to ask about the Ahangama & Kabalana tour.",
+   "I'd like to ask about the Secret Beach Mirissa tour.",
+   "I'd like to ask about the Turtle Bay & Snake Farm tour.",
+   "I'd like to ask about the Handunugoda Tea Estate tour.",
+   "I'd like to ask about the Galle Fort tour.",
+   "I'd like to ask about the Hiriketiya Bay tour."
+  ],
+  "distinct": 945,
+  "problems": [],
+  "problemCount": 0,
+  "sample": [
+   "btn btn-s hd | GENERAL | Hello Sanjee Surf School, I'd like to ask about Private Coaching. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "btn hero-btn | GENERAL | Hello Sanjee Surf School, I'd like to ask about Private Coaching. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "btn | OWN | Hello Sanjee Surf School, I'd like to ask about the Beginner Lesson. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "btn | OWN | Hello Sanjee Surf School, I'd like to ask about Private Coaching. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "btn | OWN | Hello Sanjee Surf School, I'd like to ask about the Week Intensive. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "btn msg-send | GENERAL | Hello Sanjee Surf School, I'd like to ask about Private Coaching. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "btn | OWN | Hello Sanjee Surf School, I'd like to ask about renting a board. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "ico | OWN | Hello Sanjee Surf School, I'd like to ask about the Surf Spot Safari tour. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "ico | OWN | Hello Sanjee Surf School, I'd like to ask about the Full Coast Adventure tour. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "ico | OWN | Hello Sanjee Surf School, I'd like to ask about the Sunrise Session tour. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "ico | OUTING | Hello Sanjee Surf School, I'd like to ask about the Weligama Bay & Taprobane Island tour. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "ico | OUTING | Hello Sanjee Surf School, I'd like to ask about the Midigama Reef Breaks tour. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "ico | OUTING | Hello Sanjee Surf School, I'd like to ask about the Mirissa Beach & Coconut Tree Hill tour. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "ico | OUTING | Hello Sanjee Surf School, I'd like to ask about the Ahangama & Kabalana tour. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "ico | OUTING | Hello Sanjee Surf School, I'd like to ask about the Secret Beach Mirissa tour. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "ico | OUTING | Hello Sanjee Surf School, I'd like to ask about the Turtle Bay & Snake Farm tour. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "ico | OUTING | Hello Sanjee Surf School, I'd like to ask about the Handunugoda Tea Estate tour. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "ico | OUTING | Hello Sanjee Surf School, I'd like to ask about the Galle Fort tour. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "ico | OUTING | Hello Sanjee Surf School, I'd like to ask about the Hiriketiya Bay tour. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "btn | GENERAL | Hello Sanjee Surf School, I'd like to ask about Private Coaching. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "btn btn-s | GENERAL | Hello Sanjee Surf School, I'd like to ask about Private Coaching. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us.",
+   "btn | GENERAL | Hello Sanjee Surf School, I'd like to ask about Private Coaching. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us."
+  ]
+ },
+ "dates": [
+  {
+   "label": "past-us",
+   "locale": "en-US",
+   "keys": "01012020",
+   "log": [
+    "0 -> \"\"",
+    "1 -> \"\"",
+    "0 -> \"\"",
+    "1 -> \"\"",
+    "2 -> \"\"",
+    "0 -> \"\"",
+    "2 -> \"\"",
+    "0 -> \"\""
+   ],
+   "end": {
+    "value": "",
+    "filled": false,
+    "bubble": "Hello Sanjee Surf School, I'd like to ask about a surf lesson.",
+    "send": "Hello Sanjee Surf School, I'd like to ask about a surf lesson.",
+    "min": "2026-11-05",
+    "focus": "INPUT"
+   }
+  },
+  {
+   "label": "past-gb",
+   "locale": "en-GB",
+   "keys": "01012020",
+   "log": [
+    "0 -> \"\"",
+    "1 -> \"\"",
+    "0 -> \"\"",
+    "1 -> \"\"",
+    "2 -> \"\"",
+    "0 -> \"\"",
+    "2 -> \"\"",
+    "0 -> \"\""
+   ],
+   "end": {
+    "value": "",
+    "filled": false,
+    "bubble": "Hello Sanjee Surf School, I'd like to ask about a surf lesson.",
+    "send": "Hello Sanjee Surf School, I'd like to ask about a surf lesson.",
+    "min": "2026-11-05",
+    "focus": "INPUT"
+   }
+  },
+  {
+   "label": "future-us",
+   "locale": "en-US",
+   "keys": "12102026",
+   "log": [
+    "1 -> \"\"",
+    "2 -> \"\"",
+    "1 -> \"\"",
+    "0 -> \"\"",
+    "2 -> \"\"",
+    "0 -> \"\"",
+    "2 -> \"\"",
+    "6 -> \"\""
+   ],
+   "end": {
+    "value": "",
+    "filled": false,
+    "bubble": "Hello Sanjee Surf School, I'd like to ask about a surf lesson.",
+    "send": "Hello Sanjee Surf School, I'd like to ask about a surf lesson.",
+    "min": "2026-11-05",
+    "focus": "INPUT"
+   }
+  },
+  {
+   "label": "future-gb",
+   "locale": "en-GB",
+   "keys": "10122026",
+   "log": [
+    "1 -> \"\"",
+    "0 -> \"\"",
+    "1 -> \"\"",
+    "2 -> \"\"",
+    "2 -> \"\"",
+    "0 -> \"\"",
+    "2 -> \"\"",
+    "6 -> \"\""
+   ],
+   "end": {
+    "value": "",
+    "filled": false,
+    "bubble": "Hello Sanjee Surf School, I'd like to ask about a surf lesson.",
+    "send": "Hello Sanjee Surf School, I'd like to ask about a surf lesson.",
+    "min": "2026-11-05",
+    "focus": "INPUT"
+   }
+  },
+  {
+   "label": "future-us-2027",
+   "locale": "en-US",
+   "keys": "12102027",
+   "log": [
+    "1 -> \"\"",
+    "2 -> \"\"",
+    "1 -> \"\"",
+    "0 -> \"\"",
+    "2 -> \"\"",
+    "0 -> \"\"",
+    "2 -> \"\"",
+    "7 -> \"\""
+   ],
+   "end": {
+    "value": "",
+    "filled": false,
+    "bubble": "Hello Sanjee Surf School, I'd like to ask about a surf lesson.",
+    "send": "Hello Sanjee Surf School, I'd like to ask about a surf lesson.",
+    "min": "2026-11-05",
+    "focus": "INPUT"
+   }
+  },
+  {
+   "label": "year-retyped",
+   "locale": "en-US",
+   "keys": "TabTab2027",
+   "log": [
+    "Tab -> \"2026-12-10\"",
+    "Tab -> \"2026-12-10\"",
+    "2 -> \"\"",
+    "0 -> \"\"",
+    "2 -> \"\"",
+    "7 -> \"\""
+   ],
+   "end": {
+    "value": "",
+    "filled": false,
+    "bubble": "Hello Sanjee Surf School, I'd like to ask about a surf lesson.",
+    "send": "Hello Sanjee Surf School, I'd like to ask about a surf lesson.",
+    "min": "2026-11-05",
+    "focus": "INPUT"
+   }
+  },
+  {
+   "label": "arrow-down-month",
+   "locale": "en-US",
+   "keys": "ArrowRightArrowDown",
+   "log": [
+    "ArrowRight -> \"2026-12-10\"",
+    "ArrowDown -> \"2026-11-10\""
+   ],
+   "end": {
+    "value": "2026-11-10",
+    "filled": true,
+    "bubble": "Hello Sanjee Surf School, I'd like to ask about a surf lesson. The date I have in mind is 10 November 2026.",
+    "send": "Hello Sanjee Surf School, I'd like to ask about a surf lesson. The date I have in mind is 10 November 2026.",
+    "min": "2026-11-05",
+    "focus": "filled"
+   }
+  }
+ ],
+ "dateFill": {
+  "s1": "Hello Sanjee Surf School, I'd like to ask about a surf lesson. The date I have in mind is 10 December 2026.",
+  "s2": {
+   "v": "",
+   "b": "Hello Sanjee Surf School, I'd like to ask about a surf lesson.",
+   "h": "Hello Sanjee Surf School, I'd like to ask about a surf lesson.",
+   "all": 0
+  },
+  "s3": {
+   "v": "",
+   "min": "2026-11-05",
+   "b": "Hello Sanjee Surf School, I'd like to ask about a surf lesson."
+  },
+  "s4": {
+   "v": "2026-11-05",
+   "b": "Hello Sanjee Surf School, I'd like to ask about a surf lesson. The date I have in mind is 5 November 2026."
+  }
+ },
+ "rates": {
+  "soft": {
+   "dom": [
+    {
+     "row": "1 hour",
+     "show": "soft",
+     "innerText": "USD 5",
+     "rowInner": "1 hour Walk-in USD 5",
+     "textContent": "USD 5",
+     "visual": "5",
+     "soft": "5",
+     "hard": "7",
+     "softCellVisible": false
+    },
+    {
+     "row": "2 hours",
+     "show": "soft",
+     "innerText": "USD 8",
+     "rowInner": "2 hours One full session USD 8",
+     "textContent": "USD 8",
+     "visual": "8",
+     "soft": "8",
+     "hard": "12",
+     "softCellVisible": false
+    },
+    {
+     "row": "Half day (4 h)",
+     "show": "soft",
+     "innerText": "USD 12",
+     "rowInner": "Half day (4 h) Dawn or afternoon session USD 12",
+     "textContent": "USD 12",
+     "visual": "12",
+     "soft": "12",
+     "hard": "18",
+     "softCellVisible": false
+    },
+    {
+     "row": "Full day (24 h)",
+     "show": "soft",
+     "innerText": "USD 15",
+     "rowInner": "Full day (24 h) Two sessions + sunset USD 15",
+     "textContent": "USD 15",
+     "visual": "15",
+     "soft": "15",
+     "hard": "20",
+     "softCellVisible": false
+    },
+    {
+     "row": "3 days",
+     "show": "soft",
+     "innerText": "USD 36",
+     "rowInner": "3 days USD 36",
+     "textContent": "USD 36",
+     "visual": "36",
+     "soft": "36",
+     "hard": "50",
+     "softCellVisible": false
+    },
+    {
+     "row": "7 days",
+     "show": "soft",
+     "innerText": "USD 70",
+     "rowInner": "7 days USD 70",
+     "textContent": "USD 70",
+     "visual": "70",
+     "soft": "70",
+     "hard": "95",
+     "softCellVisible": false
+    },
+    {
+     "row": "14 days",
+     "show": "soft",
+     "innerText": "USD 120",
+     "rowInner": "14 days USD 120",
+     "textContent": "USD 120",
+     "visual": "120",
+     "soft": "120",
+     "hard": "170",
+     "softCellVisible": false
+    },
+    {
+     "row": "Monthly",
+     "show": "soft",
+     "innerText": "USD 220",
+     "rowInner": "Monthly USD 220",
+     "textContent": "USD 220",
+     "visual": "220",
+     "soft": "220",
+     "hard": "310",
+     "softCellVisible": false
+    }
+   ],
+   "head": {
+    "text": "Soft-top",
+    "aria": null,
+    "vis": true
+   },
+   "ax": [
+    "table \"\"",
+    "  rowgroup \"\"",
+    "    row \"\"",
+    "      columnheader \"Duration\"",
+    "        StaticText \"Duration\"",
+    "          InlineTextBox \"Duration\"",
+    "      columnheader \"Soft-top\"",
+    "        StaticText \"Soft-top\"",
+    "          InlineTextBox \"Soft-top\"",
+    "  row \"\"",
+    "    rowheader \"1 hour Walk-in\"",
+    "      StaticText \"1 hour\"",
+    "        InlineTextBox \"1 hour\"",
+    "      StaticText \"Walk-in\"",
+    "        InlineTextBox \"Walk-in\"",
+    "    cell \"USD 5\"",
+    "      StaticText \"USD 5\"",
+    "        InlineTextBox \"USD 5\"",
+    "  row \"\"",
+    "    rowheader \"2 hours One full session\"",
+    "      StaticText \"2 hours\"",
+    "        InlineTextBox \"2 hours\"",
+    "      StaticText \"One full session\"",
+    "        InlineTextBox \"One full session\"",
+    "    cell \"USD 8\"",
+    "      StaticText \"USD 8\"",
+    "        InlineTextBox \"USD 8\"",
+    "  row \"\"",
+    "    rowheader \"Half day (4 h) Dawn or afternoon session\"",
+    "      StaticText \"Half day (4 h)\"",
+    "        InlineTextBox \"Half day (4 h)\"",
+    "      StaticText \"Dawn or afternoon session\"",
+    "        InlineTextBox \"Dawn or afternoon session\"",
+    "    cell \"USD 12\"",
+    "      StaticText \"USD 12\"",
+    "        InlineTextBox \"USD 12\"",
+    "  row \"\"",
+    "    rowheader \"Full day (24 h) Two sessions + sunset\"",
+    "      StaticText \"Full day (24 h)\"",
+    "        InlineTextBox \"Full day (24 h)\"",
+    "      StaticText \"Two sessions + sunset\"",
+    "        InlineTextBox \"Two sessions + sunset\"",
+    "    cell \"USD 15\"",
+    "      StaticText \"USD 15\"",
+    "        InlineTextBox \"USD 15\"",
+    "  row \"\"",
+    "    rowheader \"3 days\"",
+    "      StaticText \"3 days\"",
+    "        InlineTextBox \"3 days\"",
+    "    cell \"USD 36\"",
+    "      StaticText \"USD 36\"",
+    "        InlineTextBox \"USD 36\"",
+    "  row \"\"",
+    "    rowheader \"7 days\"",
+    "      StaticText \"7 days\"",
+    "        InlineTextBox \"7 days\"",
+    "    cell \"USD 70\"",
+    "      StaticText \"USD 70\"",
+    "        InlineTextBox \"USD 70\"",
+    "  row \"\"",
+    "    rowheader \"14 days\"",
+    "      StaticText \"14 days\"",
+    "        InlineTextBox \"14 days\"",
+    "    cell \"USD 120\"",
+    "      StaticText \"USD 120\"",
+    "        InlineTextBox \"USD 120\"",
+    "  row \"\"",
+    "    rowheader \"Monthly\"",
+    "      StaticText \"Monthly\"",
+    "        InlineTextBox \"Monthly\"",
+    "    cell \"USD 220\"",
+    "      StaticText \"USD 220\"",
+    "        InlineTextBox \"USD 220\""
+   ]
+  },
+  "hard": {
+   "dom": [
+    {
+     "row": "1 hour",
+     "show": "hard",
+     "innerText": "USD 7",
+     "rowInner": "1 hour Walk-in USD 7",
+     "textContent": "USD 7",
+     "visual": "7",
+     "soft": "5",
+     "hard": "7",
+     "softCellVisible": false
+    },
+    {
+     "row": "2 hours",
+     "show": "hard",
+     "innerText": "USD 12",
+     "rowInner": "2 hours One full session USD 12",
+     "textContent": "USD 12",
+     "visual": "12",
+     "soft": "8",
+     "hard": "12",
+     "softCellVisible": false
+    },
+    {
+     "row": "Half day (4 h)",
+     "show": "hard",
+     "innerText": "USD 18",
+     "rowInner": "Half day (4 h) Dawn or afternoon session USD 18",
+     "textContent": "USD 18",
+     "visual": "18",
+     "soft": "12",
+     "hard": "18",
+     "softCellVisible": false
+    },
+    {
+     "row": "Full day (24 h)",
+     "show": "hard",
+     "innerText": "USD 20",
+     "rowInner": "Full day (24 h) Two sessions + sunset USD 20",
+     "textContent": "USD 20",
+     "visual": "20",
+     "soft": "15",
+     "hard": "20",
+     "softCellVisible": false
+    },
+    {
+     "row": "3 days",
+     "show": "hard",
+     "innerText": "USD 50",
+     "rowInner": "3 days USD 50",
+     "textContent": "USD 50",
+     "visual": "50",
+     "soft": "36",
+     "hard": "50",
+     "softCellVisible": false
+    },
+    {
+     "row": "7 days",
+     "show": "hard",
+     "innerText": "USD 95",
+     "rowInner": "7 days USD 95",
+     "textContent": "USD 95",
+     "visual": "95",
+     "soft": "70",
+     "hard": "95",
+     "softCellVisible": false
+    },
+    {
+     "row": "14 days",
+     "show": "hard",
+     "innerText": "USD 170",
+     "rowInner": "14 days USD 170",
+     "textContent": "USD 170",
+     "visual": "170",
+     "soft": "120",
+     "hard": "170",
+     "softCellVisible": false
+    },
+    {
+     "row": "Monthly",
+     "show": "hard",
+     "innerText": "USD 310",
+     "rowInner": "Monthly USD 310",
+     "textContent": "USD 310",
+     "visual": "310",
+     "soft": "220",
+     "hard": "310",
+     "softCellVisible": false
+    }
+   ],
+   "head": {
+    "text": "Hardboard",
+    "aria": null,
+    "vis": true
+   },
+   "ax": [
+    "table \"\"",
+    "  rowgroup \"\"",
+    "    row \"\"",
+    "      columnheader \"Duration\"",
+    "        StaticText \"Duration\"",
+    "          InlineTextBox \"Duration\"",
+    "      columnheader \"Hardboard\"",
+    "        StaticText \"Hardboard\"",
+    "          InlineTextBox \"Hardboard\"",
+    "  row \"\"",
+    "    rowheader \"1 hour Walk-in\"",
+    "      StaticText \"1 hour\"",
+    "        InlineTextBox \"1 hour\"",
+    "      StaticText \"Walk-in\"",
+    "        InlineTextBox \"Walk-in\"",
+    "    cell \"USD 7\"",
+    "      StaticText \"USD 7\"",
+    "        InlineTextBox \"USD 7\"",
+    "  row \"\"",
+    "    rowheader \"2 hours One full session\"",
+    "      StaticText \"2 hours\"",
+    "        InlineTextBox \"2 hours\"",
+    "      StaticText \"One full session\"",
+    "        InlineTextBox \"One full session\"",
+    "    cell \"USD 12\"",
+    "      StaticText \"USD 12\"",
+    "        InlineTextBox \"USD 12\"",
+    "  row \"\"",
+    "    rowheader \"Half day (4 h) Dawn or afternoon session\"",
+    "      StaticText \"Half day (4 h)\"",
+    "        InlineTextBox \"Half day (4 h)\"",
+    "      StaticText \"Dawn or afternoon session\"",
+    "        InlineTextBox \"Dawn or afternoon session\"",
+    "    cell \"USD 18\"",
+    "      StaticText \"USD 18\"",
+    "        InlineTextBox \"USD 18\"",
+    "  row \"\"",
+    "    rowheader \"Full day (24 h) Two sessions + sunset\"",
+    "      StaticText \"Full day (24 h)\"",
+    "        InlineTextBox \"Full day (24 h)\"",
+    "      StaticText \"Two sessions + sunset\"",
+    "        InlineTextBox \"Two sessions + sunset\"",
+    "    cell \"USD 20\"",
+    "      StaticText \"USD 20\"",
+    "        InlineTextBox \"USD 20\"",
+    "  row \"\"",
+    "    rowheader \"3 days\"",
+    "      StaticText \"3 days\"",
+    "        InlineTextBox \"3 days\"",
+    "    cell \"USD 50\"",
+    "      StaticText \"USD 50\"",
+    "        InlineTextBox \"USD 50\"",
+    "  row \"\"",
+    "    rowheader \"7 days\"",
+    "      StaticText \"7 days\"",
+    "        InlineTextBox \"7 days\"",
+    "    cell \"USD 95\"",
+    "      StaticText \"USD 95\"",
+    "        InlineTextBox \"USD 95\"",
+    "  row \"\"",
+    "    rowheader \"14 days\"",
+    "      StaticText \"14 days\"",
+    "        InlineTextBox \"14 days\"",
+    "    cell \"USD 170\"",
+    "      StaticText \"USD 170\"",
+    "        InlineTextBox \"USD 170\"",
+    "  row \"\"",
+    "    rowheader \"Monthly\"",
+    "      StaticText \"Monthly\"",
+    "        InlineTextBox \"Monthly\"",
+    "    cell \"USD 310\"",
+    "      StaticText \"USD 310\"",
+    "        InlineTextBox \"USD 310\""
+   ]
+  },
+  "backToSoft": [
+   "USD 5",
+   "USD 8",
+   "USD 12",
+   "USD 15",
+   "USD 36",
+   "USD 70",
+   "USD 120",
+   "USD 220"
+  ],
+  "ariaSnapshot": "- table:\n  - rowgroup:\n    - row \"Duration Hardboard\":\n      - columnheader \"Duration\"\n      - columnheader \"Hardboard\"\n  - rowgroup:\n    - row \"1 hour Walk-in USD 7\":\n      - rowheader \"1 hour Walk-in\"\n      - cell \"USD 7\"\n    - row \"2 hours One full session USD 12\":\n      - rowheader \"2 hours One full session\"\n      - cell \"USD 12\"\n    - row \"Half day (4 h) Dawn or afternoon session USD 18\":\n      - rowheader \"Half day (4 h) Dawn or afternoon session\"\n      - cell \"USD 18\"\n    - row \"Full day (24 h) Two sessions + sunset USD 20\":\n      - rowheader \"Full day (24 h) Two sessions + sunset\"\n      - cell \"USD 20\"\n    - row \"3 days USD 50\":\n      - rowheader \"3 days\"\n      - cell \"USD 50\"\n    - row \"7 days USD 95\":\n      - rowheader \"7 days\"\n      - cell \"USD 95\"\n    - row \"14 days USD 170\":\n      - rowheader \"14 days\"\n      - cell \"USD 170\"\n    - row \"Monthly USD 310\":\n      - rowheader \"Monthly\"\n      - cell \"USD 310\""
+ },
+ "ratesDesktop": {
+  "rows": [
+   "1 hourWalk-in USD 5 USD 7",
+   "2 hoursOne full session USD 8 USD 12",
+   "Half day (4 h)Dawn or afternoon session USD 12 USD 18",
+   "Full day (24 h)Two sessions + sunset USD 15 USD 20",
+   "3 days USD 36 USD 50",
+   "7 days USD 70 USD 95",
+   "14 days USD 120 USD 170",
+   "Monthly USD 220 USD 310"
+  ],
+  "rollVis": 0,
+  "kindVis": 0
+ },
+ "overflow_m_js": {
+  "sw": 390,
+  "cw": 390
+ },
+ "overflow_d_js": {
+  "sw": 1440,
+  "cw": 1440
+ },
+ "overflow_m_nojs": {
+  "sw": 390,
+  "cw": 390
+ },
+ "overflow_320_js": {
+  "sw": 320,
+  "cw": 320
+ },
+ "overflow_320_nojs": {
+  "sw": 320,
+  "cw": 320
+ },
+ "overflow_360_js": {
+  "sw": 360,
+  "cw": 360
+ },
+ "overflow_360_nojs": {
+  "sw": 360,
+  "cw": 360
+ },
+ "tap": {
+  "hrefHero": "https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I'd%20like%20to%20ask%20about%20a%20surf%20lesson.",
+  "tapHero": "https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20a%20surf%20lesson.",
+  "barState": {
+   "on": true,
+   "btn": [
+    782,
+    834
+   ],
+   "onTop": true,
+   "callOnTop": true,
+   "tel": "tel:+94774004422"
+  }
+ },
+ "tiles": [
+  {
+   "w": 390,
+   "h": 844,
+   "level": "first_time",
+   "before": {
+    "lessonsY": 811.0625,
+    "sy": 1003
+   },
+   "after": {
+    "fits": [
+     668,
+     728,
+     60
+    ],
+    "chips": [
+     "Beginner Lesson | USD 40 44h@676"
+    ],
+    "barMsgTop": 728,
+    "barTop": 772,
+    "barBottom": 844,
+    "vh": 844,
+    "lessonsY": 857,
+    "sy": 1003,
+    "pos": "sticky",
+    "gapFitsToBar": 0
+   },
+   "stuck": {
+    "fits": [
+     -187,
+     -127,
+     60
+    ],
+    "chips": [
+     "Beginner Lesson | USD 40 44h@-179"
+    ],
+    "barMsgTop": 728,
+    "barTop": 772,
+    "barBottom": 844,
+    "vh": 844,
+    "lessonsY": -103,
+    "sy": 1963,
+    "pos": "sticky",
+    "gapFitsToBar": 855
+   },
+   "covered": {
+    "free_px": -247,
+    "footprint": 1031,
+    "share": 1.221
+   },
+   "btn": {
+    "y": 436,
+    "onTop": true
+   }
+  },
+  {
+   "w": 390,
+   "h": 844,
+   "level": "beginner",
+   "before": {
+    "lessonsY": 811.0625,
+    "sy": 1003
+   },
+   "after": {
+    "fits": [
+     616,
+     728,
+     112
+    ],
+    "chips": [
+     "Beginner Lesson | USD 40 44h@624",
+     "Private Coaching | USD 50 44h@676"
+    ],
+    "barMsgTop": 728,
+    "barTop": 772,
+    "barBottom": 844,
+    "vh": 844,
+    "lessonsY": 909,
+    "sy": 1003,
+    "pos": "sticky",
+    "gapFitsToBar": 0
+   },
+   "stuck": {
+    "fits": [
+     -239,
+     -127,
+     112
+    ],
+    "chips": [
+     "Beginner Lesson | USD 40 44h@-231",
+     "Private Coaching | USD 50 44h@-179"
+    ],
+    "barMsgTop": 728,
+    "barTop": 772,
+    "barBottom": 844,
+    "vh": 844,
+    "lessonsY": -103,
+    "sy": 2015,
+    "pos": "sticky",
+    "gapFitsToBar": 855
+   },
+   "covered": {
+    "free_px": -299,
+    "footprint": 1083,
+    "share": 1.283
+   },
+   "btn": {
+    "y": 436,
+    "onTop": true
+   }
+  },
+  {
+   "w": 390,
+   "h": 844,
+   "level": "unsure",
+   "before": {
+    "lessonsY": 811.0625,
+    "sy": 1003
+   },
+   "after": {
+    "fits": [
+     668,
+     728,
+     60
+    ],
+    "chips": [
+     "Your message 44h@676"
+    ],
+    "barMsgTop": 728,
+    "barTop": 772,
+    "barBottom": 844,
+    "vh": 844,
+    "lessonsY": 857,
+    "sy": 1003,
+    "pos": "sticky",
+    "gapFitsToBar": 0
+   },
+   "stuck": {
+    "fits": [
+     -187,
+     -127,
+     60
+    ],
+    "chips": [
+     "Your message 44h@-179"
+    ],
+    "barMsgTop": 728,
+    "barTop": 772,
+    "barBottom": 844,
+    "vh": 844,
+    "lessonsY": -103,
+    "sy": 1963,
+    "pos": "sticky",
+    "gapFitsToBar": 855
+   },
+   "covered": {
+    "free_px": -247,
+    "footprint": 1031,
+    "share": 1.221
+   },
+   "btn": {
+    "y": 436,
+    "onTop": true
+   }
+  },
+  {
+   "w": 360,
+   "h": 640,
+   "level": "beginner",
+   "before": {
+    "lessonsY": 682.5625,
+    "sy": 875
+   },
+   "after": {
+    "fits": [
+     412,
+     524,
+     112
+    ],
+    "chips": [
+     "Beginner Lesson | USD 40 44h@420",
+     "Private Coaching | USD 50 44h@472"
+    ],
+    "barMsgTop": 524,
+    "barTop": 568,
+    "barBottom": 640,
+    "vh": 640,
+    "lessonsY": 786,
+    "sy": 870,
+    "pos": "sticky",
+    "gapFitsToBar": 0
+   },
+   "stuck": {
+    "fits": [
+     -237,
+     -125,
+     112
+    ],
+    "chips": [
+     "Beginner Lesson | USD 40 44h@-229",
+     "Private Coaching | USD 50 44h@-177"
+    ],
+    "barMsgTop": 524,
+    "barTop": 568,
+    "barBottom": 640,
+    "vh": 640,
+    "lessonsY": -101,
+    "sy": 1757,
+    "pos": "sticky",
+    "gapFitsToBar": 649
+   },
+   "covered": {
+    "free_px": -297,
+    "footprint": 877,
+    "share": 1.371
+   },
+   "btn": {
+    "y": 334,
+    "onTop": true
+   }
+  },
+  {
+   "w": 320,
+   "h": 568,
+   "level": "beginner",
+   "before": {
+    "lessonsY": 611.75,
+    "sy": 831
+   },
+   "after": {
+    "fits": [
+     340,
+     452,
+     112
+    ],
+    "chips": [
+     "Beginner Lesson | USD 40 44h@348",
+     "Private Coaching | USD 50 44h@400"
+    ],
+    "barMsgTop": 452,
+    "barTop": 496,
+    "barBottom": 568,
+    "vh": 568,
+    "lessonsY": 716,
+    "sy": 825,
+    "pos": "sticky",
+    "gapFitsToBar": 0
+   },
+   "stuck": {
+    "fits": [
+     -235,
+     -123,
+     112
+    ],
+    "chips": [
+     "Beginner Lesson | USD 40 44h@-227",
+     "Private Coaching | USD 50 44h@-175"
+    ],
+    "barMsgTop": 452,
+    "barTop": 496,
+    "barBottom": 568,
+    "vh": 568,
+    "lessonsY": -99,
+    "sy": 1640,
+    "pos": "sticky",
+    "gapFitsToBar": 575
+   },
+   "covered": {
+    "free_px": -295,
+    "footprint": 803,
+    "share": 1.414
+   },
+   "btn": {
+    "y": 298,
+    "onTop": true
+   }
+  }
+ ],
+ "axe": {
+  "390": {
+   "def": {
+    "violations": [],
+    "incomplete": [
+     {
+      "id": "color-contrast",
+      "n": 21
+     }
+    ]
+   },
+   "chosen": {
+    "violations": [],
+    "incomplete": [
+     {
+      "id": "color-contrast",
+      "n": 30
+     }
+    ]
+   }
+  },
+  "1440": {
+   "def": {
+    "violations": [],
+    "incomplete": [
+     {
+      "id": "color-contrast",
+      "n": 31
+     }
+    ]
+   },
+   "chosen": {
+    "violations": [],
+    "incomplete": [
+     {
+      "id": "color-contrast",
+      "n": 36
+     }
+    ]
+   }
+  }
+ },
+ "tab": {
+  "count": 62,
+  "noRing": [
+   "INPUT:Date"
+  ],
+  "offscreen": [
+   "BUTTON:Total beginner",
+   "BUTTON:I can stand up",
+   "BUTTON:Intermediate",
+   "BUTTON:Advanced",
+   "A:Ask on WhatsApp",
+   "BUTTON:Add to my messageIn my m",
+   "A:Ask on WhatsApp",
+   "BUTTON:Add to my messageIn my m",
+   "A:Ask on WhatsApp",
+   "BUTTON:Add to my messageIn my m",
+   "A:5/513 Google reviews | a",
+   "BUTTON:Beginner Lesson",
+   "BUTTON:Private Coaching",
+   "BUTTON:Week Intensive",
+   "BUTTON:Not sure",
+   "INPUT:Date",
+   "INPUT:Date",
+   "INPUT:Date",
+   "A:Ask on WhatsApp",
+   "A:5/513 Google reviews | a",
+   "UL:Reviews, scrolls sideway",
+   "BUTTON:Review 1 of 4",
+   "BUTTON:Review 2 of 4",
+   "BUTTON:Review 3 of 4",
+   "BUTTON:Review 4 of 4",
+   "A:Ask on WhatsApp about Su",
+   "A:Ask on WhatsApp about Fu",
+   "A:Ask on WhatsApp about Su",
+   "A:Ask on WhatsApp about We",
+   "A:Ask on WhatsApp about Mi",
+   "A:Ask on WhatsApp about Mi",
+   "A:Ask on WhatsApp about Ah",
+   "A:Ask on WhatsApp about Se",
+   "A:Ask on WhatsApp about Tu",
+   "A:Ask on WhatsApp about Ha",
+   "A:Ask on WhatsApp about Ga",
+   "A:Ask on WhatsApp about Hi",
+   "A:Ask on WhatsApp",
+   "A:Open in Google Maps",
+   "A:Call +94 77 400 4422",
+   "A:Email sanjee@sanjee-surf",
+   "A:Ask on WhatsApp",
+   "A:Call +94 77 400 4422",
+   "A:Email sanjee@sanjee-surf"
+  ],
+  "first": [
+   {
+    "t": "A:Skip to lessons",
+    "ring": true,
+    "o": "rgb(5, 54, 138)",
+    "top": 12,
+    "bot": 59,
+    "h": 900,
+    "cls": "skip"
+   },
+   {
+    "t": "A:Sanjee Surf School",
+    "ring": true,
+    "o": "rgb(255, 255, 255)",
+    "top": 17,
+    "bot": 61,
+    "h": 900,
+    "cls": "brand"
+   },
+   {
+    "t": "A:Lessons",
+    "ring": true,
+    "o": "rgb(255, 255, 255)",
+    "top": 17,
+    "bot": 61,
+    "h": 900,
+    "cls": ""
+   },
+   {
+    "t": "A:Boards",
+    "ring": true,
+    "o": "rgb(255, 255, 255)",
+    "top": 17,
+    "bot": 61,
+    "h": 900,
+    "cls": ""
+   },
+   {
+    "t": "A:Sanjee",
+    "ring": true,
+    "o": "rgb(255, 255, 255)",
+    "top": 17,
+    "bot": 61,
+    "h": 900,
+    "cls": ""
+   },
+   {
+    "t": "A:Waves",
+    "ring": true,
+    "o": "rgb(255, 255, 255)",
+    "top": 17,
+    "bot": 61,
+    "h": 900,
+    "cls": ""
+   },
+   {
+    "t": "A:Tuk-tuk",
+    "ring": true,
+    "o": "rgb(255, 255, 255)",
+    "top": 17,
+    "bot": 61,
+    "h": 900,
+    "cls": ""
+   },
+   {
+    "t": "A:Finding us",
+    "ring": true,
+    "o": "rgb(255, 255, 255)",
+    "top": 17,
+    "bot": 61,
+    "h": 900,
+    "cls": ""
+   }
+  ]
+ },
+ "reduced": {
+  "canvasOpacity": "0",
+  "w": 300,
+  "img": true
+ },
+ "swell": {
+  "differ": true,
+  "bytes": [
+   1276422,
+   1276091
+  ],
+  "opacity": "1",
+  "console": []
+ },
+ "headerScroll": [
+  "0 clear rgb(255, 255, 255) heroBottom 900 h1top 131 hdrBottom 78",
+  "40 clear rgb(255, 255, 255) heroBottom 860 h1top 91 hdrBottom 78",
+  "80 solid rgb(25, 30, 17) heroBottom 820 h1top 51 hdrBottom 62",
+  "120 solid rgb(24, 29, 16) heroBottom 780 h1top 11 hdrBottom 62",
+  "160 solid rgb(24, 29, 16) heroBottom 740 h1top -29 hdrBottom 62",
+  "200 solid rgb(24, 29, 16) heroBottom 700 h1top -69 hdrBottom 62",
+  "240 solid rgb(24, 29, 16) heroBottom 660 h1top -109 hdrBottom 62",
+  "280 solid rgb(24, 29, 16) heroBottom 620 h1top -149 hdrBottom 62",
+  "320 solid rgb(24, 29, 16) heroBottom 580 h1top -189 hdrBottom 62",
+  "360 solid rgb(24, 29, 16) heroBottom 540 h1top -229 hdrBottom 62",
+  "400 solid rgb(24, 29, 16) heroBottom 500 h1top -269 hdrBottom 62",
+  "440 solid rgb(24, 29, 16) heroBottom 460 h1top -309 hdrBottom 62",
+  "480 solid rgb(24, 29, 16) heroBottom 420 h1top -349 hdrBottom 62",
+  "520 solid rgb(24, 29, 16) heroBottom 380 h1top -389 hdrBottom 62",
+  "560 solid rgb(24, 29, 16) heroBottom 340 h1top -429 hdrBottom 62",
+  "600 solid rgb(24, 29, 16) heroBottom 300 h1top -469 hdrBottom 62",
+  "640 solid rgb(24, 29, 16) heroBottom 260 h1top -509 hdrBottom 62",
+  "680 solid rgb(24, 29, 16) heroBottom 220 h1top -549 hdrBottom 62",
+  "720 solid rgb(24, 29, 16) heroBottom 180 h1top -589 hdrBottom 62",
+  "760 solid rgb(24, 29, 16) heroBottom 140 h1top -629 hdrBottom 62",
+  "800 solid rgb(24, 29, 16) heroBottom 100 h1top -669 hdrBottom 62",
+  "840 solid rgb(24, 29, 16) heroBottom 60 h1top -709 hdrBottom 62",
+  "880 solid rgb(24, 29, 16) heroBottom 20 h1top -749 hdrBottom 62",
+  "920 solid rgb(24, 29, 16) heroBottom -20 h1top -789 hdrBottom 62",
+  "960 solid rgb(24, 29, 16) heroBottom -60 h1top -829 hdrBottom 62",
+  "1000 solid rgb(24, 29, 16) heroBottom -100 h1top -869 hdrBottom 62"
+ ],
+ "headerAnchor": [
+  "hdr solid on",
+  "rgb(24, 29, 16)",
+  2798
+ ],
+ "navigationsAborted": [
+  "https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20a%20surf%20lesson."
+ ]
+}

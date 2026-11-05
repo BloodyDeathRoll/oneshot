@@ -1,0 +1,1822 @@
+{
+ "hero_phone": [
+  {
+   "label": "phone throttled 0",
+   "lcp": [
+    {
+     "t": 484,
+     "el": "H1",
+     "size": 16264
+    }
+   ],
+   "et": [
+    {
+     "id": "h1",
+     "render": 484,
+     "load": 0
+    },
+    {
+     "id": "hero",
+     "render": 1692,
+     "load": 1510
+    }
+   ],
+   "longtasks": [
+    {
+     "t": 360,
+     "d": 92
+    },
+    {
+     "t": 1514,
+     "d": 74
+    },
+    {
+     "t": 1588,
+     "d": 99
+    }
+   ],
+   "canvas_on_ms": 1712,
+   "fp": [
+    [
+     "first-paint",
+     484
+    ],
+    [
+     "first-contentful-paint",
+     484
+    ]
+   ],
+   "cls": 0.0009,
+   "shifts": [
+    {
+     "t": 1425,
+     "v": 0.0009,
+     "input": false,
+     "src": [
+      "#text:Surf lessons in Weligama 121->117 h83->83 w350->350"
+     ]
+    }
+   ],
+   "totalKB": 365,
+   "rows": [
+    {
+     "f": "",
+     "end_ms": 23,
+     "kb": 100.7
+    },
+    {
+     "f": "https://fonts.googleapis.com/css2?family=Courgette&family=Ma",
+     "end_ms": 358,
+     "kb": 1.2
+    },
+    {
+     "f": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My",
+     "end_ms": 402,
+     "kb": 0
+    },
+    {
+     "f": "img/tile-img-006-384.webp",
+     "end_ms": 899,
+     "kb": 8.5
+    },
+    {
+     "f": "img/tile-img-006-wave-384.webp",
+     "end_ms": 936,
+     "kb": 8.7
+    },
+    {
+     "f": "img/tile-img-009-520.webp",
+     "end_ms": 1099,
+     "kb": 13.8
+    },
+    {
+     "f": "https://fonts.gstatic.com/s/courgette/v19/wEO_EBrAnc9BLjLQAU",
+     "end_ms": 1278,
+     "kb": 18
+    },
+    {
+     "f": "img/tile-img-005-380.webp",
+     "end_ms": 1301,
+     "kb": 23.1
+    },
+    {
+     "f": "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggex",
+     "end_ms": 1373,
+     "kb": 24.4
+    },
+    {
+     "f": "img/tile-img-012-wide-700.webp",
+     "end_ms": 1431,
+     "kb": 32.2
+    },
+    {
+     "f": "img/hero-img-018-tall-1000.webp",
+     "end_ms": 1508,
+     "kb": 134.4
+    }
+   ],
+   "hosts": [
+    "localhost:9347",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    ""
+   ]
+  },
+  {
+   "label": "phone throttled 1",
+   "lcp": [
+    {
+     "t": 472,
+     "el": "H1",
+     "size": 16264
+    }
+   ],
+   "et": [
+    {
+     "id": "h1",
+     "render": 472,
+     "load": 0
+    },
+    {
+     "id": "hero",
+     "render": 1660,
+     "load": 1481
+    }
+   ],
+   "longtasks": [
+    {
+     "t": 362,
+     "d": 80
+    },
+    {
+     "t": 1485,
+     "d": 70
+    },
+    {
+     "t": 1556,
+     "d": 99
+    }
+   ],
+   "canvas_on_ms": 1676,
+   "fp": [
+    [
+     "first-paint",
+     472
+    ],
+    [
+     "first-contentful-paint",
+     472
+    ]
+   ],
+   "cls": 0.0009,
+   "shifts": [
+    {
+     "t": 1401,
+     "v": 0.0009,
+     "input": false,
+     "src": [
+      "#text:Surf lessons in Weligama 121->117 h83->83 w350->350"
+     ]
+    }
+   ],
+   "totalKB": 365,
+   "rows": [
+    {
+     "f": "",
+     "end_ms": 5,
+     "kb": 100.7
+    },
+    {
+     "f": "https://fonts.googleapis.com/css2?family=Courgette&family=Ma",
+     "end_ms": 360,
+     "kb": 1.2
+    },
+    {
+     "f": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My",
+     "end_ms": 397,
+     "kb": 0
+    },
+    {
+     "f": "img/tile-img-006-384.webp",
+     "end_ms": 909,
+     "kb": 8.5
+    },
+    {
+     "f": "img/tile-img-006-wave-384.webp",
+     "end_ms": 922,
+     "kb": 8.7
+    },
+    {
+     "f": "img/tile-img-009-520.webp",
+     "end_ms": 1095,
+     "kb": 13.8
+    },
+    {
+     "f": "https://fonts.gstatic.com/s/courgette/v19/wEO_EBrAnc9BLjLQAU",
+     "end_ms": 1267,
+     "kb": 18
+    },
+    {
+     "f": "img/tile-img-005-380.webp",
+     "end_ms": 1288,
+     "kb": 23.1
+    },
+    {
+     "f": "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggex",
+     "end_ms": 1359,
+     "kb": 24.4
+    },
+    {
+     "f": "img/tile-img-012-wide-700.webp",
+     "end_ms": 1417,
+     "kb": 32.2
+    },
+    {
+     "f": "img/hero-img-018-tall-1000.webp",
+     "end_ms": 1480,
+     "kb": 134.4
+    }
+   ],
+   "hosts": [
+    "localhost:9347",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    ""
+   ]
+  },
+  {
+   "label": "phone throttled 2",
+   "lcp": [
+    {
+     "t": 452,
+     "el": "H1",
+     "size": 16264
+    }
+   ],
+   "et": [
+    {
+     "id": "h1",
+     "render": 452,
+     "load": 0
+    },
+    {
+     "id": "hero",
+     "render": 1684,
+     "load": 1497
+    }
+   ],
+   "longtasks": [
+    {
+     "t": 325,
+     "d": 96
+    },
+    {
+     "t": 1502,
+     "d": 72
+    },
+    {
+     "t": 1575,
+     "d": 102
+    }
+   ],
+   "canvas_on_ms": 1702,
+   "fp": [
+    [
+     "first-paint",
+     452
+    ],
+    [
+     "first-contentful-paint",
+     452
+    ]
+   ],
+   "cls": 0.0009,
+   "shifts": [
+    {
+     "t": 1379,
+     "v": 0.0009,
+     "input": false,
+     "src": [
+      "#text:Surf lessons in Weligama 121->117 h83->83 w350->350"
+     ]
+    }
+   ],
+   "totalKB": 365,
+   "rows": [
+    {
+     "f": "",
+     "end_ms": 7,
+     "kb": 100.7
+    },
+    {
+     "f": "https://fonts.googleapis.com/css2?family=Courgette&family=Ma",
+     "end_ms": 321,
+     "kb": 1.2
+    },
+    {
+     "f": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My",
+     "end_ms": 363,
+     "kb": 0
+    },
+    {
+     "f": "img/tile-img-006-384.webp",
+     "end_ms": 883,
+     "kb": 8.5
+    },
+    {
+     "f": "img/tile-img-006-wave-384.webp",
+     "end_ms": 901,
+     "kb": 8.7
+    },
+    {
+     "f": "img/tile-img-009-520.webp",
+     "end_ms": 1072,
+     "kb": 13.8
+    },
+    {
+     "f": "https://fonts.gstatic.com/s/courgette/v19/wEO_EBrAnc9BLjLQAU",
+     "end_ms": 1237,
+     "kb": 18.4
+    },
+    {
+     "f": "img/tile-img-005-380.webp",
+     "end_ms": 1264,
+     "kb": 23.1
+    },
+    {
+     "f": "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggex",
+     "end_ms": 1334,
+     "kb": 24
+    },
+    {
+     "f": "img/tile-img-012-wide-700.webp",
+     "end_ms": 1392,
+     "kb": 32.2
+    },
+    {
+     "f": "img/hero-img-018-tall-1000.webp",
+     "end_ms": 1493,
+     "kb": 134.4
+    }
+   ],
+   "hosts": [
+    "localhost:9347",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    ""
+   ]
+  }
+ ],
+ "hero_desktop": {
+  "label": "desktop throttled",
+  "lcp": [
+   {
+    "t": 476,
+    "el": "H1",
+    "size": 38848
+   }
+  ],
+  "et": [
+   {
+    "id": "h1",
+    "render": 476,
+    "load": 0
+   },
+   {
+    "id": "hero",
+    "render": 1676,
+    "load": 1631
+   }
+  ],
+  "longtasks": [
+   {
+    "t": 331,
+    "d": 105
+   },
+   {
+    "t": 1640,
+    "d": 78
+   },
+   {
+    "t": 1718,
+    "d": 102
+   }
+  ],
+  "canvas_on_ms": 1846,
+  "fp": [
+   [
+    "first-paint",
+    476
+   ],
+   [
+    "first-contentful-paint",
+    476
+   ]
+  ],
+  "cls": 0.00053,
+  "shifts": [
+   {
+    "t": 1376,
+    "v": 0.00053,
+    "input": false,
+    "src": [
+     "#text:Surf lessons in Weligama 129->122 h77->77 w606->642"
+    ]
+   }
+  ],
+  "totalKB": 390.6,
+  "rows": [
+   {
+    "f": "",
+    "end_ms": 14,
+    "kb": 100.7
+   },
+   {
+    "f": "https://fonts.googleapis.com/css2?family=Courgette&family=Ma",
+    "end_ms": 327,
+    "kb": 1.2
+   },
+   {
+    "f": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My",
+    "end_ms": 387,
+    "kb": 0
+   },
+   {
+    "f": "img/tile-img-006-384.webp",
+    "end_ms": 901,
+    "kb": 8.5
+   },
+   {
+    "f": "img/tile-img-006-wave-384.webp",
+    "end_ms": 914,
+    "kb": 8.7
+   },
+   {
+    "f": "img/tile-img-009-520.webp",
+    "end_ms": 1085,
+    "kb": 13.8
+   },
+   {
+    "f": "img/tile-img-012-tall-300.webp",
+    "end_ms": 1201,
+    "kb": 19
+   },
+   {
+    "f": "https://fonts.gstatic.com/s/courgette/v19/wEO_EBrAnc9BLjLQAU",
+    "end_ms": 1251,
+    "kb": 18
+   },
+   {
+    "f": "img/tile-img-005-380.webp",
+    "end_ms": 1280,
+    "kb": 23.1
+   },
+   {
+    "f": "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggex",
+    "end_ms": 1323,
+    "kb": 24.4
+   },
+   {
+    "f": "img/hero-img-018-wide-1440.webp",
+    "end_ms": 1630,
+    "kb": 173.2
+   }
+  ],
+  "hosts": [
+   "localhost:9347",
+   "fonts.googleapis.com",
+   "fonts.gstatic.com",
+   ""
+  ]
+ },
+ "scroll_phone": [
+  {
+   "label": "phone scroll 0",
+   "lcp": [
+    {
+     "t": 448,
+     "el": "H1",
+     "size": 16264
+    },
+    {
+     "t": 3932,
+     "el": "IMG:back-img-002-tall-900.webp",
+     "size": 67080
+    }
+   ],
+   "et": [
+    {
+     "id": "h1",
+     "render": 448,
+     "load": 0
+    },
+    {
+     "id": "hero",
+     "render": 1504,
+     "load": 1494
+    }
+   ],
+   "longtasks": [
+    {
+     "t": 323,
+     "d": 92
+    },
+    {
+     "t": 1503,
+     "d": 72
+    },
+    {
+     "t": 1577,
+     "d": 108
+    }
+   ],
+   "canvas_on_ms": 1710,
+   "fp": [
+    [
+     "first-paint",
+     448
+    ],
+    [
+     "first-contentful-paint",
+     448
+    ]
+   ],
+   "cls": 0.0009,
+   "shifts": [
+    {
+     "t": 1383,
+     "v": 0.0009,
+     "input": false,
+     "src": [
+      "#text:Surf lessons in Weligama 121->117 h83->83 w350->350"
+     ]
+    }
+   ],
+   "totalKB": 587.1,
+   "rows": [
+    {
+     "f": "",
+     "end_ms": 7,
+     "kb": 100.7
+    },
+    {
+     "f": "https://fonts.googleapis.com/css2?family=Courgette&family=Ma",
+     "end_ms": 321,
+     "kb": 1.2
+    },
+    {
+     "f": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My",
+     "end_ms": 366,
+     "kb": 0
+    },
+    {
+     "f": "img/tile-img-006-384.webp",
+     "end_ms": 872,
+     "kb": 8.5
+    },
+    {
+     "f": "img/tile-img-006-wave-384.webp",
+     "end_ms": 886,
+     "kb": 8.7
+    },
+    {
+     "f": "img/tile-img-009-520.webp",
+     "end_ms": 1074,
+     "kb": 13.8
+    },
+    {
+     "f": "https://fonts.gstatic.com/s/courgette/v19/wEO_EBrAnc9BLjLQAU",
+     "end_ms": 1229,
+     "kb": 18.4
+    },
+    {
+     "f": "img/tile-img-005-380.webp",
+     "end_ms": 1275,
+     "kb": 23.1
+    },
+    {
+     "f": "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggex",
+     "end_ms": 1339,
+     "kb": 24
+    },
+    {
+     "f": "img/tile-img-012-wide-700.webp",
+     "end_ms": 1388,
+     "kb": 32.2
+    },
+    {
+     "f": "img/hero-img-018-tall-1000.webp",
+     "end_ms": 1493,
+     "kb": 134.4
+    },
+    {
+     "f": "img/feature-img-009-near-1040.webp",
+     "end_ms": 2423,
+     "kb": 34.9
+    },
+    {
+     "f": "img/print-img-007-962.webp",
+     "end_ms": 2602,
+     "kb": 43.4
+    },
+    {
+     "f": "img/print-img-006-848.webp",
+     "end_ms": 2802,
+     "kb": 17.1
+    },
+    {
+     "f": "img/print-img-014-1000.webp",
+     "end_ms": 3004,
+     "kb": 33.6
+    },
+    {
+     "f": "img/back-img-002-tall-900.webp",
+     "end_ms": 3906,
+     "kb": 93.2
+    }
+   ],
+   "hosts": [
+    "localhost:9347",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    ""
+   ]
+  },
+  {
+   "label": "phone scroll 1",
+   "lcp": [
+    {
+     "t": 408,
+     "el": "H1",
+     "size": 16264
+    },
+    {
+     "t": 3808,
+     "el": "IMG:back-img-002-tall-900.webp",
+     "size": 67080
+    }
+   ],
+   "et": [
+    {
+     "id": "h1",
+     "render": 408,
+     "load": 0
+    },
+    {
+     "id": "hero",
+     "render": 1504,
+     "load": 1490
+    }
+   ],
+   "longtasks": [
+    {
+     "t": 318,
+     "d": 77
+    },
+    {
+     "t": 1498,
+     "d": 71
+    },
+    {
+     "t": 1571,
+     "d": 102
+    }
+   ],
+   "canvas_on_ms": 1699,
+   "fp": [
+    [
+     "first-paint",
+     408
+    ],
+    [
+     "first-contentful-paint",
+     408
+    ]
+   ],
+   "cls": 0.0009,
+   "shifts": [
+    {
+     "t": 1346,
+     "v": 0.0009,
+     "input": false,
+     "src": [
+      "#text:Surf lessons in Weligama 121->117 h83->83 w350->350"
+     ]
+    }
+   ],
+   "totalKB": 587.1,
+   "rows": [
+    {
+     "f": "",
+     "end_ms": 6,
+     "kb": 100.7
+    },
+    {
+     "f": "https://fonts.googleapis.com/css2?family=Courgette&family=Ma",
+     "end_ms": 315,
+     "kb": 1.2
+    },
+    {
+     "f": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My",
+     "end_ms": 344,
+     "kb": 0
+    },
+    {
+     "f": "img/tile-img-006-384.webp",
+     "end_ms": 814,
+     "kb": 8.5
+    },
+    {
+     "f": "img/tile-img-006-wave-384.webp",
+     "end_ms": 858,
+     "kb": 8.7
+    },
+    {
+     "f": "img/tile-img-009-520.webp",
+     "end_ms": 1030,
+     "kb": 13.8
+    },
+    {
+     "f": "https://fonts.gstatic.com/s/courgette/v19/wEO_EBrAnc9BLjLQAU",
+     "end_ms": 1208,
+     "kb": 18
+    },
+    {
+     "f": "img/tile-img-005-380.webp",
+     "end_ms": 1222,
+     "kb": 23.1
+    },
+    {
+     "f": "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggex",
+     "end_ms": 1300,
+     "kb": 24.4
+    },
+    {
+     "f": "img/tile-img-012-wide-700.webp",
+     "end_ms": 1350,
+     "kb": 32.2
+    },
+    {
+     "f": "img/hero-img-018-tall-1000.webp",
+     "end_ms": 1488,
+     "kb": 134.4
+    },
+    {
+     "f": "img/feature-img-009-near-1040.webp",
+     "end_ms": 2360,
+     "kb": 34.9
+    },
+    {
+     "f": "img/print-img-007-962.webp",
+     "end_ms": 2509,
+     "kb": 43.4
+    },
+    {
+     "f": "img/print-img-006-848.webp",
+     "end_ms": 2689,
+     "kb": 17.1
+    },
+    {
+     "f": "img/print-img-014-1000.webp",
+     "end_ms": 2898,
+     "kb": 33.6
+    },
+    {
+     "f": "img/back-img-002-tall-900.webp",
+     "end_ms": 3789,
+     "kb": 93.2
+    }
+   ],
+   "hosts": [
+    "localhost:9347",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    ""
+   ]
+  },
+  {
+   "label": "phone scroll 2",
+   "lcp": [
+    {
+     "t": 432,
+     "el": "H1",
+     "size": 16264
+    },
+    {
+     "t": 3912,
+     "el": "IMG:back-img-002-tall-900.webp",
+     "size": 67080
+    }
+   ],
+   "et": [
+    {
+     "id": "h1",
+     "render": 432,
+     "load": 0
+    },
+    {
+     "id": "hero",
+     "render": 1504,
+     "load": 1490
+    }
+   ],
+   "longtasks": [
+    {
+     "t": 321,
+     "d": 100
+    },
+    {
+     "t": 1327,
+     "d": 60
+    },
+    {
+     "t": 1498,
+     "d": 70
+    },
+    {
+     "t": 1569,
+     "d": 96
+    }
+   ],
+   "canvas_on_ms": 1686,
+   "fp": [
+    [
+     "first-paint",
+     432
+    ],
+    [
+     "first-contentful-paint",
+     432
+    ]
+   ],
+   "cls": 0.0009,
+   "shifts": [
+    {
+     "t": 1382,
+     "v": 0.0009,
+     "input": false,
+     "src": [
+      "#text:Surf lessons in Weligama 121->117 h83->83 w350->350"
+     ]
+    }
+   ],
+   "totalKB": 587.1,
+   "rows": [
+    {
+     "f": "",
+     "end_ms": 5,
+     "kb": 100.7
+    },
+    {
+     "f": "https://fonts.googleapis.com/css2?family=Courgette&family=Ma",
+     "end_ms": 317,
+     "kb": 1.2
+    },
+    {
+     "f": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My",
+     "end_ms": 355,
+     "kb": 0
+    },
+    {
+     "f": "img/tile-img-006-384.webp",
+     "end_ms": 850,
+     "kb": 8.5
+    },
+    {
+     "f": "img/tile-img-006-wave-384.webp",
+     "end_ms": 880,
+     "kb": 8.7
+    },
+    {
+     "f": "img/tile-img-009-520.webp",
+     "end_ms": 1039,
+     "kb": 13.8
+    },
+    {
+     "f": "https://fonts.gstatic.com/s/courgette/v19/wEO_EBrAnc9BLjLQAU",
+     "end_ms": 1230,
+     "kb": 18
+    },
+    {
+     "f": "img/tile-img-005-380.webp",
+     "end_ms": 1252,
+     "kb": 23.1
+    },
+    {
+     "f": "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggex",
+     "end_ms": 1324,
+     "kb": 24.4
+    },
+    {
+     "f": "img/tile-img-012-wide-700.webp",
+     "end_ms": 1375,
+     "kb": 32.2
+    },
+    {
+     "f": "img/hero-img-018-tall-1000.webp",
+     "end_ms": 1488,
+     "kb": 134.4
+    },
+    {
+     "f": "img/feature-img-009-near-1040.webp",
+     "end_ms": 2404,
+     "kb": 34.9
+    },
+    {
+     "f": "img/print-img-007-962.webp",
+     "end_ms": 2584,
+     "kb": 43.4
+    },
+    {
+     "f": "img/print-img-006-848.webp",
+     "end_ms": 2784,
+     "kb": 17.1
+    },
+    {
+     "f": "img/print-img-014-1000.webp",
+     "end_ms": 2984,
+     "kb": 33.6
+    },
+    {
+     "f": "img/back-img-002-tall-900.webp",
+     "end_ms": 3892,
+     "kb": 93.2
+    }
+   ],
+   "hosts": [
+    "localhost:9347",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    ""
+   ]
+  }
+ ],
+ "scroll_phone_font3s": [
+  {
+   "label": "phone scroll, gstatic +3 s 0",
+   "lcp": [
+    {
+     "t": 408,
+     "el": "H1",
+     "size": 16264
+    },
+    {
+     "t": 6252,
+     "el": "IMG:back-img-002-tall-900.webp",
+     "size": 67080
+    }
+   ],
+   "et": [
+    {
+     "id": "h1",
+     "render": 408,
+     "load": 0
+    },
+    {
+     "id": "hero",
+     "render": 1460,
+     "load": 1268
+    }
+   ],
+   "longtasks": [
+    {
+     "t": 318,
+     "d": 78
+    },
+    {
+     "t": 1270,
+     "d": 72
+    },
+    {
+     "t": 1343,
+     "d": 109
+    }
+   ],
+   "canvas_on_ms": 1483,
+   "fp": [
+    [
+     "first-paint",
+     408
+    ],
+    [
+     "first-contentful-paint",
+     408
+    ]
+   ],
+   "cls": 0.0009,
+   "shifts": [
+    {
+     "t": 3918,
+     "v": 0.0009,
+     "input": false,
+     "src": [
+      "#text:Surf lessons in Weligama 121->117 h83->83 w350->350"
+     ]
+    }
+   ],
+   "totalKB": 587.1,
+   "rows": [
+    {
+     "f": "",
+     "end_ms": 6,
+     "kb": 100.7
+    },
+    {
+     "f": "https://fonts.googleapis.com/css2?family=Courgette&family=Ma",
+     "end_ms": 316,
+     "kb": 1.2
+    },
+    {
+     "f": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My",
+     "end_ms": 346,
+     "kb": 0
+    },
+    {
+     "f": "img/tile-img-006-384.webp",
+     "end_ms": 772,
+     "kb": 8.5
+    },
+    {
+     "f": "img/tile-img-006-wave-384.webp",
+     "end_ms": 786,
+     "kb": 8.7
+    },
+    {
+     "f": "img/tile-img-009-520.webp",
+     "end_ms": 910,
+     "kb": 13.8
+    },
+    {
+     "f": "img/tile-img-005-380.webp",
+     "end_ms": 1044,
+     "kb": 23.1
+    },
+    {
+     "f": "img/tile-img-012-wide-700.webp",
+     "end_ms": 1132,
+     "kb": 32.2
+    },
+    {
+     "f": "img/hero-img-018-tall-1000.webp",
+     "end_ms": 1267,
+     "kb": 134.4
+    },
+    {
+     "f": "https://fonts.gstatic.com/s/courgette/v19/wEO_EBrAnc9BLjLQAU",
+     "end_ms": 3819,
+     "kb": 18
+    },
+    {
+     "f": "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggex",
+     "end_ms": 3850,
+     "kb": 24.4
+    },
+    {
+     "f": "img/feature-img-009-near-1040.webp",
+     "end_ms": 4699,
+     "kb": 34.9
+    },
+    {
+     "f": "img/print-img-007-962.webp",
+     "end_ms": 4877,
+     "kb": 43.4
+    },
+    {
+     "f": "img/print-img-006-848.webp",
+     "end_ms": 5077,
+     "kb": 17.1
+    },
+    {
+     "f": "img/print-img-014-1000.webp",
+     "end_ms": 5292,
+     "kb": 33.6
+    },
+    {
+     "f": "img/back-img-002-tall-900.webp",
+     "end_ms": 6222,
+     "kb": 93.2
+    }
+   ],
+   "hosts": [
+    "localhost:9347",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    ""
+   ]
+  },
+  {
+   "label": "phone scroll, gstatic +3 s 1",
+   "lcp": [
+    {
+     "t": 460,
+     "el": "H1",
+     "size": 16264
+    },
+    {
+     "t": 6308,
+     "el": "IMG:back-img-002-tall-900.webp",
+     "size": 67080
+    }
+   ],
+   "et": [
+    {
+     "id": "h1",
+     "render": 460,
+     "load": 0
+    },
+    {
+     "id": "hero",
+     "render": 1512,
+     "load": 1283
+    }
+   ],
+   "longtasks": [
+    {
+     "t": 325,
+     "d": 100
+    },
+    {
+     "t": 1286,
+     "d": 75
+    },
+    {
+     "t": 1361,
+     "d": 140
+    }
+   ],
+   "canvas_on_ms": 1543,
+   "fp": [
+    [
+     "first-paint",
+     460
+    ],
+    [
+     "first-contentful-paint",
+     460
+    ]
+   ],
+   "cls": 0.0009,
+   "shifts": [
+    {
+     "t": 3936,
+     "v": 0.0009,
+     "input": false,
+     "src": [
+      "#text:Surf lessons in Weligama 121->117 h83->83 w350->350"
+     ]
+    }
+   ],
+   "totalKB": 587.1,
+   "rows": [
+    {
+     "f": "",
+     "end_ms": 8,
+     "kb": 100.7
+    },
+    {
+     "f": "https://fonts.googleapis.com/css2?family=Courgette&family=Ma",
+     "end_ms": 322,
+     "kb": 1.2
+    },
+    {
+     "f": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My",
+     "end_ms": 369,
+     "kb": 0
+    },
+    {
+     "f": "img/tile-img-006-384.webp",
+     "end_ms": 830,
+     "kb": 8.5
+    },
+    {
+     "f": "img/tile-img-006-wave-384.webp",
+     "end_ms": 852,
+     "kb": 8.7
+    },
+    {
+     "f": "img/tile-img-009-520.webp",
+     "end_ms": 966,
+     "kb": 13.8
+    },
+    {
+     "f": "img/tile-img-005-380.webp",
+     "end_ms": 1089,
+     "kb": 23.1
+    },
+    {
+     "f": "img/tile-img-012-wide-700.webp",
+     "end_ms": 1188,
+     "kb": 32.2
+    },
+    {
+     "f": "img/hero-img-018-tall-1000.webp",
+     "end_ms": 1281,
+     "kb": 134.4
+    },
+    {
+     "f": "https://fonts.gstatic.com/s/courgette/v19/wEO_EBrAnc9BLjLQAU",
+     "end_ms": 3840,
+     "kb": 18
+    },
+    {
+     "f": "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggex",
+     "end_ms": 3868,
+     "kb": 24.4
+    },
+    {
+     "f": "img/feature-img-009-near-1040.webp",
+     "end_ms": 4748,
+     "kb": 34.9
+    },
+    {
+     "f": "img/print-img-007-962.webp",
+     "end_ms": 4922,
+     "kb": 43.4
+    },
+    {
+     "f": "img/print-img-006-848.webp",
+     "end_ms": 5127,
+     "kb": 17.1
+    },
+    {
+     "f": "img/print-img-014-1000.webp",
+     "end_ms": 5344,
+     "kb": 33.6
+    },
+    {
+     "f": "img/back-img-002-tall-900.webp",
+     "end_ms": 6280,
+     "kb": 93.2
+    }
+   ],
+   "hosts": [
+    "localhost:9347",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    ""
+   ]
+  }
+ ],
+ "rest_phone_font3s": {
+  "label": "phone rest, gstatic +3 s",
+  "lcp": [
+   {
+    "t": 428,
+    "el": "H1",
+    "size": 16264
+   }
+  ],
+  "et": [
+   {
+    "id": "h1",
+    "render": 428,
+    "load": 0
+   },
+   {
+    "id": "hero",
+    "render": 1556,
+    "load": 1267
+   }
+  ],
+  "longtasks": [
+   {
+    "t": 311,
+    "d": 107
+   },
+   {
+    "t": 1272,
+    "d": 76
+   },
+   {
+    "t": 1348,
+    "d": 198
+   },
+   {
+    "t": 3888,
+    "d": 78
+   },
+   {
+    "t": 7261,
+    "d": 126
+   },
+   {
+    "t": 7388,
+    "d": 65
+   }
+  ],
+  "canvas_on_ms": 1576,
+  "fp": [
+   [
+    "first-paint",
+    428
+   ],
+   [
+    "first-contentful-paint",
+    428
+   ]
+  ],
+  "cls": 0.0009,
+  "shifts": [
+   {
+    "t": 3975,
+    "v": 0.0009,
+    "input": false,
+    "src": [
+     "#text:Surf lessons in Weligama 121->117 h83->83 w350->350"
+    ]
+   }
+  ],
+  "totalKB": 365,
+  "rows": [
+   {
+    "f": "",
+    "end_ms": 6,
+    "kb": 100.7
+   },
+   {
+    "f": "https://fonts.googleapis.com/css2?family=Courgette&family=Ma",
+    "end_ms": 309,
+    "kb": 1.2
+   },
+   {
+    "f": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My",
+    "end_ms": 353,
+    "kb": 0
+   },
+   {
+    "f": "img/tile-img-006-384.webp",
+    "end_ms": 817,
+    "kb": 8.5
+   },
+   {
+    "f": "img/tile-img-006-wave-384.webp",
+    "end_ms": 831,
+    "kb": 8.7
+   },
+   {
+    "f": "img/tile-img-009-520.webp",
+    "end_ms": 944,
+    "kb": 13.8
+   },
+   {
+    "f": "img/tile-img-005-380.webp",
+    "end_ms": 1073,
+    "kb": 23.1
+   },
+   {
+    "f": "img/tile-img-012-wide-700.webp",
+    "end_ms": 1165,
+    "kb": 32.2
+   },
+   {
+    "f": "img/hero-img-018-tall-1000.webp",
+    "end_ms": 1266,
+    "kb": 134.4
+   },
+   {
+    "f": "https://fonts.gstatic.com/s/courgette/v19/wEO_EBrAnc9BLjLQAU",
+    "end_ms": 3856,
+    "kb": 18
+   },
+   {
+    "f": "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggex",
+    "end_ms": 3885,
+    "kb": 24.4
+   }
+  ],
+  "hosts": [
+   "localhost:9347",
+   "fonts.googleapis.com",
+   "fonts.gstatic.com",
+   ""
+  ]
+ },
+ "scroll_desktop": {
+  "label": "desktop scroll",
+  "lcp": [
+   {
+    "t": 260,
+    "el": "H1",
+    "size": 38848
+   }
+  ],
+  "et": [
+   {
+    "id": "hero",
+    "render": 260,
+    "load": 235
+   },
+   {
+    "id": "h1",
+    "render": 260,
+    "load": 0
+   }
+  ],
+  "longtasks": [
+   {
+    "t": 309,
+    "d": 97
+   }
+  ],
+  "canvas_on_ms": 445,
+  "fp": [
+   [
+    "first-paint",
+    260
+   ],
+   [
+    "first-contentful-paint",
+    260
+   ]
+  ],
+  "cls": 0.00084,
+  "shifts": [
+   {
+    "t": 418,
+    "v": 0.00077,
+    "input": false,
+    "src": [
+     "#text:Surf lessons in Weligama 129->122 h77->77 w606->642",
+     "NAV.nav 17->17 h44->44 w484->499"
+    ]
+   },
+   {
+    "t": 663,
+    "v": 0.00007,
+    "input": false,
+    "src": [
+     "NAV.nav 17->13 h44->44 w499->499",
+     "A.brand 17->13 h44->44 w174->174"
+    ]
+   }
+  ],
+  "totalKB": 677.3,
+  "rows": [
+   {
+    "f": "",
+    "end_ms": 8,
+    "kb": 100.7
+   },
+   {
+    "f": "img/hero-img-018-wide-1440.webp",
+    "end_ms": 18,
+    "kb": 173.2
+   },
+   {
+    "f": "https://fonts.googleapis.com/css2?family=Courgette&family=Ma",
+    "end_ms": 220,
+    "kb": 1.2
+   },
+   {
+    "f": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My",
+    "end_ms": 234,
+    "kb": 0
+   },
+   {
+    "f": "img/tile-img-006-384.webp",
+    "end_ms": 257,
+    "kb": 8.5
+   },
+   {
+    "f": "img/tile-img-005-380.webp",
+    "end_ms": 258,
+    "kb": 23.1
+   },
+   {
+    "f": "img/tile-img-009-520.webp",
+    "end_ms": 258,
+    "kb": 13.8
+   },
+   {
+    "f": "img/tile-img-006-wave-384.webp",
+    "end_ms": 258,
+    "kb": 8.7
+   },
+   {
+    "f": "img/tile-img-012-tall-300.webp",
+    "end_ms": 258,
+    "kb": 19
+   },
+   {
+    "f": "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggex",
+    "end_ms": 345,
+    "kb": 24.4
+   },
+   {
+    "f": "https://fonts.gstatic.com/s/courgette/v19/wEO_EBrAnc9BLjLQAU",
+    "end_ms": 352,
+    "kb": 18
+   },
+   {
+    "f": "img/feature-img-009-wide-1500.webp",
+    "end_ms": 585,
+    "kb": 33.4
+   },
+   {
+    "f": "img/print-img-007-640.webp",
+    "end_ms": 703,
+    "kb": 24.4
+   },
+   {
+    "f": "img/print-img-006-848.webp",
+    "end_ms": 949,
+    "kb": 17.1
+   },
+   {
+    "f": "img/print-img-014-1000.webp",
+    "end_ms": 949,
+    "kb": 33.6
+   },
+   {
+    "f": "img/back-img-002-wide-2000.webp",
+    "end_ms": 1320,
+    "kb": 178.2
+   }
+  ],
+  "hosts": [
+   "localhost:9347",
+   "fonts.googleapis.com",
+   "fonts.gstatic.com",
+   ""
+  ]
+ },
+ "scroll_desktop_font3s": {
+  "label": "desktop scroll, gstatic +3 s",
+  "lcp": [
+   {
+    "t": 252,
+    "el": "H1",
+    "size": 38848
+   }
+  ],
+  "et": [
+   {
+    "id": "hero",
+    "render": 252,
+    "load": 229
+   },
+   {
+    "id": "h1",
+    "render": 252,
+    "load": 0
+   }
+  ],
+  "longtasks": [
+   {
+    "t": 288,
+    "d": 106
+   }
+  ],
+  "canvas_on_ms": 423,
+  "fp": [
+   [
+    "first-paint",
+    252
+   ],
+   [
+    "first-contentful-paint",
+    252
+   ]
+  ],
+  "cls": 0.00078,
+  "shifts": [
+   {
+    "t": 3371,
+    "v": 0.00078,
+    "input": false,
+    "src": [
+     "#text:Surf lessons in Weligama 129->122 h77->77 w606->642",
+     "NAV.nav 17->17 h44->44 w484->499"
+    ]
+   }
+  ],
+  "totalKB": 677.3,
+  "rows": [
+   {
+    "f": "",
+    "end_ms": 4,
+    "kb": 100.7
+   },
+   {
+    "f": "img/hero-img-018-wide-1440.webp",
+    "end_ms": 11,
+    "kb": 173.2
+   },
+   {
+    "f": "https://fonts.googleapis.com/css2?family=Courgette&family=Ma",
+    "end_ms": 220,
+    "kb": 1.2
+   },
+   {
+    "f": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My",
+    "end_ms": 228,
+    "kb": 0
+   },
+   {
+    "f": "img/tile-img-005-380.webp",
+    "end_ms": 251,
+    "kb": 23.1
+   },
+   {
+    "f": "img/tile-img-006-384.webp",
+    "end_ms": 252,
+    "kb": 8.5
+   },
+   {
+    "f": "img/tile-img-009-520.webp",
+    "end_ms": 252,
+    "kb": 13.8
+   },
+   {
+    "f": "img/tile-img-006-wave-384.webp",
+    "end_ms": 253,
+    "kb": 8.7
+   },
+   {
+    "f": "img/tile-img-012-tall-300.webp",
+    "end_ms": 253,
+    "kb": 19
+   },
+   {
+    "f": "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggex",
+    "end_ms": 3341,
+    "kb": 24.4
+   },
+   {
+    "f": "https://fonts.gstatic.com/s/courgette/v19/wEO_EBrAnc9BLjLQAU",
+    "end_ms": 3345,
+    "kb": 18
+   },
+   {
+    "f": "img/feature-img-009-wide-1500.webp",
+    "end_ms": 3514,
+    "kb": 33.4
+   },
+   {
+    "f": "img/print-img-007-640.webp",
+    "end_ms": 3646,
+    "kb": 24.4
+   },
+   {
+    "f": "img/print-img-006-848.webp",
+    "end_ms": 3879,
+    "kb": 17.1
+   },
+   {
+    "f": "img/print-img-014-1000.webp",
+    "end_ms": 3879,
+    "kb": 33.6
+   },
+   {
+    "f": "img/back-img-002-wide-2000.webp",
+    "end_ms": 4261,
+    "kb": 178.2
+   }
+  ],
+  "hosts": [
+   "localhost:9347",
+   "fonts.googleapis.com",
+   "fonts.gstatic.com",
+   ""
+  ]
+ },
+ "scroll_phone_settled": {
+  "label": "phone scroll, unthrottled",
+  "lcp": [
+   {
+    "t": 252,
+    "el": "H1",
+    "size": 16264
+   }
+  ],
+  "et": [
+   {
+    "id": "hero",
+    "render": 252,
+    "load": 231
+   },
+   {
+    "id": "h1",
+    "render": 252,
+    "load": 0
+   }
+  ],
+  "longtasks": [
+   {
+    "t": 284,
+    "d": 96
+   }
+  ],
+  "canvas_on_ms": 427,
+  "fp": [
+   [
+    "first-paint",
+    252
+   ],
+   [
+    "first-contentful-paint",
+    252
+   ]
+  ],
+  "cls": 0,
+  "shifts": [
+   {
+    "t": 397,
+    "v": 0.0009,
+    "input": true,
+    "src": [
+     "#text:Surf lessons in Weligama 121->117 h83->83 w350->350"
+    ]
+   }
+  ],
+  "totalKB": 587.1,
+  "rows": [
+   {
+    "f": "",
+    "end_ms": 5,
+    "kb": 100.7
+   },
+   {
+    "f": "img/hero-img-018-tall-1000.webp",
+    "end_ms": 17,
+    "kb": 134.4
+   },
+   {
+    "f": "https://fonts.googleapis.com/css2?family=Courgette&family=Ma",
+    "end_ms": 217,
+    "kb": 1.2
+   },
+   {
+    "f": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My",
+    "end_ms": 229,
+    "kb": 0
+   },
+   {
+    "f": "img/tile-img-005-380.webp",
+    "end_ms": 251,
+    "kb": 23.1
+   },
+   {
+    "f": "img/tile-img-006-384.webp",
+    "end_ms": 251,
+    "kb": 8.5
+   },
+   {
+    "f": "img/tile-img-009-520.webp",
+    "end_ms": 251,
+    "kb": 13.8
+   },
+   {
+    "f": "img/tile-img-006-wave-384.webp",
+    "end_ms": 251,
+    "kb": 8.7
+   },
+   {
+    "f": "img/tile-img-012-wide-700.webp",
+    "end_ms": 251,
+    "kb": 32.2
+   },
+   {
+    "f": "https://fonts.gstatic.com/s/courgette/v19/wEO_EBrAnc9BLjLQAU",
+    "end_ms": 341,
+    "kb": 18.4
+   },
+   {
+    "f": "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggex",
+    "end_ms": 351,
+    "kb": 24
+   },
+   {
+    "f": "img/feature-img-009-near-1040.webp",
+    "end_ms": 782,
+    "kb": 34.9
+   },
+   {
+    "f": "img/print-img-007-962.webp",
+    "end_ms": 914,
+    "kb": 43.4
+   },
+   {
+    "f": "img/print-img-006-848.webp",
+    "end_ms": 1282,
+    "kb": 17.1
+   },
+   {
+    "f": "img/print-img-014-1000.webp",
+    "end_ms": 1417,
+    "kb": 33.6
+   },
+   {
+    "f": "img/back-img-002-tall-900.webp",
+    "end_ms": 2037,
+    "kb": 93.2
+   }
+  ],
+  "hosts": [
+   "localhost:9347",
+   "fonts.googleapis.com",
+   "fonts.gstatic.com",
+   ""
+  ]
+ }
+}

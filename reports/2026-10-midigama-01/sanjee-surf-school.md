@@ -382,3 +382,163 @@ hard_fails: [] in dimensions 1–7
 - Image rights and consent are owner items, not verifiable here.
 - Contrast over photographs was probed for the hero, header and feature or closing lines only, with one still of moving water per element. Under SwiftShader, unique's scrolled prints can look cut by a straight line, a known capture artefact, so I did not score it.
 - `shots/` in my folder is gitignored scratch and has not been cleaned. `tools/clean-shots.mjs` remains to be run after the round.
+
+---
+
+## Round 3, quick (station 4f), interactive only
+
+critic 0.4.3 · rubric 0.3.1 · 2026-11-05 · reworked mockup at commit 2784af5, `sites/sanjee-surf-school/mockups/interactive/dist/` (designer 0.7.1). Alon limited this round to interactive, so calm and unique were not re-scored and their round 2 scores stand as written. Served on :9347 from a plain static server (`tools/_serve.mjs`), stopped afterwards. Scored from the rendered page, not by adjusting round 2. I did not read a visual-critic or experience-critic report, and I read the designer's look-log only after my scores were set.
+
+Evidence is in `reports/2026-10-midigama-01/critic-sanjee-surf-school-r3/`:
+
+- `audit-interactive.json`: `tools/audit-mockup.mjs`. **Scratch copy:** port 8980 → 9348, output moved to my folder so the designer's `audit.json` stays untouched, imports made absolute. Nothing else changed.
+- `tools/check-design.mjs --no-shots` on the page path. **Scratch copy:** port 8960 → 9349, imports made absolute. Nothing else changed.
+- `perf.json`: hero Element Timing, LCP candidates, long tasks, swell start, scroll CLS, network by file.
+- `contrast.json`: pixel contrast with the text hidden, at seven sizes, two stills of the moving water each, and with the photograph absent.
+- `flows.json`: 450 message states, typed dates, rate cells with the AX tree, tile taps, axe, Tab walk, reduced motion, header colour through the first scroll.
+- `extra.json`: typed-date control, Android-like fallback, settled Tab walk, hover pill, hosts after all interactions, the mechanical facts check.
+- `midpage-font.json`, `midpage-font-causes.json`: fonts landing while the visitor is mid-page.
+- `text-interactive-*.txt`: rendered text with JS on at 390 and 1440, JS off at 390.
+- `shots/` (gitignored scratch): `tools/shoot.mjs` at 1440×900 and 390×844, 12 and 17 captures, 0 console errors, plus the crops named below.
+
+### interactive, round 3
+
+```
+mode: quick    round: 3    variant: interactive
+total: 65.9 / 80 (dimension 8 pending)    result: passes critic gates; overall pending dimension 8
+hard_fails: [] in dimensions 1–7
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | 0 mismatches, 0 unsourced claims. Rendered text is byte-identical to round 2 on desktop and with JS off; on a phone only the rate cells changed. Mechanical re-check against `dossier.json`: 8 rental rows × 2 prices, 12 tours, 3 lessons, 3 extras, 4 quotes byte-identical, address, `tel:`, `mailto:`, maps link. No pre-filled sentence adds a claim |
+| 2 | mobile + performance | 8 | Every budget line met. Photo paints at 1,660–1,692 ms (round 2: 2,120–2,168). CLS 0.0009, scroll early 0.0009, settled 0. Not higher: when fonts land while the visitor is below the first screen the phone jumps, up to 0.10 here, and the same-width fallback does not prevent it (below). After a two-lesson tile tap the bottom of the phone is 228 px chips and bar: 27 % at 844, 40 % at 568. Chart labels still 13 px on a phone (`:338`) |
+| 3 | booking CTA | 6 | Hero taps through to `wa.me/94774004422`, the bar and Call are on top, 22 links right in all 450 states. **But the round 3 date fix broke typing: any date typed with the keyboard is wiped at the first digit of the year, a future one too, and never reaches the message** (`:1032`, proved by control below). A visitor who types a date notices it. The booking still goes, without the date, so this does not reach a hard fail. The chat itself was not opened, by instruction |
+| 4 | brand fit | 8 | First screen what + where + action. Tile-tap message inside the page, no form, as briefed. Menu is in page order. `og:image` now absolute. Unchanged from round 2: chart hard-wired until the schema has board rows, Week paragraph under the swipe row on a phone, people before spot |
+| 5 | copy quality | 9 | Copy whole. Bar line capitalised in every state read ("The Week Intensive.", "A surf lesson, I'm not sure which one. I'm a total beginner."). Contact buttons still repeat at once in "Finding us" and the footer |
+| 6 | accessibility | 7 | Rate cells fixed: one price in `innerText` and the AX tree. axe 0 violations at both widths, default and with choices made. 62 Tab stops, none off screen or under the header. Reduced motion: canvas opacity 0. Text contrast meets AA over the photograph. Lost: the date field cannot be filled by typing (keyboard route); the new nav hover pill drops white 15 px text to a median of 3.92–4.38; `:531` alt says "two more heads" and the new wide crop has one |
+| 7 | delivery | 9 | Static `index.html` + `img/`. Third-party hosts after load, full scroll and every control: `fonts.googleapis.com` + `fonts.gstatic.com` only, allowed at 4e, a defect at station 5. 0 embeds, 0 absolute paths in `src`/`href`, 0 unreferenced files, lowercase names, no credential, localhost or Supabase string. `og:image` is the one absolute URL to our own host, and that Worker is not named until station 6 |
+
+**Gating, quick mode:** no hard fail in my dimensions; dimensions 1, 3, 7 = 10, 6, 9, all ≥ 6. Dimension 3 is on the floor. Result rests on dimension 8.
+
+**Typed date, measured.** Real key presses in Chromium; the field was dd/mm/yyyy in every run, whatever the context's locale.
+
+| Typed | On this page | Same page, only `:1032` removed in my test |
+|---|---|---|
+| 10 12 2026 | one `change`, value `0002-12-10`, field cleared; shows `dd/mm/0026`; value empty; **no date in the message** | four `change` events ending `2026-12-10`; "The date I have in mind is 10 December 2026." |
+| same, 400 ms between keys | same result | not run |
+| Year retyped on a good date (2026-12-10 → 2027) | cleared at the first digit, the good date is lost | not run |
+| 01 01 2020 | not sent, field empty: the round 2 fault is gone | |
+
+Cause: Chromium fires `change` on each year digit, so the year reads 0002 first, which is earlier than `min`. A whole value set at once behaves correctly: 2020-01-01 is cleared and 0 links carry it, 2026-11-04 is cleared from the field and the bubble, 2026-11-05 and 2026-12-10 are kept. Arrow keys on a segment also work. Native phone pickers should hand over a whole value, but I could not run one, nor a year-first field order.
+
+**Pre-filled messages, read from hrefs.** All 450 states of level × lesson × date × people, all 22 links in each: 945 distinct messages, **0 problems**. Every link goes to `94774004422`, and the send link always equals the bubble.
+- **Nine outings** (Weligama Bay, Midigama Reef Breaks, Mirissa, Ahangama & Kabalana, Secret Beach, Turtle Bay, Handunugoda, Galle Fort, Hiriketiya) never carry the level, and do carry date and people.
+- **Three surf tours, three cards, the board button and the general links** keep the level in every state where one is set.
+- **The 29 sentences** are the subject line or the visitor's own words about level, date and people. **No sentence adds a claim about the school.**
+- A fact for the human: three of the nine outings mention surfing, two of them saying it depends on skill or ability (Midigama `:588`, Ahangama `:596`, Hiriketiya `:616`), so the owner gets no level for them. That follows the instruction and misleads nobody.
+
+**Rate cells on a phone, both states and back.** `innerText` reads one true price: USD 5, 8, 12, 15, 36, 70, 120, 220 and USD 7, 12, 18, 20, 50, 95, 170, 310. The AX tree holds `cell "USD 7"` with one StaticText "USD 7", no spare digits, and the column header follows the switch ("Soft-top", "Hardboard"). The digits a sighted visitor sees match in every row, read from their position and on the capture. Desktop keeps the two real columns and no `.roll`. What a screen reader says aloud was not tested.
+
+**Hero paint, phone throttled per playbook §4, 3 runs.** The tool's LCP names the H1 again (`audit` 580 ms, my runs 452–484 ms), so do not quote it as the photo time.
+
+| | Round 2 | Round 3 |
+|---|---|---|
+| Hero response ends | 2,094–2,117 ms | 1,480–1,508 ms |
+| Hero paints (Element Timing) | 2,120–2,168 ms | **1,660–1,692 ms** |
+| Swell visible | | 1,676–1,712 ms, about 20 ms after the photo |
+
+The photo paints about 185 ms after it arrives. Two main-thread tasks of about 72 and 100 ms sit in that gap; they are probably the swell's texture upload and first draw on software GL, though I did not attribute them. It paints at about 1,504 ms in the runs that scroll at load. Five lazy tiles (86 KB) still load with it and all finish first. On a 2× phone `srcset` still picks the larger file for four tiles (46vw × 2 = 359 px); the Not sure tile fell from 58 to 32 KB. Desktop throttled: paint 1,676 ms.
+
+**Budget, playbook §4.**
+
+| Line | Target | Round 3 |
+|---|---|---|
+| First-load transfer | ≤ 1,500 KB | 371 (3 runs, CDP: 365) |
+| After a full scroll | not a budget line | 587 |
+| JS | ≤ 300 KB | 25.8 inline, uncompressed |
+| Fonts | ≤ 2 families, ≤ 150 KB | 2, 42 |
+| Largest image | ≤ 300 KB | 134 |
+| LCP, tool | ≤ 2,500 ms | 580, the H1; photo as above |
+| CLS | < 0.1 | 0.0009 |
+| Scroll CLS, early / settled | < 0.01 | 0.0009 / 0 |
+| Third-party on load, other than fonts | 0 | 0 |
+
+Overflow: 0 at 320, 360, 390 with JS on and off, and at 1440. Tap targets under 44 px: 0 of 60.
+
+**Text contrast on the hero, white ink on desktop, ink on phone.** Lowest value over two stills, then 5th percentile. The only text with a lowest value below 4.5 is the title, at 1440, 1920 and 2560: single pixels in 56 px bold, where AA large text needs 3:1 and the rubric's flat line says 4.5. Each row takes the worst of each column, so a nav lowest and percentile can come from different links.
+
+| Size | Wordmark | Nav, worst link | Title |
+|---|---|---|---|
+| 1440×900 | 5.06 / 6.40 | 4.56 / 4.72 (Boards, Sanjee) | **4.22** / 5.38 |
+| 1920×1080 | 5.00 / 6.68 | 6.57 / 6.64 | 4.48 / 5.38 |
+| 2560×1440 | 6.13 / 6.73 | 6.60 / 6.64 | 4.41 / 5.59 |
+| 390×844 | 8.41 / 8.48 | Menu 14.29 | 9.27 / 9.38 |
+| Extra: 768×1024 | 6.02 / 6.05 | Menu 11.34 | 4.70 / 5.55 |
+| Extra: 1280×620 | 5.47 / 6.46 | 5.17 / 5.75 | 4.70 / 5.44 |
+| Extra: 1024×768 | 6.06 / 6.10 | 5.34 / 6.00 | 4.70 / 5.80 |
+
+- **Photo not arrived** (the title paints over a second before it): title 5.79 at 1440, 6.15 at 2560, 8.99 on a phone.
+- **Hero button:** 11.05 throughout.
+- **Header through the first scroll, 1440:** white only while over the hero, solid by scroll 80 and from then on; solid on an anchored load. White ink never rests on the white ground.
+- **Nav hover pill, new (`:83`):** at 1440, Boards min 3.29 / median 3.92, Lessons 3.40 / 4.22, Finding us 4.12 / 4.38. Hover state only, under 4.5.
+- **Other lines:** feature line min 8.77 at all desktop sizes; closing line min 6.68; 6.09 on a phone.
+
+**Scroll CLS and the same-width fallback.** The rubric's line passes. The "same-width" claim does not hold across the page.
+- **Load, then scroll:** `audit` early 0.0009, settled 0. My runs: phone 0.0009 in all 3, also with Google's font files held 3 s; desktop 0.0008. The 0.0241 was not reproduced, and every run is under 0.01.
+- **Android-like (Arial removed, a real Roboto file at the page's `size-adjust`, fonts late):** 0.00076, twice. That run was at the page's end when the fonts arrived. The page changed height 12,985 → 12,906.
+- **Page height before and after fonts on a phone, not the same either way:** Arial fallback 12,840 → 12,906, round 2's stack 12,915 → 12,906.
+- **Fonts landing while the visitor is mid-page (fresh load, jump to the position, fonts 1.8 s late, one run each):**
+
+| Phone, by scroll position | 1400 | 3200 | 4200 | 7600 | 10500 |
+|---|---|---|---|---|---|
+| New fallback, Chromium's scroll anchoring on | 0.0122 | 0.034 | 0.0966 | 0.0076 | 0.1003 |
+| Round 2's stack, anchoring on | 0.0122 | 0.0611 | 0.031 | 0.0151 | 0.0033 |
+| New fallback, anchoring off | 0.0122 | 0.0934 | 0.0966 | 0.1527 | 0.1722 |
+| Round 2's stack, anchoring off | 0.0122 | 0.0614 | 0.0632 | 0.0897 | 0.0798 |
+
+So on this machine the new fallback is no better than the stack it replaced in this case, and at some positions worse. Manrope late alone reproduces it; Courgette late alone read 0 at these five stops although page height still moved, which I did not explain. Desktop stays at or under 0.0048. Getting here needs a slow connection or a reload restoring a scroll position: on the throttled profile the fonts finish at about 1.3–1.4 s. Anchoring off stands in for Safari, which I did not run. Self-hosting and preloading Manrope, due by station 5 anyway, is what would close it.
+
+**Images.** `img-010` is gone: 0 mentions in `index.html`, `build.py` and `make-media.sh`, no file. The Advanced tile is now a crop of img-006 showing a breaking wave and no person, the same source as "I can stand up". `img-011` is not used. **One flagged image remains: img-007, Sanjee's print (`:536`)**, provenance not stated, owner to confirm; the dossier records that the site names that surfer as Sanjee, so the alt is sourced. Consent: img-005 on the Total beginner tile. Video remains a matter for the visual critics: `dossier.videos[]` has clips, the page uses none, and concepts.md records Alon's decision to go on stills.
+
+**First screen, as facts for the two visual critics.** img-018 is 1440×1920, served 1440×1100 on desktop and 1000×1846 on a phone. The stage's 1920 px cap has been lifted, so the same 1440 px file now fills a 2560 screen at about 1.78×. At 701 px and over, a multiply gradient covers the top 46 % of the hero and darkens the sky (sky behind the title averages about rgb(134,77,54) at 1440). Phone has no gradient.
+
+**check-design facts:** `ok`, 0 problems, 0 warnings. h1 and body Manrope, h2 Courgette, ground `#FFFFFF`, 0 all-caps labels, 0 of 24 labelled headings.
+
+**Swell:** runs over http, canvas opacity 1, frames differ, 0 console errors, under the new 3.2 MP limit (2560×887 at 2560×1440).
+
+**New sticky chips on a phone (`:317`).** They sit exactly on the message strip (gap 0 at 390, 360 and 320). Two chips stack: fits row 112 + strip 44 + bar 72 = 228 px. After tapping "I can stand up" at 390 the row cuts off the Not sure tile, which needs a scroll to reach; at 320×568 it takes 40 % of the screen. It settles into the page once its own place arrives, so it never covers the cards. Space under the tiles is no longer reserved, so the lessons below move down 46 or 98 px on a tap; that is input-driven and off CLS. Facts for the experience critic.
+
+**Round 2 fix list:**
+1. Rate digits out of page text: **landed.**
+2. Tile `srcset`: **landed in part.** Tiles 118 → 86 KB and the photo about 450 ms earlier, but 2× phones still fetch the larger four and the tiles still finish first.
+3. Past dates: **landed and overshot.** Past dates are not sent, and no date can be typed.
+4. `og:image` absolute: **landed**, host to be confirmed at station 6.
+5. Bar line capital: **landed.**
+6. img-010: **landed**, removed.
+7. Self-host fonts: not yet, due by station 5.
+
+**What the rework broke:** typed dates (`:1032`), new; nav hover contrast (`:83`), new; feature alt now one head short after the re-crop (`:531`). Nothing else I re-tested regressed: messages, facts, rate cells, tap-through, axe, Tab walk, reduced motion, overflow and budget all hold.
+
+**Remaining fix list, priority order:**
+1. `:1032`, `src/page.js:188`: do not clear on `change`. Set `state.date = dateIn.value >= dateIn.min ? dateIn.value : null`, and clear a past date from the field on `blur` only. Then type 10/12/2026 and expect "10 December 2026"; type 01/01/2020 and expect no date.
+2. `:83`, `src/page.css:62`: nav hover pill to about `rgba(255,255,255,.10)`, about 4.6 by my arithmetic on the worst link's average; re-measure.
+3. `:531`: alt "Two more heads in the water" → "Another head in the water". I counted the wide crop on the file; the phone crop shares this alt and by the recipe's coordinates also holds one. The dossier's own description does not count them.
+4. `:21`, `:33`, `:34`, before station 5: self-host Manrope and Courgette, preload Manrope, and drop or re-measure the "same width" fallback on real page height.
+5. `:432`: to stop 2× phones fetching the larger tile, fix `sizes` or drop the unused 240 files. Low value now the photo has room.
+6. `:536` img-007: owner must clear it.
+
+**What the designer prompt got wrong:** nothing tells the designer to test a form control with real key presses. `page.fill` and the date picker hand over a whole value, so the past-date fix looked right, and it only fails on a `change` that fires digit by digit. "Same-width fallback" was measured as an average width over the page's text, which says nothing about where lines break, so the proof should be page height before and after the font arrives. Separately, `tools/audit-mockup.mjs` still reports the H1 as LCP on this page, and its scroll pass cannot see fonts landing mid-page. Both are tool changes for a proposal, and none is written at this stage.
+
+**The sentence the human needs:** interactive scores 65.9 of 80 on dimensions 1–7, down from 70.4 because this round's date fix stopped any date being typed on desktop (a one-line fix, the booking link itself still works); its photo now paints at about 1.67 s, every budget line is met, and img-007 is the one flagged image left.
+
+**Not checked or not measured:**
+- No wa.me page opened and no message sent: hrefs read, and one hero tap with the navigation aborted and recorded. Landing in a chat and whether the number answers are untested. `tools/funnel.mjs` was not re-run; the hero link is unchanged.
+- The native date picker: not on a real phone, and the desktop calendar popup could not be driven headless, so whether a keyboard user can finish a date through the popup is not known. Year-first date formats, Firefox and Safari typing are untested.
+- No real phone or real GPU: software GL, so shader frame rate, battery, and the size of the 185 ms gap before the photo are not real-device numbers.
+- No screen reader run: axe, the Chromium AX tree and DOM only.
+- Safari's behaviour on the font jump is stood in for by `overflow-anchor: none`. The Roboto test used a downloaded Roboto as the fallback, on one scroll-through, not an Android device, and not at the mid-page stops.
+- Mid-page font runs are one run per position on a machine shared with other sessions. Contrast is two stills of moving water per element; automated measurement of glyph rectangles, not of anti-aliased edges.
+- Old-site comparison belongs to dimension 8, so the old-site captures were not opened.
+- Image rights and consent are owner items, not verifiable here.
+- `shots/` in my r3 folder holds gitignored PNGs and has not been cleaned, because the other critics are running in the same round. `tools/clean-shots.mjs` remains to be run afterwards.
