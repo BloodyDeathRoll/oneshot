@@ -340,3 +340,98 @@ The set-piece, settled frame by frame (`uni-pin-grid`): afternoon (the hammock u
 **Interactive and calm still fail dimension 8 (< 8)**; unique passes this critic. All three are clearly better than the current presence.
 
 **What the designer prompt got wrong (for the learn step):** fixing one flaw by cropping (calm's wires) removed the thing that made the first screen this place; the prompt should say a re-crop must keep the business's identifying feature (here the reef and the green) in frame. Interactive left two round-1 fix-list items (rows past the edge, gradient buttons) unaddressed; the 4e hand-off should check every fix-list item off explicitly. Unique's desktop layout was kept at 768: the set-piece pattern needs a stated tablet breakpoint.
+
+## Round 3 — quick (station 4f)
+
+Run `2026-10-midigama-01` · station 4f · **round 3, the last allowed loop** (after the 4e loop-back, designer 0.7.1) · visual-critic 0.2.0 · 2026-11-05.
+Only calm and interactive were revised. Unique passed round 2 at 8 and is unchanged, so it is not re-scored. Pages served live at :8921 (calm) and :8922 (interactive, `?depth=force`). I read each mockup's round-3 notes for *what changed* (calm look-log rounds 15–16; interactive R3-1…R3-3). Every verdict below comes from the screenshots.
+
+Shot sets (scratch, in `reports/2026-10-midigama-01/visual-coconut-r3/`; every line says in words what the file shows):
+- **My own fresh shoot over http** (`tools/shoot.mjs`), because the shared interactive set was taken the same second its dist was written: `calm/desktop-NN`, `calm/mobile-NN` (15 + 18 captures, page 11 489 / 13 394 px) and `int/desktop-NN`, `int/mobile-NN` (13 + 17, page 10 487 / 12 450 px). The page heights match the shared `shots/` sets.
+- `calm-t768-NN` / `int-t768-NN` + `calm768-sheet` / `int768-sheet`: each page at 768 × 1024, in 1000 px steps. Scroll width = 768 on both, so no overflow.
+- `int-idle-{1440,390}-{a,b}`: the interactive hero with **no pointer**, two frames 3 s apart. PSNR 17.4 dB (1440) and 18.5 dB (390), the same as round 2. The drift is alive, and there is one canvas at each width.
+- **Inspector** (run on the two exact URLs; `.taste-skill/` removed afterwards):
+  - calm: 3 FAIL / 3 WARN (round 2: 4 / 7). The FAILs are `eyebrow` (the clock tags), `text-shadow` (the header over the photo) and `covered-text` @390 (the phone booking bar over "Six kinds of room" at one scroll stop).
+  - interactive: 6 FAIL / 4 WARN (round 2: 9 / 6). `headline-lines` is the hidden 0–9 columns of the rolling rating digits, a false reading. `covered-text` @390 is the phone bar. `icon-cards` is the three sleep tiles. `eyebrow` and `text-shadow` are as on calm. `shadow` and `button-fx` are **gone**.
+- **Current presence:** unchanged. There is no website. The comparison is the Booking.com phone fold (`dossier/…/funnel/walk/05-booking-com-fold.png`: a blue bar, a search box and an empty entrance hall, 1/45) and the Google fold.
+
+Independence: I did not open the critic's or the experience-critic's round-3 output.
+
+### 1 · calm "The view from the roof" — round 3
+
+**Round-2 fixes, checked**
+| # | Round-2 complaint | Round 3 | Evidence |
+|---|---|---|---|
+| 1 | The first screen had turned into an anonymous sky | **Fixed.** The 16:9 now ends at the green: the horizon sits at about 80 %, and the bottom fifth is the sea, the reef breaking white, the beach shelter under its blue roof, a Sri Lankan flag, the sand and the green. The big palm moved to the left third, clear of the title. No wires or poles are in frame. It is this house's view again | `calm/desktop-00` (ink Satisfy "Coconut Surf Inn" in open sky, a green "Check dates on Booking.com" pill plus an outline "Call", and the reef white water across the foot) |
+| 2 | The fan row was half empty | **Fixed.** A header line ("Fan rooms: no air conditioning and no hot water" on the left; check-in/out and the house rules on the right), then two wide cards with the photo and the text side by side, about 480 px tall. There is no column of empty tint | `calm/desktop-03` (the two mosquito-net rooms with their slideshows and green buttons; about 90 px of tint under them, which is normal padding) |
+| 3 | Empty grey bands between the blocks | **Mostly fixed.** Section padding is down, and the bands above "From 7:30" and under the room buttons are now normal padding. The run between the photo bands is still white and pale-grey centred blocks | `calm/desktop-10` (the family text + Meagan's quote, then "From 7:30, the break" centred on grey with about 90 px above), `calm/desktop-01` ("13:00, check-in" centred on white with two small rating cards) |
+| 4 | Off-centre margins; header covering titles at 768 | **Fixed.** The fine print is centred. Below 900 px the header steps aside while scrolling down, so no title is covered in the 768 walk | `calm768-sheet` (all 13 frames show no header over a title; the phone bar carries booking) |
+| 5 | 14 type sizes | **Fixed.** 7 sizes | inspector (no `size-count`) |
+
+**Three-second test, fresh**
+- **1440 (`calm/desktop-00`):** a bright sky, tall palms and then the reef breaking in front of the beach shelter. Name, one line and Book + Call, all in the sky. Calm, open and now unmistakably the view from this roof. Book is clearly primary and Call clearly secondary.
+- **390 (`calm/mobile-00`):** the pan's start frame: sky, two palms over the sea, bushes at the foot. The type and buttons are legible in ink on the sky. Over the top half the photo is noticeably soft (an 850 px crop drawn at about 2× on a 2× phone); the clouds look smeared.
+
+**Remaining problems (none structural)**
+- The phone hero is soft, as the designer notes say (conflicts, round 3). On a phone the first impression is a slightly blurry sky.
+- The middle of the page is still mostly pale, centred and text-led between the photo moments: check-in, "From 7:30, the break", amenities and check-out (`calm/desktop-01`, `-10`, `-12`). It is tidy and quiet. That suits the calm concept, but it is the least designed stretch of the page.
+- At 768 (`calm-t768-02/03`) the A/C rooms go 2-up and the fan rooms 2-up. Clean.
+- The rating cards (`calm/desktop-01`, `-12`) are small grey boxes. Interactive's large-numeral treatment is stronger.
+
+**Score: 8 / 10** (round 1: 6, round 2: 7). Every round-2 fix-list item is done, and the one that held it back most, the first screen, is now right: the house's own view with the reef, one short title in a script that suits the place, one primary button and a quiet Call. The page has a real rhythm: the view, the rooms (honest A/C vs fan, with galleries), the courtyard, the whole-hammock roof band, the sunset band, the night band, the break with Rosa, check-out, the footer. It is clearly professional, calm and clearly better than the current presence. It is not more than an 8, because of the soft phone hero and the pale centred stretch in the middle. Closest gold: Global Surf `postcard` in method (one big view, the name on it, then the stay). It is now level with it on the first screen at 1440 and below it on the phone image quality.
+**Better than the current presence?** **Yes.** First screen: `calm/desktop-00` / `calm/mobile-00` against `05-booking-com-fold` (palms, sea and reef against an empty hall). Whole page clearly: the rooms with A/C vs fan stated and three full-bleed moments.
+**Hard fail:** none from this critic. **Pass** (dimension 8 = 8).
+
+**Fix list (for 4g; none blocks the pick)**
+1. Phone hero sharpness: export the phone crop from the full-resolution source at 2× (≥ 1600 px tall), or start the pan lower so less magnified sky is on screen.
+2. Ratings: set the numerals large (as on interactive's check-out) instead of small grey cards.
+3. Give "From 7:30, the break" or check-in one image so the middle run has a picture between the sunset/night bands and the forecast.
+4. Inspector `covered-text` @390: confirm the phone bar's step-aside covers the "Six kinds of room" stop too, or add bottom scroll padding.
+5. Hold the type scale at 7 sizes.
+
+**Keep:** the new hero crop (sea, reef and shelter in frame), ink Satisfy on the sky, Book + quiet Call, the banana-leaf green, the 4-up A/C row and the new fan cards, the hammock, sunset and night bands, the header that steps aside below 900 px, the footer.
+
+### 2 · interactive "Under the thatch" — round 3
+
+**Round-2 fixes, checked**
+| # | Round-2 complaint | Round 3 | Evidence |
+|---|---|---|---|
+| 1 | Review row and veranda strip ran off the right edge | **Fixed.** The verandas are a flush 4-up inside the grid. The reviews are a 3-up paged carousel inside the grid, with round arrows (Previous disabled on page 1) and four dots; on the phone it shows "1 of 10" between the arrows | `int/desktop-11` (three review columns ending at the grid edge, then ‹ ● • • • › under them), `int/desktop-04` (four veranda photos flush to the grid), `int/mobile-sheet` frame 14 ("1 of 10") |
+| 2 | Gradient and shadow buttons | **Fixed.** The buttons are flat burnt-saffron with no resting shadow. The inspector no longer reports `shadow` / `button-fx` | `int/desktop-00`, `int/desktop-01` |
+| 3 | Empty grey in "How do you like to sleep?" and check-out | **Fixed.** Sleep sits on white with tint only on the tiles. Check-out sets 8.5 / 4.8 / 4.44 large with count and date, then the carousel | `int/desktop-sheet` frame 2 (three sleep tiles on white, the first filled saffron), `int/desktop-sheet` frame 11 ("11:00, check-out" with three big ratings and three quote columns) |
+| 4 | The restaurant block was four rounded tiles | **Fixed.** One 4:5 photo beside the text, then the night house as a full-bleed band | `int/desktop-sheet` frames 8–9 (the cushioned room photo + text and Janno's quote; then the lit house edge to edge) |
+| 5 | Details text small and grey; 17 sizes | **Fixed.** The details line is 16 px in ink; 8 sizes | `int/desktop-01` |
+
+**Three-second test, fresh**
+- **1440 (`int/desktop-00`):** standing under the thatch fringe with hanging bulbs, windblown palms and the sea beyond the parapet, the swing on the right. "Coconut Surf Inn" in a strong white Merienda on the horizon line, one line under it, a saffron "Check dates on Booking.com" and a translucent "Call". It drifts on its own. Still the most "being there" first screen of the three. The bottom third is grey concrete floor and the parapet slab.
+- **390 (`int/mobile-00`):** thatch, palms, sea, and the title on the parapet. The parapet's top rail runs straight through the title's baseline, behind "Surf Inn". The Call is a dark-grey translucent square-ish block under the saffron button, with no colour of its own.
+
+**Remaining problems (none structural)**
+- **The hero Call** (`int/desktop-00`, `int/mobile-00`): a translucent grey fill on a grey parapet reads as a muddy block rather than a designed secondary button. An outline in white, like calm's ink outline, would be cleaner.
+- **The phone title on the rail** (`int/mobile-00`): the parapet's top line crosses the title. Moving the block about 40 px lower, onto the dark slab, would clear it.
+- "On the roof" (`int/desktop-04`): the text column leaves about 250 px of empty white beside the first roof photo before the quote starts. It is a small hole.
+- At 768 (`int-t768-02`) the room chip row peeks past the right edge ("Deluxe Double Room (2 Adults…"). It is a scroll row, but it reads as cut. It is minor and only at tablet width.
+- The desktop hero still shows about 25 % concrete floor (`int/desktop-00`, bottom). It is honest, but it is the plainest part of the best frame.
+
+**Score: 8 / 10** (round 1: 6, round 2: 7). The hero already earned an 8 in round 2; this round removed every polish item that held the page below it. Nothing runs off the grid at 1440, the buttons are flat and consistent, the long grey sections are gone, and the restaurant is one picture plus one band. The page now reads as one designed piece from the thatch to the footer, with the sleep switch, the big ratings and the sunset and night bands as its moments. It is held at 8, not 9, by the muddy hero Call and the rail through the phone title. Closest gold: Global Surf `try-your-week` (a place you stand in, alive). It is level with it in idea, and just below it in the hero's finish.
+**Better than the current presence?** **Yes.** First screen: `int/desktop-00` / `int/mobile-00` against `05-booking-com-fold` (under the thatch looking at a moving sea, against an empty hall). Whole page clearly.
+**Hard fail:** none from this critic. **Pass** (dimension 8 = 8).
+
+**Fix list (for 4g; none blocks the pick)**
+1. Hero Call: a white 1.5 px outline with white text and a transparent fill (no grey translucent block) at both widths.
+2. Phone hero: drop the title block about 40 px so the parapet rail no longer crosses the title.
+3. "On the roof" (`int/desktop-04`): pull Erin's quote up into the empty space beside the first roof photo, or align the photo pair to the text.
+4. 768: let the room chips wrap onto two lines, or end the row inside the grid with a visible arrow.
+5. Desktop hero: if the depth map allows, trim about 60 px more floor (crop down from the top of the frame, not from the thatch).
+
+**Keep:** the img-102 hero with the idle drift + pointer parallax, Merienda titles, burnt saffron, the sleep tiles + stage, the flush veranda 4-up, the paged review carousel, the large check-out ratings, the restaurant photo + night band, the expandable phone bar.
+
+### Ranking at 4f, round 3 (visual quality only)
+
+1. **unique "Round the clock" — 8/10, pass (round 2, unchanged).** The clock set-piece of the house's own photographs under a decisive white-sky hero.
+2. **interactive "Under the thatch" — 8/10, pass.** The strongest first screen (you stand under the thatch and it moves), and the page below it is now clean: rows inside the grid, flat buttons, big ratings.
+3. **calm "The view from the roof" — 8/10, pass.** The hero is back to the house's own view with the reef, the rooms are honest and well laid out, and three full-bleed moments set the pace. It is the quietest of the three in the middle, and its phone hero is soft.
+
+**All three pass this critic** (dimension 8 ≥ 8), and all three are clearly better than the current presence.
+
+**What the designer prompt got wrong (for the learn step):** this round worked because every fix-list item was checked off explicitly. That is the hand-off pattern to keep. Two things the prompt could still catch earlier: a hero image drawn at about 2× its source on a phone (calm's soft sky) should be flagged at 4e by measuring the drawn-to-source ratio at 390 × DPR 2; and a secondary hero button needs a defined style (outline), not a translucent fill that takes on the photo's colour.

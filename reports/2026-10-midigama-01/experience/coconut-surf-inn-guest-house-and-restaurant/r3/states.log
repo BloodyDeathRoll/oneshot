@@ -1,0 +1,18 @@
+calm phone hero buttons [{"t":"Check dates on Booking.com","href":"https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html","x":25,"y":266,"w":339,"h":56,"bg":"rgb(72, 102, 11)","col":"rgb(255, 255, 255)","border":"rgb(255, 255, 255) 0px","tr":"0.12s, 0.2s, 0.2s, 0.2s"},{"t":"Call","href":"tel:+94778921396","x":138,"y":334,"w":114,"h":56,"bg":"rgba(255, 255, 255, 0.42)","col":"rgb(39, 51, 38)","border":"rgb(39, 51, 38) 0px","tr":"0.12s, 0.2s, 0.2s, 0.2s"}]
+calm phone wordmark in hero mark op=0 vis=hidden
+calm phone wordmark after hero mark op=1 vis=visible
+calm laptop hero buttons [{"t":"Check dates on Booking.com","href":"https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html","x":488,"y":323,"w":339,"h":56,"bg":"rgb(72, 102, 11)","col":"rgb(255, 255, 255)","border":"rgb(255, 255, 255) 0px","tr":"0.12s, 0.2s, 0.2s, 0.2s"},{"t":"Call","href":"tel:+94778921396","x":839,"y":323,"w":114,"h":56,"bg":"rgba(255, 255, 255, 0.42)","col":"rgb(39, 51, 38)","border":"rgb(39, 51, 38) 0px","tr":"0.12s, 0.2s, 0.2s, 0.2s"}]
+calm hero Call hover none rgba(255, 255, 255, 0.42) -> none rgb(39, 51, 38)
+calm dot styles {"w":44,"h":44,"tr":"0s","before":"\"\" 0.35s, 0.35s","after":"none 0s"}
+interactive phone canvas ["depth live op=1"]
+interactive phone hero buttons [{"t":"Check dates on Booking.com","href":"https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html","x":54,"y":649,"w":283,"h":54,"bg":"rgb(161, 89, 27)","col":"rgb(255, 255, 255)","border":"rgb(255, 255, 255) 0px","tr":"0.16s, 0.2s"},{"t":"Call","href":"tel:+94778921396","x":148,"y":715,"w":94,"h":54,"bg":"rgba(255, 255, 255, 0.16)","col":"rgb(255, 255, 255)","border":"rgb(255, 255, 255) 0px","tr":"0.16s, 0.2s"}]
+interactive phone wordmark in hero mark op=0 vis=hidden
+interactive phone next buttons ["Next photo 0x0 dis=false","Next photo 0x0 dis=false","Next photo 0x0 dis=false","Next photo 0x0 dis=false","Next photo 0x0 dis=false","Next photo 0x0 dis=false","Next photo 0x0 dis=false","Next reviews 48x48 dis=false"]
+interactive phone reviews counter 2 of 10
+interactive phone review track {"cls":"cards","x":24,"y":-32.140625,"w":342,"h":448.59375,"sl":366}
+interactive bar at end 774 vis=visible
+interactive laptop canvas ["depth live op=1"]
+interactive laptop hero buttons [{"t":"Check dates on Booking.com","href":"https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html","x":506,"y":647,"w":312,"h":56,"bg":"rgb(161, 89, 27)","col":"rgb(255, 255, 255)","border":"rgb(255, 255, 255) 0px","tr":"0.16s, 0.2s"},{"t":"Call","href":"tel:+94778921396","x":830,"y":647,"w":103,"h":56,"bg":"rgba(255, 255, 255, 0.16)","col":"rgb(255, 255, 255)","border":"rgb(255, 255, 255) 0px","tr":"0.16s, 0.2s"}]
+interactive hero Call hover none rgba(255, 255, 255, 0.16) -> matrix(1, 0, 0, 1, 0, -2) rgba(255, 255, 255, 0.28)
+tap-through http://localhost:8921/: hero href=https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html -> first request https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html (1 tap)
+tap-through http://localhost:8922/: hero href=https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html -> first request https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html (1 tap)
