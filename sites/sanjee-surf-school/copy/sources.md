@@ -6,6 +6,8 @@ Caps were re-read from `schemas/site-content.md` v0.11 this round: see "Caps" at
 
 After the humanizer 0.2.1 pass (2026-11-05), `en.draft.json` is the copywriter's draft, unchanged, and `en.json` the rewrite. The changes are in `humanizer-notes.md`. The rows below describe `en.json`, and paragraph numbers are `en.json`'s.
 
+**Round 2 fixes (copywriter 0.5.0, after `review.md` round 1).** Made directly in `en.json`, so they are not in `en.draft.json` or `humanizer-notes.md`: `ctas.primary` (F1), `languagesSpoken` (F2), block [4] ¶3 and a new ¶4 (F3, N1), and nine `priceList` notes (F4, N1). The `priceList` section below lists them row by row.
+
 **This is the owner-prose case, with a warning.** The site carries a lot of first-person and owner-side copy, so its sentences are used wherever they do not touch a contradiction (edits are listed under "Edits to the owner's words"). The authorship of the first-person story is unknown (`business.owner_voice.note`), and the legal pages name someone else as provider (`flags_for_operator[0]`). The copy therefore says "we" and "our" without saying whose business it is, calls Sanjee only "head instructor", and never says owner, founder, family or "his school".
 
 Prices and quotes were pulled from the dossier by script, not retyped.
@@ -28,8 +30,8 @@ Index = position in `contradictions[]`. "Left out" means no value is stated anyw
 | 9 | lesson format: all private, or small groups of 2 to 4 | **Not resolved.** The Beginner Lesson has `groupSize: null`, so the page does not say private or group for it. Private Coaching says "One-on-one" and the Week Intensive "5 private sessions" because each card says so of itself (`lessons[1].features`, `lessons[2].features`), and neither is disputed. "All sessions are private" is not used. Block [2] ¶3 keeps only "For group bookings, please leave us a message.", which is true on every reading, and gives no group size or price. Audit F7. **Owner to settle before go-live.** |
 | 10 | lesson price | Resolved in the dossier: home page, $40 and $50 (`offers`, `offers_note`). The FAQ's about $25 and about $45 appear nowhere. |
 | 11 | multi-day packages | The Week Intensive only, the one with a price. The FAQ's 3-, 5- and 7-day packages (no prices) are left out. **Owner to confirm.** |
-| 12 | tuk-tuk price and size | `priceList` carries the home page and /tuktuk prices that `offers` records (`offers_note`), and "up to 2 people", the narrower size on the priced cards. The FAQ's "from about $60 up to 3" and "from about $110" are left out. This contradiction has no `resolved` line in the dossier, so this is a stated choice, per audit F13. **Owner to confirm.** |
-| 13 | tour inclusions | Resolved in the dossier: the priced cards. Guided tasting, snorkelling and surfboards are not promised. The nine outings' notes say what is excluded. Whether the three surf tours supply boards is not stated, because no priced card says. **Owner item.** |
+| 12 | tuk-tuk price and size | **Prices:** `priceList` carries the home page and /tuktuk prices that `offers` records, following the harvester's own decision in `offers_note`. The FAQ's "from about $60" and "from about $110" are left out. **Size: not resolved, left out.** The dossier has no `resolved` line for it: the cards say up to 2, the FAQ up to 3 for the half day, and /faq "2–3 passengers". No row or sentence states a party size. Block [4] ¶4 says only what every side agrees on, that the price is for the tour and not per person, and tells the reader to ask how many can come (`review.md` R7, F3). **Owner to pick.** |
+| 13 | tour inclusions | Resolved in the dossier: the priced cards. Guided tasting, snorkelling and surfboards are not promised. The nine outings' exclusions are in block [4] ¶3 and their own notes. Whether the three surf tours supply boards is not stated, because no priced card says. **Owner item.** |
 | 14 | rental deposit: $50 or $100 by board, or $100 or 30,000 LKR on all | **Amount left out.** Both sides agree there is a refundable deposit, so block [3] ¶4 says that and tells the reader to ask. Audit F12. **Owner to pick.** |
 | 15 | hardboard day rate: $20, against "$10–15" about the town | $20 from the rental table. The other figure is about the town, not this business. |
 | 16 | board swaps | **Left out.** Audit F12. **Owner to pick.** |
@@ -62,11 +64,11 @@ Index = position in `contradictions[]`. "Left out" means no value is stated anyw
 | `tagline` | "Surf lessons in Weligama, on the south coast of Sri Lanka." | "Surf lessons": `business.description`, `business.type`. "Weligama": `location.address`. "South coast of Sri Lanka": shared context about the place. Written to answer audit F6 (the old first screen names no place). |
 | `closing` | "Send us the lesson and date you want on WhatsApp, or call the same number." | Task: `audit.recommended.closing_intent` (not a fact). WhatsApp: `contact.whatsapp`, `booking.path`. Same number: `contact.phone.verified`, `contact.whatsapp.value`. No reply time. |
 | `featureLine` | "Making waves, one lesson at a time." | `business.tagline.value`, the owner's footer line, verbatim. The hero's "Ride the Wave of Your Life" is not used. |
-| `ctas.primary` | "Message Sanjee on WhatsApp" | Not a schema field: the schema leaves interface labels to the template, and `sites/global-surf-adventures/copy/en.json` is the precedent for `ctas`. Label from `audit.recommended.primary_label`, shortened: "about a lesson" is cut because the same button serves lessons, boards and tours and a persistent mobile bar has to hold it. The prefilled message carries what was chosen (playbook §5). **Owner to confirm** that Sanjee holds this phone: the number is verified (`contact.whatsapp`), who answers is not. If not, "Ask on WhatsApp", the site's own label (`booking.path.note`). |
+| `ctas.primary` | "Ask on WhatsApp" | Not a schema field: the schema leaves interface labels to the template, and `sites/global-surf-adventures/copy/en.json` is the precedent for `ctas`. The site's own label (`booking.path.note`: "Reserve on WhatsApp", "Ask on WhatsApp"). It names nobody, because no dossier key says who holds this phone (`review.md` R10, F1): the number is verified (`contact.whatsapp`), who answers is not. "Reserve" is not used, because nothing has shown a message secures a place. `audit.recommended.primary_label`, "Message Sanjee on WhatsApp about a lesson", is not used for the same reason. The prefilled message carries what was chosen (playbook §5). **Owner to confirm** who holds the phone; if it is Sanjee, the label can name him. |
 | `spot` | "Coco Beach is our home spot, a beach break. Smaller crowds than the main peak and a friendly, mellow vibe, ideal for first pop-ups." | `location.spot.value`, restructured (see "Edits"), and `surf_spots[0]` (beach break). |
 | `season` | "Best surf season runs November to April; peak swell and dry weather are December–February." | `season.value`, verbatim. No closed months are published. |
 | `openingHours`, `hoursNote` | `[]`, null | Contradiction 5. **Designer warning:** the schema says a day in no row is closed. With this empty array the template must show no hours at all, never a week of "closed". |
-| `languagesSpoken` | `["en","si","ta"]` | `languages_spoken[0–2]`. The select cannot say "basic" for Tamil (`languages_spoken[2].note`). **Judgement call**: kept as the dossier records it; a template should not imply fluency. The owner may remove the row. |
+| `languagesSpoken` | `["en","si"]` | `languages_spoken[0–1]`. Tamil is left out: the dossier says "basic Tamil" (`languages_spoken[2].note`), the field means "who you can be served in", and the select cannot carry "basic", so `ta` would read the same as English (`review.md` R6, F2). The reason is the field's meaning, not a cap. Both languages come from /about, Sanjee's own page. **Owner item**: Tamil can return if he confirms lessons can be given in it. |
 | `rooms`, `stayInfo`, `amenities`, `brands` | empty | Not this type. The one amenity, free dry storage, is in block [3] ¶1. |
 | `bookingLinks` | `[]` | No engine carries over: the old dialog has no deep link (`booking.engine_url.kind`). |
 
@@ -92,7 +94,8 @@ Index = position in `contradictions[]`. "Left out" means no value is stated anyw
 | [4] heading | "By tuk-tuk" | framing; `offers` group `tuk_tuk` |
 | [4] ¶1 | the three tours that look for waves, by name (the number is no longer written; the names carry it, and ¶2's "other nine" counts from them) | `offers` tour_id `surf-safari`, `full-coast`, `sunrise-session` |
 | [4] ¶2 | the other nine: outings along the coast and inland, at estimated introductory prices, with pickup and return within Weligama (one sentence) | The nine other `offers` with group `tuk_tuk`: `includes` "Pickup and return within Weligama", `note` "Estimated introductory package price". "Inland": the tea estate's "Travel inland". The hedge on the prices is kept on purpose. |
-| [4] ¶3 | each tour price covers up to 2 people | `offers` group `tuk_tuk`, `unit` "per tour, up to 2 people". Contradiction 12. |
+| [4] ¶3 | those outings don't include meals or activities | The nine other `offers` with group `tuk_tuk`: each one's `includes` lists "meals and activities" as excluded (checked by script). Stated once here, not nine times in the notes. "Those outings" leans on the noun in ¶2. The three surf tours are not covered: one includes lunch, one has a breakfast stop. |
+| [4] ¶4 | a tour's price is for the tour, not per person; ask how many people can come | `offers` group `tuk_tuk`: `unit` "per tour", `includes` "price per tour", `note` "Price is for both persons if 2 attend". The FAQ's side of contradiction 12 also prices the tour for a party, so this holds on every side. No party size is stated (F3). |
 | [5] heading | "Before you book" | framing |
 | [5] ¶1 | swim at least 50 meters unaided | `requirements[0]` (Terms) |
 | [5] ¶2 | kids from age 6; under 18 with a parent or legal guardian | `requirements[2]`, verbatim; `requirements[1]`, shortened. |
@@ -140,7 +143,24 @@ Notes cut, not for a cap:
 
 ## `priceList[]`
 
-14 rows. 12 tours from `offers` group `tuk_tuk`, prices unchanged, unit `flat`. Labels keep the dossier's name and length ("Approx." lower-cased, nested brackets flattened). Each note trims that tour's `note` and `includes`, and keeps its exclusions and limits: "Not beginner lesson spots" (Midigama), "not guaranteed safe" (Secret Beach), "Wildlife not guaranteed" (Turtle Bay), "No whale-watching boat trip" (Mirissa), "the island seen from the shore" (Taprobane). The Sunrise Session's 5:30 AM pickup is the card's own; it sits oddly beside Google's 9–5 (audit F14), so **owner to confirm**. Full Coast Adventure: the card's "Visit hidden gems, local breaks" is written "some of them local breaks"; the humanizer cut "hidden gems" as a stock phrase with nothing checkable in it (see `humanizer-notes.md`).
+14 rows. 12 tours from `offers` group `tuk_tuk`, prices unchanged, unit `flat`. Labels keep the dossier's name and length ("Approx." lower-cased, nested brackets flattened). Each note trims that tour's `note` and `includes`.
+
+Every note was re-read against its card in round 2 (`review.md` F4, N1). Exclusions common to all nine outings, meals and activities, moved to block [4] ¶3: each note is capped at 140, and with them in the row the Turtle Bay, Midigama and Kabalana limits did not fit. Those three limits outrank a repeated exclusion. "Up to 2" and "Private tuk-tuk for up to 2 people" are in no note (contradiction 12).
+
+| Row | Limits and exclusions the note keeps | Left out of the note, and why |
+|---|---|---|
+| [0] Surf Spot Safari | "potential" | "best", "perfect" (superlatives). No limit on the card is lost. |
+| [1] Full Coast Adventure | "potential"; lunch included | "ultimate", "authentic", "hidden gems" (humanizer: a stock phrase with nothing checkable; the card's "local breaks" is written "some of them local breaks"). |
+| [2] Sunrise Session | 5:30 AM pickup; it is a breakfast stop, not a breakfast included | "prime", "best", "avoiding crowds", "glassy waves" (claims with no evidence). The pickup is the card's own and earlier than all three sets of hours, so **owner to confirm**. |
+| [3] Weligama Bay & Taprobane Island | island seen from the shore; island and other entry fees | Meals, activities: block [4] ¶3. |
+| [4] Midigama Reef Breaks | surfing optional, "conditions permitting" (card: "conditions dependent"); not beginner lesson spots; no boards or lessons | Meals, activities: block [4] ¶3. |
+| [5] Mirissa Beach & Coconut Tree Hill | no whale-watching boat trip; entry fees | Meals, activities: block [4] ¶3. "Coastal views and photo stops": description, no limit. |
+| [6] Ahangama & Kabalana | surfing depends on skill and sea conditions; no boards or lessons | Meals, activities: block [4] ¶3. |
+| [7] Secret Beach Mirissa | access may need a walk; swimming depends on the sea and is not guaranteed safe; entry fees | Meals, activities: block [4] ¶3. "Relaxed", photo stops: description, no limit. |
+| [8] Turtle Bay & Snake Farm | snake farm optional "if open and available" (card: "subject to opening and availability"); admission separate; wildlife not guaranteed; entry fees; snorkeling | Meals, activities: block [4] ¶3. |
+| [9] Handunugoda Tea Estate | estate entry, tours and tastings depend on current visitor arrangements and are not included | Meals, activities: block [4] ¶3. Photo stops: description, no limit. |
+| [10] Galle Fort | museum entry | Meals, activities: block [4] ¶3. Coastal photo stops: description, no limit. |
+| [11] Hiriketiya Bay | surfing and swimming depend on conditions and ability; boards and lessons (card: "equipment and coaching", "Surfboards, lessons") | Meals, activities: block [4] ¶3. |
 
 2 shop rows: rashguard $12 and reef booties $15 a pair (`offers` group `shop`), both to buy.
 
@@ -195,7 +215,8 @@ Guest-only claims stay in the quotes and are not stated in the business's voice:
 | ID, deposit | block [3] ¶4 |
 | tour names and lengths | `priceList[].label`; the three surf tours are also named in block [4] ¶1 to say which they are, with no fact restated |
 | outings' pickup and estimated prices | block [4] ¶2 |
-| up to 2 people | block [4] ¶3 |
+| outings exclude meals and activities | block [4] ¶3 |
+| price is for the tour, not per person | block [4] ¶4 |
 | swim, age rules | block [5] ¶1–2 |
 | cash | block [5] ¶3 |
 | capture date | block [5] ¶3 |
@@ -214,7 +235,9 @@ No line reads as a slogan except the owner's own `featureLine`, which is one sho
 - **Private or group** for the Beginner Lesson, and whether a group price exists.
 - **Cancellation**: which policy.
 - **Deposit on a lesson**: whether one applies when booking by WhatsApp. And the **rental deposit** amount.
-- **Reply time**: whether "within a few hours" holds, and who answers the phone.
+- **Reply time**: whether "within a few hours" holds, and who answers the phone (the button names nobody until then).
+- **How many people a tour takes**: 2, or 3 on the half day.
+- **Tamil**: whether lessons can be given in it.
 - **Experience and students**: any number at all.
 - **Who owns and runs the school**: nothing beyond "head instructor".
 - **Other instructors**: unnamed (`team[1].gap`). "Experienced, English-speaking instructors" is not used.
@@ -231,7 +254,7 @@ No line reads as a slogan except the owner's own `featureLine`, which is one sho
 
 ## Facts available vs words written
 
-About 80 usable facts: 3 lessons, 16 + 1 rental rates, 12 tours, 2 shop items, 6 board types, 3 rental inclusions, 4 levels, 11 waves, the rules, the owner's story, 2 credentials, the Google rating, 4 quotes and the contact lines. They become 8 blocks, 21 paragraphs and 431 words of body, plus 34 priced rows: a fairly long page because the offer is long, with short prose and the rows carrying the numbers. Nothing in the dossier is too thin to build on. The thin parts are the ones the old site contradicts itself on, listed above, and those are pitch points.
+About 80 usable facts: 3 lessons, 16 + 1 rental rates, 12 tours, 2 shop items, 6 board types, 3 rental inclusions, 4 levels, 11 waves, the rules, the owner's story, 2 credentials, the Google rating, 4 quotes and the contact lines. They become 8 blocks, 22 paragraphs and 447 words of body, plus 34 priced rows: a fairly long page because the offer is long, with short prose and the rows carrying the numbers. Nothing in the dossier is too thin to build on. The thin parts are the ones the old site contradicts itself on, listed above, and those are pitch points.
 
 ## Caps
 
@@ -248,8 +271,8 @@ Read from `schemas/site-content.md` v0.11 this round, measured on the final file
 | `lessons[].includes` | 140 | longest 104 |
 | `rentals` | 30 rows | 17 |
 | `priceList` | 30 rows | 14 |
-| `priceList[].label` / `.note` | 80 / 140 | longest 51 / 122 |
+| `priceList[].label` / `.note` | 80 / 140 | longest 51 / 139 |
 | `credentials` | 8 rows | 2 |
 | `testimonials` | 12 rows, 600 chars | 4, longest 310 |
 
-Nothing was cut to fit a cap.
+Nothing was dropped from the page for a cap. In round 2 the 140-character note cap did move meals and activities out of the nine outing notes and into block [4] ¶3, where they are stated once.

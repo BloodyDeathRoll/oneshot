@@ -9,7 +9,7 @@
  "closing": "Send us the lesson and date you want on WhatsApp, or call the same number.",
  "featureLine": "Making waves, one lesson at a time.",
  "ctas": {
-  "primary": "Message Sanjee on WhatsApp"
+  "primary": "Ask on WhatsApp"
  },
  "copyBlocks": [
   {
@@ -35,7 +35,7 @@
   {
    "slot": "offer",
    "heading": "By tuk-tuk",
-   "body": "The Surf Spot Safari and the Full Coast Adventure go looking for waves, and so does the Sunrise Session.\n\nThe other nine are outings along the coast and inland, at estimated introductory prices, with pickup and return within Weligama.\n\nEach tour price covers up to 2 people."
+   "body": "The Surf Spot Safari and the Full Coast Adventure go looking for waves, and so does the Sunrise Session.\n\nThe other nine are outings along the coast and inland, at estimated introductory prices, with pickup and return within Weligama.\n\nThose outings don't include meals or activities.\n\nA tour's price is for the tour, not per person. Ask us how many people can come."
   },
   {
    "slot": "info",
@@ -244,63 +244,63 @@
    "price": 15,
    "currency": "USD",
    "unit": "flat",
-   "note": "Bay viewpoints and photo stops, with the island seen from the shore. Island entry, meals and activities not included."
+   "note": "Bay viewpoints and photo stops, with the island seen from the shore. Island and other entry fees not included."
   },
   {
    "label": "Midigama Reef Breaks (approx. 3 hours)",
    "price": 25,
    "currency": "USD",
    "unit": "flat",
-   "note": "Lazy Left and Lazy Right viewpoints and beach stops. Not beginner lesson spots. Boards, lessons and meals not included."
+   "note": "Lazy Left and Lazy Right viewpoints, beach stops. Surfing optional, conditions permitting; not beginner lesson spots. No boards or lessons."
   },
   {
    "label": "Mirissa Beach & Coconut Tree Hill (approx. 4 hours)",
    "price": 30,
    "currency": "USD",
    "unit": "flat",
-   "note": "Beach time and the viewpoint. No whale-watching boat trip. Entry fees, meals and activities not included."
+   "note": "Beach time and the viewpoint. No whale-watching boat trip. Entry fees not included."
   },
   {
    "label": "Ahangama & Kabalana (approx. 4 hours)",
    "price": 30,
    "currency": "USD",
    "unit": "flat",
-   "note": "Coastal stops, Kabalana Beach and a view of the Rock reef break. Boards, lessons and meals not included."
+   "note": "Coastal stops, Kabalana Beach and a view of the Rock reef break. Surfing depends on skill and sea conditions; no boards or lessons."
   },
   {
    "label": "Secret Beach Mirissa (approx. 4 hours)",
    "price": 30,
    "currency": "USD",
    "unit": "flat",
-   "note": "Final access may need a walk. Swimming depends on the sea and is not guaranteed safe. Entry fees and meals not included."
+   "note": "Final access may need a walk. Swimming depends on the sea and is not guaranteed safe. Entry fees not included."
   },
   {
    "label": "Turtle Bay & Snake Farm (approx. 4 hours)",
    "price": 35,
    "currency": "USD",
    "unit": "flat",
-   "note": "Coastal stops; snake farm optional, admission paid separately. Wildlife not guaranteed. Snorkeling and meals not included."
+   "note": "Coastal stops; snake farm optional if open and available, admission separate. Wildlife not guaranteed. Entry fees and snorkeling excluded."
   },
   {
    "label": "Handunugoda Tea Estate (approx. 4 hours)",
    "price": 40,
    "currency": "USD",
    "unit": "flat",
-   "note": "Inland through the countryside. Estate admission, tastings and meals not included."
+   "note": "Inland through the countryside. Estate entry, tours and tastings depend on current visitor arrangements and are not included."
   },
   {
    "label": "Galle Fort (approx. 6 hours)",
    "price": 55,
    "currency": "USD",
    "unit": "flat",
-   "note": "Time on foot on the ramparts and historic streets. Museum entry and meals not included."
+   "note": "Time on foot on the ramparts and historic streets. Museum entry not included."
   },
   {
    "label": "Hiriketiya Bay (approx. 8 hours)",
    "price": 70,
    "currency": "USD",
    "unit": "flat",
-   "note": "Beach time and coastal stops. Surfing depends on conditions and ability; boards, lessons and meals not included."
+   "note": "Beach time and coastal stops. Surfing and swimming depend on conditions and ability; boards and lessons not included."
   },
   {
    "label": "Rashguard (UV long-sleeve), to buy",
@@ -377,7 +377,6 @@
  "bookingLinks": [],
  "languagesSpoken": [
   "en",
-  "si",
-  "ta"
+  "si"
  ]
 }
