@@ -1,0 +1,248 @@
+---
+/* Home: a port of mockups/unique/dist/index.html ("Round the clock"), picked by Alon at gate b with his tweak (the
+   first screen takes calm's view-from-the-roof frame of img-009). Markup, class names, CSS and JS are the mockup's
+   (mockups/unique/src/build.py, page.css, page.js), bound to the content schema: every word, photo, link and number
+   comes from src/tenant/content.json, the SCHEMA GAP file (src/gaps/gaps.json) or the template's labels
+   (src/lib/labels.json). Section order is the mockup's: first screen → 13:00, check-in → six kinds of room → inside
+   the house → the clock set-piece → today on Coconuts → 11:00, check-out → getting here → closing → footer.
+   4g changes are commented ("4g fix n" = the six known defects from the 4f round-2 reports). */
+import css from '../styles/site.css?raw'
+import js from '../scripts/site.js?raw'
+import {
+  c, G, L, S, e, t, paras as split, block,
+  NAME, PRIMARY, HOURS, HERO_LINE, STAY, STAY_NOTE, AMENITIES, RATINGS, REVIEWS, ROOMS, FORECAST, TOWN,
+  slot, img, imgOf, srcset, horizon, svg, pipe,
+  metaDescription, seoHead, businessLd, ldJson, ogImage, IS_PREVIEW,
+} from '../lib/site.mjs'
+import { book, call, sunCall, finder, rating, quote, paras, header, footer, bar, roomRow, HEADJS, fontFaces, fontPreloads } from '../lib/parts.mjs'
+
+const P = (b) => paras(split(b?.body))
+const eranga = block('about', 0), restaurant = block('about', 1), roof = block('about', 2), inside = block('about', 3)
+const beach = block('intro', 0), six = block('offer', 0), here = block('info', 0)
+
+/* ---------- first screen: calm's frame of img-009, full height under the transparent header ---------- */
+const H = slot(S.hero, 0), HM = slot(S.hero, 1), HLQ = slot(S.hero, 2), HMLQ = slot(S.hero, 3)
+const PHONE_Q = '(max-width: 767px)'
+const hero = `
+<section class="hero" aria-labelledby="h1">
+  <div class="hero-pic">
+    <picture>
+      ${HM ? `<source media="${PHONE_Q}" srcset="${HM.top.webp}" width="${HM.top.w}" height="${HM.top.h}">` : ''}
+      ${imgOf(H, { lazy: false, sizes: '100vw' })}
+    </picture>
+  </div>
+  <div class="hero-in">
+    <h1 class="script" id="h1">${e(NAME)}</h1>
+    ${HERO_LINE ? `<p class="where">${e(HERO_LINE)}</p>` : ''}
+    ${book('btn-hero')}
+  </div>
+</section>`
+/* the hero's own blurred 40 px copy, painted under the photo until it arrives (a loading state only) */
+const heroLq = (HLQ?.small.data ? `.hero-pic img:not(.loaded){background-image:url(${HLQ.small.data})}` : '')
+  + (HMLQ?.small.data ? `@media ${PHONE_Q}{.hero-pic img:not(.loaded){background-image:url(${HMLQ.small.data})}}` : '')
+
+/* ---------- 13:00, check-in: tagline + the break + the restaurant's hours + the closing's first sentence ---------- */
+const first = (s) => { const m = /^(.+?[.!?])(\s|$)/.exec(s ?? ''); return m ? m[1] : s ?? '' }
+const facts = [c.tagline, first(c.spot), HOURS, first(c.closing)].filter(Boolean).join(' ')
+const ratings = RATINGS.length ? `<div class="ratings">${RATINGS.map(rating).join('')}</div>` : ''
+const checkin = `
+<section class="checkin" id="checkin" aria-labelledby="h-checkin">
+  <div class="col">
+    <h2 class="script" id="h-checkin">${STAY.checkInFrom ? `<span class="t">${e(STAY.checkInFrom)}</span>, ` : ''}${e(L.checkin_title)}</h2>
+    <p class="facts">${e(facts)}</p>
+    ${ratings}
+    <div class="actions">${book('', L.book_long)}${call()}</div>
+  </div>
+</section>`
+
+/* ---------- six kinds of room: 3:2 dot slideshows, two per row, A/C rooms first ---------- */
+const show = (r) => {
+  const n = r.slides.length
+  const slides = r.slides.map((s, i) => `<li class="slide" aria-roledescription="slide" aria-label="${e(t(L.slide, { i: i + 1, n }))}">${imgOf(s, { held: i > 0 })}</li>`).join('')
+  const dots = r.slides.map((_, i) => `<button type="button" class="dot" aria-label="${e(t(L.photo_n, { n: i + 1 }))}"></button>`).join('')
+  return `<div class="show" data-show id="room-${r.i}" role="region" aria-roledescription="carousel" aria-label="${e(t(L.photos_of, { room: r.label }))}">`
+    + `<ul class="track" tabindex="0">${slides}</ul>${r.chip ? `<span class="chip">${e(r.chip)}</span>` : ''}`
+    + `<div class="ctrl" hidden><button class="arw prev" type="button" aria-label="${e(L.photo_prev)}">${svg('prev')}</button>`
+    + `<div class="dots" role="group" aria-label="${e(L.photo_pick)}">${dots}</div>`
+    + `<button class="arw next" type="button" aria-label="${e(L.photo_next)}">${svg('next')}</button></div></div>`
+}
+const roomCard = (r) => `<article class="room room-${r.kind ?? 'ac'}" id="r${r.i}" data-sleeps="${r.sleeps ?? ''}">${r.slides.length ? show(r) : ''}`
+  + `<div class="rtxt"><h3>${e(r.label)}</h3><p class="meta">${pipe([e(r.beds), r.sleeps ? e(t(L.sleeps, { n: r.sleeps })) : ''])}</p>`
+  + `${r.note ? `<p class="note">${e(r.note)}</p>` : ''}${book('btn-sm')}</div></article>`
+const stayLine = pipe([STAY.checkInFrom ? e(t(L.checkin_from, { t: STAY.checkInFrom })) : '', STAY.checkOutTo ? e(t(L.checkout_until, { t: STAY.checkOutTo })) : ''])
+const rooms = ROOMS.length ? `
+<section class="rooms tint" id="rooms" aria-labelledby="h-rooms">
+  <div class="wrap">
+    <div class="rooms-head">
+      <h2 class="script" id="h-rooms">${e(six?.heading ?? L.nav.rooms)}</h2>
+      ${paras(split(six?.body).slice(0, 1))}
+      ${finder()}
+    </div>
+    <div class="room-grid">${ROOMS.map(roomCard).join('')}</div>
+    <p class="stayinfo">${stayLine ? `<span class="si">${stayLine}</span> ` : ''}${e(STAY_NOTE)}</p>
+  </div>
+</section>` : ''
+
+/* ---------- inside the house: three columns that end flush (a 2:3 portrait over a 3:2 landscape) ---------- */
+const house = `
+<section class="house" id="house" aria-labelledby="h-house">
+  <div class="wrap house-grid">
+    <div class="house-txt">
+      <h2 class="script" id="h-house">${e(inside?.heading ?? '')}</h2>
+      ${P(inside)}
+    </div>
+    <div class="masonry">${S.house.map((col) => '<div class="mcol">' + col.filter((n) => slot(n)).map((n) => `<div class="m${n === S.houseHideOnPhone ? ' m-nophone' : ''}">${img(n)}</div>`).join('') + '</div>').join('')}</div>
+  </div>
+</section>`
+
+/* ---------- the set-piece: five moments, each with its frame; horizons (fraction of frame height) for the wipe ---------- */
+const RH = G.restaurantHours ?? {}
+const momentQuote = (k) => { const a = G.momentQuotes?.[k]; return a ? REVIEWS.find((q) => q.author === a) ?? null : null }
+const MOMENTS = [
+  { k: 'afternoon', n: S.clock[0], sub: roof?.heading, body: P(roof), q: momentQuote('afternoon') },
+  { k: 'sunset', n: S.clock[1], sub: beach?.heading, body: P(beach) },
+  { k: 'night', n: S.clock[2], sub: restaurant?.heading, body: paras([...split(restaurant?.body), HOURS].filter(Boolean)), at: RH.closes },
+  { k: 'morning', n: S.clock[3], sub: eranga?.heading, body: P(eranga), q: momentQuote('morning'), at: RH.opens },
+  { k: 'break', n: S.clock[4], sub: FORECAST?.name, body: paras([c.spot, c.season].filter(Boolean))
+    + (FORECAST ? `<p><a class="btn btn-ghost btn-sm" href="#break">${svg('wave')}<span>${e(t(L.fc_heading, { spot: FORECAST.name }))}</span></a></p>` : '') },
+].filter((m) => slot(m.n))
+const mLabel = (m, key) => t(L.moments[m.k][key], { t: m.at ?? '' })
+/* 4g fix 2: the frames are full width below 1024 px (the phone layout now runs to 1023 px) */
+const frameImg = (m, cls) => img(m.n, { cls, sizes: '(max-width: 1023px) 100vw, 56vw', extra: ` data-hz="${+horizon(m.n).toFixed(3)}"` })
+const ticks = MOMENTS.map((m, i) => `<li class="tick" style="--i:${i}"><span>${e(mLabel(m, 'tick'))}</span></li>`).join('')
+const blocksHtml = MOMENTS.map((m, i) =>
+  `<article class="blk" data-i="${i}" aria-labelledby="m${i}"><div class="ph">${frameImg(m, '')}</div>`
+  + `<div class="btxt"><h3 class="script" id="m${i}">${e(mLabel(m, 'title'))}</h3>${m.sub ? `<p class="sub">${e(m.sub)}</p>` : ''}${m.body}`
+  + (m.q ? quote(m.q, 'q q-small') : '') + '</div></article>').join('')
+const stay = MOMENTS.length ? `
+<section class="clock" id="stay" aria-labelledby="h-stay">
+  <h2 class="sr" id="h-stay">${e(L.stay_aria)}</h2>
+  <div class="clock-grid">
+    <div class="clock-media" aria-hidden="true">
+      <div class="dial"><ol class="ticks">${ticks}</ol><span class="sun" aria-hidden="true"></span></div>
+      <div class="frames" data-loading-gl>${MOMENTS.map((m, i) => frameImg(m, 'fr' + (i === 0 ? ' on' : ''))).join('')}<canvas class="gl"></canvas></div>
+    </div>
+    <div class="clock-text">${blocksHtml}</div>
+  </div>
+</section>` : ''
+
+/* ---------- today on Coconuts: the Rosa headline (left) and Rosa's own widget (right), both lazy ----------
+   4g: the headline is drawn live from Rosa's JSON (the mockup inlined a fixture). The values' lines keep their space
+   (hidden) until they are drawn, so nothing shifts. 4g fix 1: no widget frame exists until rosa.surf has answered a
+   HEAD request; until it has loaded, the plain link in the box is what is tapped. */
+const ROSA_PAGE = FORECAST && `https://rosa.surf/spot/${FORECAST.id}`
+const fcLink = (cls) => `<a class="btn btn-ghost${cls}" href="${e(ROSA_PAGE)}" rel="noopener">${svg('wave')}<span>${e(t(L.fc_link, { spot: FORECAST.name }))}</span></a>`
+const forecast = FORECAST ? `
+<section class="break" id="break" aria-labelledby="h-break">
+  <div class="wrap">
+    <h2 class="script" id="h-break">${e(t(L.fc_heading, { spot: FORECAST.name }))}</h2>
+    <div class="fc">
+      <div class="fc-now" id="rosa-now" data-json="https://rosa-data-opal.vercel.app/data/spots/${e(FORECAST.id)}.json" aria-live="polite">
+        <div class="fc-vals">
+          <p class="fc-h"><span id="rosa-h">&nbsp;</span><small>m</small></p>
+          <p class="fc-phrase" id="rosa-phrase" data-label="${e(L.fc_now)}">&nbsp;</p>
+          <ul class="fc-list">
+            <li>${svg('clock')}<span id="rosa-time">&nbsp;</span></li>
+            <li>${svg('swell')}<span>${t(e(L.fc_swell), { p: '<b id="rosa-p">&nbsp;</b>', d: '<b id="rosa-d"></b>' })}</span></li>
+            <li>${svg('wind')}<span>${t(e(L.fc_wind), { w: '<b id="rosa-w">&nbsp;</b>', c: '<span id="rosa-wc"></span>' })}</span></li>
+          </ul>
+        </div>
+        <p class="fc-plain">${fcLink('')}</p>
+        <p class="credit"><a href="${e(ROSA_PAGE)}" rel="noopener">${e(t(L.fc_credit, { spot: FORECAST.name }))}</a></p>
+      </div>
+      <div class="rosa-box" data-rosa="https://rosa.surf/widget/?spot=${e(FORECAST.id)}&amp;theme=light&amp;units=metric" data-title="${e(t(L.fc_title, { spot: FORECAST.name }))}">
+        ${fcLink(' fallback')}
+      </div>
+    </div>
+    ${AMENITIES.length ? `<p class="amen"><span class="amen-k">${e(L.amen_k)}</span> ${e(AMENITIES.join(' | '))}</p>` : ''}
+  </div>
+</section>` : (AMENITIES.length ? `<section class="break" id="break"><div class="wrap"><p class="amen"><span class="amen-k">${e(L.amen_k)}</span> ${e(AMENITIES.join(' | '))}</p></div></section>` : '')
+
+/* ---------- 11:00, check-out: ratings and one quote at a time (each review once: the set-piece's two are left out) ---------- */
+const inPiece = new Set(MOMENTS.map((m) => m.q?.author).filter(Boolean))
+const qs = REVIEWS.filter((q) => !inPiece.has(q.author))
+const guests = `
+<section class="guests tint" id="guests" aria-labelledby="h-guests">
+  <div class="wrap">
+    <h2 class="script" id="h-guests">${STAY.checkOutTo ? `<span class="t">${e(STAY.checkOutTo)}</span>, ` : ''}${e(L.checkout_title)}</h2>
+    ${ratings}
+    ${qs.length ? `<div class="quotes" data-quotes role="region" aria-roledescription="carousel" aria-label="${e(L.reviews_aria)}">
+      <div class="ctrl qctrl" hidden><button class="arw prev" type="button" aria-label="${e(L.review_prev)}">${svg('prev')}</button>
+        <span class="qn" aria-live="polite">1 / ${qs.length}</span>
+        <div class="dots" role="group" aria-label="${e(L.review_pick)}">${qs.map((_, i) => `<button type="button" class="dot" aria-label="${e(t(L.review_n, { n: i + 1 }))}"></button>`).join('')}</div>
+        <button class="arw next" type="button" aria-label="${e(L.review_next)}">${svg('next')}</button></div>
+      <div class="qstack">${qs.map((q, i) => quote(q, 'q q-big' + (i === 0 ? ' on' : ''))).join('')}</div>
+    </div>` : ''}
+  </div>
+</section>`
+
+/* ---------- getting here: the sign beside the directions ---------- */
+const getting = `
+<section class="here" id="getting-here" aria-labelledby="h-here">
+  <div class="wrap here-grid">
+    <div class="print">${img(S.sign)}</div>
+    <div class="here-txt">
+      <h2 class="script" id="h-here">${e(here?.heading ?? '')}</h2>
+      ${P(here)}
+      ${c.contact?.address ? `<p class="addr">${svg('map')}<span>${e(c.contact.address)}</span></p>` : ''}
+      <div class="actions">${c.contact?.mapUrl ? `<a class="btn btn-ghost" href="${e(c.contact.mapUrl)}" rel="noopener">${svg('map')}<span>${e(L.map_open)}</span></a>` : ''}${call()}</div>
+    </div>
+  </div>
+</section>`
+
+const closing = `
+<section class="closing" id="book" aria-label="${e(L.closing_aria)}">
+  ${c.closing ? `<p class="script close-line">${e(c.closing)}</p>` : ''}
+  <div class="actions">${book('btn-hero')}${sunCall()}</div>
+</section>`
+
+/* ---------- "Find your room": in-page overlay, tiles by how many are coming ---------- */
+const sheet = `
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="sheet" data-drawer role="dialog" aria-modal="true" aria-labelledby="sheet-h" hidden>
+  <div class="sheet-in">
+    <button class="x" type="button" data-close aria-label="${e(L.close)}">${svg('close')}</button>
+    <p class="script sheet-h" id="sheet-h">${e(L.sheet_h)}</p>
+    <div class="tiles" role="group" aria-label="${e(L.sheet_h.replace(/\?$/, ''))}">
+      ${L.tiles.map(([n, w]) => `<button type="button" class="tile" data-n="${n}"><b>${n}</b><span>${e(w)}</span></button>`).join('')}
+      <button type="button" class="tile tile-ns" data-n="0"><b>?</b><span>${e(L.not_sure)}</span></button>
+    </div>
+    <div class="answer" aria-live="polite">
+      <ul class="picks">${ROOMS.map((r) => roomRow(r)).join('')}</ul>
+      <div class="notsure" hidden>${c.closing ? `<p>${e(c.closing)}</p>` : ''}<div class="actions">${call()}</div></div>
+    </div>
+  </div>
+</div>`
+
+const mainHtml = `${header()}<main id="main">${hero}${checkin}${rooms}${house}${stay}${forecast}${guests}${getting}${closing}</main>${footer()}${bar()}${sheet}`
+
+/* 4h-style head: title = businessName + the town of contact.address (the other finals' rule); description = owner fields only */
+const title = TOWN && `${NAME}, ${TOWN}`.length <= 60 ? `${NAME}, ${TOWN}` : NAME
+const description = metaDescription([c.tagline, first(c.spot)])
+const head = seoHead({ path: '', title, description, image: ogImage() })
+const ld = ldJson(businessLd({ description }))
+/* 4g fix 6 (LCP): the first screen's photograph is preloaded per width, ahead of the inline CSS, so the phone fetches
+   its 560 px crop and the desktop its 1280 / 1440 one from the first bytes of the page */
+const heroPreload = (HM ? `<link rel="preload" as="image" href="${HM.top.webp}" media="${PHONE_Q}" fetchpriority="high">` : '')
+  + (H ? `<link rel="preload" as="image" href="${H.top.webp}" imagesrcset="${srcset(H)}" imagesizes="100vw" media="(min-width: 768px)" fetchpriority="high">` : '')
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{title}</title>
+{IS_PREVIEW && <meta name="robots" content="noindex, nofollow">}
+{description && <meta name="description" content={description}>}
+<Fragment set:html={head} />
+<meta name="theme-color" content="#ffffff">
+<script is:inline set:html={HEADJS}></script>
+<Fragment set:html={heroPreload + fontPreloads()} />
+<style is:inline set:html={fontFaces() + css + heroLq}></style>
+</head>
+<body>
+<Fragment set:html={mainHtml} />
+<script is:inline set:html={js}></script>
+<script type="application/ld+json" is:inline set:html={ld}></script>
+</body>
+</html>

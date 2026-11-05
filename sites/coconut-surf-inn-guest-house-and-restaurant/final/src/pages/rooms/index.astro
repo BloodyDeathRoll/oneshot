@@ -1,0 +1,42 @@
+---
+/* rooms/: the "Find your room" overlay as a page of its own, for visitors without JS (every "Find your room" button
+   is a real link here; with JS it opens the overlay instead). A port of mockups/unique/dist/rooms/index.html: the
+   rooms by how many are coming (rooms that sleep n or n + 1, smallest first), then "Not sure" with the closing line
+   and Call. Relative URLs only ('../'), so the build runs on *.workers.dev, in a subfolder or on the client's domain. */
+import css from '../../styles/site.css?raw'
+import js from '../../scripts/site.js?raw'
+import { c, L, e, t, svg, NAME, IS_PREVIEW, metaDescription, seoHead } from '../../lib/site.mjs'
+import { call, header, footer, bar, roomRow, fits, HEADJS, fontFaces, fontPreloads } from '../../lib/parts.mjs'
+
+const groups = L.groups.map(([n, w]) => ({ n, w, rooms: fits(n) })).filter((g) => g.rooms.length)
+const main = header('../') + '<main id="main" class="roomspage"><div class="wrap">'
+  + `<p><a class="btn btn-ghost btn-sm" href="../">${svg('prev')}<span>${e(t(L.back_to, { name: NAME }))}</span></a></p>`
+  + `<h1 class="script">${e(L.sheet_h)}</h1>`
+  + groups.map((g) => `<section class="rp-group" aria-labelledby="g${g.n}"><h2 id="g${g.n}">${e(g.w)}</h2><ul class="picks">`
+    + g.rooms.map((r) => roomRow(r, '../')).join('') + '</ul></section>').join('')
+  + `<section class="rp-group" aria-labelledby="g0"><h2 id="g0">${e(L.not_sure)}</h2>${c.closing ? `<p>${e(c.closing)}</p>` : ''}<div class="actions">${call()}</div></section>`
+  + '</div></main>' + footer() + bar('../').replace('href="../rooms/"', 'href="./"')
+
+const title = t(L.rooms_title, { name: NAME })
+const description = metaDescription([c.tagline])
+const head = seoHead({ path: 'rooms/', title, description, image: null })
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{title}</title>
+{IS_PREVIEW && <meta name="robots" content="noindex, nofollow">}
+{description && <meta name="description" content={description}>}
+<Fragment set:html={head} />
+<meta name="theme-color" content="#ffffff">
+<script is:inline set:html={HEADJS}></script>
+<Fragment set:html={fontPreloads('../')} />
+<style is:inline set:html={fontFaces('../') + css}></style>
+</head>
+<body>
+<Fragment set:html={main} />
+<script is:inline set:html={js}></script>
+</body>
+</html>
