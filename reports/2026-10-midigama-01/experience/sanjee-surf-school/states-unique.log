@@ -1,0 +1,62 @@
+=== unique
+  phone ?swell=0.62 canvas {"w":780,"h":1751,"op":"1","disp":"block"}
+  laptop ?swell=0.62 canvas {"w":1440,"h":993,"op":"1","disp":"block"}
+  phone {"y":60,"hdrBg":"rgb(255, 255, 255)","hdrPos":"sticky","hdrH":60,"h1top":8,"h1bot":101,"bar":{"op":"0","tr":"matrix(1, 0, 0, 1, 0, 81.6)","vis":"visible"}}
+  phone {"y":200,"hdrBg":"rgb(255, 255, 255)","hdrPos":"sticky","hdrH":60,"h1top":-132,"h1bot":-39,"bar":{"op":"0","tr":"matrix(1, 0, 0, 1, 0, 81.6)","vis":"visible"}}
+  phone {"y":400,"hdrBg":"rgb(255, 255, 255)","hdrPos":"sticky","hdrH":60,"h1top":-332,"h1bot":-239,"bar":{"op":"1","tr":"none","vis":"visible"}}
+  phone {"y":560,"hdrBg":"rgb(255, 255, 255)","hdrPos":"sticky","hdrH":60,"h1top":-492,"h1bot":-399,"bar":{"op":"1","tr":"none","vis":"visible"}}
+  phone {"y":700,"hdrBg":"rgb(255, 255, 255)","hdrPos":"sticky","hdrH":60,"h1top":-632,"h1bot":-539,"bar":{"op":"1","tr":"none","vis":"visible"}}
+  laptop {"y":100,"hdrBg":"rgb(255, 255, 255)","hdrPos":"sticky","hdrH":72,"h1top":-14,"h1bot":59,"bar":{"op":"0","tr":"matrix(1, 0, 0, 1, 0, -72.8)","vis":"visible"}}
+  laptop {"y":400,"hdrBg":"rgb(255, 255, 255)","hdrPos":"sticky","hdrH":72,"h1top":-314,"h1bot":-241,"bar":{"op":"1","tr":"none","vis":"visible"}}
+  laptop {"y":700,"hdrBg":"rgb(255, 255, 255)","hdrPos":"sticky","hdrH":72,"h1top":-614,"h1bot":-541,"bar":{"op":"1","tr":"none","vis":"visible"}}
+  laptop {"y":880,"hdrBg":"rgb(255, 255, 255)","hdrPos":"sticky","hdrH":72,"h1top":-794,"h1bot":-721,"bar":{"op":"1","tr":"none","vis":"visible"}}
+  menu links ["Lessons->#lessons","Boards->#boards","Sanjee->#sanjee","Waves->#waves","Tuk-tuk->#tuktuk","Finding us->#finding"]
+  menu tap "Waves" #waves {"y":6421,"targetTop":68,"hdrBottom":60,"open":false}
+  menu after Esc open=true
+  menu after outside tap open=false
+  wa.me links 22
+   [Ask on WhatsApp] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about a surf lesson.
+   [Ask about this lesson] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the Beginner Lesson.
+   [Ask about this lesson] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about Private Coaching.
+   [Ask about this lesson] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the Week Intensive.
+   [Ask on WhatsApp] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about a surf lesson.
+   [Ask on WhatsApp] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about renting a board.
+   [Ask on WhatsApp: Surf Spot Safari] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the tuk-tuk tour: Surf Spot Safari.
+   [Ask on WhatsApp: Full Coast Adventure] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the tuk-tuk tour: Full Coast Adventure.
+   [Ask on WhatsApp: Sunrise Session] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the tuk-tuk tour: Sunrise Session.
+   [Ask on WhatsApp: Weligama Bay & Taprobane Island] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the tuk-tuk tour: Weligama Bay & Taprobane Island.
+   [Ask on WhatsApp: Midigama Reef Breaks] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the tuk-tuk tour: Midigama Reef Breaks.
+   [Ask on WhatsApp: Mirissa Beach & Coconut Tree Hill] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the tuk-tuk tour: Mirissa Beach & Coconut Tree Hill.
+   [Ask on WhatsApp: Ahangama & Kabalana] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the tuk-tuk tour: Ahangama & Kabalana.
+   [Ask on WhatsApp: Secret Beach Mirissa] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the tuk-tuk tour: Secret Beach Mirissa.
+   [Ask on WhatsApp: Turtle Bay & Snake Farm] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the tuk-tuk tour: Turtle Bay & Snake Farm.
+   [Ask on WhatsApp: Handunugoda Tea Estate] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the tuk-tuk tour: Handunugoda Tea Estate.
+   [Ask on WhatsApp: Galle Fort] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the tuk-tuk tour: Galle Fort.
+   [Ask on WhatsApp: Hiriketiya Bay] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the tuk-tuk tour: Hiriketiya Bay.
+   [Ask on WhatsApp] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about a surf lesson.
+   [Ask on WhatsApp] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about a surf lesson.
+   [Ask on WhatsApp] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about a surf lesson.
+   [Ask on WhatsApp] https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about a surf lesson.
+  under 44 px targets []
+  overflow 390 vs 390
+  sheet opened from Beginner {"open":true,"focus":"INPUT:Beginner Lesson","checked":["lesson=Beginner Lesson"],"bubble":"Hello Sanjee Surf School, I'd like to ask about the Beginner Lesson.","href":"https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Beginner%20Lesson.","date":"","y":1232} SEND https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the Beginner Lesson.
+  sheet box {"top":138,"h":706,"bottom":844,"sh":706,"ch":706,"ssh":706,"sch":706}
+  sheet groups {"lesson":["Beginner Lesson/Beginner LessonUSD 40","Private Coaching/Private CoachingUSD 50","Week Intensive/Week IntensiveUSD 160"],"level":["Total beginner/Total beginner","Beginner/Beginner","Intermediate/Intermediate","Advanced/Advanced","Not sure/Not sure"],"date":["/Choose a date"],"dateNS":["Not sure/Not sure"],"people":["1/1","2/2","3+/3+","Not sure/Not sure"]}
+  sheet filled {"open":true,"focus":"INPUT:2","checked":["lesson=Beginner Lesson","level=Beginner","people=2"],"bubble":"Hello Sanjee Surf School, I'd like to ask about the Beginner Lesson. My level: beginner. Date: 20 November 2026. People: 2.","href":"https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Beginner%20Lesson.%20My%20level%3A%20beginner.%20Date%3A%2020%20November%202026.%20People%3A%202.","date":"2026-11-20","y":1232} SEND https://wa.me/94774004422 :: Hello Sanjee Surf School, I'd like to ask about the Beginner Lesson. My level: beginner. Date: 20 November 2026. People: 2.
+  sheet lesson 2 "Hello Sanjee Surf School, I'd like to ask about Private Coaching. My level: beginner. Date: 20 November 2026. People: 2."
+  after Esc {"open":false,"focus":"A:Ask about this lesson","y":1232}
+  reopen from Week {"open":true,"focus":"INPUT:Week Intensive","checked":["lesson=Week Intensive","level=Beginner","people=2"],"bubble":"Hello Sanjee Surf School, I'd like to ask about the Week Intensive. My level: beginner. Date: 20 November 2026. People: 2.","href":"https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Week%20Intensive.%20My%20level%3A%20beginner.%20Date%3A%2020%20November%202026.%20People%3A%202.","date":"2026-11-20","y":1708}
+  after drag down open=true
+  after x open=false
+  after backdrop tap open=false
+  strip {"sl":0,"max":2750}
+  strip swiped {"sl":312,"max":2750}
+  quotes swiped {"sl":340,"max":988,"on":1}
+  quotes dot4 {"sl":988,"max":988,"on":3}
+  laptop sheet {"open":true,"top":293.03125,"h":606.96875,"w":640,"focus":"INPUT:Private Coaching"}
+  focus stays in sheet over 18 tabs: false
+  after Esc focus Ask about this lesson lesson=1
+  hover cta {"tr":"none","sh":"none","bg":"rgb(199, 44, 96)"} -> {"tr":"none","sh":"none","bg":"rgb(199, 44, 96)"}
+  hover lesson-btn {"tr":"none","sh":"none","bg":"rgb(199, 44, 96)"} -> {"tr":"none","sh":"none","bg":"rgb(199, 44, 96)"}
+  hover stripcard {"tr":"none","sh":"none","bg":"rgb(233, 246, 255)"} -> {"tr":"none","sh":"none","bg":"rgb(233, 246, 255)"}
+  tab order ["Skip to lessons outline=solid 3px","Sanjee Surf School outline=solid 3px","Lessons outline=solid 3px","Boards outline=solid 3px","Sanjee outline=solid 3px","Waves outline=solid 3px"]

@@ -1,0 +1,9 @@
+interactive tile Intermediate: {"scrollLeft":306,"y":903,"firstCardTop":762,"bubbleTop":1597,"cardLinks":["Hello Sanjee Surf School, I'd like to ask about the Beginner Lesson.","Hello Sanjee Surf School, I'd like to ask about the Private Coaching.","Hello Sanjee Surf School, I'd like to ask about the Week Intensive."]}
+  cards with the fit dot: ["Private Coaching left=20"]
+interactive board g3 {"tag":"linearGradient","x":0,"y":0,"w":0,"h":0,"tr":"none"}
+  board elements ["SECTION.boards-sec","DIV.boards-copy","DIV.boards-data","UL.boards","LI.board","LI.board","LI.board","LI.board","LI.board","LI.board"]
+interactive Sanjee print scroll 300: {"tr":"matrix(1, 0, 0, 1, 0, -35.2)","parent":"none","top":55} -> {"tr":"matrix(1, 0, 0, 1, 0, -54.8)","parent":"none","top":-264}
+unique CTA hover {"tr":"none","bgImage":"none","before":"\"\"|matrix(1, 0, 0, 1, 0, 0)|1","after":"none|none|1","transition":"transform"}
+unique CTA pressed {"tr":"matrix(0.97, 0, 0, 0.97, 0, 0)","before":"matrix(1, 0, 0, 1, 0, 0)|1","after":"none|1"}
+interactive board hover rest [{"tr":"matrix(1, 0, 0, 1, 0, 14)","top":670.8},{"tr":"matrix(1, 0, 0, 1, 0, 14)","top":679},{"tr":"matrix(1, 0, 0, 1, 0, 14)","top":621.6}] hovered [{"tr":"matrix(1, 0, 0, 1, 0, 8.19085e-07)","top":378.8},{"tr":"matrix(1, 0, 0, 1, 0, -2.05335)","top":384.9},{"tr":"matrix(1, 0, 0, 1, 0, 0.0349498)","top":329.6}]
+unique hero prints: canvas pointer-events none; element under pointer IMG.print p-007
