@@ -16,6 +16,8 @@ EMAIL = C['contact']['email']
 BIZ = C['businessName']
 BLOCK = {b['heading']: b for b in C['copyBlocks']}
 GENERIC = 'a surf lesson'
+# An assumption until station 6 gives this site its real preview address.
+OG_BASE = 'https://sanjee-surf-school.os1.workers.dev/'
 PRICE_DATE = 'All prices are as of 5 November 2026.'
 assert PRICE_DATE in BLOCK['Before you book']['body']
 
@@ -84,18 +86,27 @@ def hero():
   </div>
 </section>'''
 
-TILES = [('first_time', 'Total beginner', "I'm a total beginner.", 'tile-img-005-380.webp', 380, 464),
-         ('beginner', 'I can stand up', "I'm a beginner who can already stand up.", 'tile-img-006-384.webp', 384, 480),
-         ('intermediate', 'Intermediate', "I'm an intermediate surfer.", 'tile-img-009-520.webp', 520, 650),
-         ('advanced', 'Advanced', "I'm an advanced surfer.", 'tile-img-010-520.webp', 520, 650),
-         ('unsure', 'Not sure', "I'm not sure of my level yet.", 'tile-img-012-750.webp', 750, 558)]
+# key, label, the visitor's sentence, small file + w, large file + w, large file's height
+TILES = [('first_time', 'Total beginner', "I'm a total beginner.", 'tile-img-005-240.webp', 240, 'tile-img-005-380.webp', 380, 464),
+         ('beginner', 'I can stand up', "I'm a beginner who can already stand up.", 'tile-img-006-240.webp', 240, 'tile-img-006-384.webp', 384, 480),
+         ('intermediate', 'Intermediate', "I'm an intermediate surfer.", 'tile-img-009-260.webp', 260, 'tile-img-009-520.webp', 520, 650),
+         ('advanced', 'Advanced', "I'm an advanced surfer.", 'tile-img-006-wave-240.webp', 240, 'tile-img-006-wave-384.webp', 384, 480),
+         ('unsure', 'Not sure', "I'm not sure of my level yet.", None, 0, None, 0, 0)]
+
+def tile_img(f1, w1, f2, w2, h2):
+    if not f1:
+        # the fifth tile is wide on a phone and a 4:5 column on a wide screen, so it has two crops
+        return ('<picture><source media="(max-width:900px)" srcset="img/tile-img-012-wide-400.webp 400w, img/tile-img-012-wide-700.webp 700w" sizes="92vw" width="700" height="350">'
+                '<img src="img/tile-img-012-tall-300.webp" width="300" height="375" alt="" loading="lazy" decoding="async"></picture>')
+    return (f'<img src="img/{f1}" srcset="img/{f1} {w1}w, img/{f2} {w2}w" sizes="(max-width:900px) 46vw, 20vw" '
+            f'width="{w2}" height="{h2}" alt="" loading="lazy" decoding="async">')
 
 def where():
     who = paras('Who we teach')
     tiles = ''.join(
         f'<button type="button" class="tile" data-level="{k}" aria-pressed="false">'
-        f'<img src="img/{f}" width="{w}" height="{h}" alt="" loading="lazy" decoding="async"><span class="tile-l">{e(l)}</span></button>'
-        for k, l, _, f, w, h in TILES)
+        f'{tile_img(f1, w1, f2, w2, h2)}<span class="tile-l">{e(l)}</span></button>'
+        for k, l, _, f1, w1, f2, w2, h2 in TILES)
     return f'''<section class="where">
   <div class="where-top">
     <p class="lead">{e(C['tagline'])}</p>
@@ -301,7 +312,7 @@ def feature():
   <p class="script">{e(C['featureLine'])}</p>
   <picture>
     <source media="(max-width:700px)" srcset="img/feature-img-009-near-1040.webp" width="1040" height="800">
-    <img src="img/feature-img-009-wide-1600.webp" width="1600" height="860" alt="{e(alt)}" loading="lazy" decoding="async">
+    <img src="img/feature-img-009-wide-1500.webp" width="1500" height="560" alt="{e(alt)}" loading="lazy" decoding="async">
   </picture>
 </section>'''
 
@@ -365,7 +376,7 @@ def tours():
         rows.append(f'''<li class="tour{cls}">
       <div><h3>{e(name)}{' <span>' + e(when) + '</span>' if when else ''}</h3><p>{e(r['note'])}</p></div>
       <b class="t-price">{e(r['currency'])} {r['price']}</b>
-      <a class="ico" href="{e(wa(ask))}" data-ask="{e(ask)}" data-own="1" aria-label="{e(PRIMARY)} about {e(name)}">{WA_ICON}</a>
+      <a class="ico" href="{e(wa(ask))}" data-ask="{e(ask)}" data-own="1"{' data-outing="1"' if i >= 3 else ''} aria-label="{e(PRIMARY)} about {e(name)}">{WA_ICON}</a>
     </li>''')
     return f'''<section class="tours" id="tuk-tuk">
   <div class="tours-copy">
@@ -448,7 +459,7 @@ def page():
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(C['tagline'])}">
 <meta property="og:type" content="website">
-<meta property="og:image" content="img/og-img-018-1200.jpg">
+<meta property="og:image" content="{OG_BASE}img/og-img-018-1200.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="theme-color" content="#c9b9a8">

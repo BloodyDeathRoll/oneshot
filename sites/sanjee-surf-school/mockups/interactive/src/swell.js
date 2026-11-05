@@ -42,12 +42,18 @@
     ' float sl=crd(ph);',
     /* lift: up to 8 css px where the water is close, nothing near the horizon */
     ' float near=smoothstep(.06,.55,d);',
-    ' float lift=h*8.*near;',
+    /* the shore band lifts less, so the foam does not rise and fall as one mass */
+    ' float sb=smoothstep(.40,.62,d);',
+    ' float lift=h*8.*near*(1.-.45*sb);',
     /* ripples, for refraction and glitter */
     ' vec2 q=vec2(x*9.,z*16.+t*.5);',
     ' float e=.06, n0=rp(q);',
     ' vec2 dn=vec2(rp(q+vec2(e,0.))-n0,rp(q+vec2(0.,e))-n0)/e;',
-    ' vec2 o=(vec2(0.,lift)+dn*vec2(1.,1.3)*(.3+.9*d))*P*m;',
+    /* and it churns: a slow sideways travel with the front, plus a drift that differs from clump to clump */
+    ' vec2 cn=v*vec2(46.,90.);',
+    ' vec2 ch=vec2(vn(cn+vec2(t*.35,0.)),vn(cn.yx+vec2(3.7,t*.3)))-.5;',
+    ' vec2 fo=(vec2(sin(ph*.5+t*.2)*2.6,0.)+ch*vec2(6.,5.))*sb;',
+    ' vec2 o=(vec2(0.,lift)+fo+dn*vec2(1.,1.3)*(.3+.9*d))*P*m;',
     ' vec3 c=texture2D(T,u+o).rgb;',
     /* the back of the front falls into shade and its face takes the light */
     ' c*=1.+m*near*(.10*sl+.05*h);',
@@ -70,7 +76,8 @@
   ].join('\n');
   var VS = 'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
 
-  function boot() {
+  var start = null;
+  function prep() {
     var gl = cv.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false, depth: false, stencil: false, powerPreference: 'low-power' });
     if (!gl) return;
     function sh(type, src) { var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; }
@@ -90,6 +97,7 @@
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    start = function () {
     try { gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img); }
     catch (e) { return; } /* a refused texture keeps the still */
 
@@ -105,7 +113,8 @@
     var soft = dbg && /swiftshader|llvmpipe|software/i.test(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL));
     var coarse = matchMedia('(pointer: coarse)').matches;
     /* only the water is drawn, so a phone can afford the screen's own sharpness, up to 2x */
-    var res = Math.min(devicePixelRatio || 1, 2);
+    var maxRes = Math.min(devicePixelRatio || 1, 2);
+    var res = maxRes;
     var minDt = soft ? 100 : coarse ? 33 : 0;       /* 10 / 30 / display rate */
 
     function size() {
@@ -118,6 +127,8 @@
       /* the canvas starts just above the horizon at its highest (.450 of the photograph) */
       var top = Math.max(0, Math.floor(((.446 - k[1]) / k[3]) * dh + oy));
       var cssH = H - top;
+      /* never more than about 3.2 million pixels of water, on any screen */
+      res = Math.min(res, Math.sqrt(3.2e6 / (W * cssH)));
       cv.style.top = top + 'px';
       cv.style.height = cssH + 'px';
       cv.width = Math.round(W * res);
@@ -149,7 +160,7 @@
         }
       }
       var e = (now - t0) / 1000;
-      var ramp = Math.min(1, e / 1.1);              /* the water wakes in a second, so the still never pops */
+      var ramp = Math.min(1, e / .7);               /* the water wakes fast, without the still popping */
       gl.uniform1f(U.t, (e + 3) % 3600);            /* starts with a front already in the near water */
       gl.uniform1f(U.g, ramp * ramp * (3 - 2 * ramp));
       gl.drawArrays(gl.TRIANGLES, 0, 3);
@@ -161,12 +172,17 @@
     calm.addEventListener('change', function () { if (calm.matches) stop(); });
     cv.addEventListener('webglcontextlost', stop);
     go();
+    };
   }
 
-  /* after first paint, once the photograph is decoded */
-  function later() {
-    var run = function () { requestAnimationFrame(function () { setTimeout(boot, 60); }); };
-    if (img.decode) img.decode().then(run, function () {}); else if (img.complete) run(); else img.onload = run;
-  }
-  if (document.readyState === 'complete') later(); else addEventListener('load', later);
+  /* the shader compiles just after first paint, and runs as soon as the photograph is decoded */
+  requestAnimationFrame(function () {
+    setTimeout(function () {
+      prep();
+      if (!start) return;
+      var run = function () { if (start) { var s = start; start = null; s(); } };
+      if (img.decode) img.decode().then(run, function () { img.addEventListener('load', run); });
+      else if (img.complete) run(); else img.addEventListener('load', run);
+    }, 0);
+  });
 })();

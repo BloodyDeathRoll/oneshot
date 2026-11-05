@@ -7,7 +7,7 @@ Built by `src/make-media.sh` then `src/build.py` (words read from `copy/en.json`
 
 Compared with: `dossier/sanjee-surf-school/assets/old-site-desktop.png` and `old-site-mobile.png`. Gold notes read: Global Surf, The Lavish Haven, KA, Layday.
 
-Rounds 1 to 6 are the first build (img-009 hero); committed in a2854d6. Rounds 1, 2, 7 and 8 were shot with a scratch Playwright harness at 1440x900 and 390x844, not `tools/shoot.mjs`, because I needed frames over time. Rounds 9 to 11 are `tools/shoot.mjs` over http on my own server. Only `shots/round-11` is kept.
+Rounds 1 to 6 are the first build (img-009 hero); committed in a2854d6. Rounds 1, 2, 7 and 8 were shot with a scratch Playwright harness at 1440x900 and 390x844, not `tools/shoot.mjs`, because I needed frames over time. Rounds 9 to 11 are `tools/shoot.mjs` over http on my own server. Rounds 12 to 14 are the third pass after pre-score round 2 (visual 7, experience 7, critic 70.4). Only `shots/round-14` is kept, with `hero-2560.png` added to it.
 
 **Round 1, first screen.** A paddler alone on an aqua band, flat and hazy. Mild grade baked in. Clearly better than the old pool on plainness, not on richness.
 
@@ -29,7 +29,13 @@ Rounds 1 to 6 are the first build (img-009 hero); committed in a2854d6. Rounds 1
 
 **Round 10, whole page.** On a phone the Week paragraph inside its card made the swipe row 507 px tall, leaving 125 to 150 px of white under the two shorter cards, the same hole the critics marked, moved outside the card. I moved the paragraph directly under the row at every width. It names the Week Intensive itself, so it still reads with it.
 
-**Round 11, whole page, last.** Sheets checked at both widths for overflow, overlap and unreadable text: none at rest; fixed header and bar pass over text while scrolling and nothing rests under them. Reduced motion, no WebGL and `file://` show the same still with the canvas hidden; tiles work without WebGL. No JS hides tiles and message panel and keeps every word and link. **Why this beats the old site:** a real sunset on this coast with moving water, surfers and the school's name in place of a hotel pool; the level question answered with the school's own pictures; a price one scroll further on instead of 2,500 px; one tap instead of five taps, three fields and a card.
+**Round 12, first screen (third pass).** White title over a plain brown overlay: legible (5.0:1 worst cell), but the clouds went flat and dull. Also lifted the stage's width cap and looked at 2560: no panels. Multiply will keep the clouds' light. Beside the old site's pool, still clearly better.
+
+**Round 13, first screen.** Multiply scrim: the clouds keep their colour, title worst cell 5.3:1 at 1440. Foam still moved through 12 px because it sits at d of about 0.5 on a laptop, not in the band I had lowered; band widened, now -7 to +1 with -5 to +1 sideways, and foam frames still read as foam. The swell now starts at the decode, about 1.9 s throttled. The first draft of the Advanced crop showed a surfer's arm at its edge, so I moved it.
+
+**Round 14, whole page, last.** Band cut to 52 vh with the head gone; row under the cards on one baseline (468.8 for all three). Phone chips stick above the strip at every tile position, y=624. The sheet found my own bug: the empty sticky `.fits` drew a 14 px white stripe across the tiles, now sticky only when it has chips. Audit found `scroll.early.cls` 0.0241 from the font swap, fixed with a same-width fallback (0, 0.0009, 0.0009 on three runs). Still clearly better than the old site at both widths: a surf sunset that moves, the name and place, one tap to a message.
+
+**Round 11, whole page, end of second pass.** Sheets checked at both widths for overflow, overlap and unreadable text: none at rest; fixed header and bar pass over text while scrolling and nothing rests under them. Reduced motion, no WebGL and `file://` show the same still with the canvas hidden; tiles work without WebGL. No JS hides tiles and message panel and keeps every word and link. **Why this beats the old site:** a real sunset on this coast with moving water, surfers and the school's name in place of a hotel pool; the level question answered with the school's own pictures; a price one scroll further on instead of 2,500 px; one tap instead of five taps, three fields and a card.
 
 ### Skills, one line each
 - `/animate`, `/design-motion-principles` (first build): tokens kept. `--ease-out`, press 120 ms, state 240 ms, travel 300 ms, sampled spring.
@@ -51,11 +57,11 @@ Rounds 1 to 6 are the first build (img-009 hero); committed in a2854d6. Rounds 1
 |---|---|---|---|---|
 | `hero-img-018-wide-1440`, `-tall-1000` | img-018 | 1440x1920 | business-owned, sanjee-surf.com | hero, full-bleed |
 | `og-img-018-1200.jpg` | img-018 | | as above | OG image |
-| `tile-img-005-380` | img-005 | 832x464 | business-owned, Google listing. Identifiable, consent is an owner item | Total beginner |
-| `tile-img-006-384`, `print-img-006-848` | img-006 | 848x480 | business-owned, Google listing | I can stand up; print |
-| `tile-img-009-520`, `feature-img-009-wide-1600`, `-near-1040` | img-009 | 1600x1067 | business-owned, sanjee-surf.com | Intermediate; feature band |
-| `tile-img-010-520` | img-010 | 1600x1067 | business-owned. **Open rights flag** (concepts §6) | Advanced |
-| `tile-img-012-750` | img-012 | 750x558 | business-owned, sanjee-surf.com | Not sure |
+| `tile-img-005-380`, `-240` | img-005 | 832x464 | business-owned, Google listing. Identifiable, consent is an owner item | Total beginner |
+| `tile-img-006-384`, `-240`, `print-img-006-848` | img-006 | 848x480 | business-owned, Google listing | I can stand up; print |
+| `tile-img-009-520`, `-260`, `feature-img-009-wide-1500`, `-near-1040` | img-009 | 1600x1067 | business-owned, sanjee-surf.com | Intermediate; feature band |
+| `tile-img-006-wave-*` | img-006 | 848x480 | business-owned, Google listing | Advanced (the wave, no surfer) |
+| `tile-img-012-tall-300`, `-wide-700`, `-wide-400` | img-012 | 750x558 | business-owned, sanjee-surf.com | Not sure |
 | `print-img-007-962`, `-640` | img-007 | 962x938 | business-owned. **Open rights flag, may be a beach photographer's** | Sanjee print |
 | `print-img-014-1000` | img-014 | 1280x960 | business-owned | print |
 | `back-img-002-wide-2000`, `-tall-900` | img-002 | 2000x1500 | business-owned, Google listing | closing band |
@@ -85,7 +91,7 @@ No review photo and no atmosphere image, so no credit line is needed. img-036, `
 6. **Section-title face is Courgette**, not Covered By Your Grace, chosen from six rendered candidates on "Sanjee, head instructor" and "Other waves, as we rate them". Not used elsewhere in the run or gold.
 7. **Colour:** grey panels removed. White ground plus a pale water tint `#E6F2F4`, a lightened value I chose from img-009's water rather than a direct sample; `#D6DAE0` is gone. Sand strip `#EFE3CF` under the boards.
 8. **Boards** coloured per type from the school's photographs (soft-top red and blue from img-005, wave aqua and lower water from img-009, deck and rail from img-007, sunset orange from img-018, by eye from those samples). Lengths are from the copy; widths, shapes and fins are illustrative and no width is printed. Red and blue suggest the soft-tops but the chart does not claim those colours are what is rented. On a phone they stand in a swipe row at one scale.
-9. **Tile pictures added** (visual critic, custom.md). The ring slides instead of the concept's pill. A picture beside a level is illustration, not a claim about who is in it. img-005 shows identifiable people and img-010 has an open rights flag.
+9. **Tile pictures added** (visual critic, custom.md). The ring slides instead of the concept's pill. A picture beside a level is illustration, not a claim about who is in it. img-005 shows identifiable people.
 10. **Week paragraph** is off its card (concept: "¶2 on the Week card"), directly under the Week column on wide screens and directly under the swipe row on phones, as the visual critic proposed. On a phone it is therefore not next to the Week card while another card is in view; its first words name the Week Intensive.
 11. **Prefill "the Galle Fort tour", "Private Coaching"**: "tour" is from [4]. Message links: every WhatsApp button carries the built message. A card, tour or board button keeps its own subject and adds level, date and people, so it matches `#send` except for its subject, by design: a card about the Beginner Lesson should not send "Private Coaching".
 12. **Hero is a normal file**, so `file://` shows the still (WebGL refuses a `file://` image). Over http it runs. Moved out of base64 at the critic's suggestion: cacheable, and first load is now 402 KB uncompressed instead of 232.
@@ -94,5 +100,13 @@ No review photo and no atmosphere image, so no credit line is needed. img-036, `
 **Wording of mine to check:** "2 hours each" (coordinator's exception), "as of 5 November 2026" on the rating (capture date), "per lesson", "per day", "for you", "Your message", "Add to my message", "In my message", "Languages:", tile labels, and the message sentences.
 
 **Check scope:** `check-design` run on this page's path, not `<slug>`, because the slug form writes into sibling `shots/`. `check-design` and `audit-mockup` were scratch copies differing only in port (9323, 9324).
+
+**Round 3 departures and calls:**
+- **White title on a darkened sky at 701 px and up, ink on the pale band below that.** A multiply scrim over the top 46% of the stage, so the clouds keep their light (a plain overlay, tried first, turned them flat brown). The sky is darker than the photograph. It is a treatment on the picture, allowed by playbook §1a's legibility scrim and by the calibration's "white on a darker orange". I did not re-cut the crop higher, which the experience critic offered: the sky above the clouds is out of a 16:10 frame without losing the water.
+- **Stage has no width cap.** At 2560 the 1440 px file is 1.78x. It holds as a sunset; it is soft close up.
+- **Advanced tile is the wave alone**, a second crop of img-006, the same frame as "I can stand up". No unflagged picture shows an advanced surfer: img-006 is the only other own action frame without a flag, and img-007 carries one. img-010 is no longer on the page.
+- **Outing prefills drop the level; the three surf tours, cards and board button keep it.**
+- **`og:image` is `https://sanjee-surf-school.os1.workers.dev/img/og-img-018-1200.jpg`, an assumption until station 6** (the address unique used). No such deployment exists to check.
+- **Fallback font added (`Manrope-fb`):** Arial at 101.2%, measured on this page's text, because `scroll.early.cls` hit 0.0241 when the font swap rewrapped text with the cards in view. The Roboto value (102%) is an estimate: no Roboto on this machine.
 
 **Blocking:** none that I know of. The previous two are addressed: the water now visibly changes and the phone hero is 2.2 source px per css px. **I have still not watched it play** (stills, differences, slit-scans), and nothing has run on a real phone.

@@ -1,3 +1,6 @@
+/* a fallback the same width as Manrope (measured on this page's own text: Arial x 1.012), so the font arriving does not rewrap the page */
+@font-face{font-family:"Manrope-fb";src:local("Arial"),local("Helvetica Neue"),local("Helvetica");size-adjust:101.2%}
+@font-face{font-family:"Manrope-fb-r";src:local("Roboto");size-adjust:102%}
 :root{
   --ground:#fff; --water:#E6F2F4; --water-2:#D5E8EC; --sel:#91B0C8; --ink:#181D10; --ink2:#41463c; --book:#05368A; --book-h:#0a45a8; --sand:#EFE3CF;
   --ease-out:cubic-bezier(.23,1,.32,1);
@@ -6,7 +9,7 @@
   --gut:clamp(20px,3.4vw,48px);
   --max:1344px;
   --sec:clamp(64px,8vw,120px);
-  --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"Manrope","Manrope-fb","Manrope-fb-r",sans-serif;
   --script:"Courgette","Manrope",cursive;
 }
 *{box-sizing:border-box}
@@ -24,6 +27,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 input{caret-color:var(--book)}
 .skip{position:absolute;left:12px;top:-60px;z-index:30;padding:10px 16px;border-radius:12px;background:#fff;font-weight:600}
 .skip:focus{top:12px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .script{font:400 clamp(36px,3.9vw,54px)/1.12 var(--script);color:var(--ink)}
 
 /* the one action, in the one colour */
@@ -48,14 +52,14 @@ input{caret-color:var(--book)}
 
 /* header */
 .hdr{position:absolute;inset:0 0 auto;z-index:20;display:flex;align-items:center;gap:24px;padding:16px var(--gut)}
-.js .hdr{position:fixed;transition:background-color var(--state) ease,box-shadow var(--state) ease,padding var(--state) var(--ease-out)}
+.js .hdr{position:fixed;transition:color var(--state) ease,background-color var(--state) ease,box-shadow var(--state) ease,padding var(--state) var(--ease-out)}
 .hdr.solid{background:#fff;padding-block:8px;box-shadow:0 8px 28px -22px rgba(24,29,16,.5)}
 .brand{font-weight:800;font-size:19px;letter-spacing:-.01em;min-height:44px;display:inline-flex;align-items:center;margin-right:auto}
 .nav{display:flex;align-items:center;gap:2px;transition:transform var(--travel) var(--ease-out)}
 .js .nav{transform:translateX(var(--cta,0px))}
 .js .hdr.on .nav{transform:none}
 .nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 13px;border-radius:999px;font-weight:600;font-size:15px;transition:background-color var(--state) ease}
-@media (hover:hover) and (pointer:fine){.nav a:hover{background:rgba(255,255,255,.5)}.hdr.solid .nav a:hover{background:var(--water)}}
+@media (hover:hover) and (pointer:fine){.nav a:hover{background:rgba(255,255,255,.18)}.hdr.solid .nav a:hover{background:var(--water)}}
 .hdr-cta{opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity var(--state) ease,transform var(--state) var(--ease-out),visibility var(--state),background-color var(--state) ease}
 .hdr.on .hdr-cta{opacity:1;visibility:visible;transform:none}
 .menu{display:none;position:relative}
@@ -70,9 +74,17 @@ input{caret-color:var(--book)}
 
 /* first screen: the title in the sky, the moving water under it */
 .hero{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#c9b9a8}
-.stage{position:absolute;inset:0;max-width:1920px;margin-inline:auto}
+.stage{position:absolute;inset:0}
 .stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
-.stage canvas{position:absolute;left:0;top:0;width:100%;opacity:0;transition:opacity .4s ease}
+.stage canvas{position:absolute;left:0;top:0;width:100%;opacity:0;transition:opacity .25s ease}
+@media (min-width:701px){
+  .stage::after{content:"";position:absolute;inset:0 0 auto;height:46%;pointer-events:none;mix-blend-mode:multiply;background:linear-gradient(to bottom,rgb(146,120,126) 0,rgb(152,126,132) 46%,rgb(208,192,196) 74%,#fff 100%)}
+  h1{color:#fff!important}
+  .hdr{color:#fff}
+  .hdr.solid{color:var(--ink)}
+  .menu{color:var(--ink)}
+  .hdr:not(.solid) a:focus-visible,.hero a:focus-visible{outline-color:#fff}
+}
 .hero-copy{position:absolute;inset:clamp(96px,14.5vh,150px) 0 auto;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 var(--gut);gap:clamp(16px,2.4vh,24px)}
 h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spacing:-.025em;color:var(--ink);max-width:16em}
 
@@ -124,11 +136,11 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
 .foryou{position:absolute;top:clamp(24px,2.3vw,32px);right:clamp(20px,2vw,28px);display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;opacity:0;transform:scale(.9);transform-origin:right center;transition:opacity 160ms ease,transform var(--travel) var(--spring)}
 .foryou i{width:10px;height:10px;border-radius:50%;background:var(--book)}
 .card.fit .foryou{opacity:1;transform:none}
-.after-cards{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-top:18px;align-items:start}
-.after-a{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 24px;padding-right:clamp(0px,2vw,24px)}
+.after-cards{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-top:18px;align-items:baseline}
+.after-a{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 24px}
 .week-more{padding-inline:clamp(4px,1vw,12px)}
-.rating{display:inline-flex;align-items:center;gap:12px;min-height:46px;padding:6px 20px 6px 8px;border-radius:999px;background:var(--water);font-weight:600;font-size:15px;transition:background-color var(--state) ease,transform var(--press) var(--ease-out)}
-.rating b{display:inline-flex;align-items:center;justify-content:center;height:36px;padding:0 12px;border-radius:999px;background:#fff;font-weight:800;font-variant-numeric:tabular-nums}
+.rating{display:inline-flex;align-items:baseline;gap:12px;min-height:46px;padding:6px 20px 6px 8px;border-radius:999px;background:var(--water);font-weight:600;font-size:15px;transition:background-color var(--state) ease,transform var(--press) var(--ease-out)}
+.rating b{display:inline-flex;align-items:center;justify-content:center;height:36px;line-height:36px;padding:0 12px;border-radius:999px;background:#fff;font-weight:800;font-variant-numeric:tabular-nums}
 .r-t i{font-style:normal}
 .rating:active{transform:scale(.98)}
 @media (hover:hover) and (pointer:fine){.rating:hover{background:var(--water-2)}}
@@ -194,8 +206,8 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
 
 /* feature band: the paddler, sharp, with the owner's line in his sky */
 .feature{position:relative;margin-top:var(--sec);overflow:hidden;background:#b7d0ea}
-.feature img{width:100%;height:auto}
-.feature p{position:absolute;inset:clamp(20px,3.8vw,56px) var(--gut) auto;z-index:1;text-align:center;font-size:clamp(34px,4.4vw,64px);line-height:1.1}
+.feature img{width:100%;height:clamp(300px,52vh,640px);object-fit:cover;object-position:50% 40%}
+.feature p{position:absolute;inset:clamp(10px,1.3vw,22px) var(--gut) auto;z-index:1;text-align:center;font-size:clamp(32px,3.4vw,52px);line-height:1.1}
 
 /* Sanjee */
 .sanjee{display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,6vw,96px);align-items:center;max-width:var(--max);margin:var(--sec) auto 0;padding-inline:var(--gut);box-sizing:content-box}
@@ -279,7 +291,11 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
   .tiles{grid-template-columns:repeat(2,1fr);gap:8px}
   .tile:nth-of-type(5){grid-column:1/-1;aspect-ratio:16/8}
   .tile-l{font-size:14px;left:8px;bottom:8px;padding:6px 11px}
-  .fits{min-height:58px}
+  /* what the tile did stays in sight: stuck just above the message strip until its own place arrives */
+  .fits{min-height:14px;padding:0}
+  .fits.on{position:sticky;bottom:calc(116px + env(safe-area-inset-bottom));z-index:14;margin-inline:calc(-1*var(--gut));padding:8px var(--gut);background:#fff}
+  .fit-chip{min-height:44px;padding-inline:13px;font-size:14px}
+  .fit-msg:not(.only){display:none}
   /* lesson cards: each its own height, swipe with the next one peeking */
   .cards{display:flex;align-items:flex-start;gap:10px;margin:18px calc(-1*var(--gut)) 0;padding:0 var(--gut);overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gut);scrollbar-width:none}
   .cards::-webkit-scrollbar{display:none}
@@ -311,6 +327,8 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
   .dgs{display:inline-flex;align-items:flex-start;vertical-align:bottom;overflow:hidden;height:1.6em;line-height:1.6}
   .dg{display:block;flex:none;width:1ch;height:3.2em;transition:transform var(--travel) var(--ease-out)}
   .dg i{display:block;font-style:normal;height:1.6em}
+  .dg i::before{content:attr(data-d)}
+  .u::before{content:"USD\00a0"}
   .dg.nope-soft{width:0}
   .rates[data-show=hard] .dg{transform:translateY(-50%)}
   .rates[data-show=hard] .dg.nope-soft{width:1ch}
@@ -318,6 +336,7 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
   .asof{padding-inline:10px}
   /* the line above the paddler, the picture close enough to be sharp */
   .feature{background:none}
+  .feature img{height:auto}
   .feature p{position:static;padding:0 var(--gut) 16px;font-size:clamp(30px,8.4vw,44px)}
   .print-wrap{max-width:none;justify-self:stretch}
   .print-wrap img{height:100%}
@@ -342,6 +361,7 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
   .bar-msg{position:absolute;left:0;right:0;bottom:100%;display:flex;align-items:center;min-height:44px;padding:0 var(--gut);background:var(--water);font-size:14px;font-weight:600;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity var(--state) ease,transform var(--state) var(--ease-out),visibility var(--state)}
   .bar-msg span{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
   .bar-msg.on{opacity:1;visibility:visible;transform:none}
+  .js .bar:not(.on) .bar-msg{opacity:0;visibility:hidden}
   .no-js .hero-btn{display:none}
 }
 @media (max-width:420px){

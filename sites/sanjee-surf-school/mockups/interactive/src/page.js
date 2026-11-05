@@ -41,9 +41,9 @@
     return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
   }
   /* the visitor's words only: nothing here states a fact about the school */
-  function tail() {
+  function tail(noLevel) {
     var w = '';
-    if (state.level) w += ' ' + SITE.levels[state.level];
+    if (state.level && !noLevel) w += ' ' + SITE.levels[state.level];
     if (state.date === 'unsure') w += " I'm not sure of the date yet.";
     else if (state.date) w += ' The date I have in mind is ' + fmtDate(state.date) + '.';
     if (state.people === 'unsure') w += " I'm not sure how many of us there will be.";
@@ -64,9 +64,9 @@
      a tour, renting a board) keeps its subject and adds the visitor's level, date and people. */
   var links = $$('a[data-ask]');
   function syncLinks(text) {
-    var t = tail();
+    /* a tea estate or a fort does not need the visitor's surfing level, only the date and the people */
     links.forEach(function (a) {
-      a.href = a.hasAttribute('data-own') ? waHref(hello() + a.getAttribute('data-ask') + '.' + t) : waHref(text);
+      a.href = a.hasAttribute('data-own') ? waHref(hello() + a.getAttribute('data-ask') + '.' + tail(a.hasAttribute('data-outing'))) : waHref(text);
     });
   }
 
@@ -92,7 +92,8 @@
     syncLinks(text);
     /* the phone bar shows what it will send, the moment there is something to send */
     var built = state.level || state.lesson || state.date || state.people;
-    barText.textContent = text.replace(hello(), '').replace(SITE.generic + '. ', '');
+    var line = text.replace(hello(), '').replace(SITE.generic + '. ', '');
+    barText.textContent = line.charAt(0).toUpperCase() + line.slice(1);
     barMsg.classList.toggle('on', !!built);
     barMsg.tabIndex = built ? 0 : -1;
   }
@@ -126,6 +127,7 @@
     m.className = 'fit-chip fit-msg';
     m.href = '#message';
     m.textContent = 'Your message';
+    m.classList.toggle('only', !matched.length);
     fits.appendChild(m);
     fits.classList.add('on');
   }
@@ -182,6 +184,8 @@
   var today = new Date(Date.now() - new Date().getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
   dateIn.min = today;
   dateIn.addEventListener('change', function () {
+    /* a date typed before today is not sent: the picker's min does not stop typing */
+    if (dateIn.value && dateIn.value < dateIn.min) dateIn.value = '';
     state.date = dateIn.value || null;
     dateIn.classList.toggle('filled', !!dateIn.value);
     $$('.chip[data-group=date]').forEach(function (b) { b.setAttribute('aria-pressed', false); });
@@ -206,19 +210,20 @@
     var len = Math.max(s.length, h.length), a = s.padStart(len, ' '), b = h.padStart(len, ' '), out = '';
     for (var i = 0; i < len; i++) {
       var cls = a[i] === ' ' ? ' nope-soft' : b[i] === ' ' ? ' nope-hard' : '';
-      out += '<span class="dg' + cls + '" style="transition-delay:' + (i * 30) + 'ms"><i>' + (a[i] === ' ' ? '&nbsp;' : a[i]) + '</i><i>' + (b[i] === ' ' ? '&nbsp;' : b[i]) + '</i></span>';
+      /* the rolling digits are drawn by CSS from data attributes, so the unused price is never page text */
+      out += '<span class="dg' + cls + '" style="transition-delay:' + (i * 30) + 'ms"><i data-d="' + a[i].trim() + '"></i><i data-d="' + b[i].trim() + '"></i></span>';
     }
     var td = $('.roll', tr);
-    td.innerHTML = 'USD <span class="dgs">' + out + '</span>';
+    td.innerHTML = '<span class="vh price-t">USD ' + s + '</span><span aria-hidden="true"><span class="u"></span><span class="dgs">' + out + '</span></span>';
     td.removeAttribute('aria-hidden');
-    td.setAttribute('aria-label', 'USD ' + s);
   });
   var kindHead = $('thead .roll', rates);
+  kindHead.removeAttribute('aria-hidden');
   function setKind(k) {
     rates.setAttribute('data-show', k);
     kindHead.textContent = k === 'soft' ? 'Soft-top' : 'Hardboard';
     $$('.kind button', rates).forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-kind') === k); });
-    $$('tbody tr', rates).forEach(function (tr) { $('.roll', tr).setAttribute('aria-label', 'USD ' + tr.getAttribute('data-' + k)); });
+    $$('tbody tr', rates).forEach(function (tr) { $('.price-t', tr).textContent = 'USD ' + tr.getAttribute('data-' + k); });
   }
   $$('.kind button', rates).forEach(function (b) { b.addEventListener('click', function () { setKind(b.getAttribute('data-kind')); }); });
   setKind('soft');

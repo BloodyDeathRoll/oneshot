@@ -2,7 +2,7 @@
 # Every image of the Sanjee Surf School interactive mockup ("Where you start", designer 0.7.1, station 4e),
 # made from the business's own photographs in dossier/sanjee-surf-school/assets
 # (tools/setup.sh / tools/link-assets.sh first). All sources are license: business-owned; no credit line is
-# required. img-007 and img-010 carry the concept's open rights flag. No video (none on disk), no generated
+# required. img-007 carries the concept's open rights flag. No video (none on disk), no generated
 # imagery, no stock. Needs ffmpeg and cwebp. Run from anywhere. Crops only, scaled down never up.
 # media: sites/sanjee-surf-school/mockups/interactive/dist/img/**
 set -euo pipefail
@@ -28,14 +28,21 @@ img img-018.webp hero-img-018-tall-1000 1040:1920:110:0 1000 74
 ffmpeg -v error -y -i "$A/img-018.webp" -vf "crop=1440:756:0:500,scale=1200:-2" -q:v 4 "$D/og-img-018-1200.jpg"
 
 # Level tiles, 4:5, each at or under its source size.
-img img-005.jpg  tile-img-005-380 380:464:230:0 380 80
-img img-006.jpg  tile-img-006-384 384:480:280:0 384 80
-img img-009.webp tile-img-009-520 640:800:450:160 520 76 "eq=contrast=1.1:saturation=1.18:gamma=0.98"
-img img-010.webp tile-img-010-520 640:800:400:180 520 76
-img img-012.webp tile-img-012-750 - 750 76
+img img-005.jpg  tile-img-005-380 380:464:230:0 380 78
+img img-005.jpg  tile-img-005-240 380:464:230:0 240 74
+img img-006.jpg  tile-img-006-384 384:480:280:0 384 78
+img img-006.jpg  tile-img-006-240 384:480:280:0 240 74
+img img-006.jpg  tile-img-006-wave-384 384:480:16:0 384 78
+img img-006.jpg  tile-img-006-wave-240 384:480:16:0 240 74
+img img-009.webp tile-img-009-520 640:800:450:160 520 74 "eq=contrast=1.1:saturation=1.18:gamma=0.98"
+img img-009.webp tile-img-009-260 640:800:450:160 260 74 "eq=contrast=1.1:saturation=1.18:gamma=0.98"
+img img-012.webp tile-img-012-tall-300 446:558:210:0 300 72
+img img-012.webp tile-img-012-wide-700 750:375:0:170 700 70
+img img-012.webp tile-img-012-wide-400 750:375:0:170 400 70
 
 # Feature band: img-009, graded, the haze off. Wide for screens, a closer crop for phones.
-img img-009.webp feature-img-009-wide-1600 1600:860:0:0 1600 80 "eq=contrast=1.1:saturation=1.18:gamma=0.98"
+# The wide crop starts at x=80: the head cut by the frame's left edge stays out.
+img img-009.webp feature-img-009-wide-1500 1500:560:80:60 1500 80 "eq=contrast=1.1:saturation=1.18:gamma=0.98"
 img img-009.webp feature-img-009-near-1040 1040:800:250:130 1040 80 "eq=contrast=1.1:saturation=1.18:gamma=0.98"
 
 # Sanjee: img-007 (962x938), whole frame, a print never drawn wider than its source.

@@ -8,7 +8,7 @@
 <meta property="og:title" content="Sanjee Surf School | Surf lessons in Weligama">
 <meta property="og:description" content="Surf lessons in Weligama, on the south coast of Sri Lanka.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="img/og-img-018-1200.jpg">
+<meta property="og:image" content="https://sanjee-surf-school.os1.workers.dev/img/og-img-018-1200.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="theme-color" content="#c9b9a8">
@@ -19,7 +19,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-<style>:root{
+<style>/* a fallback the same width as Manrope (measured on this page's own text: Arial x 1.012), so the font arriving does not rewrap the page */
+@font-face{font-family:"Manrope-fb";src:local("Arial"),local("Helvetica Neue"),local("Helvetica");size-adjust:101.2%}
+@font-face{font-family:"Manrope-fb-r";src:local("Roboto");size-adjust:102%}
+:root{
   --ground:#fff; --water:#E6F2F4; --water-2:#D5E8EC; --sel:#91B0C8; --ink:#181D10; --ink2:#41463c; --book:#05368A; --book-h:#0a45a8; --sand:#EFE3CF;
   --ease-out:cubic-bezier(.23,1,.32,1);
   --spring:linear(0.000,0.094,0.296,0.518,0.714,0.862,0.961,1.018,1.044,1.050,1.044,1.034,1.023,1.014,1.006,1.002,1);
@@ -27,7 +30,7 @@
   --gut:clamp(20px,3.4vw,48px);
   --max:1344px;
   --sec:clamp(64px,8vw,120px);
-  --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"Manrope","Manrope-fb","Manrope-fb-r",sans-serif;
   --script:"Courgette","Manrope",cursive;
 }
 *{box-sizing:border-box}
@@ -45,6 +48,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 input{caret-color:var(--book)}
 .skip{position:absolute;left:12px;top:-60px;z-index:30;padding:10px 16px;border-radius:12px;background:#fff;font-weight:600}
 .skip:focus{top:12px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .script{font:400 clamp(36px,3.9vw,54px)/1.12 var(--script);color:var(--ink)}
 
 /* the one action, in the one colour */
@@ -69,14 +73,14 @@ input{caret-color:var(--book)}
 
 /* header */
 .hdr{position:absolute;inset:0 0 auto;z-index:20;display:flex;align-items:center;gap:24px;padding:16px var(--gut)}
-.js .hdr{position:fixed;transition:background-color var(--state) ease,box-shadow var(--state) ease,padding var(--state) var(--ease-out)}
+.js .hdr{position:fixed;transition:color var(--state) ease,background-color var(--state) ease,box-shadow var(--state) ease,padding var(--state) var(--ease-out)}
 .hdr.solid{background:#fff;padding-block:8px;box-shadow:0 8px 28px -22px rgba(24,29,16,.5)}
 .brand{font-weight:800;font-size:19px;letter-spacing:-.01em;min-height:44px;display:inline-flex;align-items:center;margin-right:auto}
 .nav{display:flex;align-items:center;gap:2px;transition:transform var(--travel) var(--ease-out)}
 .js .nav{transform:translateX(var(--cta,0px))}
 .js .hdr.on .nav{transform:none}
 .nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 13px;border-radius:999px;font-weight:600;font-size:15px;transition:background-color var(--state) ease}
-@media (hover:hover) and (pointer:fine){.nav a:hover{background:rgba(255,255,255,.5)}.hdr.solid .nav a:hover{background:var(--water)}}
+@media (hover:hover) and (pointer:fine){.nav a:hover{background:rgba(255,255,255,.18)}.hdr.solid .nav a:hover{background:var(--water)}}
 .hdr-cta{opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity var(--state) ease,transform var(--state) var(--ease-out),visibility var(--state),background-color var(--state) ease}
 .hdr.on .hdr-cta{opacity:1;visibility:visible;transform:none}
 .menu{display:none;position:relative}
@@ -91,9 +95,17 @@ input{caret-color:var(--book)}
 
 /* first screen: the title in the sky, the moving water under it */
 .hero{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#c9b9a8}
-.stage{position:absolute;inset:0;max-width:1920px;margin-inline:auto}
+.stage{position:absolute;inset:0}
 .stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
-.stage canvas{position:absolute;left:0;top:0;width:100%;opacity:0;transition:opacity .4s ease}
+.stage canvas{position:absolute;left:0;top:0;width:100%;opacity:0;transition:opacity .25s ease}
+@media (min-width:701px){
+  .stage::after{content:"";position:absolute;inset:0 0 auto;height:46%;pointer-events:none;mix-blend-mode:multiply;background:linear-gradient(to bottom,rgb(146,120,126) 0,rgb(152,126,132) 46%,rgb(208,192,196) 74%,#fff 100%)}
+  h1{color:#fff!important}
+  .hdr{color:#fff}
+  .hdr.solid{color:var(--ink)}
+  .menu{color:var(--ink)}
+  .hdr:not(.solid) a:focus-visible,.hero a:focus-visible{outline-color:#fff}
+}
 .hero-copy{position:absolute;inset:clamp(96px,14.5vh,150px) 0 auto;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 var(--gut);gap:clamp(16px,2.4vh,24px)}
 h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spacing:-.025em;color:var(--ink);max-width:16em}
 
@@ -145,11 +157,11 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
 .foryou{position:absolute;top:clamp(24px,2.3vw,32px);right:clamp(20px,2vw,28px);display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;opacity:0;transform:scale(.9);transform-origin:right center;transition:opacity 160ms ease,transform var(--travel) var(--spring)}
 .foryou i{width:10px;height:10px;border-radius:50%;background:var(--book)}
 .card.fit .foryou{opacity:1;transform:none}
-.after-cards{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-top:18px;align-items:start}
-.after-a{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 24px;padding-right:clamp(0px,2vw,24px)}
+.after-cards{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-top:18px;align-items:baseline}
+.after-a{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 24px}
 .week-more{padding-inline:clamp(4px,1vw,12px)}
-.rating{display:inline-flex;align-items:center;gap:12px;min-height:46px;padding:6px 20px 6px 8px;border-radius:999px;background:var(--water);font-weight:600;font-size:15px;transition:background-color var(--state) ease,transform var(--press) var(--ease-out)}
-.rating b{display:inline-flex;align-items:center;justify-content:center;height:36px;padding:0 12px;border-radius:999px;background:#fff;font-weight:800;font-variant-numeric:tabular-nums}
+.rating{display:inline-flex;align-items:baseline;gap:12px;min-height:46px;padding:6px 20px 6px 8px;border-radius:999px;background:var(--water);font-weight:600;font-size:15px;transition:background-color var(--state) ease,transform var(--press) var(--ease-out)}
+.rating b{display:inline-flex;align-items:center;justify-content:center;height:36px;line-height:36px;padding:0 12px;border-radius:999px;background:#fff;font-weight:800;font-variant-numeric:tabular-nums}
 .r-t i{font-style:normal}
 .rating:active{transform:scale(.98)}
 @media (hover:hover) and (pointer:fine){.rating:hover{background:var(--water-2)}}
@@ -215,8 +227,8 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
 
 /* feature band: the paddler, sharp, with the owner's line in his sky */
 .feature{position:relative;margin-top:var(--sec);overflow:hidden;background:#b7d0ea}
-.feature img{width:100%;height:auto}
-.feature p{position:absolute;inset:clamp(20px,3.8vw,56px) var(--gut) auto;z-index:1;text-align:center;font-size:clamp(34px,4.4vw,64px);line-height:1.1}
+.feature img{width:100%;height:clamp(300px,52vh,640px);object-fit:cover;object-position:50% 40%}
+.feature p{position:absolute;inset:clamp(10px,1.3vw,22px) var(--gut) auto;z-index:1;text-align:center;font-size:clamp(32px,3.4vw,52px);line-height:1.1}
 
 /* Sanjee */
 .sanjee{display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,6vw,96px);align-items:center;max-width:var(--max);margin:var(--sec) auto 0;padding-inline:var(--gut);box-sizing:content-box}
@@ -300,7 +312,11 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
   .tiles{grid-template-columns:repeat(2,1fr);gap:8px}
   .tile:nth-of-type(5){grid-column:1/-1;aspect-ratio:16/8}
   .tile-l{font-size:14px;left:8px;bottom:8px;padding:6px 11px}
-  .fits{min-height:58px}
+  /* what the tile did stays in sight: stuck just above the message strip until its own place arrives */
+  .fits{min-height:14px;padding:0}
+  .fits.on{position:sticky;bottom:calc(116px + env(safe-area-inset-bottom));z-index:14;margin-inline:calc(-1*var(--gut));padding:8px var(--gut);background:#fff}
+  .fit-chip{min-height:44px;padding-inline:13px;font-size:14px}
+  .fit-msg:not(.only){display:none}
   /* lesson cards: each its own height, swipe with the next one peeking */
   .cards{display:flex;align-items:flex-start;gap:10px;margin:18px calc(-1*var(--gut)) 0;padding:0 var(--gut);overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gut);scrollbar-width:none}
   .cards::-webkit-scrollbar{display:none}
@@ -332,6 +348,8 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
   .dgs{display:inline-flex;align-items:flex-start;vertical-align:bottom;overflow:hidden;height:1.6em;line-height:1.6}
   .dg{display:block;flex:none;width:1ch;height:3.2em;transition:transform var(--travel) var(--ease-out)}
   .dg i{display:block;font-style:normal;height:1.6em}
+  .dg i::before{content:attr(data-d)}
+  .u::before{content:"USD\00a0"}
   .dg.nope-soft{width:0}
   .rates[data-show=hard] .dg{transform:translateY(-50%)}
   .rates[data-show=hard] .dg.nope-soft{width:1ch}
@@ -339,6 +357,7 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
   .asof{padding-inline:10px}
   /* the line above the paddler, the picture close enough to be sharp */
   .feature{background:none}
+  .feature img{height:auto}
   .feature p{position:static;padding:0 var(--gut) 16px;font-size:clamp(30px,8.4vw,44px)}
   .print-wrap{max-width:none;justify-self:stretch}
   .print-wrap img{height:100%}
@@ -363,6 +382,7 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
   .bar-msg{position:absolute;left:0;right:0;bottom:100%;display:flex;align-items:center;min-height:44px;padding:0 var(--gut);background:var(--water);font-size:14px;font-weight:600;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity var(--state) ease,transform var(--state) var(--ease-out),visibility var(--state)}
   .bar-msg span{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
   .bar-msg.on{opacity:1;visibility:visible;transform:none}
+  .js .bar:not(.on) .bar-msg{opacity:0;visibility:hidden}
   .no-js .hero-btn{display:none}
 }
 @media (max-width:420px){
@@ -409,7 +429,7 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
     </div>
   </div>
   <div class="tiles needs-js" role="group" aria-label="Your level">
-    <button type="button" class="tile" data-level="first_time" aria-pressed="false"><img src="img/tile-img-005-380.webp" width="380" height="464" alt="" loading="lazy" decoding="async"><span class="tile-l">Total beginner</span></button><button type="button" class="tile" data-level="beginner" aria-pressed="false"><img src="img/tile-img-006-384.webp" width="384" height="480" alt="" loading="lazy" decoding="async"><span class="tile-l">I can stand up</span></button><button type="button" class="tile" data-level="intermediate" aria-pressed="false"><img src="img/tile-img-009-520.webp" width="520" height="650" alt="" loading="lazy" decoding="async"><span class="tile-l">Intermediate</span></button><button type="button" class="tile" data-level="advanced" aria-pressed="false"><img src="img/tile-img-010-520.webp" width="520" height="650" alt="" loading="lazy" decoding="async"><span class="tile-l">Advanced</span></button><button type="button" class="tile" data-level="unsure" aria-pressed="false"><img src="img/tile-img-012-750.webp" width="750" height="558" alt="" loading="lazy" decoding="async"><span class="tile-l">Not sure</span></button>
+    <button type="button" class="tile" data-level="first_time" aria-pressed="false"><img src="img/tile-img-005-240.webp" srcset="img/tile-img-005-240.webp 240w, img/tile-img-005-380.webp 380w" sizes="(max-width:900px) 46vw, 20vw" width="380" height="464" alt="" loading="lazy" decoding="async"><span class="tile-l">Total beginner</span></button><button type="button" class="tile" data-level="beginner" aria-pressed="false"><img src="img/tile-img-006-240.webp" srcset="img/tile-img-006-240.webp 240w, img/tile-img-006-384.webp 384w" sizes="(max-width:900px) 46vw, 20vw" width="384" height="480" alt="" loading="lazy" decoding="async"><span class="tile-l">I can stand up</span></button><button type="button" class="tile" data-level="intermediate" aria-pressed="false"><img src="img/tile-img-009-260.webp" srcset="img/tile-img-009-260.webp 260w, img/tile-img-009-520.webp 520w" sizes="(max-width:900px) 46vw, 20vw" width="520" height="650" alt="" loading="lazy" decoding="async"><span class="tile-l">Intermediate</span></button><button type="button" class="tile" data-level="advanced" aria-pressed="false"><img src="img/tile-img-006-wave-240.webp" srcset="img/tile-img-006-wave-240.webp 240w, img/tile-img-006-wave-384.webp 384w" sizes="(max-width:900px) 46vw, 20vw" width="384" height="480" alt="" loading="lazy" decoding="async"><span class="tile-l">Advanced</span></button><button type="button" class="tile" data-level="unsure" aria-pressed="false"><picture><source media="(max-width:900px)" srcset="img/tile-img-012-wide-400.webp 400w, img/tile-img-012-wide-700.webp 700w" sizes="92vw" width="700" height="350"><img src="img/tile-img-012-tall-300.webp" width="300" height="375" alt="" loading="lazy" decoding="async"></picture><span class="tile-l">Not sure</span></button>
     <span class="tile-ring" aria-hidden="true"></span>
   </div>
   <div class="fits needs-js" id="fits" aria-live="polite"></div>
@@ -508,7 +528,7 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
   <p class="script">Making waves, one lesson at a time.</p>
   <picture>
     <source media="(max-width:700px)" srcset="img/feature-img-009-near-1040.webp" width="1040" height="800">
-    <img src="img/feature-img-009-wide-1600.webp" width="1600" height="860" alt="A surfer lying on a board, back to the camera, paddling at a low green wave with one arm lifted in a small splash. Two more heads in the water beyond it, open sea and a pale sky above." loading="lazy" decoding="async">
+    <img src="img/feature-img-009-wide-1500.webp" width="1500" height="560" alt="A surfer lying on a board, back to the camera, paddling at a low green wave with one arm lifted in a small splash. Two more heads in the water beyond it, open sea and a pale sky above." loading="lazy" decoding="async">
   </picture>
 </section>
 <section class="sanjee" id="sanjee">
@@ -563,39 +583,39 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
     </li><li class="tour first-outing">
       <div><h3>Weligama Bay &amp; Taprobane Island <span>(approx. 2 hours)</span></h3><p>Bay viewpoints and photo stops, with the island seen from the shore. Island and other entry fees not included.</p></div>
       <b class="t-price">USD 15</b>
-      <a class="ico" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Weligama%20Bay%20%26%20Taprobane%20Island%20tour." data-ask="the Weligama Bay &amp; Taprobane Island tour" data-own="1" aria-label="Ask on WhatsApp about Weligama Bay &amp; Taprobane Island"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 .9.4 1.9 1 2.6 1.2 1.7 2.7 3 4.6 3.8.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.2Z"/></svg></a>
+      <a class="ico" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Weligama%20Bay%20%26%20Taprobane%20Island%20tour." data-ask="the Weligama Bay &amp; Taprobane Island tour" data-own="1" data-outing="1" aria-label="Ask on WhatsApp about Weligama Bay &amp; Taprobane Island"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 .9.4 1.9 1 2.6 1.2 1.7 2.7 3 4.6 3.8.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.2Z"/></svg></a>
     </li><li class="tour">
       <div><h3>Midigama Reef Breaks <span>(approx. 3 hours)</span></h3><p>Lazy Left and Lazy Right viewpoints, beach stops. Surfing optional, conditions permitting; not beginner lesson spots. No boards or lessons.</p></div>
       <b class="t-price">USD 25</b>
-      <a class="ico" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Midigama%20Reef%20Breaks%20tour." data-ask="the Midigama Reef Breaks tour" data-own="1" aria-label="Ask on WhatsApp about Midigama Reef Breaks"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 .9.4 1.9 1 2.6 1.2 1.7 2.7 3 4.6 3.8.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.2Z"/></svg></a>
+      <a class="ico" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Midigama%20Reef%20Breaks%20tour." data-ask="the Midigama Reef Breaks tour" data-own="1" data-outing="1" aria-label="Ask on WhatsApp about Midigama Reef Breaks"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 .9.4 1.9 1 2.6 1.2 1.7 2.7 3 4.6 3.8.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.2Z"/></svg></a>
     </li><li class="tour">
       <div><h3>Mirissa Beach &amp; Coconut Tree Hill <span>(approx. 4 hours)</span></h3><p>Beach time and the viewpoint. No whale-watching boat trip. Entry fees not included.</p></div>
       <b class="t-price">USD 30</b>
-      <a class="ico" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Mirissa%20Beach%20%26%20Coconut%20Tree%20Hill%20tour." data-ask="the Mirissa Beach &amp; Coconut Tree Hill tour" data-own="1" aria-label="Ask on WhatsApp about Mirissa Beach &amp; Coconut Tree Hill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 .9.4 1.9 1 2.6 1.2 1.7 2.7 3 4.6 3.8.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.2Z"/></svg></a>
+      <a class="ico" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Mirissa%20Beach%20%26%20Coconut%20Tree%20Hill%20tour." data-ask="the Mirissa Beach &amp; Coconut Tree Hill tour" data-own="1" data-outing="1" aria-label="Ask on WhatsApp about Mirissa Beach &amp; Coconut Tree Hill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 .9.4 1.9 1 2.6 1.2 1.7 2.7 3 4.6 3.8.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.2Z"/></svg></a>
     </li><li class="tour">
       <div><h3>Ahangama &amp; Kabalana <span>(approx. 4 hours)</span></h3><p>Coastal stops, Kabalana Beach and a view of the Rock reef break. Surfing depends on skill and sea conditions; no boards or lessons.</p></div>
       <b class="t-price">USD 30</b>
-      <a class="ico" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Ahangama%20%26%20Kabalana%20tour." data-ask="the Ahangama &amp; Kabalana tour" data-own="1" aria-label="Ask on WhatsApp about Ahangama &amp; Kabalana"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 .9.4 1.9 1 2.6 1.2 1.7 2.7 3 4.6 3.8.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.2Z"/></svg></a>
+      <a class="ico" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Ahangama%20%26%20Kabalana%20tour." data-ask="the Ahangama &amp; Kabalana tour" data-own="1" data-outing="1" aria-label="Ask on WhatsApp about Ahangama &amp; Kabalana"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 .9.4 1.9 1 2.6 1.2 1.7 2.7 3 4.6 3.8.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.2Z"/></svg></a>
     </li><li class="tour">
       <div><h3>Secret Beach Mirissa <span>(approx. 4 hours)</span></h3><p>Final access may need a walk. Swimming depends on the sea and is not guaranteed safe. Entry fees not included.</p></div>
       <b class="t-price">USD 30</b>
-      <a class="ico" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Secret%20Beach%20Mirissa%20tour." data-ask="the Secret Beach Mirissa tour" data-own="1" aria-label="Ask on WhatsApp about Secret Beach Mirissa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 .9.4 1.9 1 2.6 1.2 1.7 2.7 3 4.6 3.8.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.2Z"/></svg></a>
+      <a class="ico" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Secret%20Beach%20Mirissa%20tour." data-ask="the Secret Beach Mirissa tour" data-own="1" data-outing="1" aria-label="Ask on WhatsApp about Secret Beach Mirissa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 .9.4 1.9 1 2.6 1.2 1.7 2.7 3 4.6 3.8.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.2Z"/></svg></a>
     </li><li class="tour">
       <div><h3>Turtle Bay &amp; Snake Farm <span>(approx. 4 hours)</span></h3><p>Coastal stops; snake farm optional if open and available, admission separate. Wildlife not guaranteed. Entry fees and snorkeling excluded.</p></div>
       <b class="t-price">USD 35</b>
-      <a class="ico" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Turtle%20Bay%20%26%20Snake%20Farm%20tour." data-ask="the Turtle Bay &amp; Snake Farm tour" data-own="1" aria-label="Ask on WhatsApp about Turtle Bay &amp; Snake Farm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 .9.4 1.9 1 2.6 1.2 1.7 2.7 3 4.6 3.8.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.2Z"/></svg></a>
+      <a class="ico" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Turtle%20Bay%20%26%20Snake%20Farm%20tour." data-ask="the Turtle Bay &amp; Snake Farm tour" data-own="1" data-outing="1" aria-label="Ask on WhatsApp about Turtle Bay &amp; Snake Farm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 .9.4 1.9 1 2.6 1.2 1.7 2.7 3 4.6 3.8.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.2Z"/></svg></a>
     </li><li class="tour">
       <div><h3>Handunugoda Tea Estate <span>(approx. 4 hours)</span></h3><p>Inland through the countryside. Estate entry, tours and tastings depend on current visitor arrangements and are not included.</p></div>
       <b class="t-price">USD 40</b>
-      <a class="ico" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Handunugoda%20Tea%20Estate%20tour." data-ask="the Handunugoda Tea Estate tour" data-own="1" aria-label="Ask on WhatsApp about Handunugoda Tea Estate"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 .9.4 1.9 1 2.6 1.2 1.7 2.7 3 4.6 3.8.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.2Z"/></svg></a>
+      <a class="ico" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Handunugoda%20Tea%20Estate%20tour." data-ask="the Handunugoda Tea Estate tour" data-own="1" data-outing="1" aria-label="Ask on WhatsApp about Handunugoda Tea Estate"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 .9.4 1.9 1 2.6 1.2 1.7 2.7 3 4.6 3.8.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.2Z"/></svg></a>
     </li><li class="tour">
       <div><h3>Galle Fort <span>(approx. 6 hours)</span></h3><p>Time on foot on the ramparts and historic streets. Museum entry not included.</p></div>
       <b class="t-price">USD 55</b>
-      <a class="ico" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Galle%20Fort%20tour." data-ask="the Galle Fort tour" data-own="1" aria-label="Ask on WhatsApp about Galle Fort"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 .9.4 1.9 1 2.6 1.2 1.7 2.7 3 4.6 3.8.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.2Z"/></svg></a>
+      <a class="ico" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Galle%20Fort%20tour." data-ask="the Galle Fort tour" data-own="1" data-outing="1" aria-label="Ask on WhatsApp about Galle Fort"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 .9.4 1.9 1 2.6 1.2 1.7 2.7 3 4.6 3.8.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.2Z"/></svg></a>
     </li><li class="tour">
       <div><h3>Hiriketiya Bay <span>(approx. 8 hours)</span></h3><p>Beach time and coastal stops. Surfing and swimming depend on conditions and ability; boards and lessons not included.</p></div>
       <b class="t-price">USD 70</b>
-      <a class="ico" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Hiriketiya%20Bay%20tour." data-ask="the Hiriketiya Bay tour" data-own="1" aria-label="Ask on WhatsApp about Hiriketiya Bay"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 .9.4 1.9 1 2.6 1.2 1.7 2.7 3 4.6 3.8.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.2Z"/></svg></a>
+      <a class="ico" href="https://wa.me/94774004422?text=Hello%20Sanjee%20Surf%20School%2C%20I%27d%20like%20to%20ask%20about%20the%20Hiriketiya%20Bay%20tour." data-ask="the Hiriketiya Bay tour" data-own="1" data-outing="1" aria-label="Ask on WhatsApp about Hiriketiya Bay"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.3 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 .9.4 1.9 1 2.6 1.2 1.7 2.7 3 4.6 3.8.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.2Z"/></svg></a>
     </li></ol>
     <p class="asof asof-t">All prices are as of 5 November 2026.</p>
   </div>
@@ -678,12 +698,18 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
     ' float sl=crd(ph);',
     /* lift: up to 8 css px where the water is close, nothing near the horizon */
     ' float near=smoothstep(.06,.55,d);',
-    ' float lift=h*8.*near;',
+    /* the shore band lifts less, so the foam does not rise and fall as one mass */
+    ' float sb=smoothstep(.40,.62,d);',
+    ' float lift=h*8.*near*(1.-.45*sb);',
     /* ripples, for refraction and glitter */
     ' vec2 q=vec2(x*9.,z*16.+t*.5);',
     ' float e=.06, n0=rp(q);',
     ' vec2 dn=vec2(rp(q+vec2(e,0.))-n0,rp(q+vec2(0.,e))-n0)/e;',
-    ' vec2 o=(vec2(0.,lift)+dn*vec2(1.,1.3)*(.3+.9*d))*P*m;',
+    /* and it churns: a slow sideways travel with the front, plus a drift that differs from clump to clump */
+    ' vec2 cn=v*vec2(46.,90.);',
+    ' vec2 ch=vec2(vn(cn+vec2(t*.35,0.)),vn(cn.yx+vec2(3.7,t*.3)))-.5;',
+    ' vec2 fo=(vec2(sin(ph*.5+t*.2)*2.6,0.)+ch*vec2(6.,5.))*sb;',
+    ' vec2 o=(vec2(0.,lift)+fo+dn*vec2(1.,1.3)*(.3+.9*d))*P*m;',
     ' vec3 c=texture2D(T,u+o).rgb;',
     /* the back of the front falls into shade and its face takes the light */
     ' c*=1.+m*near*(.10*sl+.05*h);',
@@ -706,7 +732,8 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
   ].join('\n');
   var VS = 'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
 
-  function boot() {
+  var start = null;
+  function prep() {
     var gl = cv.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false, depth: false, stencil: false, powerPreference: 'low-power' });
     if (!gl) return;
     function sh(type, src) { var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; }
@@ -726,6 +753,7 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    start = function () {
     try { gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img); }
     catch (e) { return; } /* a refused texture keeps the still */
 
@@ -741,7 +769,8 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
     var soft = dbg && /swiftshader|llvmpipe|software/i.test(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL));
     var coarse = matchMedia('(pointer: coarse)').matches;
     /* only the water is drawn, so a phone can afford the screen's own sharpness, up to 2x */
-    var res = Math.min(devicePixelRatio || 1, 2);
+    var maxRes = Math.min(devicePixelRatio || 1, 2);
+    var res = maxRes;
     var minDt = soft ? 100 : coarse ? 33 : 0;       /* 10 / 30 / display rate */
 
     function size() {
@@ -754,6 +783,8 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
       /* the canvas starts just above the horizon at its highest (.450 of the photograph) */
       var top = Math.max(0, Math.floor(((.446 - k[1]) / k[3]) * dh + oy));
       var cssH = H - top;
+      /* never more than about 3.2 million pixels of water, on any screen */
+      res = Math.min(res, Math.sqrt(3.2e6 / (W * cssH)));
       cv.style.top = top + 'px';
       cv.style.height = cssH + 'px';
       cv.width = Math.round(W * res);
@@ -785,7 +816,7 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
         }
       }
       var e = (now - t0) / 1000;
-      var ramp = Math.min(1, e / 1.1);              /* the water wakes in a second, so the still never pops */
+      var ramp = Math.min(1, e / .7);               /* the water wakes fast, without the still popping */
       gl.uniform1f(U.t, (e + 3) % 3600);            /* starts with a front already in the near water */
       gl.uniform1f(U.g, ramp * ramp * (3 - 2 * ramp));
       gl.drawArrays(gl.TRIANGLES, 0, 3);
@@ -797,14 +828,19 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
     calm.addEventListener('change', function () { if (calm.matches) stop(); });
     cv.addEventListener('webglcontextlost', stop);
     go();
+    };
   }
 
-  /* after first paint, once the photograph is decoded */
-  function later() {
-    var run = function () { requestAnimationFrame(function () { setTimeout(boot, 60); }); };
-    if (img.decode) img.decode().then(run, function () {}); else if (img.complete) run(); else img.onload = run;
-  }
-  if (document.readyState === 'complete') later(); else addEventListener('load', later);
+  /* the shader compiles just after first paint, and runs as soon as the photograph is decoded */
+  requestAnimationFrame(function () {
+    setTimeout(function () {
+      prep();
+      if (!start) return;
+      var run = function () { if (start) { var s = start; start = null; s(); } };
+      if (img.decode) img.decode().then(run, function () { img.addEventListener('load', run); });
+      else if (img.complete) run(); else img.addEventListener('load', run);
+    }, 0);
+  });
 })();
 /* Everything below is an enhancement. Every booking control is a real wa.me link without it. */
 (function () {
@@ -849,9 +885,9 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
     return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
   }
   /* the visitor's words only: nothing here states a fact about the school */
-  function tail() {
+  function tail(noLevel) {
     var w = '';
-    if (state.level) w += ' ' + SITE.levels[state.level];
+    if (state.level && !noLevel) w += ' ' + SITE.levels[state.level];
     if (state.date === 'unsure') w += " I'm not sure of the date yet.";
     else if (state.date) w += ' The date I have in mind is ' + fmtDate(state.date) + '.';
     if (state.people === 'unsure') w += " I'm not sure how many of us there will be.";
@@ -872,9 +908,9 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
      a tour, renting a board) keeps its subject and adds the visitor's level, date and people. */
   var links = $$('a[data-ask]');
   function syncLinks(text) {
-    var t = tail();
+    /* a tea estate or a fort does not need the visitor's surfing level, only the date and the people */
     links.forEach(function (a) {
-      a.href = a.hasAttribute('data-own') ? waHref(hello() + a.getAttribute('data-ask') + '.' + t) : waHref(text);
+      a.href = a.hasAttribute('data-own') ? waHref(hello() + a.getAttribute('data-ask') + '.' + tail(a.hasAttribute('data-outing'))) : waHref(text);
     });
   }
 
@@ -900,7 +936,8 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
     syncLinks(text);
     /* the phone bar shows what it will send, the moment there is something to send */
     var built = state.level || state.lesson || state.date || state.people;
-    barText.textContent = text.replace(hello(), '').replace(SITE.generic + '. ', '');
+    var line = text.replace(hello(), '').replace(SITE.generic + '. ', '');
+    barText.textContent = line.charAt(0).toUpperCase() + line.slice(1);
     barMsg.classList.toggle('on', !!built);
     barMsg.tabIndex = built ? 0 : -1;
   }
@@ -934,6 +971,7 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
     m.className = 'fit-chip fit-msg';
     m.href = '#message';
     m.textContent = 'Your message';
+    m.classList.toggle('only', !matched.length);
     fits.appendChild(m);
     fits.classList.add('on');
   }
@@ -990,6 +1028,8 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
   var today = new Date(Date.now() - new Date().getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
   dateIn.min = today;
   dateIn.addEventListener('change', function () {
+    /* a date typed before today is not sent: the picker's min does not stop typing */
+    if (dateIn.value && dateIn.value < dateIn.min) dateIn.value = '';
     state.date = dateIn.value || null;
     dateIn.classList.toggle('filled', !!dateIn.value);
     $$('.chip[data-group=date]').forEach(function (b) { b.setAttribute('aria-pressed', false); });
@@ -1014,19 +1054,20 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
     var len = Math.max(s.length, h.length), a = s.padStart(len, ' '), b = h.padStart(len, ' '), out = '';
     for (var i = 0; i < len; i++) {
       var cls = a[i] === ' ' ? ' nope-soft' : b[i] === ' ' ? ' nope-hard' : '';
-      out += '<span class="dg' + cls + '" style="transition-delay:' + (i * 30) + 'ms"><i>' + (a[i] === ' ' ? '&nbsp;' : a[i]) + '</i><i>' + (b[i] === ' ' ? '&nbsp;' : b[i]) + '</i></span>';
+      /* the rolling digits are drawn by CSS from data attributes, so the unused price is never page text */
+      out += '<span class="dg' + cls + '" style="transition-delay:' + (i * 30) + 'ms"><i data-d="' + a[i].trim() + '"></i><i data-d="' + b[i].trim() + '"></i></span>';
     }
     var td = $('.roll', tr);
-    td.innerHTML = 'USD <span class="dgs">' + out + '</span>';
+    td.innerHTML = '<span class="vh price-t">USD ' + s + '</span><span aria-hidden="true"><span class="u"></span><span class="dgs">' + out + '</span></span>';
     td.removeAttribute('aria-hidden');
-    td.setAttribute('aria-label', 'USD ' + s);
   });
   var kindHead = $('thead .roll', rates);
+  kindHead.removeAttribute('aria-hidden');
   function setKind(k) {
     rates.setAttribute('data-show', k);
     kindHead.textContent = k === 'soft' ? 'Soft-top' : 'Hardboard';
     $$('.kind button', rates).forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-kind') === k); });
-    $$('tbody tr', rates).forEach(function (tr) { $('.roll', tr).setAttribute('aria-label', 'USD ' + tr.getAttribute('data-' + k)); });
+    $$('tbody tr', rates).forEach(function (tr) { $('.price-t', tr).textContent = 'USD ' + tr.getAttribute('data-' + k); });
   }
   $$('.kind button', rates).forEach(function (b) { b.addEventListener('click', function () { setKind(b.getAttribute('data-kind')); }); });
   setKind('soft');
