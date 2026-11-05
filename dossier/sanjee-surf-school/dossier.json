@@ -1,0 +1,2514 @@
+{
+ "slug": "sanjee-surf-school",
+ "run_id": "2026-10-midigama-01",
+ "harvester_version": "0.5.0",
+ "harvested_at": "2026-11-05T08:58:29Z",
+ "businessType": "surf_school",
+ "business": {
+  "name": {
+   "value": "Sanjee Surf School",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "fetched_at": "2026-11-05T08:34:45Z",
+   "note": "the Google listing and the logo on its own tee (img-003). Its own site brands itself \"Sanjee Surf\" throughout, and the domain is sanjee-surf.com. See contradictions."
+  },
+  "site_brand": {
+   "value": "Sanjee Surf",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  "type": {
+   "value": "surf_school",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "fetched_at": "2026-11-05T08:34:45Z",
+   "note": "Google category \"Surf school\". Earns by lessons, with board rental and tuk-tuk tours as add-ons on the same site."
+  },
+  "businessType_note": "surf_school per verticals/surf/business-types.md: lessons on one beach. Rentals fit rentals[]; tuk-tuk tours have no module of their own and fit priceList[] rows (label, price, flat unit, note), so no new type or module is proposed.",
+  "tagline": {
+   "value": "Making waves, one lesson at a time.",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "note": "footer line on every page; the home hero says \"Ride the Wave of Your Life\""
+  },
+  "description": {
+   "value": "Professional surf lessons and tuk-tuk surf safaris in Sri Lanka. Personalized instruction for all skill levels by experienced local instructors.",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "language": "en",
+   "note": "the site's own structured-data description"
+  },
+  "owner_voice": {
+   "value": "I was born in Weligama, learned to surf on a broken board my uncle fixed with resin and hope, and have spent more than two decades in this bay. Today I teach surfers from all over the world — and I still paddle out every single morning.",
+   "source_url": "https://sanjee-surf.com/about",
+   "fetched_at": "2026-11-05T08:30:18Z",
+   "note": "first-person copy on /about. Its biography disagrees with the home page: see contradictions. Authorship unknown: the site's legal operator is someone else (see legal_operator)."
+  },
+  "owner": {
+   "value": "Sanjee",
+   "source_url": "https://sanjee-surf.com/about",
+   "fetched_at": "2026-11-05T08:30:18Z",
+   "note": "first name only, \"Head Instructor & Founder\" on the home page; no surname published anywhere found"
+  },
+  "legal_operator": {
+   "value": "Marcel Panzer, operating as \"Sanjee Surf\"",
+   "source_url": "https://sanjee-surf.com/terms",
+   "fetched_at": "2026-11-05T08:30:31Z",
+   "address_city": "Berlin, Germany",
+   "also_on": [
+    "https://sanjee-surf.com/imprint",
+    "https://sanjee-surf.com/privacy"
+   ],
+   "note": "Terms, Privacy and Imprint all name him as provider, data controller and legally responsible party. His street address and personal email are published there and deliberately not copied into this dossier. Never for the site; matters for who the pitch is really addressed to. See flags_for_operator."
+  },
+  "since": {
+   "value": null,
+   "gap": "no founding year published. Earliest dated traces: Terms \"Last updated: January 2025\", Google photos labelled Jan 2025. A reviewer writes \"He's building his own school\", so the school looks recent, but no source states a year."
+  },
+  "logo": {
+   "value": null,
+   "gap": "no logo file published; it appears only printed on a tee (img-003). The favicon is a crop of Sanjee's face."
+  }
+ },
+ "location": {
+  "address": {
+   "value": "Kadabaddagama, Weligama 81700, Sri Lanka",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "fetched_at": "2026-11-05T08:34:45Z",
+   "note": "Google listing wording, with postcode 81700, per playbook §6. Other wordings on the site are in contradictions."
+  },
+  "lat_lng": {
+   "value": [
+    5.9603113,
+    80.4039507
+   ],
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "fetched_at": "2026-11-05T08:34:45Z",
+   "note": "the Google pin. The site's schema has a different point: see contradictions."
+  },
+  "plus_code": {
+   "value": "XC63+4H Weligama, Sri Lanka",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "fetched_at": "2026-11-05T08:34:45Z"
+  },
+  "map_url": {
+   "value": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "fetched_at": "2026-11-05T08:34:45Z"
+  },
+  "spot": {
+   "value": "Our home spot at the eastern end of the bay. Smaller crowds than the main peak and a friendly, mellow vibe — ideal for first pop-ups.",
+   "source_url": "https://sanjee-surf.com/surfing-weligama",
+   "fetched_at": "2026-11-05T08:30:05Z",
+   "name": "Coco Beach",
+   "note": "the site calls it Coco Beach; its surf report and Google's map label say Coconut Beach; the tee says Coconut Surf Point. Same place is likely, not proven. A soft beach break for beginners per the site."
+  },
+  "shop": {
+   "value": "Our shop sits 30 seconds from the sand at Coco Beach, Weligama.",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z",
+   "note": "site claim only; no photograph of a shop found"
+  }
+ },
+ "surf_spots": [
+  {
+   "name": "Coco Beach",
+   "level": "Beginner",
+   "break": "Beach Break",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "name": "Jungle Beach",
+   "level": "Beginner",
+   "break": "Beach Break",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "name": "Fishermans",
+   "level": "Intermediate",
+   "break": "Reef Break",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "name": "Island Point",
+   "level": "Intermediate",
+   "break": "Point Break",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "name": "Weligama Main Point",
+   "level": "Beginner",
+   "break": "Beach Break",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "name": "Plantation Point",
+   "level": "Intermediate",
+   "break": "RIGHT-HAND REEF",
+   "source_url": "https://sanjee-surf.com/surfing-weligama",
+   "fetched_at": "2026-11-05T08:30:05Z"
+  },
+  {
+   "name": "Lazy Left (Midigama)",
+   "level": "Intermediate",
+   "break": "LONG LEFT-HAND REEF",
+   "source_url": "https://sanjee-surf.com/surfing-weligama",
+   "fetched_at": "2026-11-05T08:30:05Z"
+  },
+  {
+   "name": "Lazy Right (Midigama)",
+   "level": "Intermediate – Advanced",
+   "break": "RIGHT-HAND REEF",
+   "source_url": "https://sanjee-surf.com/surfing-weligama",
+   "fetched_at": "2026-11-05T08:30:05Z"
+  },
+  {
+   "name": "Ram's Right",
+   "level": "Advanced",
+   "break": "REEF BREAK",
+   "source_url": "https://sanjee-surf.com/surfing-weligama",
+   "fetched_at": "2026-11-05T08:30:05Z"
+  },
+  {
+   "name": "Kabalana (The Rock)",
+   "level": "Advanced",
+   "break": "A-FRAME REEF",
+   "source_url": "https://sanjee-surf.com/surfing-weligama",
+   "fetched_at": "2026-11-05T08:30:05Z"
+  },
+  {
+   "name": "Mirissa",
+   "level": "Beginner – Intermediate",
+   "break": "BEACH BREAK",
+   "source_url": "https://sanjee-surf.com/surfing-weligama",
+   "fetched_at": "2026-11-05T08:30:05Z"
+  }
+ ],
+ "contact": {
+  "phone": {
+   "value": "+94774004422",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "fetched_at": "2026-11-05T08:34:45Z",
+   "verified": "same number on the Google listing (tel: link), the site's schema and /faq, and in the site's wa.me link"
+  },
+  "whatsapp": {
+   "value": "+94774004422",
+   "source_url": "https://sanjee-surf.com/faq",
+   "fetched_at": "2026-11-05T08:30:24Z",
+   "verified": "wa.me link on 32 of the 67 pages crawled, not on the home page; \"WhatsApp +94 77 400 4422\" printed on /surfboard-rental-weligama and /faq. The public wa.me page reads \"Chat on WhatsApp with +94 77 400 4422\". No message was sent (test mode), so whether it is answered is unverified."
+  },
+  "email": {
+   "value": "sanjee@sanjee-surf.com",
+   "source_url": "https://sanjee-surf.com/faq",
+   "fetched_at": "2026-11-05T08:30:24Z",
+   "verified": "on /faq, the mailto link, the schema and the booking dialog. sanjee-surf.com has an MX record (checked 2026-11-05). The home page contact block prints a different address: see contradictions."
+  },
+  "socials": {
+   "instagram": {
+    "value": null,
+    "url_on_site": "https://instagram.com/sanjeesurf",
+    "status": "Instagram answers \"Profile isn't available\"",
+    "gap": "linked from the site's footer and schema, but Instagram answers \"Profile isn't available\"",
+    "source_url": "https://sanjee-surf.com/",
+    "fetched_at": "2026-11-05T08:29:39Z"
+   },
+   "facebook": {
+    "value": null,
+    "url_on_site": "https://facebook.com/sanjeesurf",
+    "status": "Facebook answers \"This content isn't available\" to a logged-out visitor",
+    "gap": "linked from the site's footer and schema, but Facebook answers \"This content isn't available\" to a logged-out visitor",
+    "source_url": "https://sanjee-surf.com/",
+    "fetched_at": "2026-11-05T08:29:39Z"
+   },
+   "youtube": {
+    "value": null,
+    "url_on_site": "https://youtube.com/@sanjeesurf",
+    "status": "YouTube answers 404",
+    "gap": "linked from the site's footer and schema, but YouTube answers 404",
+    "source_url": "https://sanjee-surf.com/",
+    "fetched_at": "2026-11-05T08:29:39Z"
+   },
+   "twitter": {
+    "value": null,
+    "gap": "the page head names @SanjeeSurf; not checked (X requires login) and not linked anywhere visible"
+   },
+   "tiktok": {
+    "value": null,
+    "gap": "tiktok.com/@sanjeesurf: \"Couldn't find this account\""
+   },
+   "tripadvisor": {
+    "value": null,
+    "gap": "no listing found: web searches found none and tripadvisor.com answered 403 to its own search, so absence is not proven"
+   },
+   "google_maps": {
+    "value": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+    "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+    "fetched_at": "2026-11-05T08:34:45Z"
+   }
+  }
+ },
+ "booking": {
+  "path": {
+   "value": "whatsapp",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z",
+   "note": "playbook §5: WhatsApp first where it exists. The site publishes \"Reserve on WhatsApp\", \"Ask on WhatsApp\" and says it confirms bookings by WhatsApp. But the site's primary path today is its own dated booking wizard (engine_url), and the only reviewer who says how he booked says \"Booked through the website\". Which channel is actually answered is unverified: no message sent (test mode)."
+  },
+  "engine_url": {
+   "value": "https://sanjee-surf.com/",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "kind": "own booking wizard in a dialog, no deep link",
+   "flow": "Book Now → lessons or tuk tuk → pick one → date → one of five slots (6:00, 8:00, 10:00 AM, 2:00, 4:00 PM) → name, email, phone, level, notes, terms → \"Pay $8 Now\" for the $40 lesson, $32 cash on site. Walked up to that step with nothing typed and nothing submitted.",
+   "note": "runs on the old site's own Supabase and Stripe. It would not survive a new site by itself: how a new site books is a decision for the concept and the owner."
+  },
+  "deposit": {
+   "value": "pay a 20% deposit by card via Stripe, and pay the 80% balance in cash on the day",
+   "source_url": "https://sanjee-surf.com/faq/how-to-book-a-surf-lesson-with-sanjee-surf",
+   "fetched_at": "2026-11-05T08:34:29Z"
+  },
+  "payment_on_the_day": {
+   "value": "Online deposits are processed securely via Stripe (cards accepted). The remaining balance on the day can be paid in cash (LKR, USD, or EUR).",
+   "source_url": "https://sanjee-surf.com/faq",
+   "fetched_at": "2026-11-05T08:30:24Z"
+  },
+  "cancellation": {
+   "value": null,
+   "gap": "two different policies are published: see contradictions. Not resolved here."
+  },
+  "reply_time_hint": {
+   "value": "Reach out via WhatsApp, email, or phone and we will get back to you within a few hours.",
+   "source_url": "https://sanjee-surf.com/faq",
+   "fetched_at": "2026-11-05T08:30:24Z"
+  }
+ },
+ "hours": [],
+ "hours_note": {
+  "value": null,
+  "gap": "three different sets of hours are published, so none is recorded as fact (constraint 2): see hours_candidates"
+ },
+ "hours_candidates": [
+  {
+   "raw": "Thursday 9 am–5 pm ; Friday 9 am–5 pm ; Saturday 9 am–5 pm ; Sunday (Diwali) 9 am–5 pm Hours might differ ; Monday 9 am–5 pm ; Tuesday 9 am–5 pm ; Wednesday 9 am–5 pm ",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "fetched_at": "2026-11-05T08:34:45Z",
+   "note": "Google listing, 9 am–5 pm every day; Sunday flagged \"Diwali, hours might differ\""
+  },
+  {
+   "raw": "Daily 6AM - 6PM",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "note": "home page contact block; the schema also says 06:00–18:00 daily"
+  },
+  {
+   "raw": "Daily 06:00 – 18:30 (Dawn patrol & sunset session)",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z",
+   "note": "rental page, \"Opening hours\""
+  }
+ ],
+ "lessons": [
+  {
+   "id": "beginner",
+   "label": "Beginner Lesson",
+   "duration_as_written": "2 hours",
+   "durationMin": 120,
+   "level": [
+    "first_time",
+    "beginner"
+   ],
+   "includes_note": "home page FAQ: \"All lessons include board and rash guard rental, professional instruction, and beach safety briefing.\"",
+   "price": 40,
+   "currency": "USD",
+   "unit": "per_lesson",
+   "description": "Perfect introduction to surfing",
+   "features": [
+    "Safety basics & ocean awareness",
+    "Board handling techniques",
+    "Paddle & pop-up practice",
+    "Catching your first waves"
+   ],
+   "note": "the section says \"All sessions are private for maximum progress. For group bookings, please leave us a message.\"",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "data_url": "https://tohwhtgnbymskvlxvwqp.supabase.co/rest/v1/lessons?select=id%2Cname%2Cduration%2Cprice%2Cdescription%2Cfeatures%2Cis_popular&order=display_order.asc"
+  },
+  {
+   "id": "private",
+   "label": "Private Coaching",
+   "duration_as_written": "2 hours",
+   "durationMin": 120,
+   "level": [
+    "beginner",
+    "intermediate",
+    "advanced"
+   ],
+   "level_note": "levels not stated on the card; the site says \"From beginners to advanced\" for lessons overall",
+   "price": 50,
+   "currency": "USD",
+   "unit": "per_lesson",
+   "description": "One-on-one intensive training",
+   "features": [
+    "One-on-one instruction",
+    "Customized learning pace",
+    "Flexible scheduling"
+   ],
+   "note": "the section says \"All sessions are private for maximum progress. For group bookings, please leave us a message.\"",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "data_url": "https://tohwhtgnbymskvlxvwqp.supabase.co/rest/v1/lessons?select=id%2Cname%2Cduration%2Cprice%2Cdescription%2Cfeatures%2Cis_popular&order=display_order.asc"
+  },
+  {
+   "id": "week",
+   "label": "Week Intensive",
+   "duration_as_written": "5 days × 2 hours",
+   "durationMin": 120,
+   "sessions": 5,
+   "level": null,
+   "price": 160,
+   "currency": "USD",
+   "unit": "flat",
+   "description": "Spread across 10 days – pick your best days! After 2 hours of surfing, your muscles will be happily exhausted. Contact us beforehand to coordinate which days and times work best for you ❤️",
+   "features": [
+    "5 private sessions",
+    "Flexible scheduling within 10 days",
+    "Choose your preferred days & times",
+    "Board & rash guard included",
+    "Progress tracking",
+    "Photo/video memories"
+   ],
+   "note": "price is for the whole package of 5 private 2-hour sessions, spread across 10 days",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "data_url": "https://tohwhtgnbymskvlxvwqp.supabase.co/rest/v1/lessons?select=id%2Cname%2Cduration%2Cprice%2Cdescription%2Cfeatures%2Cis_popular&order=display_order.asc"
+  }
+ ],
+ "rentals": [
+  {
+   "label": "Soft-top, 1 hour",
+   "price": 5,
+   "currency": "USD",
+   "unit": "per hour",
+   "note": "Walk-in, ideal for a quick session",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Hardboard, 1 hour",
+   "price": 7,
+   "currency": "USD",
+   "unit": "per hour",
+   "note": "Walk-in, ideal for a quick session",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Soft-top, 2 hours",
+   "price": 8,
+   "currency": "USD",
+   "unit": "per 2 hours",
+   "note": "Most popular — one full session",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Hardboard, 2 hours",
+   "price": 12,
+   "currency": "USD",
+   "unit": "per 2 hours",
+   "note": "Most popular — one full session",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Soft-top, Half day (4 h)",
+   "price": 12,
+   "currency": "USD",
+   "unit": "per half day",
+   "note": "Dawn or afternoon session",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Hardboard, Half day (4 h)",
+   "price": 18,
+   "currency": "USD",
+   "unit": "per half day",
+   "note": "Dawn or afternoon session",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Soft-top, Full day (24 h)",
+   "price": 15,
+   "currency": "USD",
+   "unit": "per 24 hours",
+   "note": "Two sessions + sunset",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Hardboard, Full day (24 h)",
+   "price": 20,
+   "currency": "USD",
+   "unit": "per 24 hours",
+   "note": "Two sessions + sunset",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Soft-top, 3 days",
+   "price": 36,
+   "currency": "USD",
+   "unit": "per 3 days",
+   "note": "Save 20% vs daily",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Hardboard, 3 days",
+   "price": 50,
+   "currency": "USD",
+   "unit": "per 3 days",
+   "note": "Save 20% vs daily",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Soft-top, 7 days",
+   "price": 70,
+   "currency": "USD",
+   "unit": "per 7 days",
+   "note": "Save ~33% — best value for a week trip",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Hardboard, 7 days",
+   "price": 95,
+   "currency": "USD",
+   "unit": "per 7 days",
+   "note": "Save ~33% — best value for a week trip",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Soft-top, 14 days",
+   "price": 120,
+   "currency": "USD",
+   "unit": "per 14 days",
+   "note": "Long-stay travellers",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Hardboard, 14 days",
+   "price": 170,
+   "currency": "USD",
+   "unit": "per 14 days",
+   "note": "Long-stay travellers",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Soft-top, Monthly",
+   "price": 220,
+   "currency": "USD",
+   "unit": "per month",
+   "note": "Surf-and-stay rate",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Hardboard, Monthly",
+   "price": 310,
+   "currency": "USD",
+   "unit": "per month",
+   "note": "Surf-and-stay rate",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  }
+ ],
+ "offers": [
+  {
+   "label": "Beginner Lesson (2 hours)",
+   "price": 40,
+   "currency": "USD",
+   "unit": "per lesson",
+   "note": "Perfect introduction to surfing",
+   "group": "lessons",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "label": "Private Coaching (2 hours)",
+   "price": 50,
+   "currency": "USD",
+   "unit": "per lesson",
+   "note": "One-on-one intensive training",
+   "group": "lessons",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "label": "Week Intensive (5 days × 2 hours)",
+   "price": 160,
+   "currency": "USD",
+   "unit": "per package",
+   "note": "Spread across 10 days – pick your best days! After 2 hours of surfing, your muscles will be happily exhausted. Contact us beforehand to coordinate which days and times work best for you ❤️",
+   "group": "lessons",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "label": "Surf Spot Safari (Half Day (4 hours))",
+   "price": 80,
+   "currency": "USD",
+   "unit": "per tour, up to 2 people",
+   "note": "Explore the best surf spots around Weligama Bay. We'll find the perfect waves for your skill level. Price is for both persons if 2 attend.",
+   "includes": [
+    "5+ potential surf spots covered",
+    "Flexible timing",
+    "Up to 2 surfers",
+    "Photo stops included"
+   ],
+   "group": "tuk_tuk",
+   "tour_id": "surf-safari",
+   "updated_at": "2026-01-25T12:09:42.600628+00:00",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "label": "Full Coast Adventure (Full Day (8 hours))",
+   "price": 120,
+   "currency": "USD",
+   "unit": "per tour, up to 2 people",
+   "note": "The ultimate surf guiding experience. Visit hidden gems, local breaks, and enjoy authentic Sri Lankan lunch. Price is for both persons if 2 attend.",
+   "includes": [
+    "10+ potential surf spots",
+    "Lunch included",
+    "Up to 2 surfers"
+   ],
+   "group": "tuk_tuk",
+   "tour_id": "full-coast",
+   "updated_at": "2026-01-25T12:09:43.718183+00:00",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "label": "Sunrise Session (3 hours)",
+   "price": 60,
+   "currency": "USD",
+   "unit": "per tour, up to 2 people",
+   "note": "Catch the dawn patrol at the best spots. Perfect for avoiding crowds and scoring glassy waves. Price is for both persons if 2 attend.",
+   "includes": [
+    "3 prime spots",
+    "5:30 AM pickup",
+    "Up to 2 surfers",
+    "Breakfast stop"
+   ],
+   "group": "tuk_tuk",
+   "tour_id": "sunrise-session",
+   "updated_at": "2026-01-25T12:11:07.537859+00:00",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "label": "Weligama Bay & Taprobane Island (Approx. 2 hours)",
+   "price": 15,
+   "currency": "USD",
+   "unit": "per tour, up to 2 people",
+   "note": "A local coastal outing with bay viewpoints and a shore-side view of Taprobane Island; island entry is not included. Estimated introductory package price for up to 2 people.",
+   "includes": [
+    "Private tuk-tuk for up to 2 people; price per tour",
+    "Pickup and return within Weligama",
+    "Bay viewpoints and photo stops",
+    "Entry fees, meals and activities excluded"
+   ],
+   "group": "tuk_tuk",
+   "tour_id": "weligama-bay-tour",
+   "updated_at": "2026-10-22T11:09:46.59917+00:00",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "label": "Midigama Reef Breaks (Approx. 3 hours)",
+   "price": 25,
+   "currency": "USD",
+   "unit": "per tour, up to 2 people",
+   "note": "Explore Midigama and view the Lazy Left and Lazy Right reef breaks. Surfing is optional and conditions dependent; reef waves are not beginner lesson spots. Estimated introductory package price for up to 2 people.",
+   "includes": [
+    "Private tuk-tuk for up to 2 people; price per tour",
+    "Pickup and return within Weligama",
+    "Reef viewpoints and beach stops",
+    "Surfboards, lessons, meals and activities excluded"
+   ],
+   "group": "tuk_tuk",
+   "tour_id": "midigama-tour",
+   "updated_at": "2026-10-22T11:09:46.59917+00:00",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "label": "Mirissa Beach & Coconut Tree Hill (Approx. 4 hours)",
+   "price": 30,
+   "currency": "USD",
+   "unit": "per tour, up to 2 people",
+   "note": "Visit Mirissa Beach and Coconut Tree Hill for coastal views and photo stops. No whale-watching boat trip included. Estimated introductory package price for up to 2 people.",
+   "includes": [
+    "Private tuk-tuk for up to 2 people; price per tour",
+    "Pickup and return within Weligama",
+    "Beach time and Coconut Tree Hill viewpoint",
+    "Entry fees, meals and activities excluded"
+   ],
+   "group": "tuk_tuk",
+   "tour_id": "mirissa-tour",
+   "updated_at": "2026-10-22T11:09:46.59917+00:00",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "label": "Ahangama & Kabalana (Approx. 4 hours)",
+   "price": 30,
+   "currency": "USD",
+   "unit": "per tour, up to 2 people",
+   "note": "Discover Ahangama and Kabalana Beach, with views of the Rock reef break. Surfing depends on skill and sea conditions; lessons and equipment are not included. Estimated introductory package price for up to 2 people.",
+   "includes": [
+    "Private tuk-tuk for up to 2 people; price per tour",
+    "Pickup and return within Weligama",
+    "Ahangama coastal stops and Kabalana Beach",
+    "Surfboards, lessons, meals and activities excluded"
+   ],
+   "group": "tuk_tuk",
+   "tour_id": "kabalana-tour",
+   "updated_at": "2026-10-22T11:09:46.59917+00:00",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "label": "Secret Beach Mirissa (Approx. 4 hours)",
+   "price": 30,
+   "currency": "USD",
+   "unit": "per tour, up to 2 people",
+   "note": "A relaxed beach outing near Mirissa. Final access may require a walk; swimming depends on the sea and is not guaranteed safe. Estimated introductory package price for up to 2 people.",
+   "includes": [
+    "Private tuk-tuk for up to 2 people; price per tour",
+    "Pickup and return within Weligama",
+    "Coastal photo stops and beach time",
+    "Entry fees, meals and activities excluded"
+   ],
+   "group": "tuk_tuk",
+   "tour_id": "secret-beach-tour",
+   "updated_at": "2026-10-22T11:09:46.59917+00:00",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "label": "Turtle Bay & Snake Farm (Approx. 4 hours)",
+   "price": 35,
+   "currency": "USD",
+   "unit": "per tour, up to 2 people",
+   "note": "Coastal stops around Turtle Bay with an optional snake-farm visit, subject to opening and availability. Wildlife sightings are not guaranteed. Estimated introductory package price for up to 2 people.",
+   "includes": [
+    "Private tuk-tuk for up to 2 people; price per tour",
+    "Pickup and return within Weligama",
+    "Coastal stops; optional snake-farm admission paid separately",
+    "Entry fees, snorkeling, meals and activities excluded"
+   ],
+   "group": "tuk_tuk",
+   "tour_id": "turtle-bay-snake-farm-tour",
+   "updated_at": "2026-10-22T11:09:46.59917+00:00",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "label": "Handunugoda Tea Estate (Approx. 4 hours)",
+   "price": 40,
+   "currency": "USD",
+   "unit": "per tour, up to 2 people",
+   "note": "Travel inland to Handunugoda Tea Estate. Estate entry, tours and tastings depend on current visitor arrangements and are not included in the transport package. Estimated introductory package price for up to 2 people.",
+   "includes": [
+    "Private tuk-tuk for up to 2 people; price per tour",
+    "Pickup and return within Weligama",
+    "Countryside journey and photo stops",
+    "Estate admission, tastings, meals and activities excluded"
+   ],
+   "group": "tuk_tuk",
+   "tour_id": "tea-estate-tour",
+   "updated_at": "2026-10-22T11:09:46.59917+00:00",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "label": "Galle Fort (Approx. 6 hours)",
+   "price": 55,
+   "currency": "USD",
+   "unit": "per tour, up to 2 people",
+   "note": "A coastal day trip to Galle Fort with time to explore the ramparts and historic streets on foot. Estimated introductory package price for up to 2 people.",
+   "includes": [
+    "Private tuk-tuk for up to 2 people; price per tour",
+    "Pickup and return within Weligama",
+    "Galle Fort walking time and coastal photo stops",
+    "Museum entry, meals and activities excluded"
+   ],
+   "group": "tuk_tuk",
+   "tour_id": "galle-fort-tour",
+   "updated_at": "2026-10-22T11:09:46.59917+00:00",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "label": "Hiriketiya Bay (Approx. 8 hours)",
+   "price": 70,
+   "currency": "USD",
+   "unit": "per tour, up to 2 people",
+   "note": "A longer coastal outing to Hiriketiya Bay with beach time. Surfing and swimming depend on conditions and ability; equipment and coaching are not included. Estimated introductory package price for up to 2 people.",
+   "includes": [
+    "Private tuk-tuk for up to 2 people; price per tour",
+    "Pickup and return within Weligama",
+    "Hiriketiya beach time and coastal stops",
+    "Surfboards, lessons, meals and activities excluded"
+   ],
+   "group": "tuk_tuk",
+   "tour_id": "hiriketiya-tour",
+   "updated_at": "2026-10-22T11:09:46.59917+00:00",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "label": "Soft-top rental, 1 hour",
+   "price": 5,
+   "currency": "USD",
+   "unit": "per hour",
+   "note": "Walk-in, ideal for a quick session",
+   "group": "rentals",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Hardboard rental, 1 hour",
+   "price": 7,
+   "currency": "USD",
+   "unit": "per hour",
+   "note": "Walk-in, ideal for a quick session",
+   "group": "rentals",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Soft-top rental, 2 hours",
+   "price": 8,
+   "currency": "USD",
+   "unit": "per 2 hours",
+   "note": "Most popular — one full session",
+   "group": "rentals",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Hardboard rental, 2 hours",
+   "price": 12,
+   "currency": "USD",
+   "unit": "per 2 hours",
+   "note": "Most popular — one full session",
+   "group": "rentals",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Soft-top rental, Half day (4 h)",
+   "price": 12,
+   "currency": "USD",
+   "unit": "per half day",
+   "note": "Dawn or afternoon session",
+   "group": "rentals",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Hardboard rental, Half day (4 h)",
+   "price": 18,
+   "currency": "USD",
+   "unit": "per half day",
+   "note": "Dawn or afternoon session",
+   "group": "rentals",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Soft-top rental, Full day (24 h)",
+   "price": 15,
+   "currency": "USD",
+   "unit": "per 24 hours",
+   "note": "Two sessions + sunset",
+   "group": "rentals",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Hardboard rental, Full day (24 h)",
+   "price": 20,
+   "currency": "USD",
+   "unit": "per 24 hours",
+   "note": "Two sessions + sunset",
+   "group": "rentals",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Soft-top rental, 3 days",
+   "price": 36,
+   "currency": "USD",
+   "unit": "per 3 days",
+   "note": "Save 20% vs daily",
+   "group": "rentals",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Hardboard rental, 3 days",
+   "price": 50,
+   "currency": "USD",
+   "unit": "per 3 days",
+   "note": "Save 20% vs daily",
+   "group": "rentals",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Soft-top rental, 7 days",
+   "price": 70,
+   "currency": "USD",
+   "unit": "per 7 days",
+   "note": "Save ~33% — best value for a week trip",
+   "group": "rentals",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Hardboard rental, 7 days",
+   "price": 95,
+   "currency": "USD",
+   "unit": "per 7 days",
+   "note": "Save ~33% — best value for a week trip",
+   "group": "rentals",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Soft-top rental, 14 days",
+   "price": 120,
+   "currency": "USD",
+   "unit": "per 14 days",
+   "note": "Long-stay travellers",
+   "group": "rentals",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Hardboard rental, 14 days",
+   "price": 170,
+   "currency": "USD",
+   "unit": "per 14 days",
+   "note": "Long-stay travellers",
+   "group": "rentals",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Soft-top rental, Monthly",
+   "price": 220,
+   "currency": "USD",
+   "unit": "per month",
+   "note": "Surf-and-stay rate",
+   "group": "rentals",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Hardboard rental, Monthly",
+   "price": 310,
+   "currency": "USD",
+   "unit": "per month",
+   "note": "Surf-and-stay rate",
+   "group": "rentals",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Bodyboard rental",
+   "price": 5,
+   "currency": "USD",
+   "unit": "per day",
+   "note": null,
+   "group": "rentals",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Rashguard (UV long-sleeve), to buy",
+   "price": 12,
+   "currency": "USD",
+   "unit": "each",
+   "note": "the rental FAQ: \"we sell them at the shop for $12\"",
+   "group": "shop",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "label": "Reef booties, to buy",
+   "price": 15,
+   "currency": "USD",
+   "unit": "per pair",
+   "note": "listed under \"Not included\": \"available for purchase at the shop ($15 / pair)\"",
+   "group": "shop",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  }
+ ],
+ "offers_note": "Home page prices come from the site's live data (the page itself says to check there for \"the most up-to-date prices\"). All USD, as published, captured 2026-11-05. No price is converted. Lower prices elsewhere on the site are in contradictions, not here. Owner to confirm before go-live.",
+ "includes": [
+  {
+   "value": "All lessons include board and rash guard rental, professional instruction, and beach safety briefing. We provide everything you need—just bring yourself and a smile!",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "question": "What's included in a surf lesson?"
+  }
+ ],
+ "requirements": [
+  {
+   "value": "You can swim at least 50 meters unaided",
+   "source_url": "https://sanjee-surf.com/terms",
+   "fetched_at": "2026-11-05T08:30:31Z"
+  },
+  {
+   "value": "Participants under 18 years of age must be accompanied by a parent or legal guardian.",
+   "source_url": "https://sanjee-surf.com/terms",
+   "fetched_at": "2026-11-05T08:30:31Z"
+  },
+  {
+   "value": "We teach kids from age 6 and up.",
+   "source_url": "https://sanjee-surf.com/faq/can-kids-take-surf-lessons-in-weligama",
+   "fetched_at": "2026-11-05T08:34:15Z"
+  }
+ ],
+ "rental_terms": {
+  "quiver": [
+   {
+    "value": "Soft-top Foamie 8'0 – 9'0",
+    "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+    "fetched_at": "2026-11-05T08:30:11Z"
+   },
+   {
+    "value": "Mini-Mal 7'2 – 7'10",
+    "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+    "fetched_at": "2026-11-05T08:30:11Z"
+   },
+   {
+    "value": "Mid-length / Funboard 6'8 – 7'4",
+    "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+    "fetched_at": "2026-11-05T08:30:11Z"
+   },
+   {
+    "value": "Fish / Hybrid 5'8 – 6'4",
+    "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+    "fetched_at": "2026-11-05T08:30:11Z"
+   },
+   {
+    "value": "Performance Shortboard 5'10 – 6'2",
+    "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+    "fetched_at": "2026-11-05T08:30:11Z"
+   },
+   {
+    "value": "Longboard 9'0 – 9'4",
+    "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+    "fetched_at": "2026-11-05T08:30:11Z"
+   }
+  ],
+  "included": [
+   {
+    "value": "Leash sized for your board (6 ft – 9 ft)",
+    "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+    "fetched_at": "2026-11-05T08:30:11Z"
+   },
+   {
+    "value": "Fins fitted to your style (FCS-II or Futures)",
+    "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+    "fetched_at": "2026-11-05T08:30:11Z"
+   },
+   {
+    "value": "Wax for tropical water and a fresh wax comb",
+    "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+    "fetched_at": "2026-11-05T08:30:11Z"
+   }
+  ],
+  "deposit": {
+   "value": "$50 cash or card hold for soft-tops and mid-lengths, $100 for performance shortboards and longboards. Returned in full on undamaged check-in.",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z",
+   "note": "contradicted on /faq: see contradictions"
+  },
+  "id_required": {
+   "value": "ID or passport copy",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  "quiver_size_claim": {
+   "value": "We carry a curated quiver of 40+ boards — from beginner soft-tops to performance shortboards by Channel Islands, JS, Pyzel and local shapers from Galle.",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z",
+   "note": "site claim only. Photographs show soft-tops and a few hard boards; nothing confirms the count or the brands, so treat as unconfirmed."
+  }
+ },
+ "facilities": [
+  {
+   "value": "Free dry storage at our shop while you eat or rest between sessions.",
+   "source_url": "https://sanjee-surf.com/surfboard-rental-weligama",
+   "fetched_at": "2026-11-05T08:30:11Z"
+  },
+  {
+   "value": "We collect from Weligama, Mirissa, and surrounding areas",
+   "source_url": "https://sanjee-surf.com/tuktuk",
+   "fetched_at": "2026-11-05T08:29:52Z",
+   "note": "tuk-tuk pickup; the priced tours say \"Pickup and return within Weligama\""
+  }
+ ],
+ "levels": [
+  {
+   "value": "Total beginner",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "value": "Beginner (can stand up)",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "value": "Intermediate",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "value": "Advanced",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  }
+ ],
+ "season": {
+  "value": "Best surf season runs November to April; peak swell and dry weather are December–February.",
+  "source_url": "https://sanjee-surf.com/surfing-weligama",
+  "fetched_at": "2026-11-05T08:30:05Z",
+  "note": "the business's own words, as general surf information. No closed months are published."
+ },
+ "languages_spoken": [
+  {
+   "value": "si",
+   "source_url": "https://sanjee-surf.com/about",
+   "fetched_at": "2026-11-05T08:30:18Z",
+   "note": "\"Sinhala, English, basic Tamil\""
+  },
+  {
+   "value": "en",
+   "source_url": "https://sanjee-surf.com/about",
+   "fetched_at": "2026-11-05T08:30:18Z",
+   "note": "\"Lessons in English as standard\""
+  },
+  {
+   "value": "ta",
+   "source_url": "https://sanjee-surf.com/about",
+   "fetched_at": "2026-11-05T08:30:18Z",
+   "note": "\"basic Tamil\""
+  }
+ ],
+ "credentials": [
+  {
+   "value": "ISA Level 1 Surf Instructor",
+   "source_url": "https://sanjee-surf.com/about",
+   "fetched_at": "2026-11-05T08:30:18Z",
+   "issuer": "International Surfing Association",
+   "status": "self-reported on the site; no certificate or registry entry found"
+  },
+  {
+   "value": "Certified Surf Lifeguard",
+   "source_url": "https://sanjee-surf.com/about",
+   "fetched_at": "2026-11-05T08:30:18Z",
+   "issuer": "Sri Lanka Lifesaving",
+   "status": "self-reported on the site; no certificate or registry entry found"
+  }
+ ],
+ "team": [
+  {
+   "name": "Sanjee",
+   "role": "Head Instructor & Founder",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  },
+  {
+   "name": null,
+   "gap": "the site mentions \"experienced, English-speaking instructors\" and names none",
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z"
+  }
+ ],
+ "claims_unconfirmed": {
+  "note": "Numbers the site states, none independently confirmed, and they disagree with each other (see contradictions). None should reach copy until the owner picks: they are the kind of thing the copyeditor will rightly fail.",
+  "students": [
+   "500+ (home page, twice)",
+   "2,000+ (home page bio)",
+   "3,000+ (/about)"
+  ],
+  "lessons_given": [
+   "5,000+ (/about)"
+  ]
+ },
+ "reviews": {
+  "google": {
+   "rating": 5,
+   "count": 13,
+   "scale": 5,
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "fetched_at": "2026-11-05T08:34:45Z",
+   "note": "read 2026-11-05. One of the 13 is by a reviewer who has the name of the site's legal operator: see flags_for_operator."
+  },
+  "site_claim": {
+   "rating": 5,
+   "count": 150,
+   "source_url": "https://sanjee-surf.com/",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "do_not_use": true,
+   "note": "the site's structured data claims reviewCount 150. Google shows 13 and no other platform was found. Never carry this number over."
+  },
+  "tripadvisor": {
+   "rating": null,
+   "count": null,
+   "gap": "no listing found; tripadvisor.com answered 403 to a headless browser"
+  },
+  "quotes": [
+   {
+    "text": "Had three excellent sessions with Sanjee, plus board rental for the following days. He’s building his own school with real passion, and it shows.\nAs an intermediate surfer, we went straight to the green waves at Coco Beach. From getting dropped off by tuk-tuk to being in the water took about 10 minutes. One session was at 6am, which was great as the line up was empty. After the session, the beach huts nearby had cold, well-priced coconuts.\nA friend of mine booked a private beginner session and was already standing up in the first lesson, really nice experience.\nBooked through the website and everything went smoothly.",
+    "author": "Dr. Marcel Panzer",
+    "date_as_shown": "9 months ago",
+    "date_captured": "2026-11-05",
+    "score": 5,
+    "scale": 5,
+    "source": "google",
+    "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+    "review_id": "Ci9DQUlRQUNvZENodHljRjlvT2pab1NtcDVOR2MyTjA1VFZtWlZTalYwTm5wMk4xRRAB",
+    "fetched_at": "2026-11-05T08:34:45Z",
+    "do_not_use": true,
+    "why": "the reviewer has the same name as the site's legal operator (Terms, Imprint: Marcel Panzer, operating as \"Sanjee Surf\"). Whether it is the same person is not proven, but this cannot stand as an independent guest review until a human has checked. Kept here for its facts only."
+   },
+   {
+    "text": "Sanjee is one the best coaches there is to learn surfing.  He was very patient. And supportive.  I was able to catch waves and stand on my board till close to the shore in the first session itself. Id definitely recommend him and would come again to learn from him for intermediate and advanced course as well.",
+    "author": "samagra singh",
+    "date_as_shown": "10 months ago",
+    "date_captured": "2026-11-05",
+    "score": 5,
+    "scale": 5,
+    "source": "google",
+    "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+    "review_id": "Ci9DQUlRQUNvZENodHljRjlvT2s4NFZXeFVaR3ROTVZoaFdFSlhUMUF5VEhobmVFRRAB",
+    "fetched_at": "2026-11-05T08:34:45Z"
+   },
+   {
+    "text": "Great guy. Better then most other surf instructors i met before. Very calm and patient. Highly recommend.",
+    "author": "Tim St",
+    "date_as_shown": "9 months ago",
+    "date_captured": "2026-11-05",
+    "score": 5,
+    "scale": 5,
+    "source": "google",
+    "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+    "review_id": "Ci9DQUlRQUNvZENodHljRjlvT25wNmEwVjBaMFpCTmpSdE1XSjRZMDFUZHpkMlVVRRAB",
+    "fetched_at": "2026-11-05T08:34:45Z"
+   },
+   {
+    "text": "I would definitely recommend going out with Sanjee. I spent two mornings surfing with him and it was amazing. He made sure I was always in the best positions to catch the wave on the local break, meaning I was catching far more waves than if i was on my own. He is very friendly and a joy to surf with.",
+    "author": "hal starkie",
+    "date_as_shown": "7 months ago",
+    "date_captured": "2026-11-05",
+    "score": 5,
+    "scale": 5,
+    "source": "google",
+    "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+    "review_id": "Ci9DQUlRQUNvZENodHljRjlvT2s5bmQyOTBPSGxyTUZWbVFYRkVNRkpLZERSaGIwRRAB",
+    "fetched_at": "2026-11-05T08:34:45Z"
+   },
+   {
+    "text": "Sanjee is an outstanding surf coach. After just 7 intensive training days, he gave me the confidence to surf bigger waves and significantly improve my level. His teaching is clear, professional, and very motivating. I highly recommend him to anyone who wants to progress safely and effectively.”",
+    "author": "Rossana Encina",
+    "date_as_shown": "10 months ago",
+    "date_captured": "2026-11-05",
+    "score": 5,
+    "scale": 5,
+    "source": "google",
+    "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+    "review_id": "Ci9DQUlRQUNvZENodHljRjlvT2tGb1Rrb3lYMVl3WkdjelpIVkNjV3cyUlhJMFYyYxAB",
+    "fetched_at": "2026-11-05T08:34:45Z"
+   }
+  ],
+  "quotes_note": "5 of the 13 Google reviews are readable logged out; the other 8 are behind Google's sign-in prompt and were not reached. Google shows only relative dates, kept as shown with the capture date.",
+  "site_quoted": [
+   {
+    "text": "Sanjee is an outstanding surf coach. After just 7 intensive training days, he gave me the confidence to surf bigger waves and significantly improve my level. His teaching is clear, professional, and very motivating. I highly recommend him to anyone who wants to progress safely and effectively.",
+    "author": null,
+    "shown_on_site_as": "GOOGLE REVIEWS, no author, relative date",
+    "matched_in_google_limited_view": true,
+    "source": "site",
+    "source_url": "https://sanjee-surf.com/",
+    "fetched_at": "2026-11-05T08:29:39Z"
+   },
+   {
+    "text": "Thanks Sanjee! Already in the first lesson I was standing on the board. You are very inspiring & motivating.",
+    "author": null,
+    "shown_on_site_as": "GOOGLE REVIEWS, no author, relative date",
+    "matched_in_google_limited_view": false,
+    "source": "site",
+    "source_url": "https://sanjee-surf.com/",
+    "fetched_at": "2026-11-05T08:29:39Z"
+   },
+   {
+    "text": "Started as a beginner, improved a lot fast. Thanks, Sanjee!",
+    "author": null,
+    "shown_on_site_as": "GOOGLE REVIEWS, no author, relative date",
+    "matched_in_google_limited_view": false,
+    "source": "site",
+    "source_url": "https://sanjee-surf.com/",
+    "fetched_at": "2026-11-05T08:29:39Z"
+   },
+   {
+    "text": "Great guy, highly recommend!",
+    "author": null,
+    "shown_on_site_as": "GOOGLE REVIEWS, no author, relative date",
+    "matched_in_google_limited_view": false,
+    "source": "site",
+    "source_url": "https://sanjee-surf.com/",
+    "fetched_at": "2026-11-05T08:29:39Z"
+   },
+   {
+    "text": "Good surfer teacher",
+    "author": null,
+    "shown_on_site_as": "GOOGLE REVIEWS, no author, relative date",
+    "matched_in_google_limited_view": false,
+    "source": "site",
+    "source_url": "https://sanjee-surf.com/",
+    "fetched_at": "2026-11-05T08:29:39Z"
+   },
+   {
+    "text": "Sanjee is one of the best coaches there is to learn surfing. He was very patient and supportive. I was able to catch waves and stand on my board till close to the shore in the first session itself. I'd definitely recommend him and would come again to learn from him for intermediate and advanced course as well.",
+    "author": null,
+    "shown_on_site_as": "GOOGLE REVIEWS, no author, relative date",
+    "matched_in_google_limited_view": false,
+    "near_match": "samagra singh on Google, with the wording tidied by the site",
+    "source": "site",
+    "source_url": "https://sanjee-surf.com/",
+    "fetched_at": "2026-11-05T08:29:39Z"
+   }
+  ],
+  "site_quoted_note": "the home page's \"GOOGLE REVIEWS\" block: no authors, and \"1 week ago\" dates that do not match Google's 7–10 months. Where a text is on Google, use Google's version: the site tidied at least one (samagra singh). Texts marked unmatched may be among the 8 reviews not readable logged out.",
+  "site_testimonials_unverified": [
+   {
+    "text": "Stood up on my first wave on day one. The instructors are incredibly patient and the bay is genuinely magical at sunrise.",
+    "author": "Anna L., Germany",
+    "source": "site",
+    "do_not_use": true,
+    "why": "published on /surfing-weligama under \"What surfers say about Weligama\" with no platform, date or link; not found in the part of Google a logged-out visitor can read. Unverified, so not usable as a testimonial.",
+    "source_url": "https://sanjee-surf.com/surfing-weligama",
+    "fetched_at": "2026-11-05T08:30:05Z"
+   },
+   {
+    "text": "Came for a week, stayed three. Hidden reefs around Weligama on the surf safari were a complete level-up for me.",
+    "author": "James M., UK",
+    "source": "site",
+    "do_not_use": true,
+    "why": "published on /surfing-weligama under \"What surfers say about Weligama\" with no platform, date or link; not found in the part of Google a logged-out visitor can read. Unverified, so not usable as a testimonial.",
+    "source_url": "https://sanjee-surf.com/surfing-weligama",
+    "fetched_at": "2026-11-05T08:30:05Z"
+   },
+   {
+    "text": "As a solo female surfer I felt safe and welcomed from the first hour. Great vibe in the water and on the beach.",
+    "author": "Sofia R., Brazil",
+    "source": "site",
+    "do_not_use": true,
+    "why": "published on /surfing-weligama under \"What surfers say about Weligama\" with no platform, date or link; not found in the part of Google a logged-out visitor can read. Unverified, so not usable as a testimonial.",
+    "source_url": "https://sanjee-surf.com/surfing-weligama",
+    "fetched_at": "2026-11-05T08:30:05Z"
+   }
+  ]
+ },
+ "images": [
+  {
+   "id": "img-001",
+   "file": "assets/img-001.jpg",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RcImOtNBvjLeRNva2krydcr8_W6JYkF9QyHHEYcgl80a6SpY_nTsDyCW1VS9cU3iWPFg6OErd8uKPxOmFy3HBM2TVD8wjha5W_L74kb9C9tRZAKvL8tFyXKz86mwLU34_BG_piyw=s2000-k-no",
+   "google_photo_id": "CIHM0ogKEICAgIDfh_fo2AE",
+   "fetched_at": "2026-11-05T08:37:36Z",
+   "found_on": "google",
+   "license": "business-owned",
+   "license_note": "uploaded to the business's Google listing by the account named \"Sanjee Surf School\" (maps contrib 117718382823342320112)",
+   "google_label": "Photo - Jan 2025",
+   "listed_size": [
+    1200,
+    1600
+   ],
+   "description": "four people standing on wet sand at the waterline holding three tall boards (one cream soft-top, two blue), cloudy sky; faces clearly visible; no caption says who they are",
+   "people_identifiable": true,
+   "sha256": "3afdb87c60c83e084b2b11fb7b5422f333b1dbe6b51b0ea13c2c81057e6fa9bd",
+   "width": 1200,
+   "height": 1600
+  },
+  {
+   "id": "img-002",
+   "file": "assets/img-002.jpg",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TGQoDr_y-siJUTxjg-p5Bhw0_2p1UiSNgutVmsNbnW8iryFCjUUqNk9LQBx-rALnl3pR3T8gNy9IHRkqqCSIQF_d_gHyoENs268s0TN4G9k6OirTi4H1dw26CjCH8p6OvvlAuGLZyvpy61=s2000-k-no",
+   "google_photo_id": "CIABIhAVZZcT-gS9q7lTWEIogU5B",
+   "fetched_at": "2026-11-05T08:37:36Z",
+   "found_on": "google",
+   "license": "business-owned",
+   "license_note": "uploaded to the business's Google listing by the account named \"Sanjee Surf School\" (maps contrib 117718382823342320112)",
+   "google_label": "Photo - Mar 2026",
+   "listed_size": [
+    4080,
+    3060
+   ],
+   "description": "wide view from the beach: blue sky, blue water, a rust-red headland with palms and red-roofed houses; no people. The only landscape business-owned photo at 2000 px",
+   "full_width_ok": true,
+   "sha256": "e1965e3365613f108488c1734132f91686e551b79f887769562eff9102f3b464",
+   "width": 2000,
+   "height": 1500
+  },
+  {
+   "id": "img-003",
+   "file": "assets/img-003.jpg",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TEB8TvsGYYAB-d-X7kuwDEiV1D3N74efZnHQFeH5vb_zBR5EL-kF90idnytPFpPLVrXwYeHfqF-ZZA5zCVdONl72PiKuxKCavR4NFMnAIPUk8H8edyRBHvTWaSqFFXYS96-PLc1PB_QCnD=s2000-k-no",
+   "google_photo_id": "CIABIhBFQ9W_91_s8xUsoxv7oksy",
+   "fetched_at": "2026-11-05T08:37:36Z",
+   "found_on": "google",
+   "license": "business-owned",
+   "license_note": "uploaded to the business's Google listing by the account named \"Sanjee Surf School\" (maps contrib 117718382823342320112)",
+   "google_label": "Photo - Apr 2026",
+   "listed_size": [
+    3056,
+    4080
+   ],
+   "description": "navy tee laid out, with the logo printed on it: a surfer on a blue crescent wave, ringed by \"SANJEE SURF SCHOOL\" and \"COCONUT SURF POINT\". The only sight of the logo found anywhere",
+   "sha256": "879f202c2e776a89f3b5eaaba93ef2401e00c1964f1f7f6b0748200f87e37b7b",
+   "width": 1498,
+   "height": 2000
+  },
+  {
+   "id": "img-004",
+   "file": "assets/img-004.jpg",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TkmdOjeo6p2rerzsVEUlQiYzZlDXI4nSQzblAlxlBWxlW3wMWKM-SaVHjQOpWg_WezEcok6rNYUJoMXsSIQAZd_96LuuLKilmxl5i5EaovmVgaM-kmlSgA01rsxtKQG4bohYta4w=s2000-k-no",
+   "google_photo_id": "CIHM0ogKEICAgIDfh9-AmwE",
+   "fetched_at": "2026-11-05T08:37:36Z",
+   "found_on": "google",
+   "license": "business-owned",
+   "license_note": "uploaded to the business's Google listing by the account named \"Sanjee Surf School\" (maps contrib 117718382823342320112)",
+   "google_label": "Photo - Jan 2025",
+   "listed_size": [
+    618,
+    608
+   ],
+   "description": "aerial of a small sandy beach with thatched and coloured-roof huts and sun loungers, guesthouses and palms behind, white water over dark reef in front",
+   "too_small_for_full_width": true,
+   "sha256": "e9c3b5780c1396b2d969efbf5376e4890798c2ce5dbbff7986cfd2b1d850d533",
+   "width": 618,
+   "height": 608
+  },
+  {
+   "id": "img-005",
+   "file": "assets/img-005.jpg",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QYGhtwPA9igxMgLjQuX1ytDotlqnUhAZX9Fs4rklLpNIxaLf-3t-mnoyAmI_DEsXDq7pr_j2p8-DKHnOIt-79Nc-LW_J4cf6eEujzRvAryNHOugic-NLLfLIlK66BoXu5_wZw4K8hc7kE=s2000-k-no",
+   "google_photo_id": "CIABIhCYL2gCF1pb6WUGZREe_3x7",
+   "fetched_at": "2026-11-05T08:37:36Z",
+   "found_on": "google",
+   "license": "business-owned",
+   "license_note": "uploaded to the business's Google listing by the account named \"Sanjee Surf School\" (maps contrib 117718382823342320112)",
+   "google_label": "Video - Apr 2026",
+   "listed_size": [
+    832,
+    464
+   ],
+   "description": "opening frame of vid-001: an instructor and a student practising the pop-up on the sand, on a red and a blue soft-top. Google's still of the video, not a photograph",
+   "video_still_of": "vid-001",
+   "too_small_for_full_width": true,
+   "people_identifiable": true,
+   "sha256": "b5bf871e63da5530e82bc20ec8b7d64c54189febe4c59d8e5ca5fc754cfbc2a7",
+   "width": 832,
+   "height": 464
+  },
+  {
+   "id": "img-006",
+   "file": "assets/img-006.jpg",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S8vV-OGkvcYfTwOvH1jngyFhuZKyO064Q5KVXZUupwpuu-PFp7snc_wQSL-At91JkouL6gyBi5HkPkLXJbGq2r7y3TrVBpjuVuwfzP66IJY2wyf8sAurINGdITYGqXXjfEt3A381087FNK=s2000-k-no",
+   "google_photo_id": "CIABIhBpiiXNdwv83NgsQhIrqRzZ",
+   "fetched_at": "2026-11-05T08:37:36Z",
+   "found_on": "google",
+   "license": "business-owned",
+   "license_note": "uploaded to the business's Google listing by the account named \"Sanjee Surf School\" (maps contrib 117718382823342320112)",
+   "google_label": "Video - Jan 2026",
+   "listed_size": [
+    848,
+    480
+   ],
+   "description": "opening frame of vid-002: a surfer in a dark swimsuit turning on a green wave, white water behind. Google's still of the video, not a photograph",
+   "video_still_of": "vid-002",
+   "too_small_for_full_width": true,
+   "sha256": "6fdcfeeaa8b2c8de4319c7ff95b3fecdf75a439592cf097a59a3c63caf9f8f8a",
+   "width": 848,
+   "height": 480
+  },
+  {
+   "id": "img-007",
+   "file": "assets/img-007.webp",
+   "source_url": "https://sanjee-surf.com/",
+   "photo_url": "https://sanjee-surf.com/assets/sanjee-surf-instructor-weligama-DxdozfX5.webp",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "found_on": "own site",
+   "license": "business-owned",
+   "license_note": "published on the business's own site, sanjee-surf.com",
+   "site_alt": "Sanjee – head surf instructor at Sanjee Surf in Weligama, Sri Lanka",
+   "description": "a surfer seen from behind, hair tied up, carving on a yellow board with a pink rail in green water and heavy spray; the site names him as Sanjee",
+   "too_small_for_full_width": true,
+   "provenance_flag": "Provenance not stated: an action shot that may be by a beach photographer (other shots on the listing carry the watermark \"Nilanka Sampath Photography\"). Owner to confirm rights before go-live.",
+   "sha256": "a0c16c61bb50b148cc78b065bdb1e1d8b00ff022bb93c6cc75019a6664f80dad",
+   "width": 962,
+   "height": 938
+  },
+  {
+   "id": "img-008",
+   "file": "assets/img-008.webp",
+   "source_url": "https://sanjee-surf.com/about",
+   "photo_url": "https://sanjee-surf.com/assets/sanjee-real-YH0ncXWi.webp",
+   "fetched_at": "2026-11-05T08:30:18Z",
+   "found_on": "own site",
+   "license": "business-owned",
+   "license_note": "published on the business's own site, sanjee-surf.com",
+   "site_alt": "Sanjee, surf instructor from Weligama, holding his board on the beach at sunset",
+   "description": "a man in a dark rash vest walking out of the shallows with a board under his arm, smiling, frame tilted; the site names him as Sanjee. Visibly smoothed and over-processed; soft up close",
+   "too_small_for_full_width": true,
+   "quality_flag": "heavily processed, soft",
+   "sha256": "3e3c928d6dfd9e8361af7f4ba015d1b1352efb5ff0df3885f1f35f0b31faa587",
+   "width": 997,
+   "height": 1024
+  },
+  {
+   "id": "img-009",
+   "file": "assets/img-009.webp",
+   "source_url": "https://sanjee-surf.com/",
+   "photo_url": "https://sanjee-surf.com/assets/surfer-paddling-weligama-BUqczrMx.webp",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "found_on": "own site",
+   "license": "business-owned",
+   "license_note": "published on the business's own site, sanjee-surf.com",
+   "site_alt": "Surf student paddling out to catch waves at Weligama Beach",
+   "description": "a small figure paddling on turquoise water in front of a low green wave, pale sky; the og-image is a crop of this",
+   "full_width_ok": true,
+   "sha256": "f236cd26586cff14b4e7237348c37e0ef34e2de3ae255172746f9e1f63c7b1fe",
+   "width": 1600,
+   "height": 1067
+  },
+  {
+   "id": "img-010",
+   "file": "assets/img-010.webp",
+   "source_url": "https://sanjee-surf.com/",
+   "photo_url": "https://sanjee-surf.com/assets/surfing-weligama-wave-1-BVVyuah1.webp",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "found_on": "own site",
+   "license": "business-owned",
+   "license_note": "published on the business's own site, sanjee-surf.com",
+   "site_alt": "Beginner surfer riding a wave during a surf lesson in Sri Lanka",
+   "description": "a distant surfer on top of a breaking wave with a lot of white water, a second board in the foam, grey-blue sky",
+   "full_width_ok": true,
+   "provenance_flag": "Provenance not stated: an action shot that may be by a beach photographer (other shots on the listing carry the watermark \"Nilanka Sampath Photography\"). Owner to confirm rights before go-live.",
+   "sha256": "1bae3bcc32ab4d18745c36245bb8641a604c9e4f642593d2c5a267b6e7095202",
+   "width": 1600,
+   "height": 1067
+  },
+  {
+   "id": "img-011",
+   "file": "assets/img-011.webp",
+   "source_url": "https://sanjee-surf.com/",
+   "photo_url": "https://sanjee-surf.com/assets/surfing-weligama-wave-2-CbJU1L8x.webp",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "found_on": "own site",
+   "license": "business-owned",
+   "license_note": "published on the business's own site, sanjee-surf.com",
+   "site_alt": "Surfer dropping into a turquoise wave at Weligama Bay",
+   "description": "a surfer in striped shorts crouched on a wave, teal wall behind; very soft and smoothed up close",
+   "too_small_for_full_width": true,
+   "quality_flag": "soft, smoothed",
+   "provenance_flag": "Provenance not stated: an action shot that may be by a beach photographer (other shots on the listing carry the watermark \"Nilanka Sampath Photography\"). Owner to confirm rights before go-live.",
+   "sha256": "8f69565da8b3c62d6696990445f73dbca2f6bcc5636928e18dc6e0eef512b469",
+   "width": 704,
+   "height": 712
+  },
+  {
+   "id": "img-012",
+   "file": "assets/img-012.webp",
+   "source_url": "https://sanjee-surf.com/",
+   "photo_url": "https://sanjee-surf.com/assets/weligama-bay-panorama-surf-gA0LI2Eg.webp",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "found_on": "own site",
+   "license": "business-owned",
+   "license_note": "published on the business's own site, sanjee-surf.com",
+   "site_alt": "Panoramic view of Weligama Bay surf spot with palm trees, Sri Lanka",
+   "description": "tall palms on a grass headland with a path, beach stalls and blue parasols, clean lines of swell behind",
+   "too_small_for_full_width": true,
+   "sha256": "2dfede1dc5120b160f91434cd76bbc942738447376db56b0151f0c62a2a431ed",
+   "width": 750,
+   "height": 558
+  },
+  {
+   "id": "img-013",
+   "file": "assets/img-013.webp",
+   "source_url": "https://sanjee-surf.com/",
+   "photo_url": "https://sanjee-surf.com/assets/weligama-beach-surf-spot-CzcoAPAx.webp",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "found_on": "own site",
+   "license": "business-owned",
+   "license_note": "published on the business's own site, sanjee-surf.com",
+   "site_alt": "Sandy beach at Coco Beach surf spot in Weligama",
+   "description": "empty sandy beach with a driftwood frame and a blue canopy, palms and waves running off to the point; the site says it is Coco Beach",
+   "full_width_ok": true,
+   "sha256": "88b4fe7f8509c5747fc9c6004c5a5260428f320c4e97377638b7e80786f1871a",
+   "width": 1280,
+   "height": 960
+  },
+  {
+   "id": "img-014",
+   "file": "assets/img-014.webp",
+   "source_url": "https://sanjee-surf.com/",
+   "photo_url": "https://sanjee-surf.com/assets/weligama-surf-waves-C77rQXWn.webp",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "found_on": "own site",
+   "license": "business-owned",
+   "license_note": "published on the business's own site, sanjee-surf.com",
+   "site_alt": "Perfect surf waves breaking at Weligama Beach for all levels",
+   "description": "three thatched parasols on the sand, lines of small surf behind under a grey sky",
+   "full_width_ok": true,
+   "sha256": "8e82772cf11dab1f15a891200eb4e94b0a85f0630d3687a7c0856daeda63b89b",
+   "width": 1280,
+   "height": 960
+  },
+  {
+   "id": "img-015",
+   "file": "assets/img-015.webp",
+   "source_url": "https://sanjee-surf.com/",
+   "photo_url": "https://sanjee-surf.com/assets/weligama-ocean-view-pool-DftoCf9w.webp",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "found_on": "own site",
+   "license": "business-owned",
+   "license_note": "published on the business's own site, sanjee-surf.com",
+   "site_alt": "Infinity pool overlooking the Indian Ocean at Weligama, Sri Lanka – Sanjee Surf school location",
+   "description": "an infinity pool with reflections, pandanus trees and hanging lanterns, dining tables and the sea behind. The old site's hero image",
+   "not_a_facility_of_the_school": "its alt text calls it \"Sanjee Surf school location\", but no page offers a pool and this looks like a hotel: never present it as the school's",
+   "full_width_ok": true,
+   "sha256": "ba20726eb510554ef03d005d4e3fe51ba2ca12179b91c33a97974425dd11ec97",
+   "width": 1368,
+   "height": 1824
+  },
+  {
+   "id": "img-016",
+   "file": "assets/img-016.webp",
+   "source_url": "https://sanjee-surf.com/",
+   "photo_url": "https://sanjee-surf.com/assets/weligama-palm-trees-beach-DSM-rrFq.webp",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "found_on": "own site",
+   "license": "business-owned",
+   "license_note": "published on the business's own site, sanjee-surf.com",
+   "site_alt": "Tropical palm trees on Weligama Beach, Sri Lanka – Sanjee Surf school location",
+   "description": "two palm crowns against a pale sky, portrait; no beach in frame",
+   "sha256": "21e32a7955003bb158806a1669a5be57e1c34379ce65cf96e245427eadfcf0d0",
+   "width": 1440,
+   "height": 1920
+  },
+  {
+   "id": "img-017",
+   "file": "assets/img-017.webp",
+   "source_url": "https://sanjee-surf.com/",
+   "photo_url": "https://sanjee-surf.com/assets/weligama-sunset-surfing-DP2TC4Yr.webp",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "found_on": "own site",
+   "license": "business-owned",
+   "license_note": "published on the business's own site, sanjee-surf.com",
+   "site_alt": "Golden sunset on Weligama Beach with dogs watching the waves",
+   "description": "sunset on a beach with three dogs in silhouette looking out to sea; no surfer in frame although one alt says \"Surfer at sunset\"",
+   "sha256": "8c26b3696e6d2e55c32471e2e0ec16683cb5de58b83c54da190b6bb5e1b6ea6b",
+   "width": 1200,
+   "height": 1600
+  },
+  {
+   "id": "img-018",
+   "file": "assets/img-018.webp",
+   "source_url": "https://sanjee-surf.com/",
+   "photo_url": "https://sanjee-surf.com/assets/sri-lanka-sunset-surf-waves-BzpXTODV.webp",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "found_on": "own site",
+   "license": "business-owned",
+   "license_note": "published on the business's own site, sanjee-surf.com",
+   "site_alt": "Surfers enjoying sunset session at Weligama Bay, Sri Lanka",
+   "description": "orange sunset over breaking shore waves, tiny figures in the water, portrait",
+   "sha256": "a0bfa184750b11ecac001eaf6493609467a751258bd407ebe721a52f78f1a563",
+   "width": 1440,
+   "height": 1920
+  },
+  {
+   "id": "img-019",
+   "file": "assets/img-019.webp",
+   "source_url": "https://sanjee-surf.com/",
+   "photo_url": "https://sanjee-surf.com/assets/sri-lanka-stilt-fishermen-ahangama-whzZn2u7.webp",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "found_on": "own site",
+   "license": "business-owned",
+   "license_note": "published on the business's own site, sanjee-surf.com",
+   "site_alt": "Traditional Sri Lankan stilt fishermen near Weligama Beach",
+   "description": "bare stilt-fishing poles in the shallows, golden sand with footprints, blue sky; no fishermen in frame although the alt says there are",
+   "sha256": "9117c5537aacfb396c447444f7ece5a9e8300ed020ad036cf1ebedf40ae24616",
+   "width": 1440,
+   "height": 1920
+  },
+  {
+   "id": "img-020",
+   "file": "assets/img-020.webp",
+   "source_url": "https://sanjee-surf.com/",
+   "photo_url": "https://sanjee-surf.com/assets/sri-lanka-sunrise-ocean-XwBDgBRv.webp",
+   "fetched_at": "2026-11-05T08:29:39Z",
+   "found_on": "own site",
+   "license": "business-owned",
+   "license_note": "published on the business's own site, sanjee-surf.com",
+   "site_alt": "Sun reflecting on the Indian Ocean waves at Weligama",
+   "description": "sun high behind thin cloud, silver light on shore waves, portrait",
+   "sha256": "d3f13b2be4ae2c732bffcde0a6832cd333377e89679995daedea2dfe072c3dbb",
+   "width": 1440,
+   "height": 1920
+  },
+  {
+   "id": "img-021",
+   "file": "assets/img-021.jpg",
+   "source_url": "https://sanjee-surf.com/blog",
+   "photo_url": "https://sanjee-surf.com/assets/blog-january-lazyleft-AYrJNTST.jpg",
+   "fetched_at": "2026-11-05T08:30:51Z",
+   "found_on": "own site, blog art referenced by its script bundle",
+   "license": "unknown",
+   "license_note": "published on the business's own site, but looks machine-generated rather than photographed (my visual judgement: nothing in the file metadata proves it either way). Not a photograph of this business or its spots, so not recorded as business-owned",
+   "appears_generated": true,
+   "description": "tubing surfer at golden hour, labelled by its file name as Lazy Left",
+   "sha256": "f6e4f9db507246c985984fe4a940beeb5595a4a5553861b58f8f4f5fd1b7109a",
+   "width": 1920,
+   "height": 1080
+  },
+  {
+   "id": "img-022",
+   "file": "assets/img-022.jpg",
+   "source_url": "https://sanjee-surf.com/blog",
+   "photo_url": "https://sanjee-surf.com/assets/blog-february-plantation-AaQv7UX4.jpg",
+   "fetched_at": "2026-11-05T08:30:51Z",
+   "found_on": "own site, blog art referenced by its script bundle",
+   "license": "unknown",
+   "license_note": "published on the business's own site, but looks machine-generated rather than photographed (my visual judgement: nothing in the file metadata proves it either way). Not a photograph of this business or its spots, so not recorded as business-owned",
+   "appears_generated": true,
+   "description": "peeling wave with dramatic palm jungle, labelled Plantation",
+   "sha256": "7ac43be9fc722576bc584ac1194ea20e59bc694d238f0d2a473da3080fc5c791",
+   "width": 1920,
+   "height": 1080
+  },
+  {
+   "id": "img-023",
+   "file": "assets/img-023.jpg",
+   "source_url": "https://sanjee-surf.com/blog",
+   "photo_url": "https://sanjee-surf.com/assets/blog-march-kabalana-DriuKVA-.jpg",
+   "fetched_at": "2026-11-05T08:30:51Z",
+   "found_on": "own site, blog art referenced by its script bundle",
+   "license": "unknown",
+   "license_note": "published on the business's own site, but looks machine-generated rather than photographed (my visual judgement: nothing in the file metadata proves it either way). Not a photograph of this business or its spots, so not recorded as business-owned",
+   "appears_generated": true,
+   "description": "barrel in front of a steep pyramid-shaped hill and black rocks, labelled Kabalana",
+   "sha256": "6e7ba270aa115c2acd22452f9f2a4c9a4319463334a9df9a017b41d1920f049d",
+   "width": 1920,
+   "height": 1080
+  },
+  {
+   "id": "img-024",
+   "file": "assets/img-024.jpg",
+   "source_url": "https://sanjee-surf.com/blog",
+   "photo_url": "https://sanjee-surf.com/assets/blog-april-mirissa-CCr2H7am.jpg",
+   "fetched_at": "2026-11-05T08:30:51Z",
+   "found_on": "own site, blog art referenced by its script bundle",
+   "license": "unknown",
+   "license_note": "published on the business's own site, but looks machine-generated rather than photographed (my visual judgement: nothing in the file metadata proves it either way). Not a photograph of this business or its spots, so not recorded as business-owned",
+   "appears_generated": true,
+   "description": "surfer among painted boats in warm haze, labelled Mirissa",
+   "sha256": "e75ec2a91b0ca24e1a74a07495cba9de6f9a83b5c01aee6703cf7cb15ef4984d",
+   "width": 1920,
+   "height": 1080
+  },
+  {
+   "id": "img-025",
+   "file": "assets/img-025.webp",
+   "source_url": "https://sanjee-surf.com/blog",
+   "photo_url": "https://sanjee-surf.com/assets/blog-may-arugambay-Ck-iQ6kA.webp",
+   "fetched_at": "2026-11-05T08:30:51Z",
+   "found_on": "own site, blog art referenced by its script bundle",
+   "license": "unknown",
+   "license_note": "published on the business's own site, but looks machine-generated rather than photographed (my visual judgement: nothing in the file metadata proves it either way). Not a photograph of this business or its spots, so not recorded as business-owned",
+   "appears_generated": true,
+   "description": "surfer in a clean tube under leaning palms",
+   "sha256": "7c30634b5c01d44daf803c793a085667df0d995d9507c62c5e32ac9455c7ec33",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "id": "img-026",
+   "file": "assets/img-026.webp",
+   "source_url": "https://sanjee-surf.com/blog",
+   "photo_url": "https://sanjee-surf.com/assets/blog-june-arugam-mainpoint-CpmGn0Lx.webp",
+   "fetched_at": "2026-11-05T08:30:51Z",
+   "found_on": "own site, blog art referenced by its script bundle",
+   "license": "unknown",
+   "license_note": "published on the business's own site, but looks machine-generated rather than photographed (my visual judgement: nothing in the file metadata proves it either way). Not a photograph of this business or its spots, so not recorded as business-owned",
+   "appears_generated": true,
+   "description": "point wave with a painted boat in the foreground",
+   "sha256": "cc67829757d4fc10682d170215a6ef697d83074c43161b5e7f7f2ff57f27298c",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "id": "img-027",
+   "file": "assets/img-027.webp",
+   "source_url": "https://sanjee-surf.com/blog",
+   "photo_url": "https://sanjee-surf.com/assets/blog-july-whiskey-dawn-D4xzT5BE.webp",
+   "fetched_at": "2026-11-05T08:30:51Z",
+   "found_on": "own site, blog art referenced by its script bundle",
+   "license": "unknown",
+   "license_note": "published on the business's own site, but looks machine-generated rather than photographed (my visual judgement: nothing in the file metadata proves it either way). Not a photograph of this business or its spots, so not recorded as business-owned",
+   "appears_generated": true,
+   "description": "silhouetted surfer under a large orange sun",
+   "sha256": "a45324418bacc370caf4bfa0540010b96b02f19f743ad57a32b8e7ae0dcdb4ab",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "id": "img-028",
+   "file": "assets/img-028.webp",
+   "source_url": "https://sanjee-surf.com/blog",
+   "photo_url": "https://sanjee-surf.com/assets/blog-august-east-peak-BlF5mwa0.webp",
+   "fetched_at": "2026-11-05T08:30:51Z",
+   "found_on": "own site, blog art referenced by its script bundle",
+   "license": "unknown",
+   "license_note": "published on the business's own site, but looks machine-generated rather than photographed (my visual judgement: nothing in the file metadata proves it either way). Not a photograph of this business or its spots, so not recorded as business-owned",
+   "appears_generated": true,
+   "description": "water-level view of surfers paddling, palms and huts behind",
+   "sha256": "975fbcb20da553ee1f77c1d0a931d4d1da761799ca2490fe4b673ec767ccca96",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "id": "img-029",
+   "file": "assets/img-029.webp",
+   "source_url": "https://sanjee-surf.com/blog",
+   "photo_url": "https://sanjee-surf.com/assets/blog-september-east-fade-DTK1uPHp.webp",
+   "fetched_at": "2026-11-05T08:30:51Z",
+   "found_on": "own site, blog art referenced by its script bundle",
+   "license": "unknown",
+   "license_note": "published on the business's own site, but looks machine-generated rather than photographed (my visual judgement: nothing in the file metadata proves it either way). Not a photograph of this business or its spots, so not recorded as business-owned",
+   "appears_generated": true,
+   "description": "surfer on a glassy wave under storm light",
+   "sha256": "c1ebe34e34de6a0e8618e2b8803dd2f4eefbbb17aaa3ebbe1395dd6317fae8f4",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "id": "img-030",
+   "file": "assets/img-030.webp",
+   "source_url": "https://sanjee-surf.com/blog",
+   "photo_url": "https://sanjee-surf.com/assets/blog-october-intermonsoon-weligama-mxvQ_riM.webp",
+   "fetched_at": "2026-11-05T08:30:51Z",
+   "found_on": "own site, blog art referenced by its script bundle",
+   "license": "unknown",
+   "license_note": "published on the business's own site, but looks machine-generated rather than photographed (my visual judgement: nothing in the file metadata proves it either way). Not a photograph of this business or its spots, so not recorded as business-owned",
+   "appears_generated": true,
+   "description": "lone surfer under storm clouds, wet sand reflections",
+   "sha256": "d2e941eee0cfe9e7eb1c765243d7d04e8dd2d0a205d1f76ceaf9885c874391b6",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "id": "img-031",
+   "file": "assets/img-031.webp",
+   "source_url": "https://sanjee-surf.com/blog",
+   "photo_url": "https://sanjee-surf.com/assets/blog-november-weligama-restart-BqgP_1ds.webp",
+   "fetched_at": "2026-11-05T08:30:51Z",
+   "found_on": "own site, blog art referenced by its script bundle",
+   "license": "unknown",
+   "license_note": "published on the business's own site, but looks machine-generated rather than photographed (my visual judgement: nothing in the file metadata proves it either way). Not a photograph of this business or its spots, so not recorded as business-owned",
+   "appears_generated": true,
+   "description": "two women standing on soft-tops in calm water",
+   "sha256": "e1b39af7f1beb3908d702c773fe28bfd43aba65ddae4d4672346718f5683d6f3",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "id": "img-032",
+   "file": "assets/img-032.webp",
+   "source_url": "https://sanjee-surf.com/blog",
+   "photo_url": "https://sanjee-surf.com/assets/blog-december-peak-weligama-CCM8drwi.webp",
+   "fetched_at": "2026-11-05T08:30:51Z",
+   "found_on": "own site, blog art referenced by its script bundle",
+   "license": "unknown",
+   "license_note": "published on the business's own site, but looks machine-generated rather than photographed (my visual judgement: nothing in the file metadata proves it either way). Not a photograph of this business or its spots, so not recorded as business-owned",
+   "appears_generated": true,
+   "description": "crowded golden-hour line-up with boards on the sand",
+   "sha256": "d1c4ac07928d1445f1fde5e85dd3b171d70680569e1343bb6564c30dd0e302b3",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "id": "img-033",
+   "file": "assets/img-033.jpg",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Rjdpuj02GUFdiKL24IWMjww_hvOaF0CDe0f---PnvDnlEVcox7cEi3-K1pDHFcae74KaR4MuhTQrYzCAboN9A7J328E8qTVZHPJWLzFuMr-J3fi2iSqKGae8odsk-jsf6cjc_w8p29TXTR=s2000-k-no",
+   "google_photo_id": "CIABIhDexRGhyDDvnm8BIrMZ0upp",
+   "fetched_at": "2026-11-05T08:37:36Z",
+   "found_on": "google",
+   "license": "review-photo",
+   "license_note": "uploaded to the Google listing by Andrea Guenster, not by the business",
+   "google_label": "Photo - Dec 2025",
+   "listed_size": [
+    1280,
+    853
+   ],
+   "description": "three people on a beach below a red cliff and a rock wall, with white boards",
+   "sha256": "d00b9c7686e8c5d174513c796761b1562bd868ee11a148c5776f1033920ab5fe",
+   "width": 1280,
+   "height": 853
+  },
+  {
+   "id": "img-034",
+   "file": "assets/img-034.jpg",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SwCEGsMoS5XVZnVapktys9APKnGvKJ7HEpfWJ2cGCYr-kQvfZ-z8QT9-FjApJG53IfTlxK32giqRDnIwm-9qVEnaW0iFKmnOJCGgzXEVXJoSIAkWmhpkO7oZF2gVpgI0XfLwWevjHXBSMi=s2000-k-no",
+   "google_photo_id": "CIABIhAmZo5bqp0miQiSIZWvF5vg",
+   "fetched_at": "2026-11-05T08:37:36Z",
+   "found_on": "google",
+   "license": "review-photo",
+   "license_note": "uploaded to the Google listing by Andrea Guenster, not by the business",
+   "google_label": "Photo - Dec 2025",
+   "listed_size": [
+    1280,
+    1280
+   ],
+   "description": "a surfer in silhouette crouched on a wave in heavy white water",
+   "sha256": "c57c21f5f9352f029050160c91d53f875e12ea53d376afca75ac4ceaf267a12f",
+   "width": 1280,
+   "height": 1280
+  },
+  {
+   "id": "img-035",
+   "file": "assets/img-035.jpg",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TstNiAoUwdHGg0v_h62RTg5cSB414qAF0J4eAB6LAadDmYlflM9hD0lyoIdNiCr7_CGq0V3PiuSYAl85395c9lamdb4pmtDIPrFMjhnWkBOZhm6NuVXf92oPmY4_KI5QzPwrd3-5DOnNE=s2000-k-no",
+   "google_photo_id": "CIABIhBVnedWnTMnvnzqIKQWC9i_",
+   "fetched_at": "2026-11-05T08:37:36Z",
+   "found_on": "google",
+   "license": "stock",
+   "license_note": "watermarked \"Nilanka Sampath Photography\"; uploaded to the Google listing by Andrea Guenster. A third party's work: not usable without that photographer's permission",
+   "google_label": "Photo - Dec 2025",
+   "listed_size": [
+    1354,
+    762
+   ],
+   "description": "a surfer turning on a small wave; carries the signature watermark \"Nilanka Sampath Photography\"",
+   "sha256": "08fc488f2067544317895708e2b90b2069c6d5a0869065fa02e6137caaa0d087",
+   "width": 1354,
+   "height": 762
+  },
+  {
+   "id": "img-036",
+   "file": "assets/img-036.jpg",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "photo_url": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Q45tC9RAJfafhDLUBLf6sKGdFPW3OhfjklhEyPMKTUwiLd67gtDeqZ6SgqsB7ilFMXj77vMyTkPiafsWj6vV6a680jfoAz7ddKuCmuTpHWxWiKT17Lf9zeZ9TUnip9ar3HnDhLiye-xWk=s2000-k-no",
+   "google_photo_id": "CIABIhDdNJ-2FkeQ8-csZCZZ3des",
+   "fetched_at": "2026-11-05T08:37:36Z",
+   "found_on": "google",
+   "license": "review-photo",
+   "license_note": "uploaded to the Google listing by the reviewer Tim St, not by the business",
+   "google_label": "Photo - Feb 2026",
+   "listed_size": [
+    1447,
+    2321
+   ],
+   "description": "two surfers walking up a beach of rippled sand carrying boards, cliff and sky behind",
+   "sha256": "4c3f4b67afdfb766c2e6f18eb7da76c5d843862341c4706246b4edc1bd246f11",
+   "width": 1247,
+   "height": 2000
+  },
+  {
+   "id": "img-037",
+   "file": "assets/img-037.jpg",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "photo_url": "https://lh3.googleusercontent.com/grass-cs/AABkmLfI5di2ZN7g53Mb6ioK4zNHvsdYhRe7g5X6VoUVngsAeN2FXu1urLMliDdsFYcFg-H3TDMpF2ZeVmqunNPaDwnHiu3YbkpjTvkH3UfeOEQxk2doZZFxbqUHHLSqEiS3E9oeMslaSVQQlz4=s2000-k-no",
+   "review_id": "Ci9DQUlRQUNvZENodHljRjlvT2pab1NtcDVOR2MyTjA1VFZtWlZTalYwTm5wMk4xRRAB",
+   "fetched_at": "2026-11-05T08:34:45Z",
+   "found_on": "google review",
+   "license": "review-photo",
+   "license_note": "attached to a Google review by Dr. Marcel Panzer",
+   "description": "empty beach curving away to palms, thin surf, big sky",
+   "sha256": "c9617a1e214a37765e01bd64fc664b53869d5923f7b7402738103eb990437be1",
+   "width": 1500,
+   "height": 2000
+  },
+  {
+   "id": "img-038",
+   "file": "assets/img-038.jpg",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "photo_url": "https://lh3.googleusercontent.com/grass-cs/AABkmLf-ssI5vqmOsgcaHEMuwoivoBFw3Ah3mkXL3Z898ecd9ovCFQ7KDX4ZurL1dwvqJtUNHW3yMox1fXH5ANaRZUu6ZRheevzkvnvaR3SQz6s51n_DSD0jzFvtznTkmD6aHaL6woMwjkgcihjt=s2000-k-no",
+   "review_id": "Ci9DQUlRQUNvZENodHljRjlvT2pab1NtcDVOR2MyTjA1VFZtWlZTalYwTm5wMk4xRRAB",
+   "fetched_at": "2026-11-05T08:34:45Z",
+   "found_on": "google review",
+   "license": "review-photo",
+   "license_note": "attached to a Google review by Dr. Marcel Panzer",
+   "description": "opening frame of vid-003: silver backlit sea, a surfer on a small wave",
+   "sha256": "9716998d120d09b160c9a5e78204c800f04d777b24f4c0717486ea20d09e7a90",
+   "width": 1080,
+   "height": 1920
+  },
+  {
+   "id": "img-039",
+   "file": "assets/img-039.jpg",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "photo_url": "https://lh3.googleusercontent.com/grass-cs/AABkmLcT8a3mA97s6Jfrutfdh8Hb3qNaJ1hWwBSAHo_sG-5iIoCXhp9MkH9GTVcF6I1dWO0c0u8erulitby_tm5aP_cSvzHEXWmQDDSwdg1kc-Rbc4EqsLaSrrgIKmWz10PN2Mu8Umq_oai7scZv=s2000-k-no",
+   "review_id": "Ci9DQUlRQUNvZENodHljRjlvT2pab1NtcDVOR2MyTjA1VFZtWlZTalYwTm5wMk4xRRAB",
+   "fetched_at": "2026-11-05T08:34:45Z",
+   "found_on": "google review",
+   "license": "review-photo",
+   "license_note": "attached to a Google review by Dr. Marcel Panzer",
+   "description": "dusk over a shore break, orange horizon",
+   "sha256": "1f3d365bb5c7aa4c2534f51942ad720821f9ffb06eecfd2898dbc4a2d0baac79",
+   "width": 1500,
+   "height": 2000
+  },
+  {
+   "id": "img-040",
+   "file": "assets/img-040.jpg",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "photo_url": "https://lh3.googleusercontent.com/grass-cs/AABkmLeMp-5mrHBdzH4bfvxhhZnaiZl1p8lIrE1fJwMcBOwUr0ZUNHljyi7o9uSBOkJ70cV53azpxqO8Q6aXCkUuiDneYXcqU4HboCLwBxGyQBccuE_YBXSOH0pPX1rqHR91ZEDLMRo6Q7dmcpg=s2000-k-no",
+   "review_id": "Ci9DQUlRQUNvZENodHljRjlvT2s4NFZXeFVaR3ROTVZoaFdFSlhUMUF5VEhobmVFRRAB",
+   "fetched_at": "2026-11-05T08:34:45Z",
+   "found_on": "google review",
+   "license": "review-photo",
+   "license_note": "attached to a Google review by samagra singh",
+   "description": "opening frame of vid-004: a learner on a wave near shore, others in the water, grey light",
+   "sha256": "308d308016240c7326a4ff1fac951ff6d2a6d7a8454d382eeb528bc99af07ce3",
+   "width": 1125,
+   "height": 2000
+  },
+  {
+   "id": "img-041",
+   "file": "assets/img-041.jpg",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "photo_url": "https://lh3.googleusercontent.com/grass-cs/AABkmLeJ7MRdvjVhTuab7Jld-6d5Hl0ck7aS253Ez5Hrxs6RcmJ5QJwKtePhT47gSntJ-wIEw1_j4Exg6BQSgB5hLPXAwT1sy40DPiTtm7lze0O1NYoMhga75XHqKPcFt2-2WnpQis7jG0p3vBU=s2000-k-no",
+   "review_id": "Ci9DQUlRQUNvZENodHljRjlvT2tGb1Rrb3lYMVl3WkdjelpIVkNjV3cyUlhJMFYyYxAB",
+   "fetched_at": "2026-11-05T08:34:45Z",
+   "found_on": "google review",
+   "license": "stock",
+   "license_note": "watermarked \"Nilanka Sampath Photography\"; attached to a Google review by Rossana Encina. A third party's work: not usable without that photographer's permission",
+   "description": "a man with his hair tied up and a woman carrying boards along the sand, both gesturing to camera; carries the signature watermark \"Nilanka Sampath Photography\"",
+   "sha256": "dadcb6fe74fc3531f08dfa96feede2602ff1e57ef79f6e1d8a36e39759e84856",
+   "width": 2000,
+   "height": 1125
+  }
+ ],
+ "images_note": "41 images. 20 business-owned (6 from the business's Google account, 14 from its site), 7 review-photo, 2 stock (watermarked), 12 unknown (blog art that looks generated). Not downloaded: og-image.jpg (a crop of the paddling photo), the favicons (a crop of the Sanjee photo). 49 of Google's 59 listed items sit behind its sign-in prompt and were not reached. Quality warning for the designer: only img-002 reaches 2000 px in landscape and it has no surfer in it; the action shots are under 1000 px (img-007, img-011), soft (img-011) or distant (img-009, img-010); nothing strong and large shows the school at work. People are identifiable in some photos, and the site's Terms promise explicit consent before publishing identifiable images.",
+ "videos": [
+  {
+   "id": "vid-001",
+   "license": "business-owned",
+   "license_note": "uploaded to the business's Google listing by the account named \"Sanjee Surf School\" (maps contrib 117718382823342320112)",
+   "found_on": "Google listing gallery, labelled \"Video - Apr 2026\"",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/@5.9604518,80.4035935,3a,75y,90t/data=!3m8!1e5!3m6!1sCIABIhCYL2gCF1pb6WUGZREe_3x7!2e10!3e10!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FANWiy9QYGhtwPA9igxMgLjQuX1ytDotlqnUhAZX9Fs4rklLpNIxaLf-3t-mnoyAmI_DEsXDq7pr_j2p8-DKHnOIt-79Nc-LW_J4cf6eEujzRvAryNHOugic-NLLfLIlK66BoXu5_wZw4K8hc7kE%3Dw203-h113-k-no!7i832!8i464!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!10e5!16s%2Fg%2F11ybcfd3tx?hl=en&entry=ttu",
+   "photo_id": "CIABIhCYL2gCF1pb6WUGZREe_3x7",
+   "fetched_at": "2026-11-05T08:46:04Z",
+   "duration_s": 23.196,
+   "source_file": null,
+   "sheet": null,
+   "renditions": [],
+   "poster": null,
+   "cut": null,
+   "hero_candidate": null,
+   "fetch_status": "NOT ON DISK. A plain GET of the player's direct URL (no cookies, no referer) answers 403 and tools/fetch-video.mjs answers \"Unsupported URL\" for the page: treated as a wall and not worked around. So no source file, contact sheet, cut, rendition or poster exists",
+   "resolution": [
+    832,
+    464
+   ],
+   "shows": "Only the opening frame was seen (the viewer did not play in the headless browser): an instructor and a student practising the pop-up on the sand on a red and a blue soft-top, beach furniture behind. The rest of the 23 s is unseen. Still recorded as img-005.",
+   "hero_note": "not rated: unseen beyond the first frame; at 832 px wide it is under the 1200 px floor for full-width use and would be for a small inset at most"
+  },
+  {
+   "id": "vid-002",
+   "license": "business-owned",
+   "license_note": "uploaded to the business's Google listing by the account named \"Sanjee Surf School\" (maps contrib 117718382823342320112)",
+   "found_on": "Google listing gallery, labelled \"Video - Jan 2026\"",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/@5.9604518,80.4035935,3a,75y,90t/data=!3m8!1e5!3m6!1sCIABIhBpiiXNdwv83NgsQhIrqRzZ!2e10!3e10!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FANWiy9S8vV-OGkvcYfTwOvH1jngyFhuZKyO064Q5KVXZUupwpuu-PFp7snc_wQSL-At91JkouL6gyBi5HkPkLXJbGq2r7y3TrVBpjuVuwfzP66IJY2wyf8sAurINGdITYGqXXjfEt3A381087FNK%3Dw203-h114-k-no!7i848!8i480!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!10e5!16s%2Fg%2F11ybcfd3tx?hl=en&entry=ttu",
+   "photo_id": "CIABIhBpiiXNdwv83NgsQhIrqRzZ",
+   "fetched_at": "2026-11-05T08:46:04Z",
+   "duration_s": 30.046,
+   "source_file": null,
+   "sheet": null,
+   "renditions": [],
+   "poster": null,
+   "cut": null,
+   "hero_candidate": null,
+   "fetch_status": "NOT ON DISK. A plain GET of the player's direct URL (no cookies, no referer) answers 403 and tools/fetch-video.mjs answers \"Unsupported URL\" for the page: treated as a wall and not worked around. So no source file, contact sheet, cut, rendition or poster exists",
+   "resolution": [
+    848,
+    480
+   ],
+   "shows": "Only the opening frame was seen (the viewer did not play in the headless browser): a surfer in a dark swimsuit turning on a green wave, white water behind. The rest of the 30 s is unseen. Still recorded as img-006.",
+   "hero_note": "the most promising hero subject found (water, no faces close up), but not rated: unseen beyond the first frame, and 848 px wide is under the 1200 px floor for full-width use"
+  },
+  {
+   "id": "vid-003",
+   "license": "unknown",
+   "license_note": "attached to a Google review by Dr. Marcel Panzer; a reviewer upload, and the review itself is flagged",
+   "found_on": "Google review, thumbnail marked 0:04",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/@5.9603113,80.4039507,3a,75y,90t/data=!3m8!1e5!3m6!1sCIABIhDHGDpbiVupJy6EfC-Hs0VF!2e10!3e10!6shttps:%2F%2Flh3.googleusercontent.com%2Fgrass-cs%2FAABkmLf-ssI5vqmOsgcaHEMuwoivoBFw3Ah3mkXL3Z898ecd9ovCFQ7KDX4ZurL1dwvqJtUNHW3yMox1fXH5ANaRZUu6ZRheevzkvnvaR3SQz6s51n_DSD0jzFvtznTkmD6aHaL6woMwjkgcihjt%3Dk-no!7i1080!8i1920!4m8!3m7!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!9m1!1b1!16s%2Fg%2F11ybcfd3tx?hl=en&entry=ttu",
+   "photo_id": "CIABIhDHGDpbiVupJy6EfC-Hs0VF",
+   "fetched_at": "2026-11-05T08:46:04Z",
+   "duration_s": 5.061,
+   "source_file": null,
+   "sheet": null,
+   "renditions": [],
+   "poster": null,
+   "cut": null,
+   "hero_candidate": null,
+   "fetch_status": "NOT ON DISK. A plain GET of the player's direct URL (no cookies, no referer) answers 403 and tools/fetch-video.mjs answers \"Unsupported URL\" for the page: treated as a wall and not worked around. So no source file, contact sheet, cut, rendition or poster exists",
+   "resolution": null,
+   "shows": "Only Google's still was seen: silver backlit sea with a surfer on a small wave (img-038)."
+  },
+  {
+   "id": "vid-004",
+   "license": "unknown",
+   "license_note": "attached to a Google review by samagra singh; a reviewer upload",
+   "found_on": "Google review, thumbnail marked 0:13",
+   "source_url": "https://www.google.com/maps/place/Sanjee+Surf+School/@5.9603113,80.4039507,3a,75y,90t/data=!3m8!1e5!3m6!1sCIABIhAdhoEL5WO89EyNi3OsOBfO!2e10!3e10!6shttps:%2F%2Flh3.googleusercontent.com%2Fgrass-cs%2FAABkmLeMp-5mrHBdzH4bfvxhhZnaiZl1p8lIrE1fJwMcBOwUr0ZUNHljyi7o9uSBOkJ70cV53azpxqO8Q6aXCkUuiDneYXcqU4HboCLwBxGyQBccuE_YBXSOH0pPX1rqHR91ZEDLMRo6Q7dmcpg%3Dk-no!7i4320!8i7680!4m8!3m7!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!9m1!1b1!16s%2Fg%2F11ybcfd3tx?hl=en&entry=ttu",
+   "photo_id": "CIABIhAdhoEL5WO89EyNi3OsOBfO",
+   "fetched_at": "2026-11-05T08:46:04Z",
+   "duration_s": 13.792,
+   "source_file": null,
+   "sheet": null,
+   "renditions": [],
+   "poster": null,
+   "cut": null,
+   "hero_candidate": null,
+   "fetch_status": "NOT ON DISK. A plain GET of the player's direct URL (no cookies, no referer) answers 403 and tools/fetch-video.mjs answers \"Unsupported URL\" for the page: treated as a wall and not worked around. So no source file, contact sheet, cut, rendition or poster exists",
+   "resolution": null,
+   "shows": "Only Google's still was seen: a learner on a wave near shore, grey light (img-040)."
+  }
+ ],
+ "videos_note": "The business publishes video (2 clips on its Google listing), and they are NOT harvested: see fetch_status on each. Own site: no <video> and no embed in any of the 67 pages or the script bundle. YouTube @sanjeesurf: 404, and searches found no other channel. Vimeo /sanjeesurf: 404. Instagram and Facebook: the linked accounts are unavailable, so no reels. TikTok: none. Constraint 6 is therefore not met: entries exist but with no file, sheet or cut. No hero candidate is named because nobody has seen these clips play.",
+ "existing_site": {
+  "url": "https://sanjee-surf.com/",
+  "status": 200,
+  "fetched_at": "2026-11-05T08:53:31Z",
+  "screenshot": "assets/old-site-mobile.png",
+  "screenshot_desktop": "assets/old-site-desktop.png",
+  "first_load_bytes_mobile": 1179410,
+  "first_load_bytes_desktop": 1179152,
+  "lcp_ms_mobile": 2148,
+  "lcp_ms_desktop": 1488,
+  "cls_mobile": 0,
+  "measure_note": "one unthrottled headless run, so a floor rather than a field measure",
+  "document_width_at_390": 417,
+  "document_width_at_1440": 1446,
+  "built_with": "Lovable (asset path /lovable-uploads/ and its scripts in the page), Supabase and Stripe. The static HTML is an empty shell of 2,435 bytes: everything is rendered by JavaScript.",
+  "last_updated_hint": "tour rows created 2026-10-22; blog posts dated Oct 8, 2026; sitemap lastmod up to 2026-10-08. An actively maintained site with 67 pages and a large blog.",
+  "notes": [
+   "Scrolls sideways: 417 px wide in a 390 px phone viewport (the scout measured 438 in 412), and 1446 in 1440.",
+   "Home page contact block still shows a template placeholder as its location: \"Tropical Beach, Paradise Coast\".",
+   "Home page contact block prints sanjee@sanjeesurf.com; that domain has no MX or A record and did not answer (checked 2026-11-05), so mail to it cannot arrive.",
+   "Home page has no phone number and no WhatsApp link at all.",
+   "All three social links in the footer are dead (Instagram, Facebook, YouTube), and the rental page still says \"or message us on Instagram\".",
+   "Surf report shows \"TODAY'S SURF RATING 5/5 Excellent\" with 4-5 ft waves right beside \"Live data temporarily unavailable. Showing estimated conditions.\", seen on the first browser load of this harvest: when its data fails it still shows a top rating. Later loads also got a 429 from that call and a red \"Could not refresh surf conditions\" toast over the hero on a phone; those may have been provoked by this harvest's own repeated page loads, so do not quote the toast as something every visitor sees.",
+   "Structured data claims 150 reviews; Google has 13. Home page review block shows \"1 week ago\" against Google's 7–10 months.",
+   "Structured data image /lovable-uploads/sanjee-hero.jpg answers 404.",
+   "First screen is an infinity pool, labelled in its alt text as the school's location; no surfer, no water sports, in a business with surf action to show.",
+   "The cookie notice takes the lower part of the first phone screen.",
+   "Blog art looks machine-generated (for example a pyramid-shaped hill behind \"Kabalana\"), while the blog says \"no second-hand info, no AI summaries\".",
+   "The site contradicts itself on price, deposit, cancellation, experience and student numbers (see contradictions)."
+  ]
+ },
+ "languages": {
+  "seen": [
+   "en",
+   "de"
+  ],
+  "owner_language_hint": "si",
+  "note": "English site with one German-titled blog post and an English/Deutsch switch in its spot finder. owner_language_hint is context only; the pitch is always in English."
+ },
+ "contradictions": [
+  {
+   "what": "name",
+   "values": [
+    "Sanjee Surf School (Google, tee)",
+    "Sanjee Surf (own site, Terms)"
+   ],
+   "sources": [
+    "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+    "https://sanjee-surf.com/"
+   ]
+  },
+  {
+   "what": "address",
+   "values": [
+    "Kadabaddagama, Weligama 81700, Sri Lanka (Google)",
+    "Tropical Beach, Paradise Coast (home page contact block, a placeholder)",
+    "Coco Beach, Weligama Bay, Matara District, Sri Lanka (rental page)",
+    "Weligama Beach, Sri Lanka (/faq)"
+   ],
+   "sources": [
+    "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+    "https://sanjee-surf.com/",
+    "https://sanjee-surf.com/surfboard-rental-weligama",
+    "https://sanjee-surf.com/faq"
+   ],
+   "resolved": "playbook §6: the Google listing address"
+  },
+  {
+   "what": "coordinates",
+   "values": [
+    "5.9603113, 80.4039507 (Google pin, 105 m from shore per the scout)",
+    "5.9727, 80.4298 (site schema, nearer Weligama town, about 3 km away)"
+   ],
+   "sources": [
+    "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+    "https://sanjee-surf.com/"
+   ]
+  },
+  {
+   "what": "where Coco Beach is",
+   "values": [
+    "\"at the eastern end of the bay\" (/surfing-weligama)",
+    "the Google pin and map label \"Coconut Beach\" lie west of the town coordinates the site itself gives"
+   ],
+   "sources": [
+    "https://sanjee-surf.com/surfing-weligama",
+    "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en"
+   ]
+  },
+  {
+   "what": "email",
+   "values": [
+    "sanjee@sanjee-surf.com (/faq, schema, booking dialog; MX exists)",
+    "sanjee@sanjeesurf.com (home page contact block; domain has no MX or A record)"
+   ],
+   "sources": [
+    "https://sanjee-surf.com/faq",
+    "https://sanjee-surf.com/"
+   ],
+   "resolved": "sanjee-surf.com is the only one that can receive mail"
+  },
+  {
+   "what": "hours",
+   "values": [
+    "9 am–5 pm daily (Google)",
+    "6 AM–6 PM daily (home page, schema)",
+    "06:00–18:30 daily (rental page)"
+   ],
+   "sources": [
+    "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+    "https://sanjee-surf.com/",
+    "https://sanjee-surf.com/surfboard-rental-weligama"
+   ]
+  },
+  {
+   "what": "review count",
+   "values": [
+    "13 (Google)",
+    "150 (site schema)"
+   ],
+   "sources": [
+    "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+    "https://sanjee-surf.com/"
+   ],
+   "resolved": "Google: 13"
+  },
+  {
+   "what": "experience",
+   "values": [
+    "\"over 15 years\"; \"surfing since age 8\"; \"learned to surf before I could ride a bike\" (home page)",
+    "\"20+ years surfing\", \"12+ years teaching\", \"I caught my first wave here when I was twelve\" (/about)",
+    "\"I've lived along this coast for 28 years\" (a blog post)"
+   ],
+   "sources": [
+    "https://sanjee-surf.com/",
+    "https://sanjee-surf.com/about",
+    "https://sanjee-surf.com/blog/hidden-spots-weligama-ahangama"
+   ]
+  },
+  {
+   "what": "students taught",
+   "values": [
+    "500+ (home page stat and team card)",
+    "more than 2,000 (home page bio)",
+    "3,000+, plus 5,000+ lessons (/about)"
+   ],
+   "sources": [
+    "https://sanjee-surf.com/",
+    "https://sanjee-surf.com/about"
+   ]
+  },
+  {
+   "what": "lesson format",
+   "values": [
+    "\"All sessions are private\" (home page)",
+    "\"small groups\" (/about); group lesson of max 4, or 2–4 (/surfing-weligama, /faq)",
+    "Beginner Lesson $40 listed apart from Private Coaching $50, though both are said to be private (home page)"
+   ],
+   "sources": [
+    "https://sanjee-surf.com/",
+    "https://sanjee-surf.com/about",
+    "https://sanjee-surf.com/surfing-weligama",
+    "https://sanjee-surf.com/faq/private-vs-group-surf-lessons"
+   ]
+  },
+  {
+   "what": "lesson price",
+   "values": [
+    "Beginner $40, Private $50 (home page)",
+    "group about $25, private about $45 (/faq/how-much-does-a-surf-lesson-cost-in-weligama)"
+   ],
+   "sources": [
+    "https://sanjee-surf.com/",
+    "https://sanjee-surf.com/faq/how-much-does-a-surf-lesson-cost-in-weligama"
+   ],
+   "resolved": "offers carry the home page; that FAQ itself defers to it"
+  },
+  {
+   "what": "multi-day packages",
+   "values": [
+    "Week Intensive only (home page)",
+    "3-, 5- and 7-day packages with video analysis and a safari (/faq), no prices"
+   ],
+   "sources": [
+    "https://sanjee-surf.com/",
+    "https://sanjee-surf.com/faq"
+   ]
+  },
+  {
+   "what": "tuk-tuk price and size",
+   "values": [
+    "half day $80, full day $120, up to 2 surfers (home page, /tuktuk)",
+    "half day from about $60 up to 3 people, full day from about $110 (/faq/how-much-does-a-tuk-tuk-safari-cost)",
+    "\"comfortably fits 2–3 passengers\" (/faq)"
+   ],
+   "sources": [
+    "https://sanjee-surf.com/",
+    "https://sanjee-surf.com/faq/how-much-does-a-tuk-tuk-safari-cost",
+    "https://sanjee-surf.com/faq"
+   ]
+  },
+  {
+   "what": "tour inclusions",
+   "values": [
+    "\"Guided tasting included\"; \"Snorkel with wild green turtles\"; \"We provide surfboards\" (/tuktuk, descriptive section)",
+    "tastings, snorkeling and surfboards excluded (the priced cards on the same page)"
+   ],
+   "sources": [
+    "https://sanjee-surf.com/tuktuk"
+   ],
+   "resolved": "the priced cards are the narrower and safer claim"
+  },
+  {
+   "what": "rental deposit",
+   "values": [
+    "$50 or $100 by board type, cash or card hold (rental page)",
+    "refundable cash deposit of $100 or 30,000 LKR on all rentals (/faq)"
+   ],
+   "sources": [
+    "https://sanjee-surf.com/surfboard-rental-weligama",
+    "https://sanjee-surf.com/faq/is-there-a-deposit-for-board-rental"
+   ]
+  },
+  {
+   "what": "hardboard day rate",
+   "values": [
+    "$20 a day (rental page)",
+    "\"typically run $10–15 per day\" (/surfing-weligama FAQ, about the town generally)"
+   ],
+   "sources": [
+    "https://sanjee-surf.com/surfboard-rental-weligama",
+    "https://sanjee-surf.com/surfing-weligama"
+   ]
+  },
+  {
+   "what": "board swaps",
+   "values": [
+    "free any time (rental page)",
+    "once per day, weekly or monthly rentals only (/faq)"
+   ],
+   "sources": [
+    "https://sanjee-surf.com/surfboard-rental-weligama",
+    "https://sanjee-surf.com/faq"
+   ]
+  },
+  {
+   "what": "cancellation",
+   "values": [
+    "more than 48 h full refund, 24–48 h 50%, under 24 h none (Terms, last updated January 2025)",
+    "24 h or more full deposit refund, under 24 h deposit kept (/faq)"
+   ],
+   "sources": [
+    "https://sanjee-surf.com/terms",
+    "https://sanjee-surf.com/faq/cancellation-and-refund-policy"
+   ]
+  },
+  {
+   "what": "card on the day",
+   "values": [
+    "\"All prices in USD, cash (LKR equivalent) or card\" (rental page)",
+    "\"We do not currently take card payments on the beach\" (/faq)"
+   ],
+   "sources": [
+    "https://sanjee-surf.com/surfboard-rental-weligama",
+    "https://sanjee-surf.com/faq/how-to-book-a-surf-lesson-with-sanjee-surf"
+   ]
+  },
+  {
+   "what": "water temperature",
+   "values": [
+    "27–29 °C (/surfing-weligama, /faq)",
+    "26–30 °C, \"rashguard or thin shorty\" (/surfing-sri-lanka)"
+   ],
+   "sources": [
+    "https://sanjee-surf.com/surfing-weligama",
+    "https://sanjee-surf.com/surfing-sri-lanka"
+   ]
+  },
+  {
+   "what": "who is behind the business",
+   "values": [
+    "\"Sanjee\", born in Weligama, first-person founder (/about)",
+    "Marcel Panzer, Berlin, \"operating as Sanjee Surf\"; German law and Berlin courts (Terms)"
+   ],
+   "sources": [
+    "https://sanjee-surf.com/about",
+    "https://sanjee-surf.com/terms"
+   ],
+   "see": "flags_for_operator"
+  }
+ ],
+ "flags_for_operator": [
+  "Who the owner is. Terms, Privacy and Imprint name Marcel Panzer of Berlin as the provider \"operating as Sanjee Surf\", not Sanjee. A 5-star Google review, one of 13, is by \"Dr. Marcel Panzer\"; same name, not proven the same person. Its quote is marked do_not_use. The writer needs to know who actually decides before any pitch.",
+  "This is not a weak-presence business in the usual sense: a 67-page, actively maintained site (tours added 2026-10-22) with its own booking and Stripe flow and a large blog. It scored low on one measured fault, sideways scroll. The case for a new site is its visible errors and contradictions, and whoever built it may be the person we would be pitching.",
+  "Video is the known hole: the business has two clips on Google that could not be fetched without working around a 403. A human can decide how to obtain them, or go ahead on stills."
+ ],
+ "gaps": [
+  {
+   "field": "videos[] source files",
+   "why": "two business-owned clips on Google could not be fetched (403; yt-dlp unsupported); no sheet, cut or poster",
+   "pitch_point": false,
+   "blocking": false,
+   "note": "breaks harvester constraint 6, not the type's must-have list"
+  },
+  {
+   "field": "hero media",
+   "why": "nothing strong and large shows the school at work: img-002 is the only landscape at 2000 px and has no surfer",
+   "pitch_point": true
+  },
+  {
+   "field": "hours",
+   "why": "three different sets published",
+   "pitch_point": true
+  },
+  {
+   "field": "contact.socials",
+   "why": "Instagram, Facebook and YouTube links are all dead; no TripAdvisor listing found",
+   "pitch_point": true
+  },
+  {
+   "field": "booking.cancellation",
+   "why": "two different policies published",
+   "pitch_point": true
+  },
+  {
+   "field": "offers: prices",
+   "why": "lesson, tuk-tuk and deposit prices differ between pages; home page prices recorded",
+   "pitch_point": true
+  },
+  {
+   "field": "offers: group lessons",
+   "why": "home page says all private; other pages sell groups at about $25; no definite group offer",
+   "pitch_point": true
+  },
+  {
+   "field": "business.since",
+   "why": "no founding year published",
+   "pitch_point": false
+  },
+  {
+   "field": "experience and student numbers",
+   "why": "stated three different ways, none confirmed",
+   "pitch_point": true
+  },
+  {
+   "field": "team",
+   "why": "only \"Sanjee\" is named, no surname; other instructors unnamed",
+   "pitch_point": true
+  },
+  {
+   "field": "credentials",
+   "why": "ISA Level 1 and lifeguard are self-reported on the site; no certificate found",
+   "pitch_point": false
+  },
+  {
+   "field": "business.logo",
+   "why": "no logo file published; only on a tee",
+   "pitch_point": false
+  },
+  {
+   "field": "location.shop",
+   "why": "site describes a shop on the sand with 40+ boards and named brands; no photograph or independent source",
+   "pitch_point": false
+  },
+  {
+   "field": "reviews.quotes",
+   "why": "8 of 13 Google reviews are behind the sign-in prompt; review dates are relative only",
+   "pitch_point": false
+  },
+  {
+   "field": "reviews.tripadvisor",
+   "why": "no listing found; site answered 403",
+   "pitch_point": false
+  },
+  {
+   "field": "images: rights",
+   "why": "some action shots may be by a beach photographer (the Nilanka Sampath watermark appears on two listing shots); identifiable guests need consent per the site's own Terms",
+   "pitch_point": false
+  },
+  {
+   "field": "season: closed months",
+   "why": "no closing period published",
+   "pitch_point": false
+  }
+ ],
+ "must_have_check": {
+  "type": "surf_school",
+  "contact": "met (phone and WhatsApp +94774004422, Google and own site; email on own site)",
+  "lessons_or_priceList_min_1": "met (3 lessons on the home page with prices, plus 12 tours and rental rates)",
+  "photos_min_3": "met (20 business-owned images; quality warning in images_note)",
+  "core_facts_for_copy": "met (what, where, offers, booking, a large body of owner-side copy, though it contradicts itself)",
+  "verdict": "buildable in test mode; no blocking gap. Constraint 6 (video) is not met, and flags_for_operator need a human before pitching."
+ }
+}
