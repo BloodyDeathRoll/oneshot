@@ -150,6 +150,7 @@ Served for review: `dist/` on **http://0.0.0.0:8970/** by a small rebuild-safe n
 | restaurant hours | the clock's "Until 22:00" / "From 7:30" | `restaurantHours`, parsed from `hoursNote` (the seed fails if the sentence changes shape) |
 | testimonial placement | the two quotes inside the set-piece | `momentQuotes`, by author: Erin (afternoon) and Janno (7:30). Each review shows once |
 | geo | JSON-LD `geo` | `geo`, the Google pin from dossier `location.lat_lng` (`contact.mapUrl` is a place_id URL with no pin) |
+| other names and listings (4h) | JSON-LD `alternateName` and extra `sameAs` | `listings`: Google's listing name "Coconut Surf Inn Guest House and Restaurant" (dossier `business.google_listing_name`) and the Tripadvisor entity d7744329 (dossier `contact.socials.tripadvisor`). Never shown on the page; see `../seo-report.md` |
 
 The clock moments' titles and ticks ("The afternoon", "Sunset", "The break"…) and the chip words are template labels.
 

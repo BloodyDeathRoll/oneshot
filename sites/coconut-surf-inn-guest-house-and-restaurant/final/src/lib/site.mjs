@@ -151,16 +151,25 @@ export const AI_CRAWLERS = {
 export const abs = (u) => (SITE ? new URL(u, SITE).href : null)
 export const ROUTES = ['', 'rooms/']
 
-/* the meta description: owner-written fields only, joined as sentences, cut at a sentence boundary to 155 */
+/* the meta description: owner-written fields only, joined as sentences, ≤ 155. 4h: a part that would overflow is
+   skipped and the next one is tried (was: stop at the first overflow), so a shorter later sentence still gets in. */
 export const metaDescription = (parts, max = 155) => {
   let out = ''
-  for (const p of parts.filter(Boolean).map((s) => s.trim().replace(/[.\s]+$/, ''))) {
+  for (const p of parts.filter(Boolean).map((s) => s.trim().replace(/[.\s]+$/, '')).filter(Boolean)) {
     const next = out ? `${out} ${p}.` : `${p}.`
-    if (next.length > max) break
-    out = next
+    if (next.length <= max) out = next
   }
   return out
 }
+/* a body's sentences, in order (split after . ! ? followed by a space or a paragraph break) */
+export const sentences = (body) => (body ?? '').split(/(?<=[.!?])\s+/).map((s) => s.trim()).filter(Boolean)
+const firstSentence = (s) => sentences(s)[0] ?? ''
+/* 4h: the home page's description, also the JSON-LD description on every page: what + where (tagline), then the
+   break (spot) or the restaurant (hoursNote), whichever still fits */
+export const HOME_DESCRIPTION = metaDescription([c.tagline, firstSentence(c.spot), c.hoursNote])
+/* 4h: the rooms page's own description: the rooms block's heading and its sentences, whichever fit */
+const roomsBlock = blocks.find((b) => b.slot === 'offer') ?? null
+export const ROOMS_DESCRIPTION = metaDescription([roomsBlock?.heading, ...sentences(roomsBlock?.body)]) || HOME_DESCRIPTION
 
 const COUNTRY = { 'sri lanka': 'LK' }
 /* contact.address (free text) → PostalAddress, "street…, town [postcode], country" (playbook §6). Never adds a part. */
@@ -214,7 +223,10 @@ export const businessLd = ({ description } = {}) => {
   const postal = postalAddress(k.address)
   const gp = G.geo, pin = pinFromMapUrl(k.mapUrl) ?? (gp && Math.abs(gp.lat) <= 90 && Math.abs(gp.lng) <= 180 ? { lat: gp.lat, lng: gp.lng } : null)
   const images = pageImages()
-  const same = [...new Set((c.ratings ?? []).map((r) => safeUrl(r.url)).filter(Boolean))]
+  /* 4h: the listings, then the SCHEMA GAP extras (gaps.listings: Tripadvisor), https only, each once */
+  const same = [...new Set([...(c.ratings ?? []).map((r) => r.url), ...(G.listings?.sameAs ?? [])].map(safeUrl).filter(Boolean))]
+  /* 4h: Google's listing name, when it differs from businessName (gaps.listings; never shown on the page) */
+  const alt = [...new Set((G.listings?.alternateName ?? []).filter((n) => n && n !== c.businessName))]
   const roomsLd = (c.rooms ?? []).map((r) => {
     const m2 = floorSize(r.note)
     return {
@@ -229,6 +241,7 @@ export const businessLd = ({ description } = {}) => {
     '@type': LD_TYPE[c.businessType] ?? 'LocalBusiness',
     ...(SITE ? { '@id': `${SITE.href}#business`, url: SITE.href } : {}),
     name: c.businessName,
+    ...(alt.length ? { alternateName: alt.length === 1 ? alt[0] : alt } : {}),
     ...(description ? { description } : {}),
     ...(SITE && images.length ? { image: images.map(abs) } : {}),
     ...(TEL ? { telephone: k.phone } : {}),

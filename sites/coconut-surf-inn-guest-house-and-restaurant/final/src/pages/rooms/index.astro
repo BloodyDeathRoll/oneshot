@@ -5,7 +5,7 @@
    and Call. Relative URLs only ('../'), so the build runs on *.workers.dev, in a subfolder or on the client's domain. */
 import css from '../../styles/site.css?raw'
 import js from '../../scripts/site.js?raw'
-import { c, L, e, t, svg, NAME, IS_PREVIEW, metaDescription, seoHead } from '../../lib/site.mjs'
+import { c, L, e, t, svg, NAME, IS_PREVIEW, ROOMS_DESCRIPTION, HOME_DESCRIPTION, seoHead, businessLd, ldJson, ogImage } from '../../lib/site.mjs'
 import { call, header, footer, bar, roomRow, fits, HEADJS, fontFaces, fontPreloads } from '../../lib/parts.mjs'
 
 const groups = L.groups.map(([n, w]) => ({ n, w, rooms: fits(n) })).filter((g) => g.rooms.length)
@@ -18,8 +18,11 @@ const main = header('../') + '<main id="main" class="roomspage"><div class="wrap
   + '</div></main>' + footer() + bar('../').replace('href="../rooms/"', 'href="./"')
 
 const title = t(L.rooms_title, { name: NAME })
-const description = metaDescription([c.tagline])
-const head = seoHead({ path: 'rooms/', title, description, image: null })
+/* 4h: the page's own description (was the tagline, the same as the home page's), and the business's JSON-LD
+   (the same entity and @id as the home page's) at the end of body */
+const description = ROOMS_DESCRIPTION
+const ld = ldJson(businessLd({ description: HOME_DESCRIPTION }))
+const head = seoHead({ path: 'rooms/', title, description, image: ogImage() }) // 4h: the home page's link-preview photo (was none)
 ---
 <!doctype html>
 <html lang="en">
@@ -38,5 +41,6 @@ const head = seoHead({ path: 'rooms/', title, description, image: null })
 <body>
 <Fragment set:html={main} />
 <script is:inline set:html={js}></script>
+<script type="application/ld+json" is:inline set:html={ld}></script>
 </body>
 </html>

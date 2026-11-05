@@ -183,6 +183,21 @@ function pin() {
   if (!(Math.abs(lat) <= 90 && Math.abs(lng) <= 180)) fail('dossier location.lat_lng is not a [lat, lng] pair')
   return { lat, lng, _source: `dossier location.lat_lng (the Google pin, ${ll.source_url}, fetched ${ll.fetched_at})` }
 }
+/* 4h: the business's other names and listings, for JSON-LD alternateName / sameAs only (never shown). The schema has
+   no field for either (seo-report.md proposals B and C). Google lists the inn as "Coconut Surf Inn Guest House and
+   Restaurant"; Booking.com, Airbnb and the sign say "Coconut Surf Inn" (businessName). Tripadvisor's entity d7744329
+   is the one Google's listing links to. Not the restaurant's own Google listing and never the "Coconut Beach" place. */
+function listings() {
+  const g = dossier.business?.google_listing_name
+  if (!g?.value || !g.source_url) fail('dossier business.google_listing_name is missing')
+  const ta = dossier.contact?.socials?.tripadvisor
+  if (ta && !/^https:\/\/www\.tripadvisor\.com\/Hotel_Review-g\d+-d7744329-/.test(ta)) fail('dossier tripadvisor URL is not entity d7744329')
+  return {
+    alternateName: [g.value],
+    sameAs: ta ? [ta] : [],
+    _source: `alternateName: dossier business.google_listing_name (${g.source_url}, fetched ${g.fetched_at}); sameAs: dossier contact.socials.tripadvisor (the entity Google's listing shows, reviews.tripadvisor). JSON-LD only; the other listings (Booking.com, Google, Airbnb) come from ratings[].url`,
+  }
+}
 const HERO_LINE = 'A guesthouse in Gurubebila, between Midigama and Weligama'
 if (!copy.tagline.startsWith(HERO_LINE)) fail('the hero line is no longer words of the tagline')
 const roomGalleries = {}
@@ -219,6 +234,7 @@ const gaps = {
   _momentQuotes: 'which testimonials[] sit in the clock set-piece (by author), beside "On the roof" and "The Eranga family home"; each review shows once on the page, so the guests slideshow holds the others. testimonials[] has no placement field',
   restaurantHours: { opens: hm[1], closes: hm[2], _source: `hoursNote ("${copy.hoursNote}"); dossier restaurant_hours` },
   geo: pin(),
+  listings: listings(),
 }
 mkdirSync(join(final, 'src', 'gaps'), { recursive: true })
 writeFileSync(join(final, 'src', 'gaps', 'gaps.json'), JSON.stringify(gaps, null, 1) + '\n')

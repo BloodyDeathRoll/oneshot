@@ -162,5 +162,14 @@
   "lat": 5.9606427,
   "lng": 80.4028521,
   "_source": "dossier location.lat_lng (the Google pin, https://www.google.com/maps/place/Coconut+Surf+Inn+Guest+House+and+Restaurant/data=!4m10!3m9!1s0x3ae114e71b426f23:0xe26a608b9e3c1b42!5m2!4m1!1i2!8m2!3d5.9606427!4d80.4028521!16s%2Fg%2F11c0q0glzw!19sChIJI29CG-cU4ToRQhs8notgauI?hl=en, fetched 2026-11-04T21:51:27Z)"
+ },
+ "listings": {
+  "alternateName": [
+   "Coconut Surf Inn Guest House and Restaurant"
+  ],
+  "sameAs": [
+   "https://www.tripadvisor.com/Hotel_Review-g2492996-d7744329-Reviews.html"
+  ],
+  "_source": "alternateName: dossier business.google_listing_name (https://www.google.com/maps/place/Coconut+Surf+Inn+Guest+House+and+Restaurant/data=!4m10!3m9!1s0x3ae114e71b426f23:0xe26a608b9e3c1b42!5m2!4m1!1i2!8m2!3d5.9606427!4d80.4028521!16s%2Fg%2F11c0q0glzw!19sChIJI29CG-cU4ToRQhs8notgauI?hl=en, fetched 2026-11-04T21:51:27Z); sameAs: dossier contact.socials.tripadvisor (the entity Google's listing shows, reviews.tripadvisor). JSON-LD only; the other listings (Booking.com, Google, Airbnb) come from ratings[].url"
  }
 }

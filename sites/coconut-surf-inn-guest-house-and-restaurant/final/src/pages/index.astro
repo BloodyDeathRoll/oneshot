@@ -12,7 +12,7 @@ import {
   c, G, L, S, e, t, paras as split, block,
   NAME, PRIMARY, HOURS, HERO_LINE, STAY, STAY_NOTE, AMENITIES, RATINGS, REVIEWS, ROOMS, FORECAST, TOWN,
   slot, img, imgOf, srcset, horizon, svg, pipe,
-  metaDescription, seoHead, businessLd, ldJson, ogImage, IS_PREVIEW,
+  HOME_DESCRIPTION, seoHead, businessLd, ldJson, ogImage, IS_PREVIEW,
 } from '../lib/site.mjs'
 import { book, call, sunCall, finder, rating, quote, paras, header, footer, bar, roomRow, HEADJS, fontFaces, fontPreloads } from '../lib/parts.mjs'
 
@@ -218,7 +218,8 @@ const mainHtml = `${header()}<main id="main">${hero}${checkin}${rooms}${house}${
 
 /* 4h-style head: title = businessName + the town of contact.address (the other finals' rule); description = owner fields only */
 const title = TOWN && `${NAME}, ${TOWN}`.length <= 60 ? `${NAME}, ${TOWN}` : NAME
-const description = metaDescription([c.tagline, first(c.spot)])
+/* 4h: tagline + the first of spot / hoursNote that still fits 155 (site.mjs HOME_DESCRIPTION) */
+const description = HOME_DESCRIPTION
 const head = seoHead({ path: '', title, description, image: ogImage() })
 const ld = ldJson(businessLd({ description }))
 /* 4g fix 6 (LCP): the first screen's photograph is preloaded per width, ahead of the inline CSS, so the phone fetches
