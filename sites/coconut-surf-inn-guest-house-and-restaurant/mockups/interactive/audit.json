@@ -1,7 +1,7 @@
 {
  "slug": "coconut-surf-inn-guest-house-and-restaurant",
  "variant": "interactive",
- "measured_at": "2026-11-05T00:04:50.333Z",
+ "measured_at": "2026-11-05T08:32:29.572Z",
  "first_load": {
   "requests": 12,
   "hosts": [
@@ -13,20 +13,20 @@
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 678477,
-  "bytes_html": 127653,
+  "bytes_total": 678510,
+  "bytes_html": 127686,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 68384,
   "bytes_images": 482440,
   "largest_image_bytes": 152504,
-  "lcp_ms": 496,
+  "lcp_ms": 584,
   "cls": 0.0005,
-  "dcl_ms": 2244
+  "dcl_ms": 2113
  },
  "scroll": {
   "early": {
-   "cls": 0.0003,
+   "cls": 0.0005,
    "shifts": []
   },
   "settled": {

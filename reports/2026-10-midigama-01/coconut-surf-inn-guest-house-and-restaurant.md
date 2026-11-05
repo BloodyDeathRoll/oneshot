@@ -234,3 +234,145 @@ The screenshots, as cited above:
 - **mobile-01 of each:** the first appearance of "A guesthouse…".
 - **unique mobile-11:** "Until 22:00" faded under the pinned frame.
 - **Blocked-Rosa captures:** calm shows the plain link in the box; interactive and unique show an empty white 500 px box.
+
+## Round 2 — quick (station 4f)
+
+critic 0.4.3 · rubric 0.3.1 · 2026-11-05 (local, 10:31–10:50) · round-2 mockups `sites/coconut-surf-inn-guest-house-and-restaurant/mockups/{calm,interactive,unique}/dist/` (designer 0.7.1). `index.html` last written 10:26 / 02:05 / 02:04 local. Served on :8921 / :8922 / :8923; md5 of each served page equals its `dist/index.html` at the start and at the end of this round. I did not read any visual-critic or experience-critic report. I read each notes.md round-2 section and checked every claim below myself.
+
+Same checks, same order, same viewports for all three (as round 1):
+- **`tools/audit-mockup.mjs` re-run** on all three, because interactive's and unique's `audit.json` were older than their round-2 page.
+- **`tools/funnel.mjs <url> --depth 3`** (`funnel-*/funnel.json`).
+- **`tools/shoot.mjs`** at 1440×900 and 390×844 (`shots/`, scratch; interactive with `?depth=force`). Calm 12,590 / 14,214 px, 16 / 19 captures; interactive 10,465 / 12,398 px, 13 / 17; unique 11,786 / 12,830 px, 15 / 17. 0 console errors.
+- **axe-core** WCAG 2.0/2.1 A+AA at 390 and 1440 after a full scroll, with every non-localhost request blocked; keyboard pass; overflow at 320, 360, 390 (JS on) and 390/1440 (JS off); reduced motion (`a11y-*.json`). Unique also: axe `color-contrast` at each of the five set-piece blocks, at both widths.
+- **Rosa pass** (`net-*.json`): first load, a gradual scroll to the block, and the same with every `rosa*` host aborted. New this round: a hit test and a real tap on the fallback link with Rosa blocked (`misc.txt`).
+- **Facts pass** (`facts-diff.txt`): page text with JS on and off, diffed against `copy/en.json`; every testimonial compared whitespace-insensitively; every href; a grep for the claims that must never appear; every room-gallery photo checked against that room's `dossier.images[].room_types`.
+- **`tools/check-design.mjs <exact page path> --no-shots`** on each page only. No `.taste-skill/` was created.
+
+### What changed since round 1, verified
+
+| round-1 finding | calm | interactive | unique |
+|---|---|---|---|
+| `funnel.mjs` read the header call icon as primary (`tel`) | **fixed**: primary `engine`, hero `engine` "Check dates on Booking.com", clicks_to_book 1, CTA above fold | **fixed**: same | **fixed**: same |
+| type not on the first phone screen | **fixed**: hero line "A guesthouse in Gurubebila, between Midigama and Weligama" (mobile-00) | **fixed** (mobile-00) | **fixed** (mobile-00) |
+| img-089 shown as the Family Room bathroom | **fixed**: 0 occurrences; all 28 gallery photos carry their room in `room_types` | **fixed**: same, 28/28 | was already clean; still 0 |
+| rolling 8.5 / 4.8 hidden from screen readers (axe serious) | n/a | **fixed**: `<span class="num" role="img" aria-label="8.5 out of 10">`, axe 0 violations | n/a |
+| small tap targets | **not changed**: 45 of 83 under 44 px wide (slideshow dots 24×44, active 36×44) | **fixed**: 0 of 40 | still 0 of 58 |
+| empty Rosa box when Rosa fails | see dim 7 | **fixed**: the frame is never added; the plain link is visible, on top, and a tap lands on `rosa.surf/spot/weligama-west` | **half fixed**: link visible (iframe opacity 0), but a tap lands on the invisible iframe and goes nowhere |
+| dimmed set-piece text 1.7–2.3:1 | n/a | n/a | **fixed**: axe `color-contrast` 0 at every block, 390 and 1440 |
+| page 7 px too wide (JS off 390; JS 320/360) | 320 JS: 344 px (not a run viewport; noted) | 320/360/390: no overflow | **fixed**: 320, 360, 390 JS on and 390 JS off all equal the viewport |
+| Erin's and Janno's quotes twice | n/a | **fixed**: each of 12 quotes once in the page text | **fixed**: same |
+| "Booking.com, 142 · Google, 88" without "reviews" | n/a | **fixed**: "Booking.com, 142 reviews" / "Google, 88 reviews" | n/a |
+
+### Shared evidence (round 2, identical for all three)
+
+- **Facts.** 0 mismatches, 0 contradicted values on every page. 12/12 testimonials verbatim with JS off (author, month, source as the dossier), each once. Every line not in the copy is an interface label or a restatement of a copy/dossier value. Not on any page: the "Coconut Beach" place's 4.8 / 120 (only the inn's Google 4.8 / 88, linked to `place_id:ChIJI29C…`), a pool, spa or level claim, a price or currency, a "breakfast included" outside Chloe's verbatim review, house number 44 or 49, WhatsApp. Rosa: calm and interactive show the inlined fixture (0.4–0.6 m, Thu 5 Nov 02:30, `generated_at` 2026-11-04T20:26Z, about 12 h old at test time); unique shows the live JSON it fetched after the scroll (0.3–0.5 m, Thu 5 Nov 08:30, swell 9.1 s from the S, wind 5 km/h cross-shore). Unique's JSON-LD `LodgingBusiness` is unchanged (8.5/10 · 142).
+- **Booking.** Every Booking.com href is exactly `dossier.booking.engine_url.value`; every `tel:` is `tel:+94778921396`; Airbnb and Google Maps links match. `audit.json.booking.tapped` lands on the Booking.com URL on all three, `primary_above_fold` true. JS off: `booking_links_reachable` 2; 14 / 14 / 20 Booking.com links. Funnel as in the table above, equal to `recommended` (engine, 1).
+- **Delivery.** Static HTML + `img/` (unique + `rooms/`). Third-party on first load: Google Fonts only (`fonts.googleapis.com` + `fonts.gstatic.com` calm/interactive, `fonts.gstatic.com` unique), allowed at 4e. 0 Rosa requests on first load on all three.
+- **Rosa (hard constraint 9).** Spot `weligama-west`; widget `https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric`, filter none, opacity 1, transform none, `elementFromPoint` = the iframe; credit "Forecast for Coconuts by Rosa" → `rosa.surf/spot/weligama-west`; no day-by-day row on the site's half; scroll CLS 0 with the widget loading and with it blocked; JS off shows the plain link on all three. After the scroll: calm requests the widget frame only (headline inlined); interactive requests a no-cors probe to the widget URL, then the frame; unique requests its JSON once, the probe, then the frame. The probe is one request more than "one JSON request plus the widget frame" — a fact for the build, not scored.
+- **Hard-fail screen.** No usable video (`videos[]` all `license: unknown`); every first screen carries a ≥ 1920 px business-owned photograph (img-009 calm/unique, img-102 interactive); no borrowed images; no secrets; no keyboard trap. **No hard fail on any page.**
+- **check-design** (facts, not taste): all three 0 problems, 0 warnings, ground `hsl(0 0% 100%)`, 0 all-caps labels, 0 labelled headings. Faces: calm Satisfy / Onest (19 headings); interactive **Merienda** / Nunito Sans (19; was Shadows Into Light Two); unique Caveat / Red Hat Text (25).
+- **Shared dimension 4 deduction (−1).** The type and place are now on the first phone screen, but the audit's other `above_fold` items (spot, included, price, trust) still begin on screen 01 under "13:00, check-in" in all three (concept choice, unchanged).
+- **Shared dimension 3 deduction (−1).** Booking.com cannot preselect a room, so every room button lands on the listing top (1 tap, within target).
+
+### calm — "The view from the roof"
+
+```
+mode: quick        round: 2        variant: calm
+total (dims 1–7): 73.5 / 80      result: pass (dims 1–7; dim 8 pending)      hard_fails: []
+```
+
+| # | dimension | weight | score | weighted | evidence |
+|---|---|---|---|---|---|
+| 1 | facts | 20 | 10 | 20.0 | Shared facts. img-089 gone; 28/28 room-gallery photos carry that room in `room_types`. Ratings 8.5/10 · 142, 4.8/5 · 88, 4.44/5 · 54 dated 4 Nov 2026. |
+| 2 | mobile + performance | 15 | 9 | 13.5 | `audit.json` (re-run): first load **926 KB** in 25 requests; JS 0 external; fonts 56 KB; largest image 79 KB; **LCP 764 ms**; CLS 0.001; scroll CLS 0.0008 / 0. No overflow at 360, 390, 1440 (JS on/off). Mobile sheet: 19 captures, no overlap; the bar from capture 01. −1: 45 of 83 tap targets under 44 px wide (slide dots 24×44). At 320 the page is 344 px wide (not a run viewport). |
+| 3 | booking CTA | 15 | 9 | 13.5 | Shared booking. Hero button above the fold (mobile-00 in the sky, desktop-00). Funnel engine/engine, 1. The header call icon is hidden on the first screen and appears with the white header (mobile-02 on). −1: the shared listing-top deduction. |
+| 4 | brand fit | 5 | 9 | 4.5 | §3 order unchanged (view → 13:00 → rooms in two groups → inside → roof → sunset band → night band + restaurant → family → 7:30 break + Rosa → 11:00 → getting here → closing). Rooms now 2 desktop rows (desktop-02/03). custom.md calm: no canvas, one hero action. −1: shared above-fold deduction. |
+| 5 | copy | 10 | 10 | 10.0 | All copy from `copy/en.json`; each quote once; labels factual. |
+| 6 | accessibility | 8 | 8 | 6.4 | axe 390 and 1440: **0 violations**, 27 rule sets pass. Skip link first; 60 tab stops, all in view with a 2 px solid outline. 0/43 images without alt; headings in order; reduced motion: no canvas, no pan. −2: the 45 narrow tap targets (unchanged from round 1). |
+| 7 | security + delivery | 7 | 8 | 5.6 | Shared delivery and Rosa. −1: **with Rosa blocked, "See today's forecast for Coconuts on Rosa" is visible in the box but not tappable**: the failed iframe (opacity 1, `pointer-events: auto`, z 1) sits over it; `elementFromPoint` at the link's centre is the iframe and a touch tap leaves the page where it is (`misc.txt`). Round 1 credited this box from its screenshot; the tap test is new this round. −1: Google Fonts (4e only). |
+| | **total 1–7** | 80 | | **73.5** | |
+
+### interactive — "Under the thatch"
+
+```
+mode: quick        round: 2        variant: interactive
+total (dims 1–7): 76.5 / 80      result: pass (dims 1–7; dim 8 pending)      hard_fails: []
+```
+
+| # | dimension | weight | score | weighted | evidence |
+|---|---|---|---|---|---|
+| 1 | facts | 20 | 10 | 20.0 | Shared facts. img-089 gone; 28/28 gallery photos match `room_types`. Hero card "Booking.com, 142 reviews · 4 Nov 2026", "Google, 88 reviews · 4 Nov 2026". Tiles "4 kinds of room · sleep 2 to 4", "2 kinds · sleep 1 or 2", "Three or four of us · 2 kinds · sleep 3 or 4" match `rooms[]`. Rosa "Swell 1.0 m, 9 s from the S" = fixture 1.04 m / 9.2 s / 172°. |
+| 2 | mobile + performance | 15 | 10 | 15.0 | `audit.json` (re-run): first load **663 KB** in 12 requests (up from 374 KB; images 482 KB, the 152 KB veranda print pulled by lazy distance); JS 0 external; fonts 68 KB; largest image 152 KB (≤ 300); **LCP 584 ms**; CLS 0.0005; scroll CLS 0.0005 / 0. **0 of 40 tap targets under 44 px.** No overflow at 320, 360, 390 or 1440, JS on or off. Mobile sheet: 17 captures, no overlap; the 3-part bar from capture 01. |
+| 3 | booking CTA | 15 | 9 | 13.5 | Shared booking. Hero button above the fold (mobile-00 on the parapet). "Call +94 77 892 1396" now sits under the check-in button (mobile-01), not in the first-screen header. −1: shared listing-top deduction. |
+| 4 | brand fit | 5 | 9 | 4.5 | §3 order as round 1 (thatch hero → 13:00 → "How do you like to sleep?" chooser + stage → inside → roof → sunset band → restaurant → family → 7:30 break + Rosa → 11:00 → getting here → closing). custom.md interactive: WebGL depth on its own photograph, tile chooser, drag row. −1: shared above-fold deduction. |
+| 5 | copy | 10 | 10 | 10.0 | Each of the 12 quotes once; "reviews" added to the hero-card counts. |
+| 6 | accessibility | 8 | 9 | 7.2 | axe 390 and 1440: **0 violations** (was 2 serious), 27 rule sets pass. Ratings `role="img"`. Skip link; 3 px solid outlines; the only outline-less stop is Rosa's own iframe (focus goes into the widget). 0/13 images without alt; headings in order; reduced motion: 1 canvas, hidden, photograph visible. −1: axe "needs review" `aria-prohibited-attr` on `<div class="picks" aria-label="Rooms">` (a label on a role-less div is not announced). |
+| 7 | security + delivery | 7 | 9 | 6.3 | Shared delivery and Rosa. With Rosa blocked the iframe is never inserted; the plain link is visible, on top (`elementFromPoint` = link) and a tap navigates to `rosa.surf/spot/weligama-west`. −1: Google Fonts (4e only). |
+| | **total 1–7** | 80 | | **76.5** | |
+
+### unique — "Round the clock"
+
+```
+mode: quick        round: 2        variant: unique
+total (dims 1–7): 76.6 / 80      result: pass (dims 1–7; dim 8 pending)      hard_fails: []
+```
+
+| # | dimension | weight | score | weighted | evidence |
+|---|---|---|---|---|---|
+| 1 | facts | 20 | 10 | 20.0 | Shared facts. 13:00 paragraph unchanged (tagline + spot + hoursNote + closing). All three ratings dated. `rooms/` page: six rooms by guests, same facts and links, no forbidden claims. JSON-LD dossier values only. Live Rosa headline from the fetched JSON. |
+| 2 | mobile + performance | 15 | 10 | 15.0 | `audit.json` (re-run): first load **362 KB** in 8 requests; JS 0 external; fonts 81 KB; largest image 78 KB; **LCP 1,672 ms** (slowest of the three, within 2.5 s); CLS 0.0012; scroll CLS 0.001 / 0. **0 of 58 tap targets under 44 px.** No overflow at 320, 360, 390 (JS on) and 390 / 1440 (JS off). Mobile sheet: 17 captures, no overlap; bar from capture 00. |
+| 3 | booking CTA | 15 | 9 | 13.5 | Shared booking. Hero button (now ink `#252323`) above the fold (mobile-00); header wordmark and round Call hidden until the hero button scrolls away. "Find your room" is a real link to `rooms/`; with JS the dialog opens with focus on "1 · Just me", Tab stays inside 25/25, "2" lists Deluxe Balcony, Superior, Deluxe 2+1, Budget Double each with "Check dates on Booking.com"; Esc closes and focus returns to "Find your room" (390 and 1440). −1: shared listing-top deduction. |
+| 4 | brand fit | 5 | 9 | 4.5 | §3 order as round 1; the sticky split now uses natural block heights on the phone; "Today on Coconuts" follows the pin. custom.md "bolder": the WebGL horizon wipe over five own 1920 px photographs; reduced motion stacks them. −1: shared above-fold deduction. |
+| 5 | copy | 10 | 10 | 10.0 | Each quote once (Erin and Janno only in the set-piece). Labels factual. |
+| 6 | accessibility | 8 | 10 | 8.0 | axe 390 and 1440: **0 violations** (was `color-contrast` × 21), and 0 at each of the five set-piece blocks at both widths (`misc.txt`). Skip link; 56–60 tab stops with 3 px solid outlines, all visible; dialog trap and return as above; 0/50 images without alt; headings in order; reduced motion: canvas hidden, blocks stacked. |
+| 7 | security + delivery | 7 | 8 | 5.6 | Shared delivery and Rosa. −1: **with Rosa blocked, the fallback link is visible but not tappable**: the iframe stays in place at opacity 0 over it; `elementFromPoint` = the iframe and a touch tap does nothing (`misc.txt`). The notes' "link visible" claim is true; "works" is not. −1: Google Fonts (`fonts.gstatic.com`, 4e only). |
+| | **total 1–7** | 80 | | **76.6** | |
+
+### Playbook §4 budget, measured (round 2, `audit.json` re-run, 390, throttled)
+
+| line | target | calm | interactive | unique |
+|---|---|---|---|---|
+| first-load transfer | ≤ 1.5 MB | 926 KB | 663 KB | 362 KB |
+| JS | ≤ 300 KB | 0 external | 0 external | 0 external |
+| largest above-fold image | ≤ 300 KB | 79 KB | 152 KB (largest image, a lazy-distance print, not the hero) | 78 KB |
+| fonts | ≤ 2 families, ≤ 150 KB | 2 · 56 KB | 2 · 68 KB | 2 · 81 KB |
+| LCP | ≤ 2.5 s | 764 ms | 584 ms | 1,672 ms |
+| CLS / scroll CLS (early, settled) | < 0.1 / < 0.01 | 0.001 / 0.0008, 0 | 0.0005 / 0.0005, 0 | 0.0012 / 0.001, 0 |
+| third-party on load | 0 (fonts allowed at 4e) | Google Fonts only | Google Fonts only | fonts.gstatic.com only |
+
+### Ranking (dimensions 1–7 only)
+
+1. **unique 76.6 / 80** (round 1: 67.4)
+2. **interactive 76.5 / 80** (round 1: 64.4)
+3. **calm 73.5 / 80** (round 1: 70.2)
+
+All three pass the quick gate on dimensions 1–7: no hard fail; dimensions 1, 3 and 7 each ≥ 6. Unique and interactive are 0.1 apart, which is no difference a visitor would see.
+
+### The one sentence the human needs
+
+All three now have the same facts, Booking.com as the funnel's primary action (`engine`, 1 tap), every budget line met, 0 axe violations and no hard fail; what still differs is that calm keeps 45 narrow slideshow dots (24×44 px), calm's and unique's "See today's forecast" link cannot be tapped when Rosa is down (interactive's can), and unique's LCP is 1.7 s against 0.6–0.8 s for the other two.
+
+**What the designer prompt got wrong (round 2):** the 4e Rosa fallback check asks whether the plain link is *visible* when Rosa fails, so calm and unique each left a failed iframe sitting over a visible link (calm at opacity 1, unique at opacity 0) and reported "pass". A fallback is tested by tapping it, not by looking at it: the hand-off check should tap the link with Rosa blocked and confirm the navigation, or require that the iframe is not in the DOM (or has `pointer-events: none`) until its probe succeeds, as interactive does.
+
+**Fix list** (not gating at 4f; for the build, smallest first):
+1. **Calm and unique, dim 7:** with Rosa unreachable, remove the iframe or set `pointer-events: none` on it until the probe answers, so the fallback link is tappable (copy interactive's pattern).
+2. **Interactive, dim 6:** give `div.picks` a role (`role="group"`) or drop its `aria-label`.
+3. **Calm, dims 2/6:** give the slideshow dots a 44 px wide hit area (padding or a pseudo-element), as interactive did.
+4. **Interactive and unique, dim 7 (build):** fold the no-cors probe into the widget load so the block makes one JSON request plus the frame.
+5. **All, dim 7 (build):** self-host the fonts.
+
+### Evidence files (round 2)
+
+`reports/2026-10-midigama-01/critic-coconut-surf-inn-guest-house-and-restaurant-r2/`:
+- `a11y-{calm,interactive,unique}.json`: axe, keyboard, overflow 320/360/390/1440, JS-off, reduced motion.
+- `net-{…}.json`: first load, Rosa lazy load, blocked Rosa.
+- `misc.txt`: unique dialog keyboard pass; odd tab stops and the interactive `aria-prohibited-attr` node; unique set-piece contrast per block; Rosa-blocked hit test and tap.
+- `facts-diff.txt`: page lines not literally in the copy, hrefs, head and JSON-LD.
+- `funnel-{…}/funnel.json`.
+- `shots/{calm,interactive,unique}/` + `shots-*.log`: scratch, to be cleaned with `tools/clean-shots.mjs`.
+
+The screenshots, as cited:
+- **mobile-00 of each:** the hero with the name, "A guesthouse in Gurubebila, between Midigama and Weligama" and the booking button; no call icon in calm's or unique's header, none in interactive's.
+- **calm desktop-02/03:** the four A/C rooms in one row, the two fan rooms in the next.
+- **unique desktop-06 to -10:** the set-piece with the inactive blocks in readable grey and the sun marker on the current hour.
+- **Rosa blocked (scratch):** calm and unique show the plain link in the reserved box; a tap on it does nothing.

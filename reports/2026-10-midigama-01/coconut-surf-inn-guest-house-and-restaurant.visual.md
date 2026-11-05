@@ -208,3 +208,135 @@ The prompt should say:
 - a title script must have real stroke weight (no hairline or marker hands);
 - a pointer-only main item must also move visibly at rest;
 - a booking button's colour, shape and label together must not repeat a sibling site already shipped in the same run.
+
+---
+
+## Round 2 — quick (station 4f)
+
+Run `2026-10-midigama-01` · station 4f · **round 2** (after the 4e loop-back, designer 0.7.1) · visual-critic 0.2.0 · 2026-11-05.
+Pages served live at :8921 (calm), :8922 (interactive, `?depth=force` for my walk), :8923 (unique). I read each mockup's round-2 notes for *what changed*; every verdict below comes from the screenshots.
+
+Shot sets (scratch, deleted after the round; every line says in words what the file shows):
+- **Shared sets**, each newer than its dist, so reused: calm dist 10:26:49 / shots 10:27:09 (16 desktop + 19 mobile); interactive dist 02:05:52 / shots 02:07:02 (13 + 17); unique dist 02:04:57 / shots 02:05:00 (15 + 17).
+- **My own walk** in `reports/2026-10-midigama-01/visual-coconut-r2/shots/`:
+  - `calm768-sheet` / `int768-sheet` / `uni768-sheet` (+ `*-t768-NN`): each page at 768 × 1024, 1000 px steps. Scroll width = 768 on all three (no overflow).
+  - `int-idle-{1440,390}-{a,b}`: the interactive hero with **no pointer**, two frames 3 s apart.
+  - `uni-pin-3600 … 8400` / `uni-pin-grid`: unique's set-piece at 1440, settled 1.5 s at each 600 px step; `uni1440-walk` / `uni390-walk`: the same at reading pace.
+  - `mobile-00-trio`: the three phone first screens side by side.
+- **Inspector** (run on the three exact URLs; `.taste-skill/` removed after): calm 4 FAIL / 7 WARN (was 8/5), interactive 9 FAIL / 6 WARN (was 10/9), unique 4 FAIL / 4 WARN (was 6/6).
+- **Current presence:** unchanged, no website; the Booking.com phone fold (`dossier/…/funnel/walk/05-booking-com-fold.png`: blue bar, search box, an empty entrance hall 1/45) and the Google fold. The material context of round 1 stands (no usable video; 70 own photos ≥ 1920 px; every first screen carries one).
+
+Independence: I did not open the critic's or experience-critic's round-2 output.
+
+### 1 · calm "The view from the roof" — round 2
+
+**Round-1 fixes, checked**
+| # | Round-1 complaint | Round 2 | Evidence |
+|---|---|---|---|
+| 1 | Rooms = six half-empty 6/6 rows, ~6 screens | **Fixed.** A/C rooms are one 4-up row of 4:5 slideshows; the fan rooms one row; ~1.9 screens at 1440 | desktop-02 (four A/C cards in one row: balcony rattan chairs, hammock + board veranda, bed, red-wall family room), desktop-03 |
+| 2 | No full-bleed pace after the hero | **Fixed.** Sunset img-008 full-bleed, then the night img-099 band with the white script title on the black sky | desktop-07 (pink-orange sky, three palm silhouettes, edge to edge), desktop-09 (the house lit at night, "The restaurant upstairs" in white) |
+| 3 | Hero crop: wires/poles at the foot; phone pan ends on the tin roof | **Fixed, at a cost** (below). Desktop is cut above the wires; phone pan ends on the reef | desktop-00 (sky, palm row, a strip of sea; no poles), mobile-00 |
+| 4 | Hammock cut through the middle | **Fixed.** img-103 re-cropped; the whole hammock in the band | desktop-05/06 (grey hammock whole under the thatch) |
+| 5 | Resting shadows, hero text-shadow, 15 sizes, closing at 40 px, orphan | **Mostly fixed.** Flat buttons, closing at 32 px, no orphan; 14 sizes; text-shadow kept on the header over the photo | desktop-14 (closing in two Satisfy lines over flat green + outline Call), inspector `size-count` 14 |
+
+**Three-second test, fresh**
+- **1440 (desktop-00):** a blue sky over a row of palms, a thin band of sea at the very foot; ink Satisfy title, one line, a leaf-green pill, all in the sky. Clean and calm. But the fix took away what made it *this* place: the reef, the green and the beach are gone, and what remains reads as a generic tropical sky that any Sri Lanka listing could open with. The photo is soft at 1440 (crop of 1810 px, slight phone-sharpening halo on the fronds).
+- **390 (mobile-00, `mobile-00-trio` left):** the same: sky, tall palms, sea at the foot; ink type legible.
+
+**New / remaining problems**
+- **Fan-room row (desktop-03):** the label "Fan rooms: no air conditioning and no hot water" and the check-in line sit at the bottom-left with ~420 px of empty tint above them, beside two tall 4:5 dark room photos. It is the round-1 half-empty row in miniature.
+- **Pale run between the bands:** "13:00, check-in", "Six kinds of room", "From 7:30, the break", "11:00, check-out" and "Getting here" are all white or grey-tint centred blocks with large empty bands (desktop-04 top: ~150 px of empty grey under the room buttons; desktop-12: ~110 px of empty grey above "From 7:30"; mobile-15/16: an empty grey band under the review dots). Inspector `empty-middle` at 768 (1382 px in "Six kinds of room").
+- At 768 (`calm768-sheet`) the layout holds; the fan row stacks properly; the sticky header covers "The Eranga family home" and "11:00, check-out" at one scroll position each (inspector `covered-text` @768).
+- Margins 88 px left / 116 px right at 1440 (inspector `off-centre`).
+
+**Score: 7 / 10** (round 1: 6). The rooms and the pace are genuinely fixed and the page now has a day → sunset → night rhythm. It is held below 8 by a first screen that became anonymous sky, the half-empty fan row and the pale centred blocks between the bands. Closest gold: Global Surf `postcard` in method; below it because its first screen no longer says "this house, this reef".
+**Better than the current presence?** **Yes** — first screen desktop-00 / mobile-00 vs 05-booking-com-fold (sky, palms and sea vs an empty hall); whole page clearly (two-row rooms with A/C vs fan stated, three full-bleed moments).
+**Hard fail:** dimension 8 below 8.
+
+**Fix list (to reach 8)**
+1. Give the first screen its place back: keep img-009 but shift the 16:9 so the sea and the reef whitewater are the bottom ~25 % (the wires can be cut by ending the crop at the green, as unique's crop does from y 20 → 1100), or set the title block higher so the frame can start lower. The phone already ends on the reef; desktop needs it too.
+2. Fan row (desktop-03): top-align the label block with the photos, and fill its column (the check-in/out line, the house note and a small "Fan rooms" photo strip or the two cards at 3:4 so the row is shorter). No column of empty tint taller than ~120 px.
+3. Tighten the vertical rhythm of the tint blocks: cut the empty grey bands above "From 7:30", under the room buttons and under the review dots to the section's normal padding.
+4. Equal side margins at 1440 (88 / 88), and stop the header covering the section titles at 768 (scroll-margin-top on headings, or let the header hide on scroll down).
+5. Bring the type scale to ~8 sizes.
+
+**Keep:** the 4-up A/C row, the sunset and night bands, the whole-hammock roof band, ink Satisfy on the sky, the banana-leaf green, the one-time phone pan ending on the reef, the footer.
+
+### 2 · interactive "Under the thatch" — round 2
+
+**Round-1 fixes, checked**
+| # | Round-1 complaint | Round 2 | Evidence |
+|---|---|---|---|
+| 1 | Shadows Into Light Two: thin marker title | **Fixed.** Merienda 700: a weighted sign-painter hand, confident at 64 px and as the wordmark | desktop-00 ("Coconut Surf Inn" white, solid strokes, over the parapet), desktop-02 "How do you like to sleep?" |
+| 2 | Parallax invisible without a pointer | **Fixed.** Idle drift: two no-pointer frames 3 s apart differ at PSNR 17.3 dB (1440) and 18.3 dB (390), as large as round 1's full pointer sweep (16.7); one live canvas at opacity 1 at both widths; no tearing of the fringe | `int-idle-1440-a/b`, `int-idle-390-a/b` |
+| 3 | 4-up icon-card row; grey cards everywhere | **Fixed.** "13:00, check-in" is a details line, the booking pair and the two ratings set large (76 px); the quotes and the forecast sit on white | desktop-01 (8.5/10 and 4.8/5 large at right, text left), desktop-11 |
+| 4 | Room stage too small, towel shot leading | **Fixed.** Picks row over a stage ~880 px wide; Superior leads with the hammock + board veranda | desktop-02 (hammock, red-brown French doors, a surfboard against the wall, filling ~2/3 of the screen) |
+| 5 | Gradient/shadow buttons; rows cut at the right edge; byline at the edge; dark phone hero | **Partly.** Phone hero cropped tighter and brighter. **Still:** the review row is cut at the right edge with no visible control at 1440 and 768; the inspector still finds a gradient button fill and resting shadows on the pill and the slideshow arrows | desktop-11 (a fourth review column cut at "clear / a gre…" at the right edge, no dots or arrows), `int768-sheet` frame 12 (same at 768), inspector `button-fx`, `shadow` |
+
+**Three-second test, fresh**
+- **1440 (desktop-00):** standing under the thatch, the sea and windblown palms framed by the fringe and the swing, the title in a strong white hand on the parapet, one burnt-saffron pill. It moves on its own now. This is the best first screen of the three and the most "this place".
+- **390 (`mobile-00-trio` middle):** thatch and a hanging bulb at the top, palms and a band of sea, the title on the dark parapet, the button on the floor. Moody, clear, alive.
+
+**New / remaining problems**
+- The review drag row (above) and the veranda strip (desktop-04 bottom: a fourth photo cut at the right edge) read as layout errors, not carousels.
+- Grey-tint sections still carry most of the page between the photographs ("How do you like to sleep?" 2834 px `empty-middle`; "11:00, check-out" a single line of three ratings then the cut review row).
+- The restaurant block (desktop-08/09) stacks four mid-size rounded photos with text between; it is orderly but is the one stretch that feels like a card layout.
+- 17 font sizes; Nunito Sans body at 13–14 px in the check-in details line is small and grey (desktop-01).
+
+**Score: 7 / 10** (round 1: 6). The hero now earns an 8 on its own (a strong sign-hand, a living main item from the house's own photograph, one CTA), and the rooms stage is good. The page below still has the unresolved round-1 polish items: rows that run off the right edge with no control, gradient and shadow on buttons, and long grey sections. Closest gold: Global Surf `try-your-week` (a place you stand in); just below it on polish.
+**Better than the current presence?** **Yes** — desktop-00 / mobile-00 vs 05-booking-com-fold (under the thatch looking at a moving sea vs an empty hall); whole page clearly (the sleep switch, sunset and night bands).
+**Hard fail:** dimension 8 below 8.
+
+**Fix list (to reach 8)**
+1. End every horizontal row inside the grid, or make it an obvious carousel: the reviews (desktop-11) as a 3-up with dots/arrows like the room stage, or one large quote at a time; the veranda strip (desktop-04) as a flush 4-up.
+2. Booking buttons flat: no gradient fill, no resting shadow on the pill or the slideshow arrows (shadow on hover only).
+3. "11:00, check-out" and "How do you like to sleep?": cut the empty grey; let the three ratings sit large as in check-in, and keep the sleep section's tint only behind the tiles + stage.
+4. Restaurant block (desktop-08/09): one large image (the night house, already a band) plus one 3:2, not four rounded tiles.
+5. Details lines at ≥ 15 px in full ink; type scale to ~8 sizes.
+
+**Keep:** img-102 hero with the idle drift + pointer parallax, Merienda titles, the burnt-saffron accent, the 76 px ratings, the picks + 880 px stage, the sunset and night bands, the expandable phone bar.
+
+### 3 · unique "Round the clock" — round 2
+
+**Round-1 fixes, checked**
+| # | Round-1 complaint | Round 2 | Evidence |
+|---|---|---|---|
+| 1 | Hero read as fog; tin roof, wires, tuk-tuks at the foot | **Fixed on desktop.** The crowns stand crisp against the white page; the sea, the reef's white water and the green are untouched; the roofs and wires are out of frame. A pale grey-blue band remains just above the horizon | desktop-00 (black-green crowns sharp on white, the sea and blue-tarp shacks along the foot) |
+| 2 | White slab at the pin's exit; empty phone bands | **Fixed.** At 8400 the break frame scrolls away with "Today on Coconuts" following, no slab; phone blocks have natural height | `uni-pin-8400` (palms + sea frame top right, "Today on Coconuts" and 0.3–0.5 m below), `uni390-walk` |
+| 3 | Masonry with a hole and a lone portrait | **Fixed.** Three flush columns, portrait over landscape | `uni-pin-4200` ("Inside the house" beside six photos in a clean 3 × 2) |
+| 4 | Booking colour = Lotus's button | **Fixed.** Ink `#252323` pill on every booking action; vermilion only for the sun disc and the round Call | desktop-00, desktop-13 (black "Check dates on Booking.com" + a small round red Call) |
+| 5 | Drop-shadow mat on the sign; set-piece body small; edge labels | **Fixed.** The sign is a plain rounded photo; dial labels inset | desktop-12 (round black-and-orange sign, no mat), mobile-09 |
+
+The set-piece, settled frame by frame (`uni-pin-grid`): afternoon (the hammock under the thatch) → sunset (img-008, the disc on "Sunset") → 22:00 (the house lit at night) → 7:30 (the restaurant with the sea) → the break (img-009). Image and dial stay in step once settled; at reading pace (`uni1440-walk`) the swap trails the text by about one block, which reads as the wipe arriving, not as a bug.
+
+**Three-second test, fresh**
+- **1440 (desktop-00):** white page, a confident Caveat title, one black pill, and the inn's palms rising out of the white into a sea view. Decisive now, not foggy. Still a faint grey haze band just above the horizon (y ≈ 600–780).
+- **390 (`mobile-00-trio` right):** title, line and black button on white, then palms, the sea and the reef's white water. A tuk-tuk and the blue-tarp shacks are still visible at the foot.
+
+**New / remaining problems**
+- **768 set-piece (`uni-t768-05`):** the desktop three-column split is kept at tablet width: a ~230 px text column ("The / afternoon" broken over two lines at 52 px), a 120 px dial, and the photograph squeezed into a narrow portrait sliver at the right edge. It is cramped; the phone layout (photo on top, dial, text) would serve 768 better.
+- The rooms run (desktop-02…04) is ~2.5 screens of 2-up 3:2 slideshows on grey, photos ~235 px tall; honest and tidy, but the quietest stretch of the page (inspector `empty-middle` 1492 px).
+- The closing line in Caveat runs 4 lines at 390 (inspector `headline-lines`), and mobile-15 has ~150 px of empty white above it.
+
+**Score: 8 / 10** (round 1: 7). Every round-1 complaint is fixed. It is the only page of the three with a real idea carried through (the stay told by the clock, in the house's own big photographs, with the sign's sun as the hour marker); the hero is now clean and decisive with one clear CTA; the type pair is the strongest; it is distinct from Lotus and Cheeky Monkey. The 768 set-piece and the rooms' quiet run are real but secondary, and do not pull it below "clearly professional, beautiful and clearly better than the current presence". Closest gold: `the-lavish-haven.html` (the place's own picture held on white, type on white); now close to it in decisiveness, below it in first-glance crispness because of the grey haze above the horizon.
+**Better than the current presence?** **Yes** — desktop-00 / mobile-00 vs 05-booking-com-fold; whole page clearly (it is the only page that shows what a day there is like).
+**Hard fail:** none from this critic. **Pass** (dimension 8 = 8).
+
+**Fix list (for 4g; none blocks the pick)**
+1. 768: switch the set-piece to the phone layout (photo, dial, text stacked) below ~1024 px.
+2. Hero: lift the grey-blue haze band just above the horizon toward white or clean blue (the `sky()` key's lower ramp), and on the phone end the crop above the tuk-tuk at the foot.
+3. Rooms: give the A/C rooms one larger lead image (e.g. the Deluxe with Balcony at 4:3 across 7 columns) so the run has one big moment, or shorten it to ~2 screens.
+4. Closing at ≤ 3 lines on the phone (smaller size or shorter `closing` setting), and remove the empty white above it (mobile-15).
+5. 12 font sizes → ~8.
+
+**Keep:** everything structural — the sky-to-white hero, the ink booking pill + vermilion sun/Call, Caveat + Red Hat Text, the five-frame clock set-piece with the moving sun, the flush "Inside the house", the plain sign photo, the single big quote, the forecast row.
+
+### Ranking at 4f, round 2 (visual quality only)
+
+1. **unique "Round the clock" — 8/10, pass.** The clock set-piece of the house's own photographs, now under a crisp, decisive white-sky hero with an ink button that no longer copies Lotus.
+2. **interactive "Under the thatch" — 7/10.** The best and now living first screen with a proper sign-hand title, let down by rows running off the right edge, gradient/shadow buttons and long grey sections.
+3. **calm "The view from the roof" — 7/10.** Rooms and pace fixed (two rows, three full-bleed moments), but the new hero crop is anonymous sky and the fan row and tint blocks are still half empty.
+
+**Interactive and calm still fail dimension 8 (< 8)**; unique passes this critic. All three are clearly better than the current presence.
+
+**What the designer prompt got wrong (for the learn step):** fixing one flaw by cropping (calm's wires) removed the thing that made the first screen this place; the prompt should say a re-crop must keep the business's identifying feature (here the reef and the green) in frame. Interactive left two round-1 fix-list items (rows past the edge, gradient buttons) unaddressed; the 4e hand-off should check every fix-list item off explicitly. Unique's desktop layout was kept at 768: the set-piece pattern needs a stated tablet breakpoint.
