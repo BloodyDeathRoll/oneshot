@@ -8,7 +8,7 @@ import pageJs from '../scripts/site.js?raw'
 import swellJs from '../scripts/swell.js?raw'
 import { SWELL } from '../lib/slots.mjs'
 import {
-  S, L, M, P, e, t, paras, ps, block, wa, lessonAsk, date, ICON, BIZ, WA_DIGITS, PHONE, PHONE_PRINT, EMAIL, ADDRESS, MAP,
+  S, L, M, P, e, t, paras, ps, block, wa, lessonAsk, lessonDetails, date, ICON, BIZ, WA_DIGITS, PHONE, PHONE_PRINT, EMAIL, ADDRESS, MAP,
   HERO_LINE, PRICE_DATE, rentalTable, SHOP, TOURS, boards, outline,
   IS_PREVIEW, metaDescription, seoHead, businessLd, ldJson,
 } from '../lib/site.mjs'
@@ -71,12 +71,8 @@ const TILE_IMG = {
   advanced: small(P('tile-adv-1'), P('tile-adv-2')),
   unsure: P('tile-unsure-tall') ? `<picture><source media="(max-width:900px)" srcset="${P('tile-unsure-1').src} ${P('tile-unsure-1').w}w, ${P('tile-unsure-2').src} ${P('tile-unsure-2').w}w" sizes="92vw" width="${P('tile-unsure-2').w}" height="${P('tile-unsure-2').h}"><img src="${P('tile-unsure-tall').src}" width="${P('tile-unsure-tall').w}" height="${P('tile-unsure-tall').h}" alt="" loading="lazy" decoding="async"></picture>` : '',
 }
-const hours = (mins, key = 'hours') => t(L[key], { n: mins / 60 })
 const cards = (S.lessons ?? []).length ? `<ul class="cards">${S.lessons.map((l) => {
-  /* no levels on the row: its sessions are the unit ("5 private sessions | 2 hours each") */
-  const details = !l.level?.length
-    ? [l.groupSize, hours(l.durationMin, 'hours_each')]
-    : [...(l.groupSize ? [l.groupSize] : []), l.level.map((x, i) => (i ? L.levels[x].toLowerCase() : L.levels[x])).join(', '), hours(l.durationMin)]
+  const details = lessonDetails(l)
   const unit = l.unit === 'per_lesson' ? ` <span class="per">${e(L.per_lesson)}</span>` : ''
   const id = `card-${l.label.split(' ')[0].toLowerCase().replace(/[^a-z0-9-]/g, '')}`
   return `<li class="card" id="${id}" data-lesson="${e(l.label)}" data-ask="${e(lessonAsk(l.label))}" data-levels="${(l.level ?? []).join(' ')}" data-price="${e(l.currency)} ${l.price}">

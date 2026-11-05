@@ -33,6 +33,12 @@ export const PRICE_DATE = (block('info', 0)?.body.match(/All prices are as of [^
 export const M = Object.fromEntries(Object.entries(L.msg).map(([k, v]) => [k, typeof v === 'string' ? t(v, { biz: BIZ }) : v]))
 export const wa = (ask) => `https://wa.me/${WA_DIGITS}?text=` + encodeURIComponent(`${M.hello}${ask}.`).replace(/'/g, '%27')
 export const lessonAsk = (name) => (M.no_article.includes(name) ? name : t(M.the, { x: name }))
+/* a lesson card's details line, shared by the page and /llms.txt (4i). No levels on the row: its sessions are the unit
+   ("5 private sessions | 2 hours each") */
+const hours = (mins, key = 'hours') => t(L[key], { n: mins / 60 })
+export const lessonDetails = (l) => (!l.level?.length
+  ? [l.groupSize, hours(l.durationMin, 'hours_each')]
+  : [...(l.groupSize ? [l.groupSize] : []), l.level.map((x, i) => (i ? L.levels[x].toLowerCase() : L.levels[x])).join(', '), hours(l.durationMin)])
 
 export const date = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
 
@@ -115,6 +121,16 @@ export const isPreviewUrl = (url) => {
 }
 export const SITE_URL = import.meta.env.SITE ? new URL(import.meta.env.SITE) : null
 export const IS_PREVIEW = isPreviewUrl(SITE_URL)
+/* Station 4i. AI crawlers on a real domain, named one by one so the policy is a decision on record: the same 15 as the other
+   finals. Allow is the default and the OWNER'S call (aiseo-report.md): flipping one bot to 'disallow' is the whole change. */
+export const AI_CRAWLERS = {
+  GPTBot: 'allow', 'OAI-SearchBot': 'allow', 'ChatGPT-User': 'allow',
+  ClaudeBot: 'allow', 'Claude-SearchBot': 'allow', 'Claude-User': 'allow',
+  PerplexityBot: 'allow', 'Perplexity-User': 'allow',
+  'Google-Extended': 'allow', 'Applebot-Extended': 'allow',
+  CCBot: 'allow', 'Meta-ExternalAgent': 'allow', Amazonbot: 'allow', DuckAssistBot: 'allow',
+  'MistralAI-User': 'allow',
+}
 const abs = (u) => (SITE_URL ? new URL(u, SITE_URL).href : null)
 const PROD_URL = IS_PREVIEW ? null : SITE_URL?.href ?? null
 
