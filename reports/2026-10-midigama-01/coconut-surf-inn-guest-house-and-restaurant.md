@@ -519,3 +519,141 @@ The screenshots, as cited:
 - **desktop-00 of each:** the same pair side by side. Calm's crop now reaches the sea, the reef and the beach shack.
 - **calm desktop-03:** the fan rooms as two wide cards under a header line.
 - **interactive mobile-13/14 and desktop-11:** the 11:00 ratings set large, then the review carousel with "1 of 10" (phone) or 3 up with dots (desktop).
+
+## Round 1 — full (station 5)
+
+critic 0.4.3 · rubric 0.3.1 · 2026-11-05 (local, 12:30–12:50) · build `sites/coconut-surf-inn-guest-house-and-restaurant/final/dist/` (index.html 107,873 B, rooms/index.html 63,682 B, llms.txt 8,884 B, built 12:27 local; designer 0.7.1 port of unique "Round the clock" with calm's hero, after SEO 4h and AI search 4i). The page on the designer's :8970 is byte-identical to `dist/` (`cmp`, both pages). I scored it from my own plain static server (`tools/_serve.mjs` on :8971: no rewrites, 404 for anything missing) and stopped that server afterwards; :8970 was left alone. md5 of both pages was the same at the start and the end of the round. I did not read any visual-critic or experience-critic report.
+
+```
+mode: full        round: 1        variant: unique ("Round the clock", first screen = calm's img-009 roof view, Alon's tweak at gate b)
+total (dims 1–7): 76.3 / 80      result: pass (critic's part)      hard_fails: []
+dimension 8 (weight 25): not scored here; it belongs to visual-critic + experience-critic
+```
+
+**How the total is computed.** Weights 1–7 sum to 80, so my part is out of 80. The full total is 76.3 + (the **lower** of the two visual critics' 0–10 scores × 2.5). Full pass needs total ≥ 85 *and* both visual critics ≥ 8, so if both give ≥ 8 the total is ≥ 96.3; the 85 line on its own would be met by any dimension 8 ≥ 3.5.
+
+| # | dimension | weight | score | weighted | evidence |
+|---|---|---|---|---|---|
+| 1 | facts | 20 | 10 | 20.0 | Facts table below: **0 mismatches, 0 unsourced claims**. The 12 copy testimonials equal `dossier.reviews.quotes[]` (text, author, month, source; script). With JS off, each of the 12 is in the page **exactly once**, verbatim with whitespace collapsed, with author, country, Booking.com and month (`quotes.txt`; with JS on only the current slide is in `innerText`, as expected for a slideshow). Ratings: Booking.com 8.5/10 · 142, **Google 4.8/5 · 88** (the inn's listing, linked to `place_id:ChIJI29CG-cU4ToRQhs8notgauI`), Airbnb 4.44/5 · 54, each dated "4 Nov 2026" = `fetched_at` 2026-11-04. The "Coconut Beach" place's 4.8/120 is nowhere: "120" occurs only in CSS and `width="1200"`; "coconut beach" only inside Erin's and Mette's verbatim reviews. Rooms: label, beds, sleeps, m², floor (only where `floor` is set: Ground floor = `[0]`, Upstairs = `[1]`) and A/C vs fan equal `room_types[]` for all six. JSON-LD (`LodgingBusiness`): name, `alternateName` = `business.google_listing_name`, phone, Google address split, geo = `location.lat_lng` (not the beach pin), 13:00 / 11:00, 10 amenities, 6 rooms, no `aggregateRating`. `audit.json.facts`: 40 numbers on the page, 0 not in the passed copy. Absent as required: pool, spa, lessons, board hire, price or currency, WhatsApp, email, house number 44 or 49; "breakfast included" only inside Chloe's verbatim review. |
+| 2 | mobile + performance | 15 | 10 | 15.0 | `critic-…-full-r1/audit.json` (390×844, 1.6 Mbps / 150 ms / 4× CPU, no scroll): **first load 382,253 B (373 KB) in 8 requests, all to the local host**; HTML 107,873 B (24,996 B gzip) with CSS and JS inline; **0 external JS** (inline 18.7 KB raw / 6.7 KB gzip); fonts 81,460 B, 2 families, self-hosted; images 192,920 B; largest image 76 KB; the phone hero crop is 26.7 KB (1440 crop 66.3 KB). **LCP 452 ms. CLS 0.0012. Scroll CLS early 0.0012 / settled 0.** **0 of 58 tap targets under 44 px.** No horizontal overflow on `/` or `rooms/` at 320, 360, 390 or 1440, JS on, nor at 390 / 1440 with JS off (`a11y-*.json`: scrollWidth = clientWidth everywhere; the 4f JS-off 397 px overflow is gone). Mobile sheet (17 captures, 12,774 px): no overlap or clipped text; the phone bar ("Check dates on Booking.com" + "Find your room") is present from mobile-01 and the hero carries the action on mobile-00. Not deducted, listed as polish: `rooms/` has a first-load CLS of **0.038** at 390 (one shift of `.rp-group` text at 1.4 s, `rooms-cls.json`; 0.0007 at 1440), under 0.1 and not the home page; and the phone guests slideshow reserves the tallest quote's height, so a short quote leaves a blank grey band under it (mobile-14). |
+| 3 | booking CTA | 15 | 9 | 13.5 | **`funnel/coconut-surf-inn-guest-house-and-restaurant-r1/funnel.json`:** `primary_action` **engine** and `hero_action` **engine** ("Check dates on Booking.com", top 264 of 844, 290×52, `clicks_to_flow` 0); `clicks_to_book` **1** = `recommended.clicks_to_book` 1; class = `recommended.primary_action` engine. The 4f header-call risk is gone: the header call icon is hidden while the hero is in view, and the first terminal action on the phone is the Booking.com button. `audit.json.booking.tapped` (390, touch) = `https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html` = `dossier.booking.engine_url`, character for character; all 20 Booking.com hrefs on `/` and all 14 on `rooms/` are that URL; all `tel:` are `tel:+94778921396` = `contact.phone`. JS off: 20 Booking.com links and 6 `tel:` links on `/`, the first at the top of the page; "Find your room" is a real link to `rooms/` (200), which works without JS. funnel reports "broken 1": that is the tool, not the site. `funnel.mjs` strips the trailing slash (`norm()`) and requests `/rooms`, which a no-rewrite server answers 404; the page's links are `rooms/`, which serves 200. −1: Booking.com cannot take a room from the URL, so every room button lands on the listing top (documented gap). |
+| 4 | brand fit | 5 | 9 | 4.5 | §3 order (the mockup's): roof-view hero → 13:00 paragraph + three dated ratings + Booking / Call → six rooms (A/C first, fan rooms stated plainly, per `recommended.offer_framing`) → inside the house → the round-the-clock set-piece (afternoon, sunset, 22:00, 7:30, the break) → "Today on Coconuts" (Rosa) + At the house → 11:00 ratings + guests → getting here → closing → footer. custom.md "unique / bolder": the pinned set-piece with the sign's sun as hour marker over five own 1920 px photographs; reduced motion stacks them. The 4f type deduction is fixed: mobile-00 shows "Coconut Surf Inn", "A guesthouse in Gurubebila, between Midigama and Weligama" and the button. −1: `recommended.above_fold` spot, included, price and trust still begin on mobile-01 (the 13:00 paragraph and ratings), as the concept chose. |
+| 5 | copy | 10 | 9 | 9.0 | All page lines come from `copy/en.json` (passed 4c) or are interface labels / restatements (`facts-diff.txt`). English complete; each quote once. −1: repetition on adjacent screens. The hero line "A guesthouse in Gurubebila, between Midigama and Weligama" is repeated as the first words of the 13:00 paragraph one screen later (mobile-00 → mobile-01), and "The restaurant upstairs is open every day from 7:30 to 22:00" is said three times on the home page (13:00 paragraph, "Until 22:00" block, footer). |
+| 6 | accessibility | 8 | 10 | 8.0 | axe-core 4.10 (WCAG 2.0/2.1 A + AA) after a full scroll, external requests blocked: **0 violations** on `/` at 390 and 1440 and on `rooms/` at 390 and 1440. The only incomplete rule is `color-contrast` where axe cannot see the background (hero text over the photo, buttons with a `::before` layer, the clock ticks). Measured instead (`contrast.json`): hero h1 and line are #252323 on the sky, p10 contrast 7.79 / 7.34 at 390 and 6.45 / 5.39 at 1440; buttons are #fff on #252323 (≈ 15:1); the ticks are #4D6F7A on white (≈ 5.4:1). Keyboard (`keyboard.json`): first Tab is "Skip to content" at both widths; 56 stops at 390 and 88 at 1440, all visible, all 3 px solid outline, 0 invisible. The "Find your room" dialog: focus lands on "1 Just me", 30 Tabs stay inside, Esc closes and focus returns to "Find your room" at 390 and 1440 (`audit.json.keyboard` also passes). 0 of 50 images without alt; headings H1 → H2/H3 in order; `lang="en"`. Reduced motion: 0 video, the canvas hidden, 0 running animations, the five moments stacked. `rooms/`: 21–22 stops, skip link, 0 violations. |
+| 7 | security + delivery | 7 | 9 | 6.3 | `dist/` is static only: 2 HTML pages, `robots.txt`, `llms.txt`, 48 WebP files, 2 woff2 fonts + 2 OFL texts. No `.js`, `.php` or worker file; every filename lowercase; no `src`/`href`/`srcset` starts with `/`; 0 hits for localhost, api/, payload, API-Key, token, secret or password in both pages and llms.txt. **No CMS runtime dependency** (content is the build-time seed; the only runtime fetches are Rosa's). **0 third-party requests on first load** (`audit.json` `third_party_hosts` [], and 0 in every `rosa.json` mode). Embeds: 1 of the allowed 2 (Rosa; the map is a link). Fonts self-hosted (the 4f Google Fonts deduction is gone). IS_PREVIEW holds: both pages `noindex, nofollow`, no canonical; `robots.txt` `Disallow: /` for `*` and for the 15 named AI crawlers, no `Sitemap:` line; `/sitemap.xml` 404; llms.txt opens with "Preview build … Do not index, quote or cite it." Rosa (hard constraint 9) is in the section below. −1: **the forecast block shifts when the JSON fails while the block is on screen.** With the JSON stale (`generated_at` 30 h old), 404, or aborted after a delay, `#rosa-now` keeps its 305 px height but its credit line jumps 169 px up inside it as the headline lines give way to the plain link: a layout shift of **0.0191** at 390 and 0.0058 at 1440 (`rosa-shifts.json`; live = 0). Playbook §4: "its space is reserved, so nothing shifts when it arrives, fails, or is refused"; it is also above the 0.01 scroll-shift line. |
+| | **total 1–7** | 80 | | **76.3** | |
+
+**Hard fails: 0.** Checked one by one:
+- facts: 0 mismatches; the inn's Google 4.8 is from 88 reviews, the beach's 4.8/120 is absent.
+- CTA landing: the Booking.com URL and `tel:+94778921396` are exact.
+- primary-action class: engine (funnel primary and hero), as recommended.
+- third-party requests on first load: 0. CMS runtime dependency: none.
+- keyboard trap: none (the dialog traps by design and Esc releases it with focus returned). Content only in canvas/video: none; the set-piece's five moments are DOM text.
+- budgets: every line met, none near +50 %.
+- secrets: none.
+- borrowed or stock images: none. All 38 image sources used are `business-owned` dossier images; every room slide carries that room in `images[].room_types`; `check-places` 0 failing.
+- visual-media lines: no usable video (`videos[]` all `license: unknown`); the first screen is img-009, 1920×1440, business-owned.
+
+**Pass thresholds (full), critic's part:** no hard fail ✓ · dimensions 1–7 each ≥ 6 ✓ (lowest 9) · every playbook §4 budget line met ✓ · total ≥ 85 and both visual critics ≥ 8: pending dimension 8 (not read).
+
+### Rosa forecast (hard constraint 9), tested live, blocked and stale (`rosa.json`, `rosa-shifts.json`)
+
+| case | first load | after scrolling to the block | headline (site's half) | widget box | CLS while it resolves |
+|---|---|---|---|---|---|
+| **live**, 390 and 1440 | 0 external | 1 GET `rosa-data-opal.vercel.app/data/spots/weligama-west.json`, 1 HEAD `rosa.surf/widget/…`, the widget frame (its own Google Fonts, Inter, ArcGIS tiles and a second JSON fetch are made *inside* Rosa's frame) | `fc-now live`: "0.3–0.5 m · Wave height now, knee-high · Thu 5 Nov, 08:30 · Swell 9.1 s from the S · Wind 5 km/h, cross-shore" = the JSON (`current.t` 08:30+05:30, h [0.3, 0.5], swell period 9.1 s / 171°, wind 4.5 kph cross-shore; `generated_at` 02:26Z, ≈ 8 h old) | iframe `https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric`, attributes exactly Rosa's snippet (`agents/designer/tools.md`: style, sandbox, referrerpolicy, lazy), filter none, opacity 1, transform none, `elementFromPoint` = IFRAME | 0 |
+| **blocked** (every `rosa*` host aborted), 390 and 1440 | 0 external | the HEAD and the JSON GET, both fail; no frame is added | `fc-now stale`: the plain link "See today's forecast for Coconuts on Rosa" | 0 iframes; `elementFromPoint` at the box centre = the link; a touch tap (390) and a click (1440) both request `https://rosa.surf/spot/weligama-west` | 0 (the headline collapsed while still below the screen) |
+| **stale clock** (`Date.now` +30 h, Rosa live), 390 | 0 | as live | `stale`: the plain link; no numbers shown | widget loads | **0.0191** |
+| **stale data** (`generated_at` set 30 h back), 390 / 1440 | 0 | as live | `stale`: the plain link; no numbers shown | widget loads | **0.0191** / 0.0058 |
+| **JSON fails, widget up**, 390 | 0 | JSON aborted, frame loads | plain link | widget shown, uncovered | 0 (failed below the screen); 0.0191 when the 404 arrives on screen |
+
+- Spot: `weligama-west` only (concepts §3 mapping of the dossier's "Coconuts"); `coconut` / `coconut-beach` appear 0 times. Credit "Forecast for Coconuts by Rosa" → `https://rosa.surf/spot/weligama-west`.
+- No day-by-day row on the site's half. Both halves keep their reserved size (widget box 358×500 at 390, 420×500 at 1440, before and after).
+- JS off: both halves are the plain link (3 visible Rosa links), at 390 and 1440.
+- **Older than 24 h is never shown as current** (both the clock and the data test).
+- Facts for the human: the site makes **one request more** than hard constraint 9's "exactly one request to the JSON plus the widget frame": a HEAD to `rosa.surf/widget/` that gates the frame (4g fix 1). It is what makes the blocked path tappable. Not deducted; listed for the prompt.
+
+### Facts table (claim → dossier key → result)
+
+The page text is the 4f mockup's (rounds 1–3: 0 mismatches). I re-checked every line against the copy and the dossier on the built pages (`facts-diff.txt`, `quotes.txt`).
+
+| Claim on the page | Dossier key | Result |
+|---|---|---|
+| "Coconut Surf Inn" (h1, wordmark, title, footer, JSON-LD name) | `business.name` | match |
+| "A guesthouse in Gurubebila, between Midigama and Weligama, on the south coast of Sri Lanka" (hero line = its first words) | `business.type`, `location.place_name_used` | match |
+| Coconuts, a consistent A-frame reef break, in front; Plantations a 100 m walk up the beach | `location.spot` (host's words) | match |
+| Season November to April, attributed to the Sri Lanka Travel Pages surf guide | `location.spot_reference`, `season` | match (attributed) |
+| Restaurant upstairs, every day 7:30–22:00 | `restaurant_hours[0]` | match |
+| Restaurant's own Google listing, 4.6 from 39 reviews | `reviews.google_restaurant` | match |
+| "Breakfast comes with some rates and not with others" | `stay_info.breakfast` | match |
+| Booking.com 8.5/10 · 142 · 4 Nov 2026 | `reviews.booking` (2026-11-04) | match |
+| Google 4.8/5 · 88 · 4 Nov 2026, place_id ChIJI29C… | `reviews.google`, `location.map_url` | match (never the beach's 120) |
+| Airbnb 4.44/5 · 54 · 4 Nov 2026 | `reviews.airbnb` | match |
+| Six rooms (Deluxe Balcony 15 m² upstairs · Superior 14 m² ground floor · Deluxe 2 + 1 19 m² ground floor · Family 28 m², balcony, garden view · Budget Double 12 m² · Budget Single 9 m² upstairs), beds, sleeps, A/C or fan, hot water | `room_types[0–5]`, `room_types_note` | match |
+| Room slideshows | `images[].room_types` | match (every slide tied to its room) |
+| Own entrance and bathroom with shower for every room | `room_types[].facilities` | match |
+| Check-in from 13:00, check-out until 11:00; children welcome, no cots or extra beds; pets on request, no charge | `stay_info.check_in`, `.check_out`, `.house_rules` | match |
+| Courtyard, verandas, hammocks, outdoor shower, clothes line, board rack; thatched roof terrace | `facilities[]`, `business.description` | match |
+| Eranga family home, host Chinthaka, host on Airbnb for 13 years | `business.description`, `business.people[0]`, `business.since` (Airbnb's count) | match |
+| At the house: 10 items, two "(additional charge)" | `facilities[4–9]` | match |
+| Koggala Airport 11 km, taxi on request with a charge; Kumbalgama about a 13-minute walk; Midigama station 1.4 km; Weligama centre 3.3 km (Booking.com) | `location.airport`, `.distance_to_station`, `.distance_to_centre`, `facilities[5]` | match |
+| "On Google Maps, look for Coconut Surf Inn Guest House and Restaurant" | `business.google_listing_name` | match |
+| Kadabeddagama Road Gurubebila, Weligama 81700, Sri Lanka | `location.address` (Google's words) | match |
+| +94 77 892 1396 / `tel:+94778921396` | `contact.phone` | match |
+| Booking.com URL (20 on `/`, 14 on `rooms/`), Airbnb `/rooms/2402254` | `booking.engine_url`, `booking.other_engines[0]` | match, character for character |
+| 12 testimonials | `reviews.quotes[]` | 12/12 verbatim, 12/12 attribution, each once |
+| Rosa headline (live) and spot `weligama-west` | Rosa JSON at test time; concepts §3 mapping | match (live data, credited, not content) |
+| JSON-LD: alternateName, geo 5.9606427, 80.4028521, checkin/out, rooms with floorSize, `knowsLanguage` en | `business.google_listing_name`, `location.lat_lng`, `stay_info`, `room_types[]`, `languages_spoken` | match |
+
+### Playbook §4 budget, measured (home page, 390, throttled)
+
+| Item | Target | Measured | |
+|---|---|---|---|
+| First-load transfer (no video) | ≤ 1.5 MB | 373 KB (382,253 B, 8 requests) | ✓ |
+| Hero video | ≤ 2 / 4 MB | none (no licensed video) | n/a |
+| JS, compressed | ≤ 300 KB | 0 external; 6.7 KB gzip inline | ✓ |
+| Largest above-the-fold image | ≤ 300 KB | 26.7 KB phone hero (66.3 KB at 1440); largest image on first load 76 KB | ✓ |
+| Fonts | ≤ 2 families, ≤ 150 KB | 2 (Caveat 600, Red Hat Text variable), 81,460 B, self-hosted | ✓ |
+| LCP | ≤ 2.5 s | 452 ms | ✓ |
+| CLS | < 0.1 | 0.0012 (scroll early 0.0012, settled 0) | ✓ |
+| Third-party requests on load | 0 | 0 | ✓ |
+
+With the one embed loaded (Rosa), every line still holds: its requests come only after the scroll, and live CLS is 0.
+
+### Network log, first load (390, throttled)
+
+8 requests, all to the local host: HTML 107,873 B; 2 woff2 fonts 81,460 B; 5 images 192,920 B (the hero crop plus room slides inside the lazy distance). `third_party_hosts: []`.
+
+### Screenshots (`tools/shoot.mjs` into a scratch folder, deleted after the round; `/` 1440 × 900 ×15 and 390 × 844 ×17, page 11,786 / 12,774 px; `rooms/` ×3 / ×5; 0 console errors)
+
+- `mobile-00`: img-009 from the roof, sky, palms and sea; "Coconut Surf Inn" in Caveat, "A guesthouse in Gurubebila, between Midigama and Weligama", the ink "Check dates on Booking.com". No bar and no header call icon while the hero is in view.
+- `mobile-01`: "13:00, check-in", the paragraph, three dated rating rows, "See rooms and live dates on Booking.com". The bar is on from here.
+- `mobile-02–05`: "Six kinds of room", "Find your room", the room cards with A/C | Hot water chips, the fan rooms, the stay line.
+- `mobile-06–07`: Inside the house.
+- `mobile-08–11`: the pinned set-piece (afternoon, 22:00, 7:30, the break) with the dial; titles fade before passing under the photo.
+- `mobile-11–12`: "Today on Coconuts" with the live headline and Rosa's widget, then At the house.
+- `mobile-13–14`: "11:00, check-out", the ratings, the guests slideshow ("1 / 10"); under Meagan's quote, a blank grey band of about 190 px before the section ends (mobile-14).
+- `mobile-14–16`: the sign, Getting here, Maps / Call, the closing in 3 lines with Booking / Call, the footer.
+- `desktop-00…14`: the same order; the hero centred on the sky; the set-piece as the 3-column pinned split; Rosa's headline beside the widget.
+
+**what the designer prompt got wrong:** Little; the six 4f items were fixed and each one measured (Rosa link tappable when Rosa is down, stacked set-piece below 1024 px, room leads, no half-cut titles, the 3-line closing, LCP 452 ms), and the fonts are self-hosted. Two general gaps remain. (1) The Rosa checks in the designer's hand-off test the blocked request **before** the block reaches the screen (where a collapse costs nothing) but not a failure that arrives **while it is on screen**: a stale, 404 or slow-failing JSON then moves the credit line 169 px inside the reserved box (CLS 0.019 at 390). The hand-off check should run the stale and failed paths with the block already centred and assert a layout shift of 0. (2) Hard constraint 9 says "exactly one request to the JSON plus the widget frame", while the 4g fix adds a HEAD probe to make the blocked path tappable. Either the rule should allow the probe or the prompt should name another way to keep the link tappable (e.g. keep the frame `pointer-events:none` until `load` and drop it on a timeout). That is a rule question for the human, not a defect I scored.
+
+**fix list (not gating; smallest first):**
+1. **Dim 7:** in `stale()`, keep the credit line where it is (reserve the headline lines' height and place the plain link inside it, or pin the credit to the bottom of `#rosa-now`), so a failure on screen shifts nothing. Re-test stale data, 404 and a slow abort with the block centred.
+2. **Dim 5:** drop one of the two adjacent "A guesthouse in Gurubebila…" (the hero line or the paragraph's first sentence), and say the restaurant hours twice, not three times.
+3. **Dim 2 (polish):** `rooms/` first-load CLS 0.038 at 390 (`.rp-group` text at 1.4 s, probably the Caveat swap): match the fallback metrics there as on `/`.
+4. **Dim 2 / 4 (polish):** size the phone guests slideshow to the current quote, or cap the reserved height, so short quotes do not leave a blank band.
+5. **Dim 3 (documented gap):** the Booking.com hand-off carries no room, dates or guests.
+6. **Rule question (not scored):** the HEAD probe is one request beyond hard constraint 9's count.
+
+### Evidence files
+
+`reports/2026-10-midigama-01/critic-coconut-surf-inn-guest-house-and-restaurant-full-r1/`:
+- `audit.json`: `tools/audit-mockup.mjs coconut-surf-inn-guest-house-and-restaurant ../final`, moved here; the designer's `final/audit.json` was restored byte-identical (`cmp`).
+- `a11y-home.json`, `a11y-rooms.json`: axe at 390 and 1440 after a full scroll, Tab stops, overflow at 320 / 360 / 390 / 1440, external requests attempted, JS off at 390 and 1440, reduced motion.
+- `keyboard.json`: first Tab stops on a fresh load, the "Find your room" dialog (focus in, 30-Tab trap, Esc, focus return), and axe's `color-contrast` incomplete nodes.
+- `contrast.json`: hero text over the photo, background sampled with the text hidden; button and tick colours.
+- `rosa.json`: live, blocked, stale clock, stale data and JSON-only failure; requests on load and after the scroll, iframe attributes and hit test, the visible headline, the tap on the fallback.
+- `rosa-shifts.json`: layout-shift sources with the block on screen (stale data at 390 and 1440, live, slow abort, 404).
+- `rooms-cls.json`: `rooms/` CLS and LCP, throttled, at 390 and 1440; the guests slideshow heights.
+- `facts-diff.txt`, `quotes.txt`: page lines not literally in the copy, hrefs and head; the verbatim and attribution check of the 12 quotes.
+- `reports/2026-10-midigama-01/funnel/coconut-surf-inn-guest-house-and-restaurant-r1/funnel.json`: `tools/funnel.mjs http://localhost:8971/ --depth 3` (its two PNGs were moved to scratch and deleted).

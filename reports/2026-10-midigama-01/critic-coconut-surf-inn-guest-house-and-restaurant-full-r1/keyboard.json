@@ -1,0 +1,81 @@
+{
+ "m390": {
+  "first": [
+   "Skip to content #main vis=true",
+   "Check dates on Booking.com https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html vis=true",
+   "8.5/10\nBooking.com | 142 reviews | 4 Nov https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html vis=true",
+   "4.8/5\nGoogle | 88 reviews | 4 Nov 2026 https://www.google.com/maps/place/?q=place_id:ChIJI29CG-cU4ToRQhs8notgauI vis=true"
+  ],
+  "trigText": "Find your room",
+  "d1": {
+   "url": "http://localhost:8971/",
+   "focus": "1\nJust me",
+   "dialog": true
+  },
+  "trapped": true,
+  "d2": {
+   "focus": "Find your room",
+   "open": false
+  },
+  "contrast_incomplete": [
+   "a[href$=\"#top\"] :: Element's background color could not be determined because it's partia",
+   "#h1 :: Element's background color could not be determined because element con",
+   ".where :: Element's background color could not be determined because element con",
+   ".hero-in > .btn-hero.btn-book.btn > span :: Element's background color could not be determined due to a pseudo ele",
+   ".col > .actions > .btn-book.btn[rel=\"noopener\"] > span :: Element's background color could not be determined due to a pseudo ele",
+   "#r0 > .rtxt > .btn-sm.btn-book.btn > span :: Element's background color could not be determined due to a pseudo ele",
+   "#r1 > .rtxt > .btn-sm.btn-book.btn > span :: Element's background color could not be determined due to a pseudo ele",
+   "#r2 > .rtxt > .btn-sm.btn-book.btn > span :: Element's background color could not be determined due to a pseudo ele",
+   "#r3 > .rtxt > .btn-sm.btn-book.btn > span :: Element's background color could not be determined due to a pseudo ele",
+   "#r4 > .rtxt > .btn-sm.btn-book.btn > span :: Element's background color could not be determined due to a pseudo ele",
+   "#r5 > .rtxt > .btn-sm.btn-book.btn > span :: Element's background color could not be determined due to a pseudo ele",
+   ".past > span :: Element's background color could not be determined due to a pseudo ele",
+   ".tick:nth-child(2) > span :: Element's background color could not be determined due to a pseudo ele",
+   ".tick:nth-child(3) > span :: Element's background color could not be determined due to a pseudo ele",
+   ".tick:nth-child(4) > span :: Element's background color could not be determined due to a pseudo ele",
+   ".tick:nth-child(5) > span :: Element's background color could not be determined due to a pseudo ele",
+   ".actions > .btn-hero.btn-book.btn > span :: Element's background color could not be determined due to a pseudo ele",
+   ".foot-act:nth-child(3) > .btn-sm.btn-book.btn > span :: Element's background color could not be determined due to a pseudo ele",
+   "#bar > .btn-book.btn[rel=\"noopener\"] > span :: Element's background color could not be determined due to a pseudo ele"
+  ]
+ },
+ "d1440": {
+  "first": [
+   "Skip to content #main vis=true",
+   "Rooms #rooms vis=true",
+   "The stay #stay vis=true",
+   "The break #break vis=true"
+  ],
+  "trigText": "Find your room",
+  "d1": {
+   "url": "http://localhost:8971/",
+   "focus": "1\nJust me",
+   "dialog": true
+  },
+  "trapped": true,
+  "d2": {
+   "focus": "Find your room",
+   "open": false
+  },
+  "contrast_incomplete": [
+   ".top-act > .btn-sm.btn-book.btn > span :: Element's background color could not be determined due to a pseudo ele",
+   "#h1 :: Element's background color could not be determined because element con",
+   ".where :: Element's background color could not be determined because element con",
+   ".hero-in > .btn-hero.btn-book.btn > span :: Element's background color could not be determined due to a pseudo ele",
+   ".col > .actions > .btn-book.btn[rel=\"noopener\"] > span :: Element's background color could not be determined due to a pseudo ele",
+   "#r0 > .rtxt > .btn-sm.btn-book.btn > span :: Element's background color could not be determined due to a pseudo ele",
+   "#r1 > .rtxt > .btn-sm.btn-book.btn > span :: Element's background color could not be determined due to a pseudo ele",
+   "#r2 > .rtxt > .btn-sm.btn-book.btn > span :: Element's background color could not be determined due to a pseudo ele",
+   "#r3 > .rtxt > .btn-sm.btn-book.btn > span :: Element's background color could not be determined due to a pseudo ele",
+   "#r4 > .rtxt > .btn-sm.btn-book.btn > span :: Element's background color could not be determined due to a pseudo ele",
+   "#r5 > .rtxt > .btn-sm.btn-book.btn > span :: Element's background color could not be determined due to a pseudo ele",
+   ".past > span :: Element's background color could not be determined due to a pseudo ele",
+   ".tick:nth-child(2) > span :: Element's background color could not be determined due to a pseudo ele",
+   ".tick:nth-child(3) > span :: Element's background color could not be determined due to a pseudo ele",
+   ".tick:nth-child(4) > span :: Element's background color could not be determined due to a pseudo ele",
+   ".tick:nth-child(5) > span :: Element's background color could not be determined due to a pseudo ele",
+   ".actions > .btn-hero.btn-book.btn > span :: Element's background color could not be determined due to a pseudo ele",
+   ".foot-act:nth-child(3) > .btn-sm.btn-book.btn > span :: Element's background color could not be determined due to a pseudo ele"
+  ]
+ }
+}

@@ -435,3 +435,111 @@ Independence: I did not open the critic's or the experience-critic's round-3 out
 **All three pass this critic** (dimension 8 ≥ 8), and all three are clearly better than the current presence.
 
 **What the designer prompt got wrong (for the learn step):** this round worked because every fix-list item was checked off explicitly. That is the hand-off pattern to keep. Two things the prompt could still catch earlier: a hero image drawn at about 2× its source on a phone (calm's soft sky) should be flagged at 4e by measuring the drawn-to-source ratio at 390 × DPR 2; and a secondary hero button needs a defined style (outline), not a translucent fill that takes on the photo's colour.
+
+## Round 1 — full (station 5)
+
+Run `2026-10-midigama-01` · station 5 (full, the final site) · **round 1** · visual-critic 0.2.0 · 2026-11-05.
+Page: `sites/coconut-surf-inn-guest-house-and-restaurant/final/` (designer 0.7.1, the Astro port of unique "Round the clock" with calm's view-from-the-roof hero, Alon's tweak at gate b), served at http://localhost:8970/ (home and `/rooms/`). I read `final/notes.md` only for *what changed* (the six 4f fixes); every verdict below comes from the screenshots.
+
+Shot sets. These are scratch and get deleted after the round, so each line below says in words what its file shows.
+- **The shared set** `sites/…/final/shots/`: the dist (12:27) was newer than the old set (12:14), so it was re-shot (15 desktop + 17 mobile). Note: that shoot's server could not reach Rosa (4 console errors), so desktop-11 and mobile-10/11 show the **Rosa fallback state**. I treat that as one of the page's states, below.
+- **My own walk** in `reports/2026-10-midigama-01/visual-coconut-full-r1/`:
+  - `w1440-NN` / `w768-NN` / `w390-NN`: the live server at 1440 × 900, 768 × 1024 (touch) and 390 × 844 (touch), with wheel scroll in 0.8-viewport steps and 900 ms settle per step. `w768-grid` is the 768 contact sheet. Scroll width equals the viewport at all three widths.
+  - `w*-rosa`: "Today on Coconuts" with Rosa live. At all three widths the box gets `.loaded` and 1 iframe.
+  - `st390-findroom` / `st1440-findroom`: the "Find your room" drawer. `st390-slide`: a room slideshow after a tap on dot 2. `st1440-hover`: the hero CTA on hover. `st1440-rm-*`: the set-piece under `prefers-reduced-motion`.
+  - `rooms/desktop-*`, `rooms/mobile-*`: the `/rooms/` page.
+- **Tasteskill inspector** on http://localhost:8970/: 4 FAIL / 4 WARN, the same count as the mockup's round 2. `.taste-skill/` was removed afterwards.
+- **Current presence:** no website. The comparison is `dossier/…/funnel/walk/05-booking-com-fold.png`, re-opened this round: Booking.com's navy bar, yellow search box, "Coconut Surf Inn" in heavy black type, the 8.5 badge, then a grey, empty concrete entrance hall (1/45) and a yellow "Choose dates to see prices" block. It does not show the sea. The Google fold (`01-google-listing-fold.png`) uses the same dim hall photo. The material context of 4f stands: no usable own video, and 70 own photos ≥ 1920 px. The first screen carries img-009, so neither media hard fail is triggered.
+
+Independence: I did not open the critic's or experience-critic's station-5 output.
+
+**Three-second test**
+- **1440 (`final/shots/desktop-00`):** img-009, full-bleed, edge to edge. Blue sky with white cumulus fills the top half. A row of coconut palms stands against it. Then the sea, the reef's white water, the blue-tarp beach shacks with the Sri Lankan flag, and the green.
+  - "Coconut Surf Inn" is set in ink Caveat at about 72 px, centred in the sky, with one line under it and one ink pill, "Check dates on Booking.com". The header (Rooms | The stay | The break + a black "Check dates" pill) sits in the sky with no rule.
+  - It is clean, sunny and unmistakably *this* place: the view from the roof onto Coconuts. This is a far stronger first screen than unique's old white dissolve: no haze, no fog. I would scroll.
+- **390 (`final/shots/mobile-00`, `w390-00`):** the same photograph cropped tall. The title, line and full-width ink pill sit in the upper third, all legible on the pale sky.
+  - About 65 % of the screen is sky and cloud. The palms, the sea and the reef's white water only begin at about y = 1130 of 1688 (the bottom third). It is calm and attractive, but the place reads late on the phone.
+  - On load the first screen has no header, no Call button and no phone bar. The hero CTA is the only action, which is acceptable because it is clear.
+
+**Checklist**
+- **Media:**
+  - The strongest own photograph leads, big, with the identifying view (reef, shacks, green) in frame at 1440 (desktop-00). The phone crop keeps it, but low (mobile-00).
+  - After the hero, the set-piece carries five full-height frames of the house's own pictures in a pinned split:
+    - the thatched roof with the hammock (desktop-06: hammock whole, swing seat, sea beyond the palms);
+    - the saturated sunset img-008 (desktop-07);
+    - the house lit at night (desktop-08);
+    - the restaurant at 7:30 with the sea through the pillars (desktop-09);
+    - the break (desktop-10).
+  - "Inside the house" is a flush 3 × 2 of courtyard, gate, garden, corridor and hammock-veranda photos (desktop-05).
+  - The rooms are 2-up 3:2 slideshows (desktop-02…04). The A/C leads now open on the widest frames: the balcony room with its doors open onto green (desktop-02), and on the phone the red-wall room with its open balcony doors (`st390-slide`). They are honest phone photos and the weakest pictures on the page, but they are kept at a modest size, which is right.
+- **Composition and grid:**
+  - The page alternates centred statement blocks with real splits. "13:00, check-in" (desktop-01) is a centred paragraph, three rating pills and two buttons on white. Then the grey rooms band, the 1/3–2/3 "Inside the house", the 450 vh sticky split, the forecast row, the centred big quote, "Getting here" with the sign photo, and the closing.
+  - 768 (`w768-grid`) now uses the stacked set-piece: the photo full-width on top, the dial row under it, the text below. That is the 4f round-2 complaint fixed: "The afternoon" sits on one line beside the hammock photo, with nothing cramped.
+  - At 768 the three rating pills wrap 2 + 1, so "4.44/5 Airbnb" sits alone, centred, on a second line (`w768-01`, and again at check-out in `w768-10/11`). It is a little untidy.
+  - The inspector's `empty-middle` (1492 px, "Six kinds of room") is the intro paragraph and button centred above the 2-up grid. In the shots it reads as a centred header, not a hole.
+- **Typography:**
+  - Caveat titles plus Red Hat Text remains the best pair in this run, and the titles have the sign's bounce: "13:00, check-in", "Six kinds of room", "The afternoon", "Until 22:00", "Today on Coconuts", "11:00, check-out", "Getting here".
+  - Set-piece body at about 17 px in full ink, with grey review cards (desktop-06).
+  - The closing "Booking.com has the live dates and prices. If you'd rather ask something first, call us." is a sentence set as a 52 px Caveat headline. It runs 2 lines at 1440 (desktop-13), but 3 at 768 and 390 (inspector `headline-lines`; mobile-15). It reads as a paragraph in a display face.
+  - 12 font sizes (inspector WARN).
+- **Colour:**
+  - Sky blue and green from the photographs, white and a cool grey tint, and ink for every booking pill (desktop-00, -01, -13). The sign's vermilion appears only on the sun disc that marks the hour and on the round Call button (mobile header, closing). The booking colour is unmistakable and consistent through the hero, the rooms, the drawer, the phone bar and `/rooms/`.
+  - The saturated moments (sunset, night) come from the set-piece.
+- **Hierarchy and rhythm:**
+  - The eye always knows where to go: hero → a short fact block with proof → rooms → the house → a day in pictures → today's surf → reviews → how to get here → book.
+  - The phone bar ("Check dates on Booking.com" + "Find your room") is on every mobile frame after the hero (mobile-01…16).
+  - The quietest stretch is the rooms: about 2.5 screens of grey at 1440 (desktop-02…04), with small chips and many identical "Check dates on Booking.com" pills, one under each room.
+- **Polish:**
+  - Flat buttons, no rules under the header, a designed footer with Call / Map / "Rooms on Booking.com" / Airbnb buttons (desktop-14), and clean slideshow dots (`st390-slide`).
+  - Seen issues:
+    - **The Rosa fallback state** (desktop-11, mobile-10/11) is weak. When Rosa is unreachable the left half is a small "See today's forecast for Coconuts on Rosa" pill, and the right half is a **500 px empty grey box** with the same link centred in it. That is two copies of one link and a big grey hole. With Rosa live (`w1440-rosa`, `w390-rosa`) the block is good: the headline "0.3–0.5 m, knee-high", swell and wind in the site's type, beside Rosa's own card.
+    - On the phone with Rosa live, about 150 px of empty white sits above the widget and about 200 px below it (`w390-rosa`).
+    - Under the drawer scrim the sticky header stays bright while the rest of the page is dimmed (`st390-findroom`, `st1440-findroom`), so the header floats above the overlay.
+    - The inspector's `covered-text` @390: the check-out "8.5/10" pill passes fully under the sticky header at one scroll position. That is ordinary sticky-header overlap, minor.
+  - **The drawer itself** is well made. "How many are coming?" in Caveat, with five large number tiles (1 Just me … ? Not sure). It is a bottom sheet on the phone and a centred card at 1440, with the phone bar hidden while it is open.
+  - Reduced motion (`st1440-rm-*`): the set-piece falls back to a static photo/text split. "Until 22:00" sits beside the night photo, and "From 7:30" beside the restaurant. It is clean.
+  - `/rooms/` (`rooms/desktop-*`, `rooms/mobile-*`) is a plain but tidy list grouped by "Just me / Two of us / Three of us / Four of us / Not sure", with small thumbnails and the same pills and footer. It is utilitarian, but it is the no-JS fallback page, so that is acceptable.
+- **Distinctiveness:** high. The day told by the clock, with the sign's sun as the hour marker moving down the dial (desktop-06 → desktop-10: Afternoon → Sunset → 22:00 → 7:30 → The break), belongs to this inn alone. It shares nothing with Cheeky Monkey or Lotus.
+- **Hero and motion:**
+  - The hero is interesting because of the view itself, clean, and has one short CTA. The hero itself does not move; that is the concept.
+  - The main item is the pinned clock set-piece with the image wipe and the travelling sun disc, and every visitor who scrolls sees it.
+  - Micro-motion comes from the disc easing, the slideshows, the drawer and the button press. The page is alive, but its life is concentrated mid-page.
+
+**Score: 8 / 10.** This is a faithful, cleaner port of the round-2 unique that passed at 8. The human's hero swap is a clear improvement: the first screen is now crisp, sunny and recognisably the view onto Coconuts. Every 4f round-2 fix I listed is visibly done: the stacked 768 set-piece, the wider room leads, and the closing at 2–3 lines.
+- It is clearly professional and beautiful, and it tells a stay in the house's own big pictures.
+- It is not more than 8 because:
+  - the phone hero is mostly sky, with the place in its bottom third;
+  - the rooms run is a long, quiet grey stretch of small phone photos;
+  - the Rosa fallback shows a big empty grey box;
+  - the closing sentence is set as a 3-line display headline on phones.
+- Closest gold: `the-lavish-haven.html`, the place's own picture big with one confident title and one button. It is now level with it in first-glance decisiveness at 1440, below it in the phone hero and in the mid-page room photography.
+
+**Better than the current presence?** **Yes, clearly.**
+- First screen: `final/shots/mobile-00` (the sky, palms and the reef under a clean script title and one ink button) against `05-booking-com-fold` (an OTA frame, a search box and an empty concrete entrance hall).
+- Whole page: yes. No listing shows the roof, the sunset, the restaurant at night or the break, and this page does, in order.
+
+**Hard fail:** none from this critic. **Pass** (dimension 8 = 8).
+
+**Fix list (biggest effect first; none blocks the pass)**
+1. **Phone hero crop:** at 390 move the crop down so the palms, sea and reef white water fill the lower ~55 % of the screen, not the bottom third (mobile-00: horizon at y ≈ 1430/1688). Keep the title on the sky above them. Set `object-position` for the portrait crop, or use a portrait crop of img-009 at roughly 40 % from the top.
+2. **Rosa fallback:** when the probe fails, collapse the right-hand box (no 500 px grey rectangle) and show the single plain link on the left only (desktop-11, mobile-10/11). On the phone with Rosa live, cut the ~150 px above and ~200 px below the widget (`w390-rosa`).
+3. **Rooms run:** shorten it to about 2 screens at 1440 (desktop-02…04). Either give the first A/C room one larger lead (the balcony room at 4:3 across 7 columns), or drop the per-room "Check dates on Booking.com" pills in favour of one pill under each group, because six identical black pills make the stretch heavy.
+4. **Closing:** at 768 and 390, set it at ≤ 2 lines. Cut it to a title, e.g. "Live dates on Booking.com. Questions? Call us.", or set it at ≤ 32 px. The 3-line Caveat sentence reads as a paragraph in a display face (mobile-15, inspector `headline-lines`).
+5. **Small polish:**
+   - Put the drawer scrim over the sticky header as well (`st390-findroom`).
+   - At 768, keep the three rating pills on one row (smaller pills or a 3-column grid) so "4.44/5 Airbnb" does not sit alone (`w768-01`).
+   - Reduce 12 font sizes towards 8.
+
+**Keep:** everything structural:
+- the full-bleed view-from-the-roof hero with the ink Caveat title and one ink pill;
+- Caveat + Red Hat Text;
+- ink booking pills with vermilion only for the sun disc and the Call;
+- the five-frame clock set-piece with the moving sun, stacked below 1024;
+- the flush "Inside the house";
+- the A/C | Fan chips;
+- the forecast headline beside Rosa's own card;
+- the single big quote;
+- the sign photo in "Getting here";
+- the drawer;
+- the phone bar;
+- the footer.

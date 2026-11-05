@@ -564,3 +564,85 @@ From 1.5 s this is still the strongest phone first screen of the three revised p
 Little this round: both pages did what the round-2 lists asked, and the round-2 lesson ("a crop fix must not cost the hook") was applied: calm measured its photograph and found the one crop that keeps the sea and drops the wires. Two small lessons remain:
 - **A fix on one variant is still not carried to its siblings in its no-JS and failed-load states.** Interactive got the failed-load placeholder right and calm did not; calm hides its wordmark with JS off and interactive does not. The hand-off check should walk the JS-off and hero-failed states for every variant, not only the one the report named.
 - **The phone bar's behaviour at the footer is a shared rule, not a per-variant choice.** Calm steps it aside over the closing section and footer; interactive keeps it. Pick one rule for all three.
+
+---
+
+## Round 1 — full (station 5)
+
+experience-critic 0.2.0 · station 5 (full), round 1 · run `2026-10-midigama-01` (test, operator alon) · 2026-11-05.
+Page: the built site `sites/coconut-surf-inn-guest-house-and-restaurant/final/dist/` (home and `/rooms/`), served on http://localhost:8970/. It is the Astro port of the picked unique "Round the clock", with calm's view-from-the-roof hero (Alon's tweak at gate b). Inputs read: `final/notes.md` (the six 4f fixes, the port comparison, performance) and my 4f rounds above. Comparison bar: the business's current presence (no website), i.e. the Booking.com, Google and Airbnb folds (`dossier/coconut-surf-inn-guest-house-and-restaurant/funnel/walk/05-booking-com-fold.png`, `01-google-listing-fold.png`, `06-airbnb-fold.png`). Written without reading the critic's or the visual-critic's station-5 report.
+
+Evidence is in `reports/2026-10-midigama-01/experience/coconut-surf-inn-guest-house-and-restaurant/full-r1/` (git-ignored PNGs): `final-walk.log`, `states.log`, `states2.log`, `inspect.txt`, the frames and contact sheets in `sheets/`. Recipes (scratch, not committed):
+- `walk.mjs`, unchanged from 4f: cold phone load (390×844 @2x, touch, CDP 1.6 Mbps / 150 ms, 4× CPU), frames at 0.5 / 1.5 / 3 / 6 s, human-pace scroll at 0.7 screen per step, CTA hover, transition count, reduced motion, JS off.
+- `states.mjs` / `states2.mjs`: the set-piece in 14 steps at 1440, 768 and 390, mid-wipe steps on the laptop, the "Find your room" sheet (2, Not sure, Esc, the sheet's Check dates tapped through), `/rooms/` with JS on and off, the forecast with JS off, with `rosa.surf` blocked (12 s wait) and live, the hero tap-through, keyboard focus.
+- `lapwalk.mjs`: the laptop page at 1440×900 in 16 steps.
+- The tasteskill inspector (`inspect.txt`), run from the scratchpad; its `.taste-skill/` was removed.
+
+### Summary
+
+| | final "Round the clock" (unique + calm's hero) |
+|---|---|
+| **Dimension 8 (experience)** | **8 / 10** (4f unique: r1 8, r2 8) |
+| Better than the current presence (Booking.com + Google + Airbnb) | **yes** |
+| Pass / fail (this critic) | **pass** |
+| Taps to book | **1** (hero → Booking.com listing; the first request after the tap is `https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html`, `states2.log`). Finder path: 3 (bar → "2" → Check dates, `states.log`) |
+| Hard fails (dimension-8 side) | none. No usable own video (concepts §2, notes "Hero video"); the first screen carries img-009, business-owned, ≥ 1920 px |
+| Phone page length | 12,774 px, about 15 screens (4f r2 unique: 14,094) |
+
+### Timeline (phone, throttled; `final-phone-t500…t6000.png`, `sheets/cold.png`)
+| t | On screen |
+|---|---|
+| 0.5 s | Complete: the roof view full-bleed (sky, the palm crowns, the sea and the reef whitewater along the foot), "Coconut Surf Inn" in Caveat, the place line, and the ink-black "Check dates on Booking.com" at y 264. No header wordmark (one name). |
+| 1.5 / 3 / 6 s | Identical. Nothing late, nothing moves. The `load` event at 6.2 s; 0 requests off localhost (`final-walk.log`). |
+
+Feeling: bright, open, clearly by the sea, and immediate. It is the fastest first screen of the run (notes: LCP 460 ms). The choice of the roof view gives the page the one thing the 4f unique hero lacked: you are standing on the house, looking at the break. Two weaknesses:
+- **On the phone the frame is 70 % sky.** The sea, the reef and the whitewater sit in the bottom ~15 % (`final-phone-t6000.png`), half under where the phone bar arrives. The palms carry it. It is the same "sea as a strip at the foot" I flagged on the 4f r1 unique crop, now on calm's photograph.
+- **It is still.** Calm's version of this photograph panned once along the beach; here the photograph does not move, so the first screen is a title-and-button over a photo. It is clean, slick and has one action, so it is not capped, but it is the most conventional moment on an otherwise singular page.
+
+On the laptop (`final-laptop-s00.png`) the view is wide and good: the horizon at two-thirds, the reef lines visible, title + line + one button centred in the sky, header showing only the nav and "Check dates". The blue-tarp beach shacks and a wire still sit along the bottom-left edge.
+
+### Walk (phone: `final-phone-s00…s21.png`, `sheets/walk-0/1/2.png`)
+- **s01–s02, 13:00 check-in:** one paragraph (what, where, Coconuts in front, the restaurant hours, "Booking.com has the live dates"), three dated rating pills, then "See rooms and live dates on Booking.com" + Call. Trust and action in two scrolls. The button label wraps to two lines inside its pill (s02), the only clumsy button on the page.
+- **s03–s07, Six kinds of room:** **the 4f fix holds**: Balcony opens on the balcony door and the red cushions, Superior on the room seen whole, the 2 + 1 on the carved bed, the family room wide on both beds (s03–s06). Budget rooms are compact rows with a thumbnail. About four screens, and the run no longer deflates. The rooms are dim, ground-floor photographs; that is the material, not the design.
+- **s07–s09, Inside the house:** the light-well with its jade channel, the veranda hammock with a surfboard, a masonry of prints. A lift.
+- **s09–s14, the set-piece:** afternoon under the thatch → sunset → the house lit at 22:00 → the restaurant at 7:30 → the break, the red sun stepping down the dial (`phone-pin-00…14.png`, `sheets/pin-phone.png`). The two guest quotes sit inside their moments. It hands straight to "Today on Coconuts" (`phone-pin-14.png`). This is still the moment a traveller remembers.
+  - Fix 4 is in: no title is half cut under the fade. The price: for a few steps a block shows its body text with no title above it (`phone-pin-08/10.png`; on the tablet "On the roof" and "The restaurant upstairs" stand alone, `tablet-pin-01/05.png`). It reads as a missing heading for a moment, not as a defect anyone would report.
+- **s14–s16, Today on Coconuts:** 0.3–0.5 m, knee-high, the time, swell and wind in the site's type, then Rosa's widget (live run) and the amenities as one " | " paragraph.
+- **s17–s18, 11:00 check-out:** the three rating pills again and one review at a time (1/10, arrows).
+- **s19–s21:** the sign as a print by "Getting here" (airport, train stations, the Google listing name, address, Maps + Call pills), the closing in Caveat with the black button and the round red Call, the footer.
+- **Phone bar** ("Check dates on Booking.com" + "Find your room"): hidden on the first screen, visible from s01 (y 591) to the end; nothing covers content (`final-walk.log`).
+
+### The story after one scroll
+What (a guesthouse with a restaurant upstairs), where (Gurubebila, between Midigama and Weligama), why (the sea from the roof, a reef break in front), and cost (honestly "live dates on Booking.com"): yes, by s02. Told through the photograph and one paragraph, not a table.
+
+### Wanting to go
+Lifts: the roof view (s00), the light-well (s08), the whole set-piece (sunset and the lit house most of all), the break handing to today's surf. Deflates: nothing sustained now that the room run is short and leads wide. The forecast + amenities stretch (s15–s16) is the flattest two screens.
+
+### Booking
+- 1 tap from the hero; the first request is the dossier's Booking.com URL (`states2.log`). 20 Booking links on `/`, one URL; every `tel:` is `+94778921396`. Matches the audit (engine, 1 click).
+- "Find your room": focus lands on "1 Just me"; "2" lists Balcony, Superior, 2 + 1 and the Budget Double with chips and their own button; the sheet's Check dates goes to Booking.com; "Not sure" shows the closing line and one Call; Esc closes and returns focus (`phone-finder*.png`, `states.log`).
+- `/rooms/` with JS off is a real page grouped by party size, with "Back to Coconut Surf Inn" (`phone-rooms-jsfalse.png`); with JS off the home page's "Find your room" links point there (`states2.log`).
+- Against the current presence: Booking.com has live prices once dates are in, and the page sends you there in 1 tap with fan vs A/C already understood (which Booking.com's own description muddles). Google's labelled Call is matched at s02 and in the header's round red button.
+
+### Motion and states
+- Laptop: 62 of 100 interactive elements carry their own transition; the rest are the slideshow and review dots (animated through `::before`), the skip link and the Rosa credit. The hero CTA lifts 1 px and its shadow deepens (`final-walk.log`).
+- The set-piece wipe on the laptop is a clean horizon slit, sunset opening through the hammock frame (`laptop-wipe-0…6.png`, `sheets/wipe.png`); at 768 the stacked layout (fix 2) works with no overflow (`tablet-pin-*.png`, sw 768).
+- Reduced motion: no pin, the moments stacked (`final-phone-reduced-*.png`). JS off: a clean page, the bar static, the forecast a plain "See today's forecast for Coconuts on Rosa" pill (`phone-nojs-forecast.png`); the no-JS first screen shows the header wordmark and the title (the name twice, as in 4f r2).
+- **Rosa blocked** (`rosa.surf` aborted): 0 third-party requests on load; near the block the widget frame is never created (0 iframes), the link is tappable and on top (`elementFromPoint` hits it, `states2.log`). Fix 1 works. But what the visitor sees is a **~260 px empty grey box with the link at its very foot**, partly under the phone bar (`phone-rosa-blocked-link.png`, `sheets/rosa.png`). The playbook asks for "never an empty box". (The headline still drew, because the JSON is on `rosa-data-opal.vercel.app`, which my route did not block.)
+- Rosa live: 0 third-party requests on load; after the scroll the widget loads Rosa, its Google fonts and ArcGIS tiles inside its frame (`states2.log`).
+- Inspector (`inspect.txt`, 4 FAIL / 4 WARN): the closing line runs 3 lines at 390 and 768 (a stated choice in notes fix 5); "142 reviews" read as an eyebrow over the rating pills (a false positive, the pills are one line); "8.5/10" hidden under another element at one scroll position on the phone (the phone bar over the check-out pills, momentary); no video (accepted, none usable). None changes the score.
+
+### Against the current presence, honestly
+Unchanged from 4f: none of Booking.com, Google or Airbnb shows the sea; the site opens on it, tells the day at the house, and books in 1 tap. The listings still do two things better: Booking.com shows live prices once dates are in (by design, the site hands off to it), and Airbnb shows Chinthaka's face on its first screen (the site names him in the 7:30 block only; no host photograph in the dossier).
+
+### Score: 8, better than the current presence: yes
+The port is faithful, faster than the mockup, and fixed what 4f asked: the room run now leads wide and is four screens, titles never half-cut, the set-piece works at 768. The first screen is clean and immediate with one action, and the set-piece is the moment no listing can give. It is not a 9 because the phone hero is mostly sky with the sea at its foot and nothing moving, the Rosa-down state is an empty grey box, and the forecast/amenities stretch is flat.
+
+**Fix list (biggest effect first)**
+1. **Phone hero crop:** bring the sea up. Anchor the 9:16 crop lower on img-009 (or set its focal point at the reef) so the horizon sits around 55–60 % and the whitewater is above the phone bar's line, not in the bottom 15 % (`final-phone-t6000.png`).
+2. **Give the first screen one slow movement**, as calm had: a single 10–15 s pan or push along the roof view, ending on the reef, poster-still under reduced motion. It would make the first screen as felt as the set-piece without adding a second device.
+3. **Rosa down = no empty box.** When the widget is removed, collapse its reserved space to the link pill (as with JS off), or put the "See today's forecast for Coconuts on Rosa" pill centred in the box with Rosa's mark (`phone-rosa-blocked-link.png`).
+4. **Shorten the check-in button label** to "See rooms and dates" (or the hero's own "Check dates on Booking.com") so it sits on one line in its pill at 390 (s02).
+5. **Small finishes:** during the pin, fade a block's sub-title with its title so no "On the roof" / "The restaurant upstairs" stands alone (`tablet-pin-01/05.png`); crop the laptop hero's foot above the blue-tarp shacks; with JS off, hide the header wordmark on the first screen.
+
+**Keep:** the roof view as the first screen with one name and one black button; the set-piece with the horizon slit and the sun on the dial; the guest quotes inside their moments; the wide room leads and compact budget rows; the "Find your room" sheet and `/rooms/`; the forecast headline in the site's type; the 460 ms first paint and 0 third-party requests on load.
