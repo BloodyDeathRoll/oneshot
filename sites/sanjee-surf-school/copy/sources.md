@@ -4,9 +4,9 @@ Copywriter 0.5.0 · run 2026-10-midigama-01 (test) · 2026-11-05. Facts come fro
 
 Caps were re-read from `schemas/site-content.md` v0.11 this round: see "Caps" at the end, with the measured lengths.
 
-After the humanizer 0.2.1 pass (2026-11-05), `en.draft.json` is the copywriter's draft, unchanged, and `en.json` the rewrite. The changes are in `humanizer-notes.md`. The rows below describe `en.json`, and paragraph numbers are `en.json`'s.
+The humanizer 0.2.1 pass of 2026-11-05 rewrote `en.json`; its changes are in `humanizer-notes.md`. The rows below describe `en.json`, and paragraph numbers are `en.json`'s. `en.draft.json` was refreshed for the voice fixes V1 and V2 (`review.md` round 1): it is now the committed `en.json` of 6d49a9f, with the copywriter's round 2 fixes, so a diff against `en.json` shows only those two sentences. The copywriter's original draft is at `git show 419b979:sites/sanjee-surf-school/copy/en.json`.
 
-**Round 2 fixes (copywriter 0.5.0, after `review.md` round 1).** Made directly in `en.json`, so they are not in `en.draft.json` or `humanizer-notes.md`: `ctas.primary` (F1), `languagesSpoken` (F2), block [4] ¶3 and a new ¶4 (F3, N1), and nine `priceList` notes (F4, N1). The `priceList` section below lists them row by row.
+**Round 2 fixes (copywriter 0.5.0, after `review.md` round 1).** Made directly in `en.json` and not listed in `humanizer-notes.md`; they are in the refreshed `en.draft.json`: `ctas.primary` (F1), `languagesSpoken` (F2), block [4] ¶3 and a new ¶4 (F3, N1), and nine `priceList` notes (F4, N1). The `priceList` section below lists them row by row.
 
 **This is the owner-prose case, with a warning.** The site carries a lot of first-person and owner-side copy, so its sentences are used wherever they do not touch a contradiction (edits are listed under "Edits to the owner's words"). The authorship of the first-person story is unknown (`business.owner_voice.note`), and the legal pages name someone else as provider (`flags_for_operator[0]`). The copy therefore says "we" and "our" without saying whose business it is, calls Sanjee only "head instructor", and never says owner, founder, family or "his school".
 
@@ -92,8 +92,8 @@ Index = position in `contradictions[]`. "Left out" means no value is stated anyw
 | [3] ¶3 | leash (6 ft – 9 ft) and fins (FCS-II or Futures); then wax and a fresh wax comb, as a second sentence | `rental_terms.included[0–2]` |
 | [3] ¶4 | ID or passport copy, refundable deposit, ask for the amount | `rental_terms.id_required`, `rental_terms.deposit`. Contradiction 14. |
 | [4] heading | "By tuk-tuk" | framing; `offers` group `tuk_tuk` |
-| [4] ¶1 | the three tours that look for waves, by name (the number is no longer written; the names carry it, and ¶2's "other nine" counts from them) | `offers` tour_id `surf-safari`, `full-coast`, `sunrise-session` |
-| [4] ¶2 | the other nine: outings along the coast and inland, at estimated introductory prices, with pickup and return within Weligama (one sentence) | The nine other `offers` with group `tuk_tuk`: `includes` "Pickup and return within Weligama", `note` "Estimated introductory package price". "Inland": the tea estate's "Travel inland". The hedge on the prices is kept on purpose. |
+| [4] ¶1 | the three tours that go looking for waves, by name ("three tours" is written again, after `review.md` V1 and V2) | `offers` tour_id `surf-safari`, `full-coast`, `sunrise-session` |
+| [4] ¶2 | the other nine tours: outings along the coast and inland, at estimated introductory prices, with pickup and return within Weligama (one sentence; ¶3's "those outings" leans on "outings" here) | The nine other `offers` with group `tuk_tuk`: `includes` "Pickup and return within Weligama", `note` "Estimated introductory package price". "Inland": the tea estate's "Travel inland". The hedge on the prices is kept on purpose. |
 | [4] ¶3 | those outings don't include meals or activities | The nine other `offers` with group `tuk_tuk`: each one's `includes` lists "meals and activities" as excluded (checked by script). Stated once here, not nine times in the notes. "Those outings" leans on the noun in ¶2. The three surf tours are not covered: one includes lunch, one has a breakfast stop. |
 | [4] ¶4 | a tour's price is for the tour, not per person; ask how many people can come | `offers` group `tuk_tuk`: `unit` "per tour", `includes` "price per tour", `note` "Price is for both persons if 2 attend". The FAQ's side of contradiction 12 also prices the tour for a party, so this holds on every side. No party size is stated (F3). |
 | [5] heading | "Before you book" | framing |
@@ -254,7 +254,7 @@ No line reads as a slogan except the owner's own `featureLine`, which is one sho
 
 ## Facts available vs words written
 
-About 80 usable facts: 3 lessons, 16 + 1 rental rates, 12 tours, 2 shop items, 6 board types, 3 rental inclusions, 4 levels, 11 waves, the rules, the owner's story, 2 credentials, the Google rating, 4 quotes and the contact lines. They become 8 blocks, 22 paragraphs and 447 words of body, plus 34 priced rows: a fairly long page because the offer is long, with short prose and the rows carrying the numbers. Nothing in the dossier is too thin to build on. The thin parts are the ones the old site contradicts itself on, listed above, and those are pitch points.
+About 80 usable facts: 3 lessons, 16 + 1 rental rates, 12 tours, 2 shop items, 6 board types, 3 rental inclusions, 4 levels, 11 waves, the rules, the owner's story, 2 credentials, the Google rating, 4 quotes and the contact lines. They become 8 blocks, 22 paragraphs and 450 words of body, plus 34 priced rows: a fairly long page because the offer is long, with short prose and the rows carrying the numbers. Nothing in the dossier is too thin to build on. The thin parts are the ones the old site contradicts itself on, listed above, and those are pitch points.
 
 ## Caps
 

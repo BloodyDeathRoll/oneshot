@@ -1,5 +1,16 @@
 # humanizer notes — sanjee-surf-school · en
 
+## Voice fixes after review round 1, 2026-11-05 · humanizer 0.2.1
+
+Scope: `review.md` V1 and V2 only, both in block [4] and both introduced by my first pass. I worked from the committed `en.json` of 6d49a9f, with the copywriter's round 2 fixes. I refreshed `en.draft.json` to that file first, byte-identical before my edits, so a diff against `en.json` shows these two sentences and nothing else. The copywriter's original draft stays at `git show 419b979:sites/sanjee-surf-school/copy/en.json`.
+
+1. **V1, [4] ¶1.** "The Surf Spot Safari and the Full Coast Adventure go looking for waves, and so does the Sunrise Session." → "The Surf Spot Safari, the Full Coast Adventure and the Sunrise Session are the three tours that go looking for waves." The three names now sit as a plain list, and nothing suggests the third differs from the other two. They are the whole set of three, so this is data, not a triad for effect.
+2. **V2, [4] ¶2.** "The other nine are outings along the coast and inland, at estimated introductory prices, with pickup and return within Weligama." → "The other nine tours are outings along the coast and inland, at estimated introductory prices, with pickup and return within Weligama." "Nine" has its noun, and "outings" stays for ¶3's "Those outings".
+
+Not changed: [4] ¶3 and ¶4, and every other field. Same tours, same count, same hedge on the same nine, same pickup. This supersedes changes 7 and 8 in the section below. That section describes the first pass and was not rewritten, so some of what it quotes has since been changed by the copywriter's round 2 fixes.
+
+Rejected: "Three of our tours go looking for waves: …", which brings back the colon list (tell 10). A parenthesis around the names, which reads as an afterthought when the names are the point of the sentence. Stating the total of twelve, which nothing needs.
+
 ## Pass of 2026-11-05 · humanizer 0.2.1 · run 2026-10-midigama-01 (test)
 
 Input: the copywriter 0.5.0 draft, kept unchanged as `en.draft.json`. I rewrote `en.json` in place and added `humanizer_version` (0.2.1). This was a light pass. The draft is plain and mostly the owner's own sentences, so most of what I fixed was shape: triads, one label-and-colon pattern, and a few stiff sentences. I changed 8 fields: six copy blocks, `spot` and one `priceList` note. Copy blocks went from 22 paragraphs and 403 words to 21 and 431. The rewrite is longer because breaking a list into sentences adds words.

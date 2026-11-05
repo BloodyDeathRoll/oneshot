@@ -2,19 +2,20 @@
  "slug": "sanjee-surf-school",
  "locale": "en",
  "copywriter_version": "0.5.0",
+ "humanizer_version": "0.2.1",
  "businessName": "Sanjee Surf School",
  "businessType": "surf_school",
  "tagline": "Surf lessons in Weligama, on the south coast of Sri Lanka.",
  "closing": "Send us the lesson and date you want on WhatsApp, or call the same number.",
  "featureLine": "Making waves, one lesson at a time.",
  "ctas": {
-  "primary": "Message Sanjee on WhatsApp"
+  "primary": "Ask on WhatsApp"
  },
  "copyBlocks": [
   {
    "slot": "intro",
    "heading": "Who we teach",
-   "body": "We teach total beginners, beginners who can already stand up, intermediates and advanced surfers.\n\nLessons are in English as standard."
+   "body": "You can come to us as a total beginner, a beginner who can already stand up, an intermediate or an advanced surfer.\n\nLessons are in English as standard."
   },
   {
    "slot": "about",
@@ -24,27 +25,27 @@
   {
    "slot": "offer",
    "heading": "Lessons",
-   "body": "All lessons include board and rash guard rental, professional instruction, and beach safety briefing.\n\nThe Week Intensive is spread across 10 days, so you can pick your best days. After 2 hours of surfing, your muscles will be happily exhausted. Contact us beforehand to coordinate which days and times work best for you.\n\nFor group bookings, please leave us a message."
+   "body": "Every lesson includes professional instruction and a beach safety briefing. Board and rash guard rental is in the price too.\n\nThe Week Intensive is spread across 10 days, so you can pick your best days. After 2 hours of surfing, your muscles will be happily exhausted. Get in touch beforehand and we'll work out which days and times suit you.\n\nFor group bookings, please leave us a message."
   },
   {
    "slot": "offer",
    "heading": "Board rental",
-   "body": "Our shop sits 30 seconds from the sand at Coco Beach, Weligama. There is free dry storage there while you eat or rest between sessions.\n\nWe rent soft-top foamies 8'0–9'0, mini-mals 7'2–7'10, mid-lengths and funboards 6'8–7'4, fish and hybrids 5'8–6'4, performance shortboards 5'10–6'2 and longboards 9'0–9'4.\n\nEach board comes with a leash sized for it (6 ft – 9 ft), fins fitted to your style (FCS-II or Futures), and wax for tropical water with a fresh wax comb.\n\nRentals need an ID or passport copy and a refundable deposit. Ask us for the amount."
+   "body": "Our shop sits 30 seconds from the sand at Coco Beach, Weligama. Free dry storage there while you eat or rest between sessions.\n\nWe rent soft-top foamies 8'0–9'0, mini-mals 7'2–7'10, mid-lengths and funboards 6'8–7'4, fish and hybrids 5'8–6'4, performance shortboards 5'10–6'2 and longboards 9'0–9'4.\n\nEach board comes with a leash sized for it (6 ft – 9 ft) and fins fitted to your style (FCS-II or Futures). You also get wax for tropical water and a fresh wax comb.\n\nTo rent a board we need an ID or passport copy and a refundable deposit. Ask us how much it is."
   },
   {
    "slot": "offer",
    "heading": "By tuk-tuk",
-   "body": "Three tours go looking for waves: the Surf Spot Safari, the Full Coast Adventure and the Sunrise Session.\n\nThe other nine are outings along the coast and inland, with pickup and return within Weligama. Their prices are estimated introductory prices.\n\nEach tour price covers up to 2 people."
+   "body": "The Surf Spot Safari and the Full Coast Adventure go looking for waves, and so does the Sunrise Session.\n\nThe other nine are outings along the coast and inland, at estimated introductory prices, with pickup and return within Weligama.\n\nThose outings don't include meals or activities.\n\nA tour's price is for the tour, not per person. Ask us how many people can come."
   },
   {
    "slot": "info",
    "heading": "Before you book",
-   "body": "You need to be able to swim at least 50 meters unaided.\n\nWe teach kids from age 6 and up. Anyone under 18 must be accompanied by a parent or legal guardian.\n\nCash on the day can be LKR, USD or EUR.\n\nAll prices are as of 5 November 2026."
+   "body": "You need to be able to swim at least 50 meters unaided.\n\nWe teach kids from age 6 and up. Anyone under 18 must be accompanied by a parent or legal guardian.\n\nCash on the day can be LKR, USD or EUR. All prices are as of 5 November 2026."
   },
   {
    "slot": "info",
    "heading": "Other waves, as we rate them",
-   "body": "For beginners: Jungle Beach and Weligama Main Point, both beach breaks. Mirissa, also a beach break, goes from beginner to intermediate.\n\nFor intermediates: Fishermans, a reef break; Island Point, a point break; Plantation Point, a right-hand reef; and Lazy Left in Midigama, a long left-hand reef. Lazy Right in Midigama, a right-hand reef, goes from intermediate to advanced.\n\nFor advanced surfers: Ram's Right, a reef break, and Kabalana (The Rock), an A-frame reef."
+   "body": "Jungle Beach and Weligama Main Point are both beach breaks we'd call beginner waves. Mirissa, also a beach break, goes from beginner to intermediate.\n\nFor intermediates there's Fishermans (a reef break), Island Point (a point break), Plantation Point (a right-hand reef) and Lazy Left in Midigama, a long left-hand reef. Lazy Right, also in Midigama, is a right-hand reef that goes from intermediate to advanced.\n\nRam's Right, a reef break, and Kabalana (The Rock), an A-frame reef, are for advanced surfers."
   },
   {
    "slot": "info",
@@ -52,7 +53,7 @@
    "body": "On Google Maps, look for Sanjee Surf School (plus code XC63+4H). You may also see us as Sanjee Surf."
   }
  ],
- "spot": "Coco Beach is our home spot, a beach break with smaller crowds than the main peak and a friendly, mellow vibe, ideal for first pop-ups.",
+ "spot": "Coco Beach is our home spot, a beach break. Smaller crowds than the main peak and a friendly, mellow vibe, ideal for first pop-ups.",
  "season": "Best surf season runs November to April; peak swell and dry weather are December–February.",
  "openingHours": [],
  "hoursNote": null,
@@ -229,7 +230,7 @@
    "price": 120,
    "currency": "USD",
    "unit": "flat",
-   "note": "10+ potential surf spots, hidden gems and local breaks. Sri Lankan lunch included."
+   "note": "10+ potential surf spots, some of them local breaks. Sri Lankan lunch included."
   },
   {
    "label": "Sunrise Session (3 hours)",
@@ -243,63 +244,63 @@
    "price": 15,
    "currency": "USD",
    "unit": "flat",
-   "note": "Bay viewpoints and photo stops, with the island seen from the shore. Island entry, meals and activities not included."
+   "note": "Bay viewpoints and photo stops, with the island seen from the shore. Island and other entry fees not included."
   },
   {
    "label": "Midigama Reef Breaks (approx. 3 hours)",
    "price": 25,
    "currency": "USD",
    "unit": "flat",
-   "note": "Lazy Left and Lazy Right viewpoints and beach stops. Not beginner lesson spots. Boards, lessons and meals not included."
+   "note": "Lazy Left and Lazy Right viewpoints, beach stops. Surfing optional, conditions permitting; not beginner lesson spots. No boards or lessons."
   },
   {
    "label": "Mirissa Beach & Coconut Tree Hill (approx. 4 hours)",
    "price": 30,
    "currency": "USD",
    "unit": "flat",
-   "note": "Beach time and the viewpoint. No whale-watching boat trip. Entry fees, meals and activities not included."
+   "note": "Beach time and the viewpoint. No whale-watching boat trip. Entry fees not included."
   },
   {
    "label": "Ahangama & Kabalana (approx. 4 hours)",
    "price": 30,
    "currency": "USD",
    "unit": "flat",
-   "note": "Coastal stops, Kabalana Beach and a view of the Rock reef break. Boards, lessons and meals not included."
+   "note": "Coastal stops, Kabalana Beach and a view of the Rock reef break. Surfing depends on skill and sea conditions; no boards or lessons."
   },
   {
    "label": "Secret Beach Mirissa (approx. 4 hours)",
    "price": 30,
    "currency": "USD",
    "unit": "flat",
-   "note": "Final access may need a walk. Swimming depends on the sea and is not guaranteed safe. Entry fees and meals not included."
+   "note": "Final access may need a walk. Swimming depends on the sea and is not guaranteed safe. Entry fees not included."
   },
   {
    "label": "Turtle Bay & Snake Farm (approx. 4 hours)",
    "price": 35,
    "currency": "USD",
    "unit": "flat",
-   "note": "Coastal stops; snake farm optional, admission paid separately. Wildlife not guaranteed. Snorkeling and meals not included."
+   "note": "Coastal stops; snake farm optional if open and available, admission separate. Wildlife not guaranteed. Entry fees and snorkeling excluded."
   },
   {
    "label": "Handunugoda Tea Estate (approx. 4 hours)",
    "price": 40,
    "currency": "USD",
    "unit": "flat",
-   "note": "Inland through the countryside. Estate admission, tastings and meals not included."
+   "note": "Inland through the countryside. Estate entry, tours and tastings depend on current visitor arrangements and are not included."
   },
   {
    "label": "Galle Fort (approx. 6 hours)",
    "price": 55,
    "currency": "USD",
    "unit": "flat",
-   "note": "Time on foot on the ramparts and historic streets. Museum entry and meals not included."
+   "note": "Time on foot on the ramparts and historic streets. Museum entry not included."
   },
   {
    "label": "Hiriketiya Bay (approx. 8 hours)",
    "price": 70,
    "currency": "USD",
    "unit": "flat",
-   "note": "Beach time and coastal stops. Surfing depends on conditions and ability; boards, lessons and meals not included."
+   "note": "Beach time and coastal stops. Surfing and swimming depend on conditions and ability; boards and lessons not included."
   },
   {
    "label": "Rashguard (UV long-sleeve), to buy",
@@ -376,7 +377,6 @@
  "bookingLinks": [],
  "languagesSpoken": [
   "en",
-  "si",
-  "ta"
+  "si"
  ]
 }
