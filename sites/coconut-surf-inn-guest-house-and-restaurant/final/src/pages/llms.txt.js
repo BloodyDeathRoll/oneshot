@@ -30,7 +30,15 @@ export function GET({ site }) {
     st.minNights ? `- Minimum stay: ${st.minNights} nights` : null,
     st.note && `- ${st.note}`,
   ])
-  section('Amenities', (c.amenities ?? []).map((a) => `- ${a.label}${a.note ? ` (${a.note})` : ''}`))
+  /* 4i: the hours the page prints (hoursNote: the restaurant, 7:30 to 22:00) were missing here. openingHours[]
+     rows first when the owner sets them (empty in the seed), then the note. */
+  const DAY = { mon: 'Mon', tue: 'Tue', wed: 'Wed', thu: 'Thu', fri: 'Fri', sat: 'Sat', sun: 'Sun' }
+  section('Opening hours', [
+    ...(c.openingHours ?? []).filter((h) => h.opens && h.closes && (h.days ?? []).length)
+      .map((h) => `- ${h.days.map((d) => DAY[d] ?? d).join(', ')}: ${h.opens} to ${h.closes}`),
+    c.hoursNote && `- ${c.hoursNote}`,
+  ])
+  section('Amenities',(c.amenities ?? []).map((a) => `- ${a.label}${a.note ? ` (${a.note})` : ''}`))
   section('The break', [c.spot && `- ${c.spot}`, c.season && `- ${c.season}`])
   /* the score as the page prints it: Airbnb to two decimals, the others to one */
   section('Ratings', (c.ratings ?? []).filter((r) => r.score != null).map((r) => {
