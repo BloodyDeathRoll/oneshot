@@ -67,3 +67,5 @@
 {"ts":"2026-11-04T21:48:59Z","operator":"alon","slug":"cheeky-monkey","kind":"done","id":"a-202611031726-fy60","note":""}
 {"ts":"2026-11-04T21:48:59Z","operator":"alon","slug":"cheeky-monkey","kind":"done","id":"a-202611041014-wb71","note":""}
 {"ts":"2026-11-04T21:50:01Z","operator":"alon","slug":"coconut-surf-inn-guest-house-and-restaurant","kind":"assign","id":"a-202611042150-2es5","to":"alon","task":"harvest (station 3a) onward"}
+{"ts":"2026-11-05T08:25:34Z","operator":"alon","slug":"sanjee-surf-school","kind":"assign","id":"a-202611050825-ibyt","to":"alon","task":"harvest (station 3a) onward"}
+{"ts":"2026-11-05T08:25:34Z","operator":"alon","slug":"sanjee-surf-school","kind":"work","note":"Run in parallel with coconut-surf-inn at Alon's request (separate worktree and session, branch alon/sanjee-surf-school): an exception to orchestrator rule 'no two businesses in flight at once'. max_sites raised 3 -> 4."}
