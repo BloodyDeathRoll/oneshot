@@ -37,7 +37,7 @@
     ' float z=.35/(d+.08);',
     ' float x=(v.x-.44)*z*1.3;',
     /* two fronts on one 9 s clock, a little oblique: they walk in to the shore and speed up as they near it */
-    ' float ph=z*6.2+t*.7+x*.9;',
+    ' float ph=z*6.2+t*.7+x*.9+v.x*3.4;',
     ' float h=cr(ph)+.55*cr(ph*.5+1.1+x*.4);',
     ' float sl=crd(ph);',
     /* lift: up to 8 css px where the water is close, nothing near the horizon */
@@ -56,7 +56,7 @@
     ' vec2 o=(vec2(0.,lift)+fo+dn*vec2(1.,1.3)*(.3+.9*d))*P*m;',
     ' vec3 c=texture2D(T,u+o).rgb;',
     /* the back of the front falls into shade and its face takes the light */
-    ' c*=1.+m*near*(.10*sl+.05*h);',
+    ' c*=1.+m*near*(1.-.6*sb)*(.10*sl+.05*h);',
     ' vec3 sun=vec3(1.,.74,.48);',
     ' float l=dot(c,vec3(.3,.59,.11));',
     /* a specular pass running along the crest */
@@ -65,7 +65,7 @@
     ' float sp=smoothstep(.25,.95,h)*smoothstep(.5,.82,rp(vec2(v.x*90.,v.y*520.-t*1.4)+dn*.4))*warm;',
     ' c+=sun*sp*m*near*.16;',
     /* foam brightens as the front reaches it */
-    ' c+=vec3(1.,.93,.86)*smoothstep(.42,.75,l)*h*m*near*.09;',
+    ' c+=vec3(1.,.93,.86)*smoothstep(.42,.75,l)*h*m*near*.09*(1.-.5*sb);',
     /* glitter down the sun\'s path, wider as it comes closer */
     ' float pa=(v.x-.436)/(.05+.22*d);',
     ' float gl=smoothstep(.62,.88,rp(vec2(v.x*120.,v.y*760.-t*2.)+dn*.6))*exp(-pa*pa)*warm;',

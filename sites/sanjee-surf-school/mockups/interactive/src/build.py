@@ -307,7 +307,7 @@ def boards():
 </section>'''
 
 def feature():
-    alt = 'A surfer lying on a board, back to the camera, paddling at a low green wave with one arm lifted in a small splash. Two more heads in the water beyond it, open sea and a pale sky above.'
+    alt = 'A surfer lying on a board, back to the camera, paddling at a low green wave with one arm lifted in a small splash. Another head in the water beyond it, open sea and a pale sky above.'
     return f'''<section class="feature" aria-label="{e(C['featureLine'])}">
   <p class="script">{e(C['featureLine'])}</p>
   <picture>

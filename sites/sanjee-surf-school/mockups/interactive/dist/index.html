@@ -80,7 +80,7 @@ input{caret-color:var(--book)}
 .js .nav{transform:translateX(var(--cta,0px))}
 .js .hdr.on .nav{transform:none}
 .nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 13px;border-radius:999px;font-weight:600;font-size:15px;transition:background-color var(--state) ease}
-@media (hover:hover) and (pointer:fine){.nav a:hover{background:rgba(255,255,255,.18)}.hdr.solid .nav a:hover{background:var(--water)}}
+@media (hover:hover) and (pointer:fine){.nav a:hover{background:rgba(255,255,255,.10)}.hdr.solid .nav a:hover{background:var(--water)}}
 .hdr-cta{opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity var(--state) ease,transform var(--state) var(--ease-out),visibility var(--state),background-color var(--state) ease}
 .hdr.on .hdr-cta{opacity:1;visibility:visible;transform:none}
 .menu{display:none;position:relative}
@@ -227,7 +227,7 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
 
 /* feature band: the paddler, sharp, with the owner's line in his sky */
 .feature{position:relative;margin-top:var(--sec);overflow:hidden;background:#b7d0ea}
-.feature img{width:100%;height:clamp(300px,52vh,640px);object-fit:cover;object-position:50% 40%}
+.feature img{width:100%;height:max(clamp(300px,52vh,640px),29vw);object-fit:cover;object-position:50% 60%}
 .feature p{position:absolute;inset:clamp(10px,1.3vw,22px) var(--gut) auto;z-index:1;text-align:center;font-size:clamp(32px,3.4vw,52px);line-height:1.1}
 
 /* Sanjee */
@@ -528,7 +528,7 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
   <p class="script">Making waves, one lesson at a time.</p>
   <picture>
     <source media="(max-width:700px)" srcset="img/feature-img-009-near-1040.webp" width="1040" height="800">
-    <img src="img/feature-img-009-wide-1500.webp" width="1500" height="560" alt="A surfer lying on a board, back to the camera, paddling at a low green wave with one arm lifted in a small splash. Two more heads in the water beyond it, open sea and a pale sky above." loading="lazy" decoding="async">
+    <img src="img/feature-img-009-wide-1500.webp" width="1500" height="560" alt="A surfer lying on a board, back to the camera, paddling at a low green wave with one arm lifted in a small splash. Another head in the water beyond it, open sea and a pale sky above." loading="lazy" decoding="async">
   </picture>
 </section>
 <section class="sanjee" id="sanjee">
@@ -693,7 +693,7 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
     ' float z=.35/(d+.08);',
     ' float x=(v.x-.44)*z*1.3;',
     /* two fronts on one 9 s clock, a little oblique: they walk in to the shore and speed up as they near it */
-    ' float ph=z*6.2+t*.7+x*.9;',
+    ' float ph=z*6.2+t*.7+x*.9+v.x*3.4;',
     ' float h=cr(ph)+.55*cr(ph*.5+1.1+x*.4);',
     ' float sl=crd(ph);',
     /* lift: up to 8 css px where the water is close, nothing near the horizon */
@@ -712,7 +712,7 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
     ' vec2 o=(vec2(0.,lift)+fo+dn*vec2(1.,1.3)*(.3+.9*d))*P*m;',
     ' vec3 c=texture2D(T,u+o).rgb;',
     /* the back of the front falls into shade and its face takes the light */
-    ' c*=1.+m*near*(.10*sl+.05*h);',
+    ' c*=1.+m*near*(1.-.6*sb)*(.10*sl+.05*h);',
     ' vec3 sun=vec3(1.,.74,.48);',
     ' float l=dot(c,vec3(.3,.59,.11));',
     /* a specular pass running along the crest */
@@ -721,7 +721,7 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
     ' float sp=smoothstep(.25,.95,h)*smoothstep(.5,.82,rp(vec2(v.x*90.,v.y*520.-t*1.4)+dn*.4))*warm;',
     ' c+=sun*sp*m*near*.16;',
     /* foam brightens as the front reaches it */
-    ' c+=vec3(1.,.93,.86)*smoothstep(.42,.75,l)*h*m*near*.09;',
+    ' c+=vec3(1.,.93,.86)*smoothstep(.42,.75,l)*h*m*near*.09*(1.-.5*sb);',
     /* glitter down the sun\'s path, wider as it comes closer */
     ' float pa=(v.x-.436)/(.05+.22*d);',
     ' float gl=smoothstep(.62,.88,rp(vec2(v.x*120.,v.y*760.-t*2.)+dn*.6))*exp(-pa*pa)*warm;',
@@ -1028,13 +1028,15 @@ h1{font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spac
   var today = new Date(Date.now() - new Date().getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
   dateIn.min = today;
   dateIn.addEventListener('change', function () {
-    /* a date typed before today is not sent: the picker's min does not stop typing */
-    if (dateIn.value && dateIn.value < dateIn.min) dateIn.value = '';
-    state.date = dateIn.value || null;
-    dateIn.classList.toggle('filled', !!dateIn.value);
+    /* a date before today is not sent: the picker's min does not stop typing. Do not clear the field here:
+       Chromium fires change on each year digit, so a good date reads as 0002 on its way to 2026 */
+    state.date = dateIn.value >= dateIn.min ? dateIn.value : null;
+    dateIn.classList.toggle('filled', !!state.date);
     $$('.chip[data-group=date]').forEach(function (b) { b.setAttribute('aria-pressed', false); });
     render();
   });
+  /* leaving the field with a past date: it goes from the field too */
+  dateIn.addEventListener('blur', function () { if (dateIn.value && dateIn.value < dateIn.min) dateIn.value = ''; });
   $$('.chip').forEach(function (b) {
     b.addEventListener('click', function () {
       var g = b.getAttribute('data-group'), v = b.getAttribute('data-value');

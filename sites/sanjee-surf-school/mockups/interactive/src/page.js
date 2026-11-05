@@ -184,13 +184,15 @@
   var today = new Date(Date.now() - new Date().getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
   dateIn.min = today;
   dateIn.addEventListener('change', function () {
-    /* a date typed before today is not sent: the picker's min does not stop typing */
-    if (dateIn.value && dateIn.value < dateIn.min) dateIn.value = '';
-    state.date = dateIn.value || null;
-    dateIn.classList.toggle('filled', !!dateIn.value);
+    /* a date before today is not sent: the picker's min does not stop typing. Do not clear the field here:
+       Chromium fires change on each year digit, so a good date reads as 0002 on its way to 2026 */
+    state.date = dateIn.value >= dateIn.min ? dateIn.value : null;
+    dateIn.classList.toggle('filled', !!state.date);
     $$('.chip[data-group=date]').forEach(function (b) { b.setAttribute('aria-pressed', false); });
     render();
   });
+  /* leaving the field with a past date: it goes from the field too */
+  dateIn.addEventListener('blur', function () { if (dateIn.value && dateIn.value < dateIn.min) dateIn.value = ''; });
   $$('.chip').forEach(function (b) {
     b.addEventListener('click', function () {
       var g = b.getAttribute('data-group'), v = b.getAttribute('data-value');
