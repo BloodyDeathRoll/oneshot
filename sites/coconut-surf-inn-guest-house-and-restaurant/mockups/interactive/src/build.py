@@ -32,8 +32,8 @@ def call(cls='', short=False):
     t = 'Call' if short else f'Call {PHONE_SHOWN}'
     return f'<a class="btn btn-call {cls}" href="{TEL}">{svg("phone")}<span>{E(t)}</span></a>'
 def clock(icon, label): return f'<p class="clock">{svg(icon)}<span>{E(label)}</span></p>'
-def num(v, label):  # rolled by page.js on first view; plain text without it
-    return f'<span class="num" data-roll="{v}" aria-label="{E(label)}">{v}</span>'
+def num(v, label):  # rolled by page.js on first view; plain text without it. role="img" carries the label
+    return f'<span class="num" role="img" data-roll="{v}" aria-label="{E(label)}">{v}</span>'
 
 def lazy(tag, a, widths, sizes):
     """A slide that is not on screen yet: its <img> is written by page.js when the slide's room or
@@ -56,6 +56,9 @@ def show(sid, tag, ids, widths, sizes, ratio, label, eager=1, cls=''):
             + f'</div><button class="arw next" type="button" aria-label="Next photo">{svg("next")}</button></div></div>')
 
 bk, gg, ab = RATINGS['booking'], RATINGS['google'], RATINGS['airbnb']
+def rate(r, scale):  # a headline rating block: score, source, count and capture date; the whole block links to the source
+    return (f'<a class="rate" href="{E(r["url"])}" rel="noopener"><span class="big">{num(r["shown"], r["shown"] + " out of " + scale)}<small aria-hidden="true">/{scale}</small></span>'
+            f'<span class="rate-k"><b>{E(r["name"])}</b>, {r["count"]} reviews<br>{E(r["day"])}</span></a>')
 
 # ------------------------------------------------------------------------------------------ hero
 hero = f'''
@@ -67,7 +70,7 @@ hero = f'''
 <section class="hero" aria-label="{E(NAME)}">
   <div class="hero-media">
     <picture>
-      <source media="(max-width: 767px)" srcset="{src('hero-tall-864')} 864w, {src('hero-tall-1152')} 1152w" sizes="175vw">
+      <source media="(max-width: 767px)" srcset="{src('hero-tall-450')} 450w, {src('hero-tall-600')} 600w" sizes="110vw">
       <img class="hero-img" src="{src('hero-wide-1920')}" srcset="{src('hero-wide-1440')} 1440w, {src('hero-wide-1920')} 1920w" sizes="100vw"
         width="1920" height="1080" alt="{E(ALT['img-102'])}" fetchpriority="high">
     </picture>
@@ -84,16 +87,15 @@ hero = f'''
 facts = f'''
 <section class="facts" id="glance" aria-labelledby="h-glance">
   <div class="wrap">
+    <div class="g-split">
+    <div class="g-text">
     <h2 class="hand" id="h-glance">13:00, check-in</h2>
     <p class="lead">{E(TAGLINE)}</p>
-    <ul class="fact-row">
-      <li>{svg('wave')}<span><b>Coconuts in front of the guesthouse</b><small>An A-frame reef break</small></span></li>
-      <li>{svg('cup')}<span><b>Restaurant upstairs, 7:30–22:00</b><small>Every day</small></span></li>
-      <li>{svg('cal')}<span><b>Live dates and prices</b><small>On Booking.com</small></span></li>
-      <li>{svg('star')}<span><b>{num(bk['shown'], bk['shown'] + ' out of 10')}/10 <i>and</i> {num(gg['shown'], gg['shown'] + ' out of 5')}/5</b>
-        <small><a href="{E(bk['url'])}" rel="noopener">Booking.com, {bk['count']}</a> · <a href="{E(gg['url'])}" rel="noopener">Google, {gg['count']}</a> · {E(bk['day'])}</small></span></li>
-    </ul>
+    <p class="details">{pipe(['Coconuts in front of the guesthouse, an A-frame reef break', 'Restaurant upstairs, 7:30–22:00, every day', 'Live dates and prices on Booking.com'])}</p>
     <div class="actions">{book('', BOOK_LONG)}{call()}</div>
+    </div>
+    <div class="rates">{rate(bk, '10')}{rate(gg, '5')}</div>
+    </div>
   </div>
 </section>'''
 
@@ -108,7 +110,7 @@ def room_card(r, first):
     ids = GALLERIES[r['label']]
     return f'''
       <article class="room{' on' if first else ''}" id="room-{r['slug']}" data-room="{r['slug']}" aria-labelledby="rn-{r['slug']}">
-        {show('rs-' + r['slug'], 'r43', ids, [720, 1200], '(max-width: 899px) 100vw, 800px', '43', r['label'] + ', photos', eager=1 if first else 0)}
+        {show('rs-' + r['slug'], 'r43', ids, [720, 1200], '(max-width: 899px) 100vw, 880px', '43', r['label'] + ', photos', eager=1 if first else 0)}
         <div class="room-text">
           <h3 class="room-name" id="rn-{r['slug']}">{E(r['label'])}</h3>
           <p class="room-meta">{pipe([E(r['beds']), f"sleeps {r['sleeps']}", f"{r['m2']} m²"])}</p>
@@ -144,10 +146,7 @@ sleep = f'''
       {''.join(tile(g, l, rs, i) for i, (g, l, rs) in enumerate(GROUPS))}
     </div>
     <div class="viewer" id="viewer" role="tabpanel" aria-labelledby="tab-ac">
-      <div class="side">
-        <div class="picks" aria-label="Rooms"><span class="pill" aria-hidden="true"></span>{listing}</div>
-        <p class="stay">{svg('clock')}<span>{pipe([f"Check-in from {STAY['checkInFrom']}", f"Check-out until {STAY['checkOutTo']}"])}<br>{E(STAY['note'])}</span></p>
-      </div>
+      <div class="picks" aria-label="Rooms"><span class="pill" aria-hidden="true"></span>{listing}</div>
       <div class="rooms">
         <h3 class="grp" id="grp-ac">{svg('snow')}Rooms with air conditioning and hot water</h3>
         <span class="anchor" id="grp-big" aria-hidden="true"></span>
@@ -156,11 +155,12 @@ sleep = f'''
         {''.join(room_card(r, False) for r in fan_rooms)}
       </div>
     </div>
+    <p class="stay">{svg('clock')}<span>{pipe([f"Check-in from {STAY['checkInFrom']}", f"Check-out until {STAY['checkOutTo']}"])} {SEP} {E(STAY['note'])}</span></p>
   </div>
 </section>'''
 
 # ------------------------------------------------------------------------------ inside the house
-veranda = ['img-030', 'img-017', 'img-024', 'img-020', 'img-005', 'img-016']
+veranda = ['img-024', 'img-020', 'img-005', 'img-016']
 inside = f'''
 <section class="inside" id="inside" aria-labelledby="h-inside">
   <div class="wrap in-split">
@@ -271,16 +271,15 @@ def card(r):
     body = ''.join(f'<p>{E(p)}</p>' for p in r['paras'])
     return (f'<li class="card"><blockquote>{body}</blockquote><p class="who"><b>{E(r["first"])}</b>, {E(r["country"])}'
             f'<br>{E(r["src"])} · {E(r["month"])}</p></li>')
-def fig(r, scale):
-    return (f'<a class="fig" href="{E(r["url"])}" rel="noopener"><span class="big">{num(r["shown"], r["shown"] + " out of " + scale)}<small>/{scale}</small></span>'
-            f'<span class="fig-k"><b>{E(r["name"])}</b> · {r["count"]} reviews · {E(r["day"])}</span></a>')
+def rl(r, scale):
+    return f'<a class="rl" href="{E(r["url"])}" rel="noopener"><b>{r["shown"]}/{scale}</b> {E(r["name"])}, {r["count"]} reviews, {E(r["day"])}</a>'
 guests = f'''
 <section class="guests" id="guests" aria-labelledby="h-guests">
   <div class="wrap">
     <h2 class="hand" id="h-guests">11:00, check-out</h2>
-    <div class="figs">{fig(bk, '10')}{fig(gg, '5')}{fig(ab, '5')}</div>
+    <p class="rates-line">{''.join(rl(r, sc) for r, sc in ((bk, '10'), (gg, '5'), (ab, '5')))}</p>
   </div>
-  <ul class="row cards" data-drag tabindex="0" aria-label="Guest reviews">{''.join(card(r) for r in REVIEWS)}</ul>
+  <ul class="row cards" data-drag tabindex="0" aria-label="Guest reviews">{''.join(card(r) for r in REVIEWS if r['first'] not in ('Erin', 'Janno'))}</ul>
 </section>'''
 
 # ---------------------------------------------------------------------------------- getting here
@@ -301,7 +300,7 @@ getting = f'''
 closing = f'''
 <section class="closing" id="book" aria-label="Book">
   <div class="wrap center">
-    <p class="hand close-line">{E(CLOSING)}</p>
+    <p class="close-line">{E(CLOSING)}</p>
     <div class="actions">{book()}{call()}</div>
   </div>
 </section>'''
@@ -323,7 +322,7 @@ foot = f'''
   <div class="bar-more" id="bar-more" hidden>
     <p>{E(TAGLINE)}</p>
     <p class="muted">{pipe(['Coconuts in front of the guesthouse', 'Restaurant upstairs, 7:30–22:00', 'Live dates and prices on Booking.com'])}</p>
-    <p class="muted">{pipe([f"{bk['shown']}/10 Booking.com, {bk['count']} reviews", f"{gg['shown']}/5 Google, {gg['count']}", E(bk['day'])])}</p>
+    <p class="muted">{pipe([f"{bk['shown']}/10 Booking.com, {bk['count']} reviews", f"{gg['shown']}/5 Google, {gg['count']} reviews", E(bk['day'])])}</p>
   </div>
   <div class="bar-row">
     {book('bar-book')}
@@ -343,9 +342,9 @@ page = f'''<!doctype html>
 <meta property="og:title" content="{E(NAME)}"><meta property="og:description" content="{E(TAGLINE)}"><meta property="og:image" content="{src('hero-wide-1440')}">
 <meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&family=Shadows+Into+Light+Two&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merienda:wght@700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap">
 <link rel="preload" as="image" href="{src('hero-wide-1920')}" imagesrcset="{src('hero-wide-1440')} 1440w, {src('hero-wide-1920')} 1920w" imagesizes="100vw" media="(min-width: 768px)" fetchpriority="high">
-<link rel="preload" as="image" href="{src('hero-tall-1152')}" imagesrcset="{src('hero-tall-864')} 864w, {src('hero-tall-1152')} 1152w" imagesizes="175vw" media="(max-width: 767px)" fetchpriority="high">
+<link rel="preload" as="image" href="{src('hero-tall-600')}" imagesrcset="{src('hero-tall-450')} 450w, {src('hero-tall-600')} 600w" imagesizes="110vw" media="(max-width: 767px)" fetchpriority="high">
 <script>document.documentElement.classList.replace('no-js','js')</script>
 <style>{css}</style>
 </head>

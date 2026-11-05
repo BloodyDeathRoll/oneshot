@@ -59,11 +59,14 @@
     f.style.cssText = 'max-width:420px;border:0;border-radius:16px;display:block';
     f.referrerPolicy = 'strict-origin-when-cross-origin';
     f.setAttribute('sandbox', 'allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin');
-    const done = (ok) => { box.dataset.loading = 'false'; if (ok) box.classList.add('loaded'); else f.remove(); };
+    const done = (ok) => { box.dataset.loading = 'false'; if (ok) box.classList.add('loaded'); else f.remove(); };   // the plain link stays under the frame either way
     const timer = setTimeout(() => done(false), 12000);
     f.addEventListener('load', () => { clearTimeout(timer); done(true); }, { once: true });
-    f.src = box.dataset.rosa;
-    box.append(f);
+    // a failed frame still fires 'load' (on an empty error page that would cover the link), so the
+    // frame is only added once Rosa answers at all; until then, and if it never does, the plain link stays
+    fetch(box.dataset.rosa, { mode: 'no-cors', credentials: 'omit' })
+      .then(() => { f.src = box.dataset.rosa; box.append(f); })
+      .catch(() => { clearTimeout(timer); done(false); });
   }, '600px');
 
   /* ---------- deferred slides: written as <img> only when their room or slideshow is shown */
@@ -214,7 +217,7 @@
       if (!tw) return;
       const dpr = Math.min(devicePixelRatio || 1, 2), cw = cv.clientWidth, ch = cv.clientHeight;
       cv.width = Math.round(cw * dpr); cv.height = Math.round(ch * dpr); gl.viewport(0, 0, cv.width, cv.height);
-      const s = Math.max(cw / tw, ch / th), dw = tw * s, dh = th * s, k = 1.015;        // object-fit: cover, scale(1.015)
+      const s = Math.max(cw / tw, ch / th), dw = tw * s, dh = th * s, k = 1.03;         // object-fit: cover, scale(1.03)
       const pos = getComputedStyle(im).objectPosition.split(' ').map((v) => parseFloat(v) / 100);
       const ox = (cw - dw) * pos[0], oy = (ch - dh) * pos[1];
       gl.uniform2f(U('sp'), cw / (k * dw), ch / (k * dh));
@@ -222,9 +225,13 @@
       uvpx = [1 / (dw * k), 1 / (dh * k)];
       last = null;
     };
-    // the eye: ±10 px at the nearest layer, 0 at the horizon; one drift on load, then it rests
+    // the eye (round 2): it is never still while the hero is in view. An idle drift, a slow figure
+    // of eight (±7 px across, ±2.5 px up and down at the nearest layer, a 10 s loop), so the depth
+    // reads with no pointer and on every phone. Scrolling away lowers the eye (up to 8 px), so the
+    // thatch slides over the sea as you leave. A pointer or a tilt takes over and hands back after
+    // 2.5 s. 0 at the horizon. Reduced motion and Save-Data never start any of it.
     const AMP = [10, 6];
-    let eye = [0, 0], aim = [0, 0], last = null, drift = calm ? -1 : 0, raf = 0, prev = 0, frames = 0, slow = 0, inView = true, dead = false;
+    let eye = [0, 0], aim = [0, 0], user = [0, 0], userAt = -1e9, last = null, raf = 0, prev = 0, frames = 0, slow = 0, inView = true, dead = false, clock = 0;
     const draw = () => {
       gl.uniform2f(U('off'), -eye[0] * uvpx[0], -eye[1] * uvpx[1]);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
@@ -232,24 +239,22 @@
     };
     const tick = (t) => {
       raf = 0;
-      if (dead || !ready || !inView || document.hidden) return;
+      if (dead || !ready || !inView || document.hidden) { prev = 0; return; }
       const dt = prev ? Math.min(64, t - prev) : 16; prev = t;
       if (frames < 30) { frames++; if (frames > 3 && dt > 24) slow++; if (frames === 30 && slow > 12 && !force) { dead = true; cv.classList.remove('live'); return; } }
-      if (drift >= 0) {
-        drift += dt / 1000;
-        const k = Math.sin(Math.PI * Math.min(drift, 6) / 6);
-        aim = [4 * k, -1.5 * k];
-        if (drift >= 6) drift = -1;
-      }
-      const a = 1 - Math.exp(-dt / 140);
+      clock += dt / 1000;
+      const ramp = Math.min(1, clock / 2.5), w = 2 * Math.PI * clock / 10;
+      const idle = [7 * Math.sin(w) * ramp, 2.5 * Math.sin(2 * w + .6) * ramp];
+      const sc = Math.min(1, Math.max(0, scrollY / innerHeight)) * 8;
+      aim = t - userAt < 2500 ? [user[0], user[1] + sc] : [idle[0], idle[1] + sc];
+      const a = 1 - Math.exp(-dt / (t - userAt < 2500 ? 140 : 600));
       eye = [eye[0] + (aim[0] - eye[0]) * a, eye[1] + (aim[1] - eye[1]) * a];
-      if (!last || Math.abs(eye[0] - last[0]) > .02 || Math.abs(eye[1] - last[1]) > .02) draw();
+      if (!last || Math.abs(eye[0] - last[0]) > .01 || Math.abs(eye[1] - last[1]) > .01) draw();
       if (!cv.classList.contains('live')) cv.classList.add('live');
-      const settled = drift < 0 && Math.abs(aim[0] - eye[0]) < .02 && Math.abs(aim[1] - eye[1]) < .02;
-      if (!settled || frames < 30) raf = requestAnimationFrame(tick); else prev = 0;
+      raf = requestAnimationFrame(tick);
     };
     const kick = () => { if (!raf && !dead) raf = requestAnimationFrame(tick); };
-    const point = (nx, ny) => { drift = -1; aim = [Math.max(-1, Math.min(1, nx)) * AMP[0], Math.max(-1, Math.min(1, ny)) * AMP[1]]; kick(); };
+    const point = (nx, ny) => { userAt = performance.now(); user = [Math.max(-1, Math.min(1, nx)) * AMP[0], Math.max(-1, Math.min(1, ny)) * AMP[1]]; kick(); };
     if (fine) addEventListener('pointermove', (e) => { if (inView) point((e.clientX / innerWidth - .5) * 2, (e.clientY / innerHeight - .5) * 2); }, { passive: true });
     hero.addEventListener('pointermove', (e) => { if (e.pointerType === 'touch') { const r = hero.getBoundingClientRect(); point((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1); } }, { passive: true });
     // tilt on phones: iOS asks first, on the visitor's first tap on the picture (never on the button)

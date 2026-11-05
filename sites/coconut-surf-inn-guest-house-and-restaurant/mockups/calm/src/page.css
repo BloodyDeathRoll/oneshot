@@ -26,7 +26,7 @@ h1,h2,h3{margin:0;font-weight:400}
   transition:transform .12s var(--ease),background-color .2s var(--ease),box-shadow .2s var(--ease),color .2s var(--ease);
   touch-action:manipulation;user-select:none;-webkit-user-select:none}
 .btn:active{transform:scale(.97)}
-.btn-book{background:var(--accent);color:#fff;box-shadow:0 8px 20px -10px rgba(72,102,11,.7)}
+.btn-book{background:var(--accent);color:#fff}
 .btn-call{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
 @media (hover:hover) and (pointer:fine){
   .btn-book:hover{background:var(--accent-dk);transform:translateY(-1px);box-shadow:0 12px 24px -12px rgba(72,102,11,.8)}
@@ -46,23 +46,22 @@ h1,h2,h3{margin:0;font-weight:400}
 .nav a::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:2px;border-radius:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}
 @media (hover:hover){.nav a:hover::after{transform:scaleX(1)}}
 .top-call{display:none}
+.no-js .top{position:absolute}
 .top.solid{background:#fff;color:var(--ink);box-shadow:0 6px 24px -14px rgba(39,51,38,.35)}
 .top.solid::before{opacity:0}
 .top.solid .mark,.top.solid .nav a{text-shadow:none}
 
 /* ---- the first screen: img-009 full-bleed */
-.hero{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;color:var(--ink);display:grid;place-items:center;background:#b9cbdc}
+.hero{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;color:var(--ink);display:grid;place-items:start center;background:#9fbde0}
 .hero-media{position:absolute;inset:0}
-.hero-img{width:100%;height:100%;object-fit:cover;object-position:78% 50%}
+.hero-img{width:100%;height:100%;object-fit:cover;object-position:50% 100%;background:#9fbde0 50% 100%/cover no-repeat}
 .js .hero-img{transform:scale(1.02)}
 .js .hero-img.go{transform:none;transition:transform 1.4s var(--ease)}
-.hero-text{position:relative;z-index:1;text-align:center;padding:0 24px;display:flex;flex-direction:column;align-items:center}
-/* ink on the pale sky (concepts §4.1: "or the title is set in the ink on the sky instead"); a faint sky-white haze
-   only lifts a stray frond tip, it is not a panel */
-.hero-text::before{content:"";position:absolute;inset:-14% -4% -8%;z-index:-1;pointer-events:none;
-  border-radius:50%;background:rgba(238,242,247,.42);filter:blur(40px)}
-.hero h1{font-size:60px;text-shadow:0 0 22px rgba(238,242,247,.55)}
-.where{font-size:19px;font-weight:600;margin:6px 0 26px;text-wrap:balance;text-shadow:0 0 14px rgba(238,242,247,.7)}
+.hero-text{position:relative;z-index:1;text-align:center;padding:0 24px;display:flex;flex-direction:column;align-items:center;
+  margin-top:clamp(120px,21svh,240px)}
+/* ink on the open sky (concepts §4.1: "or the title is set in the ink on the sky instead"); nothing behind it */
+.hero h1{font-size:64px}
+.where{font-size:19px;font-weight:600;margin:6px 0 26px;text-wrap:balance}
 .btn-hero{min-height:56px;padding:0 30px;font-size:17px}
 
 
@@ -73,17 +72,17 @@ h1,h2,h3{margin:0;font-weight:400}
     background:rgba(255,255,255,.16);transition:background-color .2s var(--ease),transform .12s var(--ease)}
   .top-call:active{transform:scale(.94)}
   .top.solid .top-call{background:var(--tint)}
+  .js .top:not(.solid) .top-call{visibility:hidden;opacity:0;transform:scale(.8)}
+  .top-call{transition:background-color .2s var(--ease),transform .24s var(--ease),opacity .24s var(--ease),visibility 0s}
   .mark{font-size:17px}
   /* the phone crop (1600x1240) pans once, from the left palms to the reef (concepts §4.1 Motion) */
   .hero-img{position:absolute;top:0;left:0;height:100%;width:auto;max-width:none;object-fit:initial;
-    transform:translateX(max(calc(100vw - 125svh),calc(50vw - 81.25svh)))}
-  .js .hero-img{transform:translateX(min(0px,calc(50vw - 27.3svh)))}
-  .js .hero-img.go{transform:translateX(max(calc(100vw - 125svh),calc(50vw - 81.25svh)));transition:transform 14s cubic-bezier(.45,0,.4,1)}
+    background-size:100% 100%;transform:translateX(max(calc(100vw - 128.4svh),calc(50vw - 100.9svh)))}
+  .js .hero-img{transform:none}
+  .js .hero-img.go{transform:translateX(max(calc(100vw - 128.4svh),calc(50vw - 100.9svh)));transition:transform 14s cubic-bezier(.45,0,.4,1)}
   .hero h1{font-size:42px}
-  .where{font-size:19px;margin-bottom:22px;max-width:22ch}
-  .hero{align-items:start}
-  .hero-text{margin-top:max(96px,20svh)}
-  .hero-text::before{inset:-12% 0 -6%;filter:blur(32px)}
+  .where{font-size:19px;margin-bottom:22px;max-width:32ch}
+  .hero-text{margin-top:max(92px,15svh)}
 }
 
 /* ================================================================ the page below the first screen */
@@ -101,7 +100,7 @@ main>section:not(.hero){padding:clamp(72px,9vw,128px) 0}
 .pi{display:inline-block;white-space:nowrap}
 .pi+.pi::before{content:"|" / "";color:var(--place);font-weight:400;margin:0 .6em 0 .1em}
 .pi.lb::before{content:none}
-.details{font-size:16px;font-weight:600;color:var(--ink);line-height:1.9;margin:0 0 30px}
+.details{font-size:16px;font-weight:600;color:var(--ink);line-height:1.9;margin:0 0 30px;text-wrap:balance}
 .actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 .actions.col{flex-direction:column;align-items:stretch}
 .moment{display:inline-flex;align-items:center;gap:8px;margin:0 0 6px;font-size:15px;font-weight:600;color:var(--soft)}
@@ -123,22 +122,37 @@ main>section:not(.hero){padding:clamp(72px,9vw,128px) 0}
 .rname{font-weight:600;font-size:16px;margin-bottom:2px}
 .rsub{font-size:14px;color:var(--soft)}
 
-/* ---- the rooms */
-.rooms .head{max-width:680px;margin:0 auto 56px}
-.group{display:flex;align-items:center;gap:12px;justify-content:center;font:600 22px/1.3 var(--text);margin:24px 0 40px;text-align:center}
+/* ---- the rooms: A/C as one 4-up row, the fan rooms in one row beside their label and the house rules */
+.wrap.wide{max-width:1360px}
+.rooms .head{max-width:680px;margin:0 auto 48px}
+.group{display:flex;align-items:center;gap:12px;font:600 22px/1.3 var(--text);margin:0 0 28px}
 .group .ic{width:26px;height:26px;color:var(--place)}
-.room{display:grid;grid-template-columns:minmax(0,480px) minmax(0,460px);justify-content:center;align-items:center;gap:clamp(32px,6vw,80px);margin:0 0 56px}
-.room.flip .show{order:2}
-.room-text h4{font:600 26px/1.25 var(--text);margin:0 0 12px}
-.meta{font-size:15px;color:var(--soft);margin:0 0 14px;line-height:1.9}
-.meta .pi{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
-.meta .pi+.pi::before{margin:0 .25em 0 0}
-.meta .ic{width:18px;height:18px;color:var(--place)}
-.note{font-size:17px;margin-bottom:22px}
-.room .actions{justify-content:flex-start}
-.btn-room{min-height:48px;padding:0 22px;font-size:15px}
-.stay{max-width:680px;margin:8px auto 0}
-.stay .details{margin-bottom:10px}
+.grid-ac{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.fan-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;margin-top:72px}
+.fan-head{grid-column:span 2;align-self:center;max-width:520px}
+.fan-head .group{margin-bottom:18px}
+.stay .details{margin-bottom:8px}
+.stay p:last-child{margin:0;color:var(--soft)}
+.room{display:flex;flex-direction:column;min-width:0}
+.room-text{display:flex;flex-direction:column;flex:1;padding-top:18px}
+.room-text h4{font:600 20px/1.3 var(--text);margin:0 0 8px;text-wrap:balance}
+.meta{font-size:14px;color:var(--soft);margin:0 0 8px;line-height:1.8}
+.meta .pi{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.meta .pi+.pi::before{margin:0 .2em 0 0}
+.meta .ic{width:17px;height:17px;color:var(--place)}
+.note{font-size:15px;line-height:1.5;margin-bottom:16px}
+.room .actions{justify-content:flex-start;margin-top:auto}
+.btn-room{min-height:46px;padding:0 18px;font-size:15px;gap:8px}
+.btn-room .ic{width:18px;height:18px}
+/* the room slideshow's controls sit on the photo, in a small glass pill */
+.show.over .ctrl{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);margin:0;gap:0;min-height:44px;padding:0 2px;
+  border-radius:999px;background:rgba(28,36,27,.5)}
+.show.over .arw{width:44px;height:44px;color:#fff}
+.show.over .dot{height:44px;width:24px}
+.show.over .dot[aria-current="true"]{width:36px}
+.show.over .dot::before{background:rgba(255,255,255,.55);width:7px;height:7px}
+.show.over .dot[aria-current="true"]::before{background:#fff;width:18px}
+@media (hover:hover){.show.over .arw:hover{background:rgba(255,255,255,.16)}}
 
 /* ---- slideshows: a scroll-snap row; dots and arrows from page.js */
 .show{position:relative;min-width:0}
@@ -161,6 +175,7 @@ main>section:not(.hero){padding:clamp(72px,9vw,128px) 0}
 .dot[aria-current="true"]::before{width:22px;background:var(--place)}
 .dot[aria-current="true"]{width:36px}
 .dot{transition:width .35s var(--ease)}
+.show.over .slide img{aspect-ratio:4/5}
 
 /* ---- inside the house */
 .split75{display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,5vw,72px);align-items:center}
@@ -170,18 +185,26 @@ main>section:not(.hero){padding:clamp(72px,9vw,128px) 0}
 
 /* ---- the afternoon: a full-bleed band, then the roof */
 main>section.roof{padding-top:0}
+.band{position:relative}
 .band img{width:100%;aspect-ratio:21/9;object-fit:cover;border-radius:0}
+.b-sunset img{aspect-ratio:auto;height:min(100svh,62vw);object-position:50% 30%}
+main>section.beach,main>section.eat{padding-top:0}
+.beach-grid,.eat>.wrap{margin-top:clamp(56px,7vw,96px)}
+.b-night{background:#0b0d0a}
+.b-night img{aspect-ratio:2/1}
+.b-night .over{position:absolute;left:0;right:0;top:0;padding:clamp(24px,2.6vw,40px) var(--gut) 0;max-width:var(--wrap);margin:0 auto;color:#fff}
+.b-night .title{color:#fff;margin:0;display:block;width:fit-content}
+.b-night .moment{color:rgba(255,255,255,.86)}
+.b-night .moment .ic{color:#F2C46B}
 .roof-grid{display:grid;grid-template-columns:5fr 3.4fr 4.6fr;gap:clamp(24px,3.5vw,48px);align-items:start;margin-top:clamp(56px,7vw,96px)}
 .roof .reader img{aspect-ratio:4/5;object-fit:cover}
 .roof .swing{margin-top:clamp(40px,7vw,120px)}
 .roof .swing img{aspect-ratio:3/2;object-fit:cover}
 
 /* ---- sunset: by the beach */
-.beach-grid{display:grid;grid-template-columns:6fr 5fr;gap:clamp(32px,6vw,96px);align-items:start}
-.beach .txt{max-width:540px}
-.turtles{margin-top:28px}
+.beach-grid{display:grid;grid-template-columns:5fr 6fr;gap:clamp(32px,6vw,96px);align-items:center}
+.beach .txt{max-width:500px}
 .turtles img{aspect-ratio:3/2;object-fit:cover}
-.sunset img{aspect-ratio:4/5;object-fit:cover}
 
 /* ---- until 22:00 */
 .eat .split75{align-items:start}
@@ -241,7 +264,7 @@ main>section.roof{padding-top:0}
 .addr{display:flex;gap:10px;align-items:flex-start;font-weight:600;margin-top:22px}
 .addr .ic{color:var(--place);margin-top:3px}
 .out-side{max-width:320px;width:100%;justify-self:end}
-.close-line{font-size:clamp(32px,3.4vw,40px);line-height:1.3;margin:0 0 30px}
+.close-line{font-size:32px;line-height:1.3;margin:0 0 30px;text-wrap:balance}
 .foot{padding:64px 0 120px}
 .foot-grid{display:grid;grid-template-columns:5fr 3fr 3fr;gap:32px;align-items:start}
 .foot-name{font-size:34px;margin:0 0 8px}
@@ -260,8 +283,9 @@ main>section.roof{padding-top:0}
 }
 
 @media (max-width:899px){
-  .room,.room.flip{grid-template-columns:minmax(0,1fr);gap:22px;margin-bottom:64px}
-  .room.flip .show{order:0}
+  .grid-ac{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 24px}
+  .fan-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:56px}
+  .fan-head{grid-column:1/-1;max-width:none}
   .split75,.beach-grid,.family,.out-grid,.rosa{grid-template-columns:minmax(0,1fr)}
   .roof-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .roof-grid .txt{grid-column:1/-1}
@@ -274,17 +298,25 @@ main>section.roof{padding-top:0}
 @media (max-width:767px){
   body{font-size:16px}
   .lede{font-size:18px}
-  .group{font-size:19px;margin:8px 0 28px;justify-content:flex-start;text-align:left}
+  .group{font-size:19px;margin:0 0 22px;align-items:flex-start}
+  .group .ic{margin-top:1px}
+  .grid-ac{grid-template-columns:minmax(0,1fr);gap:36px}
+  .room.ac .show.over .slide img{aspect-ratio:3/2}
+  .room.fan .show.over .arw{display:none}
+  .room.fan .room-text h4{font-size:18px}
+  .room.fan .btn-room{padding:0 12px;font-size:14px;min-height:44px}
+  .room.fan .btn-room .ic{display:none}
+  .b-sunset img{height:auto;aspect-ratio:4/5}
+  .b-night .over{top:auto;bottom:0;padding:0 var(--gut) 28px}
   .ratings.two,.ratings.three-r{grid-template-columns:minmax(0,1fr)}
   .rating{padding:14px 18px}
   .three{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
   .three img{border-radius:10px}
   .band img{aspect-ratio:4/5}
   .details{font-size:15px}
-  .room-text h4{font-size:22px}
   .qi blockquote p,.pull blockquote p{font-size:19px}
   .now-h{font-size:48px}
-  .close-line{font-size:28px}
+  .close-line{font-size:24px}
   .checkin .actions,.closing .actions{flex-direction:column;align-items:stretch}
   .btn{white-space:normal;text-align:center;line-height:1.25}
   .room .actions .btn{flex:0 1 auto}
@@ -295,5 +327,5 @@ main>section.roof{padding-top:0}
   *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;scroll-behavior:auto!important}
 }
 @media (prefers-reduced-motion:reduce) and (max-width:767px){
-  .js .hero-img,.js .hero-img.go{transform:translateX(max(calc(100vw - 125svh),calc(50vw - 81.25svh)))}
+  .js .hero-img,.js .hero-img.go{transform:translateX(max(calc(100vw - 128.4svh),calc(50vw - 100.9svh)))}
 }

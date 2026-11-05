@@ -84,22 +84,53 @@ Skill notes (tools.md: notes, never gates). Inspector findings kept, with reason
 - `still-page`: headless; the wipe and the clock move on scroll.
 - `size-count`: 13 sizes, a note only.
 
+### Round 2 (loop-back from the 4f pre-score: visual 7, experience 8, critic 67.4)
+
+Sheets in `shots/` (http :8923), plus scratch Playwright frames of the wipe mid-change, the pin's exit, Rosa blocked/unblocked and overflow at 320/360/390.
+
+**Round 7, first screen (hero, header, colour).**
+- What was wrong: the dissolve read as fog (palm crowns half-transparent in a grey sky), the foot carried the tin roof, wires and tuk-tuks, the phone crop left the sea a thin strip, the name was on screen twice in Caveat, and the booking pill was Lotus's button.
+- Changes:
+  - The fade is now baked into the file by `make-media.sh` (`sky()`): white = max(a short top ramp, a lower ramp x a brightness key on max(R,G,B)). The bright sky becomes the page white; the dark fronds keep every pixel. The palm crowns now stand crisp against white, the lower sky keeps its pale blue for the last ~20% above the horizon, and the sea, reef and green are untouched. No CSS mask any more.
+  - Desktop crop is 16:9 from y 20 (bottom at y 1100, above the roofs, wires and tuk-tuks).
+  - Phone: the hero is a column, type on white, then the picture fills what is left of the screen from a 560x712 crop on the reef. The sea and the white water are now the lower third of the picture, not a strip.
+  - The header wordmark is the text face at 18/17 px, and with JS it and the round Call stay hidden (opacity/visibility, no layout change) until the hero's button has scrolled away. The first screen says the name once.
+  - The hero line is "A guesthouse in Gurubebila, between Midigama and Weligama" (words of `tagline`), so the type is on the first phone screen; 18 px on the phone.
+  - **Booking colour is the sign's ink `#252323`** with white text (15.6:1), every booking button (hero, header, rooms, bar, sheet, closing, footer). The vermilion `#BE4532` is now only the sun-disc hour marker and the round Call button, which makes the sun the one round orange thing on the page, as the concept meant. Press fill `#4A4646`; hover lifts 1 px.
+- Against the bar (Booking.com fold: entrance hall under a blue bar) it is clearly better at a glance, and now decisive rather than soft: a black title, a black button and the inn's palms standing on the white page over the sea.
+
+**Round 8, set-piece.**
+- Wipe: as shot by the experience critic, the sunset arriving at horizon .84 through a 0.09-wide soft edge plus a warm glow read as a red smear rising from the bottom. The band's centre is now clamped to .38–.62 of the frame, the edge is 0.05 wide with a neutral light line, and the glow is gone. Captured 450 ms into each change at 1440 (SwiftShader): a clear horizontal slit opening from the horizon across the full width (afternoon → sunset, 22:00 → 7:30).
+- Dimmed blocks: dimmed by colour, not opacity. Non-current text is `--muted` `#5A5656`; lowest measured pair in non-current blocks is 5.43:1 (the place-colour sub-title), so nothing visible is under 4.5:1.
+- Phone: blocks are their natural height (no 64 svh minimum), so no empty white bands; the pinned photo is 44 svh + the 52 px dial; the tick labels sit 15% in from the edges.
+- Exit: the pin still scrolls away (it is sticky), but "Today on Coconuts" now starts 56 px under the section edge (40 on the phone), so what follows the photograph is the next title, not an empty strip. The break frame is re-cropped (14:15 from the top 1150 rows) so it ends above the tin roofs too.
+
+**Round 9, whole page.**
+- "Inside the house": three explicit columns, each a 2:3 portrait over a 3:2 landscape (img-016 cropped to 2:3), so the grid ends flush with no hole. Phone: two flush columns, img-030 full width, img-016 dropped.
+- The sign is a plain photograph with rounded corners: no mat, no shadow, no tilt.
+- Rooms on the phone: the two fan rooms are compact rows (112 px thumbnail beside the facts), slideshow arrows hidden on phones (swipe + dots), tighter spacing. The room run went from about 6 phone screens to about 3.5. Budget Double now leads with the open door (img-046), not the towel.
+- Erin's and Janno's reviews now appear once, in the set-piece; the guests slideshow holds the other ten.
+- "Not sure" in the sheet and on `rooms/` has one Call, not two.
+- Overflow: buttons wrap on phones; the bar's book button shrinks; scroll width equals the viewport at 320, 360 and 390 with JS, and 390 with JS off.
+- Rosa: the iframe stays invisible, and the plain link stays visible in the reserved box, until the frame has loaded **and** a no-cors probe to rosa.surf has answered (a blocked host still fires `load` on Chrome's error page). Rosa blocked: link visible, iframe opacity 0. Rosa reachable: widget shown, link hidden.
+- Inspector (notes, never gates): covered-text @390 is the sticky split itself, as in round 6; headline-lines is the closing line in the script, as the concept asks; eyebrow is a false reading of the rating meta; side-scroll is the slideshows; no-footage, no usable video; 12 font sizes. name-only-title fixed (the hero line is 18 px and says "guesthouse").
+
 ## images
 
 All are business-owned Booking.com or Airbnb property uploads (`dossier.images[].license`). Nothing is upscaled, and nothing is shown wider than its source.
 
 | use | asset | crop / size |
 |---|---|---|
-| first screen | img-009 | desktop 1920×1080 from y 160 (1280 and 1920 renditions); phone 700×1244 from x 520 |
-| clock frames, 14:15 | img-103 (afternoon), img-008 (sunset), img-099 (night), img-105 (7:30), img-009 (the break) | 1280 and 760 widths; horizons for the wipe at .40 / .84 / .45 / .46 / .67 of frame height (`data-hz`; 4g reads them from media `focalY`) |
+| first screen | img-009 | desktop 1920×1080 from y 20 (1280 and 1920 renditions); phone 560×712 from x 560, y 430; sky faded to white by a brightness key (`sky()`) |
+| clock frames, 14:15 | img-103 (afternoon), img-008 (sunset), img-099 (night), img-105 (7:30), img-009 (the break, 1072×1150 from x 520, above the roofs) | 1280 and 760 widths; horizons for the wipe at .40 / .84 / .45 / .46 / .67 of frame height (`data-hz`; 4g reads them from media `focalY`) |
 | Deluxe with Balcony, 3:2 | img-076, 073, 079, 068, 077, 074 (bath) | centre crops of 1440×1920 portraits |
 | Superior, 3:2 | img-035, 037, 034, 017, 064 (bath with water heater) | |
 | Deluxe 2 Adults + 1 Child, 3:2 | img-040, 036, 053 (bath) | |
 | Deluxe Family, 3:2 | img-031, 045, 022, 027 | |
-| Budget Double, 3:2 | img-047, 046, 048, 049 | |
+| Budget Double, 3:2 | img-046, 047, 048, 049 | |
 | Budget Single, 3:2 | img-056, 057, 059, 061 (bath) | |
-| inside the house, masonry at own ratio | img-006, 007, 011, 030, 019, 016 | whole frames at 720 w |
-| getting here, matted print 4:3 | img-002 (the sign) | 840×630 at native |
+| inside the house, three flush columns | img-006 + 007, img-019 + 011, img-016 + 030 | whole frames at 720 w; img-016 cropped 2:3 |
+| getting here, 4:3 | img-002 (the sign) | 840×630 at native, no mat |
 
 Alt text was written from each photograph as seen on contact sheets, not from the dossier descriptions alone.
 
@@ -121,7 +152,7 @@ Alt text was written from each photograph as seen on contact sheets, not from th
 None blocking. These are departures from concepts.md, each a deliberate call:
 1. **Fan-room photos are 3:2 crops, not "4:5 letterboxed on the tint inside 3:2 frames".** Letterboxing is a padded picture box (house rule 2). Every slide is now one ratio; the fan-room sources are landscape or tall enough to give 1200 px 3:2 crops.
 2. **The set-piece is CSS `position: sticky` plus about 4 KB of raw WebGL, not GSAP + ScrollTrigger + Lenis.** The scroll playbook allows sticky "for simple cases". There is no smooth-scroll hijack, no CDN library, nothing to vendor at 4g, and native scroll everywhere. Each frame change is a timed 1.1 s horizon wipe, triggered when a text block crosses 55% of the viewport (on phones, 30% into the area below the pinned frame).
-3. **The accent is close to Lotus.** Concepts.md flagged that #BE4532 (the sign's sun, darkened for 5.1:1 under white text) is 7° from Lotus's shipped #B8431C. Side by side on white they read as the same warm red family; this one is slightly lighter and more vermilion. I kept it, because it is the client's own mark and appears only as the booking colour, the hour marker and the round Call. If the human judges it too alike across the run, the fallback in concepts.md applies: concept 1's banana-leaf green for booking, with the sun kept for the marker and Call. That is a call for the pick, not a defect.
+3. **Resolved in round 2: booking is the sign's ink, not its sun.** Both 4f visual critics found the vermilion pill indistinguishable from Lotus's shipped `#B8431C` at button size. Following the visual critic's option (a), every booking button is now `#252323` (the palm on the sign) with white text; the vermilion stays only on the sun-disc hour marker and the round Call button. Round-1 text, for the record: Concepts.md flagged that #BE4532 (the sign's sun, darkened for 5.1:1 under white text) is 7° from Lotus's shipped #B8431C. Side by side on white they read as the same warm red family; this one is slightly lighter and more vermilion. I kept it, because it is the client's own mark and appears only as the booking colour, the hour marker and the round Call. If the human judges it too alike across the run, the fallback in concepts.md applies: concept 1's banana-leaf green for booking, with the sun kept for the marker and Call. That is a call for the pick, not a defect.
 4. **Galleries vs concept 1's lists:**
    - img-089 (a bathroom with no `room_types`) is not used, so no bathroom is pinned to a room it may not belong to;
    - img-038 (a dim rope rail) is dropped;
@@ -134,7 +165,10 @@ None blocking. These are departures from concepts.md, each a deliberate call:
    - "How many are coming?" and the tile labels;
    - "Find your room", "Today on Coconuts", "At the house", "Open in Google Maps";
    - the audit's `primary_label` "See rooms and live dates on Booking.com" on the check-in button.
-8. **Lane note.** Two tool runs touched scratch outside this folder:
+8. **Hero adaptation.** Concepts.md says "the photograph itself is not altered … only a fade to the page's white". The round-2 fade is still only a fade to white, but keyed by brightness so the fronds stay opaque; it is baked into the derived file by `make-media.sh` rather than drawn by a CSS mask. If the human reads it as an effect rather than the photograph, the round-1 vertical mask is one line to restore.
+9. **Round-2 lane note.** `check-design` ran on this page's path only. `.taste-skill/` already existed at the repo root (another designer's run, 02:02) before my inspector run; I left it in place rather than delete a folder another session may be reading.
+10. **Calm vs unique first screen.** Kept img-009 as the concept says; the keyed white sky, the column layout on the phone and the lower crop make it a different first screen from calm's, whatever calm changes.
+11. **Lane note (round 1).** Two tool runs touched scratch outside this folder:
    - `node tools/check-design.mjs unique` (the variant name selects every business's unique mockup) rewrote the scratch `shots/check-design/` sheets of other businesses' unique mockups before I stopped it. Those are gitignored scratch, regenerated by the same tool. The final check ran on this page's path only.
    - The tasteskill inspector wrote `.taste-skill/` at the repo root, which I removed.
 
@@ -143,22 +177,25 @@ None blocking. These are departures from concepts.md, each a deliberate call:
 - **Cheeky Monkey** (picked unique, drone-loop hero) is loud surf colour, painted-sign lettering, boards and a main road, with a right-hand drawer.
 - **Lotus Surf House** (picked calm, "The gate") is a carved gate and a garden house, inward and shaded, in Parisienne with a red-oxide button and a slide-down panel. It is ordered by floor.
 - **This page** opens on open sky and sea from a roof, whose sky becomes the white page. It moves through a day: one pinned window turns from the afternoon thatch to sunset, night, the restaurant at 7:30 and the break, with the inn's sign-sun as the hour marker. It is the only page in the run that names its own break and carries that break's forecast. Its booking is a centred card (a bottom sheet on phones) that asks how many are coming.
-- The nearest thing to another page is the accent, which is close to Lotus's red (conflict 3).
+- Round 2: the booking buttons are ink black, so the run's red-family booking pill (Lotus) is no longer shared (conflict 3).
 
 ## hand-off checks (4e)
 
-1. **Look loop: pass.** Three first-screen rounds, then one whole-page, one checks-and-states and one final whole-page round, all written up. Every `dist/img` file comes from `src/make-media.sh`.
+1. **Look loop: pass.** Round 1: three first-screen rounds, then one whole-page, one checks-and-states and one final whole-page round. Round 2: rounds 7–9 above. Every `dist/img` file comes from `src/make-media.sh`.
 2. **Booking: pass.** Every "Check dates" action is `https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html`, identical to `dossier.booking.engine_url` (asserted in `build.py`). Call is `tel:+94778921396`, as `dossier.contact.phone`. The audit's tap-through landed on the Booking.com listing. "Find your room" links are a real `rooms/` page.
-3. **`check-design`: pass.** 0 problems, 0 default-look warnings (h1/h2 Caveat, body Red Hat Text, ground #fff).
+3. **`check-design`: pass** (`node tools/check-design.mjs sites/…/unique/dist/index.html`, round 2). 0 problems, 0 default-look warnings (h1/h2 Caveat, body Red Hat Text, ground #fff).
 4. **`check-places`: pass.** 0 borrowed images.
 5. **Reduced motion, no WebGL and scroll: pass.**
    - Reduced motion: stacked blocks, no pin (audit: 1 canvas, hidden; photograph visible).
    - `?nogl`: CSS cross-fades.
-   - `scroll.early.cls` 0.0009 and `scroll.settled.cls` 0.
+   - `scroll.early.cls` 0.001 and `scroll.settled.cls` 0 (round 2).
+8. **`funnel.mjs` (round 2): `primary_action` = `engine` "Check dates on Booking.com", `hero_action` engine, `clicks_to_book` 1, CTA above fold.**
 6. **Other businesses: pass.** Compared above.
 7. **Video and first screen: pass.** No usable video (gaps). The first screen is the strongest own photograph, img-009 at 1920 px, and the main item is the WebGL horizon-wipe set-piece over five of the business's own 1920 px photographs.
 
-audit-mockup (phone, slow 4G, 2026-11-04T23:30Z):
+audit-mockup, round 2 (phone, slow 4G): first load 370 KB (HTML 99 KB, images 190 KB, fonts 81 KB), LCP 1,680 ms, CLS 0.0011, 3rd party fonts.gstatic.com only, keyboard ok, 0 alt missing.
+
+audit-mockup, round 1 (phone, slow 4G, 2026-11-04T23:30Z):
 - first load: 382 KB (HTML with inline CSS and JS 98 KB, images 202 KB, fonts 81 KB);
 - JS: inline, about 14 KB raw;
 - largest image: 78 KB;

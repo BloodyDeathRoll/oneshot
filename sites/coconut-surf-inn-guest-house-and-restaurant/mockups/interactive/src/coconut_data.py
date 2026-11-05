@@ -37,7 +37,7 @@ PHONE_SHOWN = re.sub(r'^\+94(\d{2})(\d{3})(\d{4})$', r'+94 \1 \2 \3', C['phone']
 MAP = C['mapUrl']
 ADDRESS = C['address']
 NAME = copy['businessName']
-WHERE = 'Gurubebila, between Midigama and Weligama'        # the tagline's own words (concepts §6)
+WHERE = 'A guesthouse in Gurubebila, between Midigama and Weligama'   # the tagline's own words (concepts §6); the type on the first screen
 assert WHERE in copy['tagline']
 TAGLINE = copy['tagline']
 CLOSING = copy['closing']
@@ -80,17 +80,17 @@ GROUPS = [  # (id, tile label, rooms) - tile labels are interface labels stating
 # Which photographs belong to which room (dossier images[].room_types), the bathroom last.
 GALLERIES = {
  'Deluxe Double Room with Balcony': ['img-076', 'img-073', 'img-079', 'img-068', 'img-077', 'img-074'],
- 'Superior Double Room': ['img-035', 'img-034', 'img-037', 'img-030', 'img-017', 'img-064'],
- 'Deluxe Double Room (2 Adults + 1 Child)': ['img-040', 'img-036', 'img-038', 'img-053'],
- 'Deluxe Family Room': ['img-031', 'img-045', 'img-022', 'img-027', 'img-089'],
- 'Budget Double Room': ['img-047', 'img-046', 'img-048', 'img-049'],
+ 'Superior Double Room': ['img-030', 'img-035', 'img-037', 'img-034', 'img-017', 'img-064'],
+ 'Deluxe Double Room (2 Adults + 1 Child)': ['img-036', 'img-040', 'img-038', 'img-053'],
+ 'Deluxe Family Room': ['img-045', 'img-031', 'img-022', 'img-027'],   # img-089 dropped (round 2): Booking ties it to no room
+ 'Budget Double Room': ['img-048', 'img-047', 'img-046', 'img-049'],
  'Budget Single Room': ['img-056', 'img-057', 'img-059', 'img-061'],
 }
 for label, ids in GALLERIES.items():
     for i in ids:
         img = next(x for x in dossier['images'] if x['id'] == i)
         assert img['license'] == 'business-owned', i
-        assert label in img['room_types'] or i == 'img-089', (label, i)   # img-089: Booking ties it to no room; it is the family room's bathroom per concepts §4.1
+        assert label in img['room_types'], (label, i)   # every photo is one Booking lists under this room
 
 # Alt texts, written from each photograph (opened at full size), not from the dossier line alone.
 ALT = {

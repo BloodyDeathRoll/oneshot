@@ -44,8 +44,13 @@
   /* ---------------- phone bar: slides up once the hero's button has left the screen */
   var bar = $('#bar'), heroBtn = $('.hero .btn-hero');
   if (bar) {
-    if (!heroBtn || !('IntersectionObserver' in W)) bar.classList.add('up');
-    else new IntersectionObserver(function (es) { bar.classList.toggle('up', !es[0].isIntersecting && es[0].boundingClientRect.top < 0); }).observe(heroBtn);
+    // the header's wordmark and call wait until the hero's title and button have gone, so the first screen says the
+    // name once and its first action is the booking button
+    if (!heroBtn || !('IntersectionObserver' in W)) { bar.classList.add('up'); root.classList.remove('at-hero'); }
+    else new IntersectionObserver(function (es) {
+      var past = !es[0].isIntersecting && es[0].boundingClientRect.top < 0;
+      bar.classList.toggle('up', past); root.classList.toggle('at-hero', !past);
+    }).observe(heroBtn);
   }
 
   /* ---------------- the stay, round the clock */
@@ -98,13 +103,14 @@
       'void main(){',
       ' vec2 u=(v-.5)*S+.5;',
       ' vec4 a=texture2D(A,u),b=texture2D(B,u);',
-      ' float n=sin(u.x*15.+P*4.)*.012+sin(u.x*37.-P*6.)*.006;',
-      ' float mx=max(H,1.-H)+.14;',
-      ' float e=mix(-.1,mx,P);',
-      ' float d=abs(u.y-H)+n;',
-      ' float m=1.-smoothstep(e-.09,e,d);',
-      ' float glow=smoothstep(.07,0.,abs(d-e+.035))*sin(P*3.14159)*.16;',
-      ' vec3 c=mix(a.rgb,b.rgb,m)+glow*vec3(1.,.86,.7);',
+      ' float h=clamp(H,.38,.62);',
+      ' float n=sin(u.x*9.+P*3.)*.008;',
+      ' float mx=max(h,1.-h)+.2;',
+      ' float e=mix(.0,mx,P);',
+      ' float d=abs(u.y-h)+n;',
+      ' float m=1.-smoothstep(e-.05,e,d);',
+      ' float edge=smoothstep(.035,0.,abs(d-e+.012))*sin(P*3.14159)*.22;',
+      ' vec3 c=mix(a.rgb,b.rgb,m)+edge;',
       ' gl_FragColor=vec4(c,1.);}'
     ].join('\n');
     function sh(t, s) { var o = g.createShader(t); g.shaderSource(o, s); g.compileShader(o); if (!g.getShaderParameter(o, g.COMPILE_STATUS)) throw new Error(g.getShaderInfoLog(o)); return o; }
@@ -198,7 +204,11 @@
           f.setAttribute('style', 'max-width:420px;border:0;border-radius:16px;display:block');
           f.loading = 'lazy'; f.referrerPolicy = 'strict-origin-when-cross-origin';
           f.setAttribute('sandbox', 'allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin');
-          f.addEventListener('load', function () { box.classList.add('loaded'); var fb = $('.fallback', box); if (fb) fb.remove(); });
+          // the plain link stays in the box until the frame has loaded AND Rosa answered a probe: a blocked host
+          // still fires 'load' on Chrome's error page, which must never replace the link with an empty box
+          var got = 0, show = function () { if (++got === 2) box.classList.add('loaded'); };
+          f.addEventListener('load', show, { once: true });
+          fetch(box.getAttribute('data-rosa'), { mode: 'no-cors', cache: 'force-cache' }).then(show, function () {});
           f.src = box.getAttribute('data-rosa');
           box.appendChild(f);
         }

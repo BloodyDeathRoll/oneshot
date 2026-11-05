@@ -6,7 +6,7 @@ Station 4e · designer 0.7.1 · run `2026-10-midigama-01` (mode `test`, operator
 - Words come from `copy/en.json` via `src/coconut_data.py`, which also asserts the booking URL and phone against `dossier.json`.
 - The forecast headline comes from `src/rosa-weligama-west.json`: one real, unedited Rosa response for `weligama-west`, fetched 2026-11-05.
 - Media: `src/make-media.sh` (`# media: …/interactive/dist/img/**`). The depth map is drawn from shapes by `src/paint-depth.py`, which make-media.sh calls.
-- Fonts: Google Fonts at 4e (Nunito Sans 400/700, Shadows Into Light Two).
+- Fonts: Google Fonts at 4e (Nunito Sans 400/700, Merienda 700). Round 2 replaced Shadows Into Light Two.
 - Rebuild: `bash src/make-media.sh && python3 src/build.py`.
 
 ## look-log
@@ -101,21 +101,59 @@ Curves were set by `/animate` principles:
 - the bar uses the drawer curve `(.32,.72,0,1)` over 300 ms;
 - the shader eye is critically damped with τ 140 ms, plus one ±4 px drift over 6 s.
 
+**Round 2 (4f loop-back, 2026-11-05).** Scores to beat: visual 6, experience 7, critic 64.4/80. Shots over http with `?depth=force`; the comparison bar is unchanged (Booking.com / Google folds, gold `try-your-week`).
+
+- **R2-1, first screen.**
+  - The sheet showed the phone frame as about 40 % grey floor. The title face looked like a marker note.
+  - Changes:
+    - the phone crop is now 600×1120 of img-102 (thatch, sea, parapet), not 1152×1440;
+    - the title face is Merienda 700 (a weighted, sign-painted hand, compared against Kalam, Courgette, Kaushan, Oleo Script, Norican, Sriracha and Grand Hotel on a test sheet), with the wordmark in the same face at 20–22 px;
+    - the hero line is now "A guesthouse in Gurubebila, between Midigama and Weligama" (a fragment of `tagline`), so the type is on the first phone screen;
+    - the idle depth drift runs continuously.
+  - Better than the Booking.com fold at a glance: yes. The phone now opens on thatch, sea and parapet, and a still visit can see the depth.
+- **R2-2, first screen.**
+  - The phone title crossed the horizon line.
+  - Changes: the text block moved to 54 svh (it sits on the parapet), and desktop moved to 26 vh.
+  - Drift test, no pointer, two frames 3 s apart: PSNR 18.0 dB at 390 and 17.1 dB at 1440. That is about as large a change as the old full pointer sweep (16.7). No tearing at the fringe or the pillar (scratch frames).
+- **R2-3, first screen + check-in.** The ratings were ordered above the "13:00" title on the phone. They now follow the buttons, and their labels are balanced. The phone call icon in the header stays hidden while the hero is in view. Clean.
+- **R2-4, whole page.**
+  - The 4-up icon cards are gone. "13:00, check-in" is now the tagline, one " | " details line, the booking pair, and the two ratings set large (76 px), each a whole link of 64 px or more: "Booking.com, 142 reviews, 4 Nov 2026".
+  - The rooms are a row of picks over one stage: the photo is 9fr (about 880 px at 1440), with the text beside it. On the phone the stage runs edge to edge, the tiles are compact, and the chips and note are tighter. The rooms take about 1.5 phone screens, down from about 3.
+  - Each A/C room leads with its brightest wide frame.
+  - The grey cards are gone behind the forecast headline and the reviews. The reviews sit on white under a saffron quote mark.
+  - Erin's and Janno's quotes now appear only in their own blocks.
+  - "11:00, check-out" is now one line of three dated rating links.
+  - The closing is in the text face at 26 px.
+- **R2-5, whole page (final sheets in `shots/`).** No overflow at 390 or 1440, and Rosa's widget loads on the shot.
+  - Inspector (notes, not gates) gave 9 FAIL / 7 WARN. What I fixed:
+    - resting shadows removed from the buttons, tiles and print (call buttons are now a tint fill);
+    - phone hero line at 18 px.
+  - What stays, with the reason:
+    - `headline-lines` misreads the rolling digit columns;
+    - `eyebrow` is the concept's clock tags;
+    - `text-shadow` is the hero scrim (playbook §1a);
+    - `icon-cards` is the three sleep tiles, the concept's booking device;
+    - `covered-text` is the fixed phone bar mid-scroll;
+    - `side-scroll` is the veranda and review drag rows;
+    - `no-footage`: there is no usable video;
+    - `still-page`: the headless GL.
+  - With JS off, the slideshow dots were drawn (`[hidden]` was overridden) and did nothing. Fixed with `.ctrl[hidden]{display:none}`.
+
 ## images
 
 All photographs are Booking.com property uploads, `business-owned` (asserted in `coconut_data.py` for every room gallery). No upscaling. Every full-bleed image is drawn from a 1920 px source. Alt texts were written from each photograph.
 
 | use | asset | crop |
 |---|---|---|
-| first screen + shader texture | img-102 | desktop 16:9 (1920×1080, y 120); phone 4:5 (1152×1440, x 40), object-position 22 % |
+| first screen + shader texture | img-102 | desktop 16:9 (1920×1080, y 120); phone (round 2) 600×1120 at x 152, y 0, so the floor below y 1120 is out; object-position 30 % |
 | depth map | drawn from shapes (`paint-depth.py`), not from pixels | the same two crops, at a quarter of the size |
-| rooms, 4:3 | Deluxe Balcony 076 073 079 068 077 074 · Superior 035 034 037 030 017 064 · Deluxe 2A+1C 040 036 038 053 · Family 031 045 022 027 089 · Budget Double 047 046 048 049 · Budget Single 056 057 059 061 | 4:3, bathroom last |
-| inside the house | img-007 (3:2); verandas 030 017 024 020 005 016 (4:5) | |
+| rooms, 4:3 | Deluxe Balcony 076 073 079 068 077 074 · Superior 030 035 037 034 017 064 · Deluxe 2A+1C 036 040 038 053 · Family 045 031 022 027 · Budget Double 048 047 046 049 · Budget Single 056 057 059 061 | 4:3, the brightest wide frame first, bathroom last (round 2) |
+| inside the house | img-007 (3:2); verandas 024 020 005 016 (4:5); 030 and 017 now sit only in the Superior gallery | |
 | on the roof | img-104 (16:9); slideshow 100 101 015 (3:2) | |
 | sunset | img-008 band (16:9 desktop, 4:5 phone); img-095 (3:2 print) | |
 | restaurant | img-106 (4:5); img-099 (21:9) | |
 
-img-089 has no `room_types` on Booking.com. It is shown as the family room's bathroom, following concepts §4.1 (gallery list).
+img-089 has no `room_types` on Booking.com. Round 2 dropped it (critic 4f dim 1); every gallery photo is now asserted against its room's `room_types`.
 
 ## gaps
 
@@ -136,7 +174,9 @@ img-089 has no `room_types` on Booking.com. It is shown as the family room's bat
 
 None blocking.
 
-1. **The depth shader turns itself off on a slow GPU.** If more than 12 of the first 30 frames take over 24 ms, the canvas stays hidden and the still photograph remains (the concept's weak-device rule). Headless Chromium with software GL can trip this. To see the effect headless, open `dist/index.html?depth=force` over http (every shot in this log used it). Reduced motion and Save-Data never start it: audit `reduced_motion` shows 1 canvas, hidden, photograph visible.
+0. **Round 2: the run's other agents.** In round 2 I first ran `check-design` for the whole slug, by mistake. It rewrote the scratch `shots/check-design/` folders of calm and unique as well (gitignored, re-made by their own check-design run). After that I ran it on this page only. I deleted the `.taste-skill/` my inspector run made. The one at the repo root now (02:04) was made by unique's run, not by mine.
+
+1. **The depth shader turns itself off on a slow GPU.** Round 2: the idle drift runs only while the hero is in view and the tab is visible; it never starts under reduced motion or Save-Data. If more than 12 of the first 30 frames take over 24 ms, the canvas stays hidden and the still photograph remains (the concept's weak-device rule). Headless Chromium with software GL can trip this. To see the effect headless, open `dist/index.html?depth=force` over http (every shot in this log used it). Reduced motion and Save-Data never start it: audit `reduced_motion` shows 1 canvas, hidden, photograph visible.
 2. **Hero text below centre** (about 58–62 % of the screen height), against the calibration's "centred vertically". Centred, the title sat on pale sky and needed a shade that greyed the sky (round 2). Lower, it sits on the parapet, and the photograph above the horizon stays untouched. The alternative costs a visibly smudged sky.
 3. **custom.md asks for booking that lets you "pick dates, then hand off".** The concept's pattern stops at the room: tile → room → "Check dates on Booking.com", 1 tap from the hero. Booking.com cannot preselect a room from a URL, and the URL is copied from the dossier unchanged, so there is no date picker. A dates step with `checkin` / `checkout` parameters would change the dossier URL. That is a decision for the human, not for 4e.
 
@@ -150,7 +190,33 @@ None blocking.
   - unique: img-009 dissolving into white, with the sign's vermilion and a sticky split.
   - Neither shares this first screen, type pair or accent.
 
-## hand-off checks (4e)
+## hand-off checks (4e), round 2
+
+1. **Look loop: pass.** Round 1 had seven rounds; round 2 adds five (three on the first screen, two on the whole page). Every `dist/img` file is made by `src/make-media.sh`, re-run this round.
+2. **Booking CTA: pass.** Every booking href equals `dossier.booking.engine_url` (asserted at build). The audit tap-through landed on `https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html`.
+   - `tools/funnel.mjs --depth 3`: **primary `engine` ("Check dates on Booking.com"), hero `engine`**, clicks_to_book 1. In round 1 both were `tel`.
+3. **`check-design` (this page): pass,** 0 problems and 0 warnings. Fonts Merienda / Nunito Sans, white ground.
+4. **`check-places`: pass.** 0 borrowed images.
+5. **Reduced motion, no WebGL and early scroll: pass.**
+   - Reduced motion keeps 1 canvas, hidden, with the photograph visible.
+   - `scroll.early.cls` 0.0003, `scroll.settled.cls` 0.
+   - With JS off: 390 px wide, the rooms stacked in their two groups, no dots.
+6. **Other businesses: pass.** Unchanged from round 1. Merienda is used by no other site in the run (Cheeky Monkey: Permanent Marker / Knewave / Yellowtail; Lotus: Parisienne / Patrick Hand / Allura; calm: Satisfy; unique: Caveat).
+7. **Video and media: pass.** No usable video. img-102 at 1920 px with the depth parallax, which now moves at rest.
+
+**Accessibility (scratch axe-core 4.x run, WCAG 2.0/2.1 A+AA, after a full scroll):**
+- 0 violations at 390 and at 1440, 30 rule sets passing. The ratings are `role="img"` with "8.5 out of 10" / "4.8 out of 5".
+- 0 links or buttons under 44 px at either width: slide dots 44×44, rating links ≥ 44 px tall, nav, wordmark, Rosa credit and footer buttons all at 44.
+- Rosa blocked: the plain link "See today's forecast for Coconuts on Rosa" is visible and on top (`elementFromPoint` hits it). The frame is added only after a no-cors probe to Rosa succeeds.
+
+**audit-mockup (phone, slow 4G, 4× CPU), round 2:**
+- first load **663 KB**: images 482 KB, fonts 68 KB;
+- largest image 152 KB: the veranda print `r45-img-016-720`, pulled in by Chrome's lazy distance, not the hero;
+- phone hero 52 KB;
+- **LCP 496 ms**, CLS 0.0005;
+- every playbook §4 line is still met.
+
+## hand-off checks (4e), round 1
 
 1. **Look loop: pass.** Four first-screen rounds, three whole-page and state rounds, all written up. Every `dist/img` file comes from `src/make-media.sh`. Every flaw named above was fixed, or is listed under conflicts.
 2. **Booking CTA: pass.** Every booking href equals `dossier.booking.engine_url` character for character (asserted at build). The audit tap-through landed on `https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html`. The phone is `tel:+94778921396`, matching the dossier.

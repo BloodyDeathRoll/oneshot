@@ -6,7 +6,7 @@ Strings written here are interface labels and section titles the template owns.
 Media: src/make-media.sh. CSS and JS: page.css / page.js beside this file, inlined.
 Run: bash src/make-media.sh && python3 src/build.py   (from anywhere)
 """
-import pathlib, sys
+import base64, pathlib, sys
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from data import *   # noqa
@@ -15,15 +15,25 @@ DIST = HERE.parent / 'dist'
 FIRST_SCREEN_ONLY = '--hero' in sys.argv
 
 def src(name): return f'img/{name}.webp'
+def b64(name): return 'data:image/webp;base64,' + base64.b64encode((DIST / src(name)).read_bytes()).decode()
 def wh(name): return webp_size(DIST / src(name))
 def srcset(names): return ', '.join(f'{src(n)} {wh(n)[0]}w' for n in names)
 
-def picture(name, alt, sizes=None, lazy=True, cls='', names=None):
+def picture(name, alt, sizes=None, lazy=True, cls='', names=None, pos=None):
     w, h = wh(name)
     extra = ' loading="lazy" decoding="async"' if lazy else ' fetchpriority="high"'
     ss = f' srcset="{srcset(names)}" sizes="{sizes}"' if names else ''
     c = f' class="{cls}"' if cls else ''
-    return f'<img{c} src="{src(name)}"{ss} width="{w}" height="{h}" alt="{E(alt)}"{extra}>'
+    st = f' style="object-position:{pos}"' if pos else ''
+    return f'<img{c} src="{src(name)}"{ss} width="{w}" height="{h}" alt="{E(alt)}"{st}{extra}>'
+
+def band(cls, d, d1280, m, alt, over=''):
+    """A full-bleed photograph: 21:9 or cover on desktop, 4:5 on the phone. `over` is optional type on it."""
+    W, H = wh(d)
+    return (f'<div class="band {cls}"><picture>'
+            f'<source media="(max-width: 767px)" srcset="{src(m)}" width="{wh(m)[0]}" height="{wh(m)[1]}">'
+            f'<img src="{src(d)}" srcset="{srcset([d1280, d])}" sizes="100vw" width="{W}" height="{H}" alt="{E(alt)}" loading="lazy" decoding="async">'
+            f'</picture>{over}</div>')
 
 SEP = '<span class="sep" aria-hidden="true">|</span>'
 def pipe(items):  # the " | " separators are drawn in CSS; page.js hides one that would start a wrapped line
@@ -45,9 +55,9 @@ hero = f"""
 <section class="hero" aria-label="{E(NAME)}">
   <div class="hero-media">
     <picture>
-      <source media="(max-width: 767px)" srcset="{src('hero-m')}" width="1600" height="1280">
-      <img class="hero-img" src="{src('hero-1920')}" srcset="{srcset(['hero-1280', 'hero-1920'])}" sizes="100vw"
-        width="1920" height="1080" alt="{E(ALT['img-009'])}" fetchpriority="high">
+      <source media="(max-width: 767px)" srcset="{src('hero-m')}" width="{wh('hero-m')[0]}" height="{wh('hero-m')[1]}">
+      <img class="hero-img" src="{src('hero-d')}" srcset="{srcset(['hero-1280', 'hero-d'])}" sizes="100vw"
+        width="{wh('hero-d')[0]}" height="{wh('hero-d')[1]}" alt="{E(ALT['img-009'])}" fetchpriority="high">
     </picture>
   </div>
   <div class="hero-text">
@@ -57,17 +67,21 @@ hero = f"""
   </div>
 </section>"""
 
-def show(sid, names, ratio, label, sizes, prefix):
+def show_html(sid, slides, n, ratio, label):
     """A dot slideshow: a scroll-snap row (works with JS off); dots and arrows are enabled by page.js."""
-    slides = ''.join(
-        f'<li class="slide" aria-roledescription="slide" aria-label="{i+1} of {len(names)}">'
-        f'{picture(prefix + n, ALT[n])}</li>' for i, n in enumerate(names))
-    return (f'<div class="show r{ratio}" data-show id="{sid}" role="region" aria-roledescription="carousel" aria-label="{E(label)}">'
+    cls = ' '.join('r' + r if r[0].isdigit() else r for r in ratio.split())
+    return (f'<div class="show {cls}" data-show id="{sid}" role="region" aria-roledescription="carousel" aria-label="{E(label)}">'
             f'<ul class="track" tabindex="0">{slides}</ul>'
             f'<div class="ctrl" hidden><button class="arw prev" type="button" aria-label="Previous photo">{svg("prev")}</button>'
             f'<div class="dots" role="group" aria-label="Choose a photo">'
-            + ''.join(f'<button type="button" class="dot" aria-label="Photo {i+1}"></button>' for i in range(len(names)))
+            + ''.join(f'<button type="button" class="dot" aria-label="Photo {i+1}"></button>' for i in range(n))
             + f'</div><button class="arw next" type="button" aria-label="Next photo">{svg("next")}</button></div></div>')
+
+def show(sid, names, ratio, label, sizes, prefix):
+    slides = ''.join(
+        f'<li class="slide" aria-roledescription="slide" aria-label="{i+1} of {len(names)}">'
+        f'{picture(prefix + n, ALT[n])}</li>' for i, n in enumerate(names))
+    return show_html(sid, slides, len(names), ratio, label)
 
 def rating(r):
     return (f'<a class="rating" href="{E(r["url"])}" rel="noopener">'
@@ -93,38 +107,47 @@ checkin = f"""
 </section>"""
 
 # ---------------------------------------------------------------- the rooms
-def room_row(label, i):
+# Round 2 (4f round 1: six alternating rows ran ~6 desktop / ~7 phone screens): the A/C group is one 4-up row,
+# the fan group one row with its label and the house rules beside it. On the phone the A/C rooms stack with 3:2
+# photos and the two fan rooms sit side by side.
+def room_card(label, i, kind):
     r = ROOMS[label]
-    imgs = GALLERIES[label]
     meta = pipe([f'{svg("bed")}{E(r["beds"])}', f'{svg("people")}Sleeps {r["sleeps"]}', f'{svg("area")}{E(area(r))}'])
-    return (f'<article class="room{" flip" if i % 2 else ""}" aria-labelledby="rm-{i}">'
-            f'{show(f"s-room-{i}", imgs, "45", label + ", photos", "(max-width: 899px) 100vw, 480px", "r-")}'
+    imgs = GALLERIES[label]
+    slides = ''.join(
+        f'<li class="slide" aria-roledescription="slide" aria-label="{k+1} of {len(imgs)}">'
+        f'{picture("r-" + n, ALT[n], pos=POS.get(n))}</li>' for k, n in enumerate(imgs))
+    return (f'<article class="room {kind}" aria-labelledby="rm-{i}">'
+            f'{show_html(f"s-room-{i}", slides, len(imgs), "45 over", label + ", photos")}'
             f'<div class="room-text"><h4 id="rm-{i}">{E(label)}</h4><p class="meta">{meta}</p>'
             f'<p class="note">{E(r["note"])}</p><div class="actions">{book("btn-room")}</div></div></article>')
 
-i = 0
-ac_rows = ''.join(room_row(l, n) for n, l in enumerate(AC_ROOMS))
-fan_rows = ''.join(room_row(l, n + len(AC_ROOMS)) for n, l in enumerate(FAN_ROOMS))
+ac_cards = ''.join(room_card(l, n, 'ac') for n, l in enumerate(AC_ROOMS))
+fan_cards = ''.join(room_card(l, n + len(AC_ROOMS), 'fan') for n, l in enumerate(FAN_ROOMS))
 rooms = f"""
 <section class="rooms tint" id="rooms" aria-labelledby="h-rooms">
-  <div class="wrap">
+  <div class="wrap wide">
     <div class="head center">
       <h2 class="script title" id="h-rooms">Six kinds of room</h2>
       <div class="lede">{paras('Six kinds of room')}</div>
     </div>
     <h3 class="group">{svg('snow')}<span>Rooms with air conditioning and hot water</span></h3>
-    {ac_rows}
-    <h3 class="group">{svg('fan')}<span>Fan rooms: no air conditioning and no hot water</span></h3>
-    {fan_rows}
-    <div class="stay center">
-      <p class="details">{pipe([f"Check-in from {STAY['checkInFrom']}", f"Check-out until {STAY['checkOutTo']}"])}</p>
-      <p>{E(STAY['note'])}</p>
+    <div class="grid-ac">{ac_cards}</div>
+    <div class="fan-row">
+      <div class="fan-head">
+        <h3 class="group">{svg('fan')}<span>Fan rooms: no air conditioning and no hot water</span></h3>
+        <div class="stay">
+          <p class="details">{pipe([f"Check-in from {STAY['checkInFrom']}", f"Check-out until {STAY['checkOutTo']}"])}</p>
+          <p>{E(STAY['note'])}</p>
+        </div>
+      </div>
+      {fan_cards}
     </div>
   </div>
 </section>"""
 
 # ---------------------------------------------------------------- inside the house
-three = ''.join(picture(f'q-{a}', ALT[a]) for a in ['img-006', 'img-030', 'img-003'])
+three = ''.join(picture(f'q-{a}', ALT[a]) for a in ['img-006', 'img-016', 'img-003'])
 inside = f"""
 <section class="inside" aria-labelledby="h-inside">
   <div class="wrap">
@@ -139,13 +162,7 @@ inside = f"""
 # ---------------------------------------------------------------- the afternoon: on the roof
 roof = f"""
 <section class="roof" id="roof" aria-labelledby="h-roof">
-  <div class="band">
-    <picture>
-      <source media="(max-width: 767px)" srcset="{src('roof-m')}" width="{wh('roof-m')[0]}" height="{wh('roof-m')[1]}">
-      <img src="{src('roof-1920')}" srcset="{srcset(['roof-1280', 'roof-1920'])}" sizes="100vw" width="1920" height="822"
-        alt="{E(ALT['img-103'])}" loading="lazy" decoding="async">
-    </picture>
-  </div>
+  {band('b-roof', 'roof-1920', 'roof-1280', 'roof-m', ALT['img-103'])}
   <div class="wrap roof-grid">
     <div class="txt">{moment('sun', 'The afternoon')}<h2 class="script title" id="h-roof">On the roof</h2>{paras('On the roof')}</div>
     <div class="pic reader">{picture('reader-720', ALT['img-015'])}</div>
@@ -156,10 +173,10 @@ roof = f"""
 # ---------------------------------------------------------------- sunset: by the beach
 beach = f"""
 <section class="beach tint" aria-labelledby="h-beach">
+  {band('b-sunset', 'sunset-1920', 'sunset-1280', 'sunset-m', ALT['img-008'])}
   <div class="wrap beach-grid">
-    <div class="txt">{moment('sunset', 'Sunset')}<h2 class="script title" id="h-beach">By the beach</h2>{paras('By the beach')}
-      <div class="pic turtles">{picture('turtles-1280', ALT['img-095'])}</div></div>
-    <div class="pic sunset">{picture('sunset-840', ALT['img-008'])}</div>
+    <div class="txt">{moment('sunset', 'Sunset')}<h2 class="script title" id="h-beach">By the beach</h2>{paras('By the beach')}</div>
+    <div class="pic turtles">{picture('turtles-1280', ALT['img-095'])}</div>
   </div>
 </section>"""
 
@@ -172,10 +189,12 @@ def quote_html(r, cls='q'):
 EAT = ['img-105', 'img-106', 'img-107', 'img-104']
 eat = f"""
 <section class="eat" aria-labelledby="h-eat">
+  {band('b-night', 'night-1920', 'night-1280', 'night-m', ALT['img-099'],
+        f'<div class="over">{moment("moon", "Until 22:00")}<h2 class="script title" id="h-eat">The restaurant upstairs</h2></div>')}
   <div class="wrap">
     <div class="split75">
       {show('s-eat', EAT, '32', 'The restaurant upstairs, photos', '(max-width: 899px) 100vw, 680px', 'eat-')}
-      <div class="txt">{moment('moon', 'Until 22:00')}<h2 class="script title" id="h-eat">The restaurant upstairs</h2>
+      <div class="txt">
         {paras('The restaurant upstairs')}
         <p class="hours">{svg('clock')}<span>{E(HOURS_NOTE)}</span></p></div>
     </div>
@@ -288,10 +307,13 @@ page = f'''<!doctype html>
 <head>
 {head()}
 {font_link('family=Onest:wght@400;600&family=Satisfy')}
-<link rel="preload" as="image" href="{src('hero-1920')}" imagesrcset="{srcset(['hero-1280', 'hero-1920'])}" imagesizes="100vw" media="(min-width: 768px)" fetchpriority="high">
+<link rel="preload" as="image" href="{src('hero-d')}" imagesrcset="{srcset(['hero-1280', 'hero-d'])}" imagesizes="100vw" media="(min-width: 768px)" fetchpriority="high">
 <link rel="preload" as="image" href="{src('hero-m')}" media="(max-width: 767px)" fetchpriority="high">
 <script>document.documentElement.classList.replace('no-js','js')</script>
-<style>{css}</style>
+<style>{css}
+.hero-img{{background-image:url({b64('hero-d-lq')})}}
+@media (max-width:767px){{.hero-img{{background-image:url({b64('hero-m-lq')})}}}}
+.hero-img.loaded{{background-image:none}}</style>
 </head>
 <body>
 <a class="skip" href="#rooms">Skip to the rooms</a>

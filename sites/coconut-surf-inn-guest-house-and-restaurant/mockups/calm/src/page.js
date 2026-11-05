@@ -6,7 +6,8 @@
   // the hero: once the photograph has painted, it settles (desktop) or pans once to the reef (phone)
   const img = document.querySelector('.hero-img');
   if (img) {
-    const go = () => requestAnimationFrame(() => requestAnimationFrame(() => img.classList.add('go')));
+    // the blurred placeholder under it is a loading state only: dropped once the photograph is in
+    const go = () => { img.classList.add('loaded'); requestAnimationFrame(() => requestAnimationFrame(() => img.classList.add('go'))); };
     img.complete ? go() : img.addEventListener('load', go, { once: true });
   }
 
@@ -56,18 +57,27 @@
 
   // " | " lines: a separator never starts a wrapped line (marked .lb on the item that begins a new line)
   const lines = () => {
+    // items are checked in order, after each change, by their vertical middle (inline-flex items with icons differ in top)
+    const first = (pi) => { let q = pi.previousElementSibling; while (q.tagName === 'BR') q = q.previousElementSibling; const a = q.getBoundingClientRect(), b = pi.getBoundingClientRect();
+      return b.top > a.top + a.height / 2; };
     for (const pl of document.querySelectorAll('.pl')) {
-      let prev = null;
-      for (const pi of pl.children) {
-        pi.classList.remove('lb');
-        const y = pi.offsetTop;
-        if (prev !== null && y > prev + 4) pi.classList.add('lb');
-        prev = y;
+      pl.querySelectorAll('br.jsbr').forEach(br => br.remove());
+      const items = [...pl.children];
+      items.forEach(pi => pi.classList.remove('lb'));
+      // without its separator an item may fit back on the line above; then the break is made explicit, so the
+      // separator never starts a line and the line never flips back and forth
+      for (const pi of items.slice(1)) if (first(pi)) {
+        pi.classList.add('lb');
+        if (!first(pi)) { const br = document.createElement('br'); br.className = 'jsbr'; pi.before(br); }
       }
     }
   };
   lines(); addEventListener('resize', () => requestAnimationFrame(lines));
   if (document.fonts) document.fonts.ready.then(lines);
+  addEventListener('load', lines);
+  // a line can re-wrap when a web font or an image above it settles: re-check whenever a line box changes width
+  if ('ResizeObserver' in window) { let q; const ro = new ResizeObserver(() => { cancelAnimationFrame(q); q = requestAnimationFrame(lines); });
+    document.querySelectorAll('.pl').forEach(pl => ro.observe(pl)); }
 
   // the header turns solid and the phone bar slides up once the first screen has gone
   const top = document.querySelector('.top'), bar = document.getElementById('bar'), hero = document.querySelector('.hero');
