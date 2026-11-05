@@ -1,0 +1,1950 @@
+{
+ "walked_at": "2026-11-05T09:24:48.425Z",
+ "viewport": "390x844, iPhone UA, en-GB",
+ "backend_calls": [
+  {
+   "method": "GET",
+   "path": "/rest/v1/tours",
+   "status": 200,
+   "at": "2026-11-05T09:24:50.871Z"
+  },
+  {
+   "method": "GET",
+   "path": "/rest/v1/lessons",
+   "status": 200,
+   "at": "2026-11-05T09:24:50.874Z"
+  },
+  {
+   "method": "GET",
+   "path": "/rest/v1/lessons",
+   "status": 200,
+   "at": "2026-11-05T09:24:50.874Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:50.881Z",
+   "body": "{\"airTemp\":\"81°F\",\"uvIndex\":7,\"bestTime\":\"All day\",\"location\":\"Coconut Beach, Weligama\",\"nextTide\":\"Low at 12:50 PM\",\"waterTemp\":\"87°F\",\"windSpeed\":\"4 mph\",\"surfRating\":5,\"tideStatus\":\"Falling\",\"waveHeight\":\"4-5 ft\",\"wavePeriod\":\"6 sec\",\"lastUpdated\":\"2026-11-05T08:14:16.566Z\",\"windDirection\":\"ENE\"}"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:51.111Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:51.471Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:51.625Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:51.823Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:52.053Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:52.267Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:52.401Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:52.581Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:52.776Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:52.901Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:53.036Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:53.167Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:53.309Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:53.426Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:53.538Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:53.664Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:53.787Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:53.907Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:54.041Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:54.155Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:54.278Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:54.529Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:54.661Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:54.786Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:54.930Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:55.059Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:55.178Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:55.297Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:55.418Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:55.559Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 200,
+   "at": "2026-11-05T09:24:55.686Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/surf-conditions",
+   "status": 429,
+   "at": "2026-11-05T09:24:55.759Z",
+   "body": "{\"error\":\"Too many requests. Please try again later.\"}"
+  },
+  {
+   "method": "GET",
+   "path": "/rest/v1/unavailable_dates",
+   "status": 200,
+   "at": "2026-11-05T09:25:33.571Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/check-availability",
+   "status": 200,
+   "at": "2026-11-05T09:25:33.741Z",
+   "body": "{\"bookedSlots\":[]}"
+  },
+  {
+   "method": "GET",
+   "path": "/rest/v1/unavailable_dates",
+   "status": 200,
+   "at": "2026-11-05T09:25:42.165Z"
+  },
+  {
+   "method": "POST",
+   "path": "/functions/v1/check-availability",
+   "status": 200,
+   "at": "2026-11-05T09:25:42.201Z"
+  }
+ ],
+ "blocked_writes": [
+  {
+   "method": "POST",
+   "url": "https://sanjee-surf.com/__l5e/trackevents"
+  },
+  {
+   "method": "POST",
+   "url": "https://sanjee-surf.com/__l5e/trackevents"
+  },
+  {
+   "method": "POST",
+   "url": "https://sanjee-surf.com/__l5e/trackevents"
+  },
+  {
+   "method": "POST",
+   "url": "https://sanjee-surf.com/__l5e/trackevents"
+  },
+  {
+   "method": "POST",
+   "url": "https://sanjee-surf.com/__l5e/trackevents"
+  },
+  {
+   "method": "POST",
+   "url": "https://sanjee-surf.com/__l5e/trackevents"
+  },
+  {
+   "method": "POST",
+   "url": "https://sanjee-surf.com/__l5e/trackevents"
+  },
+  {
+   "method": "POST",
+   "url": "https://sanjee-surf.com/__l5e/trackevents"
+  },
+  {
+   "method": "POST",
+   "url": "https://sanjee-surf.com/__l5e/trackevents"
+  },
+  {
+   "method": "POST",
+   "url": "https://sanjee-surf.com/__l5e/trackevents"
+  },
+  {
+   "method": "POST",
+   "url": "https://play.google.com/log"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/qm/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bz"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/api/graphql"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bulk-route-definitions/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/route-definition/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bulk-route-definitions/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bulk-route-definitions/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bulk-route-definitions/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bulk-route-definitions/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bz"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/api/graphql"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bz"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/api/graphql"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/api/graphql"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bulk-route-definitions/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/route-definition/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bulk-route-definitions/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bulk-route-definitions/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bulk-route-definitions/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bulk-route-definitions/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/api/graphql"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/api/graphql"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bz"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bulk-route-definitions/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/route-definition/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bulk-route-definitions/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bulk-route-definitions/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bulk-route-definitions/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bulk-route-definitions/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bz"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.instagram.com/ajax/bz"
+  },
+  {
+   "method": "POST",
+   "url": "https://m.facebook.com/async/wbloks/log/"
+  },
+  {
+   "method": "POST",
+   "url": "https://m.facebook.com/async/wbloks/log/"
+  },
+  {
+   "method": "POST",
+   "url": "https://m.facebook.com/async/wbloks/log/"
+  },
+  {
+   "method": "POST",
+   "url": "https://m.facebook.com/async/wbloks/log/"
+  },
+  {
+   "method": "POST",
+   "url": "https://m.facebook.com/async/wbloks/log/"
+  },
+  {
+   "method": "POST",
+   "url": "https://m.facebook.com/async/wbloks/log/"
+  },
+  {
+   "method": "POST",
+   "url": "https://m.facebook.com/async/wbloks/log/"
+  },
+  {
+   "method": "POST",
+   "url": "https://m.facebook.com/async/wbloks/log/"
+  },
+  {
+   "method": "POST",
+   "url": "https://m.facebook.com/a/bz"
+  },
+  {
+   "method": "POST",
+   "url": "https://m.facebook.com/a/bz"
+  },
+  {
+   "method": "POST",
+   "url": "https://m.facebook.com/ajax/weblite_app_logging/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.fbsbx.com/paid_ads_pixel/logging/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.google.com/rmkt/collect/1032622309/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.google.com/rmkt/collect/1032622309/"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.google.com/ccm/collect"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.google.com/ccm/collect"
+  },
+  {
+   "method": "POST",
+   "url": "https://www.fbsbx.com/paid_ads_pixel/logging/"
+  },
+  {
+   "method": "POST",
+   "url": "https://m.facebook.com/async/wbloks/log/"
+  },
+  {
+   "method": "POST",
+   "url": "https://m.facebook.com/a/bz"
+  }
+ ],
+ "steps": [
+  {
+   "name": "home first load",
+   "at": "2026-11-05T09:25:11.257Z",
+   "status": 200,
+   "title": "Sanjee Surf – Surf Lessons in Weligama, Sri Lanka",
+   "doc_width": 417,
+   "page_height": 30387,
+   "tel": [],
+   "whatsapp": [],
+   "mailto": [],
+   "socials": [
+    {
+     "href": "https://instagram.com/sanjeesurf",
+     "text": "",
+     "top": 29666,
+     "h": 40,
+     "visible": true
+    },
+    {
+     "href": "https://youtube.com/@sanjeesurf",
+     "text": "",
+     "top": 29666,
+     "h": 40,
+     "visible": true
+    },
+    {
+     "href": "https://facebook.com/sanjeesurf",
+     "text": "",
+     "top": 29666,
+     "h": 40,
+     "visible": true
+    }
+   ],
+   "vp": {
+    "w": 417,
+    "h": 901,
+    "vv_w": 390,
+    "vv_h": 844,
+    "vv_scale": 1
+   },
+   "inView": [
+    "PROFESSIONAL SURF INSTRUCTOR",
+    "of Your Life",
+    "Experience the thrill of surfing with personalized lessons from an experienced local instructor. Fro",
+    "→",
+    "Learn more",
+    "Got it"
+   ],
+   "banner": {
+    "top": 753,
+    "bottom": 813,
+    "left": 64,
+    "right": 353
+   },
+   "banner_buttons": [
+    {
+     "text": "Learn more",
+     "top": 795,
+     "bottom": 811
+    },
+    {
+     "text": "Got it",
+     "top": 829,
+     "bottom": 869
+    }
+   ],
+   "overflowing": [
+    {
+     "tag": "IMG",
+     "cls": "w-full h-full object-cover object-center scale-110",
+     "right": 410,
+     "text": ""
+    },
+    {
+     "tag": "DIV",
+     "cls": "",
+     "right": 416,
+     "text": "ABOUT SANJEE\n\nSurfing is Not Just a Spor"
+    },
+    {
+     "tag": "P",
+     "cls": "text-accent font-medium uppercase tracking-widest text-sm mb",
+     "right": 416,
+     "text": "ABOUT SANJEE"
+    },
+    {
+     "tag": "H2",
+     "cls": "font-serif text-4xl md:text-5xl text-foreground font-bold mb",
+     "right": 416,
+     "text": "Surfing is Not Just a Sport,\nIt's a Way "
+    },
+    {
+     "tag": "DIV",
+     "cls": "space-y-4 text-muted-foreground text-lg leading-relaxed",
+     "right": 416,
+     "text": "Growing up on the coast, I learned to su"
+    },
+    {
+     "tag": "P",
+     "cls": "",
+     "right": 416,
+     "text": "Growing up on the coast, I learned to su"
+    },
+    {
+     "tag": "P",
+     "cls": "",
+     "right": 416,
+     "text": "As a certified surf instructor, I've had"
+    },
+    {
+     "tag": "P",
+     "cls": "",
+     "right": 416,
+     "text": "My philosophy is simple: surfing should "
+    },
+    {
+     "tag": "DIV",
+     "cls": "mt-8 flex gap-8",
+     "right": 416,
+     "text": "15+\n\nYears Experience\n\n500+\n\nStudents Ta"
+    },
+    {
+     "tag": "DIV",
+     "cls": "",
+     "right": 416,
+     "text": "100%\n\nPassion"
+    },
+    {
+     "tag": "P",
+     "cls": "font-serif text-4xl text-primary font-bold",
+     "right": 416,
+     "text": "100%"
+    },
+    {
+     "tag": "P",
+     "cls": "text-muted-foreground text-sm",
+     "right": 416,
+     "text": "Passion"
+    }
+   ],
+   "heroImg": [
+    {
+     "src": "https://sanjee-surf.com/assets/weligama-ocean-view-pool-DftoCf9w.webp",
+     "alt": "Infinity pool overlooking the Indian Ocean at Weligama, Sri Lanka – Sanjee Surf school location"
+    }
+   ],
+   "meta": {
+    "og:title": "Sanjee Surf – Surf Lessons in Weligama, Sri Lanka",
+    "og:description": "Book surf lessons for all levels in Weligama, Sri Lanka. Expert instructors, tuk tuk surf safaris, and unforgettable ocean experiences with Sanjee Surf.",
+    "og:image": "https://sanjee-surf.com/og-image.jpg"
+   },
+   "toast": {
+    "seen": true,
+    "first_ms": 6046,
+    "last_ms": 10870,
+    "rect": {
+     "top": 16,
+     "bottom": 110,
+     "left": 16,
+     "right": 401
+    }
+   },
+   "surf_calls": {
+    "total": 33,
+    "ok": 32,
+    "refused": [
+     "2026-11-05T09:24:55.759Z"
+    ],
+    "first": "2026-11-05T09:24:50.881Z",
+    "sample_ok_body": "{\"airTemp\":\"81°F\",\"uvIndex\":7,\"bestTime\":\"All day\",\"location\":\"Coconut Beach, Weligama\",\"nextTide\":\"Low at 12:50 PM\",\"waterTemp\":\"87°F\",\"windSpeed\":\"4 mph\",\"surfRating\":5,\"tideStatus\":\"Falling\",\"waveHeight\":\"4-5 ft\",\"wavePeriod\":\"6 sec\",\"lastUpdated\":\"2026-11-05T08:14:16.566Z\",\"windDirection\":\"ENE\"}",
+    "refusal_body": "{\"error\":\"Too many requests. Please try again later.\"}"
+   },
+   "header_nav": []
+  },
+  {
+   "name": "fixed or sticky at scroll 3000",
+   "at": "2026-11-05T09:25:17.712Z",
+   "fixed": [
+    {
+     "pos": "fixed",
+     "tag": "OL",
+     "top": 0,
+     "bottom": 32,
+     "text": ""
+    },
+    {
+     "pos": "fixed",
+     "tag": "DIV",
+     "top": 664,
+     "bottom": 844,
+     "text": "We use essential cookies to ensure our website functions properly. No tracking o"
+    },
+    {
+     "pos": "fixed",
+     "tag": "DIV",
+     "top": 768,
+     "bottom": 828,
+     "text": ""
+    },
+    {
+     "pos": "fixed",
+     "tag": "OL",
+     "top": 0,
+     "bottom": 32,
+     "text": ""
+    }
+   ],
+   "shot": "funnel/walk/02-home-scroll-3000.png"
+  },
+  {
+   "name": "sideways",
+   "at": "2026-11-05T09:25:18.513Z",
+   "scroll_x": 0,
+   "void": "scrollTo moves nothing in this emulation; its screenshot was deleted. See width_note."
+  },
+  {
+   "name": "menu button on a phone",
+   "at": "2026-11-05T09:25:19.051Z",
+   "count": 0
+  },
+  {
+   "name": "home: surf rating",
+   "at": "2026-11-05T09:25:20.135Z",
+   "re": "surf rating",
+   "found": {
+    "top": 22266,
+    "text": "TODAY'S SURF RATING",
+    "context": "LIVE CONDITIONS\n\nEstimated\nSurf Report\nCoconut Beach, Weligama\n\nLast Updated\n\n10:14\n\nLive data temporarily unavailable. Showing estimated conditions.\n\nTODAY'S SURF RATING\n\n5/5\nExcellent\n\nBest time to surf: All day\n\nWave Height\n\n4-5 ft\n\nPeriod: 6 sec\n\nWind\n\n4 mph\n\nFrom ENE\n\nTemperature\n\n87°F\n\nAir: 81°F\n\nTide\n\nFalling\n\nLow at 12:50 PM\n\nUV Index\n7 - High\n\nRemember reef-safe sunscreen.\n\nPowered by Storm Glass API • Data updates every hour"
+   },
+   "shot": "funnel/walk/04-home-surf-report.png"
+  },
+  {
+   "name": "home: temporarily unavailable",
+   "at": "2026-11-05T09:25:21.039Z",
+   "re": "temporarily unavailable",
+   "found": {
+    "top": 22165,
+    "text": "Live data temporarily unavailable. Showing estimated conditions.",
+    "context": "LIVE CONDITIONS\n\nEstimated\nSurf Report\nCoconut Beach, Weligama\n\nLast Updated\n\n10:14\n\nLive data temporarily unavailable. Showing estimated conditions.\n\nTODAY'S SURF RATING\n\n5/5\nExcellent\n\nBest time to surf: All day\n\nWave Height\n\n4-5 ft\n\nPeriod: 6 sec\n\nWind\n\n4 mph\n\nFrom ENE\n\nTemperature\n\n87°F\n\nAir: 81°F\n\nTide\n\nFalling\n\nLow at 12:50 PM\n\nUV Index\n7 - High\n\nRemember reef-safe sunscreen.\n\nPowered by Storm Glass API • Data updates every hour"
+   },
+   "shot": null
+  },
+  {
+   "name": "home: sessions are private",
+   "at": "2026-11-05T09:25:22.026Z",
+   "re": "sessions are private",
+   "found": {
+    "top": 2522,
+    "text": "All sessions are private for maximum progress. For group bookings, please leave us a message.",
+    "context": "SURF LESSONS\n\nFind Your Perfect Session\n\nAll sessions are private for maximum progress. For group bookings, please leave us a message.\n\nBeginner Lesson\n\n2 hours\n\n$40\n\nPerfect introduction to surfing\n\nSafety basics & ocean awareness\nBoard handling techniques\nPaddle & pop-up practice\nCatching your first waves\nBook Now\nBest Value\nPrivate Coaching\n\n2 hours\n\n$50\n\nOne-on-one intensive training\n\nOne-on-one instruction\nCustomized learning pace\nFlexible scheduling\nBook Now\nWeek Intensive\n\n5 days × 2 hours\n\n$160\n\nSpread across 10 days – pick your best days! After 2 hours of surfing, your muscles will be happily exhausted. Contact us beforehand to coordinate which days and times work best for you ❤️\n\n5 private sessions\nFlexible scheduling within 10 days\nChoose your preferred days & times\nBoard & rash guard included\nProgress tracking\nPhoto/video memories\nBook Now\nSurfboard Rental\n\n1 hour\n\n$5\n\nQualit"
+   },
+   "shot": "funnel/walk/05-home-all-private.png"
+  },
+  {
+   "name": "home: GOOGLE REVIEWS",
+   "at": "2026-11-05T09:25:23.023Z",
+   "re": "GOOGLE REVIEWS",
+   "found": {
+    "top": 20024,
+    "text": "GOOGLE REVIEWS",
+    "context": "GOOGLE REVIEWS\n\nWhat Our Surfers Say\n\nReal reviews from real surfers who learned with us\n\n\"Sanjee is an outstanding surf coach. After just 7 intensive training days, he gave me the confidence to surf bigger waves and significantly improve my level. His teaching is clear, professional, and very motivating. I highly recommend him to anyone who wants to progress safely and effectively.\"\n\n1 week ago\n\n\"Thanks Sanjee! Already in the first lesson I was standing on the board. You are very inspiring & motivating.\"\n\n1 week ago\n\n\"Started as a beginner, improved a lot fast. Thanks, Sanjee!\"\n\n1 week ago\n\n\"Great guy, highly recommend!\"\n\n1 week ago\n\n\"Good surfer teacher\"\n\n1 year ago\n\n\"Sanjee is one of the best coaches there is to learn surfing. He was very patient and supportive. I was able to catch waves and stand on my board till close to the shore in the first session itself. I'd definitely recommen"
+   },
+   "shot": "funnel/walk/06-home-reviews.png"
+  },
+  {
+   "name": "home: 1 week ago",
+   "at": "2026-11-05T09:25:24.054Z",
+   "re": "1 week ago",
+   "found": {
+    "top": 21687,
+    "text": "1 week ago",
+    "context": "\"Sanjee is one of the best coaches there is to learn surfing. He was very patient and supportive. I was able to catch waves and stand on my board till close to the shore in the first session itself. I'd definitely recommend him and would come again to learn from him for intermediate and advanced course as well.\"\n\n1 week ago"
+   },
+   "shot": "funnel/walk/06-home-review-dates.png"
+  },
+  {
+   "name": "home: on Google",
+   "at": "2026-11-05T09:25:25.067Z",
+   "re": "on Google",
+   "found": {
+    "top": 21792,
+    "text": "on Google",
+    "context": "GOOGLE REVIEWS\n\nWhat Our Surfers Say\n\nReal reviews from real surfers who learned with us\n\n\"Sanjee is an outstanding surf coach. After just 7 intensive training days, he gave me the confidence to surf bigger waves and significantly improve my level. His teaching is clear, professional, and very motivating. I highly recommend him to anyone who wants to progress safely and effectively.\"\n\n1 week ago\n\n\"Thanks Sanjee! Already in the first lesson I was standing on the board. You are very inspiring & motivating.\"\n\n1 week ago\n\n\"Started as a beginner, improved a lot fast. Thanks, Sanjee!\"\n\n1 week ago\n\n\"Great guy, highly recommend!\"\n\n1 week ago\n\n\"Good surfer teacher\"\n\n1 year ago\n\n\"Sanjee is one of the best coaches there is to learn surfing. He was very patient and supportive. I was able to catch waves and stand on my board till close to the shore in the first session itself. I'd definitely recommen"
+   },
+   "shot": "funnel/walk/06-home-google-badge.png"
+  },
+  {
+   "name": "home: 2,000",
+   "at": "2026-11-05T09:25:26.122Z",
+   "re": "2,000",
+   "found": {
+    "top": 18905,
+    "text": "Born and raised in Weligama, Sanjee has been surfing since age 8. With over 15 years of experience and ISA certification, he has taught more than 2,000 students from around the world to ride their fir",
+    "context": "Born and raised in Weligama, Sanjee has been surfing since age 8. With over 15 years of experience and ISA certification, he has taught more than 2,000 students from around the world to ride their first wave. His deep knowledge of local breaks and patient teaching style make every lesson an unforgettable experience."
+   },
+   "shot": "funnel/walk/06-home-bio-2000.png"
+  },
+  {
+   "name": "home: Students",
+   "at": "2026-11-05T09:25:27.175Z",
+   "re": "Students",
+   "found": {
+    "top": 18905,
+    "text": "Born and raised in Weligama, Sanjee has been surfing since age 8. With over 15 years of experience and ISA certification, he has taught more than 2,000 students from around the world to ride their fir",
+    "context": "Born and raised in Weligama, Sanjee has been surfing since age 8. With over 15 years of experience and ISA certification, he has taught more than 2,000 students from around the world to ride their first wave. His deep knowledge of local breaks and patient teaching style make every lesson an unforgettable experience."
+   },
+   "shot": "funnel/walk/06-home-stats.png"
+  },
+  {
+   "name": "home: Tropical Beach",
+   "at": "2026-11-05T09:25:28.285Z",
+   "re": "Tropical Beach",
+   "found": {
+    "top": 28621,
+    "text": "Tropical Beach, Paradise Coast",
+    "context": "GET IN TOUCH\n\nReady to\nCatch Some Waves?\n\nDrop me a message and let's plan your surf adventure. Whether you have questions or are ready to book, I'm here to help.\n\nLocation\n\nTropical Beach, Paradise Coast\n\nEmail\n\nsanjee@sanjeesurf.com\n\nAvailable\n\nDaily 6AM - 6PM"
+   },
+   "shot": "funnel/walk/07-home-contact-block.png"
+  },
+  {
+   "name": "home: Making waves, one lesson",
+   "at": "2026-11-05T09:25:29.302Z",
+   "re": "Making waves, one lesson",
+   "found": {
+    "top": 29630,
+    "text": "Making waves, one lesson at a time.",
+    "context": "Sanjee Surf\n\nMaking waves, one lesson at a time.\n\nExplore\nHome\nSurfing Sri Lanka\nSurfing Weligama\nBoard Rental\nTuk Tuk Safari\nAbout Sanjee\nFAQ\nBlog\nFrom the Blog\nWhere to Surf in Sri Lanka in December – Peak Season, Book Early\nWhere to Surf in Sri Lanka in November – The South Coast Wakes Up\nWhere to Surf in Sri Lanka in October – Inter-Monsoon & Empty Bays"
+   },
+   "shot": "funnel/walk/08-home-footer.png"
+  },
+  {
+   "name": "forms on the home page",
+   "at": "2026-11-05T09:25:29.305Z",
+   "forms": [
+    {
+     "top": 14236,
+     "action": null,
+     "fields": [
+      {
+       "tag": "SELECT",
+       "type": "select-one",
+       "name": ""
+      },
+      {
+       "tag": "INPUT",
+       "type": "date",
+       "name": "",
+       "ph": ""
+      },
+      {
+       "tag": "INPUT",
+       "type": "date",
+       "name": "",
+       "ph": ""
+      },
+      {
+       "tag": "TEXTAREA",
+       "type": "textarea",
+       "name": "",
+       "ph": "e.g. travelling with kids, want to try a reef break"
+      }
+     ],
+     "buttons": [
+      "Small, gentle waves",
+      "Uncrowded lineups",
+      "Reef breaks",
+      "Sandy bottom",
+      "Long rides",
+      "Powerful waves",
+      "Get my recommendations"
+     ],
+     "context": "Skill level\nTotal beginner\nBeginner (can stand up)\nIntermediate\nAdvanced\nArrival\nDeparture\nPreferred conditions\nSmall, gentle waves\nUncrowded lineups\nReef breaks\nSandy bottom\nLong rides\nPowerful waves\nAnything else? (optional)\nGet my recommendations"
+    },
+    {
+     "top": 28823,
+     "action": null,
+     "fields": [
+      {
+       "tag": "INPUT",
+       "type": "text",
+       "name": "",
+       "ph": "Your name"
+      },
+      {
+       "tag": "INPUT",
+       "type": "email",
+       "name": "",
+       "ph": "your@email.com"
+      },
+      {
+       "tag": "INPUT",
+       "type": "text",
+       "name": "website",
+       "ph": ""
+      },
+      {
+       "tag": "SELECT",
+       "type": "select-one",
+       "name": ""
+      },
+      {
+       "tag": "TEXTAREA",
+       "type": "textarea",
+       "name": "",
+       "ph": "Tell me about your surf goals..."
+      }
+     ],
+     "buttons": [
+      "Send Message"
+     ],
+     "context": "Name\nEmail\nWebsite\nExperience Level\nBeginner - Never surfed before\nIntermediate - Can stand up\nAdvanced - Looking to improve\nMessage\nSend Message"
+    }
+   ]
+  },
+  {
+   "name": "form shot",
+   "at": "2026-11-05T09:25:30.072Z",
+   "shot": "funnel/walk/09-home-dated-form.png"
+  },
+  {
+   "name": "Contact Us tapped",
+   "at": "2026-11-05T09:25:32.232Z",
+   "before": 14086,
+   "after": 28219,
+   "url": "https://sanjee-surf.com/",
+   "near": "funnel/walk/10-home-contact-us-button.png",
+   "dialog": "",
+   "shot": "funnel/walk/10-home-contact-us-after.png"
+  },
+  {
+   "name": "wizard: after hero button",
+   "at": "2026-11-05T09:25:34.657Z",
+   "taps_so_far": 1,
+   "open": true,
+   "rect": {
+    "top": 145,
+    "bottom": 700,
+    "left": 0,
+    "right": 390
+   },
+   "viewport": {
+    "layout_w": 390,
+    "visual_w": 390
+   },
+   "scrollable": false,
+   "text": "Book Your Session\n1\n2\n3\n4\nWhat would you like to book?\n\nSurf Lessons & Rentals\n\nPrivate lessons, coaching & board rentals\n\n🛺\n\nSurf Safari (Tuk Tuk)\n\nExplore hidden surf spots with local guides\n\nCancel\nContinue\nClose",
+   "buttons": [
+    {
+     "text": "Surf Lessons & Rentals\n\nPrivate lessons, coaching & board rentals",
+     "disabled": false,
+     "top": 342,
+     "bottom": 460,
+     "left": 25,
+     "right": 365
+    },
+    {
+     "text": "🛺\n\nSurf Safari (Tuk Tuk)\n\nExplore hidden surf spots with local guides",
+     "disabled": false,
+     "top": 473,
+     "bottom": 592,
+     "left": 23,
+     "right": 367
+    },
+    {
+     "text": "Cancel",
+     "disabled": false,
+     "top": 643,
+     "bottom": 691,
+     "left": 25,
+     "right": 107
+    },
+    {
+     "text": "Continue",
+     "disabled": true,
+     "top": 643,
+     "bottom": 691,
+     "left": 245,
+     "right": 365
+    },
+    {
+     "text": "Close",
+     "disabled": false,
+     "top": 162,
+     "bottom": 178,
+     "left": 357,
+     "right": 373
+    }
+   ],
+   "inputs": [],
+   "links": [],
+   "shot": "funnel/walk/11-wizard-1-after-hero.png"
+  },
+  {
+   "name": "wizard: type: lessons",
+   "at": "2026-11-05T09:25:35.857Z",
+   "taps_so_far": 2,
+   "open": true,
+   "rect": {
+    "top": 97,
+    "bottom": 748,
+    "left": 0,
+    "right": 390
+   },
+   "viewport": {
+    "layout_w": 390,
+    "visual_w": 390
+   },
+   "scrollable": false,
+   "text": "Book Your Session\n2\n3\n4\nSelect Your Lesson\n\nBeginner Lesson\n\n2 hours\n\n$40\n\nPrivate Coaching\n\n2 hours\n\n$50\n\nWeek Intensive\n\n5 days × 2 hours\n\n$160\n\nSurfboard Rental\n\n1 hour\n\n$5\n\nBack\nContinue\nClose",
+   "buttons": [
+    {
+     "text": "Beginner Lesson\n\n2 hours\n\n$40",
+     "disabled": false,
+     "top": 294,
+     "bottom": 372,
+     "left": 25,
+     "right": 365
+    },
+    {
+     "text": "Private Coaching\n\n2 hours\n\n$50",
+     "disabled": false,
+     "top": 382,
+     "bottom": 461,
+     "left": 23,
+     "right": 367
+    },
+    {
+     "text": "Week Intensive\n\n5 days × 2 hours\n\n$160",
+     "disabled": false,
+     "top": 474,
+     "bottom": 552,
+     "left": 25,
+     "right": 365
+    },
+    {
+     "text": "Surfboard Rental\n\n1 hour\n\n$5",
+     "disabled": false,
+     "top": 564,
+     "bottom": 642,
+     "left": 25,
+     "right": 365
+    },
+    {
+     "text": "Back",
+     "disabled": false,
+     "top": 691,
+     "bottom": 739,
+     "left": 25,
+     "right": 93
+    },
+    {
+     "text": "Continue",
+     "disabled": true,
+     "top": 691,
+     "bottom": 739,
+     "left": 245,
+     "right": 365
+    },
+    {
+     "text": "Close",
+     "disabled": false,
+     "top": 114,
+     "bottom": 130,
+     "left": 357,
+     "right": 373
+    }
+   ],
+   "inputs": [],
+   "links": [],
+   "shot": "funnel/walk/11-wizard-2-type.png"
+  },
+  {
+   "name": "wizard: offer: beginner",
+   "at": "2026-11-05T09:25:37.062Z",
+   "taps_so_far": 3,
+   "open": true,
+   "rect": {
+    "top": 117,
+    "bottom": 727,
+    "left": 0,
+    "right": 390
+   },
+   "viewport": {
+    "layout_w": 390,
+    "visual_w": 390
+   },
+   "scrollable": false,
+   "text": "Book Your Session\n3\n4\nPick Date & Time\nNovember 2026\nSu\nMo\nTu\nWe\nTh\nFr\nSa\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n1\n2\n3\n4\n5\nBack\nContinue\nClose",
+   "buttons": [
+    {
+     "text": "Go to previous month",
+     "disabled": true,
+     "top": 327,
+     "bottom": 355,
+     "left": 73,
+     "right": 101
+    },
+    {
+     "text": "Go to next month",
+     "disabled": false,
+     "top": 327,
+     "bottom": 355,
+     "left": 289,
+     "right": 317
+    },
+    {
+     "text": "Back",
+     "disabled": false,
+     "top": 670,
+     "bottom": 718,
+     "left": 25,
+     "right": 93
+    },
+    {
+     "text": "Continue",
+     "disabled": true,
+     "top": 670,
+     "bottom": 718,
+     "left": 245,
+     "right": 365
+    },
+    {
+     "text": "Close",
+     "disabled": false,
+     "top": 134,
+     "bottom": 150,
+     "left": 357,
+     "right": 373
+    }
+   ],
+   "inputs": [],
+   "links": [],
+   "shot": "funnel/walk/11-wizard-3-offer.png"
+  },
+  {
+   "name": "wizard: days enabled in the calendar",
+   "at": "2026-11-05T09:25:37.065Z",
+   "n": 31
+  },
+  {
+   "name": "wizard: date picked",
+   "at": "2026-11-05T09:25:38.258Z",
+   "taps_so_far": 4,
+   "open": true,
+   "rect": {
+    "top": 42,
+    "bottom": 802,
+    "left": 0,
+    "right": 390
+   },
+   "viewport": {
+    "layout_w": 390,
+    "visual_w": 390
+   },
+   "scrollable": false,
+   "text": "Book Your Session\n3\n4\nPick Date & Time\nNovember 2026\nSu\nMo\nTu\nWe\nTh\nFr\nSa\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n1\n2\n3\n4\n5\n\nAvailable on November 11\n\n6:00 AM\n\nSunrise Session\n\n8:00 AM\n\nMorning Glory\n\n10:00 AM\n\nMid-Morning\n\n2:00 PM\n\nAfternoon Swell\n\n4:00 PM\n\nGolden Hour\n\nDon't see a slot that works? sanjee@sanjee-surf.com — we always find a teacher.\n\nBack\nContinue\nClose",
+   "buttons": [
+    {
+     "text": "Go to previous month",
+     "disabled": true,
+     "top": 224,
+     "bottom": 252,
+     "left": 73,
+     "right": 101
+    },
+    {
+     "text": "Go to next month",
+     "disabled": false,
+     "top": 224,
+     "bottom": 252,
+     "left": 289,
+     "right": 317
+    },
+    {
+     "text": "6:00 AM\n\nSunrise Session",
+     "disabled": false,
+     "top": 570,
+     "bottom": 636,
+     "left": 25,
+     "right": 365
+    },
+    {
+     "text": "8:00 AM\n\nMorning Glory",
+     "disabled": false,
+     "top": 644,
+     "bottom": 710,
+     "left": 25,
+     "right": 365
+    },
+    {
+     "text": "10:00 AM\n\nMid-Morning",
+     "disabled": false,
+     "top": 718,
+     "bottom": 784,
+     "left": 25,
+     "right": 365
+    },
+    {
+     "text": "2:00 PM\n\nAfternoon Swell",
+     "disabled": false,
+     "top": 792,
+     "bottom": 858,
+     "left": 25,
+     "right": 365
+    },
+    {
+     "text": "4:00 PM\n\nGolden Hour",
+     "disabled": false,
+     "top": 866,
+     "bottom": 932,
+     "left": 25,
+     "right": 365
+    },
+    {
+     "text": "Back",
+     "disabled": false,
+     "top": 745,
+     "bottom": 793,
+     "left": 25,
+     "right": 93
+    },
+    {
+     "text": "Continue",
+     "disabled": true,
+     "top": 745,
+     "bottom": 793,
+     "left": 245,
+     "right": 365
+    },
+    {
+     "text": "Close",
+     "disabled": false,
+     "top": 59,
+     "bottom": 75,
+     "left": 357,
+     "right": 373
+    }
+   ],
+   "inputs": [],
+   "links": [
+    {
+     "text": "sanjee@sanjee-surf.com",
+     "href": "mailto:sanjee@sanjee-surf.com"
+    }
+   ],
+   "shot": "funnel/walk/11-wizard-4-date.png"
+  },
+  {
+   "name": "wizard: slot picked",
+   "at": "2026-11-05T09:25:39.460Z",
+   "taps_so_far": 5,
+   "open": true,
+   "rect": {
+    "top": 42,
+    "bottom": 802,
+    "left": 0,
+    "right": 390
+   },
+   "viewport": {
+    "layout_w": 390,
+    "visual_w": 390
+   },
+   "scrollable": false,
+   "text": "Book Your Session\n4\nYour Details\n\nBooking Summary\n\nBeginner Lesson\n\nWednesday, November 11, 2026 at 8:00 AM\n\nTotal: $40\n\nFirst payment (pay now)\n$8\nOn site at Coco Beach\n$32\n\n💵 Please make sure you have enough cash to pay the instructor directly.\n\nName *\nEmail *\nPhone * (for WhatsApp updates)\nSurf Experience\nNever surfed before\nBeginner - Tried a few times\nIntermediate - Can stand up\nAdvanced - Looking to improve\nNotes (optional)\nI agree to the Terms and Conditions and Privacy Policy\nBack\nPay $8 Now\nClose",
+   "buttons": [
+    {
+     "text": "Back",
+     "disabled": false,
+     "top": 745,
+     "bottom": 793,
+     "left": 25,
+     "right": 93
+    },
+    {
+     "text": "Pay $8 Now",
+     "disabled": true,
+     "top": 745,
+     "bottom": 793,
+     "left": 231,
+     "right": 365
+    },
+    {
+     "text": "Close",
+     "disabled": false,
+     "top": 59,
+     "bottom": 75,
+     "left": 357,
+     "right": 373
+    }
+   ],
+   "inputs": [
+    {
+     "tag": "INPUT",
+     "type": "text",
+     "name": "",
+     "ph": "Your name",
+     "required": true
+    },
+    {
+     "tag": "INPUT",
+     "type": "email",
+     "name": "",
+     "ph": "your@email.com",
+     "required": true
+    },
+    {
+     "tag": "INPUT",
+     "type": "tel",
+     "name": "",
+     "ph": "+1 (555) 000-0000",
+     "required": true
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "name": "",
+     "required": false
+    },
+    {
+     "tag": "TEXTAREA",
+     "type": "textarea",
+     "name": "",
+     "ph": "Any special requests or questions?",
+     "required": false
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "name": "terms",
+     "ph": "",
+     "required": false
+    }
+   ],
+   "links": [
+    {
+     "text": "Terms and Conditions",
+     "href": "https://sanjee-surf.com/terms"
+    },
+    {
+     "text": "Privacy Policy",
+     "href": "https://sanjee-surf.com/privacy"
+    }
+   ],
+   "shot": "funnel/walk/11-wizard-5-slot.png"
+  },
+  {
+   "name": "wizard: bottom of the last step, nothing typed",
+   "at": "2026-11-05T09:25:40.610Z",
+   "taps_so_far": 5,
+   "open": true,
+   "rect": {
+    "top": 42,
+    "bottom": 802,
+    "left": 0,
+    "right": 390
+   },
+   "viewport": {
+    "layout_w": 390,
+    "visual_w": 390
+   },
+   "scrollable": false,
+   "text": "Book Your Session\n4\nYour Details\n\nBooking Summary\n\nBeginner Lesson\n\nWednesday, November 11, 2026 at 8:00 AM\n\nTotal: $40\n\nFirst payment (pay now)\n$8\nOn site at Coco Beach\n$32\n\n💵 Please make sure you have enough cash to pay the instructor directly.\n\nName *\nEmail *\nPhone * (for WhatsApp updates)\nSurf Experience\nNever surfed before\nBeginner - Tried a few times\nIntermediate - Can stand up\nAdvanced - Looking to improve\nNotes (optional)\nI agree to the Terms and Conditions and Privacy Policy\nBack\nPay $8 Now\nClose",
+   "buttons": [
+    {
+     "text": "Back",
+     "disabled": false,
+     "top": 745,
+     "bottom": 793,
+     "left": 25,
+     "right": 93
+    },
+    {
+     "text": "Pay $8 Now",
+     "disabled": true,
+     "top": 745,
+     "bottom": 793,
+     "left": 231,
+     "right": 365
+    },
+    {
+     "text": "Close",
+     "disabled": false,
+     "top": 59,
+     "bottom": 75,
+     "left": 357,
+     "right": 373
+    }
+   ],
+   "inputs": [
+    {
+     "tag": "INPUT",
+     "type": "text",
+     "name": "",
+     "ph": "Your name",
+     "required": true
+    },
+    {
+     "tag": "INPUT",
+     "type": "email",
+     "name": "",
+     "ph": "your@email.com",
+     "required": true
+    },
+    {
+     "tag": "INPUT",
+     "type": "tel",
+     "name": "",
+     "ph": "+1 (555) 000-0000",
+     "required": true
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "name": "",
+     "required": false
+    },
+    {
+     "tag": "TEXTAREA",
+     "type": "textarea",
+     "name": "",
+     "ph": "Any special requests or questions?",
+     "required": false
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "name": "terms",
+     "ph": "",
+     "required": false
+    }
+   ],
+   "links": [
+    {
+     "text": "Terms and Conditions",
+     "href": "https://sanjee-surf.com/terms"
+    },
+    {
+     "text": "Privacy Policy",
+     "href": "https://sanjee-surf.com/privacy"
+    }
+   ],
+   "void": "The same frame as the previous step; its screenshot was deleted."
+  },
+  {
+   "name": "lesson card Book Now",
+   "at": "2026-11-05T09:25:43.178Z",
+   "open": true,
+   "rect": {
+    "top": 42,
+    "bottom": 802,
+    "left": 0,
+    "right": 390
+   },
+   "viewport": {
+    "layout_w": 390,
+    "visual_w": 390
+   },
+   "scrollable": false,
+   "text": "Book Your Session\n4\nYour Details\n\nBooking Summary\n\nBeginner Lesson\n\nWednesday, November 11, 2026 at 8:00 AM\n\nTotal: $40\n\nFirst payment (pay now)\n$8\nOn site at Coco Beach\n$32\n\n💵 Please make sure you have enough cash to pay the instructor directly.\n\nName *\nEmail *\nPhone * (for WhatsApp updates)\nSurf Experience\nNever surfed before\nBeginner - Tried a few times\nIntermediate - Can stand up\nAdvanced - Looking to improve\nNotes (optional)\nI agree to the Terms and Conditions and Privacy Policy\nBack\nPay $8 Now\nClose",
+   "buttons": [
+    {
+     "text": "Back",
+     "disabled": false,
+     "top": 745,
+     "bottom": 793,
+     "left": 25,
+     "right": 93
+    },
+    {
+     "text": "Pay $8 Now",
+     "disabled": true,
+     "top": 745,
+     "bottom": 793,
+     "left": 231,
+     "right": 365
+    },
+    {
+     "text": "Close",
+     "disabled": false,
+     "top": 59,
+     "bottom": 75,
+     "left": 357,
+     "right": 373
+    }
+   ],
+   "inputs": [
+    {
+     "tag": "INPUT",
+     "type": "text",
+     "name": "",
+     "ph": "Your name",
+     "required": true
+    },
+    {
+     "tag": "INPUT",
+     "type": "email",
+     "name": "",
+     "ph": "your@email.com",
+     "required": true
+    },
+    {
+     "tag": "INPUT",
+     "type": "tel",
+     "name": "",
+     "ph": "+1 (555) 000-0000",
+     "required": true
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "name": "",
+     "required": false
+    },
+    {
+     "tag": "TEXTAREA",
+     "type": "textarea",
+     "name": "",
+     "ph": "Any special requests or questions?",
+     "required": false
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "name": "terms",
+     "ph": "",
+     "required": false
+    }
+   ],
+   "links": [
+    {
+     "text": "Terms and Conditions",
+     "href": "https://sanjee-surf.com/terms"
+    },
+    {
+     "text": "Privacy Policy",
+     "href": "https://sanjee-surf.com/privacy"
+    }
+   ],
+   "void": "The dialog from the previous step was still open (Escape did not close it), so this tap never reached the card. The card's own path was not walked. Its screenshot was deleted."
+  },
+  {
+   "name": "errors in the page console during this load",
+   "at": "2026-11-05T09:25:43.688Z",
+   "errors": [
+    "Failed to load resource: net::ERR_FAILED",
+    "Failed to load resource: the server responded with a status of 429 ()",
+    "Failed to fetch surf conditions: Error: Edge Function returned a non-2xx status code\n    at https://sanjee-surf.com/assets/index-Dqm5eYLp.js:468:71829",
+    "Failed to load resource: net::ERR_FAILED",
+    "Failed to load resource: net::ERR_FAILED"
+   ]
+  },
+  {
+   "name": "page /surfboard-rental-weligama",
+   "at": "2026-11-05T09:25:55.379Z",
+   "status": 200,
+   "title": "Surfboard Rental Weligama – Prices, Boards & Conditions",
+   "doc_width": 390,
+   "page_height": 17507,
+   "tel": [],
+   "whatsapp": [
+    {
+     "href": "https://wa.me/94774004422",
+     "text": "Reserve on WhatsApp",
+     "top": 480,
+     "h": 48,
+     "visible": true
+    },
+    {
+     "href": "https://wa.me/94774004422",
+     "text": "Reserve on WhatsApp",
+     "top": 16474,
+     "h": 48,
+     "visible": true
+    }
+   ],
+   "mailto": [],
+   "socials": [
+    {
+     "href": "https://instagram.com/sanjeesurf",
+     "text": "",
+     "top": 16786,
+     "h": 40,
+     "visible": true
+    },
+    {
+     "href": "https://youtube.com/@sanjeesurf",
+     "text": "",
+     "top": 16786,
+     "h": 40,
+     "visible": true
+    },
+    {
+     "href": "https://facebook.com/sanjeesurf",
+     "text": "",
+     "top": 16786,
+     "h": 40,
+     "visible": true
+    }
+   ],
+   "sections": [
+    {
+     "re": "message us on Instagram",
+     "found": {
+      "top": 14673,
+      "text": "WhatsApp +94 77 400 4422\nor message us on Instagram",
+      "context": "Location & Hours\nFind the shop in 60 seconds\n\nRight on the sand at Coco Beach, Weligama Bay.\n\nAddress\n\nCoco Beach, Weligama Bay,\nMatara District, Sri Lanka\n\nOpening hours\n\nDaily 06:00 – 18:30\n(Dawn patrol & sunset session)\n\nReservations\n\nWhatsApp +94 77 400 4422\nor message us on Instagram"
+     },
+     "shot": "funnel/walk/20-rental-instagram-line.png"
+    },
+    {
+     "re": "Reserve on WhatsApp",
+     "found": {
+      "top": 16474,
+      "text": "Reserve on WhatsApp",
+      "context": "Sanjee Surf\n\nSURFBOARD RENTAL · WELIGAMA, SRI LANKA\n\nRent the right board for today's wave\n\nSoft-tops, mid-lengths, fishes, shortboards and longboards — from $5 / hour. Honest sizing, free swaps, transparent deposit policy.\n\nReserve on WhatsApp\nSee full pricing\nHome\nSurfboard Rental\n\nIN SHORT\n\n1\nSoft-tops from $5 / hour or $15 / day. Hardboards from $7 / hour or $20 / day.\n2\nFree board swaps any time during a multi-day rental. We size you to today's wave, not last week's.\n3\nRefundable deposit of $50 / $100. ID copy required. Fair-wear dings are always free.\nA board for every wave on the south coast\n\nOur shop sits 30 seconds from the sand at Coco Beach, Weligama. We carry a curated quiver of 40+ boards — from beginner soft-tops to performance shortboards by Channel Islands, JS, Pyzel and local shapers from Galle.\n\nUnlike most rental stands on the strip, we won't hand you the first board o"
+     },
+     "shot": "funnel/walk/20-rental-whatsapp.png"
+    },
+    {
+     "re": "Opening hours",
+     "found": {
+      "top": 14471,
+      "text": "Opening hours",
+      "context": "Location & Hours\nFind the shop in 60 seconds\n\nRight on the sand at Coco Beach, Weligama Bay.\n\nAddress\n\nCoco Beach, Weligama Bay,\nMatara District, Sri Lanka\n\nOpening hours\n\nDaily 06:00 – 18:30\n(Dawn patrol & sunset session)\n\nReservations\n\nWhatsApp +94 77 400 4422\nor message us on Instagram"
+     },
+     "shot": null
+    }
+   ]
+  },
+  {
+   "name": "page /faq",
+   "at": "2026-11-05T09:26:04.513Z",
+   "status": 200,
+   "title": "FAQ | Surf Lessons, Rentals & Safaris – Sanjee Surf",
+   "doc_width": 390,
+   "page_height": 10604,
+   "tel": [],
+   "whatsapp": [
+    {
+     "href": "https://wa.me/94774004422",
+     "text": "WhatsApp Us",
+     "top": 8151,
+     "h": 48,
+     "visible": true
+    }
+   ],
+   "mailto": [
+    {
+     "href": "mailto:sanjee@sanjee-surf.com",
+     "text": "Send Email",
+     "top": 8215,
+     "h": 48,
+     "visible": true
+    }
+   ],
+   "socials": [
+    {
+     "href": "https://instagram.com/sanjeesurf",
+     "text": "",
+     "top": 9883,
+     "h": 40,
+     "visible": true
+    },
+    {
+     "href": "https://youtube.com/@sanjeesurf",
+     "text": "",
+     "top": 9883,
+     "h": 40,
+     "visible": true
+    },
+    {
+     "href": "https://facebook.com/sanjeesurf",
+     "text": "",
+     "top": 9883,
+     "h": 40,
+     "visible": true
+    }
+   ],
+   "sections": [
+    {
+     "re": "WhatsApp \\+94",
+     "found": null,
+     "shot": null
+    }
+   ]
+  },
+  {
+   "name": "page /faq/how-much-does-a-surf-lesson-cost-in-weligama",
+   "at": "2026-11-05T09:26:13.577Z",
+   "status": 200,
+   "title": "How much does a surf lesson cost in Weligama? | Sanjee Surf",
+   "doc_width": 390,
+   "page_height": 2821,
+   "tel": [],
+   "whatsapp": [
+    {
+     "href": "https://wa.me/94774004422",
+     "text": "Ask on WhatsApp",
+     "top": 1174,
+     "h": 48,
+     "visible": true
+    }
+   ],
+   "mailto": [
+    {
+     "href": "mailto:sanjee@sanjee-surf.com",
+     "text": "Email Sanjee",
+     "top": 1238,
+     "h": 48,
+     "visible": true
+    }
+   ],
+   "socials": [
+    {
+     "href": "https://instagram.com/sanjeesurf",
+     "text": "",
+     "top": 2100,
+     "h": 40,
+     "visible": true
+    },
+    {
+     "href": "https://youtube.com/@sanjeesurf",
+     "text": "",
+     "top": 2100,
+     "h": 40,
+     "visible": true
+    },
+    {
+     "href": "https://facebook.com/sanjeesurf",
+     "text": "",
+     "top": 2100,
+     "h": 40,
+     "visible": true
+    }
+   ],
+   "sections": [
+    {
+     "re": "\\$25",
+     "found": null,
+     "shot": null
+    }
+   ]
+  },
+  {
+   "name": "page /faq/cancellation-and-refund-policy",
+   "at": "2026-11-05T09:26:23.550Z",
+   "status": 200,
+   "title": "What is your cancellation and refund policy? | Sanjee Surf",
+   "doc_width": 390,
+   "page_height": 2768,
+   "tel": [],
+   "whatsapp": [
+    {
+     "href": "https://wa.me/94774004422",
+     "text": "Ask on WhatsApp",
+     "top": 1255,
+     "h": 48,
+     "visible": true
+    }
+   ],
+   "mailto": [
+    {
+     "href": "mailto:sanjee@sanjee-surf.com",
+     "text": "Email Sanjee",
+     "top": 1319,
+     "h": 48,
+     "visible": true
+    }
+   ],
+   "socials": [
+    {
+     "href": "https://instagram.com/sanjeesurf",
+     "text": "",
+     "top": 2047,
+     "h": 40,
+     "visible": true
+    },
+    {
+     "href": "https://youtube.com/@sanjeesurf",
+     "text": "",
+     "top": 2047,
+     "h": 40,
+     "visible": true
+    },
+    {
+     "href": "https://facebook.com/sanjeesurf",
+     "text": "",
+     "top": 2047,
+     "h": 40,
+     "visible": true
+    }
+   ],
+   "sections": [
+    {
+     "re": "24 hours",
+     "found": {
+      "top": 454,
+      "text": "Cancellations with 24 or more hours notice get a full deposit refund. Cancellations inside 24 hours forfeit the deposit. Rescheduling with 24+ hours notice is free. Bookings cancelled by us due to uns",
+      "context": "Cancellations with 24 or more hours notice get a full deposit refund. Cancellations inside 24 hours forfeit the deposit. Rescheduling with 24+ hours notice is free. Bookings cancelled by us due to unsafe conditions are fully refunded.\n\nOur policy is designed to be fair to both sides. With 24 or more hours notice you can reschedule for free or cancel and get the deposit back to your original payment method (Stripe takes 5-10 business days). Inside the 24-hour window the deposit is kept as a cancellation fee, since we are usually unable to refill the slot.\n\nIf we have to cancel because of dangerous conditions (very rare, but cyclonic swell or thunderstorms with lightning), you get a full refund or free rescheduling to a later date.\n\nIf you turn up on the day and conditions are smaller or messier than ideal but still safe, we run the lesson. Sri Lanka has waves every day; sometimes the smal"
+     },
+     "shot": "funnel/walk/23-faq-cancellation.png"
+    }
+   ]
+  },
+  {
+   "name": "page /terms",
+   "at": "2026-11-05T09:26:33.437Z",
+   "status": 200,
+   "title": "Terms & Conditions – Sanjee Surf",
+   "doc_width": 390,
+   "page_height": 4696,
+   "tel": [],
+   "whatsapp": [],
+   "mailto": [],
+   "socials": [],
+   "sections": [
+    {
+     "re": "48 hours",
+     "found": {
+      "top": 1833,
+      "text": "24-48 hours before:",
+      "context": "4. Cancellation and Refunds\n4.1 Cancellation by Customer\nMore than 48 hours before: Full refund of the booking fee\n24-48 hours before: 50% refund of the booking fee\nLess than 24 hours before: No refund\nNo-show: No refund\n4.2 Cancellation by Provider\n\nWe reserve the right to cancel or reschedule sessions due to unsafe weather or ocean conditions. In such cases, we will offer an alternative date or a full refund of the booking fee."
+     },
+     "shot": "funnel/walk/24-terms-cancellation.png"
+    }
+   ]
+  },
+  {
+   "name": "page /about",
+   "at": "2026-11-05T09:26:43.237Z",
+   "status": 200,
+   "title": "About Sanjee – Local Surf Instructor in Weligama | Sanjee Surf",
+   "doc_width": 390,
+   "page_height": 5924,
+   "tel": [],
+   "whatsapp": [],
+   "mailto": [],
+   "socials": [
+    {
+     "href": "https://instagram.com/sanjeesurf",
+     "text": "",
+     "top": 5203,
+     "h": 40,
+     "visible": true
+    },
+    {
+     "href": "https://youtube.com/@sanjeesurf",
+     "text": "",
+     "top": 5203,
+     "h": 40,
+     "visible": true
+    },
+    {
+     "href": "https://facebook.com/sanjeesurf",
+     "text": "",
+     "top": 5203,
+     "h": 40,
+     "visible": true
+    }
+   ],
+   "sections": [
+    {
+     "re": "3,000",
+     "found": {
+      "top": 1307,
+      "text": "3,000+",
+      "context": "Sanjee Surf\nHome\nAbout Sanjee\n\nTHE LOCAL BEHIND SANJEE SURF\n\nAyubowan, I'm Sanjee.\n\nI was born in Weligama, learned to surf on a broken board my uncle fixed with resin and hope, and have spent more than two decades in this bay. Today I teach surfers from all over the world — and I still paddle out every single morning.\n\nISA Level 1 Instructor\nCertified Lifeguard\nWeligama Local\n\nSanjee at Weligama Bay, where it all started.\n\n20+\n\nYears surfing\n\n12+\n\nYears teaching\n\n5,000+\n\nLessons given\n\n3,000+\n\nHappy students\n\nMy story\n\nWeligama means \"sandy village\" in Sinhala — and that sandy bottom is exactly why this bay is one of the best places on earth to learn surfing. I caught my first wave here when I was twelve, on a board that had more dings than fiberglass. By sixteen I was showing backpackers where to paddle out. By twenty I was doing it full-time.\n\nOver the years I watched surf schools com"
+     },
+     "shot": "funnel/walk/25-about-students.png"
+    }
+   ]
+  },
+  {
+   "name": "off site: google listing",
+   "at": "2026-11-05T09:26:50.682Z",
+   "url": "https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b7fab:0x3e8ea0f911f62414!8m2!3d5.9603113!4d80.4039507!16s%2Fg%2F11ybcfd3tx!19sChIJq38LS24V4ToRFCT2Efmgjj4?hl=en",
+   "status": 200,
+   "final_url": "https://www.google.com/maps/place/Sanjee+Surf+School,+Kadabaddagama,+Weligama+81700,+Sri+Lanka/@5.9603113,80.4039507,17z",
+   "text": "\n\nSanjee Surf School\n\nOpen in the app\nYour location\n\n\nStreet View\nSanjee Surf School\n5.0\n(13)\nSurf school\n\nDirections\n\nStart\n\nCall\n\nSave\n\nShare\nSee all 51 photos in the app\nContinue\n\nTraffic\n\nTransit\n\nBicycling\n\nSatellite\n\nTerrain\n\nWildfires\n\nAir Quality\n\nMap movement controls\n\nReal-time location sharing\n\nYour contributions\n\nYour places\nSettings\nLanguage\nHelp\nMy Maps\nSend Product Feedback\n\tIsrael\tEDIT\n\tUse the Google Maps app\nGoogle Maps is better on the app\nReal-time.Get turn-by-turn navigation & live traffic data\nFaster.See arrival times & find the best route\nPersonalized.Get notified about delays & disruptions\nContinue\nGo back to web",
+   "links": [
+    "tel:+94774004422"
+   ],
+   "shot": "funnel/walk/30-google-listing-fold.png"
+  },
+  {
+   "name": "off site: instagram (footer link)",
+   "at": "2026-11-05T09:26:58.751Z",
+   "url": "https://instagram.com/sanjeesurf",
+   "status": 200,
+   "final_url": "https://www.instagram.com/sanjeesurf",
+   "text": "Instagram\nLog in\nOpen app\nSorry, this page isn't available.\nThe link you followed may be broken, or the page may have been removed. Go back to Instagram.\nMeta\nAbout\nBlog\nJobs\nHelp\nAPI\nPrivacy\nTerms\nLocations\nPopular\nMeta AI\nMuse\nThreads\nContact uploading and non-users\nMeta Verified\nSettlement agreements\nEnglish (UK)\nAfrikaans\nالعربية\nČeština\nDansk\nDeutsch\nΕλληνικά\nEnglish\nEnglish (UK)\nEspañol (España)\nEspañol\nفارسی\nSuomi\nFrançais\nעברית\nBahasa Indonesia\nItaliano\n日本語\n한국어\nBahasa Melayu\nNorsk\nNederlands\nPolski\nPortuguês (Brasil)\nPortuguês (Portugal)\nРусский\nSvenska\nภาษาไทย\nFilipino\nTürkçe\n中文(简体)\n中文(台灣)\nবাংলা\nગુજરાતી\nहिन्दी\nHrvatski\nMagyar\nಕನ್ನಡ\nമലയാളം\nमराठी\nनेपाली\nਪੰਜਾਬੀ\nසිංහල\nSlovenčina\nதமிழ்\nత",
+   "links": [],
+   "shot": "funnel/walk/31-instagram.png"
+  },
+  {
+   "name": "off site: facebook (footer link)",
+   "at": "2026-11-05T09:27:06.743Z",
+   "url": "https://facebook.com/sanjeesurf",
+   "status": 200,
+   "final_url": "https://m.facebook.com/login/?next=https%3A%2F%2Fm.facebook.com%2Fsanjeesurf%3Fwtsid%3Drdr_0eUlvQXgr6JnS4KKb",
+   "text": "Facebook\nGet Facebook for iOS and browse faster.\nEnglish (UK)\nMobile number or email address\nPassword\nLog in\nForgotten password?\nCreate new account\nAbout\nHelp\nMore",
+   "links": [],
+   "shot": "funnel/walk/32-facebook.png"
+  },
+  {
+   "name": "off site: youtube (footer link)",
+   "at": "2026-11-05T09:27:13.970Z",
+   "url": "https://youtube.com/@sanjeesurf",
+   "status": 404,
+   "final_url": "https://m.youtube.com/@sanjeesurf",
+   "text": "",
+   "links": [],
+   "shot": "funnel/walk/33-youtube.png"
+  }
+ ],
+ "width_note": "Width on load is 417 px on a 390 px screen (home first load: doc_width 417, vp.w 417). In the wizard steps, after the page was scrolled, layout_w is 390, and the harvester's full-page shot taken after scrolling (assets/old-site-mobile.png) is 390 px wide. Other pages load at 390.",
+ "home_loads_observed": [
+  {
+   "run": "tools/funnel.mjs, first page of its crawl",
+   "started_about": "2026-11-05T09:05:50Z",
+   "surf_conditions_refused_429": 1,
+   "toast_on_first_screen": true,
+   "evidence": "funnel/landing-fold.png; funnel.json console_errors"
+  },
+  {
+   "run": "walk.mjs, first run (stopped by a bug in the script at the date step, then fixed; its log was overwritten)",
+   "started_about": "2026-11-05T09:10:02Z",
+   "surf_conditions_ok": 41,
+   "surf_conditions_refused_429": 1,
+   "first_call": "2026-11-05T09:10:02.699Z",
+   "refused_at": "2026-11-05T09:10:08.248Z",
+   "toast_on_first_screen": true
+  },
+  {
+   "run": "walk.mjs, this log",
+   "started_about": "2026-11-05T09:24:50Z",
+   "surf_conditions_ok": 32,
+   "surf_conditions_refused_429": 1,
+   "first_call": "2026-11-05T09:24:50.881Z",
+   "refused_at": "2026-11-05T09:24:55.759Z",
+   "toast_on_first_screen": true,
+   "toast_seen_ms_after_load": [
+    6046,
+    10870
+   ]
+  }
+ ],
+ "surf_loop_cause": "assets/index-Dqm5eYLp.js: the fetch callback depends on the data state (useCallback(..., [data, toast])) and an effect runs it whenever the callback changes (useEffect(() => { fetch(); ... }, [fetch])). Each success stores a new object, so the callback changes and it fetches again, until the server answers 429. Then the catch branch shows the toast, because data is already set, and sets the error that shows 'Live data temporarily unavailable'.",
+ "extra_loads": [
+  {
+   "url": "https://sanjee-surf.com/faq/how-much-does-a-surf-lesson-cost-in-weligama",
+   "why": "the walk's search for '$25' missed: the page writes '25 USD'. Loaded twice more on its own, once to read it, once for funnel/walk/22-faq-lesson-price.png"
+  }
+ ]
+}
