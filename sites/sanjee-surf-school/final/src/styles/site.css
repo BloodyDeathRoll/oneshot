@@ -41,6 +41,7 @@ input{caret-color:var(--book)}
 .skip{position:absolute;left:12px;top:-60px;z-index:30;padding:10px 16px;border-radius:12px;background:#fff;font-weight:600}
 .skip:focus{top:12px}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.sep{font-family:Arial,sans-serif;font-weight:400;opacity:.45;padding-inline:.1em}
 .script{font:400 clamp(36px,3.9vw,54px)/1.12 var(--script);color:var(--ink)}
 
 /* the one action, in the one colour */

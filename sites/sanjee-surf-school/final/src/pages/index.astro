@@ -71,6 +71,8 @@ const TILE_IMG = {
   advanced: small(P('tile-adv-1'), P('tile-adv-2')),
   unsure: P('tile-unsure-tall') ? `<picture><source media="(max-width:900px)" srcset="${P('tile-unsure-1').src} ${P('tile-unsure-1').w}w, ${P('tile-unsure-2').src} ${P('tile-unsure-2').w}w" sizes="92vw" width="${P('tile-unsure-2').w}" height="${P('tile-unsure-2').h}"><img src="${P('tile-unsure-tall').src}" width="${P('tile-unsure-tall').w}" height="${P('tile-unsure-tall').h}" alt="" loading="lazy" decoding="async"></picture>` : '',
 }
+/* in Manrope a | reads as a capital I; the text stays "a | b" */
+const SEP = '<span class="sep">|</span>'
 const cards = (S.lessons ?? []).length ? `<ul class="cards">${S.lessons.map((l) => {
   const details = lessonDetails(l)
   const unit = l.unit === 'per_lesson' ? ` <span class="per">${e(L.per_lesson)}</span>` : ''
@@ -78,7 +80,7 @@ const cards = (S.lessons ?? []).length ? `<ul class="cards">${S.lessons.map((l) 
   return `<li class="card" id="${id}" data-lesson="${e(l.label)}" data-ask="${e(lessonAsk(l.label))}" data-levels="${(l.level ?? []).join(' ')}" data-price="${e(l.currency)} ${l.price}">
       <span class="foryou" aria-hidden="true"><i></i>${e(L.for_you)}</span>
       <h3>${e(l.label)}</h3>
-      <p class="details">${details.map(e).join(' | ')}</p>
+      <p class="details">${details.map(e).join(` ${SEP} `)}</p>
       <p class="price">${e(l.currency)} ${l.price}${unit}</p>
       <p class="incl">${e(l.includes)}</p>
       <div class="card-actions">
@@ -89,7 +91,7 @@ const cards = (S.lessons ?? []).length ? `<ul class="cards">${S.lessons.map((l) 
 }).join('')}</ul>` : ''
 
 const r0 = S.ratings?.[0]
-const rating = (cls = '') => (r0 ? `<a class="rating ${cls}" href="${e(r0.url)}"><b>${r0.score}/${r0.scale}</b><span class="r-t"><span>${e(t(L.reviews, { n: r0.count }))}</span><i> | </i><span>${e(t(L.as_of, { date: date(r0.capturedAt) }))}</span></span></a>` : '')
+const rating = (cls = '') => (r0 ? `<a class="rating ${cls}" href="${e(r0.url)}"><b>${r0.score}/${r0.scale}</b><span class="r-t"><span>${e(t(L.reviews, { n: r0.count }))}</span><i> ${SEP} </i><span>${e(t(L.as_of, { date: date(r0.capturedAt) }))}</span></span></a>` : '')
 
 const who = block('intro', 0), lessonsB = block('offer', 0), lessonsP = paras(lessonsB)
 const where = `<section class="where">
@@ -207,7 +209,7 @@ const feature = fw ? `<section class="feature" aria-label="${e(S.featureLine)}">
 </section>` : ''
 
 const about = block('about', 0), s1 = P('sanjee-1'), s2 = P('sanjee-2')
-const names = (S.languagesSpoken ?? []).map((x) => L.language_names[x] ?? x).join(' | ')
+const names = (S.languagesSpoken ?? []).map((x) => e(L.language_names[x] ?? x)).join(` ${SEP} `)
 /* credentials and languages sit with Sanjee only */
 const sanjee = `<section class="sanjee" id="sanjee">
   ${s2 ? `<div class="print-wrap" data-parallax>
@@ -216,14 +218,14 @@ const sanjee = `<section class="sanjee" id="sanjee">
   <div class="sanjee-copy">
     ${H2(about)}
     ${ps(paras(about), 'say')}
-    <ul class="creds">${(S.credentials ?? []).map((c) => `<li>${e(c.label)} | ${e(c.issuer)}</li>`).join('')}${names ? `<li>${e(t(L.languages, { list: names }))}</li>` : ''}</ul>
+    <ul class="creds">${(S.credentials ?? []).map((c) => `<li>${e(c.label)} ${SEP} ${e(c.issuer)}</li>`).join('')}${names ? `<li>${t(e(L.languages), { list: names })}</li>` : ''}</ul>
   </div>
 </section>`
 
 const T = S.testimonials ?? []
 const quotes = T.length ? `<section class="quotes-sec" aria-label="${e(L.reviews_aria)}">
   <div class="quotes-head">${rating('rating-big')}</div>
-  <ul class="quotes" tabindex="0" aria-label="${e(L.reviews_row_aria)}">${T.map((q) => `<li class="quote"><blockquote>${e(q.quote)}</blockquote><p class="by"><b>${e(q.author)}</b> | ${e(L.platform)}</p></li>`).join('')}</ul>
+  <ul class="quotes" tabindex="0" aria-label="${e(L.reviews_row_aria)}">${T.map((q) => `<li class="quote"><blockquote>${e(q.quote)}</blockquote><p class="by"><b>${e(q.author)}</b> ${SEP} ${e(L.platform)}</p></li>`).join('')}</ul>
   <div class="dots needs-js">${T.map((_, i) => `<button type="button" class="dot" aria-label="${e(t(L.review_n, { i: i + 1, n: T.length }))}"><i></i></button>`).join('')}</div>
 </section>` : ''
 
@@ -299,11 +301,11 @@ const footer = `<footer class="foot" id="book">
   ${P1(ADDRESS, 'foot-addr')}
 </footer>`
 
-const bar = `<div class="bar">
-  <a class="bar-msg needs-js" href="#message" tabindex="-1" aria-label="${e(L.your_message)}"><span id="bar-text"></span></a>
+const bar = `<aside class="bar" aria-label="Quick contact">
+  <a class="bar-msg needs-js" href="#message" tabindex="-1"><span class="vh">${e(L.your_message)}: </span><span id="bar-text"></span></a>
   ${btn()}
   ${PHONE ? `<a class="ico ico-l" href="tel:${e(PHONE)}" aria-label="${e(t(L.call_aria, { phone: PHONE_PRINT }))}">${ICON.phone}</a>` : ''}
-</div>`
+</aside>`
 
 /* 4h: name first for the brand query (base.md 6), then what and where; the name alone if that passes 60 characters */
 const title = `${BIZ} | ${HERO_LINE}`.length <= 60 ? `${BIZ} | ${HERO_LINE}` : BIZ

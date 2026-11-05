@@ -105,9 +105,13 @@
     ['R', 'D', 'O', 'K', 't', 'g', 'Q'].forEach(function (k) { U[k] = gl.getUniformLocation(pr, k); });
 
     /* which crop of the photograph the browser chose: x y w h as fractions of the whole image */
-    var tall = /tall/.test(img.currentSrc || img.src);
-    var k = (stage.getAttribute(tall ? 'data-crop-tall' : 'data-crop-wide') || '0 0 1 1').split(' ').map(Number);
-    gl.uniform4f(U.K, k[0], k[1], k[2], k[3]);
+    var k;
+    function crop() {
+      var tall = /tall/.test(img.currentSrc || img.src);
+      k = (stage.getAttribute(tall ? 'data-crop-tall' : 'data-crop-wide') || '0 0 1 1').split(' ').map(Number);
+      gl.uniform4f(U.K, k[0], k[1], k[2], k[3]);
+    }
+    crop();
 
     var dbg = gl.getExtension('WEBGL_debug_renderer_info');
     var soft = dbg && /swiftshader|llvmpipe|software/i.test(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL));
@@ -119,7 +123,8 @@
 
     function size() {
       var W = stage.clientWidth, H = stage.clientHeight;
-      if (!W || !H) return;
+      /* no photograph yet: a rotation can swap the crop, and the load below sizes it */
+      if (!W || !H || !img.naturalWidth) return;
       var iw = img.naturalWidth, ih = img.naturalHeight, s = Math.max(W / iw, H / ih);
       var dw = iw * s, dh = ih * s;
       var pos = getComputedStyle(img).objectPosition.split(' ').map(parseFloat);
@@ -171,6 +176,16 @@
     document.addEventListener('visibilitychange', go);
     calm.addEventListener('change', function () { if (calm.matches) stop(); });
     cv.addEventListener('webglcontextlost', stop);
+    /* a rotation across the picture's media switch loads the other crop: same photograph, new coordinates */
+    img.addEventListener('load', function () {
+      if (dead) return;
+      try { gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img); }
+      catch (e) { stop(); return; }
+      crop();
+      size();
+      gl.drawArrays(gl.TRIANGLES, 0, 3); /* resizing clears the canvas: no blank frame before the next one */
+      go();
+    });
     go();
     };
   }

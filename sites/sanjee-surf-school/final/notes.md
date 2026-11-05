@@ -1,6 +1,6 @@
 # Sanjee Surf School, final: "Where you start"
 
-Station 4g, designer 0.7.1, run `2026-10-midigama-01`. A port of `mockups/interactive` (picked by Alon at gate b, ledger `mocked → picked`). Markup, class names, CSS and JS are the mockup's; `src/scripts/swell.js` is byte-identical. No CMS, no tenant, nothing seeded in Payload: that is station 8.
+Station 4g, designer 0.7.1, run `2026-10-midigama-01`. A port of `mockups/interactive` (picked by Alon at gate b, ledger `mocked → picked`). Markup, class names, CSS and JS are the mockup's; `src/scripts/swell.js` was byte-identical until the patch below, whose rotation fix leaves the shader and the motion as they were. No CMS, no tenant, nothing seeded in Payload: that is station 8.
 
 ## Build
 
@@ -27,6 +27,15 @@ Not in the brief, none of it visible at rest:
 - `elementtiming="hero"` on the hero `<img>`, so the critics can read the real hero paint (the tool's LCP names the H1).
 - The swell runs only on `img-018.webp`. Its horizon and shoreline are measured on that photograph (schema v0.10: never run a set-piece on another photograph's coordinates), so any other hero stays a still. Tested.
 - Empty modules render nothing. With no WhatsApp number the booking buttons become the phone and the message panel hides. Tested with an empty document and with a swapped hero.
+
+## Patch after critique (defects only, 2026-11-05)
+
+- Phone message link: `aria-label` removed, a `.vh` "Your message: " before `#bar-text`, so the name holds the visible text. axe's serious `label-content-name-mismatch` is gone.
+- Phone bar: now `<aside aria-label="Quick contact">`, still a child of `body`. axe's `region` is gone. The label is written in `index.astro`, not `labels.json`.
+- Swell: `size()` returns while `naturalWidth` is 0. On the image's `load` it re-uploads the texture, re-reads the crop and sizes again, so it survives a rotation across the crop switch. Shader values and motion unchanged. Tested in Chromium with software GL in phone emulation: not on a real phone.
+- `|` in the lesson details, the rating, the languages, the credentials and the review bylines is now `.sep` (13 on the page). The text is unchanged. `.sep` measures 2.22 to 2.79:1 against its background.
+- Separators left as `|` in Manrope: "Bodyboard | per day" in the extras and the fit chips built in `site.js`, neither on the patch's list. Messages, `llms.txt`, `robots.txt` and the JSON-LD are byte-identical.
+- Visible change beyond the bars: the two rating pills are 2.6 and 2.8 px wider at 1440. Page height is unchanged at 390 and 1440.
 
 ## Port comparison
 
@@ -202,7 +211,7 @@ Template words, none a claim: the labels in `src/lib/labels.json`, unchanged fro
 
 As in `mockups/interactive/notes.md`, now through `src/tenant/media/` and `public/photos/`: img-018, img-005, img-006, img-009, img-012, img-007, img-014, img-002, all business-owned, none of them stock. `img-010`, review photos and `usable: false` images are out. Alts for img-005 and img-012 are new and not shown on the page (the tiles' `alt` stays empty, labelled by their text). **Owner items:** img-007's provenance, img-005's identifiable people.
 
-Recipe: `scripts/make-media.sh`, `# media:` headers for `src/tenant/media/*` and `public/photos/*`. `tools/media.mjs` not run, so `media/sanjee-surf-school.tsv` has no entry for these yet.
+Recipe: `scripts/make-media.sh`, `# media:` headers for `src/tenant/media/*` and `public/photos/*`. `media/sanjee-surf-school.tsv` lists them: all 8 and all 22 files.
 
 ## gaps
 
@@ -213,4 +222,4 @@ No video, no forecast, no hours, no cancellation, no reply time, no deposit amou
 - **Video path not built.** Base.md and the schema expect the template to render `heroVideo` when set. Decided against for this site ("no video", Alon) and the slot logic does not shift photos as the schema asks. If a client supplies video at station 8, the hero needs it added.
 - **Rubric's photograph rule:** img-018 clears ≥ 1920 px by its long edge only, as recorded at 4e. Unchanged. `build-mockup` has no `role: "bleed"` input for this hand-built port, so hard constraint 7 is measured by `check-design` (passes), and the hero draws above 1440 px upscaled, as in the mockup.
 - **Hard constraint 5:** not re-checked. The port changes nothing a visitor would compare, and I did not open the sibling mockups; `concepts.md` carries the divergence table.
-- **Critics' items left as they were, because the brief says port and limited the fixes:** chips below the fold on a laptop after a tile click; the swell not re-reading its crop after a rotation; 2× phones fetching the larger tile; ink title near yellow cloud at 640 to 700 px; "Not sure" offering only "Your message"; chart labels 13 px on a phone; 228 px of chips and bar after a two-lesson tile on a phone.
+- **Critics' items left as they were, because the brief says port and limited the fixes:** chips below the fold on a laptop after a tile click; 2× phones fetching the larger tile; ink title near yellow cloud at 640 to 700 px; "Not sure" offering only "Your message"; chart labels 13 px on a phone; 228 px of chips and bar after a two-lesson tile on a phone.
