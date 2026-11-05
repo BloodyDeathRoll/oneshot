@@ -1,42 +1,34 @@
 {
  "slug": "sanjee-surf-school",
  "variant": "unique",
- "measured_at": "2026-11-05T11:32:14.838Z",
+ "measured_at": "2026-11-05T12:33:24.110Z",
  "first_load": {
-  "requests": 10,
+  "requests": 7,
   "hosts": [
-   "fonts.gstatic.com",
-   "localhost:8980"
+   "localhost:9335",
+   "fonts.gstatic.com"
   ],
   "third_party_hosts": [
    "fonts.gstatic.com"
   ],
-  "bytes_total": 314758,
-  "bytes_html": 77740,
+  "bytes_total": 302419,
+  "bytes_html": 81251,
   "bytes_js": 0,
   "bytes_css": 0,
-  "bytes_fonts": 38308,
-  "bytes_images": 198710,
-  "largest_image_bytes": 57210,
-  "lcp_ms": 1604,
-  "cls": 0.0053,
-  "dcl_ms": 1100
+  "bytes_fonts": 35920,
+  "bytes_images": 185248,
+  "largest_image_bytes": 81898,
+  "lcp_ms": 1640,
+  "cls": 0,
+  "dcl_ms": 1334
  },
  "scroll": {
   "early": {
-   "cls": 0.0067,
+   "cls": 0.0048,
    "shifts": [
     {
-     "value": 0.0013,
-     "at_ms": 767,
-     "y": 0,
-     "sources": [
-      "a.rate-line"
-     ]
-    },
-    {
-     "value": 0.0049,
-     "at_ms": 953,
+     "value": 0.0048,
+     "at_ms": 891,
      "y": 0,
      "sources": [
       "#text"
@@ -84,7 +76,7 @@
   "focus_returned": true
  },
  "a11y": {
-  "images": 12,
+  "images": 11,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 0,
   "tapables": 42,
@@ -130,9 +122,9 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 7716,
+  "text_length": 7740,
   "booking_links_reachable": 5,
-  "visible_images": 10
+  "visible_images": 11
  },
  "reduced_motion": {
   "canvases": 1,

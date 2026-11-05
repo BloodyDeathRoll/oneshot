@@ -1,4 +1,4 @@
-/* The set: a slow swell passes under the business's own prints, right to left, about every 12 s.
+/* The set: a slow swell lifts the business's own prints in turn, right to left, about every 8.4 s. The prints ride it nearly rigid.
    Hand-written WebGL, no library. The DOM <img>s stay the true content and the LCP; the canvas takes over when ready.
    ?still = static prints. ?nogl = the CSS fallback. ?swell=0..1 freezes the swell at that phase (for looking at it). */
 (function () {
@@ -45,11 +45,26 @@
     });
   }
 
-  /* ---- phone menu: closes on a choice and on a tap outside ---- */
+  /* ---- the blurred placeholder under the bay goes once the real picture is in ---- */
+  var ground = document.querySelector('.ground');
+  if (ground) {
+    var grounded = function () { ground.closest('.hero').classList.add('loaded'); };
+    if (ground.complete && ground.naturalWidth) grounded(); else ground.addEventListener('load', grounded, { once: true });
+  }
+
+  /* ---- the header sits on the sky at the top and turns solid as soon as anything could pass under it ---- */
+  var top = document.querySelector('.top');
+  if (top) {
+    var solid = function () { top.classList.toggle('solid', scrollY > 4); };
+    addEventListener('scroll', solid, { passive: true }); solid();
+  }
+
+  /* ---- phone menu: closes on a choice, on a tap outside and on Esc ---- */
   var menu = document.querySelector('.menu');
   if (menu) {
     menu.addEventListener('click', function (e) { if (e.target.closest('a')) menu.open = false; });
     document.addEventListener('pointerdown', function (e) { if (menu.open && !menu.contains(e.target)) menu.open = false; }, { passive: true });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.open) { menu.open = false; menu.querySelector('summary').focus(); } });
   }
 
   /* ---- the strip: drag with momentum for a mouse; touch and trackpad scroll natively ---- */
@@ -117,10 +132,10 @@
     };
     var closeSheet = function () {
       if (closing || !sheet.open) return;
-      if (reduce) { sheet.close(); return; }
+      if (reduce) { sheet.close(); sheet.style.transform = ''; return; }
       closing = true;
       sheet.classList.add('closing');
-      setTimeout(function () { sheet.close(); sheet.classList.remove('closing'); closing = false; }, 190);
+      setTimeout(function () { sheet.close(); sheet.classList.remove('closing', 'back'); sheet.style.transform = ''; closing = false; }, 190);
     };
     document.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('[data-open-drawer]');
@@ -128,6 +143,27 @@
       e.preventDefault();
       openSheet(+a.dataset.lesson || 0, a);
     });
+    var drag = sheet.querySelector('.sh-drag');
+    if (drag) {
+      var dy = 0, y0 = 0, t0 = 0, held = false;
+      drag.addEventListener('pointerdown', function (e) {
+        if (e.target.closest('button')) return;
+        held = true; y0 = e.clientY; t0 = e.timeStamp; dy = 0;
+        sheet.classList.remove('back'); drag.setPointerCapture(e.pointerId);
+      });
+      drag.addEventListener('pointermove', function (e) {
+        if (!held) return;
+        dy = e.clientY - y0;
+        sheet.style.transform = 'translateY(' + (dy > 0 ? dy : dy * .15) + 'px)';   /* friction upward, not a wall */
+      });
+      var drop = function (e) {
+        if (!held) return; held = false;
+        var v = dy / Math.max(1, e.timeStamp - t0);
+        if (dy > 120 || (dy > 12 && v > .5)) closeSheet();
+        else { sheet.classList.add('back'); sheet.style.transform = ''; }
+      };
+      drag.addEventListener('pointerup', drop); drag.addEventListener('pointercancel', drop);
+    }
     form.addEventListener('submit', function (e) { e.preventDefault(); closeSheet(); });
     sheet.addEventListener('cancel', function (e) { e.preventDefault(); closeSheet(); });   /* Esc */
     sheet.addEventListener('click', function (e) { if (e.target === sheet) { var r = sheet.getBoundingClientRect(); if (e.clientY < r.top || e.clientX < r.left || e.clientX > r.right) closeSheet(); } });
@@ -160,12 +196,13 @@
     'void main(){',
     ' vec2 r=a*(uRect.zw+2.*uPad)-uPad; vec2 p=uRect.xy+r;',
     ' vec2 c=uRect.xy+uRect.zw*.5;',
-    ' float H=hgt(p); float dH=(hgt(p+vec2(5.,0.))-hgt(p-vec2(5.,0.)))/10.;',
-    /* paper: every vertex rides its own height, and closer means a little larger about the print's centre */
-    ' float s=1.+H*.0011;',
-    ' vec2 q=c+(p-c)*s; q.y-=H+uLift;',
-    ' if(uShadow>.5){ q.y+=10.+H*.75+uLift; q.x+=H*.1; }',
-    ' vUv=(a*(uRect.zw+2.*uPad)-uPad)/uRect.zw; vShade=dH; vH=H+uLift; vPx=r;',
+    /* a print rides as a body: height and tilt are read at its centre, and only a trace of the local curve is left at its edges */
+    ' float H=hgt(c); float sl=(hgt(c+vec2(40.,0.))-hgt(c-vec2(40.,0.)))/80.;',
+    ' float t=clamp(sl*.75,-.022,.022); float cs=cos(t), sn=sin(t);',
+    ' vec2 o=p-c; vec2 q=c+vec2(o.x*cs-o.y*sn,o.x*sn+o.y*cs)*(1.+H*.0007);',
+    ' q.y-=H+uLift+(hgt(p)-H)*.14;',
+    ' if(uShadow>.5){ q.y+=10.+H*1.15+uLift; q.x+=H*.25; }',
+    ' vUv=r/uRect.zw; vShade=sl; vH=H+uLift; vPx=r;',
     ' vec2 ndc=q/uRes*2.-1.; gl_Position=vec4(ndc.x,-ndc.y,0.,1.);',
     '}'
   ].join('\n');
@@ -175,7 +212,7 @@
     'uniform sampler2D uTex; uniform vec4 uRect; uniform float uShadow,uAmp;',
     'void main(){',
     ' if(uShadow>.5){',
-    '  float blur=46.+vH*1.1; vec2 d=abs(vPx-uRect.zw*.5)-uRect.zw*.5+blur*.32;',
+    '  float blur=46.+vH*2.2; vec2 d=abs(vPx-uRect.zw*.5)-uRect.zw*.5+blur*.32;',
     '  float sd=length(max(d,0.))+min(max(d.x,d.y),0.);',
     '  float al=(1.-smoothstep(-blur*.6,blur*.9,sd))*(.40-.12*clamp(vH/max(uAmp,1.),0.,1.));',
     '  gl_FragColor=vec4(.102,.133,.188,1.)*al; return;',
@@ -183,7 +220,7 @@
     ' vec2 e=min(vPx,uRect.zw-vPx); float al=clamp(min(e.x,e.y)+.5,0.,1.);',
     ' vec3 col=texture2D(uTex,vUv).rgb;',
     /* the face of the swell catches the light, the back falls into shade */
-    ' col*=1.+vShade*.22;',
+    ' col*=1.+vShade*.9;',
     ' gl_FragColor=vec4(col,1.)*al;',
     '}'
   ].join('\n');
@@ -218,8 +255,8 @@
   }
   try { setup(); } catch (e) { if (q.has('debug')) console.error(e); set.classList.add('bob'); return; }
 
-  /* back row rides less than the front row, as swell does further out */
-  var DEPTH = { 'p-009': .62, 'p-018': .55, 'p-006': .62, 'p-002': 1, 'p-007': 1.15 };
+  /* the smaller print is further out and rides a little less */
+  var DEPTH = { 'p-006': .8, 'p-007': 1 };
   var prints = [].slice.call(set.querySelectorAll('[data-print]')).filter(function (m) { return m.getBoundingClientRect().width > 2; }).map(function (m) {
     return { el: m, tex: null, rect: [0, 0, 0, 0], lift: 0, liftTo: 0, depth: DEPTH[m.className.split(' ')[1]] || 1, z: +getComputedStyle(m).zIndex || 0 };
   }).sort(function (a, b) { return a.z - b.z; });   /* the same stacking as the CSS layout */
@@ -248,9 +285,9 @@
     p.tex = t;
   }
 
-  var AMP = phone ? 15 : 26, WID = phone ? 170 : 290;
+  var AMP = phone ? 10 : 12, WID = phone ? 210 : 420;
   function AMP_() { return AMP; }
-  var PERIOD = 12000, PASS = 5600;
+  var PERIOD = 8400, PASS = 5600;
   var frozen = q.has('swell') ? parseFloat(q.get('swell')) : null;
   var startAt = 0, front = 1e6, amp = 0, damp = 1, raf = 0, inView = true, ready = false, timer = 0;
   if (frozen !== null) { amp = AMP_(); front = 0; }

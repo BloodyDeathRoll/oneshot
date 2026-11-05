@@ -31,7 +31,7 @@ def btn2(href, icon, label, extra=''):
     return f'<a class="btn2" href="{E(href)}"{extra}>{icon}<span>{E(label)}</span></a>'
 
 def rate_full():
-    return f'<a class="rate-full" href="{E(R["url"])}" rel="noopener"><b>{E(R_SCORE)}</b><span>{E(R_COUNT)}<br>{E(R_DATE)}</span></a>'
+    return f'<a class="rate-full" href="{E(R["url"])}" rel="noopener"><b>{E(R_SCORE)}</b><span>{E(R_COUNT)}<br>{E(R_ASOF)}</span></a>'
 
 # ---------------------------------------------------------------- B. the shallows: lessons
 def details(l):
@@ -41,7 +41,9 @@ def details(l):
         parts = [l['groupSize'], ', '.join(LEVEL[x] for x in l['level']).replace('Beginner, Intermediate, Advanced', 'Beginner, intermediate, advanced')]
     else:                                 # Week Intensive: level is null, so no level words; sessions and hours stay together
         parts = [l['groupSize']]
-    parts.append(f"{l['durationMin'] // 60} hours")
+    hours = f"{l['durationMin'] // 60} hours"
+    # "each" is the one template word outside en.json (coordinator, round 2): dossier lessons[2] says 5 private 2-hour sessions
+    parts.append(hours + ' each' if l['label'] == 'Week Intensive' else hours)
     return ' | '.join(parts)
 
 def lesson(i, l):
@@ -61,8 +63,8 @@ def lesson(i, l):
 
 shallows = f'''<section class="shallows" id="book">
  <div class="sh-top">
+  <p class="lead">{E(C['tagline'])}</p>
   <div class="who">
-   <p class="lead">{E(C['tagline'])}</p>
    <h2>{E(C['copyBlocks'][0]['heading'])}</h2>
    {paras(B['Who we teach'])}
   </div>
@@ -110,7 +112,7 @@ for dur in ORDER:
     note = f'<p class="note">{E(s["note"])}</p>' if s['note'] else ''
     cards += f'<li class="card"><h3>{E(dur)}</h3>{rate_row("Soft-top", s)}{rate_row("Hardboard", h)}{note}</li>'
 bb = next(r for r in C['rentals'] if r['label'] == 'Bodyboard')
-cards += f'<li class="card"><h3>{E(bb["label"])}</h3>{rate_row("Bodyboard", bb)}</li>'
+cards += f'<li class="card"><h3>{E(bb["label"])}</h3>{rate_row("", bb)}</li>'
 buy = ''.join(f'<div class="rr buy"><span>{E(r["label"])}</span><b>{E(money(r["price"], r["currency"]))}</b></div>' for r in BUY)
 cards += f'<li class="card">{buy}</li>'
 
@@ -129,8 +131,8 @@ boards = f'''<section class="boards" id="boards">
 # ---------------------------------------------------------------- the silver band
 band = f'''<section class="band" aria-label="{E(C['featureLine'])}">
  <picture>
-  <source media="(max-width: 759px)" srcset="img/band-img-020-phone.webp" width="{webp_size('band-img-020-phone')[0]}" height="{webp_size('band-img-020-phone')[1]}">
-  <img src="img/band-img-020.webp" width="{webp_size('band-img-020')[0]}" height="{webp_size('band-img-020')[1]}" alt="A pale sun over a silver sea, with low waves running in to wet sand." loading="lazy" decoding="async">
+  <source media="(max-width: 759px)" srcset="img/band-img-018-phone.webp" width="{webp_size('band-img-018-phone')[0]}" height="{webp_size('band-img-018-phone')[1]}">
+  <img src="img/band-img-018.webp" width="{webp_size('band-img-018')[0]}" height="{webp_size('band-img-018')[1]}" alt="An orange sunset over lines of breaking waves, with the small figures of surfers in the water." loading="lazy" decoding="async">
  </picture>
  <p>{E(C['featureLine'])}</p>
 </section>'''
@@ -138,7 +140,7 @@ band = f'''<section class="band" aria-label="{E(C['featureLine'])}">
 # ---------------------------------------------------------------- D. Sanjee and what people say
 LANG = {'en': 'English', 'si': 'Sinhala'}
 creds = ' | '.join(f"{c['label']}, {c['issuer']}" for c in C['credentials'])
-langs = ', '.join(LANG[x] for x in C['languagesSpoken'])
+langs = 'Languages: ' + ', '.join(LANG[x] for x in C['languagesSpoken'])
 quotes = ''.join(f'<figure class="q"><blockquote>{E(t["quote"])}</blockquote><figcaption>{E(t["author"])} | Google</figcaption></figure>' for t in C['testimonials'])
 dots = ''.join(f'<button class="dot" type="button" aria-label="Review {i + 1}"></button>' for i in range(len(C['testimonials'])))
 sanjee = f'''<section class="sanjee" id="sanjee">
@@ -153,7 +155,7 @@ sanjee = f'''<section class="sanjee" id="sanjee">
  </div>
  <div class="says">
   <div class="says-head">{rate_full()}</div>
-  <div class="masonry" id="quotes" role="group" aria-label="Google reviews">{quotes}</div>
+  <div class="masonry" id="quotes" tabindex="0" role="group" aria-label="Google reviews">{quotes}</div>
   <div class="dots" id="qdots">{dots}</div>
  </div>
 </section>'''
@@ -168,6 +170,7 @@ waves = f'''<section class="outside" id="waves">
   <div class="o-prints">
    {pic('print-img-012', 500, 'Tall palms and a sandy path along a green, with beach stalls and clean lines of swell on a blue sea behind.', 'pr o12')}
    {pic('print-img-014', 440, 'Thatched beach parasols on pale sand in front of lines of white water, under a grey sky.', 'pr o14')}
+   {pic('print-img-009', 340, 'A surfer seen from behind, paddling a white board towards a low aqua wave under a pale sky.', 'pr o09')}
   </div>
  </div>
  <h2>{E(C['copyBlocks'][6]['heading'])}</h2>
@@ -240,9 +243,12 @@ level_tiles = tiles('level', [(v, v) for v in ['Total beginner', 'Beginner', 'In
 people_tiles = tiles('people', [(v, v) for v in ['1', '2', '3+', 'Not sure']])
 sheet = f'''<dialog class="sheet" id="sheet" data-drawer aria-labelledby="sheet-t">
  <form method="dialog" class="sh-in" id="sheet-form">
+  <div class="sh-drag">
+  <div class="sh-grab" aria-hidden="true"></div>
   <div class="sh-head">
    <h2 id="sheet-t">Your message</h2>
    <button class="sh-x" type="submit" value="close" aria-label="Close"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round"/></svg></button>
+  </div>
   </div>
   <fieldset><legend>Lesson</legend><div class="tiles t3">{lesson_tiles}</div></fieldset>
   <fieldset><legend>Your level</legend><div class="tiles">{level_tiles}</div></fieldset>

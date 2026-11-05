@@ -6,7 +6,7 @@ labels the template owns (menu, tile labels, "Soft-top", "Call", "Open in Google
 CSS / JS: page.css, page.js (inlined).
 Run: python3 sites/sanjee-surf-school/mockups/unique/src/build.py
 """
-import datetime, html, json, pathlib, struct, urllib.parse
+import base64, datetime, html, json, pathlib, struct, subprocess, tempfile, urllib.parse
 
 HERE = pathlib.Path(__file__).resolve().parent
 SITE = HERE.parents[2]
@@ -36,7 +36,8 @@ d = datetime.date.fromisoformat(R['capturedAt'])
 R_DATE = f'{d.day} {d:%B %Y}'
 R_SCORE = f"{R['score']}/{R['scale']}"
 R_COUNT = f"{R['count']} Google reviews"
-R_LINE = f'{R_SCORE}, {R_COUNT}, {R_DATE}'
+R_ASOF = f'as of {R_DATE}'                               # marks the capture date (critic r1)
+R_LINE = f'{R_SCORE}, {R_COUNT}, {R_ASOF}'
 WA_DIGITS = C['contact']['whatsapp'].lstrip('+')        # copied from the passed copy, never retyped
 
 def wa(text):
@@ -50,16 +51,19 @@ ICON_WA = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 
 def btn(href, label, cls='btn', extra=''):
     return f'<a class="{cls}" href="{E(href)}"{extra}><span class="btn-t">{label}</span></a>'
 
-def print_img(cls, name, widths, sizes, alt, loading='eager', fetch='', phone=None):
-    """A print of the set. widths: list of (file, intrinsic width)."""
+def print_img(cls, widths, sizes, alt, fetch=''):
+    """A floating print. widths: list of (file, intrinsic width)."""
     w, h = webp_size(widths[-1][0])
     srcset = ', '.join(f'img/{f}.webp {iw}w' for f, iw in widths)
-    attrs = f'class="print {cls}" src="img/{widths[-1][0]}.webp" srcset="{srcset}" sizes="{sizes}" width="{w}" height="{h}" alt="{E(alt)}" data-print decoding="async" loading="{loading}"'
-    if fetch: attrs += f' fetchpriority="{fetch}"'
-    if phone:
-        pw, ph = webp_size(phone)
-        return f'<picture><source media="(max-width: 759px)" srcset="img/{phone}.webp" width="{pw}" height="{ph}"><img {attrs}></picture>'
-    return f'<img {attrs}>'
+    extra = f' fetchpriority="{fetch}"' if fetch else ''
+    return f'<img class="print {cls}" src="img/{widths[-1][0]}.webp" srcset="{srcset}" sizes="{sizes}" width="{w}" height="{h}" alt="{E(alt)}" data-print decoding="async" style="background-image:url({lqip(widths[0][0])})"{extra}>'
+
+def lqip(name):
+    """A tiny blurred placeholder of a picture, inlined, so nothing is ever a blank box on a slow load."""
+    with tempfile.TemporaryDirectory() as t:
+        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(DIST / 'img' / f'{name}.webp'), '-vf', 'scale=20:-2', f'{t}/x.png'], check=True)
+        subprocess.run(['cwebp', '-quiet', '-q', '28', f'{t}/x.png', '-o', f'{t}/x.webp'], check=True)
+        return 'data:image/webp;base64,' + base64.b64encode(pathlib.Path(f'{t}/x.webp').read_bytes()).decode()
 
 # ---------------------------------------------------------------- header + first screen
 NAV = [('Lessons', '#lessons'), ('Boards', '#boards'), ('Sanjee', '#sanjee'), ('Waves', '#waves'), ('Tuk-tuk', '#tuktuk'), ('Finding us', '#finding')]
@@ -74,7 +78,15 @@ header = f'''<header class="top">
  </details>
 </header>'''
 
-hero = f'''<section class="hero" id="top">
+GW, GH = webp_size('ground-img-002-2000')
+PW, PH = webp_size('ground-img-002-phone')
+LQ_D, LQ_P = lqip('ground-img-002-1440'), lqip('ground-img-002-phone')
+hero = f'''<style>.hero:not(.loaded){{background-image:url({LQ_D})}}@media (max-width:759px){{.hero:not(.loaded){{background-image:url({LQ_P})}}}}</style>
+<section class="hero" id="top">
+ <picture>
+  <source media="(max-width: 759px)" srcset="img/ground-img-002-phone.webp" width="{PW}" height="{PH}">
+  <img class="ground" src="img/ground-img-002-2000.webp" srcset="img/ground-img-002-1440.webp 1440w, img/ground-img-002-2000.webp 2000w" sizes="100vw" width="{GW}" height="{GH}" alt="A bright blue sky over a blue bay, with a rust-red headland, palms and tiled roofs on the right and pale sand along the bottom." decoding="async">
+ </picture>
  <div class="hero-words">
   <h1>{E(HERO)}</h1>
   <div class="hero-act">
@@ -84,11 +96,8 @@ hero = f'''<section class="hero" id="top">
  </div>
  <div class="set" id="set">
   <canvas id="swell" aria-hidden="true"></canvas>
-  {print_img('p-009', 'set-img-009', [('set-img-009', 800)], '(max-width: 759px) 1px, 400px', 'A surfer seen from behind, paddling a white board towards a low aqua wave under a pale sky.')}
-  {print_img('p-018', 'set-img-018', [('set-img-018', 600)], '(max-width: 759px) 1px, 300px', 'An orange sunset over lines of breaking waves, with the small figures of surfers in the water.')}
-  {print_img('p-006', 'set-img-006', [('set-img-006', 760)], '(max-width: 759px) 150px, 360px', 'A surfer in a dark top turning a white board on a green wave, with white water breaking behind.')}
-  {print_img('p-002', 'set-img-002', [('set-img-002-1100', 1100), ('set-img-002-1760', 1760)], '(max-width: 759px) 340px, 880px', 'A bright blue sky over a blue bay, with a rust-red headland, palms and tiled roofs on the right and pale sand along the bottom.', phone='set-img-002-phone')}
-  {print_img('p-007', 'set-img-007', [('set-img-007-640', 640), ('set-img-007-962', 962)], '(max-width: 759px) 94vw, 520px', 'Sanjee seen from behind, crouched low and carving a green wave on a yellow board with a pink rail, spray flying from the turn.', fetch='high')}
+  {print_img('p-006', [('set-img-006', 760)], '(max-width: 759px) 32vw, 308px', 'A surfer in a dark top turning a white board on a green wave, with white water breaking behind.')}
+  {print_img('p-007', [('set-img-007-640', 640), ('set-img-007-962', 962)], '(max-width: 759px) min(94vw, 560px), 640px', 'Sanjee seen from behind, crouched low and carving a green wave on a yellow board with a pink rail, spray flying from the turn.', fetch='high')}
  </div>
 </section>'''
 
@@ -99,6 +108,8 @@ if BODY_FILE.exists():
     exec(compile(BODY_FILE.read_text(), str(BODY_FILE), 'exec'), ns)
     BODY = ns['BODY']
 
+# The preview host by the run's naming (<slug>.os1.workers.dev), until a real one exists. Not img-007: it carries the open rights flag.
+OG_IMAGE = 'https://' + C['slug'] + '.os1.workers.dev/img/og-img-002.jpg'
 CSS = (HERE / 'page.css').read_text()
 JS = (HERE / 'page.js').read_text()
 
@@ -112,10 +123,13 @@ doc = f'''<!DOCTYPE html>
 <meta name="theme-color" content="#ffffff">
 <meta property="og:title" content="{E(NAME)}">
 <meta property="og:description" content="{E(C['tagline'])}">
-<meta property="og:image" content="img/set-img-007-962.webp">
+<meta property="og:image" content="{OG_IMAGE}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/shrikhand/v17/a8IbNovtLWfR7T7bMJwrA4KR8TtctQ.woff2">
-<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/atkinsonhyperlegible/v12/9Bt23C1KxNDXMspQ1lPyU89-1h6ONRlW45G04pIoWQeCbA.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DaRvzig.woff2">
+<link rel="preload" as="image" fetchpriority="high" imagesrcset="img/set-img-007-640.webp 640w, img/set-img-007-962.webp 962w" imagesizes="(max-width: 759px) min(94vw, 560px), 640px">
 <script>document.documentElement.classList.add('js')</script>
 <style>{CSS}</style>
 </head>
