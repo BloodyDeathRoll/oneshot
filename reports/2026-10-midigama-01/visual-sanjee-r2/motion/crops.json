@@ -1,0 +1,298 @@
+{
+ "iDiff": [
+  {
+   "pair": "0->1",
+   "meanDiff": 9.12,
+   "changedFrac": 0.31,
+   "rowsChanged": [
+    389,
+    899
+   ]
+  },
+  {
+   "pair": "0->3",
+   "meanDiff": 12.25,
+   "changedFrac": 0.374,
+   "rowsChanged": [
+    388,
+    899
+   ]
+  },
+  {
+   "pair": "0->6",
+   "meanDiff": 11.72,
+   "changedFrac": 0.377,
+   "rowsChanged": [
+    382,
+    899
+   ]
+  },
+  {
+   "pair": "0->12",
+   "meanDiff": 11.12,
+   "changedFrac": 0.339,
+   "rowsChanged": [
+    384,
+    899
+   ]
+  }
+ ],
+ "iShift": {
+  "figure": [
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   0,
+   0,
+   1,
+   1
+  ],
+  "board": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "horizon": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "foam": [
+   -3,
+   -6,
+   -6,
+   -4,
+   -2,
+   1,
+   1,
+   0,
+   -1,
+   -1,
+   -2,
+   -4,
+   -7,
+   -10,
+   -10,
+   -7
+  ],
+  "midwater": [
+   1,
+   1,
+   0,
+   0,
+   0,
+   -1,
+   -2,
+   -3,
+   -3,
+   -3,
+   -2,
+   -1,
+   0,
+   1,
+   1,
+   1
+  ]
+ },
+ "iMDiff": [
+  {
+   "pair": "0->3",
+   "meanDiff": 9.27,
+   "changedFrac": 0.302,
+   "rowsChanged": [
+    781,
+    1687
+   ]
+  },
+  {
+   "pair": "0->6",
+   "meanDiff": 9.36,
+   "changedFrac": 0.336,
+   "rowsChanged": [
+    779,
+    1687
+   ]
+  }
+ ],
+ "uDiff": [
+  {
+   "pair": "0->3",
+   "meanDiff": 3.98,
+   "changedFrac": 0.155,
+   "rowsChanged": [
+    314,
+    899
+   ]
+  },
+  {
+   "pair": "0->6",
+   "meanDiff": 0.02,
+   "changedFrac": 0,
+   "rowsChanged": [
+    900,
+    0
+   ]
+  },
+  {
+   "pair": "0->9",
+   "meanDiff": 0,
+   "changedFrac": 0,
+   "rowsChanged": [
+    900,
+    0
+   ]
+  }
+ ],
+ "uShift": {
+  "front": [
+   0,
+   0,
+   -10,
+   -8,
+   -1,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "back": [
+   0,
+   -5,
+   -8,
+   -2,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   -4
+  ],
+  "bay": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "uMDiff": [
+  {
+   "pair": "0->3",
+   "meanDiff": 4.4,
+   "changedFrac": 0.198,
+   "rowsChanged": [
+    766,
+    1608
+   ]
+  },
+  {
+   "pair": "0->6",
+   "meanDiff": 0.94,
+   "changedFrac": 0.034,
+   "rowsChanged": [
+    767,
+    1606
+   ]
+  }
+ ],
+ "cDiff": [
+  {
+   "pair": "7->9",
+   "meanDiff": 6.63,
+   "changedFrac": 0.185,
+   "rowsChanged": [
+    7,
+    800
+   ]
+  },
+  {
+   "pair": "9->11",
+   "meanDiff": 3.28,
+   "changedFrac": 0.122,
+   "rowsChanged": [
+    374,
+    799
+   ]
+  },
+  {
+   "pair": "11->13",
+   "meanDiff": 0.32,
+   "changedFrac": 0.006,
+   "rowsChanged": [
+    376,
+    776
+   ]
+  },
+  {
+   "pair": "13->15",
+   "meanDiff": 0,
+   "changedFrac": 0,
+   "rowsChanged": [
+    900,
+    0
+   ]
+  },
+  {
+   "pair": "0->7",
+   "meanDiff": 10.69,
+   "changedFrac": 0.273,
+   "rowsChanged": [
+    29,
+    850
+   ]
+  }
+ ]
+}

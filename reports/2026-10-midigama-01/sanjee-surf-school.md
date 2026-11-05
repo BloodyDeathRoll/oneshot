@@ -178,3 +178,207 @@ hard_fails: [] in dimensions 1–7
 - Old-site comparison not scored: it belongs to dimension 8, so the old-site captures were not opened.
 - Image rights and consent are owner items, not verifiable here.
 - Contrast over photographs was probed for the hero, header (calm, interactive) and feature or closing lines only, with one still of moving water per element.
+
+---
+
+## Round 2, quick (station 4f)
+
+critic 0.4.3 · rubric 0.3.1 · 2026-11-05 · reworked mockups at commit 73218e5, `sites/sanjee-surf-school/mockups/{calm,interactive,unique}/dist/` (designer 0.7.1; `index.html` last written 17:30 / 17:31 / 14:30 local). Served on :9340 / :9341 / :9342 from a plain static server (`tools/_serve.mjs`), stopped afterwards. Each page was re-scored from scratch. I did not read any visual-critic or experience-critic report for either round, and I read designer `notes.md` only after my scores were set, and then only the look-log.
+
+Same checks, same order and same viewports for all three. Evidence is in `reports/2026-10-midigama-01/critic-sanjee-surf-school-r2/`:
+
+- `audit-{calm,interactive,unique}.json`: `tools/audit-mockup.mjs`. **Scratch copy:** port 8980 → 9343, and the output goes to my folder so the designers' `audit.json` stays untouched. Nothing else changed.
+- `tools/check-design.mjs --no-shots` on each page path. **Scratch copy:** port 8960 → 9346, nothing else changed.
+- `shots/{calm,interactive,unique}/`: `tools/shoot.mjs` at 1440×900 and 390×844 (gitignored scratch). Zero console errors.
+- `lcp.json`: three throttled phone runs each, with every LCP candidate, Element Timing on the images and H1, and CDP bytes before and after a full scroll.
+- `flows.json`, `interactive-messages.txt`, `unique-messages.txt`: tap-through and every message combination. Off-site navigation was aborted and recorded. **No wa.me page was opened and nothing was sent.**
+- `a11y.json`: axe-core (WCAG 2.0/2.1 A+AA) after a full scroll at 390 and 1440, a Tab walk, and reduced motion.
+- `probe.json`: pixel contrast with the text hidden, over photographs; font-size census; a second Tab walk with scroll settled; quote checks.
+- `facts.json`, `text-*.txt`, `images.json`, `extra.json`: rendered text with JS on at 390 and 1440, JS off at 390; hrefs; images and alt; DOM rental rows; skip links; small phones.
+- `funnel-*/funnel.json`: `tools/funnel.mjs --depth 3` as a forward check (full-mode evidence, run early).
+
+**Rubric arithmetic (fact for the human):** dimension weights 1–7 sum to 80, so totals below are out of 80.
+
+### Shared evidence
+
+**Facts table, re-checked from the rendered pages.** 0 contradicted values and 0 claims without a dossier entry, on any page.
+
+| Claim on page | Dossier key | Result |
+|---|---|---|
+| 3 lessons: USD 40, 50, 160; levels; includes | `lessons[]`, `includes` | match on all three |
+| "2 hours" on Beginner and Private; "**2 hours each**" on Week beside "5 private sessions" | `lessons[].duration_as_written`, `lessons[2].note` "5 private 2-hour sessions" | match. All three now say "each" (calm `:408`, interactive card, unique `:444`) |
+| 16 rental rows, read from the DOM by duration and kind; notes; bodyboard USD 5 per day | `rentals[]`, `offers` | match. Interactive's phone pill, both states: all 8 prices right, and the capture shows USD 7, 12, 18, 20, 50, 95, 170, 310 |
+| 12 tour rows: label, price, note, in order (DOM script: 0 problems) | `offers` group `tuk_tuk` | match |
+| Rashguard USD 12, reef booties USD 15 | `offers` | match (script over all 34 copy rows: 0 unmatched) |
+| Board sizes, leash, fins, wax, ID or passport, "refundable deposit", no amount | `rental_terms` | match; amount correctly absent |
+| Interactive's chart: 6 types, labels, drawn lengths | `rental_terms.quiver[]` | match. Each board is drawn to its top length at 4.10 css px per inch (6'4 = 320 px, 9'4 = 467 px at 1440), and the pale band at the nose is the size range (5'8–6'4 = 10.53 % of the board) |
+| "5/5", "13 Google reviews", "**as of** 5 November 2026" | `reviews.google`, read 2026-11-05 | match. Marked as the capture date everywhere it appears. Every rating links to the exact `mapUrl` |
+| "All prices are as of 5 November 2026." at lessons, rentals and tours | `offers_note`, captured 2026-11-05 | match. All three pages now carry it in all three places |
+| 4 testimonials, names as published, no dates | `reviews.quotes[]` | byte-identical to dossier, none `do_not_use`; verbatim on each page. No `<q>`, no added quote marks |
+| Sanjee: head instructor, born in Weligama, ISA Level 1, Certified Surf Lifeguard | `business.owner_voice`, `credentials[]` | match; under his heading only. No "founder", no years, no counts |
+| "Languages: English \| Sinhala" | `languages_spoken` | match; no Tamil |
+| Spot, season, 11 waves by level | `location.spot`, `season`, `surf_spots[]` | match |
+| Swim 50 m, kids from 6, under 18 with guardian; cash LKR, USD, EUR | `requirements`, `booking.payment_on_the_day` | match |
+| Address, plus code, "+94 77 400 4422", `sanjee@sanjee-surf.com` | `location.*`, `contact.*`, `contact.whatsapp.verified` (the printed form) | match, and hrefs are character for character |
+| Interactive's "for you" dots and fit chips | `lessons[].level`, prices | match. Total beginner → Beginner; I can stand up → Beginner + Private; Intermediate, Advanced → Private; Not sure → none; Week never |
+| Template words: "per lesson", "per hour", "per day", "Soft-top", "Hardboard", "Duration", "Note", "Date", "People", "Your message", "Add to my message", "Open in Google Maps", "Menu", "\| Google" | restate copy or state no fact | no claim added |
+
+The copy is whole on all three: the only `en.json` strings absent from the DOM are machine values and rental labels split into table cells. Visible text on all three has no opening hours, cancellation policy, Marcel, Panzer, founder, 150, 500+, 2,000, 3,000, Channel Islands, 40+, Instagram, Facebook, pool, Tamil, "up to 2" or Rosa (`text-*.txt` searched). Copy review's R2-N2 holds: [4] ¶3 and ¶4 sit directly above the tour rows on phones, directly above on calm's desktop, and sticky beside them on interactive's and unique's desktop.
+
+**Pre-filled messages, read from hrefs.**
+
+- **Static:** all 22 wa.me links on each page, with JS off too, go to `94774004422` and name the business and the offer. Grammar is fixed on interactive ("about Private Coaching", "the Galle Fort tour").
+- **Interactive:** I set every combination, 450 states of level × lesson × date × people, and read all 22 links in each. That gave 1,620 distinct messages, 0 wrong numbers, and the send link always equal to the visible bubble. Every sentence is the visitor's own: "I'm a total beginner.", "The date I have in mind is 10 December 2026.", "There are 3 or more of us.", "I'm not sure of my level yet.", "a surf lesson, I'm not sure which one." **No sentence adds a claim about the school.** Buttons about their own subject keep it and add the visitor's details: "…about the Surf Spot Safari tour. I'm a total beginner. The date I have in mind is 10 December 2026. There are 3 or more of us."
+- **Unique:** all 270 sheet combinations give 270 messages from 14 sentences: "…the Beginner Lesson. My level: total beginner. Date: 10 December 2026. People: 3+." **No claim added.**
+- **Calm:** static only, nothing changes.
+
+**Booking tap-through (390, touch).** On all three the hero button navigates to `https://wa.me/94774004422?text=…`, equal to `contact.whatsapp`. After scrolling, a phone bar holds "Ask on WhatsApp" and a Call icon, both hit-tested on top. Forward check on all three: `primary_action.class` = `hero_action.class` = `whatsapp`, `clicks_to_book` 1, against target whatsapp, 1.
+
+**Delivery.** Static `index.html` + `img/` only. No server code, no CMS call, 0 absolute paths, lowercase filenames, 0 unreferenced image files, no credential, localhost or Supabase string (text search of each `index.html`; its "Secret" hits are "Secret Beach"). Third-party hosts on first load **and after a full scroll and all interactions**: Google Fonts only (`fonts.googleapis.com` + `fonts.gstatic.com` on calm and interactive, `fonts.gstatic.com` on unique). Allowed at 4e (critic `tools.md`), a defect at full mode. Embeds: 0. Forecast: none.
+
+**check-design facts:** all three `ok`, 0 problems, 0 warnings, ground `#FFFFFF`, 0 all-caps labels. Faces: calm Source Sans 3 + Mr Dafoe; interactive Manrope + Courgette; unique Figtree + Shrikhand.
+
+**Budget, playbook §4.** `audit-mockup.mjs`, one throttled run, then three more of my own; other sessions were running.
+
+| Line | Target | calm | interactive | unique |
+|---|---|---|---|---|
+| First-load transfer | ≤ 1,500 KB | 299 | 402 | 295 |
+| Three further runs, CDP bytes | | 296 | 395 | 297 |
+| After a full scroll | not a budget line | 823 | 617 | 614 |
+| JS | ≤ 300 KB | 4.2 inline | 24.5 inline | 21.4 inline |
+| Fonts | ≤ 2 families, ≤ 150 KB | 2, 45 | 2, 42 | 2, 35 |
+| Largest image | ≤ 300 KB | 102 | 134 | 80 |
+| LCP, tool | ≤ 2,500 ms | 1,656 | **856, the H1** | 1,644 |
+| Hero photo paints (Element Timing, 3 runs) | | 1,644–1,648 | **2,120–2,168** | 1,632–1,656 |
+| CLS | < 0.1 | 0.0005 | 0.0006 | 0 |
+| Scroll CLS, early / settled | < 0.01 | 0.0003 / 0 | 0.0004 / 0 | 0.0048 / 0 |
+| Third-party on load, other than fonts | 0 | 0 | 0 | 0 |
+
+HTML is 73 / 106 / 79 KB and counted uncompressed, since the test server does not compress. Overflow: 0 at 320, 360 and 390, with JS on and off, on all three. Tap targets under 44 px: 0 at both widths, on all three, and interactive's fit chips and bar line are 44 px once they appear.
+
+**When the photo really arrives on interactive.** Chromium does name the H1, in every run, and it never reports the photograph at all. The photograph's response ends at 2,094–2,117 ms and it paints at 2,120–2,168 ms. On calm and unique the photograph is the final LCP candidate, so their tool numbers are true. **Cause, tested:** the interactive hero is exactly 390×844, the whole viewport. With its stage forced to 804 px in my test (nothing else changed), Chromium names the IMG at 2,136–2,160 ms. So the honest LCP for interactive is about 2.15 s, under 2.5 s, and the tool's 856 ms should not be quoted as its photo time.
+
+**Rubric's visual hard-fail conditions, as facts for the two visual critics (not mine to rule on):**
+- **Video.** `dossier.videos[]` has two `business-owned` clips (vid-001, vid-002), and no page uses video. No file exists (403) and concepts.md §2 records Alon's decision to go on stills.
+- **First screen and photographs ≥ 1920 px.**
+  - calm: img-002 (2000 px source) full-bleed, served from a 1960 px crop on desktop and 692×1500 on a phone. A print of img-006 (480×271 css on desktop, 342×193 on a phone) now overlaps its lower edge.
+  - interactive: **hero is now img-018, 1440×1920.** Its long edge is 1920 and its width is 1440. It is served at 1440×1100 on desktop and 1000×1846 on a phone, so a screen wider than 1440 upscales it. img-002 appears only at the closing band (`:606`). concepts.md §2 counts the long edge of portraits; whether that meets the rule is for the visual critics.
+  - unique: img-002 is now the full-bleed ground of the first screen (1440 or 2000 px on desktop, 900×1080 at 390×470 css on a phone), with img-007 and img-006 prints over it.
+
+**Photographs used, all `business-owned` in the dossier:** calm 002, 005, 006, 008, 009, 012, 013, 014, 017, 018, 019, 020 (from `src/make-media.sh`; 005, 006, 008 by alt and sight); interactive 002, 005, 006, 007, 009, 010, 012, 014, 018; unique 002, 005, 006, 007, 008, 009, 012, 014, 017, 018. None of the rejected files appears.
+
+**Owner items.** `provenance_flag` in the dossier: img-007 (interactive `:516`, unique `:411`) and **img-010, new in this round: interactive's Advanced tile (`:412`), which concepts.md §2 held in reserve.** Identifiable people, consent: img-005 on all three; img-008 on calm and unique.
+
+**Departures from concepts.md (not amended since 386f4d9), facts for the human:** interactive's hero (img-009 → img-018), title position and title face (Covered By Your Grace → Courgette); unique's first screen (five prints on white → img-002 ground with two prints) and text face (Atkinson Hyperlegible → Figtree); calm's print over the hero and Sanjee's section placed before boards.
+
+**Look-log (station check):** first-screen rounds: calm 1–4, interactive 1–3, 7, 8, unique 1–3. All meet three. Only the latest shots folders are kept (calm 9–13, interactive 11, unique 9), so "visible change between rounds" cannot be checked for the earlier ones.
+
+---
+
+### calm, round 2
+
+```
+mode: quick    round: 2    variant: calm
+total: 75.0 / 80 (dimension 8 pending)    result: passes critic gates; overall pending dimension 8
+hard_fails: [] in dimensions 1–7
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | Facts table: 0 mismatches. "2 hours each" (`:408`), "as of" on every rating (`:421`, `:452`), price date at lessons, rentals (`:488`) and tours (`:578`) |
+| 2 | mobile + performance | 10 | Every budget line met with room to spare. LCP is the photograph at about 1.65 s. No overflow from 320 to 390. Smallest phone text 15 px. No canvas |
+| 3 | booking CTA | 9 | Tap-through and forward check pass. 22 links with per-offer prefills. Number and email printed in the footer. Not 10 only because the chat itself was not opened, by instruction |
+| 4 | brand fit | 8 | First screen what + where + action on img-002. Calm has no canvas. OG title, description and image added, but `og:image` is relative (`:12`). custom.md allows only header, title and action on the first screen; the img-006 print (`:363`) is a further element over the photograph. Menu says Boards then Sanjee (`:344`), the page runs Sanjee (`:439`) then Boards (`:476`). People come before spot, as in round 1 |
+| 5 | copy quality | 9 | Copy whole. Footer number and languages label fixed. The H1 and the next lead repeat "Surf lessons in Weligama", and the closing's three buttons repeat at once in the footer |
+| 6 | accessibility | 9 | axe 0 violations at both widths. 40 Tab stops, all with a ring, none obscured. Skip link is first, visible at top 12 px once its transition ends, and lands on Lessons. Reduced motion: nothing running. Contrast over photo: h1 min 5.26, header name 5.33, band line 5.52. Not 10: no screen-reader run |
+| 7 | delivery | 9 | Delivery evidence above. Google Fonts must be self-hosted by station 5 |
+
+**Gating, quick mode:** no hard fail; dimensions 1, 3, 7 = 10, 9, 9, all ≥ 6. Result rests on dimension 8.
+
+**Round 1 fix list:** 1 "2 hours each": landed. 2 rating date marked: landed. 3 price date repeated: landed. 4 skip link: landed. 5 OG tags: landed, with a relative image path. 6 languages label and footer number: landed. 7 self-host fonts: not yet, due by station 5.
+
+**Remaining fix list, priority order:**
+1. `:12`: make `og:image` absolute at build, so previews can resolve it.
+2. `:344`, `:348`: put the menu in page order, Sanjee before Boards.
+3. Before station 5: self-host fonts.
+
+---
+
+### interactive, round 2
+
+```
+mode: quick    round: 2    variant: interactive
+total: 70.4 / 80 (dimension 8 pending)    result: passes critic gates; overall pending dimension 8
+hard_fails: [] in dimensions 1–7; see the first-screen fact above
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | Facts table: 0 mismatches. Chart true to scale, dots match `lessons[].level`, phone pill right in both states, 450 message states add no claim |
+| 2 | mobile + performance | 8 | All budget lines met, but it is the nearest to the LCP line: photo at about 2.15 s of 2.5 s, and five lazy tiles (118 KB) load with it and finish first. Once anything is chosen, the fixed phone footer grows to 116 px of 844 (`.bar-msg`, top 728). Chart labels are 13 px on a phone (`:322`). The shader now runs at up to 2× DPR on phones; its real-GPU cost is not measured |
+| 3 | booking CTA | 9 | Tap-through and forward check pass. All 22 links carry the choices. Number and email now printed. A past date typed in is sent as "1 January 2020" (`:992`; the picker's `min` only stops the picker). Not 10 also because the chat itself was not opened, by instruction |
+| 4 | brand fit | 8 | First screen what + where + action. Tile-tap message inside the page, no form, as briefed. Prices stay visible, no card hidden. `og:image` relative (`:11`). Chart still hard-wired until the schema has board rows. On a phone the Week paragraph (`:456`) sits under the swipe row, not on the Week card, a designer's trade-off recorded in the look-log. People before spot, as in round 1 |
+| 5 | copy quality | 9 | Copy whole. Prefill grammar fixed. The phone bar line starts in lower case: "the Week Intensive. I'm a total beginner. The date …" (`:903`). Contact buttons repeat at once in "Finding us" and the footer |
+| 6 | accessibility | 7 | axe 0 violations at both widths. 62 Tab stops, all with a visible ring, including all four on the date field. **New:** on a phone each rate cell keeps both digits as live text. The computed name is right ("USD 5"), but the AX tree also holds StaticText "5" and "7", and `innerText` reads "USD 5 7" (`:1017`–`:1022`). What a screen reader says was not tested. Reduced motion: canvas opacity 0, nothing running. Contrast over photo: h1 min 9.21 on phone and 5.34 on desktop, band line 8.69, closing line 6.12 |
+| 7 | delivery | 9 | Delivery evidence above. Hero is no longer base64. Fonts must be self-hosted by station 5 |
+
+**Gating, quick mode:** no hard fail in my dimensions; dimensions 1, 3, 7 = 10, 9, 9, all ≥ 6. Result rests on dimension 8, and on both visual critics' reading of img-018 against the first-screen rule.
+
+**Round 1 fix list:** 1 number and email printed: landed. 2 prefill grammar: landed. 3 date focus ring: landed. 4 price date repeated: landed. 5 rating date marked: landed. 6 `#bubble` labelling: landed, now on a wrapper with `role="status"`. 7 OG image: landed, with a relative path. 8 fonts: not yet; hero out of base64: landed.
+
+**Remaining fix list, priority order:**
+1. `:1017`–`:1022`: put the rolling digits in an `aria-hidden` span and keep the one true price as hidden text, so the unused digit is not page text.
+2. `:412`: tile images. The Not sure tile is 58 KB and all five load with the hero. Give them `srcset`, so the photo lands further from the line.
+3. `:992`: ignore or clear a date earlier than `min`.
+4. `:11`: make `og:image` absolute at build.
+5. `:903`: capitalise the bar line's first word.
+6. `:412` img-010: owner must clear it, or use another tile picture.
+7. Before station 5: self-host fonts.
+
+---
+
+### unique, round 2
+
+```
+mode: quick    round: 2    variant: unique
+total: 73.5 / 80 (dimension 8 pending)    result: passes critic gates; overall pending dimension 8
+hard_fails: [] in dimensions 1–7
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | Facts table: 0 mismatches. "2 hours each" (`:444`), rating marked "as of" on the hero line too (`:405`), price date at rentals (`:471`) and tours (`:513`) |
+| 2 | mobile + performance | 9 | All budget lines met, LCP the photograph at about 1.65 s. Scroll early 0.0048 is the nearest to the 0.01 line, from font swap (`#text`). The phone no longer fetches hidden back-row prints. Real-GPU swell cost not measured |
+| 3 | booking CTA | 9 | Hero and bar go straight to WhatsApp. Lesson buttons open the sheet with the lesson chosen, and are plain wa.me links with JS off. Send button at bottom 830 of 844; at 320×568 and 360×640 the sheet scrolls and Send stays on top and tappable. `#sheet-date` has no `min`, so a past date can be picked (`:604`). Not 10 also because the chat itself was not opened, by instruction |
+| 4 | brand fit | 8 | First screen what + where + action + rating, a concept decision for the human. Bottom sheet as briefed. OG image is now img-002, so it no longer leans on flagged img-007, but its host `sanjee-surf-school.os1.workers.dev` (`:11`) is an assumption until station 6 names the Worker. People before spot, as in round 1 |
+| 5 | copy quality | 9 | Copy whole. Repeated Bodyboard label gone, languages labelled. Sheet messages read as a form ("My level: …. Date: …. People: 3+."), usable but terse. "Ask about this lesson" differs from `ctas.primary`, a label stating no fact |
+| 6 | accessibility | 9 | axe 0 violations at both widths, `#quotes` fixed. 40 Tab stops, all visible. Sheet is a native modal: Tab stays inside it and browser chrome, Esc closes, focus returns to the opening button; radio focus shows on the tile, the date field's calendar stop has the browser's ring. Reduced motion: canvas opacity 0, nothing running. Contrast: h1 min 6.13, hero rating line 7.14, band line min 4.65 at 34 px and over. `:565` alt says three dogs, as the dossier does; I count four in the picture, and calm's alt says four |
+| 7 | delivery | 9 | Delivery evidence above. Fonts must be self-hosted by station 5 |
+
+**Gating, quick mode:** no hard fail; dimensions 1, 3, 7 = 10, 9, 9, all ≥ 6. Result rests on dimension 8.
+
+**Round 1 fix list:** 1 `#quotes` keyboard access: landed. 2 "2 hours each": landed. 3 rating date marked: landed. 4 Bodyboard repeat: landed. 5 languages label: landed. 6 `og:image` absolute: landed, host to be confirmed. 7 hidden prints on phones: landed. 8 fonts: not yet.
+
+**Remaining fix list, priority order:**
+1. `:604`: give `#sheet-date` the same `min` as interactive, and ignore earlier dates.
+2. `:11`: confirm the `og:image` host at station 6, or set it at build.
+3. `:492`: `#quotes` is a Tab stop on desktop, where it does not scroll. Add `tabindex` only when it overflows.
+4. `:565`: alt "Three beach dogs" → "Four beach dogs". The dossier's description also says three; a harvester correction, not the designer's.
+5. `:411` img-007: owner must clear it; this page and interactive depend on it.
+6. Before station 5: self-host fonts.
+
+---
+
+**What the designer prompt got wrong:** nothing asks for one value in the DOM per price, and the concept's "rolling digits" invites keeping both, so interactive's phone table now carries the unused digit as text; a motion pattern for prices should say the digits are decoration and the price stays as one text node. Nothing says how `og:image` is written at mockup stage, since the host is unknown until station 6, and the three builds now do it two ways. The date controls have no stated rule for past dates, so one page has `min`, the other none, and neither blocks a typed date. Separately, `tools/audit-mockup.mjs` cannot see a hero that exactly fills the viewport, because Chromium drops it from LCP, so the rubric's LCP line can pass on the H1 alone; the tool should report the hero's Element Timing as well. That is a tool change for a proposal, and none is written at this stage.
+
+**The sentence the human needs:** all three meet every budget line and go to the right WhatsApp number in one tap with no pre-filled claim added; calm scores 75.0, unique 73.5 and interactive 70.4 of 80 on dimensions 1–7, interactive's hero photo paints at about 2.15 s against about 1.65 s on the others, its first-screen photograph is 1440 px wide with a 1920 px long edge, and it now also uses the provenance-flagged img-010.
+
+**Not checked or not measured:**
+- No wa.me page opened and no message sent, so landing in a chat and whether that number is answered are untested. I could not test a real WhatsApp hand-off of the longest messages.
+- No real phone or real GPU: Chromium headless with software GL, so shader frame rate and battery cost are unknown on interactive and unique. iOS Safari not tested, including its date field.
+- No screen reader run; axe, the Chromium AX tree and DOM inspection only. So how interactive's rate cells are actually read is unknown.
+- LCP is four throttled runs per page on a machine shared with other sessions, phone only, with fonts from Google rather than self-hosted, and the HTML uncompressed. A real Worker will compress it.
+- Old-site comparison not scored: it belongs to dimension 8, so the old-site captures were not opened.
+- Image rights and consent are owner items, not verifiable here.
+- Contrast over photographs was probed for the hero, header and feature or closing lines only, with one still of moving water per element. Under SwiftShader, unique's scrolled prints can look cut by a straight line, a known capture artefact, so I did not score it.
+- `shots/` in my folder is gitignored scratch and has not been cleaned. `tools/clean-shots.mjs` remains to be run after the round.

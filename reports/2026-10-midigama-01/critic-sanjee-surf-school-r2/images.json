@@ -1,0 +1,682 @@
+{
+ "calm": {
+  "m": [
+   {
+    "src": "hero-m.webp",
+    "nat": "692x1500",
+    "css": "395x683",
+    "top": -8,
+    "fold": true,
+    "loading": "auto",
+    "op": "1",
+    "alt": "A blue bay seen from the sand under a clear sky, with a rust-red headland, palms and tiled roofs on the right"
+   },
+   {
+    "src": "wave.webp",
+    "nat": "780x440",
+    "css": "342x193",
+    "top": 563,
+    "fold": true,
+    "loading": "auto",
+    "op": "1",
+    "alt": "A surfer turning across a green wave with white water breaking behind"
+   },
+   {
+    "src": "lesson.webp",
+    "nat": "618x464",
+    "css": "342x257",
+    "top": 1151,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "An instructor and a student on the sand, knees bent in pop-up stance on a blue and a red soft-top"
+   },
+   {
+    "src": "band-m.webp",
+    "nat": "740x1066",
+    "css": "390x641",
+    "top": 3508,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "One surfer paddling towards a low aqua wave, seen from behind, with a pale sky above the horizon"
+   },
+   {
+    "nat": "0x0",
+    "css": "342x427",
+    "top": 4229,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Sanjee smiling as he walks out of the shallows with a surfboard under his arm, a rust-coloured cliff behind him"
+   },
+   {
+    "nat": "0x0",
+    "css": "183x244",
+    "top": 7296,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "An orange sunset over a breaking shore wave, with surfers small and dark in the water further out"
+   },
+   {
+    "nat": "0x0",
+    "css": "183x137",
+    "top": 7548,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Bare stilt poles standing in the shallows under a blue sky with thin cloud, seabirds perched on two of them"
+   },
+   {
+    "nat": "0x0",
+    "css": "183x137",
+    "top": 7693,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "An empty sand beach with wooden posts in the foreground, white water breaking on the left and palms running down the coast under a deep blue sky"
+   },
+   {
+    "nat": "0x0",
+    "css": "183x244",
+    "top": 7296,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Four beach dogs in silhouette on the sand, looking out to sea at a red sun on the horizon"
+   },
+   {
+    "nat": "0x0",
+    "css": "183x244",
+    "top": 7548,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Sun high behind thin cloud, silver light on the shore waves and on the wet sand"
+   },
+   {
+    "nat": "0x0",
+    "css": "183x137",
+    "top": 7799,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Three thatched parasols on the sand with lines of surf breaking behind them under a grey sky"
+   },
+   {
+    "nat": "0x0",
+    "css": "342x254",
+    "top": 9418,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Tall palms on a grassy headland with a path and beach stalls, clean lines of swell coming in behind"
+   },
+   {
+    "nat": "0x0",
+    "css": "390x320",
+    "top": 11928,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Footprints on wet gold sand beside a lacy line of foam at the water's edge"
+   }
+  ],
+  "d": [
+   {
+    "src": "hero-2000.webp",
+    "nat": "1439x899",
+    "css": "1457x819",
+    "top": -9,
+    "fold": true,
+    "loading": "auto",
+    "op": "1",
+    "alt": "A blue bay seen from the sand under a clear sky, with a rust-red headland, palms and tiled roofs on the right"
+   },
+   {
+    "src": "wave.webp",
+    "nat": "780x440",
+    "css": "480x271",
+    "top": 574,
+    "fold": true,
+    "loading": "auto",
+    "op": "1",
+    "alt": "A surfer turning across a green wave with white water breaking behind"
+   },
+   {
+    "src": "lesson.webp",
+    "nat": "618x464",
+    "css": "423x318",
+    "top": 965,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "An instructor and a student on the sand, knees bent in pop-up stance on a blue and a red soft-top"
+   },
+   {
+    "src": "band-1600.webp",
+    "nat": "1600x1067",
+    "css": "1440x630",
+    "top": 2759,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "One surfer paddling towards a low aqua wave, seen from behind, with a pale sky above the horizon"
+   },
+   {
+    "src": "sanjee.webp",
+    "nat": "676x844",
+    "css": "423x529",
+    "top": 3509,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Sanjee smiling as he walks out of the shallows with a surfboard under his arm, a rust-coloured cliff behind him"
+   },
+   {
+    "nat": "0x0",
+    "css": "432x576",
+    "top": 5593,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "An orange sunset over a breaking shore wave, with surfers small and dark in the water further out"
+   },
+   {
+    "nat": "0x0",
+    "css": "432x325",
+    "top": 6180,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Bare stilt poles standing in the shallows under a blue sky with thin cloud, seabirds perched on two of them"
+   },
+   {
+    "nat": "0x0",
+    "css": "432x325",
+    "top": 5593,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "An empty sand beach with wooden posts in the foreground, white water breaking on the left and palms running down the coast under a deep blue sky"
+   },
+   {
+    "nat": "0x0",
+    "css": "432x576",
+    "top": 5929,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Four beach dogs in silhouette on the sand, looking out to sea at a red sun on the horizon"
+   },
+   {
+    "nat": "0x0",
+    "css": "432x576",
+    "top": 5593,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Sun high behind thin cloud, silver light on the shore waves and on the wet sand"
+   },
+   {
+    "nat": "0x0",
+    "css": "432x325",
+    "top": 6180,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Three thatched parasols on the sand with lines of surf breaking behind them under a grey sky"
+   },
+   {
+    "nat": "0x0",
+    "css": "423x315",
+    "top": 7291,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Tall palms on a grassy headland with a path and beach stalls, clean lines of swell coming in behind"
+   },
+   {
+    "nat": "0x0",
+    "css": "720x610",
+    "top": 8276,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Footprints on wet gold sand beside a lacy line of foam at the water's edge"
+   }
+  ]
+ },
+ "interactive": {
+  "m": [
+   {
+    "src": "hero-img-018-tall-1000.webp",
+    "nat": "1000x1846",
+    "css": "390x844",
+    "top": 0,
+    "fold": true,
+    "loading": "auto",
+    "op": "1",
+    "alt": "Orange and peach sunset over the sea, the sun low on the horizon, lines of swell with small figures in the water, and a wave breaking on to the sand."
+   },
+   {
+    "src": "tile-img-005-380.webp",
+    "nat": "380x464",
+    "css": "171x214",
+    "top": 1158,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": ""
+   },
+   {
+    "src": "tile-img-006-384.webp",
+    "nat": "384x480",
+    "css": "171x214",
+    "top": 1158,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": ""
+   },
+   {
+    "src": "tile-img-009-520.webp",
+    "nat": "520x650",
+    "css": "171x214",
+    "top": 1379,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": ""
+   },
+   {
+    "src": "tile-img-010-520.webp",
+    "nat": "520x650",
+    "css": "171x214",
+    "top": 1379,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": ""
+   },
+   {
+    "src": "tile-img-012-750.webp",
+    "nat": "750x558",
+    "css": "350x175",
+    "top": 1601,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": ""
+   },
+   {
+    "nat": "0x0",
+    "css": "390x300",
+    "top": 5612,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "A surfer lying on a board, back to the camera, paddling at a low green wave with one arm lifted in a small splash. Two more heads in the water beyond it, open sea and a pale sky above."
+   },
+   {
+    "nat": "0x0",
+    "css": "350x350",
+    "top": 5976,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Sanjee from behind, hair tied up, turning hard on a yellow board with a pink rail, throwing white spray off a green wave."
+   },
+   {
+    "nat": "0x0",
+    "css": "350x198",
+    "top": 7587,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "A surfer standing on a white board with arms out, riding along a green wave with white water breaking behind."
+   },
+   {
+    "nat": "0x0",
+    "css": "350x263",
+    "top": 8389,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Three thatched parasols on a sand beach, a line of surf and a green wave behind them under a grey sky."
+   },
+   {
+    "nat": "0x0",
+    "css": "390x731",
+    "top": 11336,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "A rust-red headland with palms and tiled roofs running into a blue bay under a clear sky, seen from the sand."
+   }
+  ],
+  "d": [
+   {
+    "src": "hero-img-018-wide-1440.webp",
+    "nat": "1440x1100",
+    "css": "1440x900",
+    "top": 0,
+    "fold": true,
+    "loading": "auto",
+    "op": "1",
+    "alt": "Orange and peach sunset over the sea, the sun low on the horizon, lines of swell with small figures in the water, and a wave breaking on to the sand."
+   },
+   {
+    "src": "tile-img-005-380.webp",
+    "nat": "380x464",
+    "css": "259x324",
+    "top": 1188,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": ""
+   },
+   {
+    "src": "tile-img-006-384.webp",
+    "nat": "384x480",
+    "css": "259x324",
+    "top": 1188,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": ""
+   },
+   {
+    "src": "tile-img-009-520.webp",
+    "nat": "520x650",
+    "css": "259x324",
+    "top": 1188,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": ""
+   },
+   {
+    "src": "tile-img-010-520.webp",
+    "nat": "520x650",
+    "css": "259x324",
+    "top": 1188,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": ""
+   },
+   {
+    "src": "tile-img-012-750.webp",
+    "nat": "750x558",
+    "css": "259x324",
+    "top": 1188,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": ""
+   },
+   {
+    "nat": "0x0",
+    "css": "1440x774",
+    "top": 4151,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "A surfer lying on a board, back to the camera, paddling at a low green wave with one arm lifted in a small splash. Two more heads in the water beyond it, open sea and a pale sky above."
+   },
+   {
+    "nat": "0x0",
+    "css": "620x684",
+    "top": 5041,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Sanjee from behind, hair tied up, turning hard on a yellow board with a pink rail, throwing white spray off a green wave."
+   },
+   {
+    "nat": "0x0",
+    "css": "500x283",
+    "top": 6306,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "A surfer standing on a white board with arms out, riding along a green wave with white water breaking behind."
+   },
+   {
+    "nat": "0x0",
+    "css": "500x375",
+    "top": 6661,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Three thatched parasols on a sand beach, a line of surf and a green wave behind them under a grey sky."
+   },
+   {
+    "nat": "0x0",
+    "css": "1440x900",
+    "top": 8404,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "A rust-red headland with palms and tiled roofs running into a blue bay under a clear sky, seen from the sand."
+   }
+  ]
+ },
+ "unique": {
+  "m": [
+   {
+    "src": "ground-img-002-phone.webp",
+    "nat": "900x1080",
+    "css": "390x470",
+    "top": 0,
+    "fold": true,
+    "loading": "auto",
+    "op": "1",
+    "alt": "A bright blue sky over a blue bay, with a rust-red headland, palms and tiled roofs on the right and pale sand along the bottom."
+   },
+   {
+    "src": "set-img-006.webp",
+    "nat": "124x70",
+    "css": "125x71",
+    "top": 385,
+    "fold": false,
+    "loading": "auto",
+    "op": "0",
+    "alt": "A surfer in a dark top turning a white board on a green wave, with white water breaking behind."
+   },
+   {
+    "src": "set-img-007-962.webp",
+    "nat": "366x357",
+    "css": "367x357",
+    "top": 446,
+    "fold": false,
+    "loading": "auto",
+    "op": "0",
+    "alt": "Sanjee seen from behind, crouched low and carving a green wave on a yellow board with a pink rail, spray flying from the turn."
+   },
+   {
+    "src": "print-img-005.webp",
+    "nat": "832x464",
+    "css": "315x176",
+    "top": 2785,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "An instructor and a student standing in pop-up stance on the sand, on a red and a blue soft-top board."
+   },
+   {
+    "src": "set-img-006.webp",
+    "nat": "760x430",
+    "css": "222x126",
+    "top": 2935,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "A surfer in a dark top turning a white board on a green wave, with white water breaking behind."
+   },
+   {
+    "nat": "0x0",
+    "css": "390x469",
+    "top": 4466,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "An orange sunset over lines of breaking waves, with the small figures of surfers in the water."
+   },
+   {
+    "nat": "0x0",
+    "css": "329x338",
+    "top": 5527,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Sanjee walking out of the shallows, smiling, with a board with a pink rail under his arm and a rust-red cliff behind. The horizon runs at a tilt."
+   },
+   {
+    "nat": "0x0",
+    "css": "315x234",
+    "top": 6787,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Tall palms and a sandy path along a green, with beach stalls and clean lines of swell on a blue sea behind."
+   },
+   {
+    "nat": "0x0",
+    "css": "243x183",
+    "top": 6977,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Thatched beach parasols on pale sand in front of lines of white water, under a grey sky."
+   },
+   {
+    "nat": "0x0",
+    "css": "208x139",
+    "top": 7130,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "A surfer seen from behind, paddling a white board towards a low aqua wave under a pale sky."
+   },
+   {
+    "nat": "0x0",
+    "css": "322x349",
+    "top": 10684,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Three beach dogs on footprinted sand, watching an orange sun go down over the waves, with palms in silhouette on the left."
+   }
+  ],
+  "d": [
+   {
+    "src": "ground-img-002-1440.webp",
+    "nat": "1440x900",
+    "css": "1440x900",
+    "top": 0,
+    "fold": true,
+    "loading": "auto",
+    "op": "1",
+    "alt": "A bright blue sky over a blue bay, with a rust-red headland, palms and tiled roofs on the right and pale sand along the bottom."
+   },
+   {
+    "src": "set-img-006.webp",
+    "nat": "308x174",
+    "css": "307x174",
+    "top": 325,
+    "fold": false,
+    "loading": "auto",
+    "op": "0",
+    "alt": "A surfer in a dark top turning a white board on a green wave, with white water breaking behind."
+   },
+   {
+    "src": "set-img-007-640.webp",
+    "nat": "640x624",
+    "css": "558x544",
+    "top": 406,
+    "fold": false,
+    "loading": "auto",
+    "op": "0",
+    "alt": "Sanjee seen from behind, crouched low and carving a green wave on a yellow board with a pink rail, spray flying from the turn."
+   },
+   {
+    "src": "print-img-005.webp",
+    "nat": "832x464",
+    "css": "500x279",
+    "top": 2142,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "An instructor and a student standing in pop-up stance on the sand, on a red and a blue soft-top board."
+   },
+   {
+    "src": "set-img-006.webp",
+    "nat": "760x430",
+    "css": "380x215",
+    "top": 2383,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "A surfer in a dark top turning a white board on a green wave, with white water breaking behind."
+   },
+   {
+    "src": "band-img-018.webp",
+    "nat": "1440x800",
+    "css": "1440x800",
+    "top": 3458,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "An orange sunset over lines of breaking waves, with the small figures of surfers in the water."
+   },
+   {
+    "nat": "0x0",
+    "css": "480x493",
+    "top": 4416,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Sanjee walking out of the shallows, smiling, with a board with a pink rail under his arm and a rust-red cliff behind. The horizon runs at a tilt."
+   },
+   {
+    "nat": "0x0",
+    "css": "500x372",
+    "top": 5746,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Tall palms and a sandy path along a green, with beach stalls and clean lines of swell on a blue sea behind."
+   },
+   {
+    "nat": "0x0",
+    "css": "440x330",
+    "top": 6018,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Thatched beach parasols on pale sand in front of lines of white water, under a grey sky."
+   },
+   {
+    "nat": "0x0",
+    "css": "340x227",
+    "top": 6167,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "A surfer seen from behind, paddling a white board towards a low aqua wave under a pale sky."
+   },
+   {
+    "nat": "0x0",
+    "css": "545x591",
+    "top": 8388,
+    "fold": false,
+    "loading": "lazy",
+    "op": "1",
+    "alt": "Three beach dogs on footprinted sand, watching an orange sun go down over the waves, with palms in silhouette on the left."
+   }
+  ]
+ }
+}

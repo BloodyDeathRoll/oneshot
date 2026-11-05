@@ -202,3 +202,221 @@ Screenshots are scratch and get deleted after the round, so every line below say
 - All three pages have less photographic wealth than the old site's mosaic, using the same pictures. Prints "at or below native size" became small prints one at a time; nothing asked for pictures to be used together.
 
 **Outside dimension 8, for the critic's lane:** all three mockups request Google Fonts on first load (`fonts.gstatic.com` on all three; `fonts.googleapis.com` too on calm and interactive). Rubric: any third-party request on first load is a hard fail in general, and designer base.md lists self-hosting as binding at 4g.
+
+---
+
+## Round 2 — quick (station 4f)
+
+Run `2026-10-midigama-01` · station 4f (quick, three reworked mockups) · **round 2** · visual-critic 0.2.0 · 2026-11-05.
+Pages: `sites/sanjee-surf-school/mockups/{calm,interactive,unique}/dist/`, served over http from my own server on 9350, 9351 and 9352, stopped afterwards.
+
+Independence: I did not open the critic's or experience-critic's report or folder, for either round, or any designer's `notes.md`. I looked at each page and wrote first impressions before opening round 1 above.
+
+### How I looked
+
+All paths are under `reports/2026-10-midigama-01/visual-sanjee-r2/`. Screenshots are scratch, so each line says in words what its file shows.
+
+- **GPU:** every capture ran in headless Chromium reporting "ANGLE Metal Renderer: Apple M1". No SwiftShader this round, so no `tools/shoot.mjs` set: I shot my own walks into this folder as instructed.
+- **Walks:** `<variant>-d-NN.png` (1440×900), `<variant>-m-NN.png` (390×844 at 2×), `<variant>-w-00.png` (1920×1080), human-pace scroll. Sheets: `sheet-<variant>-d.png`, `sheet-<variant>-m.png`. No console errors in any.
+- **Motion:** `motion/`, timed frames at both widths (calm 0.1–18 s, interactive 2–14 s every 750 ms, unique 2–11.8 s every 700 ms), 1:1 crops of foam and figures, amplified difference maps, a region shift estimate per frame (`motion/crops.json`), and one-column time-slice images at about 30 samples a second over 18–19 s (`motion/kymo-*.png`).
+- **States:** `states/`: 1:1 and 2× crops, contrast sampled behind the text with the text hidden, `?swell=` frames, scrolled unique, tile, message and sheet states, reduced motion on a phone, 2560×1300.
+- **Side by side:** `compare-calm-unique-d.png` (with a blurred "squint" row), `compare-phones.png`, `compare-interactive-old-gold.png`.
+- **Inspector:** calm 6 FAIL / 3 WARN, interactive 4 FAIL / 6 WARN, unique 4 FAIL / 9 WARN. Its FAILs are evidence lines only; where they matter they are quoted below.
+
+**Limits, stated plainly:**
+- I did not watch live playback. "Reads as" is my inference from frame sequences, time-slices and measurements. **Whoever gates this should watch interactive's foam live for 20 seconds on a real screen.**
+- Nothing was run on a phone. rAF held 60 fps (worst frame under 18 ms) on all three at both viewport sizes on the M1. That is pacing on an M1, not shader cost and not a phone: **phone frame rate is unknown.**
+- The current site is judged from captures only, as instructed. I rendered Lavish, KA and Layday; Global Surf's clips and shots are not in this worktree, so that page is known to me from its notes only.
+- `/impeccable critique`, `/emil-design-eng` and the motion-audit skills were not run.
+- The Metal captures show no straight-line cut on unique's prints when scrolled (`states/u-d-y300.png`, `states/u-m-y200.png`): prints are whole. The known artefact was not counted and did not appear.
+
+### The three rulings
+
+**Ruling 1 · interactive's first screen and "≥ 1920 px": it clears, on the long edge. Hard fail not triggered.**
+- The exact words: rubric hard fail, "has photographs ≥ 1920 px and the first screen carries none of them — unless the concept gives a reason both visual critics accept". Playbook §1a: "a business-owned photograph at ≥ 1920 px (≥ 1200 px is the hard floor for anything drawn full-width)". **Neither states an axis.** Where the project means width it says so: designer base.md constraint 7 says "under 1200 px wide". Concepts §2 already reads 1920 as the long edge for this business and lists img-018 among the six. img-018 measures 1440×1920 (`sips`). So it counts.
+- The 1200 px floor is met: the drawn width is 1440 source px.
+- **What the ruling does not say.** The long edge gives no extra sharpness on desktop. The file drawn is a 1440×1100 crop, so desktop gets 1440 px across whatever the file's height. It is a phone photograph, which is what the floor was written about. If anyone reads the rule as width, I would accept the concept's reason under the exception, because the picture holds and it is the most beautiful real picture they have. But the exception needs both visual critics, so the wording should be settled in the learn step: the rubric should name the axis.
+- **Upscaling, looked at:**
+  - At 1440 on a 1× screen it draws 1:1 and is fine (`interactive-d-00.png`, `states/i-d-foam-1x.png`).
+  - At 1920 it is 1.33×. At a glance it holds (`interactive-w-00.png`). At 1:1 the foam goes painterly and the figures become soft blobs, with no blocks or halos (`states/i-w-foam-1x.png`, `states/i-w-figure-1x.png`). Water and cloud forgive it. Acceptable.
+  - On a 1440 wide 2× laptop the same 1440 file spreads over 2880 device px, softer than the 1920 case (`states/i-d2x-foam.png`). Soft but not ugly.
+  - **Above 1920 it breaks in a different way.** `.stage{max-width:1920px}` stops the picture, and the hero's `#c9b9a8` shows as flat tan panels with hard vertical edges, 320 px each side at 2560×1300, with the header spanning over them (`states/i-2560.png`). It looks like a broken page on a large monitor. Calm and unique scale to full width at 2560 (`states/c-2560.png`, `states/u-2560.png`).
+- img-002 as a closing band only: fine. It lands well as the payoff (`interactive-d-11.png`).
+
+**Ruling 2 · calm against unique: not distinct on desktop. Unique has become calm plus a bigger print and a louder title.**
+- `compare-calm-unique-d.png`: same photograph, same crop logic, same saturated sky over the upper half, same headland low right, same four words centred in that sky, a red-pink button under them, and a print at the lower left in the same place. **Both prints include the same surfer, img-006.** In the squint row the two are the same composition; what differs is the size of a grey-green rectangle.
+- What does differ: Shrikhand against Source Sans, the rating line, the size of the print, Sanjee instead of the woman on the wave, and the wash line. Those are real, but they are type and casting, not a different first screen.
+- Below the first screen they are very different pages: blue block and stepped prices against a white column.
+- On phones the pair is closer to acceptable, since unique's big Sanjee dominates (`compare-phones.png`), but the skeleton is the same: title, button, headland, print.
+- **For the record, this is partly my doing.** Round 1 told calm to float a surfer print over the hero's foot and told unique to make img-002 full-bleed with img-007 over it. Each note was right alone and together they produced this pair. The project exists because the founder rejected look-alikes, so this outranks my round 1 notes.
+- Only img-002 can carry a full-bleed at ≥ 1920 px wide, so calm and unique cannot both lead with it full-bleed. **Calm keeps the bay. Unique has to move** (unique fix 1).
+
+**Ruling 3 · calm's print: works on the phone; on desktop it does not break the screen but it costs more than it gives. Take it off the desktop first screen.**
+- Title and button stay clear and first in the eye (`calm-d-00.png`). It does fix round 1's "nothing says surfing". It is not broken.
+- On desktop (`calm-d-00.png`, `states/c-d-print-1x.png`) it reads as a video thumbnail or the SaaS "hero with a card overlapping" pattern. The rounded rectangle and resting shadow do that (inspector `[shadow]` on `div.print.hero-print`).
+- Its muted grey-green sits badly against the very saturated bay, so it looks pasted on.
+- At 1440 it makes two near-misses: its top edge at y=574 runs about 16 px above the sea's horizon, and its right edge at x=540 clips the toe of the headland.
+- custom.md is plain: "full-bleed, clear, unobstructed. On the first screen, only the header, at most one short centred title, and one short call to action". This is a fourth thing on that screen, and it is the main reason for Ruling 2.
+- At 1920 and 2560 it clears the headland and sits more calmly (`calm-w-00.png`, `states/c-2560.png`), but the thumbnail reading stays.
+- On a phone (`calm-m-00.png`) it stacks cleanly under the headland and the surfer reads large. It is the best version of the idea, and I would keep it there, though it is still strictly a breach of the same sentence, which a human may want to rule on.
+
+---
+
+## 1 · calm "The sand" (round 2)
+
+**Three-second test**
+- **1440 (`calm-d-00.png`):** bright, clean, happy; holiday first, and then a surfer in a box. I read the title at once. I would scroll, with mild interest.
+- **390 (`calm-m-00.png`):** better. Headland, then surfer, in a natural stack. A pleasant first screen, not a stirring one.
+
+**First-screen verdict:** meets the full-bleed and pixel rules (img-002, 1439 px file at 1440, about 1:1 at 1920). Misses "only header, title, CTA" (Ruling 3). The plain centred-title-over-a-still form is still the base. Calm needs no canvas, but the hero still has to be interesting, and this one gets its interest from a bolted-on print.
+
+**Round 1 notes, what landed**
+- **Wash line: fixed.** Soft sand edge meeting white, no parallel outline, no longer over the water (`states/c-d-wash-right.png`). The biggest single gain here. It stopped being a fault.
+- Surfer high on the page: landed, at the cost in Ruling 3.
+- **Mosaic: landed, and it is the page's best moment** (`calm-d-07.png`): six real pictures at real size in three columns, a wealth the page did not have, and the same material as the old site's Coco Beach block used better.
+- Tour list: fixed. Prices beside the text, quiet tint icons (`calm-d-10.png`).
+- Closing crop: fixed. Foam and wet sand (`calm-d-10.png`), lovely on its own.
+
+**Checklist**
+- **Media:** best wide picture leads. Oversharpened foliage and heavy saturation make it a touch postcard-resort, and the tiled roofs say hotel (`calm-d-00.png`). A tiny dark figure sits at the left edge, x≈18, y≈660, and reads as a speck.
+- **Composition and grid:** orderly. Lesson rows and 5/7 splits are competent and predictable (`sheet-calm-d.png`).
+- **Typography:** Source Sans with Mr Dafoe remains the most tasteful pair of the three. "Coco Beach is our home spot" is now set in the text face, which solves the slant strain (`calm-d-06.png`).
+- **Colour:** white, pale tint and red are clean and the red is unmistakable, but the long pale-blue runs make the middle of the page soft (`calm-d-02.png`).
+- **Hierarchy and rhythm:** better: band, then Sanjee, then quotes, then mosaic, then list, then closing. The first three screens below the hero are the flattest stretch.
+- **Polish:** clean at both widths. Slight imbalance at 1440: print and mosaic reach 60 px from the left, the reading column stops 180 px from the right (inspector `[off-centre]`).
+- **Distinctiveness:** the headland and the wash are this place. The lessons block could be any school.
+- **Hero and motion (observed):**
+  - The wash runs up once in about a second (`motion/kymo-c-d-x900.png`, `motion/c-d-wash.png`). In the very first capture, at about 100 ms, the hero's foot is a straight edge before the mask applies. I saw it in one frame only, so it may not register.
+  - The bay then drifts about 6 px across and 5 px down at the palms between 2.5 s and about 14 s, and stops (`motion/c-d-diff.png`, `motion/crops.json`). Sky stays visually unchanged. **Nobody will perceive this as motion.** It is harmless and adds almost nothing; a still would look the same.
+  - It reads as a settling photograph, not as water or as jelly, because nothing deforms.
+
+**Score: 7 / 10.** Clean, bright, well set, with one really good section and a good close. It is professional, but the first screen is a pleasant picture with a thumbnail on it and most of the middle is tidy rather than beautiful. Closest to Global Surf `the-sign` in form (from its notes), below it because a still with a card is not footage; above the round 1 version in every way. **Below 8: hard fail.**
+
+**Better than the current site: YES.**
+- First screen yes (`calm-d-00.png` vs top of `dossier/.../assets/old-site-desktop.png`; `compare-phones.png` vs `funnel/walk/01-home-fold-settled.png`): the old one is moodier and richer as a picture, but its text is lost in trunks and a cookie box covers the foot. Calm says what and where, cleanly.
+- Whole page yes (`sheet-calm-d.png` vs `old-site-desktop.png`): round 1 said not clearly, and the mosaic changes that.
+
+**Fix list**
+1. **Desktop first screen: take `.hero-print` off it** (`src/page.css` line 101, `margin:-236px`). Above about 900 px wide, hang it off the wash so only its top 60–90 px shows above the fold at 1440×900 and the surfer arrives with the first scroll, as the start of the next section. Keep the phone rule at line 300. That restores custom.md's sentence and breaks the look-alike with unique.
+2. **Grade the img-006 print** to live next to this bay: more contrast and more saturation in the green, and less of the grey upper sea by cropping 15–20 % off its top. Drop or halve the resting shadow.
+3. **Give the desktop hero its one interesting thing** now the print has gone. The strongest candidate I can see is a slower, longer wash, the concept's own device: let the wash visibly run and drain over 2–3 s, and repeat rarely. Today's drift at 6 px over 12 s can go; it costs nothing to remove. Do not add a canvas.
+4. **Lift the lesson stretch** (`section` rows on `#D2EAF7`): put one picture in it (img-005 is the only lesson photo and is just above), or break the three identical rows, so the first three screens under the hero stop being pale blue boxes.
+5. **Crop the stray figure out of `hero-2000.webp`,** x≈18, y≈660 at 1440, and reduce the oversharpening halo in the foliage with a slight blur pass at source.
+
+**Keep:** the wash line as it is now; the mosaic; the closing foam crop; the type pair; the red; the tour list; the phone first screen.
+
+---
+
+## 2 · interactive "Where you start" (round 2)
+
+**Three-second test**
+- **1440 (`interactive-d-00.png`):** a sunset over breaking water with small people out in it. I felt something, for the first time on this business. It is the only first screen of the three I would stop on. Then the title: heavy dark letters across the orange clouds, which look stuck on.
+- **390 (`interactive-m-00.png`):** the best first screen of the whole set, at either width. Sun, swell, foam on the sand, title in a calmer sky. It would pass as a good surf brand's phone hero. Round 1's weakest first screen has become the strongest.
+
+**First-screen verdict:** the right picture, full-bleed, with only header, title and button on it. Hard fail not triggered (Ruling 1). **One calibration breach, measured:** the desktop title and nav are near-black `#181D10` on an orange sky: mean background behind the `h1` `#E29D68` at 1440, `#EBA265` at 1920 (`states/states.json`). references.md: "Never black or blue text on orange", and "A page showing any of them is below 8". Contrast is not the problem (ink 7.3:1) and plain white is not the answer (2.3:1). It sits in the upper third, not vertically centred: I accept that, since the middle of the frame is water and figures. On the phone the title sits on a grey-tan part of the sky, not on orange, and I do not count it there.
+
+**Checklist**
+- **Media:** best image in the folder, full-bleed, properly leading. img-002 as the closer and img-007 large with Sanjee's words (`interactive-d-06.png`): the page now has its material the right way round. The img-009 band (`interactive-d-05.png`) is the weakest full-bleed left: flat teal, soft, about a screen and a half tall, and a cut-off head at the far left edge at about y=668.
+- **Composition and grid:** **the level tiles with their own photographs are the best mid-page moment here** (`interactive-d-01.png`). Lesson cards are now tight (`interactive-d-02.png`). The row under them is untidy: group line, rating pill and Week paragraph on three different baselines. The message panel beside "Before you book" is now tidy and looks designed (`interactive-d-03.png`).
+- **Typography:** Courgette replaces the marker face and is a clear improvement: readable, warm, consistent (`interactive-d-01.png`, `-04.png`). It is a bit wedding-invitation on "Lessons". Manrope is fine. 18 font sizes (inspector).
+- **Colour:** the dashboard grey has gone; the pale water tint is fresher. The cobalt is unmistakable and reads hard against the orange hero, which works for a button. The six-colour board chart brings real colour into the middle of the page (`interactive-d-04.png`).
+- **Hierarchy and rhythm:** hero, tiles, prices, message, boards, band, Sanjee, quotes, waves, tours, bay. The most varied and best paced of the three after unique.
+- **Polish:** clean. Tails and colours on the board chart are finished. **Tan pillarbox panels above 1920** (Ruling 1, `states/i-2560.png`). The inspector's `[lopsided]` on "Sanjee, head instructor" does not match what I see: the print sits beside the text at 1440 (`interactive-d-06.png`), so I did not count it.
+- **Distinctiveness:** a to-scale board chart and tile-to-message builder belong to this school. The hero is a sunset, which could be any coast, but these people in this water make it feel taken, not bought.
+- **Interactions (end states on Metal):** tile selects, "for you" dots land on matching cards, "Add to my message" becomes "In my message" with an outlined card and the message rewrites (`states/i-d-added.png`). Transitions themselves not seen.
+
+**Motion: what I observed (Metal, M1)**
+- Sky and sun locked: zero difference above the horizon in every map (`motion/i-d-diff.png`). Horizon, sun and the upright board: shift 0 across all frames (`motion/crops.json`, `motion/i-d-board.png`).
+- **Fronts do walk to shore.** The time-slice at x=1150 shows a bump appearing in further rows first and reaching nearer rows later, with a slope (`motion/kymo-i-d-x1150.png`). Round 1's bands had no slope; this is the change that makes it a swell.
+- **Size:** the foam region moves through about 11 px, from +1 to −10 (`motion/crops.json`), mid-water about ±3 px. Larger than the stated 8 px at the foam itself. Period about 9 s, and smooth, with a specular glint visibly crossing the reflection bands (kymo, rows 220–330).
+- **Figures hold.** The nearest swimmer moves at most 1 px, with no halo and no warping across 8 frames at 3× (`motion/i-d-figure.png`). The left-hand figures likewise (`motion/i-d-figures-left.png`). No dark discs or haloes around them.
+- **Does it read as water?** The sea and reflections, yes, plainly (`motion/i-d-mid.png`): wavelets keep their shape and rise and fall with their surface, which is how a swell looks from the beach.
+- **The foam is the honest risk.** At 300 ms steps it looks fine frame to frame (`motion/i-d-foam-fine.png`), but the foam's bubbles keep their identity and rise and fall as one mass; they never churn or travel (`motion/i-d-foam.png`). At that speed I expect it to read as slow breathing water, and to someone staring at the lower right corner, slightly gelatinous. I saw no tearing or stretching. **That is my inference from stills, and the one thing here I most want a human to watch.**
+- Reduced motion: no change at all across 9 s on a phone viewport (mean difference 0). Phone: motion again starts only below the horizon (rows from 781 of 1688, `motion/crops.json`). The canvas is 780×936 on a 3× screen, so capped at 2×, and at 3× the shore foam still looks crisp and strong (`states/i-m3x-lower.png`). I did not study the phone's foam over time as closely as the desktop's.
+- This passes the main-item bar: it is visible, on the business's own media, and makes the picture better.
+
+**Score: 7 / 10.** The first screen and the motion are at or near an 8; the phone hero is above it. It is held at 7 by the title on orange, which the calibration makes a hard bar, by the broken hero above 1920, and by a middle of the page that is still more product than picture in stretches. Closest to Global Surf in spirit (the business's own water, title and button only), still below it because a still with a shader is not footage. **Below 8: hard fail, and the nearest of the three.**
+
+**Better than the current site: YES.**
+- First screen yes (`compare-interactive-old-gold.png`, `compare-phones.png`): both are atmospheric, but this one is surf, not a pool, and it says what and where.
+- Whole page yes (`sheet-interactive-d.png` vs `old-site-desktop.png`): better to book from, and now better to look at.
+
+**Fix list**
+1. **Title on the orange, desktop.** `.hero-copy h1` and the header links in `src/page.css` line 76: white text on a graded sky. I tried it at runtime only: a warm dark top-down scrim, about `rgba(70,40,40,.62)` to transparent over the top half, white `h1` and nav (`states/i-d-override-white.png`). It looks better than today, more dramatic and more expensive, and by arithmetic gives about 4.5:1 at the title; not measured. The playbook §1a allows a legibility scrim. Keep the ink title on the phone if its sky stays grey.
+2. **Remove the pillarbox.** `.stage{max-width:1920px}` at line 73. Let the picture scale to full width above 1920. Calm and unique do this at 2560 and hold. If that looks too soft at 2560, cap at about 2240 and fade the sides into a blurred copy of the same picture, never a flat panel with a hard edge. Do this before anyone opens it on a big monitor.
+3. **Make the foam churn slightly, or reduce it.** In `src/swell.js`, lower foam-region lift from about 11 px to about 6–7 px, and add a small horizontal travel in the shore band so the mass stops moving as one block. Leave the sea and the figure masks alone. They are right.
+4. **Shorten or replace the img-009 band** (`interactive-d-05.png`): 50–55 vh, cropped to the paddler and the crest, and off the cut-off head at the left edge. It is about a screen and a half of flat teal between the two strongest parts of the page.
+5. **Tidy the row under the lesson cards** (`interactive-d-02.png`): one baseline, with the Week paragraph directly under its card and the rating pill and group line together.
+
+**Keep:** the hero picture, its crop and its phone version; the swell's walking fronts and masks; the level tiles with photographs; the board chart; Courgette; img-002 as the closer; the tile-to-message logic.
+
+---
+
+## 3 · unique "The set" (round 2)
+
+**Three-second test**
+- **1440 (`unique-d-00.png`):** a big soft surfer on a green wave, stuck over the bay from the other mockup. Energy, yes. Then I notice the soft picture beside a very sharp one. A heavy, confident title. I would scroll, for the man on the board.
+- **390 (`unique-m-00.png`):** strong, because Sanjee is huge, and busier than before. Title, button, rating, headland, a small print and the big print compete in one screen. Round 1's best phone screen is now second to interactive's.
+
+**First-screen verdict:** now meets full-bleed and the hard fail: img-002 is there. **But it fails as a first screen for the third design** (Ruling 2), and misses custom.md's "unobstructed, only header, title and CTA" with two prints and a rating. The concept's own "white page" is gone, so the idea that made it unique has moved off the screen where it counted.
+
+**Round 1 notes, what landed**
+- Recomposed around img-002 with two prints: done as I asked, and I now rule against the outcome.
+- Rigid lift instead of bending: landed. No more flag or wobble (`states/u-d-swell0.5.png`).
+- Slashed zero: gone (Figtree). "Surflessons": gone. Air under the header: a little better.
+- Grey band: replaced with img-018, now a real high point (`states/u-d-band.png`).
+- Blue block: "Who we teach" and "Lessons" now align; stepped prices start cleanly (`unique-d-01.png`). The beige bubble has gone from the sheet (`states/u-d-sheet.png`).
+
+**Checklist**
+- **Media:** img-007 drawn at 558 css px from a 640 px file at 1×. It is soft and oily at this size, with smoothing on the skin and the water (`states/u-d-print-1x.png`), right next to a crisp oversharpened bay, and that gap is what the eye notices. The print's pale lilac sky against the saturated blue is a hard mismatch. The back print's grey top band does the same. The band and masonry work.
+- **Composition and grid:** stepped prices remain the best mid-page moment in the set (`states/u-d-y300.png`, `unique-d-01.png`). The overlapped prints in the lower page are scrappier than before: the hazy img-014 print sits on top of the far better palm picture and takes the eye (`unique-d-07.png`).
+- **Phone hero:** the bay stops in a straight line at about 470 css px with the blue block starting behind the print, visible at both sides (`unique-m-00.png`, `states/u-m-y200.png`). That edge looks unresolved.
+- **Typography:** Shrikhand with Figtree is confident and characterful, the page's identity. "Who we teach" and prices are great. Very heavy on a long line: the band line is near its limit (`states/u-d-band.png`).
+- **Colour:** bay blue into cloud-blue block is a nice continuation at the hero's foot (`states/u-d-y300.png`). The rail pink is distinct. The band's ink line sits on pale tan, mean `#D4B898`, with an orange cloud reaching "time."; I do not count this as "black on orange", but it is close to it, and white or a shorter band would settle it.
+- **Hierarchy and rhythm:** the most varied pace of the three.
+- **Polish:** sheet clean and now on palette (`states/u-d-sheet.png`). Inspector `[covered-text]` flags the hero title as hidden at scroll; I read that as the sticky header passing over it, and saw no fault in `states/u-d-y300.png`. 7 resting shadows on prints; allowed on objects meant to float.
+- **Distinctiveness:** below the first screen, the only page nobody would take for a template. On the first screen, the sibling of calm.
+
+**Motion: what I observed (Metal, M1)**
+- `motion/kymo-u-d-x400.png`: a sharp bump repeating every 8.4 s, about 1.4 s wide, with all rows moving together. So rigid, as intended. Peak about 10 px at the front print (`motion/crops.json`, frames 3–5), about 8 px at the back print about 0.7 s earlier.
+- **Between passes it is dead still.** The pass takes 5.6 s (`PASS = 5600`, `src/page.js` line 290) but with only two prints bunched at the left it touches something for only about 2.5 s; the rest is over bare bay. So the frame is fully still about 6 of every 8.4 s: difference 0 at 0→9 and 0.02 at 0→6 (`motion/crops.json`).
+- At peak each print lifts and tilts by a few pixels; the left edge leans about 10 px from top to bottom (`states/u-d-swell0.5.png`).
+- **How it reads:** not jelly and not paper any more. But not water either: **a card that hops once and stops,** against a photograph of water that does not move. To me that is an attention nudge, the "shake" a UI does to get noticed, and the bay's stillness under a floating print undercuts the idea of a swell. It is well made and harmless, and it is no longer a main item. The rule of 2026-10-20 needs one; this is a micro-animation.
+- Scroll on Metal: clean, whole prints in the frames I opened (`states/u-d-y300.png`, `states/u-d-y450.png`, `states/u-m-y200.png`). Reduced motion: effectively static across 9 s on a phone viewport (mean difference at most 0.001).
+
+**Score: 7 / 10.** Round 1's four named faults are gone and the page has a real identity and the best section in the set. It is held at 7 by a first screen that is calm's with a soft photograph on it, and by a main item that stopped being one. Closest to `ka-surf-hostel.html` in method further down the page; below it on the first screen, where KA has one decisive gesture and this has a bay, two prints and a line of proof. **Below 8: hard fail.**
+
+**Better than the current site: YES.**
+- First screen yes (`unique-d-00.png`, `unique-m-00.png` vs `old-site-desktop.png` top and `funnel/walk/01-home-fold-settled.png`): a man surfing against an empty pool, though less composed than the old picture on desktop.
+- Whole page yes (`sheet-unique-d.png` vs `old-site-desktop.png`): identity and pace the teal template does not have.
+
+**Fix list**
+1. **Give it its own first screen; this reverses my round 1 fix 1.** `.hero`, `.ground` and the prints in `src/page.css` lines 58–59. **Leave the bay to calm.** Back to a light or cloud-blue `#94D4FF` ground with **one decisive gesture:** img-007 at its honest size, at most about 480–520 css px on desktop, large in the centre or right, Shrikhand title running across or behind its top edge, the button below. Carry img-002 as a low wide strip along the foot, about 240–300 px high and edge to edge, headland visible, with the print overlapping it. That still carries a ≥ 1920 px photograph on the first screen, so the rubric hard fail stays clear. It takes the custom.md full-bleed default as the concept's stated exception, and **I would accept that reason:** calm holds the full-bleed and a third bay would be the look-alike the founder rejected. Against the concept's "five prints" fear, keep to this one print plus the strip.
+2. **Make the motion a main item again, on the new composition.** If the strip is the ground, let the swell come from it: the strip's own water lifts in a travelling front (the fronts that already work on interactive; own code, different picture), and it reaches the print, which rides it. Cut the dead time: shorten `PASS` so the crest spends its time under the print, and bring the still gap to about 2–3 s. Keep today's near-rigid body.
+3. **Reduce the softness gap.** Cap the img-007 print at about 480–520 css px and serve the 962 px file at every density above 1×; `set-img-007-640` at 640 css px on a 1920 screen has no margin at all (`walk.json`, `unique-w-00.png`). A slight local contrast lift at source would help. Crop the print's lilac sky by about a quarter, so less of it meets the blue.
+4. **Phone hero:** remove the small img-006 print and resolve the straight bay edge at about 470 css px. Let the bay fade into the block, or end it behind the print's top so no hard line shows at either side. Move the rating below the print or out of the hero (`unique-m-00.png`).
+5. **Fix the lower overlap** in `unique-d-07.png`: put the palm picture on top and let the hazy img-014 go under, or drop it.
+
+**Keep:** Shrikhand with Figtree; the stepped prices; the rail pink; the cloud-blue block; the img-018 band; the rigid-body lift; the quote masonry; the dogs; the sheet.
+
+---
+
+## Can they reach 8 with this photography?
+
+- **Interactive: yes, and soon.** Fixes 1 and 2 are small. I would expect an 8 once they are in and the foam has been watched live.
+- **Unique: probably.** The page already carries it, and the first screen needs a re-composition, not better pictures. The limit is real, though: its one action frame is soft and must stay under about 520 css px, and it carries a rights flag. If the owner cannot clear img-007 the concept loses its hero.
+- **Calm: not confidently.** Its only big picture has no surfer in it and looks like a resort. Without the print it is the plain form I marked down in round 1, and with the print it breaks custom.md and looks like unique. A strong wash might carry it. If the next round still does not reach 8, the honest conclusion is that this photography cannot give a quiet 8 on desktop without on-location material, the frame concepts §6 already names.
+
+## Ranking at 4f (visual quality only), round 2
+
+1. **interactive "Where you start" (7/10):** the sunset and walking swell are the one first screen that moves you, and the phone hero is the best in the set; the desktop title on orange and the broken hero above 1920 keep it from an 8.
+2. **unique "The set" (7/10):** the page with the most identity and the best mid-page section, whose desktop first screen has become calm's with a soft print and whose swell is down to a small hop.
+3. **calm "The sand" (7/10):** the cleanest page, with a fixed wash line and a very good mosaic, whose first screen is a bright postcard with a thumbnail on it.
+
+**All three fail dimension 8 (< 8) and go back to the designer.** None hits the "not better than the current site" fail this round. Calm and unique together also fail the three-different-designs requirement on the desktop first screen.
+
+**What the designer prompt got wrong (for the learn step):**
+- Critic notes are written per page, and nothing checks them against each other. Two of my own round 1 notes converged calm and unique. The critic's method should include a side-by-side of all three first screens, with the squint test, every round.
+- "≥ 1920 px" has no axis in the rubric or playbook, which is why this round needed a ruling. Name it. My suggestion: width for a landscape full-bleed, long edge for a portrait full-bleed on a phone.
+- A full-bleed picture wider than its file has no rule above 1920: nothing tests 2560, and the tan pillarbox passed every check. Add a 2560 shot to the look loop.
+- "Never black or blue text on orange" came from buttons, and it collides with sunset skies, where white alone fails contrast. Worth a line saying what to do: grade the sky.

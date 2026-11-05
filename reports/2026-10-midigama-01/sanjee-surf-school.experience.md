@@ -236,3 +236,253 @@ No FAIL changes a score. Calm: `icon-cards`, `eyebrow`, `covered-text`. Interact
 - **Native date pickers** (set programmatically) and momentum on real touch hardware.
 - **WhatsApp.** No link was opened and nothing was sent. Whether the number answers, and how fast, is unknown. Nobody has verified it.
 - **The live current site.** Captures only, as instructed. Global Surf gold pages were not rendered; the calibration in `references.md` and three other gold first screens were used. The skills `/impeccable`, `/emil-design-eng` and the motion audit were not run.
+
+---
+---
+
+# Round 2 (designer 0.7.1 reworks)
+
+experience-critic 0.2.0 · station 4f (quick), round 2 · run `2026-10-midigama-01` (test, operator alon) · 2026-11-05
+Pages served over http on :9360 / :9361 / :9362 from my own static server, stopped afterwards. Written without reading the critic's or the visual-critic's report for either round, or the designers' `notes.md`. I read my round 1 section only after walking each page and forming a first impression.
+
+Frames: `reports/2026-10-midigama-01/experience/sanjee-surf-school-r2/` (git-ignored). Phone: 390×844 @2x, touch, real touch events through CDP for drags and swipes. Cold-load timing: CDP 1.6 Mbps / 150 ms RTT, 4× CPU. Laptop: 1440×900. WebGL ran twice: on SwiftShader (the pages' own 10 fps tier on interactive) and on this Mac's GPU through ANGLE Metal. Timings come from hooks on the page's own WebGL calls, not from screenshots.
+
+## Summary
+
+| | calm "The sand" | interactive "Where you start" | unique "The set" |
+|---|---|---|---|
+| **Dimension 8 (experience)** | **8 / 10** (round 1: 7) | **7 / 10** (round 1: 7) | **8 / 10** (round 1: 8) |
+| Better than the current site | **yes** | **yes** | **yes** |
+| Pass / fail (this critic) | **pass**, narrowly | **fail**: dark title on orange at laptop width, a calibration hard bar | **pass** |
+| Taps to WhatsApp | 1 from every button | 1 from hero, card, bar, tour; message built in 2 to 4 taps | 1 from hero and bar; 2 from a lesson |
+| Swell felt within 3 s, throttled phone | no swell (by design) | **no, by about 3.5 to 4 s** | **no, at about 4 to 5 s** |
+
+**Experience ranking at 4f: 1 unique · 2 interactive · 3 calm.** Interactive is one fix from level with unique: the walk alone earns it 8, and it has the strongest colour and the best booking tool of the three.
+
+**The swell, measured** (three cold loads each, ms from navigation, throttled phone):
+
+| | Load event | First canvas draw | Half strength | Full strength |
+|---|---|---|---|---|
+| interactive, SwiftShader | 2,226–2,871 | 2,471–3,580 | 3,023–4,191 | 3,572–4,724 |
+| interactive, Mac GPU | 2,316–2,466 | 2,748–3,201 | 3,329–3,837 | 3,865–4,276 |
+
+| | Load event | Pass starts (off-screen) | Front print lifts 1 px | 3 px | Peak 10 px |
+|---|---|---|---|---|---|
+| unique, SwiftShader | 1,694–1,727 | 3,012–3,352 | 4,048–4,448 | 4,216–4,604 | 4,715–5,037 |
+| unique, Mac GPU | 1,487–1,748 | 2,560–2,838 | 3,578–3,866 | 3,756–4,034 | 4,249–4,531 |
+
+The designer's "2.3 s plus 1.1 s" for interactive is the best case: canvas from 2.5 s, full from 3.6 s. At 3 s the water has just begun to wake. `interactive-phone-cold-3000ms.png` looks like the still.
+
+Strength once running (whole-frame PSNR, lower moves more; frames about 2 s apart on interactive, flat against phase 0.3 on unique):
+- **Interactive:** 22.6 dB on the phone and 20.2 dB on the laptop, against 34–40 dB and 35.8 dB in round 1. The water alone is 20.0 and 18.0 dB. Sky is pixel-identical (`inf`), so the sky is locked.
+- **Unique:** 22.1 dB on the phone (round 1: 20) and 27.0 dB on the laptop (round 1: 30.7).
+
+So unique's swell did not get meaningfully quieter on these numbers. It changed character instead (see §3).
+
+**Outside dimension 8, for the critic:** all three still request `fonts.gstatic.com` on load, and calm and interactive also `fonts.googleapis.com`. First paint on the throttled phone: calm 776 ms (round 1: 1,476), interactive 892, unique 748.
+
+**The current site, honestly.** The comparison is unchanged from round 1 (`funnel/walk/01-home-fold-settled.png`, `11-wizard-4-date.png`, `11-wizard-5-slot.png`). It has palm trunks over a real breaking wave, a pool that is not the school's, a cookie box, no name and no town. It runs 36 phone screens with no menu. Its one real advantage stays: it holds a slot. A traveller leaves with 8:00 on the 11th, $8 paid and $32 on site, after 5 taps, 3 typed fields and a card. Every mockup ends in a question sent to a number nobody has seen answered, with no reply time and no hours. All three still beat it for a stranger comparing schools, most of all at first contact. Whether a WhatsApp question converts as well as a held slot cannot be answered by walking a page. It stays a decision for the human.
+
+---
+
+## R2 §1. Calm: "The sand", 8/10
+
+### Timeline (phone, throttled)
+Frames requested at 0.5 s and 1.5 s were taken late (about 4.3 s and 5.4 s) because the first screenshot stalled under 4× CPU, so they are no evidence for the earliest moments. The page's own timing: first paint 776 ms, hero image complete by 1.7 s, load 3.45 s. Settled from `calm-phone-cold-3000ms.png` on.
+
+**First seconds communicate:** surf lessons, Weligama, one red button, and now a real person standing up on a green wave. That print is the one change that matters. The first screen no longer sells only a headland, so the round 1 method 5 cap comes off. It is clean, bright and sure of itself, and the most conventional of the three.
+
+Two honest doubts:
+- The biggest thing on the screen is still a headland of resort roofs that are not the school's.
+- On the laptop, the rounded print at lower left can read as a video thumbnail with no play button (`calm-laptop-fold.png`).
+
+### Walk (`calm-phone-sheet.png`, 12,672 px, 15 screens; `calm-laptop-sheet.png`)
+- **The lift moved up.** The lesson print, then lessons, then the paddler band, then Sanjee walking in, now around screen 5 rather than screen 9. Boards follow him. It is a better order for wanting to go.
+- **The photo grid in Waves** (sunset, dogs, sand, poles, silver sea) is new and a real lift, a good answer to the old site's picture block.
+- **The tail** is about 3.3 screens (y≈8,413 to y≈11,170) with prices on the title line and one print among the rows. It no longer sags as it did.
+- **Attention drops** at the board-rental paragraphs and in the tour rows, which still look alike, and in the script line at phone size, where Mr Dafoe is the slowest thing to read on the page.
+- **The ending:** footprints, then the name in script over the tide edge. Warm.
+
+### Booking
+1 tap everywhere. Hero and bar: "Hello Sanjee Surf School, I'd like to ask about surf lessons." Lesson, board and tour buttons name their subject ("…about the Surf Spot Safari tour."). 22 links. There is no way to state a date or level before the tap, so that is left for the traveller to type in WhatsApp. Price and level are clear before the tap. Hrefs read, not opened.
+
+### What I operated, and round 1 fixes
+| Round 1 fix | Result | Evidence |
+|---|---|---|
+| A human moment on the first screen, less empty sky | **Landed**, with img-006 (a surfer) rather than the lesson on sand I asked for. The lesson print stays one scroll down. Good enough | `calm-phone-cold-3000ms.png` |
+| Redraw the wash line | **Landed on the laptop**, a soft long edge with no lumps. **On the phone the print covers most of it**, so the concept's device is now barely visible there | `calm-laptop-fold.png`, `calm-phone/s00.png` |
+| Break the tail | **Landed** | sheet |
+| Hero button under the wordmark | **Landed.** Header solid from y≈100, and at y=400 solid with the bar on. Nothing prints through. The button passes under a white header (`calm-op-hdr-y200.png`) | `calm-op-hdr-y400.png` |
+| Self-host fonts | **Not done**, but first paint improved | above |
+| Boards table early; `spot` in text face; track takes each quote's height | **All landed.** Track 270 / 270 / 298 / 128 px, animated over 240 ms | `calm-op-quote-0.png`, `-quote-3.png` |
+
+Also operated:
+- **Quotes:** touch swipes and dots both move the track, and the dots follow. The page below rises or falls by up to 170 px on the shortest quote. That is animated, and I found it acceptable.
+- **Phone menu:** opens, Esc closes and returns focus to the summary, outside tap closes, all six links land clear of the header.
+- **Reduced motion and JS off:** both look right on the phone (`calm-reduced-phone.png`, `calm-nojs-phone.png`).
+- **Micro-animations:** 35 of 40 controls on the laptop carry a transition. The dots animate through their own bar.
+
+**Nothing got worse.** One small new mismatch: the menu lists Boards before Sanjee, while the page now has Sanjee first, so "Boards" jumps further than its neighbour.
+
+### Score: 8, better than the current site: yes
+Engaging for a calm page, clearly better than the old site, and the easiest of the three to read and book. It passes narrowly, on a print that puts a person on the first screen. It has no spectacle, so it is the page most exposed to "nice, but what do I remember?" at the human pick.
+
+**Fix list (biggest effect first)**
+1. **Make the print belong to the wash line on the phone.** In `.hero` at under 768 px, raise or shrink the print so that some of the wash edge shows on both sides and the white visibly laps at it. Today the device is close to invisible.
+2. **Stop the print reading as a video on the laptop.** Give the print less corner radius, or a little overlap with the headland, so it reads as a photograph laid down rather than a player.
+3. **Put the menu in page order.** In `.menu-panel` and the desktop nav: Lessons, Sanjee, Boards.
+4. **Set the feature line and long titles in a more readable size or face on phones.** Mr Dafoe at 36 px on `Making waves, one lesson at a time.` is slow.
+5. **Self-host the fonts** (critic's line too).
+
+**Keep:** the print on the first screen; the red from the learner's board, used only for booking; Sanjee moved up; the photo grid; the paddler band; the footprints.
+
+---
+
+## R2 §2. Interactive: "Where you start", 7/10
+
+### Timeline (phone, throttled)
+| Time | On screen | Frame |
+|---|---|---|
+| taken about 2.1 s | Title, button, header all usable. The sunset has painted down to the near waves, and the bottom third is still a flat taupe block while the image arrives | `interactive-phone-cold-500ms.png` |
+| taken about 3.3 s | The whole picture in. Canvas up, water only just starting | `interactive-phone-cold-3000ms.png` |
+| 3.6–4.3 s | The swell at full strength | timings above |
+
+**First seconds communicate:** a sunset over a surf break in Weligama, moving water, one blue button. This is now the most beautiful first screen of the three, and the first with strong colour. It makes you want to be there. The surfing is told by the title and by tiny figures: four paddlers on the laptop, about 4 px dark marks on the phone.
+
+**Did losing the close paddler hurt?** It lost something and gained more. Round 1's hero said "surfing" straight away, in a low-energy blue-green. This one says "this coast at the end of the day", with a close breaking wave in the foreground, and the next screen supplies the people through the tiles. A net gain, with one cost: a stranger who only sees the fold could take it for a beach or a sunset page rather than a school, which is the title's job to correct.
+
+**The hard bar:** on the laptop the near-black title `#181D10` sits on orange cloud. Measured behind the title with the text hidden: average `rgb(227,158,104)`, hue 26°, saturation 0.54 (`interactive-laptop-fold.png`). Contrast is fine at 7.7:1, but calibration says "Never black or blue text on orange", and that a page showing any listed point is below 8. The wordmark and nav also sit on it. On the phone the title sits on the pale band above the clouds (hue 36°, saturation 0.18), so **this is a laptop crop problem only**. It comes from `data-crop-wide`, which starts lower in the photograph than the phone crop does.
+
+### The main item, walked
+It is now plainly felt once running. Frames 1.4–2 s apart differ visibly (`interactive-phone-swell-0.png`, `-2.png`, `-4.png`), the water lifts and glitter moves, the sky stays locked and the figures hold. **No jelly in any frame**, including the close foam at laptop size. That is the fix I asked for, and it landed strongly. It runs without any interaction. Its one shortfall is the start: not felt at 3 s on a throttled phone, by about 3.5–4 s. I could not watch it in real time on a real phone.
+
+### Walk (`interactive-phone-sheet.png`, 13,012 px, 15 screens; `interactive-laptop-sheet.png`)
+- **Tiles with pictures are a big step up** (`interactive-op-01-tiles.png`, `interactive-laptop-tile-click.png`). The lesson on the sand, a surfer turning, the paddler, big white water, the bay. You choose yourself by picture. The grey app panel is gone.
+- **Cards, message, boards chart:** all good. The chart now stands on sand in real colours and is a real moment on both widths.
+- **Sanjee on the wave**, then the quotes, is still the strongest passage.
+- **The closing bay** in full, with `closing` in the sky, is still a reward.
+- **Courgette** replaces the old marker face: readable and tasteful, slightly café-menu. Better than round 1.
+- **Attention drops** in the tuk-tuk rows, as on all three.
+
+### Booking: built message, hrefs read after building one
+I chose Total beginner, Beginner Lesson, a date and 2 people. The bubble and `#send` read: "Hello Sanjee Surf School, I'd like to ask about the Beginner Lesson. I'm a total beginner. The date I have in mind is 19 November 2026. There are 2 of us."
+
+| Control | Carries it? |
+|---|---|
+| Phone bar, header button, hero, closing, footer | **Yes, the same text as `#send`** |
+| The three cards | **Yes**, keeping their own subject: "…about Private Coaching. I'm a total beginner. The date…" |
+| Board button | **Yes:** "…about renting a board. I'm a total beginner…" |
+| All 12 tours | **Yes:** "…about the Galle Fort tour. I'm a total beginner. The date…" |
+
+The message now survives everywhere, and the prefills are fixed ("Private Coaching", "the Galle Fort tour"). **Over-reach:** "I'm a total beginner" on a Galle Fort or Tea Estate outing reads oddly, though it harms nothing, since the visitor will see the text in WhatsApp. It would read better if outings kept only date and people.
+
+### What I operated, and round 1 fixes
+| Round 1 fix | Result | Evidence |
+|---|---|---|
+| Swell felt | **Landed**, late by under a second on a throttled phone | above |
+| Header overprint | **Landed.** Solid by y=60, when the title reaches it. Nothing prints through at any step from y=0 to y=300 | `interactive-phone-hdr-y60.png`, `-y140.png` |
+| Bar and cards follow the message | **Landed** | table above |
+| Show a tile's effect on the phone | **Half landed.** The strip above the bar says "I'm a total beginner." at once and goes to the message. **But the new lesson chips under the tiles are hidden in practice.** With the first tile at y=80 / 120 / 200 / 300 / 400 the chip row sits at y=712 / 752 / 832 / 932 / 1032, and the strip starts at y=728. So "Beginner Lesson, USD 40" never shows on tapping a top-row tile, and the page does not scroll | `interactive-op-03-tile-tap-settled.png` |
+| Warm up the middle, fix prefills | **Landed.** Cards now size to their content (382 / 356 / 334 px), and the 120 px gap has gone | sheet |
+
+Also operated:
+- **Tiles (all five):** ring and label fill. Total beginner gives Beginner Lesson; I can stand up gives two lessons; Intermediate and Advanced give Private Coaching; Not sure gives only "Your message". Tapping again clears. The chosen level's wave paragraph lights up (`interactive-op-wave-lit.png`).
+- **Chips:** the lesson and people chips and the date each rewrite the bubble, with a word-level fade-in in the code that I did not catch in a frame. The date was set programmatically. I did not tap the "Not sure" chips.
+- **Strip above the bar:** a real link to `#message`, settling with the panel at y=84 under the 60 px header. It also stays on screen when you scroll back up to the hero, floating alone with the bar gone (`interactive-op-12-menu-open.png`, bottom). A small oddity.
+- **Soft-top / Hardboard:** slides, digits roll, labels update (`interactive-op-09-rates-hard.png`).
+- **Phone menu:** opens, Esc closes and returns focus, outside tap closes, all six links land clear of the header.
+- **Reduced motion:** the still (`interactive-reduced-phone.png`); the script returns before it starts the canvas. **JS off:** the phone hero button is hidden on purpose (`.no-js .hero-btn`), and the bar is there from the first paint with a real link (`interactive-nojs-phone.png`).
+- **Micro-animations:** 52 of 58 controls on the laptop carry a transition, so method 5 is met.
+
+**Got worse:** nothing in the walk. The direct "surfing" read of the old hero is the only thing given up, as above.
+
+### Score: 7, better than the current site: yes
+By the walk alone this page earns 8: the swell is felt, the message survives, the middle is no longer an app. It stays at 7 only because the laptop title is on the calibration's hard-bar list. I am applying that literally, since a critic that passes what Shahar has already ruled out has failed its eval. This is a small fix, and it should not need a redesign.
+
+**Fix list (biggest effect first)**
+1. **Get the laptop title off the orange.** In `[data-swell]`, re-cut `hero-img-018-wide` and `data-crop-wide` to start higher in the photograph, so the title lands on the pale band as it does on the phone, and check the wordmark and nav too. Failing that, white on a darker orange, as calibration allows. The shader reads the crop from that attribute, so retest the horizon after the change.
+2. **Make the lesson chips visible after a tile tap.** In `#fits`, on the phone, put the chips above the tile grid, or scroll them into view on tap. Today the bar and strip cover them.
+3. **Start the swell sooner.** In `later()` and `boot()`, lines 803–807, begin before the `load` event once the hero image has decoded, and shorten the 1.1 s ramp on line 788, so that it is felt by 3 s on slow 4G.
+4. **Leave the level out of outing prefills.** In `syncLinks`, line 874: for the nine outings, send date and people only. The three surf tours and the board button can keep the level.
+5. **Hide the message strip when the bar is hidden.** `.bar-msg` at the top of the page. Also check that "Not sure" gives a suggested lesson rather than only a message link.
+
+**Keep:** the sunset and swell; picture tiles; the message following every button; no card ever dimmed; the lit wave paragraph; the board chart; Sanjee on the wave; the bay as the last picture.
+
+**For the human at the pick:** the "Advanced" tile uses img-010, which the concepts held in reserve for its rights flag (concepts §2, §6). img-007 and the identifiable img-005 also appear here and need clearing with the owner.
+
+---
+
+## R2 §3. Unique: "The set", 8/10
+
+### Timeline (phone, throttled)
+| Time | On screen | Frame |
+|---|---|---|
+| taken about 1.3 s | Title, button and rating sharp. The small print is in. **The bay and front print are soft blurred placeholders, no longer white boxes** | `unique-phone-cold-500ms.png` |
+| by about 1.7 s (resource timing); frame taken 3.7 s | All images in; sharp in the frame | `unique-phone-cold-3000ms.png` |
+| 3.6–5.0 s | The swell reaches the front print, peaking at 4.3–5.0 s | timings above |
+
+**First seconds communicate:** a man carving a wave on a yellow board with a pink rail, in front of the headland, under a loud happy title, with "5/5, 13 Google reviews" under a button in the rail's colour. It is still the only fold where you see who you would learn from, and still the one I would remember. The concept's white page has gone: the prints now sit on the full-bleed bay. That costs some of the idea and gains a lot of cleanliness, especially on the laptop, where it no longer comes close to scrapbook (`unique-laptop-fold.png`).
+
+**Did the quieter swell hurt?** On the numbers it is hardly quieter (22.1 dB against 20 on the phone, 27.0 against 30.7 on the laptop). What changed is its character. The prints now ride nearly rigid, lifting up to 10 px with a tilt of at most about 1.3° and a shadow that moves (`unique-phone-freeze0.png` against `-freeze0.3.png`), rather than flexing like paper. The surfer no longer stretches, which I asked for. It reads as a photograph floating on a swell: still felt when it arrives, less special than the paper flex, and cleaner. It now returns every 8.4 s rather than about 12. A fair trade, neither gain nor loss on balance. **Its weakness is timing:** not felt within 3 s on a throttled phone, because the pass waits 900 ms after load and starts well off-screen. A visitor who scrolls straight away misses the first one, and later passes stop once scrolled past 40% of a screen.
+
+### Walk (`unique-phone-sheet.png`, 12,065 px, 14 screens; `unique-laptop-sheet.png`)
+- **The blue block with huge prices** is still the boldest cost moment of the three.
+- **Sunset band with the feature line**, then Sanjee, a strong change of light. **Flag:** ink on a warm sky. Measured behind the line: hue 33°, saturation 0.21–0.28, so pale tan rather than orange, and I do not count it as the calibration breach. But the orange clouds begin right under it, and Shahar may read it differently (`unique-laptop-featureline.png`).
+- **Sanjee's tilted print and large words, 5/5 large, the quote row:** the man the reviews are about, set like he matters.
+- **The tuk-tuk rows** are lively for what they are. **The dogs** are still a warm human joke. Attention drops least on this page.
+
+### Booking
+Hero and bar: 1 tap, "…ask about a surf lesson." "Ask about this lesson": opens the sheet with that lesson chosen. Built: "Hello Sanjee Surf School, I'd like to ask about the Beginner Lesson. My level: total beginner. Date: 19 November 2026. People: 2." It fits one phone screen with nothing to scroll (sheet 738 of 844 px). It is still the closest thing to the old dialog's reassurance, with the lesson's price and date in one place, in about 3 taps and no typing. It holds no slot and does not pretend to. Hrefs read, not opened.
+
+**A gap:** the built message lives only in the sheet. Close it and the bar and tours still send the generic text. Lesson buttons reopen the sheet with the choices kept, so this matters less than on round 1's interactive, and I do not count it as a defect of the same weight.
+
+### What I operated, and round 1 fixes
+| Round 1 fix | Result | Evidence |
+|---|---|---|
+| Blank prints on load | **Landed:** blurred placeholders | `unique-phone-cold-500ms.png` |
+| Clean the collage | **Mostly landed.** Sand sliver gone, title 24 px under the header, laptop back row dropped. **The small print still reads as a tile on the front print's top edge:** it overlaps by only 10 px, 70 px tall | `unique-phone-cold-3000ms.png` |
+| Hover on every button | **Landed:** press-fill on mouse enter, darkens with a soft shadow | `unique-laptop-cta-hover.png` |
+| Slashed zero | **Landed:** the text face is now Figtree | sheet frames |
+| Drag-to-dismiss | **Landed.** Real touch through CDP: 48 px slow drag follows the finger and springs back; upward has friction; 180 px slow closes; a 90 px flick in 138 ms closes; an earlier 60 px flick stayed open (speed not logged, and the threshold is 0.5 px/ms, so it may just have been too slow through CDP); dragging from the title closes; dragging from the body does nothing, rightly. Focus returns to the lesson button | `unique-op-sheet-mid-drag.png` |
+| Esc on the phone menu | **Landed:** closes and returns focus to the summary. Outside tap closes too | `unique-op-menu-open.png` |
+| Price stepping, surfer stretch | **Landed:** no false indent on the phone; no stretch | sheet |
+
+Also operated:
+- **Sheet:** Esc, × and backdrop tap all close and return focus. Reopening from another lesson keeps level, date and people and updates the lesson. Laptop: a centred 640 px panel, send button in view (`unique-laptop-sheet.png`).
+- **Strip and quotes:** real touch swipes move them, and the dot follows (`unique-op-strip-1.png`, `unique-op-quotes-swiped.png`).
+- **Menu links:** all land clear of the header. "Waves" lands on Coco Beach, with its title 903 px down, which is the section's true start.
+- **`?swell=`, `?still`, `?nogl`, reduced motion, JS off:** all clean, and the layout holds (`unique-op-still.png`, `unique-op-nogl.png`, `unique-reduced-phone.png`, `unique-nojs-phone.png`).
+- **Micro-animations:** 33 of 38 controls on the laptop carry a transition; method 5 is met.
+
+**Got worse:** nothing broke. The paper flex and the white page are the two losses, both traded for cleanliness.
+
+### Score: 8, better than the current site: yes
+Engaging from the first second, clearly better than the old site, easy to book, and every interaction I tried worked. It holds 8 rather than rising because the main item arrives late and has grown more ordinary.
+
+**Fix list (biggest effect first)**
+1. **Get the first swell felt by 3 s.** In the script, `schedule(900)` at line 955 and `phaseToFront` at line 922: start the first pass at once with the front already near the print, so that a visible lift arrives within about 1 s of load.
+2. **Give the small print room on the phone.** `.print.p-006`: let it overlap the front print clearly or float clear of it, and make it large enough to read. At 124×70 px it adds little as it stands.
+3. **Decide the feature line's colour before the pick.** `Making waves…` on img-018: either place it where the sky is plainly pale or set it white on a darker band, so that no one reads it as ink on orange.
+4. **Let the built message outlive the sheet.** After a send or close, let the bar's link carry the same text as `#sheet-send`.
+5. **Add back a trace of flex at the print edges** if it stays clean. `(hgt(p)-H)*.14` in the vertex shader is the term to raise a little, checking that the surfer does not stretch.
+
+**Keep:** img-007 in front; huge prices; the one-screen sheet with drag; hero and bar going straight to WhatsApp; the swipe strip; Sanjee's tilted print; the dogs.
+
+**For the human at the pick:**
+- This page still leans hardest on **img-007, which carries a rights flag** (concepts §6). If the owner cannot clear it, the page must be re-scored.
+- The rating now sits with title and button **over a photograph**, not on white as the concept argued. It is a title, not a tagline, and the sky is clear, so I do not count it as the calibration's "tagline + rating + button stack", but it is closer to that line than round 1 was.
+
+---
+
+## Round 2: what the designer prompt got wrong (one paragraph, quotable)
+The reworks fixed almost everything named, which shows the fix lists were actionable, but both swells were tuned on strength and neither on arrival time. A main item that starts after the `load` event, and then ramps or waits off-screen, misses three seconds on slow 4G however strong it is: measure from navigation on a throttled phone, not from canvas start. A new hero photograph has to be re-checked against the calibration at every width, because the crop decides what the title sits on: interactive's title is on a pale band on the phone and on orange at 1440. And an effect added below a tile grid on a phone needs checking against the persistent bar, since a chip row at y=712 or lower sits behind a strip that starts at y=728.
+
+## Round 2: what I could not test
+- **A real phone.** WebGL ran on SwiftShader and on a Mac's GPU under 4× CPU, about 22 fps on interactive. A mid-range Android's GPU, its frame guard stepping down or stopping the swell, battery, heat and iOS Safari are all untested. So is drag and momentum on a physical screen; touch was real through CDP, not a finger.
+- **Watching in real time.** I judged the swells from frames, recordings and the page's own WebGL values, not by eye at speed.
+- **Native date pickers.** Dates were set programmatically on interactive and unique.
+- **WhatsApp.** No link was opened, and nothing was sent. wa.me was blocked at the browser level in the scripts that tapped controls, and I tapped no WhatsApp link. Whether the number answers, and how fast, is unknown.
+- **The live current site.** Captures only, as instructed.
+- **Laptop with JS off or reduced motion.** Tested on the phone only.
+- **Earliest calm frames.** See the timeline note in R2 §1.
+- **The gold pages and skills.** I did not re-render the gold pages this round, or run `/impeccable`, `/emil-design-eng`, the motion audit or the inspector. The bar was the calibration in `references.md` and round 1's gold frames.

@@ -1,0 +1,594 @@
+{
+ "calm": {
+  "m": {
+   "axe": {
+    "violations": [],
+    "incomplete": [
+     {
+      "id": "color-contrast",
+      "impact": "serious",
+      "n": 11,
+      "nodes": [
+       {
+        "t": "h1",
+        "m": "Element's background color could not be determined because element contains an image node",
+        "h": "<h1>Surf lessons in Weligama</h1>"
+       },
+       {
+        "t": ".feature",
+        "m": "Element's background color could not be determined because element contains an image node",
+        "h": "<p class=\"feature\">Making waves, one lesson at a time.</p>"
+       },
+       {
+        "t": "figure[aria-label=\"2 of 4\"] > blockquote",
+        "m": "Element's background color could not be determined because it's partially obscured by another element",
+        "h": "<blockquote lang=\"en\">"
+       },
+       {
+        "t": "figure[aria-label=\"2 of 4\"] > figcaption",
+        "m": "Element's background color could not be determined because it's partially obscured by another element",
+        "h": "<figcaption>Rossana Encina <span class=\"src\">| Google</span></figcaption>"
+       },
+       {
+        "t": "figure[aria-label=\"2 of 4\"] > figcaption > .src",
+        "m": "Element's background color could not be determined because it's partially obscured by another element",
+        "h": "<span class=\"src\">| Google</span>"
+       },
+       {
+        "t": "figure[aria-label=\"3 of 4\"] > blockquote",
+        "m": "Element's background color could not be determined because it's partially obscured by another element",
+        "h": "<blockquote lang=\"en\">"
+       }
+      ]
+     }
+    ]
+   },
+   "small": [],
+   "errs": [],
+   "firstLoad": [
+    "http://localhost:9340/",
+    "http://localhost:9340/img/hero-m.webp",
+    "http://localhost:9340/img/wave.webp",
+    "https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Source+Sans+3:wght@400;600&display=swap",
+    "http://localhost:9340/img/lesson.webp",
+    "http://localhost:9340/img/band-m.webp",
+    "https://fonts.gstatic.com/s/sourcesans3/v20/nwpStKy2OAdR1K-IwhWudF-R3w8aZejf5Hc.woff2",
+    "https://fonts.gstatic.com/s/mrdafoe/v15/lJwE-pIzkS5NXuMMrFitibIgxC_D.woff2"
+   ],
+   "scrollH": 12672,
+   "overflow": 0
+  },
+  "d": {
+   "axe": {
+    "violations": [],
+    "incomplete": [
+     {
+      "id": "color-contrast",
+      "impact": "serious",
+      "n": 11,
+      "nodes": [
+       {
+        "t": "h1",
+        "m": "Element's background color could not be determined because element contains an image node",
+        "h": "<h1>Surf lessons in Weligama</h1>"
+       },
+       {
+        "t": ".feature",
+        "m": "Element's background color could not be determined because element contains an image node",
+        "h": "<p class=\"feature\">Making waves, one lesson at a time.</p>"
+       },
+       {
+        "t": "figure[aria-label=\"2 of 4\"] > blockquote",
+        "m": "Element's background color could not be determined because it's partially obscured by another element",
+        "h": "<blockquote lang=\"en\">"
+       },
+       {
+        "t": "figure[aria-label=\"2 of 4\"] > figcaption",
+        "m": "Element's background color could not be determined because it's partially obscured by another element",
+        "h": "<figcaption>Rossana Encina <span class=\"src\">| Google</span></figcaption>"
+       },
+       {
+        "t": "figure[aria-label=\"2 of 4\"] > figcaption > .src",
+        "m": "Element's background color could not be determined because it's partially obscured by another element",
+        "h": "<span class=\"src\">| Google</span>"
+       },
+       {
+        "t": "figure[aria-label=\"3 of 4\"] > blockquote",
+        "m": "Element's background color could not be determined because it's partially obscured by another element",
+        "h": "<blockquote lang=\"en\">"
+       }
+      ]
+     }
+    ]
+   },
+   "small": [],
+   "errs": [],
+   "firstLoad": [
+    "http://localhost:9340/",
+    "http://localhost:9340/img/hero-2000.webp",
+    "http://localhost:9340/img/wave.webp",
+    "https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Source+Sans+3:wght@400;600&display=swap",
+    "http://localhost:9340/img/lesson.webp",
+    "http://localhost:9340/img/band-1600.webp",
+    "http://localhost:9340/img/sanjee.webp",
+    "https://fonts.gstatic.com/s/sourcesans3/v20/nwpStKy2OAdR1K-IwhWudF-R3w8aZejf5Hc.woff2",
+    "https://fonts.gstatic.com/s/mrdafoe/v15/lJwE-pIzkS5NXuMMrFitibIgxC_D.woff2"
+   ],
+   "scrollH": 9173,
+   "overflow": 0
+  },
+  "kbd": {
+   "n": 40,
+   "noRing": [],
+   "offscreen": [
+    "A:Ask on WhatsApp",
+    "A:Ask on WhatsApp",
+    "A:Ask on WhatsApp",
+    "A:5/5\n13 Google reviews\nas of 5 November 2",
+    "A:Ask on WhatsApp",
+    "A:5/5\n13 Google reviews\nas of 5 November 2",
+    "DIV:I would definitely recommend going out w",
+    "BUTTON:Review 1 of 4",
+    "BUTTON:Review 2 of 4",
+    "BUTTON:Review 3 of 4",
+    "BUTTON:Review 4 of 4",
+    "A:Ask on WhatsApp",
+    "A:Ask on WhatsApp about the Surf Spot Safa",
+    "A:Ask on WhatsApp about the Full Coast Adv",
+    "A:Ask on WhatsApp about the Sunrise Sessio",
+    "A:Ask on WhatsApp about the Weligama Bay &",
+    "A:Ask on WhatsApp about the Midigama Reef ",
+    "A:Ask on WhatsApp about the Mirissa Beach ",
+    "A:Ask on WhatsApp about the Ahangama & Kab",
+    "A:Ask on WhatsApp about the Secret Beach M",
+    "A:Ask on WhatsApp about the Turtle Bay & S",
+    "A:Ask on WhatsApp about the Handunugoda Te",
+    "A:Ask on WhatsApp about the Galle Fort tou",
+    "A:Ask on WhatsApp about the Hiriketiya Bay",
+    "A:Open in Google Maps",
+    "A:Ask on WhatsApp",
+    "A:Call",
+    "A:Email",
+    "A:Ask on WhatsApp",
+    "A:Call +94 77 400 4422",
+    "A:Email sanjee@sanjee-surf.com"
+   ],
+   "sample": [
+    "A:Skip to lessons",
+    "A:Sanjee Surf School",
+    "A:Lessons",
+    "A:Boards",
+    "A:Sanjee",
+    "A:Waves",
+    "A:Tuk-tuk",
+    "A:Finding us",
+    "A:Ask on WhatsApp",
+    "A:Ask on WhatsApp",
+    "A:Ask on WhatsApp",
+    "A:Ask on WhatsApp"
+   ],
+   "reachedEnd": true
+  },
+  "rm_d": {
+   "canvases": [],
+   "running": [],
+   "imgsVisible": 2
+  },
+  "rm_m": {
+   "canvases": [],
+   "running": [],
+   "imgsVisible": 2
+  }
+ },
+ "interactive": {
+  "m": {
+   "axe": {
+    "violations": [],
+    "incomplete": [
+     {
+      "id": "color-contrast",
+      "impact": "serious",
+      "n": 19,
+      "nodes": [
+       {
+        "t": "h1",
+        "m": "Element's background color could not be determined because element contains an image node",
+        "h": "<h1>Surf lessons in Weligama</h1>"
+       },
+       {
+        "t": "#bubble > span:nth-child(5)",
+        "m": "Element's background color could not be determined due to a pseudo element",
+        "h": "<span>I'd </span>"
+       },
+       {
+        "t": "#bubble > span:nth-child(6)",
+        "m": "Element's background color could not be determined due to a pseudo element",
+        "h": "<span>like </span>"
+       },
+       {
+        "t": "span:nth-child(7)",
+        "m": "Element's background color could not be determined due to a pseudo element",
+        "h": "<span>to </span>"
+       },
+       {
+        "t": "span:nth-child(8)",
+        "m": "Element's background color could not be determined due to a pseudo element",
+        "h": "<span>ask </span>"
+       },
+       {
+        "t": "span:nth-child(10)",
+        "m": "Element's background color could not be determined due to a pseudo element",
+        "h": "<span>a </span>"
+       }
+      ]
+     }
+    ]
+   },
+   "small": [],
+   "errs": [],
+   "firstLoad": [
+    "http://localhost:9341/",
+    "http://localhost:9341/img/hero-img-018-tall-1000.webp",
+    "https://fonts.googleapis.com/css2?family=Courgette&family=Manrope:wght@400;600;700;800&display=swap",
+    "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggexSvfedN4.woff2",
+    "https://fonts.gstatic.com/s/courgette/v19/wEO_EBrAnc9BLjLQAUk1VvoK_kgXiQ.woff2",
+    "http://localhost:9341/img/tile-img-005-380.webp",
+    "http://localhost:9341/img/tile-img-006-384.webp",
+    "http://localhost:9341/img/tile-img-009-520.webp",
+    "http://localhost:9341/img/tile-img-010-520.webp",
+    "http://localhost:9341/img/tile-img-012-750.webp"
+   ],
+   "scrollH": 12932,
+   "overflow": 0
+  },
+  "d": {
+   "axe": {
+    "violations": [],
+    "incomplete": [
+     {
+      "id": "color-contrast",
+      "impact": "serious",
+      "n": 23,
+      "nodes": [
+       {
+        "t": "h1",
+        "m": "Element's background color could not be determined because element contains an image node",
+        "h": "<h1>Surf lessons in Weligama</h1>"
+       },
+       {
+        "t": "#bubble > span:nth-child(5)",
+        "m": "Element's background color could not be determined due to a pseudo element",
+        "h": "<span>I'd </span>"
+       },
+       {
+        "t": "span:nth-child(7)",
+        "m": "Element's background color could not be determined due to a pseudo element",
+        "h": "<span>to </span>"
+       },
+       {
+        "t": "span:nth-child(10)",
+        "m": "Element's background color could not be determined due to a pseudo element",
+        "h": "<span>a </span>"
+       },
+       {
+        "t": ".feet > span:nth-child(1)",
+        "m": "Element's background color could not be determined due to a pseudo element",
+        "h": "<span style=\"--ft:5\">5'</span>"
+       },
+       {
+        "t": ".feet > span:nth-child(2)",
+        "m": "Element's background color could not be determined due to a pseudo element",
+        "h": "<span style=\"--ft:6\">6'</span>"
+       }
+      ]
+     }
+    ]
+   },
+   "small": [],
+   "errs": [],
+   "firstLoad": [
+    "http://localhost:9341/",
+    "http://localhost:9341/img/hero-img-018-wide-1440.webp",
+    "https://fonts.googleapis.com/css2?family=Courgette&family=Manrope:wght@400;600;700;800&display=swap",
+    "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggexSvfedN4.woff2",
+    "https://fonts.gstatic.com/s/courgette/v19/wEO_EBrAnc9BLjLQAUk1VvoK_kgXiQ.woff2",
+    "http://localhost:9341/img/tile-img-005-380.webp",
+    "http://localhost:9341/img/tile-img-006-384.webp",
+    "http://localhost:9341/img/tile-img-009-520.webp",
+    "http://localhost:9341/img/tile-img-010-520.webp",
+    "http://localhost:9341/img/tile-img-012-750.webp"
+   ],
+   "scrollH": 9802,
+   "overflow": 0
+  },
+  "kbd": {
+   "n": 62,
+   "noRing": [
+    "INPUT:Date"
+   ],
+   "offscreen": [
+    "BUTTON:Total beginner",
+    "BUTTON:I can stand up",
+    "BUTTON:Intermediate",
+    "BUTTON:Advanced",
+    "BUTTON:Not sure",
+    "A:Ask on WhatsApp",
+    "BUTTON:Add to my message\nIn my message",
+    "A:Ask on WhatsApp",
+    "BUTTON:Add to my message\nIn my message",
+    "A:Ask on WhatsApp",
+    "BUTTON:Add to my message\nIn my message",
+    "A:5/5\n13 Google reviews | as of 5 November",
+    "BUTTON:Beginner Lesson",
+    "BUTTON:Private Coaching",
+    "BUTTON:Week Intensive",
+    "BUTTON:Not sure",
+    "INPUT:Date",
+    "INPUT:Date",
+    "INPUT:Date",
+    "INPUT:Date",
+    "BUTTON:Not sure",
+    "BUTTON:1",
+    "BUTTON:2",
+    "BUTTON:3+",
+    "BUTTON:Not sure",
+    "A:Ask on WhatsApp",
+    "UL:Fish and hybrids\n5'8–6'4\n\nPerformance sh",
+    "A:5/5\n13 Google reviews | as of 5 November",
+    "UL:I would definitely recommend going out w",
+    "BUTTON:Review 1 of 4",
+    "BUTTON:Review 2 of 4",
+    "BUTTON:Review 3 of 4",
+    "BUTTON:Review 4 of 4",
+    "A:Ask on WhatsApp about Surf Spot Safari",
+    "A:Ask on WhatsApp about Full Coast Adventu",
+    "A:Ask on WhatsApp about Sunrise Session",
+    "A:Ask on WhatsApp about Weligama Bay & Tap",
+    "A:Ask on WhatsApp about Midigama Reef Brea",
+    "A:Ask on WhatsApp about Mirissa Beach & Co",
+    "A:Ask on WhatsApp about Ahangama & Kabalan",
+    "A:Ask on WhatsApp about Secret Beach Miris",
+    "A:Ask on WhatsApp about Turtle Bay & Snake",
+    "A:Ask on WhatsApp about Handunugoda Tea Es",
+    "A:Ask on WhatsApp about Galle Fort",
+    "A:Ask on WhatsApp about Hiriketiya Bay",
+    "A:Ask on WhatsApp",
+    "A:Open in Google Maps",
+    "A:+94 77 400 4422",
+    "A:sanjee@sanjee-surf.com",
+    "A:Ask on WhatsApp",
+    "A:+94 77 400 4422",
+    "A:sanjee@sanjee-surf.com"
+   ],
+   "sample": [
+    "A:Skip to lessons",
+    "A:Sanjee Surf School",
+    "A:Lessons",
+    "A:Boards",
+    "A:Sanjee",
+    "A:Waves",
+    "A:Tuk-tuk",
+    "A:Finding us",
+    "A:Ask on WhatsApp",
+    "BUTTON:Total beginner",
+    "BUTTON:I can stand up",
+    "BUTTON:Intermediate"
+   ],
+   "reachedEnd": true
+  },
+  "rm_d": {
+   "canvases": [
+    {
+     "op": "0",
+     "disp": "block",
+     "w": 300,
+     "h": 150
+    }
+   ],
+   "running": [],
+   "imgsVisible": 1
+  },
+  "rm_m": {
+   "canvases": [
+    {
+     "op": "0",
+     "disp": "block",
+     "w": 300,
+     "h": 150
+    }
+   ],
+   "running": [],
+   "imgsVisible": 1
+  }
+ },
+ "unique": {
+  "m": {
+   "axe": {
+    "violations": [],
+    "incomplete": [
+     {
+      "id": "color-contrast",
+      "impact": "serious",
+      "n": 13,
+      "nodes": [
+       {
+        "t": "h1",
+        "m": "Element's background color could not be determined because it is overlapped by another element",
+        "h": "<h1>Surf lessons in Weligama</h1>"
+       },
+       {
+        "t": "#hero-cta > .btn-t",
+        "m": "Element's background color could not be determined due to a pseudo element",
+        "h": "<span class=\"btn-t\">Ask on WhatsApp</span>"
+       },
+       {
+        "t": ".rate-line",
+        "m": "Element's background color could not be determined because it is overlapped by another element",
+        "h": "<a class=\"rate-line\" href=\"https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b"
+       },
+       {
+        "t": ".lead",
+        "m": "Element's background color could not be determined because it is overlapped by another element",
+        "h": "<p class=\"lead\">Surf lessons in Weligama, on the south coast of Sri Lanka.</p>"
+       },
+       {
+        "t": "a[data-lesson=\"0\"] > .btn-t",
+        "m": "Element's background color could not be determined due to a pseudo element",
+        "h": "<span class=\"btn-t\">Ask about this lesson</span>"
+       },
+       {
+        "t": "a[data-lesson=\"1\"] > .btn-t",
+        "m": "Element's background color could not be determined due to a pseudo element",
+        "h": "<span class=\"btn-t\">Ask about this lesson</span>"
+       }
+      ]
+     }
+    ]
+   },
+   "small": [],
+   "errs": [],
+   "firstLoad": [
+    "http://localhost:9342/",
+    "https://fonts.gstatic.com/s/shrikhand/v17/a8IbNovtLWfR7T7bMJwrA4KR8TtctQ.woff2",
+    "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DaRvzig.woff2",
+    "http://localhost:9342/img/set-img-007-962.webp",
+    "http://localhost:9342/img/ground-img-002-phone.webp",
+    "http://localhost:9342/img/set-img-006.webp",
+    "http://localhost:9342/img/print-img-005.webp"
+   ],
+   "scrollH": 12065,
+   "overflow": 0
+  },
+  "d": {
+   "axe": {
+    "violations": [],
+    "incomplete": [
+     {
+      "id": "color-contrast",
+      "impact": "serious",
+      "n": 12,
+      "nodes": [
+       {
+        "t": "h1",
+        "m": "Element's background color could not be determined because it is overlapped by another element",
+        "h": "<h1>Surf lessons in Weligama</h1>"
+       },
+       {
+        "t": "#hero-cta > .btn-t",
+        "m": "Element's background color could not be determined due to a pseudo element",
+        "h": "<span class=\"btn-t\">Ask on WhatsApp</span>"
+       },
+       {
+        "t": ".rate-line",
+        "m": "Element's background color could not be determined because it is overlapped by another element",
+        "h": "<a class=\"rate-line\" href=\"https://www.google.com/maps/place/Sanjee+Surf+School/data=!4m7!3m6!1s0x3ae1156e4b0b"
+       },
+       {
+        "t": "a[data-lesson=\"0\"] > .btn-t",
+        "m": "Element's background color could not be determined due to a pseudo element",
+        "h": "<span class=\"btn-t\">Ask about this lesson</span>"
+       },
+       {
+        "t": "a[data-lesson=\"1\"] > .btn-t",
+        "m": "Element's background color could not be determined due to a pseudo element",
+        "h": "<span class=\"btn-t\">Ask about this lesson</span>"
+       },
+       {
+        "t": "a[data-lesson=\"2\"] > .btn-t",
+        "m": "Element's background color could not be determined due to a pseudo element",
+        "h": "<span class=\"btn-t\">Ask about this lesson</span>"
+       }
+      ]
+     }
+    ]
+   },
+   "small": [],
+   "errs": [],
+   "firstLoad": [
+    "http://localhost:9342/",
+    "https://fonts.gstatic.com/s/shrikhand/v17/a8IbNovtLWfR7T7bMJwrA4KR8TtctQ.woff2",
+    "https://fonts.gstatic.com/s/figtree/v9/_Xms-HUzqDCFdgfMm4S9DaRvzig.woff2",
+    "http://localhost:9342/img/set-img-007-640.webp",
+    "http://localhost:9342/img/ground-img-002-1440.webp",
+    "http://localhost:9342/img/set-img-006.webp",
+    "http://localhost:9342/img/print-img-005.webp",
+    "http://localhost:9342/img/band-img-018.webp"
+   ],
+   "scrollH": 9660,
+   "overflow": 0
+  },
+  "kbd": {
+   "n": 40,
+   "noRing": [],
+   "offscreen": [
+    "A:Ask about this lesson",
+    "A:Ask about this lesson",
+    "A:Ask about this lesson",
+    "A:5/5\n13 Google reviews\nas of 5 November 2",
+    "A:Ask on WhatsApp",
+    "UL:1 hour\nSoft-top\nUSD 5\nper hour\nHardboard",
+    "A:Ask on WhatsApp",
+    "A:5/5\n13 Google reviews\nas of 5 November 2",
+    "DIV:I would definitely recommend going out w",
+    "A:Ask on WhatsApp: Surf Spot Safari",
+    "A:Ask on WhatsApp: Full Coast Adventure",
+    "A:Ask on WhatsApp: Sunrise Session",
+    "A:Ask on WhatsApp: Weligama Bay & Taproban",
+    "A:Ask on WhatsApp: Midigama Reef Breaks",
+    "A:Ask on WhatsApp: Mirissa Beach & Coconut",
+    "A:Ask on WhatsApp: Ahangama & Kabalana",
+    "A:Ask on WhatsApp: Secret Beach Mirissa",
+    "A:Ask on WhatsApp: Turtle Bay & Snake Farm",
+    "A:Ask on WhatsApp: Handunugoda Tea Estate",
+    "A:Ask on WhatsApp: Galle Fort",
+    "A:Ask on WhatsApp: Hiriketiya Bay",
+    "A:Ask on WhatsApp",
+    "A:Call",
+    "A:Email",
+    "A:Open in Google Maps",
+    "A:Ask on WhatsApp",
+    "A:+94 77 400 4422",
+    "A:sanjee@sanjee-surf.com"
+   ],
+   "sample": [
+    "A:Skip to lessons",
+    "A:Sanjee Surf School",
+    "A:Lessons",
+    "A:Boards",
+    "A:Sanjee",
+    "A:Waves",
+    "A:Tuk-tuk",
+    "A:Finding us",
+    "A:Ask on WhatsApp",
+    "A:5/5, 13 Google reviews, as of 5 November",
+    "A:Ask about this lesson",
+    "A:Ask about this lesson"
+   ],
+   "reachedEnd": true
+  },
+  "rm_d": {
+   "canvases": [
+    {
+     "op": "0",
+     "disp": "block",
+     "w": 300,
+     "h": 150
+    }
+   ],
+   "running": [],
+   "imgsVisible": 3
+  },
+  "rm_m": {
+   "canvases": [
+    {
+     "op": "0",
+     "disp": "block",
+     "w": 300,
+     "h": 150
+    }
+   ],
+   "running": [],
+   "imgsVisible": 2
+  }
+ }
+}
