@@ -4,6 +4,8 @@ Copywriter 0.5.0 · run 2026-10-midigama-01 (test) · 2026-11-05. Facts come fro
 
 Caps were re-read from `schemas/site-content.md` v0.11 this round: see "Caps" at the end, with the measured lengths.
 
+After the humanizer 0.2.1 pass (2026-11-05), `en.draft.json` is the copywriter's draft, unchanged, and `en.json` the rewrite. The changes are in `humanizer-notes.md`. The rows below describe `en.json`, and paragraph numbers are `en.json`'s.
+
 **This is the owner-prose case, with a warning.** The site carries a lot of first-person and owner-side copy, so its sentences are used wherever they do not touch a contradiction (edits are listed under "Edits to the owner's words"). The authorship of the first-person story is unknown (`business.owner_voice.note`), and the legal pages name someone else as provider (`flags_for_operator[0]`). The copy therefore says "we" and "our" without saying whose business it is, calls Sanjee only "head instructor", and never says owner, founder, family or "his school".
 
 Prices and quotes were pulled from the dossier by script, not retyped.
@@ -61,7 +63,7 @@ Index = position in `contradictions[]`. "Left out" means no value is stated anyw
 | `closing` | "Send us the lesson and date you want on WhatsApp, or call the same number." | Task: `audit.recommended.closing_intent` (not a fact). WhatsApp: `contact.whatsapp`, `booking.path`. Same number: `contact.phone.verified`, `contact.whatsapp.value`. No reply time. |
 | `featureLine` | "Making waves, one lesson at a time." | `business.tagline.value`, the owner's footer line, verbatim. The hero's "Ride the Wave of Your Life" is not used. |
 | `ctas.primary` | "Message Sanjee on WhatsApp" | Not a schema field: the schema leaves interface labels to the template, and `sites/global-surf-adventures/copy/en.json` is the precedent for `ctas`. Label from `audit.recommended.primary_label`, shortened: "about a lesson" is cut because the same button serves lessons, boards and tours and a persistent mobile bar has to hold it. The prefilled message carries what was chosen (playbook §5). **Owner to confirm** that Sanjee holds this phone: the number is verified (`contact.whatsapp`), who answers is not. If not, "Ask on WhatsApp", the site's own label (`booking.path.note`). |
-| `spot` | "Coco Beach is our home spot, a beach break with smaller crowds than the main peak and a friendly, mellow vibe, ideal for first pop-ups." | `location.spot.value`, restructured (see "Edits"), and `surf_spots[0]` (beach break). |
+| `spot` | "Coco Beach is our home spot, a beach break. Smaller crowds than the main peak and a friendly, mellow vibe, ideal for first pop-ups." | `location.spot.value`, restructured (see "Edits"), and `surf_spots[0]` (beach break). |
 | `season` | "Best surf season runs November to April; peak swell and dry weather are December–February." | `season.value`, verbatim. No closed months are published. |
 | `openingHours`, `hoursNote` | `[]`, null | Contradiction 5. **Designer warning:** the schema says a day in no row is closed. With this empty array the template must show no hours at all, never a week of "closed". |
 | `languagesSpoken` | `["en","si","ta"]` | `languages_spoken[0–2]`. The select cannot say "basic" for Tamil (`languages_spoken[2].note`). **Judgement call**: kept as the dossier records it; a template should not imply fluency. The owner may remove the row. |
@@ -73,33 +75,32 @@ Index = position in `contradictions[]`. "Left out" means no value is stated anyw
 | Block ¶ | Copy (short) | Rests on |
 |---|---|---|
 | [0] heading | "Who we teach" | framing |
-| [0] ¶1 | total beginners, beginners who can already stand up, intermediates, advanced surfers | `levels[0–3]` ("Total beginner", "Beginner (can stand up)", "Intermediate", "Advanced") |
+| [0] ¶1 | "You can come to us as" a total beginner, a beginner who can already stand up, an intermediate or an advanced surfer | `levels[0–3]` ("Total beginner", "Beginner (can stand up)", "Intermediate", "Advanced") |
 | [0] ¶2 | lessons in English as standard | `languages_spoken[1].note` ("Lessons in English as standard") |
 | [1] heading | "Sanjee, head instructor" | `team[0]`, role "Head Instructor & Founder", with "Founder" cut (`flags_for_operator[0]`) |
 | [1] ¶1 | born in Weligama; learned on a broken board his uncle fixed with resin and hope | `business.owner_voice.value`, first person. See "Edits". **Owner to confirm**: authorship unknown. |
 | [1] ¶2 | "Today I teach surfers from all over the world — and I still paddle out every single morning." | `business.owner_voice.value`, verbatim. |
 | [2] heading | "Lessons" | framing; `lessons` |
-| [2] ¶1 | "All lessons include board and rash guard rental, professional instruction, and beach safety briefing." | `includes[0].value`, verbatim first sentence. The second, "We provide everything you need—just bring yourself and a smile!", is cut as padding. |
-| [2] ¶2 | Week Intensive across 10 days, pick your best days; muscles happily exhausted; contact beforehand | `lessons[2].description`. See "Edits". |
+| [2] ¶1 | every lesson includes professional instruction and a beach safety briefing; board and rash guard rental is in the price | `includes[0].value`, first sentence, reworded with the same three items and the same "all lessons" scope (see "Edits"). The second, "We provide everything you need—just bring yourself and a smile!", is cut as padding. |
+| [2] ¶2 | Week Intensive across 10 days, pick your best days; muscles happily exhausted; get in touch beforehand to work out days and times | `lessons[2].description`. See "Edits". |
 | [2] ¶3 | "For group bookings, please leave us a message." | `lessons[0].note`, second sentence, verbatim. Contradiction 9. |
 | [3] heading | "Board rental" | framing; `rentals` |
-| [3] ¶1 | shop 30 seconds from the sand at Coco Beach; free dry storage there between sessions | `location.shop.value`, verbatim; `facilities[0].value`, re-voiced. Both are site claims with no photograph (`location.shop.note`, `gaps` location.shop). The scout's pin is 105 m from shore (`contradictions[2]`), which is more than 30 seconds on foot if the pin marks the shop. **Owner to confirm.** |
+| [3] ¶1 | shop 30 seconds from the sand at Coco Beach; free dry storage there between sessions | `location.shop.value`, verbatim; `facilities[0].value`, the owner's fragment with "at our shop" as "there". Both are site claims with no photograph (`location.shop.note`, `gaps` location.shop). The scout's pin is 105 m from shore (`contradictions[2]`), which is more than 30 seconds on foot if the pin marks the shop. **Owner to confirm.** |
 | [3] ¶2 | six board types with their sizes | `rental_terms.quiver[0–5]`. Soft-top and hardboard prices are not mapped to these types, because no source does. The photos show soft-tops and few hard boards (`rental_terms.quiver_size_claim.note`). **Owner to confirm.** |
-| [3] ¶3 | leash (6 ft – 9 ft), fins (FCS-II or Futures), wax and a fresh wax comb | `rental_terms.included[0–2]` |
+| [3] ¶3 | leash (6 ft – 9 ft) and fins (FCS-II or Futures); then wax and a fresh wax comb, as a second sentence | `rental_terms.included[0–2]` |
 | [3] ¶4 | ID or passport copy, refundable deposit, ask for the amount | `rental_terms.id_required`, `rental_terms.deposit`. Contradiction 14. |
 | [4] heading | "By tuk-tuk" | framing; `offers` group `tuk_tuk` |
-| [4] ¶1 | three tours look for waves, by name | `offers` tour_id `surf-safari`, `full-coast`, `sunrise-session` |
-| [4] ¶2 | the other nine: outings along the coast and inland; pickup and return within Weligama; estimated introductory prices | The nine other `offers` with group `tuk_tuk`: `includes` "Pickup and return within Weligama", `note` "Estimated introductory package price". "Inland": the tea estate's "Travel inland". The hedge on the prices is kept on purpose. |
+| [4] ¶1 | the three tours that look for waves, by name (the number is no longer written; the names carry it, and ¶2's "other nine" counts from them) | `offers` tour_id `surf-safari`, `full-coast`, `sunrise-session` |
+| [4] ¶2 | the other nine: outings along the coast and inland, at estimated introductory prices, with pickup and return within Weligama (one sentence) | The nine other `offers` with group `tuk_tuk`: `includes` "Pickup and return within Weligama", `note` "Estimated introductory package price". "Inland": the tea estate's "Travel inland". The hedge on the prices is kept on purpose. |
 | [4] ¶3 | each tour price covers up to 2 people | `offers` group `tuk_tuk`, `unit` "per tour, up to 2 people". Contradiction 12. |
 | [5] heading | "Before you book" | framing |
 | [5] ¶1 | swim at least 50 meters unaided | `requirements[0]` (Terms) |
 | [5] ¶2 | kids from age 6; under 18 with a parent or legal guardian | `requirements[2]`, verbatim; `requirements[1]`, shortened. |
-| [5] ¶3 | cash on the day can be LKR, USD or EUR | `booking.payment_on_the_day` ("can be paid in cash (LKR, USD, or EUR)"). Worded so it does not say the whole price is paid on the day, because the source speaks of the balance after a deposit, and does not mention the deposit, which the new page will not take. Cards: contradiction 18. |
-| [5] ¶4 | all prices as of 5 November 2026 | `offers_note` ("captured 2026-11-05"); playbook §7 |
+| [5] ¶3 | cash on the day can be LKR, USD or EUR; all prices as of 5 November 2026 (two paragraphs in the draft, joined by the humanizer) | Cash: `booking.payment_on_the_day` ("can be paid in cash (LKR, USD, or EUR)"). Worded so it does not say the whole price is paid on the day, because the source speaks of the balance after a deposit, and does not mention the deposit, which the new page will not take. Cards: contradiction 18. Date: `offers_note` ("captured 2026-11-05"); playbook §7. |
 | [6] heading | "Other waves, as we rate them" | The levels and break types are the school's own (`surf_spots[].source_url` is its site), so the heading says so. |
-| [6] ¶1 | beginners: Jungle Beach, Weligama Main Point; Mirissa beginner to intermediate | `surf_spots[1,4,10]`, as published. "Weligama Main Point" is listed as a beginner beach break despite its name; kept as published. |
-| [6] ¶2 | intermediates: Fishermans, Island Point, Plantation Point, Lazy Left; Lazy Right intermediate to advanced | `surf_spots[2,3,5,6,7]` |
-| [6] ¶3 | advanced: Ram's Right, Kabalana (The Rock) | `surf_spots[8,9]` |
+| [6] ¶1 | Jungle Beach, Weligama Main Point: "beach breaks we'd call beginner waves"; Mirissa beginner to intermediate | `surf_spots[1,4,10]`, as published. "We'd call" is the school's own level rating, as the heading says, not a new claim. "Weligama Main Point" is listed as a beginner beach break despite its name; kept as published. |
+| [6] ¶2 | for intermediates: Fishermans, Island Point, Plantation Point, Lazy Left; Lazy Right intermediate to advanced | `surf_spots[2,3,5,6,7]` |
+| [6] ¶3 | Ram's Right, Kabalana (The Rock): for advanced surfers | `surf_spots[8,9]` |
 | [7] heading | "Finding us" | framing |
 | [7] ¶1 | look for Sanjee Surf School on Google Maps, plus code XC63+4H; may also appear as Sanjee Surf | `business.name`, `location.plus_code`, `business.site_brand` |
 
@@ -108,13 +109,14 @@ Index = position in `contradictions[]`. "Left out" means no value is stated anyw
 | Where | The site says | This page says | Why |
 |---|---|---|---|
 | [1] ¶1 | "I was born in Weligama, learned to surf on a broken board my uncle fixed with resin and hope, and have spent more than two decades in this bay." | "I was born in Weligama and learned to surf on a broken board my uncle fixed with resin and hope." | The "more than two decades" clause is cut (contradiction 7), and the comma becomes "and" to close the sentence. **Copyeditor**: check this counts as a trim. |
-| [2] ¶2 | "Spread across 10 days – pick your best days! After 2 hours of surfing, your muscles will be happily exhausted. Contact us beforehand to coordinate which days and times work best for you ❤️" | "The Week Intensive is spread across 10 days, so you can pick your best days. After 2 hours of surfing, your muscles will be happily exhausted. Contact us beforehand to coordinate which days and times work best for you." | First sentence made whole. Second and third verbatim, without the emoji. |
-| [3] ¶1 | "Free dry storage at our shop while you eat or rest between sessions." | "There is free dry storage there while you eat or rest between sessions." | Follows the shop sentence, so "at our shop" becomes "there". |
+| [2] ¶1 | "All lessons include board and rash guard rental, professional instruction, and beach safety briefing." | "Every lesson includes professional instruction and a beach safety briefing. Board and rash guard rental is in the price too." | Humanizer: the triad broken into two sentences. Same three items, same scope. "Rental" stays, because a rashguard is also sold (`priceList`). |
+| [2] ¶2 | "Spread across 10 days – pick your best days! After 2 hours of surfing, your muscles will be happily exhausted. Contact us beforehand to coordinate which days and times work best for you ❤️" | "The Week Intensive is spread across 10 days, so you can pick your best days. After 2 hours of surfing, your muscles will be happily exhausted. Get in touch beforehand and we'll work out which days and times suit you." | First sentence made whole. Second verbatim. Third re-voiced by the humanizer ("coordinate" was the stiff word), without the emoji. No reply time is implied. |
+| [3] ¶1 | "Free dry storage at our shop while you eat or rest between sessions." | "Free dry storage there while you eat or rest between sessions." | Follows the shop sentence, so "at our shop" becomes "there". The owner's fragment is kept (humanizer). |
 | [5] ¶2 | "Participants under 18 years of age must be accompanied by a parent or legal guardian." | "Anyone under 18 must be accompanied by a parent or legal guardian." | Terms wording made plain; same limit. |
-| `spot` | "Our home spot at the eastern end of the bay. Smaller crowds than the main peak and a friendly, mellow vibe — ideal for first pop-ups." | "Coco Beach is our home spot, a beach break with smaller crowds than the main peak and a friendly, mellow vibe, ideal for first pop-ups." | Contradiction 3 removes the location clause. The name and "beach break" (`surf_spots[0]`) are added so the field stands alone. |
+| `spot` | "Our home spot at the eastern end of the bay. Smaller crowds than the main peak and a friendly, mellow vibe — ideal for first pop-ups." | "Coco Beach is our home spot, a beach break. Smaller crowds than the main peak and a friendly, mellow vibe, ideal for first pop-ups." | Contradiction 3 removes the location clause. The name and "beach break" (`surf_spots[0]`) are added so the field stands alone. The owner's second sentence is a fragment again (humanizer), with a comma for its em dash. |
 | not used | "Ride the Wave of Your Life", "Personalized instruction", "experienced local instructors", "ultimate surf guiding experience", "best surf spots", "perfect waves", "scoring glassy waves" | | Slogans and superlatives (hard constraints 3 and 12). "Experienced" also touches contradiction 7. |
 
-The em dash in [1] ¶2 is the owner's and is kept for now.
+The em dash in [1] ¶2 is the owner's. The humanizer kept it: the sentence is verbatim, and it is the only em dash on the page.
 
 ## `lessons[]`
 
@@ -138,7 +140,7 @@ Notes cut, not for a cap:
 
 ## `priceList[]`
 
-14 rows. 12 tours from `offers` group `tuk_tuk`, prices unchanged, unit `flat`. Labels keep the dossier's name and length ("Approx." lower-cased, nested brackets flattened). Each note trims that tour's `note` and `includes`, and keeps its exclusions and limits: "Not beginner lesson spots" (Midigama), "not guaranteed safe" (Secret Beach), "Wildlife not guaranteed" (Turtle Bay), "No whale-watching boat trip" (Mirissa), "the island seen from the shore" (Taprobane). The Sunrise Session's 5:30 AM pickup is the card's own; it sits oddly beside Google's 9–5 (audit F14), so **owner to confirm**.
+14 rows. 12 tours from `offers` group `tuk_tuk`, prices unchanged, unit `flat`. Labels keep the dossier's name and length ("Approx." lower-cased, nested brackets flattened). Each note trims that tour's `note` and `includes`, and keeps its exclusions and limits: "Not beginner lesson spots" (Midigama), "not guaranteed safe" (Secret Beach), "Wildlife not guaranteed" (Turtle Bay), "No whale-watching boat trip" (Mirissa), "the island seen from the shore" (Taprobane). The Sunrise Session's 5:30 AM pickup is the card's own; it sits oddly beside Google's 9–5 (audit F14), so **owner to confirm**. Full Coast Adventure: the card's "Visit hidden gems, local breaks" is written "some of them local breaks"; the humanizer cut "hidden gems" as a stock phrase with nothing checkable in it (see `humanizer-notes.md`).
 
 2 shop rows: rashguard $12 and reef booties $15 a pair (`offers` group `shop`), both to buy.
 
@@ -196,7 +198,7 @@ Guest-only claims stay in the quotes and are not stated in the business's voice:
 | up to 2 people | block [4] ¶3 |
 | swim, age rules | block [5] ¶1–2 |
 | cash | block [5] ¶3 |
-| capture date | block [5] ¶4 |
+| capture date | block [5] ¶3 |
 | other waves | block [6]. Lazy Left and Lazy Right also appear in the Midigama tour's note as stops, and Kabalana in that tour's, without level or break type. |
 | Coco Beach as home spot, its character | `spot` (block [3] ¶1 uses the name only to place the shop) |
 | season | `season` |
@@ -229,7 +231,7 @@ No line reads as a slogan except the owner's own `featureLine`, which is one sho
 
 ## Facts available vs words written
 
-About 80 usable facts: 3 lessons, 16 + 1 rental rates, 12 tours, 2 shop items, 6 board types, 3 rental inclusions, 4 levels, 11 waves, the rules, the owner's story, 2 credentials, the Google rating, 4 quotes and the contact lines. They become 8 blocks, 22 paragraphs and 403 words of body, plus 34 priced rows: a fairly long page because the offer is long, with short prose and the rows carrying the numbers. Nothing in the dossier is too thin to build on. The thin parts are the ones the old site contradicts itself on, listed above, and those are pitch points.
+About 80 usable facts: 3 lessons, 16 + 1 rental rates, 12 tours, 2 shop items, 6 board types, 3 rental inclusions, 4 levels, 11 waves, the rules, the owner's story, 2 credentials, the Google rating, 4 quotes and the contact lines. They become 8 blocks, 21 paragraphs and 431 words of body, plus 34 priced rows: a fairly long page because the offer is long, with short prose and the rows carrying the numbers. Nothing in the dossier is too thin to build on. The thin parts are the ones the old site contradicts itself on, listed above, and those are pitch points.
 
 ## Caps
 
@@ -238,10 +240,10 @@ Read from `schemas/site-content.md` v0.11 this round, measured on the final file
 | Field | Cap | Used |
 |---|---|---|
 | `copyBlocks` | 8 rows | 8 |
-| `copyBlocks[].body` | 1500 | longest 550 |
+| `copyBlocks[].body` | 1500 | longest 563 |
 | `copyBlocks[].heading` | 120 | longest 28 |
 | `tagline` / `closing` / `featureLine` | 140 | 58 / 74 / 35 |
-| `spot` / `season` | 200 | 135 / 90 |
+| `spot` / `season` | 200 | 131 / 90 |
 | `lessons` | 20 rows | 3 |
 | `lessons[].includes` | 140 | longest 104 |
 | `rentals` | 30 rows | 17 |
