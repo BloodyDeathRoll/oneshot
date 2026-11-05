@@ -6,6 +6,10 @@
   var reduce = W.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var phone = W.matchMedia('(max-width: 767px)');
 
+  /* ---------------- hero: the blurred placeholder under the photograph is a loading state only, dropped once it is in */
+  var hero = $('.hero-pic img');
+  if (hero) { var lit = function () { hero.classList.add('loaded'); }; if (hero.complete && hero.naturalWidth) lit(); else hero.addEventListener('load', lit, { once: true }); }
+
   /* ---------------- room slideshows: scroll-snap tracks with stretching dots */
   $$('[data-show]').forEach(function (show) {
     var track = $('.track', show), ctrl = $('.ctrl', show), dots = $$('.dot', show), n = dots.length, cur = -1;

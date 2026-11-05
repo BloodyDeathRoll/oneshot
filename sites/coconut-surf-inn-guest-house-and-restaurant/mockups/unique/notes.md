@@ -201,3 +201,11 @@ audit-mockup, round 1 (phone, slow 4G, 2026-11-04T23:30Z):
 - largest image: 78 KB;
 - LCP: 1,888 ms; CLS: 0.0011;
 - third party on load: fonts.gstatic.com only (the 4e font allowance). The Rosa JSON and widget load only near their block.
+
+## Human tweak before the pick (2026-11-05)
+
+Alon: "i like the Unique mockup but switch the main image (the first one), take the one from "Calm" and put it as the top image for "Unique"."
+
+- The first screen now uses calm's frame of img-009 and calm's grade (+6% contrast, +10% saturation): desktop 1440×810 from (380, 290), so the sea, reef whitewater and green fill the bottom fifth with no wires or roofs; phone 560×1100 from (800, 0), blue sky over the centre palms down to the reef, no pan. The white sky dissolve of round 2 is gone.
+- The hero now runs full height under the transparent header (as calm's does), title, line and button sit on the sky in the existing ink. A blurred 40 px copy of each crop shows under the photo on a slow load and is dropped once it is in (check-design: 0 problems on both pages).
+- funnel.mjs --depth 3: primary engine, hero engine, 1 click to book. Not re-scored by the critics; the round-2 scores were for the dissolve hero.

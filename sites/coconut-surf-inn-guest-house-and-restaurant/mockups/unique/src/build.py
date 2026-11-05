@@ -9,7 +9,7 @@ fetched 2026-11-05) and refreshed live, lazily, by page.js. Media: src/make-medi
 page.js (inlined).
 Run: python3 sites/coconut-surf-inn-guest-house-and-restaurant/mockups/unique/src/build.py
 """
-import html, json, pathlib, struct, datetime
+import html, json, pathlib, struct, datetime, base64
 
 HERE = pathlib.Path(__file__).resolve().parent
 SITE = HERE.parents[2]
@@ -147,6 +147,7 @@ def pipe(items): return f' {SEP} '.join(f'<span>{i}</span>' for i in items)
 
 def src(name, pre=''): return f'{pre}img/{name}.webp'
 def wh(name): return webp_size(DIST / src(name))
+def b64(name): return 'data:image/webp;base64,' + base64.b64encode((DIST / src(name)).read_bytes()).decode()
 def img(name, alt, lazy=True, cls='', sizes=None, set_=None, pre='', extra=''):
     w, h = wh(name)
     load = ' loading="lazy" decoding="async"' if lazy else ' fetchpriority="high" decoding="async"'
@@ -207,7 +208,7 @@ hero = f'''
   <div class="hero-pic">
     <picture>
       <source media="(max-width: 767px)" srcset="img/hero-img-009-phone-560.webp" width="{wh('hero-img-009-phone-560')[0]}" height="{wh('hero-img-009-phone-560')[1]}">
-      {img('hero-img-009-1920', ALT['009'], lazy=False, sizes='100vw', set_=['hero-img-009-1280', 'hero-img-009-1920'])}
+      {img('hero-img-009-1440', ALT['009'], lazy=False, sizes='100vw', set_=['hero-img-009-1280', 'hero-img-009-1440'])}
     </picture>
   </div>
   <div class="hero-in">
@@ -397,6 +398,9 @@ sheet = f'''
 </div>'''
 
 CSS = (HERE / 'page.css').read_text()
+# the hero's own blurred 40 px copy, painted under the photo until it arrives
+HERO_LQ = (f".hero-pic img:not(.loaded){{background-image:url({b64('hero-img-009-lq')})}}"
+           f"@media (max-width:767px){{.hero-pic img:not(.loaded){{background-image:url({b64('hero-img-009-phone-lq')})}}}}")
 JS = (HERE / 'page.js').read_text()
 # Fonts: Google Fonts at 4e (4g self-hosts). Latin files only, preloaded so they land before first paint, with
 # metric-matched fallbacks in page.css; Red Hat Text is one variable file for 400-600.
@@ -426,7 +430,7 @@ def page(title, body, pre='', extra_head=''):
 {HEADJS}
 {FONTS}
 {extra_head}
-<style>{CSS}</style>
+<style>{CSS}{HERO_LQ}</style>
 </head>
 <body>
 {body}

@@ -66,11 +66,11 @@ ul,ol{margin:0;padding:0;list-style:none}
 .top{transition:background-color .3s ease}
 .at-hero .top{background:rgba(255,255,255,0);-webkit-backdrop-filter:none;backdrop-filter:none}
 
-/* ---- first screen: the view, its sky dissolving into the page */
-.hero{position:relative;height:calc(100svh - var(--top));min-height:600px;max-height:1100px;overflow:hidden;background:#fff}
+/* ---- first screen: the view from the roof, calm's frame (Alon, 2026-11-05); the header floats on its sky */
+.hero{position:relative;height:100svh;min-height:600px;max-height:1100px;margin-top:calc(-1 * var(--top));overflow:hidden;background:#9fbde0}
 .hero-pic{position:absolute;inset:0}
-.hero-pic img{width:100%;height:100%;object-fit:cover;object-position:50% 100%}
-.hero-in{position:relative;z-index:1;text-align:center;padding-top:min(7vh,64px)}
+.hero-pic img{width:100%;height:100%;object-fit:cover;object-position:50% 100%;background:#9fbde0 50% 100%/cover no-repeat}
+.hero-in{position:relative;z-index:1;text-align:center;padding-top:calc(var(--top) + min(14vh,130px))}
 .hero h1{font-size:72px;line-height:80px;height:80px}
 .where{font-size:18px;color:var(--ink);margin:6px 0 22px;font-weight:500}
 
@@ -301,9 +301,8 @@ html:not(.js) .slide img[data-src]{display:none}
   .nav,.top .btn-sm{display:none}
   .top-act{margin-left:auto}
   .top .sun-sm{display:inline-grid}
-  .hero{height:calc(100svh - var(--top));min-height:560px;display:flex;flex-direction:column}
-  .hero-in{order:1;padding:4svh 16px 0}
-  .hero-pic{order:2;position:relative;inset:auto;flex:1 1 auto;min-height:0;margin-top:8px}
+  .hero{height:100svh;min-height:560px}
+  .hero-in{padding:calc(var(--top) + 9svh) 16px 0}
   .hero-pic picture{position:absolute;inset:0;display:block}
   .hero h1{font-size:50px;line-height:56px;height:56px}
   .where{font-size:18px;line-height:1.4;margin:6px auto 18px;max-width:340px}

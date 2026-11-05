@@ -2,9 +2,9 @@
 # Every image of the Coconut Surf Inn unique mockup ("Round the clock", designer 0.7.1, station 4e), made from
 # the business's own Booking.com / Airbnb uploads in dossier/coconut-surf-inn-guest-house-and-restaurant/assets
 # (tools/setup.sh / tools/link-assets.sh first). Needs ffmpeg, cwebp and python3. Run from anywhere.
-# Crops only, scaled down never up; no colour grading; nothing is shown wider than its source. No video (none usable).
-# One adaptation (round 2, the concept's dissolve baked in): the hero's sky fades to the page's white through a
-# brightness key, so the palm crowns stay crisp against white; nothing else in the photograph changes.
+# Crops only, scaled down never up; nothing is shown wider than its source. No video (none usable).
+# One adaptation: the first screen uses calm's view-from-the-roof frame and grade (Alon, 2026-11-05: "take the one
+# from Calm and put it as the top image for Unique"); every other photo is ungraded.
 # media: sites/coconut-surf-inn-guest-house-and-restaurant/mockups/unique/dist/img/**
 set -euo pipefail
 cd "$(dirname "$0")/../../../../.."
@@ -32,18 +32,22 @@ w-=w%2; h-=h%2
 print(f"{int(w)}:{int(h)}:{int((W-w)*fx)}:{int((H-h)*fy)}")' "$@"
 }
 
-# ---- first screen: img-009, the view from the roof. Desktop 16:9 from y 20 (bottom above the tin roofs, wires and
-# tuk-tuks); phone 560x712 on the reef and the sea. sky(): white = max(top ramp, lower ramp x brightness key), so
-# the bright sky goes to the page white and the dark palm fronds keep every pixel. Args: crop, top ramp 1->0
-# between two rows, lower ramp 1->0 between two rows, key from V lo to V hi (V = max channel), out name, widths.
-sky() {
-  local E="st(0,max(r(X,Y),max(g(X,Y),b(X,Y))));st(1,clip((ld(0)-$6)/($7-$6),0,1));st(1,ld(1)*ld(1)*(3-2*ld(1)));st(2,clip(($3-Y)/($3-$2),0,1));st(3,clip(($5-Y)/($5-$4),0,1));st(3,ld(3)*ld(3)*(3-2*ld(3)));st(4,max(ld(2),ld(3)*ld(1)))"
-  ff -i "$A/img-009.jpg" -vf "crop=$1,format=rgb24,geq=r='$E;r(X,Y)+(255-r(X,Y))*ld(4)':g='$E;g(X,Y)+(255-g(X,Y))*ld(4)':b='$E;b(X,Y)+(255-b(X,Y))*ld(4)'" "$T/sky.png"
-  shift 7; local out="$1"; shift
-  for w in "$@"; do ff -i "$T/sky.png" -vf "scale='min($w,iw)':-2:flags=lanczos" "$T/x.png"; cwebp -quiet -q 72 -m 6 -sharp_yuv "$T/x.png" -o "$D/img/$out-$w.webp"; done
+# ---- first screen: img-009, the view from the roof, as calm cuts and grades it (calm/src/make-media.sh, round 3).
+# Desktop 1440x810 from (380, 290): the bottom edge stops at y 1100, on the beach under the reef, above the wires
+# (y 1110+), the tin roofs and the tarp roof; the horizon sits at ~80%, sea, reef whitewater and green below it.
+# Phone 560x1100 from (800, 0): blue sky over the centre palms, down to the reef whitewater at x ~1160, left of the
+# poles in the dark trees (x 1373+), bottom edge above the wires. +6% contrast / +10% saturation, as calm.
+GRADE="eq=contrast=1.06:saturation=1.10,curves=all='0/0.02 0.35/0.37 1/1'"
+hero() { # <crop> <out-name> <width> <quality> [extra vf]
+  ff -i "$A/img-009.jpg" -vf "crop=$1,scale='min($3,iw)':-2:flags=lanczos,$GRADE${5:+,$5}" "$T/x.png"
+  cwebp -quiet -q "$4" -m 6 -sharp_yuv "$T/x.png" -o "$D/img/$2.webp"
 }
-sky 1920:1080:0:20 190 380 690 920 135 185 hero-img-009 1920 1280
-sky 560:712:560:430 0 8 290 470 135 185 hero-img-009-phone 560
+hero 1440:810:380:290 hero-img-009-1440 1440 74
+hero 1440:810:380:290 hero-img-009-1280 1280 72
+hero 560:1100:800:0   hero-img-009-phone-560 560 74
+# tiny placeholders of the same crops, inlined by build.py under the photo (never a flat box on a slow load)
+hero 1440:810:380:290 hero-img-009-lq 40 40 gblur=sigma=1
+hero 560:1100:800:0   hero-img-009-phone-lq 40 40 gblur=sigma=1
 
 size() { ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 "$A/img-$1.jpg" | tr ',' ' '; }
 
