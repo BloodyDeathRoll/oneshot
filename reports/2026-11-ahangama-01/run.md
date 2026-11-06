@@ -4,7 +4,7 @@ Operator alon. One business, `the-sandhya`, `mode: test`. Caps from the run file
 
 ## the-sandhya
 
-State: `copy_failed`, round 2, on voice only. Next: humanizer, then the copyeditor's third pass, once Alon has decided what the ruling covers.
+State: `copy_failed`, third pass, on voice alone and one sentence (Dining ¶2 S2). Stopped for Alon, as he decided on 2026-11-06.
 
 | Station | Agent | Tokens | Minutes | Result |
 |---|---|---|---|---|
@@ -16,7 +16,9 @@ State: `copy_failed`, round 2, on voice only. Next: humanizer, then the copyedit
 | 4a | copywriter 0.5.0 | 130,765 | 5.5 | round 2 |
 | 4b | humanizer 0.2.1 | 169,264 | 7.8 | round 2 |
 | 4c | copyeditor 0.4.2 | 232,784 | 9.5 | FAIL, round 2: facts clean, 6 voice sentences |
-| | **Total** | **1,810,967** | **108.7** | |
+| 4b | humanizer 0.2.1 | 153,198 | 5.0 | round 3 |
+| 4c | copyeditor 0.4.2 | 233,518 | 8.3 | FAIL, third pass: one sentence |
+| | **Total** | **2,197,683** | **122.1** | |
 
 Not counted: Scout and orchestrator time in the session, and a harvester start stopped within minutes to move worktree.
 
@@ -24,7 +26,6 @@ Not counted: Scout and orchestrator time in the session, and a harvester start s
 
 ## Waiting for a human
 
-1. Does the owner-prose ruling cover moved clauses and one-word grammar or article changes? `copy/review.md` scored them as not exempt.
-2. If the third pass fails on voice alone, the copyeditor's rule sends the business to the harvester or out of the run. Is that what should happen?
+How to settle the one failed sentence, Dining ¶2 S2. Alon has already ruled that moved clauses and small word changes stay exempt, and that a third-pass failure on voice alone stops for him.
 
-No gate is passed by either; gate b (mockup pick) is still ahead.
+No gate is passed by this; gate b (mockup pick) is still ahead.

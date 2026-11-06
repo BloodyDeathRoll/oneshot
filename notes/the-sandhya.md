@@ -4,7 +4,7 @@ Run `2026-11-ahangama-01`, owner alon, branch `alon/the-sandhya`, `mode: test` (
 
 ## State
 
-`copy_failed`, round 2, on voice only: facts are clean. Copy round 3 under way. The next review is the third pass (`copyeditor/base.md`); if it fails on voice alone, stop and ask Alon (his decision, 2026-11-06), do not send the business to the harvester or out of the run. Budget raised by Alon on 2026-11-06 to 10M tokens and 600 minutes, at 1.28M and 86 minutes used; 1.81M and 109 minutes used now; review it again at gate b.
+`copy_failed`, third pass, on voice alone and one sentence: Dining ¶2 S2. Facts are clean. Stopped for Alon (his decision, 2026-11-06: do not send the business to the harvester or out of the run). 2.20M tokens and 122 minutes used. Budget raised by Alon on 2026-11-06 to 10M tokens and 600 minutes, at 1.28M and 86 minutes used; 1.81M and 109 minutes used now; review it again at gate b.
 
 ## Decided 2026-11-06 (Alon: "you decide")
 
@@ -13,7 +13,7 @@ Run `2026-11-ahangama-01`, owner alon, branch `alon/the-sandhya`, `mode: test` (
 
 ## Copy round 3
 
-Humanizer only: the 2 sentences still flagged under the widened ruling (Kabalana ¶3 S1, Dining ¶2) and the 6 note corrections listed in `sites/the-sandhya/copy/review.md`. Then the copyeditor's third pass.
+Done. What is left is Dining ¶2 S2 and the small `sources.md` imprecisions in `sites/the-sandhya/copy/review.md`. The sentence misreads because round 2 cut the hotel's "going directly to"; the fix waits for Alon.
 
 ## Do not lose
 
