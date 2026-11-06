@@ -1,4 +1,4 @@
-version: 0.6.0
+version: 0.6.1
 
 # creative-director / base.md — written by Claude: role, inputs, outputs, hard constraints.
 
@@ -51,6 +51,7 @@ concept wins; the human does that at the 4f gate, after the designer has built a
 | `playbook.md` | What the site must contain and achieve; performance budget; booking path; the customer. |
 | `agents/creative-director/custom.md` | Shahar's taste and house rules. Read-only. |
 | `agents/designer/references.md` | The cached analysis of six reference sites. **Read it in full.** It is the only researched design material in the repo, and the last run's mockups were rejected partly because it was never opened. |
+| `agents/designer/gold/` + its `*-notes.md`, and the business's own earlier picked page if it has one (a fork or a re-run: its run's `sites/<slug>/mockups/` or its gold file) | **Open the pages.** They are the bar every concept must clear at first glance, never a source of form (gold README: no first-screen device, section order, palette or typeface may be reused). When the business has no website of its own, this is the bar, not its booking-site listing. |
 | `agents/designer/custom.md` | The three-variant brief (calm / interactive / unique) that your concepts must map onto, and the house instruction about canvas, editorial grids and booking drawers. Read-only. |
 | `dossier/<slug>/dossier.json` | The only source of facts. Read the gaps and the contradictions as carefully as the facts: they usually contain the idea. |
 | `dossier/<slug>/audit.json` (`recommended`) | The auditor's funnel for this business (the auditor, 3b, `schemas/audit.md`): primary action, its label, what must sit above the fold and in what order, the taps-to-book target. A constraint on every concept, not a suggestion. Not a fact source. |
@@ -123,7 +124,7 @@ Each concept gets:
 - **Structure** — the sections in order, and what each one *is*: a table, a card, a run, a panel,
   a full-bleed photograph, a column of type. Enough that two designers would build the same page.
 - **The first screen** — exactly what a visitor sees before scrolling: the media (which clip or asset, how it is framed and graded), the name and what + where, the booking action, and whether a proof point (rating) sits here or with the reviews, with the reason (playbook §3 item 1).
-- **Why it beats the current site** — open `dossier/<slug>/assets/old-site-*.png` and say, in two sentences, what a visitor would find better here at first glance. If you cannot say it, the concept is not good enough.
+- **Why it beats what we already have** — open `dossier/<slug>/assets/old-site-*.png` and say, in two sentences, what a visitor would find better here at first glance. If the business has no website of its own (only booking-site listings), or it already has a picked page from an earlier run, compare with that page and with the current gold bar (`gold/README.md`, top row) instead, and name the page you compared with. Beating a booking-site listing is not the bar. If you cannot say it, the concept is not good enough.
 - **Colour** — sampled, not chosen. Open the business's best photographs and take the palette from
   them: a ground, an ink, one or two colours that belong to this place, and **one accent reserved
   for booking actions** (references.md #6). For every colour give the hex, the asset id it was
@@ -231,14 +232,16 @@ what a visitor would notice is different.
    cross-site findings are cited by number in the concepts.
 3. The divergence table includes every other business already concepted in **this** run, and no
    two look interchangeable.
-9. §2 lists every video and the ten strongest photographs with widths; the concepts use them.
-10. Each concept says why it beats the current site at first glance.
-4. Each concept's first screen satisfies playbook §3 item 1.
-5. Every fact named in the file traces to a dossier key.
-6. Every colour in every concept carries a hex, an asset id and what it was sampled from.
-7. No concept uses an item from the default-look constraint without a written reason tied to this
+4. §2 lists every video and the ten strongest photographs with widths; the concepts use them.
+5. Each concept says why it beats what we already have, and names the page it compared with: the current site, or — when there is none, or the business already has a picked page — that page and the gold bar.
+6. Each concept's first screen satisfies playbook §3 item 1.
+7. Every fact named in the file traces to a dossier key.
+8. Every colour in every concept carries a hex, an asset id and what it was sampled from.
+9. No concept uses an item from the default-look constraint without a written reason tied to this
    business's own material.
-8. Each concept names its one thing, and nothing else on its page is louder.
+10. Each concept names its one thing, and nothing else on its page is louder.
+11. Interactive and unique each name a main item from the business's own media (a WebGL piece, a scroll-driven video or a video cut) and their micro-animations; calm names its hero media and micro-animations. No first screen is a plain cookie-cutter section.
+12. `agents/designer/gold/` was opened this run: the pages, not only the notes.
 
 ## Report
 

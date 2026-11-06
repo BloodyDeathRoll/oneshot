@@ -1,0 +1,419 @@
+{
+ "slug": "cheeky-monkey",
+ "locale": "en",
+ "copywriter_version": "0.4.0",
+ "businessName": "Cheeky Monkey Surf Camp",
+ "businessType": "surf_camp",
+ "tagline": "Surf shop, rooms and lessons on the main road in Midigama, with 400 boards to rent.",
+ "closing": "See the rooms and live dates on Booking.com. For lessons and surf weeks, call us first.",
+ "featureLine": "Come as a stranger, leave as a friend.",
+ "copyBlocks": [
+  {
+   "slot": "intro",
+   "heading": "Catch waves, not worries",
+   "body": "Cheeky Monkey is a surf and yoga camp on the main road through Midigama, close to the main point breaks.\n\nRight alongside the guesthouse is Baba's Surf Shop, where you can rent a board, buy one, or bring yours in for a repair."
+  },
+  {
+   "slot": "about",
+   "heading": "Three rooms in 2009",
+   "body": "Cheeky Monkey opened in late 2009 as a small guesthouse with three rooms, a tiny surf shop and a restaurant. By 2021 it had ten rooms.\n\nIt was founded by Baba, who taught himself to surf at twelve, like most kids in the area, and worked as a surf instructor. The shop carries his name."
+  },
+  {
+   "slot": "about",
+   "heading": "Baba's Surf Shop",
+   "body": "There are 400 boards for rent, in different sizes, tails and colours.\n\nIf your own board gets damaged, the shaper here can fix it fast.\n\nThe shelves hold the rest: wax, straps, bags and beachwear. The shop is run by surfers, for surfers."
+  },
+  {
+   "slot": "offer",
+   "heading": "Lessons for your level",
+   "body": "Whether you are a total beginner or chasing your next big ride, lessons are tailored to your skill level, your pace and your style.\n\nThe lesson price on this page was published in 2021. Call before you come to check the price, and that lessons are running when you are here."
+  },
+  {
+   "slot": "offer",
+   "heading": "A week of surf",
+   "body": "The Full Surf Lesson Package is two surf lessons a day for six days, with one rest day.\n\nThe Moderate package is one surf lesson a day for six days, or one guided session at a surf spot instead.\n\nThe Yoga and Surf package is one yoga lesson and one surf lesson a day for six days.\n\nThe Surf Board Rental package is any board for seven days, and a tuk-tuk driving lesson if you want one.\n\nEvery package has seven nights, seven breakfasts, five dinners, two or three yoga classes, a party night, the weekly BBQ night and free use of the gym. The three lesson packages include your board during lessons and transport to the surf spot. The week includes one lake tour, for an extra USD 5.\n\nThe price is per person for the week and depends on the room: a private room, a shared double or a shared triple. These packages and prices were published in 2021, so call to confirm them before you book."
+  },
+  {
+   "slot": "about",
+   "heading": "Up on the roof",
+   "body": "The house looks out on a 180° sea view. One guest wrote that \"the ocean view is amazing from the rooftop\".\n\nYoga happens up there too, at sunrise and at sunset, facing the ocean."
+  },
+  {
+   "slot": "info",
+   "heading": "Getting here",
+   "body": "Cheeky Monkey is on the Galle–Matara main road. Booking.com puts Midigama Beach 350 m away and Midigama train station 800 m. Ahangama Beach is 2 km, Weligama Beach 3.3 km and Koggala Airport 10 km."
+  },
+  {
+   "slot": "info",
+   "heading": "Good to know",
+   "body": "There is no generator for power cuts.\n\nThe team can book you a taxi and organise a safari or a cooking class."
+  }
+ ],
+ "spot": "Close to the main point breaks, with many more surf breaks a short walk away.",
+ "season": "The best time is from October till March or April. The waves are nice and the beach is clean.",
+ "openingHours": [],
+ "hoursNote": null,
+ "lessons": [
+  {
+   "label": "Surf lesson",
+   "durationMin": 90,
+   "level": [
+    "beginner",
+    "intermediate",
+    "advanced"
+   ],
+   "price": 20,
+   "currency": "USD",
+   "unit": "per_person"
+  },
+  {
+   "label": "Private lesson"
+  },
+  {
+   "label": "Group lesson",
+   "groupSize": "Maximum 6"
+  },
+  {
+   "label": "Stand-up paddleboarding (SUP)"
+  },
+  {
+   "label": "Surf spot tour"
+  }
+ ],
+ "priceList": [
+  {
+   "label": "Full Surf Lesson Package, private room",
+   "price": 400,
+   "currency": "USD",
+   "unit": "per_week",
+   "note": "Per person, 7 nights. Price published in 2021"
+  },
+  {
+   "label": "Full Surf Lesson Package, shared double room",
+   "price": 300,
+   "currency": "USD",
+   "unit": "per_week",
+   "note": "Per person, 7 nights. Price published in 2021"
+  },
+  {
+   "label": "Full Surf Lesson Package, shared triple room",
+   "price": 300,
+   "currency": "USD",
+   "unit": "per_week",
+   "note": "Per person, 7 nights. Price published in 2021"
+  },
+  {
+   "label": "Moderate Surf Lesson or Surf Spot Guiding Package, private room",
+   "price": 350,
+   "currency": "USD",
+   "unit": "per_week",
+   "note": "Per person, 7 nights. Price published in 2021"
+  },
+  {
+   "label": "Moderate Surf Lesson or Surf Spot Guiding Package, shared double room",
+   "price": 295,
+   "currency": "USD",
+   "unit": "per_week",
+   "note": "Per person, 7 nights. Price published in 2021"
+  },
+  {
+   "label": "Moderate Surf Lesson or Surf Spot Guiding Package, shared triple room",
+   "price": 280,
+   "currency": "USD",
+   "unit": "per_week",
+   "note": "Per person, 7 nights. Price published in 2021"
+  },
+  {
+   "label": "Yoga and Surf Lesson Package, private room",
+   "price": 300,
+   "currency": "USD",
+   "unit": "per_week",
+   "note": "Per person, 7 nights. Price published in 2021"
+  },
+  {
+   "label": "Yoga and Surf Lesson Package, shared double room",
+   "price": 280,
+   "currency": "USD",
+   "unit": "per_week",
+   "note": "Per person, 7 nights. Price published in 2021"
+  },
+  {
+   "label": "Yoga and Surf Lesson Package, shared triple room",
+   "price": 280,
+   "currency": "USD",
+   "unit": "per_week",
+   "note": "Per person, 7 nights. Price published in 2021"
+  },
+  {
+   "label": "Surf Board Rental Package, private room",
+   "price": 290,
+   "currency": "USD",
+   "unit": "per_week",
+   "note": "Per person, 7 nights. Price published in 2021"
+  },
+  {
+   "label": "Surf Board Rental Package, shared double room",
+   "price": 250,
+   "currency": "USD",
+   "unit": "per_week",
+   "note": "Per person, 7 nights. Price published in 2021"
+  },
+  {
+   "label": "Surf Board Rental Package, shared triple room",
+   "price": 250,
+   "currency": "USD",
+   "unit": "per_week",
+   "note": "Per person, 7 nights. Price published in 2021"
+  },
+  {
+   "label": "Air conditioning, added to any package",
+   "price": 50,
+   "currency": "USD",
+   "unit": "per_week",
+   "note": "Per person. Price published in 2021"
+  },
+  {
+   "label": "Airport drop",
+   "price": 65,
+   "currency": "USD",
+   "unit": "flat",
+   "note": "Price published in 2021"
+  },
+  {
+   "label": "Airport pick-up",
+   "price": 65,
+   "currency": "USD",
+   "unit": "flat",
+   "note": "Price published in 2021"
+  },
+  {
+   "label": "Airport drop and pick-up",
+   "price": 130,
+   "currency": "USD",
+   "unit": "flat",
+   "note": "Price published in 2021"
+  }
+ ],
+ "credentials": [],
+ "rooms": [
+  {
+   "label": "Small Double Room",
+   "beds": "1 double bed",
+   "sleeps": 2,
+   "note": "8 m² on the top floor, with a small desk. You can see the ocean from the private entrance"
+  },
+  {
+   "label": "Superior Double Room",
+   "beds": "1 large double bed",
+   "sleeps": 2,
+   "note": "9 m² with a desk, a seating area and a garden view"
+  },
+  {
+   "label": "Double Room",
+   "beds": "1 large double bed",
+   "sleeps": 2,
+   "note": "9 m² with a garden view"
+  },
+  {
+   "label": "Classic Triple Room",
+   "beds": "3 single beds",
+   "sleeps": 3,
+   "note": "12 m² with a sea view"
+  },
+  {
+   "label": "Small Twin Room",
+   "beds": "2 single beds",
+   "sleeps": 2,
+   "note": "8 m²"
+  }
+ ],
+ "stayInfo": {
+  "checkInFrom": "14:00",
+  "checkInTo": "19:00",
+  "checkOutFrom": "06:00",
+  "checkOutTo": "11:00",
+  "note": "Adults only. No pets, no smoking, no extra beds. Cash only. Quiet from 23:00 to 06:00. Bring photo ID and a credit card for check-in."
+ },
+ "amenities": [
+  {
+   "label": "Air conditioning in every room"
+  },
+  {
+   "label": "Private bathroom in every room"
+  },
+  {
+   "label": "Private entrance to every room"
+  },
+  {
+   "label": "Surf shop on site"
+  },
+  {
+   "label": "Gym"
+  },
+  {
+   "label": "Rooftop bar with a pool table"
+  },
+  {
+   "label": "Yoga on the rooftop"
+  },
+  {
+   "label": "Sun terrace"
+  },
+  {
+   "label": "Free WiFi",
+   "note": "57 Mbps"
+  },
+  {
+   "label": "Free private parking",
+   "note": "reservation needed"
+  },
+  {
+   "label": "Airport shuttle",
+   "note": "additional charge"
+  },
+  {
+   "label": "Laundry"
+  },
+  {
+   "label": "Daily housekeeping"
+  },
+  {
+   "label": "Luggage storage"
+  },
+  {
+   "label": "Currency exchange"
+  },
+  {
+   "label": "CCTV in common areas and outside"
+  }
+ ],
+ "rentals": [
+  {
+   "label": "Surfboards",
+   "note": "Shortboards, longboards and fish"
+  },
+  {
+   "label": "Cheeky Monkey boards",
+   "note": "Our own brand, shaped in Bali"
+  },
+  {
+   "label": "Scooters"
+  }
+ ],
+ "brands": [
+  {
+   "label": "Cheeky Monkey"
+  },
+  {
+   "label": "Creatures of Leisure"
+  },
+  {
+   "label": "Shapers"
+  }
+ ],
+ "ratings": [
+  {
+   "platform": "google",
+   "score": 4.5,
+   "scale": "5",
+   "count": 467,
+   "url": "https://www.google.com/maps/place/Cheeky+Monkey/@5.9617986,80.3967609,17z/data=!4m9!3m8!1s0x3ae114c1f7d9fc01:0xb59451ca09648650!5m2!4m1!1i2!8m2!3d5.9617986!4d80.3967609!16s%2Fg%2F11b6scl3ts?hl=en",
+   "capturedAt": "2026-10-26"
+  },
+  {
+   "platform": "booking",
+   "score": 8.3,
+   "scale": "10",
+   "count": 45,
+   "url": "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html",
+   "capturedAt": "2026-10-26"
+  }
+ ],
+ "testimonials": [
+  {
+   "quote": "We had a great time at cheeky monkey. The staff is really helpful and welcoming. The rooms are nice and the surf shop has the best selection. If you need anything to talk to Baba. He’s taking care about you!!!",
+   "author": "Christina",
+   "source": "site"
+  },
+  {
+   "quote": "Staff were friendly and super helpful, surf shop was so good definitely recommend hiring a board from here!! gym was also good based on price paid.",
+   "author": "Sienna, Australia",
+   "source": "booking",
+   "date": "2025-10"
+  },
+  {
+   "quote": "Cheeky monkey is in the best location between two great surf locations. There is also nearby restaurant and cafes so we didn’t have to hire a scooter to access everything we needed for our stay. The staff were awesome and helped with board hire, staying extra nights, and arranging taxis. Great value for money at cheeky monkey - highly recommend 👍 clean, affordable, friendly staff too.",
+   "author": "Jimmy, Australia",
+   "source": "booking",
+   "date": "2026-01"
+  },
+  {
+   "quote": "Best place to stay in Midigama, right next to best surfing spots and has a billards table. Guys are extremely helpful and friendly, if you are seeing this, you should give it a try for a couple of days I am sure you will want to extend your stay!",
+   "author": "Serkan, Turkey",
+   "source": "booking",
+   "date": "2026-02"
+  },
+  {
+   "quote": "Cheeky Monkey was very comfortable and clean and the staff were all very kind and helpful. Loved the location as it was not overly touristy but still close to everything and right by the ocean with great views! Mostly chill accomodation/surf shops/restaurants in the area rather than big resorts etc. Definitely recommend to stay here if you are here to surf and not get too caught up in the overcrowded tourist areas.",
+   "author": "Ligaya, New Zealand",
+   "source": "booking",
+   "date": "2025-11"
+  },
+  {
+   "quote": "All was good with our room, it was clean and comfortable and wifi was great!\nThere is a nice chilling area with pool table and bar, which was the perfect evening activity for us as it was raining. The staff was friendly and the area is nice with the sea right in front and just a short walk to the beach. Would stay here again!",
+   "author": "Jenny, Finland",
+   "source": "booking",
+   "date": "2025-09"
+  },
+  {
+   "quote": "I spent 1 night at this hotel and had a lovely experience. Baba and the whole staff were really welcoming and made my stay wonderful. We even played pool in the evening and I had access to the gym facilities.",
+   "author": "Lukas, Sri Lanka",
+   "source": "booking",
+   "date": "2025-09"
+  },
+  {
+   "quote": "The location is really nice and next to intermediate surfspot. The ocean view is amazing from the rooftop",
+   "author": "Mihrican, Germany",
+   "source": "booking",
+   "date": "2025-12"
+  },
+  {
+   "quote": "The place is nice, just a short walk away from amazing beach. The staff was helpful and reacting fast. They also helped us with transfer from the airport at night. Overall we had nice stay for very good price :)",
+   "author": "Veronika, Czech Republic",
+   "source": "booking",
+   "date": "2025-12"
+  },
+  {
+   "quote": "Comfortable big rooms and friendly staff. Really great location.",
+   "author": "Hannah, United Kingdom",
+   "source": "booking",
+   "date": "2026-03"
+  },
+  {
+   "quote": "It's very nice and comfortable, and the young staff working there are very helpful.",
+   "author": "Yunus, Turkey",
+   "source": "booking",
+   "date": "2025-12"
+  }
+ ],
+ "contact": {
+  "phone": "+94719248686",
+  "whatsapp": "",
+  "email": "cheekymonkeymidi@gmail.com",
+  "address": "Galle - Matara Main Road, Midigama East Midigama, Ahangama 80650, Sri Lanka",
+  "mapUrl": "https://www.google.com/maps/place/Cheeky+Monkey/@5.9617986,80.3967609,17z/data=!4m9!3m8!1s0x3ae114c1f7d9fc01:0xb59451ca09648650!5m2!4m1!1i2!8m2!3d5.9617986!4d80.3967609!16s%2Fg%2F11b6scl3ts?hl=en"
+ },
+ "bookingLinks": [
+  {
+   "label": "Check dates on Booking.com",
+   "url": "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html"
+  },
+  {
+   "label": "Message us on Instagram",
+   "url": "https://www.instagram.com/cheekymonkeysrilanka/"
+  }
+ ],
+ "languagesSpoken": [
+  "en"
+ ]
+}

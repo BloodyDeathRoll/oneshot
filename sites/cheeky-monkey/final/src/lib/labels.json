@@ -1,0 +1,38 @@
+{
+ "_about": "Template wording: interface labels and section titles (schemas/site-content.md: these belong to the template, not the content). Taken verbatim from the picked mockup. No fact lives here.",
+ "skip": "Skip to surf weeks and prices",
+ "nav": { "counter": "Surf weeks", "rooms": "Rooms", "shop": "Shop" },
+ "plan": "Plan a stay",
+ "call_aria": "Call",
+ "water": { "title": "Down at the water", "spot": "The spot", "season": "The season", "see_weeks": "See the surf weeks" },
+ "weeks": {
+  "cards_aria": "The four surf weeks",
+  "per": "per person, 7 nights",
+  "call": "Call to book",
+  "email_aria": "Email about the {title} week",
+  "included": "Every week comes with",
+  "dated": "Published {year}, call to confirm"
+ },
+ "lessons": { "call": "Call to book a lesson", "email_aria": "Email about a lesson", "subject": "surf lesson" },
+ "rooms": { "title": "The rooms", "photos_aria": "{room}, photos", "prev": "Previous photo", "next": "Next photo", "dot": "Photo {i} of {n}", "stay": "Staying here", "stay_aria": "Staying here" },
+ "guests": { "title": "What guests say", "prev": "Previous review", "next": "Next review", "dot": "Review {i} of {n}", "track_aria": "Guest reviews" },
+ "road": { "map": "Open in Google Maps" },
+ "closing": { "sr": "Book", "email": "Email us" },
+ "ig": { "sr": "Instagram", "follow": "Follow" },
+ "footer": { "rooms": "Rooms on Booking.com" },
+ "drawer": {
+  "start": "What would you like to book?",
+  "room": "A room", "week": "A surf week", "lesson": "A lesson", "board": "A board",
+  "room_tile": "{n} rooms, live dates on Booking.com",
+  "week_tile": "{n} packages, from {price}",
+  "which_room": "Which room?", "which_week": "Which week?", "week_aria": "Surf week", "room_aria": "Room",
+  "room_private": "Private", "room_double": "Shared double", "room_triple": "Shared triple",
+  "handoff": "Live dates and prices for every room are on Booking.com.",
+  "week_call": "Call about this week", "email": "Email", "call": "Call",
+  "dated_week": "Published {year}, call to confirm before you book",
+  "dated_lesson": "Published {year}, call to confirm before you come",
+  "lesson_title": "A surf lesson",
+  "board_title": "A board from {shop}",
+  "back": "Back", "close": "Close"
+ }
+}

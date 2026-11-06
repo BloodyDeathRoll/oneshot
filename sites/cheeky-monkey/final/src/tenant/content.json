@@ -1,0 +1,1020 @@
+{
+ "tenant": {
+  "id": null,
+  "name": "Cheeky Monkey Surf Camp",
+  "slug": "cheeky-monkey"
+ },
+ "locales": {
+  "en": {
+   "id": null,
+   "tenant": {
+    "id": null,
+    "name": "Cheeky Monkey Surf Camp",
+    "slug": "cheeky-monkey"
+   },
+   "businessName": "Cheeky Monkey Surf Camp",
+   "businessType": "surf_camp",
+   "tagline": "Surf shop, rooms and lessons on the main road in Midigama, with 400 boards to rent.",
+   "closing": "See the rooms and live dates on Booking.com. For lessons and surf weeks, call us first.",
+   "featureLine": "Come as a stranger, leave as a friend.",
+   "languages": [
+    "en"
+   ],
+   "copyBlocks": [
+    {
+     "id": "seed-block-1",
+     "slot": "intro",
+     "heading": "Catch waves, not worries",
+     "body": "Cheeky Monkey is a surf and yoga camp on the main road through Midigama, close to the main point breaks.\n\nRight alongside the guesthouse is Baba's Surf Shop. Rent a board there or buy one, and bring yours in if it needs a repair."
+    },
+    {
+     "id": "seed-block-2",
+     "slot": "about",
+     "heading": "Three rooms in 2009",
+     "body": "Cheeky Monkey opened in late 2009 as a small guesthouse with three rooms, a tiny surf shop and a restaurant. By 2021 it had ten rooms.\n\nBaba founded it. Like most kids in the area, he taught himself to surf at twelve. He worked as a surf instructor too, and the shop carries his name."
+    },
+    {
+     "id": "seed-block-3",
+     "slot": "about",
+     "heading": "Baba's Surf Shop",
+     "body": "There are 400 boards for rent, in different sizes, tails and colours.\n\nIf your own board gets damaged, the shaper here can fix it fast.\n\nOn the shelves there's beachwear, straps, bags and, of course, wax. It's a shop run by surfers, for surfers."
+    },
+    {
+     "id": "seed-block-4",
+     "slot": "offer",
+     "heading": "Lessons for your level",
+     "body": "Lessons are fitted to your level and your pace, and to your style. That goes for a total beginner and for someone chasing their next big ride.\n\nThe lesson price on this page was published in 2021. Call before you come, to check it and to make sure lessons are running while you're here."
+    },
+    {
+     "id": "seed-block-5",
+     "slot": "offer",
+     "heading": "A week of surf",
+     "body": "The Full Surf Lesson Package is two surf lessons a day for six days, with one rest day.\n\nThe Moderate package halves that, to one surf lesson a day for six days (or one guided session at a surf spot instead).\n\nYoga and Surf gives you one of each a day for six days, a yoga lesson and a surf lesson.\n\nAnd the Surf Board Rental package gets you any board for seven days, plus a tuk-tuk driving lesson if you fancy one.\n\nAll four come with seven nights, seven breakfasts, five dinners, two or three yoga classes, a party night, the weekly BBQ night and free use of the gym. With the three lesson packages, your board for the lessons and the ride to the surf spot are included too. There's one lake tour in the week as well, at USD 5 extra.\n\nYou pay per person for the week, and the price depends on whether you take a private room, a shared double or a shared triple. These packages and prices were published in 2021, so call to confirm them before you book."
+    },
+    {
+     "id": "seed-block-6",
+     "slot": "about",
+     "heading": "Up on the roof",
+     "body": "The house looks out on a 180° sea view. One guest wrote that \"the ocean view is amazing from the rooftop\".\n\nYoga happens up there too, at sunrise and at sunset, facing the ocean."
+    },
+    {
+     "id": "seed-block-7",
+     "slot": "info",
+     "heading": "Getting here",
+     "body": "Cheeky Monkey is on the Galle–Matara main road. Booking.com puts Midigama Beach 350 m away and Midigama train station 800 m, then Ahangama Beach at 2 km, Weligama Beach at 3.3 km and Koggala Airport at 10 km."
+    },
+    {
+     "id": "seed-block-8",
+     "slot": "info",
+     "heading": "Good to know",
+     "body": "There's no generator for power cuts.\n\nThe team can book you a taxi, and set up a safari or a cooking class."
+    }
+   ],
+   "openingHours": [],
+   "hoursNote": null,
+   "priceList": [
+    {
+     "id": "seed-price-1",
+     "label": "Full Surf Lesson Package, private room",
+     "price": 400,
+     "currency": "USD",
+     "unit": "per_week",
+     "note": "Per person, 7 nights. Price published in 2021"
+    },
+    {
+     "id": "seed-price-2",
+     "label": "Full Surf Lesson Package, shared double room",
+     "price": 300,
+     "currency": "USD",
+     "unit": "per_week",
+     "note": "Per person, 7 nights. Price published in 2021"
+    },
+    {
+     "id": "seed-price-3",
+     "label": "Full Surf Lesson Package, shared triple room",
+     "price": 300,
+     "currency": "USD",
+     "unit": "per_week",
+     "note": "Per person, 7 nights. Price published in 2021"
+    },
+    {
+     "id": "seed-price-4",
+     "label": "Moderate Surf Lesson or Surf Spot Guiding Package, private room",
+     "price": 350,
+     "currency": "USD",
+     "unit": "per_week",
+     "note": "Per person, 7 nights. Price published in 2021"
+    },
+    {
+     "id": "seed-price-5",
+     "label": "Moderate Surf Lesson or Surf Spot Guiding Package, shared double room",
+     "price": 295,
+     "currency": "USD",
+     "unit": "per_week",
+     "note": "Per person, 7 nights. Price published in 2021"
+    },
+    {
+     "id": "seed-price-6",
+     "label": "Moderate Surf Lesson or Surf Spot Guiding Package, shared triple room",
+     "price": 280,
+     "currency": "USD",
+     "unit": "per_week",
+     "note": "Per person, 7 nights. Price published in 2021"
+    },
+    {
+     "id": "seed-price-7",
+     "label": "Yoga and Surf Lesson Package, private room",
+     "price": 300,
+     "currency": "USD",
+     "unit": "per_week",
+     "note": "Per person, 7 nights. Price published in 2021"
+    },
+    {
+     "id": "seed-price-8",
+     "label": "Yoga and Surf Lesson Package, shared double room",
+     "price": 280,
+     "currency": "USD",
+     "unit": "per_week",
+     "note": "Per person, 7 nights. Price published in 2021"
+    },
+    {
+     "id": "seed-price-9",
+     "label": "Yoga and Surf Lesson Package, shared triple room",
+     "price": 280,
+     "currency": "USD",
+     "unit": "per_week",
+     "note": "Per person, 7 nights. Price published in 2021"
+    },
+    {
+     "id": "seed-price-10",
+     "label": "Surf Board Rental Package, private room",
+     "price": 290,
+     "currency": "USD",
+     "unit": "per_week",
+     "note": "Per person, 7 nights. Price published in 2021"
+    },
+    {
+     "id": "seed-price-11",
+     "label": "Surf Board Rental Package, shared double room",
+     "price": 250,
+     "currency": "USD",
+     "unit": "per_week",
+     "note": "Per person, 7 nights. Price published in 2021"
+    },
+    {
+     "id": "seed-price-12",
+     "label": "Surf Board Rental Package, shared triple room",
+     "price": 250,
+     "currency": "USD",
+     "unit": "per_week",
+     "note": "Per person, 7 nights. Price published in 2021"
+    },
+    {
+     "id": "seed-price-13",
+     "label": "Airport drop",
+     "price": 65,
+     "currency": "USD",
+     "unit": "flat",
+     "note": "Price published in 2021"
+    },
+    {
+     "id": "seed-price-14",
+     "label": "Airport pick-up",
+     "price": 65,
+     "currency": "USD",
+     "unit": "flat",
+     "note": "Price published in 2021"
+    },
+    {
+     "id": "seed-price-15",
+     "label": "Airport drop and pick-up",
+     "price": 130,
+     "currency": "USD",
+     "unit": "flat",
+     "note": "Price published in 2021"
+    }
+   ],
+   "photos": [
+    {
+     "id": "seed-photo-1",
+     "image": {
+      "id": 1,
+      "alt": "A surfer walking into the sea with his board",
+      "filename": "img-100.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 483486,
+      "width": 1500,
+      "height": 2000,
+      "url": "/api/media/file/img-100.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-2",
+     "image": {
+      "id": 2,
+      "alt": "A surfer in a Cheeky Monkey vest holding a yellow fish board, looking at the waves",
+      "filename": "img-103.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 379000,
+      "width": 2000,
+      "height": 1333,
+      "url": "/api/media/file/img-103.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-3",
+     "image": {
+      "id": 3,
+      "alt": "Surfers wading into the sea on Midigama beach",
+      "filename": "img-155.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 315337,
+      "width": 1920,
+      "height": 844,
+      "url": "/api/media/file/img-155.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-4",
+     "image": {
+      "id": 4,
+      "alt": "Surf lessons at Cheeky Monkey surf camp in Sri Lanka",
+      "filename": "img-149.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 355890,
+      "width": 500,
+      "height": 750,
+      "url": "/api/media/file/img-149.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-5",
+     "image": {
+      "id": 5,
+      "alt": "Surfers off to surf from the Cheeky Monkey surf camp",
+      "filename": "img-135.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 839070,
+      "width": 1336,
+      "height": 2000,
+      "url": "/api/media/file/img-135.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-6",
+     "image": {
+      "id": 6,
+      "alt": "Rooftop yoga sessions at Cheeky Monkey with Sea View",
+      "filename": "img-137.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 1215559,
+      "width": 1864,
+      "height": 2000,
+      "url": "/api/media/file/img-137.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-7",
+     "image": {
+      "id": 7,
+      "alt": "Shop interior: rack of colourful fish boards",
+      "filename": "img-096.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 567332,
+      "width": 1500,
+      "height": 2000,
+      "url": "/api/media/file/img-096.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-8",
+     "image": {
+      "id": 8,
+      "alt": "Surfboards at Baba's surf shop",
+      "filename": "img-109.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 1689835,
+      "width": 1800,
+      "height": 1200,
+      "url": "/api/media/file/img-109.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-9",
+     "image": {
+      "id": 9,
+      "alt": "Colorful surfboards for rent at Cheeky Monkey surf camp in Sri Lanka",
+      "filename": "img-146.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 559612,
+      "width": 1326,
+      "height": 2000,
+      "url": "/api/media/file/img-146.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-10",
+     "image": {
+      "id": 10,
+      "alt": "A guy repeairing surfboard at Cheeky Monkey surf camp",
+      "filename": "img-112.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 137728,
+      "width": 1035,
+      "height": 1280,
+      "url": "/api/media/file/img-112.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-11",
+     "image": {
+      "id": 11,
+      "alt": "Surf shop near Cheeky Monkey surf camp",
+      "filename": "img-108.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 1678459,
+      "width": 1800,
+      "height": 1200,
+      "url": "/api/media/file/img-108.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-12",
+     "image": {
+      "id": 12,
+      "alt": "Happy client with white cheeky monkey surfboard",
+      "filename": "img-131.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 819994,
+      "width": 1500,
+      "height": 2000,
+      "url": "/api/media/file/img-131.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-13",
+     "image": {
+      "id": 13,
+      "alt": "Hand painted surfboard at Cheeky Monkey",
+      "filename": "img-116.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 125677,
+      "width": 960,
+      "height": 1280,
+      "url": "/api/media/file/img-116.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-14",
+     "image": {
+      "id": 14,
+      "alt": "Shop interior: board racks with a blue board in front",
+      "filename": "img-087.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 513029,
+      "width": 1500,
+      "height": 2000,
+      "url": "/api/media/file/img-087.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-15",
+     "image": {
+      "id": 15,
+      "alt": "Cheeky Monkey surfer on the beach with his surfboard",
+      "filename": "img-134.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 562763,
+      "width": 1500,
+      "height": 2000,
+      "url": "/api/media/file/img-134.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-16",
+     "image": {
+      "id": 16,
+      "alt": "Open-air wooden rooftop bar with a sea view in golden light",
+      "filename": "img-078.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 232911,
+      "width": 1280,
+      "height": 1920,
+      "url": "/api/media/file/img-078.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-17",
+     "image": {
+      "id": 17,
+      "alt": "Baba, who founded Cheeky Monkey, among the boards in his shop",
+      "filename": "img-141.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 498906,
+      "width": 1500,
+      "height": 2000,
+      "url": "/api/media/file/img-141.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-18",
+     "image": {
+      "id": 18,
+      "alt": "An earlier view of the shop front, Baba's Surf Shop and Surf School",
+      "filename": "img-121.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 1030824,
+      "width": 1937,
+      "height": 2000,
+      "url": "/api/media/file/img-121.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-19",
+     "image": {
+      "id": 19,
+      "alt": "The building from the road: BABA'S SURF SHOP & SURF SCHOOL front, signpost and a red tuk-tuk",
+      "filename": "img-082.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 319012,
+      "width": 1200,
+      "height": 1600,
+      "url": "/api/media/file/img-082.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-20",
+     "image": {
+      "id": 20,
+      "alt": "The rainbow rail of a new board in the shop, with a hand",
+      "filename": "cm-board-rail.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 209302,
+      "width": 1080,
+      "height": 1920,
+      "url": "/api/media/file/cm-board-rail.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-21",
+     "image": {
+      "id": 21,
+      "alt": "Busy night at restaurant near Cheeky Monkey",
+      "filename": "img-105.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 551132,
+      "width": 2000,
+      "height": 1333,
+      "url": "/api/media/file/img-105.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-22",
+     "image": {
+      "id": 22,
+      "alt": "Group selfie of smiling guests and an instructor on the beach, soft boards behind",
+      "filename": "img-085.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 324595,
+      "width": 1920,
+      "height": 1238,
+      "url": "/api/media/file/img-085.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-23",
+     "image": {
+      "id": 23,
+      "alt": "Thatched rooftop terrace with wooden bar and sea view at dusk",
+      "filename": "img-099.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 963793,
+      "width": 1500,
+      "height": 2000,
+      "url": "/api/media/file/img-099.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-24",
+     "image": {
+      "id": 24,
+      "alt": "Smiling guests and staff on the beach with boards",
+      "filename": "img-089.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 1325319,
+      "width": 1500,
+      "height": 2000,
+      "url": "/api/media/file/img-089.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    },
+    {
+     "id": "seed-photo-25",
+     "image": {
+      "id": 25,
+      "alt": "Rooftop view over the wall to the sea",
+      "filename": "img-013.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 185977,
+      "width": 1920,
+      "height": 1280,
+      "url": "/api/media/file/img-013.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     },
+     "caption": null
+    }
+   ],
+   "heroVideo": {
+    "id": 49,
+    "alt": "New boards on the rack in Baba's Surf Shop, filmed close along their rails",
+    "filename": "cm-board.mp4",
+    "mimeType": "video/mp4",
+    "filesize": 12280907,
+    "width": null,
+    "height": null,
+    "url": "/api/media/file/cm-board.mp4",
+    "focalX": 50,
+    "focalY": 50,
+    "sizes": {}
+   },
+   "heroVideoPoster": {
+    "id": 50,
+    "alt": "New boards on the rack in Baba's Surf Shop: a white Rockwell shortboard beside a magenta speckled board",
+    "filename": "cm-board-poster.jpg",
+    "mimeType": "image/jpeg",
+    "filesize": 144408,
+    "width": 1080,
+    "height": 1920,
+    "url": "/api/media/file/cm-board-poster.jpg",
+    "focalX": 50,
+    "focalY": 50,
+    "sizes": {}
+   },
+   "videos": [],
+   "contact": {
+    "phone": "+94719248686",
+    "whatsapp": null,
+    "email": "cheekymonkeymidi@gmail.com",
+    "address": "Galle - Matara Main Road, Midigama East Midigama, Ahangama 80650, Sri Lanka",
+    "mapUrl": "https://www.google.com/maps/place/Cheeky+Monkey/@5.9617986,80.3967609,17z/data=!4m9!3m8!1s0x3ae114c1f7d9fc01:0xb59451ca09648650!5m2!4m1!1i2!8m2!3d5.9617986!4d80.3967609!16s%2Fg%2F11b6scl3ts?hl=en"
+   },
+   "bookingLinks": [
+    {
+     "id": "seed-link-1",
+     "label": "Check dates on Booking.com",
+     "url": "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html"
+    },
+    {
+     "id": "seed-link-2",
+     "label": "Message us on Instagram",
+     "url": "https://www.instagram.com/cheekymonkeysrilanka/"
+    }
+   ],
+   "amenities": [
+    {
+     "id": "seed-amenity-1",
+     "label": "Air conditioning in every room"
+    },
+    {
+     "id": "seed-amenity-2",
+     "label": "Private bathroom in every room"
+    },
+    {
+     "id": "seed-amenity-3",
+     "label": "Private entrance to every room"
+    },
+    {
+     "id": "seed-amenity-4",
+     "label": "Surf shop on site"
+    },
+    {
+     "id": "seed-amenity-5",
+     "label": "Gym"
+    },
+    {
+     "id": "seed-amenity-6",
+     "label": "Rooftop bar with a pool table"
+    },
+    {
+     "id": "seed-amenity-7",
+     "label": "Yoga on the rooftop"
+    },
+    {
+     "id": "seed-amenity-8",
+     "label": "Sun terrace"
+    },
+    {
+     "id": "seed-amenity-9",
+     "label": "Free WiFi",
+     "note": "57 Mbps"
+    },
+    {
+     "id": "seed-amenity-10",
+     "label": "Free private parking",
+     "note": "reservation needed"
+    },
+    {
+     "id": "seed-amenity-11",
+     "label": "Airport shuttle",
+     "note": "additional charge"
+    },
+    {
+     "id": "seed-amenity-12",
+     "label": "Laundry"
+    },
+    {
+     "id": "seed-amenity-13",
+     "label": "Daily housekeeping"
+    },
+    {
+     "id": "seed-amenity-14",
+     "label": "Luggage storage"
+    },
+    {
+     "id": "seed-amenity-15",
+     "label": "Currency exchange"
+    },
+    {
+     "id": "seed-amenity-16",
+     "label": "CCTV in common areas and outside"
+    }
+   ],
+   "ratings": [
+    {
+     "id": "seed-rating-1",
+     "platform": "google",
+     "score": 4.5,
+     "scale": "5",
+     "count": 467,
+     "url": "https://www.google.com/maps/place/Cheeky+Monkey/@5.9617986,80.3967609,17z/data=!4m9!3m8!1s0x3ae114c1f7d9fc01:0xb59451ca09648650!5m2!4m1!1i2!8m2!3d5.9617986!4d80.3967609!16s%2Fg%2F11b6scl3ts?hl=en",
+     "capturedAt": "2026-10-26"
+    },
+    {
+     "id": "seed-rating-2",
+     "platform": "booking",
+     "score": 8.3,
+     "scale": "10",
+     "count": 45,
+     "url": "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html",
+     "capturedAt": "2026-10-26"
+    }
+   ],
+   "testimonials": [
+    {
+     "id": "seed-quote-1",
+     "quote": "We had a great time at cheeky monkey. The staff is really helpful and welcoming. The rooms are nice and the surf shop has the best selection. If you need anything to talk to Baba. He’s taking care about you!!!",
+     "author": "Christina",
+     "source": "site"
+    },
+    {
+     "id": "seed-quote-2",
+     "quote": "Staff were friendly and super helpful, surf shop was so good definitely recommend hiring a board from here!! gym was also good based on price paid.",
+     "author": "Sienna, Australia",
+     "source": "booking",
+     "date": "2025-10"
+    },
+    {
+     "id": "seed-quote-3",
+     "quote": "Cheeky monkey is in the best location between two great surf locations. There is also nearby restaurant and cafes so we didn’t have to hire a scooter to access everything we needed for our stay. The staff were awesome and helped with board hire, staying extra nights, and arranging taxis. Great value for money at cheeky monkey - highly recommend 👍 clean, affordable, friendly staff too.",
+     "author": "Jimmy, Australia",
+     "source": "booking",
+     "date": "2026-01"
+    },
+    {
+     "id": "seed-quote-4",
+     "quote": "Best place to stay in Midigama, right next to best surfing spots and has a billards table. Guys are extremely helpful and friendly, if you are seeing this, you should give it a try for a couple of days I am sure you will want to extend your stay!",
+     "author": "Serkan, Turkey",
+     "source": "booking",
+     "date": "2026-02"
+    },
+    {
+     "id": "seed-quote-5",
+     "quote": "Cheeky Monkey was very comfortable and clean and the staff were all very kind and helpful. Loved the location as it was not overly touristy but still close to everything and right by the ocean with great views! Mostly chill accomodation/surf shops/restaurants in the area rather than big resorts etc. Definitely recommend to stay here if you are here to surf and not get too caught up in the overcrowded tourist areas.",
+     "author": "Ligaya, New Zealand",
+     "source": "booking",
+     "date": "2025-11"
+    },
+    {
+     "id": "seed-quote-6",
+     "quote": "All was good with our room, it was clean and comfortable and wifi was great!\nThere is a nice chilling area with pool table and bar, which was the perfect evening activity for us as it was raining. The staff was friendly and the area is nice with the sea right in front and just a short walk to the beach. Would stay here again!",
+     "author": "Jenny, Finland",
+     "source": "booking",
+     "date": "2025-09"
+    },
+    {
+     "id": "seed-quote-7",
+     "quote": "I spent 1 night at this hotel and had a lovely experience. Baba and the whole staff were really welcoming and made my stay wonderful. We even played pool in the evening and I had access to the gym facilities.",
+     "author": "Lukas, Sri Lanka",
+     "source": "booking",
+     "date": "2025-09"
+    },
+    {
+     "id": "seed-quote-8",
+     "quote": "The location is really nice and next to intermediate surfspot. The ocean view is amazing from the rooftop",
+     "author": "Mihrican, Germany",
+     "source": "booking",
+     "date": "2025-12"
+    },
+    {
+     "id": "seed-quote-9",
+     "quote": "The place is nice, just a short walk away from amazing beach. The staff was helpful and reacting fast. They also helped us with transfer from the airport at night. Overall we had nice stay for very good price :)",
+     "author": "Veronika, Czech Republic",
+     "source": "booking",
+     "date": "2025-12"
+    },
+    {
+     "id": "seed-quote-10",
+     "quote": "Comfortable big rooms and friendly staff. Really great location.",
+     "author": "Hannah, United Kingdom",
+     "source": "booking",
+     "date": "2026-03"
+    },
+    {
+     "id": "seed-quote-11",
+     "quote": "It's very nice and comfortable, and the young staff working there are very helpful.",
+     "author": "Yunus, Turkey",
+     "source": "booking",
+     "date": "2025-12"
+    }
+   ],
+   "spot": "Close to the main point breaks, with many more surf breaks a short walk away.",
+   "season": "The best time is from October till March or April. The waves are nice and the beach is clean.",
+   "languagesSpoken": [
+    "en"
+   ],
+   "rooms": [
+    {
+     "id": "seed-room-1",
+     "label": "Superior Double Room",
+     "beds": "1 large double bed",
+     "sleeps": 2,
+     "note": "9 m² with a desk, a seating area and a garden view",
+     "photo": {
+      "id": 26,
+      "alt": "Superior Double Room: a bedroom with a bed with a bus on the wall",
+      "filename": "img-030.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 177449,
+      "width": 1600,
+      "height": 1200,
+      "url": "/api/media/file/img-030.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     }
+    },
+    {
+     "id": "seed-room-2",
+     "label": "Classic Triple Room",
+     "beds": "3 single beds",
+     "sleeps": 3,
+     "note": "12 m² with a sea view",
+     "photo": {
+      "id": 32,
+      "alt": "Classic Triple Room: a hotel room with three beds and a piano",
+      "filename": "img-035.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 229698,
+      "width": 1920,
+      "height": 1440,
+      "url": "/api/media/file/img-035.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     }
+    },
+    {
+     "id": "seed-room-3",
+     "label": "Double Room",
+     "beds": "1 large double bed",
+     "sleeps": 2,
+     "note": "9 m² with a garden view",
+     "photo": {
+      "id": 36,
+      "alt": "Double Room: a bedroom with a bed with a sign on the wall",
+      "filename": "img-058.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 290440,
+      "width": 1440,
+      "height": 1920,
+      "url": "/api/media/file/img-058.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     }
+    },
+    {
+     "id": "seed-room-4",
+     "label": "Small Double Room",
+     "beds": "1 double bed",
+     "sleeps": 2,
+     "note": "8 m² on the top floor, with a small desk. You can see the ocean from the private entrance",
+     "photo": {
+      "id": 41,
+      "alt": "Small Double Room: a bedroom with a large bed with blue and white sheets",
+      "filename": "img-002.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 168441,
+      "width": 1440,
+      "height": 1920,
+      "url": "/api/media/file/img-002.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     }
+    },
+    {
+     "id": "seed-room-5",
+     "label": "Small Twin Room",
+     "beds": "2 single beds",
+     "sleeps": 2,
+     "note": "8 m²",
+     "photo": {
+      "id": 45,
+      "alt": "Small Twin Room: a room with two beds in a room",
+      "filename": "img-064.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 284187,
+      "width": 1920,
+      "height": 1440,
+      "url": "/api/media/file/img-064.jpg",
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {}
+     }
+    }
+   ],
+   "stayInfo": {
+    "checkInFrom": "14:00",
+    "checkInTo": "19:00",
+    "checkOutFrom": "06:00",
+    "checkOutTo": "11:00",
+    "note": "Adults only. No pets, no smoking, no extra beds. Cash only. Quiet from 23:00 to 06:00. Bring photo ID and a credit card for check-in."
+   },
+   "lessons": [
+    {
+     "id": "seed-lesson-1",
+     "label": "Surf lesson",
+     "durationMin": 90,
+     "level": [
+      "beginner",
+      "intermediate",
+      "advanced"
+     ],
+     "price": 20,
+     "currency": "USD",
+     "unit": "per_person"
+    },
+    {
+     "id": "seed-lesson-2",
+     "label": "Private lesson"
+    },
+    {
+     "id": "seed-lesson-3",
+     "label": "Group lesson",
+     "groupSize": "Maximum 6"
+    },
+    {
+     "id": "seed-lesson-4",
+     "label": "Stand-up paddleboarding (SUP)"
+    },
+    {
+     "id": "seed-lesson-5",
+     "label": "Surf spot tour"
+    }
+   ],
+   "credentials": [],
+   "rentals": [
+    {
+     "id": "seed-rental-1",
+     "label": "Surfboards",
+     "note": "Shortboards, longboards and fish"
+    },
+    {
+     "id": "seed-rental-2",
+     "label": "Cheeky Monkey boards",
+     "note": "Our own brand, shaped in Bali"
+    },
+    {
+     "id": "seed-rental-3",
+     "label": "Scooters"
+    }
+   ],
+   "brands": [
+    {
+     "id": "seed-brand-1",
+     "label": "Cheeky Monkey"
+    },
+    {
+     "id": "seed-brand-2",
+     "label": "Creatures of Leisure"
+    },
+    {
+     "id": "seed-brand-3",
+     "label": "Shapers"
+    }
+   ],
+   "shaping": null,
+   "forecast": null,
+   "createdAt": null,
+   "updatedAt": null
+  }
+ }
+}

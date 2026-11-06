@@ -1,0 +1,54 @@
+name: Agent fix
+
+# Started by the dashboard (POST /agent-fix → repository_dispatch agent-fix), never by hand. Shahar, 2026-10-27:
+# pressing the button is the approval; the fix arrives as a PR with no prompt to paste.
+# Claude commits on the branch; the push step publishes it; the dashboard server opens the PR with its
+# own gh login, so the review workflow runs on it (a PR opened with GITHUB_TOKEN would not trigger it).
+
+on:
+  repository_dispatch: # the box's token can send a dispatch (contents: write) but not start a workflow (actions: write)
+    types: [agent-fix]   # client_payload: agent, operator, branch, brief
+
+concurrency: { group: 'agent-fix-${{ github.event.client_payload.agent }}', cancel-in-progress: false }
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: Branch
+        env: { BRANCH: '${{ github.event.client_payload.branch }}', AGENT: '${{ github.event.client_payload.agent }}' }
+        run: |
+          [[ "$BRANCH" =~ ^agent-fix/[a-z0-9-]+-[0-9]{14}$ ]] || { echo "bad branch $BRANCH"; exit 1; }
+          [[ "$AGENT" =~ ^[a-z0-9-]+$ && -f "agents/$AGENT/base.md" ]] || { echo "bad agent $AGENT"; exit 1; }
+          git switch -c "$BRANCH"
+          git config user.name "oneshot agent-fix"
+          git config user.email "agent-fix@users.noreply.github.com"
+      - name: Claude fixes the agent
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: |
+            ${{ github.event.client_payload.brief }}
+
+            ---
+            ${{ github.event.client_payload.operator }} pressed the dashboard button for this: that is the approval. Do not ask for another one and do not stop at a proposal.
+            1. Read CLAUDE.md and agents/${{ github.event.client_payload.agent }}/ (base.md, custom.md, CHANGELOG.md). Read the ledger lines and reports behind the evidence. Never edit any custom.md; if the fix needs one, write it as a separate proposals/<run-id>/<nnn>-custom-md-<topic>.md flagged as a custom.md proposal, and fix only what base.md can.
+            2. Apply the fix to agents/${{ github.event.client_payload.agent }}/base.md: bump its `version:` (patch for a tightening, minor for a new rule) and add a CHANGELOG.md entry naming the evidence file.
+            3. Save the evidence and the change as proposals/<run-id of the examples>/<next nnn>-${{ github.event.client_payload.agent }}-<topic>.md, status "applied". If the brief names an existing proposal, apply that file as written and mark it applied instead.
+            4. Append one line to ledger.jsonl (append only): {"ts": now UTC, "run_id": that run, "slug": "-", "agent": "human", "agent_version": null, "from_state": null, "to_state": "proposal:approved", "operator": "${{ github.event.client_payload.operator }}", "note": "<proposal path>: approved by ${{ github.event.client_payload.operator }} via dashboard. Applied as ${{ github.event.client_payload.agent }} <new version>."}.
+            5. In every runs/*.yaml with `operator: ${{ github.event.client_payload.operator }}` and `status: active`, set the `${{ github.event.client_payload.agent }}:` pin to the new version.
+            6. Run `node tools/check-wiring.mjs` and `node tools/prompt.mjs ${{ github.event.client_payload.agent }} > /dev/null`; both must pass.
+            7. Commit everything in ONE commit. Its subject is the PR title ("${{ github.event.client_payload.agent }} <new version>: <the fix in a few words>"), its body two or three plain sentences on what changed and why. Do not push.
+          claude_args: '--allowedTools "Read,Edit,Write,Glob,Grep,Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(git show:*),Bash(git add:*),Bash(git commit:*),Bash(node:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(date:*)"'
+      - name: Push
+        env: { BRANCH: '${{ github.event.client_payload.branch }}' }
+        run: |
+          [ "$(git rev-list --count origin/main..HEAD)" -ge 1 ] || { echo "Claude made no commit"; exit 1; }
+          git push origin "HEAD:refs/heads/$BRANCH"

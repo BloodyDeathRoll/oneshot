@@ -1,0 +1,377 @@
+---
+/* Home: a port of mockups/unique/dist/index.html ("Pick your board", picked by Alon at gate b, with his colour
+   and beach-photo rounds 4–7), bound to the content schema. Markup, class names, CSS and JS are the mockup's;
+   4g changes are commented here, in src/styles/site.css and in src/scripts/site.js. */
+import css from '../styles/site.css?raw'
+import js from '../scripts/site.js?raw'
+import icons from '../lib/icons.svg.txt?raw'
+import {
+  c, G, L, e, t, paras, block, money, Word, PLATFORM, dayMonYear, monYear,
+  MARK, MARK_SUB, PRIMARY, INSTA_LINK, TEL, PHONE, EMAIL, mailto, MAP, SOC, IG_HANDLE,
+  WEEKS, WEEKS_BLOCK, WEEKS_LEDE, WEEKS_FROM, LESSON, LESSON_YEAR, lessonPrice, lessonUnit, lessonLevelsLine, lessonOthersLine, lessonDrawerLine,
+  transfersLine, stayTimes, amenLine, roomDet, roomShort, roomSize, roomSlides, quoteSource,
+  img, slotRow, slotSrc, hero, splitLine,
+} from '../lib/site.mjs'
+import { S } from '../lib/slots.mjs'
+
+const H = hero()
+const [lineA, lineB] = splitLine(c.featureLine)
+const intro = block('intro', 0), baba = block('about', 0), shop = block('about', 1), roof = block('about', 2)
+const lessonsB = block('offer', 0), here = block('info', 0), know = block('info', 1)
+const rooms = (c.rooms ?? []).map((r, k) => ({ ...r, k, slides: roomSlides(r) }))
+const quotes = c.testimonials ?? []
+const ratings = (c.ratings ?? []).filter((r) => r.score != null)
+const atmo = G.atmosphere
+const shortMark = MARK
+const weekSubject = (w) => `${shortMark}: ${w.group} week`
+const icon = (n) => `<svg aria-hidden="true"><use href="#i-${n}"/></svg>`
+const arrow = icon('arrow')
+const RENT_ICONS = ['board', 'star', 'scooter']
+const data = H ? { poster: H.poster.webp, desk: H.desk, phone: H.phone } : { poster: '', desk: [], phone: [] }
+const hasReel = !!H && (H.desk.length > 0 || H.phone.length > 0)
+const [jsA, jsB] = js.split('/* ================= the rest of the page')
+const title = G.seo?.title ?? c.businessName
+const fontFaces = `@font-face{font-family:'Rethink Sans';font-style:normal;font-weight:400 600;font-display:optional;src:url(fonts/rethink-sans-latin-wght-normal.woff2) format('woff2')}
+@font-face{font-family:'Permanent Marker';font-style:normal;font-weight:400;font-display:optional;src:url(fonts/permanent-marker-latin-400-normal.woff2) format('woff2')}
+`
+/* the tier before first paint, so the set-piece's height never changes above the reader (mockup); 4g: no reel
+   in the content = the still tier */
+const tierJs = `(function(){var h=document.documentElement,c='js';
+try{var rm=matchMedia('(prefers-reduced-motion: reduce)').matches,sd=navigator.connection&&navigator.connection.saveData;
+c+=(rm||sd||${hasReel ? 'false' : 'true'})?' still':' motion';}catch(e){c+=' still'}
+h.className=c;})();`
+const weekRooms = [L.drawer.room_private, L.drawer.room_double, L.drawer.room_triple]
+const w0 = WEEKS[0]
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{title}</title>
+{c.tagline && <meta name="description" content={c.tagline}>}
+<meta name="theme-color" content="#ffffff">
+<script is:inline set:html={tierJs}></script>
+<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/rethink-sans-latin-wght-normal.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/permanent-marker-latin-400-normal.woff2">
+{H && <link rel="preload" as="image" href={H.poster.webp} fetchpriority="high">}
+<style is:inline set:html={fontFaces + css}></style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" set:html={icons}></svg>
+<a class="skip" href="#counter">{L.skip}</a>
+
+<header class="top" id="top">
+  <h1 class="mark-h"><a class="mark" href="#"><b>{MARK}</b>{MARK_SUB && <span>{MARK_SUB}</span>}</a></h1>
+  <nav class="nav" aria-label="Main">
+    <a class="l" href="#counter">{L.nav.counter}</a>
+    <a class="l" href="#rooms">{L.nav.rooms}</a>
+    <a class="l" href="#shop">{L.nav.shop}</a>
+    <a class="btn btn-ghost btn-plan" href="#book" data-plan>{L.plan}</a>
+    {TEL && <a class="icon-btn" href={TEL} aria-label={`${L.call_aria} ${PHONE}`}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5h3.2l1.6 4.3-2.1 1.4a11 11 0 0 0 7.1 7.1l1.4-2.1 4.3 1.6V19a2 2 0 0 1-2.2 2A17 17 0 0 1 3 5.7 2 2 0 0 1 5 3.5z"/></svg></a>}
+  </nav>
+</header>
+
+<main>
+<section class="pick" id="pick" aria-label={c.businessName}>
+  <div class="stage" id="stage">
+    <div class="beach" aria-hidden="true"><i class="far"></i><i class="sea"></i><i class="foam"></i><i class="wet"></i><i class="sand"></i></div>
+    {H && <div class="zm" id="zm" aria-hidden="true">
+      <img src={H.poster.webp} alt="" width={H.poster.w} height={H.poster.h} decoding="async">
+    </div>}
+    <canvas class="gl" id="gl" aria-hidden="true"></canvas>
+    <div class="hero" id="hero">
+      <p class="hero-line a" id="heroLine">{lineA}</p>
+      <div class="slot" id="slot">
+        {H && <img class="poster" src={H.poster.webp} width={H.poster.w} height={H.poster.h} fetchpriority="high" alt={H.alt}>}
+        <span class="shadow" aria-hidden="true"></span>
+      </div>
+      <div class="hero-b" id="heroB"><p class="hero-line b">{lineB}</p><div class="hero-cta" id="heroCta">
+        {PRIMARY && <a class="btn" href={PRIMARY.url}>{PRIMARY.label}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>}
+      </div></div>
+    </div>
+    <p class="sr" id="loadNote" role="status"></p>
+  </div>
+</section>
+
+{intro && <section class="intro-s sandg" aria-labelledby="intro-h"><div class="intro wrap">
+  {intro.heading && <h2 class="t-hand" id="intro-h">{intro.heading}</h2>}
+  <div class="intro-b" set:html={paras(intro.body).map((p) => `<p>${e(p)}</p>`).join('')}></div>
+</div></section>}
+
+<section class="water aquag edge" id="water" aria-labelledby="water-h">
+  {atmo && <div class="atmo">
+    {/* SCHEMA GAP: the credited atmosphere photograph (stock-003, CC BY-SA 3.0): served as published, whole, its
+       box reserved, its src set only as it nears the screen (2.2 MB); with JS off the noscript copy */}
+    <div class="atmo-box"><img data-src={`atmo/${atmo.file}`} width={atmo.width} height={atmo.height} decoding="async" alt={atmo.alt}>
+    <noscript><img src={`atmo/${atmo.file}`} width={atmo.width} height={atmo.height} alt={atmo.alt}></noscript></div>
+    <p class="credit"><a href={atmo.credit.titleUrl}>{atmo.credit.title}</a> — {atmo.credit.author}, <a href={atmo.credit.licenseUrl}>{atmo.credit.license}</a>, via {atmo.credit.via}</p>
+  </div>}
+  <div class="wrap water-g">
+    <div class="water-t">
+      <h2 class="t-hand" id="water-h">{L.water.title}</h2>
+  {(c.spot || c.season) && <dl class="facts facts-w">
+    {c.spot && <div><dt><Fragment set:html={icon('wave')} />{L.water.spot}</dt><dd>{c.spot}</dd></div>}
+    {c.season && <div><dt><Fragment set:html={icon('sun')} />{L.water.season}</dt><dd>{c.season}</dd></div>}
+  </dl>}
+      <a class="btn btn-ghost btn-sm" href="#counter"><Fragment set:html={icon('wave')} />{L.water.see_weeks}</a>
+    </div>
+    <div class="water-m">
+      <Fragment set:html={img(S.water[0], { cls: 'w1' }) + img(S.water[1], { cls: 'w2' }) + img(S.water[2], { cls: 'w3' })} />
+    </div>
+  </div>
+</section>
+
+<section class="counter sandg edge" id="counter" aria-labelledby="week-h">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="t-hand" id="week-h">{WEEKS_BLOCK?.heading}</h2>
+      {WEEKS_LEDE && <p class="lede">{WEEKS_LEDE}</p>}
+    </div>
+    <div class="cards" tabindex="0" role="group" aria-label={L.weeks.cards_aria}>
+{WEEKS.map((w, k) => (
+<article class="card" data-tilt>
+  <div class="card-board" set:html={img(S.cards[k])}></div>
+  <h3>{w.title}</h3>
+  <p class="price"><b>{w.range}</b> <span>{w.per}</span></p>
+  <p class="rows">{w.rowsLine}</p>
+  {w.line && <p class="line">{w.line}</p>}
+  {w.year && <p class="dated"><Fragment set:html={icon('clock')} />{t(L.weeks.dated, { year: w.year })}</p>}
+  <div class="card-act">{TEL && <a class="btn btn-sm" href={TEL}><Fragment set:html={icon('phone')} />{L.weeks.call}</a>}{EMAIL && <a class="icon-btn" href={mailto(weekSubject(w))} aria-label={t(L.weeks.email_aria, { title: w.title })}><Fragment set:html={icon('mail')} /></a>}</div>
+</article>
+))}
+    </div>
+    {G.inclusions?.length > 0 && <div class="incl">
+      <h3 class="t-hand-s">{L.weeks.included}</h3>
+      <ul class="ic-grid">
+        {G.inclusions.map((it) => <li><Fragment set:html={icon(it.icon)} /><span>{it.text}{it.note && <> <em>{it.note}</em></>}</span></li>)}
+      </ul>
+    </div>}
+    {lessonsB && <div class="lessons">
+      <div>
+        <h3 class="t-hand-s">{lessonsB.heading}</h3>
+        <Fragment set:html={paras(lessonsB.body).map((p) => `<p>${e(p)}</p>`).join('')} />
+      </div>
+      {LESSON && <div class="lesson-card">
+        <p class="price"><b>{lessonPrice}</b> <span>{lessonUnit}</span></p>
+        {lessonLevelsLine && <p class="det">{lessonLevelsLine}</p>}
+        {lessonOthersLine && <p class="det">{lessonOthersLine}</p>}
+        {LESSON_YEAR && <p class="dated"><Fragment set:html={icon('clock')} />{t(L.weeks.dated, { year: LESSON_YEAR })}</p>}
+        <div class="card-act">{TEL && <a class="btn btn-sm" href={TEL}><Fragment set:html={icon('phone')} />{L.lessons.call}</a>}{EMAIL && <a class="icon-btn" href={mailto(`${shortMark}: ${L.lessons.subject}`)} aria-label={L.lessons.email_aria}><Fragment set:html={icon('mail')} /></a>}</div>
+      </div>}
+    </div>}
+  </div>
+</section>
+
+{rooms.length > 0 && <section class="rooms aquag edge" id="rooms" aria-labelledby="rooms-h">
+  <div class="wrap">
+    <div class="head"><h2 class="t-hand" id="rooms-h">{L.rooms.title}</h2></div>
+    <div class="room-grid">
+{rooms.map((r) => (
+<article class="room" aria-labelledby={`room-${r.k}-n`}>
+  {r.slides.length > 0 && <div class="show" data-show>
+    <ul class="track" tabindex="0" role="group" aria-label={t(L.rooms.photos_aria, { room: r.label })} set:html={r.slides.map((s) => `<li><img src="${s.webp}" width="${s.w}" height="${s.h}" loading="lazy" decoding="async" alt="${e(s.alt)}"></li>`).join('')}></ul>
+    <button type="button" class="arw prev" aria-label={L.rooms.prev}><Fragment set:html={icon('chev-l')} /></button><button type="button" class="arw next" aria-label={L.rooms.next}><Fragment set:html={icon('chev-r')} /></button>
+    <div class="dots">{r.slides.map((_, i) => <button type="button" class="dot" aria-label={t(L.rooms.dot, { i: i + 1, n: r.slides.length })} aria-current={i === 0 ? 'true' : undefined}></button>)}</div>
+  </div>}
+  <div class="room-t">
+    <div><h3 id={`room-${r.k}-n`}>{r.label}</h3>
+    <p class="det">{roomDet(r)}</p></div>
+    {PRIMARY && <a class="btn btn-sm" href={PRIMARY.url}>{PRIMARY.label} <Fragment set:html={arrow} /></a>}
+  </div>
+</article>
+))}
+<aside class="stay" aria-label={L.rooms.stay_aria}>
+  <h3 class="t-hand-s">{L.rooms.stay}</h3>
+  <ul class="ic-list">
+    {stayTimes && <li><Fragment set:html={icon('key')} /><span>{stayTimes}</span></li>}
+    {G.stayRoomLine?.value && <li><Fragment set:html={icon('snow')} /><span>{G.stayRoomLine.value}</span></li>}
+    {c.stayInfo?.note && <li><Fragment set:html={icon('info')} /><span>{c.stayInfo.note}</span></li>}
+  </ul>
+  <a class="btn btn-ghost btn-sm" href="#book" data-plan data-open-drawer>{L.plan}</a>
+</aside>
+    </div>
+  </div>
+</section>}
+
+{shop && <section class="shop whiteg edge" id="shop" aria-labelledby="shop-h">
+  <div class="wrap shop-g">
+    <div class="shop-t">
+      <h2 class="t-hand" id="shop-h">{shop.heading}</h2>
+      <Fragment set:html={paras(shop.body).map((p) => `<p>${e(p)}</p>`).join('')} />
+      {(c.rentals ?? []).length > 0 && <ul class="ic-list">
+        {c.rentals.map((r, i) => <li><Fragment set:html={icon(RENT_ICONS[i] ?? 'board')} /><span><b>{r.label}</b>{r.note && <> {r.note}</>}</span></li>)}
+      </ul>}
+      {(c.brands ?? []).length > 0 && <p class="det">Brands: {c.brands.map((b) => b.label).join(' | ')}</p>}
+      {INSTA_LINK && <div class="card-act"><a class="btn btn-ghost btn-sm" href={INSTA_LINK.url}><Fragment set:html={icon('insta')} />{INSTA_LINK.label}</a></div>}
+    </div>
+    <div class="masonry" set:html={S.shop.map((n) => { const h = img(n); return h ? `<figure class="m">${h}</figure>` : '' }).join('')}></div>
+  </div>
+</section>}
+
+{roof && <section class="roof pinkg edge" id="roof" aria-labelledby="roof-h">
+  {slotRow(S.roofBand) && <picture class="roof-band">
+    {slotSrc(S.roofBand, 1) && <source media="(max-width:860px)" srcset={slotSrc(S.roofBand, 1).webp} width={slotSrc(S.roofBand, 1).w} height={slotSrc(S.roofBand, 1).h}>}
+    <Fragment set:html={img(S.roofBand)} />
+  </picture>}
+  <div class="wrap roof-g">
+    <div class="roof-t">
+      <h2 class="t-hand" id="roof-h">{roof.heading}</h2>
+      <Fragment set:html={paras(roof.body).map((p) => `<p>${e(p)}</p>`).join('')} />
+      {amenLine && <p class="det amen">{amenLine}</p>}
+    </div>
+    <Fragment set:html={img(S.roofSide, { cls: 'roof-side' })} />
+  </div>
+</section>}
+
+{baba && <section class="baba sandg edge" id="baba" aria-labelledby="baba-h">
+  <div class="wrap baba-g">
+    <Fragment set:html={img(S.baba, { cls: 'baba-p' })} />
+    <div class="baba-t">
+      <h2 class="t-hand" id="baba-h">{baba.heading}</h2>
+      <Fragment set:html={paras(baba.body).map((p) => `<p>${e(p)}</p>`).join('')} />
+      <Fragment set:html={img(S.print, { cls: 'print' })} />
+    </div>
+  </div>
+</section>}
+
+{(quotes.length > 0 || ratings.length > 0) && <section class="guests skyg edge" id="guests" aria-labelledby="guests-h">
+  <div class="wrap guests-g">
+    <div class="quotes" data-show>
+      <h2 class="t-hand" id="guests-h">{L.guests.title}</h2>
+      <div class="q-nav"><button type="button" class="arw prev" aria-label={L.guests.prev}><Fragment set:html={icon('chev-l')} /></button><span class="q-count" aria-hidden="true">{`1 / ${quotes.length}`}</span><div class="dots">{quotes.map((_, i) => <button type="button" class="dot" aria-label={t(L.guests.dot, { i: i + 1, n: quotes.length })} aria-current={i === 0 ? 'true' : undefined}></button>)}</div><button type="button" class="arw next" aria-label={L.guests.next}><Fragment set:html={icon('chev-r')} /></button></div>
+      <ul class="track q-track" tabindex="0" role="group" aria-label={L.guests.track_aria} set:html={quotes.map((q) => {
+        const src = quoteSource(q)
+        const when = monYear(q.date)
+        const s = src ? (src.url ? `<a href="${e(src.url)}">${e(src.name)}</a>` : e(src.name)) : ''
+        return `<li><blockquote><p>“${e(q.quote).replace(/\n/g, '<br>')}”</p><footer><b>${e(q.author)}</b><span>${[s, when].filter(Boolean).join(' | ')}</span></footer></blockquote></li>`
+      }).join('')}></ul>
+    </div>
+    <div class="ratings">
+      {ratings.map((r) => <a class="rating" href={r.url}>
+        <b>{r.score}<small>/{r.scale}</small></b><span>{[PLATFORM[r.platform] ?? r.platform, `${r.count} reviews`, dayMonYear(r.capturedAt)].join(' | ')}</span></a>)}
+    </div>
+  </div>
+</section>}
+
+{here && <section class="road whiteg edge" id="road" aria-labelledby="road-h">
+  <div class="wrap road-g">
+    <Fragment set:html={img(S.road, { cls: 'road-p' })} />
+    <div class="road-t">
+      <h2 class="t-hand" id="road-h">{here.heading}</h2>
+      <Fragment set:html={paras(here.body).map((p) => `<p>${e(p)}</p>`).join('')} />
+      {c.contact?.address && <p class="addr"><Fragment set:html={icon('pin')} /><span>{c.contact.address}</span></p>}
+      {transfersLine && <p class="det">{transfersLine}</p>}
+      {MAP && <div class="card-act"><a class="btn btn-ghost btn-sm" href={MAP}><Fragment set:html={icon('map')} />{L.road.map}</a></div>}
+      {know && <h3 class="t-hand-s know-h">{know.heading}</h3>}
+      {know && <Fragment set:html={paras(know.body).map((p) => `<p>${e(p)}</p>`).join('')} />}
+    </div>
+  </div>
+</section>}
+
+<section class="closing aquag edge" aria-labelledby="close-h">
+  {slotRow(S.closing) && <div class="close-board" aria-hidden="true" set:html={img(S.closing, { decorative: true })}></div>}
+  <h2 class="sr" id="close-h">{L.closing.sr}</h2>
+  {c.closing && <p class="close-line">{c.closing}</p>}
+  <div class="close-act">
+    {PRIMARY && <a class="btn" href={PRIMARY.url}>{PRIMARY.label} <Fragment set:html={arrow} /></a>}
+    {TEL && <a class="btn btn-ghost" href={TEL}><Fragment set:html={icon('phone')} />{PHONE}</a>}
+    {EMAIL && <a class="btn btn-ghost" href={mailto()}><Fragment set:html={icon('mail')} />{L.closing.email}</a>}
+  </div>
+</section>
+
+{SOC.instagram && <section class="ig aquag" aria-labelledby="ig-h">
+  <div class="wrap">
+    <h2 class="sr" id="ig-h">{L.ig.sr}</h2>
+    <div class="ig-g"><Fragment set:html={S.ig.map((n) => { const h = img(n); return h ? `<a class="ig-t" href="${e(SOC.instagram)}">${h}</a>` : '' }).join('')} />
+      <a class="ig-follow" href={SOC.instagram}><span class="ig-board"></span><span class="ig-txt"><Fragment set:html={icon('insta')} />{`${L.ig.follow} ${IG_HANDLE}`}</span></a>
+    </div>
+  </div>
+</section>}
+</main>
+
+<footer class="foot sandg edge">
+  <div class="wrap foot-g">
+    <div><p class="mark-f">{MARK}</p>{c.contact?.address && <p>{c.contact.address}</p>}</div>
+    <div class="foot-c">
+      {TEL && <a class="btn btn-ghost btn-sm" href={TEL}><Fragment set:html={icon('phone')} />{PHONE}</a>}
+      {EMAIL && <a class="btn btn-ghost btn-sm" href={mailto()}><Fragment set:html={icon('mail')} />{EMAIL}</a>}
+    </div>
+    {PRIMARY && <div class="foot-c"><a class="btn btn-sm" href={PRIMARY.url}>{L.footer.rooms} <Fragment set:html={arrow} /></a></div>}
+    <div class="foot-s">
+      {SOC.instagram && <a class="icon-btn" href={SOC.instagram} aria-label="Instagram"><Fragment set:html={icon('insta')} /></a>}
+      {SOC.facebook && <a class="icon-btn" href={SOC.facebook} aria-label="Facebook"><Fragment set:html={icon('fb')} /></a>}
+    </div>
+  </div>
+</footer>
+
+<div class="bar" id="bar">
+  {PRIMARY && <a class="btn" href={PRIMARY.url}>{PRIMARY.label}</a>}
+  <a class="btn btn-ghost" href="#book" data-plan data-open-drawer>{L.plan}</a>
+</div>
+
+<!-- the plan drawer: an in-page section without JS, a right-hand drawer / full sheet with it -->
+<section class="plan" id="book" data-drawer aria-labelledby="plan-h" tabindex="-1">
+  <div class="plan-scrim" data-close></div>
+  <div class="plan-panel" role="dialog" aria-modal="true" aria-labelledby="plan-h">
+    <div class="plan-top">
+      <button type="button" class="icon-btn plan-back" aria-label={L.drawer.back} hidden><Fragment set:html={icon('chev-l')} /></button>
+      <h2 class="t-hand-s" id="plan-h">{L.plan}</h2>
+      <button type="button" class="icon-btn plan-x" aria-label={L.drawer.close} data-close><Fragment set:html={icon('x')} /></button>
+    </div>
+    <div class="plan-steps">
+      <div class="step on" data-step="start">
+        <p class="plan-q">{L.drawer.start}</p>
+        <div class="tiles">
+          {rooms.length > 0 && <a class="tile" href="#plan-room" data-go="room"><Fragment set:html={icon('bed')} /><b>{L.drawer.room}</b><span>{t(L.drawer.room_tile, { n: Word(rooms.length) })}</span></a>}
+          {WEEKS.length > 0 && <a class="tile" href="#plan-week" data-go="week"><Fragment set:html={icon('wave')} /><b>{L.drawer.week}</b><span>{t(L.drawer.week_tile, { n: Word(WEEKS.length), price: money(WEEKS_FROM, w0.currency) })}</span></a>}
+          {LESSON && <a class="tile" href="#plan-lesson" data-go="lesson"><Fragment set:html={icon('surfer')} /><b>{L.drawer.lesson}</b><span>{`${LESSON.durationMin ? LESSON.durationMin + ' min, ' : ''}${lessonPrice} per person`}</span></a>}
+          {G.drawer?.boardsTile && <a class="tile" href="#plan-board" data-go="board"><Fragment set:html={icon('board')} /><b>{L.drawer.board}</b><span>{G.drawer.boardsTile}</span></a>}
+        </div>
+      </div>
+      {rooms.length > 0 && <div class="step" data-step="room" id="plan-room">
+        <p class="plan-q">{L.drawer.which_room}</p>
+        <div class="tiles rooms-t">
+          {rooms.map((r) => <button type="button" class="tile ph" data-room={r.label}>{r.slides[0] && <img src={r.slides[0].webp} alt="" width={r.slides[0].w} height={r.slides[0].h} loading="lazy">}<b>{roomShort(r)}</b><span>{[r.beds, roomSize(r)].filter(Boolean).join(' | ')}</span></button>)}
+        </div>
+        {PRIMARY && <div class="handoff" data-handoff hidden>
+          <p class="sum"><span data-sum>{rooms[0].label}</span>. {L.drawer.handoff}</p>
+          <a class="btn" href={PRIMARY.url}>{PRIMARY.label} <Fragment set:html={arrow} /></a>
+        </div>}
+        {PRIMARY && <a class="btn plain-only" href={PRIMARY.url}>{PRIMARY.label} <Fragment set:html={arrow} /></a>}
+      </div>}
+      {WEEKS.length > 0 && <div class="step" data-step="week" id="plan-week">
+        <p class="plan-q">{L.drawer.which_week}</p>
+        <div class="seg" role="radiogroup" aria-label={L.drawer.week_aria}>
+          {WEEKS.map((w, k) => <button type="button" role="radio" aria-checked={k === 0 ? 'true' : 'false'} data-pk={w.group} data-p={w.by.map((b) => b?.price ?? '').join(',')}>{w.short}</button>)}
+        </div>
+        <p class="plan-q sm">{L.drawer.which_room}</p>
+        <div class="seg" role="radiogroup" aria-label={L.drawer.room_aria}>
+          {weekRooms.map((label, i) => <button type="button" role="radio" aria-checked={i === 0 ? 'true' : 'false'} data-r={i}>{label}</button>)}
+        </div>
+        <p class="price big"><b data-total>{w0.by[0] ? money(w0.by[0].price, w0.currency) : w0.range}</b> <span>{w0.per}</span></p>
+        {w0.year && <p class="dated"><Fragment set:html={icon('clock')} />{t(L.drawer.dated_week, { year: w0.year })}</p>}
+        <div class="card-act">{TEL && <a class="btn" href={TEL}><Fragment set:html={icon('phone')} />{L.drawer.week_call}</a>}{EMAIL && <a class="btn btn-ghost" data-mail href={mailto(`${shortMark}: surf week`)}><Fragment set:html={icon('mail')} />{L.drawer.email}</a>}</div>
+      </div>}
+      {LESSON && <div class="step" data-step="lesson" id="plan-lesson">
+        <p class="plan-q">{L.drawer.lesson_title}</p>
+        <p class="price big"><b>{lessonPrice}</b> <span>{[`per person`, LESSON.durationMin && `${LESSON.durationMin} min`].filter(Boolean).join(' | ')}</span></p>
+        {lessonDrawerLine && <p class="det">{lessonDrawerLine}</p>}
+        {LESSON_YEAR && <p class="dated"><Fragment set:html={icon('clock')} />{t(L.drawer.dated_lesson, { year: LESSON_YEAR })}</p>}
+        <div class="card-act">{TEL && <a class="btn" href={TEL}><Fragment set:html={icon('phone')} />{L.weeks.call}</a>}{EMAIL && <a class="btn btn-ghost" href={mailto(`${shortMark}: ${L.lessons.subject}`)}><Fragment set:html={icon('mail')} />{L.drawer.email}</a>}</div>
+      </div>}
+      {G.drawer?.boardStep && <div class="step" data-step="board" id="plan-board">
+        <p class="plan-q">{t(L.drawer.board_title, { shop: shop?.heading ?? '' })}</p>
+        <p class="det">{G.drawer.boardStep}</p>
+        <div class="card-act">{INSTA_LINK && <a class="btn" href={INSTA_LINK.url}><Fragment set:html={icon('insta')} />{INSTA_LINK.label}</a>}{TEL && <a class="btn btn-ghost" href={TEL}><Fragment set:html={icon('phone')} />{L.drawer.call}</a>}</div>
+      </div>}
+    </div>
+  </div>
+</section>
+
+<script type="application/json" id="cm-data" is:inline set:html={JSON.stringify(data).replace(/</g, '\\u003c')}></script>
+<script is:inline set:html={jsA}></script>
+<script is:inline set:html={'/* ================= the rest of the page' + jsB}></script>
+</body>
+</html>
