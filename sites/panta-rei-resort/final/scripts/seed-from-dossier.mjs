@@ -245,6 +245,18 @@ const where = copy.copyBlocks.find((b) => b.heading === 'Getting here and around
 const DIST = [['5 km', 'Koggala Airport'], ['2.1 km', 'Ahangama station'], ['1.9 km', 'Kathaluwa station'], ['1.5 km', 'Koggala Lake'], ['A short walk', 'Kabalana Beach']]
 for (const [k, n] of DIST) if (!where.includes(n.replace(' station', '')) || !(where.includes(k) || where.toLowerCase().includes(k.toLowerCase()))) fail(`distance ${k} ${n} not in the getting-here block`)
 
+/* 4h: the business's other listings, for JSON-LD sameAs only (never shown). The schema has no field for a
+   Tripadvisor listing (socialLinks[] has no tripadvisor platform; seo-report.md proposal C). The dossier keeps it under
+   contact.socials (entity d25364260, "Panta_Rei_Resort-Ahangama"); the seed fails if it is anything else. Google's
+   listing name equals businessName, so there is no alternateName. */
+function listings() {
+  const ta = dossier.contact?.socials?.tripadvisor
+  if (ta && !/^https:\/\/www\.tripadvisor\.com\/Hotel_Review-g\d+-d25364260-Reviews-Panta_Rei_Resort-/.test(ta)) fail('dossier tripadvisor URL is not entity d25364260')
+  return {
+    sameAs: ta ? [ta] : [],
+    _source: 'sameAs: dossier contact.socials.tripadvisor (reviews.tripadvisor.source_url; the score itself is behind a bot wall and is not used). JSON-LD only; Booking.com and Google come from ratings[].url, Instagram, Facebook and YouTube from socialLinks[]',
+  }
+}
 const gaps = {
   _about: 'SCHEMA GAP content: what the picked design shows and schemas/site-content.md v0.11 has no field for. Written by scripts/seed-from-dossier.mjs from copy/en.json and dossier.json; listed in notes.md "schema gaps". Edit there, not here.',
   heroTitle: { value: 'Panta Rei, Kabalana', _source: 'concepts.md §6: the first screen\'s title until a new line is audited; businessName\'s first words + the village of the spot field ("The waves of Kabalana…")' },
@@ -260,6 +272,7 @@ const gaps = {
   _classWeek: 'from copyBlocks "Panta Fitness Club": "Vinyasa yoga is at 8:30 every morning; Friday is the day off." (no schedule field in the schema)',
   distances: DIST.map(([k, n]) => ({ distance: k, place: n })),
   _distances: 'cut from copyBlocks "Getting here and around" (no places-nearby field in the schema)',
+  listings: listings(),
 }
 writeFileSync(join(final, 'src', 'gaps', 'gaps.json'), JSON.stringify(gaps, null, 1) + '\n')
 console.log(`seed: ${docs.size} photos, 3 videos, ${Object.values(roomGalleries).flat().length} gallery photos, logo → src/tenant, src/gaps`)

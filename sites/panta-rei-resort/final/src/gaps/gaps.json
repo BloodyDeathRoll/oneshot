@@ -191,5 +191,11 @@
    "place": "Kabalana Beach"
   }
  ],
- "_distances": "cut from copyBlocks \"Getting here and around\" (no places-nearby field in the schema)"
+ "_distances": "cut from copyBlocks \"Getting here and around\" (no places-nearby field in the schema)",
+ "listings": {
+  "sameAs": [
+   "https://www.tripadvisor.com/Hotel_Review-g674590-d25364260-Reviews-Panta_Rei_Resort-Ahangama_Galle_District_Southern_Province.html"
+  ],
+  "_source": "sameAs: dossier contact.socials.tripadvisor (reviews.tripadvisor.source_url; the score itself is behind a bot wall and is not used). JSON-LD only; Booking.com and Google come from ratings[].url, Instagram, Facebook and YouTube from socialLinks[]"
+ }
 }

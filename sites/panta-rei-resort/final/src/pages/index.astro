@@ -10,6 +10,7 @@ import js from '../scripts/site.js?raw'
 import {
   c, G, L, I, e, t, P, paras, block, money, unit, NAME, ENGINE, roomUrl, wa, TEL, PHONE, MAIL, MAP, ADDRESS, SOCIAL,
   RATINGS, REVIEWS, img, srcOf, srcset, shapeKey, tiersOf, sources, LOGO,
+  TITLE, HOME_DESCRIPTION, seoHead, businessLd, ldJson, ogImage, IS_PREVIEW,
 } from '../lib/site.mjs'
 
 const ENG = ENGINE?.url ?? '#book'
@@ -285,8 +286,12 @@ ${WA_BOOK ? `<a class="fwa" href="${e(WA_BOOK)}" aria-label="${e(L.wa_aria)}">${
 const fontFaces = `@font-face{font-family:"Jost";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/jost-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"Satisfy";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/satisfy-latin-400-normal.woff2) format("woff2")}
 ${LOGO ? `:root{--logo:url(${LOGO})}` : ''} `
-const title = `${NAME} · Kabalana, Ahangama`
-const description = c.tagline ?? ''
+/* 4h head: title = businessName · the place the tagline names · the address's country (lib/site.mjs TITLE; was a
+   hard-coded "Kabalana, Ahangama"); description = owner fields only (HOME_DESCRIPTION; was the tagline alone) */
+const title = TITLE
+const description = HOME_DESCRIPTION
+const head = seoHead({ path: '', title, description, image: ogImage() })
+const ld = ldJson(businessLd({ description }))
 const preloadP = hp?.filename ? srcset(hp.filename, shapeKey(16 / 9, 'p')) : ''
 const preloadL = hp?.filename ? srcset(hp.filename, 'full') : ''
 ---
@@ -296,11 +301,10 @@ const preloadL = hp?.filename ? srcset(hp.filename, 'full') : ''
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{title}</title>
+{IS_PREVIEW && <meta name="robots" content="noindex, nofollow">}
 {description && <meta name="description" content={description}>}
 <meta name="theme-color" content="#FAFBF8">
-<meta property="og:title" content={`${NAME}, Kabalana`}>
-{description && <meta property="og:description" content={description}>}
-{photo(0) && <meta property="og:image" content={srcOf(photo(0).filename, 'full', 2000)}>}
+<Fragment set:html={head} />
 <link rel="preload" as="font" type="font/woff2" href="fonts/jost-latin-wght-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/satisfy-latin-400-normal.woff2" crossorigin>
 {preloadP && <link rel="preload" as="image" imagesrcset={preloadP} imagesizes="100vw" type="image/webp" media={PORTRAIT}>}
@@ -311,5 +315,6 @@ const preloadL = hp?.filename ? srcset(hp.filename, 'full') : ''
 <body>
 <Fragment set:html={page} />
 <script is:inline set:html={js}></script>
+<script type="application/ld+json" set:html={ld}></script>
 </body>
 </html>

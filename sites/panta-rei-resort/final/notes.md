@@ -151,6 +151,7 @@ wa.me link built from `contact.whatsapp`.
 | `menuTabs` | the two dish lists + which photo each tab shows (no menu module) | cut from copyBlocks "Restaurant and bar" (checked by the seed) |
 | `classWeek` | "Vinyasa yoga, every morning", 8:30, Friday off — the week strip (no schedule field) | copyBlocks "Panta Fitness Club" (checked by the seed) |
 | `distances` | the five distances list (no places-nearby field) | copyBlocks "Getting here and around" (checked by the seed) |
+| `listings` (4h) | the Tripadvisor listing, JSON-LD `sameAs` only, never shown (socialLinks[] has no tripadvisor platform) | dossier `contact.socials.tripadvisor` (the seed fails unless it is entity d25364260) |
 
 ## conflicts
 
