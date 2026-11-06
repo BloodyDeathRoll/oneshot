@@ -10,17 +10,17 @@
 <link rel="preload" as="image" href="img/hero-phone.webp" type="image/webp" media="(max-width:767px)" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=Nothing+You+Could+Do&display=swap">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=Nothing+You+Could+Do&display=swap"></noscript>
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=Allura&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=Allura&display=swap"></noscript>
 <style>
 @font-face{font-family:"Text Fallback";src:local("Arial"),local("Helvetica"),local("Roboto");size-adjust:94.2%;ascent-override:96%;descent-override:26%;line-gap-override:0%}
-@font-face{font-family:"Script Fallback";src:local("Arial"),local("Helvetica"),local("Roboto");size-adjust:107%;ascent-override:96%;descent-override:30%;line-gap-override:0%}
+@font-face{font-family:"Script Fallback";src:local("Arial"),local("Helvetica"),local("Roboto");size-adjust:73.2%;ascent-override:120%;descent-override:45%;line-gap-override:0%}
 :root{
   --ground:#F2F6F6; --deck:#D5CEBE; --pool:#5BB2CD; --dusk:#F8E2D3; --ink:#121A22; --book:#C0046C; --book-deep:#A5035D;
   --head:72px; --gut:32px; --r:20px;
   --ease:cubic-bezier(.22,.8,.2,1);
   --text:"Familjen Grotesk","Text Fallback",ui-sans-serif,system-ui,sans-serif;
-  --script:"Nothing You Could Do","Script Fallback",cursive;
+  --script:"Allura","Script Fallback",cursive;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:var(--head)}
@@ -28,6 +28,10 @@ body{margin:0;background:var(--g,var(--ground));color:var(--ink);font:400 17px/1
 img,canvas{display:block}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:6px}
+
+/* Skip link: off screen until focused. */
+.skip{position:fixed;left:12px;top:-80px;z-index:60;padding:12px 18px;border-radius:12px;background:var(--ink);color:#fff;font-weight:500;transition:top .2s var(--ease)}
+.skip:focus{top:12px}
 
 /* Buttons. Every action is a button; the accent is for booking and nothing else. */
 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:13px 24px;border-radius:14px;font:500 17px/1.2 var(--text);overflow:hidden;transition:transform .12s var(--ease),background-color .2s var(--ease),box-shadow .2s var(--ease);touch-action:manipulation}
@@ -39,7 +43,7 @@ a{color:inherit;text-decoration:none}
 @media (hover:hover){.book:hover{background:var(--book-deep)}.book:hover svg{transform:translateX(3px)}}
 
 /* Header: solid ground, because the soffit and rods would swallow a logo. */
-.top{position:fixed;inset:0 0 auto;height:var(--head);z-index:20;background:var(--g,var(--ground));display:flex;align-items:center;justify-content:space-between;padding:0 var(--gut);transition:transform .32s var(--ease)}
+.top{position:fixed;inset:0 0 auto;height:var(--head);z-index:20;background:var(--g,var(--ground));display:flex;align-items:center;justify-content:space-between;padding:0 var(--gut)}
 .top.away{transform:translateY(-100%)}
 .logo{display:block;padding:8px 0}
 .logo img{height:36px;width:auto;filter:brightness(0)}
@@ -57,8 +61,8 @@ a{color:inherit;text-decoration:none}
 .stage img,.stage canvas{position:absolute;left:-1.6%;top:-1.6%;width:103.2%;height:103.2%;object-fit:cover;object-position:50% 34%}
 .stage canvas{visibility:hidden;pointer-events:none}
 .stage.live canvas{visibility:visible}
-.card{position:absolute;left:var(--gut);bottom:var(--gut);width:min(420px,calc(100% - 2*var(--gut)));padding:24px 26px 26px;background:var(--ground);border-radius:var(--r)}
-.card h1{margin:0 0 18px;font:500 26px/1.26 var(--text);letter-spacing:-.005em;text-wrap:pretty}
+.card{position:absolute;left:0;bottom:0;z-index:3;width:min(452px,100%);padding:22px 30px 26px var(--gut);background:var(--ground);border-radius:0 var(--r) 0 0}
+.card h1{margin:0 0 16px;font:500 26px/1.26 var(--text);letter-spacing:-.005em;text-wrap:pretty}
 .card .btn{width:100%}
 
 @media (max-width:767px){
@@ -73,16 +77,18 @@ a{color:inherit;text-decoration:none}
 
 /* The day, section by section. Without JS each late section carries its own ground. */
 body{transition:background-color .6s var(--ease)}
-.top{transition:transform .32s var(--ease),background-color .6s var(--ease)}
+.top{transition:transform .32s var(--ease),height .28s var(--ease),background-color .6s var(--ease)}
+.top .logo img{transition:height .28s var(--ease)}
+.top.past{height:56px}
+.top.past .logo img{height:28px}
 .top nav{transition:transform .32s var(--ease)}
 .top.past nav{transform:translateX(calc(-1*var(--pill,300px)))}
 html:not(.js) .top{position:absolute}
 .after{--sec:clamp(72px,10vw,144px)}
 .wrap{max-width:1440px;margin-inline:auto;padding-inline:var(--gut)}
 section{scroll-margin-top:var(--head)}
-.title{margin:0 0 22px;font:400 46px/1.18 var(--script);letter-spacing:.005em}
-.title.small{font-size:34px;margin-bottom:12px}
-.amp{font:400 .7em/1 var(--text);padding-inline:.05em}
+.title{margin:0 0 20px;font:400 56px/1.1 var(--script)}
+.title.small{font-size:42px;margin-bottom:10px}
 .lede{font-size:clamp(20px,1.65vw,24px);line-height:1.38;margin:0}
 p{margin:0 0 1em}
 p:last-child{margin-bottom:0}
@@ -95,15 +101,16 @@ p:last-child{margin-bottom:0}
 .acts{display:flex;flex-wrap:wrap;gap:10px}
 
 /* Persistent action. Both live in the page flow after the first screen, so neither can sit on it. */
-.pill-rail{position:sticky;top:12px;height:0;z-index:25;display:flex;justify-content:flex-end;padding-right:var(--gut);pointer-events:none}
-.pill{pointer-events:auto;min-height:48px;padding:10px 18px;font-size:16px;align-self:flex-start}
+.pill{position:fixed;top:6px;right:var(--gut);z-index:25;min-height:44px;padding:8px 16px;font-size:15px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .22s var(--ease),transform .28s var(--ease),visibility .22s,background-color .2s var(--ease)}
+.pill.on{opacity:1;visibility:visible;transform:none}
+.pill:active{transform:scale(.97)}
 .dock{display:none}
 
 /* Ratings */
 .strip{padding:26px 0}
 .rates{display:flex;flex-wrap:wrap;gap:8px 44px;padding-inline:var(--gut);max-width:1440px;margin-inline:auto}
 .rate{display:inline-flex;align-items:baseline;gap:12px;min-height:44px;padding:6px 0;transition:transform .12s var(--ease)}
-.rate b{font-weight:500;font-size:24px;letter-spacing:-.01em}
+.rate b{font-weight:500;font-size:28px;letter-spacing:-.012em}
 .rate span{font-size:15px;color:#3C4650;transition:color .2s var(--ease)}
 .rate:active{transform:scale(.98)}
 @media (hover:hover){.rate:hover span{color:var(--ink)}}
@@ -118,13 +125,24 @@ p:last-child{margin-bottom:0}
 .tile:nth-child(3){margin-top:64px;margin-bottom:-64px}
 .tile img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
 .tile:active img{transform:scale(.985)}
-.tag{position:absolute;left:10px;bottom:10px;display:flex;flex-direction:column;gap:1px;padding:11px 15px 12px;border-radius:14px;background:var(--ground);transition:transform .3s var(--ease)}
-.tag strong{font-weight:500;font-size:18px;line-height:1.25}
+.tile::after{content:"";position:absolute;inset:auto 0 0;height:34%;background:linear-gradient(rgba(12,18,24,0),rgba(12,18,24,.6) 58%,rgba(12,18,24,.66));pointer-events:none}
+.tag{position:absolute;left:18px;bottom:15px;z-index:1;display:flex;flex-direction:column;gap:1px;color:#fff;transition:transform .3s var(--ease)}
+.tag strong{font-weight:500;font-size:20px;line-height:1.25}
 .tag span{font-size:14px;line-height:1.3}
 @media (hover:hover){.tile:hover img{transform:scale(1.04)}.tile:hover .tag{transform:translateY(-4px)}}
-.notes{display:grid;grid-template-columns:repeat(12,1fr);gap:0 16px;margin-top:56px}
-.notes-text{grid-column:1/6;padding-right:24px}
-.notes-text+.notes-text{grid-column:6/12;padding-right:0}
+.notes{display:grid;grid-template-columns:repeat(12,1fr);gap:40px 16px;margin-top:64px}
+.notes-a{grid-column:1/6;grid-row:1;padding-right:24px}
+.notes-b{grid-column:6/12;grid-row:1}
+.kit{grid-column:1/-1;grid-row:2;display:grid;grid-template-columns:repeat(12,1fr);gap:24px 16px}
+.kit>div:first-child{grid-column:1/6;padding-right:24px}
+.kit>div:last-child{grid-column:6/12}
+.kit-lead{margin:0 0 8px;font-weight:500}
+.kit ul{margin:0;padding:0;list-style:none}
+.kit li{display:flex;gap:12px;padding:6px 0;line-height:1.35}
+.kit svg{flex:none;margin-top:1px}
+.kit li>span{display:block}
+.kit li>span::first-letter{text-transform:uppercase}
+.sep{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:pre}
 .facts b{font-weight:500}
 .house{margin-top:40px;padding:6px 26px;border-radius:var(--r);background:#E8ECEC}
 .house summary{display:flex;align-items:center;justify-content:space-between;min-height:56px;font-weight:500;font-size:20px;cursor:pointer;list-style:none}
@@ -152,7 +170,8 @@ p:last-child{margin-bottom:0}
 .slide img{width:100%;height:100%;object-fit:cover;user-select:none}
 .js .gal-track{cursor:grab}
 .dots{display:flex;justify-content:center;gap:0;min-height:44px}
-.dots button{display:flex;align-items:center;justify-content:center;height:44px;padding:0 4px;border:0;background:none;cursor:pointer}
+.dots button{display:flex;align-items:center;justify-content:center;width:44px;height:44px;margin:0 -15px;padding:0;border:0;background:none;cursor:pointer;transition:margin .3s var(--ease)}
+.dots .on{margin:0 -7px}
 .dots i{display:block;width:8px;height:8px;border-radius:8px;background:rgba(18,26,34,.26);transition:width .3s var(--ease),background-color .2s var(--ease)}
 .dots .on i{width:24px;background:var(--ink)}
 
@@ -165,7 +184,7 @@ p:last-child{margin-bottom:0}
 .feature{position:relative}
 .feature .stage{height:min(96vh,66.7vw);min-height:520px}
 .feature .stage img,.feature .stage canvas{object-position:50% 58%}
-.feature-card{margin:0;width:min(440px,calc(100% - 2*var(--gut)));padding:22px 26px 24px;font:500 24px/1.3 var(--text);text-wrap:pretty}
+.feature-card{margin:0;width:min(452px,100%);padding:22px 30px 24px var(--gut);font:500 24px/1.3 var(--text);text-wrap:pretty}
 
 /* Dining */
 .dining{padding-block:var(--sec)}
@@ -176,7 +195,7 @@ p:last-child{margin-bottom:0}
 .gal.row{margin-top:40px}
 .gal.row .gal-track{gap:12px;padding-inline:calc(var(--gut) + 8px);scroll-padding-inline:calc(var(--gut) + 8px);border-radius:0;scroll-snap-type:x proximity}
 .gal.row .slide{flex:0 0 clamp(240px,27vw,400px);aspect-ratio:1;border-radius:16px;overflow:hidden}
-.gal.row .dots{justify-content:flex-start;padding-left:calc(var(--gut) + 5px)}
+.gal.row .dots{justify-content:flex-start;padding-left:calc(var(--gut) + 15px)}
 
 /* Casual Luxe */
 .luxe{padding-bottom:var(--sec)}
@@ -188,13 +207,18 @@ p:last-child{margin-bottom:0}
 .care .title{margin:0}
 .care p{max-width:640px}
 
-/* Guests */
+/* Guests: the blue belongs to the photograph */
 .guests{padding-bottom:var(--sec)}
-.pool{margin-inline:16px;padding:60px calc(var(--gut) + 8px) 64px;border-radius:28px;background:var(--pool)}
-.quotes{display:grid;grid-template-columns:1fr 1fr;gap:32px 56px;margin-top:8px}
+.guests-grid{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:stretch}
+.guests-photo{position:relative;min-height:100%;border-radius:var(--r);overflow:hidden;background:#8CC5D6}
+.guests-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 100%}
+.rates.large{gap:8px 56px;padding:0;margin:4px 0 36px}
+.rates.large .rate{flex-direction:column;gap:2px;align-items:flex-start;padding:0}
+.rates.large .rate b{font-size:56px;line-height:1.05;letter-spacing:-.02em}
+.quotes{display:grid;gap:30px}
 .quote{margin:0}
-.quote blockquote{margin:0;font-size:clamp(18px,1.45vw,20px);line-height:1.45}
-.quote figcaption{margin-top:18px;font-size:15px;font-weight:500}
+.quote blockquote{margin:0;font-size:clamp(18px,1.45vw,21px);line-height:1.46}
+.quote figcaption{margin-top:12px;font-size:15px;font-weight:500}
 
 /* Kabalana */
 .kabalana{padding-bottom:var(--sec)}
@@ -224,7 +248,7 @@ html:not(.js) .twilight,html:not(.js) .closing,html:not(.js) .foot{background:va
 .print{position:absolute;border-radius:14px;box-shadow:0 18px 50px rgba(92,48,24,.17)}
 .print.a{left:0;top:0;width:min(590px,74%);height:auto}
 .print.b{right:0;bottom:0;width:min(400px,50%);height:auto}
-.dusk-text .title{font-size:56px}
+.dusk-text .title{font-size:68px}
 .dusk-text .lede{margin-bottom:1em}
 
 /* The last booking block: the first screen's card, grown */
@@ -273,8 +297,8 @@ details.house[open]::details-content{height:auto}
   .luxe-grid{gap:32px}
   .arrival,.ex-grid,.dusk-grid{gap:32px}
   .tiles{gap:10px}
-  .tag{left:6px;bottom:6px;padding:9px 11px}
-  .tag strong{font-size:16px}
+  .tag{left:12px;bottom:11px}
+  .tag strong{font-size:17px}
   .tag span{font-size:13px}
   .closer{gap:32px;padding:32px}
   .foot-grid{grid-template-columns:1fr;justify-items:start}
@@ -286,14 +310,14 @@ details.house[open]::details-content{height:auto}
   .kab-tall{grid-row:2/4}
 }
 @media (max-width:767px){
-  .title{font-size:34px;margin-bottom:16px}
-  .title.small{font-size:30px}
-  .pill-rail{display:none}
+  .title{font-size:44px;margin-bottom:12px}
+  .title.small{font-size:38px}
+  .pill{display:none}
   .top.past nav{transform:none}
   .rates{gap:0;flex-direction:column}
   .strip{padding:12px 0}
   .rate{gap:10px}
-  .rate b{font-size:21px}
+  .rate b{font-size:24px}
   .rate span{font-size:14px}
   .head{display:block;margin-bottom:24px}
   .head .title{margin-bottom:12px}
@@ -301,8 +325,10 @@ details.house[open]::details-content{height:auto}
   .tiles::-webkit-scrollbar{display:none}
   .tile{flex:0 0 74vw;scroll-snap-align:start}
   .tile:nth-child(3){margin:0}
-  .notes{display:block;margin-top:36px}
-  .notes-text+.notes-text{margin-top:1em}
+  .notes{display:block;margin-top:32px}
+  .kit{display:block;margin:22px 0}
+  .kit>div+div{margin-top:20px}
+  .notes-a{padding:0}
   .house{margin-top:28px;padding:4px 18px}
   .amen{columns:1}
   .rooms-detail .room{display:block}
@@ -310,21 +336,29 @@ details.house[open]::details-content{height:auto}
   .arrival-photo img{border-radius:0}
   .arrival-text{padding:28px var(--gut) 0;max-width:none}
   .feature .stage{height:125vw;min-height:0}
-  .feature-card{left:12px;bottom:12px;width:calc(100% - 24px);border-radius:16px;padding:16px 18px 18px;font-size:20px}
+  .feature-card{left:0;bottom:0;width:100%;border-radius:var(--r) var(--r) 0 0;padding:18px var(--gut) 20px;font-size:20px}
   .panel{margin-inline:8px;padding-block:44px 24px;border-radius:22px}
   .wrap-in{padding-inline:calc(var(--gut) - 4px)}
-  .cols{columns:1}
-  .gal.row{margin-top:26px}
+  .panel{display:flex;flex-direction:column}
+  .wrap-in,.cols{display:contents}
+  .panel .title{order:1;padding-inline:calc(var(--gut) - 4px)}
+  .cols p{order:4;padding-inline:calc(var(--gut) - 4px);margin:0 0 1em}
+  .cols p:first-child{order:2}
+  .gal.row{order:3;margin:6px 0 18px}
   .gal.row .gal-track{gap:10px;padding-inline:calc(var(--gut) - 4px);scroll-padding-inline:calc(var(--gut) - 4px)}
   .gal.row .slide{flex-basis:72vw}
-  .gal.row .dots{padding-left:calc(var(--gut) - 7px)}
+  .gal.row .dots{padding-left:calc(var(--gut) + 3px)}
   .luxe-grid{display:block}
   .show{position:static;margin-top:26px}
   .big{margin:52px 0 40px}
   .care{display:block}
-  .pool{margin-inline:8px;padding:40px calc(var(--gut) - 4px) 44px;border-radius:22px}
-  .quotes{display:block}
-  .quote+.quote{margin-top:32px}
+  .guests-grid{display:block}
+  .guests-photo{height:62vw;min-height:0;margin-bottom:26px}
+  .guests-photo img{object-position:50% 30%}
+  .rates.large{flex-direction:row;gap:28px;margin-bottom:28px}
+  .rates.large .rate b{font-size:44px}
+  .rates.large .rate span{font-size:13px;max-width:12em}
+  .quote blockquote{font-size:18px}
   .kab-grid{display:block}
   .kab-head{padding:0}
   .kab-wide{margin-top:24px}
@@ -338,7 +372,7 @@ details.house[open]::details-content{height:auto}
   .print.a{width:82%}
   .print.b{width:58%}
   .dusk-text{margin-top:32px}
-  .dusk-text .title{font-size:42px}
+  .dusk-text .title{font-size:52px}
   .closing{padding-inline:8px}
   .closer{display:block;padding:28px 20px;border-radius:22px}
   .closer-b{margin-top:22px}
@@ -347,7 +381,9 @@ details.house[open]::details-content{height:auto}
   .foot-grid{display:grid;grid-template-columns:1fr;justify-items:start}
   .foot-acts{justify-content:flex-start}
   .foot-line{text-align:left}
-  .dock{display:flex;position:sticky;bottom:0;z-index:15;gap:10px;padding:10px var(--gut) calc(10px + env(safe-area-inset-bottom));background:var(--g,var(--ground));transition:background-color .6s var(--ease)}
+  .dock{display:flex;position:sticky;bottom:0;z-index:15;gap:10px;padding:10px var(--gut) calc(10px + env(safe-area-inset-bottom));background:var(--g,var(--ground));transition:background-color .6s var(--ease),transform .26s var(--ease)}
+  .js .dock{transform:translateY(110%)}
+  .js .dock.show{transform:none}
   .dock .book{flex:1;padding-inline:14px}
   .sheet{width:100%;border-radius:0}
   .sheet-top{padding:10px 10px 10px 14px}
@@ -366,6 +402,14 @@ details.house[open]::details-content{height:auto}
 }
 @keyframes slide{from{transform:translateY(34px)}to{transform:translateY(-34px)}}
 @keyframes slide-s{from{transform:translateY(14px)}to{transform:translateY(-14px)}}
+@media (max-width:767px) and (prefers-reduced-motion:no-preference){
+  /* The card waits for the first 22% of a screen of scroll, then the page rises over the held photograph. */
+  .hero{height:calc(222svh - var(--head))}
+  .hero .stage{position:sticky;top:var(--head);height:calc(100svh - var(--head))}
+  .card-rail{position:absolute;inset:0 0 auto;height:122svh;display:flex;flex-direction:column;justify-content:flex-end;pointer-events:none}
+  .card-rail .card{position:sticky;bottom:0;pointer-events:auto}
+  .after{position:relative;z-index:2;margin-top:calc(var(--head) - 100svh);background:var(--g,var(--ground));transition:background-color .6s var(--ease)}
+}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important}
   body,.top,.top nav,.tile img,.tag,.dots i,.dock{transition:none}
@@ -377,6 +421,7 @@ details.house[open]::details-content{height:auto}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="top" id="top">
   <a class="logo" href="#main" aria-label="The Sandhya"><img src="img/logo.webp" alt="The Sandhya" width="406" height="106"></a>
   <nav aria-label="Main">
@@ -386,22 +431,22 @@ details.house[open]::details-content{height:auto}
   </nav>
 </header>
 
-<main id="main">
+<main id="main" tabindex="-1">
 <section class="hero" data-ground="ground">
-  <div class="stage" data-depth="img/depth-hero.png" data-frame="2000x1333" data-crop="880,0,616,1333" data-rest="top">
+  <div class="stage" data-depth="img/depth-hero.png" data-frame="2000x1333" data-crop="880,0,616,1333" data-zoom="1010,665" data-rest="top">
     <picture>
       <source media="(max-width:767px)" srcset="img/hero-phone.webp" width="616" height="1333">
       <img src="img/hero-1440.webp" srcset="img/hero-1440.webp 1440w, img/hero-2000.webp 2000w" sizes="103vw" width="2000" height="1333" fetchpriority="high" alt="A double-height lounge: a stair hung on a fan of steel rods, a grey sofa and timber armchairs on a stone floor, and a wall of glass onto a long pool, the lawn and the sea.">
     </picture>
     <canvas aria-hidden="true"></canvas>
   </div>
-  <div class="card">
+  <div class="card-rail"><div class="card">
     <h1>An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka.</h1>
     <a class="btn book" href="https://hotels.cloudbeds.com/reservation/WMvA6V">Check rooms and live dates<svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h11.5M10 4.5 14.5 9 10 13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-  </div>
+  </div></div>
 </section>
 <div class="after">
-<div class="pill-rail"><a class="btn book pill" href="https://hotels.cloudbeds.com/reservation/WMvA6V">Check rooms and live dates<svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h11.5M10 4.5 14.5 9 10 13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<a class="btn book pill" href="https://hotels.cloudbeds.com/reservation/WMvA6V">Check rooms and live dates<svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h11.5M10 4.5 14.5 9 10 13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 
 <section class="strip" aria-label="Ratings" data-ground="ground">
   <div class="rates">
@@ -419,19 +464,19 @@ details.house[open]::details-content{height:auto}
   </div>
   <div class="tiles-wrap wrap">
     <div class="tiles">
-      <a class="tile" href="#room-studio-king" data-room="studio-king" data-crop="620,1066,2000,1333">
+      <a class="tile" href="#room-studio-king" data-room="studio-king" data-crop="330,150,800,1000,2000,1333">
         <img src="img/tile-studio-king.webp" alt="A bed and a round table beside glass doors, with parasols and the pool beyond them." width="800" height="1000" loading="lazy" decoding="async" draggable="false">
         <span class="tag"><strong>Studio King</strong><span>King bed | Sleeps 2</span></span>
       </a>
-      <a class="tile" href="#room-studio-twin" data-room="studio-twin" data-crop="560,1066,2000,1333">
+      <a class="tile" href="#room-studio-twin" data-room="studio-twin" data-crop="820,230,800,1000,2000,1333">
         <img src="img/tile-studio-twin.webp" alt="Two beds on a woven rug, with a round table, and palms and the sea through the glass." width="800" height="1000" loading="lazy" decoding="async" draggable="false">
         <span class="tag"><strong>Studio Twin</strong><span>2 super-single beds | Sleeps 2</span></span>
       </a>
-      <a class="tile" href="#room-studio-plus" data-room="studio-plus" data-crop="467,1067,2000,1334">
+      <a class="tile" href="#room-studio-plus" data-room="studio-plus" data-crop="670,200,800,1000,2000,1334">
         <img src="img/tile-studio-plus.webp" alt="Seen from the bed: glass doors, one palm, loungers and the sea." width="800" height="1000" loading="lazy" decoding="async" draggable="false">
         <span class="tag"><strong>Studio+ King</strong><span>King bed | Sleeps 2</span></span>
       </a>
-      <a class="tile" href="#room-suite" data-room="suite" data-crop="620,1024,1920,1280">
+      <a class="tile" href="#room-suite" data-room="suite" data-crop="1100,210,768,960,1920,1280">
         <img src="img/tile-suite.webp" alt="A long room with a bed, TV, desk and grey sofa, and the sea and a palm through the glass." width="800" height="1000" loading="lazy" decoding="async" draggable="false">
         <span class="tag"><strong>Director’s Suite</strong><span>King bed | Sleeps 2</span></span>
       </a>
@@ -441,7 +486,7 @@ details.house[open]::details-content{height:auto}
     <article class="room" id="room-studio-king" data-room="studio-king" data-name="Studio King">
       <div class="gal " role="group" aria-roledescription="carousel" aria-label="Studio King photographs">
         <div class="gal-track" tabindex="0">
-          <div class="slide"><img style="object-position:66.4% 50%" src="img/r-077.webp" alt="Bed, round table and tall mirror, with the pool and parasols through the glass." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img style="object-position:9.5% 50%" src="img/r-077.webp" alt="Bed, round table and tall mirror, with the pool and parasols through the glass." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
           <div class="slide"><img src="img/r-061.webp" alt="Bed, daybed and round table, with the sea and palms through the glass." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
           <div class="slide"><img src="img/r-062.webp" alt="Bed, cowhide rug and daybed in a room open to the sea and palms." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
           <div class="slide"><img src="img/r-070.webp" alt="Bed and cowhide rug in front of chevron timber wardrobe doors." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
@@ -462,7 +507,7 @@ details.house[open]::details-content{height:auto}
     <article class="room" id="room-studio-twin" data-room="studio-twin" data-name="Studio Twin">
       <div class="gal " role="group" aria-roledescription="carousel" aria-label="Studio Twin photographs">
         <div class="gal-track" tabindex="0">
-          <div class="slide"><img style="object-position:60.0% 50%" src="img/r-043.webp" alt="Two beds, a round table and a mirror, with the sea through the glass." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img style="object-position:83.0% 50%" src="img/r-043.webp" alt="Two beds, a round table and a mirror, with the sea through the glass." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
           <div class="slide"><img src="img/r-080.webp" alt="Bed and round table, with the sea and a palm through the glass." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
           <div class="slide"><img src="img/r-165.webp" alt="Twin beds on dark rugs beside a chevron timber wardrobe door." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
           <div class="slide"><img src="img/r-167.webp" alt="A bed and patio chairs, with palms and the sea through the glass." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
@@ -483,7 +528,7 @@ details.house[open]::details-content{height:auto}
     <article class="room" id="room-studio-plus" data-room="studio-plus" data-name="Studio+ King">
       <div class="gal " role="group" aria-roledescription="carousel" aria-label="Studio+ King photographs">
         <div class="gal-track" tabindex="0">
-          <div class="slide"><img style="object-position:50.1% 50%" src="img/r-071.webp" alt="Seen from the bed: glass doors, one palm, loungers and the sea." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img style="object-position:60.5% 50%" src="img/r-071.webp" alt="Seen from the bed: glass doors, one palm, loungers and the sea." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
           <div class="slide"><img src="img/r-042.webp" alt="A timber desk-headboard before the bed, with a palm and the sea through the glass." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
           <div class="slide"><img src="img/r-066.webp" alt="Timber desk-headboard and mirror, with the pool and a palm through the glass." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
           <div class="slide"><img src="img/r-067.webp" alt="Round table by the bed, with the patio, pool and a parasol beyond." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
@@ -506,7 +551,7 @@ details.house[open]::details-content{height:auto}
     <article class="room" id="room-suite" data-room="suite" data-name="Director’s Suite">
       <div class="gal " role="group" aria-roledescription="carousel" aria-label="Director’s Suite photographs">
         <div class="gal-track" tabindex="0">
-          <div class="slide"><img style="object-position:69.2% 50%" src="img/r-087.webp" alt="Bed, TV, desk and grey sofa, with the sea and a palm through the glass." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img style="object-position:100.0% 50%" src="img/r-087.webp" alt="Bed, TV, desk and grey sofa, with the sea and a palm through the glass." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
           <div class="slide"><img src="img/r-171.webp" alt="Bed in the foreground, with the TV, sofa, sea and a palm beyond." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
           <div class="slide"><img src="img/r-172.webp" alt="Desk, chairs, TV and sofa, with the bed beyond." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
           <div class="slide"><img src="img/r-058.webp" alt="Walk-in wardrobe in timber, a white robe hanging." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
@@ -527,11 +572,30 @@ details.house[open]::details-content{height:auto}
     </article>
   </div>
   <div class="wrap notes">
-    <div class="notes-text">
-      <p>We have included thoughtful touches from evening lavender scents to high pressure rain showers so you are assured of a restorative stay in any one of our room types.</p>
-      <p>Every room has a plush pillow-top mattress with 500 thread count linen, a shower big enough for two, Spa Ceylon amenities, bathrobes and slippers. Each one also has central air conditioning and a ceiling fan, a desk, universal sockets, a hairdryer and a Bluetooth speaker. High speed WiFi too, with newspapers and magazines from around the world on PressReader.</p>
+    <div class="notes-a"><p>We have included thoughtful touches from evening lavender scents to high pressure rain showers so you are assured of a restorative stay in any one of our room types.</p></div>
+    <div class="kit">
+      <div>
+        <p class="kit-lead">Every room has</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 14V5M2 11h14v3M16 11V9a2 2 0 0 0-2-2H8v4M4.5 8.5h1.6" /></svg><span>a plush pillow-top mattress with 500 thread count linen<i class="sep">, </i></span></li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16V5a2.5 2.5 0 0 1 5 0M6.5 7h5M7.5 10v.8M10.5 10v.8M7.5 13v.8M10.5 13v.8" /></svg><span>a shower big enough for two<i class="sep">, </i></span></li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14C3 8 7 4 15 3.500c.5 8-3.500 12-9 11M4 15.500c1.500-4 4-6 7-7.500" /></svg><span>Spa Ceylon amenities<i class="sep">, </i></span></li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.500 2.500 9 5l2.500-2.500L15 5l-1.500 3-1-.5V16h-7V7.500l-1 .5L3 5zM9 5v11" /></svg><span>bathrobes and slippers<i class="sep">.</i></span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="kit-lead">Each one also has</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="1.300"/><path d="M9 7.700C7.500 5 8 2.500 10.500 3c2 .5 1.500 3-.5 5M10.300 9c2.700-1.500 5.200-1 4.700 1.500-.5 2-3 1.500-5-.5M9 10.300c1.500 2.700 1 5.200-1.500 4.700-2-.5-1.500-3 .5-5M7.700 9C5 10.500 2.500 10 3 7.500c.5-2 3-1.500 5 .5" /></svg><span>central air conditioning and a ceiling fan<i class="sep">, </i></span></li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h14M4 6v9M14 6v9M10 6v4h4" /></svg><span>a desk<i class="sep">, </i></span></li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.500 2.500v4M11.500 2.500v4M4.500 6.500h9V9a4.500 4.500 0 0 1-9 0zM9 13.500v2.500" /></svg><span>universal sockets<i class="sep">, </i></span></li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.500h8a3 3 0 0 1 0 6H3zM6 11.500l-.8 4.500h2.600l.8-4.500M14 8.500h.8" /></svg><span>a hairdryer</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2.500" width="8" height="13" rx="1.600"/><circle cx="9" cy="11" r="2"/><path d="M9 5.800v.1" /></svg><span><i class="sep">and </i>a Bluetooth speaker<i class="sep">.</i></span></li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.500 7.500a9.500 9.500 0 0 1 13 0M5 10.200a6 6 0 0 1 8 0M7.300 12.800a2.700 2.700 0 0 1 3.400 0M9 15.200v.1" /></svg><span>High speed WiFi too, with newspapers and magazines from around the world on PressReader<i class="sep">.</i></span></li>
+        </ul>
+      </div>
     </div>
-    <div class="notes-text">
+    <div class="notes-b">
       <p>In the Studio King, a triple occupancy can be arranged (subject to availability) with a supplement.</p>
       <p class="strong">Nightly rates are on our booking page, for the dates you choose.</p>
       <p class="facts"><b>Check-in from 14:00 | Check-out to 12:00</b><br>Other sites give different minimum ages for us, and some say check-in is after 16:00. Ask us before you book.</p>
@@ -578,7 +642,7 @@ details.house[open]::details-content{height:auto}
 <section class="arrival" data-ground="ground">
   <div class="arrival-photo"><img src="img/arrival.webp" alt="The road side of the hotel: a grey concrete wall, tall timber doors standing open, paving and a shade tree." width="1400" height="933" loading="lazy" decoding="async"></div>
   <div class="arrival-text">
-    <h2 class="title">Pause, take a deep breath <span class="amp">&amp;</span> exhale. You are home.</h2>
+    <h2 class="title">Pause, take a deep breath &amp; exhale. You are home.</h2>
     <p>Designed to feel like an exclusive private beach house with the amenities of an intimate boutique hotel. Your relaxation starts as you kick off your shoes and slip through the hidden door in the wide wooden façade.</p>
       <p>Inside, you will catch the first glimpses of our star attraction, The Indian Ocean, magnificent and omnipresent.</p>
       <p>Whether you are enjoying the sunshine on the expansive lawns, lounging all day around our abundant, airy indoor living spaces or cooling off in our air-conditioned media room, the sea is always your view.</p>
@@ -587,7 +651,7 @@ details.house[open]::details-content{height:auto}
 </section>
 
 <section class="feature" data-ground="ground">
-  <div class="stage" data-depth="img/depth-feature.png" data-frame="2000x1334" data-crop="430,0,1000,1334" data-rest="centre">
+  <div class="stage" data-depth="img/depth-feature.png" data-frame="2000x1334" data-crop="430,0,1000,1334" data-zoom="1000,650" data-rest="centre">
     <picture>
       <source media="(max-width:767px)" srcset="img/feature-phone.webp" width="900" height="1201">
       <img src="img/feature-1440.webp" srcset="img/feature-1440.webp 1440w, img/feature-2000.webp 2000w" sizes="103vw" width="2000" height="1334" loading="lazy" decoding="async" alt="An open glass door in a guest room: a red lamp and two chairs inside, then a lounger, the pool, the lawn, tall palms and the sea.">
@@ -654,11 +718,18 @@ details.house[open]::details-content{height:auto}
 </section>
 
 <section class="guests" data-ground="ground">
-  <div class="pool">
-    <h2 class="title">Guests</h2>
-    <div class="quotes">
+  <div class="wrap guests-grid">
+    <div class="guests-photo"><img src="img/guests-031.webp" alt="Clear pool water with ripples of light, above a pale stone edge." width="1000" height="1250" loading="lazy" decoding="async"></div>
+    <div class="guests-text">
+      <h2 class="title">Guests</h2>
+      <div class="rates large">
+      <a class="rate" href="https://au.trip.com/hotels/ahangama-hotel-detail-10660372/hotel" target="_blank" rel="noopener"><b>9.7/10</b><span>Trip.com | 56 reviews | read 2026-11-06</span></a>
+      <a class="rate" href="https://www.kayak.com/Ahangama-Hotels-The-Sandhya.2781869.ksp" target="_blank" rel="noopener"><b>9.4/10</b><span>Kayak | 159 reviews | read 2026-11-06</span></a>
+  </div>
+      <div class="quotes">
       <figure class="quote"><blockquote>It’s a beautiful place and a well maintained clean stay. The staff is very supportive. The Sandhya is situated near one of the best locations which is facing stunning kabalana beach .the pool omg !!! That was awesome. It’s a long crystal clean relaxing pool with the stunning view of the ocean . Food is delicious and a well curated menu. Rooms are beautiful and very comfortable. Overall we loved the stay and everything in it . It’s a must go boutique hotel in ahangama .</blockquote><figcaption>Guest User | Trip.com | June 2026</figcaption></figure>
       <figure class="quote"><blockquote>A great stay, absolutely gorgeous hotel - perfect, friendly and attentive service, small hotel so felt very safe, familiar and luxurious. Delicious food, excellent location to get to Ahangama by 5min TukTuk and be directly on a wide sandy and long (enough) beach with lots of surfers, without the actual beach being packed full of people so was calm but bustling. Would highly recommend.</blockquote><figcaption>Guest User | Trip.com | February 2026</figcaption></figure>
+      </div>
     </div>
   </div>
 </section>
@@ -787,19 +858,30 @@ details.house[open]::details-content{height:auto}
 
   // Header: steps out of the way on the way down, back on the way up. The booking button stays.
   var top = $('#top'), hero = $('.hero'), pill = $('.pill'), lastY = scrollY, tick = false;
-  function pillRoom(){ if(pill) root.style.setProperty('--pill', (pill.offsetWidth+18)+'px'); }
+  function pillRoom(){ if(pill) root.style.setProperty('--pill', (pill.offsetWidth+16)+'px'); }
   pillRoom(); addEventListener('resize', pillRoom);
   if(document.fonts&&document.fonts.ready) document.fonts.ready.then(pillRoom);
+  var after = $('.after'), phoneW = matchMedia('(max-width:767px)');
   function onScroll(){
     tick = false;
-    var y = scrollY, h = hero.offsetHeight;
-    top.classList.toggle('past', y > h-110);
-    if(y < h*.5) top.classList.remove('away');
+    var y = scrollY, h = after.offsetTop-top.offsetHeight, past = y > h-40;
+    top.classList.toggle('past', past);
+    if(pill) pill.classList.toggle('on', past);
+    // On a phone the bar carries the action, so the header steps away. On a laptop it stays, slim.
+    if(!phoneW.matches || y < h) top.classList.remove('away');
     else if(y-lastY > 6) top.classList.add('away');
     else if(lastY-y > 6) top.classList.remove('away');
     if(Math.abs(y-lastY) > 6) lastY = y;
   }
+  onScroll();
   addEventListener('scroll', function(){ if(!tick){ tick = true; requestAnimationFrame(onScroll); } }, {passive:true});
+
+  var dock = $('.dock'), cardBtn = $('.card .btn');
+  if(dock&&cardBtn&&'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      var e = es[0]; dock.classList.toggle('show', !e.isIntersecting&&e.boundingClientRect.top<innerHeight*.5);
+    },{rootMargin:'-60px 0px 0px 0px'}).observe(cardBtn);
+  } else if(dock) dock.classList.add('show');
 
   // Galleries: dots that follow, drag with momentum for a mouse, arrow keys.
   function Gal(g){
@@ -870,15 +952,16 @@ details.house[open]::details-content{height:auto}
   function fly(tile){
     if(reduce||!tile||!tile.animate) return;
     var src = $('img',tile), from = src.getBoundingClientRect(), to = $('.slide',current).getBoundingClientRect();
-    var c = tile.dataset.crop.split(',').map(Number), x0 = c[0], cw = c[1], fw = c[2], fh = c[3];
+    var c = tile.dataset.crop.split(',').map(Number), x0 = c[0], y0 = c[1], cw = c[2], ch = c[3], fw = c[4], fh = c[5];
     // Where the tile's own crop sits inside the gallery's wider frame, with the sheet at rest.
-    var k = Math.max(to.width/fw,to.height/fh), ox = (to.width-fw*k)*(x0/(fw-cw));
+    var k = Math.max(to.width/fw,to.height/fh), px = Math.max(0,Math.min(1,(x0+cw/2-fh/2)/(fw-fh)));
+    var ox = fw*k > to.width+1 ? (to.width-fw*k)*px : 0;
     var shift = sheet.getBoundingClientRect().left-(innerWidth-sheet.offsetWidth);
-    var ex = to.left-shift+ox+x0*k, s = cw*k/from.width;
+    var ex = to.left-shift+ox+x0*k, ey = to.top+y0*k, s = cw*k/from.width;
     var im = src.cloneNode(); im.removeAttribute('loading'); im.alt = ''; im.className = 'fly';
     im.style.cssText = 'left:'+from.left+'px;top:'+from.top+'px;width:'+from.width+'px;height:'+from.height+'px;border-radius:20px';
     document.body.appendChild(im);
-    var a = im.animate([{transform:'none'},{transform:'translate('+(ex-from.left)+'px,'+(to.top-from.top)+'px) scale('+s+')'}],
+    var a = im.animate([{transform:'none'},{transform:'translate('+(ex-from.left)+'px,'+(ey-from.top)+'px) scale('+s+')'}],
       {duration:360,easing:'cubic-bezier(.22,.8,.2,1)',fill:'forwards'});
     a.onfinish = function(){ var b = im.animate({opacity:[1,0]},{duration:180,fill:'forwards'}); b.onfinish = function(){ im.remove(); }; };
   }
@@ -949,13 +1032,12 @@ details.house[open]::details-content{height:auto}
   // Depth: plain WebGL over the photograph. At rest it draws the photograph unchanged.
   if(reduce || conn.saveData) return;
   var VS = 'attribute vec2 a;varying vec2 v;void main(){v=a*.5+.5;v.y=1.-v.y;gl_Position=vec4(a,0.,1.);}';
-  var FS = 'precision highp float;uniform sampler2D I,D;uniform vec2 O;uniform vec4 C,M;varying vec2 v;'+
-    'float H(vec2 u,float s){return texture2D(D,M.xy+(u-O*(s-.35))*M.zw).r-s;}'+
-    'void main(){vec2 u=C.xy+v*C.zw;float a=1.,b=1.;'+
-    // March from the camera to the first surface, then close in on it, so far planes stay perfectly smooth.
-    'for(int i=0;i<14;i++){if(H(u,b)>=0.)break;a=b;b-=1./13.;}'+
-    'for(int i=0;i<5;i++){float m=(a+b)*.5;if(H(u,m)>=0.)b=m;else a=m;}'+
-    'gl_FragColor=texture2D(I,u-O*(b-.35));}';
+  // The map is flat planes, so a few fixed-point steps land exactly: O slides the camera sideways,
+  // K walks it forward towards Z. Both are true to a plane, so straight lines stay straight.
+  var FS = 'precision highp float;uniform sampler2D I,D;uniform vec2 O,Z;uniform float K;uniform vec4 C,M;varying vec2 v;'+
+    'void main(){vec2 u=C.xy+v*C.zw,p=u;float s=0.;'+
+    'for(int i=0;i<4;i++){s=texture2D(D,M.xy+p*M.zw).r;p=u-O*(s-.3);p=Z+(p-Z)*(1.-K*s);}'+
+    'gl_FragColor=texture2D(I,p);}';
 
   function Piece(stage){
     var img = stage.querySelector('img'), cv = stage.querySelector('canvas');
@@ -968,7 +1050,7 @@ details.house[open]::details-content{height:auto}
     gl.bindBuffer(gl.ARRAY_BUFFER,gl.createBuffer());
     gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
     var a=gl.getAttribLocation(pr,'a');gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,2,gl.FLOAT,false,0,0);
-    var U={I:gl.getUniformLocation(pr,'I'),D:gl.getUniformLocation(pr,'D'),O:gl.getUniformLocation(pr,'O'),C:gl.getUniformLocation(pr,'C'),M:gl.getUniformLocation(pr,'M')};
+    var U={I:gl.getUniformLocation(pr,'I'),D:gl.getUniformLocation(pr,'D'),O:gl.getUniformLocation(pr,'O'),Z:gl.getUniformLocation(pr,'Z'),K:gl.getUniformLocation(pr,'K'),C:gl.getUniformLocation(pr,'C'),M:gl.getUniformLocation(pr,'M')};
     function tex(unit,src){
       gl.activeTexture(gl.TEXTURE0+unit);gl.bindTexture(gl.TEXTURE_2D,gl.createTexture());
       gl.pixelStorei(gl.UNPACK_COLORSPACE_CONVERSION_WEBGL,gl.NONE);
@@ -981,7 +1063,7 @@ details.house[open]::details-content{height:auto}
     var cx = phone?crop[0]:0, cy = phone?crop[1]:0, cw = phone?crop[2]:fr[0], ch = phone?crop[3]:fr[1];
     var posY = phone?.5:parseFloat(getComputedStyle(img).objectPosition.split(' ')[1])/100;
     var W=0,H=0,raf=0,visible=true,slow=0,last=0,dead=false;
-    var x=0,y=0,tx=0,ty=0,sx=0,sy=0;
+    var x=0,y=0,tx=0,ty=0,z=0,tz=0, zc=stage.dataset.zoom.split(',').map(Number);
     function size(){
       var r=cv.getBoundingClientRect(), dpr=Math.min(devicePixelRatio||1,2);
       W=Math.round(r.width*dpr);H=Math.round(r.height*dpr);cv.width=W;cv.height=H;gl.viewport(0,0,W,H);
@@ -989,30 +1071,31 @@ details.house[open]::details-content{height:auto}
       if(ca>ia){zh=ia/ca;oy=(1-zh)*posY;}else{zw=ca/ia;ox=(1-zw)*.5;}
       gl.uniform4f(U.C,ox,oy,zw,zh);
       gl.uniform4f(U.M,cx/fr[0],cy/fr[1],cw/fr[0],ch/fr[1]);
+      gl.uniform2f(U.Z,(zc[0]-cx)/cw,(zc[1]-cy)/ch);
     }
     function draw(){
-      // The pivot sits at depth .35, so the room's back barely moves. A reach of 2.3% of the frame's
-      // width moves the nearest thing at most 1.5% of it, either way.
-      var reach=.023*fr[0];
-      var ox=x+sx, oy=y+sy;
-      gl.uniform2f(U.O,ox*reach/cw,oy*reach/ch);
+      // The pivot sits at depth .3, so the room's back barely moves. A reach of 1.29% of the frame's
+      // width moves the nearest thing at most 0.9% of it, either way.
+      var reach=.0129*fr[0];
+      gl.uniform2f(U.O,x*reach/cw,y*reach/ch);
+      gl.uniform1f(U.K,z);
       gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
-      stage.classList.toggle('live',!dead&&Math.abs(ox)+Math.abs(oy)>.0015);
+      stage.classList.toggle('live',!dead&&Math.abs(x)+Math.abs(y)+Math.abs(z)*8>.0015);
     }
     function frame(t){
       raf=0;
       var dt=last?t-last:16;last=t;
       if(!noGuard && dt>70){ if(++slow>6){ kill(); return; } } else if(dt<40) slow=0;
       var k=1-Math.exp(-dt/150);
-      x+=(tx-x)*k;y+=(ty-y)*k;
+      x+=(tx-x)*k;y+=(ty-y)*k;z+=(tz-z)*k;
       draw();
-      if(Math.abs(tx-x)+Math.abs(ty-y)>.0008) raf=requestAnimationFrame(frame); else {x=tx;y=ty;draw();last=0;}
+      if(Math.abs(tx-x)+Math.abs(ty-y)+Math.abs(tz-z)*8>.0008) raf=requestAnimationFrame(frame); else {x=tx;y=ty;z=tz;draw();last=0;}
     }
     function kick(){ if(!raf&&!dead&&visible) raf=requestAnimationFrame(frame); }
     function kill(){ dead=true; stage.classList.remove('live'); }
     var api={
       move:function(nx,ny){tx=-nx;ty=-ny*.45;kick();},
-      scroll:function(p,q){sx=p;sy=q;kick();},
+      walk:function(k){tz=k;kick();},
       show:function(v){visible=v;if(v)kick();},
       resize:function(){if(!dead){size();draw();}}
     };
@@ -1050,12 +1133,21 @@ details.house[open]::details-content{height:auto}
     var tick=false;
     function onScroll(){
       tick=false;
+      var vh=innerHeight, cover=document.querySelector('.after').getBoundingClientRect().top;
       Piece.ready.forEach(function(p){
-        var r=p.stage.getBoundingClientRect(), vh=innerHeight, f;
-        var on=r.bottom>0&&r.top<vh; p.show(on); if(!on) return;
-        if(p.rest==='top') f=Math.min(1,Math.max(0,-r.top/r.height));
-        else f=Math.max(-1,Math.min(1,(r.top+r.height/2-vh/2)/vh));
-        p.scroll(coarse?f*.22:0,coarse?f*.55:f*.5);
+        var r=p.stage.getBoundingClientRect(), f;
+        if(p.rest==='top'){
+          // The first screen. On a phone the photograph is held while the page rises over it, and
+          // the visitor walks into the room as they scroll. On a laptop it is the pointer's, and
+          // scrolling only adds a small step forward as it leaves.
+          var on=cover>0; p.show(on); if(!on) return;
+          f=Math.min(1,Math.max(0,scrollY/(vh*(coarse?.42:.9))));
+          p.walk(f*(coarse?.38:.1));
+        } else {
+          var seen=r.bottom>0&&r.top<vh; p.show(seen); if(!seen) return;
+          f=Math.max(0,Math.min(1,(vh-r.top)/(vh+r.height)));
+          p.walk(f*(coarse?.2:.09));
+        }
       });
     }
     addEventListener('scroll',function(){ if(!tick){tick=true;requestAnimationFrame(onScroll);} },{passive:true});

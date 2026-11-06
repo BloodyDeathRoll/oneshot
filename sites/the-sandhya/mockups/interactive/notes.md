@@ -24,7 +24,18 @@ Compared with: `old-site-first-screen-desktop.png` and `old-site-first-screen-mo
 
 **Round 7, depth checked on the final page, over http.** The phone's scrolled state came out blank in the capture, the headless compositor artefact of references #29: a dump of the canvas showed the correct picture. Added `opacity:.999` to the layers over the canvas, which restores it in captures. With it visible, the scroll-driven displacement on the phone warped the pool edge around the stair and hoop chair at mid-scroll, so I cut the scroll term by about 45% on phones and 30% on desktop. Screens: `shots/round-1/states/`.
 
-**Inspector** (`design-taste-frontend`, run once), results kept with reasons:
+**Round 8, second critic round: the reviewers' fix lists.** `shots/round-2/` holds this round's sheets and states.
+
+- **What round 1 got wrong.** My "about 2 px" at the extremes understated it. The reviewers saw soffit edges scallop, uprights bow behind the hoop chairs and furniture legs bend, even with the pointer on the CTA. Silhouettes in a depth map are the cause: every edge is somewhere for a line to kink, and feathering only turns a kink into a bow.
+- **Depth, rebuilt.** The maps now have no silhouettes at all. Each room is four flat planes (wall, glass wall, ceiling, floor) and depth is the maximum of them, which is what a box seen from inside really is. Inverse depth is linear across a plane, so each plane moves as a plane and a straight line stays straight. The glass wall, its uprights, soffits and the sea are one plane. Furniture stands on the floor's plane, so tall pieces lean very slightly rather than sliding clear of what is behind them. Nearest movement is 0.9% of the frame's width, down from 1.5%. The cost: the sea no longer slips behind the uprights, as the reviewers asked.
+- **Checked with a sweep, not only the corners.** The pointer walked a 13-stop path, corners and CTA included. At each stop 20 lines were tracked along their length against the rest frame, and a straight line fitted to how far each moved (uprights, upper uprights, rods, table legs, lamp pole, band edges, soffit, sofa rail, table front). The 75th-percentile departure from straight was at most 0.28 px on 19 lines, and 0.85 px on the lamp pole; lines moved up to about 6 px. A few points on some lines read 12 to 14 px, the limit of the tracker's search range, on stretches with little texture to lock on to; I read those as lost tracks, not bends, and looked at the corner frames by eye: clean. This is software GL at 1440 x 900.
+- **Phone.** The photograph is now held: sticky CSS, so it also holds with JS off. The card waits for the first 22% of a screen of scroll, then the page rises over the photograph as one sheet. As it rises the visitor walks into the room: a forward step towards the horizon, a true projective move, so lines stay straight. It runs over the first 42% of a screen. Rooms start about 185 px later than in round 1. Reduced motion keeps the plain layout.
+- **The rest of the list.** Allura replaces the pen hand: tested beside Mr De Haviland on every title word, it reads as drawn and stays legible, while Mr De Haviland tangles on "Why Sandhya" and "Looking after", and its "&" works, so the text-face ampersand is gone. Guests is rebuilt on the ground beside img-031, with the ratings at 56 px as its focal point; blue now belongs to the photograph, and panel tints are down to two. The phone bar waits until the card's button has gone. The desktop button sits in a slim 56 px header that stays. The hero and feature cards dock flush to the corner. Tile names sit on the photograph over a scrim, and tiles are re-cut to the view, with no ceiling fan as the lead. The kit is an icon list at every width, with its three sentences intact in the DOM. On a phone the food follows Dining's first paragraph. There is a real skip link, and dots have 44 px targets at a tighter pitch by overlap.
+- **Against the current site.** Still clearly better at a glance on both widths: the same comparison as round 6, now with a first screen that holds still and true under the hand.
+
+**Round 2 checks.** `audit-mockup`: first load 628 KB, LCP 2168 ms, CLS 0, scroll CLS 0 early and settled, 0 tap targets under 44 px. `check-design`: pass. Its one warning, a ground "in the cream range" at `rgb(243,243,240)`, is the page's ground caught mid-ease between cloud white and the later step, not a colour in the page. `check-places`: pass. Copy: 98 of 98 strings found verbatim with JS off, the kit's three sentences included. The tile scrim was shortened after these ran; only the screen shoot was rerun. The inspector was not rerun this round; the list below is from round 1 and some of it no longer applies.
+
+**Inspector, round 1** (`design-taste-frontend`, run once), results kept with reasons:
 - `headline-lines`: the audited tagline and intro heading. Words are not mine to cut.
 - `shadow`: the two twilight prints and the map are matted prints (references #9), and `custom.md` allows gentle shadows.
 - `still-page`: no reveals on headings, by rule. The motion here is the depth piece and on touch, and a load-and-scroll count does not see it.
@@ -42,7 +53,8 @@ All `license: business-owned`, "published on the business's own site; no credit 
 |---|---|
 | First screen, with depth | img-032 (2000 px wide, phone crop 616 x 1333) |
 | featureLine, with depth | img-068 (2000 px wide, phone crop 1000 x 1334) |
-| Room tiles, 4:5 | img-077, img-043, img-071, img-087 |
+| Room tiles, 4:5, cut to the view | img-077, img-043, img-071, img-087 |
+| Guests | img-031 (the pool's water and stone edge; business-owned, cut to 1040 x 1300) |
 | Studio King | img-077, 061, 062, 070, 079 |
 | Studio Twin | img-043, 080, 165, 167, 083 |
 | Studio+ King | img-071, 042, 066, 067, 074, 076, 073 |
@@ -55,7 +67,7 @@ All `license: business-owned`, "published on the business's own site; no credit 
 | Twilight, at or under native size | img-023 (cut to x 240+, clear of the surfboards), img-027 |
 | Logo | `logo-white.png`, shown in ink with a CSS filter |
 
-Depth maps `depth-hero.png` (21 KB) and `depth-feature.png` (13 KB) are painted in code by `src/paint-depth.mjs`, with no image input.
+Depth maps `depth-hero.png` and `depth-feature.png` are computed from plane equations in `src/paint-depth.mjs`, with no image input.
 
 **Originals: not used.** A plain request to the site answered 406 for an upload URL and for `robots.txt` itself, so the robots rules could not be read. I did not change identity or use a browser to get round it. Everything comes from the local copies in `dossier/the-sandhya/assets/`, capped at 2000 px. The phone hero is therefore 616 source px wide: clean at 2x in the shots, and it will be slightly soft on a 3x phone. A re-cut from the 6150 px original would fix that if the owner supplies it.
 
@@ -73,14 +85,16 @@ Depth maps `depth-hero.png` (21 KB) and `depth-feature.png` (13 KB) are painted 
 
 None blocking.
 
+0. **Concept: `#5BB2CD` guests panel.** Removed in round 2 on the reviewers' finding. The photograph carries the blue.
+
 1. **`custom.md` "pick dates" against the operator's decision and audit recommendation 4.** No date picker: nobody has seen the engine honour dates. Raised at the pick by the operator. The sheet leaves room: the action block is docked to the sheet's foot with free space above it at 1440 x 900 and 390 x 844, and a comment in `.room-go` marks where the fields go. Cost: the booking step `custom.md` wants does not exist yet.
 2. **`custom.md` "centred title" against the concept.** The title is on a card at the lower left, because this photograph takes no text. The concept reports it as a departure.
 3. **`custom.md` Instagram feed.** See gaps.
-4. **Concept: header hides on scroll down, and the desktop action lives in the header.** Both cannot hold. The links and logo step away; the booking button stays in place. The links slide left to make room for it when it docks.
+4. **Concept: header hides on scroll down, and the desktop action lives in the header.** Both cannot hold. Round 2: on desktop the header stays, slimmed to 56 px with the button inside it, so nothing floats over content; on a phone it still steps away, because the bar carries the action. With JS off the desktop has no persistent button, only the section buttons.
 5. **Concept: img-068 in the Studio+ King gallery, against its own rule that nothing may suggest a room has its own pool.** I left img-068 out of the gallery and kept it at the featureLine, tied to no room. The gallery has seven photographs.
 6. **Concept: "pool" ambiguity in other room photographs.** img-066 and img-067 show the pool from a room; they are kept as listed, and nothing on the page says the pool is private. Worth a look at the pick.
-7. **Concept: 256 px depth map, 1.5% displacement.** The map is 768 px, because 256 could not hold the uprights, and still under the 30 KB target. The nearest object moves at most 1.5% of the frame's width, as written; the room's back moves far less.
-8. **Concept: title sizes 40/30 px.** Set at 46/34 px, 56/42 for "Why Sandhya". See round 4.
+7. **Concept: hand-painted depth with chairs sliding against the stair, the sea far away, 1.5% displacement.** Round 2, on the reviewers' finding: planes only, 0.9%, one plane for the glass wall and the sea. Chairs still move against the stair, as part of the floor. The sea no longer parallaxes behind the uprights.
+8. **Concept: Nothing You Could Do at 40/30 px.** Round 2: replaced by Allura at 56/44 px, 68/52 for "Why Sandhya", on the reviewers' finding. Allura has a smaller x-height, hence the size.
 9. **Concept: `#D5CEBE` "panels only" and also "ground steps to the deck tint" at Dining.** Built as a panel. To keep the ground's easing meaningful I added one step not in the concept's table, `#F5EDE5`, a blend of cloud white and dusk, at Kabalana and Exclusive Use.
 10. **Concept: sheet code loads on first interaction.** At 4e all JS is inline in one file, as `base.md` requires. It runs after the HTML and never delays the link. Splitting it is 4g's. Room gallery images do load only when a sheet opens.
 

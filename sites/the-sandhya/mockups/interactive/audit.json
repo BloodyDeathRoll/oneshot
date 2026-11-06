@@ -1,42 +1,33 @@
 {
  "slug": "the-sandhya",
  "variant": "interactive",
- "measured_at": "2026-11-06T13:57:23.069Z",
+ "measured_at": "2026-11-06T23:18:32.221Z",
  "first_load": {
-  "requests": 13,
+  "requests": 12,
   "hosts": [
-   "localhost:8980",
    "fonts.googleapis.com",
+   "localhost:8980",
    "fonts.gstatic.com"
   ],
   "third_party_hosts": [
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 655129,
-  "bytes_html": 85369,
+  "bytes_total": 642868,
+  "bytes_html": 94538,
   "bytes_js": 0,
   "bytes_css": 0,
-  "bytes_fonts": 34956,
-  "bytes_images": 534804,
+  "bytes_fonts": 45348,
+  "bytes_images": 502982,
   "largest_image_bytes": 176994,
-  "lcp_ms": 2008,
+  "lcp_ms": 2168,
   "cls": 0,
-  "dcl_ms": 1049
+  "dcl_ms": 1832
  },
  "scroll": {
   "early": {
-   "cls": 0.001,
-   "shifts": [
-    {
-     "value": 0.001,
-     "at_ms": 1791,
-     "y": 2700,
-     "sources": [
-      "#text"
-     ]
-    }
-   ]
+   "cls": 0,
+   "shifts": []
   },
   "settled": {
    "cls": 0,
@@ -70,19 +61,12 @@
   "note": "no drawer; every action is a plain link"
  },
  "a11y": {
-  "images": 48,
+  "images": 49,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 0,
-  "tapables": 36,
-  "tapables_under_44px": 10,
-  "tapables_under_44px_examples": [
-   " 32x44",
-   " 16x44",
-   " 16x44",
-   " 16x44",
-   " 16x44",
-   " 16x44"
-  ],
+  "tapables": 39,
+  "tapables_under_44px": 0,
+  "tapables_under_44px_examples": [],
   "headings": [
    "H1",
    "H2",
@@ -104,9 +88,9 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 9535,
+  "text_length": 9708,
   "booking_links_reachable": 4,
-  "visible_images": 48
+  "visible_images": 49
  },
  "reduced_motion": {
   "canvases": 2,
@@ -114,7 +98,7 @@
   "photograph_visible": true
  },
  "facts": {
-  "numbers_on_page": 23,
+  "numbers_on_page": 27,
   "numbers_not_in_passed_copy": [
    "3,500"
   ],

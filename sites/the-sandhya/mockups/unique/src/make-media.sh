@@ -13,19 +13,25 @@ D=$M/dist/img
 T=${TMPDIR:-/tmp}/sandhya-hour; rm -rf "$T"; mkdir -p "$T"
 rm -rf "$D"; mkdir -p "$D"
 
-# The noon source the shader grades, as served: whole frame, and the phone's crop (x 668..1319, y 60..990).
+# The photograph as it is, q80: the first screen shows it and the set-piece's shader reads the same
+# file. Whole frame, and the phone's crop (x 930..1821, full height), which ends on the building's own
+# end wall, not across a bay.
 ffmpeg -v error -y -i "$A/img-152.jpg" "$T/noon.png"
 cwebp -quiet -q 80 -m 6 "$T/noon.png" -o "$D/hour-noon.webp"
-ffmpeg -v error -y -i "$T/noon.png" -vf "crop=651:930:668:60" "$T/noon-phone.png"
-cwebp -quiet -q 84 -m 6 "$T/noon-phone.png" -o "$D/hour-noon-phone.webp"
+ffmpeg -v error -y -i "$T/noon.png" -vf "crop=891:1080:930:0" "$T/noon-phone.png"
+cwebp -quiet -q 72 -m 6 -sharp_yuv "$T/noon-phone.png" -o "$D/hour-noon-phone.webp"
 
-# The bake reads the encoded file, so the poster and the canvas start from the same pixels.
+# The shader's hand-cut mask and the curtains' fold texture, both derived from img-152.
+# No graded still is written: graded pixels exist only live on the set-piece's canvas.
 node "$M/src/bake.mjs" "$D/hour-noon.webp" "$T/bake"
 cwebp -quiet -lossless -z 9 "$T/bake/hour-mask.png" -o "$D/hour-mask.webp"
-cwebp -quiet -q 80 -m 6 -sharp_yuv "$T/bake/hour-slice.png" -o "$D/hour-slice.webp"
-cwebp -quiet -q 80 -m 6 -sharp_yuv "$T/bake/hour-slice-phone.png" -o "$D/hour-slice-phone.webp"
-cwebp -quiet -q 80 -m 6 -sharp_yuv "$T/bake/hour-dusk.png" -o "$D/hour-dusk.webp"
-cwebp -quiet -q 80 -m 6 -sharp_yuv "$T/bake/hour-dusk-phone.png" -o "$D/hour-dusk-phone.webp"
+cwebp -quiet -q 90 -m 6 "$T/bake/hour-folds.png" -o "$D/hour-folds.webp"
+
+# The sea on the first screen: the real shallows in img-153, a separate photograph, shown as its own
+# strip below the first, with a gap, so it never reads as one picture with img-152.
+ffmpeg -v error -y -i "$A/img-153.jpg" -vf "crop=1500:290:0:563" "$T/sea.png"
+cwebp -quiet -q 72 -m 6 -sharp_yuv "$T/sea.png" -o "$D/img-153-sea-1500.webp"
+cwebp -quiet -q 70 -m 6 -sharp_yuv -resize 800 0 "$T/sea.png" -o "$D/img-153-sea-800.webp"
 
 # Logo: resized, not retraced.
 cwebp -quiet -q 90 -alpha_q 90 -resize 406 0 "$A/logo-white.png" -o "$D/logo-white.webp"
@@ -52,6 +58,7 @@ for id in img-077 img-061 img-062 img-070 img-079 \
 done
 
 # The sections.
+pic img-071 74 1600
 pic img-038 76 1000 2000
 pic img-032 78 1000 2000
 pic img-113 76 800 1280

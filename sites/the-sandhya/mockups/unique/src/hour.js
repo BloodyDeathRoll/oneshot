@@ -1,17 +1,18 @@
-/* The Hour: one fragment shader, one renderer. No library.
-   src/make-media.sh runs this same code in headless Chromium to bake the posters, and
-   src/build.mjs inlines it into dist/index.html, so the page's first paint and its canvas are
-   the same picture. Coordinates: "frame uv" is 0..1 across the 1920x1080 frame of img-152,
-   y down. Nothing is drawn that is not a re-grade of a pixel of img-152. */
+/* The Hour, round 2: one fragment shader, one renderer, no library. It runs only inside the pinned
+   set-piece, live, on the page's own daylight photograph. The first screen is that photograph
+   ungraded. The sweep ends on a real blue-hour photograph (img-027), never on a graded still.
+   Coordinates: "frame uv" is 0..1 across the 1920x1080 frame of img-152, y down.
+   Nothing is drawn that is not a re-grade of a pixel of img-152. Aimed side by side at img-027:
+   curtains lit from their own folds in amber, stone taking the sky's blue, a dark green hedge,
+   light spilling on soffits and hedge tops. */
 window.HOUR_FS = `
 precision highp float;
 varying vec2 vUv;
-uniform sampler2D uPhoto, uMask;
+uniform sampler2D uPhoto, uMask, uFolds;
 uniform vec4 uView;   // frame uv of the canvas rect: x, y, w, h
 uniform vec4 uSrc;    // frame uv of the photo texture (the phone source is a crop)
 uniform vec2 uWin;    // the part of the frame the day runs across: x0, x1
 uniform vec2 uSlice;  // noon ends at uSlice.x, dusk is complete at uSlice.y (window space)
-uniform float uKeep;  // 1 where the title sits on the sand; 0 in the all-dusk still
 uniform vec4 uPane[NPANES];
 uniform float uOn[NPANES];
 uniform float uCloth[NPANES];
@@ -30,108 +31,107 @@ void main(){
   vec3 s = texture2D(uPhoto, q).rgb;
   vec3 m = texture2D(uMask, f).rgb;
   vec3 c = lin(s);
-  float sl = lum(s);
+  float sl = lum(s), ll = lum(c);
   float t = timeAt(f.x);
 
-  // Mattes. The polygons (mask texture) say where a thing can be; the photograph says where it is.
+  // Mattes. The polygons say where a thing can be; the photograph says where it is.
   float gb = s.g - s.b;
   float sky = m.r * (1. - m.b) * smoothstep(.27, .42, sl) * (1. - smoothstep(.012, .05, gb));
-  float notGreen = 1. - smoothstep(.02, .07, s.g - s.r);
-  float sand = m.g * notGreen;
-  float veg = (1. - sky) * (1. - sand) * smoothstep(.01, .05, gb) * smoothstep(-.03, .02, s.g - s.r);
-  veg = max(veg, m.b);
+  float sand = m.g * smoothstep(-.012, .03, s.r - s.g);
+  // Concrete is olive in this photograph, so colour alone would stain it green: above the roofline
+  // anything not sky is tree; below it a leaf must be truly greener than red.
+  float veg = (1. - sky) * smoothstep(.015, .05, s.g - s.r) * smoothstep(.02, .07, gb);
+  veg = max(veg, m.r * (1. - sky));
+  veg = max(veg, m.b) * (1. - sand);
+  float trunk = m.b * (1. - step(.685, f.y));
 
-  // Under the title the sand has a floor: a tone curve on its shadows and specks, never new detail.
-  // Its darkest pixel must still give the ink 4.5:1 at the full 0.82 multiply below.
-  float zone = uKeep * (1. - smoothstep(.68, 1.02, f.x));
-  c *= mix(1., max(1., .40 / max(dot(c, vec3(.2126, .7152, .0722)), .01)), sand * zone);
-
-  // Golden hour: the same pixels with warmer light.
-  // The sky's light splits: warm low down, already cool and lilac high up. Going through brown or
-  // grey in between is what makes a day-to-night grade look like a trick.
-  float hg = clamp((.438 - f.y) / .438, 0., 1.);
-  vec3 goldSky = c * mix(vec3(1.20, .94, .76), vec3(.72, .66, .90), smoothstep(.12, .86, hg));
-  vec3 gold = mix(c * vec3(1.08, .90, .70), goldSky, sky);
-
-  // Sky at dusk: a gradient map on the cloud's own luminance, softened a little because the
-  // source is a compressed 1920 px file and a map exposes its blocks. Aimed at img-027 (#142E66)
-  // at the top and img-029 (#FF9B87) in a band low on the horizon.
+  // Sky: a map on the cloud's own luminance, read through a wide low-pass because a map exposes the
+  // blocks of a compressed file. Deep blue like img-027; pink held low on the horizon.
   float h = clamp((.438 - f.y) / .438, 0., 1.);
-  float bl = sl;
-  bl += lum(texture2D(uPhoto, q + px * vec2(3., 0.)).rgb) + lum(texture2D(uPhoto, q - px * vec2(3., 0.)).rgb);
-  bl += lum(texture2D(uPhoto, q + px * vec2(0., 3.)).rgb) + lum(texture2D(uPhoto, q - px * vec2(0., 3.)).rgb);
-  bl *= .2;
+  float bl = sl, wt = 1.;
+  for (int k = 0; k < 8; k++) {
+    float a = float(k) * .7854;
+    float v = lum(texture2D(uPhoto, q + px * vec2(cos(a), sin(a)) * 7.).rgb);
+    float w = step(.36, v);   // a palm next door must not darken its neighbour: no halo
+    bl += v * w; wt += w;
+  }
+  bl /= wt;
   float sat = max(s.r, max(s.g, s.b)) - min(s.r, min(s.g, s.b));
-  float cl = smoothstep(.36, .92, bl) * (1. - smoothstep(.08, .30, sat) * .8);
-  vec3 lowD = hex(150., 96., 122.), midD = hex(62., 62., 118.), topD = hex(20., 46., 102.);
-  vec3 lowL = hex(255., 160., 138.), midL = hex(186., 132., 152.), topL = hex(74., 82., 134.);
-  vec3 skyDark = mix(mix(lowD, midD, smoothstep(.0, .34, h)), topD, smoothstep(.30, .78, h));
-  vec3 skyLite = mix(mix(lowL, midL, smoothstep(.04, .34, h)), topL, smoothstep(.30, .92, h));
+  float cl = smoothstep(.40, .92, bl) * (1. - smoothstep(.08, .30, sat) * .85);
+  vec3 skyDark = mix(mix(hex(110., 92., 128.), hex(40., 56., 112.), smoothstep(.0, .22, h)), hex(20., 46., 102.), smoothstep(.2, .7, h));
+  vec3 skyLite = mix(mix(hex(232., 160., 140.), hex(88., 94., 148.), smoothstep(.02, .2, h)), hex(48., 68., 124.), smoothstep(.2, .85, h));
   vec3 duskSky = mix(skyDark, skyLite, cl);
 
-  // Concrete takes the sky's blue; foliage and palms sink nearly to silhouette.
-  float ll = dot(c, vec3(.2126, .7152, .0722));
-  vec3 duskBuilt = pow(ll, .78) * vec3(.135, .205, .36);
-  vec3 duskVeg = pow(ll, 1.15) * vec3(.022, .045, .06) + hex(10., 18., 28.);
+  // Golden hour on the way there: warm low down, already cool high up, never brown or grey.
+  vec3 goldSky = c * mix(vec3(1.16, .95, .80), vec3(.76, .74, .94), smoothstep(.12, .86, h));
+  vec3 gold = mix(c * vec3(1.05, .92, .74), goldSky, sky);
+
+  // Stone takes the sky's blue, as the concrete does in img-027. Hedge and palms stay dark green.
+  vec3 duskBuilt = pow(ll, .8) * vec3(.11, .20, .38);
+  vec3 duskVeg = pow(min(ll, .24), 1.05) * vec3(.03, .095, .055) + hex(7., 15., 14.);
   vec3 dusk = mix(duskBuilt, duskVeg, veg);
+  dusk = mix(dusk, ll * vec3(.05, .06, .085) + hex(8., 11., 15.), trunk);
+  vec3 duskSand = c * vec3(.17, .18, .26);
 
-  // Sand stays the lightest thing in the frame, and under the title it stays light for real.
-  float sandMul = mix(.30, .82, zone);
-  vec3 duskSand = c * mix(vec3(.84, .74, .92), vec3(1., .96, .96), zone) * sandMul;
-
-  // Panes: every bay comes on as a whole, at the time its own centre has reached.
+  // Bays. Each comes on as a whole, at the time its own centre has reached. Spill falls on soffits,
+  // decks and hedge tops from the bays that are on; the sky and the sand get none.
   float lit = 0., spill = 0., py = 0., upper = 0., hung = 1.;
   for (int i = 0; i < NPANES; i++) {
     vec4 r = uPane[i];
-    float on = smoothstep(uOn[i], uOn[i] + .24, timeAt((r.x + r.z) * .5));
+    float on = smoothstep(uOn[i], uOn[i] + .22, timeAt((r.x + r.z) * .5));
     if (on <= 0.) continue;
     vec2 e = vec2(.00045, .0008);
     vec2 a = smoothstep(r.xy - e, r.xy + e, f) * (1. - smoothstep(r.zw - e, r.zw + e, f));
     float v = on * a.x * a.y;
     if (v > lit) { lit = v; py = (f.y - r.y) / (r.w - r.y); upper = step(r.y, .5); hung = uCloth[i]; }
     vec2 d = max(max(r.xy - f, f - r.zw), vec2(0.)) * vec2(1.778, 1.);
-    spill = max(spill, on * exp(-length(d) * 42.));
+    spill = max(spill, on * exp(-length(d) * 52.));
   }
-  lit *= (1. - m.b) * (1. - smoothstep(.02, .07, s.g - max(s.r, s.b)));
-  // Curtains hang: their only real structure is vertical. Average up and down the pane, so the
-  // folds stay and the file's blocks go; anything really dark (a chair, a mullion) stays dark.
-  float fold = 0.;
-  for (int k = -3; k <= 3; k++) fold += lum(texture2D(uPhoto, q + px * vec2(0., float(k) * 4.)).rgb);
-  fold /= 7.;
-  float shape = smoothstep(.13, .36, min(sl, fold + .10));   // parasols and chairs stay black
-  float curtain = hung * smoothstep(.14, .28, fold);   // the double bays are glass; the rest are hung
-  float cove = mix(1.12, .86, smoothstep(.0, 1., py));
-  vec3 cloth = mix(hex(240., 186., 74.), hex(252., 226., 150.), smoothstep(.46, .98, fold)) * cove * (.84 + .26 * fold);
-  vec3 room = ll * vec3(1.9, 1.02, .36) + hex(128., 72., 20.) * .30;
-  vec3 pane = mix(room, cloth, curtain) * mix(.05, 1., shape);
-  pane *= mix(vec3(1.), mix(vec3(1.), vec3(.74, .68, .60), step(.66, py)), upper);   // the upper bays' glass balustrade
+  lit *= 1. - m.b;
+
+  // The glow comes from the source's own folds: a column-median texture of each pane, so the folds
+  // are there and the reflections, block marks and stains are not. Anything truly darker than its
+  // own column is an object in front (a chair, a parasol, a frond) and stays a silhouette.
+  float fold = texture2D(uFolds, f).r;
+  float front = smoothstep(.24, .42, sl);
+  float greenFront = 1. - (1. - step(.345, f.x)) * smoothstep(.02, .07, s.g - max(s.r, s.b));
+  float hang = smoothstep(.20, .42, fold);
+  vec3 amberLo = hex(176., 100., 34.), amberMid = hex(240., 164., 66.), amberHi = hex(255., 214., 140.);
+  vec3 cloth = mix(amberLo, mix(amberMid, amberHi, smoothstep(.72, .96, fold)), smoothstep(.42, .78, fold));
+  cloth *= mix(1.12, .70, smoothstep(.0, 1., py));
+  vec3 room = hex(122., 70., 26.) * (.42 + .9 * fold) + ll * vec3(.50, .30, .12);
+  vec3 pane = mix(room, cloth, hung * hang);
+  pane *= mix(vec3(1.), mix(vec3(1.), vec3(.70, .66, .62), smoothstep(.62, .68, py)), upper);   // the glass balustrade
+  pane = mix(hex(16., 14., 18.) + ll * vec3(.05, .04, .03), pane, front * greenFront);
 
   dusk = mix(dusk, duskSky, sky);
   dusk = mix(dusk, duskSand, sand);
-  dusk += spill * (1. - sky) * (1. - sand) * (1. - veg) * hex(245., 170., 90.) * .16 * (ll * 1.6 + .03);
+  dusk += spill * spill * (1. - sky) * (1. - sand) * (1. - veg) * hex(244., 170., 96.) * (.012 + ll * .16);
+  dusk += spill * spill * veg * (1. - m.b * .6) * hex(150., 136., 54.) * (.012 + ll * .28);
 
-  vec3 day = mix(c, mix(gold, c * vec3(1.03, .97, .92), sand), smoothstep(.0, .5, t));
-  vec3 o3 = mix(day, dusk, smoothstep(.30, 1., t));
+  vec3 day = mix(c, mix(gold, c * vec3(1.02, .97, .93), sand), smoothstep(.0, .5, t));
+  vec3 o3 = mix(day, dusk, smoothstep(.34, 1., t));
   // Stone and leaves give up the daylight before the sky does.
-  o3 = mix(o3, dusk, (1. - sky) * (1. - sand) * smoothstep(.18, .80, t));
+  o3 = mix(o3, dusk, (1. - sky) * (1. - sand) * smoothstep(.20, .78, t));
   o3 = mix(o3, pane, lit);
 
-  vec3 o = srgb(o3) + (hash(gl_FragCoord.xy) - .5) * 1.6 / 255.;
+  vec3 o = srgb(o3) + (hash(gl_FragCoord.xy) - .5) * step(.001, t) * 1.6 / 255.;
   gl_FragColor = vec4(o, 1.);
 }`;
 
-/* Every pane, read off a 2x crop of img-152 by hand: x0, y0, x1, y1 in frame px, then the moment
-   it comes on (0..1 of its centre's time). The order is a house at dusk, not a left-to-right wipe. */
+/* Every pane, read off a 2x crop of img-152 by hand: x0, y0, x1, y1 in frame px, the moment it comes
+   on (0..1 of its centre's time), and 0 for the two glass-fronted double bays. The order is a house
+   at dusk, not a left-to-right wipe. They come on late, when the stone around them has already gone. */
 window.HOUR_PANES = [
-  [241, 496, 355, 590, .66], [387, 495, 505, 590, .72], [532, 495, 657, 590, .62],
-  [684, 494, 969, 590, .58, 0], [985, 494, 1125, 589, .50], [1139, 493, 1278, 589, .56],
-  [1298, 493, 1432, 589, .68], [1459, 493, 1605, 589, .60],
-  [245, 606, 354, 698, .58], [387, 606, 505, 698, .64], [532, 606, 657, 698, .54],
-  [684, 606, 958, 698, .36, 0], [983, 606, 1112, 704, .46], [1137, 606, 1277, 704, .42],
-  [1297, 606, 1430, 704, .58], [1459, 606, 1587, 704, .52]
+  [241, 496, 355, 590, .70], [387, 495, 505, 590, .76], [532, 495, 657, 590, .66],
+  [684, 494, 969, 590, .62, 0], [985, 494, 1125, 589, .58], [1139, 493, 1278, 589, .64],
+  [1298, 493, 1432, 589, .72], [1459, 493, 1605, 589, .66],
+  [245, 606, 354, 698, .62], [387, 606, 505, 698, .68], [532, 606, 657, 698, .58],
+  [684, 606, 958, 698, .46, 0], [983, 606, 1112, 704, .54], [1137, 606, 1277, 704, .50],
+  [1297, 606, 1430, 704, .62], [1459, 606, 1587, 704, .56]
 ];
 
-window.HourGL = function (canvas, photo, mask, o) {
+window.HourGL = function (canvas, photo, mask, folds, o) {
   const panes = window.HOUR_PANES;
   const gl = canvas.getContext('webgl', { antialias: false, alpha: false, preserveDrawingBuffer: !!o.preserve, powerPreference: 'low-power' });
   if (!gl) return null;
@@ -150,21 +150,20 @@ window.HourGL = function (canvas, photo, mask, o) {
     gl.pixelStorei(gl.UNPACK_COLORSPACE_CONVERSION_WEBGL, gl.NONE);
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
     for (const [k, v] of [[gl.TEXTURE_MIN_FILTER, gl.LINEAR], [gl.TEXTURE_MAG_FILTER, gl.LINEAR], [gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE]]) gl.texParameteri(gl.TEXTURE_2D, k, v); };
-  tex(0, photo); tex(1, mask);
+  tex(0, photo); tex(1, mask); tex(2, folds);
   const u = (n) => gl.getUniformLocation(p, n);
-  gl.uniform1i(u('uPhoto'), 0); gl.uniform1i(u('uMask'), 1);
+  gl.uniform1i(u('uPhoto'), 0); gl.uniform1i(u('uMask'), 1); gl.uniform1i(u('uFolds'), 2);
   gl.uniform4fv(u('uPane'), new Float32Array(panes.flatMap((r) => [r[0] / 1920, r[1] / 1080, r[2] / 1920, r[3] / 1080])));
   gl.uniform1fv(u('uOn'), new Float32Array(panes.map((r) => r[4])));
   gl.uniform1fv(u('uCloth'), new Float32Array(panes.map((r) => (r[5] === 0 ? 0 : 1))));
-  const view = u('uView'), src = u('uSrc'), win = u('uWin'), slice = u('uSlice'), keep = u('uKeep');
+  const view = u('uView'), src = u('uSrc'), win = u('uWin'), slice = u('uSlice');
   const s = o.src || [0, 0, 1, 1]; gl.uniform4f(src, s[0], s[1], s[2], s[3]);
   return {
-    draw(v, w, a, b, k) {
+    draw(v, w, a, b) {
       gl.viewport(0, 0, canvas.width, canvas.height);
       gl.uniform4f(view, v[0], v[1], v[2], v[3]);
       gl.uniform2f(win, w[0], w[1]);
       gl.uniform2f(slice, a, b);
-      gl.uniform1f(keep, k);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     },
     lose() { const e = gl.getExtension('WEBGL_lose_context'); if (e) e.loseContext(); }
@@ -172,7 +171,7 @@ window.HourGL = function (canvas, photo, mask, o) {
 };
 
 /* Frame uv of a box of the given aspect inside a frame-uv window: cover, anchored. Same arithmetic
-   as object-fit: cover with the poster's object-position, so canvas and poster register exactly. */
+   as object-fit: cover with the poster's object-position, so canvas and still register exactly. */
 window.hourCover = function (win, aspect, ax, ay) {
   const frame = 1920 / 1080, wa = (win[2] * frame) / win[3];
   let w = win[2], h = win[3];

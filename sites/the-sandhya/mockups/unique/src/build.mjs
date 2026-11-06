@@ -33,7 +33,7 @@ const srcset = (id, ws) => ws.map((w) => `img/${id}-${w}.webp ${Math.min(w, NAT[
 const NAT = { 'img-077': [2000, 1333], 'img-061': [2000, 1334], 'img-062': [2000, 1334], 'img-070': [2000, 1334], 'img-079': [2000, 1333], 'img-043': [2000, 1333], 'img-080': [2000, 1333], 'img-165': [1501, 1000], 'img-167': [1501, 1000], 'img-083': [1280, 854], 'img-042': [2000, 1332], 'img-066': [2000, 1333], 'img-067': [2000, 1333], 'img-074': [2000, 1334], 'img-076': [2000, 1334], 'img-073': [2000, 1333], 'img-071': [2000, 1334], 'img-087': [1920, 1280], 'img-171': [1501, 1000], 'img-172': [1501, 1000], 'img-058': [2000, 1333], 'img-059': [2000, 1333], 'img-055': [2000, 1333], 'img-038': [2000, 1333], 'img-032': [2000, 1333], 'img-113': [1280, 853], 'img-110': [1280, 853], 'img-118': [2000, 1334], 'img-115': [1280, 853], 'img-117': [1920, 980], 'img-138': [1280, 853], 'img-126': [1280, 853], 'img-153': [1500, 853], 'img-034': [1500, 2000], 'img-013': [900, 912], 'img-039': [2000, 1334], 'img-027': [1200, 1200], 'img-154': [1280, 853] };
 const pic = (id, ws, sizes, alt, cls = '') => {
   const big = ws[ws.length - 1], nw = Math.min(big, NAT[id][0]), nh = Math.round((nw * NAT[id][1]) / NAT[id][0]);
-  return `<img${cls ? ` class="${cls}"` : ''} loading="lazy" decoding="async" src="img/${id}-${big}.webp" srcset="${srcset(id, ws)}" sizes="${sizes}" width="${nw}" height="${nh}" alt="${attr(alt)}">`;
+  return `<img${cls ? ` class="${cls}"` : ''} loading="lazy" decoding="async" fetchpriority="low" src="img/${id}-${big}.webp" srcset="${srcset(id, ws)}" sizes="${sizes}" width="${nw}" height="${nh}" alt="${attr(alt)}">`;
 };
 
 const ROOMS = [
@@ -50,8 +50,8 @@ const ROOMS = [
     ['img-165', 'Two single beds on dark rugs beside a chevron timber wardrobe door'],
     ['img-083', 'Round table with two wishbone chairs and a red floor lamp against a sheer curtain'] ] },
   { area: 43, photos: [
-    ['img-076', 'White freestanding bath with a timber caddy, the room and the sea beyond it', .34],
-    ['img-071', 'The view from the bed: glass doors, one palm, loungers and the sea'],
+    ['img-071', 'The view from the bed: glass doors, one palm, loungers and the sea', 0, 1.42, 58],
+    ['img-076', 'White freestanding bath with a timber caddy, the room and the sea beyond it'],
     ['img-042', 'A timber desk built against the back of the bed, a palm and the sea through the glass'],
     ['img-066', 'Timber desk-headboard and mirror, lawn and water beyond the glass'],
     ['img-067', 'Round table and chairs by the glass, a patio and parasol beyond'],
@@ -69,11 +69,14 @@ const ROOMS = [
 const roomHtml = copy.rooms.map((r, i) => {
   const d = ROOMS[i], link = copy.bookingLinks[i + 1];
   const sizes = '(max-width:767px) 100vw, 60vw';
-  const slides = d.photos.map(([id, alt, f], k) => `<figure class="slide${k ? '' : ' on'}"${f ? ` style="--f:${f}"` : ''}>${pic(id, [800, 1280], sizes, alt)}</figure>`).join('');
+  const slides = d.photos.map(([id, alt, f, z, lift], k) => {
+    const st = [f ? `--f:${f}` : '', z ? `--z:${z}` : '', lift ? `--lift:${lift}` : ''].filter(Boolean).join(';');
+    return `<figure class="slide${k ? '' : ' on'}"${st ? ` style="${st}"` : ''}>${pic(id, z ? [800, 1280, 1600] : [800, 1280], z ? '(max-width:767px) 100vw, 90vw' : sizes, alt)}</figure>`;
+  }).join('');
   const dots = d.photos.map((_, k) => `<button class="dot${k ? '' : ' on'}" type="button" aria-label="${attr(r.label)}, photograph ${k + 1} of ${d.photos.length}"><i></i></button>`).join('');
   return `<article class="room" style="--area:${d.area}">
-  <div class="pane"><div class="strip" tabindex="-1">${slides}</div><div class="dots">${dots}</div></div>
-  <button class="grow" type="button" aria-expanded="false"><h3>${esc(r.label)}</h3><span class="plus" aria-hidden="true"></span></button>
+  <div class="pane"><div class="strip" tabindex="0" role="group" aria-label="${attr(r.label)}, photographs">${slides}</div><div class="dots">${dots}</div></div>
+  <div class="rhead"><h3>${esc(r.label)}</h3><button class="grow" type="button" aria-expanded="false" aria-label="${attr(r.label)}, more photographs"><span class="plus" aria-hidden="true"></span></button></div>
   <div class="det">
     <div class="line">${esc(r.beds)} | Sleeps ${r.sleeps}</div>
     <p class="note">${esc(r.note)}</p>
@@ -125,17 +128,18 @@ const html = `<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(copy.businessName)} | ${esc(copy.tagline)}</title>
 <meta name="description" content="${attr(copy.tagline)}">
-<meta name="theme-color" content="#E0E8F6">
+<meta name="theme-color" content="#F2F6F6">
 <script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('pin')})(document.documentElement)</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Halant:wght@500&family=Mukta:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Halant:wght@500&family=Mukta:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
-<link rel="preload" as="image" href="img/hour-slice.webp" media="(min-width:768px)" fetchpriority="high">
-<link rel="preload" as="image" href="img/hour-slice-phone.webp" media="(max-width:767px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hour-noon.webp" media="(min-width:768px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hour-noon-phone.webp" media="(max-width:767px)" fetchpriority="high">
 <style>
 ${css}</style>
 </head>
 <body>
+<a class="skip" href="#rooms">Skip to Rooms</a>
 <header class="hero" id="top">
   <div class="head">
     <a href="#top" aria-label="${attr(copy.businessName)}"><img src="img/logo-white.webp" width="406" height="106" alt="${attr(copy.businessName)}"></a>
@@ -143,15 +147,15 @@ ${css}</style>
   </div>
   <span class="pic">
     <picture>
-      <source media="(max-width:767px)" srcset="img/hour-slice-phone.webp" width="780" height="1114">
-      <img class="poster" src="img/hour-slice.webp" width="1920" height="1080" fetchpriority="high" alt="The Sandhya's long two-storey concrete building seen square-on from the beach, with palms in front and sand below. Across the picture the same building moves from a bright cloudy day at the left to dusk at the right, its curtained windows lit gold.">
+      <source media="(max-width:767px)" srcset="img/hour-noon-phone.webp" width="891" height="1080">
+      <img class="poster" src="img/hour-noon.webp" width="1920" height="1080" fetchpriority="high" alt="The Sandhya in daylight, seen square-on from the beach: a long two-storey concrete building with curtained glass bays, palms in front, a low hedge and wide sand below, a big cloudy sky above.">
     </picture>
-    <canvas id="hour" aria-hidden="true"></canvas>
   </span>
   <div class="say">
     <h1>${esc(copy.tagline)}</h1>
     <a class="btn" href="${attr(ENGINE.url)}">${esc(ENGINE.label)}</a>
   </div>
+  <div class="sea"><img src="img/img-153-sea-1500.webp" srcset="img/img-153-sea-800.webp 800w, img/img-153-sea-1500.webp 1500w" sizes="(max-width:767px) 260px, 100vw" width="1500" height="290" alt="The sea off Kabalana Beach: clear turquoise shallows over dark reef, from a separate photograph taken from the water."></div>
 </header>
 
 <div class="page">
@@ -220,7 +224,7 @@ ${roomHtml}
   <div class="rates">
     ${rates.map((r) => `<a class="rate" href="${attr(r.url)}" rel="noopener">${r.big}<span>${esc(r.meta)}</span></a>`).join('\n    ')}
   </div>
-  <div class="quotes">${quotes}</div>
+  <div class="quotes swipe" tabindex="0" role="group" aria-label="Guests">${quotes}</div><div class="swipe-dots"></div>
 </section>
 
 <section class="kab" id="kabalana">
@@ -229,15 +233,18 @@ ${roomHtml}
   <div class="grid">
     <div class="left">
       <figure class="tall">${pic('img-034', [700, 1100], '(max-width:767px) 100vw, 46vw', 'A wide raked beach running away along a lawn edge, with a stone bowl and a slate sign carrying the hotel\'s name')}</figure>
-      <div class="mapline">
-        <a class="printlink" href="${attr(copy.contact.mapUrl)}" rel="noopener" aria-label="Map">${pic('img-013', [900], '(max-width:767px) 320px, 46vw', 'The hotel\'s own hand-drawn map of the south-west coast of Sri Lanka, from the airport and Colombo down past Galle to The Sandhya')}</a>
+      <div class="mapcard">
+        <a class="printlink" href="${attr(copy.contact.mapUrl)}" rel="noopener" aria-label="Map">${pic('img-013', [900], '(max-width:767px) 220px, 30vw', 'The hotel\'s own hand-drawn map of the south-west coast of Sri Lanka, from the airport and Colombo down past Galle to The Sandhya')}</a>
         ${quiet(copy.contact.mapUrl, 'map', 'Map', 1)}
       </div>
     </div>
     <div class="steps">
       <h2>${esc(block('Kabalana and around').heading)}</h2>
-      ${kab.map((t) => `<p class="st">${esc(t)}</p>`).join('\n      ')}
-      <div class="serv"><h3>Services</h3><ul>${amen}</ul></div>
+      <div class="swipe" tabindex="0" role="group" aria-label="${attr(block('Kabalana and around').heading)}">
+      ${kab.map((t) => { const m = t.match(/^(.*?[.!?])\s+(.*)$/s); return m ? `<p class="st"><span class="lead">${esc(m[1])}</span> ${esc(m[2])}</p>` : `<p class="st"><span class="lead">${esc(t)}</span></p>`; }).join('\n      ')}
+      </div>
+      <div class="swipe-dots"></div>
+      <details class="serv"><summary>Services<span class="plus" aria-hidden="true"></span></summary><ul>${amen}</ul></details>
     </div>
   </div>
 </section>
@@ -255,21 +262,21 @@ ${roomHtml}
   </div>
 </section>
 
-<section class="piece" aria-hidden="true">
+<section class="piece">
   <div class="stage">
-    <div class="frame">
-      <picture class="still-slice"><source media="(max-width:767px)" srcset="img/hour-slice-phone.webp"><img src="img/hour-slice.webp" alt="" loading="lazy" decoding="async"></picture>
-      <picture class="still-dusk"><source media="(max-width:767px)" srcset="img/hour-dusk-phone.webp"><img src="img/hour-dusk.webp" alt="" loading="lazy" decoding="async"></picture>
+    <div class="frame" role="img" aria-label="An effect, not a photograph taken at dusk: the daylight photograph of the hotel is graded on screen as you scroll, the sky deepening and the bays lighting one by one. It ends on a real photograph of the hotel at blue hour.">
+      <picture><source media="(max-width:767px)" srcset="img/hour-noon-phone.webp"><img src="img/hour-noon.webp" alt="" loading="lazy" decoding="async"></picture>
+      <canvas id="hour" aria-hidden="true"></canvas>
     </div>
-    <div class="pdots">${'<i class="pd"></i>'.repeat(8)}</div>
+    <div class="pdots" aria-hidden="true">${'<i class="pd"></i>'.repeat(8)}</div>
+    <figure class="print">${pic('img-027', [700, 1200], '(max-width:767px) 100vw, 800px', 'A photograph of the concrete building at blue hour against a deep blue sky, its curtained balconies glowing gold from inside, chairs in silhouette on the decks')}</figure>
   </div>
 </section>
 
 <section class="why" id="why">
   <h2>${esc(block('Why Sandhya').heading)}</h2>
   <div class="tx"><p>${whyHtml}</p>${P(why[1])}</div>
-  <figure class="p1" data-drift="-26">${pic('img-027', [700, 1200], '(max-width:767px) 90vw, 46vw', 'The concrete building at blue hour against a deep blue sky, curtained balconies glowing gold from inside, chairs in silhouette on the decks')}</figure>
-  <figure class="p2" data-drift="18">${pic('img-154', [700, 1280], '(max-width:767px) 78vw, 44vw', 'The hotel at night seen along the beach, palms lit from below and a string of small lights along the sand under a starry sky')}</figure>
+  <figure class="p1" data-drift="-22">${pic('img-154', [700, 1280], '(max-width:767px) 100vw, 46vw', 'The hotel at night seen along the beach, palms lit from below and a string of small lights along the sand under a starry sky')}</figure>
 </section>
 
 <section class="book" id="book">
@@ -285,7 +292,7 @@ ${roomHtml}
 
 <footer class="foot">
   <a href="#top" aria-label="${attr(copy.businessName)}"><img src="img/logo-white.webp" width="406" height="106" alt="" loading="lazy"></a>
-  <address>${esc(copy.contact.address)}<br>${esc(copy.hoursNote)}</address>
+  <address>${esc(copy.contact.address)}<br><span class="reach">${esc(TEL)} | ${esc(MAIL)}</span><br>${esc(copy.hoursNote)}</address>
   <div class="acts">${contactBtns(true)}</div>
 </footer>
 
