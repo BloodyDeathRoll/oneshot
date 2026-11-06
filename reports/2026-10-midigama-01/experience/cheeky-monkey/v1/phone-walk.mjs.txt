@@ -1,0 +1,58 @@
+import { createRequire } from 'module';
+import fs from 'fs';
+const require = createRequire(process.cwd() + '/');
+const { chromium, devices } = require('playwright');
+const URL_ = 'https://cheeky-monkey-surf-camp.os1.workers.dev/';
+const OUT = process.argv[2];
+const log = [];
+const L = (...a) => { const s = a.map(x => typeof x === 'string' ? x : JSON.stringify(x)).join(' '); log.push(s); console.log(s); };
+const browser = await chromium.launch();
+const ctx = await browser.newContext({ ...devices['iPhone 13'], viewport: { width: 390, height: 844 } });
+const page = await ctx.newPage();
+const cdp = await ctx.newCDPSession(page);
+await cdp.send('Network.enable');
+await cdp.send('Network.emulateNetworkConditions', { offline: false, latency: 150, downloadThroughput: 1.6e6 / 8, uploadThroughput: 750e3 / 8 });
+await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+await page.addInitScript(() => {
+  window.__cls = 0; window.__shifts = [];
+  new PerformanceObserver(l => { for (const e of l.getEntries()) if (!e.hadRecentInput) { window.__cls += e.value; window.__shifts.push({ v: +e.value.toFixed(4), y: Math.round(scrollY) }); } }).observe({ type: 'layout-shift', buffered: true });
+  new PerformanceObserver(l => { for (const e of l.getEntries()) window.__lcp = Math.round(e.startTime); }).observe({ type: 'largest-contentful-paint', buffered: true });
+});
+const reqs = [];
+page.on('request', r => reqs.push({ t: Date.now(), u: r.url() }));
+page.on('pageerror', e => L('PAGEERROR', e.message));
+page.on('console', m => { if (m.type() === 'error') L('CONSOLE', m.text().slice(0, 200)); });
+const t0 = Date.now();
+page.goto(URL_, { waitUntil: 'commit' }).catch(e => L('GOTO', e.message));
+for (const ms of [500, 1500, 3000, 6000, 10000]) {
+  const wait = ms - (Date.now() - t0);
+  if (wait > 0) await page.waitForTimeout(wait);
+  await page.screenshot({ path: `${OUT}/phone-cold-${ms}.png` }).catch(e => L('SHOT', e.message));
+  const st = await page.evaluate(() => { const v = document.querySelector('video'); return { hasVideo: !!v, t: v?.currentTime, paused: v?.paused, rs: v?.readyState, src: v?.currentSrc?.split('/').pop(), lcp: window.__lcp, cls: window.__cls, h: document.documentElement.scrollHeight }; }).catch(() => null);
+  L(`cold ${ms}ms`, st, `requests=${reqs.length}`);
+}
+const hosts = [...new Set(reqs.map(r => { try { return new URL(r.u).host; } catch { return r.u.slice(0, 30); } }))];
+L('hosts on load (no scroll)', hosts);
+L('first viewport text', await page.evaluate(() => document.querySelector('#hero')?.innerText?.slice(0, 400)));
+L('sections', await page.evaluate(() => [...document.querySelectorAll('section,header,footer,aside')].map(s => ({ tag: s.tagName, id: s.id, cls: (s.className || '').toString().slice(0, 40), y: Math.round(s.getBoundingClientRect().top + scrollY), h: Math.round(s.offsetHeight), hd: s.querySelector('h1,h2,h3')?.innerText?.slice(0, 70) }))));
+// human scroll
+const H = await page.evaluate(() => document.documentElement.scrollHeight);
+let i = 0, y = 0;
+while (y < H - 844 && i < 60) {
+  await page.mouse.wheel(0, 600).catch(() => {});
+  await page.waitForTimeout(350);
+  const ny = await page.evaluate(() => scrollY);
+  if (ny === y) { await page.evaluate(() => scrollBy(0, 600)); await page.waitForTimeout(200); }
+  await page.waitForTimeout(1100);
+  y = await page.evaluate(() => scrollY);
+  const n = String(i).padStart(2, '0');
+  await page.screenshot({ path: `${OUT}/phone-scroll-${n}.png` }).catch(() => {});
+  const info = await page.evaluate(() => { const h = [...document.querySelectorAll('h1,h2,h3')].filter(e => { const r = e.getBoundingClientRect(); return r.top > -40 && r.top < innerHeight; }).map(e => e.innerText.slice(0, 50)); const blank = [...document.images].filter(im => { const r = im.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0 && !im.complete; }).length; const bar = [...document.querySelectorAll('a,button')].filter(e => { const s = getComputedStyle(e.parentElement); return s.position === 'fixed' && e.offsetParent !== null; }).map(e => e.innerText.slice(0, 30)); return { y: Math.round(scrollY), h, loadingImgs: blank, fixed: bar }; });
+  L(`scroll ${n}`, info);
+  i++;
+}
+L('end cls', await page.evaluate(() => ({ cls: window.__cls, lcp: window.__lcp, shifts: window.__shifts })));
+L('third-party after scroll', reqs.filter(r => !r.u.includes('workers.dev') && !r.u.startsWith('data:')).map(r => ({ dt: r.t - t0, u: r.u.slice(0, 140) })));
+L('iframes', await page.evaluate(() => [...document.querySelectorAll('iframe')].map(f => { const r = f.getBoundingClientRect(); return { src: f.src, w: r.width, h: r.height, y: Math.round(r.top + scrollY), loading: f.loading }; })));
+fs.writeFileSync(`${OUT}/phone-walk.log`, log.join('\n'));
+await browser.close();

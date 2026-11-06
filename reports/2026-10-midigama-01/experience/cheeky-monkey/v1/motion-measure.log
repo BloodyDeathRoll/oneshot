@@ -1,0 +1,48 @@
+layout {"fcTop":3469,"fcH":860,"fcMarginTop":"48px","firstPriceY":4964,"pageH":17165,"firstRoomY":6616,"guestsY":13504}
+cards swipe 0 -> 293
+dot box {"x":151,"y":413.96875,"width":44,"height":44}
+dot state "6 dots; current=2"
+rating card y over 6 next taps [13540,13540,13540,13540,13540,13540,13540]
+cls after interactions 0
+no transition, by kind {"skip (none)":1,"mark (none)":1,"credit-rosa (none)":1,"fc-link (none)":1,"dot (child/pseudo animates)":34,"A (none)":11,"ig-t (child/pseudo animates)":5,"wrap (none)":1}
+webgl/canvas {
+  canvas: 0,
+  videos: [
+    {
+      cls: 'hero-video on',
+      src: 'cm-drone.d1920.webm',
+      loop: true,
+      autoplay: false,
+      par: 'hero-media'
+    },
+    {
+      cls: 'on',
+      src: 'cm-board.m720.mp4',
+      loop: true,
+      autoplay: false,
+      par: 'board-in'
+    }
+  ]
+}
+board video {"y":700,"t":2.45,"paused":false,"rs":4} +0.9s 3.37
+board video {"y":850,"t":4.29,"paused":false,"rs":4} +0.9s 5.21
+board video {"y":1000,"t":6.12,"paused":false,"rs":4} +0.9s 7.05
+board video {"y":1150,"t":0.19,"paused":false,"rs":4} +0.9s 1.1
+board video {"y":1300,"t":2,"paused":false,"rs":4} +0.9s 2.91
+scroll pacing 4x CPU {"frames":490,"median":16.8,"p95":33.3,"over50":1,"max":65}
+{"i":0,"t":"Skip to surf weeks and prices","h":"#counter","par":"BODY","w":262,"vis":true}
+{"i":1,"t":"Cheeky Monkey\nSurf Camp | Midigama, Sri Lank","h":"#","par":"mark-h","w":193,"vis":true}
+{"i":2,"t":"Forecast for Rams by Rosa","h":"https://rosa.surf/spot/rams","par":"credit-rosa","w":192,"vis":true}
+{"i":3,"t":"See today's forecast for Rams on Rosa","h":"https://rosa.surf/spot/rams","par":"fc-rosa","w":420,"vis":true}
+{"i":4,"t":"cheekymonkeymidigama.com","h":"https://cheekymonkeymidigama.com/","par":"SPAN","w":205,"vis":true}
+{"i":5,"t":"Booking.com","h":"https://www.booking.com/hotel/lk/cheeky-monkey.en-","par":"SPAN","w":88,"vis":true}
+{"i":6,"t":"Booking.com","h":"https://www.booking.com/hotel/lk/cheeky-monkey.en-","par":"SPAN","w":88,"vis":true}
+{"i":7,"t":"Booking.com","h":"https://www.booking.com/hotel/lk/cheeky-monkey.en-","par":"SPAN","w":88,"vis":true}
+{"i":8,"t":"Booking.com","h":"https://www.booking.com/hotel/lk/cheeky-monkey.en-","par":"SPAN","w":88,"vis":true}
+{"i":9,"t":"Booking.com","h":"https://www.booking.com/hotel/lk/cheeky-monkey.en-","par":"SPAN","w":88,"vis":true}
+{"i":10,"t":"Booking.com","h":"https://www.booking.com/hotel/lk/cheeky-monkey.en-","par":"SPAN","w":88,"vis":true}
+{"i":11,"t":"Booking.com","h":"https://www.booking.com/hotel/lk/cheeky-monkey.en-","par":"SPAN","w":88,"vis":true}
+{"i":12,"t":"Booking.com","h":"https://www.booking.com/hotel/lk/cheeky-monkey.en-","par":"SPAN","w":88,"vis":true}
+{"i":13,"t":"Booking.com","h":"https://www.booking.com/hotel/lk/cheeky-monkey.en-","par":"SPAN","w":88,"vis":true}
+{"i":14,"t":"Booking.com","h":"https://www.booking.com/hotel/lk/cheeky-monkey.en-","par":"SPAN","w":88,"vis":true}
+{"i":15,"t":"Drone footage: Lorenzo Marzocca (2018 promo ","h":"https://www.youtube.com/watch?v=Qo3SqaCSkpk","par":"wrap foot-credit","w":434,"vis":true}

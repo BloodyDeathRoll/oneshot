@@ -305,3 +305,127 @@ The 12 requests are all to the local host: HTML 96,992 B, 2 woff2 (64,900 B), an
 - `reports/2026-10-midigama-01/critic-cheeky-monkey-r3/timing.json`: video request order on a throttled cold phone, and the review slideshow heights.
 - `reports/2026-10-midigama-01/critic-cheeky-monkey-r3/quotes.json.txt`: the verbatim testimonial check and the counts of key facts.
 - `reports/2026-10-midigama-01/funnel/cheeky-monkey-r3/funnel.json`: `tools/funnel.mjs http://localhost:8961/ --depth 3`.
+
+## Verification 1 — full
+
+critic 0.4.3 · rubric 0.3.2 · 2026-11-06 · a verification, not a scored round: the ledger is untouched and no round is counted. Site under test: the live preview https://cheeky-monkey-surf-camp.os1.workers.dev/ (home page, `llms.txt` and `robots.txt` fetched and `cmp`-identical to `sites/cheeky-monkey/final/dist/`). `tools/audit-mockup.mjs` ran on the same `dist/` from a plain local server, as the tool always does, in an isolated scratch root so nothing under `sites/` was written. I did not read any visual-critic or experience-critic report. A network drop during the session caused early timeouts to rosa.surf; every measurement below was taken after the network came back, and none of those timeouts is counted as a finding.
+
+```
+mode: full (verification)        round: none        variant: unique ("Pick your board", drone-loop first screen)
+total (dims 1–7): 68.5 / 80      hard_fails: []   (vid-001 licence: Alon's recorded preview-only waiver, not re-opened)
+result: critic's part passes its gates; the overall result depends on dimension 8
+dimension 8 (weight 25): not scored here, it belongs to visual-critic + experience-critic
+```
+
+**What that means for the total (rubric 0.3.2: weighted sum × 100 ÷ 105, pass ≥ 85).** A pass needs dimension 8 ≥ 20.75 / 25, which is 8.3 / 10.
+
+| Dimension 8 (lower of the two critics) | Total | Result on total |
+|---|---|---|
+| 8 / 10 | 84.3 | **fail by 0.7** |
+| 9 / 10 | 86.7 | pass |
+
+Fix 1 below takes no code and is worth +2.0 on dimension 1: it alone makes an 8 / 10 total 86.2.
+
+The earlier sections print dimensions 1–7 "/ 75", but the weights sum to 80 (rubric 0.3.2). Round 3's 72.7 is the comparable number: this build is 4.2 lower, all of it from the new block's checks and the new scroll shift.
+
+| # | dimension | weight | score | weighted | evidence |
+|---|---|---|---|---|---|
+| 1 | facts | 20 | 8 | 16.0 | `critic-cheeky-monkey-v1/facts.json`: 42 page claims traced to dossier keys by script, 0 mismatches; I read the 12 package prices and 3 airport rows against `offers[]` by hand. 11 / 11 reviews are verbatim (`quotes.txt`). `copy/` and every field of `content.json` except `forecast` are unchanged since round 3 (git diff). Forecast numbers equal the live JSON fetched in the same run: 0.9–1.3 m, 20:30, swell 16.6 s from 201° ("the south"), wind 5.1 km/h from 352° ("the north"), offshore; `generated_at` 19:56 Colombo. −1, unchanged: present-tense lines on 2021 sources, open status the agreed gap. −1, new: rule 9's mapping check fails as written. `concepts.md` §3 still says "Forecast: no", and the dossier names no break and has no `rams`. See "The forecast block". |
+| 2 | mobile + performance | 15 | 9 | 13.5 | `audit.json`, throttled 390 × 844: first load 528,409 B in 8 requests, LCP 576 ms, CLS 0, largest image 119,050 B, fonts 64,900 B, 0 third-party. Every budget line is met (table below), including with Rosa's embed loaded. No overflow at 320, 390 and 1440. −1: `scroll.early.cls` is **0.0288** (limit 0.01), source `div.hero-in`, the same in all 4 audit runs; round 3 measured 0. See "The early scroll shift". On the live preview the same scroll gives 0–0.0008 (9 of 9 runs). |
+| 3 | booking CTA | 15 | 9 | 13.5 | `funnel/funnel.json` on the live preview: `primary_action` engine, `hero_action` engine (0 taps to flow), `clicks_to_book` 1 ≤ target 1, CTA above the fold, 0 console errors reported by my page runs. All 23 Booking.com hrefs equal `booking.engine_url` character for character; every `tel:` is `+94719248686` = `contact.phone`. JS off at 390 and 1440: 21 visible Booking.com links, 11 visible `tel:` links. **The `.handoff[hidden]` fix works** (`handoff-widget-refuse.json`): `display: none` at load, on opening the drawer and on the room step; `flex` with "Classic Triple Room" and a 292 × 52 button after a room is picked. JS off: hand-off `none`, `.plain-only` booking button shown. −1, unchanged: the engine link carries none of the visitor's choices (documented gap). |
+| 4 | brand fit | 5 | 8 | 4.0 | The forecast sits in "Down at the water", under spot and season, which fits playbook §3 item 4. Page order is otherwise unchanged. −2, unchanged: spot and season come before the offers, and price, level and inclusions first appear at about capture 05 on the phone. That is the concept's choice. |
+| 5 | copy | 10 | 8 | 8.0 | English complete; the copy is unchanged since round 3. The two new lines use the rule's exact wording: "Forecast for Rams by Rosa", "See today's forecast for Rams on Rosa". Nothing calls Rams the business's break. −2, unchanged: "Catch waves, not worries" and "Come as a stranger, leave as a friend." are generic slogans, though the owner's own. |
+| 6 | accessibility | 8 | 9 | 7.2 | `a11y-page.json`, axe-core 4 (WCAG 2.0 / 2.1 A + AA) on the live page with the widget loaded: 0 violations at 390 and 1440, 30 rule sets pass; `color-contrast` incomplete 179 / 183 nodes (text over footage and photos). Block text measured on its own ground: 6.37:1 at the lowest (the 13 px update pill), 7.55:1 for the swell and wind lines. Keyboard: credit link, then the frame (focus lands on Rosa's one `a.card`, outline `auto 1px`, Rosa's own), then out to the first package card: no trap. Drawer: Tab cycles inside it, Esc closes it, focus returns to "Plan a stay". 0 of the tap targets in `audit.json` under 44 px at 390; the credit link is 48 px tall at 390 and 26 px at 1440. Reduced motion: 0 video requests. −1, unchanged: no pause control for the two looping videos (WCAG 2.2.2). |
+| 7 | security + delivery | 7 | 9 | 6.3 | `dist/`: 71 files, no server code, lowercase names, relative URLs, 0 hits for localhost / key / token / secret / password, `noindex, nofollow`, no sitemap. 0 third-party requests on first load at 390 and 1440, in `audit.json` and on the live preview. 0 cookies after the widget loads, and the frame's localStorage is empty. No CMS call. `check-design`: 0 failing, 0 warnings. −1: two §4 embed rule misses in the new block, the refused-frame hole and the extra HEAD request, both below. |
+| | **total 1–7** | 80 | | **68.5** | |
+
+**Hard fails: 0.** The vid-001 licence is Alon's recorded preview-only waiver and is not counted. Not hard fails: fact contradictions (0), CTA landing (URLs and phone exact), primary-action class (engine = recommended), third-party on first load (0), CMS dependency (none), keyboard trap (none), content only in video (none), budgets (all met), secrets (none), borrowed atmosphere (none).
+
+One line I weighed and did not count: "a claim has no dossier entry". The dossier has no Rams. I read the block as making no claim about the business: it says Rosa forecasts a spot Rosa calls Rams, Rosa's own `spot.name`, and schema v0.3 says forecast values are never content. A stricter reading would make this a hard fail, so the human should see it stated.
+
+**Pass thresholds (full), critic's part:** no hard fail ✓; dimensions 1–7 each ≥ 6 ✓ (lowest 8); every playbook §4 budget line met ✓ (one reading noted below); total ≥ 85 depends on dimension 8, as tabled above; both visual critics ≥ 8 pending.
+
+### The forecast block (rule 9 and playbook §4)
+
+| Check | Result | Evidence |
+|---|---|---|
+| Spot id in the headline and the widget | same: `rams` | `data-json` …/spots/rams.json, widget `spot=rams`; JSON `spot.id` rams, `name` Rams, `town` Midigama |
+| Matches the dossier's spot through the mapping in `concepts.md` | **FAILS as written** | `concepts.md` lines 91, 113, 158, 214, 262 say no forecast; line 113 calls "Midigama" "the nearest-other-spot error the rule forbids". Schema v0.3: "The nearest other spot is never used as this one". Alon's decision is recorded in `final/notes.md`, `seed-from-dossier.mjs` and `activity.jsonl` line 65, and `notes.md` says it overrides the schema "on Alon's say". Not recorded in `concepts.md`. |
+| "Closest Rosa spot, ~360 m" | true | Rosa `index.json` against `location.lat_lng`: Rams 360 m, Coconut 578 m, Lazy Left 679 m, Lazy Right 980 m |
+| Site's half: headline only | pass | Height range, time, swell, wind, Rosa's update time. No day-by-day content |
+| Widget unmodified | pass | All attributes as `agents/designer/tools.md`; `theme=light&units=metric`; computed filter none, opacity 1, no transform or clip; `elementFromPoint` hits the IFRAME at every in-view point; 420 × 500 at 1440, 350 × 500 at 390 |
+| Nothing from Rosa on first load | pass | 0 third-party at 390 and 1440 after 5 s without a scroll |
+| After scrolling: one JSON request plus the frame | **one extra request** | The site makes GET JSON, **HEAD widget**, then the frame document. The HEAD is deliberate (`site.js`) and is not in the rule. The frame then makes its own requests, including a second JSON GET: Inter CSS and font, favicon, 6 satellite tiles |
+| Space reserved, CLS unchanged | pass | Block 860 px at 390 and 500 px at 1440, before and after; document height unchanged; 0 shifts when the block loads, fails or is refused |
+| JS off | pass | Plain link fills the box, `rosa.surf/spot/rams`, 0 third-party requests |
+| JSON blocked, hung 12 s, stale 30 h, or without `current` | pass on the link | Link shown, no numbers, no frame request. Below the screen the headline box is dropped (`.solo`, document 17165 → 16805 at 390, no visible shift) |
+| Failure with the block in view | link shown, **blank hole beside it** | `.fc-now` goes `visibility: hidden`: a 420 × 500 gap on the left at 1440, a 340 px gap above the link at 390, no credit line (my scratch captures of the JSON-blocked and hung runs). Playbook: "never an empty box". It is an empty space, not a drawn box |
+| Widget blocked at HEAD | pass | Headline stays, link in the widget's box, no frame |
+| **Frame refused after a good HEAD** | **FAIL** | Three forced cases (document request aborted, `X-Frame-Options: DENY`, HTTP 500): all end `fc-rosa on`, link hidden, frame visible. The aborted case, which I looked at, shows the right half blank with no link at all. A cross-origin frame fires `load` regardless, so the HEAD guard does not cover a GET that fails after it. A narrow path, but §4 asks for the link "when the request fails" |
+| Visitor stops at the edge of the 400 px margin | pass | At 390, block 1,234 px below the top of the screen: headline and frame both load inside the 10 s limit |
+| WebKit | pass | Desktop normal path only: `fc live`, `fc-rosa on` |
+| `shoot.mjs` waited | pass | `desktop-04` and `mobile-04/05` show the drawn headline and the loaded widget; `shoot.json` errors [] |
+| Embed count | 1 of 2 | One iframe, no map embed |
+| Page scroll over the frame | pass at 1440 | Mouse wheel over the widget moved the page 400 px. Not tested with touch |
+
+**The headline can disagree with the widget beside it.** `desktop-04` (Rosa's 13:56 publication) shows the site's "Swell 8.6 s from the south-east" next to the widget's "15s SSE". The site follows `tools.md` to the letter (the first `in_window` swell), and the widget picks a different one. Each is right about its own number, and a visitor sees two periods. In tonight's publication they happen to agree closely (16.6 s against 16s, "south" against SSE). Not scored as a fact error; it needs a line in `tools.md`.
+
+### The early scroll shift
+
+`audit.json.scroll.early.cls` = 0.0288, 4 of 4 audit runs, against round 3's 0. Hard constraint 3 says that at or above 0.01 the page goes back to the designer. The rubric's own hard fails and thresholds do not list it (CLS line < 0.1 is met), so it is scored and listed as a fix, not as a hard fail.
+
+`early-scroll-cls.json`, audit's method with shift rectangles: plain local server 3 of 4 runs 0.0288, at about 15 ms after first paint; `hero-in` goes from y 641, height 203 to y 567, height 277, a growth of 74 px. Live preview 0–0.0008 in 4 of 4 runs here and 5 of 5 in `handoff-widget-refuse.json`.
+
+It is not the font swap: it comes about 270 ms before the fonts finish. My explanation, consistent with the numbers but not proven: the plain server sends the 106,679 B page uncompressed, so the browser paints a part-parsed document, and the 74 px matches the hero button (56 px plus the 18 px gap), which starts about 100 bytes after `hero-in` at byte 42,789. The block's added CSS, JS and markup would have moved where that paint falls. Cloudflare sends about 27.6 KB compressed, which is why live does not show it. A visitor on the preview does not see it; a client on an uncompressed host (the zip export) could.
+
+### Playbook §4 budget, measured
+
+| Item | Target | Measured | |
+|---|---|---|---|
+| First-load transfer (video excluded) | ≤ 1.5 MB | 528 KB (`audit.json`, plain server); 455 KB on the live preview | ✓ |
+| The same plus Rosa's block | ≤ 1.5 MB | + 122 KB third-party (throttled phone) | ✓ |
+| Hero video after first paint | ≤ 2 MB phone · ≤ 4 MB desktop | `p1080.webm` 0.999 MB (MP4 1.87 MB) · `d1920.webm` 1.64 MB (MP4 3.82 MB), file sizes on disk | ✓ |
+| JS, compressed | ≤ 300 KB | 0 external; inline 14,818 B, 5,494 B gzip; the widget's script is inline in its 7.9 KB document | ✓ |
+| Largest above-the-fold image | ≤ 300 KB | 119 KB; largest Rosa tile 14.8 KB | ✓ |
+| Fonts | ≤ 2 families, ≤ 150 KB | Site: 2 families, 64.9 KB. With the frame: + Inter, 49 KB = **3 families**, 114 KB | ✓ on my reading |
+| LCP | ≤ 2.5 s | 576 ms; 552 ms on the live preview | ✓ |
+| CLS | < 0.1 | 0 at load, 0 after the block loads | ✓ |
+| Third-party requests on load | 0 | 0 | ✓ |
+
+**The fonts line is a rule conflict, not a site defect.** §4 says every budget line holds with the embeds loaded; the same section requires the widget exactly as Rosa ships it, and `tools.md` records that it loads Inter inside its frame. The site cannot fix that. I counted the line as met because the third family lives in Rosa's frame. If Shahar reads it the other way, every site with this widget misses the line, and "budget met on every line" fails for all of them.
+
+**what the designer prompt got wrong:** Three things, all from porting the block rather than from the design. (1) The forecast was added after the concept, so `concepts.md` still forbids what the page does; nothing in the hand-off requires a late block to update the concept's mapping, and an operator override of a schema rule has no agreed place to be recorded. (2) `tools.md` asks for a lazy frame and a plain-link fallback but does not say how to detect a refused cross-origin frame; `load` always fires, so the ported HEAD guard adds a request that rule 9 does not allow and still misses a GET that fails. (3) `tools.md` picks "the first `in_window` swell" without checking which swell the widget shows, so the two halves can print different periods side by side.
+
+**fix list (smallest first):**
+1. **Dim 1 (human, no code):** record the Rams mapping and Alon's decision in `concepts.md` §3, and take the conflict with schema v0.3 ("the nearest other spot is never used") to Shahar as a proposal or a recorded exception.
+2. **Dim 7 (rule or code):** decide on the HEAD request: either amend rule 9 to allow it or remove it.
+3. **Dim 2:** stop `.hero-in` growing when the button is parsed, for example a phone `min-height` on it, then re-run `audit-mockup.mjs` until `scroll.early.cls` < 0.01.
+4. **Dim 7:** leave the plain link visible under the frame, so a blank frame still shows it. A browser error page or a server's error page painted inside the frame cannot be detected from outside; say so in `tools.md`.
+5. **Dim 7 (optional):** on a failure in view, keep the white card and put the link or credit in it, instead of a blank space.
+6. **`tools.md` proposal:** say which swell the headline shows, so it agrees with the widget.
+7. **Playbook proposal (Shahar):** state whether fonts inside Rosa's frame count against the 2-family line.
+8. **Open from round 3:** pause control for the two videos (dim 6); the owner's slogans (dim 5); offers after spot and season (dim 4); Booking.com parameters (dim 3); vid-001 rights at pitch (the waiver's condition).
+
+### What this verification did not test
+
+- A real tap through to Booking.com or a real call. Booking.com was not loaded, by the brief's limits; `audit.json.booking.tapped` reads the href and the funnel does not follow an engine. The URL is compared character for character only.
+- A real phone: everything is headless Chromium with emulation and throttling, plus one WebKit desktop run. No Firefox. Touch swipe inside the widget and page scroll over it by touch are untested.
+- Screen readers, including the block's `aria-live="polite"`.
+- Inside Rosa's frame: axe ran with `iframes: false`.
+- Hero and header contrast over the loop was not re-sampled. Since round 3 the CSS, JS and template have only additions (git diff shows no removed lines); the last figures are round 3's.
+- The cause of the early shift is an explanation, not a proof; no round-3 build was rebuilt to compare.
+- Data aged just under or over 24 h: only 30 h stale was forced.
+- The two-embed budget case: this page has one embed.
+- A sentence-by-sentence facts re-read: claims were traced by script, and some match on a dossier note field. The copy is unchanged since round 3's full check.
+
+### Evidence files
+
+All under `reports/2026-10-midigama-01/critic-cheeky-monkey-v1/`. Screenshots stay out of the report: the shared `verify-1-cheeky-monkey/shots/` was reused and not deleted, and my failure-path captures stayed in scratch.
+
+- `audit.json`: `tools/audit-mockup.mjs` on `dist/`, run from an isolated root.
+- `funnel/funnel.json`: `tools/funnel.mjs` on the live preview, depth 3.
+- `forecast.json`: the block at 390 and 1440, every request, the iframe's attributes, cover tests, and the failure paths.
+- `a11y-page.json`: axe, tab stops, block contrast, reduced motion, JS off, 320 px, budgets with the embed loaded.
+- `handoff-widget-refuse.json`: the Plan a stay hand-off, headline against widget, focus in the frame, refused frames, stop at the margin, WebKit, live early CLS.
+- `early-scroll-cls.json`: early scroll on the plain server and the live preview, with shift rectangles.
+- `facts.json`, `quotes.txt`: the claims traced to dossier keys, and the review check.

@@ -286,3 +286,77 @@ The current site still shows a PHP notice above the logo. It runs 470 px wide in
 - img-103, img-100 and img-151 in "Down at the water"; the photo-led cards; the rooms, shop, Baba and guests.
 
 **Report (round 3):** 8/10 · pass · better than current: yes · taps to book: 1 · loop starts at ~5.3 s on the throttled phone (5 of 7 loads; ~7.3 s when the arming race fires) · top three fixes: close the reel-arming race on empty-source `error` events; attach the hero on poster load and keep the images below the fold out of the first second; stop the rating cards jumping on a review change.
+
+## Verification 1
+
+Live preview, walked 2026-11-06: https://cheeky-monkey-surf-camp.os1.workers.dev/ (variant: unique, per the ledger's `picked` line). Frames and logs are in `experience/cheeky-monkey/v1/`: `phone-walk.log`, `plan-walk.log`, `states-walk.log`, `motion-measure.log`. Scope: the whole page, plus the two changes (the Rosa forecast for Rams, and the hand-off box staying closed until a room is picked). Stopped at the hand-off: nothing was tapped through to Booking.com (blocked at browser level as a safeguard), and no call, email or message was started.
+
+**Result: 7 / 10, fail, on the micro-animation cap alone. Without the cap this page scores 8.** Better than the current site: yes, clearly. Taps to book: 1.
+
+### 1. Phone, cold (390 × 844, iPhone profile, 1.6 Mbps / 150 ms, 4× CPU; one throttled load)
+- **~0.5 s** (`phone-cold-500.png`): tonal ground, header, title and button are all usable. The fonts are still the fallback. The frame is drawn small in one corner, which I read as a capture artefact of emulation, not something a visitor sees.
+- **1.5 s** (`phone-cold-1500.png`): hand font in, tonal ground, one line and one button. LCP 1224 ms.
+- **3 s** (`phone-cold-3000.png`): poster of the drone shot, with the house on the road above the reef. This is already the place.
+- **~5.4 s:** the loop starts (`currentTime` 4.6 at 10 s). No CLS at any point. The only host on load is the site itself.
+- **The loop** (`hero-loop-*.png`, 6.2 s): drone to surfer on a green wave and back. It pulls you in and it is clean. The tier is 608 × 1080 on a 1170-device-pixel screen, so the footage is visibly soft close up; that is a limit of the 2018 film, not of the page.
+- **Attention drops** (`phone-scroll-*.png`): at the run-on amenities paragraph on the roof (frame 18) and through the rooms, where the same button repeats five times (frames 10–13). It recovers at the roof photo (17) and at Baba (19–20).
+- **Chrome:** after the hero, header plus bar hold 134 of 844 px, and "Book" and "Check dates on Booking.com" are on screen together.
+
+### 2. The story after one scroll
+What and where: yes (header line, then "Catch waves, not worries"). Why this place: yes, told through the film and the board reel, then the man with the yellow board. Cost: no. The first price is at y = 4964, 5.9 screens down (`motion-measure.log`).
+
+### 3. Wanting to go
+The wave in the hero, the man with the yellow board (`phone-scroll-02.png`) and the pink roof shot (`phone-scroll-17.png`) do it. The forecast now adds a reason to go *now*. The rooms deflate it slightly: tidy but dark photos and no rate to weigh.
+
+### 4. The forecast block (new)
+**Effect: positive overall, at a cost in length.**
+- **What it adds:** a first live fact. `fc-phone-headline.png` shows 0.9–1.3 m, swell 16.6 s, offshore wind, with the widget's "Epic" badge just below. A surfer comparing camps gets "is it on?" answered for the actual break, and the page stops being only a brochure. The white card matches the lesson card, so it feels native. On laptop (`laptop-forecast.png`) the two-column form is clean, with no stretched spacing.
+- **Accuracy:** the headline matches Rosa's JSON (`current`: 0.9–1.3, 16.6 s at 201°, 5.1 km/h at 352°, offshore, 20:30 +05:30).
+- **Loading:** no third-party request on load; Rosa is requested only when the block nears the viewport. CLS 0 through the walk, and 0 on the laptop. Rosa's own widget is unrestyled and stays recognisable. It adds Google Fonts and map tiles once in view.
+- **Touch:** a vertical drag over the widget moves the page (349 of 350 px), so there is no scroll trap. A horizontal swipe changes the day (`fc-phone-widget-swiped.png`) without moving the page.
+- **Cost:** 908 px on the phone (860 + 48 margin), about one more screen before the first price, which would otherwise sit near y = 4056.
+- **Confusing to read:** the headline says "offshore" while all three of today's widget rows say CROSS. Both are right: 20:30 is later than the last row, and the JSON has 18:30 as cross-shore. The headline also says "from the south" and the widget "SSE". At my walk (02:45 Saturday in Colombo) the headline still read Friday 20:30, with the JSON generated about 6 h 50 min earlier. It is dated, so it is honest, but it does not read as "now". The widget's "Today, 11/6" is Rosa's own.
+- **Weak state:** with requests refused (`fc-failed.png`) or data older than 24 h (`fc-stale.png`) no stale numbers show, which is right. But the phone gets 340 px of blank sky, then a 500 px white card with one link at the bottom, and the credit line is gone. With JavaScript off (`nojs-forecast.png`) it is a 500 px white card with one link. Playbook §4 says "never an empty box". Both states were simulated in my browser only (refused requests, a doctored JSON).
+
+### 5. Booking (taps, `plan-walk.log`)
+- **Direct:** hero, header or bar goes to `https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html` in **1 tap**, which meets the audit's target. The phone bar is off screen on the first view and rises on scroll, so "Plan a stay" is not on the phone's first screen.
+- **Plan a stay** (`plan-1-start.png`): 4 clear tiles. Prices show at a glance ("from USD 250", "USD 20 per person").
+- **The hand-off stays closed until a room is picked: confirmed.** After "A room" (`plan-2-room-unpicked.png`), `.handoff` is `hidden` with 0 height, on phone and laptop. Picking a room reveals it and scrolls it into view (link at y = 742), and focus lands on the link (`plan-3-room-picked.png`). Picking another room updates the name (`plan-3b-second-room.png`). Reopening keeps the pick, with the box starting just below the fold (`plan-7-reopen-room.png`). Hand-off link reached in 3 taps; it would be the 4th.
+- **What the pick is worth:** little as yet. The link is the same generic hotel page, so the room is not carried over, and the copy is honest about that. "Superior Double" and "Double" read identically on their tiles ("1 large double bed | 9 m²"), and "m²" orphans onto its own line. After the pick, the Back and Close buttons have scrolled away.
+- **Other paths:** week (`plan-5-week.png`), lesson and board are clean, and the price updates by room type. Esc closes the sheet and focus returns to "Plan a stay". Without JavaScript the plan is an in-page section with working links (`nojs-plan.png`).
+
+### 6. Motion and interaction
+- **Main item:** present. The hero video cut, and the board-masked reel (a timed loop, not scroll-scrubbed). No canvas or WebGL on the page.
+- **Press states:** `:active` scale on buttons, icon buttons, arrows, tiles and segments. Dots and Instagram tiles animate through a child. Cards swipe (`tap-cards-swiped.png`), the room dots work (`tap-room-dot.png`), and the rating cards held still over 6 review taps.
+- **Pacing:** median 16.7 ms, p95 33.3 ms, 2 frames over 50 ms in a scripted 9 s scroll at 4× CPU, on a machine shared with other critics.
+- **Reduced motion and JavaScript off:** no video source attached under reduced motion, poster stays, still a good page (`reduced-hero.png`, `nojs-hero.png`).
+- **The cap (method step 5): applies as written.** 16 of 132 interactive elements have no transition on themselves, their children or their pseudo-elements (`motion-measure.log`): the skip link, the header logo link, the forecast credit link, the forecast fallback link, 11 review source links, and the footer film credit. Two of the 16 came with the forecast block. For a unique page the rule says micro-animations on *every* interactive element, so the score is capped at 7. They are small text links and every main control does animate, so whether citation links count is a fair question, but that is not mine to waive. It is a human ruling or a very small fix.
+
+### 7. Laptop (1440 × 900: `laptop-*.png`)
+The film is strong at full width, with one line and one button. The sections are distinct and have room. The right-hand drawer works over the running film (`laptop-plan-start.png`, `laptop-plan-room.png`, `laptop-plan-picked.png`). The ghost "Plan a stay" responds on hover (`laptop-hover-plan.png`). CLS 0.
+
+### 8. Against the current site (`current-phone-*.png`, `current-laptop-00.png`)
+The current site opens with a PHP notice above the logo, lays out 470 px wide in a 390 px phone, and has 0 booking links, 0 `tel:` links and no video. Its banner says the rooms "aren't bookable right now". **Where it is better:** it is much shorter (5947 px against 17165 px), it has the monkey logo, which has real character and which I saw in no frame of the new page, and its yellow-board photo is on the first screen. **Better overall: yes, clearly.**
+
+The Facebook intro and the old banner still conflict with the live Booking.com listing about whether rooms are open (dossier `status_flag`). I could not settle that, and the new page sends everyone to Booking.com, so the owner should confirm it before the pitch.
+
+### 9. Score: 7 / 10 (capped); my judgement without the cap is 8
+- **Earns the 8:** a first screen that pulls you in, one clear CTA, own footage, a real story, 1 tap to book, a calm and honest plan sheet, a forecast that adds something and shifts nothing, and clear superiority to the current site.
+- **Keeps it from 9:** page length (20 phone screens), the distance to the first price, soft footage, and rooms that sell less than the water does.
+
+### Fix list (biggest effect first)
+1. **Clear the cap.** Add a short transition and a hover/press state to the 16 links listed in §6, or get a ruling that text citation links are out of scope.
+2. **Fix the forecast's empty state.** In `.fc.off` and with JavaScript off, keep the reserved height but fill it: keep the credit line and show the link inside the headline card with a photo or a short line about the break, and do not leave 340 px of blank sky above a mostly white card.
+3. **Make the room pick earn its tap.** Add what differs to the tiles (garden view, seating area, sea view, all already on the page), keep "9 m²" on one line, and have the hand-off say what to do next ("Look for the Classic Triple Room on the list").
+4. **Bring the first price closer on the phone.** Turn the stacked water photos above the forecast into one swipe row, which recovers roughly the 908 px the block added, and keep "See the surf weeks" right after the forecast.
+5. **Make the headline read as a time, not as "now".** Label it (for example "Latest reading: Friday 20:30") so "offshore" next to CROSS rows does not look like a contradiction, and use the same compass precision as the widget where the data allows.
+
+Smaller: the closing sentence is set in the marker hand across 3 lines and is hard to read at phone size (`phone-scroll-25.png`); set it in the body face and keep the hand for "Book".
+
+### Keep
+The drone and surf loop with one line and one button. The tonal ground and poster sequence. The board reel. The white forecast card and the unrestyled widget, with its loading behaviour. The hand-off closed until a pick, with focus moving to the link. The plan tiles with prices on them. The header "Book" and the bar. The yellow-board, roof and Baba photographs. The Instagram tiles and the footer.
+
+### Not tried
+Real phones, Safari or iOS autoplay (headless Chromium with iPhone emulation only). Only one throttled cold load, so an intermittent start-up race would not show. Booking.com, `tel:`, `mailto:`, Instagram and Rosa links were read, not followed. Whether the business is open now. The design skills and the inspector were not run. Scroll frames 23 and 25 dropped in the throttled walk and were retaken unthrottled. A network drop mid-session did not affect the results: the walk had finished, and the live HTML was byte-identical afterwards. I read the end of Round 3 only after settling on my own view, and did not read the visual-critic or critic reports.
+
+**Report:** 7/10 (8 without the cap) · fail on the micro-animation cap · better than current: yes · taps to book: 1 · top three fixes: motion on the 16 links, the forecast's empty state, a room pick that earns its tap.

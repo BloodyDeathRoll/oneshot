@@ -1,0 +1,64 @@
+import { createRequire } from 'module';
+import fs from 'fs';
+const require = createRequire(process.cwd() + '/');
+const { chromium, devices } = require('playwright');
+const URL_ = 'https://cheeky-monkey-surf-camp.os1.workers.dev/';
+const OUT = process.argv[2];
+const log = [];
+const L = (...a) => { const s = a.map(x => typeof x === 'string' ? x : JSON.stringify(x)).join(' '); log.push(s); console.log(s); };
+const browser = await chromium.launch({ timeout: 280000 });
+const ctx = await browser.newContext({ ...devices['iPhone 13'], viewport: { width: 390, height: 844 } });
+// safeguard: nothing may reach the engine, and no external navigation
+await ctx.route(/booking\.com/, r => { L('BLOCKED', r.request().url().slice(0, 120)); r.abort(); });
+const page = await ctx.newPage();
+page.on('pageerror', e => L('PAGEERROR', e.message));
+await page.goto(URL_, { waitUntil: 'load', timeout: 120000 });
+await page.waitForTimeout(1500);
+L('bar at top of page', await page.evaluate(() => { const r=document.querySelector('#bar').getBoundingClientRect(); return {top:Math.round(r.top),h:Math.round(r.height),vh:innerHeight}; }));
+await page.evaluate(() => scrollTo(0, 1000));
+await page.waitForTimeout(900);
+L('bar after scroll', await page.evaluate(() => { const r=document.querySelector('#bar').getBoundingClientRect(); return {top:Math.round(r.top),h:Math.round(r.height),vh:innerHeight}; }));
+const state = () => page.evaluate(() => {
+  const plan = document.querySelector('#book');
+  const on = plan.querySelector('.step.on');
+  const vis = e => { const r = e.getBoundingClientRect(); const s = getComputedStyle(e); return r.width > 0 && r.height > 0 && s.visibility !== 'hidden' && s.display !== 'none'; };
+  return { open: plan.classList.contains('open'), step: on?.dataset.step, q: on?.querySelector('.plan-q')?.innerText,
+    links: [...on.querySelectorAll('a')].filter(vis).map(a => ({ t: a.innerText.trim().slice(0, 60), h: a.getAttribute('href')?.slice(0, 130), target: a.target, y: Math.round(a.getBoundingClientRect().top), hh: Math.round(a.getBoundingClientRect().height) })),
+    buttons: [...on.querySelectorAll('button')].filter(vis).map(b => ({ t: b.innerText.trim().replace(/\n/g, ' / ').slice(0, 60), pressed: b.getAttribute('aria-pressed') || b.getAttribute('aria-checked'), hh: Math.round(b.getBoundingClientRect().height) })),
+    text: on.innerText.replace(/\n+/g, ' | ').slice(0, 500), focus: document.activeElement?.innerText?.slice(0, 40) || document.activeElement?.tagName, scroller: Math.round(plan.querySelector('.plan-panel')?.scrollHeight || 0), bodyOverflow: document.body.style.overflow };
+});
+const shot = async n => page.screenshot({ path: `${OUT}/${n}.png` });
+await page.locator('#bar [data-plan]').tap();
+await page.waitForTimeout(150); await shot('plan-1-opening');
+await page.waitForTimeout(700); await shot('plan-1-start'); L('tap 1 Plan a stay', await state());
+await page.locator('#book .tile[data-go="room"]').tap();
+await page.waitForTimeout(700); await shot('plan-2-room-unpicked'); L('tap 2 A room', await state());
+const handoffBefore = await page.evaluate(() => { const on = document.querySelector('#book .step.on'); return [...on.children].map(c => ({ tag: c.tagName, cls: c.className.toString().slice(0, 40), hidden: c.hidden, disp: getComputedStyle(c).display, vis: getComputedStyle(c).visibility, h: Math.round(c.getBoundingClientRect().height), txt: c.innerText.slice(0, 60) })); });
+L('room step children before pick', handoffBefore);
+const rooms = page.locator('#book .step.on [data-room]');
+L('room count', await rooms.count());
+await rooms.nth(1).scrollIntoViewIfNeeded();
+await rooms.nth(1).tap();
+await page.waitForTimeout(150); await shot('plan-3-room-picked-150ms');
+await page.waitForTimeout(800); await shot('plan-3-room-picked'); L('tap 3 room picked', await state());
+const after = await page.evaluate(() => { const on = document.querySelector('#book .step.on'); return [...on.children].map(c => ({ tag: c.tagName, cls: c.className.toString().slice(0, 40), hidden: c.hidden, disp: getComputedStyle(c).display, h: Math.round(c.getBoundingClientRect().height), top: Math.round(c.getBoundingClientRect().top), txt: c.innerText.replace(/\n+/g,' | ').slice(0, 300) })); });
+L('room step children after pick', after);
+// change of mind: second room
+await rooms.nth(3).scrollIntoViewIfNeeded();
+await rooms.nth(3).tap(); await page.waitForTimeout(600); await shot('plan-3b-second-room'); L('other room', await state());
+// reach hand-off without tapping it
+const hand = page.locator('#book .step.on a[href*="booking.com"]:visible').first();
+if (await hand.count()) { await hand.scrollIntoViewIfNeeded(); await page.waitForTimeout(400); await shot('plan-4-handoff'); L('handoff href (not tapped)', await hand.getAttribute('href'), 'box', await hand.boundingBox()); }
+// back -> week
+await page.locator('#book .plan-back').tap(); await page.waitForTimeout(500); L('back', await state());
+await page.locator('#book .tile[data-go="week"]').tap(); await page.waitForTimeout(600); await shot('plan-5-week'); L('week', await state());
+await page.locator('#book .plan-back').tap(); await page.waitForTimeout(400);
+const others = await page.locator('#book .step.on [data-go]').evaluateAll(a => a.map(x => x.dataset.go));
+L('start tiles', others);
+for (const g of others.filter(x => !['room','week'].includes(x))) { await page.locator(`#book .tile[data-go="${g}"]`).tap(); await page.waitForTimeout(500); await shot(`plan-6-${g}`); L(g, await state()); await page.locator('#book .plan-back').tap(); await page.waitForTimeout(300); }
+await page.keyboard.press('Escape'); await page.waitForTimeout(500); L('after Esc', await page.evaluate(() => ({ open: document.querySelector('#book').classList.contains('open'), focus: document.activeElement?.innerText?.slice(0, 30), hash: location.hash })));
+// re-open: is the old pick remembered?
+await page.locator('#bar [data-plan]').tap(); await page.waitForTimeout(500); await page.locator('#book .tile[data-go="room"]').tap(); await page.waitForTimeout(500); await shot('plan-7-reopen-room'); L('reopened', await state());
+L('hero CTA', await page.evaluate(() => [...document.querySelectorAll('#hero a, .top a, #bar a')].map(a => ({ t: a.innerText.trim().slice(0, 40) || a.getAttribute('aria-label'), h: a.getAttribute('href')?.slice(0, 80), w: Math.round(a.getBoundingClientRect().width), hh: Math.round(a.getBoundingClientRect().height) }))));
+fs.writeFileSync(`${OUT}/plan-walk.log`, log.join('\n'));
+await browser.close();

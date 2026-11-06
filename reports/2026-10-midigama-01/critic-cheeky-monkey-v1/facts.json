@@ -1,0 +1,374 @@
+[
+ {
+  "claim": "phone +94 71 924 8686",
+  "on_page": true,
+  "dossier_keys": [
+   "contact.phone.value"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "email",
+  "on_page": true,
+  "dossier_keys": [
+   "contact.email.value"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "address",
+  "on_page": true,
+  "dossier_keys": [
+   "location.address.value",
+   "location.address.note"
+  ],
+  "n": 2
+ },
+ {
+  "claim": "Google 4.5/5, 467",
+  "on_page": true,
+  "dossier_keys": [
+   "reviews.google.rating"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "Booking 8.3/10, 45",
+  "on_page": true,
+  "dossier_keys": [
+   "reviews.booking.rating",
+   "reviews.booking.subscores.Facilities"
+  ],
+  "n": 2
+ },
+ {
+  "claim": "lesson USD 20, 90 min",
+  "on_page": true,
+  "dossier_keys": [
+   "lessons[0].value.raw"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "group max 6",
+  "on_page": true,
+  "dossier_keys": [
+   "lessons[1].value.group_size",
+   "lessons[1].value.raw"
+  ],
+  "n": 2
+ },
+ {
+  "claim": "SUP",
+  "on_page": true,
+  "dossier_keys": [
+   "lessons[4].value.label",
+   "lessons[4].value.raw"
+  ],
+  "n": 2
+ },
+ {
+  "claim": "surf spot tour",
+  "on_page": true,
+  "dossier_keys": [
+   "lessons[5].value.label",
+   "lessons[5].value.raw",
+   "offers[3].label"
+  ],
+  "n": 6
+ },
+ {
+  "claim": "Full pkg prices",
+  "on_page": true,
+  "dossier_keys": [
+   "offers[0].price"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "Moderate prices",
+  "on_page": true,
+  "dossier_keys": [
+   "offers[3].price"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "Yoga prices",
+  "on_page": true,
+  "dossier_keys": [
+   "offers[1].price",
+   "offers[2].price",
+   "offers[6].price"
+  ],
+  "n": 4
+ },
+ {
+  "claim": "Rental prices",
+  "on_page": true,
+  "dossier_keys": [
+   "offers[9].price"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "lake tour USD 5",
+  "on_page": true,
+  "dossier_keys": [
+   "packages[0].value.includes[7]",
+   "packages[1].value.includes[7]",
+   "packages[2].value.includes[7]"
+  ],
+  "n": 4
+ },
+ {
+  "claim": "5 dinners",
+  "on_page": true,
+  "dossier_keys": [
+   "packages[0].value.includes[3]",
+   "packages[1].value.includes[3]",
+   "packages[2].value.includes[3]"
+  ],
+  "n": 4
+ },
+ {
+  "claim": "2 or 3 yoga",
+  "on_page": true,
+  "dossier_keys": [
+   "packages[0].value.includes[5]",
+   "packages[1].value.includes[5]",
+   "packages[2].value.includes[5]"
+  ],
+  "n": 4
+ },
+ {
+  "claim": "tuk-tuk lesson",
+  "on_page": true,
+  "dossier_keys": [
+   "packages[3].value.includes[8]"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "400 boards",
+  "on_page": true,
+  "dossier_keys": [
+   "business.businessType_note",
+   "booking.payhere_links.value[0].price_shown",
+   "offers[0].price"
+  ],
+  "n": 6
+ },
+ {
+  "claim": "shaped in Bali",
+  "on_page": true,
+  "dossier_keys": [
+   "rentals[1].value.raw",
+   "brands[5].value"
+  ],
+  "n": 2
+ },
+ {
+  "claim": "Creatures of Leisure",
+  "on_page": true,
+  "dossier_keys": [
+   "brands[0].value"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "scooters",
+  "on_page": true,
+  "dossier_keys": [
+   "rentals[3].value.label",
+   "rentals[3].value.raw",
+   "reviews.quotes[2].text"
+  ],
+  "n": 3
+ },
+ {
+  "claim": "180 sea view",
+  "on_page": true,
+  "dossier_keys": [
+   "location.views.value"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "57 Mbps",
+  "on_page": true,
+  "dossier_keys": [
+   "contact.socials.google_maps_shop",
+   "booking.payhere_links.value[12].url",
+   "booking.payhere_links.value[13].url"
+  ],
+  "n": 11
+ },
+ {
+  "claim": "opened late 2009",
+  "on_page": true,
+  "dossier_keys": [
+   "business.since.value",
+   "business.since.note"
+  ],
+  "n": 2
+ },
+ {
+  "claim": "three rooms",
+  "on_page": true,
+  "dossier_keys": [
+   "business.since.note"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "ten rooms 2021",
+  "on_page": true,
+  "dossier_keys": [
+   "business.businessType_note",
+   "room_count.value"
+  ],
+  "n": 2
+ },
+ {
+  "claim": "surf at twelve",
+  "on_page": true,
+  "dossier_keys": [
+   "business.since.note",
+   "business.owner.note",
+   "booking.payhere_links.note"
+  ],
+  "n": 43
+ },
+ {
+  "claim": "no generator",
+  "on_page": true,
+  "dossier_keys": [
+   "facilities[15].value",
+   "facilities[15].note"
+  ],
+  "n": 2
+ },
+ {
+  "claim": "safari/cooking",
+  "on_page": true,
+  "dossier_keys": [
+   "facilities[17].value",
+   "videos[0].shows",
+   "videos[3].shows"
+  ],
+  "n": 3
+ },
+ {
+  "claim": "airport USD 65/130",
+  "on_page": true,
+  "dossier_keys": [
+   "offers[17].price",
+   "videos[5].duration_s"
+  ],
+  "n": 2
+ },
+ {
+  "claim": "Midigama Beach 350 m",
+  "on_page": true,
+  "dossier_keys": [
+   "location.distance_to_beach.value"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "station 800 m",
+  "on_page": true,
+  "dossier_keys": [
+   "location.nearby.value.Midigama station (train)"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "Ahangama 2 km",
+  "on_page": true,
+  "dossier_keys": [
+   "location.nearby.value.Ahangama Beach"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "Weligama 3.3 km",
+  "on_page": true,
+  "dossier_keys": [
+   "location.nearby.value.Weligama Beach"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "Koggala 10 km",
+  "on_page": true,
+  "dossier_keys": [
+   "location.nearby.value.Koggala Airport"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "check-in",
+  "on_page": true,
+  "dossier_keys": [
+   "stay_info.check_in.value"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "check-out",
+  "on_page": true,
+  "dossier_keys": [
+   "stay_info.check_out.value"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "quiet",
+  "on_page": true,
+  "dossier_keys": [
+   "stay_info.house_rules.value[6]"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "5 rooms sizes 8/9/12",
+  "on_page": true,
+  "dossier_keys": [
+   "room_types[2].value.size_m2"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "season",
+  "on_page": true,
+  "dossier_keys": [
+   "season.value"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "spot",
+  "on_page": true,
+  "dossier_keys": [
+   "location.spot.value",
+   "location.spot.note"
+  ],
+  "n": 2
+ },
+ {
+  "claim": "walk breaks",
+  "on_page": true,
+  "dossier_keys": [
+   "location.spot.note"
+  ],
+  "n": 1
+ },
+ {
+  "claim": "Rams",
+  "on_page": true,
+  "dossier_keys": [],
+  "n": 0
+ }
+]
