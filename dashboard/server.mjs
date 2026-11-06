@@ -366,13 +366,15 @@ function previewUrl(slug) {
   }
   return previewCache.urls[slug] ?? null;
 }
+// Which URL each cached picture was shot from, so a corrected preview URL doesn't wait out the cache.
+const thumbUrls = new Map();
 async function serveThumb(res, slug) {
   if (!/^[a-z0-9-]+$/.test(slug)) return send(res, 400, { error: 'bad slug' });
   const out = join(DIST, 'img', `${slug}.jpg`);
-  if (!thumbFresh(out)) {
-    const url = previewUrl(slug);
+  const url = previewUrl(slug);
+  if (!thumbFresh(out) || (url && thumbUrls.get(slug) !== url)) {
     if (!url) return send(res, 404, { error: `${slug} has no preview URL` });
-    try { await shootThumb(url, out); } catch (e) { if (!existsSync(out)) return send(res, 502, { error: `could not shoot ${url}: ${e.message}` }); }
+    try { await shootThumb(url, out); thumbUrls.set(slug, url); } catch (e) { if (!existsSync(out)) return send(res, 502, { error: `could not shoot ${url}: ${e.message}` }); }
   }
   serveFile(res, out);
 }
