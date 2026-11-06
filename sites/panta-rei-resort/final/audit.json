@@ -1,23 +1,23 @@
 {
  "slug": "panta-rei-resort",
  "variant": "final",
- "measured_at": "2026-11-06T13:37:32.023Z",
+ "measured_at": "2026-11-06T21:21:39.427Z",
  "first_load": {
   "requests": 12,
   "hosts": [
    "localhost:8980"
   ],
   "third_party_hosts": [],
-  "bytes_total": 639804,
-  "bytes_html": 84139,
+  "bytes_total": 652667,
+  "bytes_html": 97002,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 49300,
   "bytes_images": 506365,
   "largest_image_bytes": 147588,
-  "lcp_ms": 2140,
+  "lcp_ms": 1976,
   "cls": 0,
-  "dcl_ms": 1428
+  "dcl_ms": 1794
  },
  "scroll": {
   "early": {
@@ -62,8 +62,8 @@
  "a11y": {
   "images": 18,
   "images_without_alt": 0,
-  "images_alt_empty_decorative": 4,
-  "tapables": 27,
+  "images_alt_empty_decorative": 8,
+  "tapables": 26,
   "tapables_under_44px": 0,
   "tapables_under_44px_examples": [],
   "headings": [

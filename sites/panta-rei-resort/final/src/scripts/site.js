@@ -29,13 +29,23 @@
     clips.forEach((v) => io.observe(v));
   }
 
+  /* ---------- r2: the tiny inline frames (--lq/--plq) only bridge the wait: once the real poster has loaded they go */
+  for (const box of $$('.hero-media, .clip, .vclip')) {
+    const im = $('img', box); if (!im) continue;
+    const drop = () => { box.style.setProperty('--lq', 'none'); box.style.setProperty('--plq', 'none'); };
+    im.complete && im.naturalWidth ? drop() : im.addEventListener('load', drop, { once: true });
+  }
+
   /* ---------- header + persistent bar */
   const hdr = $('.hdr'), bar = $('.bar'), fwa = $('.fwa');
   new IntersectionObserver(([e]) => hdr.classList.toggle('solid', !e.isIntersecting), { rootMargin: '-80px 0px 0px 0px' }).observe($('#hero-sentinel'));
-  new IntersectionObserver(([e]) => {
-    const show = !e.isIntersecting && e.boundingClientRect.top < 0;
-    bar.classList.toggle('show', show); fwa.classList.toggle('show', show);
-  }).observe($('.hero .btn'));
+  /* the bar (and the desktop WhatsApp button) show once the hero's button is passed, and step aside while the
+     closing section's own buttons are on screen (r2: no two "Check dates" stacked at the end) */
+  let pastHero = false, atClose = false;
+  const sync = () => { const show = pastHero && !atClose; bar.classList.toggle('show', show); fwa.classList.toggle('show', show); };
+  new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting && e.boundingClientRect.top < 0; sync(); }).observe($('.hero .btn'));
+  const closeBtns = $('.closing .btns');
+  if (closeBtns) new IntersectionObserver(([e]) => { atClose = e.isIntersecting; sync(); }).observe(closeBtns);
 
   /* ---------- parallax (desktop only, Kube recipe: ±4rem inside overflow-hidden) */
   if (!calm && matchMedia('(min-width: 768px)').matches) {
@@ -186,6 +196,7 @@
     slides.scrollLeft = 0;
     shows ? shows.draw() : (shows = slideshow(slides, $('.gal .dots', dr), $('.gal .prev', dr), $('.gal .next', dr)));
     $('.rd h3', dr).textContent = R.label;
+    slides.setAttribute('aria-label', DATA.photosOf.replace('{room}', R.label));
     $('.rd .facts', dr).textContent = R.facts;
     $('.rd .beds', dr).textContent = R.beds;
     $('.rd .note', dr).textContent = R.note;
@@ -198,6 +209,7 @@
   const focusables = () => $$('a[href],button:not([disabled]),input,select,[tabindex]:not([tabindex="-1"])', dr).filter((el) => el.offsetParent !== null || el === d.activeElement);
   const open = (key, from) => {
     opener = from || d.activeElement;
+    dr.classList.remove('gal-on');
     dr.hidden = false; scrim.hidden = false;
     root.classList.add('lock');
     pickRoom(key || room || DATA.rooms[0].key); // always a room: the hand-off is a room page that keeps the typed dates
@@ -214,7 +226,16 @@
     if (e.metaKey || e.ctrlKey || e.shiftKey) return;
     e.preventDefault(); open(a.dataset.room || null, a);
   }));
-  $$('.rchip', dr).forEach((c) => c.addEventListener('click', () => pickRoom(c.dataset.room)));
+  $$('.rchip', dr).forEach((c) => c.addEventListener('click', () => {
+    pickRoom(c.dataset.room);
+    /* r2: on the phone the gallery appears when a room is tapped here, and comes fully into view */
+    if (!dr.classList.contains('gal-on')) { dr.classList.add('gal-on'); if (matchMedia('(max-width: 640px)').matches) requestAnimationFrame(() => $('.room', dr).scrollIntoView({ block: 'nearest', behavior: calm ? 'auto' : 'smooth' })); }
+  }));
+  /* the photo strip: focusable, named, arrow keys move a photo (axe scrollable-region-focusable) */
+  slides.addEventListener('keydown', (e) => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    e.preventDefault(); slides.scrollBy({ left: (e.key === 'ArrowRight' ? 1 : -1) * slides.clientWidth, behavior: calm ? 'auto' : 'smooth' });
+  });
   [arr, dep, gst].forEach((el) => el.addEventListener('input', () => {
     if (el === arr && arr.value) { const n = iso(new Date(arr.value + 'T12:00:00').getTime() + 864e5); dep.min = n; if (!dep.value || dep.value <= arr.value) dep.value = n; }
     update();

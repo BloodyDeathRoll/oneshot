@@ -12,6 +12,8 @@ npm install                  # astro 7.3.3, sharp 0.35.4
 npm run seed                 # scripts/make-media.sh: seed (content.json, uploads, gaps) → publisher video step →
                              # video-site.mjs (this template's tiers) → photos.mjs (crops)  [media recipe]
 npm run build                # photos.mjs again, then astro build → dist/ (one page, static, relative URLs)
+npm run build:demo           # the demo build: SITE_URL=https://panta-rei-resort.os1.workers.dev/ (canonical + og:image;
+                             # a *.workers.dev build is a preview, so noindex stays)
 npm run build:cms            # after a sale with a CMS: fetch-tenant → publisher video step → video-site → photos → build
 ```
 
@@ -57,6 +59,23 @@ section, Jost massage names. Found and fixed during the port:
   0.044); the preloads are back: 0.0009.
 No unrequested visual difference remains that I could see on the sheets.
 
+## Station 5 round 1 fixes (critic FAIL 85.3 on the funnel hard fail; coordinator's list, 2026-11-06)
+
+| # | Item | Change |
+|---|---|---|
+| 1 | Hard fail: primary action read as WhatsApp | the header's WhatsApp icon is hidden (`visibility:hidden`) while the header sits over the hero, like the header's "Check dates"; both come in when the header turns solid. The hero "Check dates" is now the top-most booking action. `tools/funnel.mjs` (with holidayfuture.com in ENGINES) on the built site over http, depth 3 → `reports/2026-11-lk-surf-01/funnel/panta-rei-resort-r2/funnel.json`: **primary_action.class = engine ("Check dates"), hero_action engine, clicks_to_book 1** |
+| 2 | Header | opaque `#FAFBF8` once past the hero (was 96 %): nothing shows through. Anchor offsets: `scroll-margin-top` 84 px (76 px under 860) |
+| 3 | First seconds on a slow phone | an 18 px (phone) / 32 px (landscape) frame of the poster is inlined as the hero's background, so the picture is there with the first paint (0.5 s frame on the throttled phone shows the blurred ring and pool, the full poster by ~3 s); both poster preloads carry `fetchpriority="high"`; the film still attaches on `load` (playing by 6 s on 1.6 Mbps) |
+| 4 | Clip posters | each of the three `<video>` has a `poster` (a ~1 KB inline frame) and its frame box carries the same frame as background, so no grey box before the poster or film arrives; the inline frames are dropped once the real poster image has loaded |
+| 5 | Closing | the even 46 % scrim replaced by a local radial one behind the words (roofs stay red, pool turquoise); the one closing sentence (copy's `closing`) and its two buttons centred in the image at both widths; the persistent phone bar and the desktop WhatsApp button step aside while the closing buttons are on screen (IntersectionObserver) |
+| 6 | Phone drawer + axe | under 640 px the gallery is hidden until a room chip is tapped in the drawer, then shown in full and scrolled into view (no cut strip between the price note and the button). The photo strip has `tabindex=0`, `role=region`, "Photos of the <room>" and arrow-key paging (axe `scrollable-region-focusable`). The bar and the floating WhatsApp button sit in `<nav aria-label="Book">` (axe `region`). Room cards: the photo is decorative inside the link (its alt is the drawer's first slide), so the link's name is its visible text (axe `label-content-name-mismatch`, found on this build) |
+| 7 | Margins + hover | `scrollbar-gutter: stable both-edges`: 100 px / 100 px at 1440 (was 106 / 122). Hover and press: the selected tab (immediate), the hero "Check dates" (white ring), the dots (the button itself, not only its dot) |
+| 8 | SITE_URL | `npm run build:demo` builds with `SITE_URL=https://panta-rei-resort.os1.workers.dev/`: canonical and `og:image` present, `noindex, nofollow` kept (a workers.dev build is a preview) |
+
+Not changed: anything not on the list (no new copy: the "if your dates clear" line stays an owner item).
+
+**Regressions vs the picked mockup (r2 build):** none seen. 1440 and 390 sheets compared with `mockups/interactive/shots/`: hero, Welcome, rooms, pool, restaurant, fitness, guests, getting here, groups and footer unchanged; the differences are the listed ones (no header WhatsApp over the hero on the phone, opaque header, lighter closing scrim, gallery behind a chip tap in the phone drawer).
+
 ## Budget (playbook §4), measured
 
 `tools/audit-mockup.mjs` takes only `mockups/<variant>`, so it was run unchanged in logic from a scratch copy pointed at
@@ -64,12 +83,12 @@ No unrequested visual difference remains that I could see on the sheets.
 
 | Item | Target | Measured |
 |---|---|---|
-| First-load transfer (no scroll, video excluded) | ≤ 1.5 MB | **640 KB** (639,804 B, 12 requests): HTML 84 KB (CSS + JS inline), fonts 49 KB, images 506 KB |
+| First-load transfer (no scroll, video excluded) | ≤ 1.5 MB | **653 KB** (652,667 B, 12 requests, station-5 r2 build): HTML 97 KB (CSS + JS + JSON-LD + four ~1 KB inline poster frames), fonts 49 KB, images 506 KB |
 | Hero video after first paint | ≤ 2 MB phone · ≤ 4 MB desktop | portrait phone `p1080` WebM **1.50 MB** (MP4 1.68) · landscape phone `m1280` WebM 1.64 / MP4 1.88 MB · desktop `d1920` WebM **3.40 MB** / MP4 3.75 MB. Other clips only on scroll: Welcome `p900` 1.32 MB, fitness `m720` 1.10 MB |
-| JS, compressed | ≤ 300 KB | **4.3 KB** gzip (12 KB raw, inline; no library) |
+| JS, compressed | ≤ 300 KB | **4.9 KB** gzip (14 KB raw, inline; no library) |
 | Largest above-the-fold image | ≤ 300 KB | phone poster 72 KB (`p-608`), desktop poster 246 KB (1920); largest image in the first load 148 KB |
 | Fonts | ≤ 2 families, ≤ 150 KB | 2 families, **49 KB** |
-| LCP (throttled phone) | ≤ 2.5 s | **2.14 s** (the hero poster; the title paints at ~0.4 s) |
+| LCP (throttled phone) | ≤ 2.5 s | **1.98 s** (the hero poster; a 18 px inline frame of it paints with the title at ~0.4 s) |
 | CLS | < 0.1 | **0** on load; scroll early **0.0009**, settled **0** |
 | Third-party requests on load | 0 | **0** (no host but the site's own) |
 
@@ -80,6 +99,8 @@ No unrequested visual difference remains that I could see on the sheets.
 | `npm run build` | clean: 1 page, no warnings |
 | `node tools/check-design.mjs sites/panta-rei-resort/final/dist/index.html` | ok (light ground, no captions, no padded boxes, no upscaled bleed; Satisfy / Jost, no default-look warnings) |
 | Booking tap-through, 390 touch, built site | hero "Check dates" → Double Room preselected → 2026-12-10 … 12-13, 2 guests → "See prices on our booking page" → `https://pantareiresort.holidayfuture.com/listings/572800?start=2026-12-10&end=2026-12-13&numberOfGuests=2`, page reads **"$465 · For 3 nights · Dec 10 - Dec 13"**. Literal `&` in the href |
+| Funnel (`tools/funnel.mjs`, built site over http, depth 3) | primary **engine** "Check dates", hero engine, clicks_to_book **1** (≤ 2), CTA above the fold |
+| axe-core 4 (1440 + 390, page scrolled through, and with the drawer open) | **0 violations** (any impact) |
 | Keyboard (390, 1440) | room card → drawer opens on that room's chip; 40 × Tab stays inside; Esc closes; focus returns to the card. Re-opening from the hero keeps the room and dates |
 | Reduced motion (1440) | 0 video requests, posters only, no parallax/tilt |
 | JS off (390) | all text, both menu lists, room cards → `/listings/<id>`, every CTA an engine / wa.me / tel link; 2 booking links in `#book`; drawer hidden |

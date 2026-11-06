@@ -17,6 +17,7 @@ export const SLOTS = [
 export const ROOM_SHAPES = [[1.25, [120, 360, 720]], [2 / 3, [600, 1200]]]
 export const GALLERY_SHAPES = [[2 / 3, [600, 1200]]]
 /* heroVideoPoster: the whole 16:9 frame for landscape screens, a 9:16 column at full height for portrait phones */
-export const HERO_POSTER_SHAPES = [[null, [960, 1920]], [16 / 9, [304, 608], { tag: 'p', q: 70 }]]
+export const HERO_POSTER_SHAPES = [[null, [960, 1920]], [16 / 9, [304, 608], { tag: 'p', q: 70 }], [null, [32], { tag: 'lq', q: 50 }], [16 / 9, [18], { tag: 'plq', q: 50 }]]
 /* videos[].poster: the 4:5 frames the clips play in (Welcome, Fitness) */
-export const CLIP_POSTER_SHAPES = [[1.25, [360, 720]]]
+export const CLIP_POSTER_SHAPES = [[1.25, [360, 720]], [1.25, [24], { tag: 'lq', q: 50 }]]
+/* the lq tags: tiny frames inlined as data URIs (painted at first paint, and the <video> posters) */

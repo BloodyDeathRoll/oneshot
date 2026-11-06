@@ -11,7 +11,7 @@
   --text:"Jost",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 *{box-sizing:border-box}
-html{scrollbar-gutter:stable;-webkit-text-size-adjust:100%}
+html{scrollbar-gutter:stable both-edges; /* r2: even side margins (106 vs 122 px at 1440 with a one-sided gutter) */-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--ground);color:var(--ink);font:400 18px/1.62 var(--text);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;overflow-x:clip}
 img,video{display:block;max-width:100%}
 a{color:inherit}
@@ -52,7 +52,7 @@ p{margin:0 0 1em}
 .nav a:hover{background:rgba(255,255,255,.18)}
 .hdr .btn{min-height:46px;padding:0 22px;font-size:15.5px;transition:opacity .35s,transform .45s var(--ease),background-color .18s,box-shadow .25s}
 .js .hdr:not(.solid) .btn{opacity:0;transform:translateY(-8px) scale(.94);pointer-events:none}
-.hdr.solid{background:rgba(250,251,248,.96);color:var(--ink)}
+.hdr.solid{background:var(--ground);color:var(--ink)} /* r2: opaque once past the hero, nothing shows through */
 .hdr.solid .wrap{height:72px}
 .hdr.solid .logo{width:56px;height:56px}
 .hdr.solid .nav a:hover{background:var(--chip)}
@@ -63,6 +63,9 @@ p{margin:0 0 1em}
   .logo{width:68px;height:68px}
   .hdr-wa{display:inline-flex;margin-left:auto;width:46px;height:46px;border-radius:50%;align-items:center;justify-content:center;background:rgba(255,255,255,.22)}
   .hdr.solid .hdr-wa{background:var(--chip)}
+  /* r2: over the hero the header carries no booking action (its "Check dates" waits too); the hero CTA is the first one */
+  .hdr-wa{transition:opacity .35s,visibility .35s,background-color .2s}
+  .hdr:not(.solid) .hdr-wa{opacity:0;visibility:hidden;pointer-events:none}
   .hdr-wa svg{width:22px;height:22px}
   .hdr.solid .wrap{height:64px}
   .hdr.solid .logo{width:48px;height:48px}
@@ -71,15 +74,19 @@ p{margin:0 0 1em}
 /* ---- hero */
 .hero{position:relative;height:calc(100vh - 44px);height:calc(100svh - 44px);min-height:560px;max-height:1100px;overflow:hidden;color:#fff;background:#3f5a3a}
 .hero-media,.hero-media img,.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-media{background:var(--lq,none) center/cover no-repeat} /* r2: a 32 px frame of the poster paints with the first paint */
+@media (max-width:767px) and (orientation:portrait){.hero-media{background-image:var(--plq,none)}}
 .hero-media video{opacity:0;transition:opacity .8s}
 .hero-media video.on{opacity:1}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 55% 40% at 50% 50%,rgba(16,26,18,.38),rgba(16,26,18,0) 72%),linear-gradient(180deg,rgba(16,26,18,.5),rgba(16,26,18,.12) 15%,rgba(16,26,18,0) 28%,rgba(16,26,18,0) 80%,rgba(16,26,18,.2));pointer-events:none}
 .hero-c{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;gap:26px}
 .hero h1{font-size:clamp(58px,6.6vw,100px);line-height:1.05;text-wrap:balance;text-shadow:0 2px 26px rgba(8,18,10,.45)}
 .hero .btn{min-height:56px;padding:0 36px;font-size:17px}
+.hero .btn:hover{box-shadow:0 0 0 5px rgba(255,255,255,.28),0 12px 26px -12px rgba(120,40,30,.7)} /* r2: a ring on hover over the footage */
 
 /* ---- section rhythm */
-section{scroll-margin-top:72px}
+section{scroll-margin-top:84px}
+@media (max-width:860px){section{scroll-margin-top:76px}}
 .sec{padding:clamp(72px,10vw,140px) 0}
 .sec-s{padding:clamp(56px,7vw,100px) 0}
 .lilac{background:var(--lilac)} .peach{background:var(--peach)} .sage{background:var(--sage)}
@@ -93,7 +100,7 @@ section{scroll-margin-top:72px}
 .welcome .wrap{display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,6vw,96px);align-items:center}
 .welcome h2{margin-bottom:8px}
 .welcome .feature{font-family:var(--display);font-size:clamp(28px,2.6vw,36px);line-height:1.2;margin:0 0 26px;color:#6A4A70}
-.clip,.vclip{position:relative;overflow:hidden;aspect-ratio:4/5;background:#cfd0c4}
+.clip,.vclip{position:relative;overflow:hidden;aspect-ratio:4/5;background:#cfd0c4 var(--lq,none) center/cover no-repeat} /* r2: a 24 px frame of the clip paints at once (no grey box) */
 .clip img,.clip video,.vclip img,.vclip video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .clip video,.vclip video{opacity:0;transition:opacity .6s}
 .clip video.on,.vclip video.on{opacity:1}
@@ -148,7 +155,8 @@ section{scroll-margin-top:72px}
 .tab{position:relative;z-index:1;min-height:44px;padding:0 22px;border:0;border-radius:999px;background:transparent;color:var(--ink);font:500 16px/1 var(--text);letter-spacing:.02em;cursor:pointer;transition:color .3s,background-color .2s}
 .tab:hover{background:rgba(46,52,36,.08)}
 .tab[aria-selected=true]{color:#fff;background:var(--ink);transition:color .3s,background-color 0s .45s}
-.tab[aria-selected=true]:hover{background:#3E4733} /* 4g: the selected tab answers hover too */
+.tab[aria-selected=true]:hover{background:#4A5440;transition:background-color .15s} /* 4g/r2: the selected tab answers hover at once */
+.tab:active{transform:scale(.96)}
 .tab:focus-visible{outline-offset:2px}
 .no-js .tabs{display:none}
 .dishes{list-style:none;margin:0;padding:0;font-size:clamp(19px,1.6vw,22px);line-height:1.6}
@@ -208,6 +216,7 @@ section{scroll-margin-top:72px}
 .qctl{display:flex;align-items:center;gap:12px;margin-top:8px}
 .dots{display:flex;gap:0;align-items:center}
 .dot{width:44px;height:44px;border:0;padding:0;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background-color .2s}
+.dot:hover{background:rgba(46,52,36,.07)}.dot:active{background:rgba(46,52,36,.14)} /* r2: the dot itself answers hover and press */
 .dot::before{content:"";width:8px;height:8px;border-radius:99px;background:#C9CEC0;transition:width .35s var(--ease),background-color .3s}
 .dot:hover::before{background:#9AA290;width:12px}
 .dot[aria-current=true]::before{width:24px;background:var(--ink)}
@@ -245,9 +254,9 @@ section{scroll-margin-top:72px}
 /* ---- closing */
 .closing{position:relative;min-height:clamp(520px,64vw,800px);display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden}
 .closing img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.closing::after{content:"";position:absolute;inset:0;background:rgba(18,28,20,.46)}
-.closing .wrap{position:relative;z-index:2;max-width:820px}
-.closing p{font-weight:500;font-size:clamp(22px,2.2vw,30px);line-height:1.35;margin-bottom:34px;text-shadow:0 2px 18px rgba(0,0,0,.3)}
+.closing::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 46% 34% at 50% 50%,rgba(14,22,16,.5),rgba(14,22,16,.18) 70%,rgba(14,22,16,.06) 100%)} /* r2: a local scrim behind the words; the roofs stay red, the pool turquoise */
+.closing .wrap{position:relative;z-index:2;max-width:820px;padding-top:64px;padding-bottom:64px}
+.closing p{font-weight:500;font-size:clamp(22px,2.2vw,30px);line-height:1.35;margin-bottom:34px;text-shadow:0 2px 20px rgba(0,0,0,.5),0 1px 3px rgba(0,0,0,.35)}
 .closing .btns{justify-content:center}
 
 /* ---- footer */
@@ -341,6 +350,8 @@ section{scroll-margin-top:72px}
   .fl label{left:14px}
   /* 4g: on the phone the dates come before the gallery, so they are seen before "See prices" */
   .dr-body .pick{order:1}.dr-body .form{order:2}.dr-body .prices{order:3;margin:10px 0 18px}.dr-body .room{order:4}.dr-body .inc{order:5}.dr-body .trust{order:6}
+  /* r2: no cut-off strip of photo under the dates: the gallery appears (in full) once a room is tapped in the drawer */
+  .drawer:not(.gal-on) .room{display:none}
 }
 html.lock,html.lock body{overflow:hidden}
 

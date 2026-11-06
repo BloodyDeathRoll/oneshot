@@ -8,7 +8,7 @@
 import css from '../styles/site.css?raw'
 import js from '../scripts/site.js?raw'
 import {
-  c, G, L, I, e, t, P, paras, block, money, unit, NAME, ENGINE, roomUrl, wa, TEL, PHONE, MAIL, MAP, ADDRESS, SOCIAL,
+  lq, c, G, L, I, e, t, P, paras, block, money, unit, NAME, ENGINE, roomUrl, wa, TEL, PHONE, MAIL, MAP, ADDRESS, SOCIAL,
   RATINGS, REVIEWS, img, srcOf, srcset, shapeKey, tiersOf, sources, LOGO,
   TITLE, HOME_DESCRIPTION, seoHead, businessLd, ldJson, ogImage, IS_PREVIEW,
 } from '../lib/site.mjs'
@@ -34,7 +34,7 @@ const rooms = (c.rooms ?? []).map((r, i) => ({
     ...((G.roomGalleries ?? {})[r.label] ?? []).map((g) => ({ src: srcOf(g.file, shapeKey(2 / 3), 1200), srcset: srcset(g.file, shapeKey(2 / 3)), alt: g.alt })),
   ],
 }))
-const DATA = { engine: ENG, wa: wa('').replace(/\?text=$/, ''), waText: L.wa_book_stem, rooms: rooms.map(({ key, label, url, beds, note, sleeps, facts, photos }) => ({ key, label, url, beds, note, sleeps, facts, photos })) }
+const DATA = { photosOf: L.photos_of, engine: ENG, wa: wa('').replace(/\?text=$/, ''), waText: L.wa_book_stem, rooms: rooms.map(({ key, label, url, beds, note, sleeps, facts, photos }) => ({ key, label, url, beds, note, sleeps, facts, photos })) }
 
 const priceRow = (label) => (c.priceList ?? []).find((p) => p.label === label)
 const sep = '<span class="sep" aria-hidden="true">|</span>'
@@ -45,7 +45,9 @@ const bk = RATINGS.find((r) => r.platform === 'booking')
 const hv = tiersOf(c.heroVideo), hp = c.heroVideoPoster
 const PORTRAIT = '(max-width: 767px) and (orientation: portrait)'
 const heroImg = hp?.filename ? `<picture><source type="image/webp" media="${PORTRAIT}" srcset="${srcset(hp.filename, shapeKey(16 / 9, 'p'))}" sizes="100vw"><img src="${srcOf(hp.filename, 'full', 1920)}" srcset="${srcset(hp.filename, 'full')}" sizes="100vw" width="1920" height="1080" alt="${e(hp.alt)}" fetchpriority="high"></picture>` : ''
-const heroVideo = hv ? `<video id="hero-video" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true">${sources([
+const heroLq = hp?.filename ? lq(hp.filename, shapeKey(null, 'lq')) : null
+const heroPlq = hp?.filename ? lq(hp.filename, shapeKey(16 / 9, 'plq')) : null
+const heroVideo = hv ? `<video id="hero-video"${heroLq ? ` poster="${heroLq}"` : ''} muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true">${sources([
   [hv.p1080?.webm, PORTRAIT], [hv.p1080?.mp4, PORTRAIT], [hv.m1280?.webm, '(max-width: 767px)'], [hv.m1280?.mp4, '(max-width: 767px)'], [hv.d1920?.webm], [hv.d1920?.mp4],
 ])}</video>` : ''
 
@@ -54,15 +56,18 @@ const clip = (row, tierList, posterSizes) => {
   if (!row?.video) return ''
   const tv = tiersOf(row.video)
   const poster = row.poster?.filename ? img(row.poster.filename, shapeKey(1.25), { alt: row.poster.alt, sizes: posterSizes }) : ''
-  return poster + (tv ? `<video data-lazy muted loop playsinline preload="none" disablepictureinpicture aria-label="${e(row.description)}">${sources(tierList(tv))}</video>` : '')
+  const small = row.poster?.filename ? lq(row.poster.filename, shapeKey(1.25, 'lq')) : null
+  return poster + (tv ? `<video data-lazy${small ? ` poster="${small}"` : ''} muted loop playsinline preload="none" disablepictureinpicture aria-label="${e(row.description)}">${sources(tierList(tv))}</video>` : '')
 }
+const welcomeLq = c.videos?.[0]?.poster?.filename ? lq(c.videos[0].poster.filename, shapeKey(1.25, 'lq')) : null
+const fitnessLq = c.videos?.[1]?.poster?.filename ? lq(c.videos[1].poster.filename, shapeKey(1.25, 'lq')) : null
 const welcomeClip = clip(c.videos?.[0], (tv) => [[tv.p900?.webm], [tv.p900?.mp4]], '(max-width:860px) 92vw, 440px')
 const fitnessClip = clip(c.videos?.[1], (tv) => [[tv.m720?.webm], [tv.m720?.mp4]], '(max-width:860px) 100vw, 50vw')
 
 /* ---------- sections ---------- */
 const cards = rooms.map((r) => `
-      <a class="card" href="${e(r.url)}" data-book data-room="${r.key}" aria-label="${e(t(L.card_aria, { room: r.label, size: r.size, n: r.sleeps }))}">
-        ${r.photo?.filename ? img(r.photo.filename, shapeKey(1.25), { alt: r.photo.alt, sizes: '(max-width:980px) 76vw, 300px' }) : ''}
+      <a class="card" href="${e(r.url)}" data-book data-room="${r.key}">
+        ${r.photo?.filename ? img(r.photo.filename, shapeKey(1.25), { alt: '', sizes: '(max-width:980px) 76vw, 300px' }) : ''}
         <span class="go" aria-hidden="true">${e(L.look)} ${I.arr}</span>
         <span class="ct"><h3>${e(r.label)}</h3><span class="meta">${e(r.facts)}</span></span>
       </a>`).join('')
@@ -110,7 +115,7 @@ const page = `
 </header>
 <main id="main">
 <section class="hero" id="top" aria-label="${e(G.heroTitle?.value ?? NAME)}">
-  <div class="hero-media">${heroImg}${heroVideo}</div>
+  <div class="hero-media"${heroLq || heroPlq ? ` style="${heroLq ? `--lq:url(${heroLq});` : ''}${heroPlq ? `--plq:url(${heroPlq})` : ''}"` : ''}>${heroImg}${heroVideo}</div>
   <div class="hero-c">
     <h1>${e(G.heroTitle?.value ?? NAME)}</h1>
     <a class="btn" href="${e(ENG)}" data-book>${e(L.check)}</a>
@@ -126,7 +131,7 @@ ${welcome ? `
       ${c.tagline ? `<p class="lead">${e(c.tagline)}</p>` : ''}
       ${P(welcome.body)}
     </div>
-    <div class="clip">${welcomeClip}</div>
+    <div class="clip"${welcomeLq ? ` style="--lq:url(${welcomeLq})"` : ''}>${welcomeClip}</div>
   </div>
 </section>` : ''}
 <section class="sec rooms" id="rooms" aria-labelledby="h-rooms">
@@ -174,7 +179,7 @@ ${fitB ? `
     ${cw ? `<h3 class="small-h">${e(cw.title)}</h3><ul class="week" aria-label="${e(t(L.week_aria, { title: cw.title, time: cw.time, off: L.days[cw.off][1] }))}">${week}</ul>` : ''}
     ${rates ? `<p class="line rates"><b>${e(L.per_class)}</b>${sep}${rates}</p>` : ''}
   </div>
-  <div class="vclip">${fitnessClip}</div>
+  <div class="vclip"${fitnessLq ? ` style="--lq:url(${fitnessLq})"` : ''}>${fitnessClip}</div>
 </section>` : ''}
 ${surfB ? `
 <section class="surf" aria-labelledby="h-surf">
@@ -255,8 +260,10 @@ ${groups ? `
     <p class="small">© ${e(NAME)}, Kabalana</p>
   </div>
 </footer>
-<div class="bar" aria-label="${e(L.bar_aria)}"><a class="btn" href="${e(ENG)}" data-book>${e(L.check)}</a>${WA_BOOK ? `<a class="wa" href="${e(WA_BOOK)}" aria-label="${e(L.wa_aria)}">${I.wa}</a>` : ''}</div>
+<nav class="booknav" aria-label="${e(L.bar_aria)}">
+<div class="bar"><a class="btn" href="${e(ENG)}" data-book>${e(L.check)}</a>${WA_BOOK ? `<a class="wa" href="${e(WA_BOOK)}" aria-label="${e(L.wa_aria)}">${I.wa}</a>` : ''}</div>
 ${WA_BOOK ? `<a class="fwa" href="${e(WA_BOOK)}" aria-label="${e(L.wa_aria)}">${I.wa}</a>` : ''}
+</nav>
 
 <div class="scrim" id="scrim" hidden></div>
 <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dr-title" hidden>
@@ -264,7 +271,7 @@ ${WA_BOOK ? `<a class="fwa" href="${e(WA_BOOK)}" aria-label="${e(L.wa_aria)}">${
   <div class="dr-body">
     <div class="pick" role="group" aria-label="${e(L.pick_aria)}">${rooms.map((r) => `<button class="rchip" type="button" data-room="${r.key}" aria-pressed="false">${r.photo?.filename ? `<img src="${srcOf(r.photo.filename, shapeKey(1.25), 120)}" width="52" height="52" alt="" loading="lazy">` : ''}<span><b>${e(r.label)}</b><small>${e(r.facts)}</small></span></button>`).join('')}</div>
     <div class="room"><div>
-      <div class="gal"><div class="slides"></div><button class="rbtn prev" type="button" aria-label="${e(L.prev_photo)}">${I.l}</button><button class="rbtn next" type="button" aria-label="${e(L.next_photo)}">${I.r}</button><div class="dots"></div></div>
+      <div class="gal"><div class="slides" role="region" tabindex="0" aria-label="${e(t(L.photos_of, { room: rooms[0]?.label ?? '' }))}"></div><button class="rbtn prev" type="button" aria-label="${e(L.prev_photo)}">${I.l}</button><button class="rbtn next" type="button" aria-label="${e(L.next_photo)}">${I.r}</button><div class="dots"></div></div>
       <div class="rd"><h3></h3><p class="facts"></p><p class="beds"></p><p class="note"></p></div>
     </div></div>
     ${offer ? `<p class="inc">${e(paras(offer.body)[0])}</p>` : ''}
@@ -307,8 +314,8 @@ const preloadL = hp?.filename ? srcset(hp.filename, 'full') : ''
 <Fragment set:html={head} />
 <link rel="preload" as="font" type="font/woff2" href="fonts/jost-latin-wght-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/satisfy-latin-400-normal.woff2" crossorigin>
-{preloadP && <link rel="preload" as="image" imagesrcset={preloadP} imagesizes="100vw" type="image/webp" media={PORTRAIT}>}
-{preloadL && <link rel="preload" as="image" imagesrcset={preloadL} imagesizes="100vw" type="image/webp" media={`not all and ${PORTRAIT}`}>}
+{preloadP && <link rel="preload" as="image" imagesrcset={preloadP} imagesizes="100vw" type="image/webp" media={PORTRAIT} fetchpriority="high">}
+{preloadL && <link rel="preload" as="image" imagesrcset={preloadL} imagesizes="100vw" type="image/webp" media={`not all and ${PORTRAIT}`} fetchpriority="high">}
 <script is:inline>document.documentElement.className='js'</script>
 <style is:inline set:html={fontFaces + css}></style>
 </head>

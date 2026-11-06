@@ -5,7 +5,7 @@
  * Plumbing (escaping, phone format, glob of the generated manifests) follows
  * sites/coconut-surf-inn-guest-house-and-restaurant/final/src/lib/site.mjs.
  */
-import { existsSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import raw from '../tenant/content.json'
 import gaps from '../gaps/gaps.json'
@@ -72,6 +72,13 @@ export const img = (file, key, { alt = '', sizes = '100vw', lazy = true, cls = '
   const big = s[s.length - 1]
   const lz = lazy ? ' loading="lazy" decoding="async"' : ' fetchpriority="high"'
   return `<img${cls ? ` class="${cls}"` : ''} src="${big.webp}" srcset="${s.map((x) => `${x.webp} ${x.w}w`).join(', ')}" sizes="${sizes}" width="${big.w}" height="${big.h}" alt="${e(alt)}"${lz}${attrs}>`
+}
+/* a tiny crop (the 'lq' shapes) inlined as a data URI: painted at first paint, used as the clips' poster */
+export const lq = (file, key) => {
+  const x = photosGen[file]?.shapes?.[key]?.sources?.[0]
+  if (!x) return null
+  const f = join(process.cwd(), 'public', x.webp)
+  return existsSync(f) ? 'data:image/webp;base64,' + readFileSync(f).toString('base64') : null
 }
 export const srcOf = (file, key, w) => { const s = photosGen[file]?.shapes?.[key]?.sources ?? []; return (s.find((x) => x.w === w) ?? s[s.length - 1])?.webp ?? '' }
 export const srcset = (file, key) => (photosGen[file]?.shapes?.[key]?.sources ?? []).map((x) => `${x.webp} ${x.w}w`).join(', ')
