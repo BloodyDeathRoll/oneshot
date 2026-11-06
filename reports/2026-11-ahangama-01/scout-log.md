@@ -31,3 +31,10 @@ Booking.com (HTTP 202, empty body), Expedia and Travelocity (HTTP 429), hotels.c
 ## Taxonomy gap
 
 `verticals/surf/taxonomy.md` holds only its title, so `types` and scout rule 5 are the definition used. Under rule 5, The Sandhya does not market to surfers: `surf_related_confidence` 0.4. Reported to Alon before harvest.
+
+## Corrections after harvest, 2026-11-06
+
+Both checked on the live site after the harvester reported them.
+
+- **First screen:** a RESERVE button is visible on the first phone screen (390 x 844). It is an `<a>` with no `href`, which `tools/funnel.mjs` does not count, so `cta_above_fold: false` in `funnel.json` is a limit of the probe, not a fault of the site. The `no_cta_above_fold` tag is removed. The `scored` ledger line still says otherwise; the ledger is append-only, so the `harvested` line carries the correction.
+- **Surf:** `/design` lists "Yoga and surf lessons" and "Surfboard hire", so "no boards, lessons or surf offers" above was wrong: it was based on `/locale` and `/rooms` only. `surf_related_confidence` goes from 0.4 to 0.6.

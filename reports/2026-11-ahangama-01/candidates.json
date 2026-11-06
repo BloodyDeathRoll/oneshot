@@ -55,8 +55,12 @@
       },
       "presence": {
         "score": 5,
-        "reason": "Own mobile WordPress site with a Cloudbeds engine linked as RESERVE NOW on /rooms, one tap from the landing page; the funnel probe finds no booking action on the first phone screen, and the homepage shows no prices.",
-        "criteria": ["own_site", "mobile", "booking_engine", "no_cta_above_fold"]
+        "reason": "Own mobile WordPress site with a Cloudbeds engine: a fixed RESERVE button on the first phone screen opens a date panel (2 taps to the engine), and RESERVE NOW on /rooms links straight to it; the homepage shows no nightly prices. tools/funnel.mjs reports no action above the fold because that RESERVE is an <a> with no href.",
+        "criteria": [
+          "own_site",
+          "mobile",
+          "booking_engine"
+        ]
       },
       "evidence": [
         {
@@ -85,9 +89,11 @@
           "note": "Deluxe $231, King $337, Premier $387, default search dates."
         }
       ],
-      "surf_related_confidence": 0.4,
-      "surf_related_note": "Sits on Kabalana Beach and describes the surf, but does not market to surfers. Scout rule 5 would keep a hotel like this out of beach_lodging on its own; it is here because Alon named it, for its price point, on 2026-11-06.",
-      "languages_seen": ["en"]
+      "surf_related_confidence": 0.6,
+      "surf_related_note": "Sits on Kabalana Beach. Its own /design page lists \"Yoga and surf lessons\" and \"Surfboard hire\", with no price, provider or schedule; a third party says it has no surf school of its own. Surfers are one audience among several, not the market. Alon named it for its price point on 2026-11-06 and it is presented as a beachfront boutique hotel, not a surf stay.",
+      "languages_seen": [
+        "en"
+      ]
     }
   ]
 }
