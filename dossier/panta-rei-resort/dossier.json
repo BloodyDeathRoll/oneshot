@@ -1,0 +1,2126 @@
+{
+ "slug": "panta-rei-resort",
+ "run_id": "2026-11-lk-surf-01",
+ "harvester_version": "0.5.0",
+ "harvested_at": "2026-11-06T10:10:00Z",
+ "businessType": "beach_lodging",
+ "businessType_note": "Earns its money from 16 bungalows/rooms (with breakfast) plus a restaurant open to outside guests, a pool day pass and fitness classes; no surf lessons, rental or board storage of its own. Row beach_lodging ('a bed near the wave, no lessons of its own'). Surf ties: 'surfing the waves of Kabalana' (About), 'the perfect base for surfing' (meta description), groups 'for yoga, surfing' (Activities), a 'Surf Therapy Massage — Full recovery after active surfing' (guest guide), guests with surfboards in img-012/img-035, and its own film opening on surf (vid-004). Kabalana Beach 600 m (Booking.com).",
+ "business": {
+  "name": {
+   "value": "Panta Rei Resort",
+   "source_url": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en",
+   "fetched_at": "2026-11-06T09:44:48Z",
+   "note": "Google listing name; site title 'Panta Rei Resort | Boutique Hotel in Kabalana, Sri Lanka'; Booking.com 'Panta Rei resort'; logo 'PANTA REI RESORT · Kabalana' (img-023)"
+  },
+  "type": {
+   "value": "beach_lodging",
+   "source_url": "https://www.pantareiresort.com/about",
+   "fetched_at": "2026-11-06T09:51:36Z"
+  },
+  "tagline": {
+   "value": "No Paradise Like Home, Panta Rei.",
+   "source_url": "https://www.pantareiresort.com/",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "note": "home page headline; About: 'NO PARADISE LIKE HOME'; engine: 'A hidden paradise in Ahangama, just steps from Kabalana Beach'; Facebook intro: 'Hidden paradise in the south coast of Sri Lanka'"
+  },
+  "description": {
+   "value": "Welcome to our boutique resort in Kabalana, Sri Lanka. In Panta Rei you can escape the hustle and bustle of daily life and immerse yourself in a tropical paradise where surfing, yoga, crystal blue beaches and rainforests come together. The resort features 16 beautiful bungalows, each has its own unique charm and style inspired by wild nature and made from natural materials. Our delicious restaurant and bar offer a variety of tastes, both from local and international cuisines, perfect for fueling up after a day of adventure or winding down with a sunset cocktail. Choose between relaxing by the large pool, strech- ing out in the stylish yoga shala, or surfing the waves of Kabalana. Enjoy Panta Rei.",
+   "source_url": "https://www.pantareiresort.com/about",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "language": "en",
+   "note": "owner's own text, verbatim (incl. the 'strech- ing' typo)"
+  },
+  "since": {
+   "value": null,
+   "gap": "no opening year published; the YouTube film was uploaded 2023-01-09 and the Facebook page id dates from 2023; the TripAdvisor listing id d25364260 is recent — none states an opening date"
+  },
+  "sister_property": {
+   "value": "The Nuga House (Ahangama) — 'our sister hotel' / 'our partner hotel', yoga classes and workshops in season, Instagram @thenugahouse",
+   "source_url": "https://www.pantareiresort.com/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf",
+   "fetched_at": "2026-11-06T09:52:10Z"
+  },
+  "owners": {
+   "value": "'One of the owners was around during our stay' (guest Peter, Google); owner replies on Google are unsigned",
+   "source_url": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en",
+   "fetched_at": "2026-11-06T09:55:37Z",
+   "note": "no owner names published"
+  },
+  "group_hosting": {
+   "value": "Planning to bring a big group to Sri Lanka? Whether it’s for yoga, surfing, or simply soaking up the chilled island vibes, our resort is ready to host you. We’ll take care of all the meals and accommodation, so you can focus on what matters most—enjoying every moment together.",
+   "source_url": "https://www.pantareiresort.com/events",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "note": "'I'm very interested' → mailto:pantareiresort@gmail.com"
+  }
+ },
+ "location": {
+  "address": {
+   "value": "back to life road, Kabalana Rd, Ahangama 80650, Sri Lanka",
+   "source_url": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en",
+   "fetched_at": "2026-11-06T09:44:48Z",
+   "note": "Google listing address exactly as shown; per playbook §6 capitalise place names: 'Back to Life Road, Kabalana Rd, Ahangama 80650, Sri Lanka'. Site: 'Back to Life Road, 80650 Ahangama, Sri Lanka'; Booking: 'back to life road, 80650 Ahangama, Sri Lanka'"
+  },
+  "lat_lng": {
+   "value": [
+    5.9807381,
+    80.3497102
+   ],
+   "source_url": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en",
+   "fetched_at": "2026-11-06T09:44:48Z",
+   "note": "Google pin; plus code X8JX+7V"
+  },
+  "map_url": {
+   "value": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en",
+   "source_url": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en",
+   "fetched_at": "2026-11-06T09:44:48Z"
+  },
+  "distance_to_beach": {
+   "value": "Kabalana Beach 600 m",
+   "source_url": "https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html",
+   "fetched_at": "2026-11-06T09:55:37Z",
+   "note": "Booking.com 'Beaches in the neighbourhood: Kabalana Beach 600 m', 'a 7-minute walk to Kabalana Beach'; site and engine say '300 metres from Kabalana Beach'; OSM: pin 366 m from the coastline (way 23463869) — see contradictions"
+  },
+  "nearby": {
+   "value": [
+    "Koggala Lake 1.5 km",
+    "Kathaluwa train station 1.9 km",
+    "Ahangama railway station 2.1 km",
+    "Koggala Airport 5 km",
+    "Galle Fort 18 km"
+   ],
+   "source_url": "https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html",
+   "fetched_at": "2026-11-06T09:55:37Z"
+  },
+  "spot": {
+   "value": null,
+   "gap": "the business names no surf break; it says 'surfing the waves of Kabalana'. Kabalana's wave is shared context only, never attributed to the business",
+   "pitch_point": false
+  }
+ },
+ "contact": {
+  "phone": {
+   "value": "+94728003022",
+   "source_url": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en",
+   "fetched_at": "2026-11-06T09:44:48Z",
+   "verified": "Google tel: link 'phone:tel:+94728003022'; same number on the site footer ('+94 72 800 3022'), /contact ('+94 728003022'), the WhatsApp link (phone=94728003022), the engine (tel:+94728003022) and the guest guide ('Panta Rei Contact')"
+  },
+  "whatsapp": {
+   "value": "+94728003022",
+   "source_url": "https://www.pantareiresort.com/",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "verified": "site WhatsApp button api.whatsapp.com/send/?phone=94728003022 with prefilled 'Hi! I’d like to check availability for your resort'"
+  },
+  "phone_emergency": {
+   "value": "+94742095135",
+   "source_url": "https://www.pantareiresort.com/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf",
+   "fetched_at": "2026-11-06T09:52:10Z",
+   "note": "guest guide 'Emergency Contact'; Facebook lists it as the page phone"
+  },
+  "email": {
+   "value": "hello@pantareiresort.com",
+   "source_url": "https://www.pantareiresort.com/contact",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "note": "shown on every page and on the engine; but the clickable links on the site go to pantareiresort@gmail.com (contact, footer) and to the Wix placeholder info@mysite.com (Activities) — see contradictions"
+  },
+  "email_alt": {
+   "value": "pantareiresort@gmail.com",
+   "source_url": "https://www.pantareiresort.com/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf",
+   "fetched_at": "2026-11-06T09:52:10Z",
+   "note": "guest guide; Facebook; mailto targets on the site"
+  },
+  "massage_whatsapp": {
+   "value": "+79995285952",
+   "source_url": "https://www.pantareiresort.com/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf",
+   "fetched_at": "2026-11-06T09:52:10Z",
+   "note": "'TO BOOK, PLEASE MESSAGE WHATSAPP AT +79995285952' (massage therapist; a +7 number). Not a booking channel for rooms"
+  },
+  "socials": {
+   "instagram": "https://www.instagram.com/pantarei_resort/",
+   "facebook": "https://www.facebook.com/profile.php?id=100093054286482",
+   "tripadvisor": "https://www.tripadvisor.com/Hotel_Review-g674590-d25364260-Reviews-Panta_Rei_Resort-Ahangama_Galle_District_Southern_Province.html",
+   "google_maps": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en",
+   "youtube": "https://www.youtube.com/@Panta_Rei_Resort"
+  }
+ },
+ "booking": {
+  "path": {
+   "value": "engine",
+   "source_url": "https://www.pantareiresort.com/",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "note": "'CHECK AVAILABILITY' / 'BOOK NOW' on every page → the business's own direct-booking engine (HolidayFuture on Hostaway). Engine: 'Book direct with Panta Rei for our best available rates and direct support from our team.' Site phone layout: 'Best price when booking direct'. WhatsApp is the second channel (prefilled message)."
+  },
+  "engine_url": {
+   "value": "https://pantareiresort.holidayfuture.com/",
+   "source_url": "https://www.pantareiresort.com/",
+   "fetched_at": "2026-11-06T09:51:36Z"
+  },
+  "engine_rooms": {
+   "value": {
+    "Double Room": "https://pantareiresort.holidayfuture.com/listings/572800",
+    "Triple Room": "https://pantareiresort.holidayfuture.com/listings/572802",
+    "Family Villa": "https://pantareiresort.holidayfuture.com/listings/572799",
+    "Suite Room With Private Pool": "https://pantareiresort.holidayfuture.com/listings/572798"
+   },
+   "source_url": "https://pantareiresort.holidayfuture.com/",
+   "fetched_at": "2026-11-06T09:57:00Z"
+  },
+  "other_engines": {
+   "value": [
+    {
+     "name": "Booking.com",
+     "url": "https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html"
+    },
+    {
+     "name": "Agoda",
+     "url": null,
+     "note": "offer seen in Google's price panel; listing URL not opened"
+    }
+   ],
+   "source_url": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en",
+   "fetched_at": "2026-11-06T09:44:48Z"
+  },
+  "cancellation": {
+   "value": "100% refund up to 14 days before arrival",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572800",
+   "fetched_at": "2026-11-06T09:57:00Z"
+  },
+  "payment": {
+   "value": "Accepted payment methods: Cash. Please note that there is a 3% credit card fee if guests are paying by credit card for the accommodation.",
+   "source_url": "https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html",
+   "fetched_at": "2026-11-06T09:55:37Z"
+  },
+  "reply_time_hint": {
+   "value": null,
+   "gap": "no reply time published"
+  }
+ },
+ "hours": [],
+ "hours_note": {
+  "value": null,
+  "gap": "reception hours not published; Google shows no opening hours (check-in 14:00, check-out 11:30 on Google)"
+ },
+ "restaurant_hours": [
+  {
+   "value": {
+    "breakfast": "8:30AM – 12:00PM (coffee from 8:00AM)",
+    "lunch": "1:00PM – 5:00PM",
+    "dinner": "6:00PM – 9:30PM",
+    "days": "Everyday"
+   },
+   "source_url": "https://www.pantareiresort.com/restaurant",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "note": "site /restaurant; the guest guide says breakfast '8:30 AM - 11:30 AM' (contradiction); 'We’re open to outside guests too' (About)"
+  }
+ ],
+ "stay_info": {
+  "check_in": {
+   "value": "2 pm",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572800",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "note": "engine 'Check-in: 2 pm'; Google 'Check-in time: 14:00'"
+  },
+  "check_out": {
+   "value": "11 am",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572800",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "note": "engine and guest guide 'CHECK OUT at 11 AM'; Google says 11:30 (contradiction)"
+  },
+  "house_rules": {
+   "value": [
+    "Pets: not allowed",
+    "Smoking inside: not allowed",
+    "Quiet hours between 10 PM and 8 AM",
+    "Children of any age are welcome; cot 0–2 years free on request; extra bed US$20 per person per night"
+   ],
+   "source_url": "https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html",
+   "fetched_at": "2026-11-06T09:55:37Z",
+   "note": "engine house rules + Booking.com policies + guest guide"
+  },
+  "breakfast": {
+   "value": "Breakfast is included and served in our restaurant daily",
+   "source_url": "https://www.pantareiresort.com/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf",
+   "fetched_at": "2026-11-06T09:52:10Z",
+   "note": "every room type lists 'Breakfast included'"
+  },
+  "generator": {
+   "value": "In case of a power outage, our generator will supply electricity to all areas of the hotel",
+   "source_url": "https://www.pantareiresort.com/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf",
+   "fetched_at": "2026-11-06T09:52:10Z"
+  },
+  "transport": {
+   "value": "tuk tuk drivers waiting at the door; private taxi arranged on request; airport shuttle (Booking.com facility list)",
+   "source_url": "https://www.pantareiresort.com/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf",
+   "fetched_at": "2026-11-06T09:52:10Z"
+  }
+ },
+ "room_types": [
+  {
+   "value": {
+    "label": "Double Room",
+    "site_label": "Double Deluxe",
+    "booking_label": "Deluxe Double Room",
+    "size_m2": 22,
+    "beds": "king-size bed or twin single beds",
+    "sleeps": 3,
+    "bedrooms": 1,
+    "bathroom": "private en-suite bathroom with shower",
+    "view": "private balcony with pool view",
+    "features": [
+     "Air conditioning",
+     "Hot water",
+     "Wifi",
+     "Daily cleaning",
+     "Breakfast included"
+    ],
+    "photos": [
+     "img-028",
+     "img-029",
+     "img-030",
+     "img-031",
+     "img-032",
+     "img-007",
+     "img-008",
+     "img-013"
+    ]
+   },
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572800",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "note": "engine text: '22m² room with king-size bed or twin single beds, private balcony with pool view'; site /ourrooms 'DOUBLE DELUXE' (features list); Booking 'Deluxe Double Room: 1 large double bed or 2 single beds'. Engine says '3 guests'."
+  },
+  {
+   "value": {
+    "label": "Triple Room",
+    "site_label": "Suite Triple",
+    "booking_label": "Superior Triple Room",
+    "size_m2": 30,
+    "beds": "king-size bed and a sofa bed",
+    "sleeps": 3,
+    "bedrooms": 1,
+    "bathroom": "private bathroom with both a bathtub and shower",
+    "view": "private balcony with pool view",
+    "features": [
+     "Air conditioning",
+     "Hot water",
+     "Wifi",
+     "Daily cleaning",
+     "Breakfast included"
+    ],
+    "photos": [
+     "img-034",
+     "img-035",
+     "img-036",
+     "img-037",
+     "img-009",
+     "img-010",
+     "img-011"
+    ]
+   },
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572802",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "note": "Booking: '2 single beds and 1 extra-large double bed and 1 futon bed' (differs from engine's king + sofa bed)"
+  },
+  {
+   "value": {
+    "label": "Family Villa",
+    "site_label": "Family Villa",
+    "booking_label": "Deluxe Family Suite",
+    "size_m2": 50,
+    "beds": "two king-size beds or four single beds",
+    "sleeps": 4,
+    "bedrooms": 2,
+    "bathroom": "private bathroom, plus a private outdoor bath",
+    "view": "garden view, private balcony",
+    "features": [
+     "2 bedrooms with air conditioning",
+     "Hot water",
+     "Wifi",
+     "Daily cleaning",
+     "Breakfast included"
+    ],
+    "photos": [
+     "img-038",
+     "img-039",
+     "img-040",
+     "img-012",
+     "img-014",
+     "img-015"
+    ]
+   },
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572799",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "note": "site /ourrooms: 'Private Bathroom with shower and outside bathtub'"
+  },
+  {
+   "value": {
+    "label": "Suite Room With Private Pool",
+    "site_label": "Luxury Private Villa",
+    "booking_label": "Suite with Private Pool",
+    "size_m2": 40,
+    "beds": "king-size bed",
+    "sleeps": 2,
+    "bedrooms": 1,
+    "bathroom": "private en-suite bathroom with shower",
+    "view": "own private pool, just steps from the room",
+    "features": [
+     "1 bedroom with air conditioning",
+     "Hot water",
+     "Wifi",
+     "Private swimming pool",
+     "Daily cleaning",
+     "Private chilling area with in-build sofa",
+     "Breakfast included"
+    ],
+    "photos": [
+     "img-043",
+     "img-044",
+     "img-045",
+     "img-046",
+     "img-047",
+     "img-002",
+     "img-016",
+     "img-017"
+    ]
+   },
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572798",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "note": "engine: 'The private pool is exclusively for your use. Guests also have access to Panta Rei's pool, restaurant and other facilities. Yoga and pilates classes are held daily at 8:30am for extra charge.' Site photos for this room (img-002, img-016, img-017) match the engine's suite photos in style; Wix alt texts 'Sofa', 'Room entrance', 'Shower', 'Bed'"
+  }
+ ],
+ "room_count": {
+  "value": 16,
+  "source_url": "https://www.pantareiresort.com/",
+  "fetched_at": "2026-11-06T09:51:36Z",
+  "note": "'The resort features 16 beautiful bungalows' (home, About); engine: 'this 16-room boutique resort'"
+ },
+ "offers": [
+  {
+   "label": "Pool day pass (non-residents)",
+   "price": 3500,
+   "currency": "LKR",
+   "unit": "per person, to be spent at the restaurant",
+   "note": "'Best of all, it's 3500lkr to be spent on the restaurant.' (About page)",
+   "source_url": "https://www.pantareiresort.com/about",
+   "fetched_at": "2026-11-06T09:51:36Z"
+  },
+  {
+   "label": "Panta Fitness Club class — residents",
+   "price": 2500,
+   "currency": "LKR",
+   "unit": "per class",
+   "note": "schedule PDF: 'NO NEED TO BOOK · RESIDENTS 2500'; Vinyasa yoga 8:30AM Mon–Thu, Sat, Sun; Friday day off",
+   "source_url": "https://www.pantareiresort.com/_files/ugd/89c528_2cd9bc960fa848c18229699f785b0152.pdf",
+   "fetched_at": "2026-11-06T09:52:10Z"
+  },
+  {
+   "label": "Panta Fitness Club class — in-house guests",
+   "price": 3000,
+   "currency": "LKR",
+   "unit": "per class",
+   "note": "schedule PDF: 'IN HOUSE GUESTS 3000'",
+   "source_url": "https://www.pantareiresort.com/_files/ugd/89c528_2cd9bc960fa848c18229699f785b0152.pdf",
+   "fetched_at": "2026-11-06T09:52:10Z"
+  },
+  {
+   "label": "Panta Fitness Club class — walk-ins",
+   "price": 3500,
+   "currency": "LKR",
+   "unit": "per class",
+   "note": "schedule PDF: 'WALK IN'S 3500'",
+   "source_url": "https://www.pantareiresort.com/_files/ugd/89c528_2cd9bc960fa848c18229699f785b0152.pdf",
+   "fetched_at": "2026-11-06T09:52:10Z"
+  },
+  {
+   "label": "Surf Therapy Massage — 60 min full body",
+   "price": 20000,
+   "currency": "LKR",
+   "unit": "per treatment",
+   "note": "guest guide PDF p.7: 'A unique program created specifically for surfers… sport massage techniques to address the physical demands of surfing'; 'TO BOOK, PLEASE MESSAGE WHATSAPP AT +79995285952'",
+   "source_url": "https://www.pantareiresort.com/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf",
+   "fetched_at": "2026-11-06T09:52:10Z"
+  },
+  {
+   "label": "Surf Therapy Massage — 45 min back, neck & shoulders",
+   "price": 17000,
+   "currency": "LKR",
+   "unit": "per treatment",
+   "note": "guest guide PDF p.7",
+   "source_url": "https://www.pantareiresort.com/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf",
+   "fetched_at": "2026-11-06T09:52:10Z"
+  },
+  {
+   "label": "Revitalizing Massage — 60 min full body",
+   "price": 20000,
+   "currency": "LKR",
+   "unit": "per treatment",
+   "note": "guest guide PDF p.7",
+   "source_url": "https://www.pantareiresort.com/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf",
+   "fetched_at": "2026-11-06T09:52:10Z"
+  },
+  {
+   "label": "Revitalizing Massage — 45 min back, neck & shoulders",
+   "price": 17000,
+   "currency": "LKR",
+   "unit": "per treatment",
+   "note": "guest guide PDF p.7",
+   "source_url": "https://www.pantareiresort.com/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf",
+   "fetched_at": "2026-11-06T09:52:10Z"
+  },
+  {
+   "label": "Extra bed (adult)",
+   "price": 20,
+   "currency": "USD",
+   "unit": "per person, per night",
+   "note": "Booking.com policy: 'Extra bed upon request US$20 per person, per night'; cot 0–2 years free",
+   "source_url": "https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html",
+   "fetched_at": "2026-11-06T09:55:37Z"
+  }
+ ],
+ "offers_note": "No room price published by the business: the site shows none, and the engine prices only after dates are chosen (the calendar did not respond to automation). Google's price panel 2026-11-06: Booking.com and Agoda from ₪339 for 10–12 Nov, 2 adults (OTA, not content; recorded only for the pitch).",
+ "menu": {
+  "source_url": [
+   "https://www.pantareiresort.com/_files/ugd/89c528_cceeed2210fc430fb26ea35eb35d6032.pdf",
+   "https://www.pantareiresort.com/_files/ugd/89c528_2938814660ac49abab25d22799fba94c.pdf"
+  ],
+  "fetched_at": "2026-11-06T09:52:10Z",
+  "currency": "LKR",
+  "service_charge": "10% Service Charge will be added on your bill to be shared with our lovely staff.",
+  "sections": {
+   "Good Morning Panta Rei (breakfast menu)": [
+    [
+     "Cold Oats",
+     1900
+    ],
+    [
+     "Granola Bowl",
+     2200
+    ],
+    [
+     "Mango Smoothie Bowl",
+     2300
+    ],
+    [
+     "Chocolate Smoothie Bowl",
+     1900
+    ],
+    [
+     "Berry Smoothie Bowl",
+     2300
+    ],
+    [
+     "Sri Lankan Breakfast",
+     1900
+    ],
+    [
+     "Shakshuka",
+     2300
+    ],
+    [
+     "French Toast",
+     2300
+    ],
+    [
+     "Avo Toast (subject to availability)",
+     2300
+    ],
+    [
+     "Grilled Cheese and Pesto Bagel",
+     2200
+    ],
+    [
+     "Soft Scramble Egg Bun",
+     2300
+    ],
+    [
+     "Classic Breakfast",
+     2100
+    ],
+    [
+     "Banana Oat Pancakes",
+     2000
+    ],
+    [
+     "Fruit Plate",
+     1300
+    ]
+   ],
+   "Breakfast for the kiddos": [
+    [
+     "Classic",
+     1400
+    ],
+    [
+     "Mini Pancakes",
+     1300
+    ],
+    [
+     "Nutella Porridge",
+     1300
+    ]
+   ],
+   "All day breakfast": [
+    [
+     "Mango Smoothie Bowl",
+     2300
+    ],
+    [
+     "Berry Smoothie Bowl",
+     2300
+    ],
+    [
+     "Chocolate Smoothie Bowl",
+     1900
+    ],
+    [
+     "Shakshuka",
+     2300
+    ],
+    [
+     "Soft Scramble Egg Bun",
+     2300
+    ]
+   ],
+   "The sweets": [
+    [
+     "Homemade Banana Cake",
+     1300
+    ],
+    [
+     "Nutella Crêpe",
+     1500
+    ],
+    [
+     "Seasonal Fruit Plate",
+     1300
+    ],
+    [
+     "Lime Brulee Pie",
+     1600
+    ]
+   ],
+   "Main dishes": [
+    [
+     "Curry of the Day",
+     1700
+    ],
+    [
+     "Panta Rice Bowl",
+     2800
+    ],
+    [
+     "Schnitzel",
+     3000
+    ],
+    [
+     "Classic Spaghetti",
+     2200
+    ],
+    [
+     "Fish Bowl",
+     3000
+    ],
+    [
+     "Crispy Chicken Burger",
+     3600
+    ],
+    [
+     "Beef and Greens Bowl",
+     3500
+    ],
+    [
+     "Whole Grilled Fish",
+     "priced on weight"
+    ]
+   ],
+   "Sides": [
+    [
+     "Potato / Sweet Potato",
+     1400
+    ],
+    [
+     "Ceviche",
+     2500
+    ],
+    [
+     "Grilled Vegetables",
+     1700
+    ],
+    [
+     "Prawn Tempura",
+     3000
+    ],
+    [
+     "Wings",
+     1800
+    ],
+    [
+     "Fish Kebab",
+     1700
+    ]
+   ],
+   "Salads": [
+    [
+     "Garden Salad (add chicken or tofu +800)",
+     1900
+    ],
+    [
+     "Eggplant Salad",
+     1900
+    ]
+   ],
+   "For the little ones": [
+    [
+     "Schnitzel & Potato Fries",
+     1800
+    ],
+    [
+     "Pasta Plate",
+     1500
+    ],
+    [
+     "Chicken Rice Bowl",
+     1600
+    ]
+   ]
+  },
+  "note": "menus linked as 'Have a look!' from /restaurant (Breakfast → the breakfast PDF, Lunch and Dinner → the main PDF; the Dinner link is the same main menu). Dish descriptions are in the PDFs verbatim. Dinner is described on the site as 'a mix of traditional and modern mediterranean dishes'."
+ },
+ "facilities": [
+  {
+   "value": "large outdoor pool with stone surround and loungers, open from early morning",
+   "source_url": "https://www.pantareiresort.com/about",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "note": "Booking calls it 'seasonal outdoor swimming pool'"
+  },
+  {
+   "value": "restaurant and bar open all day to residents and outside guests; bar above the restaurant 'at the perfect location to watch the tropical sunsets'",
+   "source_url": "https://www.pantareiresort.com/restaurant",
+   "fetched_at": "2026-11-06T09:51:36Z"
+  },
+  {
+   "value": "Panta Fitness Club: open-air fitness area overlooking the resort; daily yoga and Pilates classes led by experienced instructors; Vinyasa yoga 8:30AM daily except Friday; 'No need to book'",
+   "source_url": "https://www.pantareiresort.com/events",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "note": "schedule PDF https://www.pantareiresort.com/_files/ugd/89c528_2cd9bc960fa848c18229699f785b0152.pdf"
+  },
+  {
+   "value": "yoga shala",
+   "source_url": "https://www.pantareiresort.com/about",
+   "fetched_at": "2026-11-06T09:51:36Z"
+  },
+  {
+   "value": "massage therapy: Surf Therapy Massage and Revitalizing Massage",
+   "source_url": "https://www.pantareiresort.com/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf",
+   "fetched_at": "2026-11-06T09:52:10Z"
+  },
+  {
+   "value": "private laundry service by the housekeeping staff (cash)",
+   "source_url": "https://www.pantareiresort.com/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf",
+   "fetched_at": "2026-11-06T09:52:10Z"
+  },
+  {
+   "value": "safe box in rooms",
+   "source_url": "https://www.pantareiresort.com/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf",
+   "fetched_at": "2026-11-06T09:52:10Z"
+  },
+  {
+   "value": "free private parking, garden, terrace, sun terrace, airport shuttle, family rooms, tea/coffee maker and refrigerator in rooms",
+   "source_url": "https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html",
+   "fetched_at": "2026-11-06T09:55:37Z"
+  },
+  {
+   "value": "vegetarian, gluten-free and dairy-free options",
+   "source_url": "https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html",
+   "fetched_at": "2026-11-06T09:55:37Z"
+  }
+ ],
+ "facilities_note": "Booking also lists 'Live music/performance' and off-site cooking class, snorkelling and diving (additional charge).",
+ "local_guide": {
+  "value": {
+   "cafes": [
+    "The Nuga House (our sister hotel) - Ahangama",
+    "Meori - Ahangama",
+    "Moochies - Ahangama / Weligama",
+    "Zippi - Midigama",
+    "Cactus - Ahangama",
+    "Black honey - Ahangama",
+    "Soul Temple - Ahangama"
+   ],
+   "things_to_do": [
+    "Sunset at Coconut hill Mirissa",
+    "Koggola Lake Boat Trip",
+    "Swim with turtles in Wijaya Beach",
+    "Tea Plantation tour Ahangama - Virgin Tea Plantation",
+    "Galle Fort",
+    "Safari Tour - Yalla/Udawalawe (we can help to organise it)"
+   ],
+   "beaches": [
+    "Kabalana Beach",
+    "Secret Beach Ahangama",
+    "Mididgama Beach",
+    "Wijaya Beach (you can see turtles)",
+    "Jungle Beach Weligama",
+    "Hirikatiya Beach / Blue Beach"
+   ]
+  },
+  "source_url": "https://www.pantareiresort.com/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf",
+  "fetched_at": "2026-11-06T09:52:10Z",
+  "note": "the owner's own recommendations (guest guide pp.5–6), verbatim spellings; partial list"
+ },
+ "season": {
+  "value": null,
+  "gap": "no season published. 'During the season, our resort offers a extended schedule of activities' (guest guide). A Google guest stayed July 2026 'in off season… the kitchen and restaurant were closed'"
+ },
+ "languages_spoken": [
+  {
+   "value": "en",
+   "source_url": "https://www.pantareiresort.com/",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "note": "everything the business publishes is in English; staff languages not stated"
+  }
+ ],
+ "reviews": {
+  "google": {
+   "rating": 4.7,
+   "count": 213,
+   "scale": 5,
+   "source_url": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en",
+   "fetched_at": "2026-11-06T09:55:37Z"
+  },
+  "booking": {
+   "rating": 9.2,
+   "count": 468,
+   "scale": 10,
+   "label": "Superb",
+   "categories": {
+    "Location": 8.9,
+    "Cleanliness": 9.5,
+    "Value for money": 9.0,
+    "Facilities": 9.3,
+    "Comfort": 9.4,
+    "Staff": 9.5,
+    "Free WiFi": 7.0
+   },
+   "source_url": "https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html",
+   "fetched_at": "2026-11-06T09:55:37Z"
+  },
+  "tripadvisor": {
+   "rating": null,
+   "count": null,
+   "gap": "403 bot wall; the engine claims '4.5/5 on Tripadvisor' (unverified)",
+   "source_url": "https://www.tripadvisor.com/Hotel_Review-g674590-d25364260-Reviews-Panta_Rei_Resort-Ahangama_Galle_District_Southern_Province.html"
+  },
+  "self_reported_on_engine": {
+   "value": "⭐⭐⭐⭐⭐ 4.8/5 on Google · 9.1/10 on Booking.com · 4.5/5 on Tripadvisor",
+   "source_url": "https://pantareiresort.holidayfuture.com/",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "note": "stale: Google is 4.7 and Booking 9.2 today"
+  },
+  "quotes": [
+   {
+    "text": "We stayed here in January, and of all the places we've stayed on our travels, this was the best resort so far. Incredibly clean throughout, you can tell housekeeping is taken seriously here, and the whole place is managed to a standard you rarely find. One of the owners was around during our stay, and you could immediately tell how much he genuinely cares about the resort and his guests, on top of being a very friendly guy. The employees match that energy: attentive, warm and top notch across the board. Can't recommend Panta Rei enough, we'll be back.",
+    "author": "Peter",
+    "date": null,
+    "source": "google",
+    "source_url": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en",
+    "fetched_at": "2026-11-06T09:55:37Z"
+   },
+   {
+    "text": "I had a lovely stay! The food was excellent, and the staff were incredibly welcoming, friendly and attentive throughout my visit. Everyone made me feel comfortable and well looked after. Thank you for such a pleasant experience!",
+    "author": "Lynette",
+    "date": null,
+    "source": "google",
+    "owner_reply": "Thanks for the lovely review Lynette! We really appreciate it and we’re so glad you felt looked after, we all loved having you to stay :)",
+    "source_url": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en",
+    "fetched_at": "2026-11-06T09:55:37Z"
+   },
+   {
+    "text": "We had an amazing stay in Panta Rei. The room was spacious, quiet, and nicely decorated. The food was extremely tasty.\nA big shout-out to the incredible staff, always helpful and kind. We really felt at home.",
+    "author": "Arianna, Italy",
+    "date": null,
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html",
+    "fetched_at": "2026-11-06T09:55:37Z"
+   },
+   {
+    "text": "Everything thing was amazing, the room was clean, the pool was beautiful, the food was amazing, the staff are amazing, always very warm and welcoming",
+    "author": "Oishanee, India",
+    "date": null,
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html",
+    "fetched_at": "2026-11-06T09:55:37Z"
+   },
+   {
+    "text": "The hospitality and the atmosphere was great. The staff were very helpful as well.",
+    "author": "Akhila, Sri Lanka",
+    "date": null,
+    "source": "booking",
+    "source_url": "https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html",
+    "fetched_at": "2026-11-06T09:55:37Z"
+   },
+   {
+    "text": "Incredible! We stayed at Panta Rei for 1 week, and it was wonderful. The room was very clean and had all the necessary amenities, the pool and garden area was beautiful and very quiet, the food was impeccable, one of the best we ate in Sri Lanka. The workers are very helpful and attentive. We would definitely choose it again if we return to Sri Lanka!",
+    "author": "Alba R",
+    "date": null,
+    "source": "own site (testimonial on /restaurant)",
+    "source_url": "https://www.pantareiresort.com/restaurant",
+    "fetched_at": "2026-11-06T09:51:36Z",
+    "note": "origin platform not stated"
+   }
+  ],
+  "quotes_note": "Dates not captured (Google's limited view shows relative dates only; Booking highlights carry none). Truncated Booking highlights (Donna, Ankit) not quoted. One Booking highlight says 'near lake and Victoria Park. also near big supermarket' (Abdullah) — probably about another property; not used.",
+  "critical_themes": [
+   {
+    "value": "off season (July 2026): resort empty, kitchen and restaurant closed; insects, chameleons and red ants around the in-room pool, gap under the pool door",
+    "source_url": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en",
+    "fetched_at": "2026-11-06T09:55:37Z",
+    "note": "Abhay Guleria, Google; otherwise positive"
+   },
+   {
+    "value": "Free WiFi scores 7.0 on Booking.com, the lowest category",
+    "source_url": "https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html",
+    "fetched_at": "2026-11-06T09:55:37Z"
+   }
+  ]
+ },
+ "images": [
+  {
+   "id": "img-001",
+   "file": "assets/img-001.jpg",
+   "source_url": "https://www.pantareiresort.com/",
+   "photo_url": "https://static.wixstatic.com/media/89c528_949ee10a9f514d99923fdf480f13f0c9~mv2.jpg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "f36f2e244bcc92ea7900c7c08119d443600322f6a07c40ada7fbde312e325494",
+   "width": 2000,
+   "height": 1126,
+   "original_size": [
+    2048,
+    1152
+   ],
+   "description": "aerial, high angle: the pool with stone surround and loungers, red-tiled bungalows and the white two-storey main building in a ring of jungle and palms"
+  },
+  {
+   "id": "img-002",
+   "file": "assets/img-002.jpg",
+   "source_url": "https://www.pantareiresort.com/",
+   "photo_url": "https://static.wixstatic.com/media/4ed5e8_53e43e258d82478484f203268d92ffc3~mv2.jpg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "c3e8b0cfe3d51e62c313e2529889e8a6bec08dcddfee70176ff7f6095f31d2ab",
+   "width": 2000,
+   "height": 1334,
+   "original_size": [
+    6427,
+    4285
+   ],
+   "description": "room detail: bed with a large pale palm-fan headboard, rattan pendant lamp, wooden stool, potted palm, white walls"
+  },
+  {
+   "id": "img-003",
+   "file": "assets/img-003.jpg",
+   "source_url": "https://www.pantareiresort.com/",
+   "photo_url": "https://static.wixstatic.com/media/4ed5e8_e7d3e3921f564912ad916b4fa07eeaa4~mv2.jpg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "bc8c1b2cbdcd61d41a7e9c425a16c2c4cc568566418ba8db1360be9b7f338163",
+   "width": 2000,
+   "height": 1320,
+   "original_size": [
+    2000,
+    1320
+   ],
+   "description": "breakfast being served at a teak table under greenery: a bowl, juice, coffee, fruit; hands only, face cropped"
+  },
+  {
+   "id": "img-004",
+   "file": "assets/img-004.jpg",
+   "source_url": "https://www.pantareiresort.com/",
+   "photo_url": "https://static.wixstatic.com/media/4ed5e8_44128dd7346d4fa99bb44fbc39107071~mv2.jpg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "964bace8ea08277c60d3eb94a54f7ff07ccfe92573007739658c8e1ab3bcbf6b",
+   "width": 1334,
+   "height": 2000,
+   "original_size": [
+    3850,
+    5775
+   ],
+   "description": "yoga class in the open-air shala: a woman in triangle pose, other mats behind, concrete floor and white columns (portrait)"
+  },
+  {
+   "id": "img-005",
+   "file": "assets/img-005.jpg",
+   "source_url": "https://www.pantareiresort.com/about",
+   "photo_url": "https://static.wixstatic.com/media/4ed5e8_80da698ce84849759d0698ec05703412~mv2.jpeg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "74774f4550a0a0b1687e52f7571707663a9c25c5cdd72f1febe1d69111207453",
+   "width": 1334,
+   "height": 2000,
+   "original_size": [
+    4672,
+    7008
+   ],
+   "description": "lunch spread on a teak table in the garden: sliders, plated dishes, a bottle of water and glasses (portrait)"
+  },
+  {
+   "id": "img-006",
+   "file": "assets/img-006.png",
+   "source_url": "https://www.pantareiresort.com/about",
+   "photo_url": "https://static.wixstatic.com/media/89c528_69451a71d8654585be9c3bbc37754d9c~mv2.png",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "7611e84f2eb00979bec9764d85dd8db8222a47260e8ed7b65e128fa6efc77da2",
+   "width": 1844,
+   "height": 1224,
+   "original_size": [
+    1844,
+    1224
+   ],
+   "description": "a guest wading into the long pool from behind, red-roofed bungalows and tall palms beyond, clear blue sky"
+  },
+  {
+   "id": "img-007",
+   "file": "assets/img-007.jpg",
+   "source_url": "https://www.pantareiresort.com/ourrooms",
+   "photo_url": "https://static.wixstatic.com/media/89c528_ecda9d02329b47d1a59849962edc70a6~mv2.jpg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "ac4bb0afd006cc9d136f752fd8257d085cc0b7fa7a05dc7a3596f48a58dfa769",
+   "width": 2000,
+   "height": 1334,
+   "original_size": [
+    2048,
+    1365
+   ],
+   "description": "bungalow room: bed with rattan arch headboard and a striped throw, rattan-panel wardrobe doors, bathroom beyond, round rattan rug"
+  },
+  {
+   "id": "img-008",
+   "file": "assets/img-008.jpg",
+   "source_url": "https://www.pantareiresort.com/ourrooms",
+   "photo_url": "https://static.wixstatic.com/media/89c528_6742ddc48f6b4db3a98db39fa4c917b0~mv2.jpg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "c0e5cc524af95d25fecb1e13d2e270c17abe4fac0dc5a7ececf5b614042b633d",
+   "width": 2000,
+   "height": 1334,
+   "original_size": [
+    2048,
+    1366
+   ],
+   "description": "bungalow room from the side: bed, rattan-panel wardrobes, arched rattan mirror, rattan chair"
+  },
+  {
+   "id": "img-009",
+   "file": "assets/img-009.jpg",
+   "source_url": "https://www.pantareiresort.com/ourrooms",
+   "photo_url": "https://static.wixstatic.com/media/89c528_30dad5b8f97c4438be0aaa110e8317ca~mv2.jpg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "e874690403816282bd0942d6f2565a367da861cdd6ff7e70101ba8ca964acbec",
+   "width": 2000,
+   "height": 1334,
+   "original_size": [
+    2048,
+    1365
+   ],
+   "description": "bungalow terrace: two rattan armchairs and a small wooden table against white wall and teak doors, palm shadows"
+  },
+  {
+   "id": "img-010",
+   "file": "assets/img-010.jpg",
+   "source_url": "https://www.pantareiresort.com/ourrooms",
+   "photo_url": "https://static.wixstatic.com/media/89c528_b810544c7f4049e49bda8502c208b691~mv2.jpg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "feecbec7933668ea9ea90698fc15e4b20c8983a33073e03c605d78fa09b447cb",
+   "width": 2000,
+   "height": 1334,
+   "original_size": [
+    2048,
+    1366
+   ],
+   "description": "bungalow room: bed with rattan arch headboard, orange cushioned rattan armchair, arched mirror, vaulted white ceiling"
+  },
+  {
+   "id": "img-011",
+   "file": "assets/img-011.jpg",
+   "source_url": "https://www.pantareiresort.com/ourrooms",
+   "photo_url": "https://static.wixstatic.com/media/89c528_4a3f727ffc204bda93b484ef17ca14fd~mv2.jpg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "2bd7819d88c693beaf373971c4da7a9e161228b8059301ff7928d8934408ece0",
+   "width": 2000,
+   "height": 1334,
+   "original_size": [
+    2048,
+    1365
+   ],
+   "description": "room detail: hooks with a straw bag and red cloth, arched rattan mirror, bathroom with tub glimpsed beyond"
+  },
+  {
+   "id": "img-012",
+   "file": "assets/img-012.jpg",
+   "source_url": "https://www.pantareiresort.com/ourrooms",
+   "photo_url": "https://static.wixstatic.com/media/89c528_9cf545a595ee4b11a0943037a8e998c9~mv2.jpg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "8d76a58c30a59a2f94281684af703f698201383d33c4d5b562504b360a99aace",
+   "width": 2000,
+   "height": 1334,
+   "original_size": [
+    2048,
+    1365
+   ],
+   "description": "room with floor-to-ceiling sliding doors open to the lawn and pool; a surfboard leans outside the door; hat on the bed"
+  },
+  {
+   "id": "img-013",
+   "file": "assets/img-013.jpg",
+   "source_url": "https://www.pantareiresort.com/ourrooms",
+   "photo_url": "https://static.wixstatic.com/media/89c528_f9cf11c7be354dd3bc4c7ee92eb2e91c~mv2.jpg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "38211945b8817ae0861c91765c15eedf5dc592218ff3ea39d7fa03cb0edab8b6",
+   "width": 2000,
+   "height": 1334,
+   "original_size": [
+    2048,
+    1365
+   ],
+   "description": "bungalow room: bed with rattan arch headboard, rattan-panel wardrobe and slatted bathroom door, round rattan rug"
+  },
+  {
+   "id": "img-014",
+   "file": "assets/img-014.jpg",
+   "source_url": "https://www.pantareiresort.com/ourrooms",
+   "photo_url": "https://static.wixstatic.com/media/4ed5e8_c07e21e7719e41b1ae5612021783004a~mv2.jpg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "e00902ef1c2702d4fa14372d31cb48211c830eb10a0c38fc99ef240d06f8e1ee",
+   "width": 2000,
+   "height": 1334,
+   "original_size": [
+    6996,
+    4664
+   ],
+   "description": "room with twin beds pushed together under a palm-fan headboard, rattan pendants, open shelving"
+  },
+  {
+   "id": "img-015",
+   "file": "assets/img-015.png",
+   "source_url": "https://www.pantareiresort.com/ourrooms",
+   "photo_url": "https://static.wixstatic.com/media/4ed5e8_8808bad1713c4345abc2a4c9bdff4f69~mv2.png",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "339a45bd805e548c79490ee6d9bee655a3904fa5fef6a6c85413522f2614f07f",
+   "width": 2000,
+   "height": 1314,
+   "original_size": [
+    2054,
+    1350
+   ],
+   "description": "villa exterior: white bungalow with glass sliding doors behind dense tropical planting and a stone path"
+  },
+  {
+   "id": "img-016",
+   "file": "assets/img-016.jpg",
+   "source_url": "https://www.pantareiresort.com/ourrooms",
+   "photo_url": "https://static.wixstatic.com/media/4ed5e8_55d916d38b694e6f9d3fa1507e5a80c2~mv2.jpg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "25c26e2c3603e6d6571dc18e53b9be41dbb9594fa0b08c610181e9554bd2ae8d",
+   "width": 2000,
+   "height": 1334,
+   "original_size": [
+    7002,
+    4668
+   ],
+   "description": "suite lounge niche: built-in white bench with cushions, rattan side table, glass-walled shower to the right"
+  },
+  {
+   "id": "img-017",
+   "file": "assets/img-017.jpg",
+   "source_url": "https://www.pantareiresort.com/ourrooms",
+   "photo_url": "https://static.wixstatic.com/media/4ed5e8_38bd15377e3242fbb3c273a0e964eec9~mv2.jpg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "4973f76e4146cff22a8464e61bbdb3d3edd50f8056e01760ee2c973d9c21173d",
+   "width": 1334,
+   "height": 2000,
+   "original_size": [
+    4668,
+    7002
+   ],
+   "description": "walk-in shower with crazy-paving stone walls, backlit niche and a built-in bench (portrait)"
+  },
+  {
+   "id": "img-018",
+   "file": "assets/img-018.jpg",
+   "source_url": "https://www.pantareiresort.com/restaurant",
+   "photo_url": "https://static.wixstatic.com/media/4ed5e8_006c036d59ea49b6b8133a3f69332b2a~mv2.jpg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "3fbb9e14c2f754c03d0a487ff29e0a7bbf7ae2153921ade672f9a5aa56f1d2b9",
+   "width": 1334,
+   "height": 2000,
+   "original_size": [
+    3695,
+    5542
+   ],
+   "description": "garlic prawns in a dark bowl on a woven rattan mat, overhead (portrait)"
+  },
+  {
+   "id": "img-019",
+   "file": "assets/img-019.jpg",
+   "source_url": "https://www.pantareiresort.com/restaurant",
+   "photo_url": "https://static.wixstatic.com/media/4ed5e8_459c6f8eb4e742fca163019273c7c178~mv2.jpg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "57556d5124149695cfe7856504a1f1973d25da0c4d3d4dc2e106b99ba96fd001",
+   "width": 900,
+   "height": 1350,
+   "original_size": [
+    900,
+    1350
+   ],
+   "description": "a small bowl (ceviche-style) on the balcony rail, garden blurred below (portrait)"
+  },
+  {
+   "id": "img-020",
+   "file": "assets/img-020.jpg",
+   "source_url": "https://www.pantareiresort.com/events",
+   "photo_url": "https://static.wixstatic.com/media/4ed5e8_69ee618ee5e145998c6aa2dbf6a5e653~mv2.jpeg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "7a904e32e8811770c2843fa93435b90071c07e2ea3e60a60aea9c7bc24ad6bcb",
+   "width": 1334,
+   "height": 2000,
+   "original_size": [
+    4115,
+    6173
+   ],
+   "description": "fitness class: three women doing a lunge at the upstairs balcony railing, red roofs and palms beyond (portrait)"
+  },
+  {
+   "id": "img-021",
+   "file": "assets/img-021.jpg",
+   "source_url": "https://www.pantareiresort.com/events",
+   "photo_url": "https://static.wixstatic.com/media/4ed5e8_8b871dc6d39a470895deed40b5ab8606~mv2.jpeg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "1236caebf6d2d97ae775209eb7615fbb2e71d9314c5e29573f244e67cebd2deb",
+   "width": 1334,
+   "height": 2000,
+   "original_size": [
+    4064,
+    6096
+   ],
+   "description": "fitness class from behind: women on mats with hands behind heads under the open roof (portrait)"
+  },
+  {
+   "id": "img-022",
+   "file": "assets/img-022.png",
+   "source_url": "https://www.pantareiresort.com/contact",
+   "photo_url": "https://static.wixstatic.com/media/4ed5e8_0767be10cd6d4f42989fec491d3ea1ff~mv2.png",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "0649aaaca8430766206c4230066bb630c7615d31a72dff24b01cdb39188e9f3b",
+   "width": 1366,
+   "height": 768,
+   "original_size": [
+    1366,
+    768
+   ],
+   "description": "dark blue-tinted image of palm tops above mist or spray; the site's contact-page background (alt \"surf background\"); no landmark, place not identifiable"
+  },
+  {
+   "id": "img-023",
+   "file": "assets/img-023.png",
+   "source_url": "https://www.pantareiresort.com/",
+   "photo_url": "https://static.wixstatic.com/media/89c528_5e9e73b22b8840b6b0af2617bee7bdb0~mv2.png",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "kind": "logo",
+   "sha256": "8b5e2a1437bac981027140075c4a52c5075b680e55958f412e8dfb133bf3feaa",
+   "width": 591,
+   "height": 592,
+   "original_size": [
+    591,
+    592
+   ],
+   "description": "the logo: \"PANTA REI RESORT\" in an arc around a leaf sprig, \"Kabalana\" underneath; white on transparent (591×592 PNG)"
+  },
+  {
+   "id": "img-024",
+   "file": "assets/img-024.png",
+   "source_url": "https://www.pantareiresort.com/restaurant",
+   "photo_url": "https://static.wixstatic.com/media/4ed5e8_78a90d21da05476d9758958a00c4bacd~mv2.png",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "7e23395989a1980074ba7eb36a1c8640828fb4bb79352793c0f0097297f84765",
+   "width": 1080,
+   "height": 1920,
+   "original_size": [
+    1080,
+    1920
+   ],
+   "description": "a hand pouring syrup over a dessert/pancake plate on a teak table, dark garden background (portrait 1080×1920)"
+  },
+  {
+   "id": "img-025",
+   "file": "assets/img-025.png",
+   "source_url": "https://www.pantareiresort.com/restaurant",
+   "photo_url": "https://static.wixstatic.com/media/4ed5e8_d513b15c27694c6c86d7540d540214fe~mv2.png",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "business-owned",
+   "license_note": "uploaded by the business to its own Wix site pantareiresort.com",
+   "sha256": "47ec26c562f3cf7697901f910206a5e2a82d7c2307e09ea3f123e2889e5ab7a6",
+   "width": 1080,
+   "height": 1920,
+   "original_size": [
+    1080,
+    1920
+   ],
+   "description": "pasta and plates on a teak table, a hand holding a plate (portrait 1080×1920; the site's \"lunch\" menu cover)"
+  },
+  {
+   "id": "img-026",
+   "file": "assets/img-026.jpg",
+   "source_url": "https://www.pantareiresort.com/about",
+   "photo_url": "https://static.wixstatic.com/media/nsplsh_3ed713e7543f49a399b62f5cf12612ee~mv2.jpg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "stock",
+   "license_note": "Unsplash photo served from Wix's free media library (nsplsh_ id), not the business's",
+   "sha256": "012aaa67a60831bc1662d8a68d0ef8293305dfb970623b3c60199fd02c54233d",
+   "width": 2000,
+   "height": 1124,
+   "original_size": [
+    3389,
+    1906
+   ],
+   "description": "STOCK, not the business: a white seated Buddha statue on a headland above a bay with green hills (Unsplash via Wix, About page)"
+  },
+  {
+   "id": "img-027",
+   "file": "assets/img-027.jpg",
+   "source_url": "https://www.pantareiresort.com/events",
+   "photo_url": "https://static.wixstatic.com/media/9c608a_e54b55354054440c98192881f51566fc.jpg",
+   "fetched_at": "2026-11-06T09:51:36Z",
+   "license": "stock",
+   "license_note": "Wix free media library image (9c608a_ library id), not uploaded by the business",
+   "sha256": "ed9504eba6f0b19b05b94b170441e338da6268d528b719f9df882962993668ee",
+   "width": 2000,
+   "height": 1334,
+   "original_size": [
+    3184,
+    2123
+   ],
+   "description": "STOCK, not the business: white globe string lights at night (Wix free media library, Activities page background)"
+  },
+  {
+   "id": "img-028",
+   "file": "assets/img-028.jpg",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572800",
+   "photo_url": "https://bookingenginecdn.hostaway.com/listing/204325-572800-BWmTZ--UNqy8I7wT7tcH5GLLsRd9vRdATOhIYeEaMunk-6a606acc218e9",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "license": "business-owned",
+   "license_note": "listing photo of 'Double Room' on the business's own direct-booking engine (Hostaway, pantareiresort.holidayfuture.com, linked from its site)",
+   "room": "Double Room",
+   "sha256": "5255049677bc4fe9589c099840322f455a67283215f35cabcf5cf178c850eaf1",
+   "width": 1350,
+   "height": 900,
+   "original_size": [
+    1350,
+    900
+   ],
+   "description": "Double Room: bed with rattan arch headboard and wooden drawer base, rattan wardrobe, bathroom beyond"
+  },
+  {
+   "id": "img-029",
+   "file": "assets/img-029.jpg",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572800",
+   "photo_url": "https://bookingenginecdn.hostaway.com/listing/204325-572800-W4GWnJKK1CKqLb7XTJB2BGBF4FmdwpXc54--OfJLrY6E-6a606aca18ad2",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "license": "business-owned",
+   "license_note": "listing photo of 'Double Room' on the business's own direct-booking engine (Hostaway, pantareiresort.holidayfuture.com, linked from its site)",
+   "room": "Double Room",
+   "sha256": "d62475ce6032baacc450558e765d0b462ee43e651a2312906d4461aa5d93e109",
+   "width": 1280,
+   "height": 1087,
+   "original_size": [
+    1280,
+    1087
+   ],
+   "description": "Double Room bathroom: white vanity with a rattan-front cabinet, blue crazy-paving tiles, window to greenery"
+  },
+  {
+   "id": "img-030",
+   "file": "assets/img-030.jpg",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572800",
+   "photo_url": "https://bookingenginecdn.hostaway.com/listing/204325-572800-b9ASIlBuTCapvZPVHdHA7J8fZJ68Q0HIQTtJODAzKQw-6a606acb04174",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "license": "business-owned",
+   "license_note": "listing photo of 'Double Room' on the business's own direct-booking engine (Hostaway, pantareiresort.holidayfuture.com, linked from its site)",
+   "room": "Double Room",
+   "sha256": "9f58dab3d777146e62726431a382d0b19c97025619453e2cd7b27e10cc504c67",
+   "width": 1350,
+   "height": 900,
+   "original_size": [
+    1350,
+    900
+   ],
+   "description": "the open-air lounge/restaurant under the main building: rattan pendant lamps, orange cushioned rattan chairs, white two-storey building with balcony, garden and pool beyond"
+  },
+  {
+   "id": "img-031",
+   "file": "assets/img-031.jpg",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572800",
+   "photo_url": "https://bookingenginecdn.hostaway.com/listing/204325-572800-e7z3PjYxR2Xxgfx3u1NpCEK5022HB6ZCxBLhjd33GPY-6a6074ccafccd",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "license": "business-owned",
+   "license_note": "listing photo of 'Double Room' on the business's own direct-booking engine (Hostaway, pantareiresort.holidayfuture.com, linked from its site)",
+   "room": "Double Room",
+   "sha256": "2a8fbd63f8f16d58cab7b0ce3dc0f3a7a8e77b3df04fe80283e9d7b0d30e9765",
+   "width": 1350,
+   "height": 900,
+   "original_size": [
+    1350,
+    900
+   ],
+   "description": "bedroom with tall teak French windows to the garden, rattan arch headboard, rattan pendants"
+  },
+  {
+   "id": "img-032",
+   "file": "assets/img-032.jpg",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572800",
+   "photo_url": "https://bookingenginecdn.hostaway.com/listing/204325-572800-yFvILDt4okOmomQJwEvM7NFfqHNB32OZq--IbxLCoNSY-6a606acd23770",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "license": "business-owned",
+   "license_note": "listing photo of 'Double Room' on the business's own direct-booking engine (Hostaway, pantareiresort.holidayfuture.com, linked from its site)",
+   "room": "Double Room",
+   "sha256": "02e44838ff91d26b4754ad08ebc4edb4c1caaf8eb4c667e031e9a12b93b07ae6",
+   "width": 1350,
+   "height": 900,
+   "original_size": [
+    1350,
+    900
+   ],
+   "description": "aerial, lower angle: pool with loungers in front of the bungalows and the main building, jungle behind"
+  },
+  {
+   "id": "img-033",
+   "file": "assets/img-033.jpg",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572802",
+   "photo_url": "https://bookingenginecdn.hostaway.com/listing/204325-572802-NqDzCTm1XzRMuMVNs3nT3VUbslxBeG2E8z5---IWRaPA-6a606a8720a19",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "license": "business-owned",
+   "license_note": "listing photo of 'Triple Room' on the business's own direct-booking engine (Hostaway, pantareiresort.holidayfuture.com, linked from its site)",
+   "room": "Triple Room",
+   "sha256": "02e44838ff91d26b4754ad08ebc4edb4c1caaf8eb4c667e031e9a12b93b07ae6",
+   "width": 1350,
+   "height": 900,
+   "original_size": [
+    1350,
+    900
+   ],
+   "description": "duplicate of img-032 (same file on the Triple Room listing)",
+   "duplicate_of": "img-032"
+  },
+  {
+   "id": "img-034",
+   "file": "assets/img-034.jpg",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572802",
+   "photo_url": "https://bookingenginecdn.hostaway.com/listing/204325-572802-mWAPusE-7UWyXOeYFHi4zJCXZ16-nXGYv1Ryuc9EHls-6a606a857c971",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "license": "business-owned",
+   "license_note": "listing photo of 'Triple Room' on the business's own direct-booking engine (Hostaway, pantareiresort.holidayfuture.com, linked from its site)",
+   "room": "Triple Room",
+   "sha256": "4b937fe99cece34ed4df0533306772418e35805306bbd413a8bc043c9a864a55",
+   "width": 1350,
+   "height": 900,
+   "original_size": [
+    1350,
+    900
+   ],
+   "description": "bathroom with freestanding white bathtub, blue crazy-paving tiles, wooden-framed windows"
+  },
+  {
+   "id": "img-035",
+   "file": "assets/img-035.jpg",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572802",
+   "photo_url": "https://bookingenginecdn.hostaway.com/listing/204325-572802-nn3Fx2OcSEopKU1dsbN8x40pbD6KV0PfMij-6owVh--A-6a606a83594cc",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "license": "business-owned",
+   "license_note": "listing photo of 'Triple Room' on the business's own direct-booking engine (Hostaway, pantareiresort.holidayfuture.com, linked from its site)",
+   "room": "Triple Room",
+   "sha256": "25258ce34c02cd9d7ff375081d1900f869d58f14252b63ad00235e7bd416459f",
+   "width": 1350,
+   "height": 900,
+   "original_size": [
+    1350,
+    900
+   ],
+   "description": "the lawn by the pool: two guests carrying surfboards, a woman in a straw hat crouching with a dog, festoon lights, red-roofed bungalows"
+  },
+  {
+   "id": "img-036",
+   "file": "assets/img-036.jpg",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572802",
+   "photo_url": "https://bookingenginecdn.hostaway.com/listing/204325-572802-uZysSX51rlmzslasPk1oQywfbb9tMX-M--m05fGOfJDw-6a6074c4afed8",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "license": "business-owned",
+   "license_note": "listing photo of 'Triple Room' on the business's own direct-booking engine (Hostaway, pantareiresort.holidayfuture.com, linked from its site)",
+   "room": "Triple Room",
+   "sha256": "21c2365a868478781062c392e5bddba6928cee46e30ae8fac058c2061d0da0a0",
+   "width": 1350,
+   "height": 900,
+   "original_size": [
+    1350,
+    900
+   ],
+   "description": "bungalow front: red tile roof, white walls, teak doors, two rattan chairs and a table on the terrace, palms"
+  },
+  {
+   "id": "img-037",
+   "file": "assets/img-037.jpg",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572802",
+   "photo_url": "https://bookingenginecdn.hostaway.com/listing/204325-572802-wPcIclKzBm9C9F0rrmgONuHSYUODARoKTqwaJPpH5--0-6a606a8661dda",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "license": "business-owned",
+   "license_note": "listing photo of 'Triple Room' on the business's own direct-booking engine (Hostaway, pantareiresort.holidayfuture.com, linked from its site)",
+   "room": "Triple Room",
+   "sha256": "915169f6129cdd4de8d039764880de67e2eba5eaa1b32863ea1ed1ae08ad6754",
+   "width": 1350,
+   "height": 900,
+   "original_size": [
+    1350,
+    900
+   ],
+   "description": "Triple Room: bed with rattan arch headboard, pink cushioned rocking chair, arched rattan mirror, vaulted ceiling"
+  },
+  {
+   "id": "img-038",
+   "file": "assets/img-038.jpg",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572799",
+   "photo_url": "https://bookingenginecdn.hostaway.com/listing/204325-572799-5DhDrQiR8RNTxo3sw9aewTHkCsHDASx0ym3-FAx8bGU-6a606ad9a0463",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "license": "business-owned",
+   "license_note": "listing photo of 'Family Villa' on the business's own direct-booking engine (Hostaway, pantareiresort.holidayfuture.com, linked from its site)",
+   "room": "Family Villa",
+   "sha256": "2b16dcfe9a24f55dcf944a54f44213f3efd00730227d3f3a4900dfcd0b2ed876",
+   "width": 1350,
+   "height": 900,
+   "original_size": [
+    1350,
+    900
+   ],
+   "description": "Family Villa bedroom: tall teak French windows to the garden, rattan arch headboard"
+  },
+  {
+   "id": "img-039",
+   "file": "assets/img-039.jpg",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572799",
+   "photo_url": "https://bookingenginecdn.hostaway.com/listing/204325-572799-5rxOQHkKFnnL8Cz4zc7ueLeCBxo3I1wjxyuCwSXOOGE-6a606ad64b94a",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "license": "business-owned",
+   "license_note": "listing photo of 'Family Villa' on the business's own direct-booking engine (Hostaway, pantareiresort.holidayfuture.com, linked from its site)",
+   "room": "Family Villa",
+   "sha256": "b37b66d9f7b2b3a5555b4dc4465d8400e703abc35b943d286107355547621b25",
+   "width": 1280,
+   "height": 1920,
+   "original_size": [
+    1280,
+    1920
+   ],
+   "description": "Family Villa listing: food on a teak table (sliders, plates, bottle) in the garden (portrait)"
+  },
+  {
+   "id": "img-040",
+   "file": "assets/img-040.jpg",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572799",
+   "photo_url": "https://bookingenginecdn.hostaway.com/listing/204325-572799-C0jXqjbMI2gFcbIpwlrsYr--7C5nwqZTaIGCBkGe7qNE-6a606ad8cc59a",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "license": "business-owned",
+   "license_note": "listing photo of 'Family Villa' on the business's own direct-booking engine (Hostaway, pantareiresort.holidayfuture.com, linked from its site)",
+   "room": "Family Villa",
+   "sha256": "0307979a6972dae92a16e6ca28cefea15527cf2d9b266ad3f4f6740e9ebb511c",
+   "width": 1280,
+   "height": 1920,
+   "original_size": [
+    1280,
+    1920
+   ],
+   "description": "Family Villa private outdoor bath: freestanding tub on pebbles in a walled garden behind teak-framed glass doors (portrait)"
+  },
+  {
+   "id": "img-041",
+   "file": "assets/img-041.jpg",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572799",
+   "photo_url": "https://bookingenginecdn.hostaway.com/listing/204325-572799-Izd90zTuBHFNzubP--OZ4JVP3cN3atjYPHEKmxtY8mms-6a606adaa33e7",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "license": "business-owned",
+   "license_note": "listing photo of 'Family Villa' on the business's own direct-booking engine (Hostaway, pantareiresort.holidayfuture.com, linked from its site)",
+   "room": "Family Villa",
+   "sha256": "02e44838ff91d26b4754ad08ebc4edb4c1caaf8eb4c667e031e9a12b93b07ae6",
+   "width": 1350,
+   "height": 900,
+   "original_size": [
+    1350,
+    900
+   ],
+   "description": "duplicate of img-032 (same file on the Family Villa listing)",
+   "duplicate_of": "img-032"
+  },
+  {
+   "id": "img-042",
+   "file": "assets/img-042.jpg",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572799",
+   "photo_url": "https://bookingenginecdn.hostaway.com/listing/204325-572799-x4iUGhQbVfXk8HNLDbJ6HVPQh-nC9Tzd02pE9zIADbs-6a606ad78d224",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "license": "business-owned",
+   "license_note": "listing photo of 'Family Villa' on the business's own direct-booking engine (Hostaway, pantareiresort.holidayfuture.com, linked from its site)",
+   "room": "Family Villa",
+   "sha256": "9f58dab3d777146e62726431a382d0b19c97025619453e2cd7b27e10cc504c67",
+   "width": 1350,
+   "height": 900,
+   "original_size": [
+    1350,
+    900
+   ],
+   "description": "duplicate of img-030 (same file on the Family Villa listing)",
+   "duplicate_of": "img-030"
+  },
+  {
+   "id": "img-043",
+   "file": "assets/img-043.jpg",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572798",
+   "photo_url": "https://bookingenginecdn.hostaway.com/listing/204325-572798-9x1Il-vsDggSHy34OMRBAQbtrX0zcTCI5agZgVaEBu0-6a606ae2d704d",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "license": "business-owned",
+   "license_note": "listing photo of 'Suite Room With Private Pool' on the business's own direct-booking engine (Hostaway, pantareiresort.holidayfuture.com, linked from its site)",
+   "room": "Suite Room With Private Pool",
+   "sha256": "628e9a5be6d79342b192ad670b32aaf8aeffd4fc41f9da5d213672c4da436ce8",
+   "width": 1350,
+   "height": 900,
+   "original_size": [
+    1350,
+    900
+   ],
+   "description": "Suite with private pool: bed facing open glass doors onto a private plunge pool and terrace chairs in a jungle garden"
+  },
+  {
+   "id": "img-044",
+   "file": "assets/img-044.jpg",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572798",
+   "photo_url": "https://bookingenginecdn.hostaway.com/listing/204325-572798-CL5ozpBvJRia7MTWAgrvNMBkQIzdodxuKPAafXvCFYg-6a608e8200a47",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "license": "business-owned",
+   "license_note": "listing photo of 'Suite Room With Private Pool' on the business's own direct-booking engine (Hostaway, pantareiresort.holidayfuture.com, linked from its site)",
+   "room": "Suite Room With Private Pool",
+   "sha256": "cd42a48838e4722dfca121d1487f07032ceeddb48716992c8786770d542b18d9",
+   "width": 1280,
+   "height": 1920,
+   "original_size": [
+    1280,
+    1920
+   ],
+   "description": "Suite: walk-in shower with crazy-paving stone walls and backlit niche (portrait)"
+  },
+  {
+   "id": "img-045",
+   "file": "assets/img-045.jpg",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572798",
+   "photo_url": "https://bookingenginecdn.hostaway.com/listing/204325-572798-MLWx2-kN3aSYK6kz--ka8I1lFMe6CfDshkHs3jNoAEfI-6a634cf34d539",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "license": "business-owned",
+   "license_note": "listing photo of 'Suite Room With Private Pool' on the business's own direct-booking engine (Hostaway, pantareiresort.holidayfuture.com, linked from its site)",
+   "room": "Suite Room With Private Pool",
+   "sha256": "9189f7d543404601b663dca7ea062009ed704cb9031276a2533957e4d45572eb",
+   "width": 1280,
+   "height": 1920,
+   "original_size": [
+    1280,
+    1920
+   ],
+   "description": "Suite: white wall-hung basin with a potted palm (portrait)"
+  },
+  {
+   "id": "img-046",
+   "file": "assets/img-046.jpg",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572798",
+   "photo_url": "https://bookingenginecdn.hostaway.com/listing/204325-572798-Ycb8CZv5rKCs8-0TAC1bivZfvwTZxeci7--jWJVyiAyQ-6a606ae1e11c1",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "license": "business-owned",
+   "license_note": "listing photo of 'Suite Room With Private Pool' on the business's own direct-booking engine (Hostaway, pantareiresort.holidayfuture.com, linked from its site)",
+   "room": "Suite Room With Private Pool",
+   "sha256": "a7aa92bec47b72358e2e98ea2b8b9dfcde0d649181eb65fced1e72a3adc3aaff",
+   "width": 1350,
+   "height": 900,
+   "original_size": [
+    1350,
+    900
+   ],
+   "description": "Suite: the private plunge pool on its terrace with two wooden lounge chairs, dense tropical planting"
+  },
+  {
+   "id": "img-047",
+   "file": "assets/img-047.jpg",
+   "source_url": "https://pantareiresort.holidayfuture.com/listings/572798",
+   "photo_url": "https://bookingenginecdn.hostaway.com/listing/204325-572798-l9NBvsh9f6LXUvJN0vc4ops3JVfqyUNS3gZulOXf25s-6a606ae117283",
+   "fetched_at": "2026-11-06T09:57:00Z",
+   "license": "business-owned",
+   "license_note": "listing photo of 'Suite Room With Private Pool' on the business's own direct-booking engine (Hostaway, pantareiresort.holidayfuture.com, linked from its site)",
+   "room": "Suite Room With Private Pool",
+   "sha256": "9f2171b7cf9d99f46cbcf81d5380ec83a55e771267abe4c83fbd9cd1831a676c",
+   "width": 1350,
+   "height": 900,
+   "original_size": [
+    1350,
+    900
+   ],
+   "description": "Suite: bed under a large palm-fan headboard, rattan pendant lamps, louvred teak door, potted palm"
+  }
+ ],
+ "images_note": "42 unique business-owned images (+3 duplicates flagged, +2 stock): 25 from the Wix site (originals up to 7000 px, stored at ≤ 2000 px; 13 landscape photos are ≥ 1920 px wide, 12 more are tall portraits or graphics) and 17 unique engine room photos at 1350 px. img-022 is a tinted texture of unknown place (contact background); img-023 is the logo; img-024/025 are portrait menu covers; img-026 and img-027 are stock and must never be shown as the business. Booking.com has '+70 photos', not harvested (enough material already).",
+ "videos": [
+  {
+   "id": "vid-001",
+   "source_url": "https://video.wixstatic.com/video/89c528_39f79dd031da409a801ebb7e37936b25/1080p/mp4/file.mp4",
+   "fetched_at": "2026-11-06T09:52:28Z",
+   "license": "business-owned",
+   "license_note": "home page background video of pantareiresort.com, the business's own Wix site (a cut of its YouTube film vid-004)",
+   "found_on": "https://www.pantareiresort.com/ (home hero, Wix background video)",
+   "shows": "professional resort film: the open-air lounge under rattan lamps, the pool and its loungers, a swimmer, top-down drone over the ring of bungalows, a couple walking the garden, bedrooms and bathrooms, the yoga shala with a class, the main building, then drone over the bungalows pulling out over the palm canopy to the coastline; no text on screen",
+   "duration_s": 70.72,
+   "resolution": [
+    1920,
+    1080
+   ],
+   "source_file": "assets/video/vid-001-source.mp4",
+   "sheet": "assets/video/vid-001-sheet.jpg",
+   "sha256": "9e870bad1522a5ecd431a30f9e840849bbf267ea483b561462887e1c345e7078",
+   "hero_candidate": {
+    "rank": 1,
+    "why": "the business itself from the air: the ring of red roofs around the pool, then a slow rise to the sea; no faces, no text, no cuts to another place"
+   },
+   "cut": {
+    "start_s": 55,
+    "length_s": 15
+   },
+   "renditions": [
+    {
+     "id": "vid-001-d1920-mp4",
+     "file": "assets/video/vid-001-d1920.mp4",
+     "mime": "video/mp4",
+     "role": "hero-desktop",
+     "width": 1920,
+     "height": 1080,
+     "bytes": 3810634
+    },
+    {
+     "id": "vid-001-m1280-mp4",
+     "file": "assets/video/vid-001-m1280.mp4",
+     "mime": "video/mp4",
+     "role": "hero-mobile",
+     "width": 1280,
+     "height": 720,
+     "bytes": 1898967
+    },
+    {
+     "id": "vid-001-m720-mp4",
+     "file": "assets/video/vid-001-m720.mp4",
+     "mime": "video/mp4",
+     "role": "hero-mobile-small",
+     "width": 720,
+     "height": 406,
+     "bytes": 1729900
+    },
+    {
+     "id": "vid-001-d1920-webm",
+     "file": "assets/video/vid-001-d1920.webm",
+     "mime": "video/webm",
+     "role": "hero-desktop",
+     "width": 1920,
+     "height": 1080,
+     "bytes": 3717252
+    },
+    {
+     "id": "vid-001-m1280-webm",
+     "file": "assets/video/vid-001-m1280.webm",
+     "mime": "video/webm",
+     "role": "hero-mobile",
+     "width": 1280,
+     "height": 720,
+     "bytes": 1824508
+    }
+   ],
+   "poster": {
+    "id": "vid-001-poster-jpg",
+    "file": "assets/video/vid-001-poster.jpg",
+    "avif": null,
+    "at_s": 57,
+    "width": 1920,
+    "height": 1080,
+    "note": "AVIF poster not made: the local ffmpeg has no AVIF encoder"
+   }
+  },
+  {
+   "id": "vid-004",
+   "source_url": "https://www.youtube.com/watch?v=Zg-yEE_XiFI",
+   "fetched_at": "2026-11-06T09:59:26Z",
+   "license": "business-owned",
+   "license_note": "on the business's own YouTube channel @Panta_Rei_Resort (UC-iTHq8oyqKavbU14c8nlcg), linked from its booking engine footer",
+   "found_on": "YouTube @Panta_Rei_Resort (the channel's only video, uploaded 2023-01-09, title 'Panta Rei Resort - A hidden paradise in Kabalana, Sri Lanka'); linked from https://pantareiresort.holidayfuture.com/",
+   "shows": "the full film (vid-001 is cut from it): opens on drone shots along a palm-lined beach with surf breaking, a scooter on a jungle lane, the 'PANTA REI Resort' title over the lounge, pool, top-down pool, garden, rooms, bathrooms, yoga shala, people in the pool, splashing water, drone over the bungalows and an end title 'PANTA REI Resort' over the aerial; credit 'by MO'",
+   "duration_s": 129.08,
+   "resolution": [
+    1920,
+    1080
+   ],
+   "source_file": "assets/video/vid-004-source.mp4",
+   "sheet": "assets/video/vid-004-sheet.jpg",
+   "sha256": "d2a67e86ce49e46f323f03dd5a261c5054f4eac7b542c6cbeffc92c46da25473",
+   "hero_candidate": {
+    "rank": 2,
+    "why": "the opening 14 s are the only business-owned footage of the surf: drone along a palm-lined beach with waves breaking; the beach is not named on screen (the film's title says Kabalana), so the site must not caption it with a place name"
+   },
+   "cut": {
+    "start_s": 0.5,
+    "length_s": 14
+   },
+   "place_note": "beach not identified on screen; title of the film: 'A hidden paradise in Kabalana'",
+   "renditions": [
+    {
+     "id": "vid-004-d1920-mp4",
+     "file": "assets/video/vid-004-d1920.mp4",
+     "mime": "video/mp4",
+     "role": "hero-desktop",
+     "width": 1920,
+     "height": 1080,
+     "bytes": 3849782
+    },
+    {
+     "id": "vid-004-m1280-mp4",
+     "file": "assets/video/vid-004-m1280.mp4",
+     "mime": "video/mp4",
+     "role": "hero-mobile",
+     "width": 1280,
+     "height": 720,
+     "bytes": 1910372
+    },
+    {
+     "id": "vid-004-m720-mp4",
+     "file": "assets/video/vid-004-m720.mp4",
+     "mime": "video/mp4",
+     "role": "hero-mobile-small",
+     "width": 720,
+     "height": 406,
+     "bytes": 1721480
+    },
+    {
+     "id": "vid-004-d1920-webm",
+     "file": "assets/video/vid-004-d1920.webm",
+     "mime": "video/webm",
+     "role": "hero-desktop",
+     "width": 1920,
+     "height": 1080,
+     "bytes": 3426909
+    },
+    {
+     "id": "vid-004-m1280-webm",
+     "file": "assets/video/vid-004-m1280.webm",
+     "mime": "video/webm",
+     "role": "hero-mobile",
+     "width": 1280,
+     "height": 720,
+     "bytes": 1794386
+    }
+   ],
+   "poster": {
+    "id": "vid-004-poster-jpg",
+    "file": "assets/video/vid-004-poster.jpg",
+    "avif": null,
+    "at_s": 6,
+    "width": 1920,
+    "height": 1080,
+    "note": "AVIF poster not made: the local ffmpeg has no AVIF encoder"
+   }
+  },
+  {
+   "id": "vid-002",
+   "source_url": "https://video.wixstatic.com/video/89c528_8be82363206e47748caf85c2e56cc673/1080p/mp4/file.mp4",
+   "fetched_at": "2026-11-06T09:52:33Z",
+   "license": "business-owned",
+   "license_note": "About page background video of pantareiresort.com, the business's own Wix site",
+   "found_on": "https://www.pantareiresort.com/about (background video)",
+   "shows": "a woman walking out of the main building (first 2 s), the two-storey restaurant building, top-down drone over the pool with swimmers and the bungalows, rising over the palm canopy to the sea in late light",
+   "duration_s": 17.15,
+   "resolution": [
+    1920,
+    1080
+   ],
+   "source_file": "assets/video/vid-002-source.mp4",
+   "sheet": "assets/video/vid-002-sheet.jpg",
+   "sha256": "b7ab41b168e56c61cefcddaf85089d07df3003e3abdea424721bac0a51cf9d8f",
+   "hero_candidate": {
+    "rank": 3,
+    "why": "same story as vid-001 in 14 s with warmer dusk light; cut starts after the person at the door"
+   },
+   "cut": {
+    "start_s": 3,
+    "length_s": 14
+   },
+   "renditions": [
+    {
+     "id": "vid-002-d1920-mp4",
+     "file": "assets/video/vid-002-d1920.mp4",
+     "mime": "video/mp4",
+     "role": "hero-desktop",
+     "width": 1920,
+     "height": 1080,
+     "bytes": 3767803
+    },
+    {
+     "id": "vid-002-m1280-mp4",
+     "file": "assets/video/vid-002-m1280.mp4",
+     "mime": "video/mp4",
+     "role": "hero-mobile",
+     "width": 1280,
+     "height": 720,
+     "bytes": 1867535
+    },
+    {
+     "id": "vid-002-m720-mp4",
+     "file": "assets/video/vid-002-m720.mp4",
+     "mime": "video/mp4",
+     "role": "hero-mobile-small",
+     "width": 720,
+     "height": 406,
+     "bytes": 1599768
+    },
+    {
+     "id": "vid-002-d1920-webm",
+     "file": "assets/video/vid-002-d1920.webm",
+     "mime": "video/webm",
+     "role": "hero-desktop",
+     "width": 1920,
+     "height": 1080,
+     "bytes": 3368174
+    },
+    {
+     "id": "vid-002-m1280-webm",
+     "file": "assets/video/vid-002-m1280.webm",
+     "mime": "video/webm",
+     "role": "hero-mobile",
+     "width": 1280,
+     "height": 720,
+     "bytes": 1645306
+    }
+   ],
+   "poster": {
+    "id": "vid-002-poster-jpg",
+    "file": "assets/video/vid-002-poster.jpg",
+    "avif": null,
+    "at_s": 5,
+    "width": 1920,
+    "height": 1080,
+    "note": "AVIF poster not made: the local ffmpeg has no AVIF encoder"
+   }
+  },
+  {
+   "id": "vid-003",
+   "source_url": "https://video.wixstatic.com/video/4ed5e8_ccab10ab2eb04fdda5862865a860d558/1080p/mp4/file.mp4",
+   "fetched_at": "2026-11-06T09:52:35Z",
+   "license": "business-owned",
+   "license_note": "Activities page background video of pantareiresort.com, the business's own Wix site",
+   "found_on": "https://www.pantareiresort.com/events (background video)",
+   "shows": "vertical clip of a Pilates/fitness mat class on the covered upper floor: women on their backs doing crunches, a column in the foreground, garden behind the railing; faces mostly turned away",
+   "duration_s": 25.45,
+   "resolution": [
+    1080,
+    1920
+   ],
+   "source_file": "assets/video/vid-003-source.mp4",
+   "sheet": "assets/video/vid-003-sheet.jpg",
+   "sha256": "a8dd701e15e7523f2e98077972d81f9f0d1ab7109a535cba30b8bce323f3f86a",
+   "not_picked": "vertical, one static angle, people close; usable as a small fitness-section loop, not a hero"
+  }
+ ],
+ "videos_note": "Four business-owned videos: three Wix background videos on the site and the YouTube channel's one film (vid-001 is a cut of vid-004). Instagram (@pantarei_resort, 186 posts) and Facebook reels need a login: not enumerated. No Vimeo or TikTok linked.",
+ "existing_site": {
+  "url": "https://www.pantareiresort.com/",
+  "status": 200,
+  "platform": "Wix",
+  "pages": [
+   "/",
+   "/about",
+   "/ourrooms",
+   "/restaurant",
+   "/events (Activities)",
+   "/explore",
+   "/contact",
+   "/menus (empty)",
+   "/room-information (empty)"
+  ],
+  "first_load": {
+   "mobile_bytes": 15740750,
+   "desktop_bytes": 15952142,
+   "lcp_ms_unthrottled": {
+    "mobile": 312,
+    "desktop": 280
+   },
+   "third_party_hosts": [
+    "browser.sentry-cdn.com",
+    "app-worker.visitor-analytics.io",
+    "visits.visitor-analytics.io",
+    "image2url.com",
+    "images.unsplash.com",
+    "maps.googleapis.com",
+    "maps.gstatic.com",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com"
+   ],
+   "note": "measured 2026-11-06T10:04Z with Playwright, no throttling, 6 s after load without scrolling; bytes include the background video streaming"
+  },
+  "funnel": "reports/2026-11-lk-surf-01/funnel/panta-rei-resort/funnel.json (clicks_to_book 1, WhatsApp; hero CHECK AVAILABILITY → engine)",
+  "notes": "Phones get a Wix mobile layout (viewport width=320). Faults a visitor meets: (1) home page is four image tiles with one word each and 140 words of text; no room, price or location detail on the first screen; (2) all four room cards on /ourrooms open with the same Booking.com sentence 'Situated in Ahangama Central, 300 metres from Kabalana Beach…'; (3) /explore is an empty page titled 'Expolore'; /menus and /room-information are empty pages still in the sitemap; (4) the email shown as hello@pantareiresort.com links to pantareiresort@gmail.com, and on Activities to the Wix placeholder info@mysite.com; (5) no room prices anywhere; (6) the home footer link 'room' opens the in-room guest guide PDF, which publishes the guest Wi-Fi password; (7) the engine's logo link is broken ('https://pantareiresort.holidayfuture./') and its ratings are stale (4.8 / 9.1); (8) ~15.7 MB transferred on first load and nine third-party hosts (Sentry, visitor-analytics.io, image2url.com, Unsplash, Google Maps, Google Fonts); (9) stock images on About and Activities (a Buddha statue on a headland, string lights) next to their own professional photography; (10) the Surf Therapy Massage and full menus with prices exist only inside PDFs.",
+  "screenshot": "assets/old-site-mobile.png",
+  "screenshot_desktop": "assets/old-site-desktop.png"
+ },
+ "languages": {
+  "seen": [
+   "en"
+  ],
+  "owner_language_hint": null
+ },
+ "contradictions": [
+  {
+   "what": "distance to Kabalana Beach",
+   "values": [
+    "300 metres (own site, engine)",
+    "600 metres / 7-minute walk (Booking.com)",
+    "366 m from the Google pin to the OSM coastline"
+   ],
+   "resolution": "site uses the business's own '300 m' only if the copywriter attributes it; safer: 'a short walk to Kabalana Beach'. Flag for the owner."
+  },
+  {
+   "what": "check-out time",
+   "values": [
+    "11 am (engine, guest guide)",
+    "11:30 (Google)"
+   ],
+   "resolution": "use 11 am (two business-owned sources)"
+  },
+  {
+   "what": "breakfast hours",
+   "values": [
+    "8:30AM – 12:00PM (site /restaurant)",
+    "8:30 AM - 11:30 AM (guest guide)"
+   ],
+   "resolution": "use the site's public hours; flag for the owner"
+  },
+  {
+   "what": "email",
+   "values": [
+    "hello@pantareiresort.com (shown text)",
+    "pantareiresort@gmail.com (link target, guide, Facebook)",
+    "info@mysite.com (Activities link target)"
+   ],
+   "resolution": "hello@ is what the business shows everywhere and on the engine; flag the broken links as a pitch point"
+  },
+  {
+   "what": "Triple Room beds",
+   "values": [
+    "king-size bed and a sofa bed (engine)",
+    "2 single beds, 1 extra-large double bed and 1 futon bed (Booking)"
+   ],
+   "resolution": "engine wording (the business's own)"
+  }
+ ],
+ "gaps": [
+  {
+   "field": "offers / room prices",
+   "why": "no room price on the site; the engine shows prices only for chosen dates",
+   "pitch_point": true
+  },
+  {
+   "field": "business.since",
+   "why": "no opening year published",
+   "pitch_point": false
+  },
+  {
+   "field": "location.spot",
+   "why": "no surf break named by the business; only 'the waves of Kabalana'",
+   "pitch_point": false
+  },
+  {
+   "field": "season",
+   "why": "no season or closed months published, though the restaurant closes in the off season (guest review)",
+   "pitch_point": true
+  },
+  {
+   "field": "hours_note / reception",
+   "why": "no reception hours or reply time",
+   "pitch_point": false
+  },
+  {
+   "field": "team / people",
+   "why": "no owner, chef or instructor names anywhere",
+   "pitch_point": true
+  },
+  {
+   "field": "reviews.quotes dates",
+   "why": "review dates not captured",
+   "pitch_point": false
+  },
+  {
+   "field": "reviews.tripadvisor",
+   "why": "TripAdvisor behind a bot wall",
+   "pitch_point": false
+  },
+  {
+   "field": "surf offering",
+   "why": "no lessons, rental, board storage or surf-guiding info, though the site sells surfing as part of the stay",
+   "pitch_point": true
+  },
+  {
+   "field": "menu on the web",
+   "why": "menus and the massage list exist only as PDFs",
+   "pitch_point": true
+  }
+ ],
+ "must_have_check": {
+  "type": "beach_lodging",
+  "rooms_min_1": "met (4 room types with m², beds, occupancy, bathroom, view, features and per-room photos)",
+  "photos_min_6": "met (42 unique business-owned photos; 13 landscape at ≥ 1920 px wide, 17 engine room photos at 1350 px)",
+  "bookingLinks_min_1": "met (own engine with 4 room pages; Booking.com; Agoda seen on Google)",
+  "core_contact": "met (+94728003022 on Google, site, WhatsApp link, engine, guide)",
+  "core_facts_for_copy": "met (owner's own About text, room descriptions, restaurant hours and two full menus with prices, fitness schedule and prices, guest guide, 6 verbatim reviews)",
+  "verdict": "buildable in test mode; no blocking gap"
+ }
+}
