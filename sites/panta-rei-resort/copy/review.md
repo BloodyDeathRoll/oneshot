@@ -1,10 +1,12 @@
-# copy review: panta-rei-resort · en · round 1
+# copy review: panta-rei-resort · en · rounds 1–2
+
+**Current verdict: PASS (round 2 of 2).** See "Round 2" at the end. Round 1 below is kept as the record.
 
 Reviewer: copyeditor 0.4.2. The runtime prompt came from `ONESHOT_RUN=2026-11-lk-surf-01 node tools/prompt.mjs copyeditor`, and all of its layers were read (945 lines). Run `2026-11-lk-surf-01` (test, outbound), state `copy_humanised`, 2026-11-06. I am independent of the copywriter (0.5.0) and the humanizer (0.2.1).
 
 Scope: **every sentence and every field** of `copy/en.json`, traced to `dossier/panta-rei-resort/dossier.json`. I read the dossier's own words and did not take them from `sources.md`. Where `sources.md` quotes a PDF more fully than the dossier does, the dossier's text is what counts. `audit.json` is not a source (hard constraint 2). No `industry.md` exists (outbound run), so there is no research check.
 
-## Verdict: **FAIL** (round 1 of 2)
+## Round 1 verdict: **FAIL** (round 1 of 2, superseded by round 2)
 
 97 rows: 83 `sourced`, 7 `framing`, 3 correctly empty, 0 `shared-context`, **4 `unsourced`, 0 `contradicted`**. Every unsourced sentence was already in the copywriter's draft, so all four go back to the **copywriter**. One voice flag goes back to the **humanizer**. The `beach_lodging` required fields are covered.
 
@@ -290,3 +292,86 @@ Required fields: **covered.**
 ## Ledger
 
 Due on this verdict: `copy_humanised → copy_failed`, reason "4 unsourced (copywriter: [2] hoppers, [3] season Pilates, [4] oil / every muscle / recovers faster, [7] agree price / call one); 1 voice (humanizer: [2] S4)". Per the task brief, I wrote no ledger line in this session. The orchestrator appends it.
+
+---
+
+# Round 2
+
+Reviewer: copyeditor 0.4.2, the same runtime prompt. Inputs:
+- `en.json`, `sources.md` and `dossier.json` as of commit `c0990ca`.
+- `en.draft.json`, unchanged since `43f7d5e`. The round-2 rewrite was made in `en.json` directly, so I diffed it against round 1's `en.json` (`0612ef1`).
+
+Hard constraint 6 applies: **every sentence of the whole file was re-checked against the dossier**, not only the changed ones.
+
+## Verdict: **PASS** (round 2 of 2)
+
+97 rows: 86 `sourced`, 7 `framing`, 4 correctly empty, 0 `shared-context`, **0 `unsourced`, 0 `contradicted`**. The voice audit is clean, with notes only, and the `beach_lodging` required fields are covered.
+
+## What changed, and how it was checked
+
+**Dossier (`23c45bf..c0990ca`).** Only additions: no value was removed or altered. The four lines the diff shows as removed are trailing lines that only gained a comma, and `menu.note` is unchanged. Each new field has a `source_url` and a `fetched_at`, and its text is the business's own PDF wording:
+- `menu.descriptions.items` (breakfast PDF): Sri Lankan Breakfast "2 egg hoppers, homemade green chutney, dhal and coconut sambal.", plus Granola Bowl, Banana Oat Pancakes and Shakshuka.
+- `facilities[4].text` (guest guide p.7): "…targeting every muscle in your body. This comprehensive full body oil massage combines sport massage techniques to address the physical demands of surfing and help your body recover faster. Revitalizing Massage: A full body oil massage…"
+- `facilities[2].season_note` (guest guide): "During the season, our resort offers a extended schedule of activities…"
+- `stay_info.transport.text` (guest guide p.3): "…we have some drivers always waiting at the door of the hotel. We recommend you to agree to a price before you take them. Let us know and we can also give them a call. PRIVATE TAXI … We will arrange everything for you!"
+
+**Copy (`0612ef1..c0990ca`).** Every changed or newly resting sentence:
+
+| Round-1 flag | Field | Round-2 sentence | Dossier key | Verdict |
+|---|---|---|---|---|
+| U1 | [2] ¶1 S2 | "Breakfast goes from smoothie bowls, granola and banana oat pancakes to shakshuka, or the Sri Lankan plate with egg hoppers, dhal and coconut sambal." (unchanged) | `menu.sections` (names); `menu.descriptions.items["Sri Lankan Breakfast"]` | sourced |
+| (dropped claim) | [2] ¶1 S3 | "Later there's a fish bowl, the curry of the day and a whole grilled fish, priced on weight." | `menu.sections["Main dishes"]` (Fish Bowl, Curry of the Day, Whole Grilled Fish "priced on weight"). The round-1 inference that lunch and dinner share a menu is gone; "later" claims no meal or time | sourced |
+| V1 | [2] ¶1 S4 | "Dinner is a mix of traditional and modern Mediterranean dishes." | `menu.note`: the site's "a mix of traditional and modern mediterranean dishes", near-verbatim | sourced |
+| U2 | [3] S3 | "There are Pilates classes too, led by experienced instructors, and in the season the schedule gets longer." | Pilates and instructors: `facilities[2]` "daily yoga and Pilates classes led by experienced instructors". Longer schedule: `facilities[2].season_note` "extended schedule of activities". No condition is attached to Pilates, and no class type is invented | sourced |
+| U3 | [4] ¶1 S2 | "It's a full body oil massage that works on every muscle with sport massage techniques, for the physical demands of surfing, and helps your body recover faster." | `facilities[4].text`, clause by clause: "full body oil massage", "targeting every muscle", "sport massage techniques", "physical demands of surfing", "help your body recover faster". It is the business's own efficacy claim, stated as such, with nothing added | sourced |
+| U4 | [7] ¶2 S2 | "Agree the price before you set off, or ask us to call one." (unchanged) | `stay_info.transport.text` "agree to a price before you take them … we can also give them a call" | sourced |
+| N7 | `languagesSpoken` | `[]` | `languages_spoken[0].note` "staff languages not stated". It is empty for a stated reason and asserts nothing | correctly empty |
+
+In round 2, rows 16, 17, 18, 24 and 28 of the round-1 table read as above. Row 43 is now `sourced`, and row 97 is now correctly empty. Every other row was re-checked against the current dossier and its verdict and key stand as in round 1:
+- Prices, units, room sizes, sleeps, ratings (9.2 / 468, 4.7 / 213), contact and address were machine-compared again.
+- All six testimonials were machine-checked again, verbatim.
+- Every other prose sentence was re-read against its key.
+
+**Rulings R1–R5 stand.**
+- R1 (layout from the business's own media) is unchanged. `sources.md` now cites vid-001 for the ring.
+- R6 is resolved: [3] and `amenities[4]` ("Daily yoga and Pilates classes") now agree.
+- R7 is resolved by `facilities[4].text`.
+- [4] ¶2 S2, "Either one is an hour on the whole body": `facilities[4].text` now also states that the Revitalizing Massage is full body.
+
+Watch-list, re-run:
+- No distance moved.
+- No amenity appeared.
+- No review was paraphrased.
+- Both ratings carry count, platform and date.
+- No flagged contradiction was resolved in the copy's favour.
+- Nothing is claimed by implication.
+
+## Voice audit (round 2)
+
+| Section | Result |
+|---|---|
+| [2] | Clean. V1 is resolved: "Dinner is a mix of traditional and modern Mediterranean dishes." reads plainly, and "Later there's…" bridges breakfast to the main dishes without a false claim. |
+| [3] | Clean. Three short-to-medium sentences, and the season clause comes last. |
+| [4] | Acceptable. ¶1 S2 is still one long sentence with two trailing clauses ("for the physical demands of surfing, and helps your body recover faster"). It follows the owner's guide closely and reads aloud without stumbling. Not failing (N10). |
+| Everything else | Unchanged since round 1 and still clean. The owner-verbatim stock phrases are N9, an owner conversation. |
+
+Rhythm varies, there are no rhetorical triads, and no Claude-written padding. At least one honest limit is present: Friday off, prices only for chosen dates, quiet hours. The register matches the owner's.
+
+## Completeness (round 2)
+
+The coverage is unchanged from round 1, and all requirements are still covered. `languagesSpoken` is now empty, for the dossier's stated reason ("staff languages not stated"). It is a should-have, not a must-have, for `beach_lodging`, and becomes an owner item.
+
+## Notes (not failing)
+
+- **N1–N6 and N8 from round 1 stand.** N1 is the summary/detail overlaps. N2 is the missing off-season limit, now an owner item. N4 is "residents" against "in-house guests".
+- **N10. The [4] ¶1 S2 sentence is long.** The humanizer may tighten it in a later pass. It is not a fail.
+- **N11. `sources.md` is stale in places (copywriter housekeeping).**
+  - Its "Copy" column for [2] ¶1, [3] and [4] ¶1–2 still quotes the round-1 sentences, although its keys now point at the right new fields.
+  - The [1] row still lists `images[img-001]` for the ring, although the Round 2 preamble says vid-001 is now cited.
+
+  The traceability holds against the dossier, which is what this review checks. Refresh the quoted text before the designer reads the file.
+- **N12. Process.** The round-2 copy changes went straight into `en.json`, without a separate humanizer pass or a new `en.draft.json`. Every changed sentence was audited here as new text ("guilty until traced") and all are traced.
+
+## Ledger (round 2)
+
+Due on this verdict: `copy_humanised → copy_passed` (round 2, 0 unsourced / 0 contradicted). Per the task brief, I wrote no ledger line in this session. The orchestrator appends it.
