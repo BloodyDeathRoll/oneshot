@@ -17,3 +17,5 @@ Open (human decisions):
 - Booking lists a "private hot tub" in the King rooms and Google lists a pool and restaurant; nothing confirms any of them — none is claimed.
 
 Review fixes (PR #68, 2026-11-06): pitch page corrected (no "as you asked", forecast named, phone and Booking.com claims narrowed, breakfast and balconies added to the owner's list). The proposal needs it. Score under rubric 0.3.2: 89.7, still a pass. The Rosa forecast was added after critique and has not been re-scored. Proposal redeployed 2026-11-06 from main: version 40a36fd2, all files byte-identical, noindex. The preview didn't change.
+
+**Hold the pitch (verification 1, 2026-11-06): FAIL** on dimension 8 (visual 7, experience 7; a pass needs 8 from both). Total 86.0/100, critic 72.8/80. Causes beyond the forecast block: the Yelum print crop, dangling separators, the phone header's grey band. Fix list in the reports. Open for a human: the nearest-spot Lazy Left forecast against rule 9 (`concepts.md` still says "Forecast: no"). The proposal screenshots still predate the forecast: re-shoot after the fixes.
