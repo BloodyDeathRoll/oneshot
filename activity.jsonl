@@ -71,3 +71,6 @@
 {"ts":"2026-11-06T12:20:21Z","operator":"alon","slug":"coconut-surf-inn-guest-house-and-restaurant","kind":"done","id":"a-202611042150-2es5","note":"Harvest through packaged, 2026-11-05; waiting at gate c (send pitch)."}
 {"ts":"2026-11-06T12:20:22Z","operator":"alon","slug":"cheeky-monkey","kind":"work","note":"Ledger line critiqued(1)->critiqued(2) of 2026-11-04T10:58:32Z has agent_version null; the critic was 0.4.3 (run pin). The line stays: the ledger is append-only."}
 {"ts":"2026-11-06T12:20:23Z","operator":"alon","slug":"coconut-surf-inn-guest-house-and-restaurant","kind":"work","note":"Ledger lines critiqued(1) and passed of 2026-11-05T12:13:09Z have agent_version null; the critic was 0.4.3 (run pin). The lines stay: the ledger is append-only."}
+{"ts":"2026-11-06T12:52:47Z","operator":"alon","slug":"cheeky-monkey","kind":"work","note":"Redeployed after PR #68: proposal a75ae6cb, preview b3b92862 (only the .handoff[hidden] rule changed); site-check ok"}
+{"ts":"2026-11-06T12:52:47Z","operator":"alon","slug":"lotus-surf-house","kind":"work","note":"Redeployed proposal after PR #68: version 40a36fd2"}
+{"ts":"2026-11-06T12:52:47Z","operator":"alon","slug":"coconut-surf-inn-guest-house-and-restaurant","kind":"work","note":"Redeployed proposal after PR #68: version 549d09ed"}
