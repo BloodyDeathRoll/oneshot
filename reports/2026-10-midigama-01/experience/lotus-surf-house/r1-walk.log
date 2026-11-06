@@ -1,0 +1,55 @@
+phone cold t=500 fontsLoaded=[Hanken Grotesk,Parisienne,Parisienne Fallback,Hanken Grotesk Fallback] state={"y":0,"barVisible":false,"barTop":851,"canvases":[]}
+phone cold t=1500 fontsLoaded=[Hanken Grotesk,Parisienne,Parisienne Fallback,Hanken Grotesk Fallback] state={"y":0,"barVisible":false,"barTop":851,"canvases":[]}
+phone cold t=3000 fontsLoaded=[Hanken Grotesk,Parisienne,Parisienne Fallback,Hanken Grotesk Fallback] state={"y":0,"barVisible":false,"barTop":851,"canvases":[]}
+phone cold t=6000 fontsLoaded=[Hanken Grotesk,Parisienne,Parisienne Fallback,Hanken Grotesk Fallback] state={"y":0,"barVisible":false,"barTop":851,"canvases":[]}
+cold load ms 6354 third-party hosts localhost:8960
+hero {
+ "heroText": "Lotus Surf House A guesthouse in Midigama, on the south coast of Sri Lanka. Check dates on Booking.com Call +94 77 464 7541",
+ "bookingLinks": [
+  "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html"
+ ],
+ "bookingCount": 9,
+ "tel": [
+  "tel:+94774647541"
+ ],
+ "pageH": 9818,
+ "sw": 390,
+ "titles": [
+  "H1:Lotus Surf House",
+  "H2:The King Rooms",
+  "H3:King Room with Balcony",
+  "H2:Up on the roof",
+  "H2:In the garden",
+  "H3:Standard Double or Twin Room with Garden View",
+  "H3:Double or Twin Room with Garden View",
+  "H3:Deluxe Queen Room",
+  "H2:Yelum",
+  "H2:Breakfast",
+  "H2:Guests",
+  "H2:Getting here",
+  "H3:Good to know"
+ ]
+}
+hero CTA {"text":"Check dates on Booking.com","x":20,"y":696,"w":350,"h":54,"bg":"rgb(184, 67, 28)","color":"rgb(255, 255, 255)","font":"\"Hanken Grotesk\", \"Hanken Grotesk Fallback\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif","size":"16.5px"}
+s00 y=0 bar=false barTop=851
+s01 y=591 bar=false barTop=851
+s02 y=1182 bar=true barTop=772
+s03 y=1773 bar=true barTop=772
+s04 y=2364 bar=true barTop=772
+s05 y=2955 bar=true barTop=772
+s06 y=3546 bar=true barTop=772
+s07 y=4137 bar=true barTop=772
+s08 y=4728 bar=true barTop=772
+s09 y=5319 bar=true barTop=772
+s10 y=5910 bar=true barTop=772
+s11 y=6501 bar=true barTop=772
+s12 y=7092 bar=true barTop=772
+s13 y=7683 bar=true barTop=772
+s14 y=8274 bar=true barTop=772
+s15 y=8865 bar=true barTop=772
+s16 y=8974 bar=true barTop=772
+fonts final Hanken Grotesk 400 600, Parisienne 400, Parisienne Fallback normal, Hanken Grotesk Fallback normal
+laptop hero CTA hover before: none rgba(41, 52, 8, 0.18) 0px 1px 2px 0px rgb(184, 67, 28) | after: none rgba(158, 56, 22, 0.55) 0px 6px 16px -6px rgb(158, 56, 22)
+micro-animations (laptop): {"total":45,"withTransition":43,"without":["skip:Skip to the rooms","mark:Lotus Surf House"]}
+reduced {"y":2194,"barVisible":true,"barTop":772,"canvases":[]}
+nojs {"y":2194,"barVisible":true,"barTop":772,"canvases":[]}

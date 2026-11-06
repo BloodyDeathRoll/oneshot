@@ -1,0 +1,127 @@
+{
+ "m390_keys": [
+  "Skip to the rooms op=1.00",
+  "Coconut Surf Inn op=1.00",
+  " op=1.00",
+  "Check dates on Booking.com op=1.00",
+  "Booking.com, 142 op=1.00",
+  "Google, 88 op=1.00"
+ ],
+ "m390_contrast": [
+  {
+   "at": 0,
+   "t": "Coconut Surf Inn",
+   "big": true,
+   "contrast_median": 17.28,
+   "contrast_p95_brightest": 8.97
+  },
+  {
+   "at": 0,
+   "t": "Coconut Surf Inn",
+   "big": true,
+   "contrast_median": 14.11,
+   "contrast_p95_brightest": 2.54
+  },
+  {
+   "at": 0,
+   "t": "Gurubebila, between Midigama a",
+   "big": false,
+   "contrast_median": 15.72,
+   "contrast_p95_brightest": 6.31
+  },
+  {
+   "at": 0,
+   "t": "Check dates on Booking.com",
+   "big": false,
+   "contrast_median": 5.3,
+   "contrast_p95_brightest": 5.3
+  },
+  {
+   "at": 0,
+   "t": "Check dates on Booking.com",
+   "big": false,
+   "contrast_median": 5.3,
+   "contrast_p95_brightest": 5.3
+  }
+ ],
+ "d1440_keys": [
+  "Skip to the rooms op=1.00",
+  "Coconut Surf Inn op=1.00",
+  "Rooms op=1.00",
+  "The roof op=1.00",
+  "The break op=1.00",
+  "Check dates op=1.00"
+ ],
+ "d1440_contrast": [
+  {
+   "at": 0,
+   "t": "Coconut Surf Inn",
+   "big": true,
+   "contrast_median": 18.73,
+   "contrast_p95_brightest": 12.28
+  },
+  {
+   "at": 0,
+   "t": "Rooms",
+   "big": false,
+   "contrast_median": 20,
+   "contrast_p95_brightest": 15.12
+  },
+  {
+   "at": 0,
+   "t": "The roof",
+   "big": false,
+   "contrast_median": 19.88,
+   "contrast_p95_brightest": 13.73
+  },
+  {
+   "at": 0,
+   "t": "The break",
+   "big": false,
+   "contrast_median": 18.43,
+   "contrast_p95_brightest": 12.37
+  },
+  {
+   "at": 0,
+   "t": "Check dates",
+   "big": false,
+   "contrast_median": 5.3,
+   "contrast_p95_brightest": 5.3
+  },
+  {
+   "at": 0,
+   "t": "Check dates",
+   "big": false,
+   "contrast_median": 5.3,
+   "contrast_p95_brightest": 5.3
+  },
+  {
+   "at": 0,
+   "t": "Coconut Surf Inn",
+   "big": true,
+   "contrast_median": 4.8,
+   "contrast_p95_brightest": 3.3
+  },
+  {
+   "at": 0,
+   "t": "Gurubebila, between Midigama a",
+   "big": false,
+   "contrast_median": 16.51,
+   "contrast_p95_brightest": 9.02
+  },
+  {
+   "at": 0,
+   "t": "Check dates on Booking.com",
+   "big": false,
+   "contrast_median": 5.3,
+   "contrast_p95_brightest": 5.3
+  },
+  {
+   "at": 0,
+   "t": "Check dates on Booking.com",
+   "big": false,
+   "contrast_median": 5.3,
+   "contrast_p95_brightest": 5.3
+  }
+ ]
+}

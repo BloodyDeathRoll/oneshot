@@ -1,0 +1,33 @@
+dossier quotes 85
+blockquotes on page 13
+NONE | The garden rooms are downstairs. “The standard rooms may not be the ne | {'author': None, 'country': None, 'date': None, 'name': None, 'reviewer': None}
+EXACT | Yelum and his family provide such a welcoming and comfortable stay. Th | {'author': 'Fiona, Australia', 'country': None, 'date': '2024-12-14', 'name': None, 'reviewer': None}
+EXACT | The room was spacious and functional. The AC is really helping when it | {'author': 'Benjamin, Switzerland', 'country': None, 'date': '2025-10-10', 'name': None, 'reviewer': None}
+EXACT | Very sweet Accommodation! A nice garden with a ping pong table and a g | {'author': 'Svenja, Germany', 'country': None, 'date': '2024-02-05', 'name': None, 'reviewer': None}
+NONE | I enjoyed my stay here, and extended one more night. The location is p | {'author': None, 'country': None, 'date': None, 'name': None, 'reviewer': None}
+EXACT | We had an amazing stay at Lotus House. The family are so kind and welc | {'author': 'Henry, United Kingdom', 'country': None, 'date': '2024-03-03', 'name': None, 'reviewer': None}
+EXACT | I thoroughly enjoyed my stay at the Lotus Surf House. The property was | {'author': 'Dimitrios, United Kingdom', 'country': None, 'date': '2025-11-22', 'name': None, 'reviewer': None}
+EXACT | Yelum was an incredible host who helped us out with not only planning  | {'author': 'Talia, Australia', 'country': None, 'date': '2025-11-13', 'name': None, 'reviewer': None}
+EXACT | Beautiful garden, the owners are so friendly and accomodating and the  | {'author': 'Nicole, Australia', 'country': None, 'date': '2024-12-05', 'name': None, 'reviewer': None}
+EXACT | Very friendly and lovely owner - always helpful, easy going. Yelum can | {'author': 'Holtmann, Switzerland', 'country': None, 'date': '2025-09-18', 'name': None, 'reviewer': None}
+EXACT | Super close to the beaches and waves. Super cool and friendly staff/ow | {'author': 'Colin, Canada', 'country': None, 'date': '2026-01-27', 'name': None, 'reviewer': None}
+EXACT | For the price, my room was amazing. It felt like I was in the jungle.  | {'author': 'ジョナ, Japan', 'country': None, 'date': '2026-02-20', 'name': None, 'reviewer': None}
+EXACT | I had a room without ac and it was fine but for a long period stay won | {'author': 'Katsiaryna, Poland', 'country': None, 'date': '2026-02-23', 'name': None, 'reviewer': None}
+GIADA dossier repr: 'I enjoyed my stay here, and extended one more night. \r\nThe location is perfect to go and surf at lazy left and right . \r\nthe host is very welcoming and kind . breakfast is very nice. \r\nthe room is ok , it gets very dusty pretty easily I think . Bed was comfortable enough .'
+GIADA page repr   : 'I enjoyed my stay here, and extended one more night. The location is perfect to go and surf at lazy left and right . the host is very welcoming and kind . breakfast is very nice. the room is ok , it gets very dusty pretty easily I think . Bed was comfortable enough .'
+equal after whitespace collapse: True
+The standard rooms may not be the newest ->  roof terrace could unfortunately not be guaranteed at the time of your stay. … The standard rooms may not be the newest, but they are popular with many vacationers due to their charm. … Breakfast is served from 8 a.m. to 10 a.m. … Best reg
+I strive every day -> er roof terrace could unfortunately not be guaranteed at the time of your stay. I strive every day to make my customers' holidays as wonderful as possible. If you give me a second chance in the future, I would be delighted to personally pre
+ATTR ok Fiona, Australia Dec 2024 booking
+ATTR ok Benjamin, Switzerland Oct 2025 booking
+ATTR ok Svenja, Germany Feb 2024 booking
+ATTR ok Giada, Italy Dec 2025 booking
+ATTR ok Henry, United Kingdom Mar 2024 booking
+ATTR ok Dimitrios, United Kingdom Nov 2025 booking
+ATTR ok Talia, Australia Nov 2025 booking
+ATTR ok Nicole, Australia Dec 2024 booking
+ATTR ok Holtmann, Switzerland Sep 2025 booking
+ATTR ok Colin, Canada Jan 2026 booking
+ATTR ok ジョナ, Japan Feb 2026 booking
+ATTR ok Katsiaryna, Poland Feb 2026 booking
+attribution 12 / 12

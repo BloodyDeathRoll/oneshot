@@ -1,0 +1,8 @@
+// experience-critic r3: the current site, phone, first screen + links
+import { chromium } from '/Users/alonlavi/.superset/worktrees/oneshot/pull-latest-version-from-ff5cf4f5/node_modules/playwright/index.mjs';
+const OUT=process.argv[2];
+const b=await chromium.launch(); const ctx=await b.newContext({viewport:{width:390,height:844},deviceScaleFactor:2,isMobile:true,hasTouch:true});
+const p=await ctx.newPage(); await p.goto('https://cheekymonkeymidigama.com/',{waitUntil:'load',timeout:60000}); await p.waitForTimeout(2500);
+await p.screenshot({path:OUT+'/r3-current-phone-1.png'});
+console.log(JSON.stringify(await p.evaluate(()=>({sw:document.documentElement.scrollWidth,links:[...new Set([...document.querySelectorAll('a')].map(a=>a.href).filter(h=>/booking|wa\.me|whatsapp|tel:|mailto:/.test(h)))],php:/Notice|Warning:/.test(document.body.innerText.slice(0,400))}))));
+await b.close();

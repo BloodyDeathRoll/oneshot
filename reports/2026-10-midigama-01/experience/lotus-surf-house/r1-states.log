@@ -1,0 +1,19 @@
+header y=300 {"cls":"top","pos":"fixed","bg":"rgba(0, 0, 0, 0)","op":"1","tr":"none","markColor":"rgb(255, 255, 255)","markOp":"1"}
+header y=600 {"cls":"top","pos":"fixed","bg":"rgba(0, 0, 0, 0)","op":"1","tr":"none","markColor":"rgb(255, 255, 255)","markOp":"1"}
+header y=700 {"cls":"top","pos":"fixed","bg":"rgba(0, 0, 0, 0)","op":"1","tr":"none","markColor":"rgb(255, 255, 255)","markOp":"1"}
+header y=900 {"cls":"top solid","pos":"fixed","bg":"rgba(255, 255, 255, 0.96)","op":"1","tr":"matrix(1, 0, 0, 1, 0, -64)","markColor":"rgb(255, 255, 255)","markOp":"1"}
+header y=1900 {"cls":"top solid","pos":"fixed","bg":"rgba(255, 255, 255, 0.96)","op":"1","tr":"matrix(1, 0, 0, 1, 0, -64)","markColor":"rgb(255, 255, 255)","markOp":"1"}
+header y=2600 {"cls":"top solid","pos":"fixed","bg":"rgba(255, 255, 255, 0.96)","op":"1","tr":"matrix(1, 0, 0, 1, 0, -64)","markColor":"rgb(255, 255, 255)","markOp":"1"}
+header y=4000 {"cls":"top solid","pos":"fixed","bg":"rgba(255, 255, 255, 0.96)","op":"1","tr":"matrix(1, 0, 0, 1, 0, -64)","markColor":"rgb(255, 255, 255)","markOp":"1"}
+small images [{"src":"img-010-r0.667-640.webp","w":169,"inLink":false,"cursor":"auto"},{"src":"img-015-r0.667-640.webp","w":169,"inLink":false,"cursor":"auto"},{"src":"img-034-r0.667-640.webp","w":169,"inLink":false,"cursor":"auto"},{"src":"img-008-r0.667-640.webp","w":169,"inLink":false,"cursor":"auto"},{"src":"img-022-r1.25-560.webp","w":169,"inLink":false,"cursor":"auto"},{"src":"img-004-r1.25-560.webp","w":169,"inLink":false,"cursor":"auto"}]
+css animations ["gate:settle 1.4s"]
+reveal-marked elements 0
+mentions surf: 3 | contexts: Lotus Surf House || Lotus Surf House || Lotus Surf House
+Fiona occurrences: 1 | "oasis" occurrences: 1
+guests next tapped
+hero tap -> https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html
+bar tap -> https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html
+bar links []
+laptop hero Call hover rgb(41, 52, 8) rgba(0, 0, 0, 0) none transform, background-color, box-shadow -> rgb(41, 52, 8) rgba(41, 52, 8, 0.06) none
+nav Guests -> scrollY 6435
+King strip thumb hover none auto -> none

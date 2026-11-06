@@ -1,0 +1,36 @@
+calm 390 {"total":70,"small":[],"inline_text_links":[],"dots":{"DIV.show r45 over dotsonly 350x233 pe=auto":2,"DIV.dots 264x44 pe=auto":2,"BUTTON.dot 44x44 focusable pe=auto":24,"DIV.dots 176x44 pe=auto":3,"SPAN.pips 52x6 aria-hidden pe=auto":2,"SPAN.pips 136x6 aria-hidden pe=auto":1}}
+calm 1440 {"total":93,"small":[],"inline_text_links":[],"dots":{"DIV.show r45 over dotsonly 295x369 pe=auto":2,"DIV.dots 264x44 pe=auto":2,"BUTTON.dot 44x44 focusable pe=auto":43,"DIV.dots 176x44 pe=auto":5,"DIV.dots 484x44 pe=auto":1}}
+interactive 390 {"total":45,"small":[],"inline_text_links":[],"dots":{"DIV.dots 282x44 pe=auto":2,"BUTTON.dot 50x44 focusable pe=auto":7,"BUTTON.dot 44x44 focusable pe=auto":24,"DIV.dots 194x44 pe=auto":4,"DIV.dots 150x44 pe=auto":1}}
+interactive 1440 {"total":54,"small":[],"inline_text_links":[],"dots":{"DIV.dots 282x44 pe=auto":2,"BUTTON.dot 50x44 focusable pe=auto":8,"BUTTON.dot 44x44 focusable pe=auto":27,"DIV.dots 194x44 pe=auto":5,"DIV.dots 150x44 pe=auto":1}}
+node:internal/modules/run_main:122
+    triggerUncaughtException(
+    ^
+
+elementHandle.evaluate: Execution context was destroyed, most likely because of a navigation
+    at st (/private/tmp/claude-501/-Users-alonlavi--superset-worktrees-oneshot-pull-latest-version-from-ff5cf4f5/852aefbd-e800-4b92-ac42-f38504e06c45/scratchpad/coco-crit3/dot.mjs:9:27)
+    at /private/tmp/claude-501/-Users-alonlavi--superset-worktrees-oneshot-pull-latest-version-from-ff5cf4f5/852aefbd-e800-4b92-ac42-f38504e06c45/scratchpad/coco-crit3/dot.mjs:16:49 {
+  log: [],
+  name: 'Error'
+}
+
+Node.js v22.15.0
+390
+  #0 show r45 over dotsonly dot2 44x44 hit=self before=0 after=1 scroll=350
+  #1 show r45 over dotsonly dot2 44x44 hit=self before=0 after=1 scroll=350
+  #2 show r45 over dot2 44x44 hit=self before=0 after=1 scroll=350
+  #3 show r45 over dot2 44x44 hit=self before=0 after=1 scroll=350
+  #4 show r45 over tight arrow Next photo 44x44 hit=self before=0 after=1 scroll=163
+  #5 show r45 over tight arrow Next photo 44x44 hit=self before=0 after=1 scroll=163
+  #6 show r32 dot2 44x44 hit=self before=0 after=1 scroll=350
+  #7 quotes ready tight arrow Next review 44x44 hit=self before=0 after=1 scroll=0
+1440
+  #0 show r45 over dotsonly dot2 44x44 hit=self before=0 after=1 scroll=295
+  #1 show r45 over dotsonly dot2 44x44 hit=self before=0 after=1 scroll=295
+  #2 show r45 over dot2 44x44 hit=self before=0 after=1 scroll=295
+  #3 show r45 over dot2 44x44 hit=self before=0 after=1 scroll=295
+  #4 show r45 over dot2 44x44 hit=self before=0 after=1 scroll=295
+  #5 show r45 over dot2 44x44 hit=self before=0 after=1 scroll=295
+  #6 show r32 dot2 44x44 hit=self before=0 after=1 scroll=602
+  #7 quotes ready dot2 44x44 hit=self before=0 after=1 scroll=0
+8921 ["HEADER.top away solid right=322","SPAN.pl right=322","SPAN.pi lb right=322","NAV.bar on done right=322"]
+8922 ["ARTICLE.room on right=335","DIV.show r43  right=335","DIV.room-text right=335","ARTICLE.room right=335","DIV.show r43  right=335","DIV.room-text right=335"]

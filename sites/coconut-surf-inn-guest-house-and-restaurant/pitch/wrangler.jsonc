@@ -1,0 +1,13 @@
+{
+  // The coconut-surf-inn-guest-house-and-restaurant proposal page as a noindex Worker (writer 0.5.1, station 7).
+  // Oneshot account only: CLOUDFLARE_ACCOUNT_ID=e42421b29f42b84081a1e9be362397eb npx wrangler deploy
+  "name": "coconut-surf-inn-proposal",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": ".",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  },
+  "workers_dev": true,
+  "preview_urls": false
+}

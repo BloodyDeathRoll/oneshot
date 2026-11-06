@@ -1,23 +1,23 @@
 {
  "slug": "cheeky-monkey",
  "variant": "../final",
- "measured_at": "2026-10-27T00:31:12.868Z",
+ "measured_at": "2026-11-04T11:32:19.825Z",
  "first_load": {
-  "requests": 7,
+  "requests": 12,
   "hosts": [
    "localhost:8980"
   ],
   "third_party_hosts": [],
-  "bytes_total": 397348,
-  "bytes_html": 98438,
+  "bytes_total": 708018,
+  "bytes_html": 96992,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 64900,
-  "bytes_images": 234010,
-  "largest_image_bytes": 75614,
-  "lcp_ms": 1472,
+  "bytes_images": 546126,
+  "largest_image_bytes": 119050,
+  "lcp_ms": 480,
   "cls": 0,
-  "dcl_ms": 1567
+  "dcl_ms": 1806
  },
  "scroll": {
   "early": {
@@ -32,12 +32,11 @@
  "booking": {
   "external_booking_hrefs": [
    "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html",
-   "https://commons.wikimedia.org/wiki/File:Indische_Oceaan_-_panoramio_(1).jpg",
-   "https://creativecommons.org/licenses/by-sa/3.0",
    "https://www.instagram.com/cheekymonkeysrilanka/",
    "https://cheekymonkeymidigama.com/",
    "https://www.google.com/maps/place/Cheeky+Monkey/@5.9617986,80.3967609,17z/data=!4m9!3m8!1s0x3ae114c1f7d9fc01:0xb59451ca09648650!5m2!4m1!1i2!8m2!3d5.9617986!4d80.3967609!16s%2Fg%2F11b6scl3ts?hl=en",
-   "https://www.facebook.com/cheekymonkeysrilanka/"
+   "https://www.facebook.com/cheekymonkeysrilanka/",
+   "https://www.youtube.com/watch?v=Qo3SqaCSkpk"
   ],
   "tel_hrefs": [
    "tel:+94719248686"
@@ -53,10 +52,10 @@
   "focus_returned": true
  },
  "a11y": {
-  "images": 56,
+  "images": 55,
   "images_without_alt": 0,
-  "images_alt_empty_decorative": 7,
-  "tapables": 83,
+  "images_alt_empty_decorative": 6,
+  "tapables": 84,
   "tapables_under_44px": 0,
   "tapables_under_44px_examples": [],
   "headings": [
@@ -91,19 +90,19 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 10173,
+  "text_length": 10162,
   "booking_links_reachable": 6,
-  "visible_images": 56
+  "visible_images": 55
  },
  "reduced_motion": {
-  "canvases": 1,
-  "canvases_hidden": 1,
+  "canvases": 0,
+  "canvases_hidden": 0,
   "photograph_visible": true
  },
  "facts": {
   "numbers_on_page": 48,
   "numbers_not_in_passed_copy": [
-   "3.0,"
+   "2018"
   ],
   "note": "copy/en.json passed station 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps each paragraph to its dossier fields. A number here that is not in the copy is either an interface label (01, 02…) or a claim to chase."
  }

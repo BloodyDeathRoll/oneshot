@@ -1,5 +1,5 @@
 {
- "_about": "SCHEMA GAP content: what the picked design shows and schemas/site-content.md v0.11 has no field for. Written by scripts/seed-from-dossier.mjs from copy/en.json, dossier.json and stock/index.json; listed in notes.md \"schema gaps\". Edit there, not here.",
+ "_about": "SCHEMA GAP content: what the picked design shows and schemas/site-content.md v0.11 has no field for. Written by scripts/seed-from-dossier.mjs from copy/en.json and dossier.json; listed in notes.md \"schema gaps\". Edit there, not here.",
  "wordmark": {
   "mark": "Cheeky Monkey",
   "rest": "Surf Camp",
@@ -10,8 +10,8 @@
   "_source": "the town in contact.address (Midigama East Midigama) + country; concepts.md §6 \"hero subtitle\" gap"
  },
  "seo": {
-  "title": "Cheeky Monkey Surf Camp, Midigama | Rooms, surf weeks and 400 boards",
-  "_source": "the mockup's <title>; businessName + place + tagline facts (400 boards: dossier rentals[0])"
+  "title": "Cheeky Monkey Surf Camp, Midigama | Rooms, lessons, boards",
+  "_source": "seo 4h: the mockup's <title> cut to 58 chars (base.md: <= 60); businessName + the town + the tagline's rooms, lessons and boards (dossier room_types, lessons, rentals)"
  },
  "weeks": [
   {
@@ -170,25 +170,13 @@
   ]
  },
  "_roomGalleries": "rooms[].photo holds one photo (the first slide); the other slides have no field (concepts.md §6). Files in src/gaps/media/",
- "atmosphere": {
-  "file": "stock-003.jpg",
-  "width": 2560,
-  "height": 1712,
-  "bytes": 2220761,
-  "id": "stock-003",
-  "alt": "The shore at Midigama under an overhanging tree: turquoise water, small waves breaking along the beach, dark rocks in the foreground, fishing boats far off",
-  "credit": {
-   "title": "Indische Oceaan - panoramio (1)",
-   "titleUrl": "https://commons.wikimedia.org/wiki/File:Indische_Oceaan_-_panoramio_(1).jpg",
-   "author": "Maaike Hage",
-   "license": "CC BY-SA 3.0",
-   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-   "via": "Wikimedia Commons"
-  },
-  "licence": "CC BY-SA 3.0",
-  "modify": false
+ "heroCredit": {
+  "person": "Lorenzo Marzocca",
+  "what": "2018 promo film for Cheeky Monkey",
+  "url": "https://www.youtube.com/watch?v=Qo3SqaCSkpk",
+  "licence": "unknown",
+  "_source": "dossier.videos[] vid-001 found_on (\"Promotional video for Cheeky Monkey Guesthouse\", uploaded 2018-02-06 by Lorenzo Marzocca) and source_url; media has no credit field. Licence unknown: to be confirmed with the owner at pitch"
  },
- "_atmosphere": "a credited atmosphere photograph (stock/index.json) has no field: media has no credit/licence. Shown whole, never re-encoded",
  "socials": {
   "website": "https://cheekymonkeymidigama.com/",
   "instagram": "https://www.instagram.com/cheekymonkeysrilanka/",

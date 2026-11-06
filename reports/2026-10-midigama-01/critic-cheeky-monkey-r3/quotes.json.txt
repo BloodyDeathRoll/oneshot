@@ -1,0 +1,46 @@
+{
+ "blockquotes": 11,
+ "match": 10,
+ "nomatch": [
+  "All was good with our room, it was clean and comfortable and wifi was great!Ther"
+ ],
+ "google": {
+  "rating": 4.5,
+  "count": 467,
+  "scale": 5,
+  "source_url": "https://www.google.com/maps/place/Cheeky+Monkey/data=!4m10!3m9!1s0x3ae114c1f7d9fc01:0xb59451ca09648650!5m2!4m1!1i2!8m2!3d5.9617986!4d80.3967609!16s%2Fg%2F11b6scl3ts!19sChIJAfzZ98EU4ToRUIZkCcpRlLU?hl=en",
+  "fetched_at": "2026-10-26T19:01:35Z",
+  "note": "Google hotel listing 'Cheeky Monkey', category '3-star hotel'; Google's own line: 'Modest hotel with dining & a surf school'. Review texts are behind Google's sign-in wall in the limited view (not quoted)."
+ },
+ "booking": {
+  "rating": 8.3,
+  "count": 45,
+  "scale": 10,
+  "source_url": "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html",
+  "fetched_at": "2026-10-26T19:03:37Z",
+  "subscores": {
+   "Location": 8.8,
+   "Cleanliness": 8.5,
+   "Value for money": 8.9,
+   "Facilities": 8.3,
+   "Comfort": 8.7,
+   "Staff": 9,
+   "Free WiFi": 10
+  },
+  "note": "all 45 reviews are from stays Sept 2025 – Sept 2026; Booking quality rating 3/5; host score 9 (43 reviews)"
+ }
+}
+4.5 1
+467 1
+8.3 1
+45 reviews 1
+26 Oct 2026 2
+USD 400 2
+USD 20 3
++94 71 924 8686 2
+80650 2
+350 m 1
+2009 2
+Published 2021 7
+note: the 1 nomatch is <br> in the markup for the dossier's 
+ (raw: 'wifi was great!<br>There'), so 11/11 match

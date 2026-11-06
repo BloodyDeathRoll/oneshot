@@ -1,0 +1,60 @@
+phone-cold t=500 {"cls":"js motion","v":[{"hero":true,"src":"","rs":0,"paused":true,"t":0,"on":false},{"hero":false,"src":"cm-board.m720.mp4","rs":0,"paused":false,"t":0,"on":false}],"fonts":["Rethink Sans","Permanent Marker","Rethink Fallback","Marker Fallback"],"lcp":[]}
+phone-cold t=1500 {"cls":"js motion","v":[{"hero":true,"src":"","rs":0,"paused":true,"t":0,"on":false},{"hero":false,"src":"cm-board.m720.mp4","rs":0,"paused":false,"t":0,"on":false}],"fonts":["Rethink Sans","Permanent Marker","Rethink Fallback","Marker Fallback"],"lcp":[]}
+phone-cold t=3000 {"cls":"js motion","v":[{"hero":true,"src":"","rs":0,"paused":true,"t":0,"on":false},{"hero":false,"src":"cm-board.m720.mp4","rs":1,"paused":false,"t":0,"on":false}],"fonts":["Rethink Sans","Permanent Marker","Rethink Fallback","Marker Fallback"],"lcp":[]}
+phone-cold t=6000 {"cls":"js motion","v":[{"hero":true,"src":"cm-drone.m1280.webm","rs":1,"paused":false,"t":0,"on":false},{"hero":false,"src":"cm-board.m720.mp4","rs":3,"paused":false,"t":2.9,"on":true}],"fonts":["Rethink Sans","Permanent Marker","Rethink Fallback","Marker Fallback"],"lcp":[]}
+phone-cold t=10000 {"cls":"js motion","v":[{"hero":true,"src":"cm-drone.m1280.webm","rs":4,"paused":false,"t":3.16,"on":true},{"hero":false,"src":"cm-board.m720.mp4","rs":3,"paused":false,"t":6.96,"on":true}],"fonts":["Rethink Sans","Permanent Marker","Rethink Fallback","Marker Fallback"],"lcp":[]}
+phone-cold t=15000 {"cls":"js motion","v":[{"hero":true,"src":"cm-drone.m1280.webm","rs":4,"paused":false,"t":1.37,"on":true},{"hero":false,"src":"cm-board.m720.mp4","rs":4,"paused":false,"t":10,"on":true}],"fonts":["Rethink Sans","Permanent Marker","Rethink Fallback","Marker Fallback"],"lcp":[]}
+phone-cold t=20000 {"cls":"js motion","v":[{"hero":true,"src":"cm-drone.m1280.webm","rs":4,"paused":false,"t":6.35,"on":true},{"hero":false,"src":"cm-board.m720.mp4","rs":4,"paused":false,"t":3.68,"on":true}],"fonts":["Rethink Sans","Permanent Marker","Rethink Fallback","Marker Fallback"],"lcp":[]}
+phone-cold LCP [696,"",""]
+phone-cold requests ["7-395ms document  22667","182-1129ms font fonts/rethink-sans-latin-wght-normal.woff2 35604","182-980ms font fonts/permanent-marker-latin-400-normal.woff2 29296","182-2395ms image photos/cm-drone-poster-r1.778-m-608.webp 79236","411-1459ms image photos/cm-board-poster-full-720.webp 30974","411-1998ms image photos/img-103-r1.25-m-900.webp 49480","411-2649ms image photos/img-100-r1.6-1000.webp 75614","411-2898ms image photos/img-155-full-1600.webp 64834","411-2379ms image photos/img-149-r0.8-500.webp 38254","411-2972ms image photos/img-135-r0.8-640.webp 51434","412-3563ms image photos/img-137-r0.8-640.webp 71544","412-3563ms image photos/img-096-r0.8-640.webp 28064","440-16882ms media video/cm-board.m720.mp4 1864359","3693-12627ms media video/cm-drone.m1280.webm 875979"]
+phone scrolled 1.5 screens [{"hero":true,"src":"cm-drone.m1280.webm","rs":4,"paused":true,"t":6.36,"on":true,"op":"1","w":1280,"h":720},{"hero":false,"src":"cm-board.m720.mp4","rs":4,"paused":false,"t":5.19,"on":true,"op":"1","w":720,"h":1280}]
+phone back at top [{"hero":true,"src":"cm-drone.m1280.webm","rs":4,"paused":false,"t":1.1,"on":true,"op":"1","w":1280,"h":720},{"hero":false,"src":"cm-board.m720.mp4","rs":4,"paused":false,"t":6.7,"on":true,"op":"1","w":720,"h":1280}]
+phone fast state [{"hero":true,"src":"cm-drone.m1280.webm","rs":4,"paused":false,"t":1.01,"on":true,"op":"1","w":1280,"h":720},{"hero":false,"src":"cm-board.m720.mp4","rs":4,"paused":false,"t":1.03,"on":true,"op":"1","w":720,"h":1280}]
+phone page height 16490
+phone s1 {"y":0,"hs":["Plan a stay"],"vids":"hero:playing board:playing","bar":"visible/bar"}
+phone s2 {"y":506,"hs":["Plan a stay"],"vids":"hero:playing board:playing","bar":"visible/bar on"}
+phone s3 {"y":1012,"hs":["Catch waves, not worries","Plan a stay"],"vids":"hero:paused board:playing","bar":"visible/bar on"}
+phone s4 {"y":1518,"hs":["Down at the water","Plan a stay"],"vids":"hero:paused board:playing","bar":"visible/bar on"}
+phone s5 {"y":2024,"hs":["Down at the water","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s6 {"y":2530,"hs":["Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s7 {"y":3036,"hs":["A week of surf","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s8 {"y":3542,"hs":["A week of surf","Full Surf Lesson Package","Moderate","Yoga and Surf","Surf Board Rental","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s9 {"y":4048,"hs":["Every week comes with","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s10 {"y":4554,"hs":["Lessons for your level","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s11 {"y":5060,"hs":["The rooms","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s12 {"y":5566,"hs":["The rooms","Superior Double Room","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s13 {"y":6072,"hs":["Superior Double Room","Classic Triple Room","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s14 {"y":6578,"hs":["Double Room","Small Double Room","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s15 {"y":7084,"hs":["Small Double Room","Small Twin Room","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s16 {"y":7590,"hs":["Small Twin Room","Staying here","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s17 {"y":8096,"hs":["Baba's Surf Shop","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s18 {"y":8602,"hs":["Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s19 {"y":9108,"hs":["Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s20 {"y":9614,"hs":["Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s21 {"y":10120,"hs":["Up on the roof","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s22 {"y":10626,"hs":["Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s23 {"y":11132,"hs":["Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s24 {"y":11638,"hs":["Three rooms in 2009","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s25 {"y":12144,"hs":["What guests say","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s26 {"y":12650,"hs":["What guests say","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s27 {"y":13156,"hs":["Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s28 {"y":13662,"hs":["Getting here","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s29 {"y":14168,"hs":["Good to know","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s30 {"y":14674,"hs":["Book","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s31 {"y":15180,"hs":["Book","Instagram","Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s32 {"y":15646,"hs":["Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone s33 {"y":15646,"hs":["Plan a stay"],"vids":"hero:paused board:paused","bar":"visible/bar on"}
+phone total video bytes ["video/cm-board.m720.mp4 1864359","video/cm-drone.m1280.webm 875979"]
+rm class js still media requests over full scroll: []
+savedata class js still media requests over full scroll: []
+nojs class  media requests over full scroll: []
+laptop 500 [{"hero":true,"src":"cm-drone.d1920.webm","rs":4,"paused":false,"t":0.57,"on":true,"op":"0.935064","w":1920,"h":1080},{"hero":false,"src":"cm-board.m720.mp4","rs":4,"paused":false,"t":0.67,"on":true,"op":"1","w":720,"h":1280}]
+laptop 1500 [{"hero":true,"src":"cm-drone.d1920.webm","rs":4,"paused":false,"t":1.55,"on":true,"op":"1","w":1920,"h":1080},{"hero":false,"src":"cm-board.m720.mp4","rs":4,"paused":false,"t":1.65,"on":true,"op":"1","w":720,"h":1280}]
+laptop 3000 [{"hero":true,"src":"cm-drone.d1920.webm","rs":4,"paused":false,"t":3.07,"on":true,"op":"1","w":1920,"h":1080},{"hero":false,"src":"cm-board.m720.mp4","rs":4,"paused":false,"t":3.17,"on":true,"op":"1","w":720,"h":1280}]
+laptop height 13717
+laptop media ["video/cm-board.m720.mp4 1864359","video/cm-drone.d1920.webm 1579327"]
+laptop vids at bottom [{"hero":true,"src":"cm-drone.d1920.webm","rs":4,"paused":true,"t":5.22,"on":true,"op":"1","w":1920,"h":1080},{"hero":false,"src":"cm-board.m720.mp4","rs":4,"paused":true,"t":6.09,"on":true,"op":"1","w":720,"h":1280}]
+laptop board [{"hero":true,"src":"cm-drone.d1920.webm","rs":4,"paused":false,"t":0.59,"on":true,"op":"1","w":1920,"h":1080},{"hero":false,"src":"cm-board.m720.mp4","rs":4,"paused":false,"t":8.25,"on":true,"op":"1","w":720,"h":1280}]
+booking links (first screen vis) [{"t":"Book","href":"https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html","vis":true,"h":46},{"t":"","href":"tel:+94719248686","vis":true,"h":46},{"t":"Check dates on Booking.com","href":"https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html","vis":true,"h":56}]
+booking link count 43 ["https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html","tel:+94719248686","mailto:cheekymonkeymidi@gmail.com?subject=Cheeky%20Monkey%3A%20Full%20Surf%20Lesson%20Package%20week","mailto:cheekymonkeymidi@gmail.com?subject=Cheeky%20Monkey%3A%20Moderate%20Surf%20Lesson%20or%20Surf%20Spot%20Guiding%20Package%20week","mailto:cheekymonkeymidi@gmail.com?subject=Cheeky%20Monkey%3A%20Yoga%20and%20Surf%20Lesson%20Package%20week","mailto:cheekymonkeymidi@gmail.com?subject=Cheeky%20Monkey%3A%20Surf%20Board%20Rental%20Package%20week","mailto:cheekymonkeymidi@gmail.com?subject=Cheeky%20Monkey%3A%20surf%20lesson","mailto:cheekymonkeymidi@gmail.com","mailto:cheekymonkeymidi@gmail.com?subject=Cheeky%20Monkey%3A%20surf%20week"]
+bar ["Check dates on Booking.com -> https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html","Plan a stay -> http://localhost:8950/#book"]

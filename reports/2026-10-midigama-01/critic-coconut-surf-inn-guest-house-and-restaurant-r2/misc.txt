@@ -1,0 +1,23 @@
+## unique dialog (ov.mjs)
+390 {"info":["A:Find your room:rooms/","A::rooms/"],"f0":"1\nJust me role=true","inside":"25/25","step2":["Deluxe Double Room with Balcony","Check dates on Booking.com","Superior Double Room","Check dates on Booking.com","Deluxe Double Room (2 Adults + 1 Child)","Check dates on Booking.com","Budget Double Room","Check dates on Booking.com"],"back":"Find your room open=false"}
+1440 {"info":["A:Find your room:rooms/","A:Find your room:rooms/"],"f0":"1\nJust me role=true","inside":"25/25","step2":["A/C | Hot water","Deluxe Double Room with Balcony","Check dates on Booking.com","A/C | Hot water","Superior Double Room","Check dates on Booking.com","A/C | Hot water","Deluxe Double Room (2 Adults + 1 Child)","Check dates on Booking.com","Fan","Budget Double Room","Check dates on Booking.com"],"back":"Find your room open=false"}
+## tab stops + aria-prohibited (tabs.mjs)
+interactive 1440 [{"i":35,"t":"IFRAME","cls":"","top":90,"inView":true,"op":0.65,"outline":"none 3px","shadow":"none"},{"i":36,"t":"IFRAME","cls":"","top":90,"inView":true,"op":1,"outline":"none 3px","shadow":"none"}]
+ aria-prohibited incomplete: [["<div class=\"picks\" aria-label=\"Rooms\">"]]
+unique 390 []
+ aria-prohibited incomplete: []
+interactive 390 [{"i":31,"t":"IFRAME","cls":"","top":518,"inView":true,"op":0.8,"outline":"none 3px","shadow":"none"}]
+ aria-prohibited incomplete: [["<div class=\"picks\" aria-label=\"Rooms\">"]]
+## unique set-piece contrast per block (sp.mjs)
+1440 blocks at [ 4894, 5730, 6476, 7222, 7968 ]
+[{"y":4894,"v":[],"n":0},{"y":5730,"v":[],"n":0},{"y":6476,"v":[],"n":0},{"y":7222,"v":[],"n":0},{"y":7968,"v":[],"n":0}]
+390 blocks at [ 6237, 6777, 7168, 7655, 8241 ]
+[{"y":6237,"v":[],"n":0},{"y":6777,"v":[],"n":0},{"y":7168,"v":[],"n":0},{"y":7655,"v":[],"n":0},{"y":8241,"v":[],"n":0}]
+## Rosa blocked: fallback link hit test (blk2.mjs)
+calm [{"text":"See today's forecast for Coconuts on Rosa","w":302,"h":52,"hit":"IFRAME."}]
+interactive [{"text":"See today's forecast for Coconuts on Rosa","w":320,"h":50,"hit":"link"}]
+unique [{"text":"See today's forecast for Coconuts on Rosa","w":358,"h":62,"hit":"IFRAME."}]
+## Rosa blocked: tap the fallback link (tap.mjs)
+calm {"x":195,"y":463.609375,"target":"","ifr":"auto z=1 op=1"} url after: http://localhost:8921/ navs: []
+interactive {"x":195,"y":464.015625,"target":"","ifr":"none"} url after: https://rosa.surf/spot/weligama-west navs: ["https://rosa.surf/spot/weligama-west"]
+unique {"x":195,"y":455.140625,"target":"","ifr":"auto z=auto op=0"} url after: http://localhost:8923/ navs: []
