@@ -1,0 +1,554 @@
+{
+  "slug": "the-sandhya",
+  "run_id": "2026-11-ahangama-01",
+  "auditor_version": "0.1.3",
+  "audited_at": "2026-11-06T11:02:07Z",
+  "scope": "site",
+  "measured": {
+    "url": "https://thesandhya.com/",
+    "status": 200,
+    "clicks_to_book": 1,
+    "primary_action": {
+      "class": "tel",
+      "label": "+94 765 700 007",
+      "href": "tel:+94 765 700 007"
+    },
+    "cta_above_fold": false,
+    "terminal_above_fold": false,
+    "pages_crawled": 10,
+    "broken_pages": [],
+    "funnel_json": "funnel/funnel.json"
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "area": "funnel",
+      "severity": "high",
+      "title": "The home page ignores every tap until its white intro has played, and on a slow phone connection that is about 52 seconds",
+      "what_a_visitor_meets": "On a slow-4G phone the home page stays white and tapping RESERVE does nothing at 5, 15 and 30 seconds. RESERVE first answers about 52 seconds after the link was opened. On a fast connection the white layer still sits over RESERVE for 7.5 seconds after the page is ready: a tap 2.2 seconds in did nothing, and the same tap after it cleared opened the panel.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/03-slow4g-15s.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/03-slow4g-30s.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/02-home-veil-after-early-tap.png"
+        },
+        {
+          "type": "url",
+          "value": "https://thesandhya.com/"
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "/",
+            "RESERVE, tapped while the white layer is up",
+            "nothing opens"
+          ]
+        }
+      ],
+      "playbook_ref": "§4 mobile on bad connections, §3 first screen",
+      "fix_in_new_site": "Playbook §4 and §3: what + where and bookingLinks[0] as a plain link are in the HTML and usable before media or scripts arrive; no intro layer over the primary action.",
+      "pitch_point": true,
+      "notes": "Hand walk, not tools/funnel.mjs. A real tap was used, because a screenshot alone can catch the intro midway; the washed-out look in a capture is not the finding, the dead tap is. Cause, from the page's own script: #loader covers the page (z-index 999999999) and is lifted by a timer, delay 4200 ms + fadeOut 3200 ms from DOM ready, on every visit (the visited check is commented out). /rooms has no such layer. Slow 4G = 1.6 Mbps down, 150 ms RTT, emulated in headless Chromium with an empty cache, two clean runs: 52.6 s and 52.3 s; not a real phone on a real network. To reproduce: DevTools, a custom network throttle with those figures, disable cache. Severity is high on that connection, which is the one playbook §1 and §4 design for; the fast-connection delay alone would be medium. Two further conditions, measured: with requests to cdnjs.cloudflare.com refused in the test browser the layer never lifted (still up 25 s after DOM ready, a tap did nothing, \"bodymovin is not defined\": funnel/shots/02-home-cdn-refused-25s.png), and with JavaScript off the whole home page is white (funnel/shots/02-home-no-js.png)."
+    },
+    {
+      "id": "F2",
+      "area": "funnel",
+      "severity": "medium",
+      "title": "The booking panel shows dates and a guest count it does not send",
+      "what_a_visitor_meets": "Tapping RESERVE opens a panel already showing today and tomorrow and 2 adults. Tapping its RESERVE with those dates kept sends the engine empty dates (#checkin=&checkout=), and the adults count is never sent at all. Dates are only sent if the visitor picks them, which takes 5 taps in the current month and 6 for next month.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/05-panel-open.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/05-panel-picked.png"
+        },
+        {
+          "type": "url",
+          "value": "https://thesandhya.com/"
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "/",
+            "RESERVE",
+            "RESERVE in the panel",
+            "hands off to https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=&checkout="
+          ]
+        }
+      ],
+      "playbook_ref": "§5 booking path: the chosen details carried over",
+      "fix_in_new_site": "bookingLinks[0].url = https://hotels.cloudbeds.com/reservation/WMvA6V as a plain link, with no prefilled dates and no dates displayed that are not sent; the visitor picks them in the engine.",
+      "pitch_point": true,
+      "notes": "Taps from this hand walk, not the tool. tools/funnel.mjs reports clicks_to_book 1, primary tel, cta_above_fold false, because it counts the footer phone link 7,798 px down and cannot see an <a> with no href. By hand: 2 taps to the engine by the header RESERVE with shown dates (dates dropped); 5 or 6 taps with picked dates, which do reach the URL (#checkin=2026-12-10&checkout=2026-12-12); 2 taps by Menu, RESERVATIONS; 3 taps plus a 2,024 px scroll by Menu, Rooms, RESERVE NOW. The 2-tap path is within the ≤ 2 rule, so tap count is not the fault here; the dropped details are. The adults input has name=\"\", and named_fields was empty at both hand-offs. The panel's submit was cancelled by a listener and the URL read back, so nothing was sent. What the engine does with empty dates or with these hash values was not exercised."
+    },
+    {
+      "id": "F3",
+      "area": "cta",
+      "severity": "medium",
+      "title": "The main booking button is small and is not a real link",
+      "what_a_visitor_meets": "RESERVE is on the first screen and stays fixed while scrolling, which works, but it is 70 by 30 px against a 44 px target, sits in the corner, and does nothing until the page's scripts have run, because it is a script-driven control and not a link.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/01-home-settled.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/04-reserve-scrolled.png"
+        },
+        {
+          "type": "url",
+          "value": "https://thesandhya.com/"
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "/",
+            "RESERVE"
+          ]
+        }
+      ],
+      "playbook_ref": "§4 tap targets ≥ 44px, §5 the link is a real link, §3 persistent booking action",
+      "fix_in_new_site": "bookingLinks[0] as a real <a href> on the first screen and in the persistent mobile bar (playbook §3), at least 44 px tall, so tools/funnel.mjs reads the primary action as engine.",
+      "pitch_point": true,
+      "notes": "Size, position and fixed behaviour measured by hand: <a class=\"button __book btn-header-booking\"> with no href, x 310, y 20, the same at scroll 3000. Corrects the scout and the tool on one point: a booking action is above the fold; funnel.json cta_above_fold false is the tool not seeing it. measured below still carries the tool's value, as the schema requires. The menu's RESERVATIONS is a real link, 310 by 52 px, one tap further in."
+    },
+    {
+      "id": "F4",
+      "area": "content",
+      "severity": "medium",
+      "title": "The first screen does not say this is a hotel, or where it is",
+      "what_a_visitor_meets": "The first screen gives a dictionary entry for the word Sandhya and \"Adults Only Hideaway\". A visitor has to scroll about two screens to read \"hotel\", and on the home page Sri Lanka first appears about 3,200 px down, Kabalana about 3,900 px down, and Ahangama only in the footer and the menu.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/01-home-settled.png"
+        },
+        {
+          "type": "url",
+          "value": "https://thesandhya.com/"
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "/",
+            "no scroll"
+          ]
+        }
+      ],
+      "playbook_ref": "§2 what is this and where, §3 first screen",
+      "fix_in_new_site": "tagline and copyBlocks[slot=intro] carry business type + place in one line on the first screen; contact.address repeated in the footer block (playbook §3).",
+      "pitch_point": true,
+      "notes": "Positions read from the DOM on the phone viewport, in funnel/walk-hand.json step 04-reserve-fixed: hotel y 1893, Sri Lanka y 3219, Kabalana y 3907, page height 8000, body text outside header, menu and footer. The browser title does say \"Luxury Beachfront Boutique Hotel, Sri Lanka\", which a visitor on a phone rarely sees."
+    },
+    {
+      "id": "F5",
+      "area": "offer",
+      "severity": "medium",
+      "title": "No nightly rate anywhere on the site; the only figure is for renting the whole house",
+      "what_a_visitor_meets": "Across all 10 pages no room shows a rate, so a visitor comparing hotels has to go to the engine to learn one. The only price on the site is on /house, \"From US$3,500++ per night\", for exclusive use of the whole hotel, with the ++ unexplained.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/07-house-price.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/07-rooms-reserve-now.png"
+        },
+        {
+          "type": "url",
+          "value": "https://thesandhya.com/house/"
+        },
+        {
+          "type": "url",
+          "value": "https://thesandhya.com/rooms/"
+        }
+      ],
+      "playbook_ref": "§2 what does it cost",
+      "fix_in_new_site": "rooms[] for the four room types, with no copied nightly number (site-content \"Live prices are not content\"), and a bookingLinks[0] label that says live dates and prices are one tap away; priceList[] row for exclusive use with its capture date, ++ explained once the owner confirms it.",
+      "pitch_point": true,
+      "notes": "Not high: the schema reserves high for a price the business publishes being hidden, and this rate is not published on the site. No own-engine rate exists in the dossier, only dated OTA snapshots, which stay out of the site."
+    },
+    {
+      "id": "F6",
+      "area": "trust",
+      "severity": "medium",
+      "title": "No guest rating or guest words anywhere on the site",
+      "what_a_visitor_meets": "None of the 10 pages shows a rating, a review or a link to one. A visitor who wants proof has to leave for a listing, where Trip.com, for one, shows 9.7 out of 10 from 56 reviews.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/08-trip-9-7.png"
+        },
+        {
+          "type": "url",
+          "value": "https://au.trip.com/hotels/ahangama-hotel-detail-10660372/hotel"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#reviews.trip"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#gaps"
+        }
+      ],
+      "playbook_ref": "§2 can I trust them, §6 trust signals",
+      "fix_in_new_site": "ratings[] with the Trip.com row (platform, score, scale, count, url, capturedAt) and testimonials[] verbatim from dossier reviews.quotes, kept beside the booking action.",
+      "pitch_point": true,
+      "notes": "Only Trip.com is cited because it was read directly, again on this walk. The Kayak, Momondo, MyBoutiqueHotel and relayed Booking.com scores in the dossier are via_digest or conflicting and are not stated here. Press quotes on the own site are not treated as reviews, and the three the dossier marks unverified are not repeated."
+    },
+    {
+      "id": "F7",
+      "area": "content",
+      "severity": "medium",
+      "title": "Check-in time, check-out time, breakfast and the age rule are not on the site",
+      "what_a_visitor_meets": "None of the 10 pages gives check-in or check-out times or mentions breakfast, though the hotel's own engine lists breakfast as complimentary and Google lists it as free. \"Adults Only\" appears once, on the home page, with no age given.",
+      "evidence": [
+        {
+          "type": "url",
+          "value": "https://thesandhya.com/rooms/"
+        },
+        {
+          "type": "url",
+          "value": "https://thesandhya.com/room/studio-king/"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#stayInfo"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#contradictions"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/08-google-check-in-time.png"
+        }
+      ],
+      "playbook_ref": "§2 what's included, §6 exact details",
+      "fix_in_new_site": "stayInfo.checkInFrom, stayInfo.checkOutTo and stayInfo.note, amenities[] row for breakfast, each once the owner confirms the value; the dossier shows the sources disagree (see F14).",
+      "pitch_point": false,
+      "notes": "Absence checked by text search of each page in funnel/walk-hand.json step 07-pages. pitch_point false because a screenshot cannot show that something is absent from 10 pages; the dossier gap existing_site.stay_facts remains available to the writer."
+    },
+    {
+      "id": "F8",
+      "area": "funnel",
+      "severity": "medium",
+      "title": "RESERVE NOW on a room page does not carry that room",
+      "what_a_visitor_meets": "A visitor who has read about the Director's Suite and taps RESERVE NOW follows the same link as every other room, with no room in it, so the room they chose is not passed on.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/07-suite-reserve-now.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/07-room-reserve-now.png"
+        },
+        {
+          "type": "url",
+          "value": "https://thesandhya.com/room/directors-suite/"
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "/room/directors-suite",
+            "RESERVE NOW",
+            "https://hotels.cloudbeds.com/reservation/WMvA6V"
+          ]
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#booking.engine_room_links"
+        }
+      ],
+      "playbook_ref": "§5 the chosen details carried over",
+      "fix_in_new_site": "One bookingLinks[] row per rooms[] label using dossier booking.engine_room_links (?rid=…), only after a person confirms in a real browser that those links preselect the room; otherwise the single engine link.",
+      "pitch_point": true,
+      "notes": "Links are from funnel.json, all four room pages. What the engine then shows was not exercised, so this says only that the link carries no room, not what the visitor sees next."
+    },
+    {
+      "id": "F9",
+      "area": "contact",
+      "severity": "medium",
+      "title": "A WhatsApp icon beside the number opens the phone dialler",
+      "what_a_visitor_meets": "In the menu and footer a phone icon and a WhatsApp icon sit side by side before the number. Neither icon is a link, the number is a tel: link, and no page has a WhatsApp link, so a visitor who wants to message gets a call screen. The phone and email links are also 15 to 16 px tall against a 44 px target.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/07-home-footer-contact.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/06-menu-open.png"
+        },
+        {
+          "type": "url",
+          "value": "https://thesandhya.com/"
+        },
+        {
+          "type": "click_path",
+          "value": [
+            "/",
+            "Menu",
+            "+94 765 700 007"
+          ]
+        }
+      ],
+      "playbook_ref": "§5 booking path, §4 tap targets",
+      "fix_in_new_site": "contact.phone as a tel: link and contact.email as a mailto: link, at least 44 px tall. contact.whatsapp stays empty until a person confirms the number takes WhatsApp messages; no icon without a link.",
+      "pitch_point": true,
+      "notes": "Tool: footer tel 106 x 15 px, top 7798, tap_target_ok false. Hand: menu tel 114 x 16 px. Whether the number takes WhatsApp at all is unconfirmed (dossier contact.whatsapp.verified: weak), and mode test forbids trying it."
+    },
+    {
+      "id": "F10",
+      "area": "contact",
+      "severity": "medium",
+      "title": "The map is a drawing that cannot be tapped, and no page links to Google Maps",
+      "what_a_visitor_meets": "The location page shows an illustrated map of the whole island with no link, and none of the 10 pages links to a map, so a visitor trying to get directions has to copy the address into a maps app themselves.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/07-locale-map.png"
+        },
+        {
+          "type": "url",
+          "value": "https://thesandhya.com/locale/"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#location.map_url"
+        }
+      ],
+      "playbook_ref": "§2 where exactly, §6 exact location",
+      "fix_in_new_site": "contact.mapUrl = dossier location.map_url; contact.address in Google's words with the postcode (dossier location.address).",
+      "pitch_point": true,
+      "notes": "The address itself is present as text in the menu and footer. Checked by link search of each page and of the map image (in_link false), funnel/walk-hand.json step 07-pages."
+    },
+    {
+      "id": "F11",
+      "area": "mobile",
+      "severity": "medium",
+      "title": "The home page is very heavy for a phone",
+      "what_a_visitor_meets": "The home page loads 14.4 MB before the page finishes loading on a slow-4G phone, which takes about 82 seconds. It carries 114 images, none of them lazy, for a visitor who may be paying per megabyte and has scrolled nowhere.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/03-slow4g-30s.png"
+        },
+        {
+          "type": "url",
+          "value": "https://thesandhya.com/"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#existing_site.measured.mobile"
+        }
+      ],
+      "playbook_ref": "§4 performance budget: first-load transfer ≤ 1.5 MB, third-party requests on load 0",
+      "fix_in_new_site": "Playbook §4 budget; photos[] with the build's responsive variants, lazy below the fold; no third-party requests on load.",
+      "pitch_point": false,
+      "notes": "Two measures, both one machine: this hand walk 14.4 MB by the load event under throttling; the harvester 17.5 MB including 8 s after load, unthrottled, with LCP 4.2 s. The image count and lazy count come from step 07-pages. Third parties on load are listed in the dossier: Tag Manager, Analytics, Ads and DoubleClick, the Facebook pixel, unpkg, cdnjs. The first tools/funnel.mjs run timed out at its 30 s load wait on this page and the second succeeded; that is one observation, not a rate. The screenshot shows the white screen at 30 s, not the weight itself, so pitch_point is false."
+    },
+    {
+      "id": "F12",
+      "area": "offsite",
+      "severity": "medium",
+      "title": "Google's price list for the hotel shows only resellers",
+      "what_a_visitor_meets": "On the Google listing, Check availability and Compare prices come first and list resellers: Agoda and Hotels.com in the screenshot, Hotels.com and Expedia.com on another load. The hotel's own engine was not among the options shown on any load, and the link to thesandhya.com sits below them.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/08-google-fold.png"
+        },
+        {
+          "type": "url",
+          "value": "https://www.google.com/maps/place/The+Sandhya/@5.9769788,80.3525613,17z/data=!4m9!3m8!1s0x3ae1134e3ce889b1:0x41288b6ad09d4032!5m2!4m1!1i2!8m2!3d5.9769788!4d80.3525613!16s%2Fg%2F11f1gbc2nq?hl=en"
+        }
+      ],
+      "playbook_ref": "§5 booking path",
+      "fix_in_new_site": "A first screen that names the place and links straight to the hotel's own engine (bookingLinks[0]), for the visitor who does tap through from the listing.",
+      "pitch_point": false,
+      "notes": "Google served its limited view of Maps to a logged-out headless browser, the sellers shown changed between loads, and the collapsed \"More prices\" row was not opened, so a signed-in visitor may see other rows, possibly including a direct rate. pitch_point false for that reason. No prices are quoted: they were in the currency of the test machine's location."
+    },
+    {
+      "id": "F13",
+      "area": "offsite",
+      "severity": "medium",
+      "title": "The MICHELIN Guide page sends visitors to other hotels",
+      "what_a_visitor_meets": "The hotel's MICHELIN Guide page shows a fixed bar reading \"We’re not currently taking reservations for this hotel. Please explore other hotels in our selection.\" The page has no link to the hotel's own site, and says \"No verified stays yet.\"",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/08-michelin-not-currently-taking-reservati.png"
+        },
+        {
+          "type": "url",
+          "value": "https://guide.michelin.com/en/hotels-stays/ahangama/the-sandhya-13690"
+        }
+      ],
+      "playbook_ref": "§5 booking path",
+      "fix_in_new_site": null,
+      "pitch_point": false,
+      "notes": "The page shows no Key or other distinction, so none may be claimed (dossier reviews.michelin). The new site cannot change this page, hence pitch_point false and a line of advice instead."
+    },
+    {
+      "id": "F14",
+      "area": "offsite",
+      "severity": "medium",
+      "title": "The listings disagree on check-in, children and pets, and the hotel's site does not settle it",
+      "what_a_visitor_meets": "Google says check-in 14:00 and pet-friendly. Trip.com says check-in after 16:00, pets not allowed, and children aged 12 and above welcome, while the hotel calls itself adults only. A traveller planning an arrival or bringing a teenager finds no answer on the hotel's own pages.",
+      "evidence": [
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/08-trip-after-16-00.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/08-trip-pets-are-not-allowed.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/08-google-check-in-time.png"
+        },
+        {
+          "type": "screenshot",
+          "value": "funnel/shots/08-google-pet-friendly.png"
+        },
+        {
+          "type": "url",
+          "value": "https://au.trip.com/hotels/ahangama-hotel-detail-10660372/hotel"
+        },
+        {
+          "type": "url",
+          "value": "https://www.google.com/maps/place/The+Sandhya/@5.9769788,80.3525613,17z/data=!4m9!3m8!1s0x3ae1134e3ce889b1:0x41288b6ad09d4032!5m2!4m1!1i2!8m2!3d5.9769788!4d80.3525613!16s%2Fg%2F11f1gbc2nq?hl=en"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#contradictions"
+        }
+      ],
+      "playbook_ref": "§6 trust signals, §7 honesty of facts",
+      "fix_in_new_site": "stayInfo.checkInFrom, stayInfo.checkOutTo and stayInfo.note hold one answer once the owner confirms it (F7); the site is then the place the listings can be checked against.",
+      "pitch_point": false,
+      "notes": "Google and Trip.com wording re-read live on this walk. Which value is right is unknown: the dossier notes the hotel's own engine says 14:00 and the owner must confirm. No value is asserted here."
+    },
+    {
+      "id": "F15",
+      "area": "content",
+      "severity": "low",
+      "title": "Small wording slips, and two descriptions of the pool",
+      "what_a_visitor_meets": "Room pages read \"500 tread count\", the home page \"though out\", and one room appears as both \"Studio King+\" and \"Studio+ King\". The home page has a \"brand new 30-meter swimming pool\" while /design describes \"an up-cycled shipping container for our unique swimming pool\".",
+      "evidence": [
+        {
+          "type": "url",
+          "value": "https://thesandhya.com/room/studio-king/"
+        },
+        {
+          "type": "url",
+          "value": "https://thesandhya.com/room/studio-plus-king/"
+        },
+        {
+          "type": "url",
+          "value": "https://thesandhya.com/"
+        },
+        {
+          "type": "url",
+          "value": "https://thesandhya.com/design/"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#contradictions"
+        }
+      ],
+      "playbook_ref": "§7 honesty of facts",
+      "fix_in_new_site": "rooms[].label with one spelling per room; copyBlocks[] describes the pool once, after the owner says which description is current.",
+      "pitch_point": false
+    },
+    {
+      "id": "F16",
+      "area": "content",
+      "severity": "low",
+      "title": "The pages name a hosting server as their address, and the home page declares no image for a pasted link",
+      "what_a_visitor_meets": "A visitor sees nothing on the page itself, but all 10 pages declare their canonical address on vps125323.inmotionhosting.com and not thesandhya.com, the home page declares no Open Graph image for a pasted link, and the inner pages have no description.",
+      "evidence": [
+        {
+          "type": "url",
+          "value": "https://thesandhya.com/"
+        },
+        {
+          "type": "url",
+          "value": "https://thesandhya.com/rooms/"
+        },
+        {
+          "type": "dossier",
+          "value": "dossier.json#existing_site.notes"
+        }
+      ],
+      "playbook_ref": "§10 accessibility and findability",
+      "fix_in_new_site": "Playbook §10: canonical on the site's own domain, title and description per page, Open Graph image, LocalBusiness structured data built only from dossier facts.",
+      "pitch_point": false,
+      "notes": "Read from the page head (view source): rel=canonical on all 10 pages and the description in funnel/walk-hand.json step 07-pages; og:url and the missing og:image on the home page in step 01-home-inspect. How a pasted link actually renders, and the effect on search results, were not measured."
+    }
+  ],
+  "recommended": {
+    "primary_action": "engine",
+    "primary_label": "Check rooms and live dates",
+    "secondary_actions": [
+      "tel",
+      "email"
+    ],
+    "clicks_to_book": 1,
+    "above_fold": [
+      "what_where",
+      "spot",
+      "included",
+      "price",
+      "trust",
+      "primary_action"
+    ],
+    "offer_framing": "the four room types from rooms[] with size, beds and what is included, no copied nightly number, each leading to the engine for live dates and prices; exclusive use of the whole house last, as its own priceList[] row with its capture date. The presentation is a beachfront boutique hotel, not a surf stay (Alon, 2026-11-06); surf lessons and board hire stay amenities[] rows.",
+    "closing_intent": "send the reader to live dates on the hotel's own engine, and give the phone and email as the way to ask first",
+    "off_site": [
+      {
+        "channel": "google_business_profile",
+        "finding": "F12",
+        "advice": "ask the engine provider whether the hotel's direct rate can appear in the listing's price list"
+      },
+      {
+        "channel": "michelin_guide",
+        "finding": "F13",
+        "advice": "ask the MICHELIN Guide why the page says it is not taking reservations, and to link the hotel's own site"
+      },
+      {
+        "channel": "ota_listings",
+        "finding": "F14",
+        "advice": "once check-in, the age rule and pets are settled, make Google, Trip.com and the engine say the same thing"
+      }
+    ]
+  },
+  "built_site_gaps": [],
+  "not_measurable": [
+    "The Cloudbeds engine's own steps were NOT exercised: rooms, rates, availability, what it does with empty dates, whether it honours #checkin= or ?rid=, and whether it works for a real guest. Loaded once, plainly: the page answered 200, then redirected to /404 with \"Oops! Something went wrong.\" (funnel/shots/90-engine-headless-wall.png). Read as a wall against headless browsers, not a fault of the hotel; not worked around, and no finding rests on it. The harvester recorded the 403 on /booking/property_info; this walk's filter did not capture that call and it was not reloaded to get it. A person should open https://hotels.cloudbeds.com/reservation/WMvA6V once in a real browser.",
+    "Every booking action on the site past the point of hand-off, for the same reason: this audit stops at the URL each tap hands to",
+    "Slow-connection timings are headless Chromium with emulated throttling, not a real phone on a real network (two clean runs agreed, 52.6 s and 52.3 s)",
+    "Booking.com listing (202, redirected to the Ahangama city page), Tripadvisor (403), Expedia and lastminute (429), hotels.com (protocol error), Agoda (URL not found): per the harvester, not retried",
+    "Instagram and Facebook: robots.txt disallows them, not loaded, so the bio path from social and any reels were not walked",
+    "The Google listing beyond its limited view: review count, reviews, and whether a signed-in visitor sees a direct rate",
+    "Whether the owner answers the phone, email or WhatsApp, and how fast: no contact in test mode",
+    "Whether the three press quotes on the own site trace to an original: the dossier marks them unverified, so they are not stated as findings either way",
+    "Effect of the wrong canonical on search results, conversion rate and traffic: no search console or analytics access"
+  ]
+}

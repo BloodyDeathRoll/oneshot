@@ -1,0 +1,1018 @@
+{
+ "walked_at": "2026-11-06T11:01:40.272Z",
+ "viewport": "390x844 DPR2 mobile, en-US, logged out; site steps use an iPhone Safari user agent, as the harvester did; off-site steps and step 90 use plain settings",
+ "rules": "read-only; no login, no form submission (the panel submit is cancelled by a capture listener), no booking started, no personal data, no contact; the engine host is aborted in site steps",
+ "recipe": "dossier/the-sandhya/funnel/make-walk.mjs",
+ "steps": [
+  {
+   "step": "01-home-inspect",
+   "at": "2026-11-06T10:42:01.912Z",
+   "status": 200,
+   "screenshot_settled": "funnel/shots/01-home-settled.png",
+   "first_screen_text": [
+    "Reserve",
+    "Sandhya",
+    "/suhnd-yah/ sʌnd-dyɑ/",
+    "noun",
+    "in Sanskrit संध्य which means “twilight.” It is that magical moment between light and dark",
+    "Adults Only Hideaway"
+   ],
+   "reserve_controls": [
+    {
+     "tag": "a",
+     "href": null,
+     "id": null,
+     "cls": "button __book btn-header-booking",
+     "text": "RESERVE",
+     "x": 310,
+     "y": 20,
+     "w": 70,
+     "h": 30,
+     "visible": true,
+     "fixed_or_sticky": true
+    },
+    {
+     "tag": "button",
+     "href": null,
+     "id": "bookingBtn",
+     "cls": null,
+     "text": "Reserve",
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0,
+     "visible": false,
+     "fixed_or_sticky": true
+    }
+   ],
+   "head": {
+    "title": "The Sandhya - Luxury Beachfront Boutique Hotel, Sri Lanka",
+    "canonical": "https://vps125323.inmotionhosting.com/",
+    "og_url": "https://vps125323.inmotionhosting.com/",
+    "og_image": null,
+    "description": "Luxury beachfront boutique hotel on Kabalana Surf Beach, Southern Sri Lanka consisting of 9 luxuriously appointed studios and suite. Adults only.",
+    "ld_types": [
+     "WebPage",
+     "BreadcrumbList",
+     "WebSite"
+    ]
+   }
+  },
+  {
+   "step": "02-veil-cdn-refused",
+   "at": "2026-11-06T10:49:47.408Z",
+   "status": 200,
+   "dom_ready_ms": 3070,
+   "waited_after_dom_ready_ms": 25000,
+   "top_at_reserve": "veil",
+   "loader": {
+    "display": "flex",
+    "opacity": "1"
+   },
+   "page_errors": [
+    "ReferenceError: bodymovin is not defined",
+    "Uncaught TypeError: Promise.allSettled is not a function",
+    "Uncaught TypeError: Promise.allSettled is not a function",
+    "Uncaught TypeError: Promise.allSettled is not a function"
+   ],
+   "panel_opened_by_tap": false,
+   "screenshot": "funnel/shots/02-home-cdn-refused-25s.png"
+  },
+  {
+   "step": "02-veil-home",
+   "at": "2026-11-06T10:42:18.595Z",
+   "status": 200,
+   "dom_ready_ms": 2739,
+   "loader_present": true,
+   "screenshot_dom_ready": "funnel/shots/02-home-veil-at-dom-ready.png",
+   "early_tap": {
+    "ms": 4966,
+    "top_at_reserve": "veil",
+    "panel_opened": false
+   },
+   "screenshot_after_early_tap": "funnel/shots/02-home-veil-after-early-tap.png",
+   "reserve_state_log": [
+    {
+     "ms": 5110,
+     "top_at_reserve": "veil"
+    },
+    {
+     "ms": 10193,
+     "top_at_reserve": "reserve"
+    }
+   ],
+   "reserve_tappable_ms": 10193,
+   "tappable_after_dom_ready_ms": 7454,
+   "screenshot_clear": "funnel/shots/02-home-veil-clear.png",
+   "tap_after_clear": {
+    "panel_before": false,
+    "panel_after": true
+   }
+  },
+  {
+   "step": "02-veil-no-js",
+   "at": "2026-11-06T10:50:16.732Z",
+   "status": 200,
+   "screenshot": "funnel/shots/02-home-no-js.png"
+  },
+  {
+   "step": "02-veil-rooms",
+   "at": "2026-11-06T10:42:29.870Z",
+   "status": 200,
+   "dom_ready_ms": 3130,
+   "loader_present": false,
+   "screenshot_dom_ready": "funnel/shots/02-rooms-veil-at-dom-ready.png",
+   "early_tap": {
+    "ms": 4409,
+    "top_at_reserve": "reserve",
+    "panel_opened": true
+   },
+   "screenshot_after_early_tap": "funnel/shots/02-rooms-veil-after-early-tap.png",
+   "reserve_state_log": [
+    {
+     "ms": 4622,
+     "top_at_reserve": "reserve"
+    }
+   ],
+   "reserve_tappable_ms": 4622,
+   "tappable_after_dom_ready_ms": 1492,
+   "screenshot_clear": "funnel/shots/02-rooms-veil-clear.png",
+   "tap_after_clear": {
+    "panel_before": true,
+    "panel_after": false
+   }
+  },
+  {
+   "step": "03-throttled-slow4g",
+   "at": "2026-11-06T10:55:38.133Z",
+   "profile": "1.6 Mbps down, 750 Kbps up, 150 ms RTT, no CPU throttle, empty cache, one headless run",
+   "timeline": [
+    {
+     "mark_ms": 5000,
+     "shot_ms": 5063,
+     "top_at_reserve": "nothing_hit_yet",
+     "screenshot": "funnel/shots/03-slow4g-5s.png",
+     "tap_ms": 5078,
+     "panel_opened_by_tap": false,
+     "jquery_ready": false
+    },
+    {
+     "mark_ms": 15000,
+     "shot_ms": 15454,
+     "top_at_reserve": "nothing_hit_yet",
+     "screenshot": "funnel/shots/03-slow4g-15s.png",
+     "tap_ms": 15470,
+     "panel_opened_by_tap": false,
+     "jquery_ready": false
+    },
+    {
+     "mark_ms": 30000,
+     "shot_ms": 30356,
+     "top_at_reserve": "nothing_hit_yet",
+     "screenshot": "funnel/shots/03-slow4g-30s.png",
+     "tap_ms": 30368,
+     "panel_opened_by_tap": false,
+     "jquery_ready": false
+    }
+   ],
+   "reserve_state_log": [
+    {
+     "ms": 1041,
+     "top_at_reserve": "navigating"
+    },
+    {
+     "ms": 1546,
+     "top_at_reserve": "no_header_yet"
+    },
+    {
+     "ms": 2551,
+     "top_at_reserve": "nothing_hit_yet"
+    },
+    {
+     "ms": 45247,
+     "top_at_reserve": "veil"
+    },
+    {
+     "ms": 52276,
+     "top_at_reserve": "reserve"
+    }
+   ],
+   "reserve_tappable_ms": 52276,
+   "bytes_when_tappable": 5239835,
+   "load_event_ms": 82239,
+   "status": 200,
+   "bytes_at_end": 14368428,
+   "ended_ms": 82239,
+   "lcp_ms": 0
+  },
+  {
+   "step": "04-reserve-fixed",
+   "at": "2026-11-06T10:42:35.585Z",
+   "at_top": {
+    "tag": "a",
+    "href": null,
+    "id": null,
+    "cls": "button __book btn-header-booking",
+    "text": "RESERVE",
+    "x": 310,
+    "y": 20,
+    "w": 70,
+    "h": 30,
+    "visible": true,
+    "fixed_or_sticky": true
+   },
+   "first_mentions": {
+    "beach": {
+     "y": 1173,
+     "sample": "Perched on the edge of a picture perfect white sandy beach, The Sandhya, with its unassuming minimalist architecture and"
+    },
+    "hotel": {
+     "y": 1893,
+     "sample": "Designed to feel like an exclusive private beach house with the amenities of an intimate boutique hotel, your relaxation"
+    },
+    "room": {
+     "y": 2455,
+     "sample": "The Indian Ocean is your constant companion at The Sandhya. Whether you are enjoying the sunshine on the expansive lawns"
+    },
+    "sri lanka": {
+     "y": 3219,
+     "sample": "Designed with luxury and comfort in mind, our property’s furnishings are inspired by mid-century aesthetics and embellis"
+    },
+    "kabalana": {
+     "y": 3907,
+     "sample": "Kabalana beach, part of an exclusive stretch of southern Sri Lanka’s golden coastline and famed for its world class surf"
+    }
+   },
+   "page_height": 8000,
+   "at_scroll_3000": {
+    "tag": "a",
+    "href": null,
+    "id": null,
+    "cls": "button __book btn-header-booking",
+    "text": "RESERVE",
+    "x": 310,
+    "y": 20,
+    "w": 70,
+    "h": 30,
+    "visible": true,
+    "fixed_or_sticky": true
+   },
+   "screenshot_scrolled": "funnel/shots/04-reserve-scrolled.png"
+  },
+  {
+   "step": "05-panel",
+   "at": "2026-11-06T10:42:51.563Z",
+   "tap_reserve": {
+    "x": 344.765625,
+    "y": 34.5,
+    "w": 70.46875,
+    "h": 30
+   },
+   "panel_active": true,
+   "screenshot_panel": "funnel/shots/05-panel-open.png",
+   "panel": {
+    "wrap": {
+     "x": 20,
+     "y": 90,
+     "w": 350,
+     "h": 304
+    },
+    "date_row": {
+     "x": 15,
+     "y": 127,
+     "w": 360,
+     "h": 79
+    },
+    "inputdates": {
+     "x": 12,
+     "y": 146,
+     "w": 366,
+     "h": 55
+    },
+    "reserve": {
+     "x": 20,
+     "y": 349,
+     "w": 350,
+     "h": 45
+    },
+    "displayed": "06/11/2026 - 07/11/2026",
+    "adults_input_name": "",
+    "cookie_line": "This website uses cookies to ensure you get the best experience on our website.",
+    "today_iso": "2026-11-06"
+   },
+   "tap_panel_reserve_default": {
+    "x": 195,
+    "y": 371.5,
+    "w": 350,
+    "h": 45
+   },
+   "handoff_default_dates": {
+    "action": "https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=&checkout=",
+    "method": "get",
+    "target": "_blank",
+    "named_fields": [],
+    "adults_shown": "2",
+    "displayed": "06/11/2026 - 07/11/2026"
+   },
+   "panel_active_after_default_tap": true,
+   "top_element_at_date_row": "input#inputdates.",
+   "tap_date_row": {
+    "x": 195,
+    "y": 166.5,
+    "w": 360,
+    "h": 79
+   },
+   "calendar_after_touch": {
+    "display": "block",
+    "y": 206,
+    "h": 320,
+    "bottom_in_viewport": true
+   },
+   "screenshot_calendar": "funnel/shots/05-panel-calendar.png",
+   "day_tap_target": {
+    "w": 48,
+    "h": 40
+   },
+   "displayed_after_pick": "10/12/2026 - 12/12/2026",
+   "span_values_after_pick": [
+    "2026-12-10",
+    "2026-12-12"
+   ],
+   "screenshot_picked": "funnel/shots/05-panel-picked.png",
+   "calendar_after_pick": {
+    "display": "block",
+    "y": 206,
+    "h": 280,
+    "bottom_in_viewport": true
+   },
+   "tap_panel_reserve_picked": {
+    "x": 195,
+    "y": 651.5,
+    "w": 350,
+    "h": 45
+   },
+   "handoff_picked_dates": {
+    "action": "https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=2026-12-10&checkout=2026-12-12",
+    "method": "get",
+    "target": "_blank",
+    "named_fields": [],
+    "adults_shown": "2",
+    "displayed": "10/12/2026 - 12/12/2026"
+   },
+   "submits_cancelled": 2,
+   "popups_opened": []
+  },
+  {
+   "step": "06-menu",
+   "at": "2026-11-06T10:44:02.407Z",
+   "toggle_candidates": [
+    {
+     "x": 20,
+     "y": 19.5,
+     "w": 30,
+     "h": 30,
+     "tag": "DIV",
+     "cls": "header-menu"
+    },
+    {
+     "x": 20,
+     "y": 19.5,
+     "w": 30,
+     "h": 30,
+     "tag": "DIV",
+     "cls": "main-menu"
+    },
+    {
+     "x": 20,
+     "y": 34.5,
+     "w": 30,
+     "h": 2,
+     "tag": "SPAN",
+     "cls": ""
+    }
+   ],
+   "menu_open": true,
+   "screenshot_menu": "funnel/shots/06-menu-open.png",
+   "menu_links": [
+    {
+     "text": "Welcome",
+     "href": "https://thesandhya.com/",
+     "w": 114,
+     "h": 28,
+     "y": 90,
+     "in_viewport": true
+    },
+    {
+     "text": "Rooms",
+     "href": "https://thesandhya.com/rooms/",
+     "w": 85,
+     "h": 28,
+     "y": 136,
+     "in_viewport": true
+    },
+    {
+     "text": "Dining",
+     "href": "https://thesandhya.com/dining/",
+     "w": 82,
+     "h": 28,
+     "y": 182,
+     "in_viewport": true
+    },
+    {
+     "text": "Design",
+     "href": "https://thesandhya.com/design/",
+     "w": 85,
+     "h": 28,
+     "y": 228,
+     "in_viewport": true
+    },
+    {
+     "text": "Locale",
+     "href": "https://thesandhya.com/locale/",
+     "w": 83,
+     "h": 28,
+     "y": 274,
+     "in_viewport": true
+    },
+    {
+     "text": "House",
+     "href": "https://thesandhya.com/house/",
+     "w": 79,
+     "h": 28,
+     "y": 320,
+     "in_viewport": true
+    },
+    {
+     "text": "RESERVATIONS",
+     "href": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+     "w": 310,
+     "h": 52,
+     "y": 411,
+     "in_viewport": true
+    },
+    {
+     "text": "+94 765 700 007",
+     "href": "tel:+94 765 700 007",
+     "w": 114,
+     "h": 16,
+     "y": 574,
+     "in_viewport": true
+    },
+    {
+     "text": "reservations@thesandhya.com",
+     "href": "mailto:reservations@thesandhya.com",
+     "w": 196,
+     "h": 16,
+     "y": 602,
+     "in_viewport": true
+    },
+    {
+     "text": "+94 765 700 007",
+     "href": "tel:+94 765 700 007",
+     "w": 106,
+     "h": 15,
+     "y": 7798,
+     "in_viewport": false
+    },
+    {
+     "text": "reservations@thesandhya.com",
+     "href": "mailto:reservations@thesandhya.com",
+     "w": 182,
+     "h": 15,
+     "y": 7822,
+     "in_viewport": false
+    }
+   ],
+   "contact_markup": "<p class=\"__2-icons\"><i class=\"i-phone\"></i><i class=\"i-whatsapp\"></i><a href=\"tel:+94 765 700 007\" class=\"button __underline\">+94 765 700 007</a></p>"
+  },
+  {
+   "step": "07-pages",
+   "at": "2026-11-06T10:51:46.576Z",
+   "pages": [
+    {
+     "path": "/",
+     "status": 200,
+     "loader": true,
+     "header_reserve": true,
+     "prices": [],
+     "breakfast": false,
+     "check_in_words": false,
+     "check_out_words": false,
+     "review_words": [],
+     "age_words": [
+      "Adults Only Hideaway"
+     ],
+     "whatsapp_links": [],
+     "map_links": [],
+     "iframes": [],
+     "engine_links": [
+      "https://hotels.cloudbeds.com/reservation/WMvA6V"
+     ],
+     "canonical": "https://vps125323.inmotionhosting.com/",
+     "description": "Luxury beachfront boutique hotel on Kabalana Surf Beach, Southern Sri Lanka consisting of 9 luxuriously appointed studios and suite. Adults only.",
+     "img_count": 114,
+     "img_lazy": 0,
+     "slips": [
+      "though out",
+      "brand new 30-meter"
+     ],
+     "text_chars": 3586,
+     "screenshot_footer": {
+      "sel": "footer a[href^=\"tel:\"]",
+      "y": 7798,
+      "screenshot": "funnel/shots/07-home-footer-contact.png"
+     }
+    },
+    {
+     "path": "/rooms",
+     "status": 200,
+     "loader": false,
+     "header_reserve": true,
+     "prices": [],
+     "breakfast": false,
+     "check_in_words": false,
+     "check_out_words": false,
+     "review_words": [],
+     "age_words": [],
+     "whatsapp_links": [],
+     "map_links": [],
+     "iframes": [],
+     "engine_links": [
+      "https://hotels.cloudbeds.com/reservation/WMvA6V"
+     ],
+     "canonical": "https://vps125323.inmotionhosting.com/rooms/",
+     "description": null,
+     "img_count": 51,
+     "img_lazy": 0,
+     "slips": [
+      "Studio King+"
+     ],
+     "text_chars": 1115,
+     "reserve_now": [
+      {
+       "text": "RESERVE NOW",
+       "href": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+       "w": 117,
+       "h": 52
+      }
+     ],
+     "screenshot": {
+      "sel": "#page a[href*=\"cloudbeds\"]:not(.btn-reserve)",
+      "y": 2024,
+      "screenshot": "funnel/shots/07-rooms-reserve-now.png"
+     }
+    },
+    {
+     "path": "/room/studio-king",
+     "status": 200,
+     "loader": false,
+     "header_reserve": true,
+     "prices": [],
+     "breakfast": false,
+     "check_in_words": false,
+     "check_out_words": false,
+     "review_words": [],
+     "age_words": [],
+     "whatsapp_links": [],
+     "map_links": [],
+     "iframes": [],
+     "engine_links": [
+      "https://hotels.cloudbeds.com/reservation/WMvA6V"
+     ],
+     "canonical": "https://vps125323.inmotionhosting.com/room/studio-king/",
+     "description": null,
+     "img_count": 35,
+     "img_lazy": 0,
+     "slips": [
+      "500 tread count"
+     ],
+     "text_chars": 1866,
+     "reserve_now": [
+      {
+       "text": "RESERVE NOW",
+       "href": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+       "w": 300,
+       "h": 52
+      }
+     ],
+     "screenshot": {
+      "sel": "#page a[href*=\"cloudbeds\"]:not(.btn-reserve)",
+      "y": 2065,
+      "screenshot": "funnel/shots/07-room-reserve-now.png"
+     }
+    },
+    {
+     "path": "/room/studio-twin",
+     "status": 200,
+     "loader": false,
+     "header_reserve": true,
+     "prices": [],
+     "breakfast": false,
+     "check_in_words": false,
+     "check_out_words": false,
+     "review_words": [],
+     "age_words": [],
+     "whatsapp_links": [],
+     "map_links": [],
+     "iframes": [],
+     "engine_links": [
+      "https://hotels.cloudbeds.com/reservation/WMvA6V"
+     ],
+     "canonical": "https://vps125323.inmotionhosting.com/room/studio-twin/",
+     "description": null,
+     "img_count": 23,
+     "img_lazy": 0,
+     "slips": [
+      "500 tread count"
+     ],
+     "text_chars": 1866
+    },
+    {
+     "path": "/room/studio-plus-king",
+     "status": 200,
+     "loader": false,
+     "header_reserve": true,
+     "prices": [],
+     "breakfast": false,
+     "check_in_words": false,
+     "check_out_words": false,
+     "review_words": [],
+     "age_words": [],
+     "whatsapp_links": [],
+     "map_links": [],
+     "iframes": [],
+     "engine_links": [
+      "https://hotels.cloudbeds.com/reservation/WMvA6V"
+     ],
+     "canonical": "https://vps125323.inmotionhosting.com/room/studio-plus-king/",
+     "description": null,
+     "img_count": 38,
+     "img_lazy": 0,
+     "slips": [
+      "Studio King+",
+      "500 tread count"
+     ],
+     "text_chars": 1619
+    },
+    {
+     "path": "/room/directors-suite",
+     "status": 200,
+     "loader": false,
+     "header_reserve": true,
+     "prices": [],
+     "breakfast": false,
+     "check_in_words": false,
+     "check_out_words": false,
+     "review_words": [],
+     "age_words": [],
+     "whatsapp_links": [],
+     "map_links": [],
+     "iframes": [],
+     "engine_links": [
+      "https://hotels.cloudbeds.com/reservation/WMvA6V"
+     ],
+     "canonical": "https://vps125323.inmotionhosting.com/room/directors-suite/",
+     "description": null,
+     "img_count": 38,
+     "img_lazy": 0,
+     "slips": [],
+     "text_chars": 2429,
+     "reserve_now": [
+      {
+       "text": "RESERVE NOW",
+       "href": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+       "w": 300,
+       "h": 52
+      }
+     ],
+     "screenshot": {
+      "sel": "#page a[href*=\"cloudbeds\"]:not(.btn-reserve)",
+      "y": 2503,
+      "screenshot": "funnel/shots/07-suite-reserve-now.png"
+     }
+    },
+    {
+     "path": "/dining",
+     "status": 200,
+     "loader": false,
+     "header_reserve": true,
+     "prices": [],
+     "breakfast": false,
+     "check_in_words": false,
+     "check_out_words": false,
+     "review_words": [],
+     "age_words": [],
+     "whatsapp_links": [],
+     "map_links": [],
+     "iframes": [],
+     "engine_links": [
+      "https://hotels.cloudbeds.com/reservation/WMvA6V"
+     ],
+     "canonical": "https://vps125323.inmotionhosting.com/dining/",
+     "description": null,
+     "img_count": 63,
+     "img_lazy": 0,
+     "slips": [],
+     "text_chars": 1610
+    },
+    {
+     "path": "/design",
+     "status": 200,
+     "loader": false,
+     "header_reserve": true,
+     "prices": [],
+     "breakfast": false,
+     "check_in_words": false,
+     "check_out_words": false,
+     "review_words": [],
+     "age_words": [],
+     "whatsapp_links": [],
+     "map_links": [],
+     "iframes": [],
+     "engine_links": [
+      "https://hotels.cloudbeds.com/reservation/WMvA6V"
+     ],
+     "canonical": "https://vps125323.inmotionhosting.com/design/",
+     "description": null,
+     "img_count": 81,
+     "img_lazy": 0,
+     "slips": [
+      "up-cycled shipping container"
+     ],
+     "text_chars": 1788
+    },
+    {
+     "path": "/locale",
+     "status": 200,
+     "loader": false,
+     "header_reserve": true,
+     "prices": [],
+     "breakfast": false,
+     "check_in_words": false,
+     "check_out_words": false,
+     "review_words": [],
+     "age_words": [],
+     "whatsapp_links": [],
+     "map_links": [],
+     "iframes": [],
+     "engine_links": [
+      "https://hotels.cloudbeds.com/reservation/WMvA6V"
+     ],
+     "canonical": "https://vps125323.inmotionhosting.com/locale/",
+     "description": null,
+     "img_count": 16,
+     "img_lazy": 0,
+     "slips": [],
+     "text_chars": 2872,
+     "map_imgs": [
+      {
+       "src": "https://thesandhya.com/wp-content/uploads/2023/11/map.webp",
+       "alt": "Map",
+       "in_link": false,
+       "link": null
+      }
+     ],
+     "screenshot_map": {
+      "sel": "img[src*=\"map\" i]",
+      "y": 2156,
+      "screenshot": "funnel/shots/07-locale-map.png"
+     }
+    },
+    {
+     "path": "/house",
+     "status": 200,
+     "loader": false,
+     "header_reserve": true,
+     "prices": [
+      "US$3,500++ per night"
+     ],
+     "breakfast": false,
+     "check_in_words": false,
+     "check_out_words": false,
+     "review_words": [],
+     "age_words": [],
+     "whatsapp_links": [],
+     "map_links": [],
+     "iframes": [],
+     "engine_links": [
+      "https://hotels.cloudbeds.com/reservation/WMvA6V"
+     ],
+     "canonical": "https://vps125323.inmotionhosting.com/house/",
+     "description": null,
+     "img_count": 10,
+     "img_lazy": 0,
+     "slips": [],
+     "text_chars": 790,
+     "screenshot": {
+      "needle": "3,500",
+      "y": 608,
+      "screenshot": "funnel/shots/07-house-price.png"
+     }
+    }
+   ]
+  },
+  {
+   "step": "08-google",
+   "at": "2026-11-06T11:01:22.749Z",
+   "status": 200,
+   "final_url": "https://www.google.com/maps/place/The+Sandhya/@5.9769788,80.3525613,17z/data=!4m9!3m8!1s0x3ae1134e3ce889b1:0x41288b6ad09d4032!5m2!4m1!1i2!8m2!3d5.9769788!4d80.3525613!16s%2Fg%2F11f1gbc2nq?hl=en&entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D",
+   "screenshot": "funnel/shots/08-google-fold.png",
+   "text_chars": 1264,
+   "shows": {
+    "thesandhya": "from ₪1,004  Baranige Wattha Walhengoda, Ahangama, Sri Lanka   thesandhya.com    +94 76 570 0007    X9G3+Q2 Ahangama, Sri Lanka    Check-in time: 14:00 Ch",
+    "Check-in time": "hya.com    +94 76 570 0007    X9G3+Q2 Ahangama, Sri Lanka    Check-in time: 14:00 Check-out time: 12:00  Suggest an edit Photos   Add photos & videos Sim",
+    "Pet-friendly": "Fi  Free breakfast  Free parking  Outdoor pool  Air-conditioned  Pet-friendly  View more amenities  Write a review About this data  You're seeing a limited",
+    "Agoda": "heck in / Check out Sat, Nov 7   Sun, Nov 8    2  All options Agoda ₪970  Free breakfast See rooms  Hotels.com ₪981  Free breakfast · Free Wi-Fi · Free pa",
+    "Hotels.com": "Nov 8    2  All options Agoda ₪970  Free breakfast See rooms  Hotels.com ₪981  Free breakfast · Free Wi-Fi · Free parking See rooms  More prices from ₪1,004",
+    "limited view": "re amenities  Write a review About this data  You're seeing a limited view of Google Maps. See more  Collapse side panel Sign in Map data ©2026 IsraelTermsPrivacyS",
+    "Website": null,
+    "Booking.com": null,
+    "Official site": null,
+    "4.6": "t prices    16% less than usual DEAL ₪970  See photos The Sandhya 4.6 4-star hotel Overview Prices About  Directions  Save  Nearby  Share  Check availabil"
+   },
+   "panel_text": " Select your dates to see the best prices    16% less than usual DEAL ₪970  See photos The Sandhya 4.6 4-star hotel Overview Prices About  Directions  Save  Nearby  Share  Check availability Compare prices Free cancellation only  Check in / Check out Sat, Nov 7   Sun, Nov 8    2  All options Agoda ₪970  Free breakfast See rooms  Hotels.com ₪981  Free breakfast · Free Wi-Fi · Free parking See rooms  More prices from ₪1,004  Baranige Wattha Walhengoda, Ahangama, Sri Lanka   thesandhya.com    +94 76 570 0007    X9G3+Q2 Ahangama, Sri Lanka    Check-in time: 14:00 Check-out time: 12:00  Suggest an edit Photos   Add photos & videos Similar hotels nearby ₪226 Idda Villas 4.4(30) 0.1 km away ₪144 Villa Coco Bliss 5.0(81) 0.6 km away Mosvold Villa 4.5(341) Posh hotel with beachfront dining 0.1 km away Poya Villa 4.7(19) 0.1 km away Solas Surf 4.9(86) 0.1 km away View more nearby hotels Hotel details  Free Wi-Fi  Free breakfast  Free parking  Outdoor pool  Air-conditioned  Pet-friendly  View more amenities  Write a review About this data  You're seeing a limited view of Google Maps. See more  Collapse side panel Sign in Map data ©2026 IsraelTermsPrivacySend Product Feedback 100 m ",
+   "own_site_links": [
+    {
+     "label": "\nthesandhya.com",
+     "href": "http://www.thesandhya.com/"
+    },
+    {
+     "label": "",
+     "href": "http://www.thesandhya.com/"
+    }
+   ],
+   "shots_at": [
+    {
+     "needle": "thesandhya",
+     "y": 966,
+     "screenshot": "funnel/shots/08-google-thesandhya.png"
+    },
+    {
+     "needle": "Check-in time",
+     "y": 531,
+     "screenshot": "funnel/shots/08-google-check-in-time.png"
+    },
+    {
+     "needle": "Pet-friendly",
+     "y": 1197,
+     "screenshot": "funnel/shots/08-google-pet-friendly.png"
+    },
+    {
+     "needle": "Agoda",
+     "y": -633,
+     "screenshot": "funnel/shots/08-google-agoda.png"
+    },
+    {
+     "needle": "Hotels.com",
+     "y": 487,
+     "screenshot": "funnel/shots/08-google-hotels-com.png"
+    },
+    {
+     "needle": "limited view",
+     "y": 1734,
+     "screenshot": "funnel/shots/08-google-limited-view.png"
+    }
+   ]
+  },
+  {
+   "step": "08-michelin",
+   "at": "2026-11-06T10:46:53.371Z",
+   "status": 202,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/ahangama/the-sandhya-13690?arr=2026-12-04&dep=2026-12-05&nA=1&nC=0&nR=1",
+   "screenshot": "funnel/shots/08-michelin-fold.png",
+   "text_chars": 3732,
+   "shows": {
+    "not currently taking reservations": "ICHELIN Guide Hotels Sri Lanka Ahangama Hotels The Sandhya 14 We’re not currently taking reservations for this hotel. Please explore other hotels in our selection. The Sandhya Kabalana Beach",
+    "No verified stays yet": "Keyboard shortcuts Map data ©2026 Google Terms Guest Score & Reviews No verified stays yet. More guest ratings are required in order to calculate a score for this hotel. Back to",
+    "thesandhya": null,
+    "16 or older": null,
+    "Check-in": null
+   },
+   "own_site_links": [],
+   "shots_at": [
+    {
+     "needle": "not currently taking reservations",
+     "y": 792,
+     "screenshot": "funnel/shots/08-michelin-not-currently-taking-reservati.png"
+    },
+    {
+     "needle": "No verified stays yet",
+     "y": 1960,
+     "screenshot": "funnel/shots/08-michelin-no-verified-stays-yet.png"
+    }
+   ]
+  },
+  {
+   "step": "08-trip",
+   "at": "2026-11-06T10:54:34.870Z",
+   "status": 200,
+   "final_url": "https://au.trip.com/hotels/ahangama-hotel-detail-10660372/hotel",
+   "screenshot": "funnel/shots/08-trip-fold.png",
+   "date_picker_closed_by_tap": true,
+   "text_chars": 15644,
+   "shows": {
+    "After 16:00": ", Vegetarian Property Policies Check-in and Check-out Times Check-in: After 16:00Check-out: Before 12:00 Front desk hours: 24/7 Child policies Children aged 12 and above",
+    "Children aged 12": "16:00Check-out: Before 12:00 Front desk hours: 24/7 Child policies Children aged 12 and above are welcome at this hotel. Additional fees may be charged for children using ex",
+    "Pets are not allowed": "ned to the original account of payment on the day of check-out. Pets Pets are not allowed Age Requirements The main guest checking in must be at least 21 years old Paying at the",
+    "9.7": "Share Sunrise view Public beach Oceanview villa Sunset views +6 more 9.7 Amazing All 56 reviews Beautiful location, friendly service. Surroundings Recreation: Pri",
+    "thesandhya": "cription Contact information Phone: +94-765700007 Email: reservations@thesandhya.com About this property Local hotel name: The Sandhya Opened: 2017 Renovated: 2023 Number",
+    "US$ 200": "y DepositDeposit required Deposit Collection MethodsA fixed amount of US$ 200.00 (approx. AU$ 291.19) is charged. Deposit Payment MethodsThis property accepts cash and",
+    "Adults only": null,
+    "adults only": null
+   },
+   "panel_text": "Go to main content AUD The Sandhya Fri, Nov 13 - Sat, Nov 14 1 night 1 room, 2 adults, 0 children Search All properties in Ahangama The Sandhya The Sandhya No. 5 of Scenic Hotels in Sri Lanka Baranige Wattha Walhengoda, Ahangama, Southern Province 80650, Sri LankaShow on map Save Share Sunrise view Public beach Oceanview villa Sunset views +6 more 9.7 Amazing All 56 reviews Beautiful location, friendly service. Surroundings Recreation: Priyadasun ayurvedic spa & wellness (<100m) Recreation: LOTUS AYURVEDIC WELLNESS & SPA (160m) Attraction: Kabalana beach (340m) Shopping: Olive Yu Jewellery (470m) Recreation: Deevi cookery experience (540m) Train station: Ahangama (1.4km) View on map Amenities Outdoor swimming pool Spa Massage Room ParkingFree Airport pick-up Bar Library Restaurant All amenities Deluxe Twin Room, 1 Bedroom, Balcony, Ocean View 2 Single bed Check Availability We Price Match Choose your room 6 Deluxe Twin Room, 1 Bedroom, Balcony, Ocean View 2 Single bed Has window Free Wi-Fi Non-smoking Air conditioning Private bathroom TV Ocean view Room Details Check Availability 12 Deluxe Double Room, 1 Bedroom, Balcony, Ocean View 1 King bed Has window Free Wi-Fi Non-smoking Air conditioning Private bathroom TV Ocean view Room Details Check Availability 19 Premier Suite, 1 Bedroom, Balcony, Ocean View 1 King bed Has window Free Wi-Fi Non-smoking Air conditioning Private bathr",
+   "own_site_links": [],
+   "shots_at": [
+    {
+     "needle": "After 16:00",
+     "y": 6476,
+     "screenshot": "funnel/shots/08-trip-after-16-00.png"
+    },
+    {
+     "needle": "Children aged 12",
+     "y": 6688,
+     "screenshot": "funnel/shots/08-trip-children-aged-12.png"
+    },
+    {
+     "needle": "Pets are not allowed",
+     "y": 8754,
+     "screenshot": "funnel/shots/08-trip-pets-are-not-allowed.png"
+    },
+    {
+     "needle": "9.7",
+     "y": 2836,
+     "screenshot": "funnel/shots/08-trip-9-7.png"
+    },
+    {
+     "needle": "thesandhya",
+     "y": 9270,
+     "screenshot": "funnel/shots/08-trip-thesandhya.png"
+    },
+    {
+     "needle": "US$ 200",
+     "y": 8076,
+     "screenshot": "funnel/shots/08-trip-us-200.png"
+    }
+   ]
+  },
+  {
+   "step": "90-engine-once",
+   "at": "2026-11-06T10:47:25.043Z",
+   "document_status": 200,
+   "final_url": "https://hotels.cloudbeds.com/404?redirect_url=https%3A%2F%2Fhotels.cloudbeds.com%2Freservation%2FWMvA6V&error_code=GENERIC",
+   "calls": [
+    {
+     "url": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+     "status": 200
+    },
+    {
+     "url": "https://analytics.google.com/g/collect?v=2&tid=G-GDN11DGBXF&gtm=45je6b41v895772286za208zd895772286xf1&_p=1793962046042&_",
+     "status": 204
+    },
+    {
+     "url": "https://analytics.google.com/g/collect?v=2&tid=G-GDN11DGBXF&gtm=45je6b41v895772286za200zd895772286xf1&_p=1793962046042&g",
+     "status": 204
+    },
+    {
+     "url": "https://www.google.com/rmkt/collect/17545502923/?random=1793962046506&cv=11&fst=1793962046506&fmt=8&bg=ffffff&guid=ON&as",
+     "status": 200
+    },
+    {
+     "url": "https://www.google.com/rmkt/collect/464994340/?random=1793962046468&cv=11&fst=1793962046468&fmt=8&bg=ffffff&guid=ON&asyn",
+     "status": 200
+    },
+    {
+     "url": "https://www.google.com/rmkt/collect/464994340/?random=1793962046511&cv=11&fst=1793962046511&fmt=8&bg=ffffff&guid=ON&asyn",
+     "status": 200
+    },
+    {
+     "url": "https://www.google.com/rmkt/collect/16944466376/?random=1793962046513&cv=11&fst=1793962046513&fmt=8&bg=ffffff&guid=ON&as",
+     "status": 200
+    },
+    {
+     "url": "https://www.google.com/rmkt/collect/17545502923/?random=1793962046523&cv=11&fst=1793962046523&fmt=8&bg=ffffff&guid=ON&as",
+     "status": 200
+    },
+    {
+     "url": "https://www.google.com/rmkt/collect/16944466376/?random=1793962046481&cv=11&fst=1793962046481&fmt=8&bg=ffffff&guid=ON&as",
+     "status": 200
+    },
+    {
+     "url": "https://www.google.com/rmkt/collect/16944590473/?random=1793962046518&cv=11&fst=1793962046518&fmt=8&bg=ffffff&guid=ON&as",
+     "status": 200
+    },
+    {
+     "url": "https://www.google.com/rmkt/collect/464994340/?random=1793962046528&cv=11&fst=1793962046528&fmt=8&bg=ffffff&guid=ON&asyn",
+     "status": 200
+    },
+    {
+     "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/16944466376/?random=1793962046481&cv=11&fst=17939620464",
+     "status": 200
+    }
+   ],
+   "visible_text": "{\"@context\":\"https://schema.org\",\"@type\":\"LodgingBusiness\",\"@id\":\"https://hotels.cloudbeds.com/reservation/WMvA6V\",\"name\":\"The Sandhya\",\"telephone\":\"+94765700007\",\"email\":\"reservations@thesandhya.com\"",
+   "screenshot": "funnel/shots/90-engine-headless-wall.png",
+   "reading": "What a headless browser gets, read as an automation wall and not as a fault of the hotel. The engine steps were not exercised; no finding rests on this screen."
+  }
+ ]
+}
