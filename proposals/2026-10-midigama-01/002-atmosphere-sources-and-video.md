@@ -35,16 +35,16 @@ Add two sources next to Commons, under a new, named licence category:
 
 Unsplash stays out of the tool because its API terms require hotlinking the image URLs and sending download notices, and call a failure a material breach. Our media is stored in `dossier/<slug>/stock/`, optimised, and served from a static build that must also work as a zip on any host, so hotlinking can't work.
 
-Every new entry records `source` (`pexels`, `unsplash`), `license_name`, `license_url`, `source_url` and `fetched_at`, because these are custom licences that can change and the dossier should show what applied on the day. An entry with no `source` is a Commons entry from before this change.
+Every new entry records `source` (`pexels`, `unsplash`, `commons`), `license_name`, `license_url`, `source_url` and `fetched_at`, because custom licences can change and the dossier should show what applied on the day. Only an entry with no `source` is a Commons entry from before this change.
 
-**Evidence.** New field `place_evidence`, required on every `local` entry from a new source and on every video:
+**Evidence.** New field `place_evidence`, required on every `local` entry with a `source` and on every video:
 
 - `gps`: coordinates from the EXIF or the source page, or
 - `location_and_landmark`: a location the photographer gives, the URL where they give it, *and* a note on the visible match (the break, the headland, the road).
 
-`tools/check-places.mjs` fails a `local` entry without it. This is the part that does the work: today line 92 accepts `local` when a locality name appears in the credit or `place` text, so typing "Midigama" there is enough to pass, and the Pexels API has no location field to lean on. A file with no evidence can only be `neutral`: open sea or sky with no landmark, as today. Existing Commons photo entries are not re-checked, so builds that already passed stay valid.
+`tools/check-places.mjs` fails a `local` entry without it. This is the part that does the work: today line 92 accepts `local` when a locality name appears in the credit or `place` text, so typing "Midigama" there is enough to pass, and the Pexels API has no location field to lean on. A file with no evidence can only be `neutral`: open sea or sky with no landmark, as today. Entries with no `source` are not re-checked, so builds that already passed stay valid.
 
-**People.** No identifiable person in any new atmosphere photo or video, from any source. Neither licence mentions model releases, Pexels forbids implying endorsement by people shown, and a surfer on a hotel's hero reads as that hotel's guest, which is the first hard line. A distant surfer nobody could recognise is fine. New field `people`: `none` or `distant`, written by whoever looks at the file, required on every new-source entry and every video, and `tools/check-places.mjs` fails an entry without it. No tool can see a person, so this rests on the look-and-describe step below; the field makes that step leave a record.
+**People.** No identifiable person in any new atmosphere photo or video, from any source. Neither licence mentions model releases, Pexels forbids implying endorsement by people shown, and a surfer on a hotel's hero reads as that hotel's guest, which is the first hard line. A distant surfer nobody could recognise is fine. New field `people`: `none` or `distant`, written by whoever looks at the file, required on every entry with a `source` and every video, and `tools/check-places.mjs` fails an entry without it. No tool can see a person, so this rests on the look-and-describe step below; the field makes that step leave a record.
 
 Every file is still looked at and described before use.
 
