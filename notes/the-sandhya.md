@@ -4,13 +4,12 @@ Run `2026-11-ahangama-01`, owner alon, branch `alon/the-sandhya`, `mode: test` (
 
 ## State
 
-`copy_failed`, round 1 of at most 2. Stopped at 86 of 90 minutes and 1.28M of 2M tokens (`reports/2026-11-ahangama-01/run.md`).
+`copy_failed`, round 1 of at most 2; round 2 under way. Budget raised by Alon on 2026-11-06 to 10M tokens and 600 minutes, at 1.28M and 86 minutes used; review it again at gate b.
 
-## Before anything else, Alon decides
+## Decided 2026-11-06 (Alon: "you decide")
 
-1. Budget: recommended 10M tokens and 600 minutes, to reach the mockup pick.
-2. Ruling on the hotel's own verbatim sentences against the review's "no triads, no padding" (`sites/the-sandhya/copy/review.md`). Without a ruling, round 2 repeats the voice result.
-3. Whether testimonials may be excerpted with a visible ellipsis. Default: stay at 2.
+- The hotel's own sentences, verbatim or trimmed with no words added, are exempt from "no triads" and "no padding vocabulary" on this business only. Facts are still audited. The general rule change is `proposals/2026-11-ahangama-01/001-copyeditor-owner-prose-voice.md`, gate d, not merged.
+- Testimonials are not excerpted: `schemas/site-content.md` says a quote is never trimmed to fit. The page keeps 2.
 
 ## Copy round 2
 
