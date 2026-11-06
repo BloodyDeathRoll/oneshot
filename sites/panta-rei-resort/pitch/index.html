@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<title>A new website for Panta Rei Resort</title>
+<meta name="description" content="A proposal for Panta Rei Resort, Kabalana: the website preview we built from your own photos, film and guest reviews, what it changes for a guest on a phone, and the ways it can run.">
+<style>
+:root{
+  --bg:#f6f1ea; --paper:#fffdf9; --ink:#2a211b; --muted:#6a5d52; --line:#e3d8cb;
+  --accent:#b94a32; --accent-ink:#fff; --link:#8f3420; --teal:#1f5f63; --tint:#efe6da; --ok:#e5efe7; --ok-ink:#24563a;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#191512; --paper:#221d19; --ink:#f0e8df; --muted:#bfb1a3; --line:#3a312a; --link:#f2a48d; --teal:#8fd0d2; --tint:#2a231e; --ok:#1f2d24; --ok-ink:#a9dbb9; }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+a{color:var(--link);text-underline-offset:2px}
+a:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:-.005em}
+h1{font-size:clamp(32px,6.4vw,54px);line-height:1.08;margin:0 0 18px}
+h2{font-size:clamp(25px,4.2vw,34px);line-height:1.15;margin:0 0 14px}
+h3{font-size:21px;line-height:1.25;margin:0 0 8px}
+p{margin:0 0 14px}
+ul{margin:0 0 14px;padding-left:1.2em}
+li{margin:0 0 6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.small{font-size:15px;color:var(--muted)}
+.eyebrow{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+header.intro{padding:44px 0 28px}
+.lede{font-size:19px;max-width:40em}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:12px 22px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-weight:600;text-decoration:none;max-width:100%;overflow-wrap:anywhere}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+section{padding:40px 0;border-top:1px solid var(--line)}
+figure{margin:0}
+figure img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--line);background:var(--paper)}
+figcaption{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.45}
+.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;margin-bottom:8px}
+.tag.now{background:var(--tint);color:var(--muted)}
+.tag.new{background:var(--ok);color:var(--ok-ink)}
+.pair{display:grid;gap:18px;grid-template-columns:1fr 1fr;align-items:start}
+.pair.phones{max-width:720px}
+.pair.wide{grid-template-columns:1fr}
+@media (min-width:860px){ .pair.wide{grid-template-columns:1fr 1fr} }
+.find{display:grid;gap:22px;grid-template-columns:1fr;padding:26px 0;border-top:1px dashed var(--line)}
+.find:first-of-type{border-top:0}
+@media (min-width:860px){ .find{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr)} }
+.find .shots{display:grid;gap:14px;grid-template-columns:1fr 1fr;align-items:start}
+.find .shots.one{grid-template-columns:1fr}
+table{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:16px}
+th,td{text-align:left;vertical-align:top;padding:12px 14px;border-top:1px solid var(--line)}
+thead th{border-top:0;background:var(--tint);font-size:14px;letter-spacing:.03em}
+.tablewrap{overflow-x:auto}
+.cards{display:grid;gap:16px;grid-template-columns:1fr}
+@media (min-width:860px){ .cards{grid-template-columns:repeat(3,1fr)} }
+.card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px}
+.card.rec{border:2px solid var(--accent)}
+.card .who{font-size:14px;color:var(--muted);margin:0 0 12px}
+.card ul{padding-left:1.1em}
+.cols{display:grid;gap:22px;grid-template-columns:1fr}
+@media (min-width:760px){ .cols{grid-template-columns:1fr 1fr} }
+.box{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+footer{padding:36px 0 56px;border-top:1px solid var(--line)}
+@media (max-width:420px){ body{font-size:16px} .pair{gap:10px} .find .shots{gap:10px} th,td{padding:10px} }
+</style>
+</head>
+<body>
+<main>
+<div class="wrap">
+
+<header class="intro">
+  <p class="eyebrow">A proposal for Panta Rei Resort, Kabalana · 6 November 2026</p>
+  <h1>Your guests rate Panta Rei 9.2 and 4.7. We built a website that tells the next guest that before they book.</h1>
+  <p class="lede">Guests give Panta Rei 9.2 out of 10 from 468 reviews on Booking.com and 4.7 out of 5 from 213 on Google. Your website doesn't show either score yet, and it doesn't yet say much about the four rooms or what's on at the resort. So we rebuilt it as a private preview, using your own aerial film, your photographs, the room details from your booking page and your guests' own words.</p>
+  <div class="cta">
+    <a class="btn" href="https://panta-rei-resort.os1.workers.dev/">Open the preview: panta-rei-resort.os1.workers.dev</a>
+    <a class="btn ghost" href="#offer">How it can run</a>
+  </div>
+  <p class="small">The preview is private: search engines are told not to list it, and nothing about your current site, your booking page or your listings has changed. It works best on a phone, which is where most guests will see it.</p>
+</header>
+
+<section aria-labelledby="h-first">
+  <h2 id="h-first">The first screen</h2>
+  <p>Your current site already does one thing very well: “Check availability” is on the first screen, and a guest is on your booking page in one tap. We kept that. The preview opens on your own aerial film of the red roofs around the pool, with the name, the place and one button, “Check dates”, which goes straight to your booking page.</p>
+  <div class="pair phones">
+    <figure><span class="tag now">Today</span><img src="before-390-home.jpg" width="780" height="1326" alt="pantareiresort.com on a phone today: a terrace photo, the round logo, a Check availability button, Best price when booking direct, and WhatsApp and Instagram icons." loading="lazy"><figcaption>pantareiresort.com on a phone, 6 Nov 2026.</figcaption></figure>
+    <figure><span class="tag new">Preview</span><img src="after-390-top.jpg" width="780" height="1688" alt="The preview on a phone: an aerial view of the red-roofed bungalows around the pool, the words Panta Rei, Kabalana, and a Check dates button." loading="lazy"><figcaption>The preview on a phone. The film plays after the page appears; on a slow connection or with reduced motion the still frame stays.</figcaption></figure>
+  </div>
+  <div class="pair wide" style="margin-top:18px">
+    <figure><span class="tag now">Today</span><img src="before-1440-home.jpg" width="1440" height="900" alt="pantareiresort.com on a laptop: rattan lamps seen from below, the menu and a Check availability button." loading="lazy"><figcaption>On a laptop today.</figcaption></figure>
+    <figure><span class="tag new">Preview</span><img src="after-1440-top.jpg" width="1440" height="900" alt="The preview on a laptop: the aerial view of the resort with Panta Rei, Kabalana and Check dates." loading="lazy"><figcaption>The preview on a laptop.</figcaption></figure>
+  </div>
+</section>
+
+<section aria-labelledby="h-numbers">
+  <h2 id="h-numbers">Side by side, measured</h2>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th scope="col">What a guest gets</th><th scope="col">Your site today</th><th scope="col">The preview</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Taps from the first screen to your booking page</th><td>1</td><td>1 (and 2 to the chosen room's page, with the dates already filled in)</td></tr>
+      <tr><th scope="row">Room descriptions</th><td>The same opening sentence on all four rooms; size and beds only on the booking page</td><td>Each room with its own size, beds, view and photos</td></tr>
+      <tr><th scope="row">Guest ratings</th><td>Not shown</td><td>Booking.com 9.2/10 (468 reviews) and Google 4.7/5 (213), with the date, plus 6 guest reviews in their own words</td></tr>
+      <tr><th scope="row">Class, massage and day-pass prices</th><td>Inside PDF files</td><td>Written on the page, in rupees</td></tr>
+      <tr><th scope="row">Email link</th><td>Shows hello@pantareiresort.com but opens a different address</td><td>hello@pantareiresort.com, and it opens that address</td></tr>
+      <tr><th scope="row">Data before the guest scrolls (phone)</th><td>About 15.7 MB in the first 6 seconds, including the background film</td><td>653 KB for the page, then 1.5 MB for the film once the page is showing</td></tr>
+      <tr><th scope="row">Other companies' servers contacted on load</th><td>9, including error tracking and visitor analytics</td><td>0</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="small" style="margin-top:10px">Today's figures: our visit to pantareiresort.com on 6 Nov 2026 (phone size, no slowdown). The preview's figures: our test on 6 Nov 2026, on a phone with a deliberately slowed connection; the main picture showed in about 2 seconds.</p>
+</section>
+
+<section aria-labelledby="h-fixed">
+  <h2 id="h-fixed">What a guest meets today, and what the preview does instead</h2>
+
+  <div class="find">
+    <div>
+      <h3>1. Four rooms that read the same</h3>
+      <p>On your Rooms page, the Double Deluxe, the Suite Triple, the Family Villa and the Luxury Private Villa all open with the same sentence: “Situated in Ahangama Central, 300 metres from Kabalana Beach…”. That's the general description from your Booking.com listing. What makes each room different (22 to 50 m², king or twin beds, a sofa bed, an outdoor bath, a private pool) is only on your booking page.</p>
+      <p>In the preview, each room has its own card. Tap one and you see its size, how many it sleeps, the beds, what's special about it and its own photos. Then there's one button to that room on your booking page.</p>
+    </div>
+    <div class="shots">
+      <figure><span class="tag now">Today</span><img src="before-rooms.jpg" width="705" height="1016" alt="The four room titles on pantareiresort.com/ourrooms, each followed by the same sentence: Situated in Ahangama Central, 300 metres from Kabalana Beach, Panta Rei resort features accommodation with a seasonal outdoor swimming pool, free private parking, a garden and a terrace." loading="lazy"><figcaption>pantareiresort.com/ourrooms: the four cards, cropped to the title and the first lines.</figcaption></figure>
+      <figure><span class="tag new">Preview</span><img src="after-390-rooms.jpg" width="780" height="1688" alt="The preview's room cards on a phone: Double Room, 22 m², sleeps 3, with a Look inside button." loading="lazy"><figcaption>Room cards on a phone: size and sleeps on the photo.</figcaption></figure>
+    </div>
+  </div>
+  <figure style="margin:0 0 8px"><img src="after-1440-drawer.jpg" width="1440" height="900" alt="The preview on a laptop with the Family Villa open: 50 m², sleeps 4, two king-size beds or four single beds, two bedrooms, garden view and a private balcony, private bathroom plus an outdoor bath, a photo gallery, and buttons for the booking page, WhatsApp and Call." loading="lazy"><figcaption>The Family Villa opened on a laptop: its own beds, size, outdoor bath and five photos, with your booking page, WhatsApp and phone one tap away.</figcaption></figure>
+
+  <div class="find">
+    <div>
+      <h3>2. The scores you've earned aren't on your site</h3>
+      <p>On Google and Booking.com, guests rate Panta Rei 4.7 from 213 reviews and 9.2 from 468. Your website doesn't show either score. Your booking page shows 4.8 on Google and 9.1 on Booking.com, which no longer match today's scores.</p>
+      <p>In the preview, the two scores have their own section, each with the number of reviews and the date we read it. Below them are six guests' reviews, quoted word for word with their name and where they wrote it. The Booking.com score also appears again next to the dates, at the moment a guest decides.</p>
+    </div>
+    <div class="shots">
+      <figure><span class="tag now">Today</span><img src="before-engine-ratings.jpg" width="780" height="540" alt="Your booking page's Book Direct box: 4.8/5 on Google, 9.1/10 on Booking.com, 4.5/5 on Tripadvisor." loading="lazy"><figcaption>Your booking page, 6 Nov 2026. The website itself shows no score.</figcaption></figure>
+      <figure><span class="tag new">Preview</span><img src="after-390-guests.jpg" width="780" height="1688" alt="The preview's What guests say section: 9.2 out of 10 on Booking.com, 468 reviews, and 4.7 out of 5 on Google, 213 reviews, both captured 6 Nov 2026, then a guest quote." loading="lazy"><figcaption>“What guests say” on the preview.</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="find">
+    <div>
+      <h3>3. No idea of the price until the booking page</h3>
+      <p>A guest comparing places on a phone sees room names but no prices. To find one, they have to go to the booking page and choose dates. Until then it says “Add dates for prices”.</p>
+      <p>Your rates change with the dates, so the preview doesn't pretend to have one fixed price. What it does is let the guest choose the room, arrival, departure and number of guests on your own page. “See prices on our booking page” then opens that room on your booking page with those dates already filled in, so the price for their stay is the first thing they see. With JavaScript switched off, every room card is still a plain link to its page on your booking page.</p>
+    </div>
+    <div class="shots">
+      <figure><span class="tag now">Today</span><img src="before-engine-price.jpg" width="780" height="535" alt="Your booking page's Suite page on a phone: Good to know, check-in 2 pm, check-out 11 am, and a bar saying Add dates for prices with a Check availability button." loading="lazy"><figcaption>Suite Room With Private Pool on your booking page: “Add dates for prices”.</figcaption></figure>
+      <figure><span class="tag new">Preview</span><img src="after-390-drawer.jpg" width="780" height="1688" alt="The preview's booking panel on a phone: the four rooms with sizes, Suite with Private Pool selected, arrival and departure dates and 2 guests filled in, and a See prices on our booking page button." loading="lazy"><figcaption>Room, dates and guests chosen on the preview, then one tap to your booking page.</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="find">
+    <div>
+      <h3>4. The email address goes to other inboxes</h3>
+      <p>Your pages show hello@pantareiresort.com. On Contact and in the footer, tapping it opens a message to pantareiresort@gmail.com. In the Activities footer it opens a message to info@mysite.com, an example address that came with the website template, so a guest writing from there won't reach you.</p>
+      <p>The preview shows one address, hello@pantareiresort.com, and the link writes to that address. If you'd rather guests wrote to the Gmail address, tell us and we'll switch it.</p>
+    </div>
+    <div class="shots one">
+      <figure><span class="tag now">Today</span><img src="before-email.jpg" width="780" height="147" alt="The Activities page footer showing Email: hello@pantareiresort.com." loading="lazy"><figcaption>The Activities page footer, 6 Nov 2026. This link opens a message to info@mysite.com.</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="find">
+    <div>
+      <h3>5. A heavy first load on a local SIM</h3>
+      <p>Before a guest scrolls, your home page on a phone downloads about 15.7 MB, mostly the background film and full-size photos. It also contacts nine other companies' servers, including error-tracking and visitor-analytics services. That's a lot of data for someone on a Sri Lankan SIM.</p>
+      <p>The preview loads 653 KB first. Your film then starts once the page is already showing, at 1.5 MB on a phone. Photos are sized for each screen, and nothing loads from anyone else's server: no trackers and no pop-ups.</p>
+    </div>
+    <div class="box">
+      <p style="margin:0 0 6px"><strong>Today:</strong> about 15.7 MB in the first 6 seconds, 9 outside servers.</p>
+      <p style="margin:0"><strong>Preview:</strong> 653 KB, then the film (1.5 MB on a phone), 0 outside servers. The main picture showed in about 2 seconds on our slowed phone test.</p>
+    </div>
+  </div>
+
+  <div class="find">
+    <div>
+      <h3>6. And the things that were in PDFs</h3>
+      <p>The Surf Therapy Massage (“full recovery after active surfing”), the fitness class prices and the pool day pass were only inside PDF files. To read them, a guest has to download and open a file. In the preview they're written on the page: the massage with its 60 and 45 minute prices, the Vinyasa class every morning at 8:30 except Friday with the three class prices, and the pool day pass. The restaurant has its own section too, with the breakfast and later-on dishes and the opening hours.</p>
+    </div>
+    <div class="shots one" style="max-width:360px">
+      <figure><span class="tag new">Preview</span><img src="after-390-massage.jpg" width="780" height="1688" alt="The preview's After the surf section on a phone: the Surf Therapy Massage text and prices, 20,000 LKR for 60 minutes full body and 17,000 LKR for 45 minutes back, neck and shoulders, and the same for the Revitalizing Massage." loading="lazy"><figcaption>“After the surf” on the preview.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-off">
+  <h2 id="h-off">Also worth doing, outside the website</h2>
+  <ul>
+    <li><strong>Facebook:</strong> your page lists +94 74 209 5135 and pantareiresort@gmail.com, while your site and Google say +94 72 800 3022 and hello@pantareiresort.com. One set everywhere saves a guest guessing which one to use.</li>
+    <li><strong>Your booking page:</strong> the logo at the top links to an address with no ending (“pantareiresort.holidayfuture.”), so a guest there can't tap back to your website. The rating line there could also be updated to 4.7 and 9.2.</li>
+    <li><strong>Full rooms on your booking page:</strong> when a guest arrives with dates the room can't take, the booking page clears the dates without saying why. It may be worth asking your booking-page provider whether it can show a “not available” message instead.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="h-edit">
+  <h2 id="h-edit">What you'd be able to change yourself</h2>
+  <p>The preview is a finished website, but it has no editor, login or address of its own yet. Those are set up only once you've chosen how you want it to run (below). With either of the two options that include the editor, you'd get your own login that opens only Panta Rei. You'd change words and pictures in simple fields, never code, press Publish, and the site would update in about a minute.</p>
+  <div class="cols">
+    <div class="box">
+      <h3>You'd edit</h3>
+      <ul>
+        <li>Rooms: name, beds, how many it sleeps, the description and photo, and the link to its page on your booking page</li>
+        <li>Prices: pool day pass, classes and massages</li>
+        <li>The welcome, pool, restaurant, fitness, massage, groups and getting-here texts</li>
+        <li>Restaurant hours, check-in and check-out, house rules, “Good to know”</li>
+        <li>Photos and the first-screen film, uploaded from your phone (the site makes the sizes)</li>
+        <li>WhatsApp, phone, email, address, booking links, Instagram and Facebook</li>
+        <li>Ratings and reviews: you can remove any; new ones we add from their source, so they stay word for word</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>Not in the editor yet</h3>
+      <p class="small" style="margin-top:0">These are on the preview but don't have a field of their own yet. We'd change them for you on request:</p>
+      <ul>
+        <li>The first-screen title “Panta Rei, Kabalana” and your logo</li>
+        <li>The extra photos in each room's gallery</li>
+        <li>The two dish lists under Restaurant and the class week strip</li>
+        <li>The list of distances under Getting here</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-offer" id="offer">
+  <h2 id="h-offer">How it can run: you choose</h2>
+  <p>Nothing has been set up yet. Tell us which of these suits you, and we'll set up only that. We'd connect your own address, pantareiresort.com, once you've chosen.</p>
+  <div class="cards">
+    <div class="card rec">
+      <p class="tag new" style="margin:0 0 10px">What we recommend</p>
+      <h3>We host it, you edit it</h3>
+      <p class="who">Monthly fee</p>
+      <ul>
+        <li>We run the site and the editor; you get your own login for Panta Rei</li>
+        <li>Hosting, updates and backups are ours</li>
+        <li>You change rooms, prices, texts and photos yourself, whenever you like</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>On your own server</h3>
+      <p class="who">One-time fee</p>
+      <ul>
+        <li>We install the same site and editor on a server you rent (a small VPS), check it works, hand it over, then remove our access</li>
+        <li>It's fully yours; your hosting company charges you roughly $6–12 a month for the server</li>
+        <li>Updates and backups are yours to keep up</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>The files only</h3>
+      <p class="who">No editor</p>
+      <ul>
+        <li>The finished website as plain files that run on any web host, your current one included</li>
+        <li>No editor: changing a price or a photo needs a web developer</li>
+        <li>The simplest option if the site will rarely change</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small" style="margin-top:12px">We'll agree the fee with you once you've told us which option you'd like.</p>
+</section>
+
+<section aria-labelledby="h-confirm">
+  <h2 id="h-confirm">Before it goes live, please check with us</h2>
+  <ul>
+    <li><strong>Distance to Kabalana Beach:</strong> your site says 300 metres and Booking.com says 600 metres, so the preview says “a short walk”. Which would you like?</li>
+    <li><strong>Breakfast hours:</strong> the restaurant page says 8:30 to 12:00 and the guest booklet says 8:30 to 11:30. The preview uses 8:30 to 12:00.</li>
+    <li><strong>Check-out:</strong> 11:00 on your booking page, 11:30 on Google. The preview uses 11:00.</li>
+    <li><strong>Triple Room beds:</strong> your booking page says a king-size bed and a sofa bed, while Booking.com lists other beds. The preview follows your booking page.</li>
+    <li><strong>Which inbox you read:</strong> hello@pantareiresort.com or pantareiresort@gmail.com.</li>
+    <li><strong>Things we couldn't find:</strong> your team's names, the months the restaurant closes, and anything for surfers (board storage, lessons you can arrange). Tell us about any of these and they can go on the site.</li>
+    <li><strong>AI assistants:</strong> once the site is on your own address, it's set to let AI assistants (like ChatGPT) read it so they can recommend you. You can say no.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="h-reply">
+  <h2 id="h-reply">How to reply</h2>
+  <p>Have a look at the preview on your phone first: <a href="https://panta-rei-resort.os1.workers.dev/">panta-rei-resort.os1.workers.dev</a>. Then just reply to the message this link came in. Tell us what you'd change and which of the three options you'd like, or ask anything. No obligation.</p>
+</section>
+
+</div>
+</main>
+<footer>
+  <div class="wrap">
+    <p class="small">Every fact on the preview comes from what Panta Rei publishes: your website, your booking page, your Google and Booking.com listings and your guests' reviews. All the photographs and the film are your own. Screenshots of today's pages were taken on 6 Nov 2026 and of the preview on 6 Nov 2026.</p>
+  </div>
+</footer>
+</body>
+</html>
