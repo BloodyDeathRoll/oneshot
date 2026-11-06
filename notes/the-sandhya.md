@@ -15,6 +15,11 @@ Run `2026-11-ahangama-01`, owner alon, branch `alon/the-sandhya`, `mode: test` (
 
 Done. Dining ¶2 S2 and S3 are the wording Alon approved. `copy/sources.md` and `humanizer-notes.md` keep small stale rows on the older Dining sentence and the draft diff; `copy/en.json` and `copy/review.md` are right. For a person before go-live: `copy/review.md`, "For a person".
 
+## Raise at gate b
+
+- No concept has a date picker, but `agents/designer/custom.md` (Shahar's) says booking inside the site includes "pick dates". The audit forbids only dates shown and not sent, and picked dates do reach the engine's URL; nobody has seen the engine honour them. Once a person opens the engine, this can be settled: add working date fields at the build, or ask Shahar to waive it.
+- Concept 3 grades a real photograph from noon to dusk, close to PLAN.md's "no generated imagery". Its first screen should be judged alone.
+
 ## Do not lose
 
 - Positioning (Alon): a beachfront boutique hotel, not a surf stay. The site lists surf lessons and board hire; who runs them is unknown.
