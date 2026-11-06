@@ -1,178 +1,52 @@
 (function(){
 'use strict';
-var H=document.documentElement, motion=H.classList.contains('motion');
-/* 4g: the hero reel's poster and renditions, written by the page from content (index.astro) */
-var D={poster:'',desk:[],phone:[]};try{D=JSON.parse(document.getElementById('cm-data').textContent)}catch(e){}
-if(!D.desk.length&&!D.phone.length) motion=false, H.classList.replace('motion','still');
+/* Round 2: the hero is the drone loop (heroVideo, schema v0.9 snippet): the poster paints first, the sources are
+   attached after load + one frame, never under reduced motion or Save-Data (html.still), and the footage pauses
+   off screen. The shop reel in the intro's board window (videos[0]) is attached only as it nears the screen. */
+var H=document.documentElement, still=!H.classList.contains('motion');
 var top=document.getElementById('top');
 function onScrollHeader(){top.classList.toggle('solid', scrollY>24);}
+addEventListener('scroll',onScrollHeader,{passive:true});onScrollHeader();
 
-/* ================= the board window and its zoom-through ================= */
-var stage=document.getElementById('stage'), pick=document.getElementById('pick'), slot=document.getElementById('slot'),
-    zm=document.getElementById('zm'), heroLine=document.getElementById('heroLine'), heroCta=document.getElementById('heroB'),
-    shadow=slot.querySelector('.shadow'), cv=document.getElementById('gl');
-var G={}; /* geometry, CSS px in stage space */
-function measure(){
-  var sr=stage.getBoundingClientRect(), b=slot.getBoundingClientRect();
-  G.vw=sr.width; G.vh=sr.height;
-  G.bx=b.left-sr.left; G.by=b.top-sr.top; G.bw=b.width; G.bh=b.height;
-  /* start: the reel covers the board (9:16 by height) */
-  G.vi={w:G.bh*9/16,h:G.bh}; G.vi.x=G.bx+G.bw/2-G.vi.w/2; G.vi.y=G.by;
-  /* end: desktop at most 1080 px wide, centred, never upscaled; phone covers the screen */
-  var wf,hf; if(G.vw>860){wf=Math.min(G.vw,1080);hf=wf*16/9;if(hf<G.vh){hf=G.vh;wf=hf*9/16;}}
-  else{ if(G.vw/G.vh>9/16){wf=G.vw;hf=wf*16/9}else{hf=G.vh;wf=hf*9/16} }
-  G.vf={w:wf,h:hf,x:(G.vw-wf)/2,y:(G.vh-hf)/2};
-  var rw=Math.min(G.vw,wf), rh=G.vh;
-  G.smax=Math.max(rw/(0.66*G.bw), rh/(0.62*G.bh))*1.06;
-  /* the board's anchor (its widest band) travels to the screen centre */
-  G.ax0=G.bx+G.bw/2; G.ay0=G.by+G.bh*0.55;
-  zm.style.width=wf+'px'; zm.style.height=hf+'px';
-  if(GL.ok) GL.resize();
+function attach(video){
+  [].forEach.call(video.querySelectorAll('source[data-src]'),function(s){
+    if(s.media&&!matchMedia(s.media).matches) s.remove(); /* older engines ignore `media` on <source> */
+    else {s.src=s.getAttribute('data-src');s.removeAttribute('data-src');}
+  });
+  video.addEventListener('playing',function(){video.classList.add('on');},{once:true});
+  video.load();
 }
-function clamp(v,a,b){return v<a?a:v>b?b:v}
-function sstep(a,b,v){v=clamp((v-a)/(b-a),0,1);return v*v*v*(v*(v*6-15)+10)}
-var S={p:0,e:0,box:null,vid:null};
-function frame(p){
-  var e=sstep(0.02,0.86,p); S.p=p; S.e=e;
-  var vi=G.vi, vf=G.vf;
-  var v={x:vi.x+(vf.x-vi.x)*e, y:vi.y+(vf.y-vi.y)*e, w:vi.w+(vf.w-vi.w)*e, h:vi.h+(vf.h-vi.h)*e};
-  var s=1+(G.smax-1)*Math.pow(e,2.2);
-  var bw=G.bw*s, bh=G.bh*s;
-  var ax=G.ax0+(G.vw/2-G.ax0)*e, ay=G.ay0+(G.vh/2-G.ay0)*e;
-  var box={x:ax-bw/2, y:ay-bh*0.55, w:bw, h:bh};
-  /* the reel always covers the visible part of the board, so the outline never gets a flat cut */
-  var ct=Math.max(box.y,0), cb=Math.min(box.y+box.h,G.vh), cw=Math.min(box.w,G.vw);
-  var nh=Math.min(vf.h,Math.max(v.h,cb-ct,cw*16/9));
-  if(nh>v.h){var cy=v.y+v.h/2; v.h=nh; v.w=nh*9/16; v.x=G.vw/2-v.w/2; v.y=Math.min(Math.max(cy-nh/2,cb-nh),ct);}
-  S.box=box; S.vid=v;
-  var k=v.w/vf.w;
-  zm.style.transform='translate('+v.x.toFixed(2)+'px,'+v.y.toFixed(2)+'px) scale('+k.toFixed(5)+')';
-  var ms=(bw/k).toFixed(1)+'px '+(bh/k).toFixed(1)+'px', mp=((box.x-v.x)/k).toFixed(1)+'px '+((box.y-v.y)/k).toFixed(1)+'px';
-  zm.style.webkitMaskSize=ms; zm.style.maskSize=ms; zm.style.webkitMaskPosition=mp; zm.style.maskPosition=mp;
-  var t=sstep(0.0,0.14,p);
-  heroLine.style.opacity=heroCta.style.opacity=(1-t).toFixed(3);
-  heroLine.style.transform='translateY('+(-24*t).toFixed(1)+'px)';
-  heroCta.style.transform='translateY('+(24*t).toFixed(1)+'px)';
-  heroCta.style.visibility=heroLine.style.visibility=t>=1?'hidden':'visible';
-  shadow.style.opacity=(1-sstep(0,0.08,p)).toFixed(3);
-  GL.dirty=true;
+function play(v){var p=v.play();if(p&&p.catch)p.catch(function(){});} /* autoplay refused: the poster stays */
+function watch(el,video,margin,first){
+  var ready=false;
+  if(!('IntersectionObserver' in window)){first();ready=true;play(video);return}
+  new IntersectionObserver(function(es){var on=es[0].isIntersecting;
+    if(on&&!ready){ready=true;first();}
+    if(ready){on?play(video):video.pause();}
+  },{rootMargin:margin}).observe(el);
 }
-function progress(){
-  var r=pick.getBoundingClientRect(), len=r.height-G.vh;
-  return len>0?clamp(-r.top/len,0,1):0;
+if(!still){
+  var hv=document.querySelector('video[data-hero-video]');
+  if(hv){
+    var later=function(){requestAnimationFrame(function(){setTimeout(function(){
+      watch(document.getElementById('hero'),hv,'0px',function(){attach(hv);});
+    },0)})};
+    document.readyState==='complete'?later():addEventListener('load',later,{once:true});
+  }
+  /* round 3 (experience r2 fix 1): the board's reel is never part of the first load. It is armed only once the hero
+     loop is playing, or at the visitor's first scroll, whichever comes first (or after load when there is no hero
+     loop, or it fails), and then attaches as the board nears the screen */
+  var board=document.querySelector('[data-reel]'), rv=board&&board.querySelector('video');
+  if(rv){
+    var armed=false;
+    var arm=function(){if(armed)return;armed=true;removeEventListener('scroll',arm);
+      rv.addEventListener('playing',function(){board.classList.remove('loading');},{once:true});
+      watch(board,rv,'200px 0px',function(){board.classList.add('loading');attach(rv);});};
+    addEventListener('scroll',arm,{passive:true});
+    if(hv){hv.addEventListener('playing',arm,{once:true});hv.addEventListener('error',arm,true);}
+    else document.readyState==='complete'?arm():addEventListener('load',arm,{once:true});
+  }
 }
-
-/* ---------- WebGL: the reel on a plane inside the board mask, with a resin gloss ---------- */
-var GL={ok:false,dirty:true,lx:0.34,tlx:0.34};
-function initGL(){
-  var gl; try{gl=cv.getContext('webgl',{premultipliedAlpha:true,alpha:true,antialias:false});}catch(e){}
-  if(!gl) return;
-  var vs='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
-  var fs=[
-  'precision mediump float;',
-  'uniform vec2 uRes;uniform float uDpr;uniform vec4 uBox;uniform vec4 uVid;uniform sampler2D uMask;uniform sampler2D uTex;',
-  'uniform float uLight;uniform float uZoom;uniform vec2 uTexel;',
-  'float m(vec2 u){if(u.x<0.||u.y<0.||u.x>1.||u.y>1.)return 0.;return texture2D(uMask,u).a;}',
-  'void main(){',
-  ' vec2 px=vec2(gl_FragCoord.x,uRes.y-gl_FragCoord.y)/uDpr;',
-  ' vec2 bu=(px-uBox.xy)/uBox.zw; float a=m(bu); if(a<=0.){gl_FragColor=vec4(0.);return;}',
-  ' vec2 vu=(px-uVid.xy)/uVid.zw; if(vu.x<0.||vu.y<0.||vu.x>1.||vu.y>1.){gl_FragColor=vec4(0.);return;}',
-  ' vec3 c=texture2D(uTex,vu).rgb;',
-  /* rail rim: how close to the outline, measured from the mask itself */
-  ' vec2 d=uTexel*7.;',
-  ' float n=(m(bu+vec2(d.x,0.))+m(bu-vec2(d.x,0.))+m(bu+vec2(0.,d.y*.35))+m(bu-vec2(0.,d.y*.35)))*.25;',
-  ' float rim=clamp((a-n)*2.2,0.,1.);',
-  ' float side=bu.x<.5?1.-uLight:uLight;',
-  /* a soft specular band that slides along the board with the light, like fresh resin */
-  ' float lx=clamp(uLight,.18,.82);\n float band=exp(-pow((bu.x-lx)*6.,2.))*smoothstep(.02,.3,bu.y)*smoothstep(.98,.72,bu.y);\n float roll=1.-.16*pow(abs(bu.x-.5)*2.,3.);',
-  ' float g=(band*.10+rim*(.22+.5*side))*(1.-uZoom);\n c*=mix(1.,roll,1.-uZoom);',
-  ' c=mix(c,vec3(1.),g);',
-  ' gl_FragColor=vec4(c*a,a);',
-  '}'].join('\n');
-  function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw gl.getShaderInfoLog(o);return o}
-  var pr=gl.createProgram();
-  try{gl.attachShader(pr,sh(gl.VERTEX_SHADER,vs));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(pr);}catch(e){return}
-  if(!gl.getProgramParameter(pr,gl.LINK_STATUS)) return;
-  gl.useProgram(pr);
-  var buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
-  var loc=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
-  function tex(unit){var t=gl.createTexture();gl.activeTexture(gl.TEXTURE0+unit);gl.bindTexture(gl.TEXTURE_2D,t);
-    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
-    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);return t}
-  /* the board outline, drawn once into a mask texture */
-  var mc=document.createElement('canvas');mc.width=320;mc.height=1024;var x=mc.getContext('2d');
-  x.scale(3.2,3.2);x.fill(new Path2D(getComputedStyle(H).getPropertyValue('--board').trim().replace(/^"|"$/g,'')));
-  var tMask=tex(0);gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,false);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,mc);
-  var tVid=tex(1);
-  var U={};['uRes','uDpr','uBox','uVid','uMask','uTex','uLight','uZoom','uTexel'].forEach(function(n){U[n]=gl.getUniformLocation(pr,n)});
-  gl.uniform1i(U.uMask,0);gl.uniform1i(U.uTex,1);gl.uniform2f(U.uTexel,1/320,1/1024);
-  gl.enable(gl.BLEND);gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA);
-  var dpr=1;
-  GL.resize=function(){dpr=Math.min(devicePixelRatio||1,1.75);
-    if(/swiftshader|llvmpipe|software/i.test(GL.renderer||'')) dpr=Math.min(1,dpr);
-    cv.width=Math.round(G.vw*dpr);cv.height=Math.round(G.vh*dpr);gl.viewport(0,0,cv.width,cv.height);GL.dirty=true};
-  var ext=gl.getExtension('WEBGL_debug_renderer_info');GL.renderer=ext?String(gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)):'';
-  GL.src=null;
-  GL.draw=function(){
-    if(!GL.src) return;
-    gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,tVid);
-    try{gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,GL.src);}catch(e){return}
-    var b=S.box,v=S.vid;
-    gl.uniform2f(U.uRes,cv.width,cv.height);gl.uniform1f(U.uDpr,dpr);
-    gl.uniform4f(U.uBox,b.x,b.y,b.w,b.h);gl.uniform4f(U.uVid,v.x,v.y,v.w,v.h);
-    gl.uniform1f(U.uLight,GL.lx);gl.uniform1f(U.uZoom,Math.min(1,S.e*1.6));
-    gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
-    if(!GL.live){GL.live=true;H.classList.add('gl-live');}
-  };
-  cv.addEventListener('webglcontextlost',function(e){e.preventDefault();GL.ok=false;H.classList.remove('gl-live');});
-  GL.ok=true; GL.resize();
-}
-
-/* ---------- the reel: attached after first paint, never under reduced motion or Save-Data ---------- */
-var video=null, inView=true;
-function attachVideo(){
-  video=document.createElement('video');
-  video.muted=true;video.loop=true;video.playsInline=true;video.setAttribute('playsinline','');video.setAttribute('muted','');
-  video.preload='auto';video.poster=D.poster; /* 4g: from content (heroVideoPoster) */
-  var big=G.vw>860;
-  /* 4g: the renditions come from content (heroVideo) through src/tenant/videos.generated.json, never a fixed file:
-     desktop (> 860 px) the 1080-wide tier, phones the 720 tier, as in the mockup; WebM before MP4 */
-  (big?D.desk:D.phone).forEach(function(s){var o=document.createElement('source');o.src=s.src;o.type=s.type;video.appendChild(o)});
-  zm.appendChild(video);
-  video.addEventListener('playing',function(){zm.classList.add('playing');if(GL.ok)GL.src=video;document.getElementById('loadNote').textContent='';});
-  video.addEventListener('error',function(){},true);
-  if(inView) video.play().catch(function(){});
-}
-
-var raf=0;
-function loop(){
-  raf=requestAnimationFrame(loop);
-  GL.lx+=(GL.tlx-GL.lx)*0.08;
-  if(GL.ok&&GL.src&&inView) GL.draw();
-}
-
-if(motion){
-  measure(); frame(progress());
-  var poster=zm.querySelector('img');
-  addEventListener('scroll',function(){frame(progress());onScrollHeader();},{passive:true});
-  addEventListener('resize',function(){measure();frame(progress());});
-  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){measure();frame(progress());});
-  addEventListener('pointermove',function(e){ if(e.pointerType!=='mouse'||!S.box) return;
-    GL.tlx=clamp((e.clientX-S.box.x)/S.box.w,-.2,1.2);},{passive:true});
-  new IntersectionObserver(function(es){inView=es[0].isIntersecting;
-    if(video){inView?video.play().catch(function(){}):video.pause();}},{rootMargin:'100px'}).observe(stage);
-  var boot=function(){
-    initGL();
-    if(GL.ok){ GL.src=poster.complete?poster:null; poster.addEventListener('load',function(){if(!GL.src)GL.src=poster}); }
-    document.getElementById('loadNote').textContent="Loading the shop's reel";
-    attachVideo(); loop();
-  };
-  var go=function(){('requestIdleCallback' in window)?requestIdleCallback(boot,{timeout:1200}):setTimeout(boot,300)};
-  document.readyState==='complete'?go():addEventListener('load',go);
-}else{
-  addEventListener('scroll',onScrollHeader,{passive:true});
-}
-onScrollHeader();
 })();
 /* ================= the rest of the page ================= */
 (function(){
@@ -188,8 +62,11 @@ addEventListener('scroll',onBar,{passive:true});onBar();
 document.querySelectorAll('[data-show]').forEach(function(show){
   var track=show.querySelector('.track'), dots=[].slice.call(show.querySelectorAll('.dot')), n=dots.length, cur=0;
   function go(i,smooth){i=(i+n)%n;track.scrollTo({left:i*track.clientWidth,behavior:(smooth&&!still)?'smooth':'auto'});}
-  var cnt=show.querySelector('.q-count');
-  function sync(){var i=Math.round(track.scrollLeft/Math.max(1,track.clientWidth));if(i!==cur){cur=i;dots.forEach(function(d,j){d.setAttribute('aria-current',j===i?'true':'false')});if(cnt)cnt.textContent=(i+1)+' / '+n;}}
+  var cnt=show.querySelector('.q-count'), fit=track.classList.contains('q-track');
+  /* round 3: the quote slideshow takes the height of the quote on show (no empty card under a short one) */
+  function size(){if(fit){var li=track.children[cur];if(li)track.style.height=li.offsetHeight+'px';}}
+  function sync(){var i=Math.round(track.scrollLeft/Math.max(1,track.clientWidth));if(i!==cur){cur=i;dots.forEach(function(d,j){d.setAttribute('aria-current',j===i?'true':'false')});if(cnt)cnt.textContent=(i+1)+' / '+n;size();}}
+  if(fit){size();addEventListener('resize',size);if(document.fonts)document.fonts.ready.then(size);}
   track.addEventListener('scroll',function(){requestAnimationFrame(sync)},{passive:true});
   dots.forEach(function(d,j){d.addEventListener('click',function(){go(j,true)})});
   var p=show.querySelector('.prev'),nx=show.querySelector('.next');
@@ -197,16 +74,6 @@ document.querySelectorAll('[data-show]').forEach(function(show){
   if(nx)nx.addEventListener('click',function(){go(cur+1,true)});
   track.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();go(cur+1,true)}if(e.key==='ArrowLeft'){e.preventDefault();go(cur-1,true)}});
 });
-
-/* card boards lean toward the pointer (fine pointers only) */
-if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!still){
-  document.querySelectorAll('[data-tilt]').forEach(function(c){
-    var img=c.querySelector('.card-board img');
-    c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
-      img.style.setProperty('--ry',(x*10).toFixed(2)+'deg');img.style.setProperty('--rx',(-y*6).toFixed(2)+'deg');img.style.setProperty('--rz',(x*2).toFixed(2)+'deg');});
-    c.addEventListener('pointerleave',function(){['--ry','--rx','--rz'].forEach(function(k){img.style.setProperty(k,'0deg')})});
-  });
-}
 
 /* shop photos settle from 0.98 to 1 as they come in (transform only) */
 if(!still&&'IntersectionObserver' in window){
@@ -254,10 +121,89 @@ rm.forEach(function(b){b.addEventListener('click',function(){pick(rm,b);price()}
 [pk,rm].forEach(function(list){[].forEach.call(list,function(b,i){b.addEventListener('keydown',function(e){
   var d=e.key==='ArrowRight'||e.key==='ArrowDown'?1:e.key==='ArrowLeft'||e.key==='ArrowUp'?-1:0;if(!d)return;e.preventDefault();
   var nb=list[(i+d+list.length)%list.length];nb.focus();nb.click();})})});
-})();
 
-/* the Midigama band (2.2 MB, served as published, never re-encoded): fetched only as it nears the screen */
-(function(){var im=document.querySelector('.atmo img[data-src]');if(!im)return;
-  function go(){im.onload=function(){im.removeAttribute('data-src')};im.src=im.getAttribute('data-src');}
-  if(!('IntersectionObserver' in window)){go();return}
-  var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();go()}},{rootMargin:'600px 0px'});io.observe(im);})();
+/* ---------- the Rosa forecast (playbook §4 exception; 2026-11-04, Alon: Rosa's `rams`) ----------
+   Port of sites/layday-surf-ahangama/final (same mechanics as KA and The Lavish Haven). One request to Rosa's
+   per-spot JSON, made only when the block nears the viewport. With fresh data (under 24 h) the site draws the
+   headline, and only then is Rosa's widget iframe given its src. On failure, stale data, a 10 s timeout or no JS:
+   the plain link in the widget's reserved box. The headline's box stays reserved (hidden) when the block is on or
+   above the screen, so nothing shifts; when it fails while still below the screen, the empty box is dropped. */
+var fc=document.querySelector('.fc');
+if(fc){
+  var fNow=fc.querySelector('.fc-now'), fRosa=fc.querySelector('.fc-rosa'), fFrame=fRosa.querySelector('iframe');
+  var fSet=function(k,v){var el=fNow.querySelector('[data-f="'+k+'"]');if(el){el.textContent=v;el.hidden=!v;}};
+  var fFail=function(){delete fNow.dataset.loading;fc.classList.add('off');
+    if(fc.getBoundingClientRect().top>innerHeight) fc.classList.add('solo');};
+  var WORDS=['north','north-east','east','south-east','south','south-west','west','north-west'];
+  var from=function(deg){return WORDS[Math.round((((+deg%360)+360)%360)/45)%8];};
+  var parts=function(iso,tz,o){var d=new Date(iso);if(isNaN(d))throw new Error('bad time');var r={};
+    new Intl.DateTimeFormat('en-GB',Object.assign({timeZone:tz,hourCycle:'h23'},o)).formatToParts(d).forEach(function(x){r[x.type]=x.value});return r;};
+  var f1=function(x){return (+x).toFixed(1);}, n1=function(x){return String(+(+x).toFixed(1));};
+  var fit=function(){ /* the height range never wraps: it shrinks to the card's width if it must */
+    var nh=fNow.querySelector('.nh');nh.style.fontSize='';
+    var avail=fNow.querySelector('.live').clientWidth, w=nh.getBoundingClientRect().width;
+    if(!avail||w<=avail)return;
+    var fs=parseFloat(getComputedStyle(nh).fontSize)*avail/w;
+    for(var i=0;i<12;i++){nh.style.fontSize=Math.floor(fs)+'px';if(nh.getBoundingClientRect().width<=avail)break;fs-=2;}
+  };
+  var draw=function(d){
+    var c=d.current, tz=(d.spot&&d.spot.timezone)||'Asia/Colombo';
+    if(!c||!Array.isArray(c.h)||!isFinite(c.h[0])||!isFinite(c.h[1]))throw new Error('no current');
+    var nh=fNow.querySelector('.nh');
+    if(!nh.firstChild||nh.firstChild.nodeType!==3)nh.insertBefore(document.createTextNode(''),nh.firstChild);
+    nh.firstChild.textContent=f1(c.h[0])+'–'+f1(c.h[1]);
+    var t=parts(c.t,tz,{weekday:'long',day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'});
+    fSet('t',t.weekday+' '+t.day+' '+t.month+', '+t.hour+':'+t.minute);
+    var sw=(c.swells||[]).filter(function(x){return x.in_window})[0];
+    fSet('swell',sw&&isFinite(sw.period)?'Swell '+f1(sw.period)+' s from the '+from(sw.dir):'');
+    var w=c.wind;
+    fSet('wind',w&&isFinite(w.kph)?'Wind '+n1(w.kph)+' km/h from the '+from(w.dir)+(w.class?', '+w.class:''):'');
+    var u=parts(d.generated_at,tz,{day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'});
+    fSet('upd','Rosa, updated '+u.day+' '+u.month+' '+u.year+', '+u.hour+':'+u.minute);
+    fc.classList.add('live');
+    fit();
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+    var lastW=fNow.clientWidth;
+    if('ResizeObserver' in window)new ResizeObserver(function(){if(fNow.clientWidth!==lastW){lastW=fNow.clientWidth;fit();}}).observe(fNow);
+  };
+  /* a cross-origin iframe fires `load` even when its request failed (it loads the browser's error page), so the
+     widget is shown only when a HEAD request to the same URL answered OK (rosa.surf/widget/ answers HEAD 200 with
+     access-control-allow-origin *, checked 2026-11-04) AND the frame has loaded, within 10 s. Otherwise the frame
+     loses its src and the plain link, visible all along in the same reserved box, stays. */
+  var widget=function(){
+    var src=fFrame.dataset.src, done=false, to;
+    fRosa.dataset.loading='true';
+    var end=function(show){if(done)return;done=true;clearTimeout(to);delete fRosa.dataset.loading;
+      if(show)fRosa.classList.add('on');else{fRosa.classList.remove('on');fFrame.removeAttribute('src');}};
+    to=setTimeout(function(){end(false)},10000);
+    fetch(src,{method:'HEAD',credentials:'omit'}).then(function(r){
+      if(!r.ok)throw new Error(r.status);
+      fFrame.addEventListener('load',function(){end(true)},{once:true});
+      fFrame.src=src;
+    }).catch(function(){end(false)});
+  };
+  /* rosa.surf sends frame-ancestors *, which does not match a file:// page: there, the link */
+  if(!('IntersectionObserver' in window)||!window.fetch||!window.Intl||location.protocol==='file:')fFail();
+  else{
+    var fio=new IntersectionObserver(function(es){
+      if(!es.some(function(e){return e.isIntersecting}))return;
+      fio.disconnect();
+      fNow.dataset.loading='true';
+      var ac='AbortController' in window?new AbortController():null;
+      var to=setTimeout(function(){if(ac)ac.abort()},10000);
+      fetch(fc.dataset.json,{credentials:'omit',signal:ac&&ac.signal})
+        .then(function(r){return r.ok?r.json():Promise.reject(new Error(r.status))})
+        .then(function(d){
+          var age=Date.now()-Date.parse(d.generated_at);
+          if(!(age>=-36e5&&age<864e5))throw new Error('stale');
+          draw(d);
+          delete fNow.dataset.loading;
+          widget();
+        })
+        .catch(fFail)
+        .then(function(){clearTimeout(to)});
+    },{rootMargin:'400px 0px'});
+    fio.observe(fc);
+  }
+}
+})();

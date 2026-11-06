@@ -1,0 +1,62 @@
+phone cold t=500 fontsLoaded=[] state={"y":0,"barVisible":false,"barTop":851,"canvases":[]}
+phone cold t=1500 fontsLoaded=[Onest,Onest,Satisfy] state={"y":0,"barVisible":false,"barTop":851,"canvases":[]}
+phone cold t=3000 fontsLoaded=[Onest,Onest,Satisfy] state={"y":0,"barVisible":false,"barTop":851,"canvases":[]}
+phone cold t=6000 fontsLoaded=[Onest,Onest,Satisfy] state={"y":0,"barVisible":false,"barTop":851,"canvases":[]}
+cold load ms 6255 third-party hosts localhost:8921 fonts.googleapis.com fonts.gstatic.com
+hero {
+ "heroText": "Coconut Surf Inn A guesthouse in Gurubebila, between Midigama and Weligama Check dates on Booking.com",
+ "bookingLinks": [
+  "https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html"
+ ],
+ "bookingCount": 14,
+ "tel": [
+  "tel:+94778921396"
+ ],
+ "pageH": 14214,
+ "sw": 390,
+ "titles": [
+  "H1:Coconut Surf Inn",
+  "H2:13:00, check-in",
+  "H2:Six kinds of room",
+  "H3:Rooms with air conditioning and hot water",
+  "H3:Fan rooms: no air conditioning and no hot water",
+  "H2:Inside the house",
+  "H2:On the roof",
+  "H2:By the beach",
+  "H2:The restaurant upstairs",
+  "H2:The Eranga family home",
+  "H2:From 7:30, the break",
+  "H2:11:00, check-out",
+  "H2:Getting here"
+ ]
+}
+hero CTA {"text":"Check dates on Booking.com","x":32.265625,"y":263.671875,"w":325.453125,"h":56,"bg":"rgb(72, 102, 11)","color":"rgb(255, 255, 255)","font":"Onest, ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif","size":"17px"}
+s00 y=0 bar=false barTop=851
+s01 y=591 bar=false barTop=851
+s02 y=1182 bar=true barTop=772
+s03 y=1773 bar=true barTop=772
+s04 y=2364 bar=true barTop=772
+s05 y=2955 bar=true barTop=772
+s06 y=3546 bar=true barTop=772
+s07 y=4137 bar=true barTop=772
+s08 y=4728 bar=true barTop=772
+s09 y=5319 bar=true barTop=772
+s10 y=5910 bar=true barTop=772
+s11 y=6501 bar=true barTop=772
+s12 y=7092 bar=true barTop=772
+s13 y=7683 bar=true barTop=772
+s14 y=8274 bar=true barTop=772
+s15 y=8865 bar=true barTop=772
+s16 y=9456 bar=true barTop=772
+s17 y=10047 bar=true barTop=772
+s18 y=10638 bar=true barTop=772
+s19 y=11229 bar=true barTop=772
+s20 y=11820 bar=true barTop=772
+s21 y=12411 bar=true barTop=772
+s22 y=13002 bar=true barTop=772
+s23 y=13370 bar=true barTop=772
+fonts final Onest 400, Onest 600, Satisfy 400
+laptop hero CTA hover before: none none rgb(72, 102, 11) | after: matrix(1, 0, 0, 1, 0, -1) rgba(72, 102, 11, 0.8) 0px 12px 24px -12px rgb(60, 86, 9)
+micro-animations (laptop): {"total":93,"withTransition":86,"without":["skip:Skip to the rooms","mark:Coconut Surf Inn","A:Rooms","A:The roof","A:The break","top-call:Call +94 77 892 1396","credit:Forecast for Coconuts by Rosa"]}
+reduced {"y":2194,"barVisible":true,"barTop":772,"canvases":[]}
+nojs {"y":2194,"barVisible":false,"barTop":11141,"canvases":[]}

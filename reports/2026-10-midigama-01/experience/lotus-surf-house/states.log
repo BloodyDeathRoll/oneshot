@@ -1,0 +1,9 @@
+interactive light canvas laptop {"cls":"light on","op":"1"}
+interactive light canvas phone {"cls":"light on","op":"1"}
+interactive bar-more text A guesthouse in Midigama, on the south coast of Sri Lanka. Midigama Beach 250 m | Breakfast included, 8–10 | Live dates on Booking.com 9.0/10 Booking.com, 125 reviews | 4.9/5 Google, 78 | 3 Nov 2026
+unique net canvases ["net-gl 1","net-gl 1"]
+unique chooser focus x:
+unique after esc focus btn bar-choose
+tap-through 8913: hero href=https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html -> first request https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html (1 tap)
+tap-through 8914: hero href=https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html -> first request https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html (1 tap)
+tap-through 8915: hero href=https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html -> first request https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html (1 tap)

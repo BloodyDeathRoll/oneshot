@@ -1,0 +1,335 @@
+{
+ "m390": {
+  "axe": {
+   "violations": [],
+   "passes": 27,
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "n": 6
+    }
+   ]
+  },
+  "overflow": {
+   "sw": 390,
+   "cw": 390
+  },
+  "external_attempted": [
+   "https://fonts.googleapis.com/css2?family=Onest:wght@400;600&family=Satisfy&display=swap",
+   "https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+   "https://fonts.googleapis.com/css2?family=Onest:wght@400;600&family=Satisfy&display=swap"
+  ],
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ],
+  "tab_count": 60,
+  "tab_invisible": 0,
+  "tabs": [
+   {
+    "t": "Coconut Surf Inn",
+    "w": 135,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "Check dates on Booking.com",
+    "w": 322,
+    "h": 56,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "8.5/10\nBooking.com\n142 reviews\n4 Nov 202",
+    "w": 350,
+    "h": 89,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "4.8/5\nGoogle\n88 reviews\n4 Nov 2026",
+    "w": 350,
+    "h": 89,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "See rooms and live dates on Booking.com",
+    "w": 350,
+    "h": 52,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "Call",
+    "w": 350,
+    "h": 52,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "UL",
+    "w": 350,
+    "h": 233,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "Previous photo",
+    "w": 44,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "Photo 1",
+    "w": 36,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "Photo 2",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "Photo 3",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "Photo 4",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "Photo 5",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "Photo 6",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   }
+  ],
+  "tabs_all_outline": [
+   "solid 2px"
+  ]
+ },
+ "d1440": {
+  "axe": {
+   "violations": [],
+   "passes": 27,
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "n": 10
+    }
+   ]
+  },
+  "overflow": {
+   "sw": 1440,
+   "cw": 1440
+  },
+  "external_attempted": [
+   "https://fonts.googleapis.com/css2?family=Onest:wght@400;600&family=Satisfy&display=swap",
+   "https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+   "https://fonts.googleapis.com/css2?family=Onest:wght@400;600&family=Satisfy&display=swap"
+  ],
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ],
+  "tab_count": 60,
+  "tab_invisible": 0,
+  "tabs": [
+   {
+    "t": "Coconut Surf Inn",
+    "w": 142,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "Rooms",
+    "w": 49,
+    "h": 48,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "The roof",
+    "w": 60,
+    "h": 48,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "The break",
+    "w": 72,
+    "h": 48,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "Check dates",
+    "w": 159,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "Check dates on Booking.com",
+    "w": 322,
+    "h": 56,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "8.5/10\nBooking.com\n142 reviews\n4 Nov 202",
+    "w": 273,
+    "h": 97,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "4.8/5\nGoogle\n88 reviews\n4 Nov 2026",
+    "w": 273,
+    "h": 97,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "See rooms and live dates on Booking.com",
+    "w": 397,
+    "h": 52,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "Call",
+    "w": 111,
+    "h": 52,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "UL",
+    "w": 295,
+    "h": 369,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "Previous photo",
+    "w": 44,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "Photo 1",
+    "w": 36,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   },
+   {
+    "t": "Photo 2",
+    "w": 24,
+    "h": 44,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 2px"
+   }
+  ],
+  "tabs_all_outline": [
+   "solid 2px"
+  ]
+ },
+ "overflow_320": {
+  "sw": 344,
+  "cw": 320
+ },
+ "overflow_360": {
+  "sw": 360,
+  "cw": 360
+ },
+ "nojs390": {
+  "booking_links": 14,
+  "first_top": 0,
+  "tel": 6,
+  "blockquotes": 12,
+  "rosa": [
+   "A https://rosa.surf/spot/weligama-west vis=false",
+   "A https://rosa.surf/spot/weligama-west vis=true",
+   "A https://rosa.surf/spot/weligama-west vis=false"
+  ],
+  "imgs_visible": 43,
+  "text_len": 8866,
+  "sw": 390,
+  "cw": 390
+ },
+ "nojs1440": {
+  "booking_links": 14,
+  "first_top": 14,
+  "tel": 6,
+  "blockquotes": 12,
+  "rosa": [
+   "A https://rosa.surf/spot/weligama-west vis=false",
+   "A https://rosa.surf/spot/weligama-west vis=true",
+   "A https://rosa.surf/spot/weligama-west vis=false"
+  ],
+  "imgs_visible": 43,
+  "text_len": 8875,
+  "sw": 1440,
+  "cw": 1440
+ },
+ "reduced": {
+  "videos": 0,
+  "canvases": 0,
+  "anims": [
+   0.01
+  ]
+ }
+}

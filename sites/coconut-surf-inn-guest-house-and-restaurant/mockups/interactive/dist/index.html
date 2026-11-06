@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Coconut Surf Inn, Gurubebila</title><meta name="description" content="A guesthouse in Gurubebila, between Midigama and Weligama, on the south coast of Sri Lanka. Coconuts reef break in front. Rooms with a fan or with A/C. Book on Booking.com or call +94 77 892 1396.">
+<meta property="og:title" content="Coconut Surf Inn"><meta property="og:description" content="A guesthouse in Gurubebila, between Midigama and Weligama, on the south coast of Sri Lanka."><meta property="og:image" content="img/hero-wide-1440.webp">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merienda:wght@700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap">
+<link rel="preload" as="image" href="img/hero-wide-1920.webp" imagesrcset="img/hero-wide-1440.webp 1440w, img/hero-wide-1920.webp 1920w" imagesizes="100vw" media="(min-width: 768px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero-tall-600.webp" imagesrcset="img/hero-tall-450.webp 450w, img/hero-tall-600.webp 600w" imagesizes="110vw" media="(max-width: 767px)" fetchpriority="high">
+<script>document.documentElement.classList.replace('no-js','js')</script>
+<style>/* Coconut Surf Inn, interactive mockup: "Under the thatch". Colours sampled from img-102 and img-106
+   (concepts §4.2): sky-white ground, thatch ink, the restaurant's aubergine cushion for titles,
+   the saffron cushion for booking only. */
+@font-face { font-family: 'Nunito Fallback'; src: local('Arial'); size-adjust: 101%; ascent-override: 99%; descent-override: 34%; line-gap-override: 0%; }
+@font-face { font-family: 'Hand Fallback'; src: local('Arial Bold'), local('Arial'); size-adjust: 104%; ascent-override: 98%; descent-override: 38%; }
+:root {
+  --ground: #ffffff; --tint: #f0f3f6; --ink: #302618; --plum: #433e50; --accent: #a1591b; --accent-d: #8a4a14;
+  --muted: #5e5546; --soft: rgba(48, 38, 24, .08);
+  --text: 'Nunito Sans', 'Nunito Fallback', system-ui, sans-serif;
+  --hand: 'Merienda', 'Hand Fallback', cursive;
+  --out: cubic-bezier(.22, 1, .36, 1); --drawer: cubic-bezier(.32, .72, 0, 1);
+  --r: 20px; --gut: 24px;
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 84px; }
+body { margin: 0; background: var(--ground); color: var(--ink); font: 400 17px/1.62 var(--text); -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+p { margin: 0 0 1em; }
+h1, h2, h3 { margin: 0; font-weight: 400; }
+ul { margin: 0; padding: 0; list-style: none; }
+.wrap { width: 100%; max-width: 1248px; margin: 0 auto; padding: 0 var(--gut); }
+.tint { background: var(--tint); }
+.muted { color: var(--muted); }
+.sep { color: rgba(48, 38, 24, .35); margin: 0 .25em; }
+.skip { position: absolute; left: 12px; top: -60px; z-index: 50; background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 10px; }
+.skip:focus { top: 12px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.hand { text-wrap: balance; font-family: var(--hand); font-weight: 700; color: var(--plum); font-size: 44px; line-height: 1.18; letter-spacing: -.005em; }
+.ic { width: 20px; height: 20px; flex: none; }
+section { position: relative; }
+@media (max-width: 899px) { .hand { font-size: 32px; } }
+
+/* ---------- buttons: press 0.97, lift on hover, one accent for booking only */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 0 22px; border-radius: 14px;
+  font: 700 16px/1.2 var(--text); text-decoration: none; cursor: pointer; border: 0; white-space: nowrap;
+  transition: transform .16s var(--out), background-color .2s; }
+.btn:active { transform: scale(.97); transition-duration: .08s; }
+.btn-book { background: var(--accent); color: #fff; }
+.btn-call { background: var(--tint); color: var(--ink); }
+.tint .btn-call, .rosa-box .btn-call { background: #fff; }
+@media (hover: hover) and (pointer: fine) {
+  .btn-book:hover { background: var(--accent-d); transform: translateY(-2px); }
+  .btn-call:hover { background: #e4e9ee; transform: translateY(-2px); }
+  .tint .btn-call:hover, .rosa-box .btn-call:hover { background: #f7f9fb; }
+  .btn-book:active, .btn-call:active { transform: scale(.97); }
+}
+.btn-sm { min-height: 44px; padding: 0 16px; font-size: 16px; border-radius: 12px; }
+.btn-sm .ic { width: 18px; height: 18px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.actions.col { flex-direction: column; align-items: flex-start; }
+
+/* ---------- header over the thatch; on desktop it sticks, white, once the hero has gone */
+.top { position: absolute; z-index: 30; top: 0; left: 0; right: 0; display: flex; align-items: center; gap: 24px; padding: 18px 28px; color: #fff; }
+.mark { display: inline-flex; align-items: center; min-height: 44px; font: 700 20px/1 var(--hand); transition: opacity .3s var(--out), visibility 0s; text-decoration: none; letter-spacing: .01em; margin-right: auto; text-shadow: 0 1px 12px rgba(0, 0, 0, .35); }
+.nav { font-weight: 700; font-size: 16px; text-shadow: 0 1px 10px rgba(0, 0, 0, .45); }
+.nav a { position: relative; display: inline-block; text-decoration: none; padding: 12px 2px; }
+.nav a::after { content: ''; position: absolute; left: 2px; right: 2px; bottom: 8px; height: 2px; border-radius: 2px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .25s var(--out); }
+.nav a:hover::after { transform: none; }
+.nav .sep { color: rgba(255, 255, 255, .55); }
+.top-act { display: flex; gap: 8px; align-items: center; }
+.btn-ic { width: 46px; min-height: 46px; padding: 0; border-radius: 12px; }
+.top-call { background: rgba(255, 255, 255, .16); color: #fff; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+@media (min-width: 900px) {
+  .top-call { display: none; }
+  .js .top { position: fixed; transition: background-color .3s, color .3s, box-shadow .3s, padding .3s var(--out); }
+  .js .top.stuck { background: rgba(255, 255, 255, .96); color: var(--ink); padding-top: 12px; padding-bottom: 12px; box-shadow: 0 1px 0 var(--soft), 0 10px 30px -18px rgba(48, 38, 24, .35); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  .js .top.stuck .mark, .js .top.stuck .nav { text-shadow: none; }
+  .js .top.stuck .mark { color: var(--plum); }
+  .js .top.stuck .nav .sep { color: rgba(48, 38, 24, .3); }
+}
+@media (max-width: 899px) { .nav, .top .btn-book { display: none; } .top { padding: 14px 16px; } }
+/* the call icon waits until the hero has gone: the hero's booking button is the first action on the first screen */
+.js .top:not(.stuck) .top-call { visibility: hidden; opacity: 0; }
+/* round 3: one name on the first screen. The wordmark (same face as the title) appears once the hero title has gone */
+.js .top:not(.stuck) .mark { visibility: hidden; opacity: 0; transition: opacity .2s, visibility 0s .2s; }
+.top-call { transition: opacity .25s var(--out), visibility 0s; }
+
+/* ---------- hero: img-102 full-bleed, the depth shader drawn over the same photograph */
+.hero { height: 100vh; height: 100svh; min-height: 560px; overflow: hidden; background: #c9d2d6; display: grid; place-items: center; }
+.hero-media { position: absolute; inset: 0; }
+.hero-media picture, .hero-img, .depth { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-img { object-fit: cover; object-position: 50% 50%; transform: scale(1.03); color: transparent; }
+.depth { opacity: 0; transition: opacity .5s ease; }
+.depth.live { opacity: 1; }
+.hero-text { position: relative; z-index: 2; text-align: center; color: #fff; padding: 56px 72px 64px; margin-top: 36vh; }
+.hero-text::before { content: ''; position: absolute; inset: -8% -40% -22%; z-index: -1; pointer-events: none;
+  transition: opacity .4s ease;
+  background: radial-gradient(50% 50% at 50% 54%, rgba(24, 18, 10, .68) 0%, rgba(24, 18, 10, .58) 40%, rgba(24, 18, 10, .24) 70%, rgba(24, 18, 10, 0) 100%); }
+.hero h1 { color: #fff; font-size: 60px; line-height: 1.08; text-shadow: 0 2px 22px rgba(0, 0, 0, .3); }
+.where { text-wrap: balance; margin: 10px 0 26px; font-size: 20px; font-weight: 700; letter-spacing: .01em; text-shadow: 0 1px 14px rgba(0, 0, 0, .5); }
+.btn-hero { min-height: 56px; padding: 0 28px; font-size: 17px; }
+.hero-act { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+/* the call: labelled, after the booking button, visibly secondary (no fill colour of its own) */
+.btn-ghost { min-height: 56px; padding: 0 22px; background: rgba(255, 255, 255, .16); color: #fff; font-size: 17px; }
+.btn-ghost .ic { width: 18px; height: 18px; }
+@media (hover: hover) and (pointer: fine) { .btn-ghost:hover { background: rgba(255, 255, 255, .28); transform: translateY(-2px); } }
+@media (max-width: 767px) {
+  .hero-img { object-position: 30% 50%; }
+  .hero-text { padding: 40px 22px 48px; margin-top: 54vh; margin-top: 54svh; }
+  .hero h1 { font-size: 38px; }
+  .where { font-size: 17px; margin: 8px 0 22px; }
+  .btn-hero { min-height: 54px; padding: 0 20px; font-size: 16px; }
+  .btn-ghost { min-height: 54px; padding: 0 18px; font-size: 16px; }
+}
+
+/* ---------- 13:00, check-in: one details line and the two ratings set large (no cards) */
+.facts { padding: 96px 0 104px; }
+.g-split { display: grid; grid-template-columns: 7fr 5fr; gap: 40px 72px; align-items: end; }
+.lead { font-size: 20px; line-height: 1.5; max-width: 640px; margin: 16px 0 14px; }
+.details { color: var(--ink); font-size: 16px; max-width: 660px; margin: 0 0 32px; line-height: 1.8; }
+.rates { display: grid; gap: 8px; justify-items: start; }
+.rate { display: grid; grid-template-columns: auto 1fr; gap: 0 18px; align-items: center; min-height: 64px; padding: 6px 14px 6px 0; text-decoration: none; border-radius: 14px; transition: transform .22s var(--out); }
+@media (hover: hover) and (pointer: fine) { .rate:hover { transform: translateX(4px); } .rate:hover .rate-k b { color: var(--accent-d); } }
+.rate .big { font-size: 76px; line-height: 1; }
+.rate .big small { font-size: 26px; }
+.rate-k { font-size: 16px; color: var(--muted); line-height: 1.5; text-wrap: balance; }
+.rate-k b { color: var(--ink); transition: color .2s; }
+@media (max-width: 899px) { .g-split { grid-template-columns: 1fr; gap: 28px; } .rates { grid-template-columns: 1fr 1fr; gap: 8px 16px; } .rate { grid-template-columns: 1fr; gap: 2px; } .rate .big { font-size: 54px; } }
+@media (max-width: 599px) {
+  .facts { padding: 64px 0 72px; } .sleep { padding: 56px 0 48px; } .lead { font-size: 17px; }
+  .actions:not(.col) .btn { flex: 1 1 100%; white-space: normal; text-align: center; padding: 12px 18px; }
+}
+
+/* rolling digits */
+.num { display: inline-flex; overflow: hidden; height: 1.2em; line-height: 1.2em; vertical-align: bottom; }
+.num .col { display: flex; flex-direction: column; transition: transform .9s var(--out); }
+.num .col span { height: 1.2em; }
+
+/* ---------- How do you like to sleep? */
+/* round 3: on the white ground, no tint panel; the head is one column, so there is no empty middle */
+.sleep { padding: 72px 0 64px; }
+.sleep-head { margin-bottom: 28px; }
+.sleep-head p { margin: 12px 0 0; max-width: 720px; }
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 28px; }
+.tile { position: relative; display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; align-items: center; padding: 22px 24px; border-radius: var(--r);
+  background: var(--tint); color: var(--ink); text-decoration: none;
+  transition: transform .22s var(--out), background-color .18s, color .18s; }
+.tile-ic { grid-row: span 2; width: 34px; height: 34px; color: var(--plum); transition: color .18s, transform .3s var(--out); }
+.tile-label { font-size: 20px; font-weight: 700; line-height: 1.3; }
+.tile-sub { font-size: 16px; color: var(--muted); transition: color .18s; }
+.tile[aria-selected="true"] { background: var(--accent); color: #fff; }
+.tile[aria-selected="true"] .tile-ic, .tile[aria-selected="true"] .tile-sub { color: #fff; }
+.tile[aria-selected="true"] .tile-ic { transform: rotate(-8deg) scale(1.06); }
+@media (hover: hover) and (pointer: fine) { .tile:hover { transform: translateY(-2px); } .tile:not([aria-selected="true"]):hover { background: #e4e9ee; } }
+.tile:active { transform: scale(.98); }
+.viewer { display: grid; gap: 20px; }
+.picks { position: relative; display: flex; flex-wrap: wrap; gap: 4px; }
+.pick { position: relative; z-index: 1; text-align: left; display: grid; gap: 2px; padding: 12px 18px; border: 0; border-radius: 16px; background: transparent; color: var(--ink); font: inherit; cursor: pointer; transition: color .2s; }
+.pick[hidden] { display: none; }
+.pick-name { font-weight: 700; font-size: 16px; line-height: 1.3; white-space: nowrap; }
+.pick-sub { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); white-space: nowrap; }
+.pick-sub .ic { width: 16px; height: 16px; }
+.pick:hover { color: var(--accent-d); }
+.pill { position: absolute; z-index: 0; left: 0; top: 0; width: 0; height: 0; border-radius: 16px; background: var(--tint);
+  transition: transform .26s cubic-bezier(.23, 1, .32, 1), height .26s cubic-bezier(.23, 1, .32, 1), width .26s cubic-bezier(.23, 1, .32, 1); }
+.rooms { min-width: 0; }
+.grp { display: flex; align-items: center; gap: 10px; font: 700 20px/1.3 var(--text); margin: 8px 0 20px; }
+.grp ~ .grp { margin-top: 48px; }
+.grp .ic { width: 24px; height: 24px; color: var(--plum); }
+.anchor { display: block; }
+.room { margin-bottom: 32px; }
+.room-text { padding: 20px 0 0; display: flex; flex-direction: column; }
+.room-name { font: 700 26px/1.25 var(--text); }
+.room-meta { margin: 6px 0 14px; color: var(--muted); font-size: 16px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px 6px 10px; border-radius: 999px; font-size: 14px; font-weight: 700; }
+.chip .ic { width: 16px; height: 16px; }
+.chip.on { background: #efe9f3; color: var(--plum); }
+.chip.off { background: var(--tint); color: var(--muted); font-weight: 400; }
+.room-note { font-size: 16px; }
+.room-text .btn-room { margin-top: 8px; align-self: flex-start; }
+.stay { display: flex; gap: 10px; margin: 24px 0 0; font-size: 16px; color: var(--muted); line-height: 1.55; }
+.stay .ic { color: var(--plum); margin-top: 2px; }
+.no-js .tile[aria-selected] { background: var(--tint); color: var(--ink); }
+.no-js .tile[aria-selected] .tile-ic { color: var(--plum); transform: none; } .no-js .tile[aria-selected] .tile-sub { color: var(--muted); }
+.no-js .picks { display: none; }
+.js .rooms { display: grid; }
+.js .grp, .js .anchor { display: none; }
+@media (min-width: 900px) { .room { display: grid; grid-template-columns: minmax(0, 9fr) minmax(0, 4fr); gap: 40px; } .room-text { padding: 8px 0 0; } }
+.js .room { grid-area: 1 / 1; margin: 0; opacity: 0; visibility: hidden; transform: translateY(8px);
+  transition: opacity .22s ease, transform .22s var(--out), visibility 0s .22s; }
+.js .room.on { opacity: 1; visibility: visible; transform: none; transition: opacity .22s ease, transform .22s var(--out), visibility 0s; }
+@media (max-width: 899px) {
+  .sleep-head { grid-template-columns: 1fr; gap: 12px; margin-bottom: 24px; }
+  .tiles { grid-template-columns: 1fr; gap: 8px; margin-bottom: 16px; }
+  .tile { padding: 12px 16px; gap: 0 14px; border-radius: 16px; }
+  .tile-ic { width: 26px; height: 26px; }
+  .tile-label { font-size: 16px; }
+  .tile-sub { font-size: 14px; }
+  .viewer { gap: 12px; }
+  .js .picks { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 calc(-1 * var(--gut)); padding: 2px var(--gut) 4px; scroll-padding: 0 var(--gut); }
+  .js .picks::-webkit-scrollbar { display: none; }
+  .pick { flex: none; padding: 10px 14px; }
+  .pick-name { font-size: 16px; }
+  .pick-sub { font-size: 14px; }
+  .js .rooms { margin: 0 calc(-1 * var(--gut)); }
+  .js .room .show { border-radius: 0; }
+  .room-text { padding: 16px var(--gut) 8px; }
+  .room-name { font-size: 20px; }
+  .room-meta { margin: 2px 0 10px; font-size: 14px; }
+  .chips { gap: 6px; margin-bottom: 10px; }
+  .chip { padding: 4px 10px 4px 8px; font-size: 14px; }
+  .room-note { font-size: 16px; line-height: 1.5; margin-bottom: 14px; }
+  .room-text .btn-room { align-self: stretch; }
+  .stay { font-size: 14px; margin-top: 16px; }
+}
+
+/* ---------- slideshows: scroll-snap track, dots stretch to a bar, arrows on hover */
+.show { position: relative; overflow: hidden; border-radius: var(--r); background: #e3e6e8; }
+.track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
+.track::-webkit-scrollbar { display: none; }
+.slide { flex: 0 0 100%; scroll-snap-align: start; }
+.slide img { width: 100%; object-fit: cover; }
+.lazy { display: block; }
+.r43 .slide img, .r43 .lazy { aspect-ratio: 4 / 3; }
+.r32 .lazy { aspect-ratio: 3 / 2; }
+.r32 .slide img { aspect-ratio: 3 / 2; }
+.ctrl { position: absolute; left: 0; right: 0; bottom: 14px; display: flex; justify-content: center; align-items: center; gap: 10px; pointer-events: none; }
+.dots { display: flex; gap: 0; padding: 0 6px; border-radius: 999px; pointer-events: auto; position: relative; }
+.dots::before { content: ''; position: absolute; inset: 14px 0; border-radius: 999px; background: rgba(30, 24, 16, .34); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.dot { position: relative; width: 44px; min-width: 44px; height: 44px; padding: 0; border: 0; background: none; cursor: pointer; transition: min-width .3s var(--out); }
+.dot::before { content: ''; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; border-radius: 99px; background: rgba(255, 255, 255, .6); transform: translate(-50%, -50%); transition: width .3s var(--out), background-color .2s; }
+.dot[aria-current="true"] { min-width: 50px; }
+.dot[aria-current="true"]::before { width: 24px; background: #fff; }
+
+.arw { position: absolute; top: 50%; pointer-events: auto; width: 44px; height: 44px; border-radius: 50%; border: 0; display: grid; place-items: center; background: #fff; color: var(--ink); cursor: pointer;
+  opacity: 0; transition: opacity .2s, transform .16s var(--out); }
+.arw:active { transform: scale(.94); }
+.ctrl .prev { left: 14px; } .ctrl .next { right: 14px; }
+.ctrl { top: 0; bottom: 0; align-items: flex-end; padding-bottom: 4px; }
+.ctrl .arw { top: calc(50% - 22px); }
+.show:hover .arw, .arw:focus-visible { opacity: 1; }
+.ctrl[hidden] { display: none; }
+@media (hover: none) { .arw { display: none; } }
+
+/* ---------- the verandas: a flush 4-up inside the grid (round 3; was a drag row cut at the right edge) */
+.verandas { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.verandas img { width: 100%; border-radius: var(--r); aspect-ratio: 4 / 5; object-fit: cover; transition: transform .5s var(--out); }
+.verandas li { overflow: hidden; border-radius: var(--r); }
+@media (hover: hover) and (pointer: fine) { .verandas li:hover img { transform: scale(1.04); } }
+@media (max-width: 899px) { .verandas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; } }
+
+/* ---------- inside the house */
+.inside { padding: 88px 0 88px; }
+.in-split { display: grid; grid-template-columns: 7fr 5fr; gap: 56px; align-items: center; margin-bottom: 56px; }
+.well { border-radius: 24px; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.in-text .hand { margin-bottom: 18px; }
+@media (max-width: 899px) { .in-split { grid-template-columns: 1fr; gap: 28px; margin-bottom: 36px; } .inside { padding: 72px 0; } }
+
+/* ---------- clock tag */
+.clock { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 6px; color: var(--plum); font-weight: 700; font-size: 16px; }
+.clock .ic { width: 20px; height: 20px; }
+
+/* ---------- the afternoon, on the roof */
+.roof { padding: 24px 0 104px; }
+.roof-split { display: grid; grid-template-columns: 5fr 7fr; gap: 56px; align-items: center; margin-bottom: 48px; }
+.roof-text .hand { margin-bottom: 18px; }
+.roof-img { border-radius: 24px; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.roof-two { display: grid; grid-template-columns: 5fr 7fr; gap: 56px; align-items: center; }
+.quote { margin: 0; }
+.quote blockquote { margin: 0; }
+.quote blockquote p { font-size: 20px; line-height: 1.5; }
+.quote blockquote p::before { content: '“'; } .quote blockquote p::after { content: '”'; }
+.quote.small blockquote p { font-size: 17px; }
+.quote figcaption { font-size: 14px; color: var(--muted); }
+.quote figcaption b { color: var(--ink); }
+@media (max-width: 899px) {
+  .roof-split, .roof-two { grid-template-columns: 1fr; gap: 28px; }
+  .roof-two .show { order: -1; }
+  .roof { padding-bottom: 72px; }
+  .quote blockquote p { font-size: 17px; }
+}
+
+/* ---------- sunset band */
+.band { position: relative; }
+.band img { width: 100%; aspect-ratio: 16 / 9; max-height: 92vh; object-fit: cover; }
+.beach-body { padding: 72px 0 96px; }
+.beach-split { display: grid; grid-template-columns: 6fr 6fr; gap: 56px; align-items: center; }
+.beach-text { max-width: 520px; }
+.beach-text .hand { margin-bottom: 18px; }
+.print img { border-radius: 20px; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; transform: rotate(1.2deg); }
+@media (max-width: 767px) { .band img { aspect-ratio: 4 / 5; max-height: none; } }
+@media (max-width: 899px) { .beach-split { grid-template-columns: 1fr; gap: 32px; } .beach-body { padding: 56px 0 72px; } }
+
+/* ---------- until 22:00, the restaurant */
+.food { padding: 96px 0 0; }
+.food-split { display: grid; grid-template-columns: 440px minmax(0, 1fr); gap: 72px; align-items: center; margin-bottom: 88px; }
+.food-img { border-radius: 24px; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.food-text .hand { margin-bottom: 18px; }
+.hours { display: flex; gap: 10px; align-items: center; font-weight: 700; margin: 4px 0 28px; }
+.hours .ic { color: var(--plum); }
+.night { width: 100%; aspect-ratio: 21 / 9; max-height: 88vh; object-fit: cover; }
+.family { display: grid; grid-template-columns: 5fr 7fr; gap: 24px 56px; padding-top: 72px; padding-bottom: 88px; align-items: start; }
+@media (max-width: 899px) { .food-split, .family { grid-template-columns: 1fr; gap: 28px; } .food-split { margin-bottom: 56px; } .food { padding: 72px 0 0; } .food-img { aspect-ratio: 4 / 3; } .night { aspect-ratio: 4 / 3; } .family { padding-top: 48px; padding-bottom: 72px; } }
+
+/* ---------- from 7:30, the break: headline left, Rosa's widget right */
+.break { padding: 96px 0; }
+.break .hand { margin-bottom: 28px; }
+.br-grid { display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 56px; align-items: start; }
+.spot { font-size: 26px; line-height: 1.4; margin-bottom: 12px; max-width: 620px; }
+.season { font-size: 16px; color: var(--muted); max-width: 560px; margin-bottom: 36px; }
+.now { max-width: 560px; }
+.now-h { margin: 0; color: var(--plum); font-weight: 700; font-size: 60px; line-height: 1; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+.now-h small { font-size: 26px; margin-left: 6px; font-weight: 700; }
+.now-k { margin: 10px 0 18px; font-size: 16px; color: var(--muted); }
+.now-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; margin-bottom: 18px; }
+.now-row li { display: flex; gap: 10px; align-items: flex-start; font-size: 16px; line-height: 1.45; }
+.now-row .ic { color: var(--plum); margin-top: 2px; }
+.now-row b { display: block; font-size: 16px; }
+.credit { margin: 0; font-size: 16px; }
+.credit a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; text-decoration: none; color: var(--plum); }
+.credit a:hover { color: var(--accent-d); }
+.rosa-box { width: 100%; max-width: 420px; height: 500px; border-radius: 16px; background: #fff; display: grid; place-items: center; overflow: hidden; }
+.rosa-box > * { grid-area: 1 / 1; }
+.rosa-box iframe { position: relative; z-index: 1; width: 100%; height: 500px; border: 0; display: block; opacity: 0; transition: opacity .4s ease; }
+.rosa-box.loaded iframe { opacity: 1; }
+/* the plain link stays in the box under the frame: if Rosa is unreachable it is what shows */
+.rosa-box .btn { white-space: normal; text-align: left; max-width: 320px; }
+.amen { margin: 48px 0 0; font-size: 16px; color: var(--muted); line-height: 1.9; }
+@media (max-width: 999px) { .br-grid { grid-template-columns: 1fr; gap: 32px; } .rosa-box { margin: 0 auto; } }
+@media (max-width: 767px) { .break { padding: 72px 0; } .spot { font-size: 20px; }  .now-h { font-size: 54px; } .now-row { grid-template-columns: 1fr; } }
+
+/* ---------- 11:00, check-out: the three ratings set large, then the reviews as a paged carousel
+   (round 3: arrows + dots, 48 px targets, the row ends inside the grid). JS off: a plain grid of every review. */
+.guests { padding: 88px 0 96px; }
+.g-head { margin-bottom: 48px; }
+.rates-3 { grid-template-columns: repeat(3, auto); justify-content: start; gap: 8px 56px; margin-top: 24px; }
+.rates-3 .rate { grid-template-columns: auto auto; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 48px; }
+.cards > li { position: relative; padding-top: 44px; }
+.cards > li::before { content: '“'; position: absolute; top: -8px; left: -2px; font: 700 60px/1 var(--hand); color: var(--accent); }
+.cards blockquote { margin: 0 0 16px; font-size: 17px; line-height: 1.6; }
+.cards blockquote p:last-child { margin-bottom: 0; }
+.who { margin: 0; font-size: 14px; color: var(--muted); }
+.who b { color: var(--ink); }
+.js .cards { display: flex; gap: 48px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; align-items: flex-start; }
+.js .cards::-webkit-scrollbar { display: none; }
+.js .cards > li { flex: 0 0 calc((100% - 96px) / 3); scroll-snap-align: start; }
+.rev-ctrl { display: flex; align-items: center; gap: 12px; margin-top: 36px; }
+.rev-ctrl[hidden] { display: none; }
+.rarw { width: 48px; height: 48px; border-radius: 50%; border: 0; display: grid; place-items: center; background: var(--tint); color: var(--ink); cursor: pointer;
+  transition: background-color .2s, transform .16s var(--out), opacity .2s; }
+.rarw:active { transform: scale(.94); }
+.rarw:disabled { opacity: .35; cursor: default; }
+@media (hover: hover) and (pointer: fine) { .rarw:not(:disabled):hover { background: #e4e9ee; } }
+.rev-ctrl .dots::before { display: none; }
+.rev-count { margin: 0; min-width: 72px; text-align: center; font-size: 16px; font-weight: 700; color: var(--plum); font-variant-numeric: tabular-nums; }
+.rev-count[hidden], .rev-ctrl .dots[hidden] { display: none; }
+.rev-ctrl .dot::before { background: rgba(67, 62, 80, .3); }
+.rev-ctrl .dot[aria-current="true"]::before { background: var(--plum); }
+@media (max-width: 999px) { .js .cards > li { flex-basis: calc((100% - 48px) / 2); } }
+@media (max-width: 899px) { .rates-3 { grid-template-columns: repeat(3, auto); gap: 8px 24px; } .rates-3 .rate { grid-template-columns: 1fr; } }
+@media (max-width: 767px) {
+  .guests { padding: 72px 0; } .g-head { margin-bottom: 32px; }
+  .rates-3 { grid-template-columns: 1fr; gap: 4px; } .rates-3 .rate { grid-template-columns: 112px 1fr; gap: 0 12px; min-height: 56px; }
+  .rates-3 .rate .big { font-size: 38px; } .rates-3 .rate .big small { font-size: 17px; } .rates-3 .rate-k { font-size: 14px; }
+  .js .cards { gap: 24px; } .js .cards > li { flex-basis: 100%; }
+  .rev-ctrl { margin-top: 24px; }
+}
+
+/* ---------- getting here, closing, footer */
+.out { padding: 96px 0; }
+.o-grid { display: grid; grid-template-columns: 7fr 5fr; gap: 56px; align-items: end; }
+.o-grid .hand { margin-bottom: 18px; }
+.addr { display: flex; gap: 10px; font-weight: 700; font-size: 17px; margin-bottom: 20px; }
+.addr .ic { color: var(--plum); margin-top: 4px; }
+.closing { padding: 104px 0; }
+.center { text-align: center; }
+.close-line { max-width: 720px; margin: 0 auto 32px; font-size: 26px; line-height: 1.5; text-wrap: balance; color: var(--ink); }
+.center .actions { justify-content: center; }
+.foot { padding: 64px 0 40px; }
+.f-grid { display: grid; grid-template-columns: 1fr auto; gap: 28px 56px; align-items: start; }
+.f-name { font-size: 26px; margin-bottom: 8px; }
+.foot .actions { max-width: 520px; justify-content: flex-end; }
+.fine { font-size: 14px; color: var(--muted); margin-top: 36px; }
+@media (max-width: 899px) { .close-line { font-size: 20px; } .o-grid, .f-grid { grid-template-columns: 1fr; gap: 28px; } .foot .actions { justify-content: flex-start; } .out, .closing { padding: 72px 0; } }
+
+/* ---------- phone bar: the booking action on every screen */
+.bar { display: none; }
+@media (max-width: 767px) {
+  .bar { display: block; position: fixed; z-index: 40; left: 0; right: 0; bottom: 0; background: rgba(255, 255, 255, .97); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 -10px 30px -18px rgba(48, 38, 24, .45); padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); transform: translateY(110%); transition: transform .3s var(--drawer); }
+  .bar.up { transform: none; }
+  .no-js .bar { position: static; transform: none; }
+  .js body { padding-bottom: 76px; }
+  .bar-row { display: grid; grid-template-columns: minmax(0, 1fr) 50px 50px; gap: 8px; }
+  .bar-book { min-width: 0; padding: 0 8px; font-size: 16px; gap: 0; }
+  .bar-book .ic { display: none; }
+  .bar-book span { overflow: hidden; text-overflow: ellipsis; }
+  .bar-icon { width: 50px; padding: 0; background: var(--tint); color: var(--ink); }
+  .bar-tog .ic { transition: transform .3s var(--drawer); }
+  .bar-tog[aria-expanded="true"] .ic { transform: rotate(180deg); }
+  .bar-more { padding: 6px 4px 12px; font-size: 14px; line-height: 1.5; }
+  .bar-more p { margin: 0 0 6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; scroll-behavior: auto !important; }
+}
+
+.hero-img{background:#b9b8ae url(data:image/webp;base64,UklGRsYAAABXRUJQVlA4ILoAAABwBgCdASooABYAPulkq02pJaQiMAqpIB0JQBadBDvjZJ0P92Ohl0gKMutbeBPlURPK2J/WyLucn4B39AAA/k9DrGEKs489xB7gc0+qbu8bHHW5q/OCQgTJ9eZ4W9NJXnh2h8KmZN1cbRk9crgzXGn+1VJ61iV3ICBlWGa+qZS4E7EnOSsrFseoZRyxemfmwaeusv/cZbfKZkA1KBjWSHZsLH1BWF/9SsM3yVtf2RxUYbb6wU2jj2gAAAA=) 50% 50%/cover no-repeat}
+@media (max-width:767px){.hero-img{background-image:url(data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAABwBgCdASoYACwAPu1qrlCppaQiqrgKATAdiWUAvdA6fVVSIiuvf2cJQpqvDMhDTPYzFNeBcZialvhwdQAA/vfGtqHfMVOBQtWrOvybHggdJyM/qAclwywzTbkQXTa13orUe/Jh3ahjcf03FV2lJjSyRj4YmtKu2d0ZxjdUuahUj2xYuQ+gFp3BuRCDgfgaJK7yFk9BOSfqye158BRipcOIMY86CFdPVl5qAAAA);background-position:30% 50%}}
+.hero-img.loaded{background-image:none}</style>
+</head>
+<body>
+<a class="skip" href="#sleep">Skip to the rooms</a>
+<main>
+
+<header class="top" id="top">
+  <a class="mark" href="#top">Coconut Surf Inn</a>
+  <nav class="nav" aria-label="Sections"><span><a href="#sleep">Rooms</a></span> <span class="sep" aria-hidden="true">|</span> <span><a href="#roof">The roof</a></span> <span class="sep" aria-hidden="true">|</span> <span><a href="#break">The break</a></span></nav>
+  <div class="top-act"><a class="btn btn-book btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Check dates</span></a><a class="btn btn-ic top-call" href="tel:+94778921396" aria-label="Call +94 77 892 1396"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a></div>
+</header>
+<section class="hero" aria-label="Coconut Surf Inn">
+  <div class="hero-media">
+    <picture>
+      <source media="(max-width: 767px)" srcset="img/hero-tall-450.webp 450w, img/hero-tall-600.webp 600w" sizes="110vw">
+      <img class="hero-img" src="img/hero-wide-1920.webp" srcset="img/hero-wide-1440.webp 1440w, img/hero-wide-1920.webp 1920w" sizes="100vw"
+        width="1920" height="1080" alt="Under the thatched roof of the roof terrace: the fringe of dry palm leaves across the top, a timber pillar on the left, a black swing frame with potted plants on the right, palms and the sea beyond the parapet" fetchpriority="high">
+    </picture>
+    <canvas class="depth" aria-hidden="true" data-wide="img/hero-wide-1920.webp" data-depth-wide="img/depth-wide.png" data-depth-tall="img/depth-tall.png"></canvas>
+  </div>
+  <div class="hero-text">
+    <h1 class="hand">Coconut Surf Inn</h1>
+    <p class="where">A guesthouse in Gurubebila, between Midigama and Weligama</p>
+    <div class="hero-act"><a class="btn btn-book btn-hero" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Check dates on Booking.com</span></a><a class="btn btn-ghost" href="tel:+94778921396" aria-label="Call +94 77 892 1396"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>Call</span></a></div>
+  </div>
+</section>
+
+<section class="facts" id="glance" aria-labelledby="h-glance">
+  <div class="wrap">
+    <div class="g-split">
+    <div class="g-text">
+    <h2 class="hand" id="h-glance">13:00, check-in</h2>
+    <p class="lead">A guesthouse in Gurubebila, between Midigama and Weligama, on the south coast of Sri Lanka.</p>
+    <p class="details"><span>Coconuts in front of the guesthouse, an A-frame reef break</span> <span class="sep" aria-hidden="true">|</span> <span>Restaurant upstairs, 7:30–22:00, every day</span> <span class="sep" aria-hidden="true">|</span> <span>Live dates and prices on Booking.com</span></p>
+    <div class="actions"><a class="btn btn-book " href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>See rooms and live dates on Booking.com</span></a><a class="btn btn-call " href="tel:+94778921396"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>Call +94 77 892 1396</span></a></div>
+    </div>
+    <div class="rates"><a class="rate" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><span class="big"><span class="num" role="img" data-roll="8.5" aria-label="8.5 out of 10">8.5</span><small aria-hidden="true">/10</small></span><span class="rate-k"><b>Booking.com</b>, 142 reviews<br>4 Nov 2026</span></a><a class="rate" href="https://www.google.com/maps/place/?q=place_id:ChIJI29CG-cU4ToRQhs8notgauI" rel="noopener"><span class="big"><span class="num" role="img" data-roll="4.8" aria-label="4.8 out of 5">4.8</span><small aria-hidden="true">/5</small></span><span class="rate-k"><b>Google</b>, 88 reviews<br>4 Nov 2026</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sleep" id="sleep" aria-labelledby="h-sleep">
+  <div class="wrap">
+    <div class="sleep-head">
+      <h2 class="hand" id="h-sleep">How do you like to sleep?</h2>
+      <p><b>Six kinds of room.</b> Booking.com lists six, starting with a single for one person and going up to a family room for four. Each one has its own entrance, and its own bathroom with a shower.</p>
+    </div>
+    <div class="tiles" role="tablist" aria-label="How do you like to sleep?">
+      <a class="tile" href="#grp-ac" role="tab" id="tab-ac" data-group="ac" aria-selected="true" aria-controls="viewer"><svg class="ic tile-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5v19M3.8 7.2l16.4 9.6M3.8 16.8l16.4-9.6M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5"/></svg><span class="tile-label">Air conditioning and hot water</span><span class="tile-sub">4 kinds of room · sleep 2 to 4</span></a><a class="tile" href="#grp-fan" role="tab" id="tab-fan" data-group="fan" aria-selected="false" aria-controls="viewer" tabindex="-1"><svg class="ic tile-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1.6"/><path d="M12 10.4C12 6 13.5 3 16 3.5c2 .4 1.5 4-4 6.9M13.6 12c4.4 0 7.4 1.5 6.9 4-.4 2-4 1.5-6.9-4M12 13.6c0 4.4-1.5 7.4-4 6.9-2-.4-1.5-4 4-6.9M10.4 12C6 12 3 10.5 3.5 8c.4-2 4 1.5 6.9 4"/></svg><span class="tile-label">A fan and cold water</span><span class="tile-sub">2 kinds of room · sleep 1 or 2</span></a><a class="tile" href="#grp-big" role="tab" id="tab-big" data-group="big" aria-selected="false" aria-controls="viewer" tabindex="-1"><svg class="ic tile-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.6 2.7-6 6-6s6 2.4 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.9.2 5 2.4 5 5.8"/></svg><span class="tile-label">Three or four of us</span><span class="tile-sub">2 kinds of room · sleep 3 or 4</span></a>
+    </div>
+    <div class="viewer" id="viewer" role="tabpanel" aria-labelledby="tab-ac">
+      <div class="picks" role="group" aria-label="Rooms"><span class="pill" aria-hidden="true"></span><button class="pick" type="button" data-pick="superior-double-room" data-groups="ac" aria-controls="room-superior-double-room"><span class="pick-name">Superior Double Room</span><span class="pick-sub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5v19M3.8 7.2l16.4 9.6M3.8 16.8l16.4-9.6M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5"/></svg>A/C · sleeps 2 · 14 m²</span></button><button class="pick" type="button" data-pick="deluxe-double-room-with-balcony" data-groups="ac" aria-controls="room-deluxe-double-room-with-balcony"><span class="pick-name">Deluxe Double Room with Balcony</span><span class="pick-sub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5v19M3.8 7.2l16.4 9.6M3.8 16.8l16.4-9.6M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5"/></svg>A/C · sleeps 2 · 15 m²</span></button><button class="pick" type="button" data-pick="deluxe-double-room-2-adults-1-child" data-groups="ac big" aria-controls="room-deluxe-double-room-2-adults-1-child"><span class="pick-name">Deluxe Double Room (2 Adults + 1 Child)</span><span class="pick-sub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5v19M3.8 7.2l16.4 9.6M3.8 16.8l16.4-9.6M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5"/></svg>A/C · sleeps 3 · 19 m²</span></button><button class="pick" type="button" data-pick="deluxe-family-room" data-groups="ac big" aria-controls="room-deluxe-family-room"><span class="pick-name">Deluxe Family Room</span><span class="pick-sub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5v19M3.8 7.2l16.4 9.6M3.8 16.8l16.4-9.6M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5"/></svg>A/C · sleeps 4 · 28 m²</span></button><button class="pick" type="button" data-pick="budget-single-room" data-groups="fan" aria-controls="room-budget-single-room"><span class="pick-name">Budget Single Room</span><span class="pick-sub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1.6"/><path d="M12 10.4C12 6 13.5 3 16 3.5c2 .4 1.5 4-4 6.9M13.6 12c4.4 0 7.4 1.5 6.9 4-.4 2-4 1.5-6.9-4M12 13.6c0 4.4-1.5 7.4-4 6.9-2-.4-1.5-4 4-6.9M10.4 12C6 12 3 10.5 3.5 8c.4-2 4 1.5 6.9 4"/></svg>Fan · sleeps 1 · 9 m²</span></button><button class="pick" type="button" data-pick="budget-double-room" data-groups="fan" aria-controls="room-budget-double-room"><span class="pick-name">Budget Double Room</span><span class="pick-sub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1.6"/><path d="M12 10.4C12 6 13.5 3 16 3.5c2 .4 1.5 4-4 6.9M13.6 12c4.4 0 7.4 1.5 6.9 4-.4 2-4 1.5-6.9-4M12 13.6c0 4.4-1.5 7.4-4 6.9-2-.4-1.5-4 4-6.9M10.4 12C6 12 3 10.5 3.5 8c.4-2 4 1.5 6.9 4"/></svg>Fan · sleeps 2 · 12 m²</span></button></div>
+      <div class="rooms">
+        <h3 class="grp" id="grp-ac"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5v19M3.8 7.2l16.4 9.6M3.8 16.8l16.4-9.6M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5"/></svg>Rooms with air conditioning and hot water</h3>
+        <span class="anchor" id="grp-big" aria-hidden="true"></span>
+        
+      <article class="room on" id="room-superior-double-room" data-room="superior-double-room" aria-labelledby="rn-superior-double-room">
+        <div class="show r43 " data-show id="rs-superior-double-room" role="region" aria-roledescription="carousel" aria-label="Superior Double Room, photos"><ul class="track" tabindex="0"><li class="slide" aria-roledescription="slide" aria-label="1 of 6"><img src="img/r43-img-030-1200.webp" srcset="img/r43-img-030-720.webp 720w, img/r43-img-030-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="A hammock, a wooden bench, a surfboard and a potted palm on the veranda outside red-framed glass doors" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="2 of 6"><span class="lazy" data-src="img/r43-img-035-1200.webp" data-srcset="img/r43-img-035-720.webp 720w, img/r43-img-035-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="A double bed with white sheets and a green towel, red-framed glass doors and white curtains behind"><noscript><img src="img/r43-img-035-1200.webp" srcset="img/r43-img-035-720.webp 720w, img/r43-img-035-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="A double bed with white sheets and a green towel, red-framed glass doors and white curtains behind" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="3 of 6"><span class="lazy" data-src="img/r43-img-037-1200.webp" data-srcset="img/r43-img-037-720.webp 720w, img/r43-img-037-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="A double bed with white sheets and a green towel, a dark wooden desk and chair, at night"><noscript><img src="img/r43-img-037-1200.webp" srcset="img/r43-img-037-720.webp 720w, img/r43-img-037-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="A double bed with white sheets and a green towel, a dark wooden desk and chair, at night" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="4 of 6"><span class="lazy" data-src="img/r43-img-034-1200.webp" data-srcset="img/r43-img-034-720.webp 720w, img/r43-img-034-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="Red-framed double doors open at night into a room with a bed, a wooden ladder towel rail beside them"><noscript><img src="img/r43-img-034-1200.webp" srcset="img/r43-img-034-720.webp 720w, img/r43-img-034-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="Red-framed double doors open at night into a room with a bed, a wooden ladder towel rail beside them" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="5 of 6"><span class="lazy" data-src="img/r43-img-017-1200.webp" data-srcset="img/r43-img-017-720.webp 720w, img/r43-img-017-1200.webp 1066w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1066" data-h="800" data-alt="A dark hammock slung on the veranda in front of a room&#x27;s red-framed glass doors"><noscript><img src="img/r43-img-017-1200.webp" srcset="img/r43-img-017-720.webp 720w, img/r43-img-017-1200.webp 1066w" sizes="(max-width: 899px) 100vw, 880px" width="1066" height="800" alt="A dark hammock slung on the veranda in front of a room&#x27;s red-framed glass doors" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="6 of 6"><span class="lazy" data-src="img/r43-img-064-1200.webp" data-srcset="img/r43-img-064-720.webp 720w, img/r43-img-064-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="A grey concrete bathroom with a shower, a toilet and an electric water heater on the wall"><noscript><img src="img/r43-img-064-1200.webp" srcset="img/r43-img-064-720.webp 720w, img/r43-img-064-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="A grey concrete bathroom with a shower, a toilet and an electric water heater on the wall" loading="lazy" decoding="async"></noscript></span></li></ul><div class="ctrl" hidden><button class="arw prev" type="button" aria-label="Previous photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><div class="dots" role="group" aria-label="Choose a photo"><button type="button" class="dot" aria-label="Photo 1"></button><button type="button" class="dot" aria-label="Photo 2"></button><button type="button" class="dot" aria-label="Photo 3"></button><button type="button" class="dot" aria-label="Photo 4"></button><button type="button" class="dot" aria-label="Photo 5"></button><button type="button" class="dot" aria-label="Photo 6"></button></div><button class="arw next" type="button" aria-label="Next photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button></div></div>
+        <div class="room-text">
+          <h3 class="room-name" id="rn-superior-double-room">Superior Double Room</h3>
+          <p class="room-meta"><span>1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>sleeps 2</span> <span class="sep" aria-hidden="true">|</span> <span>14 m²</span></p>
+          <p class="chips"><span class="chip on"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1.6"/><path d="M12 10.4C12 6 13.5 3 16 3.5c2 .4 1.5 4-4 6.9M13.6 12c4.4 0 7.4 1.5 6.9 4-.4 2-4 1.5-6.9-4M12 13.6c0 4.4-1.5 7.4-4 6.9-2-.4-1.5-4 4-6.9M10.4 12C6 12 3 10.5 3.5 8c.4-2 4 1.5 6.9 4"/></svg>Fan</span><span class="chip on"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5v19M3.8 7.2l16.4 9.6M3.8 16.8l16.4-9.6M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5"/></svg>A/C</span><span class="chip on"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>Hot water</span></p>
+          <p class="room-note">Ground floor, 14 m². Air conditioning, fan and hot water.</p>
+          <a class="btn btn-book btn-room" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Check dates on Booking.com</span></a>
+        </div>
+      </article>
+      <article class="room" id="room-deluxe-double-room-with-balcony" data-room="deluxe-double-room-with-balcony" aria-labelledby="rn-deluxe-double-room-with-balcony">
+        <div class="show r43 " data-show id="rs-deluxe-double-room-with-balcony" role="region" aria-roledescription="carousel" aria-label="Deluxe Double Room with Balcony, photos"><ul class="track" tabindex="0"><li class="slide" aria-roledescription="slide" aria-label="1 of 6"><span class="lazy" data-src="img/r43-img-076-1200.webp" data-srcset="img/r43-img-076-720.webp 720w, img/r43-img-076-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="A double bed with a grey cover and crimson cushions, glass doors open to the balcony, an air-conditioning unit and a ceiling fan"><noscript><img src="img/r43-img-076-1200.webp" srcset="img/r43-img-076-720.webp 720w, img/r43-img-076-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="A double bed with a grey cover and crimson cushions, glass doors open to the balcony, an air-conditioning unit and a ceiling fan" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="2 of 6"><span class="lazy" data-src="img/r43-img-073-1200.webp" data-srcset="img/r43-img-073-720.webp 720w, img/r43-img-073-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="A double bed with a grey cover and crimson cushions against a rust-red wall, a ceiling fan and an air-conditioning unit above"><noscript><img src="img/r43-img-073-1200.webp" srcset="img/r43-img-073-720.webp 720w, img/r43-img-073-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="A double bed with a grey cover and crimson cushions against a rust-red wall, a ceiling fan and an air-conditioning unit above" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="3 of 6"><span class="lazy" data-src="img/r43-img-079-1200.webp" data-srcset="img/r43-img-079-720.webp 720w, img/r43-img-079-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="Dark wooden doors open onto the balcony: two rattan chairs, a small round table, banana plants beyond"><noscript><img src="img/r43-img-079-1200.webp" srcset="img/r43-img-079-720.webp 720w, img/r43-img-079-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="Dark wooden doors open onto the balcony: two rattan chairs, a small round table, banana plants beyond" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="4 of 6"><span class="lazy" data-src="img/r43-img-068-1200.webp" data-srcset="img/r43-img-068-720.webp 720w, img/r43-img-068-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="Rattan chairs with crimson cushions and a round rattan table on the balcony, the bed seen through the door"><noscript><img src="img/r43-img-068-1200.webp" srcset="img/r43-img-068-720.webp 720w, img/r43-img-068-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="Rattan chairs with crimson cushions and a round rattan table on the balcony, the bed seen through the door" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="5 of 6"><span class="lazy" data-src="img/r43-img-077-1200.webp" data-srcset="img/r43-img-077-720.webp 720w, img/r43-img-077-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="The balcony from one end: rattan chairs with crimson cushions, an air-conditioning unit on the wall, banana plants over the parapet"><noscript><img src="img/r43-img-077-1200.webp" srcset="img/r43-img-077-720.webp 720w, img/r43-img-077-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="The balcony from one end: rattan chairs with crimson cushions, an air-conditioning unit on the wall, banana plants over the parapet" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="6 of 6"><span class="lazy" data-src="img/r43-img-074-1200.webp" data-srcset="img/r43-img-074-720.webp 720w, img/r43-img-074-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="A narrow bathroom with grey concrete walls, a white basin under a wooden mirror, a toilet at the end"><noscript><img src="img/r43-img-074-1200.webp" srcset="img/r43-img-074-720.webp 720w, img/r43-img-074-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="A narrow bathroom with grey concrete walls, a white basin under a wooden mirror, a toilet at the end" loading="lazy" decoding="async"></noscript></span></li></ul><div class="ctrl" hidden><button class="arw prev" type="button" aria-label="Previous photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><div class="dots" role="group" aria-label="Choose a photo"><button type="button" class="dot" aria-label="Photo 1"></button><button type="button" class="dot" aria-label="Photo 2"></button><button type="button" class="dot" aria-label="Photo 3"></button><button type="button" class="dot" aria-label="Photo 4"></button><button type="button" class="dot" aria-label="Photo 5"></button><button type="button" class="dot" aria-label="Photo 6"></button></div><button class="arw next" type="button" aria-label="Next photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button></div></div>
+        <div class="room-text">
+          <h3 class="room-name" id="rn-deluxe-double-room-with-balcony">Deluxe Double Room with Balcony</h3>
+          <p class="room-meta"><span>1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>sleeps 2</span> <span class="sep" aria-hidden="true">|</span> <span>15 m²</span></p>
+          <p class="chips"><span class="chip on"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1.6"/><path d="M12 10.4C12 6 13.5 3 16 3.5c2 .4 1.5 4-4 6.9M13.6 12c4.4 0 7.4 1.5 6.9 4-.4 2-4 1.5-6.9-4M12 13.6c0 4.4-1.5 7.4-4 6.9-2-.4-1.5-4 4-6.9M10.4 12C6 12 3 10.5 3.5 8c.4-2 4 1.5 6.9 4"/></svg>Fan</span><span class="chip on"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5v19M3.8 7.2l16.4 9.6M3.8 16.8l16.4-9.6M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5"/></svg>A/C</span><span class="chip on"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>Hot water</span><span class="chip on"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v17M3 21h18M15 12h.01"/></svg>Balcony</span></p>
+          <p class="room-note">Upstairs, 15 m², with a balcony. Air conditioning, fan and hot water.</p>
+          <a class="btn btn-book btn-room" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Check dates on Booking.com</span></a>
+        </div>
+      </article>
+      <article class="room" id="room-deluxe-double-room-2-adults-1-child" data-room="deluxe-double-room-2-adults-1-child" aria-labelledby="rn-deluxe-double-room-2-adults-1-child">
+        <div class="show r43 " data-show id="rs-deluxe-double-room-2-adults-1-child" role="region" aria-roledescription="carousel" aria-label="Deluxe Double Room (2 Adults + 1 Child), photos"><ul class="track" tabindex="0"><li class="slide" aria-roledescription="slide" aria-label="1 of 4"><span class="lazy" data-src="img/r43-img-036-1200.webp" data-srcset="img/r43-img-036-720.webp 720w, img/r43-img-036-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="A carved dark-wood bed with white sheets, an antique dresser with a mirror, a red wall"><noscript><img src="img/r43-img-036-1200.webp" srcset="img/r43-img-036-720.webp 720w, img/r43-img-036-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="A carved dark-wood bed with white sheets, an antique dresser with a mirror, a red wall" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="2 of 4"><span class="lazy" data-src="img/r43-img-040-1200.webp" data-srcset="img/r43-img-040-720.webp 720w, img/r43-img-040-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="A double bed with white sheets under a wall lamp, grey concrete walls and a wooden chair"><noscript><img src="img/r43-img-040-1200.webp" srcset="img/r43-img-040-720.webp 720w, img/r43-img-040-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="A double bed with white sheets under a wall lamp, grey concrete walls and a wooden chair" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="3 of 4"><span class="lazy" data-src="img/r43-img-038-1200.webp" data-srcset="img/r43-img-038-720.webp 720w, img/r43-img-038-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="A driftwood clothes rail hung on ropes against a red wall, lit by a bare bulb"><noscript><img src="img/r43-img-038-1200.webp" srcset="img/r43-img-038-720.webp 720w, img/r43-img-038-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="A driftwood clothes rail hung on ropes against a red wall, lit by a bare bulb" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="4 of 4"><span class="lazy" data-src="img/r43-img-053-1200.webp" data-srcset="img/r43-img-053-720.webp 720w, img/r43-img-053-1200.webp 1066w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1066" data-h="800" data-alt="A grey concrete bathroom with a toilet and a shower, a louvred window high in the wall"><noscript><img src="img/r43-img-053-1200.webp" srcset="img/r43-img-053-720.webp 720w, img/r43-img-053-1200.webp 1066w" sizes="(max-width: 899px) 100vw, 880px" width="1066" height="800" alt="A grey concrete bathroom with a toilet and a shower, a louvred window high in the wall" loading="lazy" decoding="async"></noscript></span></li></ul><div class="ctrl" hidden><button class="arw prev" type="button" aria-label="Previous photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><div class="dots" role="group" aria-label="Choose a photo"><button type="button" class="dot" aria-label="Photo 1"></button><button type="button" class="dot" aria-label="Photo 2"></button><button type="button" class="dot" aria-label="Photo 3"></button><button type="button" class="dot" aria-label="Photo 4"></button></div><button class="arw next" type="button" aria-label="Next photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button></div></div>
+        <div class="room-text">
+          <h3 class="room-name" id="rn-deluxe-double-room-2-adults-1-child">Deluxe Double Room (2 Adults + 1 Child)</h3>
+          <p class="room-meta"><span>1 double bed and 1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>sleeps 3</span> <span class="sep" aria-hidden="true">|</span> <span>19 m²</span></p>
+          <p class="chips"><span class="chip on"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1.6"/><path d="M12 10.4C12 6 13.5 3 16 3.5c2 .4 1.5 4-4 6.9M13.6 12c4.4 0 7.4 1.5 6.9 4-.4 2-4 1.5-6.9-4M12 13.6c0 4.4-1.5 7.4-4 6.9-2-.4-1.5-4 4-6.9M10.4 12C6 12 3 10.5 3.5 8c.4-2 4 1.5 6.9 4"/></svg>Fan</span><span class="chip on"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5v19M3.8 7.2l16.4 9.6M3.8 16.8l16.4-9.6M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5"/></svg>A/C</span><span class="chip on"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>Hot water</span></p>
+          <p class="room-note">Ground floor, 19 m². Air conditioning, fan and hot water.</p>
+          <a class="btn btn-book btn-room" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Check dates on Booking.com</span></a>
+        </div>
+      </article>
+      <article class="room" id="room-deluxe-family-room" data-room="deluxe-family-room" aria-labelledby="rn-deluxe-family-room">
+        <div class="show r43 " data-show id="rs-deluxe-family-room" role="region" aria-roledescription="carousel" aria-label="Deluxe Family Room, photos"><ul class="track" tabindex="0"><li class="slide" aria-roledescription="slide" aria-label="1 of 4"><span class="lazy" data-src="img/r43-img-045-1200.webp" data-srcset="img/r43-img-045-720.webp 720w, img/r43-img-045-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="Two beds against a red feature wall under a ceiling fan, a grey concrete floor"><noscript><img src="img/r43-img-045-1200.webp" srcset="img/r43-img-045-720.webp 720w, img/r43-img-045-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="Two beds against a red feature wall under a ceiling fan, a grey concrete floor" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="2 of 4"><span class="lazy" data-src="img/r43-img-031-1200.webp" data-srcset="img/r43-img-031-720.webp 720w, img/r43-img-031-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="A long room with two beds against a red wall at the far end, a ceiling fan and a desk"><noscript><img src="img/r43-img-031-1200.webp" srcset="img/r43-img-031-720.webp 720w, img/r43-img-031-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="A long room with two beds against a red wall at the far end, a ceiling fan and a desk" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="3 of 4"><span class="lazy" data-src="img/r43-img-022-1200.webp" data-srcset="img/r43-img-022-720.webp 720w, img/r43-img-022-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="A long room with grey concrete walls, a desk fixed to the wall and a stool, a red wall at the end"><noscript><img src="img/r43-img-022-1200.webp" srcset="img/r43-img-022-720.webp 720w, img/r43-img-022-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="A long room with grey concrete walls, a desk fixed to the wall and a stool, a red wall at the end" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="4 of 4"><span class="lazy" data-src="img/r43-img-027-1200.webp" data-srcset="img/r43-img-027-720.webp 720w, img/r43-img-027-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="The room&#x27;s entry: a red wall, a wooden ladder towel rail and a wall lantern"><noscript><img src="img/r43-img-027-1200.webp" srcset="img/r43-img-027-720.webp 720w, img/r43-img-027-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="The room&#x27;s entry: a red wall, a wooden ladder towel rail and a wall lantern" loading="lazy" decoding="async"></noscript></span></li></ul><div class="ctrl" hidden><button class="arw prev" type="button" aria-label="Previous photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><div class="dots" role="group" aria-label="Choose a photo"><button type="button" class="dot" aria-label="Photo 1"></button><button type="button" class="dot" aria-label="Photo 2"></button><button type="button" class="dot" aria-label="Photo 3"></button><button type="button" class="dot" aria-label="Photo 4"></button></div><button class="arw next" type="button" aria-label="Next photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button></div></div>
+        <div class="room-text">
+          <h3 class="room-name" id="rn-deluxe-family-room">Deluxe Family Room</h3>
+          <p class="room-meta"><span>1 single bed and 1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>sleeps 4</span> <span class="sep" aria-hidden="true">|</span> <span>28 m²</span></p>
+          <p class="chips"><span class="chip on"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1.6"/><path d="M12 10.4C12 6 13.5 3 16 3.5c2 .4 1.5 4-4 6.9M13.6 12c4.4 0 7.4 1.5 6.9 4-.4 2-4 1.5-6.9-4M12 13.6c0 4.4-1.5 7.4-4 6.9-2-.4-1.5-4 4-6.9M10.4 12C6 12 3 10.5 3.5 8c.4-2 4 1.5 6.9 4"/></svg>Fan</span><span class="chip on"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5v19M3.8 7.2l16.4 9.6M3.8 16.8l16.4-9.6M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5"/></svg>A/C</span><span class="chip on"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>Hot water</span><span class="chip on"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v17M3 21h18M15 12h.01"/></svg>Balcony</span></p>
+          <p class="room-note">28 m², with a balcony and a garden view. Air conditioning, fan and hot water.</p>
+          <a class="btn btn-book btn-room" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Check dates on Booking.com</span></a>
+        </div>
+      </article>
+        <h3 class="grp" id="grp-fan"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1.6"/><path d="M12 10.4C12 6 13.5 3 16 3.5c2 .4 1.5 4-4 6.9M13.6 12c4.4 0 7.4 1.5 6.9 4-.4 2-4 1.5-6.9-4M12 13.6c0 4.4-1.5 7.4-4 6.9-2-.4-1.5-4 4-6.9M10.4 12C6 12 3 10.5 3.5 8c.4-2 4 1.5 6.9 4"/></svg>Fan rooms: no air conditioning and no hot water</h3>
+        
+      <article class="room" id="room-budget-single-room" data-room="budget-single-room" aria-labelledby="rn-budget-single-room">
+        <div class="show r43 " data-show id="rs-budget-single-room" role="region" aria-roledescription="carousel" aria-label="Budget Single Room, photos"><ul class="track" tabindex="0"><li class="slide" aria-roledescription="slide" aria-label="1 of 4"><span class="lazy" data-src="img/r43-img-056-1200.webp" data-srcset="img/r43-img-056-720.webp 720w, img/r43-img-056-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="A bed under a white mosquito-net canopy on a wooden frame"><noscript><img src="img/r43-img-056-1200.webp" srcset="img/r43-img-056-720.webp 720w, img/r43-img-056-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="A bed under a white mosquito-net canopy on a wooden frame" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="2 of 4"><span class="lazy" data-src="img/r43-img-057-1200.webp" data-srcset="img/r43-img-057-720.webp 720w, img/r43-img-057-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="A bed under a mosquito net beside a driftwood rail on ropes"><noscript><img src="img/r43-img-057-1200.webp" srcset="img/r43-img-057-720.webp 720w, img/r43-img-057-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="A bed under a mosquito net beside a driftwood rail on ropes" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="3 of 4"><span class="lazy" data-src="img/r43-img-059-1200.webp" data-srcset="img/r43-img-059-720.webp 720w, img/r43-img-059-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="A bed with white sheets and a mosquito net, a wooden shelf on the wall"><noscript><img src="img/r43-img-059-1200.webp" srcset="img/r43-img-059-720.webp 720w, img/r43-img-059-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="A bed with white sheets and a mosquito net, a wooden shelf on the wall" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="4 of 4"><span class="lazy" data-src="img/r43-img-061-1200.webp" data-srcset="img/r43-img-061-720.webp 720w, img/r43-img-061-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="A plain bathroom with a white pedestal basin"><noscript><img src="img/r43-img-061-1200.webp" srcset="img/r43-img-061-720.webp 720w, img/r43-img-061-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="A plain bathroom with a white pedestal basin" loading="lazy" decoding="async"></noscript></span></li></ul><div class="ctrl" hidden><button class="arw prev" type="button" aria-label="Previous photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><div class="dots" role="group" aria-label="Choose a photo"><button type="button" class="dot" aria-label="Photo 1"></button><button type="button" class="dot" aria-label="Photo 2"></button><button type="button" class="dot" aria-label="Photo 3"></button><button type="button" class="dot" aria-label="Photo 4"></button></div><button class="arw next" type="button" aria-label="Next photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button></div></div>
+        <div class="room-text">
+          <h3 class="room-name" id="rn-budget-single-room">Budget Single Room</h3>
+          <p class="room-meta"><span>1 single bed</span> <span class="sep" aria-hidden="true">|</span> <span>sleeps 1</span> <span class="sep" aria-hidden="true">|</span> <span>9 m²</span></p>
+          <p class="chips"><span class="chip on"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1.6"/><path d="M12 10.4C12 6 13.5 3 16 3.5c2 .4 1.5 4-4 6.9M13.6 12c4.4 0 7.4 1.5 6.9 4-.4 2-4 1.5-6.9-4M12 13.6c0 4.4-1.5 7.4-4 6.9-2-.4-1.5-4 4-6.9M10.4 12C6 12 3 10.5 3.5 8c.4-2 4 1.5 6.9 4"/></svg>Fan</span><span class="chip off"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5v19M3.8 7.2l16.4 9.6M3.8 16.8l16.4-9.6M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5"/></svg>No A/C</span><span class="chip off"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>No hot water</span></p>
+          <p class="room-note">Upstairs, 9 m². Fan and mosquito net; no air conditioning and no hot water.</p>
+          <a class="btn btn-book btn-room" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Check dates on Booking.com</span></a>
+        </div>
+      </article>
+      <article class="room" id="room-budget-double-room" data-room="budget-double-room" aria-labelledby="rn-budget-double-room">
+        <div class="show r43 " data-show id="rs-budget-double-room" role="region" aria-roledescription="carousel" aria-label="Budget Double Room, photos"><ul class="track" tabindex="0"><li class="slide" aria-roledescription="slide" aria-label="1 of 4"><span class="lazy" data-src="img/r43-img-048-1200.webp" data-srcset="img/r43-img-048-720.webp 720w, img/r43-img-048-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="A doorway into a room with a bed under a white mosquito-net canopy"><noscript><img src="img/r43-img-048-1200.webp" srcset="img/r43-img-048-720.webp 720w, img/r43-img-048-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="A doorway into a room with a bed under a white mosquito-net canopy" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="2 of 4"><span class="lazy" data-src="img/r43-img-047-1200.webp" data-srcset="img/r43-img-047-720.webp 720w, img/r43-img-047-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="A bed with white sheets and a rolled purple towel under a mosquito net"><noscript><img src="img/r43-img-047-1200.webp" srcset="img/r43-img-047-720.webp 720w, img/r43-img-047-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="A bed with white sheets and a rolled purple towel under a mosquito net" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="3 of 4"><span class="lazy" data-src="img/r43-img-046-1200.webp" data-srcset="img/r43-img-046-720.webp 720w, img/r43-img-046-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="A door open onto an older room with a bed under a mosquito net, a blue mat at the threshold"><noscript><img src="img/r43-img-046-1200.webp" srcset="img/r43-img-046-720.webp 720w, img/r43-img-046-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="A door open onto an older room with a bed under a mosquito net, a blue mat at the threshold" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="4 of 4"><span class="lazy" data-src="img/r43-img-049-1200.webp" data-srcset="img/r43-img-049-720.webp 720w, img/r43-img-049-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 880px" data-w="1200" data-h="900" data-alt="A red-framed door with frosted panels open onto a room with a net-canopy bed"><noscript><img src="img/r43-img-049-1200.webp" srcset="img/r43-img-049-720.webp 720w, img/r43-img-049-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 880px" width="1200" height="900" alt="A red-framed door with frosted panels open onto a room with a net-canopy bed" loading="lazy" decoding="async"></noscript></span></li></ul><div class="ctrl" hidden><button class="arw prev" type="button" aria-label="Previous photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><div class="dots" role="group" aria-label="Choose a photo"><button type="button" class="dot" aria-label="Photo 1"></button><button type="button" class="dot" aria-label="Photo 2"></button><button type="button" class="dot" aria-label="Photo 3"></button><button type="button" class="dot" aria-label="Photo 4"></button></div><button class="arw next" type="button" aria-label="Next photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button></div></div>
+        <div class="room-text">
+          <h3 class="room-name" id="rn-budget-double-room">Budget Double Room</h3>
+          <p class="room-meta"><span>1 large double bed</span> <span class="sep" aria-hidden="true">|</span> <span>sleeps 2</span> <span class="sep" aria-hidden="true">|</span> <span>12 m²</span></p>
+          <p class="chips"><span class="chip on"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1.6"/><path d="M12 10.4C12 6 13.5 3 16 3.5c2 .4 1.5 4-4 6.9M13.6 12c4.4 0 7.4 1.5 6.9 4-.4 2-4 1.5-6.9-4M12 13.6c0 4.4-1.5 7.4-4 6.9-2-.4-1.5-4 4-6.9M10.4 12C6 12 3 10.5 3.5 8c.4-2 4 1.5 6.9 4"/></svg>Fan</span><span class="chip off"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5v19M3.8 7.2l16.4 9.6M3.8 16.8l16.4-9.6M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5"/></svg>No A/C</span><span class="chip off"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>No hot water</span></p>
+          <p class="room-note">12 m². Fan and mosquito net; no air conditioning and no hot water.</p>
+          <a class="btn btn-book btn-room" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Check dates on Booking.com</span></a>
+        </div>
+      </article>
+      </div>
+    </div>
+    <p class="stay"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><span>Check-in from 13:00</span> <span class="sep" aria-hidden="true">|</span> <span>Check-out until 11:00</span> <span class="sep" aria-hidden="true">|</span> Children of any age are welcome, but there are no cots or extra beds. Pets are allowed on request, at no charge.</span></p>
+  </div>
+</section>
+
+<section class="inside" id="inside" aria-labelledby="h-inside">
+  <div class="wrap in-split">
+    <img class="well" src="img/r32-img-007-1440.webp" srcset="img/r32-img-007-900.webp 900w, img/r32-img-007-1440.webp 1440w" sizes="(max-width: 899px) 100vw, 56vw" width="1440" height="960" alt="The skylit courtyard: palms planted in a shallow jade water channel between the red-framed windows of the rooms" loading="lazy" decoding="async">
+    <div class="in-text">
+      <h2 class="hand" id="h-inside">Inside the house</h2>
+      <p>The middle of the house is a skylit courtyard. Palms grow out of a shallow channel of water there, between the windows of the rooms.</p><p>There are hammocks on the verandas, an outdoor shower in the garden, a clothes line, and a rack for your boards.</p>
+    </div>
+  </div>
+  <ul class="wrap verandas" aria-label="The verandas, photos">
+    <li><img src="img/r45-img-024-720.webp" width="720" height="900" alt="A carved wooden armchair outside a room&#x27;s red-framed glass doors, a ladder and a rope screen beside it" loading="lazy" decoding="async"></li><li><img src="img/r45-img-020-720.webp" width="720" height="900" alt="A veranda with a surfboard against the wall, a hanging plant and red-framed doors" loading="lazy" decoding="async"></li><li><img src="img/r45-img-005-720.webp" width="720" height="900" alt="A surfboard leaning against the wall beside a potted palm and a red-framed door" loading="lazy" decoding="async"></li><li><img src="img/r45-img-016-720.webp" width="720" height="900" alt="A side lawn with surfboards racked against the wall by a concrete staircase" loading="lazy" decoding="async"></li>
+  </ul>
+</section>
+
+<section class="roof" id="roof" aria-labelledby="h-roof">
+  <div class="wrap roof-split">
+    <div class="roof-text">
+      <p class="clock"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg><span>The afternoon</span></p>
+      <h2 class="hand" id="h-roof">On the roof</h2>
+      <p>The terrace up top is shaded with thatch, and has a swing seat, hammocks, benches and tables. Beyond the palms, the sea.</p>
+    </div>
+    <img class="roof-img" src="img/r169-img-104-1440.webp" srcset="img/r169-img-104-900.webp 900w, img/r169-img-104-1440.webp 1440w" sizes="(max-width: 899px) 100vw, 58vw" width="1440" height="810" alt="Long benches and a table on the roof terrace, potted plants and the swing frame, palms and the sea beyond" loading="lazy" decoding="async">
+  </div>
+  <div class="wrap roof-two">
+    <figure class="quote"><blockquote><p>We had a fantastic experience here. The rooms are spacious and clean, the breakfast is delicious and it has a magical rooftop with unbeatable views of coconut beach. The staff is warm and welcoming and went above and beyond to give our kids a memorable time. We whole heartedly recommend this place and wish we could stay much longer.</p></blockquote>
+      <figcaption><span><b>Erin</b>, Germany</span> <span class="sep" aria-hidden="true">|</span> <span>Booking.com</span> <span class="sep" aria-hidden="true">|</span> <span>Apr 2026</span></figcaption></figure>
+    <div class="show r32 " data-show id="roof-show" role="region" aria-roledescription="carousel" aria-label="On the roof, photos"><ul class="track" tabindex="0"><li class="slide" aria-roledescription="slide" aria-label="1 of 3"><img src="img/r32-img-100-1200.webp" srcset="img/r32-img-100-800.webp 800w, img/r32-img-100-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 680px" width="1200" height="800" alt="The swing seat on the roof terrace, the sea and palms behind the parapet" loading="lazy" decoding="async"></li><li class="slide" aria-roledescription="slide" aria-label="2 of 3"><span class="lazy" data-src="img/r32-img-101-1200.webp" data-srcset="img/r32-img-101-800.webp 800w, img/r32-img-101-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 680px" data-w="1200" data-h="800" data-alt="The wooden swing seat on its chains, the roof terrace and the sea behind"><noscript><img src="img/r32-img-101-1200.webp" srcset="img/r32-img-101-800.webp 800w, img/r32-img-101-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 680px" width="1200" height="800" alt="The wooden swing seat on its chains, the roof terrace and the sea behind" loading="lazy" decoding="async"></noscript></span></li><li class="slide" aria-roledescription="slide" aria-label="3 of 3"><span class="lazy" data-src="img/r32-img-015-1200.webp" data-srcset="img/r32-img-015-800.webp 800w, img/r32-img-015-1200.webp 1200w" data-sizes="(max-width: 899px) 100vw, 680px" data-w="1200" data-h="800" data-alt="A guest reading on a cushioned bench in the open-sided roof lounge"><noscript><img src="img/r32-img-015-1200.webp" srcset="img/r32-img-015-800.webp 800w, img/r32-img-015-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 680px" width="1200" height="800" alt="A guest reading on a cushioned bench in the open-sided roof lounge" loading="lazy" decoding="async"></noscript></span></li></ul><div class="ctrl" hidden><button class="arw prev" type="button" aria-label="Previous photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><div class="dots" role="group" aria-label="Choose a photo"><button type="button" class="dot" aria-label="Photo 1"></button><button type="button" class="dot" aria-label="Photo 2"></button><button type="button" class="dot" aria-label="Photo 3"></button></div><button class="arw next" type="button" aria-label="Next photo"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button></div></div>
+  </div>
+</section>
+
+<section class="beach" id="beach" aria-labelledby="h-beach">
+  <div class="band">
+    <picture>
+      <source media="(max-width: 767px)" srcset="img/r45-img-008-900.webp 900w" sizes="100vw">
+      <img src="img/r169-img-008-1920.webp" srcset="img/r169-img-008-1280.webp 1280w, img/r169-img-008-1920.webp 1920w" sizes="100vw"
+        width="1920" height="1080" alt="Three coconut palms against a pink and orange sunset over the beach" loading="lazy" decoding="async">
+    </picture>
+  </div>
+  <div class="tint beach-body">
+    <div class="wrap beach-split">
+      <div class="beach-text">
+        <p class="clock"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17a7 7 0 0 1 14 0M2.5 17h19M12 4v4M4.6 9.6l1.8 1.4M19.4 9.6 17.6 11M8 21h8"/></svg><span>Sunset</span></p>
+        <h2 class="hand" id="h-beach">By the beach</h2>
+        <p>The guesthouse is tucked away from the busy Galle–Matara road, right next to the beach.</p><p>Next to the guesthouse is a large open grassed area overlooking the beach, where the friendly locals and tourists alike gather to watch the surf, play cricket, socialise and enjoy beautiful sunrises and sunsets.</p>
+      </div>
+      <div class="print"><img src="img/r32-img-095-1200.webp" srcset="img/r32-img-095-800.webp 800w, img/r32-img-095-1200.webp 1200w" sizes="(max-width: 899px) 100vw, 44vw" width="1200" height="800" alt="Guests and locals crouched on the sand around turtle hatchlings" loading="lazy" decoding="async"></div>
+    </div>
+  </div>
+</section>
+
+<section class="food" id="restaurant" aria-labelledby="h-food">
+  <div class="wrap food-split">
+    <img class="food-img" src="img/r45-img-106-1152.webp" srcset="img/r45-img-106-720.webp 720w, img/r45-img-106-1152.webp 1152w" sizes="(max-width: 899px) 100vw, 440px" width="1152" height="1440" alt="The restaurant upstairs: purple bench seats with saffron and crimson cushions around dark wooden tables" loading="lazy" decoding="async">
+    <div class="food-text">
+      <p class="clock"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><span>Until 22:00</span></p>
+      <h2 class="hand" id="h-food">The restaurant upstairs</h2>
+      <p>A long covered room on the upper floor, with cushioned benches, low tables and a view of the sea. All meals, snacks and drinks are available. Breakfast comes with some rates and not with others.</p><p>The restaurant has its own Google listing, Coconut Surf Restaurant (2nd floor), where it&#x27;s rated 4.6 from 39 reviews.</p>
+      <p class="hours"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>The restaurant upstairs is open every day from 7:30 to 22:00.</span></p>
+      <figure class="quote small"><blockquote><p>Excellent, warm and very helpful staff. The best breakfast we&#x27;ve had in recent years while traveling. (We stayed there for 3 weeks and didn&#x27;t get tired). Very comfortable restaurant area with many &quot;lying around&quot; areas. The room was as expected.</p></blockquote>
+        <figcaption><span><b>Janno</b>, Estonia</span> <span class="sep" aria-hidden="true">|</span> <span>Booking.com</span> <span class="sep" aria-hidden="true">|</span> <span>Mar 2026</span></figcaption></figure>
+    </div>
+  </div>
+  <div class="night-band"><img class="night" src="img/r219-img-099-1920.webp" srcset="img/r219-img-099-1280.webp 1280w, img/r219-img-099-1920.webp 1920w" sizes="(max-width: 899px) 100vw, 1920px" width="1920" height="822" alt="The house at night: the restaurant floor lit with strings of lights, seen through the palms" loading="lazy" decoding="async"></div>
+  <div class="wrap family">
+    <h3 class="hand" id="h-family">The Eranga family home</h3>
+    <div><p>Coconut Surf Inn is the Eranga family home, so staying here means you will experience the endless warm smiles and kind hospitality of the gracious host Chinthaka and his family.</p><p>Chinthaka has been a host on Airbnb for 13 years.</p></div>
+  </div>
+</section>
+
+<section class="break tint" id="break" aria-labelledby="h-break">
+  <div class="wrap">
+    <h2 class="hand" id="h-break">From 7:30, the break</h2>
+    <div class="br-grid">
+      <div class="br-left">
+        <p class="spot">Coconuts, a consistent A-frame reef break, is in front of the guesthouse. Plantations is a more mellow wave, a 100 m walk up the beach.</p>
+        <p class="season">According to the Sri Lanka Travel Pages surf guide, the season at Coconut Point runs from November to April.</p>
+        <div class="now" id="rosa-now" data-generated="2026-11-04T20:26:28+00:00">
+          <p class="now-h"><span class="now-v" data-count="0.6"><span>0.4–</span><span class="cnt">0.6</span></span><small>m</small></p>
+          <p class="now-k">Knee-high at Coconuts <span class="sep" aria-hidden="true">|</span> Thu 5 Nov, 02:30</p>
+          <ul class="now-row">
+            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 16c3 0 3.5-7 9.5-7 3.2 0 4.6 2.6 3.2 4.4-1 1.3-3.2.9-3.2-.9M2.5 20h19"/></svg><span><b>Swell 1.0 m</b> 9 s from the S</span></li>
+            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h11a3 3 0 1 0-3-3M3 12h16a3 3 0 1 1-3 3M3 16h8"/></svg><span><b>Wind 4 km/h</b> cross-shore</span></li>
+          </ul>
+          <p class="credit"><a href="https://rosa.surf/spot/weligama-west" rel="noopener">Forecast for Coconuts by Rosa</a></p>
+        </div>
+      </div>
+      <div class="rosa-box" data-rosa="https://rosa.surf/widget/?spot=weligama-west&amp;theme=light&amp;units=metric" data-title="Rosa surf forecast - Coconuts" data-loading="false">
+        <a class="btn btn-call rosa-plain" href="https://rosa.surf/spot/weligama-west" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 9c2.4 0 2.4-2 4.75-2S9.6 9 12 9s2.4-2 4.75-2S19.1 9 21.5 9M2.5 15c2.4 0 2.4-2 4.75-2S9.6 15 12 15s2.4-2 4.75-2 2.35 2 4.75 2"/></svg><span>See today's forecast for Coconuts on Rosa</span></a>
+      </div>
+    </div>
+    <p class="amen"><span>Free WiFi</span> <span class="sep" aria-hidden="true">|</span> <span>24-hour front desk</span> <span class="sep" aria-hidden="true">|</span> <span>24-hour security and CCTV</span> <span class="sep" aria-hidden="true">|</span> <span>Room service</span> <span class="sep" aria-hidden="true">|</span> <span>Packed lunches</span> <span class="sep" aria-hidden="true">|</span> <span>Swimwear and snacks for sale at the entrance</span> <span class="sep" aria-hidden="true">|</span> <span>Bicycle hire (additional charge)</span> <span class="sep" aria-hidden="true">|</span> <span>Car hire</span> <span class="sep" aria-hidden="true">|</span> <span>Tour desk</span> <span class="sep" aria-hidden="true">|</span> <span>Laundry (additional charge)</span></p>
+  </div>
+</section>
+
+<section class="guests" id="guests" aria-labelledby="h-guests">
+  <div class="wrap">
+    <div class="g-head">
+      <h2 class="hand" id="h-guests">11:00, check-out</h2>
+      <div class="rates rates-3"><a class="rate" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html" rel="noopener"><span class="big"><span class="num" role="img" data-roll="8.5" aria-label="8.5 out of 10">8.5</span><small aria-hidden="true">/10</small></span><span class="rate-k"><b>Booking.com</b>, 142 reviews<br>4 Nov 2026</span></a><a class="rate" href="https://www.google.com/maps/place/?q=place_id:ChIJI29CG-cU4ToRQhs8notgauI" rel="noopener"><span class="big"><span class="num" role="img" data-roll="4.8" aria-label="4.8 out of 5">4.8</span><small aria-hidden="true">/5</small></span><span class="rate-k"><b>Google</b>, 88 reviews<br>4 Nov 2026</span></a><a class="rate" href="https://www.airbnb.com/rooms/2402254" rel="noopener"><span class="big"><span class="num" role="img" data-roll="4.44" aria-label="4.44 out of 5">4.44</span><small aria-hidden="true">/5</small></span><span class="rate-k"><b>Airbnb</b>, 54 reviews<br>4 Nov 2026</span></a></div>
+    </div>
+    <div class="revs" data-revs role="region" aria-roledescription="carousel" aria-label="Guest reviews">
+      <ul class="cards" tabindex="0"><li class="card"><blockquote><p>The Staff were absolutely lovely. The kitchen staff especially, always so warm and welcoming and always had a smile on their face. We loved having a chat with them every day, they really made the stay. The chefs make some delicious food, the sesame tuna was our favourite.</p><p>The rooftop is a lovely place to chill out and the rooms were clean. Location great to walk to the surf.</p></blockquote><p class="who"><b>Meagan</b>, Jersey<br>Booking.com · Feb 2025</p></li><li class="card"><blockquote><p>Great location and area - this part of midigama is the best with multiple surf breaks nearby as well as little beach shacks to watch the surf and turtles and plenty of swimming spots around. The hotel was 100m walk to the beach and plenty of tuk tuks to take you to wherever else in the area you might want to go.</p><p>Room and hotel was clean and nice, staff were lovely and the restaurant had a great view. Having breakfast included made it even better value for money.</p></blockquote><p class="who"><b>Chloe</b>, Australia<br>Booking.com · Mar 2025</p></li><li class="card"><blockquote><p>amazing location 2 minute walk to plantations and coconuts surf break. set away from the main road so was very quiet. breakfast and dinner was very nice and reasonably priced. rooms very clean and offered to clean daily if needed. staff very friendly</p></blockquote><p class="who"><b>Elinor</b>, United Kingdom<br>Booking.com · Apr 2024</p></li><li class="card"><blockquote><p>The owners were very friendly and accommodating. Chinthaka and the entire team provided great service. The rooms are spacious and comfortable and the bathrooms are very clean. The rooftop area was especially lovely with a great view of the beach where you can watch the surfers and relax. The prices are incredibly reasonable as well for the rooms and services provided. Very impressed! :)</p></blockquote><p class="who"><b>V</b>, Sri Lanka<br>Booking.com · Feb 2024</p></li><li class="card"><blockquote><p>I booked my first 5 days here but ended up staying here 2,5 weeks in total.</p><p>Great location close to coconut beach. Rooms were fresh but mostely the staff there was so friendly and amazing! Made me feel like home as a solo travaler! :)</p></blockquote><p class="who"><b>Mette</b>, Sweden<br>Booking.com · Feb 2025</p></li><li class="card"><blockquote><p>This place is a vibe! Also the staff are super cool, they let me leave my stuff with them on the last day so I could surf in the evening which was great. Location is beside a lesser known but still surfable beach, which is awesome. If you want to go into Weligama, it’s a 5 minute tuk tuk, easy :)</p></blockquote><p class="who"><b>Liam</b>, Switzerland<br>Booking.com · Nov 2023</p></li><li class="card"><blockquote><p>Short walk to Coconuts and Plantations surf breaks. Located in a quiet spot away from the main road. Spacious, clean room. Restaurant on site and roof top terrace with good views. Great value for money.</p></blockquote><p class="who"><b>Dean</b>, United Kingdom<br>Booking.com · Apr 2024</p></li><li class="card"><blockquote><p>Incredibly friendly and accommodating staff!! Very kind and willing to help us with any of our requests.</p><p>Our rooms were recently built with A/C + fans. Place is very close to good beaches for surfing with lots of stuff nearby. Fantastic views from the rooftop each morning for breakfast (just note that it takes quite a bit of time for food to be ready but its all quite tasty!)</p></blockquote><p class="who"><b>Abdulrahman</b>, United Kingdom<br>Booking.com · Dec 2023</p></li><li class="card"><blockquote><p>Great location near to beach. The restaurant is on the second floor and has great views and great tea choices. Breakky was included and tasty. Smiley staff.</p></blockquote><p class="who"><b>Rosa</b>, Australia<br>Booking.com · Mar 2026</p></li><li class="card"><blockquote><p>The property is beautiful and the rooftop has an incredible view of the sea. The staff were incredibly helpful and attentive to any need - you can tell that everyone that works there loves to be there</p></blockquote><p class="who"><b>Tadiwa</b>, United Kingdom<br>Booking.com · Nov 2023</p></li></ul>
+      <div class="rev-ctrl" hidden>
+        <button class="rarw prev" type="button" aria-label="Previous reviews"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+        <div class="dots" role="group" aria-label="Choose a page of reviews"></div>
+        <p class="rev-count" aria-live="polite" hidden></p>
+        <button class="rarw next" type="button" aria-label="Next reviews"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="out tint" id="getting-here" aria-labelledby="h-out">
+  <div class="wrap o-grid">
+    <div>
+      <h2 class="hand" id="h-out">Getting here</h2>
+      <p>Koggala Airport is 11 km away. If you want a taxi from the airport, let us know and we&#x27;ll arrange one. There&#x27;s a charge.</p><p>The nearest train station is Kumbalgama, about a 13-minute walk. Midigama station is 1.4 km away. Booking.com puts the centre of Weligama 3.3 km from the house.</p><p>On Google Maps, look for Coconut Surf Inn Guest House and Restaurant.</p>
+    </div>
+    <div class="o-side">
+      <p class="addr"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s-7-6.2-7-11.5a7 7 0 0 1 14 0c0 5.3-7 11.5-7 11.5z"/><circle cx="12" cy="10" r="2.6"/></svg><span>Kadabeddagama Road Gurubebila, Weligama 81700, Sri Lanka</span></p>
+      <div class="actions col"><a class="btn btn-call" href="https://www.google.com/maps/place/?q=place_id:ChIJI29CG-cU4ToRQhs8notgauI" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6.5v13.5L9 17.5l6 2.5 6-2.5V4l-6 2.5zM9 4v13.5M15 6.5V20"/></svg><span>Open in Google Maps</span></a><a class="btn btn-call " href="tel:+94778921396"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>Call +94 77 892 1396</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="closing" id="book" aria-label="Book">
+  <div class="wrap center">
+    <p class="close-line">Booking.com has the live dates and prices. If you&#x27;d rather ask something first, call us.</p>
+    <div class="actions"><a class="btn btn-book " href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Check dates on Booking.com</span></a><a class="btn btn-call " href="tel:+94778921396"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>Call +94 77 892 1396</span></a></div>
+  </div>
+</section>
+</main>
+
+<footer class="foot tint">
+  <div class="wrap f-grid">
+    <div><p class="hand f-name">Coconut Surf Inn</p><p>Kadabeddagama Road Gurubebila, Weligama 81700, Sri Lanka</p><p class="muted">The restaurant upstairs is open every day from 7:30 to 22:00.</p></div>
+    <div class="actions">
+      <a class="btn btn-call btn-sm" href="tel:+94778921396"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>+94 77 892 1396</span></a>
+      <a class="btn btn-call btn-sm" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Rooms on Booking.com</span></a>
+      <a class="btn btn-call btn-sm" href="https://www.airbnb.com/rooms/2402254" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19v-9M21 19v-5a3 3 0 0 0-3-3H8v8M3 15h18"/><circle cx="6" cy="12" r="1.6"/></svg><span>Airbnb</span></a>
+      <a class="btn btn-call btn-sm" href="https://www.google.com/maps/place/?q=place_id:ChIJI29CG-cU4ToRQhs8notgauI" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6.5v13.5L9 17.5l6 2.5 6-2.5V4l-6 2.5zM9 4v13.5M15 6.5V20"/></svg><span>Google Maps</span></a>
+    </div>
+  </div>
+  <p class="wrap fine">Ratings and reviews as published on Booking.com, Google and Airbnb, read 4 Nov 2026.</p>
+</footer>
+<div class="bar" id="bar">
+  <div class="bar-more" id="bar-more" hidden>
+    <p>A guesthouse in Gurubebila, between Midigama and Weligama, on the south coast of Sri Lanka.</p>
+    <p class="muted"><span>Coconuts in front of the guesthouse</span> <span class="sep" aria-hidden="true">|</span> <span>Restaurant upstairs, 7:30–22:00</span> <span class="sep" aria-hidden="true">|</span> <span>Live dates and prices on Booking.com</span></p>
+    <p class="muted"><span>8.5/10 Booking.com, 142 reviews</span> <span class="sep" aria-hidden="true">|</span> <span>4.8/5 Google, 88 reviews</span> <span class="sep" aria-hidden="true">|</span> <span>4 Nov 2026</span></p>
+  </div>
+  <div class="bar-row">
+    <a class="btn btn-book bar-book" href="https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Check dates on Booking.com</span></a>
+    <a class="btn bar-icon" href="tel:+94778921396" aria-label="Call +94 77 892 1396"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a>
+    <button class="btn bar-icon bar-tog" type="button" aria-expanded="false" aria-controls="bar-more" aria-label="More about the house" hidden><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></button>
+  </div>
+</div>
+<script>/* Coconut Surf Inn, interactive mockup ("Under the thatch"). Everything here is an enhancement:
+   with JS off every link works, the rooms stack in two groups, the rows scroll natively. */
+(() => {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const q = new URLSearchParams(location.search);
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveData = !!(navigator.connection && navigator.connection.saveData);
+  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const phoneQ = matchMedia('(max-width: 767px)');
+  const seen = (el, fn, margin = '0px') => {
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { io.unobserve(e.target); fn(e.target); } }), { rootMargin: margin });
+    io.observe(el);
+  };
+
+  /* ---------- header sticks (desktop) and the phone bar slides up once the hero has gone */
+  const hero = $('.hero'), top = $('.top'), bar = $('#bar');
+  /* the blurred placeholder under the hero photo is a loading state only: dropped once the photo is in */
+  const himg = $('.hero-img');
+  if (himg) { const ok = () => himg.classList.add('loaded'); himg.complete && himg.naturalWidth ? ok() : himg.addEventListener('load', ok, { once: true }); }
+  new IntersectionObserver(([e]) => {
+    top.classList.toggle('stuck', !e.isIntersecting);
+    bar.classList.toggle('up', !e.isIntersecting);
+  }, { rootMargin: '-72px 0px 0px 0px' }).observe(hero);
+  const tog = $('.bar-tog'), more = $('#bar-more');
+  tog.hidden = false;
+  tog.addEventListener('click', () => {
+    const open = tog.getAttribute('aria-expanded') !== 'true';
+    tog.setAttribute('aria-expanded', open); more.hidden = !open;
+  });
+
+  /* ---------- rolling digits, once, on first view */
+  $$('.num[data-roll]').forEach((el) => {
+    if (calm) return;
+    const txt = el.dataset.roll;
+    el.textContent = '';
+    const cols = [...txt].map((ch) => {
+      if (!/\d/.test(ch)) { const s = document.createElement('span'); s.textContent = ch; s.setAttribute('aria-hidden', 'true'); el.append(s); return null; }
+      const c = document.createElement('span'); c.className = 'col'; c.setAttribute('aria-hidden', 'true');
+      for (let d = 0; d <= 9; d++) { const s = document.createElement('span'); s.textContent = d; c.append(s); }
+      el.append(c); return [c, +ch];
+    }).filter(Boolean);
+    seen(el, () => cols.forEach(([c, d], i) => setTimeout(() => { c.style.transform = `translateY(${-d * 1.2}em)`; }, 80 * i)));
+  });
+
+  /* ---------- the forecast's height counts up once it is in view */
+  const cnt = $('.now-v .cnt');
+  if (cnt && !calm) {
+    const to = parseFloat(cnt.textContent);
+    seen(cnt, () => {
+      const t0 = performance.now();
+      const step = (t) => { const k = Math.min(1, (t - t0) / 300); cnt.textContent = (to * (1 - Math.pow(1 - k, 3))).toFixed(1); if (k < 1) requestAnimationFrame(step); };
+      requestAnimationFrame(step);
+    });
+  }
+
+  /* ---------- Rosa's widget: only when its block nears the viewport, in its reserved box */
+  const box = $('.rosa-box');
+  if (box) seen(box, () => {
+    box.dataset.loading = 'true';
+    const f = document.createElement('iframe');
+    f.title = box.dataset.title; f.width = '100%'; f.height = '500'; f.loading = 'lazy';
+    f.style.cssText = 'max-width:420px;border:0;border-radius:16px;display:block';
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    f.setAttribute('sandbox', 'allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin');
+    const done = (ok) => { box.dataset.loading = 'false'; if (ok) box.classList.add('loaded'); else f.remove(); };   // the plain link stays under the frame either way
+    const timer = setTimeout(() => done(false), 12000);
+    f.addEventListener('load', () => { clearTimeout(timer); done(true); }, { once: true });
+    // a failed frame still fires 'load' (on an empty error page that would cover the link), so the
+    // frame is only added once Rosa answers at all; until then, and if it never does, the plain link stays
+    fetch(box.dataset.rosa, { mode: 'no-cors', credentials: 'omit' })
+      .then(() => { f.src = box.dataset.rosa; box.append(f); })
+      .catch(() => { clearTimeout(timer); done(false); });
+  }, '600px');
+
+  /* ---------- deferred slides: written as <img> only when their room or slideshow is shown */
+  const hydrate = (root) => $$('.lazy', root).forEach((sp) => {
+    const im = new Image(); im.decoding = 'async'; im.loading = 'lazy';
+    im.width = +sp.dataset.w; im.height = +sp.dataset.h; im.alt = sp.dataset.alt;
+    im.sizes = sp.dataset.sizes; im.srcset = sp.dataset.srcset; im.src = sp.dataset.src;
+    sp.replaceWith(im);
+  });
+  $$('.roof [data-show]').forEach((sh) => seen(sh, hydrate, '200px'));
+
+  /* ---------- slideshows: dots and arrows over a scroll-snap track */
+  $$('[data-show]').forEach((sh) => {
+    const track = $('.track', sh), dots = $$('.dot', sh), ctrl = $('.ctrl', sh);
+    if (dots.length < 2) return;
+    ctrl.hidden = false;
+    let i = 0;
+    const set = (n) => { i = n; dots.forEach((d, k) => d.setAttribute('aria-current', k === n ? 'true' : 'false')); };
+    const go = (n) => { n = (n + dots.length) % dots.length; track.scrollTo({ left: n * track.clientWidth, behavior: calm ? 'auto' : 'smooth' }); set(n); };
+    set(0);
+    dots.forEach((d, k) => d.addEventListener('click', () => go(k)));
+    $('.prev', sh).addEventListener('click', () => go(i - 1));
+    $('.next', sh).addEventListener('click', () => go(i + 1));
+    let raf = 0;
+    track.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => set(Math.round(track.scrollLeft / track.clientWidth))); }, { passive: true });
+  });
+
+  /* ---------- the reviews: a paged carousel (round 3). One dot per page of what fits (3 / 2 / 1),
+     arrows that stop at the ends, swipe and trackpad scroll natively; every control is 44 px or more. */
+  $$('[data-revs]').forEach((rv) => {
+    const track = $('.cards', rv), cards = [...track.children], ctrl = $('.rev-ctrl', rv), dotsBox = $('.dots', rv);
+    const prev = $('.prev', rv), next = $('.next', rv), count = $('.rev-count', rv);
+    let per = 1, pages = 1, page = 0, dots = [];
+    const x = (k) => cards[k].offsetLeft - cards[0].offsetLeft;
+    const mark = (n) => {
+      page = n; dots.forEach((d, k) => d.setAttribute('aria-current', k === n ? 'true' : 'false'));
+      count.textContent = `${n + 1} of ${pages}`;
+      prev.disabled = n === 0; next.disabled = n >= pages - 1;
+    };
+    const go = (n) => { n = Math.max(0, Math.min(pages - 1, n)); track.scrollTo({ left: x(Math.min(n * per, cards.length - 1)), behavior: calm ? 'auto' : 'smooth' }); mark(n); };
+    const build = () => {
+      per = Math.max(1, Math.round(track.clientWidth / (cards[0].offsetWidth || 1)));
+      pages = Math.ceil(cards.length / per);
+      dotsBox.textContent = '';
+      dots = Array.from({ length: pages }, (_, k) => {
+        const d = document.createElement('button'); d.type = 'button'; d.className = 'dot';
+        d.setAttribute('aria-label', `Reviews ${k * per + 1} to ${Math.min(cards.length, (k + 1) * per)}`);
+        d.addEventListener('click', () => go(k)); dotsBox.append(d); return d;
+      });
+      ctrl.hidden = pages < 2;
+      // more pages than fit as 44 px dots (a phone, one review a page): a counter between the arrows
+      const many = pages > 6; dotsBox.hidden = many; count.hidden = !many;
+      mark(Math.min(page, pages - 1));
+    };
+    prev.addEventListener('click', () => go(page - 1));
+    next.addEventListener('click', () => go(page + 1));
+    let raf = 0;
+    track.addEventListener('scroll', () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const end = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+        mark(end ? pages - 1 : Math.round(track.scrollLeft / Math.max(1, x(Math.min(per, cards.length - 1)))));
+      });
+    }, { passive: true });
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(page + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(page - 1); }
+    });
+    build();
+    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(build, 120); });
+  });
+
+  /* ---------- How do you like to sleep? tiles -> rooms that match -> one room on the stage */
+  const viewer = $('#viewer');
+  if (viewer) {
+    const tiles = $$('.tile'), picks = $$('.pick'), pill = $('.pill'), rail = $('.picks');
+    const rooms = Object.fromEntries($$('.room').map((r) => [r.dataset.room, r]));
+    let group = 'ac', cur = picks[0].dataset.pick, near = false;
+    seen(viewer, () => { near = true; hydrate(rooms[cur]); }, '200px');
+    const place = () => {
+      const p = picks.find((b) => b.dataset.pick === cur); if (!p) return;
+      const row = getComputedStyle(rail).flexDirection === 'row';
+      pill.style.width = row ? p.offsetWidth + 'px' : '100%';
+      pill.style.height = p.offsetHeight + 'px';
+      pill.style.transform = row ? `translate(${p.offsetLeft}px, ${p.offsetTop}px)` : `translateY(${p.offsetTop}px)`;
+      if (row) rail.scrollTo({ left: p.offsetLeft - 24, behavior: calm ? 'auto' : 'smooth' });
+    };
+    const pick = (slug) => {
+      cur = slug;
+      picks.forEach((b) => b.setAttribute('aria-pressed', b.dataset.pick === slug ? 'true' : 'false'));
+      Object.entries(rooms).forEach(([k, r]) => { r.classList.toggle('on', k === slug); r.toggleAttribute('inert', k !== slug); });
+      if (near) hydrate(rooms[slug]);
+      place();
+    };
+    const choose = (g, focus) => {
+      group = g;
+      tiles.forEach((t) => { const on = t.dataset.group === g; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; if (on && focus) t.focus(); });
+      viewer.setAttribute('aria-labelledby', 'tab-' + g);
+      picks.forEach((b) => { b.hidden = !b.dataset.groups.split(' ').includes(g); });
+      const vis = picks.filter((b) => !b.hidden);
+      pick(vis.some((b) => b.dataset.pick === cur) ? cur : vis[0].dataset.pick);
+    };
+    tiles.forEach((t, k) => {
+      t.addEventListener('click', (e) => { e.preventDefault(); choose(t.dataset.group); });
+      t.addEventListener('keydown', (e) => {
+        const d = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1 : 0;
+        if (d) { e.preventDefault(); choose(tiles[(k + d + tiles.length) % tiles.length].dataset.group, true); }
+        if (e.key === ' ') { e.preventDefault(); choose(t.dataset.group); }
+      });
+    });
+    picks.forEach((b) => b.addEventListener('click', () => pick(b.dataset.pick)));
+    choose('ac');
+    addEventListener('resize', place);
+    document.fonts && document.fonts.ready.then(place);
+  }
+
+  /* ---------- the hero: a depth parallax on img-102 itself, from the hand-painted depth map.
+     The photograph <img> paints first and is the LCP; the canvas draws the same pixels over it after
+     first paint and only moves the layers against each other. Reduced motion, Save-Data, no WebGL,
+     a page opened from file:// and a slow first 30 frames all keep the still photograph. */
+  const force = q.get('depth') === 'force';
+  const start = () => {
+    const cv = $('.depth'), im = $('.hero-img');
+    if (!cv || !im || ((calm || saveData) && !force)) return;
+    const gl = cv.getContext('webgl', { alpha: false, antialias: false, premultipliedAlpha: false, powerPreference: 'low-power' });
+    if (!gl) return;
+    const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; };
+    const prog = gl.createProgram();
+    gl.attachShader(prog, sh(gl.VERTEX_SHADER, 'attribute vec2 p;varying vec2 v;void main(){v=p*.5+.5;v.y=1.-v.y;gl_Position=vec4(p,0.,1.);}'));
+    gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, `precision mediump float;varying vec2 v;uniform sampler2D img,dep;uniform vec2 st,sp,off;
+      void main(){vec2 t=st+v*sp;float d=texture2D(dep,t).r;float d2=texture2D(dep,t-off*d).r;vec2 o=off*mix(d,d2,.5);gl_FragColor=texture2D(img,t-o);}`));
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
+    gl.useProgram(prog);
+    const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+    const loc = gl.getAttribLocation(prog, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    const U = (n) => gl.getUniformLocation(prog, n);
+    const tex = (unit, source) => {
+      const t = gl.createTexture(); gl.activeTexture(gl.TEXTURE0 + unit); gl.bindTexture(gl.TEXTURE_2D, t);
+      [gl.TEXTURE_WRAP_S, gl.TEXTURE_WRAP_T].forEach((w) => gl.texParameteri(gl.TEXTURE_2D, w, gl.CLAMP_TO_EDGE));
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, source);
+      return t;
+    };
+    gl.uniform1i(U('img'), 0); gl.uniform1i(U('dep'), 1);
+    let ready = false, tw = 0, th = 0, uvpx = [0, 0], loaded = '';
+    const load = () => {
+      const want = im.currentSrc;
+      if (!want || want === loaded || !im.complete || !im.naturalWidth) return;
+      loaded = want;
+      const dm = new Image();
+      dm.onload = () => {
+        try { tex(0, im); tex(1, dm); } catch (e) { cv.remove(); return; }   // file:// taints the texture: keep the still
+        tw = im.naturalWidth; th = im.naturalHeight; ready = true; size(); kick();
+      };
+      dm.src = phoneQ.matches ? cv.dataset.depthTall : cv.dataset.depthWide;
+    };
+    const size = () => {
+      if (!tw) return;
+      const dpr = Math.min(devicePixelRatio || 1, 2), cw = cv.clientWidth, ch = cv.clientHeight;
+      cv.width = Math.round(cw * dpr); cv.height = Math.round(ch * dpr); gl.viewport(0, 0, cv.width, cv.height);
+      const s = Math.max(cw / tw, ch / th), dw = tw * s, dh = th * s, k = 1.03;         // object-fit: cover, scale(1.03)
+      const pos = getComputedStyle(im).objectPosition.split(' ').map((v) => parseFloat(v) / 100);
+      const ox = (cw - dw) * pos[0], oy = (ch - dh) * pos[1];
+      gl.uniform2f(U('sp'), cw / (k * dw), ch / (k * dh));
+      gl.uniform2f(U('st'), (cw / 2 * (1 - 1 / k) - ox) / dw, (ch / 2 * (1 - 1 / k) - oy) / dh);
+      uvpx = [1 / (dw * k), 1 / (dh * k)];
+      last = null;
+    };
+    // the eye (round 2): it is never still while the hero is in view. An idle drift, a slow figure
+    // of eight (±7 px across, ±2.5 px up and down at the nearest layer, a 10 s loop), so the depth
+    // reads with no pointer and on every phone. Scrolling away lowers the eye (up to 8 px), so the
+    // thatch slides over the sea as you leave. A pointer or a tilt takes over and hands back after
+    // 2.5 s. 0 at the horizon. Reduced motion and Save-Data never start any of it.
+    const AMP = [10, 6];
+    let eye = [0, 0], aim = [0, 0], user = [0, 0], userAt = -1e9, last = null, raf = 0, prev = 0, frames = 0, slow = 0, inView = true, dead = false, clock = 0;
+    const draw = () => {
+      gl.uniform2f(U('off'), -eye[0] * uvpx[0], -eye[1] * uvpx[1]);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      last = eye.slice();
+    };
+    const tick = (t) => {
+      raf = 0;
+      if (dead || !ready || !inView || document.hidden) { prev = 0; return; }
+      const dt = prev ? Math.min(64, t - prev) : 16; prev = t;
+      if (frames < 30) { frames++; if (frames > 3 && dt > 24) slow++; if (frames === 30 && slow > 12 && !force) { dead = true; cv.classList.remove('live'); return; } }
+      clock += dt / 1000;
+      const ramp = Math.min(1, clock / 2.5), w = 2 * Math.PI * clock / 10;
+      const idle = [7 * Math.sin(w) * ramp, 2.5 * Math.sin(2 * w + .6) * ramp];
+      const sc = Math.min(1, Math.max(0, scrollY / innerHeight)) * 8;
+      aim = t - userAt < 2500 ? [user[0], user[1] + sc] : [idle[0], idle[1] + sc];
+      const a = 1 - Math.exp(-dt / (t - userAt < 2500 ? 140 : 600));
+      eye = [eye[0] + (aim[0] - eye[0]) * a, eye[1] + (aim[1] - eye[1]) * a];
+      if (!last || Math.abs(eye[0] - last[0]) > .01 || Math.abs(eye[1] - last[1]) > .01) draw();
+      if (!cv.classList.contains('live')) cv.classList.add('live');
+      raf = requestAnimationFrame(tick);
+    };
+    const kick = () => { if (!raf && !dead) raf = requestAnimationFrame(tick); };
+    const point = (nx, ny) => { userAt = performance.now(); user = [Math.max(-1, Math.min(1, nx)) * AMP[0], Math.max(-1, Math.min(1, ny)) * AMP[1]]; kick(); };
+    if (fine) addEventListener('pointermove', (e) => { if (inView) point((e.clientX / innerWidth - .5) * 2, (e.clientY / innerHeight - .5) * 2); }, { passive: true });
+    hero.addEventListener('pointermove', (e) => { if (e.pointerType === 'touch') { const r = hero.getBoundingClientRect(); point((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1); } }, { passive: true });
+    // tilt on phones: iOS asks first, on the visitor's first tap on the picture (never on the button)
+    let b0 = null;
+    const tilt = (e) => { if (e.gamma == null) return; if (b0 == null) b0 = e.beta; point(e.gamma / 18, (e.beta - b0) / 18); };
+    if (!fine && 'DeviceOrientationEvent' in window) {
+      if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        const ask = (e) => {
+          if (e.target.closest('a,button')) return;
+          hero.removeEventListener('click', ask);
+          DeviceOrientationEvent.requestPermission().then((s) => { if (s === 'granted') addEventListener('deviceorientation', tilt); }).catch(() => {});
+        };
+        hero.addEventListener('click', ask);
+      } else addEventListener('deviceorientation', tilt);
+    }
+    new IntersectionObserver(([e]) => { inView = e.isIntersecting; if (inView) kick(); }).observe(hero);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) { prev = 0; kick(); } });
+    addEventListener('resize', () => { size(); load(); kick(); });
+    im.addEventListener('load', load);
+    load();
+  };
+  const later = () => requestAnimationFrame(() => setTimeout(start, 0));   // after first paint
+  document.readyState === 'complete' ? later() : addEventListener('load', later, { once: true });
+})();
+</script>
+</body>
+</html>

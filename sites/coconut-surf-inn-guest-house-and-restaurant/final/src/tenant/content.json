@@ -1,0 +1,541 @@
+{
+ "tenant": {
+  "id": null,
+  "slug": "coconut-surf-inn-guest-house-and-restaurant",
+  "name": "Coconut Surf Inn"
+ },
+ "locales": {
+  "en": {
+   "businessName": "Coconut Surf Inn",
+   "businessType": "beach_lodging",
+   "tagline": "A guesthouse in Gurubebila, between Midigama and Weligama, on the south coast of Sri Lanka.",
+   "closing": "Booking.com has the live dates and prices. If you'd rather ask something first, call us.",
+   "featureLine": null,
+   "languages": [
+    "en"
+   ],
+   "copyBlocks": [
+    {
+     "slot": "intro",
+     "heading": "By the beach",
+     "body": "The guesthouse is tucked away from the busy Galle–Matara road, right next to the beach.\n\nNext to the guesthouse is a large open grassed area overlooking the beach, where the friendly locals and tourists alike gather to watch the surf, play cricket, socialise and enjoy beautiful sunrises and sunsets."
+    },
+    {
+     "slot": "about",
+     "heading": "The Eranga family home",
+     "body": "Coconut Surf Inn is the Eranga family home, so staying here means you will experience the endless warm smiles and kind hospitality of the gracious host Chinthaka and his family.\n\nChinthaka has been a host on Airbnb for 13 years."
+    },
+    {
+     "slot": "about",
+     "heading": "The restaurant upstairs",
+     "body": "A long covered room on the upper floor, with cushioned benches, low tables and a view of the sea. All meals, snacks and drinks are available. Breakfast comes with some rates and not with others.\n\nThe restaurant has its own Google listing, Coconut Surf Restaurant (2nd floor), where it's rated 4.6 from 39 reviews."
+    },
+    {
+     "slot": "about",
+     "heading": "On the roof",
+     "body": "The terrace up top is shaded with thatch, and has a swing seat, hammocks, benches and tables. Beyond the palms, the sea."
+    },
+    {
+     "slot": "about",
+     "heading": "Inside the house",
+     "body": "The middle of the house is a skylit courtyard. Palms grow out of a shallow channel of water there, between the windows of the rooms.\n\nThere are hammocks on the verandas, an outdoor shower in the garden, a clothes line, and a rack for your boards."
+    },
+    {
+     "slot": "offer",
+     "heading": "Six kinds of room",
+     "body": "Booking.com lists six, starting with a single for one person and going up to a family room for four. Each one has its own entrance, and its own bathroom with a shower."
+    },
+    {
+     "slot": "info",
+     "heading": "Getting here",
+     "body": "Koggala Airport is 11 km away. If you want a taxi from the airport, let us know and we'll arrange one. There's a charge.\n\nThe nearest train station is Kumbalgama, about a 13-minute walk. Midigama station is 1.4 km away. Booking.com puts the centre of Weligama 3.3 km from the house.\n\nOn Google Maps, look for Coconut Surf Inn Guest House and Restaurant."
+    }
+   ],
+   "openingHours": [],
+   "hoursNote": "The restaurant upstairs is open every day from 7:30 to 22:00.",
+   "priceList": [],
+   "photos": [
+    {
+     "image": {
+      "id": 1,
+      "alt": "The view from the roof: coconut palms over the open green and the beach shacks, the sea beyond, with white water breaking on the reef",
+      "filename": "img-009.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 282500,
+      "width": 1920,
+      "height": 1440,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 2,
+      "alt": "The thatched roof terrace in the afternoon: a grey hammock slung between timber posts, a swing seat, and the sea beyond the palms",
+      "filename": "img-103.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 377982,
+      "width": 1920,
+      "height": 1440,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 3,
+      "alt": "Three coconut palms against a pink and orange sunset sky over the beach",
+      "filename": "img-008.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 241469,
+      "width": 1920,
+      "height": 1434,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 4,
+      "alt": "The house at night, its upper-floor restaurant lit with strings of bulbs among the palms",
+      "filename": "img-099.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 252162,
+      "width": 1920,
+      "height": 1440,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 5,
+      "alt": "The restaurant upstairs: cushioned benches with saffron and crimson cushions around a low dark table, the sea and palms beyond the railing",
+      "filename": "img-105.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 364725,
+      "width": 1920,
+      "height": 1440,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 1,
+      "alt": "The view from the roof: coconut palms over the open green and the beach shacks, the sea beyond, with white water breaking on the reef",
+      "filename": "img-009.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 282500,
+      "width": 1920,
+      "height": 1440,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 6,
+      "alt": "The skylit light-well: palms growing out of a shallow jade water channel between red-framed windows",
+      "filename": "img-006.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 203031,
+      "width": 1066,
+      "height": 1600,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 7,
+      "alt": "The courtyard water channel with palms, between the red-framed windows of the rooms",
+      "filename": "img-007.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 218000,
+      "width": 1600,
+      "height": 1066,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 8,
+      "alt": "Looking down the stairwell through a screen of rods to the pebble-paved courtyard",
+      "filename": "img-019.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 351910,
+      "width": 1066,
+      "height": 1600,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 9,
+      "alt": "A corridor beside the water channel, palms and red-framed windows",
+      "filename": "img-011.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 256626,
+      "width": 1600,
+      "height": 1066,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 10,
+      "alt": "The side lawn with surfboards racked against the wall",
+      "filename": "img-016.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 621375,
+      "width": 1440,
+      "height": 1920,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 11,
+      "alt": "The veranda: a hammock, a wooden bench, a surfboard against the wall and a potted palm",
+      "filename": "img-030.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 225350,
+      "width": 1600,
+      "height": 1066,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 12,
+      "alt": "The round Coconut Surf Inn sign, a palm in front of an orange sun, on the grey entrance wall in leaf shade",
+      "filename": "img-002.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 256272,
+      "width": 1600,
+      "height": 1034,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    }
+   ],
+   "heroVideo": null,
+   "heroVideoPoster": null,
+   "videos": [],
+   "contact": {
+    "phone": "+94778921396",
+    "whatsapp": null,
+    "email": null,
+    "address": "Kadabeddagama Road Gurubebila, Weligama 81700, Sri Lanka",
+    "mapUrl": "https://www.google.com/maps/place/?q=place_id:ChIJI29CG-cU4ToRQhs8notgauI"
+   },
+   "bookingLinks": [
+    {
+     "label": "Check dates on Booking.com",
+     "url": "https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html"
+    }
+   ],
+   "amenities": [
+    {
+     "label": "Free WiFi",
+     "note": null
+    },
+    {
+     "label": "24-hour front desk",
+     "note": null
+    },
+    {
+     "label": "24-hour security and CCTV",
+     "note": null
+    },
+    {
+     "label": "Room service",
+     "note": null
+    },
+    {
+     "label": "Packed lunches",
+     "note": null
+    },
+    {
+     "label": "Swimwear and snacks for sale at the entrance",
+     "note": null
+    },
+    {
+     "label": "Bicycle hire",
+     "note": "additional charge"
+    },
+    {
+     "label": "Car hire",
+     "note": null
+    },
+    {
+     "label": "Tour desk",
+     "note": null
+    },
+    {
+     "label": "Laundry",
+     "note": "additional charge"
+    }
+   ],
+   "ratings": [
+    {
+     "platform": "booking",
+     "score": 8.5,
+     "scale": "10",
+     "count": 142,
+     "url": "https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html",
+     "capturedAt": "2026-11-04"
+    },
+    {
+     "platform": "google",
+     "score": 4.8,
+     "scale": "5",
+     "count": 88,
+     "url": "https://www.google.com/maps/place/?q=place_id:ChIJI29CG-cU4ToRQhs8notgauI",
+     "capturedAt": "2026-11-04"
+    },
+    {
+     "platform": "airbnb",
+     "score": 4.44,
+     "scale": "5",
+     "count": 54,
+     "url": "https://www.airbnb.com/rooms/2402254",
+     "capturedAt": "2026-11-04"
+    }
+   ],
+   "testimonials": [
+    {
+     "quote": "We had a fantastic experience here. The rooms are spacious and clean, the breakfast is delicious and it has a magical rooftop with unbeatable views of coconut beach. The staff is warm and welcoming and went above and beyond to give our kids a memorable time. We whole heartedly recommend this place and wish we could stay much longer.",
+     "author": "Erin, Germany",
+     "source": "booking",
+     "lang": "en",
+     "date": "2026-04"
+    },
+    {
+     "quote": "Excellent, warm and very helpful staff. The best breakfast we've had in recent years while traveling. (We stayed there for 3 weeks and didn't get tired). Very comfortable restaurant area with many \"lying around\" areas. The room was as expected.",
+     "author": "Janno, Estonia",
+     "source": "booking",
+     "lang": "en",
+     "date": "2026-03"
+    },
+    {
+     "quote": "The Staff were absolutely lovely. The kitchen staff especially, always so warm and welcoming and always had a smile on their face. We loved having a chat with them every day, they really made the stay. The chefs make some delicious food, the sesame tuna was our favourite. \r\nThe rooftop is a lovely place to chill out and the rooms were clean. Location great to walk to the surf.",
+     "author": "Meagan, Jersey",
+     "source": "booking",
+     "lang": "en",
+     "date": "2025-02"
+    },
+    {
+     "quote": "Great location and area - this part of midigama is the best with multiple surf breaks nearby as well as little beach shacks to watch the surf and turtles and plenty of swimming spots around. The hotel was 100m walk to the beach and plenty of tuk tuks to take you to wherever else in the area you might want to go. \nRoom and hotel was clean and nice, staff were lovely and the restaurant had a great view. Having breakfast included made it even better value for money.",
+     "author": "Chloe, Australia",
+     "source": "booking",
+     "lang": "en",
+     "date": "2025-03"
+    },
+    {
+     "quote": "amazing location 2 minute walk to plantations and coconuts surf break. set away from the main road so was very quiet. breakfast and dinner was very nice and reasonably priced. rooms very clean and offered to clean daily if needed. staff very friendly",
+     "author": "Elinor, United Kingdom",
+     "source": "booking",
+     "lang": "en",
+     "date": "2024-04"
+    },
+    {
+     "quote": "The owners were very friendly and accommodating. Chinthaka and the entire team provided great service. The rooms are spacious and comfortable and the bathrooms are very clean. The rooftop area was especially lovely with a great view of the beach where you can watch the surfers and relax. The prices are incredibly reasonable as well for the rooms and services provided. Very impressed! :)",
+     "author": "V, Sri Lanka",
+     "source": "booking",
+     "lang": "en",
+     "date": "2024-02"
+    },
+    {
+     "quote": "I booked my first 5 days here but ended up staying here 2,5 weeks in total. \r\nGreat location close to coconut beach. Rooms were fresh but mostely the staff there was so friendly and amazing! Made me feel like home as a solo travaler! :)",
+     "author": "Mette, Sweden",
+     "source": "booking",
+     "lang": "en",
+     "date": "2025-02"
+    },
+    {
+     "quote": "This place is a vibe! Also the staff are super cool, they let me leave my stuff with them on the last day so I could surf in the evening which was great. Location is beside a lesser known but still surfable beach, which is awesome. If you want to go into Weligama, it’s a 5 minute tuk tuk, easy :)",
+     "author": "Liam, Switzerland",
+     "source": "booking",
+     "lang": "en",
+     "date": "2023-11"
+    },
+    {
+     "quote": "Short walk to Coconuts and Plantations surf breaks. Located in a quiet spot away from the main road. Spacious, clean room. Restaurant on site and roof top terrace with good views. Great value for money.",
+     "author": "Dean, United Kingdom",
+     "source": "booking",
+     "lang": "en",
+     "date": "2024-04"
+    },
+    {
+     "quote": "Incredibly friendly and accommodating staff!! Very kind and willing to help us with any of our requests. \n\nOur rooms were recently built with A/C + fans. Place is very close to good beaches for surfing with lots of stuff nearby. Fantastic views from the rooftop each morning for breakfast (just note that it takes quite a bit of time for food to be ready but its all quite tasty!)",
+     "author": "Abdulrahman, United Kingdom",
+     "source": "booking",
+     "lang": "en",
+     "date": "2023-12"
+    },
+    {
+     "quote": "Great location near to beach. The restaurant is on the second floor and has great views and great tea choices. Breakky was included and tasty. Smiley staff.",
+     "author": "Rosa, Australia",
+     "source": "booking",
+     "lang": "en",
+     "date": "2026-03"
+    },
+    {
+     "quote": "The property is beautiful and the rooftop has an incredible view of the sea. The staff were incredibly helpful and attentive to any need - you can tell that everyone that works there loves to be there",
+     "author": "Tadiwa, United Kingdom",
+     "source": "booking",
+     "lang": "en",
+     "date": "2023-11"
+    }
+   ],
+   "spot": "Coconuts, a consistent A-frame reef break, is in front of the guesthouse. Plantations is a more mellow wave, a 100 m walk up the beach.",
+   "season": "According to the Sri Lanka Travel Pages surf guide, the season at Coconut Point runs from November to April.",
+   "languagesSpoken": [
+    "en"
+   ],
+   "rooms": [
+    {
+     "label": "Deluxe Double Room with Balcony",
+     "beds": "1 large double bed",
+     "sleeps": 2,
+     "note": "Upstairs, 15 m², with a balcony. Air conditioning, fan and hot water.",
+     "photo": {
+      "id": 13,
+      "alt": "Double bed with a grey cover and red cushions, a ceiling fan and an air conditioner, the balcony doors open onto green",
+      "filename": "img-076.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 304252,
+      "width": 1440,
+      "height": 1920,
+      "focalX": 50,
+      "focalY": 50
+     }
+    },
+    {
+     "label": "Superior Double Room",
+     "beds": "1 large double bed",
+     "sleeps": 2,
+     "note": "Ground floor, 14 m². Air conditioning, fan and hot water.",
+     "photo": {
+      "id": 14,
+      "alt": "Double bed on a dark timber frame with a green towel, the bedside lamps lit",
+      "filename": "img-037.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 176482,
+      "width": 1920,
+      "height": 1440,
+      "focalX": 50,
+      "focalY": 50
+     }
+    },
+    {
+     "label": "Deluxe Double Room (2 Adults + 1 Child)",
+     "beds": "1 double bed and 1 large double bed",
+     "sleeps": 3,
+     "note": "Ground floor, 19 m². Air conditioning, fan and hot water.",
+     "photo": {
+      "id": 15,
+      "alt": "A carved dark-wood bed beside an antique dresser and a red wall",
+      "filename": "img-036.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 145250,
+      "width": 1600,
+      "height": 1067,
+      "focalX": 50,
+      "focalY": 50
+     }
+    },
+    {
+     "label": "Deluxe Family Room",
+     "beds": "1 single bed and 1 large double bed",
+     "sleeps": 4,
+     "note": "28 m², with a balcony and a garden view. Air conditioning, fan and hot water.",
+     "photo": {
+      "id": 16,
+      "alt": "A long room with two beds, a red feature wall and a wall-mounted desk",
+      "filename": "img-045.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 218309,
+      "width": 1440,
+      "height": 1920,
+      "focalX": 50,
+      "focalY": 50
+     }
+    },
+    {
+     "label": "Budget Double Room",
+     "beds": "1 large double bed",
+     "sleeps": 2,
+     "note": "12 m². Fan and mosquito net; no air conditioning and no hot water.",
+     "photo": {
+      "id": 17,
+      "alt": "An open door onto an older room with a mosquito-net bed",
+      "filename": "img-046.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 157888,
+      "width": 1920,
+      "height": 1440,
+      "focalX": 50,
+      "focalY": 50
+     }
+    },
+    {
+     "label": "Budget Single Room",
+     "beds": "1 single bed",
+     "sleeps": 1,
+     "note": "Upstairs, 9 m². Fan and mosquito net; no air conditioning and no hot water.",
+     "photo": {
+      "id": 18,
+      "alt": "Bed under a white mosquito-net canopy",
+      "filename": "img-056.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 156103,
+      "width": 1920,
+      "height": 1440,
+      "focalX": 50,
+      "focalY": 50
+     }
+    }
+   ],
+   "stayInfo": {
+    "checkInFrom": "13:00",
+    "checkInTo": null,
+    "checkOutFrom": null,
+    "checkOutTo": "11:00",
+    "minNights": null,
+    "note": "Children of any age are welcome, but there are no cots or extra beds. Pets are allowed on request, at no charge."
+   },
+   "lessons": [],
+   "credentials": [],
+   "rentals": [],
+   "brands": [],
+   "forecast": {
+    "enabled": true,
+    "rosaSpotId": "weligama-west",
+    "spotName": "Coconuts"
+   },
+   "updatedAt": null,
+   "createdAt": null
+  }
+ }
+}

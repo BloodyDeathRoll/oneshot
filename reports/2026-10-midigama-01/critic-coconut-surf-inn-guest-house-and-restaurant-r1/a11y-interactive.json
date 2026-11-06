@@ -1,0 +1,361 @@
+{
+ "m390": {
+  "axe": {
+   "violations": [
+    {
+     "id": "aria-prohibited-attr",
+     "impact": "serious",
+     "nodes": [
+      "b > .num[data-roll=\"8.5\"][aria-label=\"8.5 out of 10\"]",
+      "b > .num[data-roll=\"4.8\"][aria-label=\"4.8 out of 5\"]"
+     ]
+    }
+   ],
+   "passes": 29,
+   "incomplete": [
+    {
+     "id": "aria-prohibited-attr",
+     "n": 1
+    },
+    {
+     "id": "color-contrast",
+     "n": 9
+    }
+   ]
+  },
+  "overflow": {
+   "sw": 390,
+   "cw": 390
+  },
+  "external_attempted": [
+   "https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&family=Shadows+Into+Light+Two&display=swap",
+   "https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+   "https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&family=Shadows+Into+Light+Two&display=swap"
+  ],
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ],
+  "tab_count": 42,
+  "tab_invisible": 0,
+  "tabs": [
+   {
+    "t": "Coconut Surf Inn",
+    "w": 156,
+    "h": 26,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Call +94 77 892 1396",
+    "w": 46,
+    "h": 46,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Check dates on Booking.com",
+    "w": 288,
+    "h": 54,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Booking.com, 142",
+    "w": 113,
+    "h": 19,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Google, 88",
+    "w": 69,
+    "h": 19,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "See rooms and live dates on Booking.com",
+    "w": 342,
+    "h": 62,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Call +94 77 892 1396",
+    "w": 342,
+    "h": 50,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Air conditioning and hot water\n4 kinds o",
+    "w": 342,
+    "h": 81,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Superior Double Room\nA/C · sleeps 2 · 14",
+    "w": 182,
+    "h": 63,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Deluxe Double Room with Balcony\nA/C · sl",
+    "w": 261,
+    "h": 63,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Deluxe Double Room (2 Adults + 1 Child)\n",
+    "w": 305,
+    "h": 63,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Deluxe Family Room\nA/C · sleeps 4 · 28 m",
+    "w": 178,
+    "h": 63,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "UL",
+    "w": 342,
+    "h": 257,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Photo 1",
+    "w": 24,
+    "h": 8,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   }
+  ],
+  "tabs_all_outline": [
+   "solid 3px",
+   "none 3px"
+  ]
+ },
+ "d1440": {
+  "axe": {
+   "violations": [
+    {
+     "id": "aria-prohibited-attr",
+     "impact": "serious",
+     "nodes": [
+      "b > .num[data-roll=\"8.5\"][aria-label=\"8.5 out of 10\"]",
+      "b > .num[data-roll=\"4.8\"][aria-label=\"4.8 out of 5\"]"
+     ]
+    }
+   ],
+   "passes": 29,
+   "incomplete": [
+    {
+     "id": "aria-prohibited-attr",
+     "n": 1
+    },
+    {
+     "id": "color-contrast",
+     "n": 9
+    }
+   ]
+  },
+  "overflow": {
+   "sw": 1440,
+   "cw": 1440
+  },
+  "external_attempted": [
+   "https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&family=Shadows+Into+Light+Two&display=swap",
+   "https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+   "https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&family=Shadows+Into+Light+Two&display=swap"
+  ],
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ],
+  "tab_count": 46,
+  "tab_invisible": 1,
+  "tabs": [
+   {
+    "t": "Coconut Surf Inn",
+    "w": 168,
+    "h": 28,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Rooms",
+    "w": 52,
+    "h": 40,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "The roof",
+    "w": 60,
+    "h": 40,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "The break",
+    "w": 72,
+    "h": 40,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Check dates",
+    "w": 144,
+    "h": 42,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Check dates on Booking.com",
+    "w": 309,
+    "h": 56,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Booking.com, 142",
+    "w": 113,
+    "h": 19,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Google, 88",
+    "w": 69,
+    "h": 19,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "See rooms and live dates on Booking.com",
+    "w": 377,
+    "h": 50,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Call +94 77 892 1396",
+    "w": 228,
+    "h": 50,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Air conditioning and hot water\n4 kinds o",
+    "w": 389,
+    "h": 95,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Superior Double Room\nA/C · sleeps 2 · 14",
+    "w": 389,
+    "h": 75,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Deluxe Double Room with Balcony\nA/C · sl",
+    "w": 389,
+    "h": 75,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   },
+   {
+    "t": "Deluxe Double Room (2 Adults + 1 Child)\n",
+    "w": 389,
+    "h": 75,
+    "inView": true,
+    "op": 1,
+    "outline": "solid 3px"
+   }
+  ],
+  "tabs_all_outline": [
+   "solid 3px",
+   "none 3px"
+  ]
+ },
+ "overflow_320": {
+  "sw": 320,
+  "cw": 320
+ },
+ "overflow_360": {
+  "sw": 360,
+  "cw": 360
+ },
+ "nojs390": {
+  "booking_links": 14,
+  "first_top": 0,
+  "tel": 6,
+  "blockquotes": 14,
+  "rosa": [
+   "A https://rosa.surf/spot/weligama-west vis=true",
+   "A https://rosa.surf/spot/weligama-west vis=true"
+  ],
+  "imgs_visible": 45,
+  "text_len": 10119,
+  "sw": 390,
+  "cw": 390
+ },
+ "nojs1440": {
+  "booking_links": 14,
+  "first_top": 18,
+  "tel": 6,
+  "blockquotes": 14,
+  "rosa": [
+   "A https://rosa.surf/spot/weligama-west vis=true",
+   "A https://rosa.surf/spot/weligama-west vis=true"
+  ],
+  "imgs_visible": 45,
+  "text_len": 10132,
+  "sw": 1440,
+  "cw": 1440
+ },
+ "reduced": {
+  "videos": 0,
+  "canvases": 1,
+  "anims": [
+   0.01
+  ]
+ }
+}

@@ -1,0 +1,50 @@
+phone cold t=500 fontsLoaded=[Be Vietnam Pro,Be Vietnam Pro,Patrick Hand,Patrick Hand Fallback,Be Vietnam Pro Fallback] state={"y":0,"barVisible":false,"barTop":851,"canvases":[{"cls":"light on","op":"0.0589054","disp":"block","vis":true}]}
+phone cold t=1500 fontsLoaded=[Be Vietnam Pro,Be Vietnam Pro,Patrick Hand,Patrick Hand Fallback,Be Vietnam Pro Fallback] state={"y":0,"barVisible":false,"barTop":851,"canvases":[{"cls":"light on","op":"1","disp":"block","vis":true}]}
+phone cold t=3000 fontsLoaded=[Be Vietnam Pro,Be Vietnam Pro,Patrick Hand,Patrick Hand Fallback,Be Vietnam Pro Fallback] state={"y":0,"barVisible":false,"barTop":851,"canvases":[{"cls":"light on","op":"1","disp":"block","vis":true}]}
+phone cold t=6000 fontsLoaded=[Be Vietnam Pro,Be Vietnam Pro,Patrick Hand,Patrick Hand Fallback,Be Vietnam Pro Fallback] state={"y":0,"barVisible":false,"barTop":851,"canvases":[{"cls":"light on","op":"1","disp":"block","vis":true}]}
+cold load ms 8467 third-party hosts localhost:8914 fonts.googleapis.com fonts.gstatic.com
+hero {
+ "heroText": "Lotus Surf House Midigama, Sri Lanka Check dates on Booking.com",
+ "bookingLinks": [
+  "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html"
+ ],
+ "bookingCount": 13,
+ "tel": [
+  "tel:+94774647541"
+ ],
+ "pageH": 8418,
+ "sw": 390,
+ "titles": [
+  "H1:Lotus Surf House",
+  "H2:Choose your floor",
+  "H3:Garden floor",
+  "H3:",
+  "H3:",
+  "H2:In the garden",
+  "H2:Breakfast",
+  "H3:Yelum",
+  "H2:Guests say",
+  "H2:Getting here",
+  "H3:Good to know"
+ ]
+}
+hero CTA {"text":"Check dates on Booking.com","x":39.53125,"y":453.9375,"w":310.9375,"h":54,"bg":"rgb(1, 101, 163)","color":"rgb(255, 255, 255)","font":"\"Be Vietnam Pro\", \"Be Vietnam Pro Fallback\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif","size":"16px"}
+s00 y=0 bar=false barTop=851
+s01 y=591 bar=false barTop=851
+s02 y=1182 bar=true barTop=772
+s03 y=1773 bar=true barTop=772
+s04 y=2364 bar=true barTop=772
+s05 y=2955 bar=true barTop=772
+s06 y=3546 bar=true barTop=772
+s07 y=4137 bar=true barTop=772
+s08 y=4728 bar=true barTop=772
+s09 y=5319 bar=true barTop=772
+s10 y=5910 bar=true barTop=772
+s11 y=6501 bar=true barTop=772
+s12 y=7092 bar=true barTop=772
+s13 y=7574 bar=true barTop=772
+fonts final Be Vietnam Pro 400, Be Vietnam Pro 600, Patrick Hand 400, Patrick Hand Fallback normal, Be Vietnam Pro Fallback normal
+laptop hero CTA hover before: none rgba(255, 255, 255, 0.35) 0px 0px 0px 1.5px, rgba(0, 0, 0, 0.55) 0px 10px 28px -10px rgb(1, 101, 163) | after: matrix(1, 0, 0, 1, 0, -1.91513) rgba(21, 97, 147, 0.57) 0px 8.74738px 19.2442px -8.55949px, rgba(0, 0, 0, 0.07) 0px 1.25262px 3.50733px -1.25262px rgb(1, 89, 145)
+micro-animations (laptop): {"total":48,"withTransition":42,"without":["skip:Skip to the rooms","mark:Lotus Surf House","A:Booking.com, 125 reviews","A:Google, 78","fig:0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n.\n0\n1\n2\n3\n"]}
+reduced {"y":2194,"barVisible":true,"barTop":772,"canvases":[{"cls":"light","op":"0","disp":"none","vis":false}]}
+nojs {"y":2194,"barVisible":true,"barTop":772,"canvases":[{"cls":"light","op":"0","disp":"block","vis":true}]}

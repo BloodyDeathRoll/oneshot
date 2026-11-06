@@ -1,0 +1,18 @@
+calm hero img transform matrix(1, 0, 0, 1, -490.75, 0) 78% 50%
+interactive depth canvas ["depth live op=1"]
+interactive depth canvas default laptop ["depth live op=1"]
+interactive fan picks ["Budget Single Room Fan · sleeps 1 · 9 m²","Budget Double Room Fan · sleeps 2 · 12 m²"]
+interactive big picks ["Deluxe Double Room (2 Adults + 1 Child) A/C · sleeps 3 · 19 m²","Deluxe Family Room A/C · sleeps 4 · 28 m²"]
+interactive bar-more A guesthouse in Gurubebila, between Midigama and Weligama, on the south coast of Sri Lanka. Coconuts in front of the guesthouse | Restaurant upstairs, 7:30–22:00 | Live dates and prices on Booking.com 8.5/10 Booking.com, 142 reviews | 4.8/5 Google, 88 | 4 Nov 2026
+unique laptop #stay top=5045 height=3910 pin=true
+unique canvases ["gl op=1"]
+unique phone #stay top=6678 height=3237 pin=true
+unique canvases ["gl op=1"]
+unique finder focus tile:1
+Just me
+unique finder 2 text How many are coming? 1 Just me 2 Two of us 3 Three 4 Four ? Not sure Deluxe Double Room with Balcony A/C | Hot water | 1 large double bed | Sleeps 2 Upstairs, 15 m², with a balcony. Air conditioning, fan and hot water. Check dates on Booking.com Superior Double Room A/C | Hot water | 1 large double bed | Sleeps 2 Ground floor, 14 m². Air conditioning, fan and hot water. Check dates on Booking.com Deluxe Double Room (2 Adults + 1 Child) A/C | Hot water | 1 double bed and 1 large double bed | Sleeps 3 Ground floor, 19 m². Air conditioning, fan and hot water. Check dates on Booking.com Budget Dou
+unique after esc btn btn-ghost sheetOpen=false
+unique /rooms/ nojs Skip to content Coconut Surf Inn Back to Coconut Surf Inn How many are coming? Just me Budget Single Room Fan | 1 single bed | Sleeps 1 Upstairs, 9 m². Fan and mosquito net; no air conditioning and no hot water. Check dates on Booking.com Deluxe Double Room with Balcony A/C | Hot water | 1 large dou
+tap-through http://localhost:8921/: hero href=https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html -> first request https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html (1 tap)
+tap-through http://localhost:8922/: hero href=https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html -> first request https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html (1 tap)
+tap-through http://localhost:8923/: hero href=https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html -> first request https://www.booking.com/hotel/lk/coconut-surf-inn-weligama.en-gb.html (1 tap)

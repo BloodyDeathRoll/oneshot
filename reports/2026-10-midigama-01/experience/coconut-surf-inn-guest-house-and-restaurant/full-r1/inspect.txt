@@ -1,0 +1,46 @@
+TASTESKILL · INSPECT   http://localhost:8970/
+
+MEASURED (first viewport listed)
+  hero headline   "Coconut Surf Inn"  3 words · 1 line(s) · 72px (5vw) · Caveat 600 · tracking 0.005em · leading 1.11
+  @768px          1 line(s) · 72px
+  @390px          1 line(s) · 50px
+  typefaces       Red Hat Text 96%, Caveat 4%
+  sizes in use    14 / 15 / 16 / 17 / 18 / 22 / 26 / 28 / 52 / 58 / 60 / 72 px   body 17px / 1.62
+  colour          page #ffffff · sections #9fbde0 #f1f1f3 #dcdfe2 · button #252323
+  page            13.1 screens · 1100 words · 50 images · hero media 100% img
+  headings        20 · longest 2 line(s) · median 2 words
+
+FAIL — fix every one of these
+  [headline-lines] @768px  1 headline(s) wrap past two lines at 768px: "Booking.com has the live dates and prices. If yo" → 3 lines (15 words, 52px, a paragraph set above 32px)
+      → Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 32px or less.
+  [eyebrow] @768px (+390)  2 eyebrow/kicker label(s) above headings: "142 reviews" above "4.44/5"; "142 reviews" above "4.44/5"
+      → Delete them. If the label carried real information, fold it into the headline or the supporting sentence.
+  [headline-lines] @390px  1 headline(s) wrap past two lines at 390px: "Booking.com has the live dates and prices. If yo" → 3 lines (15 words, 32.4px, a paragraph set above 24px)
+      → Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 24px or less.
+  [covered-text] @390px  Large text lies under another element at some scroll position: "8.5/10" (screen 12, 100% hidden)
+      → Nothing may sit on top of a headline or statement. Move the picture, shorten the pinned run, or raise the text above it (z-index) and give it a ground.
+
+WARN — fix, or be able to defend
+  [size-count] @1440px (+768, 390)  12 different font sizes (14, 15, 16, 17, 18, 22, 26, 28, 52, 58, 60, 72).
+      → A page needs about five: display, heading, lead, body, small.
+  [no-footage] @1440px  No video anywhere on the page.
+      → Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject.
+  [side-scroll] @1440px (+768, 390)  6 row(s) scroll sideways with content past their edge.
+      → Jurors and most visitors read a row cut at the edge as clipped, not as scrollable. Wrap it onto more lines, or end it inside the grid.
+  [empty-middle] @1440px (+768)  1 section(s) have content at both edges and 1492px of nothing between: "Six kinds of room"
+      → Bring the two parts together on the grid, or put the picture or figure of the section in the middle. An empty middle third reads as a hole, the same as an empty half.
+
+LOOK AT THE RENDER — open these with your image viewer / Read tool before saying anything about quality:
+  desktop 1440px  .taste-skill/inspect/desktop-fold.jpg
+                  .taste-skill/inspect/desktop-page-01.jpg
+                  .taste-skill/inspect/desktop-page-02.jpg
+                  .taste-skill/inspect/desktop-page-03.jpg
+  tablet 768px    .taste-skill/inspect/tablet-fold.jpg
+                  .taste-skill/inspect/tablet-page-01.jpg
+                  .taste-skill/inspect/tablet-page-02.jpg
+  mobile 390px    .taste-skill/inspect/mobile-fold.jpg
+                  .taste-skill/inspect/mobile-page-01.jpg
+                  .taste-skill/inspect/mobile-page-02.jpg
+
+report: .taste-skill/inspect/report.json
+RESULT: 4 FAIL, 4 WARN — not done.

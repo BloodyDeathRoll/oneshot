@@ -1,0 +1,569 @@
+{
+ "walked_at": "2026-11-03T17:57:01.521Z",
+ "scope": "no_site",
+ "viewport": "390x844 DPR2 mobile, iPhone Safari UA, en-US, logged out (Google listings also at 1440x1000, where the detail rows show)",
+ "rules": "read-only; cookie dialogs declined, sign-in prompts closed; no form submitted, no dates or personal data entered, no login, no contact",
+ "recipe": "dossier/lotus-surf-house/funnel/make-walk.mjs",
+ "steps": [
+  {
+   "step": "01-google-listing",
+   "viewport": "390x844",
+   "requested": "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0?hl=en",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "dismissed": [
+    "Go back to web"
+   ],
+   "navigation_chain": [
+    [
+     200,
+     "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h"
+    ]
+   ],
+   "final_url": "https://www.google.com/maps/place/Lotus+Surf+House,+5.965106,+80.392243,+Indhana+Rd,+Midigama+80650,+Sri+Lanka/@5.9652192,80.3922802,15z/data=!4m6!3m5!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3?hl=en&g_ep=Eg1tbF8yMDI2MTAyN18wIJvbDyoASAJQAg%3D%3D",
+   "screenshot": "funnel/walk/01-google-listing-fold.png",
+   "title": "Lotus Surf House, Midigama - Explore in Google Maps",
+   "doc_width": 390,
+   "page_height": 844,
+   "text_chars": 434,
+   "tel_links": [
+    "tel:+94774647541"
+   ],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_774647541_in_text": false,
+   "phone_712585804_in_text": false,
+   "add_website": false,
+   "lotus_site_links": [],
+   "offsite_booking_links": [],
+   "commission_phrases": [],
+   "contact_phrases": [],
+   "login_wall": false,
+   "captcha": false,
+   "text_head": "\n\nLotus Surf House\n\nOpen in the app\nYour location\n\nLotus Surf House\n4.9\n(78)·3-star hotel\n\nDirections\n\nStart\n\nCall\n\nSave\n\nShare\nSee all 150 photos in the app\nContinue\n\nTraffic\n\nTransit\n\nBicycling\n\nSatellite\n\nTerrain\n\nWildfires\n\nAir Quality\n\nMap movement controls\n\nReal-time location sharing\n\nYour contributions\n\nYour places\nSettings\nLanguage\nHelp\nMy Maps\nSend Product Feedback\n\tIsrael\tEDIT\n\tUse the Google Maps app",
+   "at": []
+  },
+  {
+   "step": "02-google-listing-desktop",
+   "viewport": "1440x1000",
+   "requested": "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0?hl=en",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "navigation_chain": [
+    [
+     200,
+     "https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h"
+    ]
+   ],
+   "final_url": "https://www.google.com/maps/place/Lotus+Surf+House/@5.9652192,80.3922802,17z/data=!3m1!4b1!4m9!3m8!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3?hl=en&entry=ttu&g_ep=EgoyMDI2MTAyOC4wIKXMDSoASAFQAw%3D%3D",
+   "screenshot": "funnel/walk/02-google-listing-desktop-fold.png",
+   "title": "Lotus Surf House - Google Maps",
+   "doc_width": 1440,
+   "page_height": 1000,
+   "text_chars": 1891,
+   "tel_links": [
+    "tel:+94774647541"
+   ],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_774647541_in_text": true,
+   "phone_712585804_in_text": false,
+   "add_website": true,
+   "lotus_site_links": [],
+   "offsite_booking_links": [
+    {
+     "label": "Agoda ₪119  Free cancellation until 4 Nov · Free breakfast",
+     "href": "https://www.google.com/travel/lodging/clk?pc=AJ0xEygGqKMfEIhJz_ODNuGOYiCNYRAeDvxk2wkeFl5ZofEJLMyLHUfKSNQSitEuFalGsnbNrivA8z03i_V47PEI_QRrbbqKWp5w67x4aFEnyUglZCu"
+    },
+    {
+     "label": "Booking.com ₪119  Free cancellation until 4 Nov · Free breakfast · Free Wi-Fi",
+     "href": "https://www.google.com/travel/lodging/clk?pc=AJ0xEygOK7grA_oqPt2WJ-HN_j4VWQW8J_nfTr-_NoJpCots7Qlj9hBhewxJbzASBwiQ3NRhs90NnbrTh8zBp4lk77CWfm9aaBZX3VghToBUVvbO2_7"
+    }
+   ],
+   "commission_phrases": [],
+   "contact_phrases": [
+    "Surfing Wombats Pizzeria/Hostel"
+   ],
+   "login_wall": true,
+   "captcha": false,
+   "text_head": " Select your dates to see the best prices\n\n\n\nNearby hotels\n\nRestaurants\n\nThings to do\n\nBars\n\nCoffee\n\nPharmacies\n\nParking\n\n\n\nSaved\n\nRecents\nLotus Surf House\n\nGet app\n₪119\nNov 8 – 9\n\nSee photos\nLotus Surf House\n4.9\n3-star hotel\nBooking.com\nSponsored\n\n₪119\nBook now\nOverview\nPrices\nAbout\n\nDirections\n\nSave\n\nNearby\n\nShare\n\nCheck availability\n \nCompare prices\nFree cancellation only\n\nCheck in / Check out\nSun, Nov 8\n\n\nMon, Nov 9\n\n\n\n2\n\n \nSponsored\n\nFeatured options\nBooking.com\n₪119\n\nFree cancellation until 4 Nov · Free breakfast · Free Wi-Fi\n1 queen bed, 1 double bed\n₪119\n\nSee all rooms\n \nAll options\nAgoda\n₪119\n\nFree cancellation until 4 Nov · Free breakfast\nSee rooms \nBooking.com\n₪119\n\nFree cancellation until 4 Nov · Free breakfast · Free Wi-Fi\nSee rooms \nMore prices from ₪119\n \n \n\n5.965106, 80.392243, Indhana Rd, Midigama 80650, Sri Lanka\n\n\n+94 77 464 7541\n\n\n\nX98R+3W Ahangama, Sri Lanka\n\n\n \n\nSuggest an edit\n \nAdd missing information\n\n\nAdd website\n\nAdd a photo\n \nSimilar hotels nearby\n₪27\nAsanka Surf House & Restaurant With Pool\n4.1(87)\n2-star hotel for ₪92 less\n0.1 km away\n₪81\nLost Planet\n4.9(206)\nFree parking\n0.1 km away\n₪49\nSurfing Wombats ",
+   "at": [
+    {
+     "needle": "Add website",
+     "y": 1402,
+     "screenshot": "funnel/walk/02-google-listing-desktop-add-website.png"
+    },
+    {
+     "needle": "View prices",
+     "found": false
+    },
+    {
+     "needle": "Check availability",
+     "y": -374,
+     "screenshot": "funnel/walk/02-google-listing-desktop-availability.png"
+    }
+   ],
+   "panel": [
+    "Booking.com, ₪119, Book now",
+    "Prices for Lotus Surf House",
+    "More prices from ₪119",
+    "Address: 5.965106, 80.392243, Indhana Rd, Midigama 80650, Sri Lanka",
+    "Copy address",
+    "Phone: +94 77 464 7541",
+    "Copy phone number",
+    "Call phone number",
+    "Plus code: X98R+3W Ahangama, Sri Lanka",
+    "Copy plus code",
+    "Learn more about plus codes"
+   ],
+   "offer_links": [
+    {
+     "label": "Booking.com, ₪119, Book now",
+     "href": "https://www.google.com/aclk?sa=L&ai=DChsSEwiZwvrJr-yXAxUth1AGHUy3O2EYACICCAEQARoCZGc&co=1&ase=2&gclid=EAIaIQobChMImcL6ya_slwMVLYdQBh1MtzthEAoYASABEgK5tvD_BwE&category=acrcp_v1_32&sig=AOD64_2wdfdgFn9-S"
+    },
+    {
+     "label": "Booking.com ₪119  Free cancellation until 4 Nov · Free breakfast · Free Wi-Fi",
+     "href": "https://www.google.com/aclk?sa=L&ai=DChsSEwiZwvrJr-yXAxUth1AGHUy3O2EYACICCAEQARoCZGc&co=1&ase=2&gclid=EAIaIQobChMImcL6ya_slwMVLYdQBh1MtzthEAoYASABEgK5tvD_BwE&category=acrcp_v1_32&sig=AOD64_2wdfdgFn9-S"
+    },
+    {
+     "label": "1 queen bed, 1 double bed ₪119 ",
+     "href": "https://www.google.com/aclk?sa=L&ai=DChsSEwiZwvrJr-yXAxUth1AGHUy3O2EYACICCAEQAhoCZGc&co=1&ase=2&gclid=EAIaIQobChMImcL6ya_slwMVLYdQBh1MtzthEAoYASACEgINf_D_BwE&category=acrcp_v1_32&sig=AOD64_0V4c1XNSdfZ"
+    },
+    {
+     "label": "See all rooms",
+     "href": "https://www.google.com/aclk?sa=L&ai=DChsSEwiZwvrJr-yXAxUth1AGHUy3O2EYACICCAEQARoCZGc&co=1&ase=2&gclid=EAIaIQobChMImcL6ya_slwMVLYdQBh1MtzthEAoYASABEgK5tvD_BwE&category=acrcp_v1_32&sig=AOD64_2wdfdgFn9-S"
+    },
+    {
+     "label": "Agoda ₪119  Free cancellation until 4 Nov · Free breakfast",
+     "href": "https://www.google.com/travel/lodging/clk?pc=AJ0xEygGqKMfEIhJz_ODNuGOYiCNYRAeDvxk2wkeFl5ZofEJLMyLHUfKSNQSitEuFalGsnbNrivA8z03i_V47PEI_QRrbbqKWp5w67x4aFEnyUglZCuBoP-9Em0AmhtlD5tE8L-JtIgy2fuOS9BjGf-xtTG"
+    },
+    {
+     "label": "",
+     "href": "https://www.google.com/travel/lodging/clk?pc=AJ0xEygRfVJvnWnmSMWJzVLbgrOaHcFTOendxBmvZXwO5dNDTXaVjv17HaRE2cnQFva2Ed71RARtCPxA6ZRyHTRnOmuTjWiqaqw7NOcjCEC222FeCWeiSNwMRa8rTZX9vEd-GD83UcIKRozow9rMHQESV-b"
+    },
+    {
+     "label": "",
+     "href": "https://www.google.com/travel/lodging/clk?pc=AJ0xEygGqKMfEIhJz_ODNuGOYiCNYRAeDvxk2wkeFl5ZofEJLMyLHUfKSNQSitEuFalGsnbNrivA8z03i_V47PEI_QRrbbqKWp5w67x4aFEnyUglZCuBoP-9Em0AmhtlD5tE8L-JtIgy2fuOS9BjGf-xtTG"
+    },
+    {
+     "label": "Booking.com ₪119  Free cancellation until 4 Nov · Free breakfast · Free Wi-Fi",
+     "href": "https://www.google.com/travel/lodging/clk?pc=AJ0xEygOK7grA_oqPt2WJ-HN_j4VWQW8J_nfTr-_NoJpCots7Qlj9hBhewxJbzASBwiQ3NRhs90NnbrTh8zBp4lk77CWfm9aaBZX3VghToBUVvbO2_7mHgJep0g5W4BfDYTsxvMmq3yvKLeRLz7BBAJWaff"
+    },
+    {
+     "label": "",
+     "href": "https://www.google.com/travel/lodging/clk?pc=AJ0xEyi8Bmz9OZfBz8jAKn1qqrBhxwNDq40X6bKWhygEl0kgOkOCyPnshDZkie-L451UVfkjVaF3iX0DhwmzNCHnp1c7Ygr6dzU4EVbnwBc70FafRWHBqOJLFFMLl5jjMmO8-ztRyuG7P2rRSa102IImdUT"
+    },
+    {
+     "label": "",
+     "href": "https://www.google.com/travel/lodging/clk?pc=AJ0xEygOK7grA_oqPt2WJ-HN_j4VWQW8J_nfTr-_NoJpCots7Qlj9hBhewxJbzASBwiQ3NRhs90NnbrTh8zBp4lk77CWfm9aaBZX3VghToBUVvbO2_7mHgJep0g5W4BfDYTsxvMmq3yvKLeRLz7BBAJWaff"
+    }
+   ],
+   "website_links": []
+  },
+  {
+   "step": "03-google-old-listing-desktop",
+   "viewport": "1440x1000",
+   "requested": "https://www.google.com/maps/place/Yelum+Guest+House/data=!4m10!3m9!1s0x3ae114c1a01189c7:0x43e62c20fba3efe5!5m2!4m1!1i2!8m2!3d5.9651521!4d80.3922717!16s%2Fg%2F11cjgd948_!19sChIJx4kRoMEU4ToR5e-j-yAs5kM?hl=en",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "navigation_chain": [
+    [
+     200,
+     "https://www.google.com/maps/place/Yelum+Guest+House/data=!4m10!3m9!1s0x3ae114c1a01189c7:0x43e62c20fba3efe5!5m2!4m1!1i2!8m2!3d5.9651521!4d80.3922717!16s%2Fg%2F11"
+    ]
+   ],
+   "final_url": "https://www.google.com/maps/place/Yelum+Guest+House/@5.9651521,80.3922717,17z/data=!3m1!4b1!4m9!3m8!1s0x3ae114c1a01189c7:0x43e62c20fba3efe5!5m2!4m1!1i2!8m2!3d5.9651521!4d80.3922717!16s%2Fg%2F11cjgd948_?hl=en&entry=ttu&g_ep=EgoyMDI2MTAyOC4wIKXMDSoASAFQAw%3D%3D",
+   "screenshot": "funnel/walk/03-google-old-listing-desktop-fold.png",
+   "title": "Yelum Guest House - Google Maps",
+   "doc_width": 1440,
+   "page_height": 1000,
+   "text_chars": 1416,
+   "tel_links": [
+    "tel:+94774647541"
+   ],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_774647541_in_text": true,
+   "phone_712585804_in_text": false,
+   "add_website": false,
+   "lotus_site_links": [],
+   "offsite_booking_links": [],
+   "commission_phrases": [],
+   "contact_phrases": [
+    "Surfing Wombats Pizzeria/Hostel"
+   ],
+   "login_wall": true,
+   "captcha": false,
+   "text_head": " Select your dates to see the best prices\n\n\n\nNearby hotels\n\nRestaurants\n\nThings to do\n\nBars\n\nCoffee\n\nPharmacies\n\nParking\n\n\n\nSaved\n\nRecents\nYelum Guest House\n\nGet app\n\nSee photos\nYelum Guest House\n4.7\nGuest house\nOverview\nPrices\nAbout\n\nDirections\n\nSave\n\nNearby\n\nShare\n\nCheck availability\n \nCompare prices\nFree cancellation only\n\nCheck in / Check out\nThu, Nov 5\n\n\nFri, Nov 6\n\n\n\n2\n\n \nContact this property for rates and availability\nVisit site\nSimilar hotels nearby\n₪29\nAsanka Surf House & Restaurant With Pool\n4.1(87)\nFree breakfast and Wi-Fi\n0.1 km away\n₪81\nLost Planet\n4.9(206)\nFree Wi-Fi and parking\n0.1 km away\n₪39\nMalika Homestay\n5.0(13)\n0.1 km away\n₪145\nLotus Surf House\n4.9(77)\nFree breakfast and Wi-Fi\n0.1 km away\n₪91\nSurfing Wombats Pizzeria/Hostel\n4.6(495)\nFree breakfast, Wi-Fi and parking\n0.1 km away\nSurf House Gunasewana\n4.9(9)\n0.1 km away\nGolden Beach hotel\n4.9(31)\n0.1 km away\nTharindu House Midigama\n4.5(10)\n0.1 km away\n \nView more nearby hotels\n \n \n\n5.965106, 80.392243, Indhana Rd, Sri Lanka\n\n\nfacebook.com\n\n\n\n+94 77 464 7541\n\n\n\nX98R+3W Ahangama, Sri Lanka\n\n\n\nClaim this business\n\n \n\nSuggest an edit\n \nAdd missing information\n\n\nAdd a photo",
+   "at": [
+    {
+     "needle": "facebook.com",
+     "y": 1136,
+     "screenshot": "funnel/walk/03-google-old-listing-desktop-website.png"
+    }
+   ],
+   "panel": [
+    "Visit https://www.facebook.com/Yelum-guest-house-midigama-1553875118208096/?fref=ts",
+    "Address: 5.965106, 80.392243, Indhana Rd, Sri Lanka",
+    "Copy address",
+    "Website: facebook.com",
+    "Open website",
+    "Copy website",
+    "Phone: +94 77 464 7541",
+    "Copy phone number",
+    "Call phone number"
+   ],
+   "website_links": [
+    "https://www.facebook.com/Yelum-guest-house-midigama-1553875118208096/?fref=ts"
+   ]
+  },
+  {
+   "step": "04-booking-com",
+   "viewport": "390x844",
+   "requested": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+   "status": 202,
+   "error": null,
+   "cookie_declined": null,
+   "dismissed": [
+    "Close"
+   ],
+   "navigation_chain": [
+    [
+     202,
+     "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html"
+    ],
+    [
+     200,
+     "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html?chal_t=1793728573016&force_referer="
+    ],
+    [
+     302,
+     "https://account.booking.com/auth/oauth2?client_id=vO1Kblk7xX9tUn2cpZLS&redirect_uri=https%3A%2F%2Fsecure.booking.com%2Flogin.html%3Fop%3Doauth_return&response_t"
+    ],
+    [
+     200,
+     "https://account.booking.com/sign-in?op_token=EgVvYXV0aCLSAwoUdk8xS2Jsazd4WDl0VW4yY3BaTFMSCWF1dGhvcml6ZRo1aHR0cHM6Ly9zZWN1cmUuYm9va2luZy5jb20vbG9naW4uaHRtbD9vcD1"
+    ]
+   ],
+   "final_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html?chal_t=1793728573016&force_referer=",
+   "screenshot": "funnel/walk/04-booking-com-fold.png",
+   "title": "Lotus Surf House, Midigama (updated prices 2027)",
+   "doc_width": 390,
+   "page_height": 6960,
+   "text_chars": 5759,
+   "tel_links": [],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_774647541_in_text": false,
+   "phone_712585804_in_text": false,
+   "add_website": false,
+   "lotus_site_links": [],
+   "offsite_booking_links": [
+    {
+     "label": "",
+     "href": "https://www.booking.com/searchresults.en-gb.html?label=gen173nr-10CAsohQFCEGxvdHVzLXN1cmYtaG91c2VICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ar3AqNcGwAIB0gIkZT"
+    },
+    {
+     "label": "",
+     "href": "https://www.booking.com/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCEGxvdHVzLXN1cmYtaG91c2VICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ar3AqNcGwAIB0gI"
+    },
+    {
+     "label": "",
+     "href": "https://account.booking.com/auth/oauth2?client_id=vO1Kblk7xX9tUn2cpZLS&redirect_uri=https%3A%2F%2Fsecure.booking.com%2Flogin.html%3Fop%3Doauth_return&response_t"
+    },
+    {
+     "label": "Weligama",
+     "href": "https://www.booking.com/city/lk/weligama.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCEGxvdHVzLXN1cmYtaG91c2VICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ar3A"
+    },
+    {
+     "label": "Mirissa",
+     "href": "https://www.booking.com/city/lk/mirissa-south.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCEGxvdHVzLXN1cmYtaG91c2VICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG"
+    },
+    {
+     "label": "Ahangama",
+     "href": "https://www.booking.com/city/lk/ahangama.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCEGxvdHVzLXN1cmYtaG91c2VICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ar3A"
+    },
+    {
+     "label": "Talpe",
+     "href": "https://www.booking.com/city/lk/talpe.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCEGxvdHVzLXN1cmYtaG91c2VICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ar3AqNc"
+    },
+    {
+     "label": "Imaduwa",
+     "href": "https://www.booking.com/city/lk/imaduwa.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCEGxvdHVzLXN1cmYtaG91c2VICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ar3Aq"
+    },
+    {
+     "label": "Home",
+     "href": "https://www.booking.com/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCEGxvdHVzLXN1cmYtaG91c2VICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ar3AqNcGwAIB0gI"
+    },
+    {
+     "label": "Hotels",
+     "href": "https://www.booking.com/hotel/index.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCEGxvdHVzLXN1cmYtaG91c2VICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ar3AqNcGw"
+    },
+    {
+     "label": "Sri Lanka",
+     "href": "https://www.booking.com/country/lk.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCEGxvdHVzLXN1cmYtaG91c2VICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ar3AqNcGwA"
+    },
+    {
+     "label": "Matara District",
+     "href": "https://www.booking.com/region/lk/matara.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCEGxvdHVzLXN1cmYtaG91c2VICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ar3A"
+    },
+    {
+     "label": "Midigama",
+     "href": "https://www.booking.com/city/lk/midigama.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCEGxvdHVzLXN1cmYtaG91c2VICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ar3A"
+    },
+    {
+     "label": "Get the free app Search, book & manage your trips in the app Install",
+     "href": "https://booking.com/apps.en-gb.html?sid=d01bb863cfed306b75b430276bea1d09&app_install=1&lang=en-gb&stid=2&site=mdot&is_iphone=1&page=hotel&source=hotel&placement"
+    },
+    {
+     "label": "Countries",
+     "href": "https://www.booking.com/country.en-gb.html?aid=304142&label=gen173nr-10CAsohQFCEGxvdHVzLXN1cmYtaG91c2VICVgEaGqIAQKYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Ar3AqNcGwAIB0"
+    }
+   ],
+   "commission_phrases": [],
+   "contact_phrases": [
+    "“Just wow! Location 10/10, room 10/10, cleanliness 10/10, host 10/10",
+    "“Clean, friendly host, perfect location",
+    " Yelum is a great host and makes a delicious breakfast",
+    "Ask a question",
+    "Hostels"
+   ],
+   "login_wall": false,
+   "captcha": false,
+   "text_head": "Midigama\nSelect dates\nBeach\n \nLotus Surf House\nAccessibility links\nSkip to description\nSkip to facilities\nSkip to rooms\nSkip to policies\nIndhana Road, Midigama—Excellent location—Show on map\n9.0\nRated: Superb 9, based on 125 reviews Expand ratings and reviews section\nSuperb · 125 reviews\n1/42\nBreakfast\nBalcony\nAirport shuttle\nFree WiFi\nChoose dates to see prices\nCheck-in date\nTue 3 Nov 2026\nCheck-out date\nWed 4 Nov 2026\nAdults\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\nChildren\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\nRooms\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\nAre you travelling for work?\nYes\nNo\nCheck availability\nBeach\nProperty has access to beach-related activities.Show on map\nBeach\nSign in, save money\nTo see if you can save 10% or more at this property, sign in\nSign in\nCreate a free account\nFacilities\nFree WiFi\nAirport shuttle\nNon-smoking rooms\nRoom service\nShow all facilities and services\nReviews\n9.0\nRated: Superb 9, based on 125 reviews\nSuperb · 125 reviews\nLocation, 9.4, Average rating out of 10\nLocation\n9.4\nCleanliness, 8.8, Average rating out of 10\nCleanliness\n8.8\nValue for money, 9.3, Average rating out of 10\n",
+   "at": [
+    {
+     "needle": "Choose dates to see prices",
+     "y": 756,
+     "screenshot": "funnel/walk/04-booking-com-dates.png"
+    },
+    {
+     "needle": "Ask a question",
+     "y": 4583,
+     "screenshot": "funnel/walk/04-booking-com-ask.png"
+    },
+    {
+     "needle": "Comfortable Accommodations",
+     "y": 5439,
+     "screenshot": "funnel/walk/04-booking-com-summary.png"
+    }
+   ],
+   "screenshot_full": "funnel/walk/04-booking-com-full.png",
+   "accordions": [
+    {
+     "label": "Hotel policies",
+     "screenshot": "funnel/walk/04-booking-com-policies.png",
+     "text": "Hotel policies\nCheck-in\nAvailable 24 hours\nCheck-out\nFrom 11:00 to 12:00\nCancellation/ prepayment\nCancellation and prepayment policies vary according to accommodation type. Please enter the dates of your stay and check the conditions of your required option.\nNo age restriction\nThere is no age requirement for check-in\nPets\nFree!\nPets are allowed on request. No extra charges.\nCash only\nThis property only accepts cash payments."
+    },
+    {
+     "label": "Contacting the property",
+     "screenshot": "funnel/walk/04-booking-com-contacting.png",
+     "text": "Contacting the property\nIf you want to request something specific, you can do that after you choose your rate.\nOnce you book, we'll provide details so you can contact the property directly."
+    }
+   ],
+   "summary_text": "Comfortable Accommodations: Lotus Surf House in Midigama offers family rooms with private bathrooms, air-conditioning, and garden views. Each room includes a shower, balcony, and tiled floors.\n\nExceptional Facilities: Guests...\n\nRead more\nHotel policies\nCheck-in\nAvailable 24 hours\nCheck-out\nFrom 11:00 to 12:00\nCancellation/ prepayment\nCancellation and prepayment policies vary according to accommodation type. Please enter the dates of your stay and check the conditions of your required option.\nNo age restriction\nThere is no age requirement for check-in\nPets\nFree!\nPets are allowed on request. No extra charges.\nCash only\nThis property only accepts cash payments.\nContacting the property\n\nIf you ",
+   "ask_question": {
+    "url_after_tap": "https://account.booking.com/sign-in?op_token=EgVvYXV0aCLSAwoUdk8xS2Jsazd4WDl0VW4yY3BaTFMSCWF1dGhvcml6ZRo1aHR0cHM6Ly9zZWN1cmUuYm9va2luZy5jb20vbG9naW4uaHRtbD9vcD1vYXV0aF9yZXR1cm4q8QJVdnNCTUJLYWcwTTRickl",
+    "text": "Sign in or create an account\nYou can sign in using your Booking.com account to access our services.\nEmail address\nContinue with email\nor use one of these options\nHaving trouble signing in?\nBy signing in or creating an account, you agree with our Terms & conditions and Privacy notice\nAll rights reserved.\nCopyright (2006 - 2026) - Booking.com™",
+    "screenshot": "funnel/walk/04-booking-com-ask-tapped.png"
+   }
+  },
+  {
+   "step": "05-booking-old-url",
+   "viewport": "390x844",
+   "requested": "https://www.booking.com/hotel/lk/yelum-guest-house.en-gb.html",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "navigation_chain": [
+    [
+     301,
+     "https://www.booking.com/hotel/lk/yelum-guest-house.en-gb.html"
+    ],
+    [
+     200,
+     "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html?label=gen173nr-10CAsohQFCEXllbHVtLWd1ZXN0LWhvdXNlSAlYBGhqiAECmAEzuAEHyAEN2AED6AEB-AEBiAIBqAIBuALVwK"
+    ]
+   ],
+   "final_url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html?label=gen173nr-10CAsohQFCEXllbHVtLWd1ZXN0LWhvdXNlSAlYBGhqiAECmAEzuAEHyAEN2AED6AEB-AEBiAIBqAIBuALVwKjXBsACAdICJDI3NjE0NTlhLTM2ZDUtNDNlOC04NzRiLTJkMDEyNjI4NzM2YdgCAeACAQ&sid=9f5a1acd1a2759e8f069394c5a13b2d0&dist=0&room1=A%2CA&sb_price_type=total&type=total&",
+   "screenshot": "funnel/walk/05-booking-old-url-fold.png",
+   "title": "Lotus Surf House, Midigama (updated prices 2027)",
+   "doc_width": 390,
+   "page_height": 6960,
+   "text_chars": 5759,
+   "tel_links": [],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_774647541_in_text": false,
+   "phone_712585804_in_text": false,
+   "add_website": false,
+   "lotus_site_links": [],
+   "offsite_booking_links": [
+    {
+     "label": "",
+     "href": "https://www.booking.com/searchresults.en-gb.html?label=gen173nr-10CAsohQFCEXllbHVtLWd1ZXN0LWhvdXNlSAlYBGhqiAECmAEzuAEHyAEN2AED6AEB-AEBiAIBqAIBuALVwKjXBsACAdICJD"
+    },
+    {
+     "label": "",
+     "href": "https://account.booking.com/auth/oauth2?client_id=vO1Kblk7xX9tUn2cpZLS&redirect_uri=https%3A%2F%2Fsecure.booking.com%2Flogin.html%3Fop%3Doauth_return&response_t"
+    },
+    {
+     "label": "Weligama",
+     "href": "https://www.booking.com/city/lk/weligama.en-gb.html?label=gen173nr-10CAsohQFCEXllbHVtLWd1ZXN0LWhvdXNlSAlYBGhqiAECmAEzuAEHyAEN2AED6AEB-AEBiAIBqAIBuALVwKjXBsACAdI"
+    },
+    {
+     "label": "Mirissa",
+     "href": "https://www.booking.com/city/lk/mirissa-south.en-gb.html?label=gen173nr-10CAsohQFCEXllbHVtLWd1ZXN0LWhvdXNlSAlYBGhqiAECmAEzuAEHyAEN2AED6AEB-AEBiAIBqAIBuALVwKjXBs"
+    },
+    {
+     "label": "Ahangama",
+     "href": "https://www.booking.com/city/lk/ahangama.en-gb.html?label=gen173nr-10CAsohQFCEXllbHVtLWd1ZXN0LWhvdXNlSAlYBGhqiAECmAEzuAEHyAEN2AED6AEB-AEBiAIBqAIBuALVwKjXBsACAdI"
+    },
+    {
+     "label": "Talpe",
+     "href": "https://www.booking.com/city/lk/talpe.en-gb.html?label=gen173nr-10CAsohQFCEXllbHVtLWd1ZXN0LWhvdXNlSAlYBGhqiAECmAEzuAEHyAEN2AED6AEB-AEBiAIBqAIBuALVwKjXBsACAdICJD"
+    },
+    {
+     "label": "Imaduwa",
+     "href": "https://www.booking.com/city/lk/imaduwa.en-gb.html?label=gen173nr-10CAsohQFCEXllbHVtLWd1ZXN0LWhvdXNlSAlYBGhqiAECmAEzuAEHyAEN2AED6AEB-AEBiAIBqAIBuALVwKjXBsACAdIC"
+    },
+    {
+     "label": "Home",
+     "href": "https://www.booking.com/index.en-gb.html?label=gen173nr-10CAsohQFCEXllbHVtLWd1ZXN0LWhvdXNlSAlYBGhqiAECmAEzuAEHyAEN2AED6AEB-AEBiAIBqAIBuALVwKjXBsACAdICJDI3NjE0NT"
+    },
+    {
+     "label": "Hotels",
+     "href": "https://www.booking.com/hotel/index.en-gb.html?label=gen173nr-10CAsohQFCEXllbHVtLWd1ZXN0LWhvdXNlSAlYBGhqiAECmAEzuAEHyAEN2AED6AEB-AEBiAIBqAIBuALVwKjXBsACAdICJDI3"
+    },
+    {
+     "label": "Sri Lanka",
+     "href": "https://www.booking.com/country/lk.en-gb.html?label=gen173nr-10CAsohQFCEXllbHVtLWd1ZXN0LWhvdXNlSAlYBGhqiAECmAEzuAEHyAEN2AED6AEB-AEBiAIBqAIBuALVwKjXBsACAdICJDI3N"
+    },
+    {
+     "label": "Matara District",
+     "href": "https://www.booking.com/region/lk/matara.en-gb.html?label=gen173nr-10CAsohQFCEXllbHVtLWd1ZXN0LWhvdXNlSAlYBGhqiAECmAEzuAEHyAEN2AED6AEB-AEBiAIBqAIBuALVwKjXBsACAdI"
+    },
+    {
+     "label": "Midigama",
+     "href": "https://www.booking.com/city/lk/midigama.en-gb.html?label=gen173nr-10CAsohQFCEXllbHVtLWd1ZXN0LWhvdXNlSAlYBGhqiAECmAEzuAEHyAEN2AED6AEB-AEBiAIBqAIBuALVwKjXBsACAdI"
+    },
+    {
+     "label": "Get the free app Search, book & manage your trips in the app Install",
+     "href": "https://booking.com/apps.en-gb.html?label=gen173nr-10CAsohQFCEXllbHVtLWd1ZXN0LWhvdXNlSAlYBGhqiAECmAEzuAEHyAEN2AED6AEB-AEBiAIBqAIBuALVwKjXBsACAdICJDI3NjE0NTlhLTM"
+    },
+    {
+     "label": "Countries",
+     "href": "https://www.booking.com/country.en-gb.html?label=gen173nr-10CAsohQFCEXllbHVtLWd1ZXN0LWhvdXNlSAlYBGhqiAECmAEzuAEHyAEN2AED6AEB-AEBiAIBqAIBuALVwKjXBsACAdICJDI3NjE0"
+    },
+    {
+     "label": "Regions",
+     "href": "https://www.booking.com/region.en-gb.html?label=gen173nr-10CAsohQFCEXllbHVtLWd1ZXN0LWhvdXNlSAlYBGhqiAECmAEzuAEHyAEN2AED6AEB-AEBiAIBqAIBuALVwKjXBsACAdICJDI3NjE0N"
+    }
+   ],
+   "commission_phrases": [],
+   "contact_phrases": [
+    "“Just wow! Location 10/10, room 10/10, cleanliness 10/10, host 10/10",
+    "“Clean, friendly host, perfect location",
+    " Yelum is a great host and makes a delicious breakfast",
+    "Ask a question",
+    "Hostels"
+   ],
+   "login_wall": false,
+   "captcha": false,
+   "text_head": "Midigama\nSelect dates\nBeach\n \nLotus Surf House\nAccessibility links\nSkip to description\nSkip to facilities\nSkip to rooms\nSkip to policies\nIndhana Road, Midigama—Excellent location—Show on map\n9.0\nRated: Superb 9, based on 125 reviews Expand ratings and reviews section\nSuperb · 125 reviews\n1/42\nBreakfast\nBalcony\nAirport shuttle\nFree WiFi\nChoose dates to see prices\nCheck-in date\nTue 3 Nov 2026\nCheck-out date\nWed 4 Nov 2026\nAdults\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\nChildren\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\nRooms\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\nAre you travelling for work?\nYes\nNo\nCheck availability\nBeach\nProperty has access to beach-related activities.Show on map\nBeach\nSign in, save money\nTo see if you can save 10% or more at this property, sign in\nSign in\nCreate a free account\nFacilities\nFree WiFi\nAirport shuttle\nNon-smoking rooms\nRoom service\nShow all facilities and services\nReviews\n9.0\nRated: Superb 9, based on 125 reviews\nSuperb · 125 reviews\nLocation, 9.4, Average rating out of 10\nLocation\n9.4\nCleanliness, 8.8, Average rating out of 10\nCleanliness\n8.8\nValue for money, 9.3, Average rating out of 10\n",
+   "at": []
+  },
+  {
+   "step": "06-facebook",
+   "viewport": "390x844",
+   "requested": "https://www.facebook.com/Yelum-guest-house-midigama-1553875118208096/",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "dismissed": [
+    "Close"
+   ],
+   "navigation_chain": [
+    [
+     200,
+     "https://www.facebook.com/Yelum-guest-house-midigama-1553875118208096/"
+    ],
+    [
+     200,
+     "https://www.facebook.com/Yelum-guest-house-midigama-1553875118208096/?hpir=1&http_ref=eyJ0cyI6MTc5MzcyODYwNTAwMCwiciI6IiJ9"
+    ]
+   ],
+   "final_url": "https://www.facebook.com/100054389085744/?http_ref=eyJ0cyI6MTc5MzcyODYwNTAwMCwiciI6IiJ9",
+   "screenshot": "funnel/walk/06-facebook-fold.png",
+   "title": "Profile for Midigama guesthouse YELUM",
+   "doc_width": 390,
+   "page_height": 6177,
+   "text_chars": 1098,
+   "tel_links": [],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_774647541_in_text": false,
+   "phone_712585804_in_text": true,
+   "add_website": false,
+   "lotus_site_links": [],
+   "offsite_booking_links": [],
+   "commission_phrases": [],
+   "contact_phrases": [],
+   "login_wall": true,
+   "captcha": false,
+   "text_head": "Log in\nOpen app\nMidigama guesthouse YELUM \n󳃐 Hotel\n󳅤\nFollow\nAll\nPhotos\nMentions\n󲉇\nMidigama ahangama, Matara, Sri Lanka,\n123456789\nDetails\n󲈷\n+94 71 258 5804\nContact info\nPhotos\nSee all\nPosts\nMidigama guesthouse YELUM is\nwith Yelum Manoj.\nNov 12, 2018󲄭󳆘\n󳄫\nToday Traveling Sinharaja Rain forest😍😍😍\n+4\nAudrey Harguindeguy and 7 others\n󰍸\n8\n󰤦\nMidigama guesthouse YELUM\nApr 6, 2018󲄭󳆘\n󳄫\nCloudy days also gift us with beautiful sunsets.\nAt Midigama beach 🙂 just a few minutes from\nour guesthouse. And everyday is a d... See more\nPramith Madushan\n󰍸\n1\n󰤦\nMidigama guesthouse YELUM\nJan 26, 2018󲄭󳆘\n󳄫\nToday’s sunset 🌅\nDanu Asa and 2 others\n󰍸\n3\n󰤦\nMidigama guesthouse YELUM\nDec 7, 2017󲄭󳆘\n󳄫\nToday Dinner People In My Place......\nGerard Lavianne and 7 others\n󰍸\n8\n󰤦 3\nDispagne Noelle\nVery nice table yelum your menu\ncard is expanded ;)\n9y\nMidigama guesthouse YELUM\nJan 30, 2016󲄭󳆘\n󳄫\nparty......\n10\n󰍸\n10\n󰤦\nMidigama guesthouse YELUM\nJan 12, 2016󲄭󳆘\n󳄫\nYesterday B. B. Q party......\nPramith Madushan and 1 other\n󰍸\n2\n󰤦\nMidigama guesthouse YELUM\nJan 2, 2016󲄭󳆘\n󳄫\nMidigama, sri lanka\n+2",
+   "at": [
+    {
+     "needle": "258 5804",
+     "y": 574,
+     "screenshot": "funnel/walk/06-facebook-phone.png"
+    }
+   ]
+  },
+  {
+   "step": "07-google-search",
+   "viewport": "390x844",
+   "requested": "https://www.google.com/search?q=Lotus+Surf+House+Midigama&hl=en",
+   "status": 200,
+   "error": null,
+   "cookie_declined": null,
+   "navigation_chain": [
+    [
+     200,
+     "https://www.google.com/search?q=Lotus+Surf+House+Midigama&hl=en"
+    ],
+    [
+     302,
+     "https://www.google.com/search?q=Lotus+Surf+House+Midigama&hl=en&sei=ZyDqaoedC-3-7_UP94eWqQ0"
+    ],
+    [
+     429,
+     "https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3DLotus%2BSurf%2BHouse%2BMidigama%26hl%3Den%26sei%3DZyDqaoedC-3-7_UP94eWqQ0&hl=en&"
+    ]
+   ],
+   "final_url": "https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3DLotus%2BSurf%2BHouse%2BMidigama%26hl%3Den%26sei%3DZyDqaoedC-3-7_UP94eWqQ0&hl=en&q=EgRUXsF3GOfAqNcGIjBYDwL-uCeLwWpvVM8ebfkPLn5k0eVA_djOT7fNaiBGX8n9lgGxvaIoSkCfKW8pun4yAVJaAUNg04Lf6_Kr-L2-AQ",
+   "screenshot": "funnel/walk/07-google-search-fold.png",
+   "title": "https://www.google.com/search?q=Lotus+Surf+House+Midigama&hl=en&sei=ZyDqaoedC-3-7_UP94eWqQ0",
+   "doc_width": 390,
+   "page_height": 844,
+   "text_chars": 345,
+   "tel_links": [],
+   "whatsapp_links": 0,
+   "mailto_links": 0,
+   "phone_774647541_in_text": false,
+   "phone_712585804_in_text": false,
+   "add_website": false,
+   "lotus_site_links": [],
+   "offsite_booking_links": [],
+   "commission_phrases": [],
+   "contact_phrases": [],
+   "login_wall": false,
+   "captcha": true,
+   "text_head": "\nAbout this page\nOur systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. Why did this happen?\nIP address: 84.94.193.119\nTime: 2026-11-03T17:56:56Z\nURL: https://www.google.com/search?q=Lotus+Surf+House+Midigama&hl=en&sei=ZyDqaoedC-3-7_UP94eWqQ0\n",
+   "at": []
+  }
+ ]
+}

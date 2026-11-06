@@ -1,0 +1,415 @@
+{
+ "live_390": {
+  "first_load_external": [],
+  "scroll_external": [
+   "GET fetch https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "HEAD fetch https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+   "GET document https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+   "GET stylesheet https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+   "GET fetch https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "GET image https://rosa.surf/favicon.svg",
+   "GET font https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5924",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5925",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5925",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5926",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5926"
+  ],
+  "cls_scroll": 0,
+  "state": {
+   "now_class": "fc-now live",
+   "box_class": "rosa-box loaded",
+   "before": {
+    "now_h": 305,
+    "box_h": 500,
+    "box_w": 358
+   },
+   "after": {
+    "now_h": 305,
+    "box_h": 500,
+    "box_w": 358
+   },
+   "iframe": {
+    "src": "https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "w": 358,
+    "h": 500,
+    "filter": "none",
+    "opacity": "1",
+    "transform": "none",
+    "pe": "auto",
+    "hit": "IFRAME"
+   },
+   "box_center_hit": "IFRAME. ",
+   "links": [
+    {
+     "t": "See today's forecast for Coconuts on Rosa",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": false
+    },
+    {
+     "t": "Forecast for Coconuts by Rosa",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": true
+    },
+    {
+     "t": "",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": false
+    }
+   ],
+   "headline_visible_text": "0.3–0.5 | m | Wave height now, knee-high | Thu 5 Nov, 08:30 | 9.1 s | S | 5 km/h | cross-shore | Forecast for Coconuts by Rosa",
+   "json_attr": "https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "widget_attr": "https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric"
+  }
+ },
+ "live_1440": {
+  "first_load_external": [],
+  "scroll_external": [
+   "HEAD fetch https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+   "GET fetch https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "GET document https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+   "GET stylesheet https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+   "GET fetch https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "GET image https://rosa.surf/favicon.svg",
+   "GET font https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5924",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5925",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5925",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5926",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5926"
+  ],
+  "cls_scroll": 0,
+  "state": {
+   "now_class": "fc-now live",
+   "box_class": "rosa-box loaded",
+   "before": {
+    "now_h": 320,
+    "box_h": 500,
+    "box_w": 420
+   },
+   "after": {
+    "now_h": 320,
+    "box_h": 500,
+    "box_w": 420
+   },
+   "iframe": {
+    "src": "https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "w": 420,
+    "h": 500,
+    "filter": "none",
+    "opacity": "1",
+    "transform": "none",
+    "pe": "auto",
+    "hit": "IFRAME"
+   },
+   "box_center_hit": "IFRAME. ",
+   "links": [
+    {
+     "t": "See today's forecast for Coconuts on Rosa",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": false
+    },
+    {
+     "t": "Forecast for Coconuts by Rosa",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": true
+    },
+    {
+     "t": "",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": false
+    }
+   ],
+   "headline_visible_text": "0.3–0.5 | m | Wave height now, knee-high | Thu 5 Nov, 08:30 | 9.1 s | S | 5 km/h | cross-shore | Forecast for Coconuts by Rosa",
+   "json_attr": "https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "widget_attr": "https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric"
+  }
+ },
+ "blocked_390": {
+  "first_load_external": [],
+  "scroll_external": [
+   "HEAD fetch https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+   "GET fetch https://rosa-data-opal.vercel.app/data/spots/weligama-west.json"
+  ],
+  "cls_scroll": 0,
+  "state": {
+   "now_class": "fc-now stale",
+   "box_class": "rosa-box",
+   "before": {
+    "now_h": 305,
+    "box_h": 500,
+    "box_w": 358
+   },
+   "after": {
+    "now_h": 136,
+    "box_h": 500,
+    "box_w": 358
+   },
+   "iframe": null,
+   "box_center_hit": "SPAN. See today's forecast for Coconuts on Rosa",
+   "links": [
+    {
+     "t": "See today's forecast for Coconuts on Rosa",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": true
+    },
+    {
+     "t": "Forecast for Coconuts by Rosa",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": true
+    },
+    {
+     "t": "See today's forecast for Coconuts on Rosa",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": true
+    }
+   ],
+   "headline_visible_text": "See today's forecast for Coconuts on Rosa | Forecast for Coconuts by Rosa",
+   "json_attr": "https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "widget_attr": "https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric"
+  },
+  "tap_navigated": "https://rosa.surf/spot/weligama-west"
+ },
+ "blocked_1440": {
+  "first_load_external": [],
+  "scroll_external": [
+   "HEAD fetch https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+   "GET fetch https://rosa-data-opal.vercel.app/data/spots/weligama-west.json"
+  ],
+  "cls_scroll": 0,
+  "state": {
+   "now_class": "fc-now stale",
+   "box_class": "rosa-box",
+   "before": {
+    "now_h": 320,
+    "box_h": 500,
+    "box_w": 420
+   },
+   "after": {
+    "now_h": 320,
+    "box_h": 500,
+    "box_w": 420
+   },
+   "iframe": null,
+   "box_center_hit": "SPAN. See today's forecast for Coconuts on Rosa",
+   "links": [
+    {
+     "t": "See today's forecast for Coconuts on Rosa",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": true
+    },
+    {
+     "t": "Forecast for Coconuts by Rosa",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": true
+    },
+    {
+     "t": "See today's forecast for Coconuts on Rosa",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": true
+    }
+   ],
+   "headline_visible_text": "See today's forecast for Coconuts on Rosa | Forecast for Coconuts by Rosa",
+   "json_attr": "https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "widget_attr": "https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric"
+  },
+  "tap_navigated": "https://rosa.surf/spot/weligama-west"
+ },
+ "stale_clock30h_390": {
+  "first_load_external": [],
+  "scroll_external": [
+   "HEAD fetch https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+   "GET fetch https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "GET document https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+   "GET stylesheet https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+   "GET fetch https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "GET image https://rosa.surf/favicon.svg",
+   "GET font https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5924",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5925",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5925",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5926",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5926"
+  ],
+  "cls_scroll": 0.019111582102712694,
+  "state": {
+   "now_class": "fc-now stale",
+   "box_class": "rosa-box loaded",
+   "before": {
+    "now_h": 305,
+    "box_h": 500,
+    "box_w": 358
+   },
+   "after": {
+    "now_h": 305,
+    "box_h": 500,
+    "box_w": 358
+   },
+   "iframe": {
+    "src": "https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "w": 358,
+    "h": 500,
+    "filter": "none",
+    "opacity": "1",
+    "transform": "none",
+    "pe": "auto",
+    "hit": "IFRAME"
+   },
+   "box_center_hit": "IFRAME. ",
+   "links": [
+    {
+     "t": "See today's forecast for Coconuts on Rosa",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": true
+    },
+    {
+     "t": "Forecast for Coconuts by Rosa",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": true
+    },
+    {
+     "t": "",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": false
+    }
+   ],
+   "headline_visible_text": "See today's forecast for Coconuts on Rosa | Forecast for Coconuts by Rosa",
+   "json_attr": "https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "widget_attr": "https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric"
+  }
+ },
+ "stale_json30h_390": {
+  "first_load_external": [],
+  "scroll_external": [
+   "GET fetch https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "HEAD fetch https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+   "GET document https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+   "GET stylesheet https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+   "GET fetch https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "GET image https://rosa.surf/favicon.svg",
+   "GET font https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5924",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5925",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5925",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5926",
+   "GET image https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5926"
+  ],
+  "cls_scroll": 0.019111582102712694,
+  "state": {
+   "now_class": "fc-now stale",
+   "box_class": "rosa-box loaded",
+   "before": {
+    "now_h": 305,
+    "box_h": 500,
+    "box_w": 358
+   },
+   "after": {
+    "now_h": 305,
+    "box_h": 500,
+    "box_w": 358
+   },
+   "iframe": {
+    "src": "https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "w": 358,
+    "h": 500,
+    "filter": "none",
+    "opacity": "1",
+    "transform": "none",
+    "pe": "auto",
+    "hit": "IFRAME"
+   },
+   "box_center_hit": "IFRAME. ",
+   "links": [
+    {
+     "t": "See today's forecast for Coconuts on Rosa",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": true
+    },
+    {
+     "t": "Forecast for Coconuts by Rosa",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": true
+    },
+    {
+     "t": "",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": false
+    }
+   ],
+   "headline_visible_text": "See today's forecast for Coconuts on Rosa | Forecast for Coconuts by Rosa",
+   "json_attr": "https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "widget_attr": "https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric"
+  }
+ },
+ "json_fail_only_390": {
+  "first_load_external": [],
+  "scroll_external": [
+   "GET fetch https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "HEAD fetch https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+   "GET document https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+   "GET stylesheet https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+   "GET fetch https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "GET font https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2"
+  ],
+  "cls_scroll": 0,
+  "state": {
+   "now_class": "fc-now stale",
+   "box_class": "rosa-box loaded",
+   "before": {
+    "now_h": 305,
+    "box_h": 500,
+    "box_w": 358
+   },
+   "after": {
+    "now_h": 136,
+    "box_h": 500,
+    "box_w": 358
+   },
+   "iframe": {
+    "src": "https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "w": 358,
+    "h": 500,
+    "filter": "none",
+    "opacity": "1",
+    "transform": "none",
+    "pe": "auto",
+    "hit": "IFRAME"
+   },
+   "box_center_hit": "IFRAME. ",
+   "links": [
+    {
+     "t": "See today's forecast for Coconuts on Rosa",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": true
+    },
+    {
+     "t": "Forecast for Coconuts by Rosa",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": true
+    },
+    {
+     "t": "",
+     "href": "https://rosa.surf/spot/weligama-west",
+     "vis": false
+    }
+   ],
+   "headline_visible_text": "See today's forecast for Coconuts on Rosa | Forecast for Coconuts by Rosa",
+   "json_attr": "https://rosa-data-opal.vercel.app/data/spots/weligama-west.json",
+   "widget_attr": "https://rosa.surf/widget/?spot=weligama-west&theme=light&units=metric"
+  }
+ }
+}

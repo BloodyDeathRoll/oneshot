@@ -1,0 +1,128 @@
+{
+ "390": {
+  "overflow": {
+   "sw": 390,
+   "cw": 390,
+   "wide": [
+    "I.sea 885",
+    "I.foam 800",
+    "I.wet 529",
+    "I.sand 780",
+    "DIV.zm playing 432",
+    "IMG. 432",
+    "VIDEO. 432",
+    "ARTICLE.card 586"
+   ]
+  },
+  "axe": {
+   "violations": [
+    {
+     "id": "listitem",
+     "impact": "serious",
+     "n": 34,
+     "ex": [
+      "ul[aria-label=\"Superior Double Room, photos\"] > li:nth-child(1) :: Fix any of the following:\n  List item parent element has a role that is not role=\"list\"",
+      "ul[aria-label=\"Superior Double Room, photos\"] > li:nth-child(2) :: Fix any of the following:\n  List item parent element has a role that is not role=\"list\"",
+      "ul[aria-label=\"Superior Double Room, photos\"] > li:nth-child(3) :: Fix any of the following:\n  List item parent element has a role that is not role=\"list\""
+     ]
+    }
+   ],
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "n": 167
+    }
+   ],
+   "passes": 26
+  },
+  "tabStops": [
+   "Skip to surf weeks and prices [A #counter] outline=solid/3px vis=true",
+   "Cheeky Monkey Surf Camp | Midigama, Sri  [A #] outline=solid/3px vis=true",
+   "Call +94 71 924 8686 [A tel:+94719248686] outline=solid/3px vis=true",
+   "Check dates on Booking.com [A https://www.booking.com/hotel/lk/cheeky-] outline=solid/3px vis=true",
+   "Indische Oceaan - panoramio (1) [A https://commons.wikimedia.org/wiki/File:] outline=solid/3px vis=true",
+   "CC BY-SA 3.0 [A https://creativecommons.org/licenses/by-] outline=solid/3px vis=true",
+   "See the surf weeks [A #counter] outline=solid/3px vis=true",
+   "The four surf weeks [DIV] outline=solid/3px vis=true",
+   "Call to book [A tel:+94719248686] outline=solid/3px vis=true",
+   "Email about the Full Surf Lesson Package [A mailto:cheekymonkeymidi@gmail.com?subjec] outline=solid/3px vis=true",
+   "Call to book [A tel:+94719248686] outline=solid/3px vis=true",
+   "Email about the Moderate week [A mailto:cheekymonkeymidi@gmail.com?subjec] outline=solid/3px vis=true"
+  ],
+  "drawer": {
+   "trigger": "Plan a stay",
+   "drawer": "book",
+   "tabsInside": "40/40",
+   "shiftTabsInside": "5/5",
+   "focusAfterEsc": "Plan a stay"
+  },
+  "externalRequestsAttempted": [],
+  "videoRequests": [
+   "http://localhost:8961/video/cm-board.m720.mp4"
+  ],
+  "pageErrors": []
+ },
+ "1440": {
+  "overflow": {
+   "sw": 1440,
+   "cw": 1440,
+   "wide": [
+    "I.sea 1936",
+    "I.foam 1850",
+    "I.wet 1579",
+    "I.sand 1830",
+    "LI. 1782",
+    "IMG. 1782",
+    "LI. 2320",
+    "IMG. 2320"
+   ]
+  },
+  "axe": {
+   "violations": [
+    {
+     "id": "listitem",
+     "impact": "serious",
+     "n": 34,
+     "ex": [
+      "ul[aria-label=\"Superior Double Room, photos\"] > li:nth-child(1) :: Fix any of the following:\n  List item parent element has a role that is not role=\"list\"",
+      "ul[aria-label=\"Superior Double Room, photos\"] > li:nth-child(2) :: Fix any of the following:\n  List item parent element has a role that is not role=\"list\"",
+      "ul[aria-label=\"Superior Double Room, photos\"] > li:nth-child(3) :: Fix any of the following:\n  List item parent element has a role that is not role=\"list\""
+     ]
+    }
+   ],
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "n": 166
+    }
+   ],
+   "passes": 26
+  },
+  "tabStops": [
+   "Skip to surf weeks and prices [A #counter] outline=solid/3px vis=true",
+   "Cheeky Monkey Surf Camp | Midigama, Sri  [A #] outline=solid/3px vis=true",
+   "Surf weeks [A #counter] outline=solid/3px vis=true",
+   "Rooms [A #rooms] outline=solid/3px vis=true",
+   "Shop [A #shop] outline=solid/3px vis=true",
+   "Plan a stay [A #book] outline=solid/3px vis=true",
+   "Call +94 71 924 8686 [A tel:+94719248686] outline=solid/3px vis=true",
+   "Check dates on Booking.com [A https://www.booking.com/hotel/lk/cheeky-] outline=solid/3px vis=true",
+   "Indische Oceaan - panoramio (1) [A https://commons.wikimedia.org/wiki/File:] outline=solid/3px vis=true",
+   "CC BY-SA 3.0 [A https://creativecommons.org/licenses/by-] outline=solid/3px vis=true",
+   "See the surf weeks [A #counter] outline=solid/3px vis=true",
+   "The four surf weeks [DIV] outline=solid/3px vis=true"
+  ],
+  "drawer": {
+   "trigger": "Plan a stay",
+   "drawer": "book",
+   "tabsInside": "40/40",
+   "shiftTabsInside": "5/5",
+   "focusAfterEsc": "Plan a stay"
+  },
+  "externalRequestsAttempted": [],
+  "videoRequests": [
+   "http://localhost:8961/video/cm-board.d1920.webm"
+  ],
+  "pageErrors": []
+ }
+}

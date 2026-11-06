@@ -1,0 +1,8 @@
+{
+  // Station 6 (deployer) owns `wrangler deploy`; nothing here is deployed at 4g.
+  "name": "coconut-surf-inn-guest-house-and-restaurant",
+  "compatibility_date": "2026-09-01",
+  "assets": { "directory": "./dist", "not_found_handling": "404-page", "html_handling": "auto-trailing-slash" },
+  "workers_dev": true,
+  "preview_urls": false
+}

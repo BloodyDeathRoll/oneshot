@@ -1,0 +1,6 @@
+# Only the page, its images and robots.txt are served; the notes, messages, recipe and config are not.
+*.md
+*.sh
+wrangler.jsonc
+.assetsignore
+.wrangler
