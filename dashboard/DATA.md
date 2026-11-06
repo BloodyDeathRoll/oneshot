@@ -70,7 +70,7 @@ Sources added 2026-10-02: **A** = `activity.jsonl`, **G** = `git log`, **M** = `
 | `critic_score, critic_score_kind` | L | the critic's latest line carrying `PASS|FAIL … N/100`; kind = `round n` or `verification` |
 | `critic_series[]` | L | every critic line with a score: `{ts, kind (round / verification / pre-score), round, verdict, score, to}` |
 | `hosting_mode` | L, R | last line carrying `hosting_mode` (the client's `product_chosen` line from 2026-10-05), else `run.default_mode` once `product_chosen` is reached; null before |
-| `preview_url` | S, L | `deploy.json` last ok deploy step `evidence.url`, else a `*.workers.dev` URL in a ledger note, else `sites/<slug>/mockup-preview.json` `url` (a picked home-page mockup online) |
+| `preview_url` | S, L | `deploy.json` last ok deploy step `evidence.url`, else the newest `*.workers.dev` URL in a ledger note that is not a `-proposal` Worker, else `sites/<slug>/mockup-preview.json` `url` (a picked home-page mockup online) |
 | `preview_kind` | S, L | `site` (the built preview) or `mockup` (from `mockup-preview.json`); null without a preview |
 | `mockup_variant` | S, L | `mockup-preview.json` `variant` (calm, interactive, unique) |
 | `deploy` | S | `adapter, cms, url, version, deployed_at, verified` |
