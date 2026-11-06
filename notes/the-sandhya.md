@@ -4,16 +4,16 @@ Run `2026-11-ahangama-01`, owner alon, branch `alon/the-sandhya`, `mode: test` (
 
 ## State
 
-`copy_failed`, round 2, on voice only: facts are clean. Stopped for Alon: does the ruling below cover moved clauses and one-word grammar changes, and what happens if the third pass fails on voice alone? The next review is that third pass (`copyeditor/base.md`). Budget raised by Alon on 2026-11-06 to 10M tokens and 600 minutes, at 1.28M and 86 minutes used; 1.81M and 109 minutes used now; review it again at gate b.
+`copy_failed`, round 2, on voice only: facts are clean. Copy round 3 under way. The next review is the third pass (`copyeditor/base.md`); if it fails on voice alone, stop and ask Alon (his decision, 2026-11-06), do not send the business to the harvester or out of the run. Budget raised by Alon on 2026-11-06 to 10M tokens and 600 minutes, at 1.28M and 86 minutes used; 1.81M and 109 minutes used now; review it again at gate b.
 
 ## Decided 2026-11-06 (Alon: "you decide")
 
-- The hotel's own sentences, verbatim or trimmed with no words added, are exempt from "no triads" and "no padding vocabulary" on this business only. Facts are still audited. The general rule change is `proposals/2026-11-ahangama-01/001-copyeditor-owner-prose-voice.md`, gate d, not merged.
+- The hotel's own sentences are exempt from "no triads" and "no padding vocabulary" on this business only: verbatim, trimmed, clauses moved, or a word or two changed for grammar or to drop a claim, with no other words added (widened by Alon after round 2). Facts are still audited. The general rule change is `proposals/2026-11-ahangama-01/001-copyeditor-owner-prose-voice.md`, gate d, not merged.
 - Testimonials are not excerpted: `schemas/site-content.md` says a quote is never trimmed to fit. The page keeps 2.
 
 ## Copy round 3
 
-Humanizer only: the 6 flagged sentences and the 6 note corrections listed in `sites/the-sandhya/copy/review.md`. Then the copyeditor's third pass.
+Humanizer only: the 2 sentences still flagged under the widened ruling (Kabalana ¶3 S1, Dining ¶2) and the 6 note corrections listed in `sites/the-sandhya/copy/review.md`. Then the copyeditor's third pass.
 
 ## Do not lose
 
