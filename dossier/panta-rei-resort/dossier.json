@@ -255,7 +255,9 @@
   "transport": {
    "value": "tuk tuk drivers waiting at the door; private taxi arranged on request; airport shuttle (Booking.com facility list)",
    "source_url": "https://www.pantareiresort.com/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf",
-   "fetched_at": "2026-11-06T09:52:10Z"
+   "fetched_at": "2026-11-06T09:52:10Z",
+   "text": "TUK TUK is also another option, we have some drivers always waiting at the door of the hotel. We recommend you to agree to a price before you take them. Let us know and we can also give them a call. PRIVATE TAXI: If you want to move around with a private taxi, please let us know. We will arrange everything for you!",
+   "note": "guest guide p.3, verbatim"
   }
  },
  "room_types": [
@@ -687,7 +689,18 @@
     ]
    ]
   },
-  "note": "menus linked as 'Have a look!' from /restaurant (Breakfast → the breakfast PDF, Lunch and Dinner → the main PDF; the Dinner link is the same main menu). Dish descriptions are in the PDFs verbatim. Dinner is described on the site as 'a mix of traditional and modern mediterranean dishes'."
+  "note": "menus linked as 'Have a look!' from /restaurant (Breakfast → the breakfast PDF, Lunch and Dinner → the main PDF; the Dinner link is the same main menu). Dish descriptions are in the PDFs verbatim. Dinner is described on the site as 'a mix of traditional and modern mediterranean dishes'.",
+  "descriptions": {
+   "source_url": "https://www.pantareiresort.com/_files/ugd/89c528_cceeed2210fc430fb26ea35eb35d6032.pdf",
+   "fetched_at": "2026-11-06T09:52:10Z",
+   "note": "verbatim from the breakfast menu PDF; only the items the copy names",
+   "items": {
+    "Sri Lankan Breakfast": "2 egg hoppers, homemade green chutney, dhal and coconut sambal.",
+    "Granola Bowl": "Curd topped with granola, treacle, coconut chips, walnuts and fresh fruits.",
+    "Banana Oat Pancakes": "Banana, oat and flour pancakes topped with fresh banana, pineapple, curd and honey.",
+    "Shakshuka": "Tomato sauce with 2 cooked eggs, feta cheese and parsley, served with sourdough and labneh cheese."
+   }
+  }
  },
  "facilities": [
   {
@@ -705,7 +718,12 @@
    "value": "Panta Fitness Club: open-air fitness area overlooking the resort; daily yoga and Pilates classes led by experienced instructors; Vinyasa yoga 8:30AM daily except Friday; 'No need to book'",
    "source_url": "https://www.pantareiresort.com/events",
    "fetched_at": "2026-11-06T09:51:36Z",
-   "note": "schedule PDF https://www.pantareiresort.com/_files/ugd/89c528_2cd9bc960fa848c18229699f785b0152.pdf"
+   "note": "schedule PDF https://www.pantareiresort.com/_files/ugd/89c528_2cd9bc960fa848c18229699f785b0152.pdf",
+   "season_note": {
+    "value": "During the season, our resort offers a extended schedule of activities. Please keep an eye on the Instagram @pantarei_resort or the website www.pantareiresort.com for classes information and times.",
+    "source_url": "https://www.pantareiresort.com/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf",
+    "fetched_at": "2026-11-06T09:52:10Z"
+   }
   },
   {
    "value": "yoga shala",
@@ -715,7 +733,9 @@
   {
    "value": "massage therapy: Surf Therapy Massage and Revitalizing Massage",
    "source_url": "https://www.pantareiresort.com/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf",
-   "fetched_at": "2026-11-06T09:52:10Z"
+   "fetched_at": "2026-11-06T09:52:10Z",
+   "text": "Surf Therapy Massage — Full recovery after active surfing. A unique program created specifically for surfers, targeting every muscle in your body. This comprehensive full body oil massage combines sport massage techniques to address the physical demands of surfing and help your body recover faster. Revitalizing Massage: A full body oil massage designed to activate blood circulation and lymph flow while releasing muscle tension throughout the body.",
+   "note": "guest guide p.7, verbatim"
   },
   {
    "value": "private laundry service by the housekeeping staff (cash)",
