@@ -1,6 +1,26 @@
 # copy sources: the-sandhya, en
 
-Copywriter 0.5.0, round 1, 2026-11-06, run `2026-11-ahangama-01`, `mode: test`. Caps re-read from `schemas/site-content.md` v0.11 this round. Humanizer 0.2.1 pass the same day: nine lines changed, no fact moved, each logged in `humanizer-notes.md`; the rows below quote the result.
+Copywriter 0.5.0, round 2, 2026-11-06, run `2026-11-ahangama-01`, `mode: test`. Caps re-read from `schemas/site-content.md` v0.11 this round. Humanizer 0.2.1 pass after round 1: nine lines changed, no fact moved, each logged in `humanizer-notes.md`. Round 2 changed eight paragraphs, listed in the next section, and corrected the stale Looking after ¶1 row (review, "Draft against final"). The rows below quote the result.
+
+## Round 2: what changed, for the humanizer and the copyeditor
+
+Scope: the facts `review.md` sent back to the copywriter (rows 1 to 7), and the two owner sentences the operator's ruling allows to be trimmed so they parse (Alon, 2026-11-06; `proposals/2026-11-ahangama-01/001-copyeditor-owner-prose-voice.md`). No fact was added, and every word in these lines is the owner's, except Dining ¶5 (a copywriter's sentence, narrowed to `booking.rate_terms`) and the capital letters at the new sentence starts.
+
+| Review row | Field | Round 1 | Round 2 | What happened |
+|---|---|---|---|---|
+| 1 | Rooms ¶1 S1 | "Our 9 spacious rooms are the epitome of quiet elegance, design excellence, thoughtful detail and home comforts." | Joined to S2: "Our 9 spacious rooms have unobstructed …" | Superlative cut. The 9 and "spacious" stay |
+| 2 | Kabalana ¶2 S1 | "Centuries old Galle Fort, the crowning jewel of southern Sri Lanka and a UNESCO World Heritage Site, is just 25 minutes away." | "Centuries old Galle Fort, a UNESCO World Heritage Site, is just 25 minutes away." | Ranking cut |
+| 3 | Kabalana ¶4 S1 | "World famous Yala and Udwalawe National Parks, …" | "Yala and Udwalawe National Parks, …" | Ranking cut |
+| 4 | Kabalana ¶1 S2 | "Pristine sand, stunning sunsets and a consistent swell have nurtured …" | "Pristine sand and stunning sunsets have nurtured …" | Frequency cut; `season` is a stated gap |
+| 5 | Dining ¶5 | "A continental breakfast is included in your stay." | "A continental breakfast for two adults is included in your stay." | Narrowed to `booking.rate_terms` |
+| 6 | intro ¶2 | "… magnificent and omnipresent in every part of the hotel including all our Studios and Suite." | "… magnificent and omnipresent." | Every room seeing the ocean now lives in Rooms ¶1 only |
+| 6, 7 | Rooms ¶1 S2 | "All our retreat rooms have unobstructed sweeping views of the white sandy beach and beyond …" | "Our 9 spacious rooms have unobstructed sweeping views of the beach and beyond …" | White sand now lives in `spot` only. "All our retreat rooms" gave way to the opening of S1 |
+| ruling | intro ¶1 | "… an intimate boutique hotel, your relaxation starts as you …" | "… an intimate boutique hotel. Your relaxation starts as you …" | Split so it parses. The first part is now a fragment. No word cut |
+| ruling | Dining ¶2 | "From our signature Sri Lankan rice & curry, … or going directly to a finger licking array of delicious homemade desserts, we truly believe …" | "Our signature Sri Lankan rice & curry, … or a finger licking array of delicious homemade desserts. We truly believe …" | "From" and "going directly to" cut and the sentence split, so it parses. The first part is now a fragment. Same four dishes |
+
+**For the humanizer:** the five register lines stay yours (`stayInfo.note` S1, S2; `amenities[6].note`; `amenities[7].note`; `priceList[0].note`). Nothing here touched them. `humanizer-notes.md` still describes round 1: "the epitome …" is gone, the Kabalana triad "Pristine sand, stunning sunsets and a consistent swell" is now two items, and item 7 under "Stayed clumsy" is done. Dining ¶5 is the one changed line that is not the owner's, so it gets a normal pass; "for two adults" has to survive it.
+
+**For the copyeditor:** `en.draft.json` is still the round 1 draft. The humanizer's prompt has it kept on its pass, so the diff against the draft should be read after that pass. "Pristine" (Kabalana ¶1) stays as the owner's word; the review notes it in the audit table and did not flag it, and `reviews.quotes[7]` reports debris on the beach while other guests call it clean.
 
 **This is the owner-prose case.** Most of the page is the hotel's own words from `owner_copy[]` (dossier paths below are indexes into that array), kept verbatim or trimmed, because it is their voice. Where a sentence was trimmed, the row says what was cut and why. `reviews.quotes[n]` indexes the dossier array. The audit shaped the label, the order and the closing; no fact rests on it.
 
@@ -71,8 +91,8 @@ Alon's positioning (`business.businessType_note`, 2026-11-06): a beachfront bout
 
 | Block | Paragraph | Rests on |
 |---|---|---|
-| intro ¶1 | "Designed to feel like an exclusive private beach house …" | `owner_copy[2]`, verbatim (the cedilla in "façade" stored as one character). `owner_copy[1]` ("Perched on the edge …") not used: its facts are in the tagline and the Casual Luxe block |
-| intro ¶2 | "Inside, you will catch the first glimpses …" | `owner_copy[3]` S1, verbatim except the stray space in "Inside ," |
+| intro ¶1 | "Designed to feel like an exclusive private beach house with the amenities of an intimate boutique hotel. Your relaxation starts as you kick off your shoes …" | `owner_copy[2]`, every word kept, split in two so it parses (operator's ruling); the cedilla in "façade" stored as one character. `owner_copy[1]` ("Perched on the edge …") not used: its facts are in the tagline and the Casual Luxe block |
+| intro ¶2 | "Inside, you will catch the first glimpses of our star attraction, The Indian Ocean, magnificent and omnipresent." | `owner_copy[3]` S1, the stray space in "Inside ," fixed, "in every part of the hotel including all our Studios and Suite" cut: every room seeing the ocean is in Rooms ¶1 (constraint 10) |
 | intro ¶3 | "Whether you are enjoying the sunshine … the sea is always your view." | `owner_copy[4]` S2, verbatim |
 | intro ¶4 | "Dipping your feet in the azure waters of our swimming pool …" | `owner_copy[5]`, with "brand new 30-meter" cut: `contradictions` pool |
 | Why Sandhya ¶1 | "Sandhya, in Sanskrit संध्य, means “twilight.” It is that magical moment between light and dark." | `business.name_meaning`, recast only to open with the name. The design needs a Devanagari glyph fallback for one word |
@@ -83,23 +103,23 @@ Alon's positioning (`business.businessType_note`, 2026-11-06): a beachfront bout
 | Casual Luxe ¶4 | "We opened in 2017 and renovated in 2023." | `business.since`, Trip.com "Opened: 2017", "Renovated: 2023". One source: owner to confirm |
 | Casual Luxe ¶5 | "Our service is warm, kind, attentive yet informal …" | `owner_copy[15]`, verbatim |
 | Casual Luxe ¶6 | "We have blended the best of the worlds … simply The Sandhya." | `owner_copy[17]`, verbatim |
-| Looking after ¶1 | "We support the vibrant local community … We strive for sustainable tourism." | `sustainability`, the hotel's own claims, in its first person as `sustainability.note` asks. Shipping-container clause and "lifelong family member to Mother Nature" cut: `contradictions` pool, and padding. "vibrant" cut by the humanizer (tell list) |
-| Rooms ¶1 | "Our 9 spacious rooms … private balcony or exclusive patio area." | `owner_copy[8]` S1, S2, verbatim. 9: `room_count`, see contradictions |
+| Looking after ¶1 | "We support the local community … We strive for sustainable tourism." | `sustainability`, the hotel's own claims, in its first person as `sustainability.note` asks. Shipping-container clause and "lifelong family member to Mother Nature" cut: `contradictions` pool, and padding. "vibrant" cut by the humanizer (tell list) |
+| Rooms ¶1 | "Our 9 spacious rooms have unobstructed sweeping views of the beach and beyond to the endless ocean, each with its own private balcony or exclusive patio area." | `owner_copy[8]` S1, S2, joined with no word added. Cut: "are the epitome of quiet elegance, design excellence, thoughtful detail and home comforts" (a superlative no dossier entry supports), "All our retreat rooms" (the join) and "white sandy" (in `spot`). Views and outdoor space also `room_types[].view`, `.outdoor`. 9: `room_count`, see contradictions |
 | Rooms ¶2 | "We have included thoughtful touches … any one of our room types." | `owner_copy[8]` S3, cut before the sizes, which are in `rooms[]` |
 | Rooms ¶3 | "Every room has a plush pillow-top mattress …" | Checked room by room against all four `room_types[]`: `.amenities` (desk, speaker, hairdryer, 2-person rain shower, robes and slippers, universal sockets, central aircon, WiFi, PressReader), `.site_text` (pillow-top, Spa Ceylon), `.engine_description` (500 thread count; the site's "tread" is audit F15), `.engine_amenities` (ceiling fan) |
 | Rooms ¶4 | "In the Studio King, a triple occupancy can be arranged …" | `room_types[0].engine_description`, verbatim. Only this room's text says it, though the engine lists a maximum of 3 for all four: owner item |
 | Rooms ¶5 | "Nightly rates are on our booking page, for the dates you choose." | `booking.path` (dates go to the engine), `booking.rate_terms`, `gaps[]` offers.nightly_rates. No number. The engine itself was not seen working: `booking.engine_status` |
 | Dining ¶1 | "Elevated Comfort Food was the brief for our visiting menu designer …" | `owner_copy[12]`, verbatim. Used over the near-identical `owner_copy[9]` S1, S2 because it names the chef (`dining.menu_designer`); never both |
-| Dining ¶2 | "From our signature Sri Lankan rice & curry …" | `owner_copy[10]`, verbatim except the wrong quote mark in "island‘s". A stated belief, in the hotel's voice |
+| Dining ¶2 | "Our signature Sri Lankan rice & curry, … homemade desserts. We truly believe …" | `owner_copy[10]`, `dining.dishes`. "From" and "going directly to" cut and split in two so it parses (operator's ruling); the wrong quote mark in "island‘s" fixed. A stated belief, in the hotel's voice |
 | Dining ¶3 | "Our breads, pastas, sauces … evolve with the seasons." | `owner_copy[11]`, "but rest assured, the quality remains" cut |
 | Dining ¶4 | "If you don’t find what you crave … are available." | `owner_copy[9]` S3, S4, verbatim |
-| Dining ¶5 | "A continental breakfast is included in your stay." | `dining.breakfast` (own engine), Trip.com "A complimentary continental breakfast is included", `facilities` "Free breakfast" (Google). `booking.rate_terms` "for two adults" not added: search snippet only |
+| Dining ¶5 | "A continental breakfast for two adults is included in your stay." | `dining.breakfast` (own engine), Trip.com "A complimentary continental breakfast is included", `facilities` "Free breakfast" (Google). "for two adults": `booking.rate_terms`, added in round 2 because the copy may not widen a fact the dossier holds (review row 5). **That limit is a search snippet of the engine page, not seen live: a person should read it on the engine before go-live** |
 | Exclusive ¶1 | "Our home at The Sandhya … simply to celebrate life." | `owner_copy[24]` S1, S2, "prime" and "unique" cut as unevidenced rankings, "nestled" cut by the humanizer (tell list) |
 | Exclusive ¶2 | "With the beach as your blank canvas … your special occasion." | `owner_copy[24]` S3, "perfect" and the sunset clause cut (sunset is in Why Sandhya). Price is in `priceList[0]` only |
-| Kabalana ¶1 | "Just by the buzzing and eclectic town of Ahangama, Kabalana Beach has come into its own …" | `owner_copy[19]`, reordered, "on the golden south coast" moved to `spot`. "has nurtured" corrected to "have nurtured" (the plural subject) by the humanizer. The hotel's words about the place, not its offer |
-| Kabalana ¶2 | "Centuries old Galle Fort … restaurant scene." | `owner_copy[21]` S1, S2, verbatim; `location.nearby[0]` |
+| Kabalana ¶1 | "Just by the buzzing and eclectic town of Ahangama, Kabalana Beach has come into its own …" | `owner_copy[19]`, reordered, "on the golden south coast" moved to `spot`. "has nurtured" corrected to "have nurtured" (the plural subject) by the humanizer. "a consistent swell" cut: a frequency nothing counts, and `season` is a stated gap (playbook §7). The comma after "Pristine sand" became the owner's "and". The hotel's words about the place, not its offer |
+| Kabalana ¶2 | "Centuries old Galle Fort, a UNESCO World Heritage Site, … restaurant scene." | `owner_copy[21]` S1, S2; `location.nearby[0]`. "the crowning jewel of southern Sri Lanka and" cut: a ranking with only the hotel's marketing behind it |
 | Kabalana ¶3 | "The nearby beaches of Midigama … eateries and night spots." | `owner_copy[22]`, S1 turned round by the humanizer to lose "Discover", same places and same three things. **"all within a stone’s throw from us" cut**: guests put Ahangama a 15-minute walk or a 5-minute tuk tuk away (`location.nearby[5]`) |
-| Kabalana ¶4 | "World famous Yala and Udwalawe National Parks … late lunch or cocktail." | `owner_copy[23]`, sunset clause cut. Place-name spellings as published (`location.nearby[2]`): owner to check "Udwalawe" and "Singharaja" |
+| Kabalana ¶4 | "Yala and Udwalawe National Parks … late lunch or cocktail." | `owner_copy[23]`, sunset clause cut, "World famous" cut: the same unevidenced ranking as "famed". Place-name spellings as published (`location.nearby[2]`): owner to check "Udwalawe" and "Singharaja" |
 | Kabalana ¶5 | "Ahangama train station is 1.4 km from the hotel." | `location.nearby[3]`, Trip.com |
 
 ## The 13 contradictions
@@ -133,16 +153,17 @@ Alon's positioning (`business.businessType_note`, 2026-11-06): a beachfront bout
 | `reviews.quotes[7]` (mixed, 2,180 characters) | Over the cap; the dossier says never trim it |
 | `reviews.quotes[8]` (booking dispute) | Dossier: "not for the site" |
 | `stayInfo.deposit`, US$200 | Trip.com only, and may be that platform's term. Owner item |
-| `booking.rate_terms`, triple-share US$75++ | Search snippet of the engine page, not seen live |
+| `booking.rate_terms`, triple-share US$75++ | Search snippet of the engine page, not seen live. Its breakfast limit is on the page, in Dining ¶5, so the copy does not widen it |
 | Dhillan | Dossier: not without the owner |
 | Linden Davis, lobby furniture | One 2017 line, and the hotel renovated in 2023 |
 | "Luxury", "world class surf", "famed", "Kabalana Surf Beach", "holiday of a lifetime" | Positioning, and unevidenced rankings |
+| "the epitome of quiet elegance, design excellence, thoughtful detail and home comforts", "the crowning jewel of southern Sri Lanka", "World famous", "a consistent swell" | Round 2: rankings and a frequency nothing in the dossier checks (review rows 1 to 4). The owner can restore them with evidence: a source for the swell would also fill `season` |
 | `facilities` hygiene and safety rows (COVID items, CCTV, alarms, extinguishers), Invoices, Internet, Newspapers, Beach, Beachfront, Outdoor furniture, Wine / Champagne | Noise, or said elsewhere on the page |
 | `videos[0]` | Copy has no use for it; license unknown, `usable: false` |
 
 ## Each fact once (constraint 10)
 
-Adults only: `tagline`. Beachfront, boutique hotel, Ahangama as place: `tagline` (the intro's "boutique hotel" is the owner's "amenities of an intimate boutique hotel", a different claim). Mile-long white sand: `spot`. Nine rooms: rooms ¶1. Balcony or patio: rooms ¶1. Sizes, floors, beds: `rooms[]`. Common room kit: rooms ¶3. Rain shower: rooms ¶2 (pressure), ¶3 (two people). Triple: rooms ¶4. Rates: rooms ¶5 and `closing` (the link, as `closing_intent` asks). Pool: intro ¶4. Media room, lawns: intro ¶3. Name's meaning, evening light: Why Sandhya. Owner and craftsmen: Casual Luxe ¶2. Wallpaper*: Casual Luxe ¶3. Opened, renovated: Casual Luxe ¶4. Service: Casual Luxe ¶5. Sustainability: Looking after ¶1. Dishes: dining ¶2. Breakfast: dining ¶5. Cooking class: `amenities[8]`. Exclusive Use: block for words, `priceList[0]` for price. Front desk: `hoursNote`. Check-in, check-out: `stayInfo`. Phone, email, address: `contact`. Train station: Kabalana ¶5. Galle Fort: Kabalana ¶2.
+Adults only: `tagline`. Beachfront, boutique hotel, Ahangama as place: `tagline` (the intro's "boutique hotel" is the owner's "amenities of an intimate boutique hotel", a different claim). Mile-long white sand: `spot`. Nine rooms: rooms ¶1. Every room seeing the ocean: rooms ¶1 (`rooms[3]` names the suite's ocean-view balconies, and intro ¶3 is the shared spaces). Balcony or patio: rooms ¶1. Sizes, floors, beds: `rooms[]`. Common room kit: rooms ¶3. Rain shower: rooms ¶2 (pressure), ¶3 (two people). Triple: rooms ¶4. Rates: rooms ¶5 and `closing` (the link, as `closing_intent` asks). Pool: intro ¶4. Media room, lawns: intro ¶3. Name's meaning, evening light: Why Sandhya. Owner and craftsmen: Casual Luxe ¶2. Wallpaper*: Casual Luxe ¶3. Opened, renovated: Casual Luxe ¶4. Service: Casual Luxe ¶5. Sustainability: Looking after ¶1. Dishes: dining ¶2. Breakfast: dining ¶5. Cooking class: `amenities[8]`. Exclusive Use: block for words, `priceList[0]` for price. Front desk: `hoursNote`. Check-in, check-out: `stayInfo`. Phone, email, address: `contact`. Train station: Kabalana ¶5. Galle Fort: Kabalana ¶2.
 
 The word "sunset" appears in Kabalana ¶1 as part of the owner's scene sentence; the evening itself is told once, in Why Sandhya.
 
