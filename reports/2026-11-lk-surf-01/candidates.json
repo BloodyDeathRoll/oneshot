@@ -1,0 +1,116 @@
+{
+ "run_id": "2026-11-lk-surf-01",
+ "generated_at": "2026-11-06T09:50:00Z",
+ "scout_version": "0.4.0",
+ "area": {
+  "mode": "business",
+  "anchors": [
+   {
+    "query": "Panta Rei Resort, Kabalana, Ahangama, Sri Lanka",
+    "lat": 5.9807381,
+    "lng": 80.3497102,
+    "geocoder": "google_maps_place",
+    "fetched_at": "2026-11-06T09:44:48Z"
+   }
+  ],
+  "radius_m": 0,
+  "shore_buffer_m": null,
+  "polygon": "reports/2026-11-lk-surf-01/area.geojson"
+ },
+ "candidates": [
+  {
+   "slug": "panta-rei-resort",
+   "name": "Panta Rei Resort",
+   "type": "beach_lodging",
+   "location": {
+    "lat": 5.9807381,
+    "lng": 80.3497102,
+    "address": "back to life road, Kabalana Rd, Ahangama 80650, Sri Lanka",
+    "inside_buffer": true,
+    "distance_to_shore_m": 366
+   },
+   "contact": {
+    "phone": "+94728003022",
+    "whatsapp": "+94728003022",
+    "email": "hello@pantareiresort.com"
+   },
+   "socials": {
+    "instagram": "https://www.instagram.com/pantarei_resort/",
+    "facebook": "https://www.facebook.com/profile.php?id=100093054286482",
+    "tripadvisor": "https://www.tripadvisor.com/Hotel_Review-g674590-d25364260-Reviews-Panta_Rei_Resort-Ahangama_Galle_District_Southern_Province.html",
+    "google_maps": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en"
+   },
+   "existing_site": {
+    "url": "https://www.pantareiresort.com/",
+    "status": 200,
+    "mobile_friendly": true,
+    "last_updated_hint": "Wix sitemap lastmod 2026-10-29 (Wix sets it on publish)",
+    "has_booking": true,
+    "funnel": {
+     "clicks_to_book": 1,
+     "primary_action": "whatsapp",
+     "cta_above_fold": true,
+     "measured_at": "2026-11-06T09:42:18.050Z"
+    }
+   },
+   "presence": {
+    "score": 4,
+    "reason": "Mobile Wix site with booking one tap from landing (funnel: clicks_to_book 1, WhatsApp; hero 'CHECK AVAILABILITY' → HolidayFuture engine, above the fold), but the content is thin and unfinished: 140 words on the home page, the four room cards repeat one Booking.com sentence ('Situated in Ahangama Central, 300 metres from Kabalana Beach…'), the Explore page is empty, a template mailto:info@mysite.com is left on Activities, and no room prices appear anywhere on the site.",
+    "criteria": [
+     "booking_engine",
+     "whatsapp",
+     "thin_content",
+     "placeholder_content",
+     "no_public_prices"
+    ]
+   },
+   "evidence": [
+    {
+     "source_url": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en",
+     "fetched_at": "2026-11-06T09:44:48Z",
+     "note": "Google Maps: Panta Rei Resort, Hotel, 4.7 stars, 213 reviews; address, +94 72 800 3022, plus code X8JX+7V, website pantareiresort.com, check-in 14:00 / out 11:30; Booking.com and Agoda from ₪339 for Nov 10–12"
+    },
+    {
+     "source_url": "https://www.pantareiresort.com/",
+     "fetched_at": "2026-11-06T09:40:58Z",
+     "note": "own site (Wix): home, about, ourrooms, restaurant, events, explore, contact all 200; phone layout served to an iPhone UA (viewport width=320, no horizontal scroll); 16 bungalows, pool, restaurant/bar, yoga/Pilates; about page: 'surfing the waves of Kabalana'; meta description: 'the perfect base for surfing'"
+    },
+    {
+     "source_url": "https://pantareiresort.holidayfuture.com/",
+     "fetched_at": "2026-11-06T09:43:00Z",
+     "note": "HolidayFuture booking engine behind 'CHECK AVAILABILITY' (200)"
+    },
+    {
+     "source_url": "reports/2026-11-lk-surf-01/funnel/panta-rei-resort/funnel.json",
+     "fetched_at": "2026-11-06T09:42:18.050Z",
+     "note": "tools/funnel.mjs 0.2.0 --depth 1: clicks_to_book 1, primary whatsapp, cta_above_fold true, 7 pages, 0 errors"
+    },
+    {
+     "source_url": "https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html",
+     "fetched_at": "2026-11-06T09:45:49Z",
+     "note": "Booking.com (headless): 9.2 Superb from 468 reviews; outdoor pool, restaurant, bar, airport shuttle, family rooms; no surf facility listed"
+    },
+    {
+     "source_url": "https://www.instagram.com/pantarei_resort/",
+     "fetched_at": "2026-11-06T09:45:49Z",
+     "note": "Instagram @pantarei_resort: 2,970 followers, 186 posts"
+    },
+    {
+     "source_url": "https://www.facebook.com/profile.php?id=100093054286482",
+     "fetched_at": "2026-11-06T09:45:49Z",
+     "note": "Facebook page: 123 followers, 'Hidden paradise in the south coast of Sri Lanka', lists +94 74 209 5135 and pantareiresort@gmail.com (both differ from the site's main contact); last post 2026-11-04"
+    },
+    {
+     "source_url": "https://www.tripadvisor.com/Hotel_Review-g674590-d25364260-Reviews-Panta_Rei_Resort-Ahangama_Galle_District_Southern_Province.html",
+     "fetched_at": "2026-11-06T09:45:00Z",
+     "note": "linked from the site; 403 bot wall, not read"
+    }
+   ],
+   "surf_related_confidence": 0.5,
+   "surf_related_note": "Lodging 366 m from the Kabalana shore (OSM coastline way 23463869) that mentions surfing on its own site ('surfing the waves of Kabalana', 'the perfect base for surfing') and hosts surf/yoga groups ('Groups and Retreats'), but offers no surf lessons, board rental or board storage anywhere we found. Run 2026-09-ahangama-02 excluded it from its Google listing alone. Chosen by name by Alon; gate a decides.",
+   "languages_seen": [
+    "en"
+   ]
+  }
+ ]
+}
