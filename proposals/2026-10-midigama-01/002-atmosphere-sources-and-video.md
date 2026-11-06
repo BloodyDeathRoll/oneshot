@@ -35,25 +35,27 @@ Add two sources next to Commons, under a new, named licence category:
 
 Unsplash stays out of the tool because its API terms require hotlinking the image URLs and sending download notices, and call a failure a material breach. Our media is stored in `dossier/<slug>/stock/`, optimised, and served from a static build that must also work as a zip on any host, so hotlinking can't work.
 
-Every entry records `license_name`, `license_url`, `source_url` and `fetched_at`, because these are custom licences that can change and the dossier should show what applied on the day.
+Every new entry records `source` (`pexels`, `unsplash`), `license_name`, `license_url`, `source_url` and `fetched_at`, because these are custom licences that can change and the dossier should show what applied on the day. An entry with no `source` is a Commons entry from before this change.
 
 **Evidence.** New field `place_evidence`, required on every `local` entry from a new source and on every video:
 
 - `gps`: coordinates from the EXIF or the source page, or
 - `location_and_landmark`: a location the photographer gives, the URL where they give it, *and* a note on the visible match (the break, the headland, the road).
 
-`tools/check-places.mjs` fails a `local` entry without it. This is the part that does the work: today line 92 accepts `local` when a locality name appears in the credit or `place` text, so "Midigama in the title" can still pass, and the Pexels API has no location field to lean on. A file with no evidence can only be `neutral`: open sea or sky with no landmark, as today. Existing Commons photo entries are not re-checked, so builds that already passed stay valid.
+`tools/check-places.mjs` fails a `local` entry without it. This is the part that does the work: today line 92 accepts `local` when a locality name appears in the credit or `place` text, so typing "Midigama" there is enough to pass, and the Pexels API has no location field to lean on. A file with no evidence can only be `neutral`: open sea or sky with no landmark, as today. Existing Commons photo entries are not re-checked, so builds that already passed stay valid.
 
-**People.** No identifiable person, in any atmosphere photo or video from any source. Neither licence mentions model releases, Pexels forbids implying endorsement by people shown, and a surfer on a hotel's hero reads as that hotel's guest, which is the first hard line. A distant surfer nobody could recognise is fine.
+**People.** No identifiable person in any new atmosphere photo or video, from any source. Neither licence mentions model releases, Pexels forbids implying endorsement by people shown, and a surfer on a hotel's hero reads as that hotel's guest, which is the first hard line. A distant surfer nobody could recognise is fine. New field `people`: `none` or `distant`, written by whoever looks at the file, required on every new-source entry and every video, and `tools/check-places.mjs` fails an entry without it. No tool can see a person, so this rests on the look-and-describe step below; the field makes that step leave a record.
 
 Every file is still looked at and described before use.
 
 ### 2. Atmosphere video, same rules
 
-Allow video of the business's own locality from Pexels (its licence covers video) and Commons, under the Pexels licence, CC0 or CC BY, through `tools/fetch-video.mjs` with `--license stock` and the same `place`, `place_ok`, `place_evidence` and licence fields.
+Allow video of the business's own locality from Pexels (its licence covers video) and Commons, under the Pexels licence, CC0 or CC BY, through `tools/fetch-video.mjs` with `--license stock` and the same `place`, `place_ok`, `place_evidence`, `people` and licence fields.
+
+- **Stored as atmosphere, never as the business's video.** A stock clip goes in `dossier/<slug>/stock/index.json` with `kind: "video"` and its files under `dossier/<slug>/stock/video/`, never in `dossier.videos[]` or `assets/`. So `usable` (set in `tools/fetch-video.mjs` to `license === 'business-owned'`) and the rule "if there is usable video, at least two of the three concepts open on it" keep meaning the business's own video, and a stock clip can't trigger them. On a page its files are named by stock id (`dist/video/stock-NNN-*`), so `tools/check-places.mjs` finds its use the way it finds a photo's: the id in `dist/index.html` or a filename under `dist/`.
 
 - **CC BY-SA video is excluded.** Display-only means shown whole and never re-saved or cropped, and a web hero is transcoded and shown with `object-fit: cover`, which is both.
-- **It may carry the hero only when the business has no usable video of its own.** The creative director decides at 4d, as it already does for the business's own video (`base.md`, "Video, the business's own"), and writes the reason in `concepts.md`; the critic can then check it.
+- **It may carry the hero only when none of the business's own clips can carry a first screen.** That is the creative director's judgment at 4d, not the `usable` field: a clip can be `usable: true` and still be unable to open a page (Cheeky Monkey's vid-009 is vertical and shot inside the shop). The concept names each of the business's clips and says why it can't carry the first screen, in `concepts.md`, where the critic can check it. This is the "third says why not" the existing rule already asks for, applied to every concept that opens on atmosphere video.
 - **It never qualifies for a scroll set-piece.** That line in `agents/creative-director/base.md` stands.
 - **It is never cut together with the business's footage so as to read as theirs.**
 
@@ -64,35 +66,59 @@ Allow video of the business's own locality from Pexels (its licence covers video
 
 ## Exact wording
 
-Approval of an item covers the wording for that item. Version bumps and CHANGELOG entries come with the change.
+Each block is labelled with the item it belongs to, so approving an item takes only its blocks. Version bumps and CHANGELOG entries come with the change.
 
-**PLAN.md §9, appended to the "Image rights" bullet (items 1 and 2):**
+**PLAN.md §9, appended to the "Image rights" bullet.**
 
-> **Amended (Shahar, on approval): atmosphere may also come from Pexels and from Unsplash (website download only, never its API, because the API requires hotlinking), under those sites' own licences, recorded per file with licence URL, source URL and fetch date. Freely-licensed atmosphere video is allowed from Pexels and Commons under the Pexels licence, CC0 or CC BY, never BY-SA; it may carry a hero only when the business has no usable video of its own, and it is never cut in with the business's footage. A `local` entry from these sources, and every video, needs `place_evidence`; without it a file can only be `neutral`. No identifiable person appears in any atmosphere photo or video. Both hard lines stand.**
+Item 1:
 
-**`rubric.md` line 44 (items 1 and 2), replacing "under a licence the policy excludes (share-alike, NC, ND)":**
+> **Amended (Shahar, on approval): besides Commons under the licences above, atmosphere photography may also come from Pexels and from Unsplash (website download only, never its API, because the API requires hotlinking), under those sites' own licences, recorded per file with licence URL, source URL and fetch date. The earlier "Wikimedia Commons, CC0 and CC BY only" limit no longer applies to these two sources. A `local` entry from them needs `place_evidence`; without it a file can only be `neutral`. No identifiable person appears in new atmosphere, recorded per file as `people`. Both hard lines stand.**
 
-> under a licence PLAN.md §9 does not allow for that use (NC and ND never; share-alike only for a photograph shown whole, never for video), or an atmosphere image or video shows an identifiable person
+Item 2, after item 1's text:
 
-This also settles a conflict flagged on PR #68: the rubric excludes BY-SA while PLAN §9 allows it for display only.
+> **Atmosphere video is allowed from Pexels and Commons under the Pexels licence, CC0 or CC BY, never BY-SA, stored under `stock/`, and always with `place_evidence` and `people`. It may carry a hero only when the concept says why none of the business's own clips can, and it is never cut in with the business's footage.**
 
-**`agents/designer/base.md`, constraint 2, after the sentence ending "treated as one." (items 1 and 2):**
+**`rubric.md` line 44, replacing "under a licence the policy excludes (share-alike, NC, ND)".**
 
-> Atmosphere video follows the same rules (PLAN.md §9): it needs `place_evidence`, it is never BY-SA, it carries a hero only when the concept says the business has no usable video of its own, and it is never cut in with the business's footage. No identifiable person appears in atmosphere.
+Item 1:
 
-**`agents/creative-director/base.md`, "Atmosphere available", replacing "`tools/fetch-atmosphere.mjs` will fetch more from Wikimedia Commons under CC0 and CC BY." (items 1 and 2):**
+> under a licence PLAN.md §9 does not allow for that use (NC and ND never; share-alike only for a photograph shown whole), or new atmosphere shows an identifiable person
 
-> `tools/fetch-atmosphere.mjs` will fetch more from Wikimedia Commons (CC0, CC BY) and Pexels; an operator may add Unsplash files by hand. Atmosphere video may open a concept only when the business has no usable video of its own: say why in `concepts.md`.
+Item 2 also changes "A freely-licensed atmosphere image" to "A freely-licensed atmosphere image or video" and adds after "shown whole": "and never for video".
 
-**`agents/harvester/base.md`, constraint 8, appended (item 3):**
+Item 1 also settles a conflict flagged on PR #68: the rubric excludes BY-SA while PLAN §9 allows it for display only.
+
+**`agents/designer/base.md`, constraint 2, after the sentence ending "treated as one."**
+
+Item 1:
+
+> No identifiable person appears in new atmosphere; each entry records `people`.
+
+Item 2, after item 1's text:
+
+> Atmosphere video follows the same rules (PLAN.md §9): it needs `place_evidence`, it is never BY-SA, it carries a hero only when the concept says why none of the business's own clips can, and it is never cut in with the business's footage.
+
+**`agents/creative-director/base.md`, "Atmosphere available", replacing "`tools/fetch-atmosphere.mjs` will fetch more from Wikimedia Commons under CC0 and CC BY."**
+
+Item 1:
+
+> `tools/fetch-atmosphere.mjs` will fetch more from Wikimedia Commons (CC0, CC BY) and Pexels; an operator may add Unsplash files by hand.
+
+Item 2, after item 1's text:
+
+> Atmosphere video (`stock/`, `kind: "video"`) may open a concept only when `concepts.md` names each of the business's own clips and says why it can't carry the first screen.
+
+**`agents/harvester/base.md`, constraint 8, appended.**
+
+Item 3:
 
 > A missing shot of the water or the place is a `gaps[]` entry with `pitch_point: true`. In `mode: live`, also draft a request to the owner for footage of the place; an operator sends it, you never do.
 
 ## What it costs
 
 - `tools/fetch-atmosphere.mjs` gains a Pexels source. The API key is kept in `~/.oneshot/`, never in git. The default limit is 200 requests an hour and 20,000 a month, far above what we need.
-- `tools/fetch-video.mjs` gains the `stock` licence (today it accepts only `business-owned` and `unknown`) and the place and licence fields.
-- `tools/check-places.mjs` reads video entries and `place_evidence`.
+- `tools/fetch-video.mjs` gains the `stock` licence (today it accepts only `business-owned` and `unknown`). With it, the tool writes to `stock/` instead of `assets/video/`, with the place and licence fields.
+- `tools/check-places.mjs` reads `source`, `place_evidence` and `people`, and finds video use by stock id under `dist/`.
 - A site using Pexels media carries a visible link to Pexels in its credit line.
 - Unsplash files are added by hand, which takes an operator's time.
 
