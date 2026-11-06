@@ -258,3 +258,47 @@ visual-critic 0.2.0 · 2026-11-06 · full mode, round 1 · dimension 8 only · p
 5. **Even the side margins** to 120 px at 1440 (106 vs 122 measured). Optionally reduce the hero script to about 72 px, or add a soft local scrim behind it, so it doesn't compete with the roofs (`final/desktop-00`).
 
 **Keep:** the hero (aerial film, Satisfy name, one coral CTA). The room cards over the aerial and the designed booking drawer (chips, floating labels, the coral hand-off, WhatsApp and Call). The Satisfy and Jost pair with script for titles only. The full-bleed pool, lawn and fitness photos. The " | " price lines and the week strip. The short larger quotes. The ring closing image, with a lighter scrim. The footer with button links and round social icons.
+
+---
+---
+
+# Station 5 · full r2
+
+visual-critic 0.2.0 · 2026-11-06 · full mode, round 2 · dimension 8 only · page: `sites/panta-rei-resort/final/` at commit 4fa7dce.
+
+**How I looked.** Ran `npm run build:demo` in `final/` (1 page; `dist/index.html` rebuilt 23:25). Served `dist/` over http (`tools/_serve.mjs`, port 18763) and shot it fresh into my own scratch folder: 14 desktop captures (page 11209 px) and 16 mobile captures (page 12086 px). Below, `r2/desktop-NN` and `r2/mobile-NN` are that set. With Playwright I checked hero playback (`vid-002-cut.d1920.webm` playing at 1440, `.p1080.webm` on the iPhone 13 profile) and that all three `<video>` elements have a poster (true, true, true). I scrolled the closing section to the centre of the screen on both profiles (`r2-close-dt`, `r2-close-ph`). I opened the booking drawer from the hero CTA on the iPhone 13 profile (`r2-drawer-ph`), measured each `h2`'s left edge, and ran the inspector. Compared against the picked mockup's round-2 set (`mockups/interactive/shots/`), my r1 shots of this build, and the current site (`cur-ph-00…03` on an iPhone UA, `current-site/desktop-00…05`).
+
+**Three seconds.** Unchanged from r1, and good. 1440 (`r2/desktop-00`): the aerial film over the ring, "Panta Rei, Kabalana" in white Satisfy, one coral "Check dates", and a clean nav. 390 (`r2/mobile-00`): the script name on two lines over the pool and one coral CTA.
+
+**What changed since r1, checked**
+- **Header:** solid once past the hero. In `r2/desktop-07` the fitness text scrolls cleanly under an opaque off-white bar, and in `r2/desktop-12` the nav sits on plain ground with nothing behind it. On mobile (`r2/mobile-03, 05, 07, 11`) no text shows through. **Fixed.** The inspector still reports "Getting here and around" 75 % under the header at one scroll position at 390. With a solid header, that is an ordinary sticky header covering a heading mid-scroll, not see-through text. Anchors land below the header, per the designer, and I did not see a heading cut on an anchor jump.
+- **Closing:** the ring-and-pool aerial with only a soft scrim behind the words. Roofs read true red and the pool turquoise (`r2-close-dt`, `r2/desktop-12`). The sentence and its two buttons sit together and centred. **Fixed.** The sentence is still long: 2 lines at 1440, and 4 lines at about 30 px at 390 (`r2-close-ph`). It is centred and legible, but heavier than the rest of the page's display text.
+- **Phone drawer:** the gallery is gone until a room is tapped. The sheet now goes title in script, four room chips, Arrival / Departure / Guests with floating labels, the price note, then the coral CTA with WhatsApp and Call (`r2-drawer-ph`). **Fixed.** Under the price note, the first line of the room description ("Every room has air conditioning, hot water and wifi…") now peeks cut in half above the sticky CTA. It is the same kind of artefact as r1's photo sliver, but text instead of a photo and smaller.
+- **Posters:** all three clips have posters. The inspector's no-poster warning is gone. **Fixed.**
+- **Margins:** the inspector still measures 106 px left and 122 px right at 1440. My `h2` measurements give 148 px for most sections and 106 px for the half-bleed fitness title, which sits in its half by design. I can't confirm 100/100 from the outside. Nothing looks off-centre in the shots, so I am not counting it.
+- **Hover states:** not judged. The sheets are static, and I did not walk hovers this round.
+
+**Checklist (full page, r2)**
+- **Media:** the business's own film leads and plays, every clip has a poster, the full-bleed pool, lawn, restaurant and fitness photos are unchanged from r1, and the closing aerial is now bright. The page no longer ends on its darkest picture.
+- **Composition and grid:** split sections and full-bleed photos alternate, with the room cards straddling the aerial (`r2/desktop-03`). Unchanged and good.
+- **Typography:** Satisfy for section titles only, Jost for reading and sub-titles. The closing sentence is the only display line that runs long.
+- **Colour:** off-white with flat lilac, peach and sage panels, and coral only on booking actions, white on coral.
+- **Hierarchy and rhythm:** clear from hero to footer.
+- **Polish:** the solid header removes r1's worst defect. What remains is the cut description line in the phone drawer and the long closing sentence.
+- **Distinctiveness:** the room chooser over the ring, the script titles and the booklet tints make it this place.
+- **Hero and motion:** a clean hero with the aerial film as the main item, plus spring drawers, chip swaps and the slider. Still a quiet page after the hero. The inspector reports "still-page", consistent with the brief.
+
+**Score: 8 / 10.** Pass. Every r1 fix I could check landed, and the page is cleaner than at r1 with nothing worse. It does not reach 9: the closing sentence is long, the page has no motion moment after the hero, the restaurant body is a text column beside one half-bleed photo, and there is no Instagram block.
+
+**Better than the current site?** Yes. First screen: `r2/desktop-00` / `r2/mobile-00` against `cur-ph-00` (a lounge photo with a salmon "CHECK AVAILABILITY" box and two round social buttons) and `current-site/desktop-00`. Whole page: rooms with sizes and a designed booking sheet with dates (`r2/desktop-03`, `r2-drawer-ph`), prices, sourced reviews, directions, a bright closing and a footer with button links (`r2/desktop-04…13`). The current phone page (`cur-ph-01…03`) has one word per photo, outlined ghost buttons, a map and an underlined email.
+
+**Regressions against the picked mockup:** none. Hero, rooms, pool, restaurant, fitness, after the surf, quotes, getting here, groups and footer match the mockup or improve on it. Fitness is fuller, massage names are in Jost, the closing is the bright ring instead of the dim bedroom, and the header is solid instead of see-through. Nothing that was in the mockup is lost.
+
+**Fix list (polish, not gating; biggest effect first)**
+1. **Shorten the closing sentence** to one line, such as "Book direct for our best rate." with "Ask us anything on WhatsApp" as the second button's label. Then 390 shows one or two lines instead of four (`r2-close-ph`).
+2. **Phone drawer:** end the scrolling content above the sticky CTA with a fade or 24 px of padding, so the room description isn't cut in half against the button (`r2-drawer-ph`).
+3. **Add one quiet motion moment after the hero.** For example, play the vid-003 fitness clip muted in the fitness half-bleed, or slowly scale the "After the surf" photo with scroll (±4 %), so the page stays alive below the film.
+4. **Add an Instagram strip** (six of their photos) between Groups and the closing.
+5. **Recheck the 1440 side margins** with the inspector (it still reads 106 / 122) and align the fitness text column to the same 148 px edge as the other sections.
+
+**Keep:** everything in r1's keep list. Also keep the solid header, the soft local scrim on the closing, the posters on every clip, and the drawer order (rooms, then dates, then CTA).

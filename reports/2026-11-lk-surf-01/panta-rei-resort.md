@@ -488,3 +488,87 @@ fix list (ordered smallest first; each tied to a dimension):
 3. **(dim 6):** give the drawer gallery track `.slides` `tabindex="0"`, an accessible name ("Photos of <room>") and arrow-key scrolling, as the room-card row has. That clears axe `scrollable-region-focusable`.
 4. **(dim 6):** put the floating phone bar and WhatsApp button inside a landmark (e.g. `<nav aria-label="Book">` or inside `<footer>`). That clears axe `region`.
 5. **(dim 4, deployer, station 6):** build the demo with `SITE_URL` set so canonical and `og:image` exist.
+
+---
+
+## Full r2 · station 5 (Critique), full mode, round 2: the built site after the r1 fixes
+
+critic 0.4.3 · rubric 0.3.2 · 2026-11-06. Reviewed: `sites/panta-rei-resort/final/` at `4fa7dce`, with `tools/funnel.mjs` at `717724d` (which now knows `holidayfuture.com` and `hostaway.com`). Built with `npm run build:demo` (`SITE_URL=https://panta-rei-resort.os1.workers.dev/`; clean, `git status` unchanged) and served from `dist/` over http. I did not read the visual critics' reports. The checks and their order are the same as in full r1.
+
+Evidence is in `reports/2026-11-lk-surf-01/critic-panta-rei-resort-r2/`: `audit.json` (scratch copy of `audit-mockup.mjs` pointed at `final/dist`, 3 runs), `checks.json` (offline run, axe, keyboard, reduced motion, meta, JSON-LD) and `tapthrough.json`. The funnel output is in `reports/2026-11-lk-surf-01/funnel/panta-rei-resort-r2-critic/funnel.json`. Screenshots are in `final/shots/http/` (14 desktop + 16 mobile, 0 console errors; scratch). `final/shots/http/mobile-00.png` shows the logo, "Panta Rei, Kabalana" and one coral "Check dates" over the top-down pool. There is no WhatsApp icon on the first screen.
+
+### Funnel (`tools/funnel.mjs http://localhost:9431/ --depth 3`) vs `audit.json` recommended
+
+| | measured | target | result |
+|---|---|---|---|
+| `clicks_to_book` | **1** | ≤ 2 | met |
+| `primary_action.class` | **engine** ("Check dates", `https://pantareiresort.holidayfuture.com/`) | engine | **equal**: the r1 hard fail is cleared |
+| `hero_action` | engine, "Check dates", `clicks_to_flow` 0 | n/a | |
+| booking actions above the fold | 1: the engine "Check dates" at 446 px. The header WhatsApp icon is no longer on the first screen | | |
+| pages / broken | 1 / 0 | | |
+
+### Booking tap-through (390 × 844, touch, live engine)
+
+Hero "Check dates" → drawer (Double Room preselected) → Suite, 3–6 Mar 2027, 2 guests → landed on `https://pantareiresort.holidayfuture.com/listings/572798?start=2027-03-03&end=2027-03-06&numberOfGuests=2`. The engine page reads **"$615 · For 3 nights · Mar 3 - Mar 6"**. That is 2 taps.
+
+The WhatsApp hand-off is `wa.me/94728003022` with "…the Suite with Private Pool, 3 Mar to 6 Mar, 2 guests." With JavaScript off, the hero goes to the engine home in 1 tap and the 4 room cards are `/listings/` links. All URLs are identical to the dossier's.
+
+### Budget (playbook §4; 390 px throttled, no scroll; 3 runs)
+
+| line | target | measured | met |
+|---|---|---|---|
+| first-load transfer | ≤ 1.5 MB | **653 KB** (652,667 B, 12 requests, 1 host) | yes |
+| hero video after first paint | ≤ 2 MB / ≤ 4 MB | phone `p1080.webm` 1.50 MB; desktop `d1920.webm` 3.40 MB. Nothing else loads before a scroll at 390 or 1440 | yes |
+| JS, compressed | ≤ 300 KB | **6.4 KB** gzip (19.8 KB raw, inline); 0 external scripts | yes |
+| largest image in the first load | ≤ 300 KB | 148 KB | yes |
+| fonts | ≤ 2 families, ≤ 150 KB | Jost + Satisfy, 49 KB, self-hosted | yes |
+| LCP | ≤ 2.5 s | **1,988 / 2,020 / 1,984 ms** (r1: 2.16–2.17 s) | yes |
+| CLS / scroll | < 0.1 / < 0.01 | 0 / early 0.0009, settled 0 | yes |
+| third-party on load | 0 | 0 | yes |
+
+### Delivery (plain static server, every other host blocked, full scroll at 390 and 1440)
+
+0 off-site requests attempted, 0 failed, 0 console errors, 0 broken images, both fonts loaded, `scrollWidth` = viewport.
+
+`dist/` has 97 files: 0 with uppercase letters or spaces in the name, 0 root-absolute references, and 0 hits for `localhost`, `/api/`, `payload`, `secret` or `token`. The preview is still closed: `noindex, nofollow`, and `robots.txt` has `Disallow: /`.
+
+The `SITE_URL` build now carries canonical `https://panta-rei-resort.os1.workers.dev/`, hreflang `en` + `x-default`, `og:url`, and an absolute `og:image` (`photos/img-001-full-2000.webp`, 2000×1126, with alt text) with `twitter:card=summary_large_image`. All 12 JSON-LD `image` URLs and the `og:image` exist in `dist/`.
+
+### Accessibility (axe-core 4.10.2, WCAG 2 A/AA + best-practice; manual keyboard)
+
+| check | result |
+|---|---|
+| axe, page, 390 and 1440 | **0 violations** (46 passes). r1's `region` is cleared: the bar is now inside a nav landmark |
+| axe, drawer open | **0 violations**. r1's `scrollable-region-focusable` is cleared: `.slides` now has `role="region" tabindex="0" aria-label="Photos of the Double Room"` |
+| axe incomplete | color-contrast 28 / 29 nodes (text over video and photos, not computable), aria-prohibited-attr 1, video-caption 2 (muted loops) |
+| keyboard | at 390: skip link → logo → "Check dates" (3 tabs; the hidden header WhatsApp is out of the tab order). At 1440, 7 tabs. 3 px focus outline. Enter opens the drawer with focus inside; 40 × Tab stays inside; Esc closes; focus returns to "Check dates". At both widths |
+| reduced motion | 0 video requests |
+| targets / alt / skip / lang / headings | 0 under 44 px. 0 images without alt; the 8 `alt=""` are room-card and chip thumbnails inside links named by the room. Skip link, `lang="en"`, heading order kept |
+
+### Facts (page, drawer, JSON-LD, `/llms.txt`)
+
+- **Page:** the visible text is line-for-line identical to full r1 (0 lines removed, 0 added), so it is the r1-checked text. By script: 44/44 numbers are in the dossier (seven are 24 h forms of its 12 h times), and 6/6 quotes are verbatim.
+- **JSON-LD (`Resort`):** the r1 fields are unchanged. They are joined by `@id` / `url` (the demo URL) and 12 `image` URLs of business-owned photos. Geo `5.9807381, 80.3497102`, address, `+94728003022`, 4 rooms (3/22, 3/30, 4/50, 2/40), 8 offers (3500, 2500, 3000, 3500, 20000, 17000, 20000, 17000 LKR), 16 amenities, 6 `sameAs`, no `aggregateRating`. All match the dossier.
+- **`/llms.txt`:** 6/6 quotes verbatim, every number in the dossier, the "Preview build … Do not index, quote or cite it" line kept, and the page link now points at the demo URL.
+
+**Result: 0 mismatches and 0 claims without a dossier entry.**
+
+```
+mode: full        round: 2        variant: interactive (final/)
+total: critic part 75.7 / 80 — dimension 8 (lower visual score × 2.5) and the /100 total to be combined        result: pass on the critic's gates (no hard fail, every dimension ≥ 6, every budget line met); final pass needs dimension 8 ≥ 8 from both visual critics and total ≥ 85        hard_fails: []
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | 0 mismatches on the page, drawer, JSON-LD and `llms.txt`. 6/6 quotes verbatim. 44/44 numbers in the dossier |
+| 2 | mobile + performance | 9 | every §4 line met: 653 KB first load, LCP 1.98–2.02 s, JS 6.4 KB gzip, fonts 49 KB, CLS 0, scroll 0.0009 / 0, phone hero 1.50 MB, desktop 3.40 MB. `scrollWidth` = viewport |
+| 3 | booking CTA | 10 | `funnel.json`: primary **engine**, `clicks_to_book` **1** ≤ 2. The walk takes 2 taps to the Suite page with the dates shown by the engine. WhatsApp prefilled; JS-off path works; URLs identical to the dossier |
+| 4 | brand fit | 8 | the playbook §3 order is present; canonical and `og:image` now exist. The first screen still gives name + place ("Panta Rei, Kabalana"), not the business type, which is one scroll down |
+| 5 | copy | 9 | passed copy verbatim; interface labels only |
+| 6 | accessibility | 9 | axe 0 violations on the page and in the open drawer. Keyboard and focus pass at both widths. Reduced motion honoured. Contrast over imagery cannot be computed by axe (28 nodes): the only item left unproven |
+| 7 | security + delivery | 10 | offline run clean; static, relative, lowercase; self-hosted fonts; no CMS calls or secrets; preview closed to crawlers |
+
+Critic part: 10×2 + 9×1.5 + 10×1.5 + 8×0.5 + 9×1 + 9×0.8 + 10×0.7 = **75.7 / 80**. With dimension 8 = 8 from both visual critics: (75.7 + 20) × 100 ÷ 105 = **91.1**. With 7: 88.8, but that would fail the dimension-8 ≥ 8 gate.
+
+what the designer prompt got wrong: nothing new in round 2. Every item on the r1 fix list was fixed and verified here: funnel class, header WhatsApp, drawer gallery focus, landmark, `SITE_URL` build.
+fix list (fail only): none.

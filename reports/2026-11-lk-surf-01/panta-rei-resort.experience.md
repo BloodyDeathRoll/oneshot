@@ -393,3 +393,61 @@ Nothing else regressed. The five listed changes are all present, and the drawer 
 5. One quiet entrance for each section's main picture (a 12–16 px rise and fade, once, off under reduced motion), so the long middle has some life between the clips.
 
 **Keep:** the vid-002 resort hero with the script title and one CTA; the room cards that open the drawer on the chosen room; the drawer with the dates above the gallery and the Double preselected; the lazy lounge clip; the fitness clip filling its section; the bright ring-and-pool closing; "Talk to us" as buttons; script for titles only.
+
+---
+
+# Station 5 · full r2 (build 4fa7dce)
+
+experience-critic 0.2.0 · 2026-11-06. Built with `npm run build:demo` in `sites/panta-rei-resort/final/`, and `dist/` was served over http on port 8960 (the server is now stopped). Walked as in full r1:
+- phone 390 × 844 throttled to 1.6 Mbps / 150 ms / 4× CPU, with cold frames and a human-pace scroll;
+- laptop 1440 × 900;
+- reduced motion, JS off and a hover sweep;
+- the hero "Check dates" and the Double Room card tapped through to the engine;
+- the closing bar and the drawer checked by script.
+
+Independent as before. Frames are in `reports/2026-11-lk-surf-01/experience/panta-rei-resort/s5-r2/final/`.
+
+**First seconds (phone, throttled):**
+- 0.5 s: the inlined blurred poster is up, with the red roofs and the turquoise pool readable as colour, under the script title and "Check dates" (`phone-cold-500ms.png`). Full r1 showed a flat green ground here; this is the fix that mattered most.
+- 1.5 s: the sharp poster paints over the blur from the top (`-1500ms`).
+- 3 s: the full poster: the ring of roofs and the pool with swimmers (`-3000ms`).
+- 6 s: the film is playing (t 1.9 s), and by 10 s it pulls out over the jungle (`-6000ms`, `-10000ms`).
+- LCP was 2,100 ms (full r1: 2,256 ms).
+- On a laptop the film plays from 0.5 s.
+- The film still starts after `load`, about 6 s on the slow phone. With the blurred and then sharp poster carrying the screen, the wait no longer reads as empty.
+
+**Story and desire:** unchanged from full r1 and still working (`phone-scroll-*`, `laptop-scroll-*`):
+- the welcome with the lazy lounge clip;
+- the ring aerial and the four room cards;
+- the swimmer, the restaurant tabs, and the fitness clip filling its section;
+- the lawn with boards, guests, getting here, groups;
+- the bright ring-and-pool closing.
+
+**Booking:**
+- **From the hero:** "Check dates" (1) opens the drawer on the **dates first**: the room chips with the Double preselected, then Arrival, Departure and Guests (2 guests), then "Every room has air conditioning…" and the 9.2 · 468 Booking.com line. There is no gallery until a room is tapped (`phone-drawer-open.png`; 4 images, the chip thumbnails). Tapping "Suite with Private Pool" opens its 6-photo gallery with its details (`phone-drawer-suite-tapped.png`). That is cleaner than full r1, and the dates are the first thing you fill in. Entering 10–13 Dec, then "See prices on our booking page" (2), lands on `…/listings/572800?start=2026-12-10&end=2026-12-13&numberOfGuests=2` with **$465 · For 3 nights · Dec 10 – Dec 13** (`phone-bookdef-4-engine.png`).
+- **From the Double Room card:** (1), then the dates, then "See prices" (2), lands on the same URL and **$465** (`phone-card-4-engine.png`).
+- **Taps to book: 2**, plus the two date fields, from either start. This meets the target.
+- With JS off, every "Check dates" is a real engine link.
+
+**Closing bar:** the persistent phone bar now steps aside while the closing buttons are on screen. At 92 % of the page it has class `bar` and is moved 92 px down, out of view, leaving only the closing "Check dates" + WhatsApp (`phone-closing-92.png`). It comes back over the footer (`phone-closing-100.png`). There are no more twin "Check dates".
+
+**Motion:**
+- The hover sweep found 33 of 36 controls with a visible hover state (full r1: 27). The selected tab and the quote dots now respond.
+- The sweep still logged one "Check dates" with no change, the header copy that is hidden at the top of the page, and the footer WhatsApp icon.
+- Reduced motion shows posters only.
+- There are still no section entrances.
+
+**Regressions against full r1 and the picked mockup:** none found. The page height, the order, the clips and the booking path are unchanged; LCP improved; and the first frame is now a picture, as in the mockup.
+
+**Score: 8 / 10. Pass.** It is engaging from a picture of the place at 0.5 s on a slow phone, easy to book in 2 taps to a real total, and without the round-1 rough edges. It falls short of 9 because the middle is still static between the clips and the hero film takes about 6 s on a slow phone.
+
+**Better than the current site: yes.** The current site's hero film had not started at 10 s on the same throttled phone. The current site never sells a room, and its path to a priced room is about 5 taps from the engine home.
+
+**Fix list (none blocks the pass):**
+1. Add the drawer line "If your dates clear on the next page, that room is full: try another room or WhatsApp us." It is still missing. The engine clears dates for a full room without any message (round 2, `r2/engine/suite-dec10-14.png`), and that is the one moment the journey can look broken.
+2. One quiet entrance for each section's main picture (a 12–16 px rise and fade, once, off under reduced motion). The page between the four clips still doesn't move.
+3. Start the hero film earlier on phones: `preload="metadata"` and `play()` on `DOMContentLoaded` for the 1080p phone cut, or a lighter first loop, so the slow phone moves before about 6 s.
+4. A hover state for the footer WhatsApp icon (the last control without one).
+5. "Good to know" is a long " | " paragraph on the phone (`phone-scroll-13`). Split it into two short lines, the rules (check-in/out, children, pets) and the facilities, to scan faster.
+
+**Keep:** the inlined blurred hero poster; the vid-002 resort hero with one CTA; the drawer with the dates first and the gallery only on a room tap; the room cards; the fitness and lounge clips; the closing with the bar stepping aside; script for titles only.
