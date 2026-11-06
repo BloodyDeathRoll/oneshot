@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Sandhya | An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka.</title>
+<meta name="description" content="An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka.">
+<meta name="theme-color" content="#CBCEC5">
+<meta property="og:title" content="The Sandhya">
+<meta property="og:description" content="An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka.">
+<meta property="og:image" content="img/img-071-2000.webp">
+<link rel="preload" as="image" href="img/img-071-2000.webp" media="(min-width: 768px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/img-071-phone.webp" media="(max-width: 767px)" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Sacramento&family=Schibsted+Grotesk:wght@400;500;600&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sacramento&family=Schibsted+Grotesk:wght@400;500;600&display=swap"></noscript>
+<script>document.documentElement.classList.add('js');['load','error'].forEach(function(n){document.addEventListener(n,function(e){var t=e.target;if(t.tagName==='IMG')t.classList.add('in')},true)})</script>
+<style>
+:root{
+  --ground:#F2F2F2; --marble:#DFDEE3; --sea:#A1C0B7; --ink:#1D212B; --book:#CD0B40; --book-deep:#B10937;
+  --paint:#CBCEC5; --soft:rgba(29,33,43,.07); --soft-2:rgba(29,33,43,.13); --mute:#4B4F5A;
+  --text:"Schibsted Grotesk",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  --script:"Sacramento","Snell Roundhand","Apple Chancery",cursive;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --gut:clamp(20px,4vw,56px);
+  --space:clamp(76px,10.5vw,152px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 17px/1.6 var(--text);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+p{margin:0 0 1em}
+p:last-child{margin-bottom:0}
+ul{list-style:none;margin:0;padding:0}
+figure{margin:0}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:12px;top:-60px;z-index:50;background:#fff;padding:10px 16px;border-radius:999px;transition:top 160ms ease}
+.skip:focus{top:10px}
+.wrap{width:min(100% - 2*var(--gut),1328px);margin-inline:auto}
+.ic{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+.js img[loading="lazy"],.js img[data-src]{opacity:0;transition:opacity 600ms ease}
+.js img.in{opacity:1}
+html:not(.js) img[data-src]{display:none}
+
+/* Section titles are the script. Everything people read is the grotesk. */
+.t{margin:0;font:400 clamp(46px,5.4vw,76px)/1.12 var(--script);text-wrap:balance}
+.center{text-align:center}
+.big{font-size:clamp(22px,2vw,27px);line-height:1.34;letter-spacing:-.01em;text-wrap:pretty}
+.lede{font-size:clamp(19px,1.6vw,22px);line-height:1.5;letter-spacing:-.005em}
+.lede-s{font-size:19px;line-height:1.5}
+.meta{font-size:15px;color:var(--mute)}
+.strong{font-weight:500}
+
+/* Buttons: one shape, one press. The booking colour is on booking links and nothing else. */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:56px;padding:0 30px;border-radius:999px;font-weight:600;font-size:17px;line-height:1.15;white-space:nowrap;transition:transform 120ms var(--ease),background-color 180ms ease;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.btn:active{transform:scale(.97)}
+.btn-book{background:var(--book);color:#fff}
+.btn-big{min-height:64px;padding:0 40px;font-size:19px}
+.btn-soft{background:var(--soft);min-height:50px;padding:0 22px;font-size:16px;font-weight:500}
+.btn .ic{transition:transform 220ms var(--ease)}
+.on-tint .btn-soft{background:rgba(255,255,255,.62)}
+@media (hover:hover){
+  .btn-book:hover{background:var(--book-deep)}
+  .btn-soft:hover{background:var(--soft-2)}
+  .on-tint .btn-soft:hover{background:#fff}
+  .btn:hover .ic{transform:translateY(-1px)}
+  .btn-big:hover .ic{transform:translateX(4px)}
+}
+
+/* First screen */
+.hero{position:relative;height:100svh;min-height:560px;overflow:hidden;background:var(--paint);display:flex;flex-direction:column}
+.hero-media{position:absolute;inset:0;display:block}
+.hero-media img{color:transparent;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transform-origin:50% 42%;animation:settle 20s cubic-bezier(.22,.5,.3,1) both}
+@keyframes settle{from{transform:scale(1)}to{transform:scale(1.04)}}
+.top{position:relative;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:14px var(--gut)}
+.top nav{display:flex;gap:6px;margin-left:-14px}
+.top .right{display:flex;justify-content:flex-end;align-items:center;gap:6px;margin:0 -14px 0 0}
+.top nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;font-weight:500;font-size:15px;transition:opacity 180ms ease}
+.logo{display:block;padding-block:6px;transition:opacity 180ms ease}
+.logo img{width:158px;height:auto;filter:brightness(0);opacity:.9}
+.hero-copy{position:relative;margin-top:auto;padding:0 var(--gut) clamp(32px,8.8vh,96px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px}
+h1{margin:0;font-weight:500;font-size:26px;line-height:1.28;letter-spacing:-.01em;max-width:32em;text-wrap:balance}
+.nb{white-space:nowrap}
+.top nav a.narrow{display:none}
+@media (hover:hover){.top nav a:hover,.logo:hover{opacity:.55}}
+
+/* The header after the first screen: desktop only, sticky, so it needs no script and the button is
+   never on the first screen. The phone has the bar at the foot instead. */
+.rest{position:relative}
+.stick{position:sticky;top:0;z-index:30;background:var(--ground);padding-block:8px}
+.stick .logo img{width:128px}
+.stick-in{padding:0}
+.stick .right{margin:0}
+.stick .btn{min-height:48px;padding:0 22px;font-size:15.5px}
+
+/* Arrival */
+.arrival{padding-block:clamp(48px,6vw,88px) var(--space)}
+.split{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:center;margin-top:clamp(40px,5vw,80px)}
+.arrival .prose{grid-column:2/7}
+.arrival .frame{grid-column:8/13;aspect-ratio:4/5}
+.frame{position:relative;overflow:hidden;background:var(--marble)}
+[data-px] img{position:absolute;left:0;top:-4rem;width:100%;height:calc(100% + 8rem);object-fit:cover;will-change:transform}
+
+/* Rooms */
+.rooms-head{max-width:46em;margin:0 auto clamp(48px,6vw,88px)}
+.rooms-head .t{margin-bottom:.34em}
+.room{display:grid;grid-template-columns:8fr 4fr;column-gap:clamp(32px,5vw,72px);align-items:center;margin-bottom:clamp(56px,7vw,104px)}
+.room.flip{grid-template-columns:4fr 8fr}
+.room.flip .show{order:2}
+.room h3{margin:0 0 .15em;font-weight:500;font-size:clamp(26px,2.4vw,32px);letter-spacing:-.015em;line-height:1.2}
+.room .meta{margin-bottom:.9em}
+.room .btn{margin-top:.75em;padding:0 24px;font-size:16px;min-height:52px}
+.stage{position:relative;background:var(--marble)}
+.strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.strip::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always}
+.slide img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.show.fade .strip{display:block;position:relative;aspect-ratio:3/2;overflow:hidden}
+.show.fade .slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .45s ease,visibility 0s .45s}
+.show.fade .slide.on{opacity:1;visibility:visible;transition:opacity .45s ease}
+.dots{display:flex;justify-content:center;min-height:44px;align-items:center}
+.dot{appearance:none;background:none;border:0;padding:0;width:34px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;touch-action:manipulation}
+.dot::before{content:"";display:block;width:7px;height:7px;border-radius:7px;background:var(--ink);opacity:.26;transition:width 260ms var(--ease),opacity 260ms ease}
+.dot[aria-current="true"]::before{width:22px;opacity:.9}
+.dot:active::before{opacity:.6}
+.step{position:absolute;top:50%;width:48px;height:48px;margin-top:-24px;border:0;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity 200ms ease,transform 140ms var(--ease)}
+.step.prev{left:16px}.step.next{right:16px}
+.step.prev .ic{transform:rotate(180deg)}
+.show:hover .step,.step:focus-visible{opacity:1}
+.step:active{transform:scale(.92)}
+.kit{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;row-gap:40px;padding-top:clamp(8px,2vw,24px)}
+.kit-text{grid-column:1/6}
+.kit-list{grid-column:7/13}
+.kit-head{font-weight:500;margin-bottom:.8em}
+.kit-list ul{columns:2;column-gap:32px}
+.kit-list li{display:flex;gap:12px;break-inside:avoid;padding-bottom:14px;font-size:16px;line-height:1.4}
+.cap{display:block}
+.cap::first-letter{text-transform:uppercase}
+.stay{margin-top:1.4em;padding:20px 24px;border-radius:16px;background:var(--soft);font-size:16px}
+.stay strong{font-weight:500;display:block;margin-bottom:.2em}
+.amen{margin-top:clamp(32px,4vw,56px)}
+.amen summary{display:inline-flex;align-items:center;gap:12px;min-height:44px;font-weight:500;cursor:pointer;list-style:none}
+.amen summary::-webkit-details-marker{display:none}
+.amen summary .ic{transition:transform 260ms var(--ease)}
+.amen[open] summary .ic{transform:rotate(45deg)}
+.amen ul{columns:3;column-gap:32px;margin-top:14px}
+@supports (interpolate-size:allow-keywords){
+  .amen{interpolate-size:allow-keywords}
+  .amen::details-content{height:0;overflow:clip;transition:height 300ms var(--ease),content-visibility 300ms allow-discrete}
+  .amen[open]::details-content{height:auto}
+}
+.amen li{display:flex;gap:10px;break-inside:avoid;padding-bottom:10px;font-size:15px;line-height:1.4}
+.amen .ic{width:16px;height:16px;margin-top:3px}
+.amen summary .ic{width:20px;height:20px;margin:0}
+.soft{color:var(--mute)}
+
+/* Full-bleed views: the frame is shorter than the photograph, so nothing is cropped at the sides
+   and the parallax has 4rem each way to travel. */
+.feature-block{position:relative;margin-top:var(--space)}
+.bleed{position:relative;overflow:hidden;height:calc(66.667vw - 8rem);background:var(--paint)}
+.bleed img{position:absolute;left:0;top:-4rem;width:100%;height:66.667vw;object-fit:cover;will-change:transform}
+.bleed picture{display:block}
+.feature{position:absolute;z-index:1;left:clamp(32px,4vw,64px);top:15%;width:19.5vw;margin:0;color:#fff;font:400 clamp(28px,2.95vw,56px)/1.16 var(--script);-webkit-text-stroke:.25px currentColor}
+
+/* Dining: text in two steps beside real masonry */
+.dining{padding-block:var(--space)}
+.dining-grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:start}
+.dining-text{grid-column:1/6}
+.dining-text .t{margin-bottom:.5em}
+.step-two{margin-top:2em}
+.mason{grid-column:7/13;columns:2;column-gap:16px}
+.mason img{width:100%;margin-bottom:16px}
+.mason figure:nth-child(3){break-before:column;margin-top:clamp(32px,5vw,72px)}
+
+/* The house */
+.luxe{padding-block:var(--space) 0}
+.luxe-line{max-width:25em;margin:.5em auto 0;font-size:clamp(26px,3vw,40px);line-height:1.22;letter-spacing:-.018em;text-wrap:balance}
+.luxe-cols{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;margin-top:clamp(40px,5vw,72px)}
+.luxe-cols>div:first-child{grid-column:2/7}
+.luxe-cols>div:last-child{grid-column:7/12}
+.swipe{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;margin-top:clamp(48px,6vw,88px);padding-inline:max(var(--gut),calc((100vw - 1328px)/2));scroll-padding-inline:max(var(--gut),calc((100vw - 1328px)/2));cursor:grab;-webkit-overflow-scrolling:touch}
+.swipe::-webkit-scrollbar{display:none}
+.swipe.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.swipe figure{flex:0 0 clamp(236px,23vw,340px);aspect-ratio:4/5;overflow:hidden;scroll-snap-align:start;background:var(--marble)}
+.swipe img{width:100%;height:100%;object-fit:cover;pointer-events:none;transition:transform 700ms var(--ease)}
+@media (hover:hover){.swipe figure:hover img{transform:scale(1.03)}}
+.service{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:center;padding-block:clamp(64px,8vw,120px) var(--space)}
+.prints{grid-column:1/7;display:flex;gap:clamp(12px,1.6vw,22px);align-items:flex-start}
+.print{background:#fff;padding:clamp(8px,.9vw,12px);box-shadow:0 10px 30px rgba(29,33,43,.09)}
+.prints .print{flex:1}
+.prints .print:nth-child(2){margin-top:clamp(20px,3vw,44px)}
+.service .words{grid-column:8/13}
+.simply{margin-top:1em;font-size:clamp(22px,2vw,27px);line-height:1.3;letter-spacing:-.012em}
+
+/* Tints */
+.on-tint{position:relative}
+.sea{background:var(--sea);padding-block:var(--space)}
+.marble{background:var(--marble);padding-block:var(--space)}
+.kab-head{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;margin-bottom:clamp(40px,5vw,72px)}
+.kab-head>*{grid-column:1/10}
+.spot{margin:.3em 0 0;font-size:clamp(28px,3.2vw,44px);line-height:1.18;letter-spacing:-.02em;text-wrap:balance}
+.kab{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:stretch}
+.kab .frame{grid-column:1/6;background:var(--ground)}
+.kab-body{grid-column:7/13}
+.kab-cols{columns:2;column-gap:32px;font-size:16px;line-height:1.58}
+.kab-cols p{break-inside:avoid}
+.mapline{display:flex;align-items:flex-end;gap:24px;margin-top:clamp(32px,4vw,56px)}
+.mapprint{flex:0 0 clamp(260px,26vw,380px)}
+.mapprint img{width:100%;aspect-ratio:730/630}
+
+.guests .t{margin-bottom:.5em}
+.ratings{display:flex;justify-content:center;gap:clamp(40px,7vw,104px);flex-wrap:wrap}
+.rating{display:block;text-align:center}
+.score{display:block;font-size:clamp(52px,6vw,84px);font-weight:400;line-height:1;letter-spacing:-.03em}
+.sep{display:none}
+.rate-rest{display:inline-flex;gap:8px;align-items:center;font-size:15px;margin-top:10px;color:var(--mute)}
+.rating .ic,.rate-line .ic{width:16px;height:16px;transition:transform 220ms var(--ease)}
+@media (hover:hover){.rating:hover .ic,.rate-line:hover .ic{transform:translateX(3px)}}
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);margin-top:clamp(48px,6vw,84px)}
+.quote{margin:0;font-size:clamp(18px,1.45vw,20px);line-height:1.5}
+.quote footer{margin-top:1em;font-size:15px;color:var(--mute)}
+
+/* Exclusive Use */
+.exclusive{padding-block:var(--space) 0}
+.exclusive .frame{aspect-ratio:21/10}
+.ex-grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;row-gap:40px;margin-top:clamp(40px,5vw,72px)}
+.ex-text{grid-column:1/7}
+.ex-text .t{margin-bottom:.4em}
+.ex-price{grid-column:8/13;align-self:end}
+.price{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline;justify-content:space-between}
+.price b{font-weight:400;font-size:clamp(34px,3.2vw,44px);letter-spacing:-.02em;line-height:1.1}
+.ex-price .note{font-size:15px;color:var(--mute);margin:.5em 0 1.2em}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+.care{margin-top:clamp(40px,5vw,64px);max-width:44em}
+.care h3{margin:0 0 .3em;font-weight:500;font-size:19px}
+
+/* Twilight */
+.twilight{padding-block:var(--space);display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:center}
+.tw-words{grid-column:1/6}
+.tw-words .t{margin-bottom:.45em}
+.tw-prints{grid-column:7/13;position:relative;aspect-ratio:1/.92}
+.tw-prints .print{position:absolute}
+.tw-prints .a{left:0;top:0;width:72%;z-index:1}
+.tw-prints .b{right:0;bottom:0;width:60%;z-index:2}
+
+/* Booking */
+.book{padding-bottom:var(--space)}
+.book-card{max-width:840px;margin:0 auto;padding:clamp(36px,5vw,72px) clamp(22px,5vw,72px);background:#fff;border-radius:28px;text-align:center}
+.book-card h2{margin:0 0 .6em;font-weight:500;font-size:clamp(23px,2.2vw,30px);line-height:1.25;letter-spacing:-.012em;text-wrap:balance}
+.book-card .plain{max-width:34em;margin-inline:auto}
+.rate-lines{margin:1.5em 0 2em;font-size:15px;color:var(--mute)}
+.rate-line{display:inline-flex;align-items:center;gap:8px;min-height:44px}
+.closing{margin:1.8em auto 1em;max-width:30em}
+.book-card .row{justify-content:center}
+
+/* Footer */
+.foot{background:var(--marble);padding-block:clamp(56px,7vw,96px) clamp(40px,5vw,64px);text-align:center}
+.foot .logo{display:inline-block;margin-bottom:28px}
+.foot .logo img{width:142px;filter:brightness(0);opacity:.9}
+.foot .row{justify-content:center}
+.foot .btn-soft{background:rgba(255,255,255,.62)}
+@media (hover:hover){.foot .btn-soft:hover{background:#fff}}
+.foot address{font-style:normal;margin-top:28px}
+.foot .fine{font-size:15px;color:var(--mute);margin-top:.5em}
+
+/* Phone bar: sticky at the foot of .rest, so it exists without a script and never lands on the
+   first screen. With a script it waits until the first screen's own button has gone. */
+.bar{display:none}
+
+@media (max-width:1023px){
+  .arrival .prose{grid-column:1/7}
+  .kit-text{grid-column:1/13}.kit-list{grid-column:1/13}
+  .dining-text{grid-column:1/7}.mason{grid-column:7/13;columns:1}
+  .mason figure:nth-child(3){break-before:auto;margin-top:0}
+  .amen ul{columns:2}
+  .room,.room.flip{grid-template-columns:1fr;row-gap:8px}
+  .room.flip .show{order:0}
+  .kab-cols{columns:1}
+  .mapline{flex-wrap:wrap}
+  .mapprint{flex-basis:100%}
+}
+@media (max-width:767px){
+  body{font-size:16.5px}
+  html{scroll-padding-top:12px}
+  .top{padding:6px 8px}
+  .top nav{margin:0}.top .right{margin:0}
+  .top nav a{font-size:14px}
+  .top nav a.wide{display:none}
+  .top nav a.narrow{display:inline-flex}
+  .logo img{width:124px}
+  .hero-copy{padding:0 16px max(20px,env(safe-area-inset-bottom));gap:14px}
+  h1{font-size:clamp(19.5px,5.4vw,21px);line-height:1.3}
+  .hero .btn{width:100%}
+  .hero-media img{object-position:50% 0}
+  .stick{display:none}
+  .t{font-size:clamp(40px,11.4vw,46px)}
+
+  .arrival{padding-top:64px}
+  .split,.kit,.kab,.kab-head,.ex-grid,.service,.twilight,.luxe-cols,.dining-grid{display:block}
+  .arrival .frame{margin-top:32px;margin-inline:calc(-1*var(--gut))}
+  [data-px] img{top:0;height:100%;will-change:auto}
+
+  .room,.room.flip{display:block;margin-bottom:56px}
+  .room .show{margin-inline:calc(-1*var(--gut))}
+  .slide img{aspect-ratio:4/3}
+  .room-text{padding-top:4px}
+  .room .btn{width:100%;margin-top:.6em}
+  .kit-list{margin-top:32px}
+  .kit-list ul{columns:1}
+  .amen ul{columns:1}
+
+  .bleed{height:auto;aspect-ratio:4/5}
+  .bleed img{top:0;height:100%;will-change:auto}
+  .feature{position:static;width:auto;color:inherit;-webkit-text-stroke:0;font-size:clamp(34px,9.6vw,40px);line-height:1.16;text-align:center;padding:0 var(--gut) 32px}
+
+  .mason{columns:2;margin-top:32px;column-gap:10px}
+  .mason img{margin-bottom:10px}
+  .mason figure:nth-child(3){break-before:column;margin-top:32px}
+
+  .luxe-line,.spot{font-size:24px;line-height:1.26}
+  .luxe-cols>div+div{margin-top:1em}
+  .swipe figure{flex-basis:68vw}
+  .prints{margin-bottom:40px}
+
+  .kab .frame{margin-bottom:32px;aspect-ratio:3/4}
+  .kab-cols{columns:1}
+  .mapline{display:block}
+  .mapprint{margin-bottom:20px}
+
+  .ratings{flex-direction:column;gap:28px}
+  .quotes{grid-template-columns:1fr}
+
+  .exclusive .frame{aspect-ratio:3/2;margin-inline:calc(-1*var(--gut))}
+  .ex-price{margin-top:40px}
+
+  .tw-prints{margin-top:44px}
+  .rate-line .ic{display:none}
+  .rate-lines{font-size:14px}
+  .btn-big{width:100%;padding:0 16px;font-size:18px}
+  .book .wrap{width:calc(100% - 20px)}
+  .book-card{border-radius:22px}
+  .foot{padding-bottom:40px}
+
+  .bar{display:flex;gap:10px;position:sticky;bottom:0;z-index:30;padding:10px 12px max(10px,env(safe-area-inset-bottom));background:var(--ground);transition:transform 250ms var(--ease)}
+  .bar .btn{flex:1;min-width:0;padding:0 8px;min-height:54px;font-size:clamp(15px,4.35vw,17px)}
+  .round{flex:none;width:54px;height:54px;border-radius:50%;background:var(--soft);display:flex;align-items:center;justify-content:center;transition:transform 120ms var(--ease);touch-action:manipulation}
+  .round:active{transform:scale(.94)}
+  .js .bar:not(.up){transform:translateY(110%)}
+}
+/* A short phone or a short laptop: the photograph gives up its ceiling, never the bed, so the words
+   stay on the linen and clear of the window frame. */
+@media (max-width:767px) and (min-aspect-ratio:8/15){.hero-media img{object-position:50% 100%}}
+@media (max-width:767px) and (min-aspect-ratio:14/25){.hero-media img{object-position:50% 80%}}
+@media (min-width:768px) and (min-aspect-ratio:19/10){.hero-media img{object-position:50% 66%}.hero-copy{gap:14px}}
+@media (min-width:768px) and (min-aspect-ratio:41/20){.hero-media img{object-position:50% 74%}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-media img{animation:none}
+  .swipe img{transition:none}
+  .js img[loading="lazy"],.js img[data-src]{transition:none}
+  .btn,.dot::before,.step,.amen summary .ic,.show.fade .slide{transition-duration:.01ms}
+  .show.fade .slide{transition-delay:0s}
+  .bar{transition:none}
+  .amen::details-content{transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the page</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5M3 16h18M6 11V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/></symbol>
+<symbol id="i-shower" viewBox="0 0 24 24"><path d="M5 20V7a3 3 0 0 1 6 0M8 9h6M10 13v1M14 13v1M12 16v1M16 16v1"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14M5 19l8-8"/></symbol>
+<symbol id="i-robe" viewBox="0 0 24 24"><path d="M9 3l3 3 3-3 4 3-2 5-2-1v11H9V10l-2 1-2-5z"/></symbol>
+<symbol id="i-fan" viewBox="0 0 24 24"><path d="M12 12c0-4 1-7 3-7s3 2 1 4-4 3-4 3zm0 0c4 0 7 1 7 3s-2 3-4 1-3-4-3-4zm0 0c0 4-1 7-3 7s-3-2-1-4 4-3 4-3zm0 0c-4 0-7-1-7-3s2-3 4-1 3 4 3 4z"/></symbol>
+<symbol id="i-desk" viewBox="0 0 24 24"><path d="M3 8h18M5 8v11M19 8v11M14 8v5h5"/></symbol>
+<symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M7 8h10v3a5 5 0 0 1-10 0zM12 16v5"/></symbol>
+<symbol id="i-dryer" viewBox="0 0 24 24"><path d="M4 6h11a4 4 0 0 1 0 8H4zM9 14l-1 7h3l1-7M20 8.5h1.5M20 11.5h1.5"/></symbol>
+<symbol id="i-speaker" viewBox="0 0 24 24"><path d="M9 9H5v6h4l5 4V5zM17 9a4 4 0 0 1 0 6"/></symbol>
+<symbol id="i-wifi" viewBox="0 0 24 24"><path d="M3 9a14 14 0 0 1 18 0M6.5 13a9 9 0 0 1 11 0M10 16.5a4 4 0 0 1 4 0M12 19.5h.01"/></symbol>
+<symbol id="i-news" viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2M7 9h7M7 12h7M7 15h4"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M6 3h3l2 5-2 1.5a12 12 0 0 0 5.5 5.5L16 13l5 2v3a3 3 0 0 1-3 3A15 15 0 0 1 3 6a3 3 0 0 1 3-3z"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 6h18v12H3zM3 7l9 7 9-7"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12zM12 11.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></symbol>
+<symbol id="i-insta" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><path d="M16.5 7.5h.01"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+</defs></svg>
+
+<header class="hero" id="top">
+  <picture class="hero-media">
+    <source media="(max-width: 767px)" srcset="img/img-071-phone.webp" width="924" height="2001">
+    <img src="img/img-071-2000.webp" width="2000" height="1334" fetchpriority="high" alt="From a white bed in a pale room, floor-to-ceiling glass doors stand between grey curtains. Through them, one palm on the centre line, a sandy beach and a green-blue sea. A round table, chairs with woven seats and a red-shaded lamp stand to the left of the bed.">
+  </picture>
+  <div class="top">
+    <nav aria-label="Sections"><a href="#rooms">Rooms</a><a class="wide" href="#dining">Dining</a></nav>
+    <a class="logo" href="#top" aria-label="The Sandhya"><img src="img/logo-white.png" width="406" height="106" alt="The Sandhya"></a>
+    <nav class="right" aria-label="More sections"><a class="wide" href="#kabalana">Kabalana</a><a class="narrow" href="#dining">Dining</a></nav>
+  </div>
+  <div class="hero-copy">
+    <h1>An adults-only beachfront boutique hotel on <span class="nb">Kabalana Beach,</span> <span class="nb">Ahangama, Sri Lanka.</span></h1>
+    <a class="btn btn-book" id="hero-book" href="https://hotels.cloudbeds.com/reservation/WMvA6V">Check rooms and live dates</a>
+  </div>
+</header>
+
+<div class="rest">
+  <div class="stick">
+    <div class="top wrap stick-in">
+      <nav aria-label="Sections, repeated"><a href="#rooms">Rooms</a><a href="#dining">Dining</a><a href="#kabalana">Kabalana</a></nav>
+      <a class="logo" href="#top" aria-label="The Sandhya, back to the top"><img src="img/logo-white.png" width="406" height="106" alt="The Sandhya"></a>
+      <div class="right"><a class="btn btn-book" href="https://hotels.cloudbeds.com/reservation/WMvA6V">Check rooms and live dates</a></div>
+    </div>
+  </div>
+
+  <main id="main">
+  <section class="arrival wrap">
+    <h2 class="t center">Pause, take a deep breath &amp; exhale. You are home.</h2>
+    <div class="split">
+      <div class="prose"><p>Designed to feel like an exclusive private beach house with the amenities of an intimate boutique hotel. Your relaxation starts as you kick off your shoes and slip through the hidden door in the wide wooden façade.</p><p class="big">Inside, you will catch the first glimpses of our star attraction, The Indian Ocean, magnificent and omnipresent.</p><p>Whether you are enjoying the sunshine on the expansive lawns, lounging all day around our abundant, airy indoor living spaces or cooling off in our air-conditioned media room, the sea is always your view.</p><p>Dipping your feet in the azure waters of our swimming pool, you will soon be hypnotised by the allure of the white tipped surf breaks just a few meters ahead.</p></div>
+      <div class="frame" data-px><img loading="lazy" decoding="async" src="img/img-038-door.webp" width="1000" height="1250" alt="Tall slatted teak doors standing open under a concrete canopy, with three low steps in front. Inside, a stair and a wall of glass."></div>
+    </div>
+  </section>
+
+  <section class="wrap" id="rooms">
+    <div class="rooms-head center">
+      <h2 class="t">The rooms</h2>
+      <p class="lede">Our 9 spacious rooms have unobstructed sweeping views of the beach and beyond to the endless ocean, each with its own private balcony or exclusive patio area.</p>
+    </div>
+    
+    <article class="room">
+      <div class="show" role="group" aria-roledescription="slideshow" aria-label="Studio King">
+        <div class="stage"><ul class="strip" tabindex="0"><li class="slide"><img loading="lazy" decoding="async" src="img/img-077-1000.webp" srcset="img/img-077-1000.webp 1000w, img/img-077-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="A white bed in the foreground, glass doors looking onto the long blue pool, parasols and the sea, a tall black mirror on the far wall and a dark bench beside it."></li><li class="slide"><img decoding="async" data-src="img/img-061-1000.webp" data-srcset="img/img-061-1000.webp 1000w, img/img-061-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="From the foot of the bed: a dark daybed, a round wooden table and glass doors with two palms and white surf beyond."><noscript><img src="img/img-061-1000.webp" srcset="img/img-061-1000.webp 1000w, img/img-061-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="From the foot of the bed: a dark daybed, a round wooden table and glass doors with two palms and white surf beyond."></noscript></li><li class="slide"><img decoding="async" data-src="img/img-062-1000.webp" data-srcset="img/img-062-1000.webp 1000w, img/img-062-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="The whole room: a king bed with a teak headboard on the right, a cowhide on the floor, a ceiling fan and the glass doors to the sea on the left."><noscript><img src="img/img-062-1000.webp" srcset="img/img-062-1000.webp 1000w, img/img-062-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="The whole room: a king bed with a teak headboard on the right, a cowhide on the floor, a ceiling fan and the glass doors to the sea on the left."></noscript></li><li class="slide"><img decoding="async" data-src="img/img-070-1000.webp" data-srcset="img/img-070-1000.webp 1000w, img/img-070-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="A king bed against a pale wall, with chevron-panelled teak wardrobe doors and a short corridor behind it."><noscript><img src="img/img-070-1000.webp" srcset="img/img-070-1000.webp 1000w, img/img-070-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="A king bed against a pale wall, with chevron-panelled teak wardrobe doors and a short corridor behind it."></noscript></li><li class="slide"><img decoding="async" data-src="img/img-079-1000.webp" data-srcset="img/img-079-1000.webp 1000w, img/img-079-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="A white stone basin under a lit mirror, a teak splashback and a glass-walled shower to the left."><noscript><img src="img/img-079-1000.webp" srcset="img/img-079-1000.webp 1000w, img/img-079-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="A white stone basin under a lit mirror, a teak splashback and a glass-walled shower to the left."></noscript></li></ul></div>
+        <div class="dots"></div>
+      </div>
+      <div class="room-text">
+        <h3>Studio King</h3>
+        <p class="meta">King bed | Sleeps 2</p>
+        <p>38 sq m on the upper or ground floor, with 3.5 m floor-to-ceiling glass doors.</p>
+        <a class="btn btn-book" href="https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570">Studio King: check live dates</a>
+      </div>
+    </article>
+    <article class="room flip">
+      <div class="show" role="group" aria-roledescription="slideshow" aria-label="Studio Twin">
+        <div class="stage"><ul class="strip" tabindex="0"><li class="slide"><img loading="lazy" decoding="async" src="img/img-043-1000.webp" srcset="img/img-043-1000.webp 1000w, img/img-043-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="Two white beds with teak headboards, a jute rug, a round table and glass doors with the sea and palms on the right."></li><li class="slide"><img decoding="async" data-src="img/img-080-1000.webp" data-srcset="img/img-080-1000.webp 1000w, img/img-080-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="From behind the beds: glass doors with a bent palm and white surf, curtains drawn to each side, a round table to the right."><noscript><img src="img/img-080-1000.webp" srcset="img/img-080-1000.webp 1000w, img/img-080-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="From behind the beds: glass doors with a bent palm and white surf, curtains drawn to each side, a round table to the right."></noscript></li><li class="slide"><img decoding="async" data-src="img/img-165-1000.webp" data-srcset="img/img-165-1000.webp 1000w, img/img-165-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="Two beds side by side on small dark rugs, chevron-panelled teak wardrobe doors on the wall behind."><noscript><img src="img/img-165-1000.webp" srcset="img/img-165-1000.webp 1000w, img/img-165-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="Two beds side by side on small dark rugs, chevron-panelled teak wardrobe doors on the wall behind."></noscript></li><li class="slide"><img decoding="async" data-src="img/img-167-1000.webp" data-srcset="img/img-167-1000.webp 1000w, img/img-167-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="Two beds on the left, sliding glass doors filling the right with palms, sea and a table with a red-shaded lamp."><noscript><img src="img/img-167-1000.webp" srcset="img/img-167-1000.webp 1000w, img/img-167-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="Two beds on the left, sliding glass doors filling the right with palms, sea and a table with a red-shaded lamp."></noscript></li><li class="slide"><img decoding="async" data-src="img/img-083-1000.webp" data-srcset="img/img-083-1000.webp 1000w, img/img-083-1280.webp 1280w" width="1280" height="853" sizes="(max-width: 767px) 100vw, 60vw" alt="A round wooden table with a water bottle and a small plant, two wooden chairs with woven seats and a red-shaded floor lamp in front of sheer curtains."><noscript><img src="img/img-083-1000.webp" srcset="img/img-083-1000.webp 1000w, img/img-083-1280.webp 1280w" width="1280" height="853" sizes="(max-width: 767px) 100vw, 60vw" alt="A round wooden table with a water bottle and a small plant, two wooden chairs with woven seats and a red-shaded floor lamp in front of sheer curtains."></noscript></li></ul></div>
+        <div class="dots"></div>
+      </div>
+      <div class="room-text">
+        <h3>Studio Twin</h3>
+        <p class="meta">2 super-single beds | Sleeps 2</p>
+        <p>38 sq m on the upper floor, with 3.5 m floor-to-ceiling glass doors.</p>
+        <a class="btn btn-book" href="https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586">Studio Twin: check live dates</a>
+      </div>
+    </article>
+    <article class="room">
+      <div class="show" role="group" aria-roledescription="slideshow" aria-label="Studio+ King">
+        <div class="stage"><ul class="strip" tabindex="0"><li class="slide"><img loading="lazy" decoding="async" src="img/img-042-1000.webp" srcset="img/img-042-1000.webp 1000w, img/img-042-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="A teak desk built into the back of the bed, a tall black mirror on the wall and glass doors with a palm and the sea beyond."></li><li class="slide"><img decoding="async" data-src="img/img-066-1000.webp" data-srcset="img/img-066-1000.webp 1000w, img/img-066-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="A teak desk built into the back of the bed, seen from the side, with a glimpse of the pool and lawn through the glass doors."><noscript><img src="img/img-066-1000.webp" srcset="img/img-066-1000.webp 1000w, img/img-066-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="A teak desk built into the back of the bed, seen from the side, with a glimpse of the pool and lawn through the glass doors."></noscript></li><li class="slide"><img decoding="async" data-src="img/img-067-1000.webp" data-srcset="img/img-067-1000.webp 1000w, img/img-067-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="The corner of a white bed, a round table with flowers and a red lamp, and glass doors with the pool, a parasol and the sea."><noscript><img src="img/img-067-1000.webp" srcset="img/img-067-1000.webp 1000w, img/img-067-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="The corner of a white bed, a round table with flowers and a red lamp, and glass doors with the pool, a parasol and the sea."></noscript></li><li class="slide"><img decoding="async" data-src="img/img-074-1000.webp" data-srcset="img/img-074-1000.webp 1000w, img/img-074-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="A white bed along the left, a jute rug and sliding glass doors on the right with palms and a lounge chair outside."><noscript><img src="img/img-074-1000.webp" srcset="img/img-074-1000.webp 1000w, img/img-074-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="A white bed along the left, a jute rug and sliding glass doors on the right with palms and a lounge chair outside."></noscript></li><li class="slide"><img decoding="async" data-src="img/img-076-1000.webp" data-srcset="img/img-076-1000.webp 1000w, img/img-076-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="A deep white stand-alone tub with a teak tray against a dark wall, and through a doorway a desk and a palm in the window."><noscript><img src="img/img-076-1000.webp" srcset="img/img-076-1000.webp 1000w, img/img-076-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="A deep white stand-alone tub with a teak tray against a dark wall, and through a doorway a desk and a palm in the window."></noscript></li><li class="slide"><img decoding="async" data-src="img/img-073-1000.webp" data-srcset="img/img-073-1000.webp 1000w, img/img-073-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="A bathroom with dual white basins on the left, a towel ladder and the stand-alone soaking tub under a lit niche."><noscript><img src="img/img-073-1000.webp" srcset="img/img-073-1000.webp 1000w, img/img-073-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="A bathroom with dual white basins on the left, a towel ladder and the stand-alone soaking tub under a lit niche."></noscript></li></ul></div>
+        <div class="dots"></div>
+      </div>
+      <div class="room-text">
+        <h3>Studio+ King</h3>
+        <p class="meta">King bed | Sleeps 2</p>
+        <p>40 to 43 sq m on the upper or ground floor, with a deep stand-alone soaking tub and dual sinks.</p>
+        <a class="btn btn-book" href="https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587">Studio+ King: check live dates</a>
+      </div>
+    </article>
+    <article class="room flip">
+      <div class="show" role="group" aria-roledescription="slideshow" aria-label="Director’s Suite">
+        <div class="stage"><ul class="strip" tabindex="0"><li class="slide"><img loading="lazy" decoding="async" src="img/img-087-1000.webp" srcset="img/img-087-1000.webp 1000w, img/img-087-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="The suite from the living area: a grey sofa and teak desk in front, a television on a teak unit, the bed behind and a wall of glass with palms and the sea."></li><li class="slide"><img decoding="async" data-src="img/img-171-1000.webp" data-srcset="img/img-171-1000.webp 1000w, img/img-171-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="From the bed: a corner of glass with palms and surf on the left, a television unit, a grey sofa and a tall mirror."><noscript><img src="img/img-171-1000.webp" srcset="img/img-171-1000.webp 1000w, img/img-171-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="From the bed: a corner of glass with palms and surf on the left, a television unit, a grey sofa and a tall mirror."></noscript></li><li class="slide"><img decoding="async" data-src="img/img-172-1000.webp" data-srcset="img/img-172-1000.webp 1000w, img/img-172-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="A long teak desk and a grey sofa in the foreground, and the bed beyond a television unit."><noscript><img src="img/img-172-1000.webp" srcset="img/img-172-1000.webp 1000w, img/img-172-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="A long teak desk and a grey sofa in the foreground, and the bed beyond a television unit."></noscript></li><li class="slide"><img decoding="async" data-src="img/img-058-1000.webp" data-srcset="img/img-058-1000.webp 1000w, img/img-058-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="A walk-in wardrobe lined in teak, with a white robe on a hanger and open shelves on either side."><noscript><img src="img/img-058-1000.webp" srcset="img/img-058-1000.webp 1000w, img/img-058-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="A walk-in wardrobe lined in teak, with a white robe on a hanger and open shelves on either side."></noscript></li><li class="slide"><img decoding="async" data-src="img/img-059-1000.webp" data-srcset="img/img-059-1000.webp 1000w, img/img-059-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="From the wardrobe, a long teak-backed double basin running towards a white tub at the far end."><noscript><img src="img/img-059-1000.webp" srcset="img/img-059-1000.webp 1000w, img/img-059-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="From the wardrobe, a long teak-backed double basin running towards a white tub at the far end."></noscript></li><li class="slide"><img decoding="async" data-src="img/img-055-1000.webp" data-srcset="img/img-055-1000.webp 1000w, img/img-055-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="A marble bathroom with a stand-alone tub beyond a glass door and a double basin in the foreground."><noscript><img src="img/img-055-1000.webp" srcset="img/img-055-1000.webp 1000w, img/img-055-1400.webp 1400w" width="1400" height="933" sizes="(max-width: 767px) 100vw, 60vw" alt="A marble bathroom with a stand-alone tub beyond a glass door and a double basin in the foreground."></noscript></li></ul></div>
+        <div class="dots"></div>
+      </div>
+      <div class="room-text">
+        <h3>Director’s Suite</h3>
+        <p class="meta">King bed | Sleeps 2</p>
+        <p>About 75 sq m on the top floor, with a living area, walk-in wardrobe, soaking tub, ocean-view balconies and a 55-inch TV.</p>
+        <a class="btn btn-book" href="https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603">Director’s Suite: check live dates</a>
+      </div>
+    </article>
+    <div class="kit">
+      <div class="kit-text">
+        <p class="lede-s">We have included thoughtful touches from evening lavender scents to high pressure rain showers so you are assured of a restorative stay in any one of our room types.</p>
+        <p>In the Studio King, a triple occupancy can be arranged (subject to availability) with a supplement.</p>
+        <p>Nightly rates are on our booking page, for the dates you choose.</p>
+        <div class="stay"><strong><span class="nb">Check-in from 14:00</span> | <span class="nb">Check-out by 12:00</span></strong>Other sites give different minimum ages for us, and some say check-in is after 16:00. Ask us before you book.</div>
+      </div>
+      <div class="kit-list">
+        <p class="kit-head">Every room has</p>
+        <ul><li><svg class="ic" aria-hidden="true"><use href="#i-bed"/></svg><span class="cap">a plush pillow-top mattress with 500 thread count linen</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-shower"/></svg><span class="cap">a shower big enough for two</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-leaf"/></svg><span class="cap">Spa Ceylon amenities</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-robe"/></svg><span class="cap">bathrobes and slippers</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-fan"/></svg><span class="cap">central air conditioning and a ceiling fan</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-desk"/></svg><span class="cap">a desk</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-plug"/></svg><span class="cap">universal sockets</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-dryer"/></svg><span class="cap">a hairdryer</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-speaker"/></svg><span class="cap">a Bluetooth speaker</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-wifi"/></svg><span class="cap">High speed WiFi</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-news"/></svg><span class="cap">newspapers and magazines from around the world on PressReader</span></li></ul>
+      </div>
+    </div>
+    <details class="amen" id="amen" open>
+      <summary><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg>Amenities</summary>
+      <ul><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Airport transfers <span class="soft">| additional charge</span></span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Transfers throughout Sri Lanka</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Tuk tuk bookings</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Car and motorbike rentals</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Tours and activities assistance</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>In-room spa massage</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Yoga and surf lessons <span class="soft">| on our list; ask us who runs them and what they cost</span></span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Surfboard hire <span class="soft">| on our list; ask us who provides the boards and what hire costs</span></span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Sri Lankan rice &amp; curry cooking class</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Celebratory arrangements</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Laundry and ironing</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Daily housekeeping</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Beach chairs, loungers and umbrellas</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Pool and beach towels</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Sun deck and terrace</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Garden</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Library</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Welcome drink</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Bottled water and refillable water stations</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>24-hour check-in</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>24-hour security</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Safety deposit box</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Baggage storage</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Free parking</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Non-smoking rooms</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Hypoallergenic rooms</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Designated smoking area</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Access to healthcare professionals</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Cashless payment accepted</span></li></ul>
+    </details>
+    <script>if(matchMedia('(max-width: 767px)').matches)document.getElementById('amen').removeAttribute('open')</script>
+  </section>
+
+  <section aria-label="The view">
+    <div class="feature-block">
+    <p class="feature">With panoramic glass doors &amp; windows throughout, this captivating view is our artwork.</p>
+    <div class="bleed">
+      <picture>
+        <source media="(max-width: 767px)" srcset="img/img-068-phone.webp">
+        <img loading="lazy" decoding="async" src="img/img-068-2000.webp" srcset="img/img-068-1200.webp 1200w, img/img-068-2000.webp 2000w" sizes="100vw" width="2000" height="1334" alt="From inside a room, a wall of glass in black frames. Beyond it a terrace of patterned tile with a metal lounge chair, a pool, a green lawn, two tall palms and the sea. A red-shaded lamp and a small round table stand by the curtain on the left.">
+      </picture>
+    </div>
+    </div>
+  </section>
+
+  <section class="dining wrap" id="dining">
+    <div class="dining-grid">
+      <div class="dining-text">
+        <h2 class="t">The Dining Room</h2>
+        <p>Elevated Comfort Food was the brief for our visiting menu designer, Chef Christophe DuBois. Working closely with our owner, a self-confessed “easy foodie”, the team conjured a delectable array of dishes inspired from a global set-list of food heaven highlights.</p><p>We truly believe some of the island’s best qualities may be expressed through our food. Our signature Sri Lankan rice &amp; curry, our zesty DIY poke bowls and our localized “Tom Yum” style noodles with fresh Ceylon prawns explore the diversity of the local produce available. Or go directly to a finger licking array of delicious homemade desserts.</p>
+        <div class="step-two"><p>Our breads, pastas, sauces, infused mayonnaise, stocks, spice blends, jams are made in-house and the menus subtly evolve with the seasons.</p><p>If you don’t find what you crave, simply ask our team to prepare what your tummy desires. Dishes catering to vegetarian, vegan, keto and other dietary lifestyles are available.</p><p class="strong">A continental breakfast for two adults is included in your stay.</p></div>
+      </div>
+      <div class="mason">
+        <figure><img loading="lazy" decoding="async" src="img/img-118-tall.webp" width="900" height="1125" alt="A blue patterned plate of wide pasta with herbs and a red crab shell on top, on a wooden table beside a dark napkin and cutlery."></figure>
+        <figure><img loading="lazy" decoding="async" src="img/img-113-sq.webp" width="850" height="850" alt="Seen from above, a round wooden table laid with small plates and bowls, between two slatted wooden seats on a stone floor."></figure>
+        <figure><img loading="lazy" decoding="async" src="img/img-112-900.webp" width="900" height="600" alt="A blue and white bowl of salad with halved boiled eggs, avocado and tomato on a woven placemat with gold cutlery."></figure>
+        <figure><img loading="lazy" decoding="async" src="img/img-115-900.webp" width="900" height="600" alt="Noodles with prawns and green beans in a patterned bowl on a wooden table, with chopsticks and a small patterned bowl."></figure>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="The house">
+    <div class="bleed">
+      <picture>
+        <source media="(max-width: 767px)" srcset="img/img-032-phone.webp">
+        <img loading="lazy" decoding="async" src="img/img-032-2000.webp" srcset="img/img-032-1200.webp 1200w, img/img-032-2000.webp 2000w" sizes="100vw" width="2000" height="1333" alt="A double-height lounge. A stair climbs the pale wall on a fan of thin steel rods, low sun lies across the floor, wooden armchairs and a grey sofa face a wall of glass, and through it a long blue pool, parasols and the sea.">
+      </picture>
+    </div>
+    <div class="luxe">
+      <div class="wrap center">
+        <h2 class="t">Casual Luxe</h2>
+        <p class="luxe-line">Wallpaper* describes The Sandhya as “a clean-lined boutique hotel with Scandinavian design sensibilities.”</p>
+      </div>
+      <div class="wrap luxe-cols">
+        <div><p>Casual Luxe is at the heart of our ethos at The Sandhya. We prioritise understated design, thoughtful form and practical function above conspicuous bling and glitter.</p></div>
+        <div><p>Our property’s furnishings are inspired by mid-century aesthetics and embellished with mod-chinoiserie decor. Our Singaporean owner’s discerning vision has been brought to life by the local designers and craftsmen he worked with across Sri Lanka.</p><p>We opened in 2017 and renovated in 2023.</p></div>
+      </div>
+      <div class="swipe" id="details" tabindex="0" role="group" aria-label="Details of the furniture">
+        <figure><img loading="lazy" decoding="async" src="img/img-131-45.webp" width="680" height="850" alt="Close on a dark wooden chair frame curving over a woven paper-cord seat."></figure>
+        <figure><img loading="lazy" decoding="async" src="img/img-125-45.webp" width="680" height="850" alt="Close on a wooden hoop chair strung with white cord, with a pale cushion tied into it."></figure>
+        <figure><img loading="lazy" decoding="async" src="img/img-139-45.webp" width="680" height="850" alt="Close on a pale wooden armrest over a basket-woven seat back."></figure>
+        <figure><img loading="lazy" decoding="async" src="img/img-140-45.webp" width="680" height="850" alt="The corner of a teak desk with a dark inlaid panel."></figure>
+        <figure><img loading="lazy" decoding="async" src="img/img-130-45.webp" width="680" height="850" alt="The arm of a blue upholstered armchair with a small wooden cap, on a pale stone floor."></figure>
+        <figure><img loading="lazy" decoding="async" src="img/img-135-45.webp" width="680" height="850" alt="A black metal lounge chair and footstool with dark wooden slats on a black and white patterned tile floor."></figure>
+      </div>
+      <div class="wrap service">
+        <div class="prints">
+          <figure class="print"><img loading="lazy" decoding="async" src="img/img-141-480.webp" width="480" height="720" alt="Black and white: a smiling staff member in a white shirt and glasses reading a tablet by the stair."></figure>
+          <figure class="print"><img loading="lazy" decoding="async" src="img/img-142-480.webp" width="480" height="720" alt="Black and white: a staff member in a white polo shirt smoothing a bed beside a round lamp."></figure>
+          <figure class="print"><img loading="lazy" decoding="async" src="img/img-143-480.webp" width="480" height="720" alt="Black and white: a staff member in a white shirt setting a cup on a low table from a tray."></figure>
+        </div>
+        <div class="words">
+          <p>Our service is warm, kind, attentive yet informal. Ask for your heart’s desire or simply be left alone when seeking that self-restoration. Just feel at home and allow us to look after you.</p>
+          <p class="simply">We have blended the best of the worlds that we live in. We are not international. We are not local. We are simply The Sandhya.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sea on-tint" id="kabalana">
+    <div class="wrap">
+      <div class="kab-head">
+        <div>
+          <h2 class="t">Kabalana and around</h2>
+          <p class="spot">Kabalana is a mile long, white sandy beach on the golden south coast of Sri Lanka.</p>
+        </div>
+      </div>
+      <div class="kab">
+        <div class="frame" data-px><img loading="lazy" decoding="async" src="img/img-034-1100.webp" width="1100" height="1467" alt="Looking along a raked sandy beach from the edge of a green lawn, with a dark stone bowl and a slate sign bearing the hotel's logo in the foreground and two people far off by the water."></div>
+        <div class="kab-body">
+          <div class="kab-cols"><p>Just by the buzzing and eclectic town of Ahangama, Kabalana Beach has come into its own in recent years with surfers, families, and digital nomads alike. Pristine sand and stunning sunsets have nurtured a laid-back scene where surf lovers, beach bunnies, serial retreat hunters and quiet couples coexist with welcoming locals.</p><p>Centuries old Galle Fort, a UNESCO World Heritage Site, is just 25 minutes away. While away a whole day browsing through an eclectic array of boutiques, stopping for well-earned sips and bites from an ever-growing cafe and restaurant scene.</p><p>The nearby beaches of Midigama, Weligama, Mirissa, Madiha and Hiriketiya Bay have surf points and whale-watching boat rides. You will find plenty of places to eat there too. Our own town Ahangama has grown into a foodies’ haven with a diverse selection of high-quality eateries and night spots.</p><p>Yala and Udwalawe National Parks, Singharaja Forest and awe-inspiring waterfalls are within manageable day trips from The Sandhya. Depart your room in the crisp early morning and be back in time for a late lunch or cocktail.</p><p>Ahangama train station is 1.4 km from us.</p></div>
+          <div class="mapline">
+            <figure class="print mapprint"><img loading="lazy" decoding="async" src="img/img-013-map.webp" width="730" height="630" alt="The hotel's own drawn map of the south-west coast of Sri Lanka: the road from the airport and Colombo down past Galle to The Sandhya, drawn as a small building on the sea, with Weligama beyond it."></figure>
+            <a class="btn btn-soft" href="https://www.google.com/maps/place/The+Sandhya/@5.9769788,80.3525613,17z/data=!4m9!3m8!1s0x3ae1134e3ce889b1:0x41288b6ad09d4032!5m2!4m1!1i2!8m2!3d5.9769788!4d80.3525613!16s%2Fg%2F11f1gbc2nq?hl=en"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Map</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="marble guests on-tint">
+    <div class="wrap">
+      <h2 class="t center">Guests</h2>
+      <div class="ratings"><a class="rating" href="https://au.trip.com/hotels/ahangama-hotel-detail-10660372/hotel"><span class="score">9.7/10</span><span class="sep"> | </span><span class="rate-rest"><span>Trip.com | 56 reviews | <span class="nb">read 2026-11-06</span></span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></a><a class="rating" href="https://www.kayak.com/Ahangama-Hotels-The-Sandhya.2781869.ksp"><span class="score">9.4/10</span><span class="sep"> | </span><span class="rate-rest"><span>Kayak | 159 reviews | <span class="nb">read 2026-11-06</span></span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></a></div>
+      <div class="quotes"><blockquote class="quote"><p>It’s a beautiful place and a well maintained clean stay. The staff is very supportive. The Sandhya is situated near one of the best locations which is facing stunning kabalana beach .the pool omg !!! That was awesome. It’s a long crystal clean relaxing pool with the stunning view of the ocean . Food is delicious and a well curated menu. Rooms are beautiful and very comfortable. Overall we loved the stay and everything in it . It’s a must go boutique hotel in ahangama .</p><footer>Guest User | Trip.com | June 2026</footer></blockquote><blockquote class="quote"><p>A great stay, absolutely gorgeous hotel - perfect, friendly and attentive service, small hotel so felt very safe, familiar and luxurious. Delicious food, excellent location to get to Ahangama by 5min TukTuk and be directly on a wide sandy and long (enough) beach with lots of surfers, without the actual beach being packed full of people so was calm but bustling. Would highly recommend.</p><footer>Guest User | Trip.com | February 2026</footer></blockquote></div>
+    </div>
+  </section>
+
+  <section class="exclusive wrap">
+    <div class="frame" data-px><img loading="lazy" decoding="async" src="img/img-039-1000.webp" srcset="img/img-039-1000.webp 1000w, img/img-039-1800.webp 1800w" sizes="(max-width: 767px) 100vw, 92vw" width="1800" height="1200" alt="The long two-storey block with its decks and glass from the lawn: tall palms, tables under white parasols, a line of loungers beside the pool and the sea at the far right."></div>
+    <div class="ex-grid">
+      <div class="ex-text">
+        <h2 class="t">Exclusive Use</h2>
+        <p>Our home at The Sandhya can be your very own private beach house with an Exclusive Use booking. Our position on Kabalana Beach, in a secluded nook, lends itself to an intimate wedding party, birthday celebration, family reunion, wellness/fitness retreat or simply to celebrate life.</p><p>With the beach as your blank canvas and with our delightful staff at your service, we offer a private setting for your special occasion.</p>
+      </div>
+      <div class="ex-price">
+        <div class="price"><span>Exclusive Use of the whole house, per night</span><b>US$3,500</b></div>
+        <p class="note">Our “from” price, plus “++”, as of 2026-11-06.</p>
+        <div class="row"><a class="btn btn-soft" href="tel:+94765700007"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Call</a><a class="btn btn-soft" href="mailto:reservations@thesandhya.com"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>Email</a></div>
+      </div>
+    </div>
+    <div class="care">
+      <h3>Looking after the place</h3>
+      <p>We support the local community and our environment, with a zero-food waste menu, a ban on single-use plastic, water recycling and a care programme for our beach turtles. We strive for sustainable tourism.</p>
+    </div>
+  </section>
+
+  <section class="twilight wrap" aria-label="Twilight">
+    <div class="tw-words">
+      <h2 class="t">Why Sandhya</h2>
+      <p class="big">Sandhya, in Sanskrit संध्य, means “twilight.” It is that magical moment between light and dark.</p><p>Come evening, as temperature cools and the sun begins to set over the majestic Indian Ocean, the beauty of twilight is undeniable with its ethereal glow of orange, pink and blue hues painting the cotton candy-clouded sky.</p>
+    </div>
+    <div class="tw-prints">
+      <figure class="print a"><img loading="lazy" decoding="async" src="img/img-027-1200.webp" width="1200" height="1200" alt="The hotel's two-storey concrete frame at blue hour, each room's curtains lit gold against a deep blue sky."></figure>
+      <figure class="print b"><img loading="lazy" decoding="async" src="img/img-022-1200.webp" width="1200" height="800" alt="A sunset over the sea, gold light breaking through dark clouds onto wet sand, with palms and a roof in silhouette on the right."></figure>
+    </div>
+  </section>
+
+  <section class="book" id="book" aria-label="Booking">
+    <div class="wrap">
+      <div class="book-card">
+        <h2>An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka.</h2>
+        <p class="plain">Kabalana is a mile long, white sandy beach on the golden south coast of Sri Lanka.</p>
+        <p class="plain">A continental breakfast for two adults is included in your stay.</p>
+        <p class="plain">Nightly rates are on our booking page, for the dates you choose.</p>
+        <ul class="rate-lines"><li><a class="rate-line" href="https://au.trip.com/hotels/ahangama-hotel-detail-10660372/hotel"><span>9.7/10 | Trip.com | 56 reviews | <span class="nb">read 2026-11-06</span></span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></li><li><a class="rate-line" href="https://www.kayak.com/Ahangama-Hotels-The-Sandhya.2781869.ksp"><span>9.4/10 | Kayak | 159 reviews | <span class="nb">read 2026-11-06</span></span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></li></ul>
+        <!-- Room for the date fields, if the engine is ever shown to honour them (notes.md, conflicts): two fields go directly above this link, in this stack. -->
+        <a class="btn btn-book btn-big" href="https://hotels.cloudbeds.com/reservation/WMvA6V">Check rooms and live dates<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <p class="closing">See live dates on our own booking page. If you have a question first, call or email us.</p>
+        <div class="row"><a class="btn btn-soft" href="tel:+94765700007"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Call</a><a class="btn btn-soft" href="mailto:reservations@thesandhya.com"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>Email</a></div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <a class="logo" href="#top" aria-label="The Sandhya, back to the top"><img src="img/logo-footer.png" width="284" height="145" alt="The Sandhya"></a>
+      <div class="row"><a class="btn btn-soft" href="tel:+94765700007"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Call</a><a class="btn btn-soft" href="mailto:reservations@thesandhya.com"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>Email</a><a class="btn btn-soft" href="https://www.google.com/maps/place/The+Sandhya/@5.9769788,80.3525613,17z/data=!4m9!3m8!1s0x3ae1134e3ce889b1:0x41288b6ad09d4032!5m2!4m1!1i2!8m2!3d5.9769788!4d80.3525613!16s%2Fg%2F11f1gbc2nq?hl=en"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Map</a><a class="btn btn-soft" href="https://www.instagram.com/thesandhya/"><svg class="ic" aria-hidden="true"><use href="#i-insta"/></svg>Instagram</a></div>
+      <address>Baranige Wattha Walhengoda, Ahangama 80650, Sri Lanka</address>
+      <p class="fine">The front desk is open 24 hours a day. | <span class="nb">+94 765 700 007</span> | <span class="nb">reservations@thesandhya.com</span></p>
+    </div>
+  </footer>
+
+  <div class="bar" id="bar">
+    <a class="btn btn-book" href="https://hotels.cloudbeds.com/reservation/WMvA6V">Check rooms and live dates</a>
+    <a class="round" href="tel:+94765700007" aria-label="Call"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></a>
+  </div>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('img').forEach(function(im){if(im.complete&&im.naturalWidth)im.classList.add('in')});
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine=matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  // Slideshows: crossfade under a mouse; under a finger the native strip stays, dots follow it.
+  document.querySelectorAll('.show').forEach(function(show){
+    var strip=show.querySelector('.strip'),slides=[].slice.call(strip.children),dotsEl=show.querySelector('.dots'),cur=0,name=show.getAttribute('aria-label');
+    var dots=slides.map(function(_,i){
+      var b=document.createElement('button');b.className='dot';b.type='button';b.setAttribute('aria-label',name+', photograph '+(i+1)+' of '+slides.length);
+      b.addEventListener('click',function(){go(i)});dotsEl.appendChild(b);return b;
+    });
+    function mark(i){cur=i;dots.forEach(function(d,j){d.setAttribute('aria-current',j===i?'true':'false')});slides.forEach(function(s,j){s.classList.toggle('on',j===i)})}
+    function go(i){
+      i=(i+slides.length)%slides.length;
+      if(fine)mark(i);else{strip.scrollTo({left:strip.clientWidth*i,behavior:calm?'auto':'smooth'});mark(i)}
+    }
+    var wake=function(){slides.forEach(function(s){var im=s.querySelector('img[data-src]');if(im){im.srcset=im.dataset.srcset;im.src=im.dataset.src;im.removeAttribute('data-src')}})};
+    if('IntersectionObserver'in window){var near=new IntersectionObserver(function(es){if(es[0].isIntersecting){wake();near.disconnect()}},{rootMargin:'500px 0px'});near.observe(show)}else wake();
+    if(fine){
+      show.classList.add('fade');
+      var stage=show.querySelector('.stage');
+      [['prev',-1,'Previous photograph'],['next',1,'Next photograph']].forEach(function(c){
+        var b=document.createElement('button');b.type='button';b.className='step '+c[0];b.setAttribute('aria-label',name+': '+c[2]);
+        b.innerHTML='<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg>';
+        b.addEventListener('click',function(){go(cur+c[1])});stage.appendChild(b);
+      });
+    }else{
+      var t;strip.addEventListener('scroll',function(){cancelAnimationFrame(t);t=requestAnimationFrame(function(){mark(Math.round(strip.scrollLeft/strip.clientWidth))})},{passive:true});
+    }
+    strip.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();go(cur+1)}else if(e.key==='ArrowLeft'){e.preventDefault();go(cur-1)}});
+    mark(0);
+  });
+
+  // The ±4rem image parallax (references #17), desktop only.
+  if(!calm&&matchMedia('(min-width: 768px)').matches&&'IntersectionObserver'in window){
+    var rem=parseFloat(getComputedStyle(document.documentElement).fontSize)*4,live=new Set(),tick=0;
+    var run=function(){tick=0;var vh=innerHeight;live.forEach(function(el){var r=el.getBoundingClientRect(),p=((r.top+r.height/2)-vh/2)/(vh/2+r.height/2);p=Math.max(-1,Math.min(1,p));el.querySelector('img').style.transform='translate3d(0,'+(-p*rem).toFixed(1)+'px,0)'})};
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)live.add(e.target);else live.delete(e.target)});run()},{rootMargin:'10% 0px'});
+    document.querySelectorAll('[data-px],.bleed').forEach(function(t){io.observe(t)});
+    addEventListener('scroll',function(){if(!tick)tick=requestAnimationFrame(run)},{passive:true});
+  }
+
+  // The details row: a mouse can drag it, with momentum; a finger has the native scroll.
+  var row=document.getElementById('details');
+  if(row&&fine){
+    var down=false,sx=0,sl=0,lx=0,lt=0,vel=0,raf=0;
+    row.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;down=true;sx=lx=e.clientX;sl=row.scrollLeft;lt=e.timeStamp;vel=0;cancelAnimationFrame(raf);row.classList.add('drag');row.setPointerCapture(e.pointerId)});
+    row.addEventListener('pointermove',function(e){if(!down)return;row.scrollLeft=sl-(e.clientX-sx);var dt=e.timeStamp-lt;if(dt>0)vel=(lx-e.clientX)/dt;lx=e.clientX;lt=e.timeStamp});
+    var up=function(){if(!down)return;down=false;if(calm){row.classList.remove('drag');return}var glide=function(){row.scrollLeft+=vel*16;vel*=.94;if(Math.abs(vel)>.02)raf=requestAnimationFrame(glide);else row.classList.remove('drag')};glide()};
+    row.addEventListener('pointerup',up);row.addEventListener('pointercancel',up);
+  }
+
+  // The phone bar rises once the first screen's own button has gone.
+  var bar=document.getElementById('bar'),heroBook=document.getElementById('hero-book');
+  if(bar&&heroBook&&'IntersectionObserver'in window){
+    new IntersectionObserver(function(es){bar.classList.toggle('up',!es[0].isIntersecting)}).observe(heroBook);
+  }else if(bar)bar.classList.add('up');
+})();
+</script>
+</body>
+</html>

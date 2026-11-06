@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Sandhya | Adults-only beachfront boutique hotel, Kabalana Beach, Ahangama</title>
+<meta name="description" content="An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka.">
+<meta name="theme-color" content="#F2F6F6">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preload" as="image" href="img/hero-phone.webp" type="image/webp" media="(max-width:767px)" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=Nothing+You+Could+Do&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=Nothing+You+Could+Do&display=swap"></noscript>
+<style>
+@font-face{font-family:"Text Fallback";src:local("Arial"),local("Helvetica"),local("Roboto");size-adjust:94.2%;ascent-override:96%;descent-override:26%;line-gap-override:0%}
+@font-face{font-family:"Script Fallback";src:local("Arial"),local("Helvetica"),local("Roboto");size-adjust:107%;ascent-override:96%;descent-override:30%;line-gap-override:0%}
+:root{
+  --ground:#F2F6F6; --deck:#D5CEBE; --pool:#5BB2CD; --dusk:#F8E2D3; --ink:#121A22; --book:#C0046C; --book-deep:#A5035D;
+  --head:72px; --gut:32px; --r:20px;
+  --ease:cubic-bezier(.22,.8,.2,1);
+  --text:"Familjen Grotesk","Text Fallback",ui-sans-serif,system-ui,sans-serif;
+  --script:"Nothing You Could Do","Script Fallback",cursive;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:var(--head)}
+body{margin:0;background:var(--g,var(--ground));color:var(--ink);font:400 17px/1.55 var(--text);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+img,canvas{display:block}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:6px}
+
+/* Buttons. Every action is a button; the accent is for booking and nothing else. */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:13px 24px;border-radius:14px;font:500 17px/1.2 var(--text);overflow:hidden;transition:transform .12s var(--ease),background-color .2s var(--ease),box-shadow .2s var(--ease);touch-action:manipulation}
+.btn:active{transform:scale(.97)}
+.book{background:var(--book);color:#fff}
+.book svg{transition:transform .25s var(--ease);flex:none}
+.ring{position:absolute;width:12px;height:12px;margin:-6px;border-radius:50%;background:rgba(255,255,255,.34);pointer-events:none;animation:ring .55s var(--ease) forwards}
+@keyframes ring{to{transform:scale(40);opacity:0}}
+@media (hover:hover){.book:hover{background:var(--book-deep)}.book:hover svg{transform:translateX(3px)}}
+
+/* Header: solid ground, because the soffit and rods would swallow a logo. */
+.top{position:fixed;inset:0 0 auto;height:var(--head);z-index:20;background:var(--g,var(--ground));display:flex;align-items:center;justify-content:space-between;padding:0 var(--gut);transition:transform .32s var(--ease)}
+.top.away{transform:translateY(-100%)}
+.logo{display:block;padding:8px 0}
+.logo img{height:36px;width:auto;filter:brightness(0)}
+.top nav{display:flex;gap:6px;margin-right:-14px}
+.top nav a{display:flex;align-items:center;min-height:44px;padding:0 14px;border-radius:12px;font-weight:500;font-size:16px;transition:background-color .2s var(--ease),transform .12s var(--ease)}
+.top nav a:active{transform:scale(.97)}
+@media (hover:hover){.top nav a:hover{background:rgba(18,26,34,.07)}}
+
+/* .999: headless software GL blanks a canvas under an opaque layer (references #29). Invisible to a person. */
+.card,.top,.dock{opacity:.999}
+
+/* First screen */
+.hero{position:relative;height:100vh;height:100svh;padding-top:var(--head)}
+.stage{position:relative;height:100%;overflow:hidden;background:#BDB6A5}
+.stage img,.stage canvas{position:absolute;left:-1.6%;top:-1.6%;width:103.2%;height:103.2%;object-fit:cover;object-position:50% 34%}
+.stage canvas{visibility:hidden;pointer-events:none}
+.stage.live canvas{visibility:visible}
+.card{position:absolute;left:var(--gut);bottom:var(--gut);width:min(420px,calc(100% - 2*var(--gut)));padding:24px 26px 26px;background:var(--ground);border-radius:var(--r)}
+.card h1{margin:0 0 18px;font:500 26px/1.26 var(--text);letter-spacing:-.005em;text-wrap:pretty}
+.card .btn{width:100%}
+
+@media (max-width:767px){
+  :root{--head:60px;--gut:20px}
+  .logo img{height:30px}
+  .top nav{gap:0;margin-right:-10px}
+  .top nav a{padding:0 10px;font-size:15px}
+  .stage img,.stage canvas{object-position:50% 50%}
+  .card{left:0;right:0;bottom:0;width:100%;border-radius:var(--r) var(--r) 0 0;padding:22px var(--gut) calc(20px + env(safe-area-inset-bottom))}
+  .card h1{font-size:22px;margin-bottom:16px}
+}
+
+/* The day, section by section. Without JS each late section carries its own ground. */
+body{transition:background-color .6s var(--ease)}
+.top{transition:transform .32s var(--ease),background-color .6s var(--ease)}
+.top nav{transition:transform .32s var(--ease)}
+.top.past nav{transform:translateX(calc(-1*var(--pill,300px)))}
+html:not(.js) .top{position:absolute}
+.after{--sec:clamp(72px,10vw,144px)}
+.wrap{max-width:1440px;margin-inline:auto;padding-inline:var(--gut)}
+section{scroll-margin-top:var(--head)}
+.title{margin:0 0 22px;font:400 46px/1.18 var(--script);letter-spacing:.005em}
+.title.small{font-size:34px;margin-bottom:12px}
+.amp{font:400 .7em/1 var(--text);padding-inline:.05em}
+.lede{font-size:clamp(20px,1.65vw,24px);line-height:1.38;margin:0}
+p{margin:0 0 1em}
+p:last-child{margin-bottom:0}
+.strong{font-weight:500}
+
+/* Quiet actions */
+.quiet{background:rgba(18,26,34,.07);color:var(--ink);gap:9px}
+.round{width:52px;padding:0;flex:none;border-radius:50%;background:rgba(18,26,34,.08)}
+@media (hover:hover){.quiet:hover,.round:hover{background:rgba(18,26,34,.13)}}
+.acts{display:flex;flex-wrap:wrap;gap:10px}
+
+/* Persistent action. Both live in the page flow after the first screen, so neither can sit on it. */
+.pill-rail{position:sticky;top:12px;height:0;z-index:25;display:flex;justify-content:flex-end;padding-right:var(--gut);pointer-events:none}
+.pill{pointer-events:auto;min-height:48px;padding:10px 18px;font-size:16px;align-self:flex-start}
+.dock{display:none}
+
+/* Ratings */
+.strip{padding:26px 0}
+.rates{display:flex;flex-wrap:wrap;gap:8px 44px;padding-inline:var(--gut);max-width:1440px;margin-inline:auto}
+.rate{display:inline-flex;align-items:baseline;gap:12px;min-height:44px;padding:6px 0;transition:transform .12s var(--ease)}
+.rate b{font-weight:500;font-size:24px;letter-spacing:-.01em}
+.rate span{font-size:15px;color:#3C4650;transition:color .2s var(--ease)}
+.rate:active{transform:scale(.98)}
+@media (hover:hover){.rate:hover span{color:var(--ink)}}
+
+/* Rooms */
+.rooms{padding-block:calc(var(--sec)*.55) var(--sec)}
+.head{display:grid;grid-template-columns:repeat(12,1fr);gap:0 16px;align-items:start;margin-bottom:44px}
+.head .title{grid-column:1/6;margin:0}
+.head .lede{grid-column:6/12}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding-bottom:64px}
+.tile{position:relative;display:block;aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;background:#C8CDCB;transition:transform .12s var(--ease)}
+.tile:nth-child(3){margin-top:64px;margin-bottom:-64px}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.tile:active img{transform:scale(.985)}
+.tag{position:absolute;left:10px;bottom:10px;display:flex;flex-direction:column;gap:1px;padding:11px 15px 12px;border-radius:14px;background:var(--ground);transition:transform .3s var(--ease)}
+.tag strong{font-weight:500;font-size:18px;line-height:1.25}
+.tag span{font-size:14px;line-height:1.3}
+@media (hover:hover){.tile:hover img{transform:scale(1.04)}.tile:hover .tag{transform:translateY(-4px)}}
+.notes{display:grid;grid-template-columns:repeat(12,1fr);gap:0 16px;margin-top:56px}
+.notes-text{grid-column:1/6;padding-right:24px}
+.notes-text+.notes-text{grid-column:6/12;padding-right:0}
+.facts b{font-weight:500}
+.house{margin-top:40px;padding:6px 26px;border-radius:var(--r);background:#E8ECEC}
+.house summary{display:flex;align-items:center;justify-content:space-between;min-height:56px;font-weight:500;font-size:20px;cursor:pointer;list-style:none}
+.house summary::-webkit-details-marker{display:none}
+.house summary svg{transition:transform .3s var(--ease)}
+.house[open] summary svg{transform:rotate(180deg)}
+.amen{columns:3;column-gap:32px;margin:6px 0 20px;padding:0;list-style:none}
+.amen li{display:flex;gap:10px;padding:5px 0;font-size:16px;line-height:1.35;break-inside:avoid}
+.amen svg{flex:none;margin-top:3px}
+.amen small{font-size:14px;color:#3C4650}
+
+/* Rooms in the page (no JS) and in the sheet */
+.rooms-detail .room{display:grid;grid-template-columns:7fr 5fr;gap:18px 40px;margin-top:64px}
+.js .rooms-detail{display:none}
+.room h3{margin:0 0 2px;font:500 26px/1.2 var(--text)}
+.meta{margin:0 0 10px;font-weight:500;font-size:16px}
+.room-go{margin-top:18px}
+.room-go .btn{width:100%}
+
+/* Galleries: native scroll underneath, so touch has real momentum and JS off still swipes */
+.gal-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:var(--r);-webkit-overflow-scrolling:touch}
+.gal-track::-webkit-scrollbar{display:none}
+.gal-track.drag{scroll-snap-type:none;cursor:grabbing}
+.slide{flex:0 0 100%;aspect-ratio:3/2;scroll-snap-align:start;background:#C8CDCB}
+.slide img{width:100%;height:100%;object-fit:cover;user-select:none}
+.js .gal-track{cursor:grab}
+.dots{display:flex;justify-content:center;gap:0;min-height:44px}
+.dots button{display:flex;align-items:center;justify-content:center;height:44px;padding:0 4px;border:0;background:none;cursor:pointer}
+.dots i{display:block;width:8px;height:8px;border-radius:8px;background:rgba(18,26,34,.26);transition:width .3s var(--ease),background-color .2s var(--ease)}
+.dots .on i{width:24px;background:var(--ink)}
+
+/* Arrival */
+.arrival{display:grid;grid-template-columns:7fr 5fr;gap:56px;align-items:center;padding-right:var(--gut);padding-bottom:var(--sec)}
+.arrival-photo img{width:100%;height:auto;border-radius:0 var(--r) var(--r) 0}
+.arrival-text{max-width:520px}
+
+/* featureLine */
+.feature{position:relative}
+.feature .stage{height:min(96vh,66.7vw);min-height:520px}
+.feature .stage img,.feature .stage canvas{object-position:50% 58%}
+.feature-card{margin:0;width:min(440px,calc(100% - 2*var(--gut)));padding:22px 26px 24px;font:500 24px/1.3 var(--text);text-wrap:pretty}
+
+/* Dining */
+.dining{padding-block:var(--sec)}
+.panel{margin-inline:16px;padding-block:68px 40px;border-radius:28px;background:var(--deck);overflow:hidden}
+.wrap-in{padding-inline:calc(var(--gut) + 8px);max-width:1200px}
+.cols{columns:2;column-gap:48px;margin-top:6px}
+.cols p{break-inside:avoid}
+.gal.row{margin-top:40px}
+.gal.row .gal-track{gap:12px;padding-inline:calc(var(--gut) + 8px);scroll-padding-inline:calc(var(--gut) + 8px);border-radius:0;scroll-snap-type:x proximity}
+.gal.row .slide{flex:0 0 clamp(240px,27vw,400px);aspect-ratio:1;border-radius:16px;overflow:hidden}
+.gal.row .dots{justify-content:flex-start;padding-left:calc(var(--gut) + 5px)}
+
+/* Casual Luxe */
+.luxe{padding-bottom:var(--sec)}
+.luxe-grid{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:start}
+.show{position:sticky;top:92px}
+.press{font-weight:500;font-size:clamp(20px,1.65vw,24px);line-height:1.34}
+.big{margin:88px 0 64px;font:500 clamp(34px,5.2vw,74px)/1.07 var(--text);letter-spacing:-.018em;max-width:15em;text-wrap:balance}
+.care{display:grid;grid-template-columns:5fr 7fr;gap:0 64px;align-items:baseline}
+.care .title{margin:0}
+.care p{max-width:640px}
+
+/* Guests */
+.guests{padding-bottom:var(--sec)}
+.pool{margin-inline:16px;padding:60px calc(var(--gut) + 8px) 64px;border-radius:28px;background:var(--pool)}
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:32px 56px;margin-top:8px}
+.quote{margin:0}
+.quote blockquote{margin:0;font-size:clamp(18px,1.45vw,20px);line-height:1.45}
+.quote figcaption{margin-top:18px;font-size:15px;font-weight:500}
+
+/* Kabalana */
+.kabalana{padding-bottom:var(--sec)}
+.kab-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:40px 16px;align-items:start}
+.kab-head{grid-column:1/6;grid-row:1;padding-top:12px}
+.kab-wide{grid-column:7/13;grid-row:1}
+.kab-tall{grid-column:1/5;grid-row:2;margin-top:-40px}
+.kab-steps{grid-column:5/10;grid-row:2;display:grid;gap:26px;padding:12px 40px 0 32px}
+.kab-map{grid-column:10/13;grid-row:2;display:grid;gap:14px;justify-items:start}
+.kab-wide img,.kab-tall img{width:100%;height:auto;border-radius:var(--r)}
+.kab-map img{width:100%;height:auto;border-radius:14px;background:#fff;box-shadow:0 10px 34px rgba(18,26,34,.09)}
+
+/* Exclusive Use */
+.exclusive{padding-bottom:var(--sec)}
+.ex-grid{display:grid;grid-template-columns:7fr 5fr;gap:56px;align-items:center}
+.ex-photo img{width:100%;height:auto;border-radius:var(--r)}
+.price{display:grid;gap:2px;margin:22px 0 18px}
+.price b{font-weight:500;font-size:34px;line-height:1.15;letter-spacing:-.01em}
+.price span{font-weight:500}
+.price small{font-size:14px;color:#3C4650}
+
+/* Twilight */
+html:not(.js) .twilight,html:not(.js) .closing,html:not(.js) .foot{background:var(--dusk)}
+.twilight{padding-block:calc(var(--sec)*.35) var(--sec)}
+.dusk-grid{display:grid;grid-template-columns:7fr 5fr;gap:64px;align-items:center}
+.prints{position:relative;height:clamp(520px,46vw,660px)}
+.print{position:absolute;border-radius:14px;box-shadow:0 18px 50px rgba(92,48,24,.17)}
+.print.a{left:0;top:0;width:min(590px,74%);height:auto}
+.print.b{right:0;bottom:0;width:min(400px,50%);height:auto}
+.dusk-text .title{font-size:56px}
+.dusk-text .lede{margin-bottom:1em}
+
+/* The last booking block: the first screen's card, grown */
+.closing{padding-bottom:calc(var(--sec)*.75)}
+.closer{display:grid;grid-template-columns:1fr 1fr;gap:48px 64px;max-width:1160px;margin-inline:auto;padding:48px;border-radius:28px;background:var(--ground)}
+.tag-big{margin:0 0 16px;font:500 26px/1.26 var(--text)}
+.rates.stack{flex-direction:column;gap:0;padding:0;margin-bottom:18px}
+.wide{width:100%}
+.close-line{margin:18px 0 14px}
+
+/* Footer */
+.foot{padding:12px 0 48px}
+.foot-grid{display:grid;grid-template-columns:auto 1fr auto;gap:24px 40px;align-items:center}
+.foot .logo img{height:40px}
+.foot-acts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.foot-line{margin:0;font-size:15px;text-align:right}
+
+/* Room sheet */
+.scrim{position:fixed;inset:0;z-index:40;background:rgba(18,26,34,.38);opacity:0;transition:opacity .3s var(--ease)}
+.scrim.open{opacity:1}
+.sheet{position:fixed;inset:0 0 0 auto;z-index:41;display:flex;flex-direction:column;width:min(640px,100%);background:var(--ground);border-radius:var(--r) 0 0 var(--r);transform:translateX(100%);transition:transform .32s var(--ease)}
+.sheet.open{transform:none}
+.sheet[hidden],.scrim[hidden]{display:none}
+.sheet:focus{outline:none}
+.sheet-top{display:flex;align-items:center;gap:10px;padding:14px 16px 12px 20px}
+.chips{display:flex;flex:1;gap:4px;margin-left:-6px;overflow-x:auto;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;min-height:44px;padding:0 13px;border:0;border-radius:12px;background:none;color:var(--ink);font:500 15px var(--text);cursor:pointer;transition:background-color .2s var(--ease),color .2s var(--ease),transform .12s var(--ease)}
+.chip[aria-pressed=true]{background:var(--ink);color:#fff}
+.chip:active{transform:scale(.97)}
+.close{flex:none;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;border-radius:50%;background:rgba(18,26,34,.07);color:var(--ink);cursor:pointer;transition:transform .3s var(--ease),background-color .2s var(--ease)}
+.close:active{transform:scale(.94)}
+@media (hover:hover){.chip[aria-pressed=false]:hover{background:rgba(18,26,34,.07)}.close:hover{transform:rotate(90deg);background:rgba(18,26,34,.12)}}
+.sheet-body{flex:1;display:flex;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:0 20px;transition:opacity .16s var(--ease)}
+.sheet-body.swap{opacity:0}
+.sheet .room{display:flex;flex-direction:column;width:100%;min-height:100%}
+.sheet .room-text{margin-top:8px}
+.sheet .room-go{position:sticky;bottom:0;margin-top:auto;padding:18px 0 20px;background:var(--ground)}
+.fly{position:fixed;z-index:42;margin:0;object-fit:cover;transform-origin:0 0;pointer-events:none}
+
+details.house::details-content{transition:height .3s var(--ease),content-visibility .3s allow-discrete;height:0;overflow:clip}
+details.house[open]::details-content{height:auto}
+:root{interpolate-size:allow-keywords}
+
+@media (max-width:1100px){
+  .luxe-grid{gap:32px}
+  .arrival,.ex-grid,.dusk-grid{gap:32px}
+  .tiles{gap:10px}
+  .tag{left:6px;bottom:6px;padding:9px 11px}
+  .tag strong{font-size:16px}
+  .tag span{font-size:13px}
+  .closer{gap:32px;padding:32px}
+  .foot-grid{grid-template-columns:1fr;justify-items:start}
+  .foot-acts{justify-content:flex-start}
+  .foot-line{text-align:left}
+  .amen{columns:2}
+  .kab-steps{grid-column:5/13;padding-right:0}
+  .kab-map{grid-column:5/9;grid-row:3}
+  .kab-tall{grid-row:2/4}
+}
+@media (max-width:767px){
+  .title{font-size:34px;margin-bottom:16px}
+  .title.small{font-size:30px}
+  .pill-rail{display:none}
+  .top.past nav{transform:none}
+  .rates{gap:0;flex-direction:column}
+  .strip{padding:12px 0}
+  .rate{gap:10px}
+  .rate b{font-size:21px}
+  .rate span{font-size:14px}
+  .head{display:block;margin-bottom:24px}
+  .head .title{margin-bottom:12px}
+  .tiles{display:flex;gap:12px;margin-inline:calc(-1*var(--gut));padding:0 var(--gut);overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gut);scrollbar-width:none}
+  .tiles::-webkit-scrollbar{display:none}
+  .tile{flex:0 0 74vw;scroll-snap-align:start}
+  .tile:nth-child(3){margin:0}
+  .notes{display:block;margin-top:36px}
+  .notes-text+.notes-text{margin-top:1em}
+  .house{margin-top:28px;padding:4px 18px}
+  .amen{columns:1}
+  .rooms-detail .room{display:block}
+  .arrival{display:block;padding:0 0 56px}
+  .arrival-photo img{border-radius:0}
+  .arrival-text{padding:28px var(--gut) 0;max-width:none}
+  .feature .stage{height:125vw;min-height:0}
+  .feature-card{left:12px;bottom:12px;width:calc(100% - 24px);border-radius:16px;padding:16px 18px 18px;font-size:20px}
+  .panel{margin-inline:8px;padding-block:44px 24px;border-radius:22px}
+  .wrap-in{padding-inline:calc(var(--gut) - 4px)}
+  .cols{columns:1}
+  .gal.row{margin-top:26px}
+  .gal.row .gal-track{gap:10px;padding-inline:calc(var(--gut) - 4px);scroll-padding-inline:calc(var(--gut) - 4px)}
+  .gal.row .slide{flex-basis:72vw}
+  .gal.row .dots{padding-left:calc(var(--gut) - 7px)}
+  .luxe-grid{display:block}
+  .show{position:static;margin-top:26px}
+  .big{margin:52px 0 40px}
+  .care{display:block}
+  .pool{margin-inline:8px;padding:40px calc(var(--gut) - 4px) 44px;border-radius:22px}
+  .quotes{display:block}
+  .quote+.quote{margin-top:32px}
+  .kab-grid{display:block}
+  .kab-head{padding:0}
+  .kab-wide{margin-top:24px}
+  .kab-tall{margin:12px 22% 0 0}
+  .kab-steps{padding:28px 0 0}
+  .kab-map{margin-top:28px;grid-template-columns:1fr auto;align-items:end;gap:12px}
+  .ex-grid{display:block}
+  .ex-text{margin-top:26px}
+  .dusk-grid{display:block}
+  .prints{height:112vw}
+  .print.a{width:82%}
+  .print.b{width:58%}
+  .dusk-text{margin-top:32px}
+  .dusk-text .title{font-size:42px}
+  .closing{padding-inline:8px}
+  .closer{display:block;padding:28px 20px;border-radius:22px}
+  .closer-b{margin-top:22px}
+  .tag-big{font-size:24px}
+  .foot{padding-bottom:28px}
+  .foot-grid{display:grid;grid-template-columns:1fr;justify-items:start}
+  .foot-acts{justify-content:flex-start}
+  .foot-line{text-align:left}
+  .dock{display:flex;position:sticky;bottom:0;z-index:15;gap:10px;padding:10px var(--gut) calc(10px + env(safe-area-inset-bottom));background:var(--g,var(--ground));transition:background-color .6s var(--ease)}
+  .dock .book{flex:1;padding-inline:14px}
+  .sheet{width:100%;border-radius:0}
+  .sheet-top{padding:10px 10px 10px 14px}
+  .sheet-body{padding:0 14px}
+  .sheet .slide{aspect-ratio:1}
+  .sheet .room-go{padding-bottom:calc(14px + env(safe-area-inset-bottom))}
+}
+@supports (animation-timeline:view()){
+  @media (min-width:768px) and (prefers-reduced-motion:no-preference){
+    .tile:nth-child(3),.kab-tall,.print.b{animation:slide linear both;animation-timeline:view()}
+    .kab-map img{animation:slide-s linear both;animation-timeline:view()}
+  }
+  @media (max-width:767px) and (prefers-reduced-motion:no-preference){
+    .print.b{animation:slide-s linear both;animation-timeline:view()}
+  }
+}
+@keyframes slide{from{transform:translateY(34px)}to{transform:translateY(-34px)}}
+@keyframes slide-s{from{transform:translateY(14px)}to{transform:translateY(-14px)}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important}
+  body,.top,.top nav,.tile img,.tag,.dots i,.dock{transition:none}
+  @media (hover:hover){.tile:hover img{transform:none}.tile:hover .tag{transform:none}}
+  .stage canvas{display:none}
+  .sheet{transform:none;opacity:0;transition:opacity .2s linear}
+  .sheet.open{opacity:1}
+}
+</style>
+</head>
+<body>
+<header class="top" id="top">
+  <a class="logo" href="#main" aria-label="The Sandhya"><img src="img/logo.webp" alt="The Sandhya" width="406" height="106"></a>
+  <nav aria-label="Main">
+    <a href="#rooms">Rooms</a>
+    <a href="#dining">Dining</a>
+    <a href="tel:+94765700007">Call</a>
+  </nav>
+</header>
+
+<main id="main">
+<section class="hero" data-ground="ground">
+  <div class="stage" data-depth="img/depth-hero.png" data-frame="2000x1333" data-crop="880,0,616,1333" data-rest="top">
+    <picture>
+      <source media="(max-width:767px)" srcset="img/hero-phone.webp" width="616" height="1333">
+      <img src="img/hero-1440.webp" srcset="img/hero-1440.webp 1440w, img/hero-2000.webp 2000w" sizes="103vw" width="2000" height="1333" fetchpriority="high" alt="A double-height lounge: a stair hung on a fan of steel rods, a grey sofa and timber armchairs on a stone floor, and a wall of glass onto a long pool, the lawn and the sea.">
+    </picture>
+    <canvas aria-hidden="true"></canvas>
+  </div>
+  <div class="card">
+    <h1>An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka.</h1>
+    <a class="btn book" href="https://hotels.cloudbeds.com/reservation/WMvA6V">Check rooms and live dates<svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h11.5M10 4.5 14.5 9 10 13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+</section>
+<div class="after">
+<div class="pill-rail"><a class="btn book pill" href="https://hotels.cloudbeds.com/reservation/WMvA6V">Check rooms and live dates<svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h11.5M10 4.5 14.5 9 10 13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+
+<section class="strip" aria-label="Ratings" data-ground="ground">
+  <div class="rates">
+      <a class="rate" href="https://au.trip.com/hotels/ahangama-hotel-detail-10660372/hotel" target="_blank" rel="noopener"><b>9.7/10</b><span>Trip.com | 56 reviews | read 2026-11-06</span></a>
+      <a class="rate" href="https://www.kayak.com/Ahangama-Hotels-The-Sandhya.2781869.ksp" target="_blank" rel="noopener"><b>9.4/10</b><span>Kayak | 159 reviews | read 2026-11-06</span></a>
+  </div>
+</section>
+
+<section class="rooms" id="rooms" data-ground="ground">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="title">The rooms</h2>
+      <p class="lede">Our 9 spacious rooms have unobstructed sweeping views of the beach and beyond to the endless ocean, each with its own private balcony or exclusive patio area.</p>
+    </div>
+  </div>
+  <div class="tiles-wrap wrap">
+    <div class="tiles">
+      <a class="tile" href="#room-studio-king" data-room="studio-king" data-crop="620,1066,2000,1333">
+        <img src="img/tile-studio-king.webp" alt="A bed and a round table beside glass doors, with parasols and the pool beyond them." width="800" height="1000" loading="lazy" decoding="async" draggable="false">
+        <span class="tag"><strong>Studio King</strong><span>King bed | Sleeps 2</span></span>
+      </a>
+      <a class="tile" href="#room-studio-twin" data-room="studio-twin" data-crop="560,1066,2000,1333">
+        <img src="img/tile-studio-twin.webp" alt="Two beds on a woven rug, with a round table, and palms and the sea through the glass." width="800" height="1000" loading="lazy" decoding="async" draggable="false">
+        <span class="tag"><strong>Studio Twin</strong><span>2 super-single beds | Sleeps 2</span></span>
+      </a>
+      <a class="tile" href="#room-studio-plus" data-room="studio-plus" data-crop="467,1067,2000,1334">
+        <img src="img/tile-studio-plus.webp" alt="Seen from the bed: glass doors, one palm, loungers and the sea." width="800" height="1000" loading="lazy" decoding="async" draggable="false">
+        <span class="tag"><strong>Studio+ King</strong><span>King bed | Sleeps 2</span></span>
+      </a>
+      <a class="tile" href="#room-suite" data-room="suite" data-crop="620,1024,1920,1280">
+        <img src="img/tile-suite.webp" alt="A long room with a bed, TV, desk and grey sofa, and the sea and a palm through the glass." width="800" height="1000" loading="lazy" decoding="async" draggable="false">
+        <span class="tag"><strong>Director’s Suite</strong><span>King bed | Sleeps 2</span></span>
+      </a>
+    </div>
+  </div>
+  <div class="rooms-detail wrap" id="rooms-detail">
+    <article class="room" id="room-studio-king" data-room="studio-king" data-name="Studio King">
+      <div class="gal " role="group" aria-roledescription="carousel" aria-label="Studio King photographs">
+        <div class="gal-track" tabindex="0">
+          <div class="slide"><img style="object-position:66.4% 50%" src="img/r-077.webp" alt="Bed, round table and tall mirror, with the pool and parasols through the glass." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/r-061.webp" alt="Bed, daybed and round table, with the sea and palms through the glass." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/r-062.webp" alt="Bed, cowhide rug and daybed in a room open to the sea and palms." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/r-070.webp" alt="Bed and cowhide rug in front of chevron timber wardrobe doors." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/r-079.webp" alt="Bathroom vanity with a gold-lit mirror and a frosted shower screen." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+        </div>
+        <div class="dots" aria-hidden="true"></div>
+      </div>
+      <div class="room-text">
+        <h3>Studio King</h3>
+        <p class="meta">King bed | Sleeps 2</p>
+        <p>38 sq m on the upper or ground floor, with 3.5 m floor-to-ceiling glass doors.</p>
+      </div>
+      <div class="room-go">
+        <!-- Date fields go here, above the button, if the engine is shown to honour dates: the sheet docks this block to its foot and has the room for them. -->
+        <a class="btn book" href="https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570">Studio King: check live dates<svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h11.5M10 4.5 14.5 9 10 13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </article>
+    <article class="room" id="room-studio-twin" data-room="studio-twin" data-name="Studio Twin">
+      <div class="gal " role="group" aria-roledescription="carousel" aria-label="Studio Twin photographs">
+        <div class="gal-track" tabindex="0">
+          <div class="slide"><img style="object-position:60.0% 50%" src="img/r-043.webp" alt="Two beds, a round table and a mirror, with the sea through the glass." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/r-080.webp" alt="Bed and round table, with the sea and a palm through the glass." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/r-165.webp" alt="Twin beds on dark rugs beside a chevron timber wardrobe door." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/r-167.webp" alt="A bed and patio chairs, with palms and the sea through the glass." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/r-083.webp" alt="Round table, two wishbone chairs and a red floor lamp by a sheer curtain." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+        </div>
+        <div class="dots" aria-hidden="true"></div>
+      </div>
+      <div class="room-text">
+        <h3>Studio Twin</h3>
+        <p class="meta">2 super-single beds | Sleeps 2</p>
+        <p>38 sq m on the upper floor, with 3.5 m floor-to-ceiling glass doors.</p>
+      </div>
+      <div class="room-go">
+        <!-- Date fields go here, above the button, if the engine is shown to honour dates: the sheet docks this block to its foot and has the room for them. -->
+        <a class="btn book" href="https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586">Studio Twin: check live dates<svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h11.5M10 4.5 14.5 9 10 13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </article>
+    <article class="room" id="room-studio-plus" data-room="studio-plus" data-name="Studio+ King">
+      <div class="gal " role="group" aria-roledescription="carousel" aria-label="Studio+ King photographs">
+        <div class="gal-track" tabindex="0">
+          <div class="slide"><img style="object-position:50.1% 50%" src="img/r-071.webp" alt="Seen from the bed: glass doors, one palm, loungers and the sea." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/r-042.webp" alt="A timber desk-headboard before the bed, with a palm and the sea through the glass." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/r-066.webp" alt="Timber desk-headboard and mirror, with the pool and a palm through the glass." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/r-067.webp" alt="Round table by the bed, with the patio, pool and a parasol beyond." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/r-074.webp" alt="Bed with a side view through glass to patio chairs and palms." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/r-076.webp" alt="Freestanding bath with a timber caddy, the room and the sea beyond." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/r-073.webp" alt="Bathroom with a freestanding bath, a floor tap and twin basins." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+        </div>
+        <div class="dots" aria-hidden="true"></div>
+      </div>
+      <div class="room-text">
+        <h3>Studio+ King</h3>
+        <p class="meta">King bed | Sleeps 2</p>
+        <p>40 to 43 sq m on the upper or ground floor, with a deep stand-alone soaking tub and dual sinks.</p>
+      </div>
+      <div class="room-go">
+        <!-- Date fields go here, above the button, if the engine is shown to honour dates: the sheet docks this block to its foot and has the room for them. -->
+        <a class="btn book" href="https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587">Studio+ King: check live dates<svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h11.5M10 4.5 14.5 9 10 13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </article>
+    <article class="room" id="room-suite" data-room="suite" data-name="Director’s Suite">
+      <div class="gal " role="group" aria-roledescription="carousel" aria-label="Director’s Suite photographs">
+        <div class="gal-track" tabindex="0">
+          <div class="slide"><img style="object-position:69.2% 50%" src="img/r-087.webp" alt="Bed, TV, desk and grey sofa, with the sea and a palm through the glass." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/r-171.webp" alt="Bed in the foreground, with the TV, sofa, sea and a palm beyond." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/r-172.webp" alt="Desk, chairs, TV and sofa, with the bed beyond." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/r-058.webp" alt="Walk-in wardrobe in timber, a white robe hanging." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/r-059.webp" alt="Wardrobe with a tall mirror, leading into the bathroom." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/r-055.webp" alt="Bathroom with a double vanity, lit mirror, bath and marble." width="1100" height="733" loading="lazy" decoding="async" draggable="false"></div>
+        </div>
+        <div class="dots" aria-hidden="true"></div>
+      </div>
+      <div class="room-text">
+        <h3>Director’s Suite</h3>
+        <p class="meta">King bed | Sleeps 2</p>
+        <p>About 75 sq m on the top floor, with a living area, walk-in wardrobe, soaking tub, ocean-view balconies and a 55-inch TV.</p>
+      </div>
+      <div class="room-go">
+        <!-- Date fields go here, above the button, if the engine is shown to honour dates: the sheet docks this block to its foot and has the room for them. -->
+        <a class="btn book" href="https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603">Director’s Suite: check live dates<svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h11.5M10 4.5 14.5 9 10 13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </article>
+  </div>
+  <div class="wrap notes">
+    <div class="notes-text">
+      <p>We have included thoughtful touches from evening lavender scents to high pressure rain showers so you are assured of a restorative stay in any one of our room types.</p>
+      <p>Every room has a plush pillow-top mattress with 500 thread count linen, a shower big enough for two, Spa Ceylon amenities, bathrobes and slippers. Each one also has central air conditioning and a ceiling fan, a desk, universal sockets, a hairdryer and a Bluetooth speaker. High speed WiFi too, with newspapers and magazines from around the world on PressReader.</p>
+    </div>
+    <div class="notes-text">
+      <p>In the Studio King, a triple occupancy can be arranged (subject to availability) with a supplement.</p>
+      <p class="strong">Nightly rates are on our booking page, for the dates you choose.</p>
+      <p class="facts"><b>Check-in from 14:00 | Check-out to 12:00</b><br>Other sites give different minimum ages for us, and some say check-in is after 16:00. Ask us before you book.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <details class="house" open>
+      <summary><span>At the house</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 8 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+      <ul class="amen">
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Airport transfers <small>(additional charge)</small></span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Transfers throughout Sri Lanka</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Tuk tuk bookings</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Car and motorbike rentals</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Tours and activities assistance</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>In-room spa massage</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Yoga and surf lessons <small>(on our list; ask us who runs them and what they cost)</small></span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Surfboard hire <small>(on our list; ask us who provides the boards and what hire costs)</small></span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Sri Lankan rice &amp; curry cooking class</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Celebratory arrangements</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Laundry and ironing</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Daily housekeeping</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Beach chairs, loungers and umbrellas</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Pool and beach towels</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Sun deck and terrace</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Garden</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Library</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Welcome drink</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Bottled water and refillable water stations</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>24-hour check-in</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>24-hour security</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Safety deposit box</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Baggage storage</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Free parking</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Non-smoking rooms</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Hypoallergenic rooms</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Designated smoking area</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Access to healthcare professionals</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5 6.4 12 13 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Cashless payment accepted</span></li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<section class="arrival" data-ground="ground">
+  <div class="arrival-photo"><img src="img/arrival.webp" alt="The road side of the hotel: a grey concrete wall, tall timber doors standing open, paving and a shade tree." width="1400" height="933" loading="lazy" decoding="async"></div>
+  <div class="arrival-text">
+    <h2 class="title">Pause, take a deep breath <span class="amp">&amp;</span> exhale. You are home.</h2>
+    <p>Designed to feel like an exclusive private beach house with the amenities of an intimate boutique hotel. Your relaxation starts as you kick off your shoes and slip through the hidden door in the wide wooden façade.</p>
+      <p>Inside, you will catch the first glimpses of our star attraction, The Indian Ocean, magnificent and omnipresent.</p>
+      <p>Whether you are enjoying the sunshine on the expansive lawns, lounging all day around our abundant, airy indoor living spaces or cooling off in our air-conditioned media room, the sea is always your view.</p>
+      <p>Dipping your feet in the azure waters of our swimming pool, you will soon be hypnotised by the allure of the white tipped surf breaks just a few meters ahead.</p>
+  </div>
+</section>
+
+<section class="feature" data-ground="ground">
+  <div class="stage" data-depth="img/depth-feature.png" data-frame="2000x1334" data-crop="430,0,1000,1334" data-rest="centre">
+    <picture>
+      <source media="(max-width:767px)" srcset="img/feature-phone.webp" width="900" height="1201">
+      <img src="img/feature-1440.webp" srcset="img/feature-1440.webp 1440w, img/feature-2000.webp 2000w" sizes="103vw" width="2000" height="1334" loading="lazy" decoding="async" alt="An open glass door in a guest room: a red lamp and two chairs inside, then a lounger, the pool, the lawn, tall palms and the sea.">
+    </picture>
+    <canvas aria-hidden="true"></canvas>
+  </div>
+  <p class="card feature-card">With panoramic glass doors &amp; windows throughout, this captivating view is our artwork.</p>
+</section>
+
+<section class="dining" id="dining" data-ground="ground">
+  <div class="panel">
+    <div class="wrap-in">
+      <h2 class="title">The Dining Room</h2>
+      <div class="cols">
+        <p>Elevated Comfort Food was the brief for our visiting menu designer, Chef Christophe DuBois. Working closely with our owner, a self-confessed “easy foodie”, the team conjured a delectable array of dishes inspired from a global set-list of food heaven highlights.</p>
+      <p>We truly believe some of the island’s best qualities may be expressed through our food. Our signature Sri Lankan rice &amp; curry, our zesty DIY poke bowls and our localized “Tom Yum” style noodles with fresh Ceylon prawns explore the diversity of the local produce available. Or go directly to a finger licking array of delicious homemade desserts.</p>
+      <p>Our breads, pastas, sauces, infused mayonnaise, stocks, spice blends, jams are made in-house and the menus subtly evolve with the seasons.</p>
+      <p>If you don’t find what you crave, simply ask our team to prepare what your tummy desires. Dishes catering to vegetarian, vegan, keto and other dietary lifestyles are available.</p>
+      <p>A continental breakfast for two adults is included in your stay.</p>
+      </div>
+    </div>
+    <div class="gal row" role="group" aria-roledescription="carousel" aria-label="Dishes from The Dining Room">
+        <div class="gal-track" tabindex="0">
+          <div class="slide"><img src="img/food-118.webp" alt="Noodles on a patterned plate on a teak table, with a navy napkin and cutlery." width="853" height="853" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/food-112.webp" alt="Bowl of egg, avocado, tomato and greens on a dark mat, from above." width="853" height="853" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/food-115.webp" alt="Noodles with prawns on a patterned plate, with chopsticks, from above." width="853" height="853" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/food-114.webp" alt="Yellow curry with parathas on a striped plate, from above." width="853" height="853" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/food-113.webp" alt="Outdoor timber table and two chairs set for breakfast on a stone floor, from above." width="853" height="853" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/food-108.webp" alt="Table set with several dishes, water glasses and a pizza board." width="853" height="853" loading="lazy" decoding="async" draggable="false"></div>
+        </div>
+        <div class="dots" aria-hidden="true"></div>
+      </div>
+  </div>
+</section>
+
+<section class="luxe" data-ground="ground">
+  <div class="wrap luxe-grid">
+    <div class="luxe-text">
+      <h2 class="title">Casual Luxe</h2>
+      <p>Casual Luxe is at the heart of our ethos at The Sandhya. We prioritise understated design, thoughtful form and practical function above conspicuous bling and glitter.</p>
+      <p>Our property’s furnishings are inspired by mid-century aesthetics and embellished with mod-chinoiserie decor. Our Singaporean owner’s discerning vision has been brought to life by the local designers and craftsmen he worked with across Sri Lanka.</p>
+      <p class="press">Wallpaper* describes The Sandhya as “a clean-lined boutique hotel with Scandinavian design sensibilities.”</p>
+      <p>We opened in 2017 and renovated in 2023.</p>
+      <p>Our service is warm, kind, attentive yet informal. Ask for your heart’s desire or simply be left alone when seeking that self-restoration. Just feel at home and allow us to look after you.</p>
+      <p>We have blended the best of the worlds that we live in.</p>
+    </div>
+    <div class="gal show" role="group" aria-roledescription="carousel" aria-label="The house">
+        <div class="gal-track" tabindex="0">
+          <div class="slide"><img src="img/luxe-035.webp" alt="Lobby with a timber table under a glass chandelier, the lounge and stair behind, the pool and a parasol through the glass." width="1200" height="800" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/luxe-015.webp" alt="The lobby at dusk from outside through the glass: timber wall, floating stair and hanging lights." width="1200" height="800" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/luxe-016.webp" alt="Floating stair above a grey sofa and lounge chairs on a polished floor." width="1200" height="800" loading="lazy" decoding="async" draggable="false"></div>
+          <div class="slide"><img src="img/luxe-122.webp" alt="Lit brass lamp on a timber sideboard beside a dark armchair." width="1200" height="800" loading="lazy" decoding="async" draggable="false"></div>
+        </div>
+        <div class="dots" aria-hidden="true"></div>
+      </div>
+  </div>
+  <div class="wrap">
+    <p class="big">We are not international. We are not local. We are simply The Sandhya.</p>
+    <div class="care">
+      <h2 class="title small">Looking after the place</h2>
+      <p>We support the local community and our environment, with a zero-food waste menu, a ban on single-use plastic, water recycling and a care programme for our beach turtles. We strive for sustainable tourism.</p>
+    </div>
+  </div>
+</section>
+
+<section class="guests" data-ground="ground">
+  <div class="pool">
+    <h2 class="title">Guests</h2>
+    <div class="quotes">
+      <figure class="quote"><blockquote>It’s a beautiful place and a well maintained clean stay. The staff is very supportive. The Sandhya is situated near one of the best locations which is facing stunning kabalana beach .the pool omg !!! That was awesome. It’s a long crystal clean relaxing pool with the stunning view of the ocean . Food is delicious and a well curated menu. Rooms are beautiful and very comfortable. Overall we loved the stay and everything in it . It’s a must go boutique hotel in ahangama .</blockquote><figcaption>Guest User | Trip.com | June 2026</figcaption></figure>
+      <figure class="quote"><blockquote>A great stay, absolutely gorgeous hotel - perfect, friendly and attentive service, small hotel so felt very safe, familiar and luxurious. Delicious food, excellent location to get to Ahangama by 5min TukTuk and be directly on a wide sandy and long (enough) beach with lots of surfers, without the actual beach being packed full of people so was calm but bustling. Would highly recommend.</blockquote><figcaption>Guest User | Trip.com | February 2026</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="kabalana" data-ground="late">
+  <div class="wrap kab-grid">
+    <div class="kab-head">
+      <h2 class="title">Kabalana and around</h2>
+      <p class="lede">Kabalana is a mile long, white sandy beach on the golden south coast of Sri Lanka.</p>
+    </div>
+    <div class="kab-wide"><img src="img/beach-153.webp" alt="The hotel in the distance across turquoise shallows and white sand, with palms behind." width="1200" height="682" loading="lazy" decoding="async"></div>
+    <div class="kab-tall"><img src="img/beach-034.webp" alt="A wide raked beach beside the hotel's lawn, with a stone bowl and a slate sign carrying The Sandhya's name." width="900" height="1200" loading="lazy" decoding="async"></div>
+    <div class="kab-steps">
+      <div><p>Just by the buzzing and eclectic town of Ahangama, Kabalana Beach has come into its own in recent years with surfers, families, and digital nomads alike. Pristine sand and stunning sunsets have nurtured a laid-back scene where surf lovers, beach bunnies, serial retreat hunters and quiet couples coexist with welcoming locals.</p></div>
+      <div><p>Centuries old Galle Fort, a UNESCO World Heritage Site, is just 25 minutes away. While away a whole day browsing through an eclectic array of boutiques, stopping for well-earned sips and bites from an ever-growing cafe and restaurant scene.</p><p>The nearby beaches of Midigama, Weligama, Mirissa, Madiha and Hiriketiya Bay have surf points and whale-watching boat rides. You will find plenty of places to eat there too. Our own town Ahangama has grown into a foodies’ haven with a diverse selection of high-quality eateries and night spots.</p></div>
+      <div><p>Yala and Udwalawe National Parks, Singharaja Forest and awe-inspiring waterfalls are within manageable day trips from The Sandhya. Depart your room in the crisp early morning and be back in time for a late lunch or cocktail.</p><p>Ahangama train station is 1.4 km from us.</p></div>
+    </div>
+    <div class="kab-map">
+      <img src="img/map.webp" alt="The hotel's own hand-drawn map of the south-west coast, marking the airport, Colombo, Galle, Weligama and The Sandhya." width="800" height="811" loading="lazy" decoding="async">
+      <a class="btn quiet" href="https://www.google.com/maps/place/The+Sandhya/@5.9769788,80.3525613,17z/data=!4m9!3m8!1s0x3ae1134e3ce889b1:0x41288b6ad09d4032!5m2!4m1!1i2!8m2!3d5.9769788!4d80.3525613!16s%2Fg%2F11f1gbc2nq?hl=en" target="_blank" rel="noopener"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true"><path d="M9.5 16.5s5.2-4.5 5.2-8.6a5.2 5.2 0 1 0-10.4 0c0 4.1 5.2 8.6 5.2 8.6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="9.5" cy="7.9" r="1.8" stroke="currentColor" stroke-width="1.6"/></svg>Map</a>
+    </div>
+  </div>
+</section>
+
+<section class="exclusive" data-ground="late">
+  <div class="wrap ex-grid">
+    <div class="ex-photo"><img src="img/house-152.webp" alt="The hotel from the beach: a low two-storey block behind a hedge and lawn, palms either side, wide sand in front." width="1400" height="788" loading="lazy" decoding="async"></div>
+    <div class="ex-text">
+      <h2 class="title">Exclusive Use</h2>
+      <p>Our home at The Sandhya can be your very own private beach house with an Exclusive Use booking. Our position on Kabalana Beach, in a secluded nook, lends itself to an intimate wedding party, birthday celebration, family reunion, wellness/fitness retreat or simply to celebrate life.</p>
+      <p>With the beach as your blank canvas and with our delightful staff at your service, we offer a private setting for your special occasion.</p>
+      <p class="price"><b>US$3,500</b><span>Exclusive Use of the whole house, per night</span><small>Our “from” price, plus “++”, as of 2026-11-06.</small></p>
+      <div class="acts"><a class="btn quiet" href="tel:+94765700007"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true"><path d="M5.2 3.2h2.3l1.2 3.2-1.5 1.1a9 9 0 0 0 4.8 4.8l1.1-1.5 3.2 1.2v2.3c0 .8-.7 1.5-1.5 1.4C8.5 15.2 3.8 10.5 3.3 4.7c-.1-.8.6-1.5 1.9-1.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Call</a><a class="btn quiet" href="mailto:reservations@thesandhya.com"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true"><path d="M3 5.2h13v9.1H3zM3.4 5.6l6.1 5 6.1-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>Email</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="twilight" data-ground="dusk">
+  <div class="wrap dusk-grid">
+    <div class="prints">
+      <img class="print a" src="img/dusk-023.webp" alt="The double-height lobby at sunset, the sun low through the glass wall and the floor lit gold." width="960" height="800" loading="lazy" decoding="async">
+      <img class="print b" src="img/dusk-027.webp" alt="The concrete facade at blue hour, the balconies lit gold from inside." width="1000" height="1000" loading="lazy" decoding="async">
+    </div>
+    <div class="dusk-text">
+      <h2 class="title">Why Sandhya</h2>
+      <p class="lede">Sandhya, in Sanskrit संध्य, means “twilight.” It is that magical moment between light and dark.</p>
+      <p>Come evening, as temperature cools and the sun begins to set over the majestic Indian Ocean, the beauty of twilight is undeniable with its ethereal glow of orange, pink and blue hues painting the cotton candy-clouded sky.</p>
+    </div>
+  </div>
+</section>
+
+<section class="closing" id="book" data-ground="dusk">
+  <div class="closer">
+    <div class="closer-a">
+      <h2 class="tag-big">An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka.</h2>
+      <p>Kabalana is a mile long, white sandy beach on the golden south coast of Sri Lanka.</p>
+      <p>A continental breakfast for two adults is included in your stay.</p>
+      <p>Nightly rates are on our booking page, for the dates you choose.</p>
+    </div>
+    <div class="closer-b">
+      <div class="rates stack">
+      <a class="rate" href="https://au.trip.com/hotels/ahangama-hotel-detail-10660372/hotel" target="_blank" rel="noopener"><b>9.7/10</b><span>Trip.com | 56 reviews | read 2026-11-06</span></a>
+      <a class="rate" href="https://www.kayak.com/Ahangama-Hotels-The-Sandhya.2781869.ksp" target="_blank" rel="noopener"><b>9.4/10</b><span>Kayak | 159 reviews | read 2026-11-06</span></a>
+      </div>
+      <a class="btn book wide" href="https://hotels.cloudbeds.com/reservation/WMvA6V">Check rooms and live dates<svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h11.5M10 4.5 14.5 9 10 13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <p class="close-line">See live dates on our own booking page. If you have a question first, call or email us.</p>
+      <div class="acts"><a class="btn quiet" href="tel:+94765700007"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true"><path d="M5.2 3.2h2.3l1.2 3.2-1.5 1.1a9 9 0 0 0 4.8 4.8l1.1-1.5 3.2 1.2v2.3c0 .8-.7 1.5-1.5 1.4C8.5 15.2 3.8 10.5 3.3 4.7c-.1-.8.6-1.5 1.9-1.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Call</a><a class="btn quiet" href="mailto:reservations@thesandhya.com"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true"><path d="M3 5.2h13v9.1H3zM3.4 5.6l6.1 5 6.1-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>Email</a></div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot" data-ground="dusk">
+  <div class="wrap foot-grid">
+    <a class="logo" href="#main" aria-label="The Sandhya"><img src="img/logo.webp" alt="The Sandhya" width="406" height="106" loading="lazy"></a>
+    <div class="foot-acts"><a class="btn quiet" href="tel:+94765700007"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true"><path d="M5.2 3.2h2.3l1.2 3.2-1.5 1.1a9 9 0 0 0 4.8 4.8l1.1-1.5 3.2 1.2v2.3c0 .8-.7 1.5-1.5 1.4C8.5 15.2 3.8 10.5 3.3 4.7c-.1-.8.6-1.5 1.9-1.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Call</a><a class="btn quiet" href="mailto:reservations@thesandhya.com"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true"><path d="M3 5.2h13v9.1H3zM3.4 5.6l6.1 5 6.1-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>Email</a><a class="btn quiet" href="https://www.google.com/maps/place/The+Sandhya/@5.9769788,80.3525613,17z/data=!4m9!3m8!1s0x3ae1134e3ce889b1:0x41288b6ad09d4032!5m2!4m1!1i2!8m2!3d5.9769788!4d80.3525613!16s%2Fg%2F11f1gbc2nq?hl=en" target="_blank" rel="noopener"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true"><path d="M9.5 16.5s5.2-4.5 5.2-8.6a5.2 5.2 0 1 0-10.4 0c0 4.1 5.2 8.6 5.2 8.6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="9.5" cy="7.9" r="1.8" stroke="currentColor" stroke-width="1.6"/></svg>Map</a><a class="btn quiet" href="https://www.instagram.com/thesandhya/" target="_blank" rel="noopener"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true"><rect x="3.2" y="3.2" width="12.6" height="12.6" rx="3.6" stroke="currentColor" stroke-width="1.6"/><circle cx="9.5" cy="9.5" r="2.9" stroke="currentColor" stroke-width="1.6"/><circle cx="13.3" cy="5.7" r=".9" fill="currentColor"/></svg>Instagram</a></div>
+    <p class="foot-line">Baranige Wattha Walhengoda, Ahangama 80650, Sri Lanka<br>+94 765 700 007 | reservations@thesandhya.com<br>The front desk is open 24 hours a day.</p>
+  </div>
+</footer>
+
+<div class="dock">
+  <a class="btn book" href="https://hotels.cloudbeds.com/reservation/WMvA6V">Check rooms and live dates</a>
+  <a class="btn round" href="tel:+94765700007" aria-label="Call"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true"><path d="M5.2 3.2h2.3l1.2 3.2-1.5 1.1a9 9 0 0 0 4.8 4.8l1.1-1.5 3.2 1.2v2.3c0 .8-.7 1.5-1.5 1.4C8.5 15.2 3.8 10.5 3.3 4.7c-.1-.8.6-1.5 1.9-1.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></a>
+</div>
+</div>
+</main>
+<div class="scrim" id="scrim" hidden></div>
+<aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Room" hidden tabindex="-1">
+  <div class="sheet-top">
+    <div class="chips" role="group" aria-label="Rooms">
+      <button class="chip" type="button" aria-pressed="false" data-room="studio-king">Studio King</button>
+      <button class="chip" type="button" aria-pressed="false" data-room="studio-twin">Studio Twin</button>
+      <button class="chip" type="button" aria-pressed="false" data-room="studio-plus">Studio+ King</button>
+      <button class="chip" type="button" aria-pressed="false" data-room="suite">Director’s Suite</button>
+    </div>
+    <button class="close" type="button" aria-label="Close"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="sheet-body" id="sheet-body"></div>
+</aside>
+
+
+<script>
+/* The page's interface. Everything here is an enhancement: all of it works as plain links and native scroll. */
+(function(){
+  'use strict';
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var root = document.documentElement, $ = function(s,c){return (c||document).querySelector(s);}, $$ = function(s,c){return [].slice.call((c||document).querySelectorAll(s));};
+
+  // Booking buttons: a soft ring from the point of the tap.
+  document.addEventListener('pointerdown', function(e){
+    var b = e.target.closest && e.target.closest('.book');
+    if(!b || reduce) return;
+    var r = b.getBoundingClientRect(), s = document.createElement('span');
+    s.className = 'ring'; s.style.left = (e.clientX-r.left)+'px'; s.style.top = (e.clientY-r.top)+'px';
+    b.appendChild(s); s.addEventListener('animationend', function(){ s.remove(); });
+  });
+
+  // Ground colour, easing as the sections change.
+  var GROUND = {ground:'#F2F6F6', late:'#F5EDE5', dusk:'#F8E2D3'};
+  root.style.setProperty('--g', GROUND.ground);
+  if('IntersectionObserver' in window){
+    var gio = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting) root.style.setProperty('--g', GROUND[e.target.dataset.ground]); });
+    },{rootMargin:'-55% 0px -45% 0px'});
+    $$('[data-ground]').forEach(function(s){ gio.observe(s); });
+  }
+
+  // Header: steps out of the way on the way down, back on the way up. The booking button stays.
+  var top = $('#top'), hero = $('.hero'), pill = $('.pill'), lastY = scrollY, tick = false;
+  function pillRoom(){ if(pill) root.style.setProperty('--pill', (pill.offsetWidth+18)+'px'); }
+  pillRoom(); addEventListener('resize', pillRoom);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(pillRoom);
+  function onScroll(){
+    tick = false;
+    var y = scrollY, h = hero.offsetHeight;
+    top.classList.toggle('past', y > h-110);
+    if(y < h*.5) top.classList.remove('away');
+    else if(y-lastY > 6) top.classList.add('away');
+    else if(lastY-y > 6) top.classList.remove('away');
+    if(Math.abs(y-lastY) > 6) lastY = y;
+  }
+  addEventListener('scroll', function(){ if(!tick){ tick = true; requestAnimationFrame(onScroll); } }, {passive:true});
+
+  // Galleries: dots that follow, drag with momentum for a mouse, arrow keys.
+  function Gal(g){
+    if(g._on) return; g._on = true;
+    var t = $('.gal-track',g), slides = $$('.slide',g), box = $('.dots',g), dots = [], cur = -1;
+    function left(i){ return slides[i].offsetLeft-slides[0].offsetLeft; }
+    function go(i){ i = Math.max(0,Math.min(slides.length-1,i)); t.scrollTo({left:left(i),behavior:reduce?'auto':'smooth'}); }
+    slides.forEach(function(s,i){
+      var b = document.createElement('button'); b.type = 'button'; b.tabIndex = -1; b.innerHTML = '<i></i>';
+      b.addEventListener('click', function(){ go(i); }); box.appendChild(b); dots.push(b);
+    });
+    function mark(){
+      if(!t.clientWidth) return;
+      var x = t.scrollLeft, best = 0, d = 1e9;
+      slides.forEach(function(s,i){ var q = Math.abs(left(i)-x); if(q<d){d=q;best=i;} });
+      if(t.scrollLeft+t.clientWidth >= t.scrollWidth-2) best = slides.length-1;
+      if(best!==cur){ if(dots[cur]) dots[cur].classList.remove('on'); dots[best].classList.add('on'); cur = best; }
+    }
+    t.addEventListener('scroll', function(){ requestAnimationFrame(mark); }, {passive:true}); mark(); g._mark = mark;
+    t.addEventListener('keydown', function(e){
+      if(e.key==='ArrowRight'){ e.preventDefault(); go(cur+1); }
+      if(e.key==='ArrowLeft'){ e.preventDefault(); go(cur-1); }
+    });
+    var down = false, sx = 0, sl = 0, vx = 0, lx = 0, lt = 0, moved = 0, raf = 0;
+    t.addEventListener('pointerdown', function(e){
+      if(e.pointerType!=='mouse'||e.button) return;
+      cancelAnimationFrame(raf); down = true; sx = lx = e.clientX; sl = t.scrollLeft; lt = e.timeStamp; vx = 0; moved = 0;
+      t.classList.add('drag'); t.setPointerCapture(e.pointerId);
+    });
+    t.addEventListener('pointermove', function(e){
+      if(!down) return;
+      t.scrollLeft = sl-(e.clientX-sx); moved = Math.max(moved,Math.abs(e.clientX-sx));
+      var dt = e.timeStamp-lt; if(dt>0){ vx = .8*(lx-e.clientX)/dt+.2*vx; lx = e.clientX; lt = e.timeStamp; }
+    });
+    function up(){
+      if(!down) return; down = false;
+      if(reduce){ t.classList.remove('drag'); return; }
+      var v = vx*16;
+      (function coast(){
+        if(Math.abs(v)<.6){
+          // Settle on the nearest stop, then give the scroller its snap back.
+          var i = 0, d = 1e9; slides.forEach(function(s,n){ var q = Math.abs(left(n)-t.scrollLeft); if(q<d){d=q;i=n;} });
+          t.scrollTo({left:Math.min(left(i),t.scrollWidth-t.clientWidth),behavior:'smooth'});
+          setTimeout(function(){ t.classList.remove('drag'); },320);
+          return;
+        }
+        t.scrollLeft += v; v *= .94; raf = requestAnimationFrame(coast);
+      })();
+    }
+    t.addEventListener('pointerup', up); t.addEventListener('pointercancel', up);
+    t.addEventListener('click', function(e){ if(moved>5) e.preventDefault(); }, true);
+  }
+  $$('.gal').forEach(function(g){ if(!g.closest('.rooms-detail')) Gal(g); });
+
+  // The room sheet.
+  var sheet = $('#sheet'), scrim = $('#scrim'), body = $('#sheet-body'), home = $('#rooms-detail'), chips = $$('.chip');
+  var main = $('#main'), current = null, opener = null, closing = 0;
+  function place(id){
+    if(current) home.appendChild(current);
+    current = $('#room-'+id); body.appendChild(current); body.scrollTop = 0;
+    chips.forEach(function(c){ c.setAttribute('aria-pressed', c.dataset.room===id); });
+    sheet.setAttribute('aria-label', current.dataset.name);
+    var first = $('.slide img',current); if(first) first.loading = 'eager';
+    Gal($('.gal',current));
+    var t = $('.gal-track',current); t.scrollLeft = 0;
+    if(!sheet.hidden) $('.gal',current)._mark();
+  }
+  function fly(tile){
+    if(reduce||!tile||!tile.animate) return;
+    var src = $('img',tile), from = src.getBoundingClientRect(), to = $('.slide',current).getBoundingClientRect();
+    var c = tile.dataset.crop.split(',').map(Number), x0 = c[0], cw = c[1], fw = c[2], fh = c[3];
+    // Where the tile's own crop sits inside the gallery's wider frame, with the sheet at rest.
+    var k = Math.max(to.width/fw,to.height/fh), ox = (to.width-fw*k)*(x0/(fw-cw));
+    var shift = sheet.getBoundingClientRect().left-(innerWidth-sheet.offsetWidth);
+    var ex = to.left-shift+ox+x0*k, s = cw*k/from.width;
+    var im = src.cloneNode(); im.removeAttribute('loading'); im.alt = ''; im.className = 'fly';
+    im.style.cssText = 'left:'+from.left+'px;top:'+from.top+'px;width:'+from.width+'px;height:'+from.height+'px;border-radius:20px';
+    document.body.appendChild(im);
+    var a = im.animate([{transform:'none'},{transform:'translate('+(ex-from.left)+'px,'+(to.top-from.top)+'px) scale('+s+')'}],
+      {duration:360,easing:'cubic-bezier(.22,.8,.2,1)',fill:'forwards'});
+    a.onfinish = function(){ var b = im.animate({opacity:[1,0]},{duration:180,fill:'forwards'}); b.onfinish = function(){ im.remove(); }; };
+  }
+  function open(id,tile){
+    clearTimeout(closing);
+    opener = tile||document.activeElement;
+    place(id);
+    var w = innerWidth-root.clientWidth;
+    root.style.overflow = 'hidden'; document.body.style.paddingRight = w ? w+'px' : '';
+    sheet.hidden = false; scrim.hidden = false;
+    $('.gal',current)._mark();
+    main.inert = true; top.inert = true;
+    void sheet.offsetWidth;
+    fly(tile);
+    sheet.classList.add('open'); scrim.classList.add('open');
+    $('.close',sheet).focus({preventScroll:true});
+  }
+  function close(){
+    sheet.classList.remove('open'); scrim.classList.remove('open');
+    main.inert = false; top.inert = false;
+    root.style.overflow = ''; document.body.style.paddingRight = '';
+    if(opener&&opener.focus) opener.focus({preventScroll:true});
+    closing = setTimeout(function(){
+      sheet.hidden = true; scrim.hidden = true;
+      if(current){ home.appendChild(current); current = null; }
+    },340);
+  }
+  $$('.tile').forEach(function(t){
+    t.addEventListener('click', function(e){
+      if(e.metaKey||e.ctrlKey||e.shiftKey) return;
+      e.preventDefault(); open(t.dataset.room,t);
+    });
+  });
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){
+      if(c.getAttribute('aria-pressed')==='true') return;
+      if(reduce){ place(c.dataset.room); return; }
+      body.classList.add('swap');
+      setTimeout(function(){ place(c.dataset.room); body.classList.remove('swap'); },160);
+    });
+  });
+  $('.close',sheet).addEventListener('click', close);
+  scrim.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){
+    if(sheet.hidden||!sheet.classList.contains('open')) return;
+    if(e.key==='Escape'){ e.preventDefault(); close(); return; }
+    if(e.key!=='Tab') return;
+    var f = $$('button,a[href],[tabindex="0"]',sheet).filter(function(x){ return x.tabIndex>=0&&x.offsetParent!==null; });
+    if(!f.length) return;
+    var a = f[0], z = f[f.length-1];
+    if(e.shiftKey&&document.activeElement===a){ e.preventDefault(); z.focus(); }
+    else if(!e.shiftKey&&document.activeElement===z){ e.preventDefault(); a.focus(); }
+  });
+  if(/^#room-/.test(location.hash)&&$(location.hash)) open(location.hash.slice(6));
+
+  // The long list folds away on a phone, where it would run for two screens.
+  if(innerWidth<768){ var hd = $('.house'); if(hd) hd.removeAttribute('open'); }
+})();
+</script>
+<script>
+/* The depth piece. It never delays anything: the photograph and the link are already there. */
+(function(){
+  'use strict';
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var conn = navigator.connection || {};
+  var noGuard = /[?&]noguard/.test(location.search);
+
+  // Depth: plain WebGL over the photograph. At rest it draws the photograph unchanged.
+  if(reduce || conn.saveData) return;
+  var VS = 'attribute vec2 a;varying vec2 v;void main(){v=a*.5+.5;v.y=1.-v.y;gl_Position=vec4(a,0.,1.);}';
+  var FS = 'precision highp float;uniform sampler2D I,D;uniform vec2 O;uniform vec4 C,M;varying vec2 v;'+
+    'float H(vec2 u,float s){return texture2D(D,M.xy+(u-O*(s-.35))*M.zw).r-s;}'+
+    'void main(){vec2 u=C.xy+v*C.zw;float a=1.,b=1.;'+
+    // March from the camera to the first surface, then close in on it, so far planes stay perfectly smooth.
+    'for(int i=0;i<14;i++){if(H(u,b)>=0.)break;a=b;b-=1./13.;}'+
+    'for(int i=0;i<5;i++){float m=(a+b)*.5;if(H(u,m)>=0.)b=m;else a=m;}'+
+    'gl_FragColor=texture2D(I,u-O*(b-.35));}';
+
+  function Piece(stage){
+    var img = stage.querySelector('img'), cv = stage.querySelector('canvas');
+    var gl = cv.getContext('webgl',{alpha:false,antialias:false,preserveDrawingBuffer:true,powerPreference:'low-power'});
+    if(!gl) return null;
+    function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);return o;}
+    var pr = gl.createProgram();
+    gl.attachShader(pr,sh(gl.VERTEX_SHADER,VS));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FS));gl.linkProgram(pr);gl.useProgram(pr);
+    if(!gl.getProgramParameter(pr,gl.LINK_STATUS)) return null;
+    gl.bindBuffer(gl.ARRAY_BUFFER,gl.createBuffer());
+    gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+    var a=gl.getAttribLocation(pr,'a');gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,2,gl.FLOAT,false,0,0);
+    var U={I:gl.getUniformLocation(pr,'I'),D:gl.getUniformLocation(pr,'D'),O:gl.getUniformLocation(pr,'O'),C:gl.getUniformLocation(pr,'C'),M:gl.getUniformLocation(pr,'M')};
+    function tex(unit,src){
+      gl.activeTexture(gl.TEXTURE0+unit);gl.bindTexture(gl.TEXTURE_2D,gl.createTexture());
+      gl.pixelStorei(gl.UNPACK_COLORSPACE_CONVERSION_WEBGL,gl.NONE);
+      gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,src);
+      gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+    }
+    var fr = stage.dataset.frame.split('x').map(Number), crop = stage.dataset.crop.split(',').map(Number);
+    var phone = matchMedia('(max-width:767px)').matches;
+    var cx = phone?crop[0]:0, cy = phone?crop[1]:0, cw = phone?crop[2]:fr[0], ch = phone?crop[3]:fr[1];
+    var posY = phone?.5:parseFloat(getComputedStyle(img).objectPosition.split(' ')[1])/100;
+    var W=0,H=0,raf=0,visible=true,slow=0,last=0,dead=false;
+    var x=0,y=0,tx=0,ty=0,sx=0,sy=0;
+    function size(){
+      var r=cv.getBoundingClientRect(), dpr=Math.min(devicePixelRatio||1,2);
+      W=Math.round(r.width*dpr);H=Math.round(r.height*dpr);cv.width=W;cv.height=H;gl.viewport(0,0,W,H);
+      var ca=W/H, ia=cw/ch, zw=1, zh=1, ox=0, oy=0;
+      if(ca>ia){zh=ia/ca;oy=(1-zh)*posY;}else{zw=ca/ia;ox=(1-zw)*.5;}
+      gl.uniform4f(U.C,ox,oy,zw,zh);
+      gl.uniform4f(U.M,cx/fr[0],cy/fr[1],cw/fr[0],ch/fr[1]);
+    }
+    function draw(){
+      // The pivot sits at depth .35, so the room's back barely moves. A reach of 2.3% of the frame's
+      // width moves the nearest thing at most 1.5% of it, either way.
+      var reach=.023*fr[0];
+      var ox=x+sx, oy=y+sy;
+      gl.uniform2f(U.O,ox*reach/cw,oy*reach/ch);
+      gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
+      stage.classList.toggle('live',!dead&&Math.abs(ox)+Math.abs(oy)>.0015);
+    }
+    function frame(t){
+      raf=0;
+      var dt=last?t-last:16;last=t;
+      if(!noGuard && dt>70){ if(++slow>6){ kill(); return; } } else if(dt<40) slow=0;
+      var k=1-Math.exp(-dt/150);
+      x+=(tx-x)*k;y+=(ty-y)*k;
+      draw();
+      if(Math.abs(tx-x)+Math.abs(ty-y)>.0008) raf=requestAnimationFrame(frame); else {x=tx;y=ty;draw();last=0;}
+    }
+    function kick(){ if(!raf&&!dead&&visible) raf=requestAnimationFrame(frame); }
+    function kill(){ dead=true; stage.classList.remove('live'); }
+    var api={
+      move:function(nx,ny){tx=-nx;ty=-ny*.45;kick();},
+      scroll:function(p,q){sx=p;sy=q;kick();},
+      show:function(v){visible=v;if(v)kick();},
+      resize:function(){if(!dead){size();draw();}}
+    };
+    function go(dep){
+      try{ tex(0,img); tex(1,dep); }catch(err){ return; }   // file:// taints the textures: the photograph stays
+      gl.uniform1i(U.I,0);gl.uniform1i(U.D,1);
+      size();draw();
+      Piece.ready.push(api);
+    }
+    var dep=new Image();dep.onload=function(){
+      if(img.complete&&img.naturalWidth) go(dep); else img.addEventListener('load',function(){go(dep);},{once:true});
+    };
+    dep.src=stage.dataset.depth;
+    api.stage=stage;api.rest=stage.dataset.rest;
+    return api;
+  }
+  Piece.ready=[];
+
+  function start(){
+    var stages=[].slice.call(document.querySelectorAll('[data-depth]'));
+    function init(s){ if(s._p) return; s._p=true; Piece(s); }
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting) init(e.target); });},{rootMargin:'500px 0px'});
+      stages.forEach(function(s){io.observe(s);});
+    } else stages.forEach(init);
+    var coarse=matchMedia('(pointer:coarse)').matches;
+    if(!coarse){
+      addEventListener('pointermove',function(e){
+        if(e.pointerType!=='mouse') return;
+        var nx=e.clientX/innerWidth*2-1, ny=e.clientY/innerHeight*2-1;
+        Piece.ready.forEach(function(p){p.move(nx,ny);});
+      },{passive:true});
+      document.documentElement.addEventListener('mouseleave',function(){Piece.ready.forEach(function(p){p.move(0,0);});});
+    }
+    var tick=false;
+    function onScroll(){
+      tick=false;
+      Piece.ready.forEach(function(p){
+        var r=p.stage.getBoundingClientRect(), vh=innerHeight, f;
+        var on=r.bottom>0&&r.top<vh; p.show(on); if(!on) return;
+        if(p.rest==='top') f=Math.min(1,Math.max(0,-r.top/r.height));
+        else f=Math.max(-1,Math.min(1,(r.top+r.height/2-vh/2)/vh));
+        p.scroll(coarse?f*.22:0,coarse?f*.55:f*.5);
+      });
+    }
+    addEventListener('scroll',function(){ if(!tick){tick=true;requestAnimationFrame(onScroll);} },{passive:true});
+    addEventListener('resize',function(){Piece.ready.forEach(function(p){p.resize();});onScroll();});
+  }
+  if(document.readyState==='complete') (window.requestIdleCallback||setTimeout)(start);
+  else addEventListener('load',function(){(window.requestIdleCallback||setTimeout)(start);});
+})();
+</script>
+</body>
+</html>
