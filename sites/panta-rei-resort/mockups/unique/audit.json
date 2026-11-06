@@ -1,7 +1,7 @@
 {
  "slug": "panta-rei-resort",
  "variant": "unique",
- "measured_at": "2026-11-06T12:05:17.973Z",
+ "measured_at": "2026-11-06T12:19:29.235Z",
  "first_load": {
   "requests": 22,
   "hosts": [
@@ -20,17 +20,17 @@
   "bytes_fonts": 111532,
   "bytes_images": 632102,
   "largest_image_bytes": 172222,
-  "lcp_ms": 760,
+  "lcp_ms": 812,
   "cls": 0.0017,
-  "dcl_ms": 982
+  "dcl_ms": 1070
  },
  "scroll": {
   "early": {
-   "cls": 0.0002,
+   "cls": 0.0003,
    "shifts": []
   },
   "settled": {
-   "cls": 0.0004,
+   "cls": 0.0001,
    "shifts": []
   }
  },

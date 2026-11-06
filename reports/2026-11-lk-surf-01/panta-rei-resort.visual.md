@@ -106,3 +106,115 @@ visual-critic 0.2.0 · run `2026-11-lk-surf-01` · 2026-11-06 · mode quick · d
 1. **Calm — 8, pass.** The hero and type pair match Shahar's calibration and the craft is the most even of the three, though the lower half and the closing are template-safe.
 2. **Unique — 7, fail.** The best idea and the best first screen, held back by a dark, half-captionless pin and a floating pill that covers headlines at both widths; it can be the strongest of the three once those are fixed.
 3. **Interactive — 7, fail.** It has the best single section (the room cards over the aerial), but its rounded-card, pastel-panel UI and heavy rounded title face make it read as an app template rather than a boutique resort.
+
+---
+---
+
+# Round 2
+
+visual-critic 0.2.0 · 2026-11-06 · quick mode · dimension 8 only.
+
+**Shots used.** calm: a fresh shoot into `calm/shots/` (the build changed, so the tool reshot it: 17 desktop, 18 mobile captures). interactive: the tool reused `interactive/shots/` because the fingerprint matches the round-2 build (`90af951c26d1b655`, shot 12:14 today, after the revision). unique: served over http (`tools/_serve.mjs`, port 18761) and shot into my own scratch folder (22 desktop, 23 mobile captures). The pin scrubs in this set, with captions 2/3 and 3/3 visible. **Current site on a phone:** shot with Playwright's iPhone 13 profile (iPhone UA, `innerWidth` 320, Wix's mobile layout, page 2606 px, 4 captures). **Correction to round 1:** I said the current site's phone layout was broken. That was the desktop layout at 390 px with a desktop UA. A real phone gets a working mobile layout. Round 1's verdicts don't depend on it, but the comparison below uses the phone layout. Inspector run on all three again.
+
+**The current site on a phone** (`cur-ph-00…03`): the first screen is a sunlit lounge with orange rattan chairs, the logo in white at the top, a salmon "CHECK AVAILABILITY" box, the line "Best price when booking direct" in a serif, and round WhatsApp and Instagram buttons. Then come "No Paradise Like Home, Panta Rei." in blue display type, and the aerial pool, room, breakfast and yoga photos full-width. Each photo carries one spaced-caps word and a cream outlined ghost button ("Our Story", "Book", "Eat & Drink", "Sweat with us."). It ends with a Google map and four centred lines of grey text with an underlined email. It is pretty and short. It has strong photographs, ghost buttons, no rooms, no prices, no reviews and no real footer.
+
+---
+
+## Calm — round 2
+
+**Three seconds.** 1440 (`calm/desktop-00`): a pool-level shot down the long pool, with loungers on both sides, red roofs and palms under a blue sky with clouds. "Panta Rei, Kabalana" is centred with one coral "Check dates →". It is clear, warm and bright: you can almost step into the pool. 390 (`calm/mobile-00`): a different moment of the same cut, with the pool edge, stone deck and stepping stones in the grass. The footage is softer (motion blur on the deck and grass), and the bottom third is shadowed lawn under the coral bar. It is still clear what and where.
+
+**Checklist**
+- **Media:** better than round 1. The pool-level cut sells the pool as you would swim in it. The lower half now has full-bleed moments: the restaurant photo with the title over it (`desktop-08`), the yoga photo as half-bleed beside the fitness text (`desktop-10`), the "After the surf" photo at full right-half (`desktop-11`), and an aerial strip after "Groups" (`desktop-14`). The closing is now the bright top-down pool, not the hazy coast (`desktop-15`). Mobile hero footage is a little soft.
+- **Composition and grid:** the rhythm now alternates text sections with full-bleed photo moments. Rooms are still four 60/40 zig-zags with one photo at about 660 px and dots (`desktop-03…06`). The restaurant body (`desktop-09`) is a text column beside three small 145 px food thumbnails, with an empty right half below them.
+- **Typography:** Figtree with Gochi Hand titles, now set smaller ("Four ways to stay" on one line, `desktop-03`), so the old orphan is gone. "Restaurant and bar" in white script over the photo (`desktop-08`) works well. "No paradise like home." still breaks onto three lines (inspector).
+- **Colour:** unchanged and right. Coral only on booking, white on coral. The pool teal in the hero now ties to the tint panels.
+- **Hierarchy and rhythm:** much improved. Photo, text, photo, text through to the footer.
+- **Polish:** "Good to know" is now a " | " list, not bordered pills (`desktop-13`). The closing line and both buttons sit together over the image (`desktop-15`), though the line is still a 2-line sentence pushed to the top edge rather than centred. Resting shadows dropped from 28 to 11 (slideshow arrows). In `desktop-09` the frosted header has a thin dark line along its bottom edge. It looks like the photo above showing through, but it reads as a rule under the header. At 768/390 the inspector finds "Good to know" and "4.7/5" under the bottom bar at one scroll position each.
+- **Distinctiveness:** better. The pool-level film and the hand-lettered titles over photos feel like this place. The room zig-zags and the pill buttons are still generic.
+- **Hero and motion:** clean and slick, one title and one CTA. Micro-motion fits the calm variant.
+
+**Score: 8 / 10.** A solid pass this time. It is clearly professional, the lower half is photo-led, and the closing is fixed. Room presentation and the restaurant block keep it from 9.
+
+**Better than the current site?** Yes. First screen: `calm/desktop-00` (bright pool-level film, name, one coral CTA) against `cur-ph-00` / `current-site/desktop-00` (lounge or lamp photo with a salmon box and a social-icon stack). Whole page: four rooms with galleries, prices, reviews and a real footer (`calm/desktop-03…16`) against one word per photo and a map (`cur-ph-01…03`). On a phone (`calm/mobile-00…17` against `cur-ph-00…03`), the current site is about as pretty per photo, but it has no rooms, prices or proof, and its buttons are ghost outlines.
+
+**Closest reference:** the Global Surf method (`global-surf-notes.md`). Now level with its structure: own footage, centred title, coral CTA, readable face plus script titles, full-bleed section moments, rooms with galleries, real footer. Still missing its Instagram block and its larger room galleries.
+
+**Fix list (polish, not gating)**
+1. **Make the rooms larger.** Give each room's slideshow the full 7 of 12 columns at about 800 px, or show two photos side by side per room, so the "rooms sold with galleries" read is immediate (`desktop-03…06`).
+2. **Rework the restaurant body.** Replace the three 145 px thumbnails (`desktop-09`) with one large photo (img-003 or img-018), or set the three at full column height.
+3. **Centre the closing line.** Cut it to one line ("Book direct for our best rate") and centre it vertically in the image with the buttons (`desktop-15`).
+4. **Remove the dark line under the frosted header** (`desktop-09`): make the header opaque when it is over a photo edge. Set "No paradise like home." on two lines.
+5. **Add the Instagram strip** before the footer.
+
+**Keep:** everything from round 1's keep list. Also keep the pool-level hero, the script titles over full-bleed photos, the " | " "Good to know" list and the new closing image.
+
+---
+
+## Interactive — round 2
+
+**Three seconds.** 1440 (`interactive/desktop-00`): the vid-002 aerial over the ring and the main building, roofs bright red, pool full of swimmers. "Panta Rei, Kabalana" is set large in Satisfy script, centred, white, with a coral "Check dates" under it. It is elegant and warm, the opposite of round 1's toy-like Fredoka. The script at about 90 px over a busy aerial is legible but competes with the roofs. 390 (`interactive/mobile-00`): the script on two lines over the pool and roofs, with a coral CTA. Pretty.
+
+**Checklist**
+- **Media:** much more photo-led than round 1. The room cards still straddle the aerial (`desktop-03`). Under them, a full-bleed swimmer-in-the-pool photo (`desktop-04`), a half-bleed restaurant photo on a peach panel (`desktop-05/06`), "After the surf" with the guests and boards full-bleed (`desktop-08`), and the groups photo (`desktop-11`). Weak spots: the fitness photos are two small crops at about 420 × 470 px (`desktop-06/07`), and the closing (`desktop-12`) is a dim, brown-scrimmed bedroom interior with the coast barely visible through the door. It is the muddiest picture on the page and the last one. The surf-beach clip from round 1 is gone, so all three heroes now open on the ring or the pool.
+- **Composition and grid:** cards and shadows removed. The inspector's resting-shadow FAIL is gone (round 1 counted 35). Sections are now split layouts and full-bleed photos. `desktop-07` is half empty: the yoga crop on the left, the week strip and one price line on the right, and 300 px of empty ground under both.
+- **Typography:** Satisfy script titles and Jost for reading. A readable face plus a handwritten title face, exactly what the calibration asks for. "Surf Therapy Massage" and "Revitalizing Massage" are also set in script as sub-titles (`desktop-09`), which is one script use too many. Body text is comfortable. Quotes are short and set larger (`desktop-09`).
+- **Colour:** off-white with lilac, peach and sage panels, now flat, and a coral CTA. The panels read as gentle tints next to full-bleed photos. Fine.
+- **Hierarchy and rhythm:** good through the middle (rooms, then pool full-bleed, then restaurant split, then fitness, then the after-the-surf full-bleed). The page ends weakly: groups, then the dim interior closing.
+- **Polish:** week chips now carry times and "Day off" at rest (`desktop-07`). Prices are a " | " line. "Getting here" is a clean two-column list (`desktop-10`). The closing button label is long ("Check dates and book direct"), and the buttons sit at the bottom edge of the image, cut by the fold (`desktop-12`). The frosted header lets headings ghost through as they scroll under it ("After the surf" faintly visible behind the nav, `desktop-09`; the inspector finds "Getting here and around" fully under it at 768).
+- **Distinctiveness:** the room chooser over the aerial plus the script give it its own identity. It is now closer to calm in structure than in round 1.
+- **Hero and motion:** a clean hero with a centred title and one CTA. The main item is the vid-002 aerial cut, plus the room-card interaction. Micro-motion is present (chips, drawer, slider).
+
+**Score: 8 / 10** (just). The type pair, the flat surfaces and the photo-led lower half put it at a professional level. The muddy closing and the half-empty fitness screen hold it at the line.
+
+**Better than the current site?** Yes. First screen: `interactive/desktop-00` (bright aerial film, script name, one CTA) against `current-site/desktop-00` / `cur-ph-00`. Whole page: rooms with sizes and a drawer gallery, prices, reviews and a footer with buttons (`interactive/desktop-03…13`) against `cur-ph-01…03`.
+
+**Closest reference:** the Global Surf method, at about calm's level. The script-title pairing is the closest of the three to the gold's type approach. It is below the gold at the closing and in the fitness section.
+
+**Fix list (polish, not gating)**
+1. **Replace the closing image.** Use the bright top-down ring (vid-002 poster or img-001) instead of the dim interior (`desktop-12`). Shorten the CTA to "Check dates". Centre the line and the buttons vertically in the image.
+2. **Fill the fitness screen.** Set the yoga photo full-height half-bleed (as calm does) or play vid-003 at 9:16 beside the text, and close the 300 px gap under the week strip (`desktop-07`).
+3. **Use script only for section titles.** Set "Surf Therapy Massage" and "Revitalizing Massage" in Jost semibold (`desktop-09`).
+4. **Make the header opaque** (or at least 92 %) once scrolled, so headings don't ghost through it.
+5. **Reduce the hero title.** Bring the Satisfy title down to about 72 px at 1440, or add a soft local scrim behind it, so it doesn't fight the roofs (`desktop-00`). Consider restoring the surf-beach clip (vid-004) as the hero. It made this variant's first screen different from the other two.
+
+**Keep:** the Satisfy and Jost pair. The room cards over the aerial. The full-bleed pool and "After the surf". The " | " price lines. The week strip with times. The larger short quotes. The "Getting here" list.
+
+---
+
+## Unique — round 2
+
+**Three seconds.** 1440 (`unique/desktop-00`): the top-down ring with swimmers, "Panta Rei" in tight Bricolage, "Boutique resort · Kabalana, Ahangama" and one coral "Check dates". The header no longer carries a second CTA. It is the most striking first screen of the three. 390 (`unique/mobile-00`): the same frame, centred and sharp. As I scroll, the film rises from the ring (`desktop-01`, caption 2/3 "The bungalows sit in a ring around a long pool", now two lines) to the coast (`desktop-02`, caption 3/3 "The waves of Kabalana, a short walk from the resort."). It ends on the coastline at golden hour (`desktop-03`), with the roofs red against the jungle. I kept scrolling to see where it goes.
+
+**Checklist**
+- **Media:** the regraded pin is much better. The roofs stay red in `desktop-01/02`, and the end frame (`desktop-03`) shows sea, beach and palms in warm light. The frames are a little soft at 1440 (72-frame sequence), and the scrim under caption 3/3 (`desktop-02`) still darkens the jungle more than needed. On mobile, `mobile-01` is visibly smeared (motion blur across the roofs), but `mobile-02/03` are clear. The lower half now has full-bleed moments with titles set over them: "After the surf" over the guests with boards (`desktop-12`), "Panta Fitness Club" over the shala (`desktop-15`), and "What guests say" with 9.2 and 4.7 over the breakfast photo (`desktop-16`). The closing is the bright top-down ring (`desktop-20`).
+- **Composition and grid:** the best-paced of the three. Hero, then the pin, then a big type statement (`desktop-04`), then the lounge photo, then the room split, then the booking panel with thumbnails (`desktop-10`), then the pool, then full-bleed sections. The rooms are four repeated left-photo/right-text blocks (`desktop-06…09`), slightly long. The restaurant body (`desktop-13/14`) is two small food photos beside text.
+- **Typography:** Bricolage for display and Hanken for reading. Captions are now title length (two lines). The Welcome paragraph is still set at 38 px for five lines (inspector), which is a statement paragraph rather than a headline but heavy. White Bricolage titles over full-bleed photos (`desktop-12, 15, 16`) look sharp. There is no script. The pair is defensible as one expressive display face, and it is the most grown-up pair of the three.
+- **Colour:** grey-white ground, jade tint, deep coral, white on coral. Fine.
+- **Hierarchy and rhythm:** strong throughout. The closing "Check dates and book direct" title with a short line and two buttons is set together and centred (`desktop-20`).
+- **Polish:** the pill now shows only during the pin. On mobile the header carries "Check dates" after the pin, and I saw no text under the pill in any capture. The inspector still lists covered text (the hero title and the captions under the pinned stage) at some scroll position, but in the shots they are on top. I treat that as the pinned stage reading as "covering" when it is off-screen, not a visible defect. 20 text-shadows (on titles over photos) and 15 faint button shadows remain.
+- **Distinctiveness:** the highest. No template does the pool-to-sea flight.
+- **Hero and motion:** a clean hero with one CTA. The main item (the scrubbed film) now works and looks good. Caption masks and room crossfades provide the micro-motion.
+
+**Score: 8 / 10.** The pin is now a real spectacle in the business's colours, the overlap defects are gone and the lower half is photo-led. The soft and smeared pin frames and the repetitive room blocks keep it from 9.
+
+**Better than the current site?** Yes, most clearly of the three. First screen: `unique/desktop-00` against `current-site/desktop-00` / `cur-ph-00`. Whole page: the pin explains where the resort is and how close the sea is, something the current site never says, and is followed by rooms, booking, proof and a real footer (`unique/desktop-01…21`) against `cur-ph-01…03`.
+
+**Closest reference:** in ambition, the scroll-film references in `agents/designer/references.md`. In finish, now near the Global Surf method: own footage, a short centred title, one coral CTA, distinct sections and a real footer. Below it on room galleries and the restaurant section.
+
+**Fix list (polish, not gating)**
+1. **Sharpen the pin.** Raise the sequence to about 96–110 frames, or export the mobile frames from the 1080 p source without motion blur, so `mobile-01` isn't smeared. Halve the scrim under caption 3/3 (`desktop-02`).
+2. **Tighten the rooms.** Show two rooms per screen, or use one sticky gallery whose photos change as the room text scrolls, instead of four full-height repeats (`desktop-06…09`).
+3. **Give the restaurant a full-bleed or large photo** instead of two small food prints (`desktop-13/14`).
+4. **Set the Welcome paragraph at about 26–28 px** below the 52 px title, so the statement is the title and the paragraph reads as text (`desktop-04`).
+5. **Drop the remaining text-shadows** on titles over photos and use a soft local scrim instead. Add the Instagram strip before the footer.
+
+**Keep:** the hero. The regraded scrubbed flight with the two-line captions. The pill limited to the pin. The full-bleed titled sections ("After the surf", "Panta Fitness Club", "What guests say" over breakfast). The booking panel with room thumbnails. The new closing.
+
+---
+
+## Ranking by visual quality only — round 2
+
+1. **Unique — 8, pass.** The flight from the pool to the sea now works in their own colours, and the lower half has full-bleed moments, making it the most striking and the most unmistakably Panta Rei of the three.
+2. **Calm — 8, pass.** The most even and calm page, with a bright pool-level hero and photo-led sections; its rooms and restaurant are the only parts that still look like a template.
+3. **Interactive — 8, pass (just).** It has the best type pair (Satisfy + Jost) and the room chooser, but its closing is the muddiest image on any of the three pages and its fitness screen is half empty.

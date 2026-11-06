@@ -188,3 +188,177 @@ All three match the dossier on every fact and reach the right engine room page w
 - **calm, closing uses a different film frame:** vid-002 at 16 s (gamma 1.18) instead of vid-002's poster. Same business-owned clip; notes give the reason (the poster is nearly the hero frame). Noted in dimension 4; no fact or licence issue.
 
 Screenshots cited (`calm/shots/mobile-00.png`, `interactive/shots/mobile-10.png`, `unique/shots/http/mobile-00…04.png`) are scratch and will be deleted after the round; this scorecard records in words what each showed.
+
+---
+
+## Round 2 · quick mode (mockup pre-score, after the designer's 4f round-1 fixes, commit db7b42f)
+
+critic 0.4.3 · rubric 0.3.2 · 2026-11-06. I did not read `panta-rei-resort.visual.md`, `.experience.md`, or any other critic's working files. The checks, viewports and order are the same as in round 1.
+
+### What was run
+
+| check | how | evidence |
+|---|---|---|
+| performance, a11y, no-JS, reduced motion | `node tools/audit-mockup.mjs panta-rei-resort <variant>`, re-run by the critic. Calm was run 3× because its LCP varied | `sites/panta-rei-resort/mockups/{calm,interactive,unique}/audit.json` (calm 12:2xZ, interactive 12:18:13Z, unique 12:19:29Z) |
+| screenshots, 1440 and 390 | `tools/shoot.mjs`. Calm and interactive reused their shared `shots/` because the build was unchanged since the r2 shoot (calm 12:16:55Z, interactive 12:14:58Z). Unique was shot again over http into `unique/shots/http/` (22 desktop / 23 mobile captures) | sheets read at both widths |
+| booking tap-through, 390 × 844, touch, **live engine** | hero "Check dates" → drawer → Suite → dates → 2 guests → hand-off, then the landed engine page read after 9 s | log below |
+| engine behaviour | the four `/listings/` pages loaded directly with `?start=&end=&numberOfGuests=` at 390 and 1440, for several date ranges | below |
+| keyboard, small targets, overflow, reduced motion, video and frame loading, JS off | as in round 1, with Playwright | tables below |
+| default look | `node tools/check-design.mjs panta-rei-resort --no-shots` | 0 problems, 0 warnings |
+| facts | the DOM text of each page (drawers, alt text, aria labels) diffed against round 1, then every changed or new line checked against `dossier.json`. Quotes and numbers checked by script | below |
+
+### Facts (round 2)
+
+What changed in the text since round 1:
+- **calm:** price rows reordered (label, price, unit, then the note once). Amenities joined with " | ". The drawer opens with "Double Room · 2 guests".
+- **interactive:** two menu tabs, Breakfast and "Later on", which now carries the copy's sentence "Dinner is a mix of traditional and modern Mediterranean dishes". A new label "Vinyasa yoga, every morning" sits directly over the strip that shows Fri "Day off". The copy says "Vinyasa yoga is at 8:30 every morning; Friday is the day off", so the label is the copy's own phrase with the exception beside it. The class prices are on one line. The quotes are re-ordered shortest first, with a "1 / 6" counter.
+- **unique:** caption 2 is now the verbatim excerpt "The bungalows sit in a ring around a long pool". "Scroll" and "Loading the film 0%" are gone. A closing display line uses the copy's booking label "Check dates and book direct".
+
+New photographs and their alt text, each checked against `images[].description`:
+
+| page | image | alt text vs dossier |
+|---|---|---|
+| calm | hero poster (vid-001 at pool level) | "long turquoise pool with loungers on its stone deck…" matches the frame |
+| calm | img-003 | "breakfast… a bowl, juice and coffee passed across the table" matches |
+| calm | img-001 closing | "the resort from above at noon…" matches |
+| interactive | vid-002 poster | "red-tiled bungalows in a ring around the long pool, swimmers" matches |
+| interactive | img-021 | "a class from behind… hands behind heads" matches |
+| interactive | img-012 | "glass doors open to the lawn and the pool, a surfboard leaning outside" matches |
+| unique | img-005 | "sliders, plated dishes, a bottle of water and glasses" matches |
+| unique | shala loop (vid-001 46.6–52.1 s) | "yoga class in the open-air shala" matches |
+| unique | img-003 | "a bowl of granola…": the photograph shows granola on the bowl (checked by eye) |
+
+The round-1 table (29 claim rows) was re-run against the new text and every row still matches. 6/6 quotes are verbatim on all three pages. Every number on every page is in the dossier; the only ones not found literally are 24 h forms of the dossier's 12 h times (13:00, 17:00, 18:00, 21:30, 11:00, 22:00, 08:00).
+
+**Result: 0 mismatches and 0 claims without a dossier entry on any page.**
+
+### Booking tap-through, live engine (390 × 844, touch)
+
+| | calm | interactive | unique |
+|---|---|---|---|
+| "Check dates" visible on the first phone screen | 1 (full width, 16,768 358×56) | 1 (centred, 111,446 167×56) | **1** (centred, 113,454 165×54). Round 1's second, header button is now hidden over the film |
+| hero `href` | engine home | engine home | `#book` |
+| drawer opens on | Double Room preselected, 2 guests (`…/listings/572800?numberOfGuests=2`) | Double preselected (`…/listings/572800`) | Double preselected (`…/listings/572800`) |
+| Suite, **3–6 Mar 2027**, 2 guests → landed | `https://pantareiresort.holidayfuture.com/listings/572798?start=2027-03-03&end=2027-03-06&numberOfGuests=2`, and the page reads **"For 3 nights · Mar 3 - Mar 6"** | same URL, same "For 3 nights · Mar 3 - Mar 6" | same URL, same "For 3 nights · Mar 3 - Mar 6" |
+| taps from hero to engine | 2 (target 2), class engine | 2, engine | 2, engine |
+| WhatsApp hand-off | names the business, the Suite, the dates and 2 guests | same | same |
+| JavaScript off | hero → engine home; 4 room links on the page | hero → engine home; 4 room cards → `/listings/` | hero → `#book` (four room links, engine home, WhatsApp, `tel:`) → room page, 2 taps |
+
+**Engine finding (not a mockup defect; for the human and the pitch).** I first tapped through with 10–13 Dec 2026 for the Suite. All three mockups built the identical correct URL, but the engine page showed **"Select check-in and check-out dates · Add dates for prices"**, with no dates. I then loaded the engine directly at 390 px:
+
+| room | dates | engine shows |
+|---|---|---|
+| Double (572800) | 10–13 Dec 2026 | "$465 · For 3 nights · Dec 10 - Dec 13" (same result at 1440) |
+| Suite (572798) | 10–13 Dec 2026 | dates dropped |
+| Triple (572802) | 10–13 Dec 2026 | dates dropped |
+| Family (572799) | 10–13 Dec 2026 | dates dropped |
+| Suite | 20–23 Nov 2026 | dates dropped |
+| Suite | 10–13 Feb 2027 | dates dropped |
+| Suite | 3–6 Mar 2027 | "For 3 nights · Mar 3 - Mar 6" |
+
+So the engine keeps the dates when the room is bookable for them, and silently clears them otherwise, with no "unavailable" message. A visitor whose dates are taken lands on an empty date picker. The parameters work: the mockups hand off correctly, and the engine's behaviour is outside the page. No dimension-3 points are taken for it. It is worth telling the owner.
+
+### Budget table (playbook §4; `audit.json` first_load = 390 px, throttled, no scroll)
+
+| line | target | calm | interactive | unique |
+|---|---|---|---|---|
+| first-load transfer, video excluded | ≤ 1.5 MB | 1,205 KB | 633 KB | 827 KB (includes the 261 KB key frames) |
+| hero video after first paint, phone | ≤ 2 MB | 1.93 MB (`hero-p608.mp4`) | 1.84 MB (`hero-p1080.webm`) | none. Frames: 13 key frames = 261 KB with no interaction; all 72 frames = **1.48 MB** after the first scroll |
+| hero video after first paint, desktop | ≤ 4 MB | 3.11 MB (`hero-d1920.webm`) | 3.37 MB hero, **+ 1.06 MB `welcome-720.webm`**, still fetched without scroll = 4.43 MB | key set 518 KB idle; all 72 frames = **2.93 MB** after the first scroll |
+| JS (external) | ≤ 300 KB | 0 (inline, HTML 82 KB) | 0 (inline, HTML 99 KB) | 0 (inline, HTML 103 KB) |
+| largest above-the-fold image | ≤ 300 KB | 160 KB | 143 KB | 172 KB |
+| fonts | ≤ 2 families, ≤ 150 KB | Figtree + Gochi Hand, 40 KB | Satisfy + Jost, 49 KB | Bricolage Grotesque + Hanken Grotesk, 112 KB |
+| LCP (throttled) | ≤ 2.5 s | **2,440 / 1,336 / 1,104 ms** over 3 runs | 1,456 ms | 812 ms |
+| CLS / scroll CLS early · settled | < 0.1 / < 0.01 | 0 / 0.0007 · 0 (0.0002 on re-runs) | 0.0009 / 0.0009 · 0 | 0.0017 / 0.0003 · 0.0001 |
+| third-party on load | 0 | Google Fonts only (allowed at 4e) | same | same |
+| `scrollWidth` at 390 | 390 | 390 | **390** (round 1's 14 px overflow is fixed) | 390 |
+
+Unique's round-1 item is resolved, as measured: no timer. With 12 s idle and no input, only 13 frames load (261,040 B phone, 517,976 B desktop). The other 59 load on the first scroll: 1,482,052 B phone and 2,926,194 B desktop in total, both inside the ≤ 2 / ≤ 4 MB after-first-paint line.
+
+### Keyboard, targets, motion (390 and 1440)
+
+| | calm | interactive | unique |
+|---|---|---|---|
+| drawer: opens on Enter, focus inside, 40 × Tab, Esc, focus returns | yes, 0 escapes, yes, yes | yes, 0 escapes, yes, yes | yes. Native modal `<dialog>`: the browser chrome takes focus once per cycle, which is not a trap. Esc and return both work |
+| tap targets under 44 px | **0** (round 1: 32. The dots are fixed) | 0 | 0 visible at the top or after the film. The audit also says 0 |
+| reduced motion: video / frame requests | 0 / 0 | 0 / 0 | 0 / 0, canvas hidden |
+| missing alt / skip link / `lang` | 0 / yes / en | 0 / yes / en | 0 / yes / en |
+
+### Delivery (all three)
+
+Unchanged from round 1. Static, relative URLs, lowercase names, no CMS, `localhost` or secrets. Google Fonts is the only off-site request on load and must be self-hosted at 4g.
+
+### Default look (check-design, as facts)
+
+- calm: Figtree + Gochi Hand, ground hsl(210 33% 98%), 0 all-caps labels, 0/16 labelled headings.
+- interactive: **Satisfy (h1, h2) + Jost (body)**, ground hsl(80 27% 98%), lilac / peach / sage page tints, 0 all-caps labels, 0/25 labelled headings.
+- unique: Bricolage Grotesque + Hanken Grotesk, ground hsl(180 12% 97%), 0 all-caps labels, 0/18 labelled headings.
+- 0 default-look warnings on any page.
+
+---
+
+```
+mode: quick        round: 2        variant: calm
+total: pending dimension 8 (critic, dimensions 1–7: 75.0 / 80)        result: pass (critic gates; needs dimension 8 ≥ 8 from both visual critics)        hard_fails: []
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | 29/29 rows plus the new alt text match. 6/6 quotes verbatim. 0 unsourced numbers |
+| 2 | mobile + performance | 9 | 1,205 KB first load. LCP 2,440 / 1,336 / 1,104 ms over three runs: always under 2.5 s, but the first run sits 60 ms under the line. CLS 0, scroll CLS ≤ 0.0007, phone hero 1.93 MB, desktop 3.11 MB, `scrollWidth` 390. `shots/mobile-00.png`: the long pool at deck level, "Panta Rei, Kabalana", the full-width coral button at the thumb. Fonts still remote (allowed at 4e) |
+| 3 | booking CTA | 10 | 2 taps to `…/listings/572798?start=2027-03-03&end=2027-03-06&numberOfGuests=2`, and the engine shows "For 3 nights · Mar 3 - Mar 6". Class engine. JS off: engine home in 1 tap |
+| 4 | brand fit | 8 | the §3 order is present, and the lower half now leads with photographs (breakfast full-bleed, yoga half-bleed, lawn with boards). The first screen is still name + place, not the type. The hero cut moved from the concept's ring-to-sea to pool level, and the closing from vid-002 to img-001; notes say this was on the coordinator's instruction. Both are business-owned, so there is no fact issue |
+| 5 | copy | 9 | passed copy verbatim. Interface labels only |
+| 6 | accessibility | 9 | 0 tap targets under 44 px (was 32). Keyboard drawer passes at both widths. Reduced motion fetches no video. Skip link, 0 missing alt. Contrast not measured with axe (quick mode) |
+| 7 | security + delivery | 9 | static and relative, no CMS or secrets. Google Fonts only |
+
+what the designer prompt got wrong: nothing new mechanically. The round-1 gap (an audit count left unmentioned) did not recur; the dots were fixed. The one thing to watch is LCP: a preloaded 1920/1280 poster plus the pool-and-palm gradient measured as high as 2.44 s on one throttled run. The designer's checklist reads one `audit.json` run, and a single run can sit 60 ms under the line.
+fix list (fail only): none.
+
+---
+
+```
+mode: quick        round: 2        variant: interactive
+total: pending dimension 8 (critic, dimensions 1–7: 75.0 / 80)        result: pass (critic gates; needs dimension 8 ≥ 8 from both visual critics)        hard_fails: []
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | 29/29 rows, the new menu-tab text, the "Vinyasa yoga, every morning" label (the copy's phrase, with Friday "Day off" beside it) and the new alt text all match. 6/6 quotes verbatim |
+| 2 | mobile + performance | 9 | 633 KB first load, LCP 1,456 ms, CLS 0.0009, scroll CLS 0.0009 / 0, largest image 143 KB, fonts 49 KB, phone hero 1.84 MB (9:16 column), `scrollWidth` 390 (fixed). Desktop still fetches the Welcome clip (1.06 MB) with the hero (3.37 MB) before any scroll: 4.43 MB of video against the 4 MB line, though the hero alone is within it |
+| 3 | booking CTA | 10 | 2 taps to the Suite page with `start` / `end` / `numberOfGuests`, and the engine shows "For 3 nights · Mar 3 - Mar 6". Class engine. JS off: hero → engine home, cards → room pages |
+| 4 | brand fit | 8 | the hero is now the business's own aerial (vid-002), so round 1's surf beach is gone. The hero title is still "Panta Rei, Kabalana", the concept's own §6 fallback, so name + place only. The concept's Fredoka + Nunito Sans was replaced with Satisfy + Jost at the critics' request (notes conflicts) |
+| 5 | copy | 9 | passed copy verbatim. Labels only ("Later on", "Per class", "From the resort", "Ask us for a ride") |
+| 6 | accessibility | 9 | keyboard drawer passes at both widths (focus starts on the preselected room). 0 tap targets under 44 px, 0 missing alt, reduced motion fetches no video. Contrast not measured with axe |
+| 7 | security + delivery | 9 | static and relative. Google Fonts only |
+
+what the designer prompt got wrong: the prompt treats "attached after first paint, near the viewport" as enough for secondary clips, but the Welcome page is designed to peek 44 px into the first screen, so on desktop its clip always loads with the hero. Playbook §4's video line should count every clip fetched before the first scroll, not only the hero.
+fix list (fail only): none. Before 4g: attach the Welcome clip on the first scroll, not on intersection with a 200 px margin.
+
+---
+
+```
+mode: quick        round: 2        variant: unique
+total: pending dimension 8 (critic, dimensions 1–7: 75.5 / 80)        result: pass (critic gates; needs dimension 8 ≥ 8 from both visual critics)        hard_fails: []
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | 29/29 rows match. Captions verbatim (caption 2 is now an excerpt of The pool ¶1). "Price(s) as of 6 Nov 2026" = `offers[].fetched_at`. The new alt text matches. 6/6 quotes verbatim |
+| 2 | mobile + performance | 9 | 827 KB first load (with the 261 KB key frames), LCP 812 ms, CLS 0.0017, scroll CLS 0.0003 / 0.0001, fonts 112 KB, largest image 172 KB, `scrollWidth` 390. Frames are now **1.48 MB phone / 2.93 MB desktop**, loaded only on the first scroll; idle loads 13 frames only. That is within the after-first-paint line, so the round-1 dimension-2 issue is resolved. Fonts remote (4e) |
+| 3 | booking CTA | 10 | hero `#book` → drawer → Suite page with dates, 2 taps, and the engine shows "For 3 nights · Mar 3 - Mar 6". JS off: `#book` block → room page, 2 taps. The drawer preselects Double, as calm and interactive now do too |
+| 4 | brand fit | 9 | one "Check dates" on the phone's first screen (`shots/http/mobile-00.png`: the ring from above, "Panta Rei", "Boutique resort · Kabalana, Ahangama", one coral button). It is still the only variant whose first screen states type + place. The §3 order is present |
+| 5 | copy | 9 | passed copy verbatim. The closing display line is the copy's booking label |
+| 6 | accessibility | 9 | `audit.json` keyboard opens, Esc closes, focus returns (native modal dialog). 0 tap targets under 44 px. Reduced motion: canvas hidden, 0 frames, stills with the captions as DOM text |
+| 7 | security + delivery | 9 | static and relative, frames self-hosted. Google Fonts only |
+
+what the designer prompt got wrong: nothing new mechanically. Round 1's timer is gone, and the frame weight now has a number in the notes (2.93 / 1.48 MB, idle 0.26 / 0.52 MB). The playbook §4 table still has no row for a scroll sequence, so this variant met a line it had to infer. The round-1 proposal stands.
+fix list (fail only): none.
+
+---
+
+### The one sentence the human needs to pick (round 2)
+
+All three match the dossier on every fact, show one "Check dates" on the phone's first screen, and reach the chosen room's engine page with the dates in 2 taps; the engine shows the dates only when the room is free and silently clears them otherwise. First loads are calm 1.21 MB (one LCP run at 2.44 s, the others 1.1–1.3 s), interactive 0.63 MB (its desktop first screen also loads a second clip, 4.4 MB of video in all), and unique 0.83 MB (its 72-frame film, 1.5 MB on a phone and 2.9 MB on desktop, loads only once the visitor scrolls).
+
+Screenshots cited (`calm/shots/mobile-00.png`, `unique/shots/http/mobile-00.png`) are scratch and will be deleted after the round; this scorecard records in words what each showed.
