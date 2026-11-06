@@ -362,3 +362,129 @@ fix list (fail only): none.
 All three match the dossier on every fact, show one "Check dates" on the phone's first screen, and reach the chosen room's engine page with the dates in 2 taps; the engine shows the dates only when the room is free and silently clears them otherwise. First loads are calm 1.21 MB (one LCP run at 2.44 s, the others 1.1–1.3 s), interactive 0.63 MB (its desktop first screen also loads a second clip, 4.4 MB of video in all), and unique 0.83 MB (its 72-frame film, 1.5 MB on a phone and 2.9 MB on desktop, loads only once the visitor scrolls).
 
 Screenshots cited (`calm/shots/mobile-00.png`, `unique/shots/http/mobile-00.png`) are scratch and will be deleted after the round; this scorecard records in words what each showed.
+
+---
+
+## Full r1 · station 5 (Critique), full mode, round 1: the built site
+
+critic 0.4.3 · rubric 0.3.2 · run `2026-11-lk-surf-01` · 2026-11-06. The page under review is `sites/panta-rei-resort/final/` (Astro port of the picked **interactive** mockup, after 4h SEO and 4i AI SEO, HEAD `9030baf`). I built it with `npm run build` (clean: 1 page, `git status` unchanged) and scored the output `final/dist/`. I did not read the two visual critics' full reports. Dimension 8 comes from them; my part is dimensions 1–7, out of 80.
+
+Evidence files are in `reports/2026-11-lk-surf-01/critic-panta-rei-resort-r1/`:
+- `audit.json`: `tools/audit-mockup.mjs` logic, run from a scratch copy whose only changes are the project path (`sites/<slug>/final`), the output path, and absolute imports. Run 3×.
+- `checks.json`: offline run, axe, keyboard, reduced motion, meta and JSON-LD.
+- `tapthrough.json`: the booking tap-through.
+- `funnel-sensitivity-holidayfuture.json`: the scratch funnel run described below.
+
+The funnel output is in `reports/2026-11-lk-surf-01/funnel/panta-rei-resort-r1/funnel.json`. Screenshots were shot over http (file:// breaks the crossorigin fonts and logo mask with 50 console errors) into `final/shots/http/`: 14 desktop and 16 mobile captures, 0 console errors. They are scratch.
+
+### Funnel (`tools/funnel.mjs http://localhost:9431/ --depth 3`) vs `dossier/panta-rei-resort/audit.json` recommended
+
+| | measured | target | result |
+|---|---|---|---|
+| `clicks_to_book` | **1** | ≤ 2 | met |
+| `primary_action.class` | **whatsapp** ("WhatsApp Panta Rei", the header icon, top 19 px, `wa.me/94728003022?text=Hi%20Panta%20Rei!%20I'd%20like%20to%20check%20availability.`) | **engine** | **different class: hard fail (rubric, full mode)** |
+| `hero_action` | whatsapp, the same header icon, `clicks_to_flow` 0 | n/a (`recommended.booking_flow` is not set, so `primary_action` is what counts) | |
+| CTA above the fold | true | | |
+| pages / broken | 1 / 0 | | |
+
+**Why the tool reads WhatsApp, measured rather than assumed:**
+1. `tools/funnel.mjs`'s `ENGINES` list has no `holidayfuture.com`, and "Check dates" matches none of its `BOOK_WORDS`. So the hero "Check dates", the four room cards and the closing button (all links to `pantareiresort.holidayfuture.com`) are not classified at all.
+2. Even with that fixed, the result does not change. I ran a scratch copy of the tool with `'holidayfuture.com'` added to `ENGINES` and no other change. The hero "Check dates" is then read as `engine` (top 446 px, above the fold), but `primary_action` and `hero_action` stay **whatsapp**. The tool takes the top-most / first terminal action on the landing page, and that is the header's WhatsApp icon at 19 px, which sits above "Check dates" on the first screen.
+
+So the hard fail has two causes, and both have to change:
+- **On the site:** the built page puts a WhatsApp action above the engine CTA on the first screen.
+- **In the tool:** it does not know the dossier's own engine host.
+
+What a visitor gets is not in doubt; my walk is below. The design's primary action is the engine. The rubric's instrument, measuring this page, says WhatsApp.
+
+### Booking tap-through (390 × 844, touch, live engine)
+
+| step | result |
+|---|---|
+| first screen | one coral "Check dates" (111,446 167×56), `href` = engine home; the WhatsApp icon sits in the header (top right) |
+| tap 1 | drawer opens with the Double Room preselected (`…/listings/572800`) |
+| Suite, 3–6 Mar 2027, 2 guests, tap 2 | landed on `https://pantareiresort.holidayfuture.com/listings/572798?start=2027-03-03&end=2027-03-06&numberOfGuests=2`; the engine page reads **"$615 · For 3 nights · Mar 3 - Mar 6"** |
+| WhatsApp hand-off | `wa.me/94728003022`, "Hi Panta Rei! I'd like to check availability for the Suite with Private Pool, 3 Mar to 6 Mar, 2 guests." Names the business, the room, the dates and the guests |
+| JavaScript off | hero → engine home (1 tap); the 4 room cards are plain `/listings/5727xx` links |
+| engine URLs vs dossier | engine home and the four `/listings/` URLs identical to `booking.engine_url` / `engine_rooms` character for character; phone / WhatsApp `+94728003022` |
+
+As found at 4f round 2, the engine silently drops dates the room cannot take. That is not a site defect; it is for the owner.
+
+### Budget (playbook §4; 390 px, throttled 1.6 Mbps / 150 ms / 4× CPU, no scroll; 3 runs)
+
+| line | target | measured | met |
+|---|---|---|---|
+| first-load transfer (video excluded) | ≤ 1.5 MB | **645 KB** (645,186 B, 12 requests, 1 host) | yes |
+| hero video after first paint | ≤ 2 MB phone · ≤ 4 MB desktop | phone `vid-002-cut.p1080.webm` **1.50 MB** (mp4 1.68); desktop `d1920.webm` **3.40 MB** (mp4 3.75). Nothing else loads before a scroll at either width (the Welcome clip, 1.32 MB, and the fitness clip, 1.10 MB, load only on scroll) | yes |
+| JS, compressed | ≤ 300 KB | **5.8 KB** gzip (18 KB raw, inline, no library); 0 external scripts | yes |
+| largest above-the-fold image | ≤ 300 KB | 148 KB in the phone first load; desktop poster 246 KB | yes |
+| fonts | ≤ 2 families, ≤ 150 KB | Jost + Satisfy, **49 KB**, self-hosted with licence files | yes |
+| LCP (throttled phone) | ≤ 2.5 s | **2,156 / 2,160 / 2,172 ms** | yes |
+| CLS | < 0.1 (scroll < 0.01) | 0; scroll early **0.0009**, settled 0 | yes |
+| third-party requests on load | 0 | **0** | yes |
+
+Every line is met, as full mode requires.
+
+### Delivery baseline (served by a plain static server, every other host blocked, full scroll at 390 and 1440)
+
+0 off-site requests attempted, 0 failed requests, 0 console errors, 0 broken images, both fonts loaded, `scrollWidth` = viewport at both widths.
+
+`dist/` is static only: `index.html`, `llms.txt`, `robots.txt`, `fonts/`, `photos/` (77 files), `video/` (9 files), 27 MB in all. Every asset URL is relative, every filename lowercase, there are no root-absolute paths, and there is no CMS or API call (`localhost`, `/api/`, `payload`, `secret`, `token`: 0 hits in all three text files).
+
+The preview is correctly closed to search engines: `<meta name="robots" content="noindex, nofollow">`, and `robots.txt` has `Disallow: /` for `*` and for 15 named AI crawlers.
+
+One thing to carry to the deployer: built without `SITE_URL` (this build), the page has **no canonical and no `og:image`**. The SEO report says both appear only when `SITE_URL` is set. The demo must be built with `SITE_URL=https://panta-rei-resort.os1.workers.dev/`, or a link pasted into WhatsApp shows no picture.
+
+### Accessibility (axe-core 4.10.2, WCAG 2 A/AA + best-practice, 390 and 1440; manual keyboard)
+
+| check | result |
+|---|---|
+| axe violations, page | **region** (moderate, best-practice): 1 node, the floating phone bar `.bar` at 390 and the floating WhatsApp button `.fwa` at 1440 sit outside any landmark |
+| axe violations, drawer open | **scrollable-region-focusable** (serious, WCAG 2.1.1): the gallery track `.slides` scrolls sideways but cannot take keyboard focus (its arrows and dots can) |
+| axe incomplete | color-contrast 28 / 29 nodes (text over video and photographs; axe cannot compute these), aria-prohibited-attr 2 / 1, video-caption 2 (muted, decorative loops) |
+| keyboard | Tab order at 390: skip link → logo → WhatsApp → "Check dates" (4 tabs). At 1440, 7 tabs, via the nav. Focus is visible as a 3 px solid outline. Enter opens the drawer with focus inside; 40 × Tab stays inside; Esc closes; focus returns to "Check dates". At both widths |
+| reduced motion | 0 video requests; posters only |
+| tap targets / alt / skip / lang / headings | 0 under 44 px; 0 images without alt (4 decorative `alt=""`); skip link present; `lang="en"`; H1 → H2 → H3 in order |
+| content as DOM text | yes: every fact is text; the videos are muted loops with `aria-hidden` or a description |
+
+### Facts (built page, drawer, JSON-LD, `/llms.txt`)
+
+- **Built page:** the visible text is the 4f round-2 interactive text that was checked row by row (29 claim rows + menu tabs + the class week + the distances list). Checked again by script on the built page: 44 numbers, all in the dossier (seven are 24 h forms of the dossier's 12 h times); 6/6 quotes verbatim. Alt text matches `images[].description`.
+- **JSON-LD** (`Resort`):
+  - name, telephone `+94728003022`, email, address (`Back to Life Road, Kabalana Rd` / `80650` / `Ahangama` / `LK`), and geo `5.9807381, 80.3497102` = `location.lat_lng`
+  - `hasMap` = `location.map_url`; check-in 14:00, check-out 11:00
+  - 16 `amenityFeature`, the same rows as the page
+  - 4 `HotelRoom`, with bed, `occupancy.maxValue` 3/3/4/2 and `floorSize` 22/30/50/40 MTK = `room_types`
+  - 8 `Offer`, with prices and LKR = `offers[0–7]`
+  - `sameAs` 6 URLs = `booking.other_engines[0]`, `contact.socials` (including Tripadvisor d25364260)
+  - No `aggregateRating` and no review markup (nothing self-served).
+  - All match.
+- **`/llms.txt`:** every section is the copy verbatim. The "In short" lines (address, 4 room types, 14:00 / 11:00, engine URL and WhatsApp `+94728003022`) match. Prices, amenities, ratings (9.2/10 · 468, 4.7/5 · 213, captured 6 Nov 2026) and the 6 quotes are verbatim. Every number is in the dossier. It is marked "Preview build … Do not index, quote or cite it."
+
+**Result: 0 mismatches and 0 claims without a dossier entry** on the page, in the JSON-LD or in `llms.txt`.
+
+```
+mode: full        round: 1        variant: interactive (final/)
+total: critic part 69.6 / 80 — dimension 8 (lower visual score × 2.5) and the /100 total to be combined        result: FAIL        hard_fails: ["primary booking action class whatsapp ≠ recommended engine (funnel.json primary_action)"]
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 10 | 0 mismatches on the page, drawer, JSON-LD and `llms.txt` (above). 6/6 quotes verbatim. 44/44 numbers in the dossier |
+| 2 | mobile + performance | 9 | every playbook §4 line met: 645 KB first load, LCP 2.16–2.17 s, JS 5.8 KB gzip, fonts 49 KB, largest image 148 KB, CLS 0, scroll CLS 0.0009 / 0, phone hero 1.50 MB, desktop 3.40 MB, no extra clip before a scroll. `scrollWidth` = viewport at 390 and 1440. LCP is 0.33 s under the line on all three runs |
+| 3 | booking CTA | 7 | the walk is right: 2 taps from the hero to `…/listings/572798?start=2027-03-03&end=2027-03-06&numberOfGuests=2`, and the engine shows "For 3 nights · Mar 3 - Mar 6". WhatsApp prefilled; JS-off path works. `funnel.json`: `clicks_to_book` 1 ≤ 2. But **`primary_action.class` = whatsapp**, because the header WhatsApp icon is the top-most booking action on the first screen (hard fail above) |
+| 4 | brand fit | 8 | the playbook §3 order is present. The first screen gives name + place ("Panta Rei, Kabalana"), not the business type; the tagline is one scroll down. No `og:image` / canonical without `SITE_URL` (deployer item, above) |
+| 5 | copy | 9 | passed copy verbatim; interface labels only |
+| 6 | accessibility | 7 | keyboard and focus pass at both widths; reduced motion honoured; 0 small targets. axe: 1 **serious** (`scrollable-region-focusable`, drawer gallery `.slides`) and 1 moderate (`region`, `.bar` / `.fwa`). Contrast over imagery is not computable by axe (28 nodes) |
+| 7 | security + delivery | 10 | offline run clean (0 off-site, 0 failed, 0 errors); static, relative, lowercase, self-hosted fonts with licences; no CMS calls, no secrets; preview `noindex` and `Disallow: /` |
+
+Critic part: 10×2 + 9×1.5 + 7×1.5 + 8×0.5 + 9×1 + 7×0.8 + 10×0.7 = **69.6 / 80**. For the full-mode total of ≥ 85 / 100, dimension 8 must be at least 8 from both visual critics: (69.6 + 8 × 2.5) × 100 ÷ 105 = 85.3. Every dimension is ≥ 6. **The result is FAIL on the hard fail alone.**
+
+what the designer prompt got wrong: the designer's 4g checklist walks the hero CTA to the engine (correct), but never runs `tools/funnel.mjs` on the built site, the instrument full mode uses. It also does not say that a persistent WhatsApp shortcut in the header outranks the hero CTA in that instrument, because it is the first terminal action on the first screen. The same header icon was in all four mockup rounds, so the gap was there since 4e. Separately, `tools/funnel.mjs`'s `ENGINES` does not know `holidayfuture.com` (Hostaway's white-label booking host), so no link to this business's engine is classified as `engine`. That needs a tools proposal for the human. The critic does not edit tools.
+
+fix list (ordered smallest first; each tied to a dimension):
+1. **(dim 3, hard fail; tool, needs the human):** add `holidayfuture.com` to `ENGINES` in `tools/funnel.mjs`. Without it, no fix on the site can make the primary class `engine`. My scratch run shows that the hero "Check dates" is then read as `engine`.
+2. **(dim 3, hard fail; site):** make "Check dates" the first booking action on the first screen. Hide the header WhatsApp icon while the header sits over the hero, the way the header's own "Check dates" already is, and let it appear with the persistent bar once the hero is passed. Re-run `tools/funnel.mjs` and expect `primary_action.class` = `engine` with `clicks_to_book` ≤ 2.
+3. **(dim 6):** give the drawer gallery track `.slides` `tabindex="0"`, an accessible name ("Photos of <room>") and arrow-key scrolling, as the room-card row has. That clears axe `scrollable-region-focusable`.
+4. **(dim 6):** put the floating phone bar and WhatsApp button inside a landmark (e.g. `<nav aria-label="Book">` or inside `<footer>`). That clears axe `region`.
+5. **(dim 4, deployer, station 6):** build the demo with `SITE_URL` set so canonical and `og:image` exist.

@@ -1,0 +1,120 @@
+{
+ "slug": "panta-rei-resort",
+ "variant": "final",
+ "measured_at": "2026-11-06T14:06:01.585Z",
+ "first_load": {
+  "requests": 12,
+  "hosts": [
+   "localhost:8980"
+  ],
+  "third_party_hosts": [],
+  "bytes_total": 645186,
+  "bytes_html": 89521,
+  "bytes_js": 0,
+  "bytes_css": 0,
+  "bytes_fonts": 49300,
+  "bytes_images": 506365,
+  "largest_image_bytes": 147588,
+  "lcp_ms": 2172,
+  "cls": 0,
+  "dcl_ms": 1463
+ },
+ "scroll": {
+  "early": {
+   "cls": 0.0009,
+   "shifts": []
+  },
+  "settled": {
+   "cls": 0,
+   "shifts": []
+  }
+ },
+ "booking": {
+  "external_booking_hrefs": [
+   "https://pantareiresort.holidayfuture.com/",
+   "https://wa.me/94728003022?text=Hi%20Panta%20Rei!%20I%27d%20like%20to%20check%20availability.",
+   "https://pantareiresort.holidayfuture.com/listings/572800",
+   "https://pantareiresort.holidayfuture.com/listings/572802",
+   "https://pantareiresort.holidayfuture.com/listings/572799",
+   "https://pantareiresort.holidayfuture.com/listings/572798",
+   "https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html",
+   "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en",
+   "https://wa.me/94728003022?text=Hi%20Panta%20Rei!%20Could%20you%20call%20a%20tuk%20tuk%20or%20a%20taxi%20for%20me%3F",
+   "https://wa.me/94728003022?text=Hi%20Panta%20Rei!%20I%27d%20like%20to%20ask%20about%20bringing%20a%20group.",
+   "https://www.instagram.com/pantarei_resort/",
+   "https://www.facebook.com/profile.php?id=100093054286482",
+   "https://www.youtube.com/@Panta_Rei_Resort"
+  ],
+  "tel_hrefs": [
+   "tel:+94728003022"
+  ],
+  "drawer_triggers": 0,
+  "triggers_are_links": true,
+  "primary_above_fold": true,
+  "tapped": "https://pantareiresort.holidayfuture.com/"
+ },
+ "keyboard": {
+  "drawer_opens": null,
+  "closed": null,
+  "focus_returned": null,
+  "note": "no drawer; every action is a plain link"
+ },
+ "a11y": {
+  "images": 18,
+  "images_without_alt": 0,
+  "images_alt_empty_decorative": 4,
+  "tapables": 27,
+  "tapables_under_44px": 0,
+  "tapables_under_44px_examples": [],
+  "headings": [
+   "H1",
+   "H2",
+   "H2",
+   "H3",
+   "H3",
+   "H3",
+   "H3",
+   "H2",
+   "H2",
+   "H3",
+   "H3",
+   "H2",
+   "H3",
+   "H2",
+   "H3",
+   "H3",
+   "H2",
+   "H2",
+   "H3",
+   "H3",
+   "H2",
+   "H3",
+   "H3",
+   "H2",
+   "H3"
+  ],
+  "has_skip_link": true,
+  "lang": "en"
+ },
+ "no_js": {
+  "text_length": 6993,
+  "booking_links_reachable": 2,
+  "visible_images": 14
+ },
+ "reduced_motion": {
+  "canvases": 0,
+  "canvases_hidden": 0,
+  "photograph_visible": true
+ },
+ "facts": {
+  "numbers_on_page": 44,
+  "numbers_not_in_passed_copy": [
+   "3,500",
+   "2,500",
+   "3,000",
+   "20,000",
+   "17,000"
+  ],
+  "note": "copy/en.json passed station 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps each paragraph to its dossier fields. A number here that is not in the copy is either an interface label (01, 02…) or a claim to chase."
+ }
+}

@@ -330,3 +330,66 @@ So the hand-off works whenever the room is free. When it isn't, the traveller la
 **The one sentence the human needs:** all three now open on the resort itself and end on a real price in 2 taps. Unique is the one you remember, for its film from the ring of roofs to the sea. Interactive is the most fun to choose a room in. Calm is the most human first screen: you, walking across the lawn to the pool.
 
 **Common fix:** the engine silently clears dates when the chosen room is full. One line in the drawer would stop that looking like a broken hand-off.
+
+---
+
+# Station 5 · full r1 (the built interactive site)
+
+experience-critic 0.2.0 · 2026-11-06. The prompt was re-read for station 5: same agent layers and same method; the bar is full mode, so a score below 8 or "not better than the current site" is a hard fail. The site was built from `sites/panta-rei-resort/final/` (`npm run build`), and `final/dist/` was served over http on port 8960 (the server is now stopped). It was walked as in rounds 1 and 2:
+- phone 390 × 844, touch, throttled to 1.6 Mbps / 150 ms / 4× CPU, with cold frames and then a human-pace scroll;
+- laptop 1440 × 900;
+- reduced motion, JS off and a hover sweep;
+- the hero "Check dates" and a room card tapped through to the engine, read back from the landed page.
+
+Still independent: no other report and no `notes.md` was read. Frames are in `reports/2026-11-lk-surf-01/experience/panta-rei-resort/s5-r1/final/`. The current site is the round-1 walk (mobile emulation with an Android UA, `experience/panta-rei-resort/current/`).
+
+**First seconds (phone, throttled):**
+- 0.5 s: the script title "Panta Rei, Kabalana", "Check dates" and the WhatsApp icon on a flat green ground (`phone-cold-500ms.png`). Text and the booking action come before any media.
+- 1.5 s: the poster has painted only its top third: the roofs, then a green band (`-1500ms`).
+- 3 s: the full poster, the ring of roofs and the pool with swimmers (`-3000ms`).
+- 6 s: the vid-002 film plays (t 1.9 s), and by 10 s it pulls out over the jungle (`-6000ms`, `-10000ms`).
+- LCP was 2,256 ms, inside the 2.5 s budget.
+- On a laptop the film plays from 0.5 s (`laptop-cold-500ms.png`).
+- The first screen pulls you in: it is the place itself, one short title, one CTA and nothing else.
+
+**Story and desire:**
+- **Welcome:** a lilac page with "No paradise like home.", then the lounge clip, which loads lazily when its block arrives and plays by the next frame (`phone-scroll-01…02`).
+- **Rooms:** "Four ways to stay" opens on the ring aerial, then the four room cards with "Look inside" (`phone-card-1-rooms.png`).
+- **Pool and restaurant:** the swimmer full-bleed, then the restaurant photo with Breakfast / Later on dish lists.
+- **Fitness:** "Panta Fitness Club" with the day chips and per-class prices, and then the mat-class clip filling the section (`phone-scroll-08…10`, `laptop-scroll-06…07`). It now feels like a place, not a timetable.
+- **After the surf:** the lawn photo and the massages, with plain-face subheads now ("script titles only" holds).
+- **Then:** guests with a quote stepper, "Getting here" with the distance list, groups with "Ask about a group".
+- **Close:** the bright ring-and-pool aerial with "Booking direct gets you our best rate…", Check dates and WhatsApp (`phone-scroll-16`, `laptop-scroll-12`), and the footer with "Talk to us" buttons.
+- After one scroll you know what it is, where it is and why you'd go. Price is answered on the engine, by design.
+
+**Booking (`s5-r1/final/phone-bookdef.log`, `phone-card-*.png`):**
+- **From the hero:** "Check dates" (1) opens the drawer with the Double Room preselected. Arrival, Departure and Guests (2 guests by default) now sit directly under the room chips and above the gallery, so they are in view without scrolling (`phone-bookdef-2-after-hero-cta.png`; arrival field at y 329). Entering 10 and 13 Dec, then "See prices on our booking page" (2), lands on `…/listings/572800?start=2026-12-10&end=2026-12-13&numberOfGuests=2` showing **$465 · For 3 nights · Dec 10 – Dec 13** (`phone-bookdef-4-engine.png`).
+- **From a room card:** "Double Room" (1) opens the drawer on that room, then the dates, then "See prices" (2) gives the same URL and **$465** (`phone-card-2-drawer.png`, `phone-card-4-engine.png`).
+- **Taps to book: 2** from either start, plus the two date fields. This meets `clicks_to_book` 2.
+- With JS off, every "Check dates" is a real engine link.
+- The current site needs about 5 taps from its engine home to a priced room.
+
+**Motion and video:**
+- Four moving pictures: the hero, the lounge, the fitness clip and the closing aerial. The hover sweep found 27 of 36 controls with a visible hover state; the selected "Breakfast" tab, the hero "Check dates" and the quote dots have none.
+- Reduced motion shows posters only (`phone-reduced-motion.png`).
+- No section entrances.
+
+**Regressions against the picked mockup (interactive, round 2):**
+1. **The hero is slower on a slow phone.** In the mockup the poster was there at 0.5 s and the film played at 1.5 s, with LCP 1,560 ms. In the build it is a flat green ground at 0.5 s, a third of the poster at 1.5 s, and the film at about 6 s (`hero-video` has `preload="none"`), with LCP 2,256 ms. It is inside budget, but the first two seconds are emptier than in the mockup.
+2. **Two "Check dates" stacked at the end.** The persistent phone bar sits directly under the closing section's own "Check dates" + WhatsApp pair (`phone-scroll-16.png`). That is two identical buttons 60 px apart.
+3. **Hover states:** none lost. The same three controls lack them as in the mockup.
+
+Nothing else regressed. The five listed changes are all present, and the drawer change (dates before the gallery) fixes my round-2 fix #1.
+
+**Score: 8 / 10. Pass.** It is engaging, it is clearly about this place from the first frame, it is easier to book than the current site, and it ends on a real total in 2 taps. It falls short of 9 because the first two seconds on a slow phone are flat green, and because nothing below the hero moves into view.
+
+**Better than the current site: yes.** On the first screen, it shows their own resort film with one action, where the current site's film had not started after 10 s on the same throttled phone. On the page, every room is sold and the fitness, restaurant and getting-here sections are real. On booking, it is 2 taps to $465 against about 5 from the current site's engine home.
+
+**Fix list:**
+1. Get the hero poster on screen at first paint: a small preloaded `vid-002-poster-r1.778-p-608.webp` with `fetchpriority=high`, or an inline blurred version of it. Let the film start after `load`, not later. This brings the mockup's 0.5 s picture back.
+2. Hide the persistent phone bar while the closing section's buttons are in view (an IntersectionObserver on the closing block).
+3. Add a line under the drawer's dates: "If your dates clear on the next page, that room is full: try another room or WhatsApp us." The engine clears dates for a full room without any message (round 2, `r2/engine/suite-dec10-14.png`).
+4. Hover and press states for the selected tab, the hero "Check dates" and the quote dots.
+5. One quiet entrance for each section's main picture (a 12–16 px rise and fade, once, off under reduced motion), so the long middle has some life between the clips.
+
+**Keep:** the vid-002 resort hero with the script title and one CTA; the room cards that open the drawer on the chosen room; the drawer with the dates above the gallery and the Double preselected; the lazy lounge clip; the fitness clip filling its section; the bright ring-and-pool closing; "Talk to us" as buttons; script for titles only.
