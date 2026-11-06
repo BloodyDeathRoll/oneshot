@@ -1,0 +1,353 @@
+{
+ "variant": "interactive",
+ "lcp": [
+  {
+   "lcp": [
+    {
+     "t": 312,
+     "size": 828,
+     "url": "",
+     "el": "A."
+    },
+    {
+     "t": 332,
+     "size": 27680,
+     "url": "",
+     "el": "H1."
+    },
+    {
+     "t": 2032,
+     "size": 305760,
+     "url": "hero-phone.webp",
+     "el": "IMG."
+    }
+   ],
+   "hero": [
+    {
+     "n": "hero-phone.webp",
+     "end": 2020,
+     "kb": 67
+    },
+    {
+     "n": "css2?family=Familjen+Grotesk:wght@400;50",
+     "end": 455,
+     "kb": 1
+    },
+    {
+     "n": "logo.webp",
+     "end": 467,
+     "kb": 3
+    },
+    {
+     "n": "tile-studio-king.webp",
+     "end": 1513,
+     "kb": 30
+    }
+   ],
+   "fcp": 312
+  },
+  {
+   "lcp": [
+    {
+     "t": 304,
+     "size": 828,
+     "url": "",
+     "el": "A."
+    },
+    {
+     "t": 324,
+     "size": 27680,
+     "url": "",
+     "el": "H1."
+    },
+    {
+     "t": 2020,
+     "size": 305760,
+     "url": "hero-phone.webp",
+     "el": "IMG."
+    }
+   ],
+   "hero": [
+    {
+     "n": "hero-phone.webp",
+     "end": 2012,
+     "kb": 67
+    },
+    {
+     "n": "css2?family=Familjen+Grotesk:wght@400;50",
+     "end": 424,
+     "kb": 1
+    },
+    {
+     "n": "logo.webp",
+     "end": 468,
+     "kb": 3
+    },
+    {
+     "n": "tile-studio-king.webp",
+     "end": 1505,
+     "kb": 30
+    }
+   ],
+   "fcp": 304
+  },
+  {
+   "lcp": [
+    {
+     "t": 300,
+     "size": 828,
+     "url": "",
+     "el": "A."
+    },
+    {
+     "t": 316,
+     "size": 27680,
+     "url": "",
+     "el": "H1."
+    },
+    {
+     "t": 2056,
+     "size": 305760,
+     "url": "hero-phone.webp",
+     "el": "IMG."
+    }
+   ],
+   "hero": [
+    {
+     "n": "hero-phone.webp",
+     "end": 2040,
+     "kb": 67
+    },
+    {
+     "n": "css2?family=Familjen+Grotesk:wght@400;50",
+     "end": 423,
+     "kb": 1
+    },
+    {
+     "n": "logo.webp",
+     "end": 466,
+     "kb": 3
+    },
+    {
+     "n": "tile-studio-king.webp",
+     "end": 1498,
+     "kb": 30
+    }
+   ],
+   "fcp": 300
+  }
+ ],
+ "contrast": {
+  "phone": [
+   {
+    "text": "Check rooms and live dates",
+    "size": 17,
+    "weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "op": 1,
+    "min": 6.03,
+    "p5": 6.03,
+    "median": 6.03,
+    "covered": false
+   },
+   {
+    "text": "Check rooms and live dates",
+    "size": 17,
+    "weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "op": 1,
+    "min": 6.04,
+    "p5": 6.04,
+    "median": 6.04,
+    "covered": false
+   },
+   {
+    "text": "Trip.com | 56 reviews | read 2026-11-06",
+    "size": 14,
+    "weight": "400",
+    "color": "rgb(60, 70, 80)",
+    "op": 1,
+    "min": 8.83,
+    "p5": 8.83,
+    "median": 8.83,
+    "covered": false
+   },
+   {
+    "text": "Rooms",
+    "size": 15,
+    "weight": "500",
+    "color": "rgb(18, 26, 34)",
+    "op": 1,
+    "min": 16.08,
+    "p5": 16.08,
+    "median": 16.08,
+    "covered": false
+   },
+   {
+    "text": "With panoramic glass doors & windows thr",
+    "size": 20,
+    "weight": "500",
+    "color": "rgb(18, 26, 34)",
+    "op": 1,
+    "min": 16.08,
+    "p5": 16.08,
+    "median": 16.08,
+    "covered": false
+   },
+   {
+    "text": "9.7/10",
+    "size": 21,
+    "weight": "500",
+    "color": "rgb(18, 26, 34)",
+    "op": 1,
+    "min": 16.12,
+    "p5": 16.12,
+    "median": 16.12,
+    "covered": false
+   },
+   {
+    "text": "The rooms",
+    "size": 34,
+    "weight": "400",
+    "color": "rgb(18, 26, 34)",
+    "op": 1,
+    "min": 16.12,
+    "p5": 16.12,
+    "median": 16.12,
+    "covered": false
+   }
+  ],
+  "desktop": [
+   {
+    "text": "Check rooms and live dates",
+    "size": 17,
+    "weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "op": 1,
+    "min": 6.03,
+    "p5": 6.03,
+    "median": 6.03,
+    "covered": false
+   },
+   {
+    "text": "Check rooms and live dates",
+    "size": 16,
+    "weight": "500",
+    "color": "rgb(255, 255, 255)",
+    "op": 1,
+    "min": 6.04,
+    "p5": 6.04,
+    "median": 6.04,
+    "covered": false
+   },
+   {
+    "text": "Trip.com | 56 reviews | read 2026-11-06",
+    "size": 15,
+    "weight": "400",
+    "color": "rgb(60, 70, 80)",
+    "op": 1,
+    "min": 8.83,
+    "p5": 8.83,
+    "median": 8.83,
+    "covered": false
+   },
+   {
+    "text": "Rooms",
+    "size": 16,
+    "weight": "500",
+    "color": "rgb(18, 26, 34)",
+    "op": 1,
+    "min": 16.08,
+    "p5": 16.08,
+    "median": 16.08,
+    "covered": false
+   },
+   {
+    "text": "An adults-only beachfront boutique hotel",
+    "size": 26,
+    "weight": "500",
+    "color": "rgb(18, 26, 34)",
+    "op": 1,
+    "min": 16.08,
+    "p5": 16.08,
+    "median": 16.08,
+    "covered": false
+   },
+   {
+    "text": "With panoramic glass doors & windows thr",
+    "size": 24,
+    "weight": "500",
+    "color": "rgb(18, 26, 34)",
+    "op": 1,
+    "min": 16.08,
+    "p5": 16.08,
+    "median": 16.08,
+    "covered": false
+   },
+   {
+    "text": "9.7/10",
+    "size": 24,
+    "weight": "500",
+    "color": "rgb(18, 26, 34)",
+    "op": 1,
+    "min": 16.12,
+    "p5": 16.12,
+    "median": 16.12,
+    "covered": false
+   },
+   {
+    "text": "Our 9 spacious rooms have unobstructed s",
+    "size": 23.76,
+    "weight": "400",
+    "color": "rgb(18, 26, 34)",
+    "op": 1,
+    "min": 16.12,
+    "p5": 16.12,
+    "median": 16.12,
+    "covered": false
+   }
+  ]
+ },
+ "tel_bar": {
+  "id": "telbar",
+  "wh": "52x52",
+  "bottom": 10,
+  "aria": "Call",
+  "href": "tel:+94765700007",
+  "tapped": true
+ },
+ "keyboard_settled": {
+  "stops": 28,
+  "bad": []
+ },
+ "sheet": {
+  "390x844": {
+   "cta_top": 778,
+   "cta_bottom": 830,
+   "vh": 844,
+   "topmost": true,
+   "text": "Studio King: check live dates",
+   "sheet_w": 390,
+   "fixed_bar_visible": 0
+  },
+  "390x664": {
+   "cta_top": 598,
+   "cta_bottom": 650,
+   "vh": 664,
+   "topmost": true,
+   "text": "Studio King: check live dates",
+   "sheet_w": 390,
+   "fixed_bar_visible": 0
+  },
+  "nojs_hash": {
+   "article_h": 494,
+   "top": 60,
+   "go_visible": true
+  }
+ },
+ "depth_guard_default": {
+  "live": true,
+  "vis": "visible",
+  "w": 1486
+ }
+}

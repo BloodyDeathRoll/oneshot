@@ -4,7 +4,7 @@ Run `2026-11-ahangama-01`, owner alon, branch `alon/the-sandhya`, `mode: test` (
 
 ## State
 
-`copy_passed`, fourth pass. Next: 4d concept, 4e mockups, 4f pre-score, then gate b. The pass rests on rulings and says so in `copy/review.md`: 42 sentences are exempt from "no triads" and "no padding", and on this pass voice could fail only for what a reader would get wrong or stumble over. The session proposed that condition in the option Alon chose on 2026-11-06. Budget raised by Alon on 2026-11-06 to 10M tokens and 600 minutes, at 1.28M and 86 minutes used; 1.81M and 109 minutes used now; review it again at gate b.
+`concepted`; mockup rework under way. Round 1 scores, critic of 80 · visual · experience: calm 68.2 · 8 · 8 (passes); interactive 69.2 · 7.5 · 7; unique 57.9 · 6 · 7. Interactive and unique are in round 2 (`reports/2026-11-ahangama-01/the-sandhya*.md`). `mocked` is written when all three pass; then gate b. Copy passed on its fourth pass. That pass rests on rulings and says so in `copy/review.md`: 42 sentences are exempt from "no triads" and "no padding", and on this pass voice could fail only for what a reader would get wrong or stumble over. The session proposed that condition in the option Alon chose on 2026-11-06. Budget raised by Alon on 2026-11-06 to 10M tokens and 600 minutes, at 1.28M and 86 minutes used; 1.81M and 109 minutes used now; review it again at gate b.
 
 ## Decided 2026-11-06 (Alon: "you decide")
 
@@ -18,7 +18,8 @@ Done. Dining ¶2 S2 and S3 are the wording Alon approved. `copy/sources.md` and 
 ## Raise at gate b
 
 - No concept has a date picker, but `agents/designer/custom.md` (Shahar's) says booking inside the site includes "pick dates". The audit forbids only dates shown and not sent, and picked dates do reach the engine's URL; nobody has seen the engine honour them. Once a person opens the engine, this can be settled: add working date fields at the build, or ask Shahar to waive it.
-- Concept 3 grades a real photograph from noon to dusk, close to PLAN.md's "no generated imagery". Its first screen should be judged alone.
+- Concept 3 grades a real photograph from noon to dusk, close to PLAN.md's "no generated imagery". Both visual critics found its first screen processed, so round 2 opens on the ungraded photograph; any graded frame must not pass as the real building at dusk. If a grade survives, the operator or Shahar rules on it.
+- The experience critic: `references.md` says the booking journey must feel like part of the site; if that binds, none of the three reaches 8 without date fields, calm included.
 
 ## Do not lose
 

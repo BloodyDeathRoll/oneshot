@@ -1,0 +1,296 @@
+{
+ "variant": "calm",
+ "lcp": [
+  {
+   "lcp": [
+    {
+     "t": 376,
+     "size": 25122,
+     "url": "",
+     "el": "H1."
+    }
+   ],
+   "hero": [
+    {
+     "n": "img-071-phone.webp",
+     "end": 2702,
+     "kb": 106
+    },
+    {
+     "n": "css2?family=Sacramento&family=Schibsted+",
+     "end": 516,
+     "kb": 0
+    },
+    {
+     "n": "logo-white.png",
+     "end": 779,
+     "kb": 12
+    },
+    {
+     "n": "img-038-door.webp",
+     "end": 2996,
+     "kb": 149
+    }
+   ],
+   "fcp": 376
+  },
+  {
+   "lcp": [
+    {
+     "t": 388,
+     "size": 25122,
+     "url": "",
+     "el": "H1."
+    }
+   ],
+   "hero": [
+    {
+     "n": "img-071-phone.webp",
+     "end": 2681,
+     "kb": 106
+    },
+    {
+     "n": "css2?family=Sacramento&family=Schibsted+",
+     "end": 422,
+     "kb": 0
+    },
+    {
+     "n": "logo-white.png",
+     "end": 779,
+     "kb": 12
+    },
+    {
+     "n": "img-077-1000.webp",
+     "end": 1930,
+     "kb": 41
+    }
+   ],
+   "fcp": 388
+  },
+  {
+   "lcp": [
+    {
+     "t": 360,
+     "size": 25122,
+     "url": "",
+     "el": "H1."
+    }
+   ],
+   "hero": [
+    {
+     "n": "img-071-phone.webp",
+     "end": 2693,
+     "kb": 106
+    },
+    {
+     "n": "css2?family=Sacramento&family=Schibsted+",
+     "end": 419,
+     "kb": 0
+    },
+    {
+     "n": "logo-white.png",
+     "end": 805,
+     "kb": 12
+    },
+    {
+     "n": "img-077-1000.webp",
+     "end": 1909,
+     "kb": 41
+    }
+   ],
+   "fcp": 360
+  }
+ ],
+ "contrast": {
+  "phone": [
+   {
+    "text": "Check rooms and live dates",
+    "size": 17,
+    "weight": "600",
+    "color": "rgb(255, 255, 255)",
+    "op": 1,
+    "min": 5.65,
+    "p5": 5.65,
+    "median": 5.65,
+    "covered": false
+   },
+   {
+    "text": "Studio King: check live dates",
+    "size": 16,
+    "weight": "600",
+    "color": "rgb(255, 255, 255)",
+    "op": 1,
+    "min": 5.65,
+    "p5": 5.65,
+    "median": 5.65,
+    "covered": false
+   },
+   {
+    "text": "King bed | Sleeps 2",
+    "size": 15,
+    "weight": "400",
+    "color": "rgb(75, 79, 90)",
+    "op": 1,
+    "min": 7.31,
+    "p5": 7.31,
+    "median": 7.31,
+    "covered": false
+   },
+   {
+    "text": "Skip to the page",
+    "size": 16.5,
+    "weight": "400",
+    "color": "rgb(29, 33, 43)",
+    "op": 1,
+    "min": 7.79,
+    "p5": 8.21,
+    "median": 8.7,
+    "covered": true
+   },
+   {
+    "text": "Rooms",
+    "size": 14,
+    "weight": "500",
+    "color": "rgb(29, 33, 43)",
+    "op": 1,
+    "min": 9.06,
+    "p5": 9.55,
+    "median": 9.95,
+    "covered": false
+   },
+   {
+    "text": "Pause, take a deep breath & exhale. You ",
+    "size": 44.46,
+    "weight": "400",
+    "color": "rgb(29, 33, 43)",
+    "op": 1,
+    "min": 14.38,
+    "p5": 14.38,
+    "median": 14.38,
+    "covered": false
+   },
+   {
+    "text": "With panoramic glass doors & windows thr",
+    "size": 37.44,
+    "weight": "400",
+    "color": "rgb(29, 33, 43)",
+    "op": 1,
+    "min": 14.38,
+    "p5": 14.38,
+    "median": 14.38,
+    "covered": false
+   }
+  ],
+  "desktop": [
+   {
+    "text": "With panoramic glass doors & windows thr",
+    "size": 42.48,
+    "weight": "400",
+    "color": "rgb(255, 255, 255)",
+    "op": 1,
+    "min": 4.4,
+    "p5": 4.47,
+    "median": 4.7,
+    "covered": false
+   },
+   {
+    "text": "Skip to the page",
+    "size": 17,
+    "weight": "400",
+    "color": "rgb(29, 33, 43)",
+    "op": 1,
+    "min": 4.75,
+    "p5": 4.86,
+    "median": 5.09,
+    "covered": true
+   },
+   {
+    "text": "Rooms",
+    "size": 15,
+    "weight": "500",
+    "color": "rgb(29, 33, 43)",
+    "op": 1,
+    "min": 4.95,
+    "p5": 4.95,
+    "median": 5.17,
+    "covered": false
+   },
+   {
+    "text": "Check rooms and live dates",
+    "size": 17,
+    "weight": "600",
+    "color": "rgb(255, 255, 255)",
+    "op": 1,
+    "min": 5.65,
+    "p5": 5.65,
+    "median": 5.65,
+    "covered": false
+   },
+   {
+    "text": "Check rooms and live dates",
+    "size": 15.5,
+    "weight": "600",
+    "color": "rgb(255, 255, 255)",
+    "op": 1,
+    "min": 5.65,
+    "p5": 5.65,
+    "median": 5.65,
+    "covered": false
+   },
+   {
+    "text": "An adults-only beachfront boutique hotel",
+    "size": 26,
+    "weight": "500",
+    "color": "rgb(29, 33, 43)",
+    "op": 1,
+    "min": 5.61,
+    "p5": 5.96,
+    "median": 6.11,
+    "covered": false
+   },
+   {
+    "text": "King bed | Sleeps 2",
+    "size": 15,
+    "weight": "400",
+    "color": "rgb(75, 79, 90)",
+    "op": 1,
+    "min": 7.31,
+    "p5": 7.31,
+    "median": 7.31,
+    "covered": false
+   },
+   {
+    "text": "Pause, take a deep breath & exhale. You ",
+    "size": 76,
+    "weight": "400",
+    "color": "rgb(29, 33, 43)",
+    "op": 1,
+    "min": 14.38,
+    "p5": 14.38,
+    "median": 14.38,
+    "covered": false
+   }
+  ]
+ },
+ "tel_bar": {
+  "id": "telbar",
+  "wh": "54x54",
+  "bottom": 10,
+  "aria": "Call",
+  "href": "tel:+94765700007",
+  "tapped": true
+ },
+ "keyboard_settled": {
+  "stops": 66,
+  "bad": [
+   {
+    "id": "0.7311093627531652",
+    "label": "DIV Details of the furniture",
+    "inView": false,
+    "covered": false,
+    "by": "DIV.luxe",
+    "y": 1153
+   }
+  ]
+ }
+}

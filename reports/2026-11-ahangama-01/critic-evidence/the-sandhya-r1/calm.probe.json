@@ -1,0 +1,676 @@
+{
+ "variant": "calm",
+ "url": "http://localhost:8771/calm/dist/",
+ "at": "2026-11-06T21:15:07.452Z",
+ "static": {
+  "html_bytes": 70805,
+  "html_gzip": 18761,
+  "inline_js_bytes": 4994,
+  "inline_js_gzip": 2022,
+  "inline_css_bytes": 19932,
+  "inline_css_gzip": 5831,
+  "external_script_tags": [],
+  "absolute_asset_refs": [],
+  "non_lowercase_files": [],
+  "file_exts": [
+   ".webp",
+   ".png",
+   ".html"
+  ],
+  "server_code": [],
+  "secrets_hits": [],
+  "title": "The Sandhya | An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka.",
+  "description": "An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka.",
+  "og": [
+   "title=The Sandhya",
+   "description=An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka.",
+   "image=img/img-071-2000.webp"
+  ],
+  "canonical": null,
+  "jsonld": false,
+  "font_links": [
+   "https://fonts.googleapis.com",
+   "https://fonts.gstatic.com",
+   "https://fonts.googleapis.com/css2?family=Sacramento&family=Schibsted+Grotesk:wght@400;500;600&display=swap",
+   "https://fonts.googleapis.com/css2?family=Sacramento&family=Schibsted+Grotesk:wght@400;500;600&display=swap"
+  ]
+ },
+ "text": {
+  "h1": "An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka.",
+  "h1Count": 1,
+  "h1_is_tagline": true,
+  "sentences": 132,
+  "missing": [
+   [
+    "The rooms",
+    "Every room has a plush pillow-top mattress with 500 thread count linen, a shower big enough for two, Spa Ceylon amenities, bathrobes and slippers."
+   ],
+   [
+    "The rooms",
+    "Each one also has central air conditioning and a ceiling fan, a desk, universal sockets, a hairdryer and a Bluetooth speaker."
+   ],
+   [
+    "The rooms",
+    "High speed WiFi too, with newspapers and magazines from around the world on PressReader."
+   ]
+  ],
+  "added_not_in_copy": [
+   "Skip to the page",
+   "King bed | Sleeps 2",
+   "2 super-single beds | Sleeps 2",
+   "Check-in from 14:00",
+   "|",
+   "Check-out by 12:00",
+   "Amenities",
+   "| additional charge",
+   "| on our list; ask us who runs them and what they cost",
+   "| on our list; ask us who provides the boards and what hire costs",
+   "Map",
+   "Guests",
+   "9.7/10",
+   "Trip.com | 56 reviews |",
+   "read 2026-11-06",
+   "9.4/10",
+   "Kayak | 159 reviews |",
+   "Guest User | Trip.com | June 2026",
+   "Guest User | Trip.com | February 2026",
+   "US$3,500",
+   "Call",
+   "Email",
+   "9.7/10 | Trip.com | 56 reviews |",
+   "9.4/10 | Kayak | 159 reviews |",
+   "Instagram",
+   "The front desk is open 24 hours a day. |"
+  ]
+ },
+ "links": {
+  "total": 33,
+  "external": {
+   "https://hotels.cloudbeds.com/reservation/WMvA6V": {
+    "count": 4,
+    "texts": [
+     "Check rooms and live dates"
+    ]
+   },
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570": {
+    "count": 1,
+    "texts": [
+     "Studio King: check live dates"
+    ]
+   },
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586": {
+    "count": 1,
+    "texts": [
+     "Studio Twin: check live dates"
+    ]
+   },
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587": {
+    "count": 1,
+    "texts": [
+     "Studio+ King: check live dates"
+    ]
+   },
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603": {
+    "count": 1,
+    "texts": [
+     "Director’s Suite: check live dates"
+    ]
+   },
+   "https://www.google.com/maps/place/The+Sandhya/@5.9769788,80.3525613,17z/data=!4m9!3m8!1s0x3ae1134e3ce889b1:0x41288b6ad09d4032!5m2!4m1!1i2!8m2!3d5.9769788!4d80.3525613!16s%2Fg%2F11f1gbc2nq?hl=en": {
+    "count": 2,
+    "texts": [
+     "Map"
+    ]
+   },
+   "https://au.trip.com/hotels/ahangama-hotel-detail-10660372/hotel": {
+    "count": 2,
+    "texts": [
+     "9.7/10 | Trip.com | 56 reviews | read 2026-11-06"
+    ]
+   },
+   "https://www.kayak.com/Ahangama-Hotels-The-Sandhya.2781869.ksp": {
+    "count": 2,
+    "texts": [
+     "9.4/10 | Kayak | 159 reviews | read 2026-11-06"
+    ]
+   },
+   "tel:+94765700007": {
+    "count": 4,
+    "texts": [
+     "Call"
+    ]
+   },
+   "mailto:reservations@thesandhya.com": {
+    "count": 3,
+    "texts": [
+     "Email"
+    ]
+   },
+   "https://www.instagram.com/thesandhya/": {
+    "count": 1,
+    "texts": [
+     "Instagram"
+    ]
+   }
+  },
+  "broken_anchors": [],
+  "targets": [
+   null
+  ]
+ },
+ "tap": {
+  "hero": {
+   "href": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "requested": [
+    "https://hotels.cloudbeds.com/reservation/WMvA6V"
+   ]
+  },
+  "tel": {
+   "href": "tel:+94765700007",
+   "landed": "http://localhost:8771/calm/dist/",
+   "requested": []
+  }
+ },
+ "persistent": {
+  "phone": {
+   "first_screen": {
+    "y": 0,
+    "n": 1,
+    "items": [
+     {
+      "t": "Check rooms and live dates",
+      "h": "",
+      "wh": "358x56"
+     }
+    ]
+   },
+   "page_height": 16910,
+   "samples_without_action": 0,
+   "samples_total": 30,
+   "no_action_at": [],
+   "labels": [
+    "Check rooms and live dates -> (engine)",
+    "Studio King: check live dates -> ?rid=53570",
+    "Studio Twin: check live dates -> ?rid=53586",
+    "Studio+ King: check live dates -> ?rid=53587",
+    "Director’s Suite: check live dates -> ?rid=53603"
+   ],
+   "trace": [
+    "564:gen",
+    "1127:gen",
+    "1691:gen",
+    "2255:?rid=53570,gen",
+    "2818:?rid=53570,?rid=53586,gen",
+    "3382:?rid=53586,gen",
+    "3946:?rid=53587,gen",
+    "4509:?rid=53603,gen",
+    "5073:gen",
+    "5637:gen",
+    "6200:gen",
+    "6764:gen",
+    "7328:gen",
+    "7891:gen",
+    "8455:gen",
+    "9019:gen",
+    "9582:gen",
+    "10146:gen",
+    "10710:gen",
+    "11273:gen",
+    "11837:gen",
+    "12401:gen",
+    "12964:gen",
+    "13528:gen",
+    "14092:gen",
+    "14655:gen",
+    "15219:gen",
+    "15783:gen,gen",
+    "15985:gen,gen",
+    "15985:gen,gen"
+   ]
+  },
+  "desktop": {
+   "first_screen": {
+    "y": 0,
+    "n": 1,
+    "items": [
+     {
+      "t": "Check rooms and live dates",
+      "h": "",
+      "wh": "284x56"
+     }
+    ]
+   },
+   "page_height": 16323,
+   "samples_without_action": 0,
+   "samples_total": 30,
+   "no_action_at": [],
+   "labels": [
+    "Check rooms and live dates -> (engine)",
+    "Studio King: check live dates -> ?rid=53570",
+    "Studio Twin: check live dates -> ?rid=53586",
+    "Studio+ King: check live dates -> ?rid=53587",
+    "Director’s Suite: check live dates -> ?rid=53603"
+   ],
+   "trace": [
+    "544:gen,gen",
+    "1088:gen",
+    "1632:gen",
+    "2176:gen,?rid=53570",
+    "2721:gen,?rid=53586",
+    "3265:gen,?rid=53586,?rid=53587",
+    "3809:gen,?rid=53587",
+    "4353:gen,?rid=53603",
+    "4897:gen",
+    "5441:gen",
+    "5985:gen",
+    "6529:gen",
+    "7073:gen",
+    "7617:gen",
+    "8162:gen",
+    "8706:gen",
+    "9250:gen",
+    "9794:gen",
+    "10338:gen",
+    "10882:gen",
+    "11426:gen",
+    "11970:gen",
+    "12514:gen",
+    "13058:gen",
+    "13603:gen",
+    "14147:gen",
+    "14691:gen,gen",
+    "15235:gen,gen",
+    "15423:gen,gen",
+    "15423:gen,gen"
+   ]
+  },
+  "windows": {
+   "390x664": {
+    "cta_top": 588,
+    "cta_bottom": 644,
+    "cta_h": 56,
+    "above_fold": true,
+    "h1_top": 492,
+    "h1_bottom": 574,
+    "topmost_ok": true,
+    "overflowX": 0
+   },
+   "360x640": {
+    "cta_top": 564,
+    "cta_bottom": 620,
+    "cta_h": 56,
+    "above_fold": true,
+    "h1_top": 474,
+    "h1_bottom": 550,
+    "topmost_ok": true,
+    "overflowX": 0
+   },
+   "320x568": {
+    "cta_top": 492,
+    "cta_bottom": 548,
+    "cta_h": 56,
+    "above_fold": true,
+    "h1_top": 377,
+    "h1_bottom": 478,
+    "topmost_ok": true,
+    "overflowX": 0
+   },
+   "1366x650": {
+    "cta_top": 537,
+    "cta_bottom": 593,
+    "cta_h": 56,
+    "above_fold": true,
+    "h1_top": 456,
+    "h1_bottom": 523,
+    "topmost_ok": true,
+    "overflowX": 0
+   },
+   "1280x640": {
+    "cta_top": 528,
+    "cta_bottom": 584,
+    "cta_h": 56,
+    "above_fold": true,
+    "h1_top": 447,
+    "h1_bottom": 514,
+    "topmost_ok": true,
+    "overflowX": 0
+   },
+   "1920x1080": {
+    "cta_top": 929,
+    "cta_bottom": 985,
+    "cta_h": 56,
+    "above_fold": true,
+    "h1_top": 842,
+    "h1_bottom": 909,
+    "topmost_ok": true,
+    "overflowX": 0
+   }
+  }
+ },
+ "rooms": {
+  "phone": {
+   "Studio King": {
+    "taps": 1,
+    "path": [
+     "link"
+    ],
+    "text": "Studio King: check live dates",
+    "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570",
+    "rid_ok": true
+   },
+   "Studio Twin": {
+    "taps": 1,
+    "path": [
+     "link"
+    ],
+    "text": "Studio Twin: check live dates",
+    "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586",
+    "rid_ok": true
+   },
+   "Studio+ King": {
+    "taps": 1,
+    "path": [
+     "link"
+    ],
+    "text": "Studio+ King: check live dates",
+    "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587",
+    "rid_ok": true
+   },
+   "Director’s Suite": {
+    "taps": 1,
+    "path": [
+     "link"
+    ],
+    "text": "Director’s Suite: check live dates",
+    "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603",
+    "rid_ok": true
+   }
+  },
+  "desktop": {
+   "Studio King": {
+    "taps": 1,
+    "path": [
+     "link"
+    ],
+    "text": "Studio King: check live dates",
+    "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570",
+    "rid_ok": true
+   },
+   "Studio Twin": {
+    "taps": 1,
+    "path": [
+     "link"
+    ],
+    "text": "Studio Twin: check live dates",
+    "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586",
+    "rid_ok": true
+   },
+   "Studio+ King": {
+    "taps": 1,
+    "path": [
+     "link"
+    ],
+    "text": "Studio+ King: check live dates",
+    "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587",
+    "rid_ok": true
+   },
+   "Director’s Suite": {
+    "taps": 1,
+    "path": [
+     "link"
+    ],
+    "text": "Director’s Suite: check live dates",
+    "landed": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603",
+    "rid_ok": true
+   }
+  }
+ },
+ "no_js": {
+  "engine_links": 8,
+  "engine_links_visible": 7,
+  "hrefs": [
+   "https://hotels.cloudbeds.com/reservation/WMvA6V",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587",
+   "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603"
+  ],
+  "hero_top": 768,
+  "hero_bottom": 824,
+  "vh": 844,
+  "tel_visible": 4,
+  "text_len": 9415,
+  "overflowX": 0
+ },
+ "stalled_media": {
+  "cta_in_dom_ms": 74,
+  "topmost": true,
+  "cta_box": "768..824",
+  "vh": 844,
+  "h1_color": "rgb(29, 33, 43)",
+  "h1_ff": "\"Schibsted Grotesk\", -apple-system, \"system-ui\", \"Helvetica ",
+  "hero_bg": "rgb(203, 206, 197)"
+ },
+ "network": {
+  "phone": {
+   "load_hosts": [
+    "localhost:8771",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com"
+   ],
+   "load_bytes": 587773,
+   "load_requests": 50,
+   "after_scroll_requests": 50,
+   "after_scroll_bytes": 3138383,
+   "after_scroll_hosts": [
+    "localhost:8771",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com"
+   ],
+   "bad_status": [],
+   "console_errors": [],
+   "stubbed_external": [],
+   "broken_images": []
+  },
+  "desktop": {
+   "load_hosts": [
+    "localhost:8771",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com"
+   ],
+   "load_bytes": 634395,
+   "load_requests": 50,
+   "after_scroll_requests": 50,
+   "after_scroll_bytes": 3606815,
+   "after_scroll_hosts": [
+    "localhost:8771",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com"
+   ],
+   "bad_status": [],
+   "console_errors": [],
+   "stubbed_external": [],
+   "broken_images": []
+  }
+ },
+ "overflow": {
+  "320": {
+   "scrollW": 320,
+   "W": 320,
+   "overflow": 0,
+   "offenders": [],
+   "smallest_font_px": 14,
+   "smallest_font_text": "Rooms"
+  },
+  "360": {
+   "scrollW": 360,
+   "W": 360,
+   "overflow": 0,
+   "offenders": [],
+   "smallest_font_px": 14,
+   "smallest_font_text": "Rooms"
+  },
+  "390": {
+   "scrollW": 390,
+   "W": 390,
+   "overflow": 0,
+   "offenders": [],
+   "smallest_font_px": 14,
+   "smallest_font_text": "Rooms"
+  },
+  "768": {
+   "scrollW": 768,
+   "W": 768,
+   "overflow": 0,
+   "offenders": [],
+   "smallest_font_px": 15,
+   "smallest_font_text": "Rooms"
+  },
+  "1024": {
+   "scrollW": 1024,
+   "W": 1024,
+   "overflow": 0,
+   "offenders": [],
+   "smallest_font_px": 15,
+   "smallest_font_text": "Rooms"
+  },
+  "1440": {
+   "scrollW": 1440,
+   "W": 1440,
+   "overflow": 0,
+   "offenders": [],
+   "smallest_font_px": 15,
+   "smallest_font_text": "Rooms"
+  },
+  "1920": {
+   "scrollW": 1920,
+   "W": 1920,
+   "overflow": 0,
+   "offenders": [],
+   "smallest_font_px": 15,
+   "smallest_font_text": "Rooms"
+  }
+ },
+ "targets": {
+  "total": 49,
+  "under44": 22,
+  "groups": {
+   "BUTTON.dot 34x44 \"Studio King, photo\"": 5,
+   "BUTTON.dot 34x44 \"Studio Twin, photo\"": 5,
+   "BUTTON.dot 34x44 \"Studio+ King, phot\"": 6,
+   "BUTTON.dot 34x44 \"Director’s Suite, \"": 6
+  }
+ },
+ "axe": {
+  "phone": {
+   "violations": [
+    {
+     "id": "region",
+     "impact": "moderate",
+     "n": 1,
+     "sample": [
+      "#bar"
+     ]
+    }
+   ],
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "n": 5
+    }
+   ]
+  },
+  "desktop": {
+   "violations": [
+    {
+     "id": "color-contrast",
+     "impact": "serious",
+     "n": 1,
+     "sample": [
+      ".feature ratio=1.59"
+     ]
+    },
+    {
+     "id": "region",
+     "impact": "moderate",
+     "n": 2,
+     "sample": [
+      ".stick-in > .logo[aria-label=\"The Sandhya, back to the top\"][href$=\"#t",
+      ".stick-in > .right"
+     ]
+    }
+   ],
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "n": 6
+    }
+   ]
+  }
+ },
+ "keyboard": {
+  "stops": 66,
+  "first": [
+   "A Skip to the page",
+   "A Rooms",
+   "A Dining",
+   "A The Sandhya",
+   "A Kabalana",
+   "A Check rooms and live dates"
+  ],
+  "last": [
+   "A Call",
+   "A Email",
+   "A Map",
+   "A Instagram",
+   "(body)"
+  ],
+  "no_focus_style": [],
+  "no_focus_style_n": 0,
+  "hidden_or_covered": [
+   "UL <img src=\"img/img-061-1000.webp\" s (out of view)",
+   "BUTTON Studio King: Previous photograph (out of view)",
+   "UL <img src=\"img/img-171-1000.webp\" s (out of view)",
+   "BUTTON Director’s Suite: Previous photogr (out of view)",
+   "BUTTON Director’s Suite, photograph 1 of  (out of view)",
+   "SUMMARY Amenities (out of view)",
+   "DIV Details of the furniture (out of view)",
+   "A Map (out of view)",
+   "A 9.7/10 | Trip.com | 56 reviews | r (out of view)",
+   "A 9.4/10 | Kayak | 159 reviews | rea (out of view)",
+   "A Call (out of view)",
+   "A Email (out of view)",
+   "A 9.7/10 | Trip.com | 56 reviews | r (out of view)",
+   "A 9.4/10 | Kayak | 159 reviews | rea (out of view)",
+   "A Check rooms and live dates (out of view)"
+  ],
+  "hidden_or_covered_n": 22,
+  "reached_end": true,
+  "room": {
+   "note": "no sheet or panel: room links are plain and always visible",
+   "dot": "DIV -1 "
+  }
+ },
+ "reduced": {
+  "top": {
+   "running": 0,
+   "names": [],
+   "canvases": []
+  },
+  "after_scroll": {
+   "running": 0,
+   "names": [],
+   "canvases": []
+  },
+  "page_height": 16323
+ },
+ "webgl": {
+  "webgl": true,
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+  "canvases": [],
+  "avg_idle_frame_ms": 17,
+  "errors": [],
+  "noguard": false
+ }
+}
