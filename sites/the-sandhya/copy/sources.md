@@ -1,6 +1,6 @@
 # copy sources: the-sandhya, en
 
-Copywriter 0.5.0, round 1, 2026-11-06, run `2026-11-ahangama-01`, `mode: test`. Caps re-read from `schemas/site-content.md` v0.11 this round.
+Copywriter 0.5.0, round 1, 2026-11-06, run `2026-11-ahangama-01`, `mode: test`. Caps re-read from `schemas/site-content.md` v0.11 this round. Humanizer 0.2.1 pass the same day: nine lines changed, no fact moved, each logged in `humanizer-notes.md`; the rows below quote the result.
 
 **This is the owner-prose case.** Most of the page is the hotel's own words from `owner_copy[]` (dossier paths below are indexes into that array), kept verbatim or trimmed, because it is their voice. Where a sentence was trimmed, the row says what was cut and why. `reviews.quotes[n]` indexes the dossier array. The audit shaped the label, the order and the closing; no fact rests on it.
 
@@ -13,17 +13,17 @@ Alon's positioning (`business.businessType_note`, 2026-11-06): a beachfront bout
 | `businessName` | "The Sandhya" | `business.name` |
 | `businessType` | `beach_lodging` | `businessType`, `business.businessType_note` |
 | `tagline` | "An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka." | `business.description` ("Luxury beachfront boutique hotel on Kabalana Surf Beach … Adults only."), `location.address` (Ahangama). "Luxury" and "Surf" dropped for the positioning. Written for audit F4 (what and where on the first screen). Adults-only stated here once, no age: see the contradictions table |
-| `closing` | "See live dates on our own booking page, or call or email us first with any question." | `booking.path`, `booking.engine_url`, `contact.phone`, `contact.email`. Follows `recommended.closing_intent`. No digits, so the number lives only in `contact`: the design must set the phone and email links beside this line |
+| `closing` | "See live dates on our own booking page. If you have a question first, call or email us." | `booking.path`, `booking.engine_url`, `contact.phone`, `contact.email`. Follows `recommended.closing_intent`. No digits, so the number lives only in `contact`: the design must set the phone and email links beside this line |
 | `featureLine` | "With panoramic glass doors & windows throughout, this captivating view is our artwork." | `owner_copy[3]` S2, verbatim except the misspelling "though out" (audit F15) |
-| `spot` | "Kabalana Beach: a mile long, white sandy beach on the golden south coast of Sri Lanka." | `owner_copy[18]` "A mile long, white sandy beach", `owner_copy[19]` "on the golden south coast of Sri Lanka", `location.spot`. No break type, bottom or level: `gaps[]` `location.spot.detail` |
+| `spot` | "Kabalana is a mile long, white sandy beach on the golden south coast of Sri Lanka." | `owner_copy[18]` "A mile long, white sandy beach", `owner_copy[19]` "on the golden south coast of Sri Lanka", `location.spot`. No break type, bottom or level: `gaps[]` `location.spot.detail` |
 | `season` | `null` | `season.gap`, no source gives months |
 | `openingHours` | `[]` | `hours` is empty. A hotel: an empty row would read as closed |
 | `hoursNote` | "The front desk is open 24 hours a day." | `hours_note` "Front desk hours: 24/7" (Trip.com) |
-| `priceList[0]` | Exclusive Use, 3500 USD, note "From this price, plus “++” …" | `offers[0]` "From US$3,500++ per night", /house, fetched 2026-11-06. "From" and "++" kept. Unit is `flat` and "per night" is in the label, because `priceList[].unit` has no per-night value (schema gap, flagged to the designer). The ++ is unexplained at source: owner item |
+| `priceList[0]` | Exclusive Use, 3500 USD, note "The hotel publishes this as a “from” price, plus “++” …" | `offers[0]` "From US$3,500++ per night", /house, fetched 2026-11-06. "From" and "++" kept. Unit is `flat` and "per night" is in the label, because `priceList[].unit` has no per-night value (schema gap, flagged to the designer). The ++ is unexplained at source: owner item |
 | `rooms[0]` | Studio King, King bed, sleeps 2, "38 sq m on the upper or ground floor, with 3.5 m floor-to-ceiling glass doors." | `room_types[0]` `.sqm`, `.beds`, `.sleeps`, `.floor`, `.site_text[1]`. Name is the hotel's, per `contradictions` room_names |
 | `rooms[1]` | Studio Twin, 2 super-single beds, sleeps 2, "38 sq m on the upper floor, with 3.5 m floor-to-ceiling glass doors." | `room_types[1]`, same keys. `.site_text[1]` writes "3.5meter" |
 | `rooms[2]` | Studio+ King, King bed, sleeps 2, "40 to 43 sq m on the upper or ground floor, with a deep stand-alone soaking tub and dual sinks." | `room_types[2]` `.beds`, `.sleeps`, `.floor`, `.site_text[1]`. Size: both sides of `contradictions` room_size shown as a range. "Studio+ King" over the site's stray "Studio King+" (audit F15; the engine and /rooms say Studio+) |
-| `rooms[3]` | Director’s Suite, King bed, sleeps 2, "About 75 sq m on the top floor: living area, walk-in wardrobe, soaking tub, ocean-view balconies, 55-inch TV." | `room_types[3]` `.amenities`, `.site_text[1]` "top floor", "their own ocean view balconies", `.site_text[2]`, `.site_text[3]`. Size and bed: see contradictions. `sleeps` 2 is the dossier value; engine maximum 3 is in `.sleeps_note` |
+| `rooms[3]` | Director’s Suite, King bed, sleeps 2, "About 75 sq m on the top floor, with a living area, walk-in wardrobe, soaking tub, ocean-view balconies and a 55-inch TV." | `room_types[3]` `.amenities`, `.site_text[1]` "top floor", "their own ocean view balconies", `.site_text[2]`, `.site_text[3]`. Size and bed: see contradictions. `sleeps` 2 is the dossier value; engine maximum 3 is in `.sleeps_note` |
 | `stayInfo.checkInFrom` | "14:00" | `stayInfo.checkInFrom` (own engine; Google and Michelin agree). The other side is on the page in the note |
 | `stayInfo.checkOutTo` | "12:00" | `stayInfo.checkOutTo`, every source agrees |
 | `stayInfo.note` S1 | "Listings differ on the minimum age, and some say check-in after 16:00." | `contradictions` age_policy (16 at Michelin and Takeoff, 12 at Trip.com), check_in (Kayak, Trip.com) |
@@ -83,7 +83,7 @@ Alon's positioning (`business.businessType_note`, 2026-11-06): a beachfront bout
 | Casual Luxe ¶4 | "We opened in 2017 and renovated in 2023." | `business.since`, Trip.com "Opened: 2017", "Renovated: 2023". One source: owner to confirm |
 | Casual Luxe ¶5 | "Our service is warm, kind, attentive yet informal …" | `owner_copy[15]`, verbatim |
 | Casual Luxe ¶6 | "We have blended the best of the worlds … simply The Sandhya." | `owner_copy[17]`, verbatim |
-| Looking after ¶1 | "We support the vibrant local community … We strive for sustainable tourism." | `sustainability`, the hotel's own claims, in its first person as `sustainability.note` asks. Shipping-container clause and "lifelong family member to Mother Nature" cut: `contradictions` pool, and padding |
+| Looking after ¶1 | "We support the vibrant local community … We strive for sustainable tourism." | `sustainability`, the hotel's own claims, in its first person as `sustainability.note` asks. Shipping-container clause and "lifelong family member to Mother Nature" cut: `contradictions` pool, and padding. "vibrant" cut by the humanizer (tell list) |
 | Rooms ¶1 | "Our 9 spacious rooms … private balcony or exclusive patio area." | `owner_copy[8]` S1, S2, verbatim. 9: `room_count`, see contradictions |
 | Rooms ¶2 | "We have included thoughtful touches … any one of our room types." | `owner_copy[8]` S3, cut before the sizes, which are in `rooms[]` |
 | Rooms ¶3 | "Every room has a plush pillow-top mattress …" | Checked room by room against all four `room_types[]`: `.amenities` (desk, speaker, hairdryer, 2-person rain shower, robes and slippers, universal sockets, central aircon, WiFi, PressReader), `.site_text` (pillow-top, Spa Ceylon), `.engine_description` (500 thread count; the site's "tread" is audit F15), `.engine_amenities` (ceiling fan) |
@@ -94,11 +94,11 @@ Alon's positioning (`business.businessType_note`, 2026-11-06): a beachfront bout
 | Dining ¶3 | "Our breads, pastas, sauces … evolve with the seasons." | `owner_copy[11]`, "but rest assured, the quality remains" cut |
 | Dining ¶4 | "If you don’t find what you crave … are available." | `owner_copy[9]` S3, S4, verbatim |
 | Dining ¶5 | "A continental breakfast is included in your stay." | `dining.breakfast` (own engine), Trip.com "A complimentary continental breakfast is included", `facilities` "Free breakfast" (Google). `booking.rate_terms` "for two adults" not added: search snippet only |
-| Exclusive ¶1 | "Our home at The Sandhya … simply to celebrate life." | `owner_copy[24]` S1, S2, "prime" and "unique" cut as unevidenced rankings |
+| Exclusive ¶1 | "Our home at The Sandhya … simply to celebrate life." | `owner_copy[24]` S1, S2, "prime" and "unique" cut as unevidenced rankings, "nestled" cut by the humanizer (tell list) |
 | Exclusive ¶2 | "With the beach as your blank canvas … your special occasion." | `owner_copy[24]` S3, "perfect" and the sunset clause cut (sunset is in Why Sandhya). Price is in `priceList[0]` only |
-| Kabalana ¶1 | "Just by the buzzing and eclectic town of Ahangama, Kabalana Beach has come into its own …" | `owner_copy[19]`, reordered, "on the golden south coast" moved to `spot`. The hotel's words about the place, not its offer |
+| Kabalana ¶1 | "Just by the buzzing and eclectic town of Ahangama, Kabalana Beach has come into its own …" | `owner_copy[19]`, reordered, "on the golden south coast" moved to `spot`. "has nurtured" corrected to "have nurtured" (the plural subject) by the humanizer. The hotel's words about the place, not its offer |
 | Kabalana ¶2 | "Centuries old Galle Fort … restaurant scene." | `owner_copy[21]` S1, S2, verbatim; `location.nearby[0]` |
-| Kabalana ¶3 | "Discover amazing surf points … eateries and night spots." | `owner_copy[22]`. **"all within a stone’s throw from us" cut**: guests put Ahangama a 15-minute walk or a 5-minute tuk tuk away (`location.nearby[5]`) |
+| Kabalana ¶3 | "The nearby beaches of Midigama … eateries and night spots." | `owner_copy[22]`, S1 turned round by the humanizer to lose "Discover", same places and same three things. **"all within a stone’s throw from us" cut**: guests put Ahangama a 15-minute walk or a 5-minute tuk tuk away (`location.nearby[5]`) |
 | Kabalana ¶4 | "World famous Yala and Udwalawe National Parks … late lunch or cocktail." | `owner_copy[23]`, sunset clause cut. Place-name spellings as published (`location.nearby[2]`): owner to check "Udwalawe" and "Singharaja" |
 | Kabalana ¶5 | "Ahangama train station is 1.4 km from the hotel." | `location.nearby[3]`, Trip.com |
 
