@@ -7,7 +7,7 @@ import { join } from 'node:path';
 import { LiveStore, validate, bearerOk, STALE_MIN } from '../../dashboard/live.mjs';
 
 const ops = { shahar: { name: 'Shahar' }, alon: { name: 'Alon' } };
-const T0 = Date.parse('2026-10-26T12:00:00Z');
+const T0 = Math.floor(Date.now() / 60_000) * 60_000 - 3_600_000; // an hour ago: LiveStore keeps only the last KEEP_H hours
 const at = (min) => new Date(T0 + min * 60_000).toISOString().replace(/\.\d+Z$/, 'Z');
 
 test('validate keeps the strip fields, clips them, and refuses unknown operators and kinds', () => {
