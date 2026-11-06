@@ -1,71 +1,72 @@
 # copy review: the-sandhya, en
 
-Copyeditor 0.4.2, round 3 (the third pass), 2026-11-06, run `2026-11-ahangama-01`, `mode: test`. Input: `en.json` (copywriter 0.5.0 round 2, humanizer 0.2.1, pass after review round 2), `en.draft.json`, `369a73e:sites/the-sandhya/copy/en.draft.json`, `sources.md`, `humanizer-notes.md`, round 2 of this file, `dossier.json`. Every sentence below was re-read against the dossier, not against `sources.md`, and not only the changed fields (hard constraint 6). Applies the operator's ruling as Alon widened it on 2026-11-06, as written in `proposals/2026-11-ahangama-01/001-copyeditor-owner-prose-voice.md`. That proposal is not merged and the prompt is otherwise unchanged.
+Copyeditor 0.4.2, round 4 (the fourth pass), 2026-11-06, run `2026-11-ahangama-01`, `mode: test`. This pass runs past the prompt's "Max 2 rounds" on Alon's instruction. Input: `en.json` (copywriter 0.5.0 round 2, humanizer 0.2.1, plus the one sentence Alon approved), `en.draft.json` (the copy before that change), `369a73e:sites/the-sandhya/copy/en.draft.json`, `sources.md`, `humanizer-notes.md`, round 3 of this file, `dossier.json`. Every sentence below was re-read against the dossier, not against `sources.md`, and not only the changed one (hard constraint 6).
 
-## Verdict: FAIL, round 3. Voice alone, one sentence. Stops for Alon
+**The rules this pass applies, and where each comes from:**
+
+| Rule | Where it is written |
+|---|---|
+| The hotel's own sentences are not scored on "no triads" or "no padding vocabulary" | `proposals/2026-11-ahangama-01/001-copyeditor-owner-prose-voice.md`, as Alon widened it. Not merged; the prompt is otherwise unchanged |
+| Dining ¶2 S2 and S3 are not scored on those two checks, because Alon approved them as the hotel's register | `sources.md`, `humanizer-notes.md` and the ledger line of 12:51:36Z record the approval. The session's brief gives the exemption |
+| Voice fails only on something a reader would actually get wrong or stumble over, not on taste or a preferred phrasing. Fact checks stay as strict as before | **The session's brief only.** It is not in proposal 001 or anywhere else on disk |
+
+## Verdict: PASS, round 4
 
 | Check | Result |
 |---|---|
 | Fact audit | **Clean. 0 `unsourced`, 0 `contradicted`.** |
-| Voice audit | **Not clean. 1 sentence:** Dining ¶2 S2 fails "reads aloud without wincing". Every other sentence passes every check it is scored on |
+| Voice audit | **Clean under the rules above.** Round 3's flag on Dining ¶2 S2 is fixed. No sentence on the page is one a reader would get wrong or have to re-read |
 | Completeness | Required fields covered. No duplicate fact across two blocks |
 
-The prompt's third-pass text (back to the harvester, or out of the run) does not apply, because the failure is voice alone. By Alon's decision the business stops for him.
+**What this pass rests on.** Under the prompt's plain text ("voice audit clean", "no triads", "no padding vocabulary"), this page does not pass: 42 sentences are exempt from two of its checks. The pass holds on the rulings above. See "What this does not settle".
 
-## Flagged sentence
+## The changed sentences
 
-| # | Sentence | Field | Exempt? | Flag | Owner |
-|---|---|---|---|---|---|
-| 1 | "Our signature Sri Lankan rice & curry, our zesty DIY poke bowls, our localized “Tom Yum” style noodles with fresh Ceylon prawns and a finger licking array of delicious homemade desserts explore the diversity of the local produce available." | Dining ¶2 S2 | Yes, so not scored on triads or padding. "Aloud" applies either way | **Aloud.** See below | Voice |
+Dining ¶2, as it now reads:
 
-Three things go wrong when it is read out, in this order:
+> We truly believe some of the island’s best qualities may be expressed through our food. Our signature Sri Lankan rice & curry, our zesty DIY poke bowls and our localized “Tom Yum” style noodles with fresh Ceylon prawns explore the diversity of the local produce available. Or go directly to a finger licking array of delicious homemade desserts.
 
-1. **The noodles swallow the desserts.** "noodles with fresh Ceylon prawns and a finger licking array of delicious homemade desserts" reads as one dish until "desserts" stops making sense, and the reader has to go back. The owner's "or going directly to" marked where the noodles ended. With it cut, nothing does. The misreading has been there since "going directly to" went in the copywriter's round 2, and round 2 of this review did not name it. "And" in place of "or" makes it stronger, because "with X and Y" is the natural reading.
-2. **There is no place to breathe.** The verb is the 32nd word. From "our localized" to the full stop is 27 words with no comma, and the item with the misreading sits inside that run.
-3. **The verb lands on the wrong noun.** The list is the subject, but the word next to the verb is "desserts", so what the ear gets is "desserts explore the diversity of the local produce".
+**Facts: both `sourced`.**
 
-**The line I drew.** As in round 2, loose grammar that parses on the first read passes "aloud": "as temperature cools", "stocks, spice blends, jams are made", "inspired from". This sentence fails because the reader gets it wrong and has to re-read. The round 2 flag, the tail with nothing to attach to, is fixed. This is a different fault.
+- Same four dishes as `dining.dishes` and `owner_copy[10]`. No number, place or claim is new; the set of numbers in the file is identical to `en.draft.json`.
+- S2 now says three dishes explore the local produce, where the last version said four. That narrows the sentence. `dining.concept` ("using the freshest of locally-sourced ingredients") covers the menu as the hotel's own statement about its own offer. The dossier records no ingredient origin for a single dish beyond "fresh Ceylon prawns", and "explore" is figurative: it gives no share, count or origin. The same reasoning stood in round 3.
+- S3 asserts that the desserts exist and are homemade (`dining.dishes`). "Finger licking array" is the hotel's description of its own offer. No menu is in the dossier to count an array against, which is the footing "delectable array" has in Dining ¶1.
 
-## The two sentences Alon's session asked about
+**Round 3's three faults, checked one by one:**
 
-### Kabalana ¶3, "The nearby beaches of … boat rides. You will find plenty of places to eat there too."
+| Round 3 fault | Now | Status |
+|---|---|---|
+| The noodles swallow the desserts ("noodles with fresh Ceylon prawns and a finger licking array …") | The desserts have their own sentence. "With fresh Ceylon prawns" can only attach to the noodles, and nothing follows it inside the list | Fixed |
+| No place to breathe: verb at word 32, then 27 words with no comma from "our localized" | Verb at word 24 of 31 (counting "&"). 18 words with no comma from "our localized" to the full stop. Three "our" openings mark the list, and "and our" announces its last item | Fixed. Long, but it reads through on one pass |
+| The verb lands on the wrong noun ("desserts explore") | The noun beside the verb is now "prawns", so see below | No longer a misreading |
 
-Not exempt: words were added, by word check ("have", and all of the second sentence). Scored on every check. **Passes.**
+**Two things I looked at and did not fail.** Neither is one a reader gets wrong, so under this pass's rule both are taste.
 
-- **Does "plenty" hold? Yes, as `shared-context`.** `owner_copy[22]` says "a dizzying array of dining options at the nearby beaches of" those five, so the dossier carries the claim of many, for the five together, and "plenty" is narrower than what it replaced. Support beyond the hotel is partial: `quotes[0]` says "plenty of well-rated restaurants and cafes" of Weligama and Galle, but it is machine-translated and covers one of the five; `quotes[5]` says "Plenty of restaurants nearby", but of the hotel's own surroundings. For Midigama, Mirissa, Madiha and Hiriketiya Bay there is only the hotel's word. It ranks nothing and counts nothing, and it is about the area, not the business. It gets the same call as "has grown into a foodies’ haven" (see "Calls I made"). A stricter reader could mark it `unsourced`.
-- **Triads.** Surf points and boat rides are two items, then a separate sentence with its own subject and verb, in the second person. The same three things are there, but they are no longer one list, and the form changes where the third returns (tell 11). Not a triad. The five place names are a list of five.
-- **Padding.** "A dizzying array" is gone. "Plenty", "places to eat" and "You will find" are not on the tell list and do not read as filler: "you will" is how the owner addresses the reader in intro ¶2 and ¶4.
-- **Concrete.** "Places to eat" is a plain category noun beside five place names. The dossier names no restaurant, so there is nothing more concrete to use.
-- **Rhythm, aloud, register.** 18 words then 10. Reads cleanly. It leads into "Our own town Ahangama". No marketing verb. "Have … whale-watching boat rides" is a little loose for a beach, and it parses.
+1. **"… fresh Ceylon prawns explore the diversity …"** The ear gets "prawns explore" for a moment. Round 3 failed the sentence with "desserts explore" as one of three faults, so this is the same thing in a smaller form, and I am naming it to be consistent. It does not send the reader back: the list is clearly marked as the subject and "with fresh Ceylon prawns" closes the third item. Dishes that "explore" produce is a familiar figure in food writing.
+2. **"Or go directly to …"** The "Or" follows a statement, not a choice, and the mood turns imperative. A reader supplies the missing half straight away: skip those and go to dessert. It reads as a small joke, and the "or" and "directly to" are the owner's own words. No misreading, and no re-read.
 
-### Dining ¶2, "We truly believe … through our food. Our signature … available."
+**Rhythm:** 15, 31 and 12 words. S1 reads cleanly. The paragraph ends on the short line, and ¶3 ("Our breads, pastas …") follows without a bump.
 
-- **Within "a word or two"? Yes, at the limit.** Word check against `owner_copy[10]`: added "and", "explore"; cut "from", "or", "going", "directly", "to", "exploring". That is two words changed ("or" to "and", "exploring" to "explore"), three cuts plus "From", and no other word added, as `sources.md` says. Both changes are grammar, made so the split parses. So S1 (clauses moved, trimmed) and S2 (clauses moved, trimmed, two words changed) are exempt.
-  This is the furthest case on the page. It is the only sentence that uses every allowance at once, and S2's subject and main verb are a relation the owner's sentence did not have. The ruling's "or" does not bar combining them, and every sentence treated as a recast so far is one that added words. A reader who counts a new subject and verb as a recast would also score it on padding ("finger licking array of delicious"). It fails already, so the verdict is the same on either reading.
-- **Does it read aloud cleanly with about 30 words before the verb? No.** The count is 31 tokens counting "&", and the flag above gives the reasons. S1 reads cleanly at 15 words.
-- **Do the dishes "exploring" say more than the dossier supports? No: `sourced`.** In the owner's sentence "exploring" hangs off "our food", and the "from … to" names these four as the span of that food. So the new sentence moves the verb onto the examples, and the substance stays. Read strictly, it implies all four draw on local produce, poke bowls and desserts included. The dossier records no ingredient origin for a single dish beyond "fresh Ceylon prawns", but `dining.concept` ("using the freshest of locally-sourced ingredients") covers the menu as the hotel's own statement about its own offer. "Explore" is figurative: it gives no share, count or origin. Same four dishes as `dining.dishes`.
+**Exempt status.** S2 and S3 are exempt from the two checks by Alon's approval, not by the ruling's wording. Word check against `owner_copy[10]`: added "and", changed "exploring" to "explore" and "going" to "go", cut "from". The "and" replaces a comma, so it is an added word, and the ruling alone might not have covered S2. The approval settles it. S1 is exempt under the ruling, with clauses moved and no word added.
 
-## Round 2's flags, checked
+## Round 3's sentence checks, re-run
 
-| Round 2 flag | Sentence | Now | Status |
+| Round 3 flag | Sentence | Now | Status |
 |---|---|---|---|
-| 1 | Kabalana ¶3 S1 | Rewritten, above | Fixed |
-| 2 | Dining ¶2 | Padding half cleared by the ruling. The hanging tail is gone | Fixed as flagged; new aloud flag above |
-| 3 | Kabalana ¶1 S1 | Clauses moved and trimmed. Word check: none added | Exempt under the widened ruling |
-| 4 | Kabalana ¶1 S2 | "has" to "have", the owner's "and" moved up. Word check: only "have" new | Exempt |
-| 5 | Exclusive ¶1 S2 | Cuts, "position" moved. Word check: none added | Exempt |
-| 6 | Exclusive ¶2 | Cuts, "the perfect" to "a". Read by hand, since the word check finds "a" elsewhere in `owner_copy[24]` | Exempt |
+| 1 | Dining ¶2 S2 | Replaced, above | Fixed |
 
-Round 1's fact rows stay fixed: none of the cut rankings or the frequency has returned (`crowning`, `World famous`, `consistent`, `the hotel`, `stone`, Michelin, a pool length and WhatsApp were checked by script and are absent from the file).
+Rounds 1 and 2 stay fixed: none of the cut rankings or the frequency has returned (`crowning`, `World famous`, `consistent`, `epitome`, `the hotel`, `stone`, Michelin, a pool length, WhatsApp, `dizzying`, `nestled`, `vibrant`, `amazing` and em dashes were checked by script and are absent from the file).
 
-The six inaccuracies listed in round 2 are corrected, each read against the current `sources.md` and notes.
+The three imprecisions round 3 listed in `sources.md` are corrected by a note at the end of that file. See "Draft against final" for what that leaves.
 
-## The exempted sentences (41)
+## The exempted sentences (42)
 
-The ruling requires this list. Each was tested against `owner_copy[]`, `business.name_meaning` and `sustainability` by script, either as every word in the owner's order or, where clauses moved or a word changed, word by word. Spelling, spacing and the capital at a new sentence start were not counted as changes. Those sentences were then read by hand. They are not scored on "no triads" or "no padding vocabulary". Every other voice check and the whole fact audit apply.
+The ruling requires this list. Each was tested by script against `owner_copy[]` or `business.name_meaning`, word by word, this round, then read by hand. Spelling, spacing and the capital at a new sentence start were not counted as changes. They are not scored on "no triads" or "no padding vocabulary". Every other voice check and the whole fact audit apply.
 
-| Sentence | Field | Source | Form | What the ruling shelters |
+| Sentence | Field | Source | Form | What the exemption shelters |
 |---|---|---|---|---|
+| "Our signature Sri Lankan rice & curry, … explore the diversity of the local produce available." | Dining ¶2 S2 | `owner_copy[10]` | **Alon approved this wording** | "zesty" |
+| "Or go directly to a finger licking array of delicious homemade desserts." | Dining ¶2 S3 | `owner_copy[10]` | **Alon approved this wording** | "finger licking array of delicious" |
 | "Pause, take a deep breath & exhale. You are home." (2) | intro heading | `owner_copy[0]` | verbatim | Triad of actions |
 | "Designed to feel like an exclusive private beach house with the amenities of an intimate boutique hotel." | intro ¶1 S1 | `owner_copy[2]` | split, no word changed | "intimate" |
 | "Your relaxation starts as you kick off your shoes and slip through the hidden door in the wide wooden façade." | intro ¶1 S2 | `owner_copy[2]` | split, capital | nothing |
@@ -89,13 +90,12 @@ The ruling requires this list. Each was tested against `owner_copy[]`, `business
 | "Elevated Comfort Food was the brief for our visiting menu designer, Chef Christophe DuBois." | Dining ¶1 S1 | `owner_copy[12]` | verbatim | "Elevated" |
 | "Working closely with our owner, a self-confessed “easy foodie”, the team conjured a delectable array of dishes inspired from a global set-list of food heaven highlights." | Dining ¶1 S2 | `owner_copy[12]` | verbatim | "delectable array", "food heaven highlights" |
 | "We truly believe some of the island’s best qualities may be expressed through our food." | Dining ¶2 S1 | `owner_copy[10]` | clauses moved, trimmed, wrong quote mark fixed | "truly believe", "may be expressed" |
-| "Our signature Sri Lankan rice & curry, … explore the diversity of the local produce available." | Dining ¶2 S2 | `owner_copy[10]` | clauses moved, trimmed, two words changed for grammar | "zesty", "finger licking array of delicious". **Fails aloud, which the ruling does not shelter** |
 | "Our breads, pastas, sauces, infused mayonnaise, stocks, spice blends, jams are made in-house and the menus subtly evolve with the seasons." | Dining ¶3 | `owner_copy[11]` | trimmed | nothing |
 | "If you don’t find what you crave, simply ask our team to prepare what your tummy desires." | Dining ¶4 S1 | `owner_copy[9]` | verbatim | nothing |
 | "Dishes catering to vegetarian, vegan, keto and other dietary lifestyles are available." | Dining ¶4 S2 | `owner_copy[9]` | verbatim | Triad |
 | "Our home at The Sandhya can be your very own private beach house with an Exclusive Use booking." | Exclusive ¶1 S1 | `owner_copy[24]` | verbatim | "your very own" |
 | "Our position on Kabalana Beach, in a secluded nook, lends itself to an intimate wedding party, birthday celebration, family reunion, wellness/fitness retreat or simply to celebrate life." | Exclusive ¶1 S2 | `owner_copy[24]` | clauses moved, trimmed | "lends itself to", "or simply to celebrate life" |
-| "With the beach as your blank canvas and with our delightful staff at your service, we offer a private setting for your special occasion." | Exclusive ¶2 | `owner_copy[24]` S3 | trimmed, "the perfect" to "a" to drop a claim | "blank canvas", "delightful staff at your service", "your special occasion" |
+| "With the beach as your blank canvas and with our delightful staff at your service, we offer a private setting for your special occasion." | Exclusive ¶2 | `owner_copy[24]` S3 | trimmed, "the perfect" to "a" to drop a claim. Read by hand, since the word check finds "a" elsewhere in the source | "blank canvas", "delightful staff at your service", "your special occasion" |
 | "Just by the buzzing and eclectic town of Ahangama, Kabalana Beach has come into its own in recent years with surfers, families, and digital nomads alike." | Kabalana ¶1 S1 | `owner_copy[19]` | clauses moved, trimmed | Triad; "buzzing and eclectic", "come into its own" |
 | "Pristine sand and stunning sunsets have nurtured a laid-back scene where surf lovers, beach bunnies, serial retreat hunters and quiet couples coexist with welcoming locals." | Kabalana ¶1 S2 | `owner_copy[19]` | trimmed, "has" to "have" for grammar | "stunning", "laid-back scene" |
 | "Centuries old Galle Fort, a UNESCO World Heritage Site, is just 25 minutes away." | Kabalana ¶2 S1 | `owner_copy[21]` | trimmed | nothing |
@@ -109,11 +109,11 @@ The ruling requires this list. Each was tested against `owner_copy[]`, `business
 
 **Agent-written, scored in full and clean:** `tagline`, `closing`, `hoursNote`, `stayInfo.note`, the amenity, price and room notes, Casual ¶4, Rooms ¶3, Rooms ¶5, Dining ¶5, Kabalana ¶5. Lists of four or more ("a zero-food waste menu, a ban on single-use plastic, water recycling and a care programme", Rooms ¶3) are not triads. `amenities[]` rows are data labels, so "Beach chairs, loungers and umbrellas" was not scored as rhetoric.
 
-**What this does not settle.** Being exempt does not make these sentences good, only unscored on two checks. Several still read as generated to a stranger ("food heaven highlights", "hypnotised by the allure"), which is the cost the proposal states. Grammar slips remain in exempt lines, and "lends itself to … or simply to celebrate life" does not run parallel. They parse on the first read, so they pass "aloud".
+**What this does not settle.** Being exempt does not make these sentences good, only unscored on two checks. Several still read as generated to a stranger ("food heaven highlights", "hypnotised by the allure"), which is the cost the proposal states. Loose grammar remains in exempt lines: "as temperature cools", "stocks, spice blends, jams are made", "inspired from", "within manageable day trips", and "lends itself to … or simply to celebrate life" does not run parallel. "25 minutes away. While away a whole day" repeats "away" and opens on an idiom a reader may take a beat over. All of them parse on the first read, so none is a fail under this pass's rule.
 
 ## Voice score per section
 
-`Y` pass, `N` fail. "No triads" and "no padding" score only the non-exempt sentences in each section. At page level: honest limit **Y** (`stayInfo.note`, the two amenity notes, the train station, breakfast for two adults); locale cadence **Y** (`en` only).
+`Y` pass, `N` fail. "No triads" and "no padding" score only the non-exempt sentences in each section. "Aloud" uses this pass's rule. At page level: honest limit **Y** (`stayInfo.note`, the two amenity notes, the train station, breakfast for two adults); locale cadence **Y** (`en` only).
 
 | Section | Rhythm | No triads | No padding | Concrete | Register | Aloud | Score | Note |
 |---|---|---|---|---|---|---|---|---|
@@ -122,33 +122,34 @@ The ruling requires this list. Each was tested against `owner_copy[]`, `business
 | Casual Luxe | Y | Y | Y | Y | Y | Y | 6/6 | ¶3, ¶4 scored; plain |
 | Looking after the place | Y | Y | Y | Y | Y | Y | 6/6 | "We strive for sustainable tourism." still sits bare, as the notes say; not a fail |
 | The rooms | Y | Y | Y | Y | Y | Y | 6/6 | ¶3 remains the best writing the agents did |
-| The Dining Room | Y | Y | Y | Y | Y | **N** | 5/6 | The flag above. Round 2's padding half is exempt now |
+| The Dining Room | Y | Y | Y | Y | Y | Y | 6/6 | Up from 5/6. ¶5 is the only line scored on the two checks |
 | Exclusive Use | Y | Y | Y | Y | Y | Y | 6/6 | All exempt |
-| Kabalana and around | Y | Y | Y | Y | Y | Y | 6/6 | ¶3 S1, S2 and ¶5 scored. Up from 4/6 |
+| Kabalana and around | Y | Y | Y | Y | Y | Y | 6/6 | ¶3 S1, S2 and ¶5 scored |
 | `tagline`, `closing`, `featureLine`, `spot`, `hoursNote` | Y | Y | Y | Y | Y | Y | 6/6 | `featureLine`: "this captivating view" has no antecedent when it stands alone over an image; the design must make the view the image |
-| Notes (`stayInfo`, `amenities`, `priceList`, `rooms`) | Y | Y | Y | Y | Y | Y | 6/6 | "ask us who runs them" and the quotation marks in "Our “from” price, plus “++”" read a little oddly from a hotel that would know; the notes own this, and it ends when the owner answers. Not a fail: the limits are honest and the facts allow nothing firmer |
+| Notes (`stayInfo`, `amenities`, `priceList`, `rooms`) | Y | Y | Y | Y | Y | Y | 6/6 | "ask us who runs them" and the quotation marks in "Our “from” price, plus “++”" read a little oddly from a hotel that would know; the notes own this, and it ends when the owner answers. A reader still understands them, and the facts allow nothing firmer |
 
 Also noted, not fails: `bookingLinks[1–4]` keep the colon label, which still avoids promising that `?rid=` preselects a room.
 
 ## Draft against final
 
-`en.draft.json` is the copy before this pass, so its diff is this pass alone. Two fields differ, by script: `copyBlocks[5]` ¶2 and `copyBlocks[7]` ¶3, as the notes say. Against the copywriter's round 2 (`369a73e`), seven fields differ (`copyBlocks[3]`, `[5]`, `[7]`, `stayInfo.note`, `amenities[6].note`, `amenities[7].note`, `priceList[0].note`), all logged. The set of numbers in the file is identical to both. `testimonials` are byte-identical to the dossier. The notes' figures hold: bodies of 974 and 1,133 characters, sentences of 15 and 39 words.
+`en.draft.json` is the copy before this one change. By script, one field differs: `copyBlocks[5]` ¶2, as the brief says. The body is now 992 characters of 1,500, up from 974. Against the copywriter's round 2 (`369a73e`), seven fields differ (`copyBlocks[3]`, `[5]`, `[7]`, `stayInfo.note`, `amenities[6].note`, `amenities[7].note`, `priceList[0].note`), all logged. The set of numbers in the file is identical to both. `testimonials` are byte-identical to the dossier.
 
-Nothing new in the rewrite: Dining ¶2 keeps the same four dishes and the local produce; Kabalana ¶3 keeps the same five places and three things.
+**`sources.md` and `humanizer-notes.md` are imprecise in these places.** None changes a fact, and none fails the copy.
 
-**`sources.md` is imprecise in three small places.** None changes a fact.
-
-1. Kabalana ¶3: its "S1" is now two sentences and its "S2" is the third. This review numbers them S1, S2, S3.
-2. The "not exempt" list does not name `rooms[].note`, which is agent-worded. I scored those in full.
-3. Dining ¶2: "The owner's food and dishes still do the exploring". In the owner's sentence the food does; the dishes are the span of "from … to". See above.
+1. **Both files, "Fix after the third review pass":** `"and" replaces a comma and the owner's "or"`. By word check the owner's "or" is still there, capitalised, opening S3. Only the comma went.
+2. **`sources.md`, the ruling table and the Dining ¶2 row** still quote the superseded sentence and its form ("or" to "and"). The fix is in a note at the end of the file, and the rows were not changed. The same is true of the Kabalana ¶3 row (S1 and S2 numbering) and the "not exempt" list (`rooms[].note`), which the corrections note covers.
+3. **`sources.md`, "For the copyeditor":** "the diff against it is this pass's two sentences and nothing else". `en.draft.json` has moved on since, and the diff is now the one paragraph.
+4. **`humanizer-notes.md`:** the header's input line and the "Fences checked" paragraph describe `en.draft.json` as it stood before this change: "only `copyBlocks[5]` ¶2 and `copyBlocks[7]` ¶3 differ", and "974" for the body that is now 992. The "Left alone on purpose" entry for Dining ¶2 also still gives the old form.
 
 ## Calls I made on the fact audit
 
 Stated so a person can disagree.
 
-- **The same line as rounds 1 and 2.** The hotel's statement about its own premises, offer or beliefs is `sourced`. A ranking or frequency about the wider world, with only hotel marketing behind it, is not. On the current text no such ranking or frequency remains.
-- **Trend and quantity words about the area stay `shared-context`:** "has come into its own in recent years", "an ever-growing cafe and restaurant scene", "has grown into a foodies’ haven", and now "plenty of places to eat". I read the comparatives rule as aimed at claims that rank or count something. These rank nothing, name no number and are not attributed to the hotel. They are not `framing`: each is a claim with a dossier key. A stricter reader could mark them `unsourced`. If Alon or Shahar reads them that way, they go to the copywriter.
-- **"be back in time for a late lunch or cocktail" moved from `framing` to `shared-context`.** Round 2 called it atmosphere, but it is a claim about how long a day trip takes. `owner_copy[23]` carries it, and the dossier has no drive time for Yala, Udwalawe or Singharaja to check it against. On the owner's list below.
+- **The same line as rounds 1 to 3.** The hotel's statement about its own premises, offer or beliefs is `sourced`. A ranking or frequency about the wider world, with only hotel marketing behind it, is not. On the current text no such ranking or frequency remains.
+- **Alon's approval settles the voice of the two Dining sentences, not their facts.** I audited them like any others. They would have gone back to the copywriter if the audit had found a claim the dossier does not hold.
+- **Trend and quantity words about the area stay `shared-context`:** "has come into its own in recent years", "an ever-growing cafe and restaurant scene", "has grown into a foodies’ haven", and "plenty of places to eat". I read the comparatives rule as aimed at claims that rank or count something. These rank nothing, name no number and are not attributed to the hotel. They are not `framing`: each is a claim with a dossier key. A stricter reader could mark them `unsourced`. If Alon or Shahar reads them that way, they go to the copywriter.
+- **"plenty of places to eat" in detail.** `owner_copy[22]` says "a dizzying array of dining options" at the five beaches together, so "plenty" is narrower than what it replaced. Beyond the hotel, support is partial: `quotes[0]` covers Weligama and is machine-translated, and `quotes[5]` covers the hotel's own surroundings. For Midigama, Mirissa, Madiha and Hiriketiya Bay there is only the hotel's word.
+- **"be back in time for a late lunch or cocktail" stays `shared-context`.** It is a claim about how long a day trip takes. `owner_copy[23]` carries it, and the dossier has no drive time for Yala, Udwalawe or Singharaja to check it against. On the owner's list below.
 - **"Pristine" stays `shared-context`.** One guest (`reviews.quotes[7]`, 2026-02) reports debris from demolished structures on the beach; two others call it clean (`quotes[5]` 2026-02, `quotes[1]` 2026-07, the latter machine-translated). The evidence leans the hotel's way, and the harvester did not record a contradiction.
 - **"unobstructed" stays `sourced`.** `room_types[].site_summary` "full ocean views"; `quotes[0]` "all the rooms face the ocean"; the same `quotes[7]` calls the view "wonderful" despite the structures.
 - **"King bed" on the Director's Suite stays `sourced`.** `contradictions.suite_bed` has a side taken and not shown: two of three own-surface mentions, and it understates rather than flatters. Owner item.
@@ -209,7 +210,8 @@ Keys are dossier paths.
 | "Elevated Comfort Food was the brief for our visiting menu designer, Chef Christophe DuBois." | Dining ¶1 S1 | `owner_copy[12]`, `dining.menu_designer` | `sourced` |
 | "Working closely with our owner, a self-confessed “easy foodie”, the team conjured a delectable array of dishes inspired from a global set-list of food heaven highlights." | Dining ¶1 S2 | `owner_copy[12]` | `sourced` |
 | "We truly believe some of the island’s best qualities may be expressed through our food." | Dining ¶2 S1 | `owner_copy[10]`. A stated belief, not a ranking of the hotel | `sourced` |
-| "Our signature Sri Lankan rice & curry, our zesty DIY poke bowls, our localized “Tom Yum” style noodles with fresh Ceylon prawns and a finger licking array of delicious homemade desserts explore the diversity of the local produce available." | Dining ¶2 S2 | `owner_copy[10]`, `dining.dishes`, same four dishes; `dining.concept` for local produce. Reasoning above. Voice: the flag | `sourced` |
+| "Our signature Sri Lankan rice & curry, our zesty DIY poke bowls and our localized “Tom Yum” style noodles with fresh Ceylon prawns explore the diversity of the local produce available." | Dining ¶2 S2 | `owner_copy[10]`, `dining.dishes`, `dining.concept` for local produce. Reasoning above | `sourced` |
+| "Or go directly to a finger licking array of delicious homemade desserts." | Dining ¶2 S3 | `owner_copy[10]`, `dining.dishes` "homemade desserts" | `sourced` |
 | "Our breads, pastas, sauces, infused mayonnaise, stocks, spice blends, jams are made in-house and the menus subtly evolve with the seasons." | Dining ¶3 | `owner_copy[11]`, `dining.made_in_house` | `sourced` |
 | "If you don’t find what you crave, simply ask our team to prepare what your tummy desires." | Dining ¶4 S1 | `owner_copy[9]` | `sourced` |
 | "Dishes catering to vegetarian, vegan, keto and other dietary lifestyles are available." | Dining ¶4 S2 | `owner_copy[9]`, `facilities` | `sourced` |
@@ -222,7 +224,7 @@ Keys are dossier paths.
 | "Centuries old Galle Fort, a UNESCO World Heritage Site, is just 25 minutes away." | Kabalana ¶2 S1 | `owner_copy[21]`, `location.nearby[0]`; `quotes[0]` "20-30-minute drive" (machine-translated) | `sourced` |
 | "While away a whole day browsing through an eclectic array of boutiques, stopping for well-earned sips and bites from an ever-growing cafe and restaurant scene." | Kabalana ¶2 S2 | `owner_copy[21]` | `shared-context` |
 | "The nearby beaches of Midigama, Weligama, Mirissa, Madiha and Hiriketiya Bay have surf points and whale-watching boat rides." | Kabalana ¶3 S1 | `owner_copy[22]`, `location.nearby[1]` (no distances given, and the copy gives none) | `shared-context` |
-| "You will find plenty of places to eat there too." | Kabalana ¶3 S2 | `owner_copy[22]` "a dizzying array of dining options"; partial: `quotes[0]` (Weligama, machine-translated), `quotes[5]` (near the hotel). See above | `shared-context` |
+| "You will find plenty of places to eat there too." | Kabalana ¶3 S2 | `owner_copy[22]` "a dizzying array of dining options"; partial: `quotes[0]` (Weligama, machine-translated), `quotes[5]` (near the hotel). See "Calls I made" | `shared-context` |
 | "Our own town Ahangama has grown into a foodies’ haven with a diverse selection of high-quality eateries and night spots." | Kabalana ¶3 S3 | `owner_copy[22]`, "stone's throw" correctly cut | `shared-context` |
 | "Yala and Udwalawe National Parks, Singharaja Forest and awe-inspiring waterfalls are within manageable day trips from The Sandhya." | Kabalana ¶4 S1 | `owner_copy[23]`, `location.nearby[2]`, spellings as published | `shared-context` |
 | "Depart your room in the crisp early morning and be back in time for a late lunch or cocktail." | Kabalana ¶4 S2 | `owner_copy[23]`. See "Calls I made" | `shared-context` |
@@ -282,8 +284,8 @@ Exact matches below were checked by script this round.
 |---|---|---|---|
 | Trip.com, 9.7/10, 56, 2026-11-06 | `ratings[0]` | `reviews.trip`, first-hand; score, count and URL exact | `sourced` |
 | Kayak, 9.4/10, 159, 2026-11-06 | `ratings[1]` | `reviews.kayak`, `via_digest`; score, count and URL exact | `sourced`, person to read before go-live |
-| "It’s a beautiful place …", Guest User, 2026-06 | `testimonials[0]` | `reviews.quotes[3]`, exact match, date matches, not machine-translated, 473 characters | `sourced` |
-| "A great stay …", Guest User, 2026-02 | `testimonials[1]` | `reviews.quotes[6]`, exact match, date matches, not machine-translated, 387 characters | `sourced` |
+| "It’s a beautiful place …", Guest User, 2026-06 | `testimonials[0]` | `reviews.quotes[3]`, exact match, author and date match, not machine-translated, 473 characters | `sourced` |
+| "A great stay …", Guest User, 2026-02 | `testimonials[1]` | `reviews.quotes[6]`, exact match, author and date match, not machine-translated, 387 characters | `sourced` |
 | +94765700007 | `contact.phone` | `contact.phone`, exact | `sourced` |
 | reservations@thesandhya.com | `contact.email` | `contact.email`, exact | `sourced` |
 | "Baranige Wattha Walhengoda, Ahangama 80650, Sri Lanka" | `contact.address` | `location.address`, exact; postcode source noted in `sources.md` per playbook §6 | `sourced` |
@@ -295,7 +297,7 @@ Exact matches below were checked by script this round.
 
 ## Completeness (`beach_lodging`)
 
-Must have: `rooms[]` 4, `bookingLinks[]` 5, `photos[]` 187 in the dossier for the deployer. Should have: `stayInfo`, `amenities[]`, `ratings[]`, `testimonials[]`, `spot` all set. `season`, `openingHours` and `contact.whatsapp` are empty, each with a stated reason in `sources.md` that holds against the dossier. Two testimonials stand, by the operator's decision against excerpting: not a defect. Caps on the prose fields, labels, notes and quotes were checked by script and met; the longest body is Kabalana at 1,133 of 1,500, and `copyBlocks[]` is at its limit of 8. No section is padded to look full. No duplicate fact across two blocks: Kabalana ¶3's places to eat are at the five beaches and its eateries are in Ahangama, which are different places. Rates in Rooms ¶5 and the link in `closing` are disclosed in `sources.md` and say different things, as do rain shower pressure (Rooms ¶2) and size (¶3).
+Must have: `rooms[]` 4, `bookingLinks[]` 5, `photos[]` 187 in the dossier for the deployer. Should have: `stayInfo`, `amenities[]`, `ratings[]`, `testimonials[]`, `spot` all set. `season`, `openingHours` and `contact.whatsapp` are empty, each with a stated reason in `sources.md` that holds against the dossier. Two testimonials stand, by the operator's decision against excerpting: not a defect. Caps on the prose fields, labels, notes and quotes were checked by script and met; the longest body is Kabalana at 1,133 of 1,500, and `copyBlocks[]` is at its limit of 8. No section is padded to look full. No duplicate fact across two blocks: the new sentence adds no fact, and the dishes are still only in Dining ¶2. Kabalana ¶3's places to eat are at the five beaches and its eateries are in Ahangama, which are different places. Rates in Rooms ¶5 and the link in `closing` are disclosed in `sources.md` and say different things, as do rain shower pressure (Rooms ¶2) and size (¶3).
 
 For the designer, not a copy fail, carried from round 1: `testimonials[].source` is `other` and the schema has no URL or label on a testimonial, so nothing in the content names Trip.com for the two quotes, and playbook §6 asks for the source. `ratings[].platform` is `other` for both rows too: the design must print each name.
 
@@ -309,14 +311,12 @@ None of these is a defect in the copy under the prompt.
 4. **"संध्य".** Copied correctly from the hotel's text, so `sourced`. From general knowledge, not from the dossier: the usual Sanskrit spelling of the word is "संध्या", with a final long vowel. Worth one check by someone who reads Devanagari before a large word on the page carries it.
 5. **"family reunion" beside "adults-only".** Both are the hotel's words. A guest listed as "(Family)" appears in `reviews.quotes[0]`, and `contradictions.age_policy` is open. The owner should say whether Exclusive Use lifts the age limit.
 6. **Owner items already in `sources.md`:** pool length, "++", the triple supplement, minimum age, check-in time, who runs surf lessons and board hire, "just a few meters", 2017 and 2023, "Udwalawe" and "Singharaja", "Bottled water" beside the plastic ban.
-7. **New this round: "be back in time for a late lunch".** The hotel's claim for day trips to Yala, Udwalawe and Singharaja. The dossier holds no drive time, so only the owner can stand behind it.
+7. **"be back in time for a late lunch".** The hotel's claim for day trips to Yala, Udwalawe and Singharaja. The dossier holds no drive time, so only the owner can stand behind it.
 
 ## What must change to pass
 
-**Dining ¶2 S2** must read aloud without the misreadings above. Nothing else fails. Voice would normally go to the humanizer; on this pass the business stops for Alon.
-
-**Copywriter:** nothing. **Facts:** nothing.
+Nothing. **Copywriter:** nothing. **Humanizer:** nothing.
 
 ## Not covered
 
-No live page was opened and nothing was re-fetched: the dossier is the ground truth for this review, so the items under "For a person" remain open. Photos and captions are outside it, as the copy has none. No research check: the run is outbound. `dossier.json` was read in full except `images[]`, `videos[]` and `rate_snapshots`, which were skipped because the copy has no captions, no video and no OTA price. `audit.json` was not read, because the audit is never a source for a claim (hard constraint 2). "Aloud" is a judgement made from the text, as in earlier rounds, not a recording of anyone reading it.
+No live page was opened and nothing was re-fetched: the dossier is the ground truth for this review, so the items under "For a person" remain open. Photos and captions are outside it, as the copy has none. No research check: the run is outbound. `dossier.json` was read in full except `images[]`, `videos[]` and `rate_snapshots`, which were skipped because the copy has no captions, no video and no OTA price; only the count of `images[]` was taken. `audit.json` was not read, because the audit is never a source for a claim (hard constraint 2). "Aloud" is a judgement made from the text, as in earlier rounds, not a recording of anyone reading it. I did not see Alon's own words: his approval of the Dining wording and his rule for this pass reached this review through the session's brief and, for the wording, the files named at the top.

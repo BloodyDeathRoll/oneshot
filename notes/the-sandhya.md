@@ -4,7 +4,7 @@ Run `2026-11-ahangama-01`, owner alon, branch `alon/the-sandhya`, `mode: test` (
 
 ## State
 
-`copy_failed`, third pass, on voice alone and one sentence: Dining ¶2 S2. Facts are clean. Stopped for Alon (his decision, 2026-11-06: do not send the business to the harvester or out of the run). 2.20M tokens and 122 minutes used. Budget raised by Alon on 2026-11-06 to 10M tokens and 600 minutes, at 1.28M and 86 minutes used; 1.81M and 109 minutes used now; review it again at gate b.
+`copy_passed`, fourth pass. Next: 4d concept, 4e mockups, 4f pre-score, then gate b. The pass rests on rulings and says so in `copy/review.md`: 42 sentences are exempt from "no triads" and "no padding", and on this pass voice could fail only for what a reader would get wrong or stumble over. The session proposed that condition in the option Alon chose on 2026-11-06. Budget raised by Alon on 2026-11-06 to 10M tokens and 600 minutes, at 1.28M and 86 minutes used; 1.81M and 109 minutes used now; review it again at gate b.
 
 ## Decided 2026-11-06 (Alon: "you decide")
 
@@ -13,7 +13,7 @@ Run `2026-11-ahangama-01`, owner alon, branch `alon/the-sandhya`, `mode: test` (
 
 ## Copy round 3
 
-Done. What is left is Dining ¶2 S2 and the small `sources.md` imprecisions in `sites/the-sandhya/copy/review.md`. The sentence misreads because round 2 cut the hotel's "going directly to"; the fix waits for Alon.
+Done. Dining ¶2 S2 and S3 are the wording Alon approved. `copy/sources.md` and `humanizer-notes.md` keep small stale rows on the older Dining sentence and the draft diff; `copy/en.json` and `copy/review.md` are right. For a person before go-live: `copy/review.md`, "For a person".
 
 ## Do not lose
 
