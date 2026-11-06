@@ -1,0 +1,315 @@
+---
+/**
+ * The home page: a port of the picked mockup (mockups/interactive, "Morning swim", 4f round 2) to content.json.
+ * Same markup, CSS and script as the mockup; every schema-covered word, number, link, photo and video comes from
+ * src/tenant/content.json (lib/site.mjs), SCHEMA GAP content from src/gaps/gaps.json, interface wording from
+ * lib/labels.json. Changes from the mockup are the 4f round-2 polish (notes.md "4g changes"), marked "4g:".
+ */
+import css from '../styles/site.css?raw'
+import js from '../scripts/site.js?raw'
+import {
+  c, G, L, I, e, t, P, paras, block, money, unit, NAME, ENGINE, roomUrl, wa, TEL, PHONE, MAIL, MAP, ADDRESS, SOCIAL,
+  RATINGS, REVIEWS, img, srcOf, srcset, shapeKey, tiersOf, sources, LOGO,
+} from '../lib/site.mjs'
+
+const ENG = ENGINE?.url ?? '#book'
+const WA_BOOK = wa(L.wa_book)
+const photo = (n) => c.photos?.[n]?.image ?? null
+const byHeading = (h) => (c.copyBlocks ?? []).find((b) => b.heading === h) ?? null
+/* copy blocks by slot, in the admin's order (copy/en.json): intro, about ×4, offer, info ×2 */
+const welcome = block('intro', 0)
+const pool = block('about', 0), resto = block('about', 1), fitB = block('about', 2), surfB = block('about', 3)
+const offer = block('offer', 0)
+const groups = block('info', 0), around = block('info', 1)
+
+/* rooms: card = rooms[].photo; gallery = the photo's 3:2 crop + the gap gallery */
+const sizeOf = (r) => /^(\d+\s?m²)/.exec(r.note ?? '')?.[1] ?? ''
+const rooms = (c.rooms ?? []).map((r, i) => ({
+  i, key: `room-${i}`, label: r.label, beds: r.beds ?? '', note: r.note ?? '', sleeps: r.sleeps ?? 1, size: sizeOf(r),
+  url: roomUrl(r.label), photo: r.photo,
+  facts: [sizeOf(r), r.sleeps ? t(L.sleeps, { n: r.sleeps }) : ''].filter(Boolean).join(' · '),
+  photos: [
+    ...(r.photo?.filename ? [{ src: srcOf(r.photo.filename, shapeKey(2 / 3), 1200), srcset: srcset(r.photo.filename, shapeKey(2 / 3)), alt: r.photo.alt }] : []),
+    ...((G.roomGalleries ?? {})[r.label] ?? []).map((g) => ({ src: srcOf(g.file, shapeKey(2 / 3), 1200), srcset: srcset(g.file, shapeKey(2 / 3)), alt: g.alt })),
+  ],
+}))
+const DATA = { engine: ENG, wa: wa('').replace(/\?text=$/, ''), waText: L.wa_book_stem, rooms: rooms.map(({ key, label, url, beds, note, sleeps, facts, photos }) => ({ key, label, url, beds, note, sleeps, facts, photos })) }
+
+const priceRow = (label) => (c.priceList ?? []).find((p) => p.label === label)
+const sep = '<span class="sep" aria-hidden="true">|</span>'
+const st = c.stayInfo ?? {}
+const bk = RATINGS.find((r) => r.platform === 'booking')
+
+/* ---------- hero (schema v0.9 snippet + this template's portrait tier) ---------- */
+const hv = tiersOf(c.heroVideo), hp = c.heroVideoPoster
+const PORTRAIT = '(max-width: 767px) and (orientation: portrait)'
+const heroImg = hp?.filename ? `<picture><source type="image/webp" media="${PORTRAIT}" srcset="${srcset(hp.filename, shapeKey(16 / 9, 'p'))}" sizes="100vw"><img src="${srcOf(hp.filename, 'full', 1920)}" srcset="${srcset(hp.filename, 'full')}" sizes="100vw" width="1920" height="1080" alt="${e(hp.alt)}" fetchpriority="high"></picture>` : ''
+const heroVideo = hv ? `<video id="hero-video" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true">${sources([
+  [hv.p1080?.webm, PORTRAIT], [hv.p1080?.mp4, PORTRAIT], [hv.m1280?.webm, '(max-width: 767px)'], [hv.m1280?.mp4, '(max-width: 767px)'], [hv.d1920?.webm], [hv.d1920?.mp4],
+])}</video>` : ''
+
+/* ---------- clips (videos[0] Welcome, videos[1] fitness) ---------- */
+const clip = (row, tierList, posterSizes) => {
+  if (!row?.video) return ''
+  const tv = tiersOf(row.video)
+  const poster = row.poster?.filename ? img(row.poster.filename, shapeKey(1.25), { alt: row.poster.alt, sizes: posterSizes }) : ''
+  return poster + (tv ? `<video data-lazy muted loop playsinline preload="none" disablepictureinpicture aria-label="${e(row.description)}">${sources(tierList(tv))}</video>` : '')
+}
+const welcomeClip = clip(c.videos?.[0], (tv) => [[tv.p900?.webm], [tv.p900?.mp4]], '(max-width:860px) 92vw, 440px')
+const fitnessClip = clip(c.videos?.[1], (tv) => [[tv.m720?.webm], [tv.m720?.mp4]], '(max-width:860px) 100vw, 50vw')
+
+/* ---------- sections ---------- */
+const cards = rooms.map((r) => `
+      <a class="card" href="${e(r.url)}" data-book data-room="${r.key}" aria-label="${e(t(L.card_aria, { room: r.label, size: r.size, n: r.sleeps }))}">
+        ${r.photo?.filename ? img(r.photo.filename, shapeKey(1.25), { alt: r.photo.alt, sizes: '(max-width:980px) 76vw, 300px' }) : ''}
+        <span class="go" aria-hidden="true">${e(L.look)} ${I.arr}</span>
+        <span class="ct"><h3>${e(r.label)}</h3><span class="meta">${e(r.facts)}</span></span>
+      </a>`).join('')
+
+const dp = priceRow('Pool day pass')
+const menu = (G.menuTabs ?? []).map((m, i) => ({ ...m, i, image: photo(m.photo) }))
+const tabs = menu.map((m) => `<button class="tab" role="tab" type="button" id="t-${m.i}" aria-controls="m-${m.i}" aria-selected="${m.i === 0}">${e(m.label)}</button>`).join('')
+const panels = menu.map((m) => `<div class="menu-panel" role="tabpanel" id="m-${m.i}" aria-labelledby="t-${m.i}"><h3>${e(m.label)}</h3><ul class="dishes">${m.dishes.map((d) => `<li>${e(d)}</li>`).join('')}</ul></div>`).join('')
+const plates = menu.map((m) => (m.image ? img(m.image.filename, shapeKey(1.25), { alt: m.image.alt, sizes: '(max-width:860px) 100vw, 50vw', cls: m.i === 0 ? 'on' : '' }) : '')).join('')
+
+const cw = G.classWeek
+const week = cw ? Object.entries(L.days).map(([k, [d]]) => (k === cw.off ? `<li class="day off"><b>${d}</b><span>${e(L.day_off)}</span></li>` : `<li class="day"><b>${d}</b><span>${e(cw.time)}</span></li>`)).join('') : ''
+const classRows = (c.priceList ?? []).filter((p) => p.label.startsWith('Fitness class: '))
+const rates = classRows.map((p) => { const who = p.label.split(': ')[1]; return `<span>${e(who.charAt(0).toUpperCase() + who.slice(1))} <span class="price">${e(money(p))}</span></span>` }).join(sep)
+
+const massages = [...new Set((c.priceList ?? []).filter((p) => /Massage, /.test(p.label)).map((p) => p.label.split(', ')[0]))]
+const mrow = (name) => {
+  const rows = (c.priceList ?? []).filter((p) => p.label.startsWith(name + ', '))
+  return `<div class="mass-row"><h3>${e(name)}</h3>${rows.map((p) => `<p><span>${e(p.label.slice(name.length + 2))}</span><span class="price">${e(money(p))}</span></p>`).join('')}</div>`
+}
+
+const quotes = REVIEWS.map((q) => `<blockquote class="quote"><p>${e(q.quote)}</p><footer>${e(q.author)} <span>· ${e(t(L.on, { p: q.src }))}</span></footer></blockquote>`).join('')
+const scores = RATINGS.map((r) => `<a class="score" href="${e(r.url)}" rel="noopener"><span class="n">${r.score}<small>/${r.scale}</small></span><span>${e(r.name)}<br><small>${e(t(L.reviews, { n: r.count, d: r.day }))}</small></span></a>`).join('')
+
+const stops = (G.distances ?? []).map((d) => `<li><b>${e(d.distance)}</b><span>${e(d.place)}</span></li>`).join('')
+const amen = (c.amenities ?? []).map((a) => `<span><b>${e(a.label)}</b>${a.note ? ` (${e(a.note)})` : ''}</span>`).join(sep)
+
+const ICON_OF = { instagram: [I.ig, 'Instagram'], facebook: [I.fb, 'Facebook'], youtube: [I.yt, 'YouTube'] }
+const social = SOCIAL.filter((s) => ICON_OF[s.platform]).map((s) => `<a class="ic" href="${e(s.url)}" rel="noopener" aria-label="${ICON_OF[s.platform][1]}">${ICON_OF[s.platform][0]}</a>`).join('')
+
+const closingImg = photo(6)
+const guestN = (n) => t(L.guest_n[n === 1 ? 0 : 1], { n })
+
+const page = `
+<a class="vh" href="#main">${e(L.skip)}</a>
+<header class="hdr">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="${e(L.top)}"></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#rooms">${e(L.nav.rooms)}</a><a href="#restaurant">${e(L.nav.restaurant)}</a><a href="#fitness">${e(L.nav.fitness)}</a><a href="#getting-here">${e(L.nav.here)}</a>
+    </nav>
+    <a class="btn" href="${e(ENG)}" data-book>${e(L.check)}</a>
+    ${WA_BOOK ? `<a class="hdr-wa" href="${e(WA_BOOK)}" aria-label="${e(L.wa_aria)}">${I.wa}</a>` : ''}
+  </div>
+</header>
+<main id="main">
+<section class="hero" id="top" aria-label="${e(G.heroTitle?.value ?? NAME)}">
+  <div class="hero-media">${heroImg}${heroVideo}</div>
+  <div class="hero-c">
+    <h1>${e(G.heroTitle?.value ?? NAME)}</h1>
+    <a class="btn" href="${e(ENG)}" data-book>${e(L.check)}</a>
+  </div>
+  <span id="hero-sentinel" style="position:absolute;bottom:0;left:0;height:1px;width:1px"></span>
+</section>
+${welcome ? `
+<section class="sec tint lilac welcome" aria-labelledby="h-welcome">
+  <div class="wrap">
+    <div>
+      <h2 id="h-welcome">${e(welcome.heading)}</h2>
+      ${c.featureLine ? `<p class="feature">${e(c.featureLine)}</p>` : ''}
+      ${c.tagline ? `<p class="lead">${e(c.tagline)}</p>` : ''}
+      ${P(welcome.body)}
+    </div>
+    <div class="clip">${welcomeClip}</div>
+  </div>
+</section>` : ''}
+<section class="sec rooms" id="rooms" aria-labelledby="h-rooms">
+  <div class="wrap rooms-head">
+    <h2 id="h-rooms">${e(offer?.heading ?? L.nav.rooms)}</h2>
+    <div>${P(offer?.body)}</div>
+  </div>
+  ${photo(0) ? `<div class="ring">${img(photo(0).filename, 'full', { alt: photo(0).alt, sizes: '100vw', attrs: ' data-par="1"' })}</div>` : ''}
+  <div class="wrap cards">
+    <div class="track">${cards}
+    </div>
+    <p class="line stay-notes">${[
+      st.checkInFrom ? `<span><b>${e(L.checkin)}</b> ${e(t(L.checkin_from, { t: st.checkInFrom }))}</span>` : '',
+      st.checkOutTo ? `<span><b>${e(L.checkout)}</b> ${e(t(L.checkout_to, { t: st.checkOutTo }))}</span>` : '',
+      st.note ? `<span>${e(st.note)}</span>` : '',
+    ].filter(Boolean).join(sep)}</p>
+  </div>
+</section>
+${pool ? `
+<section class="pool" aria-labelledby="h-pool">
+  ${photo(1) ? `<div class="bleed">${img(photo(1).filename, shapeKey(1000 / 1800), { alt: photo(1).alt, sizes: '100vw' })}</div>` : ''}
+  <div class="wrap split">
+    <h2 id="h-pool">${e(pool.heading)}</h2>
+    <div>
+      ${P(pool.body)}
+      ${dp ? `<p class="line"><b>${e(dp.label)}</b>${sep}<span class="price">${e(money(dp))}</span> ${e(unit(dp))}${dp.note ? `${sep}${e(dp.note)}` : ''}</p>` : ''}
+    </div>
+  </div>
+</section>` : ''}
+${resto ? `
+<section class="tint peach resto" id="restaurant" aria-labelledby="h-resto">
+  <div class="plates">${plates}</div>
+  <div class="resto-t">
+    <h2 id="h-resto">${e(resto.heading)}</h2>
+    ${P(resto.body)}
+    ${menu.length ? `<div class="tabs" role="tablist" aria-label="${e(L.tabs_aria)}"><span class="pill" aria-hidden="true"></span>${tabs}</div>${panels}` : ''}
+    ${c.hoursNote ? `<p class="hours">${I.clock}<span>${e(c.hoursNote)}</span></p>` : ''}
+  </div>
+</section>` : ''}
+${fitB ? `
+<section class="fit" id="fitness" aria-labelledby="h-fit">
+  <div class="fit-t">
+    <h2 id="h-fit">${e(fitB.heading)}</h2>
+    ${P(fitB.body)}
+    ${cw ? `<h3 class="small-h">${e(cw.title)}</h3><ul class="week" aria-label="${e(t(L.week_aria, { title: cw.title, time: cw.time, off: L.days[cw.off][1] }))}">${week}</ul>` : ''}
+    ${rates ? `<p class="line rates"><b>${e(L.per_class)}</b>${sep}${rates}</p>` : ''}
+  </div>
+  <div class="vclip">${fitnessClip}</div>
+</section>` : ''}
+${surfB ? `
+<section class="surf" aria-labelledby="h-surf">
+  ${photo(4) ? `<div class="bleed">${img(photo(4).filename, 'full', { alt: photo(4).alt, sizes: '100vw' })}</div>` : ''}
+  <div class="tint lilac sec-s">
+    <div class="wrap split">
+      <div>
+        <h2 id="h-surf">${e(surfB.heading)}</h2>
+        ${P(surfB.body)}
+      </div>
+      <div class="mass">${massages.map(mrow).join('')}</div>
+    </div>
+  </div>
+</section>` : ''}
+${REVIEWS.length || RATINGS.length ? `
+<section class="sec guests" aria-labelledby="h-guests">
+  <div class="wrap">
+    <div class="guests-head">
+      <h2 id="h-guests">${e(L.guests_h)}</h2>
+      <div class="scores">${scores}</div>
+    </div>
+    <div class="quotes" tabindex="0" aria-label="${e(L.quotes_aria)}">${quotes}</div>
+    <div class="qctl"><button class="rbtn" id="qprev" type="button" aria-label="${e(L.prev_review)}">${I.l}</button><div class="dots" id="qdots"></div><span class="qcount" id="qcount" aria-live="polite"></span><button class="rbtn" id="qnext" type="button" aria-label="${e(L.next_review)}">${I.r}</button></div>
+  </div>
+</section>` : ''}
+${around ? `
+<section class="sec tint sage around" id="getting-here" aria-labelledby="h-around">
+  <div class="wrap">
+    <div>
+      <h2 id="h-around">${e(around.heading)}</h2>
+      ${P(around.body)}
+      ${ADDRESS ? `<p class="addr">${I.pin}<span>${e(ADDRESS)}</span></p>` : ''}
+      <div class="btns">${MAP ? `<a class="btn soft" href="${e(MAP)}" rel="noopener">${e(L.maps)} ${I.arr}</a>` : ''}${wa(L.wa_ride) ? `<a class="btn soft" href="${e(wa(L.wa_ride))}">${I.wa} ${e(L.ride)}</a>` : ''}</div>
+    </div>
+    ${stops ? `<div><h3 class="small-h">${e(L.from_resort)}</h3><ul class="stops">${stops}</ul></div>` : ''}
+    ${amen ? `<div class="know"><h3 class="small-h">${e(L.good_to_know)}</h3><p class="line">${amen}</p></div>` : ''}
+  </div>
+</section>` : ''}
+${groups ? `
+<section class="sec groups" aria-labelledby="h-groups">
+  <div class="wrap">
+    ${photo(5) ? `<div class="gpic">${img(photo(5).filename, shapeKey(2 / 3), { alt: photo(5).alt, sizes: '(max-width:860px) 100vw, 640px' })}</div>` : ''}
+    <div>
+      <h2 id="h-groups">${e(groups.heading)}</h2>
+      ${P(groups.body)}
+      ${wa(L.wa_group) ? `<a class="btn" style="--bg:var(--ink)" href="${e(wa(L.wa_group))}">${I.wa} ${e(L.group_btn)}</a>` : ''}
+    </div>
+  </div>
+</section>` : ''}
+<section class="closing" id="book" aria-label="${e(L.book_aria)}">
+  ${closingImg ? img(closingImg.filename, shapeKey(0.5625), { alt: closingImg.alt, sizes: '100vw' }) : ''}
+  <div class="wrap">
+    ${c.closing ? `<p>${e(c.closing)}</p>` : ''}
+    <div class="btns"><a class="btn" href="${e(ENG)}" data-book>${e(L.check)} ${I.arr}</a>${WA_BOOK ? `<a class="btn ghost" href="${e(WA_BOOK)}"><span class="wa-c">${I.wa}</span> ${e(L.whatsapp)}</a>` : ''}</div>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <span class="logo" role="img" aria-label="${e(G.logo?.alt ?? NAME)}"></span>
+      ${c.tagline ? `<p>${e(c.tagline)}</p>` : ''}
+      ${ADDRESS ? `<p class="addr">${I.pin}<span>${e(ADDRESS)}</span></p>` : ''}
+    </div>
+    <div>
+      <h3>${e(L.talk)}</h3>
+      <div class="cbtns">
+        ${WA_BOOK ? `<a class="btn soft sm" href="${e(WA_BOOK)}"><span class="wa-c">${I.wa}</span> ${e(L.whatsapp)} ${e(PHONE)}</a>` : ''}
+        ${TEL ? `<a class="btn soft sm" href="${e(TEL)}">${I.tel} ${e(L.call)} ${e(PHONE)}</a>` : ''}
+        ${MAIL ? `<a class="btn soft sm" href="mailto:${e(MAIL)}">${I.mail} ${e(MAIL)}</a>` : ''}
+      </div>
+    </div>
+    <div>
+      <h3>${e(L.follow)}</h3>
+      <div class="icons">${social}</div>
+      <a class="btn" href="${e(ENG)}" data-book>${e(L.book_direct)} ${I.arr}</a>
+    </div>
+    <p class="small">© ${e(NAME)}, Kabalana</p>
+  </div>
+</footer>
+<div class="bar" aria-label="${e(L.bar_aria)}"><a class="btn" href="${e(ENG)}" data-book>${e(L.check)}</a>${WA_BOOK ? `<a class="wa" href="${e(WA_BOOK)}" aria-label="${e(L.wa_aria)}">${I.wa}</a>` : ''}</div>
+${WA_BOOK ? `<a class="fwa" href="${e(WA_BOOK)}" aria-label="${e(L.wa_aria)}">${I.wa}</a>` : ''}
+
+<div class="scrim" id="scrim" hidden></div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dr-title" hidden>
+  <div class="dr-head"><h2 id="dr-title">${e(ENGINE?.label ?? L.check)}</h2><button class="x" type="button" aria-label="${e(L.close)}">${I.x}</button></div>
+  <div class="dr-body">
+    <div class="pick" role="group" aria-label="${e(L.pick_aria)}">${rooms.map((r) => `<button class="rchip" type="button" data-room="${r.key}" aria-pressed="false">${r.photo?.filename ? `<img src="${srcOf(r.photo.filename, shapeKey(1.25), 120)}" width="52" height="52" alt="" loading="lazy">` : ''}<span><b>${e(r.label)}</b><small>${e(r.facts)}</small></span></button>`).join('')}</div>
+    <div class="room"><div>
+      <div class="gal"><div class="slides"></div><button class="rbtn prev" type="button" aria-label="${e(L.prev_photo)}">${I.l}</button><button class="rbtn next" type="button" aria-label="${e(L.next_photo)}">${I.r}</button><div class="dots"></div></div>
+      <div class="rd"><h3></h3><p class="facts"></p><p class="beds"></p><p class="note"></p></div>
+    </div></div>
+    ${offer ? `<p class="inc">${e(paras(offer.body)[0])}</p>` : ''}
+    ${bk ? `<p class="trust"><b>${bk.score}</b><span>${e(t(L.trust, { n: bk.count, d: bk.day }))}</span></p>` : ''}
+    <div class="form">
+      <div class="fl"><input id="f-arr" type="date" name="start"><label for="f-arr">${e(L.arrival)}</label></div>
+      <div class="fl"><input id="f-dep" type="date" name="end"><label for="f-dep">${e(L.departure)}</label></div>
+      <div class="fl full"><select id="f-gst" name="numberOfGuests">${[1, 2, 3, 4].map((n) => `<option value="${n}"${n === 2 ? ' selected' : ''}>${e(guestN(n))}</option>`).join('')}</select><label for="f-gst">${e(L.guests)}</label>${I.down}</div>
+    </div>
+    <p class="prices">${e(L.prices_note)}</p>
+  </div>
+  <div class="dr-foot">
+    <a class="btn" id="dr-go" href="${e(ENG)}">${e(L.see_prices)} ${I.arr}</a>
+    <div class="row">${WA_BOOK ? `<a class="btn soft" id="dr-wa" href="${e(WA_BOOK)}"><span class="wa-c">${I.wa}</span> ${e(L.whatsapp)}</a>` : ''}${TEL ? `<a class="btn soft" href="${e(TEL)}">${I.tel} ${e(L.call)}</a>` : ''}</div>
+  </div>
+</div>
+<script type="application/json" id="rooms-data">${JSON.stringify(DATA).replace(/</g, '\\u003c')}</script>`
+
+const fontFaces = `@font-face{font-family:"Jost";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/jost-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Satisfy";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/satisfy-latin-400-normal.woff2) format("woff2")}
+${LOGO ? `:root{--logo:url(${LOGO})}` : ''} `
+const title = `${NAME} · Kabalana, Ahangama`
+const description = c.tagline ?? ''
+const preloadP = hp?.filename ? srcset(hp.filename, shapeKey(16 / 9, 'p')) : ''
+const preloadL = hp?.filename ? srcset(hp.filename, 'full') : ''
+---
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{title}</title>
+{description && <meta name="description" content={description}>}
+<meta name="theme-color" content="#FAFBF8">
+<meta property="og:title" content={`${NAME}, Kabalana`}>
+{description && <meta property="og:description" content={description}>}
+{photo(0) && <meta property="og:image" content={srcOf(photo(0).filename, 'full', 2000)}>}
+<link rel="preload" as="font" type="font/woff2" href="fonts/jost-latin-wght-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/satisfy-latin-400-normal.woff2" crossorigin>
+{preloadP && <link rel="preload" as="image" imagesrcset={preloadP} imagesizes="100vw" type="image/webp" media={PORTRAIT}>}
+{preloadL && <link rel="preload" as="image" imagesrcset={preloadL} imagesizes="100vw" type="image/webp" media={`not all and ${PORTRAIT}`}>}
+<script is:inline>document.documentElement.className='js'</script>
+<style is:inline set:html={fontFaces + css}></style>
+</head>
+<body>
+<Fragment set:html={page} />
+<script is:inline set:html={js}></script>
+</body>
+</html>

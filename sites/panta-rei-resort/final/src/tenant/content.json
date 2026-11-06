@@ -1,0 +1,553 @@
+{
+ "tenant": {
+  "id": null,
+  "slug": "panta-rei-resort",
+  "name": "Panta Rei Resort"
+ },
+ "locales": {
+  "en": {
+   "businessName": "Panta Rei Resort",
+   "businessType": "beach_lodging",
+   "tagline": "A boutique resort set around a large pool in Kabalana, Ahangama, on the south coast of Sri Lanka.",
+   "closing": "Booking direct gets you our best rate, and if there's anything you'd like to ask first, send us a WhatsApp.",
+   "featureLine": "No paradise like home.",
+   "languages": [
+    "en"
+   ],
+   "copyBlocks": [
+    {
+     "slot": "intro",
+     "heading": "Welcome to Panta Rei",
+     "body": "Welcome to our boutique resort in Kabalana, Sri Lanka. In Panta Rei you can escape the hustle and bustle of daily life and immerse yourself in a tropical paradise where surfing, yoga, crystal blue beaches and rainforests come together.\n\nThe resort features 16 bungalows, each with its own charm and style, inspired by wild nature and made from natural materials."
+    },
+    {
+     "slot": "about",
+     "heading": "The pool",
+     "body": "The bungalows sit in a ring around a long pool with a stone deck and loungers, and the garden runs between them.\n\nThe pool opens early in the morning, so you can swim before breakfast. If you're staying nearby, you can come for the day too."
+    },
+    {
+     "slot": "about",
+     "heading": "Restaurant and bar",
+     "body": "The restaurant serves breakfast, lunch, dinner and cocktails all day, to guests and to anyone who drops in. Breakfast goes from smoothie bowls, granola and banana oat pancakes to shakshuka, or the Sri Lankan plate with egg hoppers, dhal and coconut sambal. Later there's a fish bowl, the curry of the day and a whole grilled fish, priced on weight. Dinner is a mix of traditional and modern Mediterranean dishes.\n\nThe bar is upstairs, above the restaurant. Go up for the sunset."
+    },
+    {
+     "slot": "about",
+     "heading": "Panta Fitness Club",
+     "body": "An open-air fitness area on the upper floor looks out over the resort. Vinyasa yoga is at 8:30 every morning; Friday is the day off. There are Pilates classes too, led by experienced instructors, and in the season the schedule gets longer. You don't need to book."
+    },
+    {
+     "slot": "about",
+     "heading": "After the surf",
+     "body": "The Surf Therapy Massage was put together for surfers. It's a full body oil massage that works on every muscle with sport massage techniques, for the physical demands of surfing, and helps your body recover faster.\n\nThere's a Revitalizing massage as well. Either one is an hour on the whole body, or 45 minutes on the back, neck and shoulders."
+    },
+    {
+     "slot": "offer",
+     "heading": "Four ways to stay",
+     "body": "Every room has air conditioning, hot water and wifi, is cleaned daily, and comes with breakfast.\n\nPrices move with the dates. Pick yours on our booking page and you'll see what's free and what it costs."
+    },
+    {
+     "slot": "info",
+     "heading": "Groups and retreats",
+     "body": "Planning to bring a big group to Sri Lanka? Whether it's for yoga, surfing, or simply soaking up the chilled island vibes, our resort is ready to host you. We'll take care of all the meals and accommodation, so you can focus on what matters most: enjoying every moment together."
+    },
+    {
+     "slot": "info",
+     "heading": "Getting here and around",
+     "body": "Kabalana Beach is a short walk away and Koggala Lake about 1.5 km. Koggala Airport is 5 km from the resort, Kathaluwa station 1.9 km and Ahangama station 2.1 km.\n\nTuk tuk drivers wait at the door of the hotel. Agree the price before you set off, or ask us to call one. If you'd rather have a private taxi, we'll arrange it."
+    }
+   ],
+   "openingHours": [],
+   "hoursNote": "Restaurant, every day: breakfast 8:30–12:00 (coffee from 8:00), lunch 13:00–17:00, dinner 18:00–21:30.",
+   "priceList": [
+    {
+     "label": "Pool day pass",
+     "price": 3500,
+     "currency": "LKR",
+     "unit": "per_person",
+     "note": "Spent at the restaurant"
+    },
+    {
+     "label": "Fitness class: residents",
+     "price": 2500,
+     "currency": "LKR",
+     "unit": "per_lesson",
+     "note": "No need to book"
+    },
+    {
+     "label": "Fitness class: in-house guests",
+     "price": 3000,
+     "currency": "LKR",
+     "unit": "per_lesson",
+     "note": "No need to book"
+    },
+    {
+     "label": "Fitness class: walk-ins",
+     "price": 3500,
+     "currency": "LKR",
+     "unit": "per_lesson",
+     "note": "No need to book"
+    },
+    {
+     "label": "Surf Therapy Massage, 60 min full body",
+     "price": 20000,
+     "currency": "LKR",
+     "unit": "flat",
+     "note": null
+    },
+    {
+     "label": "Surf Therapy Massage, 45 min back, neck & shoulders",
+     "price": 17000,
+     "currency": "LKR",
+     "unit": "flat",
+     "note": null
+    },
+    {
+     "label": "Revitalizing Massage, 60 min full body",
+     "price": 20000,
+     "currency": "LKR",
+     "unit": "flat",
+     "note": null
+    },
+    {
+     "label": "Revitalizing Massage, 45 min back, neck & shoulders",
+     "price": 17000,
+     "currency": "LKR",
+     "unit": "flat",
+     "note": null
+    }
+   ],
+   "photos": [
+    {
+     "image": {
+      "id": 7,
+      "alt": "The resort from the air: red-tiled bungalows and the white two-storey main building around a long turquoise pool, jungle all round",
+      "filename": "img-001.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 1105308,
+      "width": 2000,
+      "height": 1126,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 8,
+      "alt": "A guest wading into the long pool, red-roofed bungalows and tall palms beyond",
+      "filename": "img-006.png",
+      "mimeType": "image/png",
+      "filesize": 4288929,
+      "width": 1844,
+      "height": 1224,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 9,
+      "alt": "Breakfast served at a teak table under greenery: a bowl passed across, juice and fruit",
+      "filename": "img-003.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 1708559,
+      "width": 2000,
+      "height": 1320,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 10,
+      "alt": "Sliders and plated dishes on a teak table in the garden",
+      "filename": "img-005.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 282248,
+      "width": 1334,
+      "height": 2000,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 11,
+      "alt": "Two guests carrying surfboards across the lawn by the pool; a woman in a straw hat crouches beside a dog",
+      "filename": "img-035.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 335736,
+      "width": 1350,
+      "height": 900,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 12,
+      "alt": "A class from behind on the open upper floor, hands behind heads, palms beyond the railing",
+      "filename": "img-021.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 502187,
+      "width": 1334,
+      "height": 2000,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    },
+    {
+     "image": {
+      "id": 13,
+      "alt": "Top-down view of the long pool ringed by red-tiled bungalows, loungers along the stone deck",
+      "filename": "vid-001-poster.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 460333,
+      "width": 1920,
+      "height": 1080,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "caption": null
+    }
+   ],
+   "heroVideo": {
+    "id": 1,
+    "alt": "The resort from the air: the ring of red-tiled bungalows around the long pool, then the rise over the palms to the sea at dusk",
+    "filename": "vid-002-cut.mp4",
+    "mimeType": "video/mp4",
+    "filesize": 3767803,
+    "width": null,
+    "height": null,
+    "focalX": 50,
+    "focalY": 50
+   },
+   "heroVideoPoster": {
+    "id": 2,
+    "alt": "The resort from straight above: red-tiled bungalows in a ring around the long pool, swimmers in the water, palms all round",
+    "filename": "vid-002-poster.jpg",
+    "mimeType": "image/jpeg",
+    "filesize": 382246,
+    "width": 1920,
+    "height": 1080,
+    "focalX": 60,
+    "focalY": 50
+   },
+   "videos": [
+    {
+     "video": {
+      "id": 3,
+      "alt": "The open-air lounge: rattan pendant lamps, rattan chairs, sun through the palms",
+      "filename": "vid-001-lounge.mp4",
+      "mimeType": "video/mp4",
+      "filesize": 17397444,
+      "width": null,
+      "height": null,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "poster": {
+      "id": 4,
+      "alt": "The open-air lounge under the main building: orange cushioned rattan chairs, rattan pendant lamps, palms beyond",
+      "filename": "vid-001-lounge-poster.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 354019,
+      "width": 1920,
+      "height": 1080,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "description": "The open-air lounge: rattan pendant lamps, rattan chairs, sun through the palms"
+    },
+    {
+     "video": {
+      "id": 5,
+      "alt": "A mat class on the open upper floor, women on their backs doing crunches",
+      "filename": "vid-003-mat-class.mp4",
+      "mimeType": "video/mp4",
+      "filesize": 8309800,
+      "width": null,
+      "height": null,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "poster": {
+      "id": 6,
+      "alt": "A mat class on the open upper floor, women on their backs doing crunches",
+      "filename": "vid-003-mat-class-poster.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 158077,
+      "width": 1080,
+      "height": 1920,
+      "focalX": 50,
+      "focalY": 50
+     },
+     "description": "A mat class on the open upper floor, women on their backs doing crunches"
+    }
+   ],
+   "contact": {
+    "phone": "+94728003022",
+    "whatsapp": "+94728003022",
+    "email": "hello@pantareiresort.com",
+    "address": "Back to Life Road, Kabalana Rd, Ahangama 80650, Sri Lanka",
+    "mapUrl": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en"
+   },
+   "bookingLinks": [
+    {
+     "label": "Check dates and book direct",
+     "url": "https://pantareiresort.holidayfuture.com/"
+    },
+    {
+     "label": "Double Room",
+     "url": "https://pantareiresort.holidayfuture.com/listings/572800"
+    },
+    {
+     "label": "Triple Room",
+     "url": "https://pantareiresort.holidayfuture.com/listings/572802"
+    },
+    {
+     "label": "Family Villa",
+     "url": "https://pantareiresort.holidayfuture.com/listings/572799"
+    },
+    {
+     "label": "Suite with Private Pool",
+     "url": "https://pantareiresort.holidayfuture.com/listings/572798"
+    }
+   ],
+   "amenities": [
+    {
+     "label": "Large outdoor pool",
+     "note": null
+    },
+    {
+     "label": "Restaurant and bar, open to outside guests",
+     "note": null
+    },
+    {
+     "label": "Vegetarian, gluten-free and dairy-free options",
+     "note": null
+    },
+    {
+     "label": "Open-air fitness area and yoga shala",
+     "note": null
+    },
+    {
+     "label": "Daily yoga and Pilates classes",
+     "note": "additional charge"
+    },
+    {
+     "label": "Massage",
+     "note": "additional charge"
+    },
+    {
+     "label": "Free WiFi",
+     "note": null
+    },
+    {
+     "label": "Free private parking",
+     "note": null
+    },
+    {
+     "label": "Airport shuttle",
+     "note": null
+    },
+    {
+     "label": "Private taxi",
+     "note": "on request"
+    },
+    {
+     "label": "Laundry service",
+     "note": "additional charge, cash"
+    },
+    {
+     "label": "Safe box in the rooms",
+     "note": null
+    },
+    {
+     "label": "Generator for power cuts",
+     "note": null
+    },
+    {
+     "label": "Garden and sun terrace",
+     "note": null
+    },
+    {
+     "label": "Cot for under-2s",
+     "note": "free, on request"
+    },
+    {
+     "label": "Extra bed for an adult",
+     "note": "US$20 per night, on request"
+    }
+   ],
+   "ratings": [
+    {
+     "platform": "booking",
+     "score": 9.2,
+     "scale": "10",
+     "count": 468,
+     "url": "https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html",
+     "capturedAt": "2026-11-06"
+    },
+    {
+     "platform": "google",
+     "score": 4.7,
+     "scale": "5",
+     "count": 213,
+     "url": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en",
+     "capturedAt": "2026-11-06"
+    }
+   ],
+   "testimonials": [
+    {
+     "quote": "We stayed here in January, and of all the places we've stayed on our travels, this was the best resort so far. Incredibly clean throughout, you can tell housekeeping is taken seriously here, and the whole place is managed to a standard you rarely find. One of the owners was around during our stay, and you could immediately tell how much he genuinely cares about the resort and his guests, on top of being a very friendly guy. The employees match that energy: attentive, warm and top notch across the board. Can't recommend Panta Rei enough, we'll be back.",
+     "author": "Peter",
+     "source": "google",
+     "lang": "en",
+     "date": null
+    },
+    {
+     "quote": "Incredible! We stayed at Panta Rei for 1 week, and it was wonderful. The room was very clean and had all the necessary amenities, the pool and garden area was beautiful and very quiet, the food was impeccable, one of the best we ate in Sri Lanka. The workers are very helpful and attentive. We would definitely choose it again if we return to Sri Lanka!",
+     "author": "Alba R",
+     "source": "site",
+     "lang": "en",
+     "date": null
+    },
+    {
+     "quote": "We had an amazing stay in Panta Rei. The room was spacious, quiet, and nicely decorated. The food was extremely tasty.\nA big shout-out to the incredible staff, always helpful and kind. We really felt at home.",
+     "author": "Arianna, Italy",
+     "source": "booking",
+     "lang": "en",
+     "date": null
+    },
+    {
+     "quote": "I had a lovely stay! The food was excellent, and the staff were incredibly welcoming, friendly and attentive throughout my visit. Everyone made me feel comfortable and well looked after. Thank you for such a pleasant experience!",
+     "author": "Lynette",
+     "source": "google",
+     "lang": "en",
+     "date": null
+    },
+    {
+     "quote": "Everything thing was amazing, the room was clean, the pool was beautiful, the food was amazing, the staff are amazing, always very warm and welcoming",
+     "author": "Oishanee, India",
+     "source": "booking",
+     "lang": "en",
+     "date": null
+    },
+    {
+     "quote": "The hospitality and the atmosphere was great. The staff were very helpful as well.",
+     "author": "Akhila, Sri Lanka",
+     "source": "booking",
+     "lang": "en",
+     "date": null
+    }
+   ],
+   "spot": "The waves of Kabalana, a short walk from the resort.",
+   "season": null,
+   "languagesSpoken": [],
+   "rooms": [
+    {
+     "label": "Double Room",
+     "beds": "King-size bed or twin single beds",
+     "sleeps": 3,
+     "note": "22 m², with a private balcony over the pool. En-suite shower.",
+     "photo": {
+      "id": 14,
+      "alt": "Double Room: white bed with a rattan arch headboard, a wooden drawer base and rattan-panel wardrobe doors",
+      "filename": "img-028.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 90814,
+      "width": 1350,
+      "height": 900,
+      "focalX": 50,
+      "focalY": 50
+     }
+    },
+    {
+     "label": "Triple Room",
+     "beds": "King-size bed and a sofa bed",
+     "sleeps": 3,
+     "note": "30 m², with a private balcony over the pool. Bathroom with both a bathtub and a shower.",
+     "photo": {
+      "id": 15,
+      "alt": "Triple Room: bed with a rattan arch headboard, a pink cushioned rocking chair and an arched rattan mirror under a white vaulted ceiling",
+      "filename": "img-037.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 84987,
+      "width": 1350,
+      "height": 900,
+      "focalX": 50,
+      "focalY": 50
+     }
+    },
+    {
+     "label": "Family Villa",
+     "beds": "Two king-size beds or four single beds",
+     "sleeps": 4,
+     "note": "50 m², two bedrooms, garden view and a private balcony. Private bathroom plus an outdoor bath.",
+     "photo": {
+      "id": 16,
+      "alt": "Family Villa bedroom: tall teak French windows to the garden and a rattan arch headboard",
+      "filename": "img-038.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 107142,
+      "width": 1350,
+      "height": 900,
+      "focalX": 50,
+      "focalY": 50
+     }
+    },
+    {
+     "label": "Suite with Private Pool",
+     "beds": "King-size bed",
+     "sleeps": 2,
+     "note": "40 m², with your own private pool just steps from the room and a chill-out corner with a built-in sofa.",
+     "photo": {
+      "id": 17,
+      "alt": "Suite: bed facing open glass doors onto a private plunge pool and two terrace chairs",
+      "filename": "img-043.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 167442,
+      "width": 1350,
+      "height": 900,
+      "focalX": 50,
+      "focalY": 50
+     }
+    }
+   ],
+   "stayInfo": {
+    "checkInFrom": "14:00",
+    "checkInTo": null,
+    "checkOutFrom": null,
+    "checkOutTo": "11:00",
+    "minNights": null,
+    "note": "Children of any age are welcome. No pets, and no smoking in the rooms. Quiet hours are 22:00 to 08:00."
+   },
+   "lessons": [],
+   "credentials": [],
+   "rentals": [],
+   "brands": [],
+   "socialLinks": [
+    {
+     "platform": "instagram",
+     "url": "https://www.instagram.com/pantarei_resort/"
+    },
+    {
+     "platform": "facebook",
+     "url": "https://www.facebook.com/profile.php?id=100093054286482"
+    },
+    {
+     "platform": "youtube",
+     "url": "https://www.youtube.com/@Panta_Rei_Resort"
+    }
+   ],
+   "forecast": null,
+   "updatedAt": null
+  }
+ }
+}
