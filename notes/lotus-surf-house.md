@@ -15,3 +15,5 @@ Open (human decisions):
 - Second phone on the dormant Facebook page (+94712585804) vs Google's +94774647541; site uses Google's.
 - The surf break (Lazy Left / Lazy Right) is named only by guests.
 - Booking lists a "private hot tub" in the King rooms and Google lists a pool and restaurant; nothing confirms any of them — none is claimed.
+
+Review fixes (PR #68, 2026-11-06): pitch page corrected (no "as you asked", forecast named, phone and Booking.com claims narrowed, breakfast and balconies added to the owner's list). The proposal needs it. Score under rubric 0.3.2: 89.7, still a pass. The Rosa forecast was added after critique and has not been re-scored. **Not live until redeployed; redeploy before gate c.**

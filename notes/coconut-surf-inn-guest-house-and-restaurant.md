@@ -7,3 +7,5 @@ Path: gate a 2026-11-04 -> harvest/audit/copy/concepts -> 4e mockups (calm, inte
 Optional polish (critics, none blocking): phone hero ~2/3 sky (move crop down so sea fills lower half); empty grey forecast box and a 169 px jump when Rosa data fails while on screen; rooms stretch ~2.5 desktop screens; closing line 3 lines on phone; hero line repeated on next screen; rooms/ CLS 0.038; one extra Rosa reachability request vs hard constraint 9 (reported, not deducted).
 
 Facts to keep straight: the inn is Google 4.8 from 88; "Coconut Beach" 4.8/120 is the beach place (which wrongly carries the inn's phone). Rosa spot `weligama-west` (never `coconut-beach`, that is Arugam Bay). The restaurant has its own unclaimed Google listing (No 44 vs Booking's No.49). Pitch questions: WhatsApp/email, house number, prices/breakfast, AI-crawler policy.
+
+Review fixes (PR #68, 2026-11-06): pitch page and message corrected (room types, phone claim, forecast and season excepted from the sources line, rooms added to the owner's list). The proposal needs it. Score under rubric 0.3.2: 91.7, still a pass. **Not live until redeployed; redeploy before gate c.**
