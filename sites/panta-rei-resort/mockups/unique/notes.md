@@ -18,7 +18,7 @@ Old site used for comparison: `assets/old-site-mobile.png`, `old-site-desktop.pn
 
 **Whole page, round 3 (last).** Desktop sheet, in order: film (5 screens) → Welcome (featureLine large, the owner's paragraph at 38 px, the lounge print) → "Four ways to stay" as a sticky split (photo stage on the left with a dotted slideshow per room, crossfading as each room crosses the centre; text and "Book this room" on the right) → booking block → pool full-bleed with a white card (½ parallax, desktop only) → After the surf (lawn photo with a jade card over its edge, four massage rows) → Restaurant (text, the hours pill and two offset 4:5 prints) → Panta Fitness Club (balcony print, Mon–Sun strip with Friday "Day off" and today in jade, three class rows) → Guests (9.2/10 Booking.com · 468, 4.7/5 Google · 213, as of 6 Nov 2026, quote slideshow) → Getting here (text and Maps button; card with address, check-in/out, house rules, "Good to know") → Groups → closing film (vid-002, closing line, Check dates + WhatsApp) → footer. Phone sheet: one column throughout, galleries swipe with dots, the pill stays at the bottom. Overflow, overlap and unreadable text: none found in the last sheets, and `scrollWidth` = 390. Inspector (`design-taste-frontend/inspect.mjs`): its "name-only title" finding was right. The hero line is now "Boutique resort · Kabalana, Ahangama" (both phrases are in the tagline and the address). Kept against the inspector, as the concept's spectacle: "pinned text over a picture" and "long pin" (the set-piece is a pinned film with captions by design), and "statement length" (caption 2 is the copy's full sentence: verbatim copy cannot be cut). The "empty middle" in the scores row and a 152/135 px margin difference (scrollbar gutter) are left as they are. Reduced motion (both widths): the poster, then three full-bleed stills with the three captions, no canvas, no closing video. No-JS: the same static tier, and every CTA lands on `#book`. Verdict against the old site: clearly better on every screen. The old first screen sells two chairs and a button. The old home page has four one-word tiles and ~140 words. This page shows the place from the air, sells each room with its own gallery, size and beds, and puts the ratings, the restaurant hours, the class and massage prices and the way to book on the page.
 
-Mechanical results (last run):
+Mechanical results (4e, superseded by 4f round 2 below):
 - `check-design`: unique **ok**. Calm and interactive are also ok; their files were not touched.
 - `check-places`: 0 borrowed images, 0 failing.
 - `audit-mockup`:
@@ -30,6 +30,72 @@ Mechanical results (last run):
 
 Booking tap-through (Playwright, both widths): drawer → Suite → 10–14 Dec → `https://pantareiresort.holidayfuture.com/listings/572798?start=2026-12-10&end=2026-12-14&numberOfGuests=2`. I opened that engine URL format myself on 2026-11-06 (Double Room, 10–14 Dec): it showed the dates and the stay total. The WhatsApp hand-off is prefilled with the room, the dates and the number of guests (`wa.me/94728003022`). Without dates, the link is the plain room URL from the dossier.
 
+### 4f round 2 (critic 67.5/80 with dimension 2 = 5; visual 7, fail; experience 8, pass)
+
+All shots in these rounds were taken over http (`tools/_serve.mjs` on :8977), plus mid-scroll probes at progress 0.15 / 0.33 / 0.50 / 0.66 / 0.85 at 1440 and 390.
+
+**Round 7: the film and the pill.**
+- What was wrong (visual and experience):
+  - The pin was dark and muddy, with brown roofs in the rise.
+  - Two of the five pin screens had no caption, and there was a 4.6-screen pin on the phone.
+  - Caption 2 ran to 25 words (6 lines at 390).
+  - The pill covered the closing headline, the reviews and phone titles.
+  - The phone's first screen had two coral "Check dates".
+  - The frames started on a 4.5 s timer (4.7 MB phone / 9.2 MB desktop with no interaction).
+- Changes:
+  - **Regrade:** shadows lifted with a curve, saturation 1.28, highlights cooled against the yellow haze.
+  - **Frames:** 72 frames (was 150) at 1024 px desktop / 432 × 768 phone, WebP q27 / q25, heavier denoise.
+  - **Draw:** the canvas cross-fades between the two nearest loaded frames.
+  - **Loading:**
+    - After first paint only the key set loads: every 6th frame plus the last, 13 frames.
+    - The rest loads on the first scroll, wheel, touchmove or key.
+    - There is no timer, and the "n %" counter is gone (a small spinner shows only while the pin runs before the key set is in).
+  - **Pin:** 360 → 260 vh.
+  - **Captions:** contiguous over the whole pin ([.02–.34], [.34–.67], [.67–.995]), so one is always on screen. Caption 2 is now the verbatim excerpt "The bungalows sit in a ring around a long pool" (10 words).
+  - **Hero shade:** the radial shade fades out with the hero title. The captions sit on a light bottom gradient (≤ 34 %).
+  - **Removed:** the side dots and the "Scroll" cue.
+  - **Pill and header:** the pill now shows only while the film runs (icons only, below the captions), and the header's "Check dates" is hidden while the header sits over the film. So there is one coral button on the first screen and none floating over text anywhere after the film. After the film, the solid header carries "Check dates" on every screen.
+- Seen at 1440 and 390: the ring stays red and the jungle reads green, not black. Each pin screen carries a caption. The pill sits below the caption block at both widths. The coast frame has a blue sea.
+- Against the old site: clearly better.
+
+**Round 8: the lower half and the closing.**
+- What was wrong: after the film the page repeated calm's panels, there were resting shadows on cards, and the closing set a 3–4-line sentence in the display face.
+- Changes:
+  - **Three full-bleed moments:**
+    - "After the surf" over img-035 (guests with boards).
+    - "Panta Fitness Club" over a muted loop of the yoga shala (vid-001 46.6–52.1 s, three takes, 0.78 MB mp4 / 1.08 MB webm, attached only when near, never under reduced motion or Save-Data).
+    - "What guests say" with 9.2 /10 and 4.7 /5 set big over img-003 (breakfast handed across the teak table). I first used a ring still there, but that made three ring aerials in the lower half, so I swapped it.
+  - **Below each band:** text and price rows in two columns on the page ground, no card.
+  - **Reviews:** one at a time, in Hanken at 20–26 px, no card.
+  - **Restaurant prints:** now lunch (img-005) and the prawns (img-018).
+  - **Shadows:** resting shadows removed from cards and gallery controls; the gradient on #fitness removed.
+  - **Closing:** the display line is now the copy's booking label "Check dates and book direct" (5 words, 1–2 lines), and the closing sentence sits under it in Hanken at 17–21 px.
+- Seen: the page now changes pace after the film: band, two columns, band, two columns, band, quotes. The lower half no longer reads as calm.
+
+**Round 9 (last).**
+- Fixes:
+  - The desktop review slide showed the next quote cut at the edge; each slide is now full width with the text limited to 40 em.
+  - On the phone the room facts wrapped with a leading "|"; they now stack, one fact per line.
+- Checked:
+  - `scrollWidth` 390 at 390.
+  - Last sheets: no text under the pill, no overflow, no overlap.
+  - Mid-scroll: a caption on every pin screen at both widths. The 0.33 desktop frame is softer, a fast camera turn inside shot B shown as a cross-fade.
+- **Booking at 390:** drawer → Double Room → 10–13 Dec → `https://pantareiresort.holidayfuture.com/listings/572800?start=2026-12-10&end=2026-12-13&numberOfGuests=2`. The JS builds a literal `&` (no `&amp;` in the page). I tapped through to the engine: it showed **"$465 For 3 nights · Dec 10 - Dec 13"**.
+- **Frame loading, measured** (no interaction, 12 s idle):
+  - 390: 13 frames, 261 KB; after one scroll, all 72 frames, 1,482,052 B.
+  - 1440: 13 frames, 518 KB; after one scroll, all 72 frames, 2,926,194 B.
+- **Verdict against the old site:** clearly better on every screen. The film is now bright and red-roofed and captioned throughout. The page has one coral action per screen. The lower half has its own full-bleed moments instead of calm's panels.
+
+Mechanical results (4f round 2):
+- `check-design`: unique ok, 0 problems (calm and interactive ok).
+- `check-places`: 0 borrowed, 0 failing.
+- `audit-mockup`:
+  - first load 827 KB (includes the 261 KB key set, which now loads right after first paint, as asked)
+  - LCP 760 ms, CLS 0.0017, scroll CLS early 0.0002 and settled 0.0004
+  - JS 0 KB external
+  - keyboard ok, no-JS booking links 7, taps under 44 px 0, alt missing 0
+  - third-party hosts: Google Fonts only
+
 Other businesses in this run: none (concepts.md §5: Panta Rei is the run's only business). Against its sister variants: calm opens on a played aerial with Figtree + Gochi Hand, and interactive opens on the vid-004 surf beach with Fredoka + Nunito Sans. This one is the only page whose first screen is a still that turns into a scrubbed film under the reader's scroll, set in Bricolage + Hanken, with the deeper `#B8473A` accent.
 
 ## images
@@ -38,15 +104,17 @@ All business-owned (`dossier.images[].license` business-owned, `videos[]` busine
 
 | file(s) in dist | source | license |
 |---|---|---|
-| `frames/d/001–150.webp` (1280 × 720), `frames/m/001–150.webp` (540 × 960, centre 9:16 crop) | vid-001 55.55–69.70 s | business-owned (home-page film) |
-| `img/film-poster-d/m` | vid-001 at 55.55 s (= frame 1) | business-owned |
+| `frames/d/001–072.webp` (1024 × 576), `frames/m/001–072.webp` (432 × 768, centre 9:16 crop), regraded | vid-001 55.55–69.70 s | business-owned (home-page film) |
+| `video/shala-1280.mp4/.webm`, `img/shala-poster` | vid-001 46.6–52.1 s (the yoga shala) | business-owned |
+| `img/film-poster-d/m` | vid-001 at 55.55 s (= frame 1), same grade as the frames | business-owned |
 | `img/still-a/b/c-d/m` | vid-001 at 58.4 s, 60.6 s, 69.5 s (static tier) | business-owned |
 | `video/vid-002-d1920.*`, `vid-002-m1280.*`, `img/close-d/m` | vid-002 renditions (3–17 s cut) and its poster | business-owned |
 | `img/logo` | img-023 | business-owned |
 | `img/pool-d/m` | img-006 | business-owned |
 | `img/lounge-d/m` | img-030 | business-owned |
 | `img/lawn-d/m` | img-035 | business-owned |
-| `img/breakfast`, `prawns`, `balcony` (4:5) | img-003, img-018, img-020 | business-owned |
+| `img/table-d/m` (guests band) | img-003 | business-owned |
+| `img/lunch`, `prawns` (4:5) | img-005, img-018 | business-owned |
 | `img/room-*-l/s` (3:2): Double 028 031 029 007 013 · Triple 037 034 036 010 011 · Family 038 040 012 014 015 · Suite 043 046 047 016 044 002 | engine and site room photos | business-owned |
 
 Alt text was written from the crops as made (contact sheets checked), not from the dossier descriptions.
@@ -61,19 +129,16 @@ Alt text was written from the crops as made (contact sheets checked), not from t
 
 ## conflicts
 
-1. **Frame budget, blocking for 4g, not for the pick.** The brief and concept ask for ≲ 1.6 MB desktop / ≲ 0.9 MB phone for 150 frames. Measured on this footage, 150 frames come to **9.1 MB desktop (1280 px, WebP q38, light denoise) and 4.7 MB phone (540 × 960, q36)**. At 1600 px the desktop set was 11–18 MB. The close aerials (the first 60 frames) are dense jungle and roof texture at 90–120 KB per 1280 px frame. Hitting 1.6 MB would mean about 10 KB per frame, which is mush. What I did to protect the visitor:
-   - None of it is in the first load (497 KB measured). Frames start loading on the first scroll, touch or key, or 4.5 s after load.
-   - Key frames (every 6th, 26 frames, ≈ 0.9 MB phone) load first, and the scrub starts once those are in, drawing the nearest loaded frame. The rest fills in behind. Until then the reader sees the poster, the captions and a "Loading the film n %" pill.
-   - Save-Data, reduced motion and weak phones (≤ 2 GB or ≤ 2 cores) fetch none of it and get the poster and three stills.
-   
-   The alternatives each cost something:
-   - 75 frames at 960 px: about 3 MB and 2 MB, but visible stepping.
-   - A `<video>` scrubbed by `currentTime`: about 3 MB, but laggy seeks and dead in iOS Low Power Mode.
-   
-   Human decision needed at 4g if this variant is picked.
+1. **Frame budget (resolved in 4f round 2).** The concept's ≲ 1.6 / 0.9 MB for 150 frames was not reachable on this footage: 9.2 / 4.7 MB in round 1. Now:
+   - **Weight:** 72 frames, **2.93 MB desktop / 1.48 MB phone** (target ≤ 3 / ≤ 1.5).
+   - **Smoothness:** the canvas cross-fades between neighbouring frames, so the lower count does not step.
+   - **Loading:** only the key set (13 frames, 261 KB phone / 518 KB desktop) loads after first paint. The rest loads on the first scroll; a visitor who never scrolls downloads the key set only.
+   - **Cost:** the frames are 1024 px wide, drawn up to 1440 css px, so they are softer than the poster during the scrub.
 2. **Scroll machinery: no GSAP, no Lenis** (the concept and the scroll playbook name GSAP/ScrollTrigger/Lenis). The pin is CSS `position: sticky` in a section whose height (100 svh + 360 svh) is reserved from first paint. The tier is decided in `<head>`, and the page's own rAF loop scrubs with damping (equivalent to scrub ≈ 0.5). Why: on Global Surf v2 the critic counted the CDN script as a third-party request, and the GSAP pin-spacer measured CLS ≈ 1.0 on an early scroll. Here, scroll CLS is 0.0019 / 0.0016 with zero JS libraries. The motion is the concept's own: same frames, same captions, same pin length.
 3. **Caption wording.** The concept lists caption (a) as "Sixteen bungalows, each with its own charm and style", which is not in the copy. The page uses the verbatim excerpt "16 bungalows, each with its own charm and style" from Welcome ¶2. Caption (b) is the full sentence from The pool ¶1 ("…with a stone deck and loungers, and the garden runs between them."), not the shortened form in the concept. Caption (c) is `spot` verbatim.
 4. **Sequence range.** The brief says 49–70 s. On the film, 49–55.5 s is the yoga shala and the main building, and 69.8–70.7 s is the fade-out. The sequence uses 55.55–69.70 s: the three aerials of the ring and the rise to the coast.
-5. **"First second plays on load."** Done with the sequence itself, not a video. Once the key frames are in and the reader is at the top, frames 0→10 play over 1.4 s and hold. Scroll then drives frames 10→149.
-6. **"Check dates" twice on the phone's first screen** (header button and hero button). The header one is the persistent booking action on every screen (playbook §3). Kept, because the audit's drawer check and the persistent bar need it. One line for the pick.
+5. **"First second plays on load": dropped in 4f round 2.** The film now starts with the scroll, from the crisp poster. Playing frames on load would replace the 1600 px poster with a softer 1024 px frame while the reader is still on the first screen, and it would pull frames the visitor might never need.
+6. **"Check dates" on the phone's first screen: resolved.** The header button is hidden while the header sits over the film, so the hero button is the only one there. The header button carries `data-drawer-link` (not `data-open-drawer`), so the audit's first drawer trigger is the visible hero button. The floating pill shows only during the film (icons, below the captions). After the film the solid header carries "Check dates", so nothing floats over text.
 7. **Static tier is longer than the motion tier.** Reduced-motion and no-JS visitors get the poster plus three full-bleed stills (≈ 3 screens) instead of the 360 vh pin. That is the brief's fallback.
+8. **Caption 2 is shorter than the copy sentence** ("The bungalows sit in a ring around a long pool"), a verbatim excerpt of The pool ¶1, as the 4f brief allowed. The full sentence is in the pool section.
+9. **Closing display line.** The display face sets the copy's booking label "Check dates and book direct". The `closing` sentence sits under it in the text face. No words were changed.

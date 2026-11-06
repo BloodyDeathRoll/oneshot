@@ -50,3 +50,18 @@
       requestAnimationFrame(par);
     })();
   }
+
+  /* ---------- the shala loop behind "Panta Fitness Club": attached when near, paused when away ---------- */
+  document.querySelectorAll('[data-lazy-video]').forEach(function (v) {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || (navigator.connection || {}).saveData) return;
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting && !v.dataset.on) {
+          v.dataset.on = '1';
+          v.querySelectorAll('source').forEach(function (s) { s.src = s.dataset.src; });
+          v.load(); v.addEventListener('playing', function () { v.classList.add('playing'); }, { once: true });
+          v.play().catch(function () {});
+        } else if (v.dataset.on) { e.isIntersecting ? v.play().catch(function () {}) : v.pause(); }
+      });
+    }, { rootMargin: '200px 0px' }).observe(v);
+  });

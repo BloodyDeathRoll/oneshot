@@ -82,6 +82,8 @@ svg.stroke { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap
 .nav a:not(.btn):hover { background: rgba(255, 255, 255, .18); }
 .top.solid .nav a:not(.btn):hover { background: var(--jade-tint); }
 .nav .btn { margin-left: 10px; min-height: 44px; padding: 0 20px; font-size: 15px; }
+.top:not(.solid) .nav .btn { opacity: 0; visibility: hidden; transform: scale(.9); }
+.top .nav .btn { transition: opacity .3s ease, visibility .3s, transform .3s var(--ease), background-color .18s ease; }
 .menu-btn { display: none; }
 @media (max-width: 899px) {
   .nav a:not(.btn) { display: none; }
@@ -96,25 +98,20 @@ svg.stroke { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap
 
 /* ---------- the film: hero + scroll set-piece ---------- */
 .film { position: relative; height: 100svh; min-height: 560px; background: #D5E2DD; }
-html.seq .film { height: calc(100svh + 360svh); }
+html.seq .film { height: calc(100svh + 260svh); }
 .film-sticky { position: relative; height: 100svh; min-height: 560px; overflow: hidden; }
 html.seq .film-sticky { position: sticky; top: 0; }
 .film-poster, .film-poster img, .film canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .film-poster img { object-fit: cover; }
 .film canvas { opacity: 0; transition: opacity .6s ease; }
-.film.ready canvas { opacity: 1; }
-.film-shade { position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(60% 46% at 50% 52%, rgba(16, 24, 14, .34), rgba(16, 24, 14, 0) 72%),
-              linear-gradient(to top, rgba(16, 24, 14, .42), rgba(16, 24, 14, 0) 38%); }
+.film.playing canvas { opacity: 1; }
+.film-shade { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(52% 40% at 50% 52%, rgba(16, 24, 14, .32), rgba(16, 24, 14, 0) 72%); }
+.cap-shade { display: none; }
+html.seq .cap-shade { display: block; position: absolute; inset: auto 0 0 0; height: 46%; pointer-events: none; background: linear-gradient(to top, rgba(16, 24, 14, .34), rgba(16, 24, 14, 0)); }
 .hero-copy { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; text-align: center; gap: 18px; padding: 0 var(--gut); color: #fff; will-change: opacity, transform; }
 .hero-copy h1 { font-size: clamp(50px, 6.4vw, 92px); font-weight: 620; letter-spacing: -.03em; line-height: .95; text-shadow: 0 2px 30px rgba(10, 16, 8, .35); font-variation-settings: "opsz" 96; }
 .hero-where { margin: 0; font-size: clamp(15px, 1.4vw, 18px); font-weight: 500; letter-spacing: .01em; opacity: .95; text-shadow: 0 1px 12px rgba(10, 16, 8, .5); }
 .hero-copy .btn { margin-top: 10px; min-height: 54px; padding: 0 34px; font-size: 17px; }
-.hero-cue { position: absolute; left: 50%; bottom: 26px; translate: -50% 0; color: #fff; display: grid; justify-items: center; gap: 6px; font-size: 13px; font-weight: 500; opacity: .9; }
-.hero-cue i { width: 1.5px; height: 34px; background: linear-gradient(#fff, rgba(255, 255, 255, 0)); transform-origin: top; animation: cue 2.2s var(--ease) infinite; }
-@keyframes cue { 0% { transform: scaleY(0); opacity: 1 } 60% { transform: scaleY(1); opacity: 1 } 100% { transform: scaleY(1); opacity: 0 } }
-html:not(.seq) .hero-cue { display: none; }
-
 /* captions over the film (seq tier only) */
 .caps { display: none; }
 html.seq .caps { display: block; position: absolute; left: var(--gut); right: var(--gut); bottom: clamp(90px, 13vh, 140px); pointer-events: none; }
@@ -125,16 +122,10 @@ html.seq .caps { display: block; position: absolute; left: var(--gut); right: va
 .cap.on > span > span { transform: none; opacity: 1; }
 .cap .n { display: block; margin-bottom: 12px; font: 600 13px/1 var(--text); letter-spacing: .02em; color: #fff; opacity: .9; }
 .cap .n i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--jade); margin-right: 8px; vertical-align: 1px; }
-.film-dots { display: none; }
-html.seq .film-dots { display: flex; flex-direction: column; gap: 10px; position: absolute; right: calc(var(--gut) - 6px); top: 50%; translate: 0 -50%; margin: 0; padding: 0; list-style: none; opacity: 0; transition: opacity .4s ease; }
-.film.running .film-dots { opacity: 1; }
-.film-dots li { width: 8px; height: 8px; border-radius: 99px; background: rgba(255, 255, 255, .55); transition: height .35s var(--ease), background-color .35s ease; }
-.film-dots li.on { height: 26px; background: var(--jade); }
-.film-load { position: absolute; left: 50%; bottom: 24px; translate: -50% 0; display: none; align-items: center; gap: 10px; padding: 9px 16px; border-radius: 999px;
-  background: rgba(255, 255, 255, .9); color: var(--ink); font-size: 14px; font-weight: 500; box-shadow: 0 6px 20px -8px rgba(0, 0, 0, .3); }
-.film-load i { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--jade-tint); border-top-color: var(--book); animation: spin .9s linear infinite; }
+.film-load { position: absolute; right: var(--gut); bottom: 30px; display: none; width: 36px; height: 36px; margin: 0; border-radius: 50%; background: rgba(255, 255, 255, .85); place-items: center; }
+.film-load i { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--jade-tint); border-top-color: var(--book); animation: spin .9s linear infinite; }
 @keyframes spin { to { transform: rotate(1turn) } }
-html.seq .film.waiting .film-load { display: inline-flex; }
+html.seq .film.waiting .film-load { display: grid; }
 
 /* the static tier: three stills, each with its caption */
 .stills { display: none; }
@@ -228,7 +219,7 @@ html:not(.seq) .stills { display: block; }
   <a class="brand" href="#film" aria-label="{{NAME}}, back to the top"><img src="img/logo.webp" width="64" height="64" alt="{{NAME}} logo"></a>
   <nav class="nav" aria-label="Sections">
     <a href="#rooms">Rooms</a><a href="#restaurant">Restaurant</a><a href="#fitness">Fitness</a><a href="#getting-here">Getting here</a>
-    <a class="btn book" href="#book" data-open-drawer>Check dates</a>
+    <a class="btn book" href="#book" data-drawer-link>Check dates</a>
     <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sheet">{{I_MENU}}</button>
   </nav>
 </header>
@@ -242,7 +233,7 @@ html:not(.seq) .stills { display: block; }
         alt="From the air: the long turquoise pool on its stone deck with loungers, people swimming, red-tiled bungalows around it in the palms">
     </picture>
     <canvas aria-hidden="true"></canvas>
-    <div class="film-shade"></div>
+    <div class="film-shade"></div><div class="cap-shade"></div>
     <div class="hero-copy">
       <h1>Panta Rei</h1>
       <p class="hero-where">Boutique resort · Kabalana, Ahangama</p>
@@ -253,9 +244,7 @@ html:not(.seq) .stills { display: block; }
       <p class="cap" data-cap="1"><span><span><b class="n"><i></i>2 / 3</b>{{CAP_B}}</span></span></p>
       <p class="cap" data-cap="2"><span><span><b class="n"><i></i>3 / 3</b>{{CAP_C}}</span></span></p>
     </div>
-    <ol class="film-dots" aria-hidden="true"><li></li><li></li><li></li></ol>
-    <div class="hero-cue" aria-hidden="true">Scroll<i></i></div>
-    <p class="film-load" role="status"><i></i>Loading the film <span data-pct>0%</span></p>
+    <p class="film-load" role="status" aria-label="Loading the film"><i></i></p>
   </div>
 </section>
 <section class="stills" aria-label="From the pool to the sea">
@@ -266,7 +255,7 @@ html:not(.seq) .stills { display: block; }
 <!--BODY-->
 </main>
 
-<div class="pill" aria-label="Book">
+<div class="pill mini" aria-label="Book">
   <a class="btn book go" href="#book" data-open-drawer>{{I_CAL}}<span class="lbl">Check dates</span></a>
   <a class="btn wa" href="{{WA}}" aria-label="WhatsApp us">{{I_WA}}</a>
 </div>
@@ -306,54 +295,54 @@ html:not(.seq) .stills { display: block; }
   var mobile = matchMedia('(max-width: 767px)').matches;
   var seq = d.classList.contains('seq');
 
-  /* ---------- the scrubbed film ---------- */
-  var N = 150, INTRO = 10, frames = new Array(N), ready = false, intro = 0, cur = 0, started = false, loaded = 0;
+  /* ---------- the scrubbed film ----------
+     After first paint only the key frames (every 6th + the last, ~0.3 MB on a phone) load; the film
+     runs on them at once, cross-fading between neighbours. The rest loads when the visitor scrolls. */
+  var N = 72, KEY = 6, frames = new Array(N), ready = false, cur = 0, keysStarted = false, allStarted = false;
   var canvas = film.querySelector('canvas'), ctx = canvas.getContext('2d'), drawn = -1;
   var base = mobile ? 'frames/m/' : 'frames/d/';
   var name = function (i) { return base + String(i + 1).padStart(3, '0') + '.webp'; };
-  var caps = film.querySelectorAll('.cap'), dots = film.querySelectorAll('.film-dots li');
-  var CAP = [[.05, .20], [.235, .37], [.76, .975]];
-  var heroCopy = film.querySelector('.hero-copy'), cue = film.querySelector('.hero-cue'), pct = film.querySelector('[data-pct]');
+  var caps = film.querySelectorAll('.cap'), shade = film.querySelector('.film-shade');
+  var CAP = [[.02, .34], [.34, .67], [.67, .995]];
+  var heroCopy = film.querySelector('.hero-copy');
+  var keyList = []; for (var q = 0; q < N; q += KEY) keyList.push(q); if (keyList[keyList.length - 1] !== N - 1) keyList.push(N - 1);
 
   function size() {
     var dpr = Math.min(devicePixelRatio || 1, mobile ? 2 : 1.5);
     canvas.width = Math.round(canvas.clientWidth * dpr); canvas.height = Math.round(canvas.clientHeight * dpr); drawn = -1;
   }
-  function nearest(i) {
-    for (var k = 0; k < N; k++) { if (frames[i - k]) return i - k; if (frames[i + k]) return i + k; }
-    return -1;
+  function paint(b, alpha) {
+    var w = canvas.width, h = canvas.height, s = Math.max(w / b.width, h / b.height);
+    ctx.globalAlpha = alpha; ctx.drawImage(b, (w - b.width * s) / 2, (h - b.height * s) / 2, b.width * s, b.height * s);
   }
-  function draw(i) {
-    var j = nearest(i); if (j < 0 || j === drawn) return;
-    var b = frames[j], w = canvas.width, h = canvas.height, s = Math.max(w / b.width, h / b.height);
-    ctx.drawImage(b, (w - b.width * s) / 2, (h - b.height * s) / 2, b.width * s, b.height * s); drawn = j;
+  function draw(f) {
+    var i = Math.floor(f), a = i, b = Math.ceil(f);
+    while (a > 0 && !frames[a]) a--;
+    while (b < N - 1 && !frames[b]) b++;
+    if (!frames[a]) a = b; if (!frames[b]) b = a; if (!frames[a]) return;
+    var t = b > a ? (f - a) / (b - a) : 0, key = a * 1000 + b + Math.round(t * 40) / 40;
+    if (key === drawn) return; drawn = key;
+    paint(frames[a], 1); if (b !== a && t > .02) paint(frames[b], t); ctx.globalAlpha = 1;
   }
   function load(i) {
-    return fetch(name(i)).then(function (r) { return r.blob(); }).then(createImageBitmap).then(function (bmp) {
-      frames[i] = bmp; loaded++; if (pct) pct.textContent = Math.round(loaded / N * 100) + '%';
-    }).catch(function () {});
+    if (frames[i] !== undefined) return Promise.resolve(); frames[i] = null;
+    return fetch(name(i)).then(function (r) { return r.blob(); }).then(createImageBitmap).then(function (bmp) { frames[i] = bmp; drawn = -1; })
+      .catch(function () { frames[i] = undefined; });
   }
-  function start() {
-    if (started || !seq) return; started = true;
-    var order = [], i;
-    for (i = 0; i < N; i += 6) order.push(i);           // key frames first: the scrub can run on these
-    order.push(N - 1);
-    for (i = 0; i < N; i++) if (order.indexOf(i) < 0) order.push(i);
-    var keys = order.indexOf(N - 1) + 1, p = 0;
-    function next() {
-      if (p >= order.length) return;
-      var batch = order.slice(p, p + 6); p += 6;
-      Promise.all(batch.map(load)).then(function () {
-        if (!ready && p >= keys) becomeReady();
-        next();
-      });
-    }
-    next();
+  function batches(list, n) {
+    var p = 0;
+    return new Promise(function (done) {
+      (function next() { if (p >= list.length) return done(); var b = list.slice(p, p + n); p += n; Promise.all(b.map(load)).then(next); })();
+    });
   }
-  function becomeReady() {
-    ready = true; size(); film.classList.remove('waiting'); film.classList.add('ready');
-    if (progress() < .01) { var t0 = performance.now(); (function tw(t) { intro = Math.min(1, (t - t0) / 1400); intro = 1 - Math.pow(1 - intro, 3); if (intro < 1) requestAnimationFrame(tw); })(t0); }
-    else intro = 1;
+  function loadKeys() {
+    if (keysStarted || !seq) return; keysStarted = true;
+    batches(keyList, 4).then(function () { ready = true; size(); film.classList.add('ready'); film.classList.remove('waiting'); });
+  }
+  function loadAll() {
+    if (allStarted || !seq) return; allStarted = true; loadKeys();
+    var rest = []; for (var i = 0; i < N; i++) if (keyList.indexOf(i) < 0) rest.push(i);
+    batches(rest, 4);
   }
   function progress() {
     var r = film.getBoundingClientRect(), span = r.height - innerHeight;
@@ -364,31 +353,28 @@ html:not(.seq) .stills { display: block; }
     var dt = Math.min(.1, (t - last) / 1000); last = t;
     var p = progress();
     if (seq) {
-      var target = INTRO * intro + p * (N - 1 - INTRO * intro);
+      var target = p * (N - 1);
       cur += (target - cur) * (1 - Math.exp(-dt * 9));
-      if (ready) draw(Math.round(cur));
-      var on = -1;
-      for (var k = 0; k < 3; k++) { var a = p >= CAP[k][0] && p <= CAP[k][1]; caps[k].classList.toggle('on', a); if (a) on = k; }
-      for (k = 0; k < 3; k++) dots[k].classList.toggle('on', k === on);
-      var h = Math.min(1, p / .04);
-      heroCopy.style.opacity = 1 - h; heroCopy.style.transform = 'translateY(' + (-40 * h) + 'px)';
+      if (ready && p > 0) draw(cur);
+      for (var k = 0; k < 3; k++) caps[k].classList.toggle('on', p >= CAP[k][0] && p <= CAP[k][1]);
+      var h = Math.min(1, p / .03);
+      heroCopy.style.opacity = 1 - h; heroCopy.style.transform = 'translateY(' + (-36 * h) + 'px)';
       heroCopy.style.visibility = h >= 1 ? 'hidden' : '';
-      cue.style.opacity = 1 - Math.min(1, p / .015);
-      var running = p > .02 && p < 1;
-      film.classList.toggle('running', running);
+      shade.style.opacity = 1 - h;
+      film.classList.toggle('playing', ready && p > 0);
+      var running = p > .02 && p < .995;
       film.classList.toggle('waiting', running && !ready);
-      pill.classList.toggle('mini', running);
+      pill.classList.toggle('show', running);
     }
-    var past = film.getBoundingClientRect().bottom < 80;
-    top.classList.toggle('solid', past);
-    pill.classList.toggle('show', seq ? p > .02 : scrollY > innerHeight * .6);
+    top.classList.toggle('solid', film.getBoundingClientRect().bottom < 80);
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
   if (seq) {
     addEventListener('resize', size);
-    ['scroll', 'wheel', 'touchstart', 'pointerdown', 'keydown'].forEach(function (ev) { addEventListener(ev, start, { once: true, passive: true }); });
-    addEventListener('load', function () { setTimeout(start, 4500); });
+    var later = function () { requestAnimationFrame(function () { setTimeout(loadKeys, 0); }); };
+    document.readyState === 'complete' ? later() : addEventListener('load', later, { once: true });
+    ['scroll', 'wheel', 'touchmove', 'keydown'].forEach(function (ev) { addEventListener(ev, loadAll, { once: true, passive: true }); });
   }
 
   /* ---------- drawer ---------- */
@@ -432,7 +418,7 @@ html:not(.seq) .stills { display: block; }
   }
   document.addEventListener('click', function (ev) {
     if (ev.target === drawer) { close(); return; }
-    var a = ev.target.closest('[data-open-drawer]');
+    var a = ev.target.closest('[data-open-drawer], [data-drawer-link]');
     if (a) { ev.preventDefault(); var pick = a.dataset.room && form.querySelector('input[value=' + a.dataset.room + ']'); if (pick) { pick.checked = true; sync(); } open(drawer, a); return; }
     if (ev.target.closest('[data-close]')) { close(); return; }
     if (openEl === sheet && ev.target.closest('.sheet nav a')) close();

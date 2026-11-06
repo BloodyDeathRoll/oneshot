@@ -1,9 +1,9 @@
 {
  "slug": "panta-rei-resort",
  "variant": "interactive",
- "measured_at": "2026-11-06T11:00:08.877Z",
+ "measured_at": "2026-11-06T12:11:22.716Z",
  "first_load": {
-  "requests": 16,
+  "requests": 12,
   "hosts": [
    "fonts.googleapis.com",
    "localhost:8980",
@@ -13,31 +13,21 @@
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 1160767,
-  "bytes_html": 109508,
+  "bytes_total": 647821,
+  "bytes_html": 99313,
   "bytes_js": 0,
   "bytes_css": 0,
-  "bytes_fonts": 79316,
-  "bytes_images": 971943,
-  "largest_image_bytes": 251360,
-  "lcp_ms": 1288,
-  "cls": 0,
-  "dcl_ms": 1829
+  "bytes_fonts": 49024,
+  "bytes_images": 499484,
+  "largest_image_bytes": 142982,
+  "lcp_ms": 1452,
+  "cls": 0.0009,
+  "dcl_ms": 2054
  },
  "scroll": {
   "early": {
-   "cls": 0.0012,
-   "shifts": [
-    {
-     "value": 0.001,
-     "at_ms": 1821,
-     "y": 0,
-     "sources": [
-      "div.bar",
-      "a.hdr-wa"
-     ]
-    }
-   ]
+   "cls": 0.0013,
+   "shifts": []
   },
   "settled": {
    "cls": 0,
@@ -75,10 +65,10 @@
   "note": "no drawer; every action is a plain link"
  },
  "a11y": {
-  "images": 20,
+  "images": 18,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 4,
-  "tapables": 41,
+  "tapables": 27,
   "tapables_under_44px": 0,
   "tapables_under_44px_examples": [],
   "headings": [
@@ -93,9 +83,11 @@
    "H2",
    "H3",
    "H3",
+   "H2",
    "H3",
    "H2",
-   "H2",
+   "H3",
+   "H3",
    "H2",
    "H2",
    "H3",
@@ -110,9 +102,9 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 6936,
+  "text_length": 7009,
   "booking_links_reachable": 2,
-  "visible_images": 16
+  "visible_images": 14
  },
  "reduced_motion": {
   "canvases": 0,

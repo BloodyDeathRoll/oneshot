@@ -36,15 +36,14 @@
   </div>
 </section>
 
-<section class="surf" id="after-the-surf">
-  <div class="wrap surf-grid">
-    <div class="surf-pic"><picture><source media="(max-width: 767px)" srcset="img/lawn-m.webp"><img src="img/lawn-d.webp" width="1350" height="760" loading="lazy" alt="On the lawn by the pool: two guests carrying surfboards, a woman in a straw hat crouching beside a dog, festoon lights overhead"></picture></div>
-    <div class="surf-card card tint">
-      <h2>{{SURF_HEAD}}</h2>
-      {{SURF_BODY}}
-      <ul class="rows">{{MASSAGE_ROWS}}</ul>
-      <p class="asof">Prices as of {{CAPTURED}}</p>
-    </div>
+<section class="surf band-section" id="after-the-surf">
+  <div class="band">
+    <picture><source media="(max-width: 767px)" srcset="img/lawn-m.webp"><img src="img/lawn-d.webp" width="1350" height="760" loading="lazy" alt="On the lawn by the pool: two guests carrying surfboards, a woman in a straw hat crouching beside a dog, festoon lights overhead"></picture>
+    <h2 class="band-title">{{SURF_HEAD}}</h2>
+  </div>
+  <div class="wrap two-col">
+    <div class="col-text">{{SURF_BODY}}</div>
+    <div><ul class="rows">{{MASSAGE_ROWS}}</ul><p class="asof">Prices as of {{CAPTURED}}</p></div>
   </div>
 </section>
 
@@ -56,18 +55,23 @@
       <p class="hours">{{I_CAL}}<span>{{HOURS}}</span></p>
     </div>
     <div class="prints">
-      <img class="print p1" src="img/breakfast.webp" width="800" height="1000" loading="lazy" alt="Breakfast served at a teak table: hands passing a bowl of granola, a glass of juice, a plate of fruit and a coffee">
+      <img class="print p1" src="img/lunch.webp" width="800" height="1000" loading="lazy" alt="Lunch on a teak table in the garden: sliders, plated dishes, a bottle of water and glasses">
       <img class="print p2" src="img/prawns.webp" width="800" height="1000" loading="lazy" alt="Garlic prawns with herbs in a dark bowl on a woven rattan mat, seen from above">
     </div>
   </div>
 </section>
 
-<section class="fit" id="fitness">
-  <div class="wrap fit-grid">
-    <img class="print fit-pic" src="img/balcony.webp" width="800" height="1000" loading="lazy" alt="Three women in a class, lunging at the upstairs balcony rail, palm leaves and a red roof beyond">
-    <div class="fit-text">
-      <h2>{{FIT_HEAD}}</h2>
-      {{FIT_BODY}}
+<section class="fit band-section" id="fitness">
+  <div class="band">
+    <img src="img/shala-poster.webp" width="1600" height="900" loading="lazy" alt="A yoga class in the open-air shala under white curtains: mats on the concrete floor, palms beyond the columns">
+    <video muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" data-lazy-video>
+      <source data-src="video/shala-1280.webm" type="video/webm"><source data-src="video/shala-1280.mp4" type="video/mp4">
+    </video>
+    <h2 class="band-title">{{FIT_HEAD}}</h2>
+  </div>
+  <div class="wrap two-col">
+    <div class="col-text">{{FIT_BODY}}</div>
+    <div>
       <ol class="week" aria-label="Vinyasa yoga through the week">{{DAYS}}</ol>
       <ul class="rows">{{CLASS_ROWS}}</ul>
       <p class="asof">{{CLASS_NOTE}} · prices as of {{CAPTURED}}</p>
@@ -75,14 +79,19 @@
   </div>
 </section>
 
-<section class="guests" id="guests">
-  <div class="wrap">
-    <h2>What guests say</h2>
-    <div class="scores">
-      <a class="score" href="{{B_URL}}" target="_blank" rel="noopener"><b>{{B_SCORE}}<small>/10</small></b><span>Booking.com<br>{{B_COUNT}} reviews</span></a>
-      <a class="score" href="{{G_URL}}" target="_blank" rel="noopener"><b>{{G_SCORE}}<small>/5</small></b><span>Google<br>{{G_COUNT}} reviews</span></a>
+<section class="guests band-section" id="guests">
+  <div class="band band-scores">
+    <picture><source media="(max-width: 767px)" srcset="img/table-m.webp"><img src="img/table-d.webp" width="1600" height="1056" loading="lazy" alt="Breakfast served at a teak table under the trees: hands passing a bowl of granola, juice, a plate of fruit and a coffee"></picture>
+    <div class="scores-over">
+      <h2 class="band-title">What guests say</h2>
+      <div class="scores">
+        <a class="score" href="{{B_URL}}" target="_blank" rel="noopener"><b>{{B_SCORE}}<small>/10</small></b><span>Booking.com<br>{{B_COUNT}} reviews</span></a>
+        <a class="score" href="{{G_URL}}" target="_blank" rel="noopener"><b>{{G_SCORE}}<small>/5</small></b><span>Google<br>{{G_COUNT}} reviews</span></a>
+      </div>
       <p class="asof">As of {{CAPTURED}}</p>
     </div>
+  </div>
+  <div class="wrap">
     <div class="qgal" data-gal>
       <div class="gal-track" tabindex="0" role="group" aria-roledescription="slideshow" aria-label="Guest reviews">{{QUOTES}}</div>
       <div class="gal-ui"><button type="button" class="gal-btn prev" aria-label="Previous review"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="dots">{{QDOTS}}</div><button type="button" class="gal-btn next" aria-label="Next review"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
@@ -120,6 +129,7 @@
     <source data-src="video/vid-002-d1920.mp4" type="video/mp4">
   </video>
   <div class="closing-copy">
+    <h2>{{BOOK_LABEL}}</h2>
     <p>{{CLOSING}}</p>
     <div class="btn-row"><a class="btn book" href="#book" data-open-drawer>Check dates</a><a class="btn glass" href="{{WA}}">{{I_WA}}WhatsApp</a></div>
   </div>

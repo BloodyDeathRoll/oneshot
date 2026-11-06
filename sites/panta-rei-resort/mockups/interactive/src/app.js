@@ -66,7 +66,7 @@
   }
 
   /* ---------- slideshow helper: dots + prev/next on a scroll-snap track */
-  const slideshow = (track, dotsEl, prev, next, perView = () => 1) => {
+  const slideshow = (track, dotsEl, prev, next, counter) => {
     const items = () => [...track.children];
     const idx = () => {
       const w = items()[0]?.getBoundingClientRect().width || 1;
@@ -86,7 +86,7 @@
       });
       mark();
     };
-    const mark = () => { const i = idx(); $$('.dot', dotsEl).forEach((b, j) => b.setAttribute('aria-current', i === j)); };
+    const mark = () => { const i = idx(); $$('.dot', dotsEl).forEach((b, j) => b.setAttribute('aria-current', i === j)); if (counter) counter.textContent = `${Math.min(i + 1, items().length)} / ${items().length}`; };
     track.addEventListener('scroll', () => requestAnimationFrame(mark), { passive: true });
     prev && prev.addEventListener('click', () => go(idx() - 1));
     next && next.addEventListener('click', () => go(idx() + 1));
@@ -97,7 +97,15 @@
   /* ---------- guests: draggable cards with momentum, snapping */
   const q = $('.quotes');
   if (q) {
-    slideshow(q, $('#qdots'), $('#qprev'), $('#qnext'));
+    slideshow(q, $('#qdots'), $('#qprev'), $('#qnext'), $('#qcount'));
+    // the row is as tall as the quotes in view, not as the longest quote off-screen
+    const fit = () => {
+      const r = q.getBoundingClientRect(); let h = 0;
+      for (const c of q.children) { const b = c.getBoundingClientRect(); if (b.right > r.left + 8 && b.left < r.right - 8) h = Math.max(h, c.offsetHeight); }
+      if (h) q.style.height = h + 24 + 'px';
+    };
+    let ft; q.addEventListener('scroll', () => { clearTimeout(ft); ft = setTimeout(fit, 90); }, { passive: true });
+    addEventListener('resize', fit); d.fonts && d.fonts.ready.then(fit); fit();
     let down = false, sx = 0, sl = 0, v = 0, lx = 0, lt = 0, moved = false;
     q.addEventListener('pointerdown', (e) => {
       if (e.pointerType !== 'mouse') return;
@@ -143,19 +151,10 @@
     d.fonts && d.fonts.ready.then(() => place(btns.find((b) => b.getAttribute('aria-selected') === 'true')));
   }
 
-  /* ---------- week strip: tap a day, it flips to show the class */
-  const say = $('.day-say');
-  $$('.day').forEach((b) => b.addEventListener('click', () => {
-    const on = b.getAttribute('aria-pressed') !== 'true';
-    $$('.day').forEach((x) => x.setAttribute('aria-pressed', 'false'));
-    b.setAttribute('aria-pressed', on);
-    say.textContent = on ? b.dataset.say : '';
-  }));
-
   /* ---------- booking drawer */
   const dr = $('#drawer'), scrim = $('#scrim'), go = $('#dr-go'), wa = $('#dr-wa');
   const arr = $('#f-arr'), dep = $('#f-dep'), gst = $('#f-gst');
-  const roomBox = $('.room', dr), slides = $('.slides', dr);
+  const slides = $('.slides', dr);
   let room = null, opener = null, shows = null;
   const iso = (t) => new Date(t - new Date(t).getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
   const today = iso(Date.now());
@@ -192,7 +191,6 @@
     const keep = gst.value;
     gst.innerHTML = Array.from({ length: R.sleeps }, (_, i) => `<option value="${i + 1}">${i + 1} guest${i ? 's' : ''}</option>`).join('');
     gst.value = Math.min(+keep || 2, R.sleeps);
-    roomBox.classList.add('on'); roomBox.removeAttribute('aria-hidden');
     update();
   };
 
@@ -201,9 +199,9 @@
     opener = from || d.activeElement;
     dr.hidden = false; scrim.hidden = false;
     root.classList.add('lock');
-    if (key) pickRoom(key); else { room = null; roomBox.classList.remove('on'); roomBox.setAttribute('aria-hidden', 'true'); $$('.rchip', dr).forEach((c) => c.setAttribute('aria-pressed', 'false')); update(); }
+    pickRoom(key || room || DATA.rooms[0].key); // always a room: the hand-off is a room page that keeps the typed dates
     requestAnimationFrame(() => requestAnimationFrame(() => { dr.classList.add('open'); scrim.classList.add('open'); }));
-    setTimeout(() => (key ? $('.rchip[aria-pressed=true]', dr) : $('.rchip', dr)).focus({ preventScroll: true }), calm ? 0 : 60);
+    setTimeout(() => $('.rchip[aria-pressed=true]', dr).focus({ preventScroll: true }), calm ? 0 : 60);
   };
   const close = () => {
     dr.classList.remove('open'); scrim.classList.remove('open');

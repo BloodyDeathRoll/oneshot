@@ -1,6 +1,10 @@
 (()=>{
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* one quiet entrance for section photographs (never headings) */
+if(!reduce&&'IntersectionObserver' in window){document.documentElement.classList.add('js');
+ const io2=new IntersectionObserver(es=>{for(const en of es)if(en.isIntersecting){en.target.classList.add('in');io2.unobserve(en.target)}},{rootMargin:'0px 0px -8% 0px'});
+ $$('.rv').forEach(el=>{if(el.getBoundingClientRect().top<innerHeight)el.classList.add('in');io2.observe(el)})}
 
 /* header + phone bar */
 const hdr=$('#hdr'),bar=$('#bar'),hero=$('.hero');

@@ -47,7 +47,7 @@ CAPTURED = '6 Nov 2026'  # ratings[].capturedAt and the prices' fetched_at, 2026
 
 # the three set-piece captions: existing copy lines, verbatim (a is an excerpt of W2's first sentence)
 CAP_A = '16 bungalows, each with its own charm and style'
-CAP_B = POOL1.split('. ')[0] + '.' if not POOL1.split('. ')[0].endswith('.') else POOL1.split('. ')[0]
+CAP_B = 'The bungalows sit in a ring around a long pool'  # verbatim excerpt of The pool ¶1 (≤ 12 words, 4f round 2)
 CAP_C = C['spot']
 assert CAP_A in W2 and CAP_B in POOL['body'] and CAP_C == C['spot']
 

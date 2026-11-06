@@ -1,36 +1,36 @@
 {
  "slug": "panta-rei-resort",
  "variant": "unique",
- "measured_at": "2026-11-06T11:13:12.267Z",
+ "measured_at": "2026-11-06T12:05:17.973Z",
  "first_load": {
-  "requests": 8,
+  "requests": 22,
   "hosts": [
-   "fonts.googleapis.com",
    "localhost:8980",
+   "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
   "third_party_hosts": [
    "fonts.googleapis.com",
    "fonts.gstatic.com"
   ],
-  "bytes_total": 508840,
-  "bytes_html": 101374,
+  "bytes_total": 846482,
+  "bytes_html": 102848,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 111532,
-  "bytes_images": 295934,
+  "bytes_images": 632102,
   "largest_image_bytes": 172222,
-  "lcp_ms": 680,
+  "lcp_ms": 760,
   "cls": 0.0017,
-  "dcl_ms": 978
+  "dcl_ms": 982
  },
  "scroll": {
   "early": {
-   "cls": 0.0019,
+   "cls": 0.0002,
    "shifts": []
   },
   "settled": {
-   "cls": 0.0016,
+   "cls": 0.0004,
    "shifts": []
   }
  },
@@ -53,7 +53,7 @@
   "tel_hrefs": [
    "tel:+94728003022"
   ],
-  "drawer_triggers": 5,
+  "drawer_triggers": 4,
   "triggers_are_links": true,
   "primary_above_fold": true,
   "tapped": "#book"
@@ -64,10 +64,10 @@
   "focus_returned": true
  },
  "a11y": {
-  "images": 64,
+  "images": 65,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 9,
-  "tapables": 58,
+  "tapables": 57,
   "tapables_under_44px": 0,
   "tapables_under_44px_examples": [],
   "headings": [
@@ -87,15 +87,16 @@
    "H2",
    "H3",
    "H2",
+   "H2",
    "H2"
   ],
   "has_skip_link": true,
   "lang": "en"
  },
  "no_js": {
-  "text_length": 7444,
+  "text_length": 7394,
   "booking_links_reachable": 7,
-  "visible_images": 39
+  "visible_images": 40
  },
  "reduced_motion": {
   "canvases": 1,

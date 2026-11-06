@@ -82,6 +82,8 @@ svg.stroke { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap
 .nav a:not(.btn):hover { background: rgba(255, 255, 255, .18); }
 .top.solid .nav a:not(.btn):hover { background: var(--jade-tint); }
 .nav .btn { margin-left: 10px; min-height: 44px; padding: 0 20px; font-size: 15px; }
+.top:not(.solid) .nav .btn { opacity: 0; visibility: hidden; transform: scale(.9); }
+.top .nav .btn { transition: opacity .3s ease, visibility .3s, transform .3s var(--ease), background-color .18s ease; }
 .menu-btn { display: none; }
 @media (max-width: 899px) {
   .nav a:not(.btn) { display: none; }
@@ -96,25 +98,20 @@ svg.stroke { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap
 
 /* ---------- the film: hero + scroll set-piece ---------- */
 .film { position: relative; height: 100svh; min-height: 560px; background: #D5E2DD; }
-html.seq .film { height: calc(100svh + 360svh); }
+html.seq .film { height: calc(100svh + 260svh); }
 .film-sticky { position: relative; height: 100svh; min-height: 560px; overflow: hidden; }
 html.seq .film-sticky { position: sticky; top: 0; }
 .film-poster, .film-poster img, .film canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .film-poster img { object-fit: cover; }
 .film canvas { opacity: 0; transition: opacity .6s ease; }
-.film.ready canvas { opacity: 1; }
-.film-shade { position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(60% 46% at 50% 52%, rgba(16, 24, 14, .34), rgba(16, 24, 14, 0) 72%),
-              linear-gradient(to top, rgba(16, 24, 14, .42), rgba(16, 24, 14, 0) 38%); }
+.film.playing canvas { opacity: 1; }
+.film-shade { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(52% 40% at 50% 52%, rgba(16, 24, 14, .32), rgba(16, 24, 14, 0) 72%); }
+.cap-shade { display: none; }
+html.seq .cap-shade { display: block; position: absolute; inset: auto 0 0 0; height: 46%; pointer-events: none; background: linear-gradient(to top, rgba(16, 24, 14, .34), rgba(16, 24, 14, 0)); }
 .hero-copy { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; text-align: center; gap: 18px; padding: 0 var(--gut); color: #fff; will-change: opacity, transform; }
 .hero-copy h1 { font-size: clamp(50px, 6.4vw, 92px); font-weight: 620; letter-spacing: -.03em; line-height: .95; text-shadow: 0 2px 30px rgba(10, 16, 8, .35); font-variation-settings: "opsz" 96; }
 .hero-where { margin: 0; font-size: clamp(15px, 1.4vw, 18px); font-weight: 500; letter-spacing: .01em; opacity: .95; text-shadow: 0 1px 12px rgba(10, 16, 8, .5); }
 .hero-copy .btn { margin-top: 10px; min-height: 54px; padding: 0 34px; font-size: 17px; }
-.hero-cue { position: absolute; left: 50%; bottom: 26px; translate: -50% 0; color: #fff; display: grid; justify-items: center; gap: 6px; font-size: 13px; font-weight: 500; opacity: .9; }
-.hero-cue i { width: 1.5px; height: 34px; background: linear-gradient(#fff, rgba(255, 255, 255, 0)); transform-origin: top; animation: cue 2.2s var(--ease) infinite; }
-@keyframes cue { 0% { transform: scaleY(0); opacity: 1 } 60% { transform: scaleY(1); opacity: 1 } 100% { transform: scaleY(1); opacity: 0 } }
-html:not(.seq) .hero-cue { display: none; }
-
 /* captions over the film (seq tier only) */
 .caps { display: none; }
 html.seq .caps { display: block; position: absolute; left: var(--gut); right: var(--gut); bottom: clamp(90px, 13vh, 140px); pointer-events: none; }
@@ -125,16 +122,10 @@ html.seq .caps { display: block; position: absolute; left: var(--gut); right: va
 .cap.on > span > span { transform: none; opacity: 1; }
 .cap .n { display: block; margin-bottom: 12px; font: 600 13px/1 var(--text); letter-spacing: .02em; color: #fff; opacity: .9; }
 .cap .n i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--jade); margin-right: 8px; vertical-align: 1px; }
-.film-dots { display: none; }
-html.seq .film-dots { display: flex; flex-direction: column; gap: 10px; position: absolute; right: calc(var(--gut) - 6px); top: 50%; translate: 0 -50%; margin: 0; padding: 0; list-style: none; opacity: 0; transition: opacity .4s ease; }
-.film.running .film-dots { opacity: 1; }
-.film-dots li { width: 8px; height: 8px; border-radius: 99px; background: rgba(255, 255, 255, .55); transition: height .35s var(--ease), background-color .35s ease; }
-.film-dots li.on { height: 26px; background: var(--jade); }
-.film-load { position: absolute; left: 50%; bottom: 24px; translate: -50% 0; display: none; align-items: center; gap: 10px; padding: 9px 16px; border-radius: 999px;
-  background: rgba(255, 255, 255, .9); color: var(--ink); font-size: 14px; font-weight: 500; box-shadow: 0 6px 20px -8px rgba(0, 0, 0, .3); }
-.film-load i { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--jade-tint); border-top-color: var(--book); animation: spin .9s linear infinite; }
+.film-load { position: absolute; right: var(--gut); bottom: 30px; display: none; width: 36px; height: 36px; margin: 0; border-radius: 50%; background: rgba(255, 255, 255, .85); place-items: center; }
+.film-load i { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--jade-tint); border-top-color: var(--book); animation: spin .9s linear infinite; }
 @keyframes spin { to { transform: rotate(1turn) } }
-html.seq .film.waiting .film-load { display: inline-flex; }
+html.seq .film.waiting .film-load { display: grid; }
 
 /* the static tier: three stills, each with its caption */
 .stills { display: none; }
@@ -223,7 +214,7 @@ html:not(.seq) .stills { display: block; }
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gut); }
 main > section:not(.film):not(.stills):not(.closing):not(.pool) { padding-block: clamp(80px, 10vw, 150px); }
 h2 { font-size: clamp(38px, 4.6vw, 66px); }
-.card { background: var(--paper); border-radius: 24px; padding: clamp(26px, 3.2vw, 44px); box-shadow: 0 34px 70px -44px rgba(37, 48, 31, .42); }
+.card { background: var(--paper); border-radius: 24px; padding: clamp(26px, 3.2vw, 44px); }
 .card.tint { background: var(--jade-tint); box-shadow: none; }
 .card h2 { font-size: clamp(32px, 3.2vw, 46px); margin-bottom: 18px; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
@@ -281,11 +272,11 @@ h2 { font-size: clamp(38px, 4.6vw, 66px); }
 .gal-ui { position: absolute; left: 0; right: 0; bottom: 14px; display: flex; justify-content: center; align-items: center; gap: 8px; pointer-events: none; }
 .gal-ui > * { pointer-events: auto; }
 .gal-btn { width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(255, 255, 255, .92); color: var(--ink); display: grid; place-items: center; cursor: pointer;
-  transition: transform .18s var(--ease), background-color .18s ease; box-shadow: 0 4px 14px -6px rgba(0, 0, 0, .3); }
+  transition: transform .18s var(--ease), background-color .18s ease; }
 .gal-btn svg { width: 18px; height: 18px; }
 .gal-btn:hover { transform: scale(1.06); }
 .gal-btn:active { transform: scale(.92); }
-.dots { display: flex; align-items: center; padding: 0; height: 44px; border-radius: 999px; background: rgba(255, 255, 255, .92); box-shadow: 0 4px 14px -6px rgba(0, 0, 0, .3); }
+.dots { display: flex; align-items: center; padding: 0; height: 44px; border-radius: 999px; background: rgba(255, 255, 255, .92); }
 .dot { flex: none; width: 44px; height: 44px; border: 0; padding: 0; background: none; cursor: pointer; display: grid; place-items: center; }
 .dot::before { content: ""; width: 7px; height: 7px; border-radius: 99px; background: rgba(37, 48, 31, .28); transition: width .35s var(--ease), background-color .3s ease; }
 .dot.on::before { width: 20px; background: var(--jade); }
@@ -297,11 +288,19 @@ h2 { font-size: clamp(38px, 4.6vw, 66px); }
 .pool-pic img { width: 100%; height: min(94vh, 960px); object-fit: cover; transform: scale(1.06); will-change: transform; }
 .pool-card { position: absolute; right: var(--gut); bottom: clamp(30px, 5vw, 80px); width: min(470px, 40vw); }
 
-/* after the surf */
-.surf-grid { display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; }
-.surf-pic img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--r); }
-.surf-card { margin-left: -90px; position: relative; }
-
+/* full-bleed moments (after the surf, fitness, guests) */
+main > section.band-section { padding-top: 0 !important; }
+.band { position: relative; height: min(86vh, 820px); min-height: 460px; overflow: hidden; background: #D5E2DD; }
+.band img, .band video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.band video { opacity: 0; transition: opacity .8s ease; }
+.band video.playing { opacity: 1; }
+.band::after { content: ""; position: absolute; inset: 45% 0 0 0; background: linear-gradient(to top, rgba(16, 24, 14, .42), rgba(16, 24, 14, 0)); pointer-events: none; }
+.band-title { position: absolute; z-index: 1; left: var(--gut); bottom: clamp(32px, 6vh, 64px); color: #fff; font-size: clamp(44px, 6vw, 92px); letter-spacing: -.03em; text-shadow: 0 2px 24px rgba(10, 16, 8, .35); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 6vw, 96px); padding-top: clamp(48px, 6vw, 84px) !important; align-items: start; }
+.col-text p { font-size: 18px; }
+.band-scores { height: min(78vh, 720px); }
+.scores-over { position: absolute; z-index: 1; left: var(--gut); right: var(--gut); bottom: clamp(32px, 6vh, 64px); color: #fff; text-shadow: 0 2px 20px rgba(10, 16, 8, .35); }
+.scores-over .band-title { position: static; margin-bottom: 18px; }
 /* restaurant */
 .food-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(36px, 6vw, 96px); align-items: start; }
 .food-text p { font-size: 18px; }
@@ -312,33 +311,30 @@ h2 { font-size: clamp(38px, 4.6vw, 66px); }
 .prints .p2 { margin-top: clamp(50px, 8vw, 120px); }
 
 /* fitness */
-.fit-grid { display: grid; grid-template-columns: .85fr 1fr; gap: clamp(36px, 6vw, 96px); align-items: center; }
-.fit-text p { font-size: 18px; }
-.week { list-style: none; margin: 26px 0 0; padding: 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
-.day { display: grid; justify-items: center; gap: 2px; padding: 12px 2px; border-radius: 14px; background: var(--paper); font-size: 13px; color: var(--ink-2);
+.week { list-style: none; margin: 0 0 6px; padding: 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.day { display: grid; justify-items: center; gap: 2px; padding: 12px 2px; border-radius: 14px; background: var(--jade-tint); font-size: 13px; color: var(--ink-2);
   transition: transform .2s var(--ease), background-color .2s ease; }
 .day b { font: 600 15px/1.2 var(--text); color: var(--ink); }
-.day.off { background: transparent; box-shadow: inset 0 0 0 1.5px rgba(37, 48, 31, .1); }
+.day.off { background: transparent; box-shadow: inset 0 0 0 1.5px rgba(37, 48, 31, .12); }
 .day.today { background: var(--jade); color: var(--ink); }
 .day:hover { transform: translateY(-3px); }
-.fit { background: linear-gradient(var(--ground), #EEF3F1); }
-
 /* guests */
-.guests { background: var(--jade-tint); }
-.scores { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 14px 34px; margin: 28px 0 44px; }
-.score { display: flex; align-items: center; gap: 14px; text-decoration: none; padding: 10px 18px 10px 10px; border-radius: 20px; transition: background-color .2s ease, transform .2s var(--ease); }
-.score:hover { background: rgba(255, 255, 255, .6); transform: translateY(-2px); }
-.score b { font: 620 clamp(52px, 5vw, 72px)/1 var(--display); letter-spacing: -.03em; }
-.score b small { font-size: .38em; letter-spacing: 0; color: var(--ink-2); margin-left: 2px; }
-.score span { font-size: 15px; line-height: 1.35; color: var(--ink-2); }
-.scores .asof { margin: 0 0 14px; }
-.qgal .gal-track { gap: 20px; border-radius: 24px; }
-.quote { flex: 0 0 calc(50% - 10px); margin: 0; scroll-snap-align: start; background: var(--paper); border-radius: 24px; padding: clamp(26px, 3vw, 40px); display: flex; flex-direction: column; justify-content: space-between; gap: 22px; }
-.quote blockquote { margin: 0; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.5; }
+.guests { padding-bottom: clamp(70px, 9vw, 130px); }
+.scores { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 34px; }
+.score { display: flex; align-items: center; gap: 14px; text-decoration: none; color: #fff; padding: 8px 16px 8px 0; border-radius: 20px; transition: transform .2s var(--ease), opacity .2s ease; }
+.score:hover { transform: translateY(-2px); opacity: .9; }
+.score b { font: 620 clamp(56px, 6vw, 88px)/1 var(--display); letter-spacing: -.03em; }
+.score b small { font-size: .36em; letter-spacing: 0; margin-left: 2px; opacity: .9; }
+.score span { font-size: 15px; line-height: 1.35; }
+.scores-over .asof { color: #fff; opacity: .92; margin-top: 8px; }
+.qgal { padding-top: clamp(48px, 6vw, 84px); }
+.qgal .gal-track { gap: 40px; border-radius: 0; }
+.quote { flex: 0 0 100%; margin: 0; scroll-snap-align: start; display: grid; gap: 22px; align-content: start; }
+.quote blockquote, .quote .by { max-width: 40em; }
+.quote blockquote { margin: 0; font-size: clamp(20px, 1.9vw, 26px); line-height: 1.45; letter-spacing: -.006em; }
 .quote .by { margin: 0; font-weight: 600; }
 .quote .by span { font-weight: 400; color: var(--ink-2); }
-.qgal .gal-ui { position: static; margin-top: 22px; }
-
+.qgal .gal-ui { position: static; margin-top: 30px; justify-content: flex-start; }
 /* getting here, groups */
 .here-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 6vw, 96px); align-items: start; }
 .here-text p { font-size: 18px; }
@@ -360,7 +356,8 @@ h2 { font-size: clamp(38px, 4.6vw, 66px); }
 .closing video.playing { opacity: 1; }
 .closing::after { content: ""; position: absolute; inset: 0; background: radial-gradient(55% 50% at 50% 50%, rgba(16, 24, 14, .45), rgba(16, 24, 14, .08)); }
 .closing-copy { position: relative; z-index: 1; text-align: center; color: #fff; padding: 0 var(--gut); display: grid; justify-items: center; }
-.closing-copy p { font: 600 clamp(28px, 3.3vw, 48px)/1.12 var(--display); letter-spacing: -.02em; max-width: 19em; margin: 0; text-shadow: 0 2px 24px rgba(10, 16, 8, .4); }
+.closing-copy h2 { font-size: clamp(40px, 5vw, 76px); letter-spacing: -.03em; max-width: 12em; text-shadow: 0 2px 24px rgba(10, 16, 8, .4); }
+.closing-copy p { font-size: clamp(17px, 1.5vw, 21px); line-height: 1.5; font-weight: 500; max-width: 30em; margin: 18px 0 0; text-shadow: 0 1px 14px rgba(10, 16, 8, .5); }
 .closing .btn-row { justify-content: center; margin-top: 32px; }
 .closing .btn { min-height: 54px; padding: 0 30px; }
 
@@ -382,15 +379,16 @@ h2 { font-size: clamp(38px, 4.6vw, 66px); }
   .room { min-height: 0; margin-bottom: 72px; }
   .room .gal-inline { display: block; margin-bottom: 26px; }
   .rooms-head, .food-grid, .fit-grid, .here-grid, .foot-grid { grid-template-columns: 1fr; }
-  .surf-grid { grid-template-columns: 1fr; }
-  .surf-card { margin: -60px 14px 0; }
+  .two-col { grid-template-columns: 1fr; }
+  .band { height: 72svh; }
   .pool-card { position: relative; right: auto; bottom: auto; width: auto; margin: -70px 16px 0; }
   .pool-pic img { height: 70svh; transform: none; }
-  .quote { flex-basis: 100%; }
   .groups { flex-direction: column; align-items: flex-start; margin-inline: var(--gut); }
 }
 @media (max-width: 767px) {
   body { font-size: 16.5px; }
+  .facts span { display: block; }
+  .facts span + span::before { content: none; }
   .welcome .lead-2 { margin-left: 0; }
   .wide-print img { aspect-ratio: 4/3; }
   .amen { columns: 1; }
@@ -401,7 +399,7 @@ h2 { font-size: clamp(38px, 4.6vw, 66px); }
   .score b { font-size: 52px; }
 }
 
-.here-grid > *, .food-grid > *, .fit-grid > *, .surf-grid > *, .rooms-split > *, .foot-grid > * { min-width: 0; }
+.here-grid > *, .food-grid > *, .two-col > *, .rooms-split > *, .foot-grid > * { min-width: 0; }
 
 @media (max-width: 420px) { .book-rooms { grid-template-columns: 1fr; } }
 @media (max-width: 420px) { .gal-btn { display: none; } }
@@ -414,7 +412,7 @@ h2 { font-size: clamp(38px, 4.6vw, 66px); }
   <a class="brand" href="#film" aria-label="Panta Rei Resort, back to the top"><img src="img/logo.webp" width="64" height="64" alt="Panta Rei Resort logo"></a>
   <nav class="nav" aria-label="Sections">
     <a href="#rooms">Rooms</a><a href="#restaurant">Restaurant</a><a href="#fitness">Fitness</a><a href="#getting-here">Getting here</a>
-    <a class="btn book" href="#book" data-open-drawer>Check dates</a>
+    <a class="btn book" href="#book" data-drawer-link>Check dates</a>
     <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sheet"><svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><path d="M4 8h16M4 16h16"/></svg></button>
   </nav>
 </header>
@@ -428,7 +426,7 @@ h2 { font-size: clamp(38px, 4.6vw, 66px); }
         alt="From the air: the long turquoise pool on its stone deck with loungers, people swimming, red-tiled bungalows around it in the palms">
     </picture>
     <canvas aria-hidden="true"></canvas>
-    <div class="film-shade"></div>
+    <div class="film-shade"></div><div class="cap-shade"></div>
     <div class="hero-copy">
       <h1>Panta Rei</h1>
       <p class="hero-where">Boutique resort · Kabalana, Ahangama</p>
@@ -436,17 +434,15 @@ h2 { font-size: clamp(38px, 4.6vw, 66px); }
     </div>
     <div class="caps" aria-hidden="true">
       <p class="cap" data-cap="0"><span><span><b class="n"><i></i>1 / 3</b>16 bungalows, each with its own charm and style</span></span></p>
-      <p class="cap" data-cap="1"><span><span><b class="n"><i></i>2 / 3</b>The bungalows sit in a ring around a long pool with a stone deck and loungers, and the garden runs between them.</span></span></p>
+      <p class="cap" data-cap="1"><span><span><b class="n"><i></i>2 / 3</b>The bungalows sit in a ring around a long pool</span></span></p>
       <p class="cap" data-cap="2"><span><span><b class="n"><i></i>3 / 3</b>The waves of Kabalana, a short walk from the resort.</span></span></p>
     </div>
-    <ol class="film-dots" aria-hidden="true"><li></li><li></li><li></li></ol>
-    <div class="hero-cue" aria-hidden="true">Scroll<i></i></div>
-    <p class="film-load" role="status"><i></i>Loading the film <span data-pct>0%</span></p>
+    <p class="film-load" role="status" aria-label="Loading the film"><i></i></p>
   </div>
 </section>
 <section class="stills" aria-label="From the pool to the sea">
   <div class="still"><picture><source media="(max-width: 767px)" srcset="img/still-a-m.webp"><img src="img/still-a-d.webp" width="1600" height="900" loading="lazy" alt="Red-tiled bungalow roofs around the pool, seen from straight above"></picture><p>16 bungalows, each with its own charm and style</p></div>
-  <div class="still"><picture><source media="(max-width: 767px)" srcset="img/still-b-m.webp"><img src="img/still-b-d.webp" width="1600" height="900" loading="lazy" alt="The whole ring of bungalows from above, the white two-storey main building at the top and the pool in the middle"></picture><p>The bungalows sit in a ring around a long pool with a stone deck and loungers, and the garden runs between them.</p></div>
+  <div class="still"><picture><source media="(max-width: 767px)" srcset="img/still-b-m.webp"><img src="img/still-b-d.webp" width="1600" height="900" loading="lazy" alt="The whole ring of bungalows from above, the white two-storey main building at the top and the pool in the middle"></picture><p>The bungalows sit in a ring around a long pool</p></div>
   <div class="still"><picture><source media="(max-width: 767px)" srcset="img/still-c-m.webp"><img src="img/still-c-d.webp" width="1600" height="900" loading="lazy" alt="High above the palm canopy: the small ring of red roofs in the trees, the coastline and the sea beyond"></picture><p>The waves of Kabalana, a short walk from the resort.</p></div>
 </section>
 <section class="welcome" id="welcome">
@@ -487,15 +483,14 @@ h2 { font-size: clamp(38px, 4.6vw, 66px); }
   </div>
 </section>
 
-<section class="surf" id="after-the-surf">
-  <div class="wrap surf-grid">
-    <div class="surf-pic"><picture><source media="(max-width: 767px)" srcset="img/lawn-m.webp"><img src="img/lawn-d.webp" width="1350" height="760" loading="lazy" alt="On the lawn by the pool: two guests carrying surfboards, a woman in a straw hat crouching beside a dog, festoon lights overhead"></picture></div>
-    <div class="surf-card card tint">
-      <h2>After the surf</h2>
-      <p>The Surf Therapy Massage was put together for surfers. It&#x27;s a full body oil massage that works on every muscle with sport massage techniques, for the physical demands of surfing, and helps your body recover faster.</p><p>There&#x27;s a Revitalizing massage as well. Either one is an hour on the whole body, or 45 minutes on the back, neck and shoulders.</p>
-      <ul class="rows"><li><span>Surf Therapy Massage, 60 min full body</span><b>20,000 LKR</b></li><li><span>Surf Therapy Massage, 45 min back, neck &amp; shoulders</span><b>17,000 LKR</b></li><li><span>Revitalizing Massage, 60 min full body</span><b>20,000 LKR</b></li><li><span>Revitalizing Massage, 45 min back, neck &amp; shoulders</span><b>17,000 LKR</b></li></ul>
-      <p class="asof">Prices as of 6 Nov 2026</p>
-    </div>
+<section class="surf band-section" id="after-the-surf">
+  <div class="band">
+    <picture><source media="(max-width: 767px)" srcset="img/lawn-m.webp"><img src="img/lawn-d.webp" width="1350" height="760" loading="lazy" alt="On the lawn by the pool: two guests carrying surfboards, a woman in a straw hat crouching beside a dog, festoon lights overhead"></picture>
+    <h2 class="band-title">After the surf</h2>
+  </div>
+  <div class="wrap two-col">
+    <div class="col-text"><p>The Surf Therapy Massage was put together for surfers. It&#x27;s a full body oil massage that works on every muscle with sport massage techniques, for the physical demands of surfing, and helps your body recover faster.</p><p>There&#x27;s a Revitalizing massage as well. Either one is an hour on the whole body, or 45 minutes on the back, neck and shoulders.</p></div>
+    <div><ul class="rows"><li><span>Surf Therapy Massage, 60 min full body</span><b>20,000 LKR</b></li><li><span>Surf Therapy Massage, 45 min back, neck &amp; shoulders</span><b>17,000 LKR</b></li><li><span>Revitalizing Massage, 60 min full body</span><b>20,000 LKR</b></li><li><span>Revitalizing Massage, 45 min back, neck &amp; shoulders</span><b>17,000 LKR</b></li></ul><p class="asof">Prices as of 6 Nov 2026</p></div>
   </div>
 </section>
 
@@ -507,18 +502,23 @@ h2 { font-size: clamp(38px, 4.6vw, 66px); }
       <p class="hours"><svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>Restaurant, every day: breakfast 8:30–12:00 (coffee from 8:00), lunch 13:00–17:00, dinner 18:00–21:30.</span></p>
     </div>
     <div class="prints">
-      <img class="print p1" src="img/breakfast.webp" width="800" height="1000" loading="lazy" alt="Breakfast served at a teak table: hands passing a bowl of granola, a glass of juice, a plate of fruit and a coffee">
+      <img class="print p1" src="img/lunch.webp" width="800" height="1000" loading="lazy" alt="Lunch on a teak table in the garden: sliders, plated dishes, a bottle of water and glasses">
       <img class="print p2" src="img/prawns.webp" width="800" height="1000" loading="lazy" alt="Garlic prawns with herbs in a dark bowl on a woven rattan mat, seen from above">
     </div>
   </div>
 </section>
 
-<section class="fit" id="fitness">
-  <div class="wrap fit-grid">
-    <img class="print fit-pic" src="img/balcony.webp" width="800" height="1000" loading="lazy" alt="Three women in a class, lunging at the upstairs balcony rail, palm leaves and a red roof beyond">
-    <div class="fit-text">
-      <h2>Panta Fitness Club</h2>
-      <p>An open-air fitness area on the upper floor looks out over the resort. Vinyasa yoga is at 8:30 every morning; Friday is the day off. There are Pilates classes too, led by experienced instructors, and in the season the schedule gets longer. You don&#x27;t need to book.</p>
+<section class="fit band-section" id="fitness">
+  <div class="band">
+    <img src="img/shala-poster.webp" width="1600" height="900" loading="lazy" alt="A yoga class in the open-air shala under white curtains: mats on the concrete floor, palms beyond the columns">
+    <video muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" data-lazy-video>
+      <source data-src="video/shala-1280.webm" type="video/webm"><source data-src="video/shala-1280.mp4" type="video/mp4">
+    </video>
+    <h2 class="band-title">Panta Fitness Club</h2>
+  </div>
+  <div class="wrap two-col">
+    <div class="col-text"><p>An open-air fitness area on the upper floor looks out over the resort. Vinyasa yoga is at 8:30 every morning; Friday is the day off. There are Pilates classes too, led by experienced instructors, and in the season the schedule gets longer. You don&#x27;t need to book.</p></div>
+    <div>
       <ol class="week" aria-label="Vinyasa yoga through the week"><li class="day" data-d="0"><b>Mon</b><span>8:30</span></li><li class="day" data-d="1"><b>Tue</b><span>8:30</span></li><li class="day" data-d="2"><b>Wed</b><span>8:30</span></li><li class="day" data-d="3"><b>Thu</b><span>8:30</span></li><li class="day off" data-d="4"><b>Fri</b><span>Day off</span></li><li class="day" data-d="5"><b>Sat</b><span>8:30</span></li><li class="day" data-d="6"><b>Sun</b><span>8:30</span></li></ol>
       <ul class="rows"><li><span>Residents</span><b>2,500 LKR</b></li><li><span>In-house guests</span><b>3,000 LKR</b></li><li><span>Walk-ins</span><b>3,500 LKR</b></li></ul>
       <p class="asof">No need to book · prices as of 6 Nov 2026</p>
@@ -526,14 +526,19 @@ h2 { font-size: clamp(38px, 4.6vw, 66px); }
   </div>
 </section>
 
-<section class="guests" id="guests">
-  <div class="wrap">
-    <h2>What guests say</h2>
-    <div class="scores">
-      <a class="score" href="https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html" target="_blank" rel="noopener"><b>9.2<small>/10</small></b><span>Booking.com<br>468 reviews</span></a>
-      <a class="score" href="https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en" target="_blank" rel="noopener"><b>4.7<small>/5</small></b><span>Google<br>213 reviews</span></a>
+<section class="guests band-section" id="guests">
+  <div class="band band-scores">
+    <picture><source media="(max-width: 767px)" srcset="img/table-m.webp"><img src="img/table-d.webp" width="1600" height="1056" loading="lazy" alt="Breakfast served at a teak table under the trees: hands passing a bowl of granola, juice, a plate of fruit and a coffee"></picture>
+    <div class="scores-over">
+      <h2 class="band-title">What guests say</h2>
+      <div class="scores">
+        <a class="score" href="https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html" target="_blank" rel="noopener"><b>9.2<small>/10</small></b><span>Booking.com<br>468 reviews</span></a>
+        <a class="score" href="https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en" target="_blank" rel="noopener"><b>4.7<small>/5</small></b><span>Google<br>213 reviews</span></a>
+      </div>
       <p class="asof">As of 6 Nov 2026</p>
     </div>
+  </div>
+  <div class="wrap">
     <div class="qgal" data-gal>
       <div class="gal-track" tabindex="0" role="group" aria-roledescription="slideshow" aria-label="Guest reviews"><figure class="quote"><blockquote>We stayed here in January, and of all the places we&#x27;ve stayed on our travels, this was the best resort so far. Incredibly clean throughout, you can tell housekeeping is taken seriously here, and the whole place is managed to a standard you rarely find. One of the owners was around during our stay, and you could immediately tell how much he genuinely cares about the resort and his guests, on top of being a very friendly guy. The employees match that energy: attentive, warm and top notch across the board. Can&#x27;t recommend Panta Rei enough, we&#x27;ll be back.</blockquote><p class="by">Peter <span>· Google</span></p></figure><figure class="quote"><blockquote>Incredible! We stayed at Panta Rei for 1 week, and it was wonderful. The room was very clean and had all the necessary amenities, the pool and garden area was beautiful and very quiet, the food was impeccable, one of the best we ate in Sri Lanka. The workers are very helpful and attentive. We would definitely choose it again if we return to Sri Lanka!</blockquote><p class="by">Alba R <span>· pantareiresort.com</span></p></figure><figure class="quote"><blockquote>We had an amazing stay in Panta Rei. The room was spacious, quiet, and nicely decorated. The food was extremely tasty.<br>A big shout-out to the incredible staff, always helpful and kind. We really felt at home.</blockquote><p class="by">Arianna, Italy <span>· Booking.com</span></p></figure><figure class="quote"><blockquote>I had a lovely stay! The food was excellent, and the staff were incredibly welcoming, friendly and attentive throughout my visit. Everyone made me feel comfortable and well looked after. Thank you for such a pleasant experience!</blockquote><p class="by">Lynette <span>· Google</span></p></figure><figure class="quote"><blockquote>Everything thing was amazing, the room was clean, the pool was beautiful, the food was amazing, the staff are amazing, always very warm and welcoming</blockquote><p class="by">Oishanee, India <span>· Booking.com</span></p></figure><figure class="quote"><blockquote>The hospitality and the atmosphere was great. The staff were very helpful as well.</blockquote><p class="by">Akhila, Sri Lanka <span>· Booking.com</span></p></figure></div>
       <div class="gal-ui"><button type="button" class="gal-btn prev" aria-label="Previous review"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="dots"><button type="button" class="dot" aria-label="Review 1 of 6"></button><button type="button" class="dot" aria-label="Review 2 of 6"></button><button type="button" class="dot" aria-label="Review 3 of 6"></button><button type="button" class="dot" aria-label="Review 4 of 6"></button><button type="button" class="dot" aria-label="Review 5 of 6"></button><button type="button" class="dot" aria-label="Review 6 of 6"></button></div><button type="button" class="gal-btn next" aria-label="Next review"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
@@ -571,6 +576,7 @@ h2 { font-size: clamp(38px, 4.6vw, 66px); }
     <source data-src="video/vid-002-d1920.mp4" type="video/mp4">
   </video>
   <div class="closing-copy">
+    <h2>Check dates and book direct</h2>
     <p>Booking direct gets you our best rate, and if there&#x27;s anything you&#x27;d like to ask first, send us a WhatsApp.</p>
     <div class="btn-row"><a class="btn book" href="#book" data-open-drawer>Check dates</a><a class="btn glass" href="https://wa.me/94728003022?text=Hi%20Panta%20Rei%21%20I%27d%20like%20to%20ask%20about%20a%20stay."><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.7 9.7 0 0 0-8.4 14.6L2.2 21.8l5.1-1.3A9.7 9.7 0 1 0 12 2.2zm0 17.7a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.3z"/></svg>WhatsApp</a></div>
   </div>
@@ -599,7 +605,7 @@ h2 { font-size: clamp(38px, 4.6vw, 66px); }
 </footer>
 
 
-<div class="pill" aria-label="Book">
+<div class="pill mini" aria-label="Book">
   <a class="btn book go" href="#book" data-open-drawer><svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="lbl">Check dates</span></a>
   <a class="btn wa" href="https://wa.me/94728003022?text=Hi%20Panta%20Rei%21%20I%27d%20like%20to%20ask%20about%20a%20stay." aria-label="WhatsApp us"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.7 9.7 0 0 0-8.4 14.6L2.2 21.8l5.1-1.3A9.7 9.7 0 1 0 12 2.2zm0 17.7a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.3z"/></svg></a>
 </div>
@@ -639,54 +645,54 @@ h2 { font-size: clamp(38px, 4.6vw, 66px); }
   var mobile = matchMedia('(max-width: 767px)').matches;
   var seq = d.classList.contains('seq');
 
-  /* ---------- the scrubbed film ---------- */
-  var N = 150, INTRO = 10, frames = new Array(N), ready = false, intro = 0, cur = 0, started = false, loaded = 0;
+  /* ---------- the scrubbed film ----------
+     After first paint only the key frames (every 6th + the last, ~0.3 MB on a phone) load; the film
+     runs on them at once, cross-fading between neighbours. The rest loads when the visitor scrolls. */
+  var N = 72, KEY = 6, frames = new Array(N), ready = false, cur = 0, keysStarted = false, allStarted = false;
   var canvas = film.querySelector('canvas'), ctx = canvas.getContext('2d'), drawn = -1;
   var base = mobile ? 'frames/m/' : 'frames/d/';
   var name = function (i) { return base + String(i + 1).padStart(3, '0') + '.webp'; };
-  var caps = film.querySelectorAll('.cap'), dots = film.querySelectorAll('.film-dots li');
-  var CAP = [[.05, .20], [.235, .37], [.76, .975]];
-  var heroCopy = film.querySelector('.hero-copy'), cue = film.querySelector('.hero-cue'), pct = film.querySelector('[data-pct]');
+  var caps = film.querySelectorAll('.cap'), shade = film.querySelector('.film-shade');
+  var CAP = [[.02, .34], [.34, .67], [.67, .995]];
+  var heroCopy = film.querySelector('.hero-copy');
+  var keyList = []; for (var q = 0; q < N; q += KEY) keyList.push(q); if (keyList[keyList.length - 1] !== N - 1) keyList.push(N - 1);
 
   function size() {
     var dpr = Math.min(devicePixelRatio || 1, mobile ? 2 : 1.5);
     canvas.width = Math.round(canvas.clientWidth * dpr); canvas.height = Math.round(canvas.clientHeight * dpr); drawn = -1;
   }
-  function nearest(i) {
-    for (var k = 0; k < N; k++) { if (frames[i - k]) return i - k; if (frames[i + k]) return i + k; }
-    return -1;
+  function paint(b, alpha) {
+    var w = canvas.width, h = canvas.height, s = Math.max(w / b.width, h / b.height);
+    ctx.globalAlpha = alpha; ctx.drawImage(b, (w - b.width * s) / 2, (h - b.height * s) / 2, b.width * s, b.height * s);
   }
-  function draw(i) {
-    var j = nearest(i); if (j < 0 || j === drawn) return;
-    var b = frames[j], w = canvas.width, h = canvas.height, s = Math.max(w / b.width, h / b.height);
-    ctx.drawImage(b, (w - b.width * s) / 2, (h - b.height * s) / 2, b.width * s, b.height * s); drawn = j;
+  function draw(f) {
+    var i = Math.floor(f), a = i, b = Math.ceil(f);
+    while (a > 0 && !frames[a]) a--;
+    while (b < N - 1 && !frames[b]) b++;
+    if (!frames[a]) a = b; if (!frames[b]) b = a; if (!frames[a]) return;
+    var t = b > a ? (f - a) / (b - a) : 0, key = a * 1000 + b + Math.round(t * 40) / 40;
+    if (key === drawn) return; drawn = key;
+    paint(frames[a], 1); if (b !== a && t > .02) paint(frames[b], t); ctx.globalAlpha = 1;
   }
   function load(i) {
-    return fetch(name(i)).then(function (r) { return r.blob(); }).then(createImageBitmap).then(function (bmp) {
-      frames[i] = bmp; loaded++; if (pct) pct.textContent = Math.round(loaded / N * 100) + '%';
-    }).catch(function () {});
+    if (frames[i] !== undefined) return Promise.resolve(); frames[i] = null;
+    return fetch(name(i)).then(function (r) { return r.blob(); }).then(createImageBitmap).then(function (bmp) { frames[i] = bmp; drawn = -1; })
+      .catch(function () { frames[i] = undefined; });
   }
-  function start() {
-    if (started || !seq) return; started = true;
-    var order = [], i;
-    for (i = 0; i < N; i += 6) order.push(i);           // key frames first: the scrub can run on these
-    order.push(N - 1);
-    for (i = 0; i < N; i++) if (order.indexOf(i) < 0) order.push(i);
-    var keys = order.indexOf(N - 1) + 1, p = 0;
-    function next() {
-      if (p >= order.length) return;
-      var batch = order.slice(p, p + 6); p += 6;
-      Promise.all(batch.map(load)).then(function () {
-        if (!ready && p >= keys) becomeReady();
-        next();
-      });
-    }
-    next();
+  function batches(list, n) {
+    var p = 0;
+    return new Promise(function (done) {
+      (function next() { if (p >= list.length) return done(); var b = list.slice(p, p + n); p += n; Promise.all(b.map(load)).then(next); })();
+    });
   }
-  function becomeReady() {
-    ready = true; size(); film.classList.remove('waiting'); film.classList.add('ready');
-    if (progress() < .01) { var t0 = performance.now(); (function tw(t) { intro = Math.min(1, (t - t0) / 1400); intro = 1 - Math.pow(1 - intro, 3); if (intro < 1) requestAnimationFrame(tw); })(t0); }
-    else intro = 1;
+  function loadKeys() {
+    if (keysStarted || !seq) return; keysStarted = true;
+    batches(keyList, 4).then(function () { ready = true; size(); film.classList.add('ready'); film.classList.remove('waiting'); });
+  }
+  function loadAll() {
+    if (allStarted || !seq) return; allStarted = true; loadKeys();
+    var rest = []; for (var i = 0; i < N; i++) if (keyList.indexOf(i) < 0) rest.push(i);
+    batches(rest, 4);
   }
   function progress() {
     var r = film.getBoundingClientRect(), span = r.height - innerHeight;
@@ -697,31 +703,28 @@ h2 { font-size: clamp(38px, 4.6vw, 66px); }
     var dt = Math.min(.1, (t - last) / 1000); last = t;
     var p = progress();
     if (seq) {
-      var target = INTRO * intro + p * (N - 1 - INTRO * intro);
+      var target = p * (N - 1);
       cur += (target - cur) * (1 - Math.exp(-dt * 9));
-      if (ready) draw(Math.round(cur));
-      var on = -1;
-      for (var k = 0; k < 3; k++) { var a = p >= CAP[k][0] && p <= CAP[k][1]; caps[k].classList.toggle('on', a); if (a) on = k; }
-      for (k = 0; k < 3; k++) dots[k].classList.toggle('on', k === on);
-      var h = Math.min(1, p / .04);
-      heroCopy.style.opacity = 1 - h; heroCopy.style.transform = 'translateY(' + (-40 * h) + 'px)';
+      if (ready && p > 0) draw(cur);
+      for (var k = 0; k < 3; k++) caps[k].classList.toggle('on', p >= CAP[k][0] && p <= CAP[k][1]);
+      var h = Math.min(1, p / .03);
+      heroCopy.style.opacity = 1 - h; heroCopy.style.transform = 'translateY(' + (-36 * h) + 'px)';
       heroCopy.style.visibility = h >= 1 ? 'hidden' : '';
-      cue.style.opacity = 1 - Math.min(1, p / .015);
-      var running = p > .02 && p < 1;
-      film.classList.toggle('running', running);
+      shade.style.opacity = 1 - h;
+      film.classList.toggle('playing', ready && p > 0);
+      var running = p > .02 && p < .995;
       film.classList.toggle('waiting', running && !ready);
-      pill.classList.toggle('mini', running);
+      pill.classList.toggle('show', running);
     }
-    var past = film.getBoundingClientRect().bottom < 80;
-    top.classList.toggle('solid', past);
-    pill.classList.toggle('show', seq ? p > .02 : scrollY > innerHeight * .6);
+    top.classList.toggle('solid', film.getBoundingClientRect().bottom < 80);
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
   if (seq) {
     addEventListener('resize', size);
-    ['scroll', 'wheel', 'touchstart', 'pointerdown', 'keydown'].forEach(function (ev) { addEventListener(ev, start, { once: true, passive: true }); });
-    addEventListener('load', function () { setTimeout(start, 4500); });
+    var later = function () { requestAnimationFrame(function () { setTimeout(loadKeys, 0); }); };
+    document.readyState === 'complete' ? later() : addEventListener('load', later, { once: true });
+    ['scroll', 'wheel', 'touchmove', 'keydown'].forEach(function (ev) { addEventListener(ev, loadAll, { once: true, passive: true }); });
   }
 
   /* ---------- drawer ---------- */
@@ -765,7 +768,7 @@ h2 { font-size: clamp(38px, 4.6vw, 66px); }
   }
   document.addEventListener('click', function (ev) {
     if (ev.target === drawer) { close(); return; }
-    var a = ev.target.closest('[data-open-drawer]');
+    var a = ev.target.closest('[data-open-drawer], [data-drawer-link]');
     if (a) { ev.preventDefault(); var pick = a.dataset.room && form.querySelector('input[value=' + a.dataset.room + ']'); if (pick) { pick.checked = true; sync(); } open(drawer, a); return; }
     if (ev.target.closest('[data-close]')) { close(); return; }
     if (openEl === sheet && ev.target.closest('.sheet nav a')) close();
@@ -832,6 +835,21 @@ h2 { font-size: clamp(38px, 4.6vw, 66px); }
       requestAnimationFrame(par);
     })();
   }
+
+  /* ---------- the shala loop behind "Panta Fitness Club": attached when near, paused when away ---------- */
+  document.querySelectorAll('[data-lazy-video]').forEach(function (v) {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || (navigator.connection || {}).saveData) return;
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting && !v.dataset.on) {
+          v.dataset.on = '1';
+          v.querySelectorAll('source').forEach(function (s) { s.src = s.dataset.src; });
+          v.load(); v.addEventListener('playing', function () { v.classList.add('playing'); }, { once: true });
+          v.play().catch(function () {});
+        } else if (v.dataset.on) { e.isIntersecting ? v.play().catch(function () {}) : v.pause(); }
+      });
+    }, { rootMargin: '200px 0px' }).observe(v);
+  });
 
 })();
 </script>

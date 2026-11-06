@@ -6,6 +6,8 @@
 <title>Panta Rei Resort, Kabalana · Boutique resort in Ahangama, Sri Lanka</title>
 <meta name="description" content="A boutique resort set around a large pool in Kabalana, Ahangama, on the south coast of Sri Lanka.">
 <meta name="theme-color" content="#F7F9FB">
+<link rel="preload" as="image" href="img/hero-poster-p608.webp" media="(max-aspect-ratio: 3/4)" fetchpriority="high">
+<link rel="preload" as="image" imagesrcset="img/hero-poster-800.webp 800w, img/hero-poster-1280.webp 1280w, img/hero-poster-1920.webp 1920w" imagesizes="100vw" media="(min-aspect-ratio: 3/4)" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Gochi+Hand&display=swap" rel="stylesheet">
@@ -23,7 +25,7 @@ figure{margin:0}
 .wrap{max-width:1280px;margin:0 auto;padding:0 var(--gut)}
 .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(20px,3vw,48px)}
 .tint{background:var(--pool)}
-.script{font-family:"Gochi Hand",cursive;font-weight:400;font-size:clamp(42px,4.4vw,64px);line-height:1.02;letter-spacing:.005em;color:var(--ink)}
+.script{font-family:"Gochi Hand",cursive;font-weight:400;text-wrap:balance;font-size:clamp(40px,3.5vw,52px);line-height:1.02;letter-spacing:.005em;color:var(--ink)}
 h3{font-weight:600;font-size:clamp(24px,2.2vw,30px);line-height:1.2;letter-spacing:-.01em}
 p+p{margin-top:1em}
 .nw{white-space:nowrap}
@@ -32,16 +34,18 @@ p+p{margin-top:1em}
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font:600 16px/1 Figtree,sans-serif;text-decoration:none;border:0;cursor:pointer;white-space:nowrap;user-select:none;-webkit-user-select:none;transition:transform .18s var(--ease),background-color .18s,box-shadow .18s,color .18s}
 .btn:active{transform:scale(.97)}
-.btn-book{background:var(--book);color:#fff;box-shadow:0 6px 20px -10px rgba(120,40,25,.6)}
-.btn-soft{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(46,52,36,.08),0 4px 14px -8px rgba(46,52,36,.25)}
-.tint .btn-soft{background:#fff}
+.btn-book{background:var(--book);color:#fff}
+.btn-soft{background:var(--pool);color:var(--ink)}
+.tint .btn-soft,.pool-card .btn-soft{background:#fff}
 .btn-white{background:#fff;color:var(--ink)}
 .btn-wa{background:#fff;color:#1F8F55;width:52px;padding:0;box-shadow:0 1px 2px rgba(46,52,36,.12)}
 .btn svg{flex:none}
 .btn .arr{transition:transform .22s var(--ease)}
 @media (hover:hover){
  .btn-book:hover{background:var(--book-d);transform:translateY(-2px);box-shadow:0 12px 26px -12px rgba(120,40,25,.65)}
- .btn-soft:hover,.btn-white:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(46,52,36,.08),0 10px 22px -10px rgba(46,52,36,.3)}
+ .btn-soft:hover,.btn-white:hover{transform:translateY(-2px);box-shadow:0 10px 22px -12px rgba(46,52,36,.35)}
+ .btn-soft:hover{background:var(--pool-d)}
+ .tint .btn-soft:hover{background:#fff}
  .btn:hover .arr{transform:translateX(4px)}
 }
 
@@ -61,7 +65,7 @@ p+p{margin-top:1em}
 .menu-btn{display:none}
 
 /* hero */
-.hero{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#4a5a34}
+.hero{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:linear-gradient(180deg,#9DB9CC 0%,#6E8F74 38%,#3E6A4A 52%,#52BFC0 70%,#3FB3B6 100%)}
 .hero img,.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero video{opacity:0;transition:opacity .9s}
 .hero video.on{opacity:1}
@@ -110,8 +114,8 @@ p+p{margin-top:1em}
 .show:hover .nav-btn,.nav-btn:focus-visible{opacity:1}
 .nav-btn:active{transform:scale(.92)}
 .nav-btn[disabled]{opacity:0!important;pointer-events:none}
-.dots{display:flex;justify-content:center;gap:4px;margin-top:14px}
-.dot{width:28px;height:28px;border:0;background:none;cursor:pointer;display:grid;place-items:center}
+.dots{display:flex;justify-content:center;gap:0;margin-top:6px}
+.dot{width:44px;height:44px;border:0;background:none;cursor:pointer;display:grid;place-items:center}
 .dot::before{content:"";width:8px;height:8px;border-radius:999px;background:var(--pool-d);transition:width .3s var(--ease),background-color .3s}
 .dot[aria-current="true"]::before{width:24px;background:var(--roof)}
 .tint .dot::before{background:#fff}
@@ -120,7 +124,7 @@ p+p{margin-top:1em}
 /* pool */
 .pool{position:relative;padding-bottom:clamp(40px,6vw,90px)}
 .pool-img{height:min(62vw,88vh)}
-.pool-card{position:relative;z-index:2;background:#fff;border-radius:22px;padding:clamp(28px,3.4vw,52px);width:min(520px,calc(100% - 2*var(--gut)));margin:calc(-1 * clamp(140px,16vw,260px)) var(--gut) 0 auto;box-shadow:0 30px 60px -40px rgba(46,52,36,.45)}
+.pool-card{position:relative;z-index:2;background:#fff;border-radius:22px;padding:clamp(28px,3.4vw,52px);width:min(520px,calc(100% - 2*var(--gut)));margin:calc(-1 * clamp(140px,16vw,260px)) var(--gut) 0 auto}
 .pool-card .script{margin-bottom:18px}
 .prices{margin-top:26px;display:grid;gap:2px}
 .prices li{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:12px 16px;background:var(--ground);border-radius:12px}
@@ -219,7 +223,7 @@ p+p{margin-top:1em}
 @media (hover:hover){.soc a:hover{transform:translateY(-2px);background:var(--pool-d)}}
 .f-acts{grid-column:5/span 5;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
 .f-nav{grid-column:11/span 2;display:flex;flex-direction:column;gap:4px}
-.f-nav a{text-decoration:none;font-weight:500;padding:6px 0;transition:color .2s}
+.f-nav a{text-decoration:none;font-weight:500;min-height:44px;display:flex;align-items:center;transition:color .2s}
 @media (hover:hover){.f-nav a:hover{color:var(--roof)}}
 .small{margin-top:48px;font-size:14px;color:var(--ink2)}
 
@@ -278,6 +282,43 @@ legend{font-weight:600;margin-bottom:10px}
 .go.bump{animation:bump .4s var(--ease)}
 @keyframes bump{40%{transform:scale(1.03)}}
 
+
+/* ---- round 6: lower half on its photographs ---- */
+.plist{margin-top:22px;display:grid;gap:0}
+.plist li{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:7px 0;font-size:16px}
+.plist .plabel{font-weight:500}
+.plist .pval{font-weight:600;white-space:nowrap}
+.plist .pval small{display:inline;margin-left:4px;font-size:14px;font-weight:400;color:var(--ink2)}
+.pfoot{margin-top:4px;font-size:14px;color:var(--ink2)}
+.pool-card .plist li{background:none}
+.resto{padding:0 0 clamp(80px,10vw,140px)}
+.resto-img{position:relative;height:min(64vw,90vh);margin-bottom:clamp(48px,6vw,90px)}
+.resto-img::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(180deg,rgba(18,26,14,0),rgba(18,26,14,.55))}
+.on-photo{position:absolute;z-index:2;left:var(--gut);bottom:clamp(28px,4vw,56px);color:#fff;max-width:min(1280px,100%);text-shadow:0 2px 20px rgba(0,0,0,.35)}
+@media (min-width:1392px){.on-photo{left:calc((100vw - 1280px)/2 + var(--gut))}}
+.resto .r-text{grid-column:1/span 6;position:static}
+.resto .trio{grid-column:8/span 5;align-self:start;gap:12px}
+.trio img{border-radius:14px;width:100%}
+.fit{display:grid;grid-template-columns:1fr 1fr;min-height:min(100vh,980px);background:var(--pool);padding:0}
+.fit .fit-img{grid-column:auto;align-self:stretch;width:auto;border-radius:0;position:relative;overflow:hidden;margin:0}
+.fit .fit-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.fit .fit-text{grid-column:auto;align-self:center;padding:clamp(48px,6vw,96px) clamp(24px,5vw,88px);max-width:680px}
+.fit .day{background:#fff}
+.surf{display:grid;grid-template-columns:minmax(0,1fr) min(60vw,1350px);align-items:center;gap:clamp(28px,4vw,64px);padding:clamp(80px,9vw,130px) 0}
+.surf .surf-text{grid-column:auto;padding-left:max(var(--gut),calc((100vw - 1280px)/2 + var(--gut)))}
+.surf .surf-img{grid-column:auto;aspect-ratio:3/2;border-radius:20px 0 0 20px;overflow:hidden;margin:0}
+.surf .surf-img img{width:100%;height:100%;object-fit:cover}
+.amen{display:block;margin-top:18px;font-size:15px;line-height:2;color:var(--ink)}
+.amen .sep{margin:0 .5em}
+.amen small{font-size:13px}
+.h-info{background:var(--pool)}
+.closing{height:min(70vw,92vh);min-height:560px}
+.closing::after{background:radial-gradient(ellipse 58% 42% at 50% 50%,rgba(15,22,12,.5),rgba(15,22,12,.12) 78%)}
+.closing-in{gap:28px}
+.closing-in p{font-size:clamp(22px,2.1vw,30px);line-height:1.35;max-width:31em}
+.js .rv{opacity:0;transform:translateY(22px)}
+.js .rv.in{opacity:1;transform:none;transition:opacity .8s var(--ease),transform 1s var(--ease)}
+
 /* tablet / phone */
 @media (max-width:860px){
  .nav>a:not(.btn){display:none}
@@ -334,6 +375,20 @@ legend{font-weight:600;margin-bottom:10px}
  *,*::before,*::after{transition:none!important;animation:none!important}
  .par img{transform:none!important;top:0;height:100%}
 }
+
+@media (max-width:860px){
+ .resto-img{height:min(110vw,82vh)}
+ .resto .r-text,.resto .trio{grid-column:1/-1}
+ .resto .trio{margin-top:32px}
+ .fit{grid-template-columns:1fr;min-height:0}
+ .fit .fit-img{height:min(118vw,88vh)}
+ .fit .fit-text{padding:48px var(--gut) 64px}
+ .surf{grid-template-columns:1fr}
+ .surf .surf-text{padding:0 var(--gut);order:1}
+ .surf .surf-img{border-radius:0;order:0;margin-bottom:8px}
+ .closing{height:auto;min-height:88vh}
+}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -353,17 +408,17 @@ legend{font-weight:600;margin-bottom:10px}
 </div>
 
 <main id="top">
-<section class="hero" aria-label="Panta Rei Resort from the air">
+<section class="hero" aria-label="Panta Rei Resort, the pool">
   <picture>
-    <source media="(max-aspect-ratio: 3/4)" srcset="img/vid-001-poster-p608.webp" width="608" height="1080">
-    <img src="img/vid-001-poster-1920.webp" srcset="img/vid-001-poster-1280.webp 1280w, img/vid-001-poster-1920.webp 1920w" sizes="100vw" width="1920" height="1080" alt="Red-roofed white bungalows in a ring around a long turquoise pool, seen from above" fetchpriority="high">
+    <source media="(max-aspect-ratio: 3/4)" srcset="img/hero-poster-p608.webp" width="608" height="1080">
+    <img src="img/hero-poster-1920.webp" srcset="img/hero-poster-800.webp 800w, img/hero-poster-1280.webp 1280w, img/hero-poster-1920.webp 1920w" sizes="100vw" width="1920" height="1080" alt="The long turquoise pool with loungers on its stone deck, palms and red-roofed bungalows beyond" fetchpriority="high">
   </picture>
   <video muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" data-hero>
-    <source data-src="video/vid-001-p608.mp4" type="video/mp4" media="(max-aspect-ratio: 3/4)">
-    <source data-src="video/vid-001-m1280.webm" type="video/webm" media="(max-width: 767px)">
-    <source data-src="video/vid-001-m1280.mp4" type="video/mp4" media="(max-width: 767px)">
-    <source data-src="video/vid-001-d1920.webm" type="video/webm">
-    <source data-src="video/vid-001-d1920.mp4" type="video/mp4">
+    <source data-src="video/hero-p608.mp4" type="video/mp4" media="(max-aspect-ratio: 3/4)">
+    <source data-src="video/hero-m1280.webm" type="video/webm" media="(max-width: 767px)">
+    <source data-src="video/hero-m1280.mp4" type="video/mp4" media="(max-width: 767px)">
+    <source data-src="video/hero-d1920.webm" type="video/webm">
+    <source data-src="video/hero-d1920.mp4" type="video/mp4">
   </video>
   <div class="hero-in">
     <h1>Panta Rei, Kabalana</h1>
@@ -390,7 +445,7 @@ legend{font-weight:600;margin-bottom:10px}
       <div><p>Every room has air conditioning, hot water and wifi, is cleaned daily, and comes with breakfast.</p><p>Prices move with the dates. Pick yours on our booking page and you&#x27;ll see what&#x27;s free and what it costs.</p></div>
     </div>
     <article class="room" id="room-1">
-    <div class="show" data-show>
+    <div class="show rv" data-show>
       <ul class="track" tabindex="0" aria-label="Double Room, photos"><li class="slide"><img src="img/img-028-43-1200.webp" srcset="img/img-028-43-720.webp 720w, img/img-028-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="White bed with a rattan arch headboard and a teak drawer base, rattan-panel wardrobe, the bathroom beyond" loading="lazy" decoding="async"></li><li class="slide"><img src="img/img-031-43-1200.webp" srcset="img/img-031-43-720.webp 720w, img/img-031-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="Bed with a rattan arch headboard beside tall teak French windows open to the garden" loading="lazy" decoding="async"></li><li class="slide"><img src="img/img-007-43-1200.webp" srcset="img/img-007-43-720.webp 720w, img/img-007-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="Bed with a rattan arch headboard and a striped throw, rattan wardrobe doors, a round rattan rug on the grey floor" loading="lazy" decoding="async"></li><li class="slide"><img src="img/img-013-43-1200.webp" srcset="img/img-013-43-720.webp 720w, img/img-013-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="Bed under a vaulted white ceiling, rattan-panel wardrobe and slatted bathroom door, round rattan rug" loading="lazy" decoding="async"></li><li class="slide"><img src="img/img-029-43-1200.webp" srcset="img/img-029-43-720.webp 720w, img/img-029-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="Bathroom: white concrete vanity with a rattan cabinet, blue stone shower wall and a teak window" loading="lazy" decoding="async"></li></ul>
       <button type="button" class="nav-btn prev" aria-label="Previous photo"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <button type="button" class="nav-btn next" aria-label="Next photo"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -406,7 +461,7 @@ legend{font-weight:600;margin-bottom:10px}
       </div>
     </div>
   </article><article class="room flip" id="room-2">
-    <div class="show" data-show>
+    <div class="show rv" data-show>
       <ul class="track" tabindex="0" aria-label="Triple Room, photos"><li class="slide"><img src="img/img-037-43-1200.webp" srcset="img/img-037-43-720.webp 720w, img/img-037-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="Bed with a rattan arch headboard, a pink cushioned rattan rocking chair and an arched rattan mirror" loading="lazy" decoding="async"></li><li class="slide"><img src="img/img-010-43-1200.webp" srcset="img/img-010-43-720.webp 720w, img/img-010-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="Bed under a vaulted white ceiling, an orange cushioned rattan armchair and an arched mirror" loading="lazy" decoding="async"></li><li class="slide"><img src="img/img-034-43-1200.webp" srcset="img/img-034-43-720.webp 720w, img/img-034-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="Bathroom with a freestanding white bathtub under teak-framed windows and blue stone tiles" loading="lazy" decoding="async"></li><li class="slide"><img src="img/img-011-43-1200.webp" srcset="img/img-011-43-720.webp 720w, img/img-011-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="A straw bag and a red cloth on wall hooks, an arched rattan mirror, the bathtub beyond a white curtain" loading="lazy" decoding="async"></li><li class="slide"><img src="img/img-036-43-1200.webp" srcset="img/img-036-43-720.webp 720w, img/img-036-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="Bungalow front: red tile roof, white walls, teak doors and two rattan chairs on the terrace among palms" loading="lazy" decoding="async"></li></ul>
       <button type="button" class="nav-btn prev" aria-label="Previous photo"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <button type="button" class="nav-btn next" aria-label="Next photo"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -422,7 +477,7 @@ legend{font-weight:600;margin-bottom:10px}
       </div>
     </div>
   </article><article class="room" id="room-3">
-    <div class="show" data-show>
+    <div class="show rv" data-show>
       <ul class="track" tabindex="0" aria-label="Family Villa, photos"><li class="slide"><img src="img/img-012-43-1200.webp" srcset="img/img-012-43-720.webp 720w, img/img-012-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="Sliding glass doors open to the lawn and pool, a surfboard leaning outside, a straw hat on the bed" loading="lazy" decoding="async"></li><li class="slide"><img src="img/img-038-43-1200.webp" srcset="img/img-038-43-720.webp 720w, img/img-038-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="Bed with a rattan arch headboard beside tall teak French windows to the garden" loading="lazy" decoding="async"></li><li class="slide"><img src="img/img-014-43-1200.webp" srcset="img/img-014-43-720.webp 720w, img/img-014-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="Two beds pushed together under a pale palm-fan headboard, rattan pendants and open shelving" loading="lazy" decoding="async"></li><li class="slide"><img src="img/img-040-43-1200.webp" srcset="img/img-040-43-720.webp 720w, img/img-040-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="Outdoor bath: a freestanding white tub on pebbles in a walled garden, seen through teak doors" loading="lazy" decoding="async"></li><li class="slide"><img src="img/img-015-43-1200.webp" srcset="img/img-015-43-720.webp 720w, img/img-015-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="White villa with glass sliding doors behind dense tropical planting and a stone path" loading="lazy" decoding="async"></li></ul>
       <button type="button" class="nav-btn prev" aria-label="Previous photo"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <button type="button" class="nav-btn next" aria-label="Next photo"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -438,7 +493,7 @@ legend{font-weight:600;margin-bottom:10px}
       </div>
     </div>
   </article><article class="room flip" id="room-4">
-    <div class="show" data-show>
+    <div class="show rv" data-show>
       <ul class="track" tabindex="0" aria-label="Suite with Private Pool, photos"><li class="slide"><img src="img/img-043-43-1200.webp" srcset="img/img-043-43-720.webp 720w, img/img-043-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="Bed facing open glass doors onto the private plunge pool and its terrace" loading="lazy" decoding="async"></li><li class="slide"><img src="img/img-046-43-1200.webp" srcset="img/img-046-43-720.webp 720w, img/img-046-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="The private plunge pool on its terrace, two wooden lounge chairs, dense palms behind" loading="lazy" decoding="async"></li><li class="slide"><img src="img/img-047-43-1200.webp" srcset="img/img-047-43-720.webp 720w, img/img-047-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="Bed under a large palm-fan headboard, rattan pendant lamps and a potted palm" loading="lazy" decoding="async"></li><li class="slide"><img src="img/img-002-43-1200.webp" srcset="img/img-002-43-720.webp 720w, img/img-002-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="Palm-fan headboard, rattan pendant lamp, a wooden stool and a potted palm" loading="lazy" decoding="async"></li><li class="slide"><img src="img/img-016-43-1200.webp" srcset="img/img-016-43-720.webp 720w, img/img-016-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="Lounge niche: a built-in white bench with cushions, a rattan side table, the glass-walled shower" loading="lazy" decoding="async"></li></ul>
       <button type="button" class="nav-btn prev" aria-label="Previous photo"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <button type="button" class="nav-btn next" aria-label="Next photo"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -462,49 +517,43 @@ legend{font-weight:600;margin-bottom:10px}
   <div class="pool-card">
     <h2 class="script">The pool</h2>
     <p>The bungalows sit in a ring around a long pool with a stone deck and loungers, and the garden runs between them.</p><p>The pool opens early in the morning, so you can swim before breakfast. If you&#x27;re staying nearby, you can come for the day too.</p>
-    <ul class="prices"><li><span class="plabel">Pool day pass<span class="pnote">Spent at the restaurant</span></span><span class="pval">LKR 3,500 <small>per person</small></span></li></ul>
+    <ul class="plist"><li><span class="plabel">Pool day pass</span><span class="pval">LKR 3,500 <small>per person</small></span></li></ul><p class="pfoot">Spent at the restaurant</p>
   </div>
 </section>
 
 <section class="resto" id="restaurant">
+  <figure class="resto-img par"><img src="img/img-003-2000.webp" srcset="img/img-003-1200.webp 1200w, img/img-003-2000.webp 2000w" sizes="100vw" width="2000" height="1320" alt="Breakfast served at a teak table under greenery: a bowl, juice and coffee passed across the table" loading="lazy" decoding="async">
+    <h2 class="script on-photo">Restaurant and bar</h2></figure>
   <div class="wrap grid">
     <div class="r-text">
-      <h2 class="script">Restaurant and bar</h2>
       <p>The restaurant serves breakfast, lunch, dinner and cocktails all day, to guests and to anyone who drops in. Breakfast goes from smoothie bowls, granola and banana oat pancakes to shakshuka, or the Sri Lankan plate with egg hoppers, dhal and coconut sambal. Later there&#x27;s a fish bowl, the curry of the day and a whole grilled fish, priced on weight. Dinner is a mix of traditional and modern Mediterranean dishes.</p><p>The bar is upstairs, above the restaurant. Go up for the sunset.</p>
       <p class="hours">Restaurant, every day: breakfast 8:30–12:00 (coffee from 8:00), lunch 13:00–17:00, dinner 18:00–21:30.</p>
     </div>
-    <div class="r-photos">
-      <img class="wide" src="img/img-003-900.webp" width="900" height="594" alt="Breakfast served at a teak table under greenery: a bowl, juice and coffee" loading="lazy" decoding="async">
-      <div class="trio">
-        <img src="img/img-005-700.webp" width="700" height="1049" alt="Lunch on a teak table in the garden: sliders and plated dishes" loading="lazy" decoding="async">
-        <img src="img/img-018-700.webp" width="700" height="1049" alt="Garlic prawns in a dark bowl on a woven rattan mat, from above" loading="lazy" decoding="async">
-        <img src="img/img-019-700.webp" width="700" height="1050" alt="A small bowl on the balcony rail, the garden blurred below" loading="lazy" decoding="async">
-      </div>
+    <div class="trio rv">
+      <img src="img/img-005-700.webp" width="700" height="1049" alt="Lunch on a teak table in the garden: sliders and plated dishes" loading="lazy" decoding="async">
+      <img src="img/img-018-700.webp" width="700" height="1049" alt="Garlic prawns in a dark bowl on a woven rattan mat, from above" loading="lazy" decoding="async">
+      <img src="img/img-019-700.webp" width="700" height="1050" alt="A small bowl on the balcony rail, the garden blurred below" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
 
-<section class="fit tint" id="fitness">
-  <div class="wrap grid">
-    <img class="fit-img" src="img/img-004-800.webp" width="800" height="1199" alt="A yoga class in the open-air shala, a woman in triangle pose, other mats behind" loading="lazy" decoding="async">
-    <div class="fit-text">
-      <h2 class="script">Panta Fitness Club</h2>
-      <p>An open-air fitness area on the upper floor looks out over the resort. Vinyasa yoga is at 8:30 every morning; Friday is the day off. There are Pilates classes too, led by experienced instructors, and in the season the schedule gets longer. You don&#x27;t need to book.</p>
-      <ol class="week" aria-label="Vinyasa yoga, this week"><li class="day" data-day="1"><span class="dn">Mon</span><span class="dt">8:30</span></li><li class="day" data-day="2"><span class="dn">Tue</span><span class="dt">8:30</span></li><li class="day" data-day="3"><span class="dn">Wed</span><span class="dt">8:30</span></li><li class="day" data-day="4"><span class="dn">Thu</span><span class="dt">8:30</span></li><li class="day off" data-day="5"><span class="dn">Fri</span><span class="dt">Off</span></li><li class="day" data-day="6"><span class="dn">Sat</span><span class="dt">8:30</span></li><li class="day" data-day="0"><span class="dn">Sun</span><span class="dt">8:30</span></li></ol>
-      <ul class="prices"><li><span class="plabel">Fitness class: residents<span class="pnote">No need to book</span></span><span class="pval">LKR 2,500 <small>per class</small></span></li><li><span class="plabel">Fitness class: in-house guests<span class="pnote">No need to book</span></span><span class="pval">LKR 3,000 <small>per class</small></span></li><li><span class="plabel">Fitness class: walk-ins<span class="pnote">No need to book</span></span><span class="pval">LKR 3,500 <small>per class</small></span></li></ul>
-    </div>
+<section class="fit" id="fitness">
+  <figure class="fit-img rv"><img src="img/img-004-1334.webp" srcset="img/img-004-800.webp 800w, img/img-004-1334.webp 1334w" sizes="(max-width: 860px) 100vw, 50vw" width="1334" height="2000" alt="A yoga class in the open-air shala, a woman in triangle pose, other mats behind" loading="lazy" decoding="async"></figure>
+  <div class="fit-text">
+    <h2 class="script">Panta Fitness Club</h2>
+    <p>An open-air fitness area on the upper floor looks out over the resort. Vinyasa yoga is at 8:30 every morning; Friday is the day off. There are Pilates classes too, led by experienced instructors, and in the season the schedule gets longer. You don&#x27;t need to book.</p>
+    <ol class="week" aria-label="Vinyasa yoga, this week"><li class="day" data-day="1"><span class="dn">Mon</span><span class="dt">8:30</span></li><li class="day" data-day="2"><span class="dn">Tue</span><span class="dt">8:30</span></li><li class="day" data-day="3"><span class="dn">Wed</span><span class="dt">8:30</span></li><li class="day" data-day="4"><span class="dn">Thu</span><span class="dt">8:30</span></li><li class="day off" data-day="5"><span class="dn">Fri</span><span class="dt">Off</span></li><li class="day" data-day="6"><span class="dn">Sat</span><span class="dt">8:30</span></li><li class="day" data-day="0"><span class="dn">Sun</span><span class="dt">8:30</span></li></ol>
+    <ul class="plist"><li><span class="plabel">Fitness class: residents</span><span class="pval">LKR 2,500 <small>per class</small></span></li><li><span class="plabel">Fitness class: in-house guests</span><span class="pval">LKR 3,000 <small>per class</small></span></li><li><span class="plabel">Fitness class: walk-ins</span><span class="pval">LKR 3,500 <small>per class</small></span></li></ul><p class="pfoot">No need to book</p>
   </div>
 </section>
 
 <section class="surf" id="after-surf">
-  <div class="wrap grid">
-    <figure class="surf-img par"><img src="img/img-035-1350.webp" srcset="img/img-035-800.webp 800w, img/img-035-1350.webp 1350w" sizes="(max-width: 860px) 100vw, 58vw" width="1350" height="900" alt="Two guests carrying surfboards across the lawn by the pool, a woman in a straw hat crouching with a dog" loading="lazy" decoding="async"></figure>
-    <div class="surf-text">
-      <h2 class="script">After the surf</h2>
-      <p>The Surf Therapy Massage was put together for surfers. It&#x27;s a full body oil massage that works on every muscle with sport massage techniques, for the physical demands of surfing, and helps your body recover faster.</p><p>There&#x27;s a Revitalizing massage as well. Either one is an hour on the whole body, or 45 minutes on the back, neck and shoulders.</p>
-      <ul class="prices"><li><span class="plabel">Surf Therapy Massage, 60 min full body</span><span class="pval">LKR 20,000</span></li><li><span class="plabel">Surf Therapy Massage, 45 min back, neck &amp; shoulders</span><span class="pval">LKR 17,000</span></li><li><span class="plabel">Revitalizing Massage, 60 min full body</span><span class="pval">LKR 20,000</span></li><li><span class="plabel">Revitalizing Massage, 45 min back, neck &amp; shoulders</span><span class="pval">LKR 17,000</span></li></ul>
-    </div>
+  <div class="surf-text">
+    <h2 class="script">After the surf</h2>
+    <p>The Surf Therapy Massage was put together for surfers. It&#x27;s a full body oil massage that works on every muscle with sport massage techniques, for the physical demands of surfing, and helps your body recover faster.</p><p>There&#x27;s a Revitalizing massage as well. Either one is an hour on the whole body, or 45 minutes on the back, neck and shoulders.</p>
+    <ul class="plist"><li><span class="plabel">Surf Therapy Massage, 60 min full body</span><span class="pval">LKR 20,000</span></li><li><span class="plabel">Surf Therapy Massage, 45 min back, neck &amp; shoulders</span><span class="pval">LKR 17,000</span></li><li><span class="plabel">Revitalizing Massage, 60 min full body</span><span class="pval">LKR 20,000</span></li><li><span class="plabel">Revitalizing Massage, 45 min back, neck &amp; shoulders</span><span class="pval">LKR 17,000</span></li></ul>
   </div>
+  <figure class="surf-img rv"><img src="img/img-035-1350.webp" srcset="img/img-035-800.webp 800w, img/img-035-1350.webp 1350w" sizes="(max-width: 860px) 100vw, 60vw" width="1350" height="900" alt="Two guests carrying surfboards across the lawn by the pool, a woman in a straw hat crouching with a dog" loading="lazy" decoding="async"></figure>
 </section>
 
 <section class="guests tint" id="guests">
@@ -535,7 +584,7 @@ legend{font-weight:600;margin-bottom:10px}
       <h3>Good to know</h3>
       <p class="facts">Check-in from 14:00<span class="sep" aria-hidden="true">|</span><span class="nw">Check-out by 11:00</span></p>
       <p>Children of any age are welcome. No pets, and no smoking in the rooms. Quiet hours are 22:00 to 08:00.</p>
-      <ul class="amen"><li>Large outdoor pool</li><li>Restaurant and bar, open to outside guests</li><li>Vegetarian, gluten-free and dairy-free options</li><li>Open-air fitness area and yoga shala</li><li>Daily yoga and Pilates classes <small>(additional charge)</small></li><li>Massage <small>(additional charge)</small></li><li>Free WiFi</li><li>Free private parking</li><li>Airport shuttle</li><li>Private taxi <small>(on request)</small></li><li>Laundry service <small>(additional charge, cash)</small></li><li>Safe box in the rooms</li><li>Generator for power cuts</li><li>Garden and sun terrace</li><li>Cot for under-2s <small>(free, on request)</small></li><li>Extra bed for an adult <small>(US$20 per night, on request)</small></li></ul>
+      <p class="amen"><span class="nw">Large outdoor pool<span class=sep aria-hidden=true>|</span></span> <span class="nw">Restaurant and bar, open to outside guests<span class=sep aria-hidden=true>|</span></span> <span class="nw">Vegetarian, gluten-free and dairy-free options<span class=sep aria-hidden=true>|</span></span> <span class="nw">Open-air fitness area and yoga shala<span class=sep aria-hidden=true>|</span></span> <span class="nw">Daily yoga and Pilates classes <small>(additional charge)</small><span class=sep aria-hidden=true>|</span></span> <span class="nw">Massage <small>(additional charge)</small><span class=sep aria-hidden=true>|</span></span> <span class="nw">Free WiFi<span class=sep aria-hidden=true>|</span></span> <span class="nw">Free private parking<span class=sep aria-hidden=true>|</span></span> <span class="nw">Airport shuttle<span class=sep aria-hidden=true>|</span></span> <span class="nw">Private taxi <small>(on request)</small><span class=sep aria-hidden=true>|</span></span> <span class="nw">Laundry service <small>(additional charge, cash)</small><span class=sep aria-hidden=true>|</span></span> <span class="nw">Safe box in the rooms<span class=sep aria-hidden=true>|</span></span> <span class="nw">Generator for power cuts<span class=sep aria-hidden=true>|</span></span> <span class="nw">Garden and sun terrace<span class=sep aria-hidden=true>|</span></span> <span class="nw">Cot for under-2s <small>(free, on request)</small><span class=sep aria-hidden=true>|</span></span> <span class="nw">Extra bed for an adult <small>(US$20 per night, on request)</small></span></p>
     </div>
   </div>
 </section>
@@ -549,7 +598,7 @@ legend{font-weight:600;margin-bottom:10px}
 </section>
 
 <section class="closing" id="book" aria-label="Book your stay">
-  <figure class="par"><img src="img/vid-002-still-1920.webp" srcset="img/vid-002-still-1280.webp 1280w, img/vid-002-still-1920.webp 1920w" sizes="100vw" width="1920" height="1080" alt="The ring of red roofs among the palms from high above, the sea beyond" loading="lazy" decoding="async"></figure>
+  <figure class="par"><img src="img/img-001-2000.webp" srcset="img/img-001-1280.webp 1280w, img/img-001-2000.webp 2000w" sizes="100vw" width="2000" height="1126" alt="The resort from above at noon: the pool and its loungers, red-tiled bungalows, the main building and the jungle around them" loading="lazy" decoding="async"></figure>
   <div class="closing-in">
     <p>Booking direct gets you our best rate, and if there&#x27;s anything you&#x27;d like to ask first, send us a WhatsApp.</p>
     <div class="acts"><a class="btn btn-book" href="https://pantareiresort.holidayfuture.com/" data-drawer>Check dates <svg class="arr" width="16" height="12" viewBox="0 0 16 12" aria-hidden="true"><path d="M1 6h13M9 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn btn-white" href="https://wa.me/94728003022?text=Hi%20Panta%20Rei%20Resort%2C%20I%27d%20like%20to%20ask%20about%20a%20stay."><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.5-.3Z"/></svg> WhatsApp</a></div>
@@ -586,7 +635,7 @@ legend{font-weight:600;margin-bottom:10px}
 <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dr-title" hidden>
   <div class="dr-head"><h2 id="dr-title">Check dates</h2><button type="button" class="x" aria-label="Close" data-close>&times;</button></div>
   <form class="dr-body" action="https://pantareiresort.holidayfuture.com/" method="get" onsubmit="return false">
-    <fieldset class="rooms-pick"><legend>Your room</legend><label class="chip-room"><input type="radio" name="room" value="0" data-url="https://pantareiresort.holidayfuture.com/listings/572800" data-label="Double Room" data-sleeps="3"><img src="img/img-028-43-720.webp" width="720" height="540" alt="" loading="lazy"><span><b>Double Room</b><small>Sleeps 3</small></span></label><label class="chip-room"><input type="radio" name="room" value="1" data-url="https://pantareiresort.holidayfuture.com/listings/572802" data-label="Triple Room" data-sleeps="3"><img src="img/img-037-43-720.webp" width="720" height="540" alt="" loading="lazy"><span><b>Triple Room</b><small>Sleeps 3</small></span></label><label class="chip-room"><input type="radio" name="room" value="2" data-url="https://pantareiresort.holidayfuture.com/listings/572799" data-label="Family Villa" data-sleeps="4"><img src="img/img-012-43-720.webp" width="720" height="540" alt="" loading="lazy"><span><b>Family Villa</b><small>Sleeps 4</small></span></label><label class="chip-room"><input type="radio" name="room" value="3" data-url="https://pantareiresort.holidayfuture.com/listings/572798" data-label="Suite with Private Pool" data-sleeps="2"><img src="img/img-043-43-720.webp" width="720" height="540" alt="" loading="lazy"><span><b>Suite with Private Pool</b><small>Sleeps 2</small></span></label></fieldset>
+    <fieldset class="rooms-pick"><legend>Your room</legend><label class="chip-room"><input type="radio" name="room" value="0" checked data-url="https://pantareiresort.holidayfuture.com/listings/572800" data-label="Double Room" data-sleeps="3"><img src="img/img-028-43-720.webp" width="720" height="540" alt="" loading="lazy"><span><b>Double Room</b><small>Sleeps 3</small></span></label><label class="chip-room"><input type="radio" name="room" value="1" data-url="https://pantareiresort.holidayfuture.com/listings/572802" data-label="Triple Room" data-sleeps="3"><img src="img/img-037-43-720.webp" width="720" height="540" alt="" loading="lazy"><span><b>Triple Room</b><small>Sleeps 3</small></span></label><label class="chip-room"><input type="radio" name="room" value="2" data-url="https://pantareiresort.holidayfuture.com/listings/572799" data-label="Family Villa" data-sleeps="4"><img src="img/img-012-43-720.webp" width="720" height="540" alt="" loading="lazy"><span><b>Family Villa</b><small>Sleeps 4</small></span></label><label class="chip-room"><input type="radio" name="room" value="3" data-url="https://pantareiresort.holidayfuture.com/listings/572798" data-label="Suite with Private Pool" data-sleeps="2"><img src="img/img-043-43-720.webp" width="720" height="540" alt="" loading="lazy"><span><b>Suite with Private Pool</b><small>Sleeps 2</small></span></label></fieldset>
     <fieldset class="when"><legend>Dates and guests</legend>
       <div class="fl"><input type="date" id="d-in" placeholder=" " required><label for="d-in">Arrival</label></div>
       <div class="fl"><input type="date" id="d-out" placeholder=" " required><label for="d-out">Departure</label></div>
@@ -608,6 +657,10 @@ const WA_NUM="94728003022",ENGINE="https://pantareiresort.holidayfuture.com/";
 (()=>{
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* one quiet entrance for section photographs (never headings) */
+if(!reduce&&'IntersectionObserver' in window){document.documentElement.classList.add('js');
+ const io2=new IntersectionObserver(es=>{for(const en of es)if(en.isIntersecting){en.target.classList.add('in');io2.unobserve(en.target)}},{rootMargin:'0px 0px -8% 0px'});
+ $$('.rv').forEach(el=>{if(el.getBoundingClientRect().top<innerHeight)el.classList.add('in');io2.observe(el)})}
 
 /* header + phone bar */
 const hdr=$('#hdr'),bar=$('#bar'),hero=$('.hero');

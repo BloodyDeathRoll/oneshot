@@ -34,12 +34,12 @@ pic() {
 # ---- logo (img-023, white on transparent, 591 px): scaled down, alpha kept
 ff -i "$A/img-023.png" -vf "scale=180:180:flags=lanczos" "$D/img/logo.png"
 
-# ---- hero poster: vid-004 frame at 6 s (dossier poster), the surf beach from the air
-pic "$V/vid-004-poster.jpg" hero 1920 1080
+# ---- hero poster: vid-002 frame at 5 s (dossier poster), the ring of roofs and the pool from straight above
+pic "$V/vid-002-poster.jpg" hero 1920 1080
 # ---- the ring of roofs, img-001 (2000 px)
 pic "$A/img-001.jpg" ring 2000 1124
-# ---- closing still: vid-001 poster (57 s, top-down ring)
-pic "$V/vid-001-poster.jpg" closing 1920 1080
+# ---- closing still: a room with its glass doors open to the lawn and the pool, a surfboard outside (img-012, 2000 px)
+pic "$A/img-012.jpg" closing 1920 1080
 
 # ---- room cards, one 4:5 cover per room
 pic "$A/img-028.jpg" card-double 720 900
@@ -58,34 +58,41 @@ for x in "double 028 031 029 007 013" "triple 037 034 036 010 011" "family 038 0
 done
 
 # ---- the pool: guest wading in (img-006, 1844 px) and the suite's plunge pool (img-046)
-pic "$A/img-006.png" pool 1500 1000
-pic "$A/img-046.jpg" plunge 720 900
+pic "$A/img-006.png" pool 1800 1000
 # ---- the restaurant: three dishes, one 4:5 frame
 pic "$A/img-003.jpg" menu-breakfast 960 1200
 pic "$A/img-005.jpg" menu-later 960 1200 0.5 0.55
-pic "$A/img-025.png" menu-dinner 960 1200 0.5 0.6
 # ---- after the surf: guests with boards on the lawn (img-035, 1350 px)
 pic "$A/img-035.jpg" surf 1350 900
 
-# ---- groups: the open-air lounge under the main building, rattan lamps and chairs (img-030, 1350 px)
-pic "$A/img-030.jpg" lounge 1350 900
+# ---- groups: a class from behind on the open upper floor (img-021, portrait 1334 px), 3:2 crop
+pic "$A/img-021.jpg" group 1200 800 0.5 0.45
 
-# ---- hero video: vid-004 cut 0.5-14.5 s, the dossier's renditions as they are
-cp "$V/vid-004-d1920.mp4" "$D/video/hero-d1920.mp4"
-cp "$V/vid-004-d1920.webm" "$D/video/hero-d1920.webm"
-cp "$V/vid-004-m1280.mp4" "$D/video/hero-m1280.mp4"
-cp "$V/vid-004-m1280.webm" "$D/video/hero-m1280.webm"
+# ---- hero video: vid-002 cut 3-17 s (restaurant building -> top-down pool -> rise to the sea at dusk), the dossier's renditions as they are
+cp "$V/vid-002-d1920.mp4" "$D/video/hero-d1920.mp4"
+cp "$V/vid-002-d1920.webm" "$D/video/hero-d1920.webm"
+cp "$V/vid-002-m1280.mp4" "$D/video/hero-m1280.mp4"
+cp "$V/vid-002-m1280.webm" "$D/video/hero-m1280.webm"
+# phone: a native 9:16 column of the same cut (608x1080 from x=840, the pool side), so a portrait screen is not
+# an upscaled 720p frame; crop only, no scaling
+ff -ss 3 -t 14 -i "$V/vid-002-source.mp4" -vf "crop=608:1080:840:0,fps=30,format=yuv420p" -an -c:v libx264 -preset slow -b:v 950k -maxrate 1200k -bufsize 2M -profile:v high -movflags +faststart "$D/video/hero-p1080.mp4"
+ff -ss 3 -t 14 -i "$V/vid-002-source.mp4" -vf "crop=608:1080:840:0,fps=30" -an -c:v libvpx-vp9 -b:v 850k -maxrate 1100k -row-mt 1 -deadline good -cpu-used 2 "$D/video/hero-p1080.webm"
+ff -ss 2 -i "$D/video/hero-p1080.mp4" -frames:v 1 "$T/hero-p-frame.png"
+pic "$T/hero-p-frame.png" hero-p 608 1080
 
-# ---- welcome clip: vid-002 3-17 s (the dossier's cut), 4:5 centre crop 864x1080 -> 720x900, no audio
-ff -ss 3 -t 14 -i "$V/vid-002-source.mp4" -vf "crop=864:1080:528:0,scale=720:900:flags=lanczos,fps=30,format=yuv420p" -an -c:v libx264 -preset slow -b:v 950k -maxrate 1200k -bufsize 2M -profile:v high -movflags +faststart "$D/video/welcome-720.mp4"
-ff -ss 3 -t 14 -i "$V/vid-002-source.mp4" -vf "crop=864:1080:528:0,scale=720:900:flags=lanczos,fps=30" -an -c:v libvpx-vp9 -b:v 850k -maxrate 1100k -row-mt 1 -deadline good -cpu-used 2 "$D/video/welcome-720.webm"
-ff -i "$D/video/welcome-720.mp4" -frames:v 1 "$T/welcome.png"
-pic "$T/welcome.png" welcome-poster 720 900
+# ---- welcome clip: vid-001 4.75-12.1 s (the open-air lounge: the orange rattan chairs, the lounge wide, sun through the
+# rattan lamps; three shots, cut points 7.3 / 9.6 s; the dark lamps-from-below shot before 4.7 s is left out),
+# 4:5 centre crop 864x1080 -> 720x900, no audio
+WSRC=$V/vid-001-source.mp4
+ff -ss 4.75 -t 7.35 -i "$WSRC" -vf "crop=864:1080:528:0,scale=720:900:flags=lanczos,fps=30,format=yuv420p" -an -c:v libx264 -preset slow -b:v 1000k -maxrate 1300k -bufsize 2M -profile:v high -movflags +faststart "$D/video/welcome-720.mp4"
+ff -ss 4.75 -t 7.35 -i "$WSRC" -vf "crop=864:1080:528:0,scale=720:900:flags=lanczos,fps=30" -an -c:v libvpx-vp9 -b:v 900k -maxrate 1150k -row-mt 1 -deadline good -cpu-used 2 "$D/video/welcome-720.webm"
+ff -ss 3.4 -i "$D/video/welcome-720.mp4" -frames:v 1 "$T/welcome-frame.png"
+pic "$T/welcome-frame.png" welcome-poster 720 900
 
 # ---- fitness clip: vid-003 (vertical mat class) 4-14 s, 1080x1920 -> 540x960, no audio, <= 2 MB
 ff -ss 4 -t 10 -i "$V/vid-003-source.mp4" -vf "scale=540:960:flags=lanczos,fps=30,format=yuv420p" -an -c:v libx264 -preset slow -b:v 1100k -maxrate 1400k -bufsize 2M -profile:v high -movflags +faststart "$D/video/fitness-540.mp4"
 ff -ss 4 -t 10 -i "$V/vid-003-source.mp4" -vf "scale=540:960:flags=lanczos,fps=30" -an -c:v libvpx-vp9 -b:v 950k -maxrate 1200k -row-mt 1 -deadline good -cpu-used 2 "$D/video/fitness-540.webm"
-ff -i "$D/video/fitness-540.mp4" -frames:v 1 "$T/fitness.png"
-pic "$T/fitness.png" fitness-poster 540 960
+ff -i "$D/video/fitness-540.mp4" -frames:v 1 "$T/fitness-frame.png"
+pic "$T/fitness-frame.png" fitness-poster 540 960
 
 ls -la "$D/img" "$D/video" | awk '{s+=$5} END {print "total bytes", s}'

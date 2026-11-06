@@ -86,7 +86,7 @@ def slides(key, photos, ratio_note=''):
         lazy = 'lazy'
         items.append(f'<li class="slide"><img src="img/img-{iid}-43-1200.webp" srcset="img/img-{iid}-43-720.webp 720w, img/img-{iid}-43-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 56vw" width="1200" height="900" alt="{e(alt)}" loading="{lazy}" decoding="async"></li>')
     dots = ''.join(f'<button type="button" class="dot" aria-label="Photo {i+1} of {len(photos)}"{CUR if i == 0 else ""}></button>' for i in range(len(photos)))
-    return f'''<div class="show" data-show>
+    return f'''<div class="show rv" data-show>
       <ul class="track" tabindex="0" aria-label="{e(key)}, photos">{''.join(items)}</ul>
       <button type="button" class="nav-btn prev" aria-label="Previous photo">{ICON['prev']}</button>
       <button type="button" class="nav-btn next" aria-label="Next photo">{ICON['next']}</button>
@@ -111,13 +111,17 @@ for i, r in enumerate(C['rooms']):
 
 # ---- prices
 P = C['priceList']
-def price_rows(rows):
+def price_rows(rows, foot=None):
+    """Compact lines: label · price unit. A note shared by every row is said once, under the list."""
+    notes = {p.get('note') for p in rows}
+    shared = notes.pop() if len(notes) == 1 else None
     out = []
     for p in rows:
         unit = UNIT.get(p['unit'], '')
-        note = f'<span class="pnote">{e(p["note"])}</span>' if p.get('note') else ''
+        note = '' if shared or not p.get('note') else f' <span class="pnote">{e(p["note"])}</span>'
         out.append(f'<li><span class="plabel">{e(p["label"])}{note}</span><span class="pval">{lkr(p["price"])}{(" <small>" + unit + "</small>") if unit else ""}</span></li>')
-    return '<ul class="prices">' + ''.join(out) + '</ul>'
+    tail = f'<p class="pfoot">{e(shared)}</p>' if shared else ''
+    return '<ul class="plist">' + ''.join(out) + '</ul>' + tail
 day_pass = [p for p in P if p['label'].startswith('Pool day pass')]
 classes = [p for p in P if p['label'].startswith('Fitness class')]
 massages = [p for p in P if 'Massage' in p['label']]
@@ -140,10 +144,11 @@ def rating(key, name):
     r = R[key]
     return f'<a class="rating" href="{e(r["url"])}" rel="noopener" target="_blank"><span class="score">{r["score"]:g}<small>/{r["scale"]}</small></span><span class="rsrc">{name}<br><small>{r["count"]} reviews</small></span></a>'
 
-amen = ''.join(f'<li>{e(a["label"])}{(" <small>(" + e(a["note"]) + ")</small>") if a.get("note") else ""}</li>' for a in C['amenities'])
+_am = C['amenities']
+amen = ' '.join(f'<span class="nw">{e(a["label"])}{(" <small>(" + e(a["note"]) + ")</small>") if a.get("note") else ""}{"" if k == len(_am) - 1 else "<span class=sep aria-hidden=true>|</span>"}</span>' for k, a in enumerate(_am))
 SI = C['stayInfo']
 
-drawer_rooms = ''.join(f'''<label class="chip-room"><input type="radio" name="room" value="{i}" data-url="{e(links[r['label']])}" data-label="{e(r['label'])}" data-sleeps="{r['sleeps']}"><img src="img/img-{ROOM_PHOTOS[r['label']][0][0]}-43-720.webp" width="720" height="540" alt="" loading="lazy"><span><b>{e(r['label'])}</b><small>Sleeps {r['sleeps']}</small></span></label>''' for i, r in enumerate(C['rooms']))
+drawer_rooms = ''.join(f'''<label class="chip-room"><input type="radio" name="room" value="{i}"{" checked" if i == 0 else ""} data-url="{e(links[r['label']])}" data-label="{e(r['label'])}" data-sleeps="{r['sleeps']}"><img src="img/img-{ROOM_PHOTOS[r['label']][0][0]}-43-720.webp" width="720" height="540" alt="" loading="lazy"><span><b>{e(r['label'])}</b><small>Sleeps {r['sleeps']}</small></span></label>''' for i, r in enumerate(C['rooms']))
 
 W = lambda name: block[name]
 offer = W('Four ways to stay')
@@ -160,6 +165,8 @@ page = f'''<!doctype html>
 <title>Panta Rei Resort, Kabalana · Boutique resort in Ahangama, Sri Lanka</title>
 <meta name="description" content="{e(C['tagline'])}">
 <meta name="theme-color" content="#F7F9FB">
+<link rel="preload" as="image" href="img/hero-poster-p608.webp" media="(max-aspect-ratio: 3/4)" fetchpriority="high">
+<link rel="preload" as="image" imagesrcset="img/hero-poster-800.webp 800w, img/hero-poster-1280.webp 1280w, img/hero-poster-1920.webp 1920w" imagesizes="100vw" media="(min-aspect-ratio: 3/4)" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Gochi+Hand&display=swap" rel="stylesheet">
@@ -182,17 +189,17 @@ page = f'''<!doctype html>
 </div>
 
 <main id="top">
-<section class="hero" aria-label="Panta Rei Resort from the air">
+<section class="hero" aria-label="Panta Rei Resort, the pool">
   <picture>
-    <source media="(max-aspect-ratio: 3/4)" srcset="img/vid-001-poster-p608.webp" width="608" height="1080">
-    <img src="img/vid-001-poster-1920.webp" srcset="img/vid-001-poster-1280.webp 1280w, img/vid-001-poster-1920.webp 1920w" sizes="100vw" width="1920" height="1080" alt="Red-roofed white bungalows in a ring around a long turquoise pool, seen from above" fetchpriority="high">
+    <source media="(max-aspect-ratio: 3/4)" srcset="img/hero-poster-p608.webp" width="608" height="1080">
+    <img src="img/hero-poster-1920.webp" srcset="img/hero-poster-800.webp 800w, img/hero-poster-1280.webp 1280w, img/hero-poster-1920.webp 1920w" sizes="100vw" width="1920" height="1080" alt="The long turquoise pool with loungers on its stone deck, palms and red-roofed bungalows beyond" fetchpriority="high">
   </picture>
   <video muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" data-hero>
-    <source data-src="video/vid-001-p608.mp4" type="video/mp4" media="(max-aspect-ratio: 3/4)">
-    <source data-src="video/vid-001-m1280.webm" type="video/webm" media="(max-width: 767px)">
-    <source data-src="video/vid-001-m1280.mp4" type="video/mp4" media="(max-width: 767px)">
-    <source data-src="video/vid-001-d1920.webm" type="video/webm">
-    <source data-src="video/vid-001-d1920.mp4" type="video/mp4">
+    <source data-src="video/hero-p608.mp4" type="video/mp4" media="(max-aspect-ratio: 3/4)">
+    <source data-src="video/hero-m1280.webm" type="video/webm" media="(max-width: 767px)">
+    <source data-src="video/hero-m1280.mp4" type="video/mp4" media="(max-width: 767px)">
+    <source data-src="video/hero-d1920.webm" type="video/webm">
+    <source data-src="video/hero-d1920.mp4" type="video/mp4">
   </video>
   <div class="hero-in">
     <h1>Panta Rei, Kabalana</h1>
@@ -232,44 +239,38 @@ page = f'''<!doctype html>
 </section>
 
 <section class="resto" id="restaurant">
+  <figure class="resto-img par"><img src="img/img-003-2000.webp" srcset="img/img-003-1200.webp 1200w, img/img-003-2000.webp 2000w" sizes="100vw" width="2000" height="1320" alt="Breakfast served at a teak table under greenery: a bowl, juice and coffee passed across the table" loading="lazy" decoding="async">
+    <h2 class="script on-photo">{e(W('Restaurant and bar')['heading'])}</h2></figure>
   <div class="wrap grid">
     <div class="r-text">
-      <h2 class="script">{e(W('Restaurant and bar')['heading'])}</h2>
       {paras(W('Restaurant and bar')['body'])}
       <p class="hours">{e(C['hoursNote'])}</p>
     </div>
-    <div class="r-photos">
-      <img class="wide" src="img/img-003-900.webp" width="900" height="594" alt="Breakfast served at a teak table under greenery: a bowl, juice and coffee" loading="lazy" decoding="async">
-      <div class="trio">
-        <img src="img/img-005-700.webp" width="700" height="1049" alt="Lunch on a teak table in the garden: sliders and plated dishes" loading="lazy" decoding="async">
-        <img src="img/img-018-700.webp" width="700" height="1049" alt="Garlic prawns in a dark bowl on a woven rattan mat, from above" loading="lazy" decoding="async">
-        <img src="img/img-019-700.webp" width="700" height="1050" alt="A small bowl on the balcony rail, the garden blurred below" loading="lazy" decoding="async">
-      </div>
+    <div class="trio rv">
+      <img src="img/img-005-700.webp" width="700" height="1049" alt="Lunch on a teak table in the garden: sliders and plated dishes" loading="lazy" decoding="async">
+      <img src="img/img-018-700.webp" width="700" height="1049" alt="Garlic prawns in a dark bowl on a woven rattan mat, from above" loading="lazy" decoding="async">
+      <img src="img/img-019-700.webp" width="700" height="1050" alt="A small bowl on the balcony rail, the garden blurred below" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
 
-<section class="fit tint" id="fitness">
-  <div class="wrap grid">
-    <img class="fit-img" src="img/img-004-800.webp" width="800" height="1199" alt="A yoga class in the open-air shala, a woman in triangle pose, other mats behind" loading="lazy" decoding="async">
-    <div class="fit-text">
-      <h2 class="script">{e(W('Panta Fitness Club')['heading'])}</h2>
-      {paras(W('Panta Fitness Club')['body'])}
-      <ol class="week" aria-label="Vinyasa yoga, this week">{week}</ol>
-      {price_rows(classes)}
-    </div>
+<section class="fit" id="fitness">
+  <figure class="fit-img rv"><img src="img/img-004-1334.webp" srcset="img/img-004-800.webp 800w, img/img-004-1334.webp 1334w" sizes="(max-width: 860px) 100vw, 50vw" width="1334" height="2000" alt="A yoga class in the open-air shala, a woman in triangle pose, other mats behind" loading="lazy" decoding="async"></figure>
+  <div class="fit-text">
+    <h2 class="script">{e(W('Panta Fitness Club')['heading'])}</h2>
+    {paras(W('Panta Fitness Club')['body'])}
+    <ol class="week" aria-label="Vinyasa yoga, this week">{week}</ol>
+    {price_rows(classes)}
   </div>
 </section>
 
 <section class="surf" id="after-surf">
-  <div class="wrap grid">
-    <figure class="surf-img par"><img src="img/img-035-1350.webp" srcset="img/img-035-800.webp 800w, img/img-035-1350.webp 1350w" sizes="(max-width: 860px) 100vw, 58vw" width="1350" height="900" alt="Two guests carrying surfboards across the lawn by the pool, a woman in a straw hat crouching with a dog" loading="lazy" decoding="async"></figure>
-    <div class="surf-text">
-      <h2 class="script">{e(W('After the surf')['heading'])}</h2>
-      {paras(W('After the surf')['body'])}
-      {price_rows(massages)}
-    </div>
+  <div class="surf-text">
+    <h2 class="script">{e(W('After the surf')['heading'])}</h2>
+    {paras(W('After the surf')['body'])}
+    {price_rows(massages)}
   </div>
+  <figure class="surf-img rv"><img src="img/img-035-1350.webp" srcset="img/img-035-800.webp 800w, img/img-035-1350.webp 1350w" sizes="(max-width: 860px) 100vw, 60vw" width="1350" height="900" alt="Two guests carrying surfboards across the lawn by the pool, a woman in a straw hat crouching with a dog" loading="lazy" decoding="async"></figure>
 </section>
 
 <section class="guests tint" id="guests">
@@ -300,7 +301,7 @@ page = f'''<!doctype html>
       <h3>Good to know</h3>
       <p class="facts">Check-in from {SI['checkInFrom']}<span class="sep" aria-hidden="true">|</span><span class="nw">Check-out by {SI['checkOutTo']}</span></p>
       <p>{e(SI['note'])}</p>
-      <ul class="amen">{amen}</ul>
+      <p class="amen">{amen}</p>
     </div>
   </div>
 </section>
@@ -314,7 +315,7 @@ page = f'''<!doctype html>
 </section>
 
 <section class="closing" id="book" aria-label="Book your stay">
-  <figure class="par"><img src="img/vid-002-still-1920.webp" srcset="img/vid-002-still-1280.webp 1280w, img/vid-002-still-1920.webp 1920w" sizes="100vw" width="1920" height="1080" alt="The ring of red roofs among the palms from high above, the sea beyond" loading="lazy" decoding="async"></figure>
+  <figure class="par"><img src="img/img-001-2000.webp" srcset="img/img-001-1280.webp 1280w, img/img-001-2000.webp 2000w" sizes="100vw" width="2000" height="1126" alt="The resort from above at noon: the pool and its loungers, red-tiled bungalows, the main building and the jungle around them" loading="lazy" decoding="async"></figure>
   <div class="closing-in">
     <p>{e(C['closing'])}</p>
     <div class="acts"><a class="btn btn-book" href="{ENGINE}" data-drawer>Check dates {ICON['arrow']}</a><a class="btn btn-white" href="{e(wa("Hi Panta Rei Resort, I'd like to ask about a stay."))}">{ICON['wa']} WhatsApp</a></div>

@@ -120,8 +120,9 @@ H.append(f'''<!doctype html>
 <meta property="og:image" content="img/ring-2000.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap">
-<link rel="preload" as="image" href="img/hero-960.webp" imagesrcset="img/hero-960.webp 960w, img/hero-1920.webp 1920w" imagesizes="100vw" type="image/webp">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Satisfy&display=swap">
+<link rel="preload" as="image" href="img/hero-p-608.webp" imagesrcset="img/hero-p-304.webp 304w, img/hero-p-608.webp 608w" imagesizes="100vw" type="image/webp" media="(max-width: 767px) and (orientation: portrait)">
+<link rel="preload" as="image" href="img/hero-960.webp" imagesrcset="img/hero-960.webp 960w, img/hero-1920.webp 1920w" imagesizes="100vw" type="image/webp" media="not all and (max-width: 767px) and (orientation: portrait)">
 <script>document.documentElement.className='js'</script>
 <style>{CSS}</style>
 </head>
@@ -140,8 +141,10 @@ H.append(f'''<!doctype html>
 <main id="main">
 <section class="hero" id="top" aria-label="Panta Rei, Kabalana">
   <div class="hero-media">
-    <picture><source type="image/webp" srcset="img/hero-960.webp 960w, img/hero-1920.webp 1920w" sizes="100vw"><img src="img/hero-1920.jpg" width="1920" height="1080" alt="Aerial view along a palm-lined beach, surf breaking on turquoise water" fetchpriority="high"></picture>
-    <video id="hero-video" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" poster="img/hero-1920.jpg">
+    <picture><source type="image/webp" media="(max-width: 767px) and (orientation: portrait)" srcset="img/hero-p-304.webp 304w, img/hero-p-608.webp 608w" sizes="100vw"><source type="image/webp" srcset="img/hero-960.webp 960w, img/hero-1920.webp 1920w" sizes="100vw"><img src="img/hero-1920.jpg" width="1920" height="1080" alt="The resort from straight above: red-tiled bungalows in a ring around the long pool, swimmers in the water, palms all round" fetchpriority="high"></picture>
+    <video id="hero-video" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true">
+      <source data-src="video/hero-p1080.webm" type="video/webm" media="(max-width: 767px) and (orientation: portrait)">
+      <source data-src="video/hero-p1080.mp4" type="video/mp4" media="(max-width: 767px) and (orientation: portrait)">
       <source data-src="video/hero-m1280.webm" type="video/webm" media="(max-width: 767px)">
       <source data-src="video/hero-m1280.mp4" type="video/mp4" media="(max-width: 767px)">
       <source data-src="video/hero-d1920.webm" type="video/webm">
@@ -159,7 +162,7 @@ H.append(f'''<!doctype html>
 if not HERO_ONLY:
     w = B('Welcome to Panta Rei')
     H.append(f'''
-<section class="sec page lilac welcome" aria-labelledby="h-welcome">
+<section class="sec tint lilac welcome" aria-labelledby="h-welcome">
   <div class="wrap">
     <div>
       <h2 id="h-welcome">{e(w['heading'])}</h2>
@@ -168,8 +171,8 @@ if not HERO_ONLY:
       {paras(w['body'])}
     </div>
     <div class="clip">
-      {pic('welcome-poster', 720, 900, 'The pool from above, swimmers in the water and loungers along the stone deck', sizes='(max-width:860px) 90vw, 420px')}
-      <video data-lazy muted loop playsinline preload="none" disablepictureinpicture aria-label="The pool from above with swimmers, rising over the palms to the sea" poster="img/welcome-poster-720.jpg">
+      {pic('welcome-poster', 720, 900, 'The open-air lounge under the main building: orange cushioned rattan chairs, rattan pendant lamps, palms beyond', sizes='(max-width:860px) 92vw, 440px')}
+      <video data-lazy muted loop playsinline preload="none" disablepictureinpicture aria-label="The open-air lounge: rattan pendant lamps, rattan chairs, sun through the palms">
         <source data-src="video/welcome-720.webm" type="video/webm"><source data-src="video/welcome-720.mp4" type="video/mp4">
       </video>
     </div>
@@ -196,76 +199,67 @@ if not HERO_ONLY:
   <div class="wrap cards">
     <div class="track">{cards}
     </div>
-    <p class="stay-notes"><span><b>Check-in</b> from {st['checkInFrom']}</span><span><b>Check-out</b> until {st['checkOutTo']}</span><span>{e(st['note'])}</span></p>
+    <p class="line stay-notes"><span><b>Check-in</b> from {st['checkInFrom']}</span><span class="sep" aria-hidden="true">|</span><span><b>Check-out</b> until {st['checkOutTo']}</span><span class="sep" aria-hidden="true">|</span><span>{e(st['note'])}</span></p>
   </div>
 </section>
 ''')
     p = B('The pool'); dp = price['Pool day pass']
     H.append(f'''
-<section class="sec pool" aria-labelledby="h-pool">
-  <div class="wrap">
-    <div class="prints">
-      <div class="p1">{pic('pool', 1500, 1000, 'A guest wading into the long pool, red-roofed bungalows and tall palms beyond', sizes='(max-width:860px) 92vw, 680px')}</div>
-      <div class="p2">{pic('plunge', 720, 900, "The suite's private plunge pool with two wooden lounge chairs", sizes='(max-width:860px) 36vw, 260px')}</div>
-    </div>
+<section class="pool" aria-labelledby="h-pool">
+  <div class="bleed">{pic('pool', 1800, 1000, 'A guest wading into the long pool, red-roofed bungalows and tall palms beyond', sizes='100vw')}</div>
+  <div class="wrap split">
+    <h2 id="h-pool">{e(p['heading'])}</h2>
     <div>
-      <h2 id="h-pool">{e(p['heading'])}</h2>
       {paras(p['body'])}
-      <div class="pass"><b>{e(dp['label'])}</b><span class="price">{lkr(dp['price'])}</span><span class="muted">per person · {e(dp['note'])}</span></div>
+      <p class="line"><b>{e(dp['label'])}</b><span class="sep" aria-hidden="true">|</span><span class="price">{lkr(dp['price'])}</span> per person<span class="sep" aria-hidden="true">|</span>{e(dp['note'])}</p>
     </div>
   </div>
 </section>
 ''')
     rb = B('Restaurant and bar')
     MENU = [
-        ('Breakfast', ['Smoothie bowls', 'Granola', 'Banana oat pancakes', 'Shakshuka', 'The Sri Lankan plate: egg hoppers, dhal and coconut sambal'],
+        ('Breakfast', ['Smoothie bowls', 'Granola', 'Banana oat pancakes', 'Shakshuka', 'The Sri Lankan plate with egg hoppers, dhal and coconut sambal'],
          'menu-breakfast', 'Breakfast served at a teak table under greenery: a bowl passed across, juice and fruit'),
-        ('Later on', ['Fish bowl', 'Curry of the day', 'Whole grilled fish, priced on weight'],
+        ('Later on', ['Fish bowl', 'Curry of the day', 'Whole grilled fish, priced on weight', 'Dinner is a mix of traditional and modern Mediterranean dishes'],
          'menu-later', 'Sliders and plated dishes on a teak table in the garden'),
-        ('Dinner', ['A mix of traditional and modern Mediterranean dishes'],
-         'menu-dinner', 'A plate of pasta with prawns held over a teak table'),
     ]
     tabs = ''.join(f'<button class="tab" role="tab" type="button" id="t-{i}" aria-controls="m-{i}" aria-selected="{str(i==0).lower()}">{n}</button>' for i, (n, *_ ) in enumerate(MENU))
     panels = ''.join(f'<div class="menu-panel" role="tabpanel" id="m-{i}" aria-labelledby="t-{i}"><h3>{n}</h3><ul class="dishes">' + ''.join(f'<li>{e(x)}</li>' for x in d) + '</ul></div>' for i, (n, d, *_ ) in enumerate(MENU))
-    plates = ''.join(f'<img{" class=on" if i==0 else ""} src="img/{f}-960.jpg" srcset="img/{f}-480.webp 480w, img/{f}-960.webp 960w" sizes="(max-width:860px) 90vw, 460px" width="960" height="1200" alt="{e(a)}" loading="lazy" decoding="async">' for i, (_, _, f, a) in enumerate(MENU))
+    plates = ''.join(f'<img{" class=on" if i==0 else ""} src="img/{f}-960.jpg" srcset="img/{f}-480.webp 480w, img/{f}-960.webp 960w" sizes="(max-width:860px) 100vw, 50vw" width="960" height="1200" alt="{e(a)}" loading="lazy" decoding="async">' for i, (_, _, f, a) in enumerate(MENU))
     H.append(f'''
-<section class="sec page peach resto" id="restaurant" aria-labelledby="h-resto">
-  <div class="wrap">
-    <div>
-      <h2 id="h-resto">{e(rb['heading'])}</h2>
-      {paras(rb['body'])}
-      <div class="tabs" role="tablist" aria-label="Dishes by time of day"><span class="pill" aria-hidden="true"></span>{tabs}</div>
-      {panels}
-      <p class="hours">{I['clock']}<span>{e(C['hoursNote'])}</span></p>
-    </div>
-    <div class="plates">{plates}</div>
+<section class="tint peach resto" id="restaurant" aria-labelledby="h-resto">
+  <div class="plates">{plates}</div>
+  <div class="resto-t">
+    <h2 id="h-resto">{e(rb['heading'])}</h2>
+    {paras(rb['body'])}
+    <div class="tabs" role="tablist" aria-label="Dishes by time of day"><span class="pill" aria-hidden="true"></span>{tabs}</div>
+    {panels}
+    <p class="hours">{I['clock']}<span>{e(C['hoursNote'])}</span></p>
   </div>
 </section>
 ''')
     f = B('Panta Fitness Club')
     days = [('Mon', 'Monday'), ('Tue', 'Tuesday'), ('Wed', 'Wednesday'), ('Thu', 'Thursday'), ('Fri', 'Friday'), ('Sat', 'Saturday'), ('Sun', 'Sunday')]
     week = ''.join(
-        (f'<button class="day off" type="button" aria-pressed="false" data-say="Friday is the day off." aria-label="{full}"><span class="f">{d}</span><span class="b" aria-hidden="true">Off</span></button>'
-         if d == 'Fri' else
-         f'<button class="day" type="button" aria-pressed="false" data-say="{full}: Vinyasa yoga at 8:30." aria-label="{full}"><span class="f">{d}</span><span class="b" aria-hidden="true">8:30</span></button>')
+        (f'<li class="day off"><b>{d}</b><span>Day off</span></li>' if d == 'Fri' else f'<li class="day"><b>{d}</b><span>8:30</span></li>')
         for d, full in days)
-    rates = ''.join(f'<div class="rate"><small>{e(lbl.split(": ")[1].capitalize())}</small><span class="price">{lkr(price[lbl]["price"])}</span><small>per class</small></div>'
+    rates = '<span class="sep" aria-hidden="true">|</span>'.join(f'<span>{e(lbl.split(": ")[1].capitalize())} <span class="price">{lkr(price[lbl]["price"])}</span></span>'
                     for lbl in ['Fitness class: residents', 'Fitness class: in-house guests', 'Fitness class: walk-ins'])
     H.append(f'''
 <section class="sec fit" id="fitness" aria-labelledby="h-fit">
   <div class="wrap">
-    <div class="phone">
-      {pic('fitness-poster', 540, 960, 'A mat class on the open upper floor, women on their backs doing crunches', sizes='300px')}
-      <video data-lazy muted loop playsinline preload="none" disablepictureinpicture aria-label="A mat class on the open upper floor, women on their backs doing crunches" poster="img/fitness-poster-540.jpg">
+    <div class="vclip">
+      {pic('fitness-poster', 540, 960, 'A mat class on the open upper floor, women on their backs doing crunches', sizes='(max-width:860px) 80vw, 360px')}
+      <video data-lazy muted loop playsinline preload="none" disablepictureinpicture aria-label="A mat class on the open upper floor, women on their backs doing crunches">
         <source data-src="video/fitness-540.webm" type="video/webm"><source data-src="video/fitness-540.mp4" type="video/mp4">
       </video>
     </div>
     <div>
       <h2 id="h-fit">{e(f['heading'])}</h2>
       {paras(f['body'])}
-      <div class="week" role="group" aria-label="This week's yoga: tap a day">{week}</div>
-      <p class="day-say" aria-live="polite"></p>
-      <div class="rates">{rates}</div>
+      <h3 class="small-h">Vinyasa yoga, every morning</h3>
+      <ul class="week" aria-label="Vinyasa yoga at 8:30 every day except Friday">{week}</ul>
+      <p class="line rates"><b>Per class</b><span class="sep" aria-hidden="true">|</span>{rates}</p>
     </div>
   </div>
 </section>
@@ -273,41 +267,46 @@ if not HERO_ONLY:
     a = B('After the surf')
     def mrow(name):
         full, back = price[f'{name}, 60 min full body'], price[f'{name}, 45 min back, neck & shoulders']
-        return (f'<div class="mass-row"><b>{name}</b><div><span><span>60 min full body</span><span class="price">{lkr(full["price"])}</span></span>'
-                f'<span><span>45 min back, neck &amp; shoulders</span><span class="price">{lkr(back["price"])}</span></span></div></div>')
+        return (f'<div class="mass-row"><h3>{name}</h3><p><span>60 min full body</span><span class="price">{lkr(full["price"])}</span></p>'
+                f'<p><span>45 min back, neck &amp; shoulders</span><span class="price">{lkr(back["price"])}</span></p></div>')
     H.append(f'''
-<section class="sec page lilac surf" aria-labelledby="h-surf">
-  <div class="wrap">
-    <div>
-      <h2 id="h-surf">{e(a['heading'])}</h2>
-      {paras(a['body'])}
+<section class="surf" aria-labelledby="h-surf">
+  <div class="bleed">{pic('surf', 1350, 900, 'Two guests carrying surfboards across the lawn by the pool; a woman in a straw hat crouches beside a dog', sizes='100vw')}</div>
+  <div class="tint lilac sec-s">
+    <div class="wrap split">
+      <div>
+        <h2 id="h-surf">{e(a['heading'])}</h2>
+        {paras(a['body'])}
+      </div>
       <div class="mass">{mrow('Surf Therapy Massage')}{mrow('Revitalizing Massage')}</div>
     </div>
-    <div class="surf-pic">{pic('surf', 1350, 900, 'Two guests carrying surfboards across the lawn by the pool; a woman in a straw hat crouches beside a dog', sizes='(max-width:860px) 92vw, 640px')}</div>
   </div>
 </section>
 ''')
-    qs = ''.join(f'<blockquote class="quote"><p>{e(t["quote"])}</p><footer>{e(t["author"])} <span>· on {SRC[t["source"]]}</span></footer></blockquote>' for t in C['testimonials'])
+    tq = sorted(C['testimonials'], key=lambda t: len(t['quote']))
+    qs = ''.join(f'<blockquote class="quote"><p>{e(t["quote"])}</p><footer>{e(t["author"])} <span>· on {SRC[t["source"]]}</span></footer></blockquote>' for t in tq)
     H.append(f'''
 <section class="sec guests" aria-labelledby="h-guests">
   <div class="wrap">
-    <h2 id="h-guests">What guests say</h2>
-    <div class="scores">
-      <a class="score" href="{bk['url']}" rel="noopener"><span class="n">{bk['score']}</span><span><strong>/10 on Booking.com</strong><small>{bk['count']} reviews · captured {cap}</small></span></a>
-      <a class="score" href="{gg['url']}" rel="noopener"><span class="n">{gg['score']}</span><span><strong>/5 on Google</strong><small>{gg['count']} reviews · captured {cap}</small></span></a>
+    <div class="guests-head">
+      <h2 id="h-guests">What guests say</h2>
+      <div class="scores">
+        <a class="score" href="{bk['url']}" rel="noopener"><span class="n">{bk['score']}<small>/10</small></span><span>Booking.com<br><small>{bk['count']} reviews · captured {cap}</small></span></a>
+        <a class="score" href="{gg['url']}" rel="noopener"><span class="n">{gg['score']}<small>/5</small></span><span>Google<br><small>{gg['count']} reviews · captured {cap}</small></span></a>
+      </div>
     </div>
     <div class="quotes" tabindex="0" aria-label="Guest reviews, scroll sideways">{qs}</div>
-    <div class="qctl"><button class="rbtn" id="qprev" type="button" aria-label="Previous review">{I['l']}</button><div class="dots" id="qdots"></div><button class="rbtn" id="qnext" type="button" aria-label="Next review">{I['r']}</button></div>
+    <div class="qctl"><button class="rbtn" id="qprev" type="button" aria-label="Previous review">{I['l']}</button><div class="dots" id="qdots"></div><span class="qcount" id="qcount" aria-live="polite"></span><button class="rbtn" id="qnext" type="button" aria-label="Next review">{I['r']}</button></div>
   </div>
 </section>
 ''')
     g = B('Getting here and around')
     stops = [('5 km', 'Koggala Airport'), ('2.1 km', 'Ahangama station'), ('1.9 km', 'Kathaluwa station'), ('1.5 km', 'Koggala Lake'), ('A short walk', 'Kabalana Beach')]
-    stl = ''.join(f'<li><span class="km">{k}</span><span>{n}</span></li>' for k, n in stops)
+    stl = ''.join(f'<li><b>{k}</b><span>{n}</span></li>' for k, n in stops)
     am = '<span class="sep" aria-hidden="true">|</span>'.join(
         f'<span><b>{e(x["label"])}</b>{" (" + e(x["note"]) + ")" if x["note"] else ""}</span>' for x in C['amenities'])
     H.append(f'''
-<section class="sec page sage around" id="getting-here" aria-labelledby="h-around">
+<section class="sec tint sage around" id="getting-here" aria-labelledby="h-around">
   <div class="wrap">
     <div>
       <h2 id="h-around">{e(g['heading'])}</h2>
@@ -316,11 +315,11 @@ if not HERO_ONLY:
       <div class="btns"><a class="btn soft" href="{MAP}" rel="noopener">Open in Google Maps {I['arr']}</a><a class="btn soft" href="{wa("Hi Panta Rei! Could you call a tuk tuk or a taxi for me?")}">{I['wa']} Ask us for a ride</a></div>
     </div>
     <div>
-      <h3 class="vh">From the resort</h3>
-      <ul class="stops" aria-label="Distances from the resort">{stl}</ul>
+      <h3 class="small-h">From the resort</h3>
+      <ul class="stops">{stl}</ul>
     </div>
-    <div class="know" style="grid-column:1/-1">
-      <h3>Good to know</h3>
+    <div class="know">
+      <h3 class="small-h">Good to know</h3>
       <p class="line">{am}</p>
     </div>
   </div>
@@ -330,7 +329,7 @@ if not HERO_ONLY:
     H.append(f'''
 <section class="sec groups" aria-labelledby="h-groups">
   <div class="wrap">
-    <div class="lounge">{pic('lounge', 1350, 900, 'The open-air lounge under the main building: rattan pendant lamps over orange cushioned rattan chairs', sizes='(max-width:860px) 92vw, 620px')}</div>
+    <div class="gpic">{pic('group', 1200, 800, 'A class from behind on the open upper floor, hands behind heads, palms beyond the railing', sizes='(max-width:860px) 100vw, 640px')}</div>
     <div>
       <h2 id="h-groups">{e(gr['heading'])}</h2>
       {paras(gr['body'])}
@@ -339,7 +338,7 @@ if not HERO_ONLY:
   </div>
 </section>
 <section class="closing" id="book" aria-label="Book direct">
-  {pic('closing', 1920, 1080, 'Top-down view of the long pool ringed by red-tiled bungalows', sizes='100vw')}
+  {pic('closing', 1920, 1080, 'A room with its glass doors open to the lawn and the pool, a surfboard leaning outside', sizes='100vw')}
   <div class="wrap">
     <p>{e(C['closing'])}</p>
     <div class="btns"><a class="btn" href="{ENGINE}" data-book>Check dates and book direct {I['arr']}</a><a class="btn ghost" href="{WA_BOOK}"><span class="wa-c">{I['wa']}</span> WhatsApp</a></div>
@@ -385,7 +384,7 @@ H.append(f'''</main>
   <div class="dr-body">
     <div class="pick" role="group" aria-label="Choose a room">''' + ''.join(
         f'<button class="rchip" type="button" data-room="{r["key"]}" aria-pressed="false"><img src="img/card-{r["key"]}-360.webp" width="52" height="52" alt="" loading="lazy"><span><b>{e(r["label"])}</b><small>{r["size"]} · sleeps {r["sleeps"]}</small></span></button>' for r in rooms) + f'''</div>
-    <div class="room" aria-hidden="true"><div>
+    <div class="room"><div>
       <div class="gal"><div class="slides"></div><button class="rbtn prev" type="button" aria-label="Previous photo">{I['l']}</button><button class="rbtn next" type="button" aria-label="Next photo">{I['r']}</button><div class="dots"></div></div>
       <div class="rd"><h3></h3><p class="facts"></p><p class="beds"></p><p class="note"></p></div>
     </div></div>
