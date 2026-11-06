@@ -50,6 +50,12 @@
    "source_url": "https://www.pantareiresort.com/events",
    "fetched_at": "2026-11-06T09:51:36Z",
    "note": "'I'm very interested' → mailto:pantareiresort@gmail.com"
+  },
+  "explore_page_text": {
+   "value": "Things to Do on Sri Lanka’s South Coast. Discover surfing, beaches, yoga, food, and unforgettable experiences along Sri Lanka’s south coast. Stay at Panta Rei Resort and explore it all from a perfect central location. Surfing: Kabalana, Weligama and Midigama offer some of the best surf spots for all levels. Beaches: Enjoy golden sands, palm views, and sunsets across Kabalana, Mirissa and beyond. Yoga & Wellness: Daily yoga classes and wellness experiences in peaceful tropical settings. Explore & Day Trips: Visit Galle Fort, go whale watching, and explore hidden beaches. Food Scene: Enjoy local Sri Lankan flavors and vibrant cafés along the coast. … FAQ: How far is Panta Rei Resort from the beach? The resort is located just a few minutes from Kabalana Beach.",
+   "source_url": "https://www-pantareiresort-com.filesusr.com/html/4ed5e8_ca4c508ad292ab6baf04e63d7423acbf.html",
+   "fetched_at": "2026-11-06T10:13:03Z",
+   "note": "an HTML embed (Wix 'Embed code' iframe) on /explore, and the same embed loads on /restaurant on phones; owner-published but generic area copy; its five images are stock (4 Unsplash originals, 1 from image2url.com) — none harvested"
   }
  },
  "location": {
@@ -1982,7 +1988,7 @@
    "/ourrooms",
    "/restaurant",
    "/events (Activities)",
-   "/explore",
+   "/explore (iframe embed only)",
    "/contact",
    "/menus (empty)",
    "/room-information (empty)"
@@ -2008,7 +2014,7 @@
    "note": "measured 2026-11-06T10:04Z with Playwright, no throttling, 6 s after load without scrolling; bytes include the background video streaming"
   },
   "funnel": "reports/2026-11-lk-surf-01/funnel/panta-rei-resort/funnel.json (clicks_to_book 1, WhatsApp; hero CHECK AVAILABILITY → engine)",
-  "notes": "Phones get a Wix mobile layout (viewport width=320). Faults a visitor meets: (1) home page is four image tiles with one word each and 140 words of text; no room, price or location detail on the first screen; (2) all four room cards on /ourrooms open with the same Booking.com sentence 'Situated in Ahangama Central, 300 metres from Kabalana Beach…'; (3) /explore is an empty page titled 'Expolore'; /menus and /room-information are empty pages still in the sitemap; (4) the email shown as hello@pantareiresort.com links to pantareiresort@gmail.com, and on Activities to the Wix placeholder info@mysite.com; (5) no room prices anywhere; (6) the home footer link 'room' opens the in-room guest guide PDF, which publishes the guest Wi-Fi password; (7) the engine's logo link is broken ('https://pantareiresort.holidayfuture./') and its ratings are stale (4.8 / 9.1); (8) ~15.7 MB transferred on first load and nine third-party hosts (Sentry, visitor-analytics.io, image2url.com, Unsplash, Google Maps, Google Fonts); (9) stock images on About and Activities (a Buddha statue on a headland, string lights) next to their own professional photography; (10) the Surf Therapy Massage and full menus with prices exist only inside PDFs.",
+  "notes": "Phones get a Wix mobile layout (viewport width=320). Faults a visitor meets: (1) home page is four image tiles with one word each and 140 words of text; no room, price or location detail on the first screen; (2) all four room cards on /ourrooms open with the same Booking.com sentence 'Situated in Ahangama Central, 300 metres from Kabalana Beach…'; (3) /explore (title 'Expolore') holds only an embedded HTML iframe: generic 'Things to Do on Sri Lanka’s South Coast' copy with an FAQ and five stock photos loaded at full original size from images.unsplash.com and image2url.com; the same iframe also loads on /restaurant on phones; its text is not part of the page for search engines; /menus and /room-information are empty pages still in the sitemap; (4) the email shown as hello@pantareiresort.com links to pantareiresort@gmail.com, and on Activities to the Wix placeholder info@mysite.com; (5) no room prices anywhere; (6) the home footer link 'room' opens the in-room guest guide PDF, which publishes the guest Wi-Fi password; (7) the engine's logo link is broken ('https://pantareiresort.holidayfuture./') and its ratings are stale (4.8 / 9.1); (8) ~15.7 MB transferred on first load and nine third-party hosts (Sentry, visitor-analytics.io, image2url.com, Unsplash, Google Maps, Google Fonts); (9) stock images on About, Activities and Explore (a Buddha statue on a headland, string lights, four Unsplash beach/food photos, an image2url.com surfer) next to their own professional photography; (10) the Surf Therapy Massage and full menus with prices exist only inside PDFs.",
   "screenshot": "assets/old-site-mobile.png",
   "screenshot_desktop": "assets/old-site-desktop.png"
  },

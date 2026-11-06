@@ -1,0 +1,338 @@
+{
+ "slug": "panta-rei-resort",
+ "run_id": "2026-11-lk-surf-01",
+ "auditor_version": "0.1.3",
+ "audited_at": "2026-11-06T10:20:00Z",
+ "scope": "site",
+ "measured": {
+  "url": "https://www.pantareiresort.com/",
+  "status": 200,
+  "clicks_to_book": 1,
+  "primary_action": {
+   "class": "whatsapp",
+   "label": "Whatsapp",
+   "href": "https://api.whatsapp.com/send/?phone=94728003022&text=Hi%21+I%E2%80%99d+like+to+check+availability+for+your+resort&type=phone_number&app_absent=0"
+  },
+  "cta_above_fold": true,
+  "terminal_above_fold": false,
+  "pages_crawled": 7,
+  "broken_pages": [],
+  "funnel_json": "funnel/funnel.json"
+ },
+ "findings": [
+  {
+   "id": "F1",
+   "area": "offer",
+   "severity": "medium",
+   "title": "No room price anywhere on the site or before choosing dates",
+   "what_a_visitor_meets": "A traveller comparing places on a phone finds four room names with feature lists but no price; the only way to see one is to leave for the booking engine, pick check-in and check-out, and wait — the room pages there say 'Add dates for prices'.",
+   "evidence": [
+    {
+     "type": "url",
+     "value": "https://www.pantareiresort.com/ourrooms"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/03-engine-suite.png"
+    },
+    {
+     "type": "click_path",
+     "value": [
+      "/",
+      "CHECK AVAILABILITY",
+      "Suite Room With Private Pool",
+      "Add dates for prices"
+     ]
+    },
+    {
+     "type": "dossier",
+     "value": "dossier.json#offers_note"
+    }
+   ],
+   "playbook_ref": "§2 'What does it cost?'",
+   "fix_in_new_site": "rooms[] with size, beds, view and what is included, each with its own bookingLinks[] deep link to the engine's room page; the live price stays on the engine (site-content 'Live prices are not content')",
+   "pitch_point": true
+  },
+  {
+   "id": "F2",
+   "area": "content",
+   "severity": "medium",
+   "title": "All four room cards start with the same copied sentence",
+   "what_a_visitor_meets": "On Rooms, the Double, the Triple, the Family Villa and the private-pool suite each open with 'Situated in Ahangama Central, 300 metres from Kabalana Beach, Panta Rei resort features accommodation with a seasonal outdoor swimming pool…'; room size and bed set-up (22–50 m², king or twins, sofa bed, outdoor bath) are only on the separate engine.",
+   "evidence": [
+    {
+     "type": "url",
+     "value": "https://www.pantareiresort.com/ourrooms"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/04-ourrooms.png"
+    },
+    {
+     "type": "dossier",
+     "value": "dossier.json#room_types"
+    }
+   ],
+   "playbook_ref": "§2 'beach_lodging: rooms…'",
+   "fix_in_new_site": "rooms[].description / size / beds / features from the engine's own room texts (dossier.room_types)",
+   "pitch_point": true
+  },
+  {
+   "id": "F3",
+   "area": "contact",
+   "severity": "medium",
+   "title": "The email address on the page writes to a different inbox — on Activities to a Wix placeholder",
+   "what_a_visitor_meets": "Tapping 'hello@pantareiresort.com' in the Activities footer opens a mail to info@mysite.com; on Contact and in the footer the same visible address opens a mail to pantareiresort@gmail.com.",
+   "evidence": [
+    {
+     "type": "url",
+     "value": "https://www.pantareiresort.com/events"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/06-events-email.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/07-contact-email.png"
+    },
+    {
+     "type": "dossier",
+     "value": "dossier.json#contradictions"
+    }
+   ],
+   "playbook_ref": "§5 booking path, §6 'exact location'",
+   "fix_in_new_site": "contact.email set once (hello@pantareiresort.com, the address the business shows everywhere and on its engine) and rendered as a real mailto in the footer",
+   "pitch_point": true,
+   "notes": "which inbox the owner reads is a question for the owner; the new site uses the one shown everywhere"
+  },
+  {
+   "id": "F4",
+   "area": "content",
+   "severity": "medium",
+   "title": "The first screen does not say what or where Panta Rei is",
+   "what_a_visitor_meets": "On a phone the first screen is a photo, the logo, 'CHECK AVAILABILITY · Best price when booking direct' and WhatsApp/Instagram icons; 'boutique resort', 'Kabalana' or '16 bungalows' appear only after scrolling, and the home page carries about 140 words in all.",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/01-home-fold.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/landing-mobile.png"
+    },
+    {
+     "type": "url",
+     "value": "https://www.pantareiresort.com/"
+    }
+   ],
+   "playbook_ref": "§3 first screen, §2 'What is this and where?'",
+   "fix_in_new_site": "hero tagline + a what/where line (copyBlocks slot hero) over the business's own aerial film (heroVideo)",
+   "pitch_point": true
+  },
+  {
+   "id": "F5",
+   "area": "trust",
+   "severity": "medium",
+   "title": "The ratings the hotel has earned are not shown on its own site",
+   "what_a_visitor_meets": "Google shows 4.7 from 213 reviews and Booking.com 9.2 from 468, but the site shows one unsourced testimonial on the restaurant page and no rating; the engine shows '4.8/5 on Google · 9.1/10 on Booking.com', which no longer match.",
+   "evidence": [
+    {
+     "type": "url",
+     "value": "https://www.pantareiresort.com/restaurant"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/02-engine-home.png"
+    },
+    {
+     "type": "dossier",
+     "value": "dossier.json#reviews"
+    }
+   ],
+   "playbook_ref": "§6 trust signals",
+   "fix_in_new_site": "ratings[] (Google 4.7/213, Booking.com 9.2/468 with capture date) and testimonials[] quoted verbatim with source",
+   "pitch_point": true
+  },
+  {
+   "id": "F6",
+   "area": "offer",
+   "severity": "medium",
+   "title": "Menus, class prices and the surfers' massage live only inside PDFs",
+   "what_a_visitor_meets": "The breakfast and all-day menus with prices, the yoga timetable with its 2,500/3,000/3,500 LKR prices, and the 'Surf Therapy Massage — full recovery after active surfing' are PDFs; the massage is only in an in-house guest booklet reached from a footer link labelled 'room'.",
+   "evidence": [
+    {
+     "type": "url",
+     "value": "https://www.pantareiresort.com/_files/ugd/89c528_2938814660ac49abab25d22799fba94c.pdf"
+    },
+    {
+     "type": "url",
+     "value": "https://www.pantareiresort.com/_files/ugd/89c528_2cd9bc960fa848c18229699f785b0152.pdf"
+    },
+    {
+     "type": "url",
+     "value": "https://www.pantareiresort.com/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/08-restaurant.png"
+    }
+   ],
+   "playbook_ref": "§2 'What's included?', §4 core content in HTML",
+   "fix_in_new_site": "amenities[] (restaurant with hours, fitness club with schedule, massage) and priceList[] rows for the fitness classes, day pass and massages, as text on the page",
+   "pitch_point": true
+  },
+  {
+   "id": "F7",
+   "area": "content",
+   "severity": "medium",
+   "title": "Explore shows generic area copy with stock photos — and the same block appears on the restaurant page on phones",
+   "what_a_visitor_meets": "Explore holds an embedded block 'Things to Do on Sri Lanka's South Coast' with five stock photos and an FAQ; on a phone the same block also loads at the top of Restaurant, so a visitor looking for the menu first reads about whale watching.",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/05-explore.png"
+    },
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/08-restaurant.png"
+    },
+    {
+     "type": "url",
+     "value": "https://www-pantareiresort-com.filesusr.com/html/4ed5e8_ca4c508ad292ab6baf04e63d7423acbf.html"
+    }
+   ],
+   "playbook_ref": "§3 content hierarchy, §6 real photos",
+   "fix_in_new_site": "copyBlocks for the area only where the dossier carries it; photos[] from the business's own set; no embedded HTML blocks",
+   "pitch_point": false
+  },
+  {
+   "id": "F8",
+   "area": "mobile",
+   "severity": "medium",
+   "title": "About 15.7 MB arrives before the visitor scrolls, from nine outside hosts",
+   "what_a_visitor_meets": "Opening the home page on a phone transfers about 15.7 MB in the first six seconds (the background video and full-size stock photos among it) and contacts nine outside hosts, including error tracking and visitor analytics — heavy on a local SIM.",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/landing-fold.png"
+    },
+    {
+     "type": "dossier",
+     "value": "dossier.json#existing_site.first_load"
+    }
+   ],
+   "playbook_ref": "§4 performance budget",
+   "fix_in_new_site": "playbook §4 budget: poster first, video after first paint at ≤ 2 MB mobile, zero third-party requests on load",
+   "pitch_point": true,
+   "notes": "unthrottled Playwright measurement 2026-11-06T10:04Z; not a lab LCP"
+  },
+  {
+   "id": "F9",
+   "area": "content",
+   "severity": "low",
+   "title": "A footer link labelled 'room' opens the in-house guest booklet",
+   "what_a_visitor_meets": "The home footer link 'room' opens an 8-page PDF meant for guests already staying (house rules, quiet hours, emergency contacts and the guest Wi-Fi details) rather than anything about the rooms.",
+   "evidence": [
+    {
+     "type": "url",
+     "value": "https://www.pantareiresort.com/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf"
+    },
+    {
+     "type": "click_path",
+     "value": [
+      "/",
+      "room"
+     ]
+    }
+   ],
+   "playbook_ref": "§6",
+   "fix_in_new_site": "nothing linked from the public site that is meant for in-house guests; the useful parts (breakfast included, check-out, transport help) become stayInfo",
+   "pitch_point": false,
+   "notes": "tell the owner privately: the guest Wi-Fi password is public in that PDF; not a pitch line"
+  },
+  {
+   "id": "F10",
+   "area": "offsite",
+   "severity": "low",
+   "title": "Facebook gives a different phone and email from the site and Google",
+   "what_a_visitor_meets": "A visitor who finds the Facebook page sees +94 74 209 5135 and pantareiresort@gmail.com, while the site and Google say +94 72 800 3022 and hello@pantareiresort.com.",
+   "evidence": [
+    {
+     "type": "url",
+     "value": "https://www.facebook.com/profile.php?id=100093054286482"
+    },
+    {
+     "type": "dossier",
+     "value": "dossier.json#contact"
+    }
+   ],
+   "playbook_ref": "§6",
+   "fix_in_new_site": "the new site shows one contact set (Google's) and links the socials",
+   "pitch_point": false
+  },
+  {
+   "id": "F11",
+   "area": "offsite",
+   "severity": "low",
+   "title": "The booking engine's logo link is broken and its ratings are out of date",
+   "what_a_visitor_meets": "On the engine, the logo points to 'https://pantareiresort.holidayfuture./' (no domain ending), so there is no way back to the hotel's site from it; its rating line is behind the live scores.",
+   "evidence": [
+    {
+     "type": "screenshot",
+     "value": "funnel/walk/02-engine-home.png"
+    },
+    {
+     "type": "url",
+     "value": "https://pantareiresort.holidayfuture.com/"
+    }
+   ],
+   "playbook_ref": "§5",
+   "fix_in_new_site": "bookingLinks[] deep links to each room page so the visitor arrives where the room is, not on the engine home",
+   "pitch_point": false
+  }
+ ],
+ "recommended": {
+  "primary_action": "engine",
+  "primary_label": "Check dates and book direct",
+  "secondary_actions": [
+   "whatsapp",
+   "tel"
+  ],
+  "clicks_to_book": 2,
+  "above_fold": [
+   "what_where",
+   "price",
+   "included",
+   "trust",
+   "primary_action"
+  ],
+  "offer_framing": "four room types by size and what makes each different (balcony over the pool, outdoor bath, private plunge pool), breakfast included, then the link to live dates on the hotel's own engine; restaurant, fitness club and massage as what is included or nearby on site",
+  "closing_intent": "send the reader to live dates on the direct engine, with WhatsApp for questions",
+  "off_site": [
+   {
+    "channel": "facebook",
+    "finding": "F10",
+    "advice": "use the same phone and email as the Google listing"
+   },
+   {
+    "channel": "booking_engine",
+    "finding": "F11",
+    "advice": "fix the engine's logo link and refresh its rating line"
+   },
+   {
+    "channel": "own_site_files",
+    "finding": "F9",
+    "advice": "take the in-house guest booklet off the public site"
+   }
+  ]
+ },
+ "built_site_gaps": [],
+ "not_measurable": [
+  "room prices on the engine — the calendar did not respond to automation; prices appear only for chosen dates",
+  "conversion and reply time — no analytics, no owner contact in test mode",
+  "TripAdvisor listing — 403 bot wall",
+  "throttled LCP — measured unthrottled only"
+ ],
+ "notes": "Primary action: dossier.booking.path is 'engine' (the hotel's own direct engine, hero CTA on every page, 'Best price when booking direct'); WhatsApp is published with a prefilled message and is secondary. Playbook §5 puts WhatsApp first where it exists; the human may flip it at the concept stage. Tool note: funnel.mjs classes the holidayfuture.com link as book_link and the TripAdvisor icon as 'engine' — the measured clicks_to_book 1 is the WhatsApp icon."
+}

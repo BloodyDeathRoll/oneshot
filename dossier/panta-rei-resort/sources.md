@@ -9,7 +9,8 @@ Harvester 0.5.0, run 2026-11-lk-surf-01, 2026-11-06 09:51–10:10 UTC. Public we
 | …/ourrooms | 09:51 | 4 room names + feature lists, 11 room photos | prices; descriptions are one repeated Booking.com sentence |
 | …/restaurant | 09:51 | breakfast/lunch/dinner hours, menu text, one testimonial (Alba R), 4 photos, links to the menu PDFs | |
 | …/events (Activities) | 09:51 | Panta Fitness Club, groups & retreats, Activities background video (vid-003), 2 photos (+1 stock background), schedule PDF | |
-| …/explore, …/menus, …/room-information | 09:51 | nothing: empty pages (in sitemap) | |
+| …/menus, …/room-information | 09:51 | nothing: empty pages (in sitemap) | |
+| …/explore → iframe https://www-pantareiresort-com.filesusr.com/html/4ed5e8_ca4c508ad292ab6baf04e63d7423acbf.html | 10:13 | generic 'Things to Do on Sri Lanka’s South Coast' copy + FAQ ('just a few minutes from Kabalana Beach'); the same embed loads on /restaurant on phones | its 5 images are stock (Unsplash ×4, image2url.com ×1): not harvested. First pass (09:51) read only the page's own text and wrongly called /explore empty |
 | …/contact | 09:51 | address, phone, emails (link → gmail), "surf background" image | |
 | …/sitemap.xml, …/pages-sitemap.xml | 09:41 | 8 pages, lastmod 2026-10-29 | |
 | …/_files/ugd/4ed5e8_62b16ead32284163b9888499e1c39ca7.pdf (guest guide, linked as "room" on the home page) | 09:52 | house rules, quiet hours, generator, laundry, breakfast 8:30–11:30, transport, emergency contact, sister hotel The Nuga House, local guide, Surf Therapy / Revitalizing massage prices | (also contains the guest Wi-Fi password: deliberately not recorded) |
