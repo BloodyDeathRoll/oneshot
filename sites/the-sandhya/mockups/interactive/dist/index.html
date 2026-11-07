@@ -170,8 +170,7 @@ p:last-child{margin-bottom:0}
 .slide img{width:100%;height:100%;object-fit:cover;user-select:none}
 .js .gal-track{cursor:grab}
 .dots{display:flex;justify-content:center;gap:0;min-height:44px}
-.dots button{display:flex;align-items:center;justify-content:center;width:44px;height:44px;margin:0 -15px;padding:0;border:0;background:none;cursor:pointer;transition:margin .3s var(--ease)}
-.dots .on{margin:0 -7px}
+.dots button{display:flex;flex:0 1 44px;align-items:center;justify-content:center;min-width:0;height:44px;padding:0;border:0;background:none;cursor:pointer}
 .dots i{display:block;width:8px;height:8px;border-radius:8px;background:rgba(18,26,34,.26);transition:width .3s var(--ease),background-color .2s var(--ease)}
 .dots .on i{width:24px;background:var(--ink)}
 
@@ -195,7 +194,7 @@ p:last-child{margin-bottom:0}
 .gal.row{margin-top:40px}
 .gal.row .gal-track{gap:12px;padding-inline:calc(var(--gut) + 8px);scroll-padding-inline:calc(var(--gut) + 8px);border-radius:0;scroll-snap-type:x proximity}
 .gal.row .slide{flex:0 0 clamp(240px,27vw,400px);aspect-ratio:1;border-radius:16px;overflow:hidden}
-.gal.row .dots{justify-content:flex-start;padding-left:calc(var(--gut) + 15px)}
+.gal.row .dots{justify-content:flex-start;padding-left:calc(var(--gut) + 8px)}
 
 /* Casual Luxe */
 .luxe{padding-bottom:var(--sec)}
@@ -309,6 +308,11 @@ details.house[open]::details-content{height:auto}
   .kab-map{grid-column:5/9;grid-row:3}
   .kab-tall{grid-row:2/4}
 }
+/* Four short tiles: the scrim is measured from the text, not the tile, so it follows a name that wraps upward. */
+@media (min-width:768px) and (max-width:1100px){
+  .tile::after{content:none}
+  .tag::before{content:"";position:absolute;z-index:-1;inset:-36px -240px -24px -12px;background:linear-gradient(rgba(12,18,24,0),rgba(12,18,24,.6) 36px,rgba(12,18,24,.66));pointer-events:none}
+}
 @media (max-width:767px){
   .title{font-size:44px;margin-bottom:12px}
   .title.small{font-size:38px}
@@ -347,7 +351,7 @@ details.house[open]::details-content{height:auto}
   .gal.row{order:3;margin:6px 0 18px}
   .gal.row .gal-track{gap:10px;padding-inline:calc(var(--gut) - 4px);scroll-padding-inline:calc(var(--gut) - 4px)}
   .gal.row .slide{flex-basis:72vw}
-  .gal.row .dots{padding-left:calc(var(--gut) + 3px)}
+  .gal.row .dots{padding-left:calc(var(--gut) - 4px)}
   .luxe-grid{display:block}
   .show{position:static;margin-top:26px}
   .big{margin:52px 0 40px}
@@ -886,9 +890,9 @@ details.house[open]::details-content{height:auto}
   // Galleries: dots that follow, drag with momentum for a mouse, arrow keys.
   function Gal(g){
     if(g._on) return; g._on = true;
-    var t = $('.gal-track',g), slides = $$('.slide',g), box = $('.dots',g), dots = [], cur = -1;
+    var t = $('.gal-track',g), slides = $$('.slide',g), box = $('.dots',g), dots = [], cur = -1, want = -1;
     function left(i){ return slides[i].offsetLeft-slides[0].offsetLeft; }
-    function go(i){ i = Math.max(0,Math.min(slides.length-1,i)); t.scrollTo({left:left(i),behavior:reduce?'auto':'smooth'}); }
+    function go(i){ i = Math.max(0,Math.min(slides.length-1,i)); want = i; t.scrollTo({left:left(i),behavior:reduce?'auto':'smooth'}); mark(); }
     slides.forEach(function(s,i){
       var b = document.createElement('button'); b.type = 'button'; b.tabIndex = -1; b.innerHTML = '<i></i>';
       b.addEventListener('click', function(){ go(i); }); box.appendChild(b); dots.push(b);
@@ -897,10 +901,12 @@ details.house[open]::details-content{height:auto}
       if(!t.clientWidth) return;
       var x = t.scrollLeft, best = 0, d = 1e9;
       slides.forEach(function(s,i){ var q = Math.abs(left(i)-x); if(q<d){d=q;best=i;} });
-      if(t.scrollLeft+t.clientWidth >= t.scrollWidth-2) best = slides.length-1;
+      // In a row several photographs rest at the end of the scroll: the one asked for keeps its dot.
+      if(t.scrollLeft+t.clientWidth >= t.scrollWidth-2) best = want<0 ? slides.length-1 : want;
       if(best!==cur){ if(dots[cur]) dots[cur].classList.remove('on'); dots[best].classList.add('on'); cur = best; }
     }
     t.addEventListener('scroll', function(){ requestAnimationFrame(mark); }, {passive:true}); mark(); g._mark = mark;
+    ['pointerdown','wheel'].forEach(function(n){ t.addEventListener(n, function(){ want = -1; }, {passive:true}); });
     t.addEventListener('keydown', function(e){
       if(e.key==='ArrowRight'){ e.preventDefault(); go(cur+1); }
       if(e.key==='ArrowLeft'){ e.preventDefault(); go(cur-1); }
