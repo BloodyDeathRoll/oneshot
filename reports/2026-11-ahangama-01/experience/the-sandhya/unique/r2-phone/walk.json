@@ -1,0 +1,612 @@
+{
+ "variant": "unique",
+ "mode": "phone",
+ "timeline": [
+  {
+   "at": 500,
+   "actual": 569,
+   "bytes": 3734,
+   "h1": "An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka.",
+   "link": "Check rooms and live dates",
+   "linkRect": [
+    20,
+    650,
+    350,
+    52
+   ],
+   "linkTopmost": true,
+   "imgs": [
+    {
+     "src": "logo-white.webp",
+     "done": true
+    },
+    {
+     "src": "hour-noon-phone.webp",
+     "done": false
+    },
+    {
+     "src": "img-153-sea-800.webp",
+     "done": false
+    }
+   ],
+   "canvas": [],
+   "fonts": "loading"
+  },
+  {
+   "at": 1500,
+   "actual": 1527,
+   "bytes": 155571,
+   "h1": "An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka.",
+   "link": "Check rooms and live dates",
+   "linkRect": [
+    20,
+    650,
+    350,
+    52
+   ],
+   "linkTopmost": true,
+   "imgs": [
+    {
+     "src": "logo-white.webp",
+     "done": true
+    },
+    {
+     "src": "hour-noon-phone.webp",
+     "done": false
+    },
+    {
+     "src": "img-153-sea-800.webp",
+     "done": true
+    }
+   ],
+   "canvas": [
+    {
+     "w": 300,
+     "h": 150,
+     "vis": "0/visible/block"
+    }
+   ],
+   "fonts": "loading"
+  },
+  {
+   "at": 3000,
+   "actual": 3027,
+   "bytes": 331602,
+   "h1": "An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka.",
+   "link": "Check rooms and live dates",
+   "linkRect": [
+    20,
+    650,
+    350,
+    52
+   ],
+   "linkTopmost": true,
+   "imgs": [
+    {
+     "src": "logo-white.webp",
+     "done": true
+    },
+    {
+     "src": "hour-noon-phone.webp",
+     "done": true
+    },
+    {
+     "src": "img-153-sea-800.webp",
+     "done": true
+    }
+   ],
+   "canvas": [
+    {
+     "w": 300,
+     "h": 150,
+     "vis": "0/visible/block"
+    }
+   ],
+   "fonts": "loaded"
+  },
+  {
+   "at": 6000,
+   "actual": 6013,
+   "bytes": 331602,
+   "h1": "An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, Sri Lanka.",
+   "link": "Check rooms and live dates",
+   "linkRect": [
+    20,
+    650,
+    350,
+    52
+   ],
+   "linkTopmost": true,
+   "imgs": [
+    {
+     "src": "logo-white.webp",
+     "done": true
+    },
+    {
+     "src": "hour-noon-phone.webp",
+     "done": true
+    },
+    {
+     "src": "img-153-sea-800.webp",
+     "done": true
+    }
+   ],
+   "canvas": [
+    {
+     "w": 300,
+     "h": 150,
+     "vis": "0/visible/block"
+    }
+   ],
+   "fonts": "loaded"
+  }
+ ],
+ "scroll": [
+  {
+   "i": 0,
+   "y": 0,
+   "book": [
+    "Check rooms and live dates"
+   ],
+   "imgs": 3,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 10587,
+   "bytes": 331602
+  },
+  {
+   "i": 1,
+   "y": 608,
+   "book": [
+    "Check rooms and live dates"
+   ],
+   "imgs": 6,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 11917,
+   "bytes": 544871
+  },
+  {
+   "i": 2,
+   "y": 1216,
+   "book": [
+    "Studio King: check live dates",
+    "Studio Twin: check live dates"
+   ],
+   "imgs": 10,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 13238,
+   "bytes": 652686
+  },
+  {
+   "i": 3,
+   "y": 1824,
+   "book": [
+    "Studio Twin: check live dates",
+    "Studio+ King: check live dates",
+    "Studio+ King: check live dates"
+   ],
+   "imgs": 18,
+   "unfinished": 7,
+   "ground": "rgb(242, 246, 246)",
+   "t": 14584,
+   "bytes": 771717
+  },
+  {
+   "i": 4,
+   "y": 2432,
+   "book": [
+    "Studio+ King: check live dates",
+    "Director’s Suite: check live dates"
+   ],
+   "imgs": 6,
+   "unfinished": 1,
+   "ground": "rgb(242, 246, 246)",
+   "t": 15920,
+   "bytes": 1072949
+  },
+  {
+   "i": 5,
+   "y": 3040,
+   "book": [
+    "Director’s Suite: check live dates",
+    "Director’s Suite: check live dates"
+   ],
+   "imgs": 6,
+   "unfinished": 1,
+   "ground": "rgb(242, 246, 246)",
+   "t": 17322,
+   "bytes": 1116622
+  },
+  {
+   "i": 6,
+   "y": 3648,
+   "book": [
+    "Check rooms and live dates"
+   ],
+   "imgs": 1,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 18656,
+   "bytes": 1271786
+  },
+  {
+   "i": 7,
+   "y": 4256,
+   "book": [
+    "Check rooms and live dates"
+   ],
+   "imgs": 1,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 19999,
+   "bytes": 1271786
+  },
+  {
+   "i": 8,
+   "y": 4864,
+   "book": [
+    "Check rooms and live dates"
+   ],
+   "imgs": 1,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 21330,
+   "bytes": 1302861
+  },
+  {
+   "i": 9,
+   "y": 5472,
+   "book": [
+    "Check rooms and live dates"
+   ],
+   "imgs": 3,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 22669,
+   "bytes": 1302861
+  },
+  {
+   "i": 10,
+   "y": 6080,
+   "book": [
+    "Check rooms and live dates"
+   ],
+   "imgs": 3,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 23986,
+   "bytes": 1454656
+  },
+  {
+   "i": 11,
+   "y": 6688,
+   "book": [
+    "Check rooms and live dates"
+   ],
+   "imgs": 2,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 25356,
+   "bytes": 1480973
+  },
+  {
+   "i": 12,
+   "y": 7296,
+   "book": [
+    "Check rooms and live dates"
+   ],
+   "imgs": 1,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 26716,
+   "bytes": 1539050
+  },
+  {
+   "i": 13,
+   "y": 7904,
+   "book": [
+    "Check rooms and live dates"
+   ],
+   "imgs": 2,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 28047,
+   "bytes": 1539050
+  },
+  {
+   "i": 14,
+   "y": 8512,
+   "book": [
+    "Check rooms and live dates"
+   ],
+   "imgs": 0,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 29366,
+   "bytes": 1539050
+  },
+  {
+   "i": 15,
+   "y": 9120,
+   "book": [
+    "Check rooms and live dates"
+   ],
+   "imgs": 2,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 30685,
+   "bytes": 1627025
+  },
+  {
+   "i": 16,
+   "y": 9728,
+   "book": [
+    "Check rooms and live dates"
+   ],
+   "imgs": 3,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 32023,
+   "bytes": 1627025
+  },
+  {
+   "i": 17,
+   "y": 10336,
+   "book": [
+    "Check rooms and live dates"
+   ],
+   "imgs": 1,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 33381,
+   "bytes": 1644661
+  },
+  {
+   "i": 18,
+   "y": 10944,
+   "book": [
+    "Check rooms and live dates"
+   ],
+   "imgs": 1,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 34701,
+   "bytes": 1744764
+  },
+  {
+   "i": 19,
+   "y": 11552,
+   "book": [
+    "Check rooms and live dates"
+   ],
+   "imgs": 1,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 36029,
+   "bytes": 1744764
+  },
+  {
+   "i": 20,
+   "y": 12160,
+   "book": [
+    "Check rooms and live dates"
+   ],
+   "imgs": 2,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 37552,
+   "bytes": 1744764
+  },
+  {
+   "i": 21,
+   "y": 12768,
+   "book": [
+    "Check rooms and live dates"
+   ],
+   "imgs": 2,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 39411,
+   "bytes": 1744764
+  },
+  {
+   "i": 22,
+   "y": 13376,
+   "book": [
+    "Check rooms and live dates"
+   ],
+   "imgs": 2,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 41023,
+   "bytes": 1744764
+  },
+  {
+   "i": 23,
+   "y": 13984,
+   "book": [
+    "Check rooms and live dates"
+   ],
+   "imgs": 1,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 42364,
+   "bytes": 1744764
+  },
+  {
+   "i": 24,
+   "y": 14592,
+   "book": [
+    "Check rooms and live dates",
+    "Check rooms and live dates"
+   ],
+   "imgs": 2,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 43695,
+   "bytes": 1744764
+  },
+  {
+   "i": 25,
+   "y": 14945,
+   "book": [
+    "Check rooms and live dates",
+    "Check rooms and live dates"
+   ],
+   "imgs": 1,
+   "unfinished": 0,
+   "ground": "rgb(242, 246, 246)",
+   "t": 45006,
+   "bytes": 1744764
+  }
+ ],
+ "settled": {
+  "t": 10047,
+  "bytes": 331602
+ },
+ "perf": {
+  "lcp": 1884,
+  "cls": 0,
+  "lcpEl": "IMG:hour-noon-phone.webp"
+ },
+ "structure": {
+  "H": 15864,
+  "heads": [
+   {
+    "tag": "H1",
+    "t": "An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, ",
+    "y": 553
+   },
+   {
+    "tag": "H2",
+    "t": "The rooms",
+    "y": 900
+   },
+   {
+    "tag": "H3",
+    "t": "Studio King",
+    "y": 1393
+   },
+   {
+    "tag": "H3",
+    "t": "Studio Twin",
+    "y": 1907
+   },
+   {
+    "tag": "H3",
+    "t": "Studio+ King",
+    "y": 2431
+   },
+   {
+    "tag": "H3",
+    "t": "Director’s Suite",
+    "y": 3185
+   },
+   {
+    "tag": "H2",
+    "t": "Pause, take a deep breath & exhale. You are home.",
+    "y": 4507
+   },
+   {
+    "tag": "H2",
+    "t": "The Dining Room",
+    "y": 5197
+   },
+   {
+    "tag": "H2",
+    "t": "Casual Luxe",
+    "y": 7690
+   },
+   {
+    "tag": "H2",
+    "t": "Kabalana and around",
+    "y": 10282
+   },
+   {
+    "tag": "H2",
+    "t": "Exclusive Use",
+    "y": 11091
+   },
+   {
+    "tag": "H3",
+    "t": "Looking after the place",
+    "y": 11683
+   },
+   {
+    "tag": "H2",
+    "t": "Why Sandhya",
+    "y": 13980
+   },
+   {
+    "tag": "H2",
+    "t": "An adults-only beachfront boutique hotel on Kabalana Beach, Ahangama, ",
+    "y": 14653
+   }
+  ],
+  "links": [
+   {
+    "t": "Check rooms and live dates",
+    "h": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+    "y": 650,
+    "fixed": ""
+   },
+   {
+    "t": "Check rooms and live dates",
+    "h": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+    "y": 0,
+    "fixed": "sticky"
+   },
+   {
+    "t": "Studio King: check live dates",
+    "h": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53570",
+    "y": 1515,
+    "fixed": ""
+   },
+   {
+    "t": "Studio Twin: check live dates",
+    "h": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53586",
+    "y": 2029,
+    "fixed": ""
+   },
+   {
+    "t": "Studio+ King: check live dates",
+    "h": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53587",
+    "y": 2553,
+    "fixed": ""
+   },
+   {
+    "t": "Director’s Suite: check live dates",
+    "h": "https://hotels.cloudbeds.com/reservation/WMvA6V?rid=53603",
+    "y": 3330,
+    "fixed": ""
+   },
+   {
+    "t": "Check rooms and live dates",
+    "h": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+    "y": 15074,
+    "fixed": ""
+   },
+   {
+    "t": "",
+    "h": "https://hotels.cloudbeds.com/reservation/WMvA6V",
+    "y": 930,
+    "fixed": "sticky"
+   }
+  ],
+  "overflowX": 0
+ },
+ "total": {
+  "t": 45007,
+  "bytes": 1744764,
+  "reqs": 47,
+  "hosts": [
+   "fonts.googleapis.com",
+   "127.0.0.1:8773",
+   "fonts.gstatic.com"
+  ]
+ },
+ "consoleErrs": [],
+ "engine": []
+}

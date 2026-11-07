@@ -199,3 +199,139 @@ Slow 4G and 4x CPU, phone 390 x 844, one run.
 - **Tools not run:** the `design-taste-frontend` inspector, `/impeccable`, `/emil-design-eng`, `/design-motion-principles`, `/review-animations`. The Playwright MCP server failed to connect, so I used the Playwright library directly.
 - **Gold pages:** I read `references.md`, `gold/README.md` and the Global Surf notes, but did not render the gold pages this round. The comparison that counts here is the current site, which was walked.
 - **Facts, copy and accessibility** are the critic's and were not audited. `reports/` frames are scratch and were not committed.
+
+---
+
+# Round 2: interactive and unique only
+
+experience-critic 0.2.0 · 2026-11-07 · commit `2351ac2`. Calm passed round 1 and was not re-scored. Written without reading the other reviewers' round 2 sections. I walked what is on the page now and tested the designers' claims rather than assuming them.
+
+Frames: `experience/the-sandhya/<interactive|unique>/r2-phone`, `r2-laptop`, `r2-motion`, `r2-fallback`. Paths below are relative to `experience/the-sandhya/`.
+
+## Result
+
+| Page | Round 1 | Round 2 | Result | Better than current? | Taps to engine, first screen | From a room |
+|---|---|---|---|---|---|---|
+| interactive | 7 | **8** | pass on this dimension, thin on motion | yes | 1 | 2 (tile, then room button) |
+| unique | 7 | **7** | **fail**, held there by the first screen | yes overall; **no** on first-screen mood | 1 | 1 (panel button, or the bar) |
+
+**Ranking of these two:** interactive, then unique. Unique has the better end of page. Interactive has the better start and the better room choice.
+
+The date picker departure from round 1 is unchanged on both pages. The same warning applies: if "the booking journey must feel like part of the site" is binding, neither reaches 8 as built. Whether the engine honours `?rid=` or dates is still unknown.
+
+The current site was not re-walked. The comparison uses the round 1 frames in `current/`.
+
+## Plain re-timing
+
+Slow 4G, 4x CPU, phone, three cold loads per page, font host up, tap by coordinates at about 1 s, engine request intercepted.
+
+| Page | Link in view and on top | Tap made at | Tap to engine request |
+|---|---|---|---|
+| interactive | 323 to 324 ms | 1,013 to 1,023 ms | 1 to 4 ms |
+| unique | 377 to 387 ms | 1,010 to 1,107 ms | 0 to 1 ms |
+
+The long tap timings from round 1 did not recur. These numbers are headless and show when the tap reached the intercept, not how fast a phone feels.
+
+## interactive: score 8
+
+**Timeline** (`interactive/r2-phone/coldsheet-01.jpg`): text and button usable at 0.5 s in a fallback font, most of the photograph at 1.5 s and already in the final font, complete at 3 s. 641 KB settled, LCP 2.2 s, CLS 0.
+
+**Does a first-time visitor register the motion on a phone?** Only partly.
+- **The hold is real.** The card stays at y 772 until 186 px of scroll, then rises (`interactive/r2-motion/hold-01.jpg`).
+- **The move is small.** Read by eye from `walkin-trio.jpg`, an upright near the right of the frame shifts about 6 px by the end of the hold and about 10 px by 355 px of scroll. Lines stay straight.
+- **On a normal flick, probably not as motion.** At 700 px/s the hold lasts about a quarter of a second and the whole walk-in about half a second. It is more likely to feel like the page has some weight than like walking into a room.
+- **On a slow drag, yes.** The room can be seen coming towards you.
+- This is better than round 1, where the photograph was leaving the screen, but it is still modest. I judged it from frames and timing, not on a phone in the hand.
+
+**Are lines still bending on desktop?** I found no bending at 1440. In round 1 I saw scalloped glass, bowed uprights and bent table legs; I could not find them in the frames I inspected.
+- Inspected: pointer top left and bottom right in full, plus crops of the beam, the floor with the pointer on the CTA, and the rods (`laptop-topleft.png`, `laptop-botright.png`, `crop-beam-botright.jpg`, `crop-floor-cta.jpg`, `crop-rods-topright.jpg`).
+- The feature photograph also held at two corners (`feature-topleft.jpg`, `feature-botright.jpg`).
+- Bottom left and centre were captured but not inspected.
+
+**Is four flat planes at 0.9% still worth having?** Yes, keep it, and stop spending on it.
+- It no longer reads as a mistake and gives the room a little weight under the hand. The sofa moves about 10 to 15 px between opposite corners, by eye.
+- A visitor who does not move the pointer sees a still, and on a phone the effect is slight. It is now seasoning, not what sells the page.
+- It satisfies the main-item rule as written: WebGL on the business's best photograph. If "main item" is read as something a phone visitor must notice, this is borderline. That is the main risk to this 8.
+
+**Is the bar right now?** Yes.
+- Stepping through 0 to 1,400 px there is one engine button in view at all times, with a single 20 px step at 940 px showing none while the bar arrives. The two identical buttons from round 1 are gone.
+- No scroll frame lacked a tappable engine link, and all four rooms reached the engine with the right `rid` through the sheet.
+
+**Do rooms arrive late enough to hurt?** No. "The rooms" moved from 997 to 1,192 px, with the first tile at 1,386 px. Both ratings still come first, and the rooms title is in the second frame of the walk (`interactive/r2-phone/sheet-01.jpg`). The page grew from 14.4 to 15.5 screens.
+
+**The rest of the walk improved.**
+- The kit is a list now.
+- Food arrives after Dining's first paragraph.
+- The cyan panel is gone, replaced by a pool-water photograph.
+- The new script suits the hotel better than the pen hand.
+- Room tiles lead with the view.
+- Kabalana is still about 2.5 screens, the longest stretch with the least to look at (`sheet-03.jpg`).
+
+**Fallbacks** (`interactive/r2-fallback/`): reduced motion, no WebGL and JS off all hold, and the hero tap reached the engine in each. With JS off, every room link is live.
+
+**Why 8:** engaging, clearly better than the current site, easy to book. It has the best room choice in the set, and its round 1 faults were fixed in the frames I inspected.
+
+**Fix list**
+1. Make the walk-in easier to notice on a normal flick: try about twice the forward step, since it is a projective move and lines stay straight, and judge it on a real phone.
+2. Break Kabalana into steps with photographs between them.
+3. Tighten the phone rating lines in Guests, which wrap mid-detail in two narrow columns.
+4. Shorten the plain prose run in Casual Luxe on phones, with a photograph earlier.
+5. Add the missing transition to the footer logo, for consistency.
+
+**Keep:** the room sheet; ratings under the hero; the bar's timing; the planes with straight lines; the kit list; food after the first paragraph; the pool-water photograph.
+
+## unique: score 7
+
+**Timeline** (`unique/r2-phone/coldsheet-01.jpg`): title and button usable at 0.5 s, partial photograph at 1.5 s, complete at 3 s. 332 KB settled, LCP 1.9 s, CLS 0. It is now the lightest first load of the two.
+
+**Does the first screen still hold attention?** It holds you long enough to read and scroll, but it does not pull you in.
+- It is honest, sharp and clear: the real building, nothing to doubt (`unique/r2-motion/first-screen.jpg`).
+- At 1440 the title on real sand above a strip of real water is a pleasant composition (`unique/r2-laptop/scroll-000.jpg`).
+- On the phone it is a daylight elevation, then a title and button on a plain ground, then a sliver of water. That is close to the plain section Shahar warned against, and the idea does not arrive until about 14 screens later.
+- The water strip does its job. There is now sea on the first screen, and it invites the scroll.
+
+**Does the mood beat the current site?** No. The current first screen still has more mood. This one beats it on being real, sharp, clear about what the place is, and visible in about 3 s where the current site took about 55 s in round 1. Overall the page is clearly better. On feeling alone, at first sight, it is not.
+
+**Does the set-piece sequence read well on a phone?** Yes, and it is the best sequence in the set, with one rough join.
+- **The sweep:** it reads at once (`unique/r2-motion/piece-01.jpg`). Panes warm to amber and the hedge stays dark green. The hard sand line and black slab from round 1 are gone in these frames.
+- **The join:** the real img-027 rises as an opaque sheet with a hard top edge. For a moment two different navy skies meet in a visible line, and the camera jumps from square-on to oblique (`piece-100.jpg`, `piece-110.jpg`). It reads as a wipe to a different picture, not as the same evening arriving.
+- **The landing:** worth it. img-027 is the most desirable picture on the page (`piece-120.jpg`), and "Why Sandhya" follows straight away.
+- **The rest:** the print reaches the top of the screen exactly as the pin ends, so it never holds still under the thumb. It stays on screen for about another screen of scroll while the title rises.
+- **For the operator:** the all-dusk frame could pass for a photograph at a glance on a phone (`piece-092.jpg`), and its label reaches assistive technology only. It is on screen briefly and the page rests on a real picture, so I find it acceptable as motion. The designer's notes say the ruling is still open.
+- **The pin** is 1,182 px, 1.4 screens, about 1.7 s at a 700 px/s drag. That is short enough not to feel like a trap.
+
+**Bar label, retested with fast swipes:** fixed.
+- Nine swipes at 2,400 to 8,000 px/s, 124 samples: one distinct label at every sample, and no mismatch between label and `rid` (`unique/r2-motion/bars-sheet.jpg`).
+- A tap straight after a 6,000 px/s swipe reached the room the bar named (Studio Twin, `rid=53586`), with the label still fading in.
+- At 2,309 and 2,415 px the bar names Director's Suite while the Studio+ King heading is still on screen. The Suite photograph fills the screen there, and label and link agree, so this is not a wrong booking.
+
+**Phone length:** 15,864 px, 18.8 screens at 844 px, against the reported 18.7 (15,789 px) and 22.8 in round 1. Services is closed, and Kabalana and the guests are swipe rows. Rooms still start early, at 900 px.
+
+**Other checks.**
+- All four room links reached the engine with the right `rid`.
+- The hero button is gone before the bar arrives, but from 780 px the bar sits with a room button, and from 1,300 px with two, so up to three navy buttons can be on screen.
+- The three unloaded slides I could not clear in round 1 are explained: swiped by finger to the end of each gallery, in normal and reduced-motion modes, the photographs were there.
+
+**Fallbacks** (`unique/r2-fallback/`): reduced motion, no WebGL and JS off all hold, and the hero tap reached the engine in each. No-WebGL gets the daylight photograph, then img-027 rising over it. That version alone is a respectable page if the operator rules against the moving grade.
+
+**Why 7:** method step 5 caps a page at 7 when its first screen does not pull you in, and on the phone this one does not. **From the rooms onward I would put this page at 8.** The operator directed the plain first screen, so this is a decision to make at the pick rather than a mistake by the designer, but I am not waiving the cap on my own.
+
+**Fix list**
+1. Give the first screen a hook that ties it to the idea. If the operator allows the moving grade, let the first few pixels of scroll start the day, lighting one bay, while the rest state stays ungraded. This needs the operator's ruling.
+2. On the phone, try the title and button on the sand inside the photograph, as at 1440, rather than on a plain ground under it. Source pixels limit the crop, so test the sharpness.
+3. Soften the join: no hard top edge where the print meets the graded sky, and hold the print still for about a quarter of a screen before the pin releases.
+4. Reduce the buttons in the rooms: up to three navy buttons on one phone screen is too many of the same thing.
+5. Make the second guest quote easier to find, since it now sits behind a swipe, and trim the prose run through Casual Luxe.
+
+**Keep:** the ungraded first photograph and water strip as honest material; the sweep; ending on the real img-027; the bar that remembers; rooms first; the shorter phone page; the type pairing.
+
+## Not covered, round 2
+
+- **No real device:** headless Chromium with an emulated iPhone and synthesized touch, no WebKit or real GPU. Whether the walk-in is felt, and how smooth either WebGL effect is, were not judged on a phone. Software GL says little about frame rate, so I did not measure it this round.
+- **Engine:** intercepted and never loaded. Everything past the hand-off is unknown, including `?rid=` and dates.
+- **Motion was judged from still frames and timing,** not from watching it run. The finger-pass and flick frames in `r2-motion/` were captured but I read the timings, not the images.
+- **Inspected partly:** interactive's bottom-left and centre pointer frames were captured and not inspected. The laptop walk was checked on one contact sheet per page.
+- **Not walked:** 360 px phones, landscape, tablet, the current site this round. Fallbacks were walked on the phone only.
+- **Micro-animations:** counted as code present at 1440, not judged for feel. Interactive's footer logo and unique's logo links have no transition.
+- **Tools not run:** the taste inspector, `/impeccable`, `/emil-design-eng`, `/design-motion-principles`, `/review-animations`.
+- **Facts, copy and accessibility** are the critic's and were not audited.

@@ -231,3 +231,213 @@ For calm, at 4g: the `og:image` is a relative WebP path. No page has a canonical
 - `unique.bar-gesture.json`: the touch gesture runs.
 
 **What the screenshots showed** (scratch, not kept, 1440 and 390 px in viewport steps, all three pages at every step): no overflow or overlap seen on the contact sheets, apart from the bar, which the sheets did not catch. No WebGL black rectangle was seen. The bar crop after a fast scroll (`unique-bar-end-120.png`) showed "Director's Suite: check live dates", "Studio+ King: check live dates" and "Check rooms and live dates" printed on top of each other in white on indigo, unreadable.
+
+# Round 2, quick mode (station 4f), 2026-11-07
+
+Interactive and unique only, after the designer's rework. Build reviewed: commit `2351ac2`. Calm was not reworked or re-run, so its round 1 numbers stand (68.2 / 80, no hard fail). Tested afresh over http on port 8771; the designers' notes were treated as claims. The other reviewers' round 2 sections were not read.
+
+## Result
+
+| Variant | Dimensions 1-7 | Round 1 | Hard fails | Gates 1, 3, 7 at 6 or above | Total out of 100 |
+|---|---|---|---|---|---|
+| interactive | **66.6 / 80** | 69.2 | none | yes (9, 8, 9) | waits for dimension 8 |
+| unique | **68.5 / 80** | 57.9 | **1, by the letter: one word of alt text** | yes (8, 9, 9) | waits for dimension 8 |
+
+The one sentence the human needs, as facts:
+
+- **interactive:** every photograph dot except the last opens the next photograph instead of its own, and the white tile names fall below 4.5:1 at tablet widths (768 to 844 px), though the room sheet gave the right `rid` in every chip sequence tried.
+- **unique:** the phone bar no longer stacks at any speed tried, first load is 326 KB, and the first screen is now an ungraded photograph plus a second photograph of the sea; the sea's alt text says "reef", which the dossier does not.
+
+**The hard fail, stated plainly.** The rubric fails "a claim has no dossier entry", and hard constraint 2 says not to round one away. Unique's sea strip alt reads "clear turquoise shallows over dark reef". "reef" appears 0 times in `dossier.json`, and `gaps` lists the bottom as unknown (`location.spot.detail`). It is alt text only, the dark patches are visible in the picture, and deleting the phrase clears it. If the coordinator reads alt text describing a photograph as outside this rule, unique has no hard fail and its scores do not change.
+
+## Scorecards
+
+```
+mode: quick    round: 2    variant: interactive
+total: 66.6 / 80 (dimension 8 pending)    result: passes the critic's gates    hard_fails: []
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 9 | Copy, links and image set rechecked by script: 0 mismatches, 0 unsourced. 39 dossier images by file name, all business-owned, none from the never-used list; img-031 is new. The round 1 flags stand: Kayak via digest, Suite bed and size rulings, img-167's room not stated |
+| 2 | mobile + performance | 9 | Every budget line met (table below). LCP is the hero photograph, 2,160 to 2,184 ms in 4 runs. No overflow at 320 to 1920 px. CLS 0, scroll CLS 0 and 0 |
+| 3 | booking CTA | 8 | Hero and bar 1 tap, rooms 2 taps, all landing on the dossier URLs. **Chip switching correct throughout** (see below). `?rid=` itself unverified |
+| 4 | brand fit | 8 | As round 1: minus 1 date picker, minus 1 title on a card at lower left against `custom.md`'s centred title |
+| 5 | copy | 8 | `copy/en.json` unchanged since round 1. 30 of 30 paragraphs and 132 of 132 sentences are verbatim in the DOM, JS on and off. But Rooms ¶3 now shows as a list: the punctuation sits in 1x1 px clipped `.sep` elements, and the first letters are capitalised for display. All words stay, and the copyeditor has not seen this form. Down 1 from round 1 for that |
+| 6 | accessibility | 6 | axe 0 violations, phone and desktop. Skip link works. Sheet: Esc, focus return and trap all correct. 30 keyboard stops with a focus style, none hidden. Reduced motion clean. **Two faults a visitor would notice:** the dots and the tile contrast, both below |
+| 7 | delivery | 9 | As round 1: only localhost and the font hosts, no 4xx, no console errors. `?noguard` is still in the page, for 4g |
+
+```
+mode: quick    round: 2    variant: unique
+total: 68.5 / 80 (dimension 8 pending)    result: hard fail by the letter, as above; gates pass    hard_fails: ["claim with no dossier entry: 'dark reef' in the sea strip's alt text"]
+```
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 8 | Visible words: 0 mismatches, 0 unsourced. 39 dossier images, all business-owned. Round 1 flags stand (minus 1), and img-167 still leads Studio Twin. Minus 1 for "dark reef". **The round 1 point for the graded frames is given back,** see below |
+| 2 | mobile + performance | 9 | Every budget line met. LCP is the hero, 1,788 to 1,792 ms in 4 runs. First load 326 KB (334 in decimal KB, the designer's number). The round 1 overlap is gone. No overflow at 320 to 1920 px. Rooms 3 and 4 paint about 0.4 to 0.5 s after they enter the view on a throttled phone, with their space reserved |
+| 3 | booking CTA | 9 | Hero, bar and 4 room links land on the dossier URLs: 1 tap on a phone, 2 clicks on desktop through the panel, and the closed rows' links stay visible. Bar fixed, below. `?rid=` unverified |
+| 4 | brand fit | 8 | Minus 1 date picker. Minus 1 **sea strip against `custom.md`** ("only the header, at most one short centred title, and one short call to action"), below. `notes.md` also says the first screen no longer has a WebGL or video main item, by the operator's direction. Recorded, no deduction, and I could not confirm that direction from here |
+| 5 | copy | 8 | `copy/en.json` unchanged. 29 of 30 paragraphs verbatim and in order, JS on and off. **Kabalana's leads are verbatim and in order:** all five paragraphs found whole; only the setting changes. On a phone they are a swipe row, so 4 of 5 start off screen. The exception is Rooms ¶3, a list that drops "Each one also has" and "too, with" and joins "Spa Ceylon amenities, bathrobes and slippers". The copyeditor has not seen either form |
+| 6 | accessibility | 9 | axe phone 0 violations; desktop 1 moderate (`region`, the logo in `.top`). Round 1's list is met: `.strip` has `tabindex="0"` on all 4 with arrow keys working, 0 `<h3>` in `<button>`, `.grow` not rendered on phones, skip link first. 0 targets under 44 px. 39 stops, none hidden. Panel: Enter, Esc and focus return correct. h1 on the sand 5.74 minimum, 10.3 median |
+| 7 | delivery | 9 | As round 1. No graded still in `dist/img/` |
+
+## Unique: the items asked for
+
+**Phone bar: fixed.** One `.t` label at every 40 ms sample, in all of these:
+
+| Run | Labels at most | End state |
+|---|---|---|
+| Touch gestures at 600, 1,200, 2,400, 4,000 px/s, canvas on | 1 | correct |
+| The same four, reduced motion | 1 | correct |
+| 4,000 px/s on to the end of the page, both modes | 1 | "Check rooms and live dates", engine URL |
+| Round 1's scripted jumps, 60, 120, 200, 400 ms apart | 1 | Suite and `rid=53603` at the last room, general at page end |
+
+Two small effects remain. The label can go blank during very fast scrolling (longest 361 ms at 4,000 px/s, none under reduced motion). The shown label trails the href by up to about 120 ms. The bar also names the room most in view, so on the phone sheet "Director's Suite" sat in the bar while Studio+ King's own button was on screen above it. That was already the behaviour in round 1.
+
+**Fix list from round 1:**
+
+| Item | Result |
+|---|---|
+| Phone and email printed in the footer | Yes, phone and desktop, as plain text beside the buttons. The number prints unspaced, `+94765700007`; the other two pages use `+94 765 700 007` |
+| `tabindex` on `.strip` | Yes, 4 of 4, and axe's serious finding is gone |
+| `<h3>` out of `<button>` | Yes, 0 left |
+| Skip link | First stop, visible on focus, white on indigo. Lands on Rooms with the heading at 229 px, clear of the 84 px header. Next Tab goes to the first gallery |
+| CTA in the fold at 320x568 | Yes, bottom at 497 of 568. Also in the fold at 360x640, 390x664, 1280x640, 1366x650, 1920x1080 |
+
+**Lazy rooms: the images do arrive.**
+
+- First load on a phone fetches 4 images: hero (110 KB, bytes finish at about 1,778 ms), logo, sea and the first room's first photograph.
+- Throttled phone, 1,500 px/s: rooms 1 and 2 were painted on arrival, room 3 after 417 ms and room 4 after 484 ms. Layout did not move (scroll CLS 0.0006).
+- A direct jump to room 4 loaded it. On desktop, all 23 photographs showed when opened through the panels' dots. JS off: 23 of 23 shown.
+- Swiping slides 2 to 5 on the throttled phone found them already loaded, but that was after a pause; an immediate swipe on arrival was not tested.
+
+**The graded frames: D1 point given back.**
+
+- `dist/img/` holds no graded file: only `hour-noon`, `hour-noon-phone`, `hour-mask`, `hour-folds`. The first screen is ungraded img-152.
+- The rest state is real. At the end of the pin the frame's opacity is 0 and img-027 stands alone, on phone and desktop. Reduced motion and no-WebGL never draw the grade, with no console errors.
+- **The label reaches assistive tech only.** It is an `aria-label`; the stage has no visible text, so a sighted visitor is told nothing.
+- **"At rest" does not mean unseen.** On desktop at 84% of the pin the real print covers 40% of the frame, and the rest shows the full dusk grade at full opacity, lit bays and pink sky. It fades over 86% to 96%. On a phone the print covers 81% at 84% and all of it by 90%. A phone stopped at 60% shows a half-graded building with lit bays. A visitor can stop anywhere.
+- The point comes back because no graded picture now stands as a still or as where the page ends. **Whether the moving grade may stay is still the operator's or Shahar's ruling** (PLAN.md §9); `notes.md` says the same.
+
+**Sea strip, flagged against `custom.md`.** A second photograph (img-153) on the first screen, under the building, with no caption:
+
+| Window | Strip | Share of the view |
+|---|---|---|
+| 1440x900 | 783 to 900 px | 13% |
+| 1366x650 | 566 to 650 px | 13% |
+| 1920x1080 | 950 to 1080 px | 12% |
+| 390x844 | 768 to 844 px | 9% |
+| 390x664 | 604 to 664 px | 9% |
+| 360x640, 320x568 | not rendered | 0 |
+
+The designer reports it as a conflict for the reviewers. Scored minus 1 in dimension 4.
+
+## Interactive: the items asked for
+
+**Skip link: works.** First stop, visible on focus, white on ink. It moves focus to `#main`, and the next Tab reaches the hero's CTA.
+
+**Dots: the targets are 44 px by box only, and they are wrong.** The negative margins put each later button over the previous dot. `elementFromPoint` at a dot's centre returns the next button, for every dot but the last. Real taps and clicks at the dot's centre:
+
+| Gallery | Result |
+|---|---|
+| Room sheet, phone and desktop (5 dots) | dots 1, 2, 3, 4 opened photographs 2, 3, 4, 5; only the last was right |
+| Dining, phone (6 dots) | dots 1 to 5 opened photographs 2 to 6; only the last was right |
+
+So no dot can return to the first photograph; only a swipe or the arrow keys can. `audit-mockup` and my own target count both report 0 under 44 px, because they read boxes. The dots are `aria-hidden` with `tabindex="-1"`, so keyboard users are unaffected and use arrow keys on the track.
+
+**Room sheet after a chip switch: correct.** The sheet's label, heading, pressed chip, `rid`, link text and first image were checked after each step, on phone and desktop:
+
+- A six-chip sequence, every step right, and the real tap landed on `?rid=53586`.
+- Three chips 60 ms apart ended on the last one.
+- A chip then Esc 40 ms later, then another tile.
+- Esc then a tile 60 ms later.
+- `#room-studio-plus` opened directly.
+- Reduced motion.
+
+One leftover: a chip then an immediate Esc leaves the hidden sheet labelled for the chip's room, with no visible effect; all 4 rooms were back in place.
+
+**Tile scrim: passes at phone and desktop, fails at tablet widths.** White text over the real pixels, with the text hidden while measuring:
+
+| Width | Tile name, worst | Pixels under 4.5:1 |
+|---|---|---|
+| 320 | minimum 4.51 | 0 |
+| 390 | minimum 6.07 | 0 |
+| 600 to 740 | minimum 6.64 or better | 0 |
+| **768** | **Studio Twin: minimum 1.36, median 4.09** | **59%**; Studio King 22% |
+| 800 | Studio King: minimum 3.26 | 14% |
+| 820 | Studio King: minimum 3.28 | 11% |
+| 844 | Studio King: minimum 3.35 | 8% |
+| 900 to 1000 | minimum 4.34 to 4.69, isolated pixels | under 0.5% |
+| 1440, 1920 | minimum 6.15 or better | 0 |
+
+At 768 "2 super-single beds | Sleeps 2" wraps to two lines, which lifts "Studio Twin" to the top of the 34% scrim and onto the white bed. In the capture it is visibly hard to read. The designer's checks ran before the scrim was shortened, as `notes.md` says.
+
+**The "cream" warning: confirmed as mid-ease, not a page colour.** Settled grounds at every scroll position are `rgb(242,246,246)`, `rgb(245,237,229)` and `rgb(248,226,211)`, none in the tool's cream range. `check-design` samples 500 ms after scrolling back to the top, during a 0.6 s ease. `rgb(243,243,240)` lies on the line between the first two, and my samples of that ease passed through `rgb(243,244,242)`. This round the tool itself read `rgb(243,244,243)` and gave 0 warnings, so the warning depends on timing. One fact for the human: the settled later ground, `#F5EDE5`, is hue 30, saturation 44%, lightness 93%, which is 4 points outside the range.
+
+## Budget, mobile home page
+
+`tools/audit-mockup.mjs`, this review's own run. Files: `critic-evidence/the-sandhya-r2/<variant>.audit.json`.
+
+| Item | Target | interactive | unique |
+|---|---|---|---|
+| First-load transfer | ≤ 1.5 MB | 628 KB | 326 KB |
+| Requests | | 12 | 11 |
+| JS, gzip (all inline) | ≤ 300 KB | 6.6 KB | 9.0 KB |
+| Largest image | ≤ 300 KB | 173 KB | 110 KB |
+| Fonts | ≤ 2 families, ≤ 150 KB | 2, 44 KB | 2, 91 KB |
+| LCP | ≤ 2.5 s | 2,184 ms, photograph | 1,792 ms, photograph |
+| CLS | < 0.1 | 0 | 0 |
+| Scroll CLS, early and settled | < 0.01 | 0, 0 | 0.0006, 0.0006 |
+| Third-party hosts on load | 0 (fonts allowed at 4e) | 2, fonts | 2, fonts |
+
+Desktop first load, outside the budget: interactive 919 KB, unique 1.04 MB.
+
+**Against the current site, measured lines only:** both still beat it on first load (17.5 MB), the booking link and the content it lacks, as in round 1. The visual verdict is the other two critics'.
+
+**`check-design`:** 0 problems, 0 warnings on all three. Interactive: h1 and body Familjen Grotesk, h2 now Allura. Unique: h1 and h2 Halant, body Mukta, ground `rgb(242,246,246)`.
+
+## What the designer prompt got wrong
+
+The prompt lets "tap targets at 44 px" be proved by box size, so a fix made by overlap passes every tool while breaking the control. It should require a real tap on each control, with the result checked. Contrast checked on a photograph is only as good as the last build and the widths tried: the prompt names 1440 and 390, and interactive's fault sits between them, where a text line wraps. It should ask for a width sweep wherever text sits on a photograph, rerun after any change to the scrim. Alt text is written by designers from contact sheets and no step reads it as claims, which is how "reef" got in; the prompt should say alt text describes what is visible and asserts nothing the dossier does not. Two tool proposals follow from this round: a hit test in `audit-mockup`, and a settled wait before `check-design` samples the ground.
+
+## Fix list, smallest first
+
+**interactive** (no critic gate fails)
+1. Dimension 6: stop later dot buttons covering earlier dots, then retest with a real tap on every dot in the sheet, Dining and The house.
+2. Dimension 6: keep tile names on the scrim at 768 to 844 px, for example with a taller scrim or by not wrapping the second line, and retest by width.
+3. Dimension 5: copyeditor to see the Rooms ¶3 list.
+4. Dimension 7, at 4g: remove `?noguard`; add Open Graph tags (none today).
+
+**unique**
+1. **Dimension 1, the hard fail: delete "over dark reef" from the sea strip's alt.**
+2. Dimension 5: print the footer number spaced, as on the hotel's own site and the other two pages. (Matches the dossier either way; a readability fix.)
+3. Dimension 6: put the `.top` logo inside a landmark.
+4. Dimension 5: copyeditor to see the Rooms ¶3 list and Kabalana's leads.
+5. Dimension 4, for a ruling: keep or remove the sea strip.
+6. Dimension 1, for the operator or Shahar: whether the moving grade may stay, and if so whether sighted visitors need to be told.
+7. Dimension 7, at 4g: add Open Graph tags (none today).
+
+## Not covered
+
+- **The Cloudbeds engine.** Never loaded, so `?rid=` and dates remain unverified.
+- **Real devices.** Headless Chromium on a shared machine, with no real phone, tablet, Safari or Firefox. The tablet widths were desktop-style windows, not touch devices. How often a real flick reaches these speeds is unknown.
+- **WebGL.** Software GL only. I confirmed the canvas draws, and looked at one still each of the phone sweep and the desktop end. I could not judge the grade's motion, interactive's depth in motion, smoothness or the weak-device guards.
+- **The moving frames' light and banding** are visual questions for the other two critics.
+- **Contrast.** One example per text colour, under reduced motion, plus the full width sweep on tile names only. Tile hover state not measured.
+- **Facts.** Copy, links, image ids and room galleries were re-run by script. The round 1 table was not rebuilt row by row, because `dossier.json` and `copy/en.json` have not changed.
+- **Interactive with JS off on desktop.** `notes.md` says it has no persistent button; I tested JS off on a phone only.
+- **An immediate swipe on a room's arrival** on a throttled phone, as above. Only one Dining dot run on a phone; The house's dots share the same CSS and were not tapped one by one.
+- **Calm.** Not re-run.
+- **Earlier look-log rounds** cannot be checked, as each shoot replaces the last.
+
+## Evidence
+
+`reports/2026-11-ahangama-01/critic-evidence/the-sandhya-r2/`:
+
+- `<variant>.audit.json`: `tools/audit-mockup.mjs`, from a scratch root.
+- `<variant>.probe.json`, `<variant>.probe2.json`: the same checks as round 1. Unique's phone `rooms` entries and interactive's `tel` entry in `probe.json` are the same faults in the first test as in round 1; `probe2.json` holds the reruns.
+- `<variant>.round2.json`: bar runs, sea strip, room images, set-piece steps, skip link, copy order (unique); chip sequences, dots, tiles, ground (interactive).
+- `interactive.tiles-and-dots.json`: the width sweep and the Dining dots.
+
+**What the screenshots showed** (scratch, not kept; contact sheets at 1440 and 390 in viewport steps for interactive, 390 for unique, plus single captures): no overflow or overlap on those sheets. Unique's desktop contact sheet was shot but not opened; its desktop layout rests on the probes and single captures. At 768 px "Studio Twin" sits on a white bed above the dark of the scrim. At 84% of the desktop pin, img-027 stands in the middle with the graded dusk building visible either side.

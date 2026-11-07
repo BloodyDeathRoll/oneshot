@@ -150,3 +150,122 @@ Evidence only; the score comes from looking. Calm 5 FAIL / 6 WARN, interactive 4
 - **Phone states:** interactive's sheet and unique's panels were not opened at 390. Hover states were not judged.
 - **Global Surf gold**, the current top bar, could only be read as notes, because its media is not in this worktree.
 - **Not my lane and not checked:** facts, performance numbers, booking links, keyboard use. The designers' `notes.md` were not read. The other reviewers' reports were not opened.
+
+---
+
+# Round 2 (interactive and unique only)
+
+visual-critic 0.2.0 · 2026-11-07 · build `2351ac2`. Calm passed round 1 and is not re-scored.
+
+| Page | Score | Result | Better than the current site? |
+|---|---|---|---|
+| interactive | **8.5/10** | **pass** | yes, first screen and whole page |
+| unique | **7/10** | **fail (below 8)** | yes, first screen (narrowly) and whole page |
+
+**How this was looked at.** Fresh shoots over http on port 8772, 1440 and 390 at 2x, on software GL, in my scratch folder: `r2-interactive/`, `r2-unique/` and my walks in `r2-walk/` (cited below by file name, with what each shows). Depth was forced with `?noguard`. The current site is judged from the same dossier captures and live sheets as round 1. The designers' notes were not read.
+
+**One thing to disclose.** Running `git log` for this round showed the commit line for round 1, which carries the other reviewer's round 1 scores. I had already filed mine. I have not opened any round 2 section from another reviewer.
+
+## Interactive: round 2
+
+**Three-second note.** Desktop (`r2-interactive/desktop-00.png`): the same wow, and the panel now sits quietly in the corner like part of the page. Phone (`mobile-00.png`): tall rods, glass and pool over a docked sheet. I would keep scrolling on both.
+
+**Do straight lines hold across a pointer sweep at normal size? Yes, at every stop I took.**
+- At all four pointer corners and the centre (`i-tl.png`, `i-tr.png`, `i-bl.png`, `i-br.png`, `i-mid.png`), the mullions, soffits and rods stay straight.
+- The scallops and kinks from round 1 are gone (`i-tl-glass.png`, `i-br-glass.png`: clean frames and slab edges at both extremes).
+- Furniture legs stay straight, and the near chairs still slide against the room (`i-tl-near.png` against `i-br-near.png`: hoop chairs and table shift, nothing warps).
+- The second use on img-068 also holds (`i-feature-tl.png` against `i-feature-br.png`: frames and pool edges straight, palm and chair shift).
+- It is still clearly depth, not a filter.
+- The limit: these are resting positions, on software GL. I have not seen the motion itself.
+
+**Does Allura work as the title face? Yes.** It is elegant and readable on every title I checked, including the long two-line one (`desktop-03.png`, "Pause, take a deep breath & exhale. You are home."; `desktop-01.png`, "The rooms"; `desktop-11.png`, "Why Sandhya"; phone sheet frames 2, 5 and 14). It is a much better fit than the pen hand. It leans a little toward a wedding invitation beside this concrete architecture, but that is a taste note, not a defect.
+
+**Is the guests section still the cheapest-looking block? No.** The blue wall of text is gone: a pool-water photograph, a script title, large rating numerals and two quotes on the ground (`desktop-08.png`). It now reads as a composed section, though a quiet one. One weak detail: the bottom of the photo is a dull band of grey pool edge. The cheapest block on the page is now the "At the house" panel, about 30 check rows standing open on desktop (`desktop-03.png`, top).
+
+**Checklist**
+- **Media.** Still the strongest first image of the set. Room tiles now crop to the windows and sell the view (`desktop-01.png`). The twilight pair holds (`desktop-11.png`: low sun through the glass with blue hour overlapping).
+- **Composition.** Offset tiles, sheet and compact pace all work. The phone sheet is clean, with the action pinned at the bottom (`i-m-sheet.png`).
+- **Typography.** Allura with Familjen Grotesk is now a real pair.
+- **Colour.** Better: the saturated blue has gone, leaving sand and peach panels. Magenta on peach is fine.
+- **Polish.** The solid header holds the button, so it no longer floats (`desktop-01.png`). "Call" sits only about 12 px from the button. Tile scrims are a little heavy and grey, most of all over the bed on Studio+ King (`desktop-01.png`).
+- **Distinctiveness.** Hero and twilight are this hotel. The rounded panels remain the most template-like part.
+- **Hero and motion.** Main item from the hotel's own best photograph, one clear CTA, nothing cookie-cutter.
+
+**Score: 8.5/10, pass.** Clearly better than round 1, and by eye now the strongest page of the three, above my round 1 mark for calm (not re-scored). It stays below 9 because of the rounded-panel middle and the flat closing card.
+
+**Better than the current site?** **Yes**, first screen (`r2-interactive/desktop-00.png` against `old-site-first-screen-desktop.png`: sharp architecture and a clear action, against a soft figure and a dictionary entry) and whole page (`r2-interactive/desktop-sheet.png` against `current/desktop-sheet.png`: rooms sold in place, stronger food and twilight).
+
+**Closest reference.** The sheet follows Tandjung Sari (references #4). The hero is stronger photographically than any gold first screen I could open, and the finish is now close to Lavish Haven's.
+
+**Fix list (none blocking)**
+1. Check the depth on a real GPU with a real pointer sweep before the human sees it, because that is the one thing I could not see.
+2. Collapse "At the house" on desktop, as it already is on phone (`mobile-sheet` frame 4).
+3. Crop the guests photograph to water only, without the grey pool edge.
+4. Lighten the tile scrims and keep them only behind the words, especially on Studio+ King.
+5. Open up the header (24 px between "Call" and the button), and let the twilight prints carry the ending, with less repetition of the title in the closing card.
+
+**Keep.** img-032 under the solid header, the flat-plane depth, the corner-docked card, Allura, the window-cropped offset tiles and room sheet, the food row, the large "We are not international…" line, the rebuilt guests section, the twilight overlap on peach.
+
+## Unique: round 2
+
+**Three-second note.** Desktop (`r2-unique/desktop-00.png`): a handsome, honest picture of a long low hotel on a beach, and I believe it now. It is also a little ordinary, like a good listing photograph, with a band of unrelated water under it. Phone (`mobile-00.png`): clean and clear. I would keep scrolling, for the content and not because the first screen made me want to.
+
+**Does the first screen beat the current site?** **Yes, narrowly.** It is sharp, says what and where, and has a clear action, where the old page has a soft figure and a dictionary entry. It gives up the old page's mood and gains trust. It is far better than round 1's split, but "interesting, clean and slick" is now only clean: with the effect gone, nothing here is an idea. The light pills behind the nav on the sky also add UI clutter that appears nowhere else.
+
+**Does the img-153 strip earn its place? No.** It takes the bottom 117 px of the desktop first screen below a thin white gap (`desktop-00.png`), and it peeks at the bottom of the phone screen too (`mobile-00.png`). It does supply the one thing the façade shot lacks, the sea, but it has no horizon and no context, so it reads as a stray band of colour or a mistimed next section. It breaks `custom.md`'s "only header, title, CTA" and gains nothing that the Kabalana section does not already do far better (`r2-unique/desktop-sheet.png`). Remove it.
+
+**The set-piece: does the grade still read as a trick?** It depends on the moment.
+- **Mid-sweep, yes, plainly an effect.** A hard vertical edge in the sky around x 960, with day on the left and dusk on the right, across the sky and the sand (`u-piece-3.png`; phone `u-m-piece-1.png`, the navy wipe at the right edge). In motion this is acceptable, because it visibly announces itself.
+- **Late in the sweep, no, and that is the problem.** The grade is much better than round 1: amber in place of lemon, the mottling mostly gone at normal size, a dark green hedge, blue in the concrete (`u-piece-5.png`, `desktop-17.png`).
+- **Up close it still gives itself away.** The panes are flat, parasols and chairs turn to black cut-outs, the palms are posterised, and no light falls on the hedge or sand (`u-grade-2x.png`).
+
+**Could a visitor take it for a photograph of the building at dusk? Yes.** At normal size, stopped around `u-piece-5.png` just before the print rises, I think many would. And the picture is wrong about the building: the real rooms show white curtains with yellow cove light against blue concrete (`u-piece-8.png`), not uniform amber.
+
+**The label is not visible.** The "effect, not a photograph" wording is an `aria-label` on the frame. No caption appears in any frame I shot, so only screen-reader users get it. A sighted visitor gets no notice at all.
+
+**The rest on img-027 is the best moment on the page.** A real blue-hour photograph held on peach (`u-piece-8.png`). The transition is less good: mid-rise it sits over the graded wings like a collage, inviting direct comparison (`u-piece-6.png`). On the phone it arrives as a hard horizontal cut across the screen that looks like a rendering fault (`u-m-piece-3.png`).
+
+**For the operator's ruling: I recommend no grade stays.**
+- A visitor could take it for the building at dusk, with no visible notice.
+- PLAN.md (line 392) says "Generated imagery: still no." The glow in those curtains is in no photograph. Whether a re-grade counts as generated is your ruling, but it is a picture of an hour nobody photographed, shown to people deciding whether to pay top-of-town rates.
+- The real pictures are better, and the page proves it seconds later.
+- **What I would do instead:** a pinned sequence of the hotel's own photographs at their real hours: img-152 day, img-023 low sun (cropped clear of the surfboards), img-027 blue hour, img-154 night, joined by a bay-width WebGL dissolve, with the eight dots kept. Those late pictures are 1200 to 1280 px wide, so they must sit as prints at or under native size, as img-027 does now. That keeps a main item and invents nothing. It may be less spectacular, and I have not seen it built.
+- **If the grade is kept anyway:** stop the sweep before all the bays are lit, so it is only ever seen as an obvious wipe, cut to the print from there, and add visible wording. `custom.md`'s surface rules would need a stated exception for that caption.
+
+**Checklist (the rest of the page)**
+- **Media.** Rooms crop to the views (`desktop-01.png`). The full-width rice and curry stays excellent (`desktop-sheet.png`, third row, middle).
+- **Composition.** Kabalana's stair-stepped indents are gone, replaced by clear lead and body pairs that work well (`desktop-13.png`). Map and collapsed Services now sit tidily (`desktop-14.png`).
+- **Typography.** Halant with Mukta holds. Big serif titles have presence (`desktop-14.png`, "Exclusive Use"). The oversized inline संध्य still disturbs its line (`desktop-sheet.png`, "Why Sandhya").
+- **Colour.** The blue ground has gone from the rooms section, which is warmer and better. Blue-hour button stays strong.
+- **Polish.** The header is solid and the smears are gone (`desktop-13.png`, `desktop-14.png`). The phone print cut above is the main flaw.
+- **Distinctiveness.** Lower than round 1 with the split gone, but now for honest reasons. The room panels by floor area and the print on peach are the identity.
+- **Hero and motion.** The main item is real but has moved off the first screen, and its future depends on the ruling.
+
+**Score: 7/10, fail (below 8).** A big step up from 6: good structure, trustworthy, and it ends on the page's best image. It fails on a plain first screen with a stray strip, and on a set-piece that is either an obvious wipe or a picture that could be mistaken for the real building.
+
+**Better than the current site?** **Yes**, first screen narrowly (`r2-unique/desktop-00.png` against `old-site-first-screen-desktop.png`) and whole page (`r2-unique/desktop-sheet.png` against `current/desktop-sheet.png`).
+
+**Closest reference.** In idea Lavish Haven, one movement from the place carried by scroll. Below it, because Lavish's device is plainly drawn and this one is ambiguous.
+
+**Fix list**
+1. **Get the ruling, then rebuild the set-piece.** My recommendation is the real-photograph sequence above, resting on img-027 as it does now.
+2. **Give the first screen an idea from real pixels.** For example, a scroll-driven push from the façade through its open double bay, dissolving into img-032 inside, so the hero leads into the house. Only if that holds up in the build; otherwise keep the plain façade and accept that the hero is quiet.
+3. **Remove the img-153 strip** and let the sand run to the fold; the shallows already have their moment at Kabalana.
+4. **Fix the print's arrival.** No hard horizontal cut on phone (`u-m-piece-3.png`) and no collage over graded wings on desktop (`u-piece-6.png`): crossfade, or clear the frame first.
+5. **Small polish.** Drop the nav pills on the hero if plain ink text holds on the sky, and reduce the inline संध्य so its line keeps normal leading.
+
+**Keep.** The ungraded img-152. The print of img-027 held on peach. Room panels sized by floor area, and the bar that remembers the room. The Kabalana lead and body pairs. The solid header. The marble rice and curry. Halant and Mukta with real Devanagari. The blue-hour button. The ground warming to peach. The eight dots, if a sequence survives.
+
+## Ranking, round 2, by visual quality only
+
+Calm was not re-scored; its mark is from round 1.
+
+1. **Interactive (8.5):** the best first screen, depth that now holds its lines, and a title face that finally suits it.
+2. **Calm (8, round 1):** a nearly perfect first screen with a competent middle and a flat ending.
+3. **Unique (7):** honest now and well organised, but its hero is plain and its set-piece has an open question of truth.
+
+## What was not covered in round 2
+
+- **Motion in time.** Software GL throughout, and every depth and sweep finding is from stopped frames. Interactive's depth was only seen with `?noguard`, so I did not see its guard behave on real hardware, nor feel its damping or the phone's scroll-driven depth. The speed and feel of unique's scrub, and the print's rise, are unseen. Safari, iOS and real devices were not opened.
+- **Not rechecked this round:** reduced motion and JavaScript off on both pages, hover states, unique's panel expansion on phone, interactive's desktop sheet. The taste inspector was not re-run and gold pages were not reopened (round 1's viewing stands). The current site was not re-shot.
+- **Not my lane:** facts, performance, booking links and keyboard use.
