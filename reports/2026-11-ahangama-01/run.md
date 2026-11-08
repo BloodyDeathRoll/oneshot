@@ -1,31 +1,44 @@
 # run.md — 2026-11-ahangama-01
 
-Operator alon. One business, `the-sandhya`, `mode: test`. Caps from the run file: 2,000,000 tokens and 90 minutes per business.
+Operator alon. One business, `the-sandhya`, `mode: test`. Caps from the run file: 10,000,000 tokens and 600 minutes per business (raised by Alon from 2M and 90 on 2026-11-06).
 
 ## the-sandhya
 
-State: `copy_failed`, third pass, on voice alone and one sentence (Dining ¶2 S2). Stopped for Alon, as he decided on 2026-11-06.
+State: `mocked`, waiting at gate b (the mockup pick).
 
-| Station | Agent | Tokens | Minutes | Result |
-|---|---|---|---|---|
-| 3 | harvester 0.5.0 | 397,489 | 34.4 | 187 images, 20 gaps, 0 blocking |
-| 3b | auditor 0.1.3 | 355,678 | 30.3 | 16 findings: 1 high, 13 medium, 2 low |
-| 4a | copywriter 0.5.0 | 211,111 | 8.6 | en, round 1 |
-| 4b | humanizer 0.2.1 | 129,333 | 3.8 | nine lines changed |
-| 4c | copyeditor 0.4.2 | 184,543 | 8.9 | FAIL, round 1 |
-| 4a | copywriter 0.5.0 | 130,765 | 5.5 | round 2 |
-| 4b | humanizer 0.2.1 | 169,264 | 7.8 | round 2 |
-| 4c | copyeditor 0.4.2 | 232,784 | 9.5 | FAIL, round 2: facts clean, 6 voice sentences |
-| 4b | humanizer 0.2.1 | 153,198 | 5.0 | round 3 |
-| 4c | copyeditor 0.4.2 | 233,518 | 8.3 | FAIL, third pass: one sentence |
-| | **Total** | **2,197,683** | **122.1** | |
+| Station | Agent | Round | Tokens | Minutes | Result |
+|---|---|---|---|---|---|
+| 3 | harvester 0.5.0 | | 397,489 | 34.4 | 187 images, 20 gaps, 0 blocking |
+| 3b | auditor 0.1.3 | | 355,678 | 30.3 | 16 findings: 1 high, 13 medium, 2 low |
+| 4a | copywriter 0.5.0 | 1 | 211,111 | 8.6 | en |
+| 4b | humanizer 0.2.1 | 1 | 129,333 | 3.8 | nine lines changed |
+| 4c | copyeditor 0.4.2 | 1 | 184,543 | 8.9 | FAIL: facts and voice |
+| 4a | copywriter 0.5.0 | 2 | 130,765 | 5.5 | facts fixed |
+| 4b | humanizer 0.2.1 | 2 | 169,264 | 7.8 | register lines |
+| 4c | copyeditor 0.4.2 | 2 | 232,784 | 9.5 | FAIL: facts clean, 6 voice sentences |
+| 4b | humanizer 0.2.1 | 3 | 153,198 | 5.0 | two sentences |
+| 4c | copyeditor 0.4.2 | 3 | 233,518 | 8.3 | FAIL: one sentence |
+| 4c | copyeditor 0.4.2 | 4 | 215,259 | 5.9 | PASS, resting on stated rulings |
+| 4d | creative-director 0.6.1 | | 377,262 | 19.1 | one day, noon to twilight |
+| 4e | designer 0.7.1 | 1 | 1,218,904 | 125.0 | three mockups, run in parallel |
+| 4f | three reviewers | 1 | 1,012,009 | 56.8 | calm passes; interactive and unique back |
+| 4e | designer 0.7.1 | 2 | 1,185,660 | 50.4 | interactive and unique rework |
+| 4f | three reviewers | 2 | 1,394,533 | 50.0 | interactive passes; unique fails |
+| 4e | designer 0.7.1 | 2b | 121,500 | 15.2 | interactive dots and tablet contrast |
+| | | | **7,722,810** | **444.4** | |
 
-Not counted: Scout and orchestrator time in the session, and a harvester start stopped within minutes to move worktree.
+Minutes are each agent's own run time added up; agents that ran side by side took less elapsed time. Not counted: Scout and orchestrator time in the session, and a harvester start stopped within minutes to move worktree. Some reviewer runs include time lost to a network outage.
 
-**Budget:** Alon raised the caps on 2026-11-06 from 2M tokens and 90 minutes to 10M and 600, at 1.28M and 86 minutes used (at 95 % of the old wall-clock cap). For scale, `sanjee-surf-school` used 9.6M tokens and 587 minutes on the same stations up to the mockup pick (usage on its branch). Review again at gate b.
+**Budget:** 77 % of the tokens and 74 % of the agent minutes used. For scale, `sanjee-surf-school` used 9.6M tokens and 587 minutes on the same stations (usage on its branch).
 
-## Waiting for a human
+## Gate b
 
-How to settle the one failed sentence, Dining ¶2 S2. Alon has already ruled that moved clauses and small word changes stay exempt, and that a third-pass failure on voice alone stops for him.
+| Mockup | Critic /80 | Visual | Experience | Total /100 | Result |
+|---|---|---|---|---|---|
+| calm | 68.2 | 8 | 8 | 84.0 | passes (round 1) |
+| interactive | 66.6 | 8.5 | 8 | 82.5 | passes (round 2); dots and tablet contrast fixed after, not re-scored |
+| unique | 68.5 | 7 | 7 | 81.9 | fails |
 
-No gate is passed by this; gate b (mockup pick) is still ahead.
+Unique is presented marked as failing. Orchestrator rule 4a says a human always gets three passing mockups, with an ask after round 5. Alon was offered going to the pick with the two that pass, or another round on unique, and answered "continue"; the session took that as the first. Unique can still get its round.
+
+Open for the pick: no date picker in any mockup, against `agents/designer/custom.md`; a ruling on unique's moving grade, and its sea strip against `custom.md`, if unique is kept or reworked.
