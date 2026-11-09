@@ -1,0 +1,311 @@
+{
+ "site": "https://cheeky-monkey-surf-camp.os1.workers.dev/",
+ "checked": "2026-11-09",
+ "rows": [
+  {
+   "claim": "Header: Cheeky Monkey · Surf Camp | Midigama, Sri Lanka",
+   "dossier": "business.name 'Cheeky Monkey Surf Camp'; location.address",
+   "result": "match"
+  },
+  {
+   "claim": "Hero: Come as a stranger, leave as a friend.",
+   "dossier": "business.description_about (owner's words)",
+   "result": "match"
+  },
+  {
+   "claim": "Catch waves, not worries",
+   "dossier": "business.tagline_alt",
+   "result": "match"
+  },
+  {
+   "claim": "Surf and yoga camp on the main road through Midigama, close to the main point breaks",
+   "dossier": "business.tagline 'Your Surf and Yoga Camp in Midigama'; location.address 'Galle - Matara Main Road'; location.spot",
+   "result": "match"
+  },
+  {
+   "claim": "Baba's Surf Shop right alongside; rent, buy, repair",
+   "dossier": "business.description_about; rentals[0..2]",
+   "result": "match"
+  },
+  {
+   "claim": "The spot: close to the main point breaks, many more surf breaks a short walk away",
+   "dossier": "location.spot + business.description_host neighbourhood text",
+   "result": "match"
+  },
+  {
+   "claim": "Season: October till March or April; waves nice, beach clean",
+   "dossier": "season.value",
+   "result": "match"
+  },
+  {
+   "claim": "Rams nearest spot Rosa covers, about 360 m",
+   "dossier": "Rosa index.json vs location.lat_lng: 360 m, nearest (recomputed 2026-11-09); concepts.md §3 amendment (pending proposal 003 item 1)",
+   "result": "match (mapping as recorded)"
+  },
+  {
+   "claim": "Full Surf Lesson Package USD 400 / 300 / 300, 7 nights",
+   "dossier": "offers[0..2]",
+   "result": "match"
+  },
+  {
+   "claim": "Moderate USD 350 / 295 / 280",
+   "dossier": "offers[3..5]",
+   "result": "match"
+  },
+  {
+   "claim": "Yoga and Surf USD 300 / 280 / 280",
+   "dossier": "offers[6..8]",
+   "result": "match"
+  },
+  {
+   "claim": "Surf Board Rental USD 290 / 250 / 250",
+   "dossier": "offers[9..11]",
+   "result": "match"
+  },
+  {
+   "claim": "Packages and prices published 2021, call to confirm",
+   "dossier": "offers[].note (WordPress modified 2021-02-12); offers_note",
+   "result": "match"
+  },
+  {
+   "claim": "Full: two lessons a day for six days, one rest day",
+   "dossier": "packages[0].includes[0]",
+   "result": "match"
+  },
+  {
+   "claim": "Moderate: one lesson a day for six days or one guided session",
+   "dossier": "packages[1].includes[0]",
+   "result": "match"
+  },
+  {
+   "claim": "Yoga and Surf: one yoga + one surf lesson a day, six days",
+   "dossier": "packages[2].includes[0]",
+   "result": "match"
+  },
+  {
+   "claim": "Board Rental: any board seven days + tuk-tuk driving lesson",
+   "dossier": "packages[3].includes[0,8]",
+   "result": "match"
+  },
+  {
+   "claim": "Every week: 7 nights, 7 breakfasts, 5 dinners, 2-3 yoga, party night, BBQ night, gym",
+   "dossier": "packages[0..3].includes (all four)",
+   "result": "match"
+  },
+  {
+   "claim": "Board for lessons + ride to the surf spot, with the three lesson packages",
+   "dossier": "packages[0..2] 'Free use of surf board during surf lesson', 'Free Transport'; absent from packages[3]",
+   "result": "match"
+  },
+  {
+   "claim": "One lake tour USD 5 extra",
+   "dossier": "packages[].includes '1 Lake Tour (additional Charge US$ 5)'; offers[25]",
+   "result": "match"
+  },
+  {
+   "claim": "Lessons fitted to level, pace, style; total beginner to next big ride",
+   "dossier": "business.description",
+   "result": "match"
+  },
+  {
+   "claim": "USD 20 per person, 90 min surf lesson; published 2021",
+   "dossier": "lessons[0]",
+   "result": "match"
+  },
+  {
+   "claim": "Beginner | intermediate | advanced",
+   "dossier": "levels[]",
+   "result": "match"
+  },
+  {
+   "claim": "Private lesson | Group lesson, maximum 6 | SUP | Surf spot tour",
+   "dossier": "lessons[1,3,4,5]",
+   "result": "match"
+  },
+  {
+   "claim": "Superior Double: 1 large double bed, sleeps 2, 9 m2, desk, seating area, garden view",
+   "dossier": "room_types[1]",
+   "result": "match"
+  },
+  {
+   "claim": "Classic Triple: 3 single beds, sleeps 3, 12 m2, sea view",
+   "dossier": "room_types[2]",
+   "result": "match"
+  },
+  {
+   "claim": "Double Room: 1 large double bed, sleeps 2, 9 m2, garden view",
+   "dossier": "room_types[3]",
+   "result": "match"
+  },
+  {
+   "claim": "Small Double: 1 double bed, sleeps 2, 8 m2, top floor, small desk, ocean seen from private entrance",
+   "dossier": "room_types[0]",
+   "result": "match"
+  },
+  {
+   "claim": "Small Twin: 2 single beds, sleeps 2, 8 m2",
+   "dossier": "room_types[4]",
+   "result": "match"
+  },
+  {
+   "claim": "Check-in 14:00-19:00, check-out 06:00-11:00",
+   "dossier": "stay_info.check_in / check_out",
+   "result": "match"
+  },
+  {
+   "claim": "A/C, private bathroom, private entrance in every room",
+   "dossier": "room_types_note",
+   "result": "match (note: the 2021 package page priced A/C as a USD 50/week add-on, offers[18..21]; not shown)"
+  },
+  {
+   "claim": "Adults only, no pets, no smoking, no extra beds, cash only, quiet 23:00-06:00, photo ID + credit card",
+   "dossier": "stay_info.house_rules",
+   "result": "match"
+  },
+  {
+   "claim": "400 boards for rent; sizes, tails, colours",
+   "dossier": "rentals[0].raw",
+   "result": "match"
+  },
+  {
+   "claim": "Shaper can fix damaged boards fast",
+   "dossier": "rentals[2].raw",
+   "result": "match"
+  },
+  {
+   "claim": "Beachwear, straps, bags, wax; run by surfers for surfers",
+   "dossier": "business.description_shop",
+   "result": "match"
+  },
+  {
+   "claim": "Shortboards, longboards and fish",
+   "dossier": "rentals[0].raw",
+   "result": "match"
+  },
+  {
+   "claim": "Own brand, shaped in Bali",
+   "dossier": "rentals[1]; brands[5]",
+   "result": "match"
+  },
+  {
+   "claim": "Scooters",
+   "dossier": "rentals[3] 'rent scooter'",
+   "result": "match"
+  },
+  {
+   "claim": "Brands: Cheeky Monkey | Creatures of Leisure | Shapers",
+   "dossier": "brands[0,1,5]",
+   "result": "match"
+  },
+  {
+   "claim": "180 degree sea view; guest: 'the ocean view is amazing from the rooftop'",
+   "dossier": "location.views; reviews.quotes Mihrican",
+   "result": "match"
+  },
+  {
+   "claim": "Yoga on the roof at sunrise and sunset facing the ocean",
+   "dossier": "facilities 'yoga on the rooftop' note (2021)",
+   "result": "match"
+  },
+  {
+   "claim": "16 amenities incl. Free WiFi (57 Mbps), parking (reservation needed), shuttle (additional charge), CCTV",
+   "dossier": "facilities[]",
+   "result": "match"
+  },
+  {
+   "claim": "Opened late 2009, three rooms, tiny surf shop, restaurant; ten rooms by 2021",
+   "dossier": "business.since; room_count",
+   "result": "match"
+  },
+  {
+   "claim": "Baba founded it; taught himself to surf at twelve; worked as surf instructor; shop carries his name",
+   "dossier": "business.run_by; business.owner note (press release); description_about",
+   "result": "match"
+  },
+  {
+   "claim": "11 reviews, verbatim, author, source, month",
+   "dossier": "reviews.quotes (11/11 verbatim, script compare)",
+   "result": "match"
+  },
+  {
+   "claim": "Google 4.5/5, 467 reviews, 26 Oct 2026",
+   "dossier": "reviews.google rating/count/fetched_at",
+   "result": "match"
+  },
+  {
+   "claim": "Booking.com 8.3/10, 45 reviews, 26 Oct 2026",
+   "dossier": "reviews.booking",
+   "result": "match"
+  },
+  {
+   "claim": "Galle-Matara main road; Midigama Beach 350 m, station 800 m, Ahangama Beach 2 km, Weligama Beach 3.3 km, Koggala Airport 10 km",
+   "dossier": "location.address; distance_to_beach; nearby",
+   "result": "match"
+  },
+  {
+   "claim": "Address: Galle - Matara Main Road, Midigama East Midigama, Ahangama 80650, Sri Lanka",
+   "dossier": "location.address (Google form, playbook §6)",
+   "result": "match"
+  },
+  {
+   "claim": "Airport drop USD 65, pick-up USD 65, both USD 130, published 2021",
+   "dossier": "offers[15..17]",
+   "result": "match"
+  },
+  {
+   "claim": "No generator for power cuts",
+   "dossier": "facilities 'no generator' (Booking Q&A 31 Mar 2026)",
+   "result": "match"
+  },
+  {
+   "claim": "Team books taxi, safari, cooking class",
+   "dossier": "rentals[3] 'Book Taxi'; facilities tours",
+   "result": "match"
+  },
+  {
+   "claim": "Phone +94 71 924 8686 / tel:+94719248686",
+   "dossier": "contact.phone",
+   "result": "match"
+  },
+  {
+   "claim": "Email cheekymonkeymidi@gmail.com",
+   "dossier": "contact.email",
+   "result": "match"
+  },
+  {
+   "claim": "Booking.com URL (all hrefs)",
+   "dossier": "booking.engine_url, character for character",
+   "result": "match"
+  },
+  {
+   "claim": "Instagram / Facebook / site / Google Maps URLs",
+   "dossier": "contact.socials",
+   "result": "match"
+  },
+  {
+   "claim": "Drone footage: Lorenzo Marzocca (2018 promo film for Cheeky Monkey)",
+   "dossier": "videos[vid-001].found_on (licence unknown: Alon's preview-only waiver)",
+   "result": "match"
+  },
+  {
+   "claim": "Meta description: Surf shop, rooms and lessons on the main road in Midigama, with 400 boards to rent",
+   "dossier": "rentals[0]; location.address",
+   "result": "match"
+  },
+  {
+   "claim": "JSON-LD: telephone, email, address, geo, checkin/checkout, rooms, amenities, knowsLanguage en, priceRange USD 20-400 (2021)",
+   "dossier": "contact; location; stay_info; room_types; facilities; languages_spoken; offers/lessons",
+   "result": "match"
+  },
+  {
+   "claim": "Forecast headline: Mon 14:30, 0.3-0.5 m, swell 7.9 s from SE, wind 5.7 km/h from S onshore, Rosa updated 9 Nov 13:56",
+   "dossier": "live rams.json fetched same session: current.t 14:30+05:30, h [0.3,0.5], swells[0] period 7.9 dir 149.5 in_window, wind 5.7 kph 162 onshore, generated_at 08:26Z",
+   "result": "match (Rosa data, not dossier content; schema v0.3)"
+  }
+ ],
+ "summary": {
+  "rows": 60,
+  "mismatch": 0,
+  "missing": 0
+ }
+}

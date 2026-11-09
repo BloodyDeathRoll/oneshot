@@ -429,3 +429,116 @@ All under `reports/2026-10-midigama-01/critic-cheeky-monkey-v1/`. Screenshots st
 - `handoff-widget-refuse.json`: the Plan a stay hand-off, headline against widget, focus in the frame, refused frames, stop at the margin, WebKit, live early CLS.
 - `early-scroll-cls.json`: early scroll on the plain server and the live preview, with shift rectangles.
 - `facts.json`, `quotes.txt`: the claims traced to dossier keys, and the review check.
+
+## Verification 2 — full
+
+critic 0.4.3 · rubric 0.3.2 · 2026-11-09 · this is a verification, not a scored round: the ledger is untouched and no round is counted. Site under test: the live preview https://cheeky-monkey-surf-camp.os1.workers.dev/. At 14:26 UTC its `index.html` was sha1 `d5851277…`, byte-identical to `sites/cheeky-monkey/final/dist/index.html` at that time. `tools/audit-mockup.mjs` ran on that same `dist/` at 14:26:44 UTC, from a scratch copy that writes only to my evidence folder. At 16:38 IST (14:38 UTC) the coordinator rebuilt `dist/` with one CSS hover/press transition on `.mark` that is not deployed. I scored the live page and did not count that difference. Every other test ran against the live URL. I formed this view before reading the "Verification 1" section, then checked each of its items. I did not read any visual-critic or experience-critic report. I reused the shared shots in `verify-2-cheeky-monkey/shots/` and did not delete them.
+
+```
+mode: full (verification)        round: none        variant: unique ("Pick your board", drone-loop first screen)
+total (dims 1–7): 71.2 / 80      hard_fails: []   (vid-001 licence: Alon's recorded preview-only waiver, not re-opened)
+result: the critic's part passes its gates; the overall result depends on dimension 8
+```
+
+With dimension 8 at 8/10 the total is (71.2 + 20) × 100 ÷ 105 = **86.9**, which passes. At 9/10 it is 89.2. A pass on the total needs dimension 8 ≥ 13.85 / 25 (5.6 / 10). The 8/10 gate from both visual critics is the binding condition.
+
+| # | dimension | weight | score | weighted | evidence |
+|---|---|---|---|---|---|
+| 1 | facts | 20 | 9 | 18.0 | `critic-cheeky-monkey-v2/facts.json`: 60 page claims traced to dossier keys, 0 mismatches, 0 missing. I read every price by hand against `offers[]` / `lessons[]`: the 12 package prices, USD 20 per 90 min, and the 3 airport rows. 11 / 11 reviews are verbatim, with author, source and month equal to `reviews.quotes` (script compare). Ratings are 4.5/5 · 467 and 8.3/10 · 45, captured 26 Oct 2026, which equals `fetched_at`. Rosa headline = the live `rams.json` fetched in the same session: `current.t` 14:30+05:30, h [0.3, 0.5], first in-window swell 7.9 s from 149.5° ("south-east"), wind 5.7 km/h from 162° ("south"), onshore, `generated_at` 08:26Z (13:56 Colombo). Rams mapping: now recorded in `concepts.md` §3 (amendment 2026-11-09). I recomputed Rams at 360 m as the nearest of all Rosa spots (Coconut 578, Lazy Left 679, Lazy Right 980). −1: the 2021 package page priced A/C as a USD 50/week add-on (`offers[18..21]`). The page shows the 2021 package prices beside "Air conditioning … in every room" and does not mention the add-on. The prices carry "published 2021, call to confirm", so I score this as a framing risk, not a mismatch. The Rams mapping also still departs from schema v0.3 pending proposal 003 item 1. |
+| 2 | mobile + performance | 15 | 9 | 13.5 | `audit.json` (throttled 390 × 844): first load 533,112 B in 8 requests, LCP 752 ms, CLS 0, **`scroll.early.cls` 0 and `scroll.settled.cls` 0** (V1's 0.0288 is gone), largest image 119,050 B, fonts 64,900 B (2 families), 0 external JS, 0 third-party. No horizontal overflow at 320, 390 and 1440 (`scrollWidth` = `clientWidth`). At 320 the headline range shrinks to fit (206 px in a 236 px card). −1, layout at 390: Rosa's card is shorter than its 500 px reserved frame at 350 px wide. The site's white fallback card (`.fc-alt`, under the frame) shows through the frame's transparent lower part as an empty white strip of about 50 px under Rosa's card. Shared shot `mobile-05.png` shows it: the widget card ends and a second white card edge follows below it. At 1440 the widget fills its box and there is no strip (`desktop-04.png`). |
+| 3 | booking CTA | 15 | 9 | 13.5 | `funnel/funnel.json` (live, depth 3): `primary_action` engine, `hero_action` engine with 0 taps to flow, `clicks_to_book` 1 ≤ target 1, class = `recommended.primary_action` (engine). `audit.json.booking.tapped` = `https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html`, equal to `booking.engine_url` character for character. Every `tel:` is `+94719248686` (`contact.phone`) and every `mailto:` is `cheekymonkeymidi@gmail.com`. Primary action above the fold. JS off: 6 booking links reachable in `#book`, page text 10,350 chars. −1, unchanged: the engine link carries none of the visitor's choices (documented gap). |
+| 4 | brand fit | 5 | 8 | 4.0 | The first screen has the drone loop, what and where in the header line ("Surf Camp \| Midigama, Sri Lanka") and "Check dates on Booking.com". Weeks with prices and inclusions, lessons and levels, rooms, shop, reviews, location and contact follow. The forecast sits under spot and season. −1: spot and season come before the offers (the concept's order, not playbook §3's). −1: "Languages spoken" is answered nowhere visible on the page (dossier `languages_spoken`: en; it appears only in JSON-LD `knowsLanguage`). |
+| 5 | copy | 10 | 8 | 8.0 | English is complete. The fix-round labels are applied as the copyeditor asked ("Forecast for Mon 14:30", "Getting Rosa's latest forecast for Rams", "No fresh forecast just now"). Nothing calls Rams the business's break. No claim goes beyond the dossier. −2: the owner's slogans ("Catch waves, not worries", "Come as a stranger, leave as a friend.") are generic. The 16 amenities run as one pipe-joined paragraph. The fourth package card opens with "And the Surf Board Rental package…", which reads oddly in a card that stands alone. Two of the owner's verbatim alts carry a typo and a US spelling ("repeairing", "Colorful") on a British-spelled page. |
+| 6 | accessibility | 8 | 9 | 7.2 | `a11y-page.json`: axe-core 4.13 (WCAG 2.0/2.1 A + AA) after a full scroll, widget loaded: **0 violations** at 390 and 1440, and 0 inside the open drawer. `color-contrast` incomplete on 182 / 186 nodes (text over footage and photos). Measured tokens: `--ink-2` on tint 6.37:1, on white 7.55:1, white on `--book` 4.98:1. Keyboard: 70 tab stops at each width, all with a visible outline or ring and all on screen. Drawer: role dialog, `aria-modal`, focus to close, Tab stays inside over 25 presses, Esc closes, focus returns to "Plan a stay". **The pause control now exists** ("Pause the videos", 44 × 44, `aria-pressed`). Pressed by keyboard, it paused both loops at 390 and 1440, and they stayed paused after scrolling to the board and back. Reduced motion: 0 video requests, poster shown. 0 images without alt, 0 tap targets under 44 px. −1: in every widget-failure path (frame aborted, 404, CSP-refused) the frame still fires `load` and is shown on top of the fallback card. The card's blue "See today's forecast for Rams on Rosa" button is then visible but dead: a tap hits the iframe ("nothing happened" in `forecast-widget-failure-taps.json`), and the card is `inert`. The working plain link stays in the credit line above it. |
+| 7 | security + delivery | 7 | 10 | 7.0 | Static output: 71 files, lowercase names, relative URLs, the only `http://` is the SVG namespace, 0 hits for key / token / secret / password, `noindex, nofollow`, robots `Disallow: /`. Fonts self-hosted with licence files. 0 third-party requests on first load at 390 and 1440 (`audit.json` and `forecast.json`). No CMS call. V1's two §4 misses are fixed: **no HEAD request any more** (after the scroll the page itself makes one GET to `rams.json` plus the frame document), and the plain link no longer depends on the frame: it is always visible in the credit line. The iframe's attributes are exactly `agents/designer/tools.md`'s snippet, with `src` held in `data-src` until the block nears. |
+| | **total 1–7** | 80 | | **71.2** | |
+
+**Hard fails: 0.** I checked each one: fact contradictions 0, CTA landing exact, primary-action class engine = recommended, third-party on first load 0, CMS dependency none, keyboard trap none, content only in video none, every budget line met, secrets none, no non-business image shown as the business (46 / 46 photos `business-owned`), no borrowed atmosphere. The vid-001 licence is Alon's recorded preview-only waiver and is not counted. It still has to be resolved before anything goes live. As in V1, a strict reading of schema v0.3 ("the nearest other spot is never used as this one") would make the Rams block a claim with no dossier entry. It is recorded in `concepts.md` as the nearest Rosa spot with its distance, pending Shahar on proposal 003 item 1, and I judged it as recorded.
+
+**Pass thresholds (full), the critic's part:** no hard fail ✓. Dimensions 1–7 each ≥ 6 ✓ (lowest 8). Every playbook §4 budget line met ✓. Total ≥ 85 ✓ if dimension 8 is ≥ 5.6. Both visual critics ≥ 8: pending.
+
+### The forecast block (rule 9 and playbook §4), live, 390 and 1440
+
+`forecast.json` (17 scenarios) and `forecast-widget-failure-taps.json`. Captures stayed in scratch.
+
+| Check | Result | Evidence |
+|---|---|---|
+| Spot id, headline and widget | same: `rams` | `data-json` …/spots/rams.json; widget `spot=rams&theme=light&units=metric`; JSON `spot.id` rams, `name` Rams, `town` Midigama |
+| Mapping through `concepts.md` | **pass, as recorded** | §3 amendment 2026-11-09: `rosaSpotId: rams`, nearest Rosa spot, 360 m; recomputed from Rosa `index.json` today: Rams 360 m, Coconut 578, Lazy Left 679, Lazy Right 980. Open: proposal 003 item 1 (Shahar) |
+| Page wording | pass | "Rams is the nearest spot Rosa covers, about 360 m from the shop." · "Forecast for Rams by Rosa" · "See today's forecast for Rams on Rosa" |
+| Site's half: headline only | pass | Time, height range, swell, wind, Rosa's update time; no day-by-day boxes, rows or chart |
+| Widget unmodified | pass | Attributes = `tools.md` snippet; computed filter none, opacity 1, no transform/clip/blend; parent `overflow: visible`; `elementFromPoint` = IFRAME at all 6 (390) / 12 (1440) in-view points; 350 × 500 at 390, 420 × 500 at 1440 |
+| Nothing from Rosa on first load | pass | 0 third-party hosts after 3 s without a scroll, every scenario |
+| After scrolling: one JSON request plus the frame | **pass** | Top document: exactly 1 request (`rosa-data-opal.vercel.app/data/spots/rams.json`). Then the frame, whose own 11 requests (rosa.surf document, Inter from Google Fonts, Esri tiles, Rosa's own JSON) belong to the frame. V1's HEAD is gone |
+| Space reserved, CLS | pass | 0 layout shifts in all 17 scenarios, through load, failure, refusal and scrolling past. In view, every box keeps its size (block 949 px at 390, 500 px at 1440, live or failed) |
+| Headline = live JSON | pass | See dimension 1. A fresh 23 h file still draws, with "Rosa updated it on 8 November at 21:01" |
+| JS off | pass | The headline card is hidden; the box shows the fallback card "Wave height, swell and wind for Rams" with its working "See today's forecast for Rams on Rosa" button, plus the credit link; 0 third-party; a tap navigated to rosa.surf |
+| JSON aborted · 500 · stale 25 h · no `current` · not JSON | pass | No numbers and no frame request in any of the five. Below the screen (`.solo`): the headline card drops and the fallback card takes its own height (no shift seen). The link is in the fallback card and working (a tap navigated to rosa.surf) |
+| JSON failure with the block in view (aborted at 1440; hung 13 s at 390) | **pass** (V1's blank hole fixed) | The white card says "No fresh forecast just now / Rosa's own page for Rams has today's forecast."; the credit line keeps the plain link; the right box shows the fallback card; sizes unchanged |
+| Widget frame never loads (request held, no response) | pass | After 10 s the frame loses its `src`; the fallback card's button works (a tap navigated) |
+| **Widget aborted · 404 · `frame-ancestors 'none'`** | **link shown; dead button beside it** | The frame fires `load`, so `fc-rosa on`, and the frame is shown on top of the fallback card. The credit line's plain link is visible and works. The card's button under the frame does nothing when tapped (all three cases), and the card is `inert` / `aria-hidden`. With a 404, Rosa's error body ("404 Not Found" in default serif) paints over the top of the card (scratch capture). Headless shows aborted and refused frames as transparent; a real Chrome would paint its own error page there (untested) |
+| `shoot.mjs` waited | pass | `mobile-05.png` and `desktop-04.png` show the drawn headline (0.3–0.5 m, Mon 14:30) and the loaded widget; `shoot.json` errors [] |
+| Embeds | 1 of 2 | One iframe (Rosa); the map is a link |
+| Budget with the embed loaded | pass | +301,022 B third-party (decoded) after the block loads; 533 KB + 301 KB < 1.5 MB |
+
+**Headline against the widget.** At 14:30 the site shows "Swell 7.9 s from the south-east", the mean `period` of the first in-window swell, as `tools.md` says today. Rosa's widget row for 12:00 shows "12s SSE"; that swell's `peak_period` is 12.3 s. This is the known `tools.md` gap (proposal 003 item 3), not a site defect. A visitor sees two different periods side by side until it is settled.
+
+### Playbook §4 budget, measured
+
+| Item | Target | Measured | |
+|---|---|---|---|
+| First-load transfer (video excluded) | ≤ 1.5 MB | 533,112 B (plain server, uncompressed HTML); live HTML is 30,792 B compressed | ✓ |
+| The same plus Rosa's block | ≤ 1.5 MB | + 301,022 B decoded | ✓ |
+| Hero video after first paint | ≤ 2 MB phone · ≤ 4 MB desktop | Files on disk: phone `cm-drone.p1080.webm` 0.999 MB (+ board reel `p640.webm` 0.42 MB = 1.42 MB); desktop `d1920.webm` 1.64 MB (MP4 3.82 MB) | ✓ |
+| JS, compressed | ≤ 300 KB | 0 external; inline 15,889 B, 5,888 B gzip | ✓ |
+| Largest above-the-fold image | ≤ 300 KB | 119,050 B | ✓ |
+| Fonts | ≤ 2 families, ≤ 150 KB | Site: 2 families, 64.9 KB; Rosa's frame adds Inter. I count this as met, the same reading and the same open rule conflict as V1 | ✓ |
+| LCP | ≤ 2.5 s | 752 ms | ✓ |
+| CLS | < 0.1 | 0 at load; early and settled scroll 0 | ✓ |
+| Third-party requests on load | 0 | 0 | ✓ |
+
+### Verification 1's items, re-checked
+
+| V1 item | Now |
+|---|---|
+| 1. Rams mapping missing from `concepts.md` | Fixed: §3 amendment, with distances and the pending proposal |
+| 2. Extra HEAD request | Fixed: removed; one JSON GET + the frame |
+| 3. `scroll.early.cls` 0.0288 | Fixed: 0 / 0 in `audit.json` |
+| 4. Refused frame hides the link | Fixed for the link: always visible in the credit line. Left: the fallback card under a shown failed frame carries a dead button (dimension 6) |
+| 5. Blank space on a failure in view | Fixed: "No fresh forecast just now" card in the same box |
+| 6. `tools.md` swell choice | Open (proposal 003 item 3) |
+| 7. Fonts in Rosa's frame | Open (rule conflict, Shahar) |
+| 8. Pause control | Fixed: works at both widths, by keyboard |
+| 8. Slogans, offers order, Booking.com parameters, vid-001 rights | Unchanged; vid-001 under the waiver |
+
+**what the designer prompt got wrong:** The fallback card was built as an underlay for a frame whose failure cannot be detected. Its button is therefore visible but dead whenever Rosa's document fails after the frame has started loading. On a phone it also shows through the bottom of the widget's transparent reserved box. `tools.md` says the frame cannot report a refusal, but it does not say what may sit under the frame. The plain link must live outside the frame's box. Anything drawn inside that box under the frame should be decoration only, never a control, and it should stop at the widget's measured height at each width (`tools.md` already lists 453 px at 360 and 416 at 300).
+
+**fix list (smallest first; none blocks the critic's part):**
+1. **Dim 2:** at narrow widths, keep the fallback card from showing under a loaded widget: hide `.fc-alt` once `.fc-rosa.on` is set, or give the box no white ground.
+2. **Dim 6:** when the frame is shown (`.on`), drop the fallback card's button (or the whole card) so no dead control is visible; the credit line's plain link already covers the failure paths.
+3. **Dim 4:** show "English spoken" in the facts the page already has (staying here or getting here); the source is `languages_spoken`.
+4. **Dim 5:** break the amenities paragraph into a list; reword "And the Surf Board Rental package…" so the card stands alone.
+5. **Dim 1 (owner/copy):** say beside the 2021 package prices that A/C was then a USD 50/week extra, or leave the question to the "call to confirm" line explicitly.
+6. **Open for the humans:** proposal 003 items 1 (Rams mapping) and 3 (swell field); the fonts-in-frame reading; vid-001 rights before go-live.
+
+### What this verification did not test
+
+- A real phone or a real desktop browser. Everything ran in headless Chromium with emulation; there was no WebKit or Firefox run this time. How a real Chrome paints an aborted or refused frame (its own error page over the fallback card) is untested.
+- A real tap through to Booking.com, a call or an email; links compared character for character only. I did not re-walk the "Plan a stay" room hand-off beyond opening, tabbing and closing the drawer (V1 walked it and the code is unchanged in that part).
+- Screen readers, including the headline's `aria-live`.
+- Save-Data (the code puts it in the same `still` class as reduced motion; only reduced motion was run).
+- Contrast of the hero and header text over the moving footage (axe incomplete).
+- Inside Rosa's frame: axe was not run in the frame. Touch scrolling over the widget was not tested.
+- `audit-mockup.mjs` measured `dist/` as it was at 14:26 UTC (identical to live). The coordinator's later `.mark` transition was not measured.
+
+### Evidence files
+
+All under `reports/2026-10-midigama-01/critic-cheeky-monkey-v2/`; screenshots stayed in scratch.
+
+- `audit.json`: `tools/audit-mockup.mjs` (scratch copy, output path only changed) on `dist/` as deployed.
+- `funnel/funnel.json`: `tools/funnel.mjs` on the live preview, depth 3.
+- `facts.json`: 60 claims → dossier keys → result.
+- `page-text.txt`: rendered text, alts and every link of the live page at 390.
+- `forecast.json`: 17 forecast scenarios (normal, JS off, JSON aborted / 500 / stale 25 h / 23 h / no `current` / not JSON / 13 s hang, widget aborted / 404 / refused, everything blocked) with requests, block state, iframe attributes, cover points and layout shifts.
+- `forecast-widget-failure-taps.json`: what a tap on the fallback card's button does in each state.
+- `a11y-page.json`: axe at 390 and 1440 and in the drawer, 70 tab stops per width, drawer trap and Esc, pause control, reduced motion, video playback.

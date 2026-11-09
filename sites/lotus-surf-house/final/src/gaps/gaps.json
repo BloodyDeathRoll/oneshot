@@ -18,13 +18,9 @@
   {
    "text": "Breakfast included, 8–10",
    "_source": "copyBlocks \"Breakfast\" (\"…any time from 8 to 10 in the morning\") in short form; dossier stay_info.breakfast_hours"
-  },
-  {
-   "text": "Check-in any hour",
-   "_source": "stayInfo.note (\"Check-in at any hour, day or night.\") in short form; dossier stay_info.check_in"
   }
  ],
- "_glance": "the details line under the two ratings (concepts.md §4.1): three short restatements; the schema has no short-facts field, and stayInfo has no \"any hour\" value (checkInFrom is null)",
+ "_glance": "the details line under the two ratings (concepts.md §4.1): short restatements; the schema has no short-facts field. 2026-11-09: \"Check-in any hour\" dropped here (verification 1: check-in was said three times; it stays under the King buttons and in Good to know)",
  "stayShort": [
   {
    "text": "Check-in at any hour",
@@ -40,5 +36,16 @@
   "lat": 5.9652192,
   "lng": 80.3922802,
   "_source": "dossier location.lat_lng (the Google pin, https://www.google.com/maps/place/Lotus+Surf+House/data=!4m10!3m9!1s0x3ae115fa41dc1f05:0x4dc98f89addc1542!5m2!4m1!1i2!8m2!3d5.9652192!4d80.3922802!16s%2Fg%2F11h5p61yh3!19sChIJBR_cQfoV4ToRQhXcrYmPyU0?hl=en, fetched 2026-11-03T17:37:54Z)"
+ },
+ "forecastIntro": {
+  "near": "Lazy Left is the Rosa spot nearest the house.",
+  "quote": {
+   "text": "The location is perfect to go and surf at lazy left and right",
+   "author": "Giada, Italy",
+   "source": "booking",
+   "date": "2025-12",
+   "url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-e68a59ddb9111462"
+  },
+  "_source": "near: Alon's mapping of 2026-11-04 (concepts.md §3, amendment 2026-11-09): Rosa's lazy-left is 293 m from dossier location.lat_lng, the nearest of Rosa's spots. quote: dossier reviews.quotes (Giada, Italy, 2025-12-13, https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html#review-e68a59ddb9111462, fetched 2026-11-03T17:37:19Z), sentence 2, verbatim; also dossier location.spot.note"
  }
 }

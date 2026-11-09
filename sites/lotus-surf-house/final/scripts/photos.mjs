@@ -77,6 +77,12 @@ for (const [filename, { src, shapes, focal }] of jobs) {
       const stem = `${name}-${k}-${w}`
       let img = sharp(src).rotate().extract({ left, top, width: cw, height: ch }).resize(w, h, { kernel: 'lanczos3' })
       if (opts.lift) img = img.linear(0.97, 0.03 * 255)
+      const tone = opts.tone && basename(filename).toLowerCase().startsWith(opts.tone.only) ? opts.tone : null
+      if (tone) { // slots.mjs slot 17: one photograph's colour correction, never applied to another upload
+        if (tone.recomb) img = img.recomb(tone.recomb)
+        if (tone.saturation) img = img.modulate({ saturation: tone.saturation })
+        if (tone.gamma) img = img.gamma(tone.gamma)
+      }
       await img.webp({ quality: opts.q ?? 76, effort: 6, smartSubsample: true }).toFile(join(outDir, `${stem}.webp`))
       sources.push({ w, h, webp: `photos/${stem}.webp`, bytes: statSync(join(outDir, `${stem}.webp`)).size })
       files++

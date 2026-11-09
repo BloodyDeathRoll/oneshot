@@ -64,7 +64,9 @@ const ORDER = [
   'img-010', 'img-015', 'img-034', 'img-008',  // 3–6 the King strip
   'img-021', 'img-022', 'img-004',             // 7–9 the roof
   'img-020',                                   // 10 the garden
-  'img-029', 'img-043', 'img-030', 'img-009', 'img-028', 'img-044', // 11–16 garden rooms slideshow
+  // 11–16 garden rooms slideshow. 2026-11-09 (verification 1, experience fix 4): it opens on img-043, the Deluxe
+  // Queen Room with the surfboard, not on img-029's bare wall; img-029 is second.
+  'img-043', 'img-029', 'img-030', 'img-009', 'img-028', 'img-044',
   'img-032',                                   // 17 the porch
 ]
 
@@ -85,6 +87,14 @@ const mediaDoc = (id) => {
 }
 const photos = ORDER.map((id) => ({ image: mediaDoc(id), caption: null }))
 
+/* 2026-11-09 (verification 1, experience fix 3): Guests opens on reviews that name the surf. Henry ("after surfing …
+   the local surf spots") and Svenja ("4 surfspots") lead; the other ten follow in the copy's order. Only the order
+   changes: every quote stays verbatim, and none is added or dropped. */
+const LEAD_REVIEWS = ['Henry, United Kingdom', 'Svenja, Germany']
+const leadWith = (rows, authors) => {
+  const lead = authors.map((a) => rows.find((r) => r.author === a) ?? fail(`no testimonial by ${a}`))
+  return [...lead, ...rows.filter((r) => !lead.includes(r))]
+}
 const pick = (o, keys) => Object.fromEntries(keys.map((k) => [k, o[k] ?? null]))
 const site = {
   businessName: copy.businessName,
@@ -111,17 +121,19 @@ const site = {
   bookingLinks: copy.bookingLinks.map((l) => pick(l, ['label', 'url'])),
   amenities: copy.amenities.map((a) => pick(a, ['label', 'note'])),
   ratings: copy.ratings.map((r) => pick(r, ['platform', 'score', 'scale', 'count', 'url', 'capturedAt'])),
-  testimonials: copy.testimonials.map((t) => pick(t, ['quote', 'author', 'source', 'lang', 'date'])),
+  testimonials: leadWith(copy.testimonials, LEAD_REVIEWS).map((t) => pick(t, ['quote', 'author', 'source', 'lang', 'date'])),
   spot: copy.spot ?? null,
   season: copy.season ?? null,
   languagesSpoken: copy.languagesSpoken ?? [],
   rooms: copy.rooms.map((r) => ({ ...pick(r, ['label', 'beds', 'sleeps', 'note']), photo: null })),
   stayInfo: pick(copy.stayInfo, ['checkInFrom', 'checkInTo', 'checkOutFrom', 'checkOutTo', 'minNights', 'note']),
   lessons: [], credentials: [], rentals: [], brands: [],
-  /* schema v0.3 forecast. Human decision (Alon, operator, 2026-11-04): the dossier names no break (the 4e gaps said
-     "no forecast (no named break)"), and Alon chose Rosa's `lazy-left`, the Rosa spot closest to the Google pin
-     (Rosa's spot lat/lon in data/index.json vs dossier location.lat_lng, about 290 m). It is shown only as the
-     forecast for Lazy Left, never as the business's own break. Carried here so a reseed keeps it. */
+  /* schema v0.3 forecast. Human decision (Alon, operator, 2026-11-04): the business names no break (the 4e gaps said
+     "no forecast (no named break)"), and Alon chose Rosa's `lazy-left`, the Rosa spot nearest the Google pin (Rosa's
+     data/index.json 5.963067, 80.390755 vs dossier location.lat_lng: 293 m; Rams 329 m, Lazy Right 485 m; checked
+     2026-11-09). Guests name Lazy Left and Lazy Right (dossier location.spot). It is shown only as the forecast for
+     Lazy Left, never as the business's own break. The mapping is recorded in concepts.md §3 (amendment 2026-11-09).
+     Carried here so a reseed keeps it. */
   forecast: { enabled: true, rosaSpotId: 'lazy-left', spotName: 'Lazy Left' },
   updatedAt: null,
   createdAt: null,
@@ -136,6 +148,21 @@ function pin() {
   const [lat, lng] = Array.isArray(ll?.value) ? ll.value : []
   if (!(Math.abs(lat) <= 90 && Math.abs(lng) <= 180)) fail('dossier location.lat_lng is not a [lat, lng] pair')
   return { lat, lng, _source: `dossier location.lat_lng (the Google pin, ${ll.source_url}, fetched ${ll.fetched_at})` }
+}
+/* 2026-11-09 (verification 1, both visual critics): the forecast block gets one line tying it to the house, from
+   what is sourced: the mapping (Alon's decision; the Rosa spot nearest the Google pin) and one guest's verbatim
+   sentence. The sentence must be a verbatim substring of the dossier quote (line breaks read as spaces); its
+   trailing " ." is left out, nothing else. Never says the break is the house's. */
+function forecastIntro() {
+  const q = dossier.reviews.quotes.find((x) => x.author === 'Giada, Italy') ?? fail('no review by Giada, Italy')
+  const text = 'The location is perfect to go and surf at lazy left and right'
+  if (!q.text.replace(/\s*\r?\n\s*/g, ' ').includes(text)) fail('the forecast quote is not verbatim in the dossier')
+  const [y, m] = q.date.split('-')
+  return {
+    near: 'Lazy Left is the Rosa spot nearest the house.',
+    quote: { text, author: q.author, source: q.source, date: `${y}-${m}`, url: q.source_url },
+    _source: `near: Alon's mapping of 2026-11-04 (concepts.md §3, amendment 2026-11-09): Rosa's lazy-left is 293 m from dossier location.lat_lng, the nearest of Rosa's spots. quote: dossier reviews.quotes (${q.author}, ${q.date}, ${q.source_url}, fetched ${q.fetched_at}), sentence 2, verbatim; also dossier location.spot.note`,
+  }
 }
 const king = copy.rooms.find((r) => r.note.startsWith('Upstairs')) ?? fail('no upstairs room in the copy')
 const gaps = {
@@ -153,9 +180,8 @@ const gaps = {
   glance: [
     { text: 'Midigama Beach 250 m (Booking.com)', _source: 'spot ("Booking.com puts Midigama Beach 250 m from the house.") in short form; dossier location.distance_to_beach' },
     { text: 'Breakfast included, 8–10', _source: 'copyBlocks "Breakfast" ("…any time from 8 to 10 in the morning") in short form; dossier stay_info.breakfast_hours' },
-    { text: 'Check-in any hour', _source: 'stayInfo.note ("Check-in at any hour, day or night.") in short form; dossier stay_info.check_in' },
   ],
-  _glance: 'the details line under the two ratings (concepts.md §4.1): three short restatements; the schema has no short-facts field, and stayInfo has no "any hour" value (checkInFrom is null)',
+  _glance: 'the details line under the two ratings (concepts.md §4.1): short restatements; the schema has no short-facts field. 2026-11-09: "Check-in any hour" dropped here (verification 1: check-in was said three times; it stays under the King buttons and in Good to know)',
   stayShort: [
     { text: 'Check-in at any hour', _source: 'stayInfo.note, sentence 1, cut before ", day or night"' },
     { text: 'Cash only', _source: 'stayInfo.note, sentence 2' },
@@ -164,6 +190,7 @@ const gaps = {
   /* 4h (seo): the JSON-LD geo pair. contact.mapUrl is a place_id URL with no pin, and the schema has no geo
      field (site-content.md "Not in v0.1": geo coordinates; proposal D in seo-report.md). Copied from the dossier. */
   geo: pin(),
+  forecastIntro: forecastIntro(),
 }
 mkdirSync(join(final, 'src', 'gaps'), { recursive: true })
 writeFileSync(join(final, 'src', 'gaps', 'gaps.json'), JSON.stringify(gaps, null, 1) + '\n')

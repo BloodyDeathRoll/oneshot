@@ -199,3 +199,59 @@ Deliberately empty, each with a stated reason: `season`, `featureLine`, `opening
 0 `unsourced`, 0 `contradicted`, voice clean (9/10), required fields covered. Closest calls for the human: R1 (balconies on all three King units) and R2 (breakfast included on every rate) — both sourced, both owner items.
 
 Ledger line due (not written by me): `copy_humanised → copy_passed`, note "round 1 PASS (copyeditor 0.4.2): 78 rows, 66 sourced / 1 shared-context / 5 framing / 6 correctly empty, 0 unsourced, 0 contradicted; draft→final diff clean (7 rewordings, no fact added or lost; 12 testimonials machine-checked verbatim); voice 9/10; owner items: breakfast on every rate, King-unit balcony, break/season, prices, WhatsApp".
+
+## Fix round 2026-11-09
+
+Reviewer: copyeditor 0.4.2 (runtime prompt from `tools/prompt.mjs copyeditor`, read in full), run `2026-10-midigama-01`. Scope: only the words a visitor reads that changed in the fix round (`git diff -- sites/lotus-surf-house`: `labels.json`, `gaps.json`, `content.json`, `scripts/seed-from-dossier.mjs`, `index.astro`, alt text), checked in the rebuilt `final/dist/index.html` as well as in source. Code, CSS and notes were not reviewed. The earlier sections above stand: no field of `copy/en.json` changed.
+
+Rosa check: I downloaded `https://rosa-data-opal.vercel.app/data/index.json` on 2026-11-09 and computed haversine distances from dossier `location.lat_lng` (5.9652192, 80.3922802) to every spot. Results: Lazy Left 293 m, Rams 329 m, Lazy Right 485 m, Coconut 1,187 m. Lazy Left is the nearest of all Rosa spots, which matches the `concepts.md` amendment.
+
+### Verdict: **FAIL**, on two issues
+
+1. The new rating line beside the King Rooms shows both scores **without their review counts**. Playbook §6 requires a rating to be shown with its count, source and date. The watch-list names this case exactly: "a rating quoted without its count".
+2. The forecast's time label calls Rosa's model forecast a "reading" (same finding as on Cheeky Monkey). Rosa's file is model output (`model_run`: GFS-Wave and ECMWF; `current` is the forecast hour), so "reading" implies a measurement.
+
+Both go back to the designer, because both are template labels. Everything else passes.
+
+### Per-line audit
+
+| # | Where | Rendered text | Source | Verdict |
+|---|---|---|---|---|
+| 1 | `labels.fc_heading` | "Surf at Lazy Left" | Rosa spot `lazy-left`; Alon's mapping, 2026-11-04 (`concepts.md` amendment). Section title only; it does not say the break is the house's | framing |
+| 2 | `gaps.forecastIntro.near` | "Lazy Left is the Rosa spot nearest the house." | Rosa `index.json` against dossier `location.lat_lng`: 293 m, nearest of all spots (superlative recomputed above) | sourced |
+| 3 | `gaps.forecastIntro.quote` | "The location is perfect to go and surf at lazy left and right" | `reviews.quotes[37].text`, sentence 2, verbatim (lower case kept). Only the trailing " ." is dropped, which does not change the meaning; the rest of the review is not misrepresented. Also in `location.spot.note` | sourced |
+| 4 | quote attribution | "Giada, Italy \| Booking.com \| Dec 2025" | `quotes[37]`: author "Giada, Italy", `source: booking`, date 2025-12-13; `cite` = its `source_url` | sourced |
+| 5 | `labels.fc_latest` | "Latest reading, {t}" (e.g. "Latest reading, Mon 9 Nov, 14:30") | Rosa `current.t` is a forecast hour, not a reading | **contradicted** |
+| 6 | `labels.fc_swell` / `fc_wind` / `fc_updated` | "Swell {p} s from the {d}" / "Wind {k} km/h from the {d}" (+ class) / "Rosa, updated {d}" | the same wording as before, moved into labels: `current.swells[].period`, `.dir`; `current.wind`; `generated_at` | sourced |
+| 7 | `labels.fc_credit` / `fc_link` | "Forecast for Lazy Left by Rosa" / "See today's forecast for Lazy Left on Rosa" | playbook §4 wording, verbatim | sourced |
+| 8 | `labels.nav.surf` | "Surf" | navigation label for the forecast section | framing |
+| 9 | `labels.closing_title` + `closing` | "Come and stay" / "Live dates and prices are on Booking.com. If you'd rather ask us something first, call." | the heading is framing; the sentence is the passed `closing` (audit rows 5–6), unchanged | framing / sourced |
+| 10 | `kproof` (`kproof_item`, `kproof_read`) | "9.0/10 Booking.com \| 4.9/5 Google \| read 3 Nov 2026" | scores, platforms and the date match `ratings[0–1]` (`reviews.booking` 9.0 / 125, `reviews.google` 4.9 / 78, both captured 2026-11-03), but **the counts are left out**, against playbook §6. A body-copy score is exempt only from the date requirement, not the count; this line is a standalone proof block, not body copy | **contradicted** (dropped qualifier) |
+| 11 | grouped amenities (`AMENITY_GROUPS`) | "Private bathroom in every room \| Free WiFi (in all areas) \| Outdoor shower \| Shared kitchen \| Shared lounge with TV \| Room service \| Luggage storage \| CCTV outside and in common areas" + "Additional charge: Airport shuttle, Bicycle rental, Walking tours, Laundry" | passed `amenities[]` (audit rows 53–64). Every row is present; the four "additional charge" rows are grouped under their shared note, with no rewording, and none is dropped or added | sourced |
+| 12 | glance line (check-in) | "Midigama Beach 250 m (Booking.com) \| Breakfast included, 8–10" ("Check-in any hour" removed) | a deletion only. "Check-in at any hour" stays under the King buttons (`stayShort`, unchanged) and in Good to know (`stayInfo.note` S1, audit row 48) | sourced (nothing new) |
+| 13 | testimonials order | Henry and Svenja lead; the other ten follow | all 12 quotes are unchanged (compared with the passed `copy/en.json`), and none is added or dropped | sourced |
+| 14 | garden slideshow alt (order swap) | img-043 "The Deluxe Queen Room, wide-angle: …" first, img-029 second | the alt texts are unchanged; only the order changed | unchanged |
+| 15 | `labels.amen_aria` | "Amenities" | group label | framing |
+
+Counts: 15 rows, 2 **contradicted**, 0 unsourced.
+
+### Replacements (designer, `src/lib/labels.json`)
+
+- `kproof_item`: "{s}/{scale} {p}" → **"{s}/{scale} {p}, {n} reviews"**. Pass `n: r.count` in `index.astro`. The line then renders: **"9.0/10 Booking.com, 125 reviews | 4.9/5 Google, 78 reviews | read 3 Nov 2026"**
+- `fc_latest`: "Latest reading, {t}" → **"Forecast for {t}"** (renders e.g. "Forecast for Mon 9 Nov, 14:30")
+
+### Owner items and the forecast rule
+
+- **The break(s) in front of the house, who they suit, and the season** (open owner item) stay unclaimed. Lazy Left appears only as "the Rosa spot nearest the house" and in Rosa's credit. The dossier's guest phrase "in front of the house" (`location.spot.value`) is correctly not used, and no walking time appears. Giada's words are a guest's opinion, attributed.
+- **Check-in** (24 h against Felix's afternoon-only stay) is still an open owner item. The fix round only removed one of three repetitions and added no new claim.
+- Svenja's quote, now second in Guests, says the spots are "suitable for everyone from beginner/intermediates to highly advanced surfers". It is verbatim and attributed, so it is a guest's words, not a claim by the house. Moving it to the front makes it more prominent while the break's level fit is an open owner item, so the human should know.
+
+### Voice
+
+The new lines are short, plain and concrete. "Lazy Left is the Rosa spot nearest the house." is a flat statement of fact, which is right for it. "Come and stay" is a stock heading but harmless above a concrete sentence. That is taste, not a fail. Clean.
+
+### Notes (not failing)
+
+- **F1.** The forecast block rests on Alon's 2026-11-04 decision, which overrides schema v0.3's "the nearest other spot is never used". The Cheeky Monkey amendment records it as pending Shahar on proposal `2026-10-midigama-01/003` item 1; this site's amendment does not mention that proposal.
+
+Applied 2026-11-09 (orchestrator): every replacement above, word for word, in `final/src/lib/labels.json` and `index.astro` (the review count). The fix round's copy passes with them.

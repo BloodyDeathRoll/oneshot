@@ -183,6 +183,10 @@
   "facebook": "https://www.facebook.com/cheekymonkeysrilanka/"
  },
  "_socials": "socialLinks[] exists only among the v0.11 brand modules; a surf_camp has no field for its site, Instagram and Facebook",
+ "forecast": {
+  "line": "Rams is the nearest spot Rosa covers, about 360 m from the shop.",
+  "_source": "round 4 (Alon, 2026-11-04; concepts.md §3 amendment of 2026-11-09): Rosa's data/index.json (rams 5.962565, 80.393597; the next, weligama-west 'Coconut', 578 m) against dossier location.lat_lng (5.9617986, 80.3967609): 360 m by haversine; 369 m from the shop's own Google listing (location.address_other_platforms). Never called the business's break"
+ },
  "drawer": {
   "boardsTile": "400 boards to rent",
   "boardStep": "400 boards for rent, in different sizes, tails and colours: shortboards, longboards and fish, and Cheeky Monkey's own boards, shaped in Bali. Scooters too.",

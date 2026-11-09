@@ -17,12 +17,14 @@ function attach(video){
   video.load();
 }
 function play(v){var p=v.play();if(p&&p.catch)p.catch(function(){});} /* autoplay refused: the poster stays */
+/* round 4: the visitor's pause (the hero's control) wins over the on-screen play */
+var paused=false, vids=[];
 function watch(el,video,margin,first){
-  var ready=false;
-  if(!('IntersectionObserver' in window)){first();ready=true;play(video);return}
+  var ready=false;vids.push({el:el,v:video});
+  if(!('IntersectionObserver' in window)){first();ready=true;if(!paused)play(video);return}
   new IntersectionObserver(function(es){var on=es[0].isIntersecting;
     if(on&&!ready){ready=true;first();}
-    if(ready){on?play(video):video.pause();}
+    if(ready){on&&!paused?play(video):video.pause();}
   },{rootMargin:margin}).observe(el);
 }
 if(!still){
@@ -30,6 +32,11 @@ if(!still){
   if(hv){
     var later=function(){requestAnimationFrame(function(){setTimeout(function(){
       watch(document.getElementById('hero'),hv,'0px',function(){attach(hv);});
+      var ctl=document.querySelector('.vid-ctl');
+      if(ctl){ctl.hidden=false;ctl.addEventListener('click',function(){
+        paused=!paused;ctl.setAttribute('aria-pressed',paused?'true':'false'); /* a toggle: the label stays, the pressed state says it is paused */
+        vids.forEach(function(x){if(paused)x.v.pause();else{var r=x.el.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight&&x.v.currentSrc)play(x.v);}});
+      });}
     },0)})};
     document.readyState==='complete'?later():addEventListener('load',later,{once:true});
   }
@@ -123,17 +130,21 @@ rm.forEach(function(b){b.addEventListener('click',function(){pick(rm,b);price()}
   var nb=list[(i+d+list.length)%list.length];nb.focus();nb.click();})})});
 
 /* ---------- the Rosa forecast (playbook §4 exception; 2026-11-04, Alon: Rosa's `rams`) ----------
-   Port of sites/layday-surf-ahangama/final (same mechanics as KA and The Lavish Haven). One request to Rosa's
-   per-spot JSON, made only when the block nears the viewport. With fresh data (under 24 h) the site draws the
-   headline, and only then is Rosa's widget iframe given its src. On failure, stale data, a 10 s timeout or no JS:
-   the plain link in the widget's reserved box. The headline's box stays reserved (hidden) when the block is on or
-   above the screen, so nothing shifts; when it fails while still below the screen, the empty box is dropped. */
+   One request to Rosa's per-spot JSON, made only when the block nears the viewport. With fresh data (under 24 h) the
+   site draws the headline, and only then is Rosa's widget iframe given its src. On failure, stale data, a 10 s timeout
+   or no JS: the headline card says so and the widget's box shows the composed card (.fc-alt), with the plain link.
+   Round 4 (verification 1): no HEAD request any more (rule 9 allows the JSON and the frame only). A cross-origin
+   frame fires `load` even when its request failed, so a refusal cannot be detected from here: the plain link stays
+   visible in the credit line at all times, and the composed card sits under the frame, so a frame that loads blank
+   still shows it. When the block fails while still below the screen (.solo), the empty headline box is dropped and
+   the composed card takes its own height (no visible shift); in or above the screen, every box keeps its size. */
 var fc=document.querySelector('.fc');
 if(fc){
-  var fNow=fc.querySelector('.fc-now'), fRosa=fc.querySelector('.fc-rosa'), fFrame=fRosa.querySelector('iframe');
+  var fNow=fc.querySelector('.fc-read'), fRosa=fc.querySelector('.fc-rosa'), fFrame=fRosa.querySelector('iframe');
   var fSet=function(k,v){var el=fNow.querySelector('[data-f="'+k+'"]');if(el){el.textContent=v;el.hidden=!v;}};
-  var fFail=function(){delete fNow.dataset.loading;fc.classList.add('off');
+  var fFail=function(){delete fNow.dataset.loading;delete fRosa.dataset.loading;fc.classList.remove('live');fc.classList.add('off');
     if(fc.getBoundingClientRect().top>innerHeight) fc.classList.add('solo');};
+  var fill=function(tpl,o){return String(tpl||'').replace(/\{(\w+)\}/g,function(m,k){return k in o?o[k]:m});};
   var WORDS=['north','north-east','east','south-east','south','south-west','west','north-west'];
   var from=function(deg){return WORDS[Math.round((((+deg%360)+360)%360)/45)%8];};
   var parts=function(iso,tz,o){var d=new Date(iso);if(isNaN(d))throw new Error('bad time');var r={};
@@ -152,37 +163,37 @@ if(fc){
     var nh=fNow.querySelector('.nh');
     if(!nh.firstChild||nh.firstChild.nodeType!==3)nh.insertBefore(document.createTextNode(''),nh.firstChild);
     nh.firstChild.textContent=f1(c.h[0])+'–'+f1(c.h[1]);
-    var t=parts(c.t,tz,{weekday:'long',day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'});
-    fSet('t',t.weekday+' '+t.day+' '+t.month+', '+t.hour+':'+t.minute);
+    /* the reading is labelled with its own time ("Forecast for Fri 20:30"): Rosa's `current` hour, not "now" */
+    var t=parts(c.t,tz,{weekday:'short',hour:'2-digit',minute:'2-digit'});
+    fSet('t',fill(fc.dataset.when,{day:t.weekday,time:t.hour+':'+t.minute}));
+    /* tools.md: the first in-window swell, its mean period */
     var sw=(c.swells||[]).filter(function(x){return x.in_window})[0];
     fSet('swell',sw&&isFinite(sw.period)?'Swell '+f1(sw.period)+' s from the '+from(sw.dir):'');
     var w=c.wind;
     fSet('wind',w&&isFinite(w.kph)?'Wind '+n1(w.kph)+' km/h from the '+from(w.dir)+(w.class?', '+w.class:''):'');
-    var u=parts(d.generated_at,tz,{day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'});
-    fSet('upd','Rosa, updated '+u.day+' '+u.month+' '+u.year+', '+u.hour+':'+u.minute);
+    var u=parts(d.generated_at,tz,{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'});
+    fSet('upd',fill(fc.dataset.upd,{day:u.day,month:u.month,time:u.hour+':'+u.minute}));
     fc.classList.add('live');
     fit();
     if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
     var lastW=fNow.clientWidth;
     if('ResizeObserver' in window)new ResizeObserver(function(){if(fNow.clientWidth!==lastW){lastW=fNow.clientWidth;fit();}}).observe(fNow);
   };
-  /* a cross-origin iframe fires `load` even when its request failed (it loads the browser's error page), so the
-     widget is shown only when a HEAD request to the same URL answered OK (rosa.surf/widget/ answers HEAD 200 with
-     access-control-allow-origin *, checked 2026-11-04) AND the frame has loaded, within 10 s. Otherwise the frame
-     loses its src and the plain link, visible all along in the same reserved box, stays. */
+  /* the widget: the frame gets its src; it is shown on `load` within 10 s, otherwise it loses its src and the composed
+     card stays in the box */
   var widget=function(){
-    var src=fFrame.dataset.src, done=false, to;
+    var done=false, to;
     fRosa.dataset.loading='true';
     var end=function(show){if(done)return;done=true;clearTimeout(to);delete fRosa.dataset.loading;
-      if(show)fRosa.classList.add('on');else{fRosa.classList.remove('on');fFrame.removeAttribute('src');}};
+      /* under a shown frame the composed card is covered: out of the tab order (inert), while the credit line's
+         plain link stays reachable */
+      if(show){fRosa.classList.add('on');var alt=fRosa.querySelector('.fc-alt');if(alt){alt.inert=true;alt.setAttribute('aria-hidden','true');}}
+      else fFrame.removeAttribute('src');};
     to=setTimeout(function(){end(false)},10000);
-    fetch(src,{method:'HEAD',credentials:'omit'}).then(function(r){
-      if(!r.ok)throw new Error(r.status);
-      fFrame.addEventListener('load',function(){end(true)},{once:true});
-      fFrame.src=src;
-    }).catch(function(){end(false)});
+    fFrame.addEventListener('load',function(){end(true)},{once:true});
+    fFrame.src=fFrame.dataset.src;
   };
-  /* rosa.surf sends frame-ancestors *, which does not match a file:// page: there, the link */
+  /* rosa.surf sends frame-ancestors *, which does not match a file:// page: there, the composed card */
   if(!('IntersectionObserver' in window)||!window.fetch||!window.Intl||location.protocol==='file:')fFail();
   else{
     var fio=new IntersectionObserver(function(es){

@@ -1,0 +1,240 @@
+{
+ "m .mark": {
+  "color": "rgb(255, 255, 255)",
+  "size": "17px",
+  "weight": "600",
+  "shadow": "rgba(0, 0, 0, 0.5) 0px 1px 8px",
+  "box": {
+   "w": 134,
+   "h": 45
+  },
+  "contrast_vs_background_percentile": {
+   "median": 12.15,
+   "p90": 6.71,
+   "p98": 2.72
+  }
+ },
+ "m h1": {
+  "color": "rgb(255, 255, 255)",
+  "size": "44.46px",
+  "weight": "400",
+  "shadow": "rgba(0, 0, 0, 0.45) 0px 2px 18px",
+  "box": {
+   "w": 313,
+   "h": 49
+  },
+  "contrast_vs_background_percentile": {
+   "median": 9.39,
+   "p90": 5.92,
+   "p98": 4.7
+  }
+ },
+ "m .where": {
+  "color": "rgb(255, 255, 255)",
+  "size": "17px",
+  "weight": "600",
+  "shadow": "rgba(0, 0, 0, 0.55) 0px 1px 10px",
+  "box": {
+   "w": 320,
+   "h": 51
+  },
+  "contrast_vs_background_percentile": {
+   "median": 11.47,
+   "p90": 6.58,
+   "p98": 5.81
+  }
+ },
+ "m .btn-hero-call > span": {
+  "color": "rgb(255, 255, 255)",
+  "size": "15px",
+  "weight": "600",
+  "shadow": "none",
+  "box": {
+   "w": 143,
+   "h": 18
+  },
+  "contrast_vs_background_percentile": {
+   "median": 8.78,
+   "p90": 7.17,
+   "p98": 6.11
+  }
+ },
+ "m .king-over > .floor-tag": {
+  "color": "rgba(255, 255, 255, 0.9)",
+  "size": "15px",
+  "weight": "600",
+  "shadow": "none",
+  "box": {
+   "w": 350,
+   "h": 24
+  },
+  "contrast_vs_background_percentile": {
+   "median": 3.81,
+   "p90": 3.05,
+   "p98": 2.76
+  }
+ },
+ "m #h-king": {
+  "color": "rgb(255, 255, 255)",
+  "size": "52px",
+  "weight": "400",
+  "shadow": "rgba(0, 0, 0, 0.35) 0px 2px 24px",
+  "box": {
+   "w": 300,
+   "h": 114
+  },
+  "contrast_vs_background_percentile": {
+   "median": 6.85,
+   "p90": 4.51,
+   "p98": 4.04
+  }
+ },
+ "m .king-lede": {
+  "color": "rgb(255, 255, 255)",
+  "size": "17.5px",
+  "weight": "400",
+  "shadow": "rgba(0, 0, 0, 0.4) 0px 1px 12px",
+  "box": {
+   "w": 350,
+   "h": 57
+  },
+  "contrast_vs_background_percentile": {
+   "median": 9.24,
+   "p90": 8.11,
+   "p98": 7.51
+  }
+ },
+ "d .mark": {
+  "color": "rgb(41, 52, 8)",
+  "size": "17px",
+  "weight": "600",
+  "shadow": "none",
+  "box": {
+   "w": 134,
+   "h": 45
+  },
+  "contrast_vs_background_percentile": {
+   "median": 13.22,
+   "p90": 13.22,
+   "p98": 13.22
+  }
+ },
+ "d h1": {
+  "color": "rgb(41, 52, 8)",
+  "size": "79.2px",
+  "weight": "400",
+  "shadow": "none",
+  "box": {
+   "w": 557,
+   "h": 87
+  },
+  "contrast_vs_background_percentile": {
+   "median": 13.22,
+   "p90": 13.22,
+   "p98": 13.22
+  }
+ },
+ "d .where": {
+  "color": "rgb(90, 95, 76)",
+  "size": "18px",
+  "weight": "400",
+  "shadow": "none",
+  "box": {
+   "w": 420,
+   "h": 54
+  },
+  "contrast_vs_background_percentile": {
+   "median": 6.61,
+   "p90": 6.61,
+   "p98": 6.61
+  }
+ },
+ "d .btn-hero-call > span": {
+  "color": "rgb(41, 52, 8)",
+  "size": "15px",
+  "weight": "600",
+  "shadow": "none",
+  "box": {
+   "w": 143,
+   "h": 18
+  },
+  "contrast_vs_background_percentile": {
+   "median": 13.22,
+   "p90": 13.22,
+   "p98": 13.22
+  }
+ },
+ "d .king-over > .floor-tag": {
+  "color": "rgba(255, 255, 255, 0.9)",
+  "size": "15px",
+  "weight": "600",
+  "shadow": "none",
+  "box": {
+   "w": 1152,
+   "h": 24
+  },
+  "contrast_vs_background_percentile": {
+   "median": 4.67,
+   "p90": 3.59,
+   "p98": 2.81
+  }
+ },
+ "d #h-king": {
+  "color": "rgb(255, 255, 255)",
+  "size": "84px",
+  "weight": "400",
+  "shadow": "rgba(0, 0, 0, 0.35) 0px 2px 24px",
+  "box": {
+   "w": 1152,
+   "h": 92
+  },
+  "contrast_vs_background_percentile": {
+   "median": 6.88,
+   "p90": 4.77,
+   "p98": 3.99
+  }
+ },
+ "d .king-lede": {
+  "color": "rgb(255, 255, 255)",
+  "size": "20px",
+  "weight": "400",
+  "shadow": "rgba(0, 0, 0, 0.4) 0px 1px 12px",
+  "box": {
+   "w": 520,
+   "h": 65
+  },
+  "contrast_vs_background_percentile": {
+   "median": 10.82,
+   "p90": 8.15,
+   "p98": 7.23
+  }
+ },
+ "upstairs tag, text box only (white 0.9 alpha composited)": {
+  "m": {
+   "box": {
+    "x": 50,
+    "y": 453.71875,
+    "width": 55.890625,
+    "height": 20,
+    "text": "Upstairs",
+    "color": ""
+   },
+   "contrast_p10": 2.72,
+   "contrast_median": 3.4,
+   "contrast_p90": 4.38
+  },
+  "d": {
+   "box": {
+    "x": 174,
+    "y": 481.53125,
+    "width": 55.890625,
+    "height": 20,
+    "text": "Upstairs",
+    "color": ""
+   },
+   "contrast_p10": 9.04,
+   "contrast_median": 10.09,
+   "contrast_p90": 11.76
+  }
+ }
+}
