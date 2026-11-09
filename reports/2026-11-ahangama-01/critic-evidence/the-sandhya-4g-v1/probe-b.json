@@ -1,0 +1,164 @@
+{
+ "clip": {
+  "same-month": {
+   "320": [
+    "hero:ok:56",
+    "room:ok:53",
+    "room:ok:53",
+    "room:ok:53",
+    "room:ok:53",
+    "rooms-set:ok:56",
+    "card:CLIPPED:64",
+    "bar:ok:54"
+   ],
+   "390": [
+    "hero:ok:56",
+    "room:ok:52",
+    "room:ok:52",
+    "room:ok:52",
+    "room:ok:52",
+    "rooms-set:ok:56",
+    "card:ok:64",
+    "bar:ok:54"
+   ],
+   "768": [
+    "hero:ok:56",
+    "header:ok:48",
+    "room:ok:52",
+    "room:ok:52",
+    "room:ok:52",
+    "room:ok:52",
+    "rooms-set:ok:56",
+    "card:ok:64"
+   ],
+   "1440": [
+    "hero:ok:56",
+    "header:ok:48",
+    "room:ok:52",
+    "room:ok:52",
+    "room:ok:52",
+    "room:ok:52",
+    "rooms-set:ok:56",
+    "card:ok:64"
+   ]
+  },
+  "cross-month": {
+   "320": [
+    "hero:CLIPPED:56",
+    "room:ok:53",
+    "room:ok:53",
+    "room:ok:53",
+    "room:ok:53",
+    "rooms-set:CLIPPED:56",
+    "card:CLIPPED:64",
+    "bar:CLIPPED:54"
+   ],
+   "390": [
+    "hero:ok:56",
+    "room:ok:52",
+    "room:ok:52",
+    "room:ok:52",
+    "room:ok:53",
+    "rooms-set:ok:56",
+    "card:ok:64",
+    "bar:ok:54"
+   ],
+   "768": [
+    "hero:ok:56",
+    "header:ok:48",
+    "room:ok:52",
+    "room:ok:52",
+    "room:ok:52",
+    "room:ok:52",
+    "rooms-set:ok:56",
+    "card:ok:64"
+   ],
+   "1440": [
+    "hero:ok:56",
+    "header:ok:48",
+    "room:ok:52",
+    "room:ok:52",
+    "room:ok:52",
+    "room:ok:52",
+    "rooms-set:ok:56",
+    "card:ok:64"
+   ]
+  },
+  "cross-year": {
+   "320": [
+    "hero:CLIPPED:56",
+    "room:ok:53",
+    "room:ok:53",
+    "room:ok:53",
+    "room:ok:53",
+    "rooms-set:CLIPPED:56",
+    "card:CLIPPED:64",
+    "bar:CLIPPED:54"
+   ],
+   "390": [
+    "hero:CLIPPED:56",
+    "room:ok:53",
+    "room:ok:53",
+    "room:ok:53",
+    "room:ok:53",
+    "rooms-set:CLIPPED:56",
+    "card:CLIPPED:64",
+    "bar:CLIPPED:54"
+   ],
+   "768": [
+    "hero:ok:56",
+    "header:ok:48",
+    "room:ok:52",
+    "room:ok:52",
+    "room:ok:52",
+    "room:ok:52",
+    "rooms-set:ok:56",
+    "card:CLIPPED:64"
+   ],
+   "1440": [
+    "hero:ok:56",
+    "header:ok:48",
+    "room:ok:52",
+    "room:ok:52",
+    "room:ok:53",
+    "room:ok:53",
+    "rooms-set:ok:56",
+    "card:CLIPPED:64"
+   ]
+  }
+ },
+ "nojs": [
+  {
+   "alt": "Tall slatted teak doors standing open un",
+   "w": 0,
+   "h": 0,
+   "display": "none",
+   "vis": "visible",
+   "op": "1"
+  },
+  {
+   "alt": "A white bed in the foreground, glass doo",
+   "w": 0,
+   "h": 0,
+   "display": "none",
+   "vis": "visible",
+   "op": "1"
+  },
+  {
+   "alt": "From the foot of the bed: a dark daybed,",
+   "w": 0,
+   "h": 0,
+   "display": "none",
+   "vis": "visible",
+   "op": "1"
+  },
+  {
+   "alt": "The whole room: a king bed with a teak h",
+   "w": 0,
+   "h": 0,
+   "display": "none",
+   "vis": "visible",
+   "op": "1"
+  }
+ ]
+}

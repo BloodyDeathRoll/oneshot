@@ -608,3 +608,66 @@ The prompt accepts `audit-mockup`'s `lcp_ms` as proof of a fast first screen. On
 `reports/2026-11-ahangama-01/funnel/the-sandhya-r1/funnel.json`: `tools/funnel.mjs --depth 3`. Its two screenshots were deleted.
 
 **What the screenshots showed** (`tools/shoot.mjs` over http, scratch, not kept; 20 desktop and 23 phone captures in viewport steps). The first screen is img-071 with the h1 on the bed and the red button under it, on both widths. The phone bar is present from the second capture to the last. There is no overflow or overlap on either contact sheet. The date fields read "dd/mm/yyyy" in full at 390 and sit side by side. The rating line under the amenities is small grey text at both widths. A first shoot over `file://` blocked the text font (CORS), which is a property of `file://`, not a page fault. It was discarded and reshot over http.
+
+# Verification 1, after the fix pass (`459db5a`), 2026-11-09
+
+`npm run build` in `final/` was clean and left the tree unchanged. The new `dist/` was served on 8771 by the plain static server, with every non-localhost request stubbed or aborted. `audit-mockup` was run from the scratch root as before. The other two reviewers' files were not read. Evidence is in `critic-evidence/the-sandhya-4g-v1/`.
+
+```
+mode: full    verification 1 of critiqued(1)    variant: calm (final)
+total: 89.0 / 100 (dimensions 1-7 = 73.5 / 80; d8 = 8 as the visual critics scored it)    result: PASS    hard_fails: []
+```
+
+| # | dimension | r1 | v1 | evidence |
+|---|---|---|---|---|
+| 1 | facts | 9 | 9 | Copy unchanged: 127 of 130 sentences verbatim, JS on and off. The other 3 are the room list. All 9 engine hrefs are exactly the dossier URLs on load, JS on and off (`probe.json` `engine_all_dossier`). The new visible strings are template labels (`labels.mjs`) filled from the visitor's own dates: "Check 9–12 Dec · 3 nights", "Studio King: 9–12 Dec · 3 nights". The night counts are right for 1 night, across a month, across a year and over a European DST weekend (26 Mar – 2 Apr = 7). The 4f flags stand (Kayak via digest, the Suite's bed, img-167, the staff prints) |
+| 2 | mobile + performance | 8 | 9 | **Fix 3 landed.** The hero's bytes finish at 1,484 to 1,498 ms on the throttled phone (was 2,657 to 2,677) and 1,758 to 1,759 ms on desktop (was 3,220 to 3,237), 3 runs each. Nothing loads beside it but the header logo and the font (`lcp.json`). 10 `audit-mockup` runs: first load 273,877 B (267 KB, 4 requests, was 601 KB), LCP 560 to 648 ms (the `h1`), CLS 0.0039, scroll CLS 0.0039 early (font swap at 1.26 s, `#text`, `span.lbl`) and 0 settled in 10 of 10, largest image 98 KB, 0 third-party. Minus 1 for what the trade costs: a visitor who scrolls straight down on slow 4G waits 2.0 to 2.5 s for the doors photo and each room's first photograph after it enters the view. Space is reserved and nothing jumps (`probe.json` `throttled`). That is a trade, not a fault |
+| 3 | booking CTA | 9 | 9 | `funnel.json` (`funnel/the-sandhya-v1/`): `clicks_to_book` 1, primary `engine`, hero `engine`. Both date sets share one state: check-in in the rooms set fills both sets. Every href stays plain until the pair is valid. Check-out first, a past check-in, a cleared date, a stale stored pair and broken storage all keep or return all 9 to the dossier URL. The half-date line shows only in the set used. Tapping the card's button navigates to `…/WMvA6V#checkin=2026-12-09&checkout=2026-12-12`. Back and reload restore the pair and the labels. Point off as before: the engine has not been seen to read the fragment or `?rid=`. **This weighs more now, because the buttons name the dates** |
+| 4 | brand fit | 9 | 9 | The dates now sit where the choice is made, straight after the rooms. Arrival still comes before the rooms (concept order), minus 1 as before |
+| 5 | copy | 8 | 9 | **Fix 4 landed:** the copyeditor passed the "Every room has" list (`6e478cd`, `copy/review.md`). Minus 1: on narrow screens the dated labels end in "…", so the visitor loses the nights or the year (below) |
+| 6 | accessibility | 8 | 10 | **Fixes 1 and 2 landed.** Tab at 390: 73 stops, **0 under the bar**, 0 covered, 0 out of view (`kbd_phone`, `elementFromPoint` at each stop after 800 ms). axe 4.13: **0 violations on phone and desktop**. The sticky header is `div[role=region]` "Sections and booking", and 5 to 7 contrast checks stay incomplete as before. Fields are 158 to 170 × 67 at 390, labelled, with the focus-within outline. Each clipped label keeps its full text as the link's accessible name |
+| 7 | delivery | 10 | 10 | 0 external requests, JS on and off. `check-design` 0 problems, 0 warnings. No CMS call. `sessionStorage` is wrapped in try/catch (broken storage tested) |
+
+Weighted: 18 + 13.5 + 13.5 + 4.5 + 9 + 8 + 7 = **73.5 / 80**. With d8 = 8: (73.5 + 20) × 100 ÷ 105 = **89.0**. Every dimension is at 6 or above, every budget line is met and there is no hard fail.
+
+## Regressions checked
+
+| Check | Result |
+|---|---|
+| JS off | Rooms set hidden whole. Card fields hidden, its button shown. **7 plain engine links visible**, all exact dossier URLs. Photos: 47 of 47 images load through `<noscript>`. The 23 `data-src` placeholders are `display:none`, not empty boxes (the room slide was checked in a capture) |
+| Lazy photos load as you scroll, 390 and 1440 | Scrolled in 0.7-screen steps with 900 ms each: **0 blank images in view at any stop**, 47 of 47 loaded at the end, 0 left unwoken. Every slide of all four rooms was shown by its dot: 22 of 22 painted at both widths |
+| Hero stalls | A 4 s timer wakes the rest. The code was read, not tested with a stalled hero |
+| Overflow 320 to 1440 with the longest labels | `scrollWidth` = `clientWidth` at 320, 360, 390, 768 and 1440 |
+| Early-scroll CLS | 0.0039 in 10 of 10, under 0.01 |
+
+## A glance at the visible changes
+
+Crops at 320, 360, 390 and 1440 with dates set (scratch, not kept). The **fields** after the rooms read "30/12/2026" in full and stack below 380 px. They are side by side at 390, and the same 440 px width as the button at 1440. Nothing overflows. **Room buttons** wrap to two lines cleanly (53 px). **The other dated buttons ellipsize** when the label is long (`probe-b.json`):
+
+| Label form | 320 | 390 | 768 and 1440 |
+|---|---|---|---|
+| Same month, "Check 9–12 Dec · 3 nights" | only the card's big button clips | none | none |
+| Across months, "Check 30 Jan – 2 Feb · 3 nights" | hero, rooms set, card and bar clip | none | none |
+| Across years, "Check 30 Dec 2026 – 2 Jan 2027 · 3 nights" | hero, rooms set, card and bar clip | the same four clip | the card's big button clips ("…2 Jan 2027 · …") |
+
+At 320 the bar reads "Check 30 Dec 2026 – 2 Jan …". At 1440 the card reads "Check 30 Dec 2026 – 2 Jan 2027 · …". The href is right in every case, and the clipping is clean, with no overlap. It is a small, visible blemish on the common phone widths for any stay that crosses a month end. It is not a clear regression of the page as a whole, so **d8 stays at 8**. That is for the visual critics to weigh.
+
+## Fix list (no gate fails), smallest first
+
+1. Dimension 5: keep the dated labels from clipping. Drop the year unless the stay is more than about 11 months away. Let the hero, rooms set and card buttons wrap like the room buttons (the bar can keep its ellipsis). Or shorten the label to the range alone on narrow screens. Retest the three label forms at 320 and 390, and the card at 1440.
+2. Before go-live, unchanged and now more important: a person checks in a real browser that Cloudbeds shows the dates from `#checkin=…&checkout=…` and the room from `?rid=`. The buttons now promise the dates by name. If the engine ignores them, remove both `data-dates` blocks.
+3. Unchanged owner items: Kayak's 9.4, the Suite's bed, img-167, the staff prints.
+
+## Not covered
+
+Cloudbeds itself. Real phones, Safari and the native pickers. A hero that really stalls (only the code was read). Pixel contrast beyond axe. The tablet header nudge at 768 to 1023 portrait was not looked at. The full contact sheets were not reshot: only crops of the changed parts, the JS-off room slide and the probes. Dimension 8 stays with the visual critics.
+
+## Evidence
+
+`critic-evidence/the-sandhya-4g-v1/`:
+- `audit-01.json` … `audit-10.json`
+- `lcp.json` (hero timing)
+- `probe.json`: text, engine hrefs, the date cases, widths, the keyboard at 390, axe with landmarks, the lazy-load walk at both widths, throttled photo timings
+- `probe-b.json`: label clipping by form and width, the JS-off placeholders
+
+Also `funnel/the-sandhya-v1/funnel.json`, whose two screenshots were deleted.
