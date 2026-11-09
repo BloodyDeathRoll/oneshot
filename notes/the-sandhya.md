@@ -4,7 +4,7 @@ Run `2026-11-ahangama-01`, owner alon, branch `alon/the-sandhya`, `mode: test` (
 
 ## State
 
-`mocked`, waiting at gate b: Alon picks one to three mockups. Scores and the pick table are in `reports/2026-11-ahangama-01/run.md`. Calm and interactive pass; unique fails (7 and 7) and is shown marked as failing, after Alon said "continue" when offered that or another round on unique. Preview locally: `python3 -m http.server 8790 --directory sites/the-sandhya/mockups`, then `/calm/dist/index.html`, `/interactive/dist/index.html`, `/unique/dist/index.html`; over http, because WebGL won't load images from `file://`. 7.72M of 10M tokens used. Copy passed on its fourth pass. That pass rests on rulings and says so in `copy/review.md`: 42 sentences are exempt from "no triads" and "no padding", and on this pass voice could fail only for what a reader would get wrong or stumble over. The session proposed that condition in the option Alon chose on 2026-11-06. Budget raised by Alon on 2026-11-06 to 10M tokens and 600 minutes, at 1.28M and 86 minutes used; 1.81M and 109 minutes used now; review it again at gate b.
+`picked` (2026-11-09): Alon kept **calm** ("The Artwork") only; interactive and unique are not built. Next is 4g, the build of `sites/the-sandhya/mockups/calm/` into `sites/the-sandhya/final/`. Alon also chose **date fields**: the build adds check-in and check-out fields that pass the dates to the Cloudbeds engine URL, which meets `agents/designer/custom.md`'s "pick dates". A person still has to confirm the engine honours those dates before go-live. Budget: 7.72M of 10M tokens used, so about 2.28M remain for the build through to the pitch (`sanjee-surf-school` used about 2.4M on those stations). Review the budget if the critique loop needs a second round. Preview the mockups locally: `python3 -m http.server 8790 --directory sites/the-sandhya/mockups`, then `/calm/dist/index.html`. Use http, because WebGL won't load images from `file://`. Copy passed on its fourth pass, resting on the rulings stated in `copy/review.md`.
 
 ## Decided 2026-11-06 (Alon: "you decide")
 
@@ -15,11 +15,11 @@ Run `2026-11-ahangama-01`, owner alon, branch `alon/the-sandhya`, `mode: test` (
 
 Done. Dining ¶2 S2 and S3 are the wording Alon approved. `copy/sources.md` and `humanizer-notes.md` keep small stale rows on the older Dining sentence and the draft diff; `copy/en.json` and `copy/review.md` are right. For a person before go-live: `copy/review.md`, "For a person".
 
-## Raise at gate b
+## Settled at gate b
 
-- No concept has a date picker, but `agents/designer/custom.md` (Shahar's) says booking inside the site includes "pick dates". The audit forbids only dates shown and not sent, and picked dates do reach the engine's URL; nobody has seen the engine honour them. Once a person opens the engine, this can be settled: add working date fields at the build, or ask Shahar to waive it.
-- Concept 3 grades a real photograph from noon to dusk, close to PLAN.md's "no generated imagery". Both visual critics found its first screen processed, so round 2 opens on the ungraded photograph; any graded frame must not pass as the real building at dusk. If a grade survives, the operator or Shahar rules on it.
-- The experience critic: `references.md` says the booking journey must feel like part of the site; if that binds, none of the three reaches 8 without date fields, calm included.
+- Date picker: add working date fields at the build (Alon, 2026-11-09).
+- Unique's grade and sea strip: moot, because unique was not kept.
+- The experience critic's point that booking must feel part of the site: the date fields address it. The critic checks it again at 4h.
 
 ## Do not lose
 

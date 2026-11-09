@@ -4,7 +4,7 @@ Operator alon. One business, `the-sandhya`, `mode: test`. Caps from the run file
 
 ## the-sandhya
 
-State: `mocked`, waiting at gate b (the mockup pick).
+State: `picked`. At gate b Alon kept calm only, with date fields added at the build (2026-11-09). Next: 4g build.
 
 | Station | Agent | Round | Tokens | Minutes | Result |
 |---|---|---|---|---|---|
@@ -41,4 +41,4 @@ Minutes are each agent's own run time added up; agents that ran side by side too
 
 Unique is presented marked as failing. Orchestrator rule 4a says a human always gets three passing mockups, with an ask after round 5. Alon was offered going to the pick with the two that pass, or another round on unique, and answered "continue"; the session took that as the first. Unique can still get its round.
 
-Open for the pick: no date picker in any mockup, against `agents/designer/custom.md`; a ruling on unique's moving grade, and its sea strip against `custom.md`, if unique is kept or reworked.
+**Picked (2026-11-09):** calm. The build adds check-in and check-out fields that pass the dates to the Cloudbeds URL, which meets `agents/designer/custom.md`. The unique rulings are moot.
