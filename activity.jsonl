@@ -74,3 +74,7 @@
 {"ts":"2026-11-06T12:52:47Z","operator":"alon","slug":"cheeky-monkey","kind":"work","note":"Redeployed after PR #68: proposal a75ae6cb, preview b3b92862 (only the .handoff[hidden] rule changed); site-check ok"}
 {"ts":"2026-11-06T12:52:47Z","operator":"alon","slug":"lotus-surf-house","kind":"work","note":"Redeployed proposal after PR #68: version 40a36fd2"}
 {"ts":"2026-11-06T12:52:47Z","operator":"alon","slug":"coconut-surf-inn-guest-house-and-restaurant","kind":"work","note":"Redeployed proposal after PR #68: version 549d09ed"}
+{"ts":"2026-11-06T14:25:28Z","operator":"alon","slug":"cheeky-monkey","kind":"assign","id":"a-202611061425-bx3t","to":"alon","task":"Full-mode verification after the forecast and hand-off fix; new proposal screenshots"}
+{"ts":"2026-11-06T14:25:30Z","operator":"alon","slug":"lotus-surf-house","kind":"assign","id":"a-202611061425-1xlc","to":"alon","task":"Full-mode verification after the forecast; new proposal screenshots"}
+{"ts":"2026-11-06T21:29:32Z","operator":"alon","slug":"cheeky-monkey","kind":"done","id":"a-202611061425-bx3t","note":"Verification 1 done: FAIL 81.9/100; new screenshots wait for the fixes"}
+{"ts":"2026-11-06T21:29:32Z","operator":"alon","slug":"lotus-surf-house","kind":"done","id":"a-202611061425-1xlc","note":"Verification 1 done: FAIL on dimension 8 (86.0/100); new screenshots wait for the fixes"}

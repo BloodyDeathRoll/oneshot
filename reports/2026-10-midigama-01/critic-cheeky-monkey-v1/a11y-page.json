@@ -1,0 +1,554 @@
+{
+ "w390": {
+  "handoffAtLoad": {
+   "hiddenAttr": true,
+   "display": "none"
+  },
+  "ax": {
+   "violations": [],
+   "passes": 30,
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "n": 179
+    }
+   ]
+  },
+  "ov": {
+   "sw": 390,
+   "cw": 390
+  },
+  "pause": [],
+  "videos": [
+   {
+    "src": "cm-drone.p1080.webm",
+    "paused": false,
+    "muted": true,
+    "loop": true,
+    "aria": "true",
+    "dur": 6.2
+   },
+   {
+    "src": "cm-board.p640.webm",
+    "paused": false,
+    "muted": true,
+    "loop": true,
+    "aria": "true",
+    "dur": 7.766
+   }
+  ],
+  "fcLinks": [
+   {
+    "t": "Forecast for Rams by Rosa",
+    "w": 192,
+    "h": 48
+   },
+   {
+    "t": "See today's forecast for Rams on Rosa",
+    "w": 350,
+    "h": 500
+   }
+  ],
+  "contrast": [
+   {
+    "s": ".credit-rosa a",
+    "f": "rgb(20, 55, 70)",
+    "g": "rgb(255, 255, 255)",
+    "ratio": 12.62,
+    "size": "16px"
+   },
+   {
+    "s": ".nh",
+    "f": "rgb(20, 55, 70)",
+    "g": "rgb(255, 255, 255)",
+    "ratio": 12.62,
+    "size": "64px"
+   },
+   {
+    "s": ".nh small",
+    "f": "rgb(61, 88, 101)",
+    "g": "rgb(255, 255, 255)",
+    "ratio": 7.55,
+    "size": "20.48px"
+   },
+   {
+    "s": ".nd span:first-child",
+    "f": "rgb(20, 55, 70)",
+    "g": "rgb(255, 255, 255)",
+    "ratio": 12.62,
+    "size": "15px"
+   },
+   {
+    "s": ".nd span:nth-child(2)",
+    "f": "rgb(61, 88, 101)",
+    "g": "rgb(255, 255, 255)",
+    "ratio": 7.55,
+    "size": "15px"
+   },
+   {
+    "s": ".fc-now .upd span",
+    "f": "rgb(61, 88, 101)",
+    "g": "rgb(253, 230, 238)",
+    "ratio": 6.37,
+    "size": "13px"
+   },
+   {
+    "s": ".fc-link",
+    "f": "rgb(20, 55, 70)",
+    "g": "rgb(255, 255, 255)",
+    "ratio": 12.62,
+    "size": "18px"
+   }
+  ],
+  "tabs": [
+   {
+    "tag": "A",
+    "t": "Skip to surf weeks and price",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "A",
+    "t": "Cheeky Monkey Surf Camp | Mi",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "A",
+    "t": "Book",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "A",
+    "t": "",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "A",
+    "t": "Check dates on Booking.com",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "A",
+    "t": "See the surf weeks",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "A",
+    "t": "Forecast for Rams by Rosa",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "IFRAME",
+    "t": "",
+    "outline": "none 3px"
+   },
+   {
+    "tag": "DIV",
+    "t": "Full Surf Lesson Package USD",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "A",
+    "t": "Call to book",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "A",
+    "t": "",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "A",
+    "t": "Call to book",
+    "outline": "solid 3px"
+   }
+  ],
+  "opener": {
+   "tag": "A",
+   "attrs": "class,href,data-plan,data-open-drawer,data-v1",
+   "href": "#book"
+  },
+  "panel": {
+   "handoffHidden": true,
+   "handoffDisplay": "none",
+   "handoffVisible": false,
+   "focus": "BUTTON:",
+   "buttons": [
+    ""
+   ]
+  },
+  "afterPick": null,
+  "afterRoom": {
+   "error": "TimeoutError: locator.click: Timeout 3000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button:visible').filter({ hasText: /^A room/ }).first()\u001b[22m\n"
+  },
+  "esc": null,
+  "errs": [],
+  "ext": 11,
+  "extHosts": [
+   "rosa-data-opal.vercel.app",
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ]
+ },
+ "w1440": {
+  "handoffAtLoad": {
+   "hiddenAttr": true,
+   "display": "none"
+  },
+  "ax": {
+   "violations": [],
+   "passes": 30,
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "n": 183
+    }
+   ]
+  },
+  "ov": {
+   "sw": 1440,
+   "cw": 1440
+  },
+  "pause": [],
+  "videos": [
+   {
+    "src": "cm-drone.d1920.webm",
+    "paused": false,
+    "muted": true,
+    "loop": true,
+    "aria": "true",
+    "dur": 6.2
+   },
+   {
+    "src": "cm-board.m720.mp4",
+    "paused": false,
+    "muted": true,
+    "loop": true,
+    "aria": "true",
+    "dur": 7.766667
+   }
+  ],
+  "fcLinks": [
+   {
+    "t": "Forecast for Rams by Rosa",
+    "w": 192,
+    "h": 26
+   },
+   {
+    "t": "See today's forecast for Rams on Rosa",
+    "w": 420,
+    "h": 500
+   }
+  ],
+  "contrast": [
+   {
+    "s": ".credit-rosa a",
+    "f": "rgb(20, 55, 70)",
+    "g": "rgb(255, 255, 255)",
+    "ratio": 12.62,
+    "size": "16px"
+   },
+   {
+    "s": ".nh",
+    "f": "rgb(20, 55, 70)",
+    "g": "rgb(255, 255, 255)",
+    "ratio": 12.62,
+    "size": "92px"
+   },
+   {
+    "s": ".nh small",
+    "f": "rgb(61, 88, 101)",
+    "g": "rgb(255, 255, 255)",
+    "ratio": 7.55,
+    "size": "29.44px"
+   },
+   {
+    "s": ".nd span:first-child",
+    "f": "rgb(20, 55, 70)",
+    "g": "rgb(255, 255, 255)",
+    "ratio": 12.62,
+    "size": "16px"
+   },
+   {
+    "s": ".nd span:nth-child(2)",
+    "f": "rgb(61, 88, 101)",
+    "g": "rgb(255, 255, 255)",
+    "ratio": 7.55,
+    "size": "16px"
+   },
+   {
+    "s": ".fc-now .upd span",
+    "f": "rgb(61, 88, 101)",
+    "g": "rgb(253, 230, 238)",
+    "ratio": 6.37,
+    "size": "13px"
+   },
+   {
+    "s": ".fc-link",
+    "f": "rgb(20, 55, 70)",
+    "g": "rgb(255, 255, 255)",
+    "ratio": 12.62,
+    "size": "18px"
+   }
+  ],
+  "tabs": [
+   {
+    "tag": "A",
+    "t": "Skip to surf weeks and price",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "A",
+    "t": "Cheeky Monkey Surf Camp | Mi",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "A",
+    "t": "Surf weeks",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "A",
+    "t": "Rooms",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "A",
+    "t": "Shop",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "A",
+    "t": "Plan a stay",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "A",
+    "t": "Book",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "A",
+    "t": "",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "A",
+    "t": "Check dates on Booking.com",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "A",
+    "t": "See the surf weeks",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "A",
+    "t": "Forecast for Rams by Rosa",
+    "outline": "solid 3px"
+   },
+   {
+    "tag": "IFRAME",
+    "t": "",
+    "outline": "none 3px"
+   }
+  ],
+  "opener": {
+   "tag": "A",
+   "attrs": "class,href,data-plan,data-v1",
+   "href": "#book"
+  },
+  "panel": {
+   "handoffHidden": true,
+   "handoffDisplay": "none",
+   "handoffVisible": false,
+   "focus": "BUTTON:",
+   "buttons": [
+    ""
+   ]
+  },
+  "afterPick": null,
+  "afterRoom": {
+   "error": "TimeoutError: locator.click: Timeout 3000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button:visible').filter({ hasText: /^A room/ }).first()\u001b[22m\n"
+  },
+  "esc": null,
+  "errs": [],
+  "ext": 11,
+  "extHosts": [
+   "rosa-data-opal.vercel.app",
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ]
+ },
+ "reduced390": {
+  "videoRequests": [],
+  "videoSrc": [
+   "",
+   ""
+  ],
+  "fc": {
+   "fc": "fc live",
+   "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+  }
+ },
+ "jsoff_w390": {
+  "ext": [],
+  "text": 10092,
+  "booking": 21,
+  "tel": 11,
+  "handoffDisplay": "none",
+  "plainOnly": [
+   "inline-flex"
+  ],
+  "overflow": 390
+ },
+ "jsoff_w1440": {
+  "ext": [],
+  "text": 10119,
+  "booking": 21,
+  "tel": 11,
+  "handoffDisplay": "none",
+  "plainOnly": [
+   "inline-flex"
+  ],
+  "overflow": 1440
+ },
+ "w320": {
+  "sw": 320,
+  "frame": [
+   280,
+   500
+  ],
+  "now": [
+   280,
+   340
+  ],
+  "nh": 227,
+  "fc": "fc live"
+ },
+ "budgetWithEmbed": {
+  "state": {
+   "fc": "fc live",
+   "rosa": "fc-rosa on",
+   "frame": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric"
+  },
+  "firstLoad": {
+   "n": 9,
+   "bytes": 454911,
+   "video": 419247,
+   "third": 0,
+   "lcp_cls": [
+    552,
+    0
+   ]
+  },
+  "afterBlock": {
+   "n": 27,
+   "bytes": 769310,
+   "thirdBytes": 122283
+  },
+  "thirdByCat": {
+   "js": 10120,
+   "fonts": 50217,
+   "html": 7863,
+   "image": 54083
+  },
+  "thirdHosts": [
+   "rosa-data-opal.vercel.app",
+   "fonts.googleapis.com",
+   "rosa.surf",
+   "server.arcgisonline.com",
+   "fonts.gstatic.com"
+  ],
+  "thirdRows": [
+   {
+    "u": "https://rosa-data-opal.vercel.app/data/spots/rams.json",
+    "third": true,
+    "type": "fetch",
+    "ct": "application/json; charset=utf-8",
+    "bytes": 10015
+   },
+   {
+    "u": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+    "third": true,
+    "type": "stylesheet",
+    "ct": "text/css; charset=utf-8",
+    "bytes": 1234
+   },
+   {
+    "u": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "third": true,
+    "type": "document",
+    "ct": "text/html; charset=utf-8",
+    "bytes": 7863
+   },
+   {
+    "u": "https://rosa-data-opal.vercel.app/data/spots/rams.json",
+    "third": true,
+    "type": "fetch",
+    "ct": "",
+    "bytes": 105
+   },
+   {
+    "u": "https://rosa.surf/favicon.svg",
+    "third": true,
+    "type": "image",
+    "ct": "image/svg+xml",
+    "bytes": 2386
+   },
+   {
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5924",
+    "third": true,
+    "type": "image",
+    "ct": "image/jpeg",
+    "bytes": 1287
+   },
+   {
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5926",
+    "third": true,
+    "type": "image",
+    "ct": "image/jpeg",
+    "bytes": 5592
+   },
+   {
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3960/5925",
+    "third": true,
+    "type": "image",
+    "ct": "image/jpeg",
+    "bytes": 4536
+   },
+   {
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5925",
+    "third": true,
+    "type": "image",
+    "ct": "image/jpeg",
+    "bytes": 13372
+   },
+   {
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5924",
+    "third": true,
+    "type": "image",
+    "ct": "image/jpeg",
+    "bytes": 12125
+   },
+   {
+    "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/13/3959/5926",
+    "third": true,
+    "type": "image",
+    "ct": "image/jpeg",
+    "bytes": 14785
+   },
+   {
+    "u": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+    "third": true,
+    "type": "font",
+    "ct": "font/woff2",
+    "bytes": 48983
+   }
+  ],
+  "clsAfter": 0
+ }
+}

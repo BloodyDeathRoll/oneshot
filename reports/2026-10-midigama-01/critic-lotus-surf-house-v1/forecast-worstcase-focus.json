@@ -1,0 +1,92 @@
+{
+ "worst": {
+  "320": {
+   "card": 340,
+   "scrollH": 340,
+   "clientH": 340,
+   "clipped": false,
+   "updBottomPastCard": -22,
+   "nhW": 235,
+   "avail": 236,
+   "nhFits": true,
+   "text": "Forecast for Lazy Left by Rosa | 10.5–12.5 m | Wednesday 30 September, 20:30 | Swell 16.6 s from the south-west | Wind 110.4 km/h from the north-west, cross-shore | Rosa, updated 7 November 2026, 01:55"
+  },
+  "360": {
+   "card": 340,
+   "scrollH": 340,
+   "clientH": 340,
+   "clipped": false,
+   "updBottomPastCard": -22,
+   "nhW": 274,
+   "avail": 276,
+   "nhFits": true,
+   "text": "Forecast for Lazy Left by Rosa | 10.5–12.5 m | Wednesday 30 September, 20:30 | Swell 16.6 s from the south-west | Wind 110.4 km/h from the north-west, cross-shore | Rosa, updated 7 November 2026, 01:55"
+  },
+  "390": {
+   "card": 340,
+   "scrollH": 340,
+   "clientH": 340,
+   "clipped": false,
+   "updBottomPastCard": -22,
+   "nhW": 278,
+   "avail": 306,
+   "nhFits": true,
+   "text": "Forecast for Lazy Left by Rosa | 10.5–12.5 m | Wednesday 30 September, 20:30 | Swell 16.6 s from the south-west | Wind 110.4 km/h from the north-west, cross-shore | Rosa, updated 7 November 2026, 01:55"
+  },
+  "1024": {
+   "card": 500,
+   "scrollH": 500,
+   "clientH": 500,
+   "clipped": false,
+   "updBottomPastCard": -28,
+   "nhW": 285,
+   "avail": 356,
+   "nhFits": true,
+   "text": "Forecast for Lazy Left by Rosa | 10.5–12.5 m | Wednesday 30 September, 20:30 | Swell 16.6 s from the south-west | Wind 110.4 km/h from the north-west, cross-shore | Rosa, updated 7 November 2026, 01:55"
+  },
+  "1440": {
+   "card": 500,
+   "scrollH": 500,
+   "clientH": 500,
+   "clipped": false,
+   "updBottomPastCard": -28,
+   "nhW": 352,
+   "avail": 356,
+   "nhFits": true,
+   "text": "Forecast for Lazy Left by Rosa | 10.5–12.5 m | Wednesday 30 September, 20:30 | Swell 16.6 s from the south-west | Wind 110.4 km/h from the north-west, cross-shore | Rosa, updated 7 November 2026, 01:55"
+  }
+ },
+ "focus_note": "computed outline on the focused iframe, plus pixels of the frame and of a 5 px strip outside it, unfocused vs focused at the same scroll",
+ "focus": {
+  "390": {
+   "active": "IFRAME",
+   "stillFocused": "IFRAME",
+   "scrollSame": true,
+   "stableWithoutFocus": {
+    "ringTop": true,
+    "ringLeft": true,
+    "frameTop": true
+   },
+   "sameWithFocus": {
+    "ringTop": true,
+    "ringLeft": true,
+    "frameTop": false
+   }
+  },
+  "1440": {
+   "active": "IFRAME",
+   "stillFocused": "IFRAME",
+   "scrollSame": true,
+   "stableWithoutFocus": {
+    "ringTop": true,
+    "ringLeft": true,
+    "frameTop": true
+   },
+   "sameWithFocus": {
+    "ringTop": true,
+    "ringLeft": true,
+    "frameTop": false
+   }
+  }
+ }
+}

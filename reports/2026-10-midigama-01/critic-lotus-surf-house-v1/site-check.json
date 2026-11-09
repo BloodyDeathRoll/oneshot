@@ -1,0 +1,256 @@
+{
+  "tool": "site-check.mjs",
+  "version": "0.1.0",
+  "mode": "acceptance",
+  "slug": "lotus-surf-house",
+  "url": "https://lotus-surf-house.os1.workers.dev/",
+  "kind": "preview",
+  "preview": true,
+  "started": "2026-11-06T21:17:13.487Z",
+  "ms": 38664,
+  "ok": true,
+  "checks": [
+    {
+      "id": "pages",
+      "ok": true,
+      "failures": [],
+      "pages": [
+        {
+          "url": "https://lotus-surf-house.os1.workers.dev/",
+          "status": 200,
+          "bytes": 69243
+        }
+      ],
+      "truncated": false,
+      "ms": 0
+    },
+    {
+      "id": "assets",
+      "ok": true,
+      "failures": [],
+      "assetsChecked": 23,
+      "byType": {
+        ".woff2": 2,
+        ".webp": 21
+      },
+      "ms": 209
+    },
+    {
+      "id": "handoff",
+      "ok": true,
+      "failures": [],
+      "engineLinks": [
+        {
+          "url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+          "ok": true,
+          "problems": [],
+          "start": null,
+          "end": null,
+          "duration": null
+        }
+      ],
+      "forms": [],
+      "contacts": [
+        {
+          "page": "https://lotus-surf-house.os1.workers.dev/",
+          "href": "tel:+94774647541",
+          "ok": true,
+          "kind": "tel"
+        }
+      ],
+      "ms": 1
+    },
+    {
+      "id": "forecast-data",
+      "ok": true,
+      "failures": [],
+      "spot": "lazy-left",
+      "json": "https://rosa-data-opal.vercel.app/data/spots/lazy-left.json",
+      "status": 200,
+      "freshness": {
+        "ok": true,
+        "generated_at": "2026-11-06T14:26:34+00:00",
+        "ageH": 6.84,
+        "hasHeadline": true,
+        "problem": null
+      },
+      "widget": {
+        "url": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+        "status": 200
+      },
+      "ms": 457
+    },
+    {
+      "id": "seo",
+      "ok": true,
+      "failures": [],
+      "expect": "preview: noindex, robots Disallow, no sitemap",
+      "robotsStatus": 200,
+      "robots": {
+        "starGroup": true,
+        "disallowAll": true,
+        "sitemaps": []
+      },
+      "sitemapStatus": 404,
+      "sitemapIndexStatus": 404,
+      "pages": [
+        {
+          "url": "https://lotus-surf-house.os1.workers.dev/",
+          "robots": "noindex, nofollow"
+        }
+      ],
+      "ms": 89
+    },
+    {
+      "id": "browser",
+      "ok": true,
+      "failures": [],
+      "runs": [
+        {
+          "page": "https://lotus-surf-house.os1.workers.dev/",
+          "viewport": "390",
+          "console": 0,
+          "pageErrors": 0,
+          "httpErrors": 0,
+          "thirdPartyOnLoad": 0,
+          "overflow": 0
+        },
+        {
+          "page": "https://lotus-surf-house.os1.workers.dev/",
+          "viewport": "1440",
+          "console": 0,
+          "pageErrors": 0,
+          "httpErrors": 0,
+          "thirdPartyOnLoad": 0,
+          "overflow": 0
+        }
+      ],
+      "ms": 14371
+    },
+    {
+      "id": "booking",
+      "ok": true,
+      "failures": [],
+      "recommended": {
+        "primary_action": "engine",
+        "clicks_to_book": 1,
+        "booking_flow": null
+      },
+      "hero_action": {
+        "label": "Check dates on Booking.com",
+        "class": "engine",
+        "href": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+        "flow_page": "https://lotus-surf-house.os1.workers.dev/",
+        "clicks_to_flow": 0
+      },
+      "clicks_to_book": 1,
+      "primary_action": {
+        "class": "engine",
+        "href": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+        "label": "Check dates on Booking.com",
+        "page": "https://lotus-surf-house.os1.workers.dev/"
+      },
+      "heroHandoff": {
+        "url": "https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html",
+        "ok": true,
+        "problems": [],
+        "host": "www.booking.com",
+        "start": null,
+        "end": null,
+        "duration": null
+      },
+      "walks": [],
+      "ms": 5281
+    },
+    {
+      "id": "forecast-block",
+      "ok": true,
+      "failures": [],
+      "spot": "lazy-left",
+      "runs": [
+        {
+          "viewport": "390",
+          "before": {
+            "block": 1984,
+            "head": 925,
+            "text": "Forecast for Lazy Left by Rosa See today's forecast for Lazy Left on Rosa",
+            "iframe": null,
+            "frameBox": null,
+            "loading": 0
+          },
+          "after": {
+            "block": 1984,
+            "head": 925,
+            "text": "Forecast for Lazy Left by Rosa 0.9–1.4 m Friday 6 November, 20:30 Swell 16.6 s from the south Wind 5.1 km/h from the north, offshore Rosa, updated 6 November 20",
+            "iframe": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+            "frameBox": 500,
+            "loading": 0
+          },
+          "jsonStatus": [
+            200,
+            200
+          ],
+          "shiftWhileLoading": 0,
+          "headlineDrawn": true
+        },
+        {
+          "viewport": "1440",
+          "before": {
+            "block": 1349,
+            "head": 597,
+            "text": "Forecast for Lazy Left by Rosa See today's forecast for Lazy Left on Rosa",
+            "iframe": null,
+            "frameBox": null,
+            "loading": 0
+          },
+          "after": {
+            "block": 1349,
+            "head": 597,
+            "text": "Forecast for Lazy Left by Rosa 0.9–1.4 m Friday 6 November, 20:30 Swell 16.6 s from the south Wind 5.1 km/h from the north, offshore Rosa, updated 6 November 20",
+            "iframe": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+            "frameBox": 500,
+            "loading": 0
+          },
+          "jsonStatus": [
+            200,
+            200
+          ],
+          "shiftWhileLoading": 0,
+          "headlineDrawn": true
+        }
+      ],
+      "ms": 9531
+    },
+    {
+      "id": "video",
+      "ok": true,
+      "skipped": "no video on this site",
+      "failures": [],
+      "ms": 2
+    },
+    {
+      "id": "performance",
+      "ok": true,
+      "failures": [],
+      "throttling": "playbook §4: 390×844, 1.6 Mbps down, 150 ms, 4x CPU, cache off, no scroll",
+      "budget": {
+        "lcp_ms": 2500,
+        "cls": 0.1,
+        "first_load_bytes": 1500000,
+        "js_bytes": 300000,
+        "third_party_on_load": 0
+      },
+      "measured": {
+        "lcp_ms": 504,
+        "cls": 0,
+        "first_load_bytes": 871407,
+        "video_bytes_on_load": 0,
+        "js_bytes": 0,
+        "third_party_on_load": 0,
+        "requests": 13
+      },
+      "ms": 8583
+    }
+  ],
+  "failures": []
+}

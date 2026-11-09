@@ -1,0 +1,1950 @@
+{
+ "normal": {
+  "320": {
+   "onLoadThirdParty": 0,
+   "timeToWidgetMs": 1071,
+   "heightBefore": 2151,
+   "before": {
+    "frameSrc": null,
+    "linkVisible": true
+   },
+   "after": {
+    "fcClass": "fc live",
+    "rosaClass": "fc-rosa on",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": true,
+    "liveVisible": true,
+    "nowRect": {
+     "w": 280,
+     "h": 340
+    },
+    "rosaRect": {
+     "w": 280,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 280,
+     "h": 500
+    },
+    "frameVisible": true,
+    "frameSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "linkVisible": false,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": "Forecast for Lazy Left by Rosa | 0.9–1.4 m | Friday 6 November, 20:30 | Swell 16.6 s from the south | Wind 5.1 km/h from the north, offshore | Rosa, updated 6 November 2026, 19:56",
+    "sectionH": 2151,
+    "docH": 10629,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 8535
+   },
+   "geom": {
+    "attrs": {
+     "src": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+     "title": "Rosa surf forecast - Lazy Left",
+     "width": "100%",
+     "height": "500",
+     "style": "max-width:420px;border:0;border-radius:16px;display:block",
+     "loading": "lazy",
+     "referrerpolicy": "strict-origin-when-cross-origin",
+     "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+    },
+    "top": 545,
+    "bottom": 1045,
+    "left": 20,
+    "right": 300,
+    "vh": 640,
+    "css": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal",
+     "br": "16px",
+     "maxW": "420px"
+    },
+    "parentOverflow": "visible",
+    "hits": [
+     "IFRAME.",
+     "IFRAME.",
+     null,
+     null,
+     null
+    ]
+   },
+   "inner": {
+    "text": "Imagery © Esri rosa.surf Lazy Left Epic air 24°C water 30°C rashguard Today, 11/6 SURF M SWELL WIND KM/H KJ HPA 06:00 0.8-1.3 0.9 m 9s SSE 5 ENE CROSS 214 1012 12:00 0.9-1.3 0.9 m 9s SSE 9 SE CROSS 240 1011 18:00 0.9-1.4 0.8 m 16s SSE 4 ESE CROSS 336 1011 Tomo",
+    "sw": 280,
+    "cw": 280,
+    "sh": 500,
+    "ch": 500,
+    "fonts": [
+     "Times",
+     "Inter"
+    ]
+   },
+   "requests": {
+    "GET https://rosa-data-opal.vercel.app/data/spots/lazy-left.json": 2,
+    "HEAD https://rosa.surf/widget/": 1,
+    "GET https://rosa.surf/widget/": 1,
+    "GET https://fonts.googleapis.com/css2": 1,
+    "GET https://rosa.surf/favicon.svg": 1,
+    "GET https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw": 1,
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til": 4
+   },
+   "bytes": {
+    "tot": 101792,
+    "by": {
+     "fetch": 10031,
+     "document": 7862,
+     "stylesheet": 1234,
+     "image": 33683,
+     "font": 48982
+    }
+   },
+   "errs": []
+  },
+  "360": {
+   "onLoadThirdParty": 0,
+   "timeToWidgetMs": 971,
+   "heightBefore": 2068,
+   "before": {
+    "frameSrc": null,
+    "linkVisible": true
+   },
+   "after": {
+    "fcClass": "fc live",
+    "rosaClass": "fc-rosa on",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": true,
+    "liveVisible": true,
+    "nowRect": {
+     "w": 320,
+     "h": 340
+    },
+    "rosaRect": {
+     "w": 320,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 320,
+     "h": 500
+    },
+    "frameVisible": true,
+    "frameSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "linkVisible": false,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": "Forecast for Lazy Left by Rosa | 0.9–1.4 m | Friday 6 November, 20:30 | Swell 16.6 s from the south | Wind 5.1 km/h from the north, offshore | Rosa, updated 6 November 2026, 19:56",
+    "sectionH": 2068,
+    "docH": 10658,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 8646
+   },
+   "geom": {
+    "attrs": {
+     "src": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+     "title": "Rosa surf forecast - Lazy Left",
+     "width": "100%",
+     "height": "500",
+     "style": "max-width:420px;border:0;border-radius:16px;display:block",
+     "loading": "lazy",
+     "referrerpolicy": "strict-origin-when-cross-origin",
+     "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+    },
+    "top": 545,
+    "bottom": 1045,
+    "left": 20,
+    "right": 340,
+    "vh": 740,
+    "css": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal",
+     "br": "16px",
+     "maxW": "420px"
+    },
+    "parentOverflow": "visible",
+    "hits": [
+     "IFRAME.",
+     "IFRAME.",
+     null,
+     null,
+     null
+    ]
+   },
+   "inner": {
+    "text": "Imagery © Esri rosa.surf Lazy Left Epic air 24°C water 30°C rashguard Today, 11/6 SURF M SWELL WIND KM/H KJ HPA 06:00 0.8-1.3 0.9 m 9s SSE 5 ENE CROSS 214 1012 12:00 0.9-1.3 0.9 m 9s SSE 9 SE CROSS 240 1011 18:00 0.9-1.4 0.8 m 16s SSE 4 ESE CROSS 336 1011 Tomo",
+    "sw": 320,
+    "cw": 320,
+    "sh": 500,
+    "ch": 500,
+    "fonts": [
+     "Times",
+     "Inter"
+    ]
+   },
+   "requests": {
+    "GET https://rosa-data-opal.vercel.app/data/spots/lazy-left.json": 2,
+    "HEAD https://rosa.surf/widget/": 1,
+    "GET https://rosa.surf/widget/": 1,
+    "GET https://fonts.googleapis.com/css2": 1,
+    "GET https://rosa.surf/favicon.svg": 1,
+    "GET https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw": 1,
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til": 4
+   },
+   "bytes": {
+    "tot": 101841,
+    "by": {
+     "fetch": 10055,
+     "document": 7863,
+     "stylesheet": 1234,
+     "image": 33706,
+     "font": 48983
+    }
+   },
+   "errs": []
+  },
+  "390": {
+   "onLoadThirdParty": 0,
+   "timeToWidgetMs": 1001,
+   "heightBefore": 1984,
+   "before": {
+    "frameSrc": null,
+    "linkVisible": true
+   },
+   "after": {
+    "fcClass": "fc live",
+    "rosaClass": "fc-rosa on",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": true,
+    "liveVisible": true,
+    "nowRect": {
+     "w": 350,
+     "h": 340
+    },
+    "rosaRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameVisible": true,
+    "frameSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "linkVisible": false,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": "Forecast for Lazy Left by Rosa | 0.9–1.4 m | Friday 6 November, 20:30 | Swell 16.6 s from the south | Wind 5.1 km/h from the north, offshore | Rosa, updated 6 November 2026, 19:56",
+    "sectionH": 1984,
+    "docH": 10807,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 8829
+   },
+   "geom": {
+    "attrs": {
+     "src": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+     "title": "Rosa surf forecast - Lazy Left",
+     "width": "100%",
+     "height": "500",
+     "style": "max-width:420px;border:0;border-radius:16px;display:block",
+     "loading": "lazy",
+     "referrerpolicy": "strict-origin-when-cross-origin",
+     "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+    },
+    "top": 545,
+    "bottom": 1045,
+    "left": 20,
+    "right": 370,
+    "vh": 844,
+    "css": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal",
+     "br": "16px",
+     "maxW": "420px"
+    },
+    "parentOverflow": "visible",
+    "hits": [
+     "IFRAME.",
+     "IFRAME.",
+     "A.btn btn-book bar-book",
+     null,
+     null
+    ]
+   },
+   "inner": {
+    "text": "Imagery © Esri rosa.surf Lazy Left Epic air 24°C water 30°C rashguard Today, 11/6 SURF M SWELL WIND KM/H KJ HPA 06:00 0.8-1.3 0.9 m 9s SSE 5 ENE CROSS 214 1012 12:00 0.9-1.3 0.9 m 9s SSE 9 SE CROSS 240 1011 18:00 0.9-1.4 0.8 m 16s SSE 4 ESE CROSS 336 1011 Tomo",
+    "sw": 350,
+    "cw": 350,
+    "sh": 500,
+    "ch": 500,
+    "fonts": [
+     "Times",
+     "Inter"
+    ]
+   },
+   "requests": {
+    "GET https://rosa-data-opal.vercel.app/data/spots/lazy-left.json": 2,
+    "HEAD https://rosa.surf/widget/": 1,
+    "GET https://rosa.surf/widget/": 1,
+    "GET https://fonts.googleapis.com/css2": 1,
+    "GET https://rosa.surf/favicon.svg": 1,
+    "GET https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw": 1,
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til": 6
+   },
+   "bytes": {
+    "tot": 122196,
+    "by": {
+     "fetch": 10056,
+     "document": 7863,
+     "stylesheet": 1234,
+     "image": 54060,
+     "font": 48983
+    }
+   },
+   "errs": []
+  },
+  "768": {
+   "onLoadThirdParty": 0,
+   "timeToWidgetMs": 960,
+   "heightBefore": 1788,
+   "before": {
+    "frameSrc": null,
+    "linkVisible": true
+   },
+   "after": {
+    "fcClass": "fc live",
+    "rosaClass": "fc-rosa on",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": true,
+    "liveVisible": true,
+    "nowRect": {
+     "w": 420,
+     "h": 340
+    },
+    "rosaRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameVisible": true,
+    "frameSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "linkVisible": false,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": "Forecast for Lazy Left by Rosa | 0.9–1.4 m | Friday 6 November, 20:30 | Swell 16.6 s from the south | Wind 5.1 km/h from the north, offshore | Rosa, updated 6 November 2026, 19:56",
+    "sectionH": 1788,
+    "docH": 11291,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 9487
+   },
+   "geom": {
+    "attrs": {
+     "src": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+     "title": "Rosa surf forecast - Lazy Left",
+     "width": "100%",
+     "height": "500",
+     "style": "max-width:420px;border:0;border-radius:16px;display:block",
+     "loading": "lazy",
+     "referrerpolicy": "strict-origin-when-cross-origin",
+     "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+    },
+    "top": 545,
+    "bottom": 1045,
+    "left": 174,
+    "right": 594,
+    "vh": 1024,
+    "css": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal",
+     "br": "16px",
+     "maxW": "420px"
+    },
+    "parentOverflow": "visible",
+    "hits": [
+     "IFRAME.",
+     "IFRAME.",
+     "IFRAME.",
+     null,
+     null
+    ]
+   },
+   "inner": {
+    "text": "Imagery © Esri rosa.surf Lazy Left Epic air 24°C water 30°C rashguard Today, 11/6 SURF M SWELL WIND KM/H KJ HPA 06:00 0.8-1.3 0.9 m 9s SSE 5 ENE CROSS 214 1012 12:00 0.9-1.3 0.9 m 9s SSE 9 SE CROSS 240 1011 18:00 0.9-1.4 0.8 m 16s SSE 4 ESE CROSS 336 1011 Tomo",
+    "sw": 420,
+    "cw": 420,
+    "sh": 500,
+    "ch": 500,
+    "fonts": [
+     "Times",
+     "Inter"
+    ]
+   },
+   "requests": {
+    "GET https://rosa-data-opal.vercel.app/data/spots/lazy-left.json": 2,
+    "HEAD https://rosa.surf/widget/": 1,
+    "GET https://rosa.surf/widget/": 1,
+    "GET https://fonts.googleapis.com/css2": 1,
+    "GET https://rosa.surf/favicon.svg": 1,
+    "GET https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw": 1,
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til": 6
+   },
+   "bytes": {
+    "tot": 122172,
+    "by": {
+     "fetch": 10032,
+     "document": 7862,
+     "stylesheet": 1234,
+     "image": 54061,
+     "font": 48983
+    }
+   },
+   "errs": []
+  },
+  "1024": {
+   "onLoadThirdParty": 0,
+   "timeToWidgetMs": 925,
+   "heightBefore": 1394,
+   "before": {
+    "frameSrc": null,
+    "linkVisible": true
+   },
+   "after": {
+    "fcClass": "fc live",
+    "rosaClass": "fc-rosa on",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": true,
+    "liveVisible": true,
+    "nowRect": {
+     "w": 420,
+     "h": 500
+    },
+    "rosaRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameVisible": true,
+    "frameSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "linkVisible": false,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": "Forecast for Lazy Left by Rosa | 0.9–1.4 m | Friday 6 November, 20:30 | Swell 16.6 s from the south | Wind 5.1 km/h from the north, offshore | Rosa, updated 6 November 2026, 19:56",
+    "sectionH": 1394,
+    "docH": 8596,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 7144
+   },
+   "geom": {
+    "attrs": {
+     "src": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+     "title": "Rosa surf forecast - Lazy Left",
+     "width": "100%",
+     "height": "500",
+     "style": "max-width:420px;border:0;border-radius:16px;display:block",
+     "loading": "lazy",
+     "referrerpolicy": "strict-origin-when-cross-origin",
+     "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+    },
+    "top": 217,
+    "bottom": 717,
+    "left": 532,
+    "right": 952,
+    "vh": 768,
+    "css": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal",
+     "br": "16px",
+     "maxW": "420px"
+    },
+    "parentOverflow": "visible",
+    "hits": [
+     "IFRAME.",
+     "IFRAME.",
+     "IFRAME.",
+     "IFRAME.",
+     "DIV.fc-rosa on"
+    ]
+   },
+   "inner": {
+    "text": "Imagery © Esri rosa.surf Lazy Left Epic air 24°C water 30°C rashguard Today, 11/6 SURF M SWELL WIND KM/H KJ HPA 06:00 0.8-1.3 0.9 m 9s SSE 5 ENE CROSS 214 1012 12:00 0.9-1.3 0.9 m 9s SSE 9 SE CROSS 240 1011 18:00 0.9-1.4 0.8 m 16s SSE 4 ESE CROSS 336 1011 Tomo",
+    "sw": 420,
+    "cw": 420,
+    "sh": 500,
+    "ch": 500,
+    "fonts": [
+     "Times",
+     "Inter"
+    ]
+   },
+   "requests": {
+    "GET https://rosa-data-opal.vercel.app/data/spots/lazy-left.json": 2,
+    "HEAD https://rosa.surf/widget/": 1,
+    "GET https://rosa.surf/widget/": 1,
+    "GET https://fonts.googleapis.com/css2": 1,
+    "GET https://rosa.surf/favicon.svg": 1,
+    "GET https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw": 1,
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til": 6
+   },
+   "bytes": {
+    "tot": 122195,
+    "by": {
+     "fetch": 10055,
+     "document": 7863,
+     "stylesheet": 1234,
+     "image": 54060,
+     "font": 48983
+    }
+   },
+   "errs": []
+  },
+  "1440": {
+   "onLoadThirdParty": 0,
+   "timeToWidgetMs": 1152,
+   "heightBefore": 1349,
+   "before": {
+    "frameSrc": null,
+    "linkVisible": true
+   },
+   "after": {
+    "fcClass": "fc live",
+    "rosaClass": "fc-rosa on",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": true,
+    "liveVisible": true,
+    "nowRect": {
+     "w": 420,
+     "h": 500
+    },
+    "rosaRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameVisible": true,
+    "frameSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "linkVisible": false,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": "Forecast for Lazy Left by Rosa | 0.9–1.4 m | Friday 6 November, 20:30 | Swell 16.6 s from the south | Wind 5.1 km/h from the north, offshore | Rosa, updated 6 November 2026, 19:56",
+    "sectionH": 1349,
+    "docH": 9251,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 7778
+   },
+   "geom": {
+    "attrs": {
+     "src": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+     "title": "Rosa surf forecast - Lazy Left",
+     "width": "100%",
+     "height": "500",
+     "style": "max-width:420px;border:0;border-radius:16px;display:block",
+     "loading": "lazy",
+     "referrerpolicy": "strict-origin-when-cross-origin",
+     "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+    },
+    "top": 217,
+    "bottom": 717,
+    "left": 748,
+    "right": 1168,
+    "vh": 900,
+    "css": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal",
+     "br": "16px",
+     "maxW": "420px"
+    },
+    "parentOverflow": "visible",
+    "hits": [
+     "IFRAME.",
+     "IFRAME.",
+     "IFRAME.",
+     "DIV.fc-rosa on",
+     "DIV.fc-rosa on"
+    ]
+   },
+   "inner": {
+    "text": "Imagery © Esri rosa.surf Lazy Left Epic air 24°C water 30°C rashguard Today, 11/6 SURF M SWELL WIND KM/H KJ HPA 06:00 0.8-1.3 0.9 m 9s SSE 5 ENE CROSS 214 1012 12:00 0.9-1.3 0.9 m 9s SSE 9 SE CROSS 240 1011 18:00 0.9-1.4 0.8 m 16s SSE 4 ESE CROSS 336 1011 Tomo",
+    "sw": 420,
+    "cw": 420,
+    "sh": 500,
+    "ch": 500,
+    "fonts": [
+     "Times",
+     "Inter"
+    ]
+   },
+   "requests": {
+    "GET https://rosa-data-opal.vercel.app/data/spots/lazy-left.json": 2,
+    "HEAD https://rosa.surf/widget/": 1,
+    "GET https://rosa.surf/widget/": 1,
+    "GET https://fonts.googleapis.com/css2": 1,
+    "GET https://rosa.surf/favicon.svg": 1,
+    "GET https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw": 1,
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til": 6
+   },
+   "bytes": {
+    "tot": 122195,
+    "by": {
+     "fetch": 10055,
+     "document": 7863,
+     "stylesheet": 1235,
+     "image": 54060,
+     "font": 48982
+    }
+   },
+   "errs": []
+  }
+ },
+ "slow": [
+  {
+   "onLoadThirdParty": 0,
+   "timeToWidgetMs": 1553,
+   "state": {
+    "fcClass": "fc live",
+    "rosaClass": "fc-rosa on",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": true,
+    "liveVisible": true,
+    "nowRect": {
+     "w": 350,
+     "h": 340
+    },
+    "rosaRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameVisible": true,
+    "frameSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "linkVisible": false,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": "Forecast for Lazy Left by Rosa | 0.9–1.4 m | Friday 6 November, 20:30 | Swell 16.6 s from the south | Wind 5.1 km/h from the north, offshore | Rosa, updated 6 November 2026, 19:56",
+    "sectionH": 1984,
+    "docH": 10807,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 8829
+   },
+   "requests": {
+    "GET https://rosa-data-opal.vercel.app/data/spots/lazy-left.json": 2,
+    "HEAD https://rosa.surf/widget/": 1,
+    "GET https://rosa.surf/widget/": 1,
+    "GET https://fonts.googleapis.com/css2": 1,
+    "GET https://rosa.surf/favicon.svg": 1,
+    "GET https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw": 1,
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til": 6
+   },
+   "bytes": {
+    "tot": 122227,
+    "by": {
+     "fetch": 10064,
+     "document": 7862,
+     "stylesheet": 1234,
+     "image": 54084,
+     "font": 48983
+    }
+   },
+   "errs": []
+  },
+  {
+   "onLoadThirdParty": 0,
+   "timeToWidgetMs": 1513,
+   "state": {
+    "fcClass": "fc live",
+    "rosaClass": "fc-rosa on",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": true,
+    "liveVisible": true,
+    "nowRect": {
+     "w": 350,
+     "h": 340
+    },
+    "rosaRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameVisible": true,
+    "frameSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "linkVisible": false,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": "Forecast for Lazy Left by Rosa | 0.9–1.4 m | Friday 6 November, 20:30 | Swell 16.6 s from the south | Wind 5.1 km/h from the north, offshore | Rosa, updated 6 November 2026, 19:56",
+    "sectionH": 1984,
+    "docH": 10807,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 8829
+   },
+   "requests": {
+    "GET https://rosa-data-opal.vercel.app/data/spots/lazy-left.json": 2,
+    "HEAD https://rosa.surf/widget/": 1,
+    "GET https://rosa.surf/widget/": 1,
+    "GET https://fonts.googleapis.com/css2": 1,
+    "GET https://rosa.surf/favicon.svg": 1,
+    "GET https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw": 1,
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til": 6
+   },
+   "bytes": {
+    "tot": 122204,
+    "by": {
+     "fetch": 10064,
+     "document": 7863,
+     "stylesheet": 1234,
+     "image": 54060,
+     "font": 48983
+    }
+   },
+   "errs": []
+  },
+  {
+   "onLoadThirdParty": 0,
+   "timeToWidgetMs": 1447,
+   "state": {
+    "fcClass": "fc live",
+    "rosaClass": "fc-rosa on",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": true,
+    "liveVisible": true,
+    "nowRect": {
+     "w": 350,
+     "h": 340
+    },
+    "rosaRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameVisible": true,
+    "frameSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "linkVisible": false,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": "Forecast for Lazy Left by Rosa | 0.9–1.4 m | Friday 6 November, 20:30 | Swell 16.6 s from the south | Wind 5.1 km/h from the north, offshore | Rosa, updated 6 November 2026, 19:56",
+    "sectionH": 1984,
+    "docH": 10807,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 8829
+   },
+   "requests": {
+    "GET https://rosa-data-opal.vercel.app/data/spots/lazy-left.json": 2,
+    "HEAD https://rosa.surf/widget/": 1,
+    "GET https://rosa.surf/widget/": 1,
+    "GET https://fonts.googleapis.com/css2": 1,
+    "GET https://rosa.surf/favicon.svg": 1,
+    "GET https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw": 1,
+    "GET https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/til": 6
+   },
+   "bytes": {
+    "tot": 122226,
+    "by": {
+     "fetch": 10064,
+     "document": 7862,
+     "stylesheet": 1234,
+     "image": 54083,
+     "font": 48983
+    }
+   },
+   "errs": []
+  }
+ ],
+ "noJs": {
+  "390": {
+   "thirdParty": 0,
+   "state": {
+    "fcClass": "fc",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": false,
+    "liveVisible": false,
+    "nowRect": {
+     "w": 0,
+     "h": 0
+    },
+    "rosaRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": null,
+    "sectionH": 1624,
+    "docH": 10331,
+    "overflow": false,
+    "cls": null,
+    "fcTop": 1067,
+    "scrollY": 7766
+   }
+  },
+  "1440": {
+   "thirdParty": 0,
+   "state": {
+    "fcClass": "fc",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": false,
+    "liveVisible": false,
+    "nowRect": {
+     "w": 0,
+     "h": 0
+    },
+    "rosaRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": null,
+    "sectionH": 1349,
+    "docH": 9193,
+    "overflow": false,
+    "cls": null,
+    "fcTop": 723,
+    "scrollY": 7117
+   }
+  }
+ },
+ "fail": {
+  "json_blocked": {
+   "390": {
+    "heightBefore": 1984,
+    "fcClass": "fc off",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": false,
+    "liveVisible": false,
+    "nowRect": {
+     "w": 350,
+     "h": 340
+    },
+    "rosaRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": null,
+    "sectionH": 1984,
+    "docH": 10807,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 8829,
+    "errs": []
+   },
+   "1440": {
+    "heightBefore": 1349,
+    "fcClass": "fc off",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": false,
+    "liveVisible": false,
+    "nowRect": {
+     "w": 420,
+     "h": 500
+    },
+    "rosaRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": null,
+    "sectionH": 1349,
+    "docH": 9251,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 7778,
+    "errs": []
+   }
+  },
+  "json_500": {
+   "390": {
+    "heightBefore": 1984,
+    "fcClass": "fc off",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": false,
+    "liveVisible": false,
+    "nowRect": {
+     "w": 350,
+     "h": 340
+    },
+    "rosaRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": null,
+    "sectionH": 1984,
+    "docH": 10807,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 8829,
+    "errs": []
+   },
+   "1440": {
+    "heightBefore": 1349,
+    "fcClass": "fc off",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": false,
+    "liveVisible": false,
+    "nowRect": {
+     "w": 420,
+     "h": 500
+    },
+    "rosaRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": null,
+    "sectionH": 1349,
+    "docH": 9251,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 7778,
+    "errs": []
+   }
+  },
+  "json_malformed": {
+   "390": {
+    "heightBefore": 1984,
+    "fcClass": "fc off",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": false,
+    "liveVisible": false,
+    "nowRect": {
+     "w": 350,
+     "h": 340
+    },
+    "rosaRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": null,
+    "sectionH": 1984,
+    "docH": 10807,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 8829,
+    "errs": []
+   },
+   "1440": {
+    "heightBefore": 1349,
+    "fcClass": "fc off",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": false,
+    "liveVisible": false,
+    "nowRect": {
+     "w": 420,
+     "h": 500
+    },
+    "rosaRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": null,
+    "sectionH": 1349,
+    "docH": 9251,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 7778,
+    "errs": []
+   }
+  },
+  "json_no_current": {
+   "390": {
+    "heightBefore": 1984,
+    "fcClass": "fc off",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": false,
+    "liveVisible": false,
+    "nowRect": {
+     "w": 350,
+     "h": 340
+    },
+    "rosaRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": null,
+    "sectionH": 1984,
+    "docH": 10807,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 8829,
+    "errs": []
+   },
+   "1440": {
+    "heightBefore": 1349,
+    "fcClass": "fc off",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": false,
+    "liveVisible": false,
+    "nowRect": {
+     "w": 420,
+     "h": 500
+    },
+    "rosaRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": null,
+    "sectionH": 1349,
+    "docH": 9251,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 7778,
+    "errs": []
+   }
+  },
+  "json_stale_30h": {
+   "390": {
+    "heightBefore": 1984,
+    "fcClass": "fc off",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": false,
+    "liveVisible": false,
+    "nowRect": {
+     "w": 350,
+     "h": 340
+    },
+    "rosaRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": null,
+    "sectionH": 1984,
+    "docH": 10807,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 8829,
+    "errs": []
+   },
+   "1440": {
+    "heightBefore": 1349,
+    "fcClass": "fc off",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": false,
+    "liveVisible": false,
+    "nowRect": {
+     "w": 420,
+     "h": 500
+    },
+    "rosaRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": null,
+    "sectionH": 1349,
+    "docH": 9251,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 7778,
+    "errs": []
+   }
+  },
+  "json_fresh_23h": {
+   "390": {
+    "heightBefore": 1984,
+    "fcClass": "fc live",
+    "rosaClass": "fc-rosa on",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": true,
+    "liveVisible": true,
+    "nowRect": {
+     "w": 350,
+     "h": 340
+    },
+    "rosaRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameVisible": true,
+    "frameSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "linkVisible": false,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": "Forecast for Lazy Left by Rosa | 0.9–1.4 m | Friday 6 November, 20:30 | Swell 16.6 s from the south | Wind 5.1 km/h from the north, offshore | Rosa, updated 6 November 2026, 03:45",
+    "sectionH": 1984,
+    "docH": 10807,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 8829,
+    "errs": []
+   },
+   "1440": {
+    "heightBefore": 1349,
+    "fcClass": "fc live",
+    "rosaClass": "fc-rosa on",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": true,
+    "liveVisible": true,
+    "nowRect": {
+     "w": 420,
+     "h": 500
+    },
+    "rosaRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameVisible": true,
+    "frameSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "linkVisible": false,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": "Forecast for Lazy Left by Rosa | 0.9–1.4 m | Friday 6 November, 20:30 | Swell 16.6 s from the south | Wind 5.1 km/h from the north, offshore | Rosa, updated 6 November 2026, 03:45",
+    "sectionH": 1349,
+    "docH": 9251,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 7778,
+    "errs": []
+   }
+  },
+  "json_future_3h": {
+   "390": {
+    "heightBefore": 1984,
+    "fcClass": "fc off",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": false,
+    "liveVisible": false,
+    "nowRect": {
+     "w": 350,
+     "h": 340
+    },
+    "rosaRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": null,
+    "sectionH": 1984,
+    "docH": 10807,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 8829,
+    "errs": []
+   },
+   "1440": {
+    "heightBefore": 1349,
+    "fcClass": "fc off",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": false,
+    "liveVisible": false,
+    "nowRect": {
+     "w": 420,
+     "h": 500
+    },
+    "rosaRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": null,
+    "sectionH": 1349,
+    "docH": 9251,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 7778,
+    "errs": []
+   }
+  },
+  "widget_all_blocked": {
+   "390": {
+    "heightBefore": 1984,
+    "fcClass": "fc live",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": true,
+    "liveVisible": true,
+    "nowRect": {
+     "w": 350,
+     "h": 340
+    },
+    "rosaRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": "Forecast for Lazy Left by Rosa | 0.9–1.4 m | Friday 6 November, 20:30 | Swell 16.6 s from the south | Wind 5.1 km/h from the north, offshore | Rosa, updated 6 November 2026, 19:56",
+    "sectionH": 1984,
+    "docH": 10807,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 8829,
+    "errs": []
+   },
+   "1440": {
+    "heightBefore": 1349,
+    "fcClass": "fc live",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": true,
+    "liveVisible": true,
+    "nowRect": {
+     "w": 420,
+     "h": 500
+    },
+    "rosaRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": "Forecast for Lazy Left by Rosa | 0.9–1.4 m | Friday 6 November, 20:30 | Swell 16.6 s from the south | Wind 5.1 km/h from the north, offshore | Rosa, updated 6 November 2026, 19:56",
+    "sectionH": 1349,
+    "docH": 9251,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 7778,
+    "errs": []
+   }
+  },
+  "widget_head_ok_frame_blocked": {
+   "390": {
+    "heightBefore": 1984,
+    "fcClass": "fc live",
+    "rosaClass": "fc-rosa on",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": true,
+    "liveVisible": true,
+    "nowRect": {
+     "w": 350,
+     "h": 340
+    },
+    "rosaRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameVisible": true,
+    "frameSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "linkVisible": false,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": "Forecast for Lazy Left by Rosa | 0.9–1.4 m | Friday 6 November, 20:30 | Swell 16.6 s from the south | Wind 5.1 km/h from the north, offshore | Rosa, updated 6 November 2026, 19:56",
+    "sectionH": 1984,
+    "docH": 10807,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 8829,
+    "errs": []
+   },
+   "1440": {
+    "heightBefore": 1349,
+    "fcClass": "fc live",
+    "rosaClass": "fc-rosa on",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": true,
+    "liveVisible": true,
+    "nowRect": {
+     "w": 420,
+     "h": 500
+    },
+    "rosaRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameVisible": true,
+    "frameSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "linkVisible": false,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": "Forecast for Lazy Left by Rosa | 0.9–1.4 m | Friday 6 November, 20:30 | Swell 16.6 s from the south | Wind 5.1 km/h from the north, offshore | Rosa, updated 6 November 2026, 19:56",
+    "sectionH": 1349,
+    "docH": 9251,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 7778,
+    "errs": []
+   }
+  },
+  "widget_head_ok_frame_500": {
+   "390": {
+    "heightBefore": 1984,
+    "fcClass": "fc live",
+    "rosaClass": "fc-rosa on",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": true,
+    "liveVisible": true,
+    "nowRect": {
+     "w": 350,
+     "h": 340
+    },
+    "rosaRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameVisible": true,
+    "frameSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "linkVisible": false,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": "Forecast for Lazy Left by Rosa | 0.9–1.4 m | Friday 6 November, 20:30 | Swell 16.6 s from the south | Wind 5.1 km/h from the north, offshore | Rosa, updated 6 November 2026, 19:56",
+    "sectionH": 1984,
+    "docH": 10807,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 8829,
+    "errs": []
+   },
+   "1440": {
+    "heightBefore": 1349,
+    "fcClass": "fc live",
+    "rosaClass": "fc-rosa on",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": true,
+    "liveVisible": true,
+    "nowRect": {
+     "w": 420,
+     "h": 500
+    },
+    "rosaRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameVisible": true,
+    "frameSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "linkVisible": false,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": "Forecast for Lazy Left by Rosa | 0.9–1.4 m | Friday 6 November, 20:30 | Swell 16.6 s from the south | Wind 5.1 km/h from the north, offshore | Rosa, updated 6 November 2026, 19:56",
+    "sectionH": 1349,
+    "docH": 9251,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 7778,
+    "errs": []
+   }
+  },
+  "widget_refused_csp": {
+   "390": {
+    "heightBefore": 1984,
+    "fcClass": "fc live",
+    "rosaClass": "fc-rosa on",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": true,
+    "liveVisible": true,
+    "nowRect": {
+     "w": 350,
+     "h": 340
+    },
+    "rosaRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameVisible": true,
+    "frameSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "linkVisible": false,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": "Forecast for Lazy Left by Rosa | 0.9–1.4 m | Friday 6 November, 20:30 | Swell 16.6 s from the south | Wind 5.1 km/h from the north, offshore | Rosa, updated 6 November 2026, 19:56",
+    "sectionH": 1984,
+    "docH": 10807,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 8829,
+    "errs": [
+     "Framing 'https://rosa.surf/' violates the following Content Security Policy directive: \"frame-ancestors 'none'\". The request has been blocked.\n"
+    ]
+   },
+   "1440": {
+    "heightBefore": 1349,
+    "fcClass": "fc live",
+    "rosaClass": "fc-rosa on",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": true,
+    "liveVisible": true,
+    "nowRect": {
+     "w": 420,
+     "h": 500
+    },
+    "rosaRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameVisible": true,
+    "frameSrc": "https://rosa.surf/widget/?spot=lazy-left&theme=light&units=metric",
+    "linkVisible": false,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": "Forecast for Lazy Left by Rosa | 0.9–1.4 m | Friday 6 November, 20:30 | Swell 16.6 s from the south | Wind 5.1 km/h from the north, offshore | Rosa, updated 6 November 2026, 19:56",
+    "sectionH": 1349,
+    "docH": 9251,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 7778,
+    "errs": [
+     "Framing 'https://rosa.surf/' violates the following Content Security Policy directive: \"frame-ancestors 'none'\". The request has been blocked.\n"
+    ]
+   }
+  },
+  "json_hangs": {
+   "390": {
+    "heightBefore": 1984,
+    "fcClass": "fc off",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": false,
+    "liveVisible": false,
+    "nowRect": {
+     "w": 350,
+     "h": 340
+    },
+    "rosaRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": null,
+    "sectionH": 1984,
+    "docH": 10807,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 8829,
+    "errs": []
+   },
+   "1440": {
+    "heightBefore": 1349,
+    "fcClass": "fc off",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": false,
+    "liveVisible": false,
+    "nowRect": {
+     "w": 420,
+     "h": 500
+    },
+    "rosaRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": null,
+    "sectionH": 1349,
+    "docH": 9251,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 7778,
+    "errs": []
+   }
+  }
+ },
+ "solo": {
+  "390": {
+   "heightBefore": 1984,
+   "near": {
+    "fcClass": "fc off solo",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": false,
+    "liveVisible": false,
+    "nowRect": {
+     "w": 0,
+     "h": 0
+    },
+    "rosaRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": null,
+    "sectionH": 1624,
+    "docH": 10447,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 1044,
+    "scrollY": 7905
+   },
+   "inView": {
+    "fcClass": "fc off solo",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": false,
+    "liveVisible": false,
+    "nowRect": {
+     "w": 0,
+     "h": 0
+    },
+    "rosaRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 350,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": null,
+    "sectionH": 1624,
+    "docH": 10447,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 8829
+   }
+  },
+  "1440": {
+   "heightBefore": 1349,
+   "near": {
+    "fcClass": "fc off solo",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": false,
+    "liveVisible": false,
+    "nowRect": {
+     "w": 0,
+     "h": 0
+    },
+    "rosaRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": null,
+    "sectionH": 1349,
+    "docH": 9251,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 1100,
+    "scrollY": 6798
+   },
+   "inView": {
+    "fcClass": "fc off solo",
+    "rosaClass": "fc-rosa",
+    "loading": [
+     null,
+     null
+    ],
+    "nowVisible": false,
+    "liveVisible": false,
+    "nowRect": {
+     "w": 0,
+     "h": 0
+    },
+    "rosaRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameRect": {
+     "w": 420,
+     "h": 500
+    },
+    "frameVisible": false,
+    "frameSrc": null,
+    "linkVisible": true,
+    "linkText": "See today's forecast for Lazy Left on Rosa",
+    "linkHref": "https://rosa.surf/spot/lazy-left",
+    "headline": null,
+    "sectionH": 1349,
+    "docH": 9251,
+    "overflow": false,
+    "cls": 0,
+    "fcTop": 120,
+    "scrollY": 7778
+   }
+  }
+ },
+ "trigger": {
+  "390": {
+   "distBelowViewport": 305
+  },
+  "1440": {
+   "distBelowViewport": 398
+  }
+ }
+}
