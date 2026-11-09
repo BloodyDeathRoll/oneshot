@@ -1,0 +1,14 @@
+{
+  // The Sandhya's proposal page as a noindex Worker (writer 0.5.1 publishes it at station 7).
+  // Oneshot Cloudflare account. Name checked free against the account's 25 Workers on 2026-11-09.
+  "name": "the-sandhya-proposal",
+  "account_id": "e42421b29f42b84081a1e9be362397eb",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": ".",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  },
+  "workers_dev": true,
+  "preview_urls": false
+}
