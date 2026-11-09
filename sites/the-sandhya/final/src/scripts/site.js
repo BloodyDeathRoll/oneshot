@@ -101,11 +101,15 @@
     var today=iso(new Date()),KEY='sandhya-dates',lang=document.documentElement.lang||'en';
     var cur={a:'',b:''},active=null;
     var mon=function(d){return d.toLocaleDateString(lang,{month:'short'})};
+    // 4g fix: the year is named only when the stay ends 11 months or more from today; nearer than that a
+    // date can only mean its next occurrence, so "30 Dec – 2 Jan" is unambiguous and stays short.
+    var far=new Date();far.setMonth(far.getMonth()+11);far=iso(far);
     var range=function(a,b){
-      var x=day(a),y=day(b);
-      if(x.getFullYear()!==y.getFullYear())return x.getDate()+' '+mon(x)+' '+x.getFullYear()+' – '+y.getDate()+' '+mon(y)+' '+y.getFullYear();
-      if(x.getMonth()!==y.getMonth())return x.getDate()+' '+mon(x)+' – '+y.getDate()+' '+mon(y);
-      return x.getDate()+'–'+y.getDate()+' '+mon(y);
+      var x=day(a),y=day(b),yr=b>=far;
+      var dm=function(z,w){return z.getDate()+' '+mon(z)+(w?' '+z.getFullYear():'')};
+      if(x.getFullYear()!==y.getFullYear())return dm(x,yr)+' – '+dm(y,yr);
+      if(x.getMonth()!==y.getMonth())return dm(x,false)+' – '+dm(y,yr);
+      return x.getDate()+'–'+dm(y,yr);
     };
     var fill=function(t,v){return t.replace(/\{(\w+)\}/g,function(m,k){return k in v?v[k]:m})};
     var put=function(a,b){
@@ -113,13 +117,33 @@
       ins.forEach(function(i){i.value=a;i.min=today});
       outs.forEach(function(o){o.value=b;o.min=a?after(a):after(today)});
     };
+    // 4g fix: a dated label is never clipped. Its parts (split at " · ") are set as separate spans. A label
+    // that fits stays on one line; one that does not wraps and breaks before the nights ("Check 30 Dec –
+    // 2 Jan ·" / "3 nights"), as the room buttons always may. The two one-line buttons (the phone bar and the
+    // sticky header) keep their height: they first drop the nights, then the words before the dates.
+    var one=function(l){return !!l.closest('.bar,.stick')};
+    var set=function(lb,parts,wrap){
+      lb.textContent='';lb.classList.toggle('wrap',wrap);
+      parts.forEach(function(t,i){var sp=document.createElement('span');sp.className='seg';sp.textContent=t+(i<parts.length-1?' ·':'');if(i)lb.appendChild(document.createTextNode(' '));lb.appendChild(sp)});
+      return !lb.clientWidth||lb.scrollWidth<=lb.clientWidth;
+    };
+    var label=function(l){
+      var lb=l.querySelector('.lbl'),v=l._v;if(!lb)return;
+      if(!v){lb.classList.remove('wrap');lb.textContent=l.dataset.label;return}
+      var parts=(l.dataset.room?L.lRoom:L.lCta).split(' · ').map(function(t){return fill(t,{room:l.dataset.room,range:v.range,nights:v.nights})});
+      if(l.dataset.room){set(lb,parts,true);return}
+      var forms=one(l)?[parts,[parts[0]],[v.range]]:[parts];
+      for(var i=0;i<forms.length;i++)if(set(lb,forms[i],false))return;
+      set(lb,forms[forms.length-1],true);
+    };
+    var rt=0;
+    addEventListener('resize',function(){cancelAnimationFrame(rt);rt=requestAnimationFrame(function(){links.forEach(function(l){if(l._v&&!l.dataset.room)label(l)})})});
     var apply=function(){
       var a=cur.a,b=cur.b,ok=!!a&&!!b&&a>=today&&b>a,v;
       if(ok){var n=Math.round((Date.UTC.apply(null,b.split('-').map(function(x,i){return i===1?x-1:+x}))-Date.UTC.apply(null,a.split('-').map(function(x,i){return i===1?x-1:+x})))/864e5);v={range:range(a,b),nights:fill(n===1?L.lNight:L.lNights,{n:n})}}
       links.forEach(function(l){
         l.href=ok?l.dataset.base+'#checkin='+a+'&checkout='+b:l.dataset.base;
-        var lb=l.querySelector('.lbl');
-        if(lb)lb.textContent=ok?(l.dataset.room?fill(L.lRoom,{room:l.dataset.room,range:v.range,nights:v.nights}):fill(L.lCta,v)):l.dataset.label;
+        l._v=ok?v:null;label(l);
       });
       notes.forEach(function(n,i){n.textContent=(a||b)&&!ok&&(active===null||active===i)?L.lHalf:''});
       try{if(ok)sessionStorage.setItem(KEY,JSON.stringify({a:a,b:b}));else sessionStorage.removeItem(KEY)}catch(e){}

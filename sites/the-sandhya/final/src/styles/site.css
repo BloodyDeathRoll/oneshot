@@ -264,6 +264,9 @@ h1{margin:0;font-weight:500;font-size:26px;line-height:1.28;letter-spacing:-.01e
 .kit-text .date-go{margin-top:1.4em}
 .book-card .date-go{margin:0 auto}
 .btn .lbl{min-width:0;overflow:hidden;text-overflow:ellipsis}
+/* 4g fix: a label that names the dates wraps instead of clipping, breaking between its parts (site.js). */
+.btn .lbl.wrap{flex:1 1 auto;white-space:normal;text-align:center;overflow:visible;padding-block:8px}
+.btn .lbl.wrap .seg{display:inline-block}
 .rooms-proof{margin:clamp(24px,3vw,40px) 0 0;font-size:15px;color:var(--mute);display:flex;flex-wrap:wrap;gap:0 28px}
 
 /* Footer */
