@@ -320,3 +320,25 @@ Nothing. **Copywriter:** nothing. **Humanizer:** nothing.
 ## Not covered
 
 No live page was opened and nothing was re-fetched: the dossier is the ground truth for this review, so the items under "For a person" remain open. Photos and captions are outside it, as the copy has none. No research check: the run is outbound. `dossier.json` was read in full except `images[]`, `videos[]` and `rate_snapshots`, which were skipped because the copy has no captions, no video and no OTA price; only the count of `images[]` was taken. `audit.json` was not read, because the audit is never a source for a claim (hard constraint 2). "Aloud" is a judgement made from the text, as in earlier rounds, not a recording of anyone reading it. I did not see Alon's own words: his approval of the Dining wording and his rule for this pass reached this review through the session's brief and, for the wording, the files named at the top.
+
+## Follow-up after 4g: Every room has
+
+Copyeditor 0.4.2, 2026-11-09, run `2026-11-ahangama-01`, `mode: test`. A narrow check, not a round: the critic at 4g / critiqued(1) (`reports/2026-11-ahangama-01/the-sandhya.md`, dimension 5) found that Rooms ¶3 S1–S3 reach the built page not as prose but as a list, and this review had never seen that form. Only those three sentences were checked. `en.json` and `dossier.json` are unchanged since round 4, so the rest of this file stands.
+
+**Verdict: PASS. No replacement wording needed.**
+
+**What the page shows** (`final/dist/index.html`, `.kit-list`). The label `Every room has` (`src/lib/labels.mjs` `roomKit`), then 11 items from `src/gaps/gaps.json` `roomKit`, shown by `src/pages/index.astro` in place of Rooms ¶3. Each item is Rooms ¶3 cut at its commas and "and"s. Every word is kept. Only the connectives "Each one also has" and "too, with" are dropped. The text is lower case in the DOM, and `.cap::first-letter` capitalises it on screen.
+
+| Sentence in `en.json` (Rooms ¶3) | List items | Dossier key, checked again for all four `room_types[]` | Verdict |
+|---|---|---|---|
+| S1 "Every room has a plush pillow-top mattress with 500 thread count linen, a shower big enough for two, Spa Ceylon amenities, bathrobes and slippers." | a plush pillow-top mattress with 500 thread count linen · a shower big enough for two · Spa Ceylon amenities · bathrobes and slippers | `.site_text` / `.engine_description` "plush pillow top mattress clad in 500 thread count linen"; `.amenities` "2-person rain shower"; `.site_text` "Spa Ceylon"; `.amenities` "Bathrobes and slippers". Present in all four | `sourced` |
+| S2 "Each one also has central air conditioning and a ceiling fan, a desk, universal sockets, a hairdryer and a Bluetooth speaker." | central air conditioning and a ceiling fan · a desk · universal sockets · a hairdryer · a Bluetooth speaker | `.amenities` / `.engine_amenities` "Central aircon", "Ceiling fan", "Console or Work Desk" ("Console and working desk" in the suite), "Universal sockets", "Hairdryer", "Bluetooth speaker". Present in all four | `sourced` |
+| S3 "High speed WiFi too, with newspapers and magazines from around the world on PressReader." | High speed WiFi · newspapers and magazines from around the world on PressReader | `.amenities` "High speed Wi-Fi", "…from around the world via PressReader"; `.site_text` "high speed wifi", PressReader. Present in all four | `sourced` |
+
+**Facts.** The scope has not widened. In the prose, S2's "Each one" and S3's "too" already put every item in every room. The label says the same, and the dossier holds every item for each of the four room types. No qualifier is lost, since the sentences had none. Nothing new was added. 0 `unsourced`, 0 `contradicted`.
+
+**Voice.** These are agent-written sentences, not owner prose (line 110 above), so the owner-prose exemption does not apply and every check was run in full. An 11-item list under a label is not a triad. "plush" is the hotel's own word (`room_types[].site_text`). Each item reads correctly after "Every room has", and with CSS off each reads as the continuation of that phrase. Nothing here would make a reader stumble or misread. Clean.
+
+**Completeness.** Rooms ¶3 is no longer in the DOM as prose (`R.slice(3)` skips it), so its facts appear once. None of the 11 items repeats a row of `amenities[]` in the "Amenities" block below it.
+
+**Note for the operator, not a fail.** These words now live in `final/src/gaps/gaps.json` `roomKit`, a second copy of `en.json` Rooms ¶3. If either is edited, the other must be edited to match, and this check must be repeated.
