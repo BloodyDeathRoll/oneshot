@@ -1,0 +1,1602 @@
+{
+ "m-normal": {
+  "name": "m-normal",
+  "width": 390,
+  "js": true,
+  "third_party_at_load": [],
+  "cls_before_scroll": 0,
+  "cls_after": {
+   "total": 0,
+   "n": 0
+  },
+  "state": {
+   "cls": "fc live",
+   "block_h": 949,
+   "read_h": 214,
+   "rosa_box": [
+    350,
+    500
+   ],
+   "headline": "Forecast for Mon 14:30 0.3–0.5 m Swell 7.9 s from the south-east Wind 5.7 km/h from the south, onshore Rosa updated it on 9 November at 13:56",
+   "wait_visible": false,
+   "off_visible": false,
+   "off_text": "",
+   "alt_visible": true,
+   "alt_inert": true,
+   "iframe": {
+    "src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "data_src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "visible": true,
+    "rect": [
+     350,
+     500
+    ],
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "title": "Rosa surf forecast - Rams",
+    "computed": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal"
+    },
+    "parentOverflow": "visible"
+   },
+   "elementsAtIframe": [
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe"
+   ],
+   "links": [
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": true
+    },
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": true
+    }
+   ],
+   "shifts": []
+  },
+  "scroll_requests_top": [
+   {
+    "phase": "scroll",
+    "host": "rosa-data-opal.vercel.app",
+    "path": "/data/spots/rams.json",
+    "type": "fetch",
+    "frame": "top"
+   }
+  ],
+  "scroll_requests_in_frame_count": 11,
+  "scroll_hosts": [
+   "rosa-data-opal.vercel.app",
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "third_party_bytes": 301022,
+  "third_party_status": [
+   "rosa-data-opal.vercel.app 200",
+   "rosa.surf 200",
+   "fonts.googleapis.com 200",
+   "server.arcgisonline.com 200",
+   "fonts.gstatic.com 200"
+  ]
+ },
+ "d-normal": {
+  "name": "d-normal",
+  "width": 1440,
+  "js": true,
+  "third_party_at_load": [],
+  "cls_before_scroll": 0,
+  "cls_after": {
+   "total": 0,
+   "n": 0
+  },
+  "state": {
+   "cls": "fc live",
+   "block_h": 500,
+   "read_h": 248,
+   "rosa_box": [
+    420,
+    500
+   ],
+   "headline": "Forecast for Mon 14:30 0.3–0.5 m Swell 7.9 s from the south-east Wind 5.7 km/h from the south, onshore Rosa updated it on 9 November at 13:56",
+   "wait_visible": false,
+   "off_visible": false,
+   "off_text": "",
+   "alt_visible": true,
+   "alt_inert": true,
+   "iframe": {
+    "src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "data_src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "visible": true,
+    "rect": [
+     420,
+     500
+    ],
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "title": "Rosa surf forecast - Rams",
+    "computed": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal"
+    },
+    "parentOverflow": "visible"
+   },
+   "elementsAtIframe": [
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe"
+   ],
+   "links": [
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": true
+    },
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": true
+    }
+   ],
+   "shifts": []
+  },
+  "scroll_requests_top": [
+   {
+    "phase": "scroll",
+    "host": "rosa-data-opal.vercel.app",
+    "path": "/data/spots/rams.json",
+    "type": "fetch",
+    "frame": "top"
+   }
+  ],
+  "scroll_requests_in_frame_count": 11,
+  "scroll_hosts": [
+   "rosa-data-opal.vercel.app",
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "third_party_bytes": 301022,
+  "third_party_status": [
+   "rosa-data-opal.vercel.app 200",
+   "rosa.surf 200",
+   "fonts.googleapis.com 200",
+   "server.arcgisonline.com 200",
+   "fonts.gstatic.com 200"
+  ]
+ },
+ "m-nojs": {
+  "name": "m-nojs",
+  "width": 390,
+  "js": false,
+  "third_party_at_load": [],
+  "cls_before_scroll": null,
+  "cls_after": null,
+  "state": {
+   "cls": "fc",
+   "block_h": 556,
+   "read_h": 0,
+   "rosa_box": [
+    350,
+    371
+   ],
+   "headline": null,
+   "wait_visible": false,
+   "off_visible": false,
+   "off_text": "No fresh forecast just nowRosa's own page for Rams has today's forecast.",
+   "alt_visible": true,
+   "alt_inert": false,
+   "iframe": {
+    "src": null,
+    "data_src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "visible": false,
+    "rect": [
+     0,
+     0
+    ],
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "title": "Rosa surf forecast - Rams",
+    "computed": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal"
+    },
+    "parentOverflow": "visible"
+   },
+   "elementsAtIframe": [],
+   "links": [
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": false,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    }
+   ],
+   "shifts": []
+  },
+  "scroll_requests_top": [],
+  "scroll_requests_in_frame_count": 0,
+  "scroll_hosts": [],
+  "third_party_bytes": 0,
+  "third_party_status": []
+ },
+ "d-nojs": {
+  "name": "d-nojs",
+  "width": 1440,
+  "js": false,
+  "third_party_at_load": [],
+  "cls_before_scroll": null,
+  "cls_after": null,
+  "state": {
+   "cls": "fc",
+   "block_h": 369,
+   "read_h": 0,
+   "rosa_box": [
+    420,
+    369
+   ],
+   "headline": null,
+   "wait_visible": false,
+   "off_visible": false,
+   "off_text": "No fresh forecast just nowRosa's own page for Rams has today's forecast.",
+   "alt_visible": true,
+   "alt_inert": false,
+   "iframe": {
+    "src": null,
+    "data_src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "visible": false,
+    "rect": [
+     0,
+     0
+    ],
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "title": "Rosa surf forecast - Rams",
+    "computed": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal"
+    },
+    "parentOverflow": "visible"
+   },
+   "elementsAtIframe": [],
+   "links": [
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": false,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    }
+   ],
+   "shifts": []
+  },
+  "scroll_requests_top": [],
+  "scroll_requests_in_frame_count": 0,
+  "scroll_hosts": [],
+  "third_party_bytes": 0,
+  "third_party_status": []
+ },
+ "m-json-abort": {
+  "name": "m-json-abort",
+  "width": 390,
+  "js": true,
+  "third_party_at_load": [],
+  "cls_before_scroll": 0,
+  "cls_after": {
+   "total": 0,
+   "n": 0
+  },
+  "state": {
+   "cls": "fc off solo",
+   "block_h": 556,
+   "read_h": 0,
+   "rosa_box": [
+    350,
+    371
+   ],
+   "headline": null,
+   "wait_visible": false,
+   "off_visible": false,
+   "off_text": "No fresh forecast just nowRosa's own page for Rams has today's forecast.",
+   "alt_visible": true,
+   "alt_inert": false,
+   "iframe": {
+    "src": null,
+    "data_src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "visible": false,
+    "rect": [
+     0,
+     0
+    ],
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "title": "Rosa surf forecast - Rams",
+    "computed": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal"
+    },
+    "parentOverflow": "visible"
+   },
+   "elementsAtIframe": [],
+   "links": [
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": false,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    }
+   ],
+   "shifts": []
+  },
+  "scroll_requests_top": [
+   {
+    "phase": "scroll",
+    "host": "rosa-data-opal.vercel.app",
+    "path": "/data/spots/rams.json",
+    "type": "fetch",
+    "frame": "top"
+   }
+  ],
+  "scroll_requests_in_frame_count": 0,
+  "scroll_hosts": [
+   "rosa-data-opal.vercel.app"
+  ],
+  "third_party_bytes": 0,
+  "third_party_status": []
+ },
+ "d-json-abort": {
+  "name": "d-json-abort",
+  "width": 1440,
+  "js": true,
+  "third_party_at_load": [],
+  "cls_before_scroll": 0,
+  "cls_after": {
+   "total": 0,
+   "n": 0
+  },
+  "state": {
+   "cls": "fc off",
+   "block_h": 500,
+   "read_h": 248,
+   "rosa_box": [
+    420,
+    500
+   ],
+   "headline": null,
+   "wait_visible": false,
+   "off_visible": true,
+   "off_text": "No fresh forecast just now Rosa's own page for Rams has today's forecast.",
+   "alt_visible": true,
+   "alt_inert": false,
+   "iframe": {
+    "src": null,
+    "data_src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "visible": false,
+    "rect": [
+     420,
+     500
+    ],
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "title": "Rosa surf forecast - Rams",
+    "computed": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal"
+    },
+    "parentOverflow": "visible"
+   },
+   "elementsAtIframe": [],
+   "links": [
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    }
+   ],
+   "shifts": []
+  },
+  "scroll_requests_top": [
+   {
+    "phase": "scroll",
+    "host": "rosa-data-opal.vercel.app",
+    "path": "/data/spots/rams.json",
+    "type": "fetch",
+    "frame": "top"
+   }
+  ],
+  "scroll_requests_in_frame_count": 0,
+  "scroll_hosts": [
+   "rosa-data-opal.vercel.app"
+  ],
+  "third_party_bytes": 0,
+  "third_party_status": []
+ },
+ "m-json-500": {
+  "name": "m-json-500",
+  "width": 390,
+  "js": true,
+  "third_party_at_load": [],
+  "cls_before_scroll": 0,
+  "cls_after": {
+   "total": 0,
+   "n": 0
+  },
+  "state": {
+   "cls": "fc off solo",
+   "block_h": 556,
+   "read_h": 0,
+   "rosa_box": [
+    350,
+    371
+   ],
+   "headline": null,
+   "wait_visible": false,
+   "off_visible": false,
+   "off_text": "No fresh forecast just nowRosa's own page for Rams has today's forecast.",
+   "alt_visible": true,
+   "alt_inert": false,
+   "iframe": {
+    "src": null,
+    "data_src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "visible": false,
+    "rect": [
+     0,
+     0
+    ],
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "title": "Rosa surf forecast - Rams",
+    "computed": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal"
+    },
+    "parentOverflow": "visible"
+   },
+   "elementsAtIframe": [],
+   "links": [
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": false,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    }
+   ],
+   "shifts": []
+  },
+  "scroll_requests_top": [
+   {
+    "phase": "scroll",
+    "host": "rosa-data-opal.vercel.app",
+    "path": "/data/spots/rams.json",
+    "type": "fetch",
+    "frame": "top"
+   }
+  ],
+  "scroll_requests_in_frame_count": 0,
+  "scroll_hosts": [
+   "rosa-data-opal.vercel.app"
+  ],
+  "third_party_bytes": 4,
+  "third_party_status": [
+   "rosa-data-opal.vercel.app 500"
+  ]
+ },
+ "m-json-stale25h": {
+  "name": "m-json-stale25h",
+  "width": 390,
+  "js": true,
+  "third_party_at_load": [],
+  "cls_before_scroll": 0,
+  "cls_after": {
+   "total": 0,
+   "n": 0
+  },
+  "state": {
+   "cls": "fc off solo",
+   "block_h": 556,
+   "read_h": 0,
+   "rosa_box": [
+    350,
+    371
+   ],
+   "headline": null,
+   "wait_visible": false,
+   "off_visible": false,
+   "off_text": "No fresh forecast just nowRosa's own page for Rams has today's forecast.",
+   "alt_visible": true,
+   "alt_inert": false,
+   "iframe": {
+    "src": null,
+    "data_src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "visible": false,
+    "rect": [
+     0,
+     0
+    ],
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "title": "Rosa surf forecast - Rams",
+    "computed": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal"
+    },
+    "parentOverflow": "visible"
+   },
+   "elementsAtIframe": [],
+   "links": [
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": false,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    }
+   ],
+   "shifts": []
+  },
+  "scroll_requests_top": [
+   {
+    "phase": "scroll",
+    "host": "rosa-data-opal.vercel.app",
+    "path": "/data/spots/rams.json",
+    "type": "fetch",
+    "frame": "top"
+   }
+  ],
+  "scroll_requests_in_frame_count": 0,
+  "scroll_hosts": [
+   "rosa-data-opal.vercel.app"
+  ],
+  "third_party_bytes": 84749,
+  "third_party_status": [
+   "rosa-data-opal.vercel.app 200"
+  ]
+ },
+ "m-json-23h": {
+  "name": "m-json-23h",
+  "width": 390,
+  "js": true,
+  "third_party_at_load": [],
+  "cls_before_scroll": 0,
+  "cls_after": {
+   "total": 0,
+   "n": 0
+  },
+  "state": {
+   "cls": "fc live",
+   "block_h": 949,
+   "read_h": 214,
+   "rosa_box": [
+    350,
+    500
+   ],
+   "headline": "Forecast for Mon 14:30 0.3–0.5 m Swell 7.9 s from the south-east Wind 5.7 km/h from the south, onshore Rosa updated it on 8 November at 21:01",
+   "wait_visible": false,
+   "off_visible": false,
+   "off_text": "",
+   "alt_visible": true,
+   "alt_inert": true,
+   "iframe": {
+    "src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "data_src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "visible": true,
+    "rect": [
+     350,
+     500
+    ],
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "title": "Rosa surf forecast - Rams",
+    "computed": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal"
+    },
+    "parentOverflow": "visible"
+   },
+   "elementsAtIframe": [
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe"
+   ],
+   "links": [
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": true
+    },
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": true
+    }
+   ],
+   "shifts": []
+  },
+  "scroll_requests_top": [
+   {
+    "phase": "scroll",
+    "host": "rosa-data-opal.vercel.app",
+    "path": "/data/spots/rams.json",
+    "type": "fetch",
+    "frame": "top"
+   }
+  ],
+  "scroll_requests_in_frame_count": 11,
+  "scroll_hosts": [
+   "rosa-data-opal.vercel.app",
+   "rosa.surf",
+   "fonts.googleapis.com",
+   "fonts.gstatic.com",
+   "server.arcgisonline.com"
+  ],
+  "third_party_bytes": 299482,
+  "third_party_status": [
+   "rosa-data-opal.vercel.app 200",
+   "rosa.surf 200",
+   "fonts.googleapis.com 200",
+   "server.arcgisonline.com 200",
+   "fonts.gstatic.com 200"
+  ]
+ },
+ "m-json-nocurrent": {
+  "name": "m-json-nocurrent",
+  "width": 390,
+  "js": true,
+  "third_party_at_load": [],
+  "cls_before_scroll": 0,
+  "cls_after": {
+   "total": 0,
+   "n": 0
+  },
+  "state": {
+   "cls": "fc off solo",
+   "block_h": 556,
+   "read_h": 0,
+   "rosa_box": [
+    350,
+    371
+   ],
+   "headline": null,
+   "wait_visible": false,
+   "off_visible": false,
+   "off_text": "No fresh forecast just nowRosa's own page for Rams has today's forecast.",
+   "alt_visible": true,
+   "alt_inert": false,
+   "iframe": {
+    "src": null,
+    "data_src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "visible": false,
+    "rect": [
+     0,
+     0
+    ],
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "title": "Rosa surf forecast - Rams",
+    "computed": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal"
+    },
+    "parentOverflow": "visible"
+   },
+   "elementsAtIframe": [],
+   "links": [
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": false,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    }
+   ],
+   "shifts": []
+  },
+  "scroll_requests_top": [
+   {
+    "phase": "scroll",
+    "host": "rosa-data-opal.vercel.app",
+    "path": "/data/spots/rams.json",
+    "type": "fetch",
+    "frame": "top"
+   }
+  ],
+  "scroll_requests_in_frame_count": 0,
+  "scroll_hosts": [
+   "rosa-data-opal.vercel.app"
+  ],
+  "third_party_bytes": 84028,
+  "third_party_status": [
+   "rosa-data-opal.vercel.app 200"
+  ]
+ },
+ "m-json-garbage": {
+  "name": "m-json-garbage",
+  "width": 390,
+  "js": true,
+  "third_party_at_load": [],
+  "cls_before_scroll": 0,
+  "cls_after": {
+   "total": 0,
+   "n": 0
+  },
+  "state": {
+   "cls": "fc off solo",
+   "block_h": 556,
+   "read_h": 0,
+   "rosa_box": [
+    350,
+    371
+   ],
+   "headline": null,
+   "wait_visible": false,
+   "off_visible": false,
+   "off_text": "No fresh forecast just nowRosa's own page for Rams has today's forecast.",
+   "alt_visible": true,
+   "alt_inert": false,
+   "iframe": {
+    "src": null,
+    "data_src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "visible": false,
+    "rect": [
+     0,
+     0
+    ],
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "title": "Rosa surf forecast - Rams",
+    "computed": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal"
+    },
+    "parentOverflow": "visible"
+   },
+   "elementsAtIframe": [],
+   "links": [
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": false,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    }
+   ],
+   "shifts": []
+  },
+  "scroll_requests_top": [
+   {
+    "phase": "scroll",
+    "host": "rosa-data-opal.vercel.app",
+    "path": "/data/spots/rams.json",
+    "type": "fetch",
+    "frame": "top"
+   }
+  ],
+  "scroll_requests_in_frame_count": 0,
+  "scroll_hosts": [
+   "rosa-data-opal.vercel.app"
+  ],
+  "third_party_bytes": 14,
+  "third_party_status": [
+   "rosa-data-opal.vercel.app 200"
+  ]
+ },
+ "m-json-slow13s": {
+  "name": "m-json-slow13s",
+  "width": 390,
+  "js": true,
+  "third_party_at_load": [],
+  "cls_before_scroll": 0,
+  "cls_after": {
+   "total": 0,
+   "n": 0
+  },
+  "state": {
+   "cls": "fc off",
+   "block_h": 949,
+   "read_h": 214,
+   "rosa_box": [
+    350,
+    500
+   ],
+   "headline": null,
+   "wait_visible": false,
+   "off_visible": true,
+   "off_text": "No fresh forecast just now Rosa's own page for Rams has today's forecast.",
+   "alt_visible": true,
+   "alt_inert": false,
+   "iframe": {
+    "src": null,
+    "data_src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "visible": false,
+    "rect": [
+     350,
+     500
+    ],
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "title": "Rosa surf forecast - Rams",
+    "computed": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal"
+    },
+    "parentOverflow": "visible"
+   },
+   "elementsAtIframe": [],
+   "links": [
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    }
+   ],
+   "shifts": []
+  },
+  "scroll_requests_top": [
+   {
+    "phase": "scroll",
+    "host": "rosa-data-opal.vercel.app",
+    "path": "/data/spots/rams.json",
+    "type": "fetch",
+    "frame": "top"
+   }
+  ],
+  "scroll_requests_in_frame_count": 0,
+  "scroll_hosts": [
+   "rosa-data-opal.vercel.app"
+  ],
+  "third_party_bytes": 0,
+  "third_party_status": []
+ },
+ "m-widget-abort": {
+  "name": "m-widget-abort",
+  "width": 390,
+  "js": true,
+  "third_party_at_load": [],
+  "cls_before_scroll": 0,
+  "cls_after": {
+   "total": 0,
+   "n": 0
+  },
+  "state": {
+   "cls": "fc live",
+   "block_h": 949,
+   "read_h": 214,
+   "rosa_box": [
+    350,
+    500
+   ],
+   "headline": "Forecast for Mon 14:30 0.3–0.5 m Swell 7.9 s from the south-east Wind 5.7 km/h from the south, onshore Rosa updated it on 9 November at 13:56",
+   "wait_visible": false,
+   "off_visible": false,
+   "off_text": "",
+   "alt_visible": true,
+   "alt_inert": true,
+   "iframe": {
+    "src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "data_src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "visible": true,
+    "rect": [
+     350,
+     500
+    ],
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "title": "Rosa surf forecast - Rams",
+    "computed": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal"
+    },
+    "parentOverflow": "visible"
+   },
+   "elementsAtIframe": [
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe"
+   ],
+   "links": [
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": true
+    },
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": true
+    }
+   ],
+   "shifts": []
+  },
+  "scroll_requests_top": [
+   {
+    "phase": "scroll",
+    "host": "rosa-data-opal.vercel.app",
+    "path": "/data/spots/rams.json",
+    "type": "fetch",
+    "frame": "top"
+   }
+  ],
+  "scroll_requests_in_frame_count": 1,
+  "scroll_hosts": [
+   "rosa-data-opal.vercel.app",
+   "rosa.surf"
+  ],
+  "third_party_bytes": 85519,
+  "third_party_status": [
+   "rosa-data-opal.vercel.app 200"
+  ]
+ },
+ "d-widget-abort": {
+  "name": "d-widget-abort",
+  "width": 1440,
+  "js": true,
+  "third_party_at_load": [],
+  "cls_before_scroll": 0,
+  "cls_after": {
+   "total": 0,
+   "n": 0
+  },
+  "state": {
+   "cls": "fc live",
+   "block_h": 500,
+   "read_h": 248,
+   "rosa_box": [
+    420,
+    500
+   ],
+   "headline": "Forecast for Mon 14:30 0.3–0.5 m Swell 7.9 s from the south-east Wind 5.7 km/h from the south, onshore Rosa updated it on 9 November at 13:56",
+   "wait_visible": false,
+   "off_visible": false,
+   "off_text": "",
+   "alt_visible": true,
+   "alt_inert": true,
+   "iframe": {
+    "src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "data_src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "visible": true,
+    "rect": [
+     420,
+     500
+    ],
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "title": "Rosa surf forecast - Rams",
+    "computed": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal"
+    },
+    "parentOverflow": "visible"
+   },
+   "elementsAtIframe": [
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe"
+   ],
+   "links": [
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": true
+    },
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": true
+    }
+   ],
+   "shifts": []
+  },
+  "scroll_requests_top": [
+   {
+    "phase": "scroll",
+    "host": "rosa-data-opal.vercel.app",
+    "path": "/data/spots/rams.json",
+    "type": "fetch",
+    "frame": "top"
+   }
+  ],
+  "scroll_requests_in_frame_count": 1,
+  "scroll_hosts": [
+   "rosa-data-opal.vercel.app",
+   "rosa.surf"
+  ],
+  "third_party_bytes": 85519,
+  "third_party_status": [
+   "rosa-data-opal.vercel.app 200"
+  ]
+ },
+ "m-widget-404": {
+  "name": "m-widget-404",
+  "width": 390,
+  "js": true,
+  "third_party_at_load": [],
+  "cls_before_scroll": 0,
+  "cls_after": {
+   "total": 0,
+   "n": 0
+  },
+  "state": {
+   "cls": "fc live",
+   "block_h": 949,
+   "read_h": 214,
+   "rosa_box": [
+    350,
+    500
+   ],
+   "headline": "Forecast for Mon 14:30 0.3–0.5 m Swell 7.9 s from the south-east Wind 5.7 km/h from the south, onshore Rosa updated it on 9 November at 13:56",
+   "wait_visible": false,
+   "off_visible": false,
+   "off_text": "",
+   "alt_visible": true,
+   "alt_inert": true,
+   "iframe": {
+    "src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "data_src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "visible": true,
+    "rect": [
+     350,
+     500
+    ],
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "title": "Rosa surf forecast - Rams",
+    "computed": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal"
+    },
+    "parentOverflow": "visible"
+   },
+   "elementsAtIframe": [
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe"
+   ],
+   "links": [
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": true
+    },
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": true
+    }
+   ],
+   "shifts": []
+  },
+  "scroll_requests_top": [
+   {
+    "phase": "scroll",
+    "host": "rosa-data-opal.vercel.app",
+    "path": "/data/spots/rams.json",
+    "type": "fetch",
+    "frame": "top"
+   }
+  ],
+  "scroll_requests_in_frame_count": 1,
+  "scroll_hosts": [
+   "rosa-data-opal.vercel.app",
+   "rosa.surf"
+  ],
+  "third_party_bytes": 85541,
+  "third_party_status": [
+   "rosa-data-opal.vercel.app 200",
+   "rosa.surf 404"
+  ]
+ },
+ "m-widget-refused": {
+  "name": "m-widget-refused",
+  "width": 390,
+  "js": true,
+  "third_party_at_load": [],
+  "cls_before_scroll": 0,
+  "cls_after": {
+   "total": 0,
+   "n": 0
+  },
+  "state": {
+   "cls": "fc live",
+   "block_h": 949,
+   "read_h": 214,
+   "rosa_box": [
+    350,
+    500
+   ],
+   "headline": "Forecast for Mon 14:30 0.3–0.5 m Swell 7.9 s from the south-east Wind 5.7 km/h from the south, onshore Rosa updated it on 9 November at 13:56",
+   "wait_visible": false,
+   "off_visible": false,
+   "off_text": "",
+   "alt_visible": true,
+   "alt_inert": true,
+   "iframe": {
+    "src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "data_src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "visible": true,
+    "rect": [
+     350,
+     500
+    ],
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "title": "Rosa surf forecast - Rams",
+    "computed": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal"
+    },
+    "parentOverflow": "visible"
+   },
+   "elementsAtIframe": [
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe",
+    "iframe"
+   ],
+   "links": [
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": true
+    },
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": true
+    }
+   ],
+   "shifts": []
+  },
+  "scroll_requests_top": [
+   {
+    "phase": "scroll",
+    "host": "rosa-data-opal.vercel.app",
+    "path": "/data/spots/rams.json",
+    "type": "fetch",
+    "frame": "top"
+   }
+  ],
+  "scroll_requests_in_frame_count": 1,
+  "scroll_hosts": [
+   "rosa-data-opal.vercel.app",
+   "rosa.surf"
+  ],
+  "third_party_bytes": 85519,
+  "third_party_status": [
+   "rosa-data-opal.vercel.app 200",
+   "rosa.surf 200"
+  ]
+ },
+ "m-all-rosa-blocked": {
+  "name": "m-all-rosa-blocked",
+  "width": 390,
+  "js": true,
+  "third_party_at_load": [],
+  "cls_before_scroll": 0,
+  "cls_after": {
+   "total": 0,
+   "n": 0
+  },
+  "state": {
+   "cls": "fc off solo",
+   "block_h": 556,
+   "read_h": 0,
+   "rosa_box": [
+    350,
+    371
+   ],
+   "headline": null,
+   "wait_visible": false,
+   "off_visible": false,
+   "off_text": "No fresh forecast just nowRosa's own page for Rams has today's forecast.",
+   "alt_visible": true,
+   "alt_inert": false,
+   "iframe": {
+    "src": null,
+    "data_src": "https://rosa.surf/widget/?spot=rams&theme=light&units=metric",
+    "visible": false,
+    "rect": [
+     0,
+     0
+    ],
+    "style": "max-width:420px;border:0;border-radius:16px;display:block",
+    "sandbox": "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin",
+    "title": "Rosa surf forecast - Rams",
+    "computed": {
+     "filter": "none",
+     "opacity": "1",
+     "transform": "none",
+     "clip": "none",
+     "mix": "normal"
+    },
+    "parentOverflow": "visible"
+   },
+   "elementsAtIframe": [],
+   "links": [
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": false,
+     "inert": false
+    },
+    {
+     "t": "See today's forecast for Rams on Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    },
+    {
+     "t": "Forecast for Rams by Rosa",
+     "href": "https://rosa.surf/spot/rams",
+     "visible": true,
+     "inert": false
+    }
+   ],
+   "shifts": []
+  },
+  "scroll_requests_top": [
+   {
+    "phase": "scroll",
+    "host": "rosa-data-opal.vercel.app",
+    "path": "/data/spots/rams.json",
+    "type": "fetch",
+    "frame": "top"
+   }
+  ],
+  "scroll_requests_in_frame_count": 0,
+  "scroll_hosts": [
+   "rosa-data-opal.vercel.app"
+  ],
+  "third_party_bytes": 0,
+  "third_party_status": []
+ }
+}

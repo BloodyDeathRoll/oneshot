@@ -397,3 +397,111 @@ The split hero works: gate on the right, name and button on calm white (`laptop/
 - A tap inside Rosa's widget, which by its docs opens rosa.surf in a new window.
 - Rosa's "Today" label on a real phone in Sri Lanka: emulated timezone only.
 - The rendered gold pages: I used the calibration and the gold notes, not their shots. `/impeccable`, `/emil-design-eng` and the motion-audit skills were not run; the inspector was.
+
+## Verification 2
+
+experience-critic 0.2.0 · station 5 (full) · 2026-11-09 · live preview https://lotus-surf-house.os1.workers.dev/ after today's fix round. Phone 390 × 844 (touch, DPR 2; ~1.6 Mbps, 150 ms RTT and 4× CPU for the cold load), laptop 1440 × 900. My frames, logs and walk scripts are not in git. They stay in the session scratch: `/private/tmp/claude-501/-Users-alonlavi--superset-worktrees-oneshot-pull-latest-version-from-ff5cf4f5/7b7d3b10-1751-44ab-ba22-01cf22a1f312/scratchpad/ec-v2/` (`frames/`, `walk.mjs`, `walk2.mjs`, `walk3.mjs`, `frames/walk.log`, `inspect.txt`). The frame names below are in `frames/`. I also looked at the shared sheets in `verify-2-lotus-surf-house/shots/`, which I did not re-shoot. The current presence is the Booking.com and Google listings (`dossier/lotus-surf-house/audit.json`). I walked the Booking.com landing again today (`b-landing.png`).
+
+**Score 8/10 · PASS · better than the current presence: yes · taps to book: 1.**
+
+Independence: I walked and wrote my own view first. Only then did I read the Verification 1 section, and I re-checked each of its points on the live page (end of this section). I did not read the other two reviewers' reports for this round.
+
+### Cold load, phone (throttled)
+
+| Frame | What shows |
+|---|---|
+| `p-cold-500.png` | A green placeholder with the script name, the one line "A guesthouse in Midigama, on the south coast of Sri Lanka.", "Check dates on Booking.com" and Call. You can read it and tap it already |
+| `p-cold-1500.png` | The same, still no photo |
+| `p-cold-3000.png` | Only the top ~140 px of the gate photo has painted |
+| (probe, `walk2.mjs` C) | The hero image is complete at about 4.8 s. LCP reads 556 ms, which is the text, not the photo |
+
+First load: 870 KB in 13 requests from one host, with no third party (`walk.log`). The page is usable at once. The first impression that pulls you in, the gate, arrives late on slow 4G, and before it there are three seconds of flat green.
+
+### The walk (`p-walk-00…18`, 12.9 screens)
+
+- **First screen (`p-walk-00`, shared `mobile-00.png`):** the carved gate full-bleed under leaves, the script name, one line, one rust CTA and an outlined Call. It is clean, specific to this house and not a template section. The first-screen cap does not apply.
+- **After one scroll (`p-walk-01…03`):** "The King Rooms" sits over the canopy-bed photo, then the balcony photo with "Upstairs, 25 m². Air conditioning, fan, mosquito net and hot water." I can say what this is, where it is, and why I would come. I cannot say what it costs, by design: the audit makes price mean the link to live dates. The rooms are sold through photographs, not tables.
+- **Proof comes earlier now:** "9.0/10 Booking.com, 125 reviews · 4.9/5 Google, 78 reviews · read 3 Nov 2026" sits under the King facts at y ≈ 2,394 (`p-walk-04`, `walk3.mjs`). The same two numbers come back as cards two screens later (`p-walk-06`). Seeing them twice is mild redundancy, not a defect.
+- **Wanting to go:** the balcony view (`p-walk-03`) and the roof Buddha among the palms (`p-walk-05`) are the moments that make you want to be there.
+- **Garden:** the honest line "no air conditioning and no hot water" sits on every fan room, with Yelum's "may not be the newest … popular … due to their charm" beside them (`p-walk-07…09`). This answers audit F4 in the owner's voice, and it builds more trust than any listing does. The slideshow now opens on the room with the surfboard (`b-slide-before.png`). The porch photo breaks up the Yelum / Breakfast text (`p-walk-10`).
+- **Where attention drops:**
+  - the long room spec block of three garden room types (`p-walk-09`);
+  - Getting here, where the amenities still read as a five-line " | " spec sheet (`p-walk-14`);
+  - the forecast's first line (below).
+
+### Booking
+
+- **Hero CTA, 1 tap:** it opens `https://www.booking.com/hotel/lk/lotus-surf-house.en-gb.html` in the same tab. I landed on the right listing, "Lotus Surf House … 9.0 Superb · 125 reviews", with "Choose dates to see prices" (`b-landing.png`). I stopped there: no dates, no sign-in, no cookies accepted. This meets the audit's target (engine, 1 click).
+- **Everywhere else:** the sticky bar slides in once you leave the hero and holds "Check dates on Booking.com" plus a phone icon (bar `translateY(79px)` at the top and `none` at y 1200, `walk.log`). There are 15 booking or `tel:` links on the page, with exactly two unique hrefs: the Booking.com URL and `tel:+94774647541`. I read the `tel:` links and never tapped them.
+- **Understood before the tap:** which room, A/C or fan, hot water or not, check-in at any hour, cash only. The price is not shown, by design.
+- **Feel:** honest. The button says where it goes, and the phone number lets you ask first, which Booking.com does not allow (audit F1).
+
+### Motion and states
+
+- **The calm brief, done with care:** every control has a press state. Buttons `:active scale(.97/.98)` and the dot/arrow buttons `.92`, with a 120 ms `cubic-bezier(.23,1,.32,1)` and a background change. The active dot widens over 220 ms. The CTA darkens on hover on the laptop (`hover.png`). No control was left without a transition (`frames/controls.json`). The Rosa credit links are plain text links, so they fall outside the cap (Alon, 2026-11-09).
+- **Slideshow:** a tap and a swipe both move it, and the dots follow (`s-fast-*`, `s-thr-*`). One rough edge: if you tap "Next photo" within a second of the slideshow arriving, the next slide is blank for close to a second. The slides are `loading="lazy"` and start fetching only on the tap (`b-slide-after.png`, 850 ms after the tap). After a short pause it is fine.
+- **Header:** the name no longer collides with the script title as the hero rises, and no grey band sits at the top of white sections (`h-rise-200/420/640.png`, `h-white-section.png`).
+- **Reduced motion:** a still, complete page (`rm-00.png`, `rm-forecast.png`).
+- **JS off:** the page stands, no third-party requests, and the forecast is a single link card, "See today's forecast for Lazy Left on Rosa" (`nojs-forecast.png`). The static bar now sits below the hero's Call button instead of over it (`nojs-00.png`). The first screen then carries four buttons, which is busy but nothing is covered.
+- **Inspector:** 8 FAIL, 5 WARN (`inspect.txt`).
+  - Accepted as evidence: 16 font sizes; a 1 px button shadow and the text-shadow on the hero (trivial); `empty-middle` on the laptop "In the garden".
+  - Discounted: `still-page` and `no-footage` (a calm concept, and no licensed video, as `concepts.md` explains); `reduced-hidden` (the nav waits for the scroll by design); `covered-text` ("Up on the roof" under the sticky bar for one scroll position); `palette-terracotta` (the concept's own rust); `name-only-title` (the line under the name says what and where).
+
+### The forecast block
+
+What a traveller meets (`f-00…f-13`, `widget.png`):
+
+- The block now has a title, "Surf at Lazy Left", and a reason: Giada's verbatim line "The location is perfect to go and surf at lazy left and right" (Booking.com, Dec 2025). There is no rule and no stretched gap above it. On the laptop it is a tight two-column block, with the number card on the left and Rosa's widget on the right (`l-walk-11.png`). That is the calibration's "text/numbers left, widget right" done properly.
+- Loading: zero third-party requests until the block nears the screen. Then the Rosa JSON, the widget and the widget's own fonts and Esri tiles load (`walk.log`). Both halves have their space reserved: on arrival the card and widget slots are grey (`f-00-arrive.png`), the numbers come in at 400 ms (`f-01`), and the widget is painted by 3 s (`f-02`), with no shift. A sideways swipe in the widget moves it from Today to Tomorrow (`w-before.png` → `w-after-swipe.png`). The widget's header link opens rosa.surf in a new tab (`target=_blank`), and I did not follow it.
+- Fallbacks: with the JSON blocked, the card is replaced by a link card of the same size and nothing is left blank (`fail-json.png`). With JS off it is a link only. With only the widget's request blocked, the headline card with its link stays, but **a ~500 px empty white box** remains where the iframe was (`fail-widget.png`). That is rare, but it is the empty box the playbook forbids.
+- **The two halves disagree, side by side.** The headline says "Swell 7.9 s from the south-east" and "Wind 5.7 km/h from the south, onshore". Directly beside it on the laptop (directly below on the phone), Rosa's widget shows 12–14 s SSE swell and "6 SE CROSS" at 12:00 and "3 SE CROSS" at 18:00 (`l-walk-11.png`, `widget.png`). The site takes `current.swells[0].period` (7.9, the mean period). The widget shows the peak period (`peak_period` 12.3 in the same JSON, `lazy-left.json`). A surfer reads swell period first, and seeing 7.9 s against 12 s makes them doubt both numbers. Fix it with the period field the widget shows. If the wind class cannot match Rosa's own labelling, show the direction and speed without "onshore".
+- **The first line reads like internal notes:** "Lazy Left is the Rosa spot nearest the house." A traveller does not know what Rosa is yet, and the line does not say how near the spot is. The dossier has a better sourced guest line: Victoria, Booking.com, 2025-12, "The place is in front of two amazing surf spots (lazy right and lazy left), and you have other three that you can go walking (less 1 km)" (`dossier.json`, the spot entry's note). It gives the distance and the other breaks in a guest's words.
+
+Net: it is now part of the page and adds the page's only surf moment, which neither listing has. Its two flaws are a credibility slip in the numbers and a weak first line. Neither costs a booking.
+
+### Laptop (`l-walk-00…12`)
+
+The split hero has the gate on the right and the script name, line and CTA centred on white (`l-walk-00.png`). It is calm and clean, though less gripping than the phone's full bleed. The King band and its photo grid are composed (`l-walk-01…03`). The roof row and the rating cards are tidy (`l-walk-04/05`). The header nav (Rooms · Guests · Getting here · Surf) and the "Check dates" pill stay on screen. The closing and footer are designed, with buttons and icons, not underlined links (`l-walk-12`).
+
+### Against the current presence
+
+- **Where the listings are still better:** the rating and a date picker are on the first screen (`b-landing.png`), Booking has 42 photos and Google 150, and Google's map answers "how near is the sea" at a glance.
+- **Where this page is better:**
+  - it looks like a place, not a ping-pong table under a blue bar;
+  - it says plainly which rooms have A/C and hot water;
+  - it gives the hosts' voice and a phone number before booking;
+  - it shows one name and one number, and no competing hotels;
+  - it has a live forecast for the break.
+
+**Better: yes, clearly.**
+
+### Score: 8 · better than the current presence: yes · pass
+
+It is engaging, clearly better than what a traveller finds today, and booking takes 1 tap. It is held off 9 by the late hero photo on slow 4G, the forecast's mismatched numbers, the spec-sheet stretches (garden room list, amenities), and the slideshow's blank first tap.
+
+### Fix list (biggest effect first)
+
+1. **Make the forecast's two halves agree.** Use the swell period the widget shows (`peak_period`). Drop the "onshore / cross" class unless it is Rosa's own. Replace "Lazy Left is the Rosa spot nearest the house." with Victoria's sourced line about the two breaks in front of the house and three more within 1 km. When the widget fails, collapse its slot to the link instead of leaving a white box (`fail-widget.png`).
+2. **Paint the gate sooner on slow phones.** Put a tiny inline blurred preview of img-019 (or its dominant colours as a gradient) in the hero instead of flat green, and let a phone at 390 px pick the 800 w file (`sizes` is `76vh`, which makes a DPR-2 phone pick the 1200 w file). The aim is that the photo, not a green field, is what you see at 1.5 s (`p-cold-1500.png`).
+3. **Preload the next slide.** Set the image after the visible slide to `loading="eager"` (or decode it when the slideshow nears the screen), so the first "Next photo" never shows a blank (`b-slide-after.png`).
+4. **Shorten the spec stretches.** Turn the amenities into the three or four a traveller decides on (`p-walk-14`). Set the garden room facts as compact " | " lines, so three room types don't run down a screen and a half of text (`p-walk-09`).
+5. **Drop one of the two rating blocks**, or make the second one carry something new, such as the 9.9 staff subscore if the copy agrees (`p-walk-04` and `p-walk-06`).
+
+**Keep:** the gate first screen; Alon's order of King band, balcony, roof, garden; the plain fan, A/C and hot-water lines and Yelum's "charm" sentence; "Check dates on Booking.com" with the phone beside it everywhere; the surfboard room opening the slideshow; the titled forecast with Giada's line, lazy loading, reserved space, link fallbacks and Rosa's widget unstyled; the press states on every control.
+
+### Verification 1's points, re-checked
+
+| V1 fix | Today |
+|---|---|
+| 1. Forecast: delete the rule, close the spacing, tighten the laptop card, give a reason, link instead of blank on failure | **Done**: no rule (`walk3.mjs`, no borders, no `hr` in `#surf`), tight on both widths (`f-02`, `l-walk-11`), titled with Giada's line, JSON failure shows a link card (`fail-json.png`). New finding: the numbers disagree with the widget, and the widget-only failure leaves a white box (fix 1) |
+| 2. Header scrim band and name collision | **Done** (`h-rise-*`, `h-white-section.png`) |
+| 3. Surf and proof up: a surf-naming first review, dated ratings near the King facts, a jump to the forecast | **Mostly done**: the first review mentions surfing and the local surf spots (`p-walk-11`), and the ratings now sit at y ≈ 2,394 instead of ~3,800. There is no forecast jump link on the phone; the laptop nav has "Surf" |
+| 4. The garden slideshow opens on the surfboard room, and a picture in the Yelum / Breakfast run | **Done** (`b-slide-before.png`, `p-walk-10`) |
+| 5. Closing to one short line, amenities trimmed, the JS-off bar off the hero Call | Closing **done** (two plain lines under "Come and stay", `p-walk-17`); JS-off bar **done** (`nojs-00.png`); amenities **not really** trimmed (`p-walk-14`, fix 4) |
+
+### What I could not try
+
+- Real phones and real 4G: everything was headless Chromium emulation with synthesised touch. The hero timing is from one throttled run.
+- Booking.com past the listing, the call itself, and following Rosa's link (opens a new tab): by instruction.
+- The widget's own failure as a real outage: I simulated it by blocking requests. When I blocked the JSON, the widget also showed Rosa's own "Forecast unavailable", because both read the same host.
+- Google Maps and the Facebook page were not walked again this round; for them I relied on the audit's frames and Verification 1's walk. `/impeccable`, `/emil-design-eng` and the motion-audit skills were not run; the inspector was.
