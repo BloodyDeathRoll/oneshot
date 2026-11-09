@@ -23,6 +23,20 @@ export const isPreviewUrl = (url) => {
 export const SITE = import.meta.env.SITE ? new URL(import.meta.env.SITE) : null
 export const IS_PREVIEW = isPreviewUrl(SITE)
 export const abs = (u) => (SITE ? new URL(u, SITE).href : null)
+
+/* 4i (aiseo 0.2.2): the AI-crawler policy, named bot by bot so it is a decision on record, not a default.
+   Default for a client site is 'allow' (being quoted is the point), but it is THE OWNER'S CALL and has not
+   been put to them (aiseo-report.md). Flipping one bot to 'disallow' here is the whole change. Only a real
+   domain uses these values: a PREVIEW build refuses every one of them (robots.txt.js). Same list as this
+   pipeline's other finals (KA, Layday, Lavish Haven, Global Surf v2). */
+export const AI_CRAWLERS = {
+  GPTBot: 'allow', 'OAI-SearchBot': 'allow', 'ChatGPT-User': 'allow',
+  ClaudeBot: 'allow', 'Claude-SearchBot': 'allow', 'Claude-User': 'allow',
+  PerplexityBot: 'allow', 'Perplexity-User': 'allow',
+  'Google-Extended': 'allow', 'Applebot-Extended': 'allow',
+  CCBot: 'allow', 'Meta-ExternalAgent': 'allow', Amazonbot: 'allow', DuckAssistBot: 'allow',
+  'MistralAI-User': 'allow',
+}
 /* the site's routes, for the sitemap and the canonicals: one page */
 export const ROUTES = ['']
 
@@ -132,6 +146,18 @@ export const businessLd = ({ description } = {}) => {
     } : {}),
     ...((c.openingHours ?? []).length ? {
       openingHoursSpecification: c.openingHours.map((h) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.days.map((d) => ({ mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday', sun: 'Sunday' })[d]), opens: h.opens, closes: h.closes })),
+    } : {}),
+    /* 4i: the rooms[] rows as HotelRoom, the shape of KA and the Lavish Haven (seo-report.md left rooms as
+       data to 4i). Mirrors the visible room list row for row: name ← label, bed ← beds, description ← note,
+       occupancy ← sleeps. No rates: nightly prices are live engine inventory (schema rule, dossier gap
+       offers.nightly_rates). No floor size parsed out of the note text. */
+    ...((c.rooms ?? []).length ? {
+      containsPlace: c.rooms.map((r) => ({
+        '@type': 'HotelRoom', name: r.label,
+        ...(r.beds ? { bed: r.beds } : {}),
+        ...(r.note ? { description: r.note } : {}),
+        ...(r.sleeps ? { occupancy: { '@type': 'QuantitativeValue', maxValue: r.sleeps } } : {}),
+      })),
     } : {}),
     ...((c.languagesSpoken ?? []).length ? { knowsLanguage: c.languagesSpoken } : {}),
     ...(same.length ? { sameAs: [...new Set(same)] } : {}),
