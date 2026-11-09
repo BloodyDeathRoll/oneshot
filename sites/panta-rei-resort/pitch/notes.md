@@ -39,7 +39,7 @@ Short names: D = `dossier/panta-rei-resort/dossier.json`; A = `dossier/panta-rei
 | 29 | Editable list (rooms, prices, texts, hours/stay/house rules/Good to know, photos + first-screen film from a phone, contact/booking/socials, ratings & reviews) | H | FN "editable"; playbook §9 (upload from phone, site makes sizes) |
 | 30 | Reviews: owner removes, we add | H | CMS l.72 `evidenceRowsDeleteOnly(['ratings','testimonials'])` |
 | 31 | Not editable yet: hero title + logo, room galleries, dish lists, class week, distances | H | FN "schema gaps" (`heroTitle`, `logo`, `roomGalleries`, `menuTabs`, `classWeek`, `distances`) |
-| 32 | Offer: managed (recommended; monthly fee; hosting, updates, backups ours; own login); own server (one-time fee; we install, verify, hand over, revoke access; ~$6–12/month to their host; updates/backups theirs); files only (no editor; changes need a developer; any host incl. the current one). Nothing set up; fee agreed after they choose | H | base.md constraint 2; P §1 hosting modes; run file `hosting.default_mode: managed`; market.md (no amount until Shahar decides). The $6–12 is the third-party host's cost stated in base.md/PLAN, not a fee of ours |
+| 32 | Offer: managed (recommended; monthly fee; hosting, updates, backups ours; own login); own server (one-time fee; we install, verify, hand over, revoke access; their host's server fee paid by them, no amount stated; updates/backups theirs); files only (no editor; changes need a developer; any host incl. the current one). Nothing set up; fee agreed after they choose | H | base.md constraint 2; P §1 hosting modes; run file `hosting.default_mode: managed`; market.md (no amount until Shahar decides). The host's server cost is not stated (Alon, 2026-11-09: we don't know it for sure) |
 | 33 | Connect pantareiresort.com once they have chosen | H | base.md constraint 3 (owner already has a domain); D `existing_site.url` |
 | 34 | Beach distance 300 m (own site) vs 600 m (Booking.com); preview "a short walk" | H | D `contradictions[0]`; DIST ("Kabalana Beach is a short walk away") |
 | 35 | Breakfast 8:30–12:00 (site) vs 8:30–11:30 (guest booklet); preview 8:30–12:00 | H | D `contradictions[2]`; DIST |
@@ -80,6 +80,6 @@ All made by `make-pitch-media.sh` (`# media:` headers); git-ignored by the repo'
 
 - **Channel:** WhatsApp +94 72 800 3022 (the site's own WhatsApp button). Not the Facebook number +94 74 209 5135 (the guest booklet's emergency line).
 - **F9 privately** (above): not in the page or the message.
-- **No fee amounts anywhere.** The only number in the offer is the ~$6–12/month a VPS host would charge the owner for the self-hosted option (base.md constraint 2).
+- **No fee amounts anywhere**, not even the third-party host's server cost (removed 2026-11-09 at Alon's request: we don't know it for sure).
 - The owner may notice on the preview the polish items the critics left open (S2/X: closing line length on a phone, drawer text cut, the "if your dates clear" line not added). None shows in the pitch's screenshots.
 - No owner name is published (D `business.owners`), hence "Hello Panta Rei team".
