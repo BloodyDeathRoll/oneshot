@@ -320,7 +320,10 @@ h1{margin:0;font-weight:500;font-size:26px;line-height:1.28;letter-spacing:-.01e
 
   /* 4g (experience critic, fix 1): the dishes straight after the first two paragraphs, so no phone
      screen is text alone. Order only; the DOM keeps the copy's order. */
-  .dining-grid{display:flex;flex-direction:column}
+  /* stretch, not the desktop grid's align-items:start: in a start-aligned column the masonry shrank to
+     its content, 10 px wide until the lazy dishes arrived, then grew 351 px and moved the page on an
+     early scroll (audit-mockup scroll.early.cls 0.27 to 0.42, about one run in four). */
+  .dining-grid{display:flex;flex-direction:column;align-items:stretch}
   .dining-text{display:contents}
   .dining-text>.t,.dining-text>p{order:1}
   .mason{order:2}
