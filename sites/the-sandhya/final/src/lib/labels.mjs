@@ -32,6 +32,12 @@ export default {
     checkIn: 'Check-in',
     checkOut: 'Check-out',
     datesHalf: 'Choose both dates, or clear both.',
+    // With both dates set, the booking buttons say what they carry ({range} e.g. "9–12 Dec").
+    datesCta: 'Check {range} · {nights}',
+    datesRoom: '{room}: {range} · {nights}',
+    night: '{n} night',
+    nights: '{n} nights',
+    stickyHeader: 'Sections and booking',
     slideshow: 'slideshow',
     photograph: 'photograph',
     of: 'of',

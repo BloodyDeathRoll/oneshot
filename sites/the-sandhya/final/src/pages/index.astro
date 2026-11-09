@@ -120,7 +120,7 @@ const slideDims = (m) => R_(m).l
 {hero && <link rel="preload" as="image" href={R_(hero).phone.src} media="(max-width: 767px)" fetchpriority="high">}
 <script is:inline>document.documentElement.classList.add('js');['load','error'].forEach(function(n){document.addEventListener(n,function(e){var t=e.target;if(t.tagName==='IMG')t.classList.add('in')},true)})</script>
 </head>
-<body data-l-photo={L.photograph} data-l-of={L.of} data-l-prev={L.prev} data-l-next={L.next} data-l-half={L.datesHalf}>
+<body data-l-photo={L.photograph} data-l-of={L.of} data-l-prev={L.prev} data-l-next={L.next} data-l-half={L.datesHalf} data-l-cta={L.datesCta} data-l-room={L.datesRoom} data-l-night={L.night} data-l-nights={L.nights}>
 <a class="skip" href="#main">{L.skip}</a>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5M3 16h18M6 11V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/></symbol>
@@ -157,16 +157,16 @@ const slideDims = (m) => R_(m).l
   </div>
   <div class="hero-copy">
     <h1 set:html={h1} />
-    {engine && <a class="btn btn-book" id="hero-book" data-engine href={engine.url}>{engine.label}</a>}
+    {engine && <a class="btn btn-book" id="hero-book" data-engine href={engine.url}><span class="lbl">{engine.label}</span></a>}
   </div>
 </header>
 
 <div class="rest">
-  <div class="stick">
+  <div class="stick" role="region" aria-label={L.stickyHeader}>
     <div class="top wrap stick-in">
       <nav aria-label={L.navRepeat}><a href="#rooms">{L.rooms}</a><a href="#dining">{L.dining}</a><a href="#kabalana">{L.kabalana}</a></nav>
       <a class="logo" href="#top" aria-label={`${s.businessName}, ${L.backToTop}`}><img src="img/logo-white.png" width="406" height="106" alt={s.businessName}></a>
-      <div class="right">{engine && <a class="btn btn-book" data-engine href={engine.url}>{engine.label}</a>}</div>
+      <div class="right">{engine && <a class="btn btn-book" data-engine href={engine.url}><span class="lbl">{engine.label}</span></a>}</div>
     </div>
   </div>
 
@@ -176,7 +176,7 @@ const slideDims = (m) => R_(m).l
       <h2 class="t center">{intro.heading}</h2>
       <div class="split">
         <div class="prose">{I.map((t) => <p>{t}</p>)}</div>
-        {G.arrival && <div class="frame" data-px><img loading="lazy" decoding="async" src={R_(G.arrival[0]).door.src} width={R_(G.arrival[0]).door.width} height={R_(G.arrival[0]).door.height} alt={G.arrival[0].alt}></div>}
+        {G.arrival && <div class="frame" data-px><img decoding="async" fetchpriority="low" data-src={R_(G.arrival[0]).door.src} width={R_(G.arrival[0]).door.width} height={R_(G.arrival[0]).door.height} alt={G.arrival[0].alt}><noscript><img src={R_(G.arrival[0]).door.src} width={R_(G.arrival[0]).door.width} height={R_(G.arrival[0]).door.height} alt={G.arrival[0].alt}></noscript></div>}
       </div>
     </section>
   )}
@@ -193,11 +193,9 @@ const slideDims = (m) => R_(m).l
             {r.shots.map((m, j) => {
               const v = R_(m), set = `${v.s.src} ${v.s.width}w, ${v.l.src} ${v.l.width}w`
               const dims = { width: v.l.width, height: Math.round(v.l.width * 2 / 3), sizes: '(max-width: 767px) 100vw, 60vw', alt: m.alt }
-              // The first photograph is ordinary lazy. The rest wake when the room comes near (a phone would
-              // otherwise fetch every strip on first load), with a plain image for JS off.
-              return j === 0
-                ? <li class="slide"><img loading="lazy" decoding="async" src={v.s.src} srcset={set} {...dims}></li>
-                : <li class="slide"><img decoding="async" data-src={v.s.src} data-srcset={set} {...dims}><noscript><img src={v.s.src} srcset={set} {...dims}></noscript></li>
+              // Every photograph wakes when its room comes near and the hero has loaded (site.js), so none
+              // of them takes the phone's bandwidth from the hero; a plain image for JS off.
+              return <li class="slide"><img decoding="async" fetchpriority="low" data-src={v.s.src} data-srcset={set} {...dims}><noscript><img src={v.s.src} srcset={set} {...dims}></noscript></li>
             })}
           </ul></div>
           <div class="dots"></div>
@@ -206,14 +204,25 @@ const slideDims = (m) => R_(m).l
           <h3>{r.label}</h3>
           <p class="meta">{[r.beds, r.sleeps && `${L.sleeps} ${r.sleeps}`].filter(Boolean).join(' | ')}</p>
           {r.note && <p>{r.note}</p>}
-          {r.link && <a class="btn btn-book" data-engine href={r.link.url}>{r.link.label}</a>}
+          {r.link && <a class="btn btn-book" data-engine data-room={r.label} href={r.link.url}><span class="lbl">{r.link.label}</span></a>}
         </div>
       </article>
     ))}
     <div class="kit">
       <div class="kit-text">
         {R[1] && <p class="lede-s">{R[1]}</p>}
-        {R.slice(3).map((t) => <p>{t}</p>)}
+        {R.slice(3, -1).map((t) => <p>{t}</p>)}
+        {rates && <p>{rates}</p>}
+        {engine && (
+          <div class="date-go" data-dates hidden>
+            <div class="dates" hidden>
+              <label class="field"><span>{L.checkIn}</span><input type="date" class="d-in" name="checkin" autocomplete="off"></label>
+              <label class="field"><span>{L.checkOut}</span><input type="date" class="d-out" name="checkout" autocomplete="off"></label>
+            </div>
+            <p class="dates-note" aria-live="polite"></p>
+            <a class="btn btn-book" data-engine href={engine.url}><span class="lbl">{engine.label}</span></a>
+          </div>
+        )}
         {s.stayInfo && (
           <div class="stay">
             <strong>{s.stayInfo.checkInFrom && <span class="nb">{L.checkInFrom} {s.stayInfo.checkInFrom}</span>}{s.stayInfo.checkInFrom && s.stayInfo.checkOutTo && ' | '}{s.stayInfo.checkOutTo && <span class="nb">{L.checkOutBy} {s.stayInfo.checkOutTo}</span>}</strong>
@@ -387,14 +396,14 @@ const slideDims = (m) => R_(m).l
         {rates && <p class="plain">{rates}</p>}
         {ratings.length > 0 && <ul class="rate-lines">{ratings.map((r) => <li><a class="rate-line" href={r.url}><span>{r.score} | {r.name} | {r.count} {L.reviews} | <span class="nb">{L.read} {r.read}</span></span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>)}</ul>}
         {engine && (
-          <>
-            <div class="dates" id="dates" hidden>
-              <label class="field"><span>{L.checkIn}</span><input type="date" id="d-in" name="checkin" autocomplete="off"></label>
-              <label class="field"><span>{L.checkOut}</span><input type="date" id="d-out" name="checkout" autocomplete="off"></label>
+          <div class="date-go" data-dates>
+            <div class="dates" hidden>
+              <label class="field"><span>{L.checkIn}</span><input type="date" class="d-in" name="checkin" autocomplete="off"></label>
+              <label class="field"><span>{L.checkOut}</span><input type="date" class="d-out" name="checkout" autocomplete="off"></label>
             </div>
-            <p class="dates-note" id="dates-note" aria-live="polite"></p>
-            <a class="btn btn-book btn-big" data-engine href={engine.url}>{engine.label}<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </>
+            <p class="dates-note" aria-live="polite"></p>
+            <a class="btn btn-book btn-big" data-engine href={engine.url}><span class="lbl">{engine.label}</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
         )}
         {s.closing && <p class="closing">{s.closing}</p>}
         <div class="row">
@@ -408,7 +417,7 @@ const slideDims = (m) => R_(m).l
 
   <footer class="foot">
     <div class="wrap">
-      <a class="logo" href="#top" aria-label={`${s.businessName}, ${L.backToTop}`}><img src="img/logo-footer.png" width="284" height="145" alt={s.businessName}></a>
+      <a class="logo" href="#top" aria-label={`${s.businessName}, ${L.backToTop}`}><img loading="lazy" decoding="async" src="img/logo-footer.png" width="284" height="145" alt={s.businessName}></a>
       <div class="row">
         {tel && <a class="btn btn-soft" href={tel}><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>{L.call}</a>}
         {mail && <a class="btn btn-soft" href={mail}><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>{L.email}</a>}
@@ -422,7 +431,7 @@ const slideDims = (m) => R_(m).l
 
   {engine && (
     <nav class="bar" id="bar" aria-label={L.bookingBar}>
-      <a class="btn btn-book" data-engine href={engine.url}>{engine.label}</a>
+      <a class="btn btn-book" data-engine href={engine.url}><span class="lbl">{engine.label}</span></a>
       {tel && <a class="round" href={tel} aria-label={L.call}><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></a>}
     </nav>
   )}

@@ -1,34 +1,35 @@
 {
  "slug": "the-sandhya",
  "variant": "../final",
- "measured_at": "2026-11-09T15:28:30.513Z",
+ "measured_at": "2026-11-09T19:21:27.103Z",
  "first_load": {
-  "requests": 9,
+  "requests": 4,
   "hosts": [
    "localhost:8980"
   ],
   "third_party_hosts": [],
-  "bytes_total": 615542,
-  "bytes_html": 110052,
+  "bytes_total": 273877,
+  "bytes_html": 116902,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 46752,
-  "bytes_images": 458738,
-  "largest_image_bytes": 175632,
-  "lcp_ms": 640,
-  "cls": 0.0032,
-  "dcl_ms": 1425
+  "bytes_images": 110223,
+  "largest_image_bytes": 98258,
+  "lcp_ms": 564,
+  "cls": 0.0039,
+  "dcl_ms": 1260
  },
  "scroll": {
   "early": {
-   "cls": 0.0032,
+   "cls": 0.0039,
    "shifts": [
     {
-     "value": 0.0032,
-     "at_ms": 1625,
-     "y": 61,
+     "value": 0.0039,
+     "at_ms": 1262,
+     "y": 0,
      "sources": [
-      "#text"
+      "#text",
+      "span.lbl"
      ]
     }
    ]
@@ -68,7 +69,7 @@
   "images": 47,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 0,
-  "tapables": 50,
+  "tapables": 51,
   "tapables_under_44px": 0,
   "tapables_under_44px_examples": [],
   "headings": [

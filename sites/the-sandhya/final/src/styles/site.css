@@ -100,6 +100,8 @@ h1{margin:0;font-weight:500;font-size:26px;line-height:1.28;letter-spacing:-.01e
 .room h3{margin:0 0 .15em;font-weight:500;font-size:clamp(26px,2.4vw,32px);letter-spacing:-.015em;line-height:1.2}
 .room .meta{margin-bottom:.9em}
 .room .btn{margin-top:.75em;padding:0 24px;font-size:16px;min-height:52px}
+/* 4g: a room button that names the dates may take two lines in a narrow column. */
+.room .btn{white-space:normal;text-align:center;padding-block:8px}
 .stage{position:relative;background:var(--marble)}
 .strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
 .strip::-webkit-scrollbar{display:none}
@@ -254,6 +256,14 @@ h1{margin:0;font-weight:500;font-size:26px;line-height:1.28;letter-spacing:-.01e
 .dates-note{margin:-4px auto 14px;font-size:14px;color:var(--mute)}
 .dates-note:empty{display:none}
 /* 4g (experience critic, fix 3): proof straight after the rooms, the Guests block stays where it is. */
+/* 4g: one set of fields after the rooms and one in the booking card, sharing one state (site.js); each
+   set is the width of the button under it. */
+.date-go{width:min(100%,440px)}
+.date-go .dates{max-width:none;margin:0 0 14px}
+.date-go .btn{width:100%}
+.kit-text .date-go{margin-top:1.4em}
+.book-card .date-go{margin:0 auto}
+.btn .lbl{min-width:0;overflow:hidden;text-overflow:ellipsis}
 .rooms-proof{margin:clamp(24px,3vw,40px) 0 0;font-size:15px;color:var(--mute);display:flex;flex-wrap:wrap;gap:0 28px}
 
 /* Footer */
@@ -284,7 +294,8 @@ h1{margin:0;font-weight:500;font-size:26px;line-height:1.28;letter-spacing:-.01e
 }
 @media (max-width:767px){
   body{font-size:16.5px}
-  html{scroll-padding-top:12px}
+  /* 4g: a focused control is never left under the phone bar (54 px + 2x10 px + the safe area). */
+  html{scroll-padding-top:12px;scroll-padding-bottom:calc(84px + env(safe-area-inset-bottom))}
   .top{padding:6px 8px}
   .top nav{margin:0}.top .right{margin:0}
   .top nav a{font-size:14px}
@@ -369,6 +380,9 @@ h1{margin:0;font-weight:500;font-size:26px;line-height:1.28;letter-spacing:-.01e
 }
 @media (max-width:767px){.field{padding:10px 12px 9px}.field input{font-size:16px}}
 @media (max-width:379px){.dates{flex-direction:column}}
+/* 4g: on a portrait tablet the header links sat on the photographed ceiling lights (about 44 to 56 px
+   down); lifting the header row clears them. */
+@media (min-width:768px) and (max-width:1023px) and (orientation:portrait){.hero .top{padding-top:0}}
 /* A short phone or a short laptop: the photograph gives up its ceiling, never the bed, so the words
    stay on the linen and clear of the window frame. */
 @media (max-width:767px) and (min-aspect-ratio:8/15){.hero-media img{object-position:50% 100%}}
