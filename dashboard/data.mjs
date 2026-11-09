@@ -17,7 +17,7 @@ import { readActivity, assignments as toAssignments, team as readTeam, operatorF
 import { status as mediaStatus } from '../tools/media.mjs';
 import { readJsonlMerged, showMain, lsMain, mainSha, MAIN } from '../tools/origin.mjs';
 import { RUNS_DIR } from '../tools/run.mjs';
-import { handoffs as readHandoffs, ownerOf } from '../tools/handoff.mjs';
+import { handoffs as readHandoffs, ownerOf, previewFromNotes } from '../tools/handoff.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'dashboard');
@@ -355,7 +355,7 @@ export function buildData({ ledgerPath = 'ledger.jsonl', operator = null, origin
     const pitchedLine = hist.find((h) => h.to_state === 'pitched');
     const outcomeLine = [...hist].reverse().find((h) => h.to_state.startsWith('outcome:'));
     const hosting = [...hist].reverse().find((h) => h.hosting_mode)?.hosting_mode ?? null;
-    const previewFromLedger = [...hist].reverse().map((h) => h.note?.match(/https:\/\/[\w.-]+\.workers\.dev/)?.[0]).find(Boolean);
+    const previewFromLedger = previewFromNotes(hist);
     const critic = criticSeries(hist);
     const criticRounds = critic.filter((c) => c.kind === 'round');
     const latestScored = [...critic].reverse().find((c) => c.score != null && c.verdict);

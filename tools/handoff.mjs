@@ -115,12 +115,22 @@ async function openPr(spec) {
   return open(spec);
 }
 
+// A business's site preview, from its ledger lines, newest first. A `packaged` note carries the pitch
+// page's own Worker (<brand>-proposal), which is on workers.dev too but is not the site.
+export function previewFromNotes(lines) {
+  for (const l of [...lines].reverse()) {
+    for (const url of l.note?.match(/https:\/\/[\w.-]+\.workers\.dev/g) ?? []) {
+      if (!/-proposal\./.test(url)) return url;
+    }
+  }
+  return null;
+}
+
 // The block `ship` adds to notes/<slug>.md: where the business stands, for the receiver.
 export function handoffNote(h, run, ops = team()) {
   const lines = ledger().filter((l) => l.slug === h.slug && l.run_id === run.run_id);
   const last = lines.at(-1);
-  const urlOf = (re) => [...lines].reverse().map((l) => l.note?.match(re)?.[0]).find(Boolean) ?? null;
-  const preview = urlOf(/https:\/\/[\w.-]+\.workers\.dev\/?(?![\w-])/);
+  const preview = previewFromNotes(lines);
   const gate = { shortlisted: 'approve the shortlist', planned: 'approve the research lanes', researched: 'confirm the direction with the client', mocked: 'pick a mockup', packaged: 'send the pitch', 'outcome:sale': "record the client's product choice" }[last?.to_state] ?? null;
   return [
     `## Handoff ${h.steps.approved?.ts.slice(0, 10) ?? now().slice(0, 10)}: ${ops[h.from]?.name ?? h.from} → ${ops[h.to]?.name ?? h.to}`,
