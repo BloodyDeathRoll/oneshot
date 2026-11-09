@@ -1,0 +1,311 @@
+{
+ "slug": "panta-rei-resort",
+ "locale": "en",
+ "copywriter_version": "0.5.0",
+ "businessName": "Panta Rei Resort",
+ "businessType": "beach_lodging",
+ "tagline": "A boutique resort set around a large pool in Kabalana, Ahangama, on the south coast of Sri Lanka.",
+ "closing": "Booking direct gets you our best rate, and if there's anything you'd like to ask first, send us a WhatsApp.",
+ "featureLine": "No paradise like home.",
+ "copyBlocks": [
+  {
+   "slot": "intro",
+   "heading": "Welcome to Panta Rei",
+   "body": "Welcome to our boutique resort in Kabalana, Sri Lanka. In Panta Rei you can escape the hustle and bustle of daily life and immerse yourself in a tropical paradise where surfing, yoga, crystal blue beaches and rainforests come together.\n\nThe resort features 16 bungalows, each with its own charm and style, inspired by wild nature and made from natural materials."
+  },
+  {
+   "slot": "about",
+   "heading": "The pool",
+   "body": "The bungalows sit in a ring around a long pool with a stone deck and loungers, and the garden runs between them.\n\nThe pool opens early in the morning, so you can swim before breakfast. If you're staying nearby, you can come for the day too."
+  },
+  {
+   "slot": "about",
+   "heading": "Restaurant and bar",
+   "body": "The restaurant serves breakfast, lunch, dinner and cocktails all day, to guests and to anyone who drops in. Breakfast goes from smoothie bowls, granola and banana oat pancakes to shakshuka, or the Sri Lankan plate with egg hoppers, dhal and coconut sambal. Later there's a fish bowl, the curry of the day and a whole grilled fish, priced on weight. Dinner is a mix of traditional and modern Mediterranean dishes.\n\nThe bar is upstairs, above the restaurant. Go up for the sunset."
+  },
+  {
+   "slot": "about",
+   "heading": "Panta Fitness Club",
+   "body": "An open-air fitness area on the upper floor looks out over the resort. Vinyasa yoga is at 8:30 every morning; Friday is the day off. There are Pilates classes too, led by experienced instructors, and in the season the schedule gets longer. You don't need to book."
+  },
+  {
+   "slot": "about",
+   "heading": "After the surf",
+   "body": "The Surf Therapy Massage was put together for surfers. It's a full body oil massage that works on every muscle with sport massage techniques, for the physical demands of surfing, and helps your body recover faster.\n\nThere's a Revitalizing massage as well. Either one is an hour on the whole body, or 45 minutes on the back, neck and shoulders."
+  },
+  {
+   "slot": "offer",
+   "heading": "Four ways to stay",
+   "body": "Every room has air conditioning, hot water and wifi, is cleaned daily, and comes with breakfast.\n\nPrices move with the dates. Pick yours on our booking page and you'll see what's free and what it costs."
+  },
+  {
+   "slot": "info",
+   "heading": "Groups and retreats",
+   "body": "Planning to bring a big group to Sri Lanka? Whether it's for yoga, surfing, or simply soaking up the chilled island vibes, our resort is ready to host you. We'll take care of all the meals and accommodation, so you can focus on what matters most: enjoying every moment together."
+  },
+  {
+   "slot": "info",
+   "heading": "Getting here and around",
+   "body": "Kabalana Beach is a short walk away and Koggala Lake about 1.5 km. Koggala Airport is 5 km from the resort, Kathaluwa station 1.9 km and Ahangama station 2.1 km.\n\nTuk tuk drivers wait at the door of the hotel. Agree the price before you set off, or ask us to call one. If you'd rather have a private taxi, we'll arrange it."
+  }
+ ],
+ "spot": "The waves of Kabalana, a short walk from the resort.",
+ "season": null,
+ "openingHours": [],
+ "hoursNote": "Restaurant, every day: breakfast 8:30–12:00 (coffee from 8:00), lunch 13:00–17:00, dinner 18:00–21:30.",
+ "priceList": [
+  {
+   "label": "Pool day pass",
+   "price": 3500,
+   "currency": "LKR",
+   "unit": "per_person",
+   "note": "Spent at the restaurant"
+  },
+  {
+   "label": "Fitness class: residents",
+   "price": 2500,
+   "currency": "LKR",
+   "unit": "per_lesson",
+   "note": "No need to book"
+  },
+  {
+   "label": "Fitness class: in-house guests",
+   "price": 3000,
+   "currency": "LKR",
+   "unit": "per_lesson",
+   "note": "No need to book"
+  },
+  {
+   "label": "Fitness class: walk-ins",
+   "price": 3500,
+   "currency": "LKR",
+   "unit": "per_lesson",
+   "note": "No need to book"
+  },
+  {
+   "label": "Surf Therapy Massage, 60 min full body",
+   "price": 20000,
+   "currency": "LKR",
+   "unit": "flat",
+   "note": null
+  },
+  {
+   "label": "Surf Therapy Massage, 45 min back, neck & shoulders",
+   "price": 17000,
+   "currency": "LKR",
+   "unit": "flat",
+   "note": null
+  },
+  {
+   "label": "Revitalizing Massage, 60 min full body",
+   "price": 20000,
+   "currency": "LKR",
+   "unit": "flat",
+   "note": null
+  },
+  {
+   "label": "Revitalizing Massage, 45 min back, neck & shoulders",
+   "price": 17000,
+   "currency": "LKR",
+   "unit": "flat",
+   "note": null
+  }
+ ],
+ "lessons": [],
+ "credentials": [],
+ "rooms": [
+  {
+   "label": "Double Room",
+   "beds": "King-size bed or twin single beds",
+   "sleeps": 3,
+   "note": "22 m², with a private balcony over the pool. En-suite shower."
+  },
+  {
+   "label": "Triple Room",
+   "beds": "King-size bed and a sofa bed",
+   "sleeps": 3,
+   "note": "30 m², with a private balcony over the pool. Bathroom with both a bathtub and a shower."
+  },
+  {
+   "label": "Family Villa",
+   "beds": "Two king-size beds or four single beds",
+   "sleeps": 4,
+   "note": "50 m², two bedrooms, garden view and a private balcony. Private bathroom plus an outdoor bath."
+  },
+  {
+   "label": "Suite with Private Pool",
+   "beds": "King-size bed",
+   "sleeps": 2,
+   "note": "40 m², with your own private pool just steps from the room and a chill-out corner with a built-in sofa."
+  }
+ ],
+ "stayInfo": {
+  "checkInFrom": "14:00",
+  "checkInTo": null,
+  "checkOutFrom": null,
+  "checkOutTo": "11:00",
+  "minNights": null,
+  "note": "Children of any age are welcome. No pets, and no smoking in the rooms. Quiet hours are 22:00 to 08:00."
+ },
+ "amenities": [
+  {
+   "label": "Large outdoor pool",
+   "note": null
+  },
+  {
+   "label": "Restaurant and bar, open to outside guests",
+   "note": null
+  },
+  {
+   "label": "Vegetarian, gluten-free and dairy-free options",
+   "note": null
+  },
+  {
+   "label": "Open-air fitness area and yoga shala",
+   "note": null
+  },
+  {
+   "label": "Daily yoga and Pilates classes",
+   "note": "additional charge"
+  },
+  {
+   "label": "Massage",
+   "note": "additional charge"
+  },
+  {
+   "label": "Free WiFi",
+   "note": null
+  },
+  {
+   "label": "Free private parking",
+   "note": null
+  },
+  {
+   "label": "Airport shuttle",
+   "note": null
+  },
+  {
+   "label": "Private taxi",
+   "note": "on request"
+  },
+  {
+   "label": "Laundry service",
+   "note": "additional charge, cash"
+  },
+  {
+   "label": "Safe box in the rooms",
+   "note": null
+  },
+  {
+   "label": "Generator for power cuts",
+   "note": null
+  },
+  {
+   "label": "Garden and sun terrace",
+   "note": null
+  },
+  {
+   "label": "Cot for under-2s",
+   "note": "free, on request"
+  },
+  {
+   "label": "Extra bed for an adult",
+   "note": "US$20 per night, on request"
+  }
+ ],
+ "rentals": [],
+ "brands": [],
+ "ratings": [
+  {
+   "platform": "booking",
+   "score": 9.2,
+   "scale": "10",
+   "count": 468,
+   "url": "https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html",
+   "capturedAt": "2026-11-06"
+  },
+  {
+   "platform": "google",
+   "score": 4.7,
+   "scale": "5",
+   "count": 213,
+   "url": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en",
+   "capturedAt": "2026-11-06"
+  }
+ ],
+ "testimonials": [
+  {
+   "quote": "We stayed here in January, and of all the places we've stayed on our travels, this was the best resort so far. Incredibly clean throughout, you can tell housekeeping is taken seriously here, and the whole place is managed to a standard you rarely find. One of the owners was around during our stay, and you could immediately tell how much he genuinely cares about the resort and his guests, on top of being a very friendly guy. The employees match that energy: attentive, warm and top notch across the board. Can't recommend Panta Rei enough, we'll be back.",
+   "author": "Peter",
+   "source": "google",
+   "lang": "en",
+   "date": null
+  },
+  {
+   "quote": "Incredible! We stayed at Panta Rei for 1 week, and it was wonderful. The room was very clean and had all the necessary amenities, the pool and garden area was beautiful and very quiet, the food was impeccable, one of the best we ate in Sri Lanka. The workers are very helpful and attentive. We would definitely choose it again if we return to Sri Lanka!",
+   "author": "Alba R",
+   "source": "site",
+   "lang": "en",
+   "date": null
+  },
+  {
+   "quote": "We had an amazing stay in Panta Rei. The room was spacious, quiet, and nicely decorated. The food was extremely tasty.\nA big shout-out to the incredible staff, always helpful and kind. We really felt at home.",
+   "author": "Arianna, Italy",
+   "source": "booking",
+   "lang": "en",
+   "date": null
+  },
+  {
+   "quote": "I had a lovely stay! The food was excellent, and the staff were incredibly welcoming, friendly and attentive throughout my visit. Everyone made me feel comfortable and well looked after. Thank you for such a pleasant experience!",
+   "author": "Lynette",
+   "source": "google",
+   "lang": "en",
+   "date": null
+  },
+  {
+   "quote": "Everything thing was amazing, the room was clean, the pool was beautiful, the food was amazing, the staff are amazing, always very warm and welcoming",
+   "author": "Oishanee, India",
+   "source": "booking",
+   "lang": "en",
+   "date": null
+  },
+  {
+   "quote": "The hospitality and the atmosphere was great. The staff were very helpful as well.",
+   "author": "Akhila, Sri Lanka",
+   "source": "booking",
+   "lang": "en",
+   "date": null
+  }
+ ],
+ "contact": {
+  "phone": "+94728003022",
+  "whatsapp": "+94728003022",
+  "email": "hello@pantareiresort.com",
+  "address": "Back to Life Road, Kabalana Rd, Ahangama 80650, Sri Lanka",
+  "mapUrl": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en"
+ },
+ "bookingLinks": [
+  {
+   "label": "Check dates and book direct",
+   "url": "https://pantareiresort.holidayfuture.com/"
+  },
+  {
+   "label": "Double Room",
+   "url": "https://pantareiresort.holidayfuture.com/listings/572800"
+  },
+  {
+   "label": "Triple Room",
+   "url": "https://pantareiresort.holidayfuture.com/listings/572802"
+  },
+  {
+   "label": "Family Villa",
+   "url": "https://pantareiresort.holidayfuture.com/listings/572799"
+  },
+  {
+   "label": "Suite with Private Pool",
+   "url": "https://pantareiresort.holidayfuture.com/listings/572798"
+  }
+ ],
+ "languagesSpoken": [],
+ "humanizer_version": "0.2.1"
+}

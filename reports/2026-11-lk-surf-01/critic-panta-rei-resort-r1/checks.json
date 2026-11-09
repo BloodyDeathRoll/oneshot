@@ -1,0 +1,381 @@
+{
+ "offline_390": {
+  "external_attempted": [],
+  "failed": [],
+  "console_errors": [],
+  "broken_images": [],
+  "fonts": [
+   "Jost",
+   "Satisfy"
+  ],
+  "videos_no_scroll": [
+   "vid-002-cut.p1080.webm"
+  ],
+  "videos_after_scroll": [
+   "vid-002-cut.p1080.webm",
+   "vid-001-lounge.p900.webm",
+   "vid-003-mat-class.m720.mp4"
+  ],
+  "scrollWidth": 390
+ },
+ "offline_1440": {
+  "external_attempted": [],
+  "failed": [],
+  "console_errors": [],
+  "broken_images": [],
+  "fonts": [
+   "Jost",
+   "Satisfy"
+  ],
+  "videos_no_scroll": [
+   "vid-002-cut.d1920.webm"
+  ],
+  "videos_after_scroll": [
+   "vid-002-cut.d1920.webm",
+   "vid-001-lounge.p900.webm",
+   "vid-003-mat-class.m720.mp4"
+  ],
+  "scrollWidth": 1440
+ },
+ "axe_390": {
+  "violations": [
+   {
+    "id": "region",
+    "impact": "moderate",
+    "n": 1,
+    "ex": [
+     ".bar :: Fix any of the following: Some page content is not contained by landmarks"
+    ]
+   }
+  ],
+  "passes": 45,
+  "incomplete": [
+   "aria-prohibited-attr:2",
+   "color-contrast:28",
+   "video-caption:2"
+  ],
+  "drawer_violations": [
+   {
+    "id": "scrollable-region-focusable",
+    "impact": "serious",
+    "n": 1,
+    "ex": [
+     ".slides"
+    ]
+   }
+  ]
+ },
+ "axe_1440": {
+  "violations": [
+   {
+    "id": "region",
+    "impact": "moderate",
+    "n": 1,
+    "ex": [
+     ".fwa :: Fix any of the following: Some page content is not contained by landmarks"
+    ]
+   }
+  ],
+  "passes": 45,
+  "incomplete": [
+   "aria-prohibited-attr:1",
+   "color-contrast:29",
+   "video-caption:2"
+  ],
+  "drawer_violations": [
+   {
+    "id": "scrollable-region-focusable",
+    "impact": "serious",
+    "n": 1,
+    "ex": [
+     ".slides"
+    ]
+   }
+  ]
+ },
+ "kbd_390": {
+  "tab_sequence": [
+   "Skip to content [solid 3px none]",
+   "Panta Rei Resort, Kabalana: ba [solid 3px none]",
+   "WhatsApp Panta Rei [solid 3px none]",
+   "Check dates [solid 3px none]"
+  ],
+  "tabs_to_cta": 4,
+  "open": true,
+  "focus_in_drawer": true,
+  "tab40_escapes": 0,
+  "closed": true,
+  "focus_back": "Check dates"
+ },
+ "kbd_1440": {
+  "tab_sequence": [
+   "Skip to content [solid 3px none]",
+   "Panta Rei Resort, Kabalana: ba [solid 3px none]",
+   "Rooms [solid 3px none]",
+   "Restaurant [solid 3px none]",
+   "Fitness [solid 3px none]",
+   "Getting here [solid 3px none]",
+   "Check dates [solid 3px none]"
+  ],
+  "tabs_to_cta": 7,
+  "open": true,
+  "focus_in_drawer": true,
+  "tab40_escapes": 0,
+  "closed": true,
+  "focus_back": "Check dates"
+ },
+ "reduced": {
+  "video_requests": 0
+ },
+ "meta": {
+  "title": "Panta Rei Resort · Kabalana, Ahangama, Sri Lanka",
+  "lang": "en",
+  "desc": "A boutique resort set around a large pool in Kabalana, Ahangama, on the south coast of Sri Lanka. The waves of Kabalana, a short walk from the resort.",
+  "robots": "noindex, nofollow",
+  "hreflang": [],
+  "og": [
+   "og:type=website",
+   "og:site_name=Panta Rei Resort",
+   "og:title=Panta Rei Resort · Kabalana, Ahangama, Sri Lanka",
+   "og:description=A boutique resort set around a large pool in Kabalana, Ahangama, on the south coast of Sri Lanka. The waves of Kabalana, a short walk from the resort.",
+   "twitter:card=summary"
+  ],
+  "ld": [
+   {
+    "@context": "https://schema.org",
+    "@type": "Resort",
+    "name": "Panta Rei Resort",
+    "description": "A boutique resort set around a large pool in Kabalana, Ahangama, on the south coast of Sri Lanka. The waves of Kabalana, a short walk from the resort.",
+    "telephone": "+94728003022",
+    "email": "hello@pantareiresort.com",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Back to Life Road, Kabalana Rd",
+     "postalCode": "80650",
+     "addressLocality": "Ahangama",
+     "addressCountry": "LK"
+    },
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 5.9807381,
+     "longitude": 80.3497102
+    },
+    "hasMap": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en",
+    "checkinTime": "14:00",
+    "checkoutTime": "11:00",
+    "amenityFeature": [
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Large outdoor pool",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Restaurant and bar, open to outside guests",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Vegetarian, gluten-free and dairy-free options",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Open-air fitness area and yoga shala",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Daily yoga and Pilates classes (additional charge)",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Massage (additional charge)",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Free WiFi",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Free private parking",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Airport shuttle",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Private taxi (on request)",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Laundry service (additional charge, cash)",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Safe box in the rooms",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Generator for power cuts",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Garden and sun terrace",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Cot for under-2s (free, on request)",
+      "value": true
+     },
+     {
+      "@type": "LocationFeatureSpecification",
+      "name": "Extra bed for an adult (US$20 per night, on request)",
+      "value": true
+     }
+    ],
+    "containsPlace": [
+     {
+      "@type": "HotelRoom",
+      "name": "Double Room",
+      "bed": "King-size bed or twin single beds",
+      "occupancy": {
+       "@type": "QuantitativeValue",
+       "maxValue": 3
+      },
+      "floorSize": {
+       "@type": "QuantitativeValue",
+       "unitCode": "MTK",
+       "value": 22
+      },
+      "description": "22 m², with a private balcony over the pool. En-suite shower."
+     },
+     {
+      "@type": "HotelRoom",
+      "name": "Triple Room",
+      "bed": "King-size bed and a sofa bed",
+      "occupancy": {
+       "@type": "QuantitativeValue",
+       "maxValue": 3
+      },
+      "floorSize": {
+       "@type": "QuantitativeValue",
+       "unitCode": "MTK",
+       "value": 30
+      },
+      "description": "30 m², with a private balcony over the pool. Bathroom with both a bathtub and a shower."
+     },
+     {
+      "@type": "HotelRoom",
+      "name": "Family Villa",
+      "bed": "Two king-size beds or four single beds",
+      "occupancy": {
+       "@type": "QuantitativeValue",
+       "maxValue": 4
+      },
+      "floorSize": {
+       "@type": "QuantitativeValue",
+       "unitCode": "MTK",
+       "value": 50
+      },
+      "description": "50 m², two bedrooms, garden view and a private balcony. Private bathroom plus an outdoor bath."
+     },
+     {
+      "@type": "HotelRoom",
+      "name": "Suite with Private Pool",
+      "bed": "King-size bed",
+      "occupancy": {
+       "@type": "QuantitativeValue",
+       "maxValue": 2
+      },
+      "floorSize": {
+       "@type": "QuantitativeValue",
+       "unitCode": "MTK",
+       "value": 40
+      },
+      "description": "40 m², with your own private pool just steps from the room and a chill-out corner with a built-in sofa."
+     }
+    ],
+    "makesOffer": [
+     {
+      "@type": "Offer",
+      "name": "Pool day pass",
+      "price": 3500,
+      "priceCurrency": "LKR",
+      "description": "Spent at the restaurant"
+     },
+     {
+      "@type": "Offer",
+      "name": "Fitness class: residents",
+      "price": 2500,
+      "priceCurrency": "LKR",
+      "description": "No need to book"
+     },
+     {
+      "@type": "Offer",
+      "name": "Fitness class: in-house guests",
+      "price": 3000,
+      "priceCurrency": "LKR",
+      "description": "No need to book"
+     },
+     {
+      "@type": "Offer",
+      "name": "Fitness class: walk-ins",
+      "price": 3500,
+      "priceCurrency": "LKR",
+      "description": "No need to book"
+     },
+     {
+      "@type": "Offer",
+      "name": "Surf Therapy Massage, 60 min full body",
+      "price": 20000,
+      "priceCurrency": "LKR"
+     },
+     {
+      "@type": "Offer",
+      "name": "Surf Therapy Massage, 45 min back, neck & shoulders",
+      "price": 17000,
+      "priceCurrency": "LKR"
+     },
+     {
+      "@type": "Offer",
+      "name": "Revitalizing Massage, 60 min full body",
+      "price": 20000,
+      "priceCurrency": "LKR"
+     },
+     {
+      "@type": "Offer",
+      "name": "Revitalizing Massage, 45 min back, neck & shoulders",
+      "price": 17000,
+      "priceCurrency": "LKR"
+     }
+    ],
+    "sameAs": [
+     "https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html",
+     "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en",
+     "https://www.instagram.com/pantarei_resort/",
+     "https://www.facebook.com/profile.php?id=100093054286482",
+     "https://www.youtube.com/@Panta_Rei_Resort",
+     "https://www.tripadvisor.com/Hotel_Review-g674590-d25364260-Reviews-Panta_Rei_Resort-Ahangama_Galle_District_Southern_Province.html"
+    ]
+   }
+  ],
+  "scripts_ext": [],
+  "inlineJS": [
+   39,
+   6037,
+   12001
+  ]
+ }
+}

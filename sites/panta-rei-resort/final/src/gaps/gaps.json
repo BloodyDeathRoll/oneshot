@@ -1,0 +1,201 @@
+{
+ "_about": "SCHEMA GAP content: what the picked design shows and schemas/site-content.md v0.11 has no field for. Written by scripts/seed-from-dossier.mjs from copy/en.json and dossier.json; listed in notes.md \"schema gaps\". Edit there, not here.",
+ "heroTitle": {
+  "value": "Panta Rei, Kabalana",
+  "_source": "concepts.md §6: the first screen's title until a new line is audited; businessName's first words + the village of the spot field (\"The waves of Kabalana…\")"
+ },
+ "logo": {
+  "file": "logo.png",
+  "alt": "Panta Rei Resort, Kabalana",
+  "_source": "dossier images[] img-023 (the business's logo, white on transparent); the template draws it as a mask in the text colour"
+ },
+ "roomGalleries": {
+  "Double Room": [
+   {
+    "file": "img-031.jpg",
+    "alt": "Bed with a rattan arch headboard beside tall teak French windows open to the garden",
+    "width": 1350,
+    "height": 900,
+    "focalY": 50
+   },
+   {
+    "file": "img-029.jpg",
+    "alt": "Bathroom with a white vanity, a rattan-front cabinet, blue crazy-paving tiles and a window onto greenery",
+    "width": 1280,
+    "height": 1087,
+    "focalY": 50
+   },
+   {
+    "file": "img-007.jpg",
+    "alt": "Bed with a striped throw and a straw hat, rattan wardrobe doors and a round rattan rug",
+    "width": 2000,
+    "height": 1334,
+    "focalY": 50
+   },
+   {
+    "file": "img-013.jpg",
+    "alt": "Bed with a rattan arch headboard, a rattan-panel wardrobe and a round rattan rug on a polished concrete floor",
+    "width": 2000,
+    "height": 1334,
+    "focalY": 50
+   }
+  ],
+  "Triple Room": [
+   {
+    "file": "img-034.jpg",
+    "alt": "Freestanding white bathtub, blue crazy-paving tiles and wooden-framed windows",
+    "width": 1350,
+    "height": 900,
+    "focalY": 50
+   },
+   {
+    "file": "img-036.jpg",
+    "alt": "Bungalow front: red tile roof, white walls, teak doors and two rattan chairs on the terrace",
+    "width": 1350,
+    "height": 900,
+    "focalY": 50
+   },
+   {
+    "file": "img-010.jpg",
+    "alt": "Bed with a rattan arch headboard and an orange cushioned rattan armchair",
+    "width": 2000,
+    "height": 1334,
+    "focalY": 50
+   },
+   {
+    "file": "img-011.jpg",
+    "alt": "Hooks with a straw bag and a red cloth beside an arched rattan mirror",
+    "width": 2000,
+    "height": 1334,
+    "focalY": 50
+   }
+  ],
+  "Family Villa": [
+   {
+    "file": "img-040.jpg",
+    "alt": "Freestanding white tub on pebbles in a walled outdoor bath under palms",
+    "width": 1280,
+    "height": 1920,
+    "focalY": 62
+   },
+   {
+    "file": "img-012.jpg",
+    "alt": "Room with glass sliding doors open to the lawn, a surfboard leaning outside",
+    "width": 2000,
+    "height": 1334,
+    "focalY": 50
+   },
+   {
+    "file": "img-014.jpg",
+    "alt": "Twin beds pushed together under a large palm-fan headboard, rattan pendant lamps and open shelving",
+    "width": 2000,
+    "height": 1334,
+    "focalY": 50
+   },
+   {
+    "file": "img-015.png",
+    "alt": "White bungalow with glass sliding doors behind dense tropical planting",
+    "width": 2000,
+    "height": 1314,
+    "focalY": 50
+   }
+  ],
+  "Suite with Private Pool": [
+   {
+    "file": "img-046.jpg",
+    "alt": "The private plunge pool on its terrace with two wooden lounge chairs, palms behind",
+    "width": 1350,
+    "height": 900,
+    "focalY": 50
+   },
+   {
+    "file": "img-047.jpg",
+    "alt": "Bed under a large palm-fan headboard with rattan pendant lamps and a potted palm",
+    "width": 1350,
+    "height": 900,
+    "focalY": 50
+   },
+   {
+    "file": "img-044.jpg",
+    "alt": "Walk-in shower with pale crazy-paving stone walls, a backlit niche and a built-in bench",
+    "width": 1280,
+    "height": 1920,
+    "focalY": 45
+   },
+   {
+    "file": "img-002.jpg",
+    "alt": "Palm-fan headboard, a rattan pendant lamp, a wooden stool and a potted palm",
+    "width": 2000,
+    "height": 1334,
+    "focalY": 50
+   },
+   {
+    "file": "img-016.jpg",
+    "alt": "Lounge niche with a built-in white bench, cushions and a rattan side table, the glass shower to the right",
+    "width": 2000,
+    "height": 1334,
+    "focalY": 50
+   }
+  ]
+ },
+ "_roomGalleries": "rooms[] holds one photo per room; the drawer shows every photograph the engine lists for the room (dossier room_types[].photos)",
+ "menuTabs": [
+  {
+   "label": "Breakfast",
+   "dishes": [
+    "Smoothie bowls",
+    "Granola",
+    "Banana oat pancakes",
+    "Shakshuka",
+    "The Sri Lankan plate with egg hoppers, dhal and coconut sambal"
+   ],
+   "photo": 2
+  },
+  {
+   "label": "Later on",
+   "dishes": [
+    "Fish bowl",
+    "Curry of the day",
+    "Whole grilled fish, priced on weight",
+    "Dinner is a mix of traditional and modern Mediterranean dishes"
+   ],
+   "photo": 3
+  }
+ ],
+ "_menuTabs": "dish names cut from copyBlocks \"Restaurant and bar\" (no menu module in the schema); photo = photos[] index",
+ "classWeek": {
+  "title": "Vinyasa yoga, every morning",
+  "time": "8:30",
+  "off": "fri"
+ },
+ "_classWeek": "from copyBlocks \"Panta Fitness Club\": \"Vinyasa yoga is at 8:30 every morning; Friday is the day off.\" (no schedule field in the schema)",
+ "distances": [
+  {
+   "distance": "5 km",
+   "place": "Koggala Airport"
+  },
+  {
+   "distance": "2.1 km",
+   "place": "Ahangama station"
+  },
+  {
+   "distance": "1.9 km",
+   "place": "Kathaluwa station"
+  },
+  {
+   "distance": "1.5 km",
+   "place": "Koggala Lake"
+  },
+  {
+   "distance": "A short walk",
+   "place": "Kabalana Beach"
+  }
+ ],
+ "_distances": "cut from copyBlocks \"Getting here and around\" (no places-nearby field in the schema)",
+ "listings": {
+  "sameAs": [
+   "https://www.tripadvisor.com/Hotel_Review-g674590-d25364260-Reviews-Panta_Rei_Resort-Ahangama_Galle_District_Southern_Province.html"
+  ],
+  "_source": "sameAs: dossier contact.socials.tripadvisor (reviews.tripadvisor.source_url; the score itself is behind a bot wall and is not used). JSON-LD only; Booking.com and Google come from ratings[].url, Instagram, Facebook and YouTube from socialLinks[]"
+ }
+}

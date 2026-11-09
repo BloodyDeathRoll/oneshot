@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESC}}">
+<meta name="theme-color" content="#F6F8F8">
+<script>
+/* Tier, decided before first paint so the stage's height never changes above the reader.
+   seq  = the scrubbed film (motion allowed, not Save-Data, not a weak phone)
+   none = poster + three stills with the captions (reduced motion, Save-Data, weak phone, no JS) */
+(function () {
+  var d = document.documentElement, n = navigator, c = n.connection || {};
+  d.classList.add('js');
+  var calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var weak = (n.deviceMemory && n.deviceMemory <= 2) || (n.hardwareConcurrency && n.hardwareConcurrency <= 2);
+  if (!calm && !c.saveData && !weak) d.classList.add('seq');
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<link rel="preload" as="image" href="img/film-poster-m.webp" media="(max-width: 767px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/film-poster-d.webp" media="(min-width: 768px)" fetchpriority="high">
+<style>
+@font-face { font-family: "Hanken fallback"; src: local("Arial"), local("Helvetica"); size-adjust: 98%; ascent-override: 98%; descent-override: 26%; }
+@font-face { font-family: "Bricolage fallback"; src: local("Arial"), local("Helvetica"); size-adjust: 103%; ascent-override: 93%; descent-override: 24%; }
+:root {
+  --ground: #F6F8F8; --paper: #FFFFFF; --ink: #25301F; --ink-2: #4A5444; --jade: #88B6AC; --jade-tint: #E6F0ED;
+  --roof: #914736; --book: #B8473A; --book-press: #9C3A2F; --line: rgba(37, 48, 31, .08);
+  --display: "Bricolage Grotesque", "Bricolage fallback", system-ui, sans-serif;
+  --text: "Hanken Grotesk", "Hanken fallback", system-ui, sans-serif;
+  --ease: cubic-bezier(.23, 1, .32, 1); --ease-io: cubic-bezier(.77, 0, .175, 1);
+  --gut: clamp(20px, 5vw, 72px); --max: 1280px; --r: 18px;
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: auto; }
+body { margin: 0; background: var(--ground); color: var(--ink); font: 400 17px/1.6 var(--text); -webkit-font-smoothing: antialiased; }
+img, video, canvas { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; letter-spacing: -.02em; line-height: 1.04; margin: 0; text-wrap: balance; }
+p { margin: 0 0 1em; text-wrap: pretty; }
+.sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: fixed; left: 16px; top: -60px; z-index: 100; background: var(--paper); padding: 10px 16px; border-radius: 999px; }
+.skip:focus { top: 16px; }
+:focus-visible { outline: 2px solid var(--book); outline-offset: 3px; border-radius: 6px; }
+svg { width: 22px; height: 22px; fill: currentColor; flex: none; }
+svg.stroke { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.gal-btn svg, .x svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- buttons: one booking colour, white text ---------- */
+.btn { --bg: var(--paper); --fg: var(--ink); display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px;
+  padding: 0 24px; border-radius: 999px; border: 0; background: var(--bg); color: var(--fg); font: 600 16px/1 var(--text); letter-spacing: .005em;
+  text-decoration: none; cursor: pointer; white-space: nowrap;
+  transition: transform .18s var(--ease), box-shadow .18s var(--ease), background-color .18s ease; box-shadow: 0 1px 2px rgba(37, 48, 31, .08); }
+.btn.book { --bg: var(--book); --fg: #fff; }
+.btn.soft { --bg: var(--jade-tint); }
+.btn.glass { --bg: rgba(255, 255, 255, .94); }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(37, 48, 31, .35); }
+  .btn.book:hover { box-shadow: 0 12px 26px -10px rgba(184, 71, 58, .65); }
+}
+.btn:active { transform: scale(.97); transition-duration: .1s; }
+.btn.book:active { background: var(--book-press); }
+
+/* ---------- header ---------- */
+.top { position: fixed; inset: 0 0 auto 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 14px var(--gut); color: #fff; transition: background-color .35s ease, color .35s ease, box-shadow .35s ease, padding .35s var(--ease); }
+.top::before { content: ""; position: absolute; inset: 0 0 -40px; z-index: -1; pointer-events: none;
+  background: linear-gradient(rgba(16, 24, 14, .5), rgba(16, 24, 14, .18) 55%, rgba(16, 24, 14, 0)); transition: opacity .35s ease; }
+.top.solid { background: rgba(246, 248, 248, .94); color: var(--ink); box-shadow: 0 1px 0 var(--line); padding-block: 8px;
+  -webkit-backdrop-filter: saturate(1.4) blur(10px); backdrop-filter: saturate(1.4) blur(10px); }
+.top.solid::before { opacity: 0; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand img { width: 84px; height: 84px; filter: drop-shadow(0 1px 6px rgba(10, 16, 8, .45)); transition: filter .35s ease, width .35s var(--ease), height .35s var(--ease); }
+.top.solid .brand img { filter: brightness(0) saturate(100%) opacity(.82); width: 52px; height: 52px; }
+.nav { display: flex; align-items: center; gap: 6px; }
+.nav a:not(.btn) { padding: 10px 14px; border-radius: 999px; text-decoration: none; font-weight: 500; font-size: 15.5px; transition: background-color .18s ease; }
+.nav a:not(.btn):hover { background: rgba(255, 255, 255, .18); }
+.top.solid .nav a:not(.btn):hover { background: var(--jade-tint); }
+.nav .btn { margin-left: 10px; min-height: 44px; padding: 0 20px; font-size: 15px; }
+.top:not(.solid) .nav .btn { opacity: 0; visibility: hidden; transform: scale(.9); }
+.top .nav .btn { transition: opacity .3s ease, visibility .3s, transform .3s var(--ease), background-color .18s ease; }
+.menu-btn { display: none; }
+@media (max-width: 899px) {
+  .nav a:not(.btn) { display: none; }
+  .nav .btn { margin-left: 0; padding: 0 16px; font-size: 14.5px; }
+  .menu-btn { display: inline-flex; width: 48px; height: 48px; border-radius: 999px; border: 0; align-items: center; justify-content: center;
+    background: rgba(255, 255, 255, .16); color: inherit; cursor: pointer; transition: background-color .2s ease, transform .15s var(--ease); }
+  .menu-btn:active { transform: scale(.94); }
+  .top.solid .menu-btn { background: var(--jade-tint); }
+  .brand img { width: 64px; height: 64px; }
+  .top.solid .brand img { width: 46px; height: 46px; }
+}
+
+/* ---------- the film: hero + scroll set-piece ---------- */
+.film { position: relative; height: 100svh; min-height: 560px; background: #D5E2DD; }
+html.seq .film { height: calc(100svh + 260svh); }
+.film-sticky { position: relative; height: 100svh; min-height: 560px; overflow: hidden; }
+html.seq .film-sticky { position: sticky; top: 0; }
+.film-poster, .film-poster img, .film canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.film-poster img { object-fit: cover; }
+.film canvas { opacity: 0; transition: opacity .6s ease; }
+.film.playing canvas { opacity: 1; }
+.film-shade { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(52% 40% at 50% 52%, rgba(16, 24, 14, .32), rgba(16, 24, 14, 0) 72%); }
+.cap-shade { display: none; }
+html.seq .cap-shade { display: block; position: absolute; inset: auto 0 0 0; height: 46%; pointer-events: none; background: linear-gradient(to top, rgba(16, 24, 14, .34), rgba(16, 24, 14, 0)); }
+.hero-copy { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; text-align: center; gap: 18px; padding: 0 var(--gut); color: #fff; will-change: opacity, transform; }
+.hero-copy h1 { font-size: clamp(50px, 6.4vw, 92px); font-weight: 620; letter-spacing: -.03em; line-height: .95; text-shadow: 0 2px 30px rgba(10, 16, 8, .35); font-variation-settings: "opsz" 96; }
+.hero-where { margin: 0; font-size: clamp(15px, 1.4vw, 18px); font-weight: 500; letter-spacing: .01em; opacity: .95; text-shadow: 0 1px 12px rgba(10, 16, 8, .5); }
+.hero-copy .btn { margin-top: 10px; min-height: 54px; padding: 0 34px; font-size: 17px; }
+/* captions over the film (seq tier only) */
+.caps { display: none; }
+html.seq .caps { display: block; position: absolute; left: var(--gut); right: var(--gut); bottom: clamp(90px, 13vh, 140px); pointer-events: none; }
+.cap { position: absolute; left: 0; bottom: 0; max-width: 15em; margin: 0; color: #fff; font: 600 clamp(28px, 3.6vw, 52px)/1.08 var(--display);
+  letter-spacing: -.02em; text-shadow: 0 2px 26px rgba(10, 16, 8, .45); }
+.cap > span { display: block; overflow: hidden; padding-bottom: .12em; }
+.cap > span > span { display: block; transform: translateY(105%); transition: transform .8s var(--ease), opacity .5s ease; opacity: 0; }
+.cap.on > span > span { transform: none; opacity: 1; }
+.cap .n { display: block; margin-bottom: 12px; font: 600 13px/1 var(--text); letter-spacing: .02em; color: #fff; opacity: .9; }
+.cap .n i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--jade); margin-right: 8px; vertical-align: 1px; }
+.film-load { position: absolute; right: var(--gut); bottom: 30px; display: none; width: 36px; height: 36px; margin: 0; border-radius: 50%; background: rgba(255, 255, 255, .85); place-items: center; }
+.film-load i { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--jade-tint); border-top-color: var(--book); animation: spin .9s linear infinite; }
+@keyframes spin { to { transform: rotate(1turn) } }
+html.seq .film.waiting .film-load { display: grid; }
+
+/* the static tier: three stills, each with its caption */
+.stills { display: none; }
+html:not(.seq) .stills { display: block; }
+.still { position: relative; height: 92svh; min-height: 520px; overflow: hidden; background: #D5E2DD; }
+.still img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.still::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(16, 24, 14, .5), rgba(16, 24, 14, 0) 50%); }
+.still p { position: absolute; z-index: 1; left: var(--gut); right: var(--gut); bottom: clamp(40px, 9vh, 90px); margin: 0; max-width: 15em; color: #fff;
+  font: 600 clamp(28px, 3.6vw, 52px)/1.08 var(--display); letter-spacing: -.02em; text-shadow: 0 2px 26px rgba(10, 16, 8, .45); }
+
+/* ---------- persistent booking pill ---------- */
+.pill { position: fixed; z-index: 25; left: 50%; bottom: max(16px, env(safe-area-inset-bottom)); translate: -50% 0; display: flex; gap: 8px; padding: 6px;
+  border-radius: 999px; background: rgba(255, 255, 255, .92); box-shadow: 0 12px 34px -12px rgba(20, 28, 18, .45);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  transform: translateY(140%); opacity: 0; transition: transform .45s var(--ease), opacity .3s ease; }
+.pill.show { transform: none; opacity: 1; }
+.pill .btn { min-height: 48px; box-shadow: none; }
+.pill .go { padding: 0 22px 0 18px; gap: 10px; transition: padding .45s var(--ease), transform .18s var(--ease), background-color .18s ease; }
+.pill .go .lbl { display: inline-block; max-width: 9em; overflow: hidden; transition: max-width .45s var(--ease), opacity .3s ease; }
+.pill.mini .go { padding: 0; width: 48px; gap: 0; }
+.pill .go { width: auto; }
+.pill.mini .go .lbl { max-width: 0; opacity: 0; }
+.pill .wa { width: 48px; padding: 0; --bg: var(--jade-tint); }
+
+/* ---------- drawer ---------- */
+.scrim { position: fixed; inset: 0; z-index: 40; background: rgba(20, 28, 18, .38); opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+.drawer { position: fixed; z-index: 41; inset: 0 0 0 auto; margin: 0; padding: 0; border: 0; max-width: none; max-height: none; height: 100%; width: min(480px, 100%); background: var(--paper); color: var(--ink);
+  display: flex; flex-direction: column; transform: translateX(104%); transition: transform .42s var(--ease); box-shadow: -20px 0 60px -30px rgba(20, 28, 18, .5); visibility: hidden; }
+.drawer.open { transform: none; visibility: visible; }
+.drawer:not([open]) { display: none; }
+.drawer::backdrop { background: rgba(20, 28, 18, .38); opacity: 0; transition: opacity .3s ease; }
+.drawer.open::backdrop { opacity: 1; }
+.scrim.open { opacity: 1; pointer-events: auto; }
+@media (max-width: 767px) {
+  .drawer { inset: auto 0 0 0; height: auto; width: 100%; max-height: 92svh; border-radius: 24px 24px 0 0; transform: translateY(104%); }
+}
+.drawer-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 22px 24px 8px; }
+.drawer-head h2 { font-size: 26px; }
+.x { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--jade-tint); color: var(--ink); display: grid; place-items: center; cursor: pointer; transition: transform .2s var(--ease); }
+.x:hover { transform: rotate(90deg); }
+.drawer-body { padding: 8px 24px 24px; overflow-y: auto; overscroll-behavior: contain; }
+.step { margin: 18px 0 10px; font-weight: 600; font-size: 15px; }
+.picks { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pick { position: relative; display: grid; gap: 2px; padding: 6px 6px 10px; border-radius: 14px; background: var(--ground); cursor: pointer;
+  transition: transform .18s var(--ease), box-shadow .2s ease, background-color .2s ease; }
+.pick input { position: absolute; opacity: 0; pointer-events: none; }
+.pick img { aspect-ratio: 3/2; width: 100%; object-fit: cover; border-radius: 10px; margin-bottom: 6px; }
+.pick-name { font-weight: 600; font-size: 14.5px; line-height: 1.25; padding: 0 4px; }
+.pick-size { font-size: 13px; color: var(--ink-2); padding: 0 4px; }
+.pick:has(input:checked) { background: var(--jade-tint); box-shadow: inset 0 0 0 2px var(--jade); }
+.pick:has(input:focus-visible) { outline: 2px solid var(--book); outline-offset: 2px; }
+.pick:active { transform: scale(.98); }
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.field { position: relative; }
+.field input { width: 100%; height: 58px; padding: 22px 14px 6px; border: 0; border-radius: 12px; background: var(--ground); color: var(--ink);
+  font: 500 16px var(--text); box-shadow: inset 0 0 0 1.5px transparent; transition: box-shadow .2s ease; }
+.field input:focus { outline: none; box-shadow: inset 0 0 0 2px var(--jade); }
+.field label { position: absolute; left: 14px; top: 8px; font-size: 12.5px; font-weight: 600; color: var(--ink-2); pointer-events: none; }
+.g-step { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; padding: 6px 6px 6px 14px; border-radius: 12px; background: var(--ground); }
+.g-step span { font-weight: 500; }
+.step-btns { display: flex; align-items: center; gap: 4px; }
+.step-btns button { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--paper); color: var(--ink); font: 600 20px/1 var(--text); cursor: pointer; transition: transform .15s var(--ease); }
+.step-btns button:active { transform: scale(.9); }
+.step-btns button:disabled { opacity: .35; cursor: default; }
+.step-btns output { min-width: 28px; text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; }
+.incl { margin: 18px 0 0; padding: 14px 16px; border-radius: 14px; background: var(--jade-tint); font-size: 15px; line-height: 1.5; }
+.trust { display: flex; align-items: center; gap: 10px; margin: 12px 0 0; font-size: 14.5px; color: var(--ink-2); }
+.trust b { color: var(--ink); font: 650 20px/1 var(--display); }
+.drawer-foot { padding: 14px 24px max(18px, env(safe-area-inset-bottom)); background: var(--paper); box-shadow: 0 -1px 0 var(--line); display: grid; gap: 8px; }
+.drawer-foot .btn { width: 100%; }
+.drawer-foot .small { margin: 2px 0 0; font-size: 13.5px; color: var(--ink-2); line-height: 1.45; }
+.drawer-foot .row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+/* ---------- mobile menu ---------- */
+.sheet { position: fixed; z-index: 41; inset: 0 0 auto 0; padding: 18px var(--gut) 26px; background: var(--paper); border-radius: 0 0 24px 24px;
+  transform: translateY(-104%); visibility: hidden; transition: transform .4s var(--ease); box-shadow: 0 20px 60px -30px rgba(20, 28, 18, .5); }
+.sheet.open { transform: none; visibility: visible; }
+.sheet nav { display: grid; gap: 2px; margin: 12px 0 16px; }
+.sheet nav a { padding: 12px 4px; font: 600 24px/1.1 var(--display); text-decoration: none; }
+.sheet .row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; }
+}
+/*SECTIONS*/
+</style>
+</head>
+<body>
+<a class="skip" href="#welcome">Skip to the page</a>
+<header class="top" id="top">
+  <a class="brand" href="#film" aria-label="{{NAME}}, back to the top"><img src="img/logo.webp" width="64" height="64" alt="{{NAME}} logo"></a>
+  <nav class="nav" aria-label="Sections">
+    <a href="#rooms">Rooms</a><a href="#restaurant">Restaurant</a><a href="#fitness">Fitness</a><a href="#getting-here">Getting here</a>
+    <a class="btn book" href="#book" data-drawer-link>Check dates</a>
+    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sheet">{{I_MENU}}</button>
+  </nav>
+</header>
+
+<main>
+<section class="film" id="film" aria-label="Panta Rei from the air">
+  <div class="film-sticky">
+    <picture class="film-poster">
+      <source media="(max-width: 767px)" srcset="img/film-poster-m.webp" width="540" height="960">
+      <img src="img/film-poster-d.webp" width="1600" height="900" fetchpriority="high"
+        alt="From the air: the long turquoise pool on its stone deck with loungers, people swimming, red-tiled bungalows around it in the palms">
+    </picture>
+    <canvas aria-hidden="true"></canvas>
+    <div class="film-shade"></div><div class="cap-shade"></div>
+    <div class="hero-copy">
+      <h1>Panta Rei</h1>
+      <p class="hero-where">Boutique resort · Kabalana, Ahangama</p>
+      <a class="btn book" href="#book" data-open-drawer>Check dates</a>
+    </div>
+    <div class="caps" aria-hidden="true">
+      <p class="cap" data-cap="0"><span><span><b class="n"><i></i>1 / 3</b>{{CAP_A}}</span></span></p>
+      <p class="cap" data-cap="1"><span><span><b class="n"><i></i>2 / 3</b>{{CAP_B}}</span></span></p>
+      <p class="cap" data-cap="2"><span><span><b class="n"><i></i>3 / 3</b>{{CAP_C}}</span></span></p>
+    </div>
+    <p class="film-load" role="status" aria-label="Loading the film"><i></i></p>
+  </div>
+</section>
+<section class="stills" aria-label="From the pool to the sea">
+  <div class="still"><picture><source media="(max-width: 767px)" srcset="img/still-a-m.webp"><img src="img/still-a-d.webp" width="1600" height="900" loading="lazy" alt="Red-tiled bungalow roofs around the pool, seen from straight above"></picture><p>{{CAP_A}}</p></div>
+  <div class="still"><picture><source media="(max-width: 767px)" srcset="img/still-b-m.webp"><img src="img/still-b-d.webp" width="1600" height="900" loading="lazy" alt="The whole ring of bungalows from above, the white two-storey main building at the top and the pool in the middle"></picture><p>{{CAP_B}}</p></div>
+  <div class="still"><picture><source media="(max-width: 767px)" srcset="img/still-c-m.webp"><img src="img/still-c-d.webp" width="1600" height="900" loading="lazy" alt="High above the palm canopy: the small ring of red roofs in the trees, the coastline and the sea beyond"></picture><p>{{CAP_C}}</p></div>
+</section>
+<!--BODY-->
+</main>
+
+<div class="pill mini" aria-label="Book">
+  <a class="btn book go" href="#book" data-open-drawer>{{I_CAL}}<span class="lbl">Check dates</span></a>
+  <a class="btn wa" href="{{WA}}" aria-label="WhatsApp us">{{I_WA}}</a>
+</div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="drawer-head" style="padding:0"><img src="img/logo.webp" width="46" height="46" alt="" style="filter:brightness(0) opacity(.82)"><button class="x" type="button" aria-label="Close menu" data-close>{{I_X}}</button></div>
+  <nav aria-label="Sections"><a href="#rooms">Rooms</a><a href="#pool">The pool</a><a href="#restaurant">Restaurant</a><a href="#fitness">Fitness</a><a href="#guests">Guests</a><a href="#getting-here">Getting here</a></nav>
+  <div class="row"><a class="btn book" href="#book" data-open-drawer>Check dates</a><a class="btn soft" href="{{WA}}">{{I_WA}}WhatsApp</a></div>
+</div>
+
+<div class="scrim" data-close></div>
+<dialog class="drawer" id="drawer" data-drawer aria-labelledby="drawer-title">
+  <div class="drawer-head"><h2 id="drawer-title">{{BOOK_LABEL}}</h2><button class="x" type="button" aria-label="Close" data-close>{{I_X}}</button></div>
+  <form class="drawer-body" id="book-form" action="{{ENGINE}}" method="get" onsubmit="return false">
+    <p class="step">1. Your room</p>
+    <div class="picks">{{DRAWER_ROOMS}}</div>
+    <p class="step">2. Your dates</p>
+    <div class="fields">
+      <div class="field"><input id="d-in" type="date" required><label for="d-in">Arrival</label></div>
+      <div class="field"><input id="d-out" type="date" required><label for="d-out">Departure</label></div>
+    </div>
+    <div class="g-step"><span id="g-lab">Guests</span><div class="step-btns"><button type="button" data-g="-1" aria-label="One guest fewer">−</button><output id="g" aria-labelledby="g-lab">2</output><button type="button" data-g="1" aria-label="One guest more">+</button></div></div>
+    <p class="incl">{{STAY1}}</p>
+    <p class="trust"><b>{{B_SCORE}}</b>/10 on Booking.com · {{B_COUNT}} reviews</p>
+  </form>
+  <div class="drawer-foot">
+    <a class="btn book" id="go" href="{{ENGINE}}">See prices on our booking page</a>
+    <p class="small" id="go-note">{{STAY2}}</p>
+    <div class="row"><a class="btn soft" id="wa-go" href="{{WA}}">{{I_WA}}WhatsApp</a><a class="btn soft" href="tel:{{TEL}}">{{I_TEL}}Call</a></div>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  var d = document.documentElement, film = document.getElementById('film');
+  var top = document.getElementById('top'), pill = document.querySelector('.pill');
+  var mobile = matchMedia('(max-width: 767px)').matches;
+  var seq = d.classList.contains('seq');
+
+  /* ---------- the scrubbed film ----------
+     After first paint only the key frames (every 6th + the last, ~0.3 MB on a phone) load; the film
+     runs on them at once, cross-fading between neighbours. The rest loads when the visitor scrolls. */
+  var N = 72, KEY = 6, frames = new Array(N), ready = false, cur = 0, keysStarted = false, allStarted = false;
+  var canvas = film.querySelector('canvas'), ctx = canvas.getContext('2d'), drawn = -1;
+  var base = mobile ? 'frames/m/' : 'frames/d/';
+  var name = function (i) { return base + String(i + 1).padStart(3, '0') + '.webp'; };
+  var caps = film.querySelectorAll('.cap'), shade = film.querySelector('.film-shade');
+  var CAP = [[.02, .34], [.34, .67], [.67, .995]];
+  var heroCopy = film.querySelector('.hero-copy');
+  var keyList = []; for (var q = 0; q < N; q += KEY) keyList.push(q); if (keyList[keyList.length - 1] !== N - 1) keyList.push(N - 1);
+
+  function size() {
+    var dpr = Math.min(devicePixelRatio || 1, mobile ? 2 : 1.5);
+    canvas.width = Math.round(canvas.clientWidth * dpr); canvas.height = Math.round(canvas.clientHeight * dpr); drawn = -1;
+  }
+  function paint(b, alpha) {
+    var w = canvas.width, h = canvas.height, s = Math.max(w / b.width, h / b.height);
+    ctx.globalAlpha = alpha; ctx.drawImage(b, (w - b.width * s) / 2, (h - b.height * s) / 2, b.width * s, b.height * s);
+  }
+  function draw(f) {
+    var i = Math.floor(f), a = i, b = Math.ceil(f);
+    while (a > 0 && !frames[a]) a--;
+    while (b < N - 1 && !frames[b]) b++;
+    if (!frames[a]) a = b; if (!frames[b]) b = a; if (!frames[a]) return;
+    var t = b > a ? (f - a) / (b - a) : 0, key = a * 1000 + b + Math.round(t * 40) / 40;
+    if (key === drawn) return; drawn = key;
+    paint(frames[a], 1); if (b !== a && t > .02) paint(frames[b], t); ctx.globalAlpha = 1;
+  }
+  function load(i) {
+    if (frames[i] !== undefined) return Promise.resolve(); frames[i] = null;
+    return fetch(name(i)).then(function (r) { return r.blob(); }).then(createImageBitmap).then(function (bmp) { frames[i] = bmp; drawn = -1; })
+      .catch(function () { frames[i] = undefined; });
+  }
+  function batches(list, n) {
+    var p = 0;
+    return new Promise(function (done) {
+      (function next() { if (p >= list.length) return done(); var b = list.slice(p, p + n); p += n; Promise.all(b.map(load)).then(next); })();
+    });
+  }
+  function loadKeys() {
+    if (keysStarted || !seq) return; keysStarted = true;
+    batches(keyList, 4).then(function () { ready = true; size(); film.classList.add('ready'); film.classList.remove('waiting'); });
+  }
+  function loadAll() {
+    if (allStarted || !seq) return; allStarted = true; loadKeys();
+    var rest = []; for (var i = 0; i < N; i++) if (keyList.indexOf(i) < 0) rest.push(i);
+    batches(rest, 4);
+  }
+  function progress() {
+    var r = film.getBoundingClientRect(), span = r.height - innerHeight;
+    return span > 0 ? Math.min(1, Math.max(0, -r.top / span)) : 0;
+  }
+  var last = performance.now();
+  function loop(t) {
+    var dt = Math.min(.1, (t - last) / 1000); last = t;
+    var p = progress();
+    if (seq) {
+      var target = p * (N - 1);
+      cur += (target - cur) * (1 - Math.exp(-dt * 9));
+      if (ready && p > 0) draw(cur);
+      for (var k = 0; k < 3; k++) caps[k].classList.toggle('on', p >= CAP[k][0] && p <= CAP[k][1]);
+      var h = Math.min(1, p / .03);
+      heroCopy.style.opacity = 1 - h; heroCopy.style.transform = 'translateY(' + (-36 * h) + 'px)';
+      heroCopy.style.visibility = h >= 1 ? 'hidden' : '';
+      shade.style.opacity = 1 - h;
+      film.classList.toggle('playing', ready && p > 0);
+      var running = p > .02 && p < .995;
+      film.classList.toggle('waiting', running && !ready);
+      pill.classList.toggle('show', running);
+    }
+    top.classList.toggle('solid', film.getBoundingClientRect().bottom < 80);
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+  if (seq) {
+    addEventListener('resize', size);
+    var later = function () { requestAnimationFrame(function () { setTimeout(loadKeys, 0); }); };
+    document.readyState === 'complete' ? later() : addEventListener('load', later, { once: true });
+    ['scroll', 'wheel', 'touchmove', 'keydown'].forEach(function (ev) { addEventListener(ev, loadAll, { once: true, passive: true }); });
+  }
+
+  /* ---------- drawer ---------- */
+  var drawer = document.getElementById('drawer'), scrim = document.querySelector('.scrim'), sheet = document.getElementById('sheet');
+  var menuBtn = document.querySelector('.menu-btn'), opener = null, openEl = null;
+  var form = document.getElementById('book-form'), go = document.getElementById('go'), waGo = document.getElementById('wa-go');
+  var dIn = document.getElementById('d-in'), dOut = document.getElementById('d-out'), gOut = document.getElementById('g'), guests = 2;
+  var WA_BASE = 'https://wa.me/' + '{{TEL}}'.replace('+', '') + '?text=';
+  var iso = function (dt) { return dt.toISOString().slice(0, 10); };
+  var today = new Date(); dIn.min = iso(today); dOut.min = iso(new Date(+today + 864e5));
+  var fmt = function (v) { return new Date(v + 'T12:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }); };
+  function sync() {
+    var r = form.querySelector('input[name=room]:checked'), max = +r.dataset.sleeps;
+    if (guests > max) guests = max;
+    gOut.textContent = guests;
+    form.querySelector('[data-g="-1"]').disabled = guests <= 1; form.querySelector('[data-g="1"]').disabled = guests >= max;
+    if (dIn.value) { var m = new Date(+new Date(dIn.value) + 864e5); dOut.min = iso(m); if (dOut.value && dOut.value <= dIn.value) dOut.value = ''; }
+    var ok = dIn.value && dOut.value && dOut.value > dIn.value, url = r.dataset.url;
+    go.href = ok ? url + '?start=' + dIn.value + '&end=' + dOut.value + '&numberOfGuests=' + guests : url;
+    var msg = "Hi Panta Rei! I'd like to ask about the " + r.dataset.name + (ok ? ', ' + fmt(dIn.value) + ' to ' + fmt(dOut.value) : '') + ', ' + guests + (guests > 1 ? ' guests' : ' guest') + '.';
+    waGo.href = WA_BASE + encodeURIComponent(msg);
+  }
+  form.addEventListener('change', sync); dIn.addEventListener('input', sync); dOut.addEventListener('input', sync);
+  form.querySelectorAll('[data-g]').forEach(function (b) { b.addEventListener('click', function () { guests = Math.max(1, guests + +b.dataset.g); sync(); }); });
+  sync();
+  function focusables(el) { return [].slice.call(el.querySelectorAll('a[href], button:not([disabled]), input, [tabindex="0"]')).filter(function (x) { return x.offsetParent !== null || x.type === 'radio'; }); }
+  function open(el, from) {
+    if (openEl) close(true);
+    opener = from; openEl = el;
+    if (el === drawer) { drawer.showModal(); requestAnimationFrame(function () { drawer.classList.add('open'); }); }
+    else { el.classList.add('open'); scrim.classList.add('open'); }
+    document.body.style.overflow = 'hidden';
+    if (el === sheet) menuBtn.setAttribute('aria-expanded', 'true');
+    setTimeout(function () { var f = el.querySelector(el === drawer ? 'input[name=room]:checked' : 'nav a'); (f || el).focus(); }, 60);
+  }
+  function close(now) {
+    if (!openEl) return; openEl.classList.remove('open'); scrim.classList.remove('open'); document.body.style.overflow = '';
+    if (openEl === drawer) { if (now || matchMedia('(prefers-reduced-motion: reduce)').matches) drawer.close(); else setTimeout(function () { if (!drawer.classList.contains('open')) drawer.close(); }, 420); }
+    if (openEl === sheet) menuBtn.setAttribute('aria-expanded', 'false');
+    var o = opener; openEl = null; if (o) { if (drawer.open && !now) setTimeout(function () { o.focus(); }, 430); else o.focus(); }
+  }
+  document.addEventListener('click', function (ev) {
+    if (ev.target === drawer) { close(); return; }
+    var a = ev.target.closest('[data-open-drawer], [data-drawer-link]');
+    if (a) { ev.preventDefault(); var pick = a.dataset.room && form.querySelector('input[value=' + a.dataset.room + ']'); if (pick) { pick.checked = true; sync(); } open(drawer, a); return; }
+    if (ev.target.closest('[data-close]')) { close(); return; }
+    if (openEl === sheet && ev.target.closest('.sheet nav a')) close();
+  });
+  menuBtn.addEventListener('click', function () { openEl === sheet ? close() : open(sheet, menuBtn); });
+  drawer.addEventListener('cancel', function (ev) { ev.preventDefault(); close(true); });
+  document.addEventListener('keydown', function (ev) {
+    if (!openEl || openEl === drawer) return;
+    if (ev.key === 'Escape') { close(); return; }
+    if (ev.key !== 'Tab') return;
+    var f = focusables(openEl), first = f[0], lastF = f[f.length - 1];
+    if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); lastF.focus(); }
+    else if (!ev.shiftKey && document.activeElement === lastF) { ev.preventDefault(); first.focus(); }
+  });
+  /*MORE_JS*/
+})();
+</script>
+</body>
+</html>

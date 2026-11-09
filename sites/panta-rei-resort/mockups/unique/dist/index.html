@@ -1,0 +1,857 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Panta Rei Resort · Kabalana, Ahangama</title>
+<meta name="description" content="A boutique resort set around a large pool in Kabalana, Ahangama, on the south coast of Sri Lanka.">
+<meta name="theme-color" content="#F6F8F8">
+<script>
+/* Tier, decided before first paint so the stage's height never changes above the reader.
+   seq  = the scrubbed film (motion allowed, not Save-Data, not a weak phone)
+   none = poster + three stills with the captions (reduced motion, Save-Data, weak phone, no JS) */
+(function () {
+  var d = document.documentElement, n = navigator, c = n.connection || {};
+  d.classList.add('js');
+  var calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var weak = (n.deviceMemory && n.deviceMemory <= 2) || (n.hardwareConcurrency && n.hardwareConcurrency <= 2);
+  if (!calm && !c.saveData && !weak) d.classList.add('seq');
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<link rel="preload" as="image" href="img/film-poster-m.webp" media="(max-width: 767px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/film-poster-d.webp" media="(min-width: 768px)" fetchpriority="high">
+<style>
+@font-face { font-family: "Hanken fallback"; src: local("Arial"), local("Helvetica"); size-adjust: 98%; ascent-override: 98%; descent-override: 26%; }
+@font-face { font-family: "Bricolage fallback"; src: local("Arial"), local("Helvetica"); size-adjust: 103%; ascent-override: 93%; descent-override: 24%; }
+:root {
+  --ground: #F6F8F8; --paper: #FFFFFF; --ink: #25301F; --ink-2: #4A5444; --jade: #88B6AC; --jade-tint: #E6F0ED;
+  --roof: #914736; --book: #B8473A; --book-press: #9C3A2F; --line: rgba(37, 48, 31, .08);
+  --display: "Bricolage Grotesque", "Bricolage fallback", system-ui, sans-serif;
+  --text: "Hanken Grotesk", "Hanken fallback", system-ui, sans-serif;
+  --ease: cubic-bezier(.23, 1, .32, 1); --ease-io: cubic-bezier(.77, 0, .175, 1);
+  --gut: clamp(20px, 5vw, 72px); --max: 1280px; --r: 18px;
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: auto; }
+body { margin: 0; background: var(--ground); color: var(--ink); font: 400 17px/1.6 var(--text); -webkit-font-smoothing: antialiased; }
+img, video, canvas { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; letter-spacing: -.02em; line-height: 1.04; margin: 0; text-wrap: balance; }
+p { margin: 0 0 1em; text-wrap: pretty; }
+.sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: fixed; left: 16px; top: -60px; z-index: 100; background: var(--paper); padding: 10px 16px; border-radius: 999px; }
+.skip:focus { top: 16px; }
+:focus-visible { outline: 2px solid var(--book); outline-offset: 3px; border-radius: 6px; }
+svg { width: 22px; height: 22px; fill: currentColor; flex: none; }
+svg.stroke { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.gal-btn svg, .x svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- buttons: one booking colour, white text ---------- */
+.btn { --bg: var(--paper); --fg: var(--ink); display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px;
+  padding: 0 24px; border-radius: 999px; border: 0; background: var(--bg); color: var(--fg); font: 600 16px/1 var(--text); letter-spacing: .005em;
+  text-decoration: none; cursor: pointer; white-space: nowrap;
+  transition: transform .18s var(--ease), box-shadow .18s var(--ease), background-color .18s ease; box-shadow: 0 1px 2px rgba(37, 48, 31, .08); }
+.btn.book { --bg: var(--book); --fg: #fff; }
+.btn.soft { --bg: var(--jade-tint); }
+.btn.glass { --bg: rgba(255, 255, 255, .94); }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(37, 48, 31, .35); }
+  .btn.book:hover { box-shadow: 0 12px 26px -10px rgba(184, 71, 58, .65); }
+}
+.btn:active { transform: scale(.97); transition-duration: .1s; }
+.btn.book:active { background: var(--book-press); }
+
+/* ---------- header ---------- */
+.top { position: fixed; inset: 0 0 auto 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 14px var(--gut); color: #fff; transition: background-color .35s ease, color .35s ease, box-shadow .35s ease, padding .35s var(--ease); }
+.top::before { content: ""; position: absolute; inset: 0 0 -40px; z-index: -1; pointer-events: none;
+  background: linear-gradient(rgba(16, 24, 14, .5), rgba(16, 24, 14, .18) 55%, rgba(16, 24, 14, 0)); transition: opacity .35s ease; }
+.top.solid { background: rgba(246, 248, 248, .94); color: var(--ink); box-shadow: 0 1px 0 var(--line); padding-block: 8px;
+  -webkit-backdrop-filter: saturate(1.4) blur(10px); backdrop-filter: saturate(1.4) blur(10px); }
+.top.solid::before { opacity: 0; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand img { width: 84px; height: 84px; filter: drop-shadow(0 1px 6px rgba(10, 16, 8, .45)); transition: filter .35s ease, width .35s var(--ease), height .35s var(--ease); }
+.top.solid .brand img { filter: brightness(0) saturate(100%) opacity(.82); width: 52px; height: 52px; }
+.nav { display: flex; align-items: center; gap: 6px; }
+.nav a:not(.btn) { padding: 10px 14px; border-radius: 999px; text-decoration: none; font-weight: 500; font-size: 15.5px; transition: background-color .18s ease; }
+.nav a:not(.btn):hover { background: rgba(255, 255, 255, .18); }
+.top.solid .nav a:not(.btn):hover { background: var(--jade-tint); }
+.nav .btn { margin-left: 10px; min-height: 44px; padding: 0 20px; font-size: 15px; }
+.top:not(.solid) .nav .btn { opacity: 0; visibility: hidden; transform: scale(.9); }
+.top .nav .btn { transition: opacity .3s ease, visibility .3s, transform .3s var(--ease), background-color .18s ease; }
+.menu-btn { display: none; }
+@media (max-width: 899px) {
+  .nav a:not(.btn) { display: none; }
+  .nav .btn { margin-left: 0; padding: 0 16px; font-size: 14.5px; }
+  .menu-btn { display: inline-flex; width: 48px; height: 48px; border-radius: 999px; border: 0; align-items: center; justify-content: center;
+    background: rgba(255, 255, 255, .16); color: inherit; cursor: pointer; transition: background-color .2s ease, transform .15s var(--ease); }
+  .menu-btn:active { transform: scale(.94); }
+  .top.solid .menu-btn { background: var(--jade-tint); }
+  .brand img { width: 64px; height: 64px; }
+  .top.solid .brand img { width: 46px; height: 46px; }
+}
+
+/* ---------- the film: hero + scroll set-piece ---------- */
+.film { position: relative; height: 100svh; min-height: 560px; background: #D5E2DD; }
+html.seq .film { height: calc(100svh + 260svh); }
+.film-sticky { position: relative; height: 100svh; min-height: 560px; overflow: hidden; }
+html.seq .film-sticky { position: sticky; top: 0; }
+.film-poster, .film-poster img, .film canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.film-poster img { object-fit: cover; }
+.film canvas { opacity: 0; transition: opacity .6s ease; }
+.film.playing canvas { opacity: 1; }
+.film-shade { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(52% 40% at 50% 52%, rgba(16, 24, 14, .32), rgba(16, 24, 14, 0) 72%); }
+.cap-shade { display: none; }
+html.seq .cap-shade { display: block; position: absolute; inset: auto 0 0 0; height: 46%; pointer-events: none; background: linear-gradient(to top, rgba(16, 24, 14, .34), rgba(16, 24, 14, 0)); }
+.hero-copy { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; text-align: center; gap: 18px; padding: 0 var(--gut); color: #fff; will-change: opacity, transform; }
+.hero-copy h1 { font-size: clamp(50px, 6.4vw, 92px); font-weight: 620; letter-spacing: -.03em; line-height: .95; text-shadow: 0 2px 30px rgba(10, 16, 8, .35); font-variation-settings: "opsz" 96; }
+.hero-where { margin: 0; font-size: clamp(15px, 1.4vw, 18px); font-weight: 500; letter-spacing: .01em; opacity: .95; text-shadow: 0 1px 12px rgba(10, 16, 8, .5); }
+.hero-copy .btn { margin-top: 10px; min-height: 54px; padding: 0 34px; font-size: 17px; }
+/* captions over the film (seq tier only) */
+.caps { display: none; }
+html.seq .caps { display: block; position: absolute; left: var(--gut); right: var(--gut); bottom: clamp(90px, 13vh, 140px); pointer-events: none; }
+.cap { position: absolute; left: 0; bottom: 0; max-width: 15em; margin: 0; color: #fff; font: 600 clamp(28px, 3.6vw, 52px)/1.08 var(--display);
+  letter-spacing: -.02em; text-shadow: 0 2px 26px rgba(10, 16, 8, .45); }
+.cap > span { display: block; overflow: hidden; padding-bottom: .12em; }
+.cap > span > span { display: block; transform: translateY(105%); transition: transform .8s var(--ease), opacity .5s ease; opacity: 0; }
+.cap.on > span > span { transform: none; opacity: 1; }
+.cap .n { display: block; margin-bottom: 12px; font: 600 13px/1 var(--text); letter-spacing: .02em; color: #fff; opacity: .9; }
+.cap .n i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--jade); margin-right: 8px; vertical-align: 1px; }
+.film-load { position: absolute; right: var(--gut); bottom: 30px; display: none; width: 36px; height: 36px; margin: 0; border-radius: 50%; background: rgba(255, 255, 255, .85); place-items: center; }
+.film-load i { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--jade-tint); border-top-color: var(--book); animation: spin .9s linear infinite; }
+@keyframes spin { to { transform: rotate(1turn) } }
+html.seq .film.waiting .film-load { display: grid; }
+
+/* the static tier: three stills, each with its caption */
+.stills { display: none; }
+html:not(.seq) .stills { display: block; }
+.still { position: relative; height: 92svh; min-height: 520px; overflow: hidden; background: #D5E2DD; }
+.still img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.still::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(16, 24, 14, .5), rgba(16, 24, 14, 0) 50%); }
+.still p { position: absolute; z-index: 1; left: var(--gut); right: var(--gut); bottom: clamp(40px, 9vh, 90px); margin: 0; max-width: 15em; color: #fff;
+  font: 600 clamp(28px, 3.6vw, 52px)/1.08 var(--display); letter-spacing: -.02em; text-shadow: 0 2px 26px rgba(10, 16, 8, .45); }
+
+/* ---------- persistent booking pill ---------- */
+.pill { position: fixed; z-index: 25; left: 50%; bottom: max(16px, env(safe-area-inset-bottom)); translate: -50% 0; display: flex; gap: 8px; padding: 6px;
+  border-radius: 999px; background: rgba(255, 255, 255, .92); box-shadow: 0 12px 34px -12px rgba(20, 28, 18, .45);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  transform: translateY(140%); opacity: 0; transition: transform .45s var(--ease), opacity .3s ease; }
+.pill.show { transform: none; opacity: 1; }
+.pill .btn { min-height: 48px; box-shadow: none; }
+.pill .go { padding: 0 22px 0 18px; gap: 10px; transition: padding .45s var(--ease), transform .18s var(--ease), background-color .18s ease; }
+.pill .go .lbl { display: inline-block; max-width: 9em; overflow: hidden; transition: max-width .45s var(--ease), opacity .3s ease; }
+.pill.mini .go { padding: 0; width: 48px; gap: 0; }
+.pill .go { width: auto; }
+.pill.mini .go .lbl { max-width: 0; opacity: 0; }
+.pill .wa { width: 48px; padding: 0; --bg: var(--jade-tint); }
+
+/* ---------- drawer ---------- */
+.scrim { position: fixed; inset: 0; z-index: 40; background: rgba(20, 28, 18, .38); opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+.drawer { position: fixed; z-index: 41; inset: 0 0 0 auto; margin: 0; padding: 0; border: 0; max-width: none; max-height: none; height: 100%; width: min(480px, 100%); background: var(--paper); color: var(--ink);
+  display: flex; flex-direction: column; transform: translateX(104%); transition: transform .42s var(--ease); box-shadow: -20px 0 60px -30px rgba(20, 28, 18, .5); visibility: hidden; }
+.drawer.open { transform: none; visibility: visible; }
+.drawer:not([open]) { display: none; }
+.drawer::backdrop { background: rgba(20, 28, 18, .38); opacity: 0; transition: opacity .3s ease; }
+.drawer.open::backdrop { opacity: 1; }
+.scrim.open { opacity: 1; pointer-events: auto; }
+@media (max-width: 767px) {
+  .drawer { inset: auto 0 0 0; height: auto; width: 100%; max-height: 92svh; border-radius: 24px 24px 0 0; transform: translateY(104%); }
+}
+.drawer-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 22px 24px 8px; }
+.drawer-head h2 { font-size: 26px; }
+.x { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--jade-tint); color: var(--ink); display: grid; place-items: center; cursor: pointer; transition: transform .2s var(--ease); }
+.x:hover { transform: rotate(90deg); }
+.drawer-body { padding: 8px 24px 24px; overflow-y: auto; overscroll-behavior: contain; }
+.step { margin: 18px 0 10px; font-weight: 600; font-size: 15px; }
+.picks { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pick { position: relative; display: grid; gap: 2px; padding: 6px 6px 10px; border-radius: 14px; background: var(--ground); cursor: pointer;
+  transition: transform .18s var(--ease), box-shadow .2s ease, background-color .2s ease; }
+.pick input { position: absolute; opacity: 0; pointer-events: none; }
+.pick img { aspect-ratio: 3/2; width: 100%; object-fit: cover; border-radius: 10px; margin-bottom: 6px; }
+.pick-name { font-weight: 600; font-size: 14.5px; line-height: 1.25; padding: 0 4px; }
+.pick-size { font-size: 13px; color: var(--ink-2); padding: 0 4px; }
+.pick:has(input:checked) { background: var(--jade-tint); box-shadow: inset 0 0 0 2px var(--jade); }
+.pick:has(input:focus-visible) { outline: 2px solid var(--book); outline-offset: 2px; }
+.pick:active { transform: scale(.98); }
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.field { position: relative; }
+.field input { width: 100%; height: 58px; padding: 22px 14px 6px; border: 0; border-radius: 12px; background: var(--ground); color: var(--ink);
+  font: 500 16px var(--text); box-shadow: inset 0 0 0 1.5px transparent; transition: box-shadow .2s ease; }
+.field input:focus { outline: none; box-shadow: inset 0 0 0 2px var(--jade); }
+.field label { position: absolute; left: 14px; top: 8px; font-size: 12.5px; font-weight: 600; color: var(--ink-2); pointer-events: none; }
+.g-step { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; padding: 6px 6px 6px 14px; border-radius: 12px; background: var(--ground); }
+.g-step span { font-weight: 500; }
+.step-btns { display: flex; align-items: center; gap: 4px; }
+.step-btns button { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--paper); color: var(--ink); font: 600 20px/1 var(--text); cursor: pointer; transition: transform .15s var(--ease); }
+.step-btns button:active { transform: scale(.9); }
+.step-btns button:disabled { opacity: .35; cursor: default; }
+.step-btns output { min-width: 28px; text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; }
+.incl { margin: 18px 0 0; padding: 14px 16px; border-radius: 14px; background: var(--jade-tint); font-size: 15px; line-height: 1.5; }
+.trust { display: flex; align-items: center; gap: 10px; margin: 12px 0 0; font-size: 14.5px; color: var(--ink-2); }
+.trust b { color: var(--ink); font: 650 20px/1 var(--display); }
+.drawer-foot { padding: 14px 24px max(18px, env(safe-area-inset-bottom)); background: var(--paper); box-shadow: 0 -1px 0 var(--line); display: grid; gap: 8px; }
+.drawer-foot .btn { width: 100%; }
+.drawer-foot .small { margin: 2px 0 0; font-size: 13.5px; color: var(--ink-2); line-height: 1.45; }
+.drawer-foot .row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+/* ---------- mobile menu ---------- */
+.sheet { position: fixed; z-index: 41; inset: 0 0 auto 0; padding: 18px var(--gut) 26px; background: var(--paper); border-radius: 0 0 24px 24px;
+  transform: translateY(-104%); visibility: hidden; transition: transform .4s var(--ease); box-shadow: 0 20px 60px -30px rgba(20, 28, 18, .5); }
+.sheet.open { transform: none; visibility: visible; }
+.sheet nav { display: grid; gap: 2px; margin: 12px 0 16px; }
+.sheet nav a { padding: 12px 4px; font: 600 24px/1.1 var(--display); text-decoration: none; }
+.sheet .row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; }
+}
+/* ---------- the booklet's pages ---------- */
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gut); }
+main > section:not(.film):not(.stills):not(.closing):not(.pool) { padding-block: clamp(80px, 10vw, 150px); }
+h2 { font-size: clamp(38px, 4.6vw, 66px); }
+.card { background: var(--paper); border-radius: 24px; padding: clamp(26px, 3.2vw, 44px); }
+.card.tint { background: var(--jade-tint); box-shadow: none; }
+.card h2 { font-size: clamp(32px, 3.2vw, 46px); margin-bottom: 18px; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.rows { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 6px; }
+.rows li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 13px 16px; border-radius: 14px; background: var(--ground); font-size: 16px; }
+.card.tint .rows li, .fit .rows li { background: rgba(255, 255, 255, .72); }
+.fit .rows li { background: var(--paper); }
+.rows small { display: block; font-size: 13.5px; color: var(--ink-2); }
+.rows b { font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; text-align: right; }
+.rows b small { display: inline; }
+.asof { margin: 10px 0 0; font-size: 13.5px; color: var(--ink-2); }
+.small { font-size: 15px; color: var(--ink-2); }
+
+/* welcome */
+.welcome .kicker { font-size: clamp(20px, 1.8vw, 24px); font-weight: 500; letter-spacing: -.01em; color: var(--ink-2); margin-bottom: 18px; }
+.welcome .feature { font: 620 clamp(46px, 7vw, 108px)/.95 var(--display); letter-spacing: -.035em; margin: 0 0 clamp(34px, 4vw, 56px); color: var(--ink); font-variation-settings: "opsz" 96; }
+.welcome .lead { font-size: clamp(24px, 2.7vw, 38px); line-height: 1.3; letter-spacing: -.012em; max-width: 24em; margin-bottom: 30px; }
+.welcome .lead-2 { font-size: clamp(17px, 1.4vw, 20px); color: var(--ink-2); max-width: 30em; margin-left: auto; }
+.wide-print { max-width: 1350px; margin: clamp(56px, 7vw, 100px) auto 0; padding: 0 var(--gut); }
+.wide-print img { width: 100%; aspect-ratio: 16/8; object-fit: cover; border-radius: var(--r); }
+
+/* rooms: sticky split on desktop, stacked cards on phones */
+.rooms-head { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: end; margin-bottom: clamp(40px, 5vw, 70px); }
+.rooms-head p { margin: 0; font-size: 19px; color: var(--ink-2); max-width: 26em; }
+.rooms-split { max-width: var(--max); margin: 0 auto; padding: 0 var(--gut); display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(32px, 5vw, 80px); }
+.room-stage { position: sticky; top: 11vh; height: 78vh; }
+.stage-room { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .6s ease, visibility 0s .6s; }
+.stage-room.on { opacity: 1; visibility: visible; transition: opacity .6s ease; }
+.stage-room .gal, .stage-room .gal-track { height: 100%; }
+.stage-room .gal-track img { aspect-ratio: auto; height: 100%; }
+.room { min-height: 84vh; display: flex; flex-direction: column; justify-content: center; }
+.room .gal-inline { display: none; }
+.room h3 { font-size: clamp(34px, 3.4vw, 50px); margin-bottom: 18px; }
+.facts { font-weight: 500; color: var(--ink-2); margin-bottom: 14px; }
+.facts span { white-space: nowrap; }
+.facts span + span::before { content: "|"; margin: 0 10px 0 4px; opacity: .45; }
+.room .note { font-size: 19px; max-width: 24em; margin-bottom: 28px; }
+.room .btn { align-self: flex-start; }
+.book-block { margin: 40px 0 0; }
+.book-block h3 { font-size: clamp(28px, 2.6vw, 36px); margin-bottom: 12px; }
+.book-block > p { color: var(--ink-2); max-width: 28em; }
+.book-rooms { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+.book-room { display: flex; align-items: center; gap: 12px; padding: 8px; border-radius: 14px; background: rgba(255, 255, 255, .78); text-decoration: none; transition: transform .18s var(--ease), background-color .2s ease; }
+.book-room img { width: 72px; aspect-ratio: 1; object-fit: cover; border-radius: 10px; }
+.book-room b { display: block; font-size: 15px; line-height: 1.25; }
+.book-room small { font-size: 13px; color: var(--ink-2); }
+.book-room:hover { transform: translateY(-2px); background: #fff; }
+.book-room:active { transform: scale(.98); }
+
+/* galleries + quote slideshow */
+.gal, .qgal { position: relative; }
+.gal-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: var(--r); overscroll-behavior-x: contain; scroll-behavior: smooth; }
+.gal-track::-webkit-scrollbar { display: none; }
+.gal .gal-track img { flex: 0 0 100%; width: 100%; aspect-ratio: 3/2; object-fit: cover; scroll-snap-align: start; }
+.gal-ui { position: absolute; left: 0; right: 0; bottom: 14px; display: flex; justify-content: center; align-items: center; gap: 8px; pointer-events: none; }
+.gal-ui > * { pointer-events: auto; }
+.gal-btn { width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(255, 255, 255, .92); color: var(--ink); display: grid; place-items: center; cursor: pointer;
+  transition: transform .18s var(--ease), background-color .18s ease; }
+.gal-btn svg { width: 18px; height: 18px; }
+.gal-btn:hover { transform: scale(1.06); }
+.gal-btn:active { transform: scale(.92); }
+.dots { display: flex; align-items: center; padding: 0; height: 44px; border-radius: 999px; background: rgba(255, 255, 255, .92); }
+.dot { flex: none; width: 44px; height: 44px; border: 0; padding: 0; background: none; cursor: pointer; display: grid; place-items: center; }
+.dot::before { content: ""; width: 7px; height: 7px; border-radius: 99px; background: rgba(37, 48, 31, .28); transition: width .35s var(--ease), background-color .3s ease; }
+.dot.on::before { width: 20px; background: var(--jade); }
+
+
+/* pool */
+.pool { position: relative; }
+.pool-pic { overflow: hidden; }
+.pool-pic img { width: 100%; height: min(94vh, 960px); object-fit: cover; transform: scale(1.06); will-change: transform; }
+.pool-card { position: absolute; right: var(--gut); bottom: clamp(30px, 5vw, 80px); width: min(470px, 40vw); }
+
+/* full-bleed moments (after the surf, fitness, guests) */
+main > section.band-section { padding-top: 0 !important; }
+.band { position: relative; height: min(86vh, 820px); min-height: 460px; overflow: hidden; background: #D5E2DD; }
+.band img, .band video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.band video { opacity: 0; transition: opacity .8s ease; }
+.band video.playing { opacity: 1; }
+.band::after { content: ""; position: absolute; inset: 45% 0 0 0; background: linear-gradient(to top, rgba(16, 24, 14, .42), rgba(16, 24, 14, 0)); pointer-events: none; }
+.band-title { position: absolute; z-index: 1; left: var(--gut); bottom: clamp(32px, 6vh, 64px); color: #fff; font-size: clamp(44px, 6vw, 92px); letter-spacing: -.03em; text-shadow: 0 2px 24px rgba(10, 16, 8, .35); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 6vw, 96px); padding-top: clamp(48px, 6vw, 84px) !important; align-items: start; }
+.col-text p { font-size: 18px; }
+.band-scores { height: min(78vh, 720px); }
+.scores-over { position: absolute; z-index: 1; left: var(--gut); right: var(--gut); bottom: clamp(32px, 6vh, 64px); color: #fff; text-shadow: 0 2px 20px rgba(10, 16, 8, .35); }
+.scores-over .band-title { position: static; margin-bottom: 18px; }
+/* restaurant */
+.food-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(36px, 6vw, 96px); align-items: start; }
+.food-text p { font-size: 18px; }
+.hours { display: flex; gap: 12px; align-items: flex-start; margin-top: 26px; padding: 16px 18px; border-radius: 16px; background: var(--jade-tint); font-weight: 500; font-size: 16px; }
+.hours svg { margin-top: 1px; color: var(--roof); }
+.prints { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 2vw, 26px); }
+.print { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: var(--r); }
+.prints .p2 { margin-top: clamp(50px, 8vw, 120px); }
+
+/* fitness */
+.week { list-style: none; margin: 0 0 6px; padding: 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.day { display: grid; justify-items: center; gap: 2px; padding: 12px 2px; border-radius: 14px; background: var(--jade-tint); font-size: 13px; color: var(--ink-2);
+  transition: transform .2s var(--ease), background-color .2s ease; }
+.day b { font: 600 15px/1.2 var(--text); color: var(--ink); }
+.day.off { background: transparent; box-shadow: inset 0 0 0 1.5px rgba(37, 48, 31, .12); }
+.day.today { background: var(--jade); color: var(--ink); }
+.day:hover { transform: translateY(-3px); }
+/* guests */
+.guests { padding-bottom: clamp(70px, 9vw, 130px); }
+.scores { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 34px; }
+.score { display: flex; align-items: center; gap: 14px; text-decoration: none; color: #fff; padding: 8px 16px 8px 0; border-radius: 20px; transition: transform .2s var(--ease), opacity .2s ease; }
+.score:hover { transform: translateY(-2px); opacity: .9; }
+.score b { font: 620 clamp(56px, 6vw, 88px)/1 var(--display); letter-spacing: -.03em; }
+.score b small { font-size: .36em; letter-spacing: 0; margin-left: 2px; opacity: .9; }
+.score span { font-size: 15px; line-height: 1.35; }
+.scores-over .asof { color: #fff; opacity: .92; margin-top: 8px; }
+.qgal { padding-top: clamp(48px, 6vw, 84px); }
+.qgal .gal-track { gap: 40px; border-radius: 0; }
+.quote { flex: 0 0 100%; margin: 0; scroll-snap-align: start; display: grid; gap: 22px; align-content: start; }
+.quote blockquote, .quote .by { max-width: 40em; }
+.quote blockquote { margin: 0; font-size: clamp(20px, 1.9vw, 26px); line-height: 1.45; letter-spacing: -.006em; }
+.quote .by { margin: 0; font-weight: 600; }
+.quote .by span { font-weight: 400; color: var(--ink-2); }
+.qgal .gal-ui { position: static; margin-top: 30px; justify-content: flex-start; }
+/* getting here, groups */
+.here-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 6vw, 96px); align-items: start; }
+.here-text p { font-size: 18px; }
+.addr { display: flex; gap: 10px; align-items: flex-start; font-weight: 600; font-size: 18px; }
+.addr svg { margin-top: 2px; color: var(--roof); }
+.here-card h3 { font-size: 24px; margin: 26px 0 12px; }
+.amen { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 24px; font-size: 15px; }
+.amen li { padding: 5px 0; break-inside: avoid; }
+.amen small { color: var(--ink-2); font-size: 13.5px; }
+.groups { display: flex; justify-content: space-between; align-items: center; gap: 30px; margin-top: clamp(56px, 7vw, 100px); }
+.groups p { max-width: 40em; margin: 0; font-size: 18px; }
+.groups .btn { flex: none; }
+.groups { max-width: calc(var(--max) - 2 * var(--gut)); }
+
+/* closing */
+.closing { position: relative; height: 92svh; min-height: 560px; overflow: hidden; display: grid; place-items: center; background: #D5E2DD; }
+.closing img, .closing video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.closing video { opacity: 0; transition: opacity .8s ease; }
+.closing video.playing { opacity: 1; }
+.closing::after { content: ""; position: absolute; inset: 0; background: radial-gradient(55% 50% at 50% 50%, rgba(16, 24, 14, .45), rgba(16, 24, 14, .08)); }
+.closing-copy { position: relative; z-index: 1; text-align: center; color: #fff; padding: 0 var(--gut); display: grid; justify-items: center; }
+.closing-copy h2 { font-size: clamp(40px, 5vw, 76px); letter-spacing: -.03em; max-width: 12em; text-shadow: 0 2px 24px rgba(10, 16, 8, .4); }
+.closing-copy p { font-size: clamp(17px, 1.5vw, 21px); line-height: 1.5; font-weight: 500; max-width: 30em; margin: 18px 0 0; text-shadow: 0 1px 14px rgba(10, 16, 8, .5); }
+.closing .btn-row { justify-content: center; margin-top: 32px; }
+.closing .btn { min-height: 54px; padding: 0 30px; }
+
+/* footer */
+.foot { background: #EAF1EE; padding: clamp(64px, 8vw, 110px) 0 calc(40px + 80px); }
+.foot-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; }
+.foot-brand img { filter: brightness(0) opacity(.82); margin-bottom: 18px; }
+.foot-brand p { max-width: 22em; color: var(--ink-2); }
+.foot .btn-row { margin-top: 18px; }
+.foot .btn.soft { --bg: var(--paper); }
+.social { display: flex; gap: 10px; margin-top: 18px; }
+.social a { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: var(--paper); transition: transform .2s var(--ease), background-color .2s ease; }
+.social a:hover { transform: translateY(-3px); background: var(--jade); }
+.legal { margin-top: 48px; font-size: 14px; color: var(--ink-2); }
+
+@media (max-width: 959px) {
+  .rooms-split { display: block; }
+  .room-stage { display: none; }
+  .room { min-height: 0; margin-bottom: 72px; }
+  .room .gal-inline { display: block; margin-bottom: 26px; }
+  .rooms-head, .food-grid, .fit-grid, .here-grid, .foot-grid { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  .band { height: 72svh; }
+  .pool-card { position: relative; right: auto; bottom: auto; width: auto; margin: -70px 16px 0; }
+  .pool-pic img { height: 70svh; transform: none; }
+  .groups { flex-direction: column; align-items: flex-start; margin-inline: var(--gut); }
+}
+@media (max-width: 767px) {
+  body { font-size: 16.5px; }
+  .facts span { display: block; }
+  .facts span + span::before { content: none; }
+  .welcome .lead-2 { margin-left: 0; }
+  .wide-print img { aspect-ratio: 4/3; }
+  .amen { columns: 1; }
+  .week { gap: 4px; }
+  .day { padding: 10px 0; font-size: 11.5px; }
+  .day b { font-size: 13.5px; }
+  .rows li { font-size: 15px; }
+  .score b { font-size: 52px; }
+}
+
+.here-grid > *, .food-grid > *, .two-col > *, .rooms-split > *, .foot-grid > * { min-width: 0; }
+
+@media (max-width: 420px) { .book-rooms { grid-template-columns: 1fr; } }
+@media (max-width: 420px) { .gal-btn { display: none; } }
+
+</style>
+</head>
+<body>
+<a class="skip" href="#welcome">Skip to the page</a>
+<header class="top" id="top">
+  <a class="brand" href="#film" aria-label="Panta Rei Resort, back to the top"><img src="img/logo.webp" width="64" height="64" alt="Panta Rei Resort logo"></a>
+  <nav class="nav" aria-label="Sections">
+    <a href="#rooms">Rooms</a><a href="#restaurant">Restaurant</a><a href="#fitness">Fitness</a><a href="#getting-here">Getting here</a>
+    <a class="btn book" href="#book" data-drawer-link>Check dates</a>
+    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sheet"><svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><path d="M4 8h16M4 16h16"/></svg></button>
+  </nav>
+</header>
+
+<main>
+<section class="film" id="film" aria-label="Panta Rei from the air">
+  <div class="film-sticky">
+    <picture class="film-poster">
+      <source media="(max-width: 767px)" srcset="img/film-poster-m.webp" width="540" height="960">
+      <img src="img/film-poster-d.webp" width="1600" height="900" fetchpriority="high"
+        alt="From the air: the long turquoise pool on its stone deck with loungers, people swimming, red-tiled bungalows around it in the palms">
+    </picture>
+    <canvas aria-hidden="true"></canvas>
+    <div class="film-shade"></div><div class="cap-shade"></div>
+    <div class="hero-copy">
+      <h1>Panta Rei</h1>
+      <p class="hero-where">Boutique resort · Kabalana, Ahangama</p>
+      <a class="btn book" href="#book" data-open-drawer>Check dates</a>
+    </div>
+    <div class="caps" aria-hidden="true">
+      <p class="cap" data-cap="0"><span><span><b class="n"><i></i>1 / 3</b>16 bungalows, each with its own charm and style</span></span></p>
+      <p class="cap" data-cap="1"><span><span><b class="n"><i></i>2 / 3</b>The bungalows sit in a ring around a long pool</span></span></p>
+      <p class="cap" data-cap="2"><span><span><b class="n"><i></i>3 / 3</b>The waves of Kabalana, a short walk from the resort.</span></span></p>
+    </div>
+    <p class="film-load" role="status" aria-label="Loading the film"><i></i></p>
+  </div>
+</section>
+<section class="stills" aria-label="From the pool to the sea">
+  <div class="still"><picture><source media="(max-width: 767px)" srcset="img/still-a-m.webp"><img src="img/still-a-d.webp" width="1600" height="900" loading="lazy" alt="Red-tiled bungalow roofs around the pool, seen from straight above"></picture><p>16 bungalows, each with its own charm and style</p></div>
+  <div class="still"><picture><source media="(max-width: 767px)" srcset="img/still-b-m.webp"><img src="img/still-b-d.webp" width="1600" height="900" loading="lazy" alt="The whole ring of bungalows from above, the white two-storey main building at the top and the pool in the middle"></picture><p>The bungalows sit in a ring around a long pool</p></div>
+  <div class="still"><picture><source media="(max-width: 767px)" srcset="img/still-c-m.webp"><img src="img/still-c-d.webp" width="1600" height="900" loading="lazy" alt="High above the palm canopy: the small ring of red roofs in the trees, the coastline and the sea beyond"></picture><p>The waves of Kabalana, a short walk from the resort.</p></div>
+</section>
+<section class="welcome" id="welcome">
+  <div class="wrap">
+    <h2 class="kicker">Welcome to Panta Rei</h2>
+    <p class="feature">No paradise like home.</p>
+    <p class="lead">Welcome to our boutique resort in Kabalana, Sri Lanka. In Panta Rei you can escape the hustle and bustle of daily life and immerse yourself in a tropical paradise where surfing, yoga, crystal blue beaches and rainforests come together.</p>
+    <p class="lead-2">The resort features 16 bungalows, each with its own charm and style, inspired by wild nature and made from natural materials.</p>
+  </div>
+  <div class="wide-print"><picture><source media="(max-width: 767px)" srcset="img/lounge-m.webp"><img src="img/lounge-d.webp" width="1350" height="900" loading="lazy" alt="The open-air lounge under the white two-storey main building: rattan pendant lamps, orange-cushioned rattan chairs, palms all round"></picture></div>
+</section>
+
+<section class="rooms" id="rooms">
+  <div class="wrap rooms-head">
+    <h2>Four ways to stay</h2>
+    <p>Every room has air conditioning, hot water and wifi, is cleaned daily, and comes with breakfast.</p>
+  </div>
+  <div class="rooms-split">
+    <div class="room-stage" aria-hidden="false"><div class="stage-room" data-room="double"><div class="gal " data-gal><div class="gal-track" tabindex="0" role="group" aria-roledescription="slideshow" aria-label="Double Room photos"><img src="img/room-028-s.webp" srcset="img/room-028-s.webp 720w, img/room-028-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Double Room: bed with a rattan arch headboard and a teak drawer base, rattan pendant lamps"><img src="img/room-031-s.webp" srcset="img/room-031-s.webp 720w, img/room-031-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Bedroom with tall teak French windows open to the garden and a rattan arch headboard"><img src="img/room-029-s.webp" srcset="img/room-029-s.webp 720w, img/room-029-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Bathroom: white basin counter with a rattan cabinet, blue crazy-paving tiles and a window to the trees"><img src="img/room-007-s.webp" srcset="img/room-007-s.webp 720w, img/room-007-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Bed with a striped throw, rattan-panel wardrobe doors and an orange rattan armchair"><img src="img/room-013-s.webp" srcset="img/room-013-s.webp 720w, img/room-013-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Bed facing a rattan-panel wardrobe and a slatted bathroom door, round rattan rug"></div><div class="gal-ui"><button type="button" class="gal-btn prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="dots"><button type="button" class="dot" aria-label="Photo 1 of 5"></button><button type="button" class="dot" aria-label="Photo 2 of 5"></button><button type="button" class="dot" aria-label="Photo 3 of 5"></button><button type="button" class="dot" aria-label="Photo 4 of 5"></button><button type="button" class="dot" aria-label="Photo 5 of 5"></button></div><button type="button" class="gal-btn next" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div></div><div class="stage-room" data-room="triple"><div class="gal " data-gal><div class="gal-track" tabindex="0" role="group" aria-roledescription="slideshow" aria-label="Triple Room photos"><img src="img/room-037-s.webp" srcset="img/room-037-s.webp 720w, img/room-037-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Triple Room: bed with a rattan arch headboard, a pink rocking chair and an arched rattan mirror"><img src="img/room-034-s.webp" srcset="img/room-034-s.webp 720w, img/room-034-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Freestanding white bathtub under wooden-framed windows, blue crazy-paving tiles by the shower"><img src="img/room-036-s.webp" srcset="img/room-036-s.webp 720w, img/room-036-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Bungalow front: red tile roof, white walls, teak doors and two rattan chairs on the terrace"><img src="img/room-010-s.webp" srcset="img/room-010-s.webp 720w, img/room-010-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Bed under a vaulted white ceiling, an orange rattan armchair and an arched mirror"><img src="img/room-011-s.webp" srcset="img/room-011-s.webp 720w, img/room-011-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="A straw bag and a red cloth on wall hooks, an arched rattan mirror, the bathtub beyond"></div><div class="gal-ui"><button type="button" class="gal-btn prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="dots"><button type="button" class="dot" aria-label="Photo 1 of 5"></button><button type="button" class="dot" aria-label="Photo 2 of 5"></button><button type="button" class="dot" aria-label="Photo 3 of 5"></button><button type="button" class="dot" aria-label="Photo 4 of 5"></button><button type="button" class="dot" aria-label="Photo 5 of 5"></button></div><button type="button" class="gal-btn next" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div></div><div class="stage-room" data-room="family"><div class="gal " data-gal><div class="gal-track" tabindex="0" role="group" aria-roledescription="slideshow" aria-label="Family Villa photos"><img src="img/room-038-s.webp" srcset="img/room-038-s.webp 720w, img/room-038-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Family Villa bedroom with tall teak French windows to the garden and a rattan arch headboard"><img src="img/room-040-s.webp" srcset="img/room-040-s.webp 720w, img/room-040-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="The private outdoor bath: a white tub behind teak-framed glass doors, palms over the garden wall"><img src="img/room-012-s.webp" srcset="img/room-012-s.webp 720w, img/room-012-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Sliding glass doors open to the lawn and pool, a surfboard leaning outside, a hat on the bed"><img src="img/room-014-s.webp" srcset="img/room-014-s.webp 720w, img/room-014-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Bed under a palm-fan headboard with rattan pendant lamps and open shelving"><img src="img/room-015-s.webp" srcset="img/room-015-s.webp 720w, img/room-015-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="White villa with glass sliding doors behind dense tropical planting and a stone path"></div><div class="gal-ui"><button type="button" class="gal-btn prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="dots"><button type="button" class="dot" aria-label="Photo 1 of 5"></button><button type="button" class="dot" aria-label="Photo 2 of 5"></button><button type="button" class="dot" aria-label="Photo 3 of 5"></button><button type="button" class="dot" aria-label="Photo 4 of 5"></button><button type="button" class="dot" aria-label="Photo 5 of 5"></button></div><button type="button" class="gal-btn next" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div></div><div class="stage-room" data-room="suite"><div class="gal " data-gal><div class="gal-track" tabindex="0" role="group" aria-roledescription="slideshow" aria-label="Suite with Private Pool photos"><img src="img/room-043-s.webp" srcset="img/room-043-s.webp 720w, img/room-043-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Suite: the bed faces open glass doors onto the private plunge pool and two terrace chairs"><img src="img/room-046-s.webp" srcset="img/room-046-s.webp 720w, img/room-046-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="The private plunge pool on its terrace with two wooden lounge chairs and tropical planting"><img src="img/room-047-s.webp" srcset="img/room-047-s.webp 720w, img/room-047-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Bed under a large palm-fan headboard, rattan pendant lamps, a louvred teak door and a potted palm"><img src="img/room-016-s.webp" srcset="img/room-016-s.webp 720w, img/room-016-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Built-in white sofa niche with cushions and a rattan side table, the glass shower to the right"><img src="img/room-044-s.webp" srcset="img/room-044-s.webp 720w, img/room-044-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Walk-in shower with pale crazy-paving stone walls and a lit niche"><img src="img/room-002-s.webp" srcset="img/room-002-s.webp 720w, img/room-002-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="A pale palm-fan headboard over the bed, a rattan pendant lamp, a wooden stool and a potted palm"></div><div class="gal-ui"><button type="button" class="gal-btn prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="dots"><button type="button" class="dot" aria-label="Photo 1 of 6"></button><button type="button" class="dot" aria-label="Photo 2 of 6"></button><button type="button" class="dot" aria-label="Photo 3 of 6"></button><button type="button" class="dot" aria-label="Photo 4 of 6"></button><button type="button" class="dot" aria-label="Photo 5 of 6"></button><button type="button" class="dot" aria-label="Photo 6 of 6"></button></div><button type="button" class="gal-btn next" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div></div></div>
+    <div class="room-list"><article class="room" id="room-double" data-room="double"><div class="gal gal-inline" data-gal><div class="gal-track" tabindex="0" role="group" aria-roledescription="slideshow" aria-label="Double Room photos"><img src="img/room-028-s.webp" srcset="img/room-028-s.webp 720w, img/room-028-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Double Room: bed with a rattan arch headboard and a teak drawer base, rattan pendant lamps"><img src="img/room-031-s.webp" srcset="img/room-031-s.webp 720w, img/room-031-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Bedroom with tall teak French windows open to the garden and a rattan arch headboard"><img src="img/room-029-s.webp" srcset="img/room-029-s.webp 720w, img/room-029-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Bathroom: white basin counter with a rattan cabinet, blue crazy-paving tiles and a window to the trees"><img src="img/room-007-s.webp" srcset="img/room-007-s.webp 720w, img/room-007-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Bed with a striped throw, rattan-panel wardrobe doors and an orange rattan armchair"><img src="img/room-013-s.webp" srcset="img/room-013-s.webp 720w, img/room-013-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Bed facing a rattan-panel wardrobe and a slatted bathroom door, round rattan rug"></div><div class="gal-ui"><button type="button" class="gal-btn prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="dots"><button type="button" class="dot" aria-label="Photo 1 of 5"></button><button type="button" class="dot" aria-label="Photo 2 of 5"></button><button type="button" class="dot" aria-label="Photo 3 of 5"></button><button type="button" class="dot" aria-label="Photo 4 of 5"></button><button type="button" class="dot" aria-label="Photo 5 of 5"></button></div><button type="button" class="gal-btn next" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div><div class="room-text"><h3>Double Room</h3><p class="facts"><span>King-size bed or twin single beds</span> <span>Sleeps 3</span></p><p class="note">22 m², with a private balcony over the pool. En-suite shower.</p><a class="btn book" href="https://pantareiresort.holidayfuture.com/listings/572800">Book this room</a></div></article><article class="room" id="room-triple" data-room="triple"><div class="gal gal-inline" data-gal><div class="gal-track" tabindex="0" role="group" aria-roledescription="slideshow" aria-label="Triple Room photos"><img src="img/room-037-s.webp" srcset="img/room-037-s.webp 720w, img/room-037-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Triple Room: bed with a rattan arch headboard, a pink rocking chair and an arched rattan mirror"><img src="img/room-034-s.webp" srcset="img/room-034-s.webp 720w, img/room-034-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Freestanding white bathtub under wooden-framed windows, blue crazy-paving tiles by the shower"><img src="img/room-036-s.webp" srcset="img/room-036-s.webp 720w, img/room-036-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Bungalow front: red tile roof, white walls, teak doors and two rattan chairs on the terrace"><img src="img/room-010-s.webp" srcset="img/room-010-s.webp 720w, img/room-010-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Bed under a vaulted white ceiling, an orange rattan armchair and an arched mirror"><img src="img/room-011-s.webp" srcset="img/room-011-s.webp 720w, img/room-011-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="A straw bag and a red cloth on wall hooks, an arched rattan mirror, the bathtub beyond"></div><div class="gal-ui"><button type="button" class="gal-btn prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="dots"><button type="button" class="dot" aria-label="Photo 1 of 5"></button><button type="button" class="dot" aria-label="Photo 2 of 5"></button><button type="button" class="dot" aria-label="Photo 3 of 5"></button><button type="button" class="dot" aria-label="Photo 4 of 5"></button><button type="button" class="dot" aria-label="Photo 5 of 5"></button></div><button type="button" class="gal-btn next" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div><div class="room-text"><h3>Triple Room</h3><p class="facts"><span>King-size bed and a sofa bed</span> <span>Sleeps 3</span></p><p class="note">30 m², with a private balcony over the pool. Bathroom with both a bathtub and a shower.</p><a class="btn book" href="https://pantareiresort.holidayfuture.com/listings/572802">Book this room</a></div></article><article class="room" id="room-family" data-room="family"><div class="gal gal-inline" data-gal><div class="gal-track" tabindex="0" role="group" aria-roledescription="slideshow" aria-label="Family Villa photos"><img src="img/room-038-s.webp" srcset="img/room-038-s.webp 720w, img/room-038-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Family Villa bedroom with tall teak French windows to the garden and a rattan arch headboard"><img src="img/room-040-s.webp" srcset="img/room-040-s.webp 720w, img/room-040-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="The private outdoor bath: a white tub behind teak-framed glass doors, palms over the garden wall"><img src="img/room-012-s.webp" srcset="img/room-012-s.webp 720w, img/room-012-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Sliding glass doors open to the lawn and pool, a surfboard leaning outside, a hat on the bed"><img src="img/room-014-s.webp" srcset="img/room-014-s.webp 720w, img/room-014-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Bed under a palm-fan headboard with rattan pendant lamps and open shelving"><img src="img/room-015-s.webp" srcset="img/room-015-s.webp 720w, img/room-015-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="White villa with glass sliding doors behind dense tropical planting and a stone path"></div><div class="gal-ui"><button type="button" class="gal-btn prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="dots"><button type="button" class="dot" aria-label="Photo 1 of 5"></button><button type="button" class="dot" aria-label="Photo 2 of 5"></button><button type="button" class="dot" aria-label="Photo 3 of 5"></button><button type="button" class="dot" aria-label="Photo 4 of 5"></button><button type="button" class="dot" aria-label="Photo 5 of 5"></button></div><button type="button" class="gal-btn next" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div><div class="room-text"><h3>Family Villa</h3><p class="facts"><span>Two king-size beds or four single beds</span> <span>Sleeps 4</span></p><p class="note">50 m², two bedrooms, garden view and a private balcony. Private bathroom plus an outdoor bath.</p><a class="btn book" href="https://pantareiresort.holidayfuture.com/listings/572799">Book this room</a></div></article><article class="room" id="room-suite" data-room="suite"><div class="gal gal-inline" data-gal><div class="gal-track" tabindex="0" role="group" aria-roledescription="slideshow" aria-label="Suite with Private Pool photos"><img src="img/room-043-s.webp" srcset="img/room-043-s.webp 720w, img/room-043-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Suite: the bed faces open glass doors onto the private plunge pool and two terrace chairs"><img src="img/room-046-s.webp" srcset="img/room-046-s.webp 720w, img/room-046-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="The private plunge pool on its terrace with two wooden lounge chairs and tropical planting"><img src="img/room-047-s.webp" srcset="img/room-047-s.webp 720w, img/room-047-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Bed under a large palm-fan headboard, rattan pendant lamps, a louvred teak door and a potted palm"><img src="img/room-016-s.webp" srcset="img/room-016-s.webp 720w, img/room-016-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Built-in white sofa niche with cushions and a rattan side table, the glass shower to the right"><img src="img/room-044-s.webp" srcset="img/room-044-s.webp 720w, img/room-044-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="Walk-in shower with pale crazy-paving stone walls and a lit niche"><img src="img/room-002-s.webp" srcset="img/room-002-s.webp 720w, img/room-002-l.webp 1200w" sizes="(min-width: 960px) 52vw, 100vw" width="1200" height="800" loading="lazy" decoding="async" alt="A pale palm-fan headboard over the bed, a rattan pendant lamp, a wooden stool and a potted palm"></div><div class="gal-ui"><button type="button" class="gal-btn prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="dots"><button type="button" class="dot" aria-label="Photo 1 of 6"></button><button type="button" class="dot" aria-label="Photo 2 of 6"></button><button type="button" class="dot" aria-label="Photo 3 of 6"></button><button type="button" class="dot" aria-label="Photo 4 of 6"></button><button type="button" class="dot" aria-label="Photo 5 of 6"></button><button type="button" class="dot" aria-label="Photo 6 of 6"></button></div><button type="button" class="gal-btn next" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div><div class="room-text"><h3>Suite with Private Pool</h3><p class="facts"><span>King-size bed</span> <span>Sleeps 2</span></p><p class="note">40 m², with your own private pool just steps from the room and a chill-out corner with a built-in sofa.</p><a class="btn book" href="https://pantareiresort.holidayfuture.com/listings/572798">Book this room</a></div></article>
+      <div class="book-block card tint" id="book">
+        <h3>Check dates and book direct</h3>
+        <p>Prices move with the dates. Pick yours on our booking page and you&#x27;ll see what&#x27;s free and what it costs.</p>
+        <div class="book-rooms"><a class="book-room" href="https://pantareiresort.holidayfuture.com/listings/572800"><img src="img/room-028-s.webp" width="720" height="480" alt="" loading="lazy"><span><b>Double Room</b><small>22 m² | Sleeps 3</small></span></a><a class="book-room" href="https://pantareiresort.holidayfuture.com/listings/572802"><img src="img/room-037-s.webp" width="720" height="480" alt="" loading="lazy"><span><b>Triple Room</b><small>30 m² | Sleeps 3</small></span></a><a class="book-room" href="https://pantareiresort.holidayfuture.com/listings/572799"><img src="img/room-038-s.webp" width="720" height="480" alt="" loading="lazy"><span><b>Family Villa</b><small>50 m² | Sleeps 4</small></span></a><a class="book-room" href="https://pantareiresort.holidayfuture.com/listings/572798"><img src="img/room-043-s.webp" width="720" height="480" alt="" loading="lazy"><span><b>Suite with Private Pool</b><small>40 m² | Sleeps 2</small></span></a></div>
+        <div class="btn-row"><a class="btn book" href="https://pantareiresort.holidayfuture.com/">See all dates on our booking page</a><a class="btn glass" href="https://wa.me/94728003022?text=Hi%20Panta%20Rei%21%20I%27d%20like%20to%20ask%20about%20a%20stay."><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.7 9.7 0 0 0-8.4 14.6L2.2 21.8l5.1-1.3A9.7 9.7 0 1 0 12 2.2zm0 17.7a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.3z"/></svg>WhatsApp</a><a class="btn glass" href="tel:+94728003022"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>Call</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pool" id="pool">
+  <div class="pool-pic"><picture><source media="(max-width: 767px)" srcset="img/pool-m.webp"><img src="img/pool-d.webp" width="1600" height="1062" loading="lazy" alt="A man wading into the long turquoise pool, loungers on the stone deck, red-roofed bungalows and tall palms beyond under a blue sky"></picture></div>
+  <div class="pool-card card">
+    <h2>The pool</h2>
+    <p>The bungalows sit in a ring around a long pool with a stone deck and loungers, and the garden runs between them.</p><p>The pool opens early in the morning, so you can swim before breakfast. If you&#x27;re staying nearby, you can come for the day too.</p>
+    <ul class="rows"><li><span>Pool day pass<small>Spent at the restaurant</small></span><b>3,500 LKR <small>per person</small></b></li></ul>
+    <p class="asof">Price as of 6 Nov 2026</p>
+  </div>
+</section>
+
+<section class="surf band-section" id="after-the-surf">
+  <div class="band">
+    <picture><source media="(max-width: 767px)" srcset="img/lawn-m.webp"><img src="img/lawn-d.webp" width="1350" height="760" loading="lazy" alt="On the lawn by the pool: two guests carrying surfboards, a woman in a straw hat crouching beside a dog, festoon lights overhead"></picture>
+    <h2 class="band-title">After the surf</h2>
+  </div>
+  <div class="wrap two-col">
+    <div class="col-text"><p>The Surf Therapy Massage was put together for surfers. It&#x27;s a full body oil massage that works on every muscle with sport massage techniques, for the physical demands of surfing, and helps your body recover faster.</p><p>There&#x27;s a Revitalizing massage as well. Either one is an hour on the whole body, or 45 minutes on the back, neck and shoulders.</p></div>
+    <div><ul class="rows"><li><span>Surf Therapy Massage, 60 min full body</span><b>20,000 LKR</b></li><li><span>Surf Therapy Massage, 45 min back, neck &amp; shoulders</span><b>17,000 LKR</b></li><li><span>Revitalizing Massage, 60 min full body</span><b>20,000 LKR</b></li><li><span>Revitalizing Massage, 45 min back, neck &amp; shoulders</span><b>17,000 LKR</b></li></ul><p class="asof">Prices as of 6 Nov 2026</p></div>
+  </div>
+</section>
+
+<section class="food" id="restaurant">
+  <div class="wrap food-grid">
+    <div class="food-text">
+      <h2>Restaurant and bar</h2>
+      <p>The restaurant serves breakfast, lunch, dinner and cocktails all day, to guests and to anyone who drops in. Breakfast goes from smoothie bowls, granola and banana oat pancakes to shakshuka, or the Sri Lankan plate with egg hoppers, dhal and coconut sambal. Later there&#x27;s a fish bowl, the curry of the day and a whole grilled fish, priced on weight. Dinner is a mix of traditional and modern Mediterranean dishes.</p><p>The bar is upstairs, above the restaurant. Go up for the sunset.</p>
+      <p class="hours"><svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>Restaurant, every day: breakfast 8:30–12:00 (coffee from 8:00), lunch 13:00–17:00, dinner 18:00–21:30.</span></p>
+    </div>
+    <div class="prints">
+      <img class="print p1" src="img/lunch.webp" width="800" height="1000" loading="lazy" alt="Lunch on a teak table in the garden: sliders, plated dishes, a bottle of water and glasses">
+      <img class="print p2" src="img/prawns.webp" width="800" height="1000" loading="lazy" alt="Garlic prawns with herbs in a dark bowl on a woven rattan mat, seen from above">
+    </div>
+  </div>
+</section>
+
+<section class="fit band-section" id="fitness">
+  <div class="band">
+    <img src="img/shala-poster.webp" width="1600" height="900" loading="lazy" alt="A yoga class in the open-air shala under white curtains: mats on the concrete floor, palms beyond the columns">
+    <video muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" data-lazy-video>
+      <source data-src="video/shala-1280.webm" type="video/webm"><source data-src="video/shala-1280.mp4" type="video/mp4">
+    </video>
+    <h2 class="band-title">Panta Fitness Club</h2>
+  </div>
+  <div class="wrap two-col">
+    <div class="col-text"><p>An open-air fitness area on the upper floor looks out over the resort. Vinyasa yoga is at 8:30 every morning; Friday is the day off. There are Pilates classes too, led by experienced instructors, and in the season the schedule gets longer. You don&#x27;t need to book.</p></div>
+    <div>
+      <ol class="week" aria-label="Vinyasa yoga through the week"><li class="day" data-d="0"><b>Mon</b><span>8:30</span></li><li class="day" data-d="1"><b>Tue</b><span>8:30</span></li><li class="day" data-d="2"><b>Wed</b><span>8:30</span></li><li class="day" data-d="3"><b>Thu</b><span>8:30</span></li><li class="day off" data-d="4"><b>Fri</b><span>Day off</span></li><li class="day" data-d="5"><b>Sat</b><span>8:30</span></li><li class="day" data-d="6"><b>Sun</b><span>8:30</span></li></ol>
+      <ul class="rows"><li><span>Residents</span><b>2,500 LKR</b></li><li><span>In-house guests</span><b>3,000 LKR</b></li><li><span>Walk-ins</span><b>3,500 LKR</b></li></ul>
+      <p class="asof">No need to book · prices as of 6 Nov 2026</p>
+    </div>
+  </div>
+</section>
+
+<section class="guests band-section" id="guests">
+  <div class="band band-scores">
+    <picture><source media="(max-width: 767px)" srcset="img/table-m.webp"><img src="img/table-d.webp" width="1600" height="1056" loading="lazy" alt="Breakfast served at a teak table under the trees: hands passing a bowl of granola, juice, a plate of fruit and a coffee"></picture>
+    <div class="scores-over">
+      <h2 class="band-title">What guests say</h2>
+      <div class="scores">
+        <a class="score" href="https://www.booking.com/hotel/lk/panta-rei-resort.en-gb.html" target="_blank" rel="noopener"><b>9.2<small>/10</small></b><span>Booking.com<br>468 reviews</span></a>
+        <a class="score" href="https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en" target="_blank" rel="noopener"><b>4.7<small>/5</small></b><span>Google<br>213 reviews</span></a>
+      </div>
+      <p class="asof">As of 6 Nov 2026</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="qgal" data-gal>
+      <div class="gal-track" tabindex="0" role="group" aria-roledescription="slideshow" aria-label="Guest reviews"><figure class="quote"><blockquote>We stayed here in January, and of all the places we&#x27;ve stayed on our travels, this was the best resort so far. Incredibly clean throughout, you can tell housekeeping is taken seriously here, and the whole place is managed to a standard you rarely find. One of the owners was around during our stay, and you could immediately tell how much he genuinely cares about the resort and his guests, on top of being a very friendly guy. The employees match that energy: attentive, warm and top notch across the board. Can&#x27;t recommend Panta Rei enough, we&#x27;ll be back.</blockquote><p class="by">Peter <span>· Google</span></p></figure><figure class="quote"><blockquote>Incredible! We stayed at Panta Rei for 1 week, and it was wonderful. The room was very clean and had all the necessary amenities, the pool and garden area was beautiful and very quiet, the food was impeccable, one of the best we ate in Sri Lanka. The workers are very helpful and attentive. We would definitely choose it again if we return to Sri Lanka!</blockquote><p class="by">Alba R <span>· pantareiresort.com</span></p></figure><figure class="quote"><blockquote>We had an amazing stay in Panta Rei. The room was spacious, quiet, and nicely decorated. The food was extremely tasty.<br>A big shout-out to the incredible staff, always helpful and kind. We really felt at home.</blockquote><p class="by">Arianna, Italy <span>· Booking.com</span></p></figure><figure class="quote"><blockquote>I had a lovely stay! The food was excellent, and the staff were incredibly welcoming, friendly and attentive throughout my visit. Everyone made me feel comfortable and well looked after. Thank you for such a pleasant experience!</blockquote><p class="by">Lynette <span>· Google</span></p></figure><figure class="quote"><blockquote>Everything thing was amazing, the room was clean, the pool was beautiful, the food was amazing, the staff are amazing, always very warm and welcoming</blockquote><p class="by">Oishanee, India <span>· Booking.com</span></p></figure><figure class="quote"><blockquote>The hospitality and the atmosphere was great. The staff were very helpful as well.</blockquote><p class="by">Akhila, Sri Lanka <span>· Booking.com</span></p></figure></div>
+      <div class="gal-ui"><button type="button" class="gal-btn prev" aria-label="Previous review"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="dots"><button type="button" class="dot" aria-label="Review 1 of 6"></button><button type="button" class="dot" aria-label="Review 2 of 6"></button><button type="button" class="dot" aria-label="Review 3 of 6"></button><button type="button" class="dot" aria-label="Review 4 of 6"></button><button type="button" class="dot" aria-label="Review 5 of 6"></button><button type="button" class="dot" aria-label="Review 6 of 6"></button></div><button type="button" class="gal-btn next" aria-label="Next review"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
+    </div>
+  </div>
+</section>
+
+<section class="here" id="getting-here">
+  <div class="wrap here-grid">
+    <div class="here-text">
+      <h2>Getting here and around</h2>
+      <p>Kabalana Beach is a short walk away and Koggala Lake about 1.5 km. Koggala Airport is 5 km from the resort, Kathaluwa station 1.9 km and Ahangama station 2.1 km.</p><p>Tuk tuk drivers wait at the door of the hotel. Agree the price before you set off, or ask us to call one. If you&#x27;d rather have a private taxi, we&#x27;ll arrange it.</p>
+      <div class="btn-row"><a class="btn soft" href="https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Open in Google Maps</a></div>
+    </div>
+    <div class="here-card card">
+      <p class="addr"><svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Back to Life Road, Kabalana Rd, Ahangama 80650, Sri Lanka</span></p>
+      <p class="facts"><span>Check-in from 14:00</span> <span>Check-out until 11:00</span></p>
+      <p class="small">Children of any age are welcome. No pets, and no smoking in the rooms. Quiet hours are 22:00 to 08:00.</p>
+      <h3>Good to know</h3>
+      <ul class="amen"><li>Large outdoor pool</li><li>Restaurant and bar, open to outside guests</li><li>Vegetarian, gluten-free and dairy-free options</li><li>Open-air fitness area and yoga shala</li><li>Daily yoga and Pilates classes <small>(additional charge)</small></li><li>Massage <small>(additional charge)</small></li><li>Free WiFi</li><li>Free private parking</li><li>Airport shuttle</li><li>Private taxi <small>(on request)</small></li><li>Laundry service <small>(additional charge, cash)</small></li><li>Safe box in the rooms</li><li>Generator for power cuts</li><li>Garden and sun terrace</li><li>Cot for under-2s <small>(free, on request)</small></li><li>Extra bed for an adult <small>(US$20 per night, on request)</small></li></ul>
+    </div>
+  </div>
+  <div class="wrap groups card tint">
+    <div><h2>Groups and retreats</h2><p>Planning to bring a big group to Sri Lanka? Whether it&#x27;s for yoga, surfing, or simply soaking up the chilled island vibes, our resort is ready to host you. We&#x27;ll take care of all the meals and accommodation, so you can focus on what matters most: enjoying every moment together.</p></div>
+    <a class="btn glass" href="https://wa.me/94728003022?text=Hi%20Panta%20Rei%21%20We%27re%20planning%20a%20group%20stay%20and%20would%20like%20to%20ask%20about%20it."><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.7 9.7 0 0 0-8.4 14.6L2.2 21.8l5.1-1.3A9.7 9.7 0 1 0 12 2.2zm0 17.7a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.3z"/></svg>Ask about a group</a>
+  </div>
+</section>
+
+<section class="closing" id="closing">
+  <picture><source media="(max-width: 767px)" srcset="img/close-m.webp"><img src="img/close-d.webp" width="1600" height="900" loading="lazy" alt="Panta Rei from the air in the evening light: the pool in the ring of red roofs, the palms around it"></picture>
+  <video muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" poster="img/close-d.webp" data-close-video>
+    <source data-src="video/vid-002-m1280.webm" type="video/webm" media="(max-width: 767px)">
+    <source data-src="video/vid-002-m1280.mp4" type="video/mp4" media="(max-width: 767px)">
+    <source data-src="video/vid-002-d1920.webm" type="video/webm">
+    <source data-src="video/vid-002-d1920.mp4" type="video/mp4">
+  </video>
+  <div class="closing-copy">
+    <h2>Check dates and book direct</h2>
+    <p>Booking direct gets you our best rate, and if there&#x27;s anything you&#x27;d like to ask first, send us a WhatsApp.</p>
+    <div class="btn-row"><a class="btn book" href="#book" data-open-drawer>Check dates</a><a class="btn glass" href="https://wa.me/94728003022?text=Hi%20Panta%20Rei%21%20I%27d%20like%20to%20ask%20about%20a%20stay."><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.7 9.7 0 0 0-8.4 14.6L2.2 21.8l5.1-1.3A9.7 9.7 0 1 0 12 2.2zm0 17.7a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.3z"/></svg>WhatsApp</a></div>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand"><img src="img/logo.webp" width="96" height="96" alt="Panta Rei Resort logo"><p>A boutique resort set around a large pool in Kabalana, Ahangama, on the south coast of Sri Lanka.</p></div>
+    <div class="foot-contact">
+      <p class="addr"><svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Back to Life Road, Kabalana Rd, Ahangama 80650, Sri Lanka</span></p>
+      <div class="btn-row">
+        <a class="btn book" href="https://pantareiresort.holidayfuture.com/">Book direct</a>
+        <a class="btn soft" href="https://wa.me/94728003022?text=Hi%20Panta%20Rei%21%20I%27d%20like%20to%20ask%20about%20a%20stay."><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.7 9.7 0 0 0-8.4 14.6L2.2 21.8l5.1-1.3A9.7 9.7 0 1 0 12 2.2zm0 17.7a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.3z"/></svg>WhatsApp</a>
+        <a class="btn soft" href="tel:+94728003022"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>+94 72 800 3022</a>
+        <a class="btn soft" href="mailto:hello@pantareiresort.com"><svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg>hello@pantareiresort.com</a>
+      </div>
+      <div class="social">
+        <a href="https://www.instagram.com/pantarei_resort/" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=100093054286482" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-7.5H16l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4a20 20 0 0 0-2.2-.1c-2.2 0-3.7 1.3-3.7 3.8v2.4H8.1v3h2.5V21z"/></svg></a>
+        <a href="https://www.youtube.com/@Panta_Rei_Resort" aria-label="YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <p class="wrap legal">© Panta Rei Resort · Kabalana, Ahangama</p>
+</footer>
+
+
+<div class="pill mini" aria-label="Book">
+  <a class="btn book go" href="#book" data-open-drawer><svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="lbl">Check dates</span></a>
+  <a class="btn wa" href="https://wa.me/94728003022?text=Hi%20Panta%20Rei%21%20I%27d%20like%20to%20ask%20about%20a%20stay." aria-label="WhatsApp us"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.7 9.7 0 0 0-8.4 14.6L2.2 21.8l5.1-1.3A9.7 9.7 0 1 0 12 2.2zm0 17.7a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.3z"/></svg></a>
+</div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="drawer-head" style="padding:0"><img src="img/logo.webp" width="46" height="46" alt="" style="filter:brightness(0) opacity(.82)"><button class="x" type="button" aria-label="Close menu" data-close><svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <nav aria-label="Sections"><a href="#rooms">Rooms</a><a href="#pool">The pool</a><a href="#restaurant">Restaurant</a><a href="#fitness">Fitness</a><a href="#guests">Guests</a><a href="#getting-here">Getting here</a></nav>
+  <div class="row"><a class="btn book" href="#book" data-open-drawer>Check dates</a><a class="btn soft" href="https://wa.me/94728003022?text=Hi%20Panta%20Rei%21%20I%27d%20like%20to%20ask%20about%20a%20stay."><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.7 9.7 0 0 0-8.4 14.6L2.2 21.8l5.1-1.3A9.7 9.7 0 1 0 12 2.2zm0 17.7a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.3z"/></svg>WhatsApp</a></div>
+</div>
+
+<div class="scrim" data-close></div>
+<dialog class="drawer" id="drawer" data-drawer aria-labelledby="drawer-title">
+  <div class="drawer-head"><h2 id="drawer-title">Check dates and book direct</h2><button class="x" type="button" aria-label="Close" data-close><svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <form class="drawer-body" id="book-form" action="https://pantareiresort.holidayfuture.com/" method="get" onsubmit="return false">
+    <p class="step">1. Your room</p>
+    <div class="picks"><label class="pick"><input type="radio" name="room" value="double" data-url="https://pantareiresort.holidayfuture.com/listings/572800" data-name="Double Room" data-sleeps="3" checked><img src="img/room-028-s.webp" width="720" height="480" alt="" loading="lazy"><span class="pick-name">Double Room</span><span class="pick-size">22 m² | Sleeps 3</span></label><label class="pick"><input type="radio" name="room" value="triple" data-url="https://pantareiresort.holidayfuture.com/listings/572802" data-name="Triple Room" data-sleeps="3"><img src="img/room-037-s.webp" width="720" height="480" alt="" loading="lazy"><span class="pick-name">Triple Room</span><span class="pick-size">30 m² | Sleeps 3</span></label><label class="pick"><input type="radio" name="room" value="family" data-url="https://pantareiresort.holidayfuture.com/listings/572799" data-name="Family Villa" data-sleeps="4"><img src="img/room-038-s.webp" width="720" height="480" alt="" loading="lazy"><span class="pick-name">Family Villa</span><span class="pick-size">50 m² | Sleeps 4</span></label><label class="pick"><input type="radio" name="room" value="suite" data-url="https://pantareiresort.holidayfuture.com/listings/572798" data-name="Suite with Private Pool" data-sleeps="2"><img src="img/room-043-s.webp" width="720" height="480" alt="" loading="lazy"><span class="pick-name">Suite with Private Pool</span><span class="pick-size">40 m² | Sleeps 2</span></label></div>
+    <p class="step">2. Your dates</p>
+    <div class="fields">
+      <div class="field"><input id="d-in" type="date" required><label for="d-in">Arrival</label></div>
+      <div class="field"><input id="d-out" type="date" required><label for="d-out">Departure</label></div>
+    </div>
+    <div class="g-step"><span id="g-lab">Guests</span><div class="step-btns"><button type="button" data-g="-1" aria-label="One guest fewer">−</button><output id="g" aria-labelledby="g-lab">2</output><button type="button" data-g="1" aria-label="One guest more">+</button></div></div>
+    <p class="incl">Every room has air conditioning, hot water and wifi, is cleaned daily, and comes with breakfast.</p>
+    <p class="trust"><b>9.2</b>/10 on Booking.com · 468 reviews</p>
+  </form>
+  <div class="drawer-foot">
+    <a class="btn book" id="go" href="https://pantareiresort.holidayfuture.com/">See prices on our booking page</a>
+    <p class="small" id="go-note">Prices move with the dates. Pick yours on our booking page and you&#x27;ll see what&#x27;s free and what it costs.</p>
+    <div class="row"><a class="btn soft" id="wa-go" href="https://wa.me/94728003022?text=Hi%20Panta%20Rei%21%20I%27d%20like%20to%20ask%20about%20a%20stay."><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.7 9.7 0 0 0-8.4 14.6L2.2 21.8l5.1-1.3A9.7 9.7 0 1 0 12 2.2zm0 17.7a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.3z"/></svg>WhatsApp</a><a class="btn soft" href="tel:+94728003022"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>Call</a></div>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  var d = document.documentElement, film = document.getElementById('film');
+  var top = document.getElementById('top'), pill = document.querySelector('.pill');
+  var mobile = matchMedia('(max-width: 767px)').matches;
+  var seq = d.classList.contains('seq');
+
+  /* ---------- the scrubbed film ----------
+     After first paint only the key frames (every 6th + the last, ~0.3 MB on a phone) load; the film
+     runs on them at once, cross-fading between neighbours. The rest loads when the visitor scrolls. */
+  var N = 72, KEY = 6, frames = new Array(N), ready = false, cur = 0, keysStarted = false, allStarted = false;
+  var canvas = film.querySelector('canvas'), ctx = canvas.getContext('2d'), drawn = -1;
+  var base = mobile ? 'frames/m/' : 'frames/d/';
+  var name = function (i) { return base + String(i + 1).padStart(3, '0') + '.webp'; };
+  var caps = film.querySelectorAll('.cap'), shade = film.querySelector('.film-shade');
+  var CAP = [[.02, .34], [.34, .67], [.67, .995]];
+  var heroCopy = film.querySelector('.hero-copy');
+  var keyList = []; for (var q = 0; q < N; q += KEY) keyList.push(q); if (keyList[keyList.length - 1] !== N - 1) keyList.push(N - 1);
+
+  function size() {
+    var dpr = Math.min(devicePixelRatio || 1, mobile ? 2 : 1.5);
+    canvas.width = Math.round(canvas.clientWidth * dpr); canvas.height = Math.round(canvas.clientHeight * dpr); drawn = -1;
+  }
+  function paint(b, alpha) {
+    var w = canvas.width, h = canvas.height, s = Math.max(w / b.width, h / b.height);
+    ctx.globalAlpha = alpha; ctx.drawImage(b, (w - b.width * s) / 2, (h - b.height * s) / 2, b.width * s, b.height * s);
+  }
+  function draw(f) {
+    var i = Math.floor(f), a = i, b = Math.ceil(f);
+    while (a > 0 && !frames[a]) a--;
+    while (b < N - 1 && !frames[b]) b++;
+    if (!frames[a]) a = b; if (!frames[b]) b = a; if (!frames[a]) return;
+    var t = b > a ? (f - a) / (b - a) : 0, key = a * 1000 + b + Math.round(t * 40) / 40;
+    if (key === drawn) return; drawn = key;
+    paint(frames[a], 1); if (b !== a && t > .02) paint(frames[b], t); ctx.globalAlpha = 1;
+  }
+  function load(i) {
+    if (frames[i] !== undefined) return Promise.resolve(); frames[i] = null;
+    return fetch(name(i)).then(function (r) { return r.blob(); }).then(createImageBitmap).then(function (bmp) { frames[i] = bmp; drawn = -1; })
+      .catch(function () { frames[i] = undefined; });
+  }
+  function batches(list, n) {
+    var p = 0;
+    return new Promise(function (done) {
+      (function next() { if (p >= list.length) return done(); var b = list.slice(p, p + n); p += n; Promise.all(b.map(load)).then(next); })();
+    });
+  }
+  function loadKeys() {
+    if (keysStarted || !seq) return; keysStarted = true;
+    batches(keyList, 4).then(function () { ready = true; size(); film.classList.add('ready'); film.classList.remove('waiting'); });
+  }
+  function loadAll() {
+    if (allStarted || !seq) return; allStarted = true; loadKeys();
+    var rest = []; for (var i = 0; i < N; i++) if (keyList.indexOf(i) < 0) rest.push(i);
+    batches(rest, 4);
+  }
+  function progress() {
+    var r = film.getBoundingClientRect(), span = r.height - innerHeight;
+    return span > 0 ? Math.min(1, Math.max(0, -r.top / span)) : 0;
+  }
+  var last = performance.now();
+  function loop(t) {
+    var dt = Math.min(.1, (t - last) / 1000); last = t;
+    var p = progress();
+    if (seq) {
+      var target = p * (N - 1);
+      cur += (target - cur) * (1 - Math.exp(-dt * 9));
+      if (ready && p > 0) draw(cur);
+      for (var k = 0; k < 3; k++) caps[k].classList.toggle('on', p >= CAP[k][0] && p <= CAP[k][1]);
+      var h = Math.min(1, p / .03);
+      heroCopy.style.opacity = 1 - h; heroCopy.style.transform = 'translateY(' + (-36 * h) + 'px)';
+      heroCopy.style.visibility = h >= 1 ? 'hidden' : '';
+      shade.style.opacity = 1 - h;
+      film.classList.toggle('playing', ready && p > 0);
+      var running = p > .02 && p < .995;
+      film.classList.toggle('waiting', running && !ready);
+      pill.classList.toggle('show', running);
+    }
+    top.classList.toggle('solid', film.getBoundingClientRect().bottom < 80);
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+  if (seq) {
+    addEventListener('resize', size);
+    var later = function () { requestAnimationFrame(function () { setTimeout(loadKeys, 0); }); };
+    document.readyState === 'complete' ? later() : addEventListener('load', later, { once: true });
+    ['scroll', 'wheel', 'touchmove', 'keydown'].forEach(function (ev) { addEventListener(ev, loadAll, { once: true, passive: true }); });
+  }
+
+  /* ---------- drawer ---------- */
+  var drawer = document.getElementById('drawer'), scrim = document.querySelector('.scrim'), sheet = document.getElementById('sheet');
+  var menuBtn = document.querySelector('.menu-btn'), opener = null, openEl = null;
+  var form = document.getElementById('book-form'), go = document.getElementById('go'), waGo = document.getElementById('wa-go');
+  var dIn = document.getElementById('d-in'), dOut = document.getElementById('d-out'), gOut = document.getElementById('g'), guests = 2;
+  var WA_BASE = 'https://wa.me/' + '+94728003022'.replace('+', '') + '?text=';
+  var iso = function (dt) { return dt.toISOString().slice(0, 10); };
+  var today = new Date(); dIn.min = iso(today); dOut.min = iso(new Date(+today + 864e5));
+  var fmt = function (v) { return new Date(v + 'T12:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }); };
+  function sync() {
+    var r = form.querySelector('input[name=room]:checked'), max = +r.dataset.sleeps;
+    if (guests > max) guests = max;
+    gOut.textContent = guests;
+    form.querySelector('[data-g="-1"]').disabled = guests <= 1; form.querySelector('[data-g="1"]').disabled = guests >= max;
+    if (dIn.value) { var m = new Date(+new Date(dIn.value) + 864e5); dOut.min = iso(m); if (dOut.value && dOut.value <= dIn.value) dOut.value = ''; }
+    var ok = dIn.value && dOut.value && dOut.value > dIn.value, url = r.dataset.url;
+    go.href = ok ? url + '?start=' + dIn.value + '&end=' + dOut.value + '&numberOfGuests=' + guests : url;
+    var msg = "Hi Panta Rei! I'd like to ask about the " + r.dataset.name + (ok ? ', ' + fmt(dIn.value) + ' to ' + fmt(dOut.value) : '') + ', ' + guests + (guests > 1 ? ' guests' : ' guest') + '.';
+    waGo.href = WA_BASE + encodeURIComponent(msg);
+  }
+  form.addEventListener('change', sync); dIn.addEventListener('input', sync); dOut.addEventListener('input', sync);
+  form.querySelectorAll('[data-g]').forEach(function (b) { b.addEventListener('click', function () { guests = Math.max(1, guests + +b.dataset.g); sync(); }); });
+  sync();
+  function focusables(el) { return [].slice.call(el.querySelectorAll('a[href], button:not([disabled]), input, [tabindex="0"]')).filter(function (x) { return x.offsetParent !== null || x.type === 'radio'; }); }
+  function open(el, from) {
+    if (openEl) close(true);
+    opener = from; openEl = el;
+    if (el === drawer) { drawer.showModal(); requestAnimationFrame(function () { drawer.classList.add('open'); }); }
+    else { el.classList.add('open'); scrim.classList.add('open'); }
+    document.body.style.overflow = 'hidden';
+    if (el === sheet) menuBtn.setAttribute('aria-expanded', 'true');
+    setTimeout(function () { var f = el.querySelector(el === drawer ? 'input[name=room]:checked' : 'nav a'); (f || el).focus(); }, 60);
+  }
+  function close(now) {
+    if (!openEl) return; openEl.classList.remove('open'); scrim.classList.remove('open'); document.body.style.overflow = '';
+    if (openEl === drawer) { if (now || matchMedia('(prefers-reduced-motion: reduce)').matches) drawer.close(); else setTimeout(function () { if (!drawer.classList.contains('open')) drawer.close(); }, 420); }
+    if (openEl === sheet) menuBtn.setAttribute('aria-expanded', 'false');
+    var o = opener; openEl = null; if (o) { if (drawer.open && !now) setTimeout(function () { o.focus(); }, 430); else o.focus(); }
+  }
+  document.addEventListener('click', function (ev) {
+    if (ev.target === drawer) { close(); return; }
+    var a = ev.target.closest('[data-open-drawer], [data-drawer-link]');
+    if (a) { ev.preventDefault(); var pick = a.dataset.room && form.querySelector('input[value=' + a.dataset.room + ']'); if (pick) { pick.checked = true; sync(); } open(drawer, a); return; }
+    if (ev.target.closest('[data-close]')) { close(); return; }
+    if (openEl === sheet && ev.target.closest('.sheet nav a')) close();
+  });
+  menuBtn.addEventListener('click', function () { openEl === sheet ? close() : open(sheet, menuBtn); });
+  drawer.addEventListener('cancel', function (ev) { ev.preventDefault(); close(true); });
+  document.addEventListener('keydown', function (ev) {
+    if (!openEl || openEl === drawer) return;
+    if (ev.key === 'Escape') { close(); return; }
+    if (ev.key !== 'Tab') return;
+    var f = focusables(openEl), first = f[0], lastF = f[f.length - 1];
+    if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); lastF.focus(); }
+    else if (!ev.shiftKey && document.activeElement === lastF) { ev.preventDefault(); first.focus(); }
+  });
+    /* ---------- slideshows: scroll-snap tracks with dots and arrows ---------- */
+  document.querySelectorAll('[data-gal]').forEach(function (g) {
+    var track = g.querySelector('.gal-track'), dots = g.querySelectorAll('.dot');
+    var kids = function () { return track.children; };
+    var idx = function () { var w = kids()[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 0); return Math.round(track.scrollLeft / (w || 1)); };
+    var go = function (i) { var n = kids().length; i = (i + n) % n; track.scrollTo({ left: kids()[i].offsetLeft - kids()[0].offsetLeft }); };
+    var mark = function () { var i = idx(); dots.forEach(function (d, k) { d.classList.toggle('on', k === i); d.setAttribute('aria-current', k === i ? 'true' : 'false'); }); };
+    dots.forEach(function (d, k) { d.addEventListener('click', function () { go(k); }); });
+    g.querySelector('.prev').addEventListener('click', function () { go(idx() - 1); });
+    g.querySelector('.next').addEventListener('click', function () { go(idx() + 1); });
+    track.addEventListener('scroll', function () { requestAnimationFrame(mark); }, { passive: true });
+    track.addEventListener('keydown', function (ev) { if (ev.key === 'ArrowRight') { ev.preventDefault(); go(idx() + 1); } if (ev.key === 'ArrowLeft') { ev.preventDefault(); go(idx() - 1); } });
+    mark();
+  });
+
+  /* ---------- rooms: the photo stage follows the room in the middle of the screen ---------- */
+  var stages = document.querySelectorAll('.stage-room');
+  var setRoom = function (k) { stages.forEach(function (s) { s.classList.toggle('on', s.dataset.room === k); }); };
+  setRoom('double');
+  var rio = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) setRoom(e.target.dataset.room); }); }, { rootMargin: '-48% 0px -48% 0px' });
+  document.querySelectorAll('.room').forEach(function (r) { rio.observe(r); });
+
+  /* ---------- the week strip: today ---------- */
+  var dow = (new Date().getDay() + 6) % 7, day = document.querySelector('.day[data-d="' + dow + '"]');
+  if (day && !day.classList.contains('off')) day.classList.add('today');
+
+  /* ---------- the closing film: attached when near, never under reduced motion / Save-Data ---------- */
+  var cv = document.querySelector('[data-close-video]'), conn = navigator.connection || {};
+  if (cv && !matchMedia('(prefers-reduced-motion: reduce)').matches && !conn.saveData) {
+    if (mobile) cv.poster = 'img/close-m.webp';
+    var vio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting && !cv.dataset.on) {
+          cv.dataset.on = '1';
+          cv.querySelectorAll('source').forEach(function (s) { if (s.media && !matchMedia(s.media).matches) s.remove(); else s.src = s.dataset.src; });
+          cv.load(); cv.addEventListener('playing', function () { cv.classList.add('playing'); }, { once: true });
+          cv.play().catch(function () {});
+        } else if (cv.dataset.on) { e.isIntersecting ? cv.play().catch(function () {}) : cv.pause(); }
+      });
+    }, { rootMargin: '300px 0px' });
+    vio.observe(cv);
+  }
+
+  /* ---------- the pool photograph: Kube's 4 rem parallax, desktop only ---------- */
+  var pp = document.querySelector('.pool-pic img');
+  if (pp && !mobile && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    (function par() {
+      var r = pp.parentNode.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < innerHeight) { var t = (innerHeight - r.top) / (innerHeight + r.height); pp.style.transform = 'translateY(' + ((t - .5) * -64).toFixed(1) + 'px) scale(1.06)'; }
+      requestAnimationFrame(par);
+    })();
+  }
+
+  /* ---------- the shala loop behind "Panta Fitness Club": attached when near, paused when away ---------- */
+  document.querySelectorAll('[data-lazy-video]').forEach(function (v) {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || (navigator.connection || {}).saveData) return;
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting && !v.dataset.on) {
+          v.dataset.on = '1';
+          v.querySelectorAll('source').forEach(function (s) { s.src = s.dataset.src; });
+          v.load(); v.addEventListener('playing', function () { v.classList.add('playing'); }, { once: true });
+          v.play().catch(function () {});
+        } else if (v.dataset.on) { e.isIntersecting ? v.play().catch(function () {}) : v.pause(); }
+      });
+    }, { rootMargin: '200px 0px' }).observe(v);
+  });
+
+})();
+</script>
+</body>
+</html>

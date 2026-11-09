@@ -1,0 +1,22 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "role": "anchor",
+    "query": "Panta Rei Resort, Kabalana, Ahangama, Sri Lanka",
+    "geocoder": "Google Maps place pin 'Panta Rei Resort' (search 'Panta Rei Resort Ahangama', 2026-11-06T09:44:48Z; listing's website link = pantareiresort.com). Nominatim returned [] for 'Panta Rei Resort Ahangama' and 'Back To Life Road Ahangama' (2026-11-06T09:40:58Z).",
+    "source_url": "https://www.google.com/maps/place/Panta+Rei+Resort/@5.9807381,80.3497102,17z/data=!4m9!3m8!1s0x3ae1130217b33167:0xd6c7333702ff274!5m2!4m1!1i2!8m2!3d5.9807381!4d80.3497102!16s%2Fg%2F11sdb817kg?hl=en",
+    "note": "radius_m 0: the area is the anchor point; the anchor business is the only candidate"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     80.3497102,
+     5.9807381
+    ]
+   }
+  }
+ ]
+}

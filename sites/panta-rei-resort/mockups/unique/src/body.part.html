@@ -1,0 +1,136 @@
+<section class="welcome" id="welcome">
+  <div class="wrap">
+    <h2 class="kicker">{{W_HEAD}}</h2>
+    <p class="feature">{{FEATURE}}</p>
+    <p class="lead">{{W1}}</p>
+    <p class="lead-2">{{W2}}</p>
+  </div>
+  <div class="wide-print"><picture><source media="(max-width: 767px)" srcset="img/lounge-m.webp"><img src="img/lounge-d.webp" width="1350" height="900" loading="lazy" alt="The open-air lounge under the white two-storey main building: rattan pendant lamps, orange-cushioned rattan chairs, palms all round"></picture></div>
+</section>
+
+<section class="rooms" id="rooms">
+  <div class="wrap rooms-head">
+    <h2>{{STAY_HEAD}}</h2>
+    <p>{{STAY1}}</p>
+  </div>
+  <div class="rooms-split">
+    <div class="room-stage" aria-hidden="false">{{ROOM_STAGE}}</div>
+    <div class="room-list">{{ROOM_BLOCKS}}
+      <div class="book-block card tint" id="book">
+        <h3>{{BOOK_LABEL}}</h3>
+        <p>{{STAY2}}</p>
+        <div class="book-rooms">{{BOOK_ROOMS}}</div>
+        <div class="btn-row"><a class="btn book" href="{{ENGINE}}">See all dates on our booking page</a><a class="btn glass" href="{{WA}}">{{I_WA}}WhatsApp</a><a class="btn glass" href="tel:{{TEL}}">{{I_TEL}}Call</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pool" id="pool">
+  <div class="pool-pic"><picture><source media="(max-width: 767px)" srcset="img/pool-m.webp"><img src="img/pool-d.webp" width="1600" height="1062" loading="lazy" alt="A man wading into the long turquoise pool, loungers on the stone deck, red-roofed bungalows and tall palms beyond under a blue sky"></picture></div>
+  <div class="pool-card card">
+    <h2>{{POOL_HEAD}}</h2>
+    {{POOL_BODY}}
+    <ul class="rows"><li><span>{{DAYPASS}}<small>{{DAYPASS_N}}</small></span><b>{{DAYPASS_P}} <small>per person</small></b></li></ul>
+    <p class="asof">Price as of {{CAPTURED}}</p>
+  </div>
+</section>
+
+<section class="surf band-section" id="after-the-surf">
+  <div class="band">
+    <picture><source media="(max-width: 767px)" srcset="img/lawn-m.webp"><img src="img/lawn-d.webp" width="1350" height="760" loading="lazy" alt="On the lawn by the pool: two guests carrying surfboards, a woman in a straw hat crouching beside a dog, festoon lights overhead"></picture>
+    <h2 class="band-title">{{SURF_HEAD}}</h2>
+  </div>
+  <div class="wrap two-col">
+    <div class="col-text">{{SURF_BODY}}</div>
+    <div><ul class="rows">{{MASSAGE_ROWS}}</ul><p class="asof">Prices as of {{CAPTURED}}</p></div>
+  </div>
+</section>
+
+<section class="food" id="restaurant">
+  <div class="wrap food-grid">
+    <div class="food-text">
+      <h2>{{FOOD_HEAD}}</h2>
+      {{FOOD_BODY}}
+      <p class="hours">{{I_CAL}}<span>{{HOURS}}</span></p>
+    </div>
+    <div class="prints">
+      <img class="print p1" src="img/lunch.webp" width="800" height="1000" loading="lazy" alt="Lunch on a teak table in the garden: sliders, plated dishes, a bottle of water and glasses">
+      <img class="print p2" src="img/prawns.webp" width="800" height="1000" loading="lazy" alt="Garlic prawns with herbs in a dark bowl on a woven rattan mat, seen from above">
+    </div>
+  </div>
+</section>
+
+<section class="fit band-section" id="fitness">
+  <div class="band">
+    <img src="img/shala-poster.webp" width="1600" height="900" loading="lazy" alt="A yoga class in the open-air shala under white curtains: mats on the concrete floor, palms beyond the columns">
+    <video muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" data-lazy-video>
+      <source data-src="video/shala-1280.webm" type="video/webm"><source data-src="video/shala-1280.mp4" type="video/mp4">
+    </video>
+    <h2 class="band-title">{{FIT_HEAD}}</h2>
+  </div>
+  <div class="wrap two-col">
+    <div class="col-text">{{FIT_BODY}}</div>
+    <div>
+      <ol class="week" aria-label="Vinyasa yoga through the week">{{DAYS}}</ol>
+      <ul class="rows">{{CLASS_ROWS}}</ul>
+      <p class="asof">{{CLASS_NOTE}} · prices as of {{CAPTURED}}</p>
+    </div>
+  </div>
+</section>
+
+<section class="guests band-section" id="guests">
+  <div class="band band-scores">
+    <picture><source media="(max-width: 767px)" srcset="img/table-m.webp"><img src="img/table-d.webp" width="1600" height="1056" loading="lazy" alt="Breakfast served at a teak table under the trees: hands passing a bowl of granola, juice, a plate of fruit and a coffee"></picture>
+    <div class="scores-over">
+      <h2 class="band-title">What guests say</h2>
+      <div class="scores">
+        <a class="score" href="{{B_URL}}" target="_blank" rel="noopener"><b>{{B_SCORE}}<small>/10</small></b><span>Booking.com<br>{{B_COUNT}} reviews</span></a>
+        <a class="score" href="{{G_URL}}" target="_blank" rel="noopener"><b>{{G_SCORE}}<small>/5</small></b><span>Google<br>{{G_COUNT}} reviews</span></a>
+      </div>
+      <p class="asof">As of {{CAPTURED}}</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="qgal" data-gal>
+      <div class="gal-track" tabindex="0" role="group" aria-roledescription="slideshow" aria-label="Guest reviews">{{QUOTES}}</div>
+      <div class="gal-ui"><button type="button" class="gal-btn prev" aria-label="Previous review"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="dots">{{QDOTS}}</div><button type="button" class="gal-btn next" aria-label="Next review"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
+    </div>
+  </div>
+</section>
+
+<section class="here" id="getting-here">
+  <div class="wrap here-grid">
+    <div class="here-text">
+      <h2>{{HERE_HEAD}}</h2>
+      {{HERE_BODY}}
+      <div class="btn-row"><a class="btn soft" href="{{MAPS}}" target="_blank" rel="noopener">{{I_PIN}}Open in Google Maps</a></div>
+    </div>
+    <div class="here-card card">
+      <p class="addr">{{I_PIN}}<span>{{ADDRESS}}</span></p>
+      <p class="facts"><span>Check-in from {{CHECKIN}}</span> <span>Check-out until {{CHECKOUT}}</span></p>
+      <p class="small">{{STAY_NOTE}}</p>
+      <h3>Good to know</h3>
+      <ul class="amen">{{AMEN}}</ul>
+    </div>
+  </div>
+  <div class="wrap groups card tint">
+    <div><h2>{{GROUP_HEAD}}</h2>{{GROUP_BODY}}</div>
+    <a class="btn glass" href="{{WA_GROUP}}">{{I_WA}}Ask about a group</a>
+  </div>
+</section>
+
+<section class="closing" id="closing">
+  <picture><source media="(max-width: 767px)" srcset="img/close-m.webp"><img src="img/close-d.webp" width="1600" height="900" loading="lazy" alt="Panta Rei from the air in the evening light: the pool in the ring of red roofs, the palms around it"></picture>
+  <video muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" poster="img/close-d.webp" data-close-video>
+    <source data-src="video/vid-002-m1280.webm" type="video/webm" media="(max-width: 767px)">
+    <source data-src="video/vid-002-m1280.mp4" type="video/mp4" media="(max-width: 767px)">
+    <source data-src="video/vid-002-d1920.webm" type="video/webm">
+    <source data-src="video/vid-002-d1920.mp4" type="video/mp4">
+  </video>
+  <div class="closing-copy">
+    <h2>{{BOOK_LABEL}}</h2>
+    <p>{{CLOSING}}</p>
+    <div class="btn-row"><a class="btn book" href="#book" data-open-drawer>Check dates</a><a class="btn glass" href="{{WA}}">{{I_WA}}WhatsApp</a></div>
+  </div>
+</section>

@@ -1,0 +1,542 @@
+{
+  "tool": "funnel.mjs",
+  "version": "0.2.0",
+  "measured_at": "2026-11-06T09:42:18.050Z",
+  "start_url": "https://www.pantareiresort.com/",
+  "whitelabel_engine": false,
+  "final_landing_url": "https://www.pantareiresort.com/",
+  "landing_status": 200,
+  "landing_error": null,
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "viewport_meta": true,
+  "landing_text_chars": 682,
+  "clicks_to_book": 1,
+  "primary_action": {
+    "class": "whatsapp",
+    "href": "https://api.whatsapp.com/send/?phone=94728003022&text=Hi%21+I%E2%80%99d+like+to+check+availability+for+your+resort&type=phone_number&app_absent=0",
+    "label": "Whatsapp",
+    "page": "https://www.pantareiresort.com/"
+  },
+  "hero_action": {
+    "label": "CHECK AVAILABILITY",
+    "class": null,
+    "href": "https://pantareiresort.holidayfuture.com/",
+    "flow_page": null,
+    "clicks_to_flow": null
+  },
+  "cta_above_fold": true,
+  "terminal_above_fold": false,
+  "any_action_above_fold": true,
+  "landing_actions": [
+    {
+      "class": "contact_link",
+      "terminal": false,
+      "href": "https://www.pantareiresort.com/contact",
+      "label": "Contact",
+      "tag": "a",
+      "top": 18,
+      "height": 24,
+      "width": 73,
+      "above_fold": true,
+      "tap_target_ok": false
+    },
+    {
+      "class": "book_link",
+      "terminal": false,
+      "href": "https://pantareiresort.holidayfuture.com/",
+      "label": "CHECK AVAILABILITY",
+      "tag": "a",
+      "top": 380,
+      "height": 62,
+      "width": 285,
+      "above_fold": true,
+      "tap_target_ok": true
+    },
+    {
+      "class": "book_link",
+      "terminal": false,
+      "href": "https://www.pantareiresort.com/ourrooms",
+      "label": "Book",
+      "tag": "a",
+      "top": 2217,
+      "height": 40,
+      "width": 88,
+      "above_fold": false,
+      "tap_target_ok": false
+    },
+    {
+      "class": "email",
+      "terminal": false,
+      "href": "mailto:hello@pantareiresort.com?subject=Hello%20Panta%20Rei!",
+      "label": "hello@pantareiresort.com",
+      "tag": "a",
+      "top": 4120,
+      "height": 16,
+      "width": 168,
+      "above_fold": false,
+      "tap_target_ok": false
+    },
+    {
+      "class": "whatsapp",
+      "terminal": true,
+      "href": "https://api.whatsapp.com/send/?phone=94728003022&text=Hi%21+I%E2%80%99d+like+to+check+availability+for+your+resort&type=phone_number&app_absent=0",
+      "label": "Whatsapp",
+      "tag": "a",
+      "top": 4178,
+      "height": 55,
+      "width": 55,
+      "above_fold": false,
+      "tap_target_ok": true
+    },
+    {
+      "class": "whatsapp",
+      "terminal": true,
+      "href": "https://api.whatsapp.com/send/?phone=94728003022&text=Hi%21+I%E2%80%99d+like+to+check+availability+for+your+resort&type=phone_number&app_absent=0",
+      "label": "Chat with us on WhatsApp",
+      "tag": "a",
+      "top": 1621,
+      "height": 55,
+      "width": 55,
+      "above_fold": false,
+      "tap_target_ok": true
+    },
+    {
+      "class": "engine",
+      "terminal": true,
+      "href": "https://www.tripadvisor.com/Hotel_Review-g674590-d25364260-Reviews-Panta_Rei_Resort-Ahangama_Galle_District_Southern_Province.html",
+      "label": "White TripAdvisor Icon",
+      "tag": "a",
+      "top": 1816,
+      "height": 55,
+      "width": 55,
+      "above_fold": false,
+      "tap_target_ok": true
+    }
+  ],
+  "action_classes_seen": [
+    "contact_link",
+    "book_link",
+    "email",
+    "whatsapp",
+    "engine",
+    "form"
+  ],
+  "pages_crawled": 7,
+  "pages_with_errors": [],
+  "console_errors": [],
+  "pages": [
+    {
+      "url": "https://www.pantareiresort.com/",
+      "depth": 0,
+      "via": null,
+      "status": 200,
+      "final_url": "https://www.pantareiresort.com/",
+      "title": "Panta Rei Resort | Boutique Hotel in Kabalana, Sri Lanka",
+      "viewport_meta": true,
+      "text_chars": 682,
+      "actions": [
+        {
+          "class": "contact_link",
+          "terminal": false,
+          "href": "https://www.pantareiresort.com/contact",
+          "label": "Contact",
+          "tag": "a",
+          "top": 18,
+          "height": 24,
+          "width": 73,
+          "above_fold": true,
+          "tap_target_ok": false
+        },
+        {
+          "class": "book_link",
+          "terminal": false,
+          "href": "https://pantareiresort.holidayfuture.com/",
+          "label": "CHECK AVAILABILITY",
+          "tag": "a",
+          "top": 380,
+          "height": 62,
+          "width": 285,
+          "above_fold": true,
+          "tap_target_ok": true
+        },
+        {
+          "class": "book_link",
+          "terminal": false,
+          "href": "https://www.pantareiresort.com/ourrooms",
+          "label": "Book",
+          "tag": "a",
+          "top": 2217,
+          "height": 40,
+          "width": 88,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:hello@pantareiresort.com?subject=Hello%20Panta%20Rei!",
+          "label": "hello@pantareiresort.com",
+          "tag": "a",
+          "top": 4120,
+          "height": 16,
+          "width": 168,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "whatsapp",
+          "terminal": true,
+          "href": "https://api.whatsapp.com/send/?phone=94728003022&text=Hi%21+I%E2%80%99d+like+to+check+availability+for+your+resort&type=phone_number&app_absent=0",
+          "label": "Whatsapp",
+          "tag": "a",
+          "top": 4178,
+          "height": 55,
+          "width": 55,
+          "above_fold": false,
+          "tap_target_ok": true
+        },
+        {
+          "class": "whatsapp",
+          "terminal": true,
+          "href": "https://api.whatsapp.com/send/?phone=94728003022&text=Hi%21+I%E2%80%99d+like+to+check+availability+for+your+resort&type=phone_number&app_absent=0",
+          "label": "Chat with us on WhatsApp",
+          "tag": "a",
+          "top": 1621,
+          "height": 55,
+          "width": 55,
+          "above_fold": false,
+          "tap_target_ok": true
+        },
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://www.tripadvisor.com/Hotel_Review-g674590-d25364260-Reviews-Panta_Rei_Resort-Ahangama_Galle_District_Southern_Province.html",
+          "label": "White TripAdvisor Icon",
+          "tag": "a",
+          "top": 1816,
+          "height": 55,
+          "width": 55,
+          "above_fold": false,
+          "tap_target_ok": true
+        }
+      ],
+      "internal_links": 7,
+      "error": null,
+      "screenshot": "landing-mobile.png",
+      "fold_screenshot": "landing-fold.png"
+    },
+    {
+      "url": "https://www.pantareiresort.com/about",
+      "depth": 1,
+      "via": "https://www.pantareiresort.com/",
+      "status": 200,
+      "final_url": "https://www.pantareiresort.com/about",
+      "title": "About | Panta Rei Resort",
+      "viewport_meta": true,
+      "text_chars": 2247,
+      "actions": [
+        {
+          "class": "contact_link",
+          "terminal": false,
+          "href": "https://www.pantareiresort.com/contact",
+          "label": "Contact",
+          "tag": "a",
+          "top": 64,
+          "height": 50,
+          "width": 98,
+          "above_fold": true,
+          "tap_target_ok": true
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:hello@pantareiresort.com",
+          "label": "hello@pantareiresort.com",
+          "tag": "a",
+          "top": 3301,
+          "height": 14,
+          "width": 133,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 7,
+      "error": null
+    },
+    {
+      "url": "https://www.pantareiresort.com/ourrooms",
+      "depth": 1,
+      "via": "https://www.pantareiresort.com/",
+      "status": 200,
+      "final_url": "https://www.pantareiresort.com/ourrooms",
+      "title": "Rooms | Panta Rei Resort",
+      "viewport_meta": true,
+      "text_chars": 1666,
+      "actions": [
+        {
+          "class": "contact_link",
+          "terminal": false,
+          "href": "https://www.pantareiresort.com/contact",
+          "label": "Contact",
+          "tag": "a",
+          "top": 51,
+          "height": 50,
+          "width": 98,
+          "above_fold": true,
+          "tap_target_ok": true
+        },
+        {
+          "class": "book_link",
+          "terminal": false,
+          "href": "https://pantareiresort.holidayfuture.com/",
+          "label": "BOOK NOW",
+          "tag": "a",
+          "top": 1335,
+          "height": 64,
+          "width": 227,
+          "above_fold": false,
+          "tap_target_ok": true
+        },
+        {
+          "class": "book_link",
+          "terminal": false,
+          "href": "https://pantareiresort.holidayfuture.com/",
+          "label": "BOOK NOW",
+          "tag": "a",
+          "top": 1986,
+          "height": 63,
+          "width": 220,
+          "above_fold": false,
+          "tap_target_ok": true
+        },
+        {
+          "class": "book_link",
+          "terminal": false,
+          "href": "https://pantareiresort.holidayfuture.com/",
+          "label": "BOOK NOW",
+          "tag": "a",
+          "top": 2621,
+          "height": 62,
+          "width": 220,
+          "above_fold": false,
+          "tap_target_ok": true
+        },
+        {
+          "class": "book_link",
+          "terminal": false,
+          "href": "https://pantareiresort.holidayfuture.com/",
+          "label": "BOOK NOW",
+          "tag": "a",
+          "top": 3310,
+          "height": 63,
+          "width": 227,
+          "above_fold": false,
+          "tap_target_ok": true
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:hello@pantareiresort.com",
+          "label": "hello@pantareiresort.com",
+          "tag": "a",
+          "top": 3773,
+          "height": 14,
+          "width": 133,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 7,
+      "error": null
+    },
+    {
+      "url": "https://www.pantareiresort.com/restaurant",
+      "depth": 1,
+      "via": "https://www.pantareiresort.com/",
+      "status": 200,
+      "final_url": "https://www.pantareiresort.com/restaurant",
+      "title": "Restaurant | PantaRei",
+      "viewport_meta": true,
+      "text_chars": 1723,
+      "actions": [
+        {
+          "class": "contact_link",
+          "terminal": false,
+          "href": "https://www.pantareiresort.com/contact",
+          "label": "Contact",
+          "tag": "a",
+          "top": 46,
+          "height": 50,
+          "width": 98,
+          "above_fold": true,
+          "tap_target_ok": true
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:hello@pantareiresort.com",
+          "label": "hello@pantareiresort.com",
+          "tag": "a",
+          "top": 2541,
+          "height": 14,
+          "width": 133,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 7,
+      "error": null
+    },
+    {
+      "url": "https://www.pantareiresort.com/events",
+      "depth": 1,
+      "via": "https://www.pantareiresort.com/",
+      "status": 200,
+      "final_url": "https://www.pantareiresort.com/events",
+      "title": "Activities | Panta Rei Resort",
+      "viewport_meta": true,
+      "text_chars": 945,
+      "actions": [
+        {
+          "class": "contact_link",
+          "terminal": false,
+          "href": "https://www.pantareiresort.com/contact",
+          "label": "Contact",
+          "tag": "a",
+          "top": 59,
+          "height": 50,
+          "width": 98,
+          "above_fold": true,
+          "tap_target_ok": true
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:pantareiresort@gmail.com?subject=Hello%2C%20I%20would%20like%20to%20bring%20a%20group.",
+          "label": "I'm very interested",
+          "tag": "a",
+          "top": 1510,
+          "height": 40,
+          "width": 174,
+          "above_fold": false,
+          "tap_target_ok": false
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:info@mysite.com",
+          "label": "hello@pantareiresort.com",
+          "tag": "a",
+          "top": 1987,
+          "height": 14,
+          "width": 133,
+          "above_fold": false,
+          "tap_target_ok": false
+        }
+      ],
+      "internal_links": 7,
+      "error": null
+    },
+    {
+      "url": "https://www.pantareiresort.com/contact",
+      "depth": 1,
+      "via": "https://www.pantareiresort.com/",
+      "status": 200,
+      "final_url": "https://www.pantareiresort.com/contact",
+      "title": "Contact | Panta Rei Resort",
+      "viewport_meta": true,
+      "text_chars": 253,
+      "actions": [
+        {
+          "class": "contact_link",
+          "terminal": false,
+          "href": "https://www.pantareiresort.com/contact",
+          "label": "Contact",
+          "tag": "a",
+          "top": 49,
+          "height": 50,
+          "width": 98,
+          "above_fold": true,
+          "tap_target_ok": true
+        },
+        {
+          "class": "whatsapp",
+          "terminal": true,
+          "href": "https://api.whatsapp.com/send/?phone=94728003022&text=Hi%21+I%E2%80%99d+like+to+check+availability+for+your+resort&type=phone_number&app_absent=0",
+          "label": "Chat with us on WhatsApp",
+          "tag": "a",
+          "top": 618,
+          "height": 55,
+          "width": 55,
+          "above_fold": true,
+          "tap_target_ok": true
+        },
+        {
+          "class": "engine",
+          "terminal": true,
+          "href": "https://www.tripadvisor.com/Hotel_Review-g674590-d25364260-Reviews-Panta_Rei_Resort-Ahangama_Galle_District_Southern_Province.html",
+          "label": "White TripAdvisor Icon",
+          "tag": "a",
+          "top": 618,
+          "height": 55,
+          "width": 55,
+          "above_fold": true,
+          "tap_target_ok": true
+        },
+        {
+          "class": "email",
+          "terminal": false,
+          "href": "mailto:pantareiresort@gmail.com?subject=Hello%20Panta%20Rei!",
+          "label": "hello@pantareiresort.com or +94 728003022",
+          "tag": "a",
+          "top": 752,
+          "height": 16,
+          "width": 327,
+          "above_fold": true,
+          "tap_target_ok": false
+        },
+        {
+          "class": "form",
+          "terminal": false,
+          "flow": false,
+          "href": null,
+          "label": "form (4 fields)",
+          "tag": "form",
+          "top": 263,
+          "above_fold": true
+        }
+      ],
+      "internal_links": 7,
+      "error": null
+    },
+    {
+      "url": "https://www.pantareiresort.com/explore",
+      "depth": 1,
+      "via": "https://www.pantareiresort.com/",
+      "status": 200,
+      "final_url": "https://www.pantareiresort.com/explore",
+      "title": "Expolore | PantaRei",
+      "viewport_meta": true,
+      "text_chars": 44,
+      "actions": [
+        {
+          "class": "book_link",
+          "terminal": false,
+          "href": "https://pantareiresort.holidayfuture.com/",
+          "label": "CHECK AVAILABILITY",
+          "tag": "a",
+          "top": 1105,
+          "height": 57,
+          "width": 262,
+          "above_fold": false,
+          "tap_target_ok": true
+        }
+      ],
+      "internal_links": 0,
+      "error": null
+    }
+  ]
+}
