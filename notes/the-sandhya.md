@@ -4,7 +4,23 @@ Run `2026-11-ahangama-01`, owner alon, branch `alon/the-sandhya`, `mode: test` (
 
 ## State
 
-`picked` (2026-11-09): Alon kept **calm** ("The Artwork") only; interactive and unique are not built. Next is 4g, the build of `sites/the-sandhya/mockups/calm/` into `sites/the-sandhya/final/`. Alon also chose **date fields**: the build adds check-in and check-out fields that pass the dates to the Cloudbeds engine URL, which meets `agents/designer/custom.md`'s "pick dates". A person still has to confirm the engine honours those dates before go-live. Budget: 7.72M of 10M tokens used, so about 2.28M remain for the build through to the pitch (`sanjee-surf-school` used about 2.4M on those stations). Review the budget if the critique loop needs a second round. Preview the mockups locally: `python3 -m http.server 8790 --directory sites/the-sandhya/mockups`, then `/calm/dist/index.html`. Use http, because WebGL won't load images from `file://`. Copy passed on its fourth pass, resting on the rulings stated in `copy/review.md`.
+`packaged` (2026-11-09), waiting at **gate c**: a human decides whether to send the pitch. `mode: test`, so nothing goes to the owner unless the run changes.
+
+- Preview: https://the-sandhya.os1.workers.dev (Worker `the-sandhya`, noindex, byte-identical to `final/dist/` at 49b5001).
+- Proposal page: https://the-sandhya-proposal.os1.workers.dev (Worker `the-sandhya-proposal`). The drafts are `sites/the-sandhya/pitch/message.en.email.md` (to reservations@thesandhya.com) and `message.en.short.md`; claims and sources are in `pitch/notes.md`.
+- Score: critique round 1 PASS 85.1/100. After the fix pass, the critic's verification 1 gave PASS 89.0/100 (d1–7 73.5/80, d8 8).
+- Built from calm only (Alon at gate b), with date fields: both dates valid add `#checkin=…&checkout=…` to every engine link, the buttons name the dates, and `sessionStorage` keeps them.
+- Budget: 10.77M of 12M tokens and about 606 of 850 agent-minutes. Alon raised the limits on 2026-11-09, from 10M and 600.
+
+**Before sending (gate c), a person must:**
+1. Open the Cloudbeds link with dates, and each `?rid=` link, in a real browser. If the engine ignores the dates, remove the date fields.
+2. Verify Kayak's 9.4 from 159 on Kayak, or remove it from the site. It appears in three places on the preview plus the JSON-LD `sameAs`; the pitch never mentions it.
+3. Choose the channel. Email is verified; WhatsApp is not confirmed for that number.
+4. Check that the MICHELIN Guide page still shows its "not taking reservations" bar, or drop that bullet.
+5. Check the date on the old-site numbers (6 Nov), and re-run `dossier/the-sandhya/make-old-site.sh` if sending much later.
+6. Agree fees before replying to a price question.
+7. Decide whether the hotel's name goes in the h1. It now appears in no sentence on the page, only in the logo alt text, the title and the JSON-LD.
+8. Also from the critic: the Director's Suite says "King" where the dossier says "Super King"; img-167's room; the staff photos.
 
 ## Decided 2026-11-06 (Alon: "you decide")
 
@@ -17,9 +33,7 @@ Done. Dining ¶2 S2 and S3 are the wording Alon approved. `copy/sources.md` and 
 
 ## Settled at gate b
 
-- Date picker: add working date fields at the build (Alon, 2026-11-09).
-- Unique's grade and sea strip: moot, because unique was not kept.
-- The experience critic's point that booking must feel part of the site: the date fields address it. The critic checks it again at 4h.
+- Calm only; date fields added at the build (Alon, 2026-11-09). Unique's rulings are moot.
 
 ## Do not lose
 
