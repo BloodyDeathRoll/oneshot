@@ -1,23 +1,23 @@
 {
  "slug": "cheeky-monkey",
  "variant": "../final",
- "measured_at": "2026-11-04T11:32:19.825Z",
+ "measured_at": "2026-11-09T14:09:20.242Z",
  "first_load": {
-  "requests": 12,
+  "requests": 8,
   "hosts": [
    "localhost:8980"
   ],
   "third_party_hosts": [],
-  "bytes_total": 708018,
-  "bytes_html": 96992,
+  "bytes_total": 533116,
+  "bytes_html": 116460,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 64900,
-  "bytes_images": 546126,
+  "bytes_images": 351756,
   "largest_image_bytes": 119050,
-  "lcp_ms": 480,
+  "lcp_ms": 648,
   "cls": 0,
-  "dcl_ms": 1806
+  "dcl_ms": 2209
  },
  "scroll": {
   "early": {
@@ -32,6 +32,7 @@
  "booking": {
   "external_booking_hrefs": [
    "https://www.booking.com/hotel/lk/cheeky-monkey.en-gb.html",
+   "https://rosa.surf/spot/rams",
    "https://www.instagram.com/cheekymonkeysrilanka/",
    "https://cheekymonkeymidigama.com/",
    "https://www.google.com/maps/place/Cheeky+Monkey/@5.9617986,80.3967609,17z/data=!4m9!3m8!1s0x3ae114c1f7d9fc01:0xb59451ca09648650!5m2!4m1!1i2!8m2!3d5.9617986!4d80.3967609!16s%2Fg%2F11b6scl3ts?hl=en",
@@ -55,13 +56,14 @@
   "images": 55,
   "images_without_alt": 0,
   "images_alt_empty_decorative": 6,
-  "tapables": 84,
+  "tapables": 89,
   "tapables_under_44px": 0,
   "tapables_under_44px_examples": [],
   "headings": [
    "H1",
    "H2",
    "H2",
+   "H3",
    "H2",
    "H3",
    "H3",
@@ -90,7 +92,7 @@
   "lang": "en"
  },
  "no_js": {
-  "text_length": 10162,
+  "text_length": 10350,
   "booking_links_reachable": 6,
   "visible_images": 55
  },
@@ -100,8 +102,9 @@
   "photograph_visible": true
  },
  "facts": {
-  "numbers_on_page": 48,
+  "numbers_on_page": 49,
   "numbers_not_in_passed_copy": [
+   "360",
    "2018"
   ],
   "note": "copy/en.json passed station 4c with 0 unsourced and 0 contradicted claims; copy/sources.md maps each paragraph to its dossier fields. A number here that is not in the copy is either an interface label (01, 02…) or a claim to chase."

@@ -111,7 +111,14 @@ export const stayTimes = [st.checkInFrom && `Check-in ${range(st.checkInFrom, st
 export const amenLine = (c.amenities ?? []).map((a) => a.label + (a.note ? ` (${a.note})` : '')).join(' | ')
 export const roomDet = (r) => [r.beds, r.sleeps ? `sleeps ${r.sleeps}` : '', r.note].filter(Boolean).join(' | ')
 export const roomShort = (r) => r.label.replace(/ Room$/, '')
-export const roomSize = (r) => (/^\d+ m²/.exec(r.note ?? '') ?? [])[0] ?? ''
+/* round 4 (experience v1 fix 3): "9 m²" never breaks before its unit on a drawer tile */
+export const roomSize = (r) => ((/^\d+ m²/.exec(r.note ?? '') ?? [])[0] ?? '').replace(' ', '\u00a0')
+/* round 4: what sets a room apart on its drawer tile: the rest of the note's first sentence after the m²
+   ("with a desk, a seating area and a garden view"), from rooms[].note, so two 9 m² doubles no longer read the same */
+export const roomExtra = (r) => {
+  const rest = (r.note ?? '').replace(/^\d+ m²\s*/, '').split(/\.\s/)[0].replace(/\.$/, '').trim()
+  return rest ? rest[0].toUpperCase() + rest.slice(1) : ''
+}
 
 /* ---------- reviews ---------- */
 const ratingUrl = (p) => safeUrl((c.ratings ?? []).find((r) => r.platform === p)?.url)
