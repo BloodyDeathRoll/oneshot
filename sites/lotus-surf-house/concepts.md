@@ -103,6 +103,18 @@ impeccable mode: **Persuade**. The visitor succeeds when they tap through to Boo
 
 **Forecast: no**, in all three. The business names no break. Lazy Left and Lazy Right are guests' words (`location.spot.origin_note`), and the dossier records no dossier-spot → Rosa-spot mapping. Showing "Midigama" as the spot would be the nearest-other-spot error.
 
+> **Amendment, 2026-11-09: the forecast mapping (the picked calm concept, "The gate").** Alon decided on 2026-11-04 that the built site carries Rosa's forecast. That overrides "Forecast: no" above, for the final site only.
+>
+> | | |
+> |---|---|
+> | Dossier spot | `location.spot`: guests name **Lazy Left and Lazy Right** (Giada, Victoria, Sylvia, Svenja; `origin_note`: guest words, not the business's). The business names no break. |
+> | Rosa spot | `rosaSpotId: "lazy-left"`, `spotName: "Lazy Left"` |
+> | Why this one | It is the Rosa spot nearest the Google pin. Rosa's `data/index.json` puts Lazy Left at 5.963067, 80.390755, and the dossier's `location.lat_lng` is 5.9652192, 80.3922802: **293 m** apart (haversine, checked 2026-11-09). Next are Rams (329 m) and Lazy Right (485 m). |
+> | Decided by | Alon (operator), 2026-11-04 (`activity.jsonl`). It is a human choice, recorded here as the mapping hard constraint 1 asks for. As on Cheeky Monkey (Rams), it overrides schema v0.3's "the nearest other spot is never used". |
+> | How the page may name it | Only as Rosa's forecast for Lazy Left: "Surf at Lazy Left", "Lazy Left is the Rosa spot nearest the house.", "Forecast for Lazy Left by Rosa", and Giada's verbatim words. It is **never called the house's own break**. No "in front of" claim and no walking time appear (neither is sourced as a fact). No wave fact is content. |
+>
+> The rest of this file stands as written at 4d.
+
 **Scroll set-piece: no**, in all three. There is no usable own video, and no photograph is ≥ 1920 px (zero of the eight needed). This business does not qualify.
 
 **Embeds: none.** The map is a designed "Open in Google Maps" button to `contact.mapUrl`.

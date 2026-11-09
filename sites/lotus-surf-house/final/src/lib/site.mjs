@@ -44,6 +44,13 @@ export const svg = (name, cls = 'ic', sw = '1.8') =>
 const SEP = '<span class="sep" aria-hidden="true">|</span>'
 /* items already escaped → "<span>a</span> | <span>b</span>" (spaces around the bar so the line can wrap) */
 export const pipe = (items) => items.filter(Boolean).map((i) => `<span>${i}</span>`).join(` ${SEP} `)
+/* 2026-11-09 (verification 1: pipes dangled at line ends): a left-aligned " | " list that never ends or starts a line
+   on a bar. Each item draws its bar before it (CSS .pipes); the list is pulled left by one bar's width inside a
+   clipping box, so the bar of the first item on every line falls outside it. Items already escaped. */
+export const pipes = (items, tag = 'span') => {
+  const xs = items.filter(Boolean)
+  return xs.length ? `<span class="pipes-clip"><${tag} class="pipes">${xs.map((i) => `<${tag === 'ul' ? 'li' : 'span'}>${i}</${tag === 'ul' ? 'li' : 'span'}>`).join('')}</${tag}></span>` : ''
+}
 
 /* ---------- names, contact, booking ---------- */
 export const NAME = c.businessName
@@ -68,6 +75,20 @@ const range = (a, b) => (a ? (b ? `${a}–${b}` : a) : b ?? '')
 export const checkOut = st.checkOutFrom || st.checkOutTo ? t(L.checkout, { t: range(st.checkOutFrom, st.checkOutTo) }) : ''
 export const STAY_NOTE = st.note ?? ''
 export const AMENITIES = (c.amenities ?? []).map((a) => a.label + (a.note ? ` (${a.note})` : ''))
+/* 2026-11-09 (verification 1: the amenities read as a five-line spec sheet): the template groups them (schema:
+   "the template groups and orders them"). A note shared by two or more rows becomes a group of its own, named by
+   that note ("Additional charge: Airport shuttle, Bicycle rental, …"), instead of repeating it after each label;
+   a note on one row only stays beside its label. No row is dropped or reworded. */
+export const AMENITY_GROUPS = (() => {
+  const rows = c.amenities ?? [], count = {}
+  for (const a of rows) if (a.note) count[a.note] = (count[a.note] ?? 0) + 1
+  const plain = [], groups = new Map()
+  for (const a of rows) {
+    if (a.note && count[a.note] > 1) { if (!groups.has(a.note)) groups.set(a.note, []); groups.get(a.note).push(a.label) }
+    else plain.push(a.label + (a.note ? ` (${a.note})` : ''))
+  }
+  return { plain, groups: [...groups].map(([note, labels]) => ({ note: note.charAt(0).toUpperCase() + note.slice(1), labels })) }
+})()
 
 /* ---------- ratings and reviews ---------- */
 export const RATINGS = (c.ratings ?? []).filter((r) => r.score != null && r.count).map((r) => ({
