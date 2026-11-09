@@ -441,3 +441,170 @@ The prompt lets "tap targets at 44 px" be proved by box size, so a fix made by o
 - `interactive.tiles-and-dots.json`: the width sweep and the Dining dots.
 
 **What the screenshots showed** (scratch, not kept; contact sheets at 1440 and 390 in viewport steps for interactive, 390 for unique, plus single captures): no overflow or overlap on those sheets. Unique's desktop contact sheet was shot but not opened; its desktop layout rests on the probes and single captures. At 768 px "Studio Twin" sits on a white bed above the dark of the scrim. At 84% of the desktop pin, img-027 stands in the middle with the graded dusk building visible either side.
+
+# 4g / critiqued(1): full mode (station 5), round 1, 2026-11-09
+
+Build reviewed: `sites/the-sandhya/final/dist/`, the calm port, as of commit `d3ce216`. No file under `final/src`, `scripts`, `public` or `astro.config.mjs` is newer than `dist/index.html`, so it was not rebuilt. The site stayed unchanged through the review. It was served over http from a plain static server (`tools/_serve.mjs`) on port 8771, and every non-localhost request was stubbed or aborted. `tools/audit-mockup.mjs` was run from a scratch root whose `mockups/final/dist` links to the real `dist/`, so the designer's `final/audit.json` was not overwritten. The visual-critic and experience-critic reports from this round were not read.
+
+## Result
+
+```
+mode: full    round: 1    variant: calm (final)
+total: dimensions 1-7 = 69.4 / 80; out of 100 waits for dimension 8    result: passes the critic's gates    hard_fails: []
+```
+
+**Out of 100.** The total is (69.4 + 2.5 × d8) × 100 ÷ 105, where d8 is the lower of the two visual critics' scores. With d8 = 8 it is **85.1, a pass by 0.1**. With d8 = 9 it is 87.5, and with d8 = 10 it is 89.9. Below 8 the round fails anyway on the visual gate. So, on my dimensions: **PASS if both visual critics give 8 or more and neither says it loses to the current site; otherwise FAIL.** My dimensions alone leave almost no margin. The 0.1 point at d8 = 8 rests on dimension 6 (8) and dimension 2 (8).
+
+Gates I own, all met: no hard fail; every one of dimensions 1 to 7 at 6 or above (lowest 8); every playbook §4 budget line met (table below); `funnel.json` `clicks_to_book` 1 against target 1, and primary action class `engine` against `engine`.
+
+| # | dimension | score | evidence |
+|---|---|---|---|
+| 1 | facts | 9 | Facts table below: 0 mismatches, 0 unsourced claims. 44 photographs, all `business-owned`, none from the never-used list, 0 empty alts. Point off for the same open flags as 4f, which now reach more places: Kayak 9.4 is read through a digest and is printed **three** times (the new line under the rooms, Guests and the booking card); the Suite is "King bed" against the dossier's "Super King", now also in JSON-LD `containsPlace`; img-167's room is not stated; and the staff prints img-141 to 143 still await the owner |
+| 2 | mobile + performance | 8 | Every budget line met in 10 `audit-mockup` runs (table below): 601 KB first load, LCP 556 to 632 ms, CLS 0.0032, scroll CLS 0.0032 early and 0 settled. No horizontal scroll from 320 to 1920 px. Minus 2, **4f fix 3 not landed:** the measured LCP is still the `h1`. The hero photograph's bytes finish at 2,657 to 2,677 ms on the throttled phone and 3,220 to 3,237 ms on desktop, 3 runs each (`lcp.json`). They finish after img-077 (1.9 s), `logo-footer.png` (2.1 s) and img-043 (2.6 s), although the hero has `fetchpriority="high"` and a preload. The budget's LCP line does not see the picture, which paints after 2.5 s on a phone |
+| 3 | booking CTA | 9 | `tools/funnel.mjs`: `clicks_to_book` 1, primary `engine`, hero `engine` with 0 taps to flow, CTA above the fold. All 8 engine links and the tel and mailto links match the dossier character for character, tapped on a 390 phone (log below). The persistent action was in view and topmost at 31 of 31 scroll stops. With images and fonts never answered, the hero link was in the DOM and topmost at 37 ms. With JS off, all 8 links are present and the date fields are hidden. **The date fields work and are honest** (below). Point off: nobody has seen Cloudbeds honour `?rid=` or `#checkin=`, so "lands" means the URL handed over |
+| 4 | brand fit | 9 | Playbook §3 hierarchy present. 4f's "minus 1, date picker" is gone: the fields answer `custom.md`'s "pick dates", by Alon's gate-b ruling. The ratings now follow the rooms directly. Minus 1 still for order: Arrival comes before the rooms, so on a phone the first room button first comes into view after about two screens (the concept's order, kept on purpose by `notes.md`). Instagram is a button and not a feed: no deduction, as at 4f |
+| 5 | copy | 8 | 127 of 130 copy sentences are verbatim in the DOM, JS on and off (`probe.json` `text_js_*`). The 3 others are Rooms ¶3, shown as the "Every room has" icon list (`gaps.roomKit`). All its words are kept, but "Each one also has" and "too, with" are dropped and the list items begin lower case. **4f fix 4 not landed:** `copy/review.md` was last changed on 2026-11-06, so the copyeditor has still not seen this form. Every other visible string is a template label or a formatted value (`US$3,500`, `9.7/10`, `June 2026`). The h1 is the passed tagline without the business name. The rubric's copy dimension asks for plain, specific, sourced words, and the tagline is all three, so there is **no deduction**. Said plainly: the name appears in no sentence on the page, only in the logo's alt, the `<title>`, `og:site_name` and JSON-LD (SEO "Still wrong" 1, AI SEO R1). That is a human's call, not a rubric point |
+| 6 | accessibility | 8 | axe 4.13, phone: 0 violations. Desktop: 1 moderate, `region`, on `.stick-in > .logo` and `.stick-in > .right` (the sticky header sits outside any landmark; 4f's desktop finding, not fixed, since only the phone bar became a `nav`). Keyboard, desktop: 76 stops, every one with a focus style, in view after its scroll and not covered, no trap. The skip link moves to `#main`. 4f fixes 1 and 2 landed: dots are 44×44, and the details row scrolls into view on focus. The date inputs are labelled ("Check-in", "Check-out"), the label is a 158×67 target that focuses the input, and the `.field:focus-within` outline shows. Reduced motion: 0 running animations and no parallax transform. **Minus 2:** (a) on a phone with a keyboard, the four room buttons take focus **wholly behind the sticky bar** (0 of 52 px visible), and the Kayak line under the rooms shows 13 of 86 px (`probe2.json`, confirmed by a third pass). There is no `scroll-padding-bottom` for the bar. (b) the desktop `region` above |
+| 7 | delivery | 10 | Static output only: `index.html`, `llms.txt`, `robots.txt`, `photos/`, `img/`, `fonts/`, 81 files, all lowercase, relative URLs, no `/`-rooted path. Full scroll at 390 and 1440: 48 requests each, **0 external**, 0 failed, 0 broken images, 0 console errors. Both families are self-hosted (Sacramento inline): 4f's "fonts must be self-hosted at 4g" landed. No CMS call. No key, token, password, localhost or old-host string in the page, `llms.txt` or `robots.txt`. A preview is `noindex, nofollow` with `Disallow: /` |
+
+Weighted: 18 + 12 + 13.5 + 4.5 + 8 + 6.4 + 7 = **69.4 / 80**.
+
+## Decisions taken by the operator, not scored as defects
+
+Beachfront boutique hotel, not a surf stay. No nightly room price. Two testimonials, shown whole. No usable video, so the video hard fail does not apply. The first screen carries img-071 at 2000 px. The date fields are Alon's gate-b ruling, and I judged only whether they work and are honest. The h1 is the passed tagline without the name, scored as the rubric says (dimension 5 above).
+
+## The date fields: do they work, are they honest
+
+Tested on a 390 phone, external pages stubbed (`probe.json` `dates`, `probe2.json`).
+
+| Case | Links | Line under the fields |
+|---|---|---|
+| Page loaded, nothing chosen | 8 plain dossier hrefs | none |
+| Check-in chosen | check-out fills with the next day; all 8 get `#checkin=…&checkout=…` | none |
+| Both chosen | all 8 rewritten, rooms as `?rid=53570#checkin=2026-12-09&checkout=2026-12-12` | none |
+| Check-out before check-in, same day, check-in in the past | all plain again | "Choose both dates, or clear both." |
+| One cleared | all plain | the same line |
+| Both cleared | all plain | none |
+| JS off | the fields are `hidden`, 8 plain links | n/a |
+
+- **The dates reach the address bar.** After tapping the booking card's link, and separately the phone bar's link, the navigated URL was `https://hotels.cloudbeds.com/reservation/WMvA6V#checkin=2026-12-09&checkout=2026-12-11`. The fragment is not part of the HTTP request, so whether Cloudbeds reads it is still unknown, as the brief says. No adults parameter is sent anywhere.
+- **Honest:** no date is pre-filled. No availability, price or "your dates" claim appears. The button keeps its plain label, "Check rooms and live dates". An invalid pair is never sent: the links fall back to the plain href and the page says so. `min` is the visitor's local date. A visitor at UTC-10 can pick a check-in that is already yesterday in Sri Lanka (Honolulu `min` 2026-11-09 while Colombo's is 2026-11-10 at the time of the test). The engine decides then. Not a defect.
+- **Note for the go-live check.** After back-navigation the fields came back empty and the links plain, so a returning visitor sees no stale dates. Real-browser bfcache behaviour was not tested. The fields sit only in the booking card near the end. The hero, header, room and bar links carry the dates only after a visitor has chosen them there.
+
+## Facts table
+
+`copy/en.json` and `dossier.json` are unchanged since 4f round 1, so the 4f table (above) stands for every claim the page shares with the mockup. It was re-run by script on the built page. Below are only the rows that are new or that moved at 4g.
+
+| Claim on the page | Dossier key | Result |
+|---|---|---|
+| All copy sentences | `copy/en.json` (passed 4c) → `copy/sources.md` | 127 of 130 verbatim. The other 3 are the Rooms ¶3 list (words kept) |
+| Rating line after the rooms: "9.7/10 \| Trip.com \| 56 reviews \| read 2026-11-06", "9.4/10 \| Kayak \| 159 reviews \| read 2026-11-06" | `reviews.trip`, `reviews.kayak` | match. Kayak **flag** as at 4f (`via_digest`) |
+| 8 engine links (hero, header, 4 rooms, booking card, bar) | `booking.engine_url`, `.engine_room_links` | match, exact. `audit-mockup` `tapped` = engine URL |
+| `tel:+94765700007`, printed "+94 765 700 007"; `mailto:reservations@thesandhya.com` | `contact.phone`, `.email` | match |
+| Address "Baranige Wattha Walhengoda, Ahangama 80650, Sri Lanka" | `location.address` | match, exact |
+| Map, Instagram links | `location.map_url`, `contact.socials.instagram` | match, exact |
+| `<title>` "The Sandhya, Ahangama"; description = tagline + breakfast sentence | `business.name`, copy | match |
+| JSON-LD `Hotel`: telephone, email, PostalAddress, geo 5.9769788, 80.3525613, `hasMap`, check-in 14:00, check-out 12:00, 29 amenities, 4 `HotelRoom`, `knowsLanguage` en, `sameAs` 3 | `contact`, `location`, `stayInfo`, `facilities`, `room_types`, `languagesSpoken` (Trip.com), `reviews.*.source_url` | match. **Flags:** the Suite's "King bed", as above. `checkinTime` 14:00 stands without the contradiction note the page prints (Trip.com says after 16:00, `contradictions.check_in`). `knowsLanguage` rests on Trip.com alone (`gaps[] business.languagesSpoken`). No rating, price or FAQ markup |
+| `llms.txt` | copy | not re-checked line by line. AI SEO checked 156 fragments against the JS-off page. I checked its preview line and its absence of ratings |
+| `audit-mockup` `facts` | | the only number not in the copy is "3,500", the copy's 3500 formatted |
+
+## Budget, mobile home page
+
+`tools/audit-mockup.mjs`, 10 runs on this machine (`critic-evidence/the-sandhya-4g-r1/audit-01..10.json`).
+
+| Item | Target | Measured |
+|---|---|---|
+| First-load transfer | ≤ 1.5 MB | 615,542 B (601 KB), 9 requests, every run |
+| Hero video | ≤ 2 MB / 4 MB | none exists |
+| JS, compressed | ≤ 300 KB | 0 as files; the inline script is 93 source lines, within the 44 KB gzipped HTML |
+| Largest image | ≤ 300 KB | 175,632 B (the desktop hero; on the phone 96 KB) |
+| Fonts | ≤ 2 families, ≤ 150 KB | 2 families: 46,752 B file + Sacramento inline (about 23 KB) |
+| LCP | ≤ 2.5 s | 556 to 632 ms in 10 runs (the `h1`; the hero photograph's bytes end at about 2.66 s, see dimension 2) |
+| CLS | < 0.1 | 0.0032 every run |
+| Scroll CLS early / settled | < 0.01 | 0.0032 / 0 in 10 of 10 runs |
+| Third-party requests on load | 0 | 0 |
+| Tap targets under 44 px (`audit-mockup`) | | 0 of 50 |
+
+The early 0.0032 is a 1 px text shift at the font swap at y 61, about 1.63 s in. The intermittent 0.22 to 0.42 shift that SEO caught before `d3ce216` (about 1 run in 5) did not appear in any of 10 runs. The designer's 12 clean runs bring it to 22 of 22. Its cause, the phone Dining masonry collapsing, has a stated fix in `notes.md`.
+
+## Tap-through log, phone 390×844
+
+External pages stubbed. **Cloudbeds was never loaded.**
+
+| Action | Box | Lands |
+|---|---|---|
+| Hero "Check rooms and live dates" | 358×56, bottom at 824 of 844 | `…/reservation/WMvA6V` |
+| Header copy of it | not shown on a phone (desktop only) | same href |
+| Studio King / Studio Twin / Studio+ King / Director's Suite | 350×52 each | `?rid=53570` / `53586` / `53587` / `53603` |
+| Exclusive Use Call, Email | 103×50, 114×50 | `tel:+94765700007`, `mailto:reservations@thesandhya.com` |
+| Booking card button | 326×64 | engine; with dates, the URL with the fragment |
+| Booking card and footer Call, Email | 103×50, 114×50 | as above |
+| Bar button, bar call | 302×54, 54×54 | engine, `tel:+94765700007` |
+
+## Against the current site (thesandhya.com)
+
+The visual verdict belongs to the two visual critics. On measured lines the build beats the current site on every row:
+
+| | Current site (`old-site.json`, dossier audit) | Final |
+|---|---|---|
+| First load, phone | 17.5 MB, LCP 4.2 s | 601 KB, LCP 0.6 s (the `h1`); hero photograph at about 2.7 s |
+| Hosts on load | 13 hosts, including Facebook, Google Ads, DoubleClick and Analytics | 1 (localhost) |
+| Booking action | RESERVE, 70×30 px, a script control that answers about 52 s after opening on slow 4G | a real link, 358×56, topmost at 37 ms with media stalled |
+| Dates passed to the engine | empty unless picked in 5 or 6 taps (F2) | only if chosen, both or neither, never shown and unsent |
+| Room passed to the engine | no (F8) | `?rid=` per room (unverified) |
+| What and where on the first screen | a dictionary entry and "Adults Only Hideaway" | in the h1 |
+| Ratings, check-in times, breakfast, map link | none on any of 10 pages | all present |
+
+## 4f fixes for calm: did they land
+
+| 4f item | Status |
+|---|---|
+| 1. Details row into view on focus | **landed** (`site.js`, verified: in view at every stop) |
+| 2. Dots 44 px | **landed** (44×44) |
+| 3. Hero bytes priority, re-measure | **not landed**: the preload and `fetchpriority` are there, but the bytes still finish at about 2.66 s on a phone, behind lazy room photographs and an eager footer logo |
+| 4. Copyeditor to see the Rooms ¶3 list | **not landed** (`review.md` unchanged since 2026-11-06) |
+| 4g: self-hosted fonts | **landed** |
+| 4g: `og:image` absolute; canonical, JSON-LD | **landed** with `SITE_URL` (4h). The preview build carries no `og:image`, since it has no absolute URL |
+| axe `region` on `#bar` (phone) | **landed** (`nav`). The desktop `region` on the sticky header remains |
+
+## `tools/check-design.mjs`, facts for the human
+
+0 problems, 0 warnings. h1 and body in Schibsted Grotesk, h2 in Sacramento. Ground `rgb(242,242,242)`, hsl(0 0% 95%). 0 all-caps labels, 0 of 15 labelled headings.
+
+## What the designer prompt got wrong
+
+The prompt accepts `audit-mockup`'s `lcp_ms` as proof of a fast first screen. On a page whose LCP entry is the h1, that number says nothing about the photograph the concept calls "the one thing". The calm designer was told at 4f that the hero's bytes finish after 2.5 s. They added a preload and `fetchpriority` and reported LCP 740 ms, but did not re-measure the photograph, which is still at about 2.66 s. The prompt should require, for every first screen with a hero image, the hero resource's `responseEnd` on the throttled phone, and ask for lazy images within the first two screens and non-critical eager images (the footer logo) to be held back until it lands. Second, the prompt's keyboard check runs at 1440 only (`notes.md`: "Keyboard, 1440"). A sticky bottom bar exists only on a phone, so focus hidden under it cannot show up there. The keyboard pass should also run at 390, with a check that each focused element is not covered (`elementFromPoint`). Third, a copy form the copyeditor has not seen (a sentence turned into a list) was carried from 4e to 4g as a known item without being sent back to 4c. The prompt should make it a hand-off, not a note.
+
+## Fix list, smallest first (no critic gate fails; for the next pass or before go-live)
+
+1. **Dimension 6:** on phones, `scroll-padding-bottom` at least equal to the bar's height (about 76 px with the safe area), so that a focused room button is not hidden behind the bar. Retest by Tab at 390 with an `elementFromPoint` check.
+2. **Dimension 6:** put the desktop sticky header (`.stick > .stick-in`) inside a landmark, for example `<header>` or a `nav` wrapper, to clear axe `region`.
+3. **Dimension 2:** let the hero win the bandwidth. Give `logo-footer.png` `loading="lazy"`, and keep the first room's photographs from competing (for example `fetchpriority="low"` on the room images, or wake them by observer as the other slides are). Then report the hero's `responseEnd` on the throttled phone, with a target under 2.5 s.
+4. **Dimension 5:** send the "Every room has" list to the copyeditor (4c) as a form of Rooms ¶3.
+5. **Dimension 1, before go-live (a person):** read Kayak's 9.4 from 159 on Kayak itself, or drop that line from all three places and from `sameAs`. Settle the Suite's bed with the owner. Confirm img-167's room and the staff prints.
+6. **Dimension 3, before go-live (a person, already in `notes.md`):** in a real browser, open the base link with `#checkin=…&checkout=…` and each `?rid=` link with and without it. If Cloudbeds ignores the fragment, remove the fields.
+7. **For a human, not a rubric point:** the name in the h1 or in one sentence (SEO "Still wrong" 1, AI SEO R1), through 4c.
+
+## Not covered
+
+- **Dimension 8 and the visual verdict against the current site:** the visual-critic's and experience-critic's, not read. The total out of 100 waits for them.
+- **The Cloudbeds engine.** Never loaded. Whether it reads `#checkin=`/`#checkout=` or `?rid=` is unknown, and so are its own steps. The adults count is never sent.
+- **Real devices.** All of this ran in headless Chromium with emulated throttling, on a machine other sessions were using. I tested no real phone, Safari, iOS date picker or Android picker. Tapping the label focuses the input in Chromium, but whether it opens the native picker on a phone was not seen. bfcache on a real back-navigation was not seen either.
+- **Contrast** beyond axe: axe left `color-contrast` incomplete on 5 phone nodes and 7 desktop nodes, and I did no pixel sampling this round. The h1 on the bed and the feature line were sampled at 4f, on the same photograph and crops.
+- **`llms.txt` and the JSON-LD with `SITE_URL`:** I read the preview build only. The workers.dev and real-domain builds rest on the SEO and AI SEO reports.
+- **WhatsApp or other link previews:** the preview build has no `og:image` without `SITE_URL`, and no preview was tested.
+- **Facts:** not rebuilt row by row from the dossier for rows unchanged since 4f. Copy, links and image ids were re-run by script against the built page.
+- **The phone hero's sharpness** (616 px source shown at 924): a visual question.
+
+## Evidence
+
+`reports/2026-11-ahangama-01/critic-evidence/the-sandhya-4g-r1/`:
+
+- `audit-01.json` … `audit-10.json`: `tools/audit-mockup.mjs`, 10 runs, from a scratch root.
+- `probe.json`: text against the copy with JS on and off, links, phone tap-through, persistent action, date-field cases, overflow at 9 widths, axe for phone and desktop, a first keyboard pass, reduced motion, an offline full visit at both widths, small targets. Its `kbd_*` "not in view" lists are a fault in that first test: it waited 60 ms under `scroll-behavior: smooth`. `probe2.json` reran it with 900 ms.
+- `probe2.json`: the keyboard reruns with a covered-element check, the field box, label tap, navigated URLs with dates, back-navigation, time zones, and the stalled-media CTA.
+- `lcp.json`: LCP entries and resource end times, phone and desktop, 3 runs each.
+
+`reports/2026-11-ahangama-01/funnel/the-sandhya-r1/funnel.json`: `tools/funnel.mjs --depth 3`. Its two screenshots were deleted.
+
+**What the screenshots showed** (`tools/shoot.mjs` over http, scratch, not kept; 20 desktop and 23 phone captures in viewport steps). The first screen is img-071 with the h1 on the bed and the red button under it, on both widths. The phone bar is present from the second capture to the last. There is no overflow or overlap on either contact sheet. The date fields read "dd/mm/yyyy" in full at 390 and sit side by side. The rating line under the amenities is small grey text at both widths. A first shoot over `file://` blocked the text font (CORS), which is a property of `file://`, not a page fault. It was discarded and reshot over http.

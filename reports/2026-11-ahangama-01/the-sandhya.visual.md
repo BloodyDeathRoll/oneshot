@@ -269,3 +269,106 @@ Calm was not re-scored; its mark is from round 1.
 - **Motion in time.** Software GL throughout, and every depth and sweep finding is from stopped frames. Interactive's depth was only seen with `?noguard`, so I did not see its guard behave on real hardware, nor feel its damping or the phone's scroll-driven depth. The speed and feel of unique's scrub, and the print's rise, are unseen. Safari, iOS and real devices were not opened.
 - **Not rechecked this round:** reduced motion and JavaScript off on both pages, hover states, unique's panel expansion on phone, interactive's desktop sheet. The taste inspector was not re-run and gold pages were not reopened (round 1's viewing stands). The current site was not re-shot.
 - **Not my lane:** facts, performance, booking links and keyboard use.
+
+
+---
+
+# 4g round 1: the final site (calm, "The Artwork"), station 5
+
+visual-critic 0.2.0 · 2026-11-09 · build d3ce216 (`sites/the-sandhya/final/dist/`) · full mode
+
+| Page | Score | Result | Better than the current site? | Matches the picked mockup? |
+|---|---|---|---|---|
+| final (calm) | **8/10** | **pass** | yes, first screen and whole page | yes; every visible difference was asked for |
+
+**How this was looked at.** `final/dist/` was served over http on 8772 and the calm mockup (`mockups/calm/dist/`) on 8773. Both were shot fresh with `tools/shoot.mjs` at 1440 and 390 (2x). The shared set in `final/shots/` was dated 14:51Z, before the d3ce216 Dining fix, so I did not reuse it. Everything went into my own subfolder, `final/shots/vc-r1/` (`final/` and `mockup/` are the shoot sets; `sec/` holds aligned section captures; `states/` holds my walks), so the shared set was not cleared. The section captures scroll each page to the same element (`.arrival`, `#rooms`, `.kit`, … `#book`) in both builds, so final and mockup can be compared frame by frame. I measured the share of changed pixels in each pair and looked at every pair that differed. The current site was judged from the dossier captures (`old-site-first-screen-desktop.png`, `-mobile.png`, `old-site-desktop.png`), not re-shot. Headless Chromium, software GL. I did not read the other reviewers' 4g reports.
+
+## Port fidelity: final against the picked mockup
+
+- **First screen: identical at 1440.** `sec/f-d-00-hero.png` against `sec/m-d-00-hero.png`: 0.00% of pixels changed (mean 0.05/765). At 390, `f-m-00-hero` against `m-m-00-hero` shows 6.4% changed at very low amplitude. It is the same crop, type and button. The bed reads a touch flatter in the final, which looks like the settle caught at a different instant. I see nothing different by eye.
+- **Type matches.** The final renders h1, body and buttons in Schibsted Grotesk, and h2 in Sacramento. The mockup uses the same families. The final has one variable Schibsted file (400 to 900) where the mockup has static 400/500/600 cuts, and Sacramento is inlined. The script titles are the same glyphs at the same sizes ("Pause, take a deep breath & exhale. You are home." on one line at 1440 and two at 390, in `f-d-01-arrival-0` / `f-m-01-arrival-0` against the mockup's). There is no fallback face anywhere in my frames.
+- **Rooms, feature (desktop), Dining (desktop), house, Casual Luxe, service, Kabalana, Guests, twilight (desktop) and the footer** are unchanged apart from position shifts (0 to 6% changed per pair, all of it offset).
+- **The differences I found are all on the designer's asked-for list:**
+  - arrival set in one size on the page's left line (`f-d-01-arrival-0`);
+  - Amenities closed at 1440 (`f-d-03-kit-0`, "+ Amenities");
+  - a compact rating line after the rooms (`f-d-03-kit-0`, two grey lines with arrows);
+  - Exclusive Use at 16:9 (`f-d-10-exclusive-0`);
+  - on the phone, the dishes moved up into Dining (`f-m-05-dining-0/1`);
+  - on the phone, the feature line in the text face (`f-m-04-feature-block-0` against the mockup's four lines of dark script on the ground, `m-m-04-feature-block-0`);
+  - on the phone, the blue-hour print full width with the sunset overlapping (`f-m-11-twilight-0/1`);
+  - the date fields (below).
+- **No regressions found.**
+- **One problem inherited, not introduced.** At 768 px the photograph's two ceiling downlights sit right against "Dining" and "Kabalana" in the hero nav and read like stray icons (`states/t-final-nav.png`; the mockup does the same in `t-mockup-nav.png`). This width was not looked at in 4f.
+
+## Did my 4f fixes land?
+
+| 4f fix | Status | Evidence |
+|---|---|---|
+| 1. Phone first screen: re-cut from the 8080 px original; less grey bed | **Not done.** Needs the original (designer's conflict 3) | `states/m-hero-palm.png`: the palm at 2x, fronds smeared with slight ringing; `f-m-00-hero`: the lower third is still flat grey bed |
+| 2. Break the rooms pattern (Director's Suite full-bleed); collapse Amenities on desktop | **Half.** Amenities is collapsed at every width, which helps the middle a lot. The four rooms still alternate the same way | `f-d-03-kit-0`; final `desktop-sheet.png` row 2 |
+| 3. Make the ending the crescendo, without the white card | **Not done.** Declined as a redesign. The card now also carries the ratings and dates, so it is more of a form than before | `f-d-12-book-0` |
+| 4. FeatureLine legibility | **Phone done, desktop not.** Phone: a clean three-line sans statement. Desktop: still five lines of white script on the beige wall, readable but the faintest type on the page | `f-m-04-feature-block-0`; `f-d-04-feature-block-0` |
+| 5. Tidy arrival; Exclusive Use 16:9 | **Done.** The text starts level with the doors photo, on the page's left line. Exclusive Use is a proper 16:9 picture, no longer a strip | `f-d-01-arrival-0`, `f-d-10-exclusive-0` |
+
+On fix 5, the designer took "one size" literally and also dropped the large ¶2. Arrival is now four even paragraphs that end about 450 px above the bottom of the tall doors photograph, which leaves an empty block lower left (`f-d-01-arrival-0` / `-1`). It is tidier than the 4f accident, and plainer than it needs to be.
+
+## The date fields (Alon, gate b)
+
+- **They sit well in the calm look.** At 1440 (`f-d-12-book-0`) they are two soft grey rounded fields on the white card. Each has a small "Check-in" or "Check-out" label inside its top edge, in the floating-label manner the calibration asks for. They use the same grey and corner radius as the Call and Email chips below and add no colour. The crimson button stays the only loud thing.
+- **At 390 they hold the button's width** and read "dd/mm/yyyy" in full (`f-m-12-book-0`).
+- **Filled state** (`states/d-filled.png`): a check-in fills check-out with the next day, and the dates read clearly. **Focus** is a 2 px dark ring, a little heavy against the soft fields, but right for keyboard users.
+- **Error state** (`states/m-one-date.png`): "Choose both dates, or clear both." appears as one quiet grey line between the fields and the button. That is in tone, and it pushes the button down by about one line.
+- **Two small points.**
+  - At 1440 the field pair (about 440 px) is wider than the button under it (about 362 px), so the stack has a ragged edge. Matching them would look intended.
+  - The empty placeholder and calendar glyph are Chromium's. iOS Safari draws an empty date input differently, often with no placeholder and a different height. That was not seen.
+
+## The current site, side by side
+
+- **First screen.** `sec/f-d-00-hero.png` against `old-site-first-screen-desktop.png`: a sharp room opening on the sea, with "adults-only beachfront boutique hotel on Kabalana Beach" and one crimson action. The old page has a soft, moody figure at a window, a dictionary entry and a thin RESERVE box. The old one has mood; the new one has mood, clarity and an offer. On the phone, `f-m-00-hero` against `old-site-first-screen-mobile.png`, same verdict, even with the soft fronds.
+- **Whole page.** Final `desktop-sheet.png` against `old-site-desktop.png`: the old page is restrained and tasteful, with small grey justified text, loose prints, a dark footer, and no room sold. The final sells four rooms with galleries, Dining with the food big, staff, Kabalana with its map, guests with sourced numbers, Exclusive Use with its price, the twilight prints and a real booking card. It keeps the old page's best ideas (script titles, the twilight explanation, the drawn map as a print) and loses a little of its airiness.
+
+## Checklist (final site)
+
+- **Three-second note.** Desktop: calm and expensive, and immediately a hotel. The eye goes window, palm, words on the bed, red button, and I keep scrolling. Phone: the view still lands, the soft palm is noticeable if you look for it, and the lower third is grey slab.
+- **Media.** The hotel's best square-on photograph leads, full-bleed (`f-d-00-hero`). Rooms carry five-slide galleries. Food is big. img-032 runs full-bleed. Exclusive Use is now a real picture, though img-039's own retouching shows: the palms and clouds look painterly at 1328 px (`f-d-10-exclusive-0`). That is the source, not the build. The phone hero is the weak asset: a 616 px cut shown at 924, with soft fronds at 2x (`states/m-hero-palm.png`).
+- **Composition.** First screen exactly held. Arrival tidy, with the lower-left void noted above. The rooms are the same alternating 8+4 stacks (row 2 of the desktop sheet), well made and predictable. Collapsing Amenities removed the aggregator wall that 4f flagged (`f-d-03-kit-0`).
+- **Typography.** Sacramento with Schibsted Grotesk, unchanged and still the right pair. The phone feature line in the text face reads better than the mockup's script but loses the voice. The desktop feature line keeps the script, so the same line now speaks in two faces at two widths. 16 font sizes (inspector `size-count`) is acceptable for a long page.
+- **Colour.** The crimson from the lamp is unmistakable, white on it, and darkens on hover (`states/d-hero-hover.png`). Sea-green for Kabalana, marble for guests. The `#F2F2F2` ground is still flat over 18 screens.
+- **Hierarchy and rhythm.** Better than at 4f in the middle, because Amenities no longer stands open. The rating line after the rooms is quiet grey text: it informs, but it is not a proof moment. The big numerals in Guests are the proof (`final/desktop-sheet.png`, row 5). On the phone, near the end, the card's crimson button and the bar's crimson button are on screen together, stacked (`f-m-12-book-0`).
+- **Polish.** Clean at 1440 and 390. Slideshow dots, Call, Email, Map and Instagram as buttons, and a real footer (`f-m-12-book-1`). The tablet nav and downlights collision is above. The inspector's `covered-text` for "Studio Twin" at 390 is the bottom bar at one scroll stop. "Studio Twin" is readable in my phone frame 4 (`final/mobile-04.png`), so it is transient.
+- **Distinctiveness.** The first screen and the twilight pair are this hotel and no other. Rooms, Exclusive Use and the booking card could belong to a good template.
+- **Hero and motion.** Calm has no canvas, by concept. The slow settle and parallax were not judged in time. The stills show no harm.
+
+**Inspector** (taste skill, on 8772): 6 FAIL, 7 WARN.
+- Agreed: desktop feature line at five lines (`headline-lines`); the tablet `lopsided` feature line.
+- Set aside: `eyebrow` (it flags the last Amenities item, not a kicker); `shadow` (the prints' soft shadow is the matted-print idea from 4e); `hero-words` and `small-title` (the agreed tagline at the calibrated size); `no-footage` (operator decision); `side-scroll` (the Casual Luxe details row, a deliberate swipe).
+- Not confirmed: `covered-text`, as above.
+
+**Score: 8/10, pass.** This is the mockup I passed at 4f, ported faithfully, with my fixes 2 (half) and 5 and the phone half of fix 4 landed. The middle is better and nothing got worse. The date fields belong to the page. It is not a 9 for the same reasons as at 4f: a soft phone hero with a grey lower third, a predictable rooms run, and an ending that is a white form card rather than the twilight. It is now a firmer 8 than at 4f, not a higher one.
+
+**Better than the current site?** **Yes.** First screen: `sec/f-d-00-hero.png` against `old-site-first-screen-desktop.png`, and `sec/f-m-00-hero.png` against `old-site-first-screen-mobile.png`. Whole page: `vc-r1/final/desktop-sheet.png` against `old-site-desktop.png`.
+
+**Closest reference.** As at 4f: Lavish Haven in finish, with stronger media and no idea as strong as Lavish's pool window. Above Morgan's Rock (references #3), whose docked booking it shares.
+
+## Fix list (none blocking; biggest effect first)
+
+1. **Phone hero source.** Get the 8080 px original of img-071 (from the owner, or by solving the 406 on the fetch) and re-cut it by a committed recipe at 1300 px or more for the 390 crop. Shift the crop so the grey bed takes under 20% of the screen. This is the one thing a phone visitor sees first, and the only soft image above the fold.
+2. **End on the twilight, not on a form.** Keep the card's content, dates included, but take away the repeated tagline and the second rating block (both already appear on the page). Lift the card onto the twilight section beside the prints, or give the section a full-width img-027 behind a narrower card. On the phone, hide the bottom bar while `#book` is in view, so two crimson buttons are never stacked.
+3. **Desktop feature line.** Set it in three lines at most: either a shorter measure across the wall at a smaller script size, or the phone's text-face treatment in white over a soft local scrim. Pick one voice for both widths.
+4. **Arrival.** Bring back a lead, ¶2 set at about 22 px above the other three as a pulled line (not inline as at 4e), or bottom-align the text with the doors photograph, so the lower-left empty block goes.
+5. **Small polish.**
+   - At 768, move the nav down or inward by about 12 px, or add a light top scrim, so "Dining" and "Kabalana" do not touch the photographed downlights (`states/t-final-nav.png`).
+   - Make the date-field pair the same width as the button under it at desktop.
+   - Check the date fields' empty state on iOS Safari.
+
+**Keep.** The first screen exactly as it is. Sacramento with Schibsted Grotesk. The crimson. Rooms with galleries and dots. Amenities collapsed. The rating line after the rooms (quiet is right there). Dishes after Dining ¶1–¶2 on the phone. The phone feature line in the text face. Exclusive Use at 16:9. The matted staff prints. Kabalana in sea-green with the drawn map as a print. The phone twilight with the blue-hour print full width. The date fields' look: soft fields, inner labels, no new colour. The footer and the phone bar with its round call button.
+
+## What was not covered (4g round 1)
+
+- **Motion in time:** the hero settle, parallax, slideshow transitions. Stills only. The motion audit skills and `/impeccable critique` were not run.
+- **Real devices:** iOS Safari's native date input, a 3x phone screen for the hero, and real GPU rendering. Headless Chromium on software GL only.
+- **The engine:** I did not open Cloudbeds or see whether it honours the date fragment or `?rid=`. That is not my lane, and the designer says it is unverified.
+- **Not rechecked:** reduced motion and JS-off rendering, keyboard focus beyond the date field's ring, hover beyond the hero button.
+- **The current site** was not re-shot live; I used the dossier captures. Gold pages were not reopened, so round 1's viewing stands.
+- **Housekeeping:** the inspector wrote its renders to `.taste-skill/inspect/` at the worktree root (git-ignored). My shots are in `sites/the-sandhya/final/shots/vc-r1/` (git-ignored), left for the operator; `tools/clean-shots.mjs` removes them with the round.
+- **Not my lane:** facts, performance numbers, booking links. The other reviewers' 4g reports were not opened.

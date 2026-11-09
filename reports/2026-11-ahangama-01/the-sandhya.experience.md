@@ -335,3 +335,182 @@ The long tap timings from round 1 did not recur. These numbers are headless and 
 - **Micro-animations:** counted as code present at 1440, not judged for feel. Interactive's footer logo and unique's logo links have no transition.
 - **Tools not run:** the taste inspector, `/impeccable`, `/emil-design-eng`, `/design-motion-principles`, `/review-animations`.
 - **Facts, copy and accessibility** are the critic's and were not audited.
+
+---
+
+# 4g round 1: the built site (calm, `sites/the-sandhya/final/dist`)
+
+experience-critic 0.2.0 · station 5, full mode, round 1 · 2026-11-09 · built at commit `d3ce216` · served from `final/dist/` on port 8775, because 8773 was already held by another process serving `mockups/calm/dist`, which I left alone. Written without reading the critic's or the visual critic's 4g reports.
+
+Logs: `reports/2026-11-ahangama-01/experience/the-sandhya/final-r1/*.json`. Frames: `sites/the-sandhya/final/shots/ec-r1/` (gitignored scratch). Below, a frame name refers to that folder and a `.json` name to the log folder.
+
+## Result
+
+| | |
+|---|---|
+| Score | **8 / 10**, as at 4f, still with no margin |
+| Result | pass on this dimension |
+| Better than the current site? | **yes** |
+| Taps to the engine, no dates | 1 from the first screen, 1 from any room, 1 from the bar |
+| Taps to the engine with dates | 3 to 5, and only after scrolling about 19 phone screens to the closing card (details below) |
+
+Rubric dimension 8 is the lower of my score and the visual critic's, and I have not seen theirs.
+
+## Did my 4f fixes land?
+
+| 4f fix | State in the build | Evidence |
+|---|---|---|
+| 1. Break up the phone prose | **Half done.** On the phone the dishes now follow Dining ¶2. Kabalana is unchanged and still has a full phone screen of text on the tint. | `phone-walk-09`, `-10`; `phone-walk-16` (`phone-sheet-3`, third frame) |
+| 2. Set the feature line in the text face | **Phone only.** On the phone it is 24 px Schibsted Grotesk, 123 px tall, and reads well. At 1440 it is still Sacramento at 42.5 px across 5 lines, and the inspector flags it (`headline-lines`, `lopsided`). | `walk.json` `pos.feature`, `laptop.json` `pos.feature`, `laptop-walk-08` |
+| 3. Show a compact rating line after the rooms | **Done.** It sits at 5,977 px on the phone, against 12,377 px at 4f. It is set as small grey text, so it reads as fine print rather than as proof. | `walk.json` `.rooms-proof`, `phone-walk-07` |
+| 4. Give the ending more weight | **Partly done.** The blue-hour print is larger and the sunset overlaps it. There is no dusk tint, and the page still ends on the white card that repeats the tagline. | `phone-walk-21`, `-22` |
+| 5. Re-frame the phone hero | **Not done** (it needs the 8080 px original). The lower third is still grey, not a bed. | `phone-walk-00`, `phone-cold-fallback-sheet` |
+
+I also checked the keyboard and phone fixes:
+- The bar is `<nav aria-label="Book or call">`.
+- The dots measure 44 × 44.
+- Amenities are closed at both 390 and 1440 (`walk.json`, `laptop.json` `pos`).
+
+## Timeline, phone (390 × 844, 2x, touch, 1.6 Mbps, 150 ms RTT, 4x CPU)
+
+Two cold runs (`cold.json`, `phone-cold1-*`, `phone-cold2-*`):
+- **The 0.5 s frame was captured at about 1.8 s.** The screenshot call blocked during the throttled load, so I have no true 0.5 s frame. At that point the h1 and the button were on screen and only the top of the photograph had painted (`phone-cold-fallback-sheet`, first panel).
+- **3 s:** the photograph was complete.
+- **Measured:** the hero link was visible at 544 ms. A finger tap at 1,008 ms reached the engine. The page moved 618 KB in 8 requests, all to one host, with CLS 0.0032. Headless LCP was 564 ms on a local server, which says little about a real phone.
+
+## The walk, phone
+
+The page is 17,032 px tall, 20.2 screens (`walk.json`, 26 frames, `phone-sheet-1` to `-4`). In the order a visitor meets it:
+- **First screen:** unchanged, and still the best moment on the page: the window, the palm and the sea, with nothing laid over the view.
+- **Rooms:** start at 2,141 px, with galleries and a button each.
+- **Proof:** the new rating line comes after the amenities.
+- **Middle:** the feature photograph, then Dining (now photographs early), Casual Luxe, Kabalana (still text-heavy), Guests, Exclusive Use, Why Sandhya, and the closing card with the new fields.
+- **Booking always in reach:** every one of the 26 frames had a tappable engine link on top (`walk.json` `noEngineFrames: []`).
+- **Two or three identical crimson buttons at once in two places:**
+  - In the rooms: two room buttons plus the bar, at 3,375 and 4,050 px.
+  - At the closing card: the card's button plus the bar (`multiEngineFrames`; `phone-walk-22`).
+
+## The date fields: does the journey now feel part of the site?
+
+**Where they are, they are well made** (`phone-book-card-dates.png`, `laptop-focus-checkin.jpg`):
+- They are soft rounded fields in the card's colours, with the label inside the field, 16 px type and 67 px tall on the phone.
+- They have a visible focus ring, and they read as part of the card rather than as a bolted-on form.
+
+**What I verified** (headless, engine intercepted):
+- **Both dates set:** all 8 engine links are rewritten (`book.json` `afterBoth`). Tapping the card button, the bar and the Director's Suite button landed on `…/WMvA6V#checkin=2026-12-09&checkout=2026-12-12` and `…?rid=53603#checkin=…&checkout=…` (`book.json`, `book2.json`, `book3.json`).
+- **Check-in only:** check-out fills itself with the next night, so a visitor rarely sees the half state (`afterCheckinOnly`).
+- **Check-out cleared:** the line "Choose both dates, or clear both." appears and every link goes back to plain (`book3.json` `clearedOut`, `phone-book-card-half.png`). Past dates and a same-day pair are refused the same way (`book.json`).
+- **JS off:** the fields are hidden, the 8 links are plain, and a tap reaches the engine (`fallback.json`, `phone-jsoff-book.jpg`).
+- **Adults:** never sent.
+- **Keyboard:** both fields are reachable and labelled. Typing a date works. Each field takes 4 Tab stops in Chromium (day, month, year, picker), which is the browser's own control (`keys.json`).
+
+**Where it falls short:**
+1. **The fields are only at the end of the page:** 16,090 px on the phone, which is 19 screens, and 15,331 px at 1440.
+   - Nothing on the page links to them (`walk.json` `toBook: 0`).
+   - The hero, header, room and bar buttons all go straight to the engine, so a visitor who books from the first screen or from a room never sees them. That is the path most visitors take.
+   - The sentence "Nightly rates are on our booking page, for the dates you choose" sits after the rooms at about 5,600 px, with no field near it.
+   - For most visitors the first tap still leaves the site with nothing chosen, exactly as at 4f.
+2. **Nothing confirms that the dates go with the tap.** After both dates are set, every button still says "Check rooms and live dates" and the room buttons still say "…: check live dates" (`book2.json` `barText`). No nights are shown, so a visitor cannot tell that anything was carried.
+3. **Back from the engine lost the dates every time** (`book.json` `afterBack`; `book3.json` `backState`: `back_forward` and `persisted` false).
+   - Headless Chromium reloaded the page instead of restoring it from the back-forward cache, even with Playwright's flag against that cache removed. The inputs came back empty and the links plain.
+   - A phone that restores the page from that cache would probably keep the dates; one that reloads would not. The `pageshow` handler can only re-apply what the inputs still hold.
+   - I could not test this on a real phone.
+
+**Taps with dates:** scroll about 19 screens to the card, tap check-in, pick a day in the native picker (1 or 2 taps), change check-out for a stay longer than one night (1 or 2 more taps), then tap the button. That is 3 to 5 taps. On the current site the panel is 2 taps away and shows today's dates, which audit F2 found are not sent if left as shown.
+
+**My reading of `references.md` ("the booking journey must feel like part of the site"):** **partly met.**
+- The closing card now lets you choose and carries the choice, in the site's own type and colour. That is a real gain over the mockup and over the current site's panel.
+- The main path is unchanged.
+- I did not score it below 8 for this, because Alon ruled on the fields at gate b and they are honest where they are. It is the first fix below.
+
+**The engine is unknown, and this is how I scored it.**
+- Cloudbeds was intercepted and never loaded, so whether it honours `#checkin=…&checkout=…` and `?rid=` is unknown.
+- I did not count it as a page fault. My score assumes the person check in `notes.md` happens before go-live.
+- If the engine ignores the fragment and the fields stay, they become a promise the site does not keep. I would then put the booking experience at 7 and want the fields removed, as `notes.md` already says.
+
+## Motion and interaction
+
+The same quiet page as at 4f, which is what the calm brief asks for:
+- Buttons darken on hover over 180 ms and press over 120 ms (`laptop.json` `heroHover`). The fields tint on hover.
+- The slideshows have dots and arrows, and swipe on a phone.
+- Reduced motion leaves 0 running animations, and the bar is simply up (`fallback.json`).
+- The desktop parallax was not measured this round.
+
+The inspector (`design-taste-frontend` `inspect.mjs`) reported 6 FAIL and 7 WARN. I take them as evidence lines, not as the score:
+- `headline-lines` and `lopsided`: the desktop feature line, as in the 4f fix 2 row above.
+- `covered-text`: the bar covers "Studio Twin" at one scroll position on the phone. This is normal for a sticky bar and minor.
+- `shadow` on the prints, `eyebrow` (a false hit: it is the last item of the closed Amenities list, which sits above the feature line), `small-title` and `hero-words`: concept decisions already seen at the pick.
+- `no-footage`: an operator decision (no usable video).
+
+## Laptop, 1440 × 900
+
+The same walk, shorter (`laptop.json`, 23 frames, `laptop-sheet-1` and `-2`):
+- The first screen is the mockup's and still the strongest of the set.
+- The header button is always in view, so every frame had a booking link.
+- At the closing card two identical buttons are on screen, the header's and the card's (`laptop-focus-checkin.jpg`).
+
+## Against the current site
+
+The current site was loaded once at each size, unthrottled, first screen only (`current.json`, `side-by-side.jpg`). It is unchanged: the dark figure at the window, "Sandhya /suhnd-yah/ noun", RESERVE in the corner, 8,000 px on a phone.
+- **Where it is still better:** honestly, mood at 1440. The figure and the dusk light are more evocative than our bright bedroom.
+- **Where ours is better, clearly:**
+  - It says what it is on the first screen.
+  - It is usable in about 1 s where the current site took about 55 s in the 4f round.
+  - It has rooms with galleries, both ratings, and a booking link on every frame.
+  - It now carries dates honestly, where the current panel shows dates and audit F2 found it does not send them.
+
+## Why 8
+
+It still meets the rubric's sentence: engaging, clearly better than the current site, easy to book.
+- **Why it is not higher:**
+  - The fixes that landed are modest.
+  - The dates help only the visitor who reaches the end.
+  - The long middle (Casual Luxe, Kabalana) and the thin ending are where they were.
+- **Why it is not lower:**
+  - The first screen still pulls you in.
+  - A booking link is never out of reach.
+  - Nothing got worse in the port.
+
+## Fix list (biggest effect first)
+
+1. **Put the dates where the choice is made.**
+   - Add the same pair of fields, sharing state with the closing card, directly after the rooms, next to "Nightly rates are on our booking page, for the dates you choose".
+   - On the phone, give the bar a way to reach them, for example a small "Dates" control beside the button that scrolls to the fields.
+   - Keep every link a plain link, so a visitor can still book in 1 tap without dates.
+2. **Show that the dates travel.** With both dates set, change the button labels to name them, for example "Check 9 to 12 Dec" on the bar and the card, and "Studio King: 9 to 12 Dec" on the room buttons. Show the nights next to the fields.
+3. **Keep the dates when the visitor comes back from the engine.** Store the pair in `sessionStorage` and restore it on `pageshow` and on load.
+4. **Finish 4f fix 1 and the desktop half of fix 2.**
+   - Run Kabalana on the phone as steps with a photograph between paragraphs (`phone-walk-16`).
+   - At 1440, set the feature line in the text face, or in fewer lines.
+5. **Tidy the end of the page.**
+   - Hide the phone bar while the card's own button is on screen.
+   - Give the last screen the dusk: img-027 edge to edge with the ground easing to a dusk tint, instead of the white card repeating the tagline.
+   - Set the rating line after the rooms with the score as a number people notice, not as fine print.
+
+**Keep:**
+- the first screen, with text and button usable before the photograph
+- the room galleries with a button each
+- the bar's timing near the top
+- the fields' look (soft, label inside, 16 px)
+- fields hidden with JS off, plain hrefs, no adults count, and the half-date line
+- the dishes after Dining ¶2 and the feature line in the text face on the phone
+- the rating line after the rooms
+
+## Not covered, 4g round 1
+
+- **No real device.** I used headless Chromium with an emulated iPhone and synthesized touch, with no WebKit and no iOS Safari. In particular I did not see:
+  - how an empty `appearance: none` date input renders on iOS
+  - the native date pickers
+  - the back-forward cache on a real phone (the date-loss finding comes from a headless reload)
+  - a 3x screen
+- **The engine.** It was intercepted and never loaded. Whether Cloudbeds honours the dates or `?rid=` is unknown, and so is everything past the hand-off.
+- **Timing.** The 0.5 s frame was taken late (about 1.8 s). The cold runs were single runs on a shared machine.
+- **Keyboard visibility.** My check of whether each Tab stop was in view waited only 40 ms after each Tab and does not hold up against smooth scrolling, so I make no claim about focus staying in view.
+- **Partly walked or not walked:**
+  - The current site was loaded once per size, first screen only, unthrottled. The 4f frames in `current/` stand for the rest of it.
+  - Not walked: 360 px phones, landscape, tablet.
+  - Fallbacks were walked on the phone only.
+  - The desktop parallax and the gallery crossfade were not measured.
+- **Tools not run:** `/impeccable`, `/emil-design-eng`, `/design-motion-principles`, `/review-animations`. The gold pages were not rendered.
+- **Inspector side effect:** the inspector wrote its frames and `report.json` to `.taste-skill/inspect/` in the worktree, which is gitignored. That was my run, outside `reports/`.
+- **Facts, copy, budgets and accessibility** belong to the critic and were checked here only as far as listed above.
