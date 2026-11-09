@@ -9,6 +9,7 @@ import gaps from '../gaps/gaps.json'
 import photos from '../tenant/photos.generated.json'
 import { PHOTO_ROWS } from '../lib/layout.mjs'
 import LABELS from '../lib/labels.mjs'
+import { IS_PREVIEW, ROUTES, abs, pageTitle, metaDescription, heroImage, businessLd, ldJson } from '../lib/seo.mjs'
 import siteJs from '../scripts/site.js?raw'
 import '../styles/site.css'
 import { readFileSync } from 'node:fs'
@@ -81,9 +82,13 @@ const monthName = (ym) => new Date(`${ym}-15T00:00:00Z`).toLocaleString('en-GB',
 const money = (p) => `${{ USD: 'US$', EUR: '€', LKR: 'LKR ' }[p.currency] ?? p.currency + ' '}${p.price.toLocaleString('en-US')}`
 const price = s.priceList?.[0]
 
-const og = hero && R_(hero).d.src
-const title = `${s.businessName} | ${s.tagline ?? ''}`
-const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : null
+// 4h: head and structured data from src/lib/seo.mjs (the preview rule, title, description, JSON-LD).
+const title = pageTitle()
+const description = metaDescription()
+const pageUrl = abs(ROUTES[0] || './')
+const canonical = IS_PREVIEW ? null : pageUrl
+const ogImg = heroImage()
+const ld = ldJson(businessLd({ description }))
 const slideDims = (m) => R_(m).l
 ---
 <!DOCTYPE html>
@@ -92,13 +97,23 @@ const slideDims = (m) => R_(m).l
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{title}</title>
-<meta name="description" content={s.tagline}>
+<meta name="description" content={description}>
+{IS_PREVIEW && <meta name="robots" content="noindex, nofollow">}
 <meta name="theme-color" content="#CBCEC5">
 {canonical && <link rel="canonical" href={canonical}>}
+{canonical && <link rel="alternate" hreflang={lang} href={canonical}>}
+{canonical && <link rel="alternate" hreflang="x-default" href={canonical}>}
 <meta property="og:type" content="website">
-<meta property="og:title" content={s.businessName}>
-<meta property="og:description" content={s.tagline}>
-{og && <meta property="og:image" content={canonical ? new URL(og, canonical).href : og}>}
+<meta property="og:site_name" content={s.businessName}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+{pageUrl && <meta property="og:url" content={pageUrl}>}
+{pageUrl && ogImg && <meta property="og:image" content={abs(ogImg.src)}>}
+{pageUrl && ogImg && <meta property="og:image:type" content="image/webp">}
+{pageUrl && ogImg && <meta property="og:image:width" content={String(ogImg.width)}>}
+{pageUrl && ogImg && <meta property="og:image:height" content={String(ogImg.height)}>}
+{pageUrl && ogImg && <meta property="og:image:alt" content={ogImg.alt}>}
+<meta name="twitter:card" content={pageUrl && ogImg ? 'summary_large_image' : 'summary'}>
 <style is:inline set:html={fontCss}></style>
 <link rel="preload" as="font" type="font/woff2" href="fonts/schibsted-grotesk-latin-wght-normal.woff2" crossorigin>
 {hero && <link rel="preload" as="image" href={R_(hero).d.src} media="(min-width: 768px)" fetchpriority="high">}
@@ -414,5 +429,6 @@ const slideDims = (m) => R_(m).l
 </div>
 
 <script is:inline set:html={siteJs}></script>
+<script type="application/ld+json" is:inline set:html={ld}></script>
 </body>
 </html>

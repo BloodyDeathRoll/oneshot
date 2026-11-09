@@ -1,23 +1,23 @@
 {
  "slug": "the-sandhya",
  "variant": "../final",
- "measured_at": "2026-11-09T14:50:59.803Z",
+ "measured_at": "2026-11-09T15:10:38.061Z",
  "first_load": {
   "requests": 9,
   "hosts": [
    "localhost:8980"
   ],
   "third_party_hosts": [],
-  "bytes_total": 610793,
-  "bytes_html": 105303,
+  "bytes_total": 614595,
+  "bytes_html": 109105,
   "bytes_js": 0,
   "bytes_css": 0,
   "bytes_fonts": 46752,
   "bytes_images": 458738,
   "largest_image_bytes": 175632,
-  "lcp_ms": 740,
+  "lcp_ms": 564,
   "cls": 0.0032,
-  "dcl_ms": 1289
+  "dcl_ms": 1506
  },
  "scroll": {
   "early": {
@@ -25,8 +25,8 @@
    "shifts": [
     {
      "value": 0.0032,
-     "at_ms": 1618,
-     "y": 582,
+     "at_ms": 1641,
+     "y": 402,
      "sources": [
       "#text"
      ]
