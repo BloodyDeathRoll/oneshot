@@ -20,8 +20,8 @@ presence_threshold: 5            # shortlist businesses scoring <= this (0–5);
 max_sites: 1
 languages: [en]
 budget:
-  tokens_per_business: 10_000_000   # 2026-11-06: was 2_000_000; raised by Alon at 1.28M to reach the mockup pick; review again at gate b
-  wallclock_min_per_business: 600   # 2026-11-06: was 90; raised by Alon at 86 min
+  tokens_per_business: 12_000_000   # 2026-11-09: was 10_000_000 (2026-11-06: was 2_000_000); raised by Alon at 8.79M, before the 4g critique, to cover critique, preview and pitch
+  wallclock_min_per_business: 850   # 2026-11-09: was 600 (2026-11-06: was 90); raised by Alon at 512 agent-minutes
 hosting:
   default_mode: managed          # managed | self_hosted_docker | static_only
   modes: {}
